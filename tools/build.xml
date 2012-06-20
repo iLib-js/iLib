@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+build.xml - build the tools parts
+
+Copyright © 2012, JEDL Software, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!-- ======================================================================= -->
+<!-- Main build file for the ilib js bits            -->
+<!-- ======================================================================= -->
+<project name="ilib" default="all">
+	<!-- =================================================================== -->
+	<!-- properties                                                          -->
+	<!-- =================================================================== -->
+
+	<!-- Give user a chance to override properties without editing this file -->
+	<!-- (and without typing -D each time it compiles it)                    -->
+	<property file="../build.properties"/>
+	<property file="build.properties"/>
+	
+	<!-- Properties that can be overridden -->
+	<!-- directories -->
+	<property name="build.base"						value="${basedir}"/>
+
+	<property name="build.dist"						value="${build.base}/../dist"/>
+	<property name="build.export"					value="${build.base}/../export"/>
+	
+	<property name="build.lib"						value="${build.base}/lib"/>
+	<property name="build.output"					value="${build.base}/output"/>
+	<property name="build.output.reports"			value="${build.output}/reports"/>
+	<property name="build.output.jsunit"			value="${build.output}/jsunit"/>
+	<property name="build.src"						value="${build.base}/src"/>
+	<property name="build.jsdoc"					value="${build.output}/jsdoc"/>
+	<property name="build.data"						value="${build.base}/data"/>
+	<property name="build.locale"					value="${build.data}/locale"/>
+	<property name="build.config"					value="config"/>
+	<property name="log4j.config.file"				value="${build.config}/log4j.properties"/>
+
+	<property name="build.bin"						value="${build.base}/bin"/>
+
+	<property name="jar.ilib"					    value="ilib.jar"/>
+
+	<!-- =================================================================== -->
+	<!-- Class paths                                                         -->
+	<!-- =================================================================== -->
+	<path id="project.class.path.base">
+		<fileset dir="${build.lib}">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement path="${build.config}"/>
+	</path>
+
+	<path id="project.class.path.release">
+		<pathelement path="${build.classes.release}"/>
+		<path refid="project.class.path.base"/>
+	</path>
+
+	<path id="project.class.path.debug">
+		<pathelement path="${build.classes.debug}"/>
+		<path refid="project.class.path.base"/>
+	</path>
+
+	<path id="project.classpath.junit">
+		<path refid="project.class.path.debug"/>
+	</path>
+
+	<path id="project.classpath.jsa">
+		<fileset dir="../java/output/release">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="../java/lib">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement path="../java/config"/>
+	</path>
+
+	
+	<!-- =================================================================== -->
+	<!-- Implement the standard targets                                      -->
+	<!-- =================================================================== -->
+	<target name="all" depends="export" description="Build everything. This is the target that the build should run."/>
+
+	<target name="clean" description="Remove all generated files to start from scratch">
+	</target>
+
+	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Create the core jar file                                            -->
+	<!-- =================================================================== -->
+	<target name="export" description="Create all objects and export them to the top level dir for packaging">
+		<mkdir dir="${build.export}/tools"/>
+		<copy todir="${build.export}/tools">
+			<fileset dir="${build.base}">
+				<include name="jsdoc_toolkit*/**"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<!-- target name="dist" depends="assemble,doc" description="Distribute all built objects in preparation for running">
+		<zip destfile="${build.dist}/ilib-${version}.zip"
+			basedir="${build.src}"
+			includes="iliball.js,iliball-compiled.js"/>
+		<zip destfile="${build.dist}/ilib-${version}-doc.zip"
+			basedir="${build.jsdoc}"/>
+		<zip destfile="${build.dist}/ilib-${version}-src.zip">
+			<zipfileset 
+				dir="${build.base}" 
+				prefix="js"
+				includes="src/**,data/locale/**/*.json,build.xml,bin/**"
+				excludes="**/test/**,**/externs.js,**/*.html,src/iliball*"/>
+			<zipfileset 
+				dir="../tools" 
+				prefix="tools"
+				includes="jsdoc*/**"/>
+		</zip>
+		<tar destfile="${build.dist}/ilib-${version}.tgz"
+			basedir="${build.src}"
+			includes="iliball.js,iliball-compiled.js"
+			compression="gzip"/>
+		<tar destfile="${build.dist}/ilib-${version}-doc.tgz"
+			basedir="${build.jsdoc}"
+			compression="gzip"/>
+		<tar destfile="${build.dist}/ilib-${version}-src.tgz"
+			basedir="${build.base}"
+			includes="src/**,data/locale/**/*.json,build.xml,${build.dist}/jsdoc*/**,bin/**"
+			excludes="**/test/**,**/externs.js,**/*.html,src/iliball*"
+			compression="gzip"/>	
+		<checksum>
+			<fileset dir="${build.dist}">
+				<include name="*.tgz"/>
+				<include name="*.zip"/>
+				<include name="*.jar"/>
+			</fileset>
+		</checksum>
+	</target-->
+	
+</project>

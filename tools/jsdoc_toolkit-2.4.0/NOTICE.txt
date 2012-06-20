@@ -1,0 +1,1 @@
+This copy of jsdoc_toolkit is unmodified from version 2.4.0 shipped by Michael Mathews. See http://code.google.com/p/jsdoc-toolkit/ for more info about jsdoc_toolkit.

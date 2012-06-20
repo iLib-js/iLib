@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+build.xml - build everything in the ilib project
+
+Copyright © 2012, JEDL Software, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!-- ======================================================================= -->
+<!-- Main build file for the ilib java bits            -->
+<!-- ======================================================================= -->
+<project name="ilib" default="all" basedir=".">
+	<!-- =================================================================== -->
+	<!-- properties                                                          -->
+	<!-- =================================================================== -->
+
+	<!-- Give user a chance to override properties without editing this file -->
+	<!-- (and without typing -D each time it compiles it)                    -->
+	<property file="build.properties"/>
+	
+	<!-- Properties that can be overridden -->
+	<!-- directories -->
+	<property name="build.base"						value="."/>
+	<property name="build.export"					value="export"/>
+	<property name="build.dist"						value="dist"/>
+
+	<!-- =================================================================== -->
+	<!-- Implement the standard targets                                      -->
+	<!-- =================================================================== -->
+	<macrodef name="iterate">
+        <attribute name="target"/>
+        <sequential>
+            <subant target="@{target}"  >
+            	<property name="dist" value="${build.dist}"/>
+                <fileset dir="." includes="*/build.xml"/>
+            </subant>
+        </sequential>
+	</macrodef>
+
+	<target name="all" description="Build everything. This is the target that the build should run.">
+		<iterate target="all"/>
+	</target>
+		
+	<target name="clean" description="Remove all generated files to start from scratch">
+		<iterate target="clean"/>
+		<delete dir="${build.dist}"/>
+		<delete dir="${build.export}"/>
+	</target>
+
+	<target name="dist" description="Build the distribution package.">
+		<mkdir dir="${build.dist}" description="Dir to contain all the distribution outputs"/>
+		<iterate target="export"/>
+		<zip destfile="${build.dist}/ilib-${version}.zip"
+			basedir="${build.export}"
+			includes="js/**,java/**"/>
+		<zip destfile="${build.dist}/ilib-${version}-doc.zip"
+			basedir="${build.export}/doc"/>
+		<zip destfile="${build.dist}/ilib-${version}-src.zip">
+			<zipfileset 
+				dir="${build.export}/src"
+				includes="**"/>
+			<zipfileset 
+				dir="${build.export}"
+				includes="tools/**"/>
+			<zipfileset 
+				dir="${build.base}"
+				includes="build.xml,build.properties"/>
+		</zip>
+		<tar destfile="${build.dist}/ilib-${version}.tgz" compression="gzip">
+			<zipfileset src="${build.dist}/ilib-${version}.zip"/>
+		</tar>
+		<tar destfile="${build.dist}/ilib-${version}-doc.tgz" compression="gzip">
+			<zipfileset src="${build.dist}/ilib-${version}-doc.zip"/>
+		</tar>
+		<tar destfile="${build.dist}/ilib-${version}-src.tgz" compression="gzip">
+			<zipfileset src="${build.dist}/ilib-${version}-src.zip"/>
+		</tar>
+		<checksum>
+			<fileset dir="${build.dist}">
+				<include name="*.tgz"/>
+				<include name="*.zip"/>
+				<include name="*.jar"/>
+			</fileset>
+		</checksum>
+	</target>
+
+	<target name="test" description="Run all tests and build all reports">
+		<iterate target="test"/>
+	</target>
+	
+	<target name="doc" description="Extract all the inline documentation.">
+		<iterate target="doc"/>
+	</target>
+</project>

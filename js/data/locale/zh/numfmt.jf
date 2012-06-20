@@ -1,0 +1,6 @@
+	"numfmt": {
+		"decimalChar": ".",
+		"groupChar": ",",
+		"groupSize": 4,
+		"pctFmt": "{n}%"
+	},

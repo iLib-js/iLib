@@ -1,0 +1,1 @@
+This version of Google Closure Compiler is unmodified from the one shipped by Google on 4/30/2012 based on r1918. Code for the compiler can be obtained from code.google.com.

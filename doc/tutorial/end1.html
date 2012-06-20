@@ -1,0 +1,76 @@
+<!--
+Copyright © 2012, JEDL Software, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html>
+<script src="../../js/src/iliball.js"></script>
+<script>
+var now = new ilib.Date.GregDate();  // current date
+var duration = 36.5*60*60*1000; // 36 hours and 30 minutes in milliseconds
+var soon = new ilib.Date.GregDate();
+soon.setTime(now.getTime()+duration); // 36.5 hours from now
+
+var res = new ilib.ResBundle({
+    locale: "it-IT",
+    name: "ilibtutorial",
+    type: "html"
+});
+
+function formatStuff() {
+    var fmt = new ilib.DateFmt({
+        locale: "it-IT",
+        length: "long",
+        type: "datetime",
+        date: "wdmy"
+    });
+    var rangeFmt = new ilib.DateRngFmt({
+        locale: "it-IT",
+        length: "long"
+    });
+    var durFmt = new ilib.DurFmt({
+        locale: "it-IT",
+        length: "long"
+    });
+    
+    var str;
+    var datetime = document.getElementById("datetime");
+    str = new ilib.String(res.getString("The date is: {date}"));
+    datetime.innerHTML = str.fmt({date: fmt.format(now)});
+    
+    var range = document.getElementById("range");
+    str = new ilib.String(res.getString("The date range is: {range}"));
+    range.innerHTML = str.fmt({
+        range: rangeFmt.format(now, soon)
+    });
+    
+    var durationElement = document.getElementById("duration");
+    var hours = Math.floor(duration / (60 * 60 * 1000));
+    var minutes = (duration / (60 * 60 * 1000) - hours) * 60;
+    str = new ilib.String(res.getString("The duration is: {duration}"));
+    durationElement.innerHTML = str.fmt({
+        duration: durFmt.format({
+            hours: hours,
+            minutes: minutes
+        })
+    });
+}
+</script>
+<body onload="javascript:formatStuff();">
+<div id="datetime"></div>
+<div id="range"></div>
+<div id="duration"></div>
+
+</body>
+</html>

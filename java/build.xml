@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ======================================================================= -->
+<!-- Main build file for the ilib java bits            -->
+<!-- ======================================================================= -->
+<project name="ilib" default="all">
+	<!-- =================================================================== -->
+	<!-- properties                                                          -->
+	<!-- =================================================================== -->
+
+	<!-- Give user a chance to override properties without editing this file -->
+	<!-- (and without typing -D each time it compiles it)                    -->
+	<property file="build.properties"/>
+	
+	<!-- Properties that can be overridden -->
+	<!-- directories -->
+	<property name="build.base"						value="."/>
+
+	<property name="build.dist"						value="${build.base}/../dist" />
+	<property name="build.export"					value="${build.base}/../export"/>
+	
+	<property name="overall.lib"    				value="./lib"/>
+
+	<property name="build.classes"					value="${build.base}/classes"/>
+	<property name="build.classes.debug"			value="${build.classes}/debug"/>
+	<property name="build.classes.debug.instrumented"	value="${build.classes.debug}/instrumented"/>
+	<property name="build.classes.release"			value="${build.classes}/release"/>
+	<property name="build.lib"						value="${build.base}/lib"/>
+	<property name="build.lib.deployer"				value="${build.lib}/apache-tomcat-6.0.16-deployer"/>
+	<property name="build.output"					value="${build.base}/output"/>
+	<property name="build.output.debug"				value="${build.output}/debug"/>
+	<property name="build.output.release"			value="${build.output}/release"/>
+	<property name="build.output.coverage"			value="${build.output}/coverage"/>
+	<property name="build.output.reports"			value="${build.output}/reports"/>
+	<property name="build.output.junit"				value="${build.output}/junit"/>
+	<property name="build.src"						value="${build.base}/src"/>
+	<property name="build.javadoc"					value="${build.output}/javadoc"/>
+	<property name="build.config"					value="config"/>
+	<property name="log4j.config.file"				value="${build.config}/log4j.properties"/>
+	
+	<property name="jar.ilib"					    value="ilib-${version}-tools.jar"/>
+
+	<!-- directory that contains emma.jar and emma_ant.jar: -->
+	<property name="emma.dir" value="${build.lib}" />
+
+	<!-- =================================================================== -->
+	<!-- Class paths                                                         -->
+	<!-- =================================================================== -->
+	<path id="project.class.path.base">
+		<fileset dir="${overall.lib}">
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="${build.lib}">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement path="${build.config}"/>
+	</path>
+
+	<path id="project.class.path.release">
+		<pathelement path="${build.classes.release}"/>
+		<path refid="project.class.path.base"/>
+	</path>
+
+	<path id="project.class.path.debug">
+		<pathelement path="${build.classes.debug}"/>
+		<path refid="project.class.path.base"/>
+	</path>
+
+	<path id="project.class.path.instrumented">
+		<pathelement path="${build.classes.debug.instrumented}"/>
+		<path refid="project.class.path.base"/>
+	</path>
+
+	<path id="project.classpath.junit">
+		<path refid="project.class.path.debug"/>
+	</path>
+
+	<taskdef resource="emma_ant.properties" classpathref="project.class.path.base" />
+	
+	<!-- =================================================================== -->
+	<!-- Implement the standard targets                                      -->
+	<!-- =================================================================== -->
+	<target name="all" depends="jars" description="Build everything. This is the target that the build should run."/>
+
+	<target name="clean" description="Remove all generated files to start from scratch">
+		<delete dir="${build.classes}"/>
+		<delete dir="${build.output}"/>
+	</target>
+
+	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
+		<mkdir dir="${build.classes.debug}"/>
+		<mkdir dir="${build.classes.debug.instrumented}"/>
+		<mkdir dir="${build.classes.release}"/>
+		<mkdir dir="${build.output.debug}"/>
+		<mkdir dir="${build.output.release}"/>
+		<mkdir dir="${build.output.coverage}"/>
+		<mkdir dir="${build.output.reports}"/>
+		<mkdir dir="${build.output.junit}"/>
+	</target>
+
+	<!-- =================================================================== -->
+	<!-- Create all jar files                                                -->
+	<!-- =================================================================== -->
+	<target name="jars" depends="jars.debug,jars.release" description="Create all jar files"/>
+
+	<target name="jars.debug" depends="jar.ilib.debug" description="Create all jar files in debug mode"/>
+	<target name="jars.release" depends="jar.ilib.release" description="Create all jar files in release mode"/>
+
+	<!-- =================================================================== -->
+	<!-- Create the core jar file                                            -->
+	<!-- =================================================================== -->
+	<target name="compile" description="compiles java files into classes in debug or release mode">
+		<!-- compile the source code -->
+		<javac  srcdir="${build.src}"
+                destdir="${classesDir}"
+                failonerror="true"
+                debug="${debugFlag}"
+                includeAntRuntime="no"
+                optimize="${optimizeFlag}">
+			<classpath refid="${classPathRef}"/>
+			<exclude name="**/.svn/**"/>
+		</javac>
+		<copy todir="${classesDir}">
+			<fileset dir="${build.src}">
+				<include name="**/*.properties"/>
+				<include name="**/*.jdo"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="compile.release" depends="prepare" description="Compile all java files into objects in release mode">
+		<antcall target="compile">
+			<param name="classesDir" value="${build.classes.release}"/>
+			<param name="classPathRef" value="project.class.path.release"/>
+			<param name="debugFlag" value="off"/>
+			<param name="optimizeFlag" value="on"/>
+		</antcall>
+	</target>
+
+	<target name="compile.debug" depends="prepare" description="Compile all java files into objects in debug mode">
+		<antcall target="compile">
+			<param name="classesDir" value="${build.classes.debug}"/>
+			<param name="classPathRef" value="project.class.path.debug"/>
+			<param name="debugFlag" value="on"/>
+			<param name="optimizeFlag" value="off"/>
+		</antcall>
+	</target>
+
+	<target name="testinstrument" description="Test whether built objects need instrumenting for use with the emma code coverage tool">
+		<copy todir="${build.classes.debug.instrumented}">
+			<fileset dir="${build.classes.debug}"/>
+		</copy>
+		<uptodate
+				property="project.instrument.not.needed"
+				targetfile="${build.output.debug}/${jar.ilib}">
+			<srcfiles dir="${build.classes.debug}" includes="**/*.class"/>
+		</uptodate>
+	</target>
+
+	<target name="instrument"
+            depends="testinstrument"
+            unless="project.instrument.not.needed"
+			description="Instrument the built objects for use with the emma code coverage tool">
+		<emma enabled="true" >
+			<instr instrpath="${build.classes.debug.instrumented}"
+                 mode="overwrite"
+                 metadatafile="${build.output.coverage}/metadata.emma"
+                 properties="${build.config}/emma.properties"
+                 merge="true">
+				<filter excludes="" />
+			</instr>
+		</emma>
+	</target>
+
+	<target name="compile.debug.instrumented" depends="compile.debug,instrument" description="Create versions of the debug objects that are instrumented for use with the emma code coverage tool"/>
+
+	<target name="build.jar.ilib" description="Do the actual work of building ct.jar">
+		<jar    jarfile="${outputDir}/${jar.ilib}"
+                basedir="${classesDir}"
+                compress="on"/>
+	</target>
+
+	<target name="jar.ilib.release" depends="compile.release" description="Create the release version of the ct.jar file">
+		<antcall target="build.jar.ilib">
+			<param name="classesDir" value="${build.classes.release}"/>
+			<param name="outputDir" value="${build.output.release}"/>
+		</antcall>
+	</target>
+
+	<target name="jar.ilib.debug" depends="compile.debug" description="Create the debug version of the ct.jar file">
+		<antcall target="build.jar.ilib">
+			<param name="classesDir" value="${build.classes.debug}"/>
+			<param name="outputDir" value="${build.output.debug}"/>
+		</antcall>
+	</target>
+	
+	<target name="dist.debug" depends="jars.debug" description="Distribute the debug versions of the built objects">
+	</target>
+
+	<target name="dist.release" depends="jars.release" description="Distribute the release versions of the built objects">
+	</target>
+	
+	<target name="export" depends="dist.release,doc" description="Distribute all built objects in preparation for running">
+		<mkdir dir="${build.export}/java"/>
+		<copy todir="${build.export}/java">
+			<fileset dir="${build.output.release}/">
+				<include name="**/*.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="${build.export}/java/lib">
+			<fileset dir="${build.lib}/">
+				<include name="log4j-*.jar"/>
+				<include name="log4j.properties"/>
+				<include name="json-*.jar"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${build.export}/doc/javadoc"/>
+		<copy todir="${build.export}/doc/javadoc">
+			<fileset dir="${build.javadoc}">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${build.export}/src/java"/>
+		<copy todir="${build.export}/src/java">
+			<fileset dir="${build.base}">
+				<include name="src/**"/>
+				<include name="build.xml"/>
+				<include name="build.properties"/>
+				<include name="lib/json*"/>
+				<include name="lib/log4j*"/>
+				<exclude name="**/test/**"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="dist" depends="dist.release,doc" description="Distribute all built objects in preparation for running">
+		<copy todir="${build.dist}">
+			<fileset dir="${build.output.release}/">
+				<include name="**/*.jar"/>
+			</fileset>
+		</copy>
+		<zip destfile="${build.dist}/ilib-${version}-tools-doc.zip"
+			basedir="${build.javadoc}"/>
+		<tar destfile="${build.dist}/ilib-${version}-tools-doc.tgz"
+			basedir="${build.javadoc}"
+			compression="gzip"/>
+	</target>
+
+	<target name="test.core" depends="jars.debug" description="run the tests">
+		<echo>Testing the core classes</echo>
+		<junit haltonfailure="on"
+                        fork="on"
+                        dir="${basedir}"
+                        showoutput="on"
+                        printsummary="on">
+			<jvmarg value="-Demma.coverage.out.file=${build.output.coverage}/core.emma"/>
+			<jvmarg value="-Demma.coverage.out.merge=true" />
+			<classpath refid="project.classpath.junit"/>
+			<formatter type="xml"/>
+			<formatter type="plain" usefile="off"/>
+			<batchtest todir="${build.output.junit}">
+				<fileset dir="${build.classes.debug}">
+					<include name="**/AllTests.class"/>
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="core.emma.report" description="Generate a report on the emma code coverage">
+		<mkdir dir="${build.output.reports}/coverage"/>
+		<emma enabled="true">
+			<report sourcepath="${build.src}"
+                    sort="+block,+name,+method,+class"
+                    metrics="method:70,block:80,line:80,class:100">
+				<fileset dir="${build.output.coverage}" >
+					<include name="*.emma"/>
+				</fileset>
+				<html outfile="projects/core/output/reports/coverage/index.html"
+                        depth="method"
+                        columns="name,class,method,block,line"/>
+			</report>
+		</emma>
+		<echo>Code coverage report for core sent to projects/core/output/reports/coverage/index.html</echo>
+	</target>
+
+	<target name="core.junit.report" description="Generate a report on the junit tests">
+		<mkdir dir="${build.output.reports}/junit"/>
+		<junitreport todir="${build.output.reports}/junit">
+			<fileset dir="${build.output.junit}">
+				<include name="*.xml"/>
+			</fileset>
+			<report format="frames" todir="${build.output.reports}/junit"/>
+		</junitreport>
+		<echo>junit report for core sent to ${build.output.reports}/junit/index.html</echo>
+	</target>
+
+	<!-- target name="test" depends="test.core"/ -->
+	<target name="test.only" depends="test.core" description="Run all tests"/>
+	<target name="reports.only" depends="core.junit.report,core.emma.report" description="Generate reports on previously run tests"/>
+	<target name="reports" depends="test.only,reports.only" description="Run all tests, then generate reports on the results"/>
+	<target name="test" depends="reports" description="Run all tests and build all reports"/>
+
+	<target name="testjavadoc" description="test whether or not the javadocs need to be rebuilt">
+		<uptodate
+                property="core.javadoc.not.needed"
+                targetfile="${build.javadoc}/index.html">
+			<srcfiles dir="${build.src}" includes="**/*.java"/>
+		</uptodate>
+	</target>
+
+	<target name="doc"
+            depends="dist.release,testjavadoc"
+            description="creates javadoc for all local java files in this project"
+            unless="core.javadoc.not.needed">
+		<delete dir="${build.javadoc}"/>
+		<mkdir dir="${build.javadoc}"/>
+		<javadoc    packagenames="com.ilib.*"
+                    sourcepath="${build.src}"
+                    destdir="${build.javadoc}"
+                    defaultexcludes="yes"
+        			excludepackagenames="**.tests"
+                    author="false"
+                    use="true"
+                    classPathRef="project.class.path.debug"
+                    windowtitle="ILib Core Library">
+
+			<doctitle><![CDATA[<h1>ILib Java Core Library.</h1>]]></doctitle>
+			<bottom><![CDATA[<i>Copyright &#169; 2011 Cottage Industries, Inc. All Rights Reserved.</i>]]></bottom>
+			<link href="http://java.sun.com/j2se/1.4/docs/api/"/>
+		</javadoc>
+	</target>
+</project>

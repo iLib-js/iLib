@@ -1,0 +1,1 @@
+This version of jsunit is unmodified from that shipped by Edward Hieatt. See www.jsunit.com for more info on this code.

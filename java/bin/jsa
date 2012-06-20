@@ -1,0 +1,7 @@
+#!/bin/bash -x
+
+export JAVA_HOME=/usr/local/java
+ILIB_HOME=$HOME/src/ilib/java
+ILIB=$ILIB_HOME/output/debug/ilib.jar
+
+java -cp $ILIB:$ILIB_HOME/config:$ILIB_HOME/lib/'*' com.ilib.tools.jsa.JSAssemble $*

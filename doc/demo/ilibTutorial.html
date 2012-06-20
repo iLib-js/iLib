@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!--
+ilibTutorial.html - a demo of the ilib features
+
+Copyright © 2012, JEDL Software, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<title>PhaseOne Ilib Demo</title>
+<link rel="stylesheet" type="text/css" href="styles/core.css">
+<link rel="stylesheet" type="text/css" href="themes/cupertino/jquery-ui-1.8.custom.css">
+<script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="scripts/jquery-ui-1.8.custom.min.js"></script>
+<script type="text/javascript" src="scripts/jqia2.support.js"></script>
+<script type="text/javascript" src="scripts/iliball.js"></script>
+<script type="text/javascript" src="scripts/demo-date.js"></script>
+<script type="text/javascript">
+
+$(function() {
+	
+	$('#labForm').submit(function() { return false; } );
+        
+    var preFmtData = null;
+    var postFmtData = null;
+    var fmt = null;
+    var rangeFmt;
+	var durFmt;
+    var rangeData = null;
+    var durationData = null;
+    var localeName = null;
+    var convertName = null;
+    var localeInfo = null;
+    var res = null;
+    var psudoStr = null;
+        
+    $('#conversionCtl,#localeControl').change(function() {
+
+        convertName = $('#conversionCtl').val();
+        if (convertName == '') return;
+        
+        if (convertName == 'PseudoTranslation') {
+        	// No need for locale to be set for Pseudo
+        	ilib.setLocale("xx-XX");
+			res = new ilib.ResBundle({
+					locale : "xx-XX",
+					name : "ilibTutorial",
+					type : "html"
+			});
+        	localeName = "xx-XX";
+        	return;
+		}
+			
+		localeName = $('#localeControl').val();
+	    if (localeName == '') return;
+
+        if (convertName == 'DateFmt') {
+	        var dtCtl = doDateFmt();	// call into demo-date.js to dynamically generate UI controls
+			$('#dataPane').html(dtCtl);
+        } else {
+        	$('#lengthPane').empty();
+        	$('#typePane').empty();
+        	$('#datePane').empty();
+        	$('#timePane').empty();
+        	if (convertName == 'LocaleInfo') {
+        		// get the locale info for the specified locale
+            	li = new ilib.LocaleInfo(localeName);
+        	/*
+        	 * assume display localized text by default
+        	} else if (convertName == 'GetString') {
+        		res = new ilib.ResBundle({
+        			   locale: localeName,
+        			   name: "ilibTutorial",
+        			   type: "html"
+        		});
+        	*/
+			} else {
+				alert(convertName + ": to be implemented");
+			}
+        }
+	});
+
+	$('#applyButton').click(function() {
+		var data = parseInt($('#dataValue').val());
+		if (isNaN(data) || (data < 0)) {
+			data = null;
+		}
+
+		var options = {};
+		$.collectOptions(options);
+		options.locale = localeName;
+		// assume localized text display by default
+		res = new ilib.ResBundle({
+			   locale: localeName,
+			   name: "ilibTutorial",
+			   type: "html"
+	    });
+		
+		var now = new ilib.Date.GregDate(); // current date
+		preFmtData = new Date();
+		
+		var duration = 36.5 * 60 * 60 * 1000; // 36 hours and 30 minutes in milliseconds
+		var soon = new ilib.Date.GregDate();
+		soon.setTime(now.getTime() + duration); // 36.5 hours from now
+		
+		if (convertName == 'DateFmt') {
+			var dateLength = $('[name="dateLength"]:checked').val();
+			var dateType = $('[name="dateType"]:checked').val();
+			var dateFmt = $('[name="dateFmt"]:checked').val();
+			var timeFmt = $('[name="timeFmt"]:checked').val();
+			
+			fmt = new ilib.DateFmt({
+					locale : localeName,
+					length : dateLength,
+					type : dateType,
+					date : dateFmt,
+					time : timeFmt
+			});
+			postFmtData = fmt.format(now);
+			var str1;
+			str1 = res.getString("The date is {date}");
+			str1.format({
+				date: fmt.format(now)
+			});
+			
+			rangeFmt = new ilib.DateRngFmt();
+			durFmt = new ilib.DurFmt();
+			rangeData = rangeFmt.format(now, soon);
+			var str2;
+		    str2 = res.getString("The date range is {range}");
+			str2.format({
+			    range: rangeFmt.format(now, soon)
+			});
+
+			var h = Math.floor(duration / (60 * 60 * 1000));
+			var m = Math.floor((duration / (60 * 60 * 1000) - h) * 60);
+			durationData = durFmt.format({
+				hours : h,
+				minutes : m
+			});
+			var str3;
+			str3 = res.getString("The duration is {duration}");
+			str3.format({
+			    duration: durFmt.format({
+			        hours: h,
+			        minutes: m
+			    })
+			});
+			
+			options.length = dateLength;
+			options.type = dateType;
+			options.date = dateFmt;
+			options.time = timeFmt;
+			//
+			// Apply conversion
+			//   
+			$('.testSubject').html(res.getString("The date is ") + " : <b>" + preFmtData + "</b><br />"
+					+ "| <br />"
+					+ "V <br />"
+					+ res.getString("The date is ") + "<b>" + postFmtData + "</b><br />"
+					+ res.getString("The date range is ") + "<b>" + rangeData + "</b><br />"
+					+ res.getString("The duration is ") + "<b>" + durationData + "</b><hr />"
+					+ str1 + "<br />"
+					+ str2 + "<br />"
+					+ str3);	
+		} else if (convertName == 'LocaleInfo') {
+			options.localeInfo = li;
+			$('.testSubject').html("LocaleInfo: " + $.forDisplay(li));
+		} else if (convertName == 'PseudoTranslation') {
+			pseudoStr = res.getString("Greetings from Paris");
+			//$('.testSubject').html("Greetings from Paris -> " + $.forDisplay(pseudoStr));
+			$('.testSubject').html("Greetings from Paris -> " + pseudoStr);
+		}
+
+		//
+		// Display the command
+		//
+		$('#commandDisplay').html(
+			"$('.testSubject').convert('" + convertName + "'," + $.forDisplay(options) + ");");	
+	});
+
+	$('#labForm').bind('reset', function() {
+		if ($('#localeControl option[value=""]').length == 0)
+			$('<option>', {value : ''}).insertBefore($('#localeControl option:first')).html(
+				'&mdash;choose one&mdash;');
+		if ($('#conversionCtl option[value=""]').length == 0)
+			$('<option>', {value : ''}).insertBefore($('#conversionCtl option:first')).html(
+				'&mdash;choose one&mdash;');
+		this.reset();
+		restoreTestSubjects();
+		$('#commandDisplay').empty();
+	});
+
+	function restoreTestSubjects() {
+		$('.testSubject,.testSubject *').empty();
+		$('.testSubject,.testSubject *').removeAttr('style');
+	}
+});
+</script>
+
+<style>
+#optionsPane>div {
+	display: none;
+}
+#buttonBar {
+	clear: both;
+	padding-top: 12px;
+}
+#testSubjectContainer {
+	height: 268px;
+}
+.testSubject {
+	width: 480px;
+	padding: 12px;
+	border: 1px solid black;
+}
+#controlPanel label {
+	float: left;
+	text-align: right;
+	width: 10em;
+	font-weight: bold;
+}
+[type="number"] {
+	width: 4em;
+}
+.ui-effects-transfer {
+	border: 4px #deb887 solid;
+}
+</style>
+</head>
+
+<body class="fancy">
+
+	<div id="pageContainer">
+		<div id="pageContent">
+
+			<h1>PhaseOne Ilib Demo</h1>
+
+			<div id="controlPanel" data-module="Internationalization Format Demo">
+				<form action="" id="labForm">
+					<h3>Locale & Format Settings:</h3>
+					<div>
+						<label for="localeControl">Language:</label> <select id="localeControl">
+							<option value="">&mdash;choose one&mdash;</option>
+							<option value="ar">Arabic</option>
+							<option value="zh-CN">Chinese</option>
+							<option value="hr">Croatian</option>
+							<option value="da">Danish</option>
+							<option value="nl">Dutch</option>
+							<option value="en-US">English</option>
+							<option value="et">Estonian</option>
+							<option value="fo">Faroese</option>
+							<option value="fa">Farsi</option>
+							<option value="fi">Finnish</option>
+							<option value="fr-FR">French</option>
+							<option value="de-DE">German</option>
+							<option value="el">Greek</option>
+							<option value="he">Hebrew</option>
+							<option value="hi">Hindi</option>
+							<option value="hu">Hungarian</option>
+							<option value="is">Icelandic</option>
+							<option value="it-IT">Italian</option>
+							<option value="ja-JP">Japanese</option>
+							<option value="ko-KR">Korean</option>
+							<option value="lv">Latvian</option>
+							<option value="lt">Lithuanian</option>
+							<option value="mt">Maltese</option>
+							<option value="nb">Norwegian</option>
+							<option value="pl">Polish</option>
+							<option value="pt">Portuguese</option>
+							<option value="ru">Russian</option>
+							<option value="se">Sami</option>
+							<option value="es-ES">Spanish</option>
+							<option value="sv">Swedish</option>
+							<option value="th">Thai</option>
+							<option value="tr">Turkish</option>
+							<option value="ur">Urdu</option>
+							<option value="xx-XX">Pseudo</option>
+						</select>
+					</div>
+
+					<div>
+						<label for="conversionCtl">Format:</label> <select id="conversionCtl">
+							<option value="">&mdash;choose one&mdash;</option>
+							<option value="DateFmt">Date Formatting</option>
+<!-- 
+							<option value="GetString">Translation</option>
+							<option value="StringFmt">String Formatting</option>
+-->				
+							<option value="FormatChoice">Choice Formatting</option>
+							<option value="PseudoTranslation">Pseudo Translation</option>
+							<option value="NumFmt">Number Formatting</option>
+							<option value="LocaleInfo">Locale Info</option>
+							<option value="CurrencyInfo">Currency Info</option>
+							<option value="TimeZone">Time Zone Info</option>
+							<option value="CalendarInfo">Calendar Info</option>
+							<option value="CType">Character Type</option>
+						</select>
+					</div>
+
+					<div id="dataPane"></div>
+
+					<div id="buttonBar">
+						<button type="button" id="applyButton" class="green90x24">Apply</button>
+						<button type="reset" id="resetButton" class="green90x24">Cancel</button>
+					</div>
+
+				</form>
+				
+				<div>
+					<h3>Executed command:</h3>
+					<div id="commandDisplay">---</div>
+				</div>
+			</div>
+			<div id="testSubjectContainer" data-module="Format Result">
+				<div class="testSubject"></div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

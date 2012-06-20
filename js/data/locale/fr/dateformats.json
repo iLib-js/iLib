@@ -1,0 +1,71 @@
+{
+	"gregorian": {
+		"order": "{time} {date}",
+		"date": {
+			"dmwy": {
+				"s": "EE d/MM/yy",
+				"m": "EE d/MM/yyyy",
+				"l": "EEE d MMM yyyy",
+				"f": "EEEE d MMMM yyyy"
+			},
+			"dmy": {
+				"s": "d/MM/yy",
+				"m": "d/MM/yyyy",
+				"l": "d MMM yyyy",
+				"f": "d MMMM yyyy"
+			},
+			"dmw": {
+				"s": "EE d/MM",
+				"m": "EE d/MM",
+				"l": "EEE d MMM",
+				"f": "EEEE d MMMM"
+			},
+			"dm": {
+				"s": "d/MM",
+				"m": "d/MM",
+				"l": "d MMM",
+				"f": "d MMMM"
+			},
+			"my": {
+				"s": "MM/yy",
+				"m": "MM/yyyy",
+				"l": "MMM yyyy",
+				"f": "MMMM yyyy"
+			},
+			"d": "dd",
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yyyy",
+				"f": "yyyy G"
+			},
+			"n": {
+				"s": "N",
+				"m": "NN",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "HH:mm:ss a z",
+			"ahms": "HH:mm:ss a",
+			"hmsz": "HH:mm:ss z",
+			"hms": "HH:mm:ss",
+			"ahmz": "HH:mm a z",
+			"ahm": "HH:mm a",
+			"hmz": "HH:mm z",
+			"hm": "HH:mm",
+			"ms": "mm:ss",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"julian": "gregorian"
+}

@@ -1,0 +1,6 @@
+	"units": "metric",
+	"clock": "24",
+	"calendar": "gregorian",
+	"firstDayOfWeek": 0,
+	"currency": "USD",
+	"timezone": "Europe/London",
