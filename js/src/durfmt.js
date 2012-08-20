@@ -125,11 +125,11 @@ ilib.DurFmt = function(options) {
 			
 		case 'medium':
 			this.components = {
-				year: sysres.getString("1#1 yr|#{num} yrs"),
+				year: sysres.getString("1#1 yr|#{num} yrs", "durationMediumYears"),
 				month: sysres.getString("1#1 mo|#{num} mos"),
-				week: sysres.getString("1#1 wk|#{num} wks"),
+				week: sysres.getString("1#1 wk|#{num} wks", "durationMediumWeeks"),
 				day: sysres.getString("1#1 dy|#{num} dys"),
-				hour: sysres.getString("1#1 hr|#{num} hrs"),
+				hour: sysres.getString("1#1 hr|#{num} hrs", "durationMediumHours"),
 				minute: sysres.getString("1#1 mi|#{num} min"),
 				second: sysres.getString("1#1 se|#{num} sec"),
 				millisecond: sysres.getString("#{num} ms"),
@@ -143,7 +143,7 @@ ilib.DurFmt = function(options) {
 				year: sysres.getString("1#1 yr|#{num} yrs"),
 				month: sysres.getString("1#1 mon|#{num} mons"),
 				week: sysres.getString("1#1 wk|#{num} wks"),
-				day: sysres.getString("1#1 day|#{num} days"),
+				day: sysres.getString("1#1 day|#{num} days", "durationLongDays"),
 				hour: sysres.getString("1#1 hr|#{num} hrs"),
 				minute: sysres.getString("1#1 min|#{num} min"),
 				second: sysres.getString("1#1 sec|#{num} sec"),
@@ -185,6 +185,11 @@ ilib.DurFmt = function(options) {
 			type: "time",
 			time: "hms"
 		});
+		// munge with the template to make sure that the hours are not formatted mod 12
+		this.timeFmtHM.template = this.timeFmtHM.template.replace(/hh?/, 'H');
+		this.timeFmtHM.templateArr = this.timeFmtHM._tokenize(this.timeFmtHM.template);
+		this.timeFmtHMS.template = this.timeFmtHMS.template.replace(/hh?/, 'H');
+		this.timeFmtHMS.templateArr = this.timeFmtHMS._tokenize(this.timeFmtHMS.template);
 	}
 };
 
@@ -228,16 +233,18 @@ ilib.DurFmt.complist = {
  * undefined, an empty string is returned.
  */
 ilib.DurFmt.prototype.format = function (components) {
-	var i, list, temp, fmt, str = "";
+	var i, list, temp, fmt, secondlast = true, str = "";
 	
 	list = ilib.DurFmt.complist[this.style];
-	for (i = 0; i < list.length; i++) {
+	//for (i = 0; i < list.length; i++) {
+	for (i = list.length-1; i >= 0; i--) {
 		//console.log("Now dealing with " + list[i]);
-		if (typeof(components[list[i]]) !== 'undefined') {
+		if (typeof(components[list[i]]) !== 'undefined' && components[list[i]] != 0) {
 			if (str.length > 0) {
-				str += (this.length === 'full' && i >= list.length-1) ? this.components.finalSeparator : this.components.separator;
+				str = ((this.length === 'full' && secondlast) ? this.components.finalSeparator : this.components.separator) + str;
+				secondlast = false;
 			}
-			str += this.components[list[i]].formatChoice(components[list[i]], {num: components[list[i]]});
+			str = this.components[list[i]].formatChoice(components[list[i]], {num: components[list[i]]}) + str;
 		}
 	}
 

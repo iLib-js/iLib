@@ -99,18 +99,18 @@ ilib.Date.GregDate = function(params) {
 		}
 		
 		if (typeof(params.unixtime) != 'undefined') {
-			this.setTime(params.unixtime);
+			this.setTime(parseInt(params.unixtime, 10));
 		} else if (typeof(params.julianday) != 'undefined') {
-			this.setJulianDay(params.julianday);
+			this.setJulianDay(parseFloat(params.julianday));
 		} else if (params.year || params.month || params.day || params.hour ||
 				params.minute || params.second || params.millisecond ) {
-			this.year = params.year || 0;
-			this.month = params.month || 1;
-			this.day = params.day || 1;
-			this.hour = params.hour || 0;
-			this.minute = params.minute || 0;
-			this.second = params.second || 0;
-			this.millisecond = params.millisecond || 0;
+			this.year = parseInt(params.year, 10) || 0;
+			this.month = parseInt(params.month, 10) || 1;
+			this.day = parseInt(params.day, 10) || 1;
+			this.hour = parseInt(params.hour, 10) || 0;
+			this.minute = parseInt(params.minute, 10) || 0;
+			this.second = parseInt(params.second, 10) || 0;
+			this.millisecond = parseInt(params.millisecond, 10) || 0;
 		} else if (typeof(params.rd) != 'undefined') {
 			// private parameter. Do not document this!
 			this.setRd(params.rd);
@@ -678,3 +678,6 @@ ilib.Date.GregDate.prototype.getCalendar = function() {
 ilib.Date.GregDate.prototype.getTimeZone = function() {
 	return this.timezone;
 };
+
+// register with the factory method
+ilib.Date._constructors["gregorian"] = ilib.Date.GregDate;

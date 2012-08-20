@@ -132,6 +132,28 @@ function testIslamicDateConstructorFull() {
     assertEquals(123, id.getMilliseconds());
 }
 
+function testIslamicDateConstructorFullWithStrings() {
+    var id = new ilib.Date.IslamicDate({
+		year: "2011", 
+		month: "9",
+		day: "23", 
+		hour: "16", 
+		minute: "7", 
+		second: "12", 
+		millisecond: "123"
+	});
+    
+    assertNotNull(id);
+    
+    assertEquals(2011, id.getYears());
+    assertEquals(9, id.getMonths());
+    assertEquals(23, id.getDays());
+    assertEquals(16, id.getHours());
+    assertEquals(7, id.getMinutes());
+    assertEquals(12, id.getSeconds());
+    assertEquals(123, id.getMilliseconds());
+}
+
 function testIslamicDateConstructorCopy() {
     var id = new ilib.Date.IslamicDate({
         year: 2011, 

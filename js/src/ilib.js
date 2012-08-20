@@ -24,6 +24,8 @@
 ilibglobal.js
 daterangefmt.js
 date.js
+calendar/hebrewdate.js
+calendar/hebrew.js
 calendar/islamic.js
 calendar/islamicdate.js
 calendar/julian.js

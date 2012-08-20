@@ -62,7 +62,7 @@ ilib.Cal = function() {
  * 
  * @param {Object=} options options controlling the construction of this instance, or
  * undefined to use the default options
- * @returns
+ * @returns an instance of a calendar object of the appropriate type
  */
 ilib.Cal.newInstance = function (options) {
 	var locale = options && options.locale,

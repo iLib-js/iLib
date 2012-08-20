@@ -47,6 +47,7 @@ ilib.LocaleInfo = function(locale) {
 			groupChar: "",
 			groupSize: 0,
 			pctFmt: "{n}%",
+			pctChar: "%",
 			roundingMode: "halfdown"
 		},
 		currencyFormats: {
@@ -68,7 +69,7 @@ ilib.LocaleInfo = function(locale) {
 			this.locale = locale;
 			break;
 	}
-		
+
 	if (ilib.data["localeinfo"]) {
 		this.info = ilib.merge(this.info, ilib.data["localeinfo"]);
 	}

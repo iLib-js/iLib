@@ -37,7 +37,7 @@ function testDateFmtSimpleShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium() {
@@ -165,7 +165,7 @@ function testDateFmtDateTimeSimpleShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11 1:45PM", fmt.format(date));
+    assertEquals("29/9/11 1:45PM", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium() {
@@ -397,7 +397,7 @@ function testDateFmtTypeDate() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtTypeTime() {
@@ -416,7 +416,7 @@ function testDateFmtTypeTime() {
     assertEquals("1:45PM", fmt.format(date));
 }
 
-function testDateFmtTypeTime() {
+function testDateFmtTypeDateTime() {
     var fmt = new ilib.DateFmt({locale: "en-CA", type: "datetime"});
     assertNotNull(fmt);
     
@@ -429,7 +429,7 @@ function testDateFmtTypeTime() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11 1:45PM", fmt.format(date));
+    assertEquals("29/9/11 1:45PM", fmt.format(date));
 }
 
 
@@ -542,7 +542,7 @@ function testDateFmtShortDateComponentsDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("29/9/11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM() {
@@ -574,7 +574,7 @@ function testDateFmtShortDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th 29/09/11", fmt.format(date));
+    assertEquals("Th 29/9/11", fmt.format(date));
 }
 
 

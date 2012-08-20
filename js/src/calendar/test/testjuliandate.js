@@ -245,6 +245,28 @@ function testJulDateConstructorFull() {
 	assertEquals(123, jul.getMilliseconds());
 }
 
+function testJulDateConstructorFullWithStrings() {
+	var jul = new ilib.Date.JulDate({
+		year: "2011", 
+		month: "9",
+		day: "23", 
+		hour: "16", 
+		minute: "7", 
+		second: "12", 
+		millisecond: "123"
+	});
+	
+	assertNotNull(jul);
+	
+	assertEquals(2011, jul.getYears());
+	assertEquals(9, jul.getMonths());
+	assertEquals(23, jul.getDays());
+	assertEquals(16, jul.getHours());
+	assertEquals(7, jul.getMinutes());
+	assertEquals(12, jul.getSeconds());
+	assertEquals(123, jul.getMilliseconds());
+}
+
 function testJulDateConstructorCopy() {
     var jul = new ilib.Date.JulDate({
         year: 2011, 
@@ -470,7 +492,7 @@ function testJulDateGetTimeZoneDefault() {
     assertUndefined(jul.getTimeZone());
 }
 
-function testJulDateGetTimeZoneByLocale() {
+function testJulDateGetTimeZoneByLocaleDE() {
     var jul = new ilib.Date.JulDate({
     	year: 2011, 
     	month: 3, 
@@ -480,6 +502,18 @@ function testJulDateGetTimeZoneByLocale() {
     assertNotNull(jul);
     
     assertEquals("Europe/Berlin", jul.getTimeZone());
+}
+
+function testJulDateGetTimeZoneByLocaleJP() {
+    var jul = new ilib.Date.JulDate({
+    	year: 2011, 
+    	month: 3, 
+    	day: 8,
+    	locale: "ja-JP"
+    });
+    assertNotNull(jul);
+    
+    assertEquals("Asia/Tokyo", jul.getTimeZone());
 }
 
 function testJulDateGetTimeZoneByLocaleBogus() {

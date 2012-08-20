@@ -100,5 +100,5 @@ rb.getString("Sa", "EE6");
 rb.getString("S", "E6");
 rb.getString("1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th", "ordinalChoice");
 
-rb.getString("a0", "am");
-rb.getString("a1", "pm");
+rb.getString("am", "a0");
+rb.getString("pm", "a1");

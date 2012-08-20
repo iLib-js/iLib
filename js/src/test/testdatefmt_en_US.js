@@ -416,7 +416,7 @@ function testDateFmtUSTypeTime() {
     assertEquals("1:45pm", fmt.format(date));
 }
 
-function testDateFmtUSTypeTime() {
+function testDateFmtUSTypeDateTime() {
     var fmt = new ilib.DateFmt({type: "datetime"});
     assertNotNull(fmt);
     
@@ -1149,3 +1149,77 @@ function testDateFmtUSWithTimeZoneAndNoDST() {
     assertEquals("1:45:37 PST", fmt.format(date));
 }
 
+function testDateFmtUSIslamic() {
+    var fmt = new ilib.DateFmt({
+        type: "date", 
+        length: "full",
+        date: "wdmy",
+        calendar: "islamic"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.IslamicDate({
+		year: 1433,
+		month: 8,
+		day: 24
+	});
+    
+    // should format with English transliterations of the month names
+    assertEquals("yawn as-sabt Šha'bān 24, 1433", fmt.format(date));
+}
+
+function testDateFmtUSHebrew() {
+    var fmt = new ilib.DateFmt({
+        type: "date", 
+        length: "full",
+        date: "wdmy",
+        calendar: "hebrew"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.HebrewDate({
+		year: 5772,
+		month: 8,
+		day: 24
+	});
+    
+    // should format with English transliterations of the month names
+    assertEquals("yom sheni Ḥeshvan 24, 5772", fmt.format(date));
+}
+
+/*
+function testDateFmtUSHebrew() {
+    var fmt = new ilib.DateFmt({
+        type: "date", 
+        length: "full",
+        date: "wdmy",
+        calendar: "hebrew"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.HebrewDate({
+		year: 5772,
+		month: 4,
+		day: 24
+	});
+    // should format with English transliterations of the month names
+    assertEquals("Saturday Tammuz 24, 5772", fmt.format(date));
+}
+*/
+
+function testDateFmtUSShortTimeWithNoMinOrSec() {
+    var fmt = new ilib.DateFmt({
+        type: "time",
+        length: "short", 
+        time: "hms"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 12,
+		day: 29,
+		hour: 13
+	});
+    assertEquals("1:00:00", fmt.format(date));
+}

@@ -137,3 +137,15 @@ function testGregorianIsLeapYearOnQuadCentennial() {
     assertTrue(cal.isLeapYear(2000));
 }
 
+function testGregorianNewDateInstance() {
+    var cal = new ilib.Cal.Gregorian();
+    var d = cal.newDateInstance({
+    	year: 2012,
+    	month: 6,
+    	day: 1
+    });
+    
+    assertNotUndefined(d);
+    assertTrue(d instanceof ilib.Date.GregDate);
+}
+

@@ -48,7 +48,7 @@ limitations under the License.
 	<property name="build.config"					value="config"/>
 	<property name="log4j.config.file"				value="${build.config}/log4j.properties"/>
 
-	<property name="build.bin"						value="${build.base}/bin"/>
+	<property name="build.bin"						value="${build.base}/../bin"/>
 
 	<property name="jar.ilib"					    value="ilib.jar"/>
 
@@ -173,7 +173,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="ilib-ut.js" 
 			srcfilename="ilib.js" 
-			locales="ar-AE,ar-EG,en-US,en-CA,en-GB,de-AT,de-DE,es-ES,es-MX,fr-FR,fr-CA,it-IT,ja-JP,nl-NL,zh-CN,xx-XX"/>
+			locales="ar-AE,ar-EG,en-AU,en-US,en-CA,en-GB,de-AT,de-DE,es-ES,es-MX,fr-FR,fr-CA,it-IT,ja-JP,nl-NL,zh-CN,ja-JP,ko-KR,zh-TW,he-IL,xx-XX"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"

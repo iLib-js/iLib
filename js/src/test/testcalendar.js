@@ -59,7 +59,8 @@ function testGetCalendars() {
     var expected = [
         "julian",
         "gregorian",
-        "islamic"
+        "islamic",
+        "hebrew"
     ];
     
     assertArrayEqualsIgnoringOrder(expected, ilib.Cal.getCalendars());

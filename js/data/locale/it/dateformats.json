@@ -60,6 +60,7 @@
 			"ahmz": "hh.mm a z",
 			"ahm": "hh.mm a",
 			"hmz": "HH.mm z",
+			"ah": "HH",
 			"hm": "HH.mm",
 			"ms": "mm.ss",
 			"h": "HH",

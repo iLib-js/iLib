@@ -29,25 +29,72 @@
  * Depends directive: !depends date.js
  * 
  * @constructor
- * @param {number=} year The year to initialize this date with
- * @param {number=} month The month to initialize this date with (1 is the first month)
- * @param {number=} day The day to initialize the date with (1 is the first day of a month)
- * @param {number=} hour The hour to initialize the date with
- * @param {number=} minute The minute to initialize the date with
- * @param {number=} second The second to initialize the date with
- * @param {number=} millisecond The millisecond to initialize the date with
+ * @param {Object=} options The date components to initialize this date with
  */
-ilib.Date = function(year, month, day, hour, minute, second, millisecond) {
-	this.year = year;
-	this.month = month;
-	this.day = day;
-	this.hour = hour;
-	this.minute = minute;
-	this.second = second;
-	this.millisecond = millisecond;
+ilib.Date = function(options) {
+	this.year = options && options.year || 0;
+	this.month = options && options.month || 1;
+	this.day = options && options.day || 1;
+	this.hour = options && options.hour || 0;
+	this.minute = options && options.minute || 0;
+	this.second = options && options.second || 0;
+	this.millisecond = options && options.millisecond || 0;
 };
 
+/**
+ * Factory method to create a new instance of a date subclass.<p>
+ * 
+ * The options parameter can be an object that contains the following
+ * properties:
+ * 
+ * <ul>
+ * <li><i>type</i> - specify the type of the date desired. The
+ * list of valid values changes depending on which calendars are 
+ * defined. When assembling your iliball.js, include those date type 
+ * you wish to use in your program or web page, and they will register 
+ * themselves with this factory method. The "gregorian",
+ * and "julian" calendars are all included by default, as they are the
+ * standard calendars for much of the world.
+ * </ul>
+ * 
+ * The options object is also passed down to the date constructor, and 
+ * thus can contain the same properties as the date object being instantiated.
+ *  
+ * @param {Object=} options options controlling the construction of this instance, or
+ * undefined to use the default options
+ * @returns an instance of a calendar object of the appropriate type */
+ilib.Date.newInstance = function(options) {
+	var locale = options && options.locale,
+		type = options && options.type,
+		cons;
+
+	if (!locale) {
+		locale = new ilib.Locale();	// default locale
+	}
+	
+	if (!type) {
+		var info = new ilib.LocaleInfo(locale);
+		type = info.getCalendar();
+	}
+
+	cons = ilib.Date._constructors[type];
+	
+	// pass the same options through to the constructor so the subclass
+	// has the ability to do something with if it needs to
+	return cons && new cons(options);
+};
+
+/* place for the subclasses to put their constructors so that the factory method
+ * can find them. Do this to add your date after it's defined: 
+ * ilib.Date._constructors["mytype"] = ilib.Date.MyTypeConstructor;
+ */
+ilib.Date._constructors = {};
+
 ilib.Date.prototype = {
+	getType: function() {
+		return "ilib.Date";
+	},
+	
 	getDays: function() {
 		return this.day;
 	},

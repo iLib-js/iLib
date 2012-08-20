@@ -29,7 +29,7 @@ var ilib = ilib || {};
  */
 ilib.getVersion = function () {
 	// increment this for each release
-	return "1.0";
+	return "1.1";
 };
 
 /*
@@ -44,7 +44,9 @@ window["ilib"] = ilib;
  * when no explicit locale is passed to any ilib class. If the default
  * locale is not set, ilib will attempt to use the locale of the
  * environment it is running in, if it can find that. If not, it will
- * default to the locale "en-US". 
+ * default to the locale "en-US".<p>
+ * 
+ * Depends directive: !depends ilibglobal.js
  * 
  * @param {string} spec the locale specifier for the default locale
  */
@@ -58,7 +60,9 @@ ilib.setLocale = function (spec) {
  * class. If the default
  * locale is not set, ilib will attempt to use the locale of the
  * environment it is running in, if it can find that. If not, it will
- * default to the locale "en-US". 
+ * default to the locale "en-US".<p>
+ * 
+ * Depends directive: !depends ilibglobal.js 
  * 
  * @returns {string} the locale specifier for the default locale
  */
@@ -71,7 +75,9 @@ ilib.getLocale = function () {
  * no explicit time zone is passed to any ilib class. If the default time zone
  * is not set, ilib will attempt to use the time zone of the
  * environment it is running in, if it can find that. If not, it will
- * default to the the UTC zone "Europe/London".
+ * default to the the UTC zone "Europe/London".<p>
+ * 
+ * Depends directive: !depends ilibglobal.js
  * 
  * @param {string} tz the name of the time zone to set as the default time zone
  */
@@ -85,7 +91,9 @@ ilib.setTimeZone = function (tz) {
  * class. If the default time zone
  * is not set, ilib will attempt to use the locale of the
  * environment it is running in, if it can find that. If not, it will
- * default to the the UTC zone "Europe/London".
+ * default to the the UTC zone "Europe/London".<p>
+ * 
+ * Depends directive: !depends ilibglobal.js
  * 
  * @returns {string} the default time zone for ilib
  */
@@ -139,7 +147,9 @@ ilib.getTimeZone = function() {
  * any region or variant.<p>
  * 
  * Without any arguments to the constructor, this function returns the locale of
- * the host Javascript engine.
+ * the host Javascript engine.<p>
+ * 
+ * Depends directive: !depends locale.js
  * 
  * @constructor
  * @param {?string=} language the ISO 639 name of the language
@@ -243,32 +253,26 @@ ilib.Locale.prototype = {
 	}
 };
 
-/*
- * phoneprs.js - object that represents a phone number
- * 
- * Copyright © 2012, JEDL Software, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
+// static functions
+/**
+ * @private
  */
+ilib.Locale.locales = [
+	"en-US","en-CA","fr-CA","es-MX","es-AR","pt-BR","zh-CN","ja-JP","ko-KR","en-IN","id-ID","ar-SA","ru-RU","tr-TR","en-AU","en-GB","fr-FR","de-DE","it-IT","en-ZA","en-NG","fa-IR","en-PH","tl-PH","vi-VN","es-ES","en-PK","ur-PK","xx-XX"
+];
 
-/* !depends ilibglobal.js locale.js */
-
-/* Unicode character normalization functions */
-
-/* !depends ilibglobal.js */
-
-
+/**
+ * Return the list of available locales that this iLib file was assembled
+ * with. The list that this file was assembled with may be much smaller
+ * than the list of all available locales in the iLib repository. The
+ * assembly tool will automatically fill in the list.
+ * 
+ * @returns {Array.<string>} this is an array of locale specs for which 
+ * this iLib file has locale data for
+ */
+ilib.Locale.getAvailableLocales = function () {
+	return ilib.Locale.locales;
+};
 /*
  * date.js - Represent a date in any calendar. This class is subclassed for each calendar.
  * 
@@ -295,27 +299,77 @@ ilib.Locale.prototype = {
  * Construct a new date object. Each parameter is a numeric value, but its 
  * accepted range can vary depending on the subclass of this date. For example,
  * Gregorian months can be from 1 to 12, whereas months in the Hebrew calendar
- * can be from 1 to 13. 
+ * can be from 1 to 13.<p>
+ * 
+ * Depends directive: !depends date.js
+ * 
  * @constructor
- * @param {number=} year The year to initialize this date with
- * @param {number=} month The month to initialize this date with (1 is the first month)
- * @param {number=} day The day to initialize the date with (1 is the first day of a month)
- * @param {number=} hour The hour to initialize the date with
- * @param {number=} minute The minute to initialize the date with
- * @param {number=} second The second to initialize the date with
- * @param {number=} millisecond The millisecond to initialize the date with
+ * @param {Object=} options The date components to initialize this date with
  */
-ilib.Date = function(year, month, day, hour, minute, second, millisecond) {
-	this.year = year;
-	this.month = month;
-	this.day = day;
-	this.hour = hour;
-	this.minute = minute;
-	this.second = second;
-	this.millisecond = millisecond;
+ilib.Date = function(options) {
+	this.year = options && options.year || 0;
+	this.month = options && options.month || 1;
+	this.day = options && options.day || 1;
+	this.hour = options && options.hour || 0;
+	this.minute = options && options.minute || 0;
+	this.second = options && options.second || 0;
+	this.millisecond = options && options.millisecond || 0;
 };
 
+/**
+ * Factory method to create a new instance of a date subclass.<p>
+ * 
+ * The options parameter can be an object that contains the following
+ * properties:
+ * 
+ * <ul>
+ * <li><i>type</i> - specify the type of the date desired. The
+ * list of valid values changes depending on which calendars are 
+ * defined. When assembling your iliball.js, include those date type 
+ * you wish to use in your program or web page, and they will register 
+ * themselves with this factory method. The "gregorian",
+ * and "julian" calendars are all included by default, as they are the
+ * standard calendars for much of the world.
+ * </ul>
+ * 
+ * The options object is also passed down to the date constructor, and 
+ * thus can contain the same properties as the date object being instantiated.
+ *  
+ * @param {Object=} options options controlling the construction of this instance, or
+ * undefined to use the default options
+ * @returns an instance of a calendar object of the appropriate type */
+ilib.Date.newInstance = function(options) {
+	var locale = options && options.locale,
+		type = options && options.type,
+		cons;
+
+	if (!locale) {
+		locale = new ilib.Locale();	// default locale
+	}
+	
+	if (!type) {
+		var info = new ilib.LocaleInfo(locale);
+		type = info.getCalendar();
+	}
+
+	cons = ilib.Date._constructors[type];
+	
+	// pass the same options through to the constructor so the subclass
+	// has the ability to do something with if it needs to
+	return cons && new cons(options);
+};
+
+/* place for the subclasses to put their constructors so that the factory method
+ * can find them. Do this to add your date after it's defined: 
+ * ilib.Date._constructors["mytype"] = ilib.Date.MyTypeConstructor;
+ */
+ilib.Date._constructors = {};
+
 ilib.Date.prototype = {
+	getType: function() {
+		return "ilib.Date";
+	},
+	
 	getDays: function() {
 		return this.day;
 	},
@@ -390,7 +444,10 @@ ilib.Date.prototype = {
  * String class, and adds two more methods, fmt and fmtChoice. It can be
  * used anywhere that a normal Javascript string is used. The formatting
  * methods are of course most useful when localizing strings in an app
- * or web site in combination with the ilib.ResBundle class.
+ * or web site in combination with the ilib.ResBundle class.<p>
+ * 
+ * Depends directive: !depends strings.js
+ * 
  * @constructor
  * @param {string|ilib.String=} string initialize this instance with this string 
  */
@@ -718,7 +775,7 @@ ilib.String.prototype.formatChoice = function(argIndex, params) {
 /**
  * Binary search a sorted array for a particular target value.
  * If the exact value is not found, it returns the index of the smallest 
- * entry that is not greater than the given target value.<p> 
+ * entry that is greater than the given target value.<p> 
  * 
  * The comparator
  * parameter is a function that knows how to compare elements of the 
@@ -729,7 +786,10 @@ ilib.String.prototype.formatChoice = function(argIndex, params) {
  * 
  * If the comparator function is not specified, this function assumes
  * the array and the target are numeric values and should be compared 
- * as such.
+ * as such.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
  * 
  * @param {*} target element being sought 
  * @param {Array} arr the array being searched
@@ -768,7 +828,10 @@ ilib.bsearch = function(target, arr, comparator) {
 /**
  * @private
  * Returns whether or not the given element is greater than, less than,
- * or equal to the given target.
+ * or equal to the given target.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
  * @param {number} element the element being tested
  * @param {number} target the target being sought
  */
@@ -780,7 +843,10 @@ ilib.bsearch.numbers = function(element, target) {
  * Do a proper modulo function. The Javascript % operator will give the truncated
  * division algorithm, but for calendrical calculations, we need the Euclidean
  * division algorithm where the remainder of any division, whether the dividend
- * is negative or not, is always a positive number between 0 and the modulus.
+ * is negative or not, is always a positive number between 0 and the modulus.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
  * @param {number} dividend the number being divided
  * @param {number} modulus the number dividing the dividend. This should always be a positive number.
  * @return the remainder of dividing the dividend by the modulus.  
@@ -798,7 +864,10 @@ ilib.mod = function (dividend, modulus) {
  * object. If the property exists in both objects, the value in object2 will overwrite 
  * the value in object1. If a property exists in object1, but not in object2, its value
  * will not be touched. If a property exists in object2, but not in object1, it will be 
- * added to the merged result.
+ * added to the merged result.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
  * 
  * @param {*} object1 the object to merge into
  * @param {*} object2 the object to merge
@@ -830,7 +899,10 @@ ilib.merge = function (object1, object2) {
 };
 
 /**
- * Return true if the given object has no properties.
+ * Return true if the given object has no properties.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
  * @param {Object} obj the object to check
  * @returns {boolean} true if the given object has no properties, false otherwise
  */
@@ -853,7 +925,10 @@ ilib.isEmpty = function (obj) {
 /**
  * Perform a shallow copy of the source object to the target object. This only 
  * copies the assignments of the source properties to the target properties, 
- * but not recursively from there.
+ * but not recursively from there.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
  * @param {Object} source the source object to copy properties from
  * @param {Object} target the target object to copy properties into
  */
@@ -904,12 +979,18 @@ ilib.shallowCopy = function (source, target) {
  * <li><i>name</i> - Base name of the resource bundle to load. If not specified the default
  * base name is "resources".
  * <li><i>type</i> - Name the type of strings this bundle contains. Valid values are 
- * "xml", "html", or "text". The default is "text". If the type is "xml" or "html",
- * then entities and tags are not pseudo-translated. During a real translation, 
+ * "xml", "html", "text", or "raw". The default is "text". If the type is "xml" or "html",
+ * then XML/HTML entities and tags are not pseudo-translated. During a real translation, 
  * HTML character entities are translated to their corresponding characters in a source
  * string before looking that string up in the translations. Also, the characters "<", ">",
  * and "&" are converted to entities again in the output, but characters are left as they
- * are.
+ * are. If the type is "xml", "html", or "text" types, then the replacement parameter names
+ * are not pseudo-translated as well so that the output can be used for formatting with 
+ * the ilib.String class. If the type is raw, all characters are pseudo-translated, 
+ * including replacement parameters as well as XML/HTML tags and entities.  
+ * <li><i>lengthen</i> - when pseudo-translating the string, tell whether or not to 
+ * automatically lengthen the string to simulate "long" languages such as German
+ * or French. This is a boolean value. Default is false. 
  * </ul>
  * 
  * The locale option may be given as a locale spec string or as an 
@@ -959,7 +1040,7 @@ ilib.shallowCopy = function (source, target) {
  * object. It is up to the web page or app to make sure the JS file that defines
  * the bundle is included before creating the ResBundle instance.<p>
  * 
- * A special locale "xx_XX" is used as the pseudo-translation locale because
+ * A special locale "xx-XX" is used as the pseudo-translation locale because
  * xx and XX are not a valid ISO language or country specifiers. 
  * Pseudo-translation is a locale where the translations are generated on
  * the fly based on the contents of the source string. Characters in the source 
@@ -980,17 +1061,39 @@ ilib.shallowCopy = function (source, target) {
  * <pre>
  * "Ţħïş ïş á şţřïñĝ"
  * </pre>
- *
+ *<p>
+ * 
+ * When the "lengthen" property is set to true in the options, the 
+ * pseudotranslation code will add digits to the end of the string to simulate
+ * the lengthening that occurs when translating to other languages. The above 
+ * example will come out like this:
+ * 
+ * <pre>
+ * "Ţħïş ïş á şţřïñĝ76543210"
+ * </pre>
+ * 
+ * The string is lengthened according to the length of the source string. If
+ * the source string is less than 20 characters long, the string is lengthened 
+ * by 50%. If the source string is 20-40 
+ * characters long, the string is lengthened by 33%. If te string is greater
+ * than 40 characters long, the string is lengthened by 20%.<p>
+ * 
+ * The pseudotranslation always ends a string with the digit "0". If you do
+ * not see the digit "0" in the UI for your app, you know that truncation
+ * has occurred, and the number you see at the end of the string tells you 
+ * how many characters were truncated.<p>
+ * 
+ * Depends directive: !depends resources.js
+ * 
  * @constructor
  * @param {?Object} options Options controlling how the bundle is created
  */
 ilib.ResBundle = function (options) {
-	var name;
+	var name, lookupLocale;
 	
 	this.locale = new ilib.Locale();	// use the default locale
 	this.baseName = "resources";
 	this.type = "text";
-	this.pseudoLocale = new ilib.Locale("xx-XX"); // for comparison
 	
 	if (options) {
 		if (options.locale) {
@@ -1004,26 +1107,29 @@ ilib.ResBundle = function (options) {
 		if (options.type) {
 			this.type = options.type;
 		}
+		this.lengthen = options.lengthen || false;
 	}
 	
 	this.map = {};
 
+	lookupLocale = this.locale.isPseudo() ? new ilib.Locale(ilib.getLocale()) : this.locale;
+	
 	name = this.baseName;
 	if (ilib.data[name]) {
 		this.map = ilib.merge(this.map, ilib.data[name]);
 	}
-	if (this.locale.getLanguage()) {
-		name += "_" + this.locale.getLanguage();
+	if (lookupLocale.getLanguage()) {
+		name += "_" + lookupLocale.getLanguage();
 		if (ilib.data[name]) {
 			this.map = ilib.merge(this.map, ilib.data[name]);
 		}
-		if (this.locale.getRegion()) {
-			name += "_" + this.locale.getRegion();		
+		if (lookupLocale.getRegion()) {
+			name += "_" + lookupLocale.getRegion();		
 			if (ilib.data[name]) {
 				this.map = ilib.merge(this.map, ilib.data[name]);
 			}
-			if (this.locale.getVariant()) {
-				name += "_" + this.locale.getVariant();
+			if (lookupLocale.getVariant()) {
+				name += "_" + lookupLocale.getVariant();
 				if (ilib.data[name]) {
 					this.map = ilib.merge(this.map, ilib.data[name]);
 				}
@@ -1109,38 +1215,59 @@ ilib.ResBundle.prototype = {
 	 * Pseudo-translate a string
 	 */
 	pseudo: function (str) {
+		if (!str) {
+			return undefined;
+		}
 		var ret = "", i;
 		for (i = 0; i < str.length; i++) {
-			if (this.type === "html" || this.type === "xml") {
-				if (str.charAt(i) === '<') {
-					ret += str.charAt(i++);
-					while (i < str.length && str.charAt(i) !== '>') {
+			if (this.type !== "raw") {
+				if (this.type === "html" || this.type === "xml") {
+					if (str.charAt(i) === '<') {
 						ret += str.charAt(i++);
-					}
-					if (i < str.length) {
-						ret += str.charAt(i);
-					}
-				} else if (str.charAt(i) === '&') {
-					ret += str.charAt(i++);
-					while (i < str.length && str.charAt(i) !== ';' && str.charAt(i) !== ' ') {
+						while (i < str.length && str.charAt(i) !== '>') {
+							ret += str.charAt(i++);
+						}
+						if (i < str.length) {
+							ret += str.charAt(i++);
+						}
+					} else if (str.charAt(i) === '&') {
 						ret += str.charAt(i++);
+						while (i < str.length && str.charAt(i) !== ';' && str.charAt(i) !== ' ') {
+							ret += str.charAt(i++);
+						}
+						if (i < str.length) {
+							ret += str.charAt(i++);
+						}
 					}
-					if (i < str.length) {
-						ret += str.charAt(i);
-					}
-				} else if (str.charAt(i) === '{') {
-					ret += str.charAt(i++);
-					while (i < str.length && str.charAt(i) !== '}') {
+				}
+				if (i < str.length) { 
+					if (str.charAt(i) === '{') {
 						ret += str.charAt(i++);
+						while (i < str.length && str.charAt(i) !== '}') {
+							ret += str.charAt(i++);
+						}
+						if (i < str.length) {
+							ret += str.charAt(i);
+						}
+					} else {
+						ret += ilib.ResBundle._pseudoMap[str.charAt(i)] || str.charAt(i);
 					}
-					if (i < str.length) {
-						ret += str.charAt(i);
-					}
-				} else {
-					ret += ilib.ResBundle._pseudoMap[str.charAt(i)] || str.charAt(i);
 				}
 			} else {
 				ret += ilib.ResBundle._pseudoMap[str.charAt(i)] || str.charAt(i);
+			}
+		}
+		if (this.lengthen) {
+			var add;
+			if (ret.length <= 20) {
+				add = Math.round(ret.length / 2);
+			} else if (ret.length > 20 && ret.length <= 40) {
+				add = Math.round(ret.length / 3);
+			} else {
+				add = Math.round(ret.length / 5);
+			}
+			for (i = add-1; i >= 0; i--) {
+				ret += (i % 10);
 			}
 		}
 		return ret;
@@ -1191,16 +1318,21 @@ ilib.ResBundle.prototype = {
 	 * 
 	 * @param {?string=} source the source string to translate
 	 * @param {?string=} key optional name of the key, if any
-	 * @returns {ilib.String} the translation of the given source/key
+	 * @returns {ilib.String|undefined} the translation of the given source/key or undefined 
+	 * if the translation is not found and the source is undefined 
 	 */
 	getString: function (source, key) {
-		if (this.locale.equals(this.pseudoLocale)) {
-			return this.pseudo(source);
+		if (!source && !key) return undefined;
+		
+		if (this.locale.isPseudo()) {
+			var str = source ? source : this.map[key],
+				ret = this.pseudo(str);
+			return ret ? new ilib.String(ret) : undefined;
 		}
 		
 		var keyName = key || this.makeKey(source);
 		var trans = this.map[keyName] || source;
-		return new ilib.String((this.type === "xml" || this.type === "html") ? this.escape(trans) : trans);
+		return trans === undefined ? undefined : new ilib.String((this.type === "xml" || this.type === "html") ? this.escape(trans) : trans);
 	},
 	
 	/**
@@ -1229,6 +1361,420 @@ ilib.ResBundle.prototype = {
 	}
 };
 
+ilib.data.localeinfo = {
+	"clock": "24",
+	"currencyFormats": {
+		"common": "{s}{n}",
+		"iso": "{s} {n}"
+	},
+	"units": "metric",
+	"calendar": "gregorian",
+	"firstDayOfWeek": 0,
+	"currency": "USD",
+	"timezone": "Europe/London",
+	"numfmt": {
+		"decimalChar": ",",
+		"groupChar": ".",
+		"groupSize": 3,
+		"pctFmt": "{n}%",
+		"pctChar": "%"
+	},
+	"locale": "."
+}
+;
+ilib.data.localeinfo_en = {
+	"units": "metric",
+	"clock": "24",
+	"calendar": "gregorian",
+	"firstDayOfWeek": 0,
+	"language.name": "English",
+	"numfmt": {
+		"decimalChar": ".",
+		"groupChar": ",",
+		"groupSize": 3,
+		"pctFmt": "{n}%"
+	},
+	"locale": "en"
+}
+;
+ilib.data.localeinfo_en_US = {
+	"clock": "12",
+	"currency": "USD",
+	"paperSizes": {
+		"regular": "8x11",
+		"photo": "3x5"
+	},
+	"region.name": "United States",
+	"timezone": "America/New_York",
+	"units": "uscustomary",
+	"locale": "en-US"
+}
+;
+ilib.data.localeinfo_en_CA = {
+	"clock": "12",
+	"currency": "CAD",
+	"paperSizes": {
+		"regular": "8x11",
+		"photo": "3x5"
+	},
+	"region.name": "Canada",
+	"timezone": "America/Toronto",
+	"locale": "en-CA"
+}
+;
+ilib.data.localeinfo_fr = {
+	"calendar": "gregorian",
+	"firstDayOfWeek": 1,
+	"clock": "24",
+	"units": "metric",
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "4x6"
+	},
+	"language.name": "French",
+	"numfmt": {
+		"decimalChar": ",",
+		"groupChar": " ",
+		"groupSize": 3,
+		"pctFmt": "{n} %"
+	},
+	"timezone": "Europe/Paris",
+	"locale": "fr"
+}
+;
+ilib.data.localeinfo_fr_CA = {
+	"clock": "12",
+	"currency": "CAD",
+	"paperSizes": {
+		"regular": "8x11",
+		"photo": "3x5"
+	},
+	"region.name": "Canada",
+	"timezone": "America/Toronto",
+	"locale": "fr-CA"
+}
+;
+ilib.data.localeinfo_es = {
+	"clock": "24",
+	"calendar": "gregorian",
+	"firstDayOfWeek": 1,
+	"units": "metric",
+	"timezone": "Europe/Madrid",
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "4x6"
+	},
+	"language.name": "Spanish",
+	"locale": "es"
+}
+;
+ilib.data.localeinfo_es_MX = {
+	"clock": "12",
+	"currency": "MXN",
+	"region.name": "Mexico",
+	"timezone": "America/Mexico_City",
+	"locale": "es-MX"
+}
+;
+ilib.data.localeinfo_es_AR = {
+	"currency": "ARS",
+	"region.name": "Argentina",
+	"timezone": "America/Argentina/Buenos_Aires",
+	"locale": "es-AR"
+}
+;
+ilib.data.localeinfo_pt = {
+	"language.name": "Portuguese",
+	"locale": "pt"
+}
+;
+ilib.data.localeinfo_pt_BR = {
+	"currency": "BRL",
+	"region.name": "Brazil",
+	"timezone": "America/Sao_Paulo",
+	"locale": "pt-BR"
+}
+;
+ilib.data.localeinfo_zh = {
+	"clock": "12",
+	"language.name": "Chinese",
+	"numfmt": {
+		"decimalChar": ".",
+		"groupChar": ",",
+		"groupSize": 4,
+		"pctFmt": "{n}％"
+	},
+	"locale": "zh"
+}
+;
+ilib.data.localeinfo_zh_CN = {
+	"currency": "CNY",
+	"region.name": "China",
+	"timezone": "Asia/Shanghai",
+	"locale": "zh-CN"
+}
+;
+ilib.data.localeinfo_ja = {
+	"clock": "24",
+	"calendar": "gregorian",
+	"firstDayOfWeek": 0,
+	"units": "metric",
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "L"
+	},
+	"language.name": "Japanese",
+	"numfmt": {
+		"decimalChar": ".",
+		"groupChar": "",
+		"groupSize": 0,
+		"pctFmt": "{n}％"
+	},
+	"locale": "ja"
+}
+;
+ilib.data.localeinfo_ja_JP = {
+	"currency": "JPY",
+	"timezone": "Asia/Tokyo",
+	"locale": "ja-JP"
+}
+;
+ilib.data.localeinfo_ko = {
+	"clock": "12",
+	"calendar": "gregorian",
+	"firstDayOfWeek": 0,
+	"units": "metric",
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "3R"
+	},
+	"language.name": "Korean",
+	"numfmt": {
+		"decimalChar": ".",
+		"groupChar": ",",
+		"groupSize": 3,
+		"pctFmt": "{n} %"
+	},
+	"locale": "ko"
+}
+;
+ilib.data.localeinfo_ko_KR = {
+	"currency": "KRW",
+	"region.name": "Republic of Korea",
+	"timezone": "Asia/Seoul",
+	"locale": "ko-KR"
+}
+;
+ilib.data.localeinfo_en_IN = {
+	"currency": "INR",
+	"timezone": "Asia/Kolkata",
+	"locale": "en-IN"
+}
+;
+ilib.data.localeinfo_id = {
+	"language.name": "Indonesian",
+	"locale": "id"
+}
+;
+ilib.data.localeinfo_id_ID = {
+	"currency": "IDR",
+	"timezone": "Asia/Jakarta",
+	"locale": "id-ID"
+}
+;
+ilib.data.localeinfo_ar = {
+	"calendar": "islamic",	"language.name": "Arabic",
+	"locale": "ar"
+}
+;
+ilib.data.localeinfo_ar_SA = {
+	"currency": "SAR",
+	"region.name": "Saudi Arabia",
+	"timezone": "Asia/Riyadh",
+	"locale": "ar-SA"
+}
+;
+ilib.data.localeinfo_ru = {
+	"language.name": "Russian",
+	"locale": "ru"
+}
+;
+ilib.data.localeinfo_ru_RU = {
+	"currency": "RUB",
+	"region.name": "Russia",
+	"timezone": "Europe/Moscow",
+	"locale": "ru-RU"
+}
+;
+ilib.data.localeinfo_tr = {
+	"language.name": "Turkish",
+	"locale": "tr"
+}
+;
+ilib.data.localeinfo_tr_TR = {
+	"currency": "TRY",
+	"region.name": "Turkey",
+	"timezone": "Europe/Istanbul",
+	"locale": "tr-TR"
+}
+;
+ilib.data.localeinfo_en_AU = {
+	"clock": "12",	"currency": "AUD",
+	"region.name": "Australia",
+	"timezone": "Australia/Sydney",
+	"locale": "en-AU"
+}
+;
+ilib.data.localeinfo_en_GB = {
+	"currency": "GBP",
+	"timezone": "Europe/London",
+	"units": "imperial",
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "24x16"
+	},
+	"locale": "en-GB"
+}
+;
+ilib.data.localeinfo_fr_FR = {
+	"currency": "EUR",
+	"timezone": "Europe/Paris",
+	"locale": "fr-FR"
+}
+;
+ilib.data.localeinfo_de = {
+	"clock": "24",
+	"calendar": "gregorian",
+	"firstDayOfWeek": 1,
+	"units": "metric",
+	"timezone": "Europe/Berlin",
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "4x6"
+	},
+	"language.name": "German",
+	"numfmt": {
+		"pctFmt": "{n} %"
+	},
+	"locale": "de"
+}
+;
+ilib.data.localeinfo_de_DE = {
+	"currency": "EUR",
+	"timezone": "Europe/Berlin",
+	"locale": "de-DE"
+}
+;
+ilib.data.localeinfo_it = {
+	"clock": "24",
+	"calendar": "gregorian",
+	"firstDayOfWeek": 1,
+	"units": "metric",
+	"timezone": "Europe/Rome",
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "4x6"
+	},
+	"language.name": "Italian",
+	"locale": "it"
+}
+;
+ilib.data.localeinfo_it_IT = {
+	"currency": "EUR",
+	"timezone": "Europe/Rome",
+	"locale": "it-IT"
+}
+;
+ilib.data.localeinfo_en_ZA = {
+	"clock": "12",	"currency": "ZAR",
+	"region.name": "South Africa",
+	"timezone": "Africa/Johannesburg",
+	"locale": "en-ZA"
+}
+;
+ilib.data.localeinfo_en_NG = {
+	"currency": "NGN",
+	"region.name": "Nigeria",
+	"timezone": "Africa/Lagos",
+	"locale": "en-NG"
+}
+;
+ilib.data.localeinfo_fa = {
+	"language.name": "Farsi",
+	"locale": "fa"
+}
+;
+ilib.data.localeinfo_fa_IR = {
+	"currency": "IRR",
+	"timezone": "Asia/Tehran",
+	"locale": "fa-IR"
+}
+;
+ilib.data.localeinfo_en_PH = {
+	"clock": "12",	"currency": "PHP",
+	"region.name": "Philippines",
+	"timezone": "Asia/Manila",
+	"locale": "en-PH"
+}
+;
+ilib.data.localeinfo_tl = {
+	"language.name": "Tagalog",
+	"locale": "tl"
+}
+;
+ilib.data.localeinfo_tl_PH = {
+	"clock": "12",	"currency": "PHP",
+	"region.name": "Philippines",
+	"timezone": "Asia/Manila",
+	"locale": "tl-PH"
+}
+;
+ilib.data.localeinfo_vi = {
+	"language.name": "Vietnamese",
+	"locale": "vi"
+}
+;
+ilib.data.localeinfo_vi_VN = {
+	"currency": "VND",
+	"region.name": "Vietnam",
+	"timezone": "Asia/Ho_Chi_Minh",
+	"locale": "vi-VN"
+}
+;
+ilib.data.localeinfo_es_ES = {
+	"currency": "EUR",
+	"region.name": "Spain",
+	"timezone": "Europe/Madrid",
+	"locale": "es-ES"
+}
+;
+ilib.data.localeinfo_en_PK = {
+	"currency": "PKR",
+	"region.name": "Pakistan",
+	"timezone": "Asia/Karachi",
+	"locale": "en-PK"
+}
+;
+ilib.data.localeinfo_ur = {
+	"language.name": "Urdu",
+	"locale": "ur"
+}
+;
+ilib.data.localeinfo_ur_PK = {
+	"currency": "PKR",
+	"region.name": "Pakistan",
+	"timezone": "Asia/Karachi",
+	"locale": "ur-PK"
+}
+;
+ilib.data.localeinfo_xx = {
+	"language.name": "Unknown",
+	"numfmt": {
+		"roundingMode": "halfeven"
+	},
+	"locale": "xx"
+}
+;
 /*
  * localeinfo.js - Encode locale-specific defaults
  * 
@@ -1257,7 +1803,9 @@ ilib.ResBundle.prototype = {
  * Create a new locale info instance. Locale info instances give information about
  * the default settings for a particular locale. These settings may be overridden
  * by various parts of the code, and should be used as a fall-back setting of last
- * resort. 
+ * resort. <p>
+ * 
+ * Depends directive: !depends localeinfo.js
  * 
  * @constructor
  * @param {ilib.Locale|string=} locale the locale for which the info is sought, or undefined for
@@ -1276,6 +1824,7 @@ ilib.LocaleInfo = function(locale) {
 			groupChar: "",
 			groupSize: 0,
 			pctFmt: "{n}%",
+			pctChar: "%",
 			roundingMode: "halfdown"
 		},
 		currencyFormats: {
@@ -1297,7 +1846,7 @@ ilib.LocaleInfo = function(locale) {
 			this.locale = locale;
 			break;
 	}
-		
+
 	if (ilib.data["localeinfo"]) {
 		this.info = ilib.merge(this.info, ilib.data["localeinfo"]);
 	}
@@ -1477,7 +2026,17 @@ localeinfo.js
 */
 
 /**
- * @class
+ * Interface that all calendars must implement.
+ * 
+ * Depends directive: !depends calendar.js
+ * 
+ * @interface
+ * @protected
+ */
+ilib.Cal = function() {
+};
+
+/**
  * Factory method to create a new instance of a calendar subclass.<p>
  * 
  * The options parameter can be an object that contains the following
@@ -1503,15 +2062,15 @@ localeinfo.js
  * the locale are specified, then the calendar for the default locale will
  * be used. 
  * 
- * @constructor
  * @param {Object=} options options controlling the construction of this instance, or
  * undefined to use the default options
+ * @returns an instance of a calendar object of the appropriate type
  */
-ilib.Cal = function(options) {
+ilib.Cal.newInstance = function (options) {
 	var locale = options && options.locale,
-		type = options && options.type,
-		cons;
-	
+	type = options && options.type,
+	cons;
+
 	if (!locale) {
 		locale = new ilib.Locale();	// default locale
 	}
@@ -1522,7 +2081,7 @@ ilib.Cal = function(options) {
 	}
 	
 	cons = ilib.Cal._constructors[type];
-
+	
 	// pass the same options through to the constructor so the subclass
 	// has the ability to do something with if it needs to
 	return cons && new cons(options);
@@ -1536,7 +2095,8 @@ ilib.Cal._constructors = {};
 
 /**
  * Return an array of known calendar types that the factory method can instantiate.
- * @returns {Array.<Object>} an array of calendar types
+ * 
+ * @returns {Array.<string>} an array of calendar types
  */
 ilib.Cal.getCalendars = function () {
 	var arr = [],
@@ -1552,27 +2112,49 @@ ilib.Cal.getCalendars = function () {
 };
 
 ilib.Cal.prototype = {
+	/**
+	 * Return the type of this calendar.
+	 * 
+	 * @returns {string} the name of the type of this calendar 
+	 */
 	getType: function() {
 		throw "Cannot call methods of abstract class ilib.Cal";
 	},
 	
-	getJulianDay: function(date) {
-		throw "Cannot call methods of abstract class ilib.Cal";
-	},
-	
+	/**
+	 * Return the number of months in the given year. The number of months in a year varies
+	 * for some luni-solar calendars because in some years, an extra month is needed to extend the 
+	 * days in a year to an entire solar year. The month is represented as a 1-based number
+	 * where 1=first month, 2=second month, etc.
+	 * 
+	 * @param {number} year a year for which the number of months is sought
+	 * @returns {number} The number of months in the given year
+	 */
 	getNumMonths: function(year) {
 		throw "Cannot call methods of abstract class ilib.Cal";
 	},
 	
+	/**
+	 * Return the number of days in a particular month in a particular year. This function
+	 * can return a different number for a month depending on the year because of things
+	 * like leap years.
+	 * 
+	 * @param {number} month the month for which the length is sought
+	 * @param {number} year the year within which that month can be found
+	 * @returns {number} the number of days within the given month in the given year
+	 */
 	getMonLength: function(month, year) {
 		throw "Cannot call methods of abstract class ilib.Cal";
 	},
 	
+	/**
+	 * Return true if the given year is a leap year in this calendar.
+	 * The year parameter may be given as a number.
+	 * 
+	 * @param {number} year the year for which the leap year information is being sought
+	 * @returns {boolean} true if the given year is a leap year
+	 */
 	isLeapYear: function(year) {
-		throw "Cannot call methods of abstract class ilib.Cal";
-	},
-
-	getCalDate: function(date) {
 		throw "Cannot call methods of abstract class ilib.Cal";
 	}
 };
@@ -1603,7 +2185,9 @@ ilib.Cal.prototype = {
  * A Julian Day class. A Julian Day is a date based on the Julian Day count
  * of time invented by Joseph Scaliger in 1583 for use with astronomical calculations. 
  * Do not confuse it with a date in the Julian calendar, which it has very
- * little in common with. The naming is unfortunately close, and comes from history.
+ * little in common with. The naming is unfortunately close, and comes from history.<p>
+ * 
+ * Depends directive: !depends julianday.js
  * 
  * @constructor
  * @param {number} num the Julian Day expressed as a floating point number 
@@ -1715,10 +2299,12 @@ ilib.JulianDay.prototype = {
 /**
  * @class
  * Construct a new Gregorian calendar object. This class encodes information about
- * a Gregorian calendar.
+ * a Gregorian calendar.<p>
+ * 
+ * Depends directive: !depends gregorian.js
  * 
  * @constructor
- * @inherit ilib.Cal
+ * @implements ilib.Cal
  */
 ilib.Cal.Gregorian = function() {
 	this.type = "gregorian";
@@ -1745,10 +2331,6 @@ ilib.Cal.Gregorian.monthLengths = [
 	31   /* Dec */
 ];
 
-
-/* inherits from ilib.Cal */
-ilib.Cal.Gregorian.prototype = new ilib.Cal();
-
 /**
  * Return the number of months in the given year. The number of months in a year varies
  * for some luni-solar calendars because in some years, an extra month is needed to extend the 
@@ -1756,6 +2338,7 @@ ilib.Cal.Gregorian.prototype = new ilib.Cal();
  * where 1=first month, 2=second month, etc.
  * 
  * @param {number} year a year for which the number of months is sought
+ * @returns {number} The number of months in the given year
  */
 ilib.Cal.Gregorian.prototype.getNumMonths = function(year) {
 	return 12;
@@ -1799,6 +2382,17 @@ ilib.Cal.Gregorian.prototype.getType = function() {
 	return this.type;
 };
 
+/**
+ * Return a date instance for this calendar type using the given
+ * options.
+ * @param {Object} options options controlling the construction of 
+ * the date instance
+ * @returns {ilib.Date} a date appropriate for this calendar type
+ */
+ilib.Cal.Gregorian.prototype.newDateInstance = function (options) {
+	return new ilib.Date.GregDate(options);
+};
+
 /* register this calendar for the factory method */
 ilib.Cal._constructors["gregorian"] = ilib.Cal.Gregorian;
 
@@ -1836,8 +2430,7 @@ ilib.Cal._constructors["gregorian"] = ilib.Cal.Gregorian;
  * <li><i>julianday</i> - sets the time of this instance according to the given
  * Julian Day instance or the Julian Day given as a float
  * 
- * <li><i>year</i> - any integer except 0. Years go from -1 (BCE) to 1 (CE), skipping 
- * the zero year, which doesn't exist in the Gregorian calendar
+ * <li><i>year</i> - any integer, including 0
  * 
  * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
  * 
@@ -1880,7 +2473,9 @@ ilib.Cal._constructors["gregorian"] = ilib.Cal.Gregorian;
  * 
  * If any of the properties from <i>year</i> through <i>millisecond</i> are not
  * specified in the params, it is assumed that they have the smallest possible
- * value in the range for the property (zero or one).
+ * value in the range for the property (zero or one).<p>
+ * 
+ * Depends directive: !depends gregoriandate.js
  * 
  * @constructor
  * @extends ilib.Date
@@ -1901,19 +2496,22 @@ ilib.Date.GregDate = function(params) {
 			}
 		}
 		
-		if (params.unixtime) {
-			this.setTime(params.unixtime);
-		} else if (params.julianday) {
-			this.setJulianDay(params.julianday);
+		if (typeof(params.unixtime) != 'undefined') {
+			this.setTime(parseInt(params.unixtime, 10));
+		} else if (typeof(params.julianday) != 'undefined') {
+			this.setJulianDay(parseFloat(params.julianday));
 		} else if (params.year || params.month || params.day || params.hour ||
 				params.minute || params.second || params.millisecond ) {
-			this.year = params.year || 0;
-			this.month = params.month || 1;
-			this.day = params.day || 1;
-			this.hour = params.hour || 0;
-			this.minute = params.minute || 0;
-			this.second = params.second || 0;
-			this.millisecond = params.millisecond || 0;
+			this.year = parseInt(params.year, 10) || 0;
+			this.month = parseInt(params.month, 10) || 1;
+			this.day = parseInt(params.day, 10) || 1;
+			this.hour = parseInt(params.hour, 10) || 0;
+			this.minute = parseInt(params.minute, 10) || 0;
+			this.second = parseInt(params.second, 10) || 0;
+			this.millisecond = parseInt(params.millisecond, 10) || 0;
+		} else if (typeof(params.rd) != 'undefined') {
+			// private parameter. Do not document this!
+			this.setRd(params.rd);
 		} else {
 			// Date.getTime() gets unix time in UTC
 			var now = new Date();
@@ -2045,14 +2643,26 @@ ilib.Date.GregDate.prototype.calcComponents = function (rd) {
 		cumulative,
 		ret = {};
 	
-	years400 = Math.floor(rd / 146097);
-	days400 = ilib.mod(rd, 146097);
+	years400 = Math.floor((rd - 1) / 146097);
+	days400 = ilib.mod((rd - 1), 146097);
 	years100 = Math.floor(days400 / 36524);
 	days100 = ilib.mod(days400, 36524);
 	years4 = Math.floor(days100 / 1461);
 	days4 = ilib.mod(days100, 1461);
 	years1 = Math.floor(days4 / 365);
 	days1 = ilib.mod(days4, 365) + 1;
+
+	/*
+	console.log("rd starts out " + rd);
+	console.log("years400 is " + years400);
+	console.log("days400 is " + days400);
+	console.log("years100 is " + years100);
+	console.log("days100 is " + days100);
+	console.log("years4 is " + years4);
+	console.log("days4 is " + days4);
+	console.log("years1 is " + years1);
+	console.log("days1 is " + days1);
+	*/
 	
 	ret.year = 400 * years400 + 100 * years100 + 4 * years4 + years1;
 	if (years100 !== 4 && years1 !== 4) {
@@ -2177,7 +2787,7 @@ ilib.Date.GregDate.prototype.getDayOfWeek = function() {
  * to the reference date
  * @returns {number} the day of the week
  */
-ilib.Date.GregDate.prototype.onOrBefore = function(rd, dayOfWeek) {
+ilib.Date.GregDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
 	return rd - ilib.mod(Math.floor(rd) - dayOfWeek, 7);
 };
 
@@ -2190,8 +2800,8 @@ ilib.Date.GregDate.prototype.onOrBefore = function(rd, dayOfWeek) {
  * to the reference date
  * @returns {number} the day of the week
  */
-ilib.Date.GregDate.prototype.onOrAfter = function(rd, dayOfWeek) {
-	return this.onOrBefore(rd+6, dayOfWeek);
+ilib.Date.GregDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
+	return this.onOrBeforeRd(rd+6, dayOfWeek);
 };
 
 /**
@@ -2203,8 +2813,8 @@ ilib.Date.GregDate.prototype.onOrAfter = function(rd, dayOfWeek) {
  * to the reference date
  * @returns {number} the day of the week
  */
-ilib.Date.GregDate.prototype.before = function(rd, dayOfWeek) {
-	return this.onOrBefore(rd-1, dayOfWeek);
+ilib.Date.GregDate.prototype.beforeRd = function(rd, dayOfWeek) {
+	return this.onOrBeforeRd(rd-1, dayOfWeek);
 };
 
 /**
@@ -2216,8 +2826,8 @@ ilib.Date.GregDate.prototype.before = function(rd, dayOfWeek) {
  * to the reference date
  * @returns {number} the day of the week
  */
-ilib.Date.GregDate.prototype.after = function(rd, dayOfWeek) {
-	return this.onOrBefore(rd+7, dayOfWeek);
+ilib.Date.GregDate.prototype.afterRd = function(rd, dayOfWeek) {
+	return this.onOrBeforeRd(rd+7, dayOfWeek);
 };
 
 /**
@@ -2236,8 +2846,56 @@ ilib.Date.GregDate.prototype.firstSunday = function (year) {
 		second: 0,
 		millisecond: 0
 	});
-	var firstThu = this.onOrAfter(jan1, 4);
-	return this.before(firstThu, 0);
+	var firstThu = this.onOrAfterRd(jan1, 4);
+	return this.beforeRd(firstThu, 0);
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week before the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week before the current date that is being sought
+ * @returns {ilib.Date.GregDate} the date being sought
+ */
+ilib.Date.GregDate.prototype.before = function (dow) {
+	return new ilib.Date.GregDate({rd: this.beforeRd(this.getRataDie(), dow)});
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week after the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week after the current date that is being sought
+ * @returns {ilib.Date.GregDate} the date being sought
+ */
+ilib.Date.GregDate.prototype.after = function (dow) {
+	return new ilib.Date.GregDate({rd: this.afterRd(this.getRataDie(), dow)});
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week on or before the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week on or before the current date that is being sought
+ * @returns {ilib.Date.GregDate} the date being sought
+ */
+ilib.Date.GregDate.prototype.onOrBefore = function (dow) {
+	return new ilib.Date.GregDate({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week on or after the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week on or after the current date that is being sought
+ * @returns {ilib.Date.GregDate} the date being sought
+ */
+ilib.Date.GregDate.prototype.onOrAfter = function (dow) {
+	return new ilib.Date.GregDate({rd: this.onOrAfterRd(this.getRataDie(), dow)});
 };
 
 /**
@@ -2306,7 +2964,7 @@ ilib.Date.GregDate.prototype.getWeekOfMonth = function(locale) {
 			millisecond: 0
 		}),
 		rd = this.getRataDie(),
-		weekStart = this.onOrAfter(first, li.getFirstDayOfWeek());
+		weekStart = this.onOrAfterRd(first, li.getFirstDayOfWeek());
 	if (weekStart - first > 3) {
 		// if the first week has 4 or more days in it of the current month, then consider
 		// that week 1. Otherwise, it is week 0. To make it week 1, move the week start
@@ -2419,7 +3077,9 @@ ilib.Date.GregDate.prototype.getTimeZone = function() {
 	return this.timezone;
 };
 
-ilib.data.timezones = {"Africa/Douala":{"o":"1:0","f":"WAT"},"Europe/Sofia":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Dawson":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Yerevan":{"o":"4:0","f":"AM{c}T","e":{"m":10,"r":"l0","t":"2:0","z":"s"},"s":{"m":3,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"S"}},"Asia/Bangkok":{"o":"7:0","f":"ICT"},"America/Bogota":{"o":"-5:0","f":"CO{c}T","e":{"m":4,"r":"4","t":"0:0"},"s":{"m":5,"r":"3","t":"0:0","v":"1:0","c":"S"}},"Asia/Colombo":{"o":"5:30","f":"IST"},"Africa/Kampala":{"o":"3:0","f":"EAT"},"Africa/Blantyre":{"o":"2:0","f":"CAT"},"Europe/Volgograd":{"o":"4:0","f":"VOLT"},"Atlantic/St_Helena":{"o":"0:0","f":"GMT"},"Africa/Malabo":{"o":"1:0","f":"WAT"},"Asia/Nicosia":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Resolute":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Danmarkshavn":{"o":"0:0","f":"GMT"},"America/Anguilla":{"o":"-4:0","f":"AST"},"America/Regina":{"o":"-6:0","f":"CST"},"Asia/Amman":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l5","t":"0:0","z":"s"},"s":{"m":3,"r":"l4","t":"24:0","v":"1:0","c":"S"}},"Europe/Brussels":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Europe/Simferopol":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Argentina/Ushuaia":{"o":"-3:0","f":"ART"},"America/North_Dakota/Center":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Indian/Kerguelen":{"o":"5:0","f":"TFT"},"Pacific/Chuuk":{"o":"10:0","f":"CHUT"},"Etc/UTC":{"o":"0:0","f":"UTC"},"Europe/Istanbul":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Pacific/Rarotonga":{"o":"-10:0","f":"CK{c}T","e":{"m":3,"r":"0>1","t":"0:0"},"s":{"m":10,"r":"l0","t":"0:0","v":"0:30","c":"HS"}},"America/Bahia_Banderas":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"Asia/Hebron":{"o":"2:0","f":"EET"},"Australia/Broken_Hill":{"o":"9:30","f":"CST","s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"e":{"m":4,"r":"0>1","t":"2:0","z":"s"}},"Antarctica/Casey":{"o":"8:0","f":"WST"},"PST8PDT":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Europe/Stockholm":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/Bamako":{"o":"0:0","f":"GMT"},"America/St_Johns":{"o":"-3:30","f":"N{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Dar_es_Salaam":{"o":"3:0","f":"EAT"},"Asia/Novosibirsk":{"o":"7:0","f":"NOVT"},"America/Argentina/Tucuman":{"o":"-3:0","f":"AR{c}T","e":{"m":3,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"Asia/Sakhalin":{"o":"11:0","f":"SAKT"},"America/Curacao":{"o":"-4:0","f":"AST"},"Europe/Budapest":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/Tunis":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"2:0","z":"s"},"s":{"m":3,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"S"}},"Pacific/Guam":{"o":"10:0","f":"ChST"},"Africa/Maseru":{"o":"2:0","f":"SAST"},"Africa/Asmara":{"o":"3:0","f":"EAT"},"America/Asuncion":{"o":"-4:0","f":"PY{c}T","e":{"m":4,"r":"0>8","t":"0:0"},"s":{"m":10,"r":"0>1","t":"0:0","v":"1:0","c":"S"}},"America/Indiana/Winamac":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Europe/Vaduz":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Ulaanbaatar":{"o":"8:0","f":"ULA{c}T","s":{"m":3,"r":"l6","t":"2:0","v":"1:0","c":"S"},"e":{"m":9,"r":"l6","t":"2:0"}},"Asia/Vientiane":{"o":"7:0","f":"ICT"},"Africa/Niamey":{"o":"1:0","f":"WAT"},"America/Thunder_Bay":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Brunei":{"o":"8:0","f":"BNT"},"Africa/Djibouti":{"o":"3:0","f":"EAT"},"Asia/Tbilisi":{"o":"4:0","f":"GET"},"America/Merida":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"America/Recife":{"o":"-3:0","f":"BRT"},"Indian/Reunion":{"o":"4:0","f":"RET"},"Asia/Oral":{"o":"5:0","f":"ORAT"},"Africa/Lusaka":{"o":"2:0","f":"CAT"},"America/Tortola":{"o":"-4:0","f":"AST"},"Africa/Ouagadougou":{"o":"0:0","f":"GMT"},"Asia/Kuching":{"o":"8:0","f":"MYT"},"America/Tegucigalpa":{"o":"-6:0","f":"C{c}T","e":{"m":8,"r":"1>1","t":"0:0","c":"S"},"s":{"m":5,"r":"0>1","t":"0:0","v":"1:0","c":"D"}},"Asia/Novokuznetsk":{"o":"7:0","f":"NOVT"},"Asia/Bishkek":{"o":"6:0","f":"KGT"},"Europe/Vilnius":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Moncton":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Maceio":{"o":"-3:0","f":"BRT"},"Africa/Dakar":{"o":"0:0","f":"GMT"},"America/Belize":{"o":"-6:0","f":"C{c}T","e":{"m":2,"r":"12","t":"0:0","c":"S"},"s":{"m":12,"r":"18","t":"0:0","v":"1:0","c":"D"}},"Etc/GMT":{"o":"0:0","f":"GMT"},"America/Cuiaba":{"o":"-4:0","f":"AM{c}T","e":{"m":2,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"Asia/Tashkent":{"o":"5:0","f":"UZT"},"Atlantic/Canary":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Rankin_Inlet":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Jerusalem":{"o":"2:0","f":"I{c}T","e":{"m":9,"r":"13","t":"2:0","c":"S"},"s":{"m":3,"r":"5>26","t":"2:0","v":"1:0","c":"D"}},"Antarctica/Rothera":{"o":"-3:0","f":"ROTT"},"Indian/Cocos":{"o":"6:30","f":"CCT"},"America/Glace_Bay":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Atlantic/Cape_Verde":{"o":"-1:0","f":"CVT"},"America/Cambridge_Bay":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Indian/Mauritius":{"o":"4:0","f":"MU{c}T","e":{"m":3,"r":"l0","t":"2:0"},"s":{"m":10,"r":"l0","t":"2:0","v":"1:0","c":"S"}},"Etc/GMT-14":{"o":"14:0","f":"GMT-14"},"Australia/Brisbane":{"o":"10:0","f":"EST","e":{"m":3,"r":"0>1","t":"2:0","z":"s"},"s":{"m":10,"r":"l0","t":"2:0","z":"s","v":"1:0"}},"Etc/GMT-13":{"o":"13:0","f":"GMT-13"},"Etc/GMT-12":{"o":"12:0","f":"GMT-12"},"Etc/GMT-11":{"o":"11:0","f":"GMT-11"},"America/Grenada":{"o":"-4:0","f":"AST"},"Etc/GMT-10":{"o":"10:0","f":"GMT-10"},"Antarctica/Vostok":{"o":"6:0","f":"VOST"},"Etc/GMT+11":{"o":"-11:0","f":"GMT+11"},"Pacific/Auckland":{"o":"12:0","f":"NZ{c}T","e":{"m":4,"r":"0>1","t":"2:0","z":"s","c":"S"},"s":{"m":9,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"D"}},"Etc/GMT+12":{"o":"-12:0","f":"GMT+12"},"Antarctica/DumontDUrville":{"o":"10:0","f":"DDUT"},"Etc/GMT+10":{"o":"-10:0","f":"GMT+10"},"Africa/Nairobi":{"o":"3:0","f":"EAT"},"Pacific/Norfolk":{"o":"11:30","f":"NFT"},"Europe/Paris":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Irkutsk":{"o":"9:0","f":"IRKT"},"Pacific/Apia":{"o":"13:0","f":"WST"},"Pacific/Chatham":{"o":"12:45","f":"CHA{c}T","e":{"m":4,"r":"0>1","t":"2:45","z":"s","c":"S"},"s":{"m":9,"r":"l0","t":"2:45","z":"s","v":"1:0","c":"D"}},"America/Caracas":{"o":"-4:30","f":"VET"},"Africa/Maputo":{"o":"2:0","f":"CAT"},"America/Metlakatla":{"o":"-8:0","f":"MeST"},"Atlantic/South_Georgia":{"o":"-2:0","f":"GST"},"Asia/Baghdad":{"o":"3:0","f":"A{c}T","e":{"m":10,"r":"1","t":"3:0","z":"s","c":"S"},"s":{"m":4,"r":"1","t":"3:0","z":"s","v":"1:0","c":"D"}},"Pacific/Saipan":{"o":"10:0","f":"ChST"},"Asia/Dhaka":{"o":"6:0","f":"BD{c}T","e":{"m":12,"r":"31","t":"23:59"},"s":{"m":6,"r":"19","t":"23:0","v":"1:0","c":"S"}},"Africa/Cairo":{"o":"2:0","f":"EE{c}T","e":{"m":9,"r":"l4","t":"23:0","z":"s"},"s":{"m":9,"r":"10","t":"0:0","v":"1:0","c":"S"}},"Asia/Singapore":{"o":"8:0","f":"SGT"},"Europe/Belgrade":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Europe/Moscow":{"o":"4:0","f":"MSK"},"Pacific/Funafuti":{"o":"12:0","f":"TVT"},"America/Inuvik":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Bissau":{"o":"0:0","f":"GMT"},"Asia/Taipei":{"o":"8:0","f":"C{c}T","e":{"m":9,"r":"30","t":"0:0","c":"S"},"s":{"m":6,"r":"30","t":"0:0","v":"1:0","c":"D"}},"Atlantic/Faroe":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Pacific/Majuro":{"o":"12:0","f":"MHT"},"America/Argentina/Catamarca":{"o":"-3:0","f":"ART"},"EET":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Indian/Comoro":{"o":"3:0","f":"EAT"},"America/Manaus":{"o":"-4:0","f":"AMT"},"Asia/Shanghai":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"}},"America/Indiana/Vevay":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Australia/Hobart":{"o":"10:0","f":"EST","e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"}},"Asia/Dili":{"o":"9:0","f":"TLT"},"America/Indiana/Marengo":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Aqtobe":{"o":"5:0","f":"AQTT"},"Australia/Sydney":{"o":"10:0","f":"EST","s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"e":{"m":4,"r":"0>1","t":"2:0","z":"s"}},"Indian/Chagos":{"o":"6:0","f":"IOT"},"America/Phoenix":{"o":"-7:0","f":"MST"},"Europe/Luxembourg":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Makassar":{"o":"8:0","f":"CIT"},"Asia/Phnom_Penh":{"o":"7:0","f":"ICT"},"Australia/Currie":{"o":"10:0","f":"EST","e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"}},"America/Cancun":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"America/Argentina/Cordoba":{"o":"-3:0","f":"AR{c}T","e":{"m":3,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"Asia/Baku":{"o":"4:0","f":"AZ{c}T","e":{"m":10,"r":"l0","t":"5:0"},"s":{"m":3,"r":"l0","t":"4:0","v":"1:0","c":"S"}},"Asia/Seoul":{"o":"9:0","f":"K{c}T","e":{"m":10,"r":"0>8","t":"0:0","c":"S"},"s":{"m":5,"r":"0>8","t":"0:0","v":"1:0","c":"D"}},"WET":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Antarctica/McMurdo":{"o":"12:0","f":"NZ{c}T","e":{"m":4,"r":"0>1","t":"2:0","z":"s","c":"S"},"s":{"m":9,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"D"}},"Atlantic/Stanley":{"o":"-4:0","f":"FK{c}T","s":{"m":9,"r":"0>1","t":"2:0","v":"1:0","c":"S"},"e":{"m":4,"r":"0>15","t":"2:0"}},"America/Lima":{"o":"-5:0","f":"PE{c}T","e":{"m":4,"r":"1","t":"0:0"},"s":{"m":1,"r":"1","t":"0:0","v":"1:0","c":"S"}},"Europe/Rome":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Dawson_Creek":{"o":"-7:0","f":"MST"},"Europe/Helsinki":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Anadyr":{"o":"12:0","f":"ANAT"},"America/Matamoros":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Argentina/San_Juan":{"o":"-3:0","f":"ART"},"America/Denver":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Australia/Eucla":{"o":"8:45","f":"CWST","e":{"m":3,"r":"l0","t":"2:0","z":"s"},"s":{"m":10,"r":"l0","t":"2:0","z":"s","v":"1:0"}},"America/Detroit":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Indiana/Tell_City":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Campo_Grande":{"o":"-4:0","f":"AM{c}T","e":{"m":2,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"America/Hermosillo":{"o":"-7:0","f":"MST"},"America/Boise":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Whitehorse":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/St_Kitts":{"o":"-4:0","f":"AST"},"America/Pangnirtung":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"MET":{"o":"1:0","f":"ME{c}T","e":{"m":10,"r":"l0","t":"2:0","z":"s"},"s":{"m":3,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"S"}},"Asia/Tehran":{"o":"3:30","f":"IR{c}T","e":{"m":9,"r":"21","t":"0:0","c":"S"},"s":{"m":3,"r":"21","t":"0:0","v":"1:0","c":"D"}},"America/Santa_Isabel":{"o":"-8:0","f":"P{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"Asia/Almaty":{"o":"6:0","f":"ALMT"},"America/Chicago":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Ho_Chi_Minh":{"o":"7:0","f":"ICT"},"America/Boa_Vista":{"o":"-4:0","f":"AMT"},"America/Mazatlan":{"o":"-7:0","f":"M{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"America/Indiana/Petersburg":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Iqaluit":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Algiers":{"o":"1:0","f":"CET"},"America/Araguaina":{"o":"-3:0","f":"BRT"},"America/St_Lucia":{"o":"-4:0","f":"AST"},"Pacific/Kiritimati":{"o":"14:0","f":"LINT"},"Asia/Yakutsk":{"o":"10:0","f":"YAKT"},"Indian/Mahe":{"o":"4:0","f":"SCT"},"America/Panama":{"o":"-5:0","f":"EST"},"Asia/Hong_Kong":{"o":"8:0","f":"HK{c}T","e":{"m":10,"r":"0>16","t":"3:30"},"s":{"m":5,"r":"0>8","t":"3:30","v":"1:0","c":"S"}},"America/Scoresbysund":{"o":"-1:0","f":"EG{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Europe/Gibraltar":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Muscat":{"o":"4:0","f":"GST"},"America/Aruba":{"o":"-4:0","f":"AST"},"Africa/Freetown":{"o":"0:0","f":"{c}","e":{"m":9,"r":"1","t":"0:0","c":"GMT"},"s":{"m":6,"r":"1","t":"0:0","v":"1:0","c":"SLST"}},"America/Argentina/San_Luis":{"o":"-4:0","f":"WAR{c}T","s":{"m":10,"r":"0>8","t":"0:0","v":"1:0","c":"S"},"e":{"m":3,"r":"0>8","t":"0:0"}},"America/Paramaribo":{"o":"-3:0","f":"SRT"},"Australia/Lindeman":{"o":"10:0","f":"EST","e":{"m":3,"r":"0>1","t":"2:0","z":"s"},"s":{"m":10,"r":"l0","t":"2:0","z":"s","v":"1:0"}},"Asia/Hovd":{"o":"7:0","f":"HOV{c}T","s":{"m":3,"r":"l6","t":"2:0","v":"1:0","c":"S"},"e":{"m":9,"r":"l6","t":"2:0"}},"America/Bahia":{"o":"-3:0","f":"BR{c}T","e":{"m":2,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"Pacific/Pohnpei":{"o":"11:0","f":"PONT"},"Pacific/Guadalcanal":{"o":"11:0","f":"SBT"},"Australia/Perth":{"o":"8:0","f":"WST","e":{"m":3,"r":"l0","t":"2:0","z":"s"},"s":{"m":10,"r":"l0","t":"2:0","z":"s","v":"1:0"}},"Pacific/Pago_Pago":{"o":"-11:0","f":"SST"},"Antarctica/Syowa":{"o":"3:0","f":"SYOT"},"America/Edmonton":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Los_Angeles":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Nouakchott":{"o":"0:0","f":"GMT"},"America/Noronha":{"o":"-2:0","f":"FNT"},"Asia/Riyadh89":{"o":"3:7","f":"zzz"},"Asia/Riyadh88":{"o":"3:7","f":"zzz"},"America/La_Paz":{"o":"-4:0","f":"BOT"},"America/Dominica":{"o":"-4:0","f":"AST"},"Asia/Riyadh87":{"o":"3:7","f":"zzz"},"Antarctica/Macquarie":{"o":"11:0","f":"MIST"},"MST7MDT":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/El_Aaiun":{"o":"0:0","f":"WET"},"Africa/Ceuta":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Europe/Andorra":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/Luanda":{"o":"1:0","f":"WAT"},"Africa/Addis_Ababa":{"o":"3:0","f":"EAT"},"America/Atikokan":{"o":"-5:0","f":"EST"},"America/Argentina/Salta":{"o":"-3:0","f":"ART"},"Asia/Beirut":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"0:0"},"s":{"m":3,"r":"l0","t":"0:0","v":"1:0","c":"S"}},"Africa/Brazzaville":{"o":"1:0","f":"WAT"},"Pacific/Nauru":{"o":"12:0","f":"NRT"},"Africa/Bangui":{"o":"1:0","f":"WAT"},"America/Guadeloupe":{"o":"-4:0","f":"AST"},"Asia/Kamchatka":{"o":"12:0","f":"PETT"},"Asia/Aqtau":{"o":"5:0","f":"AQTT"},"America/Eirunepe":{"o":"-4:0","f":"AMT"},"Africa/Lubumbashi":{"o":"2:0","f":"CAT"},"Antarctica/Palmer":{"o":"-4:0","f":"CL{c}T","e":{"m":3,"r":"0>9","t":"3:0","z":"u"},"s":{"m":10,"r":"0>9","t":"4:0","z":"u","v":"1:0","c":"S"}},"Asia/Kolkata":{"o":"5:30","f":"IST"},"America/Monterrey":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"Pacific/Galapagos":{"o":"-6:0","f":"GALT"},"Europe/London":{"o":"0:0","f":"GMT/BST","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Europe/Samara":{"o":"4:0","f":"SAMT"},"Europe/Monaco":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Atlantic/Bermuda":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Indiana/Indianapolis":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Indian/Christmas":{"o":"7:0","f":"CXT"},"Pacific/Tarawa":{"o":"12:0","f":"GILT"},"America/Yakutat":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/St_Vincent":{"o":"-4:0","f":"AST"},"Europe/Vienna":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Port-au-Prince":{"o":"-5:0","f":"E{c}T","e":{"m":10,"r":"l0","t":"0:0","c":"S"},"s":{"m":4,"r":"0>1","t":"0:0","v":"1:0","c":"D"}},"America/New_York":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Mogadishu":{"o":"3:0","f":"EAT"},"Pacific/Niue":{"o":"-11:0","f":"NUT"},"Asia/Qatar":{"o":"3:0","f":"AST"},"Africa/Gaborone":{"o":"2:0","f":"CAT"},"America/Antigua":{"o":"-4:0","f":"AST"},"Australia/Lord_Howe":{"o":"10:30","f":"LHST","s":{"m":10,"r":"0>1","t":"2:0","v":"0:30"},"e":{"m":4,"r":"0>1","t":"2:0"}},"Europe/Lisbon":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Montevideo":{"o":"-3:0","f":"UY{c}T","e":{"m":3,"r":"0>8","t":"2:0"},"s":{"m":10,"r":"0>1","t":"2:0","v":"1:0","c":"S"}},"Europe/Zurich":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Winnipeg":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Guyana":{"o":"-4:0","f":"GYT"},"America/Santarem":{"o":"-3:0","f":"BRT"},"Asia/Macau":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"}},"Europe/Dublin":{"o":"0:0","f":"GMT/IST","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Vladivostok":{"o":"11:0","f":"VLAT"},"Europe/Zaporozhye":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Indian/Mayotte":{"o":"3:0","f":"EAT"},"Africa/Ndjamena":{"o":"1:0","f":"WAT"},"America/Tijuana":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Monrovia":{"o":"0:0","f":"GMT"},"Pacific/Tahiti":{"o":"-10:0","f":"TAHT"},"Asia/Qyzylorda":{"o":"6:0","f":"QYZT"},"Europe/Copenhagen":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Thule":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Thimphu":{"o":"6:0","f":"BTT"},"Europe/Amsterdam":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Chihuahua":{"o":"-7:0","f":"M{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"America/Yellowknife":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Windhoek":{"o":"1:0","f":"WA{c}T","e":{"m":4,"r":"0>1","t":"2:0"},"s":{"m":9,"r":"0>1","t":"2:0","v":"1:0","c":"S"}},"Antarctica/Davis":{"o":"7:0","f":"DAVT"},"America/Cayman":{"o":"-5:0","f":"EST"},"Europe/Berlin":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/Kinshasa":{"o":"1:0","f":"WAT"},"Asia/Omsk":{"o":"7:0","f":"OMST"},"Asia/Kathmandu":{"o":"5:45","f":"NPT"},"Europe/Chisinau":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Choibalsan":{"o":"8:0","f":"CHO{c}T","s":{"m":3,"r":"l6","t":"2:0","v":"1:0","c":"S"},"e":{"m":9,"r":"l6","t":"2:0"}},"Etc/UCT":{"o":"0:0","f":"UCT"},"CET":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"2:0","z":"s"},"s":{"m":3,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"S"}},"Europe/Prague":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/Harare":{"o":"2:0","f":"CAT"},"America/Toronto":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Montserrat":{"o":"-4:0","f":"AST"},"Pacific/Honolulu":{"o":"-10:0","f":"HST"},"Africa/Sao_Tome":{"o":"0:0","f":"GMT"},"America/Miquelon":{"o":"-3:0","f":"PM{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Kentucky/Louisville":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Pyongyang":{"o":"9:0","f":"KST"},"America/Porto_Velho":{"o":"-4:0","f":"AMT"},"Europe/Tiraspol":{"o":"3:0","f":"FET"},"America/Costa_Rica":{"o":"-6:0","f":"C{c}T","e":{"m":3,"r":"15","t":"0:0","c":"S"},"s":{"m":1,"r":"6>15","t":"0:0","v":"1:0","c":"D"}},"America/Fortaleza":{"o":"-3:0","f":"BRT"},"America/Mexico_City":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"America/El_Salvador":{"o":"-6:0","f":"C{c}T","e":{"m":9,"r":"l0","t":"0:0","c":"S"},"s":{"m":5,"r":"0>1","t":"0:0","v":"1:0","c":"D"}},"Asia/Kashgar":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"}},"Europe/Kaliningrad":{"o":"3:0","f":"FET"},"Asia/Damascus":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l5","t":"0:0"},"s":{"m":4,"r":"5>1","t":"0:0","v":"1:0","c":"S"}},"America/Port_of_Spain":{"o":"-4:0","f":"AST"},"America/Kentucky/Monticello":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"CST6CDT":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Halifax":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Karachi":{"o":"5:0","f":"PK{c}T","e":{"m":11,"r":"1","t":"0:0"},"s":{"m":4,"r":"15","t":"0:0","v":"1:0","c":"S"}},"America/Managua":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"0>1","t":"1:0","c":"S"},"s":{"m":4,"r":"30","t":"2:0","v":"1:0","c":"D"}},"America/North_Dakota/Beulah":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"EST5EDT":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Pacific/Wallis":{"o":"12:0","f":"WFT"},"Africa/Bujumbura":{"o":"2:0","f":"CAT"},"America/Nome":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Rio_Branco":{"o":"-4:0","f":"AMT"},"America/Santiago":{"o":"-4:0","f":"CL{c}T","e":{"m":3,"r":"0>9","t":"3:0","z":"u"},"s":{"m":10,"r":"0>9","t":"4:0","z":"u","v":"1:0","c":"S"}},"America/Vancouver":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Bahrain":{"o":"3:0","f":"AST"},"America/Indiana/Vincennes":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Pacific/Wake":{"o":"12:0","f":"WAKT"},"Pacific/Enderbury":{"o":"13:0","f":"PHOT"},"America/Guatemala":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"1","t":"0:0","c":"S"},"s":{"m":4,"r":"30","t":"0:0","v":"1:0","c":"D"}},"Europe/Oslo":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Montreal":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Dubai":{"o":"4:0","f":"GST"},"Asia/Harbin":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"}},"Africa/Johannesburg":{"o":"2:0","f":"SAST","e":{"m":3,"r":"0>15","t":"2:0"},"s":{"m":9,"r":"0>15","t":"2:0","v":"1:0"}},"Europe/Tallinn":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Ojinaga":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Barbados":{"o":"-4:0","f":"A{c}T","e":{"m":9,"r":"25","t":"2:0","c":"S"},"s":{"m":4,"r":"0>15","t":"2:0","v":"1:0","c":"D"}},"Europe/Uzhgorod":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Urumqi":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"}},"Asia/Gaza":{"o":"2:0","f":"EET"},"Atlantic/Azores":{"o":"-1:0","f":"AZO{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Kuwait":{"o":"3:0","f":"AST"},"Africa/Lagos":{"o":"1:0","f":"WAT"},"Africa/Porto-Novo":{"o":"1:0","f":"WAT"},"Africa/Accra":{"o":"0:0","f":"{c}","e":{"m":12,"r":"31","t":"0:0","c":"GMT"},"s":{"m":9,"r":"1","t":"0:0","v":"0:20","c":"GHST"}},"Pacific/Port_Moresby":{"o":"10:0","f":"PGT"},"America/Blanc-Sablon":{"o":"-4:0","f":"AST"},"Africa/Juba":{"o":"3:0","f":"EAT"},"America/Indiana/Knox":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Pacific/Noumea":{"o":"11:0","f":"NC{c}T","e":{"m":3,"r":"2","t":"2:0","z":"s"},"s":{"m":12,"r":"1","t":"2:0","z":"s","v":"1:0","c":"S"}},"Europe/Kiev":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Dushanbe":{"o":"5:0","f":"TJT"},"HST":{"o":"-10:0","f":"HST"},"America/Jamaica":{"o":"-5:0","f":"EST"},"Asia/Tokyo":{"o":"9:0","f":"J{c}T","s":{"m":5,"r":"0>1","t":"2:0","v":"1:0","c":"D"},"e":{"m":9,"r":"6>8","t":"2:0","c":"S"}},"Indian/Maldives":{"o":"5:0","f":"MVT"},"Africa/Abidjan":{"o":"0:0","f":"GMT"},"Pacific/Pitcairn":{"o":"-8:0","f":"PST"},"Europe/Malta":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Atlantic/Reykjavik":{"o":"0:0","f":"GMT"},"Europe/Madrid":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Kabul":{"o":"4:30","f":"AFT"},"Asia/Magadan":{"o":"12:0","f":"MAGT"},"America/Argentina/Rio_Gallegos":{"o":"-3:0","f":"ART"},"Australia/Melbourne":{"o":"10:0","f":"EST","s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"e":{"m":4,"r":"0>1","t":"2:0","z":"s"}},"Indian/Antananarivo":{"o":"3:0","f":"EAT"},"Asia/Pontianak":{"o":"7:0","f":"WIT"},"Africa/Mbabane":{"o":"2:0","f":"SAST"},"Pacific/Kwajalein":{"o":"12:0","f":"MHT"},"Africa/Banjul":{"o":"0:0","f":"GMT"},"America/Argentina/Jujuy":{"o":"-3:0","f":"ART"},"America/Anchorage":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Argentina/La_Rioja":{"o":"-3:0","f":"ART"},"Africa/Khartoum":{"o":"3:0","f":"EAT"},"Africa/Tripoli":{"o":"2:0","f":"EET"},"Pacific/Marquesas":{"o":"-9:30","f":"MART"},"Asia/Rangoon":{"o":"6:30","f":"MMT"},"Europe/Bucharest":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Puerto_Rico":{"o":"-4:0","f":"AST"},"Europe/Athens":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Nassau":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Swift_Current":{"o":"-6:0","f":"CST"},"America/Havana":{"o":"-5:0","f":"C{c}T","s":{"m":3,"r":"0>8","t":"0:0","z":"s","v":"1:0","c":"D"},"e":{"m":10,"r":"l0","t":"0:0","z":"s","c":"S"}},"Asia/Jayapura":{"o":"9:0","f":"EIT"},"Pacific/Gambier":{"o":"-9:0","f":"GAMT"},"America/Argentina/Mendoza":{"o":"-3:0","f":"ART"},"America/Rainy_River":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Belem":{"o":"-3:0","f":"BRT"},"America/Sao_Paulo":{"o":"-3:0","f":"BR{c}T","e":{"m":2,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"Pacific/Easter":{"o":"-6:0","f":"EAS{c}T","e":{"m":3,"r":"0>9","t":"3:0","z":"u"},"s":{"m":10,"r":"0>9","t":"4:0","z":"u","v":"1:0","c":"S"}},"America/Menominee":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Juneau":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Pacific/Fakaofo":{"o":"-10:0","f":"TKT"},"America/Martinique":{"o":"-4:0","f":"AST"},"Africa/Conakry":{"o":"0:0","f":"GMT"},"America/North_Dakota/New_Salem":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Adak":{"o":"-10:0","f":"HA{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Godthab":{"o":"-3:0","f":"WG{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/Libreville":{"o":"1:0","f":"WAT"},"Pacific/Kosrae":{"o":"11:0","f":"KOST"},"America/St_Thomas":{"o":"-4:0","f":"AST"},"Etc/GMT+7":{"o":"-7:0","f":"GMT+7"},"Etc/GMT+6":{"o":"-6:0","f":"GMT+6"},"Etc/GMT+5":{"o":"-5:0","f":"GMT+5"},"Europe/Minsk":{"o":"3:0","f":"FET"},"Etc/GMT+4":{"o":"-4:0","f":"GMT+4"},"Pacific/Efate":{"o":"11:0","f":"VU{c}T","e":{"m":1,"r":"0>23","t":"0:0"},"s":{"m":10,"r":"0>23","t":"0:0","v":"1:0","c":"S"}},"Etc/GMT+3":{"o":"-3:0","f":"GMT+3"},"MST":{"o":"-7:0","f":"MST"},"Etc/GMT+2":{"o":"-2:0","f":"GMT+2"},"Etc/GMT+1":{"o":"-1:0","f":"GMT+1"},"Asia/Yekaterinburg":{"o":"6:0","f":"YEKT"},"Pacific/Tongatapu":{"o":"13:0","f":"TO{c}T","e":{"m":1,"r":"l0","t":"2:0"},"s":{"m":11,"r":"0>1","t":"2:0","v":"1:0","c":"S"}},"Europe/Riga":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Guayaquil":{"o":"-5:0","f":"ECT"},"America/Grand_Turk":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Manila":{"o":"8:0","f":"PH{c}T","e":{"m":9,"r":"21","t":"0:0"},"s":{"m":3,"r":"22","t":"0:0","v":"1:0","c":"S"}},"Asia/Jakarta":{"o":"7:0","f":"WIT"},"Asia/Ashgabat":{"o":"5:0","f":"TMT"},"Africa/Kigali":{"o":"2:0","f":"CAT"},"America/Santo_Domingo":{"o":"-4:0","f":"AST"},"Antarctica/Mawson":{"o":"5:0","f":"MAWT"},"America/Argentina/Buenos_Aires":{"o":"-3:0","f":"AR{c}T","e":{"m":3,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"EST":{"o":"-5:0","f":"EST"},"America/Goose_Bay":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Europe/Tirane":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Nipigon":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Chongqing":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"}},"America/Cayenne":{"o":"-3:0","f":"GFT"},"Asia/Samarkand":{"o":"5:0","f":"UZT"},"Pacific/Fiji":{"o":"12:0","f":"FJ{c}T","e":{"m":2,"r":"26","t":"3:0"},"s":{"m":10,"r":"23","t":"2:0","v":"1:0","c":"S"}},"Australia/Darwin":{"o":"9:30","f":"CST","e":{"m":3,"r":"l0","t":"2:0"},"s":{"m":10,"r":"3","t":"2:0","v":"1:0"}},"Etc/GMT-1":{"o":"1:0","f":"GMT-1"},"Australia/Adelaide":{"o":"9:30","f":"CST","s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"e":{"m":4,"r":"0>1","t":"2:0","z":"s"}},"Etc/GMT-5":{"o":"5:0","f":"GMT-5"},"Etc/GMT-4":{"o":"4:0","f":"GMT-4"},"Etc/GMT-3":{"o":"3:0","f":"GMT-3"},"Asia/Riyadh":{"o":"3:0","f":"AST"},"Etc/GMT-2":{"o":"2:0","f":"GMT-2"},"Etc/GMT-9":{"o":"9:0","f":"GMT-9"},"Asia/Aden":{"o":"3:0","f":"AST"},"Africa/Casablanca":{"o":"0:0","f":"WE{c}T","e":{"m":7,"r":"31","t":"0"},"s":{"m":4,"r":"3","t":"0:0","v":"1:0","c":"S"}},"Etc/GMT-8":{"o":"8:0","f":"GMT-8"},"Asia/Krasnoyarsk":{"o":"8:0","f":"KRAT"},"Pacific/Johnston":{"o":"-10:0","f":"HST"},"Etc/GMT-7":{"o":"7:0","f":"GMT-7"},"Pacific/Midway":{"o":"-11:0","f":"SST"},"Etc/GMT-6":{"o":"6:0","f":"GMT-6"},"Etc/GMT+8":{"o":"-8:0","f":"GMT+8"},"Etc/GMT+9":{"o":"-9:0","f":"GMT+9"},"Pacific/Palau":{"o":"9:0","f":"PWT"},"Asia/Kuala_Lumpur":{"o":"8:0","f":"MYT"},"Europe/Warsaw":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/Lome":{"o":"0:0","f":"GMT"},"America/Sitka":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Atlantic/Madeira":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}}};
+// register with the factory method
+ilib.Date._constructors["gregorian"] = ilib.Date.GregDate;
+ilib.data.timezones = {"Europe/Sofia":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/Douala":{"o":"1:0","f":"WAT"},"America/Dawson":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Bangkok":{"o":"7:0","f":"ICT"},"Asia/Yerevan":{"o":"4:0","f":"AMT"},"America/Bogota":{"o":"-5:0","f":"CO{c}T","e":{"m":4,"r":"4","t":"0:0"},"s":{"m":5,"r":"3","t":"0:0","v":"1:0","c":"S"}},"Asia/Colombo":{"o":"5:30","f":"IST"},"Africa/Kampala":{"o":"3:0","f":"EAT"},"Africa/Blantyre":{"o":"2:0","f":"CAT"},"Europe/Volgograd":{"o":"4:0","f":"VOLT"},"Atlantic/St_Helena":{"o":"0:0","f":"GMT"},"Africa/Malabo":{"o":"1:0","f":"WAT"},"Asia/Nicosia":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Resolute":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Danmarkshavn":{"o":"0:0","f":"GMT"},"America/Regina":{"o":"-6:0","f":"CST"},"America/Anguilla":{"o":"-4:0","f":"AST"},"Asia/Amman":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l5","t":"0:0","z":"s"},"s":{"m":3,"r":"l4","t":"24:0","v":"1:0","c":"S"}},"Europe/Brussels":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Europe/Simferopol":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Argentina/Ushuaia":{"o":"-3:0","f":"ART"},"America/North_Dakota/Center":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Indian/Kerguelen":{"o":"5:0","f":"TFT"},"Europe/Istanbul":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Pacific/Chuuk":{"o":"10:0","f":"CHUT"},"Etc/UTC":{"o":"0:0","f":"UTC"},"America/Bahia_Banderas":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"Pacific/Rarotonga":{"o":"-10:0","f":"CK{c}T","e":{"m":3,"r":"0>1","t":"0:0"},"s":{"m":10,"r":"l0","t":"0:0","v":"0:30","c":"HS"}},"Asia/Hebron":{"o":"2:0","f":"EET"},"Australia/Broken_Hill":{"o":"9:30","f":"CST","s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"e":{"m":4,"r":"0>1","t":"2:0","z":"s"}},"PST8PDT":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Antarctica/Casey":{"o":"8:0","f":"WST"},"Europe/Stockholm":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/Bamako":{"o":"0:0","f":"GMT"},"America/St_Johns":{"o":"-3:30","f":"N{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Dar_es_Salaam":{"o":"3:0","f":"EAT"},"Asia/Novosibirsk":{"o":"7:0","f":"NOVT"},"America/Argentina/Tucuman":{"o":"-3:0","f":"AR{c}T","e":{"m":3,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"Asia/Sakhalin":{"o":"11:0","f":"SAKT"},"America/Curacao":{"o":"-4:0","f":"AST"},"Europe/Budapest":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/Tunis":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"2:0","z":"s"},"s":{"m":3,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"S"}},"Pacific/Guam":{"o":"10:0","f":"ChST"},"Africa/Asmara":{"o":"3:0","f":"EAT"},"Africa/Maseru":{"o":"2:0","f":"SAST"},"America/Asuncion":{"o":"-4:0","f":"PY{c}T","e":{"m":4,"r":"0>8","t":"0:0"},"s":{"m":10,"r":"0>1","t":"0:0","v":"1:0","c":"S"}},"America/Indiana/Winamac":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Europe/Vaduz":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Ulaanbaatar":{"o":"8:0","f":"ULA{c}T","s":{"m":3,"r":"l6","t":"2:0","v":"1:0","c":"S"},"e":{"m":9,"r":"l6","t":"2:0"}},"Asia/Vientiane":{"o":"7:0","f":"ICT"},"Africa/Niamey":{"o":"1:0","f":"WAT"},"America/Thunder_Bay":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Brunei":{"o":"8:0","f":"BNT"},"Africa/Djibouti":{"o":"3:0","f":"EAT"},"Asia/Tbilisi":{"o":"4:0","f":"GET"},"America/Merida":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"America/Recife":{"o":"-3:0","f":"BRT"},"Indian/Reunion":{"o":"4:0","f":"RET"},"Asia/Oral":{"o":"5:0","f":"ORAT"},"Africa/Lusaka":{"o":"2:0","f":"CAT"},"America/Tortola":{"o":"-4:0","f":"AST"},"Africa/Ouagadougou":{"o":"0:0","f":"GMT"},"Asia/Kuching":{"o":"8:0","f":"MYT"},"America/Tegucigalpa":{"o":"-6:0","f":"C{c}T","e":{"m":8,"r":"1>1","t":"0:0","c":"S"},"s":{"m":5,"r":"0>1","t":"0:0","v":"1:0","c":"D"}},"Asia/Novokuznetsk":{"o":"7:0","f":"NOVT"},"Asia/Bishkek":{"o":"6:0","f":"KGT"},"Europe/Vilnius":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Moncton":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Maceio":{"o":"-3:0","f":"BRT"},"Africa/Dakar":{"o":"0:0","f":"GMT"},"America/Belize":{"o":"-6:0","f":"C{c}T","e":{"m":2,"r":"12","t":"0:0","c":"S"},"s":{"m":12,"r":"18","t":"0:0","v":"1:0","c":"D"}},"Etc/GMT":{"o":"0:0","f":"GMT"},"America/Cuiaba":{"o":"-4:0","f":"AM{c}T","e":{"m":2,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"Asia/Tashkent":{"o":"5:0","f":"UZT"},"Atlantic/Canary":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Rankin_Inlet":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Jerusalem":{"o":"2:0","f":"I{c}T","e":{"m":9,"r":"13","t":"2:0","c":"S"},"s":{"m":3,"r":"5>26","t":"2:0","v":"1:0","c":"D"}},"Antarctica/Rothera":{"o":"-3:0","f":"ROTT"},"Indian/Cocos":{"o":"6:30","f":"CCT"},"America/Glace_Bay":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Atlantic/Cape_Verde":{"o":"-1:0","f":"CVT"},"America/Cambridge_Bay":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Indian/Mauritius":{"o":"4:0","f":"MU{c}T","e":{"m":3,"r":"l0","t":"2:0"},"s":{"m":10,"r":"l0","t":"2:0","v":"1:0","c":"S"}},"Etc/GMT-14":{"o":"14:0","f":"GMT-14"},"Australia/Brisbane":{"o":"10:0","f":"EST","e":{"m":3,"r":"0>1","t":"2:0","z":"s"},"s":{"m":10,"r":"l0","t":"2:0","z":"s","v":"1:0"}},"Etc/GMT-13":{"o":"13:0","f":"GMT-13"},"Etc/GMT-12":{"o":"12:0","f":"GMT-12"},"Etc/GMT-11":{"o":"11:0","f":"GMT-11"},"America/Grenada":{"o":"-4:0","f":"AST"},"Etc/GMT-10":{"o":"10:0","f":"GMT-10"},"Antarctica/Vostok":{"o":"6:0","f":"VOST"},"Etc/GMT+11":{"o":"-11:0","f":"GMT+11"},"Etc/GMT+12":{"o":"-12:0","f":"GMT+12"},"Pacific/Auckland":{"o":"12:0","f":"NZ{c}T","e":{"m":4,"r":"0>1","t":"2:0","z":"s","c":"S"},"s":{"m":9,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"D"}},"Antarctica/DumontDUrville":{"o":"10:0","f":"DDUT"},"Etc/GMT+10":{"o":"-10:0","f":"GMT+10"},"Africa/Nairobi":{"o":"3:0","f":"EAT"},"Pacific/Norfolk":{"o":"11:30","f":"NFT"},"Europe/Paris":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Irkutsk":{"o":"9:0","f":"IRKT"},"Pacific/Apia":{"o":"13:0","f":"WST"},"America/Caracas":{"o":"-4:30","f":"VET"},"Pacific/Chatham":{"o":"12:45","f":"CHA{c}T","e":{"m":4,"r":"0>1","t":"2:45","z":"s","c":"S"},"s":{"m":9,"r":"l0","t":"2:45","z":"s","v":"1:0","c":"D"}},"Africa/Maputo":{"o":"2:0","f":"CAT"},"America/Metlakatla":{"o":"-8:0","f":"MeST"},"Atlantic/South_Georgia":{"o":"-2:0","f":"GST"},"Asia/Baghdad":{"o":"3:0","f":"A{c}T","e":{"m":10,"r":"1","t":"3:0","z":"s","c":"S"},"s":{"m":4,"r":"1","t":"3:0","z":"s","v":"1:0","c":"D"}},"Pacific/Saipan":{"o":"10:0","f":"ChST"},"Asia/Dhaka":{"o":"6:0","f":"BD{c}T","e":{"m":12,"r":"31","t":"23:59"},"s":{"m":6,"r":"19","t":"23:0","v":"1:0","c":"S"}},"Asia/Singapore":{"o":"8:0","f":"SGT"},"Africa/Cairo":{"o":"2:0","f":"EE{c}T","e":{"m":9,"r":"l4","t":"23:0","z":"s"},"s":{"m":9,"r":"10","t":"0:0","v":"1:0","c":"S"}},"Europe/Belgrade":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Europe/Moscow":{"o":"4:0","f":"MSK"},"America/Inuvik":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Pacific/Funafuti":{"o":"12:0","f":"TVT"},"Africa/Bissau":{"o":"0:0","f":"GMT"},"Atlantic/Faroe":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Taipei":{"o":"8:0","f":"C{c}T","e":{"m":9,"r":"30","t":"0:0","c":"S"},"s":{"m":6,"r":"30","t":"0:0","v":"1:0","c":"D"}},"America/Argentina/Catamarca":{"o":"-3:0","f":"ART"},"Pacific/Majuro":{"o":"12:0","f":"MHT"},"EET":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Indian/Comoro":{"o":"3:0","f":"EAT"},"America/Manaus":{"o":"-4:0","f":"AMT"},"Asia/Shanghai":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"}},"America/Indiana/Vevay":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Australia/Hobart":{"o":"10:0","f":"EST","e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"}},"Asia/Dili":{"o":"9:0","f":"TLT"},"America/Indiana/Marengo":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Aqtobe":{"o":"5:0","f":"AQTT"},"Australia/Sydney":{"o":"10:0","f":"EST","s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"e":{"m":4,"r":"0>1","t":"2:0","z":"s"}},"Indian/Chagos":{"o":"6:0","f":"IOT"},"America/Phoenix":{"o":"-7:0","f":"MST"},"Europe/Luxembourg":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Makassar":{"o":"8:0","f":"CIT"},"Asia/Phnom_Penh":{"o":"7:0","f":"ICT"},"Australia/Currie":{"o":"10:0","f":"EST","e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"}},"America/Argentina/Cordoba":{"o":"-3:0","f":"AR{c}T","e":{"m":3,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"America/Cancun":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"Asia/Baku":{"o":"4:0","f":"AZ{c}T","e":{"m":10,"r":"l0","t":"5:0"},"s":{"m":3,"r":"l0","t":"4:0","v":"1:0","c":"S"}},"Asia/Seoul":{"o":"9:0","f":"K{c}T","e":{"m":10,"r":"0>8","t":"0:0","c":"S"},"s":{"m":5,"r":"0>8","t":"0:0","v":"1:0","c":"D"}},"WET":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Antarctica/McMurdo":{"o":"12:0","f":"NZ{c}T","e":{"m":4,"r":"0>1","t":"2:0","z":"s","c":"S"},"s":{"m":9,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"D"}},"America/Lima":{"o":"-5:0","f":"PE{c}T","e":{"m":4,"r":"1","t":"0:0"},"s":{"m":1,"r":"1","t":"0:0","v":"1:0","c":"S"}},"Atlantic/Stanley":{"o":"-3:0","f":"FKST"},"Europe/Rome":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Dawson_Creek":{"o":"-7:0","f":"MST"},"Europe/Helsinki":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Anadyr":{"o":"12:0","f":"ANAT"},"America/Matamoros":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Argentina/San_Juan":{"o":"-3:0","f":"ART"},"America/Denver":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Australia/Eucla":{"o":"8:45","f":"CWST","e":{"m":3,"r":"l0","t":"2:0","z":"s"},"s":{"m":10,"r":"l0","t":"2:0","z":"s","v":"1:0"}},"America/Detroit":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Campo_Grande":{"o":"-4:0","f":"AM{c}T","e":{"m":2,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"America/Indiana/Tell_City":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Hermosillo":{"o":"-7:0","f":"MST"},"America/Boise":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Whitehorse":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/St_Kitts":{"o":"-4:0","f":"AST"},"America/Pangnirtung":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"MET":{"o":"1:0","f":"ME{c}T","e":{"m":10,"r":"l0","t":"2:0","z":"s"},"s":{"m":3,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"S"}},"Asia/Tehran":{"o":"3:30","f":"IR{c}T","e":{"m":9,"r":"21","t":"0:0","c":"S"},"s":{"m":3,"r":"21","t":"0:0","v":"1:0","c":"D"}},"Asia/Almaty":{"o":"6:0","f":"ALMT"},"America/Santa_Isabel":{"o":"-8:0","f":"P{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"America/Chicago":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Ho_Chi_Minh":{"o":"7:0","f":"ICT"},"America/Boa_Vista":{"o":"-4:0","f":"AMT"},"America/Mazatlan":{"o":"-7:0","f":"M{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"America/Indiana/Petersburg":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Iqaluit":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Algiers":{"o":"1:0","f":"CET"},"America/Araguaina":{"o":"-3:0","f":"BRT"},"America/St_Lucia":{"o":"-4:0","f":"AST"},"Pacific/Kiritimati":{"o":"14:0","f":"LINT"},"Asia/Yakutsk":{"o":"10:0","f":"YAKT"},"Indian/Mahe":{"o":"4:0","f":"SCT"},"Asia/Hong_Kong":{"o":"8:0","f":"HK{c}T","e":{"m":10,"r":"0>16","t":"3:30"},"s":{"m":5,"r":"0>8","t":"3:30","v":"1:0","c":"S"}},"America/Panama":{"o":"-5:0","f":"EST"},"America/Scoresbysund":{"o":"-1:0","f":"EG{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Europe/Gibraltar":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Aruba":{"o":"-4:0","f":"AST"},"Asia/Muscat":{"o":"4:0","f":"GST"},"Africa/Freetown":{"o":"0:0","f":"{c}","e":{"m":9,"r":"1","t":"0:0","c":"GMT"},"s":{"m":6,"r":"1","t":"0:0","v":"1:0","c":"SLST"}},"America/Argentina/San_Luis":{"o":"-4:0","f":"WAR{c}T","s":{"m":10,"r":"0>8","t":"0:0","v":"1:0","c":"S"},"e":{"m":3,"r":"0>8","t":"0:0"}},"America/Paramaribo":{"o":"-3:0","f":"SRT"},"Australia/Lindeman":{"o":"10:0","f":"EST","e":{"m":3,"r":"0>1","t":"2:0","z":"s"},"s":{"m":10,"r":"l0","t":"2:0","z":"s","v":"1:0"}},"Asia/Hovd":{"o":"7:0","f":"HOV{c}T","s":{"m":3,"r":"l6","t":"2:0","v":"1:0","c":"S"},"e":{"m":9,"r":"l6","t":"2:0"}},"America/Bahia":{"o":"-3:0","f":"BR{c}T","e":{"m":2,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"Pacific/Pohnpei":{"o":"11:0","f":"PONT"},"Pacific/Guadalcanal":{"o":"11:0","f":"SBT"},"Australia/Perth":{"o":"8:0","f":"WST","e":{"m":3,"r":"l0","t":"2:0","z":"s"},"s":{"m":10,"r":"l0","t":"2:0","z":"s","v":"1:0"}},"Pacific/Pago_Pago":{"o":"-11:0","f":"SST"},"Antarctica/Syowa":{"o":"3:0","f":"SYOT"},"America/Edmonton":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Los_Angeles":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Creston":{"o":"-7:0","f":"MST"},"Africa/Nouakchott":{"o":"0:0","f":"GMT"},"America/Noronha":{"o":"-2:0","f":"FNT"},"Asia/Riyadh89":{"o":"3:7","f":"zzz"},"Asia/Riyadh88":{"o":"3:7","f":"zzz"},"America/La_Paz":{"o":"-4:0","f":"BOT"},"America/Dominica":{"o":"-4:0","f":"AST"},"Asia/Riyadh87":{"o":"3:7","f":"zzz"},"Antarctica/Macquarie":{"o":"11:0","f":"MIST"},"MST7MDT":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Ceuta":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/El_Aaiun":{"o":"0:0","f":"WET"},"Europe/Andorra":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/Luanda":{"o":"1:0","f":"WAT"},"Africa/Addis_Ababa":{"o":"3:0","f":"EAT"},"America/Atikokan":{"o":"-5:0","f":"EST"},"America/Argentina/Salta":{"o":"-3:0","f":"ART"},"Asia/Beirut":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"0:0"},"s":{"m":3,"r":"l0","t":"0:0","v":"1:0","c":"S"}},"Pacific/Nauru":{"o":"12:0","f":"NRT"},"Africa/Brazzaville":{"o":"1:0","f":"WAT"},"America/Guadeloupe":{"o":"-4:0","f":"AST"},"Africa/Bangui":{"o":"1:0","f":"WAT"},"Asia/Kamchatka":{"o":"12:0","f":"PETT"},"Asia/Aqtau":{"o":"5:0","f":"AQTT"},"America/Eirunepe":{"o":"-4:0","f":"AMT"},"Antarctica/Palmer":{"o":"-4:0","f":"CL{c}T","s":{"m":10,"r":"0>9","t":"4:0","z":"u","v":"1:0","c":"S"},"e":{"m":3,"r":"0>9","t":"3:0","z":"u"}},"Africa/Lubumbashi":{"o":"2:0","f":"CAT"},"Asia/Kolkata":{"o":"5:30","f":"IST"},"Pacific/Galapagos":{"o":"-6:0","f":"GALT"},"America/Monterrey":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"Europe/London":{"o":"0:0","f":"GMT/BST","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Europe/Samara":{"o":"4:0","f":"SAMT"},"Europe/Monaco":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Indiana/Indianapolis":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Atlantic/Bermuda":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Indian/Christmas":{"o":"7:0","f":"CXT"},"Pacific/Tarawa":{"o":"12:0","f":"GILT"},"America/Yakutat":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Europe/Vienna":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/St_Vincent":{"o":"-4:0","f":"AST"},"America/Port-au-Prince":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/New_York":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Mogadishu":{"o":"3:0","f":"EAT"},"Asia/Qatar":{"o":"3:0","f":"AST"},"Pacific/Niue":{"o":"-11:0","f":"NUT"},"Africa/Gaborone":{"o":"2:0","f":"CAT"},"America/Antigua":{"o":"-4:0","f":"AST"},"Australia/Lord_Howe":{"o":"10:30","f":"LHST","s":{"m":10,"r":"0>1","t":"2:0","v":"0:30"},"e":{"m":4,"r":"0>1","t":"2:0"}},"Europe/Lisbon":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Montevideo":{"o":"-3:0","f":"UY{c}T","e":{"m":3,"r":"0>8","t":"2:0"},"s":{"m":10,"r":"0>1","t":"2:0","v":"1:0","c":"S"}},"Europe/Zurich":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Winnipeg":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Guyana":{"o":"-4:0","f":"GYT"},"America/Santarem":{"o":"-3:0","f":"BRT"},"Asia/Macau":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"}},"Europe/Dublin":{"o":"0:0","f":"GMT/IST","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Vladivostok":{"o":"11:0","f":"VLAT"},"Europe/Zaporozhye":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Indian/Mayotte":{"o":"3:0","f":"EAT"},"America/Tijuana":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Ndjamena":{"o":"1:0","f":"WAT"},"Pacific/Tahiti":{"o":"-10:0","f":"TAHT"},"Africa/Monrovia":{"o":"0:0","f":"GMT"},"Asia/Qyzylorda":{"o":"6:0","f":"QYZT"},"Europe/Copenhagen":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Thule":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Europe/Amsterdam":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Thimphu":{"o":"6:0","f":"BTT"},"America/Chihuahua":{"o":"-7:0","f":"M{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"America/Yellowknife":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Windhoek":{"o":"1:0","f":"WA{c}T","e":{"m":4,"r":"0>1","t":"2:0"},"s":{"m":9,"r":"0>1","t":"2:0","v":"1:0","c":"S"}},"Antarctica/Davis":{"o":"7:0","f":"DAVT"},"America/Cayman":{"o":"-5:0","f":"EST"},"Europe/Berlin":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Omsk":{"o":"7:0","f":"OMST"},"Africa/Kinshasa":{"o":"1:0","f":"WAT"},"Asia/Kathmandu":{"o":"5:45","f":"NPT"},"Europe/Chisinau":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Choibalsan":{"o":"8:0","f":"CHO{c}T","s":{"m":3,"r":"l6","t":"2:0","v":"1:0","c":"S"},"e":{"m":9,"r":"l6","t":"2:0"}},"Etc/UCT":{"o":"0:0","f":"UCT"},"CET":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"2:0","z":"s"},"s":{"m":3,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"S"}},"Europe/Prague":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Toronto":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Harare":{"o":"2:0","f":"CAT"},"America/Montserrat":{"o":"-4:0","f":"AST"},"Pacific/Honolulu":{"o":"-10:0","f":"HST"},"America/Miquelon":{"o":"-3:0","f":"PM{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Sao_Tome":{"o":"0:0","f":"GMT"},"America/Kentucky/Louisville":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Pyongyang":{"o":"9:0","f":"KST"},"America/Porto_Velho":{"o":"-4:0","f":"AMT"},"America/Costa_Rica":{"o":"-6:0","f":"C{c}T","e":{"m":3,"r":"15","t":"0:0","c":"S"},"s":{"m":1,"r":"6>15","t":"0:0","v":"1:0","c":"D"}},"America/Fortaleza":{"o":"-3:0","f":"BRT"},"America/Mexico_City":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"}},"America/El_Salvador":{"o":"-6:0","f":"C{c}T","e":{"m":9,"r":"l0","t":"0:0","c":"S"},"s":{"m":5,"r":"0>1","t":"0:0","v":"1:0","c":"D"}},"Europe/Kaliningrad":{"o":"3:0","f":"FET"},"Asia/Kashgar":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"}},"Asia/Damascus":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l5","t":"0:0"},"s":{"m":3,"r":"l5","t":"0:0","v":"1:0","c":"S"}},"America/Port_of_Spain":{"o":"-4:0","f":"AST"},"America/Kentucky/Monticello":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"CST6CDT":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Halifax":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Karachi":{"o":"5:0","f":"PK{c}T","e":{"m":11,"r":"1","t":"0:0"},"s":{"m":4,"r":"15","t":"0:0","v":"1:0","c":"S"}},"America/North_Dakota/Beulah":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"EST5EDT":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Managua":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"0>1","t":"1:0","c":"S"},"s":{"m":4,"r":"30","t":"2:0","v":"1:0","c":"D"}},"Pacific/Wallis":{"o":"12:0","f":"WFT"},"America/Nome":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Africa/Bujumbura":{"o":"2:0","f":"CAT"},"America/Rio_Branco":{"o":"-4:0","f":"AMT"},"America/Santiago":{"o":"-4:0","f":"CL{c}T","s":{"m":10,"r":"0>9","t":"4:0","z":"u","v":"1:0","c":"S"},"e":{"m":3,"r":"0>9","t":"3:0","z":"u"}},"America/Vancouver":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Bahrain":{"o":"3:0","f":"AST"},"America/Indiana/Vincennes":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Pacific/Enderbury":{"o":"13:0","f":"PHOT"},"Pacific/Wake":{"o":"12:0","f":"WAKT"},"Europe/Oslo":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Guatemala":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"1","t":"0:0","c":"S"},"s":{"m":4,"r":"30","t":"0:0","v":"1:0","c":"D"}},"America/Montreal":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Dubai":{"o":"4:0","f":"GST"},"Asia/Harbin":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"}},"Africa/Johannesburg":{"o":"2:0","f":"SAST","e":{"m":3,"r":"0>15","t":"2:0"},"s":{"m":9,"r":"0>15","t":"2:0","v":"1:0"}},"Europe/Tallinn":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Ojinaga":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Europe/Uzhgorod":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Barbados":{"o":"-4:0","f":"A{c}T","e":{"m":9,"r":"25","t":"2:0","c":"S"},"s":{"m":4,"r":"0>15","t":"2:0","v":"1:0","c":"D"}},"Asia/Urumqi":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"}},"Asia/Gaza":{"o":"2:0","f":"EET"},"Atlantic/Azores":{"o":"-1:0","f":"AZO{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Kuwait":{"o":"3:0","f":"AST"},"Africa/Lagos":{"o":"1:0","f":"WAT"},"Africa/Porto-Novo":{"o":"1:0","f":"WAT"},"Africa/Accra":{"o":"0:0","f":"{c}","e":{"m":12,"r":"31","t":"0:0","c":"GMT"},"s":{"m":9,"r":"1","t":"0:0","v":"0:20","c":"GHST"}},"Pacific/Port_Moresby":{"o":"10:0","f":"PGT"},"America/Blanc-Sablon":{"o":"-4:0","f":"AST"},"Africa/Juba":{"o":"3:0","f":"EAT"},"America/Indiana/Knox":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Europe/Kiev":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Pacific/Noumea":{"o":"11:0","f":"NC{c}T","e":{"m":3,"r":"2","t":"2:0","z":"s"},"s":{"m":12,"r":"1","t":"2:0","z":"s","v":"1:0","c":"S"}},"Asia/Dushanbe":{"o":"5:0","f":"TJT"},"HST":{"o":"-10:0","f":"HST"},"America/Jamaica":{"o":"-5:0","f":"EST"},"Asia/Tokyo":{"o":"9:0","f":"J{c}T","s":{"m":5,"r":"0>1","t":"2:0","v":"1:0","c":"D"},"e":{"m":9,"r":"6>8","t":"2:0","c":"S"}},"Indian/Maldives":{"o":"5:0","f":"MVT"},"Africa/Abidjan":{"o":"0:0","f":"GMT"},"Pacific/Pitcairn":{"o":"-8:0","f":"PST"},"Europe/Malta":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Atlantic/Reykjavik":{"o":"0:0","f":"GMT"},"Europe/Madrid":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Asia/Magadan":{"o":"12:0","f":"MAGT"},"Asia/Kabul":{"o":"4:30","f":"AFT"},"America/Argentina/Rio_Gallegos":{"o":"-3:0","f":"ART"},"Australia/Melbourne":{"o":"10:0","f":"EST","s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"e":{"m":4,"r":"0>1","t":"2:0","z":"s"}},"Indian/Antananarivo":{"o":"3:0","f":"EAT"},"Asia/Pontianak":{"o":"7:0","f":"WIT"},"Africa/Mbabane":{"o":"2:0","f":"SAST"},"Pacific/Kwajalein":{"o":"12:0","f":"MHT"},"Africa/Banjul":{"o":"0:0","f":"GMT"},"America/Argentina/Jujuy":{"o":"-3:0","f":"ART"},"America/Anchorage":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Argentina/La_Rioja":{"o":"-3:0","f":"ART"},"Africa/Tripoli":{"o":"2:0","f":"EET"},"Africa/Khartoum":{"o":"3:0","f":"EAT"},"Pacific/Marquesas":{"o":"-9:30","f":"MART"},"Asia/Rangoon":{"o":"6:30","f":"MMT"},"Europe/Bucharest":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Europe/Athens":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Puerto_Rico":{"o":"-4:0","f":"AST"},"America/Swift_Current":{"o":"-6:0","f":"CST"},"America/Nassau":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Havana":{"o":"-5:0","f":"C{c}T","s":{"m":3,"r":"0>8","t":"0:0","z":"s","v":"1:0","c":"D"},"e":{"m":10,"r":"l0","t":"0:0","z":"s","c":"S"}},"Asia/Jayapura":{"o":"9:0","f":"EIT"},"Pacific/Gambier":{"o":"-9:0","f":"GAMT"},"America/Argentina/Mendoza":{"o":"-3:0","f":"ART"},"America/Rainy_River":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Belem":{"o":"-3:0","f":"BRT"},"America/Sao_Paulo":{"o":"-3:0","f":"BR{c}T","e":{"m":2,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"Pacific/Easter":{"o":"-6:0","f":"EAS{c}T","s":{"m":10,"r":"0>9","t":"4:0","z":"u","v":"1:0","c":"S"},"e":{"m":3,"r":"0>9","t":"3:0","z":"u"}},"America/Menominee":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Juneau":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Pacific/Fakaofo":{"o":"14:0","f":"TKT"},"America/Martinique":{"o":"-4:0","f":"AST"},"Africa/Conakry":{"o":"0:0","f":"GMT"},"America/North_Dakota/New_Salem":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Adak":{"o":"-10:0","f":"HA{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"America/Godthab":{"o":"-3:0","f":"WG{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/Libreville":{"o":"1:0","f":"WAT"},"Pacific/Kosrae":{"o":"11:0","f":"KOST"},"America/St_Thomas":{"o":"-4:0","f":"AST"},"Etc/GMT+7":{"o":"-7:0","f":"GMT+7"},"Etc/GMT+6":{"o":"-6:0","f":"GMT+6"},"Europe/Minsk":{"o":"3:0","f":"FET"},"Etc/GMT+5":{"o":"-5:0","f":"GMT+5"},"Etc/GMT+4":{"o":"-4:0","f":"GMT+4"},"Pacific/Efate":{"o":"11:0","f":"VU{c}T","e":{"m":1,"r":"0>23","t":"0:0"},"s":{"m":10,"r":"0>23","t":"0:0","v":"1:0","c":"S"}},"Etc/GMT+3":{"o":"-3:0","f":"GMT+3"},"MST":{"o":"-7:0","f":"MST"},"Etc/GMT+2":{"o":"-2:0","f":"GMT+2"},"Etc/GMT+1":{"o":"-1:0","f":"GMT+1"},"Asia/Yekaterinburg":{"o":"6:0","f":"YEKT"},"Pacific/Tongatapu":{"o":"13:0","f":"TO{c}T","e":{"m":1,"r":"l0","t":"2:0"},"s":{"m":11,"r":"0>1","t":"2:0","v":"1:0","c":"S"}},"Europe/Riga":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Guayaquil":{"o":"-5:0","f":"ECT"},"America/Grand_Turk":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Manila":{"o":"8:0","f":"PH{c}T","e":{"m":9,"r":"21","t":"0:0"},"s":{"m":3,"r":"22","t":"0:0","v":"1:0","c":"S"}},"Asia/Jakarta":{"o":"7:0","f":"WIT"},"Asia/Ashgabat":{"o":"5:0","f":"TMT"},"Africa/Kigali":{"o":"2:0","f":"CAT"},"America/Santo_Domingo":{"o":"-4:0","f":"AST"},"America/Argentina/Buenos_Aires":{"o":"-3:0","f":"AR{c}T","e":{"m":3,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"}},"Antarctica/Mawson":{"o":"5:0","f":"MAWT"},"EST":{"o":"-5:0","f":"EST"},"America/Goose_Bay":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Europe/Tirane":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"America/Nipigon":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Asia/Chongqing":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"}},"America/Cayenne":{"o":"-3:0","f":"GFT"},"Asia/Samarkand":{"o":"5:0","f":"UZT"},"Pacific/Fiji":{"o":"12:0","f":"FJ{c}T","e":{"m":1,"r":"22","t":"3:0"},"s":{"m":10,"r":"23","t":"2:0","v":"1:0","c":"S"}},"Australia/Darwin":{"o":"9:30","f":"CST","e":{"m":3,"r":"l0","t":"2:0"},"s":{"m":10,"r":"3","t":"2:0","v":"1:0"}},"Etc/GMT-1":{"o":"1:0","f":"GMT-1"},"Australia/Adelaide":{"o":"9:30","f":"CST","s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"e":{"m":4,"r":"0>1","t":"2:0","z":"s"}},"Etc/GMT-5":{"o":"5:0","f":"GMT-5"},"Etc/GMT-4":{"o":"4:0","f":"GMT-4"},"Asia/Riyadh":{"o":"3:0","f":"AST"},"Etc/GMT-3":{"o":"3:0","f":"GMT-3"},"Etc/GMT-2":{"o":"2:0","f":"GMT-2"},"Asia/Aden":{"o":"3:0","f":"AST"},"Etc/GMT-9":{"o":"9:0","f":"GMT-9"},"Asia/Krasnoyarsk":{"o":"8:0","f":"KRAT"},"Africa/Casablanca":{"o":"0:0","f":"WE{c}T","e":{"m":9,"r":"l0","t":"3:0"},"s":{"m":4,"r":"l0","t":"2:0","v":"1:0","c":"S"}},"Etc/GMT-8":{"o":"8:0","f":"GMT-8"},"Pacific/Johnston":{"o":"-10:0","f":"HST"},"Etc/GMT-7":{"o":"7:0","f":"GMT-7"},"Pacific/Midway":{"o":"-11:0","f":"SST"},"Etc/GMT-6":{"o":"6:0","f":"GMT-6"},"Etc/GMT+8":{"o":"-8:0","f":"GMT+8"},"Etc/GMT+9":{"o":"-9:0","f":"GMT+9"},"Pacific/Palau":{"o":"9:0","f":"PWT"},"Asia/Kuala_Lumpur":{"o":"8:0","f":"MYT"},"Europe/Warsaw":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Africa/Lome":{"o":"0:0","f":"GMT"},"America/Sitka":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"}},"Atlantic/Madeira":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}}};
 /*
  * timezone.js - Definition of a time zone class
  * 
@@ -2471,6 +3131,9 @@ calendar/gregoriandate.js
  * If the id is not given, the default time zone for the locale is retrieved from
  * the locale info. If the locale is not specified, the default locale for the
  * library is used.
+ * <p>
+ * 
+ * Depends directive: !depends timezone.js
  * 
  * @constructor
  * @param {Object} options Options guiding the construction of this time zone instance
@@ -2594,10 +3257,9 @@ ilib.TimeZone.prototype.getDisplayName = function (date, style) {
 			break;
 		case 'rfc822':
 			var offset = this.getOffset(date), // includes the DST if applicable
-				parts = offset.split(":"),
-				hour = parseInt(parts[0], 10),
-				minute = (parts.length > 1) ? parseInt(parts[1], 10) : 0,
-				ret = "UTC";
+				ret = "UTC",
+				hour = offset.h || 0,
+				minute = offset.m || 0;
 			
 			ret += (hour > 0) ? "+" : "-";
 			if (hour < 10) {
@@ -2613,77 +3275,155 @@ ilib.TimeZone.prototype.getDisplayName = function (date, style) {
 };
 
 /**
+ * @private
+ * Convert the offset string to an object with an h, m, and possibly s property
+ * to indicate the hours, minutes, and seconds.
+ * 
+ * @param {string} str the offset string to convert to an object
+ * @returns {Object.<{h:number,m:number,s:number}>} an object giving the offset for the zone at 
+ * the given date/time, in hours, minutes, and seconds
+ */
+ilib.TimeZone.prototype._offsetStringToObj = function (str) {
+	var offsetParts = (typeof(str) === 'string') ? str.split(":") : [],
+		ret = {h:0},
+		temp;
+	
+	if (offsetParts.length > 0) {
+		ret.h = parseInt(offsetParts[0], 10);
+		if (offsetParts.length > 1) {
+			temp = parseInt(offsetParts[1], 10);
+			if (temp) {
+				ret.m = temp;
+			}
+			if (offsetParts.length > 2) {
+				temp = parseInt(offsetParts[2], 10);
+				if (temp) {
+					ret.s = temp;
+				}
+			}
+		}
+	}
+
+	return ret;
+};
+
+/**
  * Returns the offset of this time zone from UTC at the given date/time. If daylight saving 
  * time is in effect at the given date/time, this method will return the offset value 
  * adjusted by the amount of daylight saving.
  * @param {ilib.Date} date the date for which the offset is needed
- * @return {string} the offset for the zone at the given date/time in the format "h:m:s" 
+ * @return {Object.<{h:number,m:number,s:number}>} an object giving the offset for the zone at 
+ * the given date/time, in hours, minutes, and seconds  
  */
 ilib.TimeZone.prototype.getOffset = function (date) {
+	var ret = {};
 	if (this.zone.o) {
-		if (this.inDaylightTime(date)) {
-			var offsetParts = this.zone.o.split(":"),
-				saveParts = this.zone.s.v.split(":"),
+		var offsetParts = this._offsetStringToObj(this.zone.o);
+		
+		if (date && this.inDaylightTime(date)) {
+			var saveParts = this._offsetStringToObj(this.zone.s.v),
 				temp,
-				hours,
-				minutes,
-				offset,
-				signum = 1;
+				minutes;
 			
-			//console.log("standard offset is " + this.zone.o);
-			//console.log("savings is " + this.zone.s.v);
+			//console.log("standard offset is " + JSON.stringify(offsetParts));
+			//console.log("savings is " + JSON.stringify(saveParts));
 			
 			// convert to number of seconds in the day and then back again 
-			// to hours:min:seconds so that we get the arithmetic right
-			temp = parseInt(offsetParts[0], 10);
-			if (temp < 0) {
-				signum = -1;
+			// to hours:min:seconds so that we get the arithmetic right when
+			// we add the savings time, which may be a non-whole-hour size
+			temp = (offsetParts.m || 0) * 60 + (offsetParts.s || 0);
+			if (offsetParts.h < 0) {
+				temp += -offsetParts.h * 3600;
 				temp = -temp;
+			} else {
+				temp += offsetParts.h * 3600;
 			}
-			temp *= 3600;
-			if (offsetParts.length > 1) {
-				temp += (parseInt(offsetParts[1], 10)) * 60;
-				if (offsetParts.length > 2) {
-					temp += parseInt(offsetParts[2], 10);
-				}
-			}
-			temp *= signum;
 			
 			//console.log("standard offset in seconds: " + temp);
-			
-			temp += (parseInt(saveParts[0], 10)) * 3600;
-			if (saveParts.length > 1) {
-				temp += (parseInt(saveParts[1], 10)) * 60;
-				if (saveParts.length > 2) {
-					temp += parseInt(saveParts[2], 10);
-				}
-			}
+
+			temp += saveParts.h * 3600 + (saveParts.m || 0) * 60 + (saveParts.s || 0);
 			
 			//console.log("less savings, leaves this in seconds: " + temp);
 			
-			hours = Math.floor(temp / 3600);
-			temp -= (hours * 3600);
+			ret.h = Math.floor(temp / 3600);
+			temp -= (ret.h * 3600);
 			minutes = Math.floor(temp / 60);
 			temp -= (minutes * 60);
-			
-			offset = hours + ":" + minutes;
+			if (minutes) {
+				ret.m = minutes;
+			}
 			if (temp !== 0) {
-				offset += ":" + temp;
+				ret.s = temp;
 			}
 			
-			return offset;
+			return ret;
+		} else {
+			ret.h = offsetParts.h;
+			if (offsetParts.m) {
+				ret.m = offsetParts.m;
+			}
+			if (offsetParts.s) {
+				ret.s = offsetParts.s;
+			}
 		}
-		return this.zone.o;
+		return ret;
 	}
-	return "0:0";
+	return {h:0};
+};
+
+/**
+ * Returns the offset of this time zone from UTC at the given date/time. If daylight saving 
+ * time is in effect at the given date/time, this method will return the offset value 
+ * adjusted by the amount of daylight saving.
+ * @param {ilib.Date} date the date for which the offset is needed
+ * @return {string} the offset for the zone at the given date/time as a string in the 
+ * format "h:m:s" 
+ */
+ilib.TimeZone.prototype.getOffsetStr = function (date) {
+	var offset = this.getOffset(date),
+		ret;
+	
+	ret = offset.h;
+	if (typeof(offset.m) !== 'undefined') {
+		ret += ":" + offset.m;
+		if (typeof(offset.s) !== 'undefined') {
+			ret += ":" + offset.s;
+		}
+	} else {
+		ret += ":0";
+	}
+	
+	return ret;
+};
+
+/**
+ * Gets the offset from UTC for this time zone.
+ * @returns {Object.<{h:number,m:number,s:number}>} an object giving the offset from 
+ * UTC for this time zone, in hours, minutes, and seconds 
+ */
+ilib.TimeZone.prototype.getRawOffset = function () {
+	return this._offsetStringToObj(this.zone.o);
 };
 
 /**
  * Gets the offset from UTC for this time zone.
  * @returns {string} the offset from UTC for this time zone, in the format "h:m:s" 
  */
-ilib.TimeZone.prototype.getRawOffset = function () {
+ilib.TimeZone.prototype.getRawOffsetStr = function () {
 	return this.zone.o || "0:0";
+};
+
+/**
+ * Return the amount of time in hours:minutes that the clock is advanced during
+ * daylight savings time.
+ * @returns {Object.<{h:number,m:number,s:number}>} the amount of time that the 
+ * clock advances for DST in hours, minutes, and seconds 
+ */
+ilib.TimeZone.prototype.getDSTSavings = function () {
+	if (this.zone.s) {
+		return this._offsetStringToObj(this.zone.s.v);	// this.zone.start.savings
+	}
+	return {h:0};
 };
 
 /**
@@ -2692,7 +3432,7 @@ ilib.TimeZone.prototype.getRawOffset = function () {
  * @returns {string} the amount of time that the clock advances for DST in the
  * format "h:m:s"
  */
-ilib.TimeZone.prototype.getDSTSavings = function () {
+ilib.TimeZone.prototype.getDSTSavingsStr = function () {
 	if (this.zone.s) {
 		return this.zone.s.v;	// this.zone.start.savings
 	}
@@ -2720,7 +3460,7 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 		i;
 	
 	if (rule.r.charAt(0) == 'l' || rule.r.charAt(0) == 'f') {
-		cal = new ilib.Cal({type: "gregorian"});
+		cal = ilib.Cal.newInstance({type: "gregorian"});
 		type = rule.r.charAt(0);
 		weekday = parseInt(rule.r.substring(1), 10);
 		day = (type === 'l') ? cal.getMonLength(rule.m, year) : 1;
@@ -2772,12 +3512,12 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 	switch (type) {
 		case 'l':
 		case '<':
-			//console.log("returning " + refDay.onOrBefore(rd, weekday));
-			return refDay.onOrBefore(rd, weekday);		
+			//console.log("returning " + refDay.onOrBeforeRd(rd, weekday));
+			return refDay.onOrBeforeRd(rd, weekday);		
 		case 'f':
 		case '>':
-			//console.log("returning " + refDay.onOrAfter(rd, weekday));
-			return refDay.onOrAfter(rd, weekday);		
+			//console.log("returning " + refDay.onOrAfterRd(rd, weekday));
+			return refDay.onOrAfterRd(rd, weekday);		
 		default:
 			//console.log("returning rd unchanged");
 			return rd;
@@ -2838,21 +3578,21 @@ ilib.TimeZone.prototype.useDaylightTime = function () {
 			typeof(this.zone.e) !== 'undefined');
 };
 
-ilib.data.dateformats_en = {
+ilib.data.dateformats = {
 	"gregorian": {
 		"order": "{date} {time}",
 		"date": {
 			"dmwy": {
-				"s": "EE d/MM/yy",
-				"m": "EEE dd/MM/yyyy",
-				"l": "EEE d MMM, yyyy",
-				"f": "EEEE d MMMM, yyyy"
+				"s": "EE d/M/yy",
+				"m": "EEE d/MM/yyyy",
+				"l": "EEE d MMM yyyy",
+				"f": "EEEE d MMMM yyyy"
 			},
 			"dmy": {
-				"s": "d/MM/yy",
-				"m": "dd/MM/yyyy",
-				"l": "d MMM, yyyy",
-				"f": "d MMMM, yyyy"
+				"s": "d/M/yy",
+				"m": "d/MM/yyyy",
+				"l": "d MMM yyyy",
+				"f": "d MMMM yyyy"
 			},
 			"dmw": {
 				"s": "EE d/M",
@@ -2890,19 +3630,26 @@ ilib.data.dateformats_en = {
 				"m": "NN",
 				"l": "MMM",
 				"f": "MMMM"
+			},
+			"w": {
+				"s": "E",
+				"m": "EE",
+				"l": "EEE",
+				"f": "EEEE"
 			}
 		},
 		"time": {
-			"ahmsz": "h:mm:ssa z",
-			"ahms": "h:mm:ssa",
-			"hmsz": "h:mm:ss z",
-			"hms": "h:mm:ss",
-			"ahmz": "h:mma z",
-			"ahm": "h:mma",
-			"hmz": "h:mm z",
-			"hm": "h:mm",
+			"ahmsz": "H:mm:ssa z",
+			"ahms": "H:mm:ssa",
+			"hmsz": "H:mm:ss z",
+			"hms": "H:mm:ss",
+			"ahmz": "H:mma z",
+			"ahm": "H:mma",
+			"hmz": "H:mm z",
+			"ah": "Ha",
+			"hm": "H:mm",
 			"ms": "mm:ss",
-			"h": "h",
+			"h": "H",
 			"m": "mm",
 			"s": "ss"
 		},
@@ -2947,18 +3694,20 @@ ilib.data.dateformats_en = {
 				"s": "{sd}/{sm}/{sy}-{ed}/{em}/{ey}",
 				"m": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
 				"l": "{sd} {sm} {sy} - {ed} {em} {ey}",
-				"f": "{sd} {sm}, {sy} - {ed} {em}, {ey}"
+				"f": "{sd} {sm} {sy} - {ed} {em} {ey}"
 			},
 			"c20": {
 				"s": "{sm}/{sy}-{em}/{ey}",
 				"m": "{sm}/{sy} - {em}/{ey}",
 				"l": "{sm} {sy} - {em} {ey}",
-				"f": "{sm} {sy} - {em}, {ey}"
+				"f": "{sm} {sy} - {em} {ey}"
 			},
 			"c30": "{sy} - {ey}"
 		}
 	},
-	"julian": "gregorian"
+	"julian": "gregorian",
+	"islamic": "gregorian",
+	"hebrew": "gregorian"
 };
 ilib.data.dateformats_en_US = {
 	"gregorian": {
@@ -2987,6 +3736,21 @@ ilib.data.dateformats_en_US = {
 				"l": "MMM d",
 				"f": "MMMM d"
 			}
+		},
+		"time": {
+			"ahmsz": "h:mm:ssa z",
+			"ahms": "h:mm:ssa",
+			"hmsz": "h:mm:ss z",
+			"hms": "h:mm:ss",
+			"ahmz": "h:mma z",
+			"ahm": "h:mma",
+			"hmz": "h:mm z",
+			"ah": "ha",
+			"hm": "h:mm",
+			"ms": "mm:ss",
+			"h": "h",
+			"m": "mm",
+			"s": "ss"
 		},
 		"range": {
 			"c00": {
@@ -3038,6 +3802,1772 @@ ilib.data.dateformats_en_US = {
 				"f": "{sm} {sy} - {em} {ey}"
 			},
 			"c30": "{sy} - {ey}"
+		}
+	}
+};
+ilib.data.dateformats_en_CA = {
+	"gregorian": {
+		"date": {
+			"dmwy": {
+				"l": "EEE d MMM, yyyy",
+				"f": "EEEE d MMMM, yyyy"
+			},
+			"dmy": {
+				"l": "d MMM, yyyy",
+				"f": "d MMMM, yyyy"
+			}
+		},
+		"time": {
+			"ahmsz": "h:mm:ssa z",
+			"ahms": "h:mm:ssa",
+			"hmsz": "h:mm:ss z",
+			"hms": "h:mm:ss",
+			"ahmz": "h:mma z",
+			"ahm": "h:mma",
+			"hmz": "h:mm z",
+			"ah": "ha",
+			"hm": "h:mm",
+			"h": "h"
+		},
+		"range": {
+			"c00": {
+				"l": "{st} - {et}, {sd} {sm}, {sy}",
+				"f": "{st} - {et}, {sd} {sm}, {sy}"
+			},
+			"c01": {
+				"l": "{sd} {st} - {ed} {et} {sm}, {sy}",
+				"f": "{sd} {st} - {ed} {et} {sm}, {sy}"
+			},
+			"c10": {
+				"l": "{sd}-{ed} {sm}, {sy}",
+				"f": "{sd}-{ed} {sm}, {sy}"
+			},
+			"c11": {
+				"l": "{sd} {sm} - {ed} {em}, {sy}",
+				"f": "{sd} {sm} - {ed} {em}, {sy}"
+			},
+			"c12": {
+				"l": "{sd} {sm}, {sy} - {ed} {em}, {ey}",
+				"f": "{sd} {sm}, {sy} - {ed} {em}, {ey}"
+			},
+			"c20": {
+				"l": "{sm}, {sy} - {em}, {ey}",
+				"f": "{sm}, {sy} - {em}, {ey}"
+			}
+		}
+	}
+};
+ilib.data.dateformats_fr = {
+	"gregorian": {
+		"order": "{time} {date}",
+		"date": {
+			"dmwy": {
+				"s": "EE d/MM/yy",
+				"m": "EE d/MM/yyyy",
+				"l": "EEE d MMM yyyy",
+				"f": "EEEE d MMMM yyyy"
+			},
+			"dmy": {
+				"s": "d/MM/yy",
+				"m": "d/MM/yyyy",
+				"l": "d MMM yyyy",
+				"f": "d MMMM yyyy"
+			},
+			"dmw": {
+				"s": "EE d/MM",
+				"m": "EE d/MM",
+				"l": "EEE d MMM",
+				"f": "EEEE d MMMM"
+			},
+			"dm": {
+				"s": "d/MM",
+				"m": "d/MM",
+				"l": "d MMM",
+				"f": "d MMMM"
+			},
+			"my": {
+				"s": "MM/yy",
+				"m": "MM/yyyy",
+				"l": "MMM yyyy",
+				"f": "MMMM yyyy"
+			},
+			"d": "dd",
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yyyy",
+				"f": "yyyy G"
+			},
+			"n": {
+				"s": "N",
+				"m": "NN",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "HH:mm:ss a z",
+			"ahms": "HH:mm:ss a",
+			"hmsz": "HH:mm:ss z",
+			"hms": "HH:mm:ss",
+			"ahmz": "HH:mm a z",
+			"ahm": "HH:mm a",
+			"hmz": "HH:mm z",
+			"ah": "HH",
+			"hm": "HH:mm",
+			"ms": "mm:ss",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"julian": "gregorian"
+};
+ilib.data.dateformats_fr_CA = {
+	"gregorian": {
+		"time": {
+			"ahmsz": "h:mm:ssa z",
+			"ahms": "h:mm:ssa",
+			"hmsz": "h:mm:ss z",
+			"hms": "h:mm:ss",
+			"ahmz": "h:mma z",
+			"ahm": "h:mma",
+			"hmz": "h:mm z",
+			"ah": "ha",
+			"hm": "h:mm",
+			"h": "h"
+		}
+	}
+};
+ilib.data.dateformats_es = {
+	"gregorian": {
+		"order": "{date} {time}",
+		"date": {
+			"dmwy": {
+				"s": "EE dd/MM/yy",
+				"m": "EEE dd/MM/yyyy",
+				"l": "EEE dd 'de' MMM yyyy",
+				"f": "EEEE dd 'de' MMMM yyyy"
+			},
+			"dmy": {
+				"s": "dd/MM/yy",
+				"m": "dd/MM/yyyy",
+				"l": "dd 'de' MMM yyyy",
+				"f": "dd 'de' MMMM yyyy"
+			},
+			"dmw": {
+				"s": "EE dd/MM",
+				"m": "EE dd/MM",
+				"l": "EEE dd 'de' MMM",
+				"f": "EEEE dd 'de' MMMM"
+			},
+			"dm": {
+				"s": "dd/MM",
+				"m": "dd/MM",
+				"l": "dd 'de' MMM",
+				"f": "dd 'de' MMMM"
+			},
+			"my": {
+				"s": "MM/yy",
+				"m": "MM/yyyy",
+				"l": "MMM yy",
+				"f": "MMMM yyyy"
+			},
+			"d": "dd",
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yyyy",
+				"f": "yyyy G"
+			},
+			"n": {
+				"s": "N",
+				"m": "NN",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "hh:mm:ssa z",
+			"ahms": "hh:mm:ssa",
+			"hmsz": "HH:mm:ss z",
+			"hms": "HH:mm:ss",
+			"ahmz": "hh:mma z",
+			"ahm": "hh:mma",
+			"hmz": "HH:mm z",
+			"ah": "HH",
+			"hm": "HH:mm",
+			"ms": "mm:ss",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"julian": "gregorian"
+};
+ilib.data.dateformats_es_MX = {
+	"gregorian": {
+		"time": {
+			"ahmsz": "h:mm:ssa z",
+			"ahms": "h:mm:ssa",
+			"hmsz": "h:mm:ss z",
+			"hms": "h:mm:ss",
+			"ahmz": "h:mma z",
+			"ahm": "h:mma",
+			"hmz": "h:mm z",
+			"ah": "ha",
+			"hm": "h:mm",
+			"h": "h"
+		}
+	}
+};
+ilib.data.dateformats_pt = {
+	"gregorian": {
+		"date": {
+			"dmwy": {
+				"s": "E, dd/MM/yy",
+				"m": "EE, dd/MM/yyyy",
+				"l": "EEE, d 'de' MMM 'de' yy",
+				"f": "EEEE, d 'de' MMMM 'de' yyyy"
+			},
+			"dmy": {
+				"s": "dd/MM/yy",
+				"m": "dd/MM/yyyy",
+				"l": "dd 'de' MMM 'de' yy",
+				"f": "dd 'de' MMMM 'de' yyyy"
+			},
+			"dmw": {
+				"s": "E, dd/MM",
+				"m": "EE, dd/MM",
+				"l": "EEE, dd 'de' MMM",
+				"f": "EEEE, dd 'de' MMMM"
+			},
+			"dm": {
+				"s": "dd/MM",
+				"m": "dd/MM",
+				"l": "dd 'de' MMM",
+				"f": "dd 'de' MMMM"
+			},
+			"my": {
+				"s": "MM/yy",
+				"m": "MM/yyyy",
+				"l": "MMM yy",
+				"f": "MMMM yyyy"
+			},
+			"d": {
+				"s": "dd",
+				"m": "dd",
+				"l": "dd",
+				"f": "dd"
+			},
+			"m": {
+				"s": "M",
+				"m": "M",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yyyy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "N",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "HH'h'mm'min'ss's' a Z",
+			"ahms": "HH'h'mm'min'ss's' a",
+			"hmsz": "HH'h'mm'min'ss's' Z",
+			"ahmz": "HH'h'mm'min' a Z",
+			"hms": "HH'h'mm'min'ss's'",
+			"ahm": "HH'h'mm'min' a",
+			"hmz": "HH'h'mm'min' Z",
+			"ah": "HH",
+			"hm": "HH'h'mm'min'",
+			"ms": "mm'min'ss's'",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		},
+		"range": {
+			"c00": {
+				"s": "{sd}/{sm}/{sy} {st} - {et}",
+				"m": "{sd}/{sm}/{sy} {st} - {et}",
+				"l": "{sd}/{sm}/{sy} {st} - {et}",
+				"f": "{sd} 'de' {sm} 'de' {sy} {st} - {et} "
+			},
+			"c01": {
+				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+				"m": "{sd}/{sm} {st} - {ed}/{em} {et}, {sy}",
+				"l": "{sd} {st} - {ed} {et}, {sm} {sy}",
+				"f": "{sd} {st} - {ed} {et},  'de' {sm} {sy}"
+			},
+			"c02": {
+				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+				"m": "{sd}/{sm} {st} - {ed}/{em} {et}, {sy}",
+				"l": "{sd} 'de' {sm} {st} - {ed} 'de' {em} {et}, {sy}",
+				"f": "{sd} 'de' {sm} {st} - {ed} 'de' {em} {et}, {sy}"
+			},
+			"c03": {
+				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+				"m": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+				"l": "{sd}  'de' {sm}  'de' {sy} {st} - {ed} 'de' {em} 'de' {ey} {et}",
+				"f": "{sd}  'de' {sm}  'de' {sy} {st} - {ed} 'de' {em} 'de' {ey} {et}"
+			},
+			"c03": {
+				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+				"m": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+				"l": "{sd} 'de' {sm} 'de' {sy} {st} - {ed} 'de' {em} 'de' {ey} {et}",
+				"f": "{sd} 'de' {sm} 'de' {sy} {st} - {ed} 'de' {em} 'de' {ey} {et}"
+			},
+			"c10": {
+				"s": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+				"m": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+				"l": "{sd}-{ed} 'de' {sm} 'de' {sy}",
+				"f": "{sd}-{ed} 'de' {sm} 'de' {sy}"
+			},
+			"c11": {
+				"s": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+				"m": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+				"l": "{sd} 'de' {sm} - {ed} 'de' {em} 'de' {sy}",
+				"f": "{sd} 'de' {sm} - {ed} 'de' {em} 'de' {sy}"
+			},
+			"c12": {
+				"s": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+				"m": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+				"l": "{sd} 'de' {sm} 'de' {sy} - {ed} 'de' {em} 'de' {ey}",
+				"f": "{sd} 'de' {sm} 'de' {sy} - {ed} 'de' {em} 'de' {ey}"
+			},
+			"c20": {
+				"s": "{sm}/{sy} - {em}/{ey}",
+				"m": "{sm}/{sy} - {em}/{ey}",
+				"l": "{sm} 'de' {sy} - {em} 'de' {ey}",
+				"f": "{sm} 'de' {sy} - {em} 'de' {ey}"
+			},
+			"c30": "{sy} - {ey}"
+		}
+	},
+	"buddhist": {
+		"date": {
+			"dmwy": {
+				"s": "E, dd/MM/yy G",
+				"m": "EE, dd/MM/yyyy G",
+				"l": "EEE, d 'de' MMM 'de' yy G",
+				"f": "EEEE, d 'de' MMMM 'de' yyyy G"
+			},
+			"dmy": {
+				"s": "dd/MM/yy G",
+				"m": "dd/MM/yyyy G",
+				"l": "d 'de' MMM 'de' yy G",
+				"f": "d 'de' MMMM 'de' yyyy G"
+			},
+			"dmw": {
+				"s": "E, dd/MM",
+				"m": "EE, dd/MM",
+				"l": "EEE, d 'de' MMM",
+				"f": "EEEE, d 'de' MMMM"
+			},
+			"dm": {
+				"s": "d/M",
+				"m": "d/M",
+				"l": "d 'de' MMM",
+				"f": "d 'de' MMMM"
+			},
+			"my": {
+				"s": "MM/yy G",
+				"m": "MM/yyyy G",
+				"l": "MMM yy G",
+				"f": "MMMM yyyy G"
+			},
+			"d": {
+				"s": "dd",
+				"m": "dd",
+				"l": "dd",
+				"f": "dd"
+			},
+			"m": {
+				"s": "M",
+				"m": "M",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yyyy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "N",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "HH'h'mm'min'ss's' a Z",
+			"ahms": "HH'h'mm'min'ss's' a",
+			"hmsz": "HH'h'mm'min'ss's' Z",
+			"ahmz": "HH'h'mm'min' a Z",
+			"hms": "HH'h'mm'min'ss's'",
+			"ahm": "HH'h'mm'min' a",
+			"hmz": "HH'h'mm'min' Z",
+			"ah": "HH",
+			"hm": "HH'h'mm'min'",
+			"ms": "mm'min'ss's'",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"japanese": {
+		"date": {
+			"dmw": {
+				"s": "E, dd/MM",
+				"m": "EE, dd/MM",
+				"l": "EEE, d MMM",
+				"f": "EEEE, d MMMM"
+			},
+			"dm": {
+				"s": "d/M",
+				"m": "d/M",
+				"l": "d MMM",
+				"f": "d MMMM"
+			},
+			"d": {
+				"s": "d",
+				"m": "d",
+				"l": "d",
+				"f": "d"
+			},
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yyyy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "N",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "HH'h'mm'min'ss's' a Z",
+			"ahms": "HH'h'mm'min'ss's' a",
+			"hmsz": "HH'h'mm'min'ss's' Z",
+			"ahmz": "HH'h'mm'min' a Z",
+			"hms": "HH'h'mm'min'ss's'",
+			"ahm": "HH'h'mm'min' a",
+			"hmz": "HH'h'mm'min' Z",
+			"ah": "HH",
+			"hm": "HH'h'mm'min'",
+			"ms": "mm'min'ss's'",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"roc": {
+		"date": {
+			"dmw": {
+				"s": "E, dd/MM",
+				"m": "EE, dd/MM",
+				"l": "EEE, d 'de' MMM",
+				"f": "EEEE, d 'de' MMMM"
+			},
+			"dm": {
+				"s": "d/M",
+				"m": "d/M",
+				"l": "d 'de' MMM",
+				"f": "d 'de' MMMM"
+			},
+			"d": {
+				"s": "d",
+				"m": "d",
+				"l": "d",
+				"f": "d"
+			},
+			"m": {
+				"s": "M",
+				"m": "M",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yyyy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "N",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "HH'h'mm'min'ss's' a Z",
+			"ahms": "HH'h'mm'min'ss's' a",
+			"hmsz": "HH'h'mm'min'ss's' Z",
+			"ahmz": "HH'h'mm'min' a Z",
+			"hms": "HH'h'mm'min'ss's'",
+			"ahm": "HH'h'mm'min' a",
+			"hmz": "HH'h'mm'min' Z",
+			"ah": "HH",
+			"hm": "HH'h'mm'min'",
+			"ms": "mm'min'ss's'",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"julian": "gregorian"
+}
+;
+ilib.data.dateformats_zh = {
+	"gregorian": {
+		"order": "{date}{time}",
+		"date": {
+			"dmwy": {
+				"s": "yy-MM-dE",
+				"m": "yyyy-MM-dEE",
+				"l": "yyyy年MMM月d日EEE",
+				"f": "yyyy年MMMM月d日EEEE"
+			},
+			"dmy": {
+				"s": "yy-MM-d",
+				"m": "yyyy-MM-d",
+				"l": "yyyy年MMM月d日",
+				"f": "yyyy年MMMM月d日"
+			},
+			"dmw": {
+				"s": "MM-dE",
+				"m": "MM-dEE",
+				"l": "MMM月d日EEE",
+				"f": "MMMM月d日EEEE"
+			},
+			"dm": {
+				"s": "MM-d",
+				"m": "MM-d",
+				"l": "MMM月d日",
+				"f": "MMMM月d日"
+			},
+			"my": {
+				"s": "yy-MM",
+				"m": "yyyy-MM",
+				"l": "yyyy年MMM月",
+				"f": "yyyy年MMMM月"
+			},
+			"d": "dd",
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yyyy",
+				"l": "yyyy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "NN",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "ahh:mm:ssz",
+			"ahms": "ahh:mm:ss",
+			"hmsz": "hh:mm:ssz",
+			"hms": "hh:mm:ss",
+			"ahmz": "ahh:mmz",
+			"ahm": "ahh:mm",
+			"hmz": "hh:mmz",
+			"ah": "ahh",
+			"hm": "hh:mm",
+			"ms": "mm:ss",
+			"h": "hh",
+			"m": "mm",
+			"s": "ss"
+		},
+		"range": {
+			"c00": {
+				"s": "{sy}-{sm}-{sd}，{st}至{et}",
+				"m": "{sy}-{sm}-{sd}，{st}至{et}",
+				"l": "{sy}年{sm}月{sd}日，{st}至{et}",
+				"f": "{sy}年{sm}月{sd}日，{st}至{et}"
+			},
+			"c01": {
+				"s": "{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}",
+				"m": "{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}",
+				"l": "{sy}年{sm}月{sd}日，{st}至{ed}日，{et}",
+				"f": "{sy}年{sm}月{sd}日，{st}至{ed}日，{et}"
+			},
+			"c02": {
+				"s": "{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}",
+				"m": "{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}",
+				"l": "{sy}年{sm}月{sd}日，{st}至{em}月{ed}日，{et}",
+				"f": "{sy}年{sm}月{sd}日，{st}至{em}月{ed}日，{et}"
+			},
+			"c03": {
+				"s": "{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}",
+				"m": "{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}",
+				"l": "{sy}年{sm}月{sd}日，{st}至{ey}年{em}月{ed}日，{et}",
+				"f": "{sy}年{sm}月{sd}日，{st}至{ey}年{em}月{ed}日，{et}"
+			},
+			"c10": {
+				"s": "{sy}-{sm}-{sd}至{ed}",
+				"m": "{sy}-{sm}-{sd}至{ed}",
+				"l": "{sy}年{sm}月{sd}日至{ed}日",
+				"f": "{sy}年{sm}月{sd}日至{ed}日"
+			},
+			"c11": {
+				"s": "{sy}-{sm}-{sd}至{em}-{ed}",
+				"m": "{sy}-{sm}-{sd}至{em}-{ed}",
+				"l": "{sy}年{sm}月{sd}日至{em}月{ed}日",
+				"f": "{sy}年{sm}月{sd}日至{em}月{ed}日"
+			},
+			"c12": {
+				"s": "{sy}-{sm}-{sd}至{ey}-{em}-{ed}",
+				"m": "{sy}-{sm}-{sd}至{ey}-{em}-{ed}",
+				"l": "{sy}年{sm}月{sd}日至{ey}年{em}月{ed}日",
+				"f": "{sy}年{sm}月{sd}日至{ey}年{em}月{ed}日"
+			},
+			"c20": {
+				"s": "{sy}-{sm}至{ey}-{em}",
+				"m": "{sy}-{sm}至{ey}-{em}",
+				"l": "{sy}年{sm}月至{ey}年{em}月",
+				"f": "{sy}年{sm}月至{ey}年{em}月"
+			},
+			"c30": "{sy}至{ey}"
+		}
+	},
+	"julian": "gregorian"
+};
+ilib.data.dateformats_ja = {
+	"gregorian": {
+		"order": "{date}、{time}",
+		"date": {
+			"dmwy": {
+				"s": "Eyy/MM/d",
+				"m": "EEyyyy/MM/d",
+				"l": "EEEyyyy年MMM月d日",
+				"f": "yyyy年MMMM月d日（EEEE）"
+			},
+			"dmy": {
+				"s": "yy/MM/d",
+				"m": "yyyy/MM/d",
+				"l": "yyyy年MMM月d日",
+				"f": "yyyy年MMMM月d日"
+			},
+			"dmw": {
+				"s": "EMM/d",
+				"m": "EEMM/d",
+				"l": "EEEMMM月d日",
+				"f": "MMMM月d日（EEEE）"
+			},
+			"dm": {
+				"s": "MM/d",
+				"m": "MM/d",
+				"l": "MMM月d日",
+				"f": "MMMM月d日"
+			},
+			"my": {
+				"s": "yy/MM",
+				"m": "yyyy/MM",
+				"l": "yyyy年MMM月",
+				"f": "yyyy年MMMM月"
+			},
+			"d": "dd",
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yyyy",
+				"l": "yyyy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "NN",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "aHH:mm:ss z",
+			"ahms": "aHH:mm:ss",
+			"hmsz": "HH:mm:ss z",
+			"hms": "HH:mm:ss",
+			"ahmz": "aHH:mm z",
+			"ahm": "aHH:mm",
+			"hmz": "HH:mm z",
+			"ah": "HH",
+			"hm": "HH:mm",
+			"ms": "mm:ss",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		},
+		"range": {
+			"c00": {
+				"s": "{sy}/{sm}/{sd}、{st}-{et}",
+				"m": "{sy}/{sm}/{sd}、{st}-{et}",
+				"l": "{sy}年{sm}月{sd}日{st}-{et}",
+				"f": "{sy}年{sm}月{sd}日{st}-{et}"
+			},
+			"c01": {
+				"s": "{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}",
+				"m": "{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}",
+				"l": "{sy}年{sm}月{sd}日{st}-{ed}日{et}",
+				"f": "{sy}年{sm}月{sd}日{st}-{ed}日{et}"
+			},
+			"c02": {
+				"s": "{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}",
+				"m": "{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}",
+				"l": "{sy}年{sm}月{sd}日{st}-{em}月{ed}日{et}",
+				"f": "{sy}年{sm}月{sd}日{st}-{em}月{ed}日{et}"
+			},
+			"c03": {
+				"s": "{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}",
+				"m": "{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}",
+				"l": "{sy}年{sm}月{sd}日{st}-{ey}年{em}月{ed}日{et}",
+				"f": "{sy}年{sm}月{sd}日{st}-{ey}年{em}月{ed}日{et}"
+			},
+			"c10": {
+				"s": "{sy}/{sm}/{sd}-{ed}",
+				"m": "{sy}/{sm}/{sd}-{ed}",
+				"l": "{sy}年{sm}月{sd}-{ed}日",
+				"f": "{sy}年{sm}月{sd}-{ed}日"
+			},
+			"c11": {
+				"s": "{sy}/{sm}/{sd}-{ey}/{em}/{ed}",
+				"m": "{sy}/{sm}/{sd}-{ey}/{em}/{ed}",
+				"l": "{sy}年{sm}月{sd}日-{em}月{ed}日",
+				"f": "{sy}年{sm}月{sd}日-{em}月{ed}日"
+			},
+			"c12": {
+				"s": "{sy}/{sm}/{sd}-{ey}/{em}/{ed}",
+				"m": "{sy}/{sm}/{sd}-{ey}/{em}/{ed}",
+				"l": "{sy}年{sm}月{sd}日-{ey}年{em}月{ed}日",
+				"f": "{sy}年{sm}月{sd}日-{ey}年{em}月{ed}日"
+			},
+			"c20": {
+				"s": "{sy}/{sm}-{ey}/{em}",
+				"m": "{sy}/{sm}-{ey}/{em}",
+				"l": "{sy}年{sm}月-{ey}年{em}月",
+				"f": "{sy}年{sm}月-{ey}年{em}月"
+			},
+			"c30": "{sy}-{ey}"
+		}
+	},
+	"julian": "gregorian"
+};
+ilib.data.dateformats_ko = {
+	"gregorian": {
+		"order": "{date} {time}",
+		"date": {
+			"dmwy": {
+				"s": "E yy. MM. dd",
+				"m": "EE yyyy. MM. dd",
+				"l": "EEE yyyy년 MMM월 d일",
+				"f": "yyyy년 MMM월 d일 (EEEE)"
+			},
+			"dmy": {
+				"s": "yy. MM. dd",
+				"m": "yyyy. MM. dd",
+				"l": "yyyy년 MMM월 d일",
+				"f": "yyyy년 MMM월 d일"
+			},
+			"dmw": {
+				"s": "E MM. dd",
+				"m": "EE MM. dd",
+				"l": "EEE MMM월 d일",
+				"f": "MMM월 d일 (EEEE)"
+			},
+			"dm": {
+				"s": "MM. dd",
+				"m": "MM. dd",
+				"l": "MMM월 d일",
+				"f": "MMM월 d일"
+			},
+			"my": {
+				"s": "yy. MM.",
+				"m": "yyyy. MM.",
+				"l": "yyyy년 MMM월",
+				"f": "yyyy년 MMM월"
+			},
+			"d": "dd",
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yyyy",
+				"l": "yyyy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "NN",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "a h:mm:ss z",
+			"ahms": "a h:mm:ss",
+			"hmsz": "h:mm:ss z",
+			"hms": "h:mm:ss",
+			"ahmz": "a h:mm z",
+			"ahm": "a h:mm",
+			"hmz": "h:mm z",
+			"ah": "a h",
+			"hm": "h:mm",
+			"ms": "mm:ss",
+			"h": "h",
+			"m": "mm",
+			"s": "ss"
+		},
+		"range": {
+			"c00": {
+				"s": "{sy}. {sm}. {sd} {st}에서 {et}까지",
+				"m": "{sy}. {sm}. {sd} {st}에서 {et}까지",
+				"l": "{sy}년 {sm}월 {sd}일 {st}에서 {et}까지",
+				"f": "{sy}년 {sm}월 {sd}일 {st}에서 {et}까지"
+			},
+			"c01": {
+				"s": "{sy}. {sm}. {sd} {st}에서 {ed} {et}까지",
+				"m": "{sy}. {sm}. {sd} {st}에서 {ed} {et}까지",
+				"l": "{sy}년 {sm}월 {sd}일 {st}에서 {ed}일 {et}까지",
+				"f": "{sy}년 {sm}월 {sd}일 {st}에서 {ed}일 {et}까지"
+			},
+			"c02": {
+				"s": "{sy}. {sm}. {sd} {st}에서 {em}. {ed} {et}까지",
+				"m": "{sy}. {sm}. {sd} {st}에서 {em}. {ed} {et}까지",
+				"l": "{sy}년 {sm}월 {sd}일 {st}에서 {em}월 {ed}일 {et}까지",
+				"f": "{sy}년 {sm}월 {sd}일 {st}에서 {em}월 {ed}일 {et}까지"
+			},
+			"c03": {
+				"s": "{sy}. {sm}. {sd} {st}에서 {ey}. {em}. {ed} {et}까지",
+				"m": "{sy}. {sm}. {sd} {st}에서 {ey}. {em}. {ed} {et}까지",
+				"l": "{sy}년 {sm}월 {sd}일 {st}에서 {ey}년 {em}월 {ed}일 {et}까지",
+				"f": "{sy}년 {sm}월 {sd}일 {st}에서 {ey}년 {em}월 {ed}일 {et}까지"
+			},
+			"c10": {
+				"s": "{sy}. {sm}. {sd}에서 {ed}까지",
+				"m": "{sy}. {sm}. {sd}에서 {ed}까지",
+				"l": "{sy}년 {sm}월 {sd}일에서 {ed}일까지",
+				"f": "{sy}년 {sm}월 {sd}일에서 {ed}일까지"
+			},
+			"c11": {
+				"s": "{sy}. {sm}. {sd}에서 {em}. {ed}까지",
+				"m": "{sy}. {sm}. {sd}에서 {em}. {ed}까지",
+				"l": "{sy}년 {sm}월 {sd}일에서 {em}월 {ed}일까지",
+				"f": "{sy}년 {sm}월 {sd}일에서 {em}월 {ed}일까지"
+			},
+			"c12": {
+				"s": "{sy}. {sm}. {sd}에서 {ey}. {em}. {ed}까지",
+				"m": "{sy}. {sm}. {sd}에서 {ey}. {em}. {ed}까지",
+				"l": "{sy}년 {sm}월 {sd}일에서 {ey}년 {em}월 {ed}일까지",
+				"f": "{sy}년 {sm}월 {sd}일에서 {ey}년 {em}월 {ed}일까지"
+			},
+			"c20": {
+				"s": "{sy}. {sm}.에서 {ey}. {em}.까지",
+				"m": "{sy}. {sm}.에서 {ey}. {em}.까지",
+				"l": "{sy}년 {sm}월에서 {ey}년 {em}월까지",
+				"f": "{sy}년 {sm}월에서 {ey}년 {em}월까지"
+			},
+			"c30": "{sy}년에서 {ey}년까지"
+		}
+	},
+	"julian": "gregorian"
+};
+ilib.data.dateformats_id = {
+	"gregorian": {
+		"date": {
+			"dmwy": {
+				"s": "E, d/M/yy",
+				"m": "EE, d/M/yyyy",
+				"l": "EEE, d MMM yy",
+				"f": "EEEE, dd MMMM yyyy"
+			},
+			"dmy": {
+				"s": "d/M/yy",
+				"m": "d/M/yyyy",
+				"l": "d MMM yy",
+				"f": "dd MMMM yyyy"
+			},
+			"dmw": {
+				"s": "E, d/M",
+				"m": "EE, d/M",
+				"l": "EEE, d MMM",
+				"f": "EEEE, dd MMMM"
+			},
+			"dm": {
+				"s": "d/M",
+				"m": "d/M",
+				"l": "d MMM",
+				"f": "dd MMMM"
+			},
+			"my": {
+				"s": "M/yy",
+				"m": "M/yyyy",
+				"l": "MMM yy",
+				"f": "MMMM yyyy"
+			},
+			"d": {
+				"s": "d",
+				"m": "d",
+				"l": "d",
+				"f": "d"
+			},
+			"m": {
+				"s": "M",
+				"m": "M",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "N",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "H:mm:ss a Z",
+			"ahms": "H:mm:ss a",
+			"hmsz": "H:mm:ss Z",
+			"ahmz": "H:mm a Z",
+			"hms": "HH:mm:ss",
+			"ahm": "H:mm a",
+			"hmz": "H:mm Z",
+			"ah": "Ha",
+			"hm": "H:mm",
+			"ms": "mm:ss",
+			"h": "H",
+			"m": "mm",
+			"s": "ss"
+		},
+		"range": {
+			"c00": {
+				"s": "{sd}/{sm}/{sy} {st} – {et}",
+				"m": "{sd}/{sm}/{sy} {st} – {et}",
+				"l": "{sd} {sm} {sy} {st} – {et}",
+				"f": "{sd} {sm} {sy} {st} – {et} "
+			},
+			"c01": {
+				"s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}",
+				"m": "{sd}/{sm} {st} – {ed}/{em} {et}, {sy}",
+				"l": "{sd} {st} – {ed} {et}, {sm} {sy}",
+				"f": "{sd} {st} – {ed} {et}, {sm} {sy}"
+			},
+			"c02": {
+				"s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}",
+				"m": "{sd}/{sm} {st} – {ed}/{em} {et}, {sy}",
+				"l": "{sd} {sm} {st} – {ed} {em} {et}, {sy}",
+				"f": "{sd} {sm} {st} – {ed} {em} {et}, {sy}"
+			},
+			"c03": {
+				"s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}",
+				"m": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}",
+				"l": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}",
+				"f": "{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}"
+			},
+			"c10": {
+				"s": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}",
+				"m": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}",
+				"l": "{sd}–{ed} {sm} {sy}",
+				"f": "{sd}–{ed} {sm} {sy}"
+			},
+			"c11": {
+				"s": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}",
+				"m": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}",
+				"l": "{sd} {sm} – {ed} {em} {sy}",
+				"f": "{sd} {sm} – {ed} {em} {sy}"
+			},
+			"c12": {
+				"s": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}",
+				"m": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}",
+				"l": "{sd} {sm} {sy} – {ed} {em} {ey}",
+				"f": "{sd} {sm} {sy} – {ed} {em} {ey}"
+			},
+			"c20": {
+				"s": "{sm}/{sy} – {em}/{ey}",
+				"m": "{sm}/{sy} – {em}/{ey}",
+				"l": "{sm} {sy} – {em} {ey}",
+				"f": "{sm} {sy} – {em} {ey}"
+			},
+			"c30": "{sy}–{ey}"
+		}
+	},
+	"buddhist": {
+		"date": {
+			"dmwy": {
+				"s": "E, d/M/yy G",
+				"m": "EE, d/M/yyyy G",
+				"l": "EEE, d MMM yy G",
+				"f": "EEEE, dd MMMM yyyy G"
+			},
+			"dmw": {
+				"s": "E, d-M",
+				"m": "EE, d-M",
+				"l": "EEE, d MMM",
+				"f": "EEEE, dd MMMM"
+			},
+			"dm": {
+				"s": "d-M",
+				"m": "d-M",
+				"l": "d MMM",
+				"f": "dd MMMM"
+			},
+			"my": {
+				"s": "M/yy G",
+				"m": "M/yyyy G",
+				"l": "MMM yy G",
+				"f": "MMMM yyyy G"
+			}
+		},
+		"time": {
+			"ahmsz": "H:mm:ss a Z",
+			"ahms": "H:mm:ss a",
+			"hmsz": "H:mm:ss Z",
+			"ahmz": "H:mm a Z",
+			"hms": "HH:mm:ss",
+			"ahm": "H:mm a",
+			"hmz": "H:mm Z",
+			"ah": "Ha",
+			"hm": "H:mm",
+			"ms": "mm:ss",
+			"h": "H",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"japanese": {
+		"date": {
+			"dmw": {
+				"s": "E, d-M",
+				"m": "EE, d-M",
+				"f": "EEEE, dd MMMM"
+			},
+			"dm": {
+				"s": "d-M",
+				"m": "d-M",
+				"f": "dd MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "H:mm:ss a Z",
+			"ahms": "H:mm:ss a",
+			"hmsz": "H:mm:ss Z",
+			"ahmz": "H:mm a Z",
+			"hms": "HH:mm:ss",
+			"ahm": "H:mm a",
+			"hmz": "H:mm Z",
+			"ah": "Ha",
+			"hm": "H:mm",
+			"ms": "mm:ss",
+			"h": "H",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"roc": {
+		"date": {
+			"dmw": {
+				"s": "E, d-M",
+				"m": "EE, d-M",
+				"f": "EEEE, dd MMMM"
+			},
+			"dm": {
+				"s": "d-M",
+				"m": "d-M",
+				"f": "dd MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "H:mm:ss a Z",
+			"ahms": "H:mm:ss a",
+			"hmsz": "H:mm:ss Z",
+			"ahmz": "H:mm a Z",
+			"hms": "HH:mm:ss",
+			"ahm": "H:mm a",
+			"hmz": "H:mm Z",
+			"ah": "Ha",
+			"hm": "H:mm",
+			"ms": "mm:ss",
+			"h": "H",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"julian": "gregorian"
+}
+;
+ilib.data.dateformats_ru = {
+	"gregorian": {
+		"date": {
+			"dmwy": {
+				"s": "E, dd.MM.yy",
+				"m": "EE, dd.MM.yyyy",
+				"l": "EEE, d MMM yy",
+				"f": "EEEE, d MMMM yyyy 'г'."
+			},
+			"dmy": {
+				"s": "dd.MM.yy",
+				"m": "dd.MM.yyyy",
+				"l": "d MMM yy",
+				"f": "d MMMM yyyy 'г'."
+			},
+			"dmw": {
+				"s": "E, dd.MM",
+				"m": "EE, dd.MM",
+				"l": "EEE, d MMM",
+				"f": "EEEE, d MMMM"
+			},
+			"dm": {
+				"s": "dd.MM",
+				"m": "dd.MM",
+				"l": "d MMM",
+				"f": "d MMMM"
+			},
+			"my": {
+				"s": "MM.yy",
+				"m": "MM.yyyy",
+				"l": "MMM yy",
+				"f": "MMMM yyyy 'г'."
+			},
+			"d": {
+				"s": "d",
+				"m": "d",
+				"l": "d",
+				"f": "d"
+			},
+			"m": {
+				"s": "M",
+				"m": "M",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "N",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "H:mm:ss a Z",
+			"ahms": "H:mm:ss a",
+			"hmsz": "H:mm:ss Z",
+			"ahmz": "H:mm a Z",
+			"hms": "H:mm:ss",
+			"ahm": "H:mm a",
+			"hmz": "H:mm Z",
+			"ah": "H a",
+			"hm": "H:mm",
+			"ms": "mm:ss",
+			"h": "H",
+			"m": "mm",
+			"s": "ss"
+		},
+		"range": {
+			"c00": {
+				"s": "{sd}.{sm}.{sy} {st}-{et}",
+				"m": "{sd}.{sm}.{sy} {st}-{et}",
+				"l": "{sd}.{sm}.{sy} {st}-{et}",
+				"f": "{sd} {sm} {sy} 'г'. {st}-{et} "
+			},
+			"c01": {
+				"s": "{sd}.{sm} {st} - {ed}.{em} {et}, {sy}",
+				"m": "{sd}.{sm} {st} - {ed}.{em} {et}, {sy}",
+				"l": "{sd} {st} - {ed} {et}, {sm} {sy}",
+				"f": "{sd} {st} - {ed} {et}, {sm} {sy} 'г'."
+			},
+			"c02": {
+				"s": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm} {st} - {ed}.{em} {et}, {sy}",
+				"l": "{sd} {sm} {st} - {ed} {em} {et}, {sy}",
+				"f": "{sd} {sm} {st} - {ed} {em} {et}, {sy} 'г'."
+			},
+			"c03": {
+				"s": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}",
+				"l": "{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}",
+				"f": "{sd} {sm} {sy} 'г'. {st} - {ed} {em} {ey} 'г'. {et}"
+			},
+			"c10": {
+				"s": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+				"m": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+				"l": "{sd}-{ed} {sm} {sy} 'г'.",
+				"f": "{sd}-{ed} {sm} {sy} 'г'."
+			},
+			"c11": {
+				"s": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+				"m": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+				"l": "{sd} {sm} - {ed} {em} {sy} 'г'.",
+				"f": "{sd} {sm} - {ed} {em} {sy} 'г'."
+			},
+			"c12": {
+				"s": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+				"m": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+				"l": "{sd} {sm} {sy} - {ed} {em} {ey} 'г'.",
+				"f": "{sd} {sm} {sy} - {ed} {em} {ey} 'г'."
+			},
+			"c20": {
+				"s": "{sm}.{sy} - {em}.{ey}",
+				"m": "{sm}.{sy} - {em}.{ey}",
+				"l": "{sm} {sy} - {em} {ey} 'г'.",
+				"f": "{sm} {sy} - {em} {ey} 'г'."
+			},
+			"c30": "{sy}-{ey}"
+		}
+	},
+	"buddhist": {
+		"date": {
+			"dmwy": {
+				"s": "E, dd.MM.yy G",
+				"m": "EE, dd.MM.yyyy G",
+				"l": "EEE, d MMM yy G",
+				"f": "EEEE, d MMMM yyyy 'г'. G"
+			},
+			"dmy": {
+				"s": "dd.MM.yy G",
+				"m": "dd.MM.yyyy G",
+				"l": "d MMM yy G",
+				"f": "d MMMM yyyy 'г'. G"
+			},
+			"dmw": {
+				"s": "E, dd.MM",
+				"m": "EE, dd.MM",
+				"l": "EEE, d MMM",
+				"f": "EEEE, d MMMM"
+			},
+			"dm": {
+				"s": "dd.MM",
+				"m": "dd.MM",
+				"l": "d MMM",
+				"f": "d MMMM"
+			},
+			"my": {
+				"s": "MM.yy G",
+				"m": "MM.yyyy G",
+				"l": "MMM yy G",
+				"f": "MMMM yyyy 'г'. G"
+			},
+			"d": {
+				"s": "d",
+				"m": "d",
+				"l": "d",
+				"f": "d"
+			},
+			"m": {
+				"s": "M",
+				"m": "M",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "N",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "H:mm:ss a Z",
+			"ahms": "H:mm:ss a",
+			"hmsz": "H:mm:ss Z",
+			"ahmz": "H:mm a Z",
+			"hms": "H:mm:ss",
+			"ahm": "H:mm a",
+			"hmz": "H:mm Z",
+			"ah": "H a",
+			"hm": "H:mm",
+			"ms": "mm:ss",
+			"h": "H",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"japanese": {
+		"date": {
+			"dmw": {
+				"s": "E, dd.MM",
+				"m": "EE, dd.MM",
+				"l": "EEEE, d MMM",
+				"f": "EEEE, d MMMM"
+			},
+			"dm": {
+				"s": "dd.MM",
+				"m": "dd.MM",
+				"l": "d MMM",
+				"f": "d MMMM"
+			},
+			"d": {
+				"s": "d",
+				"m": "d",
+				"l": "d",
+				"f": "d"
+			},
+			"m": {
+				"s": "M",
+				"m": "M",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "N",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "H:mm:ss a Z",
+			"ahms": "H:mm:ss a",
+			"hmsz": "H:mm:ss Z",
+			"ahmz": "H:mm a Z",
+			"hms": "H:mm:ss",
+			"ahm": "H:mm a",
+			"hmz": "H:mm Z",
+			"ah": "H a",
+			"hm": "H:mm",
+			"ms": "mm:ss",
+			"h": "H",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"roc": {
+		"date": {
+			"dmw": {
+				"s": "E, dd.MM",
+				"m": "EE, dd.MM",
+				"l": "EEEE, d MMM",
+				"f": "EEEE, d MMMM"
+			},
+			"dm": {
+				"s": "dd.MM",
+				"m": "dd.MM",
+				"f": "d MMM",
+				"f": "d MMMM"
+			},
+			"d": {
+				"s": "d",
+				"m": "d",
+				"l": "d",
+				"f": "d"
+			},
+			"m": {
+				"s": "M",
+				"m": "M",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "N",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "H:mm:ss a Z",
+			"ahms": "H:mm:ss a",
+			"hmsz": "H:mm:ss Z",
+			"ahmz": "H:mm a Z",
+			"hms": "H:mm:ss",
+			"ahm": "H:mm a",
+			"hmz": "H:mm Z",
+			"ah": "H a",
+			"hm": "H:mm",
+			"ms": "mm:ss",
+			"h": "H",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"julian": "gregorian"
+}
+;
+ilib.data.dateformats_tr = {
+	"gregorian": {
+		"order": "{date} {time}",
+		"date": {
+			"dmwy": {
+				"s": "dd.MM.yy E",
+				"m": "dd.MM.yyyy EE",
+				"l": "dd MMM yy EEE",
+				"f": "dd MMMM yyyy EEEE"
+			},
+			"dmy": {
+				"s": "dd.MM.yy",
+				"m": "dd.MM.yyyy",
+				"l": "dd MMM yy",
+				"f": "dd MMMM yyyy"
+			},
+			"dmw": {
+				"s": "dd.MM E",
+				"m": "dd.MM EE",
+				"l": "d MMM EEE",
+				"f": "d MMMM EEEE"
+			},
+			"dm": {
+				"s": "dd.MM",
+				"m": "dd.MM",
+				"l": "dd MMM",
+				"f": "dd MMMM"
+			},
+			"my": {
+				"s": "MM.yy",
+				"m": "MM.yyyy",
+				"l": "MMM yy",
+				"f": "MMMM yyyy"
+			},
+			"d": {
+				"s": "dd",
+				"m": "dd",
+				"l": "dd",
+				"f": "dd"
+			},
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yyyy",
+				"l": "yy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "NN",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "HH:mm:ss a Z",
+			"ahms": "HH:mm:ss a",
+			"hmsz": "HH:mm:ss Z",
+			"ahmz": "HH:mm a Z",
+			"hms": "HH:mm:ss",
+			"ahm": "HH:mm a",
+			"hmz": "HH:mm Z",
+			"hm": "h:mm",
+			"ms": "mm:ss",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		},
+		"range": {
+			"c00": {
+				"s": "{sd}.{sm}.{sy} {st} - {et}",
+				"m": "{sd}.{sm}.{sy} {st} - {et}",
+				"l": "{sd} {sm} {sy} {st} - {et}",
+				"f": "{sd} {sm} {sy} {st} - {et} "
+			},
+			"c01": {
+				"s": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}",
+				"l": "{sd} {sm} {st} - {ed} {em} {et} {ey}",
+				"f": "{sd} {sm} {st} - {ed} {em} {et} {ey}"
+			},
+			"c02": {
+				"s": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}",
+				"l": "{sd} {sm} {st} - {ed} {em} {et}, {sy} ",
+				"f": "{sd} {sm} {st} - {ed} {em} {et}, {sy}"
+			},
+			"c03": {
+				"s": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}",
+				"l": "{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}",
+				"f": "{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"
+			},
+			"c10": {
+				"s": "{sd} - {ed}.{sm}.{sy}",
+				"m": "{sd} - {ed}.{sm}.{sy}",
+				"l": "{sd} - {ed} {sm} {sy}",
+				"f": "{sd} - {ed} {sm} {sy}"
+			},
+			"c11": {
+				"s": "{sd}.{sm} - {ed}.{em} {ey}",
+				"m": "{sd}.{sm} - {ed}.{em} {ey}",
+				"l": "{sd} {sm} - {ed} {em} {sy}",
+				"f": "{sd} {sm} - {ed} {em} {sy}"
+			},
+			"c12": {
+				"s": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+				"m": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+				"l": "{sd} {sm} {sy} - {ed} {em} {ey}",
+				"f": "{sd} {sm} {sy} - {ed} {em} {ey}"
+			},
+			"c20": {
+				"s": "{sm}.{sy} - {em}.{ey}",
+				"m": "{sm}.{sy} - {em}.{ey}",
+				"l": "{sm} {sy} - {em} {ey}",
+				"f": "{sm} {sy} - {em} {ey}"
+			},
+			"c30": "{sy} - {ey}"
+		}
+	},
+	"buddhist": {
+		"date": {
+			"dmwy": {
+				"s": "dd.MM.yy G E",
+				"m": "dd.MM.yyyy G EE",
+				"l": "dd MMM yy G EEE",
+				"f": "dd MMMM yyyy G EEEE"
+			},
+			"dmy": {
+				"s": "dd.MM.yy G",
+				"m": "dd.MM.yyyy G",
+				"l": "dd MMM yy G",
+				"f": "dd MMMM yyyy G"
+			},
+			"dmw": {
+				"s": "dd.MM E",
+				"m": "dd.MM EE",
+				"l": "dd MMM G EEE",
+				"f": "dd MMMM G EEEE"
+			},
+			"dm": {
+				"s": "dd.MM",
+				"m": "dd.MM",
+				"l": "dd MMM G",
+				"f": "dd MMMM G"
+			},
+			"my": {
+				"s": "MM.yy G",
+				"m": "MM.yyyy G",
+				"l": "MMM yy G",
+				"f": "MMMM yyyy G"
+			},
+			"d": {
+				"s": "d",
+				"m": "d",
+				"l": "dd",
+				"f": "dd"
+			},
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy G",
+				"m": "yyyy G",
+				"l": "yy",
+				"f": "yyyy G"
+			},
+			"n": {
+				"s": "N",
+				"m": "N",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "HH:mm:ss a Z",
+			"ahms": "HH:mm:ss a",
+			"hmsz": "HH:mm:ss Z",
+			"ahmz": "HH:mm a Z",
+			"hms": "HH:mm:ss",
+			"ahm": "HH:mm a",
+			"hmz": "HH:mm Z",
+			"hm": "h:mm",
+			"ms": "mm:ss",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"japanese": {
+		"date": {
+			"dmw": {
+				"s": "dd.MM E",
+				"m": "dd.MM EE",
+				"f": "dd MMMM G EEEE"
+			},
+			"dm": {
+				"s": "dd.MM",
+				"m": "dd.MM",
+				"f": "dd MMMM G"
+			},
+			"d": {
+				"s": "d",
+				"m": "d",
+				"f": "dd"
+			},
+			"m": {
+				"s": "M",
+				"m": "M",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy G",
+				"m": "yyyy G",
+				"f": "yy"
+			},
+			"n": {
+				"s": "N",
+				"m": "N",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "HH:mm:ss a Z",
+			"ahms": "HH:mm:ss a",
+			"hmsz": "HH:mm:ss Z",
+			"ahmz": "HH:mm a Z",
+			"hms": "HH:mm:ss",
+			"ahm": "HH:mm a",
+			"hmz": "HH:mm Z",
+			"hm": "h:mm",
+			"ms": "mm:ss",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"roc": {
+		"date": {
+			"dmw": {
+				"s": "dd.MM E",
+				"m": "dd.MM EE",
+				"f": "dd MMMM G EEEE"
+			},
+			"dm": {
+				"s": "dd.MM",
+				"m": "dd.MM",
+				"f": "dd MMMM G"
+			},
+			"d": {
+				"s": "d",
+				"m": "d",
+				"f": "dd"
+			},
+			"m": {
+				"s": "M",
+				"m": "M",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy G",
+				"m": "yyyy G",
+				"f": "yy"
+			},
+			"n": {
+				"s": "N",
+				"m": "N",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "HH:mm:ss a Z",
+			"ahms": "HH:mm:ss a",
+			"hmsz": "HH:mm:ss Z",
+			"ahmz": "HH:mm a Z",
+			"hms": "HH:mm:ss",
+			"ahm": "HH:mm a",
+			"hmz": "HH:mm Z",
+			"hm": "h:mm",
+			"ms": "mm:ss",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		}
+	},
+	"julian": "gregorian"
+}
+;
+ilib.data.dateformats_en_AU = {
+	"gregorian": {
+		"time": {
+			"ahmsz": "h:mm:ssa z",
+			"ahms": "h:mm:ssa",
+			"hmsz": "h:mm:ss z",
+			"hms": "h:mm:ss",
+			"ahmz": "h:mma z",
+			"ahm": "h:mma",
+			"hmz": "h:mm z",
+			"ah": "ha",
+			"hm": "h:mm",
+			"h": "h"
 		}
 	}
 };
@@ -3103,6 +5633,7 @@ ilib.data.dateformats_de = {
 			"ahmz": "HH:mm a z",
 			"ahm": "HH:mm a",
 			"hmz": "HH:mm z",
+			"ah": "HH",
 			"hm": "HH:mm",
 			"ms": "mm:ss",
 			"h": "HH",
@@ -3159,148 +5690,6 @@ ilib.data.dateformats_de = {
 				"f": "{sm} {sy} - {em} {ey}"
 			},
 			"c30": "{sy} - {ey}"
-		}
-	},
-	"julian": "gregorian"
-};
-ilib.data.dateformats_es = {
-	"gregorian": {
-		"order": "{date} {time}",
-		"date": {
-			"dmwy": {
-				"s": "EE dd/MM/yy",
-				"m": "EEE dd/MM/yyyy",
-				"l": "EEE dd 'de' MMM yyyy",
-				"f": "EEEE dd 'de' MMMM yyyy"
-			},
-			"dmy": {
-				"s": "dd/MM/yy",
-				"m": "dd/MM/yyyy",
-				"l": "dd 'de' MMM yyyy",
-				"f": "dd 'de' MMMM yyyy"
-			},
-			"dmw": {
-				"s": "EE dd/MM",
-				"m": "EE dd/MM",
-				"l": "EEE dd 'de' MMM",
-				"f": "EEEE dd 'de' MMMM"
-			},
-			"dm": {
-				"s": "dd/MM",
-				"m": "dd/MM",
-				"l": "dd 'de' MMM",
-				"f": "dd 'de' MMMM"
-			},
-			"my": {
-				"s": "MM/yy",
-				"m": "MM/yyyy",
-				"l": "MMM yy",
-				"f": "MMMM yyyy"
-			},
-			"d": "dd",
-			"m": {
-				"s": "M",
-				"m": "MM",
-				"l": "MMM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yy",
-				"l": "yyyy",
-				"f": "yyyy G"
-			},
-			"n": {
-				"s": "N",
-				"m": "NN",
-				"l": "MMM",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "hh:mm:ssa z",
-			"ahms": "hh:mm:ssa",
-			"hmsz": "HH:mm:ss z",
-			"hms": "HH:mm:ss",
-			"ahmz": "hh:mma z",
-			"ahm": "hh:mma",
-			"hmz": "HH:mm z",
-			"hm": "HH:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"julian": "gregorian"
-};
-ilib.data.dateformats_fr = {
-	"gregorian": {
-		"order": "{time} {date}",
-		"date": {
-			"dmwy": {
-				"s": "EE d/MM/yy",
-				"m": "EE d/MM/yyyy",
-				"l": "EEE d MMM yyyy",
-				"f": "EEEE d MMMM yyyy"
-			},
-			"dmy": {
-				"s": "d/MM/yy",
-				"m": "d/MM/yyyy",
-				"l": "d MMM yyyy",
-				"f": "d MMMM yyyy"
-			},
-			"dmw": {
-				"s": "EE d/MM",
-				"m": "EE d/MM",
-				"l": "EEE d MMM",
-				"f": "EEEE d MMMM"
-			},
-			"dm": {
-				"s": "d/MM",
-				"m": "d/MM",
-				"l": "d MMM",
-				"f": "d MMMM"
-			},
-			"my": {
-				"s": "MM/yy",
-				"m": "MM/yyyy",
-				"l": "MMM yyyy",
-				"f": "MMMM yyyy"
-			},
-			"d": "dd",
-			"m": {
-				"s": "M",
-				"m": "MM",
-				"l": "MMM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yy",
-				"l": "yyyy",
-				"f": "yyyy G"
-			},
-			"n": {
-				"s": "N",
-				"m": "NN",
-				"l": "MMM",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "HH:mm:ss a z",
-			"ahms": "HH:mm:ss a",
-			"hmsz": "HH:mm:ss z",
-			"hms": "HH:mm:ss",
-			"ahmz": "HH:mm a z",
-			"ahm": "HH:mm a",
-			"hmz": "HH:mm z",
-			"hm": "HH:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
 		}
 	},
 	"julian": "gregorian"
@@ -3367,6 +5756,7 @@ ilib.data.dateformats_it = {
 			"ahmz": "hh.mm a z",
 			"ahm": "hh.mm a",
 			"hmz": "HH.mm z",
+			"ah": "HH",
 			"hm": "HH.mm",
 			"ms": "mm.ss",
 			"h": "HH",
@@ -3426,6 +5816,167 @@ ilib.data.dateformats_it = {
 		}
 	},
 	"julian": "gregorian"
+};
+ilib.data.dateformats_en_ZA = {
+	"gregorian": {
+		"order": "{date} {time}",
+		"date": {
+			"dmwy": {
+				"s": "E yy/MM/dd",
+				"m": "EE yyyy/MM/dd",
+				"l": "EEE dd MMM yy",
+				"f": "EEEE dd MMMM yyyy"
+			},
+			"dmy": {
+				"s": "yy/MM/dd",
+				"m": "yyyy/MM/dd",
+				"l": "dd MMM yy",
+				"f": "dd MMMM yyyy"
+			},
+			"dmw": {
+				"s": "E MM/dd",
+				"m": "EE MM/dd",
+				"l": "EEE dd MMM",
+				"f": "EEEE dd MMMM"
+			},
+			"dm": {
+				"s": "MM/dd",
+				"m": "MM/dd",
+				"l": "dd MMM",
+				"f": "dd MMMM"
+			},
+			"my": {
+				"s": "yy/MM",
+				"m": "yyyy/MM",
+				"l": "MMM yy",
+				"f": "MMMM yyyy"
+			},
+			"d": {
+				"s": "dd",
+				"m": "dd",
+				"l": "dd",
+				"f": "dd"
+			},
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yyyy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "NN",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "h:mm:ss a Z",
+			"ahms": "h:mm:ss a ",
+			"hmsz": "h:mm:ss Z",
+			"ahmz": "h:mm a Z",
+			"hms": "h:mm:ss",
+			"ahm": "h:mm a",
+			"hmz": "h:mm Z",
+			"ah": "h a",
+			"hm": "h:mm",
+			"ms": "mm:ss",
+			"h": "h",
+			"m": "mm",
+			"s": "ss"
+		},
+		"range": {
+			"c00": {
+				"s": "{sy}/{sm}/{sd}, {st} - {et}",
+				"m": "{sy}/{sm}/{sd}, {st} - {et}",
+				"l": "{sd} {sm} {sy}, {st} - {et}",
+				"f": "{sd} {sm} {sy}, {st} - {et}"
+			},
+			"c01": {
+				"s": "{sy}/{sm}/{sd} {st} – {ed} {et}",
+				"m": "{sy}/{sm}/{sd} {st} – {ed} {et}",
+				"l": "{sd} {sm} {sy} {st} – {ed} {em} {et}",
+				"f": "{sd} {sm} {sy} {st} – {ed} {em} {et}"
+			},
+			"c02": {
+				"s": "{sm}/{sd} {st} - {em}/{ed} {et}, {sy}",
+				"m": "{sm}/{sd} {st} - {em}/{ed} {et}, {sy}",
+				"l": "{sd} {sm} {st} - {ed} {em} {et}, {sy}",
+				"f": "{sd} {sm} {st} - {ed} {em} {et}, {sy}"
+			},
+			"c03": {
+				"s": "{sy}/{sm}/{sd} {st} - {ey}/{em}/{ed} {et}",
+				"m": "{sy}/{sm}/{sd} {st} - {ey}/{em}/{ed} {et}",
+				"l": "{sd} {sm} {sy}, {st} - {ed} {em} {ey}, {et}",
+				"f": "{sd} {sm} {sy}, {st} - {ed} {em} {ey}, {et}"
+			},
+			"c10": {
+				"s": "{sy}/{sm}/{sd} – {ed}",
+				"m": "{sy}/{sm}/{sd} – {ed}",
+				"l": "{sd} – {ed} {sm} {sy}",
+				"f": "{sd} – {ed} {sm} {sy}"
+			},
+			"c11": {
+				"s": "{sy}/{sm}/{sd} – {em}/{ed}",
+				"m": "{sy}/{sm}/{sd} – {em}/{ed}",
+				"l": "{sd} {sm} – {ed} {em} {sy}",
+				"f": "{sd} {sm} – {ed} {em} {sy}"
+			},
+			"c12": {
+				"s": "{sy}/{sm}/{sd} – {ey}/{em}/{ed}",
+				"m": "{sy}/{sm}/{sd} – {ey}/{em}/{ed}",
+				"l": "{sd} {sm} {sy} – {ed} {em} {ey}",
+				"f": "{sd} {sm} {sy} – {ed} {em} {ey}"
+			},
+			"c20": {
+				"s": "{sy}/{sm} – {ey}/{em}",
+				"m": "{sy}/{sm} – {ey}/{em}",
+				"l": "{sm} {sy} – {em} {ey}",
+				"f": "{sm} {sy} – {em} {ey}"
+			},
+			"c30": "{sy} – {ey}"
+		}
+	},
+	"julian": "gregorian"
+}
+;
+ilib.data.dateformats_en_PH = {
+	"gregorian": {
+		"time": {
+			"ahmsz": "h:mm:ssa z",
+			"ahms": "h:mm:ssa",
+			"hmsz": "h:mm:ss z",
+			"hms": "h:mm:ss",
+			"ahmz": "h:mma z",
+			"ahm": "h:mma",
+			"hmz": "h:mm z",
+			"ah": "ha",
+			"hm": "h:mm",
+			"h": "h"
+		}
+	}
+};
+ilib.data.dateformats_tl_PH = {
+	"gregorian": {
+		"time": {
+			"ahmsz": "h:mm:ssa z",
+			"ahms": "h:mm:ssa",
+			"hmsz": "h:mm:ss z",
+			"hms": "h:mm:ss",
+			"ahmz": "h:mma z",
+			"ahm": "h:mma",
+			"hmz": "h:mm z",
+			"ah": "ha",
+			"hm": "h:mm",
+			"h": "h"
+		}
+	}
 };
 ilib.data.dateformats_xx = {
 	"gregorian": {
@@ -3579,265 +6130,183 @@ ilib.data.sysres = {
 	"a0": "am",
 	"a1": "pm",
 	"G-1": "BCE",
-	"G1": "CE"
+	"G1": "CE",
+	
+	"N1-hebrew": "N",
+	"N2-hebrew": "I",
+	"N3-hebrew": "S",
+	"N4-hebrew": "T",
+	"N5-hebrew": "A",
+	"N6-hebrew": "E",
+	"N7-hebrew": "T",
+	"N8-hebrew": "Ḥ",
+	"N9-hebrew": "K",
+	"N10-hebrew": "T",
+	"N11-hebrew": "S",
+	"N12-hebrew": "A",
+	"N13-hebrew": "A",
+
+	"NN1-hebrew": "Ni",
+	"NN2-hebrew": "Iy",
+	"NN3-hebrew": "Si",
+	"NN4-hebrew": "Ta",
+	"NN5-hebrew": "Av",
+	"NN6-hebrew": "El",
+	"NN7-hebrew": "Ti",
+	"NN8-hebrew": "Ḥe",
+	"NN9-hebrew": "Ki",
+	"NN10-hebrew": "Te",
+	"NN11-hebrew": "Sh",
+	"NN12-hebrew": "Ad",
+	"NN13-hebrew": "A2",
+
+	"MMM1-hebrew": "Nis",
+	"MMM2-hebrew": "Iyy",
+	"MMM3-hebrew": "Siv",
+	"MMM4-hebrew": "Tam",
+	"MMM5-hebrew": "Av",
+	"MMM6-hebrew": "Elu",
+	"MMM7-hebrew": "Tis",
+	"MMM8-hebrew": "Ḥes",
+	"MMM9-hebrew": "Kis",
+	"MMM10-hebrew": "Tev",
+	"MMM11-hebrew": "She",
+	"MMM12-hebrew": "Ada",
+	"MMM13-hebrew": "Ad2",
+
+	"MMMM1-hebrew": "Nisan",
+	"MMMM2-hebrew": "Iyyar",
+	"MMMM3-hebrew": "Sivan",
+	"MMMM4-hebrew": "Tammuz",
+	"MMMM5-hebrew": "Av",
+	"MMMM6-hebrew": "Elul",
+	"MMMM7-hebrew": "Tishri",
+	"MMMM8-hebrew": "Ḥeshvan",
+	"MMMM9-hebrew": "Kislev",
+	"MMMM10-hebrew": "Teveth",
+	"MMMM11-hebrew": "Shevat",
+	"MMMM12-hebrew": "Adar",
+	"MMMM13-hebrew": "Adar II",
+
+	"E0-hebrew": "R",
+	"E1-hebrew": "S",
+	"E2-hebrew": "S",
+	"E3-hebrew": "R",
+	"E4-hebrew": "Ḥ",
+	"E5-hebrew": "S",
+	"E6-hebrew": "S",
+
+	"EE0-hebrew": "ri",
+	"EE1-hebrew": "se",
+	"EE2-hebrew": "sl",
+	"EE3-hebrew": "rv",
+	"EE4-hebrew": "ḥa",
+	"EE5-hebrew": "si",
+	"EE6-hebrew": "sa",
+
+	"EEE0-hebrew": "ris",
+	"EEE1-hebrew": "she",
+	"EEE2-hebrew": "shl",
+	"EEE3-hebrew": "rvi",
+	"EEE4-hebrew": "ḥam",
+	"EEE5-hebrew": "shi",
+	"EEE6-hebrew": "sha",
+	
+	"EEEE0-hebrew": "yom rishon",
+	"EEEE1-hebrew": "yom sheni",
+	"EEEE2-hebrew": "yom shlishi",
+	"EEEE3-hebrew": "yom r'vi‘i",
+	"EEEE4-hebrew": "yom ḥamishi",
+	"EEEE5-hebrew": "yom shishi",
+	"EEEE6-hebrew": "yom shabbat",
+
+	"N1-islamic": "M",
+	"N2-islamic": "Ṣ",
+	"N3-islamic": "R",
+	"N4-islamic": "R",
+	"N5-islamic": "J",
+	"N6-islamic": "J",
+	"N7-islamic": "R",
+	"N8-islamic": "Š",
+	"N9-islamic": "R",
+	"N10-islamic": "Š",
+	"N11-islamic": "Q",
+	"N12-islamic": "Ḥ",
+
+	"NN1-islamic": "Mu",
+	"NN2-islamic": "Ṣa",
+	"NN3-islamic": "Rb",
+	"NN4-islamic": "R2",
+	"NN5-islamic": "Ju",
+	"NN6-islamic": "J2",
+	"NN7-islamic": "Ra",
+	"NN8-islamic": "Šh",
+	"NN9-islamic": "Ra",
+	"NN10-islamic": "Ša",
+	"NN11-islamic": "Qa",
+	"NN12-islamic": "Ḥi",
+
+	"MMM1-islamic": "Muḥ",
+	"MMM2-islamic": "Ṣaf",
+	"MMM3-islamic": "Rab",
+	"MMM4-islamic": "Ra2",
+	"MMM5-islamic": "Jum",
+	"MMM6-islamic": "Ju2",
+	"MMM7-islamic": "Raj",
+	"MMM8-islamic": "Šha",
+	"MMM9-islamic": "Ram",
+	"MMM10-islamic": "Šaw",
+	"MMM11-islamic": "Qad",
+	"MMM12-islamic": "Ḥij",
+
+	"MMMM1-islamic": "Muḥarram",
+	"MMMM2-islamic": "Ṣafar",
+	"MMMM3-islamic": "Rabī‘ I",
+	"MMMM4-islamic": "Rabī‘ II",
+	"MMMM5-islamic": "Jumādā I",
+	"MMMM6-islamic": "Jumādā II",
+	"MMMM7-islamic": "Rajab",
+	"MMMM8-islamic": "Šha'bān",
+	"MMMM9-islamic": "Ramaḍān",
+	"MMMM10-islamic": "Šawwāl",
+	"MMMM11-islamic": "Ḏu al-Qa‘da",
+	"MMMM12-islamic": "Ḏu al-Ḥijja",
+	
+	"E0-islamic": "A",
+	"E1-islamic": "I",
+	"E2-islamic": "T",
+	"E3-islamic": "A",
+	"E4-islamic": "K",
+	"E5-islamic": "J",
+	"E6-islamic": "S",
+
+	"EE0-islamic": "ah",
+	"EE1-islamic": "it",
+	"EE2-islamic": "th",
+	"EE3-islamic": "ar",
+	"EE4-islamic": "kh",
+	"EE5-islamic": "ju",
+	"EE6-islamic": "sa",
+
+	"EEE0-islamic": "aha",
+	"EEE1-islamic": "ith",
+	"EEE2-islamic": "tha",
+	"EEE3-islamic": "arb",
+	"EEE4-islamic": "kha",
+	"EEE5-islamic": "jum",
+	"EEE6-islamic": "sab",
+	
+	"EEEE0-islamic": "yawn al-ahad",
+	"EEEE1-islamic": "yawn al-ithnaya",
+	"EEEE2-islamic": "yawn uth-thalathaa",
+	"EEEE3-islamic": "yawn al-arba‘a",
+	"EEEE4-islamic": "yawn al-khamis",
+	"EEEE5-islamic": "yawn al-jum‘a",
+	"EEEE6-islamic": "yawn as-sabt"
 };
 ilib.data.sysres_en_CA = {
 	"a0": "AM",
 	"a1": "PM"
-};
-ilib.data.sysres_en_GB = {
-	"a0": "AM",
-	"a0": "PM"
-};
-ilib.data.sysres_de = {
-	"MMMM1": "Januar",
-	"MMM1": "Jan",
-	"NN1": "Ja",
-	"N1": "J",
-	"MMMM2": "Februar",
-	"MMM2": "Feb",
-	"NN2": "Fe",
-	"N2": "F",
-	"MMMM3": "März",
-	"MMM3": "Mär",
-	"NN3": "Mä",
-	"N3": "M",
-	"MMMM4": "April",
-	"MMM4": "Apr",
-	"NN4": "Ap",
-	"N4": "A",
-	"MMMM5": "Mai",
-	"MMM5": "Mai",
-	"NN5": "Ma",
-	"N5": "M",
-	"MMMM6": "Juni",
-	"MMM6": "Jun",
-	"NN6": "Ju",
-	"N6": "J",
-	"MMMM7": "Juli",
-	"MMM7": "Jul",
-	"NN7": "Ju",
-	"N7": "J",
-	"MMMM8": "August",
-	"MMM8": "Aug",
-	"NN8": "Au",
-	"N8": "A",
-	"MMMM9": "September",
-	"MMM9": "Sep",
-	"NN9": "Se",
-	"N9": "S",
-	"MMMM10": "Oktober",
-	"MMM10": "Okt",
-	"NN10": "Ok",
-	"N10": "O",
-	"MMMM11": "November",
-	"MMM11": "Nov",
-	"NN11": "No",
-	"N11": "N",
-	"MMMM12": "Dezember",
-	"MMM12": "Dez",
-	"NN12": "De",
-	"N12": "D",
-	"EEEE0": "Sonntag",
-	"EEE0": "So.",
-	"EE0": "So",
-	"E0": "S",
-	"EEEE1": "Monntag",
-	"EEE1": "Mo.",
-	"EE1": "Mo",
-	"E1": "M",
-	"EEEE2": "Dienstag",
-	"EEE2": "Di.",
-	"EE2": "Di",
-	"E2": "D",
-	"EEEE3": "Mittwoch",
-	"EEE3": "Mi.",
-	"EE3": "Mi",
-	"E3": "M",
-	"EEEE4": "Donnerstag",
-	"EEE4": "Do.",
-	"EE4": "Do",
-	"E4": "D",
-	"EEEE5": "Freitag",
-	"EEE5": "Fr.",
-	"EE5": "Fr",
-	"E5": "F",
-	"EEEE6": "Samstag",
-	"EEE6": "Sa.",
-	"EE6": "Sa",
-	"E6": "S",
-	"ordinalChoice": "#{num}.",
-	"a0": "vorm.",
-	"a1": "nachm.",
-
-	"durationShortMillis": "#{num}Ms",
-	"#{num}s": "#{num}S",
-	"durationShortMinutes": "#{num}M",
-	"#{num}h": "#{num}St",
-	"#{num}d": "#{num}T",
-	"#{num}w": "#{num}W",
-	"durationShortMonths": "#{num}Mo",
-	"#{num}y": "#{num}J",
-
-	"#{num} ms": "#{num} Ms",
-	"1#1 se|#{num} sec": "1#1 Se.|#{num} Se.",
-	"1#1 mi|#{num} min": "1#1 Mi.|#{num} Mi.",
-	"1#1 hr|#{num} hrs": "1#1 St.|#{num} St.",
-	"1#1 dy|#{num} dys": "1#1 Ta.|#{num} Ta.",
-	"1#1 wk|#{num} wks": "1#1 Wo.|#{num} Wo.",
-	"1#1 mo|#{num} mos": "1#1 Mo.|#{num} Mo.",
-	"1#1 yr|#{num} yrs": "1#1 Ja.|#{num} Ja.",
-
-	"1#1 sec|#{num} sec": "1#1 Sek.|#{num} Sek.",
-	"1#1 min|#{num} min": "1#1 Min.|#{num} Min.",
-	"1#1 hr|#{num} hrs": "1#1 Std.|#{num} Std.",
-	"1#1 day|#{num} days": "1#1 Tag|#{num} Tag.",
-	"1#1 wk|#{num} wks": "1#1 Wch.|#{num} Wch.",
-	"1#1 mon|#{num} mons": "1#1 Mon.|#{num} Mon.",
-	"1#1 yr|#{num} yrs": "1#1 Jhr.|#{num} Jhr.",
-	
-	"1#1 millisecond|#{num} milliseconds": "1#1 Millisekunde|#{num} Millisekunden",
-	"1#1 second|#{num} seconds": "1#1 Sekunde|#{num} Sekunden",
-	"1#1 minute|#{num} minutes": "1#1 Minute|#{num} Minuten",
-	"1#1 hour|#{num} hours": "1#1 Stunde|#{num} Stunden",
-	"1#1 day|#{num} days": "1#1 Tag|#{num} Tage",
-	"1#1 week|#{num} weeks": "1#1 Woche|#{num} Wochen",
-	"1#1 month|#{num} months": "1#1 Monat|#{num} Monate",
-	"1#1 year|#{num} years": "1#1 Jahr|#{num} Jahre",
-	
-	"{duration} ago": "vor {duration}",
-	"in {duration}": "in {duration}",
-	
-	"separatorShort": " ",
-	"separatorMedium": " ",
-	"separatorLong": " ",
-	"separatorFull": ", ",
-	"finalSeparatorFull": ", und "
-};
-ilib.data.sysres_es = {
-	"MMMM1": "enero",
-	"MMM1": "ene",
-	"NN1": "en",
-	"N1": "E",
-	"MMMM2": "febrero",
-	"MMM2": "feb",
-	"NN2": "fe",
-	"N2": "F",
-	"MMMM3": "marzo",
-	"MMM3": "mar",
-	"NN3": "ma",
-	"N3": "M",
-	"MMMM4": "abril",
-	"MMM4": "abr",
-	"NN4": "ab",
-	"N4": "A",
-	"MMMM5": "mayo",
-	"MMM5": "may",
-	"NN5": "ma",
-	"N5": "M",
-	"MMMM6": "junio",
-	"MMM6": "jun",
-	"NN6": "ju",
-	"N6": "J",
-	"MMMM7": "julio",
-	"MMM7": "jul",
-	"NN7": "ju",
-	"N7": "J",
-	"MMMM8": "agosto",
-	"MMM8": "ago",
-	"NN8": "ag",
-	"N8": "A",
-	"MMMM9": "septiembre",
-	"MMM9": "sep",
-	"NN9": "se",
-	"N9": "S",
-	"MMMM10": "octubre",
-	"MMM10": "oct",
-	"NN10": "oc",
-	"N10": "O",
-	"MMMM11": "noviembre",
-	"MMM11": "nov",
-	"NN11": "no",
-	"N11": "N",
-	"MMMM12": "diciembre",
-	"MMM12": "dic",
-	"NN12": "di",
-	"N12": "D",
-	"EEEE0": "domingo",
-	"EEE0": "dom",
-	"EE0": "do",
-	"E0": "D",
-	"EEEE1": "lunes",
-	"EEE1": "lun",
-	"EE1": "lu",
-	"E1": "L",
-	"EEEE2": "martes",
-	"EEE2": "mar",
-	"EE2": "ma",
-	"E2": "M",
-	"EEEE3": "miércoles",
-	"EEE3": "mié",
-	"EE3": "mi",
-	"E3": "M",
-	"EEEE4": "jueves",
-	"EEE4": "jue",
-	"EE4": "ju",
-	"E4": "J",
-	"EEEE5": "viernes",
-	"EEE5": "vie",
-	"EE5": "vi",
-	"E5": "V",
-	"EEEE6": "sábado",
-	"EEE6": "sáb",
-	"EE6": "sa",
-	"E6": "S",
-	"ordinalChoice": "#{num} º",
-	"a0": "AM",
-	"a1": "PM",
-
-	"durationShortMillis": "#{num}ms",
-	"#{num}s": "#{num}s",
-	"durationShortMinutes": "#{num}m",
-	"#{num}h": "#{num}h",
-	"#{num}d": "#{num}d",
-	"#{num}w": "#{num}sm",
-	"durationShortMonths": "#{num}me",
-	"#{num}y": "#{num}a",
-
-	"#{num} ms": "#{num} ms",
-	"1#1 se|#{num} sec": "1#1 sg|#{num} sgs",
-	"1#1 mi|#{num} min": "1#1 mn|#{num} mns",
-	"1#1 hr|#{num} hrs": "1#1 hr|#{num} hrs",
-	"1#1 dy|#{num} dys": "1#1 dí|#{num} dís",
-	"1#1 wk|#{num} wks": "1#1 sm|#{num} sms",
-	"1#1 mo|#{num} mos": "1#1 me|#{num} mss",
-	"1#1 yr|#{num} yrs": "1#1 añ|#{num} añs",
-
-	"1#1 sec|#{num} sec": "1#1 seg|#{num} segs",
-	"1#1 min|#{num} min": "1#1 min|#{num} mins",
-	"1#1 hr|#{num} hrs": "1#1 hor|#{num} hors",
-	"1#1 day|#{num} days": "1#1 día|#{num} días",
-	"1#1 wk|#{num} wks": "1#1 sem|#{num} sems",
-	"1#1 mon|#{num} mons": "1#1 mes|#{num} mss",
-	"1#1 yr|#{num} yrs": "1#1 año|#{num} años",
-	
-	"1#1 millisecond|#{num} milliseconds": "1#1 millisegundo|#{num} millisegundos",
-	"1#1 second|#{num} seconds": "1#1 segundo|#{num} segundos",
-	"1#1 minute|#{num} minutes": "1#1 minuto|#{num} minutos",
-	"1#1 hour|#{num} hours": "1#1 hora|#{num} horas",
-	"1#1 day|#{num} days": "1#1 día|#{num} días",
-	"1#1 week|#{num} weeks": "1#1 semana|#{num} semanas",
-	"1#1 month|#{num} months": "1#1 mes|#{num} meses",
-	"1#1 year|#{num} years": "1#1 año|#{num} años",
-	
-	"{duration} ago": "hace {duration}",
-	"in {duration}": "en {duration}",
-	
-	"separatorShort": " ",
-	"separatorMedium": " ",
-	"separatorLong": " ",
-	"separatorFull": ", ",
-	"finalSeparatorFull": ", y "
 };
 ilib.data.sysres_fr = {
 	"MMMM1": "janvier",
@@ -3932,16 +6401,16 @@ ilib.data.sysres_fr = {
 	"#{num} ms": "#{num} Ms",
 	"1#1 se|#{num} sec": "1#1 se|#{num} ses",
 	"1#1 mi|#{num} min": "1#1 mn|#{num} mns",
-	"1#1 hr|#{num} hrs": "1#1 hr|#{num} hrs",
+	"durationMediumHours": "1#1 hr|#{num} hrs",
 	"1#1 dy|#{num} dys": "1#1 jr|#{num} jrs",
-	"1#1 wk|#{num} wks": "1#1 sm|#{num} sms",
+	"durationMediumWeeks": "1#1 sm|#{num} sms",
 	"1#1 mo|#{num} mos": "1#1 mo|#{num} mos",
-	"1#1 yr|#{num} yrs": "1#1 an|#{num} ans",
+	"durationMediumYears": "1#1 an|#{num} ans",
 
 	"1#1 sec|#{num} sec": "1#1 sec|#{num} secs",
 	"1#1 min|#{num} min": "1#1 min|#{num} mins",
 	"1#1 hr|#{num} hrs": "1#1 hr|#{num} hrs",
-	"1#1 day|#{num} days": "1#1 jr|#{num} jrs",
+	"durationLongDays": "1#1 jr|#{num} jrs",
 	"1#1 wk|#{num} wks": "1#1 sem|#{num} sems",
 	"1#1 mon|#{num} mons": "1#1 mois|#{num} mois",
 	"1#1 yr|#{num} yrs": "1#1 an|#{num} ans",
@@ -3963,6 +6432,1118 @@ ilib.data.sysres_fr = {
 	"separatorLong": " ",
 	"separatorFull": ", ",
 	"finalSeparatorFull": ", et "
+};
+ilib.data.sysres_es = {
+	"MMMM1": "enero",
+	"MMM1": "ene",
+	"NN1": "en",
+	"N1": "E",
+	"MMMM2": "febrero",
+	"MMM2": "feb",
+	"NN2": "fe",
+	"N2": "F",
+	"MMMM3": "marzo",
+	"MMM3": "mar",
+	"NN3": "ma",
+	"N3": "M",
+	"MMMM4": "abril",
+	"MMM4": "abr",
+	"NN4": "ab",
+	"N4": "A",
+	"MMMM5": "mayo",
+	"MMM5": "may",
+	"NN5": "ma",
+	"N5": "M",
+	"MMMM6": "junio",
+	"MMM6": "jun",
+	"NN6": "ju",
+	"N6": "J",
+	"MMMM7": "julio",
+	"MMM7": "jul",
+	"NN7": "ju",
+	"N7": "J",
+	"MMMM8": "agosto",
+	"MMM8": "ago",
+	"NN8": "ag",
+	"N8": "A",
+	"MMMM9": "septiembre",
+	"MMM9": "sep",
+	"NN9": "se",
+	"N9": "S",
+	"MMMM10": "octubre",
+	"MMM10": "oct",
+	"NN10": "oc",
+	"N10": "O",
+	"MMMM11": "noviembre",
+	"MMM11": "nov",
+	"NN11": "no",
+	"N11": "N",
+	"MMMM12": "diciembre",
+	"MMM12": "dic",
+	"NN12": "di",
+	"N12": "D",
+	"EEEE0": "domingo",
+	"EEE0": "dom",
+	"EE0": "do",
+	"E0": "D",
+	"EEEE1": "lunes",
+	"EEE1": "lun",
+	"EE1": "lu",
+	"E1": "L",
+	"EEEE2": "martes",
+	"EEE2": "mar",
+	"EE2": "ma",
+	"E2": "M",
+	"EEEE3": "miércoles",
+	"EEE3": "mié",
+	"EE3": "mi",
+	"E3": "M",
+	"EEEE4": "jueves",
+	"EEE4": "jue",
+	"EE4": "ju",
+	"E4": "J",
+	"EEEE5": "viernes",
+	"EEE5": "vie",
+	"EE5": "vi",
+	"E5": "V",
+	"EEEE6": "sábado",
+	"EEE6": "sáb",
+	"EE6": "sa",
+	"E6": "S",
+	"ordinalChoice": "#{num} º",
+	"a0": "AM",
+	"a1": "PM",
+
+	"durationShortMillis": "#{num}ms",
+	"#{num}s": "#{num}s",
+	"durationShortMinutes": "#{num}m",
+	"#{num}h": "#{num}h",
+	"#{num}d": "#{num}d",
+	"#{num}w": "#{num}sm",
+	"durationShortMonths": "#{num}me",
+	"#{num}y": "#{num}a",
+
+	"#{num} ms": "#{num} ms",
+	"1#1 se|#{num} sec": "1#1 sg|#{num} sgs",
+	"1#1 mi|#{num} min": "1#1 mn|#{num} mns",
+	"durationMediumHours": "1#1 hr|#{num} hrs",
+	"1#1 dy|#{num} dys": "1#1 dí|#{num} dís",
+	"durationMediumWeeks": "1#1 sm|#{num} sms",
+	"1#1 mo|#{num} mos": "1#1 me|#{num} mss",
+	"durationMediumYears": "1#1 añ|#{num} añs",
+
+	"1#1 sec|#{num} sec": "1#1 seg|#{num} segs",
+	"1#1 min|#{num} min": "1#1 min|#{num} mins",
+	"1#1 hr|#{num} hrs": "1#1 hor|#{num} hors",
+	"durationLongDays": "1#1 día|#{num} días",
+	"1#1 wk|#{num} wks": "1#1 sem|#{num} sems",
+	"1#1 mon|#{num} mons": "1#1 mes|#{num} mss",
+	"1#1 yr|#{num} yrs": "1#1 año|#{num} años",
+	
+	"1#1 millisecond|#{num} milliseconds": "1#1 millisegundo|#{num} millisegundos",
+	"1#1 second|#{num} seconds": "1#1 segundo|#{num} segundos",
+	"1#1 minute|#{num} minutes": "1#1 minuto|#{num} minutos",
+	"1#1 hour|#{num} hours": "1#1 hora|#{num} horas",
+	"1#1 day|#{num} days": "1#1 día|#{num} días",
+	"1#1 week|#{num} weeks": "1#1 semana|#{num} semanas",
+	"1#1 month|#{num} months": "1#1 mes|#{num} meses",
+	"1#1 year|#{num} years": "1#1 año|#{num} años",
+	
+	"{duration} ago": "hace {duration}",
+	"in {duration}": "en {duration}",
+	
+	"separatorShort": " ",
+	"separatorMedium": " ",
+	"separatorLong": " ",
+	"separatorFull": ", ",
+	"finalSeparatorFull": ", y "
+};
+ilib.data.sysres_pt = {
+	"MMMM1": "janeiro",
+	"MMM1": "jan",
+	"NN1": "ja",
+	"N1": "J",
+	"MMMM2": "fevereiro",
+	"MMM2": "fev",
+	"NN2": "fe",
+	"N2": "F",
+	"MMMM3": "março",
+	"MMM3": "mar",
+	"NN3": "ma",
+	"N3": "M",
+	"MMMM4": "abril",
+	"MMM4": "abr",
+	"NN4": "ab",
+	"N4": "A",
+	"MMMM5": "maio",
+	"MMM5": "mai",
+	"NN5": "ma",
+	"N5": "M",
+	"MMMM6": "junho",
+	"MMM6": "jun",
+	"NN6": "ju",
+	"N6": "J",
+	"MMMM7": "julho",
+	"MMM7": "jul",
+	"NN7": "ju",
+	"N7": "J",
+	"MMMM8": "agosto",
+	"MMM8": "ago",
+	"NN8": "ag",
+	"N8": "A",
+	"MMMM9": "setembro",
+	"MMM9": "set",
+	"NN9": "se",
+	"N9": "S",
+	"MMMM10": "outubro",
+	"MMM10": "out",
+	"NN10": "ou",
+	"N10": "O",
+	"MMMM11": "novembro",
+	"MMM11": "nov",
+	"NN11": "no",
+	"N11": "N",
+	"MMMM12": "dezembro",
+	"MMM12": "dez",
+	"NN12": "de",
+	"N12": "D",
+	"EEEE0": "Domingo",
+	"EEE0": "Dom",
+	"EE0": "Do",
+	"E0": "D",
+	"EEEE1": "Segunda",
+	"EEE1": "Seg",
+	"EE1": "Se",
+	"E1": "S",
+	"EEEE2": "Terça",
+	"EEE2": "Ter",
+	"EE2": "Te",
+	"E2": "T",
+	"EEEE3": "Quarta",
+	"EEE3": "Qua",
+	"EE3": "Qu",
+	"E3": "Q",
+	"EEEE4": "Quinta ",
+	"EEE4": "Qui",
+	"EE4": "Qu",
+	"E4": "Q",
+	"EEEE5": "Sexta",
+	"EEE5": "Sex",
+	"EE5": "Se",
+	"E5": "S",
+	"EEEE6": "Sábado",
+	"EEE6": "Sáb",
+	"EE6": "Sa",
+	"E6": "S",
+	"ordinalChoice": "#{num}",
+	"a0": "AM",
+	"a1": "PM",
+
+	"durationShortMillis": "#{num}ms",
+	"#{num}s": "#{num}s",
+	"durationShortMinutes": "#{num}m",
+	"#{num}h": "#{num}h",
+	"#{num}d": "#{num}d",
+	"#{num}w": "#{num}sm",
+	"durationShortMonths": "#{num}me",
+	"#{num}y": "#{num}a",
+
+	"#{num} ms": "#{num} ms",
+	"1#1 se|#{num} sec": "1#1 sg|#{num} sgs",
+	"1#1 mi|#{num} min": "1#1 mn|#{num} mns",
+	"durationMediumHours": "1#1 hr|#{num} hrs",
+	"1#1 dy|#{num} dys": "1#1 di|#{num} dis",
+	"durationMediumWeeks": "1#1 sm|#{num} sms",
+	"1#1 mo|#{num} mos": "1#1 mê|#{num} mes",
+	"durationMediumYears": "1#1 an|#{num} ans",
+
+	"1#1 sec|#{num} sec": "1#1 seg|#{num} segs",
+	"1#1 min|#{num} min": "1#1 min|#{num} mins",
+	"1#1 hr|#{num} hrs": "1#1 hor|#{num} hors",
+	"durationLongDays": "1#1 dia|#{num} dias",
+	"1#1 wk|#{num} wks": "1#1 sem|#{num} sems",
+	"1#1 mon|#{num} mons": "1#1 mês|#{num} mss",
+	"1#1 yr|#{num} yrs": "1#1 ano|#{num} anos",
+	
+	"1#1 millisecond|#{num} milliseconds": "1#1 millisegundo|#{num} millisegundos",
+	"1#1 second|#{num} seconds": "1#1 segundo|#{num} segundos",
+	"1#1 minute|#{num} minutes": "1#1 minuto|#{num} minutos",
+	"1#1 hour|#{num} hours": "1#1 hora|#{num} horas",
+	"1#1 day|#{num} days": "1#1 dia|#{num} dias",
+	"1#1 week|#{num} weeks": "1#1 semana|#{num} semanas",
+	"1#1 month|#{num} months": "1#1 mês|#{num} meses",
+	"1#1 year|#{num} years": "1#1 ano|#{num} anos",
+                                                 	  	"{duration} ago": "{duration} atrás",  	"in {duration}": "em {duration}",  	  	"separatorShort": " ",  	"separatorMedium": " ",  	"separatorLong": " ",  	"separatorFull": ", ",  	"finalSeparatorFull": ", e "
+};
+ilib.data.sysres_zh = {
+	"MMMM1": "一",
+	"MMM1": "01",
+	"NN1": "01",
+	"N1": "1",
+	"MMMM2": "二",
+	"MMM2": "02",
+	"NN2": "02",
+	"N2": "2",
+	"MMMM3": "三",
+	"MMM3": "03",
+	"NN3": "03",
+	"N3": "3",
+	"MMMM4": "四",
+	"MMM4": "04",
+	"NN4": "04",
+	"N4": "4",
+	"MMMM5": "五",
+	"MMM5": "05",
+	"NN5": "05",
+	"N5": "5",
+	"MMMM6": "六",
+	"MMM6": "06",
+	"NN6": "06",
+	"N6": "6",
+	"MMMM7": "七",
+	"MMM7": "07",
+	"NN7": "07",
+	"N7": "7",
+	"MMMM8": "八",
+	"MMM8": "08",
+	"NN8": "08",
+	"N8": "8",
+	"MMMM9": "九",
+	"MMM9": "09",
+	"NN9": "09",
+	"N9": "9",
+	"MMMM10": "十",
+	"MMM10": "10",
+	"NN10": "10",
+	"N10": "1O",
+	"MMMM11": "十一",
+	"MMM11": "11",
+	"NN11": "11",
+	"N11": "11",
+	"MMMM12": "十二",
+	"MMM12": "12",
+	"NN12": "12",
+	"N12": "12",
+	"EEEE0": "星期日",
+	"EEE0": "周日",
+	"EE0": "日",
+	"E0": "日",
+	"EEEE1": "星期一",
+	"EEE1": "周一",
+	"EE1": "一",
+	"E1": "一",
+	"EEEE2": "星期二",
+	"EEE2": "周二",
+	"EE2": "二",
+	"E2": "二",
+	"EEEE3": "星期三",
+	"EEE3": "周三",
+	"EE3": "三",
+	"E3": "三",
+	"EEEE4": "星期四",
+	"EEE4": "周四",
+	"EE4": "四",
+	"E4": "四",
+	"EEEE5": "星期五",
+	"EEE5": "周五",
+	"EE5": "五",
+	"E5": "五",
+	"EEEE6": "星期六",
+	"EEE6": "周六",
+	"EE6": "六",
+	"E6": "六",
+	"ordinalChoice": "#{num}天",
+	"a0": "上午",
+	"a1": "下午",
+	"G-1": "公元前",
+	"G1": "公元",
+	
+	"durationShortMillis": "#{num}毫秒",
+	"#{num}s": "#{num}秒",
+	"durationShortMinutes": "#{num}分钟",
+	"#{num}h": "#{num}小时",
+	"#{num}d": "#{num}天",
+	"#{num}w": "#{num}周",
+	"durationShortMonths": "#{num}个月",
+	"#{num}y": "#{num}年",
+
+	"#{num} ms": "#{num}毫秒",
+	"1#1 se|#{num} sec": "#{num}秒",
+	"1#1 mi|#{num} min": "#{num}分钟",
+	"durationMediumHours": "#{num}小时",
+	"1#1 dy|#{num} dys": "#{num}天",
+	"durationMediumWeeks": "#{num}周",
+	"1#1 mo|#{num} mos": "#{num}个月",
+	"durationMediumYears": "#{num}年",
+
+	"1#1 sec|#{num} sec": "#{num}秒",
+	"1#1 min|#{num} min": "#{num}分钟",
+	"1#1 hr|#{num} hrs": "#{num}小时",
+	"durationLongDays": "#{num}天",
+	"1#1 wk|#{num} wks": "#{num}周",
+	"1#1 mon|#{num} mons": "#{num}个月",
+	"1#1 yr|#{num} yrs": "#{num}年",
+	
+	"1#1 millisecond|#{num} milliseconds": "#{num}毫秒",
+	"1#1 second|#{num} seconds": "#{num}秒",
+	"1#1 minute|#{num} minutes": "#{num}分钟",
+	"1#1 hour|#{num} hours": "#{num}小时",
+	"1#1 day|#{num} days": "#{num}天",
+	"1#1 week|#{num} weeks": "#{num}周",
+	"1#1 month|#{num} months": "#{num}个月",
+	"1#1 year|#{num} years": "#{num}年",
+	
+	"{duration} ago": "{duration}前",
+	"in {duration}": "在{duration}",
+	
+	"separatorShort": "",
+	"separatorMedium": "",
+	"separatorLong": "",
+	"separatorFull": "",
+	"finalSeparatorFull": "和"
+};
+ilib.data.sysres_ja = {
+	"MMMM1": "一",
+	"MMM1": "1",
+	"NN1": "1",
+	"N1": "1",
+	"MMMM2": "二",
+	"MMM2": "2",
+	"NN2": "2",
+	"N2": "2",
+	"MMMM3": "三",
+	"MMM3": "3",
+	"NN3": "3",
+	"N3": "3",
+	"MMMM4": "四",
+	"MMM4": "4",
+	"NN4": "4",
+	"N4": "4",
+	"MMMM5": "五",
+	"MMM5": "5",
+	"NN5": "5",
+	"N5": "5",
+	"MMMM6": "六",
+	"MMM6": "6",
+	"NN6": "6",
+	"N6": "6",
+	"MMMM7": "七",
+	"MMM7": "7",
+	"NN7": "7",
+	"N7": "7",
+	"MMMM8": "八",
+	"MMM8": "8",
+	"NN8": "8",
+	"N8": "8",
+	"MMMM9": "九",
+	"MMM9": "9",
+	"NN9": "9",
+	"N9": "9",
+	"MMMM10": "十",
+	"MMM10": "10",
+	"NN10": "10",
+	"N10": "1O",
+	"MMMM11": "十一",
+	"MMM11": "11",
+	"NN11": "11",
+	"N11": "11",
+	"MMMM12": "十二",
+	"MMM12": "12",
+	"NN12": "12",
+	"N12": "12",
+ 	"EEEE0": "日曜日",
+	"EEE0": "日曜日",
+	"EE0": "日",
+	"E0": "日",
+	"EEEE1": "月曜日",
+	"EEE1": "月曜日",
+	"EE1": "月",
+	"E1": "月",
+	"EEEE2": "火曜日",
+	"EEE2": "火曜日",
+	"EE2": "火",
+	"E2": "火",
+	"EEEE3": "水曜日",
+	"EEE3": "水曜日",
+	"EE3": "水",
+	"E3": "水",
+	"EEEE4": "木曜日",
+	"EEE4": "木曜日",
+	"EE4": "木",
+	"E4": "木",
+	"EEEE5": "金曜日",
+	"EEE5": "金曜日",
+	"EE5": "金",
+	"E5": "金",
+	"EEEE6": "土曜日",
+	"EEE6": "土曜日",
+	"EE6": "土",
+	"E6": "土",
+	
+	"ordinalChoice": "#{num}",
+	"a0": "午前",
+	"a1": "午後",
+	"G-1": "紀元前",
+	"G1": "紀元",
+	
+	"durationShortMillis": "#{num}ミリ秒",
+	"#{num}s": "#{num}秒",
+	"durationShortMinutes": "#{num}分",
+	"#{num}h": "#{num}時間",
+	"#{num}d": "#{num}日",
+	"#{num}w": "#{num}週間",
+	"durationShortMonths": "#{num}ヶ月",
+	"#{num}y": "#{num}年",
+
+	"#{num} ms": "#{num}ミリ秒",
+	"1#1 se|#{num} sec": "#{num}秒",
+	"1#1 mi|#{num} min": "#{num}分",
+	"durationMediumHours": "#{num}時間",
+	"1#1 dy|#{num} dys": "#{num}日",
+	"durationMediumWeeks": "#{num}週間",
+	"1#1 mo|#{num} mos": "#{num}ヶ月",
+	"durationMediumYears": "#{num}年",
+
+	"1#1 sec|#{num} sec": "#{num}秒",
+	"1#1 min|#{num} min": "#{num}分",
+	"1#1 hr|#{num} hrs": "#{num}時間",
+	"durationLongDays": "#{num}日",
+	"1#1 wk|#{num} wks": "#{num}週間",
+	"1#1 mon|#{num} mons": "#{num}ヶ月",
+	"1#1 yr|#{num} yrs": "#{num}年",
+	
+	"1#1 millisecond|#{num} milliseconds": "#{num}ミリ秒",
+	"1#1 second|#{num} seconds": "#{num}秒",
+	"1#1 minute|#{num} minutes": "#{num}分",
+	"1#1 hour|#{num} hours": "#{num}時間",
+	"1#1 day|#{num} days": "#{num}日",
+	"1#1 week|#{num} weeks": "#{num}週間",
+	"1#1 month|#{num} months": "#{num}ヶ月",
+	"1#1 year|#{num} years": "#{num}年",
+	
+	"{duration} ago": "{duration}前",
+	"in {duration}": "{duration}で",
+	
+	"separatorShort": "",
+	"separatorMedium": "",
+	"separatorLong": "、",
+	"separatorFull": "、",
+	"finalSeparatorFull": "、"
+};
+ilib.data.sysres_ko = {
+	"MMMM1": "일",
+	"MMM1": "1",
+	"NN1": "1",
+	"N1": "1",
+	"MMMM2": "이",
+	"MMM2": "2",
+	"NN2": "2",
+	"N2": "2",
+	"MMMM3": "삼",
+	"MMM3": "3",
+	"NN3": "3",
+	"N3": "3",
+	"MMMM4": "사",
+	"MMM4": "4",
+	"NN4": "4",
+	"N4": "4",
+	"MMMM5": "오",
+	"MMM5": "5",
+	"NN5": "5",
+	"N5": "5",
+	"MMMM6": "유",
+	"MMM6": "6",
+	"NN6": "6",
+	"N6": "6",
+	"MMMM7": "칠",
+	"MMM7": "7",
+	"NN7": "7",
+	"N7": "7",
+	"MMMM8": "팔",
+	"MMM8": "8",
+	"NN8": "8",
+	"N8": "8",
+	"MMMM9": "구",
+	"MMM9": "9",
+	"NN9": "9",
+	"N9": "9",
+	"MMMM10": "시",
+	"MMM10": "10",
+	"NN10": "10",
+	"N10": "1O",
+	"MMMM11": "십일",
+	"MMM11": "11",
+	"NN11": "11",
+	"N11": "11",
+	"MMMM12": "십이",
+	"MMM12": "12",
+	"NN12": "12",
+	"N12": "12",
+ 	"EEEE0": "일요일",
+	"EEE0": "일요일",
+	"EE0": "일",
+	"E0": "일",
+	"EEEE1": "월요일",
+	"EEE1": "월요일",
+	"EE1": "월",
+	"E1": "월",
+	"EEEE2": "화요일",
+	"EEE2": "화요일",
+	"EE2": "화",
+	"E2": "화",
+	"EEEE3": "수요일",
+	"EEE3": "수요일",
+	"EE3": "수",
+	"E3": "수",
+	"EEEE4": "목요일",
+	"EEE4": "목요일",
+	"EE4": "목",
+	"E4": "목",
+	"EEEE5": "금요일",
+	"EEE5": "금요일",
+	"EE5": "금",
+	"E5": "금",
+	"EEEE6": "토요일",
+	"EEE6": "토요일",
+	"EE6": "토",
+	"E6": "토",
+	
+	"ordinalChoice": "#{num}",
+	"a0": "오전",
+	"a1": "오후",
+	"G-1": "기원전",
+	"G1": "기원후",
+	
+	"durationShortMillis": "#{num}밀리초",
+	"#{num}s": "#{num}초 및",
+	"durationShortMinutes": "#{num}분",
+	"#{num}h": "#{num}시간",
+	"#{num}d": "#{num}일",
+	"#{num}w": "#{num}주",
+	"durationShortMonths": "#{num}개월",
+	"#{num}y": "#{num}년",
+
+	"#{num} ms": "#{num}밀리초",
+	"1#1 se|#{num} sec": "#{num}초 및",
+	"1#1 mi|#{num} min": "#{num}분",
+	"durationMediumHours": "#{num}시간",
+	"1#1 dy|#{num} dys": "#{num}일",
+	"durationMediumWeeks": "#{num}주",
+	"1#1 mo|#{num} mos": "#{num}개월",
+	"durationMediumYears": "#{num}년",
+
+	"1#1 sec|#{num} sec": "#{num}秒",
+	"1#1 min|#{num} min": "#{num}초 및",
+	"1#1 hr|#{num} hrs": "#{num}시간",
+	"durationLongDays": "#{num}일",
+	"1#1 wk|#{num} wks": "#{num}주",
+	"1#1 mon|#{num} mons": "#{num}개월",
+	"1#1 yr|#{num} yrs": "#{num}년",
+	
+	"1#1 millisecond|#{num} milliseconds": "#{num}밀리초",
+	"1#1 second|#{num} seconds": "#{num}초 및",
+	"1#1 minute|#{num} minutes": "#{num}분",
+	"1#1 hour|#{num} hours": "#{num}시간",
+	"1#1 day|#{num} days": "#{num}일",
+	"1#1 week|#{num} weeks": "#{num}주",
+	"1#1 month|#{num} months": "#{num}개월",
+	"1#1 year|#{num} years": "#{num}년",
+	
+	"{duration} ago": "{duration}전",
+	"in {duration}": "{duration}에",
+	
+	"separatorShort": " ",
+	"separatorMedium": " ",
+	"separatorLong": ", ",
+	"separatorFull": ", ",
+	"finalSeparatorFull": " 및 "
+};
+ilib.data.sysres_id = {
+	"N1": "J",
+	"N2": "F",
+	"N3": "M",
+	"N4": "A",
+	"N5": "M",
+	"N6": "J",
+	"N7": "J",
+	"N8": "A",
+	"N9": "S",
+	"N10": "O",
+	"N11": "N",
+	"N12": "D",
+	"NN1": "Ja",
+	"NN2": "Fe",
+	"NN3": "Ma",
+	"NN4": "Ap",
+	"NN5": "Me",
+	"NN6": "Ju",
+	"NN7": "Ju",
+	"NN8": "Ag",
+	"NN9": "Se",
+	"NN10": "Ok",
+	"NN11": "No",
+	"NN12": "De",
+	"MMM1": "Jan",
+	"MMM2": "Feb",
+	"MMM3": "Mar",
+	"MMM4": "Apr",
+	"MMM5": "Mei",
+	"MMM6": "Jun",
+	"MMM7": "Jul",
+	"MMM8": "Agt",
+	"MMM9": "Sep",
+	"MMM10": "Okt",
+	"MMM11": "Nov",
+	"MMM12": "Des",
+	"MMMM1": "Januari",
+	"MMMM2": "Februari",
+	"MMMM3": "Maret",
+	"MMMM4": "April",
+	"MMMM5": "Mei",
+	"MMMM6": "Juni",
+	"MMMM7": "Juli",
+	"MMMM8": "Agustus",
+	"MMMM9": "September",
+	"MMMM10": "Oktober",
+	"MMMM11": "November",
+	"MMMM12": "Desember",
+	"E0": "M",
+	"E1": "S",
+	"E2": "S",
+	"E3": "R",
+	"E4": "K",
+	"E5": "J",
+	"E6": "S",
+	"EE0": "Mi",
+	"EE1": "Se",
+	"EE2": "Se",
+	"EE3": "Ra",
+	"EE4": "Ka",
+	"EE5": "Ju",
+	"EE6": "Sa",
+	"EEE0": "Min",
+	"EEE1": "Sen",
+	"EEE2": "Sel",
+	"EEE3": "Rab",
+	"EEE4": "Kam",
+	"EEE5": "Jum",
+	"EEE6": "Sab",
+	"EEEE0": "Minggu",
+	"EEEE1": "Senin",
+	"EEEE2": "Selasa",
+	"EEEE3": "Rabu",
+	"EEEE4": "Kamis",
+	"EEEE5": "Jumat",
+	"EEEE6": "Sabtu",
+	"a0": "AM",
+	"a1": "PM",
+	"G-1": "SM",
+	"G1": "M",
+	"in {duration}": "Dalam {duration}",
+	"{duration} ago": "{duration} yang lalu",
+	"1#1 year|#{num} years": "#{num} tahun",
+	"1#1 month|#{num} months": "#{num} bulan",
+	"1#1 week|#{num} weeks": "#{num} minggu",
+	"1#1 day|#{num} days": "#{num} hari",
+	"1#1 hour|#{num} hours": "#{num} jam",
+	"1#1 minute|#{num} minutes": "#{num} menit",
+	"1#1 second|#{num} seconds": "#{num} detik",
+	"1#1 yr|#{num} yrs": "#{num} thn",
+	"1#1 mon|#{num} mons": "#{num} bln",
+	"1#1 wk|#{num} wks": "#{num} mggu",
+	"durationLongDays": "#{num} hr",
+	"1#1 hr|#{num} hrs": "#{num} jam",
+	"1#1 min|#{num} min": "#{num} mnt",
+	"1#1 sec|#{num} sec": "#{num} dtk",
+	"durationMediumYears": "#{num} th",
+	"1#1 mo|#{num} mos": "#{num} bl",
+	"durationMediumWeeks": "#{num} mg",
+	"1#1 dy|#{num} dys": "#{num} hr",
+	"durationMediumHours": "#{num} ja",
+	"1#1 mi|#{num} min": "#{num} mn",
+	"1#1 se|#{num} sec": "#{num} dt",
+	"#{num}y": "#{num}t",
+	"durationShortMonths": "#{num}b",
+	"#{num}w": "#{num}m",
+	"#{num}d": "#{num}h",
+	"#{num}h": "#{num}j",
+	"durationShortMinutes": "#{num}m",
+	"#{num}s": "#{num}d",
+	"separatorShort": " ",
+	"separatorMedium": " ",
+	"separatorLong": " ",
+	"separatorFull": ", ",
+	"finalSeparatorFull": ", dan ",
+	"durationShortMillis": "#{num}m"
+}
+;
+ilib.data.sysres_ru = {
+	"N1": "Я",
+	"N2": "Ф",
+	"N3": "М",
+	"N4": "А",
+	"N5": "М",
+	"N6": "И",
+	"N7": "И",
+	"N8": "А",
+	"N9": "С",
+	"N10": "О",
+	"N11": "Н",
+	"N12": "Д",
+	"NN1": "ян",
+	"NN2": "фе",
+	"NN3": "ма",
+	"NN4": "ап",
+	"NN5": "ма",
+	"NN6": "ию",
+	"NN7": "ию",
+	"NN8": "ав",
+	"NN9": "се",
+	"NN10": "ок",
+	"NN11": "но",
+	"NN12": "де",
+	"MMM1": "янв.",
+	"MMM2": "февр.",
+	"MMM3": "марта",
+	"MMM4": "апр.",
+	"MMM5": "мая",
+	"MMM6": "июня",
+	"MMM7": "июля",
+	"MMM8": "авг.",
+	"MMM9": "сент.",
+	"MMM10": "окт.",
+	"MMM11": "нояб.",
+	"MMM12": "дек.",
+	"MMMM1": "января",
+	"MMMM2": "февраля",
+	"MMMM3": "марта",
+	"MMMM4": "апреля",
+	"MMMM5": "мая",
+	"MMMM6": "июня",
+	"MMMM7": "июля",
+	"MMMM8": "августа",
+	"MMMM9": "сентября",
+	"MMMM10": "октября",
+	"MMMM11": "ноября",
+	"MMMM12": "декабря",
+	"E0": "В",
+	"E1": "П",
+	"E2": "В",
+	"E3": "С",
+	"E4": "Ч",
+	"E5": "П",
+	"E6": "С",
+	"EE0": "Вс",
+	"EE1": "Пн",
+	"EE2": "Вт",
+	"EE3": "Ср",
+	"EE4": "Чт",
+	"EE5": "Пт",
+	"EE6": "Сб",
+	"EEE0": "вс",
+	"EEE1": "пн",
+	"EEE2": "вт",
+	"EEE3": "ср",
+	"EEE4": "чт",
+	"EEE5": "пт",
+	"EEE6": "сб",
+	"EEEE0": "воскресенье",
+	"EEEE1": "понедельник",
+	"EEEE2": "вторник",
+	"EEEE3": "среда",
+	"EEEE4": "четверг",
+	"EEEE5": "пятница",
+	"EEEE6": "суббота",
+	"a0": "до полудня",
+	"a1": "после полудня",
+	"G-1": "до н.э.",
+	"G1": "н.э.",
+	"in {duration}": "Через {duration}",
+	"{duration} ago": "{duration} назад",
+	"1#1 year|#{num} years": "1#{num} год|2#{num} года|3#{num} года|4#{num} года|#{num} года",
+	"1#1 month|#{num} months": "1#{num} месяц|2#{num} месяца|3#{num} месяца|4#{num} месяца|#{num} месяца",
+	"1#1 week|#{num} weeks": "1#{num} неделя|2#{num} недели|3#{num} недели|4#{num} недели|#{num} недели",
+	"1#1 day|#{num} days": "1#{num} день|2#{num} дня|3#{num} дня|4#{num} дня|#{num} дня",
+	"1#1 hour|#{num} hours": "1#{num} час|2#{num} часа|3#{num} часа|4#{num} часа|#{num} часа",
+	"1#1 minute|#{num} minutes": "1#{num} минута|2#{num} минуты|3#{num} минуты|4#{num} минуты|#{num} минуты",
+	"1#1 second|#{num} seconds": "1#{num} секунда|2#{num} секунды|3#{num} секунды|4#{num} секунды|#{num} секунды",
+	"1#1 yr|#{num} yrs": "1#{num} г.|2#{num} г.|3#{num} г.|4#{num} г.|#{num} г.",
+	"1#1 mon|#{num} mons": "1#{num} мес.|2#{num} мес.|3#{num} мес.|4#{num} мес.|#{num} мес.",
+	"1#1 wk|#{num} wks": "1#{num} нед.|2#{num} нед.|3#{num} нед.|4#{num} нед.|#{num} нед.",
+	"durationLongDays": "1#{num} дн.|2#{num} дн.|3#{num} дн.|4#{num} дн.|#{num} дн.",
+	"1#1 hr|#{num} hrs": "1#{num} ч.|2#{num} ч.|3#{num} ч.|4#{num} ч.|#{num} ч.",
+	"1#1 min|#{num} min": "1#{num} мин.|2#{num} мин.|3#{num} мин.|4#{num} мин.|#{num} мин.",
+	"1#1 sec|#{num} sec": "1#{num} сек.|2#{num} сек.|3#{num} сек.|4#{num} сек.|#{num} сек.",
+	"durationMediumYears": "1#{num} г.|2#{num} г.|3#{num} г.|4#{num} г.|#{num} г.",
+	"1#1 mo|#{num} mos": "1#{num} ме|2#{num} ме|3#{num} ме|4#{num} ме|#{num} ме",
+	"durationMediumWeeks": "1#{num} не|2#{num} не|3#{num} не|4#{num} не|#{num} не",
+	"1#1 dy|#{num} dys": "1#{num} дн|2#{num} дн|3#{num} дн|4#{num} дн|#{num} дн",
+	"durationMediumHours": "1#{num} ч.|2#{num} ч.|3#{num} ч.|4#{num} ч.|#{num} ч.",
+	"1#1 mi|#{num} min": "1#{num} ми|2#{num} ми|3#{num} ми|4#{num} ми|#{num} ми",
+	"1#1 se|#{num} sec": "1#{num} се|2#{num} се|3#{num} се|4#{num} се|#{num} се",
+	"#{num}y": "#{num}г",
+	"durationShortMonths": "#{num}м",
+	"#{num}w": "#{num}н",
+	"#{num}d": "#{num}д",
+	"#{num}h": "#{num}ч",
+	"durationShortMinutes": "#{num}м",
+	"#{num}s": "#{num}с",
+	"separatorShort": " ",
+	"separatorMedium": " ",
+	"separatorLong": " ",
+	"separatorFull": ", ",
+	"finalSeparatorFull": " и ",
+	"durationShortMillis": "#{num}мс"
+}
+;
+ilib.data.sysres_tr = {
+	"N1": "O",
+	"N2": "Ş",
+	"N3": "M",
+	"N4": "N",
+	"N5": "M",
+	"N6": "H",
+	"N7": "T",
+	"N8": "A",
+	"N9": "E",
+	"N10": "E",
+	"N11": "K",
+	"N12": "A",
+	"NN1": "Oc",
+	"NN2": "Şu",
+	"NN3": "Ma",
+	"NN4": "Ni",
+	"NN5": "Ma",
+	"NN6": "Ha",
+	"NN7": "Te",
+	"NN8": "Ağ",
+	"NN9": "Ey",
+	"NN10": "Ek",
+	"NN11": "Ka",
+	"NN12": "Ar",
+	"MMM1": "Oca",
+	"MMM2": "Şub",
+	"MMM3": "Mar",
+	"MMM4": "Nis",
+	"MMM5": "May",
+	"MMM6": "Haz",
+	"MMM7": "Tem",
+	"MMM8": "Ağu",
+	"MMM9": "Eyl",
+	"MMM10": "Eki",
+	"MMM11": "Kas",
+	"MMM12": "Ara",
+	"MMMM1": "Ocak",
+	"MMMM2": "Şubat",
+	"MMMM3": "Mart",
+	"MMMM4": "Nisan",
+	"MMMM5": "Mayıs",
+	"MMMM6": "Haziran",
+	"MMMM7": "Temmuz",
+	"MMMM8": "Ağustos",
+	"MMMM9": "Eylül",
+	"MMMM10": "Ekim",
+	"MMMM11": "Kasım",
+	"MMMM12": "Aralık",
+	"E0": "P",
+	"E1": "P",
+	"E2": "S",
+	"E3": "Ç",
+	"E4": "P",
+	"E5": "C",
+	"E6": "C",
+	"EE0": "Paz",
+	"EE1": "Pzt",
+	"EE2": "Sal",
+	"EE3": "Çar",
+	"EE4": "Per",
+	"EE5": "Cum",
+	"EE6": "Cmt",
+	"EEE0": "Paz",
+	"EEE1": "Pzt",
+	"EEE2": "Sal",
+	"EEE3": "Çar",
+	"EEE4": "Per",
+	"EEE5": "Cum",
+	"EEE6": "Cmt",
+	"EEEE0": "Pazar",
+	"EEEE1": "Pazartesi",
+	"EEEE2": "Salı",
+	"EEEE3": "Çarşamba",
+	"EEEE4": "Perşembe",
+	"EEEE5": "Cuma",
+	"EEEE6": "Cumartesi",
+	"a0": "AM",
+	"a1": "PM",
+	"G-1": "MÖ",
+	"G1": "MS",
+	"in {duration}": "{duration} sonra",
+	"{duration} ago": "{duration} önce",
+	"1#1 year|#{num} years": "#{num} yıl",
+	"1#1 month|#{num} months": "#{num} ay",
+	"1#1 week|#{num} weeks": "#{num} hafta",
+	"1#1 day|#{num} days": "#{num} gün",
+	"1#1 hour|#{num} hours": "#{num} saat",
+	"1#1 minute|#{num} minutes": "#{num} dakika",
+	"1#1 second|#{num} seconds": "#{num} saniye",
+	"1#1 yr|#{num} yrs": "#{num} yıl",
+	"1#1 mon|#{num} mons": "#{num} ay",
+	"1#1 wk|#{num} wks": "#{num} hafta",
+	"durationLongDays": "#{num} gün",
+	"1#1 hr|#{num} hrs": "#{num} sa.",
+	"1#1 min|#{num} min": "#{num} dk.",
+	"1#1 sec|#{num} sec": "#{num} sn.",
+	"durationMediumYears": "#{num} yı",
+	"1#1 mo|#{num} mos": "#{num} ay",
+	"durationMediumWeeks": "#{num} ha",
+	"1#1 dy|#{num} dys": "#{num} gü",
+	"durationMediumHours": "#{num} sa",
+	"1#1 mi|#{num} min": "#{num} dk",
+	"1#1 se|#{num} sec": "#{num} sn",
+	"#{num}y": "#{num}y",
+	"durationShortMonths": "#{num}a",
+	"#{num}w": "#{num}h",
+	"#{num}d": "#{num}g",
+	"#{num}h": "#{num}s",
+	"durationShortMinutes": "#{num}d",
+	"#{num}s": "#{num}s",
+	"separatorShort": " ",
+	"separatorMedium": " ",
+	"separatorLong": " ",
+	"separatorFull": ", ",
+	"finalSeparatorFull": " ve ",
+	"#{num} ms": "#{num} ms",
+	"1#1 millisecond|#{num} milliseconds": "#{num} milisaniye"
+}
+;
+ilib.data.sysres_en_GB = {
+	"a0": "AM",
+	"a0": "PM"
+};
+ilib.data.sysres_de = {
+	"MMMM1": "Januar",
+	"MMM1": "Jan",
+	"NN1": "Ja",
+	"N1": "J",
+	"MMMM2": "Februar",
+	"MMM2": "Feb",
+	"NN2": "Fe",
+	"N2": "F",
+	"MMMM3": "März",
+	"MMM3": "Mär",
+	"NN3": "Mä",
+	"N3": "M",
+	"MMMM4": "April",
+	"MMM4": "Apr",
+	"NN4": "Ap",
+	"N4": "A",
+	"MMMM5": "Mai",
+	"MMM5": "Mai",
+	"NN5": "Ma",
+	"N5": "M",
+	"MMMM6": "Juni",
+	"MMM6": "Jun",
+	"NN6": "Ju",
+	"N6": "J",
+	"MMMM7": "Juli",
+	"MMM7": "Jul",
+	"NN7": "Ju",
+	"N7": "J",
+	"MMMM8": "August",
+	"MMM8": "Aug",
+	"NN8": "Au",
+	"N8": "A",
+	"MMMM9": "September",
+	"MMM9": "Sep",
+	"NN9": "Se",
+	"N9": "S",
+	"MMMM10": "Oktober",
+	"MMM10": "Okt",
+	"NN10": "Ok",
+	"N10": "O",
+	"MMMM11": "November",
+	"MMM11": "Nov",
+	"NN11": "No",
+	"N11": "N",
+	"MMMM12": "Dezember",
+	"MMM12": "Dez",
+	"NN12": "De",
+	"N12": "D",
+	"EEEE0": "Sonntag",
+	"EEE0": "So.",
+	"EE0": "So",
+	"E0": "S",
+	"EEEE1": "Monntag",
+	"EEE1": "Mo.",
+	"EE1": "Mo",
+	"E1": "M",
+	"EEEE2": "Dienstag",
+	"EEE2": "Di.",
+	"EE2": "Di",
+	"E2": "D",
+	"EEEE3": "Mittwoch",
+	"EEE3": "Mi.",
+	"EE3": "Mi",
+	"E3": "M",
+	"EEEE4": "Donnerstag",
+	"EEE4": "Do.",
+	"EE4": "Do",
+	"E4": "D",
+	"EEEE5": "Freitag",
+	"EEE5": "Fr.",
+	"EE5": "Fr",
+	"E5": "F",
+	"EEEE6": "Samstag",
+	"EEE6": "Sa.",
+	"EE6": "Sa",
+	"E6": "S",
+	"ordinalChoice": "#{num}.",
+	"a0": "vorm.",
+	"a1": "nachm.",
+
+	"durationShortMillis": "#{num}Ms",
+	"#{num}s": "#{num}S",
+	"durationShortMinutes": "#{num}M",
+	"#{num}h": "#{num}St",
+	"#{num}d": "#{num}T",
+	"#{num}w": "#{num}W",
+	"durationShortMonths": "#{num}Mo",
+	"#{num}y": "#{num}J",
+
+	"#{num} ms": "#{num} Ms.",
+	"1#1 se|#{num} sec": "#{num} Se.",
+	"1#1 mi|#{num} min": "#{num} Mi.",
+	"durationMediumHours": "#{num} St.",
+	"1#1 dy|#{num} dys": "#{num} Ta.",
+	"durationMediumWeeks": "#{num} Wo.",
+	"1#1 mo|#{num} mos": "#{num} Mo.",
+	"durationMediumYears": "#{num} Ja.",
+
+	"1#1 sec|#{num} sec": "#{num} Sek.",
+	"1#1 min|#{num} min": "#{num} Min.",
+	"1#1 hr|#{num} hrs": "#{num} Std.",
+	"durationLongDays": "1#1 Tag|#{num} Tage",
+	"1#1 wk|#{num} wks": "#{num} Wch.",
+	"1#1 mon|#{num} mons": "#{num} Mon.",
+	"1#1 yr|#{num} yrs": "#{num} Jhr.",
+	
+	"1#1 millisecond|#{num} milliseconds": "1#1 Millisekunde|#{num} Millisekunden",
+	"1#1 second|#{num} seconds": "1#1 Sekunde|#{num} Sekunden",
+	"1#1 minute|#{num} minutes": "1#1 Minute|#{num} Minuten",
+	"1#1 hour|#{num} hours": "1#1 Stunde|#{num} Stunden",
+	"1#1 day|#{num} days": "1#1 Tag|#{num} Tage",
+	"1#1 week|#{num} weeks": "1#1 Woche|#{num} Wochen",
+	"1#1 month|#{num} months": "1#1 Monat|#{num} Monate",
+	"1#1 year|#{num} years": "1#1 Jahr|#{num} Jahre",
+	
+	"{duration} ago": "vor {duration}",
+	"in {duration}": "in {duration}",
+	
+	"separatorShort": " ",
+	"separatorMedium": " ",
+	"separatorLong": ", ",
+	"separatorFull": ", ",
+	"finalSeparatorFull": ", und "
 };
 ilib.data.sysres_it = {
 	"MMMM1": "gennaio",
@@ -4057,16 +7638,16 @@ ilib.data.sysres_it = {
 	"#{num} ms": "#{num} ms",
 	"1#1 se|#{num} sec": "#{num} se",
 	"1#1 mi|#{num} min": "#{num} mn",
-	"1#1 hr|#{num} hrs": "#{num} or",
+	"durationMediumHours": "#{num} or",
 	"1#1 dy|#{num} dys": "#{num} gi",
-	"1#1 wk|#{num} wks": "#{num} set",
+	"durationMediumWeeks": "#{num} set",
 	"1#1 mo|#{num} mos": "#{num} me",
-	"1#1 yr|#{num} yrs": "#{num} an",
+	"durationMediumYears": "#{num} an",
 
 	"1#1 sec|#{num} sec": "#{num} sec",
 	"1#1 min|#{num} min": "#{num} min",
 	"1#1 hr|#{num} hrs": "1#1 ora|#{num} ore",
-	"1#1 day|#{num} days": "#{num} gio",
+	"durationLongDays": "#{num} gio",
 	"1#1 wk|#{num} wks": "#{num} set",
 	"1#1 mon|#{num} mons": "1#1 mese|#{num} mesi",
 	"1#1 yr|#{num} yrs": "1#1 anno|#{num} anni",
@@ -4217,6 +7798,7 @@ timezone.js
  * <li><i>ahmz</i> - format the hours, minutes, am/pm (if using a 12 hour clock), and the time zone
  * <li><i>ahm</i> - format the hours, minutes, and am/pm (if using a 12 hour clock)
  * <li><i>hmz</i> - format the hours, minutes, and the time zone
+ * <li><i>ah</i> - format only the hours and am/pm if using a 12 hour clock
  * <li><i>hm</i> - format only the hours and minutes
  * <li><i>ms</i> - format only the minutes and seconds
  * <li><i>h</i> - format only the hours
@@ -4317,7 +7899,9 @@ timezone.js
  * </ul>
  * 
  * All other options will be ignored and their corresponding getter methods will
- * return the empty string.
+ * return the empty string.<p>
+ * 
+ * Depends directive: !depends datefmt.js
  * 
  * @constructor
  * @param {Object} options options governing the way this date formatter instance works
@@ -4378,14 +7962,14 @@ ilib.DateFmt = function(options) {
 			arr.sort(function (left, right) {
 				return (left < right) ? -1 : ((right < left) ? 1 : 0);
 			});
-			bad = false;
+			this.badTime = false;
 			for (i = 0; i < arr.length; i++) {
 				if (arr[i] !== 'h' && arr[i] !== 'm' && arr[i] !== 's' && arr[i] !== 'a' && arr[i] !== 'z') {
-					bad = true;
+					this.badTime = true;
 					break;
 				}
 			}
-			if (!bad) {
+			if (!this.badTime) {
 				this.timeComponents = arr.join("");
 			}
 		}
@@ -4454,42 +8038,44 @@ ilib.DateFmt = function(options) {
 		var i = 0, start, ch, letter, arr = [];
 		
 		// console.log("_tokenize: tokenizing template " + template);
-		while (i < template.length) {
-			ch = template.charAt(i);
-			start = i;
-			if (ch === "'") {
-				// console.log("found quoted string");
-				i++;
-				// escaped string - push as-is, then dequote later
-				while (i < template.length && template.charAt(i) !== "'") {
+		if (template) {
+			while (i < template.length) {
+				ch = template.charAt(i);
+				start = i;
+				if (ch === "'") {
+					// console.log("found quoted string");
 					i++;
+					// escaped string - push as-is, then dequote later
+					while (i < template.length && template.charAt(i) !== "'") {
+						i++;
+					}
+					if (i < template.length) {
+						i++;	// grab the other quote too
+					}
+				} else if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+					letter = template.charAt(i);
+					// console.log("found letters " + letter);
+					while (i < template.length && ch === letter) {
+						ch = template.charAt(++i);
+					}
+				} else {
+					// console.log("found other");
+					while (i < template.length && ch !== "'" && (ch < 'a' || ch > 'z') && (ch < 'A' || ch > 'Z')) {
+						ch = template.charAt(++i);
+					}
 				}
-				if (i < template.length) {
-					i++;	// grab the other quote too
-				}
-			} else if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
-				letter = template.charAt(i);
-				// console.log("found letters " + letter);
-				while (i < template.length && ch === letter) {
-					ch = template.charAt(++i);
-				}
-			} else {
-				// console.log("found other");
-				while (i < template.length && ch !== "'" && (ch < 'a' || ch > 'z') && (ch < 'A' || ch > 'Z')) {
-					ch = template.charAt(++i);
-				}
+				arr.push(template.substring(start,i));
+				// console.log("start is " + start + " i is " + i + " and substr is " + template.substring(start,i));
 			}
-			arr.push(template.substring(start,i));
-			// console.log("start is " + start + " i is " + i + " and substr is " + template.substring(start,i));
 		}
-		
 		return arr;
 	};
 
 	if (this.timeComponents &&
 			(this.clock === '24' || 
 			(!this.clock && this.locinfo.getClock() === "24"))) {
-		// make sure we don't have am/pm in 24 hour mode
+		// make sure we don't have am/pm in 24 hour mode unless the user specifically
+		// requested it in the time component option
 		this.timeComponents = this.timeComponents.replace("a", "");
 	}
 
@@ -4737,53 +8323,53 @@ ilib.DateFmt.prototype = {
 		for (i = 0; i < templateArr.length; i++) {
 			switch (templateArr[i]) {
 				case 'd':
-					str += date.day;
+					str += (date.day || 1);
 					break;
 				case 'dd':
-					str += this._pad(date.day, 2);
+					str += this._pad(date.day || 1, 2);
 					break;
 				case 'yy':
-					temp = "" + date.year;
+					temp = "" + (date.year || 1);
 					str += this._pad(temp.substring(2,4), 2);
 					break;
 				case 'yyyy':
-					str += this._pad(date.year, 4);
+					str += this._pad(date.year || 1, 4);
 					break;
 				case 'M':
-					str += date.month;
+					str += (date.month || 1);
 					break;
 				case 'MM':
-					str += this._pad(date.month, 2);
+					str += this._pad(date.month || 1, 2);
 					break;
 
 				case 'h':
-					temp = date.hour % 12;
+					temp = (date.hour || 0) % 12;
 					if (temp == 0) {
 						temp = "12";
 					}
 					str += temp; 
 					break;
 				case 'hh':
-					temp = date.hour % 12;
+					temp = (date.hour || 0) % 12;
 					if (temp == 0) {
 						temp = "12";
 					}
 					str += this._pad(temp, 2);
 					break;
 				case 'K':
-					temp = date.hour % 12;
+					temp = (date.hour || 0) % 12;
 					str += temp; 
 					break;
 				case 'KK':
-					temp = date.hour % 12;
+					temp = (date.hour || 0) % 12;
 					str += this._pad(temp, 2);
 					break;
 
 				case 'H':
-					str += date.hour;
+					str += (date.hour || 0);
 					break;
 				case 'HH':
-					str += this._pad(date.hour, 2);
+					str += this._pad(date.hour || 0, 2);
 					break;
 				case 'k':
 					str += (date.hour == 0 ? "24" : date.hour);
@@ -4794,31 +8380,30 @@ ilib.DateFmt.prototype = {
 					break;
 
 				case 'm':
-					str += date.minute;
+					str += (date.minute || 0);
 					break;
 				case 'mm':
-					str += this._pad(date.minute, 2);
+					str += this._pad(date.minute || 0, 2);
 					break;
 				case 's':
-					str += date.second;
+					str += (date.minute || 0);
 					break;
 				case 'ss':
-					str += this._pad(date.second, 2);
+					str += this._pad(date.second || 0, 2);
 					break;
 				case 'S':
-					str += date.millisecond;
+					str += (date.millisecond || 0);
 					break;
 				case 'SSS':
-					str += this._pad(date.millisecond, 3);
+					str += this._pad(date.millisecond || 0, 3);
 					break;
 
 				case 'N':
 				case 'NN':
 				case 'MMM':
 				case 'MMMM':
-					key = templateArr[i] + date.month;
-					//console.log("finding " + key + " in the resources");
-					str += this.sysres.getString(undefined, key);
+					key = templateArr[i] + (date.month || 1);
+					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;
 
 				case 'E':
@@ -4827,13 +8412,13 @@ ilib.DateFmt.prototype = {
 				case 'EEEE':
 					key = templateArr[i] + date.getDayOfWeek();
 					//console.log("finding " + key + " in the resources");
-					str += this.sysres.getString(undefined, key);
+					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;
 					
 				case 'a':
 					key = date.hour < 12 ? "a0" : "a1";
 					//console.log("finding " + key + " in the resources");
-					str += this.sysres.getString(undefined, key);
+					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;
 					
 				case 'w':
@@ -4858,7 +8443,7 @@ ilib.DateFmt.prototype = {
 
 				case 'G':
 					key = "G" + date.getEra();
-					str += this.sysres.getString(undefined, key);
+					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;
 
 				case 'O':
@@ -4896,6 +8481,33 @@ ilib.DateFmt.prototype = {
 	format: function (date) {
 		if (!date.getCalendar || date.getCalendar() !== this.calName) {
 			throw "Wrong date type passed to ilib.DateFmt.format()";
+		}
+		
+		// convert to the time zone of this formatter before formatting
+		if (date.timezone && this.tz) {
+			// console.log("Differing time zones " + date.timezone + " and " + this.tz.getId() + ". Converting...");
+			
+			var datetz = new ilib.TimeZone({
+				locale: date.locale,
+				id: date.timezone
+			});
+			
+			var dateOffset = datetz.getOffset(date),
+				fmtOffset = this.tz.getOffset(date),
+				// relative offset in seconds
+				offset = (dateOffset.h || 0)*60*60 + (dateOffset.m || 0)*60 + (dateOffset.s || 0) -
+					((fmtOffset.h || 0)*60*60 + (fmtOffset.m || 0)*60 + (fmtOffset.s || 0));
+			
+			//console.log("Date offset is " + JSON.stringify(dateOffset));
+			//console.log("Formatter offset is " + JSON.stringify(fmtOffset));
+			//console.log("Relative offset is " + offset + " seconds.");
+			
+			var newDate = ilib.Date.newInstance({
+				type: this.calName,
+				rd: date.getRataDie() - (offset / 86400) // 86400 seconds in a day
+			});
+			
+			date = newDate;
 		}
 		return this._formatTemplate(date, this.templateArr);
 	},
@@ -4955,10 +8567,10 @@ ilib.DateFmt.prototype = {
 					time = this.sysres.getString("#{num}s");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 se|#{num} seconds");
+					time = this.sysres.getString("1#1 se|#{num} sec");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 sec|#{num} seconds");
+					time = this.sysres.getString("1#1 sec|#{num} sec");
 					break;
 				default:
 				case 'f':
@@ -4972,10 +8584,10 @@ ilib.DateFmt.prototype = {
 					time = this.sysres.getString("#{num}m", "durationShortMinutes");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 mn|#{num} minutes");
+					time = this.sysres.getString("1#1 mi|#{num} min");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 min|#{num} minutes");
+					time = this.sysres.getString("1#1 min|#{num} min");
 					break;
 				default:
 				case 'f':
@@ -4989,10 +8601,10 @@ ilib.DateFmt.prototype = {
 					time = this.sysres.getString("#{num}h");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 hr|#{num} hours");
+					time = this.sysres.getString("1#1 hr|#{num} hrs", "durationMediumHours");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 hr|#{num} hours");
+					time = this.sysres.getString("1#1 hr|#{num} hrs");
 					break;
 				default:
 				case 'f':
@@ -5006,10 +8618,10 @@ ilib.DateFmt.prototype = {
 					time = this.sysres.getString("#{num}d");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 dy|#{num} days");
+					time = this.sysres.getString("1#1 dy|#{num} dys");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 day|#{num} days");
+					time = this.sysres.getString("1#1 day|#{num} days", "durationLongDays");
 					break;
 				default:
 				case 'f':
@@ -5023,10 +8635,10 @@ ilib.DateFmt.prototype = {
 					time = this.sysres.getString("#{num}w");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 wk|#{num} weeks");
+					time = this.sysres.getString("1#1 wk|#{num} wks", "durationMediumWeeks");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 wk|#{num} weeks");
+					time = this.sysres.getString("1#1 wk|#{num} wks");
 					break;
 				default:
 				case 'f':
@@ -5057,7 +8669,7 @@ ilib.DateFmt.prototype = {
 					time = this.sysres.getString("#{num}y");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 yr|#{num} yrs");
+					time = this.sysres.getString("1#1 yr|#{num} yrs", "durationMediumYears");
 					break;
 				case 'l':
 					time = this.sysres.getString("1#1 yr|#{num} yrs");
@@ -5164,6 +8776,9 @@ datefmt.js
  * If this property is not specified, the default is to use the most widely used convention
  * for the locale.
  * </ul>
+ * <p>
+ * 
+ * Depends directive: !depends daterangefmt.js
  * 
  * @constructor
  * @param {Object} options options governing the way this date range formatter instance works
@@ -5377,7 +8992,7 @@ ilib.DateRngFmt.prototype = {
 };
 
 /*
- * collate.js - Collation routines
+ * hebrew.js - Represent a Hebrew calendar object.
  * 
  * Copyright © 2012, JEDL Software, Inc.
  *
@@ -5395,71 +9010,1029 @@ ilib.DateRngFmt.prototype = {
  * limitations under the License.
  */
 
-// !depends locale.js ilibglobal.js
+
+/* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
- * A factory function that produces a locale-sensitive comparator function 
- * for use with the standard Javascript sort function. The comparator function
- * will assume that the strings it is comparing are encoded in UTF-8.<p>
+ * @class
+ * Construct a new Hebrew calendar object. This class encodes information about
+ * the Hebrew (Jewish) calendar. The Hebrew calendar is a tabular hebrew 
+ * calendar where the dates are calculated by arithmetic rules. This differs from 
+ * the religious Hebrew calendar which is used to mark the beginning of particular 
+ * holidays. The religious calendar depends on the first sighting of the new 
+ * crescent moon to determine the first day of the new month. Because humans and 
+ * weather are both involved, the actual time of sighting varies, so it is not 
+ * really possible to precalculate the religious calendar. Certain groups, such 
+ * as the Hebrew Society of North America, decreed in in 2007 that they will use
+ * a calendar based on calculations rather than observations to determine the 
+ * beginning of lunar months, and therefore the dates of holidays.<p>
  * 
- * Comparisons are mostly dependent on the language part of the locale, 
- * and not the region. Most collation algorithms are shared between locales
- * that speak the same language. It is possible to have some algorithms that
- * are dependent on the entire locale, but it is not common.<p>
+ * Depends directive: !depends hebrew.js
  * 
- * The options parameter can contain any of the following properties:
- * 
- * <ul>
- * <li><i>locale</i> - The locale which the comparator function will collate with
- * <li><i>strength</i> - The strength of the match needed. The value for this
- * property must be one of the following:
- *   <ul>
- *   <li><i>primary</i> - differentiate characters based on primary characteristics 
- *   only, which means the base characters. Accents, case, and other characteristics 
- *   are ignored.
- *   <li><i>secondary</i> - differentiate characters based on both primary and 
- *   secondary characteristics. Secondary characteristics mostly means accents but
- *   in some locales, there are other things that are considered secondary. That
- *   is, accents are not ignored, but case and other characteristics are.
- *   <li><i>tertiary</i> - differentiate characters based on primary, secondary, and
- *   tertiary characteristics together. Quaternary characteristics are ignored,
- *   which include things such as half-width/full-width differences.
- *   <li><i>quaternary</i> - differentiate characters based on all characteristics
- *   </ul>
- * <li><i>style</i> - The value of the style parameter is dependent on the locale.
- * For some locales, there are different style of collating strings depending
- * on how the list of strings is used or what the preference of the user is. The
- * following locales support the following style values:
- *   <ul>
- *   <li><i>de</i> - "dictionary" means a dictionary-style sort for general 
- *   strings, or "phonebook" for lists of names. Dictionary is default.
- *   <li><i>es</i> - "traditional" style sorts "rr" and "ll" as unique 
- *   compressions (as if they were single character), and "modern" sorts
- *   them as separate characters. Modern is default.
- *   <li><i>zh</i> - "pinyin" sorts by the pinyin transliteration of the ideographic 
- *   characters, or "stroke" for the more traditional radical and stroke count
- *   method. Pinyin is default.
- *   </ul>
- * Other locales may support other styles that are not documented here.<p>
- * One value that is applicable to all locales is "unicode", which performs the 
- * generic Unicode Collation Algorithm which can be used to sort strings in many
- * languages at the same time.
- * If the value of the style option is not recognized for a locale, it will be 
- * ignored.
- * </ul>
- * 
- * @param {Object} options options governing how the resulting comparator 
- * function will operate
- * @returns {function(string,string)} a comparator function that can be used to collate in 
- * the manner given by the options
+ * @constructor
+ * @implements ilib.Cal
  */
-ilib.Collator = function(options) {
-	// TODO: fill in the collator factory function
+ilib.Cal.Hebrew = function() {
+	this.type = "hebrew";
 };
 
 
+/**
+ * @private
+ * Return the number of days elapsed in the Hebrew calendar before the
+ * given year starts.
+ * @param {number} year the year for which the number of days is sought
+ * @return {number} the number of days elapsed in the Hebrew calendar before the
+ * given year starts
+ */
+ilib.Cal.Hebrew.elapsedDays = function(year) {
+	var months = Math.floor(((235*year) - 234)/19);
+	var parts = 204 + 793 * ilib.mod(months, 1080);
+	var hours = 11 + 12 * months + 793 * Math.floor(months/1080) + 
+		Math.floor(parts/1080);
+	var days = 29 * months + Math.floor(hours/24);
+	return (ilib.mod(3 * (days + 1), 7) < 3) ? days + 1 : days;
+};
 
+/**
+ * @private
+ * Return the number of days that the New Year's (Rosh HaShanah) in the Hebrew 
+ * calendar will be corrected for the given year. Corrections are caused because New 
+ * Year's is not allowed to start on certain days of the week. To deal with 
+ * it, the start of the new year is corrected for the next year by adding a 
+ * day to the 8th month (Heshvan) and/or the 9th month (Kislev) in the current
+ * year to make them 30 days long instead of 29.
+ * 
+ * @param {number} year the year for which the correction is sought
+ * @param {number} elapsed number of days elapsed up to this year
+ * @return {number} the number of days correction in the current year to make sure
+ * Rosh HaShanah does not fall on undesirable days of the week
+ */
+ilib.Cal.Hebrew.newYearsCorrection = function(year, elapsed) {
+	var lastYear = ilib.Cal.Hebrew.elapsedDays(year-1),
+		thisYear = elapsed,
+		nextYear = ilib.Cal.Hebrew.elapsedDays(year+1);
+	
+	return (nextYear - thisYear) == 356 ? 2 : ((thisYear - lastYear) == 382 ? 1 : 0);
+}
 
+/**
+ * @private
+ * Return the rata die date of the new year for the given hebrew year.
+ * @param {number} year the year for which the new year is needed
+ * @return {number} the rata die date of the new year
+ */
+ilib.Cal.Hebrew.newYear = function(year) {
+	var elapsed = ilib.Cal.Hebrew.elapsedDays(year); 
+	
+	return elapsed + ilib.Cal.Hebrew.newYearsCorrection(year, elapsed);
+};
+
+/**
+ * @private
+ * Return the number of days in the given year. Years contain a variable number of
+ * days because the date of Rosh HaShanah (New Year's) changes so that it doesn't
+ * fall on particular days of the week. Days are added to the months of Heshvan
+ * and/or Kislev in the previous year in order to prevent the current year's New
+ * Year from being on Sunday, Wednesday, or Friday.
+ * 
+ * @param {number} year the year for which the length is sought
+ * @return {number} number of days in the given year
+ */
+ilib.Cal.Hebrew.daysInYear = function(year) {
+	return ilib.Cal.Hebrew.newYear(year+1) - ilib.Cal.Hebrew.newYear(year);
+};
+
+/**
+ * @private
+ * Return true if the given year contains a long month of Heshvan. That is,
+ * it is 30 days instead of 29.
+ * 
+ * @param {number} year the year in which that month is questioned
+ * @return {boolean} true if the given year contains a long month of Heshvan
+ */
+ilib.Cal.Hebrew.longHeshvan = function(year) {
+	return ilib.mod(ilib.Cal.Hebrew.daysInYear(year), 10) === 5;
+};
+
+/**
+ * @private
+ * Return true if the given year contains a long month of Kislev. That is,
+ * it is 30 days instead of 29.
+ * 
+ * @param {number} year the year in which that month is questioned
+ * @return {boolean} true if the given year contains a short month of Kislev
+ */
+ilib.Cal.Hebrew.longKislev = function(year) {
+	return ilib.mod(ilib.Cal.Hebrew.daysInYear(year), 10) !== 3;
+};
+
+/**
+ * @private
+ * Return the date of the last day of the month for the given year. The date of
+ * the last day of the month is variable because a number of months gain an extra 
+ * day in leap years, and it is variable which months gain a day for each leap 
+ * year and which do not.
+ * 
+ * @param {number} month the month for which the number of days is sought
+ * @param {number} year the year in which that month is
+ * @return {number} the number of days in the given month and year
+ */
+ilib.Cal.Hebrew.prototype.lastDayOfMonth = function(month, year) {
+	switch (month) {
+		case 2: 
+		case 4: 
+		case 6: 
+		case 10: 
+			return 29;
+		case 13:
+			return this.isLeapYear(year) ? 29 : 0;
+		case 8:
+			return ilib.Cal.Hebrew.longHeshvan(year) ? 30 : 29;
+		case 9:
+			return ilib.Cal.Hebrew.longKislev(year) ? 30 : 29;
+		case 12:
+		case 1:
+		case 3:
+		case 5:
+		case 7:
+		case 11:
+			return 30;
+		default:
+			return 0;
+	}
+};
+
+/**
+ * Return the number of months in the given year. The number of months in a year varies
+ * for luni-solar calendars because in some years, an extra month is needed to extend the 
+ * days in a year to an entire solar year. The month is represented as a 1-based number
+ * where 1=first month, 2=second month, etc.
+ * 
+ * @param {number} year a year for which the number of months is sought
+ */
+ilib.Cal.Hebrew.prototype.getNumMonths = function(year) {
+	return this.isLeapYear(year) ? 13 : 12;
+};
+
+/**
+ * Return the number of days in a particular month in a particular year. This function
+ * can return a different number for a month depending on the year because of leap years.
+ *
+ * @param {number} month the month for which the length is sought
+ * @param {number} year the year within which that month can be found
+ * @returns {number} the number of days within the given month in the given year, or
+ * 0 for an invalid month in the year
+ */
+ilib.Cal.Hebrew.prototype.getMonLength = function(month, year) {
+	if (month < 1 || month > 13 || (month == 13 && !this.isLeapYear(year))) {
+		return 0;
+	}
+	return this.lastDayOfMonth(month, year);
+};
+
+/**
+ * Return true if the given year is a leap year in the Hebrew calendar.
+ * The year parameter may be given as a number, or as a HebrewDate object.
+ * @param {number|Object} year the year for which the leap year information is being sought
+ * @returns {boolean} true if the given year is a leap year
+ */
+ilib.Cal.Hebrew.prototype.isLeapYear = function(year) {
+	var y = (typeof(year) == 'number') ? year : year.year;
+	return (ilib.mod(1 + 7 * y, 19) < 7);
+};
+
+/**
+ * Return the type of this calendar.
+ * 
+ * @returns {string} the name of the type of this calendar 
+ */
+ilib.Cal.Hebrew.prototype.getType = function() {
+	return this.type;
+};
+
+/**
+ * Return a date instance for this calendar type using the given
+ * options.
+ * @param {Object} options options controlling the construction of 
+ * the date instance
+ * @returns {ilib.Date} a date appropriate for this calendar type
+ */
+ilib.Cal.Hebrew.prototype.newDateInstance = function (options) {
+	return new ilib.Date.HebrewDate(options);
+};
+
+/*register this calendar for the factory method */
+ilib.Cal._constructors["hebrew"] = ilib.Cal.Hebrew;
+
+/*
+ * hebrewdate.js - Represent a date in the Hebrew calendar
+ * 
+ * Copyright © 2012, JEDL Software, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* !depends date.js calendar/hebrew.js util/utils.js */
+
+/**
+ * @class
+ * 
+ * Construct a new civil Hebrew date object. The constructor can be called
+ * with a params object that can contain the following properties:<p>
+ * 
+ * <ul>
+ * <li><i>julianday</i> - the Julian Day to set into this date
+ * <li><i>year</i> - any integer except 0. Years go from -1 (BCE) to 1 (CE), skipping the zero year
+ * <li><i>month</i> - 1 to 12, where 1 means Nisan, 2 means Iyyar, etc.
+ * <li><i>day</i> - 1 to 30
+ * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
+ * is always done with an unambiguous 24 hour representation
+ * <li><i>parts</i> - 0 to 1079. Specify the halaqim parts of an hour. Either specify 
+ * the parts or specify the minutes, seconds, and milliseconds, but not both. 
+ * <li><i>minute</i> - 0 to 59
+ * <li><i>second</i> - 0 to 59
+ * <li><i>millisecond</i> - 0 to 999
+ * <li><i>locale</i> - the ilib.TimeZone instance or time zone name as a string 
+ * of this julian date. The date/time is kept in the local time. The time zone
+ * is used later if this date is formatted according to a different time zone and
+ * the difference has to be calculated, or when the date format has a time zone
+ * component in it.
+ * <li><i>timezone</i> - the time zone of this instance. If the time zone is not 
+ * given, it can be inferred from this locale. For locales that span multiple
+ * time zones, the one with the largest population is chosen as the one that 
+ * represents the locale. 
+ * </ul>
+ * 
+ * If called with another Hebrew date argument, the date components of the given
+ * date are copied into the current one.<p>
+ * 
+ * If the constructor is called with no arguments at all or if none of the 
+ * properties listed above 
+ * from <i>julianday</i> through <i>millisecond</i> are present, then the date 
+ * components are 
+ * filled in with the current date at the time of instantiation. Note that if
+ * you do not give the time zone when defaulting to the current time and the 
+ * time zone for all of ilib was not set with <i>ilib.setTimeZone()</i>, then the
+ * time zone will default to UTC ("Universal Time, Coordinated" or "Greenwich 
+ * Mean Time").<p>
+ * 
+ * Depends directive: !depends hebrewdate.js
+ * 
+ * @constructor
+ * @extends ilib.Date
+ * @param {Object=} params parameters that govern the settings and behaviour of this Hebrew date
+ */
+ilib.Date.HebrewDate = function(params) {
+	this.cal = new ilib.Cal.Hebrew();
+	
+	if (params) {
+		if (params.timezone) {
+			this.timezone = params.timezone;
+		}
+		if (params.locale) {
+			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
+			if (!this.timezone) {
+				var li = new ilib.LocaleInfo(this.locale);
+				this.timezone = li.getTimeZone(); 
+			}
+		}
+
+		if (typeof(params.unixtime) != 'undefined') {
+			this.setTime(parseInt(params.unixtime, 10));
+		} else if (typeof(params.julianday) != 'undefined') {
+			this.setJulianDay(parseFloat(params.julianday));
+		} else if (params.year || params.month || params.day || params.hour ||
+				params.minute || params.second || params.millisecond || params.parts ) {
+			/**
+			 * Year in the Hebrew calendar.
+			 * @type number
+			 */
+			this.year = parseInt(params.year, 10) || 0;
+
+			/**
+			 * The month number, ranging from 1 to 13.
+			 * @type number
+			 */
+			this.month = parseInt(params.month, 10) || 1;
+
+			/**
+			 * The day of the month. This ranges from 1 to 30.
+			 * @type number
+			 */
+			this.day = parseInt(params.day, 10) || 1;
+			
+			/**
+			 * The hour of the day. This can be a number from 0 to 23, as times are
+			 * stored unambiguously in the 24-hour clock.
+			 * @type number
+			 */
+			this.hour = parseInt(params.hour, 10) || 0;
+
+			this.parts = -1;
+			
+			if (typeof(params.parts) !== 'undefined') {
+				/**
+				 * The parts (halaqim) of the hour. This can be a number from 0 to 1079.
+				 * @type number
+				 */
+				this.parts = parseInt(params.parts, 10);
+				var seconds = parseInt(params.parts, 10) * 3.333333333333;
+				this.minute = Math.floor(seconds / 60);
+				seconds -= this.minute * 60;
+				this.second = Math.floor(seconds);
+				this.millisecond = (seconds - this.second);	
+			} else {
+				/**
+				 * The minute of the hours. Ranges from 0 to 59.
+				 * @type number
+				 */
+				this.minute = parseInt(params.minute, 10) || 0;
+	
+				/**
+				 * The second of the minute. Ranges from 0 to 59.
+				 * @type number
+				 */
+				this.second = parseInt(params.second, 10) || 0;
+	
+				/**
+				 * The millisecond of the second. Ranges from 0 to 999.
+				 * @type number
+				 */
+				this.millisecond = parseInt(params.millisecond, 10) || 0;
+			}
+				
+			/**
+			 * The day of the year. Ranges from 1 to 383.
+			 * @type number
+			 */
+			this.dayOfYear = parseInt(params.dayOfYear, 10);
+		} else if (typeof(params.rd) != 'undefined') {
+			// private parameter. Do not document this!
+			this.setRd(params.rd);
+		} else {
+			// Date.getTime() gets unix time in UTC
+			var now = new Date();
+			this.setTime(now.getTime() - now.getTimezoneOffset()*60000);
+		}
+	} else {
+		// Date.getTime() gets unix time in UTC
+		var now = new Date();
+		this.setTime(now.getTime() - now.getTimezoneOffset()*60000);
+	}
+};
+
+ilib.Date.HebrewDate.prototype = new ilib.Date();
+ilib.Date.HebrewDate.prototype.parent = ilib.Date;
+ilib.Date.HebrewDate.prototype.constructor = ilib.Date.HebrewDate;
+
+/**
+ * @private
+ * @const
+ * @type Array.<number>
+ * the cumulative lengths of each month for a non-leap year, without new years corrections
+ */
+ilib.Date.HebrewDate.cumMonthLengths = [
+	176,  /* Nisan */
+	206,  /* Iyyar */
+	235,  /* Sivan */
+	265,  /* Tammuz */
+	294,  /* Av */
+	324,  /* Elul */
+	0,    /* Tishri - Jewish New Year (Rosh HaShanah) starts in month 7 */
+	30,   /* Heshvan */
+	59,   /* Kislev */
+	88,   /* Teveth */
+	117,  /* Shevat */
+	147   /* Adar I */
+];
+
+/**
+ * @private
+ * @const
+ * @type Array.<number>
+ * the cumulative lengths of each month for a non-leap year, without new years corrections,
+ * that can be used in reverse to map days to months
+ */
+ilib.Date.HebrewDate.cumMonthLengthsReverse = [
+//  [days, monthnumber],                                                
+	[0,   7],  /* Tishri - Jewish New Year (Rosh HaShanah) starts in month 7 */
+	[30,  8],  /* Heshvan */
+	[59,  9],  /* Kislev */
+	[88,  10], /* Teveth */
+	[117, 11], /* Shevat */
+	[147, 12], /* Adar I */
+	[176, 1],  /* Nisan */
+	[206, 2],  /* Iyyar */
+	[235, 3],  /* Sivan */
+	[265, 4],  /* Tammuz */
+	[294, 5],  /* Av */
+	[324, 6],  /* Elul */
+	[354, 7]   /* end of year sentinel value */
+];
+
+/**
+ * @private
+ * @const
+ * @type Array.<number>
+ * the cumulative lengths of each month for a leap year, without new years corrections 
+ */
+ilib.Date.HebrewDate.cumMonthLengthsLeap = [
+	206,  /* Nisan */
+	236,  /* Iyyar */
+	265,  /* Sivan */
+	295,  /* Tammuz */
+	324,  /* Av */
+	354,  /* Elul */
+	0,    /* Tishri - Jewish New Year (Rosh HaShanah) starts in month 7 */
+	30,   /* Heshvan */
+	59,   /* Kislev */
+	88,   /* Teveth */
+	117,  /* Shevat */
+	147,  /* Adar I */
+	177   /* Adar II */
+];
+
+/**
+ * @private
+ * @const
+ * @type Array.<number>
+ * the cumulative lengths of each month for a leap year, without new years corrections
+ * that can be used in reverse to map days to months 
+ */
+ilib.Date.HebrewDate.cumMonthLengthsLeapReverse = [
+//  [days, monthnumber],                                                
+	[0,   7],  /* Tishri - Jewish New Year (Rosh HaShanah) starts in month 7 */
+	[30,  8],  /* Heshvan */
+	[59,  9],  /* Kislev */
+	[88,  10], /* Teveth */
+	[117, 11], /* Shevat */
+	[147, 12], /* Adar I */
+	[177, 13], /* Adar II */
+	[206, 1],  /* Nisan */
+	[236, 2],  /* Iyyar */
+	[265, 3],  /* Sivan */
+	[295, 4],  /* Tammuz */
+	[324, 5],  /* Av */
+	[354, 6],  /* Elul */
+	[384, 7]   /* end of year sentinel value */
+];
+
+/**
+ * @private
+ * @const
+ * @type number
+ * Number of days difference between RD 0 of the Gregorian calendar 
+ * (Jan 1, 1 Gregorian = JD 1721057.5) and RD 0 of the Hebrew calendar
+ * (September 7, -3760 Gregorian = JD 347997.25)
+ */
+ilib.Date.HebrewDate.GregorianDiff = 1373060.25;
+
+/**
+ * @private
+ * @const
+ * @type number
+ * The difference between a zero Julian day and the first day of the Hebrew 
+ * calendar: sunset on Monday, Tishri 1, 1 = September 7, 3760 BC Gregorian = JD 347997.25
+ */
+ilib.Date.HebrewDate.epoch = 347997.25;
+
+/**
+ * @private
+ * Return the Rata Die (fixed day) number of the given date.
+ * 
+ * @param {Object} date hebrew date to calculate
+ * @return {number} the rd date as a number
+ */
+ilib.Date.HebrewDate.prototype.calcRataDie = function(date) {
+	var elapsed = ilib.Cal.Hebrew.elapsedDays(date.year);
+	var days = elapsed +
+		ilib.Cal.Hebrew.newYearsCorrection(date.year, elapsed) +
+		date.day - 1;
+	var i, sum = 0, table;
+	
+	//console.log("getRataDie: converting " +  JSON.stringify(date));
+	//console.log("getRataDie: days is " +  days);
+	//console.log("getRataDie: new years correction is " +  ilib.Cal.Hebrew.newYearsCorrection(date.year, elapsed));
+	
+	table = this.cal.isLeapYear(date.year) ? 
+				ilib.Date.HebrewDate.cumMonthLengthsLeap :
+				ilib.Date.HebrewDate.cumMonthLengths;
+	sum = table[date.month-1];
+	
+	// gets cumulative without correction, so now add in the correction
+	if ((date.month < 7 || date.month > 8) && ilib.Cal.Hebrew.longHeshvan(date.year)) {
+		sum++;
+	}
+	if ((date.month < 7 || date.month > 9) && ilib.Cal.Hebrew.longKislev(date.year)) {
+		sum++;
+	}
+	// console.log("getRataDie: cum days is now " +  sum);
+	
+	days += sum;
+	
+	// the date starts at sunset, which we take as 18:00, so the hours from
+	// midnight to 18:00 are on the current Gregorian day, and the hours from
+	// 18:00 to midnight are on the previous Gregorian day. So to calculate the 
+	// number of hours into the current day that this time represents, we have
+	// to count from 18:00 to midnight first, and add in 6 hours if the time is
+	// less than 18:00
+	var time;
+	if (date.hour >= 18) {
+		time = ((date.hour - 18 || 0) * 3600000 +
+			(date.minute || 0) * 60000 +
+			(date.second || 0) * 1000 +
+			(date.millisecond || 0)) / 
+			86400000;
+	} else {
+		time = 0.25 +	// 6 hours from 18:00 to midnight on the previous gregorian day
+				((date.hour || 0) * 3600000 +
+				(date.minute || 0) * 60000 +
+				(date.second || 0) * 1000 +
+				(date.millisecond || 0)) / 
+				86400000;
+	}
+	
+	//console.log("getRataDie: rd is " +  (days + time));
+	return days + time;
+};
+
+/**
+ * @private
+ * Return the Rata Die (fixed day) number of this date.
+ * 
+ * @return {number} the rd date as a number
+ */
+ilib.Date.HebrewDate.prototype.getRataDie = function() {
+	return this.calcRataDie(this);
+};
+
+/**
+ * @private
+ * Calculate date components for the given RD date.
+ * @return {Object.<{year:number,month:number,day:number,hour:number,minute:number,second:number,millisecond:number}>} object containing the fields
+ */
+ilib.Date.HebrewDate.prototype.calcComponents = function (rd) {
+	var ret = {},
+		remainder,
+		approximation,
+		year,
+		month,
+		i,
+		table,
+		target,
+		thisNewYear = 0,
+		nextNewYear;
+	
+	// console.log("HebrewDate.calcComponents: calculating for rd " + rd);
+	
+	// divide by the average number of days per year in the Hebrew calendar
+	// to approximate the year, then tweak it to get the real year
+	approximation = Math.floor(rd / 365.246822206) + 1;
+	
+	// console.log("HebrewDate.calcComponents: approx is " + approximation);
+	
+	// search forward from approximation-1 for the year that actually contains this rd
+	year = approximation;
+	thisNewYear = ilib.Cal.Hebrew.newYear(year-1);
+	nextNewYear = ilib.Cal.Hebrew.newYear(year);
+	while (rd >= nextNewYear) {
+		year++;
+		thisNewYear = nextNewYear;
+		nextNewYear = ilib.Cal.Hebrew.newYear(year);
+	}
+	ret.year = year-1;
+	
+	// console.log("HebrewDate.calcComponents: year is " + ret.year + " with starting rd " + thisNewYear);
+	
+	remainder = rd - thisNewYear;
+	// console.log("HebrewDate.calcComponents: remainder is " + remainder);
+
+	// take out new years corrections so we get the right month when we look it up in the table
+	if (remainder >= 59) {
+		if (remainder >= 88) {
+			if (ilib.Cal.Hebrew.longKislev(ret.year)) {
+				remainder--;
+			}
+		}
+		if (ilib.Cal.Hebrew.longHeshvan(ret.year)) {
+			remainder--;
+		}
+	}
+	
+	// console.log("HebrewDate.calcComponents: after new years corrections, remainder is " + remainder);
+	
+	table = this.cal.isLeapYear(ret.year) ? 
+			ilib.Date.HebrewDate.cumMonthLengthsLeapReverse :
+			ilib.Date.HebrewDate.cumMonthLengthsReverse;
+	
+	i = 0;
+	target = Math.floor(remainder);
+	while (i+1 < table.length && target >= table[i+1][0]) {
+		i++;
+	}
+	
+	ret.month = table[i][1];
+	// console.log("HebrewDate.calcComponents: remainder is " + remainder);
+	remainder -= table[i][0];
+	
+	// console.log("HebrewDate.calcComponents: month is " + ret.month + " and remainder is " + remainder);
+	
+	ret.day = Math.floor(remainder);
+	remainder -= ret.day;
+	ret.day++; // days are 1-based
+	
+	// console.log("HebrewDate.calcComponents: day is " + ret.day + " and remainder is " + remainder);
+
+	// now convert to milliseconds for the rest of the calculation
+	remainder = Math.round(remainder * 86400000);
+	
+	ret.hour = Math.floor(remainder/3600000);
+	remainder -= ret.hour * 3600000;
+	
+	// the hours from 0 to 6 are actually 18:00 to midnight of the previous
+	// gregorian day, so we have to adjust for that
+	if (ret.hour >= 6) {
+		ret.hour -= 6;
+	} else {
+		ret.hour += 18;
+	}
+		
+	ret.minute = Math.floor(remainder/60000);
+	remainder -= ret.minute * 60000;
+	
+	ret.second = Math.floor(remainder/1000);
+	remainder -= ret.second * 1000;
+	
+	ret.millisecond = remainder;
+	
+	// console.log("HebrewDate.calcComponent: final result is " + JSON.stringify(ret));
+	return ret;
+};
+
+/**
+ * @private
+ * Set the date components of this instance based on the given rd.
+ * @param {number} rd the rata die date to set
+ */
+ilib.Date.HebrewDate.prototype.setRd = function (rd) {
+	var fields = this.calcComponents(rd);
+	
+	this.year = fields.year;
+	this.month = fields.month;
+	this.day = fields.day;
+	this.hour = fields.hour;
+	this.minute = fields.minute;
+	this.second = fields.second;
+	this.millisecond = fields.millisecond;
+};
+
+/**
+ * Set the date of this instance using a Julian Day.
+ * @param {number} date the Julian Day to use to set this date
+ */
+ilib.Date.HebrewDate.prototype.setJulianDay = function (date) {
+	var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date,
+		rd;	// rata die -- # of days since the beginning of the calendar
+	
+	rd = jd.getDate() - ilib.Date.HebrewDate.epoch; 	// Julian Days start at noon
+	this.setRd(rd);
+};
+
+/**
+ * Return the day of the week of this date. The day of the week is encoded
+ * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
+ * 
+ * @return {number} the day of the week
+ */
+ilib.Date.HebrewDate.prototype.getDayOfWeek = function() {
+	var rd = Math.floor(this.getRataDie());
+	return ilib.mod(rd+1, 7);
+};
+
+/**
+ * Get the Halaqim (parts) of an hour. There are 1080 parts in an hour, which means
+ * each part is 3.33333333 seconds long. This means the number returned may not
+ * be an integer.
+ * 
+ * @return {number} the halaqim parts of the current hour
+ */
+ilib.Date.HebrewDate.prototype.getHalaqim = function() {
+	if (this.parts < 0) {
+		// convert to ms first, then to parts
+		var h = this.minute * 60000 + this.second * 1000 + this.millisecond;
+		this.parts = (h * 0.0003);
+	}
+	return this.parts;
+};
+
+/**
+ * @private
+ * Return the rd of the particular day of the week on or before the given rd.
+ * eg. The Sunday on or before the given rd.
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the reference date
+ */
+ilib.Date.HebrewDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
+	return rd - ilib.mod(Math.floor(rd) - dayOfWeek + 1, 7);
+};
+
+/**
+ * @private
+ * Return the rd of the particular day of the week on or before the given rd.
+ * eg. The Sunday on or before the given rd.
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the reference date
+ */
+ilib.Date.HebrewDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
+	return this.onOrBeforeRd(rd+6, dayOfWeek);
+};
+
+/**
+ * @private
+ * Return the rd of the particular day of the week before the given rd.
+ * eg. The Sunday before the given rd.
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the reference date
+ */
+ilib.Date.HebrewDate.prototype.beforeRd = function(rd, dayOfWeek) {
+	return this.onOrBeforeRd(rd-1, dayOfWeek);
+};
+
+/**
+ * @private
+ * Return the rd of the particular day of the week after the given rd.
+ * eg. The Sunday after the given rd.
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the reference date
+ */
+ilib.Date.HebrewDate.prototype.afterRd = function(rd, dayOfWeek) {
+	return this.onOrBeforeRd(rd+7, dayOfWeek);
+};
+
+/**
+ * @private
+ * Return the rd of the first Sunday of the given ISO year.
+ * @return the rd of the first Sunday of the ISO year
+ */
+ilib.Date.HebrewDate.prototype.firstSunday = function (year) {
+	var tishri1 = this.calcRataDie({
+		year: year,
+		month: 7,
+		day: 1,
+		hour: 18,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+	var firstThu = this.onOrAfterRd(tishri1, 4);
+	return this.beforeRd(firstThu, 0);
+};
+
+/**
+ * Return a new Hebrew date instance that represents the first instance of the 
+ * given day of the week before the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week before the current date that is being sought
+ * @returns {ilib.Date.HebrewDate} the date being sought
+ */
+ilib.Date.HebrewDate.prototype.before = function (dow) {
+	return new ilib.Date.HebrewDate({rd: this.beforeRd(this.getRataDie(), dow)});
+};
+
+/**
+ * Return a new Hebrew date instance that represents the first instance of the 
+ * given day of the week after the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week after the current date that is being sought
+ * @returns {ilib.Date.HebrewDate} the date being sought
+ */
+ilib.Date.HebrewDate.prototype.after = function (dow) {
+	return new ilib.Date.HebrewDate({rd: this.afterRd(this.getRataDie(), dow)});
+};
+
+/**
+ * Return a new Hebrew date instance that represents the first instance of the 
+ * given day of the week on or before the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week on or before the current date that is being sought
+ * @returns {ilib.Date.HebrewDate} the date being sought
+ */
+ilib.Date.HebrewDate.prototype.onOrBefore = function (dow) {
+	return new ilib.Date.HebrewDate({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
+};
+
+/**
+ * Return a new Hebrew date instance that represents the first instance of the 
+ * given day of the week on or after the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week on or after the current date that is being sought
+ * @returns {ilib.Date.HebrewDate} the date being sought
+ */
+ilib.Date.HebrewDate.prototype.onOrAfter = function (dow) {
+	return new ilib.Date.HebrewDate({rd: this.onOrAfterRd(this.getRataDie(), dow)});
+};
+
+/**
+ * Return the week number in the current year for the current date. This is calculated
+ * in a similar way to the ISO 8601 week for a Gregorian calendar, but is technically
+ * not an actual ISO week number. That means in some years, the week starts in the
+ * previous calendar year. The week number ranges from 1 to 55.
+ * 
+ * @return {number} the week number for the current date
+ */
+ilib.Date.HebrewDate.prototype.getWeekOfYear = function() {
+	var rd = this.getRataDie(),
+		yearStart = this.firstSunday(this.year),
+		nextYear;
+	
+	// if we have a Tishri date, it may be in this year or the previous year
+	if (rd < yearStart) {
+		yearStart = this.firstSunday(this.year-1);
+	} else if (this.month == 6 && this.day > 23) {
+		// if we have a late Elul date, it may be in this year, or the next year
+		nextYear = this.firstSunday(this.year+1);
+		if (rd >= nextYear) {
+			yearStart = nextYear;
+		}
+	}
+	
+	return Math.floor((rd-yearStart)/7) + 1;
+};
+
+/**
+ * Return the ordinal day of the year. Days are counted from 1 and proceed linearly up to 
+ * 385, regardless of months or weeks, etc. That is, Tishri 1st is day 1, and 
+ * Elul 29 is 385 for a leap year with a long Heshvan and long Kislev.
+ * @return {number} the ordinal day of the year
+ */
+ilib.Date.HebrewDate.prototype.getDayOfYear = function() {
+	var table = this.cal.isLeapYear(this.year) ? 
+				ilib.Date.HebrewDate.cumMonthLengthsLeap : 
+				ilib.Date.HebrewDate.cumMonthLengths;
+	var days = table[this.month-1];
+	if ((this.month < 7 || this.month > 8) && ilib.Cal.Hebrew.longHeshvan(this.year)) {
+		days++;
+	}
+	if ((this.month < 7 || this.month > 9) && ilib.Cal.Hebrew.longKislev(this.year)) {
+		days++;
+	}
+
+	return days + this.day;
+};
+
+/**
+ * Return the ordinal number of the week within the month. The first week of a month is
+ * the first one that contains 4 or more days in that month. If any days precede this
+ * first week, they are marked as being in week 0. This function returns values from 0
+ * through 6.<p>
+ * 
+ * The locale is a required parameter because different locales that use the same 
+ * Hebrew calendar consider different days of the week to be the beginning of
+ * the week. This can affect the week of the month in which some days are located.
+ * 
+ * @param {ilib.Locale|string} locale the locale or locale spec to use when figuring out 
+ * the first day of the week
+ * @return {number} the ordinal number of the week within the current month
+ */
+ilib.Date.HebrewDate.prototype.getWeekOfMonth = function(locale) {
+	var li = new ilib.LocaleInfo(locale),
+		first = this.calcRataDie({
+			year: this.year,
+			month: this.month,
+			day: 1,
+			hour: 18,
+			minute: 0,
+			second: 0,
+			millisecond: 0
+		}),
+		rd = this.getRataDie(),
+		weekStart = this.onOrAfterRd(first, li.getFirstDayOfWeek());
+	
+	if (weekStart - first > 3) {
+		// if the first week has 4 or more days in it of the current month, then consider
+		// that week 1. Otherwise, it is week 0. To make it week 1, move the week start
+		// one week earlier.
+		weekStart -= 7;
+	}
+	return (rd < weekStart) ? 0 : Math.floor((rd - weekStart) / 7) + 1;
+};
+
+/**
+ * Return the era for this date as a number. The value for the era for Hebrew 
+ * calendars is -1 for "before the Hebrew era" and 1 for "the Hebrew era". 
+ * Hebrew era dates are any date after Tishri 1, 1, which is the same as
+ * September 7, 3760 BC in the Gregorian calendar. 
+ * 
+ * @return {number} 1 if this date is in the Hebrew era, -1 if it is before the 
+ * Hebrew era 
+ */
+ilib.Date.HebrewDate.prototype.getEra = function() {
+	return (this.year < 1) ? -1 : 1;
+};
+
+/**
+ * Return the unix time equivalent to this Hebrew date instance. Unix time is
+ * the number of milliseconds since midnight on Jan 1, 1970 (Gregorian). This method only
+ * returns a valid number for dates between midnight, Jan 1, 1970 (Gregorian) and  
+ * Jan 19, 2038 at 3:14:07am (Gregorian), when the unix time runs out. If this instance 
+ * encodes a date outside of that range, this method will return -1.
+ * 
+ * @return {number} a number giving the unix time, or -1 if the date is outside the
+ * valid unix time range
+ */
+ilib.Date.HebrewDate.prototype.getTime = function() {
+	var jd = this.getJulianDay();
+	var unix;
+
+	// not earlier than Jan 1, 1970 (Gregorian)
+	// or later than Jan 19, 2038 at 3:14:07am (Gregorian)
+	if (jd < 2440587.5 || jd > 2465442.634803241) { 
+		return -1;
+	}
+
+	// avoid the rounding errors in the floating point math by only using
+	// the whole days from the rd, and then calculating the milliseconds directly
+	var seconds = Math.floor(jd - 2440587.5) * 86400 +
+		this.hour * 3600 + 
+		this.minute * 60 +
+		this.second;
+	var millis = seconds * 1000 + this.millisecond;
+	
+	return millis;
+};
+
+/**
+ * Set the time of this instance according to the given unix time. Unix time is
+ * the number of milliseconds since midnight on Jan 1, 1970.
+ * 
+ * @param {number} millis the unix time to set this date to in milliseconds 
+ */
+ilib.Date.HebrewDate.prototype.setTime = function(millis) {
+	var jd = 2440587.5 + millis / 86400000;
+	this.setJulianDay(jd);
+};
+
+/**
+ * Return a Javascript Date object that is equivalent to this Hebrew date
+ * object.
+ * 
+ * @return {Date|undefined} a javascript Date object
+ */
+ilib.Date.HebrewDate.prototype.getJSDate = function() {
+	var unix = this.getTime();
+	return (unix === -1) ? undefined : new Date(unix); 
+};
+
+/**
+ * Return the Julian Day equivalent to this calendar date as a number.
+ * 
+ * @return {number} the julian date equivalent of this date
+ */
+ilib.Date.HebrewDate.prototype.getJulianDay = function() {
+	return this.getRataDie() + ilib.Date.HebrewDate.epoch;
+};
+
+/**
+ * Return the name of the calendar that governs this date.
+ * 
+ * @return {string} a string giving the name of the calendar
+ */
+ilib.Date.HebrewDate.prototype.getCalendar = function() {
+	return "hebrew";
+};
+
+/**
+ * Return the time zone associated with this Hebrew date, or 
+ * undefined if none was specified in the constructor.
+ * 
+ * @return {string|undefined} the name of the time zone for this date instance
+ */
+ilib.Date.HebrewDate.prototype.getTimeZone = function() {
+	return this.timezone;
+};
+
+// register with the factory method
+ilib.Date._constructors["hebrew"] = ilib.Date.HebrewDate;
 /*
  * islamic.js - Represent a Islamic calendar object.
  * 
@@ -5494,10 +10067,12 @@ ilib.Collator = function(options) {
  * really possible to precalculate the religious calendar. Certain groups, such 
  * as the Islamic Society of North America, decreed in in 2007 that they will use
  * a calendar based on calculations rather than observations to determine the 
- * beginning of lunar months, and therefore the dates of holidays.
+ * beginning of lunar months, and therefore the dates of holidays.<p>
+ * 
+ * Depends directive: !depends islamic.js
  * 
  * @constructor
- * @extends ilib.Cal
+ * @implements ilib.Cal
  */
 ilib.Cal.Islamic = function() {
 	this.type = "islamic";
@@ -5524,9 +10099,6 @@ ilib.Cal.Islamic.monthLengths = [
 	29   /* Dhu al-Hijja */
 ];
 
-
-/* inherits from ilib.Cal */
-ilib.Cal.Islamic.prototype = new ilib.Cal();
 
 /**
  * Return the number of months in the given year. The number of months in a year varies
@@ -5574,6 +10146,17 @@ ilib.Cal.Islamic.prototype.isLeapYear = function(year) {
  */
 ilib.Cal.Islamic.prototype.getType = function() {
 	return this.type;
+};
+
+/**
+ * Return a date instance for this calendar type using the given
+ * options.
+ * @param {Object} options options controlling the construction of 
+ * the date instance
+ * @returns {ilib.Date} a date appropriate for this calendar type
+ */
+ilib.Cal.Islamic.prototype.newDateInstance = function (options) {
+	return new ilib.Date.IslamicDate(options);
 };
 
 /*register this calendar for the factory method */
@@ -5640,6 +10223,8 @@ ilib.Cal._constructors["islamic"] = ilib.Cal.Islamic;
  * time zone will default to UTC ("Universal Time, Coordinated" or "Greenwich 
  * Mean Time").<p>
  * 
+ * Depends directive: !depends islamicdate.js
+ * 
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Islamic date
@@ -5659,60 +10244,63 @@ ilib.Date.IslamicDate = function(params) {
 			}
 		}
 
-		if (params.unixtime) {
-			this.setTime(params.unixtime);
-		} else if (params.julianday) {
-			this.setJulianDay(params.julianday);
+		if (typeof(params.unixtime) != 'undefined') {
+			this.setTime(parseInt(params.unixtime, 10));
+		} else if (typeof(params.julianday) != 'undefined') {
+			this.setJulianDay(parseFloat(params.julianday));
 		} else if (params.year || params.month || params.day || params.hour ||
 				params.minute || params.second || params.millisecond ) {
 			/**
 			 * Year in the Islamic calendar.
 			 * @type number
 			 */
-			this.year = params.year || 0;
+			this.year = parseInt(params.year, 10) || 0;
 
 			/**
 			 * The month number, ranging from 1 to 12 (December).
 			 * @type number
 			 */
-			this.month = params.month || 1;
+			this.month = parseInt(params.month, 10) || 1;
 
 			/**
 			 * The day of the month. This ranges from 1 to 30.
 			 * @type number
 			 */
-			this.day = params.day || 1;
+			this.day = parseInt(params.day, 10) || 1;
 			
 			/**
 			 * The hour of the day. This can be a number from 0 to 23, as times are
 			 * stored unambiguously in the 24-hour clock.
 			 * @type number
 			 */
-			this.hour = params.hour || 0;
+			this.hour = parseInt(params.hour, 10) || 0;
 
 			/**
 			 * The minute of the hours. Ranges from 0 to 59.
 			 * @type number
 			 */
-			this.minute = params.minute || 0;
+			this.minute = parseInt(params.minute, 10) || 0;
 
 			/**
 			 * The second of the minute. Ranges from 0 to 59.
 			 * @type number
 			 */
-			this.second = params.second || 0;
+			this.second = parseInt(params.second, 10) || 0;
 
 			/**
 			 * The millisecond of the second. Ranges from 0 to 999.
 			 * @type number
 			 */
-			this.millisecond = params.millisecond || 0;
+			this.millisecond = parseInt(params.millisecond, 10) || 0;
 			
 			/**
 			 * The day of the year. Ranges from 1 to 355.
 			 * @type number
 			 */
-			this.dayOfYear = params.dayOfYear;
+			this.dayOfYear = parseInt(params.dayOfYear, 10);
+		} else if (typeof(params.rd) != 'undefined') {
+			// private parameter. Do not document this!
+			this.setRd(params.rd);
 		} else {
 			// Date.getTime() gets unix time in UTC
 			var now = new Date();
@@ -5931,8 +10519,8 @@ ilib.Date.IslamicDate.prototype.getDayOfWeek = function() {
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
  */
-ilib.Date.IslamicDate.prototype.onOrBefore = function(rd, dayOfWeek) {
-	return rd - ilib.mod(rd - dayOfWeek - 2, 7);
+ilib.Date.IslamicDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
+	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 2, 7);
 };
 
 /**
@@ -5943,8 +10531,8 @@ ilib.Date.IslamicDate.prototype.onOrBefore = function(rd, dayOfWeek) {
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
  */
-ilib.Date.IslamicDate.prototype.onOrAfter = function(rd, dayOfWeek) {
-	return this.onOrBefore(rd+6, dayOfWeek);
+ilib.Date.IslamicDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
+	return this.onOrBeforeRd(rd+6, dayOfWeek);
 };
 
 /**
@@ -5955,8 +10543,8 @@ ilib.Date.IslamicDate.prototype.onOrAfter = function(rd, dayOfWeek) {
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
  */
-ilib.Date.IslamicDate.prototype.before = function(rd, dayOfWeek) {
-	return this.onOrBefore(rd-1, dayOfWeek);
+ilib.Date.IslamicDate.prototype.beforeRd = function(rd, dayOfWeek) {
+	return this.onOrBeforeRd(rd-1, dayOfWeek);
 };
 
 /**
@@ -5967,8 +10555,8 @@ ilib.Date.IslamicDate.prototype.before = function(rd, dayOfWeek) {
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
  */
-ilib.Date.IslamicDate.prototype.after = function(rd, dayOfWeek) {
-	return this.onOrBefore(rd+7, dayOfWeek);
+ilib.Date.IslamicDate.prototype.afterRd = function(rd, dayOfWeek) {
+	return this.onOrBeforeRd(rd+7, dayOfWeek);
 };
 
 /**
@@ -5986,8 +10574,56 @@ ilib.Date.IslamicDate.prototype.firstSunday = function (year) {
 		second: 0,
 		millisecond: 0
 	});
-	var firstThu = this.onOrAfter(jan1, 4);
-	return this.before(firstThu, 0);
+	var firstThu = this.onOrAfterRd(jan1, 4);
+	return this.beforeRd(firstThu, 0);
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week before the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week before the current date that is being sought
+ * @returns {ilib.Date.IslamicDate} the date being sought
+ */
+ilib.Date.IslamicDate.prototype.before = function (dow) {
+	return new ilib.Date.IslamicDate({rd: this.beforeRd(this.getRataDie(), dow)});
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week after the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week after the current date that is being sought
+ * @returns {ilib.Date.IslamicDate} the date being sought
+ */
+ilib.Date.IslamicDate.prototype.after = function (dow) {
+	return new ilib.Date.IslamicDate({rd: this.afterRd(this.getRataDie(), dow)});
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week on or before the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week on or before the current date that is being sought
+ * @returns {ilib.Date.IslamicDate} the date being sought
+ */
+ilib.Date.IslamicDate.prototype.onOrBefore = function (dow) {
+	return new ilib.Date.IslamicDate({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week on or after the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week on or after the current date that is being sought
+ * @returns {ilib.Date.IslamicDate} the date being sought
+ */
+ilib.Date.IslamicDate.prototype.onOrAfter = function (dow) {
+	return new ilib.Date.IslamicDate({rd: this.onOrAfterRd(this.getRataDie(), dow)});
 };
 
 /**
@@ -6052,7 +10688,7 @@ ilib.Date.IslamicDate.prototype.getWeekOfMonth = function(locale) {
 			millisecond: 0
 		}),
 		rd = this.getRataDie(),
-		weekStart = this.onOrAfter(first, li.getFirstDayOfWeek());
+		weekStart = this.onOrAfterRd(first, li.getFirstDayOfWeek());
 	if (weekStart - first > 3) {
 		// if the first week has 4 or more days in it of the current month, then consider
 		// that week 1. Otherwise, it is week 0. To make it week 1, move the week start
@@ -6164,6 +10800,8 @@ ilib.Date.IslamicDate.prototype.getTimeZone = function() {
 	return this.timezone;
 };
 
+//register with the factory method
+ilib.Date._constructors["islamic"] = ilib.Date.IslamicDate;
 /*
  * julian.js - Represent a Julian calendar object.
  * 
@@ -6189,9 +10827,12 @@ ilib.Date.IslamicDate.prototype.getTimeZone = function() {
 /**
  * @class
  * Construct a new Julian calendar object. This class encodes information about
- * a Julian calendar.
+ * a Julian calendar.<p>
+ * 
+ * Depends directive: !depends julian.js
+ * 
  * @constructor
- * @extends ilib.Cal
+ * @implements ilib.Cal
  */
 ilib.Cal.Julian = function() {
 	this.type = "julian";
@@ -6212,10 +10853,6 @@ ilib.Cal.Julian.monthLengths = [
 	30,  /* Nov */
 	31   /* Dec */
 ];
-
-
-/* inherits from ilib.Cal */
-ilib.Cal.Julian.prototype = new ilib.Cal();
 
 /**
  * Return the number of months in the given year. The number of months in a year varies
@@ -6266,6 +10903,17 @@ ilib.Cal.Julian.prototype.getType = function() {
 	return this.type;
 };
 
+/**
+ * Return a date instance for this calendar type using the given
+ * options.
+ * @param {Object} options options controlling the construction of 
+ * the date instance
+ * @returns {ilib.Date} a date appropriate for this calendar type
+ */
+ilib.Cal.Julian.prototype.newDateInstance = function (options) {
+	return new ilib.Date.JulDate(options);
+};
+
 /* register this calendar for the factory method */
 ilib.Cal._constructors["julian"] = ilib.Cal.Julian;
 /*
@@ -6299,7 +10947,8 @@ ilib.Cal._constructors["julian"] = ilib.Cal.Julian;
  * <li><i>unixtime<i> - sets the time of this instance according to the given 
  * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970 (Gregorian).
  * <li><i>julianday</i> - the Julian Day to set into this date
- * <li><i>year</i> - any integer except 0. Years go from -1 (BCE) to 1 (CE), skipping the zero year
+ * <li><i>year</i> - any integer except 0. Years go from -1 (BCE) to 1 (CE), skipping the zero 
+ * year which doesn't exist in the Julian calendar
  * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
  * <li><i>day</i> - 1 to 31
  * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
@@ -6341,6 +10990,8 @@ ilib.Cal._constructors["julian"] = ilib.Cal.Julian;
  * time zone will default to UTC ("Universal Time, Coordinated" or "Greenwich 
  * Mean Time").<p>
  * 
+ * Depends directive: !depends juliandate.js
+ * 
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Julian date
@@ -6360,48 +11011,51 @@ ilib.Date.JulDate = function(params) {
 			}
 		}
 
-		if (params.unixtime) {
-			this.setTime(params.unixtime);
-		} else if (params.julianday) {
-			this.setJulianDay(params.julianday);
+		if (typeof(params.unixtime) != 'undefined') {
+			this.setTime(parseInt(params.unixtime, 10));
+		} else if (typeof(params.julianday) != 'undefined') {
+			this.setJulianDay(parseFloat(params.julianday));
 		} else if (params.year || params.month || params.day || params.hour ||
 				params.minute || params.second || params.millisecond ) {
 			/**
 			 * Year in the Julian calendar.
 			 * @type number
 			 */
-			this.year = params.year || 0;
+			this.year = parseInt(params.year, 10) || 0;
 			/**
 			 * The month number, ranging from 1 (January) to 12 (December).
 			 * @type number
 			 */
-			this.month = params.month || 1;
+			this.month = parseInt(params.month, 10) || 1;
 			/**
 			 * The day of the month. This ranges from 1 to 31.
 			 * @type number
 			 */
-			this.day = params.day || 1;
+			this.day = parseInt(params.day, 10) || 1;
 			/**
 			 * The hour of the day. This can be a number from 0 to 23, as times are
 			 * stored unambiguously in the 24-hour clock.
 			 * @type number
 			 */
-			this.hour = params.hour || 0;
+			this.hour = parseInt(params.hour, 10) || 0;
 			/**
 			 * The minute of the hours. Ranges from 0 to 59.
 			 * @type number
 			 */
-			this.minute = params.minute || 0;
+			this.minute = parseInt(params.minute, 10) || 0;
 			/**
 			 * The second of the minute. Ranges from 0 to 59.
 			 * @type number
 			 */
-			this.second = params.second || 0;
+			this.second = parseInt(params.second, 10) || 0;
 			/**
 			 * The millisecond of the second. Ranges from 0 to 999.
 			 * @type number
 			 */
-			this.millisecond = params.millisecond || 0;
+			this.millisecond = parseInt(params.millisecond, 10) || 0;
+		} else if (typeof(params.rd) != 'undefined') {
+			// private parameter. Do not document this!
+			this.setRd(params.rd);
 		} else {
 			// Date.getTime() gets unix time in UTC
 			var now = new Date();
@@ -6523,7 +11177,7 @@ ilib.Date.JulDate.prototype.calcComponents = function (rd) {
 		cumulative,
 		ret = {};
 	
-	year = Math.floor((4*rd + 1464)/1461);
+	year = Math.floor((4*(rd-1) + 1464)/1461);
 	
 	ret.year = (year <= 0) ? year - 1 : year;
 	
@@ -6599,8 +11253,128 @@ ilib.Date.JulDate.prototype.setJulianDay = function (date) {
  * @returns {number} the day of the week
  */
 ilib.Date.JulDate.prototype.getDayOfWeek = function() {
-	var rd = this.getRataDie();
+	var rd = Math.floor(this.getRataDie());
 	return ilib.mod(rd-2, 7);
+};
+
+/**
+ * @private
+ * Return the rd of the particular day of the week on or before the given rd.
+ * eg. The Sunday on or before the given rd.
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the reference date
+ * @returns {number} the day of the week
+ */
+ilib.Date.JulDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
+	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 2, 7);
+};
+
+/**
+ * @private
+ * Return the rd of the particular day of the week on or before the given rd.
+ * eg. The Sunday on or before the given rd.
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the reference date
+ * @returns {number} the day of the week
+ */
+ilib.Date.JulDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
+	return this.onOrBeforeRd(rd+6, dayOfWeek);
+};
+
+/**
+ * @private
+ * Return the rd of the particular day of the week before the given rd.
+ * eg. The Sunday before the given rd.
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the reference date
+ * @returns {number} the day of the week
+ */
+ilib.Date.JulDate.prototype.beforeRd = function(rd, dayOfWeek) {
+	return this.onOrBeforeRd(rd-1, dayOfWeek);
+};
+
+/**
+ * @private
+ * Return the rd of the particular day of the week after the given rd.
+ * eg. The Sunday after the given rd.
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the reference date
+ * @returns {number} the day of the week
+ */
+ilib.Date.JulDate.prototype.afterRd = function(rd, dayOfWeek) {
+	return this.onOrBeforeRd(rd+7, dayOfWeek);
+};
+
+/**
+ * @private
+ * Return the rd of the first Sunday of the given ISO year.
+ * @param {number} year the year for which the first Sunday is being sought
+ * @returns the rd of the first Sunday of the ISO year
+ */
+ilib.Date.JulDate.prototype.firstSunday = function (year) {
+	var jan1 = this.calcRataDie({
+		year: year,
+		month: 1,
+		day: 1,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+	var firstThu = this.onOrAfterRd(jan1, 4);
+	return this.beforeRd(firstThu, 0);
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week before the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week before the current date that is being sought
+ * @returns {ilib.Date.JulDate} the date being sought
+ */
+ilib.Date.JulDate.prototype.before = function (dow) {
+	return new ilib.Date.JulDate({rd: this.beforeRd(this.getRataDie(), dow)});
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week after the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week after the current date that is being sought
+ * @returns {ilib.Date.JulDate} the date being sought
+ */
+ilib.Date.JulDate.prototype.after = function (dow) {
+	return new ilib.Date.JulDate({rd: this.afterRd(this.getRataDie(), dow)});
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week on or before the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week on or before the current date that is being sought
+ * @returns {ilib.Date.JulDate} the date being sought
+ */
+ilib.Date.JulDate.prototype.onOrBefore = function (dow) {
+	return new ilib.Date.JulDate({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week on or after the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week on or after the current date that is being sought
+ * @returns {ilib.Date.JulDate} the date being sought
+ */
+ilib.Date.JulDate.prototype.onOrAfter = function (dow) {
+	return new ilib.Date.JulDate({rd: this.onOrAfterRd(this.getRataDie(), dow)});
 };
 
 /**
@@ -6693,10 +11467,8 @@ ilib.Date.JulDate.prototype.getTimeZone = function() {
 	return this.timezone;
 };
 
-
-
-
-
+//register with the factory method
+ilib.Date._constructors["julian"] = ilib.Date.JulDate;
 ilib.data.ctype = {
 	"ideograph": [
 		[4352,4607],
@@ -7996,9 +12768,8 @@ ilib.CType = {
 	 * Return whether or not the first character is within the named range
 	 * of Unicode characters. The valid list of range names are taken from 
 	 * the Unicode 6.0 spec. Only those ranges which have characters in the 
-	 * Basic Multilingual Plane (BMP) are supported, as Javascript does not
-	 * support the full character set. Currently, this method supports the 
-	 * following range names:
+	 * Basic Multilingual Plane (BMP) are supported. Currently, this method 
+	 * supports the following range names:
 	 * 
 	 * <ul>
 	 * <li><i>ascii</i> - basic ASCII
@@ -8136,7 +12907,9 @@ ilib.CType = {
 	 * <li><i>lowsurrogates</i>
 	 * <li><i>reserved</i>
 	 * <li><i>noncharacters</i>
-	 * </ul>
+	 * </ul><p>
+	 * 
+	 * Depends directive: !depends ctype.js
 	 * 
 	 * @param {string} ch character to examine
 	 * @param {string} rangeName the name of the range to check
@@ -8173,7 +12946,10 @@ ilib.CType = {
 
 /**
  * Return whether or not the first character is a digit character in the
- * Latin script.
+ * Latin script.<p>
+ * 
+ * Depends directive: !depends ctype.isdigit.js
+ * 
  * @param {string} ch character to examine
  * @return {boolean} true if the first character is a digit character in the
  * Latin script. 
@@ -8225,7 +13001,10 @@ ilib.data.ctype_z = {
 // !data ctype ctype_z
 
 /**
- * Return whether or not the first character is a whitespace character.
+ * Return whether or not the first character is a whitespace character.<p>
+ * 
+ * Depends directive: !depends ctype.isspace.js
+ * 
  * @param {string} ch character to examine
  * @return {boolean} true if the first character is a whitespace character.
  */
@@ -8297,6 +13076,9 @@ ctype.isspace.js
  * are "number", "currency", and "percentage". Default if this is not specified is
  * "number".
  * </ul>
+ * <p>
+ * 
+ * Depends directive: !depends numprs.js
  * 
  * @constructor
  * @param {string} str a string to parse as a number
@@ -8426,7 +13208,1751 @@ ilib.Number.prototype = {
 	}
 };
 
+ilib.data.currency = {
+	"USD": {
+		"name": "US Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CHF": {
+		"name": "Swiss Franc",
+		"decimals": 2,
+		"sign": "Fr"
+	},
+	"RON": {
+		"name": "Leu",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"RUB": {
+		"name": "Russian Ruble",
+		"decimals": 2,
+		"sign": "руб."
+	},
+	"SEK": {
+		"name": "Swedish Krona",
+		"decimals": 2,
+		"sign": "kr"
+	},
+	"GBP": {
+		"name": "Pound Sterling",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"PKR": {
+		"name": "Pakistan Rupee",
+		"decimals": 2,
+		"sign": "₨"
+	},
+	"KES": {
+		"name": "Kenyan Shilling",
+		"decimals": 2,
+		"sign": "Sh"
+	},
+	"AED": {
+		"name": "UAE Dirham",
+		"decimals": 2,
+		"sign": "د.إ"
+	},
+	"KRW": {
+		"name": "Won",
+		"decimals": 0,
+		"sign": "₩"
+	},
+	"AFN": {
+		"name": "Afghani",
+		"decimals": 2,
+		"sign": "؋"
+	},
+	"ALL": {
+		"name": "Lek",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"AMD": {
+		"name": "Armenian Dram",
+		"decimals": 2,
+		"sign": "դր."
+	},
+	"ANG": {
+		"name": "Netherlands Antillean Guilder",
+		"decimals": 2,
+		"sign": "ƒ"
+	},
+	"AOA": {
+		"name": "Kwanza",
+		"decimals": 2,
+		"sign": "Kz"
+	},
+	"ARS": {
+		"name": "Argentine Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"AUD": {
+		"name": "Australian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"AWG": {
+		"name": "Aruban Florin",
+		"decimals": 2,
+		"sign": "ƒ"
+	},
+	"AZN": {
+		"name": "Azerbaijanian Manat",
+		"decimals": 2,
+		"sign": "AZN"
+	},
+	"BAM": {
+		"name": "Convertible Mark",
+		"decimals": 2,
+		"sign": "КМ"
+	},
+	"BBD": {
+		"name": "Barbados Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"BDT": {
+		"name": "Taka",
+		"decimals": 2,
+		"sign": "৳"
+	},
+	"BGN": {
+		"name": "Bulgarian Lev",
+		"decimals": 2,
+		"sign": "лв"
+	},
+	"BHD": {
+		"name": "Bahraini Dinar",
+		"decimals": 3,
+		"sign": ".د.ب"
+	},
+	"BIF": {
+		"name": "Burundi Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"BMD": {
+		"name": "Bermudian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"BND": {
+		"name": "Brunei Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"BOB": {
+		"name": "Boliviano",
+		"decimals": 2,
+		"sign": "Bs."
+	},
+	"BRL": {
+		"name": "Brazilian Real",
+		"decimals": 2,
+		"sign": "R$"
+	},
+	"BSD": {
+		"name": "Bahamian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"BTN": {
+		"name": "Ngultrum",
+		"decimals": 2,
+		"sign": "Nu."
+	},
+	"BWP": {
+		"name": "Pula",
+		"decimals": 2,
+		"sign": "P"
+	},
+	"BYR": {
+		"name": "Belarussian Ruble",
+		"decimals": 0,
+		"sign": "Br"
+	},
+	"BZD": {
+		"name": "Belize Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CAD": {
+		"name": "Canadian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CDF": {
+		"name": "Congolese Franc",
+		"decimals": 2,
+		"sign": "Fr"
+	},
+	"CLP": {
+		"name": "Chilean Peso",
+		"decimals": 0,
+		"sign": "$"
+	},
+	"CNY": {
+		"name": "Yuan Renminbi",
+		"decimals": 2,
+		"sign": "元"
+	},
+	"COP": {
+		"name": "Colombian Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CRC": {
+		"name": "Costa Rican Colon",
+		"decimals": 2,
+		"sign": "₡"
+	},
+	"CUP": {
+		"name": "Cuban Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CVE": {
+		"name": "Cape Verde Escudo",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CZK": {
+		"name": "Czech Koruna",
+		"decimals": 2,
+		"sign": "Kč"
+	},
+	"DJF": {
+		"name": "Djibouti Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"DKK": {
+		"name": "Danish Krone",
+		"decimals": 2,
+		"sign": "kr"
+	},
+	"DOP": {
+		"name": "Dominican Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"DZD": {
+		"name": "Algerian Dinar",
+		"decimals": 2,
+		"sign": "د.ج"
+	},
+	"EGP": {
+		"name": "Egyptian Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"ERN": {
+		"name": "Nakfa",
+		"decimals": 2,
+		"sign": "Nfk"
+	},
+	"ETB": {
+		"name": "Ethiopian Birr",
+		"decimals": 2,
+		"sign": "Br"
+	},
+	"EUR": {
+		"name": "Euro",
+		"decimals": 2,
+		"sign": "€"
+	},
+	"FJD": {
+		"name": "Fiji Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"FKP": {
+		"name": "Falkland Islands Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"GEL": {
+		"name": "Lari",
+		"decimals": 2,
+		"sign": "ლ"
+	},
+	"GHS": {
+		"name": "Cedi",
+		"decimals": 2,
+		"sign": "₵"
+	},
+	"GIP": {
+		"name": "Gibraltar Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"GMD": {
+		"name": "Dalasi",
+		"decimals": 2,
+		"sign": "D"
+	},
+	"GNF": {
+		"name": "Guinea Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"GTQ": {
+		"name": "Quetzal",
+		"decimals": 2,
+		"sign": "Q"
+	},
+	"GYD": {
+		"name": "Guyana Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"HKD": {
+		"name": "Hong Kong Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"HNL": {
+		"name": "Lempira",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"HRK": {
+		"name": "Croatian Kuna",
+		"decimals": 2,
+		"sign": "kn"
+	},
+	"HTG": {
+		"name": "Gourde",
+		"decimals": 2,
+		"sign": "G"
+	},
+	"HUF": {
+		"name": "Forint",
+		"decimals": 2,
+		"sign": "Ft"
+	},
+	"IDR": {
+		"name": "Rupiah",
+		"decimals": 2,
+		"sign": "Rp"
+	},
+	"ILS": {
+		"name": "New Israeli Sheqel",
+		"decimals": 2,
+		"sign": "₪"
+	},
+	"INR": {
+		"name": "Indian Rupee",
+		"decimals": 2,
+		"sign": "INR"
+	},
+	"IQD": {
+		"name": "Iraqi Dinar",
+		"decimals": 3,
+		"sign": "ع.د"
+	},
+	"IRR": {
+		"name": "Iranian Rial",
+		"decimals": 2,
+		"sign": "﷼"
+	},
+	"ISK": {
+		"name": "Iceland Krona",
+		"decimals": 0,
+		"sign": "kr"
+	},
+	"JMD": {
+		"name": "Jamaican Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"JOD": {
+		"name": "Jordanian Dinar",
+		"decimals": 3,
+		"sign": "د.ا"
+	},
+	"JPY": {
+		"name": "Yen",
+		"decimals": 0,
+		"sign": "¥"
+	},
+	"KGS": {
+		"name": "Som",
+		"decimals": 2,
+		"sign": "лв"
+	},
+	"KHR": {
+		"name": "Riel",
+		"decimals": 2,
+		"sign": "៛"
+	},
+	"KMF": {
+		"name": "Comoro Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"KPW": {
+		"name": "North Korean Won",
+		"decimals": 2,
+		"sign": "₩"
+	},
+	"KWD": {
+		"name": "Kuwaiti Dinar",
+		"decimals": 3,
+		"sign": "د.ك"
+	},
+	"KYD": {
+		"name": "Cayman Islands Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"KZT": {
+		"name": "Tenge",
+		"decimals": 2,
+		"sign": "₸"
+	},
+	"LAK": {
+		"name": "Kip",
+		"decimals": 2,
+		"sign": "₭"
+	},
+	"LBP": {
+		"name": "Lebanese Pound",
+		"decimals": 2,
+		"sign": "ل.ل"
+	},
+	"LKR": {
+		"name": "Sri Lanka Rupee",
+		"decimals": 2,
+		"sign": "Rs"
+	},
+	"LRD": {
+		"name": "Liberian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"LSL": {
+		"name": "Loti",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"LTL": {
+		"name": "Lithuanian Litas",
+		"decimals": 2,
+		"sign": "Lt"
+	},
+	"LVL": {
+		"name": "Latvian Lats",
+		"decimals": 2,
+		"sign": "Ls"
+	},
+	"LYD": {
+		"name": "Libyan Dinar",
+		"decimals": 3,
+		"sign": "ل.د"
+	},
+	"MAD": {
+		"name": "Moroccan Dirham",
+		"decimals": 2,
+		"sign": "د.م."
+	},
+	"MDL": {
+		"name": "Moldovan Leu",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"MGA": {
+		"name": "Malagasy Ariary",
+		"decimals": 2,
+		"sign": "Ar"
+	},
+	"MKD": {
+		"name": "Denar",
+		"decimals": 2,
+		"sign": "ден"
+	},
+	"MMK": {
+		"name": "Kyat",
+		"decimals": 2,
+		"sign": "K"
+	},
+	"MNT": {
+		"name": "Tugrik",
+		"decimals": 2,
+		"sign": "₮"
+	},
+	"MOP": {
+		"name": "Pataca",
+		"decimals": 2,
+		"sign": "P"
+	},
+	"MRO": {
+		"name": "Ouguiya",
+		"decimals": 2,
+		"sign": "UM"
+	},
+	"MUR": {
+		"name": "Mauritius Rupee",
+		"decimals": 2,
+		"sign": "₨"
+	},
+	"MVR": {
+		"name": "Rufiyaa",
+		"decimals": 2,
+		"sign": ".ރ"
+	},
+	"MWK": {
+		"name": "Kwacha",
+		"decimals": 2,
+		"sign": "MK"
+	},
+	"MXN": {
+		"name": "Mexican Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"MYR": {
+		"name": "Malaysian Ringgit",
+		"decimals": 2,
+		"sign": "RM"
+	},
+	"MZN": {
+		"name": "Metical",
+		"decimals": 2,
+		"sign": "MT"
+	},
+	"NAD": {
+		"name": "Namibia Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"NGN": {
+		"name": "Naira",
+		"decimals": 2,
+		"sign": "₦"
+	},
+	"NIO": {
+		"name": "Cordoba Oro",
+		"decimals": 2,
+		"sign": "C$"
+	},
+	"NOK": {
+		"name": "Norwegian Krone",
+		"decimals": 2,
+		"sign": "kr"
+	},
+	"NPR": {
+		"name": "Nepalese Rupee",
+		"decimals": 2,
+		"sign": "₨"
+	},
+	"NZD": {
+		"name": "New Zealand Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"OMR": {
+		"name": "Rial Omani",
+		"decimals": 3,
+		"sign": "ر.ع."
+	},
+	"PAB": {
+		"name": "Balboa",
+		"decimals": 2,
+		"sign": "B/."
+	},
+	"PEN": {
+		"name": "Nuevo Sol",
+		"decimals": 2,
+		"sign": "S/."
+	},
+	"PGK": {
+		"name": "Kina",
+		"decimals": 2,
+		"sign": "K"
+	},
+	"PHP": {
+		"name": "Philippine Peso",
+		"decimals": 2,
+		"sign": "₱"
+	},
+	"PLN": {
+		"name": "Zloty",
+		"decimals": 2,
+		"sign": "zł"
+	},
+	"PYG": {
+		"name": "Guarani",
+		"decimals": 0,
+		"sign": "₲"
+	},
+	"QAR": {
+		"name": "Qatari Rial",
+		"decimals": 2,
+		"sign": "ر.ق"
+	},
+	"RSD": {
+		"name": "Serbian Dinar",
+		"decimals": 2,
+		"sign": "дин."
+	},
+	"RWF": {
+		"name": "Rwanda Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"SAR": {
+		"name": "Saudi Riyal",
+		"decimals": 2,
+		"sign": "ر.س"
+	},
+	"SBD": {
+		"name": "Solomon Islands Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"SCR": {
+		"name": "Seychelles Rupee",
+		"decimals": 2,
+		"sign": "₨"
+	},
+	"SDG": {
+		"name": "Sudanese Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"SGD": {
+		"name": "Singapore Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"SHP": {
+		"name": "Saint Helena Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"SLL": {
+		"name": "Leone",
+		"decimals": 2,
+		"sign": "Le"
+	},
+	"SOS": {
+		"name": "Somali Shilling",
+		"decimals": 2,
+		"sign": "Sh"
+	},
+	"SRD": {
+		"name": "Surinam Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"SSP": {
+		"name": "South Sudanese Pound",
+		"decimals": 2,
+		"sign": ""
+	},
+	"STD": {
+		"name": "Dobra",
+		"decimals": 2,
+		"sign": "Db"
+	},
+	"SYP": {
+		"name": "Syrian Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"SZL": {
+		"name": "Lilangeni",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"THB": {
+		"name": "Baht",
+		"decimals": 2,
+		"sign": "฿"
+	},
+	"TJS": {
+		"name": "Somoni",
+		"decimals": 2,
+		"sign": "ЅМ"
+	},
+	"TMT": {
+		"name": "New Manat",
+		"decimals": 2,
+		"sign": "m"
+	},
+	"TND": {
+		"name": "Tunisian Dinar",
+		"decimals": 3,
+		"sign": "د.ت"
+	},
+	"TOP": {
+		"name": "Pa’anga",
+		"decimals": 2,
+		"sign": "T$"
+	},
+	"TRY": {
+		"name": "Turkish Lira",
+		"decimals": 2,
+		"sign": "TL"
+	},
+	"TTD": {
+		"name": "Trinidad and Tobago Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"TWD": {
+		"name": "New Taiwan Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"TZS": {
+		"name": "Tanzanian Shilling",
+		"decimals": 2,
+		"sign": "Sh"
+	},
+	"UAH": {
+		"name": "Hryvnia",
+		"decimals": 2,
+		"sign": "₴"
+	},
+	"UGX": {
+		"name": "Uganda Shilling",
+		"decimals": 2,
+		"sign": "Sh"
+	},
+	"UYU": {
+		"name": "Peso Uruguayo",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"UZS": {
+		"name": "Uzbekistan Sum",
+		"decimals": 2,
+		"sign": "лв"
+	},
+	"VEF": {
+		"name": "Bolivar Fuerte",
+		"decimals": 2,
+		"sign": "Bs F"
+	},
+	"VND": {
+		"name": "Dong",
+		"decimals": 0,
+		"sign": "₫"
+	},
+	"VUV": {
+		"name": "Vatu",
+		"decimals": 0,
+		"sign": "Vt"
+	},
+	"WST": {
+		"name": "Tala",
+		"decimals": 2,
+		"sign": "T"
+	},
+	"XAF": {
+		"name": "CFA Franc BEAC",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"XCD": {
+		"name": "East Caribbean Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"XOF": {
+		"name": "CFA Franc BCEAO",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"XPF": {
+		"name": "CFP Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"YER": {
+		"name": "Yemeni Rial",
+		"decimals": 2,
+		"sign": "﷼"
+	},
+	"ZAR": {
+		"name": "Rand",
+		"decimals": 2,
+		"sign": "R"
+	},
+	"ZMK": {
+		"name": "Zambian Kwacha",
+		"decimals": 2,
+		"sign": "ZK"
+	},
+	"ZWL": {
+		"name": "Zimbabwe Dollar",
+		"decimals": 2,
+		"sign": "$"
+	}
+}
+;
+/*
+ * currency.js - Currency definition
+ * 
+ * Copyright © 2012, JEDL Software, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
+// !depends ilibglobal.js locale.js
+
+// !data currency
+
+/**
+ * @class
+ * Create a new currency information instance. Instances of this class encode 
+ * information about a particular currency.<p> 
+ * 
+ * The options can contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>locale</i> - specify the locale for this instance
+ * <li><i>code</i> - find info on a specific currency with the given ISO 4217 code 
+ * <li><i>sign</i> - search for a currency that uses this sign
+ * </ul>
+ * 
+ * When searching for a currency by its sign, this class cannot guarantee 
+ * that it will return info about a specific currency. The reason is that currency 
+ * signs are sometimes shared between different currencies and the sign is 
+ * therefore ambiguous. If you need a 
+ * guarantee, find the currency using the code instead.<p>
+ * 
+ * The way this class finds a currency by sign is the following. If the sign is 
+ * unambiguous, then
+ * the currency is returned. If there are multiple currencies that use the same
+ * sign, and the current locale uses that sign, then the default currency for
+ * the current locale is returned. If there are multiple, but the current locale
+ * does not use that sign, then the currency with the largest circulation is
+ * returned. For example, if you are in the en-GB locale, and the sign is "$",
+ * then this class will notice that there are multiple currencies with that
+ * sign (USD, CAD, AUD, HKD, MXP, etc.) Since "$" is not used in en-GB, it will 
+ * pick the one with the largest circulation, which in this case is the US Dollar
+ * (USD).<p>
+ * 
+ * If neither the code or sign property is set, the currency that is most common 
+ * for the locale
+ * will be used instead. If the locale is not set, the default locale will be used.
+ * If the code is given, but it is not found in the list of known currencies, this
+ * constructor will throw an exception. If the sign is given, but it is not found,
+ * this constructor will default to the currency for the current locale. If both
+ * the code and sign properties are given, then the sign property will be ignored
+ * and only the code property used. If the locale is given, but it is not a known
+ * locale, this class will default to the default locale instead.<p>
+ * 
+ * Depends directive: !depends currency.js
+ * 
+ * @constructor
+ * @param options {Object} a set of properties to govern how this instance is constructed.
+ * @throws "currency xxx is unknown" when the given currency code is not in the list of 
+ * known currencies. xxx is replaced with the requested code.
+ */
+ilib.Currency = function (options) {
+	var li, currencies, currInfo, sign, cur;
+	
+	if (options) {
+		if (options.code) {
+			this.code = options.code;
+		}
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		if (options.sign) {
+			sign = options.sign;
+		}
+	}
+	
+	this.locale = this.locale || new ilib.Locale();
+	li = new ilib.LocaleInfo(this.locale);
+		
+	currencies = new ilib.ResBundle({
+		locale: this.locale,
+		name: "currency"
+	}).getResObj();
+
+	if (this.code) {
+		currInfo = currencies[this.code];
+		if (!currInfo) {
+			throw "currency " + this.code + " is unknown";
+		}
+	} else if (sign) {
+		currInfo = currencies[sign]; // maybe it is really a code...
+		if (typeof(currInfo) !== 'undefined') {
+			this.code = sign;
+		} else {
+			this.code = li.getCurrency();
+			currInfo = currencies[this.code];
+			if (currInfo.sign !== sign) {
+				// current locale does not use the sign, so search for it
+				for (cur in currencies) {
+					if (cur && currencies[cur]) {
+						currInfo = currencies[cur];
+						if (currInfo.sign === sign) {
+							// currency data is already ordered so that the currency with the
+							// largest circulation is at the beginning, so all we have to do
+							// is take the first one in the list that matches
+							this.code = cur;
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	if (!currInfo || !this.code) {
+		this.code = li.getCurrency();
+		currInfo = currencies[this.code];
+	}
+	
+	this.name = currInfo.name;
+	this.fractionDigits = currInfo.decimals;
+	this.sign = currInfo.sign;
+};
+
+ilib.Currency.prototype = {
+	/**
+	 * Return the ISO 4217 currency code for this instance.
+	 * @returns {string} the ISO 4217 currency code for this instance
+	 */
+	getCode: function () {
+		return this.code;
+	},
+	
+	/**
+	 * Return the default number of fraction digits that is typically used
+	 * with this type of currency.
+	 * @returns {number} the number of fraction digits for this currency
+	 */
+	getFractionDigits: function () {
+		return this.fractionDigits;
+	},
+	
+	/**
+	 * Return the sign commonly used to represent this currency.
+	 * @returns {string} the sign commonly used to represent this currency
+	 */
+	getSign: function () {
+		return this.sign;
+	},
+	
+	/**
+	 * Return the name of the currency in English.
+	 * @returns {string} the name of the currency in English
+	 */
+	getName: function () {
+		return this.name;
+	},
+	
+	/**
+	 * Return the locale for this currency. If the options to the constructor 
+	 * included a locale property in order to find the currency that is appropriate
+	 * for that locale, then the locale is returned here. If the options did not
+	 * include a locale, then this method returns undefined.
+	 * @returns {ilib.Locale} the locale used in the constructor of this instance,
+	 * or undefined if no locale was given in the constructor
+	 */
+	getLocale: function () {
+		return this.locale;
+	}
+};
+
+/*
+ * numfmt.js - Number formatter definition
+ * 
+ * Copyright © 2012, JEDL Software, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends ilibglobal.js locale.js strings.js resources.js currency.js
+
+/**
+ * @private
+ */
+ilib._roundFnc = {
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	floor: function (num) {
+		return Math.floor(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	ceiling: function (num) {
+		return Math.ceil(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	down: function (num) {
+		return (num < 0) ? Math.ceil(num) : Math.floor(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	up: function (num) {
+		return (num < 0) ? Math.floor(num) : Math.ceil(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfup: function (num) {
+		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfdown: function (num) {
+		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfeven: function (num) {
+		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfodd: function (num) {
+		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	}
+};
+
+/**
+ * @class
+ * Create a new number formatter instance. Locales differ in the way that digits
+ * in a formatted number are grouped, in the way the decimal character is represented, 
+ * etc. Use this formatter to get it right for any locale.<p>
+ * 
+ * This formatter can format plain numbers, currency amounts, and percentage amounts.<p>  
+ * 
+ * As with all formatters, the recommended
+ * practice is to create one formatter and use it multiple times to format various
+ * numbers.<p>
+ * 
+ * The options can contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>locale</i> - use the conventions of the specified locale when figuring out how to
+ * format a number.
+ * <li><i>type</i> - the type of this formatter. Valid values are "number", "currency", or 
+ * "percentage". If this property is not specified, the default is "number".
+ * <li><i>currency</i> - the ISO 4217 3-letter currency code to use when the formatter type 
+ * is "currency". This property is required for currency formatting. If the type property 
+ * is "currency" and the currency property is not specified, the constructor will throw a
+ * an exception. 
+ * <li><i>maxFractionDigits</i> - the maximum number of digits that should appear in the
+ * formatted output after the decimal. A value of -1 means unlimited, and 0 means only print
+ * the integral part of the number. 
+ * <li><i>minFractionDigits</i> - the minimum number of fractional digits that should
+ * appear in the formatted output. If the number does not have enough fractional digits
+ * to reach this minimum, the number will be zero-padded at the end to get to the limit.
+ * If the type of the formatter is "currency" and this
+ * property is not specified, then the minimum fraction digits is set to the normal number
+ * of digits used with that currency, which is almost always 0, 2, or 3 digits.
+ * <li><i>roundingMode</i> - When the maxFractionDigits or maxIntegerDigits is specified,
+ * this property governs how the least significant digits are rounded to conform to that
+ * maximum. The value of this property is a string with one of the following values:
+ * <ul>
+ *   <li><i>up</i> - round away from zero
+ *   <li><i>down</i> - round towards zero. This has the effect of truncating the number
+ *   <li><i>ceiling</i> - round towards positive infinity
+ *   <li><i>floor</i> - round towards negative infinity
+ *   <li><i>halfup</i> - round towards nearest neighbour. If equidistant, round up.
+ *   <li><i>halfdown</i> - round towards nearest neighbour. If equidistant, round down.
+ *   <li><i>halfeven</i> - round towards nearest neighbour. If equidistant, round towards the even neighbour
+ *   <li><i>halfodd</i> - round towards nearest neighbour. If equidistant, round towards the odd neighbour
+ * </ul>
+ * When the type of the formatter is "currency" and the <i>roundingMode</i> property is not
+ * set, then the standard legal rounding rules for the locale are followed. If the type
+ * is "number" or "percentage" and the <i>roundingMode</i> property is not set, then the 
+ * default mode is "halfdown".</i>.
+ * <li><i>style</i> - When the type of this formatter is "currency", the currency amount
+ * can be formatted in the following styles: "common" and "iso". The common style is the
+ * one commonly used in every day writing where the currency unit is represented using a 
+ * symbol. eg. "$57.35" for fifty-seven dollars and thirty five cents. The iso style is 
+ * the international style where the currency unit is represented using the ISO 4217 code.
+ * eg. "USD 57.35" for the same amount. The default is "common" style if the style is
+ * not specified.<p>
+ * 
+ * When the type of this formatter is "number",
+ * the style can be either "standard" or "scientific". A "standard" style means a fully
+ * specified floating point number formatted for the locale, whereas "scientific" uses
+ * scientific notation for all numbers. That is, 1 integral digit, followed by a number
+ * of fractional digits, followed by an "e" which denotes exponentiation, followed digits
+ * which give the power of 10 in the exponent. Note that if you specify a maximum number
+ * of integral digits, the formatter with a standard style will give you standard 
+ * formatting for smaller numbers and scientific notation for larger numbers. The default
+ * is standard style if this is not specified. 
+ * </ul>
+ * <p>
+ * 
+ * Depends directive: !depends numfmt.js
+ * 
+ * @constructor
+ * @param {Object.<string,*>} options A set of options that govern how the formatter will behave 
+ */
+ilib.NumFmt = function (options) {
+	this.locale = new ilib.Locale();
+	this.type = "number";
+	
+	if (options) {
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		
+		if (options.type) {
+			if (options.type === 'number' || 
+				options.type === 'currency' || 
+				options.type === 'percentage') {
+				this.type = options.type;
+			}
+		}
+		
+		if (options.currency) {
+			this.currency = options.currency;
+		}
+		
+		if (typeof(options.maxFractionDigits) === 'number') {
+			this.maxFractionDigits = options.maxFractionDigits;
+		}
+		if (typeof(options.minFractionDigits) === 'number') {
+			this.minFractionDigits = options.minFractionDigits;
+		}
+		if (options.style) {
+			this.style = options.style;
+		}
+	}
+	
+	this.localeInfo = new ilib.LocaleInfo(this.locale);
+	switch (this.type) {
+		case "currency":
+			var templates,
+				curopts;
+			
+			if (!this.currency || typeof(this.currency) != 'string') {
+				throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
+			}
+			
+			curopts = {
+				locale: this.locale,
+				code: this.currency		
+			};
+			this.currencyInfo = new ilib.Currency(curopts);
+			if (this.style !== "common" && this.style !== "iso") {
+				this.style = "common";
+			}
+			
+			if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
+				this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
+			}
+			
+			templates = this.localeInfo.getCurrencyFormats();
+			this.template = new ilib.String(templates[this.style]);
+			this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign(); 
+			break;
+		case "percentage":
+			this.template = new ilib.String(this.localeInfo.getPercentageFormat());
+			break;
+		default:
+			break;
+	}
+	
+	if (this.maxFractionDigits < this.minFractionDigits) {
+		this.minFractionDigits = this.maxFractionDigits;
+	}
+	
+	this.roundingMode = options && options.roundingMode;
+	if (!this.roundingMode) {
+		this.roundingMode = this.localeInfo.getRoundingMode();
+	}
+	if (!this.roundingMode) {
+		this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
+	}
+	if (!this.roundingMode) {
+		this.roundingMode = "halfdown";
+	}
+	
+	// set up the function, so we only have to figure it out once
+	// and not every time we do format()
+	this.round = ilib._roundFnc[this.roundingMode];
+	if (!this.round) {
+		this.roundingMode = "halfdown";
+		this.round = ilib._roundFnc[this.roundingMode];
+	}
+};
+
+/**
+ * Return an array of available locales that this formatter can format
+ * @returns {Array.<ilib.Locale>|undefined} an array of available locales
+ */
+ilib.NumFmt.getAvailableLocales = function () {
+	return undefined;
+};
+
+/**
+ * @private
+ * @const
+ * @type string
+ */
+ilib.NumFmt.zeros = "0000000000000000000000000000000000000000000000000000000000000000000000";
+
+
+ilib.NumFmt.prototype = {
+	/*
+	 * @private
+	 */
+	_pad: function (str, length, left) {
+		return (str.length >= length) ? 
+			str : 
+			(left ? 
+				ilib.NumFmt.zeros.substring(0,length-str.length) + str : 
+				str + ilib.NumFmt.zeros.substring(0,length-str.length));  
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num the number to format
+	 * @returns {string} the formatted number 
+	 */
+	_formatScientific: function (num) {
+		if (typeof(this.maxFractionDigits) === 'number') {
+			// if there is fraction digits, round it to the right length first
+			// divide or multiply by 10 by manipulating the exponent so as to
+			// avoid the rounding errors of floating point numbers
+			var e, 
+				factor,
+				str = num.toExponential(),
+				parts = str.split("e"),
+				significant = parts[0];
+			
+			e = parts[1];	
+			factor = Math.pow(10, this.maxFractionDigits);
+			significant = this.round(significant * factor) / factor;
+			return "" + significant + "e" + e;
+		} else {
+			return num.toExponential(this.minFractionDigits);
+		}
+	},
+	
+	/**
+	 * @private 
+	 * @param {number} num the number to format
+	 * @returns {string} the formatted number
+	 */ 
+	_formatStandard: function (num) {
+		var i;
+		
+		// console.log("_formatNumberStandard: formatting number " + num);
+		if (this.maxFractionDigits > -1) {
+			var factor = Math.pow(10, this.maxFractionDigits);
+			num = this.round(num * factor) / factor;
+		}
+
+		var parts = ("" + num).split("."),
+			integral = parts[0],
+			fraction = parts[1],
+			cycle, 
+			groupSize = this.localeInfo.getGroupingDigits(),
+			formatted;
+		
+		if (this.minFractionDigits > 0) {
+			fraction = this._pad(fraction || "", this.minFractionDigits, false);
+		}
+
+		if (groupSize > 0) {
+			cycle = ilib.mod(integral.length-1, groupSize);
+			formatted = "";
+			for (i = 0; i < integral.length-1; i++) {
+				formatted += integral.charAt(i);
+				if (cycle === 0) {
+					formatted += this.localeInfo.getGroupingSeparator();
+				}
+				cycle = ilib.mod(cycle - 1, groupSize);
+			}
+			formatted += integral.charAt(integral.length-1);
+		} else {
+			formatted = integral;
+		}
+		
+		if (fraction && (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits > 0)) {
+			formatted += this.localeInfo.getDecimalSeparator();
+			formatted += fraction;
+		}
+		
+		// console.log("_formatNumberStandard: returning " + formatted);
+		return formatted;
+	},
+	
+	/**
+	 * Format a number according to the settings of this number formatter instance.
+	 * @param num {number|ilib.Number} a floating point number to format
+	 * @returns {string} a string containing the formatted number
+	 */
+	format: function (num) {
+		var formatted, n;
+
+		n = (typeof(num) === 'object') ? num.value() : num;
+		if (this.type === "number") {
+			formatted = (this.style === "scientific") ? 
+					this._formatScientific(n) : 
+					this._formatStandard(n);
+		} else {			
+			formatted = this.template.format({n: this._formatStandard(n), s: this.sign});
+		}
+		
+		return formatted;
+	},
+	
+	/*
+	parse: function (numString) {
+	},
+	*/
+	
+	/**
+	 * Return the type of formatter. Valid values are "number", "currency", and
+	 * "percentage".
+	 * 
+	 * @returns {string} the type of formatter
+	 */
+	getType: function () {
+		return this.type;
+	},
+	
+	/**
+	 * Return the locale for this formatter instance.
+	 * @returns {ilib.Locale} the locale instance for this formatter
+	 */
+	getLocale: function () {
+		return this.locale;
+	},
+	
+	/**
+	 * Returns true if this formatter groups together digits in the integral 
+	 * portion of a number, based on the options set up in the constructor. In 
+	 * most western European cultures, this means separating every 3 digits 
+	 * of the integral portion of a number with a particular character.
+	 * 
+	 * @returns {boolean} true if this formatter groups digits in the integral
+	 * portion of the number
+	 */
+	isGroupingUsed: function () {
+		return (this.localeInfo.getGroupingSeparator() !== 'undefined');
+	},
+	
+	/**
+	 * Returns the maximum fraction digits set up in the constructor.
+	 * 
+	 * @returns {number} the maximum number of fractional digits this
+	 * formatter will format, or -1 for no maximum
+	 */
+	getMaxFractionDigits: function () {
+		return typeof(this.maxFractionDigits) !== 'undefined' ? this.maxFractionDigits : -1;
+	},
+	
+	/**
+	 * Returns the minimum fraction digits set up in the constructor. If
+	 * the formatter has the type "currency", then the minimum fraction
+	 * digits is the amount of digits that is standard for the currency
+	 * in question unless overridden in the options to the constructor.
+	 * 
+	 * @returns {number} the minimum number of fractional digits this
+	 * formatter will format, or -1 for no minimum
+	 */
+	getMinFractionDigits: function () {
+		return typeof(this.minFractionDigits) !== 'undefined' ? this.minFractionDigits : -1;
+	},
+
+	/**
+	 * Returns the ISO 4217 code for the currency that this formatter formats.
+	 * IF the typeof this formatter is not "currency", then this method will
+	 * return undefined.
+	 * 
+	 * @returns {string} the ISO 4217 code for the currency that this formatter
+	 * formats, or undefined if this not a currency formatter
+	 */
+	getCurrency: function () {
+		return this.currencyInfo && this.currencyInfo.getCode();
+	},
+	
+	/**
+	 * Returns the rounding mode set up in the constructor. The rounding mode
+	 * controls how numbers are rounded when the integral or fraction digits 
+	 * of a number are limited.
+	 * 
+	 * @returns {string} the name of the rounding mode used in this formatter
+	 */
+	getRoundingMode: function () {
+		return this.roundingMode;
+	},
+	
+	/**
+	 * If this formatter is a currency formatter, then the style determines how the
+	 * currency is denoted in the formatted output. This method returns the style
+	 * that this formatter will produce. (See the constructor comment for more about
+	 * the styles.)
+	 * @returns {string} the name of the style this formatter will use to format
+	 * currency amounts, or "undefined" if this formatter is not a currency formatter
+	 */
+	getStyle: function () {
+		return this.style;
+	}
+};
+
+/*
+ * durfmt.js - Date formatter definition
+ * 
+ * Copyright © 2012, JEDL Software, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+!depends 
+ilibglobal.js 
+locale.js 
+date.js 
+strings.js 
+resources.js 
+localeinfo.js
+*/
+
+// !data dateformats sysres
+// !resbundle sysres
+
+/**
+ * @class
+ * 
+ * Create a new duration formatter instance. The duration formatter is immutable once
+ * it is created, but can format as many different durations as needed with the same
+ * options. Create different duration formatter instances for different purposes
+ * and then keep them cached for use later if you have more than one duration to
+ * format.<p>
+ * 
+ * Duration formatters format lengths of time. The duration formatter is meant to format 
+ * durations of such things as the length of a song or a movie or a meeting, or the 
+ * current position in that song or movie while playing it. If you wish to format a 
+ * period of time that has a specific start and end date/time, then use a
+ * [ilib.DateRngFmt] instance instead and call its format method.<p>
+ *  
+ * The options may contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>locale</i> - locale to use when formatting the duration. If the locale is
+ * not specified, then the default locale of the app or web page will be used.
+ * 
+ * <li><i>length</i> - Specify the length of the format to use. The length is the approximate size of the 
+ * formatted string.
+ * 
+ * <ul>
+ * <li><i>short</i> - use a short representation of the duration. This is the most compact format possible for the locale. eg. 1y 1m 1w 1d 1:01:01
+ * <li><i>medium</i> - use a medium length representation of the duration. This is a slightly longer format. eg. 1 yr 1 mo 1 wk 1 dy 1 hr 1 mi 1 se
+ * <li><i>long</i> - use a long representation of the duration. This is a fully specified format, but some of the textual 
+ * parts may still be abbreviated. eg. 1 yr 1 mo 1 wk 1 day 1 hr 1 min 1 sec
+ * <li><i>full</i> - use a full representation of the duration. This is a fully specified format where all the textual 
+ * parts are spelled out completely. eg. 1 year, 1 month, 1 week, 1 day, 1 hour, 1 minute and 1 second
+ * </ul>
+ * 
+ * <li><i>style<i> - whether hours, minutes, and seconds should be formatted as a text string
+ * or as a regular time as on a clock. eg. text is "1 hour, 15 minutes", whereas clock is "1:15:00". Valid
+ * values for this property are "text" or "clock". Default if this property is not specified
+ * is "text".
+ * </ul>
+ * <p>
+ * 
+ * Depends directive: !depends duration.js
+ * 
+ * @constructor
+ * @param {?Object} options options governing the way this date formatter instance works
+ */
+ilib.DurFmt = function(options) {
+	this.locale = new ilib.Locale();
+	this.length = "short";
+	this.style = "text";
+	
+	if (options) {
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		
+		if (options.length) {
+			if (options.length === 'short' ||
+				options.length === 'medium' ||
+				options.length === 'long' ||
+				options.length === 'full') {
+				this.length = options.length;
+			}
+		}
+		
+		if (options.style) {
+			if (options.style === 'text' || options.style === 'clock') {
+				this.style = options.style;
+			}
+		}
+	}
+	
+	this.locinfo = new ilib.LocaleInfo(this.locale);
+	var sysres = new ilib.ResBundle({
+		locale: this.locale,
+		name: "sysres"
+	});
+	
+	switch (this.length) {
+		case 'short':
+			this.components = {
+				year: sysres.getString("#{num}y"),
+				month: sysres.getString("#{num}m", "durationShortMonths"),
+				week: sysres.getString("#{num}w"),
+				day: sysres.getString("#{num}d"),
+				hour: sysres.getString("#{num}h"),
+				minute: sysres.getString("#{num}m", "durationShortMinutes"),
+				second: sysres.getString("#{num}s"),
+				millisecond: sysres.getString("#{num}m", "durationShortMillis"),
+				separator: sysres.getString(" ", "separatorShort"),
+				finalSeparator: "" // not used at this length
+			};
+			break;
+			
+		case 'medium':
+			this.components = {
+				year: sysres.getString("1#1 yr|#{num} yrs", "durationMediumYears"),
+				month: sysres.getString("1#1 mo|#{num} mos"),
+				week: sysres.getString("1#1 wk|#{num} wks", "durationMediumWeeks"),
+				day: sysres.getString("1#1 dy|#{num} dys"),
+				hour: sysres.getString("1#1 hr|#{num} hrs", "durationMediumHours"),
+				minute: sysres.getString("1#1 mi|#{num} min"),
+				second: sysres.getString("1#1 se|#{num} sec"),
+				millisecond: sysres.getString("#{num} ms"),
+				separator: sysres.getString(" ", "separatorMedium"),
+				finalSeparator: "" // not used at this length
+			};
+			break;
+			
+		case 'long':
+			this.components = {
+				year: sysres.getString("1#1 yr|#{num} yrs"),
+				month: sysres.getString("1#1 mon|#{num} mons"),
+				week: sysres.getString("1#1 wk|#{num} wks"),
+				day: sysres.getString("1#1 day|#{num} days", "durationLongDays"),
+				hour: sysres.getString("1#1 hr|#{num} hrs"),
+				minute: sysres.getString("1#1 min|#{num} min"),
+				second: sysres.getString("1#1 sec|#{num} sec"),
+				millisecond: sysres.getString("#{num} ms"),
+				separator: sysres.getString(", ", "separatorLong"),
+				finalSeparator: "" // not used at this length
+			};
+			break;
+			
+		case 'full':
+			this.components = {
+				year: sysres.getString("1#1 year|#{num} years"),
+				month: sysres.getString("1#1 month|#{num} months"),
+				week: sysres.getString("1#1 week|#{num} weeks"),
+				day: sysres.getString("1#1 day|#{num} days"),
+				hour: sysres.getString("1#1 hour|#{num} hours"),
+				minute: sysres.getString("1#1 minute|#{num} minutes"),
+				second: sysres.getString("1#1 second|#{num} seconds"),
+				millisecond: sysres.getString("1#1 millisecond|#{num} milliseconds"),
+				separator: sysres.getString(", ", "separatorFull"),
+				finalSeparator: sysres.getString(" and ", "finalSeparatorFull")
+			};
+			break;
+	}
+	
+	if (this.style === 'clock') {
+		this.timeFmtMS = new ilib.DateFmt({
+			locale: this.locale,
+			type: "time",
+			time: "ms"
+		});
+		this.timeFmtHM = new ilib.DateFmt({
+			locale: this.locale,
+			type: "time",
+			time: "hm"
+		});
+		this.timeFmtHMS = new ilib.DateFmt({
+			locale: this.locale,
+			type: "time",
+			time: "hms"
+		});
+		// munge with the template to make sure that the hours are not formatted mod 12
+		this.timeFmtHM.template = this.timeFmtHM.template.replace(/hh?/, 'H');
+		this.timeFmtHM.templateArr = this.timeFmtHM._tokenize(this.timeFmtHM.template);
+		this.timeFmtHMS.template = this.timeFmtHMS.template.replace(/hh?/, 'H');
+		this.timeFmtHMS.templateArr = this.timeFmtHMS._tokenize(this.timeFmtHMS.template);
+	}
+};
+
+/**
+ * @private
+ * @static
+ */
+ilib.DurFmt.complist = {
+	"text": ["year", "month", "week", "day", "hour", "minute", "second", "millisecond"],
+	"clock": ["year", "month", "week", "day"]
+};
+
+/**
+ * Format a duration according to the format template of this formatter instance.<p>
+ * 
+ * The components parameter should be an object that contains any or all of these 
+ * numeric properties:
+ * 
+ * <ul>
+ * <li>year
+ * <li>month
+ * <li>week
+ * <li>day
+ * <li>hour
+ * <li>minute
+ * <li>second
+ * </ul>
+ * <p>
+ *
+ * When a property is left out of the components parameter or has a value of 0, it will not
+ * be formatted into the output string, except for times that include 0 minutes and 0 seconds.
+ * 
+ * This formatter will not ensure that numbers for each component property is within the
+ * valid range for that component. This allows you to format durations that are longer
+ * than normal range. For example, you could format a duration has being "33 hours" rather
+ * than "1 day, 9 hours".
+ * 
+ * @param {Object} components date/time components to be formatted into a duration string
+ * @returns {ilib.String} a string with the duration formatted according to the style and 
+ * locale set up for this formatter instance. If the components parameter is empty or 
+ * undefined, an empty string is returned.
+ */
+ilib.DurFmt.prototype.format = function (components) {
+	var i, list, temp, fmt, secondlast = true, str = "";
+	
+	list = ilib.DurFmt.complist[this.style];
+	//for (i = 0; i < list.length; i++) {
+	for (i = list.length-1; i >= 0; i--) {
+		//console.log("Now dealing with " + list[i]);
+		if (typeof(components[list[i]]) !== 'undefined' && components[list[i]] != 0) {
+			if (str.length > 0) {
+				str = ((this.length === 'full' && secondlast) ? this.components.finalSeparator : this.components.separator) + str;
+				secondlast = false;
+			}
+			str = this.components[list[i]].formatChoice(components[list[i]], {num: components[list[i]]}) + str;
+		}
+	}
+
+	if (this.style === 'clock') {
+		if (typeof(components.hour) !== 'undefined') {
+			fmt = (typeof(components.second) !== 'undefined') ? this.timeFmtHMS : this.timeFmtHM;
+		} else {
+			fmt = this.timeFmtMS;
+		}
+				
+		if (str.length > 0) {
+			str += this.components.separator;
+		}
+		str += fmt._formatTemplate(components, fmt.templateArr);
+	}
+	
+	return new ilib.String(str);
+};
+
+/**
+ * Return the locale that was used to construct this duration formatter object. If the
+ * locale was not given as parameter to the constructor, this method returns the default
+ * locale of the system.
+ * 
+ * @returns {ilib.Locale} locale that this duration formatter was constructed with
+ */
+ilib.DurFmt.prototype.getLocale = function () {
+	return this.locale;
+};
+
+/**
+ * Return the length that was used to construct this duration formatter object. If the
+ * length was not given as parameter to the constructor, this method returns the default
+ * length. Valid values are "short", "medium", "long", and "full".
+ * 
+ * @returns {string} length that this duration formatter was constructed with
+ */
+ilib.DurFmt.prototype.getLength = function () {
+	return this.length;
+};
+
+/**
+ * Return the style that was used to construct this duration formatter object. Returns
+ * one of "text" or "clock".
+ * 
+ * @returns {string} style that this duration formatter was constructed with
+ */
+ilib.DurFmt.prototype.getStyle = function () {
+	return this.style;
+};
 
 ilib.data.ctype_l = {
 	"lu": [
@@ -10059,7 +16585,10 @@ ilib.data.ctype_l = {
 // !data ctype_l
 
 /**
- * Return whether or not the first character is alphabetic.
+ * Return whether or not the first character is alphabetic.<p>
+ * 
+ * Depends directive: !depends ctype.isalnum.js
+ * 
  * @param {string} ch character to examine
  * @return {boolean} true if the first character is alphabetic.
  */
@@ -10069,5003 +16598,6 @@ ilib.CType.isAlpha = function (ch) {
 		ilib.CType._inRange(ch, 'lt', ilib.data.ctype_l) ||
 		ilib.CType._inRange(ch, 'lm', ilib.data.ctype_l) ||
 		ilib.CType._inRange(ch, 'lo', ilib.data.ctype_l);
-};
-
-/*
- * ctype.js - Character type definitions
- * 
- * Copyright © 2012, JEDL Software, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// !depends ctype.js
-
-// !data ctype
-
-/**
- * Return whether or not the first character is an ideographic character.
- * @param {string} ch character to examine
- * @return {boolean} true if the first character is an ideographic character.
- */
-ilib.CType.isIdeo = function (ch) {
-	return ilib.CType._inRange(ch, 'cjk', ilib.data.ctype) ||
-		ilib.CType._inRange(ch, 'cjkradicals', ilib.data.ctype) ||
-		ilib.CType._inRange(ch, 'enclosedcjk', ilib.data.ctype) ||
-		ilib.CType._inRange(ch, 'cjkpunct', ilib.data.ctype) ||
-		ilib.CType._inRange(ch, 'cjkcompatibility', ilib.data.ctype);
-	
-};
-
-ilib.data.name = {
-	"components": {
-		"s": "gf",
-		"m": "gf",
-		"l": "gmf",
-		"f": "pgmfs"
-	},
-	"format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
-	"sortByHeadWord": false,
-	"isAsianLocale": false,
-	"conjunctions": {
-		"and1": "and",
-		"and2": "and",
-		"or1": "or",
-		"or2": "or"
-	},
-	"auxillaries": {
-		"mac": 1,
-		"mc": 1,
-
-		"von": 1,
-		"von der": 1,
-		"von den": 1,
-		"vom": 1,
-		"zu": 1,
-		"zum": 1,
-		"zur": 1,
-		"von und zu": 1,
-
-		"van": 1,
-		"van der": 1,
-        "van de": 1,
-        "van der": 1,
-        "van den": 1,
-        "de": 1,
-        "den": 1,
-        "vande": 1,
-        "vander": 1,
-        
-        "di": 1,
-	    "de": 1,
-	    "da": 1,
-	    "della": 1,
-		"dalla": 1,
-		"la": 1,
-		"lo": 1,
-		"li": 1, 
-		"del": 1,
-        
-        "des": 1,
-        "le": 1,
-        "les": 1,
-		"du": 1,
-
-        "de la": 1,
-        "del": 1,
-        "de los": 1,
-        "de las": 1,
-
-		"do": 1,
-		"abu": 1,
-		"ibn": 1,
-		"bar": 1,
-		"ter": 1,
-		"ben": 1,
-		"bin": 1
-	},
-	"prefixes": [
-		"doctor",
-		"dr",
-		"mr",
-		"mrs",
-		"ms",
-		"mister",
-		"madame",
-		"madamoiselle",
-		"miss",
-		
-		"herr",
-		"hr",
-		"frau",
-		"fr",
-		"fraulein",
-		"frl",
-		
-		"monsieur",
-		"mssr",
-		"mdm",
-		"mlle",
-		
-		"señor",
-        "señora",
-        "señorita",
-        "sr",
-        "sra",
-        "srta",
-        
-        "meneer",
-        "mevrouw"
-	],
-	"suffixes": [
-		","
-	]
-}
-;
-ilib.data.name_en = {
-	"prefixes": [
-		"rep",
-		"representative",
-		"senator",
-		"congressman",
-		"congresswoman",
-		"president",
-		"vice president",
-		"vice-president",
-		"mp",
-		"member of parliament",
-		"chief",
-		"justice",
-		"chief justice",
-		"judge",
-		"minister",
-		"prime minister",
-		"governor general",
-		"lieutenant governor",
-		"speaker of the house of commons",
-		"speaker of the house",
-		"speaker of the senate",
-		"supreme court justice",
-		"secretary of state",
-		"mayor",
-		"justice of the peace",
-		"emporer",
-		"chairman",
-		"chairwoman",
-		"alderman",
-		"general secretary",
-		"ambassador",
-		
-		"minister",
-		"cardinal",
-		"bishop",
-		"archbishop",
-		"rabbi",
-		"grand rabbi",
-		"mulah",
-		"mullah",
-		"canon",
-		"cantor",
-		"pastor",
-		"ps",
-		"monsignor",
-		"mgsr",
-		"pope",
-		
-		"chef",
-		"master",
-		"coach",
-		"professor",
-		"prof",
-		"nobel laureate",
-
-		"king",
-		"queen",
-		"prince",
-		"princess",
-		"crown prince",
-		"crown princess",
-		"marquess",
-		"marchioness",
-		"earl",
-		"countess",
-		"count",
-		"archduke",
-		"duke",
-		"duchess",
-		"baron",
-		"baroness",
-		"viscount",
-		
-		"private",
-		"private first class",
-		"corporal",
-		"sargeant",
-		"staff sargeant",
-		"sargeant first class",
-		"master sargeant",
-		"first sargeant",
-		"sargeant major",
-		"command sargeant major",
-		"sargeant major of the army",
-		"pv1",
-		"pv2",
-		"pfc",
-		"spc",
-		"cpl",
-		"sgt",
-		"ssg",
-		"sfc",
-		"msg",
-		"1sg",
-		"sgm",
-		"csm",
-		"sma",
-		"warrant officer",
-		"chief warrant officer",
-		"second lieutenant",
-		"first lieutenant",
-		"captain",
-		"major",
-		"lieutenant colonel",
-		"colonel",
-		"brigadier general",
-		"major general",
-		"lieutenant general",
-		"general",
-		"2lt",
-		"1lt",
-		"cpt",
-		"maj",
-		"ltc",
-		"col",
-		"bg",
-		"mg",
-		"ltg",
-		"gen",
-		"general of the army",
-		"fleet admiral",
-		"admiral",
-		"vice admiral",
-		"rear admiral",
-		"commander",
-		"lieutenant commander",
-		"lieutenant",
-		"lieutenant (junior grade)",
-		"ensign",
-		"fadm",
-		"adm",
-		"vadm",
-		"radm",
-		"rdml",
-		"capt",
-		"cdr",
-		"lcdr",
-		"lt",
-		"ltjg",
-		"ens",
-		"petty officer",
-		"petty officer first class",
-		"petty officer second class",
-		"petty officer third class",
-		"petty officer 1st class",
-		"petty officer 2nd class",
-		"petty officer 3rd class",
-		"po",
-		"po1",
-		"po2",
-		"po3",
-		"chief petty officer",
-		"senior chief petty officer",
-		"master chief petty officer",
-		"cpo",
-		"scpo",
-		"mcpo",
-		"command master chief petty officer",
-		"fleet master chief petty officer",
-		"force master chief petty officer",
-		"cmdcm",
-		"fltcm",
-		"forcm",
-		"master chief petty officer of the navy",
-		"mcpon",
-		"sergeant major of the marine corps",
-		"master gunnery sergeant",
-		"gunnery sergeant",
-		"lance corporal",
-		"sgtmaj",
-		"mgysgt",
-		"1stsgt",
-		"msgt",
-		"gysgt",
-		"ssgt",
-		"sgt",
-		"cpl",
-		"lcpl",
-		"pfc",
-		"pvt",
-		"airman basic",
-		"airman",
-		"airman first class",
-		"senior airman",
-		"technical sergeant",
-		"master sergeant",
-		"senior master sergeant",
-		"chief master sergeant",
-		"command chief master sergeant",
-		"chief master sergeant of the air force",
-		"ab",
-		"amn",
-		"a1c",
-		"sra",
-		"tsgt",
-		"msgt",
-		"smsgt",
-		"cmsgt",
-		"ccm",
-		"cmsaf",
-		"field marshal",
-		"brigadier",
-		"officer cadet",
-		"fm",
-		"lt gen",
-		"maj gen",
-		"brig",
-		"col",
-		"lt col",
-		"maj",
-		"capt",
-		"lt",
-		"2lt",
-		"ocdt",
-		"admiral of the fleet",
-		"marshal",
-		"marshal of the air force",
-		"air marshal",
-		"commodore",
-		"air commodore",
-		"group captain",
-		"lieutenant colonel",
-		"lt colonel",
-		"wing commander",
-		"lt commander",
-		"commandant",
-		"squadron leader",
-		"flight lieutenant",
-		"sub-lieutenant",
-		"flying officer",
-		"ensign",
-		"second lieutenant",
-		"2nd lieutenant",
-		"pilot officer",
-		"midshipman",
-		"warrant officer",
-		"leading seaman",
-		"seaman",
-		"aircraftman",
-		"midshipwoman",
-		"leading seawoman",
-		"seawoman",
-		"aircraftwoman",
-		"vice-admiral",
-		"vadm",
-		"lieutenant-general",
-		"lgen",
-		"rear-admiral",
-		"radm",
-		"major-general",
-		"mgen",
-		"brigadier-general",
-		"bgen",
-		"lieutenant-colonel",
-		"lcol",
-		"naval cadet",
-		"ncdt",
-		"able seaman",
-		"ab",
-		"ordinary seaman",
-		"os",
-		"pte",
-		"master bombardier",
-		"trooper",
-		"bombardier",
-		"sapper",
-		"signalman",
-		"craftsman",
-		"guardsman",
-		"rifleman",
-		"fusilier",
-		
-		"chief of police",
-		"police commissioner",
-		"superintendent",
-		"sheriff",
-		"deputy chief of police",
-		"deputy commissioner",
-		"deputy superintendent",
-		"undersheriff",
-		"deputy sheriff",
-		"inspector",
-		"deputy inspector",
-		"detective",
-		"investigator",
-		"officer",
-		"deputy sheriff",
-		"constable",
-		"police constable",
-		"chief superintendent",
-		"assistant chief constable",
-		"deputy chief constable",
-		"chief constable",
-		"assistant commissioner",
-		"deputy commissioner",
-		"detective constable",
-		"staff inspector",
-		"staff superintendent",
-		"station duty officer",
-		"auxiliary sergeant",
-		"senior constable",
-		"cadet",
-		"probationary constable",
-		"recruit",
-	
-		"sir",
-		"lady",
-		"lord",
-		"dame",
-		"his royal highness",
-		"hrh",
-		"his honour",
-		"his honor",
-		"maestro",
-		"his lordship",
-		"his majesty",
-		"his worship",
-		"the right worshipful",
-		"the worshipful",
-		"the honourable",
-		"the right honourable",
-		"the honorable",
-		"the right honorable",
-		"the hon",
-		"the most noble",
-		"the most honourable",
-		"the most honorable",
-		"the most hon",
-		"the rt hon",
-		"the right honourable and learned",
-		"the right honourable and gallant",
-		"the much honoured",
-		"the right honorable and learned",
-		"the right honorable and gallant",
-		"the much honored",
-		"the much hon",
-		
-		"her royal highness",
-		"her honour",
-		"her honor",
-		"her majesty",
-		"her worship",
-		"his excellency",
-		"her excellency",
-		"his serene highness",
-		"her serene highness",
-		"his most reverend excellency",
-		"her most reverend excellency",
-		"his holiness",
-		"hh",
-		"his all holiness",
-		"hah",
-		"his beatitude",
-		"his eminence",
-		"he",
-		"his beatitude and eminence",
-		"father",
-		"mother",
-		"brother",
-		"br",
-		"sister",
-		"reverend",
-		"rev",
-		"the most reverend",
-		"the most rev",
-		"his grace",
-		"the right reverend",
-		"the rt rev",
-		"the most reverend and right honourable",
-		"the most reverend and right honorable",
-		"the most rev and rt hon",
-		"the right reverend and right honourable monsignor",
-		"the right reverend and right honorable monsignor",
-		"the rt rev and rt hon mgr",
-		"the right reverend and right honourable",
-		"the right reverend and right honorable",
-		"the very reverend",
-		"the very rev",
-		"the reverend monsignor",
-		"the rev msgr",
-		"the venerable",
-		"venerable",
-		"ven",
-		"his imperial majesty",
-		"his imperial and royal majesty",
-		"his apostolic majesty",
-		"his catholic majesty",
-		"his most faithful majesty",
-		"his imperial highness",
-		"his imperial and royal highness",
-		"his royal highness",
-		"his grand ducal highness",
-		"his highness",
-		"his ducal serene highness",
-		"his serene highness",
-		"his illustrious highness",
-		"his highborn",
-		"his grace",
-		"his high well-born",
-		"his excellency",
-		"his high excellency",
-
-		"her imperial majesty",
-		"her imperial and royal majesty",
-		"her apostolic majesty",
-		"her catholic majesty",
-		"her most faithful majesty",
-		"her imperial highness",
-		"her imperial and royal highness",
-		"her royal highness",
-		"her grand ducal highness",
-		"her highness",
-		"her ducal serene highness",
-		"her serene highness",
-		"her illustrious highness",
-		"her highborn",
-		"her grace",
-		"her high well-born",
-		"her excellency",
-		"her high excellency",
-		
-		"him",
-		"hi&rm",
-		"ham",
-		"hcm",
-		"hfm",
-		"hih",
-		"hi&rh",
-		"hrh",
-		"hgdh",
-		"hh",
-		"hdsh",
-		"hsh",
-		"hillh",
-		"he",
-		
-		"the",
-		"and",
-		"or",
-		
-		"aunt",
-		"uncle",
-		"grandma",
-		"grandpa",
-		"granma",
-		"grampa",
-		"cousin"
-	],
-	"suffixes": [
-		"junior",
-		"jr",
-		"senior",
-		"sr",
-		"i",
-		"iii",
-		"iii",
-		"iv",
-		"v",
-		"vi",
-		"vii",
-		"viii",
-		"ix",
-		"x",
-		"2nd",
-		"3rd",
-		"4th",
-		"5th",
-		"6th",
-		"7th",
-		"8th",
-		"9th",
-		"10th",
-		"esquire",
-		"esq",
-		"jd",
-		"phd",
-		"md",
-		"ddm",
-		"dds",
-		"dmv",
-		"bvsc",
-		"ah",
-		"bsc",
-		"ba",
-		"ret",
-		"retired"
-	]
-}
-;
-ilib.data.name_de = {
-	"sortByHeadWord": true,
-	"conjunctions": {
-		"and1": "und",
-		"and2": "und",
-		"or1": "oder",
-		"or2": "oder"
-	},
-    "auxillaries": {
-        "von": 1,
-        "van": 1,
-        "von der": 1,
-        "von den": 1,
-        "vom": 1,
-        "auf": 1,
-        "auf dem": 1,
-        "auf der": 1,
-        "aus": 1,
-        "aus den": 1,
-        "aus dem": 1,
-        "aus der": 1,
-        "in": 1,
-        "im": 1,
-        "in den": 1,
-        "in dem": 1,
-        "in der": 1,
-        "zu": 1,
-        "zu den": 1,
-        "zum": 1,
-        "zur": 1,
-        "von und zu": 1,
-        "vor dem": 1
-    },
-    "prefixes": [
-        "doktor",
-        "dr",
-        "med",
-        "dent",
-        "habil",
-        "rer nat",
-        "hc",
-        "jur",
-        "vet",
-        "ing",
-        "dipl-ing",
-        "präsident",
-        "präsidentin",
-        "professor",
-        "professorin",
-        "prof",
-        "privatdozent",
-        "privatdozentin",
-        "direktor",
-        "direktorin",
-        "chefarzt",
-        "oberarzt",
-        "chefärztin",
-        "oberärztin",
-        "mutter",
-        "vater",
-        "schwester",
-        "bruder",
-        "patin",
-        "pate",
-        "tante",
-        "onkel",
-        "großmutter",
-        "großvater",
-        "oma",
-        "opa",
-        "bundespräsident",
-        "bundeskanzler",
-        "minister",
-        "senator",
-        "staatssekretär",
-        "abgeordneter",
-        "bürgermeister",
-        "landrat",
-        "stadtrat",
-        "staatsanwalt",
-        "vorsitzender",
-        "rechtsanwalt",
-        "anwalt",
-        "verteidiger",
-        "bundespräsidentin",
-        "bundeskanzlerin",
-        "ministerin",
-        "senatorin",
-        "staatssekretärin",
-        "abgeordnete",
-        "bürgermeisterin",
-        "landrätin",
-        "stadträtin",
-        "staatsanwältin",
-        "vorsitzende",
-        "rechtsanwältin",
-        "anwältin",
-        "verteidigerin",
-        "unteroffizier",
-        "leutnant",
-        "feldwebel",
-        "fähnrich",
-        "oberleutnant",
-        "hauptmann",
-        "major",
-        "gefreiter",
-        "kapitän",
-        "admiral",
-        "maat",
-        "bootsmann",
-        "oberst",
-        "general",
-        "exzellenz",
-        "botschafter",
-        "botschafterin",
-        "konsul",
-        "konsulin",
-        "gesandter",
-        "gesandte",
-        "fürst",
-        "fürstin",
-        "herzog",
-        "herzogin",
-        "graf",
-        "gräfin",
-        "baron",
-        "baronin",
-        "freiherr",
-        "freifrau",
-        "hofrätin",
-        "hofrat",
-        "hr",
-        "regierungsrätin",
-        "regierungsrat",
-        "rgr",
-        "amtsrätin",
-        "amtsrat",
-        "ar",
-        "kanzleirätin",
-        "kanzleirat",
-        "kzlr",
-        "kommerzialrätin",
-        "kommerzialrat",
-        "kommr",
-        "ökonomierätin",
-        "ökonomierat",
-        "ökr",
-        "medizinalrätin",
-        "medizinalrat",
-        "medr",
-        "obermedizinalrätin",
-        "obermedizinalrat",
-        "omedr",
-        "veterinärrätin",
-        "veterinärrat",
-        "vetr",
-        "technische rätin",
-        "technischer rat",
-        "tr",
-        "schulrätin",
-        "schulrat",
-        "sr",
-        "oberschulrätin",
-        "oberschulrat",
-        "osr",
-        "studienrätin",
-        "studienrat",
-        "str",
-        "oberstudienrätin",
-        "oberstudienrat",
-        "ostr",
-        "universitätsprofessorin",
-        "universitätsprofessor",
-        "univprof",
-        "kammersängerin",
-        "kammersänger",
-        "ksäng",
-        "kammerschauspielerin",
-        "kammerschauspieler",
-        "kschausp",
-        "pfarrer",
-        "pfr",
-        "pfarrerin",
-        "dekan",
-        "dekanin",
-        "kreisdekan",
-        "kreisdekanin",
-        "bischof",
-        "bischöfin",
-        "regionalbischof",
-        "regionalbischöfin",
-        "ddr",
-        "agr",
-        "biol hum",
-        "diac",
-        "disc pol",
-        "e h",
-        "h c mult",
-        "habil",
-        "iur",
-        "iur",
-        "iur et rer pol",
-        "math",
-        "med",
-        "med dent",
-        "med dent et scient med",
-        "med univ",
-        "med univ et scient med",
-        "med vet",
-        "mult",
-        "mus",
-        "nat med",
-        "nat techn",
-        "oec",
-        "oec publ",
-        "oec troph",
-        "paed",
-        "pharm",
-        "phil",
-        "rer agr",
-        "rer biol hum",
-        "rer biol vet",
-        "rer cam",
-        "rer cult",
-        "rer cur",
-        "rer forest",
-        "rer hort",
-        "rer med",
-        "rer merc",
-        "rer mont",
-        "rer nat",
-        "rer oec",
-        "rer physiol",
-        "rer pol",
-        "rer publ",
-        "rer sec",
-        "rer silv",
-        "rer soc",
-        "rer soc oec",
-        "rer tech",
-        "sc agr",
-        "sc hum",
-        "sc inf",
-        "sc inf biomed",
-        "sc inf med",
-        "sc math",
-        "sc mus",
-        "sc nat",
-        "sc oec",
-        "sc pol",
-        "sc rel",
-        "sc soc",
-        "sc techn",
-        "scient med",
-        "techn",
-        "theol",
-        "troph",
-        "dr-ing",
-
-        "hochwürdigste",
-        "hochwürdigster",
-        "hochwürden",
-        "ehrwürden",
-        "montsignore",
-        "hoheit",
-        "königliche",
-        "ihre",
-        "seine",
-        "hochwohlgeborene",
-        "hochwohlgeborener",
-        "heiliger",
-        
-		"der",
-		"die",
-		"das",
-		"dem",
-		"den",
-		"und",
-		"oder"
-    ],
-    "suffixes": [
-        "junior",
-        "jr",
-        "senior",
-        "sr",
-        "i",
-        "iii",
-        "iii",
-        "iv",
-        "v",
-        "vi",
-        "vii",
-        "viii",
-        "ix",
-        "x",
-        "ir",
-        "im ruhestand",
-        "ba",
-        "ma",
-        "phd" 
-    ] 
-};
-ilib.data.name_es = {
-	"conjunctions": {
-		"and1": "y",
-		"and2": "e",
-		"or1": "o",
-		"or2": "u"
-	},
-    "prefixes": [
-        "presidente",
-        "vicepresidente",
-        "profesor",
-        "prof",
-        "licenciado",
-        "licenc",
-        "ingeniero",
-        "ing",
-        "arquitecto",
-        "arq",
-        "cardenal",
-        "monseñor",
-        "madre",
-        "padre",
-        "hermana",
-        "hermano",
-        "madrina",
-        "padrino",
-        "mamá",
-        "papá",
-        "tía",
-        "tío",
-        "abuela",
-        "abuelo",
-        "abuelita",
-        "abuelito",
-        "primo",
-        "prima",
-        "nono",
-        "nona",
-        "capitán",
-        "general",
-        "coronel",
-        "mayor",
-        "almirante",
-        "general",
-        "comandante",
-        "teniente",
-        "teniente coronel",
-        "teniente general",
-        "detective",
-        "ministro",
-        "alcalde",
-        "alcaldesa",
-        "embajador",
-        "embajadora",
-
-        "don",
-        "doña",
-        "el señor",
-        "la señora",
-        "la señorita",
-        "el sr",
-        "la sra",
-        "la srta",
-        "reverendo",
-        "reverenda",
-        "su excelencia",
-        "su santidad",
-        "el presidente",
-        "su excelencia",
-        "excelentísimo señor",
-        "excelentísima señora",
-        "señor ministro",
-        "señora ministra",
-        "señor alcalde",
-        "señora alcaldesa",
-        "su eminencia",
-        "honorable señor",
-        "honorable señora",
-        "la",
-        "el",
-        "los",
-        "las",
-        "y",
-        "e",
-        "o",
-        "u" 
-    ],
-    "suffixes": [
-        "sr",
-        "senior",
-        "jr",
-        "junior",
-        "hijo",
-        "padre",
-        "ii",
-        "iii",
-        "iv",
-        "v",
-        "vi",
-        "vii",
-        "viii",
-        "ix",
-        "x"
-    ] 
-}
-;
-ilib.data.name_fr = {
-    "prefixes": [
-        "baron",
-        "baronne",
-        "bey",
-        "calife",
-        "cheikh",
-        "cheykha",
-        "comte",
-        "comtesse",
-        "cousin",
-        "cousine",
-        "docteur",
-        "dom",
-        "dr",
-        "duc",
-        "duchesse",
-        "émir",
-        "émira",
-        "frère",
-        "grand-mère",
-        "grand-oncle",
-        "grand-père",
-        "grand-tante",
-        "hadjib",
-        "lady",
-        "lord",
-        "madame la présidente",
-        "malik",
-        "mamy",
-        "marquis",
-        "marquise",
-        "marraine",
-        "mère",
-        "monsieur le président",
-        "neveu",
-        "nièce",
-        "nizam",
-        "oncle",
-        "padishah",
-        "papy",
-        "parrain",
-        "père",
-        "pervane",
-        "petite-nièce",
-        "petit-neveu",
-        "pr",
-        "président",
-        "présidente",
-        "professeur",
-        "professeure",
-        "râja",
-        "rani",
-        "révérend père",
-        "révérend",
-        "révérende",
-        "révérende mère",
-        "sa",
-        "sai",
-        "sar",
-        "sas",
-        "se",
-        "shah",
-        "sir",
-        "sm",
-        "sm",
-        "smi",
-        "sœur",
-        "sultan",
-        "sultane",
-        "tante",
-        "veuve",
-        "vicomte",
-        "vicomtesse",
-        "vizir",
-
-        "et",
-        "la",
-        "le",
-        "les",
-        "m",
-        "maîtres",
-        "maître",
-        "majesté",
-        "mes",
-        "mesdames",
-        "mesdemoiselles",
-        "messieurs",
-        "mgr",
-        "mlles",
-        "mm",
-        "mme",
-        "mmes",
-        "monseigneur",
-        "ou",
-        "son",
-        "sa",
-        "sainteté",
-        "altesse",
-        "royale",
-        "sérénissime",
-        "éminence",
-        "excellence"
-    ],
-    "suffixes": [
-        "docteur en philosophie",
-        "docteur en médecine",
-        "docteur en linguistique",
-        "docteur en physique",
-        "docteur en chimie",
-        "docteur en mathématiques",
-        "docteur en droit",
-        "docteur en chirurgie dentaire",
-        "docteur en pharmacie",
-        "docteur en médecine vétérinaire",
-        "dep",
-        "dem",
-        "del",
-        "dec",
-        "ded",
-        "decd",
-        "demv" 
-    ] 
-}
-;
-ilib.data.name_it = {
-	"conjunctions": {
-		"and1": "e",
-		"and2": "ed",
-		"or1": "o",
-		"or2": "o"
-	},
-    "auxillaries": {
-        "di": 1,
-	    "de": 1,
-	    "da": 1,
-	    "della": 1,
-		"dalla": 1,
-		"la": 1,
-		"lo": 1,
-		"li": 1, 
-		"del": 1,
-
-		"degli": 1, 
-		"dei": 1, 
-		"lu": 1,
-		"dal": 1
-	},
-    "prefixes": [
-        "ingegnere",
-        "ing",
-        "geometra",
-        "avvocato",
-        "notaio",
-        "dottore",
-        "dott",
-        "ragioniere",
-        "architetto",
-        "dottoressa",
-        "maestro",
-        "prof",
-        "professor",
-        "professore",
-        "professoressa",
-        "fra",
-        "frate",
-        "fratello",
-        "suor",
-        "suora",
-        "sorella",
-        "don",
-        "padre",
-        "monsignore",
-        "cavaliere",
-        "commendatore",
-        "onorevole",
-        "colonnello",
-        "generale",
-        "tenente",
-        "maresciallo",
-        "madre",
-        "zio",
-        "zia",
-        "nonna",
-        "nonno",
-
-        "signor",
-        "signore",
-        "sig",
-        "signora",
-        "sigra",
-        "signorina",
-        "signa",
-        "sgna" 
-    ],
-    "suffixes": [] 
-}
-;
-ilib.data.name_nl = {
-	"sortByHeadWord": true,
-	"conjunctions": {
-		"and1": "en",
-		"and2": "en",
-		"or1": "of",
-		"or2": "of"
-	},
-    "auxillaries": {
-        "van": 1,
-        "van de": 1,
-        "van der": 1,
-        "van den": 1,
-        "van het": 1,
-        "'t": 1,
-        "`t": 1,
-        "olde": 1,
-        "oude": 1,
-        "van `t": 1,
-        "van 't": 1,
-        "ten": 1,
-        "te": 1,
-        "ter": 1,
-        "op het": 1,
-        "op de": 1,
-        "op `t": 1,
-        "op 't": 1,
-        "de": 1,
-        "den": 1,
-        "het": 1,
-        "in de": 1,
-        "op het": 1,
-        "op de": 1,
-        "in den": 1,
-        "in het": 1,
-        "vande": 1,
-        "vander": 1
-    },
-    "prefixes": [
-        "president",
-        "drs",
-        "ds",
-        "mr",
-        "ir",
-        "ing",
-        "prof",
-        "hc",
-        "professor",
-        "jhr",
-        "meester",
-        "moeder",
-        "vader",
-        "zus",
-        "broer",
-        "peetmoeder",
-        "peetvader",
-        "tante",
-        "oom",
-        "oma",
-        "opa",
-        "neef",
-        "nicht",
-        "achterneef",
-        "achterneef",
-        "zwager",
-        "schoonzus",
-        "overgrootmoeder",
-        "overgrootvader",
-        "betovergrootmoeder",
-        "betovergrootvader",
-        "oudoom",
-        "oudtante",
-        "zoon",
-        "dochter",
-        "pleegzoon",
-        "pleegdochter",
-        "kapitein",
-        "generaal",
-        "majoor",
-        "luitenant",
-        "sergeant",
-        "kolonel",
-        "korporaal",
-        "sergeant-majoor",
-        "vaandrig",
-        "adjudant",
-        "admiraal",
-        "veldmaarschalk",
-        "broeder",
-        "vader",
-        "zuster",
-        "graaf",
-        "jonkheer",
-        "baron",
-        "juffrouw",
-        "hertog",
-
-        "dhr",
-        "mw",
-        "mevr",
-        "mijnheer",
-        "eerwaarde dame",
-        "de weleerwaarde heer",
-        "de heer",
-        "professor",
-        "excellentie",
-        "de weleerwaarde zeergeleerde",
-        "excellentie",
-        "de hoogedelgestrenge",
-        "de weledelgestrenge",
-        "koninklijke hoogheid",
-        "majesteit",
-        "hoogheid",
-        "de hooggeboren",
-        "de hoogwelgeboren",
-        "paus",
-        "dominee",
-        "kapelaan",
-        "pastoor",
-        "imam",
-        "kardinaal",
-        "bisschop",
-        "aartsbisschop",
-        "rabbijn" 
-    ],
-    "suffixes": [
-		"ba",  
-		"bacc",
-		"lic",
-		"ma",
-		"msc",
-		"bcs",
-		"ba",
-		"llb",
-		"m",
-		"b",
-		"ad",
-		"jr",
-		"sr"
-	]
-};
-ilib.data.name_zh = {
-	"format": "{prefix}{familyName}{middleName}{givenName}{suffix}",
-	"isAsianLocale": true,
-	"conjunctions": {
-		"and1": "与",
-		"and2": "与",
-		"or1": "或",
-		"or2": "或"
-	},
-    "prefixes": [
-		"首席执行官",
-		"首席執行官",
-		"首席财务官",
-		"首席財務官",
-		"首席技术官",
-		"首席技術官",
-		"首席运营官",
-		"首席營運官",
-
-		"外甥女",
-
-		"堂哥",
-		"堂弟",
-		"堂姐",
-		"堂妹",
-		"表哥",
-		"表弟",
-		"表姐",
-		"表妹",
-
-		"全家",
-		"一家",
-		"姥爷",
-		"姥爺",
-		"外婆",
-		"叔父",
-		"婶婶",
-		"舅媽",
-		"嬸嬸",
-		"舅舅",
-		"舅妈",
-		"姨丈",
-		"姨父",
-		"姑妈",
-		"姑媽",
-		"姑父",
-		"姑丈",
-		"儿子",
-		"兒子",
-		"女儿",
-		"女兒",
-		"孙子",
-		"孫子",
-		"孙女",
-		"孫女",
-	    "妹婿",
-		"嫂嫂",
-		"弟媳",
-		"侄子",
-		"侄女",
-		"外甥",
-		"老",
-		"小",
-		"和",
-		"与",
-		"與",
-		"及"
-	],
-	"suffixes": [
-		"首席执行官",
-		"首席财务官",
-		"首席技术官",
-		"首席运营官",
-	    "首席執行官",
-	    "首席財務官",
-	    "首席技術官",
-	    "首席營運官",
-		"总工程师",
-	    "總工程師",
-	    "高級督察",
-		"格拉玛报",
-		"格拉瑪報",
-		"工程师",
-		"总经理",
-		"外甥女",
-	    "工程師",
-	    "總經理",
-		"司令员",
-	    "總督察",
-	    "總警司",
-		"貴婦人",
-		"贵妇人",
-		"姥爷",
-		"姥爺",
-		"姨父",
-		"姑父",
-		"孙子",
-		"孫子",
-		"孙女",
-		"孫女",
-		"外婆",
-		"叔父",
-		"婶婶",
-		"舅媽",
-		"嬸嬸",
-		"舅舅",
-		"舅妈",
-		"姨丈",
-		"姑妈",
-		"姑媽",
-		"姑丈",
-		"儿子",
-		"兒子",
-		"女儿",
-		"女兒",
-		"妹婿",
-		"嫂嫂",
-		"弟媳",
-		"侄子",
-		"侄女",
-		"外甥",
-		"老师",
-		"老師",
-		"校长",
-		"校長",
-		"博士",
-		"教授",
-		"律师",
-		"律師",
-		"法官",
-		"医生",
-		"护士",
-		"会计",
-		"经理",
-		"老板",
-		"老总",
-		"部长",
-		"司长",
-		"局长",
-		"处长",
-		"厅长",
-		"科长",
-		"课长",
-		"组长",
-		"醫生",
-	    "護士",
-	    "會計",
-	    "經理",
-	    "老闆",
-	    "老總",
-	    "部長",
-	    "司長",
-	    "局長",
-	    "處長",
-	    "組長",
-		"助理",
-		"总裁",
-		"班长",
-		"排长",
-		"营长",
-		"旅长",
-		"团长",
-		"师长",
-		"军长",
-		"政委",
-		"上尉",
-		"中尉",
-		"大尉",
-		"大校",
-		"中校",
-		"上校",
-		"上将",
-		"中将",
-		"少将",
-		"元帅",
-		"總裁",
-	    "主席",		    
-	    "班長",
-	    "警員",
-	    "警長",
-	    "督察",
-	    "警司",
-		"先生",
-		"太太",
-		"夫妇",
-		"夫婦",
-		"夫人",
-		"女士",
-		"小姐",
-		"哥哥",
-		"弟弟",
-		"姐姐",
-		"妹妹",
-		"爷爷",
-		"爺爺",
-		"奶奶",
-		"叔叔",
-		"阿姨",
-		"伯父",
-		"伯母",
-		"堂哥",
-		"堂弟",
-		"堂姐",
-		"堂妹",
-		"表哥",
-		"表弟",
-		"表姐",
-		"表妹",
-		"老師",
-		"媽媽",
-		"上帝",
-		"妈妈",
-		"爸爸",
-		"兒子",
-		"女兒",
-		"祖父",
-		"祖母",
-		"外公",
-		"嬸嬸",
-		"舅媽",
-		"姑媽",
-		"姪子",
-		"姪女",
-		"表叔",
-	    "表嬸",
-		"她",
-		"工",
-		"总",
-		"總",
-		"理"
-	],
-	"knownFamilyNames": {
-		"愛": "Ài",
-		"艾": "Ài",
-		"安": "Ān",
-		"敖": "Áo",
-		"白": "Bái1",
-		"百": "Bǎi2",
-		"百里": "Bǎilǐ",
-		"班": "Bān",
-		"包": "Bāo1",
-		"保": "Bǎo2",
-		"鲍": "Bào3",
-		"鮑": "Bào4",
-		"暴": "Bào5",
-		"巴": "Bā",
-		"贝": "Bèi1",
-		"貝": "Bèi2",
-		"賁": "Bēn",
-		"毕": "Bì1",
-		"畢": "Bì2",
-		"边": "Biān1",
-		"邊": "Biān2",
-		"卞": "Biàn3",
-		"別": "Bié",
-		"邴": "Bǐng",
-		"伯": "Bó1",
-		"薄": "Bó2",
-		"柏": "Bò3",
-		"卜": "Bŭ1",
-		"步": "Bù2",
-		"蔡": "Cài",
-		"蒼": "Cāng",
-		"曹": "Cáo",
-		"曾": "Céng",
-		"岑": "Cén",
-		"柴": "Chái",
-		"单": "Chán1",
-		"單": "Chán2",
-		"常": "Cháng1",
-		"昌": "Chāng2",
-		"畅": "Chàng3",
-		"长孙": "Chángsūn1",
-		"長孫": "Chángsūn2",
-		"單于": "Chányú",
-		"晁": "Cháo1",
-		"巢": "Cháo2",
-		"查": "Chá",
-		"车": "Chē1",
-		"車": "Chē2",
-		"沈": "Chén1",
-		"陈": "Chén2",
-		"陳": "Chén3",
-		"成": "Chéng1",
-		"程": "Chéng2",
-		"盛": "Chéng3",
-		"池": "Chí1",
-		"迟": "Chí2",
-		"郗": "Chī3",
-		"充": "Chōng",
-		"仇": "Chóu",
-		"褚": "Chǔ1",
-		"楚": "Chǔ2",
-		"儲": "Chǔ3",
-		"淳于": "Chúnyú",
-		"褚师": "Chǔshī",
-		"丛": "Cóng1",
-		"從": "Cōng2",
-		"崔": "Cuī",
-		"戴": "Dài",
-		"党": "Dǎng1",
-		"黨": "Dǎng2",
-		"澹台": "Dàntái1",
-		"澹臺": "Dàntái2",
-		"石": "Dàn",
-		"达奚": "Dáxī",
-		"笪": "Dá",
-		"邓": "Dèng1",
-		"鄧": "Dèng2",
-		"狄": "Dí1",
-		"翟": "Dí2",
-		"刁": "Diāo",
-		"丁": "Dīng",
-		"第五": "Dìwǔ",
-		"邸": "Dǐ",
-		"東": "Dōng1",
-		"董": "Dǒng2",
-		"东方": "Dōngfāng1",
-		"東方": "Dōngfāng2",
-		"东宫": "Dōnggōng",
-		"东郭": "Dōngguō1",
-		"東郭": "Dōngguō2",
-		"东里": "Dōnglǐ",
-		"東門": "Dōngmén",
-		"窦": "Dòu1",
-		"竇": "Dòu2",
-		"都": "Dōu",
-		"督": "Dū1",
-		"堵": "Dǔ2",
-		"杜": "Dù3",
-		"段干": "Duàngān",
-		"端木": "Duānmù",
-		"段": "Duàn",
-		"独孤": "Dúgū",
-		"佴": "Èr",
-		"鄂": "È",
-		"樊": "Fán1",
-		"范": "Fàn2",
-		"方": "Fāng1",
-		"房": "Fáng2",
-		"法": "Fǎ",
-		"费": "Fèi1",
-		"費": "Fèi2",
-		"封": "Fēng1",
-		"豐": "Fēng2",
-		"酆": "Fēng3",
-		"冯": "Féng4",
-		"馮": "Féng5",
-		"凤": "Fèng6",
-		"鳳": "Fèng7",
-		"伏": "Fú1",
-		"扶": "Fú2",
-		"符": "Fú3",
-		"福": "Fú4",
-		"付": "Fù5",
-		"富": "Fù6",
-		"傅": "Fù7",
-		"盖": "Gài1",
-		"蓋": "Gài2",
-		"干": "Gān1",
-		"甘": "Gān2",
-		"高": "Gāo1",
-		"郜": "Gào2",
-		"戈": "Gē1",
-		"葛": "Gé2",
-		"耿": "Gěng",
-		"公": "Gōng1",
-		"弓": "Gōng2",
-		"宫": "Gōng3",
-		"宮": "Gōng4",
-		"龚": "Gōng5",
-		"龔": "Gōng6",
-		"巩": "Gǒng7",
-		"鞏": "Gǒng8",
-		"公伯": "Gōngbó",
-		"公乘": "Gōngchéng",
-		"公户": "Gōnghù",
-		"公坚": "Gōngjiān",
-		"公良": "Gōngliáng",
-		"公门": "Gōngmén",
-		"公上": "Gōngshàng",
-		"公山": "Gōngshān",
-		"公孙": "Gōngsūn1",
-		"公孫": "Gōngsūn2",
-		"公西": "Gōngxī1",
-		"公皙": "Gōngxī2",
-		"公羊": "Gōngyáng",
-		"公冶": "Gōngyě",
-		"公仪": "Gōngyí",
-		"公玉": "Gōngyù",
-		"公仲": "Gōngzhòng",
-		"公祖": "Gōngzǔ",
-		"貢": "Gòng",
-		"勾": "Gōu1",
-		"緱": "Gōu2",
-		"苟": "Gǒu3",
-		"古": "Gǔ1",
-		"谷": "Gǔ2",
-		"贾": "Gǔ3",
-		"滑": "Gǔ4",
-		"賈": "Gǔ5",
-		"顾": "Gù6",
-		"顧": "Gù7",
-		"关": "Guān1",
-		"官": "Guān2",
-		"關": "Guān3",
-		"廣": "Guǎng",
-		"贯丘": "Guànqiū",
-		"管": "Guǎn",
-		"歸": "Guī1",
-		"桂": "Guì2",
-		"谷梁": "Gǔliáng1",
-		"穀粱": "Gǔliáng2",
-		"郭": "Guō1",
-		"國": "Guó2",
-		"辜": "Gū",
-		"海": "Hǎi",
-		"韩": "Hán1",
-		"韓": "Hán2",
-		"杭": "Háng",
-		"郝": "Hǎo",
-		"哈": "Hā",
-		"何": "Hé1",
-		"和": "Hé2",
-		"贺": "Hè3",
-		"賀": "Hè4",
-		"赫连": "Hèlián1",
-		"赫連": "Hèlián2",
-		"衡": "Héng",
-		"弘": "Hóng1",
-		"紅": "Hóng2",
-		"洪": "Hóng3",
-		"侯": "Hóu1",
-		"后": "Hòu2",
-		"後": "Hòu3",
-		"胡": "Hú1",
-		"扈": "Hù2",
-		"华": "Huá1",
-		"華": "Huá2",
-		"懷": "Huái",
-		"桓": "Huán1",
-		"宦": "Huàn2",
-		"皇甫": "Huángfǔ",
-		"黄": "Huáng",
-		"花": "Huā",
-		"惠": "Huì",
-		"霍": "Huò",
-		"呼延": "Hūyán",
-		"姬": "Jī01",
-		"嵇": "Jī02",
-		"吉": "Jí03",
-		"汲": "Jí04",
-		"籍": "Jí05",
-		"计": "Jì06",
-		"纪": "Jì07",
-		"紀": "Jì08",
-		"計": "Jì09",
-		"季": "Jì10",
-		"薊": "Jì11",
-		"暨": "Jì12",
-		"冀": "Jì13",
-		"家": "Jiā1",
-		"郟": "Jiá2",
-		"夹谷": "Jiāgǔ1",
-		"夾谷": "Jiāgǔ2",
-		"简": "Jiǎn1",
-		"簡": "Jiǎn2",
-		"江": "Jiāng1",
-		"姜": "Jiāng2",
-		"蒋": "Jiǎng3",
-		"蔣": "Jiǎng4",
-		"焦": "Jiāo",
-		"揭": "Jiē1",
-		"解": "Jiě2",
-		"即墨": "Jímò",
-		"晋": "Jìn1",
-		"晉": "Jìn2",
-		"靳": "Jìn3",
-		"荊": "Jīng1",
-		"荆": "Jīng2",
-		"經": "Jīng3",
-		"井": "Jǐng4",
-		"景": "Jǐng5",
-		"金": "Jīn",
-		"鞠": "Jū1",
-		"瞿": "Jù2",
-		"居": "Jū",
-		"康": "Kāng1",
-		"亢": "Kàng2",
-		"闞": "Kàn",
-		"柯": "Kē",
-		"空": "Kōng1",
-		"孔": "Kǒng2",
-		"寇": "Kòu",
-		"蒯": "Kuǎi",
-		"匡": "Kuāng1",
-		"況": "Kuàng2",
-		"夔": "Kuí",
-		"蓝": "La1",
-		"藍": "La2",
-		"来": "Lái1",
-		"赖": "Lài2",
-		"賴": "Lài3",
-		"郎": "Láng",
-		"兰": "Lán",
-		"勞": "Láo",
-		"乐": "Lè1",
-		"樂": "Lè2",
-		"雷": "Léi",
-		"冷": "Lěng",
-		"乐正": "Lèzhēng1",
-		"樂正": "Lèzhēng2",
-		"黎": "Lí1",
-		"李": "Lǐ2",
-		"利": "Lì3",
-		"栗": "Lì4",
-		"厲": "Lì5",
-		"酈": "Lì6",
-		"连": "Lián1",
-		"連": "Lián2",
-		"廉": "Lián3",
-		"梁丘": "Liángqiū",
-		"梁": "Liáng",
-		"练": "Liàn",
-		"廖": "Liào",
-		"林": "Lín1",
-		"藺": "Lìn2",
-		"令狐": "Lìnghú",
-		"凌": "Líng",
-		"刘": "Liú1",
-		"劉": "Liú2",
-		"柳": "Liǔ3",
-		"陆": "Liù4",
-		"陸": "Liù5",
-		"龙": "Lóng1",
-		"龍": "Lóng2",
-		"隆": "Lōng3",
-		"娄": "Lóu1",
-		"婁": "Lóu2",
-		"卢": "Lú01",
-		"芦": "Lú02",
-		"盧": "Lú03",
-		"鲁": "Lǔ04",
-		"魯": "Lǔ05",
-		"祿": "lù06",
-		"逯": "Lù07",
-		"路": "Lù08",
-		"吕": "Lǚ09",
-		"呂": "Lǚ10",
-		"栾": "Luán1",
-		"欒": "Luán2",
-		"罗": "Luō1",
-		"骆": "Luò1",
-		"羅": "Luó2",
-		"駱": "Luò2",
-		"闾丘": "Lǘqiū1",
-		"閭丘": "Lǘqiū2",
-		"麻": "Má1",
-		"马": "Mǎ2",
-		"馬": "Mǎ3",
-		"麦": "Mài",
-		"滿": "Mǎn",
-		"毛": "Máo1",
-		"茅": "Máo2",
-		"梅": "Méi",
-		"蒙": "Mēng1",
-		"孟": "Mèng2",
-		"糜": "Mí1",
-		"米": "Mǐ2",
-		"宓": "Mì3",
-		"苗": "Miáo1",
-		"缪": "Miào2",
-		"繆": "Miào3",
-		"乜": "Miē",
-		"闵": "Mǐn1",
-		"閔": "Mǐn2",
-		"明": "Míng",
-		"莫": "Mò1",
-		"墨": "Mò2",
-		"牟": "Móu",
-		"木": "Mù1",
-		"牧": "Mù2",
-		"慕": "Mù3",
-		"穆": "Mù4",
-		"慕容": "Mùróng",
-		"南宫": "Nángōng1",
-		"南宮": "Nángōng2",
-		"南门": "Nánmén1",
-		"南門": "Nánmén2",
-		"南荣": "Nánróng",
-		"铙": "Náo",
-		"那": "Nǎ",
-		"能": "Néng",
-		"年": "Nián",
-		"聂": "Niè1",
-		"聶": "Niè2",
-		"宁": "Níng1",
-		"寧": "Níng2",
-		"牛": "Niú1",
-		"鈕": "Niǔ2",
-		"倪": "Ní",
-		"農": "Nóng",
-		"欧": "Ōu1",
-		"歐": "Ōu2",
-		"欧阳": "Ōuyáng1",
-		"歐陽": "Ōuyáng2",
-		"庞": "Páng1",
-		"逄": "Páng2",
-		"龐": "Páng3",
-		"潘": "Pān",
-		"裴": "Péi",
-		"彭": "Péng1",
-		"蓬": "Péng2",
-		"平": "Píng",
-		"皮": "Pí",
-		"濮": "Pú1",
-		"蒲": "Pú2",
-		"浦": "Pǔ3",
-		"濮阳": "Púyáng1",
-		"濮陽": "Púyáng2",
-		"祁": "Qí1",
-		"齐": "Qí2",
-		"齊": "Qí3",
-		"钱": "Qián1",
-		"錢": "Qián2",
-		"强": "Qiáng1",
-		"強": "Qiáng2",
-		"乔": "Qiáo1",
-		"喬": "Qiáo2",
-		"譙": "Qiáo3",
-		"漆雕": "Qīdiāo",
-		"亓官": "Qíguān",
-		"欽": "Qīn1",
-		"秦": "Qín2",
-		"琴": "Qín3",
-		"丘": "Qiū1",
-		"邱": "Qiū2",
-		"秋": "Qiū3",
-		"裘": "Qiú4",
-		"戚": "Qī",
-		"曲": "Qū1",
-		"屈": "Qū2",
-		"璩": "Qú3",
-		"麴": "Qú4",
-		"全": "Quán1",
-		"權": "Quán2",
-		"闕": "Quē",
-		"壤驷": "Rǎngsì1",
-		"壤駟": "Rǎngsì2",
-		"冉": "Rǎn",
-		"饒": "Ráo",
-		"任": "Rèn",
-		"戎": "Róng1",
-		"容": "Róng2",
-		"榮": "Róng3",
-		"融": "Róng4",
-		"茹": "Rú1",
-		"汝": "Rǔ2",
-		"阮": "Ruǎn",
-		"芮": "Ruì",
-		"桑": "Sāng",
-		"商": "Shāng1",
-		"賞": "Shǎng2",
-		"尚": "Shàng3",
-		"上官": "Shàngguān",
-		"山": "Shān",
-		"韶": "Sháo1",
-		"邵": "Shào2",
-		"沙": "Shā",
-		"佘": "Shé1",
-		"厙": "Shè2",
-		"申": "Shēn1",
-		"莘": "Shēn2",
-		"慎": "Shèn3",
-		"申屠": "Shēntú",
-		"師": "Shī1",
-		"施": "Shī2",
-		"时": "Shí3",
-		"時": "Shí4",
-		"史": "Shǐ5",
-		"壽": "Shòu",
-		"殳": "Shū1",
-		"舒": "Shū2",
-		"束": "Shù3",
-		"帥": "Shuài",
-		"雙": "Shuāng",
-		"水": "Shuǐ",
-		"司空": "Sīkōng",
-		"司寇": "Sīkòu",
-		"司马": "Sīmǎ1",
-		"司馬": "Sīmǎ2",
-		"司徒": "Sītú",
-		"司": "Sī",
-		"松": "Sōng1",
-		"宋": "Sòng2",
-		"苏": "Sū1",
-		"蘇": "Sū2",
-		"隋": "Suí",
-		"孙": "Sūn1",
-		"孫": "Sūn2",
-		"索": "Suǒ",
-		"宿": "Sù",
-		"拓拔": "Tàbá1",
-		"拓跋": "Tàbá2",
-		"台": "Tái1",
-		"邰": "Tái2",
-		"太史": "Tàishǐ2",
-		"太叔": "Tàishū1",
-		"谈": "Tán1",
-		"覃": "Tán2",
-		"談": "Tán3",
-		"谭": "Tán4",
-		"譚": "Tán5",
-		"汤": "Tāng1",
-		"湯": "Tāng2",
-		"唐": "Táng3",
-		"陶": "Táo",
-		"腾": "Téng1",
-		"滕": "Téng2",
-		"田": "Tián",
-		"通": "Tōng1",
-		"佟": "Tóng2",
-		"童": "Tóng3",
-		"鈄": "Tǒu",
-		"涂": "Tú1",
-		"屠": "Tú2",
-		"万": "Wàn1",
-		"萬": "Wàn2",
-		"汪": "Wāng1",
-		"王": "Wáng2",
-		"万俟": "Wànsì",
-		"危": "Wēi1",
-		"韦": "Wéi2",
-		"韋": "Wéi3",
-		"隗": "Wěi4",
-		"卫": "Wèi5",
-		"位": "Wèi6",
-		"衛": "Wèi7",
-		"蔚": "Wèi8",
-		"魏": "Wèi9",
-		"尉迟": "Wèichí1",
-		"尉遲": "Wèichí2",
-		"微生": "Wēishēng",
-		"溫": "Wēn1",
-		"温": "Wēn2",
-		"文": "Wén3",
-		"聞": "Wén4",
-		"翁": "Wēng",
-		"闻人": "Wénrén1",
-		"聞人": "Wénrén2",
-		"沃": "Wò",
-		"巫": "Wū1",
-		"烏": "Wū2",
-		"邬": "Wū3",
-		"鄔": "Wū4",
-		"毋": "Wú5",
-		"吴": "Wú6",
-		"吳": "Wú7",
-		"伍": "Wǔ8",
-		"武": "Wǔ9",
-		"巫马": "Wūmǎ1",
-		"巫馬": "Wūmǎ2",
-		"习": "Xí1",
-		"奚": "Xī1",
-		"席": "Xí2",
-		"郤": "Xì2",
-		"習": "Xí3",
-		"袭": "Xí4",
-		"夏侯": "Xiàhóu",
-		"冼": "Xiǎn1",
-		"咸": "Xián2",
-		"相": "Xiāng1",
-		"向": "Xiàng2",
-		"项": "Xiàng3",
-		"項": "Xiàng4",
-		"鲜于": "Xiānyú1",
-		"鮮于": "Xiānyú2",
-		"萧": "Xiāo1",
-		"蕭": "Xiāo2",
-		"萧肖": "Xiāoxiào",
-		"夏": "Xià",
-		"谢": "Xiè1",
-		"謝": "Xiè2",
-		"西门": "Xīmén1",
-		"西門": "Xīmén2",
-		"刑": "Xíng1",
-		"邢": "Xíng2",
-		"姓": "Xìng3",
-		"幸": "Xìng4",
-		"辛": "Xīn",
-		"熊": "Xióng",
-		"胥": "Xū1",
-		"須": "Xū2",
-		"许": "Xǔ3",
-		"許": "Xǔ4",
-		"轩辕": "Xuānyuán1",
-		"軒轅": "Xuānyuán2",
-		"宣": "Xuān",
-		"薛": "Xuē",
-		"荀": "Xún",
-		"徐": "Xú",
-		"殷": "Yān01",
-		"燕": "Yān02",
-		"鄢": "Yān03",
-		"言": "Yán04",
-		"严": "Yán05",
-		"閆": "Yán06",
-		"阎": "Yán07",
-		"閻": "Yán08",
-		"颜": "Yán09",
-		"顏": "Yán10",
-		"嚴": "Yán11",
-		"晏": "Yàn12",
-		"羊": "Yáng1",
-		"阳": "Yáng2",
-		"扬": "Yáng3",
-		"杨": "Yáng4",
-		"陽": "Yáng5",
-		"楊": "Yáng6",
-		"仰": "Yǎng7",
-		"養": "Yǎng8",
-		"羊舌": "Yángshé",
-		"姚": "Yáo",
-		"叶": "Yè1",
-		"葉": "Yè2",
-		"衣": "Yī1",
-		"伊": "Yī2",
-		"易": "Yì3",
-		"羿": "Yì4",
-		"益": "Yì5",
-		"陰": "Yīn1",
-		"银": "Yín2",
-		"尹": "Yǐn3",
-		"印": "Yìn4",
-		"应": "Yīng1",
-		"應": "Yīng2",
-		"雍": "Yōng",
-		"尤": "Yóu1",
-		"游": "Yóu2",
-		"有": "Yǒu3",
-		"于": "Yú01",
-		"余": "Yú02",
-		"俞": "Yú03",
-		"魚": "Yú04",
-		"虞": "Yú05",
-		"宇": "Yǔ06",
-		"禹": "Yǔ07",
-		"庾": "Yǔ08",
-		"郁": "Yù09",
-		"喻": "Yù10",
-		"鬱": "Yù11",
-		"元": "Yuán1",
-		"原": "Yuán2",
-		"袁": "Yuán3",
-		"苑": "Yuàn4",
-		"岳": "Yuè1",
-		"越": "Yuè2",
-		"云": "Yún1",
-		"雲": "Yún2",
-		"宇文": "Yǔwén",
-		"於": "Yū",
-		"宰父": "Zǎifù",
-		"宰": "Zǎi",
-		"臧": "Zāng",
-		"昝": "Zăn",
-		"湛": "Zhàn1",
-		"詹": "Zhān2",
-		"张": "Zhāng1",
-		"張": "Zhāng2",
-		"章": "Zhāng3",
-		"仉": "Zhǎng4",
-		"赵": "Zhào1",
-		"趙": "Zhào2",
-		"郑": "Zhèng1",
-		"鄭": "Zhèng2",
-		"甄": "Zhēn",
-		"支": "Zhī1",
-		"植": "Zhí2",
-		"钟": "Zhōng1",
-		"終": "Zhōng2",
-		"鍾": "Zhōng3",
-		"仲": "Zhòng4",
-		"仲长": "Zhòngcháng",
-		"钟离": "Zhōnglí1",
-		"鐘離": "Zhōnglí2",
-		"仲孙": "Zhòngsūn1",
-		"仲孫": "Zhòngsūn2",
-		"周": "Zhōu",
-		"朱": "Zhū1",
-		"竺": "Zhú1",
-		"祝": "Zhù2",
-		"諸": "Zhū2",
-		"庄": "Zhuāng1",
-		"莊": "Zhuāng2",
-		"颛孙": "Zhuānsūn1",
-		"顓孫": "Zhuānsūn2",
-		"诸葛": "Zhūgé1",
-		"諸葛": "Zhūgé2",
-		"卓": "Zhuó",
-		"子车": "Zǐchē1",
-		"子車": "Zǐchē2",
-		"子桑": "Zǐsāng",
-		"子书": "Zǐshū",
-		"訾": "Zī",
-		"宗政": "Zōngzhèng",
-		"宗": "Zōng",
-		"邹": "Zōu1",
-		"鄒": "Zōu2",
-		"左": "Zuǒ3",
-		"左丘": "Zuǒqiū",
-		"祖": "Zǔ"
-    }
-};
-/*
- * nameprs.js - Person name parser
- * 
- * Copyright © 2012, JEDL Software, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* !depends ilibglobal.js locale.js ctype.isalpha.js ctype.isideo.js */
-
-// !data name
-
-/**
- * @class
- * A class to parse names of people. Different locales have different conventions when it
- * comes to naming people.<p>
- * 
- * The options can contain any of the following properties:
- * 
- * <ul>
- * <li><i>locale</i> - use the rules and conventions of the given locale in order to parse
- * the name
- * <li><i>style</i> - explicitly use the named style to parse the name. Valid values so 
- * far are "western" and "asian". If this property is not specified, then the style will 
- * be gleaned from the name itself. This class will count the total number of Latin or Asian 
- * characters. If the majority of the characters are in one style, that style will be 
- * used to parse the whole name. 
- * <li><i>order</i> - explicitly use the given order for names. In some locales, such
- * as Russian, names may be written equally validly as "givenName familyName" or "familyName
- * givenName". This option tells the parser which order to prefer, and overrides the 
- * default order for the locale. Valid values are "gf" or "fg".
- * </ul>
- * 
- * When the parser has completed its parsing, it fills in the fields listed below.<p>
- * 
- * For names that include auxilliary words, such as the family name "van der Heijden", all 
- * of the auxilliary words ("van der") will be included in the field.<p>
- * 
- * For names in Spanish locales, it is assumed that the family name is doubled. That is,
- * a person may have a paternal family name followed by a maternal family name. All
- * family names will be listed in the familyName field as normal, separated by spaces. 
- * When formatting the short version of such names, only the paternal family name will 
- * be used.
- * 
- * @constructor
- * @param {string|Object.<string>} name the name to parse
- * @param {Object.<string,*>} options Options governing the construction of this name instance
- */
-ilib.Name = function(name, options) {
-	var res, parts, prefixArray, prefix, prefixLower,
-		suffixArray, suffix, suffixLower,
-		asianName, conjunctionIndex, i;
-	
-	if (typeof(name) === 'object') {
-		// copy constructor
-		/**
-		 * The prefixes for this name
-		 * @type string
-		 */
-		this.prefix = name.prefix;
-		/**
-		 * The given (personal) name in this name.
-		 * @type string
-		 */
-		this.givenName = name.givenName;
-		/**
-		 * The middle names used in this name. If there are multiple middle names, they all 
-		 * appear in this field separated by spaces. 
-		 * @type string
-		 */
-		this.middleName = name.middleName;
-		/**
-		 * The family names in this name. If there are multiple family names, they all 
-		 * appear in this field separated by spaces.
-		 * @type string
-		 */
-		this.familyName = name.familyName;
-		/**
-		 * The suffixes for this name. If there are multiple suffixes, they all 
-		 * appear in this field separated by spaces.
-		 * @type string
-		 */
-		this.suffix = name.suffix;
-		
-		// private properties
-		this.locale = name.locale;
-		this.style = name.style;
-		this.order = name.order;
-		return;
-	}
-
-	if (options) {
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-		}
-		
-		if (options.style && (options.style === "asian" || options.style === "western")) {
-			this.style = options.style;
-		}
-		
-		if (options.order && (options.order === "gf" || options.order === "fg")) {
-			this.order = options.order;
-		}
-	}
-
-	this.locale = this.locale || new ilib.Locale();
-
-	res = new ilib.ResBundle({
-		locale: this.locale,
-		name: "name"
-	});
-	
-	/**
-	 * @private
-	 * @type {{components:Object.<string,{s:string,m:string,l:string,f:string}>,format:string,sortByHeadWord:boolean,isAsianLocale:boolean,conjunctions:Object.<string,string>,auxillaries:Object.<string,number>,prefixes:Array.<string>,suffixes:Array.<string>,knownFamilyNames:Object.<string,string>}}
-	 */
-	this.nameInfo = /** @type {{components:Object.<string,{s:string,m:string,l:string,f:string}>,format:string,sortByHeadWord:boolean,isAsianLocale:boolean,conjunctions:Object.<string,string>,auxillaries:Object.<string,number>,prefixes:Array.<string>,suffixes:Array.<string>,knownFamilyNames:Object.<string,string>}} */ (res.getResObj());
-
-	if (name) {
-		if (this.nameInfo.isAsianLocale || this._isAsianName(name)) {
-			// all-asian names
-			name = name.replace(/\s+/g, '');	// eliminate all whitespaces
-			parts = name.trim().split('');
-			asianName = true;
-		} else {
-			name = name.replace(/, /g, ' , ');
-			name = name.replace(/\s+/g, ' ');	// compress multiple whitespaces
-			parts = name.trim().split(' ');
-			asianName = false;
-		}
-		
-		// check for prefixes
-		if (parts.length > 1) {
-			for (i = parts.length; i > 0; i--) {
-				prefixArray = parts.slice(0, i);
-				prefix = prefixArray.join(asianName ? '' : ' ');
-				prefixLower = prefix.toLowerCase();
-				prefixLower = prefixLower.replace(/[,\.]/g, '');  // ignore commas and periods
-			
-				if (this.nameInfo.prefixes && this.nameInfo.prefixes.indexOf(prefixLower) > -1) {
-					if (this.prefix) {
-						if (!asianName) {
-							this.prefix += ' ';
-						} 
-						this.prefix += prefix;
-					} else {
-						this.prefix = prefix;
-					}
-					parts = parts.slice(i);
-					i = parts.length;
-				}
-			}
-		}
-		
-		// check for suffixes
-		if (parts.length > 1) {
-			for (i = parts.length; i > 0; i--) {
-				suffixArray = parts.slice(-i);
-				suffix = suffixArray.join(asianName ? '' : ' ');
-				suffixLower = suffix.toLowerCase();
-				suffixLower = suffixLower.replace(/[\.]/g, '');  // ignore periods
-				
-				if (this.nameInfo.suffixes && this.nameInfo.suffixes.indexOf(suffixLower) > -1) {
-					if (this.suffix) {
-						if (!asianName) {
-							this.suffix = ' ' + this.suffix;
-						}
-						this.suffix = suffix + this.suffix;
-					} else {
-						this.suffix = suffix;
-					}
-					parts = parts.slice(0, parts.length-i);
-					i = parts.length;
-				}
-			}
-		}
-		
-		// adjoin auxillary words to their headwords
-		if (parts.length > 1 && !asianName ) {
-			parts = this._joinAuxillaries(parts, asianName);
-		}
-		
-		if (asianName) {
-			this._parseAsianName(parts);
-		} else {
-			this._parseWesternName(parts);
-		}
-		
-		this._joinNameArrays();
-	}
-};
-
-ilib.Name.prototype = {
-	/**
-	 * @protected
-	 */
-	_isAsianName: function (name) {
-		// the idea is to count the number of asian chars and the number
-		// of latin chars. If one is greater than the other, choose
-		// that style.
-		var asian = 0, latin = 0, i;
-		
-		if (name && name.length > 0) {
-			for (i = 0; i < name.length; i++) {
-				if (ilib.CType.isAlpha(name.charAt(i))) {
-					latin++;
-				} else if (ilib.CType.isIdeo(name.charAt(i))) {
-					asian++;
-				}
-			}
-			
-			return latin < asian;
-		}
-	
-		return false;
-	},
-	
-	/**
-	 * @return {number} 
-	 */
-	_findSequence: function(parts, prefix, isAsian) {
-		
-	},
-	
-	/**
-	 * @protected
-	 */
-	_findPrefix: function (parts, names, isAsian) {
-		var i, prefix, prefixLower, prefixArray, aux = [];
-		
-		if (parts.length > 0 && names) {
-			for (i = parts.length; i > 0; i--) {
-				prefixArray = parts.slice(0, i);
-				prefix = prefixArray.join(isAsian ? '' : ' ');
-				prefixLower = prefix.toLowerCase();
-				prefixLower = prefixLower.replace(/[,\.]/g, '');  // ignore commas and periods
-				
-				if (prefixLower in names) {
-					aux = aux.concat(isAsian ? prefix : prefixArray);
-					parts = parts.slice(i);
-					i = parts.length + 1;
-				}
-			}
-		}
-		
-		return aux;
-	},
-
-	/**
-	 * @protected
-	 */
-	_findSuffix: function (parts, names, isAsian) {
-		var i, j, seq = "";
-		
-		for (i = 0; i < names.length; i++) {
-			if (parts.length >= names[i].length) {
-				j = 0;
-				while (j < names[i].length && parts[parts.length-j] === names[i][names[i].length-j]) {
-					j++;
-				}
-				if (j >= names[i].length) {
-					seq = parts.slice(parts.length-j).join(isAsian ? "" : " ") + (isAsian ? "" : " ") + seq;
-					parts = parts.slice(0, parts.length-j);
-					i = -1; // restart the search
-				}
-			}
-		}
-
-		this.suffix = seq;
-		return parts;
-	},
-
-	/**
-	 * @protected
-	 * Find the last instance of 'and' in the name
-	 * @param {Array.<string>} parts
-	 * @returns {number}
-	 */
-	_findLastConjunction: function _findLastConjunction(parts) {
-		var conjunctionIndex = -1, index, part;
-		
-		for (index = 0; index < parts.length; index++) {
-			part = parts[index];
-			if (typeof(part) === 'string') {
-				part = part.toLowerCase();
-				// also recognize English
-				if ("and" === part || "or" === part || "&" === part || "+" === part) {
-					conjunctionIndex = index;
-				}
-				if (this.nameInfo.conjunctions.and1 === part || 
-					this.nameInfo.conjunctions.and2 === part || 
-					this.nameInfo.conjunctions.or1 === part ||
-					this.nameInfo.conjunctions.or2 === part || 
-					("&" === part) || 
-					("+" === part)) {
-					conjunctionIndex = index;
-				}
-			}
-		}
-		return conjunctionIndex;
-	},
-
-	/**
-	 * @protected
-	 * @param {Array.<string>} parts the current array of name parts
-	 * @param {boolean} isAsian true if the name is being parsed as an Asian name
-	 * @return {Array.<string>} the remaining parts after the prefixes have been removed
-	 */
-	_extractPrefixes: function (parts, isAsian) {
-		var i = this._findSequence(parts, this.nameInfo.prefixes, isAsian);
-		if (i > 0) {
-			this.prefix = parts.slice(0, i).join(isAsian ? "" : " ");
-			return parts.slice(i);
-		}
-		// prefixes not found, so just return the array unmodified
-		return parts;
-	},
-
-	/**
-	 * @protected
-	 * @param {Array.<string>} parts the current array of name parts
-	 * @param {boolean} isAsian true if the name is being parsed as an Asian name
-	 * @return {Array.<string>} the remaining parts after the suffices have been removed
-	 */
-	_extractSuffixes: function (parts, isAsian) {
-		var i = this._findSequence(parts, this.nameInfo.suffixes, isAsian);
-		if (i > 0) {
-			this.suffix = parts.slice(i).join(isAsian ? "" : " ");
-			return parts.slice(0,i);
-		}
-		// suffices not found, so just return the array unmodified
-		return parts;
-	},
-	
-	/**
-	 * @protected
-	 * Adjoin auxillary words to their head words.
-	 * @param {Array.<string>} parts the current array of name parts
-	 * @param {boolean} isAsian true if the name is being parsed as an Asian name
-	 * @return {Array.<string>} the parts after the auxillary words have been plucked onto their head word
-	 */
-	_joinAuxillaries: function (parts, isAsian) {
-		var start, i, prefixArray, prefix, prefixLower;
-		
-		if (this.nameInfo.auxillaries && (parts.length > 2 || this.prefix)) {
-			for (start = 0; start < parts.length-1; start++) {
-				for (i = parts.length; i > start; i--) {
-					prefixArray = parts.slice(start, i);
-					prefix = prefixArray.join(' ');
-					prefixLower = prefix.toLowerCase();
-					prefixLower = prefixLower.replace(/[,\.]/g, '');  // ignore commas and periods
-					
-					if (prefixLower in this.nameInfo.auxillaries) {
-						parts.splice(start, i+1-start, prefixArray.concat(parts[i]));
-						i = start;
-					}
-				}
-			}
-		}
-		
-		return parts;
-	},
-
-	/**
-	 * @protected
-	 * Recursively join an array or string into a long string.
-	 */
-	_joinArrayOrString: function _joinArrayOrString(part) {
-		var i;
-		if (typeof(part) === 'object') {
-			for (i = 0; i < part.length; i++) {
-				part[i] = this._joinArrayOrString(part[i]);
-			}
-			return part.join(' ');
-		}
-		return part;
-	},
-	
-	/**
-	 * @protected
-	 */
-	_joinNameArrays: function _joinNameArrays() {
-		var prop;
-		for (prop in this) {
-			if (this[prop] !== undefined && typeof(this[prop]) === 'object' && this[prop] instanceof Array) {
-				this[prop] = this._joinArrayOrString(this[prop]);
-			}
-		}
-	},
-
-	/**
-	 * @protected
-	 */
-	_parseAsianName: function (parts) {
-		var familyNameArray = this._findPrefix(parts, this.nameInfo.knownFamilyNames, true);
-		
-		if (familyNameArray && familyNameArray.length > 0) {
-			this.familyName = familyNameArray.join('');
-			this.givenName = parts.slice(this.familyName.length).join('');
-		} else if (this.suffix || this.prefix) {
-			this.familyName = parts.join('');
-		} else {
-			this.givenName = parts.join('');
-		}
-	},
-	
-	/**
-	 * @protected
-	 */
-	_parseSpanishName: function (parts) {
-		var conjunctionIndex;
-		
-		if (parts.length === 1) {
-			if (this.prefix || typeof(parts[0]) === 'object') {
-				this.familyName = parts[0];
-			} else {
-				this.givenName = parts[0];
-			}
-		} else if (parts.length === 2) {
-			// we do G F
-			this.givenName = parts[0];
-			this.familyName = parts[1];
-		} else if (parts.length === 3) {
-			conjunctionIndex = this._findLastConjunction(parts);
-			// if there's an 'and' in the middle spot, put everything in the first name
-			if (conjunctionIndex === 1) {
-				this.givenName = parts;
-			} else {
-				// else, do G F F
-				this.givenName = parts[0];
-				this.familyName = parts.slice(1);
-			}
-		} else if (parts.length > 3) {
-			//there are at least 4 parts to this name
-			
-			conjunctionIndex = this._findLastConjunction(parts);
-			if (conjunctionIndex > 0) {
-				// if there's a conjunction that's not the first token, put everything up to and 
-				// including the token after it into the first name, the last 2 tokens into
-				// the family name (if they exist) and everything else in to the middle name
-				// 0 1 2 3 4 5
-				// G A G
-				// G A G F
-				// G G A G
-				// G A G F F
-				// G G A G F
-				// G G G A G
-				// G A G M F F
-				// G G A G F F
-				// G G G A G F
-				// G G G G A G
-				this.givenName = parts.splice(0,conjunctionIndex+2);
-				if (parts.length > 1) {
-					this.familyName = parts.splice(parts.length-2, 2);
-					if ( parts.length > 0 ) {
-						this.middleName = parts;
-					}
-				} else if (parts.length === 1) {
-					this.familyName = parts[0];
-				}
-			} else {
-				this.givenName = parts.splice(0,1);
-				this.familyName = parts.splice(parts.length-2, 2);
-				this.middleName = parts;
-			}
-		}
-	},
-
-	/**
-	 * @protected
-	 */
-	_parseWesternName: function (parts) {
-		if (this.locale.getLanguage() === "es") {
-			// in spain and mexico, we parse names differently than in the rest of the world 
-			// because of the double family names
-			this._parseSpanishName(parts);
-		} else if (this.locale.getLanguage() === "ru") {
-			/*
-			 * In Russian, names can be given equally validly as given-family 
-			 * or family-given. Use the value of the "order" property of the
-			 * constructor options to give the default when the order is ambiguous.
-			 */
-			// TODO: this._parseRussianName(parts);
-		} else {
-			/* Western names are parsed as follows, and rules are applied in this 
-			 * order:
-			 * 
-			 * G
-			 * G F
-			 * G M F
-			 * G M M F
-			 * P F
-			 * P G F 
-			 */
-			var conjunctionIndex;
-			
-			if (parts.length === 1) {
-				if (this.prefix || typeof(parts[0]) === 'object') {
-					// already has a prefix, so assume it goes with the family name like "Dr. Roberts" or
-					// it is a name with auxillaries, which is almost always a family name
-					this.familyName = parts[0];
-				} else {
-					this.givenName = parts[0];
-				}
-			} else if (parts.length === 2) {
-				// we do G F
-				this.givenName = parts[0];
-				this.familyName = parts[1];
-			} else if (parts.length >= 3) {
-				//find the first instance of 'and' in the name
-				conjunctionIndex = this._findLastConjunction(parts);
-		
-				if (conjunctionIndex > 0) {
-					// if there's a conjunction that's not the first token, put everything up to and 
-					// including the token after it into the first name, the last token into
-					// the family name (if it exists) and everything else in to the middle name
-					// 0 1 2 3 4 5
-					// G A G M M F
-					// G G A G M F
-					// G G G A G F
-					// G G G G A G
-					this.givenName = parts.slice(0,conjunctionIndex+2);
-					if (conjunctionIndex + 1 < parts.length - 1) {
-						this.familyName = parts.splice(parts.length-1, 1);
-						if (conjunctionIndex + 2 < parts.length - 1) {
-							this.middleName = parts.slice(conjunctionIndex + 2, parts.length - conjunctionIndex - 3);
-						}
-					}
-				} else {
-					this.givenName = parts[0];
-					this.middleName = parts.slice(1, parts.length-1);
-					this.familyName = parts[parts.length-1];
-				}
-			}
-		}
-	},
-
-	/**
-	 * When sorting names with auxiliary words (like "van der" or "de los"), determine
-	 * which is the "head word" and return a string that can be easily sorted by head
-	 * word. In English, names are always sorted by initial characters. In places like
-	 * the Netherlands or Germany, family names are sorted by the head word of a list
-	 * of names rather than the first element of that name.
-	 * @param {ilib.Locale|string=} locale Use this locale to determine which word
-	 * in the family name to use when sorting
-	 * @return {string|undefined} a string containing the family name[s] to be used for sorting
-	 * in the given locale, or undefined if there is no family name in this object
-	 */
-	getSortFamilyName: function(locale) {
-		var loc,
-			name,
-			auxillaries, 
-			nameInfo, 
-			auxString, 
-			parts,
-			i;
-		
-		// no name to sort by
-		if (!this.familyName) {
-			return undefined;
-		}
-		
-		if (!locale) {
-			// default to the locale used to parse the name in the first place
-			loc = this.locale;
-			nameInfo = this.nameInfo;
-		} else if (typeof(locale) === 'string') {
-			loc = new ilib.Locale(locale);
-		} else {
-			loc = locale;
-		}
-	
-		// first break the name into parts
-		if (!nameInfo) {
-			var res = new ilib.ResBundle({
-				locale: this.locale,
-				name: "name"
-			});
-			
-			nameInfo = /** @type {{components:Object.<string,{s:string,m:string,l:string,f:string}>,format:string,sortByHeadWord:boolean,isAsianLocale:boolean,conjunctions:Object.<string,string>,auxillaries:Object.<string,number>,prefixes:Array.<string>,suffixes:Array.<string>,knownFamilyNames:Object.<string,string>}} */ (res.getResObj());
-		}
-	
-		if (nameInfo) {
-			if (nameInfo.sortByHeadWord) {
-				if (typeof(this.familyName) === 'string') {
-					name = this.familyName.replace(/\s+/g, ' ');	// compress multiple whitespaces
-					parts = name.trim().split(' ');
-				} else {
-					// already split
-					parts = /** @type Array */ this.familyName;
-				}
-				
-				auxillaries = this._findPrefix(parts, nameInfo.auxillaries, false);
-				if (auxillaries && auxillaries.length > 0) {
-					if (typeof(this.familyName) === 'string') {
-						auxString = auxillaries.join(' ');
-						name = this.familyName.substring(auxString.length+1) + ', ' + auxString;
-					} else {
-						name = parts.slice(auxillaries.length).join(' ') + 
-							', ' + 
-							parts.slice(0,auxillaries.length).join(' ');
-					}
-				}
-			} else if (nameInfo.knownFamilyNames && this.familyName) {
-				parts = this.familyName.split('');
-				var familyNameArray = this._findPrefix(parts, nameInfo.knownFamilyNames, true);
-				name = "";
-				for (i = 0; i < familyNameArray.length; i++) {
-					name += (nameInfo.knownFamilyNames[familyNameArray[i]] || "");
-				}
-			}
-		}
-	
-		return name || this.familyName;
-	},
-	
-	getHeadFamilyName: function() {
-	}
-};
-
-
-
-
-/*
- * namefmt.js - Format person names for display
- * 
- * Copyright © 2012, JEDL Software, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/* !depends 
-ilibglobal.js
-locale.js
-strings.js
-nameprs.js
-*/
-
-/**
- * @class
- * Creates a formatter that can format person name instances (ilib.Name) for display to
- * a user. The options may contain the following properties:
- * 
- * <ul>
- * <li><i>locale</i> - Use the conventions of the given locale to construct the name format. 
- * <li><i>style</i> - Format the name with the given style. The value of this property
- * should be one of the following strings: 
- *   <ul>
- *     <li><i>short</i> - Format a short name with just the given and family names.
- *     <li><i>medium</i> - Format a medium-length name with the given, middle, and family names.
- *     <li><i>long</i> - Format a long name with all names available in the given name object, including
- *     prefixes and suffixes.
- *   </ul>
- * <li><i>components</i> - Format the name with the given components in the correct
- * order for those components. Components are encoded as a string of letters representing
- * the desired components:
- *   <ul>
- *     <li><i>p</i> - prefixes
- *     <li><i>g</i> - given name
- *     <li><i>m</i> - middle names
- *     <li><i>f</i> - family name
- *     <li><i>s</i> - suffixes
- *   </ul>
- * <p>
- * For example, the string "pf" would mean to only format any prefixes and family names 
- * together and leave out all the other parts of the name.<p>
- * 
- * The components can be listed in any order in the string. The <i>components</i> option 
- * overrides the <i>style</i> option if both are specified.
- * </ul>
- * 
- * Formatting names is a locale-dependent function, as the order of the components 
- * depends on the locale. The following explains some of the details:<p>
- * 
- * <ul>
- * <li>In Western countries, the given name comes first, followed by a space, followed 
- * by the family name. In Asian countries, the family name comes first, followed immediately
- * by the given name with no space. But, that format is only used with Asian names written
- * in ideographic characters. In Asian countries, especially ones where both an Asian and 
- * a Western language are used (Hong Kong, Singapore, etc.), the convention is often to 
- * follow the language of the name. That is, Asian names are written in Asian style, and 
- * Western names are written in Western style. This class follows that convention as
- * well. 
- * <li>In other Asian countries, Asian names
- * written in Latin script are written with Asian ordering. eg. "Xu Ping-an" instead
- * of the more Western order "Ping-an Xu", as the order is thought to go with the style
- * that is appropriate for the name rather than the style for the language being written.
- * <li>In some Spanish speaking countries, people often take both their maternal and
- * paternal last names as their own family name. When formatting a short or medium style
- * of that family name, only the paternal name is used. In the long style, all the names
- * are used. eg. "Juan Julio Raul Lopez Ortiz" took the name "Lopez" from his father and 
- * the name "Ortiz" from his mother. His family name would be "Lopez Ortiz". The formatted
- * short style of his name would be simply "Juan Lopez" which only uses his paternal
- * family name of "Lopez".
- * <li>In many Western languages, it is common to use auxillary words in family names. For
- * example, the family name of "Ludwig von Beethoven" in German is "von Beethoven", not 
- * "Beethoven". This class ensures that the family name is formatted correctly with 
- * all auxillary words.   
- * </ul>
- * 
- * @constructor
- * @param {Object.<string,*>} options A set of options that govern how the formatter will behave
- */
-ilib.NameFmt = function(options) {
-	this.style = "m";
-	
-	if (options) {
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-		}
-		
-		if (options.style) {
-			this.style = options.style;
-		}
-		
-		if (options.components) {
-			this.components = options.components;
-		}
-	}
-	
-	this.locale = this.locale || new ilib.Locale();
-	
-	if (!this.components) {
-		switch (this.style) {
-			default:
-			case "s":
-				this.components = "gf";
-				break;
-			case "m":
-				this.components = "gmf";
-				break;
-			case "l":
-				this.components = "pgmfs";
-				break;
-		}
-	}
-};
-
-ilib.NameFmt.prototype = {
-	/**
-	 * Return the locale for this formatter instance.
-	 * @return {ilib.Locale} the locale instance for this formatter
-	 */
-	getLocale: function () {
-		return this.locale;
-	},
-	
-	/**
-	 * Return the style of names returned by this formatter
-	 * @return {string} the style of names returned by this formatter
-	 */
-	getStyle: function () {
-		return this.style;
-	},
-	
-	/**
-	 * Return the list of components used to format names in this formatter
-	 * @return {string} the list of components
-	 */
-	getComponents: function () {
-		return this.components;
-	},
-	
-	/**
-	 * Format the name for display in the current locale with the options set up
-	 * in the constructor of this formatter instance.
-	 * 
-	 * @param {ilib.Name} name the name to format
-	 * @return {string} the name formatted according to the style of this 
-	 * formatter instance
-	 */
-	format: function(name) {
-		return "";
-	}
-};
-
-ilib.data.currency = {
-	"USD": {
-		"name": "US Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CHF": {
-		"name": "Swiss Franc",
-		"decimals": 2,
-		"sign": "Fr"
-	},
-	"RON": {
-		"name": "Leu",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"RUB": {
-		"name": "Russian Ruble",
-		"decimals": 2,
-		"sign": "руб."
-	},
-	"SEK": {
-		"name": "Swedish Krona",
-		"decimals": 2,
-		"sign": "kr"
-	},
-	"GBP": {
-		"name": "Pound Sterling",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"PKR": {
-		"name": "Pakistan Rupee",
-		"decimals": 2,
-		"sign": "₨"
-	},
-	"KES": {
-		"name": "Kenyan Shilling",
-		"decimals": 2,
-		"sign": "Sh"
-	},
-	"AED": {
-		"name": "UAE Dirham",
-		"decimals": 2,
-		"sign": "د.إ"
-	},
-	"KRW": {
-		"name": "Won",
-		"decimals": 0,
-		"sign": "₩"
-	},
-	"AFN": {
-		"name": "Afghani",
-		"decimals": 2,
-		"sign": "؋"
-	},
-	"ALL": {
-		"name": "Lek",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"AMD": {
-		"name": "Armenian Dram",
-		"decimals": 2,
-		"sign": "դր."
-	},
-	"ANG": {
-		"name": "Netherlands Antillean Guilder",
-		"decimals": 2,
-		"sign": "ƒ"
-	},
-	"AOA": {
-		"name": "Kwanza",
-		"decimals": 2,
-		"sign": "Kz"
-	},
-	"ARS": {
-		"name": "Argentine Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"AUD": {
-		"name": "Australian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"AWG": {
-		"name": "Aruban Florin",
-		"decimals": 2,
-		"sign": "ƒ"
-	},
-	"AZN": {
-		"name": "Azerbaijanian Manat",
-		"decimals": 2,
-		"sign": "AZN"
-	},
-	"BAM": {
-		"name": "Convertible Mark",
-		"decimals": 2,
-		"sign": "КМ"
-	},
-	"BBD": {
-		"name": "Barbados Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"BDT": {
-		"name": "Taka",
-		"decimals": 2,
-		"sign": "৳"
-	},
-	"BGN": {
-		"name": "Bulgarian Lev",
-		"decimals": 2,
-		"sign": "лв"
-	},
-	"BHD": {
-		"name": "Bahraini Dinar",
-		"decimals": 3,
-		"sign": ".د.ب"
-	},
-	"BIF": {
-		"name": "Burundi Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"BMD": {
-		"name": "Bermudian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"BND": {
-		"name": "Brunei Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"BOB": {
-		"name": "Boliviano",
-		"decimals": 2,
-		"sign": "Bs."
-	},
-	"BRL": {
-		"name": "Brazilian Real",
-		"decimals": 2,
-		"sign": "R$"
-	},
-	"BSD": {
-		"name": "Bahamian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"BTN": {
-		"name": "Ngultrum",
-		"decimals": 2,
-		"sign": "Nu."
-	},
-	"BWP": {
-		"name": "Pula",
-		"decimals": 2,
-		"sign": "P"
-	},
-	"BYR": {
-		"name": "Belarussian Ruble",
-		"decimals": 0,
-		"sign": "Br"
-	},
-	"BZD": {
-		"name": "Belize Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CAD": {
-		"name": "Canadian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CDF": {
-		"name": "Congolese Franc",
-		"decimals": 2,
-		"sign": "Fr"
-	},
-	"CLP": {
-		"name": "Chilean Peso",
-		"decimals": 0,
-		"sign": "$"
-	},
-	"CNY": {
-		"name": "Yuan Renminbi",
-		"decimals": 2,
-		"sign": "元"
-	},
-	"COP": {
-		"name": "Colombian Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CRC": {
-		"name": "Costa Rican Colon",
-		"decimals": 2,
-		"sign": "₡"
-	},
-	"CUP": {
-		"name": "Cuban Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CVE": {
-		"name": "Cape Verde Escudo",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CZK": {
-		"name": "Czech Koruna",
-		"decimals": 2,
-		"sign": "Kč"
-	},
-	"DJF": {
-		"name": "Djibouti Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"DKK": {
-		"name": "Danish Krone",
-		"decimals": 2,
-		"sign": "kr"
-	},
-	"DOP": {
-		"name": "Dominican Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"DZD": {
-		"name": "Algerian Dinar",
-		"decimals": 2,
-		"sign": "د.ج"
-	},
-	"EGP": {
-		"name": "Egyptian Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"ERN": {
-		"name": "Nakfa",
-		"decimals": 2,
-		"sign": "Nfk"
-	},
-	"ETB": {
-		"name": "Ethiopian Birr",
-		"decimals": 2,
-		"sign": "Br"
-	},
-	"EUR": {
-		"name": "Euro",
-		"decimals": 2,
-		"sign": "€"
-	},
-	"FJD": {
-		"name": "Fiji Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"FKP": {
-		"name": "Falkland Islands Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"GEL": {
-		"name": "Lari",
-		"decimals": 2,
-		"sign": "ლ"
-	},
-	"GHS": {
-		"name": "Cedi",
-		"decimals": 2,
-		"sign": "₵"
-	},
-	"GIP": {
-		"name": "Gibraltar Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"GMD": {
-		"name": "Dalasi",
-		"decimals": 2,
-		"sign": "D"
-	},
-	"GNF": {
-		"name": "Guinea Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"GTQ": {
-		"name": "Quetzal",
-		"decimals": 2,
-		"sign": "Q"
-	},
-	"GYD": {
-		"name": "Guyana Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"HKD": {
-		"name": "Hong Kong Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"HNL": {
-		"name": "Lempira",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"HRK": {
-		"name": "Croatian Kuna",
-		"decimals": 2,
-		"sign": "kn"
-	},
-	"HTG": {
-		"name": "Gourde",
-		"decimals": 2,
-		"sign": "G"
-	},
-	"HUF": {
-		"name": "Forint",
-		"decimals": 2,
-		"sign": "Ft"
-	},
-	"IDR": {
-		"name": "Rupiah",
-		"decimals": 2,
-		"sign": "Rp"
-	},
-	"ILS": {
-		"name": "New Israeli Sheqel",
-		"decimals": 2,
-		"sign": "₪"
-	},
-	"INR": {
-		"name": "Indian Rupee",
-		"decimals": 2,
-		"sign": "INR"
-	},
-	"IQD": {
-		"name": "Iraqi Dinar",
-		"decimals": 3,
-		"sign": "ع.د"
-	},
-	"IRR": {
-		"name": "Iranian Rial",
-		"decimals": 2,
-		"sign": "﷼"
-	},
-	"ISK": {
-		"name": "Iceland Krona",
-		"decimals": 0,
-		"sign": "kr"
-	},
-	"JMD": {
-		"name": "Jamaican Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"JOD": {
-		"name": "Jordanian Dinar",
-		"decimals": 3,
-		"sign": "د.ا"
-	},
-	"JPY": {
-		"name": "Yen",
-		"decimals": 0,
-		"sign": "¥"
-	},
-	"KGS": {
-		"name": "Som",
-		"decimals": 2,
-		"sign": "лв"
-	},
-	"KHR": {
-		"name": "Riel",
-		"decimals": 2,
-		"sign": "៛"
-	},
-	"KMF": {
-		"name": "Comoro Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"KPW": {
-		"name": "North Korean Won",
-		"decimals": 2,
-		"sign": "₩"
-	},
-	"KWD": {
-		"name": "Kuwaiti Dinar",
-		"decimals": 3,
-		"sign": "د.ك"
-	},
-	"KYD": {
-		"name": "Cayman Islands Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"KZT": {
-		"name": "Tenge",
-		"decimals": 2,
-		"sign": "₸"
-	},
-	"LAK": {
-		"name": "Kip",
-		"decimals": 2,
-		"sign": "₭"
-	},
-	"LBP": {
-		"name": "Lebanese Pound",
-		"decimals": 2,
-		"sign": "ل.ل"
-	},
-	"LKR": {
-		"name": "Sri Lanka Rupee",
-		"decimals": 2,
-		"sign": "Rs"
-	},
-	"LRD": {
-		"name": "Liberian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"LSL": {
-		"name": "Loti",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"LTL": {
-		"name": "Lithuanian Litas",
-		"decimals": 2,
-		"sign": "Lt"
-	},
-	"LVL": {
-		"name": "Latvian Lats",
-		"decimals": 2,
-		"sign": "Ls"
-	},
-	"LYD": {
-		"name": "Libyan Dinar",
-		"decimals": 3,
-		"sign": "ل.د"
-	},
-	"MAD": {
-		"name": "Moroccan Dirham",
-		"decimals": 2,
-		"sign": "د.م."
-	},
-	"MDL": {
-		"name": "Moldovan Leu",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"MGA": {
-		"name": "Malagasy Ariary",
-		"decimals": 2,
-		"sign": "Ar"
-	},
-	"MKD": {
-		"name": "Denar",
-		"decimals": 2,
-		"sign": "ден"
-	},
-	"MMK": {
-		"name": "Kyat",
-		"decimals": 2,
-		"sign": "K"
-	},
-	"MNT": {
-		"name": "Tugrik",
-		"decimals": 2,
-		"sign": "₮"
-	},
-	"MOP": {
-		"name": "Pataca",
-		"decimals": 2,
-		"sign": "P"
-	},
-	"MRO": {
-		"name": "Ouguiya",
-		"decimals": 2,
-		"sign": "UM"
-	},
-	"MUR": {
-		"name": "Mauritius Rupee",
-		"decimals": 2,
-		"sign": "₨"
-	},
-	"MVR": {
-		"name": "Rufiyaa",
-		"decimals": 2,
-		"sign": ".ރ"
-	},
-	"MWK": {
-		"name": "Kwacha",
-		"decimals": 2,
-		"sign": "MK"
-	},
-	"MXN": {
-		"name": "Mexican Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"MYR": {
-		"name": "Malaysian Ringgit",
-		"decimals": 2,
-		"sign": "RM"
-	},
-	"MZN": {
-		"name": "Metical",
-		"decimals": 2,
-		"sign": "MT"
-	},
-	"NAD": {
-		"name": "Namibia Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"NGN": {
-		"name": "Naira",
-		"decimals": 2,
-		"sign": "₦"
-	},
-	"NIO": {
-		"name": "Cordoba Oro",
-		"decimals": 2,
-		"sign": "C$"
-	},
-	"NOK": {
-		"name": "Norwegian Krone",
-		"decimals": 2,
-		"sign": "kr"
-	},
-	"NPR": {
-		"name": "Nepalese Rupee",
-		"decimals": 2,
-		"sign": "₨"
-	},
-	"NZD": {
-		"name": "New Zealand Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"OMR": {
-		"name": "Rial Omani",
-		"decimals": 3,
-		"sign": "ر.ع."
-	},
-	"PAB": {
-		"name": "Balboa",
-		"decimals": 2,
-		"sign": "B/."
-	},
-	"PEN": {
-		"name": "Nuevo Sol",
-		"decimals": 2,
-		"sign": "S/."
-	},
-	"PGK": {
-		"name": "Kina",
-		"decimals": 2,
-		"sign": "K"
-	},
-	"PHP": {
-		"name": "Philippine Peso",
-		"decimals": 2,
-		"sign": "₱"
-	},
-	"PLN": {
-		"name": "Zloty",
-		"decimals": 2,
-		"sign": "zł"
-	},
-	"PYG": {
-		"name": "Guarani",
-		"decimals": 0,
-		"sign": "₲"
-	},
-	"QAR": {
-		"name": "Qatari Rial",
-		"decimals": 2,
-		"sign": "ر.ق"
-	},
-	"RSD": {
-		"name": "Serbian Dinar",
-		"decimals": 2,
-		"sign": "дин."
-	},
-	"RWF": {
-		"name": "Rwanda Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"SAR": {
-		"name": "Saudi Riyal",
-		"decimals": 2,
-		"sign": "ر.س"
-	},
-	"SBD": {
-		"name": "Solomon Islands Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"SCR": {
-		"name": "Seychelles Rupee",
-		"decimals": 2,
-		"sign": "₨"
-	},
-	"SDG": {
-		"name": "Sudanese Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"SGD": {
-		"name": "Singapore Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"SHP": {
-		"name": "Saint Helena Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"SLL": {
-		"name": "Leone",
-		"decimals": 2,
-		"sign": "Le"
-	},
-	"SOS": {
-		"name": "Somali Shilling",
-		"decimals": 2,
-		"sign": "Sh"
-	},
-	"SRD": {
-		"name": "Surinam Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"SSP": {
-		"name": "South Sudanese Pound",
-		"decimals": 2,
-		"sign": ""
-	},
-	"STD": {
-		"name": "Dobra",
-		"decimals": 2,
-		"sign": "Db"
-	},
-	"SYP": {
-		"name": "Syrian Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"SZL": {
-		"name": "Lilangeni",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"THB": {
-		"name": "Baht",
-		"decimals": 2,
-		"sign": "฿"
-	},
-	"TJS": {
-		"name": "Somoni",
-		"decimals": 2,
-		"sign": "ЅМ"
-	},
-	"TMT": {
-		"name": "New Manat",
-		"decimals": 2,
-		"sign": "m"
-	},
-	"TND": {
-		"name": "Tunisian Dinar",
-		"decimals": 3,
-		"sign": "د.ت"
-	},
-	"TOP": {
-		"name": "Pa’anga",
-		"decimals": 2,
-		"sign": "T$"
-	},
-	"TRY": {
-		"name": "Turkish Lira",
-		"decimals": 2,
-		"sign": "TL"
-	},
-	"TTD": {
-		"name": "Trinidad and Tobago Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"TWD": {
-		"name": "New Taiwan Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"TZS": {
-		"name": "Tanzanian Shilling",
-		"decimals": 2,
-		"sign": "Sh"
-	},
-	"UAH": {
-		"name": "Hryvnia",
-		"decimals": 2,
-		"sign": "₴"
-	},
-	"UGX": {
-		"name": "Uganda Shilling",
-		"decimals": 2,
-		"sign": "Sh"
-	},
-	"UYU": {
-		"name": "Peso Uruguayo",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"UZS": {
-		"name": "Uzbekistan Sum",
-		"decimals": 2,
-		"sign": "лв"
-	},
-	"VEF": {
-		"name": "Bolivar Fuerte",
-		"decimals": 2,
-		"sign": "Bs F"
-	},
-	"VND": {
-		"name": "Dong",
-		"decimals": 0,
-		"sign": "₫"
-	},
-	"VUV": {
-		"name": "Vatu",
-		"decimals": 0,
-		"sign": "Vt"
-	},
-	"WST": {
-		"name": "Tala",
-		"decimals": 2,
-		"sign": "T"
-	},
-	"XAF": {
-		"name": "CFA Franc BEAC",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"XCD": {
-		"name": "East Caribbean Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"XOF": {
-		"name": "CFA Franc BCEAO",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"XPF": {
-		"name": "CFP Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"YER": {
-		"name": "Yemeni Rial",
-		"decimals": 2,
-		"sign": "﷼"
-	},
-	"ZAR": {
-		"name": "Rand",
-		"decimals": 2,
-		"sign": "R"
-	},
-	"ZMK": {
-		"name": "Zambian Kwacha",
-		"decimals": 2,
-		"sign": "ZK"
-	},
-	"ZWL": {
-		"name": "Zimbabwe Dollar",
-		"decimals": 2,
-		"sign": "$"
-	}
-}
-;
-/*
- * currency.js - Currency definition
- * 
- * Copyright © 2012, JEDL Software, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// !depends ilibglobal.js locale.js
-
-// !data currency
-
-/**
- * @class
- * Create a new currency information instance. Instances of this class encode 
- * information about a particular currency.<p> 
- * 
- * The options can contain any of the following properties:
- * 
- * <ul>
- * <li><i>locale</i> - specify the locale for this instance
- * <li><i>code</i> - find info on a specific currency with the given ISO 4217 code 
- * <li><i>sign</i> - search for a currency that uses this sign
- * </ul>
- * 
- * When searching for a currency by its sign, this class cannot guarantee 
- * that it will return info about a specific currency. The reason is that currency 
- * signs are sometimes shared between different currencies and the sign is 
- * therefore ambiguous. If you need a 
- * guarantee, find the currency using the code instead.<p>
- * 
- * The way this class finds a currency by sign is the following. If the sign is 
- * unambiguous, then
- * the currency is returned. If there are multiple currencies that use the same
- * sign, and the current locale uses that sign, then the default currency for
- * the current locale is returned. If there are multiple, but the current locale
- * does not use that sign, then the currency with the largest circulation is
- * returned. For example, if you are in the en-GB locale, and the sign is "$",
- * then this class will notice that there are multiple currencies with that
- * sign (USD, CAD, AUD, HKD, MXP, etc.) Since "$" is not used in en-GB, it will 
- * pick the one with the largest circulation, which in this case is the US Dollar
- * (USD).<p>
- * 
- * If neither the code or sign property is set, the currency that is most common 
- * for the locale
- * will be used instead. If the locale is not set, the default locale will be used.
- * If the code is given, but it is not found in the list of known currencies, this
- * constructor will throw an exception. If the sign is given, but it is not found,
- * this constructor will default to the currency for the current locale. If both
- * the code and sign properties are given, then the sign property will be ignored
- * and only the code property used. If the locale is given, but it is not a known
- * locale, this class will default to the default locale instead.
- * 
- * @constructor
- * @param options {Object} a set of properties to govern how this instance is constructed.
- * @throws "currency xxx is unknown" when the given currency code is not in the list of 
- * known currencies. xxx is replaced with the requested code.
- */
-ilib.Currency = function (options) {
-	var li, currencies, currInfo, sign, cur;
-	
-	if (options) {
-		if (options.code) {
-			this.code = options.code;
-		}
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-		}
-		if (options.sign) {
-			sign = options.sign;
-		}
-	}
-	
-	this.locale = this.locale || new ilib.Locale();
-	li = new ilib.LocaleInfo(this.locale);
-		
-	currencies = new ilib.ResBundle({
-		locale: this.locale,
-		name: "currency"
-	}).getResObj();
-
-	if (this.code) {
-		currInfo = currencies[this.code];
-		if (!currInfo) {
-			throw "currency " + this.code + " is unknown";
-		}
-	} else if (sign) {
-		currInfo = currencies[sign]; // maybe it is really a code...
-		if (typeof(currInfo) !== 'undefined') {
-			this.code = sign;
-		} else {
-			this.code = li.getCurrency();
-			currInfo = currencies[this.code];
-			if (currInfo.sign !== sign) {
-				// current locale does not use the sign, so search for it
-				for (cur in currencies) {
-					if (cur && currencies[cur]) {
-						currInfo = currencies[cur];
-						if (currInfo.sign === sign) {
-							// currency data is already ordered so that the currency with the
-							// largest circulation is at the beginning, so all we have to do
-							// is take the first one in the list that matches
-							this.code = cur;
-							break;
-						}
-					}
-				}
-			}
-		}
-	}
-	
-	if (!currInfo || !this.code) {
-		this.code = li.getCurrency();
-		currInfo = currencies[this.code];
-	}
-	
-	this.name = currInfo.name;
-	this.fractionDigits = currInfo.decimals;
-	this.sign = currInfo.sign;
-};
-
-ilib.Currency.prototype = {
-	/**
-	 * Return the ISO 4217 currency code for this instance.
-	 * @returns {string} the ISO 4217 currency code for this instance
-	 */
-	getCode: function () {
-		return this.code;
-	},
-	
-	/**
-	 * Return the default number of fraction digits that is typically used
-	 * with this type of currency.
-	 * @returns {number} the number of fraction digits for this currency
-	 */
-	getFractionDigits: function () {
-		return this.fractionDigits;
-	},
-	
-	/**
-	 * Return the sign commonly used to represent this currency.
-	 * @returns {string} the sign commonly used to represent this currency
-	 */
-	getSign: function () {
-		return this.sign;
-	},
-	
-	/**
-	 * Return the name of the currency in English.
-	 * @returns {string} the name of the currency in English
-	 */
-	getName: function () {
-		return this.name;
-	},
-	
-	/**
-	 * Return the locale for this currency. If the options to the constructor 
-	 * included a locale property in order to find the currency that is appropriate
-	 * for that locale, then the locale is returned here. If the options did not
-	 * include a locale, then this method returns undefined.
-	 * @returns {ilib.Locale} the locale used in the constructor of this instance,
-	 * or undefined if no locale was given in the constructor
-	 */
-	getLocale: function () {
-		return this.locale;
-	}
-};
-
-/*
- * numfmt.js - Number formatter definition
- * 
- * Copyright © 2012, JEDL Software, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// !depends ilibglobal.js locale.js strings.js resources.js currency.js
-
-/**
- * @private
- */
-ilib._roundFnc = {
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	floor: function (num) {
-		return Math.floor(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	ceiling: function (num) {
-		return Math.ceil(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	down: function (num) {
-		return (num < 0) ? Math.ceil(num) : Math.floor(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	up: function (num) {
-		return (num < 0) ? Math.floor(num) : Math.ceil(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfup: function (num) {
-		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfdown: function (num) {
-		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfeven: function (num) {
-		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfodd: function (num) {
-		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	}
-};
-
-/**
- * @class
- * Create a new number formatter instance. Locales differ in the way that digits
- * in a formatted number are grouped, in the way the decimal character is represented, 
- * etc. Use this formatter to get it right for any locale.<p>
- * 
- * This formatter can format plain numbers, currency amounts, and percentage amounts.<p>  
- * 
- * As with all formatters, the recommended
- * practice is to create one formatter and use it multiple times to format various
- * numbers.<p>
- * 
- * The options can contain any of the following properties:
- * 
- * <ul>
- * <li><i>locale</i> - use the conventions of the specified locale when figuring out how to
- * format a number.
- * <li><i>type</i> - the type of this formatter. Valid values are "number", "currency", or 
- * "percentage". If this property is not specified, the default is "number".
- * <li><i>currency</i> - the ISO 4217 3-letter currency code to use when the formatter type 
- * is "currency". If the type is "currency" and this property is not specified, the currency
- * that is standard for the locale will be used. 
- * <li><i>maxFractionDigits</i> - the maximum number of digits that should appear in the
- * formatted output after the decimal. A value of -1 means unlimited, and 0 means only print
- * the integral part of the number. 
- * <li><i>minFractionDigits</i> - the minimum number of fractional digits that should
- * appear in the formatted output. If the number does not have enough fractional digits
- * to reach this minimum, the number will be zero-padded at the end to get to the limit.
- * If the type of the formatter is "currency" and this
- * property is not specified, then the minimum fraction digits is set to the normal number
- * of digits used with that currency, which is almost always 0, 2, or 3 digits.
- * <li><i>roundingMode</i> - When the maxFractionDigits or maxIntegerDigits is specified,
- * this property governs how the least significant digits are rounded to conform to that
- * maximum. The value of this property is a string with one of the following values:
- * <ul>
- *   <li><i>up</i> - round away from zero
- *   <li><i>down</i> - round towards zero. This has the effect of truncating the number
- *   <li><i>ceiling</i> - round towards positive infinity
- *   <li><i>floor</i> - round towards negative infinity
- *   <li><i>halfup</i> - round towards nearest neighbour. If equidistant, round up.
- *   <li><i>halfdown</i> - round towards nearest neighbour. If equidistant, round down.
- *   <li><i>halfeven</i> - round towards nearest neighbour. If equidistant, round towards the even neighbour
- *   <li><i>halfodd</i> - round towards nearest neighbour. If equidistant, round towards the odd neighbour
- * </ul>
- * When the type of the formatter is "currency" and the <i>roundingMode</i> property is not
- * set, then the standard legal rounding rules for the locale are followed. If the type
- * is "number" or "percentage" and the <i>roundingMode</i> property is not set, then the 
- * default mode is "halfdown".</i>.
- * <li><i>style</i> - When the type of this formatter is "currency", the currency amount
- * can be formatted in the following styles: "common" and "iso". The common style is the
- * one commonly used in every day writing where the currency unit is represented using a 
- * symbol. eg. "$57.35" for fifty-seven dollars and thirty five cents. The iso style is 
- * the international style where the currency unit is represented using the ISO 4217 code.
- * eg. "USD 57.35" for the same amount. The default is "common" style if the style is
- * not specified.<p>
- * 
- * When the type of this formatter is "number",
- * the style can be either "standard" or "scientific". A "standard" style means a fully
- * specified floating point number formatted for the locale, whereas "scientific" uses
- * scientific notation for all numbers. That is, 1 integral digit, followed by a number
- * of fractional digits, followed by an "e" which denotes exponentiation, followed digits
- * which give the power of 10 in the exponent. Note that if you specify a maximum number
- * of integral digits, the formatter with a standard style will give you standard 
- * formatting for smaller numbers and scientific notation for larger numbers. The default
- * is standard style if this is not specified. 
- * </ul>
- * 
- * @constructor
- * @param {Object.<string,*>} options A set of options that govern how the formatter will behave 
- */
-ilib.NumFmt = function (options) {
-	this.locale = new ilib.Locale();
-	this.type = "number";
-	
-	if (options) {
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-		}
-		
-		if (options.type) {
-			if (options.type === 'number' || 
-				options.type === 'currency' || 
-				options.type === 'percentage') {
-				this.type = options.type;
-			}
-		}
-		
-		if (options.currency) {
-			this.currency = options.currency;
-		}
-		
-		if (typeof(options.maxFractionDigits) === 'number') {
-			this.maxFractionDigits = options.maxFractionDigits;
-		}
-		if (typeof(options.minFractionDigits) === 'number') {
-			this.minFractionDigits = options.minFractionDigits;
-		}
-		if (options.style) {
-			this.style = options.style;
-		}
-	}
-	
-	this.localeInfo = new ilib.LocaleInfo(this.locale);
-	switch (this.type) {
-		case "currency":
-			var templates,
-				curopts = {
-					locale: this.locale
-				};
-			
-			if (this.currency) {
-				curopts.code = this.currency;
-			}
-			
-			this.currencyInfo = new ilib.Currency(curopts);
-			if (this.style !== "common" && this.style !== "iso") {
-				this.style = "common";
-			}
-			
-			if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
-				this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
-			}
-			
-			templates = this.localeInfo.getCurrencyFormats();
-			this.template = new ilib.String(templates[this.style]);
-			this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign(); 
-			break;
-		case "percentage":
-			this.template = new ilib.String(this.localeInfo.getPercentageFormat());
-			break;
-		default:
-			break;
-	}
-	
-	if (this.maxFractionDigits < this.minFractionDigits) {
-		this.minFractionDigits = this.maxFractionDigits;
-	}
-	
-	this.roundingMode = options && options.roundingMode;
-	if (!this.roundingMode) {
-		this.roundingMode = this.localeInfo.getRoundingMode();
-	}
-	if (!this.roundingMode) {
-		this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
-	}
-	if (!this.roundingMode) {
-		this.roundingMode = "halfdown";
-	}
-	
-	// set up the function, so we only have to figure it out once
-	// and not every time we do format()
-	this.round = ilib._roundFnc[this.roundingMode];
-	if (!this.round) {
-		this.roundingMode = "halfdown";
-		this.round = ilib._roundFnc[this.roundingMode];
-	}
-};
-
-/**
- * Return an array of available locales that this formatter can format
- * @returns {Array.<ilib.Locale>|undefined} an array of available locales
- */
-ilib.NumFmt.getAvailableLocales = function () {
-	return undefined;
-};
-
-/**
- * @private
- * @const
- * @type string
- */
-ilib.NumFmt.zeros = "0000000000000000000000000000000000000000000000000000000000000000000000";
-
-
-ilib.NumFmt.prototype = {
-	/*
-	 * @private
-	 */
-	_pad: function (str, length, left) {
-		return (str.length >= length) ? 
-			str : 
-			(left ? 
-				ilib.NumFmt.zeros.substring(0,length-str.length) + str : 
-				str + ilib.NumFmt.zeros.substring(0,length-str.length));  
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num the number to format
-	 * @returns {string} the formatted number 
-	 */
-	_formatScientific: function (num) {
-		if (typeof(this.maxFractionDigits) === 'number') {
-			// if there is fraction digits, round it to the right length first
-			// divide or multiply by 10 by manipulating the exponent so as to
-			// avoid the rounding errors of floating point numbers
-			var e, 
-				factor,
-				str = num.toExponential(),
-				parts = str.split("e"),
-				significant = parts[0];
-			
-			e = parts[1];	
-			factor = Math.pow(10, this.maxFractionDigits);
-			significant = this.round(significant * factor) / factor;
-			return "" + significant + "e" + e;
-		} else {
-			return num.toExponential(this.minFractionDigits);
-		}
-	},
-	
-	/**
-	 * @private 
-	 * @param {number} num the number to format
-	 * @returns {string} the formatted number
-	 */ 
-	_formatStandard: function (num) {
-		var i;
-		
-		// console.log("_formatNumberStandard: formatting number " + num);
-		if (this.maxFractionDigits > -1) {
-			var factor = Math.pow(10, this.maxFractionDigits);
-			num = this.round(num * factor) / factor;
-		}
-
-		var parts = ("" + num).split("."),
-			integral = parts[0],
-			fraction = parts[1],
-			cycle, 
-			groupSize = this.localeInfo.getGroupingDigits(),
-			formatted;
-		
-		if (this.minFractionDigits > 0) {
-			fraction = this._pad(fraction || "", this.minFractionDigits, false);
-		}
-
-		if (groupSize > 0) {
-			cycle = ilib.mod(integral.length-1, groupSize);
-			formatted = "";
-			for (i = 0; i < integral.length-1; i++) {
-				formatted += integral.charAt(i);
-				if (cycle === 0) {
-					formatted += this.localeInfo.getGroupingSeparator();
-				}
-				cycle = ilib.mod(cycle - 1, groupSize);
-			}
-			formatted += integral.charAt(integral.length-1);
-		} else {
-			formatted = integral;
-		}
-		
-		if (fraction && (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits > 0)) {
-			formatted += this.localeInfo.getDecimalSeparator();
-			formatted += fraction;
-		}
-		
-		// console.log("_formatNumberStandard: returning " + formatted);
-		return formatted;
-	},
-	
-	/**
-	 * Format a number according to the settings of this number formatter instance.
-	 * @param num {number|ilib.Number} a floating point number to format
-	 * @returns {string} a string containing the formatted number
-	 */
-	format: function (num) {
-		var formatted, n;
-
-		n = (typeof(num) === 'object') ? num.value() : num;
-		if (this.type === "number") {
-			formatted = (this.style === "scientific") ? 
-					this._formatScientific(n) : 
-					this._formatStandard(n);
-		} else {			
-			formatted = this.template.format({n: this._formatStandard(n), s: this.sign});
-		}
-		
-		return formatted;
-	},
-	
-	/*
-	parse: function (numString) {
-	},
-	*/
-	
-	/**
-	 * Return the type of formatter. Valid values are "number", "currency", and
-	 * "percentage".
-	 * 
-	 * @returns {string} the type of formatter
-	 */
-	getType: function () {
-		return this.type;
-	},
-	
-	/**
-	 * Return the locale for this formatter instance.
-	 * @returns {ilib.Locale} the locale instance for this formatter
-	 */
-	getLocale: function () {
-		return this.locale;
-	},
-	
-	/**
-	 * Returns true if this formatter groups together digits in the integral 
-	 * portion of a number, based on the options set up in the constructor. In 
-	 * most western European cultures, this means separating every 3 digits 
-	 * of the integral portion of a number with a particular character.
-	 * 
-	 * @returns {boolean} true if this formatter groups digits in the integral
-	 * portion of the number
-	 */
-	isGroupingUsed: function () {
-		return (this.localeInfo.getGroupingSeparator() !== 'undefined');
-	},
-	
-	/**
-	 * Returns the maximum fraction digits set up in the constructor.
-	 * 
-	 * @returns {number} the maximum number of fractional digits this
-	 * formatter will format, or -1 for no maximum
-	 */
-	getMaxFractionDigits: function () {
-		return typeof(this.maxFractionDigits) !== 'undefined' ? this.maxFractionDigits : -1;
-	},
-	
-	/**
-	 * Returns the minimum fraction digits set up in the constructor. If
-	 * the formatter has the type "currency", then the minimum fraction
-	 * digits is the amount of digits that is standard for the currency
-	 * in question unless overridden in the options to the constructor.
-	 * 
-	 * @returns {number} the minimum number of fractional digits this
-	 * formatter will format, or -1 for no minimum
-	 */
-	getMinFractionDigits: function () {
-		return typeof(this.minFractionDigits) !== 'undefined' ? this.minFractionDigits : -1;
-	},
-
-	/**
-	 * Returns the ISO 4217 code for the currency that this formatter formats.
-	 * IF the typeof this formatter is not "currency", then this method will
-	 * return undefined.
-	 * 
-	 * @returns {string} the ISO 4217 code for the currency that this formatter
-	 * formats, or undefined if this not a currency formatter
-	 */
-	getCurrency: function () {
-		return this.currencyInfo && this.currencyInfo.getCode();
-	},
-	
-	/**
-	 * Returns the rounding mode set up in the constructor. The rounding mode
-	 * controls how numbers are rounded when the integral or fraction digits 
-	 * of a number are limited.
-	 * 
-	 * @returns {string} the name of the rounding mode used in this formatter
-	 */
-	getRoundingMode: function () {
-		return this.roundingMode;
-	},
-	
-	/**
-	 * If this formatter is a currency formatter, then the style determines how the
-	 * currency is denoted in the formatted output. This method returns the style
-	 * that this formatter will produce. (See the constructor comment for more about
-	 * the styles.)
-	 * @returns {string} the name of the style this formatter will use to format
-	 * currency amounts, or "undefined" if this formatter is not a currency formatter
-	 */
-	getStyle: function () {
-		return this.style;
-	}
-};
-
-
-
-/*
- * transliterate.js - A class that can map strings from one script to another
- * 
- * Copyright © 2012, JEDL Software, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/*
-!depends 
-ilibglobal.js 
-locale.js 
-strings.js 
-resources.js 
-*/
-
-// !data translit
-
-/**
- * @class
- * 
- * Create a transliterator instance. A transliterator maps text written in one script
- * to text written in another script. Do not confuse transliteration with 
- * translation, which converts the
- * meaning of text from one language to another. The result of a transliteration is still 
- * written in
- * the source language, but with a different, and possibly non-native set of characters.
- * Transliteration is used for example to map the names of places or people to the
- * character set used in a different language so that those names can be pronounced.<p>
- * 
- * The options may contain any of the following properties:
- * 
- * <ul>
- * <li><i>locale</i> - target locale to use when choosing a transliteration. Locales affect
- * transliteration because transliteration mappings are often based on pronunciation,
- * which differs between locales. If the target locale is
- * not specified, then the default locale of the app or web page will be used.
- * 
- * <li><i>sourceScript</i> - name of the script that the source text is written in. The
- * value may be a name of a script or the word "any" to indicate that any transliteration
- * that maps multiple source scripts is acceptable.
- * 
- * <li><i>targetScript</i> - name of the script that the target text should be written in.
- * If this property is not specified, the default is "latin" for Latin characters.
- * 
- * <li><i>mapping</i> - the name of the transliteration mapping to use. Often, different
- * linguists have come up with different ways of representing the sounds of a
- * foreign language using the script of their own language, and standards have been
- * created based on these. This transliterator class can support any mapping, and sometimes 
- * multiple mappings are available between two scripts. For example, 
- * Chinese characters can be mapped to Latin characters using the Hanyu Pinyin mappings or
- * via the Wade-Giles mappings. If the mapping name is not specified, the default 
- * transliteration from the source script to the target script is chosen. One
- * of the "sourceScript"/"targetScript" pair or the "mapping" property must be given or else
- * the constructor will throw an exception. If a mapping name is given to a mapping that
- * supports multiple source scripts, and a source script name is specified, then only 
- * characters that are in the given source script are mapped, even though the mapping can 
- * support other scripts. The static function getMappings() can
- * return an array of the names of all mappings currently known to the transliterator code.
- * 
- * <li><i>unmapped</i> - options to control how the transliteration proceeds when it 
- * encounters characters that have no mapping in the transliteration. This may be 
- * any of the following values:
- * <ul>
- * <li><i>skip</i> - skip any characters in the source string that do not have any mappings.
- * They are not copied to the target string.
- * <li><i>copy</i> - copy any characters in the source string that do not have any mappings
- * to the target string unchanged
- * <li><i>question</i> - replace any source characters in the source string that do not 
- * have a mapping with place holder question marks in the target string.
- * </ul>
- * The default options if this property is not specified is encoded in the mapping itself. That
- * is, different mappings can specify their own default unless overriden by this property.
- * </ul>
- * 
- * @constructor
- * @param {Object} options options governing the way this transliterator instance functions
- */
-ilib.Translit = function (options) {
-	var arr, i, bad, res, formats, type;
-	
-	this.locale = new ilib.Locale();
-	this.unmapped = "copy";
-	
-	if (options) {
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-		}
-		
-		if (options.sourceScript) {
-			this.sourceScript = options.sourceScript;
-		}
-		if (options.targetScript) {
-			this.targetScript = options.targetScript;
-		}
-
-		if (options.mapping) {
-			this.mappingName = options.mapping;
-		}
-		
-		if (options.unmapped) {
-			if (options.unmapped === 'skip' ||
-				options.unmapped === 'copy' ||
-				options.unmapped === 'question') {
-				this.unmapped = options.unmapped;
-			}
-		}
-	}
-	// TODO: put config code here
-};
-
-/**
- * @static
- * Return an array of all known mapping names.
- * 
- * @returns {Array.<string>} an array of all known mapping names
- */
-ilib.Translit.getMappings = function() {
-	return [];
-};
-
-ilib.Translit.prototype = {
-	/**
-	 * Return the target locale used with this formatter instance.
-	 * @returns {ilib.Locale} the ilib.Locale instance of the target of this formatter
-	 */
-	getLocale: function() {
-		return this.locale;
-	},
-	
-	/**
-	 * Return the source script used with this transliterator instance.
-	 * @returns {string} the name of the source script of this transliterator
-	 */
-	getSourceScript: function() {
-		return this.sourceScript;
-	},
-	
-	/**
-	 * Return a string that names how this transliterator handles unmapped source
-	 * characters.
-	 * @returns {string} the name of the method of handling unmapped strings
-	 */
-	getUnmapped: function() {
-		return this.unmapped;
-	},
-	
-	/**
-	 * Return the name of the mapping used in this transliterator.
-	 * @returns {string} the name of the mapping for this transliterator
-	 */
-	getMappingName: function() {
-		return this.mappingName;
-	},
-	
-	/**
-	 * Transliterate the source string and return a transliterated string.
-	 * @returns {string} the transliterated string
-	 */
-	transliterate: function(source) {
-		// TODO: make this work!
-		return source;
-	}
-};
-
-/*
- * durfmt.js - Date formatter definition
- * 
- * Copyright © 2012, JEDL Software, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-/*
-!depends 
-ilibglobal.js 
-locale.js 
-date.js 
-strings.js 
-resources.js 
-localeinfo.js
-*/
-
-// !data dateformats sysres
-// !resbundle sysres
-
-/**
- * @class
- * 
- * Create a new duration formatter instance. The duration formatter is immutable once
- * it is created, but can format as many different durations as needed with the same
- * options. Create different duration formatter instances for different purposes
- * and then keep them cached for use later if you have more than one duration to
- * format.<p>
- * 
- * Duration formatters format lengths of time. The duration formatter is meant to format 
- * durations of such things as the length of a song or a movie or a meeting, or the 
- * current position in that song or movie while playing it. If you wish to format a 
- * period of time that has a specific start and end date/time, then use a
- * [ilib.DateRngFmt] instance instead and call its format method.<p>
- *  
- * The options may contain any of the following properties:
- * 
- * <ul>
- * <li><i>locale</i> - locale to use when formatting the duration. If the locale is
- * not specified, then the default locale of the app or web page will be used.
- * 
- * <li><i>length</i> - Specify the length of the format to use. The length is the approximate size of the 
- * formatted string.
- * 
- * <ul>
- * <li><i>short</i> - use a short representation of the duration. This is the most compact format possible for the locale. eg. 1y 1m 1w 1d 1:01:01
- * <li><i>medium</i> - use a medium length representation of the duration. This is a slightly longer format. eg. 1 yr 1 mo 1 wk 1 dy 1 hr 1 mi 1 se
- * <li><i>long</i> - use a long representation of the duration. This is a fully specified format, but some of the textual 
- * parts may still be abbreviated. eg. 1 yr 1 mo 1 wk 1 day 1 hr 1 min 1 sec
- * <li><i>full</i> - use a full representation of the duration. This is a fully specified format where all the textual 
- * parts are spelled out completely. eg. 1 year, 1 month, 1 week, 1 day, 1 hour, 1 minute and 1 second
- * </ul>
- * 
- * <li><i>style<i> - whether hours, minutes, and seconds should be formatted as a text string
- * or as a regular time as on a clock. eg. text is "1 hour, 15 minutes", whereas clock is "1:15:00". Valid
- * values for this property are "text" or "clock". Default if this property is not specified
- * is "text".
- * </ul>
- * 
- * @constructor
- * @param {?Object} options options governing the way this date formatter instance works
- */
-ilib.DurFmt = function(options) {
-	this.locale = new ilib.Locale();
-	this.length = "short";
-	this.style = "text";
-	
-	if (options) {
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-		}
-		
-		if (options.length) {
-			if (options.length === 'short' ||
-				options.length === 'medium' ||
-				options.length === 'long' ||
-				options.length === 'full') {
-				this.length = options.length;
-			}
-		}
-		
-		if (options.style) {
-			if (options.style === 'text' || options.style === 'clock') {
-				this.style = options.style;
-			}
-		}
-	}
-	
-	this.locinfo = new ilib.LocaleInfo(this.locale);
-	var sysres = new ilib.ResBundle({
-		locale: this.locale,
-		name: "sysres"
-	});
-	
-	switch (this.length) {
-		case 'short':
-			this.components = {
-				year: sysres.getString("#{num}y"),
-				month: sysres.getString("#{num}m", "durationShortMonths"),
-				week: sysres.getString("#{num}w"),
-				day: sysres.getString("#{num}d"),
-				hour: sysres.getString("#{num}h"),
-				minute: sysres.getString("#{num}m", "durationShortMinutes"),
-				second: sysres.getString("#{num}s"),
-				millisecond: sysres.getString("#{num}m", "durationShortMillis"),
-				separator: sysres.getString(" ", "separatorShort"),
-				finalSeparator: "" // not used at this length
-			};
-			break;
-			
-		case 'medium':
-			this.components = {
-				year: sysres.getString("1#1 yr|#{num} yrs"),
-				month: sysres.getString("1#1 mo|#{num} mos"),
-				week: sysres.getString("1#1 wk|#{num} wks"),
-				day: sysres.getString("1#1 dy|#{num} dys"),
-				hour: sysres.getString("1#1 hr|#{num} hrs"),
-				minute: sysres.getString("1#1 mi|#{num} min"),
-				second: sysres.getString("1#1 se|#{num} sec"),
-				millisecond: sysres.getString("#{num} ms"),
-				separator: sysres.getString(" ", "separatorMedium"),
-				finalSeparator: "" // not used at this length
-			};
-			break;
-			
-		case 'long':
-			this.components = {
-				year: sysres.getString("1#1 yr|#{num} yrs"),
-				month: sysres.getString("1#1 mon|#{num} mons"),
-				week: sysres.getString("1#1 wk|#{num} wks"),
-				day: sysres.getString("1#1 day|#{num} days"),
-				hour: sysres.getString("1#1 hr|#{num} hrs"),
-				minute: sysres.getString("1#1 min|#{num} min"),
-				second: sysres.getString("1#1 sec|#{num} sec"),
-				millisecond: sysres.getString("#{num} ms"),
-				separator: sysres.getString(", ", "separatorLong"),
-				finalSeparator: "" // not used at this length
-			};
-			break;
-			
-		case 'full':
-			this.components = {
-				year: sysres.getString("1#1 year|#{num} years"),
-				month: sysres.getString("1#1 month|#{num} months"),
-				week: sysres.getString("1#1 week|#{num} weeks"),
-				day: sysres.getString("1#1 day|#{num} days"),
-				hour: sysres.getString("1#1 hour|#{num} hours"),
-				minute: sysres.getString("1#1 minute|#{num} minutes"),
-				second: sysres.getString("1#1 second|#{num} seconds"),
-				millisecond: sysres.getString("1#1 millisecond|#{num} milliseconds"),
-				separator: sysres.getString(", ", "separatorFull"),
-				finalSeparator: sysres.getString(" and ", "finalSeparatorFull")
-			};
-			break;
-	}
-	
-	if (this.style === 'clock') {
-		this.timeFmtMS = new ilib.DateFmt({
-			locale: this.locale,
-			type: "time",
-			time: "ms"
-		});
-		this.timeFmtHM = new ilib.DateFmt({
-			locale: this.locale,
-			type: "time",
-			time: "hm"
-		});
-		this.timeFmtHMS = new ilib.DateFmt({
-			locale: this.locale,
-			type: "time",
-			time: "hms"
-		});
-	}
-};
-
-/**
- * @private
- * @static
- */
-ilib.DurFmt.complist = {
-	"text": ["year", "month", "week", "day", "hour", "minute", "second", "millisecond"],
-	"clock": ["year", "month", "week", "day"]
-};
-
-/**
- * Format a duration according to the format template of this formatter instance.<p>
- * 
- * The components parameter should be an object that contains any or all of these 
- * numeric properties:
- * 
- * <ul>
- * <li>year
- * <li>month
- * <li>week
- * <li>day
- * <li>hour
- * <li>minute
- * <li>second
- * </ul>
- * <p>
- *
- * When a property is left out of the components parameter or has a value of 0, it will not
- * be formatted into the output string, except for times that include 0 minutes and 0 seconds.
- * 
- * This formatter will not ensure that numbers for each component property is within the
- * valid range for that component. This allows you to format durations that are longer
- * than normal range. For example, you could format a duration has being "33 hours" rather
- * than "1 day, 9 hours".
- * 
- * @param {Object} components date/time components to be formatted into a duration string
- * @returns {ilib.String} a string with the duration formatted according to the style and 
- * locale set up for this formatter instance. If the components parameter is empty or 
- * undefined, an empty string is returned.
- */
-ilib.DurFmt.prototype.format = function (components) {
-	var i, list, temp, fmt, str = "";
-	
-	list = ilib.DurFmt.complist[this.style];
-	for (i = 0; i < list.length; i++) {
-		//console.log("Now dealing with " + list[i]);
-		if (typeof(components[list[i]]) !== 'undefined') {
-			if (str.length > 0) {
-				str += (this.length === 'full' && i >= list.length-1) ? this.components.finalSeparator : this.components.separator;
-			}
-			str += this.components[list[i]].formatChoice(components[list[i]], {num: components[list[i]]});
-		}
-	}
-
-	if (this.style === 'clock') {
-		if (typeof(components.hour) !== 'undefined') {
-			fmt = (typeof(components.second) !== 'undefined') ? this.timeFmtHMS : this.timeFmtHM;
-		} else {
-			fmt = this.timeFmtMS;
-		}
-				
-		if (str.length > 0) {
-			str += this.components.separator;
-		}
-		str += fmt._formatTemplate(components, fmt.templateArr);
-	}
-	
-	return new ilib.String(str);
-};
-
-/**
- * Return the locale that was used to construct this duration formatter object. If the
- * locale was not given as parameter to the constructor, this method returns the default
- * locale of the system.
- * 
- * @returns {ilib.Locale} locale that this duration formatter was constructed with
- */
-ilib.DurFmt.prototype.getLocale = function () {
-	return this.locale;
-};
-
-/**
- * Return the length that was used to construct this duration formatter object. If the
- * length was not given as parameter to the constructor, this method returns the default
- * length. Valid values are "short", "medium", "long", and "full".
- * 
- * @returns {string} length that this duration formatter was constructed with
- */
-ilib.DurFmt.prototype.getLength = function () {
-	return this.length;
-};
-
-/**
- * Return the style that was used to construct this duration formatter object. Returns
- * one of "text" or "clock".
- * 
- * @returns {string} style that this duration formatter was constructed with
- */
-ilib.DurFmt.prototype.getStyle = function () {
-	return this.style;
 };
 
 /*
@@ -15090,7 +16622,10 @@ ilib.DurFmt.prototype.getStyle = function () {
 // !depends ctype.js ctype.isalpha.js ctype.isdigit.js
 
 /**
- * Return whether or not the first character is alphabetic or numeric.
+ * Return whether or not the first character is alphabetic or numeric.<p>
+ * 
+ * Depends directive: !depends ctype.isalnum.js
+ * 
  * @param {string} ch character to examine
  * @return {boolean} true if the first character is alphabetic or numeric
  */
@@ -15122,10 +16657,13 @@ ilib.CType.isAlnum = function isAlnum(ch) {
 // !data ctype
 
 /**
-	 * Return whether or not the first character is in the ASCII range.
-	 * @param {string} ch character to examine
-	 * @return {boolean} true if the first character is in the ASCII range.
-	 */
+ * Return whether or not the first character is in the ASCII range.<p>
+ * 
+ * Depends directive: !depends ctype.isascii.js
+ * 
+ * @param {string} ch character to examine
+ * @return {boolean} true if the first character is in the ASCII range.
+ */
 ilib.CType.isAscii = function (ch) {
 	return ilib.CType._inRange(ch, 'ascii', ilib.data.ctype);
 };
@@ -15154,7 +16692,10 @@ ilib.CType.isAscii = function (ch) {
 // !data ctype
 
 /**
- * Return whether or not the first character is a blank character.
+ * Return whether or not the first character is a blank character.<p>
+ * 
+ * Depends directive: !depends ctype.isblank.js
+ * 
  * ie. a space or a tab.
  * @param {string} ch character to examine
  * @return {boolean} true if the first character is a blank character.
@@ -15722,7 +17263,10 @@ ilib.data.ctype_c = {
 // !data ctype_c
 
 /**
- * Return whether or not the first character is a control character.
+ * Return whether or not the first character is a control character.<p>
+ * 
+ * Depends directive: !depends ctype.iscntrl.js
+ * 
  * @param {string} ch character to examine
  * @return {boolean} true if the first character is a control character.
  */
@@ -15753,13 +17297,56 @@ ilib.CType.isCntrl = function (ch) {
 
 /**
  * Return whether or not the first character is any printable character
- * other than space.
+ * other than space.<p>
+ * 
+ * Depends directive: !depends ctype.isgraph.js
+ * 
  * @param {string} ch character to examine
  * @return {boolean} true if the first character is any printable character
  * other than space. 
  */
 ilib.CType.isGraph = function (ch) {
 	return typeof(ch) !== 'undefined' && ch.length > 0 && !ilib.CType.isSpace(ch) && !ilib.CType.isCntrl(ch);
+};
+
+/*
+ * ctype.js - Character type definitions
+ * 
+ * Copyright © 2012, JEDL Software, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends ctype.js
+
+// !data ctype
+
+/**
+ * Return whether or not the first character is an ideographic character.<p>
+ * 
+ * Depends directive: !depends ctype.isideo.js
+ * 
+ * @param {string} ch character to examine
+ * @return {boolean} true if the first character is an ideographic character.
+ */
+ilib.CType.isIdeo = function (ch) {
+	return ilib.CType._inRange(ch, 'cjk', ilib.data.ctype) ||
+		ilib.CType._inRange(ch, 'cjkradicals', ilib.data.ctype) ||
+		ilib.CType._inRange(ch, 'enclosedcjk', ilib.data.ctype) ||
+		ilib.CType._inRange(ch, 'cjkpunct', ilib.data.ctype) ||
+		ilib.CType._inRange(ch, 'cjkcompatibility', ilib.data.ctype);
+	
 };
 
 /*
@@ -15788,7 +17375,10 @@ ilib.CType.isGraph = function (ch) {
 /**
  * Return whether or not the first character is lower-case. For alphabetic
  * characters in scripts that do not make a distinction between upper- and 
- * lower-case, this function always returns true.
+ * lower-case, this function always returns true.<p>
+ * 
+ * Depends directive: !depends ctype.islower.js
+ * 
  * @param {string} ch character to examine
  * @return {boolean} true if the first character is lower-case.
  */
@@ -15819,7 +17409,10 @@ ilib.CType.isLower = function (ch) {
 
 /**
  * Return whether or not the first character is any printable character,
- * including space.
+ * including space.<p>
+ * 
+ * Depends directive: !depends ctype.isprint.js
+ * 
  * @param {string} ch character to examine
  * @return {boolean} true if the first character is printable.
  */
@@ -16180,7 +17773,10 @@ ilib.data.ctype_p = {
 // !data ctype_p
 
 /**
- * Return whether or not the first character is punctuation.
+ * Return whether or not the first character is punctuation.<p>
+ * 
+ * Depends directive: !depends ctype.isprint.js
+ * 
  * @param {string} ch character to examine
  * @return {boolean} true if the first character is punctuation.
  */
@@ -16220,7 +17816,10 @@ ilib.CType.isPunct = function (ch) {
 /**
  * Return whether or not the first character is upper-case. For alphabetic
  * characters in scripts that do not make a distinction between upper- and 
- * lower-case, this function always returns true.
+ * lower-case, this function always returns true.<p>
+ * 
+ * Depends directive: !depends ctype.isupper.js
+ * 
  * @param {string} ch character to examine
  * @return {boolean} true if the first character is upper-case.
  */
@@ -16253,7 +17852,10 @@ ilib.CType.isUpper = function (ch) {
 
 /**
  * Return whether or not the first character is a hexadecimal digit written
- * in the Latin script. (0-9 or A-F)
+ * in the Latin script. (0-9 or A-F)<p>
+ * 
+ * Depends directive: !depends ctype.isxdigit.js
+ * 
  * @param {string} ch character to examine
  * @return {boolean} true if the first character is a hexadecimal digit written
  * in the Latin script.
@@ -16262,9 +17864,8 @@ ilib.CType.isXdigit = function (ch) {
 	return ilib.CType._inRange(ch, 'xdigit', ilib.data.ctype);
 };
 
-/*
- * ilib.js - metafile that includes all other js files
- * 
+/**
+ * @license
  * Copyright © 2012, JEDL Software, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16281,14 +17882,13 @@ ilib.CType.isXdigit = function (ch) {
  * limitations under the License.
  */
 
+/*
+ * ilib.js - metafile that includes all other js files
+ */
+
 /* !depends
 ilibglobal.js
-phoneprs.js
-charnorm.js
-addressprs.js
 daterangefmt.js
-collate.js
-phonefmt.js
 date.js
 calendar/hebrewdate.js
 calendar/hebrew.js
@@ -16296,25 +17896,14 @@ calendar/islamic.js
 calendar/islamicdate.js
 calendar/julian.js
 calendar/juliandate.js
-calendar/chinesedate.js
-calendar/chinese.js
 calendar/gregorian.js
 calendar/gregoriandate.js
-calendar/japanese.js
-calendar/japanesedate.js
 numprs.js
-addressfmt.js
-dateprs.js
-namefmt.js
 numfmt.js
-phone/plan.js
-nameprs.js
 julianday.js
-charset.js
 datefmt.js
 calendar.js
 util/utils.js
-transliterate.js
 locale.js
 strings.js
 durfmt.js

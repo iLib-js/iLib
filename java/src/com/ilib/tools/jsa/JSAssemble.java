@@ -26,9 +26,10 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 
 import org.apache.log4j.Logger;
+
+import com.ilib.IlibLocale;
 
 /**
  * JSAssemble
@@ -41,10 +42,6 @@ public class JSAssemble
     public static FilenameFilter filter = new JsFilenameFilter();
     protected static ArrayList<File> ipath;
      
-    public class JsFilter
-    {
-    }
-    
     public static void usage()
     {
         System.out.println("jsa: process includes to assemble a single js file");
@@ -85,7 +82,7 @@ public class JSAssemble
         AssemblyFile file;
         Writer out = null;
         String localesString = null;
-        ArrayList<Locale> locales = new ArrayList<Locale>();
+        ArrayList<IlibLocale> locales = new ArrayList<IlibLocale>();
         
         logger = Logger.getLogger(JSAssemble.class.toString());
         
@@ -150,15 +147,9 @@ public class JSAssemble
         }
         
         if (localesString != null) {
-        	String[] parts;
         	String[] locs = localesString.split(",");
-        	Locale locale;
         	for ( i = 0; i < locs.length; i++ ) {
-        		parts = locs[i].split("-");
-        		locale = parts.length > 2 ? new Locale(parts[0], parts[1], parts[2]) : 
-        		         (parts.length > 1 ? new Locale(parts[0], parts[1]) : 
-        		             new Locale(parts[0])); 
-        		locales.add(locale);
+        		locales.add(new IlibLocale(locs[i]));
         	}
         }
         
@@ -175,7 +166,7 @@ public class JSAssemble
             for ( i = 0; i < files.size(); i++ ) {
                 file = files.get(i);
                 logger.info("Writing dependencies for file " + file.getPath());
-                file.writeParents(out, new ArrayList<String>());
+                file.writeParents(out, new ArrayList<String>(), locales);
             }
         } catch ( Exception e ) {
             logger.error("Cannot write to file " + target);

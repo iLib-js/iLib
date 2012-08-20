@@ -22,9 +22,10 @@ import java.io.FileNotFoundException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 
 import org.apache.log4j.Logger;
+
+import com.ilib.IlibLocale;
 
 /**
  *
@@ -42,7 +43,7 @@ public class JSONFile
 	}
 	
 	@Override
-	public void process(ArrayList<File> includePath, ArrayList<Locale> locales,
+	public void process(ArrayList<File> includePath, ArrayList<IlibLocale> locales,
 			HashMap<String, AssemblyFile> allFiles) throws Exception 
 	{
 	    logger.debug("Processing file " + file.getPath());
@@ -51,7 +52,7 @@ public class JSONFile
 	}
 
 	@Override
-	public void writeParents(Writer out, ArrayList<String> visited)
+	public void writeParents(Writer out, ArrayList<String> visited, ArrayList<IlibLocale> locales)
 			throws Exception 
 	{
         int i, j;
@@ -73,16 +74,16 @@ public class JSONFile
        
         // recursively find the the source node
         for ( i = 0; i < parents.size(); i++ ) {
-            parents.get(i).writeParents(out, visited);
+            parents.get(i).writeParents(out, visited, locales);
         }
 
         // start with a new visited array to catch circular dependencies
         // starting at this source node
-        writeDependencies(out, new ArrayList<String>());
+        writeDependencies(out, new ArrayList<String>(), locales);
 	}
 
 	@Override
-	public void writeDependencies(Writer out, ArrayList<String> visited)
+	public void writeDependencies(Writer out, ArrayList<String> visited, ArrayList<IlibLocale> locales)
 			throws Exception 
 	{
         int i;
@@ -108,7 +109,7 @@ public class JSONFile
 
         // do the dependencies first before the contents of this node
         for ( i = 0; i < dependencies.size(); i++ ) {
-            dependencies.get(i).writeDependencies(out, visited);
+            dependencies.get(i).writeDependencies(out, visited, locales);
         }
 
         StringBuffer str;

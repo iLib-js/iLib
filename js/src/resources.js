@@ -34,12 +34,15 @@
  * <li><i>name</i> - Base name of the resource bundle to load. If not specified the default
  * base name is "resources".
  * <li><i>type</i> - Name the type of strings this bundle contains. Valid values are 
- * "xml", "html", or "text". The default is "text". If the type is "xml" or "html",
- * then entities and tags are not pseudo-translated. During a real translation, 
+ * "xml", "html", "text", or "raw". The default is "text". If the type is "xml" or "html",
+ * then XML/HTML entities and tags are not pseudo-translated. During a real translation, 
  * HTML character entities are translated to their corresponding characters in a source
  * string before looking that string up in the translations. Also, the characters "<", ">",
  * and "&" are converted to entities again in the output, but characters are left as they
- * are.
+ * are. If the type is "xml", "html", or "text" types, then the replacement parameter names
+ * are not pseudo-translated as well so that the output can be used for formatting with 
+ * the ilib.String class. If the type is raw, all characters are pseudo-translated, 
+ * including replacement parameters as well as XML/HTML tags and entities.  
  * <li><i>lengthen</i> - when pseudo-translating the string, tell whether or not to 
  * automatically lengthen the string to simulate "long" languages such as German
  * or French. This is a boolean value. Default is false. 
@@ -92,7 +95,7 @@
  * object. It is up to the web page or app to make sure the JS file that defines
  * the bundle is included before creating the ResBundle instance.<p>
  * 
- * A special locale "xx_XX" is used as the pseudo-translation locale because
+ * A special locale "xx-XX" is used as the pseudo-translation locale because
  * xx and XX are not a valid ISO language or country specifiers. 
  * Pseudo-translation is a locale where the translations are generated on
  * the fly based on the contents of the source string. Characters in the source 
@@ -141,12 +144,11 @@
  * @param {?Object} options Options controlling how the bundle is created
  */
 ilib.ResBundle = function (options) {
-	var name;
+	var name, lookupLocale;
 	
 	this.locale = new ilib.Locale();	// use the default locale
 	this.baseName = "resources";
 	this.type = "text";
-	this.pseudoLocale = new ilib.Locale("xx-XX"); // for comparison
 	
 	if (options) {
 		if (options.locale) {
@@ -165,22 +167,24 @@ ilib.ResBundle = function (options) {
 	
 	this.map = {};
 
+	lookupLocale = this.locale.isPseudo() ? new ilib.Locale(ilib.getLocale()) : this.locale;
+	
 	name = this.baseName;
 	if (ilib.data[name]) {
 		this.map = ilib.merge(this.map, ilib.data[name]);
 	}
-	if (this.locale.getLanguage()) {
-		name += "_" + this.locale.getLanguage();
+	if (lookupLocale.getLanguage()) {
+		name += "_" + lookupLocale.getLanguage();
 		if (ilib.data[name]) {
 			this.map = ilib.merge(this.map, ilib.data[name]);
 		}
-		if (this.locale.getRegion()) {
-			name += "_" + this.locale.getRegion();		
+		if (lookupLocale.getRegion()) {
+			name += "_" + lookupLocale.getRegion();		
 			if (ilib.data[name]) {
 				this.map = ilib.merge(this.map, ilib.data[name]);
 			}
-			if (this.locale.getVariant()) {
-				name += "_" + this.locale.getVariant();
+			if (lookupLocale.getVariant()) {
+				name += "_" + lookupLocale.getVariant();
 				if (ilib.data[name]) {
 					this.map = ilib.merge(this.map, ilib.data[name]);
 				}
@@ -266,35 +270,43 @@ ilib.ResBundle.prototype = {
 	 * Pseudo-translate a string
 	 */
 	pseudo: function (str) {
+		if (!str) {
+			return undefined;
+		}
 		var ret = "", i;
 		for (i = 0; i < str.length; i++) {
-			if (this.type === "html" || this.type === "xml") {
-				if (str.charAt(i) === '<') {
-					ret += str.charAt(i++);
-					while (i < str.length && str.charAt(i) !== '>') {
+			if (this.type !== "raw") {
+				if (this.type === "html" || this.type === "xml") {
+					if (str.charAt(i) === '<') {
 						ret += str.charAt(i++);
-					}
-					if (i < str.length) {
-						ret += str.charAt(i);
-					}
-				} else if (str.charAt(i) === '&') {
-					ret += str.charAt(i++);
-					while (i < str.length && str.charAt(i) !== ';' && str.charAt(i) !== ' ') {
+						while (i < str.length && str.charAt(i) !== '>') {
+							ret += str.charAt(i++);
+						}
+						if (i < str.length) {
+							ret += str.charAt(i++);
+						}
+					} else if (str.charAt(i) === '&') {
 						ret += str.charAt(i++);
+						while (i < str.length && str.charAt(i) !== ';' && str.charAt(i) !== ' ') {
+							ret += str.charAt(i++);
+						}
+						if (i < str.length) {
+							ret += str.charAt(i++);
+						}
 					}
-					if (i < str.length) {
-						ret += str.charAt(i);
-					}
-				} else if (str.charAt(i) === '{') {
-					ret += str.charAt(i++);
-					while (i < str.length && str.charAt(i) !== '}') {
+				}
+				if (i < str.length) { 
+					if (str.charAt(i) === '{') {
 						ret += str.charAt(i++);
+						while (i < str.length && str.charAt(i) !== '}') {
+							ret += str.charAt(i++);
+						}
+						if (i < str.length) {
+							ret += str.charAt(i);
+						}
+					} else {
+						ret += ilib.ResBundle._pseudoMap[str.charAt(i)] || str.charAt(i);
 					}
-					if (i < str.length) {
-						ret += str.charAt(i);
-					}
-				} else {
-					ret += ilib.ResBundle._pseudoMap[str.charAt(i)] || str.charAt(i);
 				}
 			} else {
 				ret += ilib.ResBundle._pseudoMap[str.charAt(i)] || str.charAt(i);
@@ -361,16 +373,21 @@ ilib.ResBundle.prototype = {
 	 * 
 	 * @param {?string=} source the source string to translate
 	 * @param {?string=} key optional name of the key, if any
-	 * @returns {ilib.String} the translation of the given source/key
+	 * @returns {ilib.String|undefined} the translation of the given source/key or undefined 
+	 * if the translation is not found and the source is undefined 
 	 */
 	getString: function (source, key) {
-		if (this.locale.equals(this.pseudoLocale)) {
-			return this.pseudo(source);
+		if (!source && !key) return undefined;
+		
+		if (this.locale.isPseudo()) {
+			var str = source ? source : this.map[key],
+				ret = this.pseudo(str);
+			return ret ? new ilib.String(ret) : undefined;
 		}
 		
 		var keyName = key || this.makeKey(source);
 		var trans = this.map[keyName] || source;
-		return new ilib.String((this.type === "xml" || this.type === "html") ? this.escape(trans) : trans);
+		return trans === undefined ? undefined : new ilib.String((this.type === "xml" || this.type === "html") ? this.escape(trans) : trans);
 	},
 	
 	/**

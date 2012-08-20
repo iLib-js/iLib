@@ -699,7 +699,8 @@ function testNumFmtPercentageFormatDEWithDecimalAndRounding() {
 
 function testNumFmtCurrencyFormatDefault() {
     var fmt = new ilib.NumFmt({
-        type: "currency"
+        type: "currency",
+        currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -709,7 +710,8 @@ function testNumFmtCurrencyFormatDefault() {
 
 function testNumFmtCurrencyFormatZeroCents() {
     var fmt = new ilib.NumFmt({
-        type: "currency"
+        type: "currency",
+        currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -719,7 +721,8 @@ function testNumFmtCurrencyFormatZeroCents() {
 
 function testNumFmtCurrencyGetType() {
     var fmt = new ilib.NumFmt({
-        type: "currency"
+        type: "currency",
+        currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -729,7 +732,8 @@ function testNumFmtCurrencyGetType() {
 
 function testNumFmtCurrencyGetStyleDefault() {
     var fmt = new ilib.NumFmt({
-        type: "currency"
+        type: "currency",
+        currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -739,7 +743,8 @@ function testNumFmtCurrencyGetStyleDefault() {
 
 function testNumFmtCurrencyFormatDefaultRounding() {
     var fmt = new ilib.NumFmt({
-        type: "currency"
+        type: "currency",
+        currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -750,7 +755,8 @@ function testNumFmtCurrencyFormatDefaultRounding() {
 function testNumFmtCurrencyFormatOverrideMinFraction() {
     var fmt = new ilib.NumFmt({
         type: "currency",
-        minFractionDigits: 5
+        minFractionDigits: 5,
+        currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -761,7 +767,8 @@ function testNumFmtCurrencyFormatOverrideMinFraction() {
 function testNumFmtCurrencyFormatOverrideMaxFraction() {
     var fmt = new ilib.NumFmt({
         type: "currency",
-        maxFractionDigits: 0
+        maxFractionDigits: 0,
+        currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -773,7 +780,8 @@ function testNumFmtCurrencyFormatOverrideMinAndMaxFraction() {
     var fmt = new ilib.NumFmt({
         type: "currency",
         minFractionDigits: 3,
-        maxFractionDigits: 3
+        maxFractionDigits: 3,
+        currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -785,7 +793,8 @@ function testNumFmtCurrencyFormatOverrideMinAndMaxFractionWonky() {
     var fmt = new ilib.NumFmt({
         type: "currency",
         minFractionDigits: 4,
-        maxFractionDigits: 3
+        maxFractionDigits: 3,
+        currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -796,7 +805,8 @@ function testNumFmtCurrencyFormatOverrideMinAndMaxFractionWonky() {
 function testNumFmtCurrencyFormatAlternateStyle() {
     var fmt = new ilib.NumFmt({
         type: "currency",
-        style: "iso"
+        style: "iso",
+        currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -829,7 +839,8 @@ function testNumFmtCurrencyFormatOtherCurrencyIsoStyle() {
 
 function testNumFmtCurrencyGetDefaultFractionDigits() {
     var fmt = new ilib.NumFmt({
-        type: "currency"
+        type: "currency",
+        currency: "USD"
     });
     
     assertNotNull(fmt);
@@ -861,21 +872,27 @@ function testNumFmtCurrencyFormatOtherCurrencyUseDefaultDigits() {
     assertEquals("¥345", fmt.format(345.3));
 }
 
-function testNumFmtCurrencyUseCorrectCurrencyForLocale() {
-    var fmt = new ilib.NumFmt({
-        type: "currency",
-        locale: "ja-JP"
-    });
+function testNumFmtCurrencyNoCurrencyDefaultForLocale() {
+    var fmt;
     
-    assertNotNull(fmt);
-    
-    assertEquals("JPY", fmt.getCurrency());
+    try {
+    	fmt = new ilib.NumFmt({
+	        type: "currency",
+	        locale: "ja-JP"
+	    });
+
+    	fail();
+    } catch (e) {
+    	assertUndefined(fmt);
+    	assertEquals("A currency property is required in the options to the number formatter constructor when the type property is set to currency.", e);
+    }
 }
 
 function testNumFmtCurrencyUseCorrectFractionDigitsForLocale() {
     var fmt = new ilib.NumFmt({
         type: "currency",
-        locale: "ja-JP"
+        locale: "ja-JP",
+        currency: "JPY"
     });
     
     assertNotNull(fmt);
@@ -887,7 +904,8 @@ function testNumFmtCurrencyUseCorrectFractionDigitsForLocale() {
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale() {
     var fmt = new ilib.NumFmt({
         type: "currency",
-        locale: "ja-JP"
+        locale: "ja-JP",
+        currency: "JPY"
     });
     
     assertNotNull(fmt);
@@ -898,7 +916,8 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale() {
 function testNumFmtCurrencyUseCorrectRoundingModeForLocale() {
     var fmt = new ilib.NumFmt({
         type: "currency",
-        locale: "xx-XX"
+        locale: "xx-XX",
+        currency: "USD"
     });
     
     assertNotNull(fmt);

@@ -234,7 +234,38 @@ function testResBundleGetStringOtherBundleesMXslang() {
     assertEquals("Hola de {city} en {country}", rb.getString("Greetings from {city} in {country}").toString());
 }
 
-function testResBundleGetStringOtherBundlePsuedoXml() {
+
+function testResBundleGetStringOtherBundlePsuedoRaw() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "xx-XX",
+        type: "raw"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("Ħëľľõ fŕõm {çõüñţŕÿ}", rb.getString("Hello from {country}").toString());
+    assertEquals("Ħëľľõ fŕõm {çíţÿ}", rb.getString("Hello from {city}").toString());
+    assertEquals("Ĝŕëëţíñğš fŕõm {çíţÿ} íñ {çõüñţŕÿ}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringOtherBundlePsuedoText() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "xx-XX",
+        type: "text"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("Ħëľľõ fŕõm {country}", rb.getString("Hello from {country}").toString());
+    assertEquals("Ħëľľõ fŕõm {city}", rb.getString("Hello from {city}").toString());
+    assertEquals("Ĝŕëëţíñğš fŕõm {city} íñ {country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringOtherBundlePsuedoHtml() {
     var rb = new ilib.ResBundle({
         name: "tester",
         locale: "xx-XX",
@@ -249,7 +280,22 @@ function testResBundleGetStringOtherBundlePsuedoXml() {
     assertEquals("Ĝŕëëţíñğš fŕõm {city} íñ {country}", rb.getString("Greetings from {city} in {country}").toString());
 }
 
-function testResBundleGetStringOtherBundlePsuedoNotXml() {
+function testResBundleGetStringOtherBundlePsuedoXml() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "xx-XX",
+        type: "xml"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("Ħëľľõ fŕõm {country}", rb.getString("Hello from {country}").toString());
+    assertEquals("Ħëľľõ fŕõm {city}", rb.getString("Hello from {city}").toString());
+    assertEquals("Ĝŕëëţíñğš fŕõm {city} íñ {country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringOtherBundlePsuedoDefault() {
     var rb = new ilib.ResBundle({
         name: "tester",
         locale: "xx-XX"
@@ -257,11 +303,13 @@ function testResBundleGetStringOtherBundlePsuedoNotXml() {
     
     assertNotNull(rb);
     
-    // pseudo-izes everything
-    assertEquals("Ħëľľõ fŕõm {çõüñţŕÿ}", rb.getString("Hello from {country}").toString());
+    // should be equivalent to "text" and not pseudo-ize the replacement parameter names
+    assertEquals("Ħëľľõ fŕõm {country}", rb.getString("Hello from {country}").toString());
+    assertEquals("Ħëľľõ fŕõm {city}", rb.getString("Hello from {city}").toString());
+    assertEquals("Ĝŕëëţíñğš fŕõm {city} íñ {country}", rb.getString("Greetings from {city} in {country}").toString());
 }
 
-function testResBundleGetStringMissingBundlePsuedoXml() {
+function testResBundleGetStringMissingBundlePsuedoHtml() {
     var rb = new ilib.ResBundle({
         name: "asdfasdffoobar",
         locale: "xx-XX",
@@ -276,7 +324,7 @@ function testResBundleGetStringMissingBundlePsuedoXml() {
     assertEquals("Ĝŕëëţíñğš fŕõm {city} íñ {country}", rb.getString("Greetings from {city} in {country}").toString());
 }
 
-function testResBundleGetStringPsuedoXmlLengthenShort() {
+function testResBundleGetStringPsuedoHtmlLengthenShort() {
     var rb = new ilib.ResBundle({
         name: "asdfasdffoobar",
         locale: "xx-XX",
@@ -290,7 +338,7 @@ function testResBundleGetStringPsuedoXmlLengthenShort() {
     assertEquals("Ħëľľõ fŕõm Pàŕíš76543210", rb.getString("Hello from Paris").toString());
 }
 
-function testResBundleGetStringPsuedoXmlLengthenMedium() {
+function testResBundleGetStringPsuedoHtmlLengthenMedium() {
     var rb = new ilib.ResBundle({
         name: "asdfasdffoobar",
         locale: "xx-XX",
@@ -304,7 +352,7 @@ function testResBundleGetStringPsuedoXmlLengthenMedium() {
     assertEquals("Ħëľľõ fŕõm Pàŕíš, çíţÿ õf ľíğĥţš09876543210", rb.getString("Hello from Paris, city of lights").toString());
 }
 
-function testResBundleGetStringPsuedoXmlLengthenLong() {
+function testResBundleGetStringPsuedoHtmlLengthenLong() {
     var rb = new ilib.ResBundle({
         name: "asdfasdffoobar",
         locale: "xx-XX",
@@ -330,15 +378,28 @@ function testResBundleGetStringPsuedoLeaveHTMLTags() {
     assertEquals("Ħëľľõ fŕõm <a href='url'>{city}</a>", rb.getString("Hello from <a href='url'>{city}</a>").toString());
 }
 
-function testResBundleGetStringPsuedoLeaveHTMLTagsNotHtml() {
+function testResBundleGetStringPsuedoNotLeaveHTMLTagsRaw() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX"
+        locale: "xx-XX",
+        type: "raw"
     });
     
     assertNotNull(rb);
     
     assertEquals("Ħëľľõ fŕõm <à ĥŕëf='üŕľ'>{çíţÿ}</à>", rb.getString("Hello from <a href='url'>{city}</a>").toString());
+}
+
+function testResBundleGetStringPsuedoNotLeaveHTMLTagsText() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "xx-XX",
+        type: "text"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("Ħëľľõ fŕõm <à ĥŕëf='üŕľ'>{city}</à>", rb.getString("Hello from <a href='url'>{city}</a>").toString());
 }
 
 function testResBundleGetStringPsuedoLeaveHTMLEntities() {
@@ -353,15 +414,109 @@ function testResBundleGetStringPsuedoLeaveHTMLEntities() {
     assertEquals("Ħëľľõ fŕõm {city} &amp; {country}", rb.getString("Hello from {city} &amp; {country}").toString());
 }
 
-function testResBundleGetStringPsuedoLeaveHTMLEntitiesNotHtml() {
+function testResBundleGetStringPsuedoNotLeaveHTMLEntitiesRaw() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX"
+        locale: "xx-XX",
+        type: "raw"
     });
     
     assertNotNull(rb);
     
     assertEquals("Ħëľľõ fŕõm {çíţÿ} &àmþ; {çõüñţŕÿ}", rb.getString("Hello from {city} &amp; {country}").toString());
+}
+
+function testResBundleGetStringPsuedoNotLeaveHTMLEntitiesText() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "xx-XX",
+        type: "text"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("Ħëľľõ fŕõm {city} &àmþ; {country}", rb.getString("Hello from {city} &amp; {country}").toString());
+}
+
+function testResBundleGetStringMissingBundlePsuedoXml() {
+    var rb = new ilib.ResBundle({
+        name: "asdfasdffoobar",
+        locale: "xx-XX",
+        type: "xml"
+    });
+    
+    assertNotNull(rb);
+    
+    // should still pseudo-translate, despite having no translations
+    assertEquals("Ħëľľõ fŕõm {country}", rb.getString("Hello from {country}").toString());
+    assertEquals("Ħëľľõ fŕõm {city}", rb.getString("Hello from {city}").toString());
+    assertEquals("Ĝŕëëţíñğš fŕõm {city} íñ {country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringPsuedoXmlLengthenShort() {
+    var rb = new ilib.ResBundle({
+        name: "asdfasdffoobar",
+        locale: "xx-XX",
+        type: "xml",
+        lengthen: true
+    });
+    
+    assertNotNull(rb);
+    
+    // short: increase by 50%
+    assertEquals("Ħëľľõ fŕõm Pàŕíš76543210", rb.getString("Hello from Paris").toString());
+}
+
+function testResBundleGetStringPsuedoXmlLengthenMedium() {
+    var rb = new ilib.ResBundle({
+        name: "asdfasdffoobar",
+        locale: "xx-XX",
+        type: "xml",
+        lengthen: true
+    });
+    
+    assertNotNull(rb);
+    
+    // short: increase by 33%
+    assertEquals("Ħëľľõ fŕõm Pàŕíš, çíţÿ õf ľíğĥţš09876543210", rb.getString("Hello from Paris, city of lights").toString());
+}
+
+function testResBundleGetStringPsuedoXmlLengthenLong() {
+    var rb = new ilib.ResBundle({
+        name: "asdfasdffoobar",
+        locale: "xx-XX",
+        type: "xml",
+        lengthen: true
+    });
+    
+    assertNotNull(rb);
+    
+    // short: increase by 20%
+    assertEquals("Ħëľľõ fŕõm Pàŕíš, çíţÿ õf çüľţüŕë, ľíğĥţš, àñð šüþëŕb çüíšíñë.109876543210", rb.getString("Hello from Paris, city of culture, lights, and superb cuisine.").toString());
+}
+
+function testResBundleGetStringPsuedoLeaveXmlTags() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "xx-XX",
+        type: "xml"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("Ħëľľõ fŕõm <city type='large'>{city}</city>", rb.getString("Hello from <city type='large'>{city}</city>").toString());
+}
+
+function testResBundleGetStringPsuedoLeaveXmlEntities() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "xx-XX",
+        type: "xml"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("Ħëľľõ fŕõm {city} &amp; {country}", rb.getString("Hello from {city} &amp; {country}").toString());
 }
 
 function testResBundleGetStringWithKeyNamees() {

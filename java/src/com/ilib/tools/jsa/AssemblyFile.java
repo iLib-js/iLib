@@ -26,10 +26,11 @@ import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
+
+import com.ilib.IlibLocale;
 
 /**
- * @author mhoogerbeets
+ * @author edwin
  *
  */
 public abstract class AssemblyFile 
@@ -160,7 +161,7 @@ public abstract class AssemblyFile
 	 * @param allFiles a hash where all the depended upon files are stored
 	 * @throws Exception
 	 */
-	public abstract void process(ArrayList<File> includePath, ArrayList<Locale> locales, HashMap<String, AssemblyFile> allFiles)
+	public abstract void process(ArrayList<File> includePath, ArrayList<IlibLocale> locales, HashMap<String, AssemblyFile> allFiles)
 	        throws Exception;
 
 	/**
@@ -187,10 +188,11 @@ public abstract class AssemblyFile
      * 
      * @param out a writer to write the files to
      * @param visited an array of paths to nodes that have already been visited
+     * @param locales set of locales to generate data for
      * @exception CircularDependencyException if there are any circular 
      * dependencies in the code
      */
-    public abstract void writeParents(Writer out, ArrayList<String> visited)
+    public abstract void writeParents(Writer out, ArrayList<String> visited, ArrayList<IlibLocale> locales)
         throws Exception;
     
     /**
@@ -200,8 +202,9 @@ public abstract class AssemblyFile
      * 
      * @param out
      * @param visited
+     * @param locales set of locales to generate data for
      * @throws Exception
      */
-    public abstract void writeDependencies(Writer out, ArrayList<String> visited)
+    public abstract void writeDependencies(Writer out, ArrayList<String> visited, ArrayList<IlibLocale> locales)
             throws Exception;
 }

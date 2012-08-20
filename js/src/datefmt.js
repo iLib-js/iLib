@@ -56,7 +56,13 @@ timezone.js
  *  
  * <li><i>timezone</i> - time zone to use when formatting times. This may be a time zone
  * instance or a time zone specifier string in RFC 822 format. If not specified, the
- * default time zone for the locale is used.
+ * default time zone for the locale is used. If both the date object and this formatter
+ * instance contain time zones and those time zones are different from each other, the 
+ * formatter will calculate the offset between the time zones and subtract it from the 
+ * date before formatting the result for the current time zone. The theory is that a date
+ * object that contains a time zone specifies a specific instant in time that is valid
+ * around the world, whereas a date object without one is a local time and can only be
+ * used for doing things in the local time zone of the user.
  * 
  * <li><i>type</i> - Specify whether this formatter should format times only, dates only, or
  * both times and dates together. Valid values are "time", "date", and "datetime". Note that
@@ -127,6 +133,7 @@ timezone.js
  * <li><i>ahmz</i> - format the hours, minutes, am/pm (if using a 12 hour clock), and the time zone
  * <li><i>ahm</i> - format the hours, minutes, and am/pm (if using a 12 hour clock)
  * <li><i>hmz</i> - format the hours, minutes, and the time zone
+ * <li><i>ah</i> - format only the hours and am/pm if using a 12 hour clock
  * <li><i>hm</i> - format only the hours and minutes
  * <li><i>ms</i> - format only the minutes and seconds
  * <li><i>h</i> - format only the hours
@@ -290,14 +297,14 @@ ilib.DateFmt = function(options) {
 			arr.sort(function (left, right) {
 				return (left < right) ? -1 : ((right < left) ? 1 : 0);
 			});
-			bad = false;
+			this.badTime = false;
 			for (i = 0; i < arr.length; i++) {
 				if (arr[i] !== 'h' && arr[i] !== 'm' && arr[i] !== 's' && arr[i] !== 'a' && arr[i] !== 'z') {
-					bad = true;
+					this.badTime = true;
 					break;
 				}
 			}
-			if (!bad) {
+			if (!this.badTime) {
 				this.timeComponents = arr.join("");
 			}
 		}
@@ -366,42 +373,44 @@ ilib.DateFmt = function(options) {
 		var i = 0, start, ch, letter, arr = [];
 		
 		// console.log("_tokenize: tokenizing template " + template);
-		while (i < template.length) {
-			ch = template.charAt(i);
-			start = i;
-			if (ch === "'") {
-				// console.log("found quoted string");
-				i++;
-				// escaped string - push as-is, then dequote later
-				while (i < template.length && template.charAt(i) !== "'") {
+		if (template) {
+			while (i < template.length) {
+				ch = template.charAt(i);
+				start = i;
+				if (ch === "'") {
+					// console.log("found quoted string");
 					i++;
+					// escaped string - push as-is, then dequote later
+					while (i < template.length && template.charAt(i) !== "'") {
+						i++;
+					}
+					if (i < template.length) {
+						i++;	// grab the other quote too
+					}
+				} else if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+					letter = template.charAt(i);
+					// console.log("found letters " + letter);
+					while (i < template.length && ch === letter) {
+						ch = template.charAt(++i);
+					}
+				} else {
+					// console.log("found other");
+					while (i < template.length && ch !== "'" && (ch < 'a' || ch > 'z') && (ch < 'A' || ch > 'Z')) {
+						ch = template.charAt(++i);
+					}
 				}
-				if (i < template.length) {
-					i++;	// grab the other quote too
-				}
-			} else if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
-				letter = template.charAt(i);
-				// console.log("found letters " + letter);
-				while (i < template.length && ch === letter) {
-					ch = template.charAt(++i);
-				}
-			} else {
-				// console.log("found other");
-				while (i < template.length && ch !== "'" && (ch < 'a' || ch > 'z') && (ch < 'A' || ch > 'Z')) {
-					ch = template.charAt(++i);
-				}
+				arr.push(template.substring(start,i));
+				// console.log("start is " + start + " i is " + i + " and substr is " + template.substring(start,i));
 			}
-			arr.push(template.substring(start,i));
-			// console.log("start is " + start + " i is " + i + " and substr is " + template.substring(start,i));
 		}
-		
 		return arr;
 	};
 
 	if (this.timeComponents &&
 			(this.clock === '24' || 
 			(!this.clock && this.locinfo.getClock() === "24"))) {
-		// make sure we don't have am/pm in 24 hour mode
+		// make sure we don't have am/pm in 24 hour mode unless the user specifically
+		// requested it in the time component option
 		this.timeComponents = this.timeComponents.replace("a", "");
 	}
 
@@ -649,53 +658,53 @@ ilib.DateFmt.prototype = {
 		for (i = 0; i < templateArr.length; i++) {
 			switch (templateArr[i]) {
 				case 'd':
-					str += date.day;
+					str += (date.day || 1);
 					break;
 				case 'dd':
-					str += this._pad(date.day, 2);
+					str += this._pad(date.day || 1, 2);
 					break;
 				case 'yy':
-					temp = "" + date.year;
+					temp = "" + (date.year || 1);
 					str += this._pad(temp.substring(2,4), 2);
 					break;
 				case 'yyyy':
-					str += this._pad(date.year, 4);
+					str += this._pad(date.year || 1, 4);
 					break;
 				case 'M':
-					str += date.month;
+					str += (date.month || 1);
 					break;
 				case 'MM':
-					str += this._pad(date.month, 2);
+					str += this._pad(date.month || 1, 2);
 					break;
 
 				case 'h':
-					temp = date.hour % 12;
+					temp = (date.hour || 0) % 12;
 					if (temp == 0) {
 						temp = "12";
 					}
 					str += temp; 
 					break;
 				case 'hh':
-					temp = date.hour % 12;
+					temp = (date.hour || 0) % 12;
 					if (temp == 0) {
 						temp = "12";
 					}
 					str += this._pad(temp, 2);
 					break;
 				case 'K':
-					temp = date.hour % 12;
+					temp = (date.hour || 0) % 12;
 					str += temp; 
 					break;
 				case 'KK':
-					temp = date.hour % 12;
+					temp = (date.hour || 0) % 12;
 					str += this._pad(temp, 2);
 					break;
 
 				case 'H':
-					str += date.hour;
+					str += (date.hour || 0);
 					break;
 				case 'HH':
-					str += this._pad(date.hour, 2);
+					str += this._pad(date.hour || 0, 2);
 					break;
 				case 'k':
 					str += (date.hour == 0 ? "24" : date.hour);
@@ -706,31 +715,30 @@ ilib.DateFmt.prototype = {
 					break;
 
 				case 'm':
-					str += date.minute;
+					str += (date.minute || 0);
 					break;
 				case 'mm':
-					str += this._pad(date.minute, 2);
+					str += this._pad(date.minute || 0, 2);
 					break;
 				case 's':
-					str += date.second;
+					str += (date.minute || 0);
 					break;
 				case 'ss':
-					str += this._pad(date.second, 2);
+					str += this._pad(date.second || 0, 2);
 					break;
 				case 'S':
-					str += date.millisecond;
+					str += (date.millisecond || 0);
 					break;
 				case 'SSS':
-					str += this._pad(date.millisecond, 3);
+					str += this._pad(date.millisecond || 0, 3);
 					break;
 
 				case 'N':
 				case 'NN':
 				case 'MMM':
 				case 'MMMM':
-					key = templateArr[i] + date.month;
-					//console.log("finding " + key + " in the resources");
-					str += this.sysres.getString(undefined, key);
+					key = templateArr[i] + (date.month || 1);
+					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;
 
 				case 'E':
@@ -739,13 +747,13 @@ ilib.DateFmt.prototype = {
 				case 'EEEE':
 					key = templateArr[i] + date.getDayOfWeek();
 					//console.log("finding " + key + " in the resources");
-					str += this.sysres.getString(undefined, key);
+					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;
 					
 				case 'a':
 					key = date.hour < 12 ? "a0" : "a1";
 					//console.log("finding " + key + " in the resources");
-					str += this.sysres.getString(undefined, key);
+					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;
 					
 				case 'w':
@@ -770,7 +778,7 @@ ilib.DateFmt.prototype = {
 
 				case 'G':
 					key = "G" + date.getEra();
-					str += this.sysres.getString(undefined, key);
+					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;
 
 				case 'O':
@@ -808,6 +816,33 @@ ilib.DateFmt.prototype = {
 	format: function (date) {
 		if (!date.getCalendar || date.getCalendar() !== this.calName) {
 			throw "Wrong date type passed to ilib.DateFmt.format()";
+		}
+		
+		// convert to the time zone of this formatter before formatting
+		if (date.timezone && this.tz) {
+			// console.log("Differing time zones " + date.timezone + " and " + this.tz.getId() + ". Converting...");
+			
+			var datetz = new ilib.TimeZone({
+				locale: date.locale,
+				id: date.timezone
+			});
+			
+			var dateOffset = datetz.getOffset(date),
+				fmtOffset = this.tz.getOffset(date),
+				// relative offset in seconds
+				offset = (dateOffset.h || 0)*60*60 + (dateOffset.m || 0)*60 + (dateOffset.s || 0) -
+					((fmtOffset.h || 0)*60*60 + (fmtOffset.m || 0)*60 + (fmtOffset.s || 0));
+			
+			//console.log("Date offset is " + JSON.stringify(dateOffset));
+			//console.log("Formatter offset is " + JSON.stringify(fmtOffset));
+			//console.log("Relative offset is " + offset + " seconds.");
+			
+			var newDate = ilib.Date.newInstance({
+				type: this.calName,
+				rd: date.getRataDie() - (offset / 86400) // 86400 seconds in a day
+			});
+			
+			date = newDate;
 		}
 		return this._formatTemplate(date, this.templateArr);
 	},
@@ -867,10 +902,10 @@ ilib.DateFmt.prototype = {
 					time = this.sysres.getString("#{num}s");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 se|#{num} seconds");
+					time = this.sysres.getString("1#1 se|#{num} sec");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 sec|#{num} seconds");
+					time = this.sysres.getString("1#1 sec|#{num} sec");
 					break;
 				default:
 				case 'f':
@@ -884,10 +919,10 @@ ilib.DateFmt.prototype = {
 					time = this.sysres.getString("#{num}m", "durationShortMinutes");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 mn|#{num} minutes");
+					time = this.sysres.getString("1#1 mi|#{num} min");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 min|#{num} minutes");
+					time = this.sysres.getString("1#1 min|#{num} min");
 					break;
 				default:
 				case 'f':
@@ -901,10 +936,10 @@ ilib.DateFmt.prototype = {
 					time = this.sysres.getString("#{num}h");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 hr|#{num} hours");
+					time = this.sysres.getString("1#1 hr|#{num} hrs", "durationMediumHours");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 hr|#{num} hours");
+					time = this.sysres.getString("1#1 hr|#{num} hrs");
 					break;
 				default:
 				case 'f':
@@ -918,10 +953,10 @@ ilib.DateFmt.prototype = {
 					time = this.sysres.getString("#{num}d");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 dy|#{num} days");
+					time = this.sysres.getString("1#1 dy|#{num} dys");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 day|#{num} days");
+					time = this.sysres.getString("1#1 day|#{num} days", "durationLongDays");
 					break;
 				default:
 				case 'f':
@@ -935,10 +970,10 @@ ilib.DateFmt.prototype = {
 					time = this.sysres.getString("#{num}w");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 wk|#{num} weeks");
+					time = this.sysres.getString("1#1 wk|#{num} wks", "durationMediumWeeks");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 wk|#{num} weeks");
+					time = this.sysres.getString("1#1 wk|#{num} wks");
 					break;
 				default:
 				case 'f':
@@ -969,7 +1004,7 @@ ilib.DateFmt.prototype = {
 					time = this.sysres.getString("#{num}y");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 yr|#{num} yrs");
+					time = this.sysres.getString("1#1 yr|#{num} yrs", "durationMediumYears");
 					break;
 				case 'l':
 					time = this.sysres.getString("1#1 yr|#{num} yrs");

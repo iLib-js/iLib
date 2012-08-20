@@ -149,3 +149,24 @@ ilib.Locale.prototype = {
 		return (this.language === 'xx' && this.region === 'XX');
 	}
 };
+
+// static functions
+/**
+ * @private
+ */
+ilib.Locale.locales = [
+	// !macro localelist
+];
+
+/**
+ * Return the list of available locales that this iLib file was assembled
+ * with. The list that this file was assembled with may be much smaller
+ * than the list of all available locales in the iLib repository. The
+ * assembly tool will automatically fill in the list.
+ * 
+ * @returns {Array.<string>} this is an array of locale specs for which 
+ * this iLib file has locale data for
+ */
+ilib.Locale.getAvailableLocales = function () {
+	return ilib.Locale.locales;
+};

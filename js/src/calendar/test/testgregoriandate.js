@@ -272,6 +272,30 @@ function testGregDateConstructorFull() {
 	assertEquals(123, gd.getMilliseconds());
 }
 
+function testGregDateConstructorFullWithStrings() {
+	// often you get strings from a UI element instead of numbers... 
+	// this constructor should work with numbers or strings
+	var gd = new ilib.Date.GregDate({
+		year: "2011", 
+		month: "9",
+		day: "23", 
+		hour: "16", 
+		minute: "7", 
+		second: "12", 
+		millisecond: "123"
+	});
+	
+	assertNotNull(gd);
+	
+	assertEquals(2011, gd.getYears());
+	assertEquals(9, gd.getMonths());
+	assertEquals(23, gd.getDays());
+	assertEquals(16, gd.getHours());
+	assertEquals(7, gd.getMinutes());
+	assertEquals(12, gd.getSeconds());
+	assertEquals(123, gd.getMilliseconds());
+}
+
 function testGregDateConstructorCopy() {
     var gd2 = new ilib.Date.GregDate({
         year: 2011, 

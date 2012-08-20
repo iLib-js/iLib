@@ -21,10 +21,18 @@ function testDateConstructor() {
     var gd = new ilib.Date();
     
     assertNotNull(gd);
-}
+};
 
 function testDateConstructorFull() {
-    var gd = new ilib.Date(2011, 9, 23, 16, 7, 12, 123);
+    var gd = new ilib.Date({
+    	year: 2011, 
+    	month: 9, 
+    	day: 23, 
+    	hour: 16, 
+    	minute: 7, 
+    	second: 12, 
+    	millisecond: 123	
+    });
     
     assertNotNull(gd);
     
@@ -35,7 +43,7 @@ function testDateConstructorFull() {
     assertEquals(7, gd.getMinutes());
     assertEquals(12, gd.getSeconds());
     assertEquals(123, gd.getMilliseconds());
-}
+};
 
 function testDateSetYears() {
     var gd = new ilib.Date();
@@ -45,7 +53,7 @@ function testDateSetYears() {
     gd.setYears(123);
     
     assertEquals(123, gd.getYears());
-}
+};
 
 function testDateSetMonths() {
     var gd = new ilib.Date();
@@ -55,7 +63,7 @@ function testDateSetMonths() {
     gd.setMonths(7);
     
     assertEquals(7, gd.getMonths());
-}
+};
 
 function testDateSetDays() {
     var gd = new ilib.Date();
@@ -65,7 +73,7 @@ function testDateSetDays() {
     gd.setDays(12);
     
     assertEquals(12, gd.getDays());
-}
+};
 
 function testDateSetHours() {
     var gd = new ilib.Date();
@@ -75,7 +83,7 @@ function testDateSetHours() {
     gd.setHours(12);
     
     assertEquals(12, gd.getHours());
-}
+};
 
 function testDateSetMinutes() {
     var gd = new ilib.Date();
@@ -85,7 +93,7 @@ function testDateSetMinutes() {
     gd.setMinutes(13);
     
     assertEquals(13, gd.getMinutes());
-}
+};
 
 function testDateSetSeconds() {
     var gd = new ilib.Date();
@@ -95,7 +103,7 @@ function testDateSetSeconds() {
     gd.setSeconds(23);
     
     assertEquals(23, gd.getSeconds());
-}
+};
 
 function testDateSetMilliseconds() {
     var gd = new ilib.Date();
@@ -105,5 +113,38 @@ function testDateSetMilliseconds() {
     gd.setMilliseconds(123);
     
     assertEquals(123, gd.getMilliseconds());
-}
+};
 
+
+function testDateFactoryRightType() {
+    var date = ilib.Date.newInstance({
+    	type: "gregorian"
+    });
+    
+    assertNotNull(date);
+    assertEquals("gregorian", date.getCalendar());
+};
+
+function testDateFactoryDefaultGregorian() {
+    var date = ilib.Date.newInstance();
+    
+    assertNotNull(date);
+    assertEquals("gregorian", date.getCalendar());
+};
+
+function testDateFactoryNonGregorian() {
+    var date = ilib.Date.newInstance({
+    	type: "hebrew"
+    });
+    
+    assertNotNull(date);
+    assertEquals("hebrew", date.getCalendar());
+};
+
+function testDateFactoryBogus() {
+    var date = ilib.Date.newInstance({
+    	type: "asdf"
+    });
+    
+    assertUndefined(date);
+};

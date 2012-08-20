@@ -81,59 +81,59 @@ ilib.Date.IslamicDate = function(params) {
 		}
 
 		if (typeof(params.unixtime) != 'undefined') {
-			this.setTime(params.unixtime);
+			this.setTime(parseInt(params.unixtime, 10));
 		} else if (typeof(params.julianday) != 'undefined') {
-			this.setJulianDay(params.julianday);
+			this.setJulianDay(parseFloat(params.julianday));
 		} else if (params.year || params.month || params.day || params.hour ||
 				params.minute || params.second || params.millisecond ) {
 			/**
 			 * Year in the Islamic calendar.
 			 * @type number
 			 */
-			this.year = params.year || 0;
+			this.year = parseInt(params.year, 10) || 0;
 
 			/**
 			 * The month number, ranging from 1 to 12 (December).
 			 * @type number
 			 */
-			this.month = params.month || 1;
+			this.month = parseInt(params.month, 10) || 1;
 
 			/**
 			 * The day of the month. This ranges from 1 to 30.
 			 * @type number
 			 */
-			this.day = params.day || 1;
+			this.day = parseInt(params.day, 10) || 1;
 			
 			/**
 			 * The hour of the day. This can be a number from 0 to 23, as times are
 			 * stored unambiguously in the 24-hour clock.
 			 * @type number
 			 */
-			this.hour = params.hour || 0;
+			this.hour = parseInt(params.hour, 10) || 0;
 
 			/**
 			 * The minute of the hours. Ranges from 0 to 59.
 			 * @type number
 			 */
-			this.minute = params.minute || 0;
+			this.minute = parseInt(params.minute, 10) || 0;
 
 			/**
 			 * The second of the minute. Ranges from 0 to 59.
 			 * @type number
 			 */
-			this.second = params.second || 0;
+			this.second = parseInt(params.second, 10) || 0;
 
 			/**
 			 * The millisecond of the second. Ranges from 0 to 999.
 			 * @type number
 			 */
-			this.millisecond = params.millisecond || 0;
+			this.millisecond = parseInt(params.millisecond, 10) || 0;
 			
 			/**
 			 * The day of the year. Ranges from 1 to 355.
 			 * @type number
 			 */
-			this.dayOfYear = params.dayOfYear;
+			this.dayOfYear = parseInt(params.dayOfYear, 10);
 		} else if (typeof(params.rd) != 'undefined') {
 			// private parameter. Do not document this!
 			this.setRd(params.rd);
@@ -356,7 +356,7 @@ ilib.Date.IslamicDate.prototype.getDayOfWeek = function() {
  * to the reference date
  */
 ilib.Date.IslamicDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
-	return rd - ilib.mod(rd - dayOfWeek - 2, 7);
+	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 2, 7);
 };
 
 /**
@@ -635,3 +635,6 @@ ilib.Date.IslamicDate.prototype.getCalendar = function() {
 ilib.Date.IslamicDate.prototype.getTimeZone = function() {
 	return this.timezone;
 };
+
+//register with the factory method
+ilib.Date._constructors["islamic"] = ilib.Date.IslamicDate;

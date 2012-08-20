@@ -22,7 +22,7 @@
 /**
  * Binary search a sorted array for a particular target value.
  * If the exact value is not found, it returns the index of the smallest 
- * entry that is not greater than the given target value.<p> 
+ * entry that is greater than the given target value.<p> 
  * 
  * The comparator
  * parameter is a function that knows how to compare elements of the 

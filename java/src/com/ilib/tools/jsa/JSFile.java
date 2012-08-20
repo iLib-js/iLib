@@ -23,11 +23,12 @@ import java.io.FileNotFoundException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
+
+import com.ilib.IlibLocale;
 
 /**
  * JSFile
@@ -40,6 +41,7 @@ public class JSFile
     protected Logger logger = Logger.getLogger(this.getClass());
     protected ArrayList<Pattern> dependsPatterns = new ArrayList<Pattern>();
     protected ArrayList<Pattern> dataPatterns = new ArrayList<Pattern>();
+    protected ArrayList<Pattern> macroPatterns = new ArrayList<Pattern>();
     
     public JSFile(File file)
     {
@@ -50,6 +52,9 @@ public class JSFile
 
         dataPatterns.add(Pattern.compile("/\\*\\s*!data\\s*([^\\*]+)\\*/"));
         dataPatterns.add(Pattern.compile("\\/\\/\\s*!data\\s*([^\\n]+)"));
+        
+        macroPatterns.add(Pattern.compile("/\\*\\s*!macro\\s*([^\\*]+)\\*/"));
+        macroPatterns.add(Pattern.compile("\\/\\/\\s*!macro\\s*(\\S*)"));
     }
     
     protected AssemblyFile find(ArrayList<File> includePath, String fileName, HashMap<String, AssemblyFile> allFiles)
@@ -101,33 +106,51 @@ public class JSFile
         }
     }
     
-    protected void findAllForLocale(ArrayList<File> includePath, String baseName, Locale locale, HashMap<String, AssemblyFile> allFiles)
+    /*
+     * work around the stupidity in the JDK
+     */
+    protected String getLanguage(IlibLocale locale)
+    {
+        String l = locale.getLanguage();
+        if (l.equals("iw")) {
+            l = "he";
+        } else if (l.equals("ji")) {
+            l = "yi";
+        } else if (l.equals("in")) {
+            l = "id";
+        }
+        return l;
+    }
+    
+    protected void findAllForIlibLocale(ArrayList<File> includePath, String baseName, IlibLocale locale, HashMap<String, AssemblyFile> allFiles)
         throws Exception
     {
     	String baseFileName = baseName + ".json";
 		String fileName;
 		
 		locate(includePath, baseName, baseFileName, allFiles);
-        fileName = locale.getLanguage() + "/" + baseFileName;
-		locate(includePath, baseName+"_"+locale.getLanguage(), fileName, allFiles);
-        fileName = locale.getLanguage() + "/" + locale.getCountry() + "/" + baseFileName;
-		locate(includePath, baseName+"_"+locale.getLanguage()+"_"+locale.getCountry(), fileName, allFiles);
-        fileName = locale.getLanguage() + "/" + locale.getCountry() + "/" + locale.getVariant() + "/" + baseFileName;
-		locate(includePath, baseName+"_"+locale.getLanguage()+"_"+locale.getCountry()+"_"+locale.getVariant(), fileName, allFiles);
+        fileName = getLanguage(locale) + "/" + baseFileName;
+		locate(includePath, baseName+"_"+getLanguage(locale), fileName, allFiles);
+        fileName = getLanguage(locale) + "/" + locale.getRegion() + "/" + baseFileName;
+		locate(includePath, baseName+"_"+getLanguage(locale)+"_"+locale.getRegion(), fileName, allFiles);
+        fileName = getLanguage(locale) + "/" + locale.getRegion() + "/" + locale.getVariant() + "/" + baseFileName;
+		locate(includePath, baseName+"_"+getLanguage(locale)+"_"+locale.getRegion()+"_"+locale.getVariant(), fileName, allFiles);
     }
     
-    protected void findAll(ArrayList<File> includePath, ArrayList<Locale> locales, String baseName, HashMap<String, AssemblyFile> allFiles)
+    protected void findAll(ArrayList<File> includePath, ArrayList<IlibLocale> locales, String baseName, HashMap<String, AssemblyFile> allFiles)
     		throws Exception
     {
-    	for ( int i = 0; i < locales.size(); i++ ) {
-    		findAllForLocale(includePath, baseName, locales.get(i), allFiles);
-    	}
+        if ( locales != null ) {
+        	for ( int i = 0; i < locales.size(); i++ ) {
+        		findAllForIlibLocale(includePath, baseName, locales.get(i), allFiles);
+        	}
+        }
     }
 
     /* (non-Javadoc)
      * @see com.ilib.tools.jsa.AssemblyFile#process(java.util.ArrayList, java.util.ArrayList, java.util.HashMap)
      */
-    public void process(ArrayList<File> includePath, ArrayList<Locale> locales, HashMap<String, AssemblyFile> allFiles)
+    public void process(ArrayList<File> includePath, ArrayList<IlibLocale> locales, HashMap<String, AssemblyFile> allFiles)
         throws Exception
     {
         int start = 0, nameStart, groupEnd, i;
@@ -223,9 +246,9 @@ public class JSFile
     }
     
     /* (non-Javadoc)
-     * @see com.ilib.tools.jsa.AssemblyFile#writeParents(java.io.Writer, java.util.ArrayList)
+     * @see com.ilib.tools.jsa.AssemblyFile#writeParents(java.io.Writer, java.util.ArrayList, java.util.ArrayList)
      */
-    public void writeParents(Writer out, ArrayList<String> visited)
+    public void writeParents(Writer out, ArrayList<String> visited, ArrayList<IlibLocale> locales)
         throws Exception
     {
         int i, j;
@@ -247,18 +270,18 @@ public class JSFile
        
         // recursively find the the source node
         for ( i = 0; i < parents.size(); i++ ) {
-            parents.get(i).writeParents(out, visited);
+            parents.get(i).writeParents(out, visited, locales);
         }
 
         // start with a new visited array to catch circular dependencies
         // starting at this source node
-        writeDependencies(out, new ArrayList<String>());
+        writeDependencies(out, new ArrayList<String>(), locales);
     }
     
     /* (non-Javadoc)
      * @see com.ilib.tools.jsa.AssemblyFile#writeDependencies(java.io.Writer, java.util.ArrayList)
      */
-    public void writeDependencies(Writer out, ArrayList<String> visited)
+    public void writeDependencies(Writer out, ArrayList<String> visited, ArrayList<IlibLocale> locales)
         throws Exception
     {
         int i;
@@ -284,7 +307,7 @@ public class JSFile
 
         // do the dependencies first before the contents of this node
         for ( i = 0; i < dependencies.size(); i++ ) {
-            dependencies.get(i).writeDependencies(out, visited);
+            dependencies.get(i).writeDependencies(out, visited, locales);
         }
 
         StringBuffer str;
@@ -292,7 +315,44 @@ public class JSFile
         logger.debug("Now writing out file " + getPath());
         
         try {
+            int start, groupEnd, nameStart;
+            String macroName;
+            
         	str = readFile();
+        	
+            for ( int p = 0; p < macroPatterns.size(); p++ ) {
+                Matcher matcher = macroPatterns.get(p).matcher(str);
+                start = 0;
+                while ( matcher.find() ) {
+                    i = matcher.start(1);
+                    groupEnd = matcher.end(1);
+                 
+                    if ( i < groupEnd ) {
+                        nameStart = i;
+                        while ( i < groupEnd && !Character.isWhitespace(str.charAt(i)) ) {
+                            i++;
+                        }
+                        macroName = str.substring(nameStart, i);
+                        
+                        if ( macroName.length() > 0 ) {
+                            if ( macroName.equalsIgnoreCase("localelist") ) {
+                                StringBuffer sb = new StringBuffer();
+                                for ( int j = 0; j < locales.size(); j++ ) {
+                                    if ( j > 0 ) {
+                                        sb.append(',');
+                                    }
+                                    sb.append('"');
+                                    sb.append(locales.get(j).toString());
+                                    sb.append('"');
+                                }
+                                str = str.replace(matcher.start(), matcher.end(), sb.toString());
+                                matcher.reset();
+                            }
+                        }
+                    }
+                }
+            }
+
         	out.write(str.toString());
             out.append('\n'); // in case the file doesn't end with one
             setWritten(true);

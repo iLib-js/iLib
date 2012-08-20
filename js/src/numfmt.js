@@ -116,8 +116,9 @@ ilib._roundFnc = {
  * <li><i>type</i> - the type of this formatter. Valid values are "number", "currency", or 
  * "percentage". If this property is not specified, the default is "number".
  * <li><i>currency</i> - the ISO 4217 3-letter currency code to use when the formatter type 
- * is "currency". If the type is "currency" and this property is not specified, the currency
- * that is standard for the locale will be used. 
+ * is "currency". This property is required for currency formatting. If the type property 
+ * is "currency" and the currency property is not specified, the constructor will throw a
+ * an exception. 
  * <li><i>maxFractionDigits</i> - the maximum number of digits that should appear in the
  * formatted output after the decimal. A value of -1 means unlimited, and 0 means only print
  * the integral part of the number. 
@@ -205,14 +206,16 @@ ilib.NumFmt = function (options) {
 	switch (this.type) {
 		case "currency":
 			var templates,
-				curopts = {
-					locale: this.locale
-				};
+				curopts;
 			
-			if (this.currency) {
-				curopts.code = this.currency;
+			if (!this.currency || typeof(this.currency) != 'string') {
+				throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
 			}
 			
+			curopts = {
+				locale: this.locale,
+				code: this.currency		
+			};
 			this.currencyInfo = new ilib.Currency(curopts);
 			if (this.style !== "common" && this.style !== "iso") {
 				this.style = "common";
