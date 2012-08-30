@@ -4,13 +4,13 @@
 		"date": {
 			"dmwy": {
 				"s": "EE d/MM/yy",
-				"m": "EEE dd/MM/yyyy",
+				"m": "EEE d/MM/yyyy",
 				"l": "EEE d MMM, yyyy",
 				"f": "EEEE d MMMM, yyyy"
 			},
 			"dmy": {
 				"s": "d/MM/yy",
-				"m": "dd/MM/yyyy",
+				"m": "d/MM/yyyy",
 				"l": "d MMM, yyyy",
 				"f": "d MMMM, yyyy"
 			},
