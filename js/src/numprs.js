@@ -64,13 +64,12 @@ ctype.isspace.js
  * Depends directive: !depends numprs.js
  * 
  * @constructor
- * @param {string} str a string to parse as a number
+ * @param {string|number|Number|ilib.Number|undefined} str a string to parse as a number, or a number value
  * @param {Object} options Options controlling how the instance should be created 
  */
 ilib.Number = function (str, options) {
 	var li, i, stripped = "";
 	
-	this.str = str || "0";
 	this.locale = new ilib.Locale();
 	this.type = "number";
 	
@@ -95,16 +94,44 @@ ilib.Number = function (str, options) {
 	li = new ilib.LocaleInfo(this.locale);
 	this.decimal = li.getDecimalSeparator();
 	
-	// stripping should work for all locales, because you just ignore all the
-	// formatting except the decimal char
-	for (i = 0; i < this.str.length; i++) {
-		if (ilib.CType.isDigit(this.str.charAt(i))) {
-			stripped += this.str.charAt(i);
-		} else if (this.str.charAt(i) === this.decimal) {
-			stripped += "."; // always convert to period
+	switch (typeof(str)) {
+	case 'string':
+		// stripping should work for all locales, because you just ignore all the
+		// formatting except the decimal char
+		var unary = true, // looking for the unary minus still?
+			negative = false;
+		this.str = str || "0";
+		i = 0;
+		for (i = 0; i < this.str.length; i++) {
+			if (unary && this.str.charAt(i) === '-') {
+				negative = true;
+				unary = false;
+				stripped += this.str.charAt(i);
+			} else if (ilib.CType.isDigit(this.str.charAt(i))) {
+				stripped += this.str.charAt(i);
+				unary = false;
+			} else if (this.str.charAt(i) === this.decimal) {
+				stripped += "."; // always convert to period
+				unary = false;
+			} // else ignore
 		}
+		this.value = parseFloat(stripped);
+		break;
+	case 'number':
+		this.str = "" + str;
+		this.value = str;
+		break;
+		
+	case 'object':
+		this.value = /** @type {number} */ str.valueOf();
+		this.str = "" + this.value;
+		break;
+		
+	case 'undefined':
+		this.value = 0;
+		this.str = "0";
+		break;
 	}
-	this.value = parseFloat(stripped);
 	
 	switch (this.type) {
 		default:

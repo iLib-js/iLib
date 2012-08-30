@@ -44,6 +44,14 @@ function testNumFmtNumberFormatSimple() {
     assertEquals("1.745", fmt.format(1.745));
 }
 
+function testNumFmtNumberFormatUndefined() {
+    var fmt = new ilib.NumFmt();
+    
+    assertNotNull(fmt);
+    
+    assertEquals("", fmt.format());
+}
+
 function testNumFmtNumberFormatSimpleNeg() {
     var fmt = new ilib.NumFmt();
     
@@ -122,6 +130,26 @@ function testNumFmtNumberStyleStandard() {
     assertNotNull(fmt);
     
     assertEquals("2,345,678,901,234,567", fmt.format(2345678901234567.0));
+}
+
+function testNumFmtNumberFormatStandardWithMultiGroups() {
+    var fmt = new ilib.NumFmt({
+    	style: "standard"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("123,456,789.4", fmt.format(123456789.4));
+}
+
+function testNumFmtNumberFormatWithMultiGroupsNegative() {
+    var fmt = new ilib.NumFmt({
+    	style: "standard"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123,456,789.4", fmt.format(-123456789.4));
 }
 
 function testNumFmtNumberStyleScientific() {
@@ -562,6 +590,39 @@ function testNumFmtNumberFormatRoundingHalfupNegAtHalf() {
     assertEquals("-1.75", fmt.format(-1.745));
 }
 
+function testNumFmtNumberStyleStringArgument() {
+    var fmt = new ilib.NumFmt({
+        style: "standard"
+    });
+    
+    assertNotNull(fmt);
+    
+    // should work with string arguments
+    assertEquals("2,345,678,901,234,567", fmt.format("2345678901234567.0"));
+}
+
+function testNumFmtNumberStyleNumberObjectArgument() {
+    var fmt = new ilib.NumFmt({
+        style: "standard"
+    });
+    
+    assertNotNull(fmt);
+    
+    // should work with a number object
+    assertEquals("2,345,678,901,234,567", fmt.format(new Number(2345678901234567.0)));
+}
+
+function testNumFmtNumberStyleIlibNumberObjectArgument() {
+    var fmt = new ilib.NumFmt({
+        style: "standard"
+    });
+    
+    assertNotNull(fmt);
+    
+    // should work with a number object
+    assertEquals("2,345,678,901,234,567", fmt.format(new ilib.Number(2345678901234567.0)));
+}
+
 function testNumFmtNumberFormatDESimple() {
     var fmt = new ilib.NumFmt({
         locale: "de-DE"
@@ -590,6 +651,26 @@ function testNumFmtNumberFormatDEWithThousands() {
     assertNotNull(fmt);
     
     assertEquals("1.234.567,745", fmt.format(1234567.745));
+}
+
+function testNumFmtNumberFormatDEWithThousandsWithMultiGroups() {
+    var fmt = new ilib.NumFmt({
+        locale: "de-DE"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("123.456.789,4", fmt.format(123456789.4));
+}
+
+function testNumFmtNumberFormatDEWithThousandsWithMultiGroupsNegative() {
+    var fmt = new ilib.NumFmt({
+        locale: "de-DE"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123.456.789,4", fmt.format(-123456789.4));
 }
 
 function testNumFmtNumberFormatFRSimple() {
@@ -925,3 +1006,52 @@ function testNumFmtCurrencyUseCorrectRoundingModeForLocale() {
     assertEquals("halfeven", fmt.getRoundingMode());
 }
 
+function testNumFmtJAIsGroupingUsed() {
+    var fmt = new ilib.NumFmt({
+        locale: "ja-JP"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertFalse(fmt.isGroupingUsed());
+}
+
+function testNumFmtNumberFormatJAWithThousandsWithMultiGroups() {
+    var fmt = new ilib.NumFmt({
+        locale: "ja-JP"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("123456789.4", fmt.format(123456789.4));
+}
+
+function testNumFmtNumberFormatJAWithThousandsWithMultiGroupsNegative() {
+    var fmt = new ilib.NumFmt({
+        locale: "ja-JP"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123456789.4", fmt.format(-123456789.4));
+}
+
+function testNumFmtNumberFormatJALessThanOne() {
+    var fmt = new ilib.NumFmt({
+        locale: "ja-JP"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("0.7", fmt.format(0.7));
+}
+
+function testNumFmtNumberFormatJALessThanOneNegative() {
+    var fmt = new ilib.NumFmt({
+        locale: "ja-JP"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-0.7", fmt.format(-0.7));
+}

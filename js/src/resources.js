@@ -176,17 +176,17 @@ ilib.ResBundle = function (options) {
 	if (lookupLocale.getLanguage()) {
 		name += "_" + lookupLocale.getLanguage();
 		if (ilib.data[name]) {
-			this.map = ilib.merge(this.map, ilib.data[name]);
+			this.map = ilib.merge(this.map, ilib.data[name], this.baseName, name);
 		}
 		if (lookupLocale.getRegion()) {
 			name += "_" + lookupLocale.getRegion();		
 			if (ilib.data[name]) {
-				this.map = ilib.merge(this.map, ilib.data[name]);
+				this.map = ilib.merge(this.map, ilib.data[name], this.baseName + "_" + this.locale.getLanguage(), name);
 			}
 			if (lookupLocale.getVariant()) {
 				name += "_" + lookupLocale.getVariant();
 				if (ilib.data[name]) {
-					this.map = ilib.merge(this.map, ilib.data[name]);
+					this.map = ilib.merge(this.map, ilib.data[name], this.baseName + "_" + this.locale.getLanguage() + "_" + this.locale.getRegion(), name);
 				}
 			}
 		}
@@ -265,6 +265,15 @@ ilib.ResBundle.prototype = {
 		return this.baseName;
 	},
 	
+	/**
+	 * Return the type of this resource bundle. This corresponds to the type option
+	 * given to the constructor.
+	 * @returns {string} type of the the current instance
+	 */
+	getType: function () {
+		return this.type;
+	},
+
 	/*
 	 * @private
 	 * Pseudo-translate a string

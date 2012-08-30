@@ -132,6 +132,28 @@ ilib.Currency = function (options) {
 	this.sign = currInfo.sign;
 };
 
+/**
+ * @static
+ * Return an array of the ids for all ISO 4217 currencies that
+ * this copy of ilib knows about.
+ * @returns {Array.<string>} an array of currency ids that this copy of ilib knows about.
+ */
+ilib.Currency.getAvailableCurrencies = function() {
+	var ret = [],
+		cur,
+		currencies = new ilib.ResBundle({
+			name: "currency"
+		}).getResObj();
+	
+	for (cur in currencies) {
+		if (cur && currencies[cur]) {
+			ret.push(cur);
+		}
+	}
+	
+	return ret;
+};
+
 ilib.Currency.prototype = {
 	/**
 	 * Return the ISO 4217 currency code for this instance.

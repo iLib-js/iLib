@@ -192,10 +192,10 @@ ilib.NumFmt = function (options) {
 		}
 		
 		if (typeof(options.maxFractionDigits) === 'number') {
-			this.maxFractionDigits = options.maxFractionDigits;
+			this.maxFractionDigits = this._toPrimitive(options.maxFractionDigits);
 		}
 		if (typeof(options.minFractionDigits) === 'number') {
-			this.minFractionDigits = options.minFractionDigits;
+			this.minFractionDigits = this._toPrimitive(options.minFractionDigits);
 		}
 		if (options.style) {
 			this.style = options.style;
@@ -290,27 +290,55 @@ ilib.NumFmt.prototype = {
 	
 	/**
 	 * @private
+	 * @param {Number|ilib.Number|string|number} num object, string, or number to convert to a primitive number
+	 * @returns {number} the primitive number equivalent of the argument
+	 */
+	_toPrimitive: function (num) {
+		var n = 0;
+		
+		switch (typeof(num)) {
+		case 'number':
+			n = num;
+			break;
+		case 'string':
+			n = parseFloat(num);
+			break;
+		case 'object':
+			// Number.valueOf() is incorrectly documented as being of type "string" rather than "number", so coerse 
+			// the type here to shut the type checker up
+			n = /** @type {number} */ num.valueOf();
+			break;
+		}
+		
+		return n;
+	},
+	
+	/**
+	 * @private
 	 * @param {number} num the number to format
 	 * @returns {string} the formatted number 
 	 */
 	_formatScientific: function (num) {
-		if (typeof(this.maxFractionDigits) === 'number') {
+		var n = new Number(num);
+		var formatted;
+		if (typeof(this.maxFractionDigits) !== 'undefined') {
 			// if there is fraction digits, round it to the right length first
 			// divide or multiply by 10 by manipulating the exponent so as to
 			// avoid the rounding errors of floating point numbers
 			var e, 
 				factor,
-				str = num.toExponential(),
+				str = n.toExponential(),
 				parts = str.split("e"),
 				significant = parts[0];
 			
 			e = parts[1];	
 			factor = Math.pow(10, this.maxFractionDigits);
 			significant = this.round(significant * factor) / factor;
-			return "" + significant + "e" + e;
+			formatted = "" + significant + "e" + e;
 		} else {
-			return num.toExponential(this.minFractionDigits);
+			formatted = n.toExponential(this.minFractionDigits);
 		}
+		return formatted;
 	},
 	
 	/**
@@ -322,17 +350,23 @@ ilib.NumFmt.prototype = {
 		var i;
 		
 		// console.log("_formatNumberStandard: formatting number " + num);
-		if (this.maxFractionDigits > -1) {
+		if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
 			var factor = Math.pow(10, this.maxFractionDigits);
 			num = this.round(num * factor) / factor;
 		}
 
+		var negative = (num < 0);
+		if (negative) {
+			num = -num;
+		}
+		
 		var parts = ("" + num).split("."),
 			integral = parts[0],
 			fraction = parts[1],
-			cycle, 
+			cycle,
 			groupSize = this.localeInfo.getGroupingDigits(),
 			formatted;
+		
 		
 		if (this.minFractionDigits > 0) {
 			fraction = this._pad(fraction || "", this.minFractionDigits, false);
@@ -340,7 +374,7 @@ ilib.NumFmt.prototype = {
 
 		if (groupSize > 0) {
 			cycle = ilib.mod(integral.length-1, groupSize);
-			formatted = "";
+			formatted = negative ? "-" : "";
 			for (i = 0; i < integral.length-1; i++) {
 				formatted += integral.charAt(i);
 				if (cycle === 0) {
@@ -350,7 +384,7 @@ ilib.NumFmt.prototype = {
 			}
 			formatted += integral.charAt(integral.length-1);
 		} else {
-			formatted = integral;
+			formatted = (negative ? "-" : "") + integral;
 		}
 		
 		if (fraction && (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits > 0)) {
@@ -364,13 +398,19 @@ ilib.NumFmt.prototype = {
 	
 	/**
 	 * Format a number according to the settings of this number formatter instance.
-	 * @param num {number|ilib.Number} a floating point number to format
+	 * @param num {number|string|Number|ilib.Number} a floating point number to format
 	 * @returns {string} a string containing the formatted number
 	 */
 	format: function (num) {
 		var formatted, n;
 
-		n = (typeof(num) === 'object') ? num.value() : num;
+		if (typeof(num) === 'undefined') {
+			return "";
+		}
+		
+		// convert to a real primitive number type
+		n = this._toPrimitive(num);
+		
 		if (this.type === "number") {
 			formatted = (this.style === "scientific") ? 
 					this._formatScientific(n) : 
@@ -381,11 +421,6 @@ ilib.NumFmt.prototype = {
 		
 		return formatted;
 	},
-	
-	/*
-	parse: function (numString) {
-	},
-	*/
 	
 	/**
 	 * Return the type of formatter. Valid values are "number", "currency", and
@@ -415,7 +450,8 @@ ilib.NumFmt.prototype = {
 	 * portion of the number
 	 */
 	isGroupingUsed: function () {
-		return (this.localeInfo.getGroupingSeparator() !== 'undefined');
+		var c = this.localeInfo.getGroupingSeparator();
+		return (c !== 'undefined' && c.length > 0);
 	},
 	
 	/**

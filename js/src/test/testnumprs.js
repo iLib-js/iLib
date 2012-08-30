@@ -22,6 +22,21 @@ function testNumberConstructorDefault() {
     assertNotNull(num);
 }
 
+function testNumberConstructorWithPrimitiveNumber() {
+    var num = new ilib.Number(3.4);
+    assertNotNull(num);
+}
+
+function testNumberConstructorWithNumber() {
+    var num = new ilib.Number(new Number(3.4));
+    assertNotNull(num);
+}
+
+function testNumberConstructorWithIlibNumber() {
+    var num = new ilib.Number(new ilib.Number("3.4"));
+    assertNotNull(num);
+}
+
 function testNumberGetLocaleDefault() {
     var num = new ilib.Number("3.4");
     assertNotNull(num);
@@ -45,11 +60,53 @@ function testNumberFloat() {
     assertEquals(3.4, num.valueOf());
 }
 
+function testNumberFloatWithPrimitiveNumber() {
+    var num = new ilib.Number(3.4);
+    assertNotNull(num);
+    
+    assertEquals(3.4, num.valueOf());
+}
+
+function testNumberFloatWithNumberObject() {
+    var num = new ilib.Number(new Number(3.4));
+    assertNotNull(num);
+    
+    assertEquals(3.4, num.valueOf());
+}
+
+function testNumberFloatWithIlibNumberObject() {
+    var num = new ilib.Number(new ilib.Number(3.4));
+    assertNotNull(num);
+    
+    assertEquals(3.4, num.valueOf());
+}
+
 function testNumberFloatThousands() {
     var num = new ilib.Number("1,233.4");
     assertNotNull(num);
     
     assertEquals(1233.4, num.valueOf());
+}
+
+function testNumberFloatNegative() {
+    var num = new ilib.Number("-1233.4");
+    assertNotNull(num);
+    
+    assertEquals(-1233.4, num.valueOf());
+}
+
+function testNumberFloatIgnoreInternalDashes() {
+    var num = new ilib.Number("123-33.4");
+    assertNotNull(num);
+    
+    assertEquals(12333.4, num.valueOf());
+}
+
+function testNumberFloatIgnoreInternalDashesNegative() {
+    var num = new ilib.Number("-123-33.4");
+    assertNotNull(num);
+    
+    assertEquals(-12333.4, num.valueOf());
 }
 
 function testNumberFloatThousandsNoFormatting() {
@@ -73,6 +130,35 @@ function testNumberFloatInvalid() {
     // just parse what you can and ignore the rest
     assertEquals(1.4, num.valueOf());
 }
+
+function testNumberFloatStartsWithDecimal() {
+    var num = new ilib.Number(".4342");
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloatStartsWithZero() {
+    var num = new ilib.Number("0.4342");
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloatStartsWithDecimalNegative() {
+    var num = new ilib.Number("-.4342");
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
+function testNumberFloatStartsWithZeroNegative() {
+    var num = new ilib.Number("-0.4342");
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
 
 function testNumberInt() {
     var num = new ilib.Number("123");
@@ -109,6 +195,13 @@ function testNumberPercentage() {
     assertEquals(0.583, num.valueOf());
 }
 
+function testNumberPercentageNegative() {
+    var num = new ilib.Number("-58.3%", {type: "percentage"});
+    assertNotNull(num);
+    
+    assertEquals(-0.583, num.valueOf());
+}
+
 function testNumberPercentageNoTypeSpecified() {
     var num = new ilib.Number("58.3%");
     assertNotNull(num);
@@ -121,6 +214,20 @@ function testNumberCurrencyValue() {
     assertNotNull(num);
     
     assertEquals(5.80, num.valueOf());
+}
+
+function testNumberCurrencyValueNegative1() {
+    var num = new ilib.Number("$-5.80", {type: "currency"});
+    assertNotNull(num);
+    
+    assertEquals(-5.80, num.valueOf());
+}
+
+function testNumberCurrencyValueNegative2() {
+    var num = new ilib.Number("-$5.80", {type: "currency"});
+    assertNotNull(num);
+    
+    assertEquals(-5.80, num.valueOf());
 }
 
 function testNumberCurrencyType() {
@@ -168,6 +275,15 @@ function testNumberFloatDE() {
     assertEquals(3.4, num.valueOf());
 }
 
+function testNumberFloatDENegative() {
+    var num = new ilib.Number("-3,4", {
+    	locale: "de-DE"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-3.4, num.valueOf());
+}
+
 function testNumberFloatDEThousands() {
     var num = new ilib.Number("1.233,4", {
     	locale: "de-DE"
@@ -177,6 +293,15 @@ function testNumberFloatDEThousands() {
     assertEquals(1233.4, num.valueOf());
 }
 
+function testNumberFloatDEThousandsNegative() {
+    var num = new ilib.Number("-1.233,4", {
+    	locale: "de-DE"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-1233.4, num.valueOf());
+}
+
 function testNumberFloatDEWithDashForZeros() {
     var num = new ilib.Number("3,-", {
     	locale: "de-DE"
@@ -184,6 +309,51 @@ function testNumberFloatDEWithDashForZeros() {
     assertNotNull(num);
     
     assertEquals(3.0, num.valueOf());
+}
+
+function testNumberFloatDEStartsWithDecimal() {
+    var num = new ilib.Number(",4342", {
+    	locale: "de-DE"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloatDEStartsWithZero() {
+    var num = new ilib.Number("0,4342", {
+    	locale: "de-DE"
+    });
+    assertNotNull(num);
+    
+    assertEquals(0.4342, num.valueOf());
+}
+
+function testNumberFloatDEStartsWithDecimalNegative() {
+    var num = new ilib.Number("-,4342", {
+    	locale: "de-DE"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
+function testNumberFloatDEStartsWithZeroNegative() {
+    var num = new ilib.Number("-0,4342", {
+    	locale: "de-DE"
+    });
+    assertNotNull(num);
+    
+    assertEquals(-0.4342, num.valueOf());
+}
+
+function testNumberFloatDEStartsWithPeriodIgnore() {
+    var num = new ilib.Number(".4342", {
+    	locale: "de-DE"
+    });
+    assertNotNull(num);
+    
+    assertEquals(4342.0, num.valueOf());
 }
 
 function testNumberFloatDEWithMDashForZeros() {
