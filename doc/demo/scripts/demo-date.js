@@ -30,7 +30,6 @@ function setCalendarValues(cal) {
 			"selected": (value == cal)
 		}).text(value));
 	});
-	calName.append($("<option></option>").attr("value", "julianday").text("julianday"));
 };
 
 function setTimeZoneValues(element, tz) {
@@ -171,7 +170,8 @@ function setupCalendarPicker() {
 		tzElement = $("#timezone");
 	
 	setCalendarValues();
-	
+	calName.append($("<option></option>").attr("value", "julianday").text("julianday"));
+
 	cal = ilib.Cal.newInstance({
 		type: "gregorian",
 		locale: locale
@@ -184,7 +184,7 @@ function setupCalendarPicker() {
 	$('#localeControl').change(function () {
 		var month = parseInt(monthElement.val()),
 			hour = parseInt(hourElement.val()),
-			year = parseInt(yearElement.val());;
+			year = parseInt(yearElement.val());
 		setMonthValues(monthElement, month, year);
 		setHourValues(hourElement, hour);
 	});
@@ -192,7 +192,7 @@ function setupCalendarPicker() {
 	$('#year').change(function () {
 		var month = parseInt(monthElement.val()),
 			day = parseInt(dayElement.val()),
-			year = parseInt(yearElement.val());;
+			year = parseInt(yearElement.val());
 		setMonthValues(monthElement, month, year);
 		setDayValues(dayElement, day, month, year);
 	});
@@ -202,10 +202,12 @@ function setupCalendarPicker() {
 			locale = $('#localeControl').val() || "en";
 		
 		if (name === "julianday") {
+			$('#yearMonthPicker').hide();
 			$('#calendarPicker').hide();
 			$('#jdpicker').show();
 		} else {
 			$('#jdpicker').hide();
+			$('#yearMonthPicker').show();
 			$('#calendarPicker').show();
 			cal = ilib.Cal.newInstance({
 				type: name,
@@ -238,6 +240,7 @@ function setupCalendarPicker() {
 	setTimeZoneValues(tzElement);
 	
 	$('#calendarPane').show();
+	$('#yearMonthPicker').show();
 	$('#calendarPicker').show();
 };
 
@@ -268,7 +271,8 @@ function setupRangePicker(startname, endname) {
 	$('#endname').text(endname);
 	
 	setCalendarValues();
-	
+	calName.append($("<option></option>").attr("value", "julianday").text("julianday"));
+
 	cal = ilib.Cal.newInstance({
 		type: "gregorian",
 		locale: locale
@@ -382,13 +386,164 @@ function setupTargetTZPicker() {
 	$('#targetTZPicker').show();
 };
 
+function setupTextPicker(res) {
+	$('#sampleTextLabel').text(res.getString("Sample Text"));
+	$('#resTypePicker').show();
+	$('#sampleTextPicker').show();
+};
+
+function setDefaultNumFmtStyleValues(style, res) {
+	style.append($("<option></option>").attr({
+		value: "standard",
+		selected: true
+	}).text(res.getString("Standard")));
+	style.append($("<option></option>").attr({
+		value: "scientific",
+		selected: false
+	}).text(res.getString("Scientific")));
+};
+
+function setupCurrencyValues(element) {
+	var i, 
+		currencies = ilib.Currency.getAvailableCurrencies(),
+		locale = $('#localeControl').val() || "en-US",
+		li = new ilib.LocaleInfo(locale);
+	
+	element.empty();
+	
+	currencies.sort();
+	
+	for (i = 0; i < currencies.length; i++) {
+		element.append($("<option></option>").attr({
+			value: currencies[i],
+			selected: currencies[i] === li.getCurrency()
+		}).text(currencies[i]));
+	}
+};
+
+function setupNumPicker() {
+	var i,
+		typeElement = $("input[name=numFmtType]"),
+		style = $("#numStyle"),
+		stylePicker = $("#numStylePicker"),
+		currency = $("#currencyPicker"),
+		locale = $('#localeControl').val() || "en",
+		res = new ilib.ResBundle({
+			name: "sysres",
+			locale: locale
+		});
+	
+	$('#localeControl,input[name=numFmtType]').change(function () {
+		var type = $('[name="numFmtType"]:checked').val();
+		
+		switch (type) {
+		case 'number':
+			style.empty();
+			stylePicker.show();
+			setDefaultNumFmtStyleValues(style, res);
+			currency.hide();
+			break;
+		case 'currency':
+			style.empty();
+			stylePicker.show();
+			style.append($("<option></option>").attr({
+				value: "common",
+				selected: true
+			}).text(res.getString("Common")));
+			style.append($("<option></option>").attr({
+				value: "iso",
+				selected: false
+			}).text(res.getString("ISO")));
+			setupCurrencyValues($('#currency'));
+			currency.show();
+			break;
+		case 'percentage':
+			stylePicker.hide();
+			currency.hide();
+			break;
+		}
+	});
+	
+	setDefaultNumFmtStyleValues(style, res);
+	
+	$('#sampleTextLabel').text(res.getString("Number"));
+	$('#sampleTextPicker').show();
+	$('#numFmtPicker').show();
+};
+
+function setupCurrencyPicker() {
+	var i,
+		currency = $("#currencyPicker");
+	
+	$('#localeControl').change(function () {
+		setupCurrencyValues($('#currency'));
+	});
+	
+	setupCurrencyValues($('#currency'));
+	
+	$('#currencyPicker').show();
+};
+
+function setupCalendarInfoPicker() {
+	var i,
+		yearElement = $('#year'),
+		monthElement = $('#month'),
+		calName = $('#calendarName'),
+		cal;
+	
+	setCalendarValues();
+	
+	cal = ilib.Cal.newInstance({
+		type: "gregorian"
+	});
+	today = cal.newDateInstance();
+
+	$('#localeControl').change(function () {
+		var month = parseInt(monthElement.val()),
+			year = parseInt(yearElement.val());
+		setMonthValues(monthElement, month, year);
+	});
+
+	calName.change(function() {
+		var name = calName.val(),
+			locale = $('#localeControl').val() || "en";
+		
+		cal = ilib.Cal.newInstance({
+			type: name,
+			locale: locale
+		});
+		
+		var today = cal.newDateInstance()
+
+		yearElement.val(today.year);
+		setMonthValues(monthElement, today.month, today.year);
+	});
+
+	$('#year').change(function () {
+		var month = parseInt(monthElement.val()),
+			year = parseInt(yearElement.val());
+		setMonthValues(monthElement, month, year);
+	});
+
+	yearElement.val(today.year);
+	setMonthValues(monthElement, today.month, today.year);
+	
+	$('#yearMonthPicker').show();
+	$('#calendarPane').show();
+};
+
 function hideAllPickers() {
 	$('#calendarPane').hide();
 	$('#formatPane').hide();
 	$('#calendarPicker').hide();
+	$('#yearMonthPicker').hide();
 	$('#jdpicker').hide();
 	$('#rangePicker').hide();
 	$('#jdRangePicker').hide();
 	$('#durationPicker').hide();
 	$('#targetTZPicker').hide();
+	$('#resTypePicker').hide();
+	$('#sampleTextPicker').hide();
+	$('#numFmtPicker').hide();
+	$('#currencyPicker').hide();
 };

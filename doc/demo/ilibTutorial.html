@@ -34,18 +34,19 @@ limitations under the License.
 $(function() {
 	$('#labForm').submit(function() { return false; } );
         
-    var preFmtData = null;
-    var postFmtData = null;
-    var fmt = null;
+    var preFmtData;
+    var postFmtData;
+    var fmt;
     var rangeFmt;
 	var durFmt;
-    var rangeData = null;
-    var durationData = null;
-    var localeName = null;
-    var convertName = null;
-    var localeInfo = null;
-    var res = null;
-    var psudoStr = null;
+    var rangeData;
+    var durationData;
+    var localeName;
+    var convertName;
+    var localeInfo;
+    var res;
+    var pseudorb;
+    var psudoStr;
     var localeElement = $('#localeControl');
     
     var localeMap = [],
@@ -82,17 +83,6 @@ $(function() {
             return;
         }
         
-        if (convertName == 'PseudoTranslation') {
-        	// No need for locale to be set for Pseudo
-        	res = new ilib.ResBundle({
-					locale : "xx-XX",
-					name : "ilibTutorial",
-					type : "html"
-			});
-        	localeName = "xx-XX";
-        	return;
-		}
-			
 		localeName = localeElement.val();
 	    if (localeName == '') {
             localeName = "en-US";
@@ -131,7 +121,19 @@ $(function() {
         case 'LocaleInfo':
     		// don't need any special UI for these ones
             break;
-		default:
+        case 'CurrencyInfo':
+    		setupCurrencyPicker();
+            break;
+        case 'CalendarInfo':
+        	setupCalendarInfoPicker();
+            break;
+        case 'PseudoTranslation':
+            setupTextPicker(res);
+            break;
+        case 'NumFmt':
+            setupNumPicker();
+            break;
+        default:
 			alert(convertName + ": to be implemented");
             break;
 		}
@@ -140,7 +142,7 @@ $(function() {
 	$('#applyButton').click(function() {
 		var data = parseInt($('#dataValue').val());
 		if (isNaN(data) || (data < 0)) {
-			data = null;
+			data = undefined;
 		}
 
 		var options = {};
@@ -514,7 +516,26 @@ $(function() {
             
 			$('.testSubject').html(output);
             break;
+
+		case 'CurrencyInfo':
+            var output = "",
+            	currency = $('#currency').val(),
+            	ci;
             
+            options = {
+            	code: currency
+            };
+
+            ci = new ilib.Currency(options);
+            
+            output += res.getString("Code: ") + ci.getCode() + "<br/>";
+			output += res.getString("Name in English: ") + ci.getName() + "<br/>";
+            output += res.getString("Fraction Digits: ") + ci.getFractionDigits() + "<br/>";
+            output += res.getString("Common Sign/Symbol: ") + ci.getSign() + "<br/>";
+            
+			$('.testSubject').html(output);
+            break;
+
         case 'WorldTime':
             var calendar = $('#calendarName').val(),
                 cal = ilib.Cal.newInstance({
@@ -628,9 +649,21 @@ $(function() {
             break;
             
 		case 'PseudoTranslation':
-			pseudoStr = res.getString("Greetings from Paris");
-			//$('.testSubject').html("Greetings from Paris -> " + $.forDisplay(pseudoStr));
-			$('.testSubject').html("Greetings from Paris -> " + pseudoStr);
+			var type = $('[name="resType"]:checked').val();
+			var str = $('#sampleText').val();
+			
+			options = {
+				locale: "xx-XX",
+				name: "resources",
+				type: type
+			};
+			
+			if (!pseudorb || pseudorb.getType() !== type) {
+	        	pseudorb = new ilib.ResBundle(options);
+			}
+			pseudoStr = pseudorb.getString(str);
+			pseudoStr = pseudorb.escape(pseudoStr.toString());
+			$('.testSubject').html(str + " -> " + pseudoStr);
             break;
             
         case 'ISOWeek':
@@ -769,7 +802,71 @@ $(function() {
             $('.testSubject').html('<b>' + output + '</b><br />');
             break;
         
-        default: ;
+        case 'NumFmt':
+            var num = new ilib.Number($('#sampleText').val()),
+            	type = $('[name="numFmtType"]:checked').val(),
+                max = $('#maxFrac').val(),
+                min = $('#minFrac').val(),
+                rounding = $('[name="roundingMode"]:checked').val(),
+                style = $('#numStyle').val(),
+                currency = $('#currency').val(),
+                fmt;
+            
+            options = {
+            	locale: localeName,
+                type: type,
+                roundingMode: rounding
+            };
+            
+            if (max && parseInt(max) !== 0) {
+            	options.maxFractionDigits = parseInt(max);
+            }
+            if (min && parseInt(min) !== 0) {
+            	options.minFractionDigits = parseInt(min);
+            }
+            
+            switch (type) {
+            case 'number':
+            	options.style = style;
+            	break;
+            case 'percentage':
+            	break;
+            case 'currency':
+            	options.style = style;
+            	options.currency = currency;
+            	break;
+            }
+            
+            fmt = new ilib.NumFmt(options);
+            
+            output = fmt.format(num);
+            
+            $('.testSubject').html('<b>' + output + '</b><br />');
+            break;
+
+		case 'CalendarInfo':
+            var output = "",
+            	calName = $('#calendarName').val(),
+            	month = parseInt($('#month').val()),
+            	year = parseInt($('#year').val()),
+            	ci;
+            
+            options = {
+            	locale: localeName,
+            	type: calName
+            };
+
+            ci = ilib.Cal.newInstance(options);
+            
+            output += res.getString("Name: ") + ci.getType() + "<br/>";
+			output += res.getString("Number of Months in {y}: ").format({y: year}) + ci.getNumMonths(year) + "<br/>";
+            output += res.getString("Number of Days in month {m} of year {y}: ").format({y: year, m: month}) + ci.getMonLength(month, year) + "<br/>";
+            output += res.getString("Is {y} a leap year? ").format({y: year}) + ci.isLeapYear(year) + "<br/>";
+            
+			$('.testSubject').html(output);
+            break;
+
+		default: ;
 		}
 
 		//
@@ -842,6 +939,7 @@ $(function() {
                     <div>
                         <label for="conversionCtl">Function:</label> <select id="conversionCtl">
                             <option value="">&mdash;choose one&mdash;</option>
+                            <option value="">-------- Dates and Times -------</option>
                             <option value="DateFmt">Date Formatting</option>
                             <option value="DateFmtRange">Date Range Formatting</option>
                             <option value="DateFmtDuration">Duration Formatting</option>
@@ -849,21 +947,25 @@ $(function() {
                             <option value="CalendarConv">Convert Dates to Other Calendars</option>
                             <option value="DayOfWeek">Find the day of the week for a date</option>
                             <option value="WorldTime">World Time Zone Converter</option>
-                            <option value="TimeZone">Time Zone Info</option>
                             <option value="ISOWeek">ISO Week Number Determination</option>
                             <option value="ISOWeekOfMonth">Week of Month Determination</option>
                             <option value="DayOfYear">Day of Year Determination</option>
+                            <option value="">-------- Info Classes --------</option>
+                            <option value="CurrencyInfo">Currency Info</option>
                             <option value="LocaleInfo">Locale Info</option>
+                            <option value="TimeZone">Time Zone Info</option>
+                            <option value="CalendarInfo">Calendar Info</option>
+                            <option value="">-------- String Classes --------</option>
+                            <option value="PseudoTranslation">Pseudo Translation</option>
+                            <option value="">-------- Number Classes --------</option>
+                            <option value="NumFmt">Number Formatting</option>
 <!--
                             <option value="ShowCalendar">Show Calendar</option>
                             <option value="GetString">Translation</option>
                             <option value="StringFmt">String Formatting</option>
                             <option value="FormatChoice">Choice Formatting</option>
-                            <option value="PseudoTranslation">Pseudo Translation</option>
-                            <option value="NumFmt">Number Formatting</option>
-                            <option value="CurrencyInfo">Currency Info</option>
                             
-                            <option value="CalendarInfo">Calendar Info</option>
+                            
                             <option value="CType">Character Type</option>
 -->            
                         </select>
@@ -933,7 +1035,7 @@ $(function() {
                                 </div>
                             </div>
                         </div>
-                        <div id='calendarPicker' style="display: none">
+                        <div id='yearMonthPicker' style="display: none">
                             <div>
                                 <label for="year">Year:</label>
                                 <input type="text" name="year" id="year"/>
@@ -942,6 +1044,8 @@ $(function() {
                                 <label for="month">Month:</label>
                                 <select name="month" id="month"></select>
                             </div>
+                        </div>
+                        <div id='calendarPicker' style="display: none">
                             <div>
                                 <label for="day">Day:</label>
                                 <select name="day" id="day"></select>
@@ -964,13 +1068,13 @@ $(function() {
                             </div>
                             <div id="tzpicker">
                                 <label for="timezone">Time Zone:</label>
-                                <select name="timezone" id="timezone"/></select>
+                                <select name="timezone" id="timezone"></select>
                             </div>
                         </div>
                         <div id="targetTZPicker" style="display: none">
                             <div>
                                 <label for="targettz">Target Time Zone:</label>
-                                <select name="targettz" id="targettz"/></select>
+                                <select name="targettz" id="targettz"></select>
                             </div>
                         </div>
                         <div id="jdpicker" style="display: none">
@@ -1086,6 +1190,52 @@ $(function() {
                             <label for="dmillisecond">Milliseconds:</label>
                             <input type="text" name="dmillisecond" id="dmillisecond"/>
                         </div>
+                    </div>
+                    <div id="resTypePicker" style="display: none">
+                        <label>Resource Type:</label>
+                        <input type="radio" name="resType" id="resType" value="html"/>HTML
+                        <input type="radio" name="resType" id="resType" value="xml"/>XML
+                        <input type="radio" name="resType" id="resType" value="text" checked="checked"/>text
+                        <input type="radio" name="resType" id="resType" value="raw"/>raw
+                    </div>
+                    <div id="numFmtPicker" style="display: none">
+                    	<div>
+	                        <label>Type:</label>
+	                        <input type="radio" name="numFmtType" id="numFmtType" value="number" checked="checked"/>number
+	                        <input type="radio" name="numFmtType" id="numFmtType" value="percentage"/>percentage
+	                        <input type="radio" name="numFmtType" id="numFmtType" value="currency"/>currency
+                        </div>
+                        <div>
+                            <label for="maxFrac">Max Frac Digits:</label>
+                            <input type="text" name="maxFrac" id="maxFrac"/>
+                        </div>
+                        <div>
+                            <label for="minFrac">Min Frac Digits:</label>
+                            <input type="text" name="minFrac" id="minFrac"/>
+                        </div>
+                        <div>
+                        	<label>Rounding Mode:</label>
+                            <input type="radio" name="roundingMode" id="roundingMode" value="up"/>up
+                            <input type="radio" name="roundingMode" id="roundingMode" value="down"/>down
+                            <input type="radio" name="roundingMode" id="roundingMode" value="ceiling"/>ceiling
+                            <input type="radio" name="roundingMode" id="roundingMode" value="floor"/>floor
+                            <input type="radio" name="roundingMode" id="roundingMode" value="halfup"/>half up
+                            <input type="radio" name="roundingMode" id="roundingMode" value="halfdown" checked="checked"/>half down
+                            <input type="radio" name="roundingMode" id="roundingMode" value="halfeven"/>half even
+                            <input type="radio" name="roundingMode" id="roundingMode" value="halfodd"/>half odd
+                      	</div>
+                        <div id='numStylePicker'>
+                             <label for="numStyle">Style:</label>
+                             <select name="numStyle" id="numStyle"></select>
+                        </div>
+                    </div>
+                    <div id="currencyPicker" style="display: none">
+                        <label for="currency">Currency:</label>
+                        <select name="currency" id="currency"></select>
+                    </div>
+                    <div id='sampleTextPicker' style="display: none">
+                    	<label id="sampleTextLabel" for="sample">Text:</label>
+                    	<input type="text" size="40" id="sampleText"/>
                     </div>
 					<div id="buttonBar">
 						<button type="button" id="applyButton" class="green90x24">Apply</button>
