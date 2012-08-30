@@ -32,6 +32,12 @@
 				"l": "yyyy年MMM月",
 				"f": "yyyy年MMMM月"
 			},
+			"dw": {
+				"s": "EEd",
+				"m": "EEd",
+				"l": "EEEd",
+				"f": "EEEEd"
+			},
 			"d": "dd",
 			"m": {
 				"s": "M",

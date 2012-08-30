@@ -32,6 +32,12 @@
 				"l": "yyyy년 MMM월",
 				"f": "yyyy년 MMM월"
 			},
+			"dw": {
+				"s": "EE dd",
+				"m": "EE dd",
+				"l": "EEE d일",
+				"f": "d일(EEEE)"
+			},
 			"d": "dd",
 			"m": {
 				"s": "M",

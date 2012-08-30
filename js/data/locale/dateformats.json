@@ -32,6 +32,12 @@
 				"l": "MMM yyyy",
 				"f": "MMMM yyyy"
 			},
+			"dw": {
+				"s": "EE d",
+				"m": "EE d",
+				"l": "EEE d",
+				"f": "EEEE d"
+			},
 			"d": "dd",
 			"m": {
 				"s": "M",
@@ -125,7 +131,6 @@
 			"c30": "{sy} - {ey}"
 		}
 	},
-	"julian": "gregorian",
 	"islamic": "gregorian",
 	"hebrew": "gregorian"
 }

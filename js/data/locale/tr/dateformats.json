@@ -32,6 +32,12 @@
 				"l": "MMM yy",
 				"f": "MMMM yyyy"
 			},
+			"dw": {
+				"s": "dd EE",
+				"m": "dd EE",
+				"l": "dd EEE",
+				"f": "dd EEEE"
+			},
 			"d": {
 				"s": "dd",
 				"m": "dd",

@@ -4,8 +4,8 @@
 			"dmwy": {
 				"s": "E, dd/MM/yy",
 				"m": "EE, dd/MM/yyyy",
-				"l": "EEE, d 'de' MMM 'de' yy",
-				"f": "EEEE, d 'de' MMMM 'de' yyyy"
+				"l": "EEE, dd 'de' MMM 'de' yy",
+				"f": "EEEE, dd 'de' MMMM 'de' yyyy"
 			},
 			"dmy": {
 				"s": "dd/MM/yy",
@@ -30,6 +30,12 @@
 				"m": "MM/yyyy",
 				"l": "MMM yy",
 				"f": "MMMM yyyy"
+			},
+			"dw": {
+				"s": "EE, dd",
+				"m": "EE, dd",
+				"l": "EEE, dd",
+				"f": "EEEE, dd"
 			},
 			"d": {
 				"s": "dd",
@@ -89,12 +95,6 @@
 				"m": "{sd}/{sm} {st} - {ed}/{em} {et}, {sy}",
 				"l": "{sd} 'de' {sm} {st} - {ed} 'de' {em} {et}, {sy}",
 				"f": "{sd} 'de' {sm} {st} - {ed} 'de' {em} {et}, {sy}"
-			},
-			"c03": {
-				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
-				"m": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
-				"l": "{sd}  'de' {sm}  'de' {sy} {st} - {ed} 'de' {em} 'de' {ey} {et}",
-				"f": "{sd}  'de' {sm}  'de' {sy} {st} - {ed} 'de' {em} 'de' {ey} {et}"
 			},
 			"c03": {
 				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
