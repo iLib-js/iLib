@@ -36,6 +36,7 @@ limitations under the License.
 
 	<property name="build.dist"						value="${build.base}/../dist"/>
 	<property name="build.export"					value="${build.base}/../export"/>
+	<property name="build.demo"						value="${build.base}/../doc/demo"/>
 	
 	<property name="build.lib"						value="${build.base}/lib"/>
 	<property name="build.output"					value="${build.base}/output"/>
@@ -147,7 +148,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="iliball.js" 
 			srcfilename="ilib.js" 
-			locales="en-US,en-CA,fr-CA,es-MX,es-AR,pt-BR,zh-CN,ja-JP,ko-KR,en-IN,id-ID,ar-SA,ru-RU,tr-TR,en-AU,en-GB,fr-FR,de-DE,it-IT,en-ZA,en-NG,fa-IR,en-PH,tl-PH,vi-VN,es-ES,en-PK,ur-PK,xx-XX"/>
+			locales="en-US,en-CA,fr-CA,es-MX,es-AR,pt-BR,zh-CN,ja-JP,ko-KR,en-IN,id-ID,ar-SA,ru-RU,tr-TR,en-AU,en-GB,fr-FR,de-DE,it-IT,en-ZA,en-NG,fa-IR,en-PH,vi-VN,es-ES,en-PK,xx-XX"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
@@ -215,6 +216,14 @@ limitations under the License.
 				<exclude name="**/*.html"/>
 				<exclude name="src/iliball*"/>
 				<exclude name="userSettings.js"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="demo" depends="assemble" description="Copy all things needed for the demo site to the right place">
+		<copy todir="${build.demo}/scripts">
+			<fileset dir="${build.src}">
+				<include name="iliball.js"/>
 			</fileset>
 		</copy>
 	</target>
