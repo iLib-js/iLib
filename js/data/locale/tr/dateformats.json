@@ -17,8 +17,8 @@
 			"dmw": {
 				"s": "dd.MM E",
 				"m": "dd.MM EE",
-				"l": "d MMM EEE",
-				"f": "d MMMM EEEE"
+				"l": "dd MMM EEE",
+				"f": "dd MMMM EEEE"
 			},
 			"dm": {
 				"s": "dd.MM",
@@ -71,7 +71,8 @@
 			"hms": "HH:mm:ss",
 			"ahm": "HH:mm a",
 			"hmz": "HH:mm Z",
-			"hm": "h:mm",
+			"ah": "HH",
+			"hm": "HH:mm",
 			"ms": "mm:ss",
 			"h": "HH",
 			"m": "mm",
