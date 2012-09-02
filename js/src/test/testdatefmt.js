@@ -1686,3 +1686,212 @@ function testDateFmtConvertToOtherTimeZone() {
     
     assertEquals("21/9/11 6:45am EST", fmt.format(date));
 };
+
+
+// test locales that are tier 2 and below by doing a single test to see that it basically works
+function testDateFmtenNG() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "datetime",
+    	locale: "en-NG",
+    	date: "wdmy",
+    	time: "hma"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    
+    assertEquals("Tuesday 20 September 2011 13:45", fmt.format(date));
+};
+
+function testDateFmtenPH() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "datetime",
+    	locale: "en-PH",
+    	date: "wdmy",
+    	time: "hma"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    
+    assertEquals("Tuesday 20 September 2011 1:45pm", fmt.format(date));
+};
+
+function testDateFmtenPK() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "datetime",
+    	locale: "en-PK",
+    	date: "wdmy",
+    	time: "hma"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    
+    assertEquals("Tuesday 20 September 2011 13:45", fmt.format(date));
+};
+
+function testDateFmtenAU() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "datetime",
+    	locale: "en-AU",
+    	date: "wdmy",
+    	time: "hma"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    
+    assertEquals("Tuesday 20 September 2011 1:45pm", fmt.format(date));
+};
+
+function testDateFmtenZA() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "datetime",
+    	locale: "en-ZA",
+    	date: "wdmy",
+    	time: "hma"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    
+    assertEquals("Tuesday 20 September 2011 1:45 pm", fmt.format(date));
+};
+
+function testDateFmtesES() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "datetime",
+    	locale: "es-ES",
+    	date: "wdmy",
+    	time: "hma"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    
+    assertEquals("martes 20 de septiembre 2011 13:45", fmt.format(date));
+};
+
+function testDateFmtesMX() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "datetime",
+    	locale: "es-MX",
+    	date: "wdmy",
+    	time: "hma"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    
+    assertEquals("martes 20 de septiembre 2011 1:45PM", fmt.format(date));
+};
+
+function testDateFmtesAR() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "datetime",
+    	locale: "es-AR",
+    	date: "wdmy",
+    	time: "hma"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    
+    assertEquals("martes 20 de septiembre 2011 13h45", fmt.format(date));
+};
+
+function testDateFmttrTR() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "datetime",
+    	locale: "tr-TR",
+    	date: "wdmy",
+    	time: "hma"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    
+    assertEquals("20 Eylül 2011 Salı 13:45", fmt.format(date));
+};

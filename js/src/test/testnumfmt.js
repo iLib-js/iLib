@@ -1055,3 +1055,136 @@ function testNumFmtNumberFormatJALessThanOneNegative() {
     
     assertEquals("-0.7", fmt.format(-0.7));
 }
+
+// test all of tier 1 locales and a number of the tier 2 and lower locales
+function testNumFmtzhCN() {
+    var fmt = new ilib.NumFmt({
+        locale: "zh-CN",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-12,3456.78", fmt.format(-123456.785));
+}
+
+function testNumFmtenIN() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-IN",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123,456.78", fmt.format(-123456.785));
+}
+
+function testNumFmtenGB() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-GB",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123,456.78", fmt.format(-123456.785));
+}
+
+function testNumFmtenCA() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-CA",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123,456.78", fmt.format(-123456.785));
+}
+
+function testNumFmtjaJP() {
+    var fmt = new ilib.NumFmt({
+        locale: "ja-JP",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123456.78", fmt.format(-123456.785));
+}
+
+function testNumFmtptBR() {
+    var fmt = new ilib.NumFmt({
+        locale: "pt-BR",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123.456,78", fmt.format(-123456.785));
+}
+
+function testNumFmtdeDE() {
+    var fmt = new ilib.NumFmt({
+        locale: "de-DE",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123.456,78", fmt.format(-123456.785));
+}
+
+function testNumFmtruRU() {
+    var fmt = new ilib.NumFmt({
+        locale: "ru-RU",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123.456,78", fmt.format(-123456.785));
+}
+
+function testNumFmtidID() {
+    var fmt = new ilib.NumFmt({
+        locale: "id-ID",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123.456,78", fmt.format(-123456.785));
+}
+
+function testNumFmtfrFR() {
+    var fmt = new ilib.NumFmt({
+        locale: "fr-FR",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123 456,78", fmt.format(-123456.785));
+}
+
+function testNumFmtfrCA() {
+    var fmt = new ilib.NumFmt({
+        locale: "fr-CA",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123 456,78", fmt.format(-123456.785));
+}
+
+function testNumFmtitIT() {
+    var fmt = new ilib.NumFmt({
+        locale: "it-IT",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-123.456,78", fmt.format(-123456.785));
+}
