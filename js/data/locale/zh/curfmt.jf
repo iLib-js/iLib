@@ -1,0 +1,4 @@
+	"currencyFormats": {
+		"common": "{n}{s}",
+		"iso": "{s}{n}"
+	},

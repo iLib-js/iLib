@@ -261,7 +261,7 @@ function testLocaleInfoGetGroupingDigits3() {
     var info = new ilib.LocaleInfo("zh-CN");    
     assertNotNull(info);
 
-    assertEquals(4, info.getGroupingDigits());
+    assertEquals(3, info.getGroupingDigits());
 }
 
 function testLocaleInfoGetPercentageFormat1() {
@@ -275,7 +275,7 @@ function testLocaleInfoGetPercentageFormat2() {
     var info = new ilib.LocaleInfo("fr-FR");    
     assertNotNull(info);
 
-    assertEquals("{n} %", info.getPercentageFormat());
+    assertEquals("{n}%", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetPercentageSymbol1() {

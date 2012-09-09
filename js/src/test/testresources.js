@@ -73,6 +73,12 @@ ilib.data.tester_de = {
     "key1": "Grüße vom {user}"
 };
 
+ilib.data.tester_zh = {
+    "empty": "",
+    "space": " ",
+    "comma": ","
+};
+
 function testResBundleConstructorEmpty() {
     var rb = new ilib.ResBundle();
     
@@ -606,4 +612,94 @@ function testResBundleGetResObjMerge() {
     assertEquals("deuxième", obj.arr[1]);
     assertEquals("troisième", obj.arr[2]);
     assertEquals("quatrième", obj.arr[3]);
+}
+
+function testResBundleGetStringAcceptEmptyTranslations() {
+    var rb = new ilib.ResBundle({
+    	name: "tester",
+    	locale: "zh-CN"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("", rb.getString("empty").toString());
+}
+
+function testResBundleGetStringNonExistantTranslations() {
+    var rb = new ilib.ResBundle({
+    	name: "tester",
+    	locale: "zh-CN"
+    });
+    
+    assertNotNull(rb);
+    
+    // should return source
+    assertEquals("foobar", rb.getString("foobar").toString());
+}
+
+function testResBundleGetStringAcceptSpaceTranslations() {
+    var rb = new ilib.ResBundle({
+    	name: "tester",
+    	locale: "zh-CN"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals(" ", rb.getString("space").toString());
+}
+
+function testResBundleGetStringAcceptCommaTranslations() {
+    var rb = new ilib.ResBundle({
+    	name: "tester",
+    	locale: "zh-CN"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals(",", rb.getString("comma").toString());
+}
+
+function testResBundleGetStringAcceptEmptyTranslationsWithKey() {
+    var rb = new ilib.ResBundle({
+    	name: "tester",
+    	locale: "zh-CN"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("", rb.getString("asdf", "empty").toString());
+}
+
+function testResBundleGetStringAcceptNonExistantTranslationsWithKey() {
+    var rb = new ilib.ResBundle({
+    	name: "tester",
+    	locale: "zh-CN"
+    });
+    
+    assertNotNull(rb);
+    
+    // should return source
+    assertEquals("asdf", rb.getString("asdf", "foobar").toString());
+}
+
+function testResBundleGetStringAcceptSpaceTranslationsWithKey() {
+    var rb = new ilib.ResBundle({
+    	name: "tester",
+    	locale: "zh-CN"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals(" ", rb.getString("asdf", "space").toString());
+}
+
+function testResBundleGetStringAcceptCommaTranslationsWithKey() {
+    var rb = new ilib.ResBundle({
+    	name: "tester",
+    	locale: "zh-CN"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals(",", rb.getString("asdf", "comma").toString());
 }

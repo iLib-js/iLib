@@ -1065,7 +1065,7 @@ function testNumFmtzhCN() {
     
     assertNotNull(fmt);
     
-    assertEquals("-12,3456.78", fmt.format(-123456.785));
+    assertEquals("-123,456.78", fmt.format(-123456.785));
 }
 
 function testNumFmtenIN() {
@@ -1142,7 +1142,7 @@ function testNumFmtruRU() {
     
     assertNotNull(fmt);
     
-    assertEquals("-123.456,78", fmt.format(-123456.785));
+    assertEquals("-123 456,78", fmt.format(-123456.785));
 }
 
 function testNumFmtidID() {

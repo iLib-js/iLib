@@ -2,5 +2,5 @@
 		"decimalChar": ",",
 		"groupChar": " ",
 		"groupSize": 3,
-		"pctFmt": "{n} %"
+		"pctFmt": "{n}%"
 	},

@@ -395,7 +395,7 @@ ilib.ResBundle.prototype = {
 		}
 		
 		var keyName = key || this.makeKey(source);
-		var trans = this.map[keyName] || source;
+		var trans = typeof(this.map[keyName]) !== 'undefined' ? this.map[keyName] : source;
 		return trans === undefined ? undefined : new ilib.String((this.type === "xml" || this.type === "html") ? this.escape(trans) : trans);
 	},
 	

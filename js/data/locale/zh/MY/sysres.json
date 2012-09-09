@@ -41,5 +41,5 @@
 	"1#1 minute|#{num} minutes": "#{num}分鐘",
 	"1#1 hour|#{num} hours": "#{num}小時",
 	"1#1 week|#{num} weeks": "#{num}週",
-	"1#1 month|#{num} months": "#{num}個月"
+	"1#1 month|#{num} months": "#{num}個月",
 }

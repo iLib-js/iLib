@@ -96,7 +96,7 @@
 	"1#1 second|#{num} seconds": "1#1 secondo|#{num} secondi",
 	"1#1 minute|#{num} minutes": "1#1 minuto|#{num} minuti",
 	"1#1 hour|#{num} hours": "1#1 ora|#{num} ore",
-	"1#1 day|#{num} days": "1#1 giorno|#{num} gioni",
+	"1#1 day|#{num} days": "1#1 giorno|#{num} giorni",
 	"1#1 week|#{num} weeks": "1#1 settimana|#{num} settimane",
 	"1#1 month|#{num} months": "1#1 mese|#{num} mesi",
 	"1#1 year|#{num} years": "1#1 anno|#{num} anni",
@@ -107,5 +107,5 @@
 	"separatorMedium": " ",
 	"separatorLong": " ",
 	"separatorFull": ", ",
-	"finalSeparatorFull": ", und "
+	"finalSeparatorFull": " e "
 }

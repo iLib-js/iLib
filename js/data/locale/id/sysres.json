@@ -45,7 +45,7 @@
 	"a1": "PM",
 	"G-1": "SM",
 	"G1": "M",
-	"in {duration}": "Dalam {duration}",
+	"in {duration}": "dalam {duration}",
 	"{duration} ago": "{duration} yang lalu",
 	"1#1 year|#{num} years": "#{num} tahun",
 	"1#1 month|#{num} months": "#{num} bulan",

@@ -416,7 +416,7 @@ function testDateFmtTypeTime() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtTypeTime() {
+function testDateFmtTypeDateTime() {
     var fmt = new ilib.DateFmt({locale: "de-DE", type: "datetime"});
     assertNotNull(fmt);
     

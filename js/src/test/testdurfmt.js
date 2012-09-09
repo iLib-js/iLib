@@ -483,3 +483,126 @@ function testDurFmtFormatFullDEPlural() {
     });
     assertEquals("2 Jahre, 2 Monate, 2 Wochen, 2 Tage, 2 Stunden, 2 Minuten, 2 Sekunden, und 2 Millisekunden", duration.toString());
 };
+
+function testDurFmtFormatShortZHDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "zh-CN",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1,
+    	millisecond: 1
+    });
+    assertEquals("1年1个月1周1天1小时1分钟1秒1毫秒", duration.toString());
+};
+
+function testDurFmtFormatShortZHText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "zh-CN",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1,
+    	millisecond: 1
+    });
+    assertEquals("1年1个月1周1天1小时1分钟1秒1毫秒", duration.toString());
+};
+
+function testDurFmtFormatShortZHClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "zh-CN",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1,
+    	millisecond: 1
+    });
+    assertEquals("1年1个月1周1天1:01:01", duration.toString());
+};
+
+function testDurFmtFormatMediumZH() {
+    var fmt = new ilib.DurFmt({
+    	locale: "zh-CN",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1,
+    	millisecond: 1
+    });
+    assertEquals("1年1个月1周1天1小时1分钟1秒1毫秒", duration.toString());
+};
+
+function testDurFmtFormatLongZH() {
+    var fmt = new ilib.DurFmt({
+    	locale: "zh-CN",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1,
+    	millisecond: 1
+    });
+    assertEquals("1年1个月1周1天1小时1分钟1秒1毫秒", duration.toString());
+};
+
+function testDurFmtFormatFullZH() {
+    var fmt = new ilib.DurFmt({
+    	locale: "zh-CN",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1,
+    	millisecond: 1
+    });
+    assertEquals("1年1个月1周1天1小时1分钟1秒1毫秒", duration.toString());
+};
+

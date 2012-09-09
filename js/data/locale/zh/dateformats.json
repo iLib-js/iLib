@@ -1,61 +1,71 @@
 {
 	"gregorian": {
-		"order": "{date}{time}",
+		"order": {
+			"s": "{date} {time}",
+			"m": "{date} {time}",
+			"l": "{date}{time}",
+			"f": "{date}{time}"
+		},
 		"date": {
 			"dmwy": {
-				"s": "yy-MM-dE",
-				"m": "yyyy-MM-dEE",
-				"l": "yyyy年MMM月d日EEE",
-				"f": "yyyy年MMMM月d日EEEE"
+				"s": "yy-MM-dd(E)",
+				"m": "yyyy-MM-dd(EE)",
+				"l": "yy年MMM月d日(EEE)",
+				"f": "yyyy年MMMM月d日(EEEE)"
 			},
 			"dmy": {
-				"s": "yy-MM-d",
-				"m": "yyyy-MM-d",
-				"l": "yyyy年MMM月d日",
+				"s": "yy-MM-dd",
+				"m": "yyyy-MM-dd",
+				"l": "yy年MMM月d日",
 				"f": "yyyy年MMMM月d日"
 			},
 			"dmw": {
-				"s": "MM-dE",
-				"m": "MM-dEE",
-				"l": "MMM月d日EEE",
-				"f": "MMMM月d日EEEE"
+				"s": "MM-dd(E)",
+				"m": "MM-dd(EE)",
+				"l": "MMM月d日(EEE)",
+				"f": "MMMM月d日(EEEE)"
 			},
 			"dm": {
-				"s": "MM-d",
-				"m": "MM-d",
+				"s": "MM-dd",
+				"m": "MM-dd",
 				"l": "MMM月d日",
 				"f": "MMMM月d日"
 			},
 			"my": {
 				"s": "yy-MM",
 				"m": "yyyy-MM",
-				"l": "yyyy年MMM月",
+				"l": "yy年MMM月",
 				"f": "yyyy年MMMM月"
 			},
 			"dw": {
-				"s": "dE",
-				"m": "dEE",
-				"l": "d日EEE",
-				"f": "d日EEEE"
+				"s": "d日(E)",
+				"m": "d日(EE)",
+				"l": "d日(EEE)",
+				"f": "d日(EEEE)"
 			},
-			"d": "dd",
+			"d": {
+				"s": "d",
+				"m": "dd",
+				"l": "d日",
+				"f": "d日"
+			},
 			"m": {
 				"s": "M",
 				"m": "MM",
-				"l": "MMM",
-				"f": "MMMM"
+				"l": "MMM月",
+				"f": "MMMM月"
 			},
 			"y": {
 				"s": "yy",
 				"m": "yyyy",
-				"l": "yyyy",
-				"f": "yyyy"
+				"l": "yy年",
+				"f": "yyyy年"
 			},
 			"n": {
 				"s": "N",
 				"m": "NN",
-				"l": "MMM",
-				"f": "MMMM"
+				"l": "MMM月",
+				"f": "MMMM月"
 			}
 		},
 		"time": {
@@ -77,53 +87,52 @@
 			"c00": {
 				"s": "{sy}-{sm}-{sd}，{st}至{et}",
 				"m": "{sy}-{sm}-{sd}，{st}至{et}",
-				"l": "{sy}年{sm}月{sd}日，{st}至{et}",
-				"f": "{sy}年{sm}月{sd}日，{st}至{et}"
+				"l": "{sy}{sm}{sd}，{st}至{et}",
+				"f": "{sy}{sm}{sd}，{st}至{et}"
 			},
 			"c01": {
 				"s": "{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}",
 				"m": "{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}",
-				"l": "{sy}年{sm}月{sd}日，{st}至{ed}日，{et}",
-				"f": "{sy}年{sm}月{sd}日，{st}至{ed}日，{et}"
+				"l": "{sy}{sm}{sd}{st}至{ed}{et}",
+				"f": "{sy}{sm}{sd}{st}至{ed}{et}"
 			},
 			"c02": {
 				"s": "{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}",
 				"m": "{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}",
-				"l": "{sy}年{sm}月{sd}日，{st}至{em}月{ed}日，{et}",
-				"f": "{sy}年{sm}月{sd}日，{st}至{em}月{ed}日，{et}"
+				"l": "{sy}{sm}{sd}，{st}至{em}{ed}日，{et}",
+				"f": "{sy}{sm}{sd}，{st}至{em}{ed}日，{et}"
 			},
 			"c03": {
 				"s": "{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}",
 				"m": "{sy}-{sm}-{sd}，{st}至{ey}-{em}-{ed}，{et}",
-				"l": "{sy}年{sm}月{sd}日，{st}至{ey}年{em}月{ed}日，{et}",
-				"f": "{sy}年{sm}月{sd}日，{st}至{ey}年{em}月{ed}日，{et}"
+				"l": "{sy}{sm}{sd}，{st}至{ey}{em}{ed}，{et}",
+				"f": "{sy}{sm}{sd}，{st}至{ey}{em}{ed}，{et}"
 			},
 			"c10": {
 				"s": "{sy}-{sm}-{sd}至{ed}",
 				"m": "{sy}-{sm}-{sd}至{ed}",
-				"l": "{sy}年{sm}月{sd}日至{ed}日",
-				"f": "{sy}年{sm}月{sd}日至{ed}日"
+				"l": "{sy}{sm}{sd}至{ed}",
+				"f": "{sy}{sm}{sd}至{ed}"
 			},
 			"c11": {
 				"s": "{sy}-{sm}-{sd}至{em}-{ed}",
 				"m": "{sy}-{sm}-{sd}至{em}-{ed}",
-				"l": "{sy}年{sm}月{sd}日至{em}月{ed}日",
-				"f": "{sy}年{sm}月{sd}日至{em}月{ed}日"
+				"l": "{sy}{sm}{sd}至{em}{ed}",
+				"f": "{sy}{sm}{sd}至{em}{ed}"
 			},
 			"c12": {
 				"s": "{sy}-{sm}-{sd}至{ey}-{em}-{ed}",
 				"m": "{sy}-{sm}-{sd}至{ey}-{em}-{ed}",
-				"l": "{sy}年{sm}月{sd}日至{ey}年{em}月{ed}日",
-				"f": "{sy}年{sm}月{sd}日至{ey}年{em}月{ed}日"
+				"l": "{sy}{sm}{sd}至{ey}{em}{ed}",
+				"f": "{sy}{sm}{sd}至{ey}{em}{ed}"
 			},
 			"c20": {
 				"s": "{sy}-{sm}至{ey}-{em}",
 				"m": "{sy}-{sm}至{ey}-{em}",
-				"l": "{sy}年{sm}月至{ey}年{em}月",
-				"f": "{sy}年{sm}月至{ey}年{em}月"
+				"l": "{sy}{sm}至{ey}{em}",
+				"f": "{sy}{sm}至{ey}{em}"
 			},
 			"c30": "{sy}至{ey}"
 		}
-	},
-	"julian": "gregorian"
+	}
 }

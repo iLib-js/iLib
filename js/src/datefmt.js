@@ -349,20 +349,33 @@ ilib.DateFmt = function(options) {
 
 	/**
 	 * @protected
-	 * @param {Object} obj Object to search
+	 * @param {(string|{s:string,m:string,l:string,f:string})} obj Object to search
+	 * @param {string} length Length of the requested format
+	 * @returns {(string|undefined)} the requested format
+	 */
+	this._getLengthFormat = function getLengthFormat(obj, length) {
+		if (typeof(obj) === 'string') {
+			return obj;
+		} else if (obj[length]) {
+			return obj[length];
+		}
+		return undefined;
+	};
+
+	/**
+	 * @protected
+	 * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
 	 * @param {string} components Format components to search
 	 * @param {string} length Length of the requested format
 	 * @returns {string|undefined} the requested format
 	 */
 	this._getFormat = function getFormat(obj, components, length) {
-		if (obj[components]) {
-			return (typeof(obj[components]) === 'object') ? 
-				obj[components][length] : 
-				obj[components];
+		if (typeof(components) !== 'undefined' && obj[components]) {
+			return this._getLengthFormat(obj[components], length);
 		}
 		return undefined;
-	}
-	
+	};
+
 	/**
 	 * @protected
 	 * Convert the template into an array of date components separated by formatting chars.
@@ -424,7 +437,7 @@ ilib.DateFmt = function(options) {
 		if (formats[this.calName]) {
 			/** 
 			 * @private
-			 * @type {{order:string,date:Object.<string,string|{s:string,m:string,l:string,f:string}>,time:Object.<string,string|{s:string,m:string,l:string,f:string}>,range:Object.<string,string|{s:string,m:string,l:string,f:string}>}} 
+			 * @type {{order:(string|{s:string,m:string,l:string,f:string}),date:Object.<string, (string|{s:string,m:string,l:string,f:string})>,time:Object.<string,(string|{s:string,m:string,l:string,f:string})>,range:Object.<string, (string|{s:string,m:string,l:string,f:string})>}}
 			 */
 			this.formats = formats[this.calName];
 			if (typeof(this.formats) === "string") {
@@ -436,7 +449,7 @@ ilib.DateFmt = function(options) {
 			
 			switch (this.type) {
 				case "datetime":
-					this.template = this.formats.order;
+					this.template = (this.formats && this._getLengthFormat(this.formats.order, this.length)) || "{date} {time}";
 					this.template = this.template.replace("{date}", this._getFormat(this.formats.date, this.dateComponents, this.length));
 					this.template = this.template.replace("{time}", this._getFormat(this.formats.time, this.timeComponents, this.length));
 					break;
@@ -751,7 +764,25 @@ ilib.DateFmt.prototype = {
 					break;
 					
 				case 'a':
-					key = date.hour < 12 ? "a0" : "a1";
+					if (this.locale.getLanguage() === 'zh') {
+						if (date.hour < 6) {
+							key = "azh0";
+						} else if (date.hour < 9) {
+							key = "azh1";
+						} else if (date.hour < 12) {
+							key = "azh2";
+						} else if (date.hour < 13) {
+							key = "azh3";
+						} else if (date.hour < 18) {
+							key = "azh4";
+						} else if (date.hour < 21) {
+							key = "azh5";
+						} else {
+							key = "azh6";
+						}
+					} else {
+						key = date.hour < 12 ? "a0" : "a1";
+					}
 					//console.log("finding " + key + " in the resources");
 					str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
 					break;

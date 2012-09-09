@@ -620,3 +620,24 @@ function testTZGetAvailableIdsRightValues() {
     assertContains("Africa/Cairo", zones);
 }
 
+function testTZUseDaylightTimeID() {
+    var tz = new ilib.TimeZone({id: "Asia/Jakarta"});
+    assertNotNull(tz);
+    
+    assertFalse(tz.useDaylightTime());
+}
+
+function testTZDisplayNameStandardID() {
+    var tz = new ilib.TimeZone({id: "Asia/Jakarta"});
+    assertNotNull(tz);
+    
+    var gd = new ilib.Date.GregDate({
+		year: 2011,
+		month: 12,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 37
+	});
+    assertEquals("WIT", tz.getDisplayName(gd, 'standard'));
+}
