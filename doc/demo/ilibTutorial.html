@@ -355,7 +355,8 @@ $(function() {
                 sdate,
                 edate,
                 fmt,
-                output;
+                output,
+                dateLength = $('[name="dateLength"]:checked').val();
             
             if (calendar === 'julianday') {
                 sdate = cal.newDateInstance({
@@ -388,7 +389,7 @@ $(function() {
             options = {
                 calendar: calendar,
                 locale: localeName,
-                length: "full" 
+                length: dateLength 
             };
             
             fmt = new ilib.DateRngFmt(options);
@@ -981,14 +982,14 @@ $(function() {
                             <label>Input Calendar:</label>
                             <select id="calendarName"></select>
                         </div>
+                        <div id="lengthPane" style="display: none">
+                            <label>Length:</label>
+                            <input type="radio" name="dateLength" id="dateShort" value="short"/>Short
+                            <input type="radio" name="dateLength" id="dateMedium" value="medium"/>Medium
+                            <input type="radio" name="dateLength" id="dateLong" value="long"/>Long
+                            <input type="radio" name="dateLength" id="dateFull" value="full" checked="checked"/>Full
+                        </div>
                         <div id="formatPane" style="display: none">
-                            <div id="lengthPane">
-                                <label>Length:</label>
-                                <input type="radio" name="dateLength" id="dateShort" value="short"/>Short
-                                <input type="radio" name="dateLength" id="dateMedium" value="medium"/>Medium
-                                <input type="radio" name="dateLength" id="dateLong" value="long"/>Long
-                                <input type="radio" name="dateLength" id="dateFull" value="full" checked="checked"/>Full
-                            </div>
                             <div id="typePane">
                                 <label>Type:</label>
                                 <input type="radio" name="dateType" id="dt_date" value="date"/>Date only

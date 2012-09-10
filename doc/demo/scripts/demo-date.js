@@ -55,6 +55,7 @@ function setTimeZoneValues(element, tz) {
  * ilib Demo App: DateFmt jQuery controls
  */
 function setupFormatPicker() {
+	$('#lengthPane').show();
 	$('#formatPane').show();
 };
 
@@ -321,9 +322,11 @@ function setupRangePicker(startname, endname) {
 		if (name === "julianday") {
 			$('#rangePicker').hide();
 			$('#calendarPane').show();
+			$('#lengthPane').show();
 			$('#jdRangepicker').show();
 		} else {
 			$('#jdRangepicker').hide();
+			$('#lengthPane').show();
 			$('#calendarPane').show();
 			$('#rangePicker').show();
 			
@@ -372,6 +375,7 @@ function setupRangePicker(startname, endname) {
 	setHourValues(endHourElement, today.hour);
 
 	$('#calendarPane').show();
+	$('#lengthPane').show();
 	$('#rangePicker').show();
 };
 
@@ -534,6 +538,7 @@ function setupCalendarInfoPicker() {
 
 function hideAllPickers() {
 	$('#calendarPane').hide();
+	$('#lengthPane').hide();
 	$('#formatPane').hide();
 	$('#calendarPicker').hide();
 	$('#yearMonthPicker').hide();

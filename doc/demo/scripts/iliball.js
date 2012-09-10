@@ -258,7 +258,7 @@ ilib.Locale.prototype = {
  * @private
  */
 ilib.Locale.locales = [
-	"en-US","en-CA","fr-CA","es-MX","es-AR","pt-BR","zh-CN","zh-TW","zh-HK","ja-JP","ko-KR","en-IN","id-ID","ru-RU","en-AU","en-GB","fr-FR","de-DE","it-IT","en-ZA","en-NG","en-PH","es-ES","en-PK","vi-VN","xx-XX","tr-TR"
+	"en-US","en-CA","fr-CA","es-MX","es-AR","pt-BR","zh-CN","ja-JP","ko-KR","en-IN","id-ID","ru-RU","en-AU","en-GB","fr-FR","de-DE","it-IT","en-ZA","en-NG","en-PH","es-ES","en-PK","vi-VN","xx-XX","tr-TR"
 ];
 
 /**
@@ -1552,20 +1552,6 @@ ilib.data.localeinfo_zh_CN = {
 	"region.name": "China",
 	"timezone": "Asia/Shanghai",
 	"locale": "zh-CN"
-}
-;
-ilib.data.localeinfo_zh_TW = {
-	"currency": "TWD",
-	"region.name": "Taiwan",
-	"timezone": "Asia/Taipei",
-	"locale": "zh-TW"
-}
-;
-ilib.data.localeinfo_zh_HK = {
-	"currency": "HKD",
-	"region.name": "Hong Kong",
-	"timezone": "Asia/Hong_Kong",
-	"locale": "zh-HK"
 }
 ;
 ilib.data.localeinfo_ja = {
@@ -3949,16 +3935,16 @@ ilib.data.dateformats_fr = {
 			},
 			"d": "dd",
 			"m": {
-				"s": "M",
+				"s": "MM",
 				"m": "MM",
 				"l": "MMM",
 				"f": "MMMM"
 			},
 			"y": {
 				"s": "yy",
-				"m": "yy",
+				"m": "yyyy",
 				"l": "yyyy",
-				"f": "yyyy G"
+				"f": "yyyy"
 			},
 			"n": {
 				"s": "N",
@@ -3981,6 +3967,57 @@ ilib.data.dateformats_fr = {
 			"h": "HH",
 			"m": "mm",
 			"s": "ss"
+		},
+		"range": {
+			"c00": {
+				"s": "{st} - {et} {sd}/{sm}/{sy}",
+				"m": "{st} - {et} {sd}/{sm}/{sy}",
+				"l": "{st} - {et} {sd} {sm} {sy}",
+				"f": "{st} - {et} {sd} {sm} {sy}"
+			},
+			"c01": {
+				"s": "{st} {sd}/{sm} - {et} {ed}/{em}/{ey}",
+				"m": "{st} {sd}/{sm} - {et} {ed}/{em}/{sy}",
+				"l": "{st} {sd} {sm} - {et} {ed} {em} {sy}",
+				"f": "{st} {sd} {sm} - {et} {ed} {em} {sy}"
+			},
+			"c02": {
+				"s": "{st} {sd}/{sm} - {et} {ed}/{em}/{ey}",
+				"m": "{st} {sd}/{sm} - {et} {ed}/{em}/{sy}",
+				"l": "{st} {sd} {sm} - {et} {ed} {em} {sy}",
+				"f": "{st} {sd} {sm} - {et} {ed} {em} {sy}"
+			},
+			"c03": {
+				"s": "{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}",
+				"m": "{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}",
+				"l": "{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}",
+				"f": "{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}"
+			},
+			"c10": {
+				"s": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+				"m": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+				"l": "{sd}-{ed} {sm} {sy}",
+				"f": "{sd}-{ed} {sm} {sy}"
+			},
+			"c11": {
+				"s": "{sd}/{sm} - {ed}/{em}/{ey}",
+				"m": "{sd}/{sm} - {ed}/{em}/{sy}",
+				"l": "{sd} {sm} - {ed} {em} {sy}",
+				"f": "{sd} {sm} - {ed} {em} {sy}"
+			},
+			"c12": {
+				"s": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+				"m": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+				"l": "{sd} {sm} {sy} - {ed} {em} {ey}",
+				"f": "{sd} {sm} {sy} - {ed} {em} {ey}"
+			},
+			"c20": {
+				"s": "{sm}/{sy} - {em}/{ey}",
+				"m": "{sm}/{sy} - {em}/{ey}",
+				"l": "{sm} {sy} - {em} {ey}",
+				"f": "{sm} {sy} - {em} {ey}"
+			},
+			"c30": "{sy} - {ey}"
 		}
 	}
 };
@@ -4075,8 +4112,7 @@ ilib.data.dateformats_es = {
 			"m": "mm",
 			"s": "ss"
 		}
-	},
-	"julian": "gregorian"
+	}
 };
 ilib.data.dateformats_es_MX = {
 	"gregorian": {
@@ -4120,13 +4156,13 @@ ilib.data.dateformats_pt = {
 			"dmwy": {
 				"s": "E, dd/MM/yy",
 				"m": "EE, dd/MM/yyyy",
-				"l": "EEE, dd 'de' MMM 'de' yy",
+				"l": "EEE, dd 'de' MMM 'de' yyyy",
 				"f": "EEEE, dd 'de' MMMM 'de' yyyy"
 			},
 			"dmy": {
 				"s": "dd/MM/yy",
 				"m": "dd/MM/yyyy",
-				"l": "dd 'de' MMM 'de' yy",
+				"l": "dd 'de' MMM 'de' yyyy",
 				"f": "dd 'de' MMMM 'de' yyyy"
 			},
 			"dmw": {
@@ -4144,7 +4180,7 @@ ilib.data.dateformats_pt = {
 			"my": {
 				"s": "MM/yy",
 				"m": "MM/yyyy",
-				"l": "MMM yy",
+				"l": "MMM yyyy",
 				"f": "MMMM yyyy"
 			},
 			"dw": {
@@ -4161,31 +4197,31 @@ ilib.data.dateformats_pt = {
 			},
 			"m": {
 				"s": "M",
-				"m": "M",
+				"m": "MM",
 				"l": "MMM",
 				"f": "MMMM"
 			},
 			"y": {
 				"s": "yy",
-				"m": "yy",
+				"m": "yyyy",
 				"l": "yyyy",
 				"f": "yyyy"
 			},
 			"n": {
 				"s": "N",
-				"m": "N",
+				"m": "NN",
 				"l": "MMM",
 				"f": "MMMM"
 			}
 		},
 		"time": {
-			"ahmsz": "HH'h'mm'min'ss's' a Z",
+			"ahmsz": "HH'h'mm'min'ss's' a z",
 			"ahms": "HH'h'mm'min'ss's' a",
-			"hmsz": "HH'h'mm'min'ss's' Z",
-			"ahmz": "HH'h'mm'min' a Z",
+			"hmsz": "HH'h'mm'min'ss's' z",
+			"ahmz": "HH'h'mm'min' a z",
 			"hms": "HH'h'mm'min'ss's'",
 			"ahm": "HH'h'mm'min' a",
-			"hmz": "HH'h'mm'min' Z",
+			"hmz": "HH'h'mm'min' z",
 			"ah": "HH",
 			"hm": "HH'h'mm'min'",
 			"ms": "mm'min'ss's'",
@@ -4244,191 +4280,7 @@ ilib.data.dateformats_pt = {
 			},
 			"c30": "{sy} - {ey}"
 		}
-	},
-	"buddhist": {
-		"date": {
-			"dmwy": {
-				"s": "E, dd/MM/yy G",
-				"m": "EE, dd/MM/yyyy G",
-				"l": "EEE, d 'de' MMM 'de' yy G",
-				"f": "EEEE, d 'de' MMMM 'de' yyyy G"
-			},
-			"dmy": {
-				"s": "dd/MM/yy G",
-				"m": "dd/MM/yyyy G",
-				"l": "d 'de' MMM 'de' yy G",
-				"f": "d 'de' MMMM 'de' yyyy G"
-			},
-			"dmw": {
-				"s": "E, dd/MM",
-				"m": "EE, dd/MM",
-				"l": "EEE, d 'de' MMM",
-				"f": "EEEE, d 'de' MMMM"
-			},
-			"dm": {
-				"s": "d/M",
-				"m": "d/M",
-				"l": "d 'de' MMM",
-				"f": "d 'de' MMMM"
-			},
-			"my": {
-				"s": "MM/yy G",
-				"m": "MM/yyyy G",
-				"l": "MMM yy G",
-				"f": "MMMM yyyy G"
-			},
-			"d": {
-				"s": "dd",
-				"m": "dd",
-				"l": "dd",
-				"f": "dd"
-			},
-			"m": {
-				"s": "M",
-				"m": "M",
-				"l": "MMM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yy",
-				"l": "yyyy",
-				"f": "yyyy"
-			},
-			"n": {
-				"s": "N",
-				"m": "N",
-				"l": "MMM",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "HH'h'mm'min'ss's' a Z",
-			"ahms": "HH'h'mm'min'ss's' a",
-			"hmsz": "HH'h'mm'min'ss's' Z",
-			"ahmz": "HH'h'mm'min' a Z",
-			"hms": "HH'h'mm'min'ss's'",
-			"ahm": "HH'h'mm'min' a",
-			"hmz": "HH'h'mm'min' Z",
-			"ah": "HH",
-			"hm": "HH'h'mm'min'",
-			"ms": "mm'min'ss's'",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"japanese": {
-		"date": {
-			"dmw": {
-				"s": "E, dd/MM",
-				"m": "EE, dd/MM",
-				"l": "EEE, d MMM",
-				"f": "EEEE, d MMMM"
-			},
-			"dm": {
-				"s": "d/M",
-				"m": "d/M",
-				"l": "d MMM",
-				"f": "d MMMM"
-			},
-			"d": {
-				"s": "d",
-				"m": "d",
-				"l": "d",
-				"f": "d"
-			},
-			"m": {
-				"s": "M",
-				"m": "MM",
-				"l": "MMM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yy",
-				"l": "yyyy",
-				"f": "yyyy"
-			},
-			"n": {
-				"s": "N",
-				"m": "N",
-				"l": "MMM",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "HH'h'mm'min'ss's' a Z",
-			"ahms": "HH'h'mm'min'ss's' a",
-			"hmsz": "HH'h'mm'min'ss's' Z",
-			"ahmz": "HH'h'mm'min' a Z",
-			"hms": "HH'h'mm'min'ss's'",
-			"ahm": "HH'h'mm'min' a",
-			"hmz": "HH'h'mm'min' Z",
-			"ah": "HH",
-			"hm": "HH'h'mm'min'",
-			"ms": "mm'min'ss's'",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"roc": {
-		"date": {
-			"dmw": {
-				"s": "E, dd/MM",
-				"m": "EE, dd/MM",
-				"l": "EEE, d 'de' MMM",
-				"f": "EEEE, d 'de' MMMM"
-			},
-			"dm": {
-				"s": "d/M",
-				"m": "d/M",
-				"l": "d 'de' MMM",
-				"f": "d 'de' MMMM"
-			},
-			"d": {
-				"s": "d",
-				"m": "d",
-				"l": "d",
-				"f": "d"
-			},
-			"m": {
-				"s": "M",
-				"m": "M",
-				"l": "MMM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yy",
-				"l": "yyyy",
-				"f": "yyyy"
-			},
-			"n": {
-				"s": "N",
-				"m": "N",
-				"l": "MMM",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "HH'h'mm'min'ss's' a Z",
-			"ahms": "HH'h'mm'min'ss's' a",
-			"hmsz": "HH'h'mm'min'ss's' Z",
-			"ahmz": "HH'h'mm'min' a Z",
-			"hms": "HH'h'mm'min'ss's'",
-			"ahm": "HH'h'mm'min' a",
-			"hmz": "HH'h'mm'min' Z",
-			"ah": "HH",
-			"hm": "HH'h'mm'min'",
-			"ms": "mm'min'ss's'",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"julian": "gregorian"
+	}
 }
 ;
 ilib.data.dateformats_zh = {
@@ -4569,88 +4421,6 @@ ilib.data.dateformats_zh = {
 		}
 	}
 };
-ilib.data.dateformats_zh_TW = {
-	"gregorian": {
-		"date": {
-			"dmwy": {
-				"s": "yyyy-MM-dd(E)",
-				"l": "yyyy年MMM月d日(EEE)"
-			},
-			"dmy": {
-				"s": "yyyy-MM-dd",
-				"l": "yyyy年MMM月d日"
-			},
-			"my": {
-				"s": "yyyy-MM",
-				"l": "yyyy年MMM月"
-			},
-			"y": {
-				"s": "yyyy",
-				"l": "yyyy年"
-			}
-		}
-	}
-};
-ilib.data.dateformats_zh_HK = {
-	"gregorian": {
-		"date": {
-			"dmwy": {
-				"s": "dd.MM.yy(E)",
-				"m": "dd.MM.yyyy(EE)"
-			},
-			"dmy": {
-				"s": "dd.MM.yy",
-				"m": "dd.MM.yyyy"
-			},
-			"dmw": {
-				"s": "dd.MM(E)",
-				"m": "dd.MM(EE)"
-			},
-			"dm": {
-				"s": "dd.MM",
-				"m": "dd.MM"
-			},
-			"my": {
-				"s": "MM.yy",
-				"m": "MM.yyyy"
-			}
-		},
-		"range": {
-			"c00": {
-				"s": "{sd}.{sm}.{sy} {st}至{et}",
-				"m": "{sd}.{sm}.{sy} {st}至{et}"
-			},
-			"c01": {
-				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
-			},
-			"c02": {
-				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
-			},
-			"c03": {
-				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
-			},
-			"c10": {
-				"s": "{sd}至{ed}.{sm}.{sy}",
-				"m": "{sd}至{ed}.{sm}.{sy}"
-			},
-			"c11": {
-				"s": "{sd}.{sm}至{ed}.{em}.{sy}",
-				"m": "{sd}.{sm}至{ed}.{em}.{sy}"
-			},
-			"c12": {
-				"s": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}",
-				"m": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}"
-			},
-			"c20": {
-				"s": "{sm}.{sy}至{em}.{ey}",
-				"m": "{sm}.{sy}至{em}.{ey}"
-			}
-		}
-	}
-};
 ilib.data.dateformats_ja = {
 	"gregorian": {
 		"order": "{date}、{time}",
@@ -4777,8 +4547,7 @@ ilib.data.dateformats_ja = {
 			},
 			"c30": "{sy}-{ey}"
 		}
-	},
-	"julian": "gregorian"
+	}
 };
 ilib.data.dateformats_ko = {
 	"gregorian": {
@@ -4906,44 +4675,43 @@ ilib.data.dateformats_ko = {
 			},
 			"c30": "{sy}년에서 {ey}년까지"
 		}
-	},
-	"julian": "gregorian"
+	}
 };
 ilib.data.dateformats_id = {
 	"gregorian": {
 		"date": {
 			"dmwy": {
-				"s": "E, d/M/yy",
+				"s": "E d/M/yy",
 				"m": "EE, d/M/yyyy",
-				"l": "EEE, d MMM yy",
-				"f": "EEEE, dd MMMM yyyy"
+				"l": "EEE, d MMM yyyy",
+				"f": "EEEE, d MMMM yyyy"
 			},
 			"dmy": {
 				"s": "d/M/yy",
 				"m": "d/M/yyyy",
-				"l": "d MMM yy",
-				"f": "dd MMMM yyyy"
+				"l": "d MMM yyyy",
+				"f": "d MMMM yyyy"
 			},
 			"dmw": {
-				"s": "E, d/M",
+				"s": "E d/M",
 				"m": "EE, d/M",
 				"l": "EEE, d MMM",
-				"f": "EEEE, dd MMMM"
+				"f": "EEEE, d MMMM"
 			},
 			"dm": {
 				"s": "d/M",
 				"m": "d/M",
 				"l": "d MMM",
-				"f": "dd MMMM"
+				"f": "d MMMM"
 			},
 			"my": {
 				"s": "M/yy",
 				"m": "M/yyyy",
-				"l": "MMM yy",
+				"l": "MMM yyyy",
 				"f": "MMMM yyyy"
 			},
 			"dw": {
-				"s": "EE, d",
+				"s": "E d",
 				"m": "EE, d",
 				"l": "EEE, d",
 				"f": "EEEE, d"
@@ -4962,8 +4730,8 @@ ilib.data.dateformats_id = {
 			},
 			"y": {
 				"s": "yy",
-				"m": "yy",
-				"l": "yy",
+				"m": "yyyy",
+				"l": "yyyy",
 				"f": "yyyy"
 			},
 			"n": {
@@ -4974,13 +4742,13 @@ ilib.data.dateformats_id = {
 			}
 		},
 		"time": {
-			"ahmsz": "H:mm:ss a Z",
+			"ahmsz": "H:mm:ss a z",
 			"ahms": "H:mm:ss a",
-			"hmsz": "H:mm:ss Z",
-			"ahmz": "H:mm a Z",
+			"hmsz": "H:mm:ss z",
+			"ahmz": "H:mm a z",
 			"hms": "HH:mm:ss",
 			"ahm": "H:mm a",
-			"hmz": "H:mm Z",
+			"hmz": "H:mm z",
 			"ah": "Ha",
 			"hm": "H:mm",
 			"ms": "mm:ss",
@@ -5039,109 +4807,7 @@ ilib.data.dateformats_id = {
 			},
 			"c30": "{sy}–{ey}"
 		}
-	},
-	"buddhist": {
-		"date": {
-			"dmwy": {
-				"s": "E, d/M/yy G",
-				"m": "EE, d/M/yyyy G",
-				"l": "EEE, d MMM yy G",
-				"f": "EEEE, dd MMMM yyyy G"
-			},
-			"dmw": {
-				"s": "E, d-M",
-				"m": "EE, d-M",
-				"l": "EEE, d MMM",
-				"f": "EEEE, dd MMMM"
-			},
-			"dm": {
-				"s": "d-M",
-				"m": "d-M",
-				"l": "d MMM",
-				"f": "dd MMMM"
-			},
-			"my": {
-				"s": "M/yy G",
-				"m": "M/yyyy G",
-				"l": "MMM yy G",
-				"f": "MMMM yyyy G"
-			}
-		},
-		"time": {
-			"ahmsz": "H:mm:ss a Z",
-			"ahms": "H:mm:ss a",
-			"hmsz": "H:mm:ss Z",
-			"ahmz": "H:mm a Z",
-			"hms": "HH:mm:ss",
-			"ahm": "H:mm a",
-			"hmz": "H:mm Z",
-			"ah": "Ha",
-			"hm": "H:mm",
-			"ms": "mm:ss",
-			"h": "H",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"japanese": {
-		"date": {
-			"dmw": {
-				"s": "E, d-M",
-				"m": "EE, d-M",
-				"f": "EEEE, dd MMMM"
-			},
-			"dm": {
-				"s": "d-M",
-				"m": "d-M",
-				"f": "dd MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "H:mm:ss a Z",
-			"ahms": "H:mm:ss a",
-			"hmsz": "H:mm:ss Z",
-			"ahmz": "H:mm a Z",
-			"hms": "HH:mm:ss",
-			"ahm": "H:mm a",
-			"hmz": "H:mm Z",
-			"ah": "Ha",
-			"hm": "H:mm",
-			"ms": "mm:ss",
-			"h": "H",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"roc": {
-		"date": {
-			"dmw": {
-				"s": "E, d-M",
-				"m": "EE, d-M",
-				"f": "EEEE, dd MMMM"
-			},
-			"dm": {
-				"s": "d-M",
-				"m": "d-M",
-				"f": "dd MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "H:mm:ss a Z",
-			"ahms": "H:mm:ss a",
-			"hmsz": "H:mm:ss Z",
-			"ahmz": "H:mm a Z",
-			"hms": "HH:mm:ss",
-			"ahm": "H:mm a",
-			"hmz": "H:mm Z",
-			"ah": "Ha",
-			"hm": "H:mm",
-			"ms": "mm:ss",
-			"h": "H",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"julian": "gregorian"
+	}
 }
 ;
 ilib.data.dateformats_ru = {
@@ -5150,13 +4816,13 @@ ilib.data.dateformats_ru = {
 			"dmwy": {
 				"s": "E, dd.MM.yy",
 				"m": "EE, dd.MM.yyyy",
-				"l": "EEE, d MMM yy",
+				"l": "EEE, d MMM yyyy",
 				"f": "EEEE, d MMMM yyyy 'г'."
 			},
 			"dmy": {
 				"s": "dd.MM.yy",
 				"m": "dd.MM.yyyy",
-				"l": "d MMM yy",
+				"l": "d MMM yyyy",
 				"f": "d MMMM yyyy 'г'."
 			},
 			"dmw": {
@@ -5174,12 +4840,12 @@ ilib.data.dateformats_ru = {
 			"my": {
 				"s": "MM.yy",
 				"m": "MM.yyyy",
-				"l": "MMM yy",
+				"l": "MMM yyyy",
 				"f": "MMMM yyyy 'г'."
 			},
 			"dw": {
-				"s": "EE, dd",
-				"m": "EE, dd",
+				"s": "EE, d",
+				"m": "EE, d",
 				"l": "EEE, d",
 				"f": "EEEE, d"
 			},
@@ -5190,32 +4856,32 @@ ilib.data.dateformats_ru = {
 				"f": "d"
 			},
 			"m": {
-				"s": "M",
-				"m": "M",
+				"s": "MM",
+				"m": "MM",
 				"l": "MMM",
 				"f": "MMMM"
 			},
 			"y": {
 				"s": "yy",
-				"m": "yy",
-				"l": "yy",
+				"m": "yyyy",
+				"l": "yyyy",
 				"f": "yyyy"
 			},
 			"n": {
 				"s": "N",
-				"m": "N",
+				"m": "NN",
 				"l": "MMM",
 				"f": "MMMM"
 			}
 		},
 		"time": {
-			"ahmsz": "H:mm:ss a Z",
+			"ahmsz": "H:mm:ss a z",
 			"ahms": "H:mm:ss a",
-			"hmsz": "H:mm:ss Z",
-			"ahmz": "H:mm a Z",
+			"hmsz": "H:mm:ss z",
+			"ahmz": "H:mm a z",
 			"hms": "H:mm:ss",
 			"ahm": "H:mm a",
-			"hmz": "H:mm Z",
+			"hmz": "H:mm z",
 			"ah": "H a",
 			"hm": "H:mm",
 			"ms": "mm:ss",
@@ -5274,191 +4940,7 @@ ilib.data.dateformats_ru = {
 			},
 			"c30": "{sy}-{ey}"
 		}
-	},
-	"buddhist": {
-		"date": {
-			"dmwy": {
-				"s": "E, dd.MM.yy G",
-				"m": "EE, dd.MM.yyyy G",
-				"l": "EEE, d MMM yy G",
-				"f": "EEEE, d MMMM yyyy 'г'. G"
-			},
-			"dmy": {
-				"s": "dd.MM.yy G",
-				"m": "dd.MM.yyyy G",
-				"l": "d MMM yy G",
-				"f": "d MMMM yyyy 'г'. G"
-			},
-			"dmw": {
-				"s": "E, dd.MM",
-				"m": "EE, dd.MM",
-				"l": "EEE, d MMM",
-				"f": "EEEE, d MMMM"
-			},
-			"dm": {
-				"s": "dd.MM",
-				"m": "dd.MM",
-				"l": "d MMM",
-				"f": "d MMMM"
-			},
-			"my": {
-				"s": "MM.yy G",
-				"m": "MM.yyyy G",
-				"l": "MMM yy G",
-				"f": "MMMM yyyy 'г'. G"
-			},
-			"d": {
-				"s": "d",
-				"m": "d",
-				"l": "d",
-				"f": "d"
-			},
-			"m": {
-				"s": "M",
-				"m": "M",
-				"l": "MMM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yy",
-				"l": "yy",
-				"f": "yyyy"
-			},
-			"n": {
-				"s": "N",
-				"m": "N",
-				"l": "MMM",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "H:mm:ss a Z",
-			"ahms": "H:mm:ss a",
-			"hmsz": "H:mm:ss Z",
-			"ahmz": "H:mm a Z",
-			"hms": "H:mm:ss",
-			"ahm": "H:mm a",
-			"hmz": "H:mm Z",
-			"ah": "H a",
-			"hm": "H:mm",
-			"ms": "mm:ss",
-			"h": "H",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"japanese": {
-		"date": {
-			"dmw": {
-				"s": "E, dd.MM",
-				"m": "EE, dd.MM",
-				"l": "EEEE, d MMM",
-				"f": "EEEE, d MMMM"
-			},
-			"dm": {
-				"s": "dd.MM",
-				"m": "dd.MM",
-				"l": "d MMM",
-				"f": "d MMMM"
-			},
-			"d": {
-				"s": "d",
-				"m": "d",
-				"l": "d",
-				"f": "d"
-			},
-			"m": {
-				"s": "M",
-				"m": "M",
-				"l": "MMM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yy",
-				"l": "yy",
-				"f": "yyyy"
-			},
-			"n": {
-				"s": "N",
-				"m": "N",
-				"l": "MMM",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "H:mm:ss a Z",
-			"ahms": "H:mm:ss a",
-			"hmsz": "H:mm:ss Z",
-			"ahmz": "H:mm a Z",
-			"hms": "H:mm:ss",
-			"ahm": "H:mm a",
-			"hmz": "H:mm Z",
-			"ah": "H a",
-			"hm": "H:mm",
-			"ms": "mm:ss",
-			"h": "H",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"roc": {
-		"date": {
-			"dmw": {
-				"s": "E, dd.MM",
-				"m": "EE, dd.MM",
-				"l": "EEEE, d MMM",
-				"f": "EEEE, d MMMM"
-			},
-			"dm": {
-				"s": "dd.MM",
-				"m": "dd.MM",
-				"f": "d MMM",
-				"f": "d MMMM"
-			},
-			"d": {
-				"s": "d",
-				"m": "d",
-				"l": "d",
-				"f": "d"
-			},
-			"m": {
-				"s": "M",
-				"m": "M",
-				"l": "MMM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yy",
-				"l": "yy",
-				"f": "yyyy"
-			},
-			"n": {
-				"s": "N",
-				"m": "N",
-				"l": "MMM",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "H:mm:ss a Z",
-			"ahms": "H:mm:ss a",
-			"hmsz": "H:mm:ss Z",
-			"ahmz": "H:mm a Z",
-			"hms": "H:mm:ss",
-			"ahm": "H:mm a",
-			"hmz": "H:mm Z",
-			"ah": "H a",
-			"hm": "H:mm",
-			"ms": "mm:ss",
-			"h": "H",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"julian": "gregorian"
+	}
 }
 ;
 ilib.data.dateformats_en_AU = {
@@ -5858,8 +5340,7 @@ ilib.data.dateformats_en_ZA = {
 			},
 			"c30": "{sy} – {ey}"
 		}
-	},
-	"julian": "gregorian"
+	}
 }
 ;
 ilib.data.dateformats_en_PH = {
@@ -6220,176 +5701,7 @@ ilib.data.dateformats_tr = {
 			},
 			"c30": "{sy} - {ey}"
 		}
-	},
-	"buddhist": {
-		"date": {
-			"dmwy": {
-				"s": "dd.MM.yy G E",
-				"m": "dd.MM.yyyy G EE",
-				"l": "dd MMM yy G EEE",
-				"f": "dd MMMM yyyy G EEEE"
-			},
-			"dmy": {
-				"s": "dd.MM.yy G",
-				"m": "dd.MM.yyyy G",
-				"l": "dd MMM yy G",
-				"f": "dd MMMM yyyy G"
-			},
-			"dmw": {
-				"s": "dd.MM E",
-				"m": "dd.MM EE",
-				"l": "dd MMM G EEE",
-				"f": "dd MMMM G EEEE"
-			},
-			"dm": {
-				"s": "dd.MM",
-				"m": "dd.MM",
-				"l": "dd MMM G",
-				"f": "dd MMMM G"
-			},
-			"my": {
-				"s": "MM.yy G",
-				"m": "MM.yyyy G",
-				"l": "MMM yy G",
-				"f": "MMMM yyyy G"
-			},
-			"d": {
-				"s": "d",
-				"m": "d",
-				"l": "dd",
-				"f": "dd"
-			},
-			"m": {
-				"s": "M",
-				"m": "MM",
-				"l": "MMM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy G",
-				"m": "yyyy G",
-				"l": "yy",
-				"f": "yyyy G"
-			},
-			"n": {
-				"s": "N",
-				"m": "N",
-				"l": "MMM",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "HH:mm:ss a Z",
-			"ahms": "HH:mm:ss a",
-			"hmsz": "HH:mm:ss Z",
-			"ahmz": "HH:mm a Z",
-			"hms": "HH:mm:ss",
-			"ahm": "HH:mm a",
-			"hmz": "HH:mm Z",
-			"hm": "h:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"japanese": {
-		"date": {
-			"dmw": {
-				"s": "dd.MM E",
-				"m": "dd.MM EE",
-				"f": "dd MMMM G EEEE"
-			},
-			"dm": {
-				"s": "dd.MM",
-				"m": "dd.MM",
-				"f": "dd MMMM G"
-			},
-			"d": {
-				"s": "d",
-				"m": "d",
-				"f": "dd"
-			},
-			"m": {
-				"s": "M",
-				"m": "M",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy G",
-				"m": "yyyy G",
-				"f": "yy"
-			},
-			"n": {
-				"s": "N",
-				"m": "N",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "HH:mm:ss a Z",
-			"ahms": "HH:mm:ss a",
-			"hmsz": "HH:mm:ss Z",
-			"ahmz": "HH:mm a Z",
-			"hms": "HH:mm:ss",
-			"ahm": "HH:mm a",
-			"hmz": "HH:mm Z",
-			"hm": "h:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"roc": {
-		"date": {
-			"dmw": {
-				"s": "dd.MM E",
-				"m": "dd.MM EE",
-				"f": "dd MMMM G EEEE"
-			},
-			"dm": {
-				"s": "dd.MM",
-				"m": "dd.MM",
-				"f": "dd MMMM G"
-			},
-			"d": {
-				"s": "d",
-				"m": "d",
-				"f": "dd"
-			},
-			"m": {
-				"s": "M",
-				"m": "M",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy G",
-				"m": "yyyy G",
-				"f": "yy"
-			},
-			"n": {
-				"s": "N",
-				"m": "N",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "HH:mm:ss a Z",
-			"ahms": "HH:mm:ss a",
-			"hmsz": "HH:mm:ss Z",
-			"ahmz": "HH:mm a Z",
-			"hms": "HH:mm:ss",
-			"ahm": "HH:mm a",
-			"hmz": "HH:mm Z",
-			"hm": "h:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"julian": "gregorian"
+	}
 }
 ;
 ilib.data.sysres = {
@@ -6927,7 +6239,7 @@ ilib.data.sysres_pt = {
 	"EEE3": "Qua",
 	"EE3": "Qu",
 	"E3": "Q",
-	"EEEE4": "Quinta ",
+	"EEEE4": "Quinta",
 	"EEE4": "Qui",
 	"EE4": "Qu",
 	"E4": "Q",
@@ -7109,96 +6421,6 @@ ilib.data.sysres_zh = {
 	"separatorLong": "",
 	"separatorFull": "",
 	"finalSeparatorFull": ""
-};
-ilib.data.sysres_zh_TW = {
-	"EEE0": "週日",
-	"EE0": "週日",
-	"E0": "週日",
-	"EEE1": "週一",
-	"EE1": "週一",
-	"E1": "週一",
-	"EEE2": "週二",
-	"EE2": "週二",
-	"E2": "週二",
-	"EEE3": "週三",
-	"EE3": "週三",
-	"E3": "週三",
-	"EEE4": "週四",
-	"EE4": "週四",
-	"E4": "週四",
-	"EEE5": "週五",
-	"EE5": "週五",
-	"E5": "週五",
-	"EEE6": "週六",
-	"EE6": "週六",
-	"E6": "週六",
-
-	"azh3": "正午",
-
-	"durationShortMinutes": "#{num}分鐘",
-	"#{num}h": "#{num}小時",
-	"#{num}w": "#{num}週",
-	"durationShortMonths": "#{num}個月",
-
-	"1#1 mi|#{num} min": "#{num}分鐘",
-	"durationMediumHours": "#{num}小時",
-	"1#1 wk|#{num} wks": "#{num}週",
-	"1#1 mo|#{num} mos": "#{num}個月",
-
-	"1#1 min|#{num} min": "#{num}分鐘",
-	"1#1 hr|#{num} hrs": "#{num}小時",
-	"1#1 wk|#{num} wks": "#{num}週",
-	"1#1 mon|#{num} mons": "#{num}個月",
-	
-	"1#1 minute|#{num} minutes": "#{num}分鐘",
-	"1#1 hour|#{num} hours": "#{num}小時",
-	"1#1 week|#{num} weeks": "#{num}週",
-	"1#1 month|#{num} months": "#{num}個月"
-};
-ilib.data.sysres_zh_HK = {
-	"EEE0": "週日",
-	"EE0": "週日",
-	"E0": "週日",
-	"EEE1": "週一",
-	"EE1": "週一",
-	"E1": "週一",
-	"EEE2": "週二",
-	"EE2": "週二",
-	"E2": "週二",
-	"EEE3": "週三",
-	"EE3": "週三",
-	"E3": "週三",
-	"EEE4": "週四",
-	"EE4": "週四",
-	"E4": "週四",
-	"EEE5": "週五",
-	"EE5": "週五",
-	"E5": "週五",
-	"EEE6": "週六",
-	"EE6": "週六",
-	"E6": "週六",
-
-	"azh3": "正午",
-
-	"durationShortMinutes": "#{num}分鐘",
-	"#{num}h": "#{num}小時",
-	"#{num}w": "#{num}週",
-	"durationShortMonths": "#{num}個月",
-
-	"1#1 mi|#{num} min": "#{num}分鐘",
-	"durationMediumHours": "#{num}小時",
-	"1#1 wk|#{num} wks": "#{num}週",
-	"1#1 mo|#{num} mos": "#{num}個月",
-
-	"1#1 min|#{num} min": "#{num}分鐘",
-	"1#1 hr|#{num} hrs": "#{num}小時",
-	"1#1 wk|#{num} wks": "#{num}週",
-	"1#1 mon|#{num} mons": "#{num}個月",
-	
-	"1#1 minute|#{num} minutes": "#{num}分鐘",
-	"1#1 hour|#{num} hours": "#{num}小時",
-	"1#1 week|#{num} weeks": "#{num}週",
-	"1#1 month|#{num} months": "#{num}個月"
 };
 ilib.data.sysres_ja = {
 	"MMMM1": "一",
@@ -7503,7 +6725,7 @@ ilib.data.sysres_id = {
 	"a1": "PM",
 	"G-1": "SM",
 	"G1": "M",
-	"in {duration}": "Dalam {duration}",
+	"in {duration}": "dalam {duration}",
 	"{duration} ago": "{duration} yang lalu",
 	"1#1 year|#{num} years": "#{num} tahun",
 	"1#1 month|#{num} months": "#{num} bulan",

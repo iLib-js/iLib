@@ -606,3 +606,124 @@ function testDurFmtFormatFullZH() {
     assertEquals("1年1个月1周1天1小时1分钟1秒1毫秒", duration.toString());
 };
 
+function testDurFmtFormatShortFRDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "fr-FR",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1,
+    	millisecond: 1
+    });
+    assertEquals("1a 1mo 1sm 1j 1h 1m 1s 1ms", duration.toString());
+};
+
+function testDurFmtFormatShortFRText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "fr-FR",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1,
+    	millisecond: 1
+    });
+    assertEquals("1a 1mo 1sm 1j 1h 1m 1s 1ms", duration.toString());
+};
+
+function testDurFmtFormatShortFRClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "fr-FR",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1,
+    	millisecond: 1
+    });
+    assertEquals("1a 1mo 1sm 1j 01:01:01", duration.toString());
+};
+
+function testDurFmtFormatMediumFR() {
+    var fmt = new ilib.DurFmt({
+    	locale: "fr-FR",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1,
+    	millisecond: 1
+    });
+    assertEquals("1 an 1 mo 1 sm 1 jr 1 hr 1 mn 1 se 1 Ms", duration.toString());
+};
+
+function testDurFmtFormatLongFR() {
+    var fmt = new ilib.DurFmt({
+    	locale: "fr-FR",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1,
+    	millisecond: 1
+    });
+    assertEquals("1 an 1 mois 1 sem 1 jr 1 hr 1 min 1 sec 1 Ms", duration.toString());
+};
+
+function testDurFmtFormatFullFR() {
+    var fmt = new ilib.DurFmt({
+    	locale: "fr-FR",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1,
+    	millisecond: 1
+    });
+    assertEquals("1 an, 1 mois, 1 semaine, 1 jour, 1 heure, 1 minute, 1 seconde, et 1 milliseconde", duration.toString());
+};
