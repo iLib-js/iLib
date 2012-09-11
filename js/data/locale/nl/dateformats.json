@@ -1,6 +1,6 @@
 {
 	"gregorian": {
-		"order": "DATE TIME",
+		"order": "{date} {time}",
 		"date": {
 			"dmwy": {
 				"s": "E d-M-yy",
@@ -12,7 +12,7 @@
 				"s": "d-M-yy",
 				"m": "d-M-yyyy",
 				"l": "d MMM yy",
-				"f": "d MMMM yy"
+				"f": "d MMMM yyyy"
 			},
 			"dmw": {
 				"s": "E d-M",
@@ -40,7 +40,7 @@
 			},
 			"m": {
 				"s": "M",
-				"m": "MM",
+				"m": "M",
 				"l": "MMM",
 				"f": "MMMM"
 			},
@@ -52,19 +52,19 @@
 			},
 			"n": {
 				"s": "N",
-				"m": "N",
+				"m": "NN",
 				"l": "MMM",
 				"f": "MMMM"
 			}
 		},
 		"time": {
-			"ahmsz": "HH:mm:ss a Z",
+			"ahmsz": "HH:mm:ss a z",
 			"ahms": "HH:mm:ss a",
-			"hmsz": "HH:mm:ss Z",
-			"ahmz": "HH:mm a Z",
+			"hmsz": "HH:mm:ss z",
+			"ahmz": "HH:mm a z",
 			"hms": "HH:mm:ss",
 			"ahm": "HH:mm a",
-			"hmz": "HH:mm Z",
+			"hmz": "HH:mm z",
 			"ah": "HH",
 			"hm": "HH:mm",
 			"ms": "mm:ss",
@@ -76,7 +76,7 @@
 			"c00": {
 				"s": "{sd}-{sm}-{sy} {st}-{et}",
 				"m": "{sd}-{sm}-{sy} {st}-{et}",
-				"l": "{sd}-{sm}-{sy} {st}-{et}",
+				"l": "{sd} {sm} {sy} {st}-{et}",
 				"f": "{sd} {sm} {sy} {st}-{et} "
 			},
 			"c01": {
@@ -123,132 +123,5 @@
 			},
 			"c30": "{sy}-{ey}"
 		}
-	},
-	"buddhist": {
-		"date": {
-			"dmwy": {
-				"s": "E d-M-yy G",
-				"m": "EE d-M-yyyy G",
-				"l": "EEE d MMM yy G",
-				"f": "EEEE d MMMM yyyy G"
-			},
-			"dmy": {
-				"s": "d-M-yy G",
-				"m": "d-M-yyyy G",
-				"l": "d MMM yy G",
-				"f": "d MMMM yyyy G"
-			},
-			"dmw": {
-				"s": "E d-M",
-				"m": "EE d-M",
-				"l": "EEE d MMM",
-				"f": "EEEE d MMMM"
-			},
-			"dm": {
-				"s": "d-M",
-				"m": "d-M",
-				"l": "d MMM",
-				"f": "d MMMM"
-			},
-			"my": {
-				"s": "M-yy G",
-				"m": "M-yyyy G",
-				"l": "MMM yy G",
-				"f": "MMMM yyyy G"
-			},
-			"d": {
-				"s": "d",
-				"m": "d",
-				"l": "d",
-				"f": "d"
-			},
-			"m": {
-				"s": "M",
-				"m": "MM",
-				"l": "MMM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yyyy",
-				"l": "yy",
-				"f": "yyyy"
-			},
-			"n": {
-				"s": "N",
-				"m": "N",
-				"l": "MMM",
-				"f": "MMMM"
-			}
-		}
-	},
-	"japanese": {
-		"date": {
-			"dmw": {
-				"s": "E d-M",
-				"m": "EE d-M",
-				"f": "EEEE d MMMM"
-			},
-			"dm": {
-				"s": "d-M",
-				"m": "d-M",
-				"f": "d MMMM"
-			},
-			"d": {
-				"s": "d",
-				"m": "d",
-				"f": "d"
-			},
-			"m": {
-				"s": "M",
-				"m": "MM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yyyy",
-				"f": "yyyy"
-			},
-			"n": {
-				"s": "N",
-				"m": "NN",
-				"f": "MMMM"
-			}
-		}
-	},
-	"roc": {
-		"date": {
-			"dmw": {
-				"s": "E d-M",
-				"m": "EE d-M",
-				"f": "EEEE d MMMM"
-			},
-			"dm": {
-				"s": "d-M",
-				"m": "d-M",
-				"f": "d MMMM"
-			},
-			"d": {
-				"s": "d",
-				"m": "d",
-				"f": "d"
-			},
-			"m": {
-				"s": "M",
-				"m": "MM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yyyy",
-				"f": "yyyy"
-			},
-			"n": {
-				"s": "N",
-				"m": "NN",
-				"f": "MMMM"
-			}
-		}
-	},
-	"julian": "gregorian"
+	}
 }
