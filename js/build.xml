@@ -100,10 +100,11 @@ limitations under the License.
 		<delete dir="${build.classes}"/>
 		<delete dir="${build.output}"/>
 		<delete file="${build.src}/iliball.js"/>
-		<delete file="${build.src}/iliball-compiled.js"/>
-		<delete file="${build.src}/ilib-ut.js"/>
-		<delete file="${build.src}/ilib-ut-compiled.js"/>
 		<delete>
+			<fileset dir="${build.src}">
+			    <include name="ilib-*.js"/>
+				<include name="*-compiled.js"/>
+			</fileset>
 			<fileset dir="${build.locale}">
 			    <include name="**/localeinfo.json"/>
 			</fileset>
@@ -148,7 +149,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="iliball.js" 
 			srcfilename="ilib.js" 
-			locales="en-US,en-CA,fr-CA,es-MX,es-AR,pt-BR,zh-CN,ja-JP,ko-KR,en-IN,id-ID,ru-RU,en-AU,en-GB,fr-FR,de-DE,it-IT,en-ZA,en-NG,en-PH,es-ES,en-PK,vi-VN,xx-XX,tr-TR"/>
+			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,xx-XX,zh-CN"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
@@ -165,7 +166,7 @@ limitations under the License.
 
 	<target name="testilibut" description="test whether or not the ilib-ut single file needs to be rebuilt">
 		<uptodate property="ilib-ut.not.needed" targetfile="${build.src}/ilib-ut-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-ut.js,ilib-ut-compiled.js,iliball.js,iliball-compiled.js"/>
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js"/>
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
@@ -189,6 +190,32 @@ limitations under the License.
 		</jscomp>
 	</target>
 	
+	<target name="testilibdemo" description="test whether or not the ilib-demo file needs to be rebuilt">
+		<uptodate property="ilib-demo.not.needed" targetfile="${build.src}/ilib-demo-compiled.js">
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json"/>
+		</uptodate>
+	</target>
+
+	<target name="assemble.demo" depends="prepare,geninfo,testiliball" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
+		<runassemble 
+			tgtfilename="ilib-demo.js" 
+			srcfilename="ilib.js" 
+			locales="af-ZA,en-AU,en-CA,en-GB,en-IE,en-IN,en-NG,en-NZ,en-PH,en-PK,en-US,en-ZA,de-AT,de-CH,de-DE,fr-BE,fr-CA,fr-CH,fr-FR,es-AR,es-ES,es-MX,id-ID,it-CH,it-IT,ja-JP,ko-KR,nl-BE,nl-NL,pt-BR,pt-PT,ru-RU,tr-TR,vi-VN,xx-XX,zh-CN,zh-TW,zh-HK,zh-SG,zh-MO"/>
+		<jscomp compilationlevel="simple" 
+			warning="verbose" 
+			debug="true"
+			output="${build.src}/ilib-demo-compiled.js"
+			description="Use the google closure compiler to compress code">
+			<externs dir="${build.src}">
+				<file name="externs.js"/>
+			</externs>
+			<sources dir="${build.src}">
+				<file name="ilib-demo.js"/>
+			</sources>
+		</jscomp>
+	</target>
+
 	<target name="export" depends="assemble,doc" description="Create all objects and export them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js"/>
 		<copy todir="${build.export}/js">
@@ -220,12 +247,22 @@ limitations under the License.
 		</copy>
 	</target>
 	
-	<target name="demo" depends="assemble" description="Copy all things needed for the demo site to the right place">
+	<target name="demo" depends="assemble.demo" description="Copy all things needed for the demo site to the right place">
 		<copy todir="${build.demo}/scripts">
 			<fileset dir="${build.src}">
-				<include name="iliball.js"/>
+				<include name="ilib-demo.js"/>
 			</fileset>
 		</copy>
+		<tar destfile="${build.demo}/demo.tgz" compression="gzip">
+			<fileset dir="${build.demo}" id="id">
+			    <include name="**/*.html"/>
+				<include name="**/*.js"/>
+				<include name="**/*.css"/>
+				<include name="**/*.png"/>
+			    <exclude name="**/.svn/**"/>
+				<exclude name="demo.tgz"/>
+			</fileset>
+		</tar>
 	</target>
 	
 	<target name="dist" depends="assemble,doc" description="Distribute all built objects in preparation for running">
