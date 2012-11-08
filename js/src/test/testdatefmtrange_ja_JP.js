@@ -111,7 +111,7 @@ function testDateRngFmtJARangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年十二月31日13:45-14:30", fmt.format(start, end));
+    assertEquals("2011年12月31日13:45-14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtJARangeNextDayShort() {
@@ -208,7 +208,7 @@ function testDateRngFmtJARangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年十二月30日13:45-31日14:30", fmt.format(start, end));
+    assertEquals("2011年12月30日13:45-31日14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtJARangeMultiDayShort() {
@@ -305,7 +305,7 @@ function testDateRngFmtJARangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年十二月20-31日", fmt.format(start, end));
+    assertEquals("2011年12月20-31日", fmt.format(start, end));
 }
 
 function testDateRngFmtJARangeNextMonthShort() {
@@ -402,7 +402,7 @@ function testDateRngFmtJARangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年十一月20日-十二月31日", fmt.format(start, end));
+    assertEquals("2011年11月20日-12月31日", fmt.format(start, end));
 }
 
 function testDateRngFmtJARangeNextYearShort() {
@@ -499,7 +499,7 @@ function testDateRngFmtJARangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年十一月20日-2012年一月31日", fmt.format(start, end));
+    assertEquals("2011年11月20日-2012年1月31日", fmt.format(start, end));
 }
 
 function testDateRngFmtJARangeMultiYearShort() {
@@ -596,7 +596,7 @@ function testDateRngFmtJARangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年十一月-2014年一月", fmt.format(start, end));
+    assertEquals("2011年11月-2014年1月", fmt.format(start, end));
 }
 function testDateRngFmtJAManyYearsFull() {
     var fmt = new ilib.DateRngFmt({locale: "ja-JP", length: "full"});

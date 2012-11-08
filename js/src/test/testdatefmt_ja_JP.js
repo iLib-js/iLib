@@ -85,7 +85,7 @@ function testDateFmtSimpleFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年九月29日", fmt.format(date));
+    assertEquals("2011年9月29日", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeShort() {
@@ -213,7 +213,7 @@ function testDateFmtDateTimeSimpleFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年九月29日、13:45", fmt.format(date));
+    assertEquals("2011年9月29日、13:45", fmt.format(date));
 }
 
 
@@ -478,7 +478,7 @@ function testDateFmtShortDateComponentsN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("九", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD() {
@@ -607,7 +607,7 @@ function testDateFmtFullDateComponentsM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("九", fmt.format(date));
+    assertEquals("9", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD() {
@@ -639,7 +639,7 @@ function testDateFmtFullDateComponentsDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("九月29日", fmt.format(date));
+    assertEquals("9月29日", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsMY() {
@@ -655,7 +655,7 @@ function testDateFmtFullDateComponentsMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年九月", fmt.format(date));
+    assertEquals("2011年9月", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY() {
@@ -671,7 +671,7 @@ function testDateFmtFullDateComponentsDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年九月29日", fmt.format(date));
+    assertEquals("2011年9月29日", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDM() {
@@ -687,7 +687,7 @@ function testDateFmtFullDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("九月29日（木曜日）", fmt.format(date));
+    assertEquals("9月29日（木曜日）", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY() {
@@ -703,7 +703,7 @@ function testDateFmtFullDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年九月29日（木曜日）", fmt.format(date));
+    assertEquals("2011年9月29日（木曜日）", fmt.format(date));
 }
 
 

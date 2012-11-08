@@ -223,7 +223,7 @@ ilib.TimeZone.prototype.getId = function () {
  * @returns {string} the name of the time zone, abbreviated according to the style 
  */
 ilib.TimeZone.prototype.getDisplayName = function (date, style) {
-	style = (typeof(this.offset) !== 'undefined') ? "rfc822" : (style || "standard");
+	style = (this.isLocal || typeof(this.zone) === 'undefined') ? "rfc822" : (style || "standard");
 	switch (style) {
 		default:
 		case 'standard':
