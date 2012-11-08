@@ -2,7 +2,7 @@
 <!--
 build.xml - build the javascript parts
 
-Copyright © 2012, JEDL Software, Inc.
+Copyright © 2012, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -175,7 +175,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="ilib-ut.js" 
 			srcfilename="ilib.js" 
-			locales="ar-AE,ar-EG,en-AU,en-US,en-CA,en-GB,en-NG,en-PH,en-ZA,de-AT,de-DE,es-ES,es-MX,es-AR,fr-FR,fr-CA,it-IT,ja-JP,nl-NL,tr-TR,zh-CN,ja-JP,ko-KR,zh-TW,he-IL,vi-VN,id-ID,ru-RU,pt-BR,xx-XX"/>
+			locales="ar-AE,ar-EG,en-AU,en-US,en-CA,en-GB,en-NG,en-PH,en-ZA,de-AT,de-DE,es-ES,es-MX,es-AR,fr-FR,fr-CA,it-IT,ja-JP,nl-NL,tr-TR,zh-CN,ja-JP,ko-KR,zh-TW,he-IL,vi-VN,id-ID,ru-RU,pt-BR,xx-XX,da-DK,no-NO,sv-SE"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
@@ -201,7 +201,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="ilib-demo.js" 
 			srcfilename="ilib.js" 
-			locales="af-ZA,en-AU,en-CA,en-GB,en-IE,en-IN,en-NG,en-NZ,en-PH,en-PK,en-US,en-ZA,de-AT,de-CH,de-DE,fr-BE,fr-CA,fr-CH,fr-FR,es-AR,es-ES,es-MX,id-ID,it-CH,it-IT,ja-JP,ko-KR,nl-BE,nl-NL,pt-BR,pt-PT,ru-RU,tr-TR,vi-VN,xx-XX,zh-CN,zh-TW,zh-HK,zh-SG,zh-MO"/>
+			locales="af-ZA,da-DK,de-AT,de-CH,de-DE,en-AU,en-CA,en-GB,en-IE,en-IN,en-NG,en-NZ,en-PH,en-PK,en-US,en-ZA,es-AR,es-ES,es-MX,fr-BE,fr-CA,fr-CH,fr-FR,id-ID,it-CH,it-IT,ja-JP,ko-KR,nl-BE,nl-NL,no-NO,pt-BR,pt-PT,ru-RU,sv-SE,tr-TR,vi-VN,xx-XX,zh-CN,zh-TW,zh-HK,zh-SG,zh-MO"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"

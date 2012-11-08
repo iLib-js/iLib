@@ -1,7 +1,7 @@
 /*
  * timezone.js - Definition of a time zone class
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,10 +22,11 @@
 ilibglobal.js 
 locale.js
 localeinfo.js
+util/utils.js
 calendar/gregoriandate.js
 */
 
-// !data timezones
+// !data localeinfo timezones
 
 /**
  * @class Create a time zone information instance. 
@@ -37,19 +38,64 @@ calendar/gregoriandate.js
  * 
  * <ul>
  * <li><i>id</i> - The id of the requested time zone such as "Europe/London" or 
- * "America/Los_Angeles"
+ * "America/Los_Angeles". These are taken from the IANA time zone database. (See
+ * http://www.iana.org/time-zones for more information.) <p>
+ * 
+ * There is one special 
+ * time zone that is not taken from the IANA database called simply "local". In
+ * this case, this class will attempt to discover the current time zone and
+ * daylight savings time settings by calling standard Javascript classes to 
+ * determine the offsets from UTC. 
+ * 
  * <li><i>locale</i> - The locale for this time zone.
  * <li><i>offset</i> - Choose the time zone based on the offset from UTC given in
- * number of minutes. In some cases, there are multiple time zones that correspond
- * to the given offset, and the first one encountered in the list is the one taken.
- * If a more specific time zone is needed, use the "id" property to identify the
- * time zone instead.
+ * number of minutes (negative is west, positive is east). 
  * </ul>
  * 
- * If the id is not given, the default time zone for the locale is retrieved from
+ * There is currently no way in the ECMAscript
+ * standard to tell which exact time zone is currently in use. Choosing the
+ * id "locale" or specifying an explicit offset will not give a specific time zone, 
+ * as it is impossible to tell with certainty which zone the offsets 
+ * match.<p>
+ * 
+ * When the id "local" is given or the offset option is specified, this class will
+ * have the following behaviours:
+ * <ul>
+ * <li>The display name will always be given as the RFC822 style, no matter what
+ * style is requested
+ * <li>The id will also be returned as the RFC822 style display name
+ * <li>When the offset is explicitly given, this class will assume the time zone 
+ * does not support daylight savings time, and the offsets will be calculated 
+ * the same way year round.
+ * <li>When the offset is explicitly given, the inDaylightSavings() method will 
+ * always return false.
+ * <li>When the id "local" is given, this class will attempt to determine the 
+ * daylight savings time settings by examining the offset from UTC on Jan 1
+ * and June 1 of the current year. If they are different, this class assumes
+ * that the local time zone uses DST. When the offset for a particular date is
+ * requested, it will use the built-in Javascript support to determine the 
+ * offset for that date.
+ * </ul> 
+ * 
+ * If a more specific time zone is 
+ * needed with display names and known start/stop times for DST, use the "id" 
+ * property instead to specify the time zone exactly. You can perhaps ask the
+ * user which time zone they prefer so that your app does not need to guess.<p>
+ * 
+ * If the id and the offset are both not given, the default time zone for the 
+ * locale is retrieved from
  * the locale info. If the locale is not specified, the default locale for the
- * library is used.
- * <p>
+ * library is used.<p>
+ * 
+ * Because this class was designed for use in web sites, and the vast majority
+ * of dates and times being formatted are recent date/times, this class is simplified
+ * by not implementing historical time zones. That is, when governments change the 
+ * time zone rules for a particular zone, only the latest such rule is implemented 
+ * in this class. That means that determining the offset for a date that is prior 
+ * to the last change may give the wrong result. Historical time zone calculations
+ * may be implemented in a later version of iLib if there is enough demand for it,
+ * but it would entail a much larger set of time zone data that would have to be
+ * loaded.  
  * 
  * Depends directive: !depends timezone.js
  * 
@@ -60,6 +106,7 @@ ilib.TimeZone = function(options) {
 	var arr, i, bad, res, formats, type, zones;
 	
 	this.locale = new ilib.Locale();
+	this.isLocal = false;
 	
 	if (options) {
 		if (options.locale) {
@@ -67,8 +114,28 @@ ilib.TimeZone = function(options) {
 		}
 		
 		if (options.id) {
-			this.id = options.id;
-		// TODO: } else if (options.offset) {
+			if (options.id === 'local') {
+				this.isLocal = true;
+				
+				// use standard Javascript Date to figure out the time zone offsets
+				var now = new Date(), 
+					jan1 = new Date(now.getFullYear(), 0, 1),  // months in std JS Date object are 0-based
+					jun1 = new Date(now.getFullYear(), 5, 1);
+				
+				// Javascript's method returns the offset backwards, so we have to
+				// take the negative to get the correct offset
+				this.offsetJan1 = -jan1.getTimezoneOffset();
+				this.offsetJun1 = -jun1.getTimezoneOffset();
+				// the offset of the standard time for the time zone is always the one that is largest of 
+				// the two, no matter whether you are in the northern or southern hemisphere
+				this.offset = Math.max(this.offsetJan1, this.offsetJun1);
+				this.id = this.getDisplayName(undefined, undefined);
+			} else {
+				this.id = options.id;
+			}
+		} else if (options.offset) {
+			this.offset = (typeof(options.offset) === 'string') ? parseInt(options.offset, 10) : options.offset;
+			this.id = this.getDisplayName(undefined, undefined);
 		}
 	}
 
@@ -96,8 +163,8 @@ ilib.TimeZone = function(options) {
 	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>}} 
 	 */
 	this.zone = ilib.TimeZone.zones[this.id];
-	if (!this.zone) {
-		this.id = "Europe/London";
+	if (!this.zone && !this.offset) {
+		this.id = "Etc/UTC";
 		this.zone = ilib.TimeZone.zones[this.id];
 	}
 };
@@ -116,6 +183,9 @@ ilib.TimeZone.getAvailableIds = function () {
 
 		ilib.TimeZone.zones = res.getResObj();
 	}
+	
+	// special zone meaning "the local time zone according to the JS engine we are running upon"
+	ids.push("local"); 
 	
 	for (tz in ilib.TimeZone.zones) {
 		if (tz) {
@@ -148,12 +218,12 @@ ilib.TimeZone.prototype.getId = function () {
  * explicitly what the offset is from UTC
  * </ol>
  *  
- * @param {ilib.Date} date a date to determine if it is in daylight time or standard time
- * @param {string} style one of "standard" or "rfc822". Default if not specified is "standard"
+ * @param {ilib.Date=} date a date to determine if it is in daylight time or standard time
+ * @param {string=} style one of "standard" or "rfc822". Default if not specified is "standard"
  * @returns {string} the name of the time zone, abbreviated according to the style 
  */
 ilib.TimeZone.prototype.getDisplayName = function (date, style) {
-	style = style || "standard";
+	style = (typeof(this.offset) !== 'undefined') ? "rfc822" : (style || "standard");
 	switch (style) {
 		default:
 		case 'standard':
@@ -180,7 +250,7 @@ ilib.TimeZone.prototype.getDisplayName = function (date, style) {
 				minute = offset.m || 0;
 			
 			ret += (hour > 0) ? "+" : "-";
-			if (hour < 10) {
+			if (Math.abs(hour) < 10) {
 				ret += "0";
 			}
 			ret += (hour < 0) ? -hour : hour;
@@ -229,71 +299,66 @@ ilib.TimeZone.prototype._offsetStringToObj = function (str) {
  * Returns the offset of this time zone from UTC at the given date/time. If daylight saving 
  * time is in effect at the given date/time, this method will return the offset value 
  * adjusted by the amount of daylight saving.
- * @param {ilib.Date} date the date for which the offset is needed
- * @return {Object.<{h:number,m:number,s:number}>} an object giving the offset for the zone at 
+ * @param {ilib.Date=} date the date for which the offset is needed
+ * @return {Object.<{h:number,m:number}>} an object giving the offset for the zone at 
  * the given date/time, in hours, minutes, and seconds  
  */
 ilib.TimeZone.prototype.getOffset = function (date) {
-	var ret = {};
-	if (this.zone.o) {
-		var offsetParts = this._offsetStringToObj(this.zone.o);
-		
-		if (date && this.inDaylightTime(date)) {
-			var saveParts = this._offsetStringToObj(this.zone.s.v),
-				temp,
-				minutes;
-			
-			//console.log("standard offset is " + JSON.stringify(offsetParts));
-			//console.log("savings is " + JSON.stringify(saveParts));
-			
-			// convert to number of seconds in the day and then back again 
-			// to hours:min:seconds so that we get the arithmetic right when
-			// we add the savings time, which may be a non-whole-hour size
-			temp = (offsetParts.m || 0) * 60 + (offsetParts.s || 0);
-			if (offsetParts.h < 0) {
-				temp += -offsetParts.h * 3600;
-				temp = -temp;
-			} else {
-				temp += offsetParts.h * 3600;
-			}
-			
-			//console.log("standard offset in seconds: " + temp);
+	var offset = this.getOffsetMillis(date)/60000;
+	
+	var hours = ilib._roundFnc.down(offset/60),
+		minutes = Math.abs(offset) - Math.abs(hours)*60;
 
-			temp += saveParts.h * 3600 + (saveParts.m || 0) * 60 + (saveParts.s || 0);
-			
-			//console.log("less savings, leaves this in seconds: " + temp);
-			
-			ret.h = Math.floor(temp / 3600);
-			temp -= (ret.h * 3600);
-			minutes = Math.floor(temp / 60);
-			temp -= (minutes * 60);
-			if (minutes) {
-				ret.m = minutes;
-			}
-			if (temp !== 0) {
-				ret.s = temp;
-			}
-			
-			return ret;
-		} else {
-			ret.h = offsetParts.h;
-			if (offsetParts.m) {
-				ret.m = offsetParts.m;
-			}
-			if (offsetParts.s) {
-				ret.s = offsetParts.s;
-			}
-		}
-		return ret;
+	var ret = {
+		h: hours
+	};
+	if (minutes != 0) {
+		ret.m = minutes;
 	}
-	return {h:0};
+	return ret;
+};
+
+/**
+ * Returns the offset of this time zone from UTC at the given date/time expressed in 
+ * milliseconds. If daylight saving 
+ * time is in effect at the given date/time, this method will return the offset value 
+ * adjusted by the amount of daylight saving. Negative numbers indicate offsets west
+ * of UTC and conversely, positive numbers indicate offset east of UTC.
+ *  
+ * @param {ilib.Date=} date the date for which the offset is needed, or null for the
+ * present date
+ * @return {number} the number of milliseconds of offset from UTC that the given date is
+ */
+ilib.TimeZone.prototype.getOffsetMillis = function (date) {
+	var ret;
+	
+	if (this.isLocal) {
+		var d = (!date) ? new Date() : new Date(date.getTime());
+		return -d.getTimezoneOffset() * 60 * 1000;
+	} 
+	
+	if (typeof(this.dstSavings) === 'undefined') {
+		this._calcDSTSavings();
+	}
+	
+	if (typeof(this.offset) === 'undefined') {
+		this._calcOffset();
+	}
+	
+	ret = this.offset;
+	
+	if (date && this.inDaylightTime(date)) {
+		ret += this.dstSavings;
+	}
+	
+	return ret * 60 * 1000;
 };
 
 /**
  * Returns the offset of this time zone from UTC at the given date/time. If daylight saving 
  * time is in effect at the given date/time, this method will return the offset value 
  * adjusted by the amount of daylight saving.
- * @param {ilib.Date} date the date for which the offset is needed
+ * @param {ilib.Date=} date the date for which the offset is needed
  * @return {string} the offset for the zone at the given date/time as a string in the 
  * format "h:m:s" 
  */
@@ -320,7 +385,32 @@ ilib.TimeZone.prototype.getOffsetStr = function (date) {
  * UTC for this time zone, in hours, minutes, and seconds 
  */
 ilib.TimeZone.prototype.getRawOffset = function () {
-	return this._offsetStringToObj(this.zone.o);
+	var offset = this.getRawOffsetMillis()/60000;
+
+	var hours = ilib._roundFnc.down(offset/60),
+		minutes = Math.abs(offset) - Math.abs(hours)*60;
+	
+	var ret = {
+		h: hours
+	};
+	if (minutes != 0) {
+		ret.m = minutes;
+	}
+	return ret;
+};
+
+/**
+ * Gets the offset from UTC for this time zone expressed in milliseconds. Negative numbers
+ * indicate zones west of UTC, and positive numbers indicate zones east of UTC.
+ * 
+ * @returns {number} an number giving the offset from 
+ * UTC for this time zone in milliseconds 
+ */
+ilib.TimeZone.prototype.getRawOffsetMillis = function () {
+	if (typeof(this.offset) === 'undefined') {
+		this._calcOffset();
+	}
+	return this.offset * 60 * 1000;
 };
 
 /**
@@ -328,7 +418,15 @@ ilib.TimeZone.prototype.getRawOffset = function () {
  * @returns {string} the offset from UTC for this time zone, in the format "h:m:s" 
  */
 ilib.TimeZone.prototype.getRawOffsetStr = function () {
-	return this.zone.o || "0:0";
+	if (this.isLocal) {
+		var off = this.getRawOffset();
+		return off.h + ":" + off.m;
+	} else if (typeof(this.offset) !== 'undefined') { 
+		// have to check against undefined instead of just "if (this.offset)" because the 
+		// offset could legally be equal to zero
+		return this.getOffsetStr(undefined);
+	}
+	return this.zone && this.zone.o || "0:0";
 };
 
 /**
@@ -338,7 +436,17 @@ ilib.TimeZone.prototype.getRawOffsetStr = function () {
  * clock advances for DST in hours, minutes, and seconds 
  */
 ilib.TimeZone.prototype.getDSTSavings = function () {
-	if (this.zone.s) {
+	if (this.isLocal) {
+		// take the absolute because the difference in the offsets may be positive or
+		// negative, depending on the hemisphere
+		var savings = Math.abs(this.offsetJan1 - this.offsetJun1);
+		var hours = ilib._roundFnc.down(savings/60),
+			minutes = savings - hours*60;
+		return {
+			h: hours,
+			m: minutes
+		};
+	} else if (this.zone && this.zone.s) {
 		return this._offsetStringToObj(this.zone.s.v);	// this.zone.start.savings
 	}
 	return {h:0};
@@ -351,7 +459,10 @@ ilib.TimeZone.prototype.getDSTSavings = function () {
  * format "h:m:s"
  */
 ilib.TimeZone.prototype.getDSTSavingsStr = function () {
-	if (this.zone.s) {
+	if (this.isLocal) {
+		var savings = this.getDSTSavings();
+		return savings.h + ":" + savings.m;
+	} else if (typeof(this.offset) === 'undefined' && this.zone && this.zone.s) {
 		return this.zone.s.v;	// this.zone.start.savings
 	}
 	return "0:0";
@@ -443,6 +554,33 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 };
 
 /**
+ * @private
+ */
+ilib.TimeZone.prototype._calcDSTSavings = function () {
+	var saveParts = this.getDSTSavings();
+	
+	/**
+	 * @private
+	 * @type {number} savings in minutes when DST is in effect 
+	 */
+	this.dstSavings = (Math.abs(saveParts.h || 0) * 60 + (saveParts.m || 0)) * ilib.signum(saveParts.h || 0);
+};
+
+/**
+ * @private
+ */
+ilib.TimeZone.prototype._calcOffset = function () {
+	if (this.zone.o) {
+		var offsetParts = this._offsetStringToObj(this.zone.o);
+		/**
+		 * @private
+		 * @type {number} raw offset from UTC without DST, in minutes
+		 */
+		this.offset = (Math.abs(offsetParts.h || 0) * 60 + (offsetParts.m || 0)) * ilib.signum(offsetParts.h || 0);
+	}
+};
+
+/**
  * Returns whether or not the given date is in daylight saving time for the current
  * zone. Note that daylight savings time is observed for the summer. Because
  * the seasons are reversed, daylight savings time in the southern hemisphere usually
@@ -450,7 +588,8 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
  * next year. This method will correctly calculate the start and end of DST for any
  * location.
  * 
- * @param {ilib.Date} date a date for which the info about daylight time is being sought
+ * @param {ilib.Date=} date a date for which the info about daylight time is being sought,
+ * or undefined to tell whether we are currently in daylight savings time
  * @return {boolean} true if the given date is in DST for the current zone, and false
  * otherwise.
  */
@@ -461,6 +600,18 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 	// time, no matter what the date is
 	if (!this.useDaylightTime()) {
 		return false;
+	}
+	
+	if (this.isLocal) {
+		var d = new Date(date ? date.getTime() : undefined);
+		// the DST offset is always the one that is closest to negative infinity, no matter 
+		// if you are in the northern or southern hemisphere
+		var dst = Math.min(this.offsetJan1, this.offsetJun1);
+		return (-d.getTimezoneOffset() === dst);
+	}
+	
+	if (!date) {
+		date = ilib.Date.newInstance(); // right now
 	}
 	
 	rd = date.getRataDie();
@@ -491,7 +642,8 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 ilib.TimeZone.prototype.useDaylightTime = function () {
 	// this zone uses daylight savings time iff there is a rule defining when to start
 	// and when to stop the DST
-	return (this.zone && 
-			typeof(this.zone.s) !== 'undefined' && 
-			typeof(this.zone.e) !== 'undefined');
+	return (this.isLocal && this.offsetJan1 !== this.offsetJun1) ||
+		(typeof(this.zone) !== 'undefined' && 
+		typeof(this.zone.s) !== 'undefined' && 
+		typeof(this.zone.e) !== 'undefined');
 };

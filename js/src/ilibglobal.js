@@ -1,7 +1,7 @@
 /*
  * ilibglobal.js - define the ilib name space
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ var ilib = ilib || {};
  */
 ilib.getVersion = function () {
 	// increment this for each release
-	return "1.1";
+	return "1.2";
 };
 
 /*

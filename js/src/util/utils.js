@@ -1,7 +1,7 @@
 /*
  * util/utils.js - Misc utility routines
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -113,14 +113,17 @@ ilib.mod = function (dividend, modulus) {
  * will not be touched. If a property exists in object2, but not in object1, it will be 
  * added to the merged result.<p>
  * 
- * Depends directive: !depends utils.js
+ * Name1 and name2 are for creating debug output only. They are not necessary.<p>
  * 
+ * Depends directive: !depends utils.js
  * 
  * @param {*} object1 the object to merge into
  * @param {*} object2 the object to merge
+ * @param {string=} name1 name of the object being merged into
+ * @param {string=} name2 name of the object being merged in
  * @returns {Object} the merged object
  */
-ilib.merge = function (object1, object2) {
+ilib.merge = function (object1, object2, name1, name2) {
 	var prop,
 		newObj = {},
 		i;
@@ -138,6 +141,10 @@ ilib.merge = function (object1, object2) {
 			} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
 				newObj[prop] = ilib.merge(object1[prop], object2[prop]);
 			} else {
+				// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
+				if (name1 && name2 && newObj[prop] == object2[prop]) {
+					console.log("Property " + prop + " in " + name1 + " is being overridden by the same value in " + name2);
+				}
 				newObj[prop] = object2[prop];
 			}
 		}
@@ -188,4 +195,98 @@ ilib.shallowCopy = function (source, target) {
 			}
 		}
 	}
-}
+};
+
+/**
+ * Return the sign of the given number. If the sign is negative, this function
+ * returns -1. If the sign is positive or zero, this function returns 1.
+ * @param {number} num the number to test
+ * @returns {number} -1 if the number is negative, and 1 otherwise
+ */
+ilib.signum = function (num) {
+	var n = num;
+	if (typeof(num) === 'string') {
+		n = parseInt(num, 10);
+	} else if (typeof(num) !== 'number') {
+		return 1;
+	}
+	return (n < 0) ? -1 : 1;
+};
+
+
+/**
+ * @private
+ */
+ilib._roundFnc = {
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	floor: function (num) {
+		return Math.floor(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	ceiling: function (num) {
+		return Math.ceil(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	down: function (num) {
+		return (num < 0) ? Math.ceil(num) : Math.floor(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	up: function (num) {
+		return (num < 0) ? Math.floor(num) : Math.ceil(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfup: function (num) {
+		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfdown: function (num) {
+		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfeven: function (num) {
+		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfodd: function (num) {
+		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	}
+};

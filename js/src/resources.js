@@ -1,7 +1,7 @@
 /*
  * resources.js - Resource bundle definition
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -341,7 +341,7 @@ ilib.ResBundle.prototype = {
 	 * @private
 	 * Escape html characters in the output.
 	 */
-	escape: function (str) {
+	escapeXml: function (str) {
 		str = str.replace(/&/g, '&amp;');
 		str = str.replace(/</g, '&lt;');
 		str = str.replace(/>/g, '&gt;');
@@ -352,7 +352,7 @@ ilib.ResBundle.prototype = {
 	 * @private
 	 * @param {string} str the string to unescape
 	 */
-	unescape: function (str) {
+	unescapeXml: function (str) {
 		str = str.replace(/&amp;/g, '&');
 		str = str.replace(/&lt;/g, '<');
 		str = str.replace(/&gt;/g, '>');
@@ -370,7 +370,7 @@ ilib.ResBundle.prototype = {
 	 */
 	makeKey: function (source) {
 		var key = source.replace(/\s+/gm, ' ');
-		return (this.type === "xml" || this.type === "html") ? this.unescape(key) : key;
+		return (this.type === "xml" || this.type === "html") ? this.unescapeXml(key) : key;
 	},
 	
 	/**
@@ -378,25 +378,63 @@ ilib.ResBundle.prototype = {
 	 * resources, the original source string is returned. If the key is not given,
 	 * then the source string itself is used as the key. In the case where the 
 	 * source string is used as the key, the whitespace is compressed down to 1 space
-	 * each, and the whitespace at the beginning and end of the string is trimmed.
+	 * each, and the whitespace at the beginning and end of the string is trimmed.<p>
+	 * 
+	 * The escape mode specifies what type of output you are escaping the returned
+	 * string for. Modes are similar to the types: 
+	 * 
+	 * <ul>
+	 * <li>"html" -- prevents HTML injection by escaping the characters &lt &gt; and &amp;
+	 * <li>"xml" -- currently same as "html" mode
+	 * <li>"js" -- prevents breaking Javascript syntax by backslash escaping all quote and 
+	 * double-quote characters
+	 * <li>"attribute" -- meant for HTML attribute values. Currently this is the same as
+	 * "js" escape mode.
+	 * <li>"default" -- use the type parameter from the constructor as the escape mode as well
+	 * <li>"none" or undefined -- no escaping at all.
+	 * </ul>
+	 * 
+	 * The type parameter of the constructor specifies what type of strings this bundle
+	 * is operating upon. This allows pseudo-translation and automatic key generation
+	 * to happen properly by telling this class how to parse the string. The escape mode 
+	 * for this method is different in that it specifies how this string will be used in 
+	 * the calling code and therefore how to escape it properly.<p> 
+	 * 
+	 * For example, a section of Javascript code may be constructing an HTML snippet in a 
+	 * string to add to the web page. In this case, the type parameter in the constructor should
+	 * be "html" so that the source string can be parsed properly, but the escape mode should
+	 * be "js" so that the output string can be used in Javascript without causing syntax
+	 * errors.
 	 * 
 	 * @param {?string=} source the source string to translate
 	 * @param {?string=} key optional name of the key, if any
+	 * @param {?string=} escapeMode escape mode, if any
 	 * @returns {ilib.String|undefined} the translation of the given source/key or undefined 
 	 * if the translation is not found and the source is undefined 
 	 */
-	getString: function (source, key) {
+	getString: function (source, key, escapeMode) {
 		if (!source && !key) return undefined;
-		
+
+		var trans;
 		if (this.locale.isPseudo()) {
-			var str = source ? source : this.map[key],
-				ret = this.pseudo(str);
-			return ret ? new ilib.String(ret) : undefined;
+			var str = source ? source : this.map[key];
+			trans = this.pseudo(str || key);
+		} else {
+			var keyName = key || this.makeKey(source);
+			trans = typeof(this.map[keyName]) !== 'undefined' ? this.map[keyName] : source;
 		}
-		
-		var keyName = key || this.makeKey(source);
-		var trans = typeof(this.map[keyName]) !== 'undefined' ? this.map[keyName] : source;
-		return trans === undefined ? undefined : new ilib.String((this.type === "xml" || this.type === "html") ? this.escape(trans) : trans);
+
+		if (escapeMode && escapeMode !== "none") {
+			if (escapeMode == "default") {
+				escapeMode = this.type;
+			}
+			if (escapeMode === "xml" || escapeMode === "html") {
+				trans = this.escapeXml(trans);
+			} else if (escapeMode == "js" || escapeMode === "attribute") {
+				trans = trans.replace(/'/g, "\\\'").replace(/"/g, "\\\"");
+			}
+		}
+		return trans === undefined ? undefined : new ilib.String(trans);
 	},
 	
 	/**

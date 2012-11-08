@@ -1,7 +1,7 @@
 /*
  * hebrew.js - Represent a Hebrew calendar object.
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -81,7 +81,7 @@ ilib.Cal.Hebrew.newYearsCorrection = function(year, elapsed) {
 		nextYear = ilib.Cal.Hebrew.elapsedDays(year+1);
 	
 	return (nextYear - thisYear) == 356 ? 2 : ((thisYear - lastYear) == 382 ? 1 : 0);
-}
+};
 
 /**
  * @private

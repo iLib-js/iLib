@@ -1,7 +1,7 @@
 /*
  * ilibglobal.js - define the ilib name space
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ var ilib = ilib || {};
  */
 ilib.getVersion = function () {
 	// increment this for each release
-	return "1.1";
+	return "1.2";
 };
 
 /*
@@ -104,7 +104,7 @@ ilib.getTimeZone = function() {
 /*
  * locale.js - Locale specifier definition
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -258,7 +258,7 @@ ilib.Locale.prototype = {
  * @private
  */
 ilib.Locale.locales = [
-	"af-ZA","en-AU","en-CA","en-GB","en-IE","en-IN","en-NG","en-NZ","en-PH","en-PK","en-US","en-ZA","de-AT","de-CH","de-DE","fr-BE","fr-CA","fr-CH","fr-FR","es-AR","es-ES","es-MX","id-ID","it-CH","it-IT","ja-JP","ko-KR","nl-BE","nl-NL","pt-BR","pt-PT","ru-RU","tr-TR","vi-VN","xx-XX","zh-CN","zh-TW","zh-HK","zh-SG","zh-MO"
+	"af-ZA","da-DK","de-AT","de-CH","de-DE","en-AU","en-CA","en-GB","en-IE","en-IN","en-NG","en-NZ","en-PH","en-PK","en-US","en-ZA","es-AR","es-ES","es-MX","fr-BE","fr-CA","fr-CH","fr-FR","id-ID","it-CH","it-IT","ja-JP","ko-KR","nl-BE","nl-NL","no-NO","pt-BR","pt-PT","ru-RU","sv-SE","tr-TR","vi-VN","xx-XX","zh-CN","zh-TW","zh-HK","zh-SG","zh-MO"
 ];
 
 /**
@@ -276,7 +276,7 @@ ilib.Locale.getAvailableLocales = function () {
 /*
  * date.js - Represent a date in any calendar. This class is subclassed for each calendar.
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -420,7 +420,7 @@ ilib.Date.prototype = {
 /*
  * strings.js - ilib string subclass definition
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -754,7 +754,7 @@ ilib.String.prototype.formatChoice = function(argIndex, params) {
 /*
  * util/utils.js - Misc utility routines
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -948,12 +948,12 @@ ilib.shallowCopy = function (source, target) {
 			}
 		}
 	}
-}
+};
 
 /*
  * resources.js - Resource bundle definition
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1293,7 +1293,7 @@ ilib.ResBundle.prototype = {
 	 * @private
 	 * Escape html characters in the output.
 	 */
-	escape: function (str) {
+	escapeXml: function (str) {
 		str = str.replace(/&/g, '&amp;');
 		str = str.replace(/</g, '&lt;');
 		str = str.replace(/>/g, '&gt;');
@@ -1304,7 +1304,7 @@ ilib.ResBundle.prototype = {
 	 * @private
 	 * @param {string} str the string to unescape
 	 */
-	unescape: function (str) {
+	unescapeXml: function (str) {
 		str = str.replace(/&amp;/g, '&');
 		str = str.replace(/&lt;/g, '<');
 		str = str.replace(/&gt;/g, '>');
@@ -1322,7 +1322,7 @@ ilib.ResBundle.prototype = {
 	 */
 	makeKey: function (source) {
 		var key = source.replace(/\s+/gm, ' ');
-		return (this.type === "xml" || this.type === "html") ? this.unescape(key) : key;
+		return (this.type === "xml" || this.type === "html") ? this.unescapeXml(key) : key;
 	},
 	
 	/**
@@ -1330,25 +1330,63 @@ ilib.ResBundle.prototype = {
 	 * resources, the original source string is returned. If the key is not given,
 	 * then the source string itself is used as the key. In the case where the 
 	 * source string is used as the key, the whitespace is compressed down to 1 space
-	 * each, and the whitespace at the beginning and end of the string is trimmed.
+	 * each, and the whitespace at the beginning and end of the string is trimmed.<p>
+	 * 
+	 * The escape mode specifies what type of output you are escaping the returned
+	 * string for. Modes are similar to the types: 
+	 * 
+	 * <ul>
+	 * <li>"html" -- prevents HTML injection by escaping the characters &lt &gt; and &amp;
+	 * <li>"xml" -- currently same as "html" mode
+	 * <li>"js" -- prevents breaking Javascript syntax by backslash escaping all quote and 
+	 * double-quote characters
+	 * <li>"attribute" -- meant for HTML attribute values. Currently this is the same as
+	 * "js" escape mode.
+	 * <li>"default" -- use the type parameter from the constructor as the escape mode as well
+	 * <li>"none" or undefined -- no escaping at all.
+	 * </ul>
+	 * 
+	 * The type parameter of the constructor specifies what type of strings this bundle
+	 * is operating upon. This allows pseudo-translation and automatic key generation
+	 * to happen properly by telling this class how to parse the string. The escape mode 
+	 * for this method is different in that it specifies how this string will be used in 
+	 * the calling code and therefore how to escape it properly.<p> 
+	 * 
+	 * For example, a section of Javascript code may be constructing an HTML snippet in a 
+	 * string to add to the web page. In this case, the type parameter in the constructor should
+	 * be "html" so that the source string can be parsed properly, but the escape mode should
+	 * be "js" so that the output string can be used in Javascript without causing syntax
+	 * errors.
 	 * 
 	 * @param {?string=} source the source string to translate
 	 * @param {?string=} key optional name of the key, if any
+	 * @param {?string=} escapeMode escape mode, if any
 	 * @returns {ilib.String|undefined} the translation of the given source/key or undefined 
 	 * if the translation is not found and the source is undefined 
 	 */
-	getString: function (source, key) {
+	getString: function (source, key, escapeMode) {
 		if (!source && !key) return undefined;
-		
+
+		var trans;
 		if (this.locale.isPseudo()) {
-			var str = source ? source : this.map[key],
-				ret = this.pseudo(str);
-			return ret ? new ilib.String(ret) : undefined;
+			var str = source ? source : this.map[key];
+			trans = this.pseudo(str || key);
+		} else {
+			var keyName = key || this.makeKey(source);
+			trans = typeof(this.map[keyName]) !== 'undefined' ? this.map[keyName] : source;
 		}
-		
-		var keyName = key || this.makeKey(source);
-		var trans = typeof(this.map[keyName]) !== 'undefined' ? this.map[keyName] : source;
-		return trans === undefined ? undefined : new ilib.String((this.type === "xml" || this.type === "html") ? this.escape(trans) : trans);
+
+		if (escapeMode && escapeMode !== "none") {
+			if (escapeMode == "default") {
+				escapeMode = this.type;
+			}
+			if (escapeMode === "xml" || escapeMode === "html") {
+				trans = this.escapeXml(trans);
+			} else if (escapeMode == "js" || escapeMode === "attribute") {
+				trans = trans.replace(/'/g, "\\\'").replace(/"/g, "\\\"");
+			}
+		}
+		return trans === undefined ? undefined : new ilib.String(trans);
 	},
 	
 	/**
@@ -1411,6 +1449,70 @@ ilib.data.localeinfo_af_ZA = {
 	"locale": "af-ZA"
 }
 ;
+ilib.data.localeinfo_da = {
+	"firstDayOfWeek": 1,
+	"language.name": "Danish",
+	"numfmt": {
+		"decimalChar": ",",
+		"groupChar": ".",
+		"groupSize": 3,
+		"pctFmt": "{n}%"
+	},
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "4x6"
+	},
+	"locale": "da"
+}
+;
+ilib.data.localeinfo_da_DK = {
+	"currency": "DKK",
+	"region.name": "Denmark",
+	"timezone": "Europe/Copenhagen",
+	"locale": "da-DK"
+}
+;
+ilib.data.localeinfo_de = {
+	"firstDayOfWeek": 1,
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "4x6"
+	},
+	"language.name": "German",
+	"numfmt": {
+		"pctFmt": "{n} %"
+	},
+	"locale": "de"
+}
+;
+ilib.data.localeinfo_de_AT = {
+	"currency": "EUR",
+	"region.name": "Austria",
+	"timezone": "Europe/Vienna",
+	"locale": "de-AT"
+}
+;
+ilib.data.localeinfo_de_CH = {
+	"currency": "CHF",
+	"numfmt": {
+		"decimalChar": ".",
+		"groupChar": "'",
+		"groupSize": 3,
+		"pctFmt": "{n}%",
+		"pctChar": "%"
+	},
+	"region.name": "Switzerland",
+	"timezone": "Europe/Zurich",
+	"locale": "de-CH"
+}
+;
+ilib.data.localeinfo_de_DE = {
+	"currency": "EUR",
+	"region.name": "Germany",
+	"timezone": "Europe/Berlin",
+	"locale": "de-DE"
+}
+;
 ilib.data.localeinfo_en = {
 	"units": "metric",
 	"clock": "24",
@@ -1447,6 +1549,7 @@ ilib.data.localeinfo_en_CA = {
 ;
 ilib.data.localeinfo_en_GB = {
 	"currency": "GBP",
+	"region.name": "Great Britain",
 	"timezone": "Europe/London",
 	"units": "imperial",
 	"paperSizes": {
@@ -1458,12 +1561,14 @@ ilib.data.localeinfo_en_GB = {
 ;
 ilib.data.localeinfo_en_IE = {
 	"currency": "EUR",
+	"region.name": "Ireland",
 	"timezone": "Europe/Dublin",
 	"locale": "en-IE"
 }
 ;
 ilib.data.localeinfo_en_IN = {
 	"currency": "INR",
+	"region.name": "India",
 	"timezone": "Asia/Kolkata",
 	"locale": "en-IN"
 }
@@ -1517,48 +1622,48 @@ ilib.data.localeinfo_en_ZA = {
 	"locale": "en-ZA"
 }
 ;
-ilib.data.localeinfo_de = {
+ilib.data.localeinfo_es = {
 	"clock": "24",
 	"calendar": "gregorian",
 	"firstDayOfWeek": 1,
 	"units": "metric",
-	"timezone": "Europe/Berlin",
+	"timezone": "Europe/Madrid",
 	"paperSizes": {
 		"regular": "A4",
 		"photo": "4x6"
 	},
-	"language.name": "German",
-	"numfmt": {
-		"pctFmt": "{n} %"
-	},
-	"locale": "de"
+	"language.name": "Spanish",
+"numfmt": {
+	"decimalChar": ",",
+	"groupChar": ".",
+	"groupSize": 3,
+	"pctFmt": "{n}%",
+	"pctChar": "%"
+},
+
+	"locale": "es"
 }
 ;
-ilib.data.localeinfo_de_AT = {
+ilib.data.localeinfo_es_AR = {
+	"currency": "ARS",
+	"region.name": "Argentina",
+	"timezone": "America/Argentina/Buenos_Aires",
+	"locale": "es-AR"
+}
+;
+ilib.data.localeinfo_es_ES = {
 	"currency": "EUR",
-	"region.name": "Austria",
-	"timezone": "Europe/Vienna",
-	"locale": "de-AT"
+	"region.name": "Spain",
+	"timezone": "Europe/Madrid",
+	"locale": "es-ES"
 }
 ;
-ilib.data.localeinfo_de_CH = {
-	"currency": "CHF",
-	"numfmt": {
-		"decimalChar": ".",
-		"groupChar": "'",
-		"groupSize": 3,
-		"pctFmt": "{n}%",
-		"pctChar": "%"
-	},
-	"region.name": "Switzerland",
-	"timezone": "Europe/Zurich",
-	"locale": "de-CH"
-}
-;
-ilib.data.localeinfo_de_DE = {
-	"currency": "EUR",
-	"timezone": "Europe/Berlin",
-	"locale": "de-DE"
+ilib.data.localeinfo_es_MX = {
+	"clock": "12",
+	"currency": "MXN",
+	"region.name": "Mexico",
+	"timezone": "America/Mexico_City",
+	"locale": "es-MX"
 }
 ;
 ilib.data.localeinfo_fr = {
@@ -1627,52 +1732,9 @@ ilib.data.localeinfo_fr_CH = {
 ;
 ilib.data.localeinfo_fr_FR = {
 	"currency": "EUR",
+	"region.name": "France",
 	"timezone": "Europe/Paris",
 	"locale": "fr-FR"
-}
-;
-ilib.data.localeinfo_es = {
-	"clock": "24",
-	"calendar": "gregorian",
-	"firstDayOfWeek": 1,
-	"units": "metric",
-	"timezone": "Europe/Madrid",
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "4x6"
-	},
-	"language.name": "Spanish",
-"numfmt": {
-	"decimalChar": ",",
-	"groupChar": ".",
-	"groupSize": 3,
-	"pctFmt": "{n}%",
-	"pctChar": "%"
-},
-
-	"locale": "es"
-}
-;
-ilib.data.localeinfo_es_AR = {
-	"currency": "ARS",
-	"region.name": "Argentina",
-	"timezone": "America/Argentina/Buenos_Aires",
-	"locale": "es-AR"
-}
-;
-ilib.data.localeinfo_es_ES = {
-	"currency": "EUR",
-	"region.name": "Spain",
-	"timezone": "Europe/Madrid",
-	"locale": "es-ES"
-}
-;
-ilib.data.localeinfo_es_MX = {
-	"clock": "12",
-	"currency": "MXN",
-	"region.name": "Mexico",
-	"timezone": "America/Mexico_City",
-	"locale": "es-MX"
 }
 ;
 ilib.data.localeinfo_id = {
@@ -1690,6 +1752,7 @@ ilib.data.localeinfo_id = {
 ;
 ilib.data.localeinfo_id_ID = {
 	"currency": "IDR",
+	"region.name": "Indonesia",
 	"timezone": "Asia/Jakarta",
 	"locale": "id-ID"
 }
@@ -1732,6 +1795,7 @@ ilib.data.localeinfo_it_CH = {
 ;
 ilib.data.localeinfo_it_IT = {
 	"currency": "EUR",
+	"region.name": "Italy",
 	"timezone": "Europe/Rome",
 	"locale": "it-IT"
 }
@@ -1757,6 +1821,7 @@ ilib.data.localeinfo_ja = {
 ;
 ilib.data.localeinfo_ja_JP = {
 	"currency": "JPY",
+	"region.name": "Japan",
 	"timezone": "Asia/Tokyo",
 	"locale": "ja-JP"
 }
@@ -1818,6 +1883,29 @@ ilib.data.localeinfo_nl_NL = {
 	"locale": "nl-NL"
 }
 ;
+ilib.data.localeinfo_no = {
+	"firstDayOfWeek": 1,
+	"language.name": "Norwegian",
+	"numfmt": {
+		"decimalChar": ",",
+		"groupChar": " ",
+		"groupSize": 3,
+		"pctFmt": "{n} %"
+	},
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "4x6"
+	},
+	"locale": "no"
+}
+;
+ilib.data.localeinfo_no_NO = {
+	"currency": "NOK",
+	"region.name": "Norway",
+	"timezone": "Europe/Oslo",
+	"locale": "no-NO"
+}
+;
 ilib.data.localeinfo_pt = {
 	"language.name": "Portuguese",
 "numfmt": {
@@ -1861,6 +1949,29 @@ ilib.data.localeinfo_ru_RU = {
 	"region.name": "Russia",
 	"timezone": "Europe/Moscow",
 	"locale": "ru-RU"
+}
+;
+ilib.data.localeinfo_sv = {
+	"firstDayOfWeek": 1,
+		"language.name": "Swedish",
+	"numfmt": {
+		"decimalChar": ",",
+		"groupChar": " ",
+		"groupSize": 3,
+		"pctFmt": "{n}%"
+	},
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "4x6"
+	},
+	"locale": "sv"
+}
+;
+ilib.data.localeinfo_sv_SE = {
+	"currency": "SEK",
+	"region.name": "Sweden",
+	"timezone": "Europe/Stockholm",
+	"locale": "sv-SE"
 }
 ;
 ilib.data.localeinfo_tr = {
@@ -1970,7 +2081,7 @@ ilib.data.localeinfo_zh_MO = {
 /*
  * localeinfo.js - Encode locale-specific defaults
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2195,7 +2306,7 @@ ilib.LocaleInfo.prototype = {
 /*
  * calendar.js - Represent a calendar object.
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2351,10 +2462,1516 @@ ilib.Cal.prototype = {
 	}
 };
 
+ilib.data.currency = {
+	"USD": {
+		"name": "US Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CHF": {
+		"name": "Swiss Franc",
+		"decimals": 2,
+		"sign": "Fr"
+	},
+	"RON": {
+		"name": "Leu",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"RUB": {
+		"name": "Russian Ruble",
+		"decimals": 2,
+		"sign": "руб."
+	},
+	"SEK": {
+		"name": "Swedish Krona",
+		"decimals": 2,
+		"sign": "kr"
+	},
+	"GBP": {
+		"name": "Pound Sterling",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"PKR": {
+		"name": "Pakistan Rupee",
+		"decimals": 2,
+		"sign": "₨"
+	},
+	"KES": {
+		"name": "Kenyan Shilling",
+		"decimals": 2,
+		"sign": "Sh"
+	},
+	"AED": {
+		"name": "UAE Dirham",
+		"decimals": 2,
+		"sign": "د.إ"
+	},
+	"KRW": {
+		"name": "Won",
+		"decimals": 0,
+		"sign": "₩"
+	},
+	"AFN": {
+		"name": "Afghani",
+		"decimals": 2,
+		"sign": "؋"
+	},
+	"ALL": {
+		"name": "Lek",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"AMD": {
+		"name": "Armenian Dram",
+		"decimals": 2,
+		"sign": "դր."
+	},
+	"ANG": {
+		"name": "Netherlands Antillean Guilder",
+		"decimals": 2,
+		"sign": "ƒ"
+	},
+	"AOA": {
+		"name": "Kwanza",
+		"decimals": 2,
+		"sign": "Kz"
+	},
+	"ARS": {
+		"name": "Argentine Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"AUD": {
+		"name": "Australian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"AWG": {
+		"name": "Aruban Florin",
+		"decimals": 2,
+		"sign": "ƒ"
+	},
+	"AZN": {
+		"name": "Azerbaijanian Manat",
+		"decimals": 2,
+		"sign": "AZN"
+	},
+	"BAM": {
+		"name": "Convertible Mark",
+		"decimals": 2,
+		"sign": "КМ"
+	},
+	"BBD": {
+		"name": "Barbados Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"BDT": {
+		"name": "Taka",
+		"decimals": 2,
+		"sign": "৳"
+	},
+	"BGN": {
+		"name": "Bulgarian Lev",
+		"decimals": 2,
+		"sign": "лв"
+	},
+	"BHD": {
+		"name": "Bahraini Dinar",
+		"decimals": 3,
+		"sign": ".د.ب"
+	},
+	"BIF": {
+		"name": "Burundi Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"BMD": {
+		"name": "Bermudian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"BND": {
+		"name": "Brunei Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"BOB": {
+		"name": "Boliviano",
+		"decimals": 2,
+		"sign": "Bs."
+	},
+	"BRL": {
+		"name": "Brazilian Real",
+		"decimals": 2,
+		"sign": "R$"
+	},
+	"BSD": {
+		"name": "Bahamian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"BTN": {
+		"name": "Ngultrum",
+		"decimals": 2,
+		"sign": "Nu."
+	},
+	"BWP": {
+		"name": "Pula",
+		"decimals": 2,
+		"sign": "P"
+	},
+	"BYR": {
+		"name": "Belarussian Ruble",
+		"decimals": 0,
+		"sign": "Br"
+	},
+	"BZD": {
+		"name": "Belize Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CAD": {
+		"name": "Canadian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CDF": {
+		"name": "Congolese Franc",
+		"decimals": 2,
+		"sign": "Fr"
+	},
+	"CLP": {
+		"name": "Chilean Peso",
+		"decimals": 0,
+		"sign": "$"
+	},
+	"CNY": {
+		"name": "Yuan Renminbi",
+		"decimals": 2,
+		"sign": "元"
+	},
+	"COP": {
+		"name": "Colombian Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CRC": {
+		"name": "Costa Rican Colon",
+		"decimals": 2,
+		"sign": "₡"
+	},
+	"CUP": {
+		"name": "Cuban Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CVE": {
+		"name": "Cape Verde Escudo",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CZK": {
+		"name": "Czech Koruna",
+		"decimals": 2,
+		"sign": "Kč"
+	},
+	"DJF": {
+		"name": "Djibouti Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"DKK": {
+		"name": "Danish Krone",
+		"decimals": 2,
+		"sign": "kr"
+	},
+	"DOP": {
+		"name": "Dominican Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"DZD": {
+		"name": "Algerian Dinar",
+		"decimals": 2,
+		"sign": "د.ج"
+	},
+	"EGP": {
+		"name": "Egyptian Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"ERN": {
+		"name": "Nakfa",
+		"decimals": 2,
+		"sign": "Nfk"
+	},
+	"ETB": {
+		"name": "Ethiopian Birr",
+		"decimals": 2,
+		"sign": "Br"
+	},
+	"EUR": {
+		"name": "Euro",
+		"decimals": 2,
+		"sign": "€"
+	},
+	"FJD": {
+		"name": "Fiji Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"FKP": {
+		"name": "Falkland Islands Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"GEL": {
+		"name": "Lari",
+		"decimals": 2,
+		"sign": "ლ"
+	},
+	"GHS": {
+		"name": "Cedi",
+		"decimals": 2,
+		"sign": "₵"
+	},
+	"GIP": {
+		"name": "Gibraltar Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"GMD": {
+		"name": "Dalasi",
+		"decimals": 2,
+		"sign": "D"
+	},
+	"GNF": {
+		"name": "Guinea Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"GTQ": {
+		"name": "Quetzal",
+		"decimals": 2,
+		"sign": "Q"
+	},
+	"GYD": {
+		"name": "Guyana Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"HKD": {
+		"name": "Hong Kong Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"HNL": {
+		"name": "Lempira",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"HRK": {
+		"name": "Croatian Kuna",
+		"decimals": 2,
+		"sign": "kn"
+	},
+	"HTG": {
+		"name": "Gourde",
+		"decimals": 2,
+		"sign": "G"
+	},
+	"HUF": {
+		"name": "Forint",
+		"decimals": 2,
+		"sign": "Ft"
+	},
+	"IDR": {
+		"name": "Rupiah",
+		"decimals": 2,
+		"sign": "Rp"
+	},
+	"ILS": {
+		"name": "New Israeli Sheqel",
+		"decimals": 2,
+		"sign": "₪"
+	},
+	"INR": {
+		"name": "Indian Rupee",
+		"decimals": 2,
+		"sign": "INR"
+	},
+	"IQD": {
+		"name": "Iraqi Dinar",
+		"decimals": 3,
+		"sign": "ع.د"
+	},
+	"IRR": {
+		"name": "Iranian Rial",
+		"decimals": 2,
+		"sign": "﷼"
+	},
+	"ISK": {
+		"name": "Iceland Krona",
+		"decimals": 0,
+		"sign": "kr"
+	},
+	"JMD": {
+		"name": "Jamaican Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"JOD": {
+		"name": "Jordanian Dinar",
+		"decimals": 3,
+		"sign": "د.ا"
+	},
+	"JPY": {
+		"name": "Yen",
+		"decimals": 0,
+		"sign": "¥"
+	},
+	"KGS": {
+		"name": "Som",
+		"decimals": 2,
+		"sign": "лв"
+	},
+	"KHR": {
+		"name": "Riel",
+		"decimals": 2,
+		"sign": "៛"
+	},
+	"KMF": {
+		"name": "Comoro Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"KPW": {
+		"name": "North Korean Won",
+		"decimals": 2,
+		"sign": "₩"
+	},
+	"KWD": {
+		"name": "Kuwaiti Dinar",
+		"decimals": 3,
+		"sign": "د.ك"
+	},
+	"KYD": {
+		"name": "Cayman Islands Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"KZT": {
+		"name": "Tenge",
+		"decimals": 2,
+		"sign": "₸"
+	},
+	"LAK": {
+		"name": "Kip",
+		"decimals": 2,
+		"sign": "₭"
+	},
+	"LBP": {
+		"name": "Lebanese Pound",
+		"decimals": 2,
+		"sign": "ل.ل"
+	},
+	"LKR": {
+		"name": "Sri Lanka Rupee",
+		"decimals": 2,
+		"sign": "Rs"
+	},
+	"LRD": {
+		"name": "Liberian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"LSL": {
+		"name": "Loti",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"LTL": {
+		"name": "Lithuanian Litas",
+		"decimals": 2,
+		"sign": "Lt"
+	},
+	"LVL": {
+		"name": "Latvian Lats",
+		"decimals": 2,
+		"sign": "Ls"
+	},
+	"LYD": {
+		"name": "Libyan Dinar",
+		"decimals": 3,
+		"sign": "ل.د"
+	},
+	"MAD": {
+		"name": "Moroccan Dirham",
+		"decimals": 2,
+		"sign": "د.م."
+	},
+	"MDL": {
+		"name": "Moldovan Leu",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"MGA": {
+		"name": "Malagasy Ariary",
+		"decimals": 2,
+		"sign": "Ar"
+	},
+	"MKD": {
+		"name": "Denar",
+		"decimals": 2,
+		"sign": "ден"
+	},
+	"MMK": {
+		"name": "Kyat",
+		"decimals": 2,
+		"sign": "K"
+	},
+	"MNT": {
+		"name": "Tugrik",
+		"decimals": 2,
+		"sign": "₮"
+	},
+	"MOP": {
+		"name": "Pataca",
+		"decimals": 2,
+		"sign": "P"
+	},
+	"MRO": {
+		"name": "Ouguiya",
+		"decimals": 2,
+		"sign": "UM"
+	},
+	"MUR": {
+		"name": "Mauritius Rupee",
+		"decimals": 2,
+		"sign": "₨"
+	},
+	"MVR": {
+		"name": "Rufiyaa",
+		"decimals": 2,
+		"sign": ".ރ"
+	},
+	"MWK": {
+		"name": "Kwacha",
+		"decimals": 2,
+		"sign": "MK"
+	},
+	"MXN": {
+		"name": "Mexican Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"MYR": {
+		"name": "Malaysian Ringgit",
+		"decimals": 2,
+		"sign": "RM"
+	},
+	"MZN": {
+		"name": "Metical",
+		"decimals": 2,
+		"sign": "MT"
+	},
+	"NAD": {
+		"name": "Namibia Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"NGN": {
+		"name": "Naira",
+		"decimals": 2,
+		"sign": "₦"
+	},
+	"NIO": {
+		"name": "Cordoba Oro",
+		"decimals": 2,
+		"sign": "C$"
+	},
+	"NOK": {
+		"name": "Norwegian Krone",
+		"decimals": 2,
+		"sign": "kr"
+	},
+	"NPR": {
+		"name": "Nepalese Rupee",
+		"decimals": 2,
+		"sign": "₨"
+	},
+	"NZD": {
+		"name": "New Zealand Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"OMR": {
+		"name": "Rial Omani",
+		"decimals": 3,
+		"sign": "ر.ع."
+	},
+	"PAB": {
+		"name": "Balboa",
+		"decimals": 2,
+		"sign": "B/."
+	},
+	"PEN": {
+		"name": "Nuevo Sol",
+		"decimals": 2,
+		"sign": "S/."
+	},
+	"PGK": {
+		"name": "Kina",
+		"decimals": 2,
+		"sign": "K"
+	},
+	"PHP": {
+		"name": "Philippine Peso",
+		"decimals": 2,
+		"sign": "₱"
+	},
+	"PLN": {
+		"name": "Zloty",
+		"decimals": 2,
+		"sign": "zł"
+	},
+	"PYG": {
+		"name": "Guarani",
+		"decimals": 0,
+		"sign": "₲"
+	},
+	"QAR": {
+		"name": "Qatari Rial",
+		"decimals": 2,
+		"sign": "ر.ق"
+	},
+	"RSD": {
+		"name": "Serbian Dinar",
+		"decimals": 2,
+		"sign": "дин."
+	},
+	"RWF": {
+		"name": "Rwanda Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"SAR": {
+		"name": "Saudi Riyal",
+		"decimals": 2,
+		"sign": "ر.س"
+	},
+	"SBD": {
+		"name": "Solomon Islands Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"SCR": {
+		"name": "Seychelles Rupee",
+		"decimals": 2,
+		"sign": "₨"
+	},
+	"SDG": {
+		"name": "Sudanese Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"SGD": {
+		"name": "Singapore Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"SHP": {
+		"name": "Saint Helena Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"SLL": {
+		"name": "Leone",
+		"decimals": 2,
+		"sign": "Le"
+	},
+	"SOS": {
+		"name": "Somali Shilling",
+		"decimals": 2,
+		"sign": "Sh"
+	},
+	"SRD": {
+		"name": "Surinam Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"SSP": {
+		"name": "South Sudanese Pound",
+		"decimals": 2,
+		"sign": ""
+	},
+	"STD": {
+		"name": "Dobra",
+		"decimals": 2,
+		"sign": "Db"
+	},
+	"SYP": {
+		"name": "Syrian Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"SZL": {
+		"name": "Lilangeni",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"THB": {
+		"name": "Baht",
+		"decimals": 2,
+		"sign": "฿"
+	},
+	"TJS": {
+		"name": "Somoni",
+		"decimals": 2,
+		"sign": "ЅМ"
+	},
+	"TMT": {
+		"name": "New Manat",
+		"decimals": 2,
+		"sign": "m"
+	},
+	"TND": {
+		"name": "Tunisian Dinar",
+		"decimals": 3,
+		"sign": "د.ت"
+	},
+	"TOP": {
+		"name": "Pa’anga",
+		"decimals": 2,
+		"sign": "T$"
+	},
+	"TRY": {
+		"name": "Turkish Lira",
+		"decimals": 2,
+		"sign": "TL"
+	},
+	"TTD": {
+		"name": "Trinidad and Tobago Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"TWD": {
+		"name": "New Taiwan Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"TZS": {
+		"name": "Tanzanian Shilling",
+		"decimals": 2,
+		"sign": "Sh"
+	},
+	"UAH": {
+		"name": "Hryvnia",
+		"decimals": 2,
+		"sign": "₴"
+	},
+	"UGX": {
+		"name": "Uganda Shilling",
+		"decimals": 2,
+		"sign": "Sh"
+	},
+	"UYU": {
+		"name": "Peso Uruguayo",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"UZS": {
+		"name": "Uzbekistan Sum",
+		"decimals": 2,
+		"sign": "лв"
+	},
+	"VEF": {
+		"name": "Bolivar Fuerte",
+		"decimals": 2,
+		"sign": "Bs F"
+	},
+	"VND": {
+		"name": "Dong",
+		"decimals": 0,
+		"sign": "₫"
+	},
+	"VUV": {
+		"name": "Vatu",
+		"decimals": 0,
+		"sign": "Vt"
+	},
+	"WST": {
+		"name": "Tala",
+		"decimals": 2,
+		"sign": "T"
+	},
+	"XAF": {
+		"name": "CFA Franc BEAC",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"XCD": {
+		"name": "East Caribbean Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"XOF": {
+		"name": "CFA Franc BCEAO",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"XPF": {
+		"name": "CFP Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"YER": {
+		"name": "Yemeni Rial",
+		"decimals": 2,
+		"sign": "﷼"
+	},
+	"ZAR": {
+		"name": "Rand",
+		"decimals": 2,
+		"sign": "R"
+	},
+	"ZMK": {
+		"name": "Zambian Kwacha",
+		"decimals": 2,
+		"sign": "ZK"
+	},
+	"ZWL": {
+		"name": "Zimbabwe Dollar",
+		"decimals": 2,
+		"sign": "$"
+	}
+}
+;
+/*
+ * currency.js - Currency definition
+ * 
+ * Copyright © 2012, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends ilibglobal.js locale.js
+
+// !data currency
+
+/**
+ * @class
+ * Create a new currency information instance. Instances of this class encode 
+ * information about a particular currency.<p> 
+ * 
+ * The options can contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>locale</i> - specify the locale for this instance
+ * <li><i>code</i> - find info on a specific currency with the given ISO 4217 code 
+ * <li><i>sign</i> - search for a currency that uses this sign
+ * </ul>
+ * 
+ * When searching for a currency by its sign, this class cannot guarantee 
+ * that it will return info about a specific currency. The reason is that currency 
+ * signs are sometimes shared between different currencies and the sign is 
+ * therefore ambiguous. If you need a 
+ * guarantee, find the currency using the code instead.<p>
+ * 
+ * The way this class finds a currency by sign is the following. If the sign is 
+ * unambiguous, then
+ * the currency is returned. If there are multiple currencies that use the same
+ * sign, and the current locale uses that sign, then the default currency for
+ * the current locale is returned. If there are multiple, but the current locale
+ * does not use that sign, then the currency with the largest circulation is
+ * returned. For example, if you are in the en-GB locale, and the sign is "$",
+ * then this class will notice that there are multiple currencies with that
+ * sign (USD, CAD, AUD, HKD, MXP, etc.) Since "$" is not used in en-GB, it will 
+ * pick the one with the largest circulation, which in this case is the US Dollar
+ * (USD).<p>
+ * 
+ * If neither the code or sign property is set, the currency that is most common 
+ * for the locale
+ * will be used instead. If the locale is not set, the default locale will be used.
+ * If the code is given, but it is not found in the list of known currencies, this
+ * constructor will throw an exception. If the sign is given, but it is not found,
+ * this constructor will default to the currency for the current locale. If both
+ * the code and sign properties are given, then the sign property will be ignored
+ * and only the code property used. If the locale is given, but it is not a known
+ * locale, this class will default to the default locale instead.<p>
+ * 
+ * Depends directive: !depends currency.js
+ * 
+ * @constructor
+ * @param options {Object} a set of properties to govern how this instance is constructed.
+ * @throws "currency xxx is unknown" when the given currency code is not in the list of 
+ * known currencies. xxx is replaced with the requested code.
+ */
+ilib.Currency = function (options) {
+	var li, currencies, currInfo, sign, cur;
+	
+	if (options) {
+		if (options.code) {
+			this.code = options.code;
+		}
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		if (options.sign) {
+			sign = options.sign;
+		}
+	}
+	
+	this.locale = this.locale || new ilib.Locale();
+	li = new ilib.LocaleInfo(this.locale);
+		
+	currencies = new ilib.ResBundle({
+		locale: this.locale,
+		name: "currency"
+	}).getResObj();
+
+	if (this.code) {
+		currInfo = currencies[this.code];
+		if (!currInfo) {
+			throw "currency " + this.code + " is unknown";
+		}
+	} else if (sign) {
+		currInfo = currencies[sign]; // maybe it is really a code...
+		if (typeof(currInfo) !== 'undefined') {
+			this.code = sign;
+		} else {
+			this.code = li.getCurrency();
+			currInfo = currencies[this.code];
+			if (currInfo.sign !== sign) {
+				// current locale does not use the sign, so search for it
+				for (cur in currencies) {
+					if (cur && currencies[cur]) {
+						currInfo = currencies[cur];
+						if (currInfo.sign === sign) {
+							// currency data is already ordered so that the currency with the
+							// largest circulation is at the beginning, so all we have to do
+							// is take the first one in the list that matches
+							this.code = cur;
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	if (!currInfo || !this.code) {
+		this.code = li.getCurrency();
+		currInfo = currencies[this.code];
+	}
+	
+	this.name = currInfo.name;
+	this.fractionDigits = currInfo.decimals;
+	this.sign = currInfo.sign;
+};
+
+/**
+ * @static
+ * Return an array of the ids for all ISO 4217 currencies that
+ * this copy of ilib knows about.
+ * @returns {Array.<string>} an array of currency ids that this copy of ilib knows about.
+ */
+ilib.Currency.getAvailableCurrencies = function() {
+	var ret = [],
+		cur,
+		currencies = new ilib.ResBundle({
+			name: "currency"
+		}).getResObj();
+	
+	for (cur in currencies) {
+		if (cur && currencies[cur]) {
+			ret.push(cur);
+		}
+	}
+	
+	return ret;
+};
+
+ilib.Currency.prototype = {
+	/**
+	 * Return the ISO 4217 currency code for this instance.
+	 * @returns {string} the ISO 4217 currency code for this instance
+	 */
+	getCode: function () {
+		return this.code;
+	},
+	
+	/**
+	 * Return the default number of fraction digits that is typically used
+	 * with this type of currency.
+	 * @returns {number} the number of fraction digits for this currency
+	 */
+	getFractionDigits: function () {
+		return this.fractionDigits;
+	},
+	
+	/**
+	 * Return the sign commonly used to represent this currency.
+	 * @returns {string} the sign commonly used to represent this currency
+	 */
+	getSign: function () {
+		return this.sign;
+	},
+	
+	/**
+	 * Return the name of the currency in English.
+	 * @returns {string} the name of the currency in English
+	 */
+	getName: function () {
+		return this.name;
+	},
+	
+	/**
+	 * Return the locale for this currency. If the options to the constructor 
+	 * included a locale property in order to find the currency that is appropriate
+	 * for that locale, then the locale is returned here. If the options did not
+	 * include a locale, then this method returns undefined.
+	 * @returns {ilib.Locale} the locale used in the constructor of this instance,
+	 * or undefined if no locale was given in the constructor
+	 */
+	getLocale: function () {
+		return this.locale;
+	}
+};
+
+/*
+ * numfmt.js - Number formatter definition
+ * 
+ * Copyright © 2012, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends ilibglobal.js locale.js strings.js resources.js currency.js
+
+/**
+ * @private
+ */
+ilib._roundFnc = {
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	floor: function (num) {
+		return Math.floor(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	ceiling: function (num) {
+		return Math.ceil(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	down: function (num) {
+		return (num < 0) ? Math.ceil(num) : Math.floor(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	up: function (num) {
+		return (num < 0) ? Math.floor(num) : Math.ceil(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfup: function (num) {
+		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfdown: function (num) {
+		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfeven: function (num) {
+		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfodd: function (num) {
+		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	}
+};
+
+/**
+ * @class
+ * Create a new number formatter instance. Locales differ in the way that digits
+ * in a formatted number are grouped, in the way the decimal character is represented, 
+ * etc. Use this formatter to get it right for any locale.<p>
+ * 
+ * This formatter can format plain numbers, currency amounts, and percentage amounts.<p>  
+ * 
+ * As with all formatters, the recommended
+ * practice is to create one formatter and use it multiple times to format various
+ * numbers.<p>
+ * 
+ * The options can contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>locale</i> - use the conventions of the specified locale when figuring out how to
+ * format a number.
+ * <li><i>type</i> - the type of this formatter. Valid values are "number", "currency", or 
+ * "percentage". If this property is not specified, the default is "number".
+ * <li><i>currency</i> - the ISO 4217 3-letter currency code to use when the formatter type 
+ * is "currency". This property is required for currency formatting. If the type property 
+ * is "currency" and the currency property is not specified, the constructor will throw a
+ * an exception. 
+ * <li><i>maxFractionDigits</i> - the maximum number of digits that should appear in the
+ * formatted output after the decimal. A value of -1 means unlimited, and 0 means only print
+ * the integral part of the number. 
+ * <li><i>minFractionDigits</i> - the minimum number of fractional digits that should
+ * appear in the formatted output. If the number does not have enough fractional digits
+ * to reach this minimum, the number will be zero-padded at the end to get to the limit.
+ * If the type of the formatter is "currency" and this
+ * property is not specified, then the minimum fraction digits is set to the normal number
+ * of digits used with that currency, which is almost always 0, 2, or 3 digits.
+ * <li><i>roundingMode</i> - When the maxFractionDigits or maxIntegerDigits is specified,
+ * this property governs how the least significant digits are rounded to conform to that
+ * maximum. The value of this property is a string with one of the following values:
+ * <ul>
+ *   <li><i>up</i> - round away from zero
+ *   <li><i>down</i> - round towards zero. This has the effect of truncating the number
+ *   <li><i>ceiling</i> - round towards positive infinity
+ *   <li><i>floor</i> - round towards negative infinity
+ *   <li><i>halfup</i> - round towards nearest neighbour. If equidistant, round up.
+ *   <li><i>halfdown</i> - round towards nearest neighbour. If equidistant, round down.
+ *   <li><i>halfeven</i> - round towards nearest neighbour. If equidistant, round towards the even neighbour
+ *   <li><i>halfodd</i> - round towards nearest neighbour. If equidistant, round towards the odd neighbour
+ * </ul>
+ * When the type of the formatter is "currency" and the <i>roundingMode</i> property is not
+ * set, then the standard legal rounding rules for the locale are followed. If the type
+ * is "number" or "percentage" and the <i>roundingMode</i> property is not set, then the 
+ * default mode is "halfdown".</i>.
+ * <li><i>style</i> - When the type of this formatter is "currency", the currency amount
+ * can be formatted in the following styles: "common" and "iso". The common style is the
+ * one commonly used in every day writing where the currency unit is represented using a 
+ * symbol. eg. "$57.35" for fifty-seven dollars and thirty five cents. The iso style is 
+ * the international style where the currency unit is represented using the ISO 4217 code.
+ * eg. "USD 57.35" for the same amount. The default is "common" style if the style is
+ * not specified.<p>
+ * 
+ * When the type of this formatter is "number",
+ * the style can be either "standard" or "scientific". A "standard" style means a fully
+ * specified floating point number formatted for the locale, whereas "scientific" uses
+ * scientific notation for all numbers. That is, 1 integral digit, followed by a number
+ * of fractional digits, followed by an "e" which denotes exponentiation, followed digits
+ * which give the power of 10 in the exponent. Note that if you specify a maximum number
+ * of integral digits, the formatter with a standard style will give you standard 
+ * formatting for smaller numbers and scientific notation for larger numbers. The default
+ * is standard style if this is not specified. 
+ * </ul>
+ * <p>
+ * 
+ * Depends directive: !depends numfmt.js
+ * 
+ * @constructor
+ * @param {Object.<string,*>} options A set of options that govern how the formatter will behave 
+ */
+ilib.NumFmt = function (options) {
+	this.locale = new ilib.Locale();
+	this.type = "number";
+	
+	if (options) {
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		
+		if (options.type) {
+			if (options.type === 'number' || 
+				options.type === 'currency' || 
+				options.type === 'percentage') {
+				this.type = options.type;
+			}
+		}
+		
+		if (options.currency) {
+			this.currency = options.currency;
+		}
+		
+		if (typeof(options.maxFractionDigits) === 'number') {
+			this.maxFractionDigits = this._toPrimitive(options.maxFractionDigits);
+		}
+		if (typeof(options.minFractionDigits) === 'number') {
+			this.minFractionDigits = this._toPrimitive(options.minFractionDigits);
+		}
+		if (options.style) {
+			this.style = options.style;
+		}
+	}
+	
+	this.localeInfo = new ilib.LocaleInfo(this.locale);
+	switch (this.type) {
+		case "currency":
+			var templates,
+				curopts;
+			
+			if (!this.currency || typeof(this.currency) != 'string') {
+				throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
+			}
+			
+			curopts = {
+				locale: this.locale,
+				code: this.currency		
+			};
+			this.currencyInfo = new ilib.Currency(curopts);
+			if (this.style !== "common" && this.style !== "iso") {
+				this.style = "common";
+			}
+			
+			if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
+				this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
+			}
+			
+			templates = this.localeInfo.getCurrencyFormats();
+			this.template = new ilib.String(templates[this.style]);
+			this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign(); 
+			break;
+		case "percentage":
+			this.template = new ilib.String(this.localeInfo.getPercentageFormat());
+			break;
+		default:
+			break;
+	}
+	
+	if (this.maxFractionDigits < this.minFractionDigits) {
+		this.minFractionDigits = this.maxFractionDigits;
+	}
+	
+	this.roundingMode = options && options.roundingMode;
+	if (!this.roundingMode) {
+		this.roundingMode = this.localeInfo.getRoundingMode();
+	}
+	if (!this.roundingMode) {
+		this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
+	}
+	if (!this.roundingMode) {
+		this.roundingMode = "halfdown";
+	}
+	
+	// set up the function, so we only have to figure it out once
+	// and not every time we do format()
+	this.round = ilib._roundFnc[this.roundingMode];
+	if (!this.round) {
+		this.roundingMode = "halfdown";
+		this.round = ilib._roundFnc[this.roundingMode];
+	}
+};
+
+/**
+ * Return an array of available locales that this formatter can format
+ * @returns {Array.<ilib.Locale>|undefined} an array of available locales
+ */
+ilib.NumFmt.getAvailableLocales = function () {
+	return undefined;
+};
+
+/**
+ * @private
+ * @const
+ * @type string
+ */
+ilib.NumFmt.zeros = "0000000000000000000000000000000000000000000000000000000000000000000000";
+
+
+ilib.NumFmt.prototype = {
+	/*
+	 * @private
+	 */
+	_pad: function (str, length, left) {
+		return (str.length >= length) ? 
+			str : 
+			(left ? 
+				ilib.NumFmt.zeros.substring(0,length-str.length) + str : 
+				str + ilib.NumFmt.zeros.substring(0,length-str.length));  
+	},
+	
+	/**
+	 * @private
+	 * @param {Number|ilib.Number|string|number} num object, string, or number to convert to a primitive number
+	 * @returns {number} the primitive number equivalent of the argument
+	 */
+	_toPrimitive: function (num) {
+		var n = 0;
+		
+		switch (typeof(num)) {
+		case 'number':
+			n = num;
+			break;
+		case 'string':
+			n = parseFloat(num);
+			break;
+		case 'object':
+			// Number.valueOf() is incorrectly documented as being of type "string" rather than "number", so coerse 
+			// the type here to shut the type checker up
+			n = /** @type {number} */ num.valueOf();
+			break;
+		}
+		
+		return n;
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num the number to format
+	 * @returns {string} the formatted number 
+	 */
+	_formatScientific: function (num) {
+		var n = new Number(num);
+		var formatted;
+		if (typeof(this.maxFractionDigits) !== 'undefined') {
+			// if there is fraction digits, round it to the right length first
+			// divide or multiply by 10 by manipulating the exponent so as to
+			// avoid the rounding errors of floating point numbers
+			var e, 
+				factor,
+				str = n.toExponential(),
+				parts = str.split("e"),
+				significant = parts[0];
+			
+			e = parts[1];	
+			factor = Math.pow(10, this.maxFractionDigits);
+			significant = this.round(significant * factor) / factor;
+			formatted = "" + significant + "e" + e;
+		} else {
+			formatted = n.toExponential(this.minFractionDigits);
+		}
+		return formatted;
+	},
+	
+	/**
+	 * @private 
+	 * @param {number} num the number to format
+	 * @returns {string} the formatted number
+	 */ 
+	_formatStandard: function (num) {
+		var i;
+		
+		// console.log("_formatNumberStandard: formatting number " + num);
+		if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
+			var factor = Math.pow(10, this.maxFractionDigits);
+			num = this.round(num * factor) / factor;
+		}
+
+		var negative = (num < 0);
+		if (negative) {
+			num = -num;
+		}
+		
+		var parts = ("" + num).split("."),
+			integral = parts[0],
+			fraction = parts[1],
+			cycle,
+			groupSize = this.localeInfo.getGroupingDigits(),
+			formatted;
+		
+		
+		if (this.minFractionDigits > 0) {
+			fraction = this._pad(fraction || "", this.minFractionDigits, false);
+		}
+
+		if (groupSize > 0) {
+			cycle = ilib.mod(integral.length-1, groupSize);
+			formatted = negative ? "-" : "";
+			for (i = 0; i < integral.length-1; i++) {
+				formatted += integral.charAt(i);
+				if (cycle === 0) {
+					formatted += this.localeInfo.getGroupingSeparator();
+				}
+				cycle = ilib.mod(cycle - 1, groupSize);
+			}
+			formatted += integral.charAt(integral.length-1);
+		} else {
+			formatted = (negative ? "-" : "") + integral;
+		}
+		
+		if (fraction && (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits > 0)) {
+			formatted += this.localeInfo.getDecimalSeparator();
+			formatted += fraction;
+		}
+		
+		// console.log("_formatNumberStandard: returning " + formatted);
+		return formatted;
+	},
+	
+	/**
+	 * Format a number according to the settings of this number formatter instance.
+	 * @param num {number|string|Number|ilib.Number} a floating point number to format
+	 * @returns {string} a string containing the formatted number
+	 */
+	format: function (num) {
+		var formatted, n;
+
+		if (typeof(num) === 'undefined') {
+			return "";
+		}
+		
+		// convert to a real primitive number type
+		n = this._toPrimitive(num);
+		
+		if (this.type === "number") {
+			formatted = (this.style === "scientific") ? 
+					this._formatScientific(n) : 
+					this._formatStandard(n);
+		} else {			
+			formatted = this.template.format({n: this._formatStandard(n), s: this.sign});
+		}
+		
+		return formatted;
+	},
+	
+	/**
+	 * Return the type of formatter. Valid values are "number", "currency", and
+	 * "percentage".
+	 * 
+	 * @returns {string} the type of formatter
+	 */
+	getType: function () {
+		return this.type;
+	},
+	
+	/**
+	 * Return the locale for this formatter instance.
+	 * @returns {ilib.Locale} the locale instance for this formatter
+	 */
+	getLocale: function () {
+		return this.locale;
+	},
+	
+	/**
+	 * Returns true if this formatter groups together digits in the integral 
+	 * portion of a number, based on the options set up in the constructor. In 
+	 * most western European cultures, this means separating every 3 digits 
+	 * of the integral portion of a number with a particular character.
+	 * 
+	 * @returns {boolean} true if this formatter groups digits in the integral
+	 * portion of the number
+	 */
+	isGroupingUsed: function () {
+		var c = this.localeInfo.getGroupingSeparator();
+		return (c !== 'undefined' && c.length > 0);
+	},
+	
+	/**
+	 * Returns the maximum fraction digits set up in the constructor.
+	 * 
+	 * @returns {number} the maximum number of fractional digits this
+	 * formatter will format, or -1 for no maximum
+	 */
+	getMaxFractionDigits: function () {
+		return typeof(this.maxFractionDigits) !== 'undefined' ? this.maxFractionDigits : -1;
+	},
+	
+	/**
+	 * Returns the minimum fraction digits set up in the constructor. If
+	 * the formatter has the type "currency", then the minimum fraction
+	 * digits is the amount of digits that is standard for the currency
+	 * in question unless overridden in the options to the constructor.
+	 * 
+	 * @returns {number} the minimum number of fractional digits this
+	 * formatter will format, or -1 for no minimum
+	 */
+	getMinFractionDigits: function () {
+		return typeof(this.minFractionDigits) !== 'undefined' ? this.minFractionDigits : -1;
+	},
+
+	/**
+	 * Returns the ISO 4217 code for the currency that this formatter formats.
+	 * IF the typeof this formatter is not "currency", then this method will
+	 * return undefined.
+	 * 
+	 * @returns {string} the ISO 4217 code for the currency that this formatter
+	 * formats, or undefined if this not a currency formatter
+	 */
+	getCurrency: function () {
+		return this.currencyInfo && this.currencyInfo.getCode();
+	},
+	
+	/**
+	 * Returns the rounding mode set up in the constructor. The rounding mode
+	 * controls how numbers are rounded when the integral or fraction digits 
+	 * of a number are limited.
+	 * 
+	 * @returns {string} the name of the rounding mode used in this formatter
+	 */
+	getRoundingMode: function () {
+		return this.roundingMode;
+	},
+	
+	/**
+	 * If this formatter is a currency formatter, then the style determines how the
+	 * currency is denoted in the formatted output. This method returns the style
+	 * that this formatter will produce. (See the constructor comment for more about
+	 * the styles.)
+	 * @returns {string} the name of the style this formatter will use to format
+	 * currency amounts, or "undefined" if this formatter is not a currency formatter
+	 */
+	getStyle: function () {
+		return this.style;
+	}
+};
+
 /*
  * julianday.js - A Julian date object.
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2469,7 +4086,7 @@ ilib.JulianDay.prototype = {
 /*
  * gregorian.js - Represent a Gregorian calendar object.
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2591,7 +4208,7 @@ ilib.Cal._constructors["gregorian"] = ilib.Cal.Gregorian;
 /*
  * gregoriandate.js - Represent a date in the Gregorian calendar
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3275,7 +4892,7 @@ ilib.data.timezones = {"Europe/Sofia":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l
 /*
  * timezone.js - Definition of a time zone class
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3296,6 +4913,7 @@ ilib.data.timezones = {"Europe/Sofia":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l
 ilibglobal.js 
 locale.js
 localeinfo.js
+numfmt.js
 calendar/gregoriandate.js
 */
 
@@ -3311,19 +4929,64 @@ calendar/gregoriandate.js
  * 
  * <ul>
  * <li><i>id</i> - The id of the requested time zone such as "Europe/London" or 
- * "America/Los_Angeles"
+ * "America/Los_Angeles". These are taken from the IANA time zone database. (See
+ * http://www.iana.org/time-zones for more information.) <p>
+ * 
+ * There is one special 
+ * time zone that is not taken from the IANA database called simply "local". In
+ * this case, this class will attempt to discover the current time zone and
+ * daylight savings time settings by calling standard Javascript classes to 
+ * determine the offsets from UTC. 
+ * 
  * <li><i>locale</i> - The locale for this time zone.
  * <li><i>offset</i> - Choose the time zone based on the offset from UTC given in
- * number of minutes. In some cases, there are multiple time zones that correspond
- * to the given offset, and the first one encountered in the list is the one taken.
- * If a more specific time zone is needed, use the "id" property to identify the
- * time zone instead.
+ * number of minutes (negative is west, positive is east). 
  * </ul>
  * 
- * If the id is not given, the default time zone for the locale is retrieved from
+ * There is currently no way in the ECMAscript
+ * standard to tell which exact time zone is currently in use. Choosing the
+ * id "locale" or specifying an explicit offset will not give a specific time zone, 
+ * as it is impossible to tell with certainty which zone the offsets 
+ * match.<p>
+ * 
+ * When the id "local" is given or the offset option is specified, this class will
+ * have the following behaviours:
+ * <ul>
+ * <li>The display name will always be given as the RFC822 style, no matter what
+ * style is requested
+ * <li>The id will also be returned as the RFC822 style display name
+ * <li>When the offset is explicitly given, this class will assume the time zone 
+ * does not support daylight savings time, and the offsets will be calculated 
+ * the same way year round.
+ * <li>When the offset is explicitly given, the inDaylightSavings() method will 
+ * always return false.
+ * <li>When the id "local" is given, this class will attempt to determine the 
+ * daylight savings time settings by examining the offset from UTC on Jan 1
+ * and June 1 of the current year. If they are different, this class assumes
+ * that the local time zone uses DST. When the offset for a particular date is
+ * requested, it will use the built-in Javascript support to determine the 
+ * offset for that date.
+ * </ul> 
+ * 
+ * If a more specific time zone is 
+ * needed with display names and known start/stop times for DST, use the "id" 
+ * property instead to specify the time zone exactly. You can perhaps ask the
+ * user which time zone they prefer so that your app does not need to guess.<p>
+ * 
+ * If the id and the offset are both not given, the default time zone for the 
+ * locale is retrieved from
  * the locale info. If the locale is not specified, the default locale for the
- * library is used.
- * <p>
+ * library is used.<p>
+ * 
+ * Because this class was designed for use in web sites, and the vast majority
+ * of dates and times being formatted are recent date/times, this class is simplified
+ * by not implementing historical time zones. That is, when governments change the 
+ * time zone rules for a particular zone, only the latest such rule is implemented 
+ * in this class. That means that determining the offset for a date that is prior 
+ * to the last change may give the wrong result. Historical time zone calculations
+ * may be implemented in a later version of iLib if there is enough demand for it,
+ * but it would entail a much larger set of time zone data that would have to be
+ * loaded.  
  * 
  * Depends directive: !depends timezone.js
  * 
@@ -3334,6 +4997,7 @@ ilib.TimeZone = function(options) {
 	var arr, i, bad, res, formats, type, zones;
 	
 	this.locale = new ilib.Locale();
+	this.isLocal = false;
 	
 	if (options) {
 		if (options.locale) {
@@ -3341,8 +5005,28 @@ ilib.TimeZone = function(options) {
 		}
 		
 		if (options.id) {
-			this.id = options.id;
-		// TODO: } else if (options.offset) {
+			if (options.id === 'local') {
+				this.isLocal = true;
+				
+				// use standard Javascript Date to figure out the time zone offsets
+				var now = new Date(), 
+					jan1 = new Date(now.getFullYear(), 0, 1),  // months in std JS Date object are 0-based
+					jun1 = new Date(now.getFullYear(), 5, 1);
+				
+				// Javascript's method returns the offset backwards, so we have to
+				// take the negative to get the correct offset
+				this.offsetJan1 = -jan1.getTimezoneOffset();
+				this.offsetJun1 = -jun1.getTimezoneOffset();
+				// the offset of the standard time for the time zone is always the one that is largest of 
+				// the two, no matter whether you are in the northern or southern hemisphere
+				this.offset = Math.max(this.offsetJan1, this.offsetJun1);
+				this.id = this.getDisplayName(undefined, undefined);
+			} else {
+				this.id = options.id;
+			}
+		} else if (options.offset) {
+			this.offset = (typeof(options.offset) === 'string') ? parseInt(options.offset, 10) : options.offset;
+			this.id = this.getDisplayName(undefined, undefined);
 		}
 	}
 
@@ -3370,7 +5054,7 @@ ilib.TimeZone = function(options) {
 	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>}} 
 	 */
 	this.zone = ilib.TimeZone.zones[this.id];
-	if (!this.zone) {
+	if (!this.zone && !this.offset) {
 		this.id = "Europe/London";
 		this.zone = ilib.TimeZone.zones[this.id];
 	}
@@ -3390,6 +5074,9 @@ ilib.TimeZone.getAvailableIds = function () {
 
 		ilib.TimeZone.zones = res.getResObj();
 	}
+	
+	// special zone meaning "the local time zone according to the JS engine we are running upon"
+	ids.push("local"); 
 	
 	for (tz in ilib.TimeZone.zones) {
 		if (tz) {
@@ -3422,12 +5109,12 @@ ilib.TimeZone.prototype.getId = function () {
  * explicitly what the offset is from UTC
  * </ol>
  *  
- * @param {ilib.Date} date a date to determine if it is in daylight time or standard time
- * @param {string} style one of "standard" or "rfc822". Default if not specified is "standard"
+ * @param {ilib.Date=} date a date to determine if it is in daylight time or standard time
+ * @param {string=} style one of "standard" or "rfc822". Default if not specified is "standard"
  * @returns {string} the name of the time zone, abbreviated according to the style 
  */
 ilib.TimeZone.prototype.getDisplayName = function (date, style) {
-	style = style || "standard";
+	style = (typeof(this.offset) !== 'undefined') ? "rfc822" : (style || "standard");
 	switch (style) {
 		default:
 		case 'standard':
@@ -3454,7 +5141,7 @@ ilib.TimeZone.prototype.getDisplayName = function (date, style) {
 				minute = offset.m || 0;
 			
 			ret += (hour > 0) ? "+" : "-";
-			if (hour < 10) {
+			if (Math.abs(hour) < 10) {
 				ret += "0";
 			}
 			ret += (hour < 0) ? -hour : hour;
@@ -3503,13 +5190,31 @@ ilib.TimeZone.prototype._offsetStringToObj = function (str) {
  * Returns the offset of this time zone from UTC at the given date/time. If daylight saving 
  * time is in effect at the given date/time, this method will return the offset value 
  * adjusted by the amount of daylight saving.
- * @param {ilib.Date} date the date for which the offset is needed
+ * @param {ilib.Date=} date the date for which the offset is needed
  * @return {Object.<{h:number,m:number,s:number}>} an object giving the offset for the zone at 
  * the given date/time, in hours, minutes, and seconds  
  */
 ilib.TimeZone.prototype.getOffset = function (date) {
 	var ret = {};
-	if (this.zone.o) {
+	if (this.isLocal) {
+		var d = (!date) ? new Date() : new Date(date.getTime());
+		var offset = -d.getTimezoneOffset();
+		// hours could be negative, so use the "down" rounding function to round towards zero 
+		// instead of rounding to negative infinity, which is what Math.floor gives you
+		var hours = ilib._roundFnc.down(offset/60),
+		  minutes = Math.abs(offset) - Math.abs(hours)*60;
+		return {
+			h: hours,
+			m: minutes
+		};
+	} else if (typeof(this.offset) !== 'undefined') {
+		var hours = ilib._roundFnc.down(this.offset/60),
+			minutes = Math.abs(this.offset) - Math.abs(hours)*60;
+		return {
+			h: hours,
+			m: minutes
+		};
+	} else if (this.zone.o) {
 		var offsetParts = this._offsetStringToObj(this.zone.o);
 		
 		if (date && this.inDaylightTime(date)) {
@@ -3567,7 +5272,7 @@ ilib.TimeZone.prototype.getOffset = function (date) {
  * Returns the offset of this time zone from UTC at the given date/time. If daylight saving 
  * time is in effect at the given date/time, this method will return the offset value 
  * adjusted by the amount of daylight saving.
- * @param {ilib.Date} date the date for which the offset is needed
+ * @param {ilib.Date=} date the date for which the offset is needed
  * @return {string} the offset for the zone at the given date/time as a string in the 
  * format "h:m:s" 
  */
@@ -3594,6 +5299,19 @@ ilib.TimeZone.prototype.getOffsetStr = function (date) {
  * UTC for this time zone, in hours, minutes, and seconds 
  */
 ilib.TimeZone.prototype.getRawOffset = function () {
+	if (this.isLocal) {
+		// this.offset is the raw offset. ie. it is the "standard time" for the zone.
+		var hours = ilib._roundFnc.down(this.offset/60),
+			minutes = Math.abs(this.offset) - Math.abs(hours)*60;
+		return {
+			h: hours,
+			m: minutes
+		};
+	} else if (typeof(this.offset) !== 'undefined') { 
+		// have to check against undefined instead of just "if (this.offset)" because the 
+		// offset could legally be equal to zero
+		return this.getOffset(undefined);
+	}
 	return this._offsetStringToObj(this.zone.o);
 };
 
@@ -3602,7 +5320,15 @@ ilib.TimeZone.prototype.getRawOffset = function () {
  * @returns {string} the offset from UTC for this time zone, in the format "h:m:s" 
  */
 ilib.TimeZone.prototype.getRawOffsetStr = function () {
-	return this.zone.o || "0:0";
+	if (this.isLocal) {
+		var off = this.getRawOffset();
+		return off.h + ":" + off.m;
+	} else if (typeof(this.offset) !== 'undefined') { 
+		// have to check against undefined instead of just "if (this.offset)" because the 
+		// offset could legally be equal to zero
+		return this.getOffsetStr(undefined);
+	}
+	return this.zone && this.zone.o || "0:0";
 };
 
 /**
@@ -3612,7 +5338,17 @@ ilib.TimeZone.prototype.getRawOffsetStr = function () {
  * clock advances for DST in hours, minutes, and seconds 
  */
 ilib.TimeZone.prototype.getDSTSavings = function () {
-	if (this.zone.s) {
+	if (this.isLocal) {
+		// take the absolute because the difference in the offsets may be positive or
+		// negative, depending on the hemisphere
+		var savings = Math.abs(this.offsetJan1 - this.offsetJun1);
+		var hours = ilib._roundFnc.down(savings/60),
+			minutes = savings - hours*60;
+		return {
+			h: hours,
+			m: minutes
+		};
+	} else if (typeof(this.offset) === 'undefined' && this.zone && this.zone.s) {
 		return this._offsetStringToObj(this.zone.s.v);	// this.zone.start.savings
 	}
 	return {h:0};
@@ -3625,7 +5361,10 @@ ilib.TimeZone.prototype.getDSTSavings = function () {
  * format "h:m:s"
  */
 ilib.TimeZone.prototype.getDSTSavingsStr = function () {
-	if (this.zone.s) {
+	if (this.isLocal) {
+		var savings = this.getDSTSavings();
+		return savings.h + ":" + savings.m;
+	} else if (typeof(this.offset) === 'undefined' && this.zone && this.zone.s) {
 		return this.zone.s.v;	// this.zone.start.savings
 	}
 	return "0:0";
@@ -3724,7 +5463,8 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
  * next year. This method will correctly calculate the start and end of DST for any
  * location.
  * 
- * @param {ilib.Date} date a date for which the info about daylight time is being sought
+ * @param {ilib.Date=} date a date for which the info about daylight time is being sought,
+ * or undefined to tell whether we are currently in daylight savings time
  * @return {boolean} true if the given date is in DST for the current zone, and false
  * otherwise.
  */
@@ -3735,6 +5475,18 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 	// time, no matter what the date is
 	if (!this.useDaylightTime()) {
 		return false;
+	}
+	
+	if (this.isLocal) {
+		var d = new Date(date ? date.getTime() : undefined);
+		// the DST offset is always the one that is closest to negative infinity, no matter 
+		// if you are in the northern or southern hemisphere
+		var dst = Math.min(this.offsetJan1, this.offsetJun1);
+		return (-d.getTimezoneOffset() === dst);
+	}
+	
+	if (!date) {
+		date = ilib.Date.newInstance(); // right now
 	}
 	
 	rd = date.getRataDie();
@@ -3765,9 +5517,11 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 ilib.TimeZone.prototype.useDaylightTime = function () {
 	// this zone uses daylight savings time iff there is a rule defining when to start
 	// and when to stop the DST
-	return (this.zone && 
-			typeof(this.zone.s) !== 'undefined' && 
-			typeof(this.zone.e) !== 'undefined');
+	return (this.isLocal && this.offsetJan1 !== this.offsetJun1) ||
+		(typeof(this.offset) === 'undefined' && 
+		this.zone && 
+		typeof(this.zone.s) !== 'undefined' && 
+		typeof(this.zone.e) !== 'undefined');
 };
 
 ilib.data.dateformats = {
@@ -4036,6 +5790,268 @@ ilib.data.dateformats_af = {
 	"julian": "gregorian"
 }
 ;
+ilib.data.dateformats_da = {
+	"gregorian": {
+		"order": "{date} {time}",
+		"date": {
+			"dmwy": {
+				"s": "E dd/MM/yy",
+				"m": "EE dd/MM/yyyy",
+				"l": "EEE d. MMM yyyy",
+				"f": "EEEE 'den' d. MMMM yyyy"
+			},
+			"dmy": {
+				"s": "d/M/yy",
+				"m": "d/M/yyyy",
+				"l": "d. MMM yyyy",
+				"f": "d. MMMM yyyy"
+			},
+			"dmw": {
+				"s": "E dd/MM",
+				"m": "EE dd/MM",
+				"l": "EEE d. MMM",
+				"f": "EEEE 'den' d. MMMM"
+			},
+			"dm": {
+				"s": "dd/MM",
+				"m": "dd/MM",
+				"l": "d. MMM",
+				"f": "d. MMMM"
+			},
+			"my": {
+				"s": "MM/yy",
+				"m": "MM/yyyy",
+				"l": "MMM yy",
+				"f": "MMMM yyyy"
+			},
+			"dw": {
+				"s": "E dd",
+				"m": "EE dd",
+				"l": "EEE d.",
+				"f": "EEEE 'den' d."
+			},
+			"d": {
+				"s": "d.",
+				"m": "d.",
+				"l": "d.",
+				"f": "d."
+			},
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yyyy",
+				"l": "yyyy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "NN",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "H.mm.ss a Z",
+			"ahms": "H.mm.ss a",
+			"hmsz": "H.mm.ss Z",
+			"ahmz": "H.mm a Z",
+			"hms": "H.mm.ss",
+			"ahm": "H.mm a",
+			"hmz": "H.mm Z",
+			"ah": "H",
+			"hm": "H.mm",
+			"ms": "mm.ss",
+			"h": "H",
+			"m": "mm",
+			"s": "ss"
+		},
+		"range": {
+			"c00": {
+				"s": "{sd}/{sm}/{sy} {st} - {et}",
+				"m": "{sd}/{sm}/{sy} {st} - {et}",
+				"l": "{sd}/{sm}/{sy} {st} - {et}",
+				"f": "{sd} 'den' {sm} {sy} {st} - {et} "
+			},
+			"c01": {
+				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+				"m": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+				"l": "{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}",
+				"f": "{sd} 'den' {ed} {sm} {sy} {st} - {ed} 'den' {em} {ey} {et}"
+			},
+			"c02": {
+				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+				"m": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+				"l": "{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}",
+				"f": "{sd} 'den' {ed} {sm} {sy} {st} - {ed} 'den' {em} {ey} {et}"
+			},
+			"c03": {
+				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+				"m": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+				"l": "{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}",
+				"f": "{sd} 'den' {ed} {sm} {sy} {st} - {ed} 'den' {em} {ey} {et}"
+			},
+			"c10": {
+				"s": "{sd} - {ed}/{sm}/{sy}",
+				"m": "{sd} - {ed}/{sm}/{sy}",
+				"l": "{sd} - {ed} {sm} {sy}",
+				"f": "{sd} - {ed} {sm} {sy}"
+			},
+			"c11": {
+				"s": "{sd}/{sm} - {ed}/{em} {ey}",
+				"m": "{sd}/{sm} - {ed}/{em} {ey}",
+				"l": "{sd} {sm} - {ed} {em} {sy}",
+				"f": "{sd} {sm} - {ed} {em} {sy}"
+			},
+			"c12": {
+				"s": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+				"m": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+				"l": "{sd} {sm} {sy} - {ed} {em} {ey}",
+				"f": "{sd} {sm} {sy} - {ed} {em} {ey}"
+			},
+			"c20": {
+				"s": "{sm}/{sy} - {em}/{ey}",
+				"m": "{sm}/{sy} - {em}/{ey}",
+				"l": "{sm} {sy} - {em} {ey}",
+				"f": "{sm} {sy} - {em} {ey}"
+			},
+			"c30": "{sy} - {ey}"
+		}
+	}
+}
+;
+ilib.data.dateformats_de = {
+	"gregorian": {
+		"order": "{time} {date}",
+		"date": {
+			"dmwy": {
+				"s": "EE dd.MM.yy",
+				"m": "EE dd.MM.yyyy",
+				"l": "EEE dd. MMM yyyy",
+				"f": "EEEE dd. MMMM yyyy"
+			},
+			"dmy": {
+				"s": "dd.MM.yy",
+				"m": "dd.MM.yyyy",
+				"l": "dd. MMM yyyy",
+				"f": "dd. MMMM yyyy"
+			},
+			"dmw": {
+				"s": "EE dd.MM",
+				"m": "EE dd.MM",
+				"l": "EEE dd. MMM",
+				"f": "EEEE dd. MMMM"
+			},
+			"dm": {
+				"s": "dd.MM",
+				"m": "dd.MM",
+				"l": "dd. MMM",
+				"f": "dd. MMMM"
+			},
+			"my": {
+				"s": "MM.yy",
+				"m": "MM.yyyy",
+				"l": "MMM yyyy",
+				"f": "MMMM yyyy"
+			},
+			"dw": {
+				"s": "EE dd",
+				"m": "EEE dd",
+				"l": "EEE dd",
+				"f": "EEEE dd"
+			},
+			"d": "dd.",
+			"m": {
+				"s": "MM",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yyyy",
+				"l": "yyyy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "NN",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "HH:mm:ss a z",
+			"ahms": "HH:mm:ss a",
+			"hmsz": "HH:mm:ss z",
+			"hms": "HH:mm:ss",
+			"ahmz": "HH:mm a z",
+			"ahm": "HH:mm a",
+			"hmz": "HH:mm z",
+			"ah": "HH",
+			"hm": "HH:mm",
+			"ms": "mm:ss",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		},
+		"range": {
+			"c00": {
+				"s": "{st} - {et} {sd}{sm}.{sy}",
+				"m": "{st} - {et} {sd}{sm}.{sy}",
+				"l": "{st} - {et} {sd} {sm} {sy}",
+				"f": "{st} - {et} {sd} {sm} {sy}"
+			},
+			"c01": {
+				"s": "{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}",
+				"m": "{st} {sd}{sm} - {et} {ed}{em} {sy}",
+				"l": "{st} {sd} {sm} - {et} {ed} {em} {sy}",
+				"f": "{st} {sd} {sm} - {et} {ed} {em} {sy}"
+			},
+			"c02": {
+				"s": "{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}",
+				"m": "{st} {sd}{sm} - {et} {ed}{em} {sy}",
+				"l": "{st} {sd} {sm} - {et} {ed} {em} {sy}",
+				"f": "{st} {sd} {sm} - {et} {ed} {em} {sy}"
+			},
+			"c03": {
+				"s": "{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}",
+				"m": "{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}",
+				"l": "{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}",
+				"f": "{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}"
+			},
+			"c10": {
+				"s": "{sd}{sm}.{sy} - {ed}{em}.{ey}",
+				"m": "{sd}{sm}.{sy} - {ed}{em}.{ey}",
+				"l": "{sd}-{ed} {sm} {sy}",
+				"f": "{sd}-{ed} {sm} {sy}"
+			},
+			"c11": {
+				"s": "{sd}{sm}.{sy} - {ed}{em}.{ey}",
+				"m": "{sd}{sm} - {ed}{em} {sy}",
+				"l": "{sd} {sm} - {ed} {em} {sy}",
+				"f": "{sd} {sm} - {ed} {em} {sy}"
+			},
+			"c12": {
+				"s": "{sd}{sm}.{sy} - {ed}{em}.{ey}",
+				"m": "{sd}{sm}.{sy} - {ed}{em}.{ey}",
+				"l": "{sd} {sm} {sy} - {ed} {em} {ey}",
+				"f": "{sd} {sm} {sy} - {ed} {em} {ey}"
+			},
+			"c20": {
+				"s": "{sm}.{sy} - {em}.{ey}",
+				"m": "{sm}.{sy} - {em}.{ey}",
+				"l": "{sm} {sy} - {em} {ey}",
+				"f": "{sm} {sy} - {em} {ey}"
+			},
+			"c30": "{sy} - {ey}"
+		}
+	}
+};
 ilib.data.dateformats_en_AU = {
 	"gregorian": {
 		"time": {
@@ -4360,38 +6376,38 @@ ilib.data.dateformats_en_ZA = {
 	}
 }
 ;
-ilib.data.dateformats_de = {
+ilib.data.dateformats_es = {
 	"gregorian": {
-		"order": "{time} {date}",
+		"order": "{date} {time}",
 		"date": {
 			"dmwy": {
-				"s": "EE dd.MM.yy",
-				"m": "EE dd.MM.yyyy",
-				"l": "EEE dd. MMM yyyy",
-				"f": "EEEE dd. MMMM yyyy"
+				"s": "EE dd/MM/yy",
+				"m": "EEE dd/MM/yyyy",
+				"l": "EEE dd 'de' MMM yyyy",
+				"f": "EEEE dd 'de' MMMM yyyy"
 			},
 			"dmy": {
-				"s": "dd.MM.yy",
-				"m": "dd.MM.yyyy",
-				"l": "dd. MMM yyyy",
-				"f": "dd. MMMM yyyy"
+				"s": "dd/MM/yy",
+				"m": "dd/MM/yyyy",
+				"l": "dd 'de' MMM yyyy",
+				"f": "dd 'de' MMMM yyyy"
 			},
 			"dmw": {
-				"s": "EE dd.MM",
-				"m": "EE dd.MM",
-				"l": "EEE dd. MMM",
-				"f": "EEEE dd. MMMM"
+				"s": "EE dd/MM",
+				"m": "EE dd/MM",
+				"l": "EEE dd 'de' MMM",
+				"f": "EEEE dd 'de' MMMM"
 			},
 			"dm": {
-				"s": "dd.MM",
-				"m": "dd.MM",
-				"l": "dd. MMM",
-				"f": "dd. MMMM"
+				"s": "dd/MM",
+				"m": "dd/MM",
+				"l": "dd 'de' MMM",
+				"f": "dd 'de' MMMM"
 			},
 			"my": {
-				"s": "MM.yy",
-				"m": "MM.yyyy",
-				"l": "MMM yyyy",
+				"s": "MM/yy",
+				"m": "MM/yyyy",
+				"l": "MMM yy",
 				"f": "MMMM yyyy"
 			},
 			"dw": {
@@ -4400,18 +6416,18 @@ ilib.data.dateformats_de = {
 				"l": "EEE dd",
 				"f": "EEEE dd"
 			},
-			"d": "dd.",
+			"d": "dd",
 			"m": {
-				"s": "MM",
+				"s": "M",
 				"m": "MM",
 				"l": "MMM",
 				"f": "MMMM"
 			},
 			"y": {
 				"s": "yy",
-				"m": "yyyy",
+				"m": "yy",
 				"l": "yyyy",
-				"f": "yyyy"
+				"f": "yyyy G"
 			},
 			"n": {
 				"s": "N",
@@ -4421,12 +6437,12 @@ ilib.data.dateformats_de = {
 			}
 		},
 		"time": {
-			"ahmsz": "HH:mm:ss a z",
-			"ahms": "HH:mm:ss a",
+			"ahmsz": "hh:mm:ssa z",
+			"ahms": "hh:mm:ssa",
 			"hmsz": "HH:mm:ss z",
 			"hms": "HH:mm:ss",
-			"ahmz": "HH:mm a z",
-			"ahm": "HH:mm a",
+			"ahmz": "hh:mma z",
+			"ahm": "hh:mma",
 			"hmz": "HH:mm z",
 			"ah": "HH",
 			"hm": "HH:mm",
@@ -4434,57 +6450,42 @@ ilib.data.dateformats_de = {
 			"h": "HH",
 			"m": "mm",
 			"s": "ss"
-		},
-		"range": {
-			"c00": {
-				"s": "{st} - {et} {sd}{sm}.{sy}",
-				"m": "{st} - {et} {sd}{sm}.{sy}",
-				"l": "{st} - {et} {sd} {sm} {sy}",
-				"f": "{st} - {et} {sd} {sm} {sy}"
-			},
-			"c01": {
-				"s": "{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}",
-				"m": "{st} {sd}{sm} - {et} {ed}{em} {sy}",
-				"l": "{st} {sd} {sm} - {et} {ed} {em} {sy}",
-				"f": "{st} {sd} {sm} - {et} {ed} {em} {sy}"
-			},
-			"c02": {
-				"s": "{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}",
-				"m": "{st} {sd}{sm} - {et} {ed}{em} {sy}",
-				"l": "{st} {sd} {sm} - {et} {ed} {em} {sy}",
-				"f": "{st} {sd} {sm} - {et} {ed} {em} {sy}"
-			},
-			"c03": {
-				"s": "{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}",
-				"m": "{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}",
-				"l": "{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}",
-				"f": "{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}"
-			},
-			"c10": {
-				"s": "{sd}{sm}.{sy} - {ed}{em}.{ey}",
-				"m": "{sd}{sm}.{sy} - {ed}{em}.{ey}",
-				"l": "{sd}-{ed} {sm} {sy}",
-				"f": "{sd}-{ed} {sm} {sy}"
-			},
-			"c11": {
-				"s": "{sd}{sm}.{sy} - {ed}{em}.{ey}",
-				"m": "{sd}{sm} - {ed}{em} {sy}",
-				"l": "{sd} {sm} - {ed} {em} {sy}",
-				"f": "{sd} {sm} - {ed} {em} {sy}"
-			},
-			"c12": {
-				"s": "{sd}{sm}.{sy} - {ed}{em}.{ey}",
-				"m": "{sd}{sm}.{sy} - {ed}{em}.{ey}",
-				"l": "{sd} {sm} {sy} - {ed} {em} {ey}",
-				"f": "{sd} {sm} {sy} - {ed} {em} {ey}"
-			},
-			"c20": {
-				"s": "{sm}.{sy} - {em}.{ey}",
-				"m": "{sm}.{sy} - {em}.{ey}",
-				"l": "{sm} {sy} - {em} {ey}",
-				"f": "{sm} {sy} - {em} {ey}"
-			},
-			"c30": "{sy} - {ey}"
+		}
+	}
+};
+ilib.data.dateformats_es_AR = {
+	"gregorian": {
+		"time": {
+			"ahmsz": "HH'h'mm:ss a Z",
+			"ahms": "HH'h'mm:ss a",
+			"hmsz": "HH'h'mm:ss Z",
+			"ahmz": "HH'h'mm a Z",
+			"hms": "HH'h'mm:ss",
+			"ahm": "HH'h'mm a",
+			"hmz": "HH'h'mm Z",
+			"ah": "HH",
+			"hm": "HH'h'mm",
+			"ms": "mm:ss",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		}
+	}
+}
+;
+ilib.data.dateformats_es_MX = {
+	"gregorian": {
+		"time": {
+			"ahmsz": "h:mm:ssa z",
+			"ahms": "h:mm:ssa",
+			"hmsz": "h:mm:ss z",
+			"hms": "h:mm:ss",
+			"ahmz": "h:mma z",
+			"ahm": "h:mma",
+			"hmz": "h:mm z",
+			"ah": "ha",
+			"hm": "h:mm",
+			"h": "h"
 		}
 	}
 };
@@ -4611,119 +6612,6 @@ ilib.data.dateformats_fr = {
 	}
 };
 ilib.data.dateformats_fr_CA = {
-	"gregorian": {
-		"time": {
-			"ahmsz": "h:mm:ssa z",
-			"ahms": "h:mm:ssa",
-			"hmsz": "h:mm:ss z",
-			"hms": "h:mm:ss",
-			"ahmz": "h:mma z",
-			"ahm": "h:mma",
-			"hmz": "h:mm z",
-			"ah": "ha",
-			"hm": "h:mm",
-			"h": "h"
-		}
-	}
-};
-ilib.data.dateformats_es = {
-	"gregorian": {
-		"order": "{date} {time}",
-		"date": {
-			"dmwy": {
-				"s": "EE dd/MM/yy",
-				"m": "EEE dd/MM/yyyy",
-				"l": "EEE dd 'de' MMM yyyy",
-				"f": "EEEE dd 'de' MMMM yyyy"
-			},
-			"dmy": {
-				"s": "dd/MM/yy",
-				"m": "dd/MM/yyyy",
-				"l": "dd 'de' MMM yyyy",
-				"f": "dd 'de' MMMM yyyy"
-			},
-			"dmw": {
-				"s": "EE dd/MM",
-				"m": "EE dd/MM",
-				"l": "EEE dd 'de' MMM",
-				"f": "EEEE dd 'de' MMMM"
-			},
-			"dm": {
-				"s": "dd/MM",
-				"m": "dd/MM",
-				"l": "dd 'de' MMM",
-				"f": "dd 'de' MMMM"
-			},
-			"my": {
-				"s": "MM/yy",
-				"m": "MM/yyyy",
-				"l": "MMM yy",
-				"f": "MMMM yyyy"
-			},
-			"dw": {
-				"s": "EE dd",
-				"m": "EEE dd",
-				"l": "EEE dd",
-				"f": "EEEE dd"
-			},
-			"d": "dd",
-			"m": {
-				"s": "M",
-				"m": "MM",
-				"l": "MMM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yy",
-				"l": "yyyy",
-				"f": "yyyy G"
-			},
-			"n": {
-				"s": "N",
-				"m": "NN",
-				"l": "MMM",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "hh:mm:ssa z",
-			"ahms": "hh:mm:ssa",
-			"hmsz": "HH:mm:ss z",
-			"hms": "HH:mm:ss",
-			"ahmz": "hh:mma z",
-			"ahm": "hh:mma",
-			"hmz": "HH:mm z",
-			"ah": "HH",
-			"hm": "HH:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
-		}
-	}
-};
-ilib.data.dateformats_es_AR = {
-	"gregorian": {
-		"time": {
-			"ahmsz": "HH'h'mm:ss a Z",
-			"ahms": "HH'h'mm:ss a",
-			"hmsz": "HH'h'mm:ss Z",
-			"ahmz": "HH'h'mm a Z",
-			"hms": "HH'h'mm:ss",
-			"ahm": "HH'h'mm a",
-			"hmz": "HH'h'mm Z",
-			"ah": "HH",
-			"hm": "HH'h'mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
-		}
-	}
-}
-;
-ilib.data.dateformats_es_MX = {
 	"gregorian": {
 		"time": {
 			"ahmsz": "h:mm:ssa z",
@@ -5384,6 +7272,134 @@ ilib.data.dateformats_nl = {
 	}
 }
 ;
+ilib.data.dateformats_no = {
+	"gregorian": {
+		"order": "{date} {time}",
+		"date": {
+			"dmwy": {
+				"s": "EE dd.MM.yy",
+				"m": "EE dd.MM.yyyy",
+				"l": "EEE d. MMM. yyyy",
+				"f": "EEEE d. MMMM yyyy"
+			},
+			"dmy": {
+				"s": "dd.MM.yy",
+				"m": "dd.MM.yyyy",
+				"l": "d. MMM. yyyy",
+				"f": "d. MMMM yyyy"
+			},
+			"dmw": {
+				"s": "EE dd.MM",
+				"m": "EE dd.MM",
+				"l": "EEE d. MMM.",
+				"f": "EEEE d. MMMM"
+			},
+			"dm": {
+				"s": "dd.MM",
+				"m": "dd.MM",
+				"l": "d. MMM.",
+				"f": "d. MMMM"
+			},
+			"my": {
+				"s": "MM.yy",
+				"m": "MM.yyyy",
+				"l": "MMM. yyyy",
+				"f": "MMMM yyyy"
+			},
+			"dw": {
+				"s": "EE dd",
+				"m": "EEE dd",
+				"l": "EEE d",
+				"f": "EEEE d"
+			},
+			"d": "dd.",
+			"m": {
+				"s": "MM.",
+				"m": "MM.",
+				"l": "MMM.",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yyyy",
+				"l": "yyyy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "NN",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "HH.mm.ss a z",
+			"ahms": "HH.mm.ss a",
+			"hmsz": "HH.mm.ss z",
+			"hms": "HH.mm.ss",
+			"ahmz": "HH.mm a z",
+			"ahm": "HH.mm a",
+			"hmz": "HH.mm z",
+			"ah": "HH",
+			"hm": "HH.mm",
+			"ms": "mm.ss",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		},
+		"range": {
+			"c00": {
+				"s": "{sd}.{sm}.{sy} {st} - {et}",
+				"m": "{sd}.{sm}.{sy} {st} - {et}",
+				"l": "{sd} {sm} {sy} {st} - {et}",
+				"f": "{sd} {sm} {sy} {st} - {et}"
+			},
+			"c01": {
+				"s": "{sd}.{sm} {st} - {ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm} {st} - {ed}.{em}.{ey} {et}",
+				"l": "{sd} {sm} {st} - {ed} {em} {sy} {et}",
+				"f": "{sd} {sm} {st} - {ed} {em} {sy} {et}"
+			},
+			"c02": {
+				"s": "{sd}.{sm} {st} - {ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm} {st} - {ed}.{em}.{ey} {et}",
+				"l": "{sd} {sm} {st} - {ed} {em} {sy} {et}",
+				"f": "{sd} {sm} {st} - {ed} {em} {sy} {et}"
+			},
+			"c03": {
+				"s": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}",
+				"l": "{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}",
+				"f": "{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"
+			},
+			"c10": {
+				"s": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+				"m": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+				"l": "{sd}-{ed} {sm} {sy}",
+				"f": "{sd}-{ed} {sm} {sy}"
+			},
+			"c11": {
+				"s": "{sd}.{sm} - {ed}.{em}.{ey}",
+				"m": "{sd}.{sm} - {ed}.{em}.{sy}",
+				"l": "{sd} {sm} - {ed} {em} {sy}",
+				"f": "{sd} {sm} - {ed} {em} {sy}"
+			},
+			"c12": {
+				"s": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+				"m": "{sd}.{sm}.{sy} - {ed}.{em}.{ey}",
+				"l": "{sd} {sm} {sy} - {ed} {em} {ey}",
+				"f": "{sd} {sm} {sy} - {ed} {em} {ey}"
+			},
+			"c20": {
+				"s": "{sm}.{sy} - {em}.{ey}",
+				"m": "{sm}.{sy} - {em}.{ey}",
+				"l": "{sm} {sy} - {em} {ey}",
+				"f": "{sm} {sy} - {em} {ey}"
+			},
+			"c30": "{sy} - {ey}"
+		}
+	}
+};
 ilib.data.dateformats_pt = {
 	"gregorian": {
 		"date": {
@@ -5646,6 +7662,140 @@ ilib.data.dateformats_ru = {
 				"f": "{sm} {sy} - {em} {ey} 'г'."
 			},
 			"c30": "{sy}-{ey}"
+		}
+	}
+}
+;
+ilib.data.dateformats_sv = {
+	"gregorian": {
+		"order": "{date} {time}",
+		"date": {
+			"dmwy": {
+				"s": "E, yy-MM-dd",
+				"m": "EE, yyyy-MM-dd",
+				"l": "EEE, yyyy MMM d",
+				"f": "EEEE, yyyy MMMM d"
+			},
+			"dmy": {
+				"s": "yy-MM-dd",
+				"m": "yyyy-MM-dd",
+				"l": "yyyy MMM d",
+				"f": "yyyy MMMM d"
+			},
+			"dmw": {
+				"s": "E, MM-dd",
+				"m": "EE, MM-dd",
+				"l": "EEE, MMM d",
+				"f": "EEEE, MMMM d"
+			},
+			"dm": {
+				"s": "MM-dd",
+				"m": "MM-dd",
+				"l": "MMM d",
+				"f": "MMMM d"
+			},
+			"my": {
+				"s": "yy-MM",
+				"m": "yyyy-MM",
+				"l": "yyyy MMM",
+				"f": "yyyy MMMM"
+			},
+			"dw": {
+				"s": "E, d",
+				"m": "EE, d",
+				"l": "EEE, d",
+				"f": "EEEE, d"
+			},
+			"d": {
+				"s": "d",
+				"m": "d",
+				"l": "d",
+				"f": "d"
+			},
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yyyy",
+				"l": "yyyy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "NN",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"ahmsz": "HH:mm:ss a Z",
+			"ahms": "HH:mm:ss a",
+			"hmsz": "HH:mm:ss Z",
+			"ahmz": "HH:mm a Z",
+			"hms": "HH:mm:ss",
+			"ahm": "HH:mm a",
+			"hmz": "HH:mm Z",
+			"ah": "HH",
+			"hm": "HH:mm",
+			"ms": "mm:ss",
+			"h": "HH",
+			"m": "mm",
+			"s": "ss"
+		},
+		"range": {
+			"c00": {
+				"s": "{sy}-{sm}-{sd} {st} – {et}",
+				"m": "{sy}-{sm}-{sd} {st} – {et}",
+				"l": "{sy} {sm} {sd} {st} – {et}",
+				"f": "{sy} {sm} {sd} {st} – {et}"
+			},
+			"c01": {
+				"s": "{sy}-{sm}-{sd} {st} – {ed} {et}",
+				"m": "{sy}-{sm}-{sd} {st} – {ed} {et}",
+				"l": "{sy} {sm} {sd} {st} – {ed} {et}",
+				"f": "{sy} {sm} {sd} {st} – {ed} {et}"
+			},
+			"c02": {
+				"s": "{sy}-{sm}-{sd} {st} – {em}-{ed} {et}",
+				"m": "{sy}-{sm}-{sd} {st} – {em}-{ed} {et}",
+				"l": "{sy} {sm} {sd} {st} – {em} {ed} {et}",
+				"f": "{sy} {sm} {sd} {st} – {em} {ed} {et}"
+			},
+			"c03": {
+				"s": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}",
+				"m": "{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}",
+				"l": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}",
+				"f": "{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}"
+			},
+			"c10": {
+				"s": "{sy}-{sm}-{sd} – {ed}",
+				"m": "{sy}-{sm}-{sd} – {ed}",
+				"l": "{sy} {sm} {sd} – {ed}",
+				"f": "{sy} {sm} {sd} – {ed}"
+			},
+			"c11": {
+				"s": "{sy}-{sm}-{sd} – {em}-{ed}",
+				"m": "{sy}-{sm}-{sd} – {em}-{ed}",
+				"l": "{sy} {sm} {sd} – {em} {ed}",
+				"f": "{sy} {sm} {sd} – {em} {ed}"
+			},
+			"c12": {
+				"s": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}",
+				"m": "{sy}-{sm}-{sd} – {ey}-{em}-{ed}",
+				"l": "{sy} {sm} {sd} – {ey} {em} {ed}",
+				"f": "{sy} {sm} {sd} – {ey} {em} {ed}"
+			},
+			"c20": {
+				"s": "{sy}-{sm} – {ey}-{em}",
+				"m": "{sy}-{sm} – {ey}-{em}",
+				"l": "{sy} {sm} – {ey} {em}",
+				"f": "{sy} {sm} – {ey} {em}"
+			},
+			"c30": "{sy} – {ey}"
 		}
 	}
 }
@@ -6650,14 +8800,109 @@ ilib.data.sysres_af = {
 	"#{num} ms": "#{num} ms"
 }
 ;
-ilib.data.sysres_en_CA = {
-	"a0": "AM",
-	"a1": "PM"
-};
-ilib.data.sysres_en_GB = {
-	"a0": "AM",
-	"a0": "PM"
-};
+ilib.data.sysres_da = {
+	"NN1": "ja",
+	"NN2": "fe",
+	"NN3": "ma",
+	"NN4": "ap",
+	"NN5": "ma",
+	"NN6": "ju",
+	"NN7": "ju",
+	"NN8": "au",
+	"NN9": "se",
+	"NN10": "ok",
+	"NN11": "no",
+	"NN12": "de",
+	"MMM1": "jan.",
+	"MMM2": "feb.",
+	"MMM3": "mar.",
+	"MMM4": "apr.",
+	"MMM5": "maj",
+	"MMM6": "jun.",
+	"MMM7": "jul.",
+	"MMM8": "aug.",
+	"MMM9": "sep.",
+	"MMM10": "okt.",
+	"MMM11": "nov.",
+	"MMM12": "dec.",
+	"MMMM1": "januar",
+	"MMMM2": "februar",
+	"MMMM3": "marts",
+	"MMMM4": "april",
+	"MMMM5": "maj",
+	"MMMM6": "juni",
+	"MMMM7": "juli",
+	"MMMM8": "august",
+	"MMMM9": "september",
+	"MMMM10": "oktober",
+	"MMMM11": "november",
+	"MMMM12": "december",
+	"E3": "O",
+	"E6": "L",
+	"EE0": "sø",
+	"EE1": "ma",
+	"EE2": "ti",
+	"EE3": "on",
+	"EE4": "to",
+	"EE5": "fr",
+	"EE6": "lø",
+	"EEE0": "søn",
+	"EEE1": "man",
+	"EEE2": "tir",
+	"EEE3": "ons",
+	"EEE4": "tor",
+	"EEE5": "fre",
+	"EEE6": "lør",
+	"EEEE0": "søndag",
+	"EEEE1": "mandag",
+	"EEEE2": "tirsdag",
+	"EEEE3": "onsdag",
+	"EEEE4": "torsdag",
+	"EEEE5": "fredag",
+	"EEEE6": "lørdag",
+	"a0": "f.m.",
+	"a1": "e.m.",
+	"G-1": "f.Kr.",
+	"G1": "e.Kr.",
+	"in {duration}": "Om {duration}",
+	"{duration} ago": "{duration} siden",
+	"1#1 year|#{num} years": "1#{num} år|#{num} år",
+	"1#1 month|#{num} months": "1#{num} måned|#{num} måneder",
+	"1#1 week|#{num} weeks": "1#{num} uge|#{num} uger",
+	"1#1 day|#{num} days": "1#{num} dag|#{num} dage",
+	"1#1 hour|#{num} hours": "1#{num} time|#{num} timer",
+	"1#1 minute|#{num} minutes": "1#{num} minut|#{num} minutter",
+	"1#1 second|#{num} seconds": "1#{num} sekund|#{num} sekunder",
+	"1#1 millisecond|#{num} milliseconds": "1#{num} millisekund|#{num} millisekunder",
+	"1#1 yr|#{num} yrs": "1#{num} år|#{num} år",
+	"1#1 mon|#{num} mons": "1#{num} mdr.|#{num} mdr.",
+	"1#1 wk|#{num} wks": "1#{num} uge|#{num} uger",
+	"durationLongDays": "1#{num} dag|#{num} dage",
+	"1#1 hr|#{num} hrs": "1#{num} time|#{num} tmr.",
+	"1#1 min|#{num} min": "#{num} min.",
+	"1#1 sec|#{num} sec": "#{num} sek.",
+	"#{num} ms": "#{num} ms",
+	"durationMediumYears": "#{num} år",
+	"1#1 mo|#{num} mos": "#{num} md",
+	"durationMediumWeeks": "#{num} ug",
+	"1#1 dy|#{num} dys": "#{num} da",
+	"durationMediumHours": "#{num} ti",
+	"1#1 mi|#{num} min": "#{num} mi",
+	"1#1 se|#{num} sec": "#{num} se",
+	"#{num}y": "#{num}å",
+	"durationShortMonths": "#{num}må",
+	"#{num}w": "#{num}u",
+	"#{num}d": "#{num}d",
+	"#{num}h": "#{num}t",
+	"durationShortMinutes": "#{num}m",
+	"#{num}s": "#{num}s",
+	"separatorShort": " ",
+	"separatorMedium": " ",
+	"separatorLong": " ",
+	"separatorFull": ", ",
+	"finalSeparatorFull": " og "
+}
+;
 ilib.data.sysres_de = {
 	"MMMM1": "Januar",
 	"MMMM2": "Februar",
@@ -6742,117 +8987,13 @@ ilib.data.sysres_de = {
 	"separatorFull": ", ",
 	"finalSeparatorFull": ", und "
 };
-ilib.data.sysres_fr = {
-	"MMMM1": "janvier",
-	"MMM1": "jan",
-	"NN1": "ja",
-	"MMMM2": "février",
-	"MMM2": "fev",
-	"NN2": "fe",
-	"MMMM3": "mars",
-	"MMM3": "mar",
-	"NN3": "ma",
-	"MMMM4": "avril",
-	"MMM4": "avr",
-	"NN4": "av",
-	"MMMM5": "mai",
-	"MMM5": "mai",
-	"NN5": "ma",
-	"MMMM6": "juin",
-	"MMM6": "jui",
-	"NN6": "ju",
-	"MMMM7": "juillet",
-	"MMM7": "jul",
-	"NN7": "ju",
-	"MMMM8": "août",
-	"MMM8": "aoû",
-	"NN8": "ao",
-	"MMMM9": "septembre",
-	"MMM9": "sep",
-	"NN9": "se",
-	"MMMM10": "octobre",
-	"MMM10": "oct",
-	"NN10": "oc",
-	"MMMM11": "novembre",
-	"MMM11": "nov",
-	"NN11": "no",
-	"MMMM12": "décembre",
-	"MMM12": "déc",
-	"NN12": "dé",
-	"EEEE0": "dimanche",
-	"EEE0": "dim",
-	"EE0": "di",
-	"E0": "D",
-	"EEEE1": "lundi",
-	"EEE1": "lun",
-	"EE1": "lu",
-	"E1": "L",
-	"EEEE2": "mardi",
-	"EEE2": "mar",
-	"EE2": "ma",
-	"E2": "M",
-	"EEEE3": "mercredi",
-	"EEE3": "mer",
-	"EE3": "me",
-	"E3": "M",
-	"EEEE4": "jeudi",
-	"EEE4": "jeu",
-	"EE4": "je",
-	"E4": "J",
-	"EEEE5": "vendredi",
-	"EEE5": "ven",
-	"EE5": "ve",
-	"E5": "V",
-	"EEEE6": "samedi",
-	"EEE6": "sam",
-	"EE6": "sa",
-	"ordinalChoice": "1#1er|#{num}e",
-	"a0": "matin",
-	"a1": "soir",
-	
-	"durationShortMillis": "#{num}ms",
-	"#{num}s": "#{num}s",
-	"durationShortMinutes": "#{num}m",
-	"#{num}h": "#{num}h",
-	"#{num}d": "#{num}j",
-	"#{num}w": "#{num}sm",
-	"durationShortMonths": "#{num}mo",
-	"#{num}y": "#{num}a",
-
-	"#{num} ms": "#{num} Ms",
-	"1#1 se|#{num} sec": "1#1 se|#{num} ses",
-	"1#1 mi|#{num} min": "1#1 mn|#{num} mns",
-	"durationMediumHours": "1#1 hr|#{num} hrs",
-	"1#1 dy|#{num} dys": "1#1 jr|#{num} jrs",
-	"durationMediumWeeks": "1#1 sm|#{num} sms",
-	"1#1 mo|#{num} mos": "1#1 mo|#{num} mos",
-	"durationMediumYears": "1#1 an|#{num} ans",
-
-	"1#1 sec|#{num} sec": "1#1 sec|#{num} secs",
-	"1#1 min|#{num} min": "1#1 min|#{num} mins",
-	"1#1 hr|#{num} hrs": "1#1 hr|#{num} hrs",
-	"durationLongDays": "1#1 jr|#{num} jrs",
-	"1#1 wk|#{num} wks": "1#1 sem|#{num} sems",
-	"1#1 mon|#{num} mons": "1#1 mois|#{num} mois",
-	"1#1 yr|#{num} yrs": "1#1 an|#{num} ans",
-	
-	"1#1 millisecond|#{num} milliseconds": "1#1 milliseconde|#{num} millisecondes",
-	"1#1 second|#{num} seconds": "1#1 seconde|#{num} secondes",
-	"1#1 minute|#{num} minutes": "1#1 minute|#{num} minutes",
-	"1#1 hour|#{num} hours": "1#1 heure|#{num} heures",
-	"1#1 day|#{num} days": "1#1 jour|#{num} jours",
-	"1#1 week|#{num} weeks": "1#1 semaine|#{num} semaines",
-	"1#1 month|#{num} months": "#{num} mois",
-	"1#1 year|#{num} years": "1#1 an|#{num} ans",
-	
-	"{duration} ago": "il ya {duration}",
-	"in {duration}": "en {duration}",
-	
-	"separatorShort": " ",
-	"separatorMedium": " ",
-	"separatorLong": " ",
-	"separatorFull": ", ",
-	"finalSeparatorFull": ", et "
+ilib.data.sysres_en_CA = {
+	"a0": "AM",
+	"a1": "PM"
+};
+ilib.data.sysres_en_GB = {
+	"a0": "AM",
+	"a0": "PM"
 };
 ilib.data.sysres_es = {
 	"MMMM1": "enero",
@@ -6965,6 +9106,118 @@ ilib.data.sysres_es = {
 	"separatorLong": " ",
 	"separatorFull": ", ",
 	"finalSeparatorFull": ", y "
+};
+ilib.data.sysres_fr = {
+	"MMMM1": "janvier",
+	"MMM1": "jan",
+	"NN1": "ja",
+	"MMMM2": "février",
+	"MMM2": "fev",
+	"NN2": "fe",
+	"MMMM3": "mars",
+	"MMM3": "mar",
+	"NN3": "ma",
+	"MMMM4": "avril",
+	"MMM4": "avr",
+	"NN4": "av",
+	"MMMM5": "mai",
+	"MMM5": "mai",
+	"NN5": "ma",
+	"MMMM6": "juin",
+	"MMM6": "jui",
+	"NN6": "ju",
+	"MMMM7": "juillet",
+	"MMM7": "jul",
+	"NN7": "ju",
+	"MMMM8": "août",
+	"MMM8": "aoû",
+	"NN8": "ao",
+	"MMMM9": "septembre",
+	"MMM9": "sep",
+	"NN9": "se",
+	"MMMM10": "octobre",
+	"MMM10": "oct",
+	"NN10": "oc",
+	"MMMM11": "novembre",
+	"MMM11": "nov",
+	"NN11": "no",
+	"MMMM12": "décembre",
+	"MMM12": "déc",
+	"NN12": "dé",
+	"EEEE0": "dimanche",
+	"EEE0": "dim",
+	"EE0": "di",
+	"E0": "D",
+	"EEEE1": "lundi",
+	"EEE1": "lun",
+	"EE1": "lu",
+	"E1": "L",
+	"EEEE2": "mardi",
+	"EEE2": "mar",
+	"EE2": "ma",
+	"E2": "M",
+	"EEEE3": "mercredi",
+	"EEE3": "mer",
+	"EE3": "me",
+	"E3": "M",
+	"EEEE4": "jeudi",
+	"EEE4": "jeu",
+	"EE4": "je",
+	"E4": "J",
+	"EEEE5": "vendredi",
+	"EEE5": "ven",
+	"EE5": "ve",
+	"E5": "V",
+	"EEEE6": "samedi",
+	"EEE6": "sam",
+	"EE6": "sa",
+	"ordinalChoice": "1#1er|#{num}e",
+	"a0": "matin",
+	"a1": "soir",
+	
+	"durationShortMillis": "#{num}ms",
+	"#{num}s": "#{num}s",
+	"durationShortMinutes": "#{num}m",
+	"#{num}h": "#{num}h",
+	"#{num}d": "#{num}j",
+	"#{num}w": "#{num}sm",
+	"durationShortMonths": "#{num}mo",
+	"#{num}y": "#{num}a",
+
+	"#{num} ms": "#{num} Ms",
+	"1#1 se|#{num} sec": "1#1 se|#{num} ses",
+	"1#1 mi|#{num} min": "1#1 mn|#{num} mns",
+	"durationMediumHours": "1#1 hr|#{num} hrs",
+	"1#1 dy|#{num} dys": "1#1 jr|#{num} jrs",
+	"durationMediumWeeks": "1#1 sm|#{num} sms",
+	"1#1 mo|#{num} mos": "1#1 mo|#{num} mos",
+	"durationMediumYears": "1#1 an|#{num} ans",
+
+	"1#1 sec|#{num} sec": "1#1 sec|#{num} secs",
+	"1#1 min|#{num} min": "1#1 min|#{num} mins",
+	"1#1 hr|#{num} hrs": "1#1 hr|#{num} hrs",
+	"durationLongDays": "1#1 jr|#{num} jrs",
+	"1#1 wk|#{num} wks": "1#1 sem|#{num} sems",
+	"1#1 mon|#{num} mons": "1#1 mois|#{num} mois",
+	"1#1 yr|#{num} yrs": "1#1 an|#{num} ans",
+	
+	"1#1 millisecond|#{num} milliseconds": "1#1 milliseconde|#{num} millisecondes",
+	"1#1 second|#{num} seconds": "1#1 seconde|#{num} secondes",
+	"1#1 minute|#{num} minutes": "1#1 minute|#{num} minutes",
+	"1#1 hour|#{num} hours": "1#1 heure|#{num} heures",
+	"1#1 day|#{num} days": "1#1 jour|#{num} jours",
+	"1#1 week|#{num} weeks": "1#1 semaine|#{num} semaines",
+	"1#1 month|#{num} months": "#{num} mois",
+	"1#1 year|#{num} years": "1#1 an|#{num} ans",
+	
+	"{duration} ago": "il ya {duration}",
+	"in {duration}": "en {duration}",
+	
+	"separatorShort": " ",
+	"separatorMedium": " ",
+	"separatorLong": " ",
+	"separatorFull": ", ",
+	"finalSeparatorFull": ", et "
 };
 ilib.data.sysres_id = {
 	"NN5": "Me",
@@ -7163,54 +9416,54 @@ ilib.data.sysres_it = {
 	"finalSeparatorFull": " e "
 };
 ilib.data.sysres_ja = {
-	"MMMM1": "一",
+	"MMMM1": "1",
 	"MMM1": "1",
 	"NN1": "1",
-	"N1": "1",
-	"MMMM2": "二",
+	"N1": "一",
+	"MMMM2": "2",
 	"MMM2": "2",
 	"NN2": "2",
-	"N2": "2",
-	"MMMM3": "三",
+	"N2": "二",
+	"MMMM3": "3",
 	"MMM3": "3",
 	"NN3": "3",
-	"N3": "3",
-	"MMMM4": "四",
+	"N3": "三",
+	"MMMM4": "4",
 	"MMM4": "4",
 	"NN4": "4",
-	"N4": "4",
-	"MMMM5": "五",
+	"N4": "四",
+	"MMMM5": "5",
 	"MMM5": "5",
 	"NN5": "5",
-	"N5": "5",
-	"MMMM6": "六",
+	"N5": "五",
+	"MMMM6": "6",
 	"MMM6": "6",
 	"NN6": "6",
-	"N6": "6",
-	"MMMM7": "七",
+	"N6": "六",
+	"MMMM7": "7",
 	"MMM7": "7",
 	"NN7": "7",
-	"N7": "7",
-	"MMMM8": "八",
+	"N7": "七",
+	"MMMM8": "8",
 	"MMM8": "8",
 	"NN8": "8",
-	"N8": "8",
-	"MMMM9": "九",
+	"N8": "八",
+	"MMMM9": "9",
 	"MMM9": "9",
 	"NN9": "9",
-	"N9": "9",
-	"MMMM10": "十",
+	"N9": "九",
+	"MMMM10": "10",
 	"MMM10": "10",
 	"NN10": "10",
-	"N10": "1O",
-	"MMMM11": "十一",
+	"N10": "十",
+	"MMMM11": "11",
 	"MMM11": "11",
 	"NN11": "11",
-	"N11": "11",
-	"MMMM12": "十二",
+	"N11": "十一",
+	"MMMM12": "12",
 	"MMM12": "12",
 	"NN12": "12",
-	"N12": "12",
+	"N12": "十二",
  	"EEEE0": "日曜日",
 	"EEE0": "日曜日",
 	"EE0": "日",
@@ -7536,6 +9789,116 @@ ilib.data.sysres_nl = {
 	"finalSeparatorFull": " en "
 }
 ;
+ilib.data.sysres_no = {
+	"MMMM1": "januar",
+	"MMM1": "jan.",
+	"NN1": "ja.",
+	"MMMM2": "februar",
+	"MMM2": "feb.",
+	"NN2": "fe.",
+	"MMMM3": "mars",
+	"MMM3": "mar.",
+	"NN3": "ma.",
+	"MMMM4": "april",
+	"MMM4": "apr.",
+	"NN4": "ap.",
+	"MMMM5": "mai",
+	"MMM5": "mai",
+	"NN5": "ma.",
+	"MMMM6": "juni",
+	"MMM6": "jun.",
+	"NN6": "jn.",
+	"MMMM7": "juli",
+	"MMM7": "jul.",
+	"NN7": "ju.",
+	"MMMM8": "august",
+	"MMM8": "aug.",
+	"NN8": "au.",
+	"MMMM9": "september",
+	"MMM9": "sep.",
+	"NN9": "se.",
+	"MMMM10": "oktober",
+	"MMM10": "okt.",
+	"NN10": "ok.",
+	"MMMM11": "november",
+	"MMM11": "nov.",
+	"NN11": "no.",
+	"MMMM12": "desember",
+	"MMM12": "des.",
+	"NN12": "de.",
+	"EEEE0": "Søndag",
+	"EEE0": "Søn.",
+	"EE0": "Sø",
+	"EEEE1": "Mandag",
+	"EEE1": "Man.",
+	"EE1": "Ma",
+	"EEEE2": "Tirsdag",
+	"EEE2": "Tir.",
+	"EE2": "Ti",
+	"EEEE3": "Onsdag",
+	"EEE3": "Ons.",
+	"EE3": "On",
+	"E3": "O",
+	"EEEE4": "Torsdag",
+	"EEE4": "Tor.",
+	"EE4": "To",
+	"EEEE5": "Fredag",
+	"EEE5": "Fre.",
+	"EEE5": "Fr",
+	"EEEE6": "Lørdag",
+	"EEE6": "Lør.",
+	"EE6": "Lø",
+	"E6": "L",
+	"ordinalChoice": "#{num}.",
+	"a0": "fm",
+	"a1": "em",
+	"G-1": "f.Kr.",
+	"G1": "e.Kr.",
+
+	"durationShortMillis": "#{num}ms",
+	"#{num}s": "#{num}s",
+	"durationShortMinutes": "#{num}m",
+	"#{num}h": "#{num}t",
+	"#{num}d": "#{num}d",
+	"#{num}w": "#{num}u",
+	"durationShortMonths": "#{num}må",
+	"#{num}y": "#{num}å",
+
+	"#{num} ms": "#{num} ms",
+	"1#1 se|#{num} sec": "#{num} se",
+	"1#1 mi|#{num} min": "#{num} mi",
+	"durationMediumHours": "#{num} ti",
+	"1#1 dy|#{num} dys": "#{num} da",
+	"durationMediumWeeks": "#{num} uk",
+	"1#1 mo|#{num} mos": "#{num} må",
+	"durationMediumYears": "#{num} år",
+
+	"1#1 sec|#{num} sec": "1#1 sek|#{num} skr",
+	"1#1 min|#{num} min": "1#1 min|#{num} mnr",
+	"1#1 hr|#{num} hrs": "1#1 tim|#{num} tmr",
+	"durationLongDays": "1#1 dag|#{num} dgr",
+	"1#1 wk|#{num} wks": "1#1 uke|#{num} ukr",
+	"1#1 mon|#{num} mons": "#{num} mån",
+	"1#1 yr|#{num} yrs": "#{num} år",
+	
+	"1#1 millisecond|#{num} milliseconds": "1#1 millisekund|#{num} millisekunder",
+	"1#1 second|#{num} seconds": "1#1 sekund|#{num} sekunder",
+	"1#1 minute|#{num} minutes": "1#1 minutt|#{num} minutter",
+	"1#1 hour|#{num} hours": "1#1 time|#{num} timer",
+	"1#1 day|#{num} days": "1#1 dag|#{num} dager",
+	"1#1 week|#{num} weeks": "1#1 uke|#{num} uker",
+	"1#1 month|#{num} months": "1#1 måned|#{num} måneder",
+	"1#1 year|#{num} years": "#{num} år",
+	
+	"{duration} ago": "{duration} siden",
+	"in {duration}": "i {duration}",
+	
+	"separatorShort": " ",
+	"separatorMedium": " ",
+	"separatorLong": ", ",
+	"separatorFull": ", ",
+	"finalSeparatorFull": " og "
+};
 ilib.data.sysres_pt = {
 	"MMMM1": "janeiro",
 	"MMM1": "jan",
@@ -7756,6 +10119,109 @@ ilib.data.sysres_ru = {
 	"separatorFull": ", ",
 	"finalSeparatorFull": " и ",
 	"durationShortMillis": "#{num}мс"
+}
+;
+ilib.data.sysres_sv = {
+	"NN1": "ja",
+	"NN2": "fe",
+	"NN3": "ma",
+	"NN4": "ap",
+	"NN5": "ma",
+	"NN6": "ju",
+	"NN7": "ju",
+	"NN8": "au",
+	"NN9": "se",
+	"NN10": "ok",
+	"NN11": "no",
+	"NN12": "de",
+	"MMM1": "jan",
+	"MMM2": "feb",
+	"MMM3": "mar",
+	"MMM4": "apr",
+	"MMM5": "maj",
+	"MMM6": "jun",
+	"MMM7": "jul",
+	"MMM8": "aug",
+	"MMM9": "sep",
+	"MMM10": "okt",
+	"MMM11": "nov",
+	"MMM12": "dec",
+	"MMMM1": "januari",
+	"MMMM2": "februari",
+	"MMMM3": "mars",
+	"MMMM4": "april",
+	"MMMM5": "maj",
+	"MMMM6": "juni",
+	"MMMM7": "juli",
+	"MMMM8": "augusti",
+	"MMMM9": "september",
+	"MMMM10": "oktober",
+	"MMMM11": "november",
+	"MMMM12": "december",
+	"E3": "O",
+	"E6": "L",
+	"EE0": "sö",
+	"EE1": "må",
+	"EE2": "ti",
+	"EE3": "on",
+	"EE4": "to",
+	"EE5": "fr",
+	"EE6": "lö",
+	"EEE0": "sön",
+	"EEE1": "mån",
+	"EEE2": "tis",
+	"EEE3": "ons",
+	"EEE4": "tor",
+	"EEE5": "fre",
+	"EEE6": "lör",
+	"EEEE0": "söndag",
+	"EEEE1": "måndag",
+	"EEEE2": "tisdag",
+	"EEEE3": "onsdag",
+	"EEEE4": "torsdag",
+	"EEEE5": "fredag",
+	"EEEE6": "lördag",
+	"a0": "fm",
+	"a1": "em",
+	"G-1": "f.Kr.",
+	"G1": "e.Kr.",
+	"in {duration}": "om {duration}",
+	"{duration} ago": "för {duration} sedan",
+	"1#1 year|#{num} years": "1#{num} år|#{num} år",
+	"1#1 month|#{num} months": "1#{num} månad|#{num} månader",
+	"1#1 week|#{num} weeks": "1#{num} vecka|#{num} veckor",
+	"1#1 day|#{num} days": "1#{num} dag|#{num} dagar",
+	"1#1 hour|#{num} hours": "1#{num} timme|#{num} timmar",
+	"1#1 minute|#{num} minutes": "1#{num} minut|#{num} minuter",
+	"1#1 second|#{num} seconds": "1#{num} sekund|#{num} sekunder",
+	"1#1 millisecond|#{num} milliseconds": "1#{num} millisekund|#{num} millisekunder",
+	"1#1 yr|#{num} yrs": "#{num} år",
+	"1#1 mon|#{num} mons": "#{num} mån",
+	"1#1 wk|#{num} wks": "1#{num} vec|#{num} vkr",
+	"durationLongDays": "1#{num} dag|#{num} dgr",
+	"1#1 hr|#{num} hrs": "1#{num} tim|#{num} tmr",
+	"1#1 min|#{num} min": "1#{num} min|#{num} mnr",
+	"1#1 sec|#{num} sec": "1#{num} sek|#{num} skr",
+	"#{num} ms": "#{num} ms",
+	"durationMediumYears": "#{num} år",
+	"1#1 mo|#{num} mos": "#{num} må",
+	"durationMediumWeeks": "#{num} ve",
+	"1#1 dy|#{num} dys": "#{num} da",
+	"durationMediumHours": "#{num} ti",
+	"1#1 mi|#{num} min": "#{num} mi",
+	"1#1 se|#{num} sec": "#{num} se",
+	"#{num}y": "#{num}å",
+	"durationShortMonths": "#{num}må",
+	"#{num}w": "#{num}v",
+	"#{num}d": "#{num}d",
+	"#{num}h": "#{num}t",
+	"durationShortMinutes": "#{num}m",
+	"#{num}s": "#{num}s",
+	"separatorShort": " ",
+	"separatorMedium": " ",
+	"separatorLong": ", ",
+	"separatorFull": ", ",
+	"finalSeparatorFull": " och "
 }
 ;
 ilib.data.sysres_tr = {
@@ -8259,7 +10725,7 @@ ilib.data.sysres_zh_MO = {
 /*
  * datefmt.js - Date formatter definition
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -9311,7 +11777,7 @@ ilib.DateFmt.prototype = {
 /*
  * datefmt.js - Date formatter definition
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -9631,7 +12097,7 @@ ilib.DateRngFmt.prototype = {
 /*
  * hebrew.js - Represent a Hebrew calendar object.
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -9711,7 +12177,7 @@ ilib.Cal.Hebrew.newYearsCorrection = function(year, elapsed) {
 		nextYear = ilib.Cal.Hebrew.elapsedDays(year+1);
 	
 	return (nextYear - thisYear) == 356 ? 2 : ((thisYear - lastYear) == 382 ? 1 : 0);
-}
+};
 
 /**
  * @private
@@ -9865,7 +12331,7 @@ ilib.Cal._constructors["hebrew"] = ilib.Cal.Hebrew;
 /*
  * hebrewdate.js - Represent a date in the Hebrew calendar
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -10673,7 +13139,7 @@ ilib.Date._constructors["hebrew"] = ilib.Date.HebrewDate;
 /*
  * islamic.js - Represent a Islamic calendar object.
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -10802,7 +13268,7 @@ ilib.Cal._constructors["islamic"] = ilib.Cal.Islamic;
 /*
  * islamicdate.js - Represent a date in the Islamic calendar
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11442,7 +13908,7 @@ ilib.Date._constructors["islamic"] = ilib.Date.IslamicDate;
 /*
  * julian.js - Represent a Julian calendar object.
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11556,7 +14022,7 @@ ilib.Cal._constructors["julian"] = ilib.Cal.Julian;
 /*
  * juliandate.js - Represent a date in the Julian calendar
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13295,7 +15761,7 @@ ilib.data.ctype = {
 /*
  * ctype.js - Character type definitions
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13561,7 +16027,7 @@ ilib.CType = {
 /*
  * ctype.isdigit.js - Character type is digit
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13617,7 +16083,7 @@ ilib.data.ctype_z = {
 /*
  * ctype.isspace.js - Character type is space char
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13655,7 +16121,7 @@ ilib.CType.isSpace = function (ch) {
 /*
  * numprs.js - Parse a number in any locale
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13872,1516 +16338,10 @@ ilib.Number.prototype = {
 	}
 };
 
-ilib.data.currency = {
-	"USD": {
-		"name": "US Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CHF": {
-		"name": "Swiss Franc",
-		"decimals": 2,
-		"sign": "Fr"
-	},
-	"RON": {
-		"name": "Leu",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"RUB": {
-		"name": "Russian Ruble",
-		"decimals": 2,
-		"sign": "руб."
-	},
-	"SEK": {
-		"name": "Swedish Krona",
-		"decimals": 2,
-		"sign": "kr"
-	},
-	"GBP": {
-		"name": "Pound Sterling",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"PKR": {
-		"name": "Pakistan Rupee",
-		"decimals": 2,
-		"sign": "₨"
-	},
-	"KES": {
-		"name": "Kenyan Shilling",
-		"decimals": 2,
-		"sign": "Sh"
-	},
-	"AED": {
-		"name": "UAE Dirham",
-		"decimals": 2,
-		"sign": "د.إ"
-	},
-	"KRW": {
-		"name": "Won",
-		"decimals": 0,
-		"sign": "₩"
-	},
-	"AFN": {
-		"name": "Afghani",
-		"decimals": 2,
-		"sign": "؋"
-	},
-	"ALL": {
-		"name": "Lek",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"AMD": {
-		"name": "Armenian Dram",
-		"decimals": 2,
-		"sign": "դր."
-	},
-	"ANG": {
-		"name": "Netherlands Antillean Guilder",
-		"decimals": 2,
-		"sign": "ƒ"
-	},
-	"AOA": {
-		"name": "Kwanza",
-		"decimals": 2,
-		"sign": "Kz"
-	},
-	"ARS": {
-		"name": "Argentine Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"AUD": {
-		"name": "Australian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"AWG": {
-		"name": "Aruban Florin",
-		"decimals": 2,
-		"sign": "ƒ"
-	},
-	"AZN": {
-		"name": "Azerbaijanian Manat",
-		"decimals": 2,
-		"sign": "AZN"
-	},
-	"BAM": {
-		"name": "Convertible Mark",
-		"decimals": 2,
-		"sign": "КМ"
-	},
-	"BBD": {
-		"name": "Barbados Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"BDT": {
-		"name": "Taka",
-		"decimals": 2,
-		"sign": "৳"
-	},
-	"BGN": {
-		"name": "Bulgarian Lev",
-		"decimals": 2,
-		"sign": "лв"
-	},
-	"BHD": {
-		"name": "Bahraini Dinar",
-		"decimals": 3,
-		"sign": ".د.ب"
-	},
-	"BIF": {
-		"name": "Burundi Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"BMD": {
-		"name": "Bermudian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"BND": {
-		"name": "Brunei Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"BOB": {
-		"name": "Boliviano",
-		"decimals": 2,
-		"sign": "Bs."
-	},
-	"BRL": {
-		"name": "Brazilian Real",
-		"decimals": 2,
-		"sign": "R$"
-	},
-	"BSD": {
-		"name": "Bahamian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"BTN": {
-		"name": "Ngultrum",
-		"decimals": 2,
-		"sign": "Nu."
-	},
-	"BWP": {
-		"name": "Pula",
-		"decimals": 2,
-		"sign": "P"
-	},
-	"BYR": {
-		"name": "Belarussian Ruble",
-		"decimals": 0,
-		"sign": "Br"
-	},
-	"BZD": {
-		"name": "Belize Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CAD": {
-		"name": "Canadian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CDF": {
-		"name": "Congolese Franc",
-		"decimals": 2,
-		"sign": "Fr"
-	},
-	"CLP": {
-		"name": "Chilean Peso",
-		"decimals": 0,
-		"sign": "$"
-	},
-	"CNY": {
-		"name": "Yuan Renminbi",
-		"decimals": 2,
-		"sign": "元"
-	},
-	"COP": {
-		"name": "Colombian Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CRC": {
-		"name": "Costa Rican Colon",
-		"decimals": 2,
-		"sign": "₡"
-	},
-	"CUP": {
-		"name": "Cuban Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CVE": {
-		"name": "Cape Verde Escudo",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CZK": {
-		"name": "Czech Koruna",
-		"decimals": 2,
-		"sign": "Kč"
-	},
-	"DJF": {
-		"name": "Djibouti Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"DKK": {
-		"name": "Danish Krone",
-		"decimals": 2,
-		"sign": "kr"
-	},
-	"DOP": {
-		"name": "Dominican Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"DZD": {
-		"name": "Algerian Dinar",
-		"decimals": 2,
-		"sign": "د.ج"
-	},
-	"EGP": {
-		"name": "Egyptian Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"ERN": {
-		"name": "Nakfa",
-		"decimals": 2,
-		"sign": "Nfk"
-	},
-	"ETB": {
-		"name": "Ethiopian Birr",
-		"decimals": 2,
-		"sign": "Br"
-	},
-	"EUR": {
-		"name": "Euro",
-		"decimals": 2,
-		"sign": "€"
-	},
-	"FJD": {
-		"name": "Fiji Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"FKP": {
-		"name": "Falkland Islands Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"GEL": {
-		"name": "Lari",
-		"decimals": 2,
-		"sign": "ლ"
-	},
-	"GHS": {
-		"name": "Cedi",
-		"decimals": 2,
-		"sign": "₵"
-	},
-	"GIP": {
-		"name": "Gibraltar Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"GMD": {
-		"name": "Dalasi",
-		"decimals": 2,
-		"sign": "D"
-	},
-	"GNF": {
-		"name": "Guinea Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"GTQ": {
-		"name": "Quetzal",
-		"decimals": 2,
-		"sign": "Q"
-	},
-	"GYD": {
-		"name": "Guyana Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"HKD": {
-		"name": "Hong Kong Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"HNL": {
-		"name": "Lempira",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"HRK": {
-		"name": "Croatian Kuna",
-		"decimals": 2,
-		"sign": "kn"
-	},
-	"HTG": {
-		"name": "Gourde",
-		"decimals": 2,
-		"sign": "G"
-	},
-	"HUF": {
-		"name": "Forint",
-		"decimals": 2,
-		"sign": "Ft"
-	},
-	"IDR": {
-		"name": "Rupiah",
-		"decimals": 2,
-		"sign": "Rp"
-	},
-	"ILS": {
-		"name": "New Israeli Sheqel",
-		"decimals": 2,
-		"sign": "₪"
-	},
-	"INR": {
-		"name": "Indian Rupee",
-		"decimals": 2,
-		"sign": "INR"
-	},
-	"IQD": {
-		"name": "Iraqi Dinar",
-		"decimals": 3,
-		"sign": "ع.د"
-	},
-	"IRR": {
-		"name": "Iranian Rial",
-		"decimals": 2,
-		"sign": "﷼"
-	},
-	"ISK": {
-		"name": "Iceland Krona",
-		"decimals": 0,
-		"sign": "kr"
-	},
-	"JMD": {
-		"name": "Jamaican Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"JOD": {
-		"name": "Jordanian Dinar",
-		"decimals": 3,
-		"sign": "د.ا"
-	},
-	"JPY": {
-		"name": "Yen",
-		"decimals": 0,
-		"sign": "¥"
-	},
-	"KGS": {
-		"name": "Som",
-		"decimals": 2,
-		"sign": "лв"
-	},
-	"KHR": {
-		"name": "Riel",
-		"decimals": 2,
-		"sign": "៛"
-	},
-	"KMF": {
-		"name": "Comoro Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"KPW": {
-		"name": "North Korean Won",
-		"decimals": 2,
-		"sign": "₩"
-	},
-	"KWD": {
-		"name": "Kuwaiti Dinar",
-		"decimals": 3,
-		"sign": "د.ك"
-	},
-	"KYD": {
-		"name": "Cayman Islands Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"KZT": {
-		"name": "Tenge",
-		"decimals": 2,
-		"sign": "₸"
-	},
-	"LAK": {
-		"name": "Kip",
-		"decimals": 2,
-		"sign": "₭"
-	},
-	"LBP": {
-		"name": "Lebanese Pound",
-		"decimals": 2,
-		"sign": "ل.ل"
-	},
-	"LKR": {
-		"name": "Sri Lanka Rupee",
-		"decimals": 2,
-		"sign": "Rs"
-	},
-	"LRD": {
-		"name": "Liberian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"LSL": {
-		"name": "Loti",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"LTL": {
-		"name": "Lithuanian Litas",
-		"decimals": 2,
-		"sign": "Lt"
-	},
-	"LVL": {
-		"name": "Latvian Lats",
-		"decimals": 2,
-		"sign": "Ls"
-	},
-	"LYD": {
-		"name": "Libyan Dinar",
-		"decimals": 3,
-		"sign": "ل.د"
-	},
-	"MAD": {
-		"name": "Moroccan Dirham",
-		"decimals": 2,
-		"sign": "د.م."
-	},
-	"MDL": {
-		"name": "Moldovan Leu",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"MGA": {
-		"name": "Malagasy Ariary",
-		"decimals": 2,
-		"sign": "Ar"
-	},
-	"MKD": {
-		"name": "Denar",
-		"decimals": 2,
-		"sign": "ден"
-	},
-	"MMK": {
-		"name": "Kyat",
-		"decimals": 2,
-		"sign": "K"
-	},
-	"MNT": {
-		"name": "Tugrik",
-		"decimals": 2,
-		"sign": "₮"
-	},
-	"MOP": {
-		"name": "Pataca",
-		"decimals": 2,
-		"sign": "P"
-	},
-	"MRO": {
-		"name": "Ouguiya",
-		"decimals": 2,
-		"sign": "UM"
-	},
-	"MUR": {
-		"name": "Mauritius Rupee",
-		"decimals": 2,
-		"sign": "₨"
-	},
-	"MVR": {
-		"name": "Rufiyaa",
-		"decimals": 2,
-		"sign": ".ރ"
-	},
-	"MWK": {
-		"name": "Kwacha",
-		"decimals": 2,
-		"sign": "MK"
-	},
-	"MXN": {
-		"name": "Mexican Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"MYR": {
-		"name": "Malaysian Ringgit",
-		"decimals": 2,
-		"sign": "RM"
-	},
-	"MZN": {
-		"name": "Metical",
-		"decimals": 2,
-		"sign": "MT"
-	},
-	"NAD": {
-		"name": "Namibia Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"NGN": {
-		"name": "Naira",
-		"decimals": 2,
-		"sign": "₦"
-	},
-	"NIO": {
-		"name": "Cordoba Oro",
-		"decimals": 2,
-		"sign": "C$"
-	},
-	"NOK": {
-		"name": "Norwegian Krone",
-		"decimals": 2,
-		"sign": "kr"
-	},
-	"NPR": {
-		"name": "Nepalese Rupee",
-		"decimals": 2,
-		"sign": "₨"
-	},
-	"NZD": {
-		"name": "New Zealand Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"OMR": {
-		"name": "Rial Omani",
-		"decimals": 3,
-		"sign": "ر.ع."
-	},
-	"PAB": {
-		"name": "Balboa",
-		"decimals": 2,
-		"sign": "B/."
-	},
-	"PEN": {
-		"name": "Nuevo Sol",
-		"decimals": 2,
-		"sign": "S/."
-	},
-	"PGK": {
-		"name": "Kina",
-		"decimals": 2,
-		"sign": "K"
-	},
-	"PHP": {
-		"name": "Philippine Peso",
-		"decimals": 2,
-		"sign": "₱"
-	},
-	"PLN": {
-		"name": "Zloty",
-		"decimals": 2,
-		"sign": "zł"
-	},
-	"PYG": {
-		"name": "Guarani",
-		"decimals": 0,
-		"sign": "₲"
-	},
-	"QAR": {
-		"name": "Qatari Rial",
-		"decimals": 2,
-		"sign": "ر.ق"
-	},
-	"RSD": {
-		"name": "Serbian Dinar",
-		"decimals": 2,
-		"sign": "дин."
-	},
-	"RWF": {
-		"name": "Rwanda Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"SAR": {
-		"name": "Saudi Riyal",
-		"decimals": 2,
-		"sign": "ر.س"
-	},
-	"SBD": {
-		"name": "Solomon Islands Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"SCR": {
-		"name": "Seychelles Rupee",
-		"decimals": 2,
-		"sign": "₨"
-	},
-	"SDG": {
-		"name": "Sudanese Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"SGD": {
-		"name": "Singapore Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"SHP": {
-		"name": "Saint Helena Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"SLL": {
-		"name": "Leone",
-		"decimals": 2,
-		"sign": "Le"
-	},
-	"SOS": {
-		"name": "Somali Shilling",
-		"decimals": 2,
-		"sign": "Sh"
-	},
-	"SRD": {
-		"name": "Surinam Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"SSP": {
-		"name": "South Sudanese Pound",
-		"decimals": 2,
-		"sign": ""
-	},
-	"STD": {
-		"name": "Dobra",
-		"decimals": 2,
-		"sign": "Db"
-	},
-	"SYP": {
-		"name": "Syrian Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"SZL": {
-		"name": "Lilangeni",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"THB": {
-		"name": "Baht",
-		"decimals": 2,
-		"sign": "฿"
-	},
-	"TJS": {
-		"name": "Somoni",
-		"decimals": 2,
-		"sign": "ЅМ"
-	},
-	"TMT": {
-		"name": "New Manat",
-		"decimals": 2,
-		"sign": "m"
-	},
-	"TND": {
-		"name": "Tunisian Dinar",
-		"decimals": 3,
-		"sign": "د.ت"
-	},
-	"TOP": {
-		"name": "Pa’anga",
-		"decimals": 2,
-		"sign": "T$"
-	},
-	"TRY": {
-		"name": "Turkish Lira",
-		"decimals": 2,
-		"sign": "TL"
-	},
-	"TTD": {
-		"name": "Trinidad and Tobago Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"TWD": {
-		"name": "New Taiwan Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"TZS": {
-		"name": "Tanzanian Shilling",
-		"decimals": 2,
-		"sign": "Sh"
-	},
-	"UAH": {
-		"name": "Hryvnia",
-		"decimals": 2,
-		"sign": "₴"
-	},
-	"UGX": {
-		"name": "Uganda Shilling",
-		"decimals": 2,
-		"sign": "Sh"
-	},
-	"UYU": {
-		"name": "Peso Uruguayo",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"UZS": {
-		"name": "Uzbekistan Sum",
-		"decimals": 2,
-		"sign": "лв"
-	},
-	"VEF": {
-		"name": "Bolivar Fuerte",
-		"decimals": 2,
-		"sign": "Bs F"
-	},
-	"VND": {
-		"name": "Dong",
-		"decimals": 0,
-		"sign": "₫"
-	},
-	"VUV": {
-		"name": "Vatu",
-		"decimals": 0,
-		"sign": "Vt"
-	},
-	"WST": {
-		"name": "Tala",
-		"decimals": 2,
-		"sign": "T"
-	},
-	"XAF": {
-		"name": "CFA Franc BEAC",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"XCD": {
-		"name": "East Caribbean Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"XOF": {
-		"name": "CFA Franc BCEAO",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"XPF": {
-		"name": "CFP Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"YER": {
-		"name": "Yemeni Rial",
-		"decimals": 2,
-		"sign": "﷼"
-	},
-	"ZAR": {
-		"name": "Rand",
-		"decimals": 2,
-		"sign": "R"
-	},
-	"ZMK": {
-		"name": "Zambian Kwacha",
-		"decimals": 2,
-		"sign": "ZK"
-	},
-	"ZWL": {
-		"name": "Zimbabwe Dollar",
-		"decimals": 2,
-		"sign": "$"
-	}
-}
-;
-/*
- * currency.js - Currency definition
- * 
- * Copyright © 2012, JEDL Software, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// !depends ilibglobal.js locale.js
-
-// !data currency
-
-/**
- * @class
- * Create a new currency information instance. Instances of this class encode 
- * information about a particular currency.<p> 
- * 
- * The options can contain any of the following properties:
- * 
- * <ul>
- * <li><i>locale</i> - specify the locale for this instance
- * <li><i>code</i> - find info on a specific currency with the given ISO 4217 code 
- * <li><i>sign</i> - search for a currency that uses this sign
- * </ul>
- * 
- * When searching for a currency by its sign, this class cannot guarantee 
- * that it will return info about a specific currency. The reason is that currency 
- * signs are sometimes shared between different currencies and the sign is 
- * therefore ambiguous. If you need a 
- * guarantee, find the currency using the code instead.<p>
- * 
- * The way this class finds a currency by sign is the following. If the sign is 
- * unambiguous, then
- * the currency is returned. If there are multiple currencies that use the same
- * sign, and the current locale uses that sign, then the default currency for
- * the current locale is returned. If there are multiple, but the current locale
- * does not use that sign, then the currency with the largest circulation is
- * returned. For example, if you are in the en-GB locale, and the sign is "$",
- * then this class will notice that there are multiple currencies with that
- * sign (USD, CAD, AUD, HKD, MXP, etc.) Since "$" is not used in en-GB, it will 
- * pick the one with the largest circulation, which in this case is the US Dollar
- * (USD).<p>
- * 
- * If neither the code or sign property is set, the currency that is most common 
- * for the locale
- * will be used instead. If the locale is not set, the default locale will be used.
- * If the code is given, but it is not found in the list of known currencies, this
- * constructor will throw an exception. If the sign is given, but it is not found,
- * this constructor will default to the currency for the current locale. If both
- * the code and sign properties are given, then the sign property will be ignored
- * and only the code property used. If the locale is given, but it is not a known
- * locale, this class will default to the default locale instead.<p>
- * 
- * Depends directive: !depends currency.js
- * 
- * @constructor
- * @param options {Object} a set of properties to govern how this instance is constructed.
- * @throws "currency xxx is unknown" when the given currency code is not in the list of 
- * known currencies. xxx is replaced with the requested code.
- */
-ilib.Currency = function (options) {
-	var li, currencies, currInfo, sign, cur;
-	
-	if (options) {
-		if (options.code) {
-			this.code = options.code;
-		}
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-		}
-		if (options.sign) {
-			sign = options.sign;
-		}
-	}
-	
-	this.locale = this.locale || new ilib.Locale();
-	li = new ilib.LocaleInfo(this.locale);
-		
-	currencies = new ilib.ResBundle({
-		locale: this.locale,
-		name: "currency"
-	}).getResObj();
-
-	if (this.code) {
-		currInfo = currencies[this.code];
-		if (!currInfo) {
-			throw "currency " + this.code + " is unknown";
-		}
-	} else if (sign) {
-		currInfo = currencies[sign]; // maybe it is really a code...
-		if (typeof(currInfo) !== 'undefined') {
-			this.code = sign;
-		} else {
-			this.code = li.getCurrency();
-			currInfo = currencies[this.code];
-			if (currInfo.sign !== sign) {
-				// current locale does not use the sign, so search for it
-				for (cur in currencies) {
-					if (cur && currencies[cur]) {
-						currInfo = currencies[cur];
-						if (currInfo.sign === sign) {
-							// currency data is already ordered so that the currency with the
-							// largest circulation is at the beginning, so all we have to do
-							// is take the first one in the list that matches
-							this.code = cur;
-							break;
-						}
-					}
-				}
-			}
-		}
-	}
-	
-	if (!currInfo || !this.code) {
-		this.code = li.getCurrency();
-		currInfo = currencies[this.code];
-	}
-	
-	this.name = currInfo.name;
-	this.fractionDigits = currInfo.decimals;
-	this.sign = currInfo.sign;
-};
-
-/**
- * @static
- * Return an array of the ids for all ISO 4217 currencies that
- * this copy of ilib knows about.
- * @returns {Array.<string>} an array of currency ids that this copy of ilib knows about.
- */
-ilib.Currency.getAvailableCurrencies = function() {
-	var ret = [],
-		cur,
-		currencies = new ilib.ResBundle({
-			name: "currency"
-		}).getResObj();
-	
-	for (cur in currencies) {
-		if (cur && currencies[cur]) {
-			ret.push(cur);
-		}
-	}
-	
-	return ret;
-};
-
-ilib.Currency.prototype = {
-	/**
-	 * Return the ISO 4217 currency code for this instance.
-	 * @returns {string} the ISO 4217 currency code for this instance
-	 */
-	getCode: function () {
-		return this.code;
-	},
-	
-	/**
-	 * Return the default number of fraction digits that is typically used
-	 * with this type of currency.
-	 * @returns {number} the number of fraction digits for this currency
-	 */
-	getFractionDigits: function () {
-		return this.fractionDigits;
-	},
-	
-	/**
-	 * Return the sign commonly used to represent this currency.
-	 * @returns {string} the sign commonly used to represent this currency
-	 */
-	getSign: function () {
-		return this.sign;
-	},
-	
-	/**
-	 * Return the name of the currency in English.
-	 * @returns {string} the name of the currency in English
-	 */
-	getName: function () {
-		return this.name;
-	},
-	
-	/**
-	 * Return the locale for this currency. If the options to the constructor 
-	 * included a locale property in order to find the currency that is appropriate
-	 * for that locale, then the locale is returned here. If the options did not
-	 * include a locale, then this method returns undefined.
-	 * @returns {ilib.Locale} the locale used in the constructor of this instance,
-	 * or undefined if no locale was given in the constructor
-	 */
-	getLocale: function () {
-		return this.locale;
-	}
-};
-
-/*
- * numfmt.js - Number formatter definition
- * 
- * Copyright © 2012, JEDL Software, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// !depends ilibglobal.js locale.js strings.js resources.js currency.js
-
-/**
- * @private
- */
-ilib._roundFnc = {
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	floor: function (num) {
-		return Math.floor(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	ceiling: function (num) {
-		return Math.ceil(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	down: function (num) {
-		return (num < 0) ? Math.ceil(num) : Math.floor(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	up: function (num) {
-		return (num < 0) ? Math.floor(num) : Math.ceil(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfup: function (num) {
-		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfdown: function (num) {
-		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfeven: function (num) {
-		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfodd: function (num) {
-		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	}
-};
-
-/**
- * @class
- * Create a new number formatter instance. Locales differ in the way that digits
- * in a formatted number are grouped, in the way the decimal character is represented, 
- * etc. Use this formatter to get it right for any locale.<p>
- * 
- * This formatter can format plain numbers, currency amounts, and percentage amounts.<p>  
- * 
- * As with all formatters, the recommended
- * practice is to create one formatter and use it multiple times to format various
- * numbers.<p>
- * 
- * The options can contain any of the following properties:
- * 
- * <ul>
- * <li><i>locale</i> - use the conventions of the specified locale when figuring out how to
- * format a number.
- * <li><i>type</i> - the type of this formatter. Valid values are "number", "currency", or 
- * "percentage". If this property is not specified, the default is "number".
- * <li><i>currency</i> - the ISO 4217 3-letter currency code to use when the formatter type 
- * is "currency". This property is required for currency formatting. If the type property 
- * is "currency" and the currency property is not specified, the constructor will throw a
- * an exception. 
- * <li><i>maxFractionDigits</i> - the maximum number of digits that should appear in the
- * formatted output after the decimal. A value of -1 means unlimited, and 0 means only print
- * the integral part of the number. 
- * <li><i>minFractionDigits</i> - the minimum number of fractional digits that should
- * appear in the formatted output. If the number does not have enough fractional digits
- * to reach this minimum, the number will be zero-padded at the end to get to the limit.
- * If the type of the formatter is "currency" and this
- * property is not specified, then the minimum fraction digits is set to the normal number
- * of digits used with that currency, which is almost always 0, 2, or 3 digits.
- * <li><i>roundingMode</i> - When the maxFractionDigits or maxIntegerDigits is specified,
- * this property governs how the least significant digits are rounded to conform to that
- * maximum. The value of this property is a string with one of the following values:
- * <ul>
- *   <li><i>up</i> - round away from zero
- *   <li><i>down</i> - round towards zero. This has the effect of truncating the number
- *   <li><i>ceiling</i> - round towards positive infinity
- *   <li><i>floor</i> - round towards negative infinity
- *   <li><i>halfup</i> - round towards nearest neighbour. If equidistant, round up.
- *   <li><i>halfdown</i> - round towards nearest neighbour. If equidistant, round down.
- *   <li><i>halfeven</i> - round towards nearest neighbour. If equidistant, round towards the even neighbour
- *   <li><i>halfodd</i> - round towards nearest neighbour. If equidistant, round towards the odd neighbour
- * </ul>
- * When the type of the formatter is "currency" and the <i>roundingMode</i> property is not
- * set, then the standard legal rounding rules for the locale are followed. If the type
- * is "number" or "percentage" and the <i>roundingMode</i> property is not set, then the 
- * default mode is "halfdown".</i>.
- * <li><i>style</i> - When the type of this formatter is "currency", the currency amount
- * can be formatted in the following styles: "common" and "iso". The common style is the
- * one commonly used in every day writing where the currency unit is represented using a 
- * symbol. eg. "$57.35" for fifty-seven dollars and thirty five cents. The iso style is 
- * the international style where the currency unit is represented using the ISO 4217 code.
- * eg. "USD 57.35" for the same amount. The default is "common" style if the style is
- * not specified.<p>
- * 
- * When the type of this formatter is "number",
- * the style can be either "standard" or "scientific". A "standard" style means a fully
- * specified floating point number formatted for the locale, whereas "scientific" uses
- * scientific notation for all numbers. That is, 1 integral digit, followed by a number
- * of fractional digits, followed by an "e" which denotes exponentiation, followed digits
- * which give the power of 10 in the exponent. Note that if you specify a maximum number
- * of integral digits, the formatter with a standard style will give you standard 
- * formatting for smaller numbers and scientific notation for larger numbers. The default
- * is standard style if this is not specified. 
- * </ul>
- * <p>
- * 
- * Depends directive: !depends numfmt.js
- * 
- * @constructor
- * @param {Object.<string,*>} options A set of options that govern how the formatter will behave 
- */
-ilib.NumFmt = function (options) {
-	this.locale = new ilib.Locale();
-	this.type = "number";
-	
-	if (options) {
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-		}
-		
-		if (options.type) {
-			if (options.type === 'number' || 
-				options.type === 'currency' || 
-				options.type === 'percentage') {
-				this.type = options.type;
-			}
-		}
-		
-		if (options.currency) {
-			this.currency = options.currency;
-		}
-		
-		if (typeof(options.maxFractionDigits) === 'number') {
-			this.maxFractionDigits = this._toPrimitive(options.maxFractionDigits);
-		}
-		if (typeof(options.minFractionDigits) === 'number') {
-			this.minFractionDigits = this._toPrimitive(options.minFractionDigits);
-		}
-		if (options.style) {
-			this.style = options.style;
-		}
-	}
-	
-	this.localeInfo = new ilib.LocaleInfo(this.locale);
-	switch (this.type) {
-		case "currency":
-			var templates,
-				curopts;
-			
-			if (!this.currency || typeof(this.currency) != 'string') {
-				throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
-			}
-			
-			curopts = {
-				locale: this.locale,
-				code: this.currency		
-			};
-			this.currencyInfo = new ilib.Currency(curopts);
-			if (this.style !== "common" && this.style !== "iso") {
-				this.style = "common";
-			}
-			
-			if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
-				this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
-			}
-			
-			templates = this.localeInfo.getCurrencyFormats();
-			this.template = new ilib.String(templates[this.style]);
-			this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign(); 
-			break;
-		case "percentage":
-			this.template = new ilib.String(this.localeInfo.getPercentageFormat());
-			break;
-		default:
-			break;
-	}
-	
-	if (this.maxFractionDigits < this.minFractionDigits) {
-		this.minFractionDigits = this.maxFractionDigits;
-	}
-	
-	this.roundingMode = options && options.roundingMode;
-	if (!this.roundingMode) {
-		this.roundingMode = this.localeInfo.getRoundingMode();
-	}
-	if (!this.roundingMode) {
-		this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
-	}
-	if (!this.roundingMode) {
-		this.roundingMode = "halfdown";
-	}
-	
-	// set up the function, so we only have to figure it out once
-	// and not every time we do format()
-	this.round = ilib._roundFnc[this.roundingMode];
-	if (!this.round) {
-		this.roundingMode = "halfdown";
-		this.round = ilib._roundFnc[this.roundingMode];
-	}
-};
-
-/**
- * Return an array of available locales that this formatter can format
- * @returns {Array.<ilib.Locale>|undefined} an array of available locales
- */
-ilib.NumFmt.getAvailableLocales = function () {
-	return undefined;
-};
-
-/**
- * @private
- * @const
- * @type string
- */
-ilib.NumFmt.zeros = "0000000000000000000000000000000000000000000000000000000000000000000000";
-
-
-ilib.NumFmt.prototype = {
-	/*
-	 * @private
-	 */
-	_pad: function (str, length, left) {
-		return (str.length >= length) ? 
-			str : 
-			(left ? 
-				ilib.NumFmt.zeros.substring(0,length-str.length) + str : 
-				str + ilib.NumFmt.zeros.substring(0,length-str.length));  
-	},
-	
-	/**
-	 * @private
-	 * @param {Number|ilib.Number|string|number} num object, string, or number to convert to a primitive number
-	 * @returns {number} the primitive number equivalent of the argument
-	 */
-	_toPrimitive: function (num) {
-		var n = 0;
-		
-		switch (typeof(num)) {
-		case 'number':
-			n = num;
-			break;
-		case 'string':
-			n = parseFloat(num);
-			break;
-		case 'object':
-			// Number.valueOf() is incorrectly documented as being of type "string" rather than "number", so coerse 
-			// the type here to shut the type checker up
-			n = /** @type {number} */ num.valueOf();
-			break;
-		}
-		
-		return n;
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num the number to format
-	 * @returns {string} the formatted number 
-	 */
-	_formatScientific: function (num) {
-		var n = new Number(num);
-		var formatted;
-		if (typeof(this.maxFractionDigits) !== 'undefined') {
-			// if there is fraction digits, round it to the right length first
-			// divide or multiply by 10 by manipulating the exponent so as to
-			// avoid the rounding errors of floating point numbers
-			var e, 
-				factor,
-				str = n.toExponential(),
-				parts = str.split("e"),
-				significant = parts[0];
-			
-			e = parts[1];	
-			factor = Math.pow(10, this.maxFractionDigits);
-			significant = this.round(significant * factor) / factor;
-			formatted = "" + significant + "e" + e;
-		} else {
-			formatted = n.toExponential(this.minFractionDigits);
-		}
-		return formatted;
-	},
-	
-	/**
-	 * @private 
-	 * @param {number} num the number to format
-	 * @returns {string} the formatted number
-	 */ 
-	_formatStandard: function (num) {
-		var i;
-		
-		// console.log("_formatNumberStandard: formatting number " + num);
-		if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
-			var factor = Math.pow(10, this.maxFractionDigits);
-			num = this.round(num * factor) / factor;
-		}
-
-		var negative = (num < 0);
-		if (negative) {
-			num = -num;
-		}
-		
-		var parts = ("" + num).split("."),
-			integral = parts[0],
-			fraction = parts[1],
-			cycle,
-			groupSize = this.localeInfo.getGroupingDigits(),
-			formatted;
-		
-		
-		if (this.minFractionDigits > 0) {
-			fraction = this._pad(fraction || "", this.minFractionDigits, false);
-		}
-
-		if (groupSize > 0) {
-			cycle = ilib.mod(integral.length-1, groupSize);
-			formatted = negative ? "-" : "";
-			for (i = 0; i < integral.length-1; i++) {
-				formatted += integral.charAt(i);
-				if (cycle === 0) {
-					formatted += this.localeInfo.getGroupingSeparator();
-				}
-				cycle = ilib.mod(cycle - 1, groupSize);
-			}
-			formatted += integral.charAt(integral.length-1);
-		} else {
-			formatted = (negative ? "-" : "") + integral;
-		}
-		
-		if (fraction && (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits > 0)) {
-			formatted += this.localeInfo.getDecimalSeparator();
-			formatted += fraction;
-		}
-		
-		// console.log("_formatNumberStandard: returning " + formatted);
-		return formatted;
-	},
-	
-	/**
-	 * Format a number according to the settings of this number formatter instance.
-	 * @param num {number|string|Number|ilib.Number} a floating point number to format
-	 * @returns {string} a string containing the formatted number
-	 */
-	format: function (num) {
-		var formatted, n;
-
-		if (typeof(num) === 'undefined') {
-			return "";
-		}
-		
-		// convert to a real primitive number type
-		n = this._toPrimitive(num);
-		
-		if (this.type === "number") {
-			formatted = (this.style === "scientific") ? 
-					this._formatScientific(n) : 
-					this._formatStandard(n);
-		} else {			
-			formatted = this.template.format({n: this._formatStandard(n), s: this.sign});
-		}
-		
-		return formatted;
-	},
-	
-	/**
-	 * Return the type of formatter. Valid values are "number", "currency", and
-	 * "percentage".
-	 * 
-	 * @returns {string} the type of formatter
-	 */
-	getType: function () {
-		return this.type;
-	},
-	
-	/**
-	 * Return the locale for this formatter instance.
-	 * @returns {ilib.Locale} the locale instance for this formatter
-	 */
-	getLocale: function () {
-		return this.locale;
-	},
-	
-	/**
-	 * Returns true if this formatter groups together digits in the integral 
-	 * portion of a number, based on the options set up in the constructor. In 
-	 * most western European cultures, this means separating every 3 digits 
-	 * of the integral portion of a number with a particular character.
-	 * 
-	 * @returns {boolean} true if this formatter groups digits in the integral
-	 * portion of the number
-	 */
-	isGroupingUsed: function () {
-		var c = this.localeInfo.getGroupingSeparator();
-		return (c !== 'undefined' && c.length > 0);
-	},
-	
-	/**
-	 * Returns the maximum fraction digits set up in the constructor.
-	 * 
-	 * @returns {number} the maximum number of fractional digits this
-	 * formatter will format, or -1 for no maximum
-	 */
-	getMaxFractionDigits: function () {
-		return typeof(this.maxFractionDigits) !== 'undefined' ? this.maxFractionDigits : -1;
-	},
-	
-	/**
-	 * Returns the minimum fraction digits set up in the constructor. If
-	 * the formatter has the type "currency", then the minimum fraction
-	 * digits is the amount of digits that is standard for the currency
-	 * in question unless overridden in the options to the constructor.
-	 * 
-	 * @returns {number} the minimum number of fractional digits this
-	 * formatter will format, or -1 for no minimum
-	 */
-	getMinFractionDigits: function () {
-		return typeof(this.minFractionDigits) !== 'undefined' ? this.minFractionDigits : -1;
-	},
-
-	/**
-	 * Returns the ISO 4217 code for the currency that this formatter formats.
-	 * IF the typeof this formatter is not "currency", then this method will
-	 * return undefined.
-	 * 
-	 * @returns {string} the ISO 4217 code for the currency that this formatter
-	 * formats, or undefined if this not a currency formatter
-	 */
-	getCurrency: function () {
-		return this.currencyInfo && this.currencyInfo.getCode();
-	},
-	
-	/**
-	 * Returns the rounding mode set up in the constructor. The rounding mode
-	 * controls how numbers are rounded when the integral or fraction digits 
-	 * of a number are limited.
-	 * 
-	 * @returns {string} the name of the rounding mode used in this formatter
-	 */
-	getRoundingMode: function () {
-		return this.roundingMode;
-	},
-	
-	/**
-	 * If this formatter is a currency formatter, then the style determines how the
-	 * currency is denoted in the formatted output. This method returns the style
-	 * that this formatter will produce. (See the constructor comment for more about
-	 * the styles.)
-	 * @returns {string} the name of the style this formatter will use to format
-	 * currency amounts, or "undefined" if this formatter is not a currency formatter
-	 */
-	getStyle: function () {
-		return this.style;
-	}
-};
-
 /*
  * durfmt.js - Date formatter definition
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17286,7 +18246,7 @@ ilib.data.ctype_l = {
 /*
  * ctype.islpha.js - Character type is alphabetic
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17325,7 +18285,7 @@ ilib.CType.isAlpha = function (ch) {
 /*
  * ctype.isalnum.js - Character type alphanumeric
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17358,7 +18318,7 @@ ilib.CType.isAlnum = function isAlnum(ch) {
 /*
  * ctype.isascii.js - Character type is ASCII
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17393,7 +18353,7 @@ ilib.CType.isAscii = function (ch) {
 /*
  * ctype.isblank.js - Character type is blank
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17964,7 +18924,7 @@ ilib.data.ctype_c = {
 /*
  * ctype.iscntrl.js - Character type is control character
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17999,7 +18959,7 @@ ilib.CType.isCntrl = function (ch) {
 /*
  * ctype.isgraph.js - Character type is graph char
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18034,7 +18994,7 @@ ilib.CType.isGraph = function (ch) {
 /*
  * ctype.js - Character type definitions
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18074,7 +19034,7 @@ ilib.CType.isIdeo = function (ch) {
 /*
  * ctype.islower.js - Character type is lower case letter
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18111,7 +19071,7 @@ ilib.CType.isLower = function (ch) {
 /*
  * ctype.isprint.js - Character type is printable char
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18474,7 +19434,7 @@ ilib.data.ctype_p = {
 /*
  * ctype.ispunct.js - Character type is punctuation
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18515,7 +19475,7 @@ ilib.CType.isPunct = function (ch) {
 /*
  * ctype.isupper.js - Character type is upper-case letter
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18552,7 +19512,7 @@ ilib.CType.isUpper = function (ch) {
 /*
  * ctype.isdigit.js - Character type is digit
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18588,7 +19548,7 @@ ilib.CType.isXdigit = function (ch) {
 
 /**
  * @license
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

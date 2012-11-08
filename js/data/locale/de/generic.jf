@@ -1,8 +1,4 @@
-	"clock": "24",
-	"calendar": "gregorian",
 	"firstDayOfWeek": 1,
-	"units": "metric",
-	"timezone": "Europe/Berlin",
 	"paperSizes": {
 		"regular": "A4",
 		"photo": "4x6"

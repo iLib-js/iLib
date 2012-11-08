@@ -1,7 +1,7 @@
 /*
  * testtimezone.js - test the time zone object
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -87,18 +87,18 @@ function testTZGetUnknown() {
     var tz = new ilib.TimeZone({id: "America/asdfasdfasdf"});
     assertNotNull(tz);
     
-    assertEquals("Europe/London", tz.getId());
+    assertEquals("Etc/UTC", tz.getId());
     assertObjectEquals({h: 0}, tz.getRawOffset());
-    assertObjectEquals({h: 1}, tz.getDSTSavings());
+    assertObjectEquals({h: 0}, tz.getDSTSavings());
 }
 
 function testTZGetUnknownStr() {
     var tz = new ilib.TimeZone({id: "America/asdfasdfasdf"});
     assertNotNull(tz);
     
-    assertEquals("Europe/London", tz.getId());
+    assertEquals("Etc/UTC", tz.getId());
     assertEquals("0:0", tz.getRawOffsetStr());
-    assertEquals("1:0", tz.getDSTSavingsStr());
+    assertEquals("0:0", tz.getDSTSavingsStr());
 }
 
 function testTZDisplayNameDST() {
@@ -419,15 +419,15 @@ function testTZGetDSTSavingsUnknown() {
     var tz = new ilib.TimeZone({id: "x/y"});
     assertNotNull(tz);
     
-    // should default to Europe/London
-    assertObjectEquals({h:1}, tz.getDSTSavings());
+    // should default to Etc/UTC
+    assertObjectEquals({h:0}, tz.getDSTSavings());
 }
 function testTZGetDSTSavingsUnknownStr() {
     var tz = new ilib.TimeZone({id: "x/y"});
     assertNotNull(tz);
     
-    // should default to Europe/London
-    assertEquals("1:0", tz.getDSTSavingsStr());
+    // should default to Etc/UTC
+    assertEquals("0:0", tz.getDSTSavingsStr());
 }
 
 function testTZInDaylightTimeTrue() {
@@ -467,13 +467,13 @@ function testTZInDaylightTimeUnknown() {
     var tz = new ilib.TimeZone({id: "x/y"});
     assertNotNull(tz);
     
-    // defaults to Europe/London
+    // defaults to Etc/UTC
     var gd = new ilib.Date.GregDate({
 		year: 2011,
 		month: 7,
 		day: 1
 	});
-    assertTrue(tz.inDaylightTime(gd));
+    assertFalse(tz.inDaylightTime(gd));
 }
 
 function testTZInDaylightTimeJustBeforeStart() {
@@ -599,7 +599,7 @@ function testTZUseDaylightTimeUnknown() {
     var tz = new ilib.TimeZone({id: "x/y"});
     assertNotNull(tz);
     
-    assertTrue(tz.useDaylightTime());
+    assertFalse(tz.useDaylightTime());
 }
 
 function testTZGetAvailableIds() {
@@ -640,4 +640,270 @@ function testTZDisplayNameStandardID() {
 		second: 37
 	});
     assertEquals("WIT", tz.getDisplayName(gd, 'standard'));
+}
+
+function testTZConstructUsingOffset() {
+   var tz = new ilib.TimeZone({offset: 420});
+   assertNotNull(tz);
+}
+
+function testTZOffsetGetRawOffset() {
+   var tz = new ilib.TimeZone({offset: 420});
+   assertNotNull(tz);
+   
+   var offset = tz.getRawOffset();
+   assertNotUndefined(offset);
+   assertEquals(7, offset.h);
+   assertUndefined(offset.m);
+}
+
+function testTZOffsetGetRawOffsetNegative() {
+   var tz = new ilib.TimeZone({offset: -450});
+   assertNotNull(tz);
+   
+   var offset = tz.getRawOffset();
+   assertNotUndefined(offset);
+
+   assertEquals(-7, offset.h);
+   assertEquals(30, offset.m);
+}
+
+function testTZOffsetGetRawOffsetStr() {
+   var tz = new ilib.TimeZone({offset: 420});
+   assertNotNull(tz);
+   
+   assertEquals("7:0", tz.getRawOffsetStr());
+}
+
+function testTZOffsetGetOffsetWinter() {
+   var tz = new ilib.TimeZone({offset: 450});
+   assertNotNull(tz);
+   
+   var date = ilib.Date.newInstance({
+      year: 2012,
+      month: 1,
+      day: 1
+   });
+   
+   var offset = tz.getOffset(date);
+   assertNotUndefined(offset);
+
+   assertEquals(7, offset.h);
+   assertEquals(30, offset.m);
+}
+
+function testTZOffsetGetOffsetSummer() {
+   var tz = new ilib.TimeZone({offset: 450});
+   assertNotNull(tz);
+   
+   var date = ilib.Date.newInstance({
+      year: 2012,
+      month: 6,
+      day: 1
+   });
+   
+   var offset = tz.getOffset(date);
+   assertNotUndefined(offset);
+
+   // should be the same as winter because we can't determine DST
+   assertEquals(7, offset.h);
+   assertEquals(30, offset.m);
+}
+
+function testTZOffsetGetDisplayNameStandard() {
+   var tz = new ilib.TimeZone({offset: 450});
+   assertNotNull(tz);
+   
+   var date = ilib.Date.newInstance({
+      year: 2012,
+      month: 6,
+      day: 1
+   });
+
+   // should give rfc style because we don't know the name of the time zone 
+   assertEquals("UTC+0730", tz.getDisplayName(date, "standard"));
+}
+
+function testTZOffsetGetDisplayNameRFC() {
+   var tz = new ilib.TimeZone({offset: 450});
+   assertNotNull(tz);
+   
+   var date = ilib.Date.newInstance({
+      year: 2012,
+      month: 6,
+      day: 1
+   });
+
+   assertEquals("UTC+0730", tz.getDisplayName(date, "rfc822"));
+}
+
+function testTZOffsetGetDisplayNameRFCNegative() {
+   var tz = new ilib.TimeZone({offset: -510});
+   assertNotNull(tz);
+   
+   var date = ilib.Date.newInstance({
+      year: 2012,
+      month: 6,
+      day: 1
+   });
+
+   assertEquals("UTC-0830", tz.getDisplayName(date, "rfc822"));
+}
+
+function testTZOffsetGetId() {
+   var tz = new ilib.TimeZone({offset: 450});
+   assertNotNull(tz);
+   
+   // should give the same as the rfc style display name because we don't know the name of the time zone 
+   assertEquals("UTC+0730", tz.getId());
+}
+
+function testTZOffsetGetDSTSavings() {
+   var tz = new ilib.TimeZone({offset: 450});
+   assertNotNull(tz);
+   
+   assertNotUndefined(tz.getDSTSavings());
+   assertEquals(0, tz.getDSTSavings().h);
+}
+
+function testTZOffsetGetDSTSavingsStr() {
+   var tz = new ilib.TimeZone({offset: 450});
+   assertNotNull(tz);
+   
+   assertNotUndefined(tz.getDSTSavingsStr());
+   assertEquals("0:0", tz.getDSTSavingsStr());
+}
+
+function testTZOffsetGetUseDaylightTime() {
+   var tz = new ilib.TimeZone({offset: 450});
+   assertNotNull(tz);
+   
+   assertFalse(tz.useDaylightTime());
+}
+
+function testTZOffsetInDaylightTimeWinter() {
+   var tz = new ilib.TimeZone({offset: 450});
+   assertNotNull(tz);
+   
+   var date = ilib.Date.newInstance({
+      year: 2012,
+      month: 1,
+      day: 1
+   });
+   
+   assertFalse(tz.inDaylightTime(date));
+}
+
+function testTZOffsetInDaylightTimeSummer() {
+   var tz = new ilib.TimeZone({offset: 450});
+   assertNotNull(tz);
+   
+   var date = ilib.Date.newInstance({
+      year: 2012,
+      month: 6,
+      day: 1
+   });
+   
+   // should be the same as winter because we can't determine DST
+   assertFalse(tz.inDaylightTime(date));
+}
+
+function testTZConstructUsingLocalID() {
+   var tz = new ilib.TimeZone({id: "local"});
+   assertNotNull(tz);
+}
+
+// difficult to test the id: 'local' stuff further, because it will depend on the user's test environment...
+
+function testTZGetOffsetMillisDST() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+    
+    var gd = new ilib.Date.GregDate({
+		year: 2011,
+		month: 8,
+		day: 1
+	});
+    assertEquals(-25200000, tz.getOffsetMillis(gd));
+}
+
+function testTZGetOffsetMillisNoDST() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+    
+    var gd = new ilib.Date.GregDate({
+		year: 2011,
+		month: 12,
+		day: 1
+	});
+    assertEquals(-28800000, tz.getOffsetMillis(gd));
+}
+
+function testTZGetOffsetMillisDSTSouthern() {
+    var tz = new ilib.TimeZone({id: "Australia/Sydney"});
+    assertNotNull(tz);
+    
+    var gd = new ilib.Date.GregDate({
+		year: 2011,
+		month: 12,
+		day: 1
+	});
+    assertEquals(39600000, tz.getOffsetMillis(gd));
+}
+
+function testTZGetOffsetMillisNoDSTSouthern() {
+    var tz = new ilib.TimeZone({id: "Australia/Sydney"});
+    assertNotNull(tz);
+    
+    var gd = new ilib.Date.GregDate({
+		year: 2011,
+		month: 8,
+		day: 1
+	});
+    assertEquals(36000000, tz.getOffsetMillis(gd));
+}
+
+function testTZGetOffsetMillisNonDSTZone1() {
+    var tz = new ilib.TimeZone({id: "America/Phoenix"});
+    assertNotNull(tz);
+    
+    var gd = new ilib.Date.GregDate({
+		year: 2011,
+		month: 8,
+		day: 1
+	});
+    assertEquals(-25200000, tz.getOffsetMillis(gd));
+}
+
+function testTZGetOffsetMillisNonDSTZone2() {
+    var tz = new ilib.TimeZone({id: "America/Phoenix"});
+    assertNotNull(tz);
+    
+    var gd = new ilib.Date.GregDate({
+		year: 2011,
+		month: 12,
+		day: 1
+	});
+    assertEquals(-25200000, tz.getOffsetMillis(gd));
+}
+
+function testTZGetRawOffsetMillisDST() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+    
+    assertEquals(-28800000, tz.getRawOffsetMillis());
+}
+
+function testTZGetRawOffsetMillisDSTEastern() {
+    var tz = new ilib.TimeZone({id: "Asia/Shanghai"});
+    assertNotNull(tz);
+    
+    assertEquals(28800000, tz.getRawOffsetMillis());
+}
+
+function testTZGetRawOffsetMillisNonDSTZone() {
+    var tz = new ilib.TimeZone({id: "America/Phoenix"});
+    assertNotNull(tz);
+    
+    assertEquals(-25200000, tz.getRawOffsetMillis());
 }

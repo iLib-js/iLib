@@ -1,7 +1,7 @@
 /*
  * testglobal.js - test the ilib static routines
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ function testSetLocaleEmpty() {
 }
 
 function testGetVersion() {
-    assertEquals("1.1", ilib.getVersion());
+    assertEquals("1.2", ilib.getVersion());
 }
 
 function testGetTimeZoneDefault() {

@@ -1,7 +1,7 @@
 /*
  * testdatefmt_zh_CN.js - test the date formatter object in Chinese (simplified)
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

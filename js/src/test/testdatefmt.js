@@ -1,7 +1,7 @@
 /*
  * testdatefmt.js - test the date formatter object
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1894,4 +1894,73 @@ function testDateFmttrTR() {
 	});
     
     assertEquals("20 Eylül 2011 Salı 13:45", fmt.format(date));
+};
+
+function testDateFmttrSV() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "datetime",
+    	locale: "sv-SE",
+    	date: "wdmy",
+    	time: "hma"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 10,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    
+    assertEquals("torsdag, 2011 oktober 20 13:45", fmt.format(date));
+};
+
+function testDateFmttrNO() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "datetime",
+    	locale: "no-NO",
+    	date: "wdmy",
+    	time: "hma"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 10,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    
+    assertEquals("Torsdag 20. oktober 2011 13.45", fmt.format(date));
+};
+
+function testDateFmttrDA() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "datetime",
+    	locale: "da-DK",
+    	date: "wdmy",
+    	time: "hma"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 10,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    
+    assertEquals("torsdag den 20. oktober 2011 13.45", fmt.format(date));
 };

@@ -1,7 +1,7 @@
 /*
  * testresources.js - test the Resources object
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -702,4 +702,123 @@ function testResBundleGetStringAcceptCommaTranslationsWithKey() {
     assertNotNull(rb);
     
     assertEquals(",", rb.getString("asdf", "comma").toString());
+}
+
+function testResBundleGetStringNoResourcesReturnSource() {
+   var rb = new ilib.ResBundle({
+     name: "tester",
+     locale: "zz-ZZ"
+   });
+   
+   assertNotNull(rb);
+   
+   assertEquals("This is a test.", rb.getString("This is a test.").toString());
+}
+
+function testResBundleGetStringNoResourcesReturnSourceHtmlTypeHtml() {
+   var rb = new ilib.ResBundle({
+     name: "tester",
+     locale: "zz-ZZ",
+     type: "html"
+   });
+   
+   assertNotNull(rb);
+   
+   assertEquals("This is a <b>test</b>. A&amp;P.", rb.getString("This is a <b>test</b>. A&amp;P.").toString());
+}
+
+function testResBundleGetStringNoResourcesReturnSourceHtmlTypejs() {
+   var rb = new ilib.ResBundle({
+     name: "tester",
+     locale: "zz-ZZ",
+     type: "js"
+   });
+   
+   assertNotNull(rb);
+   
+   assertEquals("This is a <b>test</b>. A&amp;P.", rb.getString("This is a <b>test</b>. A&amp;P.").toString());
+}
+
+function testResBundleGetStringNoResourcesReturnSourceTypejsNoEscape() {
+   var rb = new ilib.ResBundle({
+     name: "tester",
+     locale: "zz-ZZ",
+     type: "js"
+   });
+   
+   assertNotNull(rb);
+   
+   assertEquals("This is a 'test'.", rb.getString("This is a 'test'.").toString());
+}
+
+function testResBundleGetStringNoResourcesReturnSourceTypejsWithEscape() {
+   var rb = new ilib.ResBundle({
+     name: "tester",
+     locale: "zz-ZZ",
+     type: "js"
+   });
+   
+   assertNotNull(rb);
+   
+   assertEquals("This is a \\'test\\'.", rb.getString("This is a 'test'.", undefined, "js").toString());
+}
+
+function testResBundleGetStringNoResourcesReturnSourceTypeHtmlWithEscape() {
+   var rb = new ilib.ResBundle({
+     name: "tester",
+     locale: "zz-ZZ",
+     type: "html"
+   });
+   
+   assertNotNull(rb);
+   
+   assertEquals("This is a &lt;b&gt;test&lt;/b&gt;. A&amp;amp;P.", rb.getString("This is a <b>test</b>. A&amp;P.", undefined, "html").toString());
+}
+
+function testResBundleGetStringNoResourcesReturnSourceTypeHtmlWithEscapeJS() {
+   var rb = new ilib.ResBundle({
+     name: "tester",
+     locale: "zz-ZZ",
+     type: "html"
+   });
+   
+   assertNotNull(rb);
+   
+   assertEquals("This is <a href=\\\"a test\\\">a \\'test\\'</a>.", rb.getString("This is <a href=\"a test\">a 'test'</a>.", undefined, "js").toString());
+}
+
+function testResBundleGetStringPsuedoHtmlNoEscape() {
+   var rb = new ilib.ResBundle({
+       name: "asdfasdffoobar",
+       locale: "xx-XX",
+       type: "html"
+   });
+   
+   assertNotNull(rb);
+   
+   assertEquals("Ħëľľõ fŕõm <a href=\"asdf\">Pàŕíš</a>, çíţÿ õf ľíğĥţš.", rb.getString("Hello from <a href=\"asdf\">Paris</a>, city of lights.").toString());
+}
+
+function testResBundleGetStringPsuedoHtmlEscapeHtml() {
+   var rb = new ilib.ResBundle({
+       name: "asdfasdffoobar",
+       locale: "xx-XX",
+       type: "html"
+   });
+   
+   assertNotNull(rb);
+   
+   assertEquals("Ħëľľõ fŕõm &lt;a href=\"asdf\"&gt;Pàŕíš&lt;/a&gt;, çíţÿ õf ľíğĥţš.", rb.getString("Hello from <a href=\"asdf\">Paris</a>, city of lights.", undefined, "html").toString());
+}
+
+function testResBundleGetStringPsuedoHtmlEscapeJS() {
+   var rb = new ilib.ResBundle({
+       name: "asdfasdffoobar",
+       locale: "xx-XX",
+       type: "html"
+   });
+   
+   assertNotNull(rb);
+   
+   assertEquals("Ħëľľõ fŕõm <a href=\\\"asdf\\\">Pàŕíš</a>, çíţÿ õf ľíğĥţš.", rb.getString("Hello from <a href=\"asdf\">Paris</a>, city of lights.", undefined, "js").toString());
 }

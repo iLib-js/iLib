@@ -1,7 +1,7 @@
 /*
  * numfmt.js - Number formatter definition
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,82 +19,18 @@
 
 // !depends ilibglobal.js locale.js strings.js resources.js currency.js
 
-/**
- * @private
- */
-ilib._roundFnc = {
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	floor: function (num) {
-		return Math.floor(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	ceiling: function (num) {
-		return Math.ceil(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	down: function (num) {
-		return (num < 0) ? Math.ceil(num) : Math.floor(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	up: function (num) {
-		return (num < 0) ? Math.floor(num) : Math.ceil(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfup: function (num) {
-		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfdown: function (num) {
-		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfeven: function (num) {
-		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfodd: function (num) {
-		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	}
-};
+
+/*
+!depends 
+ilibglobal.js 
+locale.js
+localeinfo.js
+util/utils.js
+currency.js
+strings.js
+*/
+
+// !data localeinfo currency
 
 /**
  * @class

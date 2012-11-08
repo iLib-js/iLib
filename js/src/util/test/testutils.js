@@ -1,7 +1,7 @@
 /*
  * testutils.js - test the utility routines
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -390,4 +390,53 @@ function testShallowCopyEmpty() {
     assertTrue(ilib.isEmpty(tgt));
     ilib.shallowCopy(src, tgt);
     assertTrue(ilib.isEmpty(tgt));
+}
+
+function testSignumPositive() {
+    assertEquals(1, ilib.signum(1));
+}
+
+function testSignumPositiveLarge() {
+    assertEquals(1, ilib.signum(1345234));
+}
+
+function testSignumNegative() {
+    assertEquals(-1, ilib.signum(-1));
+}
+
+function testSignumPositiveLarge() {
+    assertEquals(-1, ilib.signum(-13234));
+}
+
+function testSignumZero() {
+    assertEquals(1, ilib.signum(0));
+}
+
+function testSignumStringNumberPositive() {
+    assertEquals(1, ilib.signum("1345234"));
+}
+
+function testSignumStringNumberNegative() {
+    assertEquals(-1, ilib.signum("-1345234"));
+}
+
+function testSignumUndefined() {
+    assertEquals(1, ilib.signum());
+}
+
+function testSignumNull() {
+    assertEquals(1, ilib.signum(null));
+}
+
+function testSignumStringNonNumber() {
+    assertEquals(1, ilib.signum("rafgasdf"));
+}
+
+function testSignumBoolean() {
+    assertEquals(1, ilib.signum(true));
+    assertEquals(1, ilib.signum(false));
+}
+
+function testSignumFunction() {
+    assertEquals(1, ilib.signum(function () { return -4; }));
 }

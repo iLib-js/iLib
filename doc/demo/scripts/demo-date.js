@@ -1,7 +1,7 @@
 /*
  * ilibglobal.js - define the ilib name space
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2012, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -272,7 +272,7 @@ function setupRangePicker(startname, endname) {
 	$('#endname').text(endname);
 	
 	setCalendarValues();
-	calName.append($("<option></option>").attr("value", "julianday").text("julianday"));
+	calName.append($("<option></option>").attr("value", "julianday").text(res.getString("julianday")));
 
 	cal = ilib.Cal.newInstance({
 		type: "gregorian",
