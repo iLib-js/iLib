@@ -595,7 +595,8 @@ ilib.Date.GregDate.prototype.getEra = function() {
  * the number of milliseconds since midnight on Jan 1, 1970. This method only
  * returns a valid number for dates between midnight, Jan 1, 1970 and  
  * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
- * encodes a date outside of that range, this method will return -1.
+ * encodes a date outside of that range, this method will return -1. This method
+ * returns the time in the local time zone, not in UTC.
  * 
  * @returns {number} a number giving the unix time, or -1 if the date is outside the
  * valid unix time range
@@ -610,7 +611,6 @@ ilib.Date.GregDate.prototype.getTime = function() {
 		second: this.second,
 		millisecond: 0
 	});
-	var unix;
 
 	// earlier than Jan 1, 1970
 	// or later than Jan 19, 2038 at 3:14:07am
@@ -653,6 +653,7 @@ ilib.Date.GregDate.prototype.getJSDate = function() {
 
 /**
  * Return the Julian Day equivalent to this calendar date as a number.
+ * This returns the julian day in the local time zone.
  * 
  * @return {number} the julian date equivalent of this date
  */
@@ -677,6 +678,20 @@ ilib.Date.GregDate.prototype.getCalendar = function() {
  */
 ilib.Date.GregDate.prototype.getTimeZone = function() {
 	return this.timezone;
+};
+
+/**
+ * Set the time zone associated with this Gregorian date.
+ * @param {string} tzName the name of the time zone to set into this date instance,
+ * or "undefined" to unset the time zone 
+ */
+ilib.Date.GregDate.prototype.setTimeZone = function (tzName) {
+	if (!tzName || tzName === "") {
+		// same as undefining it
+		this.timezone = undefined;
+	} else if (typeof(tzName) === 'string') {
+		this.timezone = tzName;
+	}
 };
 
 // register with the factory method

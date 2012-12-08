@@ -438,6 +438,28 @@ ilib.ResBundle.prototype = {
 	},
 	
 	/**
+	 * Return true if the current bundle contains a translation for the given key and
+	 * source. The
+	 * getString method will always return a string for any given key and source 
+	 * combination, so it cannot be used to tell if a translation exists. Either one
+	 * or both of the source and key must be specified. If both are not specified,
+	 * this method will return false.
+	 * 
+	 * @param {?string=} source source string to look up
+	 * @param {?string=} key key to look up
+	 * @returns {boolean} true if this bundle contains a translation for the key, and 
+	 * false otherwise
+	 */
+	containsKey: function(source, key) {
+		if (typeof(source) === 'undefined' && typeof(key) === 'undefined') {
+			return false;
+		}
+		
+		var keyName = key || this.makeKey(source);
+		return typeof(this.map[keyName]) !== 'undefined';
+	},
+	
+	/**
 	 * Return the merged resources as an entire object. When loading resources for a
 	 * locale that are not just a set of translated strings, but instead an entire 
 	 * structured object, you can gain access to that object via this call. This method

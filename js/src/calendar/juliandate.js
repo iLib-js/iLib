@@ -549,5 +549,19 @@ ilib.Date.JulDate.prototype.getTimeZone = function() {
 	return this.timezone;
 };
 
+/**
+ * Set the time zone associated with this Julian date.
+ * @param {string} tzName the name of the time zone to set into this date instance,
+ * or "undefined" to unset the time zone 
+ */
+ilib.Date.JulDate.prototype.setTimeZone = function (tzName) {
+	if (!tzName || tzName === "") {
+		// same as undefining it
+		this.timezone = undefined;
+	} else if (typeof(tzName) === 'string') {
+		this.timezone = tzName;
+	}
+};
+
 //register with the factory method
 ilib.Date._constructors["julian"] = ilib.Date.JulDate;

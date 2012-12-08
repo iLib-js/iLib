@@ -1182,3 +1182,69 @@ function testHebrewDateGetEraBAMYear0() {
     assertEquals(-1, id.getEra());
 }
 
+function testHebrewDateSetTimeZone() {
+    var gd = new ilib.Date.HebrewDate({
+    	year: 5711, 
+    	month: 3, 
+    	day: 8,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+    
+    gd.setTimeZone("Asia/Tokyo");
+    
+    assertEquals("Asia/Tokyo", gd.getTimeZone());
+}
+
+function testHebrewDateSetTimeZoneNotString() {
+    var gd = new ilib.Date.HebrewDate({
+    	year: 5711, 
+    	month: 3, 
+    	day: 8,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+    
+    gd.setTimeZone(345);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+}
+
+function testHebrewDateSetTimeZoneUndefined() {
+    var gd = new ilib.Date.HebrewDate({
+    	year: 5711, 
+    	month: 3, 
+    	day: 8,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+
+    // clears it out
+    gd.setTimeZone(undefined);
+    
+    assertUndefined(gd.getTimeZone());
+}
+
+function testHebrewDateSetTimeZoneEmpty() {
+    var gd = new ilib.Date.HebrewDate({
+    	year: 5711, 
+    	month: 3, 
+    	day: 8,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+    
+    // clears it out
+    gd.setTimeZone("");
+    
+    assertUndefined(gd.getTimeZone());
+}
+

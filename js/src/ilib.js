@@ -59,4 +59,5 @@ ctype.ispunct.js
 ctype.isspace.js
 ctype.isupper.js
 ctype.isxdigit.js
+scriptinfo.js
 */

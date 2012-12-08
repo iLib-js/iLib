@@ -537,3 +537,69 @@ function testJulDateCurrentTimeWithTimeZone() {
     
     assertRoughlyEquals(d.getTime()-d.getTimezoneOffset()*60000, jul.getTime(), 30);
 }
+
+function testJulDateSetTimeZone() {
+    var gd = new ilib.Date.JulDate({
+    	year: 2011, 
+    	month: 3, 
+    	day: 8,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+    
+    gd.setTimeZone("Asia/Tokyo");
+    
+    assertEquals("Asia/Tokyo", gd.getTimeZone());
+}
+
+function testJulDateSetTimeZoneNotString() {
+    var gd = new ilib.Date.JulDate({
+    	year: 2011, 
+    	month: 3, 
+    	day: 8,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+    
+    gd.setTimeZone(345);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+}
+
+function testJulDateSetTimeZoneUndefined() {
+    var gd = new ilib.Date.JulDate({
+    	year: 2011, 
+    	month: 3, 
+    	day: 8,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+
+    // clears it out
+    gd.setTimeZone(undefined);
+    
+    assertUndefined(gd.getTimeZone());
+}
+
+function testJulDateSetTimeZoneEmpty() {
+    var gd = new ilib.Date.JulDate({
+    	year: 2011, 
+    	month: 3, 
+    	day: 8,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+    
+    // clears it out
+    gd.setTimeZone("");
+    
+    assertUndefined(gd.getTimeZone());
+}

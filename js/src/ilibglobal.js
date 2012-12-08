@@ -35,7 +35,9 @@ ilib.getVersion = function () {
 /*
  * Place where resources and such are eventually assigned.
  */
-ilib.data = {};
+ilib.data = {
+	norm: {}
+};
 
 window["ilib"] = ilib;
 
@@ -75,7 +77,7 @@ ilib.getLocale = function () {
  * no explicit time zone is passed to any ilib class. If the default time zone
  * is not set, ilib will attempt to use the time zone of the
  * environment it is running in, if it can find that. If not, it will
- * default to the the UTC zone "Europe/London".<p>
+ * default to the the GMT zone "Europe/London".<p>
  * 
  * Depends directive: !depends ilibglobal.js
  * 
@@ -91,7 +93,7 @@ ilib.setTimeZone = function (tz) {
  * class. If the default time zone
  * is not set, ilib will attempt to use the locale of the
  * environment it is running in, if it can find that. If not, it will
- * default to the the UTC zone "Europe/London".<p>
+ * default to the the GMT zone "Europe/London".<p>
  * 
  * Depends directive: !depends ilibglobal.js
  * 

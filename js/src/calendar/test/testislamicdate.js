@@ -1107,3 +1107,68 @@ function testIslamicDateGetEraBAHYear0() {
     assertEquals(-1, id.getEra());
 }
 
+function testIslamicDateSetTimeZone() {
+    var gd = new ilib.Date.IslamicDate({
+    	year: 1433, 
+    	month: 3, 
+    	day: 8,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+    
+    gd.setTimeZone("Asia/Tokyo");
+    
+    assertEquals("Asia/Tokyo", gd.getTimeZone());
+}
+
+function testIslamicDateSetTimeZoneNotString() {
+    var gd = new ilib.Date.IslamicDate({
+    	year: 1433, 
+    	month: 3, 
+    	day: 8,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+    
+    gd.setTimeZone(345);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+}
+
+function testIslamicDateSetTimeZoneUndefined() {
+    var gd = new ilib.Date.IslamicDate({
+    	year: 1433, 
+    	month: 3, 
+    	day: 8,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+
+    // clears it out
+    gd.setTimeZone(undefined);
+    
+    assertUndefined(gd.getTimeZone());
+}
+
+function testIslamicDateSetTimeZoneEmpty() {
+    var gd = new ilib.Date.IslamicDate({
+    	year: 1433, 
+    	month: 3, 
+    	day: 8,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals("America/Los_Angeles", gd.getTimeZone());
+    
+    // clears it out
+    gd.setTimeZone("");
+    
+    assertUndefined(gd.getTimeZone());
+}

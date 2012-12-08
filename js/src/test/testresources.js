@@ -384,6 +384,18 @@ function testResBundleGetStringPsuedoLeaveHTMLTags() {
     assertEquals("Ħëľľõ fŕõm <a href='url'>{city}</a>", rb.getString("Hello from <a href='url'>{city}</a>").toString());
 }
 
+function testResBundleGetStringPsuedoLeaveHTMLTags2() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "xx-XX",
+        type: "html"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals('<span class="n_letter">ñ</span>Çľüšţëŕ: <strong>{clusterName}</strong>', rb.getString('<span class="n_letter">n</span>Cluster: <strong>{clusterName}</strong>').toString());
+}
+
 function testResBundleGetStringPsuedoNotLeaveHTMLTagsRaw() {
     var rb = new ilib.ResBundle({
         name: "tester",
@@ -821,4 +833,70 @@ function testResBundleGetStringPsuedoHtmlEscapeJS() {
    assertNotNull(rb);
    
    assertEquals("Ħëľľõ fŕõm <a href=\\\"asdf\\\">Pàŕíš</a>, çíţÿ õf ľíğĥţš.", rb.getString("Hello from <a href=\"asdf\">Paris</a>, city of lights.", undefined, "js").toString());
+}
+
+function testResBundleContainsKeyByKeyTrue() {
+   var rb = new ilib.ResBundle({
+       name: "resources",
+       locale: "de-DE"
+   });
+   
+   assertNotNull(rb);
+   
+   assertTrue(rb.containsKey(undefined, "first string"));
+}
+
+function testResBundleContainsKeyByKeyFalse() {
+   var rb = new ilib.ResBundle({
+       name: "resources",
+       locale: "de-DE"
+   });
+   
+   assertNotNull(rb);
+   
+   assertFalse(rb.containsKey(undefined, "asdfasdf"));
+}
+
+function testResBundleContainsKeyBySourceTrue() {
+   var rb = new ilib.ResBundle({
+       name: "resources",
+       locale: "de-DE"
+   });
+   
+   assertNotNull(rb);
+   
+   assertTrue(rb.containsKey("first string"));
+}
+
+function testResBundleContainsKeyBySourceFalse() {
+   var rb = new ilib.ResBundle({
+       name: "resources",
+       locale: "de-DE"
+   });
+   
+   assertNotNull(rb);
+   
+   assertFalse(rb.containsKey("asdfasdf"));
+}
+
+function testResBundleContainsKeyBySourceMakeKey() {
+   var rb = new ilib.ResBundle({
+       name: "resources",
+       locale: "de-DE"
+   });
+   
+   assertNotNull(rb);
+   
+   assertTrue(rb.containsKey("first   \t\t\r\n  string"));
+}
+
+function testResBundleContainsKeyBothUndefined() {
+   var rb = new ilib.ResBundle({
+       name: "resources",
+       locale: "de-DE"
+   });
+   
+   assertNotNull(rb);
+   
+   assertFalse(rb.containsKey(undefined, undefined));
 }
