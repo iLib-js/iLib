@@ -32,5 +32,5 @@
  * @return {boolean} true if the first character is lower-case.
  */
 ilib.CType.isLower = function (ch) {
-	return ilib.CType._inRange(ch, 'll', ilib.data.ctype_l);
+	return ilib.CType._inRange(ch, 'Ll', ilib.data.ctype_l);
 };

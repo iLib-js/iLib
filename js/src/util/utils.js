@@ -125,8 +125,7 @@ ilib.mod = function (dividend, modulus) {
  */
 ilib.merge = function (object1, object2, name1, name2) {
 	var prop,
-		newObj = {},
-		i;
+		newObj = {};
 	for (prop in object1) {
 		if (prop && typeof(object1[prop]) !== 'undefined') {
 			newObj[prop] = object1[prop];

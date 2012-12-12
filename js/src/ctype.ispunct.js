@@ -30,11 +30,11 @@
  * @return {boolean} true if the first character is punctuation.
  */
 ilib.CType.isPunct = function (ch) {
-	return ilib.CType._inRange(ch, 'pd', ilib.data.ctype_p) ||
-		ilib.CType._inRange(ch, 'ps', ilib.data.ctype_p) ||
-		ilib.CType._inRange(ch, 'pe', ilib.data.ctype_p) ||
-		ilib.CType._inRange(ch, 'pc', ilib.data.ctype_p) ||
-		ilib.CType._inRange(ch, 'po', ilib.data.ctype_p) ||
-		ilib.CType._inRange(ch, 'pi', ilib.data.ctype_p) ||
-		ilib.CType._inRange(ch, 'pf', ilib.data.ctype_p);
+	return ilib.CType._inRange(ch, 'Pd', ilib.data.ctype_p) ||
+		ilib.CType._inRange(ch, 'Ps', ilib.data.ctype_p) ||
+		ilib.CType._inRange(ch, 'Pe', ilib.data.ctype_p) ||
+		ilib.CType._inRange(ch, 'Pc', ilib.data.ctype_p) ||
+		ilib.CType._inRange(ch, 'Po', ilib.data.ctype_p) ||
+		ilib.CType._inRange(ch, 'Pi', ilib.data.ctype_p) ||
+		ilib.CType._inRange(ch, 'Pf', ilib.data.ctype_p);
 };

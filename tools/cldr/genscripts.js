@@ -24,7 +24,9 @@
 var fs = require('fs');
 var util = require('util');
 var unifile = require('./unifile.js');
+var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
+var coelesce = common.coelesce;
 
 function usage() {
 	util.print("Usage: genscripts [-h] ISO-15924-file.txt Scripts.txt [toDir]\n" +
@@ -38,50 +40,6 @@ function usage() {
 			"toDir\n" +
 			"  directory to output the normalization json files. Default: current dir.\n");
 	process.exit(1);
-}
-
-/**
- * Coelesce ranges to shorten this file and to make searching it more efficient. There are 4 cases:
- * 
- * 1. [A] followed by [A+1]
- * 2. [A] followed by [A+1, B]
- * 3. [A, B] followed by [B+1]
- * 4. [A, B] followed by [B+1, C]
- * 
- * where A, B, and C represent particular values. Handle each case properly.
- * 
- * @param {Array.<Array.<string|number>} ranges an array of range arrays
- * @param {number} skip the number of elements to skip before the range.  
- * If it is 0, look at elements 0 and 1, and if it is 1, then the range is 
- * in elements 1 and 2.
- * @returns {Array.<Array.<string|number>} a coelesced array of ranges
- */
-function coelesce(ranges, skip) {
-	var ret = [];
-	
-	for (var i = ranges.length-1; i >= 0; i--) {
-		if (ranges[i] && ranges[i+1] && (skip === 0 || ranges[i][0] === ranges[i+1][0])) {
-			if (ranges[i].length === 1+skip) {
-				if (ranges[i][skip] === ranges[i+1][skip] - 1) {
-					ranges[i].push(ranges[i+1][(ranges[i+1].length === 1+skip) ? skip : 1+skip]);
-					delete ranges[i+1];
-				}
-			} else {
-				if (ranges[i][1+skip] === ranges[i+1][skip] - 1) {
-					ranges[i][1+skip] = ranges[i+1][(ranges[i+1].length === 1+skip) ? skip : 1+skip];
-					delete ranges[i+1];
-				}
-			}
-		}
-	}
-	
-	for (var i = 0; i < ranges.length; i++) {
-		if (ranges[i]) {
-			ret.push(ranges[i]);
-		}
-	}
-	
-	return ret;
 }
 
 var unicodeFileName;
@@ -131,14 +89,14 @@ fs.exists(toDir, function (exists) {
 var scripts = {};
 var fullToShortMap = {};
 
-var ud = new UnicodeFile({path: unicodeFileName});
-var len = ud.length();
+var uf = new UnicodeFile({path: unicodeFileName});
+var len = uf.length();
 var row;
 var script;
 var longCode;
 
 for (var i = 0; i < len; i++ ) {
-	row = ud.get(i);
+	row = uf.get(i);
 
 	longCode = (row[4].length == 0) ? row[2] : row[4];
 	longCode = longCode.replace(/ +/g, '_');

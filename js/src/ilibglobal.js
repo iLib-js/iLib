@@ -36,7 +36,12 @@ ilib.getVersion = function () {
  * Place where resources and such are eventually assigned.
  */
 ilib.data = {
-	norm: {}
+	norm: {
+		nfc: {},
+		nfd: {},
+		nfkd: {},
+		ccc: {}
+	}
 };
 
 window["ilib"] = ilib;

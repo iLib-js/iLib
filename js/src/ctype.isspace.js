@@ -31,7 +31,7 @@
  */
 ilib.CType.isSpace = function (ch) {
 	return ilib.CType._inRange(ch, 'space', ilib.data.ctype) ||
-		ilib.CType._inRange(ch, 'zs', ilib.data.ctype_z) ||
-		ilib.CType._inRange(ch, 'zl', ilib.data.ctype_z) ||
-		ilib.CType._inRange(ch, 'zp', ilib.data.ctype_z);
+		ilib.CType._inRange(ch, 'Zs', ilib.data.ctype_z) ||
+		ilib.CType._inRange(ch, 'Zl', ilib.data.ctype_z) ||
+		ilib.CType._inRange(ch, 'Zp', ilib.data.ctype_z);
 };

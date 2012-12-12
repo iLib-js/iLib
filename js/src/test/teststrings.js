@@ -465,7 +465,7 @@ function testStringDelegateCharAt() {
     
     assertNotNull(str);
     
-    assertEquals("{", str.charAt(7));
+    assertEquals("{", str.charAt(7).toString());
 }
 
 function testStringDelegateCharCodeAt() {
@@ -516,7 +516,7 @@ function testStringDelegateReplace() {
     
     assertNotNull(str);
     
-    assertEquals("abcdefghijkxxxpqrstuvwxyzlmnopqrstuv", str.replace(/lmno/, "xxx")); 
+    assertEquals("abcdefghijkxxxpqrstuvwxyzlmnopqrstuv", str.replace(/lmno/, "xxx").toString()); 
 }
 
 function testStringDelegateSearch() {
@@ -532,7 +532,7 @@ function testStringDelegateSplit() {
     
     assertNotNull(str);
 
-    var consonants = str.split(/[aeiou]/)
+    var consonants = str.split(/[aeiou]/);
     assertEquals(6, consonants.length);
     assertEquals("", consonants[0]);
     assertEquals("bcd", consonants[1]);
@@ -547,7 +547,7 @@ function testStringDelegateSubstr() {
     
     assertNotNull(str);
     
-    assertEquals("lmnopqrstuv", str.substr(26));
+    assertEquals("lmnopqrstuv", str.substr(26).toString());
 }
 
 function testStringDelegateSubstring() {

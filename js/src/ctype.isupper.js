@@ -32,5 +32,5 @@
  * @return {boolean} true if the first character is upper-case.
  */
 ilib.CType.isUpper = function (ch) {
-	return ilib.CType._inRange(ch, 'lu', ilib.data.ctype_l);
+	return ilib.CType._inRange(ch, 'Lu', ilib.data.ctype_l);
 };

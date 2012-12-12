@@ -753,14 +753,6 @@ function testWithinRangeYi2() {
 	assertTrue(ilib.CType.withinRange("\uA49A", "Yi"));
 }
 
-function testWithinRangeHighSurrogates1() {
-	assertTrue(ilib.CType.withinRange("\uD80A", "HighSurrogates"));
-}
-
-function testWithinRangeHighSurrogates2() {
-	assertTrue(ilib.CType.withinRange("\uDB8A", "HighSurrogates"));
-}
-
 function testWithinRangeEnclosedCJK() {
 	assertTrue(ilib.CType.withinRange("\u320A", "EnclosedCJK"));
 }
@@ -1065,10 +1057,6 @@ function testWithinRangeMeeteiMayek() {
 	assertTrue(ilib.CType.withinRange("\uABCA", "MeeteiMayek"));
 }
 
-function testWithinRangeLowSurrogates() {
-	assertTrue(ilib.CType.withinRange("\uDC0A", "LowSurrogates"));
-}
-
 function testWithinRangePresentation() {
 	assertTrue(ilib.CType.withinRange("\uFB0A", "Presentation"));
 }
@@ -1091,4 +1079,46 @@ function testWithinRangeWidth() {
 
 function testWithinRangeSpecials() {
 	assertTrue(ilib.CType.withinRange("\uFFFA", "Specials"));
+}
+
+function testIsScriptTrue() {
+	assertTrue("testing Latn", ilib.CType.isScript("a", "Latn"));
+	assertTrue("testing Cyrl", ilib.CType.isScript("Д", "Cyrl"));
+	assertTrue("testing Grek", ilib.CType.isScript("ώ", "Grek"));
+	assertTrue("testing Hang", ilib.CType.isScript("귋", "Hang"));
+	assertTrue("testing Hani", ilib.CType.isScript("㜴", "Hani"));
+	assertTrue("testing Hebr", ilib.CType.isScript("ש", "Hebr"));
+	assertTrue("testing Arab", ilib.CType.isScript("ش", "Arab"));
+	assertTrue("testing Deva", ilib.CType.isScript("झ", "Deva"));
+}
+
+function testIsScriptFalse() {
+	assertFalse(ilib.CType.isScript("a", "Cyrl"));
+	assertFalse(ilib.CType.isScript("Д", "Grek"));
+	assertFalse(ilib.CType.isScript("ώ", "Hang"));
+	assertFalse(ilib.CType.isScript("귋", "Hani"));
+	assertFalse(ilib.CType.isScript("㜴", "Hebr"));
+	assertFalse(ilib.CType.isScript("ש", "Arab"));
+	assertFalse(ilib.CType.isScript("ش", "Deva"));
+	assertFalse(ilib.CType.isScript("झ", "Latn"));
+}
+
+function testIsScriptEmptyScriptName() {
+	assertFalse(ilib.CType.isScript("a", ""));
+}
+
+function testIsScriptNoScriptName() {
+	assertFalse(ilib.CType.isScript("a"));
+}
+
+function testIsScriptEmptyChar() {
+	assertFalse(ilib.CType.isScript("", "Cyrl"));
+}
+
+function testIsScriptNoChar() {
+	assertFalse(ilib.CType.isScript(undefined, "Cyrl"));
+}
+
+function testIsScriptNoNothing() {
+	assertFalse(ilib.CType.isScript(undefined, undefined));
 }

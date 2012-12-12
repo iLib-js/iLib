@@ -167,6 +167,7 @@ limitations under the License.
 	<target name="testilibut" description="test whether or not the ilib-ut single file needs to be rebuilt">
 		<uptodate property="ilib-ut.not.needed" targetfile="${build.src}/ilib-ut-compiled.js">
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js"/>
+			<srcfiles dir="${build.src}" includes="ilib-ut-inc.js"/>
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
@@ -174,7 +175,7 @@ limitations under the License.
 	<target name="assemble.unittest" depends="prepare,geninfo,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble 
 			tgtfilename="ilib-ut.js" 
-			srcfilename="ilib.js" 
+			srcfilename="ilib-ut-inc.js" 
 			locales="ar-AE,ar-EG,en-AU,en-US,en-CA,en-GB,en-NG,en-PH,en-ZA,de-AT,de-DE,es-ES,es-MX,es-AR,fr-FR,fr-CA,it-IT,ja-JP,nl-NL,tr-TR,zh-CN,ja-JP,ko-KR,zh-TW,he-IL,vi-VN,id-ID,ru-RU,pt-BR,xx-XX,da-DK,no-NO,sv-SE"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 

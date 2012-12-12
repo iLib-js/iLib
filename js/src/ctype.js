@@ -36,36 +36,36 @@ ilib.CType = {
 	 * http://www.unicode.org/Public/UNIDATA/extracted/DerivedGeneralCategory.txt
 	 * 
 	 * <ul>
-	 * <li>cn - Unassigned
-	 * <li>lu - Uppercase_Letter
-	 * <li>ll - Lowercase_Letter
-	 * <li>lt - Titlecase_Letter
-	 * <li>lm - Modifier_Letter
-	 * <li>lo - Other_Letter
+	 * <li>Cn - Unassigned
+	 * <li>Lu - Uppercase_Letter
+	 * <li>Ll - Lowercase_Letter
+	 * <li>Lt - Titlecase_Letter
+	 * <li>Lm - Modifier_Letter
+	 * <li>Lo - Other_Letter
 	 * <li>mn - Nonspacing_Mark
-	 * <li>me - Enclosing_Mark
-	 * <li>mc - Spacing_Mark
-	 * <li>nd - Decimal_Number
-	 * <li>nl - Letter_Number
-	 * <li>no - Other_Number
-	 * <li>zs - Space_Separator
-	 * <li>zl - Line_Separator
-	 * <li>zp - Paragraph_Separator
-	 * <li>cc - Control
-	 * <li>cf - Format
-	 * <li>co - Private_Use
-	 * <li>cs - Surrogate
-	 * <li>pd - Dash_Punctuation
-	 * <li>ps - Open_Punctuation
-	 * <li>pe - Close_Punctuation
-	 * <li>pc - Connector_Punctuation
-	 * <li>po - Other_Punctuation
-	 * <li>sm - Math_Symbol
-	 * <li>sc - Currency_Symbol
-	 * <li>sk - Modifier_Symbol
-	 * <li>so - Other_Symbol
-	 * <li>pi - Initial_Punctuation
-	 * <li>pf - Final_Punctuation
+	 * <li>Me - Enclosing_Mark
+	 * <li>Mc - Spacing_Mark
+	 * <li>Nd - Decimal_Number
+	 * <li>Nl - Letter_Number
+	 * <li>No - Other_Number
+	 * <li>Zs - Space_Separator
+	 * <li>Zl - Line_Separator
+	 * <li>Zp - Paragraph_Separator
+	 * <li>Cc - Control
+	 * <li>Cf - Format
+	 * <li>Co - Private_Use
+	 * <li>Cs - Surrogate
+	 * <li>Pd - Dash_Punctuation
+	 * <li>Ps - Open_Punctuation
+	 * <li>Pe - Close_Punctuation
+	 * <li>Pc - Connector_Punctuation
+	 * <li>Po - Other_Punctuation
+	 * <li>Sm - Math_Symbol
+	 * <li>Sc - Currency_Symbol
+	 * <li>Sk - Modifier_Symbol
+	 * <li>So - Other_Symbol
+	 * <li>Pi - Initial_Punctuation
+	 * <li>Pf - Final_Punctuation
 	 * </ul>
 	 * 
 	 * @param {string} ch character to examine
@@ -80,27 +80,21 @@ ilib.CType = {
 			return false;
 		}
 		
-		num = ch.charCodeAt(0);
-		range = obj[rangeName.toLowerCase()];
+		num = new ilib.String(ch).codePointAt(0);
+		range = obj[rangeName];
 		if (!range) {
 			return false;
 		}
 		
 		for (i = 0; i < range.length; i++) {
-			// JS only supports the BMP (chars from 0x0000 to 0xFFFF), but the
-			// data is includes ranges above that for use with other languages
-			// that do support all ISO 10646 characters. So, check if the range
-			// is less than the max first.
-			if (range[i][0] < 0x10000) {
-				if (range[i].length === 1) {
-					// single character range
-					if (num === range[i][0]) {
-						return true;
-					}
-				} else if (num >= range[i][0] && num <= range[i][1]) {
-					// multi-character range
+			if (range[i].length === 1) {
+				// single character range
+				if (num === range[i][0]) {
 					return true;
 				}
+			} else if (num >= range[i][0] && num <= range[i][1]) {
+				// multi-character range
+				return true;
 			}
 		}
 		
@@ -260,6 +254,9 @@ ilib.CType = {
 	 * range
 	 */
 	withinRange: function(ch, rangeName) {
-		return ilib.CType._inRange(ch, rangeName, ilib.data.ctype);
+		if (!rangeName) {
+			return false;
+		}
+		return ilib.CType._inRange(ch, rangeName.toLowerCase(), ilib.data.ctype);
 	}
 };

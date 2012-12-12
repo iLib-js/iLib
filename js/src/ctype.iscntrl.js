@@ -30,5 +30,5 @@
  * @return {boolean} true if the first character is a control character.
  */
 ilib.CType.isCntrl = function (ch) {
-	return ilib.CType._inRange(ch, 'cc', ilib.data.ctype_c);
+	return ilib.CType._inRange(ch, 'Cc', ilib.data.ctype_c);
 };

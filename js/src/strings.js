@@ -19,8 +19,6 @@
 
 // !depends ilibglobal.js locale.js
 
-// !data norm.nfd norm.nfkd norm.ccc
-
 /**
  * @class
  * Create a new string instance. This string inherits from the Javascript
@@ -44,6 +42,77 @@ ilib.String = function (string) {
 	}
 	this.length = this.str.length;
 	this.cpLength = -1;
+};
+
+/**
+ * @private
+ * @static
+ * 
+ * Return true if the given character is a Unicode surrogate character,
+ * either high or low.
+ * 
+ * @param {string} ch character to check
+ * @returns {boolean} true if the character is a surrogate
+ */
+ilib.String._isSurrogate = function (ch) {
+	var n = ch.charCodeAt(0);
+	return ((n >= 0xDC00 && n <= 0xDFFF) || (n >= 0xD800 && n <= 0xDBFF));
+};
+
+/**
+ * @private
+ * @static
+ * 
+ * Return true if the given character is a leading Jamo (Choseong) character.
+ * 
+ * @param {number} n code point to check
+ * @returns {boolean} true if the character is a leading Jamo character, 
+ * false otherwise
+ */
+ilib.String._isJamoL = function (n) {
+	return (n >= 0x1100 && n <= 0x1112);
+};
+
+/**
+ * @private
+ * @static
+ * 
+ * Return true if the given character is a vowel Jamo (Jungseong) character.
+ * 
+ * @param {number} n code point to check
+ * @returns {boolean} true if the character is a vowel Jamo character, 
+ * false otherwise
+ */
+ilib.String._isJamoV = function (n) {
+	return (n >= 0x1161 && n <= 0x1175);
+};
+
+/**
+ * @private
+ * @static
+ * 
+ * Return true if the given character is a trailing Jamo (Jongseong) character.
+ * 
+ * @param {number} n code point to check
+ * @returns {boolean} true if the character is a trailing Jamo character, 
+ * false otherwise
+ */
+ilib.String._isJamoT = function (n) {
+	return (n >= 0x11A8 && n <= 0x11C2);
+};
+
+/**
+ * @private
+ * @static
+ * 
+ * Return true if the given character is a precomposed Hangul character.
+ * 
+ * @param {number} n code point to check
+ * @returns {boolean} true if the character is a precomposed Hangul character, 
+ * false otherwise
+ */
+ilib.String._isHangul = function (n) {
+	return (n >= 0xAC00 && n <= 0xD7A3);
 };
 
 /**
@@ -88,15 +157,11 @@ ilib.String.fromCodePoint = function (codepoint) {
  * character into its individual combining Jamo characters. The given 
  * character must be in the range of Hangul characters U+AC00 to U+D7A3.
  * 
- * @param {string} ch Korean Hangul characters to decompose
+ * @param {number} cp code point of a Korean Hangul character to decompose
  * @returns {string} the decomposed string of Jamo characters
  */
-ilib.String._decomposeHangul = function (ch) {
-	var cp = ch.charCodeAt(0);
+ilib.String._decomposeHangul = function (cp) {
 	var sindex = cp - 0xAC00;
-	if (sindex < 0 || sindex > 11172) {
-		return ch;
-	}
 	var result = String.fromCharCode(0x1100 + sindex / 588) + 
 			String.fromCharCode(0x1161 + (sindex % 588) / 28);
 	var t = sindex % 28;
@@ -110,34 +175,33 @@ ilib.String._decomposeHangul = function (ch) {
  * @private
  * @static
  *
- * Algorithmically compose a string of combining Jamo characters into
- * a precomposed Korean syllabic Hangul character. The given string 
- * must contain characters in the range of Jamo characters U+1100 to U+3CA4.
+ * Algorithmically compose an L and a V combining Jamo characters into
+ * a precomposed Korean syllabic Hangul character. Both should already
+ * be in the proper ranges for L and V characters. 
  * 
- * @param {string} str Korean Jamo characters to compose
- * @returns {string} the composed string of Hangul characters
+ * @param {number} lead the code point of the lead Jamo character to compose
+ * @param {number} trail the code point of the trailing Jamo character to compose
+ * @returns {string} the composed Hangul character
  */
-ilib.String._composeJamo = function (str) {
-	if (typeof(str) !== 'string' || str.length === 0) {
-		return "";
-	}
-	
-	var result = str.charAt(0);
-	var last = str.charCodeAt(0);
-	
-	for (var i = 1; i < str.length; i++) {
-		var c = str.charCodeAt(i);
-		var lindex = last - 0x1100;
-		if (lindex >= 0 && lindex < 19) {
-			var vindex = c - 0x1161;
-			if (vindex >= 0 && vindex < 21) {
-				last = 0xAC00 + (lindex * 21 + vindex) * 28;
-				result += last;
-			}
-		}
-	}
-	
-	return result;
+ilib.String._composeJamoLV = function (lead, trail) {
+	var lindex = lead - 0x1100;
+	var vindex = trail - 0x1161;
+	return ilib.String.fromCodePoint(0xAC00 + (lindex * 21 + vindex) * 28);
+};
+
+/**
+ * @private
+ * @static
+ *
+ * Algorithmically compose a Hangul LV and a combining Jamo T character 
+ * into a precomposed Korean syllabic Hangul character. 
+ * 
+ * @param {number} lead the code point of the lead Hangul character to compose
+ * @param {number} trail the code point of the trailing Jamo T character to compose
+ * @returns {string} the composed Hangul character
+ */
+ilib.String._composeJamoLVT = function (lead, trail) {
+	return ilib.String.fromCodePoint(lead + (trail - 0x11A7));
 };
 
 /**
@@ -155,9 +219,9 @@ ilib.String._composeJamo = function (str) {
 ilib.String._expand = function (ch, canon, compat) {
 	var i, 
 		expansion = "",
-		cp = ch.charCodeAt(0);
-	if (cp >= 0xAC00 && cp <= 0xD7A3) {
-		expansion = ilib.String._decomposeHangul(ch);
+		n = ch.charCodeAt(0);
+	if (ilib.String._isHangul(n)) {
+		expansion = ilib.String._decomposeHangul(n);
 	} else {
 		var result = canon[ch];
 		if (!result && compat) {
@@ -178,15 +242,27 @@ ilib.String._expand = function (ch, canon, compat) {
  * @private
  * @static
  * 
- * Return true if the given character is a Unicode surrogate character,
- * either high or low.
- * 
- * @param {String} ch character to check
- * @returns {boolean} true if the character is a surrogate
+ * Compose one character out of a leading character and a 
+ * trailing character. If the characters are Korean Jamo, they
+ * will be composed algorithmically. If they are any other
+ * characters, they will be looked up in the nfc tables.
+ 
+ * @param {string} lead leading character to compose
+ * @param {string} trail the trailing character to compose
+ * @returns {string} the fully composed character, or undefined if
+ * there is no composition for those two characters
  */
-ilib.String.isSurrogate = function (ch) {
-	var n = ch.charCodeAt(0);
-	return ((n >= 0xDC00 && n <= 0xDFFF) || (n >= 0xD800 && n <= 0xDBFF));
+ilib.String._compose = function (lead, trail) {
+	var first = lead.charCodeAt(0);
+	var last = trail.charCodeAt(0);
+	if (ilib.String._isHangul(first) && ilib.String._isJamoT(last)) {
+		return ilib.String._composeJamoLVT(first, last);
+	} else if (ilib.String._isJamoL(first) && ilib.String._isJamoV(last)) {
+		return ilib.String._composeJamoLV(first, last);
+	}
+
+	var c = lead + trail;
+	return (ilib.data.norm.nfc && ilib.data.norm.nfc[c]);
 };
 
 
@@ -477,14 +553,15 @@ ilib.String.prototype = {
 	},
 	
 	/**
-	 * Perform a Unicode normalization upon the string and return the result.
+	 * Perform the Unicode Normalization Algorithm upon the string and return 
+	 * the resulting new string. The current string is not modified.
 	 * 
 	 * <h2>Forms</h2>
 	 * 
 	 * The forms of possible normalizations are defined by the <a 
 	 * href="http://www.unicode.org/reports/tr15/">Unicode Standard
-	 * Annex (UAX) 15</a>. The form parameter may have one of the
-	 * following values:
+	 * Annex (UAX) 15</a>. The form parameter is a string that may have one 
+	 * of the following values:
 	 * 
 	 * <ul>
 	 * <li>nfd - Canonical decomposition. This decomposes characters into
@@ -554,7 +631,7 @@ ilib.String.prototype = {
 	 * 
 	 * <h2>Data</h2>
 	 * 
-	 * Normalization requires a large amount of mapping data, much of which you may 
+	 * Normalization requires a fair amount of mapping data, much of which you may 
 	 * not need for the characters expected in your texts. It is possible to assemble
 	 * a copy of ilib that saves space by only including normalization data for 
 	 * those scripts that you expect to encounter in your data.<p>
@@ -564,7 +641,7 @@ ilib.String.prototype = {
 	 * a particular normalization form, use the directive:
 	 * 
 	 * <pre><code>
-	 * !data &lt;form&gt;/&lt;script&gt;
+	 * !depends &lt;form&gt;/&lt;script&gt;.js
 	 * </code></pre>
 	 * 
 	 * Where &lt;form&gt is the normalization form ("nfd", "nfc", "nfkd", or "nfkc"), and
@@ -572,7 +649,7 @@ ilib.String.prototype = {
 	 * support. Example: to load in the NFC data for Cyrillic, you would use:
 	 * 
 	 * <pre><code>
-	 * !data nfc/Cyrl
+	 * !depends nfc/Cyrl.js
 	 * </code></pre>
 	 * 
 	 * Note that because certain normalization forms include others in their algorithm, 
@@ -588,26 +665,37 @@ ilib.String.prototype = {
 	 * <li>NFKC -> NFKD, NFD, NFC
 	 * </ul>
 	 * 
-	 * A special value for the script is "all" which will cause the data for all scripts
+	 * A special value for the script dependency is "all" which will cause the data for 
+	 * all scripts
 	 * to be loaded for that normalization form. This would be useful if you know that
 	 * you are going to normalize a lot of multilingual text or cannot predict which scripts
-	 * there are in the input.<p>
+	 * will appear in the input. Because the NFKC form depends on all others, you can 
+	 * get all of the data for all forms automatically by depending on "nfkc/all.js".
+	 * Note that the normalization data for practically all script automatically depend
+	 * on data for the Common script (code "Zyyy") which contains all of the characters
+	 * that are commonly used in many different scripts. Examples of characters in the
+	 * Common script are the ASCII punctuation characters, or the ASCII Arabic 
+	 * numerals "0" through "9".<p>
 	 * 
-	 * By default, only the data for the Latin script (ISO code "Latn") is automatically 
-	 * included in the preassembled ilib file. 
-	 * If you would like to normalize strings with other scripts, you must assemble
+	 * By default, none of the data for normalization is automatically 
+	 * included in the preassembled iliball.js file. 
+	 * If you would like to normalize strings, you must assemble
 	 * your own copy of ilib and explicitly include the normalization data
-	 * for those scripts. <p>
+	 * for those scripts as per the instructions above. This normalization method will 
+	 * produce output, even without the normalization data. However, the output will be 
+	 * simply the same thing as its input for all scripts 
+	 * except Korean Hangul and Jamo, which are decomposed and recomposed 
+	 * algorithmically and therefore do not rely on data.<p>
 	 * 
 	 * If characters are encountered for which there are no normalization data, they
 	 * will be passed through to the output string unmodified.
 	 * 
-	 * @param {string} form The type of normalization requested
+	 * @param {string} form The normalization form requested
 	 * @returns {ilib.String} a new instance of an ilib.String that has been normalized
 	 * according to the requested form. The current instance is not modified.
 	 */
 	normalize: function (form) {
-		var i, j, k, str = "";
+		var i;
 		
 		if (typeof(form) !== 'string' || this.str.length === 0) {
 			return new ilib.String(this.str);
@@ -637,21 +725,18 @@ ilib.String.prototype = {
 		// decompose
 		var decomp = "";
 		
-		if (nfkd && ilib.data.norm.nfd && ilib.data.norm.nfkd) {
+		if (nfkd) {
 			var ch, it = this.charIterator();
 			while (it.hasNext()) {
 				ch = it.next();
 				decomp += ilib.String._expand(ch, ilib.data.norm.nfd, ilib.data.norm.nfkd);
 			}
-		} else if (ilib.data.norm.nfd) {
+		} else {
 			var ch, it = this.charIterator();
 			while (it.hasNext()) {
 				ch = it.next();
 				decomp += ilib.String._expand(ch, ilib.data.norm.nfd);
 			}
-		} else {
-			// no decomposition available?
-			decomp = this.str;
 		}
 
 		// now put the combining marks in a fixed order by 
@@ -660,99 +745,258 @@ ilib.String.prototype = {
 			return ilib.data.norm.ccc[left] - ilib.data.norm.ccc[right]; 
 		}
 		
+		function ccc(c) {
+			return ilib.data.norm.ccc[c] || 0;
+		}
+			
 		var dstr = new ilib.String(decomp);
-		var c, it = dstr.charIterator();
-		var start;
-		
+		var it = dstr.charIterator();
+		var cpArray = [];
+
+		// easier to deal with as an array of chars
 		while (it.hasNext()) {
-			start = it.index;
-			c = it.next();
-			if (typeof(ilib.data.norm.ccc[c]) !== 'undefined' && ilib.data.norm.ccc[c] !== 0) {
+			cpArray.push(it.next());
+		}
+		
+		i = 0;
+		while (i < cpArray.length) {
+			if (typeof(ilib.data.norm.ccc[cpArray[i]]) !== 'undefined' && ilib.data.norm.ccc[cpArray[i]] !== 0) {
 				// found a non-starter... rearrange all the non-starters until the next starter
-				var cpArray = [];
-				var end = start;
-				while (typeof(c) !== 'undefined' &&
-						typeof(ilib.data.norm.ccc[c]) !== 'undefined' && 
-						ilib.data.norm.ccc[c] !== 0) {
-					cpArray.push(c);
-					end = it.index;
-					c = it.next();
+				var end = i+1;
+				while (end < cpArray.length &&
+						typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
+						ilib.data.norm.ccc[cpArray[end]] !== 0) {
+					end++;
 				}
 				
 				// simple sort of the non-starter chars
-				if (cpArray.length > 1) {
-					cpArray.sort(compareByCCC);
-					decomp = decomp.substring(0,start) + cpArray.join("") + decomp.substring(end);
+				if (end - i > 1) {
+					cpArray = cpArray.slice(0,i).concat(cpArray.slice(i, end).sort(compareByCCC), cpArray.slice(end));
 				}
+			}
+			i++;
+		}
+		
+		if (nfc) {
+			i = 0;
+			while (i < cpArray.length) {
+				if (typeof(ilib.data.norm.ccc[cpArray[i]]) === 'undefined' || ilib.data.norm.ccc[cpArray[i]] === 0) {
+					// found a starter... find all the non-starters until the next starter. Must include
+					// the next starter because under some odd circumstances, two starters sometimes recompose 
+					// together to form another character
+					var end = i+1;
+					var notdone = true;
+					while (end < cpArray.length && notdone) {
+						if (typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
+							ilib.data.norm.ccc[cpArray[end]] !== 0) {
+							if (ccc(cpArray[end-1]) < ccc(cpArray[end])) { 
+								// not blocked 
+								var testChar = ilib.String._compose(cpArray[i], cpArray[end]);
+								if (typeof(testChar) !== 'undefined') {
+									cpArray[i] = testChar;
+									
+									// delete the combining char
+									cpArray.splice(end,1);	
+									
+									// restart the iteration, just in case there is more to recompose with the new char
+									end = i;
+								}
+							}
+							end++;
+						} else {
+							// found the next starter. See if this can be composed with the previous starter
+							var testChar = ilib.String._compose(cpArray[i], cpArray[end]);
+							if (ccc(cpArray[end-1]) === 0 && typeof(testChar) !== 'undefined') { 
+								// not blocked and there is a mapping 
+								cpArray[i] = testChar;
+								
+								// delete the combining char
+								cpArray.splice(end,1);
+								
+								// restart the iteration, just in case there is more to recompose with the new char
+								end = i+1;
+							} else {
+								// finished iterating 
+								notdone = false;
+							}
+						}
+					}
+				}
+				i++;
 			}
 		}
 		
-		str = decomp;
-		
-		/* finally, compose if necessary
-		if (nfc) {
-			
-		}
-		*/
-		
-		return new ilib.String(str || "");
+		return new ilib.String(cpArray.length > 0 ? cpArray.join("") : "");
 	},
 	
 	// delegates
+	/**
+	 * Same as String.toString()
+	 * @returns {string} this instance as regular Javascript string
+	 */
 	toString: function () {
 		return this.str.toString();
 	},
+	
+	/**
+	 * Same as String.valueOf()
+	 * @returns {string} this instance as a regular Javascript string
+	 */
 	valueOf: function () {
 		return this.str.valueOf();
 	},
+	
+	/**
+	 * Same as String.charAt()
+	 * @param {number} index the index of the character being sought
+	 * @returns {ilib.String} the character at the given index
+	 */
 	charAt: function(index) {
-		return this.str.charAt(index);
+		return new ilib.String(this.str.charAt(index));
 	},
+	
+	/**
+	 * Same as String.charCodeAt(). This only reports on 
+	 * 2-byte UCS-2 Unicode values, and does not take into
+	 * account supplementary characters encoded in UTF-16.
+	 * If you would like to take account of those characters,
+	 * use codePointAt() instead.
+	 * @param {number} index the index of the character being sought
+	 * @returns {number} the character code of the character at the 
+	 * given index in the string 
+	 */
 	charCodeAt: function(index) {
 		return this.str.charCodeAt(index);
 	},
+	
+	/**
+	 * Same as String.concat()
+	 * @param {string} strings strings to concatenate to the current one
+	 * @returns {ilib.String} a concatenation of the given strings
+	 */
 	concat: function(strings) {
-		return this.str.concat(strings);
+		return new ilib.String(this.str.concat(strings));
 	},
+	
+	/**
+	 * Same as String.indexOf()
+	 * @param {string} searchValue string to search for
+	 * @param {number} start index into the string to start searching, or
+	 * undefined to search the entire string
+	 * @returns {number} index into the string of the string being sought,
+	 * or -1 if the string is not found 
+	 */
 	indexOf: function(searchValue, start) {
 		return this.str.indexOf(searchValue, start);
 	},
+	
+	/**
+	 * Same as String.lastIndexOf()
+	 * @param {string} searchValue string to search for
+	 * @param {number} start index into the string to start searching, or
+	 * undefined to search the entire string
+	 * @returns {number} index into the string of the string being sought,
+	 * or -1 if the string is not found 
+	 */
 	lastIndexOf: function(searchValue, start) {
 		return this.str.lastIndexOf(searchValue, start);
 	},
+	
+	/**
+	 * Same as String.match()
+	 * @param {string} regexp the regular expression to match
+	 * @returns {Array.<string>} an array of matches
+	 */
 	match: function(regexp) {
 		return this.str.match(regexp);
 	},
+	
+	/**
+	 * Same as String.replace()
+	 * @param {string} searchValue a regular expression to search for
+	 * @param {string} newValue the string to replace the matches with
+	 * @returns {ilib.String} a new string with all the matches replaced
+	 * with the new value
+	 */
 	replace: function(searchValue, newValue) {
-		return this.str.replace(searchValue, newValue);
+		return new ilib.String(this.str.replace(searchValue, newValue));
 	},
+	
+	/**
+	 * Same as String.search()
+	 * @param {string} regexp the regular expression to search for
+	 * @returns {number} position of the match, or -1 for no match
+	 */
 	search: function(regexp) {
 		return this.str.search(regexp);
 	},
+	
+	/**
+	 * Same as String.slice()
+	 * @param {number} start first character to include in the string
+	 * @param {number} end include all characters up to, but not including
+	 * the end character
+	 * @returns {ilib.String} a slice of the current string
+	 */
 	slice: function(start, end) {
-		return this.str.slice(start, end);
+		return new ilib.String(this.str.slice(start, end));
 	},
+	
+	/**
+	 * Same as String.split()
+	 * @param {string} separator regular expression to match to find
+	 * separations between the parts of the text
+	 * @param {number} limit maximum number of items in the final 
+	 * output array. Any items beyond that limit will be ignored.
+	 * @returns {Array.<string>} the parts of the current string split 
+	 * by the separator
+	 */
 	split: function(separator, limit) {
 		return this.str.split(separator, limit);
 	},
+	
+	/**
+	 * Same as String.substr()
+	 * @param {number} start the index of the character that should 
+	 * begin the returned substring
+	 * @param {number} length the number of characters to return after
+	 * the start character.
+	 * @returns {ilib.String} the requested substring 
+	 */
 	substr: function(start, length) {
-		return this.str.substr(start, length);
+		return new ilib.String(this.str.substr(start, length));
 	},
+	
+	/**
+	 * Same as String.substring()
+	 * @param {number} from the index of the character that should 
+	 * begin the returned substring
+	 * @param {number} to the index where to stop the extraction. If
+	 * omitted, extracts the rest of the string
+	 * @returns {ilib.String} the requested substring 
+	 */
 	substring: function(from, to) {
 		return this.str.substring(from, to);
 	},
+	
+	/**
+	 * Same as String.toLowerCase(). Note that this method is
+	 * not locale-sensitive. 
+	 * @returns {ilib.String} a string with the first character
+	 * lower-cased
+	 */
 	toLowerCase: function() {
 		return this.str.toLowerCase();
 	},
+	
+	/**
+	 * Same as String.toUpperCase(). Note that this method is
+	 * not locale-sensitive. Use toLocaleUpperCase() instead
+	 * to get locale-sensitive behaviour. 
+	 * @returns {ilib.String} a string with the first character
+	 * upper-cased
+	 */
 	toUpperCase: function() {
-		return this.str.toUpperCase();
-	},
-	toLocaleLowerCase: function() {
-		// TODO make this sensitive to the default ilib locale
-		return this.str.toLowerCase();
-	},
-	toLocaleUpperCase: function() {
-		// TODO make this sensitive to the default ilib locale
 		return this.str.toUpperCase();
 	},
 	
@@ -862,9 +1106,9 @@ ilib.String.prototype = {
 				var ch;
 				if (this.index < istring.str.length) {
 					ch = istring.str.charAt(this.index);
-					if (ilib.String.isSurrogate(ch) && 
+					if (ilib.String._isSurrogate(ch) && 
 							this.index+1 < istring.str.length && 
-							ilib.String.isSurrogate(istring.str.charAt(this.index+1))) {
+							ilib.String._isSurrogate(istring.str.charAt(this.index+1))) {
 						this.index++;
 						ch += istring.str.charAt(this.index);
 					}
@@ -881,6 +1125,8 @@ ilib.String.prototype = {
 	 * as an array of code points. If the index is beyond the end of the
 	 * array of code points or if the index is negative, -1 is returned.
 	 * @param {number} index index of the code point 
+	 * @returns {number} code point of the character at the given index into
+	 * the string
 	 */
 	codePointAt: function (index) {
 		if (index < 0) {

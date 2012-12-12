@@ -128,7 +128,7 @@ exports.toHexString = function (string) {
  * after that, but the extra elements are ignored. They may be used to 
  * indicate other information about the range, such as a name for example. 
  * 
- * @param {Array.<Array.<number>|number} arr array of number or array of number to search 
+ * @param {Array.<{Array.<number>|number}>} arr array of number or array of number to search 
  * @param {number} num value to search for
  * @returns {number} the index in the array of the matching element or -1 to indicate no
  * match
@@ -166,10 +166,54 @@ exports.findMember = function (arr, num) {
  * Do a binary search of an array of ranges and single values to determine
  * whether or not the given character is encoded in that array.
  * 
- * @param {Array.<Array.<number>|number} arr 
+ * @param {Array.<{Array.<number>|number}>} arr 
  * @param {number} num number to search for
  * @returns {boolean} true if the number is in the array or within a range in the array
  */
 exports.isMember = function (arr, num) {
 	return exports.findMember(arr, num) !== -1;
+};
+
+/**
+ * Coelesce ranges to shorten files and to make searching it more efficient. There are 4 cases:
+ * 
+ * 1. [A] followed by [A+1]
+ * 2. [A] followed by [A+1, B]
+ * 3. [A, B] followed by [B+1]
+ * 4. [A, B] followed by [B+1, C]
+ * 
+ * where A, B, and C represent particular values. Handle each case properly.
+ * 
+ * @param {Array.<{Array.<string|number>}>} ranges an array of range arrays
+ * @param {number} skip the number of elements to skip before the range.  
+ * If it is 0, look at elements 0 and 1, and if it is 1, then the range is 
+ * in elements 1 and 2.
+ * @returns {Array.<{Array.<string|number>}>} a coelesced array of ranges
+ */
+exports.coelesce = function (ranges, skip) {
+	var ret = [];
+	
+	for (var i = ranges.length-1; i >= 0; i--) {
+		if (ranges[i] && ranges[i+1] && (skip === 0 || ranges[i][0] === ranges[i+1][0])) {
+			if (ranges[i].length === 1+skip) {
+				if (ranges[i][skip] === ranges[i+1][skip] - 1) {
+					ranges[i].push(ranges[i+1][(ranges[i+1].length === 1+skip) ? skip : 1+skip]);
+					ranges.splice(i+1, 1);
+				}
+			} else {
+				if (ranges[i][1+skip] === ranges[i+1][skip] - 1) {
+					ranges[i][1+skip] = ranges[i+1][(ranges[i+1].length === 1+skip) ? skip : 1+skip];
+					ranges.splice(i+1, 1);
+				}
+			}
+		}
+	}
+	
+	for (var i = 0; i < ranges.length; i++) {
+		if (ranges[i]) {
+			ret.push(ranges[i]);
+		}
+	}
+	
+	return ret;
 };

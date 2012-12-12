@@ -30,9 +30,9 @@
  * @return {boolean} true if the first character is alphabetic.
  */
 ilib.CType.isAlpha = function (ch) {
-	return ilib.CType._inRange(ch, 'lu', ilib.data.ctype_l) ||
-		ilib.CType._inRange(ch, 'll', ilib.data.ctype_l) ||
-		ilib.CType._inRange(ch, 'lt', ilib.data.ctype_l) ||
-		ilib.CType._inRange(ch, 'lm', ilib.data.ctype_l) ||
-		ilib.CType._inRange(ch, 'lo', ilib.data.ctype_l);
+	return ilib.CType._inRange(ch, 'Lu', ilib.data.ctype_l) ||
+		ilib.CType._inRange(ch, 'Ll', ilib.data.ctype_l) ||
+		ilib.CType._inRange(ch, 'Lt', ilib.data.ctype_l) ||
+		ilib.CType._inRange(ch, 'Lm', ilib.data.ctype_l) ||
+		ilib.CType._inRange(ch, 'Lo', ilib.data.ctype_l);
 };

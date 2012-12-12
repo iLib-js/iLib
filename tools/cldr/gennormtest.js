@@ -26,7 +26,8 @@ var fs = require('fs');
 var util = require('util');
 var unifile = require('./unifile.js');
 var UnicodeFile = unifile.UnicodeFile;
-var fromCodePoint = unifile.codePointToUTF16
+var common = require('./common.js');
+var fromCodePoint = common.codePointToUTF16;
 
 function usage() {
 	util.print("Usage: gennormtest [-h] NormalizationTest.txt [toDir]\n" +
