@@ -381,7 +381,7 @@ ilib.String.prototype = {
 	 * </pre>
 	 * 
 	 * The strings to format may contain replacement variables that will be formatted
-	 * using the fmt() method above and the params argument as a source of values
+	 * using the format() method above and the params argument as a source of values
 	 * to use while formatting those variables.<p>
 	 * 
 	 * If the criterion for a particular choice is empty, that choice will be used
