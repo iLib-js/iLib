@@ -51,7 +51,7 @@ function usage() {
 
 var unicodeDirName;
 var toDir = ".";
-var codeDir = "."
+var codeDir = ".";
 
 process.argv.forEach(function (val, index, array) {
 	if (val === "-h" || val === "--help") {

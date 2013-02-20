@@ -17,6 +17,12 @@
  * limitations under the License.
  */
 
+ilib.data.resources = {
+    "first string": "first",
+    "second string": "second",
+    "third string": "third"
+};
+
 ilib.data.resources_de = {
     "first string": "erste String",
     "second string": "zweite String",
@@ -126,9 +132,9 @@ function testResBundleGetString() {
     
     assertNotNull(rb);
     
-    assertEquals("first string", rb.getString("first string").toString());
-    assertEquals("second string", rb.getString("second string").toString());
-    assertEquals("third string", rb.getString("third string").toString());
+    assertEquals("first", rb.getString("first string").toString());
+    assertEquals("second", rb.getString("second string").toString());
+    assertEquals("third", rb.getString("third string").toString());
 }
 
 function testResBundleGetStringde() {
@@ -186,9 +192,9 @@ function testResBundleGetStringDefaultToSource() {
     
     assertNotNull(rb);
     
-    assertEquals("first string", rb.getString("first string").toString());
-    assertEquals("second string", rb.getString("second string").toString());
-    assertEquals("third string", rb.getString("third string").toString());
+    assertEquals("first string x", rb.getString("first string x").toString());
+    assertEquals("second string x", rb.getString("second string x").toString());
+    assertEquals("third string x", rb.getString("third string x").toString());
 }
 
 function testResBundleGetStringOtherBundle() {
@@ -899,4 +905,94 @@ function testResBundleContainsKeyBothUndefined() {
    assertNotNull(rb);
    
    assertFalse(rb.containsKey(undefined, undefined));
+}
+
+function testResBundleConstructAsynchPreassembled() {
+	var onloadcalled = false;
+	ilib.data.resourceCache.resources = undefined;
+    var rb = new ilib.ResBundle({
+    	locale: "fr-CA-govt",
+    	onLoad: function(rb) {
+    		assertNotUndefined(rb);
+    		
+    	    assertEquals("première corde", rb.getString("first string").toString());
+    	    assertEquals("deuxième collier", rb.getString("second string").toString());
+    	    assertEquals("troisième corde", rb.getString("third string").toString());
+    	    
+    	    onloadcalled = true;
+    	}
+    });
+    
+    assertNotUndefined(rb);
+    assertTrue(onloadcalled);
+}
+
+function testResBundleConstructAsynchPreassembledCached() {
+	var onloadcalled = false;
+    var rb = new ilib.ResBundle({
+    	locale: "fr-CA-govt",
+    	onLoad: function(rb) {
+    		assertNotUndefined(rb);
+    		
+    	    assertEquals("première corde", rb.getString("first string").toString());
+    	    assertEquals("deuxième collier", rb.getString("second string").toString());
+    	    assertEquals("troisième corde", rb.getString("third string").toString());
+    	    
+    	    onloadcalled = true;
+    	}
+    });
+    
+    assertNotUndefined(rb);
+    assertTrue(onloadcalled);
+}
+
+function mockLoader(context, paths, callback) {
+	var data = [];
+	
+	data.push(ilib.data.resources); // for the generic, shared stuff
+	data.push(ilib.data.resources_fr);
+	data.push(ilib.data.resources_fr_CA);
+	data.push(ilib.data.resources_fr_CA_govt);
+	
+	if (typeof(callback) === 'undefined') {
+		return data;
+	}
+	callback.call(context, data);
+};
+
+function testResBundleConstructAsynchDynamic() {
+	var onloadcalled = false;
+	ilib.data.resourceCache.foobar = undefined;
+	ilib.setLoaderCallback(mockLoader);
+    var rb = new ilib.ResBundle({
+    	locale: "fr-CA-govt",
+    	name: "foobar",
+    	onLoad: function(rb) {
+    		assertNotUndefined(rb);
+    		
+    	    assertEquals("première corde", rb.getString("first string").toString());
+    	    assertEquals("deuxième collier", rb.getString("second string").toString());
+    	    assertEquals("troisième corde", rb.getString("third string").toString());
+    	    
+    	    onloadcalled = true;
+    	}
+    });
+    
+    assertNotUndefined(rb);
+    assertTrue(onloadcalled);
+}
+
+function testResBundleConstructSynchDynamic() {
+	ilib.data.resourceCache.foobar = undefined;
+	ilib.setLoaderCallback(mockLoader);
+    var rb = new ilib.ResBundle({
+    	locale: "fr-CA-govt",
+    	name: "foobar"
+    });
+    
+	assertNotUndefined(rb);
+	
+    assertEquals("première corde", rb.getString("first string").toString());
+    assertEquals("deuxième collier", rb.getString("second string").toString());
+    assertEquals("troisième corde", rb.getString("third string").toString());
 }

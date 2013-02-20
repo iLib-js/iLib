@@ -28,34 +28,36 @@
  * by various parts of the code, and should be used as a fall-back setting of last
  * resort. <p>
  * 
+ * The optional options object holds extra parameters if they are necessary. The
+ * current list of supported options are:
+ * 
+ * <ul>
+ * <li>onLoad - a callback function to call when the locale info object is fully 
+ * loaded. When the onLoad option is given, the localeinfo object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * </ul>
+ * 
+ * If this copy of ilib is pre-assembled and all the data is already available, 
+ * or if the data was already previously loaded, then this constructor will call
+ * the onLoad callback immediately when the initialization is done. 
+ * If the onLoad option is not given, this class will only attempt to load any
+ * missing locale data synchronously.
+ * 
  * Depends directive: !depends localeinfo.js
  * 
  * @constructor
+ * @see {ilib.setLoaderCallback} for information about registering a loader callback
+ * function
  * @param {ilib.Locale|string=} locale the locale for which the info is sought, or undefined for
+ * @param {Object=} options the locale for which the info is sought, or undefined for
  * the current locale
  */
-ilib.LocaleInfo = function(locale) {
+ilib.LocaleInfo = function(locale, options) {
 	/* these are all the defaults. Essentially, en-US */
-	this.info = {
-		units: "metric",
-		clock: "24",
-		calendar: "gregorian",
-		firstDayOfWeek: 0,
-		timezone: "America/Los_Angeles",
-		numfmt: {
-			decimalChar: ".",
-			groupChar: "",
-			groupSize: 0,
-			pctFmt: "{n}%",
-			pctChar: "%",
-			roundingMode: "halfdown"
-		},
-		currencyFormats: {
-			common: "{s}{n}",
-			iso: "{s} {n}"
-		},
-		currency: "USD"
-	};
+	this.info = ilib.data.localeinfo;
 	
 	switch (typeof(locale)) {
 		case "string":
@@ -69,18 +71,46 @@ ilib.LocaleInfo = function(locale) {
 			this.locale = locale;
 			break;
 	}
-
-	if (ilib.data["localeinfo"]) {
-		this.info = ilib.merge(this.info, ilib.data["localeinfo"]);
-	}
-	if (ilib.data["localeinfo_" + this.locale.getLanguage()]) {
-		this.info = ilib.merge(this.info, ilib.data["localeinfo_" + this.locale.getLanguage()]);
-	}
-	if (ilib.data["localeinfo_" + this.locale.getLanguage() + "_" + this.locale.getRegion()]) {
-		this.info = ilib.merge(this.info, ilib.data["localeinfo_" + this.locale.getLanguage() + "_" + this.locale.getRegion()]);
-	}
-	if (ilib.data["localeinfo_" + this.locale.getLanguage() + "_" + this.locale.getRegion() + "_" + this.locale.getVariant()]) {
-		this.info = ilib.merge(this.info, ilib.data["localeinfo_" + this.locale.getLanguage() + "_" + this.locale.getRegion() + "_" + this.locale.getVariant()]);
+	
+	var spec = this.locale.getSpec().replace(/-/g, "_");
+	if (typeof(ilib.data.localeInfo[spec]) === 'undefined') {
+		this.info = ilib.mergeLocData("localeinfo", this.locale);
+		if (this.info) {
+			ilib.data.localeInfo[spec] = this.info;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		} else if (typeof(ilib._load) === 'function') {
+			// locale is not preassembled, so attempt to load it dynamically
+			var files = ilib.getLocFiles("locale", this.locale, "localeinfo");
+			
+			ilib._load(this, files, function(arr) {
+				this.info = {};
+				for (var i = 0; i < arr.length; i++) {
+					if (typeof(arr[i]) !== 'undefined') {
+						this.info = ilib.merge(this.info, arr[i]);
+					}
+				}
+				
+				ilib.data.localeInfo[spec] = this.info;
+				
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
+			});
+		} else {
+			// no data other than the generic shared data
+			this.info = ilib.data.localeinfo;
+			ilib.data.localeInfo[spec] = this.info;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		}
+	} else {
+		this.info = ilib.data.localeInfo[spec];
+		if (options && typeof(options.onLoad) === 'function') {
+			options.onLoad(this);
+		}
 	}
 };
 

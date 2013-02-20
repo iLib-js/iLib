@@ -207,6 +207,13 @@ timezone.js
  * <li><i>z</i> - general time zone
  * <li><i>Z</i> - RFC 822 time zone
  * </ul>
+ * 
+ * <li>onLoad - a callback function to call when the date format object is fully 
+ * loaded. When the onLoad option is given, the DateFmt object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * </ul>
  * 
  * Any substring containing letters within single or double quotes will be used 
@@ -242,7 +249,7 @@ timezone.js
  * @param {Object} options options governing the way this date formatter instance works
  */
 ilib.DateFmt = function(options) {
-	var arr, i, bad, res, formats, type;
+	var arr, i, bad, formats;
 	
 	this.locale = new ilib.Locale();
 	this.type = "date";
@@ -332,57 +339,187 @@ ilib.DateFmt = function(options) {
 		}
 	}
 	
-	this.locinfo = new ilib.LocaleInfo(this.locale);
+	new ilib.LocaleInfo(this.locale, {
+		onLoad: function (li) {
+			this.locinfo = li;
+			
+			// get the default calendar name from the locale, and if the locale doesn't define
+			// one, use the hard-coded gregorian as the last resort
+			this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
+			switch (this.calName) {
+				case 'julian':
+					this.cal = new ilib.Cal.Julian();
+					break;
+				default:
+					// just use the default Gregorian instead
+					this.cal = new ilib.Cal.Gregorian();
+					break;
+			}
+
+			if (this.timeComponents &&
+					(this.clock === '24' || 
+					(!this.clock && this.locinfo.getClock() === "24"))) {
+				// make sure we don't have am/pm in 24 hour mode unless the user specifically
+				// requested it in the time component option
+				this.timeComponents = this.timeComponents.replace("a", "");
+			}
+			
+			// load the strings used to translate the components
+			new ilib.ResBundle({
+				locale: this.locale,
+				name: "sysres",
+				onLoad: function (rb) {
+					this.sysres = rb;
+					if (!this.template) {
+						var spec = this.locale.getSpec().replace(/-/g, '_');
+						if (typeof(ilib.data.dateformatCache[spec]) !== 'undefined') {
+							formats = ilib.data.dateformatCache[spec];
+						} else {
+							formats = ilib.mergeLocData("dateformats", this.locale);
+							if (!formats) {
+								if (typeof(ilib._load) === 'function') {
+									var files = ilib.getLocFiles("locale", this.locale, "dateformats");
+									ilib._load(this, files, function(arr) {
+										formats = {};
+										for (var i = 0; i < arr.length; i++) {
+											if (typeof(arr[i]) !== 'undefined') {
+												formats = ilib.merge(formats, arr[i]);
+											}
+										}
+										this._initTemplate(formats);
+										this._massageTemplate();
+										if (options && typeof(options.onLoad) === 'function') {
+											options.onLoad(this);
+										}
+									});
+									return;
+								}
+								formats = ilib.data.dateformats;
+							}
+						}
+						this._initTemplate(formats);
+						ilib.data.dateformatCache[spec] = formats;
+					}
+					this._massageTemplate();
+					if (options && typeof(options.onLoad) === 'function') {
+						options.onLoad(this);
+					}
+				}.bind(this)
+			});	
+		}.bind(this)
+	});
+};
+
+// used in getLength
+ilib.DateFmt.lenmap = {
+	"s": "short",
+	"m": "medium",
+	"l": "long",
+	"f": "full"
+};
+
+ilib.DateFmt.zeros = "0000";
+
+ilib.DateFmt.prototype = {
+	/**
+	 * @protected
+	 */
+	_initTemplate: function (formats) {
+		if (formats[this.calName]) {
+			/** 
+			 * @private
+			 * @type {{order:(string|{s:string,m:string,l:string,f:string}),date:Object.<string, (string|{s:string,m:string,l:string,f:string})>,time:Object.<string,(string|{s:string,m:string,l:string,f:string})>,range:Object.<string, (string|{s:string,m:string,l:string,f:string})>}}
+			 */
+			this.formats = formats[this.calName];
+			if (typeof(this.formats) === "string") {
+				// alias to another calendar type
+				this.formats = formats[this.formats];
+			}
+			
+			this.template = "";
+			
+			switch (this.type) {
+				case "datetime":
+					this.template = (this.formats && this._getLengthFormat(this.formats.order, this.length)) || "{date} {time}";
+					this.template = this.template.replace("{date}", this._getFormat(this.formats.date, this.dateComponents, this.length));
+					this.template = this.template.replace("{time}", this._getFormat(this.formats.time, this.timeComponents, this.length));
+					break;
+				case "date":
+					this.template = this._getFormat(this.formats.date, this.dateComponents, this.length);
+					break;
+				case "time":
+					this.template = this._getFormat(this.formats.time, this.timeComponents, this.length);
+					break;
+			}
+		} else {
+			throw "No formats available for calendar " + this.calName + " in locale " + this.locale.toString();
+		}
+	},
 	
-	// get the default calendar name from the locale, and if the locale doesn't define
-	// one, use the hard-coded gregorian as the last resort
-	this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
-	switch (this.calName) {
-		case 'julian':
-			this.cal = new ilib.Cal.Julian();
-			break;
-		default:
-			// just use the default Gregorian instead
-			this.cal = new ilib.Cal.Gregorian();
-			break;
-	}
-
 	/**
 	 * @protected
-	 * @param {(string|{s:string,m:string,l:string,f:string})} obj Object to search
-	 * @param {string} length Length of the requested format
-	 * @returns {(string|undefined)} the requested format
 	 */
-	this._getLengthFormat = function getLengthFormat(obj, length) {
-		if (typeof(obj) === 'string') {
-			return obj;
-		} else if (obj[length]) {
-			return obj[length];
+	_massageTemplate: function () {
+		var i;
+		
+		if (this.clock && this.template) {
+			// explicitly set the hours to the requested type
+			var temp = "";
+			switch (this.clock) {
+				case "24":
+					for (i = 0; i < this.template.length; i++) {
+						if (this.template.charAt(i) == "'") {
+							temp += this.template.charAt(i++);
+							while (i < this.template.length && this.template.charAt(i) !== "'") {
+								temp += this.template.charAt(i++);
+							}
+							if (i < this.template.length) {
+								temp += this.template.charAt(i);
+							}
+						} else if (this.template.charAt(i) == 'K') {
+							temp += 'k';
+						} else if (this.template.charAt(i) == 'h') {
+							temp += 'H';
+						} else {
+							temp += this.template.charAt(i);
+						}
+					}
+					this.template = temp;
+					break;
+				case "12":
+					for (i = 0; i < this.template.length; i++) {
+						if (this.template.charAt(i) == "'") {
+							temp += this.template.charAt(i++);
+							while (i < this.template.length && this.template.charAt(i) !== "'") {
+								temp += this.template.charAt(i++);
+							}
+							if (i < this.template.length) {
+								temp += this.template.charAt(i);
+							}
+						} else if (this.template.charAt(i) == 'k') {
+							temp += 'K';
+						} else if (this.template.charAt(i) == 'H') {
+							temp += 'h';
+						} else {
+							temp += this.template.charAt(i);
+						}
+					}
+					this.template = temp;
+					break;
+			}
 		}
-		return undefined;
-	};
-
-	/**
-	 * @protected
-	 * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
-	 * @param {string} components Format components to search
-	 * @param {string} length Length of the requested format
-	 * @returns {string|undefined} the requested format
-	 */
-	this._getFormat = function getFormat(obj, components, length) {
-		if (typeof(components) !== 'undefined' && obj[components]) {
-			return this._getLengthFormat(obj[components], length);
-		}
-		return undefined;
-	};
-
+		
+		// tokenize it now for easy formatting
+		this.templateArr = this._tokenize(this.template);
+	},
+    
 	/**
 	 * @protected
 	 * Convert the template into an array of date components separated by formatting chars.
 	 * @param {string} template Format template to tokenize into components
 	 * @returns {Array.<string>} a tokenized array of date format components
 	 */
-	this._tokenize = function (template) {
+	_tokenize: function (template) {
 		var i = 0, start, ch, letter, arr = [];
 		
 		// console.log("_tokenize: tokenizing template " + template);
@@ -417,121 +554,37 @@ ilib.DateFmt = function(options) {
 			}
 		}
 		return arr;
-	};
-
-	if (this.timeComponents &&
-			(this.clock === '24' || 
-			(!this.clock && this.locinfo.getClock() === "24"))) {
-		// make sure we don't have am/pm in 24 hour mode unless the user specifically
-		// requested it in the time component option
-		this.timeComponents = this.timeComponents.replace("a", "");
-	}
-
-	if (!this.template) {
-		res = new ilib.ResBundle({
-			locale: this.locale,
-			name: "dateformats"
-		});
-		
-		formats = res.getResObj();
-		if (formats[this.calName]) {
-			/** 
-			 * @private
-			 * @type {{order:(string|{s:string,m:string,l:string,f:string}),date:Object.<string, (string|{s:string,m:string,l:string,f:string})>,time:Object.<string,(string|{s:string,m:string,l:string,f:string})>,range:Object.<string, (string|{s:string,m:string,l:string,f:string})>}}
-			 */
-			this.formats = formats[this.calName];
-			if (typeof(this.formats) === "string") {
-				// alias to another calendar type
-				this.formats = res.getResObj()[this.formats];
-			}
-			
-			this.template = "";
-			
-			switch (this.type) {
-				case "datetime":
-					this.template = (this.formats && this._getLengthFormat(this.formats.order, this.length)) || "{date} {time}";
-					this.template = this.template.replace("{date}", this._getFormat(this.formats.date, this.dateComponents, this.length));
-					this.template = this.template.replace("{time}", this._getFormat(this.formats.time, this.timeComponents, this.length));
-					break;
-				case "date":
-					this.template = this._getFormat(this.formats.date, this.dateComponents, this.length);
-					break;
-				case "time":
-					this.template = this._getFormat(this.formats.time, this.timeComponents, this.length);
-					break;
-			}
-		} else {
-			throw "No formats available for calendar " + this.calName + " in locale " + this.locale.toString();
+	},
+                          
+	/**
+	 * @protected
+	 * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
+	 * @param {string} components Format components to search
+	 * @param {string} length Length of the requested format
+	 * @returns {string|undefined} the requested format
+	 */
+	_getFormat: function getFormat(obj, components, length) {
+		if (typeof(components) !== 'undefined' && obj[components]) {
+			return this._getLengthFormat(obj[components], length);
 		}
-	}
-	if (this.clock && this.template) {
-		// explicitly set the hours to the requested type
-		var temp = "";
-		switch (this.clock) {
-			case "24":
-				for (i = 0; i < this.template.length; i++) {
-					if (this.template.charAt(i) == "'") {
-						temp += this.template.charAt(i++);
-						while (i < this.template.length && this.template.charAt(i) !== "'") {
-							temp += this.template.charAt(i++);
-						}
-						if (i < this.template.length) {
-							temp += this.template.charAt(i);
-						}
-					} else if (this.template.charAt(i) == 'K') {
-						temp += 'k';
-					} else if (this.template.charAt(i) == 'h') {
-						temp += 'H';
-					} else {
-						temp += this.template.charAt(i);
-					}
-				}
-				this.template = temp;
-				break;
-			case "12":
-				for (i = 0; i < this.template.length; i++) {
-					if (this.template.charAt(i) == "'") {
-						temp += this.template.charAt(i++);
-						while (i < this.template.length && this.template.charAt(i) !== "'") {
-							temp += this.template.charAt(i++);
-						}
-						if (i < this.template.length) {
-							temp += this.template.charAt(i);
-						}
-					} else if (this.template.charAt(i) == 'k') {
-						temp += 'K';
-					} else if (this.template.charAt(i) == 'H') {
-						temp += 'h';
-					} else {
-						temp += this.template.charAt(i);
-					}
-				}
-				this.template = temp;
-				break;
+		return undefined;
+	},
+
+	/**
+	 * @protected
+	 * @param {(string|{s:string,m:string,l:string,f:string})} obj Object to search
+	 * @param {string} length Length of the requested format
+	 * @returns {(string|undefined)} the requested format
+	 */
+	_getLengthFormat: function getLengthFormat(obj, length) {
+		if (typeof(obj) === 'string') {
+			return obj;
+		} else if (obj[length]) {
+			return obj[length];
 		}
-	}
-	
-	// tokenize it now for easy formatting
-	this.templateArr = this._tokenize(this.template);
-	
-	// load the strings used to translate the components
-	this.sysres = new ilib.ResBundle({
-		locale: this.locale,
-		name: "sysres"
-	});	
-};
+		return undefined;
+	},
 
-// used in getLength
-ilib.DateFmt.lenmap = {
-	"s": "short",
-	"m": "medium",
-	"l": "long",
-	"f": "full"
-};
-
-ilib.DateFmt.zeros = "0000";
-
-ilib.DateFmt.prototype = {
 	/**
 	 * Return the locale used with this formatter instance.
 	 * @returns {ilib.Locale} the ilib.Locale instance for this formatter

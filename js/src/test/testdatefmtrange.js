@@ -160,3 +160,179 @@ function testDateRngFmtGetTimeZone() {
     var tz = fmt.getTimeZone();
     assertEquals("Europe/Paris", tz.getId());
 }
+
+function testDateRngFmtGetDefaultLocale() {
+    var fmt = new ilib.DateRngFmt({locale: "zz-ZZ"});
+    assertNotNull(fmt);
+    
+    assertEquals("zz-ZZ", fmt.getLocale().toString());
+}
+
+function testDateRngFmtGetDefaultFormat() {
+	ilib.data.dateformatCache = {};
+	ilib.data.localeInfo = {};
+	var fmt = new ilib.DateRngFmt({locale: "zz-ZZ"});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.GregDate({
+    	year: 2013,
+    	month: 2,
+    	day: 20,
+    	hour: 12,
+    	minute: 20,
+    	second: 0
+    });
+    
+    var end = new ilib.Date.GregDate({
+    	year: 2013,
+    	month: 2,
+    	day: 20,
+    	hour: 16,
+    	minute: 35,
+    	second: 0
+    });
+    
+    assertEquals("12:20 - 16:35 20/2/13", fmt.format(start, end));
+}
+
+
+function mockLoader(context, paths, callback) {
+	var data = [];
+	
+	if (paths[0].indexOf("localeinfo") !== -1) {
+		data.push(ilib.data.localeinfo); // for the generic, shared stuff
+		data.push(ilib.data.localeinfo_en);
+		data.push(ilib.data.localeinfo_en_US);
+	} else {
+		data.push(ilib.data.dateformats); // for the generic, shared stuff
+		data.push(ilib.data.dateformats_en);
+		data.push(ilib.data.dateformats_en_US);
+	}
+
+	if (typeof(callback) === 'undefined') {
+		return data;
+	}
+	callback.call(context, data);
+}
+
+function testDateRngFmtDynamicLoadSync() {
+	ilib.data.dateformatCache = {};
+	ilib.data.localeInfo = {};
+	ilib.setLoaderCallback(mockLoader);
+	
+    var fmt = new ilib.DateRngFmt({
+    	locale: "zz-ZZ"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.GregDate({
+    	year: 2013,
+    	month: 2,
+    	day: 20,
+    	hour: 12,
+    	minute: 20,
+    	second: 0
+    });
+    
+    var end = new ilib.Date.GregDate({
+    	year: 2013,
+    	month: 2,
+    	day: 20,
+    	hour: 16,
+    	minute: 35,
+    	second: 0
+    });
+    
+    assertEquals("12:20pm - 4:35pm 2/20/13", fmt.format(start, end));
+}
+
+function testDateRngFmtDynamicLoadSyncCached() {
+	ilib.setLoaderCallback(mockLoader);
+	
+    var fmt = new ilib.DateRngFmt({
+    	locale: "zz-ZZ"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.GregDate({
+    	year: 2013,
+    	month: 2,
+    	day: 20,
+    	hour: 12,
+    	minute: 20,
+    	second: 0
+    });
+    
+    var end = new ilib.Date.GregDate({
+    	year: 2013,
+    	month: 2,
+    	day: 20,
+    	hour: 16,
+    	minute: 35,
+    	second: 0
+    });
+    
+    assertEquals("12:20pm - 4:35pm 2/20/13", fmt.format(start, end));
+}
+
+function testDateRngFmtDynamicLoadAsync() {
+	ilib.data.dateformatCache = {};
+	ilib.data.localeInfo = {};
+	ilib.setLoaderCallback(mockLoader);
+
+	var start = new ilib.Date.GregDate({
+    	year: 2013,
+    	month: 2,
+    	day: 20,
+    	hour: 12,
+    	minute: 20,
+    	second: 0
+    });
+    
+    var end = new ilib.Date.GregDate({
+    	year: 2013,
+    	month: 2,
+    	day: 20,
+    	hour: 16,
+    	minute: 35,
+    	second: 0
+    });
+	
+    new ilib.DateRngFmt({
+    	locale: "zz-ZZ",
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    assertEquals("12:20pm - 4:35pm 2/20/13", fmt.format(start, end));
+    	}
+    });
+}
+
+function testDateRngFmtDynamicLoadAsyncCached() {
+	ilib.setLoaderCallback(mockLoader);
+
+	var start = new ilib.Date.GregDate({
+    	year: 2013,
+    	month: 2,
+    	day: 20,
+    	hour: 12,
+    	minute: 20,
+    	second: 0
+    });
+    
+    var end = new ilib.Date.GregDate({
+    	year: 2013,
+    	month: 2,
+    	day: 20,
+    	hour: 16,
+    	minute: 35,
+    	second: 0
+    });
+	
+    new ilib.DateRngFmt({
+    	locale: "zz-ZZ",
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    assertEquals("12:20pm - 4:35pm 2/20/13", fmt.format(start, end));
+    	}
+    });
+}

@@ -907,3 +907,95 @@ function testTZGetRawOffsetMillisNonDSTZone() {
     
     assertEquals(-25200000, tz.getRawOffsetMillis());
 }
+
+
+function testTZGetTimeZoneForLocale() {
+    var tz = new ilib.TimeZone({locale: "nl-NL"});
+    assertNotNull(tz);
+    
+    assertEquals("Europe/Amsterdam", tz.getId());
+}
+
+function testTZGetTimeZoneForLocaleUnknown() {
+    var tz = new ilib.TimeZone({locale: "mm-MM"});
+    assertNotNull(tz);
+    
+    assertEquals("Etc/UTC", tz.getId());
+}
+
+function mockLoader (context, paths, callback) {
+	var data = [];
+	
+	data.push(ilib.data.localeinfo); // for the generic, shared stuff
+	paths.shift();
+	paths.forEach(function (path) {
+		data.push((path.indexOf('mm') === -1) ? undefined : {
+			"clock": "24",
+			"currencyFormats": {
+				"common": "common {s} {n}",
+				"iso": "iso {s} {n}"
+			},
+			"units": "metric",
+			"calendar": "hebrew",
+			"firstDayOfWeek": 4,
+			"currency": "JPY",
+			"timezone": "Asia/Tokyo",
+			"numfmt": {
+				"decimalChar": ".",
+				"groupChar": ",",
+				"groupSize": 4,
+				"pctFmt": "{n} %",
+				"pctChar": "%"
+			},
+			"locale": "xx-XX"
+		});
+	});
+	if (typeof(callback) === 'undefined') {
+		return data;
+	}
+	callback.call(context, data);
+}
+
+function testTZGetTimeZoneForLocaleUnknownWithLoader() {
+	ilib.setLoaderCallback(mockLoader);
+	ilib.data.localeInfo = {}; // clear the locale info cache
+    var tz = new ilib.TimeZone({locale: "mm-MM"});
+    assertNotNull(tz);
+    ilib.setLoaderCallback(undefined);
+    assertEquals("Asia/Tokyo", tz.getId());
+}
+
+function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
+	ilib.setLoaderCallback(mockLoader);
+	ilib.data.localeInfo = {}; // clear the locale info cache
+    var tz = new ilib.TimeZone({
+    	locale: "mm-MM",
+    	onLoad: function (tz) {
+    		assertNotNull(tz);
+    	    assertEquals("Asia/Tokyo", tz.getId());
+    	    ilib.setLoaderCallback(undefined);
+    	}
+    });
+}
+
+function testTZGetTimeZoneForLocaleWithLoaderNoData() {
+	ilib.setLoaderCallback(mockLoader);
+	ilib.data.localeInfo = {}; // clear the locale info cache
+    var tz = new ilib.TimeZone({locale: "zz-ZZ"});
+    assertNotNull(tz);
+    ilib.setLoaderCallback(undefined);
+    assertEquals("Etc/UTC", tz.getId());
+}
+
+function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
+	ilib.setLoaderCallback(mockLoader);
+	ilib.data.localeInfo = {}; // clear the locale info cache
+    var tz = new ilib.TimeZone({
+    	locale: "zz-ZZ",
+    	onLoad: function (tz) {
+    		assertNotNull(tz);
+    	    assertEquals("Etc/UTC", tz.getId());
+    	    ilib.setLoaderCallback(undefined);
+    	}
+    });
+}

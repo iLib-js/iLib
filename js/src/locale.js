@@ -21,9 +21,9 @@
 
 /**
  * @class
- * Create a new locale instance. Locales are specified either with a string 
- * with this syntax "language-region-variant" or with 3 parameters that specify
- * the language, region, and variant separately.<p>
+ * Create a new locale instance. Locales are specified either with a specifier string 
+ * that follows the BCP-47 convention (roughly: "language-region-script-variant") or 
+ * with 4 parameters that specify the language, region, variant, and script individually.<p>
  * 
  * The language is given as an ISO 639-1 two-letter, lower-case language code. You
  * can find a full list of these codes at 
@@ -35,6 +35,17 @@
  * 
  * The variant is any string that does not contain a dash which further differentiates
  * locales from each other.<p>
+ * 
+ * The script is given as the ISO 15924 four-letter script code. In some locales,
+ * text may be validly written in more than one script. For example, Serbian is often
+ * written in both Latin and Cyrillic, though not usually mixed together. You can find a
+ * full list of these codes at 
+ * <a href="http://en.wikipedia.org/wiki/ISO_15924#List_of_codes">http://en.wikipedia.org/wiki/ISO_15924#List_of_codes</a>.<p>
+ * 
+ * As an example in ilib, the script can be used in the date formatter. Dates formatted 
+ * in Serbian could have day-of-week names or month names written in the Latin
+ * or Cyrillic script. Often one script is default such that sr-SR-Latn is the same
+ * as sr-SR so the script code "Latn" can be left off of the locale spec.<p> 
  * 
  * Each part is optional, and an empty string in the specifier before or after a 
  * dash or as a parameter to the constructor denotes an unspecified value. In this
@@ -49,43 +60,167 @@
  * Depends directive: !depends locale.js
  * 
  * @constructor
- * @param {?string=} language the ISO 639 name of the language
- * @param {string=} region the ISO 3166 name of the region
+ * @param {?string=} language the ISO 639 2-letter code for the language, or a full 
+ * locale spec in BCP-47 format
+ * @param {string=} region the ISO 3166 2-letter code for the region
  * @param {string=} variant the name of the variant of this locale, if any
+ * @param {string=} script the ISO 15924 code of the script for this locale, if any
  */
-ilib.Locale = function(language, region, variant) {
-	this.variant = undefined;
+ilib.Locale = function(language, region, variant, script) {
 	if (typeof(region) === 'undefined') {
-		var spec = language || ilib.getLocale();
-		this.spec = spec;
-		var parts = spec.split('-');
-		if (parts.length > 0) {
-			this.language = parts[0].toLowerCase();
-		}
-		if (parts.length > 1) {
-			this.region = parts[1].toUpperCase();
-		}
-		if (parts.length > 2) {
-			this.variant = parts[2];
-		}
+		this.spec = language || ilib.getLocale();
+		var parts = this.spec.split('-');
+        for ( var i = 0; i < parts.length; i++ ) {
+        	if (ilib.Locale._isLanguageCode(parts[i])) {
+    			/** 
+    			 * @private
+    			 * @type {string|undefined}
+    			 */
+        		this.language = parts[i];
+        	} else if (ilib.Locale._isRegionCode(parts[i])) {
+    			/** 
+    			 * @private
+    			 * @type {string|undefined}
+    			 */
+        		this.region = parts[i];
+        	} else if (ilib.Locale._isScriptCode(parts[i])) {
+    			/** 
+    			 * @private
+    			 * @type {string|undefined}
+    			 */
+        		this.script = parts[i];
+        	} else {
+    			/** 
+    			 * @private
+    			 * @type {string|undefined}
+    			 */
+        		this.variant = parts[i];
+        	}
+        }
+        this.language = this.language || undefined;
+        this.region = this.region || undefined;
+        this.script = this.script || undefined;
+        this.variant = this.variant || undefined;
 	} else {
 		this.language = language.toLowerCase();
 		this.region = region.toUpperCase();
 		this.variant = variant;
+		this.script = script;
+
+		this.spec = this.language || "";
 		
-		this.spec = this.language;
 		if (this.region) {
-			this.spec += "-" + this.region;
-			if (this.variant) {
-				this.spec += "-" + this.variant;
+			if (this.spec.length > 0) {
+				this.spec += "-";
 			}
-		} else if (this.variant) {
-			this.spec += "--" + this.variant;
+			this.spec += region;
+		}
+		
+		if (this.script) {
+			if (this.spec.length > 0) {
+				this.spec += "-";
+			}
+			this.spec += "-" + this.script;
+		}
+		
+		if (this.variant) {
+			if (this.spec.length > 0) {
+				this.spec += "-";
+			}
+			this.spec += "-" + this.variant;
+		}
+	}
+};
+
+/**
+ * @private
+ * Tell whether or not the str does not start with a lower case ASCII char.
+ * @param {string} str the char to check
+ * @returns {boolean} true if the char is not a lower case ASCII char
+ */
+ilib.Locale._notLower = function(str) {
+	// do this with ASCII only so we don't have to depend on the CType functions
+	var ch = str.charCodeAt(0);
+	return ch < 97 || ch > 122;
+};
+
+/**
+ * @private
+ * Tell whether or not the str does not start with an upper case ASCII char.
+ * @param {string} str the char to check
+ * @returns {boolean} true if the char is a not an upper case ASCII char
+ */
+ilib.Locale._notUpper = function(str) {
+	// do this with ASCII only so we don't have to depend on the CType functions
+	var ch = str.charCodeAt(0);
+	return ch < 65 || ch > 90;
+};
+
+/**
+ * @private
+ * Tell whether or not the given string has the correct syntax to be 
+ * an ISO 639 language code.
+ * 
+ * @param {string} str the string to parse
+ * @returns {boolean} true if the string could syntactically be a language code.
+ */
+ilib.Locale._isLanguageCode = function(str) {
+	if (str.length < 2 || str.length > 3) {
+		return false;
+	}
+
+	for (var i = 0; i < str.length; i++) {
+		if (ilib.Locale._notLower(str.charAt(i))) {
+			return false;
 		}
 	}
 	
-	this.language = this.language || "";
-	this.region = this.region || "";
+	return true;
+};
+
+/**
+ * @private
+ * Tell whether or not the given string has the correct syntax to be 
+ * an ISO 639 language code.
+ * 
+ * @param {string} str the string to parse
+ * @returns {boolean} true if the string could syntactically be a language code.
+ */
+ilib.Locale._isRegionCode = function (str) {
+	if (str.length != 2) {
+		return false;
+	}
+	
+	for (var i = 0; i < str.length; i++) {
+		if (ilib.Locale._notUpper(str.charAt(i))) {
+			return false;
+		}
+	}
+	
+	return true;
+};
+
+/**
+ * @private
+ * Tell whether or not the given string has the correct syntax to be 
+ * an ISO 639 language code.
+ * 
+ * @param {string} str the string to parse
+ * @returns {boolean} true if the string could syntactically be a language code.
+ */
+ilib.Locale._isScriptCode = function(str)
+{
+	if (str.length != 4 || ilib.Locale._notUpper(str.charAt(0))) {
+		return false;
+	}
+	
+	for (var i = 1; i < 4; i++) {
+		if (ilib.Locale._notLower(str.charAt(i))) {
+			return false;
+		}
+	}
+	
+	return true;
 };
 
 ilib.Locale.prototype = {
@@ -103,6 +238,14 @@ ilib.Locale.prototype = {
 	 */
 	getRegion: function() {
 		return this.region;
+	},
+	
+	/**
+	 * Return the ISO 15924 script code for this locale
+	 * @returns {string|undefined} the script code of this locale
+	 */
+	getScript: function () {
+		return this.script;
 	},
 	
 	/**
@@ -136,9 +279,10 @@ ilib.Locale.prototype = {
 	 * @returns {boolean} whether or not the other locale is equal to the current one 
 	 */
 	equals: function(other) {
-		return this.variant === other.variant &&
+		return this.language === other.language &&
 			this.region === other.region &&
-			this.language === other.language;
+			this.script === other.script &&
+			this.variant === other.variant;
 	},
 
 	/**

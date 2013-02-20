@@ -57,6 +57,15 @@ public class JSFile
         macroPatterns.add(Pattern.compile("\\/\\/\\s*!macro\\s*(\\S*)"));
     }
     
+    /**
+     * Find a javascript file somewhere on the include path.
+     * 
+     * @param includePath list of directories to search
+     * @param fileName relative path to the javascript file
+     * @param allFiles cache of all files already processed
+     * @return a JSFile instance
+     * @throws Exception if the file cannot be found
+     */
     protected AssemblyFile find(ArrayList<File> includePath, String fileName, HashMap<String, AssemblyFile> allFiles)
         throws Exception
     {
@@ -82,11 +91,19 @@ public class JSFile
         return jsf;
     }
 
-    protected void locate(ArrayList<File> includePath, String baseName, String fileName, HashMap<String, AssemblyFile> allFiles)
+    /**
+     * Locate a json file somewhere on the include path.
+     * 
+     * @param includePath list of directories to search
+     * @param baseName the base name of the json file without the locale spec attached
+     * @param fileName relative path to the javascript file
+     * @param allFiles cache of all files already processed
+     */
+    protected JSONFile locate(ArrayList<File> includePath, String baseName, String fileName, HashMap<String, AssemblyFile> allFiles)
     {
         int i = 0;
         File newFile = new File(includePath.get(i), fileName);
-        JSONFile json;
+        JSONFile json = null;
         
         while ( !newFile.canRead() && i < includePath.size() ) {
             logger.debug("Checking path " + newFile.getPath());
@@ -104,45 +121,74 @@ public class JSFile
         	dependencies.add(json);
             json.addParent(this);
         }
+        
+        return json;
     }
     
-    /*
-     * work around the stupidity in the JDK
+    /**
+     * Find all json files for a particular locale with the given baseName.
+     * 
+     * @param includePath
+     * @param baseName
+     * @param locale
+     * @param allFiles
+     * @throws Exception
      */
-    protected String getLanguage(IlibLocale locale)
-    {
-        String l = locale.getLanguage();
-        if (l.equals("iw")) {
-            l = "he";
-        } else if (l.equals("ji")) {
-            l = "yi";
-        } else if (l.equals("in")) {
-            l = "id";
-        }
-        return l;
-    }
-    
-    protected void findAllForIlibLocale(ArrayList<File> includePath, String baseName, IlibLocale locale, HashMap<String, AssemblyFile> allFiles)
+    protected void findAllForLocale(ArrayList<File> includePath, String baseName, IlibLocale locale, HashMap<String, AssemblyFile> allFiles)
         throws Exception
     {
     	String baseFileName = baseName + ".json";
-		String fileName;
+    	StringBuilder localeDir = new StringBuilder();
+    	String fileName;
 		
-		locate(includePath, baseName, baseFileName, allFiles);
-        fileName = getLanguage(locale) + "/" + baseFileName;
-		locate(includePath, baseName+"_"+getLanguage(locale), fileName, allFiles);
-        fileName = getLanguage(locale) + "/" + locale.getRegion() + "/" + baseFileName;
-		locate(includePath, baseName+"_"+getLanguage(locale)+"_"+locale.getRegion(), fileName, allFiles);
-        fileName = getLanguage(locale) + "/" + locale.getRegion() + "/" + locale.getVariant() + "/" + baseFileName;
-		locate(includePath, baseName+"_"+getLanguage(locale)+"_"+locale.getRegion()+"_"+locale.getVariant(), fileName, allFiles);
+		if ( locale.getLanguage() != null ) {
+			localeDir.append(locale.getLanguage());
+			fileName = localeDir + "/" + baseFileName;
+			locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+
+			if ( locale.getRegion() != null ) {
+				localeDir.append("/");
+				localeDir.append(locale.getRegion());
+		        fileName = localeDir + "/" + baseFileName;
+		        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+			
+				if ( locale.getScript() != null ) {
+					localeDir.append("/");
+					localeDir.append(locale.getScript());
+			        fileName = localeDir + "/" + baseFileName;
+			        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+			        
+					if ( locale.getVariant() != null ) {
+						localeDir.append("/");
+						localeDir.append(locale.getVariant());
+				        fileName = localeDir + "/" + baseFileName;
+				        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+					}
+				}
+			}
+		}
     }
     
+    /**
+     * Find all json files for a given basename across all locales. This method always finds
+     * the generic shared json, even if the locale list is empty, so that there is always a
+     * default if a particular ilib function does not have locale data or if the copy of ilib
+     * is used with dynamic loading instead of preassembled data.
+     * 
+     * @param includePath
+     * @param locales
+     * @param baseName
+     * @param allFiles
+     * @throws Exception
+     */
     protected void findAll(ArrayList<File> includePath, ArrayList<IlibLocale> locales, String baseName, HashMap<String, AssemblyFile> allFiles)
     		throws Exception
     {
-        if ( locales != null ) {
+    	locate(includePath, baseName, baseName + ".json", allFiles);
+		
+		if ( locales != null ) {
         	for ( int i = 0; i < locales.size(); i++ ) {
-        		findAllForIlibLocale(includePath, baseName, locales.get(i), allFiles);
+        		findAllForLocale(includePath, baseName, locales.get(i), allFiles);
         	}
         }
     }

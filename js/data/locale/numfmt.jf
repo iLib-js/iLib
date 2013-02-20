@@ -3,5 +3,6 @@
 		"groupChar": ".",
 		"groupSize": 3,
 		"pctFmt": "{n}%",
-		"pctChar": "%"
+		"pctChar": "%",
+		"roundingMode": "halfdown"
 	},

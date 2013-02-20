@@ -342,7 +342,7 @@ limitations under the License.
                     windowtitle="ILib Core Library">
 
 			<doctitle><![CDATA[<h1>ILib Java Core Library.</h1>]]></doctitle>
-			<bottom><![CDATA[<i>Copyright &#169; 2011 Cottage Industries, Inc. All Rights Reserved.</i>]]></bottom>
+			<bottom><![CDATA[<i>Copyright &#169; 2013 JEDLSoft. All Rights Reserved.</i>]]></bottom>
 			<link href="http://java.sun.com/j2se/1.4/docs/api/"/>
 		</javadoc>
 	</target>

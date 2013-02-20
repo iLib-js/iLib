@@ -48,8 +48,15 @@ calendar/gregoriandate.js
  * determine the offsets from UTC. 
  * 
  * <li><i>locale</i> - The locale for this time zone.
+ * 
  * <li><i>offset</i> - Choose the time zone based on the offset from UTC given in
- * number of minutes (negative is west, positive is east). 
+ * number of minutes (negative is west, positive is east).
+ * 
+ * <li><i>onLoad</i> - a callback function to call when the data is fully 
+ * loaded. When the onLoad option is given, this class will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the data is loaded, the onLoad function is called with the current 
+ * instance as a parameter. 
  * </ul>
  * 
  * There is currently no way in the ECMAscript
@@ -103,8 +110,6 @@ calendar/gregoriandate.js
  * @param {Object} options Options guiding the construction of this time zone instance
  */
 ilib.TimeZone = function(options) {
-	var arr, i, bad, res, formats, type, zones;
-	
 	this.locale = new ilib.Locale();
 	this.isLocal = false;
 	
@@ -142,30 +147,36 @@ ilib.TimeZone = function(options) {
 	//console.log("timezone: locale is " + this.locale);
 	
 	if (!this.id) {
-		this.locinfo = new ilib.LocaleInfo(this.locale);
-		this.id = this.locinfo.getTimeZone();
+		var li = new ilib.LocaleInfo(this.locale, {
+			onLoad: function (li) {
+				this.id = li.getTimeZone() || "Etc/UTC";
+				this._inittz();
+				
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
+			}.bind(this)
+		});
+	} else {
+		this._inittz();
+		if (options && typeof(options.onLoad) === 'function') {
+			options.onLoad(this);
+		}
 	}
 
 	//console.log("localeinfo is: " + JSON.stringify(this.locinfo));
 	//console.log("id is: " + JSON.stringify(this.id));
-	
-	if (!ilib.TimeZone.zones) {
-		res = new ilib.ResBundle({
-			locale: this.locale,
-			name: "timezones"
-		});
+};
 
-		ilib.TimeZone.zones = res.getResObj();
-	}
-	
+ilib.TimeZone.prototype._inittz = function () {
 	/** 
 	 * @private
 	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>}} 
 	 */
-	this.zone = ilib.TimeZone.zones[this.id];
+	this.zone = ilib.data.timezones[this.id];
 	if (!this.zone && !this.offset) {
 		this.id = "Etc/UTC";
-		this.zone = ilib.TimeZone.zones[this.id];
+		this.zone = ilib.data.timezones[this.id];
 	}
 };
 
@@ -174,20 +185,12 @@ ilib.TimeZone = function(options) {
  * @returns {Array.<string>} an array of zone id strings
  */
 ilib.TimeZone.getAvailableIds = function () {
-	var res, tz, ids = [];
-	
-	if (!ilib.TimeZone.zones) {
-		res = new ilib.ResBundle({
-			name: "timezones"
-		});
-
-		ilib.TimeZone.zones = res.getResObj();
-	}
+	var tz, ids = [];
 	
 	// special zone meaning "the local time zone according to the JS engine we are running upon"
 	ids.push("local"); 
 	
-	for (tz in ilib.TimeZone.zones) {
+	for (tz in ilib.data.timezones) {
 		if (tz) {
 			ids.push(tz);
 		}
@@ -594,7 +597,7 @@ ilib.TimeZone.prototype._calcOffset = function () {
  * otherwise.
  */
 ilib.TimeZone.prototype.inDaylightTime = function (date) {
-	var year, rd, startRd, endRd;
+	var rd, startRd, endRd;
 	
 	// if we aren't using daylight time in this zone, then where are never in daylight
 	// time, no matter what the date is

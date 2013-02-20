@@ -63,7 +63,7 @@ function testDateFmtGetCalendarExplicitDefault() {
 
 function testDateFmtGetCalendarNotInThisLocale() {
 	try {
-    	var fmt = new ilib.DateFmt({calendar: "arabic", locale: 'en-US'});
+    	new ilib.DateFmt({calendar: "arabic", locale: 'en-US'});
     	fail();
 	} catch (str) {
         assertEquals("string", typeof(str));
@@ -353,15 +353,14 @@ function testDateFmtUseTemplateWithClockHHSkipEscapedStrings12() {
     assertEquals("'HH' hh:mm", fmt.getTemplate());
 };
 
-/*
-Still have to figure out how best to support time zones
 function testDateFmtUseTemplateNonEmptyTimeZone() {
     var fmt = new ilib.DateFmt({timezone: 'Europe/Paris', template: "EEE 'the' DD 'of' MM, yyyy G"});
     assertNotNull(fmt);
     
-    assertEquals("Europe/Paris", fmt.getTimeZone());
+    var tz = fmt.getTimeZone();
+    assertNotUndefined(tz);
+    assertEquals("Europe/Paris", tz.getId());
 };
-*/
 
 function testDateFmtGetTemplateCalendar() {
     var fmt = new ilib.DateFmt({calendar: "julian"});
@@ -1963,4 +1962,94 @@ function testDateFmttrDA() {
 	});
     
     assertEquals("torsdag den 20. oktober 2011 13.45", fmt.format(date));
+};
+
+function testDateFmtGetDefault() {
+    var fmt = new ilib.DateFmt({locale: "zz-ZZ"});
+    assertNotNull(fmt);
+    
+    assertEquals("zz-ZZ", fmt.getLocale().toString());
+    assertEquals("gregorian", fmt.getCalendar());
+    assertEquals("d/M/yy", fmt.getTemplate());
+};
+
+function mockLoader(context, paths, callback) {
+	var data = [];
+	
+	if (paths[0].indexOf("localeinfo") !== -1) {
+		data.push(ilib.data.localeinfo); // for the generic, shared stuff
+		data.push(ilib.data.localeinfo_de);
+	} else {
+		data.push(ilib.data.dateformats); // for the generic, shared stuff
+		data.push(ilib.data.dateformats_de);
+	}
+
+	if (typeof(callback) === 'undefined') {
+		return data;
+	}
+	callback.call(context, data);
+}
+
+function testDateFmtLoadLocaleDataSynch() {
+	ilib.data.dateformatCache = {};
+	ilib.setLoaderCallback(mockLoader);
+
+	var fmt = new ilib.DateFmt({locale: "zz-ZZ"});
+    assertNotNull(fmt);
+    
+    assertEquals("zz-ZZ", fmt.getLocale().toString());
+    assertEquals("gregorian", fmt.getCalendar());
+    assertEquals("dd.MM.yy", fmt.getTemplate());
+};
+
+function testDateFmtLoadLocaleDataSynchCached() {
+	ilib.setLoaderCallback(mockLoader);
+
+	var fmt = new ilib.DateFmt({locale: "zz-ZZ"});
+    assertNotNull(fmt);
+    
+    assertEquals("zz-ZZ", fmt.getLocale().toString());
+    assertEquals("gregorian", fmt.getCalendar());
+    assertEquals("dd.MM.yy", fmt.getTemplate());
+};
+
+function testDateFmtLoadLocaleDataAsynch() {
+	ilib.data.dateformatCache = {};
+	ilib.setLoaderCallback(mockLoader);
+	var callbackCalled = false;
+	
+	new ilib.DateFmt({
+		locale: "zz-ZZ",
+		onLoad: function (fmt) {
+		    assertNotNull(fmt);
+		    
+		    assertEquals("zz-ZZ", fmt.getLocale().toString());
+		    assertEquals("gregorian", fmt.getCalendar());
+		    assertEquals("dd.MM.yy", fmt.getTemplate());
+		    
+		    callbackCalled = true;
+		}
+	});
+	
+	assertTrue(callbackCalled);
+};
+
+function testDateFmtLoadLocaleDataAsynchCached() {
+	ilib.setLoaderCallback(mockLoader);
+	var callbackCalled = false;
+	
+	new ilib.DateFmt({
+		locale: "zz-ZZ",
+		onLoad: function (fmt) {
+		    assertNotNull(fmt);
+		    
+		    assertEquals("zz-ZZ", fmt.getLocale().toString());
+		    assertEquals("gregorian", fmt.getCalendar());
+		    assertEquals("dd.MM.yy", fmt.getTemplate());
+		    
+		    callbackCalled = true;
+		}
+	});
+	
+	assertTrue(callbackCalled);
 };

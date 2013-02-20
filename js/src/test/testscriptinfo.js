@@ -71,3 +71,13 @@ function testScriptGetUnknown() {
     assertEquals(undefined, si.getName());
     assertEquals(undefined, si.getLongCode());
 }
+
+function testScriptGetAllScripts() {
+    var scripts = new ilib.ScriptInfo.getAllScripts();
+    assertNotNull(scripts);
+    
+    assertEquals("Afak", scripts[0]);
+    assertEquals("Aghb", scripts[1]);
+    assertEquals("Arab", scripts[2]);
+    assertEquals("Zzzz", scripts[scripts.length-1]);
+}

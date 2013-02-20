@@ -124,7 +124,7 @@ ilib.mod = function (dividend, modulus) {
  * @returns {Object} the merged object
  */
 ilib.merge = function (object1, object2, name1, name2) {
-	var prop,
+	var prop = undefined,
 		newObj = {};
 	for (prop in object1) {
 		if (prop && typeof(object1[prop]) !== 'undefined') {
@@ -152,6 +152,98 @@ ilib.merge = function (object1, object2, name1, name2) {
 };
 
 /**
+ * Find and merge all the locale data for a particular prefix in the given locale
+ * and return it as a single javascript object. This merges the data in the 
+ * correct order:
+ * 
+ * <ol>
+ * <li>shared data (usually English)
+ * <li>data for language
+ * <li>data for language + region
+ * <li>data for language + region + script
+ * <li>data for language + region + script + variant
+ * </ol>
+ * 
+ * It is okay for any of the above to be missing. This function will just skip the 
+ * missing data. However, if everything except the shared data is missing, this 
+ * function returns undefined, allowing the caller to go and dynamically load the
+ * data instead.
+ *  
+ * @param {string} prefix prefix under ilib.data of the data to merge
+ * @param {ilib.Locale} locale locale of the data being sought
+ * @returns {Object|undefined} the merged locale data
+ */
+ilib.mergeLocData = function (prefix, locale) {
+	var data = undefined;
+	var loc = locale || new ilib.Locale();
+	var foundLocaleData = false;
+	var property = prefix;
+	data = ilib.data[prefix] || {};
+	if (loc.getLanguage()) {
+		property = prefix + '_' + loc.getLanguage();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+	if (loc.getRegion()) {
+		property += '_' + loc.getRegion();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+	if (loc.getScript()) {
+		property += '_' + loc.getScript();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+	if (loc.getVariant()) {
+		property += '_' + loc.getVariant();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+	return foundLocaleData ? data : undefined;
+};
+
+/**
+ * Return an array of relative path names for the json
+ * files that represent the data for the given locale.
+ * @param {string} prefix the prefix dir for all the path names
+ * @param {ilib.Locale} locale load the json files for this locale
+ * @param {string} basename the base name of each json file to load
+ * @returns {Array.<string>} An array of relative path names
+ * for the json files that contain the locale data
+ */
+ilib.getLocFiles = function(prefix, locale, basename) {
+	var dir = (prefix && prefix.length > 0) ? prefix + "/" : "";
+	var files = [];
+	var filename = basename || "resources";
+	var loc = locale || new ilib.Locale();
+	files.push(dir + filename + ".json");
+	dir += loc.getLanguage() + "/";
+	files.push(dir + filename + ".json");
+	if (loc.getRegion()) {
+		dir += loc.getRegion() + "/";
+		files.push(dir + filename + ".json");
+		if (loc.getScript()) {
+			dir += loc.getScript() + "/";
+			files.push(dir + filename + ".json");
+			if (loc.getVariant()) {
+				dir += loc.getVariant() + "/";
+				files.push(dir + filename + ".json");
+			}
+		}
+	}
+	
+	return files;
+};
+
+/**
  * Return true if the given object has no properties.<p>
  * 
  * Depends directive: !depends utils.js
@@ -160,7 +252,7 @@ ilib.merge = function (object1, object2, name1, name2) {
  * @returns {boolean} true if the given object has no properties, false otherwise
  */
 ilib.isEmpty = function (obj) {
-	var prop;
+	var prop = undefined;
 	
 	if (!obj) {
 		return true;
@@ -186,7 +278,7 @@ ilib.isEmpty = function (obj) {
  * @param {Object} target the target object to copy properties into
  */
 ilib.shallowCopy = function (source, target) {
-	var prop;
+	var prop = undefined;
 	if (source && target) {
 		for (prop in source) {
 			if (prop !== undefined && source[prop]) {

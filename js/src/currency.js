@@ -87,10 +87,7 @@ ilib.Currency = function (options) {
 	this.locale = this.locale || new ilib.Locale();
 	li = new ilib.LocaleInfo(this.locale);
 		
-	currencies = new ilib.ResBundle({
-		locale: this.locale,
-		name: "currency"
-	}).getResObj();
+	currencies = ilib.data.currency;
 
 	if (this.code) {
 		currInfo = currencies[this.code];

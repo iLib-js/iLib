@@ -2,4 +2,4 @@
 	"calendar": "gregorian",
 	"firstDayOfWeek": 0,
 	"currency": "USD",
-	"timezone": "Europe/London",
+	"timezone": "Etc/UTC",

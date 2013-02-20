@@ -19,3 +19,4 @@
 
 function console(str){};
 function JSON(str){};
+console.log = function (str){};

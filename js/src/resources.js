@@ -46,6 +46,12 @@
  * <li><i>lengthen</i> - when pseudo-translating the string, tell whether or not to 
  * automatically lengthen the string to simulate "long" languages such as German
  * or French. This is a boolean value. Default is false. 
+ * <li>onLoad - a callback function to call when the resources are fully 
+ * loaded. When the onLoad option is given, this class will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * </ul>
  * 
  * The locale option may be given as a locale spec string or as an 
@@ -144,7 +150,7 @@
  * @param {?Object} options Options controlling how the bundle is created
  */
 ilib.ResBundle = function (options) {
-	var name, lookupLocale;
+	var lookupLocale, spec;
 	
 	this.locale = new ilib.Locale();	// use the default locale
 	this.baseName = "resources";
@@ -167,35 +173,54 @@ ilib.ResBundle = function (options) {
 	
 	this.map = {};
 
-	lookupLocale = this.locale.isPseudo() ? new ilib.Locale(ilib.getLocale()) : this.locale;
+	lookupLocale = this.locale.isPseudo() ? new ilib.Locale() : this.locale;
+	spec = lookupLocale.getSpec().replace(/-/g, '_');
 	
-	name = this.baseName;
-	if (ilib.data[name]) {
-		this.map = ilib.merge(this.map, ilib.data[name]);
+	if (typeof(ilib.data.resourceCache[this.baseName]) === 'undefined') {
+		ilib.data.resourceCache[this.baseName] = {};
 	}
-	if (lookupLocale.getLanguage()) {
-		name += "_" + lookupLocale.getLanguage();
-		if (ilib.data[name]) {
-			this.map = ilib.merge(this.map, ilib.data[name], this.baseName, name);
+	
+	if (typeof(ilib.data.resourceCache[this.baseName][spec]) !== 'undefined') {
+		this.map = ilib.data.resourceCache[this.baseName][spec];
+		if (options && typeof(options.onLoad) === 'function') {
+			options.onLoad(this);
 		}
-		if (lookupLocale.getRegion()) {
-			name += "_" + lookupLocale.getRegion();		
-			if (ilib.data[name]) {
-				this.map = ilib.merge(this.map, ilib.data[name], this.baseName + "_" + this.locale.getLanguage(), name);
+	} else {
+		this.map = ilib.mergeLocData(this.baseName, lookupLocale);
+		if (this.map) {
+			ilib.data.resourceCache[this.baseName][spec] = this.map;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
 			}
-			if (lookupLocale.getVariant()) {
-				name += "_" + lookupLocale.getVariant();
-				if (ilib.data[name]) {
-					this.map = ilib.merge(this.map, ilib.data[name], this.baseName + "_" + this.locale.getLanguage() + "_" + this.locale.getRegion(), name);
+		} else if (typeof(ilib._load) === 'function') {
+			// locale is not preassembled, so attempt to load it dynamically
+			var files = ilib.getLocFiles("resources", this.locale, "strings");
+			
+			ilib._load(this, files, function(arr) {
+				this.map = {};
+				for (var i = 0; i < arr.length; i++) {
+					if (typeof(arr[i]) !== 'undefined') {
+						this.map = ilib.merge(this.map, arr[i]);
+					}
 				}
+				ilib.data.resourceCache[this.baseName][spec] = this.map;
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
+			});
+		} else {
+			this.map = ilib.data[this.baseName] || {};
+			ilib.data.resourceCache[this.baseName][spec] = this.map;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
 			}
 		}
-	}
+	}	
 	
 	// console.log("Merged resources " + this.locale.toString() + " are: " + JSON.stringify(this.map));
-	if (!this.locale.isPseudo() && ilib.isEmpty(this.map)) {
-		console.log("Resources for bundle " + this.baseName + " locale " + this.locale.toString() + " are not available.");
-	}
+	//if (!this.locale.isPseudo() && ilib.isEmpty(this.map)) {
+	//	console.log("Resources for bundle " + this.baseName + " locale " + this.locale.toString() + " are not available.");
+	//}
 };
 
 /**

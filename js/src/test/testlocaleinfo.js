@@ -163,7 +163,7 @@ function testLocaleInfoGetTimeZoneDefault() {
     var info = new ilib.LocaleInfo("zz-ZZ");    
     assertNotNull(info);
 
-    assertEquals("Europe/London", info.getTimeZone());
+    assertEquals("Etc/UTC", info.getTimeZone());
 }
 
 function testLocaleInfoGetCurrency() {
@@ -290,4 +290,131 @@ function testLocaleInfoGetPercentageSymbol2() {
     assertNotNull(info);
 
     assertEquals("%", info.getPercentageSymbol());
+}
+
+function mockLoader(context, paths, callback) {
+	var data = [];
+	
+	data.push(ilib.data.localeinfo); // for the generic, shared stuff
+	paths.shift();
+	paths.forEach(function (path) {
+		data.push((path.indexOf('mm') === -1) ? undefined : {
+			"clock": "24",
+			"currencyFormats": {
+				"common": "common {s} {n}",
+				"iso": "iso {s} {n}"
+			},
+			"units": "metric",
+			"calendar": "hebrew",
+			"firstDayOfWeek": 4,
+			"currency": "JPY",
+			"timezone": "Asia/Tokyo",
+			"numfmt": {
+				"decimalChar": ".",
+				"groupChar": ",",
+				"groupSize": 4,
+				"pctFmt": "{n} %",
+				"pctChar": "%"
+			},
+			"locale": "xx-XX"
+		});
+	});
+	if (typeof(callback) === 'undefined') {
+		return data;
+	}
+	callback.call(context, data);
+};
+
+function testLocaleInfoLoadMissingDataAsynch() {
+	var callbackCalled = false;
+	ilib.setLoaderCallback(mockLoader);
+	ilib.data.localeInfo = {}; // empty the cache
+    var info = new ilib.LocaleInfo("mm-MM", {
+    	onLoad: function (li) {
+    	    assertNotNull(li);
+
+    	    assertEquals("iso {s} {n}", li.getCurrencyFormats().iso);
+    	    assertEquals(4, li.getFirstDayOfWeek());
+    	    assertEquals("%", li.getPercentageSymbol());
+    	    callbackCalled = true;
+    	}
+    });
+    assertNotNull(info);
+    assertTrue(callbackCalled);
+}
+
+function testLocaleInfoLoadMissingDataSync() {
+	ilib.data.localeInfo = {}; // empty the cache
+	ilib.setLoaderCallback(undefined);
+    var info = new ilib.LocaleInfo("mm-MM");
+    assertNotNull(info);
+
+    assertEquals("iso {s} {n}", info.getCurrencyFormats().iso);
+    assertEquals(4, info.getFirstDayOfWeek());
+    assertEquals("%", info.getPercentageSymbol());
+}
+
+function testLocaleInfoLoadMissingDataAsynchNoData() {
+	var callbackCalled = false;
+	ilib.data.localeInfo = {}; // empty the cache
+	ilib.setLoaderCallback(mockLoader);
+    var info = new ilib.LocaleInfo("qq-QQ", {
+    	onLoad: function (li) {
+    	    assertNotUndefined(li);
+    	    callbackCalled = true;
+    	    // should return the shared data only
+    	    assertEquals("{s} {n}", li.getCurrencyFormats().iso);
+    	    assertEquals(0, li.getFirstDayOfWeek());
+    	    assertEquals("%", li.getPercentageSymbol());
+    	}
+    });
+    assertNotNull(info);
+    assertTrue(callbackCalled);
+}
+
+function testLocaleInfoLoadMissingDataSyncNoData() {
+	ilib.data.localeInfo = {}; // empty the cache
+    var li = new ilib.LocaleInfo("qq-QQ");
+    ilib.setLoaderCallback(undefined);
+    assertNotUndefined(li);
+    // should return the shared data only
+    assertEquals("{s} {n}", li.getCurrencyFormats().iso);
+    assertEquals(0, li.getFirstDayOfWeek());
+    assertEquals("%", li.getPercentageSymbol());
+}
+
+function testLocaleInfoLoadPreassembledDataAsynch() {
+	var callbackCalled = false;
+	ilib.data.localeInfo = {}; // empty the cache
+	ilib.setLoaderCallback(mockLoader);
+    var info = new ilib.LocaleInfo("fr-FR", {
+    	onLoad: function (li) {
+    	    assertNotUndefined(li);
+    	    callbackCalled = true;
+    	    // should return the shared data only
+    	    assertEquals("EUR", li.getCurrency());
+    	    assertEquals(1, li.getFirstDayOfWeek());
+    	    assertEquals("fr-FR", li.info.locale);
+    	    assertEquals("Europe/Paris", li.getTimeZone());
+    	}
+    });
+    assertNotNull(info);
+    assertTrue(callbackCalled);
+}
+
+// locale with no script
+ilib.data.localeinfo_fr_FR_overseas = {
+  "currency": "USD",
+  "locale": "fr-FR-overseas",
+  "timezone": "Pacific/Tahiti"
+};
+
+function testLocaleInfoLoadMissingLocaleParts() {
+	ilib.data.localeInfo = {}; // empty the cache
+	var li = new ilib.LocaleInfo("fr-FR-overseas");
+    assertNotUndefined(li);
+    assertEquals("USD", li.getCurrency());
+    assertEquals(1, li.getFirstDayOfWeek());
+    assertEquals("fr-FR-overseas", li.info.locale);
+    assertEquals("Pacific/Tahiti", li.getTimeZone());
 }

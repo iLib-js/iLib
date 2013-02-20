@@ -18,8 +18,7 @@
  */
 
 function setCalendarValues(cal) {
-	var i, 
-		calendarList = ilib.Cal.getCalendars(),
+	var calendarList = ilib.Cal.getCalendars(),
 		calName = $("#calendarName");
 	
 	calName.empty();
@@ -33,8 +32,7 @@ function setCalendarValues(cal) {
 };
 
 function setTimeZoneValues(element, tz) {
-	var tzs = ilib.TimeZone.getAvailableIds(),
-		i;
+	var tzs = ilib.TimeZone.getAvailableIds();
 
 	tzs.sort();
 	
@@ -101,7 +99,7 @@ function setDayValues(element, day, month, year) {
 		date = cal.newDateInstance();
 	
 	element.empty();
-	for (i = 1; i <= days; i++) {
+	for (var i = 1; i <= days; i++) {
 		date.day = i;
 		element.append($("<option></option>").attr({
 			"value": i,
@@ -153,10 +151,22 @@ function setMinutesSecondsValues(minuteElement, secondElement, minute, second) {
 	}
 };
 
+function setScriptValues(element) {
+	var scripts = ilib.ScriptInfo.getAllScripts(),
+		info,
+		i;
+	
+	element.empty();
+	for (i = 0; i < scripts.length; i++) {
+		info = new ilib.ScriptInfo(scripts[i]);
+		element.append($("<option></option>").attr({
+			"value": scripts[i]
+		}).text(info.getName()));
+	}
+};
+
 function setupCalendarPicker() {
-	var i, 
-		calendarList = ilib.Cal.getCalendars(),
-		calName = $("#calendarName"),
+	var calName = $("#calendarName"),
 		yearElement = $('#year'),
 		monthElement = $('#month'),
 		dayElement = $('#day'),
@@ -165,7 +175,6 @@ function setupCalendarPicker() {
 		secondElement = $('#second'),
 		cal,
 		locale = $('#localeControl').val() || "en",
-		li = new ilib.LocaleInfo(locale),
 		today,
 		year,
 		tzElement = $("#timezone");
@@ -246,26 +255,21 @@ function setupCalendarPicker() {
 };
 
 function setupRangePicker(startname, endname) {
-	var i, 
-		calendarList = ilib.Cal.getCalendars(),
-		calName = $("#calendarName"),
+	var calName = $("#calendarName"),
 		startYearElement = $('#syear'),
 		startMonthElement = $('#smonth'),
 		startDayElement = $('#sday'),
 		startHourElement = $('#shour'),
 		startMinuteElement = $('#sminute'),
 		startSecondElement = $('#ssecond'),
-		startTimeZoneElement = $('#stimezone'),
 		endYearElement = $('#eyear'),
 		endMonthElement = $('#emonth'),
 		endDayElement = $('#eday'),
 		endHourElement = $('#ehour'),
 		endMinuteElement = $('#eminute'),
 		endSecondElement = $('#esecond'),
-		endTimeZoneElement = $('#etimezone'),
 		cal,
 		locale = $('#localeControl').val() || "en",
-		li = new ilib.LocaleInfo(locale),
 		today;
 	
 	$('#startname').text(startname);
@@ -426,9 +430,7 @@ function setupCurrencyValues(element) {
 };
 
 function setupNumPicker() {
-	var i,
-		typeElement = $("input[name=numFmtType]"),
-		style = $("#numStyle"),
+	var style = $("#numStyle"),
 		stylePicker = $("#numStylePicker"),
 		currency = $("#currencyPicker"),
 		locale = $('#localeControl').val() || "en",
@@ -476,9 +478,6 @@ function setupNumPicker() {
 };
 
 function setupCurrencyPicker() {
-	var i,
-		currency = $("#currencyPicker");
-	
 	$('#localeControl').change(function () {
 		setupCurrencyValues($('#currency'));
 	});
@@ -489,8 +488,7 @@ function setupCurrencyPicker() {
 };
 
 function setupCalendarInfoPicker() {
-	var i,
-		yearElement = $('#year'),
+	var yearElement = $('#year'),
 		monthElement = $('#month'),
 		calName = $('#calendarName'),
 		cal;
@@ -517,7 +515,7 @@ function setupCalendarInfoPicker() {
 			locale: locale
 		});
 		
-		var today = cal.newDateInstance()
+		var today = cal.newDateInstance();
 
 		yearElement.val(today.year);
 		setMonthValues(monthElement, today.month, today.year);
@@ -536,6 +534,14 @@ function setupCalendarInfoPicker() {
 	$('#calendarPane').show();
 };
 
+function setupScriptInfoPicker() {
+	var scriptElement = $('#script');
+	
+	setScriptValues(scriptElement);
+
+	$('#scriptPicker').show();
+};
+
 function hideAllPickers() {
 	$('#calendarPane').hide();
 	$('#lengthPane').hide();
@@ -551,4 +557,5 @@ function hideAllPickers() {
 	$('#sampleTextPicker').hide();
 	$('#numFmtPicker').hide();
 	$('#currencyPicker').hide();
+	$('#scriptPicker').hide();
 };

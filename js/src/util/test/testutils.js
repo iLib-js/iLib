@@ -174,8 +174,9 @@ function testMergeSimpleNoSideEffects() {
     var object1 = {"a": "A", "b": "B"},
         object2 = {"c": "C", "d": "D"};
     
-    var x = ilib.merge(object1, object1);
+    var x = ilib.merge(object1, object2);
     
+    assertNotUndefined(x);
     assertObjectEquals({"a": "A", "b": "B"}, object1);
 }
 
@@ -439,4 +440,277 @@ function testSignumBoolean() {
 
 function testSignumFunction() {
     assertEquals(1, ilib.signum(function () { return -4; }));
+}
+
+function testMergeLocData() {
+	ilib.data.foobar = {
+		a: "b",
+		c: "d"
+	};
+	ilib.data.foobar_de = {
+		a: "e"
+	};
+	ilib.data.foobar_de_DE = {
+   		c: "f"
+   	};
+	ilib.data.foobar_de_DE_Latn = {
+		g: "h"
+	};
+	ilib.data.foobar_de_DE_Latn_SAP = {
+   		g: "i"
+   	};
+
+	var locale = new ilib.Locale("de-DE-Latn-SAP");
+	var m = ilib.mergeLocData("foobar", locale);
+	assertEquals("e", m.a);
+	assertEquals("f", m.c);
+	assertEquals("i", m.g);
+}
+
+function testMergeLocDataNonLeafLocale() {
+	ilib.data.foobar = {
+		a: "b",
+		c: "d"
+	};
+	ilib.data.foobar_de = {
+		a: "e"
+	};
+	ilib.data.foobar_de_DE = {
+   		c: "f"
+   	};
+	ilib.data.foobar_de_DE_Latn = {
+		g: "h"
+	};
+	ilib.data.foobar_de_DE_Latn_SAP = {
+   		g: "i"
+   	};
+
+	var locale = new ilib.Locale("de-DE");
+	var m = ilib.mergeLocData("foobar", locale);
+	assertEquals("e", m.a);
+	assertEquals("f", m.c);
+	assertUndefined(m.g);
+}
+
+function testMergeLocDataMissingData() {
+	ilib.data.foobar = {
+		a: "b",
+		c: "d"
+	};
+	ilib.data.foobar_de = {
+		a: "e"
+	};
+	ilib.data.foobar_de_DE = {
+   		c: "f"
+   	};
+	ilib.data.foobar_de_DE_Latn = {
+		g: "h"
+	};
+	ilib.data.foobar_de_DE_Latn_SAP = {
+   		g: "i"
+   	};
+
+	var locale = new ilib.Locale("de-DE-Latn-SAP");
+	var m = ilib.mergeLocData("asdf", locale);
+	assertUndefined(m);
+}
+
+function testMergeLocDataNoName() {
+	ilib.data.foobar = {
+		a: "b",
+		c: "d"
+	};
+	ilib.data.foobar_de = {
+		a: "e"
+	};
+	ilib.data.foobar_de_DE = {
+   		c: "f"
+   	};
+	ilib.data.foobar_de_DE_Latn = {
+		g: "h"
+	};
+	ilib.data.foobar_de_DE_Latn_SAP = {
+   		g: "i"
+   	};
+
+	var locale = new ilib.Locale("de-DE-Latn-SAP");
+	var m = ilib.mergeLocData(undefined, locale);
+	assertUndefined(m);
+}
+
+function testMergeLocDataNoLocale() {
+	ilib.data.foobar = {
+		a: "b",
+		c: "d"
+	};
+	ilib.data.foobar_en = {
+		a: "e"
+	};
+	ilib.data.foobar_en_US = {
+   		c: "f"
+   	};
+	ilib.data.foobar_en_US_Latn = {
+		g: "h"
+	};
+	ilib.data.foobar_en_US_Latn_SAP = {
+   		g: "i"
+   	};
+
+	var m = ilib.mergeLocData("foobar"); // use the current locale -- en-US
+	assertTrue(typeof(m) !== 'undefined');
+	
+	assertEquals("e", m.a);
+	assertEquals("f", m.c);
+	assertUndefined(m.g);
+}
+
+function testMergeLocDataNoSideEffects() {
+	ilib.data.foobar = {
+		a: "b",
+		c: "d"
+	};
+	ilib.data.foobar_de = {
+		a: "e"
+	};
+	ilib.data.foobar_de_DE = {
+   		c: "f"
+   	};
+	ilib.data.foobar_de_DE_Latn = {
+		g: "h"
+	};
+	ilib.data.foobar_de_DE_Latn_SAP = {
+   		g: "i"
+   	};
+
+	var locale = new ilib.Locale("de-DE-Latn-SAP");
+	var m = ilib.mergeLocData("foobar", locale);
+	assertNotUndefined(m);
+	assertEquals("b", ilib.data.foobar.a);
+	assertEquals("d", ilib.data.foobar.c);
+	assertUndefined(ilib.data.foobar.g);
+}
+
+function testMergeLocDataNoBase() {
+	ilib.data.asdf_de = {
+		a: "e"
+	};
+	ilib.data.asdf_de_DE = {
+   		c: "f"
+   	};
+	ilib.data.asdf_de_DE_Latn = {
+		g: "h"
+	};
+	ilib.data.asdf_de_DE_Latn_SAP = {
+   		g: "i"
+   	};
+
+	var locale = new ilib.Locale("de-DE-Latn-SAP");
+	var m = ilib.mergeLocData("asdf", locale);
+	assertEquals("e", m.a);
+	assertEquals("f", m.c);
+	assertEquals("i", m.g);
+}
+
+function testMergeLocDataMissingLocaleParts() {
+	ilib.data.foobar = {
+		a: "b",
+		c: "d"
+	};
+	ilib.data.foobar_de = {
+		a: "e"
+	};
+	ilib.data.foobar_de_SAP = {
+   		g: "i"
+   	};
+
+	var locale = new ilib.Locale("de-SAP");
+	var m = ilib.mergeLocData("foobar", locale);
+	assertEquals("e", m.a);
+	assertEquals("d", m.c);
+	assertEquals("i", m.g);
+}
+
+function testgetLocFiles() {
+	var locale = new ilib.Locale("en-US-Latn-govt");
+	var f = ilib.getLocFiles("locale", locale, "localeinfo");
+	var expected = [
+		"locale/localeinfo.json",
+		"locale/en/localeinfo.json",
+		"locale/en/US/localeinfo.json",
+		"locale/en/US/Latn/localeinfo.json",
+		"locale/en/US/Latn/govt/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesNoPrefix() {
+	var locale = new ilib.Locale("en-US-Latn-govt");
+	var f = ilib.getLocFiles("", locale, "localeinfo");
+	var expected = [
+		"localeinfo.json",
+		"en/localeinfo.json",
+		"en/US/localeinfo.json",
+		"en/US/Latn/localeinfo.json",
+		"en/US/Latn/govt/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesUndefinedPrefix() {
+	var locale = new ilib.Locale("en-US-Latn-govt");
+	var f = ilib.getLocFiles(undefined, locale, "localeinfo");
+	var expected = [
+		"localeinfo.json",
+		"en/localeinfo.json",
+		"en/US/localeinfo.json",
+		"en/US/Latn/localeinfo.json",
+		"en/US/Latn/govt/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesNoBasename() {
+	var locale = new ilib.Locale("en-US-Latn-govt");
+	var f = ilib.getLocFiles("locale", locale, undefined);
+	var expected = [
+		"locale/resources.json",
+		"locale/en/resources.json",
+		"locale/en/US/resources.json",
+		"locale/en/US/Latn/resources.json",
+		"locale/en/US/Latn/govt/resources.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesShortLocale() {
+	var locale = new ilib.Locale("en-US");
+	var f = ilib.getLocFiles("locale", locale, "localeinfo");
+	var expected = [
+		"locale/localeinfo.json",
+		"locale/en/localeinfo.json",
+		"locale/en/US/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesDefaultLocale() {
+	var f = ilib.getLocFiles("locale", undefined, "localeinfo");
+	var expected = [
+		"locale/localeinfo.json",
+		"locale/en/localeinfo.json",
+		"locale/en/US/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
 }

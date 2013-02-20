@@ -121,7 +121,7 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<target name="testiliball" description="test whether or not the iliball single file needs to be rebuilt">
 		<uptodate property="core.iliball.not.needed" targetfile="${build.src}/iliball-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-ut.js,ilib-ut-compiled.js,iliball.js,iliball-compiled.js" />
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-ut.js,ilib-ut-compiled.js,iliball.js,iliball-compiled.js,ilib-dyn.js,ilib-dyn-compiled.js" />
 			<srcfiles dir="${build.locale}" includes="**/*.json" excludes="iliball.js" />
 		</uptodate>
 	</target>
@@ -217,7 +217,33 @@ limitations under the License.
 		</jscomp>
 	</target>
 
-	<target name="export" depends="assemble,doc" description="Create all objects and export them to the top level dir for packaging">
+	<target name="testilibdyn" description="test whether or not the ilib-dyn file needs to be rebuilt">
+		<uptodate property="ilib-dyn.not.needed" targetfile="${build.src}/ilib-dyn-compiled.js">
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js"/>
+			<srcfiles dir="${build.locale}" includes="**/*.json"/>
+		</uptodate>
+	</target>
+
+	<target name="assemble.dyn" depends="prepare,geninfo,testiliball" unless="ilib-dyn.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
+		<runassemble 
+			tgtfilename="ilib-dyn.js" 
+			srcfilename="ilib.js" 
+			locales=""/>
+		<jscomp compilationlevel="simple" 
+			warning="verbose" 
+			debug="true"
+			output="${build.src}/ilib-dyn-compiled.js"
+			description="Use the google closure compiler to compress code">
+			<externs dir="${build.src}">
+				<file name="externs.js"/>
+			</externs>
+			<sources dir="${build.src}">
+				<file name="ilib-dyn.js"/>
+			</sources>
+		</jscomp>
+	</target>
+
+	<target name="export" depends="assemble,assemble.dyn,doc" description="Create all objects and export them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js"/>
 		<copy todir="${build.export}/js">
 			<fileset dir="${build.src}">
@@ -266,7 +292,7 @@ limitations under the License.
 		</tar>
 	</target>
 	
-	<target name="dist" depends="assemble,doc" description="Distribute all built objects in preparation for running">
+	<target name="dist" depends="assemble,assemble.dyn,doc" description="Distribute all built objects in preparation for running">
 		<zip destfile="${build.dist}/ilib-${version}.zip"
 			basedir="${build.src}"
 			includes="iliball.js,iliball-compiled.js"/>

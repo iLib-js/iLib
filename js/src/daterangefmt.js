@@ -89,6 +89,12 @@ datefmt.js
  * 
  * If this property is not specified, the default is to use the most widely used convention
  * for the locale.
+ * <li>onLoad - a callback function to call when the date range format object is fully 
+ * loaded. When the onLoad option is given, the DateRngFmt object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * </ul>
  * <p>
  * 
@@ -98,8 +104,6 @@ datefmt.js
  * @param {Object} options options governing the way this date range formatter instance works
  */
 ilib.DateRngFmt = function(options) {
-	var arr, i, bad, res, formats, type;
-	
 	this.locale = new ilib.Locale();
 	this.length = "s";
 	
@@ -119,26 +123,37 @@ ilib.DateRngFmt = function(options) {
 		}
 	}
 	
-	this.locinfo = new ilib.LocaleInfo(this.locale);
-	
-	// get the default calendar name from the locale, and if the locale doesn't define
-	// one, use the hard-coded gregorian as the last resort
-	this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
-	switch (this.calName) {
-		case 'julian':
-			this.cal = new ilib.Cal.Julian();
-			break;
-		default:
-			// just use the default Gregorian instead
-			this.cal = new ilib.Cal.Gregorian();
-			break;
-	}
+	var opts = {};
+	ilib.shallowCopy(options, opts);
+	opts.onLoad = function (fmt) {
+		this.dateFmt = fmt;
+		if (fmt) {
+			this.locinfo = this.dateFmt.locinfo;
+
+			// get the default calendar name from the locale, and if the locale doesn't define
+			// one, use the hard-coded gregorian as the last resort
+			this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
+			switch (this.calName) {
+				case 'julian':
+					this.cal = new ilib.Cal.Julian();
+					break;
+				default:
+					// just use the default Gregorian instead
+					this.cal = new ilib.Cal.Gregorian();
+					break;
+			}
+			
+			this.timeTemplate = this.dateFmt._getFormat(this.dateFmt.formats.time, this.dateFmt.timeComponents, this.length) || "hh:mm";
+			this.timeTemplateArr = this.dateFmt._tokenize(this.timeTemplate);
+			
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		}
+	}.bind(this);
 
 	// delegate a bunch of the formatting to this formatter
-	this.dateFmt = new ilib.DateFmt(options);
-	
-	this.timeTemplate = this.dateFmt._getFormat(this.dateFmt.formats.time, this.dateFmt.timeComponents, this.length) || "hh:mm";
-	this.timeTemplateArr = this.dateFmt._tokenize(this.timeTemplate);
+	new ilib.DateFmt(opts);
 };
 
 ilib.DateRngFmt.prototype = {

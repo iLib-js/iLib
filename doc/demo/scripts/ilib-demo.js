@@ -28,14 +28,24 @@ var ilib = ilib || {};
  * @returns {string} a version string for this instance of ilib
  */
 ilib.getVersion = function () {
-	// increment this for each release
-	return "1.2";
+    // increment this for each release
+    return "1.3";
 };
 
 /*
  * Place where resources and such are eventually assigned.
  */
-ilib.data = {};
+ilib.data = {
+    norm: {
+        nfc: {},
+        nfd: {},
+        nfkd: {},
+        ccc: {}
+    },
+    localeInfo: {},
+    resourceCache: {},
+    dateformatCache: {}
+};
 
 window["ilib"] = ilib;
 
@@ -51,7 +61,7 @@ window["ilib"] = ilib;
  * @param {string} spec the locale specifier for the default locale
  */
 ilib.setLocale = function (spec) {
-	ilib.locale = spec || ilib.locale;
+    ilib.locale = spec || ilib.locale;
 };
 
 /**
@@ -67,7 +77,7 @@ ilib.setLocale = function (spec) {
  * @returns {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
-	return ilib.locale || "en-US";
+    return ilib.locale || "en-US";
 };
 
 /**
@@ -75,14 +85,14 @@ ilib.getLocale = function () {
  * no explicit time zone is passed to any ilib class. If the default time zone
  * is not set, ilib will attempt to use the time zone of the
  * environment it is running in, if it can find that. If not, it will
- * default to the the UTC zone "Europe/London".<p>
+ * default to the the GMT zone "Europe/London".<p>
  * 
  * Depends directive: !depends ilibglobal.js
  * 
  * @param {string} tz the name of the time zone to set as the default time zone
  */
 ilib.setTimeZone = function (tz) {
-	ilib.tz = tz || ilib.tz;
+    ilib.tz = tz || ilib.tz;
 };
 
 /**
@@ -91,14 +101,95 @@ ilib.setTimeZone = function (tz) {
  * class. If the default time zone
  * is not set, ilib will attempt to use the locale of the
  * environment it is running in, if it can find that. If not, it will
- * default to the the UTC zone "Europe/London".<p>
+ * default to the the GMT zone "Europe/London".<p>
  * 
  * Depends directive: !depends ilibglobal.js
  * 
  * @returns {string} the default time zone for ilib
  */
 ilib.getTimeZone = function() {
-	return ilib.tz || "Europe/London";
+    return ilib.tz || "Europe/London";
+};
+
+/**
+ * Define a callback function for loading missing locale data or resources.
+ * If this copy of ilib is assembled without including the required locale data
+ * or resources, then that data can be lazy loaded dynamically when it is 
+ * needed by calling this callback function. Each ilib class will first
+ * check for the existence of data under ilib.data, and if it is not there, 
+ * it will attempt to load it by calling this loader function, and then place
+ * it there.<p>
+ * 
+ * Suggested implementations of the callback function might be to load files 
+ * directly from disk under nodejs or rhino, or within web pages, to load 
+ * files from the server with XHR calls.<p>
+ * 
+ * The first parameter to the callback
+ * function is an array of relative paths within the ilib dir structure for the 
+ * requested data. These paths will already have the locale spec integrated 
+ * into it, so no further tweaking needs to happen. The second parameter
+ * is a callback function to call when all of the data is finishing loading.<p>
+ * 
+ * The loader function must be able to operate either synchronously or asychronously. 
+ * If the loader function is called with an undefined callback function, it is
+ * expected to load the data synchronously, convert it to javascript
+ * objects, and return the array of json objects as the return value of the 
+ * function. If the loader 
+ * function is called with a callback function, it may load the data 
+ * synchronously or asynchronously (doesn't matter which) as long as it calls
+ * the callback function with the data converted to a javascript objects
+ * when it becomes available. If a particular file could not be loaded, the 
+ * loader function should put undefined into the corresponding entry in the
+ * results array. 
+ * Note that it is important that all the data is loaded before the callback
+ * is called.<p>
+ * 
+ * An example implementation for nodejs might be:
+ * 
+ * <pre>
+ * function loadFiles(context, paths, results, callback) {
+ *    if (paths.length > 0) {
+ *        var file = paths.shift();
+ *        fs.readFile(file, "utf-8", function(err, json) {
+ *            results.push(err ? undefined : JSON.parse(json));
+ *            if (paths.length > 0) {
+ *                loadFiles(context, paths, results, callback);
+ *            } else {
+ *                callback.call(context, results);
+ *            }
+ *        });
+ *     }
+ * }
+ * ilib.setLoaderCallback(function(context, paths, callback) {
+ *    if (typeof(callback) === 'undefined') {
+ *        var ret = [];
+ *        // synchronous
+ *        paths.forEach(function (path) {
+ *            var json = fs.readFileSync(path, "utf-8");
+ *            ret.push(json ? JSON.parse(json) : undefined);
+ *        });
+ *        
+ *        return ret;
+ *    }
+ *
+ *    // asynchronous
+ *    var results = [];
+ *    loadFiles(context, paths, results, callback);
+ * });
+ * </pre>
+ * 
+ * @param {function(Object,Array.<string>,function(Object))} loader function to call to 
+ * load the requested data.
+ * @returns {boolean} if the loader was installed correctly, or false
+ * if not
+ */
+ilib.setLoaderCallback = function(loader) {
+    // only a basic check
+    if (typeof(loader) !== 'function') {
+        return false;
+    }
+    ilib._load = loader;
+    return true;
 };
 
 /*
@@ -124,9 +215,9 @@ ilib.getTimeZone = function() {
 
 /**
  * @class
- * Create a new locale instance. Locales are specified either with a string 
- * with this syntax "language-region-variant" or with 3 parameters that specify
- * the language, region, and variant separately.<p>
+ * Create a new locale instance. Locales are specified either with a specifier string 
+ * that follows the BCP-47 convention (roughly: "language-region-script-variant") or 
+ * with 4 parameters that specify the language, region, variant, and script individually.<p>
  * 
  * The language is given as an ISO 639-1 two-letter, lower-case language code. You
  * can find a full list of these codes at 
@@ -138,6 +229,17 @@ ilib.getTimeZone = function() {
  * 
  * The variant is any string that does not contain a dash which further differentiates
  * locales from each other.<p>
+ * 
+ * The script is given as the ISO 15924 four-letter script code. In some locales,
+ * text may be validly written in more than one script. For example, Serbian is often
+ * written in both Latin and Cyrillic, though not usually mixed together. You can find a
+ * full list of these codes at 
+ * <a href="http://en.wikipedia.org/wiki/ISO_15924#List_of_codes">http://en.wikipedia.org/wiki/ISO_15924#List_of_codes</a>.<p>
+ * 
+ * As an example in ilib, the script can be used in the date formatter. Dates formatted 
+ * in Serbian could have day-of-week names or month names written in the Latin
+ * or Cyrillic script. Often one script is default such that sr-SR-Latn is the same
+ * as sr-SR so the script code "Latn" can be left off of the locale spec.<p> 
  * 
  * Each part is optional, and an empty string in the specifier before or after a 
  * dash or as a parameter to the constructor denotes an unspecified value. In this
@@ -152,43 +254,167 @@ ilib.getTimeZone = function() {
  * Depends directive: !depends locale.js
  * 
  * @constructor
- * @param {?string=} language the ISO 639 name of the language
- * @param {string=} region the ISO 3166 name of the region
+ * @param {?string=} language the ISO 639 2-letter code for the language, or a full 
+ * locale spec in BCP-47 format
+ * @param {string=} region the ISO 3166 2-letter code for the region
  * @param {string=} variant the name of the variant of this locale, if any
+ * @param {string=} script the ISO 15924 code of the script for this locale, if any
  */
-ilib.Locale = function(language, region, variant) {
-	this.variant = undefined;
+ilib.Locale = function(language, region, variant, script) {
 	if (typeof(region) === 'undefined') {
-		var spec = language || ilib.getLocale();
-		this.spec = spec;
-		var parts = spec.split('-');
-		if (parts.length > 0) {
-			this.language = parts[0].toLowerCase();
-		}
-		if (parts.length > 1) {
-			this.region = parts[1].toUpperCase();
-		}
-		if (parts.length > 2) {
-			this.variant = parts[2];
-		}
+		this.spec = language || ilib.getLocale();
+		var parts = this.spec.split('-');
+        for ( var i = 0; i < parts.length; i++ ) {
+        	if (ilib.Locale._isLanguageCode(parts[i])) {
+    			/** 
+    			 * @private
+    			 * @type {string|undefined}
+    			 */
+        		this.language = parts[i];
+        	} else if (ilib.Locale._isRegionCode(parts[i])) {
+    			/** 
+    			 * @private
+    			 * @type {string|undefined}
+    			 */
+        		this.region = parts[i];
+        	} else if (ilib.Locale._isScriptCode(parts[i])) {
+    			/** 
+    			 * @private
+    			 * @type {string|undefined}
+    			 */
+        		this.script = parts[i];
+        	} else {
+    			/** 
+    			 * @private
+    			 * @type {string|undefined}
+    			 */
+        		this.variant = parts[i];
+        	}
+        }
+        this.language = this.language || undefined;
+        this.region = this.region || undefined;
+        this.script = this.script || undefined;
+        this.variant = this.variant || undefined;
 	} else {
 		this.language = language.toLowerCase();
 		this.region = region.toUpperCase();
 		this.variant = variant;
+		this.script = script;
+
+		this.spec = this.language || "";
 		
-		this.spec = this.language;
 		if (this.region) {
-			this.spec += "-" + this.region;
-			if (this.variant) {
-				this.spec += "-" + this.variant;
+			if (this.spec.length > 0) {
+				this.spec += "-";
 			}
-		} else if (this.variant) {
-			this.spec += "--" + this.variant;
+			this.spec += region;
+		}
+		
+		if (this.script) {
+			if (this.spec.length > 0) {
+				this.spec += "-";
+			}
+			this.spec += "-" + this.script;
+		}
+		
+		if (this.variant) {
+			if (this.spec.length > 0) {
+				this.spec += "-";
+			}
+			this.spec += "-" + this.variant;
+		}
+	}
+};
+
+/**
+ * @private
+ * Tell whether or not the str does not start with a lower case ASCII char.
+ * @param {string} str the char to check
+ * @returns {boolean} true if the char is not a lower case ASCII char
+ */
+ilib.Locale._notLower = function(str) {
+	// do this with ASCII only so we don't have to depend on the CType functions
+	var ch = str.charCodeAt(0);
+	return ch < 97 || ch > 122;
+};
+
+/**
+ * @private
+ * Tell whether or not the str does not start with an upper case ASCII char.
+ * @param {string} str the char to check
+ * @returns {boolean} true if the char is a not an upper case ASCII char
+ */
+ilib.Locale._notUpper = function(str) {
+	// do this with ASCII only so we don't have to depend on the CType functions
+	var ch = str.charCodeAt(0);
+	return ch < 65 || ch > 90;
+};
+
+/**
+ * @private
+ * Tell whether or not the given string has the correct syntax to be 
+ * an ISO 639 language code.
+ * 
+ * @param {string} str the string to parse
+ * @returns {boolean} true if the string could syntactically be a language code.
+ */
+ilib.Locale._isLanguageCode = function(str) {
+	if (str.length < 2 || str.length > 3) {
+		return false;
+	}
+
+	for (var i = 0; i < str.length; i++) {
+		if (ilib.Locale._notLower(str.charAt(i))) {
+			return false;
 		}
 	}
 	
-	this.language = this.language || "";
-	this.region = this.region || "";
+	return true;
+};
+
+/**
+ * @private
+ * Tell whether or not the given string has the correct syntax to be 
+ * an ISO 639 language code.
+ * 
+ * @param {string} str the string to parse
+ * @returns {boolean} true if the string could syntactically be a language code.
+ */
+ilib.Locale._isRegionCode = function (str) {
+	if (str.length != 2) {
+		return false;
+	}
+	
+	for (var i = 0; i < str.length; i++) {
+		if (ilib.Locale._notUpper(str.charAt(i))) {
+			return false;
+		}
+	}
+	
+	return true;
+};
+
+/**
+ * @private
+ * Tell whether or not the given string has the correct syntax to be 
+ * an ISO 639 language code.
+ * 
+ * @param {string} str the string to parse
+ * @returns {boolean} true if the string could syntactically be a language code.
+ */
+ilib.Locale._isScriptCode = function(str)
+{
+	if (str.length != 4 || ilib.Locale._notUpper(str.charAt(0))) {
+		return false;
+	}
+	
+	for (var i = 1; i < 4; i++) {
+		if (ilib.Locale._notLower(str.charAt(i))) {
+			return false;
+		}
+	}
+	
+	return true;
 };
 
 ilib.Locale.prototype = {
@@ -206,6 +432,14 @@ ilib.Locale.prototype = {
 	 */
 	getRegion: function() {
 		return this.region;
+	},
+	
+	/**
+	 * Return the ISO 15924 script code for this locale
+	 * @returns {string|undefined} the script code of this locale
+	 */
+	getScript: function () {
+		return this.script;
 	},
 	
 	/**
@@ -239,9 +473,10 @@ ilib.Locale.prototype = {
 	 * @returns {boolean} whether or not the other locale is equal to the current one 
 	 */
 	equals: function(other) {
-		return this.variant === other.variant &&
+		return this.language === other.language &&
 			this.region === other.region &&
-			this.language === other.language;
+			this.script === other.script &&
+			this.variant === other.variant;
 	},
 
 	/**
@@ -454,303 +689,1134 @@ ilib.Date.prototype = {
 ilib.String = function (string) {
 	if (typeof(string) === 'object') {
 		this.str = string.str;
+	} else if (typeof(string) === 'string') {
+		this.str = new String(string);
 	} else {
-		this.str = string ? new String(string) : "";
+		this.str = "";
+	}
+	this.length = this.str.length;
+	this.cpLength = -1;
+};
+
+/**
+ * @private
+ * @static
+ * 
+ * Return true if the given character is a Unicode surrogate character,
+ * either high or low.
+ * 
+ * @param {string} ch character to check
+ * @returns {boolean} true if the character is a surrogate
+ */
+ilib.String._isSurrogate = function (ch) {
+	var n = ch.charCodeAt(0);
+	return ((n >= 0xDC00 && n <= 0xDFFF) || (n >= 0xD800 && n <= 0xDBFF));
+};
+
+/**
+ * @private
+ * @static
+ * 
+ * Return true if the given character is a leading Jamo (Choseong) character.
+ * 
+ * @param {number} n code point to check
+ * @returns {boolean} true if the character is a leading Jamo character, 
+ * false otherwise
+ */
+ilib.String._isJamoL = function (n) {
+	return (n >= 0x1100 && n <= 0x1112);
+};
+
+/**
+ * @private
+ * @static
+ * 
+ * Return true if the given character is a vowel Jamo (Jungseong) character.
+ * 
+ * @param {number} n code point to check
+ * @returns {boolean} true if the character is a vowel Jamo character, 
+ * false otherwise
+ */
+ilib.String._isJamoV = function (n) {
+	return (n >= 0x1161 && n <= 0x1175);
+};
+
+/**
+ * @private
+ * @static
+ * 
+ * Return true if the given character is a trailing Jamo (Jongseong) character.
+ * 
+ * @param {number} n code point to check
+ * @returns {boolean} true if the character is a trailing Jamo character, 
+ * false otherwise
+ */
+ilib.String._isJamoT = function (n) {
+	return (n >= 0x11A8 && n <= 0x11C2);
+};
+
+/**
+ * @private
+ * @static
+ * 
+ * Return true if the given character is a precomposed Hangul character.
+ * 
+ * @param {number} n code point to check
+ * @returns {boolean} true if the character is a precomposed Hangul character, 
+ * false otherwise
+ */
+ilib.String._isHangul = function (n) {
+	return (n >= 0xAC00 && n <= 0xD7A3);
+};
+
+/**
+ * @static
+ * Convert a UCS-4 code point to a Javascript string. The codepoint can be any valid 
+ * UCS-4 Unicode character, including supplementary characters. Standard Javascript
+ * only supports supplementary characters using the UTF-16 encoding, which has 
+ * values in the range 0x0000-0xFFFF. String.fromCharCode() will only
+ * give you a string containing 16-bit characters, and will not properly convert 
+ * the code point for a supplementary character (which has a value > 0xFFFF) into 
+ * two UTF-16 surrogate characters. Instead, it will just just give you whatever
+ * single character happens to be the same as your code point modulo 0x10000, which
+ * is almost never what you want.<p> 
+ * 
+ * Similarly, that means if you use String.charCodeAt()
+ * you will only retrieve a 16-bit value, which may possibly be a single
+ * surrogate character that is part of a surrogate pair representing a character
+ * in the supplementary plane. It will not give you a code point. Use 
+ * ilib.String.codePointAt() to access code points in a string, or use 
+ * an iterator to walk through the code points in a string. 
+ * 
+ * @param {number} codepoint UCS-4 code point to convert to a character
+ * @returns {string} a string containing the character represented by the codepoint
+ */
+ilib.String.fromCodePoint = function (codepoint) {
+	if (codepoint < 0x10000) {
+		return String.fromCharCode(codepoint);
+	} else {
+		var high = Math.floor(codepoint / 0x10000) - 1;
+		var low = codepoint & 0xFFFF;
+		
+		return String.fromCharCode(0xD800 | ((high & 0x000F) << 6) |  ((low & 0xFC00) >> 10)) +
+			String.fromCharCode(0xDC00 | (low & 0x3FF));
 	}
 };
 
-ilib.String.prototype.toString = function () {
-	return this.str.toString();
-};
-ilib.String.prototype.valueOf = function () {
-	return this.str.valueOf();
+/**
+ * @private
+ * @static
+ *
+ * Algorithmically decompose a precomposed Korean syllabic Hangul 
+ * character into its individual combining Jamo characters. The given 
+ * character must be in the range of Hangul characters U+AC00 to U+D7A3.
+ * 
+ * @param {number} cp code point of a Korean Hangul character to decompose
+ * @returns {string} the decomposed string of Jamo characters
+ */
+ilib.String._decomposeHangul = function (cp) {
+	var sindex = cp - 0xAC00;
+	var result = String.fromCharCode(0x1100 + sindex / 588) + 
+			String.fromCharCode(0x1161 + (sindex % 588) / 28);
+	var t = sindex % 28;
+	if (t !== 0) {
+		result += String.fromCharCode(0x11A7 + t);
+	}
+	return result;
 };
 
 /**
- * Return the length of this string in characters. This function defers to the regular
- * Javascript string class in order to perform the length function. Please note that this
- * method is a real method, whereas the length property of Javascript strings is 
- * implemented by native code and appears to be a property.<p>
+ * @private
+ * @static
+ *
+ * Algorithmically compose an L and a V combining Jamo characters into
+ * a precomposed Korean syllabic Hangul character. Both should already
+ * be in the proper ranges for L and V characters. 
  * 
- * Example:
- * 
- * <pre>
- * var str = new ilib.String("this is a string");
- * console.log("String is " + str.length() + " characters long.");
- * </pre>
+ * @param {number} lead the code point of the lead Jamo character to compose
+ * @param {number} trail the code point of the trailing Jamo character to compose
+ * @returns {string} the composed Hangul character
  */
-ilib.String.prototype.length = function () {
-	return this.str.length;
+ilib.String._composeJamoLV = function (lead, trail) {
+	var lindex = lead - 0x1100;
+	var vindex = trail - 0x1161;
+	return ilib.String.fromCodePoint(0xAC00 + (lindex * 21 + vindex) * 28);
 };
 
+/**
+ * @private
+ * @static
+ *
+ * Algorithmically compose a Hangul LV and a combining Jamo T character 
+ * into a precomposed Korean syllabic Hangul character. 
+ * 
+ * @param {number} lead the code point of the lead Hangul character to compose
+ * @param {number} trail the code point of the trailing Jamo T character to compose
+ * @returns {string} the composed Hangul character
+ */
+ilib.String._composeJamoLVT = function (lead, trail) {
+	return ilib.String.fromCodePoint(lead + (trail - 0x11A7));
+};
 
 /**
- * Format this string instance as a message, replacing the parameters with 
- * the given values.<p>
+ * @private
+ * @static
  * 
- * The string can contain any text that a regular Javascript string can
- * contain. Replacement parameters have the syntax:
- * 
- * <pre>
- * {name}
- * </pre>
- * 
- * Where "name" can be any string surrounded by curly brackets. The value of 
- * "name" is taken from the parameters argument.<p>
- * 
- * Example:
- * 
- * <pre>
- * var str = new ilib.String("There are {num} objects.");
- * console.log(str.format({
- *   num: 12
- * });
- * </pre>
- * 
- * Would give the output:
- * 
- * <pre>
- * There are 12 objects.
- * </pre>
- * 
- * If a property is missing from the parameter block, the replacement
- * parameter substring is left untouched in the string, and a different
- * set of parameters may be applied a second time. This way, different
- * parts of the code may format different parts of the message that they
- * happen to know about.<p>
- * 
- * Example:
- * 
- * <pre>
- * var str = new ilib.String("There are {num} objects in the {container}.");
- * console.log(str.format({
- *   num: 12
- * });
- * </pre>
- * 
- * Would give the output:<p>
- * 
- * <pre>
- * There are 12 objects in the {container}.
- * </pre>
- * 
- * The result can then be formatted again with a different parameter block that
- * specifies a value for the container property.
- * 
- * @param params a Javascript object containing values for the replacement 
- * parameters in the current string
- * @return a new ilib.String instance with as many replacement parameters filled
- * out as possible with real values.
+ * Expand one character according to the given canonical and 
+ * compatibility mappings.
+ * @param {string} ch character to map
+ * @param {Object} canon the canonical mappings to apply
+ * @param {Object=} compat the compatibility mappings to apply, or undefined
+ * if only the canonical mappings are needed
+ * @returns {string} the mapped character
  */
-ilib.String.prototype.format = function (params) {
-	var p, formatted = this.str;
-	if (params) {
-		for (p in params) {
-			if (typeof(params[p]) !== 'undefined') {
-				formatted = formatted.replace("\{"+p+"\}", params[p]);
+ilib.String._expand = function (ch, canon, compat) {
+	var i, 
+		expansion = "",
+		n = ch.charCodeAt(0);
+	if (ilib.String._isHangul(n)) {
+		expansion = ilib.String._decomposeHangul(n);
+	} else {
+		var result = canon[ch];
+		if (!result && compat) {
+			result = compat[ch];
+		}
+		if (result && result !== ch) {
+			for (i = 0; i < result.length; i++) {
+				expansion += ilib.String._expand(result[i], canon, compat);
 			}
+		} else {
+			expansion = ch;
 		}
 	}
-	return formatted.toString();
+	return expansion;
 };
 
 /**
- * Format a string as one of a choice of strings dependent on the value of
- * a particular argument index.<p>
+ * @private
+ * @static
  * 
- * The syntax of the choice string is as follows. The string contains a
- * series of choices separated by a vertical bar character "|". Each choice
- * has a value or range of values to match followed by a hash character "#"
- * followed by the string to use if the variable matches the criteria.<p>
- * 
- * Example string:
- * 
- * <pre>
- * var num = 2;
- * var str = new ilib.String("0#There are no objects.|1#There is one object.|2#There are {number} objects.");
- * console.log(str.formatChoice(num, {
- *   number: num
- * }));
- * </pre>
- * 
- * Gives the output:
- * 
- * <pre>
- * "There are 2 objects."
- * </pre>
- * 
- * The strings to format may contain replacement variables that will be formatted
- * using the fmt() method above and the params argument as a source of values
- * to use while formatting those variables.<p>
- * 
- * If the criterion for a particular choice is empty, that choice will be used
- * as the default one for use when none of the other choice's criteria match.<p>
- * 
- * Example string:
- * 
- * <pre>
- * var num = 22;
- * var str = new ilib.String("0#There are no objects.|1#There is one object.|#There are {number} objects.");
- * console.log(str.formatChoice(num, {
- *   number: num
- * }));
- * </pre>
- * 
- * Gives the output:
- * 
- * <pre>
- * "There are 22 objects."
- * </pre>
- * 
- * If multiple choice patterns can match a given argument index, the first one 
- * encountered in the string will be used. If no choice patterns match the 
- * argument index, then the default choice will be used. If there is no default
- * choice defined, then this method will return an empty string.<p>
- * 
- * <b>Special Syntax</b><p>
- * 
- * For any choice format string, all of the patterns in the string should be
- * of a single type: numeric, boolean, or string/regexp. The type of the 
- * patterns is determined by the type of the argument index parameter.<p>
- * 
- * If the argument index is numeric, then some special syntax can be used 
- * in the patterns to match numeric ranges.<p>
- * 
- * <ul>
- * <li><i>&gt;x</i> - match any number that is greater than x 
- * <li><i>&gt;=x</i> - match any number that is greater than or equal to x
- * <li><i>&lt;x</i> - match any number that is less than x
- * <li><i>&lt;=x</i> - match any number that is less than or equal to x
- * <li><i>start-end</i> - match any number in the range [start,end)
- * </ul>
- * 
- * If the argument index is a boolean, the values "true" and "false" may appear
- * as the choice patterns.<p>
- * 
- * If the argument index is of type string, then the choice patterns may contain
- * regular expressions, or static strings as degenerate regexps.
- * 
- * @param {*} argIndex The index into the choice array of the current parameter
- * @param {Object} params The hash of parameter values that replace the replacement 
- * variables in the string
- * @throws "syntax error in choice format pattern: " if there is a syntax error
- * @returns {string} the formatted string
+ * Compose one character out of a leading character and a 
+ * trailing character. If the characters are Korean Jamo, they
+ * will be composed algorithmically. If they are any other
+ * characters, they will be looked up in the nfc tables.
+ 
+ * @param {string} lead leading character to compose
+ * @param {string} trail the trailing character to compose
+ * @returns {string} the fully composed character, or undefined if
+ * there is no composition for those two characters
  */
-ilib.String.prototype.formatChoice = function(argIndex, params) {
-	var choices = this.str.split("|");
-	var type = typeof(argIndex);
-	var limits = [];
-	var strings = [];
-	var i;
-	var parts;
-	var limit;
-	var arg;
-	var result;
-	var defaultCase;
+ilib.String._compose = function (lead, trail) {
+	var first = lead.charCodeAt(0);
+	var last = trail.charCodeAt(0);
+	if (ilib.String._isHangul(first) && ilib.String._isJamoT(last)) {
+		return ilib.String._composeJamoLVT(first, last);
+	} else if (ilib.String._isJamoL(first) && ilib.String._isJamoV(last)) {
+		return ilib.String._composeJamoLV(first, last);
+	}
 
-	if (this.str.length === 0) {
-		// nothing to do
-		return "";
-	}
+	var c = lead + trail;
+	return (ilib.data.norm.nfc && ilib.data.norm.nfc[c]);
+};
+
+
+ilib.String.prototype = {
+	/**
+	 * @private
+	 * Return the length of this string in characters. This function defers to the regular
+	 * Javascript string class in order to perform the length function. Please note that this
+	 * method is a real method, whereas the length property of Javascript strings is 
+	 * implemented by native code and appears as a property.<p>
+	 * 
+	 * Example:
+	 * 
+	 * <pre>
+	 * var str = new ilib.String("this is a string");
+	 * console.log("String is " + str._length() + " characters long.");
+	 * </pre>
+	 */
+	_length: function () {
+		return this.str.length;
+	},
 	
-	// first parse all the choices
-	for (i = 0; i < choices.length; i++) {		
-		parts = choices[i].split("#");		
-		if (parts.length > 2) {
-			limits[i] = parts[0];
-			parts = parts.shift();			
-			strings[i] = parts.join("#");
-		} else if (parts.length === 2) {
-			limits[i] = parts[0];
-			strings[i] = parts[1];
-		} else {
-			// syntax error
-			throw "syntax error in choice format pattern: " + choices[i];
-		}		
-	}
+	/**
+	 * Format this string instance as a message, replacing the parameters with 
+	 * the given values.<p>
+	 * 
+	 * The string can contain any text that a regular Javascript string can
+	 * contain. Replacement parameters have the syntax:
+	 * 
+	 * <pre>
+	 * {name}
+	 * </pre>
+	 * 
+	 * Where "name" can be any string surrounded by curly brackets. The value of 
+	 * "name" is taken from the parameters argument.<p>
+	 * 
+	 * Example:
+	 * 
+	 * <pre>
+	 * var str = new ilib.String("There are {num} objects.");
+	 * console.log(str.format({
+	 *   num: 12
+	 * });
+	 * </pre>
+	 * 
+	 * Would give the output:
+	 * 
+	 * <pre>
+	 * There are 12 objects.
+	 * </pre>
+	 * 
+	 * If a property is missing from the parameter block, the replacement
+	 * parameter substring is left untouched in the string, and a different
+	 * set of parameters may be applied a second time. This way, different
+	 * parts of the code may format different parts of the message that they
+	 * happen to know about.<p>
+	 * 
+	 * Example:
+	 * 
+	 * <pre>
+	 * var str = new ilib.String("There are {num} objects in the {container}.");
+	 * console.log(str.format({
+	 *   num: 12
+	 * });
+	 * </pre>
+	 * 
+	 * Would give the output:<p>
+	 * 
+	 * <pre>
+	 * There are 12 objects in the {container}.
+	 * </pre>
+	 * 
+	 * The result can then be formatted again with a different parameter block that
+	 * specifies a value for the container property.
+	 * 
+	 * @param params a Javascript object containing values for the replacement 
+	 * parameters in the current string
+	 * @return a new ilib.String instance with as many replacement parameters filled
+	 * out as possible with real values.
+	 */
+	format: function (params) {
+		var formatted = this.str;
+		if (params) {
+			for (var p in params) {
+				if (typeof(params[p]) !== 'undefined') {
+					formatted = formatted.replace("\{"+p+"\}", params[p]);
+				}
+			}
+		}
+		return formatted.toString();
+	},
 	
-	// then apply the argument index
-	for (i = 0; i < limits.length; i++) {
-		if (limits[i].length === 0) {
-			// this is default case
-			defaultCase = new ilib.String(strings[i]);			
-		} else {
-			switch (type) {
-				case 'number':
-					arg = parseInt(argIndex, 10);
-										
-					if (limits[i].substring(0,2) === "<=") {						
-						limit = parseFloat(limits[i].substring(2));
-						if (arg <= limit) {
-							result = new ilib.String(strings[i]);
-							i = limits.length;
-						}
-					} else if (limits[i].substring(0,2) === ">=") {						
-						limit = parseFloat(limits[i].substring(2));
-						if (arg >= limit) {
-							result = new ilib.String(strings[i]);
-							i = limits.length;
-						}
-					} else if (limits[i].charAt(0) === "<") {						
-						limit = parseFloat(limits[i].substring(1));
-						if (arg < limit) {
-							result = new ilib.String(strings[i]);
-							i = limits.length;
-						}
-					} else if (limits[i].charAt(0) === ">") {						
-						limit = parseFloat(limits[i].substring(1));
-						if (arg > limit) {
-							result = new ilib.String(strings[i]);
-							i = limits.length;
-						}
-					} else {
-						var dash = limits[i].indexOf("-");
-						if (dash !== -1) {							
-							// range
-							var start = limits[i].substring(0, dash);
-							var end = limits[i].substring(dash+1);							
-							if (arg >= parseInt(start, 10) && arg <= parseInt(end, 10)) {								
+	/**
+	 * Format a string as one of a choice of strings dependent on the value of
+	 * a particular argument index.<p>
+	 * 
+	 * The syntax of the choice string is as follows. The string contains a
+	 * series of choices separated by a vertical bar character "|". Each choice
+	 * has a value or range of values to match followed by a hash character "#"
+	 * followed by the string to use if the variable matches the criteria.<p>
+	 * 
+	 * Example string:
+	 * 
+	 * <pre>
+	 * var num = 2;
+	 * var str = new ilib.String("0#There are no objects.|1#There is one object.|2#There are {number} objects.");
+	 * console.log(str.formatChoice(num, {
+	 *   number: num
+	 * }));
+	 * </pre>
+	 * 
+	 * Gives the output:
+	 * 
+	 * <pre>
+	 * "There are 2 objects."
+	 * </pre>
+	 * 
+	 * The strings to format may contain replacement variables that will be formatted
+	 * using the format() method above and the params argument as a source of values
+	 * to use while formatting those variables.<p>
+	 * 
+	 * If the criterion for a particular choice is empty, that choice will be used
+	 * as the default one for use when none of the other choice's criteria match.<p>
+	 * 
+	 * Example string:
+	 * 
+	 * <pre>
+	 * var num = 22;
+	 * var str = new ilib.String("0#There are no objects.|1#There is one object.|#There are {number} objects.");
+	 * console.log(str.formatChoice(num, {
+	 *   number: num
+	 * }));
+	 * </pre>
+	 * 
+	 * Gives the output:
+	 * 
+	 * <pre>
+	 * "There are 22 objects."
+	 * </pre>
+	 * 
+	 * If multiple choice patterns can match a given argument index, the first one 
+	 * encountered in the string will be used. If no choice patterns match the 
+	 * argument index, then the default choice will be used. If there is no default
+	 * choice defined, then this method will return an empty string.<p>
+	 * 
+	 * <b>Special Syntax</b><p>
+	 * 
+	 * For any choice format string, all of the patterns in the string should be
+	 * of a single type: numeric, boolean, or string/regexp. The type of the 
+	 * patterns is determined by the type of the argument index parameter.<p>
+	 * 
+	 * If the argument index is numeric, then some special syntax can be used 
+	 * in the patterns to match numeric ranges.<p>
+	 * 
+	 * <ul>
+	 * <li><i>&gt;x</i> - match any number that is greater than x 
+	 * <li><i>&gt;=x</i> - match any number that is greater than or equal to x
+	 * <li><i>&lt;x</i> - match any number that is less than x
+	 * <li><i>&lt;=x</i> - match any number that is less than or equal to x
+	 * <li><i>start-end</i> - match any number in the range [start,end)
+	 * </ul>
+	 * 
+	 * If the argument index is a boolean, the values "true" and "false" may appear
+	 * as the choice patterns.<p>
+	 * 
+	 * If the argument index is of type string, then the choice patterns may contain
+	 * regular expressions, or static strings as degenerate regexps.
+	 * 
+	 * @param {*} argIndex The index into the choice array of the current parameter
+	 * @param {Object} params The hash of parameter values that replace the replacement 
+	 * variables in the string
+	 * @throws "syntax error in choice format pattern: " if there is a syntax error
+	 * @returns {string} the formatted string
+	 */
+	formatChoice: function(argIndex, params) {
+		var choices = this.str.split("|");
+		var type = typeof(argIndex);
+		var limits = [];
+		var strings = [];
+		var i;
+		var parts;
+		var limit;
+		var arg;
+		var result = undefined;
+		var defaultCase = "";
+	
+		if (this.str.length === 0) {
+			// nothing to do
+			return "";
+		}
+		
+		// first parse all the choices
+		for (i = 0; i < choices.length; i++) {		
+			parts = choices[i].split("#");		
+			if (parts.length > 2) {
+				limits[i] = parts[0];
+				parts = parts.shift();			
+				strings[i] = parts.join("#");
+			} else if (parts.length === 2) {
+				limits[i] = parts[0];
+				strings[i] = parts[1];
+			} else {
+				// syntax error
+				throw "syntax error in choice format pattern: " + choices[i];
+			}		
+		}
+		
+		// then apply the argument index
+		for (i = 0; i < limits.length; i++) {
+			if (limits[i].length === 0) {
+				// this is default case
+				defaultCase = new ilib.String(strings[i]);			
+			} else {
+				switch (type) {
+					case 'number':
+						arg = parseInt(argIndex, 10);
+											
+						if (limits[i].substring(0,2) === "<=") {						
+							limit = parseFloat(limits[i].substring(2));
+							if (arg <= limit) {
 								result = new ilib.String(strings[i]);
 								i = limits.length;
 							}
-						} else if (arg === parseInt(limits[i], 10)) {							
-							// exact amount
+						} else if (limits[i].substring(0,2) === ">=") {						
+							limit = parseFloat(limits[i].substring(2));
+							if (arg >= limit) {
+								result = new ilib.String(strings[i]);
+								i = limits.length;
+							}
+						} else if (limits[i].charAt(0) === "<") {						
+							limit = parseFloat(limits[i].substring(1));
+							if (arg < limit) {
+								result = new ilib.String(strings[i]);
+								i = limits.length;
+							}
+						} else if (limits[i].charAt(0) === ">") {						
+							limit = parseFloat(limits[i].substring(1));
+							if (arg > limit) {
+								result = new ilib.String(strings[i]);
+								i = limits.length;
+							}
+						} else {
+							var dash = limits[i].indexOf("-");
+							if (dash !== -1) {							
+								// range
+								var start = limits[i].substring(0, dash);
+								var end = limits[i].substring(dash+1);							
+								if (arg >= parseInt(start, 10) && arg <= parseInt(end, 10)) {								
+									result = new ilib.String(strings[i]);
+									i = limits.length;
+								}
+							} else if (arg === parseInt(limits[i], 10)) {							
+								// exact amount
+								result = new ilib.String(strings[i]);
+								i = limits.length;
+							}
+						}
+						break;
+					case 'boolean':					
+						if (limits[i] === "true" && argIndex === true) {						
+							result = new ilib.String(strings[i]);
+							i = limits.length;
+						} else if (limits[i] === "false" && argIndex === false) {						
 							result = new ilib.String(strings[i]);
 							i = limits.length;
 						}
-					}
-					break;
-				case 'boolean':					
-					if (limits[i] === "true" && argIndex === true) {						
-						result = new ilib.String(strings[i]);
-						i = limits.length;
-					} else if (limits[i] === "false" && argIndex === false) {						
-						result = new ilib.String(strings[i]);
-						i = limits.length;
-					}
-					break;
-				case 'string':					
-					var regexp = new RegExp(limits[i], "i");
-					if (regexp.test(argIndex)) {
-						result = new ilib.String(strings[i]);
-						i = limits.length;
-					}
-					break;
-				case 'object':
-					throw "syntax error: fmtChoice parameter for the argument index cannot be an object";
+						break;
+					case 'string':					
+						var regexp = new RegExp(limits[i], "i");
+						if (regexp.test(argIndex)) {
+							result = new ilib.String(strings[i]);
+							i = limits.length;
+						}
+						break;
+					case 'object':
+						throw "syntax error: fmtChoice parameter for the argument index cannot be an object";
+				}
 			}
 		}
-	}
+		
+		if (!result) {		
+			result = defaultCase || new ilib.String("");
+		}
+		
+		result = result.format(params);
+		
+		return result.toString();
+	},
 	
-	if (!result) {		
-		result = defaultCase || new ilib.String("");
-	}
-	
-	result = result.format(params);
-	
-	return result.toString();
-};
+	/**
+	 * Perform the Unicode Normalization Algorithm upon the string and return 
+	 * the resulting new string. The current string is not modified.
+	 * 
+	 * <h2>Forms</h2>
+	 * 
+	 * The forms of possible normalizations are defined by the <a 
+	 * href="http://www.unicode.org/reports/tr15/">Unicode Standard
+	 * Annex (UAX) 15</a>. The form parameter is a string that may have one 
+	 * of the following values:
+	 * 
+	 * <ul>
+	 * <li>nfd - Canonical decomposition. This decomposes characters into
+	 * their exactly equivalent forms. For example, "&uuml;" would decompose
+	 * into a "u" followed by the combining diaeresis character. 
+	 * <li>nfc - Canonical decomposition followed by canonical composition.
+	 * This decomposes and then recomposes character into their shortest
+	 * exactly equivalent forms by recomposing as many combining characters
+	 * as possible. For example, "&uuml;" followed by a combining 
+	 * macron character would decompose into a "u" followed by the combining 
+	 * macron characters the combining diaeresis character, and then be recomposed into
+	 * the u with macron and diaeresis "&#x1E7B;" character. The reason that
+	 * the "nfc" form decomposes and then recomposes is that combining characters
+	 * have a specific order under the Unicode Normalization Algorithm, and
+	 * partly composed characters such as the "&uuml;" followed by combining
+	 * marks may change the order of the combining marks when decomposed and
+	 * recomposed.
+	 * <li>nfkd - Compatibility decomposition. This decomposes characters
+	 * into compatible forms that may not be exactly equivalent semantically,
+	 * as well as performing canonical decomposition as well.
+	 * For example, the "&oelig;" ligature character decomposes to the two
+	 * characters "oe" because they are compatible even though they are not 
+	 * exactly the same semantically. 
+	 * <li>nfkc - Compatibility decomposition followed by canonical composition.
+	 * This decomposes characters into compatible forms, then recomposes
+	 * characters using the canonical composition. That is, it breaks down
+	 * characters into the compatible forms, and then recombines all combining
+	 * marks it can with their base characters. For example, the character
+	 * "&#x01FD;" would be normalized to "a&eacute;" by first decomposing
+	 * the character into "a" followed by "e" followed by the combining acute accent
+	 * combining mark, and then recomposed to an "a" followed by the "e"
+	 * with acute accent.
+	 * </ul>
+	 * 
+	 * <h2>Operation</h2>
+	 * 
+	 * Two strings a and b can be said to be canonically equivalent if 
+	 * normalize(a) = normalize(b)
+	 * under the nfc normalization form. Two strings can be said to be compatible if
+	 * normalize(a) = normalize(b) under the nfkc normalization form.<p>
+	 * 
+	 * The canonical normalization is often used to see if strings are 
+	 * equivalent to each other, and thus is useful when implementing parsing 
+	 * algorithms or exact matching algorithms. It can also be used to ensure
+	 * that any string output produces a predictable sequence of characters.<p>
+	 * 
+	 * Compatibility normalization 
+	 * does not always preserve the semantic meaning of all the characters, 
+	 * although this is sometimes the behaviour that you are after. It is useful, 
+	 * for example, when doing searches of user-input against text in documents 
+	 * where the matches are supposed to "fuzzy". In this case, both the query
+	 * string and the document string would be mapped to their compatibility 
+	 * normalized forms, and then compared.<p>
+	 * 
+	 * Compatibility normalization also does not guarantee round-trip conversion
+	 * to and from legacy character sets as the normalization is "lossy". It is 
+	 * akin to doing a lower- or upper-case conversion on text -- after casing,
+	 * you cannot tell what case each character is in the original string. It is 
+	 * good for matching and searching, but it rarely good for output because some 
+	 * distinctions or meanings in the original text have been lost.<p>
+	 * 
+	 * Note that W3C normalization for HTML also escapes and unescapes
+	 * HTML character entities such as "&amp;uuml;" for u with diaeresis. This
+	 * method does not do such escaping or unescaping. If normalization is required
+	 * for HTML strings with entities, unescaping should be performed on the string 
+	 * prior to calling this method.<p>
+	 * 
+	 * <h2>Data</h2>
+	 * 
+	 * Normalization requires a fair amount of mapping data, much of which you may 
+	 * not need for the characters expected in your texts. It is possible to assemble
+	 * a copy of ilib that saves space by only including normalization data for 
+	 * those scripts that you expect to encounter in your data.<p>
+	 * 
+	 * The normalization data is organized by normalization form and within there
+	 * by script. To include the normalization data for a particular script with
+	 * a particular normalization form, use the directive:
+	 * 
+	 * <pre><code>
+	 * !depends &lt;form&gt;/&lt;script&gt;.js
+	 * </code></pre>
+	 * 
+	 * Where &lt;form&gt is the normalization form ("nfd", "nfc", "nfkd", or "nfkc"), and
+	 * &lt;script&gt; is the ISO 15924 code for the script you would like to
+	 * support. Example: to load in the NFC data for Cyrillic, you would use:
+	 * 
+	 * <pre><code>
+	 * !depends nfc/Cyrl.js
+	 * </code></pre>
+	 * 
+	 * Note that because certain normalization forms include others in their algorithm, 
+	 * their data also depends on the data for the other forms. For example, if you 
+	 * include the "nfc" data for a script, you will automatically get the "nfd" data 
+	 * for that same script as well because the NFC algorithm does NFD normalization 
+	 * first. Here are the dependencies:<p>
+	 * 
+	 * <ul>
+	 * <li>NFD -> no dependencies
+	 * <li>NFC -> NFD
+	 * <li>NFKD -> NFD
+	 * <li>NFKC -> NFKD, NFD, NFC
+	 * </ul>
+	 * 
+	 * A special value for the script dependency is "all" which will cause the data for 
+	 * all scripts
+	 * to be loaded for that normalization form. This would be useful if you know that
+	 * you are going to normalize a lot of multilingual text or cannot predict which scripts
+	 * will appear in the input. Because the NFKC form depends on all others, you can 
+	 * get all of the data for all forms automatically by depending on "nfkc/all.js".
+	 * Note that the normalization data for practically all script automatically depend
+	 * on data for the Common script (code "Zyyy") which contains all of the characters
+	 * that are commonly used in many different scripts. Examples of characters in the
+	 * Common script are the ASCII punctuation characters, or the ASCII Arabic 
+	 * numerals "0" through "9".<p>
+	 * 
+	 * By default, none of the data for normalization is automatically 
+	 * included in the preassembled iliball.js file. 
+	 * If you would like to normalize strings, you must assemble
+	 * your own copy of ilib and explicitly include the normalization data
+	 * for those scripts as per the instructions above. This normalization method will 
+	 * produce output, even without the normalization data. However, the output will be 
+	 * simply the same thing as its input for all scripts 
+	 * except Korean Hangul and Jamo, which are decomposed and recomposed 
+	 * algorithmically and therefore do not rely on data.<p>
+	 * 
+	 * If characters are encountered for which there are no normalization data, they
+	 * will be passed through to the output string unmodified.
+	 * 
+	 * @param {string} form The normalization form requested
+	 * @returns {ilib.String} a new instance of an ilib.String that has been normalized
+	 * according to the requested form. The current instance is not modified.
+	 */
+	normalize: function (form) {
+		var i;
+		
+		if (typeof(form) !== 'string' || this.str.length === 0) {
+			return new ilib.String(this.str);
+		}
+		
+		var nfc = false,
+			nfkd = false;
+		
+		switch (form) {
+		default:
+			break;
+			
+		case "nfc":
+			nfc = true;
+			break;
+			
+		case "nfkd":
+			nfkd = true;
+			break;
+			
+		case "nfkc":
+			nfkd = true;
+			nfc = true;
+			break;
+		}
 
+		// decompose
+		var decomp = "";
+		
+		if (nfkd) {
+			var ch, it = this.charIterator();
+			while (it.hasNext()) {
+				ch = it.next();
+				decomp += ilib.String._expand(ch, ilib.data.norm.nfd, ilib.data.norm.nfkd);
+			}
+		} else {
+			var ch, it = this.charIterator();
+			while (it.hasNext()) {
+				ch = it.next();
+				decomp += ilib.String._expand(ch, ilib.data.norm.nfd);
+			}
+		}
+
+		// now put the combining marks in a fixed order by 
+		// sorting on the combining class
+		function compareByCCC(left, right) {
+			return ilib.data.norm.ccc[left] - ilib.data.norm.ccc[right]; 
+		}
+		
+		function ccc(c) {
+			return ilib.data.norm.ccc[c] || 0;
+		}
+			
+		var dstr = new ilib.String(decomp);
+		var it = dstr.charIterator();
+		var cpArray = [];
+
+		// easier to deal with as an array of chars
+		while (it.hasNext()) {
+			cpArray.push(it.next());
+		}
+		
+		i = 0;
+		while (i < cpArray.length) {
+			if (typeof(ilib.data.norm.ccc[cpArray[i]]) !== 'undefined' && ilib.data.norm.ccc[cpArray[i]] !== 0) {
+				// found a non-starter... rearrange all the non-starters until the next starter
+				var end = i+1;
+				while (end < cpArray.length &&
+						typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
+						ilib.data.norm.ccc[cpArray[end]] !== 0) {
+					end++;
+				}
+				
+				// simple sort of the non-starter chars
+				if (end - i > 1) {
+					cpArray = cpArray.slice(0,i).concat(cpArray.slice(i, end).sort(compareByCCC), cpArray.slice(end));
+				}
+			}
+			i++;
+		}
+		
+		if (nfc) {
+			i = 0;
+			while (i < cpArray.length) {
+				if (typeof(ilib.data.norm.ccc[cpArray[i]]) === 'undefined' || ilib.data.norm.ccc[cpArray[i]] === 0) {
+					// found a starter... find all the non-starters until the next starter. Must include
+					// the next starter because under some odd circumstances, two starters sometimes recompose 
+					// together to form another character
+					var end = i+1;
+					var notdone = true;
+					while (end < cpArray.length && notdone) {
+						if (typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
+							ilib.data.norm.ccc[cpArray[end]] !== 0) {
+							if (ccc(cpArray[end-1]) < ccc(cpArray[end])) { 
+								// not blocked 
+								var testChar = ilib.String._compose(cpArray[i], cpArray[end]);
+								if (typeof(testChar) !== 'undefined') {
+									cpArray[i] = testChar;
+									
+									// delete the combining char
+									cpArray.splice(end,1);	
+									
+									// restart the iteration, just in case there is more to recompose with the new char
+									end = i;
+								}
+							}
+							end++;
+						} else {
+							// found the next starter. See if this can be composed with the previous starter
+							var testChar = ilib.String._compose(cpArray[i], cpArray[end]);
+							if (ccc(cpArray[end-1]) === 0 && typeof(testChar) !== 'undefined') { 
+								// not blocked and there is a mapping 
+								cpArray[i] = testChar;
+								
+								// delete the combining char
+								cpArray.splice(end,1);
+								
+								// restart the iteration, just in case there is more to recompose with the new char
+								end = i+1;
+							} else {
+								// finished iterating 
+								notdone = false;
+							}
+						}
+					}
+				}
+				i++;
+			}
+		}
+		
+		return new ilib.String(cpArray.length > 0 ? cpArray.join("") : "");
+	},
+	
+	// delegates
+	/**
+	 * Same as String.toString()
+	 * @returns {string} this instance as regular Javascript string
+	 */
+	toString: function () {
+		return this.str.toString();
+	},
+	
+	/**
+	 * Same as String.valueOf()
+	 * @returns {string} this instance as a regular Javascript string
+	 */
+	valueOf: function () {
+		return this.str.valueOf();
+	},
+	
+	/**
+	 * Same as String.charAt()
+	 * @param {number} index the index of the character being sought
+	 * @returns {ilib.String} the character at the given index
+	 */
+	charAt: function(index) {
+		return new ilib.String(this.str.charAt(index));
+	},
+	
+	/**
+	 * Same as String.charCodeAt(). This only reports on 
+	 * 2-byte UCS-2 Unicode values, and does not take into
+	 * account supplementary characters encoded in UTF-16.
+	 * If you would like to take account of those characters,
+	 * use codePointAt() instead.
+	 * @param {number} index the index of the character being sought
+	 * @returns {number} the character code of the character at the 
+	 * given index in the string 
+	 */
+	charCodeAt: function(index) {
+		return this.str.charCodeAt(index);
+	},
+	
+	/**
+	 * Same as String.concat()
+	 * @param {string} strings strings to concatenate to the current one
+	 * @returns {ilib.String} a concatenation of the given strings
+	 */
+	concat: function(strings) {
+		return new ilib.String(this.str.concat(strings));
+	},
+	
+	/**
+	 * Same as String.indexOf()
+	 * @param {string} searchValue string to search for
+	 * @param {number} start index into the string to start searching, or
+	 * undefined to search the entire string
+	 * @returns {number} index into the string of the string being sought,
+	 * or -1 if the string is not found 
+	 */
+	indexOf: function(searchValue, start) {
+		return this.str.indexOf(searchValue, start);
+	},
+	
+	/**
+	 * Same as String.lastIndexOf()
+	 * @param {string} searchValue string to search for
+	 * @param {number} start index into the string to start searching, or
+	 * undefined to search the entire string
+	 * @returns {number} index into the string of the string being sought,
+	 * or -1 if the string is not found 
+	 */
+	lastIndexOf: function(searchValue, start) {
+		return this.str.lastIndexOf(searchValue, start);
+	},
+	
+	/**
+	 * Same as String.match()
+	 * @param {string} regexp the regular expression to match
+	 * @returns {Array.<string>} an array of matches
+	 */
+	match: function(regexp) {
+		return this.str.match(regexp);
+	},
+	
+	/**
+	 * Same as String.replace()
+	 * @param {string} searchValue a regular expression to search for
+	 * @param {string} newValue the string to replace the matches with
+	 * @returns {ilib.String} a new string with all the matches replaced
+	 * with the new value
+	 */
+	replace: function(searchValue, newValue) {
+		return new ilib.String(this.str.replace(searchValue, newValue));
+	},
+	
+	/**
+	 * Same as String.search()
+	 * @param {string} regexp the regular expression to search for
+	 * @returns {number} position of the match, or -1 for no match
+	 */
+	search: function(regexp) {
+		return this.str.search(regexp);
+	},
+	
+	/**
+	 * Same as String.slice()
+	 * @param {number} start first character to include in the string
+	 * @param {number} end include all characters up to, but not including
+	 * the end character
+	 * @returns {ilib.String} a slice of the current string
+	 */
+	slice: function(start, end) {
+		return new ilib.String(this.str.slice(start, end));
+	},
+	
+	/**
+	 * Same as String.split()
+	 * @param {string} separator regular expression to match to find
+	 * separations between the parts of the text
+	 * @param {number} limit maximum number of items in the final 
+	 * output array. Any items beyond that limit will be ignored.
+	 * @returns {Array.<string>} the parts of the current string split 
+	 * by the separator
+	 */
+	split: function(separator, limit) {
+		return this.str.split(separator, limit);
+	},
+	
+	/**
+	 * Same as String.substr()
+	 * @param {number} start the index of the character that should 
+	 * begin the returned substring
+	 * @param {number} length the number of characters to return after
+	 * the start character.
+	 * @returns {ilib.String} the requested substring 
+	 */
+	substr: function(start, length) {
+		return new ilib.String(this.str.substr(start, length));
+	},
+	
+	/**
+	 * Same as String.substring()
+	 * @param {number} from the index of the character that should 
+	 * begin the returned substring
+	 * @param {number} to the index where to stop the extraction. If
+	 * omitted, extracts the rest of the string
+	 * @returns {ilib.String} the requested substring 
+	 */
+	substring: function(from, to) {
+		return this.str.substring(from, to);
+	},
+	
+	/**
+	 * Same as String.toLowerCase(). Note that this method is
+	 * not locale-sensitive. 
+	 * @returns {ilib.String} a string with the first character
+	 * lower-cased
+	 */
+	toLowerCase: function() {
+		return this.str.toLowerCase();
+	},
+	
+	/**
+	 * Same as String.toUpperCase(). Note that this method is
+	 * not locale-sensitive. Use toLocaleUpperCase() instead
+	 * to get locale-sensitive behaviour. 
+	 * @returns {ilib.String} a string with the first character
+	 * upper-cased
+	 */
+	toUpperCase: function() {
+		return this.str.toUpperCase();
+	},
+	
+	/**
+	 * @private
+	 * Convert the character or the surrogate pair at the given
+	 * index into the string to a Unicode UCS-4 code point.
+	 * @param {number} index index into the string
+	 * @returns {number} code point of the character at the
+	 * given index into the string
+	 */
+	_toCodePoint: function (index) {
+		if (this.str.length === 0) {
+			return -1;
+		}
+		var code = -1, high = this.str.charCodeAt(index);
+		if (high >= 0xD800 && high <= 0xDBFF) {
+			if (this.str.length > index+1) {
+				var low = this.str.charCodeAt(index+1);
+				if (low >= 0xDC00 && low <= 0xDFFF) {
+					code = (((high & 0x3C0) >> 6) + 1) << 16 |
+						(((high & 0x3F) << 10) | (low & 0x3FF));
+				}
+			}
+		} else {
+			code = high;
+		}
+		
+		return code;
+	},
+	
+	/**
+	 * Return an iterator that will step through all of the characters
+	 * in the string one at a time and return their code points, taking 
+	 * care to step through the surrogate pairs in UTF-16 encoding 
+	 * properly.<p>
+	 * 
+	 * The standard Javascript String's charCodeAt() method only
+	 * returns information about a particular 16-bit character in the 
+	 * UTF-16 encoding scheme.
+	 * If the index is pointing to a low- or high-surrogate character,
+	 * it will return a code point of the surrogate character rather 
+	 * than the code point of the character 
+	 * in the supplementary planes that the two surrogates together 
+	 * encode.<p>
+	 * 
+	 * The iterator instance returned has two methods, hasNext() which
+	 * returns true if the iterator has more code points to iterate through,
+	 * and next() which returns the next code point as a number.<p>
+	 * 
+	 * @returns {Object} an iterator 
+	 * that iterates through all the code points in the string
+	 */
+	iterator: function() {
+		/**
+		 * @constructor
+		 */
+		function _iterator (istring) {
+			this.index = 0;
+			this.hasNext = function () {
+				return (this.index < istring.str.length);
+			};
+			this.next = function () {
+				if (this.index < istring.str.length) {
+					var num = istring._toCodePoint(this.index);
+					this.index += ((num > 0xFFFF) ? 2 : 1);
+				} else {
+					num = -1;
+				}
+				return num;
+			};
+		};
+		return new _iterator(this);
+	},
+
+	/**
+	 * Return an iterator that will step through all of the characters
+	 * in the string one at a time, taking 
+	 * care to step through the surrogate pairs in UTF-16 encoding 
+	 * properly.<p>
+	 * 
+	 * The standard Javascript String's charAt() method only
+	 * returns information about a particular 16-bit character in the 
+	 * UTF-16 encoding scheme.
+	 * If the index is pointing to a low- or high-surrogate character,
+	 * it will return that surrogate character rather 
+	 * than the surrogate pair which represents a character 
+	 * in the supplementary planes.<p>
+	 * 
+	 * The iterator instance returned has two methods, hasNext() which
+	 * returns true if the iterator has more characters to iterate through,
+	 * and next() which returns the next character.<p>
+	 * 
+	 * @returns {Object} an iterator 
+	 * that iterates through all the characters in the string
+	 */
+	charIterator: function() {
+		/**
+		 * @constructor
+		 */
+		function _chiterator (istring) {
+			this.index = 0;
+			this.hasNext = function () {
+				return (this.index < istring.str.length);
+			};
+			this.next = function () {
+				var ch;
+				if (this.index < istring.str.length) {
+					ch = istring.str.charAt(this.index);
+					if (ilib.String._isSurrogate(ch) && 
+							this.index+1 < istring.str.length && 
+							ilib.String._isSurrogate(istring.str.charAt(this.index+1))) {
+						this.index++;
+						ch += istring.str.charAt(this.index);
+					}
+					this.index++;
+				}
+				return ch;
+			};
+		};
+		return new _chiterator(this);
+	},
+	
+	/**
+	 * Return the code point at the given index when the string is viewed 
+	 * as an array of code points. If the index is beyond the end of the
+	 * array of code points or if the index is negative, -1 is returned.
+	 * @param {number} index index of the code point 
+	 * @returns {number} code point of the character at the given index into
+	 * the string
+	 */
+	codePointAt: function (index) {
+		if (index < 0) {
+			return -1;
+		}
+		var count,
+			it = this.iterator(),
+			ch;
+		for (count = index; count >= 0 && it.hasNext(); count--) {
+			ch = it.next();
+		}
+		return (count < 0) ? ch : -1;
+	},
+	
+	/**
+	 * Return the number of code points in this string. This may be different
+	 * than the number of characters, as the UTF-16 encoding that Javascript
+	 * uses for its basis returns surrogate pairs separately. Two 2-byte 
+	 * surrogate characters together make up one character/code point in 
+	 * the supplementary character planes. If your string contains no
+	 * characters in the supplementary planes, this method will return the
+	 * same thing as the length() method.
+	 * @returns {number} the number of code points in this string
+	 */
+	codePointLength: function () {
+		if (this.cpLength === -1) {
+			var it = this.iterator();
+			this.cpLength = 0;
+			while (it.hasNext()) { 
+				this.cpLength++;
+				it.next();
+			};
+		}
+		return this.cpLength;	
+	}
+};
 /*
  * util/utils.js - Misc utility routines
  * 
@@ -877,9 +1943,8 @@ ilib.mod = function (dividend, modulus) {
  * @returns {Object} the merged object
  */
 ilib.merge = function (object1, object2, name1, name2) {
-	var prop,
-		newObj = {},
-		i;
+	var prop = undefined,
+		newObj = {};
 	for (prop in object1) {
 		if (prop && typeof(object1[prop]) !== 'undefined') {
 			newObj[prop] = object1[prop];
@@ -906,6 +1971,98 @@ ilib.merge = function (object1, object2, name1, name2) {
 };
 
 /**
+ * Find and merge all the locale data for a particular prefix in the given locale
+ * and return it as a single javascript object. This merges the data in the 
+ * correct order:
+ * 
+ * <ol>
+ * <li>shared data (usually English)
+ * <li>data for language
+ * <li>data for language + region
+ * <li>data for language + region + script
+ * <li>data for language + region + script + variant
+ * </ol>
+ * 
+ * It is okay for any of the above to be missing. This function will just skip the 
+ * missing data. However, if everything except the shared data is missing, this 
+ * function returns undefined, allowing the caller to go and dynamically load the
+ * data instead.
+ *  
+ * @param {string} prefix prefix under ilib.data of the data to merge
+ * @param {ilib.Locale} locale locale of the data being sought
+ * @returns {Object|undefined} the merged locale data
+ */
+ilib.mergeLocData = function (prefix, locale) {
+	var data = undefined;
+	var loc = locale || new ilib.Locale();
+	var foundLocaleData = false;
+	var property = prefix;
+	data = ilib.data[prefix] || {};
+	if (loc.getLanguage()) {
+		property = prefix + '_' + loc.getLanguage();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+	if (loc.getRegion()) {
+		property += '_' + loc.getRegion();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+	if (loc.getScript()) {
+		property += '_' + loc.getScript();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+	if (loc.getVariant()) {
+		property += '_' + loc.getVariant();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+	return foundLocaleData ? data : undefined;
+};
+
+/**
+ * Return an array of relative path names for the json
+ * files that represent the data for the given locale.
+ * @param {string} prefix the prefix dir for all the path names
+ * @param {ilib.Locale} locale load the json files for this locale
+ * @param {string} basename the base name of each json file to load
+ * @returns {Array.<string>} An array of relative path names
+ * for the json files that contain the locale data
+ */
+ilib.getLocFiles = function(prefix, locale, basename) {
+	var dir = (prefix && prefix.length > 0) ? prefix + "/" : "";
+	var files = [];
+	var filename = basename || "resources";
+	var loc = locale || new ilib.Locale();
+	files.push(dir + filename + ".json");
+	dir += loc.getLanguage() + "/";
+	files.push(dir + filename + ".json");
+	if (loc.getRegion()) {
+		dir += loc.getRegion() + "/";
+		files.push(dir + filename + ".json");
+		if (loc.getScript()) {
+			dir += loc.getScript() + "/";
+			files.push(dir + filename + ".json");
+			if (loc.getVariant()) {
+				dir += loc.getVariant() + "/";
+				files.push(dir + filename + ".json");
+			}
+		}
+	}
+	
+	return files;
+};
+
+/**
  * Return true if the given object has no properties.<p>
  * 
  * Depends directive: !depends utils.js
@@ -914,7 +2071,7 @@ ilib.merge = function (object1, object2, name1, name2) {
  * @returns {boolean} true if the given object has no properties, false otherwise
  */
 ilib.isEmpty = function (obj) {
-	var prop;
+	var prop = undefined;
 	
 	if (!obj) {
 		return true;
@@ -940,13 +2097,107 @@ ilib.isEmpty = function (obj) {
  * @param {Object} target the target object to copy properties into
  */
 ilib.shallowCopy = function (source, target) {
-	var prop;
+	var prop = undefined;
 	if (source && target) {
 		for (prop in source) {
 			if (prop !== undefined && source[prop]) {
 				target[prop] = source[prop];
 			}
 		}
+	}
+};
+
+/**
+ * Return the sign of the given number. If the sign is negative, this function
+ * returns -1. If the sign is positive or zero, this function returns 1.
+ * @param {number} num the number to test
+ * @returns {number} -1 if the number is negative, and 1 otherwise
+ */
+ilib.signum = function (num) {
+	var n = num;
+	if (typeof(num) === 'string') {
+		n = parseInt(num, 10);
+	} else if (typeof(num) !== 'number') {
+		return 1;
+	}
+	return (n < 0) ? -1 : 1;
+};
+
+
+/**
+ * @private
+ */
+ilib._roundFnc = {
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	floor: function (num) {
+		return Math.floor(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	ceiling: function (num) {
+		return Math.ceil(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	down: function (num) {
+		return (num < 0) ? Math.ceil(num) : Math.floor(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	up: function (num) {
+		return (num < 0) ? Math.floor(num) : Math.ceil(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfup: function (num) {
+		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfdown: function (num) {
+		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfeven: function (num) {
+		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfodd: function (num) {
+		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
 	}
 };
 
@@ -998,6 +2249,12 @@ ilib.shallowCopy = function (source, target) {
  * <li><i>lengthen</i> - when pseudo-translating the string, tell whether or not to 
  * automatically lengthen the string to simulate "long" languages such as German
  * or French. This is a boolean value. Default is false. 
+ * <li>onLoad - a callback function to call when the resources are fully 
+ * loaded. When the onLoad option is given, this class will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * </ul>
  * 
  * The locale option may be given as a locale spec string or as an 
@@ -1096,7 +2353,7 @@ ilib.shallowCopy = function (source, target) {
  * @param {?Object} options Options controlling how the bundle is created
  */
 ilib.ResBundle = function (options) {
-	var name, lookupLocale;
+	var lookupLocale, spec;
 	
 	this.locale = new ilib.Locale();	// use the default locale
 	this.baseName = "resources";
@@ -1119,35 +2376,54 @@ ilib.ResBundle = function (options) {
 	
 	this.map = {};
 
-	lookupLocale = this.locale.isPseudo() ? new ilib.Locale(ilib.getLocale()) : this.locale;
+	lookupLocale = this.locale.isPseudo() ? new ilib.Locale() : this.locale;
+	spec = lookupLocale.getSpec().replace(/-/g, '_');
 	
-	name = this.baseName;
-	if (ilib.data[name]) {
-		this.map = ilib.merge(this.map, ilib.data[name]);
+	if (typeof(ilib.data.resourceCache[this.baseName]) === 'undefined') {
+		ilib.data.resourceCache[this.baseName] = {};
 	}
-	if (lookupLocale.getLanguage()) {
-		name += "_" + lookupLocale.getLanguage();
-		if (ilib.data[name]) {
-			this.map = ilib.merge(this.map, ilib.data[name], this.baseName, name);
+	
+	if (typeof(ilib.data.resourceCache[this.baseName][spec]) !== 'undefined') {
+		this.map = ilib.data.resourceCache[this.baseName][spec];
+		if (options && typeof(options.onLoad) === 'function') {
+			options.onLoad(this);
 		}
-		if (lookupLocale.getRegion()) {
-			name += "_" + lookupLocale.getRegion();		
-			if (ilib.data[name]) {
-				this.map = ilib.merge(this.map, ilib.data[name], this.baseName + "_" + this.locale.getLanguage(), name);
+	} else {
+		this.map = ilib.mergeLocData(this.baseName, lookupLocale);
+		if (this.map) {
+			ilib.data.resourceCache[this.baseName][spec] = this.map;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
 			}
-			if (lookupLocale.getVariant()) {
-				name += "_" + lookupLocale.getVariant();
-				if (ilib.data[name]) {
-					this.map = ilib.merge(this.map, ilib.data[name], this.baseName + "_" + this.locale.getLanguage() + "_" + this.locale.getRegion(), name);
+		} else if (typeof(ilib._load) === 'function') {
+			// locale is not preassembled, so attempt to load it dynamically
+			var files = ilib.getLocFiles("resources", this.locale, "strings");
+			
+			ilib._load(this, files, function(arr) {
+				this.map = {};
+				for (var i = 0; i < arr.length; i++) {
+					if (typeof(arr[i]) !== 'undefined') {
+						this.map = ilib.merge(this.map, arr[i]);
+					}
 				}
+				ilib.data.resourceCache[this.baseName][spec] = this.map;
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
+			});
+		} else {
+			this.map = ilib.data[this.baseName] || {};
+			ilib.data.resourceCache[this.baseName][spec] = this.map;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
 			}
 		}
-	}
+	}	
 	
 	// console.log("Merged resources " + this.locale.toString() + " are: " + JSON.stringify(this.map));
-	if (!this.locale.isPseudo() && ilib.isEmpty(this.map)) {
-		console.log("Resources for bundle " + this.baseName + " locale " + this.locale.toString() + " are not available.");
-	}
+	//if (!this.locale.isPseudo() && ilib.isEmpty(this.map)) {
+	//	console.log("Resources for bundle " + this.baseName + " locale " + this.locale.toString() + " are not available.");
+	//}
 };
 
 /**
@@ -1390,6 +2666,28 @@ ilib.ResBundle.prototype = {
 	},
 	
 	/**
+	 * Return true if the current bundle contains a translation for the given key and
+	 * source. The
+	 * getString method will always return a string for any given key and source 
+	 * combination, so it cannot be used to tell if a translation exists. Either one
+	 * or both of the source and key must be specified. If both are not specified,
+	 * this method will return false.
+	 * 
+	 * @param {?string=} source source string to look up
+	 * @param {?string=} key key to look up
+	 * @returns {boolean} true if this bundle contains a translation for the key, and 
+	 * false otherwise
+	 */
+	containsKey: function(source, key) {
+		if (typeof(source) === 'undefined' && typeof(key) === 'undefined') {
+			return false;
+		}
+		
+		var keyName = key || this.makeKey(source);
+		return typeof(this.map[keyName]) !== 'undefined';
+	},
+	
+	/**
 	 * Return the merged resources as an entire object. When loading resources for a
 	 * locale that are not just a set of translated strings, but instead an entire 
 	 * structured object, you can gain access to that object via this call. This method
@@ -1425,13 +2723,14 @@ ilib.data.localeinfo = {
 	"calendar": "gregorian",
 	"firstDayOfWeek": 0,
 	"currency": "USD",
-	"timezone": "Europe/London",
+	"timezone": "Etc/UTC",
 	"numfmt": {
 		"decimalChar": ",",
 		"groupChar": ".",
 		"groupSize": 3,
 		"pctFmt": "{n}%",
-		"pctChar": "%"
+		"pctChar": "%",
+		"roundingMode": "halfdown"
 	},
 	"locale": "."
 }
@@ -2108,34 +3407,36 @@ ilib.data.localeinfo_zh_MO = {
  * by various parts of the code, and should be used as a fall-back setting of last
  * resort. <p>
  * 
+ * The optional options object holds extra parameters if they are necessary. The
+ * current list of supported options are:
+ * 
+ * <ul>
+ * <li>onLoad - a callback function to call when the locale info object is fully 
+ * loaded. When the onLoad option is given, the localeinfo object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * </ul>
+ * 
+ * If this copy of ilib is pre-assembled and all the data is already available, 
+ * or if the data was already previously loaded, then this constructor will call
+ * the onLoad callback immediately when the initialization is done. 
+ * If the onLoad option is not given, this class will only attempt to load any
+ * missing locale data synchronously.
+ * 
  * Depends directive: !depends localeinfo.js
  * 
  * @constructor
+ * @see {ilib.setLoaderCallback} for information about registering a loader callback
+ * function
  * @param {ilib.Locale|string=} locale the locale for which the info is sought, or undefined for
+ * @param {Object=} options the locale for which the info is sought, or undefined for
  * the current locale
  */
-ilib.LocaleInfo = function(locale) {
+ilib.LocaleInfo = function(locale, options) {
 	/* these are all the defaults. Essentially, en-US */
-	this.info = {
-		units: "metric",
-		clock: "24",
-		calendar: "gregorian",
-		firstDayOfWeek: 0,
-		timezone: "America/Los_Angeles",
-		numfmt: {
-			decimalChar: ".",
-			groupChar: "",
-			groupSize: 0,
-			pctFmt: "{n}%",
-			pctChar: "%",
-			roundingMode: "halfdown"
-		},
-		currencyFormats: {
-			common: "{s}{n}",
-			iso: "{s} {n}"
-		},
-		currency: "USD"
-	};
+	this.info = ilib.data.localeinfo;
 	
 	switch (typeof(locale)) {
 		case "string":
@@ -2149,18 +3450,46 @@ ilib.LocaleInfo = function(locale) {
 			this.locale = locale;
 			break;
 	}
-
-	if (ilib.data["localeinfo"]) {
-		this.info = ilib.merge(this.info, ilib.data["localeinfo"]);
-	}
-	if (ilib.data["localeinfo_" + this.locale.getLanguage()]) {
-		this.info = ilib.merge(this.info, ilib.data["localeinfo_" + this.locale.getLanguage()]);
-	}
-	if (ilib.data["localeinfo_" + this.locale.getLanguage() + "_" + this.locale.getRegion()]) {
-		this.info = ilib.merge(this.info, ilib.data["localeinfo_" + this.locale.getLanguage() + "_" + this.locale.getRegion()]);
-	}
-	if (ilib.data["localeinfo_" + this.locale.getLanguage() + "_" + this.locale.getRegion() + "_" + this.locale.getVariant()]) {
-		this.info = ilib.merge(this.info, ilib.data["localeinfo_" + this.locale.getLanguage() + "_" + this.locale.getRegion() + "_" + this.locale.getVariant()]);
+	
+	var spec = this.locale.getSpec().replace(/-/g, "_");
+	if (typeof(ilib.data.localeInfo[spec]) === 'undefined') {
+		this.info = ilib.mergeLocData("localeinfo", this.locale);
+		if (this.info) {
+			ilib.data.localeInfo[spec] = this.info;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		} else if (typeof(ilib._load) === 'function') {
+			// locale is not preassembled, so attempt to load it dynamically
+			var files = ilib.getLocFiles("locale", this.locale, "localeinfo");
+			
+			ilib._load(this, files, function(arr) {
+				this.info = {};
+				for (var i = 0; i < arr.length; i++) {
+					if (typeof(arr[i]) !== 'undefined') {
+						this.info = ilib.merge(this.info, arr[i]);
+					}
+				}
+				
+				ilib.data.localeInfo[spec] = this.info;
+				
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
+			});
+		} else {
+			// no data other than the generic shared data
+			this.info = ilib.data.localeinfo;
+			ilib.data.localeInfo[spec] = this.info;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		}
+	} else {
+		this.info = ilib.data.localeInfo[spec];
+		if (options && typeof(options.onLoad) === 'function') {
+			options.onLoad(this);
+		}
 	}
 };
 
@@ -2459,1512 +3788,6 @@ ilib.Cal.prototype = {
 	 */
 	isLeapYear: function(year) {
 		throw "Cannot call methods of abstract class ilib.Cal";
-	}
-};
-
-ilib.data.currency = {
-	"USD": {
-		"name": "US Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CHF": {
-		"name": "Swiss Franc",
-		"decimals": 2,
-		"sign": "Fr"
-	},
-	"RON": {
-		"name": "Leu",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"RUB": {
-		"name": "Russian Ruble",
-		"decimals": 2,
-		"sign": "руб."
-	},
-	"SEK": {
-		"name": "Swedish Krona",
-		"decimals": 2,
-		"sign": "kr"
-	},
-	"GBP": {
-		"name": "Pound Sterling",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"PKR": {
-		"name": "Pakistan Rupee",
-		"decimals": 2,
-		"sign": "₨"
-	},
-	"KES": {
-		"name": "Kenyan Shilling",
-		"decimals": 2,
-		"sign": "Sh"
-	},
-	"AED": {
-		"name": "UAE Dirham",
-		"decimals": 2,
-		"sign": "د.إ"
-	},
-	"KRW": {
-		"name": "Won",
-		"decimals": 0,
-		"sign": "₩"
-	},
-	"AFN": {
-		"name": "Afghani",
-		"decimals": 2,
-		"sign": "؋"
-	},
-	"ALL": {
-		"name": "Lek",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"AMD": {
-		"name": "Armenian Dram",
-		"decimals": 2,
-		"sign": "դր."
-	},
-	"ANG": {
-		"name": "Netherlands Antillean Guilder",
-		"decimals": 2,
-		"sign": "ƒ"
-	},
-	"AOA": {
-		"name": "Kwanza",
-		"decimals": 2,
-		"sign": "Kz"
-	},
-	"ARS": {
-		"name": "Argentine Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"AUD": {
-		"name": "Australian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"AWG": {
-		"name": "Aruban Florin",
-		"decimals": 2,
-		"sign": "ƒ"
-	},
-	"AZN": {
-		"name": "Azerbaijanian Manat",
-		"decimals": 2,
-		"sign": "AZN"
-	},
-	"BAM": {
-		"name": "Convertible Mark",
-		"decimals": 2,
-		"sign": "КМ"
-	},
-	"BBD": {
-		"name": "Barbados Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"BDT": {
-		"name": "Taka",
-		"decimals": 2,
-		"sign": "৳"
-	},
-	"BGN": {
-		"name": "Bulgarian Lev",
-		"decimals": 2,
-		"sign": "лв"
-	},
-	"BHD": {
-		"name": "Bahraini Dinar",
-		"decimals": 3,
-		"sign": ".د.ب"
-	},
-	"BIF": {
-		"name": "Burundi Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"BMD": {
-		"name": "Bermudian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"BND": {
-		"name": "Brunei Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"BOB": {
-		"name": "Boliviano",
-		"decimals": 2,
-		"sign": "Bs."
-	},
-	"BRL": {
-		"name": "Brazilian Real",
-		"decimals": 2,
-		"sign": "R$"
-	},
-	"BSD": {
-		"name": "Bahamian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"BTN": {
-		"name": "Ngultrum",
-		"decimals": 2,
-		"sign": "Nu."
-	},
-	"BWP": {
-		"name": "Pula",
-		"decimals": 2,
-		"sign": "P"
-	},
-	"BYR": {
-		"name": "Belarussian Ruble",
-		"decimals": 0,
-		"sign": "Br"
-	},
-	"BZD": {
-		"name": "Belize Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CAD": {
-		"name": "Canadian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CDF": {
-		"name": "Congolese Franc",
-		"decimals": 2,
-		"sign": "Fr"
-	},
-	"CLP": {
-		"name": "Chilean Peso",
-		"decimals": 0,
-		"sign": "$"
-	},
-	"CNY": {
-		"name": "Yuan Renminbi",
-		"decimals": 2,
-		"sign": "元"
-	},
-	"COP": {
-		"name": "Colombian Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CRC": {
-		"name": "Costa Rican Colon",
-		"decimals": 2,
-		"sign": "₡"
-	},
-	"CUP": {
-		"name": "Cuban Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CVE": {
-		"name": "Cape Verde Escudo",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"CZK": {
-		"name": "Czech Koruna",
-		"decimals": 2,
-		"sign": "Kč"
-	},
-	"DJF": {
-		"name": "Djibouti Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"DKK": {
-		"name": "Danish Krone",
-		"decimals": 2,
-		"sign": "kr"
-	},
-	"DOP": {
-		"name": "Dominican Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"DZD": {
-		"name": "Algerian Dinar",
-		"decimals": 2,
-		"sign": "د.ج"
-	},
-	"EGP": {
-		"name": "Egyptian Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"ERN": {
-		"name": "Nakfa",
-		"decimals": 2,
-		"sign": "Nfk"
-	},
-	"ETB": {
-		"name": "Ethiopian Birr",
-		"decimals": 2,
-		"sign": "Br"
-	},
-	"EUR": {
-		"name": "Euro",
-		"decimals": 2,
-		"sign": "€"
-	},
-	"FJD": {
-		"name": "Fiji Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"FKP": {
-		"name": "Falkland Islands Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"GEL": {
-		"name": "Lari",
-		"decimals": 2,
-		"sign": "ლ"
-	},
-	"GHS": {
-		"name": "Cedi",
-		"decimals": 2,
-		"sign": "₵"
-	},
-	"GIP": {
-		"name": "Gibraltar Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"GMD": {
-		"name": "Dalasi",
-		"decimals": 2,
-		"sign": "D"
-	},
-	"GNF": {
-		"name": "Guinea Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"GTQ": {
-		"name": "Quetzal",
-		"decimals": 2,
-		"sign": "Q"
-	},
-	"GYD": {
-		"name": "Guyana Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"HKD": {
-		"name": "Hong Kong Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"HNL": {
-		"name": "Lempira",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"HRK": {
-		"name": "Croatian Kuna",
-		"decimals": 2,
-		"sign": "kn"
-	},
-	"HTG": {
-		"name": "Gourde",
-		"decimals": 2,
-		"sign": "G"
-	},
-	"HUF": {
-		"name": "Forint",
-		"decimals": 2,
-		"sign": "Ft"
-	},
-	"IDR": {
-		"name": "Rupiah",
-		"decimals": 2,
-		"sign": "Rp"
-	},
-	"ILS": {
-		"name": "New Israeli Sheqel",
-		"decimals": 2,
-		"sign": "₪"
-	},
-	"INR": {
-		"name": "Indian Rupee",
-		"decimals": 2,
-		"sign": "INR"
-	},
-	"IQD": {
-		"name": "Iraqi Dinar",
-		"decimals": 3,
-		"sign": "ع.د"
-	},
-	"IRR": {
-		"name": "Iranian Rial",
-		"decimals": 2,
-		"sign": "﷼"
-	},
-	"ISK": {
-		"name": "Iceland Krona",
-		"decimals": 0,
-		"sign": "kr"
-	},
-	"JMD": {
-		"name": "Jamaican Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"JOD": {
-		"name": "Jordanian Dinar",
-		"decimals": 3,
-		"sign": "د.ا"
-	},
-	"JPY": {
-		"name": "Yen",
-		"decimals": 0,
-		"sign": "¥"
-	},
-	"KGS": {
-		"name": "Som",
-		"decimals": 2,
-		"sign": "лв"
-	},
-	"KHR": {
-		"name": "Riel",
-		"decimals": 2,
-		"sign": "៛"
-	},
-	"KMF": {
-		"name": "Comoro Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"KPW": {
-		"name": "North Korean Won",
-		"decimals": 2,
-		"sign": "₩"
-	},
-	"KWD": {
-		"name": "Kuwaiti Dinar",
-		"decimals": 3,
-		"sign": "د.ك"
-	},
-	"KYD": {
-		"name": "Cayman Islands Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"KZT": {
-		"name": "Tenge",
-		"decimals": 2,
-		"sign": "₸"
-	},
-	"LAK": {
-		"name": "Kip",
-		"decimals": 2,
-		"sign": "₭"
-	},
-	"LBP": {
-		"name": "Lebanese Pound",
-		"decimals": 2,
-		"sign": "ل.ل"
-	},
-	"LKR": {
-		"name": "Sri Lanka Rupee",
-		"decimals": 2,
-		"sign": "Rs"
-	},
-	"LRD": {
-		"name": "Liberian Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"LSL": {
-		"name": "Loti",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"LTL": {
-		"name": "Lithuanian Litas",
-		"decimals": 2,
-		"sign": "Lt"
-	},
-	"LVL": {
-		"name": "Latvian Lats",
-		"decimals": 2,
-		"sign": "Ls"
-	},
-	"LYD": {
-		"name": "Libyan Dinar",
-		"decimals": 3,
-		"sign": "ل.د"
-	},
-	"MAD": {
-		"name": "Moroccan Dirham",
-		"decimals": 2,
-		"sign": "د.م."
-	},
-	"MDL": {
-		"name": "Moldovan Leu",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"MGA": {
-		"name": "Malagasy Ariary",
-		"decimals": 2,
-		"sign": "Ar"
-	},
-	"MKD": {
-		"name": "Denar",
-		"decimals": 2,
-		"sign": "ден"
-	},
-	"MMK": {
-		"name": "Kyat",
-		"decimals": 2,
-		"sign": "K"
-	},
-	"MNT": {
-		"name": "Tugrik",
-		"decimals": 2,
-		"sign": "₮"
-	},
-	"MOP": {
-		"name": "Pataca",
-		"decimals": 2,
-		"sign": "P"
-	},
-	"MRO": {
-		"name": "Ouguiya",
-		"decimals": 2,
-		"sign": "UM"
-	},
-	"MUR": {
-		"name": "Mauritius Rupee",
-		"decimals": 2,
-		"sign": "₨"
-	},
-	"MVR": {
-		"name": "Rufiyaa",
-		"decimals": 2,
-		"sign": ".ރ"
-	},
-	"MWK": {
-		"name": "Kwacha",
-		"decimals": 2,
-		"sign": "MK"
-	},
-	"MXN": {
-		"name": "Mexican Peso",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"MYR": {
-		"name": "Malaysian Ringgit",
-		"decimals": 2,
-		"sign": "RM"
-	},
-	"MZN": {
-		"name": "Metical",
-		"decimals": 2,
-		"sign": "MT"
-	},
-	"NAD": {
-		"name": "Namibia Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"NGN": {
-		"name": "Naira",
-		"decimals": 2,
-		"sign": "₦"
-	},
-	"NIO": {
-		"name": "Cordoba Oro",
-		"decimals": 2,
-		"sign": "C$"
-	},
-	"NOK": {
-		"name": "Norwegian Krone",
-		"decimals": 2,
-		"sign": "kr"
-	},
-	"NPR": {
-		"name": "Nepalese Rupee",
-		"decimals": 2,
-		"sign": "₨"
-	},
-	"NZD": {
-		"name": "New Zealand Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"OMR": {
-		"name": "Rial Omani",
-		"decimals": 3,
-		"sign": "ر.ع."
-	},
-	"PAB": {
-		"name": "Balboa",
-		"decimals": 2,
-		"sign": "B/."
-	},
-	"PEN": {
-		"name": "Nuevo Sol",
-		"decimals": 2,
-		"sign": "S/."
-	},
-	"PGK": {
-		"name": "Kina",
-		"decimals": 2,
-		"sign": "K"
-	},
-	"PHP": {
-		"name": "Philippine Peso",
-		"decimals": 2,
-		"sign": "₱"
-	},
-	"PLN": {
-		"name": "Zloty",
-		"decimals": 2,
-		"sign": "zł"
-	},
-	"PYG": {
-		"name": "Guarani",
-		"decimals": 0,
-		"sign": "₲"
-	},
-	"QAR": {
-		"name": "Qatari Rial",
-		"decimals": 2,
-		"sign": "ر.ق"
-	},
-	"RSD": {
-		"name": "Serbian Dinar",
-		"decimals": 2,
-		"sign": "дин."
-	},
-	"RWF": {
-		"name": "Rwanda Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"SAR": {
-		"name": "Saudi Riyal",
-		"decimals": 2,
-		"sign": "ر.س"
-	},
-	"SBD": {
-		"name": "Solomon Islands Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"SCR": {
-		"name": "Seychelles Rupee",
-		"decimals": 2,
-		"sign": "₨"
-	},
-	"SDG": {
-		"name": "Sudanese Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"SGD": {
-		"name": "Singapore Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"SHP": {
-		"name": "Saint Helena Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"SLL": {
-		"name": "Leone",
-		"decimals": 2,
-		"sign": "Le"
-	},
-	"SOS": {
-		"name": "Somali Shilling",
-		"decimals": 2,
-		"sign": "Sh"
-	},
-	"SRD": {
-		"name": "Surinam Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"SSP": {
-		"name": "South Sudanese Pound",
-		"decimals": 2,
-		"sign": ""
-	},
-	"STD": {
-		"name": "Dobra",
-		"decimals": 2,
-		"sign": "Db"
-	},
-	"SYP": {
-		"name": "Syrian Pound",
-		"decimals": 2,
-		"sign": "£"
-	},
-	"SZL": {
-		"name": "Lilangeni",
-		"decimals": 2,
-		"sign": "L"
-	},
-	"THB": {
-		"name": "Baht",
-		"decimals": 2,
-		"sign": "฿"
-	},
-	"TJS": {
-		"name": "Somoni",
-		"decimals": 2,
-		"sign": "ЅМ"
-	},
-	"TMT": {
-		"name": "New Manat",
-		"decimals": 2,
-		"sign": "m"
-	},
-	"TND": {
-		"name": "Tunisian Dinar",
-		"decimals": 3,
-		"sign": "د.ت"
-	},
-	"TOP": {
-		"name": "Pa’anga",
-		"decimals": 2,
-		"sign": "T$"
-	},
-	"TRY": {
-		"name": "Turkish Lira",
-		"decimals": 2,
-		"sign": "TL"
-	},
-	"TTD": {
-		"name": "Trinidad and Tobago Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"TWD": {
-		"name": "New Taiwan Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"TZS": {
-		"name": "Tanzanian Shilling",
-		"decimals": 2,
-		"sign": "Sh"
-	},
-	"UAH": {
-		"name": "Hryvnia",
-		"decimals": 2,
-		"sign": "₴"
-	},
-	"UGX": {
-		"name": "Uganda Shilling",
-		"decimals": 2,
-		"sign": "Sh"
-	},
-	"UYU": {
-		"name": "Peso Uruguayo",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"UZS": {
-		"name": "Uzbekistan Sum",
-		"decimals": 2,
-		"sign": "лв"
-	},
-	"VEF": {
-		"name": "Bolivar Fuerte",
-		"decimals": 2,
-		"sign": "Bs F"
-	},
-	"VND": {
-		"name": "Dong",
-		"decimals": 0,
-		"sign": "₫"
-	},
-	"VUV": {
-		"name": "Vatu",
-		"decimals": 0,
-		"sign": "Vt"
-	},
-	"WST": {
-		"name": "Tala",
-		"decimals": 2,
-		"sign": "T"
-	},
-	"XAF": {
-		"name": "CFA Franc BEAC",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"XCD": {
-		"name": "East Caribbean Dollar",
-		"decimals": 2,
-		"sign": "$"
-	},
-	"XOF": {
-		"name": "CFA Franc BCEAO",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"XPF": {
-		"name": "CFP Franc",
-		"decimals": 0,
-		"sign": "Fr"
-	},
-	"YER": {
-		"name": "Yemeni Rial",
-		"decimals": 2,
-		"sign": "﷼"
-	},
-	"ZAR": {
-		"name": "Rand",
-		"decimals": 2,
-		"sign": "R"
-	},
-	"ZMK": {
-		"name": "Zambian Kwacha",
-		"decimals": 2,
-		"sign": "ZK"
-	},
-	"ZWL": {
-		"name": "Zimbabwe Dollar",
-		"decimals": 2,
-		"sign": "$"
-	}
-}
-;
-/*
- * currency.js - Currency definition
- * 
- * Copyright © 2012, JEDLSoft
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// !depends ilibglobal.js locale.js
-
-// !data currency
-
-/**
- * @class
- * Create a new currency information instance. Instances of this class encode 
- * information about a particular currency.<p> 
- * 
- * The options can contain any of the following properties:
- * 
- * <ul>
- * <li><i>locale</i> - specify the locale for this instance
- * <li><i>code</i> - find info on a specific currency with the given ISO 4217 code 
- * <li><i>sign</i> - search for a currency that uses this sign
- * </ul>
- * 
- * When searching for a currency by its sign, this class cannot guarantee 
- * that it will return info about a specific currency. The reason is that currency 
- * signs are sometimes shared between different currencies and the sign is 
- * therefore ambiguous. If you need a 
- * guarantee, find the currency using the code instead.<p>
- * 
- * The way this class finds a currency by sign is the following. If the sign is 
- * unambiguous, then
- * the currency is returned. If there are multiple currencies that use the same
- * sign, and the current locale uses that sign, then the default currency for
- * the current locale is returned. If there are multiple, but the current locale
- * does not use that sign, then the currency with the largest circulation is
- * returned. For example, if you are in the en-GB locale, and the sign is "$",
- * then this class will notice that there are multiple currencies with that
- * sign (USD, CAD, AUD, HKD, MXP, etc.) Since "$" is not used in en-GB, it will 
- * pick the one with the largest circulation, which in this case is the US Dollar
- * (USD).<p>
- * 
- * If neither the code or sign property is set, the currency that is most common 
- * for the locale
- * will be used instead. If the locale is not set, the default locale will be used.
- * If the code is given, but it is not found in the list of known currencies, this
- * constructor will throw an exception. If the sign is given, but it is not found,
- * this constructor will default to the currency for the current locale. If both
- * the code and sign properties are given, then the sign property will be ignored
- * and only the code property used. If the locale is given, but it is not a known
- * locale, this class will default to the default locale instead.<p>
- * 
- * Depends directive: !depends currency.js
- * 
- * @constructor
- * @param options {Object} a set of properties to govern how this instance is constructed.
- * @throws "currency xxx is unknown" when the given currency code is not in the list of 
- * known currencies. xxx is replaced with the requested code.
- */
-ilib.Currency = function (options) {
-	var li, currencies, currInfo, sign, cur;
-	
-	if (options) {
-		if (options.code) {
-			this.code = options.code;
-		}
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-		}
-		if (options.sign) {
-			sign = options.sign;
-		}
-	}
-	
-	this.locale = this.locale || new ilib.Locale();
-	li = new ilib.LocaleInfo(this.locale);
-		
-	currencies = new ilib.ResBundle({
-		locale: this.locale,
-		name: "currency"
-	}).getResObj();
-
-	if (this.code) {
-		currInfo = currencies[this.code];
-		if (!currInfo) {
-			throw "currency " + this.code + " is unknown";
-		}
-	} else if (sign) {
-		currInfo = currencies[sign]; // maybe it is really a code...
-		if (typeof(currInfo) !== 'undefined') {
-			this.code = sign;
-		} else {
-			this.code = li.getCurrency();
-			currInfo = currencies[this.code];
-			if (currInfo.sign !== sign) {
-				// current locale does not use the sign, so search for it
-				for (cur in currencies) {
-					if (cur && currencies[cur]) {
-						currInfo = currencies[cur];
-						if (currInfo.sign === sign) {
-							// currency data is already ordered so that the currency with the
-							// largest circulation is at the beginning, so all we have to do
-							// is take the first one in the list that matches
-							this.code = cur;
-							break;
-						}
-					}
-				}
-			}
-		}
-	}
-	
-	if (!currInfo || !this.code) {
-		this.code = li.getCurrency();
-		currInfo = currencies[this.code];
-	}
-	
-	this.name = currInfo.name;
-	this.fractionDigits = currInfo.decimals;
-	this.sign = currInfo.sign;
-};
-
-/**
- * @static
- * Return an array of the ids for all ISO 4217 currencies that
- * this copy of ilib knows about.
- * @returns {Array.<string>} an array of currency ids that this copy of ilib knows about.
- */
-ilib.Currency.getAvailableCurrencies = function() {
-	var ret = [],
-		cur,
-		currencies = new ilib.ResBundle({
-			name: "currency"
-		}).getResObj();
-	
-	for (cur in currencies) {
-		if (cur && currencies[cur]) {
-			ret.push(cur);
-		}
-	}
-	
-	return ret;
-};
-
-ilib.Currency.prototype = {
-	/**
-	 * Return the ISO 4217 currency code for this instance.
-	 * @returns {string} the ISO 4217 currency code for this instance
-	 */
-	getCode: function () {
-		return this.code;
-	},
-	
-	/**
-	 * Return the default number of fraction digits that is typically used
-	 * with this type of currency.
-	 * @returns {number} the number of fraction digits for this currency
-	 */
-	getFractionDigits: function () {
-		return this.fractionDigits;
-	},
-	
-	/**
-	 * Return the sign commonly used to represent this currency.
-	 * @returns {string} the sign commonly used to represent this currency
-	 */
-	getSign: function () {
-		return this.sign;
-	},
-	
-	/**
-	 * Return the name of the currency in English.
-	 * @returns {string} the name of the currency in English
-	 */
-	getName: function () {
-		return this.name;
-	},
-	
-	/**
-	 * Return the locale for this currency. If the options to the constructor 
-	 * included a locale property in order to find the currency that is appropriate
-	 * for that locale, then the locale is returned here. If the options did not
-	 * include a locale, then this method returns undefined.
-	 * @returns {ilib.Locale} the locale used in the constructor of this instance,
-	 * or undefined if no locale was given in the constructor
-	 */
-	getLocale: function () {
-		return this.locale;
-	}
-};
-
-/*
- * numfmt.js - Number formatter definition
- * 
- * Copyright © 2012, JEDLSoft
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// !depends ilibglobal.js locale.js strings.js resources.js currency.js
-
-/**
- * @private
- */
-ilib._roundFnc = {
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	floor: function (num) {
-		return Math.floor(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	ceiling: function (num) {
-		return Math.ceil(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	down: function (num) {
-		return (num < 0) ? Math.ceil(num) : Math.floor(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	up: function (num) {
-		return (num < 0) ? Math.floor(num) : Math.ceil(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfup: function (num) {
-		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfdown: function (num) {
-		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfeven: function (num) {
-		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfodd: function (num) {
-		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	}
-};
-
-/**
- * @class
- * Create a new number formatter instance. Locales differ in the way that digits
- * in a formatted number are grouped, in the way the decimal character is represented, 
- * etc. Use this formatter to get it right for any locale.<p>
- * 
- * This formatter can format plain numbers, currency amounts, and percentage amounts.<p>  
- * 
- * As with all formatters, the recommended
- * practice is to create one formatter and use it multiple times to format various
- * numbers.<p>
- * 
- * The options can contain any of the following properties:
- * 
- * <ul>
- * <li><i>locale</i> - use the conventions of the specified locale when figuring out how to
- * format a number.
- * <li><i>type</i> - the type of this formatter. Valid values are "number", "currency", or 
- * "percentage". If this property is not specified, the default is "number".
- * <li><i>currency</i> - the ISO 4217 3-letter currency code to use when the formatter type 
- * is "currency". This property is required for currency formatting. If the type property 
- * is "currency" and the currency property is not specified, the constructor will throw a
- * an exception. 
- * <li><i>maxFractionDigits</i> - the maximum number of digits that should appear in the
- * formatted output after the decimal. A value of -1 means unlimited, and 0 means only print
- * the integral part of the number. 
- * <li><i>minFractionDigits</i> - the minimum number of fractional digits that should
- * appear in the formatted output. If the number does not have enough fractional digits
- * to reach this minimum, the number will be zero-padded at the end to get to the limit.
- * If the type of the formatter is "currency" and this
- * property is not specified, then the minimum fraction digits is set to the normal number
- * of digits used with that currency, which is almost always 0, 2, or 3 digits.
- * <li><i>roundingMode</i> - When the maxFractionDigits or maxIntegerDigits is specified,
- * this property governs how the least significant digits are rounded to conform to that
- * maximum. The value of this property is a string with one of the following values:
- * <ul>
- *   <li><i>up</i> - round away from zero
- *   <li><i>down</i> - round towards zero. This has the effect of truncating the number
- *   <li><i>ceiling</i> - round towards positive infinity
- *   <li><i>floor</i> - round towards negative infinity
- *   <li><i>halfup</i> - round towards nearest neighbour. If equidistant, round up.
- *   <li><i>halfdown</i> - round towards nearest neighbour. If equidistant, round down.
- *   <li><i>halfeven</i> - round towards nearest neighbour. If equidistant, round towards the even neighbour
- *   <li><i>halfodd</i> - round towards nearest neighbour. If equidistant, round towards the odd neighbour
- * </ul>
- * When the type of the formatter is "currency" and the <i>roundingMode</i> property is not
- * set, then the standard legal rounding rules for the locale are followed. If the type
- * is "number" or "percentage" and the <i>roundingMode</i> property is not set, then the 
- * default mode is "halfdown".</i>.
- * <li><i>style</i> - When the type of this formatter is "currency", the currency amount
- * can be formatted in the following styles: "common" and "iso". The common style is the
- * one commonly used in every day writing where the currency unit is represented using a 
- * symbol. eg. "$57.35" for fifty-seven dollars and thirty five cents. The iso style is 
- * the international style where the currency unit is represented using the ISO 4217 code.
- * eg. "USD 57.35" for the same amount. The default is "common" style if the style is
- * not specified.<p>
- * 
- * When the type of this formatter is "number",
- * the style can be either "standard" or "scientific". A "standard" style means a fully
- * specified floating point number formatted for the locale, whereas "scientific" uses
- * scientific notation for all numbers. That is, 1 integral digit, followed by a number
- * of fractional digits, followed by an "e" which denotes exponentiation, followed digits
- * which give the power of 10 in the exponent. Note that if you specify a maximum number
- * of integral digits, the formatter with a standard style will give you standard 
- * formatting for smaller numbers and scientific notation for larger numbers. The default
- * is standard style if this is not specified. 
- * </ul>
- * <p>
- * 
- * Depends directive: !depends numfmt.js
- * 
- * @constructor
- * @param {Object.<string,*>} options A set of options that govern how the formatter will behave 
- */
-ilib.NumFmt = function (options) {
-	this.locale = new ilib.Locale();
-	this.type = "number";
-	
-	if (options) {
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-		}
-		
-		if (options.type) {
-			if (options.type === 'number' || 
-				options.type === 'currency' || 
-				options.type === 'percentage') {
-				this.type = options.type;
-			}
-		}
-		
-		if (options.currency) {
-			this.currency = options.currency;
-		}
-		
-		if (typeof(options.maxFractionDigits) === 'number') {
-			this.maxFractionDigits = this._toPrimitive(options.maxFractionDigits);
-		}
-		if (typeof(options.minFractionDigits) === 'number') {
-			this.minFractionDigits = this._toPrimitive(options.minFractionDigits);
-		}
-		if (options.style) {
-			this.style = options.style;
-		}
-	}
-	
-	this.localeInfo = new ilib.LocaleInfo(this.locale);
-	switch (this.type) {
-		case "currency":
-			var templates,
-				curopts;
-			
-			if (!this.currency || typeof(this.currency) != 'string') {
-				throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
-			}
-			
-			curopts = {
-				locale: this.locale,
-				code: this.currency		
-			};
-			this.currencyInfo = new ilib.Currency(curopts);
-			if (this.style !== "common" && this.style !== "iso") {
-				this.style = "common";
-			}
-			
-			if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
-				this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
-			}
-			
-			templates = this.localeInfo.getCurrencyFormats();
-			this.template = new ilib.String(templates[this.style]);
-			this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign(); 
-			break;
-		case "percentage":
-			this.template = new ilib.String(this.localeInfo.getPercentageFormat());
-			break;
-		default:
-			break;
-	}
-	
-	if (this.maxFractionDigits < this.minFractionDigits) {
-		this.minFractionDigits = this.maxFractionDigits;
-	}
-	
-	this.roundingMode = options && options.roundingMode;
-	if (!this.roundingMode) {
-		this.roundingMode = this.localeInfo.getRoundingMode();
-	}
-	if (!this.roundingMode) {
-		this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
-	}
-	if (!this.roundingMode) {
-		this.roundingMode = "halfdown";
-	}
-	
-	// set up the function, so we only have to figure it out once
-	// and not every time we do format()
-	this.round = ilib._roundFnc[this.roundingMode];
-	if (!this.round) {
-		this.roundingMode = "halfdown";
-		this.round = ilib._roundFnc[this.roundingMode];
-	}
-};
-
-/**
- * Return an array of available locales that this formatter can format
- * @returns {Array.<ilib.Locale>|undefined} an array of available locales
- */
-ilib.NumFmt.getAvailableLocales = function () {
-	return undefined;
-};
-
-/**
- * @private
- * @const
- * @type string
- */
-ilib.NumFmt.zeros = "0000000000000000000000000000000000000000000000000000000000000000000000";
-
-
-ilib.NumFmt.prototype = {
-	/*
-	 * @private
-	 */
-	_pad: function (str, length, left) {
-		return (str.length >= length) ? 
-			str : 
-			(left ? 
-				ilib.NumFmt.zeros.substring(0,length-str.length) + str : 
-				str + ilib.NumFmt.zeros.substring(0,length-str.length));  
-	},
-	
-	/**
-	 * @private
-	 * @param {Number|ilib.Number|string|number} num object, string, or number to convert to a primitive number
-	 * @returns {number} the primitive number equivalent of the argument
-	 */
-	_toPrimitive: function (num) {
-		var n = 0;
-		
-		switch (typeof(num)) {
-		case 'number':
-			n = num;
-			break;
-		case 'string':
-			n = parseFloat(num);
-			break;
-		case 'object':
-			// Number.valueOf() is incorrectly documented as being of type "string" rather than "number", so coerse 
-			// the type here to shut the type checker up
-			n = /** @type {number} */ num.valueOf();
-			break;
-		}
-		
-		return n;
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num the number to format
-	 * @returns {string} the formatted number 
-	 */
-	_formatScientific: function (num) {
-		var n = new Number(num);
-		var formatted;
-		if (typeof(this.maxFractionDigits) !== 'undefined') {
-			// if there is fraction digits, round it to the right length first
-			// divide or multiply by 10 by manipulating the exponent so as to
-			// avoid the rounding errors of floating point numbers
-			var e, 
-				factor,
-				str = n.toExponential(),
-				parts = str.split("e"),
-				significant = parts[0];
-			
-			e = parts[1];	
-			factor = Math.pow(10, this.maxFractionDigits);
-			significant = this.round(significant * factor) / factor;
-			formatted = "" + significant + "e" + e;
-		} else {
-			formatted = n.toExponential(this.minFractionDigits);
-		}
-		return formatted;
-	},
-	
-	/**
-	 * @private 
-	 * @param {number} num the number to format
-	 * @returns {string} the formatted number
-	 */ 
-	_formatStandard: function (num) {
-		var i;
-		
-		// console.log("_formatNumberStandard: formatting number " + num);
-		if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
-			var factor = Math.pow(10, this.maxFractionDigits);
-			num = this.round(num * factor) / factor;
-		}
-
-		var negative = (num < 0);
-		if (negative) {
-			num = -num;
-		}
-		
-		var parts = ("" + num).split("."),
-			integral = parts[0],
-			fraction = parts[1],
-			cycle,
-			groupSize = this.localeInfo.getGroupingDigits(),
-			formatted;
-		
-		
-		if (this.minFractionDigits > 0) {
-			fraction = this._pad(fraction || "", this.minFractionDigits, false);
-		}
-
-		if (groupSize > 0) {
-			cycle = ilib.mod(integral.length-1, groupSize);
-			formatted = negative ? "-" : "";
-			for (i = 0; i < integral.length-1; i++) {
-				formatted += integral.charAt(i);
-				if (cycle === 0) {
-					formatted += this.localeInfo.getGroupingSeparator();
-				}
-				cycle = ilib.mod(cycle - 1, groupSize);
-			}
-			formatted += integral.charAt(integral.length-1);
-		} else {
-			formatted = (negative ? "-" : "") + integral;
-		}
-		
-		if (fraction && (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits > 0)) {
-			formatted += this.localeInfo.getDecimalSeparator();
-			formatted += fraction;
-		}
-		
-		// console.log("_formatNumberStandard: returning " + formatted);
-		return formatted;
-	},
-	
-	/**
-	 * Format a number according to the settings of this number formatter instance.
-	 * @param num {number|string|Number|ilib.Number} a floating point number to format
-	 * @returns {string} a string containing the formatted number
-	 */
-	format: function (num) {
-		var formatted, n;
-
-		if (typeof(num) === 'undefined') {
-			return "";
-		}
-		
-		// convert to a real primitive number type
-		n = this._toPrimitive(num);
-		
-		if (this.type === "number") {
-			formatted = (this.style === "scientific") ? 
-					this._formatScientific(n) : 
-					this._formatStandard(n);
-		} else {			
-			formatted = this.template.format({n: this._formatStandard(n), s: this.sign});
-		}
-		
-		return formatted;
-	},
-	
-	/**
-	 * Return the type of formatter. Valid values are "number", "currency", and
-	 * "percentage".
-	 * 
-	 * @returns {string} the type of formatter
-	 */
-	getType: function () {
-		return this.type;
-	},
-	
-	/**
-	 * Return the locale for this formatter instance.
-	 * @returns {ilib.Locale} the locale instance for this formatter
-	 */
-	getLocale: function () {
-		return this.locale;
-	},
-	
-	/**
-	 * Returns true if this formatter groups together digits in the integral 
-	 * portion of a number, based on the options set up in the constructor. In 
-	 * most western European cultures, this means separating every 3 digits 
-	 * of the integral portion of a number with a particular character.
-	 * 
-	 * @returns {boolean} true if this formatter groups digits in the integral
-	 * portion of the number
-	 */
-	isGroupingUsed: function () {
-		var c = this.localeInfo.getGroupingSeparator();
-		return (c !== 'undefined' && c.length > 0);
-	},
-	
-	/**
-	 * Returns the maximum fraction digits set up in the constructor.
-	 * 
-	 * @returns {number} the maximum number of fractional digits this
-	 * formatter will format, or -1 for no maximum
-	 */
-	getMaxFractionDigits: function () {
-		return typeof(this.maxFractionDigits) !== 'undefined' ? this.maxFractionDigits : -1;
-	},
-	
-	/**
-	 * Returns the minimum fraction digits set up in the constructor. If
-	 * the formatter has the type "currency", then the minimum fraction
-	 * digits is the amount of digits that is standard for the currency
-	 * in question unless overridden in the options to the constructor.
-	 * 
-	 * @returns {number} the minimum number of fractional digits this
-	 * formatter will format, or -1 for no minimum
-	 */
-	getMinFractionDigits: function () {
-		return typeof(this.minFractionDigits) !== 'undefined' ? this.minFractionDigits : -1;
-	},
-
-	/**
-	 * Returns the ISO 4217 code for the currency that this formatter formats.
-	 * IF the typeof this formatter is not "currency", then this method will
-	 * return undefined.
-	 * 
-	 * @returns {string} the ISO 4217 code for the currency that this formatter
-	 * formats, or undefined if this not a currency formatter
-	 */
-	getCurrency: function () {
-		return this.currencyInfo && this.currencyInfo.getCode();
-	},
-	
-	/**
-	 * Returns the rounding mode set up in the constructor. The rounding mode
-	 * controls how numbers are rounded when the integral or fraction digits 
-	 * of a number are limited.
-	 * 
-	 * @returns {string} the name of the rounding mode used in this formatter
-	 */
-	getRoundingMode: function () {
-		return this.roundingMode;
-	},
-	
-	/**
-	 * If this formatter is a currency formatter, then the style determines how the
-	 * currency is denoted in the formatted output. This method returns the style
-	 * that this formatter will produce. (See the constructor comment for more about
-	 * the styles.)
-	 * @returns {string} the name of the style this formatter will use to format
-	 * currency amounts, or "undefined" if this formatter is not a currency formatter
-	 */
-	getStyle: function () {
-		return this.style;
 	}
 };
 
@@ -4802,7 +4625,8 @@ ilib.Date.GregDate.prototype.getEra = function() {
  * the number of milliseconds since midnight on Jan 1, 1970. This method only
  * returns a valid number for dates between midnight, Jan 1, 1970 and  
  * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
- * encodes a date outside of that range, this method will return -1.
+ * encodes a date outside of that range, this method will return -1. This method
+ * returns the time in the local time zone, not in UTC.
  * 
  * @returns {number} a number giving the unix time, or -1 if the date is outside the
  * valid unix time range
@@ -4817,7 +4641,6 @@ ilib.Date.GregDate.prototype.getTime = function() {
 		second: this.second,
 		millisecond: 0
 	});
-	var unix;
 
 	// earlier than Jan 1, 1970
 	// or later than Jan 19, 2038 at 3:14:07am
@@ -4860,6 +4683,7 @@ ilib.Date.GregDate.prototype.getJSDate = function() {
 
 /**
  * Return the Julian Day equivalent to this calendar date as a number.
+ * This returns the julian day in the local time zone.
  * 
  * @return {number} the julian date equivalent of this date
  */
@@ -4884,6 +4708,20 @@ ilib.Date.GregDate.prototype.getCalendar = function() {
  */
 ilib.Date.GregDate.prototype.getTimeZone = function() {
 	return this.timezone;
+};
+
+/**
+ * Set the time zone associated with this Gregorian date.
+ * @param {string} tzName the name of the time zone to set into this date instance,
+ * or "undefined" to unset the time zone 
+ */
+ilib.Date.GregDate.prototype.setTimeZone = function (tzName) {
+	if (!tzName || tzName === "") {
+		// same as undefining it
+		this.timezone = undefined;
+	} else if (typeof(tzName) === 'string') {
+		this.timezone = tzName;
+	}
 };
 
 // register with the factory method
@@ -4913,11 +4751,11 @@ ilib.data.timezones = {"Europe/Sofia":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l
 ilibglobal.js 
 locale.js
 localeinfo.js
-numfmt.js
+util/utils.js
 calendar/gregoriandate.js
 */
 
-// !data timezones
+// !data localeinfo timezones
 
 /**
  * @class Create a time zone information instance. 
@@ -4939,8 +4777,15 @@ calendar/gregoriandate.js
  * determine the offsets from UTC. 
  * 
  * <li><i>locale</i> - The locale for this time zone.
+ * 
  * <li><i>offset</i> - Choose the time zone based on the offset from UTC given in
- * number of minutes (negative is west, positive is east). 
+ * number of minutes (negative is west, positive is east).
+ * 
+ * <li><i>onLoad</i> - a callback function to call when the data is fully 
+ * loaded. When the onLoad option is given, this class will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the data is loaded, the onLoad function is called with the current 
+ * instance as a parameter. 
  * </ul>
  * 
  * There is currently no way in the ECMAscript
@@ -4994,8 +4839,6 @@ calendar/gregoriandate.js
  * @param {Object} options Options guiding the construction of this time zone instance
  */
 ilib.TimeZone = function(options) {
-	var arr, i, bad, res, formats, type, zones;
-	
 	this.locale = new ilib.Locale();
 	this.isLocal = false;
 	
@@ -5033,30 +4876,36 @@ ilib.TimeZone = function(options) {
 	//console.log("timezone: locale is " + this.locale);
 	
 	if (!this.id) {
-		this.locinfo = new ilib.LocaleInfo(this.locale);
-		this.id = this.locinfo.getTimeZone();
+		var li = new ilib.LocaleInfo(this.locale, {
+			onLoad: function (li) {
+				this.id = li.getTimeZone() || "Etc/UTC";
+				this._inittz();
+				
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
+			}.bind(this)
+		});
+	} else {
+		this._inittz();
+		if (options && typeof(options.onLoad) === 'function') {
+			options.onLoad(this);
+		}
 	}
 
 	//console.log("localeinfo is: " + JSON.stringify(this.locinfo));
 	//console.log("id is: " + JSON.stringify(this.id));
-	
-	if (!ilib.TimeZone.zones) {
-		res = new ilib.ResBundle({
-			locale: this.locale,
-			name: "timezones"
-		});
+};
 
-		ilib.TimeZone.zones = res.getResObj();
-	}
-	
+ilib.TimeZone.prototype._inittz = function () {
 	/** 
 	 * @private
 	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>}} 
 	 */
-	this.zone = ilib.TimeZone.zones[this.id];
+	this.zone = ilib.data.timezones[this.id];
 	if (!this.zone && !this.offset) {
-		this.id = "Europe/London";
-		this.zone = ilib.TimeZone.zones[this.id];
+		this.id = "Etc/UTC";
+		this.zone = ilib.data.timezones[this.id];
 	}
 };
 
@@ -5065,20 +4914,12 @@ ilib.TimeZone = function(options) {
  * @returns {Array.<string>} an array of zone id strings
  */
 ilib.TimeZone.getAvailableIds = function () {
-	var res, tz, ids = [];
-	
-	if (!ilib.TimeZone.zones) {
-		res = new ilib.ResBundle({
-			name: "timezones"
-		});
-
-		ilib.TimeZone.zones = res.getResObj();
-	}
+	var tz, ids = [];
 	
 	// special zone meaning "the local time zone according to the JS engine we are running upon"
 	ids.push("local"); 
 	
-	for (tz in ilib.TimeZone.zones) {
+	for (tz in ilib.data.timezones) {
 		if (tz) {
 			ids.push(tz);
 		}
@@ -5114,7 +4955,7 @@ ilib.TimeZone.prototype.getId = function () {
  * @returns {string} the name of the time zone, abbreviated according to the style 
  */
 ilib.TimeZone.prototype.getDisplayName = function (date, style) {
-	style = (typeof(this.offset) !== 'undefined') ? "rfc822" : (style || "standard");
+	style = (this.isLocal || typeof(this.zone) === 'undefined') ? "rfc822" : (style || "standard");
 	switch (style) {
 		default:
 		case 'standard':
@@ -5191,81 +5032,58 @@ ilib.TimeZone.prototype._offsetStringToObj = function (str) {
  * time is in effect at the given date/time, this method will return the offset value 
  * adjusted by the amount of daylight saving.
  * @param {ilib.Date=} date the date for which the offset is needed
- * @return {Object.<{h:number,m:number,s:number}>} an object giving the offset for the zone at 
+ * @return {Object.<{h:number,m:number}>} an object giving the offset for the zone at 
  * the given date/time, in hours, minutes, and seconds  
  */
 ilib.TimeZone.prototype.getOffset = function (date) {
-	var ret = {};
+	var offset = this.getOffsetMillis(date)/60000;
+	
+	var hours = ilib._roundFnc.down(offset/60),
+		minutes = Math.abs(offset) - Math.abs(hours)*60;
+
+	var ret = {
+		h: hours
+	};
+	if (minutes != 0) {
+		ret.m = minutes;
+	}
+	return ret;
+};
+
+/**
+ * Returns the offset of this time zone from UTC at the given date/time expressed in 
+ * milliseconds. If daylight saving 
+ * time is in effect at the given date/time, this method will return the offset value 
+ * adjusted by the amount of daylight saving. Negative numbers indicate offsets west
+ * of UTC and conversely, positive numbers indicate offset east of UTC.
+ *  
+ * @param {ilib.Date=} date the date for which the offset is needed, or null for the
+ * present date
+ * @return {number} the number of milliseconds of offset from UTC that the given date is
+ */
+ilib.TimeZone.prototype.getOffsetMillis = function (date) {
+	var ret;
+	
 	if (this.isLocal) {
 		var d = (!date) ? new Date() : new Date(date.getTime());
-		var offset = -d.getTimezoneOffset();
-		// hours could be negative, so use the "down" rounding function to round towards zero 
-		// instead of rounding to negative infinity, which is what Math.floor gives you
-		var hours = ilib._roundFnc.down(offset/60),
-		  minutes = Math.abs(offset) - Math.abs(hours)*60;
-		return {
-			h: hours,
-			m: minutes
-		};
-	} else if (typeof(this.offset) !== 'undefined') {
-		var hours = ilib._roundFnc.down(this.offset/60),
-			minutes = Math.abs(this.offset) - Math.abs(hours)*60;
-		return {
-			h: hours,
-			m: minutes
-		};
-	} else if (this.zone.o) {
-		var offsetParts = this._offsetStringToObj(this.zone.o);
-		
-		if (date && this.inDaylightTime(date)) {
-			var saveParts = this._offsetStringToObj(this.zone.s.v),
-				temp,
-				minutes;
-			
-			//console.log("standard offset is " + JSON.stringify(offsetParts));
-			//console.log("savings is " + JSON.stringify(saveParts));
-			
-			// convert to number of seconds in the day and then back again 
-			// to hours:min:seconds so that we get the arithmetic right when
-			// we add the savings time, which may be a non-whole-hour size
-			temp = (offsetParts.m || 0) * 60 + (offsetParts.s || 0);
-			if (offsetParts.h < 0) {
-				temp += -offsetParts.h * 3600;
-				temp = -temp;
-			} else {
-				temp += offsetParts.h * 3600;
-			}
-			
-			//console.log("standard offset in seconds: " + temp);
-
-			temp += saveParts.h * 3600 + (saveParts.m || 0) * 60 + (saveParts.s || 0);
-			
-			//console.log("less savings, leaves this in seconds: " + temp);
-			
-			ret.h = Math.floor(temp / 3600);
-			temp -= (ret.h * 3600);
-			minutes = Math.floor(temp / 60);
-			temp -= (minutes * 60);
-			if (minutes) {
-				ret.m = minutes;
-			}
-			if (temp !== 0) {
-				ret.s = temp;
-			}
-			
-			return ret;
-		} else {
-			ret.h = offsetParts.h;
-			if (offsetParts.m) {
-				ret.m = offsetParts.m;
-			}
-			if (offsetParts.s) {
-				ret.s = offsetParts.s;
-			}
-		}
-		return ret;
+		return -d.getTimezoneOffset() * 60 * 1000;
+	} 
+	
+	if (typeof(this.dstSavings) === 'undefined') {
+		this._calcDSTSavings();
 	}
-	return {h:0};
+	
+	if (typeof(this.offset) === 'undefined') {
+		this._calcOffset();
+	}
+	
+	ret = this.offset;
+	
+	if (date && this.inDaylightTime(date)) {
+		ret += this.dstSavings;
+	}
+	
+	return ret * 60 * 1000;
 };
 
 /**
@@ -5299,20 +5117,32 @@ ilib.TimeZone.prototype.getOffsetStr = function (date) {
  * UTC for this time zone, in hours, minutes, and seconds 
  */
 ilib.TimeZone.prototype.getRawOffset = function () {
-	if (this.isLocal) {
-		// this.offset is the raw offset. ie. it is the "standard time" for the zone.
-		var hours = ilib._roundFnc.down(this.offset/60),
-			minutes = Math.abs(this.offset) - Math.abs(hours)*60;
-		return {
-			h: hours,
-			m: minutes
-		};
-	} else if (typeof(this.offset) !== 'undefined') { 
-		// have to check against undefined instead of just "if (this.offset)" because the 
-		// offset could legally be equal to zero
-		return this.getOffset(undefined);
+	var offset = this.getRawOffsetMillis()/60000;
+
+	var hours = ilib._roundFnc.down(offset/60),
+		minutes = Math.abs(offset) - Math.abs(hours)*60;
+	
+	var ret = {
+		h: hours
+	};
+	if (minutes != 0) {
+		ret.m = minutes;
 	}
-	return this._offsetStringToObj(this.zone.o);
+	return ret;
+};
+
+/**
+ * Gets the offset from UTC for this time zone expressed in milliseconds. Negative numbers
+ * indicate zones west of UTC, and positive numbers indicate zones east of UTC.
+ * 
+ * @returns {number} an number giving the offset from 
+ * UTC for this time zone in milliseconds 
+ */
+ilib.TimeZone.prototype.getRawOffsetMillis = function () {
+	if (typeof(this.offset) === 'undefined') {
+		this._calcOffset();
+	}
+	return this.offset * 60 * 1000;
 };
 
 /**
@@ -5348,7 +5178,7 @@ ilib.TimeZone.prototype.getDSTSavings = function () {
 			h: hours,
 			m: minutes
 		};
-	} else if (typeof(this.offset) === 'undefined' && this.zone && this.zone.s) {
+	} else if (this.zone && this.zone.s) {
 		return this._offsetStringToObj(this.zone.s.v);	// this.zone.start.savings
 	}
 	return {h:0};
@@ -5456,6 +5286,33 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 };
 
 /**
+ * @private
+ */
+ilib.TimeZone.prototype._calcDSTSavings = function () {
+	var saveParts = this.getDSTSavings();
+	
+	/**
+	 * @private
+	 * @type {number} savings in minutes when DST is in effect 
+	 */
+	this.dstSavings = (Math.abs(saveParts.h || 0) * 60 + (saveParts.m || 0)) * ilib.signum(saveParts.h || 0);
+};
+
+/**
+ * @private
+ */
+ilib.TimeZone.prototype._calcOffset = function () {
+	if (this.zone.o) {
+		var offsetParts = this._offsetStringToObj(this.zone.o);
+		/**
+		 * @private
+		 * @type {number} raw offset from UTC without DST, in minutes
+		 */
+		this.offset = (Math.abs(offsetParts.h || 0) * 60 + (offsetParts.m || 0)) * ilib.signum(offsetParts.h || 0);
+	}
+};
+
+/**
  * Returns whether or not the given date is in daylight saving time for the current
  * zone. Note that daylight savings time is observed for the summer. Because
  * the seasons are reversed, daylight savings time in the southern hemisphere usually
@@ -5469,7 +5326,7 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
  * otherwise.
  */
 ilib.TimeZone.prototype.inDaylightTime = function (date) {
-	var year, rd, startRd, endRd;
+	var rd, startRd, endRd;
 	
 	// if we aren't using daylight time in this zone, then where are never in daylight
 	// time, no matter what the date is
@@ -5518,8 +5375,7 @@ ilib.TimeZone.prototype.useDaylightTime = function () {
 	// this zone uses daylight savings time iff there is a rule defining when to start
 	// and when to stop the DST
 	return (this.isLocal && this.offsetJan1 !== this.offsetJun1) ||
-		(typeof(this.offset) === 'undefined' && 
-		this.zone && 
+		(typeof(this.zone) !== 'undefined' && 
 		typeof(this.zone.s) !== 'undefined' && 
 		typeof(this.zone.e) !== 'undefined');
 };
@@ -10931,6 +10787,13 @@ timezone.js
  * <li><i>z</i> - general time zone
  * <li><i>Z</i> - RFC 822 time zone
  * </ul>
+ * 
+ * <li>onLoad - a callback function to call when the date format object is fully 
+ * loaded. When the onLoad option is given, the DateFmt object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * </ul>
  * 
  * Any substring containing letters within single or double quotes will be used 
@@ -10966,7 +10829,7 @@ timezone.js
  * @param {Object} options options governing the way this date formatter instance works
  */
 ilib.DateFmt = function(options) {
-	var arr, i, bad, res, formats, type;
+	var arr, i, bad, formats;
 	
 	this.locale = new ilib.Locale();
 	this.type = "date";
@@ -11056,57 +10919,187 @@ ilib.DateFmt = function(options) {
 		}
 	}
 	
-	this.locinfo = new ilib.LocaleInfo(this.locale);
+	new ilib.LocaleInfo(this.locale, {
+		onLoad: function (li) {
+			this.locinfo = li;
+			
+			// get the default calendar name from the locale, and if the locale doesn't define
+			// one, use the hard-coded gregorian as the last resort
+			this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
+			switch (this.calName) {
+				case 'julian':
+					this.cal = new ilib.Cal.Julian();
+					break;
+				default:
+					// just use the default Gregorian instead
+					this.cal = new ilib.Cal.Gregorian();
+					break;
+			}
+
+			if (this.timeComponents &&
+					(this.clock === '24' || 
+					(!this.clock && this.locinfo.getClock() === "24"))) {
+				// make sure we don't have am/pm in 24 hour mode unless the user specifically
+				// requested it in the time component option
+				this.timeComponents = this.timeComponents.replace("a", "");
+			}
+			
+			// load the strings used to translate the components
+			new ilib.ResBundle({
+				locale: this.locale,
+				name: "sysres",
+				onLoad: function (rb) {
+					this.sysres = rb;
+					if (!this.template) {
+						var spec = this.locale.getSpec().replace(/-/g, '_');
+						if (typeof(ilib.data.dateformatCache[spec]) !== 'undefined') {
+							formats = ilib.data.dateformatCache[spec];
+						} else {
+							formats = ilib.mergeLocData("dateformats", this.locale);
+							if (!formats) {
+								if (typeof(ilib._load) === 'function') {
+									var files = ilib.getLocFiles("locale", this.locale, "dateformats");
+									ilib._load(this, files, function(arr) {
+										formats = {};
+										for (var i = 0; i < arr.length; i++) {
+											if (typeof(arr[i]) !== 'undefined') {
+												formats = ilib.merge(formats, arr[i]);
+											}
+										}
+										this._initTemplate(formats);
+										this._massageTemplate();
+										if (options && typeof(options.onLoad) === 'function') {
+											options.onLoad(this);
+										}
+									});
+									return;
+								}
+								formats = ilib.data.dateformats;
+							}
+						}
+						this._initTemplate(formats);
+						ilib.data.dateformatCache[spec] = formats;
+					}
+					this._massageTemplate();
+					if (options && typeof(options.onLoad) === 'function') {
+						options.onLoad(this);
+					}
+				}.bind(this)
+			});	
+		}.bind(this)
+	});
+};
+
+// used in getLength
+ilib.DateFmt.lenmap = {
+	"s": "short",
+	"m": "medium",
+	"l": "long",
+	"f": "full"
+};
+
+ilib.DateFmt.zeros = "0000";
+
+ilib.DateFmt.prototype = {
+	/**
+	 * @protected
+	 */
+	_initTemplate: function (formats) {
+		if (formats[this.calName]) {
+			/** 
+			 * @private
+			 * @type {{order:(string|{s:string,m:string,l:string,f:string}),date:Object.<string, (string|{s:string,m:string,l:string,f:string})>,time:Object.<string,(string|{s:string,m:string,l:string,f:string})>,range:Object.<string, (string|{s:string,m:string,l:string,f:string})>}}
+			 */
+			this.formats = formats[this.calName];
+			if (typeof(this.formats) === "string") {
+				// alias to another calendar type
+				this.formats = formats[this.formats];
+			}
+			
+			this.template = "";
+			
+			switch (this.type) {
+				case "datetime":
+					this.template = (this.formats && this._getLengthFormat(this.formats.order, this.length)) || "{date} {time}";
+					this.template = this.template.replace("{date}", this._getFormat(this.formats.date, this.dateComponents, this.length));
+					this.template = this.template.replace("{time}", this._getFormat(this.formats.time, this.timeComponents, this.length));
+					break;
+				case "date":
+					this.template = this._getFormat(this.formats.date, this.dateComponents, this.length);
+					break;
+				case "time":
+					this.template = this._getFormat(this.formats.time, this.timeComponents, this.length);
+					break;
+			}
+		} else {
+			throw "No formats available for calendar " + this.calName + " in locale " + this.locale.toString();
+		}
+	},
 	
-	// get the default calendar name from the locale, and if the locale doesn't define
-	// one, use the hard-coded gregorian as the last resort
-	this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
-	switch (this.calName) {
-		case 'julian':
-			this.cal = new ilib.Cal.Julian();
-			break;
-		default:
-			// just use the default Gregorian instead
-			this.cal = new ilib.Cal.Gregorian();
-			break;
-	}
-
 	/**
 	 * @protected
-	 * @param {(string|{s:string,m:string,l:string,f:string})} obj Object to search
-	 * @param {string} length Length of the requested format
-	 * @returns {(string|undefined)} the requested format
 	 */
-	this._getLengthFormat = function getLengthFormat(obj, length) {
-		if (typeof(obj) === 'string') {
-			return obj;
-		} else if (obj[length]) {
-			return obj[length];
+	_massageTemplate: function () {
+		var i;
+		
+		if (this.clock && this.template) {
+			// explicitly set the hours to the requested type
+			var temp = "";
+			switch (this.clock) {
+				case "24":
+					for (i = 0; i < this.template.length; i++) {
+						if (this.template.charAt(i) == "'") {
+							temp += this.template.charAt(i++);
+							while (i < this.template.length && this.template.charAt(i) !== "'") {
+								temp += this.template.charAt(i++);
+							}
+							if (i < this.template.length) {
+								temp += this.template.charAt(i);
+							}
+						} else if (this.template.charAt(i) == 'K') {
+							temp += 'k';
+						} else if (this.template.charAt(i) == 'h') {
+							temp += 'H';
+						} else {
+							temp += this.template.charAt(i);
+						}
+					}
+					this.template = temp;
+					break;
+				case "12":
+					for (i = 0; i < this.template.length; i++) {
+						if (this.template.charAt(i) == "'") {
+							temp += this.template.charAt(i++);
+							while (i < this.template.length && this.template.charAt(i) !== "'") {
+								temp += this.template.charAt(i++);
+							}
+							if (i < this.template.length) {
+								temp += this.template.charAt(i);
+							}
+						} else if (this.template.charAt(i) == 'k') {
+							temp += 'K';
+						} else if (this.template.charAt(i) == 'H') {
+							temp += 'h';
+						} else {
+							temp += this.template.charAt(i);
+						}
+					}
+					this.template = temp;
+					break;
+			}
 		}
-		return undefined;
-	};
-
-	/**
-	 * @protected
-	 * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
-	 * @param {string} components Format components to search
-	 * @param {string} length Length of the requested format
-	 * @returns {string|undefined} the requested format
-	 */
-	this._getFormat = function getFormat(obj, components, length) {
-		if (typeof(components) !== 'undefined' && obj[components]) {
-			return this._getLengthFormat(obj[components], length);
-		}
-		return undefined;
-	};
-
+		
+		// tokenize it now for easy formatting
+		this.templateArr = this._tokenize(this.template);
+	},
+    
 	/**
 	 * @protected
 	 * Convert the template into an array of date components separated by formatting chars.
 	 * @param {string} template Format template to tokenize into components
 	 * @returns {Array.<string>} a tokenized array of date format components
 	 */
-	this._tokenize = function (template) {
+	_tokenize: function (template) {
 		var i = 0, start, ch, letter, arr = [];
 		
 		// console.log("_tokenize: tokenizing template " + template);
@@ -11141,121 +11134,37 @@ ilib.DateFmt = function(options) {
 			}
 		}
 		return arr;
-	};
-
-	if (this.timeComponents &&
-			(this.clock === '24' || 
-			(!this.clock && this.locinfo.getClock() === "24"))) {
-		// make sure we don't have am/pm in 24 hour mode unless the user specifically
-		// requested it in the time component option
-		this.timeComponents = this.timeComponents.replace("a", "");
-	}
-
-	if (!this.template) {
-		res = new ilib.ResBundle({
-			locale: this.locale,
-			name: "dateformats"
-		});
-		
-		formats = res.getResObj();
-		if (formats[this.calName]) {
-			/** 
-			 * @private
-			 * @type {{order:(string|{s:string,m:string,l:string,f:string}),date:Object.<string, (string|{s:string,m:string,l:string,f:string})>,time:Object.<string,(string|{s:string,m:string,l:string,f:string})>,range:Object.<string, (string|{s:string,m:string,l:string,f:string})>}}
-			 */
-			this.formats = formats[this.calName];
-			if (typeof(this.formats) === "string") {
-				// alias to another calendar type
-				this.formats = res.getResObj()[this.formats];
-			}
-			
-			this.template = "";
-			
-			switch (this.type) {
-				case "datetime":
-					this.template = (this.formats && this._getLengthFormat(this.formats.order, this.length)) || "{date} {time}";
-					this.template = this.template.replace("{date}", this._getFormat(this.formats.date, this.dateComponents, this.length));
-					this.template = this.template.replace("{time}", this._getFormat(this.formats.time, this.timeComponents, this.length));
-					break;
-				case "date":
-					this.template = this._getFormat(this.formats.date, this.dateComponents, this.length);
-					break;
-				case "time":
-					this.template = this._getFormat(this.formats.time, this.timeComponents, this.length);
-					break;
-			}
-		} else {
-			throw "No formats available for calendar " + this.calName + " in locale " + this.locale.toString();
+	},
+                          
+	/**
+	 * @protected
+	 * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
+	 * @param {string} components Format components to search
+	 * @param {string} length Length of the requested format
+	 * @returns {string|undefined} the requested format
+	 */
+	_getFormat: function getFormat(obj, components, length) {
+		if (typeof(components) !== 'undefined' && obj[components]) {
+			return this._getLengthFormat(obj[components], length);
 		}
-	}
-	if (this.clock && this.template) {
-		// explicitly set the hours to the requested type
-		var temp = "";
-		switch (this.clock) {
-			case "24":
-				for (i = 0; i < this.template.length; i++) {
-					if (this.template.charAt(i) == "'") {
-						temp += this.template.charAt(i++);
-						while (i < this.template.length && this.template.charAt(i) !== "'") {
-							temp += this.template.charAt(i++);
-						}
-						if (i < this.template.length) {
-							temp += this.template.charAt(i);
-						}
-					} else if (this.template.charAt(i) == 'K') {
-						temp += 'k';
-					} else if (this.template.charAt(i) == 'h') {
-						temp += 'H';
-					} else {
-						temp += this.template.charAt(i);
-					}
-				}
-				this.template = temp;
-				break;
-			case "12":
-				for (i = 0; i < this.template.length; i++) {
-					if (this.template.charAt(i) == "'") {
-						temp += this.template.charAt(i++);
-						while (i < this.template.length && this.template.charAt(i) !== "'") {
-							temp += this.template.charAt(i++);
-						}
-						if (i < this.template.length) {
-							temp += this.template.charAt(i);
-						}
-					} else if (this.template.charAt(i) == 'k') {
-						temp += 'K';
-					} else if (this.template.charAt(i) == 'H') {
-						temp += 'h';
-					} else {
-						temp += this.template.charAt(i);
-					}
-				}
-				this.template = temp;
-				break;
+		return undefined;
+	},
+
+	/**
+	 * @protected
+	 * @param {(string|{s:string,m:string,l:string,f:string})} obj Object to search
+	 * @param {string} length Length of the requested format
+	 * @returns {(string|undefined)} the requested format
+	 */
+	_getLengthFormat: function getLengthFormat(obj, length) {
+		if (typeof(obj) === 'string') {
+			return obj;
+		} else if (obj[length]) {
+			return obj[length];
 		}
-	}
-	
-	// tokenize it now for easy formatting
-	this.templateArr = this._tokenize(this.template);
-	
-	// load the strings used to translate the components
-	this.sysres = new ilib.ResBundle({
-		locale: this.locale,
-		name: "sysres"
-	});	
-};
+		return undefined;
+	},
 
-// used in getLength
-ilib.DateFmt.lenmap = {
-	"s": "short",
-	"m": "medium",
-	"l": "long",
-	"f": "full"
-};
-
-ilib.DateFmt.zeros = "0000";
-
-ilib.DateFmt.prototype = {
 	/**
 	 * Return the locale used with this formatter instance.
 	 * @returns {ilib.Locale} the ilib.Locale instance for this formatter
@@ -11865,6 +11774,12 @@ datefmt.js
  * 
  * If this property is not specified, the default is to use the most widely used convention
  * for the locale.
+ * <li>onLoad - a callback function to call when the date range format object is fully 
+ * loaded. When the onLoad option is given, the DateRngFmt object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * </ul>
  * <p>
  * 
@@ -11874,8 +11789,6 @@ datefmt.js
  * @param {Object} options options governing the way this date range formatter instance works
  */
 ilib.DateRngFmt = function(options) {
-	var arr, i, bad, res, formats, type;
-	
 	this.locale = new ilib.Locale();
 	this.length = "s";
 	
@@ -11895,26 +11808,37 @@ ilib.DateRngFmt = function(options) {
 		}
 	}
 	
-	this.locinfo = new ilib.LocaleInfo(this.locale);
-	
-	// get the default calendar name from the locale, and if the locale doesn't define
-	// one, use the hard-coded gregorian as the last resort
-	this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
-	switch (this.calName) {
-		case 'julian':
-			this.cal = new ilib.Cal.Julian();
-			break;
-		default:
-			// just use the default Gregorian instead
-			this.cal = new ilib.Cal.Gregorian();
-			break;
-	}
+	var opts = {};
+	ilib.shallowCopy(options, opts);
+	opts.onLoad = function (fmt) {
+		this.dateFmt = fmt;
+		if (fmt) {
+			this.locinfo = this.dateFmt.locinfo;
+
+			// get the default calendar name from the locale, and if the locale doesn't define
+			// one, use the hard-coded gregorian as the last resort
+			this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
+			switch (this.calName) {
+				case 'julian':
+					this.cal = new ilib.Cal.Julian();
+					break;
+				default:
+					// just use the default Gregorian instead
+					this.cal = new ilib.Cal.Gregorian();
+					break;
+			}
+			
+			this.timeTemplate = this.dateFmt._getFormat(this.dateFmt.formats.time, this.dateFmt.timeComponents, this.length) || "hh:mm";
+			this.timeTemplateArr = this.dateFmt._tokenize(this.timeTemplate);
+			
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		}
+	}.bind(this);
 
 	// delegate a bunch of the formatting to this formatter
-	this.dateFmt = new ilib.DateFmt(options);
-	
-	this.timeTemplate = this.dateFmt._getFormat(this.dateFmt.formats.time, this.dateFmt.timeComponents, this.length) || "hh:mm";
-	this.timeTemplateArr = this.dateFmt._tokenize(this.timeTemplate);
+	new ilib.DateFmt(opts);
 };
 
 ilib.DateRngFmt.prototype = {
@@ -13134,6 +13058,21 @@ ilib.Date.HebrewDate.prototype.getTimeZone = function() {
 	return this.timezone;
 };
 
+
+/**
+ * Set the time zone associated with this Hebrew date.
+ * @param {string} tzName the name of the time zone to set into this date instance,
+ * or "undefined" to unset the time zone 
+ */
+ilib.Date.HebrewDate.prototype.setTimeZone = function (tzName) {
+	if (!tzName || tzName === "") {
+		// same as undefining it
+		this.timezone = undefined;
+	} else if (typeof(tzName) === 'string') {
+		this.timezone = tzName;
+	}
+};
+
 // register with the factory method
 ilib.Date._constructors["hebrew"] = ilib.Date.HebrewDate;
 /*
@@ -13903,6 +13842,21 @@ ilib.Date.IslamicDate.prototype.getTimeZone = function() {
 	return this.timezone;
 };
 
+
+/**
+ * Set the time zone associated with this Islamic date.
+ * @param {string} tzName the name of the time zone to set into this date instance,
+ * or "undefined" to unset the time zone 
+ */
+ilib.Date.IslamicDate.prototype.setTimeZone = function (tzName) {
+	if (!tzName || tzName === "") {
+		// same as undefining it
+		this.timezone = undefined;
+	} else if (typeof(tzName) === 'string') {
+		this.timezone = tzName;
+	}
+};
+
 //register with the factory method
 ilib.Date._constructors["islamic"] = ilib.Date.IslamicDate;
 /*
@@ -14570,6 +14524,20 @@ ilib.Date.JulDate.prototype.getTimeZone = function() {
 	return this.timezone;
 };
 
+/**
+ * Set the time zone associated with this Julian date.
+ * @param {string} tzName the name of the time zone to set into this date instance,
+ * or "undefined" to unset the time zone 
+ */
+ilib.Date.JulDate.prototype.setTimeZone = function (tzName) {
+	if (!tzName || tzName === "") {
+		// same as undefining it
+		this.timezone = undefined;
+	} else if (typeof(tzName) === 'string') {
+		this.timezone = tzName;
+	}
+};
+
 //register with the factory method
 ilib.Date._constructors["julian"] = ilib.Date.JulDate;
 ilib.data.ctype = {
@@ -14983,16 +14951,6 @@ ilib.data.ctype = {
         [
             42128,
             42191
-        ]
-    ],
-    "highsurrogates": [
-        [
-            55296,
-            56191
-        ],
-        [
-            56192,
-            56319
         ]
     ],
     "linearb": [
@@ -15469,12 +15427,6 @@ ilib.data.ctype = {
             44031
         ]
     ],
-    "lowsurrogates": [
-        [
-            56320,
-            57343
-        ]
-    ],
     "presentation": [
         [
             64256,
@@ -15796,36 +15748,36 @@ ilib.CType = {
 	 * http://www.unicode.org/Public/UNIDATA/extracted/DerivedGeneralCategory.txt
 	 * 
 	 * <ul>
-	 * <li>cn - Unassigned
-	 * <li>lu - Uppercase_Letter
-	 * <li>ll - Lowercase_Letter
-	 * <li>lt - Titlecase_Letter
-	 * <li>lm - Modifier_Letter
-	 * <li>lo - Other_Letter
+	 * <li>Cn - Unassigned
+	 * <li>Lu - Uppercase_Letter
+	 * <li>Ll - Lowercase_Letter
+	 * <li>Lt - Titlecase_Letter
+	 * <li>Lm - Modifier_Letter
+	 * <li>Lo - Other_Letter
 	 * <li>mn - Nonspacing_Mark
-	 * <li>me - Enclosing_Mark
-	 * <li>mc - Spacing_Mark
-	 * <li>nd - Decimal_Number
-	 * <li>nl - Letter_Number
-	 * <li>no - Other_Number
-	 * <li>zs - Space_Separator
-	 * <li>zl - Line_Separator
-	 * <li>zp - Paragraph_Separator
-	 * <li>cc - Control
-	 * <li>cf - Format
-	 * <li>co - Private_Use
-	 * <li>cs - Surrogate
-	 * <li>pd - Dash_Punctuation
-	 * <li>ps - Open_Punctuation
-	 * <li>pe - Close_Punctuation
-	 * <li>pc - Connector_Punctuation
-	 * <li>po - Other_Punctuation
-	 * <li>sm - Math_Symbol
-	 * <li>sc - Currency_Symbol
-	 * <li>sk - Modifier_Symbol
-	 * <li>so - Other_Symbol
-	 * <li>pi - Initial_Punctuation
-	 * <li>pf - Final_Punctuation
+	 * <li>Me - Enclosing_Mark
+	 * <li>Mc - Spacing_Mark
+	 * <li>Nd - Decimal_Number
+	 * <li>Nl - Letter_Number
+	 * <li>No - Other_Number
+	 * <li>Zs - Space_Separator
+	 * <li>Zl - Line_Separator
+	 * <li>Zp - Paragraph_Separator
+	 * <li>Cc - Control
+	 * <li>Cf - Format
+	 * <li>Co - Private_Use
+	 * <li>Cs - Surrogate
+	 * <li>Pd - Dash_Punctuation
+	 * <li>Ps - Open_Punctuation
+	 * <li>Pe - Close_Punctuation
+	 * <li>Pc - Connector_Punctuation
+	 * <li>Po - Other_Punctuation
+	 * <li>Sm - Math_Symbol
+	 * <li>Sc - Currency_Symbol
+	 * <li>Sk - Modifier_Symbol
+	 * <li>So - Other_Symbol
+	 * <li>Pi - Initial_Punctuation
+	 * <li>Pf - Final_Punctuation
 	 * </ul>
 	 * 
 	 * @param {string} ch character to examine
@@ -15840,27 +15792,21 @@ ilib.CType = {
 			return false;
 		}
 		
-		num = ch.charCodeAt(0);
-		range = obj[rangeName.toLowerCase()];
+		num = new ilib.String(ch).codePointAt(0);
+		range = obj[rangeName];
 		if (!range) {
 			return false;
 		}
 		
 		for (i = 0; i < range.length; i++) {
-			// JS only supports the BMP (chars from 0x0000 to 0xFFFF), but the
-			// data is includes ranges above that for use with other languages
-			// that do support all ISO 10646 characters. So, check if the range
-			// is less than the max first.
-			if (range[i][0] < 0x10000) {
-				if (range[i].length === 1) {
-					// single character range
-					if (num === range[i][0]) {
-						return true;
-					}
-				} else if (num >= range[i][0] && num <= range[i][1]) {
-					// multi-character range
+			if (range[i].length === 1) {
+				// single character range
+				if (num === range[i][0]) {
 					return true;
 				}
+			} else if (num >= range[i][0] && num <= range[i][1]) {
+				// multi-character range
+				return true;
 			}
 		}
 		
@@ -16020,7 +15966,10 @@ ilib.CType = {
 	 * range
 	 */
 	withinRange: function(ch, rangeName) {
-		return ilib.CType._inRange(ch, rangeName, ilib.data.ctype);
+		if (!rangeName) {
+			return false;
+		}
+		return ilib.CType._inRange(ch, rangeName.toLowerCase(), ilib.data.ctype);
 	}
 };
 
@@ -16061,25 +16010,7 @@ ilib.CType.isDigit = function (ch) {
 	return ilib.CType._inRange(ch, 'digit', ilib.data.ctype);
 };
 
-ilib.data.ctype_z = {
-	"zs": [
-		[32],
-		[160],
-		[5760],
-		[6158],
-		[8192, 8202],
-		[8239],
-		[8287],
-		[12288]
-	],
-	"zl": [
-		[8232]
-	],
-	"zp": [
-		[8233]
-	]
-}
-;
+ilib.data.ctype_z = {"Zs":[[32],[160],[5760],[6158],[8192,8202],[8239],[8287],[12288]],"Zl":[[8232]],"Zp":[[8233]]};
 /*
  * ctype.isspace.js - Character type is space char
  * 
@@ -16113,9 +16044,9 @@ ilib.data.ctype_z = {
  */
 ilib.CType.isSpace = function (ch) {
 	return ilib.CType._inRange(ch, 'space', ilib.data.ctype) ||
-		ilib.CType._inRange(ch, 'zs', ilib.data.ctype_z) ||
-		ilib.CType._inRange(ch, 'zl', ilib.data.ctype_z) ||
-		ilib.CType._inRange(ch, 'zp', ilib.data.ctype_z);
+		ilib.CType._inRange(ch, 'Zs', ilib.data.ctype_z) ||
+		ilib.CType._inRange(ch, 'Zl', ilib.data.ctype_z) ||
+		ilib.CType._inRange(ch, 'Zp', ilib.data.ctype_z);
 };
 
 /*
@@ -16335,6 +16266,1445 @@ ilib.Number.prototype = {
 	 */
 	valueOf: function () {
 		return this.value;
+	}
+};
+
+ilib.data.currency = {
+	"USD": {
+		"name": "US Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CHF": {
+		"name": "Swiss Franc",
+		"decimals": 2,
+		"sign": "Fr"
+	},
+	"RON": {
+		"name": "Leu",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"RUB": {
+		"name": "Russian Ruble",
+		"decimals": 2,
+		"sign": "руб."
+	},
+	"SEK": {
+		"name": "Swedish Krona",
+		"decimals": 2,
+		"sign": "kr"
+	},
+	"GBP": {
+		"name": "Pound Sterling",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"PKR": {
+		"name": "Pakistan Rupee",
+		"decimals": 2,
+		"sign": "₨"
+	},
+	"KES": {
+		"name": "Kenyan Shilling",
+		"decimals": 2,
+		"sign": "Sh"
+	},
+	"AED": {
+		"name": "UAE Dirham",
+		"decimals": 2,
+		"sign": "د.إ"
+	},
+	"KRW": {
+		"name": "Won",
+		"decimals": 0,
+		"sign": "₩"
+	},
+	"AFN": {
+		"name": "Afghani",
+		"decimals": 2,
+		"sign": "؋"
+	},
+	"ALL": {
+		"name": "Lek",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"AMD": {
+		"name": "Armenian Dram",
+		"decimals": 2,
+		"sign": "դր."
+	},
+	"ANG": {
+		"name": "Netherlands Antillean Guilder",
+		"decimals": 2,
+		"sign": "ƒ"
+	},
+	"AOA": {
+		"name": "Kwanza",
+		"decimals": 2,
+		"sign": "Kz"
+	},
+	"ARS": {
+		"name": "Argentine Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"AUD": {
+		"name": "Australian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"AWG": {
+		"name": "Aruban Florin",
+		"decimals": 2,
+		"sign": "ƒ"
+	},
+	"AZN": {
+		"name": "Azerbaijanian Manat",
+		"decimals": 2,
+		"sign": "AZN"
+	},
+	"BAM": {
+		"name": "Convertible Mark",
+		"decimals": 2,
+		"sign": "КМ"
+	},
+	"BBD": {
+		"name": "Barbados Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"BDT": {
+		"name": "Taka",
+		"decimals": 2,
+		"sign": "৳"
+	},
+	"BGN": {
+		"name": "Bulgarian Lev",
+		"decimals": 2,
+		"sign": "лв"
+	},
+	"BHD": {
+		"name": "Bahraini Dinar",
+		"decimals": 3,
+		"sign": ".د.ب"
+	},
+	"BIF": {
+		"name": "Burundi Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"BMD": {
+		"name": "Bermudian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"BND": {
+		"name": "Brunei Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"BOB": {
+		"name": "Boliviano",
+		"decimals": 2,
+		"sign": "Bs."
+	},
+	"BRL": {
+		"name": "Brazilian Real",
+		"decimals": 2,
+		"sign": "R$"
+	},
+	"BSD": {
+		"name": "Bahamian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"BTN": {
+		"name": "Ngultrum",
+		"decimals": 2,
+		"sign": "Nu."
+	},
+	"BWP": {
+		"name": "Pula",
+		"decimals": 2,
+		"sign": "P"
+	},
+	"BYR": {
+		"name": "Belarussian Ruble",
+		"decimals": 0,
+		"sign": "Br"
+	},
+	"BZD": {
+		"name": "Belize Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CAD": {
+		"name": "Canadian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CDF": {
+		"name": "Congolese Franc",
+		"decimals": 2,
+		"sign": "Fr"
+	},
+	"CLP": {
+		"name": "Chilean Peso",
+		"decimals": 0,
+		"sign": "$"
+	},
+	"CNY": {
+		"name": "Yuan Renminbi",
+		"decimals": 2,
+		"sign": "元"
+	},
+	"COP": {
+		"name": "Colombian Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CRC": {
+		"name": "Costa Rican Colon",
+		"decimals": 2,
+		"sign": "₡"
+	},
+	"CUP": {
+		"name": "Cuban Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CVE": {
+		"name": "Cape Verde Escudo",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"CZK": {
+		"name": "Czech Koruna",
+		"decimals": 2,
+		"sign": "Kč"
+	},
+	"DJF": {
+		"name": "Djibouti Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"DKK": {
+		"name": "Danish Krone",
+		"decimals": 2,
+		"sign": "kr"
+	},
+	"DOP": {
+		"name": "Dominican Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"DZD": {
+		"name": "Algerian Dinar",
+		"decimals": 2,
+		"sign": "د.ج"
+	},
+	"EGP": {
+		"name": "Egyptian Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"ERN": {
+		"name": "Nakfa",
+		"decimals": 2,
+		"sign": "Nfk"
+	},
+	"ETB": {
+		"name": "Ethiopian Birr",
+		"decimals": 2,
+		"sign": "Br"
+	},
+	"EUR": {
+		"name": "Euro",
+		"decimals": 2,
+		"sign": "€"
+	},
+	"FJD": {
+		"name": "Fiji Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"FKP": {
+		"name": "Falkland Islands Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"GEL": {
+		"name": "Lari",
+		"decimals": 2,
+		"sign": "ლ"
+	},
+	"GHS": {
+		"name": "Cedi",
+		"decimals": 2,
+		"sign": "₵"
+	},
+	"GIP": {
+		"name": "Gibraltar Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"GMD": {
+		"name": "Dalasi",
+		"decimals": 2,
+		"sign": "D"
+	},
+	"GNF": {
+		"name": "Guinea Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"GTQ": {
+		"name": "Quetzal",
+		"decimals": 2,
+		"sign": "Q"
+	},
+	"GYD": {
+		"name": "Guyana Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"HKD": {
+		"name": "Hong Kong Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"HNL": {
+		"name": "Lempira",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"HRK": {
+		"name": "Croatian Kuna",
+		"decimals": 2,
+		"sign": "kn"
+	},
+	"HTG": {
+		"name": "Gourde",
+		"decimals": 2,
+		"sign": "G"
+	},
+	"HUF": {
+		"name": "Forint",
+		"decimals": 2,
+		"sign": "Ft"
+	},
+	"IDR": {
+		"name": "Rupiah",
+		"decimals": 2,
+		"sign": "Rp"
+	},
+	"ILS": {
+		"name": "New Israeli Sheqel",
+		"decimals": 2,
+		"sign": "₪"
+	},
+	"INR": {
+		"name": "Indian Rupee",
+		"decimals": 2,
+		"sign": "INR"
+	},
+	"IQD": {
+		"name": "Iraqi Dinar",
+		"decimals": 3,
+		"sign": "ع.د"
+	},
+	"IRR": {
+		"name": "Iranian Rial",
+		"decimals": 2,
+		"sign": "﷼"
+	},
+	"ISK": {
+		"name": "Iceland Krona",
+		"decimals": 0,
+		"sign": "kr"
+	},
+	"JMD": {
+		"name": "Jamaican Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"JOD": {
+		"name": "Jordanian Dinar",
+		"decimals": 3,
+		"sign": "د.ا"
+	},
+	"JPY": {
+		"name": "Yen",
+		"decimals": 0,
+		"sign": "¥"
+	},
+	"KGS": {
+		"name": "Som",
+		"decimals": 2,
+		"sign": "лв"
+	},
+	"KHR": {
+		"name": "Riel",
+		"decimals": 2,
+		"sign": "៛"
+	},
+	"KMF": {
+		"name": "Comoro Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"KPW": {
+		"name": "North Korean Won",
+		"decimals": 2,
+		"sign": "₩"
+	},
+	"KWD": {
+		"name": "Kuwaiti Dinar",
+		"decimals": 3,
+		"sign": "د.ك"
+	},
+	"KYD": {
+		"name": "Cayman Islands Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"KZT": {
+		"name": "Tenge",
+		"decimals": 2,
+		"sign": "₸"
+	},
+	"LAK": {
+		"name": "Kip",
+		"decimals": 2,
+		"sign": "₭"
+	},
+	"LBP": {
+		"name": "Lebanese Pound",
+		"decimals": 2,
+		"sign": "ل.ل"
+	},
+	"LKR": {
+		"name": "Sri Lanka Rupee",
+		"decimals": 2,
+		"sign": "Rs"
+	},
+	"LRD": {
+		"name": "Liberian Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"LSL": {
+		"name": "Loti",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"LTL": {
+		"name": "Lithuanian Litas",
+		"decimals": 2,
+		"sign": "Lt"
+	},
+	"LVL": {
+		"name": "Latvian Lats",
+		"decimals": 2,
+		"sign": "Ls"
+	},
+	"LYD": {
+		"name": "Libyan Dinar",
+		"decimals": 3,
+		"sign": "ل.د"
+	},
+	"MAD": {
+		"name": "Moroccan Dirham",
+		"decimals": 2,
+		"sign": "د.م."
+	},
+	"MDL": {
+		"name": "Moldovan Leu",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"MGA": {
+		"name": "Malagasy Ariary",
+		"decimals": 2,
+		"sign": "Ar"
+	},
+	"MKD": {
+		"name": "Denar",
+		"decimals": 2,
+		"sign": "ден"
+	},
+	"MMK": {
+		"name": "Kyat",
+		"decimals": 2,
+		"sign": "K"
+	},
+	"MNT": {
+		"name": "Tugrik",
+		"decimals": 2,
+		"sign": "₮"
+	},
+	"MOP": {
+		"name": "Pataca",
+		"decimals": 2,
+		"sign": "P"
+	},
+	"MRO": {
+		"name": "Ouguiya",
+		"decimals": 2,
+		"sign": "UM"
+	},
+	"MUR": {
+		"name": "Mauritius Rupee",
+		"decimals": 2,
+		"sign": "₨"
+	},
+	"MVR": {
+		"name": "Rufiyaa",
+		"decimals": 2,
+		"sign": ".ރ"
+	},
+	"MWK": {
+		"name": "Kwacha",
+		"decimals": 2,
+		"sign": "MK"
+	},
+	"MXN": {
+		"name": "Mexican Peso",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"MYR": {
+		"name": "Malaysian Ringgit",
+		"decimals": 2,
+		"sign": "RM"
+	},
+	"MZN": {
+		"name": "Metical",
+		"decimals": 2,
+		"sign": "MT"
+	},
+	"NAD": {
+		"name": "Namibia Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"NGN": {
+		"name": "Naira",
+		"decimals": 2,
+		"sign": "₦"
+	},
+	"NIO": {
+		"name": "Cordoba Oro",
+		"decimals": 2,
+		"sign": "C$"
+	},
+	"NOK": {
+		"name": "Norwegian Krone",
+		"decimals": 2,
+		"sign": "kr"
+	},
+	"NPR": {
+		"name": "Nepalese Rupee",
+		"decimals": 2,
+		"sign": "₨"
+	},
+	"NZD": {
+		"name": "New Zealand Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"OMR": {
+		"name": "Rial Omani",
+		"decimals": 3,
+		"sign": "ر.ع."
+	},
+	"PAB": {
+		"name": "Balboa",
+		"decimals": 2,
+		"sign": "B/."
+	},
+	"PEN": {
+		"name": "Nuevo Sol",
+		"decimals": 2,
+		"sign": "S/."
+	},
+	"PGK": {
+		"name": "Kina",
+		"decimals": 2,
+		"sign": "K"
+	},
+	"PHP": {
+		"name": "Philippine Peso",
+		"decimals": 2,
+		"sign": "₱"
+	},
+	"PLN": {
+		"name": "Zloty",
+		"decimals": 2,
+		"sign": "zł"
+	},
+	"PYG": {
+		"name": "Guarani",
+		"decimals": 0,
+		"sign": "₲"
+	},
+	"QAR": {
+		"name": "Qatari Rial",
+		"decimals": 2,
+		"sign": "ر.ق"
+	},
+	"RSD": {
+		"name": "Serbian Dinar",
+		"decimals": 2,
+		"sign": "дин."
+	},
+	"RWF": {
+		"name": "Rwanda Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"SAR": {
+		"name": "Saudi Riyal",
+		"decimals": 2,
+		"sign": "ر.س"
+	},
+	"SBD": {
+		"name": "Solomon Islands Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"SCR": {
+		"name": "Seychelles Rupee",
+		"decimals": 2,
+		"sign": "₨"
+	},
+	"SDG": {
+		"name": "Sudanese Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"SGD": {
+		"name": "Singapore Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"SHP": {
+		"name": "Saint Helena Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"SLL": {
+		"name": "Leone",
+		"decimals": 2,
+		"sign": "Le"
+	},
+	"SOS": {
+		"name": "Somali Shilling",
+		"decimals": 2,
+		"sign": "Sh"
+	},
+	"SRD": {
+		"name": "Surinam Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"SSP": {
+		"name": "South Sudanese Pound",
+		"decimals": 2,
+		"sign": ""
+	},
+	"STD": {
+		"name": "Dobra",
+		"decimals": 2,
+		"sign": "Db"
+	},
+	"SYP": {
+		"name": "Syrian Pound",
+		"decimals": 2,
+		"sign": "£"
+	},
+	"SZL": {
+		"name": "Lilangeni",
+		"decimals": 2,
+		"sign": "L"
+	},
+	"THB": {
+		"name": "Baht",
+		"decimals": 2,
+		"sign": "฿"
+	},
+	"TJS": {
+		"name": "Somoni",
+		"decimals": 2,
+		"sign": "ЅМ"
+	},
+	"TMT": {
+		"name": "New Manat",
+		"decimals": 2,
+		"sign": "m"
+	},
+	"TND": {
+		"name": "Tunisian Dinar",
+		"decimals": 3,
+		"sign": "د.ت"
+	},
+	"TOP": {
+		"name": "Pa’anga",
+		"decimals": 2,
+		"sign": "T$"
+	},
+	"TRY": {
+		"name": "Turkish Lira",
+		"decimals": 2,
+		"sign": "TL"
+	},
+	"TTD": {
+		"name": "Trinidad and Tobago Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"TWD": {
+		"name": "New Taiwan Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"TZS": {
+		"name": "Tanzanian Shilling",
+		"decimals": 2,
+		"sign": "Sh"
+	},
+	"UAH": {
+		"name": "Hryvnia",
+		"decimals": 2,
+		"sign": "₴"
+	},
+	"UGX": {
+		"name": "Uganda Shilling",
+		"decimals": 2,
+		"sign": "Sh"
+	},
+	"UYU": {
+		"name": "Peso Uruguayo",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"UZS": {
+		"name": "Uzbekistan Sum",
+		"decimals": 2,
+		"sign": "лв"
+	},
+	"VEF": {
+		"name": "Bolivar Fuerte",
+		"decimals": 2,
+		"sign": "Bs F"
+	},
+	"VND": {
+		"name": "Dong",
+		"decimals": 0,
+		"sign": "₫"
+	},
+	"VUV": {
+		"name": "Vatu",
+		"decimals": 0,
+		"sign": "Vt"
+	},
+	"WST": {
+		"name": "Tala",
+		"decimals": 2,
+		"sign": "T"
+	},
+	"XAF": {
+		"name": "CFA Franc BEAC",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"XCD": {
+		"name": "East Caribbean Dollar",
+		"decimals": 2,
+		"sign": "$"
+	},
+	"XOF": {
+		"name": "CFA Franc BCEAO",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"XPF": {
+		"name": "CFP Franc",
+		"decimals": 0,
+		"sign": "Fr"
+	},
+	"YER": {
+		"name": "Yemeni Rial",
+		"decimals": 2,
+		"sign": "﷼"
+	},
+	"ZAR": {
+		"name": "Rand",
+		"decimals": 2,
+		"sign": "R"
+	},
+	"ZMK": {
+		"name": "Zambian Kwacha",
+		"decimals": 2,
+		"sign": "ZK"
+	},
+	"ZWL": {
+		"name": "Zimbabwe Dollar",
+		"decimals": 2,
+		"sign": "$"
+	}
+}
+;
+/*
+ * currency.js - Currency definition
+ * 
+ * Copyright © 2012, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends ilibglobal.js locale.js
+
+// !data currency
+
+/**
+ * @class
+ * Create a new currency information instance. Instances of this class encode 
+ * information about a particular currency.<p> 
+ * 
+ * The options can contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>locale</i> - specify the locale for this instance
+ * <li><i>code</i> - find info on a specific currency with the given ISO 4217 code 
+ * <li><i>sign</i> - search for a currency that uses this sign
+ * </ul>
+ * 
+ * When searching for a currency by its sign, this class cannot guarantee 
+ * that it will return info about a specific currency. The reason is that currency 
+ * signs are sometimes shared between different currencies and the sign is 
+ * therefore ambiguous. If you need a 
+ * guarantee, find the currency using the code instead.<p>
+ * 
+ * The way this class finds a currency by sign is the following. If the sign is 
+ * unambiguous, then
+ * the currency is returned. If there are multiple currencies that use the same
+ * sign, and the current locale uses that sign, then the default currency for
+ * the current locale is returned. If there are multiple, but the current locale
+ * does not use that sign, then the currency with the largest circulation is
+ * returned. For example, if you are in the en-GB locale, and the sign is "$",
+ * then this class will notice that there are multiple currencies with that
+ * sign (USD, CAD, AUD, HKD, MXP, etc.) Since "$" is not used in en-GB, it will 
+ * pick the one with the largest circulation, which in this case is the US Dollar
+ * (USD).<p>
+ * 
+ * If neither the code or sign property is set, the currency that is most common 
+ * for the locale
+ * will be used instead. If the locale is not set, the default locale will be used.
+ * If the code is given, but it is not found in the list of known currencies, this
+ * constructor will throw an exception. If the sign is given, but it is not found,
+ * this constructor will default to the currency for the current locale. If both
+ * the code and sign properties are given, then the sign property will be ignored
+ * and only the code property used. If the locale is given, but it is not a known
+ * locale, this class will default to the default locale instead.<p>
+ * 
+ * Depends directive: !depends currency.js
+ * 
+ * @constructor
+ * @param options {Object} a set of properties to govern how this instance is constructed.
+ * @throws "currency xxx is unknown" when the given currency code is not in the list of 
+ * known currencies. xxx is replaced with the requested code.
+ */
+ilib.Currency = function (options) {
+	var li, currencies, currInfo, sign, cur;
+	
+	if (options) {
+		if (options.code) {
+			this.code = options.code;
+		}
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		if (options.sign) {
+			sign = options.sign;
+		}
+	}
+	
+	this.locale = this.locale || new ilib.Locale();
+	li = new ilib.LocaleInfo(this.locale);
+		
+	currencies = ilib.data.currency;
+
+	if (this.code) {
+		currInfo = currencies[this.code];
+		if (!currInfo) {
+			throw "currency " + this.code + " is unknown";
+		}
+	} else if (sign) {
+		currInfo = currencies[sign]; // maybe it is really a code...
+		if (typeof(currInfo) !== 'undefined') {
+			this.code = sign;
+		} else {
+			this.code = li.getCurrency();
+			currInfo = currencies[this.code];
+			if (currInfo.sign !== sign) {
+				// current locale does not use the sign, so search for it
+				for (cur in currencies) {
+					if (cur && currencies[cur]) {
+						currInfo = currencies[cur];
+						if (currInfo.sign === sign) {
+							// currency data is already ordered so that the currency with the
+							// largest circulation is at the beginning, so all we have to do
+							// is take the first one in the list that matches
+							this.code = cur;
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	if (!currInfo || !this.code) {
+		this.code = li.getCurrency();
+		currInfo = currencies[this.code];
+	}
+	
+	this.name = currInfo.name;
+	this.fractionDigits = currInfo.decimals;
+	this.sign = currInfo.sign;
+};
+
+/**
+ * @static
+ * Return an array of the ids for all ISO 4217 currencies that
+ * this copy of ilib knows about.
+ * @returns {Array.<string>} an array of currency ids that this copy of ilib knows about.
+ */
+ilib.Currency.getAvailableCurrencies = function() {
+	var ret = [],
+		cur,
+		currencies = new ilib.ResBundle({
+			name: "currency"
+		}).getResObj();
+	
+	for (cur in currencies) {
+		if (cur && currencies[cur]) {
+			ret.push(cur);
+		}
+	}
+	
+	return ret;
+};
+
+ilib.Currency.prototype = {
+	/**
+	 * Return the ISO 4217 currency code for this instance.
+	 * @returns {string} the ISO 4217 currency code for this instance
+	 */
+	getCode: function () {
+		return this.code;
+	},
+	
+	/**
+	 * Return the default number of fraction digits that is typically used
+	 * with this type of currency.
+	 * @returns {number} the number of fraction digits for this currency
+	 */
+	getFractionDigits: function () {
+		return this.fractionDigits;
+	},
+	
+	/**
+	 * Return the sign commonly used to represent this currency.
+	 * @returns {string} the sign commonly used to represent this currency
+	 */
+	getSign: function () {
+		return this.sign;
+	},
+	
+	/**
+	 * Return the name of the currency in English.
+	 * @returns {string} the name of the currency in English
+	 */
+	getName: function () {
+		return this.name;
+	},
+	
+	/**
+	 * Return the locale for this currency. If the options to the constructor 
+	 * included a locale property in order to find the currency that is appropriate
+	 * for that locale, then the locale is returned here. If the options did not
+	 * include a locale, then this method returns undefined.
+	 * @returns {ilib.Locale} the locale used in the constructor of this instance,
+	 * or undefined if no locale was given in the constructor
+	 */
+	getLocale: function () {
+		return this.locale;
+	}
+};
+
+/*
+ * numfmt.js - Number formatter definition
+ * 
+ * Copyright © 2012, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends ilibglobal.js locale.js strings.js resources.js currency.js
+
+
+/*
+!depends 
+ilibglobal.js 
+locale.js
+localeinfo.js
+util/utils.js
+currency.js
+strings.js
+*/
+
+// !data localeinfo currency
+
+/**
+ * @class
+ * Create a new number formatter instance. Locales differ in the way that digits
+ * in a formatted number are grouped, in the way the decimal character is represented, 
+ * etc. Use this formatter to get it right for any locale.<p>
+ * 
+ * This formatter can format plain numbers, currency amounts, and percentage amounts.<p>  
+ * 
+ * As with all formatters, the recommended
+ * practice is to create one formatter and use it multiple times to format various
+ * numbers.<p>
+ * 
+ * The options can contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>locale</i> - use the conventions of the specified locale when figuring out how to
+ * format a number.
+ * <li><i>type</i> - the type of this formatter. Valid values are "number", "currency", or 
+ * "percentage". If this property is not specified, the default is "number".
+ * <li><i>currency</i> - the ISO 4217 3-letter currency code to use when the formatter type 
+ * is "currency". This property is required for currency formatting. If the type property 
+ * is "currency" and the currency property is not specified, the constructor will throw a
+ * an exception. 
+ * <li><i>maxFractionDigits</i> - the maximum number of digits that should appear in the
+ * formatted output after the decimal. A value of -1 means unlimited, and 0 means only print
+ * the integral part of the number. 
+ * <li><i>minFractionDigits</i> - the minimum number of fractional digits that should
+ * appear in the formatted output. If the number does not have enough fractional digits
+ * to reach this minimum, the number will be zero-padded at the end to get to the limit.
+ * If the type of the formatter is "currency" and this
+ * property is not specified, then the minimum fraction digits is set to the normal number
+ * of digits used with that currency, which is almost always 0, 2, or 3 digits.
+ * <li><i>roundingMode</i> - When the maxFractionDigits or maxIntegerDigits is specified,
+ * this property governs how the least significant digits are rounded to conform to that
+ * maximum. The value of this property is a string with one of the following values:
+ * <ul>
+ *   <li><i>up</i> - round away from zero
+ *   <li><i>down</i> - round towards zero. This has the effect of truncating the number
+ *   <li><i>ceiling</i> - round towards positive infinity
+ *   <li><i>floor</i> - round towards negative infinity
+ *   <li><i>halfup</i> - round towards nearest neighbour. If equidistant, round up.
+ *   <li><i>halfdown</i> - round towards nearest neighbour. If equidistant, round down.
+ *   <li><i>halfeven</i> - round towards nearest neighbour. If equidistant, round towards the even neighbour
+ *   <li><i>halfodd</i> - round towards nearest neighbour. If equidistant, round towards the odd neighbour
+ * </ul>
+ * When the type of the formatter is "currency" and the <i>roundingMode</i> property is not
+ * set, then the standard legal rounding rules for the locale are followed. If the type
+ * is "number" or "percentage" and the <i>roundingMode</i> property is not set, then the 
+ * default mode is "halfdown".</i>.
+ * <li><i>style</i> - When the type of this formatter is "currency", the currency amount
+ * can be formatted in the following styles: "common" and "iso". The common style is the
+ * one commonly used in every day writing where the currency unit is represented using a 
+ * symbol. eg. "$57.35" for fifty-seven dollars and thirty five cents. The iso style is 
+ * the international style where the currency unit is represented using the ISO 4217 code.
+ * eg. "USD 57.35" for the same amount. The default is "common" style if the style is
+ * not specified.<p>
+ * 
+ * When the type of this formatter is "number",
+ * the style can be either "standard" or "scientific". A "standard" style means a fully
+ * specified floating point number formatted for the locale, whereas "scientific" uses
+ * scientific notation for all numbers. That is, 1 integral digit, followed by a number
+ * of fractional digits, followed by an "e" which denotes exponentiation, followed digits
+ * which give the power of 10 in the exponent. Note that if you specify a maximum number
+ * of integral digits, the formatter with a standard style will give you standard 
+ * formatting for smaller numbers and scientific notation for larger numbers. The default
+ * is standard style if this is not specified. 
+ * </ul>
+ * <p>
+ * 
+ * Depends directive: !depends numfmt.js
+ * 
+ * @constructor
+ * @param {Object.<string,*>} options A set of options that govern how the formatter will behave 
+ */
+ilib.NumFmt = function (options) {
+	this.locale = new ilib.Locale();
+	this.type = "number";
+	
+	if (options) {
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		
+		if (options.type) {
+			if (options.type === 'number' || 
+				options.type === 'currency' || 
+				options.type === 'percentage') {
+				this.type = options.type;
+			}
+		}
+		
+		if (options.currency) {
+			this.currency = options.currency;
+		}
+		
+		if (typeof(options.maxFractionDigits) === 'number') {
+			this.maxFractionDigits = this._toPrimitive(options.maxFractionDigits);
+		}
+		if (typeof(options.minFractionDigits) === 'number') {
+			this.minFractionDigits = this._toPrimitive(options.minFractionDigits);
+		}
+		if (options.style) {
+			this.style = options.style;
+		}
+	}
+	
+	this.localeInfo = new ilib.LocaleInfo(this.locale);
+	switch (this.type) {
+		case "currency":
+			var templates,
+				curopts;
+			
+			if (!this.currency || typeof(this.currency) != 'string') {
+				throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
+			}
+			
+			curopts = {
+				locale: this.locale,
+				code: this.currency		
+			};
+			this.currencyInfo = new ilib.Currency(curopts);
+			if (this.style !== "common" && this.style !== "iso") {
+				this.style = "common";
+			}
+			
+			if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
+				this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
+			}
+			
+			templates = this.localeInfo.getCurrencyFormats();
+			this.template = new ilib.String(templates[this.style]);
+			this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign(); 
+			break;
+		case "percentage":
+			this.template = new ilib.String(this.localeInfo.getPercentageFormat());
+			break;
+		default:
+			break;
+	}
+	
+	if (this.maxFractionDigits < this.minFractionDigits) {
+		this.minFractionDigits = this.maxFractionDigits;
+	}
+	
+	this.roundingMode = options && options.roundingMode;
+	if (!this.roundingMode) {
+		this.roundingMode = this.localeInfo.getRoundingMode();
+	}
+	if (!this.roundingMode) {
+		this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
+	}
+	if (!this.roundingMode) {
+		this.roundingMode = "halfdown";
+	}
+	
+	// set up the function, so we only have to figure it out once
+	// and not every time we do format()
+	this.round = ilib._roundFnc[this.roundingMode];
+	if (!this.round) {
+		this.roundingMode = "halfdown";
+		this.round = ilib._roundFnc[this.roundingMode];
+	}
+};
+
+/**
+ * Return an array of available locales that this formatter can format
+ * @returns {Array.<ilib.Locale>|undefined} an array of available locales
+ */
+ilib.NumFmt.getAvailableLocales = function () {
+	return undefined;
+};
+
+/**
+ * @private
+ * @const
+ * @type string
+ */
+ilib.NumFmt.zeros = "0000000000000000000000000000000000000000000000000000000000000000000000";
+
+
+ilib.NumFmt.prototype = {
+	/*
+	 * @private
+	 */
+	_pad: function (str, length, left) {
+		return (str.length >= length) ? 
+			str : 
+			(left ? 
+				ilib.NumFmt.zeros.substring(0,length-str.length) + str : 
+				str + ilib.NumFmt.zeros.substring(0,length-str.length));  
+	},
+	
+	/**
+	 * @private
+	 * @param {Number|ilib.Number|string|number} num object, string, or number to convert to a primitive number
+	 * @returns {number} the primitive number equivalent of the argument
+	 */
+	_toPrimitive: function (num) {
+		var n = 0;
+		
+		switch (typeof(num)) {
+		case 'number':
+			n = num;
+			break;
+		case 'string':
+			n = parseFloat(num);
+			break;
+		case 'object':
+			// Number.valueOf() is incorrectly documented as being of type "string" rather than "number", so coerse 
+			// the type here to shut the type checker up
+			n = /** @type {number} */ num.valueOf();
+			break;
+		}
+		
+		return n;
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num the number to format
+	 * @returns {string} the formatted number 
+	 */
+	_formatScientific: function (num) {
+		var n = new Number(num);
+		var formatted;
+		if (typeof(this.maxFractionDigits) !== 'undefined') {
+			// if there is fraction digits, round it to the right length first
+			// divide or multiply by 10 by manipulating the exponent so as to
+			// avoid the rounding errors of floating point numbers
+			var e, 
+				factor,
+				str = n.toExponential(),
+				parts = str.split("e"),
+				significant = parts[0];
+			
+			e = parts[1];	
+			factor = Math.pow(10, this.maxFractionDigits);
+			significant = this.round(significant * factor) / factor;
+			formatted = "" + significant + "e" + e;
+		} else {
+			formatted = n.toExponential(this.minFractionDigits);
+		}
+		return formatted;
+	},
+	
+	/**
+	 * @private 
+	 * @param {number} num the number to format
+	 * @returns {string} the formatted number
+	 */ 
+	_formatStandard: function (num) {
+		var i;
+		
+		// console.log("_formatNumberStandard: formatting number " + num);
+		if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
+			var factor = Math.pow(10, this.maxFractionDigits);
+			num = this.round(num * factor) / factor;
+		}
+
+		var negative = (num < 0);
+		if (negative) {
+			num = -num;
+		}
+		
+		var parts = ("" + num).split("."),
+			integral = parts[0],
+			fraction = parts[1],
+			cycle,
+			groupSize = this.localeInfo.getGroupingDigits(),
+			formatted;
+		
+		
+		if (this.minFractionDigits > 0) {
+			fraction = this._pad(fraction || "", this.minFractionDigits, false);
+		}
+
+		if (groupSize > 0) {
+			cycle = ilib.mod(integral.length-1, groupSize);
+			formatted = negative ? "-" : "";
+			for (i = 0; i < integral.length-1; i++) {
+				formatted += integral.charAt(i);
+				if (cycle === 0) {
+					formatted += this.localeInfo.getGroupingSeparator();
+				}
+				cycle = ilib.mod(cycle - 1, groupSize);
+			}
+			formatted += integral.charAt(integral.length-1);
+		} else {
+			formatted = (negative ? "-" : "") + integral;
+		}
+		
+		if (fraction && (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits > 0)) {
+			formatted += this.localeInfo.getDecimalSeparator();
+			formatted += fraction;
+		}
+		
+		// console.log("_formatNumberStandard: returning " + formatted);
+		return formatted;
+	},
+	
+	/**
+	 * Format a number according to the settings of this number formatter instance.
+	 * @param num {number|string|Number|ilib.Number} a floating point number to format
+	 * @returns {string} a string containing the formatted number
+	 */
+	format: function (num) {
+		var formatted, n;
+
+		if (typeof(num) === 'undefined') {
+			return "";
+		}
+		
+		// convert to a real primitive number type
+		n = this._toPrimitive(num);
+		
+		if (this.type === "number") {
+			formatted = (this.style === "scientific") ? 
+					this._formatScientific(n) : 
+					this._formatStandard(n);
+		} else {			
+			formatted = this.template.format({n: this._formatStandard(n), s: this.sign});
+		}
+		
+		return formatted;
+	},
+	
+	/**
+	 * Return the type of formatter. Valid values are "number", "currency", and
+	 * "percentage".
+	 * 
+	 * @returns {string} the type of formatter
+	 */
+	getType: function () {
+		return this.type;
+	},
+	
+	/**
+	 * Return the locale for this formatter instance.
+	 * @returns {ilib.Locale} the locale instance for this formatter
+	 */
+	getLocale: function () {
+		return this.locale;
+	},
+	
+	/**
+	 * Returns true if this formatter groups together digits in the integral 
+	 * portion of a number, based on the options set up in the constructor. In 
+	 * most western European cultures, this means separating every 3 digits 
+	 * of the integral portion of a number with a particular character.
+	 * 
+	 * @returns {boolean} true if this formatter groups digits in the integral
+	 * portion of the number
+	 */
+	isGroupingUsed: function () {
+		var c = this.localeInfo.getGroupingSeparator();
+		return (c !== 'undefined' && c.length > 0);
+	},
+	
+	/**
+	 * Returns the maximum fraction digits set up in the constructor.
+	 * 
+	 * @returns {number} the maximum number of fractional digits this
+	 * formatter will format, or -1 for no maximum
+	 */
+	getMaxFractionDigits: function () {
+		return typeof(this.maxFractionDigits) !== 'undefined' ? this.maxFractionDigits : -1;
+	},
+	
+	/**
+	 * Returns the minimum fraction digits set up in the constructor. If
+	 * the formatter has the type "currency", then the minimum fraction
+	 * digits is the amount of digits that is standard for the currency
+	 * in question unless overridden in the options to the constructor.
+	 * 
+	 * @returns {number} the minimum number of fractional digits this
+	 * formatter will format, or -1 for no minimum
+	 */
+	getMinFractionDigits: function () {
+		return typeof(this.minFractionDigits) !== 'undefined' ? this.minFractionDigits : -1;
+	},
+
+	/**
+	 * Returns the ISO 4217 code for the currency that this formatter formats.
+	 * IF the typeof this formatter is not "currency", then this method will
+	 * return undefined.
+	 * 
+	 * @returns {string} the ISO 4217 code for the currency that this formatter
+	 * formats, or undefined if this not a currency formatter
+	 */
+	getCurrency: function () {
+		return this.currencyInfo && this.currencyInfo.getCode();
+	},
+	
+	/**
+	 * Returns the rounding mode set up in the constructor. The rounding mode
+	 * controls how numbers are rounded when the integral or fraction digits 
+	 * of a number are limited.
+	 * 
+	 * @returns {string} the name of the rounding mode used in this formatter
+	 */
+	getRoundingMode: function () {
+		return this.roundingMode;
+	},
+	
+	/**
+	 * If this formatter is a currency formatter, then the style determines how the
+	 * currency is denoted in the formatted output. This method returns the style
+	 * that this formatter will produce. (See the constructor comment for more about
+	 * the styles.)
+	 * @returns {string} the name of the style this formatter will use to format
+	 * currency amounts, or "undefined" if this formatter is not a currency formatter
+	 */
+	getStyle: function () {
+		return this.style;
 	}
 };
 
@@ -16636,1613 +18006,7 @@ ilib.DurFmt.prototype.getStyle = function () {
 	return this.style;
 };
 
-ilib.data.ctype_l = {
-	"lu": [
-		[65, 90],
-		[192, 214],
-		[216, 222],
-		[256],
-		[258],
-		[260],
-		[262],
-		[264],
-		[266],
-		[268],
-		[270],
-		[272],
-		[274],
-		[276],
-		[278],
-		[280],
-		[282],
-		[284],
-		[286],
-		[288],
-		[290],
-		[292],
-		[294],
-		[296],
-		[298],
-		[300],
-		[302],
-		[304],
-		[306],
-		[308],
-		[310],
-		[313],
-		[315],
-		[317],
-		[319],
-		[321],
-		[323],
-		[325],
-		[327],
-		[330],
-		[332],
-		[334],
-		[336],
-		[338],
-		[340],
-		[342],
-		[344],
-		[346],
-		[348],
-		[350],
-		[352],
-		[354],
-		[356],
-		[358],
-		[360],
-		[362],
-		[364],
-		[366],
-		[368],
-		[370],
-		[372],
-		[374],
-		[376, 377],
-		[379],
-		[381],
-		[385, 386],
-		[388],
-		[390, 391],
-		[393, 395],
-		[398, 401],
-		[403, 404],
-		[406, 408],
-		[412, 413],
-		[415, 416],
-		[418],
-		[420],
-		[422, 423],
-		[425],
-		[428],
-		[430, 431],
-		[433, 435],
-		[437],
-		[439, 440],
-		[444],
-		[452],
-		[455],
-		[458],
-		[461],
-		[463],
-		[465],
-		[467],
-		[469],
-		[471],
-		[473],
-		[475],
-		[478],
-		[480],
-		[482],
-		[484],
-		[486],
-		[488],
-		[490],
-		[492],
-		[494],
-		[497],
-		[500],
-		[502, 504],
-		[506],
-		[508],
-		[510],
-		[512],
-		[514],
-		[516],
-		[518],
-		[520],
-		[522],
-		[524],
-		[526],
-		[528],
-		[530],
-		[532],
-		[534],
-		[536],
-		[538],
-		[540],
-		[542],
-		[544],
-		[546],
-		[548],
-		[550],
-		[552],
-		[554],
-		[556],
-		[558],
-		[560],
-		[562],
-		[570, 571],
-		[573, 574],
-		[577],
-		[579, 582],
-		[584],
-		[586],
-		[588],
-		[590],
-		[880],
-		[882],
-		[886],
-		[902],
-		[904, 906],
-		[908],
-		[910, 911],
-		[913, 929],
-		[931, 939],
-		[975],
-		[978, 980],
-		[984],
-		[986],
-		[988],
-		[990],
-		[992],
-		[994],
-		[996],
-		[998],
-		[1000],
-		[1002],
-		[1004],
-		[1006],
-		[1012],
-		[1015],
-		[1017, 1018],
-		[1021, 1071],
-		[1120],
-		[1122],
-		[1124],
-		[1126],
-		[1128],
-		[1130],
-		[1132],
-		[1134],
-		[1136],
-		[1138],
-		[1140],
-		[1142],
-		[1144],
-		[1146],
-		[1148],
-		[1150],
-		[1152],
-		[1162],
-		[1164],
-		[1166],
-		[1168],
-		[1170],
-		[1172],
-		[1174],
-		[1176],
-		[1178],
-		[1180],
-		[1182],
-		[1184],
-		[1186],
-		[1188],
-		[1190],
-		[1192],
-		[1194],
-		[1196],
-		[1198],
-		[1200],
-		[1202],
-		[1204],
-		[1206],
-		[1208],
-		[1210],
-		[1212],
-		[1214],
-		[1216, 1217],
-		[1219],
-		[1221],
-		[1223],
-		[1225],
-		[1227],
-		[1229],
-		[1232],
-		[1234],
-		[1236],
-		[1238],
-		[1240],
-		[1242],
-		[1244],
-		[1246],
-		[1248],
-		[1250],
-		[1252],
-		[1254],
-		[1256],
-		[1258],
-		[1260],
-		[1262],
-		[1264],
-		[1266],
-		[1268],
-		[1270],
-		[1272],
-		[1274],
-		[1276],
-		[1278],
-		[1280],
-		[1282],
-		[1284],
-		[1286],
-		[1288],
-		[1290],
-		[1292],
-		[1294],
-		[1296],
-		[1298],
-		[1300],
-		[1302],
-		[1304],
-		[1306],
-		[1308],
-		[1310],
-		[1312],
-		[1314],
-		[1316],
-		[1318],
-		[1329, 1366],
-		[4256, 4293],
-		[7680],
-		[7682],
-		[7684],
-		[7686],
-		[7688],
-		[7690],
-		[7692],
-		[7694],
-		[7696],
-		[7698],
-		[7700],
-		[7702],
-		[7704],
-		[7706],
-		[7708],
-		[7710],
-		[7712],
-		[7714],
-		[7716],
-		[7718],
-		[7720],
-		[7722],
-		[7724],
-		[7726],
-		[7728],
-		[7730],
-		[7732],
-		[7734],
-		[7736],
-		[7738],
-		[7740],
-		[7742],
-		[7744],
-		[7746],
-		[7748],
-		[7750],
-		[7752],
-		[7754],
-		[7756],
-		[7758],
-		[7760],
-		[7762],
-		[7764],
-		[7766],
-		[7768],
-		[7770],
-		[7772],
-		[7774],
-		[7776],
-		[7778],
-		[7780],
-		[7782],
-		[7784],
-		[7786],
-		[7788],
-		[7790],
-		[7792],
-		[7794],
-		[7796],
-		[7798],
-		[7800],
-		[7802],
-		[7804],
-		[7806],
-		[7808],
-		[7810],
-		[7812],
-		[7814],
-		[7816],
-		[7818],
-		[7820],
-		[7822],
-		[7824],
-		[7826],
-		[7828],
-		[7838],
-		[7840],
-		[7842],
-		[7844],
-		[7846],
-		[7848],
-		[7850],
-		[7852],
-		[7854],
-		[7856],
-		[7858],
-		[7860],
-		[7862],
-		[7864],
-		[7866],
-		[7868],
-		[7870],
-		[7872],
-		[7874],
-		[7876],
-		[7878],
-		[7880],
-		[7882],
-		[7884],
-		[7886],
-		[7888],
-		[7890],
-		[7892],
-		[7894],
-		[7896],
-		[7898],
-		[7900],
-		[7902],
-		[7904],
-		[7906],
-		[7908],
-		[7910],
-		[7912],
-		[7914],
-		[7916],
-		[7918],
-		[7920],
-		[7922],
-		[7924],
-		[7926],
-		[7928],
-		[7930],
-		[7932],
-		[7934],
-		[7944, 7951],
-		[7960, 7965],
-		[7976, 7983],
-		[7992, 7999],
-		[8008, 8013],
-		[8025],
-		[8027],
-		[8029],
-		[8031],
-		[8040, 8047],
-		[8120, 8123],
-		[8136, 8139],
-		[8152, 8155],
-		[8168, 8172],
-		[8184, 8187],
-		[8450],
-		[8455],
-		[8459, 8461],
-		[8464, 8466],
-		[8469],
-		[8473, 8477],
-		[8484],
-		[8486],
-		[8488],
-		[8490, 8493],
-		[8496, 8499],
-		[8510, 8511],
-		[8517],
-		[8579],
-		[11264, 11310],
-		[11360],
-		[11362, 11364],
-		[11367],
-		[11369],
-		[11371],
-		[11373, 11376],
-		[11378],
-		[11381],
-		[11390, 11392],
-		[11394],
-		[11396],
-		[11398],
-		[11400],
-		[11402],
-		[11404],
-		[11406],
-		[11408],
-		[11410],
-		[11412],
-		[11414],
-		[11416],
-		[11418],
-		[11420],
-		[11422],
-		[11424],
-		[11426],
-		[11428],
-		[11430],
-		[11432],
-		[11434],
-		[11436],
-		[11438],
-		[11440],
-		[11442],
-		[11444],
-		[11446],
-		[11448],
-		[11450],
-		[11452],
-		[11454],
-		[11456],
-		[11458],
-		[11460],
-		[11462],
-		[11464],
-		[11466],
-		[11468],
-		[11470],
-		[11472],
-		[11474],
-		[11476],
-		[11478],
-		[11480],
-		[11482],
-		[11484],
-		[11486],
-		[11488],
-		[11490],
-		[11499],
-		[11501],
-		[42560],
-		[42562],
-		[42564],
-		[42566],
-		[42568],
-		[42570],
-		[42572],
-		[42574],
-		[42576],
-		[42578],
-		[42580],
-		[42582],
-		[42584],
-		[42586],
-		[42588],
-		[42590],
-		[42592],
-		[42594],
-		[42596],
-		[42598],
-		[42600],
-		[42602],
-		[42604],
-		[42624],
-		[42626],
-		[42628],
-		[42630],
-		[42632],
-		[42634],
-		[42636],
-		[42638],
-		[42640],
-		[42642],
-		[42644],
-		[42646],
-		[42786],
-		[42788],
-		[42790],
-		[42792],
-		[42794],
-		[42796],
-		[42798],
-		[42802],
-		[42804],
-		[42806],
-		[42808],
-		[42810],
-		[42812],
-		[42814],
-		[42816],
-		[42818],
-		[42820],
-		[42822],
-		[42824],
-		[42826],
-		[42828],
-		[42830],
-		[42832],
-		[42834],
-		[42836],
-		[42838],
-		[42840],
-		[42842],
-		[42844],
-		[42846],
-		[42848],
-		[42850],
-		[42852],
-		[42854],
-		[42856],
-		[42858],
-		[42860],
-		[42862],
-		[42873],
-		[42875],
-		[42877, 42878],
-		[42880],
-		[42882],
-		[42884],
-		[42886],
-		[42891],
-		[42893],
-		[42896],
-		[42912],
-		[42914],
-		[42916],
-		[42918],
-		[42920],
-		[65313, 65338],
-		[66560, 66599],
-		[119808, 119833],
-		[119860, 119885],
-		[119912, 119937],
-		[119964],
-		[119966, 119967],
-		[119970],
-		[119973, 119974],
-		[119977, 119980],
-		[119982, 119989],
-		[120016, 120041],
-		[120068, 120069],
-		[120071, 120074],
-		[120077, 120084],
-		[120086, 120092],
-		[120120, 120121],
-		[120123, 120126],
-		[120128, 120132],
-		[120134],
-		[120138, 120144],
-		[120172, 120197],
-		[120224, 120249],
-		[120276, 120301],
-		[120328, 120353],
-		[120380, 120405],
-		[120432, 120457],
-		[120488, 120512],
-		[120546, 120570],
-		[120604, 120628],
-		[120662, 120686],
-		[120720, 120744],
-		[120778]
-	],
-	"ll": [
-		[97, 122],
-		[170],
-		[181],
-		[186],
-		[223, 246],
-		[248, 255],
-		[257],
-		[259],
-		[261],
-		[263],
-		[265],
-		[267],
-		[269],
-		[271],
-		[273],
-		[275],
-		[277],
-		[279],
-		[281],
-		[283],
-		[285],
-		[287],
-		[289],
-		[291],
-		[293],
-		[295],
-		[297],
-		[299],
-		[301],
-		[303],
-		[305],
-		[307],
-		[309],
-		[311, 312],
-		[314],
-		[316],
-		[318],
-		[320],
-		[322],
-		[324],
-		[326],
-		[328, 329],
-		[331],
-		[333],
-		[335],
-		[337],
-		[339],
-		[341],
-		[343],
-		[345],
-		[347],
-		[349],
-		[351],
-		[353],
-		[355],
-		[357],
-		[359],
-		[361],
-		[363],
-		[365],
-		[367],
-		[369],
-		[371],
-		[373],
-		[375],
-		[378],
-		[380],
-		[382, 384],
-		[387],
-		[389],
-		[392],
-		[396, 397],
-		[402],
-		[405],
-		[409, 411],
-		[414],
-		[417],
-		[419],
-		[421],
-		[424],
-		[426, 427],
-		[429],
-		[432],
-		[436],
-		[438],
-		[441, 442],
-		[445, 447],
-		[454],
-		[457],
-		[460],
-		[462],
-		[464],
-		[466],
-		[468],
-		[470],
-		[472],
-		[474],
-		[476, 477],
-		[479],
-		[481],
-		[483],
-		[485],
-		[487],
-		[489],
-		[491],
-		[493],
-		[495, 496],
-		[499],
-		[501],
-		[505],
-		[507],
-		[509],
-		[511],
-		[513],
-		[515],
-		[517],
-		[519],
-		[521],
-		[523],
-		[525],
-		[527],
-		[529],
-		[531],
-		[533],
-		[535],
-		[537],
-		[539],
-		[541],
-		[543],
-		[545],
-		[547],
-		[549],
-		[551],
-		[553],
-		[555],
-		[557],
-		[559],
-		[561],
-		[563, 569],
-		[572],
-		[575, 576],
-		[578],
-		[583],
-		[585],
-		[587],
-		[589],
-		[591, 659],
-		[661, 687],
-		[881],
-		[883],
-		[887],
-		[891, 893],
-		[912],
-		[940, 974],
-		[976, 977],
-		[981, 983],
-		[985],
-		[987],
-		[989],
-		[991],
-		[993],
-		[995],
-		[997],
-		[999],
-		[1001],
-		[1003],
-		[1005],
-		[1007, 1011],
-		[1013],
-		[1016],
-		[1019, 1020],
-		[1072, 1119],
-		[1121],
-		[1123],
-		[1125],
-		[1127],
-		[1129],
-		[1131],
-		[1133],
-		[1135],
-		[1137],
-		[1139],
-		[1141],
-		[1143],
-		[1145],
-		[1147],
-		[1149],
-		[1151],
-		[1153],
-		[1163],
-		[1165],
-		[1167],
-		[1169],
-		[1171],
-		[1173],
-		[1175],
-		[1177],
-		[1179],
-		[1181],
-		[1183],
-		[1185],
-		[1187],
-		[1189],
-		[1191],
-		[1193],
-		[1195],
-		[1197],
-		[1199],
-		[1201],
-		[1203],
-		[1205],
-		[1207],
-		[1209],
-		[1211],
-		[1213],
-		[1215],
-		[1218],
-		[1220],
-		[1222],
-		[1224],
-		[1226],
-		[1228],
-		[1230, 1231],
-		[1233],
-		[1235],
-		[1237],
-		[1239],
-		[1241],
-		[1243],
-		[1245],
-		[1247],
-		[1249],
-		[1251],
-		[1253],
-		[1255],
-		[1257],
-		[1259],
-		[1261],
-		[1263],
-		[1265],
-		[1267],
-		[1269],
-		[1271],
-		[1273],
-		[1275],
-		[1277],
-		[1279],
-		[1281],
-		[1283],
-		[1285],
-		[1287],
-		[1289],
-		[1291],
-		[1293],
-		[1295],
-		[1297],
-		[1299],
-		[1301],
-		[1303],
-		[1305],
-		[1307],
-		[1309],
-		[1311],
-		[1313],
-		[1315],
-		[1317],
-		[1319],
-		[1377, 1415],
-		[7424, 7467],
-		[7522, 7543],
-		[7545, 7578],
-		[7681],
-		[7683],
-		[7685],
-		[7687],
-		[7689],
-		[7691],
-		[7693],
-		[7695],
-		[7697],
-		[7699],
-		[7701],
-		[7703],
-		[7705],
-		[7707],
-		[7709],
-		[7711],
-		[7713],
-		[7715],
-		[7717],
-		[7719],
-		[7721],
-		[7723],
-		[7725],
-		[7727],
-		[7729],
-		[7731],
-		[7733],
-		[7735],
-		[7737],
-		[7739],
-		[7741],
-		[7743],
-		[7745],
-		[7747],
-		[7749],
-		[7751],
-		[7753],
-		[7755],
-		[7757],
-		[7759],
-		[7761],
-		[7763],
-		[7765],
-		[7767],
-		[7769],
-		[7771],
-		[7773],
-		[7775],
-		[7777],
-		[7779],
-		[7781],
-		[7783],
-		[7785],
-		[7787],
-		[7789],
-		[7791],
-		[7793],
-		[7795],
-		[7797],
-		[7799],
-		[7801],
-		[7803],
-		[7805],
-		[7807],
-		[7809],
-		[7811],
-		[7813],
-		[7815],
-		[7817],
-		[7819],
-		[7821],
-		[7823],
-		[7825],
-		[7827],
-		[7829, 7837],
-		[7839],
-		[7841],
-		[7843],
-		[7845],
-		[7847],
-		[7849],
-		[7851],
-		[7853],
-		[7855],
-		[7857],
-		[7859],
-		[7861],
-		[7863],
-		[7865],
-		[7867],
-		[7869],
-		[7871],
-		[7873],
-		[7875],
-		[7877],
-		[7879],
-		[7881],
-		[7883],
-		[7885],
-		[7887],
-		[7889],
-		[7891],
-		[7893],
-		[7895],
-		[7897],
-		[7899],
-		[7901],
-		[7903],
-		[7905],
-		[7907],
-		[7909],
-		[7911],
-		[7913],
-		[7915],
-		[7917],
-		[7919],
-		[7921],
-		[7923],
-		[7925],
-		[7927],
-		[7929],
-		[7931],
-		[7933],
-		[7935, 7943],
-		[7952, 7957],
-		[7968, 7975],
-		[7984, 7991],
-		[8000, 8005],
-		[8016, 8023],
-		[8032, 8039],
-		[8048, 8061],
-		[8064, 8071],
-		[8080, 8087],
-		[8096, 8103],
-		[8112, 8116],
-		[8118, 8119],
-		[8126],
-		[8130, 8132],
-		[8134, 8135],
-		[8144, 8147],
-		[8150, 8151],
-		[8160, 8167],
-		[8178, 8180],
-		[8182, 8183],
-		[8458],
-		[8462, 8463],
-		[8467],
-		[8495],
-		[8500],
-		[8505],
-		[8508, 8509],
-		[8518, 8521],
-		[8526],
-		[8580],
-		[11312, 11358],
-		[11361],
-		[11365, 11366],
-		[11368],
-		[11370],
-		[11372],
-		[11377],
-		[11379, 11380],
-		[11382, 11388],
-		[11393],
-		[11395],
-		[11397],
-		[11399],
-		[11401],
-		[11403],
-		[11405],
-		[11407],
-		[11409],
-		[11411],
-		[11413],
-		[11415],
-		[11417],
-		[11419],
-		[11421],
-		[11423],
-		[11425],
-		[11427],
-		[11429],
-		[11431],
-		[11433],
-		[11435],
-		[11437],
-		[11439],
-		[11441],
-		[11443],
-		[11445],
-		[11447],
-		[11449],
-		[11451],
-		[11453],
-		[11455],
-		[11457],
-		[11459],
-		[11461],
-		[11463],
-		[11465],
-		[11467],
-		[11469],
-		[11471],
-		[11473],
-		[11475],
-		[11477],
-		[11479],
-		[11481],
-		[11483],
-		[11485],
-		[11487],
-		[11489],
-		[11491, 11492],
-		[11500],
-		[11502],
-		[11520, 11557],
-		[42561],
-		[42563],
-		[42565],
-		[42567],
-		[42569],
-		[42571],
-		[42573],
-		[42575],
-		[42577],
-		[42579],
-		[42581],
-		[42583],
-		[42585],
-		[42587],
-		[42589],
-		[42591],
-		[42593],
-		[42595],
-		[42597],
-		[42599],
-		[42601],
-		[42603],
-		[42605],
-		[42625],
-		[42627],
-		[42629],
-		[42631],
-		[42633],
-		[42635],
-		[42637],
-		[42639],
-		[42641],
-		[42643],
-		[42645],
-		[42647],
-		[42787],
-		[42789],
-		[42791],
-		[42793],
-		[42795],
-		[42797],
-		[42799, 42801],
-		[42803],
-		[42805],
-		[42807],
-		[42809],
-		[42811],
-		[42813],
-		[42815],
-		[42817],
-		[42819],
-		[42821],
-		[42823],
-		[42825],
-		[42827],
-		[42829],
-		[42831],
-		[42833],
-		[42835],
-		[42837],
-		[42839],
-		[42841],
-		[42843],
-		[42845],
-		[42847],
-		[42849],
-		[42851],
-		[42853],
-		[42855],
-		[42857],
-		[42859],
-		[42861],
-		[42863],
-		[42865, 42872],
-		[42874],
-		[42876],
-		[42879],
-		[42881],
-		[42883],
-		[42885],
-		[42887],
-		[42892],
-		[42894],
-		[42897],
-		[42913],
-		[42915],
-		[42917],
-		[42919],
-		[42921],
-		[43002],
-		[64256, 64262],
-		[64275, 64279],
-		[65345, 65370],
-		[66600, 66639],
-		[119834, 119859],
-		[119886, 119892],
-		[119894, 119911],
-		[119938, 119963],
-		[119990, 119993],
-		[119995],
-		[119997, 120003],
-		[120005, 120015],
-		[120042, 120067],
-		[120094, 120119],
-		[120146, 120171],
-		[120198, 120223],
-		[120250, 120275],
-		[120302, 120327],
-		[120354, 120379],
-		[120406, 120431],
-		[120458, 120485],
-		[120514, 120538],
-		[120540, 120545],
-		[120572, 120596],
-		[120598, 120603],
-		[120630, 120654],
-		[120656, 120661],
-		[120688, 120712],
-		[120714, 120719],
-		[120746, 120770],
-		[120772, 120777],
-		[120779]
-	],
-	"lt": [
-		[453],
-		[456],
-		[459],
-		[498],
-		[8072, 8079],
-		[8088, 8095],
-		[8104, 8111],
-		[8124],
-		[8140],
-		[8188]
-	],
-	"lm": [
-		[688, 705],
-		[710, 721],
-		[736, 740],
-		[748],
-		[750],
-		[884],
-		[890],
-		[1369],
-		[1600],
-		[1765, 1766],
-		[2036, 2037],
-		[2042],
-		[2074],
-		[2084],
-		[2088],
-		[2417],
-		[3654],
-		[3782],
-		[4348],
-		[6103],
-		[6211],
-		[6823],
-		[7288, 7293],
-		[7468, 7521],
-		[7544],
-		[7579, 7615],
-		[8305],
-		[8319],
-		[8336, 8348],
-		[11389],
-		[11631],
-		[11823],
-		[12293],
-		[12337, 12341],
-		[12347],
-		[12445, 12446],
-		[12540, 12542],
-		[40981],
-		[42232, 42237],
-		[42508],
-		[42623],
-		[42775, 42783],
-		[42864],
-		[42888],
-		[43471],
-		[43632],
-		[43741],
-		[65392],
-		[65438, 65439]
-	],
-	"lo": [
-		[443],
-		[448, 451],
-		[660],
-		[1488, 1514],
-		[1520, 1522],
-		[1568, 1599],
-		[1601, 1610],
-		[1646, 1647],
-		[1649, 1747],
-		[1749],
-		[1774, 1775],
-		[1786, 1788],
-		[1791],
-		[1808],
-		[1810, 1839],
-		[1869, 1957],
-		[1969],
-		[1994, 2026],
-		[2048, 2069],
-		[2112, 2136],
-		[2308, 2361],
-		[2365],
-		[2384],
-		[2392, 2401],
-		[2418, 2423],
-		[2425, 2431],
-		[2437, 2444],
-		[2447, 2448],
-		[2451, 2472],
-		[2474, 2480],
-		[2482],
-		[2486, 2489],
-		[2493],
-		[2510],
-		[2524, 2525],
-		[2527, 2529],
-		[2544, 2545],
-		[2565, 2570],
-		[2575, 2576],
-		[2579, 2600],
-		[2602, 2608],
-		[2610, 2611],
-		[2613, 2614],
-		[2616, 2617],
-		[2649, 2652],
-		[2654],
-		[2674, 2676],
-		[2693, 2701],
-		[2703, 2705],
-		[2707, 2728],
-		[2730, 2736],
-		[2738, 2739],
-		[2741, 2745],
-		[2749],
-		[2768],
-		[2784, 2785],
-		[2821, 2828],
-		[2831, 2832],
-		[2835, 2856],
-		[2858, 2864],
-		[2866, 2867],
-		[2869, 2873],
-		[2877],
-		[2908, 2909],
-		[2911, 2913],
-		[2929],
-		[2947],
-		[2949, 2954],
-		[2958, 2960],
-		[2962, 2965],
-		[2969, 2970],
-		[2972],
-		[2974, 2975],
-		[2979, 2980],
-		[2984, 2986],
-		[2990, 3001],
-		[3024],
-		[3077, 3084],
-		[3086, 3088],
-		[3090, 3112],
-		[3114, 3123],
-		[3125, 3129],
-		[3133],
-		[3160, 3161],
-		[3168, 3169],
-		[3205, 3212],
-		[3214, 3216],
-		[3218, 3240],
-		[3242, 3251],
-		[3253, 3257],
-		[3261],
-		[3294],
-		[3296, 3297],
-		[3313, 3314],
-		[3333, 3340],
-		[3342, 3344],
-		[3346, 3386],
-		[3389],
-		[3406],
-		[3424, 3425],
-		[3450, 3455],
-		[3461, 3478],
-		[3482, 3505],
-		[3507, 3515],
-		[3517],
-		[3520, 3526],
-		[3585, 3632],
-		[3634, 3635],
-		[3648, 3653],
-		[3713, 3714],
-		[3716],
-		[3719, 3720],
-		[3722],
-		[3725],
-		[3732, 3735],
-		[3737, 3743],
-		[3745, 3747],
-		[3749],
-		[3751],
-		[3754, 3755],
-		[3757, 3760],
-		[3762, 3763],
-		[3773],
-		[3776, 3780],
-		[3804, 3805],
-		[3840],
-		[3904, 3911],
-		[3913, 3948],
-		[3976, 3980],
-		[4096, 4138],
-		[4159],
-		[4176, 4181],
-		[4186, 4189],
-		[4193],
-		[4197, 4198],
-		[4206, 4208],
-		[4213, 4225],
-		[4238],
-		[4304, 4346],
-		[4352, 4680],
-		[4682, 4685],
-		[4688, 4694],
-		[4696],
-		[4698, 4701],
-		[4704, 4744],
-		[4746, 4749],
-		[4752, 4784],
-		[4786, 4789],
-		[4792, 4798],
-		[4800],
-		[4802, 4805],
-		[4808, 4822],
-		[4824, 4880],
-		[4882, 4885],
-		[4888, 4954],
-		[4992, 5007],
-		[5024, 5108],
-		[5121, 5740],
-		[5743, 5759],
-		[5761, 5786],
-		[5792, 5866],
-		[5888, 5900],
-		[5902, 5905],
-		[5920, 5937],
-		[5952, 5969],
-		[5984, 5996],
-		[5998, 6000],
-		[6016, 6067],
-		[6108],
-		[6176, 6210],
-		[6212, 6263],
-		[6272, 6312],
-		[6314],
-		[6320, 6389],
-		[6400, 6428],
-		[6480, 6509],
-		[6512, 6516],
-		[6528, 6571],
-		[6593, 6599],
-		[6656, 6678],
-		[6688, 6740],
-		[6917, 6963],
-		[6981, 6987],
-		[7043, 7072],
-		[7086, 7087],
-		[7104, 7141],
-		[7168, 7203],
-		[7245, 7247],
-		[7258, 7287],
-		[7401, 7404],
-		[7406, 7409],
-		[8501, 8504],
-		[11568, 11621],
-		[11648, 11670],
-		[11680, 11686],
-		[11688, 11694],
-		[11696, 11702],
-		[11704, 11710],
-		[11712, 11718],
-		[11720, 11726],
-		[11728, 11734],
-		[11736, 11742],
-		[12294],
-		[12348],
-		[12353, 12438],
-		[12447],
-		[12449, 12538],
-		[12543],
-		[12549, 12589],
-		[12593, 12686],
-		[12704, 12730],
-		[12784, 12799],
-		[13312, 19893],
-		[19968, 40907],
-		[40960, 40980],
-		[40982, 42124],
-		[42192, 42231],
-		[42240, 42507],
-		[42512, 42527],
-		[42538, 42539],
-		[42606],
-		[42656, 42725],
-		[43003, 43009],
-		[43011, 43013],
-		[43015, 43018],
-		[43020, 43042],
-		[43072, 43123],
-		[43138, 43187],
-		[43250, 43255],
-		[43259],
-		[43274, 43301],
-		[43312, 43334],
-		[43360, 43388],
-		[43396, 43442],
-		[43520, 43560],
-		[43584, 43586],
-		[43588, 43595],
-		[43616, 43631],
-		[43633, 43638],
-		[43642],
-		[43648, 43695],
-		[43697],
-		[43701, 43702],
-		[43705, 43709],
-		[43712],
-		[43714],
-		[43739, 43740],
-		[43777, 43782],
-		[43785, 43790],
-		[43793, 43798],
-		[43808, 43814],
-		[43816, 43822],
-		[43968, 44002],
-		[44032, 55203],
-		[55216, 55238],
-		[55243, 55291],
-		[63744, 64045],
-		[64048, 64109],
-		[64112, 64217],
-		[64285],
-		[64287, 64296],
-		[64298, 64310],
-		[64312, 64316],
-		[64318],
-		[64320, 64321],
-		[64323, 64324],
-		[64326, 64433],
-		[64467, 64829],
-		[64848, 64911],
-		[64914, 64967],
-		[65008, 65019],
-		[65136, 65140],
-		[65142, 65276],
-		[65382, 65391],
-		[65393, 65437],
-		[65440, 65470],
-		[65474, 65479],
-		[65482, 65487],
-		[65490, 65495],
-		[65498, 65500],
-		[65536, 65547],
-		[65549, 65574],
-		[65576, 65594],
-		[65596, 65597],
-		[65599, 65613],
-		[65616, 65629],
-		[65664, 65786],
-		[66176, 66204],
-		[66208, 66256],
-		[66304, 66334],
-		[66352, 66368],
-		[66370, 66377],
-		[66432, 66461],
-		[66464, 66499],
-		[66504, 66511],
-		[66640, 66717],
-		[67584, 67589],
-		[67592],
-		[67594, 67637],
-		[67639, 67640],
-		[67644],
-		[67647, 67669],
-		[67840, 67861],
-		[67872, 67897],
-		[68096],
-		[68112, 68115],
-		[68117, 68119],
-		[68121, 68147],
-		[68192, 68220],
-		[68352, 68405],
-		[68416, 68437],
-		[68448, 68466],
-		[68608, 68680],
-		[69635, 69687],
-		[69763, 69807],
-		[73728, 74606],
-		[77824, 78894],
-		[92160, 92728],
-		[110592, 110593],
-		[131072, 173782],
-		[173824, 177972],
-		[177984, 178205],
-		[194560, 195101]
-	]
-}
-;
+ilib.data.ctype_l = {"Lu":[[65,90],[192,214],[216,222],[256],[258],[260],[262],[264],[266],[268],[270],[272],[274],[276],[278],[280],[282],[284],[286],[288],[290],[292],[294],[296],[298],[300],[302],[304],[306],[308],[310],[313],[315],[317],[319],[321],[323],[325],[327],[330],[332],[334],[336],[338],[340],[342],[344],[346],[348],[350],[352],[354],[356],[358],[360],[362],[364],[366],[368],[370],[372],[374],[376,377],[379],[381],[385,386],[388],[390,391],[393,395],[398,401],[403,404],[406,408],[412,413],[415,416],[418],[420],[422,423],[425],[428],[430,431],[433,435],[437],[439,440],[444],[452],[455],[458],[461],[463],[465],[467],[469],[471],[473],[475],[478],[480],[482],[484],[486],[488],[490],[492],[494],[497],[500],[502,504],[506],[508],[510],[512],[514],[516],[518],[520],[522],[524],[526],[528],[530],[532],[534],[536],[538],[540],[542],[544],[546],[548],[550],[552],[554],[556],[558],[560],[562],[570,571],[573,574],[577],[579,582],[584],[586],[588],[590],[880],[882],[886],[902],[904,906],[908],[910,911],[913,929],[931,939],[975],[978,980],[984],[986],[988],[990],[992],[994],[996],[998],[1000],[1002],[1004],[1006],[1012],[1015],[1017,1018],[1021,1071],[1120],[1122],[1124],[1126],[1128],[1130],[1132],[1134],[1136],[1138],[1140],[1142],[1144],[1146],[1148],[1150],[1152],[1162],[1164],[1166],[1168],[1170],[1172],[1174],[1176],[1178],[1180],[1182],[1184],[1186],[1188],[1190],[1192],[1194],[1196],[1198],[1200],[1202],[1204],[1206],[1208],[1210],[1212],[1214],[1216,1217],[1219],[1221],[1223],[1225],[1227],[1229],[1232],[1234],[1236],[1238],[1240],[1242],[1244],[1246],[1248],[1250],[1252],[1254],[1256],[1258],[1260],[1262],[1264],[1266],[1268],[1270],[1272],[1274],[1276],[1278],[1280],[1282],[1284],[1286],[1288],[1290],[1292],[1294],[1296],[1298],[1300],[1302],[1304],[1306],[1308],[1310],[1312],[1314],[1316],[1318],[1329,1366],[4256,4293],[4295],[4301],[7680],[7682],[7684],[7686],[7688],[7690],[7692],[7694],[7696],[7698],[7700],[7702],[7704],[7706],[7708],[7710],[7712],[7714],[7716],[7718],[7720],[7722],[7724],[7726],[7728],[7730],[7732],[7734],[7736],[7738],[7740],[7742],[7744],[7746],[7748],[7750],[7752],[7754],[7756],[7758],[7760],[7762],[7764],[7766],[7768],[7770],[7772],[7774],[7776],[7778],[7780],[7782],[7784],[7786],[7788],[7790],[7792],[7794],[7796],[7798],[7800],[7802],[7804],[7806],[7808],[7810],[7812],[7814],[7816],[7818],[7820],[7822],[7824],[7826],[7828],[7838],[7840],[7842],[7844],[7846],[7848],[7850],[7852],[7854],[7856],[7858],[7860],[7862],[7864],[7866],[7868],[7870],[7872],[7874],[7876],[7878],[7880],[7882],[7884],[7886],[7888],[7890],[7892],[7894],[7896],[7898],[7900],[7902],[7904],[7906],[7908],[7910],[7912],[7914],[7916],[7918],[7920],[7922],[7924],[7926],[7928],[7930],[7932],[7934],[7944,7951],[7960,7965],[7976,7983],[7992,7999],[8008,8013],[8025],[8027],[8029],[8031],[8040,8047],[8120,8123],[8136,8139],[8152,8155],[8168,8172],[8184,8187],[8450],[8455],[8459,8461],[8464,8466],[8469],[8473,8477],[8484],[8486],[8488],[8490,8493],[8496,8499],[8510,8511],[8517],[8579],[11264,11310],[11360],[11362,11364],[11367],[11369],[11371],[11373,11376],[11378],[11381],[11390,11392],[11394],[11396],[11398],[11400],[11402],[11404],[11406],[11408],[11410],[11412],[11414],[11416],[11418],[11420],[11422],[11424],[11426],[11428],[11430],[11432],[11434],[11436],[11438],[11440],[11442],[11444],[11446],[11448],[11450],[11452],[11454],[11456],[11458],[11460],[11462],[11464],[11466],[11468],[11470],[11472],[11474],[11476],[11478],[11480],[11482],[11484],[11486],[11488],[11490],[11499],[11501],[11506],[42560],[42562],[42564],[42566],[42568],[42570],[42572],[42574],[42576],[42578],[42580],[42582],[42584],[42586],[42588],[42590],[42592],[42594],[42596],[42598],[42600],[42602],[42604],[42624],[42626],[42628],[42630],[42632],[42634],[42636],[42638],[42640],[42642],[42644],[42646],[42786],[42788],[42790],[42792],[42794],[42796],[42798],[42802],[42804],[42806],[42808],[42810],[42812],[42814],[42816],[42818],[42820],[42822],[42824],[42826],[42828],[42830],[42832],[42834],[42836],[42838],[42840],[42842],[42844],[42846],[42848],[42850],[42852],[42854],[42856],[42858],[42860],[42862],[42873],[42875],[42877,42878],[42880],[42882],[42884],[42886],[42891],[42893],[42896],[42898],[42912],[42914],[42916],[42918],[42920],[42922],[65313,65338],[66560,66599],[119808,119833],[119860,119885],[119912,119937],[119964],[119966,119967],[119970],[119973,119974],[119977,119980],[119982,119989],[120016,120041],[120068,120069],[120071,120074],[120077,120084],[120086,120092],[120120,120121],[120123,120126],[120128,120132],[120134],[120138,120144],[120172,120197],[120224,120249],[120276,120301],[120328,120353],[120380,120405],[120432,120457],[120488,120512],[120546,120570],[120604,120628],[120662,120686],[120720,120744],[120778]],"Ll":[[97,122],[181],[223,246],[248,255],[257],[259],[261],[263],[265],[267],[269],[271],[273],[275],[277],[279],[281],[283],[285],[287],[289],[291],[293],[295],[297],[299],[301],[303],[305],[307],[309],[311,312],[314],[316],[318],[320],[322],[324],[326],[328,329],[331],[333],[335],[337],[339],[341],[343],[345],[347],[349],[351],[353],[355],[357],[359],[361],[363],[365],[367],[369],[371],[373],[375],[378],[380],[382,384],[387],[389],[392],[396,397],[402],[405],[409,411],[414],[417],[419],[421],[424],[426,427],[429],[432],[436],[438],[441,442],[445,447],[454],[457],[460],[462],[464],[466],[468],[470],[472],[474],[476,477],[479],[481],[483],[485],[487],[489],[491],[493],[495,496],[499],[501],[505],[507],[509],[511],[513],[515],[517],[519],[521],[523],[525],[527],[529],[531],[533],[535],[537],[539],[541],[543],[545],[547],[549],[551],[553],[555],[557],[559],[561],[563,569],[572],[575,576],[578],[583],[585],[587],[589],[591,659],[661,687],[881],[883],[887],[891,893],[912],[940,974],[976,977],[981,983],[985],[987],[989],[991],[993],[995],[997],[999],[1001],[1003],[1005],[1007,1011],[1013],[1016],[1019,1020],[1072,1119],[1121],[1123],[1125],[1127],[1129],[1131],[1133],[1135],[1137],[1139],[1141],[1143],[1145],[1147],[1149],[1151],[1153],[1163],[1165],[1167],[1169],[1171],[1173],[1175],[1177],[1179],[1181],[1183],[1185],[1187],[1189],[1191],[1193],[1195],[1197],[1199],[1201],[1203],[1205],[1207],[1209],[1211],[1213],[1215],[1218],[1220],[1222],[1224],[1226],[1228],[1230,1231],[1233],[1235],[1237],[1239],[1241],[1243],[1245],[1247],[1249],[1251],[1253],[1255],[1257],[1259],[1261],[1263],[1265],[1267],[1269],[1271],[1273],[1275],[1277],[1279],[1281],[1283],[1285],[1287],[1289],[1291],[1293],[1295],[1297],[1299],[1301],[1303],[1305],[1307],[1309],[1311],[1313],[1315],[1317],[1319],[1377,1415],[7424,7467],[7531,7543],[7545,7578],[7681],[7683],[7685],[7687],[7689],[7691],[7693],[7695],[7697],[7699],[7701],[7703],[7705],[7707],[7709],[7711],[7713],[7715],[7717],[7719],[7721],[7723],[7725],[7727],[7729],[7731],[7733],[7735],[7737],[7739],[7741],[7743],[7745],[7747],[7749],[7751],[7753],[7755],[7757],[7759],[7761],[7763],[7765],[7767],[7769],[7771],[7773],[7775],[7777],[7779],[7781],[7783],[7785],[7787],[7789],[7791],[7793],[7795],[7797],[7799],[7801],[7803],[7805],[7807],[7809],[7811],[7813],[7815],[7817],[7819],[7821],[7823],[7825],[7827],[7829,7837],[7839],[7841],[7843],[7845],[7847],[7849],[7851],[7853],[7855],[7857],[7859],[7861],[7863],[7865],[7867],[7869],[7871],[7873],[7875],[7877],[7879],[7881],[7883],[7885],[7887],[7889],[7891],[7893],[7895],[7897],[7899],[7901],[7903],[7905],[7907],[7909],[7911],[7913],[7915],[7917],[7919],[7921],[7923],[7925],[7927],[7929],[7931],[7933],[7935,7943],[7952,7957],[7968,7975],[7984,7991],[8000,8005],[8016,8023],[8032,8039],[8048,8061],[8064,8071],[8080,8087],[8096,8103],[8112,8116],[8118,8119],[8126],[8130,8132],[8134,8135],[8144,8147],[8150,8151],[8160,8167],[8178,8180],[8182,8183],[8458],[8462,8463],[8467],[8495],[8500],[8505],[8508,8509],[8518,8521],[8526],[8580],[11312,11358],[11361],[11365,11366],[11368],[11370],[11372],[11377],[11379,11380],[11382,11387],[11393],[11395],[11397],[11399],[11401],[11403],[11405],[11407],[11409],[11411],[11413],[11415],[11417],[11419],[11421],[11423],[11425],[11427],[11429],[11431],[11433],[11435],[11437],[11439],[11441],[11443],[11445],[11447],[11449],[11451],[11453],[11455],[11457],[11459],[11461],[11463],[11465],[11467],[11469],[11471],[11473],[11475],[11477],[11479],[11481],[11483],[11485],[11487],[11489],[11491,11492],[11500],[11502],[11507],[11520,11557],[11559],[11565],[42561],[42563],[42565],[42567],[42569],[42571],[42573],[42575],[42577],[42579],[42581],[42583],[42585],[42587],[42589],[42591],[42593],[42595],[42597],[42599],[42601],[42603],[42605],[42625],[42627],[42629],[42631],[42633],[42635],[42637],[42639],[42641],[42643],[42645],[42647],[42787],[42789],[42791],[42793],[42795],[42797],[42799,42801],[42803],[42805],[42807],[42809],[42811],[42813],[42815],[42817],[42819],[42821],[42823],[42825],[42827],[42829],[42831],[42833],[42835],[42837],[42839],[42841],[42843],[42845],[42847],[42849],[42851],[42853],[42855],[42857],[42859],[42861],[42863],[42865,42872],[42874],[42876],[42879],[42881],[42883],[42885],[42887],[42892],[42894],[42897],[42899],[42913],[42915],[42917],[42919],[42921],[43002],[64256,64262],[64275,64279],[65345,65370],[66600,66639],[119834,119859],[119886,119892],[119894,119911],[119938,119963],[119990,119993],[119995],[119997,120003],[120005,120015],[120042,120067],[120094,120119],[120146,120171],[120198,120223],[120250,120275],[120302,120327],[120354,120379],[120406,120431],[120458,120485],[120514,120538],[120540,120545],[120572,120596],[120598,120603],[120630,120654],[120656,120661],[120688,120712],[120714,120719],[120746,120770],[120772,120777],[120779]],"Lt":[[453],[456],[459],[498],[8072,8079],[8088,8095],[8104,8111],[8124],[8140],[8188]],"Lm":[[688,705],[710,721],[736,740],[748],[750],[884],[890],[1369],[1600],[1765,1766],[2036,2037],[2042],[2074],[2084],[2088],[2417],[3654],[3782],[4348],[6103],[6211],[6823],[7288,7293],[7468,7530],[7544],[7579,7615],[8305],[8319],[8336,8348],[11388,11389],[11631],[11823],[12293],[12337,12341],[12347],[12445,12446],[12540,12542],[40981],[42232,42237],[42508],[42623],[42775,42783],[42864],[42888],[43000,43001],[43471],[43632],[43741],[43763,43764],[65392],[65438,65439],[94099,94111]],"Lo":[[170],[186],[443],[448,451],[660],[1488,1514],[1520,1522],[1568,1599],[1601,1610],[1646,1647],[1649,1747],[1749],[1774,1775],[1786,1788],[1791],[1808],[1810,1839],[1869,1957],[1969],[1994,2026],[2048,2069],[2112,2136],[2208],[2210,2220],[2308,2361],[2365],[2384],[2392,2401],[2418,2423],[2425,2431],[2437,2444],[2447,2448],[2451,2472],[2474,2480],[2482],[2486,2489],[2493],[2510],[2524,2525],[2527,2529],[2544,2545],[2565,2570],[2575,2576],[2579,2600],[2602,2608],[2610,2611],[2613,2614],[2616,2617],[2649,2652],[2654],[2674,2676],[2693,2701],[2703,2705],[2707,2728],[2730,2736],[2738,2739],[2741,2745],[2749],[2768],[2784,2785],[2821,2828],[2831,2832],[2835,2856],[2858,2864],[2866,2867],[2869,2873],[2877],[2908,2909],[2911,2913],[2929],[2947],[2949,2954],[2958,2960],[2962,2965],[2969,2970],[2972],[2974,2975],[2979,2980],[2984,2986],[2990,3001],[3024],[3077,3084],[3086,3088],[3090,3112],[3114,3123],[3125,3129],[3133],[3160,3161],[3168,3169],[3205,3212],[3214,3216],[3218,3240],[3242,3251],[3253,3257],[3261],[3294],[3296,3297],[3313,3314],[3333,3340],[3342,3344],[3346,3386],[3389],[3406],[3424,3425],[3450,3455],[3461,3478],[3482,3505],[3507,3515],[3517],[3520,3526],[3585,3632],[3634,3635],[3648,3653],[3713,3714],[3716],[3719,3720],[3722],[3725],[3732,3735],[3737,3743],[3745,3747],[3749],[3751],[3754,3755],[3757,3760],[3762,3763],[3773],[3776,3780],[3804,3807],[3840],[3904,3911],[3913,3948],[3976,3980],[4096,4138],[4159],[4176,4181],[4186,4189],[4193],[4197,4198],[4206,4208],[4213,4225],[4238],[4304,4346],[4349,4680],[4682,4685],[4688,4694],[4696],[4698,4701],[4704,4744],[4746,4749],[4752,4784],[4786,4789],[4792,4798],[4800],[4802,4805],[4808,4822],[4824,4880],[4882,4885],[4888,4954],[4992,5007],[5024,5108],[5121,5740],[5743,5759],[5761,5786],[5792,5866],[5888,5900],[5902,5905],[5920,5937],[5952,5969],[5984,5996],[5998,6000],[6016,6067],[6108],[6176,6210],[6212,6263],[6272,6312],[6314],[6320,6389],[6400,6428],[6480,6509],[6512,6516],[6528,6571],[6593,6599],[6656,6678],[6688,6740],[6917,6963],[6981,6987],[7043,7072],[7086,7087],[7098,7141],[7168,7203],[7245,7247],[7258,7287],[7401,7404],[7406,7409],[7413,7414],[8501,8504],[11568,11623],[11648,11670],[11680,11686],[11688,11694],[11696,11702],[11704,11710],[11712,11718],[11720,11726],[11728,11734],[11736,11742],[12294],[12348],[12353,12438],[12447],[12449,12538],[12543],[12549,12589],[12593,12686],[12704,12730],[12784,12799],[13312,19893],[19968,40908],[40960,40980],[40982,42124],[42192,42231],[42240,42507],[42512,42527],[42538,42539],[42606],[42656,42725],[43003,43009],[43011,43013],[43015,43018],[43020,43042],[43072,43123],[43138,43187],[43250,43255],[43259],[43274,43301],[43312,43334],[43360,43388],[43396,43442],[43520,43560],[43584,43586],[43588,43595],[43616,43631],[43633,43638],[43642],[43648,43695],[43697],[43701,43702],[43705,43709],[43712],[43714],[43739,43740],[43744,43754],[43762],[43777,43782],[43785,43790],[43793,43798],[43808,43814],[43816,43822],[43968,44002],[44032,55203],[55216,55238],[55243,55291],[63744,64109],[64112,64217],[64285],[64287,64296],[64298,64310],[64312,64316],[64318],[64320,64321],[64323,64324],[64326,64433],[64467,64829],[64848,64911],[64914,64967],[65008,65019],[65136,65140],[65142,65276],[65382,65391],[65393,65437],[65440,65470],[65474,65479],[65482,65487],[65490,65495],[65498,65500],[65536,65547],[65549,65574],[65576,65594],[65596,65597],[65599,65613],[65616,65629],[65664,65786],[66176,66204],[66208,66256],[66304,66334],[66352,66368],[66370,66377],[66432,66461],[66464,66499],[66504,66511],[66640,66717],[67584,67589],[67592],[67594,67637],[67639,67640],[67644],[67647,67669],[67840,67861],[67872,67897],[67968,68023],[68030,68031],[68096],[68112,68115],[68117,68119],[68121,68147],[68192,68220],[68352,68405],[68416,68437],[68448,68466],[68608,68680],[69635,69687],[69763,69807],[69840,69864],[69891,69926],[70019,70066],[70081,70084],[71296,71338],[73728,74606],[77824,78894],[92160,92728],[93952,94020],[94032],[110592,110593],[126464,126467],[126469,126495],[126497,126498],[126500],[126503],[126505,126514],[126516,126519],[126521],[126523],[126530],[126535],[126537],[126539],[126541,126543],[126545,126546],[126548],[126551],[126553],[126555],[126557],[126559],[126561,126562],[126564],[126567,126570],[126572,126578],[126580,126583],[126585,126588],[126590],[126592,126601],[126603,126619],[126625,126627],[126629,126633],[126635,126651],[131072,173782],[173824,177972],[177984,178205],[194560,195101]]};
 /*
  * ctype.islpha.js - Character type is alphabetic
  * 
@@ -18275,11 +18039,11 @@ ilib.data.ctype_l = {
  * @return {boolean} true if the first character is alphabetic.
  */
 ilib.CType.isAlpha = function (ch) {
-	return ilib.CType._inRange(ch, 'lu', ilib.data.ctype_l) ||
-		ilib.CType._inRange(ch, 'll', ilib.data.ctype_l) ||
-		ilib.CType._inRange(ch, 'lt', ilib.data.ctype_l) ||
-		ilib.CType._inRange(ch, 'lm', ilib.data.ctype_l) ||
-		ilib.CType._inRange(ch, 'lo', ilib.data.ctype_l);
+	return ilib.CType._inRange(ch, 'Lu', ilib.data.ctype_l) ||
+		ilib.CType._inRange(ch, 'Ll', ilib.data.ctype_l) ||
+		ilib.CType._inRange(ch, 'Lt', ilib.data.ctype_l) ||
+		ilib.CType._inRange(ch, 'Lm', ilib.data.ctype_l) ||
+		ilib.CType._inRange(ch, 'Lo', ilib.data.ctype_l);
 };
 
 /*
@@ -18386,541 +18150,7 @@ ilib.CType.isBlank = function (ch) {
 	return ilib.CType._inRange(ch, 'blank', ilib.data.ctype);
 };
 
-ilib.data.ctype_c = {
-	"cn": [
-		[888, 889],
-		[895, 899],
-		[907],
-		[909],
-		[930],
-		[1320, 1328],
-		[1367, 1368],
-		[1376],
-		[1416],
-		[1419, 1424],
-		[1480, 1487],
-		[1515, 1519],
-		[1525, 1535],
-		[1540, 1541],
-		[1564, 1565],
-		[1806],
-		[1867, 1868],
-		[1970, 1983],
-		[2043, 2047],
-		[2094, 2095],
-		[2111],
-		[2140, 2141],
-		[2143, 2303],
-		[2424],
-		[2432],
-		[2436],
-		[2445, 2446],
-		[2449, 2450],
-		[2473],
-		[2481],
-		[2483, 2485],
-		[2490, 2491],
-		[2501, 2502],
-		[2505, 2506],
-		[2511, 2518],
-		[2520, 2523],
-		[2526],
-		[2532, 2533],
-		[2556, 2560],
-		[2564],
-		[2571, 2574],
-		[2577, 2578],
-		[2601],
-		[2609],
-		[2612],
-		[2615],
-		[2618, 2619],
-		[2621],
-		[2627, 2630],
-		[2633, 2634],
-		[2638, 2640],
-		[2642, 2648],
-		[2653],
-		[2655, 2661],
-		[2678, 2688],
-		[2692],
-		[2702],
-		[2706],
-		[2729],
-		[2737],
-		[2740],
-		[2746, 2747],
-		[2758],
-		[2762],
-		[2766, 2767],
-		[2769, 2783],
-		[2788, 2789],
-		[2800],
-		[2802, 2816],
-		[2820],
-		[2829, 2830],
-		[2833, 2834],
-		[2857],
-		[2865],
-		[2868],
-		[2874, 2875],
-		[2885, 2886],
-		[2889, 2890],
-		[2894, 2901],
-		[2904, 2907],
-		[2910],
-		[2916, 2917],
-		[2936, 2945],
-		[2948],
-		[2955, 2957],
-		[2961],
-		[2966, 2968],
-		[2971],
-		[2973],
-		[2976, 2978],
-		[2981, 2983],
-		[2987, 2989],
-		[3002, 3005],
-		[3011, 3013],
-		[3017],
-		[3022, 3023],
-		[3025, 3030],
-		[3032, 3045],
-		[3067, 3072],
-		[3076],
-		[3085],
-		[3089],
-		[3113],
-		[3124],
-		[3130, 3132],
-		[3141],
-		[3145],
-		[3150, 3156],
-		[3159],
-		[3162, 3167],
-		[3172, 3173],
-		[3184, 3191],
-		[3200, 3201],
-		[3204],
-		[3213],
-		[3217],
-		[3241],
-		[3252],
-		[3258, 3259],
-		[3269],
-		[3273],
-		[3278, 3284],
-		[3287, 3293],
-		[3295],
-		[3300, 3301],
-		[3312],
-		[3315, 3329],
-		[3332],
-		[3341],
-		[3345],
-		[3387, 3388],
-		[3397],
-		[3401],
-		[3407, 3414],
-		[3416, 3423],
-		[3428, 3429],
-		[3446, 3448],
-		[3456, 3457],
-		[3460],
-		[3479, 3481],
-		[3506],
-		[3516],
-		[3518, 3519],
-		[3527, 3529],
-		[3531, 3534],
-		[3541],
-		[3543],
-		[3552, 3569],
-		[3573, 3584],
-		[3643, 3646],
-		[3676, 3712],
-		[3715],
-		[3717, 3718],
-		[3721],
-		[3723, 3724],
-		[3726, 3731],
-		[3736],
-		[3744],
-		[3748],
-		[3750],
-		[3752, 3753],
-		[3756],
-		[3770],
-		[3774, 3775],
-		[3781],
-		[3783],
-		[3790, 3791],
-		[3802, 3803],
-		[3806, 3839],
-		[3912],
-		[3949, 3952],
-		[3992],
-		[4029],
-		[4045],
-		[4059, 4095],
-		[4294, 4303],
-		[4349, 4351],
-		[4681],
-		[4686, 4687],
-		[4695],
-		[4697],
-		[4702, 4703],
-		[4745],
-		[4750, 4751],
-		[4785],
-		[4790, 4791],
-		[4799],
-		[4801],
-		[4806, 4807],
-		[4823],
-		[4881],
-		[4886, 4887],
-		[4955, 4956],
-		[4989, 4991],
-		[5018, 5023],
-		[5109, 5119],
-		[5789, 5791],
-		[5873, 5887],
-		[5901],
-		[5909, 5919],
-		[5943, 5951],
-		[5972, 5983],
-		[5997],
-		[6001],
-		[6004, 6015],
-		[6110, 6111],
-		[6122, 6127],
-		[6138, 6143],
-		[6159],
-		[6170, 6175],
-		[6264, 6271],
-		[6315, 6319],
-		[6390, 6399],
-		[6429, 6431],
-		[6444, 6447],
-		[6460, 6463],
-		[6465, 6467],
-		[6510, 6511],
-		[6517, 6527],
-		[6572, 6575],
-		[6602, 6607],
-		[6619, 6621],
-		[6684, 6685],
-		[6751],
-		[6781, 6782],
-		[6794, 6799],
-		[6810, 6815],
-		[6830, 6911],
-		[6988, 6991],
-		[7037, 7039],
-		[7083, 7085],
-		[7098, 7103],
-		[7156, 7163],
-		[7224, 7226],
-		[7242, 7244],
-		[7296, 7375],
-		[7411, 7423],
-		[7655, 7675],
-		[7958, 7959],
-		[7966, 7967],
-		[8006, 8007],
-		[8014, 8015],
-		[8024],
-		[8026],
-		[8028],
-		[8030],
-		[8062, 8063],
-		[8117],
-		[8133],
-		[8148, 8149],
-		[8156],
-		[8176, 8177],
-		[8181],
-		[8191],
-		[8293, 8297],
-		[8306, 8307],
-		[8335],
-		[8349, 8351],
-		[8378, 8399],
-		[8433, 8447],
-		[8586, 8591],
-		[9204, 9215],
-		[9255, 9279],
-		[9291, 9311],
-		[9984],
-		[10187],
-		[10189],
-		[11085, 11087],
-		[11098, 11263],
-		[11311],
-		[11359],
-		[11506, 11512],
-		[11558, 11567],
-		[11622, 11630],
-		[11633, 11646],
-		[11671, 11679],
-		[11687],
-		[11695],
-		[11703],
-		[11711],
-		[11719],
-		[11727],
-		[11735],
-		[11743],
-		[11826, 11903],
-		[11930],
-		[12020, 12031],
-		[12246, 12271],
-		[12284, 12287],
-		[12352],
-		[12439, 12440],
-		[12544, 12548],
-		[12590, 12592],
-		[12687],
-		[12731, 12735],
-		[12772, 12783],
-		[12831],
-		[13055],
-		[19894, 19903],
-		[40908, 40959],
-		[42125, 42127],
-		[42183, 42191],
-		[42540, 42559],
-		[42612, 42619],
-		[42648, 42655],
-		[42744, 42751],
-		[42895],
-		[42898, 42911],
-		[42922, 43001],
-		[43052, 43055],
-		[43066, 43071],
-		[43128, 43135],
-		[43205, 43213],
-		[43226, 43231],
-		[43260, 43263],
-		[43348, 43358],
-		[43389, 43391],
-		[43470],
-		[43482, 43485],
-		[43488, 43519],
-		[43575, 43583],
-		[43598, 43599],
-		[43610, 43611],
-		[43644, 43647],
-		[43715, 43738],
-		[43744, 43776],
-		[43783, 43784],
-		[43791, 43792],
-		[43799, 43807],
-		[43815],
-		[43823, 43967],
-		[44014, 44015],
-		[44026, 44031],
-		[55204, 55215],
-		[55239, 55242],
-		[55292, 55295],
-		[64046, 64047],
-		[64110, 64111],
-		[64218, 64255],
-		[64263, 64274],
-		[64280, 64284],
-		[64311],
-		[64317],
-		[64319],
-		[64322],
-		[64325],
-		[64450, 64466],
-		[64832, 64847],
-		[64912, 64913],
-		[64968, 65007],
-		[65022, 65023],
-		[65050, 65055],
-		[65063, 65071],
-		[65107],
-		[65127],
-		[65132, 65135],
-		[65141],
-		[65277, 65278],
-		[65280],
-		[65471, 65473],
-		[65480, 65481],
-		[65488, 65489],
-		[65496, 65497],
-		[65501, 65503],
-		[65511],
-		[65519, 65528],
-		[65534, 65535],
-		[65548],
-		[65575],
-		[65595],
-		[65598],
-		[65614, 65615],
-		[65630, 65663],
-		[65787, 65791],
-		[65795, 65798],
-		[65844, 65846],
-		[65931, 65935],
-		[65948, 65999],
-		[66046, 66175],
-		[66205, 66207],
-		[66257, 66303],
-		[66335],
-		[66340, 66351],
-		[66379, 66431],
-		[66462],
-		[66500, 66503],
-		[66518, 66559],
-		[66718, 66719],
-		[66730, 67583],
-		[67590, 67591],
-		[67593],
-		[67638],
-		[67641, 67643],
-		[67645, 67646],
-		[67670],
-		[67680, 67839],
-		[67868, 67870],
-		[67898, 67902],
-		[67904, 68095],
-		[68100],
-		[68103, 68107],
-		[68116],
-		[68120],
-		[68148, 68151],
-		[68155, 68158],
-		[68168, 68175],
-		[68185, 68191],
-		[68224, 68351],
-		[68406, 68408],
-		[68438, 68439],
-		[68467, 68471],
-		[68480, 68607],
-		[68681, 69215],
-		[69247, 69631],
-		[69710, 69713],
-		[69744, 69759],
-		[69826, 73727],
-		[74607, 74751],
-		[74851, 74863],
-		[74868, 77823],
-		[78895, 92159],
-		[92729, 110591],
-		[110594, 118783],
-		[119030, 119039],
-		[119079, 119080],
-		[119262, 119295],
-		[119366, 119551],
-		[119639, 119647],
-		[119666, 119807],
-		[119893],
-		[119965],
-		[119968, 119969],
-		[119971, 119972],
-		[119975, 119976],
-		[119981],
-		[119994],
-		[119996],
-		[120004],
-		[120070],
-		[120075, 120076],
-		[120085],
-		[120093],
-		[120122],
-		[120127],
-		[120133],
-		[120135, 120137],
-		[120145],
-		[120486, 120487],
-		[120780, 120781],
-		[120832, 126975],
-		[127020, 127023],
-		[127124, 127135],
-		[127151, 127152],
-		[127167, 127168],
-		[127184],
-		[127200, 127231],
-		[127243, 127247],
-		[127279],
-		[127338, 127343],
-		[127387, 127461],
-		[127491, 127503],
-		[127547, 127551],
-		[127561, 127567],
-		[127570, 127743],
-		[127777, 127791],
-		[127798],
-		[127869, 127871],
-		[127892, 127903],
-		[127941],
-		[127947, 127967],
-		[127985, 127999],
-		[128063],
-		[128065],
-		[128248],
-		[128253, 128255],
-		[128318, 128335],
-		[128360, 128506],
-		[128512],
-		[128529],
-		[128533],
-		[128535],
-		[128537],
-		[128539],
-		[128543],
-		[128550, 128551],
-		[128556],
-		[128558, 128559],
-		[128564],
-		[128577, 128580],
-		[128592, 128639],
-		[128710, 128767],
-		[128884, 131071],
-		[173783, 173823],
-		[177973, 177983],
-		[178206, 194559],
-		[195102, 917504],
-		[917506, 917535],
-		[917632, 917759],
-		[918000, 983039],
-		[1048574, 1048575],
-		[1114110, 1114111]
-	],
-	"cc": [
-		[0, 31],
-		[127, 159]
-	],
-	"cf": [
-		[173],
-		[1536, 1539],
-		[1757],
-		[1807],
-		[6068, 6069],
-		[8203, 8207],
-		[8234, 8238],
-		[8288, 8292],
-		[8298, 8303],
-		[65279],
-		[65529, 65531],
-		[69821],
-		[119155, 119162],
-		[917505],
-		[917536, 917631]
-	],
-	"co": [
-		[57344, 63743],
-		[983040, 1048573],
-		[1048576, 1114109]
-	],
-	"cs": [
-		[55296, 57343]
-	]
-}
-;
+ilib.data.ctype_c = {"Cn":[[888,889],[895,899],[907],[909],[930],[1320,1328],[1367,1368],[1376],[1416],[1419,1422],[1424],[1480,1487],[1515,1519],[1525,1535],[1541],[1564,1565],[1806],[1867,1868],[1970,1983],[2043,2047],[2094,2095],[2111],[2140,2141],[2143,2207],[2209],[2221,2275],[2303],[2424],[2432],[2436],[2445,2446],[2449,2450],[2473],[2481],[2483,2485],[2490,2491],[2501,2502],[2505,2506],[2511,2518],[2520,2523],[2526],[2532,2533],[2556,2560],[2564],[2571,2574],[2577,2578],[2601],[2609],[2612],[2615],[2618,2619],[2621],[2627,2630],[2633,2634],[2638,2640],[2642,2648],[2653],[2655,2661],[2678,2688],[2692],[2702],[2706],[2729],[2737],[2740],[2746,2747],[2758],[2762],[2766,2767],[2769,2783],[2788,2789],[2802,2816],[2820],[2829,2830],[2833,2834],[2857],[2865],[2868],[2874,2875],[2885,2886],[2889,2890],[2894,2901],[2904,2907],[2910],[2916,2917],[2936,2945],[2948],[2955,2957],[2961],[2966,2968],[2971],[2973],[2976,2978],[2981,2983],[2987,2989],[3002,3005],[3011,3013],[3017],[3022,3023],[3025,3030],[3032,3045],[3067,3072],[3076],[3085],[3089],[3113],[3124],[3130,3132],[3141],[3145],[3150,3156],[3159],[3162,3167],[3172,3173],[3184,3191],[3200,3201],[3204],[3213],[3217],[3241],[3252],[3258,3259],[3269],[3273],[3278,3284],[3287,3293],[3295],[3300,3301],[3312],[3315,3329],[3332],[3341],[3345],[3387,3388],[3397],[3401],[3407,3414],[3416,3423],[3428,3429],[3446,3448],[3456,3457],[3460],[3479,3481],[3506],[3516],[3518,3519],[3527,3529],[3531,3534],[3541],[3543],[3552,3569],[3573,3584],[3643,3646],[3676,3712],[3715],[3717,3718],[3721],[3723,3724],[3726,3731],[3736],[3744],[3748],[3750],[3752,3753],[3756],[3770],[3774,3775],[3781],[3783],[3790,3791],[3802,3803],[3808,3839],[3912],[3949,3952],[3992],[4029],[4045],[4059,4095],[4294],[4296,4300],[4302,4303],[4681],[4686,4687],[4695],[4697],[4702,4703],[4745],[4750,4751],[4785],[4790,4791],[4799],[4801],[4806,4807],[4823],[4881],[4886,4887],[4955,4956],[4989,4991],[5018,5023],[5109,5119],[5789,5791],[5873,5887],[5901],[5909,5919],[5943,5951],[5972,5983],[5997],[6001],[6004,6015],[6110,6111],[6122,6127],[6138,6143],[6159],[6170,6175],[6264,6271],[6315,6319],[6390,6399],[6429,6431],[6444,6447],[6460,6463],[6465,6467],[6510,6511],[6517,6527],[6572,6575],[6602,6607],[6619,6621],[6684,6685],[6751],[6781,6782],[6794,6799],[6810,6815],[6830,6911],[6988,6991],[7037,7039],[7156,7163],[7224,7226],[7242,7244],[7296,7359],[7368,7375],[7415,7423],[7655,7675],[7958,7959],[7966,7967],[8006,8007],[8014,8015],[8024],[8026],[8028],[8030],[8062,8063],[8117],[8133],[8148,8149],[8156],[8176,8177],[8181],[8191],[8293,8297],[8306,8307],[8335],[8349,8351],[8379,8399],[8433,8447],[8586,8591],[9204,9215],[9255,9279],[9291,9311],[9984],[11085,11087],[11098,11263],[11311],[11359],[11508,11512],[11558],[11560,11564],[11566,11567],[11624,11630],[11633,11646],[11671,11679],[11687],[11695],[11703],[11711],[11719],[11727],[11735],[11743],[11836,11903],[11930],[12020,12031],[12246,12271],[12284,12287],[12352],[12439,12440],[12544,12548],[12590,12592],[12687],[12731,12735],[12772,12783],[12831],[13055],[19894,19903],[40909,40959],[42125,42127],[42183,42191],[42540,42559],[42648,42654],[42744,42751],[42895],[42900,42911],[42923,42999],[43052,43055],[43066,43071],[43128,43135],[43205,43213],[43226,43231],[43260,43263],[43348,43358],[43389,43391],[43470],[43482,43485],[43488,43519],[43575,43583],[43598,43599],[43610,43611],[43644,43647],[43715,43738],[43767,43776],[43783,43784],[43791,43792],[43799,43807],[43815],[43823,43967],[44014,44015],[44026,44031],[55204,55215],[55239,55242],[55292,55295],[64110,64111],[64218,64255],[64263,64274],[64280,64284],[64311],[64317],[64319],[64322],[64325],[64450,64466],[64832,64847],[64912,64913],[64968,65007],[65022,65023],[65050,65055],[65063,65071],[65107],[65127],[65132,65135],[65141],[65277,65278],[65280],[65471,65473],[65480,65481],[65488,65489],[65496,65497],[65501,65503],[65511],[65519,65528],[65534,65535],[65548],[65575],[65595],[65598],[65614,65615],[65630,65663],[65787,65791],[65795,65798],[65844,65846],[65931,65935],[65948,65999],[66046,66175],[66205,66207],[66257,66303],[66335],[66340,66351],[66379,66431],[66462],[66500,66503],[66518,66559],[66718,66719],[66730,67583],[67590,67591],[67593],[67638],[67641,67643],[67645,67646],[67670],[67680,67839],[67868,67870],[67898,67902],[67904,67967],[68024,68029],[68032,68095],[68100],[68103,68107],[68116],[68120],[68148,68151],[68155,68158],[68168,68175],[68185,68191],[68224,68351],[68406,68408],[68438,68439],[68467,68471],[68480,68607],[68681,69215],[69247,69631],[69710,69713],[69744,69759],[69826,69839],[69865,69871],[69882,69887],[69941],[69956,70015],[70089,70095],[70106,71295],[71352,71359],[71370,73727],[74607,74751],[74851,74863],[74868,77823],[78895,92159],[92729,93951],[94021,94031],[94079,94094],[94112,110591],[110594,118783],[119030,119039],[119079,119080],[119262,119295],[119366,119551],[119639,119647],[119666,119807],[119893],[119965],[119968,119969],[119971,119972],[119975,119976],[119981],[119994],[119996],[120004],[120070],[120075,120076],[120085],[120093],[120122],[120127],[120133],[120135,120137],[120145],[120486,120487],[120780,120781],[120832,126463],[126468],[126496],[126499],[126501,126502],[126504],[126515],[126520],[126522],[126524,126529],[126531,126534],[126536],[126538],[126540],[126544],[126547],[126549,126550],[126552],[126554],[126556],[126558],[126560],[126563],[126565,126566],[126571],[126579],[126584],[126589],[126591],[126602],[126620,126624],[126628],[126634],[126652,126703],[126706,126975],[127020,127023],[127124,127135],[127151,127152],[127167,127168],[127184],[127200,127231],[127243,127247],[127279],[127340,127343],[127387,127461],[127491,127503],[127547,127551],[127561,127567],[127570,127743],[127777,127791],[127798],[127869,127871],[127892,127903],[127941],[127947,127967],[127985,127999],[128063],[128065],[128248],[128253,128255],[128318,128319],[128324,128335],[128360,128506],[128577,128580],[128592,128639],[128710,128767],[128884,131071],[173783,173823],[177973,177983],[178206,194559],[195102,917504],[917506,917535],[917632,917759],[918000,983039],[1048574,1048575],[1114110,1114111]],"Cc":[[0,31],[127,159]],"Cf":[[173],[1536,1540],[1757],[1807],[8203,8207],[8234,8238],[8288,8292],[8298,8303],[65279],[65529,65531],[69821],[119155,119162],[917505],[917536,917631]],"Co":[[57344,63743],[983040,1048573],[1048576,1114109]],"Cs":[[55296,57343]]};
 /*
  * ctype.iscntrl.js - Character type is control character
  * 
@@ -18953,7 +18183,7 @@ ilib.data.ctype_c = {
  * @return {boolean} true if the first character is a control character.
  */
 ilib.CType.isCntrl = function (ch) {
-	return ilib.CType._inRange(ch, 'cc', ilib.data.ctype_c);
+	return ilib.CType._inRange(ch, 'Cc', ilib.data.ctype_c);
 };
 
 /*
@@ -19065,7 +18295,7 @@ ilib.CType.isIdeo = function (ch) {
  * @return {boolean} true if the first character is lower-case.
  */
 ilib.CType.isLower = function (ch) {
-	return ilib.CType._inRange(ch, 'll', ilib.data.ctype_l);
+	return ilib.CType._inRange(ch, 'Ll', ilib.data.ctype_l);
 };
 
 /*
@@ -19102,335 +18332,7 @@ ilib.CType.isPrint = function (ch) {
 	return typeof(ch) !== 'undefined' && ch.length > 0 && !ilib.CType.isCntrl(ch);
 };
 
-ilib.data.ctype_p = {
-	"pd": [
-		[45],
-		[1418],
-		[1470],
-		[5120],
-		[6150],
-		[8208, 8213],
-		[11799],
-		[11802],
-		[12316],
-		[12336],
-		[12448],
-		[65073, 65074],
-		[65112],
-		[65123],
-		[65293]
-	],
-	"ps": [
-		[40],
-		[91],
-		[123],
-		[3898],
-		[3900],
-		[5787],
-		[8218],
-		[8222],
-		[8261],
-		[8317],
-		[8333],
-		[9001],
-		[10088],
-		[10090],
-		[10092],
-		[10094],
-		[10096],
-		[10098],
-		[10100],
-		[10181],
-		[10214],
-		[10216],
-		[10218],
-		[10220],
-		[10222],
-		[10627],
-		[10629],
-		[10631],
-		[10633],
-		[10635],
-		[10637],
-		[10639],
-		[10641],
-		[10643],
-		[10645],
-		[10647],
-		[10712],
-		[10714],
-		[10748],
-		[11810],
-		[11812],
-		[11814],
-		[11816],
-		[12296],
-		[12298],
-		[12300],
-		[12302],
-		[12304],
-		[12308],
-		[12310],
-		[12312],
-		[12314],
-		[12317],
-		[64830],
-		[65047],
-		[65077],
-		[65079],
-		[65081],
-		[65083],
-		[65085],
-		[65087],
-		[65089],
-		[65091],
-		[65095],
-		[65113],
-		[65115],
-		[65117],
-		[65288],
-		[65339],
-		[65371],
-		[65375],
-		[65378]
-	],
-	"pe": [
-		[41],
-		[93],
-		[125],
-		[3899],
-		[3901],
-		[5788],
-		[8262],
-		[8318],
-		[8334],
-		[9002],
-		[10089],
-		[10091],
-		[10093],
-		[10095],
-		[10097],
-		[10099],
-		[10101],
-		[10182],
-		[10215],
-		[10217],
-		[10219],
-		[10221],
-		[10223],
-		[10628],
-		[10630],
-		[10632],
-		[10634],
-		[10636],
-		[10638],
-		[10640],
-		[10642],
-		[10644],
-		[10646],
-		[10648],
-		[10713],
-		[10715],
-		[10749],
-		[11811],
-		[11813],
-		[11815],
-		[11817],
-		[12297],
-		[12299],
-		[12301],
-		[12303],
-		[12305],
-		[12309],
-		[12311],
-		[12313],
-		[12315],
-		[12318, 12319],
-		[64831],
-		[65048],
-		[65078],
-		[65080],
-		[65082],
-		[65084],
-		[65086],
-		[65088],
-		[65090],
-		[65092],
-		[65096],
-		[65114],
-		[65116],
-		[65118],
-		[65289],
-		[65341],
-		[65373],
-		[65376],
-		[65379]
-	],
-	"pc": [
-		[95],
-		[8255, 8256],
-		[8276],
-		[65075, 65076],
-		[65101, 65103],
-		[65343]
-	],
-	"po": [
-		[33, 35],
-		[37, 39],
-		[42],
-		[44],
-		[46, 47],
-		[58, 59],
-		[63, 64],
-		[92],
-		[161],
-		[183],
-		[191],
-		[894],
-		[903],
-		[1370, 1375],
-		[1417],
-		[1472],
-		[1475],
-		[1478],
-		[1523, 1524],
-		[1545, 1546],
-		[1548, 1549],
-		[1563],
-		[1566, 1567],
-		[1642, 1645],
-		[1748],
-		[1792, 1805],
-		[2039, 2041],
-		[2096, 2110],
-		[2142],
-		[2404, 2405],
-		[2416],
-		[3572],
-		[3663],
-		[3674, 3675],
-		[3844, 3858],
-		[3973],
-		[4048, 4052],
-		[4057, 4058],
-		[4170, 4175],
-		[4347],
-		[4961, 4968],
-		[5741, 5742],
-		[5867, 5869],
-		[5941, 5942],
-		[6100, 6102],
-		[6104, 6106],
-		[6144, 6149],
-		[6151, 6154],
-		[6468, 6469],
-		[6686, 6687],
-		[6816, 6822],
-		[6824, 6829],
-		[7002, 7008],
-		[7164, 7167],
-		[7227, 7231],
-		[7294, 7295],
-		[7379],
-		[8214, 8215],
-		[8224, 8231],
-		[8240, 8248],
-		[8251, 8254],
-		[8257, 8259],
-		[8263, 8273],
-		[8275],
-		[8277, 8286],
-		[11513, 11516],
-		[11518, 11519],
-		[11632],
-		[11776, 11777],
-		[11782, 11784],
-		[11787],
-		[11790, 11798],
-		[11800, 11801],
-		[11803],
-		[11806, 11807],
-		[11818, 11822],
-		[11824, 11825],
-		[12289, 12291],
-		[12349],
-		[12539],
-		[42238, 42239],
-		[42509, 42511],
-		[42611],
-		[42622],
-		[42738, 42743],
-		[43124, 43127],
-		[43214, 43215],
-		[43256, 43258],
-		[43310, 43311],
-		[43359],
-		[43457, 43469],
-		[43486, 43487],
-		[43612, 43615],
-		[43742, 43743],
-		[44011],
-		[65040, 65046],
-		[65049],
-		[65072],
-		[65093, 65094],
-		[65097, 65100],
-		[65104, 65106],
-		[65108, 65111],
-		[65119, 65121],
-		[65128],
-		[65130, 65131],
-		[65281, 65283],
-		[65285, 65287],
-		[65290],
-		[65292],
-		[65294, 65295],
-		[65306, 65307],
-		[65311, 65312],
-		[65340],
-		[65377],
-		[65380, 65381],
-		[65792, 65793],
-		[66463],
-		[66512],
-		[67671],
-		[67871],
-		[67903],
-		[68176, 68184],
-		[68223],
-		[68409, 68415],
-		[69703, 69709],
-		[69819, 69820],
-		[69822, 69825],
-		[74864, 74867]
-	],
-	"pi": [
-		[171],
-		[8216],
-		[8219, 8220],
-		[8223],
-		[8249],
-		[11778],
-		[11780],
-		[11785],
-		[11788],
-		[11804],
-		[11808]
-	],
-	"pf": [
-		[187],
-		[8217],
-		[8221],
-		[8250],
-		[11779],
-		[11781],
-		[11786],
-		[11789],
-		[11805],
-		[11809]
-	]
-}
-;
+ilib.data.ctype_p = {"Pd":[[45],[1418],[1470],[5120],[6150],[8208,8213],[11799],[11802],[11834,11835],[12316],[12336],[12448],[65073,65074],[65112],[65123],[65293]],"Ps":[[40],[91],[123],[3898],[3900],[5787],[8218],[8222],[8261],[8317],[8333],[9001],[10088],[10090],[10092],[10094],[10096],[10098],[10100],[10181],[10214],[10216],[10218],[10220],[10222],[10627],[10629],[10631],[10633],[10635],[10637],[10639],[10641],[10643],[10645],[10647],[10712],[10714],[10748],[11810],[11812],[11814],[11816],[12296],[12298],[12300],[12302],[12304],[12308],[12310],[12312],[12314],[12317],[64830],[65047],[65077],[65079],[65081],[65083],[65085],[65087],[65089],[65091],[65095],[65113],[65115],[65117],[65288],[65339],[65371],[65375],[65378]],"Pe":[[41],[93],[125],[3899],[3901],[5788],[8262],[8318],[8334],[9002],[10089],[10091],[10093],[10095],[10097],[10099],[10101],[10182],[10215],[10217],[10219],[10221],[10223],[10628],[10630],[10632],[10634],[10636],[10638],[10640],[10642],[10644],[10646],[10648],[10713],[10715],[10749],[11811],[11813],[11815],[11817],[12297],[12299],[12301],[12303],[12305],[12309],[12311],[12313],[12315],[12318,12319],[64831],[65048],[65078],[65080],[65082],[65084],[65086],[65088],[65090],[65092],[65096],[65114],[65116],[65118],[65289],[65341],[65373],[65376],[65379]],"Pc":[[95],[8255,8256],[8276],[65075,65076],[65101,65103],[65343]],"Po":[[33,35],[37,39],[42],[44],[46,47],[58,59],[63,64],[92],[161],[167],[182,183],[191],[894],[903],[1370,1375],[1417],[1472],[1475],[1478],[1523,1524],[1545,1546],[1548,1549],[1563],[1566,1567],[1642,1645],[1748],[1792,1805],[2039,2041],[2096,2110],[2142],[2404,2405],[2416],[2800],[3572],[3663],[3674,3675],[3844,3858],[3860],[3973],[4048,4052],[4057,4058],[4170,4175],[4347],[4960,4968],[5741,5742],[5867,5869],[5941,5942],[6100,6102],[6104,6106],[6144,6149],[6151,6154],[6468,6469],[6686,6687],[6816,6822],[6824,6829],[7002,7008],[7164,7167],[7227,7231],[7294,7295],[7360,7367],[7379],[8214,8215],[8224,8231],[8240,8248],[8251,8254],[8257,8259],[8263,8273],[8275],[8277,8286],[11513,11516],[11518,11519],[11632],[11776,11777],[11782,11784],[11787],[11790,11798],[11800,11801],[11803],[11806,11807],[11818,11822],[11824,11833],[12289,12291],[12349],[12539],[42238,42239],[42509,42511],[42611],[42622],[42738,42743],[43124,43127],[43214,43215],[43256,43258],[43310,43311],[43359],[43457,43469],[43486,43487],[43612,43615],[43742,43743],[43760,43761],[44011],[65040,65046],[65049],[65072],[65093,65094],[65097,65100],[65104,65106],[65108,65111],[65119,65121],[65128],[65130,65131],[65281,65283],[65285,65287],[65290],[65292],[65294,65295],[65306,65307],[65311,65312],[65340],[65377],[65380,65381],[65792,65794],[66463],[66512],[67671],[67871],[67903],[68176,68184],[68223],[68409,68415],[69703,69709],[69819,69820],[69822,69825],[69952,69955],[70085,70088],[74864,74867]],"Pi":[[171],[8216],[8219,8220],[8223],[8249],[11778],[11780],[11785],[11788],[11804],[11808]],"Pf":[[187],[8217],[8221],[8250],[11779],[11781],[11786],[11789],[11805],[11809]]};
 /*
  * ctype.ispunct.js - Character type is punctuation
  * 
@@ -19463,13 +18365,13 @@ ilib.data.ctype_p = {
  * @return {boolean} true if the first character is punctuation.
  */
 ilib.CType.isPunct = function (ch) {
-	return ilib.CType._inRange(ch, 'pd', ilib.data.ctype_p) ||
-		ilib.CType._inRange(ch, 'ps', ilib.data.ctype_p) ||
-		ilib.CType._inRange(ch, 'pe', ilib.data.ctype_p) ||
-		ilib.CType._inRange(ch, 'pc', ilib.data.ctype_p) ||
-		ilib.CType._inRange(ch, 'po', ilib.data.ctype_p) ||
-		ilib.CType._inRange(ch, 'pi', ilib.data.ctype_p) ||
-		ilib.CType._inRange(ch, 'pf', ilib.data.ctype_p);
+	return ilib.CType._inRange(ch, 'Pd', ilib.data.ctype_p) ||
+		ilib.CType._inRange(ch, 'Ps', ilib.data.ctype_p) ||
+		ilib.CType._inRange(ch, 'Pe', ilib.data.ctype_p) ||
+		ilib.CType._inRange(ch, 'Pc', ilib.data.ctype_p) ||
+		ilib.CType._inRange(ch, 'Po', ilib.data.ctype_p) ||
+		ilib.CType._inRange(ch, 'Pi', ilib.data.ctype_p) ||
+		ilib.CType._inRange(ch, 'Pf', ilib.data.ctype_p);
 };
 
 /*
@@ -19506,7 +18408,7 @@ ilib.CType.isPunct = function (ch) {
  * @return {boolean} true if the first character is upper-case.
  */
 ilib.CType.isUpper = function (ch) {
-	return ilib.CType._inRange(ch, 'lu', ilib.data.ctype_l);
+	return ilib.CType._inRange(ch, 'Lu', ilib.data.ctype_l);
 };
 
 /*

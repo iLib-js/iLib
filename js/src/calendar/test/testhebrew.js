@@ -500,10 +500,10 @@ function testHebrewElapsedDays3() {
 function testHebrewElapsedDays4() {
     assertEquals(1093, ilib.Cal.Hebrew.elapsedDays(4));
 }
-function testHebrewElapsedDays5() { 354
+function testHebrewElapsedDays5() {
     assertEquals(1447, ilib.Cal.Hebrew.elapsedDays(5));
 }
-function testHebrewElapsedDays6() { 355
+function testHebrewElapsedDays6() {
     assertEquals(1802, ilib.Cal.Hebrew.elapsedDays(6));
 }
 function testHebrewElapsedDays5773() {

@@ -127,6 +127,9 @@ $(function() {
         case 'CalendarInfo':
         	setupCalendarInfoPicker();
             break;
+        case 'ScriptInfo':
+            setupScriptInfoPicker();
+            break;
         case 'PseudoTranslation':
             setupTextPicker(res);
             break;
@@ -266,6 +269,9 @@ $(function() {
         
             output = res.getString('Julian Day: {jd} <br/>').format({
                 jd: jd
+            });
+            output += res.getString('Unix time: {t} <br/>').format({
+            	 t: date.getTime()
             });
             
             $.each(calendarList, function(key, calendar) {
@@ -530,7 +536,7 @@ $(function() {
             ci = new ilib.Currency(options);
             
             output += res.getString("Code: ") + ci.getCode() + "<br/>";
-			output += res.getString("Name in English: ") + ci.getName() + "<br/>";
+            output += res.getString("Name in English: ") + ci.getName() + "<br/>";
             output += res.getString("Fraction Digits: ") + ci.getFractionDigits() + "<br/>";
             output += res.getString("Common Sign/Symbol: ") + ci.getSign() + "<br/>";
             
@@ -638,13 +644,13 @@ $(function() {
                 date: fmt.format(jan1),
                 offset: tz.getOffsetStr(jan1),
                 standard: tz.getDisplayName(jan1, "standard"),
-                rfc822: tz.getDisplayName(jan1, "rfc822"), 
+                rfc822: tz.getDisplayName(jan1, "rfc822")
             });
             output += str.format({
                 date: fmt.format(jul1),
                 offset: tz.getOffsetStr(jul1),
                 standard: tz.getDisplayName(jul1, "standard"),
-                rfc822: tz.getDisplayName(jul1, "rfc822"), 
+                rfc822: tz.getDisplayName(jul1, "rfc822")
             }); 
             $('.testSubject').html('<b>' + output + '</b><br />');
             break;
@@ -867,6 +873,24 @@ $(function() {
 			$('.testSubject').html(output);
             break;
 
+        case 'ScriptInfo':
+            var output = "",
+                script = $('#script').val(),
+                si = new ilib.ScriptInfo(script);
+            
+            options = {
+                locale: localeName,
+                script: script
+            };
+
+            output += res.getString("ISO 4-letter Code: ") + si.getCode() + "<br/>";
+            output += res.getString("ISO Code Number: ") + si.getCodeNumber() + "<br/>";
+            output += res.getString("Long code: ") + si.getLongCode() + "<br/>";
+            output += res.getString("Name: ") + si.getName() + "<br/>";
+            
+            $('.testSubject').html(output);
+            break;
+
 		default: ;
 		}
 
@@ -893,6 +917,10 @@ $(function() {
 		$('.testSubject,.testSubject *').empty();
 		$('.testSubject,.testSubject *').removeAttr('style');
 	}
+});
+
+$(document).ready(function () {
+    $('#ilibVersion').text(ilib.getVersion());
 });
 </script>
 
@@ -932,7 +960,7 @@ $(function() {
 	<div id="pageContainer">
 		<div id="pageContent">
 
-			<h1>JEDLSoft iLib Demo</h1>
+			<h1>JEDLSoft iLib Demo <span id="ilibVersion"></span></h1>
 
 			<div id="controlPanel" data-module="Internationalization Format Demo">
 				<form action="" id="labForm">
@@ -956,6 +984,7 @@ $(function() {
                             <option value="LocaleInfo">Locale Info</option>
                             <option value="TimeZone">Time Zone Info</option>
                             <option value="CalendarInfo">Calendar Info</option>
+                            <option value="ScriptInfo">Script Info</option>
                             <option value="">-------- String Classes --------</option>
                             <option value="PseudoTranslation">Pseudo Translation</option>
                             <option value="">-------- Number Classes --------</option>
@@ -1233,6 +1262,10 @@ $(function() {
                     <div id="currencyPicker" style="display: none">
                         <label for="currency">Currency:</label>
                         <select name="currency" id="currency"></select>
+                    </div>
+                    <div id="scriptPicker" style="display: none">
+                        <label for="script">Script:</label>
+                        <select name="script" id="script"></select>
                     </div>
                     <div id='sampleTextPicker' style="display: none">
                     	<label id="sampleTextLabel" for="sample">Text:</label>

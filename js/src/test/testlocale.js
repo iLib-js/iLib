@@ -57,7 +57,7 @@ function testLocaleConstructorFull() {
     assertEquals("Midwest", loc.getVariant());
 }
 
-function testLocaleConstructorSpec() {
+function testLocaleConstructorSpecWithVariant() {
     var loc = new ilib.Locale("en-US-Midwest");
     
     assertNotNull(loc);
@@ -65,6 +65,18 @@ function testLocaleConstructorSpec() {
     assertEquals("en", loc.getLanguage());
     assertEquals("US", loc.getRegion());
     assertEquals("Midwest", loc.getVariant());
+    assertUndefined(loc.getScript());
+}
+
+function testLocaleConstructorSpecWithScript() {
+    var loc = new ilib.Locale("en-US-Latn");
+    
+    assertNotNull(loc);
+    
+    assertEquals("en", loc.getLanguage());
+    assertEquals("US", loc.getRegion());
+    assertEquals("Latn", loc.getScript());
+    assertUndefined(loc.getVariant());
 }
 
 function testLocaleConstructorPartial() {
@@ -93,7 +105,7 @@ function testLocaleConstructorShort() {
     assertNotNull(loc);
     
     assertEquals("en", loc.getLanguage());
-    assertEquals("", loc.getRegion());
+    assertUndefined(loc.getRegion());
     assertUndefined(loc.getVariant());
 }
 
@@ -123,8 +135,9 @@ function testLocaleConstructorSpecMissingRegion() {
     assertNotNull(loc);
     
     assertEquals("en", loc.getLanguage());
-    assertEquals("", loc.getRegion());
+    assertUndefined(loc.getRegion());
     assertEquals("Midwest", loc.getVariant());
+    assertUndefined(loc.getScript());
 }
 
 function testLocaleConstructorSpecMissingLanguage() {
@@ -132,9 +145,10 @@ function testLocaleConstructorSpecMissingLanguage() {
     
     assertNotNull(loc);
     
-    assertEquals("", loc.getLanguage());
+    assertUndefined(loc.getLanguage());
     assertEquals("US", loc.getRegion());
     assertEquals("Midwest", loc.getVariant());
+    assertUndefined(loc.getScript());    
 }
 
 function testLocaleConstructorSpecMissingLanguageAndVariant() {
@@ -142,9 +156,10 @@ function testLocaleConstructorSpecMissingLanguageAndVariant() {
     
     assertNotNull(loc);
     
-    assertEquals("", loc.getLanguage());
+    assertUndefined(loc.getLanguage());
     assertEquals("US", loc.getRegion());
     assertUndefined(loc.getVariant());
+    assertUndefined(loc.getScript());
 }
 
 function testLocaleEqualsTrue() {

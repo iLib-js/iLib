@@ -28,20 +28,23 @@ var ilib = ilib || {};
  * @returns {string} a version string for this instance of ilib
  */
 ilib.getVersion = function () {
-	// increment this for each release
-	return "1.2";
+    // increment this for each release
+    return "1.3";
 };
 
 /*
  * Place where resources and such are eventually assigned.
  */
 ilib.data = {
-	norm: {
-		nfc: {},
-		nfd: {},
-		nfkd: {},
-		ccc: {}
-	}
+    norm: {
+        nfc: {},
+        nfd: {},
+        nfkd: {},
+        ccc: {}
+    },
+    localeInfo: {},
+    resourceCache: {},
+    dateformatCache: {}
 };
 
 window["ilib"] = ilib;
@@ -58,7 +61,7 @@ window["ilib"] = ilib;
  * @param {string} spec the locale specifier for the default locale
  */
 ilib.setLocale = function (spec) {
-	ilib.locale = spec || ilib.locale;
+    ilib.locale = spec || ilib.locale;
 };
 
 /**
@@ -74,7 +77,7 @@ ilib.setLocale = function (spec) {
  * @returns {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
-	return ilib.locale || "en-US";
+    return ilib.locale || "en-US";
 };
 
 /**
@@ -89,7 +92,7 @@ ilib.getLocale = function () {
  * @param {string} tz the name of the time zone to set as the default time zone
  */
 ilib.setTimeZone = function (tz) {
-	ilib.tz = tz || ilib.tz;
+    ilib.tz = tz || ilib.tz;
 };
 
 /**
@@ -105,5 +108,86 @@ ilib.setTimeZone = function (tz) {
  * @returns {string} the default time zone for ilib
  */
 ilib.getTimeZone = function() {
-	return ilib.tz || "Europe/London";
+    return ilib.tz || "Europe/London";
+};
+
+/**
+ * Define a callback function for loading missing locale data or resources.
+ * If this copy of ilib is assembled without including the required locale data
+ * or resources, then that data can be lazy loaded dynamically when it is 
+ * needed by calling this callback function. Each ilib class will first
+ * check for the existence of data under ilib.data, and if it is not there, 
+ * it will attempt to load it by calling this loader function, and then place
+ * it there.<p>
+ * 
+ * Suggested implementations of the callback function might be to load files 
+ * directly from disk under nodejs or rhino, or within web pages, to load 
+ * files from the server with XHR calls.<p>
+ * 
+ * The first parameter to the callback
+ * function is an array of relative paths within the ilib dir structure for the 
+ * requested data. These paths will already have the locale spec integrated 
+ * into it, so no further tweaking needs to happen. The second parameter
+ * is a callback function to call when all of the data is finishing loading.<p>
+ * 
+ * The loader function must be able to operate either synchronously or asychronously. 
+ * If the loader function is called with an undefined callback function, it is
+ * expected to load the data synchronously, convert it to javascript
+ * objects, and return the array of json objects as the return value of the 
+ * function. If the loader 
+ * function is called with a callback function, it may load the data 
+ * synchronously or asynchronously (doesn't matter which) as long as it calls
+ * the callback function with the data converted to a javascript objects
+ * when it becomes available. If a particular file could not be loaded, the 
+ * loader function should put undefined into the corresponding entry in the
+ * results array. 
+ * Note that it is important that all the data is loaded before the callback
+ * is called.<p>
+ * 
+ * An example implementation for nodejs might be:
+ * 
+ * <pre>
+ * function loadFiles(context, paths, results, callback) {
+ *    if (paths.length > 0) {
+ *        var file = paths.shift();
+ *        fs.readFile(file, "utf-8", function(err, json) {
+ *            results.push(err ? undefined : JSON.parse(json));
+ *            if (paths.length > 0) {
+ *                loadFiles(context, paths, results, callback);
+ *            } else {
+ *                callback.call(context, results);
+ *            }
+ *        });
+ *     }
+ * }
+ * ilib.setLoaderCallback(function(context, paths, callback) {
+ *    if (typeof(callback) === 'undefined') {
+ *        var ret = [];
+ *        // synchronous
+ *        paths.forEach(function (path) {
+ *            var json = fs.readFileSync(path, "utf-8");
+ *            ret.push(json ? JSON.parse(json) : undefined);
+ *        });
+ *        
+ *        return ret;
+ *    }
+ *
+ *    // asynchronous
+ *    var results = [];
+ *    loadFiles(context, paths, results, callback);
+ * });
+ * </pre>
+ * 
+ * @param {function(Object,Array.<string>,function(Object))} loader function to call to 
+ * load the requested data.
+ * @returns {boolean} if the loader was installed correctly, or false
+ * if not
+ */
+ilib.setLoaderCallback = function(loader) {
+    // only a basic check
+    if (typeof(loader) !== 'function') {
+        return false;
+    }
+    ilib._load = loader;
+    return true;
 };

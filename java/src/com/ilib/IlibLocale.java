@@ -1,12 +1,10 @@
 /*
  * IlibLocale.java - 
- * Copyright 2012, Cottage Software Inc., All Rights Reserved.
+ * Copyright 2012, JEDLSoft, All Rights Reserved.
  * 
  * Created on Jun 23, 2012 by edwin
  */
 package com.ilib;
-
-import java.util.Locale;
 
 /**
  * IlibLocale
@@ -15,17 +13,69 @@ import java.util.Locale;
  */
 public class IlibLocale
 {
-    protected Locale locale;
+    protected String language = "";
+    protected String region = "";
+    protected String script = "";
+    protected String variant = "";
     
+    protected boolean isLanguageCode(String str)
+    {
+    	if ( str.length() < 2 || str.length() > 3 ) {
+    		return false;
+    	}
+    	
+    	for ( int i = 0; i < str.length(); i++ ) {
+    		if ( !Character.isLowerCase(str.charAt(i)) ) {
+    			return false;
+    		}
+    	}
+		
+		return true;
+    }
+
+    protected boolean isRegionCode(String str)
+    {
+    	if ( str.length() != 2 ) {
+    		return false;
+    	}
+    	
+		return Character.isUpperCase(str.charAt(0)) && Character.isUpperCase(str.charAt(1));
+    }
+
+    protected boolean isScriptCode(String str)
+    {
+    	if ( str.length() != 4 || !Character.isUpperCase(str.charAt(0)) ) {
+    		return false;
+    	}
+    	
+    	for ( int i = 1; i < str.length(); i++ ) {
+    		if ( !Character.isLowerCase(str.charAt(i)) ) {
+    			return false;
+    		}
+    	}
+		
+		return true;
+    }
+
     /**
      * @param spec
      */
     public IlibLocale(String spec)
     {
-        String[] parts = spec.split("-");
-        locale = parts.length > 2 ? new Locale(parts[0], parts[1], parts[2]) : 
-                 (parts.length > 1 ? new Locale(parts[0], parts[1]) : 
-                     new Locale(parts[0])); 
+    	if ( spec != null ) {
+	        String[] parts = spec.split("-");
+	        for ( int i = 0; i < parts.length; i++ ) {
+	        	if ( isLanguageCode(parts[i]) ) {
+	        		language = parts[i];
+	        	} else if ( isRegionCode(parts[i]) ) {
+	        		region = parts[i];
+	        	} else if ( isScriptCode(parts[i]) ) {
+	        		script = parts[i];
+	        	} else {
+	        		variant = parts[i];
+	        	}
+	        }
+    	}
     }
     
     /**
@@ -33,9 +83,12 @@ public class IlibLocale
      * @param region
      * @param variant
      */
-    public IlibLocale(String language, String region, String variant)
+    public IlibLocale(String language, String region, String script, String variant)
     {
-        locale = new Locale(language, region, variant);
+    	this.language = language != null ? language : "";
+    	this.region = region != null ? region : "";
+    	this.script = script != null ? script : "";
+    	this.variant = variant != null ? variant : "";
     }
 
     /**
@@ -46,34 +99,40 @@ public class IlibLocale
         return toString();
     }
     
-    /* (non-Javadoc)
-     * @see java.util.Locale#toString()
-     */
     public String toString()
     {
-        String ret = getLanguage() + "-" + getRegion();
-        String var = getVariant();
-        if (var != null && var.length() > 0) {
-            ret += "-" + var;
-        }
-        return ret;
+    	StringBuilder ret = new StringBuilder();
+    	if ( language != null && language.length() > 0 ) {
+    		ret.append(language);
+    	}
+    	
+    	if ( region != null && region.length() > 0 ) {
+    		if ( ret.length() > 0 ) {
+    			ret.append("-");
+    		}
+    		ret.append(region);
+    	}
+
+    	if ( script != null && script.length() > 0 ) {
+    		if ( ret.length() > 0 ) {
+    			ret.append("-");
+    		}
+    		ret.append(script);
+    	}
+
+    	if ( variant != null && variant.length() > 0 ) {
+    		if ( ret.length() > 0 ) {
+    			ret.append("-");
+    		}
+    		ret.append(variant);
+    	}
+
+        return ret.toString();
     }
     
-    /* (non-Javadoc)
-     * @see java.util.Locale#getLanguage()
-     */
     public String getLanguage()
     {
-        // work around the stupidity in the JDK
-        String l = locale.getLanguage();
-        if (l.equals("iw")) {
-            l = "he";
-        } else if (l.equals("ji")) {
-            l = "yi";
-        } else if (l.equals("in")) {
-            l = "id";
-        }
-        return l;
+    	return language;
     }
     
     /**
@@ -81,34 +140,42 @@ public class IlibLocale
      */
     public String getRegion()
     {
-        return locale.getCountry();
+        return region;
+    }
+
+    public String getScript()
+    {
+    	return script;
     }
     
-    /* (non-Javadoc)
-     * @see java.util.Locale#getVariant()
-     */
     public String getVariant()
     {
-        return locale.getVariant();
+        return variant;
     }
     
-    /**
+    @Override
+	public boolean equals(Object obj) {
+    	if ( obj instanceof IlibLocale ) {
+    		IlibLocale other = (IlibLocale) obj;
+    		return (this.language.equals(other.language) &&
+    				this.region.equals(other.region) &&
+    				this.script.equals(other.script) &&
+    				this.variant.equals(other.variant));
+    	}
+    	
+		return super.equals(obj);
+	}
+
+	/**
      * @param spec
      * @return
      */
     public boolean equals(String spec)
     {
-        // TODO: fill in IlibLocale.equals
+    	if ( this.getSpec().equals(spec) ) {
+    		return true;
+    	}
         return false;
-    }
-    
-    /**
-     * @param other
-     * @return
-     */
-    public boolean equals(IlibLocale other)
-    {
-        return locale.equals(other.locale);
     }
     
     /**
@@ -133,6 +200,6 @@ public class IlibLocale
      */
     public boolean isPseudo()
     {
-        return (locale.getLanguage().equals("xx") && locale.getCountry().equals("XX"));
+        return language.equals("xx") && region.equals("XX");
     }
 }

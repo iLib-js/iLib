@@ -36,6 +36,29 @@ ilib.ScriptInfo = function(script) {
 	this.info = ilib.data.scripts && ilib.data.scripts[script];
 };
 
+/**
+ * @static
+ * Return an array of all ISO 15924 4-letter identifier script identifiers that
+ * this copy of ilib knows about.
+ * @returns {Array.<string>} an array of all script identifiers that this copy of
+ * ilib knows about
+ */
+ilib.ScriptInfo.getAllScripts = function() {
+	var ret = [],
+		script = undefined,
+		scripts = new ilib.ResBundle({
+			name: "scripts"
+		}).getResObj();
+	
+	for (script in scripts) {
+		if (script && scripts[script]) {
+			ret.push(script);
+		}
+	}
+	
+	return ret;
+};
+
 ilib.ScriptInfo.prototype = {
 	/**
 	 * Return the 4-letter ISO 15924 identifier associated
@@ -72,5 +95,17 @@ ilib.ScriptInfo.prototype = {
 	 */
 	getLongCode: function () {
 		return this.info && this.info.lid;
+	},
+	
+	/**
+	 * Return the usual direction that text in this script is written
+	 * in. Possible return values are "rtl" for right-to-left,
+	 * "ltr" for left-to-right, and "ttb" for top-to-bottom.
+	 * 
+	 * @returns {string} the usual direction that text in this script is
+	 * written in
+	 */
+	getScriptDirection: function() {
+		// TODO fill in getScriptDirection
 	}
 };
