@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ilibglobal.js locale.js strings.js resources.js currency.js
+// !depends ilibglobal.js locale.js strings.js currency.js
 
 
 /*
@@ -98,6 +98,12 @@ strings.js
  * of integral digits, the formatter with a standard style will give you standard 
  * formatting for smaller numbers and scientific notation for larger numbers. The default
  * is standard style if this is not specified. 
+ * <li><i>onLoad</i> - a callback function to call when the format data is fully 
+ * loaded. When the onLoad option is given, this class will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * </ul>
  * <p>
  * 
@@ -136,64 +142,61 @@ ilib.NumFmt = function (options) {
 		if (options.style) {
 			this.style = options.style;
 		}
+		
+		this.roundingMode = options.roundingMode;
 	}
 	
-	this.localeInfo = new ilib.LocaleInfo(this.locale);
-	switch (this.type) {
-		case "currency":
-			var templates,
-				curopts;
-			
-			if (!this.currency || typeof(this.currency) != 'string') {
-				throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
+	new ilib.LocaleInfo(this.locale, {
+		onLoad: function (li) {
+			this.localeInfo = li;
+
+			if (this.type === "currency") {
+				var templates;
+				
+				if (!this.currency || typeof(this.currency) != 'string') {
+					throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
+				}
+				
+				new ilib.Currency({
+					locale: this.locale,
+					code: this.currency,
+					onLoad: function (cur) {
+						this.currencyInfo = cur;
+						if (this.style !== "common" && this.style !== "iso") {
+							this.style = "common";
+						}
+						
+						if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
+							this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
+						}
+						
+						templates = this.localeInfo.getCurrencyFormats();
+						this.template = new ilib.String(templates[this.style]);
+						this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
+						
+						if (!this.roundingMode) {
+							this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
+						}
+
+						this._init();
+						
+						if (options && typeof(options.onLoad) === 'function') {
+							options.onLoad(this);
+						}
+					}.bind(this)
+				});
+				return;
+			} else if (this.type === "percentage") {
+				this.template = new ilib.String(this.localeInfo.getPercentageFormat());
 			}
+
+			this._init();
 			
-			curopts = {
-				locale: this.locale,
-				code: this.currency		
-			};
-			this.currencyInfo = new ilib.Currency(curopts);
-			if (this.style !== "common" && this.style !== "iso") {
-				this.style = "common";
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
 			}
-			
-			if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
-				this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
-			}
-			
-			templates = this.localeInfo.getCurrencyFormats();
-			this.template = new ilib.String(templates[this.style]);
-			this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign(); 
-			break;
-		case "percentage":
-			this.template = new ilib.String(this.localeInfo.getPercentageFormat());
-			break;
-		default:
-			break;
-	}
-	
-	if (this.maxFractionDigits < this.minFractionDigits) {
-		this.minFractionDigits = this.maxFractionDigits;
-	}
-	
-	this.roundingMode = options && options.roundingMode;
-	if (!this.roundingMode) {
-		this.roundingMode = this.localeInfo.getRoundingMode();
-	}
-	if (!this.roundingMode) {
-		this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
-	}
-	if (!this.roundingMode) {
-		this.roundingMode = "halfdown";
-	}
-	
-	// set up the function, so we only have to figure it out once
-	// and not every time we do format()
-	this.round = ilib._roundFnc[this.roundingMode];
-	if (!this.round) {
-		this.roundingMode = "halfdown";
-		this.round = ilib._roundFnc[this.roundingMode];
-	}
+		}.bind(this)
+	});
 };
 
 /**
@@ -213,6 +216,31 @@ ilib.NumFmt.zeros = "00000000000000000000000000000000000000000000000000000000000
 
 
 ilib.NumFmt.prototype = {
+	/**
+	 * @private
+	 */
+	_init: function () {
+		if (this.maxFractionDigits < this.minFractionDigits) {
+			this.minFractionDigits = this.maxFractionDigits;
+		}		
+		
+		if (!this.roundingMode) {
+			this.roundingMode = this.localeInfo.getRoundingMode();
+		}
+		
+		if (!this.roundingMode) {
+			this.roundingMode = "halfdown";
+		}
+		
+		// set up the function, so we only have to figure it out once
+		// and not every time we do format()
+		this.round = ilib._roundFnc[this.roundingMode];
+		if (!this.round) {
+			this.roundingMode = "halfdown";
+			this.round = ilib._roundFnc[this.roundingMode];
+		}
+	},
+	
 	/*
 	 * @private
 	 */

@@ -22,7 +22,6 @@
 ilibglobal.js 
 locale.js 
 strings.js 
-resources.js 
 ctype.isdigit.js 
 ctype.isspace.js
 */
@@ -58,6 +57,12 @@ ctype.isspace.js
  * number 0.583 but "58.3" will be returned as 58.3. Valid values for this property 
  * are "number", "currency", and "percentage". Default if this is not specified is
  * "number".
+ * <li><i>onLoad</i> - a callback function to call when the locale data is fully 
+ * loaded. When the onLoad option is given, this class will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * </ul>
  * <p>
  * 
@@ -91,82 +96,96 @@ ilib.Number = function (str, options) {
 	}
 	
 	
-	li = new ilib.LocaleInfo(this.locale);
-	this.decimal = li.getDecimalSeparator();
-	
-	switch (typeof(str)) {
-	case 'string':
-		// stripping should work for all locales, because you just ignore all the
-		// formatting except the decimal char
-		var unary = true, // looking for the unary minus still?
-			negative = false;
-		this.str = str || "0";
-		i = 0;
-		for (i = 0; i < this.str.length; i++) {
-			if (unary && this.str.charAt(i) === '-') {
-				negative = true;
-				unary = false;
-				stripped += this.str.charAt(i);
-			} else if (ilib.CType.isDigit(this.str.charAt(i))) {
-				stripped += this.str.charAt(i);
-				unary = false;
-			} else if (this.str.charAt(i) === this.decimal) {
-				stripped += "."; // always convert to period
-				unary = false;
-			} // else ignore
-		}
-		this.value = parseFloat(stripped);
-		break;
-	case 'number':
-		this.str = "" + str;
-		this.value = str;
-		break;
-		
-	case 'object':
-		this.value = /** @type {number} */ str.valueOf();
-		this.str = "" + this.value;
-		break;
-		
-	case 'undefined':
-		this.value = 0;
-		this.str = "0";
-		break;
-	}
-	
-	switch (this.type) {
-		default:
-			// don't need to do anything special for other types
-			break;
-		case "percentage":
-			if (this.str.indexOf(li.getPercentageSymbol()) !== -1) {
-				this.value /= 100;
-			}
-			break;
-		case "currency":
-			stripped = "";
-			i = 0;
-			while (i < this.str.length &&
-				   !ilib.CType.isDigit(this.str.charAt(i)) &&
-				   !ilib.CType.isSpace(this.str.charAt(i))) {
-				stripped += this.str.charAt(i++);
-			}
-			if (stripped.length === 0) {
-				while (i < this.str.length && 
-					   ilib.CType.isDigit(this.str.charAt(i)) ||
-					   ilib.CType.isSpace(this.str.charAt(i)) ||
-					   this.str.charAt(i) === '.' ||
-					   this.str.charAt(i) === ',' ) {
-					i++;
+	new ilib.LocaleInfo(this.locale, {
+		onLoad: function (li) {
+			this.decimal = li.getDecimalSeparator();
+			
+			switch (typeof(str)) {
+			case 'string':
+				// stripping should work for all locales, because you just ignore all the
+				// formatting except the decimal char
+				var unary = true; // looking for the unary minus still?
+				this.str = str || "0";
+				i = 0;
+				for (i = 0; i < this.str.length; i++) {
+					if (unary && this.str.charAt(i) === '-') {
+						unary = false;
+						stripped += this.str.charAt(i);
+					} else if (ilib.CType.isDigit(this.str.charAt(i))) {
+						stripped += this.str.charAt(i);
+						unary = false;
+					} else if (this.str.charAt(i) === this.decimal) {
+						stripped += "."; // always convert to period
+						unary = false;
+					} // else ignore
 				}
-				while (i < this.str.length && 
-					   !ilib.CType.isDigit(this.str.charAt(i)) &&
-					   !ilib.CType.isSpace(this.str.charAt(i))) {
-					stripped += this.str.charAt(i++);
-				}
+				this.value = parseFloat(stripped);
+				break;
+			case 'number':
+				this.str = "" + str;
+				this.value = str;
+				break;
+				
+			case 'object':
+				this.value = /** @type {number} */ str.valueOf();
+				this.str = "" + this.value;
+				break;
+				
+			case 'undefined':
+				this.value = 0;
+				this.str = "0";
+				break;
 			}
-			this.currency = new ilib.Currency({locale: this.locale, sign: stripped});
-			break;
-	}
+			
+			switch (this.type) {
+				default:
+					// don't need to do anything special for other types
+					break;
+				case "percentage":
+					if (this.str.indexOf(li.getPercentageSymbol()) !== -1) {
+						this.value /= 100;
+					}
+					break;
+				case "currency":
+					stripped = "";
+					i = 0;
+					while (i < this.str.length &&
+						   !ilib.CType.isDigit(this.str.charAt(i)) &&
+						   !ilib.CType.isSpace(this.str.charAt(i))) {
+						stripped += this.str.charAt(i++);
+					}
+					if (stripped.length === 0) {
+						while (i < this.str.length && 
+							   ilib.CType.isDigit(this.str.charAt(i)) ||
+							   ilib.CType.isSpace(this.str.charAt(i)) ||
+							   this.str.charAt(i) === '.' ||
+							   this.str.charAt(i) === ',' ) {
+							i++;
+						}
+						while (i < this.str.length && 
+							   !ilib.CType.isDigit(this.str.charAt(i)) &&
+							   !ilib.CType.isSpace(this.str.charAt(i))) {
+							stripped += this.str.charAt(i++);
+						}
+					}
+					new ilib.Currency({
+						locale: this.locale, 
+						sign: stripped,
+						onLoad: function (cur) {
+							this.currency = cur;
+							if (options && typeof(options.onLoad) === 'function') {
+								options.onLoad(this);
+							}				
+						}.bind(this)
+					});
+					return;
+			}
+			
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		}.bind(this)
+	});
 };
 
 ilib.Number.prototype = {

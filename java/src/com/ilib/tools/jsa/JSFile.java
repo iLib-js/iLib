@@ -141,24 +141,24 @@ public class JSFile
     	StringBuilder localeDir = new StringBuilder();
     	String fileName;
 		
-		if ( locale.getLanguage() != null ) {
+		if ( locale.getLanguage() != null && locale.getLanguage().length() > 0 ) {
 			localeDir.append(locale.getLanguage());
 			fileName = localeDir + "/" + baseFileName;
 			locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 
-			if ( locale.getRegion() != null ) {
+			if ( locale.getRegion() != null && locale.getRegion().length() > 0) {
 				localeDir.append("/");
 				localeDir.append(locale.getRegion());
 		        fileName = localeDir + "/" + baseFileName;
 		        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 			
-				if ( locale.getScript() != null ) {
+				if ( locale.getScript() != null && locale.getScript().length() > 0) {
 					localeDir.append("/");
 					localeDir.append(locale.getScript());
 			        fileName = localeDir + "/" + baseFileName;
 			        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 			        
-					if ( locale.getVariant() != null ) {
+					if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
 						localeDir.append("/");
 						localeDir.append(locale.getVariant());
 				        fileName = localeDir + "/" + baseFileName;

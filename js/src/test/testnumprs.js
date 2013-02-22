@@ -480,3 +480,35 @@ function testNumberZHDecimal() {
     
     assertEquals(123234.324, num.valueOf());
 }
+
+
+function testNumberParseAsync() {
+	var callbackCalled = false;
+    new ilib.Number("-0,4342", {
+    	locale: "de-DE",
+    	onLoad: function (num) {
+    		assertNotNull(num);
+    	    
+    	    assertEquals(-0.4342, num.valueOf());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+}
+
+function testNumberParseAsyncCurrency() {
+	var callbackCalled = false;
+    new ilib.Number("5,84 EUR", {
+    	locale: "de-DE",
+    	type: "currency",
+    	onLoad: function (num) {
+    		assertNotNull(num);
+    	    
+    	    var cur = num.getCurrency();
+    	    assertNotUndefined(cur);
+    	    assertEquals("EUR", cur.getCode());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+}

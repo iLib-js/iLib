@@ -32,6 +32,12 @@
  * <li><i>locale</i> - specify the locale for this instance
  * <li><i>code</i> - find info on a specific currency with the given ISO 4217 code 
  * <li><i>sign</i> - search for a currency that uses this sign
+ * <li><i>onLoad</i> - a callback function to call when the currency data is fully 
+ * loaded. When the onLoad option is given, this class will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * </ul>
  * 
  * When searching for a currency by its sign, this class cannot guarantee 
@@ -70,8 +76,10 @@
  * known currencies. xxx is replaced with the requested code.
  */
 ilib.Currency = function (options) {
-	var li, currencies, currInfo, sign, cur;
-	
+	var sign,
+		currInfo,
+		currencies = ilib.data.currency;
+
 	if (options) {
 		if (options.code) {
 			this.code = options.code;
@@ -85,48 +93,54 @@ ilib.Currency = function (options) {
 	}
 	
 	this.locale = this.locale || new ilib.Locale();
-	li = new ilib.LocaleInfo(this.locale);
-		
-	currencies = ilib.data.currency;
-
-	if (this.code) {
-		currInfo = currencies[this.code];
-		if (!currInfo) {
-			throw "currency " + this.code + " is unknown";
-		}
-	} else if (sign) {
-		currInfo = currencies[sign]; // maybe it is really a code...
-		if (typeof(currInfo) !== 'undefined') {
-			this.code = sign;
-		} else {
-			this.code = li.getCurrency();
-			currInfo = currencies[this.code];
-			if (currInfo.sign !== sign) {
-				// current locale does not use the sign, so search for it
-				for (cur in currencies) {
-					if (cur && currencies[cur]) {
-						currInfo = currencies[cur];
-						if (currInfo.sign === sign) {
-							// currency data is already ordered so that the currency with the
-							// largest circulation is at the beginning, so all we have to do
-							// is take the first one in the list that matches
-							this.code = cur;
-							break;
-						}
-					}
-				}
+	
+	new ilib.LocaleInfo(this.locale, {
+		onLoad: function (li) {
+			this.locinfo = li;
+	    	if (this.code) {
+	    		currInfo = currencies[this.code];
+	    		if (!currInfo) {
+	    			throw "currency " + this.code + " is unknown";
+	    		}
+	    	} else if (sign) {
+	    		currInfo = currencies[sign]; // maybe it is really a code...
+	    		if (typeof(currInfo) !== 'undefined') {
+	    			this.code = sign;
+	    		} else {
+	    			this.code = this.locinfo.getCurrency();
+	    			currInfo = currencies[this.code];
+	    			if (currInfo.sign !== sign) {
+	    				// current locale does not use the sign, so search for it
+	    				for (var cur in currencies) {
+	    					if (cur && currencies[cur]) {
+	    						currInfo = currencies[cur];
+	    						if (currInfo.sign === sign) {
+	    							// currency data is already ordered so that the currency with the
+	    							// largest circulation is at the beginning, so all we have to do
+	    							// is take the first one in the list that matches
+	    							this.code = cur;
+	    							break;
+	    						}
+	    					}
+	    				}
+	    			}
+	    		}
+	    	}
+	    	
+	    	if (!currInfo || !this.code) {
+	    		this.code = this.locinfo.getCurrency();
+	    		currInfo = currencies[this.code];
+	    	}
+	    	
+	    	this.name = currInfo.name;
+	    	this.fractionDigits = currInfo.decimals;
+	    	this.sign = currInfo.sign;
+	    	
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
 			}
-		}
-	}
-	
-	if (!currInfo || !this.code) {
-		this.code = li.getCurrency();
-		currInfo = currencies[this.code];
-	}
-	
-	this.name = currInfo.name;
-	this.fractionDigits = currInfo.decimals;
-	this.sign = currInfo.sign;
+		}.bind(this)
+	});
 };
 
 /**

@@ -224,7 +224,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn" depends="prepare,geninfo,testiliball" unless="ilib-dyn.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
+	<target name="assemble.dyn" depends="prepare,geninfo,testilibdyn" unless="ilib-dyn.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
 		<runassemble 
 			tgtfilename="ilib-dyn.js" 
 			srcfilename="ilib.js" 

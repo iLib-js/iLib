@@ -727,3 +727,81 @@ function testDurFmtFormatFullFR() {
     });
     assertEquals("1 an, 1 mois, 1 semaine, 1 jour, 1 heure, 1 minute, 1 seconde, et 1 milliseconde", duration.toString());
 };
+
+
+function testDurFmtAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	length: "full",
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2,
+    	    	millisecond: 2
+    	    });
+    	    assertEquals("2 years, 2 months, 2 weeks, 2 days, 2 hours, 2 minutes, 2 seconds and 2 milliseconds", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+function testDurFmtAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "fr-FR",
+    	length: "full",
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2,
+    	    	millisecond: 2
+    	    });
+    	    assertEquals("2 ans, 2 mois, 2 semaines, 2 jours, 2 heures, 2 minutes, 2 secondes, et 2 millisecondes", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+function testDurFmtFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "fr-FR",
+    	length: "short",
+    	style: "clock",
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1,
+    	    	millisecond: 1
+    	    });
+    	    assertEquals("1a 1mo 1sm 1j 01:01:01", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};

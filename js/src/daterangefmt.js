@@ -23,7 +23,6 @@ ilibglobal.js
 locale.js 
 date.js 
 strings.js 
-resources.js 
 calendar.js
 localeinfo.js
 timezone.js

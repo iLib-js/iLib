@@ -46,9 +46,7 @@ ilib.ScriptInfo = function(script) {
 ilib.ScriptInfo.getAllScripts = function() {
 	var ret = [],
 		script = undefined,
-		scripts = new ilib.ResBundle({
-			name: "scripts"
-		}).getResObj();
+		scripts = ilib.data.scripts;
 	
 	for (script in scripts) {
 		if (script && scripts[script]) {

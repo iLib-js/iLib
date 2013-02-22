@@ -1188,3 +1188,51 @@ function testNumFmtitIT() {
     
     assertEquals("-123.456,78", fmt.format(-123456.785));
 }
+
+function testNumFmtAsyncDefaults() {
+	var callbackCalled = false;
+    new ilib.NumFmt({
+    	onLoad: function (fmt) {
+    	    assertNotNull(fmt);
+
+    	    assertEquals("number", fmt.getType());
+    	    assertEquals(-1, fmt.getMaxFractionDigits());
+    	    assertEquals(-1, fmt.getMinFractionDigits());
+    	    assertTrue(fmt.isGroupingUsed());
+    	    assertEquals("halfdown", fmt.getRoundingMode());
+    	    assertUndefined(fmt.getCurrency());
+    	    
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+}
+
+function testNumFmtAsync() {
+	var callbackCalled = false;
+    new ilib.NumFmt({
+    	onLoad: function (fmt) {
+    	    assertNotNull(fmt);
+    	    assertEquals("12,345,678,901,234", fmt.format(12345678901234.0));
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+}
+
+function testNumFmtAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.NumFmt({
+        locale: "it-IT",
+        maxFractionDigits: 2,
+    	onLoad: function (fmt) {
+    	    assertNotNull(fmt);
+    	    assertEquals("-123.456,78", fmt.format(-123456.785));
+    	    callbackCalled = true;
+    	}
+        
+    });
+    assertTrue(callbackCalled);
+}
