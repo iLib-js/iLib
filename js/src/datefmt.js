@@ -379,7 +379,7 @@ ilib.DateFmt = function(options) {
 							if (!formats) {
 								if (typeof(ilib._load) === 'function') {
 									var files = ilib.getLocFiles("locale", this.locale, "dateformats");
-									ilib._load(this, files, function(arr) {
+									ilib._load(files, function(arr) {
 										formats = {};
 										for (var i = 0; i < arr.length; i++) {
 											if (typeof(arr[i]) !== 'undefined') {
@@ -391,7 +391,7 @@ ilib.DateFmt = function(options) {
 										if (options && typeof(options.onLoad) === 'function') {
 											options.onLoad(this);
 										}
-									});
+									}.bind(this));
 									return;
 								}
 								formats = ilib.data.dateformats;

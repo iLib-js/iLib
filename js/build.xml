@@ -104,6 +104,7 @@ limitations under the License.
 			<fileset dir="${build.src}">
 			    <include name="ilib-*.js"/>
 				<include name="*-compiled.js"/>
+				<exclude name="ilib-ut-inc.js"/>
 			</fileset>
 			<fileset dir="${build.locale}">
 			    <include name="**/localeinfo.json"/>

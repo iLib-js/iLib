@@ -196,7 +196,7 @@ function testDateRngFmtGetDefaultFormat() {
 }
 
 
-function mockLoader(context, paths, callback) {
+function mockLoader(paths, callback) {
 	var data = [];
 	
 	if (paths[0].indexOf("localeinfo") !== -1) {
@@ -212,7 +212,7 @@ function mockLoader(context, paths, callback) {
 	if (typeof(callback) === 'undefined') {
 		return data;
 	}
-	callback.call(context, data);
+	callback.call(this, data);
 }
 
 function testDateRngFmtDynamicLoadSync() {

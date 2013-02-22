@@ -196,7 +196,7 @@ ilib.ResBundle = function (options) {
 			// locale is not preassembled, so attempt to load it dynamically
 			var files = ilib.getLocFiles("resources", this.locale, "strings");
 			
-			ilib._load(this, files, function(arr) {
+			ilib._load(files, function(arr) {
 				this.map = {};
 				for (var i = 0; i < arr.length; i++) {
 					if (typeof(arr[i]) !== 'undefined') {
@@ -207,7 +207,7 @@ ilib.ResBundle = function (options) {
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
 				}
-			});
+			}.bind(this));
 		} else {
 			this.map = ilib.data[this.baseName] || {};
 			ilib.data.resourceCache[this.baseName][spec] = this.map;

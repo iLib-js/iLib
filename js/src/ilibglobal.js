@@ -124,6 +124,10 @@ ilib.getTimeZone = function() {
  * directly from disk under nodejs or rhino, or within web pages, to load 
  * files from the server with XHR calls.<p>
  * 
+ * The expected API for the call back is:
+ * 
+ * <pre>
+ * function(paths, callback)
  * The first parameter to the callback
  * function is an array of relative paths within the ilib dir structure for the 
  * requested data. These paths will already have the locale spec integrated 
@@ -160,7 +164,7 @@ ilib.getTimeZone = function() {
  *        });
  *     }
  * }
- * ilib.setLoaderCallback(function(context, paths, callback) {
+ * ilib.setLoaderCallback(function(paths, callback) {
  *    if (typeof(callback) === 'undefined') {
  *        var ret = [];
  *        // synchronous
@@ -174,8 +178,8 @@ ilib.getTimeZone = function() {
  *
  *    // asynchronous
  *    var results = [];
- *    loadFiles(context, paths, results, callback);
- * });
+ *    loadFiles(this, paths, results, callback);
+ * }.bind(this)); // bind to "this" so that "this" is relative to your own instance
  * </pre>
  * 
  * @param {function(Object,Array.<string>,function(Object))} loader function to call to 
