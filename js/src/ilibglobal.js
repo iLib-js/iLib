@@ -127,12 +127,17 @@ ilib.getTimeZone = function() {
  * The expected API for the call back is:
  * 
  * <pre>
- * function(paths, callback)
+ * function(paths, callback) {}
+ * </pre>
+ * 
  * The first parameter to the callback
- * function is an array of relative paths within the ilib dir structure for the 
+ * function, paths, is an array of relative paths within the ilib dir structure for the 
  * requested data. These paths will already have the locale spec integrated 
- * into it, so no further tweaking needs to happen. The second parameter
- * is a callback function to call when all of the data is finishing loading.<p>
+ * into them, so no further tweaking needs to happen to load the data. Simply
+ * load the named files. The second parameter, callback,
+ * is a callback function to call when all of the data is finishing loading. Make
+ * sure to call the callback with the context of "this" so that the caller has their 
+ * context back again.<p>
  * 
  * The loader function must be able to operate either synchronously or asychronously. 
  * If the loader function is called with an undefined callback function, it is
