@@ -418,3 +418,51 @@ function testLocaleInfoLoadMissingLocaleParts() {
     assertEquals("fr-FR-overseas", li.info.locale);
     assertEquals("Pacific/Tahiti", li.getTimeZone());
 }
+
+function testLocaleInfoGetAllScriptsSingle() {
+	var li = new ilib.LocaleInfo("nl-NL");
+    assertNotUndefined(li);
+    assertArrayEqualsIgnoringOrder(["Latn"], li.getAllScripts());
+}
+
+function testLocaleInfoGetAllScriptsMultiple1() {
+	var li = new ilib.LocaleInfo("de-DE");
+    assertNotUndefined(li);
+    assertArrayEqualsIgnoringOrder(["Latn","Runr"], li.getAllScripts());
+}
+
+function testLocaleInfoGetAllScriptsMultiple2() {
+	var li = new ilib.LocaleInfo("uz-UZ");
+    assertNotUndefined(li);
+    assertArrayEqualsIgnoringOrder(["Arab","Cyrl","Latn"], li.getAllScripts());
+}
+
+function testLocaleInfoGetDefaultScriptSingle() {
+	var li = new ilib.LocaleInfo("nl-NL");
+    assertNotUndefined(li);
+    assertEquals("Latn", li.getDefaultScript());
+}
+
+function testLocaleInfoGetDefaultScriptMultiple() {
+	var li = new ilib.LocaleInfo("uz-UZ");
+    assertNotUndefined(li);
+    assertEquals("Arab", li.getDefaultScript());
+}
+
+function testLocaleInfoGetScriptSingle() {
+	var li = new ilib.LocaleInfo("nl-NL");
+    assertNotUndefined(li);
+    assertEquals("Latn", li.getScript());
+}
+
+function testLocaleInfoGetScriptMultiple() {
+	var li = new ilib.LocaleInfo("uz-UZ");
+    assertNotUndefined(li);
+    assertEquals("Arab", li.getScript());
+}
+
+function testLocaleInfoGetScriptMultipleLocaleOverride() {
+	var li = new ilib.LocaleInfo("uz-UZ-Cyrl");
+    assertNotUndefined(li);
+    assertEquals("Cyrl", li.getScript());
+}

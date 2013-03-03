@@ -50,6 +50,188 @@ function testGregDateAfterLeapYear() {
     assertEquals(0, gd.getMilliseconds());
 }
 
+function testGregDateJan31Midnight() {
+    var gd = new ilib.Date.GregDate({rd: 734533});  // Jan 31, 2012 12:00am
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2012, gd.getYears());
+    assertEquals(1, gd.getMonths());
+    assertEquals(31, gd.getDays());
+    assertEquals(0, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
+function testGregDateJan31Noon() {
+    var gd = new ilib.Date.GregDate({rd: 734533.5});  // Jan 31, 2012 12:00pm
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2012, gd.getYears());
+    assertEquals(1, gd.getMonths());
+    assertEquals(31, gd.getDays());
+    assertEquals(12, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
+function testGregDateFeb1() {
+    var gd = new ilib.Date.GregDate({rd: 734534.5});  // Feb 1, 2012 12:00pm
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2012, gd.getYears());
+    assertEquals(2, gd.getMonths());
+    assertEquals(1, gd.getDays());
+    assertEquals(12, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
+function testGregDateFeb28LeapYear() {
+    var gd = new ilib.Date.GregDate({rd: 734561.5});  // Feb 28, 2012 12:00pm
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2012, gd.getYears());
+    assertEquals(2, gd.getMonths());
+    assertEquals(28, gd.getDays());
+    assertEquals(12, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
+function testGregDateFeb29LeapYear() {
+    var gd = new ilib.Date.GregDate({rd: 734562.5});  // Feb 29, 2012 12:00pm
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2012, gd.getYears());
+    assertEquals(2, gd.getMonths());
+    assertEquals(29, gd.getDays());
+    assertEquals(12, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
+function testGregDateMar1LeapYear() {
+    var gd = new ilib.Date.GregDate({rd: 734563.5});  // Mar 1, 2012 12:00pm
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2012, gd.getYears());
+    assertEquals(3, gd.getMonths());
+    assertEquals(1, gd.getDays());
+    assertEquals(12, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
+function testGregDateMar31LeapYear() {
+    var gd = new ilib.Date.GregDate({rd: 734593.5});  // Mar 31, 2012 12:00pm
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2012, gd.getYears());
+    assertEquals(3, gd.getMonths());
+    assertEquals(31, gd.getDays());
+    assertEquals(12, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
+function testGregDateApr1LeapYear() {
+    var gd = new ilib.Date.GregDate({rd: 734594.5});  // Apr 1, 2012 12:00pm
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2012, gd.getYears());
+    assertEquals(4, gd.getMonths());
+    assertEquals(1, gd.getDays());
+    assertEquals(12, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
+function testGregDateDec31LeapYear() {
+    var gd = new ilib.Date.GregDate({rd: 734868.5});  // Dec 31, 2012 12:00pm
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2012, gd.getYears());
+    assertEquals(12, gd.getMonths());
+    assertEquals(31, gd.getDays());
+    assertEquals(12, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
+function testGregDateJan1NonLeapYear() {
+    var gd = new ilib.Date.GregDate({rd: 734869.5});  // Jan 1, 2013 12:00pm
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2013, gd.getYears());
+    assertEquals(1, gd.getMonths());
+    assertEquals(1, gd.getDays());
+    assertEquals(12, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
+function testGregDateFeb28NonLeapYear() {
+    var gd = new ilib.Date.GregDate({rd: 734927.5});  // Feb 28, 2013 12:00pm
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2013, gd.getYears());
+    assertEquals(2, gd.getMonths());
+    assertEquals(28, gd.getDays());
+    assertEquals(12, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
+function testGregDateMar1NonLeapYear() {
+    var gd = new ilib.Date.GregDate({rd: 734928.5});  // Mar 1, 2013 12:00pm
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2013, gd.getYears());
+    assertEquals(3, gd.getMonths());
+    assertEquals(1, gd.getDays());
+    assertEquals(12, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
+function testGregDateMar31NonLeapYear() {
+    var gd = new ilib.Date.GregDate({rd: 734958.5});  // Mar 31, 2013 12:00pm
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2013, gd.getYears());
+    assertEquals(3, gd.getMonths());
+    assertEquals(31, gd.getDays());
+    assertEquals(12, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
+function testGregDateApr1NonLeapYear() {
+    var gd = new ilib.Date.GregDate({rd: 734959.5});  // Apr 1, 2013 12:00pm
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(2013, gd.getYears());
+    assertEquals(4, gd.getMonths());
+    assertEquals(1, gd.getDays());
+    assertEquals(12, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
 function testGregDateAfterCentury() {
     var gd = new ilib.Date.GregDate({julianday: 1758231.8}); // Oct 10, 101, 7:12am
     
@@ -233,7 +415,7 @@ var testDates = [
 function testGregDateConvert() {
     var gd;
     
-    for (i = 0; i < testDates.length; i++) {
+    for (var i = 0; i < testDates.length; i++) {
         gd = new ilib.Date.GregDate({julianday: testDates[i][0]});
     
         info("testing jd=" + testDates[i][0]);
@@ -1609,7 +1791,7 @@ function testGregDateGetTimeZoneByLocaleBogus() {
     });
     assertNotNull(gd);
     
-    assertEquals("Europe/London", gd.getTimeZone());
+    assertEquals("Etc/UTC", gd.getTimeZone());
 }
 
 function testGregDateCurrentTimeWithTimeZone() {

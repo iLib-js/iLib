@@ -253,13 +253,12 @@ ilib.Date.JulDate.prototype.getRataDie = function() {
  * @returns {Object} object containing the component fields
  */
 ilib.Date.JulDate.prototype.calcComponents = function (rd) {
-	var jd,
-		year,
+	var year,
 		remainder,
 		cumulative,
 		ret = {};
 	
-	year = Math.floor((4*(rd-1) + 1464)/1461);
+	year = Math.floor((4*(Math.floor(rd)-1) + 1464)/1461);
 	
 	ret.year = (year <= 0) ? year - 1 : year;
 	
@@ -277,7 +276,7 @@ ilib.Date.JulDate.prototype.calcComponents = function (rd) {
 		ilib.Date.JulDate.cumMonthLengthsLeap : 
 		ilib.Date.JulDate.cumMonthLengths; 
 	
-	ret.month = ilib.bsearch(remainder, cumulative);
+	ret.month = ilib.bsearch(Math.floor(remainder), cumulative);
 	remainder = remainder - cumulative[ret.month-1];
 	
 	ret.day = Math.floor(remainder);

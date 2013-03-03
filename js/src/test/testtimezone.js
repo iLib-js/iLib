@@ -968,7 +968,7 @@ function testTZGetTimeZoneForLocaleUnknownWithLoader() {
 function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
 	ilib.setLoaderCallback(mockLoader);
 	ilib.data.localeInfo = {}; // clear the locale info cache
-    var tz = new ilib.TimeZone({
+    new ilib.TimeZone({
     	locale: "mm-MM",
     	onLoad: function (tz) {
     		assertNotNull(tz);
@@ -990,7 +990,7 @@ function testTZGetTimeZoneForLocaleWithLoaderNoData() {
 function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
 	ilib.setLoaderCallback(mockLoader);
 	ilib.data.localeInfo = {}; // clear the locale info cache
-    var tz = new ilib.TimeZone({
+    new ilib.TimeZone({
     	locale: "zz-ZZ",
     	onLoad: function (tz) {
     		assertNotNull(tz);

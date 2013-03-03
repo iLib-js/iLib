@@ -283,7 +283,7 @@ ilib.Date.GregDate.prototype.calcComponents = function (rd) {
 		ilib.Date.GregDate.cumMonthLengthsLeap : 
 		ilib.Date.GregDate.cumMonthLengths; 
 	
-	ret.month = ilib.bsearch(remainder, cumulative);
+	ret.month = ilib.bsearch(Math.floor(remainder), cumulative);
 	remainder = remainder - cumulative[ret.month-1];
 	
 	ret.day = Math.floor(remainder);

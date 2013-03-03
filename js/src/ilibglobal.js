@@ -77,7 +77,41 @@ ilib.setLocale = function (spec) {
  * @returns {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
-    return ilib.locale || "en-US";
+	if (typeof(ilib.locale) === 'undefined') {
+		if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
+			// running in a browser
+			ilib.locale = navigator.language;  // FF/Opera/Chrome/Webkit
+			if (!ilib.locale) {
+				// IE on Windows
+				var lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
+					navigator.browserLanguage : 
+					(typeof(navigator.userLanguage) !== 'undefined' ? 
+						navigator.userLanguage : 
+						(typeof(navigator.systemLanguage) !== 'undefined' ?
+							navigator.systemLanguage :
+							undefined));
+				if (lang) {
+					// for some reason, MS uses lower case region tags
+					ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
+				}
+			}
+		} else if (typeof(webos) !== 'undefined' && typeof(webos.locales) !== 'undefined') {
+			ilib.locale = webos.locales.ui;
+		} else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
+			// running under rhino
+			ilib.locale = environment.user.language + '-' + environment.user.country;
+		} else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
+			// running under nodejs
+			var lang = process.env.LANG || process.env.LC_ALL;
+			// the LANG variable on unix is in the form "lang_REGION.CHARSET"
+			// where language and region are the correct ISO codes separated by
+			// an underscore. This translate it back to the BCP-47 form.
+			ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
+		}
+			 
+		ilib.locale = ilib.locale || 'en-US';
+	}
+    return ilib.locale;
 };
 
 /**
@@ -85,7 +119,7 @@ ilib.getLocale = function () {
  * no explicit time zone is passed to any ilib class. If the default time zone
  * is not set, ilib will attempt to use the time zone of the
  * environment it is running in, if it can find that. If not, it will
- * default to the the GMT zone "Europe/London".<p>
+ * default to the the UTC zone "Etc/UTC".<p>
  * 
  * Depends directive: !depends ilibglobal.js
  * 
@@ -101,14 +135,32 @@ ilib.setTimeZone = function (tz) {
  * class. If the default time zone
  * is not set, ilib will attempt to use the locale of the
  * environment it is running in, if it can find that. If not, it will
- * default to the the GMT zone "Europe/London".<p>
+ * default to the the UTC zone "Etc/UTC".<p>
  * 
  * Depends directive: !depends ilibglobal.js
  * 
  * @returns {string} the default time zone for ilib
  */
 ilib.getTimeZone = function() {
-    return ilib.tz || "Europe/London";
+	if (typeof(ilib.tz) === 'undefined') {
+		if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
+			// running in a browser
+			ilib.tz = navigator.timezone;
+		} else	if (typeof(webos) !== 'undefined' && typeof(webos.timezone) !== 'undefined') {
+			// running in webkit on webOS
+			ilib.tz = webos.timezone;
+		} else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
+			// running under rhino
+			ilib.tz = environment.user.timezone;
+		} else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
+			// running in nodejs
+			ilib.tz = process.env.TZ;
+		}
+		
+		ilib.tz = ilib.tz || "Etc/UTC"; 
+	}
+
+    return ilib.tz;
 };
 
 /**
@@ -189,7 +241,7 @@ ilib.getTimeZone = function() {
  * 
  * @param {function(Object,Array.<string>,function(Object))} loader function to call to 
  * load the requested data.
- * @returns {boolean} if the loader was installed correctly, or false
+ * @returns {boolean} true if the loader was installed correctly, or false
  * if not
  */
 ilib.setLoaderCallback = function(loader) {

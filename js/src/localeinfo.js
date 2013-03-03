@@ -250,5 +250,50 @@ ilib.LocaleInfo.prototype = {
 	 */
 	getRoundingMode: function () {
 		return this.info.numfmt.roundingMode;
+	},
+	
+	/**
+	 * Return the default script used to write text in the language of this 
+	 * locale. Text for most languages is written in only one script, but there
+	 * are some languages where the text can be written in a number of scripts,
+	 * depending on a variety of things such as the region, ethnicity, religion, 
+	 * etc. of the author. This method returns the default script for the
+	 * locale, in which the language is most commonly written.<p> 
+	 * 
+	 * The script is returned as an ISO 15924 4-letter code.
+	 * 
+	 * @returns {string} the ISO 15924 code for the default script used to write
+	 * text in this locale 
+	 */
+	getDefaultScript: function() {
+		return (this.info.scripts) ? this.info.scripts[0] : "Latn";
+	},
+	
+	/**
+	 * Return the script used for the current locale. If the current locale
+	 * explicitly defines a script, then this script is returned. If not, then 
+	 * the default script for the locale is returned.
+	 * 
+	 * @see ilib.LocaleInfo.getDefaultScript
+	 * @returns {string} the ISO 15924 code for the script used to write
+	 * text in this locale
+	 */
+	getScript: function() {
+		return this.locale.getScript() || this.getDefaultScript(); 
+	},
+	
+	/**
+	 * Return an array of script codes which are used to write text in the current
+	 * language. Text for most languages is written in only one script, but there
+	 * are some languages where the text can be written in a number of scripts,
+	 * depending on a variety of things such as the region, ethnicity, religion, 
+	 * etc. of the author. This method returns an array of script codes in which 
+	 * the language is commonly written.
+	 * 
+	 * @returns {Array.<string>} an array of ISO 15924 codes for the scripts used 
+	 * to write text in this language
+	 */
+	getAllScripts: function() {
+		return this.info.scripts || ["Latn"];
 	}
 };
