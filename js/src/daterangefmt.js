@@ -124,6 +124,9 @@ ilib.DateRngFmt = function(options) {
 	
 	var opts = {};
 	ilib.shallowCopy(options, opts);
+	/**
+	 * @private
+	 */
 	opts.onLoad = function (fmt) {
 		this.dateFmt = fmt;
 		if (fmt) {

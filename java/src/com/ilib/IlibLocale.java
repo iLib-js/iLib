@@ -81,6 +81,7 @@ public class IlibLocale
     /**
      * @param language
      * @param region
+     * @param script
      * @param variant
      */
     public IlibLocale(String language, String region, String script, String variant)
@@ -92,7 +93,7 @@ public class IlibLocale
     }
 
     /**
-     * @return
+     * @return the locale specifier
      */
     public String getSpec()
     {
@@ -135,9 +136,6 @@ public class IlibLocale
     	return language;
     }
     
-    /**
-     * @return
-     */
     public String getRegion()
     {
         return region;
@@ -153,6 +151,9 @@ public class IlibLocale
         return variant;
     }
     
+    /* (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
     @Override
 	public boolean equals(Object obj) {
     	if ( obj instanceof IlibLocale ) {
@@ -168,7 +169,7 @@ public class IlibLocale
 
 	/**
      * @param spec
-     * @return
+     * @return whether this locale represents the same locale as the given spec
      */
     public boolean equals(String spec)
     {
@@ -196,7 +197,7 @@ public class IlibLocale
     }
     
     /**
-     * @return
+     * @return true if this is the pseudolocalization locale
      */
     public boolean isPseudo()
     {
