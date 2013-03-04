@@ -1,0 +1,87 @@
+/*
+ * testSuite.js - test suite for this directory
+ * 
+ * Copyright © 2012, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+var cli = require('../testcli/runner.js');
+
+function newSuite(path, include) {
+	var suite = new cli.TestSuite("test/" + path);
+	suite.include(include);
+	return suite;
+};
+
+function suite() {
+    var s = new cli.TestSuite();
+    
+    var suites = [
+	    "testcalendar.js",
+	    "testcurrency.js",
+	    "testdatefmt_de_DE.js",
+	    "testdatefmt_en_US.js",
+	    "testdatefmt_en_CA.js",
+	    "testdatefmt_en_GB.js",
+	    "testdatefmt_en_IN.js",
+		"testdatefmt_es_ES.js",
+	    "testdatefmt_fr_FR.js",
+		"testdatefmt_fr_CA.js",
+	    "testdatefmt.js",
+	    "testdatefmt_it_IT.js",
+	    "testdatefmt_id_ID.js",
+	    "testdatefmt_ja_JP.js",
+	    "testdatefmt_ko_KR.js",
+	    "testdatefmt_pt_BR.js",
+	    "testdatefmt_ru_RU.js",
+	    "testdatefmt_zh_CN.js",
+	    "testdate.js",
+	    "testjulianday.js",
+	    "testlocale.js",
+	    "testlocaleinfo.js",
+	    "testnumfmt.js",
+	    "testresources.js",
+	    "teststrings.js",
+	    "testtimezone.js",
+	    "testdatefmtrange.js",
+	   // "testname.js",
+	    //"testnamefmt.js",
+	    "testctype.js",
+	    "testdurfmt.js",
+	    "testglobal.js",
+	    "testscriptinfo.js",
+	    /*
+	    "testName.js",
+	    "testNameFmt.js",
+	    "testName_de.js",
+	    "testName_en.js",
+	    "testName_es.js",
+	    "testName_nl.js",
+	    "testName_zh_CN.js",
+	    */
+	];
+
+    // uncompiled
+    suites.forEach(function (path) {
+    	s.addSuite(newSuite(path, "ilib-ut.js"));
+    });
+    
+    // compiled
+    suites.forEach(function (path) {
+    	s.addSuite(newSuite(path, "ilib-ut-compiled.js"));
+    });
+    
+    return s;
+}
