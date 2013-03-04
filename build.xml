@@ -93,6 +93,13 @@ limitations under the License.
 				<include name="*.jar"/>
 			</fileset>
 		</checksum>
+		<mkdir dir="${build.dist}/dyn" description="Dir for the dynamic locale data loading distribution"/>
+		<zip destfile="${build.dist}/dyn/ilib-dyn-${version}.zip"
+			basedir="${build.export}"
+			includes="js/ilib-dyn*,locale/**"/>
+		<tar destfile="${build.dist}/dyn/ilib-dyn-${version}.tgz" compression="gzip">
+			<zipfileset src="${build.dist}/dyn/ilib-dyn-${version}.zip"/>
+		</tar>
 	</target>
 
 	<target name="test" description="Run all tests and build all reports">

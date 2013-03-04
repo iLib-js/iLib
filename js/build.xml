@@ -250,6 +250,8 @@ limitations under the License.
 			<fileset dir="${build.src}">
 				<include name="iliball.js"/>
 				<include name="iliball-compiled.js"/>
+				<include name="ilib-dyn.js"/>
+				<include name="ilib-dyn-compiled.js"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/doc/jsdoc"/>
@@ -271,6 +273,12 @@ limitations under the License.
 				<exclude name="**/*.html"/>
 				<exclude name="src/iliball*"/>
 				<exclude name="userSettings.js"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${build.export}/locale"/>
+		<copy todir="${build.export}/locale">
+			<fileset dir="${build.base}/data/locale">
+				<include name="**/*.json"/>
 			</fileset>
 		</copy>
 	</target>
