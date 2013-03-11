@@ -44,7 +44,8 @@ ilib.data = {
     },
     localeInfo: {},
     resourceCache: {},
-    dateformatCache: {}
+    dateformatCache: {},
+    nameInfo: {}
 };
 
 window["ilib"] = ilib;

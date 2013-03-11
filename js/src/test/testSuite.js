@@ -22,6 +22,7 @@ var cli = require('../testcli/runner.js');
 function newSuite(path, include) {
 	var suite = new cli.TestSuite("test/" + path);
 	suite.include(include);
+	suite.include("test/testUtils.js");
 	return suite;
 };
 
@@ -62,15 +63,13 @@ function suite() {
 	    "testdurfmt.js",
 	    "testglobal.js",
 	    "testscriptinfo.js",
-	    /*
-	    "testName.js",
-	    "testNameFmt.js",
-	    "testName_de.js",
-	    "testName_en.js",
-	    "testName_es.js",
-	    "testName_nl.js",
-	    "testName_zh_CN.js",
-	    */
+	    "testname.js",
+	    "testnamefmt.js",
+	    "testname_de.js",
+	    "testname_en.js",
+	    "testname_es.js",
+	    "testname_nl.js",
+	    "testname_zh_CN.js"
 	];
 
     // uncompiled
