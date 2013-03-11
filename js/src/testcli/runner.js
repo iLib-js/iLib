@@ -96,17 +96,15 @@ TestSuite.prototype = {
 				results.pass++;		
 			} catch ( e ) {
 				var msg = "FAIL: " + path + ":" + t + "()\n\t";
-				if (typeof(e) === 'object') {
-					if (e.isJsUnitFailure) {
-						if (e.comment) {
-							msg += " " + e.comment;
-						}
-						if (e.jsUnitMessage) {
-							msg += " " + e.jsUnitMessage;
-						}
-						if (e.stackTrace) {
-							msg += " " + e.stackTrace;
-						}
+				if (typeof(e) === 'object' && e.isJsUnitFailure) {
+					if (e.comment) {
+						msg += " " + e.comment;
+					}
+					if (e.jsUnitMessage) {
+						msg += " " + e.jsUnitMessage;
+					}
+					if (e.stackTrace) {
+						msg += " " + e.stackTrace;
 					}
 				} else {
 					msg = e.toString();
