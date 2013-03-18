@@ -32,7 +32,7 @@ var isMember = common.isMember;
 
 function usage() {
 	util.print("Usage: genctype [-h] DerivedGeneralCategory.txt [toDir]\n" +
-			"Generate the normalization data.\n\n" +
+			"Generate the character type data.\n\n" +
 			"-h or --help\n" +
 			"  this help\n" +
 			"DerivedGeneralCategory.txt\n" +

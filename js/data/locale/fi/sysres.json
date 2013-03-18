@@ -75,7 +75,7 @@
 	"a1": "ip.",
 	"G-1": "eKr.",
 	"G1": "jKr.",
-	"in {duration}": "{num} päivän päästä",
+	"in {duration}": "{duration} päästä",
 	"{duration} ago": "{duration} sitten",
 	"1#1 year|#{num} years": "1#{num} vuosi|#{num} vuotta",
 	"1#1 month|#{num} months": "1#{num} kuukausi|#{num} kuukautta",

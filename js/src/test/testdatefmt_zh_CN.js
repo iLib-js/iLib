@@ -557,7 +557,7 @@ function testDateFmtShortDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09-29(周四)", fmt.format(date));
+    assertEquals("09-29(四)", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY() {
@@ -573,7 +573,7 @@ function testDateFmtShortDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-09-29(周四)", fmt.format(date));
+    assertEquals("11-09-29(四)", fmt.format(date));
 }
 
 

@@ -441,7 +441,7 @@ function testDurFmtFormatFullDESingle() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1 Jahr, 1 Monat, 1 Woche, 1 Tag, 1 Stunde, 1 Minute, 1 Sekunde, und 1 Millisekunde", duration.toString());
+    assertEquals("1 Jahr, 1 Monat, 1 Woche, 1 Tag, 1 Stunde, 1 Minute, 1 Sekunde und 1 Millisekunde", duration.toString());
 };
 
 function testDurFmtFormatLongDEPlural() {
@@ -481,7 +481,7 @@ function testDurFmtFormatFullDEPlural() {
     	second: 2,
     	millisecond: 2
     });
-    assertEquals("2 Jahre, 2 Monate, 2 Wochen, 2 Tage, 2 Stunden, 2 Minuten, 2 Sekunden, und 2 Millisekunden", duration.toString());
+    assertEquals("2 Jahre, 2 Monate, 2 Wochen, 2 Tage, 2 Stunden, 2 Minuten, 2 Sekunden und 2 Millisekunden", duration.toString());
 };
 
 function testDurFmtFormatShortZHDefaultStyle() {
@@ -583,7 +583,7 @@ function testDurFmtFormatLongZH() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1年1个月1周1天1小时1分钟1秒1毫秒", duration.toString());
+    assertEquals("1年、1个月、1周、1天、1小时、1分钟、1秒、1毫秒", duration.toString());
 };
 
 function testDurFmtFormatFullZH() {
@@ -603,7 +603,7 @@ function testDurFmtFormatFullZH() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1年1个月1周1天1小时1分钟1秒1毫秒", duration.toString());
+    assertEquals("1年、1个月、1周、1天、1小时、1分钟、1秒和1毫秒", duration.toString());
 };
 
 function testDurFmtFormatShortFRDefaultStyle() {
@@ -725,7 +725,7 @@ function testDurFmtFormatFullFR() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1 an, 1 mois, 1 semaine, 1 jour, 1 heure, 1 minute, 1 seconde, et 1 milliseconde", duration.toString());
+    assertEquals("1 an, 1 mois, 1 semaine, 1 jour, 1 heure, 1 minute, 1 seconde et 1 milliseconde", duration.toString());
 };
 
 
@@ -772,7 +772,7 @@ function testDurFmtAsyncWithLocale() {
     	    	second: 2,
     	    	millisecond: 2
     	    });
-    	    assertEquals("2 ans, 2 mois, 2 semaines, 2 jours, 2 heures, 2 minutes, 2 secondes, et 2 millisecondes", duration.toString());
+    	    assertEquals("2 ans, 2 mois, 2 semaines, 2 jours, 2 heures, 2 minutes, 2 secondes et 2 millisecondes", duration.toString());
     	    callbackCalled = true;
     	}
     });

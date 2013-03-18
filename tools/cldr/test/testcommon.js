@@ -370,3 +370,380 @@ function testCoelesceEmpty() {
 	assertNotUndefined(b);
 	assertEquals(0, b.length);
 }
+
+function testPrune() {
+	var parent = {
+		"a": 0,
+		"b": 1,
+		"c": 2,
+		"d": 3
+	};
+	var child = {
+		"a": 0,
+		"b": 1,
+		"c": 4,
+		"d": 5,
+		"e": 6
+	};
+	
+	var expected = {
+		"c": 4,
+		"d": 5,
+		"e": 6
+	};
+	var pruned = exports.prune(parent, child);
+	assertObjectEquals(expected, pruned);
+}
+
+function testPruneWithSubobjects() {
+	var parent = {
+		"a": 0,
+		"b": 1,
+		"c": 2,
+		"d": 3,
+		"m": {
+			"x": 1,
+			"y": 2
+		}
+	};
+	var child = {
+		"a": 0,
+		"b": 1,
+		"c": 4,
+		"d": 5,
+		"e": 6,
+		"m": {
+			"x": 1,
+			"y": 3,
+			"z": 4
+		}
+	};
+	
+	var expected = {
+		"c": 4,
+		"d": 5,
+		"e": 6,
+		"m": {
+			"y": 3,
+			"z": 4
+		}
+	};
+	var pruned = exports.prune(parent, child);
+	assertObjectEquals(expected, pruned);
+}
+
+function testPruneMissingChildValues() {
+	var parent = {
+		"a": 0,
+		"b": 1,
+		"c": 2,
+		"d": 3
+	};
+	var child = {
+		"a": 0,
+		"b": 2
+	};
+	
+	var expected = {
+		"b": 2
+	};
+	var pruned = exports.prune(parent, child);
+	assertObjectEquals(expected, pruned);
+}
+
+function testMergeAndPruneAllSame() {
+	var data = {
+		data: {
+			"sun": 0,
+			"mon": 1,
+			"tue": 2,
+			"wed": 3,
+			"thu": 4,
+			"fri": 5,
+			"sat": 6,
+			"east": "west",
+			"west": "east"
+		},
+		a: {
+			data: {
+				"sun": 0,
+				"mon": 1,
+				"tue": 2,
+				"wed": 3,
+				"thu": 4,
+				"fri": 5,
+				"sat": 6
+			},
+			n: {
+				data: {
+					"days": 7
+				}
+			},
+			m: {
+				data: {
+					"days": 7,
+					"sun": 1,
+					"mon": 2,
+					"tue": 3
+				}
+			}
+		},
+		b: {
+			data: {
+				"sun": 100,
+				"mon": 101,
+				"tue": 102,
+				"wed": 103,
+				"thu": 104,
+				"fri": 105,
+				"sat": 106
+			},
+			x: {
+				data: {
+					foo: "bar",
+					"sun": 0,
+					"fri": 5,
+					"sat": 106,
+					"mon": 101
+				}
+			},
+			y: {
+				data: {
+					foo: "asdf",
+					"mon": 1,
+					"sat": 6
+				}
+			}
+		}
+	};
+	
+	exports.mergeAndPrune(data);
+	var adata = {
+	};
+	assertObjectEquals(adata, data.a.data);
+	
+	var adatamerged = {
+		"sun": 0,
+		"mon": 1,
+		"tue": 2,
+		"wed": 3,
+		"thu": 4,
+		"fri": 5,
+		"sat": 6,
+		"east": "west",
+		"west": "east"
+	};
+	assertObjectEquals(adatamerged, data.a.merged);
+}
+
+function testMergeAndPruneAddProps() {
+	var data = {
+		data: {
+			"sun": 0,
+			"mon": 1,
+			"tue": 2,
+			"wed": 3,
+			"thu": 4,
+			"fri": 5,
+			"sat": 6,
+			"east": "west",
+			"west": "east"
+		},
+		a: {
+			data: {
+				"sun": 0,
+				"mon": 1,
+				"tue": 2,
+				"wed": 3,
+				"thu": 4,
+				"fri": 5,
+				"sat": 6
+			},
+			n: {
+				data: {
+					"days": 7
+				}
+			}
+		}
+	};
+	
+	exports.mergeAndPrune(data);
+	var andata = {
+		days: 7   // add property that ancestors don't have
+	};
+	assertObjectEquals(andata, data.a.n.data);
+	var andatamerged = {
+		"sun": 0,
+		"mon": 1,
+		"tue": 2,
+		"wed": 3,
+		"thu": 4,
+		"fri": 5,
+		"sat": 6,
+		"east": "west",
+		"west": "east",
+		"days": 7
+	};
+	assertObjectEquals(andatamerged, data.a.n.merged);
+}
+
+function testMergeAndPruneDontAddSame() {
+	var data = {
+		data: {
+			"sun": 0,
+			"mon": 1,
+			"tue": 2,
+			"wed": 3,
+			"thu": 4,
+			"fri": 5,
+			"sat": 6,
+			"east": "west",
+			"west": "east"
+		},
+		a: {
+			data: {
+				"sun": 0,
+				"mon": 1,
+				"tue": 2,
+				"wed": 3,
+				"thu": 4,
+				"fri": 5,
+				"sat": 6
+			},
+			m: {
+				data: {
+					"days": 7,
+					"sun": 0,
+					"mon": 2,
+					"tue": 2
+				}
+			}
+		}
+	};
+	
+	exports.mergeAndPrune(data);
+	var amdata = {
+		"days": 7,
+		"mon": 2    // sun and tue were same as parent
+	};
+	assertObjectEquals(amdata, data.a.m.data);
+	var amdatamerged = {
+		"sun": 0,
+		"mon": 2,
+		"tue": 2,
+		"wed": 3,
+		"thu": 4,
+		"fri": 5,
+		"sat": 6,
+		"east": "west",
+		"west": "east",
+		"days": 7
+	};
+	assertObjectEquals(amdatamerged, data.a.m.merged);
+}
+
+function testMergeAndPruneDontOverrideGrandParent() {
+	var data = {
+		data: {
+			"sun": 0,
+			"mon": 1,
+			"tue": 2,
+			"wed": 3,
+			"thu": 4,
+			"fri": 5,
+			"sat": 6,
+			"east": "west",
+			"west": "east"
+		},
+		b: {
+			data: {
+				"sun": 100,
+				"mon": 101,
+				"tue": 102,
+				"wed": 103,
+				"thu": 104,
+				"fri": 105,
+				"sat": 106
+			},
+			y: {
+				data: {
+					foo: "asdf",
+					"mon": 1,
+					"sat": 6,
+					"east": "west"
+				}
+			}
+		}
+	};
+	
+	exports.mergeAndPrune(data);
+	var bydata = {
+		foo: "asdf",
+		"mon": 1,
+		"sat": 6 // should not contain east: west from the grandparent
+	};
+	assertObjectEquals(bydata, data.b.y.data);
+	var bydatamerged = {
+		"sun": 100,
+		"mon": 1,
+		"tue": 102,
+		"wed": 103,
+		"thu": 104,
+		"fri": 105,
+		"sat": 6,
+		"east": "west",
+		"west": "east",
+		"foo": "asdf"
+	};
+	assertObjectEquals(bydatamerged, data.b.y.merged);
+}
+
+function testMergeAndPruneOverrideGrandparentOnly() {
+	var data = {
+		data: {
+			"sun": 0,
+			"mon": 1,
+			"tue": 2,
+			"wed": 3,
+			"thu": 4,
+			"fri": 5,
+			"sat": 6,
+			"east": "west",
+			"west": "east"
+		},
+		a: {
+			data: {
+				"sun": 0,
+				"mon": 1,
+				"tue": 2,
+				"wed": 3,
+				"thu": 4,
+				"fri": 5,
+				"sat": 6
+			},
+			m: {
+				data: {
+					"east": "north"
+				}
+			}
+		}
+	};
+	
+	exports.mergeAndPrune(data);
+	var amdata = {
+		"east": "north"
+	};
+	assertObjectEquals(amdata, data.a.m.data);
+	var amdatamerged = {
+		"sun": 0,
+		"mon": 1,
+		"tue": 2,
+		"wed": 3,
+		"thu": 4,
+		"fri": 5,
+		"sat": 6,
+		"east": "north",
+		"west": "east"
+	};
+	assertObjectEquals(amdatamerged, data.a.m.merged);
+}

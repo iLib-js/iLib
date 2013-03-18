@@ -1180,7 +1180,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("Через 30 секунды", fmt.formatRelative(reference, date));
+    assertEquals("через 30 секунды", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore() {
     var fmt = new ilib.DateFmt({locale: "ru-RU", length: "full"});
@@ -1228,7 +1228,7 @@ function testDateFmtFormatRelativeWithinHourAfter() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Через 10 минуты", fmt.formatRelative(reference, date));
+    assertEquals("через 10 минуты", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore() {
     var fmt = new ilib.DateFmt({locale: "ru-RU", length: "full"});
@@ -1276,7 +1276,7 @@ function testDateFmtFormatRelativeWithinDayAfter() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Через 4 часа", fmt.formatRelative(reference, date));
+    assertEquals("через 4 часа", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore() {
     var fmt = new ilib.DateFmt({locale: "ru-RU", length: "full"});
@@ -1325,7 +1325,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Через 4 дня", fmt.formatRelative(reference, date));
+    assertEquals("через 4 дня", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore() {
     var fmt = new ilib.DateFmt({locale: "ru-RU", length: "full"});
@@ -1374,7 +1374,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Через 9 недели", fmt.formatRelative(reference, date));
+    assertEquals("через 9 недели", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore() {
     var fmt = new ilib.DateFmt({locale: "ru-RU", length: "full"});
@@ -1423,7 +1423,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Через 16 месяца", fmt.formatRelative(reference, date));
+    assertEquals("через 16 месяца", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore() {
     var fmt = new ilib.DateFmt({locale: "ru-RU", length: "full"});
@@ -1472,7 +1472,7 @@ function testDateFmtFormatRelativeYearsAfter() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Через 14 года", fmt.formatRelative(reference, date));
+    assertEquals("через 14 года", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore() {
     var fmt = new ilib.DateFmt({locale: "ru-RU", length: "full"});

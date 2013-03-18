@@ -24,7 +24,11 @@
 /**
  * @class
  * Create a new currency information instance. Instances of this class encode 
- * information about a particular currency.<p> 
+ * information about a particular currency.<p>
+ * 
+ * Note: that if you are looking to format currency for display, please see
+ * the number formatting class {ilib.NumFmt}. This class only gives information
+ * about currencies.<p> 
  * 
  * The options can contain any of the following properties:
  * 

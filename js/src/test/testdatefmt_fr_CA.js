@@ -69,7 +69,7 @@ function testDateFmtCASimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 sep 2011", fmt.format(date));
+    assertEquals("29 sept 2011", fmt.format(date));
 }
 
 function testDateFmtCASimpleFull() {
@@ -197,7 +197,7 @@ function testDateFmtCADateTimeSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45soir 29 sep 2011", fmt.format(date));
+    assertEquals("1:45soir 29 sept 2011", fmt.format(date));
 }
 
 function testDateFmtCADateTimeSimpleFull() {

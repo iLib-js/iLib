@@ -57,7 +57,7 @@
 	"1#1 yr|#{num} yrs": "#{num} thn",
 	"1#1 mon|#{num} mons": "#{num} bln",
 	"1#1 wk|#{num} wks": "#{num} mggu",
-	"durationLongDays": "#{num} hr",
+	"durationLongDays": "#{num} hari",
 	"1#1 hr|#{num} hrs": "#{num} jam",
 	"1#1 min|#{num} min": "#{num} mnt",
 	"1#1 sec|#{num} sec": "#{num} dtk",

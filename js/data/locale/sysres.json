@@ -76,10 +76,16 @@
 	"EE6": "Sa",
 	"E6": "S",
 	"ordinalChoice": "1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th",
-	"a0": "am",
-	"a1": "pm",
+	"a0": "AM",
+	"a1": "PM",
 	"G-1": "BCE",
 	"G1": "CE",
+	
+	"separatorFull": ", ",
+	"finalSeparatorFull": ", and ",
+	"separatorShort":" ",
+	"separatorMedium":" ",
+	"separatorLong":", ",
 	
 	"N1-hebrew": "N",
 	"N2-hebrew": "I",

@@ -243,7 +243,7 @@ function testDateRngFmtDynamicLoadSync() {
     	second: 0
     });
     
-    assertEquals("12:20pm - 4:35pm 2/20/13", fmt.format(start, end));
+    assertEquals("12:20PM - 4:35PM 2/20/13", fmt.format(start, end));
 }
 
 function testDateRngFmtDynamicLoadSyncCached() {
@@ -272,7 +272,7 @@ function testDateRngFmtDynamicLoadSyncCached() {
     	second: 0
     });
     
-    assertEquals("12:20pm - 4:35pm 2/20/13", fmt.format(start, end));
+    assertEquals("12:20PM - 4:35PM 2/20/13", fmt.format(start, end));
 }
 
 function testDateRngFmtDynamicLoadAsync() {
@@ -302,7 +302,7 @@ function testDateRngFmtDynamicLoadAsync() {
     	locale: "zz-ZZ",
     	onLoad: function (fmt) {
     		assertNotNull(fmt);
-    	    assertEquals("12:20pm - 4:35pm 2/20/13", fmt.format(start, end));
+    	    assertEquals("12:20PM - 4:35PM 2/20/13", fmt.format(start, end));
     	}
     });
 }
@@ -332,7 +332,7 @@ function testDateRngFmtDynamicLoadAsyncCached() {
     	locale: "zz-ZZ",
     	onLoad: function (fmt) {
     		assertNotNull(fmt);
-    	    assertEquals("12:20pm - 4:35pm 2/20/13", fmt.format(start, end));
+    	    assertEquals("12:20PM - 4:35PM 2/20/13", fmt.format(start, end));
     	}
     });
 }

@@ -1210,7 +1210,7 @@ function testDateFmtOrdinalDEDefaultCase() {
 };
 
 function testDateFmtEraCE() {
-    var fmt = new ilib.DateFmt({template: "G", locale: "en-US"});
+    var fmt = new ilib.DateFmt({template: "G", locale: "en"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1226,7 +1226,7 @@ function testDateFmtEraCE() {
 };
 
 function testDateFmtEraBCE() {
-    var fmt = new ilib.DateFmt({template: "G", locale: "en-US"});
+    var fmt = new ilib.DateFmt({template: "G", locale: "en"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1242,7 +1242,7 @@ function testDateFmtEraBCE() {
 };
 
 function testDateFmtEraCEBoundary() {
-    var fmt = new ilib.DateFmt({template: "G", locale: "en-US"});
+    var fmt = new ilib.DateFmt({template: "G", locale: "en"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1258,7 +1258,7 @@ function testDateFmtEraCEBoundary() {
 };
 
 function testDateFmtEraBCEBoundary() {
-    var fmt = new ilib.DateFmt({template: "G", locale: "en-US"});
+    var fmt = new ilib.DateFmt({template: "G", locale: "en"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1683,7 +1683,7 @@ function testDateFmtConvertToOtherTimeZone() {
 		locale: "en-US"
 	});
     
-    assertEquals("21/9/11 6:45am EST", fmt.format(date));
+    assertEquals("21/9/11 6:45AM EST", fmt.format(date));
 };
 
 
@@ -1731,7 +1731,7 @@ function testDateFmtenPH() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 1:45pm", fmt.format(date));
+    assertEquals("Tuesday 20 September 2011 1:45PM", fmt.format(date));
 };
 
 function testDateFmtenPK() {
@@ -1777,7 +1777,7 @@ function testDateFmtenAU() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 1:45pm", fmt.format(date));
+    assertEquals("Tuesday 20 September 2011 1:45PM", fmt.format(date));
 };
 
 function testDateFmtenZA() {
@@ -1800,7 +1800,7 @@ function testDateFmtenZA() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 1:45 pm", fmt.format(date));
+    assertEquals("Tuesday 20 September 2011 1:45 PM", fmt.format(date));
 };
 
 function testDateFmtesES() {
@@ -1846,7 +1846,7 @@ function testDateFmtesMX() {
 		millisecond: 0
 	});
     
-    assertEquals("martes 20 de septiembre 2011 1:45PM", fmt.format(date));
+    assertEquals("martes 20 de septiembre 2011 1:45p.m.", fmt.format(date));
 };
 
 function testDateFmtesAR() {
@@ -1892,7 +1892,7 @@ function testDateFmttrTR() {
 		millisecond: 0
 	});
     
-    assertEquals("20 Eylül 2011 Salı 13:45", fmt.format(date));
+    assertEquals("20 eylül 2011 Salı 13:45", fmt.format(date));
 };
 
 function testDateFmttrSV() {

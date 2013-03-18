@@ -17,7 +17,9 @@
  * limitations under the License.
  */
 
-// !depends ilibglobal.js locale.js
+// !depends ilibglobal.js util/utils.js locale.js
+
+// !data plurals
 
 /**
  * @class
@@ -42,6 +44,7 @@ ilib.String = function (string) {
 	}
 	this.length = this.str.length;
 	this.cpLength = -1;
+	this.localeSpec = ilib.getLocale();
 };
 
 /**
@@ -265,6 +268,170 @@ ilib.String._compose = function (lead, trail) {
 	return (ilib.data.norm.nfc && ilib.data.norm.nfc[c]);
 };
 
+/**
+ * @protected
+ */
+ilib.String._fncs = {
+	/**
+	 * @private
+	 * @param {Object} obj
+	 * @returns {string|undefined}
+	 */
+	firstProp: function (obj) {
+		for (var p in obj) {
+			if (p && obj[p]) {
+				return p;
+			}
+		}
+		return undefined; // should never get here
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} obj
+	 * @param {number} n
+	 * @returns {?}
+	 */
+	getValue: function (obj, n) {
+		if (typeof(obj) === 'object') {
+			var subrule = ilib.String._fncs.firstProp(obj);
+			return ilib.String._fncs[subrule](obj[subrule], n);
+		} else if (typeof(obj) === 'string') {
+			return n;
+		} else {
+			return obj;
+		}
+	},
+	
+	/**
+	 * @private
+	 * @param {number} n
+	 * @param {Array.<number|Array.<number>>} range
+	 * @returns {boolean}
+	 */
+	matchRangeContinuous: function(n, range) {
+		for (var num in range) {
+			if (typeof(num) !== 'undefined' && typeof(range[num]) !== 'undefined') {
+				var obj = /** @type {Object|null|undefined} */ range[num];
+				if (typeof(obj) === 'number') {
+					if (n === range[num]) {
+						return true;
+					}
+				} else if (Object.prototype.toString.call(obj) === '[object Array]') {
+					if (n >= obj[0] && n <= obj[1]) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	},
+
+	/**
+	 * @private
+	 * @param {number} n
+	 * @param {Array.<number|Array.<number>>} range
+	 * @returns {boolean}
+	 */
+	matchRange: function(n, range) {
+		if (Math.floor(n) !== n) {
+			return false;
+		}
+		return ilib.String._fncs.matchRangeContinuous(n, range);
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	is: function(rule, n) {
+		var left = ilib.String._fncs.getValue(rule[0], n);
+		var right = ilib.String._fncs.getValue(rule[1], n);
+		return left == right;
+		// return ilib.String._fncs.getValue(rule[0]) == ilib.String._fncs.getValue(rule[1]);
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	isnot: function(rule, n) {
+		return ilib.String._fncs.getValue(rule[0], n) != ilib.String._fncs.getValue(rule[1], n);
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	inrange: function(rule, n) {
+		return ilib.String._fncs.matchRange(ilib.String._fncs.getValue(rule[0], n), rule[1]);
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	notin: function(rule, n) {
+		return !ilib.String._fncs.matchRange(ilib.String._fncs.getValue(rule[0], n), rule[1]);
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	within: function(rule, n) {
+		return ilib.String._fncs.matchRangeContinuous(ilib.String._fncs.getValue(rule[0], n), rule[1]);		
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {number}
+	 */
+	mod: function(rule, n) {
+		return ilib.mod(ilib.String._fncs.getValue(rule[0], n), ilib.String._fncs.getValue(rule[1], n));
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {number}
+	 */
+	n: function(rule, n) {
+		return n;
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	or: function(rule, n) {
+		return ilib.String._fncs.getValue(rule[0], n) || ilib.String._fncs.getValue(rule[1], n);
+	},
+	
+	/**
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	and: function(rule, n) {
+		return ilib.String._fncs.getValue(rule[0], n) && ilib.String._fncs.getValue(rule[1], n);
+	}
+};
 
 ilib.String.prototype = {
 	/**
@@ -423,10 +590,30 @@ ilib.String.prototype = {
 	 * <li><i>&lt;x</i> - match any number that is less than x
 	 * <li><i>&lt;=x</i> - match any number that is less than or equal to x
 	 * <li><i>start-end</i> - match any number in the range [start,end)
+	 * <li><i>zero</i> - match any number in the class "zero". (See below for
+	 * a description of number classes.)
+	 * <li><i>one</i> - match any number in the class "one"
+	 * <li><i>two</i> - match any number in the class "two"
+	 * <li><i>few</i> - match any number in the class "few"
+	 * <li><i>many</i> - match any number in the class "many"
 	 * </ul>
 	 * 
-	 * If the argument index is a boolean, the values "true" and "false" may appear
-	 * as the choice patterns.<p>
+	 * A number class defines a set of numbers that receive a particular syntax
+	 * in the strings. For example, in Slovenian, integers ending in the digit
+	 * "1" are in the "one" class, including 1, 21, 31, ... 101, 111, etc.
+	 * Similarly, integers ending in the digit "2" are in the "two" class. 
+	 * Integers ending in the digits "3" or "4" are in the "few" class, and
+	 * every other integer is handled by the default string.<p>
+	 * 
+	 * The definition of what numbers are included in a class is locale-dependent.
+	 * They are defined in the data file plurals.json. If your string is in a
+	 * different locale than the default for ilib, you should call the setLocale()
+	 * method of the string instance before calling this method.<p> 
+	 * 
+	 * <b>Other Pattern Types</b><p>
+	 * 
+	 * If the argument index is a boolean, the string values "true" and "false" 
+	 * may appear as the choice patterns.<p>
 	 * 
 	 * If the argument index is of type string, then the choice patterns may contain
 	 * regular expressions, or static strings as degenerate regexps.
@@ -505,19 +692,36 @@ ilib.String.prototype = {
 								i = limits.length;
 							}
 						} else {
-							var dash = limits[i].indexOf("-");
-							if (dash !== -1) {							
-								// range
-								var start = limits[i].substring(0, dash);
-								var end = limits[i].substring(dash+1);							
-								if (arg >= parseInt(start, 10) && arg <= parseInt(end, 10)) {								
-									result = new ilib.String(strings[i]);
-									i = limits.length;
-								}
-							} else if (arg === parseInt(limits[i], 10)) {							
-								// exact amount
-								result = new ilib.String(strings[i]);
-								i = limits.length;
+							this.locale = this.locale || new ilib.Locale(this.localeSpec);
+							switch (limits[i]) {
+								case "zero":
+								case "one":
+								case "two":
+								case "few":
+								case "many":
+									// CLDR locale-dependent number classes
+									var rule = ilib.data.plurals.plurals[this.locale.getLanguage()][limits[i]];
+									if (ilib.String._fncs.getValue(rule, arg)) {
+										result = new ilib.String(strings[i]);
+										i = limits.length;
+									}
+									break;
+								default:
+									var dash = limits[i].indexOf("-");
+									if (dash !== -1) {							
+										// range
+										var start = limits[i].substring(0, dash);
+										var end = limits[i].substring(dash+1);							
+										if (arg >= parseInt(start, 10) && arg <= parseInt(end, 10)) {								
+											result = new ilib.String(strings[i]);
+											i = limits.length;
+										}
+									} else if (arg === parseInt(limits[i], 10)) {							
+										// exact amount
+										result = new ilib.String(strings[i]);
+										i = limits.length;
+									}
+									break;
 							}
 						}
 						break;
@@ -1139,6 +1343,23 @@ ilib.String.prototype = {
 			ch = it.next();
 		}
 		return (count < 0) ? ch : -1;
+	},
+	
+	/**
+	 * Set the locale to use when processing choice formats. The locale
+	 * affects how number classes are interpretted. In some cultures,
+	 * the limit "few" maps to "any integer that ends in the digits 2 to 9" and
+	 * in yet others, "few" maps to "any integer that ends in the digits
+	 * 3 or 4".
+	 * @param {ilib.Locale|string} locale locale to use when processing choice
+	 * formats with this string
+	 */
+	setLocale: function (locale) {
+		if (typeof(locale) === 'object') {
+			this.locale = locale;
+		} else {
+			this.localeSpec = locale;
+		}
 	},
 	
 	/**

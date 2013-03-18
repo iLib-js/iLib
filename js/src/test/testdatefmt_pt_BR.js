@@ -687,7 +687,7 @@ function testDateFmtBRFullDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Quinta, 29 de setembro", fmt.format(date));
+    assertEquals("quinta-feira, 29 de setembro", fmt.format(date));
 }
 
 function testDateFmtBRFullDateComponentsWDMY() {
@@ -703,7 +703,7 @@ function testDateFmtBRFullDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Quinta, 29 de setembro de 2011", fmt.format(date));
+    assertEquals("quinta-feira, 29 de setembro de 2011", fmt.format(date));
 }
 
 

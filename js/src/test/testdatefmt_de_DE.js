@@ -69,7 +69,7 @@ function testDateFmtSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. Sep 2011", fmt.format(date));
+    assertEquals("29. Sep. 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull() {
@@ -197,7 +197,7 @@ function testDateFmtDateTimeSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29. Sep 2011", fmt.format(date));
+    assertEquals("13:45 29. Sep. 2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull() {

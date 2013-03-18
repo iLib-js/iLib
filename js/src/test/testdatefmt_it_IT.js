@@ -558,7 +558,7 @@ function testDateFmtShortDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Gi 29/09", fmt.format(date));
+    assertEquals("gi 29/09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY() {
@@ -574,7 +574,7 @@ function testDateFmtShortDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Gi 29/09/11", fmt.format(date));
+    assertEquals("gi 29/09/11", fmt.format(date));
 }
 
 
@@ -591,7 +591,7 @@ function testDateFmtFullDateComponentsY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 CE", fmt.format(date));
+    assertEquals("2011 dC", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsM() {
@@ -687,7 +687,7 @@ function testDateFmtFullDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Giovedi 29 settembre", fmt.format(date));
+    assertEquals("giovedì 29 settembre", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY() {
@@ -703,7 +703,7 @@ function testDateFmtFullDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Giovedi 29 settembre 2011", fmt.format(date));
+    assertEquals("giovedì 29 settembre 2011", fmt.format(date));
 }
 
 

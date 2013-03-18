@@ -1180,7 +1180,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30초 및에", fmt.formatRelative(reference, date));
+    assertEquals("30초에", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore() {
     var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});
@@ -1204,7 +1204,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30초 및전", fmt.formatRelative(reference, date));
+    assertEquals("30초전", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter() {
     var fmt = new ilib.DateFmt({locale: "ko-KR", length: "full"});

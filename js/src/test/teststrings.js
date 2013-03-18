@@ -760,3 +760,1184 @@ function testCodePointAtNegWithSurrogates() {
 
     assertEquals(-1, str.codePointAt(-234));
 }
+
+function testRuleGetValueN() {
+	var rule = {
+		n: []
+	};
+	
+	assertRoughlyEquals(8.2, ilib.String._fncs.getValue(rule, 8.2), 0.01);
+}
+
+function testRuleGetValueIsTrue() {
+	var rule = {
+		is: [
+			"n",
+			2
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 2));
+}
+
+function testRuleGetValueIsFalse() {
+	var rule = {
+		is: [
+			"n",
+			2
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 3));
+}
+
+function testRuleGetValueIsNotTrue() {
+	var rule = {
+		isnot: [
+			"n",
+			2
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 3));
+}
+
+function testRuleGetValueIsNotFalse() {
+	var rule = {
+		isnot: [
+			"n",
+			2
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 2));
+}
+
+function testRuleGetValueInRangeTrueStart() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [[0,2]]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 0));
+}
+
+function testRuleGetValueInRangeTrueEnd() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [[0,2]]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 2));
+}
+
+function testRuleGetValueInRangeTrueBetween() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [[0,2]]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 1));
+}
+
+function testRuleGetValueInRangeFalse() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [[0,2]]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 3));
+}
+
+function testRuleGetValueInRangeFalseNotInteger() {
+	var rule = {
+		inrange: [
+			"n",
+			[[0,2]]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 0.5));
+}
+
+
+function testRuleGetValueInRangeFalseIntegersAfter() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,2]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 4));
+}
+
+function testRuleGetValueInRangeFalseIntegersBefore() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [1,3]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 0));
+}
+
+function testRuleGetValueInRangeFalseIntegersBetween() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,2]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 1));
+}
+
+function testRuleGetValueInRangeIntegersTrue() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,2]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 2));
+}
+
+function testRuleGetValueInRangeIntegersFalseNotInteger() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,2]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 0.5));
+}
+
+function testRuleGetValueInRangeIntegersTrueMany() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,2,4,6,8]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 6));
+}
+
+
+function testRuleGetValueInRangeComplexTrue1() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 0));
+}
+
+function testRuleGetValueInRangeComplexTrue2() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 2));
+}
+
+function testRuleGetValueInRangeComplexTrue3() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 3));
+}
+
+function testRuleGetValueInRangeComplexTrue4() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 4));
+}
+
+function testRuleGetValueInRangeComplexTrue5() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 8));
+}
+
+function testRuleGetValueInRangeComplexTrue6() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 9));
+}
+
+function testRuleGetValueInRangeComplexFalse1() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 1));
+}
+
+function testRuleGetValueInRangeComplexFalse2() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 5));
+}
+
+function testRuleGetValueInRangeComplexFalse3() {
+	var rule = {
+		inrange: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 10));
+}
+
+function testRuleGetValueNotInRangeTrueStart() {
+	var rule = {
+		notin: [
+		    "n",
+		    [[0,2]]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 0));
+}
+
+function testRuleGetValueNotInRangeTrueEnd() {
+	var rule = {
+		notin: [
+		    "n",
+		    [[0,2]]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 2));
+}
+
+function testRuleGetValueNotInRangeTrueBetween() {
+	var rule = {
+		notin: [
+		    "n",
+		    [[0,2]]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 1));
+}
+
+function testRuleGetValueNotInRangeFalse() {
+	var rule = {
+		notin: [
+		    "n",
+		    [[0,2]]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 3));
+}
+
+function testRuleGetValueNotInRangeFalseNotInteger() {
+	var rule = {
+		notin: [
+			"n",
+			[[0,2]]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 0.5));
+}
+
+
+function testRuleGetValueNotInRangeFalseIntegersAfter() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,2]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 4));
+}
+
+function testRuleGetValueNotInRangeFalseIntegersBefore() {
+	var rule = {
+		notin: [
+		    "n",
+		    [1,3]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 0));
+}
+
+function testRuleGetValueNotInRangeFalseIntegersBetween() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,2]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 1));
+}
+
+function testRuleGetValueNotInRangeIntegersTrue() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,2]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 2));
+}
+
+function testRuleGetValueNotInRangeIntegersFalseNotInteger() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,2]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 0.5));
+}
+
+function testRuleGetValueNotInRangeIntegersTrueMany() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,2,4,6,8]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 6));
+}
+
+
+function testRuleGetValueNotInRangeComplexTrue1() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 0));
+}
+
+function testRuleGetValueNotInRangeComplexTrue2() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 2));
+}
+
+function testRuleGetValueNotInRangeComplexTrue3() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 3));
+}
+
+function testRuleGetValueNotInRangeComplexTrue4() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 4));
+}
+
+function testRuleGetValueNotInRangeComplexTrue5() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 8));
+}
+
+function testRuleGetValueNotInRangeComplexTrue6() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 9));
+}
+
+function testRuleGetValueNotInRangeComplexFalse1() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 1));
+}
+
+function testRuleGetValueNotInRangeComplexFalse2() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 5));
+}
+
+function testRuleGetValueNotInRangeComplexFalse3() {
+	var rule = {
+		notin: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 10));
+}
+
+function testRuleGetValueWithinTrueStart() {
+	var rule = {
+		within: [
+		    "n",
+		    [[0,2]]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 0));
+}
+
+function testRuleGetValueWithinTrueEnd() {
+	var rule = {
+		within: [
+		    "n",
+		    [[0,2]]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 2));
+}
+
+function testRuleGetValueWithinTrueBetween() {
+	var rule = {
+		within: [
+		    "n",
+		    [[0,2]]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 1));
+}
+
+function testRuleGetValueWithinFalse() {
+	var rule = {
+		within: [
+		    "n",
+		    [[0,2]]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 3));
+}
+
+function testRuleGetValueWithinTrueNotInteger() {
+	var rule = {
+		within: [
+			"n",
+			[[0,2]]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 0.5));
+}
+
+
+function testRuleGetValueWithinFalseAfter() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,2]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 2.1));
+}
+
+function testRuleGetValueWithinFalseBefore() {
+	var rule = {
+		within: [
+		    "n",
+		    [1,3]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 0.9));
+}
+
+function testRuleGetValueWithinFalseBetween() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,2]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 1.876));
+}
+
+function testRuleGetValueWithinITrue() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,2]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 2));
+}
+
+function testRuleGetValueWithinIntegersFalseNotInteger() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,2]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 0.5));
+}
+
+function testRuleGetValueWithinIntegersTrueMany() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,2,4,6,8]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 6));
+}
+
+
+function testRuleGetValueWithinComplexTrue1() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 0));
+}
+
+function testRuleGetValueWithinComplexTrue2() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 2.8));
+}
+
+function testRuleGetValueWithinComplexTrue3() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 3));
+}
+
+function testRuleGetValueWithinComplexTrue4() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 4));
+}
+
+function testRuleGetValueWithinComplexTrue5() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 8));
+}
+
+function testRuleGetValueWithinComplexTrue6() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 9));
+}
+
+function testRuleGetValueWithinComplexFalse1() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 1));
+}
+
+function testRuleGetValueWithinComplexFalse2() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 5));
+}
+
+function testRuleGetValueWithinComplexFalse3() {
+	var rule = {
+		within: [
+		    "n",
+		    [0,[2,4],8,9]
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 10));
+}
+
+function testRuleGetValueMod() {
+	var rule = {
+		mod: [
+		    "n",
+		    6
+		]
+	};
+	
+	assertEquals(4, ilib.String._fncs.getValue(rule, 10));
+}
+
+function testRuleGetValueModNonInteger() {
+	var rule = {
+		mod: [
+		    "n",
+		    6
+		]
+	};
+	
+	assertRoughlyEquals(2.2, ilib.String._fncs.getValue(rule, 8.2), 0.01);
+}
+
+function testRuleGetValueModNegative() {
+	var rule = {
+		mod: [
+		    "n",
+		    6
+		]
+	};
+	
+	assertRoughlyEquals(1, ilib.String._fncs.getValue(rule, -11), 0.01);
+}
+
+function testRuleGetValueOrFalseFalse() {
+	var rule = {
+		or: [
+		    false,
+		    false
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 11));
+}
+
+function testRuleGetValueOrFalseTrue() {
+	var rule = {
+		or: [
+		    false,
+		    true
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 11));
+}
+
+function testRuleGetValueOrTrueFalse() {
+	var rule = {
+		or: [
+		    true,
+		    false
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 11));
+}
+
+function testRuleGetValueOrTrueTrue() {
+	var rule = {
+		or: [
+		    true,
+		    true
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 11));
+}
+
+function testRuleGetValueAndFalseFalse() {
+	var rule = {
+		and: [
+		    false,
+		    false
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 11));
+}
+
+function testRuleGetValueAndFalseTrue() {
+	var rule = {
+		and: [
+		    false,
+		    true
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 11));
+}
+
+function testRuleGetValueAndTrueFalse() {
+	var rule = {
+		and: [
+		    true,
+		    false
+		]
+	};
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 11));
+}
+
+function testRuleGetValueAndTrueTrue() {
+	var rule = {
+		and: [
+		    true,
+		    true
+		]
+	};
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 11));
+}
+
+function testRuleComplex1() {
+	var rule = {
+		"and": [
+            {
+                "inrange": [
+                    {
+                        "mod": [
+                            "n",
+                            10
+                        ]
+                    },
+                    [0,[2,4]]
+                ]
+            },
+            {
+            	"notin": [
+        	        {
+        	        	"mod": [
+    	        	        "n",
+    	        	        100
+        	        	]
+        	        },
+        	        [[12,14]]
+            	]
+            }
+        ]
+    };
+	
+	assertTrue(ilib.String._fncs.getValue(rule, 3));
+	assertFalse(ilib.String._fncs.getValue(rule, 13));
+	assertTrue(ilib.String._fncs.getValue(rule, 23));
+	assertTrue(ilib.String._fncs.getValue(rule, 103));
+	assertFalse(ilib.String._fncs.getValue(rule, 113));
+	assertTrue(ilib.String._fncs.getValue(rule, 123));
+}
+
+function testRuleComplex2() {
+	var rule = {
+		"and": [
+            {
+                "inrange": [
+                    {
+                        "mod": [
+                            "n",
+                            10
+                        ]
+                    },
+                    [0,[2,4]]
+                ]
+            },
+            {
+            	"notin": [
+        	        {
+        	        	"mod": [
+    	        	        "n",
+    	        	        100
+        	        	]
+        	        },
+        	        [[12,14]]
+            	]
+            }
+        ]
+    };
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 1));
+	assertFalse(ilib.String._fncs.getValue(rule, 11));
+	assertFalse(ilib.String._fncs.getValue(rule, 21));
+	assertFalse(ilib.String._fncs.getValue(rule, 101));
+	assertFalse(ilib.String._fncs.getValue(rule, 111));
+	assertFalse(ilib.String._fncs.getValue(rule, 121));
+}
+
+function testRuleComplex3() {
+	var rule = {
+		"and": [
+            {
+                "inrange": [
+                    {
+                        "mod": [
+                            "n",
+                            10
+                        ]
+                    },
+                    [0,[2,4]]
+                ]
+            },
+            {
+            	"notin": [
+        	        {
+        	        	"mod": [
+    	        	        "n",
+    	        	        100
+        	        	]
+        	        },
+        	        [[12,14]]
+            	]
+            }
+        ]
+    };
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 5));
+	assertFalse(ilib.String._fncs.getValue(rule, 15));
+	assertFalse(ilib.String._fncs.getValue(rule, 25));
+	assertFalse(ilib.String._fncs.getValue(rule, 105));
+	assertFalse(ilib.String._fncs.getValue(rule, 115));
+	assertFalse(ilib.String._fncs.getValue(rule, 125));
+}
+
+function testRuleComplex4() {
+	var rule = {
+		"and": [
+            {
+                "inrange": [
+                    {
+                        "mod": [
+                            "n",
+                            10
+                        ]
+                    },
+                    [0,[2,4]]
+                ]
+            },
+            {
+            	"notin": [
+        	        {
+        	        	"mod": [
+    	        	        "n",
+    	        	        100
+        	        	]
+        	        },
+        	        [[12,14]]
+            	]
+            }
+        ]
+    };
+	
+	assertFalse(ilib.String._fncs.getValue(rule, 3.5));
+	assertFalse(ilib.String._fncs.getValue(rule, 13.5));
+	assertFalse(ilib.String._fncs.getValue(rule, 23.5));
+	assertFalse(ilib.String._fncs.getValue(rule, 103.5));
+	assertFalse(ilib.String._fncs.getValue(rule, 113.5));
+	assertFalse(ilib.String._fncs.getValue(rule, 123.5));
+}
+
+function testStringFormatChoiceCharClasses1() {
+    var str = new ilib.String("0#There are no items.|one#There items end in one.|two#The items end in two|few#The items is few|#Default items");
+    str.setLocale("sl-SL");
+    
+    assertNotNull(str);
+    
+    assertEquals("There are no items.", str.formatChoice(0));
+}
+
+function testStringFormatChoiceCharClasses2() {
+    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    str.setLocale("sl-SL");
+    
+    assertNotNull(str);
+    
+    assertEquals("There items end in one", str.formatChoice(1));
+}
+
+function testStringFormatChoiceCharClasses3() {
+    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    str.setLocale("sl-SL");
+    
+    assertNotNull(str);
+    
+    assertEquals("Default items", str.formatChoice(11));
+}
+
+function testStringFormatChoiceCharClasses4() {
+    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    str.setLocale("sl-SL");
+    
+    assertNotNull(str);
+    
+    assertEquals("There items end in one", str.formatChoice(101));
+}
+
+function testStringFormatChoiceCharClasses5() {
+    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    str.setLocale("sl-SL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items end in two", str.formatChoice(2));
+}
+
+function testStringFormatChoiceCharClasses6() {
+    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    str.setLocale("sl-SL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items end in two", str.formatChoice(102));
+}
+
+function testStringFormatChoiceCharClasses7() {
+    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    str.setLocale("sl-SL");
+    
+    assertNotNull(str);
+    
+    assertEquals("Default items", str.formatChoice(12));
+}
+
+function testStringFormatChoiceCharClasses8() {
+    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    str.setLocale("sl-SL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items is few", str.formatChoice(3));
+}
+
+function testStringFormatChoiceCharClasses9() {
+    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    str.setLocale("sl-SL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items is few", str.formatChoice(103));
+}
+
+function testStringFormatChoiceCharClasses10() {
+    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    str.setLocale("sl-SL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items is few", str.formatChoice(4));
+}
+
+function testStringFormatChoiceCharClasses11() {
+    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    str.setLocale("sl-SL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items is few", str.formatChoice(104));
+}
+
+function testStringFormatChoiceCharClasses12() {
+    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    str.setLocale("sl-SL");
+    
+    assertNotNull(str);
+    
+    assertEquals("Default items", str.formatChoice(5));
+}
+
+function testStringFormatChoiceCharClassesComplex1() {
+    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("pl-PL");
+    
+    assertNotNull(str);
+    
+    assertEquals("There items are one", str.formatChoice(1));
+}
+
+function testStringFormatChoiceCharClassesComplex2() {
+    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("pl-PL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are few", str.formatChoice(2));
+}
+
+function testStringFormatChoiceCharClassesComplex3() {
+    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("pl-PL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are many", str.formatChoice(12));
+}
+
+function testStringFormatChoiceCharClassesComplex4() {
+    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("pl-PL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are few", str.formatChoice(22));
+}
+
+function testStringFormatChoiceCharClassesComplex5() {
+    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("pl-PL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are few", str.formatChoice(102));
+}
+
+function testStringFormatChoiceCharClassesComplex6() {
+    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("pl-PL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are many", str.formatChoice(112));
+}
+
+function testStringFormatChoiceCharClassesComplex7() {
+    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("pl-PL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are few", str.formatChoice(122));
+}
+
+function testStringFormatChoiceCharClassesComplex8() {
+    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("pl-PL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are many", str.formatChoice(5));
+}
+
+function testStringFormatChoiceCharClassesComplex9() {
+    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("pl-PL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are many", str.formatChoice(112));
+}
+
+function testStringFormatChoiceCharClassesComplex10() {
+    var str = new ilib.String("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
+    str.setLocale("pl-PL");
+    
+    assertNotNull(str);
+    
+    assertEquals("The items are many", str.formatChoice(10));
+}
