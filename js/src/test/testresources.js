@@ -17,19 +17,19 @@
  * limitations under the License.
  */
 
-ilib.data.resources = {
+ilib.data.strings = {
     "first string": "first",
     "second string": "second",
     "third string": "third"
 };
 
-ilib.data.resources_de = {
+ilib.data.strings_de = {
     "first string": "erste String",
     "second string": "zweite String",
     "third string": "dritte String"
 };
 
-ilib.data.resources_fr = {
+ilib.data.strings_fr = {
     "first string": "première chaîne",
     "second string": "deuxième chaîne",
     "third string": "troisième chaîne",
@@ -41,7 +41,7 @@ ilib.data.resources_fr = {
 };
 
 // yes, we know these are not accurate translations -- they are just for testing!
-ilib.data.resources_fr_CA = {
+ilib.data.strings_fr_CA = {
     "first string": "première collier", 
     "second string": "deuxième collier",
     "arr": [
@@ -49,7 +49,7 @@ ilib.data.resources_fr_CA = {
     ]
 };
 
-ilib.data.resources_fr_CA_govt = {
+ilib.data.strings_fr_CA_govt = {
     "first string": "première corde", 
     "third string": "troisième corde"
 };
@@ -85,6 +85,10 @@ ilib.data.tester_zh = {
     "comma": ","
 };
 
+ilib.data.mock_foobar = ilib.data.strings;
+ilib.data.mock_foobar_de = ilib.data.strings_de;
+
+
 function testResBundleConstructorEmpty() {
     var rb = new ilib.ResBundle();
     
@@ -96,7 +100,7 @@ function testResBundleConstructorDefaultName() {
     
     assertNotNull(rb);
     
-    assertEquals("resources", rb.getName());
+    assertEquals("strings", rb.getName());
 }
 
 function testResBundleConstructorDefaultLocale() {
@@ -843,7 +847,7 @@ function testResBundleGetStringPsuedoHtmlEscapeJS() {
 
 function testResBundleContainsKeyByKeyTrue() {
    var rb = new ilib.ResBundle({
-       name: "resources",
+       name: "strings",
        locale: "de-DE"
    });
    
@@ -854,7 +858,7 @@ function testResBundleContainsKeyByKeyTrue() {
 
 function testResBundleContainsKeyByKeyFalse() {
    var rb = new ilib.ResBundle({
-       name: "resources",
+       name: "strings",
        locale: "de-DE"
    });
    
@@ -865,7 +869,7 @@ function testResBundleContainsKeyByKeyFalse() {
 
 function testResBundleContainsKeyBySourceTrue() {
    var rb = new ilib.ResBundle({
-       name: "resources",
+       name: "strings",
        locale: "de-DE"
    });
    
@@ -876,7 +880,7 @@ function testResBundleContainsKeyBySourceTrue() {
 
 function testResBundleContainsKeyBySourceFalse() {
    var rb = new ilib.ResBundle({
-       name: "resources",
+       name: "strings",
        locale: "de-DE"
    });
    
@@ -887,7 +891,7 @@ function testResBundleContainsKeyBySourceFalse() {
 
 function testResBundleContainsKeyBySourceMakeKey() {
    var rb = new ilib.ResBundle({
-       name: "resources",
+       name: "strings",
        locale: "de-DE"
    });
    
@@ -898,7 +902,7 @@ function testResBundleContainsKeyBySourceMakeKey() {
 
 function testResBundleContainsKeyBothUndefined() {
    var rb = new ilib.ResBundle({
-       name: "resources",
+       name: "strings",
        locale: "de-DE"
    });
    
@@ -909,9 +913,10 @@ function testResBundleContainsKeyBothUndefined() {
 
 function testResBundleConstructAsynchPreassembled() {
 	var onloadcalled = false;
-	ilib.data.resourceCache.resources = undefined;
+	ilib.ResBundle.cache.resources = undefined;
     var rb = new ilib.ResBundle({
     	locale: "fr-CA-govt",
+    	sync: false,
     	onLoad: function(rb) {
     		assertNotUndefined(rb);
     		
@@ -931,6 +936,7 @@ function testResBundleConstructAsynchPreassembledCached() {
 	var onloadcalled = false;
     var rb = new ilib.ResBundle({
     	locale: "fr-CA-govt",
+    	sync: false,
     	onLoad: function(rb) {
     		assertNotUndefined(rb);
     		
@@ -946,33 +952,46 @@ function testResBundleConstructAsynchPreassembledCached() {
     assertTrue(onloadcalled);
 }
 
-function mockLoader(paths, callback) {
+function mockLoader(paths, sync, callback) {
 	var data = [];
 	
-	data.push(ilib.data.resources); // for the generic, shared stuff
-	data.push(ilib.data.resources_fr);
-	data.push(ilib.data.resources_fr_CA);
-	data.push(ilib.data.resources_fr_CA_govt);
-	
-	if (typeof(callback) === 'undefined') {
-		return data;
+	function getResName(path) {
+		var last = path.lastIndexOf('/');
+		var base = path.substring(last+1);
+		var dot = base.lastIndexOf('.');
+		base = base.substring(0, dot);
+		var loc = path.substring(0, last).replace(/\//g, '_');
+		var name = "mock_" + base;
+		if (loc && loc.length > 0) {
+			name += '_' + loc;
+		}
+		return name;
 	}
-	callback.call(this, data);
+	
+	for (var i = 0; i < paths.length; i++) {
+		data.push(ilib.data[getResName(paths[i])]);
+	}
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);
+	}
+	return data;
 };
 
 function testResBundleConstructAsynchDynamic() {
 	var onloadcalled = false;
-	ilib.data.resourceCache.foobar = undefined;
+	ilib.ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ilib.ResBundle({
-    	locale: "fr-CA-govt",
+    	locale: "de-DE-SAP",
     	name: "foobar",
+    	sync: false,
     	onLoad: function(rb) {
     		assertNotUndefined(rb);
     		
-    	    assertEquals("première corde", rb.getString("first string").toString());
-    	    assertEquals("deuxième collier", rb.getString("second string").toString());
-    	    assertEquals("troisième corde", rb.getString("third string").toString());
+    	    assertEquals("erste String", rb.getString("first string").toString());
+    	    assertEquals("zweite String", rb.getString("second string").toString());
+    	    assertEquals("dritte String", rb.getString("third string").toString());
     	    
     	    onloadcalled = true;
     	}
@@ -983,11 +1002,47 @@ function testResBundleConstructAsynchDynamic() {
 }
 
 function testResBundleConstructSynchDynamic() {
-	ilib.data.resourceCache.foobar = undefined;
+	ilib.ResBundle.cache = {};
+	ilib.setLoaderCallback(mockLoader);
+    var rb = new ilib.ResBundle({
+    	locale: "de-DE-SAP",
+    	name: "foobar"
+    });
+    
+	assertNotUndefined(rb);
+	
+    assertEquals("erste String", rb.getString("first string").toString());
+    assertEquals("zweite String", rb.getString("second string").toString());
+    assertEquals("dritte String", rb.getString("third string").toString());
+}
+
+function testResBundleConstructAsynchDynamicDefaultName() {
+	var onloadcalled = false;
+	ilib.ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ilib.ResBundle({
     	locale: "fr-CA-govt",
-    	name: "foobar"
+    	sync: false,
+    	onLoad: function(rb) {
+    		assertNotUndefined(rb);
+    		
+    	    assertEquals("première corde", rb.getString("first string").toString());
+    	    assertEquals("deuxième collier", rb.getString("second string").toString());
+    	    assertEquals("troisième corde", rb.getString("third string").toString());
+    	    
+    	    onloadcalled = true;
+    	}
+    });
+    
+    assertNotUndefined(rb);
+    assertTrue(onloadcalled);
+}
+
+function testResBundleConstructSynchDynamicDefaultName() {
+	ilib.ResBundle.cache = {};
+	ilib.setLoaderCallback(mockLoader);
+    var rb = new ilib.ResBundle({
+    	locale: "fr-CA-govt"
     });
     
 	assertNotUndefined(rb);
@@ -995,4 +1050,42 @@ function testResBundleConstructSynchDynamic() {
     assertEquals("première corde", rb.getString("first string").toString());
     assertEquals("deuxième collier", rb.getString("second string").toString());
     assertEquals("troisième corde", rb.getString("third string").toString());
+}
+
+function testResBundleConstructAsynchDynamicNoStrings() {
+	var onloadcalled = false;
+	ilib.ResBundle.cache = {};
+	ilib.setLoaderCallback(mockLoader);
+    var rb = new ilib.ResBundle({
+    	locale: "de-DE-SAP",
+    	name: "asdf", // doesn't exist
+    	sync: false,
+    	onLoad: function(rb) {
+    		assertNotUndefined(rb);
+    		
+    	    assertEquals("first string", rb.getString("first string").toString());
+    	    assertEquals("second string", rb.getString("second string").toString());
+    	    assertEquals("third string", rb.getString("third string").toString());
+    	    
+    	    onloadcalled = true;
+    	}
+    });
+    
+    assertNotUndefined(rb);
+    assertTrue(onloadcalled);
+}
+
+function testResBundleConstructSynchDynamicNoStrings() {
+	ilib.ResBundle.cache = {};
+	ilib.setLoaderCallback(mockLoader);
+    var rb = new ilib.ResBundle({
+    	locale: "de-DE-SAP",
+    	name: "asdf" // doesn't exist
+    });
+    
+	assertNotUndefined(rb);
+	
+    assertEquals("first String", rb.getString("first string").toString());
+    assertEquals("second String", rb.getString("second string").toString());
+    assertEquals("third String", rb.getString("third string").toString());
 }

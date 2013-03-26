@@ -632,43 +632,16 @@ function testMergeLocDataMissingLocaleParts() {
 
 function testgetLocFiles() {
 	var locale = new ilib.Locale("en-US-Latn-govt");
-	var f = ilib.getLocFiles("locale", locale, "localeinfo");
-	var expected = [
-		"locale/localeinfo.json",
-		"locale/en/localeinfo.json",
-		"locale/en/US/localeinfo.json",
-		"locale/en/US/Latn/localeinfo.json",
-		"locale/en/US/Latn/govt/localeinfo.json"
-	];
-	
-	assertEquals(expected.length, f.length);
-	assertArrayEquals(expected, f);
-}
-
-function testGetLocFilesNoPrefix() {
-	var locale = new ilib.Locale("en-US-Latn-govt");
-	var f = ilib.getLocFiles("", locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
+		"en/govt/localeinfo.json",
 		"en/US/localeinfo.json",
-		"en/US/Latn/localeinfo.json",
-		"en/US/Latn/govt/localeinfo.json"
-	];
-	
-	assertEquals(expected.length, f.length);
-	assertArrayEquals(expected, f);
-}
-
-function testGetLocFilesUndefinedPrefix() {
-	var locale = new ilib.Locale("en-US-Latn-govt");
-	var f = ilib.getLocFiles(undefined, locale, "localeinfo");
-	var expected = [
-		"localeinfo.json",
-		"en/localeinfo.json",
-		"en/US/localeinfo.json",
-		"en/US/Latn/localeinfo.json",
-		"en/US/Latn/govt/localeinfo.json"
+		"en/US/govt/localeinfo.json",
+		"en/Latn/localeinfo.json",
+		"en/Latn/US/localeinfo.json",
+		"en/Latn/US/govt/localeinfo.json"
 	];
 	
 	assertEquals(expected.length, f.length);
@@ -677,13 +650,16 @@ function testGetLocFilesUndefinedPrefix() {
 
 function testGetLocFilesNoBasename() {
 	var locale = new ilib.Locale("en-US-Latn-govt");
-	var f = ilib.getLocFiles("locale", locale, undefined);
+	var f = ilib.getLocFiles(locale, undefined);
 	var expected = [
-		"locale/resources.json",
-		"locale/en/resources.json",
-		"locale/en/US/resources.json",
-		"locale/en/US/Latn/resources.json",
-		"locale/en/US/Latn/govt/resources.json"
+		"resources.json",
+		"en/resources.json",
+		"en/govt/resources.json",
+		"en/US/resources.json",
+		"en/US/govt/resources.json",
+		"en/Latn/resources.json",
+		"en/Latn/US/resources.json",
+		"en/Latn/US/govt/resources.json"
 	];
 	
 	assertEquals(expected.length, f.length);
@@ -692,11 +668,11 @@ function testGetLocFilesNoBasename() {
 
 function testGetLocFilesShortLocale() {
 	var locale = new ilib.Locale("en-US");
-	var f = ilib.getLocFiles("locale", locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo");
 	var expected = [
-		"locale/localeinfo.json",
-		"locale/en/localeinfo.json",
-		"locale/en/US/localeinfo.json"
+		"localeinfo.json",
+		"en/localeinfo.json",
+		"en/US/localeinfo.json"
 	];
 	
 	assertEquals(expected.length, f.length);
@@ -704,11 +680,11 @@ function testGetLocFilesShortLocale() {
 }
 
 function testGetLocFilesDefaultLocale() {
-	var f = ilib.getLocFiles("locale", undefined, "localeinfo");
+	var f = ilib.getLocFiles(undefined, "localeinfo");
 	var expected = [
-		"locale/localeinfo.json",
-		"locale/en/localeinfo.json",
-		"locale/en/US/localeinfo.json"
+		"localeinfo.json",
+		"en/localeinfo.json",
+		"en/US/localeinfo.json"
 	];
 	
 	assertEquals(expected.length, f.length);

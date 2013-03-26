@@ -53,11 +53,24 @@ ctype.ispunct.js
  *     <li><i>s</i> - suffixes
  *   </ul>
  * <p>
+ * 
  * For example, the string "pf" would mean to only format any prefixes and family names 
  * together and leave out all the other parts of the name.<p>
  * 
  * The components can be listed in any order in the string. The <i>components</i> option 
  * overrides the <i>style</i> option if both are specified.
+
+ * <li>onLoad - a callback function to call when the locale info object is fully 
+ * loaded. When the onLoad option is given, the localeinfo object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * 
  * Formatting names is a locale-dependent function, as the order of the components 
@@ -93,6 +106,8 @@ ctype.ispunct.js
  * @param {Object} options A set of options that govern how the formatter will behave
  */
 ilib.NameFmt = function(options) {
+	var sync = true;
+	
 	this.style = "short";
 	
 	if (options) {
@@ -106,6 +121,10 @@ ilib.NameFmt = function(options) {
 		
 		if (options.components) {
 			this.components = options.components;
+		}
+		
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
 		}
 	}
 	
@@ -134,24 +153,28 @@ ilib.NameFmt = function(options) {
 			break;
 	}
 
+	if (!ilib.Name.cache) {
+		ilib.Name.cache = {};
+	}
+
 	this.locale = this.locale || new ilib.Locale();
 	var spec = this.locale.getSpec().replace(/-/g, "_");
-	if (typeof(ilib.data.nameInfo[spec]) === 'undefined') {
+	if (typeof(ilib.Name.cache[spec]) === 'undefined') {
 		/**
 		 * @private
 		 */
 		this.info = ilib.mergeLocData("name", this.locale);
 		if (this.info) {
-			ilib.data.nameInfo[spec] = this.info;
+			ilib.Name.cache[spec] = this.info;
 			this._init();
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
 		} else if (typeof(ilib._load) === 'function') {
 			// locale is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles("locale", this.locale, "name");
+			var files = ilib.getLocFiles(this.locale, "name");
 			
-			ilib._load(files, function(arr) {
+			ilib._load(files, sync, function(arr) {
 				this.info = {};
 				for (var i = 0; i < arr.length; i++) {
 					if (typeof(arr[i]) !== 'undefined') {
@@ -159,7 +182,7 @@ ilib.NameFmt = function(options) {
 					}
 				}
 				
-				ilib.data.nameInfo[spec] = this.info;
+				ilib.Name.cache[spec] = this.info;
 				this._init();
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
@@ -168,14 +191,14 @@ ilib.NameFmt = function(options) {
 		} else {
 			// no data other than the generic shared data
 			this.info = ilib.data.name;
-			ilib.data.nameInfo[spec] = this.info;
+			ilib.Name.cache[spec] = this.info;
 			this._init();
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
 		}
 	} else {
-		this.info = ilib.data.nameInfo[spec];
+		this.info = ilib.Name.cache[spec];
 		this._init();
 		if (options && typeof(options.onLoad) === 'function') {
 			options.onLoad(this);

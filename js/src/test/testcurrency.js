@@ -124,6 +124,7 @@ function testCurrencyAsync() {
     new ilib.Currency({
     	locale: "en-GB",
         sign: "$",
+        sync: false,
         onLoad: function (cur) {
             assertNotNull(cur);
             

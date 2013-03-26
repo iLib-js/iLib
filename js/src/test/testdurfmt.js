@@ -733,6 +733,7 @@ function testDurFmtAsync() {
 	var callbackCalled = false;
     new ilib.DurFmt({
     	length: "full",
+    	sync: false,
     	onLoad: function (fmt) {
     		assertNotNull(fmt);
     	    
@@ -759,6 +760,7 @@ function testDurFmtAsyncWithLocale() {
     new ilib.DurFmt({
     	locale: "fr-FR",
     	length: "full",
+    	sync: false,
     	onLoad: function (fmt) {
     		assertNotNull(fmt);
     	    
@@ -786,6 +788,7 @@ function testDurFmtFormatShortClockAsync() {
     	locale: "fr-FR",
     	length: "short",
     	style: "clock",
+    	sync: false,
     	onLoad: function (fmt) {
     		assertNotNull(fmt);
     	    

@@ -37,7 +37,12 @@
  * load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
- * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * 
  * If this copy of ilib is pre-assembled and all the data is already available, 
@@ -56,6 +61,8 @@
  * the current locale
  */
 ilib.LocaleInfo = function(locale, options) {
+	var sync = true;
+	
 	/* these are all the defaults. Essentially, en-US */
 	this.info = ilib.data.localeinfo;
 	
@@ -72,27 +79,37 @@ ilib.LocaleInfo = function(locale, options) {
 			break;
 	}
 	
+	if (options) {
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
+	}
+
+	if (!ilib.LocaleInfo.cache) {
+		ilib.LocaleInfo.cache = {};
+	}
+
 	var spec = this.locale.getSpec().replace(/-/g, "_");
-	if (typeof(ilib.data.localeInfo[spec]) === 'undefined') {
+	if (typeof(ilib.LocaleInfo.cache[spec]) === 'undefined') {
 		this.info = ilib.mergeLocData("localeinfo", this.locale);
 		if (this.info) {
-			ilib.data.localeInfo[spec] = this.info;
+			ilib.LocaleInfo.cache[spec] = this.info;
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
 		} else if (typeof(ilib._load) === 'function') {
 			// locale is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles("locale", this.locale, "localeinfo");
+			var files = ilib.getLocFiles(this.locale, "localeinfo");
 			
-			ilib._load(files, function(arr) {
+			ilib._load(files, sync, function(arr) {
 				this.info = {};
 				for (var i = 0; i < arr.length; i++) {
 					if (typeof(arr[i]) !== 'undefined') {
 						this.info = ilib.merge(this.info, arr[i]);
 					}
 				}
-				
-				ilib.data.localeInfo[spec] = this.info;
+	
+				ilib.LocaleInfo.cache[spec] = this.info;
 				
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
@@ -101,13 +118,13 @@ ilib.LocaleInfo = function(locale, options) {
 		} else {
 			// no data other than the generic shared data
 			this.info = ilib.data.localeinfo;
-			ilib.data.localeInfo[spec] = this.info;
+			ilib.LocaleInfo.cache[spec] = this.info;
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
 		}
 	} else {
-		this.info = ilib.data.localeInfo[spec];
+		this.info = ilib.LocaleInfo.cache[spec];
 		if (options && typeof(options.onLoad) === 'function') {
 			options.onLoad(this);
 		}

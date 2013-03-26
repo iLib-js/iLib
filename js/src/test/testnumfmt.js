@@ -1192,6 +1192,7 @@ function testNumFmtitIT() {
 function testNumFmtAsyncDefaults() {
 	var callbackCalled = false;
     new ilib.NumFmt({
+    	sync: false,
     	onLoad: function (fmt) {
     	    assertNotNull(fmt);
 
@@ -1212,6 +1213,7 @@ function testNumFmtAsyncDefaults() {
 function testNumFmtAsync() {
 	var callbackCalled = false;
     new ilib.NumFmt({
+    	sync: false,
     	onLoad: function (fmt) {
     	    assertNotNull(fmt);
     	    assertEquals("12,345,678,901,234", fmt.format(12345678901234.0));
@@ -1227,6 +1229,7 @@ function testNumFmtAsyncWithLocale() {
     new ilib.NumFmt({
         locale: "it-IT",
         maxFractionDigits: 2,
+    	sync: false,
     	onLoad: function (fmt) {
     	    assertNotNull(fmt);
     	    assertEquals("-123.456,78", fmt.format(-123456.785));

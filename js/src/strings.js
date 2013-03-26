@@ -269,7 +269,8 @@ ilib.String._compose = function (lead, trail) {
 };
 
 /**
- * @protected
+ * @private
+ * @static
  */
 ilib.String._fncs = {
 	/**

@@ -213,29 +213,43 @@ ilib.mergeLocData = function (prefix, locale) {
 /**
  * Return an array of relative path names for the json
  * files that represent the data for the given locale.
- * @param {string} prefix the prefix dir for all the path names
  * @param {ilib.Locale} locale load the json files for this locale
- * @param {string} basename the base name of each json file to load
+ * @param {string=} basename the base name of each json file to load
  * @returns {Array.<string>} An array of relative path names
  * for the json files that contain the locale data
  */
-ilib.getLocFiles = function(prefix, locale, basename) {
-	var dir = (prefix && prefix.length > 0) ? prefix + "/" : "";
+ilib.getLocFiles = function(locale, basename) {
+	var dir = "";
 	var files = [];
 	var filename = basename || "resources";
 	var loc = locale || new ilib.Locale();
-	files.push(dir + filename + ".json");
+	files.push(filename + ".json");
 	dir += loc.getLanguage() + "/";
 	files.push(dir + filename + ".json");
+	if (loc.getVariant()) {
+		var dir2 = dir;
+		dir2 += loc.getVariant() + "/";
+		files.push(dir2 + filename + ".json");
+	}
 	if (loc.getRegion()) {
-		dir += loc.getRegion() + "/";
-		files.push(dir + filename + ".json");
-		if (loc.getScript()) {
-			dir += loc.getScript() + "/";
-			files.push(dir + filename + ".json");
+		var dir2 = dir;
+		dir2 += loc.getRegion() + "/";
+		files.push(dir2 + filename + ".json");
+		if (loc.getVariant()) {
+			dir2 += loc.getVariant() + "/";
+			files.push(dir2 + filename + ".json");
+		}
+	}
+	if (loc.getScript()) {
+		var dir2 = dir;
+		dir2 += loc.getScript() + "/";
+		files.push(dir2 + filename + ".json");
+		if (loc.getRegion()) {
+			dir2 += loc.getRegion() + "/";
+			files.push(dir2 + filename + ".json");
 			if (loc.getVariant()) {
-				dir += loc.getVariant() + "/";
-				files.push(dir + filename + ".json");
+				dir2 += loc.getVariant() + "/";
+				files.push(dir2 + filename + ".json");
 			}
 		}
 	}

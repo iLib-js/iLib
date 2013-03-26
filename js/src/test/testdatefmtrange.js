@@ -169,8 +169,8 @@ function testDateRngFmtGetDefaultLocale() {
 }
 
 function testDateRngFmtGetDefaultFormat() {
-	ilib.data.dateformatCache = {};
-	ilib.data.localeInfo = {};
+	ilib.DateFmt.cache = {};
+	ilib.LocaleInfo.cache = {};
 	var fmt = new ilib.DateRngFmt({locale: "zz-ZZ"});
     assertNotNull(fmt);
     
@@ -196,7 +196,7 @@ function testDateRngFmtGetDefaultFormat() {
 }
 
 
-function mockLoader(paths, callback) {
+function mockLoader(paths, sync, callback) {
 	var data = [];
 	
 	if (paths[0].indexOf("localeinfo") !== -1) {
@@ -209,15 +209,15 @@ function mockLoader(paths, callback) {
 		data.push(ilib.data.dateformats_en_US);
 	}
 
-	if (typeof(callback) === 'undefined') {
-		return data;
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
 	}
-	callback.call(this, data);
+	return data;
 }
 
 function testDateRngFmtDynamicLoadSync() {
-	ilib.data.dateformatCache = {};
-	ilib.data.localeInfo = {};
+	ilib.DateFmt.cache = {};
+	ilib.LocaleInfo.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 	
     var fmt = new ilib.DateRngFmt({
@@ -276,8 +276,8 @@ function testDateRngFmtDynamicLoadSyncCached() {
 }
 
 function testDateRngFmtDynamicLoadAsync() {
-	ilib.data.dateformatCache = {};
-	ilib.data.localeInfo = {};
+	ilib.DateFmt.cache = {};
+	ilib.LocaleInfo.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
 	var start = new ilib.Date.GregDate({
@@ -300,6 +300,7 @@ function testDateRngFmtDynamicLoadAsync() {
 	
     new ilib.DateRngFmt({
     	locale: "zz-ZZ",
+    	sync: false,
     	onLoad: function (fmt) {
     		assertNotNull(fmt);
     	    assertEquals("12:20PM - 4:35PM 2/20/13", fmt.format(start, end));
@@ -330,6 +331,7 @@ function testDateRngFmtDynamicLoadAsyncCached() {
 	
     new ilib.DateRngFmt({
     	locale: "zz-ZZ",
+    	sync: false,
     	onLoad: function (fmt) {
     		assertNotNull(fmt);
     	    assertEquals("12:20PM - 4:35PM 2/20/13", fmt.format(start, end));

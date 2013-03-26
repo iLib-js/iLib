@@ -486,6 +486,7 @@ function testNumberParseAsync() {
 	var callbackCalled = false;
     new ilib.Number("-0,4342", {
     	locale: "de-DE",
+    	sync: false,
     	onLoad: function (num) {
     		assertNotNull(num);
     	    
@@ -501,6 +502,7 @@ function testNumberParseAsyncCurrency() {
     new ilib.Number("5,84 EUR", {
     	locale: "de-DE",
     	type: "currency",
+    	sync: false,
     	onLoad: function (num) {
     		assertNotNull(num);
     	    

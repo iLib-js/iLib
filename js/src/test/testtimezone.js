@@ -923,7 +923,7 @@ function testTZGetTimeZoneForLocaleUnknown() {
     assertEquals("Etc/UTC", tz.getId());
 }
 
-function mockLoader (paths, callback) {
+function mockLoader (paths, sync, callback) {
 	var data = [];
 	
 	data.push(ilib.data.localeinfo); // for the generic, shared stuff
@@ -950,15 +950,15 @@ function mockLoader (paths, callback) {
 			"locale": "xx-XX"
 		});
 	});
-	if (typeof(callback) === 'undefined') {
-		return data;
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
 	}
-	callback.call(this, data);
+	return data;
 }
 
 function testTZGetTimeZoneForLocaleUnknownWithLoader() {
 	ilib.setLoaderCallback(mockLoader);
-	ilib.data.localeInfo = {}; // clear the locale info cache
+	ilib.LocaleInfo.cache = {}; // clear the locale info cache
     var tz = new ilib.TimeZone({locale: "mm-MM"});
     assertNotNull(tz);
     ilib.setLoaderCallback(undefined);
@@ -967,9 +967,10 @@ function testTZGetTimeZoneForLocaleUnknownWithLoader() {
 
 function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
 	ilib.setLoaderCallback(mockLoader);
-	ilib.data.localeInfo = {}; // clear the locale info cache
+	ilib.LocaleInfo.cache = {}; // clear the locale info cache
     new ilib.TimeZone({
     	locale: "mm-MM",
+    	sync: false,
     	onLoad: function (tz) {
     		assertNotNull(tz);
     	    assertEquals("Asia/Tokyo", tz.getId());
@@ -980,7 +981,7 @@ function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
 
 function testTZGetTimeZoneForLocaleWithLoaderNoData() {
 	ilib.setLoaderCallback(mockLoader);
-	ilib.data.localeInfo = {}; // clear the locale info cache
+	ilib.LocaleInfo.cache = {}; // clear the locale info cache
     var tz = new ilib.TimeZone({locale: "zz-ZZ"});
     assertNotNull(tz);
     ilib.setLoaderCallback(undefined);
@@ -989,9 +990,10 @@ function testTZGetTimeZoneForLocaleWithLoaderNoData() {
 
 function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
 	ilib.setLoaderCallback(mockLoader);
-	ilib.data.localeInfo = {}; // clear the locale info cache
+	ilib.LocaleInfo.cache = {}; // clear the locale info cache
     new ilib.TimeZone({
     	locale: "zz-ZZ",
+    	sync: false,
     	onLoad: function (tz) {
     		assertNotNull(tz);
     	    assertEquals("Etc/UTC", tz.getId());

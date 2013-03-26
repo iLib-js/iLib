@@ -116,6 +116,12 @@ function testGetTimeZoneWebOS() {
 }
 
 function testGetLocaleBrowser() {
+	if (typeof(navigator.language) !== 'undefined') {
+		// can't test setting things up for the browser when you are testing within the 
+		// the browser already -- navigator.language is read-only!
+		return;
+	}
+	
 	ilib.locale = undefined;
 	if (typeof(navigator) === 'undefined') {
 		navigator = {};
@@ -128,6 +134,13 @@ function testGetLocaleBrowser() {
 }
 
 function testGetLocaleNodejs1() {
+	if (typeof(navigator.language) !== 'undefined') {
+		// can't test setting things up for the browser when you are testing within the 
+		// the browser already -- navigator.language is already set up and overrides
+		// everything else
+		return;
+	}
+	
 	ilib.locale = undefined;
 	if (typeof(process) === 'undefined') {
 		process = {
@@ -142,6 +155,13 @@ function testGetLocaleNodejs1() {
 }
 
 function testGetLocaleNodejs2() {
+	if (typeof(navigator.language) !== 'undefined') {
+		// can't test setting things up for the browser when you are testing within the 
+		// the browser already -- navigator.language is already set up and overrides
+		// everything else
+		return;
+	}
+	
 	ilib.locale = undefined;
 	if (typeof(process) === 'undefined') {
 		process = {
@@ -156,6 +176,13 @@ function testGetLocaleNodejs2() {
 }
 
 function testGetLocaleRhino() {
+	if (typeof(navigator.language) !== 'undefined') {
+		// can't test setting things up for the browser when you are testing within the 
+		// the browser already -- navigator.language is already set up and overrides
+		// everything else
+		return;
+	}
+	
 	ilib.locale = undefined;
 	if (typeof(environment) === 'undefined') {
 		environment = {
@@ -171,10 +198,17 @@ function testGetLocaleRhino() {
 }
 
 function testGetLocaleWebOS() {
+	if (typeof(navigator.language) !== 'undefined') {
+		// can't test setting things up for the browser when you are testing within the 
+		// the browser already -- navigator.language is already set up and overrides
+		// everything else
+		return;
+	}
+	
 	ilib.locale = undefined;
 	if (typeof(webos) === 'undefined') {
 		webos = {
-			locales: {}	
+			locales: {}
 		};
 	}
 	webos.locales.ui = "ru-RU";

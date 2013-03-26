@@ -81,6 +81,7 @@ strings.js
  * set, then the standard legal rounding rules for the locale are followed. If the type
  * is "number" or "percentage" and the <i>roundingMode</i> property is not set, then the 
  * default mode is "halfdown".</i>.
+ * 
  * <li><i>style</i> - When the type of this formatter is "currency", the currency amount
  * can be formatted in the following styles: "common" and "iso". The common style is the
  * one commonly used in every day writing where the currency unit is represented using a 
@@ -97,13 +98,19 @@ strings.js
  * which give the power of 10 in the exponent. Note that if you specify a maximum number
  * of integral digits, the formatter with a standard style will give you standard 
  * formatting for smaller numbers and scientific notation for larger numbers. The default
- * is standard style if this is not specified. 
+ * is standard style if this is not specified.
+ *  
  * <li><i>onLoad</i> - a callback function to call when the format data is fully 
  * loaded. When the onLoad option is given, this class will attempt to
  * load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * <p>
  * 
@@ -113,6 +120,7 @@ strings.js
  * @param {Object.<string,*>} options A set of options that govern how the formatter will behave 
  */
 ilib.NumFmt = function (options) {
+	var sync = true;
 	this.locale = new ilib.Locale();
 	this.type = "number";
 	
@@ -144,9 +152,14 @@ ilib.NumFmt = function (options) {
 		}
 		
 		this.roundingMode = options.roundingMode;
+
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
 	}
 	
 	new ilib.LocaleInfo(this.locale, {
+		sync: sync,
 		onLoad: function (li) {
 			this.localeInfo = li;
 
@@ -160,6 +173,7 @@ ilib.NumFmt = function (options) {
 				new ilib.Currency({
 					locale: this.locale,
 					code: this.currency,
+					sync: sync,
 					onLoad: function (cur) {
 						this.currencyInfo = cur;
 						if (this.style !== "common" && this.style !== "iso") {

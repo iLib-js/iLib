@@ -54,12 +54,18 @@ ctype.isspace.js
  * as Russian, names may be written equally validly as "givenName familyName" or "familyName
  * givenName". This option tells the parser which order to prefer, and overrides the 
  * default order for the locale. Valid values are "gf" (given-family) or "fg" (family-given).
+ * 
  * <li>onLoad - a callback function to call when the name info is fully 
  * loaded and the name has been parsed. When the onLoad option is given, the name object 
  * will attempt to load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
- * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * 
  * When the parser has completed its parsing, it fills in the fields listed below.<p>
@@ -78,6 +84,7 @@ ctype.isspace.js
  * @param {Object=} options Options governing the construction of this name instance
  */
 ilib.Name = function(name, options) {
+	var sync = true;
 	
 	if (typeof(name) === 'object') {
 		// copy constructor
@@ -129,26 +136,35 @@ ilib.Name = function(name, options) {
 		if (options.order && (options.order === "gf" || options.order === "fg")) {
 			this.order = options.order;
 		}
+		
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
+	}
+
+	if (!ilib.Name.cache) {
+		ilib.Name.cache = {};
 	}
 
 	this.locale = this.locale || new ilib.Locale();
 	var spec = this.locale.getSpec().replace(/-/g, "_");
-	if (typeof(ilib.data.nameInfo[spec]) === 'undefined') {
+	if (typeof(ilib.Name.cache[spec]) === 'undefined') {
 		/**
 		 * @private
+		 * @type {{sortByHeadWord:boolean,conjunctions:Object,auxillaries:Object,prefixes:Object,suffixes:Object,knownFamilyNames:Object,nameStyle:string}}
 		 */
-		this.info = ilib.mergeLocData("name", this.locale);
+		this.info = /** @type {{sortByHeadWord:boolean,conjunctions:Object,auxillaries:Object,prefixes:Object,suffixes:Object,knownFamilyNames:Object,nameStyle:string}} */ ilib.mergeLocData("name", this.locale);
 		if (this.info) {
-			ilib.data.nameInfo[spec] = this.info;
+			ilib.Name.cache[spec] = this.info;
 			this._init(name);
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
 		} else if (typeof(ilib._load) === 'function') {
 			// locale is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles("locale", this.locale, "name");
+			var files = ilib.getLocFiles(this.locale, "name");
 			
-			ilib._load(files, function(arr) {
+			ilib._load(files, sync, function(arr) {
 				this.info = {};
 				for (var i = 0; i < arr.length; i++) {
 					if (typeof(arr[i]) !== 'undefined') {
@@ -156,7 +172,7 @@ ilib.Name = function(name, options) {
 					}
 				}
 				
-				ilib.data.nameInfo[spec] = this.info;
+				ilib.Name.cache[spec] = this.info;
 				this._init(name);
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
@@ -165,14 +181,14 @@ ilib.Name = function(name, options) {
 		} else {
 			// no data other than the generic shared data
 			this.info = ilib.data.name;
-			ilib.data.nameInfo[spec] = this.info;
+			ilib.Name.cache[spec] = this.info;
 			this._init(name);
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
 		}
 	} else {
-		this.info = ilib.data.nameInfo[spec];
+		this.info = ilib.Name.cache[spec];
 		this._init(name);
 		if (options && typeof(options.onLoad) === 'function') {
 			options.onLoad(this);

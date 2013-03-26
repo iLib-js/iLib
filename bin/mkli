@@ -21,7 +21,7 @@
 export LC_ALL=C
 
 
-for lang in [a-z][a-z] .
+for lang in [a-z][a-z] [a-z][a-z][a-z] .
 do
 	if [ -d $lang ]
 	then
@@ -53,6 +53,44 @@ do
 				else
 					echo no json fragments in this directory
 				fi
+				cd ..
+			fi		
+		done
+		for script in [A-Z][a-z][a-z][a-z]
+		do
+			if [ -d $script ]
+			then
+				echo $lang-$script ...
+				cd $script
+				if [ -n "$(ls *.jf 2>/dev/null)" ]
+				then
+					echo Making $lang/$script/localeinfo.json
+					echo "{" > localeinfo.json
+					cat *.jf >> localeinfo.json
+					echo "	\"locale\": \"$lang-$script\"" >> localeinfo.json
+					echo "}"  >> localeinfo.json
+				else
+					echo no json fragments in this directory
+				fi
+				for country in [A-Z][A-Z]
+				do
+					if [ -d $country ]
+					then
+						echo $lang-$country-$script ...
+						cd $country
+						if [ -n "$(ls *.jf 2>/dev/null)" ]
+						then
+							echo Making $lang/$script/$country/localeinfo.json
+							echo "{" > localeinfo.json
+							cat *.jf >> localeinfo.json
+							echo "	\"locale\": \"$lang-$country-$script\"" >> localeinfo.json
+							echo "}"  >> localeinfo.json
+						else
+							echo no json fragments in this directory
+						fi
+						cd ..
+					fi		
+				done
 				cd ..
 			fi		
 		done

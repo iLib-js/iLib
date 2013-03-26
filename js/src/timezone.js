@@ -57,6 +57,11 @@ calendar/gregoriandate.js
  * load any missing locale data using the ilib loader callback.
  * When the data is loaded, the onLoad function is called with the current 
  * instance as a parameter. 
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * 
  * There is currently no way in the ECMAscript
@@ -110,6 +115,7 @@ calendar/gregoriandate.js
  * @param {Object} options Options guiding the construction of this time zone instance
  */
 ilib.TimeZone = function(options) {
+	var sync = true;
 	this.locale = new ilib.Locale();
 	this.isLocal = false;
 	
@@ -142,12 +148,17 @@ ilib.TimeZone = function(options) {
 			this.offset = (typeof(options.offset) === 'string') ? parseInt(options.offset, 10) : options.offset;
 			this.id = this.getDisplayName(undefined, undefined);
 		}
+		
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
 	}
 
 	//console.log("timezone: locale is " + this.locale);
 	
 	if (!this.id) {
 		var li = new ilib.LocaleInfo(this.locale, {
+			sync: sync,
 			onLoad: function (li) {
 				this.id = li.getTimeZone() || "Etc/UTC";
 				this._inittz();

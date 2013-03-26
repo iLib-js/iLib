@@ -63,6 +63,11 @@ ctype.isspace.js
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * <p>
  * 
@@ -73,7 +78,7 @@ ctype.isspace.js
  * @param {Object} options Options controlling how the instance should be created 
  */
 ilib.Number = function (str, options) {
-	var li, i, stripped = "";
+	var i, stripped = "", sync = true;
 	
 	this.locale = new ilib.Locale();
 	this.type = "number";
@@ -93,10 +98,14 @@ ilib.Number = function (str, options) {
 					break;
 			}
 		}
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
 	}
 	
 	
 	new ilib.LocaleInfo(this.locale, {
+		sync: sync,
 		onLoad: function (li) {
 			this.decimal = li.getDecimalSeparator();
 			
@@ -171,6 +180,7 @@ ilib.Number = function (str, options) {
 					new ilib.Currency({
 						locale: this.locale, 
 						sign: stripped,
+						sync: sync,
 						onLoad: function (cur) {
 							this.currency = cur;
 							if (options && typeof(options.onLoad) === 'function') {

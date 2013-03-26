@@ -41,11 +41,7 @@ ilib.data = {
         nfd: {},
         nfkd: {},
         ccc: {}
-    },
-    localeInfo: {},
-    resourceCache: {},
-    dateformatCache: {},
-    nameInfo: {}
+    }
 };
 
 window["ilib"] = ilib;
@@ -222,8 +218,8 @@ ilib.getTimeZone = function() {
  *        });
  *     }
  * }
- * ilib.setLoaderCallback(function(paths, callback) {
- *    if (typeof(callback) === 'undefined') {
+ * ilib.setLoaderCallback(function(paths, sync, callback) {
+ *    if (sync) {
  *        var ret = [];
  *        // synchronous
  *        paths.forEach(function (path) {
@@ -240,7 +236,7 @@ ilib.getTimeZone = function() {
  * }.bind(this)); // bind to "this" so that "this" is relative to your own instance
  * </pre>
  * 
- * @param {function(Object,Array.<string>,function(Object))} loader function to call to 
+ * @param {function(Array.<string>,Boolean,function(Object))} loader function to call to 
  * load the requested data.
  * @returns {boolean} true if the loader was installed correctly, or false
  * if not

@@ -292,7 +292,7 @@ function testLocaleInfoGetPercentageSymbol2() {
     assertEquals("%", info.getPercentageSymbol());
 }
 
-function mockLoader(paths, callback) {
+function mockLoader(paths, sync, callback) {
 	var data = [];
 	
 	data.push(ilib.data.localeinfo); // for the generic, shared stuff
@@ -319,17 +319,18 @@ function mockLoader(paths, callback) {
 			"locale": "xx-XX"
 		});
 	});
-	if (typeof(callback) === 'undefined') {
-		return data;
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
 	}
-	callback.call(this, data);
+	return data;
 };
 
 function testLocaleInfoLoadMissingDataAsynch() {
 	var callbackCalled = false;
 	ilib.setLoaderCallback(mockLoader);
-	ilib.data.localeInfo = {}; // empty the cache
+	ilib.LocaleInfo.cache = {}; // empty the cache
     var info = new ilib.LocaleInfo("mm-MM", {
+    	sync: false,
     	onLoad: function (li) {
     	    assertNotNull(li);
 
@@ -344,7 +345,7 @@ function testLocaleInfoLoadMissingDataAsynch() {
 }
 
 function testLocaleInfoLoadMissingDataSync() {
-	ilib.data.localeInfo = {}; // empty the cache
+	ilib.LocaleInfo.cache = {}; // empty the cache
 	ilib.setLoaderCallback(undefined);
     var info = new ilib.LocaleInfo("mm-MM");
     assertNotNull(info);
@@ -356,9 +357,10 @@ function testLocaleInfoLoadMissingDataSync() {
 
 function testLocaleInfoLoadMissingDataAsynchNoData() {
 	var callbackCalled = false;
-	ilib.data.localeInfo = {}; // empty the cache
+	ilib.LocaleInfo.cache = {}; // empty the cache
 	ilib.setLoaderCallback(mockLoader);
     var info = new ilib.LocaleInfo("qq-QQ", {
+    	sync: false,
     	onLoad: function (li) {
     	    assertNotUndefined(li);
     	    callbackCalled = true;
@@ -373,7 +375,7 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
 }
 
 function testLocaleInfoLoadMissingDataSyncNoData() {
-	ilib.data.localeInfo = {}; // empty the cache
+	ilib.LocaleInfo.cache = {}; // empty the cache
     var li = new ilib.LocaleInfo("qq-QQ");
     ilib.setLoaderCallback(undefined);
     assertNotUndefined(li);
@@ -385,9 +387,10 @@ function testLocaleInfoLoadMissingDataSyncNoData() {
 
 function testLocaleInfoLoadPreassembledDataAsynch() {
 	var callbackCalled = false;
-	ilib.data.localeInfo = {}; // empty the cache
+	ilib.LocaleInfo.cache = {}; // empty the cache
 	ilib.setLoaderCallback(mockLoader);
     var info = new ilib.LocaleInfo("fr-FR", {
+    	sync: false,
     	onLoad: function (li) {
     	    assertNotUndefined(li);
     	    callbackCalled = true;
@@ -410,7 +413,7 @@ ilib.data.localeinfo_fr_FR_overseas = {
 };
 
 function testLocaleInfoLoadMissingLocaleParts() {
-	ilib.data.localeInfo = {}; // empty the cache
+	ilib.LocaleInfo.cache = {}; // empty the cache
 	var li = new ilib.LocaleInfo("fr-FR-overseas");
     assertNotUndefined(li);
     assertEquals("USD", li.getCurrency());

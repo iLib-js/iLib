@@ -94,6 +94,11 @@ datefmt.js
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * <p>
  * 
@@ -103,6 +108,7 @@ datefmt.js
  * @param {Object} options options governing the way this date range formatter instance works
  */
 ilib.DateRngFmt = function(options) {
+	var sync = true;
 	this.locale = new ilib.Locale();
 	this.length = "s";
 	
@@ -120,10 +126,14 @@ ilib.DateRngFmt = function(options) {
 				this.length = options.length.charAt(0);
 			}
 		}
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
 	}
 	
 	var opts = {};
 	ilib.shallowCopy(options, opts);
+	opts.sync = true;
 	/**
 	 * @private
 	 */

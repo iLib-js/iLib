@@ -1973,7 +1973,7 @@ function testDateFmtGetDefault() {
     assertEquals("d/M/yy", fmt.getTemplate());
 };
 
-function mockLoader(paths, callback) {
+function mockLoader(paths, sync, callback) {
 	var data = [];
 	
 	if (paths[0].indexOf("localeinfo") !== -1) {
@@ -1984,14 +1984,14 @@ function mockLoader(paths, callback) {
 		data.push(ilib.data.dateformats_de);
 	}
 
-	if (typeof(callback) === 'undefined') {
-		return data;
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
 	}
-	callback.call(this, data);
+	return data;
 }
 
 function testDateFmtLoadLocaleDataSynch() {
-	ilib.data.dateformatCache = {};
+	ilib.DateFmt.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
 	var fmt = new ilib.DateFmt({locale: "zz-ZZ"});
@@ -2014,12 +2014,13 @@ function testDateFmtLoadLocaleDataSynchCached() {
 };
 
 function testDateFmtLoadLocaleDataAsynch() {
-	ilib.data.dateformatCache = {};
+	ilib.DateFmt.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 	var callbackCalled = false;
 	
 	new ilib.DateFmt({
 		locale: "zz-ZZ",
+		sync: false,
 		onLoad: function (fmt) {
 		    assertNotNull(fmt);
 		    
@@ -2040,6 +2041,7 @@ function testDateFmtLoadLocaleDataAsynchCached() {
 	
 	new ilib.DateFmt({
 		locale: "zz-ZZ",
+		sync: false,
 		onLoad: function (fmt) {
 		    assertNotNull(fmt);
 		    

@@ -19,6 +19,8 @@
 
 // !depends ilibglobal.js locale.js strings.js util/utils.js
 
+// !data pseudomap
+
 /**
  * @class
  * Create a new resource bundle instance. The resource bundle loads strings
@@ -150,10 +152,10 @@
  * @param {?Object} options Options controlling how the bundle is created
  */
 ilib.ResBundle = function (options) {
-	var lookupLocale, spec;
+	var lookupLocale, spec, sync = true;
 	
 	this.locale = new ilib.Locale();	// use the default locale
-	this.baseName = "resources";
+	this.baseName = "strings";
 	this.type = "text";
 	
 	if (options) {
@@ -169,48 +171,56 @@ ilib.ResBundle = function (options) {
 			this.type = options.type;
 		}
 		this.lengthen = options.lengthen || false;
+		
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
 	}
 	
 	this.map = {};
 
+	if (!ilib.ResBundle.cache) {
+		ilib.ResBundle.cache = {};
+	}
+
 	lookupLocale = this.locale.isPseudo() ? new ilib.Locale() : this.locale;
 	spec = lookupLocale.getSpec().replace(/-/g, '_');
 	
-	if (typeof(ilib.data.resourceCache[this.baseName]) === 'undefined') {
-		ilib.data.resourceCache[this.baseName] = {};
+	if (typeof(ilib.ResBundle.cache[this.baseName]) === 'undefined') {
+		ilib.ResBundle.cache[this.baseName] = {};
 	}
 	
-	if (typeof(ilib.data.resourceCache[this.baseName][spec]) !== 'undefined') {
-		this.map = ilib.data.resourceCache[this.baseName][spec];
+	if (typeof(ilib.ResBundle.cache[this.baseName][spec]) !== 'undefined') {
+		this.map = ilib.ResBundle.cache[this.baseName][spec];
 		if (options && typeof(options.onLoad) === 'function') {
 			options.onLoad(this);
 		}
 	} else {
 		this.map = ilib.mergeLocData(this.baseName, lookupLocale);
 		if (this.map) {
-			ilib.data.resourceCache[this.baseName][spec] = this.map;
+			ilib.ResBundle.cache[this.baseName][spec] = this.map;
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
 		} else if (typeof(ilib._load) === 'function') {
 			// locale is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles("resources", this.locale, "strings");
+			var files = ilib.getLocFiles(this.locale, this.baseName);
 			
-			ilib._load(files, function(arr) {
+			ilib._load(files, sync, function(arr) {
 				this.map = {};
 				for (var i = 0; i < arr.length; i++) {
 					if (typeof(arr[i]) !== 'undefined') {
 						this.map = ilib.merge(this.map, arr[i]);
 					}
 				}
-				ilib.data.resourceCache[this.baseName][spec] = this.map;
+				ilib.ResBundle.cache[this.baseName][spec] = this.map;
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
 				}
 			}.bind(this));
 		} else {
 			this.map = ilib.data[this.baseName] || {};
-			ilib.data.resourceCache[this.baseName][spec] = this.map;
+			ilib.ResBundle.cache[this.baseName][spec] = this.map;
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
@@ -221,55 +231,6 @@ ilib.ResBundle = function (options) {
 	//if (!this.locale.isPseudo() && ilib.isEmpty(this.map)) {
 	//	console.log("Resources for bundle " + this.baseName + " locale " + this.locale.toString() + " are not available.");
 	//}
-};
-
-/**
- * @private
- * @const
- * @type Object.<string, string> 
- * Mapping for psuedo-translation 
- */
-ilib.ResBundle._pseudoMap = {
-	"a": "à",	
-	"c": "ç",	
-	"d": "ð",	
-	"e": "ë",	
-	"g": "ğ",	
-	"h": "ĥ",
-	"i": "í",	
-	"j": "ĵ",	
-	"k": "ķ",	
-	"l": "ľ",	
-	"n": "ñ",	
-	"o": "õ",	
-	"p": "þ",	
-	"r": "ŕ",	
-	"s": "š",	
-	"t": "ţ",	
-	"u": "ü",	
-	"w": "ŵ",	
-	"y": "ÿ",	
-	"z": "ž",	
-	"A": "Ã",
-	"B": "ß",
-	"C": "Ç",	
-	"D": "Ð",	
-	"E": "Ë",	
-	"G": "Ĝ",	
-	"H": "Ħ",
-	"I": "Ï",	
-	"J": "Ĵ",	
-	"K": "ĸ",	
-	"L": "Ľ",	
-	"N": "Ň",	
-	"O": "Ø",	
-	"R": "Ŗ",	
-	"S": "Š",	
-	"T": "Ť",	
-	"U": "Ú",	
-	"W": "Ŵ",	
-	"Y": "Ŷ",	
-	"Z": "Ż"	
 };
 
 ilib.ResBundle.prototype = {
@@ -339,11 +300,11 @@ ilib.ResBundle.prototype = {
 							ret += str.charAt(i);
 						}
 					} else {
-						ret += ilib.ResBundle._pseudoMap[str.charAt(i)] || str.charAt(i);
+						ret += ilib.data.pseudomap[str.charAt(i)] || str.charAt(i);
 					}
 				}
 			} else {
-				ret += ilib.ResBundle._pseudoMap[str.charAt(i)] || str.charAt(i);
+				ret += ilib.data.pseudomap[str.charAt(i)] || str.charAt(i);
 			}
 		}
 		if (this.lengthen) {

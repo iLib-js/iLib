@@ -213,7 +213,12 @@ timezone.js
  * load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
- * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * 
  * Any substring containing letters within single or double quotes will be used 
@@ -249,7 +254,7 @@ timezone.js
  * @param {Object} options options governing the way this date formatter instance works
  */
 ilib.DateFmt = function(options) {
-	var arr, i, bad, formats;
+	var arr, i, bad, formats, sync = true;
 	
 	this.locale = new ilib.Locale();
 	this.type = "date";
@@ -337,9 +342,18 @@ ilib.DateFmt = function(options) {
 				id: options.timezone
 			});
 		}
+		
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
 	}
-	
+
+	if (!ilib.DateFmt.cache) {
+		ilib.DateFmt.cache = {};
+	}
+
 	new ilib.LocaleInfo(this.locale, {
+		sync: sync,
 		onLoad: function (li) {
 			this.locinfo = li;
 			
@@ -368,18 +382,19 @@ ilib.DateFmt = function(options) {
 			new ilib.ResBundle({
 				locale: this.locale,
 				name: "sysres",
+				sync: sync,
 				onLoad: function (rb) {
 					this.sysres = rb;
 					if (!this.template) {
 						var spec = this.locale.getSpec().replace(/-/g, '_');
-						if (typeof(ilib.data.dateformatCache[spec]) !== 'undefined') {
-							formats = ilib.data.dateformatCache[spec];
+						if (typeof(ilib.DateFmt.cache[spec]) !== 'undefined') {
+							formats = ilib.DateFmt.cache[spec];
 						} else {
 							formats = ilib.mergeLocData("dateformats", this.locale);
 							if (!formats) {
 								if (typeof(ilib._load) === 'function') {
-									var files = ilib.getLocFiles("locale", this.locale, "dateformats");
-									ilib._load(files, function(arr) {
+									var files = ilib.getLocFiles(this.locale, "dateformats");
+									ilib._load(files, sync, function(arr) {
 										formats = {};
 										for (var i = 0; i < arr.length; i++) {
 											if (typeof(arr[i]) !== 'undefined') {
@@ -398,7 +413,7 @@ ilib.DateFmt = function(options) {
 							}
 						}
 						this._initTemplate(formats);
-						ilib.data.dateformatCache[spec] = formats;
+						ilib.DateFmt.cache[spec] = formats;
 					}
 					this._massageTemplate();
 					if (options && typeof(options.onLoad) === 'function') {
