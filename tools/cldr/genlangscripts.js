@@ -29,19 +29,18 @@ var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
 
 function usage() {
-	util.print("Usage: genlangscripts [-h] languageData.json [toDir]\n" +
+	util.print("Usage: genlangscripts [-h] CLDR_dir [toDir]\n" +
 			"Generate the script.jf files for each language.\n\n" +
 			"-h or --help\n" +
 			"  this help\n" +
-			"languageData.json\n" +
-			"  the supplemental/supplementalData/languageData portion of CLDR\n" +
-			"  represented in json format downloaded from the Unicode site\n" +
+			"CLDR_dir\n" +
+			"  directory with CLDR represented in json format downloaded from the Unicode site\n" +
 			"toDir\n" +
 			"  directory to output the script.jf json files. Default: current dir.\n");
 	process.exit(1);
 }
 
-var languageDataFileName;
+var cldrDir, languageDataFileName;
 var toDir = ".";
 
 process.argv.forEach(function (val, index, array) {
@@ -55,13 +54,18 @@ if (process.argv.length < 3) {
 	usage();
 }
 
-languageDataFileName = process.argv[2];
+cldrDir = process.argv[2];
 if (process.argv.length > 3) {
 	toDir = process.argv[3];
 }
 
 util.print("genlangscripts - generate the localeinfo script.jf files.\n" +
 		"Copyright (c) 2013 JEDLSoft\n");
+
+util.print("CLDR dir: " + cldrDir + "\n");
+util.print("output dir: " + toDir + "\n");
+
+languageDataFileName = cldrDir + "/supplemental/supplementalData.json";
 
 fs.exists(languageDataFileName, function (exists) {
 	if (!exists) {
@@ -79,9 +83,11 @@ fs.exists(toDir, function (exists) {
 
 
 var languageDataString = fs.readFileSync(languageDataFileName, "utf-8");
-var languageData = JSON.parse(languageDataString);
+var supplementalData = JSON.parse(languageDataString);
 
 var scripts = {};
+
+var languageData = supplementalData.languageData;
 
 for (var locale in languageData) {
 	if (locale && languageData[locale]) {

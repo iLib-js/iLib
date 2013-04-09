@@ -1,7 +1,7 @@
 /*
  * JSFile.java - 
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -146,18 +146,18 @@ public class JSFile
 			fileName = localeDir + "/" + baseFileName;
 			locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 
-			if ( locale.getRegion() != null && locale.getRegion().length() > 0) {
+			if ( locale.getScript() != null && locale.getScript().length() > 0) {
 				localeDir.append("/");
-				localeDir.append(locale.getRegion());
-		        fileName = localeDir + "/" + baseFileName;
-		        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
-			
-				if ( locale.getScript() != null && locale.getScript().length() > 0) {
+				localeDir.append(locale.getScript());
+				fileName = localeDir + "/" + baseFileName;
+				locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+
+				if ( locale.getRegion() != null && locale.getRegion().length() > 0) {
 					localeDir.append("/");
-					localeDir.append(locale.getScript());
-			        fileName = localeDir + "/" + baseFileName;
-			        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
-			        
+					localeDir.append(locale.getRegion());
+					fileName = localeDir + "/" + baseFileName;
+					locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+
 					if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
 						localeDir.append("/");
 						localeDir.append(locale.getVariant());
@@ -165,7 +165,61 @@ public class JSFile
 				        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 					}
 				}
+			} else if ( locale.getRegion() != null && locale.getRegion().length() > 0) {
+				localeDir.append("/");
+				localeDir.append(locale.getRegion());
+				fileName = localeDir + "/" + baseFileName;
+				locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+
+				if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
+					localeDir.append("/");
+					localeDir.append(locale.getVariant());
+			        fileName = localeDir + "/" + baseFileName;
+			        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+				}
 			}
+		}
+		
+		localeDir = new StringBuilder();
+		if ( locale.getScript() != null && locale.getScript().length() > 0) {
+			localeDir.append(locale.getScript());
+			fileName = localeDir + "/" + baseFileName;
+			locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+
+			if ( locale.getRegion() != null && locale.getRegion().length() > 0) {
+				localeDir.append("/");
+				localeDir.append(locale.getRegion());
+				fileName = localeDir + "/" + baseFileName;
+				locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+
+				if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
+					localeDir.append("/");
+					localeDir.append(locale.getVariant());
+			        fileName = localeDir + "/" + baseFileName;
+			        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+				}
+			}
+		}
+		
+		localeDir = new StringBuilder();
+		if ( locale.getRegion() != null && locale.getRegion().length() > 0) {
+			localeDir.append(locale.getRegion());
+			fileName = localeDir + "/" + baseFileName;
+			locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+
+			if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
+				localeDir.append("/");
+				localeDir.append(locale.getVariant());
+		        fileName = localeDir + "/" + baseFileName;
+		        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+			}
+		}
+		
+		localeDir = new StringBuilder();
+		if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
+			localeDir.append(locale.getVariant());
+	        fileName = localeDir + "/" + baseFileName;
+	        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 		}
     }
     

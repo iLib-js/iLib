@@ -1,7 +1,7 @@
 /*
  * namefmt.js - Format person names for display
  * 
- * Copyright © 2012, JEDL Software, Inc.
+ * Copyright © 2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,7 +59,7 @@ ctype.ispunct.js
  * 
  * The components can be listed in any order in the string. The <i>components</i> option 
  * overrides the <i>style</i> option if both are specified.
-
+ *
  * <li>onLoad - a callback function to call when the locale info object is fully 
  * loaded. When the onLoad option is given, the localeinfo object will attempt to
  * load any missing locale data using the ilib loader callback.

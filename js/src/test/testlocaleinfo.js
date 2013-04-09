@@ -1,7 +1,7 @@
 /*
  * testlocaleinfo.js - test the locale info object
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -465,7 +465,80 @@ function testLocaleInfoGetScriptMultiple() {
 }
 
 function testLocaleInfoGetScriptMultipleLocaleOverride() {
-	var li = new ilib.LocaleInfo("uz-UZ-Cyrl");
+	var li = new ilib.LocaleInfo("uz-Cyrl-UZ");
     assertNotUndefined(li);
     assertEquals("Cyrl", li.getScript());
+}
+
+
+function testLocaleInfoGetLikelyLocaleByLanguage() {
+	var li = new ilib.LocaleInfo("uz");
+    assertNotUndefined(li);
+    var locale = li.getLikelyLocale();
+    assertNotUndefined(locale);
+    assertEquals("uz-Cyrl-UZ", locale.getSpec());
+}
+
+function testLocaleInfoGetLikelyLocaleByRegion() {
+	var li = new ilib.LocaleInfo("UZ");
+    assertNotUndefined(li);
+    var locale = li.getLikelyLocale();
+    assertNotUndefined(locale);
+    assertEquals("uz-Cyrl-UZ", locale.getSpec());
+}
+
+function testLocaleInfoGetLikelyLocaleByScript() {
+	var li = new ilib.LocaleInfo("Arab");
+    assertNotUndefined(li);
+    var locale = li.getLikelyLocale();
+    assertNotUndefined(locale);
+    assertEquals("ar-Arab-EG", locale.getSpec());
+}
+
+function testLocaleInfoGetLikelyLocaleByLanguageAndScript() {
+	var li = new ilib.LocaleInfo("pa-Arab");
+    assertNotUndefined(li);
+    var locale = li.getLikelyLocale();
+    assertNotUndefined(locale);
+    assertEquals("pa-Arab-PK", locale.getSpec());
+}
+
+function testLocaleInfoGetLikelyLocaleByLanguageAndRegion() {
+	var li = new ilib.LocaleInfo("uz-AF");
+    assertNotUndefined(li);
+    var locale = li.getLikelyLocale();
+    assertNotUndefined(locale);
+    assertEquals("uz-Arab-AF", locale.getSpec());
+}
+
+function testLocaleInfoGetLikelyLocaleByRegionAndScript() {
+	var li = new ilib.LocaleInfo("MA-Latn");
+    assertNotUndefined(li);
+    var locale = li.getLikelyLocale();
+    assertNotUndefined(locale);
+    assertEquals("fr-Latn-MA", locale.getSpec());
+}
+
+function testLocaleInfoGetLikelyLocaleAlreadySpecified() {
+	var li = new ilib.LocaleInfo("en-CA-Latn");
+    assertNotUndefined(li);
+    var locale = li.getLikelyLocale();
+    assertNotUndefined(locale);
+    assertEquals("en-Latn-CA", locale.getSpec());
+}
+
+function testLocaleInfoGetLikelyLocaleByLanguageMissing() {
+	var li = new ilib.LocaleInfo("zxx");
+    assertNotUndefined(li);
+    var locale = li.getLikelyLocale();
+    assertNotUndefined(locale);
+    assertEquals("zxx", locale.getSpec());
+}
+
+function testLocaleInfoGetLikelyLocaleByLanguageAndRegionMissing() {
+	var li = new ilib.LocaleInfo("en-GB");
+    assertNotUndefined(li);
+    var locale = li.getLikelyLocale();
+    assertNotUndefined(locale);
+    assertEquals("en-GB", locale.getSpec());
 }

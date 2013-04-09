@@ -1,7 +1,7 @@
 /*
  * testresources.js - test the Resources object
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,21 +32,13 @@ ilib.data.strings_de = {
 ilib.data.strings_fr = {
     "first string": "première chaîne",
     "second string": "deuxième chaîne",
-    "third string": "troisième chaîne",
-    "arr": [
-        "première",
-        "deuxième",
-        "troisième"
-    ]
+    "third string": "troisième chaîne"
 };
 
 // yes, we know these are not accurate translations -- they are just for testing!
 ilib.data.strings_fr_CA = {
     "first string": "première collier", 
-    "second string": "deuxième collier",
-    "arr": [
-        "quatrième"
-    ]
+    "second string": "deuxième collier"
 };
 
 ilib.data.strings_fr_CA_govt = {
@@ -612,11 +604,6 @@ function testResBundleGetResObj() {
     assertEquals("première chaîne", obj["first string"]);
     assertEquals("deuxième chaîne", obj["second string"]);
     assertEquals("troisième chaîne", obj["third string"]);
-    assertNotUndefined(obj.arr);
-    assertEquals("première", obj.arr[0]);
-    assertEquals("deuxième", obj.arr[1]);
-    assertEquals("troisième", obj.arr[2]);
-    assertUndefined(obj.arr[3]);
 }
 
 function testResBundleGetResObjMerge() {
@@ -629,11 +616,6 @@ function testResBundleGetResObjMerge() {
     assertEquals("première collier", obj["first string"]);
     assertEquals("deuxième collier", obj["second string"]);
     assertEquals("troisième chaîne", obj["third string"]);
-    assertNotUndefined(obj.arr);
-    assertEquals("première", obj.arr[0]);
-    assertEquals("deuxième", obj.arr[1]);
-    assertEquals("troisième", obj.arr[2]);
-    assertEquals("quatrième", obj.arr[3]);
 }
 
 function testResBundleGetStringAcceptEmptyTranslations() {
@@ -1085,7 +1067,7 @@ function testResBundleConstructSynchDynamicNoStrings() {
     
 	assertNotUndefined(rb);
 	
-    assertEquals("first String", rb.getString("first string").toString());
-    assertEquals("second String", rb.getString("second string").toString());
-    assertEquals("third String", rb.getString("third string").toString());
+    assertEquals("first string", rb.getString("first string").toString());
+    assertEquals("second string", rb.getString("second string").toString());
+    assertEquals("third string", rb.getString("third string").toString());
 }

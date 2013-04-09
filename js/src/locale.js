@@ -68,8 +68,8 @@
  */
 ilib.Locale = function(language, region, variant, script) {
 	if (typeof(region) === 'undefined') {
-		this.spec = language || ilib.getLocale();
-		var parts = this.spec.split('-');
+		var spec = language || ilib.getLocale();
+		var parts = spec.split('-');
         for ( var i = 0; i < parts.length; i++ ) {
         	if (ilib.Locale._isLanguageCode(parts[i])) {
     			/** 
@@ -102,33 +102,52 @@ ilib.Locale = function(language, region, variant, script) {
         this.script = this.script || undefined;
         this.variant = this.variant || undefined;
 	} else {
-		this.language = language.toLowerCase();
-		this.region = region.toUpperCase();
-		this.variant = variant;
-		this.script = script;
-
-		this.spec = this.language || "";
-		
-		if (this.region) {
-			if (this.spec.length > 0) {
-				this.spec += "-";
-			}
-			this.spec += region;
+		if (language) {
+			language = language.trim();
+			this.language = language.length > 0 ? language.toLowerCase() : undefined;
+		} else {
+			this.language = undefined;
 		}
-		
-		if (this.script) {
-			if (this.spec.length > 0) {
-				this.spec += "-";
-			}
-			this.spec += "-" + this.script;
+		if (region) {
+			region = region.trim();
+			this.region = region.length > 0 ? region.toUpperCase() : undefined;
+		} else {
+			this.region = undefined;
 		}
-		
-		if (this.variant) {
-			if (this.spec.length > 0) {
-				this.spec += "-";
-			}
-			this.spec += "-" + this.variant;
+		if (variant) {
+			variant = variant.trim();
+			this.variant = variant.length > 0 ? variant : undefined;
+		} else {
+			this.variant = undefined;
 		}
+		if (script) {
+			script = script.trim();
+			this.script = script.length > 0 ? script : undefined;
+		} else {
+			this.script = undefined;
+		}
+	}
+	this.spec = this.language || "";
+	
+	if (this.script) {
+		if (this.spec.length > 0) {
+			this.spec += "-";
+		}
+		this.spec += this.script;
+	}
+	
+	if (this.region) {
+		if (this.spec.length > 0) {
+			this.spec += "-";
+		}
+		this.spec += this.region;
+	}
+	
+	if (this.variant) {
+		if (this.spec.length > 0) {
+			this.spec += "-";
+		}
+		this.spec += this.variant;
 	}
 };
 
@@ -165,7 +184,7 @@ ilib.Locale._notUpper = function(str) {
  * @returns {boolean} true if the string could syntactically be a language code.
  */
 ilib.Locale._isLanguageCode = function(str) {
-	if (str.length < 2 || str.length > 3) {
+	if (typeof(str) === 'undefined' || str.length < 2 || str.length > 3) {
 		return false;
 	}
 
@@ -187,7 +206,7 @@ ilib.Locale._isLanguageCode = function(str) {
  * @returns {boolean} true if the string could syntactically be a language code.
  */
 ilib.Locale._isRegionCode = function (str) {
-	if (str.length != 2) {
+	if (typeof(str) === 'undefined' || str.length !== 2) {
 		return false;
 	}
 	
@@ -210,7 +229,7 @@ ilib.Locale._isRegionCode = function (str) {
  */
 ilib.Locale._isScriptCode = function(str)
 {
-	if (str.length != 4 || ilib.Locale._notUpper(str.charAt(0))) {
+	if (typeof(str) === 'undefined' || str.length !== 4 || ilib.Locale._notUpper(str.charAt(0))) {
 		return false;
 	}
 	

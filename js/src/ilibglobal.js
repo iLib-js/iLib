@@ -1,7 +1,7 @@
 /*
  * ilibglobal.js - define the ilib name space
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,8 +92,9 @@ ilib.getLocale = function () {
 					ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
 				}
 			}
-		} else if (typeof(webos) !== 'undefined' && typeof(webos.locales) !== 'undefined') {
-			ilib.locale = webos.locales.ui;
+		} else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.locales) !== 'undefined') {
+			// webOS
+			ilib.locale = PalmSystem.locales.UI;
 		} else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
 			// running under rhino
 			ilib.locale = environment.user.language + '-' + environment.user.country;
@@ -143,9 +144,9 @@ ilib.getTimeZone = function() {
 		if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
 			// running in a browser
 			ilib.tz = navigator.timezone;
-		} else	if (typeof(webos) !== 'undefined' && typeof(webos.timezone) !== 'undefined') {
+		} else	if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
 			// running in webkit on webOS
-			ilib.tz = webos.timezone;
+			ilib.tz = PalmSystem.timezone;
 		} else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
 			// running under rhino
 			ilib.tz = environment.user.timezone;

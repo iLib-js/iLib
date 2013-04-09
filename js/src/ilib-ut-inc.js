@@ -64,4 +64,6 @@ ctype.isxdigit.js
 scriptinfo.js
 nameprs.js
 namefmt.js
+addressprs.js
+addressfmt.js
 */

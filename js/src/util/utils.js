@@ -171,7 +171,7 @@ ilib.merge = function (object1, object2, name1, name2) {
  *  
  * @param {string} prefix prefix under ilib.data of the data to merge
  * @param {ilib.Locale} locale locale of the data being sought
- * @returns {Object|undefined} the merged locale data
+ * @returns {Object?} the merged locale data
  */
 ilib.mergeLocData = function (prefix, locale) {
 	var data = undefined;
@@ -179,6 +179,7 @@ ilib.mergeLocData = function (prefix, locale) {
 	var foundLocaleData = false;
 	var property = prefix;
 	data = ilib.data[prefix] || {};
+	
 	if (loc.getLanguage()) {
 		property = prefix + '_' + loc.getLanguage();
 		if (ilib.data[property]) {
@@ -186,33 +187,125 @@ ilib.mergeLocData = function (prefix, locale) {
 			data = ilib.merge(data, ilib.data[property]);
 		}
 	}
+	
 	if (loc.getRegion()) {
-		property += '_' + loc.getRegion();
+		property = prefix + '_' + loc.getRegion();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
 			data = ilib.merge(data, ilib.data[property]);
 		}
 	}
-	if (loc.getScript()) {
-		property += '_' + loc.getScript();
+	
+	if (loc.getLanguage()) {
+		property = prefix + '_' + loc.getLanguage();
+		
+		if (loc.getScript()) {
+			property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript();
+			if (ilib.data[property]) {
+				foundLocaleData = true;
+				data = ilib.merge(data, ilib.data[property]);
+			}
+		}
+		
+		if (loc.getRegion()) {
+			property = prefix + '_' + loc.getLanguage() + '_' + loc.getRegion();
+			if (ilib.data[property]) {
+				foundLocaleData = true;
+				data = ilib.merge(data, ilib.data[property]);
+			}
+		}
+		
+	}
+	
+	if (loc.getRegion() && loc.getVariant()) {
+		property = prefix + '_' + loc.getLanguage() + '_' + loc.getVariant();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
 			data = ilib.merge(data, ilib.data[property]);
 		}
 	}
-	if (loc.getVariant()) {
-		property += '_' + loc.getVariant();
+
+	if (loc.getLanguage() && loc.getScript() && loc.getRegion()) {
+		property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript() + '_' + loc.getRegion();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
 			data = ilib.merge(data, ilib.data[property]);
 		}
 	}
+
+	if (loc.getLanguage() && loc.getRegion() && loc.getVariant()) {
+		property = prefix + '_' + loc.getLanguage() + '_' + loc.getRegion() + '_' + loc.getVariant();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+
+	if (loc.getLanguage() && loc.getScript() && loc.getRegion() && loc.getVariant()) {
+		property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript() + '_' + loc.getRegion() + '_' + loc.getVariant();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+
 	return foundLocaleData ? data : undefined;
 };
 
 /**
  * Return an array of relative path names for the json
- * files that represent the data for the given locale.
+ * files that represent the data for the given locale. Only
+ * language and region are top-level directories.
+ * 
+ * Variations
+ * 
+ * only language and region specified:
+ * 
+ * language
+ * region
+ * language/region
+ * 
+ * only language and script specified:
+ * 
+ * language
+ * language/script
+ * 
+ * only script and region specified:
+ * 
+ * region
+ * 
+ * only region and variant specified:
+ * 
+ * region
+ * region/variant
+ *
+ * only language, script, and region specified:
+ * 
+ * language
+ * region
+ * language/script
+ * language/region
+ * language/script/region
+ * 
+ * only language, region, and variant specified:
+ * 
+ * language
+ * region
+ * language/region
+ * region/variant
+ * language/region/variant
+ * 
+ * all parts specified:
+ * 
+ * language
+ * region
+ * language/script
+ * language/region
+ * region/variant
+ * language/script/region
+ * language/region/variant
+ * language/script/region/variant
+ * 
  * @param {ilib.Locale} locale load the json files for this locale
  * @param {string=} basename the base name of each json file to load
  * @returns {Array.<string>} An array of relative path names
@@ -222,8 +315,58 @@ ilib.getLocFiles = function(locale, basename) {
 	var dir = "";
 	var files = [];
 	var filename = basename || "resources";
+	filename += ".json";
 	var loc = locale || new ilib.Locale();
-	files.push(filename + ".json");
+	
+	var language = loc.getLanguage();
+	var region = loc.getRegion();
+	var script = loc.getScript();
+	var variant = loc.getVariant();
+	
+	files.push(filename); // generic shared file
+	
+	if (language) {
+		dir = language + "/";
+		files.push(dir + filename);
+	}
+	
+	if (region) {
+		dir = region + "/";
+		files.push(dir + filename);
+	}
+	
+	if (language) {
+		if (script) {
+			dir = language + "/" + script + "/";
+			files.push(dir + filename);
+		}
+		if (region) {
+			dir = language + "/" + region + "/";
+			files.push(dir + filename);
+		}
+	}
+	
+	if (region && variant) {
+		dir = region + "/" + variant + "/";
+		files.push(dir + filename);
+	}
+
+	if (language && script && region) {
+		dir = language + "/" + script + "/" + region + "/";
+		files.push(dir + filename);
+	}
+
+	if (language && region && variant) {
+		dir = language + "/" + region + "/" + variant + "/";
+		files.push(dir + filename);
+	}
+
+	if (language && script && region && variant) {
+		dir = language + "/" + script + "/" + region + "/" + variant + "/";
+		files.push(dir + filename);
+	}
+	
+	/*
 	dir += loc.getLanguage() + "/";
 	files.push(dir + filename + ".json");
 	if (loc.getVariant()) {
@@ -253,6 +396,7 @@ ilib.getLocFiles = function(locale, basename) {
 			}
 		}
 	}
+	*/
 	
 	return files;
 };
@@ -393,5 +537,53 @@ ilib._roundFnc = {
 	 */
 	halfodd: function (num) {
 		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	}
+};
+
+
+/**
+ * Find locale data or load it in. If the data with the given name is preassembled, it will
+ * find the data in ilib.data. If the data is not preassembled but there is a loader function,
+ * this function will call it to load the data. Otherwise, the callback will be called with
+ * undefined as the data. This function will create a cache under the given class object.
+ * If data was successfully loaded, it will be set into the cache so that future access to 
+ * the same data for the same locale is much quicker. 
+ * 
+ * @param {Object} object The class attempting to load data. The cache is stored inside of here.
+ * @param {ilib.Locale} locale The locale to use to find or load the data.
+ * @param {string} name The name of the locale data to load.
+ * @param {function(Object?):undefined} callback Call back function to call when the data is available.
+ */
+ilib.loadData = function(object, locale, name, sync, callback) {
+	if (!object.cache) {
+		object.cache = {};
+	}
+
+	var spec = locale.getSpec().replace(/-/g, '_');
+	if (typeof(object.cache[spec]) === 'undefined') {
+		var data = ilib.mergeLocData(name, locale);
+		if (data) {
+			object.cache[spec] = data;
+			callback(data);
+		} else if (typeof(ilib._load) === 'function') {
+			// the data is not preassembled, so attempt to load it dynamically
+			var files = ilib.getLocFiles(locale, name);
+			
+			ilib._load(files, sync, function(arr) {
+				data = {};
+				for (var i = 0; i < arr.length; i++) {
+					if (typeof(arr[i]) !== 'undefined') {
+						data = ilib.merge(data, arr[i]);
+					}
+				}
+				
+				callback(data);
+			}.bind(this));
+		} else {
+			// no data other than the generic shared data
+			callback(data);
+		}
+	} else {
+		callback(object.cache[spec]);
 	}
 };

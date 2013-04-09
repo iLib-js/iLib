@@ -453,10 +453,10 @@ function testMergeLocData() {
 	ilib.data.foobar_de_DE = {
    		c: "f"
    	};
-	ilib.data.foobar_de_DE_Latn = {
+	ilib.data.foobar_de_Latn_DE = {
 		g: "h"
 	};
-	ilib.data.foobar_de_DE_Latn_SAP = {
+	ilib.data.foobar_de_Latn_DE_SAP = {
    		g: "i"
    	};
 
@@ -478,10 +478,10 @@ function testMergeLocDataNonLeafLocale() {
 	ilib.data.foobar_de_DE = {
    		c: "f"
    	};
-	ilib.data.foobar_de_DE_Latn = {
+	ilib.data.foobar_de_Latn_DE = {
 		g: "h"
 	};
-	ilib.data.foobar_de_DE_Latn_SAP = {
+	ilib.data.foobar_de_Latn_DE_SAP = {
    		g: "i"
    	};
 
@@ -503,10 +503,10 @@ function testMergeLocDataMissingData() {
 	ilib.data.foobar_de_DE = {
    		c: "f"
    	};
-	ilib.data.foobar_de_DE_Latn = {
+	ilib.data.foobar_de_Latn_DE = {
 		g: "h"
 	};
-	ilib.data.foobar_de_DE_Latn_SAP = {
+	ilib.data.foobar_de_Latn_DE_SAP = {
    		g: "i"
    	};
 
@@ -526,10 +526,10 @@ function testMergeLocDataNoName() {
 	ilib.data.foobar_de_DE = {
    		c: "f"
    	};
-	ilib.data.foobar_de_DE_Latn = {
+	ilib.data.foobar_de_Latn_DE = {
 		g: "h"
 	};
-	ilib.data.foobar_de_DE_Latn_SAP = {
+	ilib.data.foobar_de_Latn_DE_SAP = {
    		g: "i"
    	};
 
@@ -549,10 +549,10 @@ function testMergeLocDataNoLocale() {
 	ilib.data.foobar_en_US = {
    		c: "f"
    	};
-	ilib.data.foobar_en_US_Latn = {
+	ilib.data.foobar_en_Latn_US = {
 		g: "h"
 	};
-	ilib.data.foobar_en_US_Latn_SAP = {
+	ilib.data.foobar_en_Latn_US_SAP = {
    		g: "i"
    	};
 
@@ -575,10 +575,10 @@ function testMergeLocDataNoSideEffects() {
 	ilib.data.foobar_de_DE = {
    		c: "f"
    	};
-	ilib.data.foobar_de_DE_Latn = {
+	ilib.data.foobar_de_Latn_DE = {
 		g: "h"
 	};
-	ilib.data.foobar_de_DE_Latn_SAP = {
+	ilib.data.foobar_de_Latn_DE_SAP = {
    		g: "i"
    	};
 
@@ -597,10 +597,10 @@ function testMergeLocDataNoBase() {
 	ilib.data.asdf_de_DE = {
    		c: "f"
    	};
-	ilib.data.asdf_de_DE_Latn = {
+	ilib.data.asdf_de_Latn_DE = {
 		g: "h"
 	};
-	ilib.data.asdf_de_DE_Latn_SAP = {
+	ilib.data.asdf_de_Latn_DE_SAP = {
    		g: "i"
    	};
 
@@ -619,28 +619,162 @@ function testMergeLocDataMissingLocaleParts() {
 	ilib.data.foobar_de = {
 		a: "e"
 	};
-	ilib.data.foobar_de_SAP = {
+	ilib.data.foobar_de_Latn = {
    		g: "i"
    	};
 
-	var locale = new ilib.Locale("de-SAP");
+	var locale = new ilib.Locale("de-Latn");
 	var m = ilib.mergeLocData("foobar", locale);
 	assertEquals("e", m.a);
 	assertEquals("d", m.c);
 	assertEquals("i", m.g);
 }
 
-function testgetLocFiles() {
+function testGetLocFilesLanguageOnly() {
+	var locale = new ilib.Locale("en");
+	var f = ilib.getLocFiles(locale, "localeinfo");
+	var expected = [
+		"localeinfo.json",
+		"en/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesRegionOnly() {
+	var locale = new ilib.Locale("US");
+	var f = ilib.getLocFiles(locale, "localeinfo");
+	var expected = [
+		"localeinfo.json",
+		"US/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesLangScript() {
+	var locale = new ilib.Locale("en-Latn");
+	var f = ilib.getLocFiles(locale, "localeinfo");
+	var expected = [
+		"localeinfo.json",
+		"en/localeinfo.json",
+		"en/Latn/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesLangRegion() {
+	var locale = new ilib.Locale("en-US");
+	var f = ilib.getLocFiles(locale, "localeinfo");
+	var expected = [
+		"localeinfo.json",
+		"en/localeinfo.json",
+		"US/localeinfo.json",
+		"en/US/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesLangVariant() {
+	var locale = new ilib.Locale("en-govt");
+	var f = ilib.getLocFiles(locale, "localeinfo");
+	var expected = [
+		"localeinfo.json",
+		"en/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesScriptRegion() {
+	var locale = new ilib.Locale("Latn-US");
+	var f = ilib.getLocFiles(locale, "localeinfo");
+	var expected = [
+		"localeinfo.json",
+		"US/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesRegionVariant() {
+	var locale = new ilib.Locale("US-govt");
+	var f = ilib.getLocFiles(locale, "localeinfo");
+	var expected = [
+		"localeinfo.json",
+		"US/localeinfo.json",
+		"US/govt/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesLangScriptRegion() {
+	var locale = new ilib.Locale("en-Latn-US");
+	var f = ilib.getLocFiles(locale, "localeinfo");
+	var expected = [
+		"localeinfo.json",
+		"en/localeinfo.json",
+		"US/localeinfo.json",
+		"en/Latn/localeinfo.json",
+		"en/US/localeinfo.json",
+		"en/Latn/US/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesLangScriptVariant() {
+	var locale = new ilib.Locale("en-Latn-govt");
+	var f = ilib.getLocFiles(locale, "localeinfo");
+	var expected = [
+		"localeinfo.json",
+		"en/localeinfo.json",
+		"en/Latn/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesLangRegionVariant() {
+	var locale = new ilib.Locale("en-US-govt");
+	var f = ilib.getLocFiles(locale, "localeinfo");
+	var expected = [
+		"localeinfo.json",
+		"en/localeinfo.json",
+		"US/localeinfo.json",
+		"en/US/localeinfo.json",
+		"US/govt/localeinfo.json",
+		"en/US/govt/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesAll() {
 	var locale = new ilib.Locale("en-US-Latn-govt");
 	var f = ilib.getLocFiles(locale, "localeinfo");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
-		"en/govt/localeinfo.json",
-		"en/US/localeinfo.json",
-		"en/US/govt/localeinfo.json",
+		"US/localeinfo.json",
 		"en/Latn/localeinfo.json",
+		"en/US/localeinfo.json",
+		"US/govt/localeinfo.json",
 		"en/Latn/US/localeinfo.json",
+		"en/US/govt/localeinfo.json",
 		"en/Latn/US/govt/localeinfo.json"
 	];
 	
@@ -654,25 +788,13 @@ function testGetLocFilesNoBasename() {
 	var expected = [
 		"resources.json",
 		"en/resources.json",
-		"en/govt/resources.json",
-		"en/US/resources.json",
-		"en/US/govt/resources.json",
+		"US/resources.json",
 		"en/Latn/resources.json",
+		"en/US/resources.json",
+		"US/govt/resources.json",
 		"en/Latn/US/resources.json",
+		"en/US/govt/resources.json",
 		"en/Latn/US/govt/resources.json"
-	];
-	
-	assertEquals(expected.length, f.length);
-	assertArrayEquals(expected, f);
-}
-
-function testGetLocFilesShortLocale() {
-	var locale = new ilib.Locale("en-US");
-	var f = ilib.getLocFiles(locale, "localeinfo");
-	var expected = [
-		"localeinfo.json",
-		"en/localeinfo.json",
-		"en/US/localeinfo.json"
 	];
 	
 	assertEquals(expected.length, f.length);
@@ -684,6 +806,7 @@ function testGetLocFilesDefaultLocale() {
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
+		"US/localeinfo.json",
 		"en/US/localeinfo.json"
 	];
 	

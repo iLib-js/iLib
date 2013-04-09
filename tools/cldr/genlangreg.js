@@ -24,6 +24,8 @@
 
 var fs = require('fs');
 var util = require('util');
+var common = require("./common");
+var Locale = common.Locale;
 
 function usage() {
 	util.print("Usage: genlangreg [-h] CLDR_json_dir locale_data_dir\n" +
@@ -84,11 +86,18 @@ try {
 	process.exist(2);
 }
 
-var lang, region, languages = fs.readdirSync(localeDirName);
+var lang, region, script, languages = fs.readdirSync(localeDirName);
 for (var i = 0; i < languages.length; i++) {
 	lang = languages[i];
 	var langdir = localeDirName + "/" + lang;
-	if (lang.length >= 2 && lang.length <= 3 && fs.existsSync(langdir)) {
+	if (Locale.isRegionCode(lang) && fs.existsSync(langdir)) {
+		region = lang;
+		filename = langdir + "/regionname.jf";
+		if (typeof(english.localeDisplayNames.territories[region]) !== 'undefined') {
+			util.print("\t" + filename + ": " + english.localeDisplayNames.territories[region] + "\n");
+			fs.writeFileSync(filename, '\t"region.name": "' + english.localeDisplayNames.territories[region] + '",\n', "utf-8");
+		}
+	} else if (Locale.isLanguageCode(lang) && fs.existsSync(langdir)) {
 		var filename = langdir + "/langname.jf";
 		if (typeof(english.localeDisplayNames.languages[lang]) !== 'undefined') {
 			util.print(filename + ": " + english.localeDisplayNames.languages[lang] + "\n");
@@ -97,11 +106,24 @@ for (var i = 0; i < languages.length; i++) {
 			for (var j = 0; j < regions.length; j++) {
 				var region = regions[j];
 				var regiondir = langdir + "/" + region;
-				if (region.length === 2 && fs.existsSync(regiondir)) {
+				if (Locale.isRegionCode(region) && fs.existsSync(regiondir)) {
 					filename = regiondir + "/regionname.jf";
 					if (typeof(english.localeDisplayNames.territories[region]) !== 'undefined') {
 						util.print("\t" + filename + ": " + english.localeDisplayNames.territories[region] + "\n");
 						fs.writeFileSync(filename, '\t"region.name": "' + english.localeDisplayNames.territories[region] + '",\n', "utf-8");
+					}
+				} else if (Locale.isScriptCode(region) && fs.existsSync(regiondir)) {
+					var scriptregions = fs.readdirSync(regiondir);
+					for (var k = 0; k < scriptregions.length; k++) {
+						var scriptregion = scriptregions[k];
+						var scriptregiondir = regiondir + "/" + scriptregion;
+						if (Locale.isRegionCode(scriptregion) && fs.existsSync(scriptregiondir)) {
+							filename = scriptregiondir + "/regionname.jf";
+							if (typeof(english.localeDisplayNames.territories[scriptregion]) !== 'undefined') {
+								util.print("\t" + filename + ": " + english.localeDisplayNames.territories[scriptregion] + "\n");
+								fs.writeFileSync(filename, '\t"region.name": "' + english.localeDisplayNames.territories[scriptregion] + '",\n', "utf-8");
+							}
+						}
 					}
 				}
 			}

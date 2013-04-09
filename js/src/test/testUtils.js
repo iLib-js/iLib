@@ -39,7 +39,8 @@ function assertObjectContains(expected, actual, comment) {
 				comment = "Testing the value of property " + p;
 			}
 			if (typeof(actual[p]) === 'undefined') {
-				throw "actual does not contain expected properties";
+				// "actual does not contain expected properties";
+				assertNotUndefined(comment, actual[p]);
 			} else if (typeof(expected[p]) === 'object') {
 				assertObjectEquals(comment, expected[p], actual[p]);
 			} else {

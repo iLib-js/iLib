@@ -1,7 +1,7 @@
 /*
  * common.js - common routines shared amongst the cldr/unicode tools
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -314,8 +314,8 @@ exports.merge = function merge(object1, object2, name1, name2) {
  */
 exports.Locale = function(language, region, variant, script) {
 	if (typeof(region) === 'undefined') {
-		this.spec = language;
-		var parts = this.spec.split('-');
+		var spec = language || ilib.getLocale();
+		var parts = spec.split('-');
         for ( var i = 0; i < parts.length; i++ ) {
         	if (exports.Locale.isLanguageCode(parts[i])) {
     			/** 
@@ -348,33 +348,52 @@ exports.Locale = function(language, region, variant, script) {
         this.script = this.script || undefined;
         this.variant = this.variant || undefined;
 	} else {
-		this.language = language.toLowerCase();
-		this.region = region.toUpperCase();
-		this.variant = variant;
-		this.script = script;
-
-		this.spec = this.language || "";
-		
-		if (this.region) {
-			if (this.spec.length > 0) {
-				this.spec += "-";
-			}
-			this.spec += region;
+		if (language) {
+			language = language.trim();
+			this.language = language.length > 0 ? language.toLowerCase() : undefined;
+		} else {
+			this.language = undefined;
 		}
-		
-		if (this.script) {
-			if (this.spec.length > 0) {
-				this.spec += "-";
-			}
-			this.spec += "-" + this.script;
+		if (region) {
+			region = region.trim();
+			this.region = region.length > 0 ? region.toUpperCase() : undefined;
+		} else {
+			this.region = undefined;
 		}
-		
-		if (this.variant) {
-			if (this.spec.length > 0) {
-				this.spec += "-";
-			}
-			this.spec += "-" + this.variant;
+		if (variant) {
+			variant = variant.trim();
+			this.variant = variant.length > 0 ? variant : undefined;
+		} else {
+			this.variant = undefined;
 		}
+		if (script) {
+			script = script.trim();
+			this.script = script.length > 0 ? script : undefined;
+		} else {
+			this.script = undefined;
+		}
+	}
+	this.spec = this.language || "";
+	
+	if (this.script) {
+		if (this.spec.length > 0) {
+			this.spec += "-";
+		}
+		this.spec += this.script;
+	}
+	
+	if (this.region) {
+		if (this.spec.length > 0) {
+			this.spec += "-";
+		}
+		this.spec += this.region;
+	}
+	
+	if (this.variant) {
+		if (this.spec.length > 0) {
+			this.spec += "-";
+		}
+		this.spec += this.variant;
 	}
 };
 
@@ -576,8 +595,8 @@ exports.mergeAndPrune = function mergeAndPrune(localeData) {
 		for (var prop in localeData) {
 			if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
 				util.print(prop + " ");
-				localeData[prop].merged = exports.merge(localeData.merged, localeData[prop].data);
-				localeData[prop].data = exports.prune(localeData.merged, localeData[prop].data);
+				localeData[prop].merged = exports.merge(localeData.merged || {}, localeData[prop].data || {});
+				localeData[prop].data = exports.prune(localeData.merged || {}, localeData[prop].data || {});
 				exports.mergeAndPrune(localeData[prop]);
 			}
 		}

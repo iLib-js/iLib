@@ -1,7 +1,7 @@
 /*
  * testglobal.js - test the ilib static routines
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -105,14 +105,14 @@ function testGetTimeZoneRhino() {
 
 function testGetTimeZoneWebOS() {
 	ilib.tz = undefined;
-	if (typeof(webos) === 'undefined') {
-		webos = {};
+	if (typeof(PalmSystem) === 'undefined') {
+		PalmSystem = {};
 	}
-	webos.timezone = "Europe/London";
+	PalmSystem.timezone = "Europe/London";
 	
 	assertEquals("Europe/London", ilib.getTimeZone());
 	
-	webos = undefined;
+	PalmSystem = undefined;
 }
 
 function testGetLocaleBrowser() {
@@ -206,14 +206,14 @@ function testGetLocaleWebOS() {
 	}
 	
 	ilib.locale = undefined;
-	if (typeof(webos) === 'undefined') {
-		webos = {
+	if (typeof(PalmSystem) === 'undefined') {
+		PalmSystem = {
 			locales: {}
 		};
 	}
-	webos.locales.ui = "ru-RU";
+	PalmSystem.locales.UI = "ru-RU";
 	
 	assertEquals("ru-RU", ilib.getLocale());
 	
-	webos = undefined;
+	PalmSystem = undefined;
 }

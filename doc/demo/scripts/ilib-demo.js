@@ -1,7 +1,7 @@
 /*
  * ilibglobal.js - define the ilib name space
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,10 +41,7 @@ ilib.data = {
         nfd: {},
         nfkd: {},
         ccc: {}
-    },
-    localeInfo: {},
-    resourceCache: {},
-    dateformatCache: {}
+    }
 };
 
 window["ilib"] = ilib;
@@ -77,7 +74,42 @@ ilib.setLocale = function (spec) {
  * @returns {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
-    return ilib.locale || "en-US";
+	if (typeof(ilib.locale) === 'undefined') {
+		if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
+			// running in a browser
+			ilib.locale = navigator.language;  // FF/Opera/Chrome/Webkit
+			if (!ilib.locale) {
+				// IE on Windows
+				var lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
+					navigator.browserLanguage : 
+					(typeof(navigator.userLanguage) !== 'undefined' ? 
+						navigator.userLanguage : 
+						(typeof(navigator.systemLanguage) !== 'undefined' ?
+							navigator.systemLanguage :
+							undefined));
+				if (lang) {
+					// for some reason, MS uses lower case region tags
+					ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
+				}
+			}
+		} else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.locales) !== 'undefined') {
+			// webOS
+			ilib.locale = PalmSystem.locales.UI;
+		} else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
+			// running under rhino
+			ilib.locale = environment.user.language + '-' + environment.user.country;
+		} else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
+			// running under nodejs
+			var lang = process.env.LANG || process.env.LC_ALL;
+			// the LANG variable on unix is in the form "lang_REGION.CHARSET"
+			// where language and region are the correct ISO codes separated by
+			// an underscore. This translate it back to the BCP-47 form.
+			ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
+		}
+			 
+		ilib.locale = ilib.locale || 'en-US';
+	}
+    return ilib.locale;
 };
 
 /**
@@ -85,7 +117,7 @@ ilib.getLocale = function () {
  * no explicit time zone is passed to any ilib class. If the default time zone
  * is not set, ilib will attempt to use the time zone of the
  * environment it is running in, if it can find that. If not, it will
- * default to the the GMT zone "Europe/London".<p>
+ * default to the the UTC zone "Etc/UTC".<p>
  * 
  * Depends directive: !depends ilibglobal.js
  * 
@@ -101,14 +133,32 @@ ilib.setTimeZone = function (tz) {
  * class. If the default time zone
  * is not set, ilib will attempt to use the locale of the
  * environment it is running in, if it can find that. If not, it will
- * default to the the GMT zone "Europe/London".<p>
+ * default to the the UTC zone "Etc/UTC".<p>
  * 
  * Depends directive: !depends ilibglobal.js
  * 
  * @returns {string} the default time zone for ilib
  */
 ilib.getTimeZone = function() {
-    return ilib.tz || "Europe/London";
+	if (typeof(ilib.tz) === 'undefined') {
+		if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
+			// running in a browser
+			ilib.tz = navigator.timezone;
+		} else	if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
+			// running in webkit on webOS
+			ilib.tz = PalmSystem.timezone;
+		} else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
+			// running under rhino
+			ilib.tz = environment.user.timezone;
+		} else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
+			// running in nodejs
+			ilib.tz = process.env.TZ;
+		}
+		
+		ilib.tz = ilib.tz || "Etc/UTC"; 
+	}
+
+    return ilib.tz;
 };
 
 /**
@@ -124,11 +174,20 @@ ilib.getTimeZone = function() {
  * directly from disk under nodejs or rhino, or within web pages, to load 
  * files from the server with XHR calls.<p>
  * 
+ * The expected API for the call back is:
+ * 
+ * <pre>
+ * function(paths, callback) {}
+ * </pre>
+ * 
  * The first parameter to the callback
- * function is an array of relative paths within the ilib dir structure for the 
+ * function, paths, is an array of relative paths within the ilib dir structure for the 
  * requested data. These paths will already have the locale spec integrated 
- * into it, so no further tweaking needs to happen. The second parameter
- * is a callback function to call when all of the data is finishing loading.<p>
+ * into them, so no further tweaking needs to happen to load the data. Simply
+ * load the named files. The second parameter, callback,
+ * is a callback function to call when all of the data is finishing loading. Make
+ * sure to call the callback with the context of "this" so that the caller has their 
+ * context back again.<p>
  * 
  * The loader function must be able to operate either synchronously or asychronously. 
  * If the loader function is called with an undefined callback function, it is
@@ -160,8 +219,8 @@ ilib.getTimeZone = function() {
  *        });
  *     }
  * }
- * ilib.setLoaderCallback(function(context, paths, callback) {
- *    if (typeof(callback) === 'undefined') {
+ * ilib.setLoaderCallback(function(paths, sync, callback) {
+ *    if (sync) {
  *        var ret = [];
  *        // synchronous
  *        paths.forEach(function (path) {
@@ -174,13 +233,13 @@ ilib.getTimeZone = function() {
  *
  *    // asynchronous
  *    var results = [];
- *    loadFiles(context, paths, results, callback);
- * });
+ *    loadFiles(this, paths, results, callback);
+ * }.bind(this)); // bind to "this" so that "this" is relative to your own instance
  * </pre>
  * 
- * @param {function(Object,Array.<string>,function(Object))} loader function to call to 
+ * @param {function(Array.<string>,Boolean,function(Object))} loader function to call to 
  * load the requested data.
- * @returns {boolean} if the loader was installed correctly, or false
+ * @returns {boolean} true if the loader was installed correctly, or false
  * if not
  */
 ilib.setLoaderCallback = function(loader) {
@@ -262,8 +321,8 @@ ilib.setLoaderCallback = function(loader) {
  */
 ilib.Locale = function(language, region, variant, script) {
 	if (typeof(region) === 'undefined') {
-		this.spec = language || ilib.getLocale();
-		var parts = this.spec.split('-');
+		var spec = language || ilib.getLocale();
+		var parts = spec.split('-');
         for ( var i = 0; i < parts.length; i++ ) {
         	if (ilib.Locale._isLanguageCode(parts[i])) {
     			/** 
@@ -296,33 +355,52 @@ ilib.Locale = function(language, region, variant, script) {
         this.script = this.script || undefined;
         this.variant = this.variant || undefined;
 	} else {
-		this.language = language.toLowerCase();
-		this.region = region.toUpperCase();
-		this.variant = variant;
-		this.script = script;
-
-		this.spec = this.language || "";
-		
-		if (this.region) {
-			if (this.spec.length > 0) {
-				this.spec += "-";
-			}
-			this.spec += region;
+		if (language) {
+			language = language.trim();
+			this.language = language.length > 0 ? language.toLowerCase() : undefined;
+		} else {
+			this.language = undefined;
 		}
-		
-		if (this.script) {
-			if (this.spec.length > 0) {
-				this.spec += "-";
-			}
-			this.spec += "-" + this.script;
+		if (region) {
+			region = region.trim();
+			this.region = region.length > 0 ? region.toUpperCase() : undefined;
+		} else {
+			this.region = undefined;
 		}
-		
-		if (this.variant) {
-			if (this.spec.length > 0) {
-				this.spec += "-";
-			}
-			this.spec += "-" + this.variant;
+		if (variant) {
+			variant = variant.trim();
+			this.variant = variant.length > 0 ? variant : undefined;
+		} else {
+			this.variant = undefined;
 		}
+		if (script) {
+			script = script.trim();
+			this.script = script.length > 0 ? script : undefined;
+		} else {
+			this.script = undefined;
+		}
+	}
+	this.spec = this.language || "";
+	
+	if (this.script) {
+		if (this.spec.length > 0) {
+			this.spec += "-";
+		}
+		this.spec += this.script;
+	}
+	
+	if (this.region) {
+		if (this.spec.length > 0) {
+			this.spec += "-";
+		}
+		this.spec += this.region;
+	}
+	
+	if (this.variant) {
+		if (this.spec.length > 0) {
+			this.spec += "-";
+		}
+		this.spec += this.variant;
 	}
 };
 
@@ -359,7 +437,7 @@ ilib.Locale._notUpper = function(str) {
  * @returns {boolean} true if the string could syntactically be a language code.
  */
 ilib.Locale._isLanguageCode = function(str) {
-	if (str.length < 2 || str.length > 3) {
+	if (typeof(str) === 'undefined' || str.length < 2 || str.length > 3) {
 		return false;
 	}
 
@@ -381,7 +459,7 @@ ilib.Locale._isLanguageCode = function(str) {
  * @returns {boolean} true if the string could syntactically be a language code.
  */
 ilib.Locale._isRegionCode = function (str) {
-	if (str.length != 2) {
+	if (typeof(str) === 'undefined' || str.length !== 2) {
 		return false;
 	}
 	
@@ -404,7 +482,7 @@ ilib.Locale._isRegionCode = function (str) {
  */
 ilib.Locale._isScriptCode = function(str)
 {
-	if (str.length != 4 || ilib.Locale._notUpper(str.charAt(0))) {
+	if (typeof(str) === 'undefined' || str.length !== 4 || ilib.Locale._notUpper(str.charAt(0))) {
 		return false;
 	}
 	
@@ -653,7 +731,7 @@ ilib.Date.prototype = {
 };
 
 /*
- * strings.js - ilib string subclass definition
+ * util/utils.js - Misc utility routines
  * 
  * Copyright © 2012, JEDLSoft
  *
@@ -671,7 +749,3264 @@ ilib.Date.prototype = {
  * limitations under the License.
  */
 
-// !depends ilibglobal.js locale.js
+// !depends ilibglobal.js
+
+/**
+ * Binary search a sorted array for a particular target value.
+ * If the exact value is not found, it returns the index of the smallest 
+ * entry that is greater than the given target value.<p> 
+ * 
+ * The comparator
+ * parameter is a function that knows how to compare elements of the 
+ * array and the target. The function should return a value greater than 0
+ * if the array element is greater than the target, a value less than 0 if
+ * the array element is less than the target, and 0 if the array element 
+ * and the target are equivalent.<p>
+ * 
+ * If the comparator function is not specified, this function assumes
+ * the array and the target are numeric values and should be compared 
+ * as such.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
+ * 
+ * @param {*} target element being sought 
+ * @param {Array} arr the array being searched
+ * @param {?function(*,*)=} comparator a comparator that is appropriate for comparing two entries
+ * in the array  
+ * @return the index of the array into which the value would fit if 
+ * inserted, or -1 if given array is not an array or the target is not 
+ * a number
+ */
+ilib.bsearch = function(target, arr, comparator) {
+	if (typeof(arr) === 'undefined' || !arr || typeof(target) === 'undefined') {
+		return -1;
+	}
+	
+	var high = arr.length - 1,
+		low = 0,
+		mid = 0,
+		value,
+		cmp = comparator || ilib.bsearch.numbers;
+	
+	while (low <= high) {
+		mid = Math.floor((high+low)/2);
+		value = cmp(arr[mid], target);
+		if (value > 0) {
+			high = mid - 1;
+		} else if (value < 0) {
+			low = mid + 1;
+		} else {
+			return mid;
+		}
+	}
+	
+	return low;
+};
+
+/**
+ * @private
+ * Returns whether or not the given element is greater than, less than,
+ * or equal to the given target.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
+ * @param {number} element the element being tested
+ * @param {number} target the target being sought
+ */
+ilib.bsearch.numbers = function(element, target) {
+	return element - target;
+};
+
+/**
+ * Do a proper modulo function. The Javascript % operator will give the truncated
+ * division algorithm, but for calendrical calculations, we need the Euclidean
+ * division algorithm where the remainder of any division, whether the dividend
+ * is negative or not, is always a positive number between 0 and the modulus.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
+ * @param {number} dividend the number being divided
+ * @param {number} modulus the number dividing the dividend. This should always be a positive number.
+ * @return the remainder of dividing the dividend by the modulus.  
+ */
+ilib.mod = function (dividend, modulus) {
+	if (modulus == 0) {
+		return 0;
+	}
+	var x = dividend % modulus;
+	return (x < 0) ? x + modulus : x;
+};
+
+/**
+ * Merge the properties of object2 into object1 in a deep manner and return a merged
+ * object. If the property exists in both objects, the value in object2 will overwrite 
+ * the value in object1. If a property exists in object1, but not in object2, its value
+ * will not be touched. If a property exists in object2, but not in object1, it will be 
+ * added to the merged result.<p>
+ * 
+ * Name1 and name2 are for creating debug output only. They are not necessary.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
+ * @param {*} object1 the object to merge into
+ * @param {*} object2 the object to merge
+ * @param {string=} name1 name of the object being merged into
+ * @param {string=} name2 name of the object being merged in
+ * @returns {Object} the merged object
+ */
+ilib.merge = function (object1, object2, name1, name2) {
+	var prop = undefined,
+		newObj = {};
+	for (prop in object1) {
+		if (prop && typeof(object1[prop]) !== 'undefined') {
+			newObj[prop] = object1[prop];
+		}
+	}
+	for (prop in object2) {
+		if (prop && typeof(object2[prop]) !== 'undefined') {
+			if (object1[prop] instanceof Array && object2[prop] instanceof Array) {
+				newObj[prop] = new Array();
+				newObj[prop] = newObj[prop].concat(object1[prop]);
+				newObj[prop] = newObj[prop].concat(object2[prop]);
+			} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
+				newObj[prop] = ilib.merge(object1[prop], object2[prop]);
+			} else {
+				// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
+				if (name1 && name2 && newObj[prop] == object2[prop]) {
+					console.log("Property " + prop + " in " + name1 + " is being overridden by the same value in " + name2);
+				}
+				newObj[prop] = object2[prop];
+			}
+		}
+	}
+	return newObj;
+};
+
+/**
+ * Find and merge all the locale data for a particular prefix in the given locale
+ * and return it as a single javascript object. This merges the data in the 
+ * correct order:
+ * 
+ * <ol>
+ * <li>shared data (usually English)
+ * <li>data for language
+ * <li>data for language + region
+ * <li>data for language + region + script
+ * <li>data for language + region + script + variant
+ * </ol>
+ * 
+ * It is okay for any of the above to be missing. This function will just skip the 
+ * missing data. However, if everything except the shared data is missing, this 
+ * function returns undefined, allowing the caller to go and dynamically load the
+ * data instead.
+ *  
+ * @param {string} prefix prefix under ilib.data of the data to merge
+ * @param {ilib.Locale} locale locale of the data being sought
+ * @returns {Object?} the merged locale data
+ */
+ilib.mergeLocData = function (prefix, locale) {
+	var data = undefined;
+	var loc = locale || new ilib.Locale();
+	var foundLocaleData = false;
+	var property = prefix;
+	data = ilib.data[prefix] || {};
+	
+	if (loc.getLanguage()) {
+		property = prefix + '_' + loc.getLanguage();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+	
+	if (loc.getRegion()) {
+		property = prefix + '_' + loc.getRegion();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+	
+	if (loc.getLanguage()) {
+		property = prefix + '_' + loc.getLanguage();
+		
+		if (loc.getScript()) {
+			property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript();
+			if (ilib.data[property]) {
+				foundLocaleData = true;
+				data = ilib.merge(data, ilib.data[property]);
+			}
+		}
+		
+		if (loc.getRegion()) {
+			property = prefix + '_' + loc.getLanguage() + '_' + loc.getRegion();
+			if (ilib.data[property]) {
+				foundLocaleData = true;
+				data = ilib.merge(data, ilib.data[property]);
+			}
+		}
+		
+	}
+	
+	if (loc.getRegion() && loc.getVariant()) {
+		property = prefix + '_' + loc.getLanguage() + '_' + loc.getVariant();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+
+	if (loc.getLanguage() && loc.getScript() && loc.getRegion()) {
+		property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript() + '_' + loc.getRegion();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+
+	if (loc.getLanguage() && loc.getRegion() && loc.getVariant()) {
+		property = prefix + '_' + loc.getLanguage() + '_' + loc.getRegion() + '_' + loc.getVariant();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+
+	if (loc.getLanguage() && loc.getScript() && loc.getRegion() && loc.getVariant()) {
+		property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript() + '_' + loc.getRegion() + '_' + loc.getVariant();
+		if (ilib.data[property]) {
+			foundLocaleData = true;
+			data = ilib.merge(data, ilib.data[property]);
+		}
+	}
+
+	return foundLocaleData ? data : undefined;
+};
+
+/**
+ * Return an array of relative path names for the json
+ * files that represent the data for the given locale. Only
+ * language and region are top-level directories.
+ * 
+ * Variations
+ * 
+ * only language and region specified:
+ * 
+ * language
+ * region
+ * language/region
+ * 
+ * only language and script specified:
+ * 
+ * language
+ * language/script
+ * 
+ * only script and region specified:
+ * 
+ * region
+ * 
+ * only region and variant specified:
+ * 
+ * region
+ * region/variant
+ *
+ * only language, script, and region specified:
+ * 
+ * language
+ * region
+ * language/script
+ * language/region
+ * language/script/region
+ * 
+ * only language, region, and variant specified:
+ * 
+ * language
+ * region
+ * language/region
+ * region/variant
+ * language/region/variant
+ * 
+ * all parts specified:
+ * 
+ * language
+ * region
+ * language/script
+ * language/region
+ * region/variant
+ * language/script/region
+ * language/region/variant
+ * language/script/region/variant
+ * 
+ * @param {ilib.Locale} locale load the json files for this locale
+ * @param {string=} basename the base name of each json file to load
+ * @returns {Array.<string>} An array of relative path names
+ * for the json files that contain the locale data
+ */
+ilib.getLocFiles = function(locale, basename) {
+	var dir = "";
+	var files = [];
+	var filename = basename || "resources";
+	filename += ".json";
+	var loc = locale || new ilib.Locale();
+	
+	var language = loc.getLanguage();
+	var region = loc.getRegion();
+	var script = loc.getScript();
+	var variant = loc.getVariant();
+	
+	files.push(filename); // generic shared file
+	
+	if (language) {
+		dir = language + "/";
+		files.push(dir + filename);
+	}
+	
+	if (region) {
+		dir = region + "/";
+		files.push(dir + filename);
+	}
+	
+	if (language) {
+		if (script) {
+			dir = language + "/" + script + "/";
+			files.push(dir + filename);
+		}
+		if (region) {
+			dir = language + "/" + region + "/";
+			files.push(dir + filename);
+		}
+	}
+	
+	if (region && variant) {
+		dir = region + "/" + variant + "/";
+		files.push(dir + filename);
+	}
+
+	if (language && script && region) {
+		dir = language + "/" + script + "/" + region + "/";
+		files.push(dir + filename);
+	}
+
+	if (language && region && variant) {
+		dir = language + "/" + region + "/" + variant + "/";
+		files.push(dir + filename);
+	}
+
+	if (language && script && region && variant) {
+		dir = language + "/" + script + "/" + region + "/" + variant + "/";
+		files.push(dir + filename);
+	}
+	
+	/*
+	dir += loc.getLanguage() + "/";
+	files.push(dir + filename + ".json");
+	if (loc.getVariant()) {
+		var dir2 = dir;
+		dir2 += loc.getVariant() + "/";
+		files.push(dir2 + filename + ".json");
+	}
+	if (loc.getRegion()) {
+		var dir2 = dir;
+		dir2 += loc.getRegion() + "/";
+		files.push(dir2 + filename + ".json");
+		if (loc.getVariant()) {
+			dir2 += loc.getVariant() + "/";
+			files.push(dir2 + filename + ".json");
+		}
+	}
+	if (loc.getScript()) {
+		var dir2 = dir;
+		dir2 += loc.getScript() + "/";
+		files.push(dir2 + filename + ".json");
+		if (loc.getRegion()) {
+			dir2 += loc.getRegion() + "/";
+			files.push(dir2 + filename + ".json");
+			if (loc.getVariant()) {
+				dir2 += loc.getVariant() + "/";
+				files.push(dir2 + filename + ".json");
+			}
+		}
+	}
+	*/
+	
+	return files;
+};
+
+/**
+ * Return true if the given object has no properties.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
+ * @param {Object} obj the object to check
+ * @returns {boolean} true if the given object has no properties, false otherwise
+ */
+ilib.isEmpty = function (obj) {
+	var prop = undefined;
+	
+	if (!obj) {
+		return true;
+	}
+	
+	for (prop in obj) {
+		if (prop && obj[prop]) {
+			return false;
+		}
+	}
+	return true;
+};
+
+
+/**
+ * Perform a shallow copy of the source object to the target object. This only 
+ * copies the assignments of the source properties to the target properties, 
+ * but not recursively from there.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
+ * @param {Object} source the source object to copy properties from
+ * @param {Object} target the target object to copy properties into
+ */
+ilib.shallowCopy = function (source, target) {
+	var prop = undefined;
+	if (source && target) {
+		for (prop in source) {
+			if (prop !== undefined && source[prop]) {
+				target[prop] = source[prop];
+			}
+		}
+	}
+};
+
+/**
+ * Return the sign of the given number. If the sign is negative, this function
+ * returns -1. If the sign is positive or zero, this function returns 1.
+ * @param {number} num the number to test
+ * @returns {number} -1 if the number is negative, and 1 otherwise
+ */
+ilib.signum = function (num) {
+	var n = num;
+	if (typeof(num) === 'string') {
+		n = parseInt(num, 10);
+	} else if (typeof(num) !== 'number') {
+		return 1;
+	}
+	return (n < 0) ? -1 : 1;
+};
+
+
+/**
+ * @private
+ */
+ilib._roundFnc = {
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	floor: function (num) {
+		return Math.floor(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	ceiling: function (num) {
+		return Math.ceil(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	down: function (num) {
+		return (num < 0) ? Math.ceil(num) : Math.floor(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	up: function (num) {
+		return (num < 0) ? Math.floor(num) : Math.ceil(num);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfup: function (num) {
+		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfdown: function (num) {
+		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfeven: function (num) {
+		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	},
+	
+	/**
+	 * @private
+	 * @param {number} num number to round
+	 * @returns {number} rounded number
+	 */
+	halfodd: function (num) {
+		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+	}
+};
+
+
+/**
+ * Find locale data or load it in. If the data with the given name is preassembled, it will
+ * find the data in ilib.data. If the data is not preassembled but there is a loader function,
+ * this function will call it to load the data. Otherwise, the callback will be called with
+ * undefined as the data. This function will create a cache under the given class object.
+ * If data was successfully loaded, it will be set into the cache so that future access to 
+ * the same data for the same locale is much quicker. 
+ * 
+ * @param {Object} object The class attempting to load data. The cache is stored inside of here.
+ * @param {ilib.Locale} locale The locale to use to find or load the data.
+ * @param {string} name The name of the locale data to load.
+ * @param {function(Object?):undefined} callback Call back function to call when the data is available.
+ */
+ilib.loadData = function(object, locale, name, sync, callback) {
+	if (!object.cache) {
+		object.cache = {};
+	}
+
+	var spec = locale.getSpec().replace(/-/g, '_');
+	if (typeof(object.cache[spec]) === 'undefined') {
+		var data = ilib.mergeLocData(name, locale);
+		if (data) {
+			object.cache[spec] = data;
+			callback(data);
+		} else if (typeof(ilib._load) === 'function') {
+			// the data is not preassembled, so attempt to load it dynamically
+			var files = ilib.getLocFiles(locale, name);
+			
+			ilib._load(files, sync, function(arr) {
+				data = {};
+				for (var i = 0; i < arr.length; i++) {
+					if (typeof(arr[i]) !== 'undefined') {
+						data = ilib.merge(data, arr[i]);
+					}
+				}
+				
+				callback(data);
+			}.bind(this));
+		} else {
+			// no data other than the generic shared data
+			callback(data);
+		}
+	} else {
+		callback(object.cache[spec]);
+	}
+};
+
+ilib.data.plurals = {
+    "version": {
+        "@number": "$Revision: 7657 $"
+    },
+    "generation": {
+        "@date": "$Date: 2012-08-29 13:20:56 -0500 (Wed, 29 Aug 2012) $"
+    },
+    "plurals": {
+        "az": "",
+        "bm": "",
+        "bo": "",
+        "dz": "",
+        "fa": "",
+        "id": "",
+        "ig": "",
+        "ii": "",
+        "hu": "",
+        "ja": "",
+        "jv": "",
+        "ka": "",
+        "kde": "",
+        "kea": "",
+        "km": "",
+        "kn": "",
+        "ko": "",
+        "lo": "",
+        "ms": "",
+        "my": "",
+        "sah": "",
+        "ses": "",
+        "sg": "",
+        "th": "",
+        "to": "",
+        "tr": "",
+        "vi": "",
+        "wo": "",
+        "yo": "",
+        "zh": "",
+        "af": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ak": {
+            "one": {
+                "inrange": [
+                    "n",
+                    [
+                        [0,1]
+                    ]
+                ]
+            }
+        },
+        "am": {
+            "one": {
+                "inrange": [
+                    "n",
+                    [
+                        [0,1]
+                    ]
+                ]
+            }
+        },
+        "ar": {
+            "few": {
+                "inrange": [
+                    {
+                        "mod": [
+                            "n",
+                            100
+                        ]
+                    },
+                    [
+                        [3,10]
+                    ]
+                ]
+            },
+            "many": {
+                "inrange": [
+                    {
+                        "mod": [
+                            "n",
+                            100
+                        ]
+                    },
+                    [
+                        [11,99]
+                    ]
+                ]
+            },
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    "n",
+                    2
+                ]
+            },
+            "zero": {
+                "is": [
+                    "n",
+                    0
+                ]
+            }
+        },
+        "asa": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ast": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "be": {
+            "few": {
+                "and": [
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            [
+                                [2,4]
+                            ]
+                        ]
+                    },
+                    {
+                        "notin": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [12,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "many": {
+                "or": [
+                    {
+                        "or": [
+                            {
+                                "is": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    0
+                                ]
+                            },
+                            {
+                                "inrange": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    [
+                                        [5,9]
+                                    ]
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [11,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "one": {
+                "and": [
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            1
+                        ]
+                    },
+                    {
+                        "isnot": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            11
+                        ]
+                    }
+                ]
+            }
+        },
+        "bem": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "bez": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "bg": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "bh": {
+            "one": {
+                "inrange": [
+                    "n",
+                    [
+                        [0,1]
+                    ]
+                ]
+            }
+        },
+        "bn": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "br": {
+            "few": {
+                "and": [
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            [
+                                [3,4],
+                                9
+                            ]
+                        ]
+                    },
+                    {
+                        "notin": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [10,19],
+                                [70,79],
+                                [90,99]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "many": {
+                "and": [
+                    {
+                        "isnot": [
+                            "n",
+                            0
+                        ]
+                    },
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    1000000
+                                ]
+                            },
+                            0
+                        ]
+                    }
+                ]
+            },
+            "one": {
+                "and": [
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            1
+                        ]
+                    },
+                    {
+                        "notin": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                11,
+                                71,
+                                91
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "two": {
+                "and": [
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            2
+                        ]
+                    },
+                    {
+                        "notin": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                12,
+                                72,
+                                92
+                            ]
+                        ]
+                    }
+                ]
+            }
+        },
+        "brx": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "bs": {
+            "few": {
+                "and": [
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            [
+                                [2,4]
+                            ]
+                        ]
+                    },
+                    {
+                        "notin": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [12,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "many": {
+                "or": [
+                    {
+                        "or": [
+                            {
+                                "is": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    0
+                                ]
+                            },
+                            {
+                                "inrange": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    [
+                                        [5,9]
+                                    ]
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [11,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "one": {
+                "and": [
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            1
+                        ]
+                    },
+                    {
+                        "isnot": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            11
+                        ]
+                    }
+                ]
+            }
+        },
+        "ca": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "cgg": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "chr": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ckb": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "cs": {
+            "few": {
+                "inrange": [
+                    "n",
+                    [
+                        [2,4]
+                    ]
+                ]
+            },
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "cy": {
+            "few": {
+                "is": [
+                    "n",
+                    3
+                ]
+            },
+            "many": {
+                "is": [
+                    "n",
+                    6
+                ]
+            },
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    "n",
+                    2
+                ]
+            },
+            "zero": {
+                "is": [
+                    "n",
+                    0
+                ]
+            }
+        },
+        "da": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "de": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "dv": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ee": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "el": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "en": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "eo": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "es": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "et": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "eu": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ff": {
+            "one": {
+                "and": [
+                    {
+                        "within": [
+                            "n",
+                            [
+                                [0,2]
+                            ]
+                        ]
+                    },
+                    {
+                        "isnot": [
+                            "n",
+                            2
+                        ]
+                    }
+                ]
+            }
+        },
+        "fi": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "fil": {
+            "one": {
+                "inrange": [
+                    "n",
+                    [
+                        [0,1]
+                    ]
+                ]
+            }
+        },
+        "fo": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "fr": {
+            "one": {
+                "and": [
+                    {
+                        "within": [
+                            "n",
+                            [
+                                [0,2]
+                            ]
+                        ]
+                    },
+                    {
+                        "isnot": [
+                            "n",
+                            2
+                        ]
+                    }
+                ]
+            }
+        },
+        "fur": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "fy": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ga": {
+            "few": {
+                "inrange": [
+                    "n",
+                    [
+                        [3,6]
+                    ]
+                ]
+            },
+            "many": {
+                "inrange": [
+                    "n",
+                    [
+                        [7,10]
+                    ]
+                ]
+            },
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    "n",
+                    2
+                ]
+            }
+        },
+        "gd": {
+            "few": {
+                "inrange": [
+                    "n",
+                    [
+                        [
+                            [3,10]
+                        ],
+                        [
+                            [13,19]
+                        ]
+                    ]
+                ]
+            },
+            "one": {
+                "inrange": [
+                    "n",
+                    [
+                        1,
+                        11
+                    ]
+                ]
+            },
+            "two": {
+                "inrange": [
+                    "n",
+                    [
+                        2,
+                        12
+                    ]
+                ]
+            }
+        },
+        "gl": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "gsw": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "gu": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "guw": {
+            "one": {
+                "inrange": [
+                    "n",
+                    [
+                        [0,1]
+                    ]
+                ]
+            }
+        },
+        "gv": {
+            "one": {
+                "or": [
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            [
+                                [1,2]
+                            ]
+                        ]
+                    },
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    20
+                                ]
+                            },
+                            0
+                        ]
+                    }
+                ]
+            }
+        },
+        "ha": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "haw": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "he": {
+            "many": {
+                "and": [
+                    {
+                        "isnot": [
+                            "n",
+                            0
+                        ]
+                    },
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            0
+                        ]
+                    }
+                ]
+            },
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    "n",
+                    2
+                ]
+            }
+        },
+        "hi": {
+            "one": {
+                "inrange": [
+                    "n",
+                    [
+                        0,
+                        1
+                    ]
+                ]
+            }
+        },
+        "hr": {
+            "few": {
+                "and": [
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            [
+                                [2,4]
+                            ]
+                        ]
+                    },
+                    {
+                        "notin": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [12,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "many": {
+                "or": [
+                    {
+                        "or": [
+                            {
+                                "is": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    0
+                                ]
+                            },
+                            {
+                                "inrange": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    [
+                                        [5,9]
+                                    ]
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [11,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "one": {
+                "and": [
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            1
+                        ]
+                    },
+                    {
+                        "isnot": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            11
+                        ]
+                    }
+                ]
+            }
+        },
+        "is": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "it": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "iu": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    "n",
+                    2
+                ]
+            }
+        },
+        "jgo": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "jmc": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "kab": {
+            "one": {
+                "and": [
+                    {
+                        "within": [
+                            "n",
+                            [
+                                [0,2]
+                            ]
+                        ]
+                    },
+                    {
+                        "isnot": [
+                            "n",
+                            2
+                        ]
+                    }
+                ]
+            }
+        },
+        "kaj": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "kcg": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "kk": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "kkj": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "kl": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ks": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ksb": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ksh": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "zero": {
+                "is": [
+                    "n",
+                    0
+                ]
+            }
+        },
+        "ku": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "kw": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    "n",
+                    2
+                ]
+            }
+        },
+        "ky": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "lag": {
+            "one": {
+                "and": [
+                    {
+                        "and": [
+                            {
+                                "within": [
+                                    "n",
+                                    [
+                                        [0,2]
+                                    ]
+                                ]
+                            },
+                            {
+                                "isnot": [
+                                    "n",
+                                    0
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "isnot": [
+                            "n",
+                            2
+                        ]
+                    }
+                ]
+            },
+            "zero": {
+                "is": [
+                    "n",
+                    0
+                ]
+            }
+        },
+        "lb": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "lg": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ln": {
+            "one": {
+                "inrange": [
+                    "n",
+                    [
+                        [0,1]
+                    ]
+                ]
+            }
+        },
+        "lt": {
+            "few": {
+                "and": [
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            [
+                                [2,9]
+                            ]
+                        ]
+                    },
+                    {
+                        "notin": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [11,19]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "one": {
+                "and": [
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            1
+                        ]
+                    },
+                    {
+                        "notin": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [11,19]
+                            ]
+                        ]
+                    }
+                ]
+            }
+        },
+        "lv": {
+            "one": {
+                "and": [
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            1
+                        ]
+                    },
+                    {
+                        "isnot": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            11
+                        ]
+                    }
+                ]
+            },
+            "zero": {
+                "is": [
+                    "n",
+                    0
+                ]
+            }
+        },
+        "mas": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "mg": {
+            "one": {
+                "inrange": [
+                    "n",
+                    [
+                        [0,1]
+                    ]
+                ]
+            }
+        },
+        "mgo": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "mk": {
+            "one": {
+                "and": [
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            1
+                        ]
+                    },
+                    {
+                        "isnot": [
+                            "n",
+                            11
+                        ]
+                    }
+                ]
+            }
+        },
+        "ml": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "mn": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "mo": {
+            "few": {
+                "or": [
+                    {
+                        "is": [
+                            "n",
+                            0
+                        ]
+                    },
+                    {
+	                    "and": [
+	                        {
+	                        	"isnot": [
+	                        		"n",
+	                        		1
+	                        	]
+	                        },
+		                    {
+		                        "inrange": [
+		                            {
+		                                "mod": [
+		                                    "n",
+		                                    100
+		                                ]
+		                            },
+		                            [
+		                                [1,19]
+		                            ]
+		                        ]
+		                    }
+		                ]
+                    }
+                ]
+            },
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "mr": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "mt": {
+            "few": {
+                "or": [
+                    {
+                        "is": [
+                            "n",
+                            0
+                        ]
+                    },
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [2,10]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "many": {
+                "inrange": [
+                    {
+                        "mod": [
+                            "n",
+                            100
+                        ]
+                    },
+                    [
+                        [11,19]
+                    ]
+                ]
+            },
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "nah": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "naq": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    "n",
+                    2
+                ]
+            }
+        },
+        "nb": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "nd": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ne": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "nl": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "nn": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "nnh": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "no": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "nr": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "nso": {
+            "one": {
+                "inrange": [
+                    "n",
+                    [
+                        [0,1]
+                    ]
+                ]
+            }
+        },
+        "ny": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "nyn": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "om": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "or": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "os": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "pa": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "pap": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "pl": {
+            "few": {
+                "and": [
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            [
+                                [2,4]
+                            ]
+                        ]
+                    },
+                    {
+                        "notin": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [12,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "many": {
+                "or": [
+                   {
+                       "and": [
+                           {
+                               "isnot": [
+                                   "n",
+                                   1
+                               ]
+                           },
+                           {
+                               "inrange": [
+                                   {
+                                       "mod": [
+                                           "n",
+                                           10
+                                       ]
+                                   },
+                                   [[0,1]]
+                               ]
+                           }
+                       ]
+                   },
+                   {
+                       "or": [
+                           {
+                               "inrange": [
+                                   {
+                                       "mod": [
+                                           "n",
+                                           10
+                                       ]
+                                   },
+                                   [[5,9]]
+                               ]
+                           },
+                           {
+                               "inrange": [
+                                   {
+                                       "mod": [
+                                           "n",
+                                           100
+                                       ]
+                                   },
+                                   [[12,14]]
+                               ]
+                           }
+                       ]
+                   }
+               ]
+           }
+        },
+        "ps": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "pt": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "rm": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ro": {
+            "few": {
+                "or": [
+                    {
+                        "is": [
+                            "n",
+                            0
+                        ]
+                    },
+                    {
+	                    "and": [
+	                        {
+	                        	"isnot": [
+	                        		"n",
+	                        		1
+	                        	]
+	                        },
+		                    {
+		                        "inrange": [
+		                            {
+		                                "mod": [
+		                                    "n",
+		                                    100
+		                                ]
+		                            },
+		                            [
+		                                [1,19]
+		                            ]
+		                        ]
+		                    }
+		                ]
+                    }
+                ]
+            },
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "rof": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ru": {
+            "few": {
+                "and": [
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            [
+                                [2,4]
+                            ]
+                        ]
+                    },
+                    {
+                        "notin": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [12,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "many": {
+                "or": [
+                    {
+                        "or": [
+                            {
+                                "is": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    0
+                                ]
+                            },
+                            {
+                                "inrange": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    [
+                                        [5,9]
+                                    ]
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [11,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "one": {
+                "and": [
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            1
+                        ]
+                    },
+                    {
+                        "isnot": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            11
+                        ]
+                    }
+                ]
+            }
+        },
+        "rwk": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "saq": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "se": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    "n",
+                    2
+                ]
+            }
+        },
+        "seh": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "sh": {
+            "few": {
+                "and": [
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            [
+                                [2,4]
+                            ]
+                        ]
+                    },
+                    {
+                        "notin": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [12,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "many": {
+                "or": [
+                    {
+                        "or": [
+                            {
+                                "is": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    0
+                                ]
+                            },
+                            {
+                                "inrange": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    [
+                                        [5,9]
+                                    ]
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [11,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "one": {
+                "and": [
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            1
+                        ]
+                    },
+                    {
+                        "isnot": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            11
+                        ]
+                    }
+                ]
+            }
+        },
+        "shi": {
+            "few": {
+                "inrange": [
+                    "n",
+                    [
+                        [2,10]
+                    ]
+                ]
+            },
+            "one": {
+                "within": [
+                    "n",
+                    [
+                        [0,1]
+                    ]
+                ]
+            }
+        },
+        "sk": {
+            "few": {
+                "inrange": [
+                    "n",
+                    [
+                        [2,4]
+                    ]
+                ]
+            },
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "sl": {
+            "few": {
+                "inrange": [
+                    {
+                        "mod": [
+                            "n",
+                            100
+                        ]
+                    },
+                    [
+                        [3,4]
+                    ]
+                ]
+            },
+            "one": {
+                "is": [
+                    {
+                        "mod": [
+                            "n",
+                            100
+                        ]
+                    },
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    {
+                        "mod": [
+                            "n",
+                            100
+                        ]
+                    },
+                    2
+                ]
+            }
+        },
+        "sma": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    "n",
+                    2
+                ]
+            }
+        },
+        "smi": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    "n",
+                    2
+                ]
+            }
+        },
+        "smj": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    "n",
+                    2
+                ]
+            }
+        },
+        "smn": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    "n",
+                    2
+                ]
+            }
+        },
+        "sms": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            },
+            "two": {
+                "is": [
+                    "n",
+                    2
+                ]
+            }
+        },
+        "sn": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "so": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "sq": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "sr": {
+            "few": {
+                "and": [
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            [
+                                [2,4]
+                            ]
+                        ]
+                    },
+                    {
+                        "notin": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [12,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "many": {
+                "or": [
+                    {
+                        "or": [
+                            {
+                                "is": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    0
+                                ]
+                            },
+                            {
+                                "inrange": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    [
+                                        [5,9]
+                                    ]
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [11,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "one": {
+                "and": [
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            1
+                        ]
+                    },
+                    {
+                        "isnot": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            11
+                        ]
+                    }
+                ]
+            }
+        },
+        "ss": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ssy": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "st": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "sv": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "sw": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "syr": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ta": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "te": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "teo": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ti": {
+            "one": {
+                "inrange": [
+                    "n",
+                    [
+                        [0,1]
+                    ]
+                ]
+            }
+        },
+        "tig": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "tk": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "tl": {
+            "one": {
+                "inrange": [
+                    "n",
+                    [
+                        [0,1]
+                    ]
+                ]
+            }
+        },
+        "tn": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ts": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "tzm": {
+            "one": {
+                "or": [
+                    {
+                        "inrange": [
+                            "n",
+                            [
+                                [0,1]
+                            ]
+                        ]
+                    },
+                    {
+                        "inrange": [
+                            "n",
+                            [
+                                [11,99]
+                            ]
+                        ]
+                    }
+                ]
+            }
+        },
+        "uk": {
+            "few": {
+                "and": [
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            [
+                                [2,4]
+                            ]
+                        ]
+                    },
+                    {
+                        "notin": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [12,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "many": {
+                "or": [
+                    {
+                        "or": [
+                            {
+                                "is": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    0
+                                ]
+                            },
+                            {
+                                "inrange": [
+                                    {
+                                        "mod": [
+                                            "n",
+                                            10
+                                        ]
+                                    },
+                                    [
+                                        [5,9]
+                                    ]
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "inrange": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            [
+                                [11,14]
+                            ]
+                        ]
+                    }
+                ]
+            },
+            "one": {
+                "and": [
+                    {
+                        "is": [
+                            {
+                                "mod": [
+                                    "n",
+                                    10
+                                ]
+                            },
+                            1
+                        ]
+                    },
+                    {
+                        "isnot": [
+                            {
+                                "mod": [
+                                    "n",
+                                    100
+                                ]
+                            },
+                            11
+                        ]
+                    }
+                ]
+            }
+        },
+        "ur": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "ve": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "vo": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "vun": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "wa": {
+            "one": {
+                "inrange": [
+                    "n",
+                    [
+                        [0,1]
+                    ]
+                ]
+            }
+        },
+        "wae": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "xh": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "xog": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        },
+        "zu": {
+            "one": {
+                "is": [
+                    "n",
+                    1
+                ]
+            }
+        }
+    }
+};
+/*
+ * strings.js - ilib string subclass definition
+ * 
+ * Copyright © 2012-2013, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends ilibglobal.js util/utils.js locale.js
+
+// !data plurals
 
 /**
  * @class
@@ -696,6 +4031,7 @@ ilib.String = function (string) {
 	}
 	this.length = this.str.length;
 	this.cpLength = -1;
+	this.localeSpec = ilib.getLocale();
 };
 
 /**
@@ -919,6 +4255,171 @@ ilib.String._compose = function (lead, trail) {
 	return (ilib.data.norm.nfc && ilib.data.norm.nfc[c]);
 };
 
+/**
+ * @private
+ * @static
+ */
+ilib.String._fncs = {
+	/**
+	 * @private
+	 * @param {Object} obj
+	 * @returns {string|undefined}
+	 */
+	firstProp: function (obj) {
+		for (var p in obj) {
+			if (p && obj[p]) {
+				return p;
+			}
+		}
+		return undefined; // should never get here
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} obj
+	 * @param {number} n
+	 * @returns {?}
+	 */
+	getValue: function (obj, n) {
+		if (typeof(obj) === 'object') {
+			var subrule = ilib.String._fncs.firstProp(obj);
+			return ilib.String._fncs[subrule](obj[subrule], n);
+		} else if (typeof(obj) === 'string') {
+			return n;
+		} else {
+			return obj;
+		}
+	},
+	
+	/**
+	 * @private
+	 * @param {number} n
+	 * @param {Array.<number|Array.<number>>} range
+	 * @returns {boolean}
+	 */
+	matchRangeContinuous: function(n, range) {
+		for (var num in range) {
+			if (typeof(num) !== 'undefined' && typeof(range[num]) !== 'undefined') {
+				var obj = /** @type {Object|null|undefined} */ range[num];
+				if (typeof(obj) === 'number') {
+					if (n === range[num]) {
+						return true;
+					}
+				} else if (Object.prototype.toString.call(obj) === '[object Array]') {
+					if (n >= obj[0] && n <= obj[1]) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	},
+
+	/**
+	 * @private
+	 * @param {number} n
+	 * @param {Array.<number|Array.<number>>} range
+	 * @returns {boolean}
+	 */
+	matchRange: function(n, range) {
+		if (Math.floor(n) !== n) {
+			return false;
+		}
+		return ilib.String._fncs.matchRangeContinuous(n, range);
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	is: function(rule, n) {
+		var left = ilib.String._fncs.getValue(rule[0], n);
+		var right = ilib.String._fncs.getValue(rule[1], n);
+		return left == right;
+		// return ilib.String._fncs.getValue(rule[0]) == ilib.String._fncs.getValue(rule[1]);
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	isnot: function(rule, n) {
+		return ilib.String._fncs.getValue(rule[0], n) != ilib.String._fncs.getValue(rule[1], n);
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	inrange: function(rule, n) {
+		return ilib.String._fncs.matchRange(ilib.String._fncs.getValue(rule[0], n), rule[1]);
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	notin: function(rule, n) {
+		return !ilib.String._fncs.matchRange(ilib.String._fncs.getValue(rule[0], n), rule[1]);
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	within: function(rule, n) {
+		return ilib.String._fncs.matchRangeContinuous(ilib.String._fncs.getValue(rule[0], n), rule[1]);		
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {number}
+	 */
+	mod: function(rule, n) {
+		return ilib.mod(ilib.String._fncs.getValue(rule[0], n), ilib.String._fncs.getValue(rule[1], n));
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {number}
+	 */
+	n: function(rule, n) {
+		return n;
+	},
+	
+	/**
+	 * @private
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	or: function(rule, n) {
+		return ilib.String._fncs.getValue(rule[0], n) || ilib.String._fncs.getValue(rule[1], n);
+	},
+	
+	/**
+	 * @param {Object} rule
+	 * @param {number} n
+	 * @returns {boolean}
+	 */
+	and: function(rule, n) {
+		return ilib.String._fncs.getValue(rule[0], n) && ilib.String._fncs.getValue(rule[1], n);
+	}
+};
 
 ilib.String.prototype = {
 	/**
@@ -1077,10 +4578,30 @@ ilib.String.prototype = {
 	 * <li><i>&lt;x</i> - match any number that is less than x
 	 * <li><i>&lt;=x</i> - match any number that is less than or equal to x
 	 * <li><i>start-end</i> - match any number in the range [start,end)
+	 * <li><i>zero</i> - match any number in the class "zero". (See below for
+	 * a description of number classes.)
+	 * <li><i>one</i> - match any number in the class "one"
+	 * <li><i>two</i> - match any number in the class "two"
+	 * <li><i>few</i> - match any number in the class "few"
+	 * <li><i>many</i> - match any number in the class "many"
 	 * </ul>
 	 * 
-	 * If the argument index is a boolean, the values "true" and "false" may appear
-	 * as the choice patterns.<p>
+	 * A number class defines a set of numbers that receive a particular syntax
+	 * in the strings. For example, in Slovenian, integers ending in the digit
+	 * "1" are in the "one" class, including 1, 21, 31, ... 101, 111, etc.
+	 * Similarly, integers ending in the digit "2" are in the "two" class. 
+	 * Integers ending in the digits "3" or "4" are in the "few" class, and
+	 * every other integer is handled by the default string.<p>
+	 * 
+	 * The definition of what numbers are included in a class is locale-dependent.
+	 * They are defined in the data file plurals.json. If your string is in a
+	 * different locale than the default for ilib, you should call the setLocale()
+	 * method of the string instance before calling this method.<p> 
+	 * 
+	 * <b>Other Pattern Types</b><p>
+	 * 
+	 * If the argument index is a boolean, the string values "true" and "false" 
+	 * may appear as the choice patterns.<p>
 	 * 
 	 * If the argument index is of type string, then the choice patterns may contain
 	 * regular expressions, or static strings as degenerate regexps.
@@ -1159,19 +4680,36 @@ ilib.String.prototype = {
 								i = limits.length;
 							}
 						} else {
-							var dash = limits[i].indexOf("-");
-							if (dash !== -1) {							
-								// range
-								var start = limits[i].substring(0, dash);
-								var end = limits[i].substring(dash+1);							
-								if (arg >= parseInt(start, 10) && arg <= parseInt(end, 10)) {								
-									result = new ilib.String(strings[i]);
-									i = limits.length;
-								}
-							} else if (arg === parseInt(limits[i], 10)) {							
-								// exact amount
-								result = new ilib.String(strings[i]);
-								i = limits.length;
+							this.locale = this.locale || new ilib.Locale(this.localeSpec);
+							switch (limits[i]) {
+								case "zero":
+								case "one":
+								case "two":
+								case "few":
+								case "many":
+									// CLDR locale-dependent number classes
+									var rule = ilib.data.plurals.plurals[this.locale.getLanguage()][limits[i]];
+									if (ilib.String._fncs.getValue(rule, arg)) {
+										result = new ilib.String(strings[i]);
+										i = limits.length;
+									}
+									break;
+								default:
+									var dash = limits[i].indexOf("-");
+									if (dash !== -1) {							
+										// range
+										var start = limits[i].substring(0, dash);
+										var end = limits[i].substring(dash+1);							
+										if (arg >= parseInt(start, 10) && arg <= parseInt(end, 10)) {								
+											result = new ilib.String(strings[i]);
+											i = limits.length;
+										}
+									} else if (arg === parseInt(limits[i], 10)) {							
+										// exact amount
+										result = new ilib.String(strings[i]);
+										i = limits.length;
+									}
+									break;
 							}
 						}
 						break;
@@ -1796,6 +5334,23 @@ ilib.String.prototype = {
 	},
 	
 	/**
+	 * Set the locale to use when processing choice formats. The locale
+	 * affects how number classes are interpretted. In some cultures,
+	 * the limit "few" maps to "any integer that ends in the digits 2 to 9" and
+	 * in yet others, "few" maps to "any integer that ends in the digits
+	 * 3 or 4".
+	 * @param {ilib.Locale|string} locale locale to use when processing choice
+	 * formats with this string
+	 */
+	setLocale: function (locale) {
+		if (typeof(locale) === 'object') {
+			this.locale = locale;
+		} else {
+			this.localeSpec = locale;
+		}
+	},
+	
+	/**
 	 * Return the number of code points in this string. This may be different
 	 * than the number of characters, as the UTF-16 encoding that Javascript
 	 * uses for its basis returns surrogate pairs separately. Two 2-byte 
@@ -1817,902 +5372,6 @@ ilib.String.prototype = {
 		return this.cpLength;	
 	}
 };
-/*
- * util/utils.js - Misc utility routines
- * 
- * Copyright © 2012, JEDLSoft
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// !depends ilibglobal.js
-
-/**
- * Binary search a sorted array for a particular target value.
- * If the exact value is not found, it returns the index of the smallest 
- * entry that is greater than the given target value.<p> 
- * 
- * The comparator
- * parameter is a function that knows how to compare elements of the 
- * array and the target. The function should return a value greater than 0
- * if the array element is greater than the target, a value less than 0 if
- * the array element is less than the target, and 0 if the array element 
- * and the target are equivalent.<p>
- * 
- * If the comparator function is not specified, this function assumes
- * the array and the target are numeric values and should be compared 
- * as such.<p>
- * 
- * Depends directive: !depends utils.js
- * 
- * 
- * @param {*} target element being sought 
- * @param {Array} arr the array being searched
- * @param {?function(*,*)=} comparator a comparator that is appropriate for comparing two entries
- * in the array  
- * @return the index of the array into which the value would fit if 
- * inserted, or -1 if given array is not an array or the target is not 
- * a number
- */
-ilib.bsearch = function(target, arr, comparator) {
-	if (typeof(arr) === 'undefined' || !arr || typeof(target) === 'undefined') {
-		return -1;
-	}
-	
-	var high = arr.length - 1,
-		low = 0,
-		mid = 0,
-		value,
-		cmp = comparator || ilib.bsearch.numbers;
-	
-	while (low <= high) {
-		mid = Math.floor((high+low)/2);
-		value = cmp(arr[mid], target);
-		if (value > 0) {
-			high = mid - 1;
-		} else if (value < 0) {
-			low = mid + 1;
-		} else {
-			return mid;
-		}
-	}
-	
-	return low;
-};
-
-/**
- * @private
- * Returns whether or not the given element is greater than, less than,
- * or equal to the given target.<p>
- * 
- * Depends directive: !depends utils.js
- * 
- * @param {number} element the element being tested
- * @param {number} target the target being sought
- */
-ilib.bsearch.numbers = function(element, target) {
-	return element - target;
-};
-
-/**
- * Do a proper modulo function. The Javascript % operator will give the truncated
- * division algorithm, but for calendrical calculations, we need the Euclidean
- * division algorithm where the remainder of any division, whether the dividend
- * is negative or not, is always a positive number between 0 and the modulus.<p>
- * 
- * Depends directive: !depends utils.js
- * 
- * @param {number} dividend the number being divided
- * @param {number} modulus the number dividing the dividend. This should always be a positive number.
- * @return the remainder of dividing the dividend by the modulus.  
- */
-ilib.mod = function (dividend, modulus) {
-	if (modulus == 0) {
-		return 0;
-	}
-	var x = dividend % modulus;
-	return (x < 0) ? x + modulus : x;
-};
-
-/**
- * Merge the properties of object2 into object1 in a deep manner and return a merged
- * object. If the property exists in both objects, the value in object2 will overwrite 
- * the value in object1. If a property exists in object1, but not in object2, its value
- * will not be touched. If a property exists in object2, but not in object1, it will be 
- * added to the merged result.<p>
- * 
- * Name1 and name2 are for creating debug output only. They are not necessary.<p>
- * 
- * Depends directive: !depends utils.js
- * 
- * @param {*} object1 the object to merge into
- * @param {*} object2 the object to merge
- * @param {string=} name1 name of the object being merged into
- * @param {string=} name2 name of the object being merged in
- * @returns {Object} the merged object
- */
-ilib.merge = function (object1, object2, name1, name2) {
-	var prop = undefined,
-		newObj = {};
-	for (prop in object1) {
-		if (prop && typeof(object1[prop]) !== 'undefined') {
-			newObj[prop] = object1[prop];
-		}
-	}
-	for (prop in object2) {
-		if (prop && typeof(object2[prop]) !== 'undefined') {
-			if (object1[prop] instanceof Array && object2[prop] instanceof Array) {
-				newObj[prop] = new Array();
-				newObj[prop] = newObj[prop].concat(object1[prop]);
-				newObj[prop] = newObj[prop].concat(object2[prop]);
-			} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
-				newObj[prop] = ilib.merge(object1[prop], object2[prop]);
-			} else {
-				// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
-				if (name1 && name2 && newObj[prop] == object2[prop]) {
-					console.log("Property " + prop + " in " + name1 + " is being overridden by the same value in " + name2);
-				}
-				newObj[prop] = object2[prop];
-			}
-		}
-	}
-	return newObj;
-};
-
-/**
- * Find and merge all the locale data for a particular prefix in the given locale
- * and return it as a single javascript object. This merges the data in the 
- * correct order:
- * 
- * <ol>
- * <li>shared data (usually English)
- * <li>data for language
- * <li>data for language + region
- * <li>data for language + region + script
- * <li>data for language + region + script + variant
- * </ol>
- * 
- * It is okay for any of the above to be missing. This function will just skip the 
- * missing data. However, if everything except the shared data is missing, this 
- * function returns undefined, allowing the caller to go and dynamically load the
- * data instead.
- *  
- * @param {string} prefix prefix under ilib.data of the data to merge
- * @param {ilib.Locale} locale locale of the data being sought
- * @returns {Object|undefined} the merged locale data
- */
-ilib.mergeLocData = function (prefix, locale) {
-	var data = undefined;
-	var loc = locale || new ilib.Locale();
-	var foundLocaleData = false;
-	var property = prefix;
-	data = ilib.data[prefix] || {};
-	if (loc.getLanguage()) {
-		property = prefix + '_' + loc.getLanguage();
-		if (ilib.data[property]) {
-			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
-		}
-	}
-	if (loc.getRegion()) {
-		property += '_' + loc.getRegion();
-		if (ilib.data[property]) {
-			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
-		}
-	}
-	if (loc.getScript()) {
-		property += '_' + loc.getScript();
-		if (ilib.data[property]) {
-			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
-		}
-	}
-	if (loc.getVariant()) {
-		property += '_' + loc.getVariant();
-		if (ilib.data[property]) {
-			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
-		}
-	}
-	return foundLocaleData ? data : undefined;
-};
-
-/**
- * Return an array of relative path names for the json
- * files that represent the data for the given locale.
- * @param {string} prefix the prefix dir for all the path names
- * @param {ilib.Locale} locale load the json files for this locale
- * @param {string} basename the base name of each json file to load
- * @returns {Array.<string>} An array of relative path names
- * for the json files that contain the locale data
- */
-ilib.getLocFiles = function(prefix, locale, basename) {
-	var dir = (prefix && prefix.length > 0) ? prefix + "/" : "";
-	var files = [];
-	var filename = basename || "resources";
-	var loc = locale || new ilib.Locale();
-	files.push(dir + filename + ".json");
-	dir += loc.getLanguage() + "/";
-	files.push(dir + filename + ".json");
-	if (loc.getRegion()) {
-		dir += loc.getRegion() + "/";
-		files.push(dir + filename + ".json");
-		if (loc.getScript()) {
-			dir += loc.getScript() + "/";
-			files.push(dir + filename + ".json");
-			if (loc.getVariant()) {
-				dir += loc.getVariant() + "/";
-				files.push(dir + filename + ".json");
-			}
-		}
-	}
-	
-	return files;
-};
-
-/**
- * Return true if the given object has no properties.<p>
- * 
- * Depends directive: !depends utils.js
- * 
- * @param {Object} obj the object to check
- * @returns {boolean} true if the given object has no properties, false otherwise
- */
-ilib.isEmpty = function (obj) {
-	var prop = undefined;
-	
-	if (!obj) {
-		return true;
-	}
-	
-	for (prop in obj) {
-		if (prop && obj[prop]) {
-			return false;
-		}
-	}
-	return true;
-};
-
-
-/**
- * Perform a shallow copy of the source object to the target object. This only 
- * copies the assignments of the source properties to the target properties, 
- * but not recursively from there.<p>
- * 
- * Depends directive: !depends utils.js
- * 
- * @param {Object} source the source object to copy properties from
- * @param {Object} target the target object to copy properties into
- */
-ilib.shallowCopy = function (source, target) {
-	var prop = undefined;
-	if (source && target) {
-		for (prop in source) {
-			if (prop !== undefined && source[prop]) {
-				target[prop] = source[prop];
-			}
-		}
-	}
-};
-
-/**
- * Return the sign of the given number. If the sign is negative, this function
- * returns -1. If the sign is positive or zero, this function returns 1.
- * @param {number} num the number to test
- * @returns {number} -1 if the number is negative, and 1 otherwise
- */
-ilib.signum = function (num) {
-	var n = num;
-	if (typeof(num) === 'string') {
-		n = parseInt(num, 10);
-	} else if (typeof(num) !== 'number') {
-		return 1;
-	}
-	return (n < 0) ? -1 : 1;
-};
-
-
-/**
- * @private
- */
-ilib._roundFnc = {
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	floor: function (num) {
-		return Math.floor(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	ceiling: function (num) {
-		return Math.ceil(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	down: function (num) {
-		return (num < 0) ? Math.ceil(num) : Math.floor(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	up: function (num) {
-		return (num < 0) ? Math.floor(num) : Math.ceil(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfup: function (num) {
-		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfdown: function (num) {
-		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfeven: function (num) {
-		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @returns {number} rounded number
-	 */
-	halfodd: function (num) {
-		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	}
-};
-
-/*
- * resources.js - Resource bundle definition
- * 
- * Copyright © 2012, JEDLSoft
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// !depends ilibglobal.js locale.js strings.js util/utils.js
-
-/**
- * @class
- * Create a new resource bundle instance. The resource bundle loads strings
- * appropriate for a particular locale and provides them via the getString 
- * method.<p>
- * 
- * The options object may contain any (or none) of the following properties:
- * 
- * <ul>
- * <li><i>locale</i> - The locale of the strings to load. If not specified, the default
- * locale is the the default for the web page or app in which the bundle is 
- * being loaded.
- * <li><i>name</i> - Base name of the resource bundle to load. If not specified the default
- * base name is "resources".
- * <li><i>type</i> - Name the type of strings this bundle contains. Valid values are 
- * "xml", "html", "text", or "raw". The default is "text". If the type is "xml" or "html",
- * then XML/HTML entities and tags are not pseudo-translated. During a real translation, 
- * HTML character entities are translated to their corresponding characters in a source
- * string before looking that string up in the translations. Also, the characters "<", ">",
- * and "&" are converted to entities again in the output, but characters are left as they
- * are. If the type is "xml", "html", or "text" types, then the replacement parameter names
- * are not pseudo-translated as well so that the output can be used for formatting with 
- * the ilib.String class. If the type is raw, all characters are pseudo-translated, 
- * including replacement parameters as well as XML/HTML tags and entities.  
- * <li><i>lengthen</i> - when pseudo-translating the string, tell whether or not to 
- * automatically lengthen the string to simulate "long" languages such as German
- * or French. This is a boolean value. Default is false. 
- * <li>onLoad - a callback function to call when the resources are fully 
- * loaded. When the onLoad option is given, this class will attempt to
- * load any missing locale data using the ilib loader callback.
- * When the constructor is done (even if the data is already preassembled), the 
- * onLoad function is called with the current instance as a parameter, so this
- * callback can be used with preassembled or dynamic loading or a mix of the two. 
- * </ul>
- * 
- * The locale option may be given as a locale spec string or as an 
- * ilib.Locale object. If the locale option is not specified, then strings for
- * the default locale will be loaded.<p> 
- * 
- * The name option can be used to put groups of strings together in a
- * single bundle. The strings will then appear together in a JS object in
- * a JS file that can be included before the ilib.<p>
- * 
- * A resource bundle with a particular name is actually a set of bundles
- * that are each specific to a language, a language plus a region, or a language
- * plus a region plus a variant. All bundles with the same base name should
- * contain the same set of source strings, but with different translations for 
- * the given locale. The user of the bundle does not need to be aware of 
- * the locale of the bundle, as long as it contains values for the strings 
- * it needs.<p>
- * 
- * Strings in bundles for a particular locale are inherited from parent bundles
- * that are more generic. In general, the hierarchy is as follows:
- * 
- * <ol>
- * <li>base_language_region_variant inherits from
- * <li>base_language_region inherits from
- * <li>base_language inherits from
- * <li>base
- * </ol>
- * 
- * That is, if the translation for a string does not exist in the current
- * locale, the more-generic parent locale is searched for the string. In the
- * worst case scenario, the string is not found in the base locale's strings. 
- * In this case, the original source is returned as the translation. This allows
- * developers to create code with new or changed strings in it and check in that
- * code without waiting for the translations to be done first. The translated
- * version of the app or web site will still function properly, but will show 
- * a spurious untranslated string here and there until the translations are 
- * done and also checked in.<p>   
- *  
- * The base is whatever language your developers use to code in. For
- * a German web site, strings in the source code may be written in German 
- * for example. Often this base is English, as many web sites are coded in
- * English, but that is not required.<p>
- * 
- * The strings can be extracted with the ilib localization tool. Once the strings
- * have been translated, the set of translated files can be generated with the
- * same tool. The output from the tool can be used as input to the ResBundle
- * object. It is up to the web page or app to make sure the JS file that defines
- * the bundle is included before creating the ResBundle instance.<p>
- * 
- * A special locale "xx-XX" is used as the pseudo-translation locale because
- * xx and XX are not a valid ISO language or country specifiers. 
- * Pseudo-translation is a locale where the translations are generated on
- * the fly based on the contents of the source string. Characters in the source 
- * string are replaced with accented versions of those characters and returned. 
- * This allows the strings to be readable in the UI (if somewhat funky-looking), 
- * and yet a tester can easily verify that the string is properly externalized 
- * and loaded from a resource bundle without waiting for any translations to 
- * be completed.<p>
- * 
- * Example. If the source string is:
- * 
- * <pre>
- * "This is a string"
- * </pre>
- * 
- * then the pseudo-translated version might look something like this: 
- * 
- * <pre>
- * "Ţħïş ïş á şţřïñĝ"
- * </pre>
- *<p>
- * 
- * When the "lengthen" property is set to true in the options, the 
- * pseudotranslation code will add digits to the end of the string to simulate
- * the lengthening that occurs when translating to other languages. The above 
- * example will come out like this:
- * 
- * <pre>
- * "Ţħïş ïş á şţřïñĝ76543210"
- * </pre>
- * 
- * The string is lengthened according to the length of the source string. If
- * the source string is less than 20 characters long, the string is lengthened 
- * by 50%. If the source string is 20-40 
- * characters long, the string is lengthened by 33%. If te string is greater
- * than 40 characters long, the string is lengthened by 20%.<p>
- * 
- * The pseudotranslation always ends a string with the digit "0". If you do
- * not see the digit "0" in the UI for your app, you know that truncation
- * has occurred, and the number you see at the end of the string tells you 
- * how many characters were truncated.<p>
- * 
- * Depends directive: !depends resources.js
- * 
- * @constructor
- * @param {?Object} options Options controlling how the bundle is created
- */
-ilib.ResBundle = function (options) {
-	var lookupLocale, spec;
-	
-	this.locale = new ilib.Locale();	// use the default locale
-	this.baseName = "resources";
-	this.type = "text";
-	
-	if (options) {
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? 
-					new ilib.Locale(options.locale) :
-					options.locale;
-		}
-		if (options.name) {
-			this.baseName = options.name;
-		}
-		if (options.type) {
-			this.type = options.type;
-		}
-		this.lengthen = options.lengthen || false;
-	}
-	
-	this.map = {};
-
-	lookupLocale = this.locale.isPseudo() ? new ilib.Locale() : this.locale;
-	spec = lookupLocale.getSpec().replace(/-/g, '_');
-	
-	if (typeof(ilib.data.resourceCache[this.baseName]) === 'undefined') {
-		ilib.data.resourceCache[this.baseName] = {};
-	}
-	
-	if (typeof(ilib.data.resourceCache[this.baseName][spec]) !== 'undefined') {
-		this.map = ilib.data.resourceCache[this.baseName][spec];
-		if (options && typeof(options.onLoad) === 'function') {
-			options.onLoad(this);
-		}
-	} else {
-		this.map = ilib.mergeLocData(this.baseName, lookupLocale);
-		if (this.map) {
-			ilib.data.resourceCache[this.baseName][spec] = this.map;
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		} else if (typeof(ilib._load) === 'function') {
-			// locale is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles("resources", this.locale, "strings");
-			
-			ilib._load(this, files, function(arr) {
-				this.map = {};
-				for (var i = 0; i < arr.length; i++) {
-					if (typeof(arr[i]) !== 'undefined') {
-						this.map = ilib.merge(this.map, arr[i]);
-					}
-				}
-				ilib.data.resourceCache[this.baseName][spec] = this.map;
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}
-			});
-		} else {
-			this.map = ilib.data[this.baseName] || {};
-			ilib.data.resourceCache[this.baseName][spec] = this.map;
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		}
-	}	
-	
-	// console.log("Merged resources " + this.locale.toString() + " are: " + JSON.stringify(this.map));
-	//if (!this.locale.isPseudo() && ilib.isEmpty(this.map)) {
-	//	console.log("Resources for bundle " + this.baseName + " locale " + this.locale.toString() + " are not available.");
-	//}
-};
-
-/**
- * @private
- * @const
- * @type Object.<string, string> 
- * Mapping for psuedo-translation 
- */
-ilib.ResBundle._pseudoMap = {
-	"a": "à",	
-	"c": "ç",	
-	"d": "ð",	
-	"e": "ë",	
-	"g": "ğ",	
-	"h": "ĥ",
-	"i": "í",	
-	"j": "ĵ",	
-	"k": "ķ",	
-	"l": "ľ",	
-	"n": "ñ",	
-	"o": "õ",	
-	"p": "þ",	
-	"r": "ŕ",	
-	"s": "š",	
-	"t": "ţ",	
-	"u": "ü",	
-	"w": "ŵ",	
-	"y": "ÿ",	
-	"z": "ž",	
-	"A": "Ã",
-	"B": "ß",
-	"C": "Ç",	
-	"D": "Ð",	
-	"E": "Ë",	
-	"G": "Ĝ",	
-	"H": "Ħ",
-	"I": "Ï",	
-	"J": "Ĵ",	
-	"K": "ĸ",	
-	"L": "Ľ",	
-	"N": "Ň",	
-	"O": "Ø",	
-	"R": "Ŗ",	
-	"S": "Š",	
-	"T": "Ť",	
-	"U": "Ú",	
-	"W": "Ŵ",	
-	"Y": "Ŷ",	
-	"Z": "Ż"	
-};
-
-ilib.ResBundle.prototype = {
-	/**
-	 * Return the locale of this resource bundle.
-	 * @returns {ilib.Locale} the locale of this resource bundle object 
-	 */
-	getLocale: function () {
-		return this.locale;
-	},
-	
-	/**
-	 * Return the name of this resource bundle. This corresponds to the name option
-	 * given to the constructor.
-	 * @returns {string} name of the the current instance
-	 */
-	getName: function () {
-		return this.baseName;
-	},
-	
-	/**
-	 * Return the type of this resource bundle. This corresponds to the type option
-	 * given to the constructor.
-	 * @returns {string} type of the the current instance
-	 */
-	getType: function () {
-		return this.type;
-	},
-
-	/*
-	 * @private
-	 * Pseudo-translate a string
-	 */
-	pseudo: function (str) {
-		if (!str) {
-			return undefined;
-		}
-		var ret = "", i;
-		for (i = 0; i < str.length; i++) {
-			if (this.type !== "raw") {
-				if (this.type === "html" || this.type === "xml") {
-					if (str.charAt(i) === '<') {
-						ret += str.charAt(i++);
-						while (i < str.length && str.charAt(i) !== '>') {
-							ret += str.charAt(i++);
-						}
-						if (i < str.length) {
-							ret += str.charAt(i++);
-						}
-					} else if (str.charAt(i) === '&') {
-						ret += str.charAt(i++);
-						while (i < str.length && str.charAt(i) !== ';' && str.charAt(i) !== ' ') {
-							ret += str.charAt(i++);
-						}
-						if (i < str.length) {
-							ret += str.charAt(i++);
-						}
-					}
-				}
-				if (i < str.length) { 
-					if (str.charAt(i) === '{') {
-						ret += str.charAt(i++);
-						while (i < str.length && str.charAt(i) !== '}') {
-							ret += str.charAt(i++);
-						}
-						if (i < str.length) {
-							ret += str.charAt(i);
-						}
-					} else {
-						ret += ilib.ResBundle._pseudoMap[str.charAt(i)] || str.charAt(i);
-					}
-				}
-			} else {
-				ret += ilib.ResBundle._pseudoMap[str.charAt(i)] || str.charAt(i);
-			}
-		}
-		if (this.lengthen) {
-			var add;
-			if (ret.length <= 20) {
-				add = Math.round(ret.length / 2);
-			} else if (ret.length > 20 && ret.length <= 40) {
-				add = Math.round(ret.length / 3);
-			} else {
-				add = Math.round(ret.length / 5);
-			}
-			for (i = add-1; i >= 0; i--) {
-				ret += (i % 10);
-			}
-		}
-		return ret;
-	},
-	
-	/*
-	 * @private
-	 * Escape html characters in the output.
-	 */
-	escapeXml: function (str) {
-		str = str.replace(/&/g, '&amp;');
-		str = str.replace(/</g, '&lt;');
-		str = str.replace(/>/g, '&gt;');
-		return str;
-	},
-
-	/*
-	 * @private
-	 * @param {string} str the string to unescape
-	 */
-	unescapeXml: function (str) {
-		str = str.replace(/&amp;/g, '&');
-		str = str.replace(/&lt;/g, '<');
-		str = str.replace(/&gt;/g, '>');
-		return str;
-	},
-	
-	/*
-	 * @private
-	 * Create a key name out of a source string. All this does so far is 
-	 * compress sequences of white space into a single space on the assumption
-	 * that this doesn't really change the meaning of the string, and therefore
-	 * all such strings that compress to the same thing should share the same
-	 * translation.
-	 * @param {string} source the source string to make a key out of
-	 */
-	makeKey: function (source) {
-		var key = source.replace(/\s+/gm, ' ');
-		return (this.type === "xml" || this.type === "html") ? this.unescapeXml(key) : key;
-	},
-	
-	/**
-	 * Return a localized string. If the string is not found in the loaded set of
-	 * resources, the original source string is returned. If the key is not given,
-	 * then the source string itself is used as the key. In the case where the 
-	 * source string is used as the key, the whitespace is compressed down to 1 space
-	 * each, and the whitespace at the beginning and end of the string is trimmed.<p>
-	 * 
-	 * The escape mode specifies what type of output you are escaping the returned
-	 * string for. Modes are similar to the types: 
-	 * 
-	 * <ul>
-	 * <li>"html" -- prevents HTML injection by escaping the characters &lt &gt; and &amp;
-	 * <li>"xml" -- currently same as "html" mode
-	 * <li>"js" -- prevents breaking Javascript syntax by backslash escaping all quote and 
-	 * double-quote characters
-	 * <li>"attribute" -- meant for HTML attribute values. Currently this is the same as
-	 * "js" escape mode.
-	 * <li>"default" -- use the type parameter from the constructor as the escape mode as well
-	 * <li>"none" or undefined -- no escaping at all.
-	 * </ul>
-	 * 
-	 * The type parameter of the constructor specifies what type of strings this bundle
-	 * is operating upon. This allows pseudo-translation and automatic key generation
-	 * to happen properly by telling this class how to parse the string. The escape mode 
-	 * for this method is different in that it specifies how this string will be used in 
-	 * the calling code and therefore how to escape it properly.<p> 
-	 * 
-	 * For example, a section of Javascript code may be constructing an HTML snippet in a 
-	 * string to add to the web page. In this case, the type parameter in the constructor should
-	 * be "html" so that the source string can be parsed properly, but the escape mode should
-	 * be "js" so that the output string can be used in Javascript without causing syntax
-	 * errors.
-	 * 
-	 * @param {?string=} source the source string to translate
-	 * @param {?string=} key optional name of the key, if any
-	 * @param {?string=} escapeMode escape mode, if any
-	 * @returns {ilib.String|undefined} the translation of the given source/key or undefined 
-	 * if the translation is not found and the source is undefined 
-	 */
-	getString: function (source, key, escapeMode) {
-		if (!source && !key) return undefined;
-
-		var trans;
-		if (this.locale.isPseudo()) {
-			var str = source ? source : this.map[key];
-			trans = this.pseudo(str || key);
-		} else {
-			var keyName = key || this.makeKey(source);
-			trans = typeof(this.map[keyName]) !== 'undefined' ? this.map[keyName] : source;
-		}
-
-		if (escapeMode && escapeMode !== "none") {
-			if (escapeMode == "default") {
-				escapeMode = this.type;
-			}
-			if (escapeMode === "xml" || escapeMode === "html") {
-				trans = this.escapeXml(trans);
-			} else if (escapeMode == "js" || escapeMode === "attribute") {
-				trans = trans.replace(/'/g, "\\\'").replace(/"/g, "\\\"");
-			}
-		}
-		return trans === undefined ? undefined : new ilib.String(trans);
-	},
-	
-	/**
-	 * Return true if the current bundle contains a translation for the given key and
-	 * source. The
-	 * getString method will always return a string for any given key and source 
-	 * combination, so it cannot be used to tell if a translation exists. Either one
-	 * or both of the source and key must be specified. If both are not specified,
-	 * this method will return false.
-	 * 
-	 * @param {?string=} source source string to look up
-	 * @param {?string=} key key to look up
-	 * @returns {boolean} true if this bundle contains a translation for the key, and 
-	 * false otherwise
-	 */
-	containsKey: function(source, key) {
-		if (typeof(source) === 'undefined' && typeof(key) === 'undefined') {
-			return false;
-		}
-		
-		var keyName = key || this.makeKey(source);
-		return typeof(this.map[keyName]) !== 'undefined';
-	},
-	
-	/**
-	 * Return the merged resources as an entire object. When loading resources for a
-	 * locale that are not just a set of translated strings, but instead an entire 
-	 * structured object, you can gain access to that object via this call. This method
-	 * will ensure that all the of the parts of the object are correct for the locale.
-	 * It starts by loading <i>ilib.data[name]</i>, where <i>name</i> is the base name
-	 * for this set of resources. Then, it successively overwrites objects in the base
-	 * data using locale-specific data. It loads it in this order from <i>ilib.data</i>:
-	 * 
-	 * <ol>
-	 * <li> name + "_" + language
-	 * <li> name + "_" + language + "_" + region
-	 * <li> name + "_" + language + "_" + region + "_" + variant
-	 * 
-	 * Loading the resources this way allows the program to share resources between all
-	 * locales that share a common language, or a common language and region. As a 
-	 * general rule-of-thumb, resources should be as generic as possible in order to
-	 * cover as many locales as possible.
-	 * 
-	 * @returns {Object} returns the object that is the basis for this resources instance
-	 */
-	getResObj: function () {
-		return this.map;
-	}
-};
-
 ilib.data.localeinfo = {
 	"clock": "24",
 	"currencyFormats": {
@@ -2737,6 +5396,7 @@ ilib.data.localeinfo = {
 ;
 ilib.data.localeinfo_af = {
 	"language.name": "Afrikaans",
+	"scripts": ["Latn"],
 	"locale": "af"
 }
 ;
@@ -2746,6 +5406,11 @@ ilib.data.localeinfo_af_ZA = {
 	"region.name": "South Africa",
 	"timezone": "Africa/Johannesburg",
 	"locale": "af-ZA"
+}
+;
+ilib.data.localeinfo_ZA = {
+	"region.name": "South Africa",
+	"locale": ".-ZA"
 }
 ;
 ilib.data.localeinfo_da = {
@@ -2761,6 +5426,7 @@ ilib.data.localeinfo_da = {
 		"regular": "A4",
 		"photo": "4x6"
 	},
+	"scripts": ["Latn"],
 	"locale": "da"
 }
 ;
@@ -2769,6 +5435,11 @@ ilib.data.localeinfo_da_DK = {
 	"region.name": "Denmark",
 	"timezone": "Europe/Copenhagen",
 	"locale": "da-DK"
+}
+;
+ilib.data.localeinfo_DK = {
+	"region.name": "Denmark",
+	"locale": ".-DK"
 }
 ;
 ilib.data.localeinfo_de = {
@@ -2781,6 +5452,7 @@ ilib.data.localeinfo_de = {
 	"numfmt": {
 		"pctFmt": "{n} %"
 	},
+	"scripts": ["Latn","Runr"],
 	"locale": "de"
 }
 ;
@@ -2789,6 +5461,11 @@ ilib.data.localeinfo_de_AT = {
 	"region.name": "Austria",
 	"timezone": "Europe/Vienna",
 	"locale": "de-AT"
+}
+;
+ilib.data.localeinfo_AT = {
+	"region.name": "Austria",
+	"locale": ".-AT"
 }
 ;
 ilib.data.localeinfo_de_CH = {
@@ -2805,11 +5482,21 @@ ilib.data.localeinfo_de_CH = {
 	"locale": "de-CH"
 }
 ;
+ilib.data.localeinfo_CH = {
+	"region.name": "Switzerland",
+	"locale": ".-CH"
+}
+;
 ilib.data.localeinfo_de_DE = {
 	"currency": "EUR",
 	"region.name": "Germany",
 	"timezone": "Europe/Berlin",
 	"locale": "de-DE"
+}
+;
+ilib.data.localeinfo_DE = {
+	"region.name": "Germany",
+	"locale": ".-DE"
 }
 ;
 ilib.data.localeinfo_en = {
@@ -2824,6 +5511,7 @@ ilib.data.localeinfo_en = {
 		"groupSize": 3,
 		"pctFmt": "{n}%"
 	},
+	"scripts": ["Latn","Dsrt","Shaw"],
 	"locale": "en"
 }
 ;
@@ -2832,6 +5520,11 @@ ilib.data.localeinfo_en_AU = {
 	"region.name": "Australia",
 	"timezone": "Australia/Sydney",
 	"locale": "en-AU"
+}
+;
+ilib.data.localeinfo_AU = {
+	"region.name": "Australia",
+	"locale": ".-AU"
 }
 ;
 ilib.data.localeinfo_en_CA = {
@@ -2846,9 +5539,14 @@ ilib.data.localeinfo_en_CA = {
 	"locale": "en-CA"
 }
 ;
+ilib.data.localeinfo_CA = {
+	"region.name": "Canada",
+	"locale": ".-CA"
+}
+;
 ilib.data.localeinfo_en_GB = {
 	"currency": "GBP",
-	"region.name": "Great Britain",
+	"region.name": "United Kingdom",
 	"timezone": "Europe/London",
 	"units": "imperial",
 	"paperSizes": {
@@ -2858,11 +5556,21 @@ ilib.data.localeinfo_en_GB = {
 	"locale": "en-GB"
 }
 ;
+ilib.data.localeinfo_GB = {
+	"region.name": "United Kingdom",
+	"locale": ".-GB"
+}
+;
 ilib.data.localeinfo_en_IE = {
 	"currency": "EUR",
 	"region.name": "Ireland",
 	"timezone": "Europe/Dublin",
 	"locale": "en-IE"
+}
+;
+ilib.data.localeinfo_IE = {
+	"region.name": "Ireland",
+	"locale": ".-IE"
 }
 ;
 ilib.data.localeinfo_en_IN = {
@@ -2872,11 +5580,21 @@ ilib.data.localeinfo_en_IN = {
 	"locale": "en-IN"
 }
 ;
+ilib.data.localeinfo_IN = {
+	"region.name": "India",
+	"locale": ".-IN"
+}
+;
 ilib.data.localeinfo_en_NG = {
 	"currency": "NGN",
 	"region.name": "Nigeria",
 	"timezone": "Africa/Lagos",
 	"locale": "en-NG"
+}
+;
+ilib.data.localeinfo_NG = {
+	"region.name": "Nigeria",
+	"locale": ".-NG"
 }
 ;
 ilib.data.localeinfo_en_NZ = {
@@ -2887,6 +5605,11 @@ ilib.data.localeinfo_en_NZ = {
 	"locale": "en-NZ"
 }
 ;
+ilib.data.localeinfo_NZ = {
+	"region.name": "New Zealand",
+	"locale": ".-NZ"
+}
+;
 ilib.data.localeinfo_en_PH = {
 	"clock": "12",	"currency": "PHP",
 	"region.name": "Philippines",
@@ -2894,11 +5617,21 @@ ilib.data.localeinfo_en_PH = {
 	"locale": "en-PH"
 }
 ;
+ilib.data.localeinfo_PH = {
+	"region.name": "Philippines",
+	"locale": ".-PH"
+}
+;
 ilib.data.localeinfo_en_PK = {
 	"currency": "PKR",
 	"region.name": "Pakistan",
 	"timezone": "Asia/Karachi",
 	"locale": "en-PK"
+}
+;
+ilib.data.localeinfo_PK = {
+	"region.name": "Pakistan",
+	"locale": ".-PK"
 }
 ;
 ilib.data.localeinfo_en_US = {
@@ -2912,6 +5645,11 @@ ilib.data.localeinfo_en_US = {
 	"timezone": "America/New_York",
 	"units": "uscustomary",
 	"locale": "en-US"
+}
+;
+ilib.data.localeinfo_US = {
+	"region.name": "United States",
+	"locale": ".-US"
 }
 ;
 ilib.data.localeinfo_en_ZA = {
@@ -2940,6 +5678,7 @@ ilib.data.localeinfo_es = {
 	"pctChar": "%"
 },
 
+	"scripts": ["Latn"],
 	"locale": "es"
 }
 ;
@@ -2950,11 +5689,21 @@ ilib.data.localeinfo_es_AR = {
 	"locale": "es-AR"
 }
 ;
+ilib.data.localeinfo_AR = {
+	"region.name": "Argentina",
+	"locale": ".-AR"
+}
+;
 ilib.data.localeinfo_es_ES = {
 	"currency": "EUR",
 	"region.name": "Spain",
 	"timezone": "Europe/Madrid",
 	"locale": "es-ES"
+}
+;
+ilib.data.localeinfo_ES = {
+	"region.name": "Spain",
+	"locale": ".-ES"
 }
 ;
 ilib.data.localeinfo_es_MX = {
@@ -2963,6 +5712,11 @@ ilib.data.localeinfo_es_MX = {
 	"region.name": "Mexico",
 	"timezone": "America/Mexico_City",
 	"locale": "es-MX"
+}
+;
+ilib.data.localeinfo_MX = {
+	"region.name": "Mexico",
+	"locale": ".-MX"
 }
 ;
 ilib.data.localeinfo_fr = {
@@ -2985,6 +5739,7 @@ ilib.data.localeinfo_fr = {
 		"groupSize": 3,
 		"pctFmt": "{n}%"
 	},
+	"scripts": ["Latn"],
 	"timezone": "Europe/Paris",
 	"locale": "fr"
 }
@@ -3001,6 +5756,11 @@ ilib.data.localeinfo_fr_BE = {
 	"region.name": "Belgium",
 	"timezone": "Europe/Brussels",
 	"locale": "fr-BE"
+}
+;
+ilib.data.localeinfo_BE = {
+	"region.name": "Belgium",
+	"locale": ".-BE"
 }
 ;
 ilib.data.localeinfo_fr_CA = {
@@ -3036,6 +5796,11 @@ ilib.data.localeinfo_fr_FR = {
 	"locale": "fr-FR"
 }
 ;
+ilib.data.localeinfo_FR = {
+	"region.name": "France",
+	"locale": ".-FR"
+}
+;
 ilib.data.localeinfo_id = {
 	"language.name": "Indonesian",
 "numfmt": {
@@ -3046,6 +5811,7 @@ ilib.data.localeinfo_id = {
 	"pctChar": "%"
 },
 
+	"scripts": ["Latn","Arab"],
 	"locale": "id"
 }
 ;
@@ -3054,6 +5820,11 @@ ilib.data.localeinfo_id_ID = {
 	"region.name": "Indonesia",
 	"timezone": "Asia/Jakarta",
 	"locale": "id-ID"
+}
+;
+ilib.data.localeinfo_ID = {
+	"region.name": "Indonesia",
+	"locale": ".-ID"
 }
 ;
 ilib.data.localeinfo_it = {
@@ -3075,6 +5846,7 @@ ilib.data.localeinfo_it = {
 	"pctChar": "%"
 },
 
+	"scripts": ["Latn"],
 	"locale": "it"
 }
 ;
@@ -3099,6 +5871,11 @@ ilib.data.localeinfo_it_IT = {
 	"locale": "it-IT"
 }
 ;
+ilib.data.localeinfo_IT = {
+	"region.name": "Italy",
+	"locale": ".-IT"
+}
+;
 ilib.data.localeinfo_ja = {
 	"clock": "24",
 	"calendar": "gregorian",
@@ -3115,6 +5892,7 @@ ilib.data.localeinfo_ja = {
 		"groupSize": 0,
 		"pctFmt": "{n}％"
 	},
+	"scripts": ["Jpan"],
 	"locale": "ja"
 }
 ;
@@ -3123,6 +5901,11 @@ ilib.data.localeinfo_ja_JP = {
 	"region.name": "Japan",
 	"timezone": "Asia/Tokyo",
 	"locale": "ja-JP"
+}
+;
+ilib.data.localeinfo_JP = {
+	"region.name": "Japan",
+	"locale": ".-JP"
 }
 ;
 ilib.data.localeinfo_ko = {
@@ -3141,14 +5924,20 @@ ilib.data.localeinfo_ko = {
 		"groupSize": 3,
 		"pctFmt": "{n} %"
 	},
+	"scripts": ["Kore"],
 	"locale": "ko"
 }
 ;
 ilib.data.localeinfo_ko_KR = {
 	"currency": "KRW",
-	"region.name": "Republic of Korea",
+	"region.name": "South Korea",
 	"timezone": "Asia/Seoul",
 	"locale": "ko-KR"
+}
+;
+ilib.data.localeinfo_KR = {
+	"region.name": "South Korea",
+	"locale": ".-KR"
 }
 ;
 ilib.data.localeinfo_nl = {
@@ -3165,6 +5954,7 @@ ilib.data.localeinfo_nl = {
 	"pctChar": "%"
 },
 
+	"scripts": ["Latn"],
 	"locale": "nl"
 }
 ;
@@ -3182,6 +5972,11 @@ ilib.data.localeinfo_nl_NL = {
 	"locale": "nl-NL"
 }
 ;
+ilib.data.localeinfo_NL = {
+	"region.name": "Netherlands",
+	"locale": ".-NL"
+}
+;
 ilib.data.localeinfo_no = {
 	"firstDayOfWeek": 1,
 	"language.name": "Norwegian",
@@ -3195,6 +5990,7 @@ ilib.data.localeinfo_no = {
 		"regular": "A4",
 		"photo": "4x6"
 	},
+	"scripts": ["Latn"],
 	"locale": "no"
 }
 ;
@@ -3203,6 +5999,11 @@ ilib.data.localeinfo_no_NO = {
 	"region.name": "Norway",
 	"timezone": "Europe/Oslo",
 	"locale": "no-NO"
+}
+;
+ilib.data.localeinfo_NO = {
+	"region.name": "Norway",
+	"locale": ".-NO"
 }
 ;
 ilib.data.localeinfo_pt = {
@@ -3215,6 +6016,7 @@ ilib.data.localeinfo_pt = {
 	"pctChar": "%"
 },
 
+	"scripts": ["Latn"],
 	"locale": "pt"
 }
 ;
@@ -3225,11 +6027,21 @@ ilib.data.localeinfo_pt_BR = {
 	"locale": "pt-BR"
 }
 ;
+ilib.data.localeinfo_BR = {
+	"region.name": "Brazil",
+	"locale": ".-BR"
+}
+;
 ilib.data.localeinfo_pt_PT = {
 	"currency": "EUR",
 	"region.name": "Portugal",
 	"timezone": "Europe/Lisbon",
 	"locale": "pt-PT"
+}
+;
+ilib.data.localeinfo_PT = {
+	"region.name": "Portugal",
+	"locale": ".-PT"
 }
 ;
 ilib.data.localeinfo_ru = {
@@ -3240,6 +6052,7 @@ ilib.data.localeinfo_ru = {
 		"groupSize": 3,
 		"pctFmt": "{n} %"
 	},
+	"scripts": ["Cyrl"],
 	"locale": "ru"
 }
 ;
@@ -3248,6 +6061,11 @@ ilib.data.localeinfo_ru_RU = {
 	"region.name": "Russia",
 	"timezone": "Europe/Moscow",
 	"locale": "ru-RU"
+}
+;
+ilib.data.localeinfo_RU = {
+	"region.name": "Russia",
+	"locale": ".-RU"
 }
 ;
 ilib.data.localeinfo_sv = {
@@ -3263,6 +6081,7 @@ ilib.data.localeinfo_sv = {
 		"regular": "A4",
 		"photo": "4x6"
 	},
+	"scripts": ["Latn"],
 	"locale": "sv"
 }
 ;
@@ -3271,6 +6090,11 @@ ilib.data.localeinfo_sv_SE = {
 	"region.name": "Sweden",
 	"timezone": "Europe/Stockholm",
 	"locale": "sv-SE"
+}
+;
+ilib.data.localeinfo_SE = {
+	"region.name": "Sweden",
+	"locale": ".-SE"
 }
 ;
 ilib.data.localeinfo_tr = {
@@ -3288,6 +6112,7 @@ ilib.data.localeinfo_tr = {
 		"roundingMode": "halfup"
 	},
 
+	"scripts": ["Latn","Arab"],
 	"locale": "tr"
 }
 ;
@@ -3296,6 +6121,11 @@ ilib.data.localeinfo_tr_TR = {
 	"region.name": "Turkey",
 	"timezone": "Europe/Istanbul",
 	"locale": "tr-TR"
+}
+;
+ilib.data.localeinfo_TR = {
+	"region.name": "Turkey",
+	"locale": ".-TR"
 }
 ;
 ilib.data.localeinfo_vi = {
@@ -3308,6 +6138,7 @@ ilib.data.localeinfo_vi = {
 	"pctChar": "%"
 },
 
+	"scripts": ["Latn","Hani"],
 	"locale": "vi"
 }
 ;
@@ -3318,12 +6149,22 @@ ilib.data.localeinfo_vi_VN = {
 	"locale": "vi-VN"
 }
 ;
+ilib.data.localeinfo_VN = {
+	"region.name": "Vietnam",
+	"locale": ".-VN"
+}
+;
 ilib.data.localeinfo_xx = {
 	"language.name": "Unknown",
 	"numfmt": {
 		"roundingMode": "halfeven"
 	},
 	"locale": "xx"
+}
+;
+ilib.data.localeinfo_XX = {
+	"region.name": "Unknown",
+	"locale": ".-XX"
 }
 ;
 ilib.data.localeinfo_zh = {
@@ -3339,6 +6180,7 @@ ilib.data.localeinfo_zh = {
 		"groupSize": 3,
 		"pctFmt": "{n}％"
 	},
+	"scripts": ["Hans","Hant","Bopo","Phag"],
 	"locale": "zh"
 }
 ;
@@ -3349,6 +6191,11 @@ ilib.data.localeinfo_zh_CN = {
 	"locale": "zh-CN"
 }
 ;
+ilib.data.localeinfo_CN = {
+	"region.name": "China",
+	"locale": ".-CN"
+}
+;
 ilib.data.localeinfo_zh_TW = {
 	"currency": "TWD",
 	"region.name": "Taiwan",
@@ -3356,11 +6203,21 @@ ilib.data.localeinfo_zh_TW = {
 	"locale": "zh-TW"
 }
 ;
+ilib.data.localeinfo_TW = {
+	"region.name": "Taiwan",
+	"locale": ".-TW"
+}
+;
 ilib.data.localeinfo_zh_HK = {
 	"currency": "HKD",
-	"region.name": "Hong Kong",
+	"region.name": "Hong Kong SAR China",
 	"timezone": "Asia/Hong_Kong",
 	"locale": "zh-HK"
+}
+;
+ilib.data.localeinfo_HK = {
+	"region.name": "Hong Kong SAR China",
+	"locale": ".-HK"
 }
 ;
 ilib.data.localeinfo_zh_SG = {
@@ -3370,17 +6227,29 @@ ilib.data.localeinfo_zh_SG = {
 	"locale": "zh-SG"
 }
 ;
+ilib.data.localeinfo_SG = {
+	"region.name": "Singapore",
+	"locale": ".-SG"
+}
+;
 ilib.data.localeinfo_zh_MO = {
 	"currency": "MOP",
-	"region.name": "Macau",
+	"region.name": "Macau SAR China",
 	"timezone": "Asia/Macau",
 	"locale": "zh-MO"
 }
 ;
+ilib.data.localeinfo_MO = {
+	"region.name": "Macau SAR China",
+	"locale": ".-MO"
+}
+;
+ilib.data.likelylocales = {"aa":"aa-Latn-ET","ab":"ab-Cyrl-GE","ady":"ady-Cyrl-RU","af":"af-Latn-ZA","agq":"agq-Latn-CM","ak":"ak-Latn-GH","am":"am-Ethi-ET","ar":"ar-Arab-EG","as":"as-Beng-IN","asa":"asa-Latn-TZ","ast":"ast-Latn-ES","av":"av-Cyrl-RU","ay":"ay-Latn-BO","az":"az-Latn-AZ","az-Arab":"az-Arab-IR","az-IR":"az-Arab-IR","ba":"ba-Cyrl-RU","bas":"bas-Latn-CM","be":"be-Cyrl-BY","bem":"bem-Latn-ZM","bez":"bez-Latn-TZ","bg":"bg-Cyrl-BG","bi":"bi-Latn-VU","bm":"bm-Latn-ML","bn":"bn-Beng-BD","bo":"bo-Tibt-CN","br":"br-Latn-FR","brx":"brx-Deva-IN","bs":"bs-Latn-BA","byn":"byn-Ethi-ER","ca":"ca-Latn-ES","cch":"cch-Latn-NG","ce":"ce-Cyrl-RU","ceb":"ceb-Latn-PH","cgg":"cgg-Latn-UG","ch":"ch-Latn-GU","chk":"chk-Latn-FM","chr":"chr-Cher-US","ckb":"ckb-Arab-IQ","cs":"cs-Latn-CZ","csb":"csb-Latn-PL","cy":"cy-Latn-GB","da":"da-Latn-DK","dav":"dav-Latn-KE","de":"de-Latn-DE","dje":"dje-Latn-NE","dua":"dua-Latn-CM","dv":"dv-Thaa-MV","dyo":"dyo-Latn-SN","dz":"dz-Tibt-BT","ebu":"ebu-Latn-KE","ee":"ee-Latn-GH","efi":"efi-Latn-NG","el":"el-Grek-GR","en":"en-Latn-US","eo":"eo-Latn-001","es":"es-Latn-ES","et":"et-Latn-EE","eu":"eu-Latn-ES","ewo":"ewo-Latn-CM","fa":"fa-Arab-IR","ff":"ff-Latn-SN","fi":"fi-Latn-FI","fil":"fil-Latn-PH","fj":"fj-Latn-FJ","fo":"fo-Latn-FO","fr":"fr-Latn-FR","fur":"fur-Latn-IT","fy":"fy-Latn-NL","ga":"ga-Latn-IE","gaa":"gaa-Latn-GH","gag":"gag-Latn-MD","gd":"gd-Latn-GB","gil":"gil-Latn-KI","gl":"gl-Latn-ES","gn":"gn-Latn-PY","gsw":"gsw-Latn-CH","gu":"gu-Gujr-IN","guz":"guz-Latn-KE","gv":"gv-Latn-GB","gv-Latn":"gv-Latn-IM","ha":"ha-Latn-NG","haw":"haw-Latn-US","he":"he-Hebr-IL","hi":"hi-Deva-IN","hil":"hil-Latn-PH","ho":"ho-Latn-PG","hr":"hr-Latn-HR","ht":"ht-Latn-HT","hu":"hu-Latn-HU","hy":"hy-Armn-AM","ia":"ia-Latn-001","id":"id-Latn-ID","ig":"ig-Latn-NG","ii":"ii-Yiii-CN","ilo":"ilo-Latn-PH","inh":"inh-Cyrl-RU","is":"is-Latn-IS","it":"it-Latn-IT","ja":"ja-Jpan-JP","jgo":"jgo-Latn-CM","jmc":"jmc-Latn-TZ","jv":"jv-Latn-ID","ka":"ka-Geor-GE","kab":"kab-Latn-DZ","kaj":"kaj-Latn-NG","kam":"kam-Latn-KE","kbd":"kbd-Cyrl-RU","kcg":"kcg-Latn-NG","kde":"kde-Latn-TZ","kea":"kea-Latn-CV","kg":"kg-Latn-CD","kha":"kha-Latn-IN","khq":"khq-Latn-ML","ki":"ki-Latn-KE","kj":"kj-Latn-NA","kk":"kk-Cyrl-KZ","kkj":"kkj-Latn-CM","kl":"kl-Latn-GL","kln":"kln-Latn-KE","km":"km-Khmr-KH","kn":"kn-Knda-IN","ko":"ko-Kore-KR","koi":"koi-Cyrl-RU","kok":"kok-Deva-IN","kos":"kos-Latn-FM","kpe":"kpe-Latn-LR","kpv":"kpv-Cyrl-RU","krc":"krc-Cyrl-RU","ks":"ks-Arab-IN","ksb":"ksb-Latn-TZ","ksf":"ksf-Latn-CM","ksh":"ksh-Latn-DE","ku":"ku-Latn-TR","ku-Arab":"ku-Arab-IQ","ku-IQ":"ku-Arab-IQ","kum":"kum-Cyrl-RU","kv":"kv-Cyrl-RU","kw":"kw-Latn-GB","ky":"ky-Cyrl-KG","la":"la-Latn-VA","lag":"lag-Latn-TZ","lah":"lah-Arab-PK","lb":"lb-Latn-LU","lbe":"lbe-Cyrl-RU","lez":"lez-Cyrl-RU","lg":"lg-Latn-UG","ln":"ln-Latn-CD","lo":"lo-Laoo-LA","lt":"lt-Latn-LT","lu":"lu-Latn-CD","lua":"lua-Latn-CD","luo":"luo-Latn-KE","luy":"luy-Latn-KE","lv":"lv-Latn-LV","mai":"mai-Deva-IN","mas":"mas-Latn-KE","mdf":"mdf-Cyrl-RU","mdh":"mdh-Latn-PH","mer":"mer-Latn-KE","mfe":"mfe-Latn-MU","mg":"mg-Latn-MG","mgh":"mgh-Latn-MZ","mgo":"mgo-Latn-CM","mh":"mh-Latn-MH","mi":"mi-Latn-NZ","mk":"mk-Cyrl-MK","ml":"ml-Mlym-IN","mn":"mn-Cyrl-MN","mn-CN":"mn-Mong-CN","mn-Mong":"mn-Mong-CN","mr":"mr-Deva-IN","ms":"ms-Latn-MY","mt":"mt-Latn-MT","mua":"mua-Latn-CM","my":"my-Mymr-MM","myv":"myv-Cyrl-RU","na":"na-Latn-NR","naq":"naq-Latn-NA","nb":"nb-Latn-NO","nd":"nd-Latn-ZW","nds":"nds-Latn-DE","ne":"ne-Deva-NP","niu":"niu-Latn-NU","nl":"nl-Latn-NL","nmg":"nmg-Latn-CM","nn":"nn-Latn-NO","nnh":"nnh-Latn-CM","nr":"nr-Latn-ZA","nso":"nso-Latn-ZA","nus":"nus-Latn-SD","ny":"ny-Latn-MW","nyn":"nyn-Latn-UG","oc":"oc-Latn-FR","om":"om-Latn-ET","or":"or-Orya-IN","os":"os-Cyrl-GE","pa":"pa-Guru-IN","pa-Arab":"pa-Arab-PK","pa-PK":"pa-Arab-PK","pag":"pag-Latn-PH","pap":"pap-Latn-AN","pau":"pau-Latn-PW","pl":"pl-Latn-PL","pon":"pon-Latn-FM","ps":"ps-Arab-AF","pt":"pt-Latn-BR","qu":"qu-Latn-PE","rm":"rm-Latn-CH","rn":"rn-Latn-BI","ro":"ro-Latn-RO","rof":"rof-Latn-TZ","ru":"ru-Cyrl-RU","rw":"rw-Latn-RW","rwk":"rwk-Latn-TZ","sa":"sa-Deva-IN","sah":"sah-Cyrl-RU","saq":"saq-Latn-KE","sat":"sat-Latn-IN","sbp":"sbp-Latn-TZ","sd":"sd-Arab-IN","se":"se-Latn-NO","seh":"seh-Latn-MZ","ses":"ses-Latn-ML","sg":"sg-Latn-CF","shi":"shi-Tfng-MA","shi-MA":"shi-Latn-MA","si":"si-Sinh-LK","sid":"sid-Latn-ET","sk":"sk-Latn-SK","sl":"sl-Latn-SI","sm":"sm-Latn-WS","sn":"sn-Latn-ZW","so":"so-Latn-SO","sq":"sq-Latn-AL","sr":"sr-Cyrl-RS","sr-ME":"sr-Latn-ME","ss":"ss-Latn-ZA","ssy":"ssy-Latn-ER","st":"st-Latn-ZA","su":"su-Latn-ID","sv":"sv-Latn-SE","sw":"sw-Latn-TZ","swc":"swc-Latn-CD","ta":"ta-Taml-IN","te":"te-Telu-IN","teo":"teo-Latn-UG","tet":"tet-Latn-TL","tg":"tg-Cyrl-TJ","th":"th-Thai-TH","ti":"ti-Ethi-ET","tig":"tig-Ethi-ER","tk":"tk-Latn-TM","tkl":"tkl-Latn-TK","tl":"tl-Latn-PH","tn":"tn-Latn-ZA","to":"to-Latn-TO","tpi":"tpi-Latn-PG","tr":"tr-Latn-TR","trv":"trv-Latn-TW","ts":"ts-Latn-ZA","tsg":"tsg-Latn-PH","tt":"tt-Cyrl-RU","tvl":"tvl-Latn-TV","twq":"twq-Latn-NE","ty":"ty-Latn-PF","tyv":"tyv-Cyrl-RU","tzm":"tzm-Latn-MA","udm":"udm-Cyrl-RU","ug":"ug-Arab-CN","uk":"uk-Cyrl-UA","uli":"uli-Latn-FM","und":"en-Latn-US","AD":"ca-Latn-AD","AE":"ar-Arab-AE","AF":"fa-Arab-AF","AL":"sq-Latn-AL","AM":"hy-Armn-AM","AN":"pap-Latn-AN","AO":"pt-Latn-AO","AR":"es-Latn-AR","Arab":"ar-Arab-EG","Arab-CN":"ug-Arab-CN","Arab-IN":"ur-Arab-IN","Arab-NG":"ha-Arab-NG","Arab-PK":"ur-Arab-PK","Armi":"arc-Armi-IR","Armn":"hy-Armn-AM","AS":"sm-Latn-AS","AT":"de-Latn-AT","Avst":"ae-Avst-IR","AW":"nl-Latn-AW","AX":"sv-Latn-AX","AZ":"az-Latn-AZ","BA":"bs-Latn-BA","Bali":"ban-Bali-ID","Bamu":"bax-Bamu-CM","Batk":"bbc-Batk-ID","BD":"bn-Beng-BD","BE":"nl-Latn-BE","Beng":"bn-Beng-BD","BF":"fr-Latn-BF","BG":"bg-Cyrl-BG","BH":"ar-Arab-BH","BI":"rn-Latn-BI","BJ":"fr-Latn-BJ","BL":"fr-Latn-BL","BN":"ms-Latn-BN","BO":"es-Latn-BO","Bopo":"zh-Bopo-TW","BR":"pt-Latn-BR","Brah":"pra-Brah-IN","Brai":"und-Brai-FR","BT":"dz-Tibt-BT","Bugi":"bug-Bugi-ID","Buhd":"bku-Buhd-PH","BY":"be-Cyrl-BY","Cakm":"ccp-Cakm-BD","Cans":"cr-Cans-CA","Cari":"xcr-Cari-TR","CD":"sw-Latn-CD","CF":"fr-Latn-CF","CG":"fr-Latn-CG","CH":"de-Latn-CH","Cham":"cjm-Cham-VN","Cher":"chr-Cher-US","CI":"fr-Latn-CI","CL":"es-Latn-CL","CM":"fr-Latn-CM","CN":"zh-Hans-CN","CO":"es-Latn-CO","Copt":"cop-Copt-EG","CP":"fr-Latn-CP","Cprt":"grc-Cprt-CY","CR":"es-Latn-CR","CU":"es-Latn-CU","CV":"pt-Latn-CV","CY":"el-Grek-CY","Cyrl":"ru-Cyrl-RU","Cyrl-BA":"sr-Cyrl-BA","Cyrl-GE":"ab-Cyrl-GE","CZ":"cs-Latn-CZ","DE":"de-Latn-DE","Deva":"hi-Deva-IN","DJ":"aa-Latn-DJ","DK":"da-Latn-DK","DO":"es-Latn-DO","DZ":"ar-Arab-DZ","EA":"es-Latn-EA","EC":"es-Latn-EC","EE":"et-Latn-EE","EG":"ar-Arab-EG","Egyp":"egy-Egyp-EG","EH":"ar-Arab-EH","ER":"ti-Ethi-ER","ES":"es-Latn-ES","Ethi":"am-Ethi-ET","FI":"fi-Latn-FI","FM":"chk-Latn-FM","FO":"fo-Latn-FO","FR":"fr-Latn-FR","GA":"fr-Latn-GA","GE":"ka-Geor-GE","Geor":"ka-Geor-GE","GF":"fr-Latn-GF","GH":"ak-Latn-GH","GL":"kl-Latn-GL","Glag":"cu-Glag-BG","GN":"fr-Latn-GN","Goth":"got-Goth-UA","GP":"fr-Latn-GP","GQ":"es-Latn-GQ","GR":"el-Grek-GR","Grek":"el-Grek-GR","GT":"es-Latn-GT","Gujr":"gu-Gujr-IN","Guru":"pa-Guru-IN","GW":"pt-Latn-GW","Hang":"ko-Hang-KR","Hani":"zh-Hans-CN","Hano":"hnn-Hano-PH","Hans":"zh-Hans-CN","Hant":"zh-Hant-TW","Hebr":"he-Hebr-IL","Hira":"ja-Hira-JP","HK":"zh-Hant-HK","HN":"es-Latn-HN","HR":"hr-Latn-HR","HT":"ht-Latn-HT","HU":"hu-Latn-HU","IC":"es-Latn-IC","ID":"id-Latn-ID","IL":"he-Hebr-IL","IN":"hi-Deva-IN","IQ":"ar-Arab-IQ","IR":"fa-Arab-IR","IS":"is-Latn-IS","IT":"it-Latn-IT","Ital":"ett-Ital-IT","Java":"jv-Java-ID","JO":"ar-Arab-JO","JP":"ja-Jpan-JP","Jpan":"ja-Jpan-JP","Kali":"eky-Kali-MM","Kana":"ja-Kana-JP","KG":"ky-Cyrl-KG","KH":"km-Khmr-KH","Khar":"pra-Khar-PK","Khmr":"km-Khmr-KH","KM":"ar-Arab-KM","Knda":"kn-Knda-IN","Kore":"ko-Kore-KR","KP":"ko-Kore-KP","KR":"ko-Kore-KR","Kthi":"bh-Kthi-IN","KW":"ar-Arab-KW","KZ":"ru-Cyrl-KZ","LA":"lo-Laoo-LA","Lana":"nod-Lana-TH","Laoo":"lo-Laoo-LA","Latn-CN":"za-Latn-CN","Latn-CY":"tr-Latn-CY","Latn-DZ":"fr-Latn-DZ","Latn-ER":"aa-Latn-ER","Latn-KM":"fr-Latn-KM","Latn-MA":"fr-Latn-MA","Latn-MK":"sq-Latn-MK","Latn-MR":"fr-Latn-MR","Latn-SY":"fr-Latn-SY","Latn-TN":"fr-Latn-TN","LB":"ar-Arab-LB","Lepc":"lep-Lepc-IN","LI":"de-Latn-LI","Limb":"lif-Limb-IN","Linb":"grc-Linb-GR","Lisu":"lis-Lisu-CN","LK":"si-Sinh-LK","LS":"st-Latn-LS","LT":"lt-Latn-LT","LU":"fr-Latn-LU","LV":"lv-Latn-LV","LY":"ar-Arab-LY","Lyci":"xlc-Lyci-TR","Lydi":"xld-Lydi-TR","MA":"ar-Arab-MA","Mand":"myz-Mand-IR","MC":"fr-Latn-MC","MD":"ro-Latn-MD","ME":"sr-Latn-ME","Merc":"xmr-Merc-SD","Mero":"xmr-Mero-SD","MF":"fr-Latn-MF","MG":"mg-Latn-MG","MK":"mk-Cyrl-MK","ML":"bm-Latn-ML","Mlym":"ml-Mlym-IN","MM":"my-Mymr-MM","MN":"mn-Cyrl-MN","MO":"zh-Hant-MO","Mong":"mn-Mong-CN","MQ":"fr-Latn-MQ","MR":"ar-Arab-MR","MT":"mt-Latn-MT","Mtei":"mni-Mtei-IN","MU":"mfe-Latn-MU","MV":"dv-Thaa-MV","MX":"es-Latn-MX","MY":"ms-Latn-MY","Mymr":"my-Mymr-MM","MZ":"pt-Latn-MZ","NA":"kj-Latn-NA","NC":"fr-Latn-NC","NE":"ha-Latn-NE","NI":"es-Latn-NI","Nkoo":"man-Nkoo-GN","NL":"nl-Latn-NL","NO":"nb-Latn-NO","NP":"ne-Deva-NP","Ogam":"sga-Ogam-IE","Olck":"sat-Olck-IN","OM":"ar-Arab-OM","Orkh":"otk-Orkh-MN","Orya":"or-Orya-IN","Osma":"so-Osma-SO","PA":"es-Latn-PA","PE":"es-Latn-PE","PF":"fr-Latn-PF","PG":"tpi-Latn-PG","PH":"fil-Latn-PH","Phag":"lzh-Phag-CN","Phli":"pal-Phli-IR","Phnx":"phn-Phnx-LB","PK":"ur-Arab-PK","PL":"pl-Latn-PL","Plrd":"hmd-Plrd-CN","PM":"fr-Latn-PM","PR":"es-Latn-PR","Prti":"xpr-Prti-IR","PS":"ar-Arab-PS","PT":"pt-Latn-PT","PW":"pau-Latn-PW","PY":"gn-Latn-PY","QA":"ar-Arab-QA","RE":"fr-Latn-RE","Rjng":"rej-Rjng-ID","RO":"ro-Latn-RO","RS":"sr-Cyrl-RS","RU":"ru-Cyrl-RU","Runr":"non-Runr-SE","RW":"rw-Latn-RW","SA":"ar-Arab-SA","Samr":"smp-Samr-IL","Sarb":"xsa-Sarb-YE","Saur":"saz-Saur-IN","SC":"fr-Latn-SC","SD":"ar-Arab-SD","SE":"sv-Latn-SE","Shaw":"en-Shaw-GB","Shrd":"sa-Shrd-IN","SI":"sl-Latn-SI","Sinh":"si-Sinh-LK","SJ":"nb-Latn-SJ","SK":"sk-Latn-SK","SM":"it-Latn-SM","SN":"fr-Latn-SN","SO":"so-Latn-SO","Sora":"srb-Sora-IN","SR":"nl-Latn-SR","ST":"pt-Latn-ST","Sund":"su-Sund-ID","SV":"es-Latn-SV","SY":"ar-Arab-SY","Sylo":"syl-Sylo-BD","Syrc":"syr-Syrc-SY","Tagb":"tbw-Tagb-PH","Takr":"doi-Takr-IN","Tale":"tdd-Tale-CN","Talu":"khb-Talu-CN","Taml":"ta-Taml-IN","Tavt":"blt-Tavt-VN","TD":"fr-Latn-TD","Telu":"te-Telu-IN","Tfng":"shi-Tfng-TN","TG":"fr-Latn-TG","Tglg":"fil-Tglg-PH","TH":"th-Thai-TH","Thaa":"dv-Thaa-MV","Thai":"th-Thai-TH","Tibt":"bo-Tibt-CN","TJ":"tg-Cyrl-TJ","TK":"tkl-Latn-TK","TL":"pt-Latn-TL","TM":"tk-Latn-TM","TN":"ar-Arab-TN","TO":"to-Latn-TO","TR":"tr-Latn-TR","TV":"tvl-Latn-TV","TW":"zh-Hant-TW","TZ":"sw-Latn-TZ","UA":"uk-Cyrl-UA","UG":"sw-Latn-UG","Ugar":"uga-Ugar-SY","UY":"es-Latn-UY","UZ":"uz-Cyrl-UZ","VA":"la-Latn-VA","Vaii":"vai-Vaii-LR","VE":"es-Latn-VE","VN":"vi-Latn-VN","VU":"bi-Latn-VU","WF":"fr-Latn-WF","WS":"sm-Latn-WS","Xpeo":"peo-Xpeo-IR","Xsux":"akk-Xsux-IQ","YE":"ar-Arab-YE","Yiii":"ii-Yiii-CN","YT":"fr-Latn-YT","ur":"ur-Arab-PK","uz":"uz-Cyrl-UZ","uz-AF":"uz-Arab-AF","uz-Arab":"uz-Arab-AF","vai":"vai-Vaii-LR","ve":"ve-Latn-ZA","vi":"vi-Latn-VN","vo":"vo-Latn-001","vun":"vun-Latn-TZ","wae":"wae-Latn-CH","wal":"wal-Ethi-ET","war":"war-Latn-PH","wo":"wo-Latn-SN","xh":"xh-Latn-ZA","xog":"xog-Latn-UG","yap":"yap-Latn-FM","yav":"yav-Latn-CM","yi":"yi-Hebr-IL","yo":"yo-Latn-NG","za":"za-Latn-CN","zh":"zh-Hans-CN","zh-Hani":"zh-Hans-CN","zh-Hant":"zh-Hant-TW","zh-HK":"zh-Hant-HK","zh-MO":"zh-Hant-MO","zh-TW":"zh-Hant-TW","zu":"zu-Latn-ZA"}
+;
 /*
  * localeinfo.js - Encode locale-specific defaults
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3398,7 +6267,7 @@ ilib.data.localeinfo_zh_MO = {
 
 // !depends ilibglobal.js locale.js
 
-// !data localeinfo
+// !data localeinfo likelylocales
 
 /**
  * @class
@@ -3416,7 +6285,12 @@ ilib.data.localeinfo_zh_MO = {
  * load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
- * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * 
  * If this copy of ilib is pre-assembled and all the data is already available, 
@@ -3435,6 +6309,8 @@ ilib.data.localeinfo_zh_MO = {
  * the current locale
  */
 ilib.LocaleInfo = function(locale, options) {
+	var sync = true;
+	
 	/* these are all the defaults. Essentially, en-US */
 	this.info = ilib.data.localeinfo;
 	
@@ -3451,42 +6327,52 @@ ilib.LocaleInfo = function(locale, options) {
 			break;
 	}
 	
+	if (options) {
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
+	}
+
+	if (!ilib.LocaleInfo.cache) {
+		ilib.LocaleInfo.cache = {};
+	}
+
 	var spec = this.locale.getSpec().replace(/-/g, "_");
-	if (typeof(ilib.data.localeInfo[spec]) === 'undefined') {
+	if (typeof(ilib.LocaleInfo.cache[spec]) === 'undefined') {
 		this.info = ilib.mergeLocData("localeinfo", this.locale);
 		if (this.info) {
-			ilib.data.localeInfo[spec] = this.info;
+			ilib.LocaleInfo.cache[spec] = this.info;
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
 		} else if (typeof(ilib._load) === 'function') {
 			// locale is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles("locale", this.locale, "localeinfo");
+			var files = ilib.getLocFiles(this.locale, "localeinfo");
 			
-			ilib._load(this, files, function(arr) {
+			ilib._load(files, sync, function(arr) {
 				this.info = {};
 				for (var i = 0; i < arr.length; i++) {
 					if (typeof(arr[i]) !== 'undefined') {
 						this.info = ilib.merge(this.info, arr[i]);
 					}
 				}
-				
-				ilib.data.localeInfo[spec] = this.info;
+	
+				ilib.LocaleInfo.cache[spec] = this.info;
 				
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
 				}
-			});
+			}.bind(this));
 		} else {
 			// no data other than the generic shared data
 			this.info = ilib.data.localeinfo;
-			ilib.data.localeInfo[spec] = this.info;
+			ilib.LocaleInfo.cache[spec] = this.info;
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
 		}
 	} else {
-		this.info = ilib.data.localeInfo[spec];
+		this.info = ilib.LocaleInfo.cache[spec];
 		if (options && typeof(options.onLoad) === 'function') {
 			options.onLoad(this);
 		}
@@ -3629,6 +6515,73 @@ ilib.LocaleInfo.prototype = {
 	 */
 	getRoundingMode: function () {
 		return this.info.numfmt.roundingMode;
+	},
+	
+	/**
+	 * Return the default script used to write text in the language of this 
+	 * locale. Text for most languages is written in only one script, but there
+	 * are some languages where the text can be written in a number of scripts,
+	 * depending on a variety of things such as the region, ethnicity, religion, 
+	 * etc. of the author. This method returns the default script for the
+	 * locale, in which the language is most commonly written.<p> 
+	 * 
+	 * The script is returned as an ISO 15924 4-letter code.
+	 * 
+	 * @returns {string} the ISO 15924 code for the default script used to write
+	 * text in this locale 
+	 */
+	getDefaultScript: function() {
+		return (this.info.scripts) ? this.info.scripts[0] : "Latn";
+	},
+	
+	/**
+	 * Return the script used for the current locale. If the current locale
+	 * explicitly defines a script, then this script is returned. If not, then 
+	 * the default script for the locale is returned.
+	 * 
+	 * @see ilib.LocaleInfo.getDefaultScript
+	 * @returns {string} the ISO 15924 code for the script used to write
+	 * text in this locale
+	 */
+	getScript: function() {
+		return this.locale.getScript() || this.getDefaultScript(); 
+	},
+	
+	/**
+	 * Return an array of script codes which are used to write text in the current
+	 * language. Text for most languages is written in only one script, but there
+	 * are some languages where the text can be written in a number of scripts,
+	 * depending on a variety of things such as the region, ethnicity, religion, 
+	 * etc. of the author. This method returns an array of script codes in which 
+	 * the language is commonly written.
+	 * 
+	 * @returns {Array.<string>} an array of ISO 15924 codes for the scripts used 
+	 * to write text in this language
+	 */
+	getAllScripts: function() {
+		return this.info.scripts || ["Latn"];
+	},
+	
+	/**
+	 * Return an ilib.Locale instance that is fully specified based on partial information
+	 * given to the constructor of this locale info instance. For example, if the locale
+	 * spec given to this locale info instance is simply "ru" (for the Russian language), 
+	 * then it will fill in the missing region and script tags and return a locale with 
+	 * the specifier "ru-RU-Cyrl". (ie. Russian language, Russian Federation, Cyrillic).
+	 * Any one or two of the language, script, or region parts may be left unspecified,
+	 * and the other one or two parts will be filled in automatically. If this
+	 * class has no information about the given locale, then the locale of this
+	 * locale info instance is returned unchanged.
+	 * 
+	 * @returns {ilib.Locale} the most likely completion of the partial locale given
+	 * to the constructor of this locale info instance
+	 */
+	getLikelyLocale: function () {
+		if (typeof(ilib.data.likelylocales[this.locale.getSpec()]) === 'undefined') {
+			return this.locale;
+		}
+		
+		return new ilib.Locale(ilib.data.likelylocales[this.locale.getSpec()]);
 	}
 };
 
@@ -4031,7 +6984,7 @@ ilib.Cal._constructors["gregorian"] = ilib.Cal.Gregorian;
 /*
  * gregoriandate.js - Represent a date in the Gregorian calendar
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4313,7 +7266,7 @@ ilib.Date.GregDate.prototype.calcComponents = function (rd) {
 		ilib.Date.GregDate.cumMonthLengthsLeap : 
 		ilib.Date.GregDate.cumMonthLengths; 
 	
-	ret.month = ilib.bsearch(remainder, cumulative);
+	ret.month = ilib.bsearch(Math.floor(remainder), cumulative);
 	remainder = remainder - cumulative[ret.month-1];
 	
 	ret.day = Math.floor(remainder);
@@ -4730,7 +7683,7 @@ ilib.data.timezones = {"Europe/Sofia":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l
 /*
  * timezone.js - Definition of a time zone class
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4786,6 +7739,11 @@ calendar/gregoriandate.js
  * load any missing locale data using the ilib loader callback.
  * When the data is loaded, the onLoad function is called with the current 
  * instance as a parameter. 
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * 
  * There is currently no way in the ECMAscript
@@ -4839,6 +7797,7 @@ calendar/gregoriandate.js
  * @param {Object} options Options guiding the construction of this time zone instance
  */
 ilib.TimeZone = function(options) {
+	var sync = true;
 	this.locale = new ilib.Locale();
 	this.isLocal = false;
 	
@@ -4871,12 +7830,17 @@ ilib.TimeZone = function(options) {
 			this.offset = (typeof(options.offset) === 'string') ? parseInt(options.offset, 10) : options.offset;
 			this.id = this.getDisplayName(undefined, undefined);
 		}
+		
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
 	}
 
 	//console.log("timezone: locale is " + this.locale);
 	
 	if (!this.id) {
 		var li = new ilib.LocaleInfo(this.locale, {
+			sync: sync,
 			onLoad: function (li) {
 				this.id = li.getTimeZone() || "Etc/UTC";
 				this._inittz();
@@ -5378,6 +8342,521 @@ ilib.TimeZone.prototype.useDaylightTime = function () {
 		(typeof(this.zone) !== 'undefined' && 
 		typeof(this.zone.s) !== 'undefined' && 
 		typeof(this.zone.e) !== 'undefined');
+};
+
+ilib.data.pseudomap = {
+	"a": "à",	
+	"c": "ç",	
+	"d": "ð",	
+	"e": "ë",	
+	"g": "ğ",	
+	"h": "ĥ",
+	"i": "í",	
+	"j": "ĵ",	
+	"k": "ķ",	
+	"l": "ľ",	
+	"n": "ñ",	
+	"o": "õ",	
+	"p": "þ",	
+	"r": "ŕ",	
+	"s": "š",	
+	"t": "ţ",	
+	"u": "ü",	
+	"w": "ŵ",	
+	"y": "ÿ",	
+	"z": "ž",	
+	"A": "Ã",
+	"B": "ß",
+	"C": "Ç",	
+	"D": "Ð",	
+	"E": "Ë",	
+	"G": "Ĝ",	
+	"H": "Ħ",
+	"I": "Ï",	
+	"J": "Ĵ",	
+	"K": "ĸ",	
+	"L": "Ľ",	
+	"N": "Ň",	
+	"O": "Ø",	
+	"R": "Ŗ",	
+	"S": "Š",	
+	"T": "Ť",	
+	"U": "Ú",	
+	"W": "Ŵ",	
+	"Y": "Ŷ",	
+	"Z": "Ż"	
+};
+/*
+ * resources.js - Resource bundle definition
+ * 
+ * Copyright © 2012-2013, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends ilibglobal.js locale.js strings.js util/utils.js
+
+// !data pseudomap
+
+/**
+ * @class
+ * Create a new resource bundle instance. The resource bundle loads strings
+ * appropriate for a particular locale and provides them via the getString 
+ * method.<p>
+ * 
+ * The options object may contain any (or none) of the following properties:
+ * 
+ * <ul>
+ * <li><i>locale</i> - The locale of the strings to load. If not specified, the default
+ * locale is the the default for the web page or app in which the bundle is 
+ * being loaded.
+ * <li><i>name</i> - Base name of the resource bundle to load. If not specified the default
+ * base name is "resources".
+ * <li><i>type</i> - Name the type of strings this bundle contains. Valid values are 
+ * "xml", "html", "text", or "raw". The default is "text". If the type is "xml" or "html",
+ * then XML/HTML entities and tags are not pseudo-translated. During a real translation, 
+ * HTML character entities are translated to their corresponding characters in a source
+ * string before looking that string up in the translations. Also, the characters "<", ">",
+ * and "&" are converted to entities again in the output, but characters are left as they
+ * are. If the type is "xml", "html", or "text" types, then the replacement parameter names
+ * are not pseudo-translated as well so that the output can be used for formatting with 
+ * the ilib.String class. If the type is raw, all characters are pseudo-translated, 
+ * including replacement parameters as well as XML/HTML tags and entities.  
+ * <li><i>lengthen</i> - when pseudo-translating the string, tell whether or not to 
+ * automatically lengthen the string to simulate "long" languages such as German
+ * or French. This is a boolean value. Default is false. 
+ * <li>onLoad - a callback function to call when the resources are fully 
+ * loaded. When the onLoad option is given, this class will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * </ul>
+ * 
+ * The locale option may be given as a locale spec string or as an 
+ * ilib.Locale object. If the locale option is not specified, then strings for
+ * the default locale will be loaded.<p> 
+ * 
+ * The name option can be used to put groups of strings together in a
+ * single bundle. The strings will then appear together in a JS object in
+ * a JS file that can be included before the ilib.<p>
+ * 
+ * A resource bundle with a particular name is actually a set of bundles
+ * that are each specific to a language, a language plus a region, or a language
+ * plus a region plus a variant. All bundles with the same base name should
+ * contain the same set of source strings, but with different translations for 
+ * the given locale. The user of the bundle does not need to be aware of 
+ * the locale of the bundle, as long as it contains values for the strings 
+ * it needs.<p>
+ * 
+ * Strings in bundles for a particular locale are inherited from parent bundles
+ * that are more generic. In general, the hierarchy is as follows:
+ * 
+ * <ol>
+ * <li>base_language_region_variant inherits from
+ * <li>base_language_region inherits from
+ * <li>base_language inherits from
+ * <li>base
+ * </ol>
+ * 
+ * That is, if the translation for a string does not exist in the current
+ * locale, the more-generic parent locale is searched for the string. In the
+ * worst case scenario, the string is not found in the base locale's strings. 
+ * In this case, the original source is returned as the translation. This allows
+ * developers to create code with new or changed strings in it and check in that
+ * code without waiting for the translations to be done first. The translated
+ * version of the app or web site will still function properly, but will show 
+ * a spurious untranslated string here and there until the translations are 
+ * done and also checked in.<p>   
+ *  
+ * The base is whatever language your developers use to code in. For
+ * a German web site, strings in the source code may be written in German 
+ * for example. Often this base is English, as many web sites are coded in
+ * English, but that is not required.<p>
+ * 
+ * The strings can be extracted with the ilib localization tool. Once the strings
+ * have been translated, the set of translated files can be generated with the
+ * same tool. The output from the tool can be used as input to the ResBundle
+ * object. It is up to the web page or app to make sure the JS file that defines
+ * the bundle is included before creating the ResBundle instance.<p>
+ * 
+ * A special locale "xx-XX" is used as the pseudo-translation locale because
+ * xx and XX are not a valid ISO language or country specifiers. 
+ * Pseudo-translation is a locale where the translations are generated on
+ * the fly based on the contents of the source string. Characters in the source 
+ * string are replaced with accented versions of those characters and returned. 
+ * This allows the strings to be readable in the UI (if somewhat funky-looking), 
+ * and yet a tester can easily verify that the string is properly externalized 
+ * and loaded from a resource bundle without waiting for any translations to 
+ * be completed.<p>
+ * 
+ * Example. If the source string is:
+ * 
+ * <pre>
+ * "This is a string"
+ * </pre>
+ * 
+ * then the pseudo-translated version might look something like this: 
+ * 
+ * <pre>
+ * "Ţħïş ïş á şţřïñĝ"
+ * </pre>
+ *<p>
+ * 
+ * When the "lengthen" property is set to true in the options, the 
+ * pseudotranslation code will add digits to the end of the string to simulate
+ * the lengthening that occurs when translating to other languages. The above 
+ * example will come out like this:
+ * 
+ * <pre>
+ * "Ţħïş ïş á şţřïñĝ76543210"
+ * </pre>
+ * 
+ * The string is lengthened according to the length of the source string. If
+ * the source string is less than 20 characters long, the string is lengthened 
+ * by 50%. If the source string is 20-40 
+ * characters long, the string is lengthened by 33%. If te string is greater
+ * than 40 characters long, the string is lengthened by 20%.<p>
+ * 
+ * The pseudotranslation always ends a string with the digit "0". If you do
+ * not see the digit "0" in the UI for your app, you know that truncation
+ * has occurred, and the number you see at the end of the string tells you 
+ * how many characters were truncated.<p>
+ * 
+ * Depends directive: !depends resources.js
+ * 
+ * @constructor
+ * @param {?Object} options Options controlling how the bundle is created
+ */
+ilib.ResBundle = function (options) {
+	var lookupLocale, spec, sync = true;
+	
+	this.locale = new ilib.Locale();	// use the default locale
+	this.baseName = "strings";
+	this.type = "text";
+	
+	if (options) {
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? 
+					new ilib.Locale(options.locale) :
+					options.locale;
+		}
+		if (options.name) {
+			this.baseName = options.name;
+		}
+		if (options.type) {
+			this.type = options.type;
+		}
+		this.lengthen = options.lengthen || false;
+		
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
+	}
+	
+	this.map = {};
+
+	if (!ilib.ResBundle.cache) {
+		ilib.ResBundle.cache = {};
+	}
+
+	lookupLocale = this.locale.isPseudo() ? new ilib.Locale() : this.locale;
+	spec = lookupLocale.getSpec().replace(/-/g, '_');
+	
+	if (typeof(ilib.ResBundle.cache[this.baseName]) === 'undefined') {
+		ilib.ResBundle.cache[this.baseName] = {};
+	}
+	
+	if (typeof(ilib.ResBundle.cache[this.baseName][spec]) !== 'undefined') {
+		this.map = ilib.ResBundle.cache[this.baseName][spec];
+		if (options && typeof(options.onLoad) === 'function') {
+			options.onLoad(this);
+		}
+	} else {
+		this.map = ilib.mergeLocData(this.baseName, lookupLocale);
+		if (this.map) {
+			ilib.ResBundle.cache[this.baseName][spec] = this.map;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		} else if (typeof(ilib._load) === 'function') {
+			// locale is not preassembled, so attempt to load it dynamically
+			var files = ilib.getLocFiles(this.locale, this.baseName);
+			
+			ilib._load(files, sync, function(arr) {
+				this.map = {};
+				for (var i = 0; i < arr.length; i++) {
+					if (typeof(arr[i]) !== 'undefined') {
+						this.map = ilib.merge(this.map, arr[i]);
+					}
+				}
+				ilib.ResBundle.cache[this.baseName][spec] = this.map;
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
+			}.bind(this));
+		} else {
+			this.map = ilib.data[this.baseName] || {};
+			ilib.ResBundle.cache[this.baseName][spec] = this.map;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		}
+	}	
+	
+	// console.log("Merged resources " + this.locale.toString() + " are: " + JSON.stringify(this.map));
+	//if (!this.locale.isPseudo() && ilib.isEmpty(this.map)) {
+	//	console.log("Resources for bundle " + this.baseName + " locale " + this.locale.toString() + " are not available.");
+	//}
+};
+
+ilib.ResBundle.prototype = {
+	/**
+	 * Return the locale of this resource bundle.
+	 * @returns {ilib.Locale} the locale of this resource bundle object 
+	 */
+	getLocale: function () {
+		return this.locale;
+	},
+	
+	/**
+	 * Return the name of this resource bundle. This corresponds to the name option
+	 * given to the constructor.
+	 * @returns {string} name of the the current instance
+	 */
+	getName: function () {
+		return this.baseName;
+	},
+	
+	/**
+	 * Return the type of this resource bundle. This corresponds to the type option
+	 * given to the constructor.
+	 * @returns {string} type of the the current instance
+	 */
+	getType: function () {
+		return this.type;
+	},
+
+	/*
+	 * @private
+	 * Pseudo-translate a string
+	 */
+	pseudo: function (str) {
+		if (!str) {
+			return undefined;
+		}
+		var ret = "", i;
+		for (i = 0; i < str.length; i++) {
+			if (this.type !== "raw") {
+				if (this.type === "html" || this.type === "xml") {
+					if (str.charAt(i) === '<') {
+						ret += str.charAt(i++);
+						while (i < str.length && str.charAt(i) !== '>') {
+							ret += str.charAt(i++);
+						}
+						if (i < str.length) {
+							ret += str.charAt(i++);
+						}
+					} else if (str.charAt(i) === '&') {
+						ret += str.charAt(i++);
+						while (i < str.length && str.charAt(i) !== ';' && str.charAt(i) !== ' ') {
+							ret += str.charAt(i++);
+						}
+						if (i < str.length) {
+							ret += str.charAt(i++);
+						}
+					}
+				}
+				if (i < str.length) { 
+					if (str.charAt(i) === '{') {
+						ret += str.charAt(i++);
+						while (i < str.length && str.charAt(i) !== '}') {
+							ret += str.charAt(i++);
+						}
+						if (i < str.length) {
+							ret += str.charAt(i);
+						}
+					} else {
+						ret += ilib.data.pseudomap[str.charAt(i)] || str.charAt(i);
+					}
+				}
+			} else {
+				ret += ilib.data.pseudomap[str.charAt(i)] || str.charAt(i);
+			}
+		}
+		if (this.lengthen) {
+			var add;
+			if (ret.length <= 20) {
+				add = Math.round(ret.length / 2);
+			} else if (ret.length > 20 && ret.length <= 40) {
+				add = Math.round(ret.length / 3);
+			} else {
+				add = Math.round(ret.length / 5);
+			}
+			for (i = add-1; i >= 0; i--) {
+				ret += (i % 10);
+			}
+		}
+		return ret;
+	},
+	
+	/*
+	 * @private
+	 * Escape html characters in the output.
+	 */
+	escapeXml: function (str) {
+		str = str.replace(/&/g, '&amp;');
+		str = str.replace(/</g, '&lt;');
+		str = str.replace(/>/g, '&gt;');
+		return str;
+	},
+
+	/*
+	 * @private
+	 * @param {string} str the string to unescape
+	 */
+	unescapeXml: function (str) {
+		str = str.replace(/&amp;/g, '&');
+		str = str.replace(/&lt;/g, '<');
+		str = str.replace(/&gt;/g, '>');
+		return str;
+	},
+	
+	/*
+	 * @private
+	 * Create a key name out of a source string. All this does so far is 
+	 * compress sequences of white space into a single space on the assumption
+	 * that this doesn't really change the meaning of the string, and therefore
+	 * all such strings that compress to the same thing should share the same
+	 * translation.
+	 * @param {string} source the source string to make a key out of
+	 */
+	makeKey: function (source) {
+		var key = source.replace(/\s+/gm, ' ');
+		return (this.type === "xml" || this.type === "html") ? this.unescapeXml(key) : key;
+	},
+	
+	/**
+	 * Return a localized string. If the string is not found in the loaded set of
+	 * resources, the original source string is returned. If the key is not given,
+	 * then the source string itself is used as the key. In the case where the 
+	 * source string is used as the key, the whitespace is compressed down to 1 space
+	 * each, and the whitespace at the beginning and end of the string is trimmed.<p>
+	 * 
+	 * The escape mode specifies what type of output you are escaping the returned
+	 * string for. Modes are similar to the types: 
+	 * 
+	 * <ul>
+	 * <li>"html" -- prevents HTML injection by escaping the characters &lt &gt; and &amp;
+	 * <li>"xml" -- currently same as "html" mode
+	 * <li>"js" -- prevents breaking Javascript syntax by backslash escaping all quote and 
+	 * double-quote characters
+	 * <li>"attribute" -- meant for HTML attribute values. Currently this is the same as
+	 * "js" escape mode.
+	 * <li>"default" -- use the type parameter from the constructor as the escape mode as well
+	 * <li>"none" or undefined -- no escaping at all.
+	 * </ul>
+	 * 
+	 * The type parameter of the constructor specifies what type of strings this bundle
+	 * is operating upon. This allows pseudo-translation and automatic key generation
+	 * to happen properly by telling this class how to parse the string. The escape mode 
+	 * for this method is different in that it specifies how this string will be used in 
+	 * the calling code and therefore how to escape it properly.<p> 
+	 * 
+	 * For example, a section of Javascript code may be constructing an HTML snippet in a 
+	 * string to add to the web page. In this case, the type parameter in the constructor should
+	 * be "html" so that the source string can be parsed properly, but the escape mode should
+	 * be "js" so that the output string can be used in Javascript without causing syntax
+	 * errors.
+	 * 
+	 * @param {?string=} source the source string to translate
+	 * @param {?string=} key optional name of the key, if any
+	 * @param {?string=} escapeMode escape mode, if any
+	 * @returns {ilib.String|undefined} the translation of the given source/key or undefined 
+	 * if the translation is not found and the source is undefined 
+	 */
+	getString: function (source, key, escapeMode) {
+		if (!source && !key) return undefined;
+
+		var trans;
+		if (this.locale.isPseudo()) {
+			var str = source ? source : this.map[key];
+			trans = this.pseudo(str || key);
+		} else {
+			var keyName = key || this.makeKey(source);
+			trans = typeof(this.map[keyName]) !== 'undefined' ? this.map[keyName] : source;
+		}
+
+		if (escapeMode && escapeMode !== "none") {
+			if (escapeMode == "default") {
+				escapeMode = this.type;
+			}
+			if (escapeMode === "xml" || escapeMode === "html") {
+				trans = this.escapeXml(trans);
+			} else if (escapeMode == "js" || escapeMode === "attribute") {
+				trans = trans.replace(/'/g, "\\\'").replace(/"/g, "\\\"");
+			}
+		}
+		return trans === undefined ? undefined : new ilib.String(trans);
+	},
+	
+	/**
+	 * Return true if the current bundle contains a translation for the given key and
+	 * source. The
+	 * getString method will always return a string for any given key and source 
+	 * combination, so it cannot be used to tell if a translation exists. Either one
+	 * or both of the source and key must be specified. If both are not specified,
+	 * this method will return false.
+	 * 
+	 * @param {?string=} source source string to look up
+	 * @param {?string=} key key to look up
+	 * @returns {boolean} true if this bundle contains a translation for the key, and 
+	 * false otherwise
+	 */
+	containsKey: function(source, key) {
+		if (typeof(source) === 'undefined' && typeof(key) === 'undefined') {
+			return false;
+		}
+		
+		var keyName = key || this.makeKey(source);
+		return typeof(this.map[keyName]) !== 'undefined';
+	},
+	
+	/**
+	 * Return the merged resources as an entire object. When loading resources for a
+	 * locale that are not just a set of translated strings, but instead an entire 
+	 * structured object, you can gain access to that object via this call. This method
+	 * will ensure that all the of the parts of the object are correct for the locale.
+	 * It starts by loading <i>ilib.data[name]</i>, where <i>name</i> is the base name
+	 * for this set of resources. Then, it successively overwrites objects in the base
+	 * data using locale-specific data. It loads it in this order from <i>ilib.data</i>:
+	 * 
+	 * <ol>
+	 * <li> name + "_" + language
+	 * <li> name + "_" + language + "_" + region
+	 * <li> name + "_" + language + "_" + region + "_" + variant
+	 * 
+	 * Loading the resources this way allows the program to share resources between all
+	 * locales that share a common language, or a common language and region. As a 
+	 * general rule-of-thumb, resources should be as generic as possible in order to
+	 * cover as many locales as possible.
+	 * 
+	 * @returns {Object} returns the object that is the basis for this resources instance
+	 */
+	getResObj: function () {
+		return this.map;
+	}
 };
 
 ilib.data.dateformats = {
@@ -8359,10 +11838,16 @@ ilib.data.sysres = {
 	"EE6": "Sa",
 	"E6": "S",
 	"ordinalChoice": "1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th",
-	"a0": "am",
-	"a1": "pm",
+	"a0": "AM",
+	"a1": "PM",
 	"G-1": "BCE",
 	"G1": "CE",
+	
+	"separatorFull": ", ",
+	"finalSeparatorFull": ", and ",
+	"separatorShort":" ",
+	"separatorMedium":" ",
+	"separatorLong":", ",
 	
 	"N1-hebrew": "N",
 	"N2-hebrew": "I",
@@ -8617,29 +12102,29 @@ ilib.data.sysres_af = {
 	"a1": "nm.",
 	"G-1": "v.C.",
 	"G1": "n.C.",
-	"in {duration}": "In {duration}",
+	"in {duration}": "in {duration}",
 	"{duration} ago": "{duration} gelede",
-	"1#1 year|#{num} years": "1#{num} jaar|#{num} jaar",
+	"1#1 year|#{num} years": "#{num} jaar",
 	"1#1 month|#{num} months": "1#{num} maand|#{num} maande",
 	"1#1 week|#{num} weeks": "1#{num} week|#{num} weke",
 	"1#1 day|#{num} days": "1#{num} dag|#{num} dae",
-	"1#1 hour|#{num} hours": "1#{num} uur|#{num} uur",
+	"1#1 hour|#{num} hours": "#{num} uur",
 	"1#1 minute|#{num} minutes": "1#{num} minuut|#{num} minute",
 	"1#1 second|#{num} seconds": "1#{num} sekonde|#{num} sekondes",
-	"1#1 yr|#{num} yrs": "1#{num} jaar|#{num} jr",
-	"1#1 mon|#{num} mons": "1#{num} maand|#{num} mnde",
+	"1#1 yr|#{num} yrs": "#{num} jr",
+	"1#1 mon|#{num} mons": "1#{num} mnd|#{num} mnde",
 	"1#1 wk|#{num} wks": "1#{num} week|#{num} weke",
 	"durationLongDays": "1#{num} dag|#{num} dae",
-	"1#1 hr|#{num} hrs": "1#{num} uur|#{num} uur",
-	"1#1 min|#{num} min": "1#{num} minuut|#{num} min",
-	"1#1 sec|#{num} sec": "1#{num} sekonde|#{num} sek",
-	"durationMediumYears": "1#{num} ja|#{num} jr",
-	"1#1 mo|#{num} mos": "1#{num} ma|#{num} mn",
-	"durationMediumWeeks": "1#{num} we|#{num} we",
-	"1#1 dy|#{num} dys": "1#{num} da|#{num} da",
-	"durationMediumHours": "1#{num} uu|#{num} uu",
-	"1#1 mi|#{num} min": "1#{num} mi|#{num} mi",
-	"1#1 se|#{num} sec": "1#{num} se|#{num} se",
+	"1#1 hr|#{num} hrs": "#{num} uur",
+	"1#1 min|#{num} min": "#{num} min",
+	"1#1 sec|#{num} sec": "#{num} sek",
+	"durationMediumYears": "#{num} jr",
+	"1#1 mo|#{num} mos": "#{num} ma",
+	"durationMediumWeeks": "#{num} we",
+	"1#1 dy|#{num} dys": "#{num} da",
+	"durationMediumHours": "#{num} uu",
+	"1#1 mi|#{num} min": "#{num} mi",
+	"1#1 se|#{num} sec": "#{num} se",
 	"#{num}y": "#{num}j",
 	"durationShortMonths": "#{num}m",
 	"#{num}w": "#{num}w",
@@ -8656,6 +12141,7 @@ ilib.data.sysres_af = {
 	"#{num} ms": "#{num} ms"
 }
 ;
+ilib.data.sysres_af_ZA = {};
 ilib.data.sysres_da = {
 	"NN1": "ja",
 	"NN2": "fe",
@@ -8702,13 +12188,13 @@ ilib.data.sysres_da = {
 	"EE4": "to",
 	"EE5": "fr",
 	"EE6": "lø",
-	"EEE0": "søn",
-	"EEE1": "man",
-	"EEE2": "tir",
-	"EEE3": "ons",
-	"EEE4": "tor",
-	"EEE5": "fre",
-	"EEE6": "lør",
+	"EEE0": "søn.",
+	"EEE1": "man.",
+	"EEE2": "tir.",
+	"EEE3": "ons.",
+	"EEE4": "tor.",
+	"EEE5": "fre.",
+	"EEE6": "lør.",
 	"EEEE0": "søndag",
 	"EEEE1": "mandag",
 	"EEEE2": "tirsdag",
@@ -8720,7 +12206,7 @@ ilib.data.sysres_da = {
 	"a1": "e.m.",
 	"G-1": "f.Kr.",
 	"G1": "e.Kr.",
-	"in {duration}": "Om {duration}",
+	"in {duration}": "om {duration}",
 	"{duration} ago": "{duration} siden",
 	"1#1 year|#{num} years": "1#{num} år|#{num} år",
 	"1#1 month|#{num} months": "1#{num} måned|#{num} måneder",
@@ -8730,8 +12216,8 @@ ilib.data.sysres_da = {
 	"1#1 minute|#{num} minutes": "1#{num} minut|#{num} minutter",
 	"1#1 second|#{num} seconds": "1#{num} sekund|#{num} sekunder",
 	"1#1 millisecond|#{num} milliseconds": "1#{num} millisekund|#{num} millisekunder",
-	"1#1 yr|#{num} yrs": "1#{num} år|#{num} år",
-	"1#1 mon|#{num} mons": "1#{num} mdr.|#{num} mdr.",
+	"1#1 yr|#{num} yrs": "#{num} år",
+	"1#1 mon|#{num} mons": "#{num} mdr.",
 	"1#1 wk|#{num} wks": "1#{num} uge|#{num} uger",
 	"durationLongDays": "1#{num} dag|#{num} dage",
 	"1#1 hr|#{num} hrs": "1#{num} time|#{num} tmr.",
@@ -8759,25 +12245,34 @@ ilib.data.sysres_da = {
 	"finalSeparatorFull": " og "
 }
 ;
+ilib.data.sysres_da_DK = {};
 ilib.data.sysres_de = {
 	"MMMM1": "Januar",
+	"MMM1": "Jan.",
 	"MMMM2": "Februar",
+	"MMM2": "Feb.",
 	"MMMM3": "März",
-	"MMM3": "Mär",
+	"MMM3": "Mär.",
 	"NN3": "Mä",
+	"MMM4": "Apr.",
 	"MMMM5": "Mai",
 	"MMM5": "Mai",
 	"MMMM6": "Juni",
+	"MMM6": "Jun.",
 	"MMMM7": "Juli",
+	"MMM7": "Jul.",
+	"MMM8": "Aug.",
+	"MMM9": "Sep.",
 	"MMMM10": "Oktober",
-	"MMM10": "Okt",
+	"MMM10": "Okt.",
 	"NN10": "Ok",
+	"MMM11": "Nov.",
 	"MMMM12": "Dezember",
-	"MMM12": "Dez",
+	"MMM12": "Dez.",
 	"EEEE0": "Sonntag",
 	"EEE0": "So.",
 	"EE0": "So",
-	"EEEE1": "Monntag",
+	"EEEE1": "Montag",
 	"EEE1": "Mo.",
 	"EEEE2": "Dienstag",
 	"EEE2": "Di.",
@@ -8799,6 +12294,9 @@ ilib.data.sysres_de = {
 	"a0": "vorm.",
 	"a1": "nachm.",
 
+	"G-1": "v. Chr.",
+	"G1": "n. Chr.",
+	
 	"durationShortMillis": "#{num}Ms",
 	"#{num}s": "#{num}S",
 	"durationShortMinutes": "#{num}M",
@@ -8820,19 +12318,19 @@ ilib.data.sysres_de = {
 	"1#1 sec|#{num} sec": "#{num} Sek.",
 	"1#1 min|#{num} min": "#{num} Min.",
 	"1#1 hr|#{num} hrs": "#{num} Std.",
-	"durationLongDays": "1#1 Tag|#{num} Tage",
+	"durationLongDays": "1#{num} Tag|#{num} Tage",
 	"1#1 wk|#{num} wks": "#{num} Wch.",
 	"1#1 mon|#{num} mons": "#{num} Mon.",
 	"1#1 yr|#{num} yrs": "#{num} Jhr.",
 	
-	"1#1 millisecond|#{num} milliseconds": "1#1 Millisekunde|#{num} Millisekunden",
-	"1#1 second|#{num} seconds": "1#1 Sekunde|#{num} Sekunden",
-	"1#1 minute|#{num} minutes": "1#1 Minute|#{num} Minuten",
-	"1#1 hour|#{num} hours": "1#1 Stunde|#{num} Stunden",
-	"1#1 day|#{num} days": "1#1 Tag|#{num} Tage",
-	"1#1 week|#{num} weeks": "1#1 Woche|#{num} Wochen",
-	"1#1 month|#{num} months": "1#1 Monat|#{num} Monate",
-	"1#1 year|#{num} years": "1#1 Jahr|#{num} Jahre",
+	"1#1 millisecond|#{num} milliseconds": "1#{num} Millisekunde|#{num} Millisekunden",
+	"1#1 second|#{num} seconds": "1#{num} Sekunde|#{num} Sekunden",
+	"1#1 minute|#{num} minutes": "1#{num} Minute|#{num} Minuten",
+	"1#1 hour|#{num} hours": "1#{num} Stunde|#{num} Stunden",
+	"1#1 day|#{num} days": "1#{num} Tag|#{num} Tage",
+	"1#1 week|#{num} weeks": "1#{num} Woche|#{num} Wochen",
+	"1#1 month|#{num} months": "1#{num} Monat|#{num} Monate",
+	"1#1 year|#{num} years": "1#{num} Jahr|#{num} Jahre",
 	
 	"{duration} ago": "vor {duration}",
 	"in {duration}": "in {duration}",
@@ -8841,16 +12339,46 @@ ilib.data.sysres_de = {
 	"separatorMedium": " ",
 	"separatorLong": ", ",
 	"separatorFull": ", ",
-	"finalSeparatorFull": ", und "
+	"finalSeparatorFull": " und "
 };
-ilib.data.sysres_en_CA = {
-	"a0": "AM",
-	"a1": "PM"
+ilib.data.sysres_de_AT = {
+	"NN1":"Jä",
+	"MMM1":"Jän",
+	"MMMM1":"Jänner"
 };
-ilib.data.sysres_en_GB = {
-	"a0": "AM",
-	"a0": "PM"
+ilib.data.sysres_de_CH = {};
+ilib.data.sysres_de_DE = {};
+ilib.data.sysres_en = {}
+;
+ilib.data.sysres_en_AU = {}
+;
+ilib.data.sysres_en_CA = {}
+;
+ilib.data.sysres_en_GB = {}
+;
+ilib.data.sysres_en_IE = {
+	"a0":"a.m.",
+	"a1":"p.m."
 };
+ilib.data.sysres_en_IN = {}
+;
+ilib.data.sysres_en_NG = {}
+;
+ilib.data.sysres_en_NZ = {}
+;
+ilib.data.sysres_en_PH = {}
+;
+ilib.data.sysres_en_PK = {}
+;
+ilib.data.sysres_en_US = {
+	"a0":"am",
+	"a1":"pm",
+	"G-1":"BC",
+	"G1":"AD",
+	"finalSeparatorFull":" and "
+};
+ilib.data.sysres_en_ZA = {}
+;
 ilib.data.sysres_es = {
 	"MMMM1": "enero",
 	"MMM1": "ene",
@@ -8916,9 +12444,15 @@ ilib.data.sysres_es = {
 	"EEEE6": "sábado",
 	"EEE6": "sáb",
 	"EE6": "sá",
+	
 	"ordinalChoice": "#{num} º",
-	"a0": "AM",
-	"a1": "PM",
+	
+	"a0": "a.m.",
+	"a1": "p.m.",
+	
+	"G-1": "a.C.",
+	"G1": "d.C.",
+	
 	"durationShortMillis": "#{num}ms",
 	"#{num}s": "#{num}s",
 	"durationShortMinutes": "#{num}m",
@@ -8929,30 +12463,30 @@ ilib.data.sysres_es = {
 	"#{num}y": "#{num}a",
 
 	"#{num} ms": "#{num} ms",
-	"1#1 se|#{num} sec": "1#1 sg|#{num} sgs",
-	"1#1 mi|#{num} min": "1#1 mn|#{num} mns",
-	"durationMediumHours": "1#1 hr|#{num} hrs",
-	"1#1 dy|#{num} dys": "1#1 dí|#{num} dís",
-	"durationMediumWeeks": "1#1 sm|#{num} sms",
-	"1#1 mo|#{num} mos": "1#1 me|#{num} mss",
-	"durationMediumYears": "1#1 añ|#{num} añs",
+	"1#1 se|#{num} sec": "1#{num} sg|#{num} sgs",
+	"1#1 mi|#{num} min": "1#{num} mn|#{num} mns",
+	"durationMediumHours": "1#{num} hr|#{num} hrs",
+	"1#1 dy|#{num} dys": "1#{num} dí|#{num} dís",
+	"durationMediumWeeks": "1#{num} sm|#{num} sms",
+	"1#1 mo|#{num} mos": "1#{num} me|#{num} mss",
+	"durationMediumYears": "1#{num} añ|#{num} añs",
 
-	"1#1 sec|#{num} sec": "1#1 seg|#{num} segs",
-	"1#1 min|#{num} min": "1#1 min|#{num} mins",
-	"1#1 hr|#{num} hrs": "1#1 hor|#{num} hors",
-	"durationLongDays": "1#1 día|#{num} días",
-	"1#1 wk|#{num} wks": "1#1 sem|#{num} sems",
-	"1#1 mon|#{num} mons": "1#1 mes|#{num} mss",
-	"1#1 yr|#{num} yrs": "1#1 año|#{num} años",
+	"1#1 sec|#{num} sec": "1#{num} seg|#{num} segs",
+	"1#1 min|#{num} min": "1#{num} min|#{num} mins",
+	"1#1 hr|#{num} hrs": "1#{num} hor|#{num} hors",
+	"durationLongDays": "1#{num} día|#{num} días",
+	"1#1 wk|#{num} wks": "1#{num} sem|#{num} sems",
+	"1#1 mon|#{num} mons": "1#{num} mes|#{num} mss",
+	"1#1 yr|#{num} yrs": "1#{num} año|#{num} años",
 	
-	"1#1 millisecond|#{num} milliseconds": "1#1 millisegundo|#{num} millisegundos",
-	"1#1 second|#{num} seconds": "1#1 segundo|#{num} segundos",
-	"1#1 minute|#{num} minutes": "1#1 minuto|#{num} minutos",
-	"1#1 hour|#{num} hours": "1#1 hora|#{num} horas",
-	"1#1 day|#{num} days": "1#1 día|#{num} días",
-	"1#1 week|#{num} weeks": "1#1 semana|#{num} semanas",
-	"1#1 month|#{num} months": "1#1 mes|#{num} meses",
-	"1#1 year|#{num} years": "1#1 año|#{num} años",
+	"1#1 millisecond|#{num} milliseconds": "1#{num} millisegundo|#{num} millisegundos",
+	"1#1 second|#{num} seconds": "1#{num} segundo|#{num} segundos",
+	"1#1 minute|#{num} minutes": "1#{num} minuto|#{num} minutos",
+	"1#1 hour|#{num} hours": "1#{num} hora|#{num} horas",
+	"1#1 day|#{num} days": "1#{num} día|#{num} días",
+	"1#1 week|#{num} weeks": "1#{num} semana|#{num} semanas",
+	"1#1 month|#{num} months": "1#{num} mes|#{num} meses",
+	"1#1 year|#{num} years": "1#{num} año|#{num} años",
 	
 	"{duration} ago": "hace {duration}",
 	"in {duration}": "en {duration}",
@@ -8961,17 +12495,23 @@ ilib.data.sysres_es = {
 	"separatorMedium": " ",
 	"separatorLong": " ",
 	"separatorFull": ", ",
-	"finalSeparatorFull": ", y "
+	"finalSeparatorFull": " y "
 };
+ilib.data.sysres_es_AR = {};
+ilib.data.sysres_es_ES = {
+	"E3": "X",
+	"in {duration}": "dentro de {duration}"
+};
+ilib.data.sysres_es_MX = {};
 ilib.data.sysres_fr = {
 	"MMMM1": "janvier",
-	"MMM1": "jan",
+	"MMM1": "janv",
 	"NN1": "ja",
 	"MMMM2": "février",
-	"MMM2": "fev",
-	"NN2": "fe",
+	"MMM2": "févr",
+	"NN2": "fé",
 	"MMMM3": "mars",
-	"MMM3": "mar",
+	"MMM3": "mars",
 	"NN3": "ma",
 	"MMMM4": "avril",
 	"MMM4": "avr",
@@ -8980,16 +12520,16 @@ ilib.data.sysres_fr = {
 	"MMM5": "mai",
 	"NN5": "ma",
 	"MMMM6": "juin",
-	"MMM6": "jui",
+	"MMM6": "juin",
 	"NN6": "ju",
 	"MMMM7": "juillet",
-	"MMM7": "jul",
+	"MMM7": "juil",
 	"NN7": "ju",
 	"MMMM8": "août",
-	"MMM8": "aoû",
+	"MMM8": "août",
 	"NN8": "ao",
 	"MMMM9": "septembre",
-	"MMM9": "sep",
+	"MMM9": "sept",
 	"NN9": "se",
 	"MMMM10": "octobre",
 	"MMM10": "oct",
@@ -9001,35 +12541,39 @@ ilib.data.sysres_fr = {
 	"MMM12": "déc",
 	"NN12": "dé",
 	"EEEE0": "dimanche",
-	"EEE0": "dim",
+	"EEE0": "dim.",
 	"EE0": "di",
 	"E0": "D",
 	"EEEE1": "lundi",
-	"EEE1": "lun",
+	"EEE1": "lun.",
 	"EE1": "lu",
 	"E1": "L",
 	"EEEE2": "mardi",
-	"EEE2": "mar",
+	"EEE2": "mar.",
 	"EE2": "ma",
 	"E2": "M",
 	"EEEE3": "mercredi",
-	"EEE3": "mer",
+	"EEE3": "mer.",
 	"EE3": "me",
 	"E3": "M",
 	"EEEE4": "jeudi",
-	"EEE4": "jeu",
+	"EEE4": "jeu.",
 	"EE4": "je",
 	"E4": "J",
 	"EEEE5": "vendredi",
-	"EEE5": "ven",
+	"EEE5": "ven.",
 	"EE5": "ve",
 	"E5": "V",
 	"EEEE6": "samedi",
-	"EEE6": "sam",
+	"EEE6": "sam.",
 	"EE6": "sa",
 	"ordinalChoice": "1#1er|#{num}e",
+	
 	"a0": "matin",
 	"a1": "soir",
+	
+	"G-1": "av. J.-C.",
+	"G1": "ap. J.-C.",
 	
 	"durationShortMillis": "#{num}ms",
 	"#{num}s": "#{num}s",
@@ -9041,40 +12585,48 @@ ilib.data.sysres_fr = {
 	"#{num}y": "#{num}a",
 
 	"#{num} ms": "#{num} Ms",
-	"1#1 se|#{num} sec": "1#1 se|#{num} ses",
-	"1#1 mi|#{num} min": "1#1 mn|#{num} mns",
-	"durationMediumHours": "1#1 hr|#{num} hrs",
-	"1#1 dy|#{num} dys": "1#1 jr|#{num} jrs",
-	"durationMediumWeeks": "1#1 sm|#{num} sms",
-	"1#1 mo|#{num} mos": "1#1 mo|#{num} mos",
-	"durationMediumYears": "1#1 an|#{num} ans",
+	"1#1 se|#{num} sec": "1#{num} se|#{num} ses",
+	"1#1 mi|#{num} min": "1#{num} mn|#{num} mns",
+	"durationMediumHours": "1#{num} hr|#{num} hrs",
+	"1#1 dy|#{num} dys": "1#{num} jr|#{num} jrs",
+	"durationMediumWeeks": "1#{num} sm|#{num} sms",
+	"1#1 mo|#{num} mos": "1#{num} mo|#{num} mos",
+	"durationMediumYears": "1#{num} an|#{num} ans",
 
-	"1#1 sec|#{num} sec": "1#1 sec|#{num} secs",
-	"1#1 min|#{num} min": "1#1 min|#{num} mins",
-	"1#1 hr|#{num} hrs": "1#1 hr|#{num} hrs",
-	"durationLongDays": "1#1 jr|#{num} jrs",
-	"1#1 wk|#{num} wks": "1#1 sem|#{num} sems",
-	"1#1 mon|#{num} mons": "1#1 mois|#{num} mois",
-	"1#1 yr|#{num} yrs": "1#1 an|#{num} ans",
+	"1#1 sec|#{num} sec": "1#{num} sec|#{num} secs",
+	"1#1 min|#{num} min": "1#{num} min|#{num} mins",
+	"1#1 hr|#{num} hrs": "1#{num} hr|#{num} hrs",
+	"durationLongDays": "1#{num} jr|#{num} jrs",
+	"1#1 wk|#{num} wks": "1#{num} sem|#{num} sems",
+	"1#1 mon|#{num} mons": "1#{num} mois|#{num} mois",
+	"1#1 yr|#{num} yrs": "1#{num} an|#{num} ans",
 	
-	"1#1 millisecond|#{num} milliseconds": "1#1 milliseconde|#{num} millisecondes",
-	"1#1 second|#{num} seconds": "1#1 seconde|#{num} secondes",
-	"1#1 minute|#{num} minutes": "1#1 minute|#{num} minutes",
-	"1#1 hour|#{num} hours": "1#1 heure|#{num} heures",
-	"1#1 day|#{num} days": "1#1 jour|#{num} jours",
-	"1#1 week|#{num} weeks": "1#1 semaine|#{num} semaines",
+	"1#1 millisecond|#{num} milliseconds": "1#{num} milliseconde|#{num} millisecondes",
+	"1#1 second|#{num} seconds": "1#{num} seconde|#{num} secondes",
+	"1#1 minute|#{num} minutes": "1#{num} minute|#{num} minutes",
+	"1#1 hour|#{num} hours": "1#{num} heure|#{num} heures",
+	"1#1 day|#{num} days": "1#{num} jour|#{num} jours",
+	"1#1 week|#{num} weeks": "1#{num} semaine|#{num} semaines",
 	"1#1 month|#{num} months": "#{num} mois",
-	"1#1 year|#{num} years": "1#1 an|#{num} ans",
+	"1#1 year|#{num} years": "1#{num} an|#{num} ans",
 	
-	"{duration} ago": "il ya {duration}",
-	"in {duration}": "en {duration}",
+	"{duration} ago": "il y a {duration}",
+	"in {duration}": "dans {duration}",
 	
 	"separatorShort": " ",
 	"separatorMedium": " ",
 	"separatorLong": " ",
 	"separatorFull": ", ",
-	"finalSeparatorFull": ", et "
+	"finalSeparatorFull": " et "
 };
+ilib.data.sysres_fr_BE = {}
+;
+ilib.data.sysres_fr_CA = {}
+;
+ilib.data.sysres_fr_CH = {}
+;
+ilib.data.sysres_fr_FR = {}
+;
 ilib.data.sysres_id = {
 	"NN5": "Me",
 	"NN8": "Ag",
@@ -9134,7 +12686,7 @@ ilib.data.sysres_id = {
 	"1#1 yr|#{num} yrs": "#{num} thn",
 	"1#1 mon|#{num} mons": "#{num} bln",
 	"1#1 wk|#{num} wks": "#{num} mggu",
-	"durationLongDays": "#{num} hr",
+	"durationLongDays": "#{num} hari",
 	"1#1 hr|#{num} hrs": "#{num} jam",
 	"1#1 min|#{num} min": "#{num} mnt",
 	"1#1 sec|#{num} sec": "#{num} dtk",
@@ -9160,6 +12712,7 @@ ilib.data.sysres_id = {
 	"durationShortMillis": "#{num}m"
 }
 ;
+ilib.data.sysres_id_ID = {};
 ilib.data.sysres_it = {
 	"MMMM1": "gennaio",
 	"MMM1": "gen",
@@ -9200,33 +12753,39 @@ ilib.data.sysres_it = {
 	"MMMM12": "dicembre",
 	"MMM12": "dic",
 	"NN12": "di",
-	"EEEE0": "Domenica ",
-	"EEE0": "Dom",
-	"EE0": "Do",
+	"EEEE0": "domenica",
+	"EEE0": "dom",
+	"EE0": "do",
 	"E0": "D",
-	"EEEE1": "Lunedi ",
-	"EEE1": "Lun",
-	"EE1": "Lu",
+	"EEEE1": "lunedì",
+	"EEE1": "lun",
+	"EE1": "lu",
 	"E1": "L",
-	"EEEE2": "Martedì",
-	"EEE2": "Mar",
-	"EE2": "Ma",
+	"EEEE2": "martedì",
+	"EEE2": "mar",
+	"EE2": "ma",
 	"E2": "M",
-	"EEEE3": "Mercoledì",
-	"EEE3": "Mer",
-	"EE3": "Me",
+	"EEEE3": "mercoledì",
+	"EEE3": "mer",
+	"EE3": "me",
 	"E3": "M",
-	"EEEE4": "Giovedi",
-	"EEE4": "Gio",
-	"EE4": "Gi",
+	"EEEE4": "giovedì",
+	"EEE4": "gio",
+	"EE4": "gi",
 	"E4": "G",
-	"EEEE5": "Venerdì",
-	"EEE5": "Ven",
-	"EE5": "Ve",
+	"EEEE5": "venerdì",
+	"EEE5": "ven",
+	"EE5": "ve",
 	"E5": "V",
-	"EEEE6": "Sabato",
-	"EEE6": "Sab",
+	"EEEE6": "sabato",
+	"EEE6": "sab",
+	"EE6": "sa",
 	"ordinalChoice": "#{num} º",
+	
+	"a0": "AM",
+	"a1": "PM",
+	"G-1": "aC",
+	"G1": "dC",
 	
 	"durationShortMillis": "#{num}ms",
 	"#{num}s": "#{num}s",
@@ -9240,37 +12799,40 @@ ilib.data.sysres_it = {
 	"#{num} ms": "#{num} ms",
 	"1#1 se|#{num} sec": "#{num} se",
 	"1#1 mi|#{num} min": "#{num} mn",
-	"durationMediumHours": "#{num} or",
-	"1#1 dy|#{num} dys": "#{num} gi",
+	"durationMediumHours": "#{num} h",
+	"1#1 dy|#{num} dys": "1#{num} g|#{num} gg",
 	"durationMediumWeeks": "#{num} set",
 	"1#1 mo|#{num} mos": "#{num} me",
 	"durationMediumYears": "#{num} an",
 
 	"1#1 sec|#{num} sec": "#{num} sec",
 	"1#1 min|#{num} min": "#{num} min",
-	"1#1 hr|#{num} hrs": "1#1 ora|#{num} ore",
-	"durationLongDays": "#{num} gio",
-	"1#1 wk|#{num} wks": "#{num} set",
-	"1#1 mon|#{num} mons": "1#1 mese|#{num} mesi",
-	"1#1 yr|#{num} yrs": "1#1 anno|#{num} anni",
+	"1#1 hr|#{num} hrs": "#{num} h",
+	"durationLongDays": "1#{num} g|#{num} gg",
+	"1#1 wk|#{num} wks": "#{num} sett",
+	"1#1 mon|#{num} mons": "1#{num} mese|#{num} mesi",
+	"1#1 yr|#{num} yrs": "1#{num} anno|#{num} anni",
 	
-	"1#1 millisecond|#{num} milliseconds": "1#1 millisecondo|#{num} millisecondi",
-	"1#1 second|#{num} seconds": "1#1 secondo|#{num} secondi",
-	"1#1 minute|#{num} minutes": "1#1 minuto|#{num} minuti",
-	"1#1 hour|#{num} hours": "1#1 ora|#{num} ore",
-	"1#1 day|#{num} days": "1#1 giorno|#{num} giorni",
-	"1#1 week|#{num} weeks": "1#1 settimana|#{num} settimane",
-	"1#1 month|#{num} months": "1#1 mese|#{num} mesi",
-	"1#1 year|#{num} years": "1#1 anno|#{num} anni",
+	"1#1 millisecond|#{num} milliseconds": "1#{num} millisecondo|#{num} millisecondi",
+	"1#1 second|#{num} seconds": "1#{num} secondo|#{num} secondi",
+	"1#1 minute|#{num} minutes": "1#{num} minuto|#{num} minuti",
+	"1#1 hour|#{num} hours": "1#{num} ora|#{num} ore",
+	"1#1 day|#{num} days": "1#{num} giorno|#{num} giorni",
+	"1#1 week|#{num} weeks": "1#{num} settimana|#{num} settimane",
+	"1#1 month|#{num} months": "1#{num} mese|#{num} mesi",
+	"1#1 year|#{num} years": "1#{num} anno|#{num} anni",
 	
+	"in {duration}": "tra {duration}",
 	"{duration} ago": "{duration} fa",
 	
 	"separatorShort": " ",
 	"separatorMedium": " ",
 	"separatorLong": " ",
 	"separatorFull": ", ",
-	"finalSeparatorFull": " e "
+	"finalSeparatorFull": ", e "
 };
+ilib.data.sysres_it_CH = {};
+ilib.data.sysres_it_IT = {};
 ilib.data.sysres_ja = {
 	"MMMM1": "1",
 	"MMM1": "1",
@@ -9399,6 +12961,7 @@ ilib.data.sysres_ja = {
 	"separatorFull": "、",
 	"finalSeparatorFull": "、"
 };
+ilib.data.sysres_ja_JP = {};
 ilib.data.sysres_ko = {
 	"MMMM1": "일",
 	"MMM1": "1",
@@ -9481,19 +13044,19 @@ ilib.data.sysres_ko = {
 	"a0": "오전",
 	"a1": "오후",
 	"G-1": "기원전",
-	"G1": "기원후",
+	"G1": "서기",
 	
-	"durationShortMillis": "#{num}밀리초",
-	"#{num}s": "#{num}초 및",
+	"durationShortMillis": "#{num}리초",
+	"#{num}s": "#{num}초",
 	"durationShortMinutes": "#{num}분",
-	"#{num}h": "#{num}시간",
+	"#{num}h": "#{num}시",
 	"#{num}d": "#{num}일",
 	"#{num}w": "#{num}주",
-	"durationShortMonths": "#{num}개월",
+	"durationShortMonths": "#{num}개",
 	"#{num}y": "#{num}년",
 
-	"#{num} ms": "#{num}밀리초",
-	"1#1 se|#{num} sec": "#{num}초 및",
+	"#{num} ms": "#{num}리초",
+	"1#1 se|#{num} sec": "#{num}초",
 	"1#1 mi|#{num} min": "#{num}분",
 	"durationMediumHours": "#{num}시간",
 	"1#1 dy|#{num} dys": "#{num}일",
@@ -9501,8 +13064,8 @@ ilib.data.sysres_ko = {
 	"1#1 mo|#{num} mos": "#{num}개월",
 	"durationMediumYears": "#{num}년",
 
-	"1#1 sec|#{num} sec": "#{num}秒",
-	"1#1 min|#{num} min": "#{num}초 및",
+	"1#1 sec|#{num} sec": "#{num}초",
+	"1#1 min|#{num} min": "#{num}분",
 	"1#1 hr|#{num} hrs": "#{num}시간",
 	"durationLongDays": "#{num}일",
 	"1#1 wk|#{num} wks": "#{num}주",
@@ -9510,7 +13073,7 @@ ilib.data.sysres_ko = {
 	"1#1 yr|#{num} yrs": "#{num}년",
 	
 	"1#1 millisecond|#{num} milliseconds": "#{num}밀리초",
-	"1#1 second|#{num} seconds": "#{num}초 및",
+	"1#1 second|#{num} seconds": "#{num}초",
 	"1#1 minute|#{num} minutes": "#{num}분",
 	"1#1 hour|#{num} hours": "#{num}시간",
 	"1#1 day|#{num} days": "#{num}일",
@@ -9527,6 +13090,7 @@ ilib.data.sysres_ko = {
 	"separatorFull": ", ",
 	"finalSeparatorFull": " 및 "
 };
+ilib.data.sysres_ko_KR = {};
 ilib.data.sysres_nl = {
 	"N1": "J",
 	"N2": "F",
@@ -9552,18 +13116,18 @@ ilib.data.sysres_nl = {
 	"NN10": "ok",
 	"NN11": "no",
 	"NN12": "de",
-	"MMM1": "jan",
-	"MMM2": "feb",
-	"MMM3": "mrt",
-	"MMM4": "apr",
+	"MMM1": "jan.",
+	"MMM2": "feb.",
+	"MMM3": "mrt.",
+	"MMM4": "apr.",
 	"MMM5": "mei",
-	"MMM6": "jun",
-	"MMM7": "jul",
-	"MMM8": "aug",
-	"MMM9": "sep",
-	"MMM10": "okt",
-	"MMM11": "nov",
-	"MMM12": "dec",
+	"MMM6": "jun.",
+	"MMM7": "jul.",
+	"MMM8": "aug.",
+	"MMM9": "sep.",
+	"MMM10": "okt.",
+	"MMM11": "nov.",
+	"MMM12": "dec.",
 	"MMMM1": "januari",
 	"MMMM2": "februari",
 	"MMMM3": "maart",
@@ -9606,31 +13170,31 @@ ilib.data.sysres_nl = {
 	"EEEE6": "zaterdag",
 	"a0": "AM",
 	"a1": "PM",
-	"G-1": "v. Chr.",
-	"G1": "n. Chr.",
-	"in {duration}": "Over {duration}",
+	"G-1": "v.Chr.",
+	"G1": "n.Chr.",
+	"in {duration}": "over {duration}",
 	"{duration} ago": "{duration} geleden",
-	"1#1 year|#{num} years": "1#{num} jaar|#{num} jaar",
+	"1#1 year|#{num} years": "#{num} jaar",
 	"1#1 month|#{num} months": "1#{num} maand|#{num} maanden",
 	"1#1 week|#{num} weeks": "1#{num} week|#{num} weken",
 	"1#1 day|#{num} days": "1#{num} dag|#{num} dagen",
-	"1#1 hour|#{num} hours": "1#{num} uur|#{num} uur",
+	"1#1 hour|#{num} hours": "#{num} uur",
 	"1#1 minute|#{num} minutes": "1#{num} minuut|#{num} minuten",
 	"1#1 second|#{num} seconds": "1#{num} seconde|#{num} seconden",
-	"1#1 yr|#{num} yrs": "1#{num} jr|#{num} jr",
-	"1#1 mon|#{num} mons": "1#{num} mnd|#{num} mnd",
+	"1#1 yr|#{num} yrs": "#{num} jr",
+	"1#1 mon|#{num} mons": "#{num} mnd",
 	"1#1 wk|#{num} wks": "1#{num} wk|#{num} wkn",
 	"durationLongDays": "1#{num} dag|#{num} dgn",
-	"1#1 hr|#{num} hrs": "1#{num} uur|#{num} uur",
-	"1#1 min|#{num} min": "1#{num} min|#{num} min",
-	"1#1 sec|#{num} sec": "1#{num} sec|#{num} sec",
-	"durationMediumYears": "1#{num} jr|#{num} jr",
-	"1#1 mo|#{num} mos": "1#{num} mn|#{num} mn",
-	"durationMediumWeeks": "1#{num} wk|#{num} wk",
-	"1#1 dy|#{num} dys": "1#{num} da|#{num} da",
-	"durationMediumHours": "1#{num} u|#{num} u",
-	"1#1 mi|#{num} min": "1#{num} mi|#{num} mi",
-	"1#1 se|#{num} sec": "1#{num} se|#{num} se",
+	"1#1 hr|#{num} hrs": "#{num} uur",
+	"1#1 min|#{num} min": "#{num} min",
+	"1#1 sec|#{num} sec": "#{num} sec",
+	"durationMediumYears": "#{num} jr",
+	"1#1 mo|#{num} mos": "#{num} mn",
+	"durationMediumWeeks": "#{num} wk",
+	"1#1 dy|#{num} dys": "#{num} da",
+	"durationMediumHours": "#{num} u",
+	"1#1 mi|#{num} min": "#{num} mi",
+	"1#1 se|#{num} sec": "#{num} se",
 	"#{num}y": "#{num}j",
 	"durationShortMonths": "#{num}m",
 	"#{num}w": "#{num}w",
@@ -9645,6 +13209,8 @@ ilib.data.sysres_nl = {
 	"finalSeparatorFull": " en "
 }
 ;
+ilib.data.sysres_nl_BE = {};
+ilib.data.sysres_nl_NL = {};
 ilib.data.sysres_no = {
 	"MMMM1": "januar",
 	"MMM1": "jan.",
@@ -9756,72 +13322,75 @@ ilib.data.sysres_no = {
 	"finalSeparatorFull": " og "
 };
 ilib.data.sysres_pt = {
-	"MMMM1": "janeiro",
-	"MMM1": "jan",
-	"NN1": "ja",
-	"MMMM2": "fevereiro",
-	"MMM2": "fev",
-	"NN2": "fe",
-	"MMMM3": "março",
-	"MMM3": "mar",
-	"NN3": "ma",
-	"MMMM4": "abril",
-	"MMM4": "abr",
-	"NN4": "ab",
-	"MMMM5": "maio",
-	"MMM5": "mai",
-	"NN5": "ma",
-	"MMMM6": "junho",
-	"MMM6": "jun",
-	"NN6": "ju",
-	"MMMM7": "julho",
-	"MMM7": "jul",
-	"NN7": "ju",
-	"MMMM8": "agosto",
-	"MMM8": "ago",
-	"NN8": "ag",
-	"MMMM9": "setembro",
-	"MMM9": "set",
-	"NN9": "se",
-	"MMMM10": "outubro",
-	"MMM10": "out",
-	"NN10": "ou",
-	"MMMM11": "novembro",
-	"MMM11": "nov",
-	"NN11": "no",
-	"MMMM12": "dezembro",
-	"MMM12": "dez",
-	"NN12": "de",
-	"EEEE0": "Domingo",
-	"EEE0": "Dom",
-	"EE0": "Do",
+	"MMMM1": "Janeiro",
+	"MMM1": "Jan",
+	"NN1": "Ja",
+	"MMMM2": "Fevereiro",
+	"MMM2": "Fev",
+	"NN2": "Fe",
+	"MMMM3": "Março",
+	"MMM3": "Mar",
+	"NN3": "Ma",
+	"MMMM4": "Abril",
+	"MMM4": "Abr",
+	"NN4": "Ab",
+	"MMMM5": "Maio",
+	"MMM5": "Mai",
+	"NN5": "Ma",
+	"MMMM6": "Junho",
+	"MMM6": "Jun",
+	"NN6": "Ju",
+	"MMMM7": "Julho",
+	"MMM7": "Jul",
+	"NN7": "Ju",
+	"MMMM8": "Agosto",
+	"MMM8": "Ago",
+	"NN8": "Ag",
+	"MMMM9": "Setembro",
+	"MMM9": "Set",
+	"NN9": "Se",
+	"MMMM10": "Outubro",
+	"MMM10": "Out",
+	"NN10": "Ou",
+	"MMMM11": "Novembro",
+	"MMM11": "Nov",
+	"NN11": "No",
+	"MMMM12": "Dezembro",
+	"MMM12": "Dez",
+	"NN12": "De",
+	"EEEE0": "domingo",
+	"EEE0": "dom",
+	"EE0": "do",
 	"E0": "D",
-	"EEEE1": "Segunda",
-	"EEE1": "Seg",
-	"EE1": "Se",
+	"EEEE1": "segunda-feira",
+	"EEE1": "seg",
+	"EE1": "sg",
 	"E1": "S",
-	"EEEE2": "Terça",
-	"EEE2": "Ter",
-	"EE2": "Te",
-	"EEEE3": "Quarta",
-	"EEE3": "Qua",
-	"EE3": "Qu",
+	"EEEE2": "terça-feira",
+	"EEE2": "ter",
+	"EE2": "te",
+	"EEEE3": "quarta-feira",
+	"EEE3": "qua",
+	"EE3": "qu",
 	"E3": "Q",
-	"EEEE4": "Quinta",
-	"EEE4": "Qui",
-	"EE4": "Qu",
+	"EEEE4": "quinta-feira",
+	"EEE4": "qui",
+	"EE4": "qi",
 	"E4": "Q",
-	"EEEE5": "Sexta",
-	"EEE5": "Sex",
-	"EE5": "Se",
+	"EEEE5": "sexta-feira",
+	"EEE5": "sex",
+	"EE5": "sx",
 	"E5": "S",
-	"EEEE6": "Sábado",
-	"EEE6": "Sáb",
-	"EE6": "Sá",
+	"EEEE6": "sábado",
+	"EEE6": "sáb",
+	"EE6": "sb",
 	"ordinalChoice": "#{num}",
 	"a0": "AM",
 	"a1": "PM",
 
+	"G-1": "a.C.",
+	"G1": "d.C.",
+	
 	"durationShortMillis": "#{num}ms",
 	"#{num}s": "#{num}s",
 	"durationShortMinutes": "#{num}m",
@@ -9832,32 +13401,75 @@ ilib.data.sysres_pt = {
 	"#{num}y": "#{num}a",
 
 	"#{num} ms": "#{num} ms",
-	"1#1 se|#{num} sec": "1#1 sg|#{num} sgs",
-	"1#1 mi|#{num} min": "1#1 mn|#{num} mns",
-	"durationMediumHours": "1#1 hr|#{num} hrs",
-	"1#1 dy|#{num} dys": "1#1 di|#{num} dis",
-	"durationMediumWeeks": "1#1 sm|#{num} sms",
-	"1#1 mo|#{num} mos": "1#1 mê|#{num} mes",
-	"durationMediumYears": "1#1 an|#{num} ans",
+	"1#1 se|#{num} sec": "1#{num} sg|#{num} sgs",
+	"1#1 mi|#{num} min": "1#{num} mn|#{num} mns",
+	"durationMediumHours": "1#{num} hr|#{num} hrs",
+	"1#1 dy|#{num} dys": "1#{num} di|#{num} dis",
+	"durationMediumWeeks": "1#{num} sm|#{num} sms",
+	"1#1 mo|#{num} mos": "1#{num} mê|#{num} mes",
+	"durationMediumYears": "1#{num} an|#{num} ans",
 
-	"1#1 sec|#{num} sec": "1#1 seg|#{num} segs",
-	"1#1 min|#{num} min": "1#1 min|#{num} mins",
-	"1#1 hr|#{num} hrs": "1#1 hor|#{num} hors",
-	"durationLongDays": "1#1 dia|#{num} dias",
-	"1#1 wk|#{num} wks": "1#1 sem|#{num} sems",
-	"1#1 mon|#{num} mons": "1#1 mês|#{num} mss",
-	"1#1 yr|#{num} yrs": "1#1 ano|#{num} anos",
+	"1#1 sec|#{num} sec": "1#{num} seg|#{num} segs",
+	"1#1 min|#{num} min": "1#{num} min|#{num} mins",
+	"1#1 hr|#{num} hrs": "1#{num} hor|#{num} hors",
+	"durationLongDays": "1#{num} dia|#{num} dias",
+	"1#1 wk|#{num} wks": "1#{num} sem|#{num} sems",
+	"1#1 mon|#{num} mons": "1#{num} mês|#{num} mss",
+	"1#1 yr|#{num} yrs": "1#{num} ano|#{num} anos",
 	
-	"1#1 millisecond|#{num} milliseconds": "1#1 millisegundo|#{num} millisegundos",
-	"1#1 second|#{num} seconds": "1#1 segundo|#{num} segundos",
-	"1#1 minute|#{num} minutes": "1#1 minuto|#{num} minutos",
-	"1#1 hour|#{num} hours": "1#1 hora|#{num} horas",
-	"1#1 day|#{num} days": "1#1 dia|#{num} dias",
-	"1#1 week|#{num} weeks": "1#1 semana|#{num} semanas",
-	"1#1 month|#{num} months": "1#1 mês|#{num} meses",
-	"1#1 year|#{num} years": "1#1 ano|#{num} anos",
-                                                 	  	"{duration} ago": "{duration} atrás",  	"in {duration}": "em {duration}",  	  	"separatorShort": " ",  	"separatorMedium": " ",  	"separatorLong": " ",  	"separatorFull": ", ",  	"finalSeparatorFull": ", e "
+	"1#1 millisecond|#{num} milliseconds": "1#{num} millisegundo|#{num} millisegundos",
+	"1#1 second|#{num} seconds": "1#{num} segundo|#{num} segundos",
+	"1#1 minute|#{num} minutes": "1#{num} minuto|#{num} minutos",
+	"1#1 hour|#{num} hours": "1#{num} hora|#{num} horas",
+	"1#1 day|#{num} days": "1#{num} dia|#{num} dias",
+	"1#1 week|#{num} weeks": "1#{num} semana|#{num} semanas",
+	"1#1 month|#{num} months": "1#{num} mês|#{num} meses",
+	"1#1 year|#{num} years": "1#{num} ano|#{num} anos",
+                                                 	  	"{duration} ago": "há {duration}",  	"in {duration}": "dentro de {duration}",  	  	"separatorShort": " ",  	"separatorMedium": " ",  	"separatorLong": " ",  	"separatorFull": ", ",  	"finalSeparatorFull": " e "
 };
+ilib.data.sysres_pt_BR = {
+    "NN1": "ja",
+    "NN2": "fe",
+    "NN3": "ma",
+    "NN4": "ab",
+    "NN5": "ma",
+    "NN6": "ju",
+    "NN7": "ju",
+    "NN8": "ag",
+    "NN9": "se",
+    "NN10": "ou",
+    "NN11": "no",
+    "NN12": "de",
+    "MMM1": "jan",
+    "MMM2": "fev",
+    "MMM3": "mar",
+    "MMM4": "abr",
+    "MMM5": "mai",
+    "MMM6": "jun",
+    "MMM7": "jul",
+    "MMM8": "ago",
+    "MMM9": "set",
+    "MMM10": "out",
+    "MMM11": "nov",
+    "MMM12": "dez",
+    "MMMM1": "janeiro",
+    "MMMM2": "fevereiro",
+    "MMMM3": "março",
+    "MMMM4": "abril",
+    "MMMM5": "maio",
+    "MMMM6": "junho",
+    "MMMM7": "julho",
+    "MMMM8": "agosto",
+    "MMMM9": "setembro",
+    "MMMM10": "outubro",
+    "MMMM11": "novembro",
+    "MMMM12": "dezembro",
+    "EE1": "se",
+    "EE4": "qu",
+    "EE5": "se",
+    "EE6": "sá"
+};
+ilib.data.sysres_pt_PT = {};
 ilib.data.sysres_ru = {
 	"N1": "Я",
 	"N2": "Ф",
@@ -9914,13 +13526,13 @@ ilib.data.sysres_ru = {
 	"E4": "Ч",
 	"E5": "П",
 	"E6": "С",
-	"EE0": "Вс",
-	"EE1": "Пн",
-	"EE2": "Вт",
-	"EE3": "Ср",
-	"EE4": "Чт",
-	"EE5": "Пт",
-	"EE6": "Сб",
+	"EE0": "вс",
+	"EE1": "пн",
+	"EE2": "вт",
+	"EE3": "ср",
+	"EE4": "чт",
+	"EE5": "пт",
+	"EE6": "сб",
 	"EEE0": "вс",
 	"EEE1": "пн",
 	"EEE2": "вт",
@@ -9935,33 +13547,40 @@ ilib.data.sysres_ru = {
 	"EEEE4": "четверг",
 	"EEEE5": "пятница",
 	"EEEE6": "суббота",
+	
 	"a0": "до полудня",
 	"a1": "после полудня",
+	
 	"G-1": "до н.э.",
 	"G1": "н.э.",
-	"in {duration}": "Через {duration}",
+	
+	"in {duration}": "через {duration}",
 	"{duration} ago": "{duration} назад",
-	"1#1 year|#{num} years": "1#{num} год|2#{num} года|3#{num} года|4#{num} года|#{num} года",
-	"1#1 month|#{num} months": "1#{num} месяц|2#{num} месяца|3#{num} месяца|4#{num} месяца|#{num} месяца",
-	"1#1 week|#{num} weeks": "1#{num} неделя|2#{num} недели|3#{num} недели|4#{num} недели|#{num} недели",
-	"1#1 day|#{num} days": "1#{num} день|2#{num} дня|3#{num} дня|4#{num} дня|#{num} дня",
-	"1#1 hour|#{num} hours": "1#{num} час|2#{num} часа|3#{num} часа|4#{num} часа|#{num} часа",
-	"1#1 minute|#{num} minutes": "1#{num} минута|2#{num} минуты|3#{num} минуты|4#{num} минуты|#{num} минуты",
-	"1#1 second|#{num} seconds": "1#{num} секунда|2#{num} секунды|3#{num} секунды|4#{num} секунды|#{num} секунды",
-	"1#1 yr|#{num} yrs": "1#{num} г.|2#{num} г.|3#{num} г.|4#{num} г.|#{num} г.",
-	"1#1 mon|#{num} mons": "1#{num} мес.|2#{num} мес.|3#{num} мес.|4#{num} мес.|#{num} мес.",
-	"1#1 wk|#{num} wks": "1#{num} нед.|2#{num} нед.|3#{num} нед.|4#{num} нед.|#{num} нед.",
-	"durationLongDays": "1#{num} дн.|2#{num} дн.|3#{num} дн.|4#{num} дн.|#{num} дн.",
-	"1#1 hr|#{num} hrs": "1#{num} ч.|2#{num} ч.|3#{num} ч.|4#{num} ч.|#{num} ч.",
-	"1#1 min|#{num} min": "1#{num} мин.|2#{num} мин.|3#{num} мин.|4#{num} мин.|#{num} мин.",
-	"1#1 sec|#{num} sec": "1#{num} сек.|2#{num} сек.|3#{num} сек.|4#{num} сек.|#{num} сек.",
-	"durationMediumYears": "1#{num} г.|2#{num} г.|3#{num} г.|4#{num} г.|#{num} г.",
-	"1#1 mo|#{num} mos": "1#{num} ме|2#{num} ме|3#{num} ме|4#{num} ме|#{num} ме",
-	"durationMediumWeeks": "1#{num} не|2#{num} не|3#{num} не|4#{num} не|#{num} не",
-	"1#1 dy|#{num} dys": "1#{num} дн|2#{num} дн|3#{num} дн|4#{num} дн|#{num} дн",
-	"durationMediumHours": "1#{num} ч.|2#{num} ч.|3#{num} ч.|4#{num} ч.|#{num} ч.",
-	"1#1 mi|#{num} min": "1#{num} ми|2#{num} ми|3#{num} ми|4#{num} ми|#{num} ми",
-	"1#1 se|#{num} sec": "1#{num} се|2#{num} се|3#{num} се|4#{num} се|#{num} се",
+	
+	"1#1 year|#{num} years": "one#{num} год|many#{num} лет|#{num} года",
+	"1#1 month|#{num} months": "one#{num} месяц|many#{num} месяцев|#{num} месяца",
+	"1#1 week|#{num} weeks": "one#{num} неделя|many#{num} недель|#{num} недели",
+	"1#1 day|#{num} days": "one#{num} день|many#{num} дней|#{num} дня",
+	"1#1 hour|#{num} hours": "one#{num} час|many#{num} часов|#{num} часа",
+	"1#1 minute|#{num} minutes": "one#{num} минута|many#{num} минут|#{num} минуты",
+	"1#1 second|#{num} seconds": "one#{num} секунда|many#{num} секунд|#{num} секунды",
+	
+	"1#1 yr|#{num} yrs": "one#{num} год|many#{num} лет|#{num} года",
+	"1#1 mon|#{num} mons": "#{num} мес",
+	"1#1 wk|#{num} wks": "#{num} нед",
+	"durationLongDays": "one#{num} день|many#{num} дней|#{num} дня",
+	"1#1 hr|#{num} hrs": "one#{num} час|many#{num} час|#{num} часа",
+	"1#1 min|#{num} min": "#{num} мин",
+	"1#1 sec|#{num} sec": "#{num} сек",
+	
+	"durationMediumYears": "#{num} г",
+	"1#1 mo|#{num} mos": "#{num} ме",
+	"durationMediumWeeks": "#{num} не",
+	"1#1 dy|#{num} dys": "#{num} дн",
+	"durationMediumHours": "#{num} ч",
+	"1#1 mi|#{num} min": "#{num} ми",
+	"1#1 se|#{num} sec": "#{num} се",
+	
 	"#{num}y": "#{num}г",
 	"durationShortMonths": "#{num}м",
 	"#{num}w": "#{num}н",
@@ -9969,14 +13588,16 @@ ilib.data.sysres_ru = {
 	"#{num}h": "#{num}ч",
 	"durationShortMinutes": "#{num}м",
 	"#{num}s": "#{num}с",
+	"durationShortMillis": "#{num}мс",
+	
 	"separatorShort": " ",
 	"separatorMedium": " ",
 	"separatorLong": " ",
 	"separatorFull": ", ",
-	"finalSeparatorFull": " и ",
-	"durationShortMillis": "#{num}мс"
+	"finalSeparatorFull": " и "
 }
 ;
+ilib.data.sysres_ru_RU = {};
 ilib.data.sysres_sv = {
 	"NN1": "ja",
 	"NN2": "fe",
@@ -10037,35 +13658,42 @@ ilib.data.sysres_sv = {
 	"EEEE4": "torsdag",
 	"EEEE5": "fredag",
 	"EEEE6": "lördag",
+	
 	"a0": "fm",
 	"a1": "em",
+	
 	"G-1": "f.Kr.",
 	"G1": "e.Kr.",
+	
 	"in {duration}": "om {duration}",
 	"{duration} ago": "för {duration} sedan",
-	"1#1 year|#{num} years": "1#{num} år|#{num} år",
+	
+	"1#1 year|#{num} years": "#{num} år",
 	"1#1 month|#{num} months": "1#{num} månad|#{num} månader",
 	"1#1 week|#{num} weeks": "1#{num} vecka|#{num} veckor",
-	"1#1 day|#{num} days": "1#{num} dag|#{num} dagar",
+	"1#1 day|#{num} days": "#{num} dygn",
 	"1#1 hour|#{num} hours": "1#{num} timme|#{num} timmar",
 	"1#1 minute|#{num} minutes": "1#{num} minut|#{num} minuter",
 	"1#1 second|#{num} seconds": "1#{num} sekund|#{num} sekunder",
 	"1#1 millisecond|#{num} milliseconds": "1#{num} millisekund|#{num} millisekunder",
+	
 	"1#1 yr|#{num} yrs": "#{num} år",
 	"1#1 mon|#{num} mons": "#{num} mån",
-	"1#1 wk|#{num} wks": "1#{num} vec|#{num} vkr",
-	"durationLongDays": "1#{num} dag|#{num} dgr",
-	"1#1 hr|#{num} hrs": "1#{num} tim|#{num} tmr",
-	"1#1 min|#{num} min": "1#{num} min|#{num} mnr",
-	"1#1 sec|#{num} sec": "1#{num} sek|#{num} skr",
+	"1#1 wk|#{num} wks": "#{num} vec",
+	"durationLongDays": "#{num} dygn",
+	"1#1 hr|#{num} hrs": "#{num} tim",
+	"1#1 min|#{num} min": "#{num} min",
+	"1#1 sec|#{num} sec": "#{num} sek",
 	"#{num} ms": "#{num} ms",
+	
 	"durationMediumYears": "#{num} år",
 	"1#1 mo|#{num} mos": "#{num} må",
 	"durationMediumWeeks": "#{num} ve",
-	"1#1 dy|#{num} dys": "#{num} da",
+	"1#1 dy|#{num} dys": "#{num} dy",
 	"durationMediumHours": "#{num} ti",
 	"1#1 mi|#{num} min": "#{num} mi",
 	"1#1 se|#{num} sec": "#{num} se",
+	
 	"#{num}y": "#{num}å",
 	"durationShortMonths": "#{num}må",
 	"#{num}w": "#{num}v",
@@ -10073,6 +13701,7 @@ ilib.data.sysres_sv = {
 	"#{num}h": "#{num}t",
 	"durationShortMinutes": "#{num}m",
 	"#{num}s": "#{num}s",
+	
 	"separatorShort": " ",
 	"separatorMedium": " ",
 	"separatorLong": ", ",
@@ -10080,6 +13709,7 @@ ilib.data.sysres_sv = {
 	"finalSeparatorFull": " och "
 }
 ;
+ilib.data.sysres_sv_SE = {};
 ilib.data.sysres_tr = {
 	"N1": "O",
 	"N2": "Ş",
@@ -10090,38 +13720,42 @@ ilib.data.sysres_tr = {
 	"N10": "E",
 	"N11": "K",
 	"N12": "A",
-	"NN1": "Oc",
-	"NN2": "Şu",
-	"NN4": "Ni",
-	"NN6": "Ha",
-	"NN7": "Te",
-	"NN8": "Ağ",
-	"NN9": "Ey",
-	"NN10": "Ek",
-	"NN11": "Ka",
-	"NN12": "Ar",
-	"MMM1": "Oca",
-	"MMM2": "Şub",
-	"MMM4": "Nis",
-	"MMM6": "Haz",
-	"MMM7": "Tem",
-	"MMM8": "Ağu",
-	"MMM9": "Eyl",
-	"MMM10": "Eki",
-	"MMM11": "Kas",
-	"MMM12": "Ara",
-	"MMMM1": "Ocak",
-	"MMMM2": "Şubat",
-	"MMMM3": "Mart",
-	"MMMM4": "Nisan",
-	"MMMM5": "Mayıs",
-	"MMMM6": "Haziran",
-	"MMMM7": "Temmuz",
-	"MMMM8": "Ağustos",
-	"MMMM9": "Eylül",
-	"MMMM10": "Ekim",
-	"MMMM11": "Kasım",
-	"MMMM12": "Aralık",
+	"NN1": "oc",
+	"NN2": "şu",
+	"NN3": "ma",
+	"NN4": "ni",
+	"NN5": "ma",
+	"NN6": "ha",
+	"NN7": "te",
+	"NN8": "ağ",
+	"NN9": "ey",
+	"NN10": "ek",
+	"NN11": "ka",
+	"NN12": "ar",
+	"MMM1": "oca",
+	"MMM2": "şub",
+	"MMM3": "mar",
+	"MMM4": "nis",
+	"MMM5": "may",
+	"MMM6": "haz",
+	"MMM7": "tem",
+	"MMM8": "ağu",
+	"MMM9": "eyl",
+	"MMM10": "eki",
+	"MMM11": "kas",
+	"MMM12": "ara",
+	"MMMM1": "ocak",
+	"MMMM2": "şubat",
+	"MMMM3": "mart",
+	"MMMM4": "nisan",
+	"MMMM5": "mayıs",
+	"MMMM6": "haziran",
+	"MMMM7": "temmuz",
+	"MMMM8": "ağustos",
+	"MMMM9": "eylül",
+	"MMMM10": "ekim",
+	"MMMM11": "kasım",
+	"MMMM12": "aralık",
 	"E0": "P",
 	"E1": "P",
 	"E2": "S",
@@ -10129,13 +13763,13 @@ ilib.data.sysres_tr = {
 	"E4": "P",
 	"E5": "C",
 	"E6": "C",
-	"EE0": "Paz",
-	"EE1": "Pzt",
-	"EE2": "Sal",
-	"EE3": "Çar",
-	"EE4": "Per",
-	"EE5": "Cum",
-	"EE6": "Cmt",
+	"EE0": "Pa",
+	"EE1": "Pt",
+	"EE2": "Sa",
+	"EE3": "Ça",
+	"EE4": "Pe",
+	"EE5": "Cu",
+	"EE6": "Ct",
 	"EEE0": "Paz",
 	"EEE1": "Pzt",
 	"EEE2": "Sal",
@@ -10150,12 +13784,16 @@ ilib.data.sysres_tr = {
 	"EEEE4": "Perşembe",
 	"EEEE5": "Cuma",
 	"EEEE6": "Cumartesi",
-	"a0": "AM",
-	"a1": "PM",
+	
+	"a0": "ÖÖ",
+	"a1": "ÖS",
+	
 	"G-1": "MÖ",
 	"G1": "MS",
+	
 	"in {duration}": "{duration} sonra",
 	"{duration} ago": "{duration} önce",
+	
 	"1#1 year|#{num} years": "#{num} yıl",
 	"1#1 month|#{num} months": "#{num} ay",
 	"1#1 week|#{num} weeks": "#{num} hafta",
@@ -10163,20 +13801,23 @@ ilib.data.sysres_tr = {
 	"1#1 hour|#{num} hours": "#{num} saat",
 	"1#1 minute|#{num} minutes": "#{num} dakika",
 	"1#1 second|#{num} seconds": "#{num} saniye",
+	
 	"1#1 yr|#{num} yrs": "#{num} yıl",
 	"1#1 mon|#{num} mons": "#{num} ay",
-	"1#1 wk|#{num} wks": "#{num} hafta",
+	"1#1 wk|#{num} wks": "#{num} haf",
 	"durationLongDays": "#{num} gün",
-	"1#1 hr|#{num} hrs": "#{num} sa.",
-	"1#1 min|#{num} min": "#{num} dk.",
-	"1#1 sec|#{num} sec": "#{num} sn.",
-	"durationMediumYears": "#{num} yı",
+	"1#1 hr|#{num} hrs": "#{num} saat",
+	"1#1 min|#{num} min": "#{num} dak",
+	"1#1 sec|#{num} sec": "#{num} san",
+	
+	"durationMediumYears": "#{num} yıl",
 	"1#1 mo|#{num} mos": "#{num} ay",
-	"durationMediumWeeks": "#{num} ha",
-	"1#1 dy|#{num} dys": "#{num} gü",
+	"durationMediumWeeks": "#{num} hf",
+	"1#1 dy|#{num} dys": "#{num} gün",
 	"durationMediumHours": "#{num} sa",
 	"1#1 mi|#{num} min": "#{num} dk",
 	"1#1 se|#{num} sec": "#{num} sn",
+	
 	"#{num}y": "#{num}y",
 	"durationShortMonths": "#{num}a",
 	"#{num}w": "#{num}h",
@@ -10184,15 +13825,18 @@ ilib.data.sysres_tr = {
 	"#{num}h": "#{num}s",
 	"durationShortMinutes": "#{num}d",
 	"#{num}s": "#{num}s",
+	
 	"separatorShort": " ",
 	"separatorMedium": " ",
 	"separatorLong": " ",
 	"separatorFull": ", ",
 	"finalSeparatorFull": " ve ",
+	
 	"#{num} ms": "#{num} ms",
 	"1#1 millisecond|#{num} milliseconds": "#{num} milisaniye"
 }
 ;
+ilib.data.sysres_tr_TR = {};
 ilib.data.sysres_vi = {
 	"N1": "1",
 	"N2": "2",
@@ -10218,18 +13862,18 @@ ilib.data.sysres_vi = {
 	"NN10": "10",
 	"NN11": "11",
 	"NN12": "12",
-    "MMM1": "Th.1",
-    "MMM2": "Th.2",
-    "MMM3": "Th.3",
-    "MMM4": "Th.4",
-    "MMM5": "Th.5",
-    "MMM6": "Th.6",
-    "MMM7": "Th.7",
-    "MMM8": "Th.8",
-    "MMM9": "Th.9",
-    "MMM10": "Th.10",
-    "MMM11": "Th.11",
-    "MMM12": "Th.12",
+    "MMM1": "th.1",
+    "MMM2": "th.2",
+    "MMM3": "th.3",
+    "MMM4": "th.4",
+    "MMM5": "th.5",
+    "MMM6": "th.6",
+    "MMM7": "th.7",
+    "MMM8": "th.8",
+    "MMM9": "th.9",
+    "MMM10": "th.10",
+    "MMM11": "th.11",
+    "MMM12": "th.12",
 	"MMMM1": "tháng một",
 	"MMMM2": "tháng hai",
 	"MMMM3": "tháng ba",
@@ -10242,21 +13886,21 @@ ilib.data.sysres_vi = {
 	"MMMM10": "tháng mười",
 	"MMMM11": "tháng mười một",
 	"MMMM12": "tháng mười hai",
-	"E0": "CN",
-	"E1": "T2",
-	"E2": "T3",
-	"E3": "T4",
-	"E4": "T5",
-	"E5": "T6",
-	"E6": "T7",
-	"EE0": "CN",
-	"EE1": "T2",
-	"EE2": "T3",
-	"EE3": "T4",
-	"EE4": "T5",
-	"EE5": "T6",
-	"EE6": "T7",
-    "EEE0": "CNh",
+	"E0": "cn",
+	"E1": "t2",
+	"E2": "t3",
+	"E3": "t4",
+	"E4": "t5",
+	"E5": "t6",
+	"E6": "t7",
+	"EE0": "cn",
+	"EE1": "t2",
+	"EE2": "t3",
+	"EE3": "t4",
+	"EE4": "t5",
+	"EE5": "t6",
+	"EE6": "t7",
+    "EEE0": "cnh",
     "EEE1": "hai",
     "EEE2": "ba",
     "EEE3": "tư",
@@ -10270,12 +13914,16 @@ ilib.data.sysres_vi = {
 	"EEEE4": "thứ năm",
 	"EEEE5": "thứ sáu",
 	"EEEE6": "thứ bảy",
+	
 	"a0": "SA",
 	"a1": "CH",
+	
 	"G-1": "tr. CN",
 	"G1": "sau CN",
-	"in {duration}": "Trong {duration}",
+	
+	"in {duration}": "trong {duration}",
 	"{duration} ago": "{duration} trước",
+	
 	"1#1 year|#{num} years": "#{num} năm",
 	"1#1 month|#{num} months": "#{num} tháng",
 	"1#1 week|#{num} weeks": "#{num} tuần",
@@ -10283,20 +13931,23 @@ ilib.data.sysres_vi = {
 	"1#1 hour|#{num} hours": "#{num} giờ",
 	"1#1 minute|#{num} minutes": "#{num} phút",
 	"1#1 second|#{num} seconds": "#{num} giây",
+	
 	"1#1 yr|#{num} yrs": "#{num} năm",
-	"1#1 mon|#{num} mons": "#{num} tháng",
+	"1#1 mon|#{num} mons": "#{num} thá",
 	"1#1 wk|#{num} wks": "#{num} tuần",
 	"durationLongDays": "#{num} ngày",
-	"1#1 hr|#{num} hrs": "#{num} g",
-	"1#1 min|#{num} min": "#{num} ph",
-	"1#1 sec|#{num} sec": "#{num} s",
-	"durationMediumYears": "#{num} nă",
+	"1#1 hr|#{num} hrs": "#{num} giờ",
+	"1#1 min|#{num} min": "#{num} phút",
+	"1#1 sec|#{num} sec": "#{num} giây",
+	
+	"durationMediumYears": "#{num} năm",
 	"1#1 mo|#{num} mos": "#{num} th",
 	"durationMediumWeeks": "#{num} tu",
 	"1#1 dy|#{num} dys": "#{num} ng",
-	"durationMediumHours": "#{num} g",
+	"durationMediumHours": "#{num} giờ",
 	"1#1 mi|#{num} min": "#{num} ph",
-	"1#1 se|#{num} sec": "#{num} s",
+	"1#1 se|#{num} sec": "#{num} gi",
+	
 	"#{num}y": "#{num}n",
 	"durationShortMonths": "#{num}t",
 	"#{num}w": "#{num}t",
@@ -10304,13 +13955,15 @@ ilib.data.sysres_vi = {
 	"#{num}h": "#{num}g",
 	"durationShortMinutes": "#{num}p",
 	"#{num}s": "#{num}g",
+	
 	"separatorShort": " ",
 	"separatorMedium": " ",
-	"separatorLong": " ",
+	"separatorLong": ", ",
 	"separatorFull": ", ",
 	"finalSeparatorFull": " và "
 }
 ;
+ilib.data.sysres_vi_VN = {};
 ilib.data.sysres_zh = {
 	"MMMM1": "1",
 	"MMM1": "1",
@@ -10363,31 +14016,31 @@ ilib.data.sysres_zh = {
 	"EEEE0": "星期日",
 	"EEE0": "周日",
 	"EE0": "周日",
-	"E0": "周日",
+	"E0": "日",
 	"EEEE1": "星期一",
 	"EEE1": "周一",
 	"EE1": "周一",
-	"E1": "周一",
+	"E1": "一",
 	"EEEE2": "星期二",
 	"EEE2": "周二",
 	"EE2": "周二",
-	"E2": "周二",
+	"E2": "二",
 	"EEEE3": "星期三",
 	"EEE3": "周三",
 	"EE3": "周三",
-	"E3": "周三",
+	"E3": "三",
 	"EEEE4": "星期四",
 	"EEE4": "周四",
 	"EE4": "周四",
-	"E4": "周四",
+	"E4": "四",
 	"EEEE5": "星期五",
 	"EEE5": "周五",
 	"EE5": "周五",
-	"E5": "周五",
+	"E5": "五",
 	"EEEE6": "星期六",
 	"EEE6": "周六",
 	"EE6": "周六",
-	"E6": "周六",
+	"E6": "六",
 	"ordinalChoice": "#{num}天",
 	"azh0": "凌晨",
 	"azh1": "早上",
@@ -10439,9 +14092,9 @@ ilib.data.sysres_zh = {
 	
 	"separatorShort": "",
 	"separatorMedium": "",
-	"separatorLong": "",
-	"separatorFull": "",
-	"finalSeparatorFull": ""
+	"separatorLong": "、",
+	"separatorFull": "、",
+	"finalSeparatorFull": "和"
 };
 ilib.data.sysres_zh_TW = {
 	"EEE0": "週日",
@@ -10793,7 +14446,12 @@ timezone.js
  * load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
- * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * 
  * Any substring containing letters within single or double quotes will be used 
@@ -10829,7 +14487,7 @@ timezone.js
  * @param {Object} options options governing the way this date formatter instance works
  */
 ilib.DateFmt = function(options) {
-	var arr, i, bad, formats;
+	var arr, i, bad, formats, sync = true;
 	
 	this.locale = new ilib.Locale();
 	this.type = "date";
@@ -10917,9 +14575,18 @@ ilib.DateFmt = function(options) {
 				id: options.timezone
 			});
 		}
+		
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
 	}
-	
+
+	if (!ilib.DateFmt.cache) {
+		ilib.DateFmt.cache = {};
+	}
+
 	new ilib.LocaleInfo(this.locale, {
+		sync: sync,
 		onLoad: function (li) {
 			this.locinfo = li;
 			
@@ -10948,18 +14615,19 @@ ilib.DateFmt = function(options) {
 			new ilib.ResBundle({
 				locale: this.locale,
 				name: "sysres",
+				sync: sync,
 				onLoad: function (rb) {
 					this.sysres = rb;
 					if (!this.template) {
 						var spec = this.locale.getSpec().replace(/-/g, '_');
-						if (typeof(ilib.data.dateformatCache[spec]) !== 'undefined') {
-							formats = ilib.data.dateformatCache[spec];
+						if (typeof(ilib.DateFmt.cache[spec]) !== 'undefined') {
+							formats = ilib.DateFmt.cache[spec];
 						} else {
 							formats = ilib.mergeLocData("dateformats", this.locale);
 							if (!formats) {
 								if (typeof(ilib._load) === 'function') {
-									var files = ilib.getLocFiles("locale", this.locale, "dateformats");
-									ilib._load(this, files, function(arr) {
+									var files = ilib.getLocFiles(this.locale, "dateformats");
+									ilib._load(files, sync, function(arr) {
 										formats = {};
 										for (var i = 0; i < arr.length; i++) {
 											if (typeof(arr[i]) !== 'undefined') {
@@ -10971,14 +14639,14 @@ ilib.DateFmt = function(options) {
 										if (options && typeof(options.onLoad) === 'function') {
 											options.onLoad(this);
 										}
-									});
+									}.bind(this));
 									return;
 								}
 								formats = ilib.data.dateformats;
 							}
 						}
 						this._initTemplate(formats);
-						ilib.data.dateformatCache[spec] = formats;
+						ilib.DateFmt.cache[spec] = formats;
 					}
 					this._massageTemplate();
 					if (options && typeof(options.onLoad) === 'function') {
@@ -11708,7 +15376,6 @@ ilibglobal.js
 locale.js 
 date.js 
 strings.js 
-resources.js 
 calendar.js
 localeinfo.js
 timezone.js
@@ -11780,6 +15447,11 @@ datefmt.js
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * <p>
  * 
@@ -11789,6 +15461,7 @@ datefmt.js
  * @param {Object} options options governing the way this date range formatter instance works
  */
 ilib.DateRngFmt = function(options) {
+	var sync = true;
 	this.locale = new ilib.Locale();
 	this.length = "s";
 	
@@ -11806,10 +15479,17 @@ ilib.DateRngFmt = function(options) {
 				this.length = options.length.charAt(0);
 			}
 		}
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
 	}
 	
 	var opts = {};
 	ilib.shallowCopy(options, opts);
+	opts.sync = true;
+	/**
+	 * @private
+	 */
 	opts.onLoad = function (fmt) {
 		this.dateFmt = fmt;
 		if (fmt) {
@@ -13976,7 +17656,7 @@ ilib.Cal._constructors["julian"] = ilib.Cal.Julian;
 /*
  * juliandate.js - Represent a date in the Julian calendar
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14228,13 +17908,12 @@ ilib.Date.JulDate.prototype.getRataDie = function() {
  * @returns {Object} object containing the component fields
  */
 ilib.Date.JulDate.prototype.calcComponents = function (rd) {
-	var jd,
-		year,
+	var year,
 		remainder,
 		cumulative,
 		ret = {};
 	
-	year = Math.floor((4*(rd-1) + 1464)/1461);
+	year = Math.floor((4*(Math.floor(rd)-1) + 1464)/1461);
 	
 	ret.year = (year <= 0) ? year - 1 : year;
 	
@@ -14252,7 +17931,7 @@ ilib.Date.JulDate.prototype.calcComponents = function (rd) {
 		ilib.Date.JulDate.cumMonthLengthsLeap : 
 		ilib.Date.JulDate.cumMonthLengths; 
 	
-	ret.month = ilib.bsearch(remainder, cumulative);
+	ret.month = ilib.bsearch(Math.floor(remainder), cumulative);
 	remainder = remainder - cumulative[ret.month-1];
 	
 	ret.day = Math.floor(remainder);
@@ -16052,7 +19731,7 @@ ilib.CType.isSpace = function (ch) {
 /*
  * numprs.js - Parse a number in any locale
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16073,7 +19752,6 @@ ilib.CType.isSpace = function (ch) {
 ilibglobal.js 
 locale.js 
 strings.js 
-resources.js 
 ctype.isdigit.js 
 ctype.isspace.js
 */
@@ -16109,6 +19787,17 @@ ctype.isspace.js
  * number 0.583 but "58.3" will be returned as 58.3. Valid values for this property 
  * are "number", "currency", and "percentage". Default if this is not specified is
  * "number".
+ * <li><i>onLoad</i> - a callback function to call when the locale data is fully 
+ * loaded. When the onLoad option is given, this class will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * <p>
  * 
@@ -16119,7 +19808,7 @@ ctype.isspace.js
  * @param {Object} options Options controlling how the instance should be created 
  */
 ilib.Number = function (str, options) {
-	var li, i, stripped = "";
+	var i, stripped = "", sync = true;
 	
 	this.locale = new ilib.Locale();
 	this.type = "number";
@@ -16139,85 +19828,104 @@ ilib.Number = function (str, options) {
 					break;
 			}
 		}
-	}
-	
-	
-	li = new ilib.LocaleInfo(this.locale);
-	this.decimal = li.getDecimalSeparator();
-	
-	switch (typeof(str)) {
-	case 'string':
-		// stripping should work for all locales, because you just ignore all the
-		// formatting except the decimal char
-		var unary = true, // looking for the unary minus still?
-			negative = false;
-		this.str = str || "0";
-		i = 0;
-		for (i = 0; i < this.str.length; i++) {
-			if (unary && this.str.charAt(i) === '-') {
-				negative = true;
-				unary = false;
-				stripped += this.str.charAt(i);
-			} else if (ilib.CType.isDigit(this.str.charAt(i))) {
-				stripped += this.str.charAt(i);
-				unary = false;
-			} else if (this.str.charAt(i) === this.decimal) {
-				stripped += "."; // always convert to period
-				unary = false;
-			} // else ignore
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
 		}
-		this.value = parseFloat(stripped);
-		break;
-	case 'number':
-		this.str = "" + str;
-		this.value = str;
-		break;
-		
-	case 'object':
-		this.value = /** @type {number} */ str.valueOf();
-		this.str = "" + this.value;
-		break;
-		
-	case 'undefined':
-		this.value = 0;
-		this.str = "0";
-		break;
 	}
 	
-	switch (this.type) {
-		default:
-			// don't need to do anything special for other types
-			break;
-		case "percentage":
-			if (this.str.indexOf(li.getPercentageSymbol()) !== -1) {
-				this.value /= 100;
-			}
-			break;
-		case "currency":
-			stripped = "";
-			i = 0;
-			while (i < this.str.length &&
-				   !ilib.CType.isDigit(this.str.charAt(i)) &&
-				   !ilib.CType.isSpace(this.str.charAt(i))) {
-				stripped += this.str.charAt(i++);
-			}
-			if (stripped.length === 0) {
-				while (i < this.str.length && 
-					   ilib.CType.isDigit(this.str.charAt(i)) ||
-					   ilib.CType.isSpace(this.str.charAt(i)) ||
-					   this.str.charAt(i) === '.' ||
-					   this.str.charAt(i) === ',' ) {
-					i++;
+	
+	new ilib.LocaleInfo(this.locale, {
+		sync: sync,
+		onLoad: function (li) {
+			this.decimal = li.getDecimalSeparator();
+			
+			switch (typeof(str)) {
+			case 'string':
+				// stripping should work for all locales, because you just ignore all the
+				// formatting except the decimal char
+				var unary = true; // looking for the unary minus still?
+				this.str = str || "0";
+				i = 0;
+				for (i = 0; i < this.str.length; i++) {
+					if (unary && this.str.charAt(i) === '-') {
+						unary = false;
+						stripped += this.str.charAt(i);
+					} else if (ilib.CType.isDigit(this.str.charAt(i))) {
+						stripped += this.str.charAt(i);
+						unary = false;
+					} else if (this.str.charAt(i) === this.decimal) {
+						stripped += "."; // always convert to period
+						unary = false;
+					} // else ignore
 				}
-				while (i < this.str.length && 
-					   !ilib.CType.isDigit(this.str.charAt(i)) &&
-					   !ilib.CType.isSpace(this.str.charAt(i))) {
-					stripped += this.str.charAt(i++);
-				}
+				this.value = parseFloat(stripped);
+				break;
+			case 'number':
+				this.str = "" + str;
+				this.value = str;
+				break;
+				
+			case 'object':
+				this.value = /** @type {number} */ str.valueOf();
+				this.str = "" + this.value;
+				break;
+				
+			case 'undefined':
+				this.value = 0;
+				this.str = "0";
+				break;
 			}
-			this.currency = new ilib.Currency({locale: this.locale, sign: stripped});
-			break;
-	}
+			
+			switch (this.type) {
+				default:
+					// don't need to do anything special for other types
+					break;
+				case "percentage":
+					if (this.str.indexOf(li.getPercentageSymbol()) !== -1) {
+						this.value /= 100;
+					}
+					break;
+				case "currency":
+					stripped = "";
+					i = 0;
+					while (i < this.str.length &&
+						   !ilib.CType.isDigit(this.str.charAt(i)) &&
+						   !ilib.CType.isSpace(this.str.charAt(i))) {
+						stripped += this.str.charAt(i++);
+					}
+					if (stripped.length === 0) {
+						while (i < this.str.length && 
+							   ilib.CType.isDigit(this.str.charAt(i)) ||
+							   ilib.CType.isSpace(this.str.charAt(i)) ||
+							   this.str.charAt(i) === '.' ||
+							   this.str.charAt(i) === ',' ) {
+							i++;
+						}
+						while (i < this.str.length && 
+							   !ilib.CType.isDigit(this.str.charAt(i)) &&
+							   !ilib.CType.isSpace(this.str.charAt(i))) {
+							stripped += this.str.charAt(i++);
+						}
+					}
+					new ilib.Currency({
+						locale: this.locale, 
+						sign: stripped,
+						sync: sync,
+						onLoad: function (cur) {
+							this.currency = cur;
+							if (options && typeof(options.onLoad) === 'function') {
+								options.onLoad(this);
+							}				
+						}.bind(this)
+					});
+					return;
+			}
+			
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		}.bind(this)
+	});
 };
 
 ilib.Number.prototype = {
@@ -17083,7 +20791,11 @@ ilib.data.currency = {
 /**
  * @class
  * Create a new currency information instance. Instances of this class encode 
- * information about a particular currency.<p> 
+ * information about a particular currency.<p>
+ * 
+ * Note: that if you are looking to format currency for display, please see
+ * the number formatting class {ilib.NumFmt}. This class only gives information
+ * about currencies.<p> 
  * 
  * The options can contain any of the following properties:
  * 
@@ -17091,6 +20803,12 @@ ilib.data.currency = {
  * <li><i>locale</i> - specify the locale for this instance
  * <li><i>code</i> - find info on a specific currency with the given ISO 4217 code 
  * <li><i>sign</i> - search for a currency that uses this sign
+ * <li><i>onLoad</i> - a callback function to call when the currency data is fully 
+ * loaded. When the onLoad option is given, this class will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * </ul>
  * 
  * When searching for a currency by its sign, this class cannot guarantee 
@@ -17129,8 +20847,10 @@ ilib.data.currency = {
  * known currencies. xxx is replaced with the requested code.
  */
 ilib.Currency = function (options) {
-	var li, currencies, currInfo, sign, cur;
-	
+	var sign,
+		currInfo,
+		currencies = ilib.data.currency;
+
 	if (options) {
 		if (options.code) {
 			this.code = options.code;
@@ -17144,48 +20864,54 @@ ilib.Currency = function (options) {
 	}
 	
 	this.locale = this.locale || new ilib.Locale();
-	li = new ilib.LocaleInfo(this.locale);
-		
-	currencies = ilib.data.currency;
-
-	if (this.code) {
-		currInfo = currencies[this.code];
-		if (!currInfo) {
-			throw "currency " + this.code + " is unknown";
-		}
-	} else if (sign) {
-		currInfo = currencies[sign]; // maybe it is really a code...
-		if (typeof(currInfo) !== 'undefined') {
-			this.code = sign;
-		} else {
-			this.code = li.getCurrency();
-			currInfo = currencies[this.code];
-			if (currInfo.sign !== sign) {
-				// current locale does not use the sign, so search for it
-				for (cur in currencies) {
-					if (cur && currencies[cur]) {
-						currInfo = currencies[cur];
-						if (currInfo.sign === sign) {
-							// currency data is already ordered so that the currency with the
-							// largest circulation is at the beginning, so all we have to do
-							// is take the first one in the list that matches
-							this.code = cur;
-							break;
-						}
-					}
-				}
+	
+	new ilib.LocaleInfo(this.locale, {
+		onLoad: function (li) {
+			this.locinfo = li;
+	    	if (this.code) {
+	    		currInfo = currencies[this.code];
+	    		if (!currInfo) {
+	    			throw "currency " + this.code + " is unknown";
+	    		}
+	    	} else if (sign) {
+	    		currInfo = currencies[sign]; // maybe it is really a code...
+	    		if (typeof(currInfo) !== 'undefined') {
+	    			this.code = sign;
+	    		} else {
+	    			this.code = this.locinfo.getCurrency();
+	    			currInfo = currencies[this.code];
+	    			if (currInfo.sign !== sign) {
+	    				// current locale does not use the sign, so search for it
+	    				for (var cur in currencies) {
+	    					if (cur && currencies[cur]) {
+	    						currInfo = currencies[cur];
+	    						if (currInfo.sign === sign) {
+	    							// currency data is already ordered so that the currency with the
+	    							// largest circulation is at the beginning, so all we have to do
+	    							// is take the first one in the list that matches
+	    							this.code = cur;
+	    							break;
+	    						}
+	    					}
+	    				}
+	    			}
+	    		}
+	    	}
+	    	
+	    	if (!currInfo || !this.code) {
+	    		this.code = this.locinfo.getCurrency();
+	    		currInfo = currencies[this.code];
+	    	}
+	    	
+	    	this.name = currInfo.name;
+	    	this.fractionDigits = currInfo.decimals;
+	    	this.sign = currInfo.sign;
+	    	
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
 			}
-		}
-	}
-	
-	if (!currInfo || !this.code) {
-		this.code = li.getCurrency();
-		currInfo = currencies[this.code];
-	}
-	
-	this.name = currInfo.name;
-	this.fractionDigits = currInfo.decimals;
-	this.sign = currInfo.sign;
+		}.bind(this)
+	});
 };
 
 /**
@@ -17260,7 +20986,7 @@ ilib.Currency.prototype = {
 /*
  * numfmt.js - Number formatter definition
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17276,7 +21002,7 @@ ilib.Currency.prototype = {
  * limitations under the License.
  */
 
-// !depends ilibglobal.js locale.js strings.js resources.js currency.js
+// !depends ilibglobal.js locale.js strings.js currency.js
 
 
 /*
@@ -17340,6 +21066,7 @@ strings.js
  * set, then the standard legal rounding rules for the locale are followed. If the type
  * is "number" or "percentage" and the <i>roundingMode</i> property is not set, then the 
  * default mode is "halfdown".</i>.
+ * 
  * <li><i>style</i> - When the type of this formatter is "currency", the currency amount
  * can be formatted in the following styles: "common" and "iso". The common style is the
  * one commonly used in every day writing where the currency unit is represented using a 
@@ -17356,7 +21083,19 @@ strings.js
  * which give the power of 10 in the exponent. Note that if you specify a maximum number
  * of integral digits, the formatter with a standard style will give you standard 
  * formatting for smaller numbers and scientific notation for larger numbers. The default
- * is standard style if this is not specified. 
+ * is standard style if this is not specified.
+ *  
+ * <li><i>onLoad</i> - a callback function to call when the format data is fully 
+ * loaded. When the onLoad option is given, this class will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * <p>
  * 
@@ -17366,6 +21105,7 @@ strings.js
  * @param {Object.<string,*>} options A set of options that govern how the formatter will behave 
  */
 ilib.NumFmt = function (options) {
+	var sync = true;
 	this.locale = new ilib.Locale();
 	this.type = "number";
 	
@@ -17395,64 +21135,67 @@ ilib.NumFmt = function (options) {
 		if (options.style) {
 			this.style = options.style;
 		}
+		
+		this.roundingMode = options.roundingMode;
+
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
 	}
 	
-	this.localeInfo = new ilib.LocaleInfo(this.locale);
-	switch (this.type) {
-		case "currency":
-			var templates,
-				curopts;
-			
-			if (!this.currency || typeof(this.currency) != 'string') {
-				throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
+	new ilib.LocaleInfo(this.locale, {
+		sync: sync,
+		onLoad: function (li) {
+			this.localeInfo = li;
+
+			if (this.type === "currency") {
+				var templates;
+				
+				if (!this.currency || typeof(this.currency) != 'string') {
+					throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
+				}
+				
+				new ilib.Currency({
+					locale: this.locale,
+					code: this.currency,
+					sync: sync,
+					onLoad: function (cur) {
+						this.currencyInfo = cur;
+						if (this.style !== "common" && this.style !== "iso") {
+							this.style = "common";
+						}
+						
+						if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
+							this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
+						}
+						
+						templates = this.localeInfo.getCurrencyFormats();
+						this.template = new ilib.String(templates[this.style]);
+						this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
+						
+						if (!this.roundingMode) {
+							this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
+						}
+
+						this._init();
+						
+						if (options && typeof(options.onLoad) === 'function') {
+							options.onLoad(this);
+						}
+					}.bind(this)
+				});
+				return;
+			} else if (this.type === "percentage") {
+				this.template = new ilib.String(this.localeInfo.getPercentageFormat());
 			}
+
+			this._init();
 			
-			curopts = {
-				locale: this.locale,
-				code: this.currency		
-			};
-			this.currencyInfo = new ilib.Currency(curopts);
-			if (this.style !== "common" && this.style !== "iso") {
-				this.style = "common";
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
 			}
-			
-			if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
-				this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
-			}
-			
-			templates = this.localeInfo.getCurrencyFormats();
-			this.template = new ilib.String(templates[this.style]);
-			this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign(); 
-			break;
-		case "percentage":
-			this.template = new ilib.String(this.localeInfo.getPercentageFormat());
-			break;
-		default:
-			break;
-	}
-	
-	if (this.maxFractionDigits < this.minFractionDigits) {
-		this.minFractionDigits = this.maxFractionDigits;
-	}
-	
-	this.roundingMode = options && options.roundingMode;
-	if (!this.roundingMode) {
-		this.roundingMode = this.localeInfo.getRoundingMode();
-	}
-	if (!this.roundingMode) {
-		this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
-	}
-	if (!this.roundingMode) {
-		this.roundingMode = "halfdown";
-	}
-	
-	// set up the function, so we only have to figure it out once
-	// and not every time we do format()
-	this.round = ilib._roundFnc[this.roundingMode];
-	if (!this.round) {
-		this.roundingMode = "halfdown";
-		this.round = ilib._roundFnc[this.roundingMode];
-	}
+		}.bind(this)
+	});
 };
 
 /**
@@ -17472,6 +21215,31 @@ ilib.NumFmt.zeros = "00000000000000000000000000000000000000000000000000000000000
 
 
 ilib.NumFmt.prototype = {
+	/**
+	 * @private
+	 */
+	_init: function () {
+		if (this.maxFractionDigits < this.minFractionDigits) {
+			this.minFractionDigits = this.maxFractionDigits;
+		}		
+		
+		if (!this.roundingMode) {
+			this.roundingMode = this.localeInfo.getRoundingMode();
+		}
+		
+		if (!this.roundingMode) {
+			this.roundingMode = "halfdown";
+		}
+		
+		// set up the function, so we only have to figure it out once
+		// and not every time we do format()
+		this.round = ilib._roundFnc[this.roundingMode];
+		if (!this.round) {
+			this.roundingMode = "halfdown";
+			this.round = ilib._roundFnc[this.roundingMode];
+		}
+	},
+	
 	/*
 	 * @private
 	 */
@@ -17708,10 +21476,108 @@ ilib.NumFmt.prototype = {
 	}
 };
 
+ilib.data.norm.ccc = {"̀":230,"́":230,"̂":230,"̃":230,"̄":230,"̅":230,"̆":230,"̇":230,"̈":230,"̉":230,"̊":230,"̋":230,"̌":230,"̍":230,"̎":230,"̏":230,"̐":230,"̑":230,"̒":230,"̓":230,"̔":230,"̕":232,"̖":220,"̗":220,"̘":220,"̙":220,"̚":232,"̛":216,"̜":220,"̝":220,"̞":220,"̟":220,"̠":220,"̡":202,"̢":202,"̣":220,"̤":220,"̥":220,"̦":220,"̧":202,"̨":202,"̩":220,"̪":220,"̫":220,"̬":220,"̭":220,"̮":220,"̯":220,"̰":220,"̱":220,"̲":220,"̳":220,"̴":1,"̵":1,"̶":1,"̷":1,"̸":1,"̹":220,"̺":220,"̻":220,"̼":220,"̽":230,"̾":230,"̿":230,"̀":230,"́":230,"͂":230,"̓":230,"̈́":230,"ͅ":240,"͆":230,"͇":220,"͈":220,"͉":220,"͊":230,"͋":230,"͌":230,"͍":220,"͎":220,"͐":230,"͑":230,"͒":230,"͓":220,"͔":220,"͕":220,"͖":220,"͗":230,"͘":232,"͙":220,"͚":220,"͛":230,"͜":233,"͝":234,"͞":234,"͟":233,"͠":234,"͡":234,"͢":233,"ͣ":230,"ͤ":230,"ͥ":230,"ͦ":230,"ͧ":230,"ͨ":230,"ͩ":230,"ͪ":230,"ͫ":230,"ͬ":230,"ͭ":230,"ͮ":230,"ͯ":230,"҃":230,"҄":230,"҅":230,"҆":230,"҇":230,"֑":220,"֒":230,"֓":230,"֔":230,"֕":230,"֖":220,"֗":230,"֘":230,"֙":230,"֚":222,"֛":220,"֜":230,"֝":230,"֞":230,"֟":230,"֠":230,"֡":230,"֢":220,"֣":220,"֤":220,"֥":220,"֦":220,"֧":220,"֨":230,"֩":230,"֪":220,"֫":230,"֬":230,"֭":222,"֮":228,"֯":230,"ְ":10,"ֱ":11,"ֲ":12,"ֳ":13,"ִ":14,"ֵ":15,"ֶ":16,"ַ":17,"ָ":18,"ֹ":19,"ֺ":19,"ֻ":20,"ּ":21,"ֽ":22,"ֿ":23,"ׁ":24,"ׂ":25,"ׄ":230,"ׅ":220,"ׇ":18,"ؐ":230,"ؑ":230,"ؒ":230,"ؓ":230,"ؔ":230,"ؕ":230,"ؖ":230,"ؗ":230,"ؘ":30,"ؙ":31,"ؚ":32,"ً":27,"ٌ":28,"ٍ":29,"َ":30,"ُ":31,"ِ":32,"ّ":33,"ْ":34,"ٓ":230,"ٔ":230,"ٕ":220,"ٖ":220,"ٗ":230,"٘":230,"ٙ":230,"ٚ":230,"ٛ":230,"ٜ":220,"ٝ":230,"ٞ":230,"ٟ":220,"ٰ":35,"ۖ":230,"ۗ":230,"ۘ":230,"ۙ":230,"ۚ":230,"ۛ":230,"ۜ":230,"۟":230,"۠":230,"ۡ":230,"ۢ":230,"ۣ":220,"ۤ":230,"ۧ":230,"ۨ":230,"۪":220,"۫":230,"۬":230,"ۭ":220,"ܑ":36,"ܰ":230,"ܱ":220,"ܲ":230,"ܳ":230,"ܴ":220,"ܵ":230,"ܶ":230,"ܷ":220,"ܸ":220,"ܹ":220,"ܺ":230,"ܻ":220,"ܼ":220,"ܽ":230,"ܾ":220,"ܿ":230,"݀":230,"݁":230,"݂":220,"݃":230,"݄":220,"݅":230,"݆":220,"݇":230,"݈":220,"݉":230,"݊":230,"߫":230,"߬":230,"߭":230,"߮":230,"߯":230,"߰":230,"߱":230,"߲":220,"߳":230,"ࠖ":230,"ࠗ":230,"࠘":230,"࠙":230,"ࠛ":230,"ࠜ":230,"ࠝ":230,"ࠞ":230,"ࠟ":230,"ࠠ":230,"ࠡ":230,"ࠢ":230,"ࠣ":230,"ࠥ":230,"ࠦ":230,"ࠧ":230,"ࠩ":230,"ࠪ":230,"ࠫ":230,"ࠬ":230,"࠭":230,"࡙":220,"࡚":220,"࡛":220,"ࣤ":230,"ࣥ":230,"ࣦ":220,"ࣧ":230,"ࣨ":230,"ࣩ":220,"࣪":230,"࣫":230,"࣬":230,"࣭":220,"࣮":220,"࣯":220,"ࣰ":27,"ࣱ":28,"ࣲ":29,"ࣳ":230,"ࣴ":230,"ࣵ":230,"ࣶ":220,"ࣷ":230,"ࣸ":230,"ࣹ":220,"ࣺ":220,"ࣻ":230,"ࣼ":230,"ࣽ":230,"ࣾ":230,"़":7,"्":9,"॑":230,"॒":220,"॓":230,"॔":230,"়":7,"্":9,"਼":7,"੍":9,"઼":7,"્":9,"଼":7,"୍":9,"்":9,"్":9,"ౕ":84,"ౖ":91,"಼":7,"್":9,"്":9,"්":9,"ุ":103,"ู":103,"ฺ":9,"่":107,"้":107,"๊":107,"๋":107,"ຸ":118,"ູ":118,"່":122,"້":122,"໊":122,"໋":122,"༘":220,"༙":220,"༵":220,"༷":220,"༹":216,"ཱ":129,"ི":130,"ུ":132,"ེ":130,"ཻ":130,"ོ":130,"ཽ":130,"ྀ":130,"ྂ":230,"ྃ":230,"྄":9,"྆":230,"྇":230,"࿆":220,"့":7,"္":9,"်":9,"ႍ":220,"፝":230,"፞":230,"፟":230,"᜔":9,"᜴":9,"្":9,"៝":230,"ᢩ":228,"᤹":222,"᤺":230,"᤻":220,"ᨗ":230,"ᨘ":220,"᩠":9,"᩵":230,"᩶":230,"᩷":230,"᩸":230,"᩹":230,"᩺":230,"᩻":230,"᩼":230,"᩿":220,"᬴":7,"᭄":9,"᭫":230,"᭬":220,"᭭":230,"᭮":230,"᭯":230,"᭰":230,"᭱":230,"᭲":230,"᭳":230,"᮪":9,"᮫":9,"᯦":7,"᯲":9,"᯳":9,"᰷":7,"᳐":230,"᳑":230,"᳒":230,"᳔":1,"᳕":220,"᳖":220,"᳗":220,"᳘":220,"᳙":220,"᳚":230,"᳛":230,"᳜":220,"᳝":220,"᳞":220,"᳟":220,"᳠":230,"᳢":1,"᳣":1,"᳤":1,"᳥":1,"᳦":1,"᳧":1,"᳨":1,"᳭":220,"᳴":230,"᷀":230,"᷁":230,"᷂":220,"᷃":230,"᷄":230,"᷅":230,"᷆":230,"᷇":230,"᷈":230,"᷉":230,"᷊":220,"᷋":230,"᷌":230,"᷍":234,"᷎":214,"᷏":220,"᷐":202,"᷑":230,"᷒":230,"ᷓ":230,"ᷔ":230,"ᷕ":230,"ᷖ":230,"ᷗ":230,"ᷘ":230,"ᷙ":230,"ᷚ":230,"ᷛ":230,"ᷜ":230,"ᷝ":230,"ᷞ":230,"ᷟ":230,"ᷠ":230,"ᷡ":230,"ᷢ":230,"ᷣ":230,"ᷤ":230,"ᷥ":230,"ᷦ":230,"᷼":233,"᷽":220,"᷾":230,"᷿":220,"⃐":230,"⃑":230,"⃒":1,"⃓":1,"⃔":230,"⃕":230,"⃖":230,"⃗":230,"⃘":1,"⃙":1,"⃚":1,"⃛":230,"⃜":230,"⃡":230,"⃥":1,"⃦":1,"⃧":230,"⃨":220,"⃩":230,"⃪":1,"⃫":1,"⃬":220,"⃭":220,"⃮":220,"⃯":220,"⃰":230,"⳯":230,"⳰":230,"⳱":230,"⵿":9,"ⷠ":230,"ⷡ":230,"ⷢ":230,"ⷣ":230,"ⷤ":230,"ⷥ":230,"ⷦ":230,"ⷧ":230,"ⷨ":230,"ⷩ":230,"ⷪ":230,"ⷫ":230,"ⷬ":230,"ⷭ":230,"ⷮ":230,"ⷯ":230,"ⷰ":230,"ⷱ":230,"ⷲ":230,"ⷳ":230,"ⷴ":230,"ⷵ":230,"ⷶ":230,"ⷷ":230,"ⷸ":230,"ⷹ":230,"ⷺ":230,"ⷻ":230,"ⷼ":230,"ⷽ":230,"ⷾ":230,"ⷿ":230,"〪":218,"〫":228,"〬":232,"〭":222,"〮":224,"〯":224,"゙":8,"゚":8,"꙯":230,"ꙴ":230,"ꙵ":230,"ꙶ":230,"ꙷ":230,"ꙸ":230,"ꙹ":230,"ꙺ":230,"ꙻ":230,"꙼":230,"꙽":230,"ꚟ":230,"꛰":230,"꛱":230,"꠆":9,"꣄":9,"꣠":230,"꣡":230,"꣢":230,"꣣":230,"꣤":230,"꣥":230,"꣦":230,"꣧":230,"꣨":230,"꣩":230,"꣪":230,"꣫":230,"꣬":230,"꣭":230,"꣮":230,"꣯":230,"꣰":230,"꣱":230,"꤫":220,"꤬":220,"꤭":220,"꥓":9,"꦳":7,"꧀":9,"ꪰ":230,"ꪲ":230,"ꪳ":230,"ꪴ":220,"ꪷ":230,"ꪸ":230,"ꪾ":230,"꪿":230,"꫁":230,"꫶":9,"꯭":9,"ﬞ":26,"︠":230,"︡":230,"︢":230,"︣":230,"︤":230,"︥":230,"︦":230,"𐇽":220,"𐨍":220,"𐨏":230,"𐨸":230,"𐨹":1,"𐨺":220,"𐨿":9,"𑁆":9,"𑂹":9,"𑂺":7,"𑄀":230,"𑄁":230,"𑄂":230,"𑄳":9,"𑄴":9,"𑇀":9,"𑚶":9,"𑚷":7,"𝅥":216,"𝅦":216,"𝅧":1,"𝅨":1,"𝅩":1,"𝅭":226,"𝅮":216,"𝅯":216,"𝅰":216,"𝅱":216,"𝅲":216,"𝅻":220,"𝅼":220,"𝅽":220,"𝅾":220,"𝅿":220,"𝆀":220,"𝆁":220,"𝆂":220,"𝆅":230,"𝆆":230,"𝆇":230,"𝆈":230,"𝆉":230,"𝆊":220,"𝆋":220,"𝆪":230,"𝆫":230,"𝆬":230,"𝆭":230,"𝉂":230,"𝉃":230,"𝉄":230};
+ilib.data.nfd_all = {"À":"À","Á":"Á","Â":"Â","Ã":"Ã","Ä":"Ä","Å":"Å","Ç":"Ç","È":"È","É":"É","Ê":"Ê","Ë":"Ë","Ì":"Ì","Í":"Í","Î":"Î","Ï":"Ï","Ñ":"Ñ","Ò":"Ò","Ó":"Ó","Ô":"Ô","Õ":"Õ","Ö":"Ö","Ù":"Ù","Ú":"Ú","Û":"Û","Ü":"Ü","Ý":"Ý","à":"à","á":"á","â":"â","ã":"ã","ä":"ä","å":"å","ç":"ç","è":"è","é":"é","ê":"ê","ë":"ë","ì":"ì","í":"í","î":"î","ï":"ï","ñ":"ñ","ò":"ò","ó":"ó","ô":"ô","õ":"õ","ö":"ö","ù":"ù","ú":"ú","û":"û","ü":"ü","ý":"ý","ÿ":"ÿ","Ā":"Ā","ā":"ā","Ă":"Ă","ă":"ă","Ą":"Ą","ą":"ą","Ć":"Ć","ć":"ć","Ĉ":"Ĉ","ĉ":"ĉ","Ċ":"Ċ","ċ":"ċ","Č":"Č","č":"č","Ď":"Ď","ď":"ď","Ē":"Ē","ē":"ē","Ĕ":"Ĕ","ĕ":"ĕ","Ė":"Ė","ė":"ė","Ę":"Ę","ę":"ę","Ě":"Ě","ě":"ě","Ĝ":"Ĝ","ĝ":"ĝ","Ğ":"Ğ","ğ":"ğ","Ġ":"Ġ","ġ":"ġ","Ģ":"Ģ","ģ":"ģ","Ĥ":"Ĥ","ĥ":"ĥ","Ĩ":"Ĩ","ĩ":"ĩ","Ī":"Ī","ī":"ī","Ĭ":"Ĭ","ĭ":"ĭ","Į":"Į","į":"į","İ":"İ","Ĵ":"Ĵ","ĵ":"ĵ","Ķ":"Ķ","ķ":"ķ","Ĺ":"Ĺ","ĺ":"ĺ","Ļ":"Ļ","ļ":"ļ","Ľ":"Ľ","ľ":"ľ","Ń":"Ń","ń":"ń","Ņ":"Ņ","ņ":"ņ","Ň":"Ň","ň":"ň","Ō":"Ō","ō":"ō","Ŏ":"Ŏ","ŏ":"ŏ","Ő":"Ő","ő":"ő","Ŕ":"Ŕ","ŕ":"ŕ","Ŗ":"Ŗ","ŗ":"ŗ","Ř":"Ř","ř":"ř","Ś":"Ś","ś":"ś","Ŝ":"Ŝ","ŝ":"ŝ","Ş":"Ş","ş":"ş","Š":"Š","š":"š","Ţ":"Ţ","ţ":"ţ","Ť":"Ť","ť":"ť","Ũ":"Ũ","ũ":"ũ","Ū":"Ū","ū":"ū","Ŭ":"Ŭ","ŭ":"ŭ","Ů":"Ů","ů":"ů","Ű":"Ű","ű":"ű","Ų":"Ų","ų":"ų","Ŵ":"Ŵ","ŵ":"ŵ","Ŷ":"Ŷ","ŷ":"ŷ","Ÿ":"Ÿ","Ź":"Ź","ź":"ź","Ż":"Ż","ż":"ż","Ž":"Ž","ž":"ž","Ơ":"Ơ","ơ":"ơ","Ư":"Ư","ư":"ư","Ǎ":"Ǎ","ǎ":"ǎ","Ǐ":"Ǐ","ǐ":"ǐ","Ǒ":"Ǒ","ǒ":"ǒ","Ǔ":"Ǔ","ǔ":"ǔ","Ǖ":"Ǖ","ǖ":"ǖ","Ǘ":"Ǘ","ǘ":"ǘ","Ǚ":"Ǚ","ǚ":"ǚ","Ǜ":"Ǜ","ǜ":"ǜ","Ǟ":"Ǟ","ǟ":"ǟ","Ǡ":"Ǡ","ǡ":"ǡ","Ǣ":"Ǣ","ǣ":"ǣ","Ǧ":"Ǧ","ǧ":"ǧ","Ǩ":"Ǩ","ǩ":"ǩ","Ǫ":"Ǫ","ǫ":"ǫ","Ǭ":"Ǭ","ǭ":"ǭ","Ǯ":"Ǯ","ǯ":"ǯ","ǰ":"ǰ","Ǵ":"Ǵ","ǵ":"ǵ","Ǹ":"Ǹ","ǹ":"ǹ","Ǻ":"Ǻ","ǻ":"ǻ","Ǽ":"Ǽ","ǽ":"ǽ","Ǿ":"Ǿ","ǿ":"ǿ","Ȁ":"Ȁ","ȁ":"ȁ","Ȃ":"Ȃ","ȃ":"ȃ","Ȅ":"Ȅ","ȅ":"ȅ","Ȇ":"Ȇ","ȇ":"ȇ","Ȉ":"Ȉ","ȉ":"ȉ","Ȋ":"Ȋ","ȋ":"ȋ","Ȍ":"Ȍ","ȍ":"ȍ","Ȏ":"Ȏ","ȏ":"ȏ","Ȑ":"Ȑ","ȑ":"ȑ","Ȓ":"Ȓ","ȓ":"ȓ","Ȕ":"Ȕ","ȕ":"ȕ","Ȗ":"Ȗ","ȗ":"ȗ","Ș":"Ș","ș":"ș","Ț":"Ț","ț":"ț","Ȟ":"Ȟ","ȟ":"ȟ","Ȧ":"Ȧ","ȧ":"ȧ","Ȩ":"Ȩ","ȩ":"ȩ","Ȫ":"Ȫ","ȫ":"ȫ","Ȭ":"Ȭ","ȭ":"ȭ","Ȯ":"Ȯ","ȯ":"ȯ","Ȱ":"Ȱ","ȱ":"ȱ","Ȳ":"Ȳ","ȳ":"ȳ","̀":"̀","́":"́","̓":"̓","̈́":"̈́","ʹ":"ʹ",";":";","΅":"΅","Ά":"Ά","·":"·","Έ":"Έ","Ή":"Ή","Ί":"Ί","Ό":"Ό","Ύ":"Ύ","Ώ":"Ώ","ΐ":"ΐ","Ϊ":"Ϊ","Ϋ":"Ϋ","ά":"ά","έ":"έ","ή":"ή","ί":"ί","ΰ":"ΰ","ϊ":"ϊ","ϋ":"ϋ","ό":"ό","ύ":"ύ","ώ":"ώ","ϓ":"ϓ","ϔ":"ϔ","Ѐ":"Ѐ","Ё":"Ё","Ѓ":"Ѓ","Ї":"Ї","Ќ":"Ќ","Ѝ":"Ѝ","Ў":"Ў","Й":"Й","й":"й","ѐ":"ѐ","ё":"ё","ѓ":"ѓ","ї":"ї","ќ":"ќ","ѝ":"ѝ","ў":"ў","Ѷ":"Ѷ","ѷ":"ѷ","Ӂ":"Ӂ","ӂ":"ӂ","Ӑ":"Ӑ","ӑ":"ӑ","Ӓ":"Ӓ","ӓ":"ӓ","Ӗ":"Ӗ","ӗ":"ӗ","Ӛ":"Ӛ","ӛ":"ӛ","Ӝ":"Ӝ","ӝ":"ӝ","Ӟ":"Ӟ","ӟ":"ӟ","Ӣ":"Ӣ","ӣ":"ӣ","Ӥ":"Ӥ","ӥ":"ӥ","Ӧ":"Ӧ","ӧ":"ӧ","Ӫ":"Ӫ","ӫ":"ӫ","Ӭ":"Ӭ","ӭ":"ӭ","Ӯ":"Ӯ","ӯ":"ӯ","Ӱ":"Ӱ","ӱ":"ӱ","Ӳ":"Ӳ","ӳ":"ӳ","Ӵ":"Ӵ","ӵ":"ӵ","Ӹ":"Ӹ","ӹ":"ӹ","آ":"آ","أ":"أ","ؤ":"ؤ","إ":"إ","ئ":"ئ","ۀ":"ۀ","ۂ":"ۂ","ۓ":"ۓ","ऩ":"ऩ","ऱ":"ऱ","ऴ":"ऴ","क़":"क़","ख़":"ख़","ग़":"ग़","ज़":"ज़","ड़":"ड़","ढ़":"ढ़","फ़":"फ़","य़":"य़","ো":"ো","ৌ":"ৌ","ড়":"ড়","ঢ়":"ঢ়","য়":"য়","ਲ਼":"ਲ਼","ਸ਼":"ਸ਼","ਖ਼":"ਖ਼","ਗ਼":"ਗ਼","ਜ਼":"ਜ਼","ਫ਼":"ਫ਼","ୈ":"ୈ","ୋ":"ୋ","ୌ":"ୌ","ଡ଼":"ଡ଼","ଢ଼":"ଢ଼","ஔ":"ஔ","ொ":"ொ","ோ":"ோ","ௌ":"ௌ","ై":"ై","ೀ":"ೀ","ೇ":"ೇ","ೈ":"ೈ","ೊ":"ೊ","ೋ":"ೋ","ൊ":"ൊ","ോ":"ോ","ൌ":"ൌ","ේ":"ේ","ො":"ො","ෝ":"ෝ","ෞ":"ෞ","གྷ":"གྷ","ཌྷ":"ཌྷ","དྷ":"དྷ","བྷ":"བྷ","ཛྷ":"ཛྷ","ཀྵ":"ཀྵ","ཱི":"ཱི","ཱུ":"ཱུ","ྲྀ":"ྲྀ","ླྀ":"ླྀ","ཱྀ":"ཱྀ","ྒྷ":"ྒྷ","ྜྷ":"ྜྷ","ྡྷ":"ྡྷ","ྦྷ":"ྦྷ","ྫྷ":"ྫྷ","ྐྵ":"ྐྵ","ဦ":"ဦ","ᬆ":"ᬆ","ᬈ":"ᬈ","ᬊ":"ᬊ","ᬌ":"ᬌ","ᬎ":"ᬎ","ᬒ":"ᬒ","ᬻ":"ᬻ","ᬽ":"ᬽ","ᭀ":"ᭀ","ᭁ":"ᭁ","ᭃ":"ᭃ","Ḁ":"Ḁ","ḁ":"ḁ","Ḃ":"Ḃ","ḃ":"ḃ","Ḅ":"Ḅ","ḅ":"ḅ","Ḇ":"Ḇ","ḇ":"ḇ","Ḉ":"Ḉ","ḉ":"ḉ","Ḋ":"Ḋ","ḋ":"ḋ","Ḍ":"Ḍ","ḍ":"ḍ","Ḏ":"Ḏ","ḏ":"ḏ","Ḑ":"Ḑ","ḑ":"ḑ","Ḓ":"Ḓ","ḓ":"ḓ","Ḕ":"Ḕ","ḕ":"ḕ","Ḗ":"Ḗ","ḗ":"ḗ","Ḙ":"Ḙ","ḙ":"ḙ","Ḛ":"Ḛ","ḛ":"ḛ","Ḝ":"Ḝ","ḝ":"ḝ","Ḟ":"Ḟ","ḟ":"ḟ","Ḡ":"Ḡ","ḡ":"ḡ","Ḣ":"Ḣ","ḣ":"ḣ","Ḥ":"Ḥ","ḥ":"ḥ","Ḧ":"Ḧ","ḧ":"ḧ","Ḩ":"Ḩ","ḩ":"ḩ","Ḫ":"Ḫ","ḫ":"ḫ","Ḭ":"Ḭ","ḭ":"ḭ","Ḯ":"Ḯ","ḯ":"ḯ","Ḱ":"Ḱ","ḱ":"ḱ","Ḳ":"Ḳ","ḳ":"ḳ","Ḵ":"Ḵ","ḵ":"ḵ","Ḷ":"Ḷ","ḷ":"ḷ","Ḹ":"Ḹ","ḹ":"ḹ","Ḻ":"Ḻ","ḻ":"ḻ","Ḽ":"Ḽ","ḽ":"ḽ","Ḿ":"Ḿ","ḿ":"ḿ","Ṁ":"Ṁ","ṁ":"ṁ","Ṃ":"Ṃ","ṃ":"ṃ","Ṅ":"Ṅ","ṅ":"ṅ","Ṇ":"Ṇ","ṇ":"ṇ","Ṉ":"Ṉ","ṉ":"ṉ","Ṋ":"Ṋ","ṋ":"ṋ","Ṍ":"Ṍ","ṍ":"ṍ","Ṏ":"Ṏ","ṏ":"ṏ","Ṑ":"Ṑ","ṑ":"ṑ","Ṓ":"Ṓ","ṓ":"ṓ","Ṕ":"Ṕ","ṕ":"ṕ","Ṗ":"Ṗ","ṗ":"ṗ","Ṙ":"Ṙ","ṙ":"ṙ","Ṛ":"Ṛ","ṛ":"ṛ","Ṝ":"Ṝ","ṝ":"ṝ","Ṟ":"Ṟ","ṟ":"ṟ","Ṡ":"Ṡ","ṡ":"ṡ","Ṣ":"Ṣ","ṣ":"ṣ","Ṥ":"Ṥ","ṥ":"ṥ","Ṧ":"Ṧ","ṧ":"ṧ","Ṩ":"Ṩ","ṩ":"ṩ","Ṫ":"Ṫ","ṫ":"ṫ","Ṭ":"Ṭ","ṭ":"ṭ","Ṯ":"Ṯ","ṯ":"ṯ","Ṱ":"Ṱ","ṱ":"ṱ","Ṳ":"Ṳ","ṳ":"ṳ","Ṵ":"Ṵ","ṵ":"ṵ","Ṷ":"Ṷ","ṷ":"ṷ","Ṹ":"Ṹ","ṹ":"ṹ","Ṻ":"Ṻ","ṻ":"ṻ","Ṽ":"Ṽ","ṽ":"ṽ","Ṿ":"Ṿ","ṿ":"ṿ","Ẁ":"Ẁ","ẁ":"ẁ","Ẃ":"Ẃ","ẃ":"ẃ","Ẅ":"Ẅ","ẅ":"ẅ","Ẇ":"Ẇ","ẇ":"ẇ","Ẉ":"Ẉ","ẉ":"ẉ","Ẋ":"Ẋ","ẋ":"ẋ","Ẍ":"Ẍ","ẍ":"ẍ","Ẏ":"Ẏ","ẏ":"ẏ","Ẑ":"Ẑ","ẑ":"ẑ","Ẓ":"Ẓ","ẓ":"ẓ","Ẕ":"Ẕ","ẕ":"ẕ","ẖ":"ẖ","ẗ":"ẗ","ẘ":"ẘ","ẙ":"ẙ","ẛ":"ẛ","Ạ":"Ạ","ạ":"ạ","Ả":"Ả","ả":"ả","Ấ":"Ấ","ấ":"ấ","Ầ":"Ầ","ầ":"ầ","Ẩ":"Ẩ","ẩ":"ẩ","Ẫ":"Ẫ","ẫ":"ẫ","Ậ":"Ậ","ậ":"ậ","Ắ":"Ắ","ắ":"ắ","Ằ":"Ằ","ằ":"ằ","Ẳ":"Ẳ","ẳ":"ẳ","Ẵ":"Ẵ","ẵ":"ẵ","Ặ":"Ặ","ặ":"ặ","Ẹ":"Ẹ","ẹ":"ẹ","Ẻ":"Ẻ","ẻ":"ẻ","Ẽ":"Ẽ","ẽ":"ẽ","Ế":"Ế","ế":"ế","Ề":"Ề","ề":"ề","Ể":"Ể","ể":"ể","Ễ":"Ễ","ễ":"ễ","Ệ":"Ệ","ệ":"ệ","Ỉ":"Ỉ","ỉ":"ỉ","Ị":"Ị","ị":"ị","Ọ":"Ọ","ọ":"ọ","Ỏ":"Ỏ","ỏ":"ỏ","Ố":"Ố","ố":"ố","Ồ":"Ồ","ồ":"ồ","Ổ":"Ổ","ổ":"ổ","Ỗ":"Ỗ","ỗ":"ỗ","Ộ":"Ộ","ộ":"ộ","Ớ":"Ớ","ớ":"ớ","Ờ":"Ờ","ờ":"ờ","Ở":"Ở","ở":"ở","Ỡ":"Ỡ","ỡ":"ỡ","Ợ":"Ợ","ợ":"ợ","Ụ":"Ụ","ụ":"ụ","Ủ":"Ủ","ủ":"ủ","Ứ":"Ứ","ứ":"ứ","Ừ":"Ừ","ừ":"ừ","Ử":"Ử","ử":"ử","Ữ":"Ữ","ữ":"ữ","Ự":"Ự","ự":"ự","Ỳ":"Ỳ","ỳ":"ỳ","Ỵ":"Ỵ","ỵ":"ỵ","Ỷ":"Ỷ","ỷ":"ỷ","Ỹ":"Ỹ","ỹ":"ỹ","ἀ":"ἀ","ἁ":"ἁ","ἂ":"ἂ","ἃ":"ἃ","ἄ":"ἄ","ἅ":"ἅ","ἆ":"ἆ","ἇ":"ἇ","Ἀ":"Ἀ","Ἁ":"Ἁ","Ἂ":"Ἂ","Ἃ":"Ἃ","Ἄ":"Ἄ","Ἅ":"Ἅ","Ἆ":"Ἆ","Ἇ":"Ἇ","ἐ":"ἐ","ἑ":"ἑ","ἒ":"ἒ","ἓ":"ἓ","ἔ":"ἔ","ἕ":"ἕ","Ἐ":"Ἐ","Ἑ":"Ἑ","Ἒ":"Ἒ","Ἓ":"Ἓ","Ἔ":"Ἔ","Ἕ":"Ἕ","ἠ":"ἠ","ἡ":"ἡ","ἢ":"ἢ","ἣ":"ἣ","ἤ":"ἤ","ἥ":"ἥ","ἦ":"ἦ","ἧ":"ἧ","Ἠ":"Ἠ","Ἡ":"Ἡ","Ἢ":"Ἢ","Ἣ":"Ἣ","Ἤ":"Ἤ","Ἥ":"Ἥ","Ἦ":"Ἦ","Ἧ":"Ἧ","ἰ":"ἰ","ἱ":"ἱ","ἲ":"ἲ","ἳ":"ἳ","ἴ":"ἴ","ἵ":"ἵ","ἶ":"ἶ","ἷ":"ἷ","Ἰ":"Ἰ","Ἱ":"Ἱ","Ἲ":"Ἲ","Ἳ":"Ἳ","Ἴ":"Ἴ","Ἵ":"Ἵ","Ἶ":"Ἶ","Ἷ":"Ἷ","ὀ":"ὀ","ὁ":"ὁ","ὂ":"ὂ","ὃ":"ὃ","ὄ":"ὄ","ὅ":"ὅ","Ὀ":"Ὀ","Ὁ":"Ὁ","Ὂ":"Ὂ","Ὃ":"Ὃ","Ὄ":"Ὄ","Ὅ":"Ὅ","ὐ":"ὐ","ὑ":"ὑ","ὒ":"ὒ","ὓ":"ὓ","ὔ":"ὔ","ὕ":"ὕ","ὖ":"ὖ","ὗ":"ὗ","Ὑ":"Ὑ","Ὓ":"Ὓ","Ὕ":"Ὕ","Ὗ":"Ὗ","ὠ":"ὠ","ὡ":"ὡ","ὢ":"ὢ","ὣ":"ὣ","ὤ":"ὤ","ὥ":"ὥ","ὦ":"ὦ","ὧ":"ὧ","Ὠ":"Ὠ","Ὡ":"Ὡ","Ὢ":"Ὢ","Ὣ":"Ὣ","Ὤ":"Ὤ","Ὥ":"Ὥ","Ὦ":"Ὦ","Ὧ":"Ὧ","ὰ":"ὰ","ά":"ά","ὲ":"ὲ","έ":"έ","ὴ":"ὴ","ή":"ή","ὶ":"ὶ","ί":"ί","ὸ":"ὸ","ό":"ό","ὺ":"ὺ","ύ":"ύ","ὼ":"ὼ","ώ":"ώ","ᾀ":"ᾀ","ᾁ":"ᾁ","ᾂ":"ᾂ","ᾃ":"ᾃ","ᾄ":"ᾄ","ᾅ":"ᾅ","ᾆ":"ᾆ","ᾇ":"ᾇ","ᾈ":"ᾈ","ᾉ":"ᾉ","ᾊ":"ᾊ","ᾋ":"ᾋ","ᾌ":"ᾌ","ᾍ":"ᾍ","ᾎ":"ᾎ","ᾏ":"ᾏ","ᾐ":"ᾐ","ᾑ":"ᾑ","ᾒ":"ᾒ","ᾓ":"ᾓ","ᾔ":"ᾔ","ᾕ":"ᾕ","ᾖ":"ᾖ","ᾗ":"ᾗ","ᾘ":"ᾘ","ᾙ":"ᾙ","ᾚ":"ᾚ","ᾛ":"ᾛ","ᾜ":"ᾜ","ᾝ":"ᾝ","ᾞ":"ᾞ","ᾟ":"ᾟ","ᾠ":"ᾠ","ᾡ":"ᾡ","ᾢ":"ᾢ","ᾣ":"ᾣ","ᾤ":"ᾤ","ᾥ":"ᾥ","ᾦ":"ᾦ","ᾧ":"ᾧ","ᾨ":"ᾨ","ᾩ":"ᾩ","ᾪ":"ᾪ","ᾫ":"ᾫ","ᾬ":"ᾬ","ᾭ":"ᾭ","ᾮ":"ᾮ","ᾯ":"ᾯ","ᾰ":"ᾰ","ᾱ":"ᾱ","ᾲ":"ᾲ","ᾳ":"ᾳ","ᾴ":"ᾴ","ᾶ":"ᾶ","ᾷ":"ᾷ","Ᾰ":"Ᾰ","Ᾱ":"Ᾱ","Ὰ":"Ὰ","Ά":"Ά","ᾼ":"ᾼ","ι":"ι","῁":"῁","ῂ":"ῂ","ῃ":"ῃ","ῄ":"ῄ","ῆ":"ῆ","ῇ":"ῇ","Ὲ":"Ὲ","Έ":"Έ","Ὴ":"Ὴ","Ή":"Ή","ῌ":"ῌ","῍":"῍","῎":"῎","῏":"῏","ῐ":"ῐ","ῑ":"ῑ","ῒ":"ῒ","ΐ":"ΐ","ῖ":"ῖ","ῗ":"ῗ","Ῐ":"Ῐ","Ῑ":"Ῑ","Ὶ":"Ὶ","Ί":"Ί","῝":"῝","῞":"῞","῟":"῟","ῠ":"ῠ","ῡ":"ῡ","ῢ":"ῢ","ΰ":"ΰ","ῤ":"ῤ","ῥ":"ῥ","ῦ":"ῦ","ῧ":"ῧ","Ῠ":"Ῠ","Ῡ":"Ῡ","Ὺ":"Ὺ","Ύ":"Ύ","Ῥ":"Ῥ","῭":"῭","΅":"΅","`":"`","ῲ":"ῲ","ῳ":"ῳ","ῴ":"ῴ","ῶ":"ῶ","ῷ":"ῷ","Ὸ":"Ὸ","Ό":"Ό","Ὼ":"Ὼ","Ώ":"Ώ","ῼ":"ῼ","´":"´"," ":" "," ":" ","Ω":"Ω","K":"K","Å":"Å","↚":"↚","↛":"↛","↮":"↮","⇍":"⇍","⇎":"⇎","⇏":"⇏","∄":"∄","∉":"∉","∌":"∌","∤":"∤","∦":"∦","≁":"≁","≄":"≄","≇":"≇","≉":"≉","≠":"≠","≢":"≢","≭":"≭","≮":"≮","≯":"≯","≰":"≰","≱":"≱","≴":"≴","≵":"≵","≸":"≸","≹":"≹","⊀":"⊀","⊁":"⊁","⊄":"⊄","⊅":"⊅","⊈":"⊈","⊉":"⊉","⊬":"⊬","⊭":"⊭","⊮":"⊮","⊯":"⊯","⋠":"⋠","⋡":"⋡","⋢":"⋢","⋣":"⋣","⋪":"⋪","⋫":"⋫","⋬":"⋬","⋭":"⋭","〈":"〈","〉":"〉","⫝̸":"⫝̸","が":"が","ぎ":"ぎ","ぐ":"ぐ","げ":"げ","ご":"ご","ざ":"ざ","じ":"じ","ず":"ず","ぜ":"ぜ","ぞ":"ぞ","だ":"だ","ぢ":"ぢ","づ":"づ","で":"で","ど":"ど","ば":"ば","ぱ":"ぱ","び":"び","ぴ":"ぴ","ぶ":"ぶ","ぷ":"ぷ","べ":"べ","ぺ":"ぺ","ぼ":"ぼ","ぽ":"ぽ","ゔ":"ゔ","ゞ":"ゞ","ガ":"ガ","ギ":"ギ","グ":"グ","ゲ":"ゲ","ゴ":"ゴ","ザ":"ザ","ジ":"ジ","ズ":"ズ","ゼ":"ゼ","ゾ":"ゾ","ダ":"ダ","ヂ":"ヂ","ヅ":"ヅ","デ":"デ","ド":"ド","バ":"バ","パ":"パ","ビ":"ビ","ピ":"ピ","ブ":"ブ","プ":"プ","ベ":"ベ","ペ":"ペ","ボ":"ボ","ポ":"ポ","ヴ":"ヴ","ヷ":"ヷ","ヸ":"ヸ","ヹ":"ヹ","ヺ":"ヺ","ヾ":"ヾ","豈":"豈","更":"更","車":"車","賈":"賈","滑":"滑","串":"串","句":"句","龜":"龜","龜":"龜","契":"契","金":"金","喇":"喇","奈":"奈","懶":"懶","癩":"癩","羅":"羅","蘿":"蘿","螺":"螺","裸":"裸","邏":"邏","樂":"樂","洛":"洛","烙":"烙","珞":"珞","落":"落","酪":"酪","駱":"駱","亂":"亂","卵":"卵","欄":"欄","爛":"爛","蘭":"蘭","鸞":"鸞","嵐":"嵐","濫":"濫","藍":"藍","襤":"襤","拉":"拉","臘":"臘","蠟":"蠟","廊":"廊","朗":"朗","浪":"浪","狼":"狼","郎":"郎","來":"來","冷":"冷","勞":"勞","擄":"擄","櫓":"櫓","爐":"爐","盧":"盧","老":"老","蘆":"蘆","虜":"虜","路":"路","露":"露","魯":"魯","鷺":"鷺","碌":"碌","祿":"祿","綠":"綠","菉":"菉","錄":"錄","鹿":"鹿","論":"論","壟":"壟","弄":"弄","籠":"籠","聾":"聾","牢":"牢","磊":"磊","賂":"賂","雷":"雷","壘":"壘","屢":"屢","樓":"樓","淚":"淚","漏":"漏","累":"累","縷":"縷","陋":"陋","勒":"勒","肋":"肋","凜":"凜","凌":"凌","稜":"稜","綾":"綾","菱":"菱","陵":"陵","讀":"讀","拏":"拏","樂":"樂","諾":"諾","丹":"丹","寧":"寧","怒":"怒","率":"率","異":"異","北":"北","磻":"磻","便":"便","復":"復","不":"不","泌":"泌","數":"數","索":"索","參":"參","塞":"塞","省":"省","葉":"葉","說":"說","殺":"殺","辰":"辰","沈":"沈","拾":"拾","若":"若","掠":"掠","略":"略","亮":"亮","兩":"兩","凉":"凉","梁":"梁","糧":"糧","良":"良","諒":"諒","量":"量","勵":"勵","呂":"呂","女":"女","廬":"廬","旅":"旅","濾":"濾","礪":"礪","閭":"閭","驪":"驪","麗":"麗","黎":"黎","力":"力","曆":"曆","歷":"歷","轢":"轢","年":"年","憐":"憐","戀":"戀","撚":"撚","漣":"漣","煉":"煉","璉":"璉","秊":"秊","練":"練","聯":"聯","輦":"輦","蓮":"蓮","連":"連","鍊":"鍊","列":"列","劣":"劣","咽":"咽","烈":"烈","裂":"裂","說":"說","廉":"廉","念":"念","捻":"捻","殮":"殮","簾":"簾","獵":"獵","令":"令","囹":"囹","寧":"寧","嶺":"嶺","怜":"怜","玲":"玲","瑩":"瑩","羚":"羚","聆":"聆","鈴":"鈴","零":"零","靈":"靈","領":"領","例":"例","禮":"禮","醴":"醴","隸":"隸","惡":"惡","了":"了","僚":"僚","寮":"寮","尿":"尿","料":"料","樂":"樂","燎":"燎","療":"療","蓼":"蓼","遼":"遼","龍":"龍","暈":"暈","阮":"阮","劉":"劉","杻":"杻","柳":"柳","流":"流","溜":"溜","琉":"琉","留":"留","硫":"硫","紐":"紐","類":"類","六":"六","戮":"戮","陸":"陸","倫":"倫","崙":"崙","淪":"淪","輪":"輪","律":"律","慄":"慄","栗":"栗","率":"率","隆":"隆","利":"利","吏":"吏","履":"履","易":"易","李":"李","梨":"梨","泥":"泥","理":"理","痢":"痢","罹":"罹","裏":"裏","裡":"裡","里":"里","離":"離","匿":"匿","溺":"溺","吝":"吝","燐":"燐","璘":"璘","藺":"藺","隣":"隣","鱗":"鱗","麟":"麟","林":"林","淋":"淋","臨":"臨","立":"立","笠":"笠","粒":"粒","狀":"狀","炙":"炙","識":"識","什":"什","茶":"茶","刺":"刺","切":"切","度":"度","拓":"拓","糖":"糖","宅":"宅","洞":"洞","暴":"暴","輻":"輻","行":"行","降":"降","見":"見","廓":"廓","兀":"兀","嗀":"嗀","塚":"塚","晴":"晴","凞":"凞","猪":"猪","益":"益","礼":"礼","神":"神","祥":"祥","福":"福","靖":"靖","精":"精","羽":"羽","蘒":"蘒","諸":"諸","逸":"逸","都":"都","飯":"飯","飼":"飼","館":"館","鶴":"鶴","郞":"郞","隷":"隷","侮":"侮","僧":"僧","免":"免","勉":"勉","勤":"勤","卑":"卑","喝":"喝","嘆":"嘆","器":"器","塀":"塀","墨":"墨","層":"層","屮":"屮","悔":"悔","慨":"慨","憎":"憎","懲":"懲","敏":"敏","既":"既","暑":"暑","梅":"梅","海":"海","渚":"渚","漢":"漢","煮":"煮","爫":"爫","琢":"琢","碑":"碑","社":"社","祉":"祉","祈":"祈","祐":"祐","祖":"祖","祝":"祝","禍":"禍","禎":"禎","穀":"穀","突":"突","節":"節","練":"練","縉":"縉","繁":"繁","署":"署","者":"者","臭":"臭","艹":"艹","艹":"艹","著":"著","褐":"褐","視":"視","謁":"謁","謹":"謹","賓":"賓","贈":"贈","辶":"辶","逸":"逸","難":"難","響":"響","頻":"頻","恵":"恵","𤋮":"𤋮","舘":"舘","並":"並","况":"况","全":"全","侀":"侀","充":"充","冀":"冀","勇":"勇","勺":"勺","喝":"喝","啕":"啕","喙":"喙","嗢":"嗢","塚":"塚","墳":"墳","奄":"奄","奔":"奔","婢":"婢","嬨":"嬨","廒":"廒","廙":"廙","彩":"彩","徭":"徭","惘":"惘","慎":"慎","愈":"愈","憎":"憎","慠":"慠","懲":"懲","戴":"戴","揄":"揄","搜":"搜","摒":"摒","敖":"敖","晴":"晴","朗":"朗","望":"望","杖":"杖","歹":"歹","殺":"殺","流":"流","滛":"滛","滋":"滋","漢":"漢","瀞":"瀞","煮":"煮","瞧":"瞧","爵":"爵","犯":"犯","猪":"猪","瑱":"瑱","甆":"甆","画":"画","瘝":"瘝","瘟":"瘟","益":"益","盛":"盛","直":"直","睊":"睊","着":"着","磌":"磌","窱":"窱","節":"節","类":"类","絛":"絛","練":"練","缾":"缾","者":"者","荒":"荒","華":"華","蝹":"蝹","襁":"襁","覆":"覆","視":"視","調":"調","諸":"諸","請":"請","謁":"謁","諾":"諾","諭":"諭","謹":"謹","變":"變","贈":"贈","輸":"輸","遲":"遲","醙":"醙","鉶":"鉶","陼":"陼","難":"難","靖":"靖","韛":"韛","響":"響","頋":"頋","頻":"頻","鬒":"鬒","龜":"龜","𢡊":"𢡊","𢡄":"𢡄","𣏕":"𣏕","㮝":"㮝","䀘":"䀘","䀹":"䀹","𥉉":"𥉉","𥳐":"𥳐","𧻓":"𧻓","齃":"齃","龎":"龎","יִ":"יִ","ײַ":"ײַ","שׁ":"שׁ","שׂ":"שׂ","שּׁ":"שּׁ","שּׂ":"שּׂ","אַ":"אַ","אָ":"אָ","אּ":"אּ","בּ":"בּ","גּ":"גּ","דּ":"דּ","הּ":"הּ","וּ":"וּ","זּ":"זּ","טּ":"טּ","יּ":"יּ","ךּ":"ךּ","כּ":"כּ","לּ":"לּ","מּ":"מּ","נּ":"נּ","סּ":"סּ","ףּ":"ףּ","פּ":"פּ","צּ":"צּ","קּ":"קּ","רּ":"רּ","שּ":"שּ","תּ":"תּ","וֹ":"וֹ","בֿ":"בֿ","כֿ":"כֿ","פֿ":"פֿ","𑂚":"𑂚","𑂜":"𑂜","𑂫":"𑂫","𑄮":"𑄮","𑄯":"𑄯","𝅗𝅥":"𝅗𝅥","𝅘𝅥":"𝅘𝅥","𝅘𝅥𝅮":"𝅘𝅥𝅮","𝅘𝅥𝅯":"𝅘𝅥𝅯","𝅘𝅥𝅰":"𝅘𝅥𝅰","𝅘𝅥𝅱":"𝅘𝅥𝅱","𝅘𝅥𝅲":"𝅘𝅥𝅲","𝆹𝅥":"𝆹𝅥","𝆺𝅥":"𝆺𝅥","𝆹𝅥𝅮":"𝆹𝅥𝅮","𝆺𝅥𝅮":"𝆺𝅥𝅮","𝆹𝅥𝅯":"𝆹𝅥𝅯","𝆺𝅥𝅯":"𝆺𝅥𝅯","丽":"丽","丸":"丸","乁":"乁","𠄢":"𠄢","你":"你","侮":"侮","侻":"侻","倂":"倂","偺":"偺","備":"備","僧":"僧","像":"像","㒞":"㒞","𠘺":"𠘺","免":"免","兔":"兔","兤":"兤","具":"具","𠔜":"𠔜","㒹":"㒹","內":"內","再":"再","𠕋":"𠕋","冗":"冗","冤":"冤","仌":"仌","冬":"冬","况":"况","𩇟":"𩇟","凵":"凵","刃":"刃","㓟":"㓟","刻":"刻","剆":"剆","割":"割","剷":"剷","㔕":"㔕","勇":"勇","勉":"勉","勤":"勤","勺":"勺","包":"包","匆":"匆","北":"北","卉":"卉","卑":"卑","博":"博","即":"即","卽":"卽","卿":"卿","卿":"卿","卿":"卿","𠨬":"𠨬","灰":"灰","及":"及","叟":"叟","𠭣":"𠭣","叫":"叫","叱":"叱","吆":"吆","咞":"咞","吸":"吸","呈":"呈","周":"周","咢":"咢","哶":"哶","唐":"唐","啓":"啓","啣":"啣","善":"善","善":"善","喙":"喙","喫":"喫","喳":"喳","嗂":"嗂","圖":"圖","嘆":"嘆","圗":"圗","噑":"噑","噴":"噴","切":"切","壮":"壮","城":"城","埴":"埴","堍":"堍","型":"型","堲":"堲","報":"報","墬":"墬","𡓤":"𡓤","売":"売","壷":"壷","夆":"夆","多":"多","夢":"夢","奢":"奢","𡚨":"𡚨","𡛪":"𡛪","姬":"姬","娛":"娛","娧":"娧","姘":"姘","婦":"婦","㛮":"㛮","㛼":"㛼","嬈":"嬈","嬾":"嬾","嬾":"嬾","𡧈":"𡧈","寃":"寃","寘":"寘","寧":"寧","寳":"寳","𡬘":"𡬘","寿":"寿","将":"将","当":"当","尢":"尢","㞁":"㞁","屠":"屠","屮":"屮","峀":"峀","岍":"岍","𡷤":"𡷤","嵃":"嵃","𡷦":"𡷦","嵮":"嵮","嵫":"嵫","嵼":"嵼","巡":"巡","巢":"巢","㠯":"㠯","巽":"巽","帨":"帨","帽":"帽","幩":"幩","㡢":"㡢","𢆃":"𢆃","㡼":"㡼","庰":"庰","庳":"庳","庶":"庶","廊":"廊","𪎒":"𪎒","廾":"廾","𢌱":"𢌱","𢌱":"𢌱","舁":"舁","弢":"弢","弢":"弢","㣇":"㣇","𣊸":"𣊸","𦇚":"𦇚","形":"形","彫":"彫","㣣":"㣣","徚":"徚","忍":"忍","志":"志","忹":"忹","悁":"悁","㤺":"㤺","㤜":"㤜","悔":"悔","𢛔":"𢛔","惇":"惇","慈":"慈","慌":"慌","慎":"慎","慌":"慌","慺":"慺","憎":"憎","憲":"憲","憤":"憤","憯":"憯","懞":"懞","懲":"懲","懶":"懶","成":"成","戛":"戛","扝":"扝","抱":"抱","拔":"拔","捐":"捐","𢬌":"𢬌","挽":"挽","拼":"拼","捨":"捨","掃":"掃","揤":"揤","𢯱":"𢯱","搢":"搢","揅":"揅","掩":"掩","㨮":"㨮","摩":"摩","摾":"摾","撝":"撝","摷":"摷","㩬":"㩬","敏":"敏","敬":"敬","𣀊":"𣀊","旣":"旣","書":"書","晉":"晉","㬙":"㬙","暑":"暑","㬈":"㬈","㫤":"㫤","冒":"冒","冕":"冕","最":"最","暜":"暜","肭":"肭","䏙":"䏙","朗":"朗","望":"望","朡":"朡","杞":"杞","杓":"杓","𣏃":"𣏃","㭉":"㭉","柺":"柺","枅":"枅","桒":"桒","梅":"梅","𣑭":"𣑭","梎":"梎","栟":"栟","椔":"椔","㮝":"㮝","楂":"楂","榣":"榣","槪":"槪","檨":"檨","𣚣":"𣚣","櫛":"櫛","㰘":"㰘","次":"次","𣢧":"𣢧","歔":"歔","㱎":"㱎","歲":"歲","殟":"殟","殺":"殺","殻":"殻","𣪍":"𣪍","𡴋":"𡴋","𣫺":"𣫺","汎":"汎","𣲼":"𣲼","沿":"沿","泍":"泍","汧":"汧","洖":"洖","派":"派","海":"海","流":"流","浩":"浩","浸":"浸","涅":"涅","𣴞":"𣴞","洴":"洴","港":"港","湮":"湮","㴳":"㴳","滋":"滋","滇":"滇","𣻑":"𣻑","淹":"淹","潮":"潮","𣽞":"𣽞","𣾎":"𣾎","濆":"濆","瀹":"瀹","瀞":"瀞","瀛":"瀛","㶖":"㶖","灊":"灊","災":"災","灷":"灷","炭":"炭","𠔥":"𠔥","煅":"煅","𤉣":"𤉣","熜":"熜","𤎫":"𤎫","爨":"爨","爵":"爵","牐":"牐","𤘈":"𤘈","犀":"犀","犕":"犕","𤜵":"𤜵","𤠔":"𤠔","獺":"獺","王":"王","㺬":"㺬","玥":"玥","㺸":"㺸","㺸":"㺸","瑇":"瑇","瑜":"瑜","瑱":"瑱","璅":"璅","瓊":"瓊","㼛":"㼛","甤":"甤","𤰶":"𤰶","甾":"甾","𤲒":"𤲒","異":"異","𢆟":"𢆟","瘐":"瘐","𤾡":"𤾡","𤾸":"𤾸","𥁄":"𥁄","㿼":"㿼","䀈":"䀈","直":"直","𥃳":"𥃳","𥃲":"𥃲","𥄙":"𥄙","𥄳":"𥄳","眞":"眞","真":"真","真":"真","睊":"睊","䀹":"䀹","瞋":"瞋","䁆":"䁆","䂖":"䂖","𥐝":"𥐝","硎":"硎","碌":"碌","磌":"磌","䃣":"䃣","𥘦":"𥘦","祖":"祖","𥚚":"𥚚","𥛅":"𥛅","福":"福","秫":"秫","䄯":"䄯","穀":"穀","穊":"穊","穏":"穏","𥥼":"𥥼","𥪧":"𥪧","𥪧":"𥪧","竮":"竮","䈂":"䈂","𥮫":"𥮫","篆":"篆","築":"築","䈧":"䈧","𥲀":"𥲀","糒":"糒","䊠":"䊠","糨":"糨","糣":"糣","紀":"紀","𥾆":"𥾆","絣":"絣","䌁":"䌁","緇":"緇","縂":"縂","繅":"繅","䌴":"䌴","𦈨":"𦈨","𦉇":"𦉇","䍙":"䍙","𦋙":"𦋙","罺":"罺","𦌾":"𦌾","羕":"羕","翺":"翺","者":"者","𦓚":"𦓚","𦔣":"𦔣","聠":"聠","𦖨":"𦖨","聰":"聰","𣍟":"𣍟","䏕":"䏕","育":"育","脃":"脃","䐋":"䐋","脾":"脾","媵":"媵","𦞧":"𦞧","𦞵":"𦞵","𣎓":"𣎓","𣎜":"𣎜","舁":"舁","舄":"舄","辞":"辞","䑫":"䑫","芑":"芑","芋":"芋","芝":"芝","劳":"劳","花":"花","芳":"芳","芽":"芽","苦":"苦","𦬼":"𦬼","若":"若","茝":"茝","荣":"荣","莭":"莭","茣":"茣","莽":"莽","菧":"菧","著":"著","荓":"荓","菊":"菊","菌":"菌","菜":"菜","𦰶":"𦰶","𦵫":"𦵫","𦳕":"𦳕","䔫":"䔫","蓱":"蓱","蓳":"蓳","蔖":"蔖","𧏊":"𧏊","蕤":"蕤","𦼬":"𦼬","䕝":"䕝","䕡":"䕡","𦾱":"𦾱","𧃒":"𧃒","䕫":"䕫","虐":"虐","虜":"虜","虧":"虧","虩":"虩","蚩":"蚩","蚈":"蚈","蜎":"蜎","蛢":"蛢","蝹":"蝹","蜨":"蜨","蝫":"蝫","螆":"螆","䗗":"䗗","蟡":"蟡","蠁":"蠁","䗹":"䗹","衠":"衠","衣":"衣","𧙧":"𧙧","裗":"裗","裞":"裞","䘵":"䘵","裺":"裺","㒻":"㒻","𧢮":"𧢮","𧥦":"𧥦","䚾":"䚾","䛇":"䛇","誠":"誠","諭":"諭","變":"變","豕":"豕","𧲨":"𧲨","貫":"貫","賁":"賁","贛":"贛","起":"起","𧼯":"𧼯","𠠄":"𠠄","跋":"跋","趼":"趼","跰":"跰","𠣞":"𠣞","軔":"軔","輸":"輸","𨗒":"𨗒","𨗭":"𨗭","邔":"邔","郱":"郱","鄑":"鄑","𨜮":"𨜮","鄛":"鄛","鈸":"鈸","鋗":"鋗","鋘":"鋘","鉼":"鉼","鏹":"鏹","鐕":"鐕","𨯺":"𨯺","開":"開","䦕":"䦕","閷":"閷","𨵷":"𨵷","䧦":"䧦","雃":"雃","嶲":"嶲","霣":"霣","𩅅":"𩅅","𩈚":"𩈚","䩮":"䩮","䩶":"䩶","韠":"韠","𩐊":"𩐊","䪲":"䪲","𩒖":"𩒖","頋":"頋","頋":"頋","頩":"頩","𩖶":"𩖶","飢":"飢","䬳":"䬳","餩":"餩","馧":"馧","駂":"駂","駾":"駾","䯎":"䯎","𩬰":"𩬰","鬒":"鬒","鱀":"鱀","鳽":"鳽","䳎":"䳎","䳭":"䳭","鵧":"鵧","𪃎":"𪃎","䳸":"䳸","𪄅":"𪄅","𪈎":"𪈎","𪊑":"𪊑","麻":"麻","䵖":"䵖","黹":"黹","黾":"黾","鼅":"鼅","鼏":"鼏","鼖":"鼖","鼻":"鼻","𪘀":"𪘀"};
+/*
+ * all.js - include file for normalization data for a particular script
+ * 
+ * Copyright © 2012, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* WARNING: THIS IS A FILE GENERATED BY gennorm.js. DO NOT EDIT BY HAND. */
+// !depends util/utils.js 
+// !data norm.ccc nfd/all
+ilib.data.norm.nfd = ilib.merge(ilib.data.norm.nfd || {}, ilib.data.nfd_all);
+ilib.data.nfd_all = undefined;
+ilib.data.nfc_all = {"À":"À","Á":"Á","Â":"Â","Ã":"Ã","Ä":"Ä","Å":"Å","Ç":"Ç","È":"È","É":"É","Ê":"Ê","Ë":"Ë","Ì":"Ì","Í":"Í","Î":"Î","Ï":"Ï","Ñ":"Ñ","Ò":"Ò","Ó":"Ó","Ô":"Ô","Õ":"Õ","Ö":"Ö","Ù":"Ù","Ú":"Ú","Û":"Û","Ü":"Ü","Ý":"Ý","à":"à","á":"á","â":"â","ã":"ã","ä":"ä","å":"å","ç":"ç","è":"è","é":"é","ê":"ê","ë":"ë","ì":"ì","í":"í","î":"î","ï":"ï","ñ":"ñ","ò":"ò","ó":"ó","ô":"ô","õ":"õ","ö":"ö","ù":"ù","ú":"ú","û":"û","ü":"ü","ý":"ý","ÿ":"ÿ","Ā":"Ā","ā":"ā","Ă":"Ă","ă":"ă","Ą":"Ą","ą":"ą","Ć":"Ć","ć":"ć","Ĉ":"Ĉ","ĉ":"ĉ","Ċ":"Ċ","ċ":"ċ","Č":"Č","č":"č","Ď":"Ď","ď":"ď","Ē":"Ē","ē":"ē","Ĕ":"Ĕ","ĕ":"ĕ","Ė":"Ė","ė":"ė","Ę":"Ę","ę":"ę","Ě":"Ě","ě":"ě","Ĝ":"Ĝ","ĝ":"ĝ","Ğ":"Ğ","ğ":"ğ","Ġ":"Ġ","ġ":"ġ","Ģ":"Ģ","ģ":"ģ","Ĥ":"Ĥ","ĥ":"ĥ","Ĩ":"Ĩ","ĩ":"ĩ","Ī":"Ī","ī":"ī","Ĭ":"Ĭ","ĭ":"ĭ","Į":"Į","į":"į","İ":"İ","Ĵ":"Ĵ","ĵ":"ĵ","Ķ":"Ķ","ķ":"ķ","Ĺ":"Ĺ","ĺ":"ĺ","Ļ":"Ļ","ļ":"ļ","Ľ":"Ľ","ľ":"ľ","Ń":"Ń","ń":"ń","Ņ":"Ņ","ņ":"ņ","Ň":"Ň","ň":"ň","Ō":"Ō","ō":"ō","Ŏ":"Ŏ","ŏ":"ŏ","Ő":"Ő","ő":"ő","Ŕ":"Ŕ","ŕ":"ŕ","Ŗ":"Ŗ","ŗ":"ŗ","Ř":"Ř","ř":"ř","Ś":"Ś","ś":"ś","Ŝ":"Ŝ","ŝ":"ŝ","Ş":"Ş","ş":"ş","Š":"Š","š":"š","Ţ":"Ţ","ţ":"ţ","Ť":"Ť","ť":"ť","Ũ":"Ũ","ũ":"ũ","Ū":"Ū","ū":"ū","Ŭ":"Ŭ","ŭ":"ŭ","Ů":"Ů","ů":"ů","Ű":"Ű","ű":"ű","Ų":"Ų","ų":"ų","Ŵ":"Ŵ","ŵ":"ŵ","Ŷ":"Ŷ","ŷ":"ŷ","Ÿ":"Ÿ","Ź":"Ź","ź":"ź","Ż":"Ż","ż":"ż","Ž":"Ž","ž":"ž","Ơ":"Ơ","ơ":"ơ","Ư":"Ư","ư":"ư","Ǎ":"Ǎ","ǎ":"ǎ","Ǐ":"Ǐ","ǐ":"ǐ","Ǒ":"Ǒ","ǒ":"ǒ","Ǔ":"Ǔ","ǔ":"ǔ","Ǖ":"Ǖ","ǖ":"ǖ","Ǘ":"Ǘ","ǘ":"ǘ","Ǚ":"Ǚ","ǚ":"ǚ","Ǜ":"Ǜ","ǜ":"ǜ","Ǟ":"Ǟ","ǟ":"ǟ","Ǡ":"Ǡ","ǡ":"ǡ","Ǣ":"Ǣ","ǣ":"ǣ","Ǧ":"Ǧ","ǧ":"ǧ","Ǩ":"Ǩ","ǩ":"ǩ","Ǫ":"Ǫ","ǫ":"ǫ","Ǭ":"Ǭ","ǭ":"ǭ","Ǯ":"Ǯ","ǯ":"ǯ","ǰ":"ǰ","Ǵ":"Ǵ","ǵ":"ǵ","Ǹ":"Ǹ","ǹ":"ǹ","Ǻ":"Ǻ","ǻ":"ǻ","Ǽ":"Ǽ","ǽ":"ǽ","Ǿ":"Ǿ","ǿ":"ǿ","Ȁ":"Ȁ","ȁ":"ȁ","Ȃ":"Ȃ","ȃ":"ȃ","Ȅ":"Ȅ","ȅ":"ȅ","Ȇ":"Ȇ","ȇ":"ȇ","Ȉ":"Ȉ","ȉ":"ȉ","Ȋ":"Ȋ","ȋ":"ȋ","Ȍ":"Ȍ","ȍ":"ȍ","Ȏ":"Ȏ","ȏ":"ȏ","Ȑ":"Ȑ","ȑ":"ȑ","Ȓ":"Ȓ","ȓ":"ȓ","Ȕ":"Ȕ","ȕ":"ȕ","Ȗ":"Ȗ","ȗ":"ȗ","Ș":"Ș","ș":"ș","Ț":"Ț","ț":"ț","Ȟ":"Ȟ","ȟ":"ȟ","Ȧ":"Ȧ","ȧ":"ȧ","Ȩ":"Ȩ","ȩ":"ȩ","Ȫ":"Ȫ","ȫ":"ȫ","Ȭ":"Ȭ","ȭ":"ȭ","Ȯ":"Ȯ","ȯ":"ȯ","Ȱ":"Ȱ","ȱ":"ȱ","Ȳ":"Ȳ","ȳ":"ȳ","΅":"΅","Ά":"Ά","Έ":"Έ","Ή":"Ή","Ί":"Ί","Ό":"Ό","Ύ":"Ύ","Ώ":"Ώ","ΐ":"ΐ","Ϊ":"Ϊ","Ϋ":"Ϋ","ά":"ά","έ":"έ","ή":"ή","ί":"ί","ΰ":"ΰ","ϊ":"ϊ","ϋ":"ϋ","ό":"ό","ύ":"ύ","ώ":"ώ","ϓ":"ϓ","ϔ":"ϔ","Ѐ":"Ѐ","Ё":"Ё","Ѓ":"Ѓ","Ї":"Ї","Ќ":"Ќ","Ѝ":"Ѝ","Ў":"Ў","Й":"Й","й":"й","ѐ":"ѐ","ё":"ё","ѓ":"ѓ","ї":"ї","ќ":"ќ","ѝ":"ѝ","ў":"ў","Ѷ":"Ѷ","ѷ":"ѷ","Ӂ":"Ӂ","ӂ":"ӂ","Ӑ":"Ӑ","ӑ":"ӑ","Ӓ":"Ӓ","ӓ":"ӓ","Ӗ":"Ӗ","ӗ":"ӗ","Ӛ":"Ӛ","ӛ":"ӛ","Ӝ":"Ӝ","ӝ":"ӝ","Ӟ":"Ӟ","ӟ":"ӟ","Ӣ":"Ӣ","ӣ":"ӣ","Ӥ":"Ӥ","ӥ":"ӥ","Ӧ":"Ӧ","ӧ":"ӧ","Ӫ":"Ӫ","ӫ":"ӫ","Ӭ":"Ӭ","ӭ":"ӭ","Ӯ":"Ӯ","ӯ":"ӯ","Ӱ":"Ӱ","ӱ":"ӱ","Ӳ":"Ӳ","ӳ":"ӳ","Ӵ":"Ӵ","ӵ":"ӵ","Ӹ":"Ӹ","ӹ":"ӹ","آ":"آ","أ":"أ","ؤ":"ؤ","إ":"إ","ئ":"ئ","ۀ":"ۀ","ۂ":"ۂ","ۓ":"ۓ","ऩ":"ऩ","ऱ":"ऱ","ऴ":"ऴ","ো":"ো","ৌ":"ৌ","ୈ":"ୈ","ୋ":"ୋ","ୌ":"ୌ","ஔ":"ஔ","ொ":"ொ","ோ":"ோ","ௌ":"ௌ","ై":"ై","ೀ":"ೀ","ೇ":"ೇ","ೈ":"ೈ","ೊ":"ೊ","ೋ":"ೋ","ൊ":"ൊ","ോ":"ോ","ൌ":"ൌ","ේ":"ේ","ො":"ො","ෝ":"ෝ","ෞ":"ෞ","ဦ":"ဦ","ᬆ":"ᬆ","ᬈ":"ᬈ","ᬊ":"ᬊ","ᬌ":"ᬌ","ᬎ":"ᬎ","ᬒ":"ᬒ","ᬻ":"ᬻ","ᬽ":"ᬽ","ᭀ":"ᭀ","ᭁ":"ᭁ","ᭃ":"ᭃ","Ḁ":"Ḁ","ḁ":"ḁ","Ḃ":"Ḃ","ḃ":"ḃ","Ḅ":"Ḅ","ḅ":"ḅ","Ḇ":"Ḇ","ḇ":"ḇ","Ḉ":"Ḉ","ḉ":"ḉ","Ḋ":"Ḋ","ḋ":"ḋ","Ḍ":"Ḍ","ḍ":"ḍ","Ḏ":"Ḏ","ḏ":"ḏ","Ḑ":"Ḑ","ḑ":"ḑ","Ḓ":"Ḓ","ḓ":"ḓ","Ḕ":"Ḕ","ḕ":"ḕ","Ḗ":"Ḗ","ḗ":"ḗ","Ḙ":"Ḙ","ḙ":"ḙ","Ḛ":"Ḛ","ḛ":"ḛ","Ḝ":"Ḝ","ḝ":"ḝ","Ḟ":"Ḟ","ḟ":"ḟ","Ḡ":"Ḡ","ḡ":"ḡ","Ḣ":"Ḣ","ḣ":"ḣ","Ḥ":"Ḥ","ḥ":"ḥ","Ḧ":"Ḧ","ḧ":"ḧ","Ḩ":"Ḩ","ḩ":"ḩ","Ḫ":"Ḫ","ḫ":"ḫ","Ḭ":"Ḭ","ḭ":"ḭ","Ḯ":"Ḯ","ḯ":"ḯ","Ḱ":"Ḱ","ḱ":"ḱ","Ḳ":"Ḳ","ḳ":"ḳ","Ḵ":"Ḵ","ḵ":"ḵ","Ḷ":"Ḷ","ḷ":"ḷ","Ḹ":"Ḹ","ḹ":"ḹ","Ḻ":"Ḻ","ḻ":"ḻ","Ḽ":"Ḽ","ḽ":"ḽ","Ḿ":"Ḿ","ḿ":"ḿ","Ṁ":"Ṁ","ṁ":"ṁ","Ṃ":"Ṃ","ṃ":"ṃ","Ṅ":"Ṅ","ṅ":"ṅ","Ṇ":"Ṇ","ṇ":"ṇ","Ṉ":"Ṉ","ṉ":"ṉ","Ṋ":"Ṋ","ṋ":"ṋ","Ṍ":"Ṍ","ṍ":"ṍ","Ṏ":"Ṏ","ṏ":"ṏ","Ṑ":"Ṑ","ṑ":"ṑ","Ṓ":"Ṓ","ṓ":"ṓ","Ṕ":"Ṕ","ṕ":"ṕ","Ṗ":"Ṗ","ṗ":"ṗ","Ṙ":"Ṙ","ṙ":"ṙ","Ṛ":"Ṛ","ṛ":"ṛ","Ṝ":"Ṝ","ṝ":"ṝ","Ṟ":"Ṟ","ṟ":"ṟ","Ṡ":"Ṡ","ṡ":"ṡ","Ṣ":"Ṣ","ṣ":"ṣ","Ṥ":"Ṥ","ṥ":"ṥ","Ṧ":"Ṧ","ṧ":"ṧ","Ṩ":"Ṩ","ṩ":"ṩ","Ṫ":"Ṫ","ṫ":"ṫ","Ṭ":"Ṭ","ṭ":"ṭ","Ṯ":"Ṯ","ṯ":"ṯ","Ṱ":"Ṱ","ṱ":"ṱ","Ṳ":"Ṳ","ṳ":"ṳ","Ṵ":"Ṵ","ṵ":"ṵ","Ṷ":"Ṷ","ṷ":"ṷ","Ṹ":"Ṹ","ṹ":"ṹ","Ṻ":"Ṻ","ṻ":"ṻ","Ṽ":"Ṽ","ṽ":"ṽ","Ṿ":"Ṿ","ṿ":"ṿ","Ẁ":"Ẁ","ẁ":"ẁ","Ẃ":"Ẃ","ẃ":"ẃ","Ẅ":"Ẅ","ẅ":"ẅ","Ẇ":"Ẇ","ẇ":"ẇ","Ẉ":"Ẉ","ẉ":"ẉ","Ẋ":"Ẋ","ẋ":"ẋ","Ẍ":"Ẍ","ẍ":"ẍ","Ẏ":"Ẏ","ẏ":"ẏ","Ẑ":"Ẑ","ẑ":"ẑ","Ẓ":"Ẓ","ẓ":"ẓ","Ẕ":"Ẕ","ẕ":"ẕ","ẖ":"ẖ","ẗ":"ẗ","ẘ":"ẘ","ẙ":"ẙ","ẛ":"ẛ","Ạ":"Ạ","ạ":"ạ","Ả":"Ả","ả":"ả","Ấ":"Ấ","ấ":"ấ","Ầ":"Ầ","ầ":"ầ","Ẩ":"Ẩ","ẩ":"ẩ","Ẫ":"Ẫ","ẫ":"ẫ","Ậ":"Ậ","ậ":"ậ","Ắ":"Ắ","ắ":"ắ","Ằ":"Ằ","ằ":"ằ","Ẳ":"Ẳ","ẳ":"ẳ","Ẵ":"Ẵ","ẵ":"ẵ","Ặ":"Ặ","ặ":"ặ","Ẹ":"Ẹ","ẹ":"ẹ","Ẻ":"Ẻ","ẻ":"ẻ","Ẽ":"Ẽ","ẽ":"ẽ","Ế":"Ế","ế":"ế","Ề":"Ề","ề":"ề","Ể":"Ể","ể":"ể","Ễ":"Ễ","ễ":"ễ","Ệ":"Ệ","ệ":"ệ","Ỉ":"Ỉ","ỉ":"ỉ","Ị":"Ị","ị":"ị","Ọ":"Ọ","ọ":"ọ","Ỏ":"Ỏ","ỏ":"ỏ","Ố":"Ố","ố":"ố","Ồ":"Ồ","ồ":"ồ","Ổ":"Ổ","ổ":"ổ","Ỗ":"Ỗ","ỗ":"ỗ","Ộ":"Ộ","ộ":"ộ","Ớ":"Ớ","ớ":"ớ","Ờ":"Ờ","ờ":"ờ","Ở":"Ở","ở":"ở","Ỡ":"Ỡ","ỡ":"ỡ","Ợ":"Ợ","ợ":"ợ","Ụ":"Ụ","ụ":"ụ","Ủ":"Ủ","ủ":"ủ","Ứ":"Ứ","ứ":"ứ","Ừ":"Ừ","ừ":"ừ","Ử":"Ử","ử":"ử","Ữ":"Ữ","ữ":"ữ","Ự":"Ự","ự":"ự","Ỳ":"Ỳ","ỳ":"ỳ","Ỵ":"Ỵ","ỵ":"ỵ","Ỷ":"Ỷ","ỷ":"ỷ","Ỹ":"Ỹ","ỹ":"ỹ","ἀ":"ἀ","ἁ":"ἁ","ἂ":"ἂ","ἃ":"ἃ","ἄ":"ἄ","ἅ":"ἅ","ἆ":"ἆ","ἇ":"ἇ","Ἀ":"Ἀ","Ἁ":"Ἁ","Ἂ":"Ἂ","Ἃ":"Ἃ","Ἄ":"Ἄ","Ἅ":"Ἅ","Ἆ":"Ἆ","Ἇ":"Ἇ","ἐ":"ἐ","ἑ":"ἑ","ἒ":"ἒ","ἓ":"ἓ","ἔ":"ἔ","ἕ":"ἕ","Ἐ":"Ἐ","Ἑ":"Ἑ","Ἒ":"Ἒ","Ἓ":"Ἓ","Ἔ":"Ἔ","Ἕ":"Ἕ","ἠ":"ἠ","ἡ":"ἡ","ἢ":"ἢ","ἣ":"ἣ","ἤ":"ἤ","ἥ":"ἥ","ἦ":"ἦ","ἧ":"ἧ","Ἠ":"Ἠ","Ἡ":"Ἡ","Ἢ":"Ἢ","Ἣ":"Ἣ","Ἤ":"Ἤ","Ἥ":"Ἥ","Ἦ":"Ἦ","Ἧ":"Ἧ","ἰ":"ἰ","ἱ":"ἱ","ἲ":"ἲ","ἳ":"ἳ","ἴ":"ἴ","ἵ":"ἵ","ἶ":"ἶ","ἷ":"ἷ","Ἰ":"Ἰ","Ἱ":"Ἱ","Ἲ":"Ἲ","Ἳ":"Ἳ","Ἴ":"Ἴ","Ἵ":"Ἵ","Ἶ":"Ἶ","Ἷ":"Ἷ","ὀ":"ὀ","ὁ":"ὁ","ὂ":"ὂ","ὃ":"ὃ","ὄ":"ὄ","ὅ":"ὅ","Ὀ":"Ὀ","Ὁ":"Ὁ","Ὂ":"Ὂ","Ὃ":"Ὃ","Ὄ":"Ὄ","Ὅ":"Ὅ","ὐ":"ὐ","ὑ":"ὑ","ὒ":"ὒ","ὓ":"ὓ","ὔ":"ὔ","ὕ":"ὕ","ὖ":"ὖ","ὗ":"ὗ","Ὑ":"Ὑ","Ὓ":"Ὓ","Ὕ":"Ὕ","Ὗ":"Ὗ","ὠ":"ὠ","ὡ":"ὡ","ὢ":"ὢ","ὣ":"ὣ","ὤ":"ὤ","ὥ":"ὥ","ὦ":"ὦ","ὧ":"ὧ","Ὠ":"Ὠ","Ὡ":"Ὡ","Ὢ":"Ὢ","Ὣ":"Ὣ","Ὤ":"Ὤ","Ὥ":"Ὥ","Ὦ":"Ὦ","Ὧ":"Ὧ","ὰ":"ὰ","ὲ":"ὲ","ὴ":"ὴ","ὶ":"ὶ","ὸ":"ὸ","ὺ":"ὺ","ὼ":"ὼ","ᾀ":"ᾀ","ᾁ":"ᾁ","ᾂ":"ᾂ","ᾃ":"ᾃ","ᾄ":"ᾄ","ᾅ":"ᾅ","ᾆ":"ᾆ","ᾇ":"ᾇ","ᾈ":"ᾈ","ᾉ":"ᾉ","ᾊ":"ᾊ","ᾋ":"ᾋ","ᾌ":"ᾌ","ᾍ":"ᾍ","ᾎ":"ᾎ","ᾏ":"ᾏ","ᾐ":"ᾐ","ᾑ":"ᾑ","ᾒ":"ᾒ","ᾓ":"ᾓ","ᾔ":"ᾔ","ᾕ":"ᾕ","ᾖ":"ᾖ","ᾗ":"ᾗ","ᾘ":"ᾘ","ᾙ":"ᾙ","ᾚ":"ᾚ","ᾛ":"ᾛ","ᾜ":"ᾜ","ᾝ":"ᾝ","ᾞ":"ᾞ","ᾟ":"ᾟ","ᾠ":"ᾠ","ᾡ":"ᾡ","ᾢ":"ᾢ","ᾣ":"ᾣ","ᾤ":"ᾤ","ᾥ":"ᾥ","ᾦ":"ᾦ","ᾧ":"ᾧ","ᾨ":"ᾨ","ᾩ":"ᾩ","ᾪ":"ᾪ","ᾫ":"ᾫ","ᾬ":"ᾬ","ᾭ":"ᾭ","ᾮ":"ᾮ","ᾯ":"ᾯ","ᾰ":"ᾰ","ᾱ":"ᾱ","ᾲ":"ᾲ","ᾳ":"ᾳ","ᾴ":"ᾴ","ᾶ":"ᾶ","ᾷ":"ᾷ","Ᾰ":"Ᾰ","Ᾱ":"Ᾱ","Ὰ":"Ὰ","ᾼ":"ᾼ","῁":"῁","ῂ":"ῂ","ῃ":"ῃ","ῄ":"ῄ","ῆ":"ῆ","ῇ":"ῇ","Ὲ":"Ὲ","Ὴ":"Ὴ","ῌ":"ῌ","῍":"῍","῎":"῎","῏":"῏","ῐ":"ῐ","ῑ":"ῑ","ῒ":"ῒ","ῖ":"ῖ","ῗ":"ῗ","Ῐ":"Ῐ","Ῑ":"Ῑ","Ὶ":"Ὶ","῝":"῝","῞":"῞","῟":"῟","ῠ":"ῠ","ῡ":"ῡ","ῢ":"ῢ","ῤ":"ῤ","ῥ":"ῥ","ῦ":"ῦ","ῧ":"ῧ","Ῠ":"Ῠ","Ῡ":"Ῡ","Ὺ":"Ὺ","Ῥ":"Ῥ","῭":"῭","ῲ":"ῲ","ῳ":"ῳ","ῴ":"ῴ","ῶ":"ῶ","ῷ":"ῷ","Ὸ":"Ὸ","Ὼ":"Ὼ","ῼ":"ῼ","↚":"↚","↛":"↛","↮":"↮","⇍":"⇍","⇎":"⇎","⇏":"⇏","∄":"∄","∉":"∉","∌":"∌","∤":"∤","∦":"∦","≁":"≁","≄":"≄","≇":"≇","≉":"≉","≠":"≠","≢":"≢","≭":"≭","≮":"≮","≯":"≯","≰":"≰","≱":"≱","≴":"≴","≵":"≵","≸":"≸","≹":"≹","⊀":"⊀","⊁":"⊁","⊄":"⊄","⊅":"⊅","⊈":"⊈","⊉":"⊉","⊬":"⊬","⊭":"⊭","⊮":"⊮","⊯":"⊯","⋠":"⋠","⋡":"⋡","⋢":"⋢","⋣":"⋣","⋪":"⋪","⋫":"⋫","⋬":"⋬","⋭":"⋭","が":"が","ぎ":"ぎ","ぐ":"ぐ","げ":"げ","ご":"ご","ざ":"ざ","じ":"じ","ず":"ず","ぜ":"ぜ","ぞ":"ぞ","だ":"だ","ぢ":"ぢ","づ":"づ","で":"で","ど":"ど","ば":"ば","ぱ":"ぱ","び":"び","ぴ":"ぴ","ぶ":"ぶ","ぷ":"ぷ","べ":"べ","ぺ":"ぺ","ぼ":"ぼ","ぽ":"ぽ","ゔ":"ゔ","ゞ":"ゞ","ガ":"ガ","ギ":"ギ","グ":"グ","ゲ":"ゲ","ゴ":"ゴ","ザ":"ザ","ジ":"ジ","ズ":"ズ","ゼ":"ゼ","ゾ":"ゾ","ダ":"ダ","ヂ":"ヂ","ヅ":"ヅ","デ":"デ","ド":"ド","バ":"バ","パ":"パ","ビ":"ビ","ピ":"ピ","ブ":"ブ","プ":"プ","ベ":"ベ","ペ":"ペ","ボ":"ボ","ポ":"ポ","ヴ":"ヴ","ヷ":"ヷ","ヸ":"ヸ","ヹ":"ヹ","ヺ":"ヺ","ヾ":"ヾ","𑂚":"𑂚","𑂜":"𑂜","𑂫":"𑂫","𑄮":"𑄮","𑄯":"𑄯"};
+/*
+ * all.js - include file for normalization data for a particular script
+ * 
+ * Copyright © 2012, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* WARNING: THIS IS A FILE GENERATED BY gennorm.js. DO NOT EDIT BY HAND. */
+// !depends util/utils.js 
+// !depends nfd/all.js
+// !data norm.ccc nfc/all
+ilib.data.norm.nfc = ilib.merge(ilib.data.norm.nfc || {}, ilib.data.nfc_all);
+ilib.data.nfc_all = undefined;
+ilib.data.nfkd_all = {" ":" ","¨":" ̈","ª":"a","¯":" ̄","²":"2","³":"3","´":" ́","µ":"μ","¸":" ̧","¹":"1","º":"o","¼":"1⁄4","½":"1⁄2","¾":"3⁄4","Ĳ":"IJ","ĳ":"ij","Ŀ":"L·","ŀ":"l·","ŉ":"ʼn","ſ":"s","Ǆ":"DŽ","ǅ":"Dž","ǆ":"dž","Ǉ":"LJ","ǈ":"Lj","ǉ":"lj","Ǌ":"NJ","ǋ":"Nj","ǌ":"nj","Ǳ":"DZ","ǲ":"Dz","ǳ":"dz","ʰ":"h","ʱ":"ɦ","ʲ":"j","ʳ":"r","ʴ":"ɹ","ʵ":"ɻ","ʶ":"ʁ","ʷ":"w","ʸ":"y","˘":" ̆","˙":" ̇","˚":" ̊","˛":" ̨","˜":" ̃","˝":" ̋","ˠ":"ɣ","ˡ":"l","ˢ":"s","ˣ":"x","ˤ":"ʕ","ͺ":" ͅ","΄":" ́","ϐ":"β","ϑ":"θ","ϒ":"Υ","ϕ":"φ","ϖ":"π","ϰ":"κ","ϱ":"ρ","ϲ":"ς","ϴ":"Θ","ϵ":"ε","Ϲ":"Σ","և":"եւ","ٵ":"اٴ","ٶ":"وٴ","ٷ":"ۇٴ","ٸ":"يٴ","ำ":"ํา","ຳ":"ໍາ","ໜ":"ຫນ","ໝ":"ຫມ","༌":"་","ཷ":"ྲཱྀ","ཹ":"ླཱྀ","ჼ":"ნ","ᴬ":"A","ᴭ":"Æ","ᴮ":"B","ᴰ":"D","ᴱ":"E","ᴲ":"Ǝ","ᴳ":"G","ᴴ":"H","ᴵ":"I","ᴶ":"J","ᴷ":"K","ᴸ":"L","ᴹ":"M","ᴺ":"N","ᴼ":"O","ᴽ":"Ȣ","ᴾ":"P","ᴿ":"R","ᵀ":"T","ᵁ":"U","ᵂ":"W","ᵃ":"a","ᵄ":"ɐ","ᵅ":"ɑ","ᵆ":"ᴂ","ᵇ":"b","ᵈ":"d","ᵉ":"e","ᵊ":"ə","ᵋ":"ɛ","ᵌ":"ɜ","ᵍ":"g","ᵏ":"k","ᵐ":"m","ᵑ":"ŋ","ᵒ":"o","ᵓ":"ɔ","ᵔ":"ᴖ","ᵕ":"ᴗ","ᵖ":"p","ᵗ":"t","ᵘ":"u","ᵙ":"ᴝ","ᵚ":"ɯ","ᵛ":"v","ᵜ":"ᴥ","ᵝ":"β","ᵞ":"γ","ᵟ":"δ","ᵠ":"φ","ᵡ":"χ","ᵢ":"i","ᵣ":"r","ᵤ":"u","ᵥ":"v","ᵦ":"β","ᵧ":"γ","ᵨ":"ρ","ᵩ":"φ","ᵪ":"χ","ᵸ":"н","ᶛ":"ɒ","ᶜ":"c","ᶝ":"ɕ","ᶞ":"ð","ᶟ":"ɜ","ᶠ":"f","ᶡ":"ɟ","ᶢ":"ɡ","ᶣ":"ɥ","ᶤ":"ɨ","ᶥ":"ɩ","ᶦ":"ɪ","ᶧ":"ᵻ","ᶨ":"ʝ","ᶩ":"ɭ","ᶪ":"ᶅ","ᶫ":"ʟ","ᶬ":"ɱ","ᶭ":"ɰ","ᶮ":"ɲ","ᶯ":"ɳ","ᶰ":"ɴ","ᶱ":"ɵ","ᶲ":"ɸ","ᶳ":"ʂ","ᶴ":"ʃ","ᶵ":"ƫ","ᶶ":"ʉ","ᶷ":"ʊ","ᶸ":"ᴜ","ᶹ":"ʋ","ᶺ":"ʌ","ᶻ":"z","ᶼ":"ʐ","ᶽ":"ʑ","ᶾ":"ʒ","ᶿ":"θ","ẚ":"aʾ","᾽":" ̓","᾿":" ̓","῀":" ͂","῾":" ̔"," ":" "," ":" "," ":" "," ":" "," ":" "," ":" "," ":" "," ":" "," ":" ","‑":"‐","‗":" ̳","․":".","‥":"..","…":"..."," ":" ","″":"′′","‴":"′′′","‶":"‵‵","‷":"‵‵‵","‼":"!!","‾":" ̅","⁇":"??","⁈":"?!","⁉":"!?","⁗":"′′′′"," ":" ","⁰":"0","ⁱ":"i","⁴":"4","⁵":"5","⁶":"6","⁷":"7","⁸":"8","⁹":"9","⁺":"+","⁻":"−","⁼":"=","⁽":"(","⁾":")","ⁿ":"n","₀":"0","₁":"1","₂":"2","₃":"3","₄":"4","₅":"5","₆":"6","₇":"7","₈":"8","₉":"9","₊":"+","₋":"−","₌":"=","₍":"(","₎":")","ₐ":"a","ₑ":"e","ₒ":"o","ₓ":"x","ₔ":"ə","ₕ":"h","ₖ":"k","ₗ":"l","ₘ":"m","ₙ":"n","ₚ":"p","ₛ":"s","ₜ":"t","₨":"Rs","℀":"a/c","℁":"a/s","ℂ":"C","℃":"°C","℅":"c/o","℆":"c/u","ℇ":"Ɛ","℉":"°F","ℊ":"g","ℋ":"H","ℌ":"H","ℍ":"H","ℎ":"h","ℏ":"ħ","ℐ":"I","ℑ":"I","ℒ":"L","ℓ":"l","ℕ":"N","№":"No","ℙ":"P","ℚ":"Q","ℛ":"R","ℜ":"R","ℝ":"R","℠":"SM","℡":"TEL","™":"TM","ℤ":"Z","ℨ":"Z","ℬ":"B","ℭ":"C","ℯ":"e","ℰ":"E","ℱ":"F","ℳ":"M","ℴ":"o","ℵ":"א","ℶ":"ב","ℷ":"ג","ℸ":"ד","ℹ":"i","℻":"FAX","ℼ":"π","ℽ":"γ","ℾ":"Γ","ℿ":"Π","⅀":"∑","ⅅ":"D","ⅆ":"d","ⅇ":"e","ⅈ":"i","ⅉ":"j","⅐":"1⁄7","⅑":"1⁄9","⅒":"1⁄10","⅓":"1⁄3","⅔":"2⁄3","⅕":"1⁄5","⅖":"2⁄5","⅗":"3⁄5","⅘":"4⁄5","⅙":"1⁄6","⅚":"5⁄6","⅛":"1⁄8","⅜":"3⁄8","⅝":"5⁄8","⅞":"7⁄8","⅟":"1⁄","Ⅰ":"I","Ⅱ":"II","Ⅲ":"III","Ⅳ":"IV","Ⅴ":"V","Ⅵ":"VI","Ⅶ":"VII","Ⅷ":"VIII","Ⅸ":"IX","Ⅹ":"X","Ⅺ":"XI","Ⅻ":"XII","Ⅼ":"L","Ⅽ":"C","Ⅾ":"D","Ⅿ":"M","ⅰ":"i","ⅱ":"ii","ⅲ":"iii","ⅳ":"iv","ⅴ":"v","ⅵ":"vi","ⅶ":"vii","ⅷ":"viii","ⅸ":"ix","ⅹ":"x","ⅺ":"xi","ⅻ":"xii","ⅼ":"l","ⅽ":"c","ⅾ":"d","ⅿ":"m","↉":"0⁄3","∬":"∫∫","∭":"∫∫∫","∯":"∮∮","∰":"∮∮∮","①":"1","②":"2","③":"3","④":"4","⑤":"5","⑥":"6","⑦":"7","⑧":"8","⑨":"9","⑩":"10","⑪":"11","⑫":"12","⑬":"13","⑭":"14","⑮":"15","⑯":"16","⑰":"17","⑱":"18","⑲":"19","⑳":"20","⑴":"(1)","⑵":"(2)","⑶":"(3)","⑷":"(4)","⑸":"(5)","⑹":"(6)","⑺":"(7)","⑻":"(8)","⑼":"(9)","⑽":"(10)","⑾":"(11)","⑿":"(12)","⒀":"(13)","⒁":"(14)","⒂":"(15)","⒃":"(16)","⒄":"(17)","⒅":"(18)","⒆":"(19)","⒇":"(20)","⒈":"1.","⒉":"2.","⒊":"3.","⒋":"4.","⒌":"5.","⒍":"6.","⒎":"7.","⒏":"8.","⒐":"9.","⒑":"10.","⒒":"11.","⒓":"12.","⒔":"13.","⒕":"14.","⒖":"15.","⒗":"16.","⒘":"17.","⒙":"18.","⒚":"19.","⒛":"20.","⒜":"(a)","⒝":"(b)","⒞":"(c)","⒟":"(d)","⒠":"(e)","⒡":"(f)","⒢":"(g)","⒣":"(h)","⒤":"(i)","⒥":"(j)","⒦":"(k)","⒧":"(l)","⒨":"(m)","⒩":"(n)","⒪":"(o)","⒫":"(p)","⒬":"(q)","⒭":"(r)","⒮":"(s)","⒯":"(t)","⒰":"(u)","⒱":"(v)","⒲":"(w)","⒳":"(x)","⒴":"(y)","⒵":"(z)","Ⓐ":"A","Ⓑ":"B","Ⓒ":"C","Ⓓ":"D","Ⓔ":"E","Ⓕ":"F","Ⓖ":"G","Ⓗ":"H","Ⓘ":"I","Ⓙ":"J","Ⓚ":"K","Ⓛ":"L","Ⓜ":"M","Ⓝ":"N","Ⓞ":"O","Ⓟ":"P","Ⓠ":"Q","Ⓡ":"R","Ⓢ":"S","Ⓣ":"T","Ⓤ":"U","Ⓥ":"V","Ⓦ":"W","Ⓧ":"X","Ⓨ":"Y","Ⓩ":"Z","ⓐ":"a","ⓑ":"b","ⓒ":"c","ⓓ":"d","ⓔ":"e","ⓕ":"f","ⓖ":"g","ⓗ":"h","ⓘ":"i","ⓙ":"j","ⓚ":"k","ⓛ":"l","ⓜ":"m","ⓝ":"n","ⓞ":"o","ⓟ":"p","ⓠ":"q","ⓡ":"r","ⓢ":"s","ⓣ":"t","ⓤ":"u","ⓥ":"v","ⓦ":"w","ⓧ":"x","ⓨ":"y","ⓩ":"z","⓪":"0","⨌":"∫∫∫∫","⩴":"::=","⩵":"==","⩶":"===","ⱼ":"j","ⱽ":"V","ⵯ":"ⵡ","⺟":"母","⻳":"龟","⼀":"一","⼁":"丨","⼂":"丶","⼃":"丿","⼄":"乙","⼅":"亅","⼆":"二","⼇":"亠","⼈":"人","⼉":"儿","⼊":"入","⼋":"八","⼌":"冂","⼍":"冖","⼎":"冫","⼏":"几","⼐":"凵","⼑":"刀","⼒":"力","⼓":"勹","⼔":"匕","⼕":"匚","⼖":"匸","⼗":"十","⼘":"卜","⼙":"卩","⼚":"厂","⼛":"厶","⼜":"又","⼝":"口","⼞":"囗","⼟":"土","⼠":"士","⼡":"夂","⼢":"夊","⼣":"夕","⼤":"大","⼥":"女","⼦":"子","⼧":"宀","⼨":"寸","⼩":"小","⼪":"尢","⼫":"尸","⼬":"屮","⼭":"山","⼮":"巛","⼯":"工","⼰":"己","⼱":"巾","⼲":"干","⼳":"幺","⼴":"广","⼵":"廴","⼶":"廾","⼷":"弋","⼸":"弓","⼹":"彐","⼺":"彡","⼻":"彳","⼼":"心","⼽":"戈","⼾":"戶","⼿":"手","⽀":"支","⽁":"攴","⽂":"文","⽃":"斗","⽄":"斤","⽅":"方","⽆":"无","⽇":"日","⽈":"曰","⽉":"月","⽊":"木","⽋":"欠","⽌":"止","⽍":"歹","⽎":"殳","⽏":"毋","⽐":"比","⽑":"毛","⽒":"氏","⽓":"气","⽔":"水","⽕":"火","⽖":"爪","⽗":"父","⽘":"爻","⽙":"爿","⽚":"片","⽛":"牙","⽜":"牛","⽝":"犬","⽞":"玄","⽟":"玉","⽠":"瓜","⽡":"瓦","⽢":"甘","⽣":"生","⽤":"用","⽥":"田","⽦":"疋","⽧":"疒","⽨":"癶","⽩":"白","⽪":"皮","⽫":"皿","⽬":"目","⽭":"矛","⽮":"矢","⽯":"石","⽰":"示","⽱":"禸","⽲":"禾","⽳":"穴","⽴":"立","⽵":"竹","⽶":"米","⽷":"糸","⽸":"缶","⽹":"网","⽺":"羊","⽻":"羽","⽼":"老","⽽":"而","⽾":"耒","⽿":"耳","⾀":"聿","⾁":"肉","⾂":"臣","⾃":"自","⾄":"至","⾅":"臼","⾆":"舌","⾇":"舛","⾈":"舟","⾉":"艮","⾊":"色","⾋":"艸","⾌":"虍","⾍":"虫","⾎":"血","⾏":"行","⾐":"衣","⾑":"襾","⾒":"見","⾓":"角","⾔":"言","⾕":"谷","⾖":"豆","⾗":"豕","⾘":"豸","⾙":"貝","⾚":"赤","⾛":"走","⾜":"足","⾝":"身","⾞":"車","⾟":"辛","⾠":"辰","⾡":"辵","⾢":"邑","⾣":"酉","⾤":"釆","⾥":"里","⾦":"金","⾧":"長","⾨":"門","⾩":"阜","⾪":"隶","⾫":"隹","⾬":"雨","⾭":"靑","⾮":"非","⾯":"面","⾰":"革","⾱":"韋","⾲":"韭","⾳":"音","⾴":"頁","⾵":"風","⾶":"飛","⾷":"食","⾸":"首","⾹":"香","⾺":"馬","⾻":"骨","⾼":"高","⾽":"髟","⾾":"鬥","⾿":"鬯","⿀":"鬲","⿁":"鬼","⿂":"魚","⿃":"鳥","⿄":"鹵","⿅":"鹿","⿆":"麥","⿇":"麻","⿈":"黃","⿉":"黍","⿊":"黑","⿋":"黹","⿌":"黽","⿍":"鼎","⿎":"鼓","⿏":"鼠","⿐":"鼻","⿑":"齊","⿒":"齒","⿓":"龍","⿔":"龜","⿕":"龠","　":" ","〶":"〒","〸":"十","〹":"卄","〺":"卅","゛":" ゙","゜":" ゚","ゟ":"より","ヿ":"コト","ㄱ":"ᄀ","ㄲ":"ᄁ","ㄳ":"ᆪ","ㄴ":"ᄂ","ㄵ":"ᆬ","ㄶ":"ᆭ","ㄷ":"ᄃ","ㄸ":"ᄄ","ㄹ":"ᄅ","ㄺ":"ᆰ","ㄻ":"ᆱ","ㄼ":"ᆲ","ㄽ":"ᆳ","ㄾ":"ᆴ","ㄿ":"ᆵ","ㅀ":"ᄚ","ㅁ":"ᄆ","ㅂ":"ᄇ","ㅃ":"ᄈ","ㅄ":"ᄡ","ㅅ":"ᄉ","ㅆ":"ᄊ","ㅇ":"ᄋ","ㅈ":"ᄌ","ㅉ":"ᄍ","ㅊ":"ᄎ","ㅋ":"ᄏ","ㅌ":"ᄐ","ㅍ":"ᄑ","ㅎ":"ᄒ","ㅏ":"ᅡ","ㅐ":"ᅢ","ㅑ":"ᅣ","ㅒ":"ᅤ","ㅓ":"ᅥ","ㅔ":"ᅦ","ㅕ":"ᅧ","ㅖ":"ᅨ","ㅗ":"ᅩ","ㅘ":"ᅪ","ㅙ":"ᅫ","ㅚ":"ᅬ","ㅛ":"ᅭ","ㅜ":"ᅮ","ㅝ":"ᅯ","ㅞ":"ᅰ","ㅟ":"ᅱ","ㅠ":"ᅲ","ㅡ":"ᅳ","ㅢ":"ᅴ","ㅣ":"ᅵ","ㅤ":"ᅠ","ㅥ":"ᄔ","ㅦ":"ᄕ","ㅧ":"ᇇ","ㅨ":"ᇈ","ㅩ":"ᇌ","ㅪ":"ᇎ","ㅫ":"ᇓ","ㅬ":"ᇗ","ㅭ":"ᇙ","ㅮ":"ᄜ","ㅯ":"ᇝ","ㅰ":"ᇟ","ㅱ":"ᄝ","ㅲ":"ᄞ","ㅳ":"ᄠ","ㅴ":"ᄢ","ㅵ":"ᄣ","ㅶ":"ᄧ","ㅷ":"ᄩ","ㅸ":"ᄫ","ㅹ":"ᄬ","ㅺ":"ᄭ","ㅻ":"ᄮ","ㅼ":"ᄯ","ㅽ":"ᄲ","ㅾ":"ᄶ","ㅿ":"ᅀ","ㆀ":"ᅇ","ㆁ":"ᅌ","ㆂ":"ᇱ","ㆃ":"ᇲ","ㆄ":"ᅗ","ㆅ":"ᅘ","ㆆ":"ᅙ","ㆇ":"ᆄ","ㆈ":"ᆅ","ㆉ":"ᆈ","ㆊ":"ᆑ","ㆋ":"ᆒ","ㆌ":"ᆔ","ㆍ":"ᆞ","ㆎ":"ᆡ","㆒":"一","㆓":"二","㆔":"三","㆕":"四","㆖":"上","㆗":"中","㆘":"下","㆙":"甲","㆚":"乙","㆛":"丙","㆜":"丁","㆝":"天","㆞":"地","㆟":"人","㈀":"(ᄀ)","㈁":"(ᄂ)","㈂":"(ᄃ)","㈃":"(ᄅ)","㈄":"(ᄆ)","㈅":"(ᄇ)","㈆":"(ᄉ)","㈇":"(ᄋ)","㈈":"(ᄌ)","㈉":"(ᄎ)","㈊":"(ᄏ)","㈋":"(ᄐ)","㈌":"(ᄑ)","㈍":"(ᄒ)","㈎":"(가)","㈏":"(나)","㈐":"(다)","㈑":"(라)","㈒":"(마)","㈓":"(바)","㈔":"(사)","㈕":"(아)","㈖":"(자)","㈗":"(차)","㈘":"(카)","㈙":"(타)","㈚":"(파)","㈛":"(하)","㈜":"(주)","㈝":"(오전)","㈞":"(오후)","㈠":"(一)","㈡":"(二)","㈢":"(三)","㈣":"(四)","㈤":"(五)","㈥":"(六)","㈦":"(七)","㈧":"(八)","㈨":"(九)","㈩":"(十)","㈪":"(月)","㈫":"(火)","㈬":"(水)","㈭":"(木)","㈮":"(金)","㈯":"(土)","㈰":"(日)","㈱":"(株)","㈲":"(有)","㈳":"(社)","㈴":"(名)","㈵":"(特)","㈶":"(財)","㈷":"(祝)","㈸":"(労)","㈹":"(代)","㈺":"(呼)","㈻":"(学)","㈼":"(監)","㈽":"(企)","㈾":"(資)","㈿":"(協)","㉀":"(祭)","㉁":"(休)","㉂":"(自)","㉃":"(至)","㉄":"問","㉅":"幼","㉆":"文","㉇":"箏","㉐":"PTE","㉑":"21","㉒":"22","㉓":"23","㉔":"24","㉕":"25","㉖":"26","㉗":"27","㉘":"28","㉙":"29","㉚":"30","㉛":"31","㉜":"32","㉝":"33","㉞":"34","㉟":"35","㉠":"ᄀ","㉡":"ᄂ","㉢":"ᄃ","㉣":"ᄅ","㉤":"ᄆ","㉥":"ᄇ","㉦":"ᄉ","㉧":"ᄋ","㉨":"ᄌ","㉩":"ᄎ","㉪":"ᄏ","㉫":"ᄐ","㉬":"ᄑ","㉭":"ᄒ","㉮":"가","㉯":"나","㉰":"다","㉱":"라","㉲":"마","㉳":"바","㉴":"사","㉵":"아","㉶":"자","㉷":"차","㉸":"카","㉹":"타","㉺":"파","㉻":"하","㉼":"참고","㉽":"주의","㉾":"우","㊀":"一","㊁":"二","㊂":"三","㊃":"四","㊄":"五","㊅":"六","㊆":"七","㊇":"八","㊈":"九","㊉":"十","㊊":"月","㊋":"火","㊌":"水","㊍":"木","㊎":"金","㊏":"土","㊐":"日","㊑":"株","㊒":"有","㊓":"社","㊔":"名","㊕":"特","㊖":"財","㊗":"祝","㊘":"労","㊙":"秘","㊚":"男","㊛":"女","㊜":"適","㊝":"優","㊞":"印","㊟":"注","㊠":"項","㊡":"休","㊢":"写","㊣":"正","㊤":"上","㊥":"中","㊦":"下","㊧":"左","㊨":"右","㊩":"医","㊪":"宗","㊫":"学","㊬":"監","㊭":"企","㊮":"資","㊯":"協","㊰":"夜","㊱":"36","㊲":"37","㊳":"38","㊴":"39","㊵":"40","㊶":"41","㊷":"42","㊸":"43","㊹":"44","㊺":"45","㊻":"46","㊼":"47","㊽":"48","㊾":"49","㊿":"50","㋀":"1月","㋁":"2月","㋂":"3月","㋃":"4月","㋄":"5月","㋅":"6月","㋆":"7月","㋇":"8月","㋈":"9月","㋉":"10月","㋊":"11月","㋋":"12月","㋌":"Hg","㋍":"erg","㋎":"eV","㋏":"LTD","㋐":"ア","㋑":"イ","㋒":"ウ","㋓":"エ","㋔":"オ","㋕":"カ","㋖":"キ","㋗":"ク","㋘":"ケ","㋙":"コ","㋚":"サ","㋛":"シ","㋜":"ス","㋝":"セ","㋞":"ソ","㋟":"タ","㋠":"チ","㋡":"ツ","㋢":"テ","㋣":"ト","㋤":"ナ","㋥":"ニ","㋦":"ヌ","㋧":"ネ","㋨":"ノ","㋩":"ハ","㋪":"ヒ","㋫":"フ","㋬":"ヘ","㋭":"ホ","㋮":"マ","㋯":"ミ","㋰":"ム","㋱":"メ","㋲":"モ","㋳":"ヤ","㋴":"ユ","㋵":"ヨ","㋶":"ラ","㋷":"リ","㋸":"ル","㋹":"レ","㋺":"ロ","㋻":"ワ","㋼":"ヰ","㋽":"ヱ","㋾":"ヲ","㌀":"アパート","㌁":"アルファ","㌂":"アンペア","㌃":"アール","㌄":"イニング","㌅":"インチ","㌆":"ウォン","㌇":"エスクード","㌈":"エーカー","㌉":"オンス","㌊":"オーム","㌋":"カイリ","㌌":"カラット","㌍":"カロリー","㌎":"ガロン","㌏":"ガンマ","㌐":"ギガ","㌑":"ギニー","㌒":"キュリー","㌓":"ギルダー","㌔":"キロ","㌕":"キログラム","㌖":"キロメートル","㌗":"キロワット","㌘":"グラム","㌙":"グラムトン","㌚":"クルゼイロ","㌛":"クローネ","㌜":"ケース","㌝":"コルナ","㌞":"コーポ","㌟":"サイクル","㌠":"サンチーム","㌡":"シリング","㌢":"センチ","㌣":"セント","㌤":"ダース","㌥":"デシ","㌦":"ドル","㌧":"トン","㌨":"ナノ","㌩":"ノット","㌪":"ハイツ","㌫":"パーセント","㌬":"パーツ","㌭":"バーレル","㌮":"ピアストル","㌯":"ピクル","㌰":"ピコ","㌱":"ビル","㌲":"ファラッド","㌳":"フィート","㌴":"ブッシェル","㌵":"フラン","㌶":"ヘクタール","㌷":"ペソ","㌸":"ペニヒ","㌹":"ヘルツ","㌺":"ペンス","㌻":"ページ","㌼":"ベータ","㌽":"ポイント","㌾":"ボルト","㌿":"ホン","㍀":"ポンド","㍁":"ホール","㍂":"ホーン","㍃":"マイクロ","㍄":"マイル","㍅":"マッハ","㍆":"マルク","㍇":"マンション","㍈":"ミクロン","㍉":"ミリ","㍊":"ミリバール","㍋":"メガ","㍌":"メガトン","㍍":"メートル","㍎":"ヤード","㍏":"ヤール","㍐":"ユアン","㍑":"リットル","㍒":"リラ","㍓":"ルピー","㍔":"ルーブル","㍕":"レム","㍖":"レントゲン","㍗":"ワット","㍘":"0点","㍙":"1点","㍚":"2点","㍛":"3点","㍜":"4点","㍝":"5点","㍞":"6点","㍟":"7点","㍠":"8点","㍡":"9点","㍢":"10点","㍣":"11点","㍤":"12点","㍥":"13点","㍦":"14点","㍧":"15点","㍨":"16点","㍩":"17点","㍪":"18点","㍫":"19点","㍬":"20点","㍭":"21点","㍮":"22点","㍯":"23点","㍰":"24点","㍱":"hPa","㍲":"da","㍳":"AU","㍴":"bar","㍵":"oV","㍶":"pc","㍷":"dm","㍸":"dm2","㍹":"dm3","㍺":"IU","㍻":"平成","㍼":"昭和","㍽":"大正","㍾":"明治","㍿":"株式会社","㎀":"pA","㎁":"nA","㎂":"μA","㎃":"mA","㎄":"kA","㎅":"KB","㎆":"MB","㎇":"GB","㎈":"cal","㎉":"kcal","㎊":"pF","㎋":"nF","㎌":"μF","㎍":"μg","㎎":"mg","㎏":"kg","㎐":"Hz","㎑":"kHz","㎒":"MHz","㎓":"GHz","㎔":"THz","㎕":"μl","㎖":"ml","㎗":"dl","㎘":"kl","㎙":"fm","㎚":"nm","㎛":"μm","㎜":"mm","㎝":"cm","㎞":"km","㎟":"mm2","㎠":"cm2","㎡":"m2","㎢":"km2","㎣":"mm3","㎤":"cm3","㎥":"m3","㎦":"km3","㎧":"m∕s","㎨":"m∕s2","㎩":"Pa","㎪":"kPa","㎫":"MPa","㎬":"GPa","㎭":"rad","㎮":"rad∕s","㎯":"rad∕s2","㎰":"ps","㎱":"ns","㎲":"μs","㎳":"ms","㎴":"pV","㎵":"nV","㎶":"μV","㎷":"mV","㎸":"kV","㎹":"MV","㎺":"pW","㎻":"nW","㎼":"μW","㎽":"mW","㎾":"kW","㎿":"MW","㏀":"kΩ","㏁":"MΩ","㏂":"a.m.","㏃":"Bq","㏄":"cc","㏅":"cd","㏆":"C∕kg","㏇":"Co.","㏈":"dB","㏉":"Gy","㏊":"ha","㏋":"HP","㏌":"in","㏍":"KK","㏎":"KM","㏏":"kt","㏐":"lm","㏑":"ln","㏒":"log","㏓":"lx","㏔":"mb","㏕":"mil","㏖":"mol","㏗":"PH","㏘":"p.m.","㏙":"PPM","㏚":"PR","㏛":"sr","㏜":"Sv","㏝":"Wb","㏞":"V∕m","㏟":"A∕m","㏠":"1日","㏡":"2日","㏢":"3日","㏣":"4日","㏤":"5日","㏥":"6日","㏦":"7日","㏧":"8日","㏨":"9日","㏩":"10日","㏪":"11日","㏫":"12日","㏬":"13日","㏭":"14日","㏮":"15日","㏯":"16日","㏰":"17日","㏱":"18日","㏲":"19日","㏳":"20日","㏴":"21日","㏵":"22日","㏶":"23日","㏷":"24日","㏸":"25日","㏹":"26日","㏺":"27日","㏻":"28日","㏼":"29日","㏽":"30日","㏾":"31日","㏿":"gal","ꝰ":"ꝯ","ꟸ":"Ħ","ꟹ":"œ","ﬀ":"ff","ﬁ":"fi","ﬂ":"fl","ﬃ":"ffi","ﬄ":"ffl","ﬅ":"st","ﬆ":"st","ﬓ":"մն","ﬔ":"մե","ﬕ":"մի","ﬖ":"վն","ﬗ":"մխ","ﬠ":"ע","ﬡ":"א","ﬢ":"ד","ﬣ":"ה","ﬤ":"כ","ﬥ":"ל","ﬦ":"ם","ﬧ":"ר","ﬨ":"ת","﬩":"+","ﭏ":"אל","ﭐ":"ٱ","ﭑ":"ٱ","ﭒ":"ٻ","ﭓ":"ٻ","ﭔ":"ٻ","ﭕ":"ٻ","ﭖ":"پ","ﭗ":"پ","ﭘ":"پ","ﭙ":"پ","ﭚ":"ڀ","ﭛ":"ڀ","ﭜ":"ڀ","ﭝ":"ڀ","ﭞ":"ٺ","ﭟ":"ٺ","ﭠ":"ٺ","ﭡ":"ٺ","ﭢ":"ٿ","ﭣ":"ٿ","ﭤ":"ٿ","ﭥ":"ٿ","ﭦ":"ٹ","ﭧ":"ٹ","ﭨ":"ٹ","ﭩ":"ٹ","ﭪ":"ڤ","ﭫ":"ڤ","ﭬ":"ڤ","ﭭ":"ڤ","ﭮ":"ڦ","ﭯ":"ڦ","ﭰ":"ڦ","ﭱ":"ڦ","ﭲ":"ڄ","ﭳ":"ڄ","ﭴ":"ڄ","ﭵ":"ڄ","ﭶ":"ڃ","ﭷ":"ڃ","ﭸ":"ڃ","ﭹ":"ڃ","ﭺ":"چ","ﭻ":"چ","ﭼ":"چ","ﭽ":"چ","ﭾ":"ڇ","ﭿ":"ڇ","ﮀ":"ڇ","ﮁ":"ڇ","ﮂ":"ڍ","ﮃ":"ڍ","ﮄ":"ڌ","ﮅ":"ڌ","ﮆ":"ڎ","ﮇ":"ڎ","ﮈ":"ڈ","ﮉ":"ڈ","ﮊ":"ژ","ﮋ":"ژ","ﮌ":"ڑ","ﮍ":"ڑ","ﮎ":"ک","ﮏ":"ک","ﮐ":"ک","ﮑ":"ک","ﮒ":"گ","ﮓ":"گ","ﮔ":"گ","ﮕ":"گ","ﮖ":"ڳ","ﮗ":"ڳ","ﮘ":"ڳ","ﮙ":"ڳ","ﮚ":"ڱ","ﮛ":"ڱ","ﮜ":"ڱ","ﮝ":"ڱ","ﮞ":"ں","ﮟ":"ں","ﮠ":"ڻ","ﮡ":"ڻ","ﮢ":"ڻ","ﮣ":"ڻ","ﮤ":"ۀ","ﮥ":"ۀ","ﮦ":"ہ","ﮧ":"ہ","ﮨ":"ہ","ﮩ":"ہ","ﮪ":"ھ","ﮫ":"ھ","ﮬ":"ھ","ﮭ":"ھ","ﮮ":"ے","ﮯ":"ے","ﮰ":"ۓ","ﮱ":"ۓ","ﯓ":"ڭ","ﯔ":"ڭ","ﯕ":"ڭ","ﯖ":"ڭ","ﯗ":"ۇ","ﯘ":"ۇ","ﯙ":"ۆ","ﯚ":"ۆ","ﯛ":"ۈ","ﯜ":"ۈ","ﯝ":"ۇٴ","ﯞ":"ۋ","ﯟ":"ۋ","ﯠ":"ۅ","ﯡ":"ۅ","ﯢ":"ۉ","ﯣ":"ۉ","ﯤ":"ې","ﯥ":"ې","ﯦ":"ې","ﯧ":"ې","ﯨ":"ى","ﯩ":"ى","ﯪ":"ئا","ﯫ":"ئا","ﯬ":"ئە","ﯭ":"ئە","ﯮ":"ئو","ﯯ":"ئو","ﯰ":"ئۇ","ﯱ":"ئۇ","ﯲ":"ئۆ","ﯳ":"ئۆ","ﯴ":"ئۈ","ﯵ":"ئۈ","ﯶ":"ئې","ﯷ":"ئې","ﯸ":"ئې","ﯹ":"ئى","ﯺ":"ئى","ﯻ":"ئى","ﯼ":"ی","ﯽ":"ی","ﯾ":"ی","ﯿ":"ی","ﰀ":"ئج","ﰁ":"ئح","ﰂ":"ئم","ﰃ":"ئى","ﰄ":"ئي","ﰅ":"بج","ﰆ":"بح","ﰇ":"بخ","ﰈ":"بم","ﰉ":"بى","ﰊ":"بي","ﰋ":"تج","ﰌ":"تح","ﰍ":"تخ","ﰎ":"تم","ﰏ":"تى","ﰐ":"تي","ﰑ":"ثج","ﰒ":"ثم","ﰓ":"ثى","ﰔ":"ثي","ﰕ":"جح","ﰖ":"جم","ﰗ":"حج","ﰘ":"حم","ﰙ":"خج","ﰚ":"خح","ﰛ":"خم","ﰜ":"سج","ﰝ":"سح","ﰞ":"سخ","ﰟ":"سم","ﰠ":"صح","ﰡ":"صم","ﰢ":"ضج","ﰣ":"ضح","ﰤ":"ضخ","ﰥ":"ضم","ﰦ":"طح","ﰧ":"طم","ﰨ":"ظم","ﰩ":"عج","ﰪ":"عم","ﰫ":"غج","ﰬ":"غم","ﰭ":"فج","ﰮ":"فح","ﰯ":"فخ","ﰰ":"فم","ﰱ":"فى","ﰲ":"في","ﰳ":"قح","ﰴ":"قم","ﰵ":"قى","ﰶ":"قي","ﰷ":"كا","ﰸ":"كج","ﰹ":"كح","ﰺ":"كخ","ﰻ":"كل","ﰼ":"كم","ﰽ":"كى","ﰾ":"كي","ﰿ":"لج","ﱀ":"لح","ﱁ":"لخ","ﱂ":"لم","ﱃ":"لى","ﱄ":"لي","ﱅ":"مج","ﱆ":"مح","ﱇ":"مخ","ﱈ":"مم","ﱉ":"مى","ﱊ":"مي","ﱋ":"نج","ﱌ":"نح","ﱍ":"نخ","ﱎ":"نم","ﱏ":"نى","ﱐ":"ني","ﱑ":"هج","ﱒ":"هم","ﱓ":"هى","ﱔ":"هي","ﱕ":"يج","ﱖ":"يح","ﱗ":"يخ","ﱘ":"يم","ﱙ":"يى","ﱚ":"يي","ﱛ":"ذٰ","ﱜ":"رٰ","ﱝ":"ىٰ","ﱞ":" ٌّ","ﱟ":" ٍّ","ﱠ":" َّ","ﱡ":" ُّ","ﱢ":" ِّ","ﱣ":" ّٰ","ﱤ":"ئر","ﱥ":"ئز","ﱦ":"ئم","ﱧ":"ئن","ﱨ":"ئى","ﱩ":"ئي","ﱪ":"بر","ﱫ":"بز","ﱬ":"بم","ﱭ":"بن","ﱮ":"بى","ﱯ":"بي","ﱰ":"تر","ﱱ":"تز","ﱲ":"تم","ﱳ":"تن","ﱴ":"تى","ﱵ":"تي","ﱶ":"ثر","ﱷ":"ثز","ﱸ":"ثم","ﱹ":"ثن","ﱺ":"ثى","ﱻ":"ثي","ﱼ":"فى","ﱽ":"في","ﱾ":"قى","ﱿ":"قي","ﲀ":"كا","ﲁ":"كل","ﲂ":"كم","ﲃ":"كى","ﲄ":"كي","ﲅ":"لم","ﲆ":"لى","ﲇ":"لي","ﲈ":"ما","ﲉ":"مم","ﲊ":"نر","ﲋ":"نز","ﲌ":"نم","ﲍ":"نن","ﲎ":"نى","ﲏ":"ني","ﲐ":"ىٰ","ﲑ":"ير","ﲒ":"يز","ﲓ":"يم","ﲔ":"ين","ﲕ":"يى","ﲖ":"يي","ﲗ":"ئج","ﲘ":"ئح","ﲙ":"ئخ","ﲚ":"ئم","ﲛ":"ئه","ﲜ":"بج","ﲝ":"بح","ﲞ":"بخ","ﲟ":"بم","ﲠ":"به","ﲡ":"تج","ﲢ":"تح","ﲣ":"تخ","ﲤ":"تم","ﲥ":"ته","ﲦ":"ثم","ﲧ":"جح","ﲨ":"جم","ﲩ":"حج","ﲪ":"حم","ﲫ":"خج","ﲬ":"خم","ﲭ":"سج","ﲮ":"سح","ﲯ":"سخ","ﲰ":"سم","ﲱ":"صح","ﲲ":"صخ","ﲳ":"صم","ﲴ":"ضج","ﲵ":"ضح","ﲶ":"ضخ","ﲷ":"ضم","ﲸ":"طح","ﲹ":"ظم","ﲺ":"عج","ﲻ":"عم","ﲼ":"غج","ﲽ":"غم","ﲾ":"فج","ﲿ":"فح","ﳀ":"فخ","ﳁ":"فم","ﳂ":"قح","ﳃ":"قم","ﳄ":"كج","ﳅ":"كح","ﳆ":"كخ","ﳇ":"كل","ﳈ":"كم","ﳉ":"لج","ﳊ":"لح","ﳋ":"لخ","ﳌ":"لم","ﳍ":"له","ﳎ":"مج","ﳏ":"مح","ﳐ":"مخ","ﳑ":"مم","ﳒ":"نج","ﳓ":"نح","ﳔ":"نخ","ﳕ":"نم","ﳖ":"نه","ﳗ":"هج","ﳘ":"هم","ﳙ":"هٰ","ﳚ":"يج","ﳛ":"يح","ﳜ":"يخ","ﳝ":"يم","ﳞ":"يه","ﳟ":"ئم","ﳠ":"ئه","ﳡ":"بم","ﳢ":"به","ﳣ":"تم","ﳤ":"ته","ﳥ":"ثم","ﳦ":"ثه","ﳧ":"سم","ﳨ":"سه","ﳩ":"شم","ﳪ":"شه","ﳫ":"كل","ﳬ":"كم","ﳭ":"لم","ﳮ":"نم","ﳯ":"نه","ﳰ":"يم","ﳱ":"يه","ﳲ":"ـَّ","ﳳ":"ـُّ","ﳴ":"ـِّ","ﳵ":"طى","ﳶ":"طي","ﳷ":"عى","ﳸ":"عي","ﳹ":"غى","ﳺ":"غي","ﳻ":"سى","ﳼ":"سي","ﳽ":"شى","ﳾ":"شي","ﳿ":"حى","ﴀ":"حي","ﴁ":"جى","ﴂ":"جي","ﴃ":"خى","ﴄ":"خي","ﴅ":"صى","ﴆ":"صي","ﴇ":"ضى","ﴈ":"ضي","ﴉ":"شج","ﴊ":"شح","ﴋ":"شخ","ﴌ":"شم","ﴍ":"شر","ﴎ":"سر","ﴏ":"صر","ﴐ":"ضر","ﴑ":"طى","ﴒ":"طي","ﴓ":"عى","ﴔ":"عي","ﴕ":"غى","ﴖ":"غي","ﴗ":"سى","ﴘ":"سي","ﴙ":"شى","ﴚ":"شي","ﴛ":"حى","ﴜ":"حي","ﴝ":"جى","ﴞ":"جي","ﴟ":"خى","ﴠ":"خي","ﴡ":"صى","ﴢ":"صي","ﴣ":"ضى","ﴤ":"ضي","ﴥ":"شج","ﴦ":"شح","ﴧ":"شخ","ﴨ":"شم","ﴩ":"شر","ﴪ":"سر","ﴫ":"صر","ﴬ":"ضر","ﴭ":"شج","ﴮ":"شح","ﴯ":"شخ","ﴰ":"شم","ﴱ":"سه","ﴲ":"شه","ﴳ":"طم","ﴴ":"سج","ﴵ":"سح","ﴶ":"سخ","ﴷ":"شج","ﴸ":"شح","ﴹ":"شخ","ﴺ":"طم","ﴻ":"ظم","ﴼ":"اً","ﴽ":"اً","ﵐ":"تجم","ﵑ":"تحج","ﵒ":"تحج","ﵓ":"تحم","ﵔ":"تخم","ﵕ":"تمج","ﵖ":"تمح","ﵗ":"تمخ","ﵘ":"جمح","ﵙ":"جمح","ﵚ":"حمي","ﵛ":"حمى","ﵜ":"سحج","ﵝ":"سجح","ﵞ":"سجى","ﵟ":"سمح","ﵠ":"سمح","ﵡ":"سمج","ﵢ":"سمم","ﵣ":"سمم","ﵤ":"صحح","ﵥ":"صحح","ﵦ":"صمم","ﵧ":"شحم","ﵨ":"شحم","ﵩ":"شجي","ﵪ":"شمخ","ﵫ":"شمخ","ﵬ":"شمم","ﵭ":"شمم","ﵮ":"ضحى","ﵯ":"ضخم","ﵰ":"ضخم","ﵱ":"طمح","ﵲ":"طمح","ﵳ":"طمم","ﵴ":"طمي","ﵵ":"عجم","ﵶ":"عمم","ﵷ":"عمم","ﵸ":"عمى","ﵹ":"غمم","ﵺ":"غمي","ﵻ":"غمى","ﵼ":"فخم","ﵽ":"فخم","ﵾ":"قمح","ﵿ":"قمم","ﶀ":"لحم","ﶁ":"لحي","ﶂ":"لحى","ﶃ":"لجج","ﶄ":"لجج","ﶅ":"لخم","ﶆ":"لخم","ﶇ":"لمح","ﶈ":"لمح","ﶉ":"محج","ﶊ":"محم","ﶋ":"محي","ﶌ":"مجح","ﶍ":"مجم","ﶎ":"مخج","ﶏ":"مخم","ﶒ":"مجخ","ﶓ":"همج","ﶔ":"همم","ﶕ":"نحم","ﶖ":"نحى","ﶗ":"نجم","ﶘ":"نجم","ﶙ":"نجى","ﶚ":"نمي","ﶛ":"نمى","ﶜ":"يمم","ﶝ":"يمم","ﶞ":"بخي","ﶟ":"تجي","ﶠ":"تجى","ﶡ":"تخي","ﶢ":"تخى","ﶣ":"تمي","ﶤ":"تمى","ﶥ":"جمي","ﶦ":"جحى","ﶧ":"جمى","ﶨ":"سخى","ﶩ":"صحي","ﶪ":"شحي","ﶫ":"ضحي","ﶬ":"لجي","ﶭ":"لمي","ﶮ":"يحي","ﶯ":"يجي","ﶰ":"يمي","ﶱ":"ممي","ﶲ":"قمي","ﶳ":"نحي","ﶴ":"قمح","ﶵ":"لحم","ﶶ":"عمي","ﶷ":"كمي","ﶸ":"نجح","ﶹ":"مخي","ﶺ":"لجم","ﶻ":"كمم","ﶼ":"لجم","ﶽ":"نجح","ﶾ":"جحي","ﶿ":"حجي","ﷀ":"مجي","ﷁ":"فمي","ﷂ":"بحي","ﷃ":"كمم","ﷄ":"عجم","ﷅ":"صمم","ﷆ":"سخي","ﷇ":"نجي","ﷰ":"صلے","ﷱ":"قلے","ﷲ":"الله","ﷳ":"اكبر","ﷴ":"محمد","ﷵ":"صلعم","ﷶ":"رسول","ﷷ":"عليه","ﷸ":"وسلم","ﷹ":"صلى","ﷺ":"صلى الله عليه وسلم","ﷻ":"جل جلاله","﷼":"ریال","︐":",","︑":"、","︒":"。","︓":":","︔":";","︕":"!","︖":"?","︗":"〖","︘":"〗","︙":"...","︰":"..","︱":"—","︲":"–","︳":"_","︴":"_","︵":"(","︶":")","︷":"{","︸":"}","︹":"〔","︺":"〕","︻":"【","︼":"】","︽":"《","︾":"》","︿":"〈","﹀":"〉","﹁":"「","﹂":"」","﹃":"『","﹄":"』","﹇":"[","﹈":"]","﹉":" ̅","﹊":" ̅","﹋":" ̅","﹌":" ̅","﹍":"_","﹎":"_","﹏":"_","﹐":",","﹑":"、","﹒":".","﹔":";","﹕":":","﹖":"?","﹗":"!","﹘":"—","﹙":"(","﹚":")","﹛":"{","﹜":"}","﹝":"〔","﹞":"〕","﹟":"#","﹠":"&","﹡":"*","﹢":"+","﹣":"-","﹤":"<","﹥":">","﹦":"=","﹨":"\\","﹩":"$","﹪":"%","﹫":"@","ﹰ":" ً","ﹱ":"ـً","ﹲ":" ٌ","ﹴ":" ٍ","ﹶ":" َ","ﹷ":"ـَ","ﹸ":" ُ","ﹹ":"ـُ","ﹺ":" ِ","ﹻ":"ـِ","ﹼ":" ّ","ﹽ":"ـّ","ﹾ":" ْ","ﹿ":"ـْ","ﺀ":"ء","ﺁ":"آ","ﺂ":"آ","ﺃ":"أ","ﺄ":"أ","ﺅ":"ؤ","ﺆ":"ؤ","ﺇ":"إ","ﺈ":"إ","ﺉ":"ئ","ﺊ":"ئ","ﺋ":"ئ","ﺌ":"ئ","ﺍ":"ا","ﺎ":"ا","ﺏ":"ب","ﺐ":"ب","ﺑ":"ب","ﺒ":"ب","ﺓ":"ة","ﺔ":"ة","ﺕ":"ت","ﺖ":"ت","ﺗ":"ت","ﺘ":"ت","ﺙ":"ث","ﺚ":"ث","ﺛ":"ث","ﺜ":"ث","ﺝ":"ج","ﺞ":"ج","ﺟ":"ج","ﺠ":"ج","ﺡ":"ح","ﺢ":"ح","ﺣ":"ح","ﺤ":"ح","ﺥ":"خ","ﺦ":"خ","ﺧ":"خ","ﺨ":"خ","ﺩ":"د","ﺪ":"د","ﺫ":"ذ","ﺬ":"ذ","ﺭ":"ر","ﺮ":"ر","ﺯ":"ز","ﺰ":"ز","ﺱ":"س","ﺲ":"س","ﺳ":"س","ﺴ":"س","ﺵ":"ش","ﺶ":"ش","ﺷ":"ش","ﺸ":"ش","ﺹ":"ص","ﺺ":"ص","ﺻ":"ص","ﺼ":"ص","ﺽ":"ض","ﺾ":"ض","ﺿ":"ض","ﻀ":"ض","ﻁ":"ط","ﻂ":"ط","ﻃ":"ط","ﻄ":"ط","ﻅ":"ظ","ﻆ":"ظ","ﻇ":"ظ","ﻈ":"ظ","ﻉ":"ع","ﻊ":"ع","ﻋ":"ع","ﻌ":"ع","ﻍ":"غ","ﻎ":"غ","ﻏ":"غ","ﻐ":"غ","ﻑ":"ف","ﻒ":"ف","ﻓ":"ف","ﻔ":"ف","ﻕ":"ق","ﻖ":"ق","ﻗ":"ق","ﻘ":"ق","ﻙ":"ك","ﻚ":"ك","ﻛ":"ك","ﻜ":"ك","ﻝ":"ل","ﻞ":"ل","ﻟ":"ل","ﻠ":"ل","ﻡ":"م","ﻢ":"م","ﻣ":"م","ﻤ":"م","ﻥ":"ن","ﻦ":"ن","ﻧ":"ن","ﻨ":"ن","ﻩ":"ه","ﻪ":"ه","ﻫ":"ه","ﻬ":"ه","ﻭ":"و","ﻮ":"و","ﻯ":"ى","ﻰ":"ى","ﻱ":"ي","ﻲ":"ي","ﻳ":"ي","ﻴ":"ي","ﻵ":"لآ","ﻶ":"لآ","ﻷ":"لأ","ﻸ":"لأ","ﻹ":"لإ","ﻺ":"لإ","ﻻ":"لا","ﻼ":"لا","！":"!","＂":"\"","＃":"#","＄":"$","％":"%","＆":"&","＇":"'","（":"(","）":")","＊":"*","＋":"+","，":",","－":"-","．":".","／":"/","０":"0","１":"1","２":"2","３":"3","４":"4","５":"5","６":"6","７":"7","８":"8","９":"9","：":":","；":";","＜":"<","＝":"=","＞":">","？":"?","＠":"@","Ａ":"A","Ｂ":"B","Ｃ":"C","Ｄ":"D","Ｅ":"E","Ｆ":"F","Ｇ":"G","Ｈ":"H","Ｉ":"I","Ｊ":"J","Ｋ":"K","Ｌ":"L","Ｍ":"M","Ｎ":"N","Ｏ":"O","Ｐ":"P","Ｑ":"Q","Ｒ":"R","Ｓ":"S","Ｔ":"T","Ｕ":"U","Ｖ":"V","Ｗ":"W","Ｘ":"X","Ｙ":"Y","Ｚ":"Z","［":"[","＼":"\\","］":"]","＾":"^","＿":"_","｀":"`","ａ":"a","ｂ":"b","ｃ":"c","ｄ":"d","ｅ":"e","ｆ":"f","ｇ":"g","ｈ":"h","ｉ":"i","ｊ":"j","ｋ":"k","ｌ":"l","ｍ":"m","ｎ":"n","ｏ":"o","ｐ":"p","ｑ":"q","ｒ":"r","ｓ":"s","ｔ":"t","ｕ":"u","ｖ":"v","ｗ":"w","ｘ":"x","ｙ":"y","ｚ":"z","｛":"{","｜":"|","｝":"}","～":"~","｟":"⦅","｠":"⦆","｡":"。","｢":"「","｣":"」","､":"、","･":"・","ｦ":"ヲ","ｧ":"ァ","ｨ":"ィ","ｩ":"ゥ","ｪ":"ェ","ｫ":"ォ","ｬ":"ャ","ｭ":"ュ","ｮ":"ョ","ｯ":"ッ","ｰ":"ー","ｱ":"ア","ｲ":"イ","ｳ":"ウ","ｴ":"エ","ｵ":"オ","ｶ":"カ","ｷ":"キ","ｸ":"ク","ｹ":"ケ","ｺ":"コ","ｻ":"サ","ｼ":"シ","ｽ":"ス","ｾ":"セ","ｿ":"ソ","ﾀ":"タ","ﾁ":"チ","ﾂ":"ツ","ﾃ":"テ","ﾄ":"ト","ﾅ":"ナ","ﾆ":"ニ","ﾇ":"ヌ","ﾈ":"ネ","ﾉ":"ノ","ﾊ":"ハ","ﾋ":"ヒ","ﾌ":"フ","ﾍ":"ヘ","ﾎ":"ホ","ﾏ":"マ","ﾐ":"ミ","ﾑ":"ム","ﾒ":"メ","ﾓ":"モ","ﾔ":"ヤ","ﾕ":"ユ","ﾖ":"ヨ","ﾗ":"ラ","ﾘ":"リ","ﾙ":"ル","ﾚ":"レ","ﾛ":"ロ","ﾜ":"ワ","ﾝ":"ン","ﾞ":"゙","ﾟ":"゚","ﾠ":"ᅠ","ﾡ":"ᄀ","ﾢ":"ᄁ","ﾣ":"ᆪ","ﾤ":"ᄂ","ﾥ":"ᆬ","ﾦ":"ᆭ","ﾧ":"ᄃ","ﾨ":"ᄄ","ﾩ":"ᄅ","ﾪ":"ᆰ","ﾫ":"ᆱ","ﾬ":"ᆲ","ﾭ":"ᆳ","ﾮ":"ᆴ","ﾯ":"ᆵ","ﾰ":"ᄚ","ﾱ":"ᄆ","ﾲ":"ᄇ","ﾳ":"ᄈ","ﾴ":"ᄡ","ﾵ":"ᄉ","ﾶ":"ᄊ","ﾷ":"ᄋ","ﾸ":"ᄌ","ﾹ":"ᄍ","ﾺ":"ᄎ","ﾻ":"ᄏ","ﾼ":"ᄐ","ﾽ":"ᄑ","ﾾ":"ᄒ","ￂ":"ᅡ","ￃ":"ᅢ","ￄ":"ᅣ","ￅ":"ᅤ","ￆ":"ᅥ","ￇ":"ᅦ","ￊ":"ᅧ","ￋ":"ᅨ","ￌ":"ᅩ","ￍ":"ᅪ","ￎ":"ᅫ","ￏ":"ᅬ","ￒ":"ᅭ","ￓ":"ᅮ","ￔ":"ᅯ","ￕ":"ᅰ","ￖ":"ᅱ","ￗ":"ᅲ","ￚ":"ᅳ","ￛ":"ᅴ","ￜ":"ᅵ","￠":"¢","￡":"£","￢":"¬","￣":" ̄","￤":"¦","￥":"¥","￦":"₩","￨":"│","￩":"←","￪":"↑","￫":"→","￬":"↓","￭":"■","￮":"○","𝐀":"A","𝐁":"B","𝐂":"C","𝐃":"D","𝐄":"E","𝐅":"F","𝐆":"G","𝐇":"H","𝐈":"I","𝐉":"J","𝐊":"K","𝐋":"L","𝐌":"M","𝐍":"N","𝐎":"O","𝐏":"P","𝐐":"Q","𝐑":"R","𝐒":"S","𝐓":"T","𝐔":"U","𝐕":"V","𝐖":"W","𝐗":"X","𝐘":"Y","𝐙":"Z","𝐚":"a","𝐛":"b","𝐜":"c","𝐝":"d","𝐞":"e","𝐟":"f","𝐠":"g","𝐡":"h","𝐢":"i","𝐣":"j","𝐤":"k","𝐥":"l","𝐦":"m","𝐧":"n","𝐨":"o","𝐩":"p","𝐪":"q","𝐫":"r","𝐬":"s","𝐭":"t","𝐮":"u","𝐯":"v","𝐰":"w","𝐱":"x","𝐲":"y","𝐳":"z","𝐴":"A","𝐵":"B","𝐶":"C","𝐷":"D","𝐸":"E","𝐹":"F","𝐺":"G","𝐻":"H","𝐼":"I","𝐽":"J","𝐾":"K","𝐿":"L","𝑀":"M","𝑁":"N","𝑂":"O","𝑃":"P","𝑄":"Q","𝑅":"R","𝑆":"S","𝑇":"T","𝑈":"U","𝑉":"V","𝑊":"W","𝑋":"X","𝑌":"Y","𝑍":"Z","𝑎":"a","𝑏":"b","𝑐":"c","𝑑":"d","𝑒":"e","𝑓":"f","𝑔":"g","𝑖":"i","𝑗":"j","𝑘":"k","𝑙":"l","𝑚":"m","𝑛":"n","𝑜":"o","𝑝":"p","𝑞":"q","𝑟":"r","𝑠":"s","𝑡":"t","𝑢":"u","𝑣":"v","𝑤":"w","𝑥":"x","𝑦":"y","𝑧":"z","𝑨":"A","𝑩":"B","𝑪":"C","𝑫":"D","𝑬":"E","𝑭":"F","𝑮":"G","𝑯":"H","𝑰":"I","𝑱":"J","𝑲":"K","𝑳":"L","𝑴":"M","𝑵":"N","𝑶":"O","𝑷":"P","𝑸":"Q","𝑹":"R","𝑺":"S","𝑻":"T","𝑼":"U","𝑽":"V","𝑾":"W","𝑿":"X","𝒀":"Y","𝒁":"Z","𝒂":"a","𝒃":"b","𝒄":"c","𝒅":"d","𝒆":"e","𝒇":"f","𝒈":"g","𝒉":"h","𝒊":"i","𝒋":"j","𝒌":"k","𝒍":"l","𝒎":"m","𝒏":"n","𝒐":"o","𝒑":"p","𝒒":"q","𝒓":"r","𝒔":"s","𝒕":"t","𝒖":"u","𝒗":"v","𝒘":"w","𝒙":"x","𝒚":"y","𝒛":"z","𝒜":"A","𝒞":"C","𝒟":"D","𝒢":"G","𝒥":"J","𝒦":"K","𝒩":"N","𝒪":"O","𝒫":"P","𝒬":"Q","𝒮":"S","𝒯":"T","𝒰":"U","𝒱":"V","𝒲":"W","𝒳":"X","𝒴":"Y","𝒵":"Z","𝒶":"a","𝒷":"b","𝒸":"c","𝒹":"d","𝒻":"f","𝒽":"h","𝒾":"i","𝒿":"j","𝓀":"k","𝓁":"l","𝓂":"m","𝓃":"n","𝓅":"p","𝓆":"q","𝓇":"r","𝓈":"s","𝓉":"t","𝓊":"u","𝓋":"v","𝓌":"w","𝓍":"x","𝓎":"y","𝓏":"z","𝓐":"A","𝓑":"B","𝓒":"C","𝓓":"D","𝓔":"E","𝓕":"F","𝓖":"G","𝓗":"H","𝓘":"I","𝓙":"J","𝓚":"K","𝓛":"L","𝓜":"M","𝓝":"N","𝓞":"O","𝓟":"P","𝓠":"Q","𝓡":"R","𝓢":"S","𝓣":"T","𝓤":"U","𝓥":"V","𝓦":"W","𝓧":"X","𝓨":"Y","𝓩":"Z","𝓪":"a","𝓫":"b","𝓬":"c","𝓭":"d","𝓮":"e","𝓯":"f","𝓰":"g","𝓱":"h","𝓲":"i","𝓳":"j","𝓴":"k","𝓵":"l","𝓶":"m","𝓷":"n","𝓸":"o","𝓹":"p","𝓺":"q","𝓻":"r","𝓼":"s","𝓽":"t","𝓾":"u","𝓿":"v","𝔀":"w","𝔁":"x","𝔂":"y","𝔃":"z","𝔄":"A","𝔅":"B","𝔇":"D","𝔈":"E","𝔉":"F","𝔊":"G","𝔍":"J","𝔎":"K","𝔏":"L","𝔐":"M","𝔑":"N","𝔒":"O","𝔓":"P","𝔔":"Q","𝔖":"S","𝔗":"T","𝔘":"U","𝔙":"V","𝔚":"W","𝔛":"X","𝔜":"Y","𝔞":"a","𝔟":"b","𝔠":"c","𝔡":"d","𝔢":"e","𝔣":"f","𝔤":"g","𝔥":"h","𝔦":"i","𝔧":"j","𝔨":"k","𝔩":"l","𝔪":"m","𝔫":"n","𝔬":"o","𝔭":"p","𝔮":"q","𝔯":"r","𝔰":"s","𝔱":"t","𝔲":"u","𝔳":"v","𝔴":"w","𝔵":"x","𝔶":"y","𝔷":"z","𝔸":"A","𝔹":"B","𝔻":"D","𝔼":"E","𝔽":"F","𝔾":"G","𝕀":"I","𝕁":"J","𝕂":"K","𝕃":"L","𝕄":"M","𝕆":"O","𝕊":"S","𝕋":"T","𝕌":"U","𝕍":"V","𝕎":"W","𝕏":"X","𝕐":"Y","𝕒":"a","𝕓":"b","𝕔":"c","𝕕":"d","𝕖":"e","𝕗":"f","𝕘":"g","𝕙":"h","𝕚":"i","𝕛":"j","𝕜":"k","𝕝":"l","𝕞":"m","𝕟":"n","𝕠":"o","𝕡":"p","𝕢":"q","𝕣":"r","𝕤":"s","𝕥":"t","𝕦":"u","𝕧":"v","𝕨":"w","𝕩":"x","𝕪":"y","𝕫":"z","𝕬":"A","𝕭":"B","𝕮":"C","𝕯":"D","𝕰":"E","𝕱":"F","𝕲":"G","𝕳":"H","𝕴":"I","𝕵":"J","𝕶":"K","𝕷":"L","𝕸":"M","𝕹":"N","𝕺":"O","𝕻":"P","𝕼":"Q","𝕽":"R","𝕾":"S","𝕿":"T","𝖀":"U","𝖁":"V","𝖂":"W","𝖃":"X","𝖄":"Y","𝖅":"Z","𝖆":"a","𝖇":"b","𝖈":"c","𝖉":"d","𝖊":"e","𝖋":"f","𝖌":"g","𝖍":"h","𝖎":"i","𝖏":"j","𝖐":"k","𝖑":"l","𝖒":"m","𝖓":"n","𝖔":"o","𝖕":"p","𝖖":"q","𝖗":"r","𝖘":"s","𝖙":"t","𝖚":"u","𝖛":"v","𝖜":"w","𝖝":"x","𝖞":"y","𝖟":"z","𝖠":"A","𝖡":"B","𝖢":"C","𝖣":"D","𝖤":"E","𝖥":"F","𝖦":"G","𝖧":"H","𝖨":"I","𝖩":"J","𝖪":"K","𝖫":"L","𝖬":"M","𝖭":"N","𝖮":"O","𝖯":"P","𝖰":"Q","𝖱":"R","𝖲":"S","𝖳":"T","𝖴":"U","𝖵":"V","𝖶":"W","𝖷":"X","𝖸":"Y","𝖹":"Z","𝖺":"a","𝖻":"b","𝖼":"c","𝖽":"d","𝖾":"e","𝖿":"f","𝗀":"g","𝗁":"h","𝗂":"i","𝗃":"j","𝗄":"k","𝗅":"l","𝗆":"m","𝗇":"n","𝗈":"o","𝗉":"p","𝗊":"q","𝗋":"r","𝗌":"s","𝗍":"t","𝗎":"u","𝗏":"v","𝗐":"w","𝗑":"x","𝗒":"y","𝗓":"z","𝗔":"A","𝗕":"B","𝗖":"C","𝗗":"D","𝗘":"E","𝗙":"F","𝗚":"G","𝗛":"H","𝗜":"I","𝗝":"J","𝗞":"K","𝗟":"L","𝗠":"M","𝗡":"N","𝗢":"O","𝗣":"P","𝗤":"Q","𝗥":"R","𝗦":"S","𝗧":"T","𝗨":"U","𝗩":"V","𝗪":"W","𝗫":"X","𝗬":"Y","𝗭":"Z","𝗮":"a","𝗯":"b","𝗰":"c","𝗱":"d","𝗲":"e","𝗳":"f","𝗴":"g","𝗵":"h","𝗶":"i","𝗷":"j","𝗸":"k","𝗹":"l","𝗺":"m","𝗻":"n","𝗼":"o","𝗽":"p","𝗾":"q","𝗿":"r","𝘀":"s","𝘁":"t","𝘂":"u","𝘃":"v","𝘄":"w","𝘅":"x","𝘆":"y","𝘇":"z","𝘈":"A","𝘉":"B","𝘊":"C","𝘋":"D","𝘌":"E","𝘍":"F","𝘎":"G","𝘏":"H","𝘐":"I","𝘑":"J","𝘒":"K","𝘓":"L","𝘔":"M","𝘕":"N","𝘖":"O","𝘗":"P","𝘘":"Q","𝘙":"R","𝘚":"S","𝘛":"T","𝘜":"U","𝘝":"V","𝘞":"W","𝘟":"X","𝘠":"Y","𝘡":"Z","𝘢":"a","𝘣":"b","𝘤":"c","𝘥":"d","𝘦":"e","𝘧":"f","𝘨":"g","𝘩":"h","𝘪":"i","𝘫":"j","𝘬":"k","𝘭":"l","𝘮":"m","𝘯":"n","𝘰":"o","𝘱":"p","𝘲":"q","𝘳":"r","𝘴":"s","𝘵":"t","𝘶":"u","𝘷":"v","𝘸":"w","𝘹":"x","𝘺":"y","𝘻":"z","𝘼":"A","𝘽":"B","𝘾":"C","𝘿":"D","𝙀":"E","𝙁":"F","𝙂":"G","𝙃":"H","𝙄":"I","𝙅":"J","𝙆":"K","𝙇":"L","𝙈":"M","𝙉":"N","𝙊":"O","𝙋":"P","𝙌":"Q","𝙍":"R","𝙎":"S","𝙏":"T","𝙐":"U","𝙑":"V","𝙒":"W","𝙓":"X","𝙔":"Y","𝙕":"Z","𝙖":"a","𝙗":"b","𝙘":"c","𝙙":"d","𝙚":"e","𝙛":"f","𝙜":"g","𝙝":"h","𝙞":"i","𝙟":"j","𝙠":"k","𝙡":"l","𝙢":"m","𝙣":"n","𝙤":"o","𝙥":"p","𝙦":"q","𝙧":"r","𝙨":"s","𝙩":"t","𝙪":"u","𝙫":"v","𝙬":"w","𝙭":"x","𝙮":"y","𝙯":"z","𝙰":"A","𝙱":"B","𝙲":"C","𝙳":"D","𝙴":"E","𝙵":"F","𝙶":"G","𝙷":"H","𝙸":"I","𝙹":"J","𝙺":"K","𝙻":"L","𝙼":"M","𝙽":"N","𝙾":"O","𝙿":"P","𝚀":"Q","𝚁":"R","𝚂":"S","𝚃":"T","𝚄":"U","𝚅":"V","𝚆":"W","𝚇":"X","𝚈":"Y","𝚉":"Z","𝚊":"a","𝚋":"b","𝚌":"c","𝚍":"d","𝚎":"e","𝚏":"f","𝚐":"g","𝚑":"h","𝚒":"i","𝚓":"j","𝚔":"k","𝚕":"l","𝚖":"m","𝚗":"n","𝚘":"o","𝚙":"p","𝚚":"q","𝚛":"r","𝚜":"s","𝚝":"t","𝚞":"u","𝚟":"v","𝚠":"w","𝚡":"x","𝚢":"y","𝚣":"z","𝚤":"ı","𝚥":"ȷ","𝚨":"Α","𝚩":"Β","𝚪":"Γ","𝚫":"Δ","𝚬":"Ε","𝚭":"Ζ","𝚮":"Η","𝚯":"Θ","𝚰":"Ι","𝚱":"Κ","𝚲":"Λ","𝚳":"Μ","𝚴":"Ν","𝚵":"Ξ","𝚶":"Ο","𝚷":"Π","𝚸":"Ρ","𝚹":"Θ","𝚺":"Σ","𝚻":"Τ","𝚼":"Υ","𝚽":"Φ","𝚾":"Χ","𝚿":"Ψ","𝛀":"Ω","𝛁":"∇","𝛂":"α","𝛃":"β","𝛄":"γ","𝛅":"δ","𝛆":"ε","𝛇":"ζ","𝛈":"η","𝛉":"θ","𝛊":"ι","𝛋":"κ","𝛌":"λ","𝛍":"μ","𝛎":"ν","𝛏":"ξ","𝛐":"ο","𝛑":"π","𝛒":"ρ","𝛓":"ς","𝛔":"σ","𝛕":"τ","𝛖":"υ","𝛗":"φ","𝛘":"χ","𝛙":"ψ","𝛚":"ω","𝛛":"∂","𝛜":"ε","𝛝":"θ","𝛞":"κ","𝛟":"φ","𝛠":"ρ","𝛡":"π","𝛢":"Α","𝛣":"Β","𝛤":"Γ","𝛥":"Δ","𝛦":"Ε","𝛧":"Ζ","𝛨":"Η","𝛩":"Θ","𝛪":"Ι","𝛫":"Κ","𝛬":"Λ","𝛭":"Μ","𝛮":"Ν","𝛯":"Ξ","𝛰":"Ο","𝛱":"Π","𝛲":"Ρ","𝛳":"Θ","𝛴":"Σ","𝛵":"Τ","𝛶":"Υ","𝛷":"Φ","𝛸":"Χ","𝛹":"Ψ","𝛺":"Ω","𝛻":"∇","𝛼":"α","𝛽":"β","𝛾":"γ","𝛿":"δ","𝜀":"ε","𝜁":"ζ","𝜂":"η","𝜃":"θ","𝜄":"ι","𝜅":"κ","𝜆":"λ","𝜇":"μ","𝜈":"ν","𝜉":"ξ","𝜊":"ο","𝜋":"π","𝜌":"ρ","𝜍":"ς","𝜎":"σ","𝜏":"τ","𝜐":"υ","𝜑":"φ","𝜒":"χ","𝜓":"ψ","𝜔":"ω","𝜕":"∂","𝜖":"ε","𝜗":"θ","𝜘":"κ","𝜙":"φ","𝜚":"ρ","𝜛":"π","𝜜":"Α","𝜝":"Β","𝜞":"Γ","𝜟":"Δ","𝜠":"Ε","𝜡":"Ζ","𝜢":"Η","𝜣":"Θ","𝜤":"Ι","𝜥":"Κ","𝜦":"Λ","𝜧":"Μ","𝜨":"Ν","𝜩":"Ξ","𝜪":"Ο","𝜫":"Π","𝜬":"Ρ","𝜭":"Θ","𝜮":"Σ","𝜯":"Τ","𝜰":"Υ","𝜱":"Φ","𝜲":"Χ","𝜳":"Ψ","𝜴":"Ω","𝜵":"∇","𝜶":"α","𝜷":"β","𝜸":"γ","𝜹":"δ","𝜺":"ε","𝜻":"ζ","𝜼":"η","𝜽":"θ","𝜾":"ι","𝜿":"κ","𝝀":"λ","𝝁":"μ","𝝂":"ν","𝝃":"ξ","𝝄":"ο","𝝅":"π","𝝆":"ρ","𝝇":"ς","𝝈":"σ","𝝉":"τ","𝝊":"υ","𝝋":"φ","𝝌":"χ","𝝍":"ψ","𝝎":"ω","𝝏":"∂","𝝐":"ε","𝝑":"θ","𝝒":"κ","𝝓":"φ","𝝔":"ρ","𝝕":"π","𝝖":"Α","𝝗":"Β","𝝘":"Γ","𝝙":"Δ","𝝚":"Ε","𝝛":"Ζ","𝝜":"Η","𝝝":"Θ","𝝞":"Ι","𝝟":"Κ","𝝠":"Λ","𝝡":"Μ","𝝢":"Ν","𝝣":"Ξ","𝝤":"Ο","𝝥":"Π","𝝦":"Ρ","𝝧":"Θ","𝝨":"Σ","𝝩":"Τ","𝝪":"Υ","𝝫":"Φ","𝝬":"Χ","𝝭":"Ψ","𝝮":"Ω","𝝯":"∇","𝝰":"α","𝝱":"β","𝝲":"γ","𝝳":"δ","𝝴":"ε","𝝵":"ζ","𝝶":"η","𝝷":"θ","𝝸":"ι","𝝹":"κ","𝝺":"λ","𝝻":"μ","𝝼":"ν","𝝽":"ξ","𝝾":"ο","𝝿":"π","𝞀":"ρ","𝞁":"ς","𝞂":"σ","𝞃":"τ","𝞄":"υ","𝞅":"φ","𝞆":"χ","𝞇":"ψ","𝞈":"ω","𝞉":"∂","𝞊":"ε","𝞋":"θ","𝞌":"κ","𝞍":"φ","𝞎":"ρ","𝞏":"π","𝞐":"Α","𝞑":"Β","𝞒":"Γ","𝞓":"Δ","𝞔":"Ε","𝞕":"Ζ","𝞖":"Η","𝞗":"Θ","𝞘":"Ι","𝞙":"Κ","𝞚":"Λ","𝞛":"Μ","𝞜":"Ν","𝞝":"Ξ","𝞞":"Ο","𝞟":"Π","𝞠":"Ρ","𝞡":"Θ","𝞢":"Σ","𝞣":"Τ","𝞤":"Υ","𝞥":"Φ","𝞦":"Χ","𝞧":"Ψ","𝞨":"Ω","𝞩":"∇","𝞪":"α","𝞫":"β","𝞬":"γ","𝞭":"δ","𝞮":"ε","𝞯":"ζ","𝞰":"η","𝞱":"θ","𝞲":"ι","𝞳":"κ","𝞴":"λ","𝞵":"μ","𝞶":"ν","𝞷":"ξ","𝞸":"ο","𝞹":"π","𝞺":"ρ","𝞻":"ς","𝞼":"σ","𝞽":"τ","𝞾":"υ","𝞿":"φ","𝟀":"χ","𝟁":"ψ","𝟂":"ω","𝟃":"∂","𝟄":"ε","𝟅":"θ","𝟆":"κ","𝟇":"φ","𝟈":"ρ","𝟉":"π","𝟊":"Ϝ","𝟋":"ϝ","𝟎":"0","𝟏":"1","𝟐":"2","𝟑":"3","𝟒":"4","𝟓":"5","𝟔":"6","𝟕":"7","𝟖":"8","𝟗":"9","𝟘":"0","𝟙":"1","𝟚":"2","𝟛":"3","𝟜":"4","𝟝":"5","𝟞":"6","𝟟":"7","𝟠":"8","𝟡":"9","𝟢":"0","𝟣":"1","𝟤":"2","𝟥":"3","𝟦":"4","𝟧":"5","𝟨":"6","𝟩":"7","𝟪":"8","𝟫":"9","𝟬":"0","𝟭":"1","𝟮":"2","𝟯":"3","𝟰":"4","𝟱":"5","𝟲":"6","𝟳":"7","𝟴":"8","𝟵":"9","𝟶":"0","𝟷":"1","𝟸":"2","𝟹":"3","𝟺":"4","𝟻":"5","𝟼":"6","𝟽":"7","𝟾":"8","𝟿":"9","𞸀":"ا","𞸁":"ب","𞸂":"ج","𞸃":"د","𞸅":"و","𞸆":"ز","𞸇":"ح","𞸈":"ط","𞸉":"ي","𞸊":"ك","𞸋":"ل","𞸌":"م","𞸍":"ن","𞸎":"س","𞸏":"ع","𞸐":"ف","𞸑":"ص","𞸒":"ق","𞸓":"ر","𞸔":"ش","𞸕":"ت","𞸖":"ث","𞸗":"خ","𞸘":"ذ","𞸙":"ض","𞸚":"ظ","𞸛":"غ","𞸜":"ٮ","𞸝":"ں","𞸞":"ڡ","𞸟":"ٯ","𞸡":"ب","𞸢":"ج","𞸤":"ه","𞸧":"ح","𞸩":"ي","𞸪":"ك","𞸫":"ل","𞸬":"م","𞸭":"ن","𞸮":"س","𞸯":"ع","𞸰":"ف","𞸱":"ص","𞸲":"ق","𞸴":"ش","𞸵":"ت","𞸶":"ث","𞸷":"خ","𞸹":"ض","𞸻":"غ","𞹂":"ج","𞹇":"ح","𞹉":"ي","𞹋":"ل","𞹍":"ن","𞹎":"س","𞹏":"ع","𞹑":"ص","𞹒":"ق","𞹔":"ش","𞹗":"خ","𞹙":"ض","𞹛":"غ","𞹝":"ں","𞹟":"ٯ","𞹡":"ب","𞹢":"ج","𞹤":"ه","𞹧":"ح","𞹨":"ط","𞹩":"ي","𞹪":"ك","𞹬":"م","𞹭":"ن","𞹮":"س","𞹯":"ع","𞹰":"ف","𞹱":"ص","𞹲":"ق","𞹴":"ش","𞹵":"ت","𞹶":"ث","𞹷":"خ","𞹹":"ض","𞹺":"ظ","𞹻":"غ","𞹼":"ٮ","𞹾":"ڡ","𞺀":"ا","𞺁":"ب","𞺂":"ج","𞺃":"د","𞺄":"ه","𞺅":"و","𞺆":"ز","𞺇":"ح","𞺈":"ط","𞺉":"ي","𞺋":"ل","𞺌":"م","𞺍":"ن","𞺎":"س","𞺏":"ع","𞺐":"ف","𞺑":"ص","𞺒":"ق","𞺓":"ر","𞺔":"ش","𞺕":"ت","𞺖":"ث","𞺗":"خ","𞺘":"ذ","𞺙":"ض","𞺚":"ظ","𞺛":"غ","𞺡":"ب","𞺢":"ج","𞺣":"د","𞺥":"و","𞺦":"ز","𞺧":"ح","𞺨":"ط","𞺩":"ي","𞺫":"ل","𞺬":"م","𞺭":"ن","𞺮":"س","𞺯":"ع","𞺰":"ف","𞺱":"ص","𞺲":"ق","𞺳":"ر","𞺴":"ش","𞺵":"ت","𞺶":"ث","𞺷":"خ","𞺸":"ذ","𞺹":"ض","𞺺":"ظ","𞺻":"غ","🄀":"0.","🄁":"0,","🄂":"1,","🄃":"2,","🄄":"3,","🄅":"4,","🄆":"5,","🄇":"6,","🄈":"7,","🄉":"8,","🄊":"9,","🄐":"(A)","🄑":"(B)","🄒":"(C)","🄓":"(D)","🄔":"(E)","🄕":"(F)","🄖":"(G)","🄗":"(H)","🄘":"(I)","🄙":"(J)","🄚":"(K)","🄛":"(L)","🄜":"(M)","🄝":"(N)","🄞":"(O)","🄟":"(P)","🄠":"(Q)","🄡":"(R)","🄢":"(S)","🄣":"(T)","🄤":"(U)","🄥":"(V)","🄦":"(W)","🄧":"(X)","🄨":"(Y)","🄩":"(Z)","🄪":"〔S〕","🄫":"C","🄬":"R","🄭":"CD","🄮":"WZ","🄰":"A","🄱":"B","🄲":"C","🄳":"D","🄴":"E","🄵":"F","🄶":"G","🄷":"H","🄸":"I","🄹":"J","🄺":"K","🄻":"L","🄼":"M","🄽":"N","🄾":"O","🄿":"P","🅀":"Q","🅁":"R","🅂":"S","🅃":"T","🅄":"U","🅅":"V","🅆":"W","🅇":"X","🅈":"Y","🅉":"Z","🅊":"HV","🅋":"MV","🅌":"SD","🅍":"SS","🅎":"PPV","🅏":"WC","🅪":"MC","🅫":"MD","🆐":"DJ","🈀":"ほか","🈁":"ココ","🈂":"サ","🈐":"手","🈑":"字","🈒":"双","🈓":"デ","🈔":"二","🈕":"多","🈖":"解","🈗":"天","🈘":"交","🈙":"映","🈚":"無","🈛":"料","🈜":"前","🈝":"後","🈞":"再","🈟":"新","🈠":"初","🈡":"終","🈢":"生","🈣":"販","🈤":"声","🈥":"吹","🈦":"演","🈧":"投","🈨":"捕","🈩":"一","🈪":"三","🈫":"遊","🈬":"左","🈭":"中","🈮":"右","🈯":"指","🈰":"走","🈱":"打","🈲":"禁","🈳":"空","🈴":"合","🈵":"満","🈶":"有","🈷":"月","🈸":"申","🈹":"割","🈺":"営","🉀":"〔本〕","🉁":"〔三〕","🉂":"〔二〕","🉃":"〔安〕","🉄":"〔点〕","🉅":"〔打〕","🉆":"〔盗〕","🉇":"〔勝〕","🉈":"〔敗〕","🉐":"得","🉑":"可"};
+/*
+ * all.js - include file for normalization data for a particular script
+ * 
+ * Copyright © 2012, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* WARNING: THIS IS A FILE GENERATED BY gennorm.js. DO NOT EDIT BY HAND. */
+// !depends util/utils.js 
+// !depends nfd/all.js
+// !data norm.ccc nfkd/all
+ilib.data.norm.nfkd = ilib.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_all);
+ilib.data.nfkd_all = undefined;
+/*
+ * all.js - include file for normalization data for a particular script
+ * 
+ * Copyright © 2012, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* WARNING: THIS IS A FILE GENERATED BY gennorm.js. DO NOT EDIT BY HAND. */
+// !depends util/utils.js 
+// !depends nfd/all.js nfc/all.js nfkd/all.js
+// !data norm.ccc
+
 /*
  * durfmt.js - Date formatter definition
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17777,15 +21643,29 @@ localeinfo.js
  * or as a regular time as on a clock. eg. text is "1 hour, 15 minutes", whereas clock is "1:15:00". Valid
  * values for this property are "text" or "clock". Default if this property is not specified
  * is "text".
+ * 
+ * <li><i>onLoad</i> - a callback function to call when the format data is fully 
+ * loaded. When the onLoad option is given, this class will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
  * </ul>
  * <p>
  * 
- * Depends directive: !depends duration.js
+ * Depends directive: !depends durfmt.js
  * 
  * @constructor
  * @param {?Object} options options governing the way this date formatter instance works
  */
 ilib.DurFmt = function(options) {
+	var sync = true;
+	
 	this.locale = new ilib.Locale();
 	this.length = "short";
 	this.style = "text";
@@ -17809,98 +21689,125 @@ ilib.DurFmt = function(options) {
 				this.style = options.style;
 			}
 		}
+		
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
 	}
 	
-	this.locinfo = new ilib.LocaleInfo(this.locale);
-	var sysres = new ilib.ResBundle({
+	new ilib.ResBundle({
 		locale: this.locale,
-		name: "sysres"
+		name: "sysres",
+		sync: sync,
+		onLoad: function (sysres) {
+			switch (this.length) {
+				case 'short':
+					this.components = {
+						year: sysres.getString("#{num}y"),
+						month: sysres.getString("#{num}m", "durationShortMonths"),
+						week: sysres.getString("#{num}w"),
+						day: sysres.getString("#{num}d"),
+						hour: sysres.getString("#{num}h"),
+						minute: sysres.getString("#{num}m", "durationShortMinutes"),
+						second: sysres.getString("#{num}s"),
+						millisecond: sysres.getString("#{num}m", "durationShortMillis"),
+						separator: sysres.getString(" ", "separatorShort"),
+						finalSeparator: "" // not used at this length
+					};
+					break;
+					
+				case 'medium':
+					this.components = {
+						year: sysres.getString("1#1 yr|#{num} yrs", "durationMediumYears"),
+						month: sysres.getString("1#1 mo|#{num} mos"),
+						week: sysres.getString("1#1 wk|#{num} wks", "durationMediumWeeks"),
+						day: sysres.getString("1#1 dy|#{num} dys"),
+						hour: sysres.getString("1#1 hr|#{num} hrs", "durationMediumHours"),
+						minute: sysres.getString("1#1 mi|#{num} min"),
+						second: sysres.getString("1#1 se|#{num} sec"),
+						millisecond: sysres.getString("#{num} ms"),
+						separator: sysres.getString(" ", "separatorMedium"),
+						finalSeparator: "" // not used at this length
+					};
+					break;
+					
+				case 'long':
+					this.components = {
+						year: sysres.getString("1#1 yr|#{num} yrs"),
+						month: sysres.getString("1#1 mon|#{num} mons"),
+						week: sysres.getString("1#1 wk|#{num} wks"),
+						day: sysres.getString("1#1 day|#{num} days", "durationLongDays"),
+						hour: sysres.getString("1#1 hr|#{num} hrs"),
+						minute: sysres.getString("1#1 min|#{num} min"),
+						second: sysres.getString("1#1 sec|#{num} sec"),
+						millisecond: sysres.getString("#{num} ms"),
+						separator: sysres.getString(", ", "separatorLong"),
+						finalSeparator: "" // not used at this length
+					};
+					break;
+					
+				case 'full':
+					this.components = {
+						year: sysres.getString("1#1 year|#{num} years"),
+						month: sysres.getString("1#1 month|#{num} months"),
+						week: sysres.getString("1#1 week|#{num} weeks"),
+						day: sysres.getString("1#1 day|#{num} days"),
+						hour: sysres.getString("1#1 hour|#{num} hours"),
+						minute: sysres.getString("1#1 minute|#{num} minutes"),
+						second: sysres.getString("1#1 second|#{num} seconds"),
+						millisecond: sysres.getString("1#1 millisecond|#{num} milliseconds"),
+						separator: sysres.getString(", ", "separatorFull"),
+						finalSeparator: sysres.getString(" and ", "finalSeparatorFull")
+					};
+					break;
+			}
+			
+			if (this.style === 'clock') {
+				new ilib.DateFmt({
+					locale: this.locale,
+					type: "time",
+					time: "ms",
+					sync: sync,
+					onLoad: function (fmtMS) {
+						this.timeFmtMS = fmtMS;
+						new ilib.DateFmt({
+							locale: this.locale,
+							type: "time",
+							time: "hm",
+							sync: sync,
+							onLoad: function (fmtHM) {
+								this.timeFmtHM = fmtHM;		
+								new ilib.DateFmt({
+									locale: this.locale,
+									type: "time",
+									time: "hms",
+									sync: sync,
+									onLoad: function (fmtHMS) {
+										this.timeFmtHMS = fmtHMS;		
+
+										// munge with the template to make sure that the hours are not formatted mod 12
+										this.timeFmtHM.template = this.timeFmtHM.template.replace(/hh?/, 'H');
+										this.timeFmtHM.templateArr = this.timeFmtHM._tokenize(this.timeFmtHM.template);
+										this.timeFmtHMS.template = this.timeFmtHMS.template.replace(/hh?/, 'H');
+										this.timeFmtHMS.templateArr = this.timeFmtHMS._tokenize(this.timeFmtHMS.template);
+										
+										if (options && typeof(options.onLoad) === 'function') {
+											options.onLoad(this);
+										}
+									}.bind(this)
+								});
+							}.bind(this)
+						});
+					}.bind(this)
+				});
+				return;
+			}
+			
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		}.bind(this)
 	});
-	
-	switch (this.length) {
-		case 'short':
-			this.components = {
-				year: sysres.getString("#{num}y"),
-				month: sysres.getString("#{num}m", "durationShortMonths"),
-				week: sysres.getString("#{num}w"),
-				day: sysres.getString("#{num}d"),
-				hour: sysres.getString("#{num}h"),
-				minute: sysres.getString("#{num}m", "durationShortMinutes"),
-				second: sysres.getString("#{num}s"),
-				millisecond: sysres.getString("#{num}m", "durationShortMillis"),
-				separator: sysres.getString(" ", "separatorShort"),
-				finalSeparator: "" // not used at this length
-			};
-			break;
-			
-		case 'medium':
-			this.components = {
-				year: sysres.getString("1#1 yr|#{num} yrs", "durationMediumYears"),
-				month: sysres.getString("1#1 mo|#{num} mos"),
-				week: sysres.getString("1#1 wk|#{num} wks", "durationMediumWeeks"),
-				day: sysres.getString("1#1 dy|#{num} dys"),
-				hour: sysres.getString("1#1 hr|#{num} hrs", "durationMediumHours"),
-				minute: sysres.getString("1#1 mi|#{num} min"),
-				second: sysres.getString("1#1 se|#{num} sec"),
-				millisecond: sysres.getString("#{num} ms"),
-				separator: sysres.getString(" ", "separatorMedium"),
-				finalSeparator: "" // not used at this length
-			};
-			break;
-			
-		case 'long':
-			this.components = {
-				year: sysres.getString("1#1 yr|#{num} yrs"),
-				month: sysres.getString("1#1 mon|#{num} mons"),
-				week: sysres.getString("1#1 wk|#{num} wks"),
-				day: sysres.getString("1#1 day|#{num} days", "durationLongDays"),
-				hour: sysres.getString("1#1 hr|#{num} hrs"),
-				minute: sysres.getString("1#1 min|#{num} min"),
-				second: sysres.getString("1#1 sec|#{num} sec"),
-				millisecond: sysres.getString("#{num} ms"),
-				separator: sysres.getString(", ", "separatorLong"),
-				finalSeparator: "" // not used at this length
-			};
-			break;
-			
-		case 'full':
-			this.components = {
-				year: sysres.getString("1#1 year|#{num} years"),
-				month: sysres.getString("1#1 month|#{num} months"),
-				week: sysres.getString("1#1 week|#{num} weeks"),
-				day: sysres.getString("1#1 day|#{num} days"),
-				hour: sysres.getString("1#1 hour|#{num} hours"),
-				minute: sysres.getString("1#1 minute|#{num} minutes"),
-				second: sysres.getString("1#1 second|#{num} seconds"),
-				millisecond: sysres.getString("1#1 millisecond|#{num} milliseconds"),
-				separator: sysres.getString(", ", "separatorFull"),
-				finalSeparator: sysres.getString(" and ", "finalSeparatorFull")
-			};
-			break;
-	}
-	
-	if (this.style === 'clock') {
-		this.timeFmtMS = new ilib.DateFmt({
-			locale: this.locale,
-			type: "time",
-			time: "ms"
-		});
-		this.timeFmtHM = new ilib.DateFmt({
-			locale: this.locale,
-			type: "time",
-			time: "hm"
-		});
-		this.timeFmtHMS = new ilib.DateFmt({
-			locale: this.locale,
-			type: "time",
-			time: "hms"
-		});
-		// munge with the template to make sure that the hours are not formatted mod 12
-		this.timeFmtHM.template = this.timeFmtHM.template.replace(/hh?/, 'H');
-		this.timeFmtHM.templateArr = this.timeFmtHM._tokenize(this.timeFmtHM.template);
-		this.timeFmtHMS.template = this.timeFmtHMS.template.replace(/hh?/, 'H');
-		this.timeFmtHMS.templateArr = this.timeFmtHMS._tokenize(this.timeFmtHMS.template);
-	}
 };
 
 /**
@@ -18374,6 +22281,46 @@ ilib.CType.isPunct = function (ch) {
 		ilib.CType._inRange(ch, 'Pf', ilib.data.ctype_p);
 };
 
+ilib.data.scriptToRange = {"Zyyy":[[0,64],[91,96],[123,169],[171,185],[187,191],[215],[247],[697,735],[741,745],[748,767],[884],[894],[901],[903],[1417],[1548],[1563],[1567],[1600],[1632,1641],[1757],[2404,2405],[3647],[4053,4056],[4347],[5867,5869],[5941,5942],[6146,6147],[6149],[7379],[7393],[7401,7404],[7406,7411],[7413,7414],[8192,8203],[8206,8292],[8298,8304],[8308,8318],[8320,8334],[8352,8378],[8448,8485],[8487,8489],[8492,8497],[8499,8525],[8527,8543],[8585],[8592,9203],[9216,9254],[9280,9290],[9312,9983],[9985,10239],[10496,11084],[11088,11097],[11776,11835],[12272,12283],[12288,12292],[12294],[12296,12320],[12336,12343],[12348,12351],[12443,12444],[12448],[12539,12540],[12688,12703],[12736,12771],[12832,12895],[12927,13007],[13144,13311],[19904,19967],[42752,42785],[42888,42890],[43056,43065],[64830,64831],[65021],[65040,65049],[65072,65106],[65108,65126],[65128,65131],[65279],[65281,65312],[65339,65344],[65371,65381],[65392],[65438,65439],[65504,65510],[65512,65518],[65529,65533],[65792,65794],[65799,65843],[65847,65855],[65936,65947],[66000,66044],[118784,119029],[119040,119078],[119081,119142],[119146,119162],[119171,119172],[119180,119209],[119214,119261],[119552,119638],[119648,119665],[119808,119892],[119894,119964],[119966,119967],[119970],[119973,119974],[119977,119980],[119982,119993],[119995],[119997,120003],[120005,120069],[120071,120074],[120077,120084],[120086,120092],[120094,120121],[120123,120126],[120128,120132],[120134],[120138,120144],[120146,120485],[120488,120779],[120782,120831],[126976,127019],[127024,127123],[127136,127150],[127153,127166],[127169,127183],[127185,127199],[127232,127242],[127248,127278],[127280,127339],[127344,127386],[127462,127487],[127489,127490],[127504,127546],[127552,127560],[127568,127569],[127744,127776],[127792,127797],[127799,127868],[127872,127891],[127904,127940],[127942,127946],[127968,127984],[128000,128062],[128064],[128066,128247],[128249,128252],[128256,128317],[128320,128323],[128336,128359],[128507,128576],[128581,128591],[128640,128709],[128768,128883],[917505],[917536,917631]],"Latn":[[65,90],[97,122],[170],[186],[192,214],[216,246],[248,696],[736,740],[7424,7461],[7468,7516],[7522,7525],[7531,7543],[7545,7614],[7680,7935],[8305],[8319],[8336,8348],[8490,8491],[8498],[8526],[8544,8584],[11360,11391],[42786,42887],[42891,42894],[42896,42899],[42912,42922],[43000,43007],[64256,64262],[65313,65338],[65345,65370]],"Grek":[[880,883],[885,887],[890,893],[900],[902],[904,906],[908],[910,929],[931,993],[1008,1023],[7462,7466],[7517,7521],[7526,7530],[7615],[7936,7957],[7960,7965],[7968,8005],[8008,8013],[8016,8023],[8025],[8027],[8029],[8031,8061],[8064,8116],[8118,8132],[8134,8147],[8150,8155],[8157,8175],[8178,8180],[8182,8190],[8486],[65856,65930],[119296,119365]],"Cyrl":[[1024,1156],[1159,1319],[7467],[7544],[11744,11775],[42560,42647],[42655]],"Armn":[[1329,1366],[1369,1375],[1377,1415],[1418],[1423],[64275,64279]],"Hebr":[[1425,1479],[1488,1514],[1520,1524],[64285,64310],[64312,64316],[64318],[64320,64321],[64323,64324],[64326,64335]],"Arab":[[1536,1540],[1542,1547],[1549,1562],[1566],[1568,1599],[1601,1610],[1622,1631],[1642,1647],[1649,1756],[1758,1791],[1872,1919],[2208],[2210,2220],[2276,2302],[64336,64449],[64467,64829],[64848,64911],[64914,64967],[65008,65020],[65136,65140],[65142,65276],[69216,69246],[126464,126467],[126469,126495],[126497,126498],[126500],[126503],[126505,126514],[126516,126519],[126521],[126523],[126530],[126535],[126537],[126539],[126541,126543],[126545,126546],[126548],[126551],[126553],[126555],[126557],[126559],[126561,126562],[126564],[126567,126570],[126572,126578],[126580,126583],[126585,126588],[126590],[126592,126601],[126603,126619],[126625,126627],[126629,126633],[126635,126651],[126704,126705]],"Syrc":[[1792,1805],[1807,1866],[1869,1871]],"Thaa":[[1920,1969]],"Deva":[[2304,2384],[2387,2403],[2406,2423],[2425,2431],[43232,43259]],"Beng":[[2433,2435],[2437,2444],[2447,2448],[2451,2472],[2474,2480],[2482],[2486,2489],[2492,2500],[2503,2504],[2507,2510],[2519],[2524,2525],[2527,2531],[2534,2555]],"Guru":[[2561,2563],[2565,2570],[2575,2576],[2579,2600],[2602,2608],[2610,2611],[2613,2614],[2616,2617],[2620],[2622,2626],[2631,2632],[2635,2637],[2641],[2649,2652],[2654],[2662,2677]],"Gujr":[[2689,2691],[2693,2701],[2703,2705],[2707,2728],[2730,2736],[2738,2739],[2741,2745],[2748,2757],[2759,2761],[2763,2765],[2768],[2784,2787],[2790,2801]],"Orya":[[2817,2819],[2821,2828],[2831,2832],[2835,2856],[2858,2864],[2866,2867],[2869,2873],[2876,2884],[2887,2888],[2891,2893],[2902,2903],[2908,2909],[2911,2915],[2918,2935]],"Taml":[[2946,2947],[2949,2954],[2958,2960],[2962,2965],[2969,2970],[2972],[2974,2975],[2979,2980],[2984,2986],[2990,3001],[3006,3010],[3014,3016],[3018,3021],[3024],[3031],[3046,3066]],"Telu":[[3073,3075],[3077,3084],[3086,3088],[3090,3112],[3114,3123],[3125,3129],[3133,3140],[3142,3144],[3146,3149],[3157,3158],[3160,3161],[3168,3171],[3174,3183],[3192,3199]],"Knda":[[3202,3203],[3205,3212],[3214,3216],[3218,3240],[3242,3251],[3253,3257],[3260,3268],[3270,3272],[3274,3277],[3285,3286],[3294],[3296,3299],[3302,3311],[3313,3314]],"Mlym":[[3330,3331],[3333,3340],[3342,3344],[3346,3386],[3389,3396],[3398,3400],[3402,3406],[3415],[3424,3427],[3430,3445],[3449,3455]],"Sinh":[[3458,3459],[3461,3478],[3482,3505],[3507,3515],[3517],[3520,3526],[3530],[3535,3540],[3542],[3544,3551],[3570,3572]],"Thai":[[3585,3642],[3648,3675]],"Laoo":[[3713,3714],[3716],[3719,3720],[3722],[3725],[3732,3735],[3737,3743],[3745,3747],[3749],[3751],[3754,3755],[3757,3769],[3771,3773],[3776,3780],[3782],[3784,3789],[3792,3801],[3804,3807]],"Tibt":[[3840,3911],[3913,3948],[3953,3991],[3993,4028],[4030,4044],[4046,4052],[4057,4058]],"Mymr":[[4096,4255],[43616,43643]],"Geok":[[4256,4293],[4295],[4301],[4304,4346],[4348,4351],[11520,11557],[11559],[11565]],"Hang":[[4352,4607],[12334,12335],[12593,12686],[12800,12830],[12896,12926],[43360,43388],[44032,55203],[55216,55238],[55243,55291],[65440,65470],[65474,65479],[65482,65487],[65490,65495],[65498,65500]],"Ethi":[[4608,4680],[4682,4685],[4688,4694],[4696],[4698,4701],[4704,4744],[4746,4749],[4752,4784],[4786,4789],[4792,4798],[4800],[4802,4805],[4808,4822],[4824,4880],[4882,4885],[4888,4954],[4957,4988],[4992,5017],[11648,11670],[11680,11686],[11688,11694],[11696,11702],[11704,11710],[11712,11718],[11720,11726],[11728,11734],[11736,11742],[43777,43782],[43785,43790],[43793,43798],[43808,43814],[43816,43822]],"Cher":[[5024,5108]],"Cans":[[5120,5759],[6320,6389]],"Ogam":[[5760,5788]],"Runr":[[5792,5866],[5870,5872]],"Khmr":[[6016,6109],[6112,6121],[6128,6137],[6624,6655]],"Mong":[[6144,6145],[6148],[6150,6158],[6160,6169],[6176,6263],[6272,6314]],"Hira":[[12353,12438],[12445,12447],[110593],[127488]],"Kana":[[12449,12538],[12541,12543],[12784,12799],[13008,13054],[13056,13143],[65382,65391],[65393,65437],[110592]],"Bopo":[[746,747],[12549,12589],[12704,12730]],"Hani":[[11904,11929],[11931,12019],[12032,12245],[12293],[12295],[12321,12329],[12344,12347],[13312,19893],[19968,40908],[63744,64109],[64112,64217],[131072,173782],[173824,177972],[177984,178205],[194560,195101]],"Yiii":[[40960,42124],[42128,42182]],"Ital":[[66304,66334],[66336,66339]],"Goth":[[66352,66378]],"Dsrt":[[66560,66639]],"Zinh":[[768,879],[1157,1158],[1611,1621],[1648],[2385,2386],[7376,7378],[7380,7392],[7394,7400],[7405],[7412],[7616,7654],[7676,7679],[8204,8205],[8400,8432],[12330,12333],[12441,12442],[65024,65039],[65056,65062],[66045],[119143,119145],[119163,119170],[119173,119179],[119210,119213],[917760,917999]],"Tglg":[[5888,5900],[5902,5908]],"Hano":[[5920,5940]],"Buhd":[[5952,5971]],"Tagb":[[5984,5996],[5998,6000],[6002,6003]],"Limb":[[6400,6428],[6432,6443],[6448,6459],[6464],[6468,6479]],"Tale":[[6480,6509],[6512,6516]],"Linb":[[65536,65547],[65549,65574],[65576,65594],[65596,65597],[65599,65613],[65616,65629],[65664,65786]],"Ugar":[[66432,66461],[66463]],"Shaw":[[66640,66687]],"Osma":[[66688,66717],[66720,66729]],"Cprt":[[67584,67589],[67592],[67594,67637],[67639,67640],[67644],[67647]],"Brai":[[10240,10495]],"Bugi":[[6656,6683],[6686,6687]],"Copt":[[994,1007],[11392,11507],[11513,11519]],"Talu":[[6528,6571],[6576,6601],[6608,6618],[6622,6623]],"Glag":[[11264,11310],[11312,11358]],"Tfng":[[11568,11623],[11631,11632],[11647]],"Sylo":[[43008,43051]],"Xpeo":[[66464,66499],[66504,66517]],"Khar":[[68096,68099],[68101,68102],[68108,68115],[68117,68119],[68121,68147],[68152,68154],[68159,68167],[68176,68184]],"Bali":[[6912,6987],[6992,7036]],"Xsux":[[73728,74606],[74752,74850],[74864,74867]],"Phnx":[[67840,67867],[67871]],"Phag":[[43072,43127]],"Nkoo":[[1984,2042]],"Sund":[[7040,7103],[7360,7367]],"Lepc":[[7168,7223],[7227,7241],[7245,7247]],"Olck":[[7248,7295]],"Vaii":[[42240,42539]],"Saur":[[43136,43204],[43214,43225]],"Kali":[[43264,43311]],"Rjng":[[43312,43347],[43359]],"Lyci":[[66176,66204]],"Cari":[[66208,66256]],"Lydi":[[67872,67897],[67903]],"Cham":[[43520,43574],[43584,43597],[43600,43609],[43612,43615]],"Lana":[[6688,6750],[6752,6780],[6783,6793],[6800,6809],[6816,6829]],"Tavt":[[43648,43714],[43739,43743]],"Avst":[[68352,68405],[68409,68415]],"Egyp":[[77824,78894]],"Samr":[[2048,2093],[2096,2110]],"Lisu":[[42192,42239]],"Bamu":[[42656,42743],[92160,92728]],"Java":[[43392,43469],[43471,43481],[43486,43487]],"Mtei":[[43744,43766],[43968,44013],[44016,44025]],"Armi":[[67648,67669],[67671,67679]],"Sarb":[[68192,68223]],"Prti":[[68416,68437],[68440,68447]],"Phli":[[68448,68466],[68472,68479]],"Orkh":[[68608,68680]],"Kthi":[[69760,69825]],"Batk":[[7104,7155],[7164,7167]],"Brah":[[69632,69709],[69714,69743]],"Mand":[[2112,2139],[2142]],"Cakm":[[69888,69940],[69942,69955]],"Merc":[[68000,68023],[68030,68031]],"Mero":[[67968,67999]],"Plrd":[[93952,94020],[94032,94078],[94095,94111]],"Shrd":[[70016,70088],[70096,70105]],"Sora":[[69840,69864],[69872,69881]],"Takr":[[71296,71351],[71360,71369]]};
+/*
+ * ctype.isscript.js - Character type is script
+ * 
+ * Copyright © 2012, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends ctype.js
+
+// !data scriptToRange
+
+/**
+ * Return whether or not the first character in the given string is 
+ * in the given script. The script is given as the 4-letter ISO
+ * 15924 script code.<p>
+ * 
+ * Depends directive: !depends ctype.isscript.js
+ * 
+ * @param {string} ch character to examine
+ * @param {string} script the 4-letter ISO 15924 to query against
+ * @return {boolean} true if the first character is in the given script, and
+ * false otherwise
+ */
+ilib.CType.isScript = function (ch, script) {
+	return ilib.CType._inRange(ch, script, ilib.data.scriptToRange);
+};
+
 /*
  * ctype.isupper.js - Character type is upper-case letter
  * 
@@ -18448,6 +22395,5767 @@ ilib.CType.isXdigit = function (ch) {
 	return ilib.CType._inRange(ch, 'xdigit', ilib.data.ctype);
 };
 
+ilib.data.scripts = {"Afak":{"nb":439,"nm":"Afaka","lid":"Afaka"},"Aghb":{"nb":239,"nm":"Caucasian Albanian","lid":"Caucasian_Albanian"},"Arab":{"nb":160,"nm":"Arabic","lid":"Arabic"},"Armi":{"nb":124,"nm":"Imperial Aramaic","lid":"Imperial_Aramaic"},"Armn":{"nb":230,"nm":"Armenian","lid":"Armenian"},"Avst":{"nb":134,"nm":"Avestan","lid":"Avestan"},"Bali":{"nb":360,"nm":"Balinese","lid":"Balinese"},"Bamu":{"nb":435,"nm":"Bamum","lid":"Bamum"},"Bass":{"nb":259,"nm":"Bassa Vah","lid":"Bassa_Vah"},"Batk":{"nb":365,"nm":"Batak","lid":"Batak"},"Beng":{"nb":325,"nm":"Bengali","lid":"Bengali"},"Blis":{"nb":550,"nm":"Blissymbols","lid":"Blissymbols"},"Bopo":{"nb":285,"nm":"Bopomofo","lid":"Bopomofo"},"Brah":{"nb":300,"nm":"Brahmi","lid":"Brahmi"},"Brai":{"nb":570,"nm":"Braille","lid":"Braille"},"Bugi":{"nb":367,"nm":"Buginese","lid":"Buginese"},"Buhd":{"nb":372,"nm":"Buhid","lid":"Buhid"},"Cakm":{"nb":349,"nm":"Chakma","lid":"Chakma"},"Cans":{"nb":440,"nm":"Unified Canadian Aboriginal Syllabics","lid":"Canadian_Aboriginal"},"Cari":{"nb":201,"nm":"Carian","lid":"Carian"},"Cham":{"nb":358,"nm":"Cham","lid":"Cham"},"Cher":{"nb":445,"nm":"Cherokee","lid":"Cherokee"},"Cirt":{"nb":291,"nm":"Cirth","lid":"Cirth"},"Copt":{"nb":204,"nm":"Coptic","lid":"Coptic"},"Cprt":{"nb":403,"nm":"Cypriot","lid":"Cypriot"},"Cyrl":{"nb":220,"nm":"Cyrillic","lid":"Cyrillic"},"Cyrs":{"nb":221,"nm":"Cyrillic (Old Church Slavonic variant)","lid":"Cyrillic_(Old_Church_Slavonic_variant)"},"Deva":{"nb":315,"nm":"Devanagari (Nagari)","lid":"Devanagari"},"Dsrt":{"nb":250,"nm":"Deseret (Mormon)","lid":"Deseret"},"Dupl":{"nb":755,"nm":"Duployan shorthand, Duployan stenography","lid":"Duployan_shorthand,_Duployan_stenography"},"Egyd":{"nb":70,"nm":"Egyptian demotic","lid":"Egyptian_demotic"},"Egyh":{"nb":60,"nm":"Egyptian hieratic","lid":"Egyptian_hieratic"},"Egyp":{"nb":50,"nm":"Egyptian hieroglyphs","lid":"Egyptian_Hieroglyphs"},"Elba":{"nb":226,"nm":"Elbasan","lid":"Elbasan"},"Ethi":{"nb":430,"nm":"Ethiopic (Geʻez)","lid":"Ethiopic"},"Geor":{"nb":240,"nm":"Georgian (Mkhedruli)","lid":"Georgian"},"Geok":{"nb":241,"nm":"Khutsuri (Asomtavruli and Nuskhuri)","lid":"Georgian"},"Glag":{"nb":225,"nm":"Glagolitic","lid":"Glagolitic"},"Goth":{"nb":206,"nm":"Gothic","lid":"Gothic"},"Gran":{"nb":343,"nm":"Grantha","lid":"Grantha"},"Grek":{"nb":200,"nm":"Greek","lid":"Greek"},"Gujr":{"nb":320,"nm":"Gujarati","lid":"Gujarati"},"Guru":{"nb":310,"nm":"Gurmukhi","lid":"Gurmukhi"},"Hang":{"nb":286,"nm":"Hangul (Hangŭl, Hangeul)","lid":"Hangul"},"Hani":{"nb":500,"nm":"Han (Hanzi, Kanji, Hanja)","lid":"Han"},"Hano":{"nb":371,"nm":"Hanunoo (Hanunóo)","lid":"Hanunoo"},"Hans":{"nb":501,"nm":"Han (Simplified variant)","lid":"Han_(Simplified_variant)"},"Hant":{"nb":502,"nm":"Han (Traditional variant)","lid":"Han_(Traditional_variant)"},"Hebr":{"nb":125,"nm":"Hebrew","lid":"Hebrew"},"Hira":{"nb":410,"nm":"Hiragana","lid":"Hiragana"},"Hluw":{"nb":80,"nm":"Anatolian Hieroglyphs (Luwian Hieroglyphs, Hittite Hieroglyphs)","lid":"Anatolian_Hieroglyphs_(Luwian_Hieroglyphs,_Hittite_Hieroglyphs)"},"Hmng":{"nb":450,"nm":"Pahawh Hmong","lid":"Pahawh_Hmong"},"Hrkt":{"nb":412,"nm":"Japanese syllabaries (alias for Hiragana + Katakana)","lid":"Katakana_Or_Hiragana"},"Hung":{"nb":176,"nm":"Old Hungarian (Hungarian Runic)","lid":"Old_Hungarian_(Hungarian_Runic)"},"Inds":{"nb":610,"nm":"Indus (Harappan)","lid":"Indus_(Harappan)"},"Ital":{"nb":210,"nm":"Old Italic (Etruscan, Oscan, etc.)","lid":"Old_Italic"},"Java":{"nb":361,"nm":"Javanese","lid":"Javanese"},"Jpan":{"nb":413,"nm":"Japanese (alias for Han + Hiragana + Katakana)","lid":"Japanese_(alias_for_Han_+_Hiragana_+_Katakana)"},"Jurc":{"nb":510,"nm":"Jurchen","lid":"Jurchen"},"Kali":{"nb":357,"nm":"Kayah Li","lid":"Kayah_Li"},"Kana":{"nb":411,"nm":"Katakana","lid":"Katakana"},"Khar":{"nb":305,"nm":"Kharoshthi","lid":"Kharoshthi"},"Khmr":{"nb":355,"nm":"Khmer","lid":"Khmer"},"Khoj":{"nb":322,"nm":"Khojki","lid":"Khojki"},"Knda":{"nb":345,"nm":"Kannada","lid":"Kannada"},"Kore":{"nb":287,"nm":"Korean (alias for Hangul + Han)","lid":"Korean_(alias_for_Hangul_+_Han)"},"Kpel":{"nb":436,"nm":"Kpelle","lid":"Kpelle"},"Kthi":{"nb":317,"nm":"Kaithi","lid":"Kaithi"},"Lana":{"nb":351,"nm":"Tai Tham (Lanna)","lid":"Tai_Tham"},"Laoo":{"nb":356,"nm":"Lao","lid":"Lao"},"Latf":{"nb":217,"nm":"Latin (Fraktur variant)","lid":"Latin_(Fraktur_variant)"},"Latg":{"nb":216,"nm":"Latin (Gaelic variant)","lid":"Latin_(Gaelic_variant)"},"Latn":{"nb":215,"nm":"Latin","lid":"Latin"},"Lepc":{"nb":335,"nm":"Lepcha (Róng)","lid":"Lepcha"},"Limb":{"nb":336,"nm":"Limbu","lid":"Limbu"},"Lina":{"nb":400,"nm":"Linear A","lid":"Linear_A"},"Linb":{"nb":401,"nm":"Linear B","lid":"Linear_B"},"Lisu":{"nb":399,"nm":"Lisu (Fraser)","lid":"Lisu"},"Loma":{"nb":437,"nm":"Loma","lid":"Loma"},"Lyci":{"nb":202,"nm":"Lycian","lid":"Lycian"},"Lydi":{"nb":116,"nm":"Lydian","lid":"Lydian"},"Mahj":{"nb":314,"nm":"Mahajani","lid":"Mahajani"},"Mand":{"nb":140,"nm":"Mandaic, Mandaean","lid":"Mandaic"},"Mani":{"nb":139,"nm":"Manichaean","lid":"Manichaean"},"Maya":{"nb":90,"nm":"Mayan hieroglyphs","lid":"Mayan_hieroglyphs"},"Mend":{"nb":438,"nm":"Mende","lid":"Mende"},"Merc":{"nb":101,"nm":"Meroitic Cursive","lid":"Meroitic_Cursive"},"Mero":{"nb":100,"nm":"Meroitic Hieroglyphs","lid":"Meroitic_Hieroglyphs"},"Mlym":{"nb":347,"nm":"Malayalam","lid":"Malayalam"},"Moon":{"nb":218,"nm":"Moon (Moon code, Moon script, Moon type)","lid":"Moon_(Moon_code,_Moon_script,_Moon_type)"},"Mong":{"nb":145,"nm":"Mongolian","lid":"Mongolian"},"Mroo":{"nb":199,"nm":"Mro, Mru","lid":"Mro,_Mru"},"Mtei":{"nb":337,"nm":"Meitei Mayek (Meithei, Meetei)","lid":"Meetei_Mayek"},"Mymr":{"nb":350,"nm":"Myanmar (Burmese)","lid":"Myanmar"},"Narb":{"nb":106,"nm":"Old North Arabian (Ancient North Arabian)","lid":"Old_North_Arabian_(Ancient_North_Arabian)"},"Nbat":{"nb":159,"nm":"Nabataean","lid":"Nabataean"},"Nkgb":{"nb":420,"nm":"Nakhi Geba ('Na-'Khi ²Ggŏ-¹baw, Naxi Geba)","lid":"Nakhi_Geba_('Na-'Khi_²Ggŏ-¹baw,_Naxi_Geba)"},"Nkoo":{"nb":165,"nm":"N’Ko","lid":"Nko"},"Nshu":{"nb":499,"nm":"Nüshu","lid":"Nüshu"},"Ogam":{"nb":212,"nm":"Ogham","lid":"Ogham"},"Olck":{"nb":261,"nm":"Ol Chiki (Ol Cemet’, Ol, Santali)","lid":"Ol_Chiki"},"Orkh":{"nb":175,"nm":"Old Turkic, Orkhon Runic","lid":"Old_Turkic"},"Orya":{"nb":327,"nm":"Oriya","lid":"Oriya"},"Osma":{"nb":260,"nm":"Osmanya","lid":"Osmanya"},"Palm":{"nb":126,"nm":"Palmyrene","lid":"Palmyrene"},"Perm":{"nb":227,"nm":"Old Permic","lid":"Old_Permic"},"Phag":{"nb":331,"nm":"Phags-pa","lid":"Phags_Pa"},"Phli":{"nb":131,"nm":"Inscriptional Pahlavi","lid":"Inscriptional_Pahlavi"},"Phlp":{"nb":132,"nm":"Psalter Pahlavi","lid":"Psalter_Pahlavi"},"Phlv":{"nb":133,"nm":"Book Pahlavi","lid":"Book_Pahlavi"},"Phnx":{"nb":115,"nm":"Phoenician","lid":"Phoenician"},"Plrd":{"nb":282,"nm":"Miao (Pollard)","lid":"Miao"},"Prti":{"nb":130,"nm":"Inscriptional Parthian","lid":"Inscriptional_Parthian"},"Qaaa":{"nb":900,"nm":"Reserved for private use (start)","lid":"Reserved_for_private_use_(start)"},"Qabx":{"nb":949,"nm":"Reserved for private use (end)","lid":"Reserved_for_private_use_(end)"},"Rjng":{"nb":363,"nm":"Rejang (Redjang, Kaganga)","lid":"Rejang"},"Roro":{"nb":620,"nm":"Rongorongo","lid":"Rongorongo"},"Runr":{"nb":211,"nm":"Runic","lid":"Runic"},"Samr":{"nb":123,"nm":"Samaritan","lid":"Samaritan"},"Sara":{"nb":292,"nm":"Sarati","lid":"Sarati"},"Sarb":{"nb":105,"nm":"Old South Arabian","lid":"Old_South_Arabian"},"Saur":{"nb":344,"nm":"Saurashtra","lid":"Saurashtra"},"Sgnw":{"nb":95,"nm":"SignWriting","lid":"SignWriting"},"Shaw":{"nb":281,"nm":"Shavian (Shaw)","lid":"Shavian"},"Shrd":{"nb":319,"nm":"Sharada, Śāradā","lid":"Sharada"},"Sind":{"nb":318,"nm":"Khudawadi, Sindhi","lid":"Khudawadi,_Sindhi"},"Sinh":{"nb":348,"nm":"Sinhala","lid":"Sinhala"},"Sora":{"nb":398,"nm":"Sora Sompeng","lid":"Sora_Sompeng"},"Sund":{"nb":362,"nm":"Sundanese","lid":"Sundanese"},"Sylo":{"nb":316,"nm":"Syloti Nagri","lid":"Syloti_Nagri"},"Syrc":{"nb":135,"nm":"Syriac","lid":"Syriac"},"Syre":{"nb":138,"nm":"Syriac (Estrangelo variant)","lid":"Syriac_(Estrangelo_variant)"},"Syrj":{"nb":137,"nm":"Syriac (Western variant)","lid":"Syriac_(Western_variant)"},"Syrn":{"nb":136,"nm":"Syriac (Eastern variant)","lid":"Syriac_(Eastern_variant)"},"Tagb":{"nb":373,"nm":"Tagbanwa","lid":"Tagbanwa"},"Takr":{"nb":321,"nm":"Takri, Ṭākrī, Ṭāṅkrī","lid":"Takri"},"Tale":{"nb":353,"nm":"Tai Le","lid":"Tai_Le"},"Talu":{"nb":354,"nm":"New Tai Lue","lid":"New_Tai_Lue"},"Taml":{"nb":346,"nm":"Tamil","lid":"Tamil"},"Tang":{"nb":520,"nm":"Tangut","lid":"Tangut"},"Tavt":{"nb":359,"nm":"Tai Viet","lid":"Tai_Viet"},"Telu":{"nb":340,"nm":"Telugu","lid":"Telugu"},"Teng":{"nb":290,"nm":"Tengwar","lid":"Tengwar"},"Tfng":{"nb":120,"nm":"Tifinagh (Berber)","lid":"Tifinagh"},"Tglg":{"nb":370,"nm":"Tagalog (Baybayin, Alibata)","lid":"Tagalog"},"Thaa":{"nb":170,"nm":"Thaana","lid":"Thaana"},"Thai":{"nb":352,"nm":"Thai","lid":"Thai"},"Tibt":{"nb":330,"nm":"Tibetan","lid":"Tibetan"},"Tirh":{"nb":326,"nm":"Tirhuta","lid":"Tirhuta"},"Ugar":{"nb":40,"nm":"Ugaritic","lid":"Ugaritic"},"Vaii":{"nb":470,"nm":"Vai","lid":"Vai"},"Visp":{"nb":280,"nm":"Visible Speech","lid":"Visible_Speech"},"Wara":{"nb":262,"nm":"Warang Citi (Varang Kshiti)","lid":"Warang_Citi_(Varang_Kshiti)"},"Wole":{"nb":480,"nm":"Woleai","lid":"Woleai"},"Xpeo":{"nb":30,"nm":"Old Persian","lid":"Old_Persian"},"Xsux":{"nb":20,"nm":"Cuneiform, Sumero-Akkadian","lid":"Cuneiform"},"Yiii":{"nb":460,"nm":"Yi","lid":"Yi"},"Zinh":{"nb":994,"nm":"Code for inherited script","lid":"Inherited"},"Zmth":{"nb":995,"nm":"Mathematical notation","lid":"Mathematical_notation"},"Zsym":{"nb":996,"nm":"Symbols","lid":"Symbols"},"Zxxx":{"nb":997,"nm":"Code for unwritten documents","lid":"Code_for_unwritten_documents"},"Zyyy":{"nb":998,"nm":"Code for undetermined script","lid":"Common"},"Zzzz":{"nb":999,"nm":"Code for uncoded script","lid":"Unknown"}};
+/*
+ * scriptinfo.js - information about scripts
+ * 
+ * Copyright © 2012-2013, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends ilibglobal.js
+
+// !data scripts
+
+/**
+ * @class
+ * Create a new script info instance. This class encodes information about
+ * scripts, which are sets of characters used in a writing system.<p>
+ * 
+ * Depends directive: !depends scriptinfo.js
+ * 
+ * @constructor
+ * @param {string} script The ISO 15924 4-letter identifier for the script
+ */
+ilib.ScriptInfo = function(script) {
+	this.script = script;
+	this.info = ilib.data.scripts && ilib.data.scripts[script];
+};
+
+/**
+ * @static
+ * Return an array of all ISO 15924 4-letter identifier script identifiers that
+ * this copy of ilib knows about.
+ * @returns {Array.<string>} an array of all script identifiers that this copy of
+ * ilib knows about
+ */
+ilib.ScriptInfo.getAllScripts = function() {
+	var ret = [],
+		script = undefined,
+		scripts = ilib.data.scripts;
+	
+	for (script in scripts) {
+		if (script && scripts[script]) {
+			ret.push(script);
+		}
+	}
+	
+	return ret;
+};
+
+ilib.ScriptInfo.prototype = {
+	/**
+	 * Return the 4-letter ISO 15924 identifier associated
+	 * with this script.
+	 * @returns {string} the 4-letter ISO code for this script
+	 */
+	getCode: function () {
+		return this.info && this.script;
+	},
+	
+	/**
+	 * Get the ISO 15924 code number associated with this
+	 * script.
+	 * 
+	 * @returns {number} the ISO 15924 code number
+	 */
+	getCodeNumber: function () {
+		return this.info && this.info.nb || 0;
+	},
+	
+	/**
+	 * Get the name of this script in English.
+	 * 
+	 * @returns {string} the name of this script in English
+	 */
+	getName: function () {
+		return this.info && this.info.nm;
+	},
+	
+	/**
+	 * Get the long identifier assciated with this script.
+	 * 
+	 * @returns {string} the long identifier of this script
+	 */
+	getLongCode: function () {
+		return this.info && this.info.lid;
+	},
+	
+	/**
+	 * Return the usual direction that text in this script is written
+	 * in. Possible return values are "rtl" for right-to-left,
+	 * "ltr" for left-to-right, and "ttb" for top-to-bottom.
+	 * 
+	 * @returns {string} the usual direction that text in this script is
+	 * written in
+	 */
+	getScriptDirection: function() {
+		// TODO fill in getScriptDirection
+	}
+};
+ilib.data.name = {
+	"components": {
+		"short": {
+			"g": 1,
+			"f": 1
+		},
+		"medium": {
+			"g": 1,
+			"m": 1,
+			"f": 1
+		},
+		"long": {
+			"p": 1,
+			"g": 1,
+			"m": 1,
+			"f": 1
+		},
+		"full": {
+			"p": 1,
+			"g": 1,
+			"m": 1,
+			"f": 1,
+			"s": 1
+		}
+	},
+	"format": "{prefix} {givenName} {middleName} {familyName}{suffix}",
+	"sortByHeadWord": false,
+	"nameStyle": "western",
+	"conjunctions": {
+		"and1": "and",
+		"and2": "and",
+		"or1": "or",
+		"or2": "or"
+	},
+	"auxillaries": {
+		"mac": 1,
+		"mc": 1,
+
+		"von": 1,
+		"von der": 1,
+		"von den": 1,
+		"vom": 1,
+		"zu": 1,
+		"zum": 1,
+		"zur": 1,
+		"von und zu": 1,
+
+		"van": 1,
+		"van der": 1,
+        "van de": 1,
+        "van der": 1,
+        "van den": 1,
+        "de": 1,
+        "den": 1,
+        "vande": 1,
+        "vander": 1,
+        
+        "di": 1,
+	    "de": 1,
+	    "da": 1,
+	    "della": 1,
+		"dalla": 1,
+		"la": 1,
+		"lo": 1,
+		"li": 1, 
+		"del": 1,
+        
+        "des": 1,
+        "le": 1,
+        "les": 1,
+		"du": 1,
+
+        "de la": 1,
+        "del": 1,
+        "de los": 1,
+        "de las": 1,
+
+		"do": 1,
+		"abu": 1,
+		"ibn": 1,
+		"bar": 1,
+		"ter": 1,
+		"ben": 1,
+		"bin": 1
+	},
+	"prefixes": [
+		"doctor",
+		"dr",
+		"mr",
+		"mrs",
+		"ms",
+		"mister",
+		"madame",
+		"madamoiselle",
+		"miss",
+		
+		"herr",
+		"hr",
+		"frau",
+		"fr",
+		"fraulein",
+		"frl",
+		
+		"monsieur",
+		"mssr",
+		"mdm",
+		"mlle",
+		
+		"señor",
+        "señora",
+        "señorita",
+        "sr",
+        "sra",
+        "srta",
+        
+        "meneer",
+        "mevrouw"
+	],
+	"suffixes": [
+		",",
+		"junior",
+		"jr",
+		"senior",
+		"sr",
+		"i",
+		"iii",
+		"iii",
+		"iv",
+		"v",
+		"vi",
+		"vii",
+		"viii",
+		"ix",
+		"x",
+		"2nd",
+		"3rd",
+		"4th",
+		"5th",
+		"6th",
+		"7th",
+		"8th",
+		"9th",
+		"10th",
+		"esq",
+		"phd",
+		"md",
+		"ddm",
+		"dds"
+	]
+}
+;
+ilib.data.name_de = {
+	"sortByHeadWord": true,
+	"conjunctions": {
+		"and1": "und",
+		"and2": "und",
+		"or1": "oder",
+		"or2": "oder"
+	},
+    "auxillaries": {
+        "von": 1,
+        "van": 1,
+        "von der": 1,
+        "von den": 1,
+        "vom": 1,
+        "auf": 1,
+        "auf dem": 1,
+        "auf der": 1,
+        "aus": 1,
+        "aus den": 1,
+        "aus dem": 1,
+        "aus der": 1,
+        "in": 1,
+        "im": 1,
+        "in den": 1,
+        "in dem": 1,
+        "in der": 1,
+        "zu": 1,
+        "zu den": 1,
+        "zum": 1,
+        "zur": 1,
+        "von und zu": 1,
+        "vor dem": 1
+    },
+    "prefixes": [
+        "doktor",
+        "dr",
+        "med",
+        "dent",
+        "habil",
+        "rer nat",
+        "hc",
+        "jur",
+        "vet",
+        "ing",
+        "dipl-ing",
+        "präsident",
+        "präsidentin",
+        "professor",
+        "professorin",
+        "prof",
+        "privatdozent",
+        "privatdozentin",
+        "direktor",
+        "direktorin",
+        "chefarzt",
+        "oberarzt",
+        "chefärztin",
+        "oberärztin",
+        "mutter",
+        "vater",
+        "schwester",
+        "bruder",
+        "patin",
+        "pate",
+        "tante",
+        "onkel",
+        "großmutter",
+        "großvater",
+        "oma",
+        "opa",
+        "bundespräsident",
+        "bundeskanzler",
+        "minister",
+        "senator",
+        "staatssekretär",
+        "abgeordneter",
+        "bürgermeister",
+        "landrat",
+        "stadtrat",
+        "staatsanwalt",
+        "vorsitzender",
+        "rechtsanwalt",
+        "anwalt",
+        "verteidiger",
+        "bundespräsidentin",
+        "bundeskanzlerin",
+        "ministerin",
+        "senatorin",
+        "staatssekretärin",
+        "abgeordnete",
+        "bürgermeisterin",
+        "landrätin",
+        "stadträtin",
+        "staatsanwältin",
+        "vorsitzende",
+        "rechtsanwältin",
+        "anwältin",
+        "verteidigerin",
+        "unteroffizier",
+        "leutnant",
+        "feldwebel",
+        "fähnrich",
+        "oberleutnant",
+        "hauptmann",
+        "major",
+        "gefreiter",
+        "kapitän",
+        "admiral",
+        "maat",
+        "bootsmann",
+        "oberst",
+        "general",
+        "exzellenz",
+        "botschafter",
+        "botschafterin",
+        "konsul",
+        "konsulin",
+        "gesandter",
+        "gesandte",
+        "fürst",
+        "fürstin",
+        "herzog",
+        "herzogin",
+        "graf",
+        "gräfin",
+        "baron",
+        "baronin",
+        "freiherr",
+        "freifrau",
+        "hofrätin",
+        "hofrat",
+        "hr",
+        "regierungsrätin",
+        "regierungsrat",
+        "rgr",
+        "amtsrätin",
+        "amtsrat",
+        "ar",
+        "kanzleirätin",
+        "kanzleirat",
+        "kzlr",
+        "kommerzialrätin",
+        "kommerzialrat",
+        "kommr",
+        "ökonomierätin",
+        "ökonomierat",
+        "ökr",
+        "medizinalrätin",
+        "medizinalrat",
+        "medr",
+        "obermedizinalrätin",
+        "obermedizinalrat",
+        "omedr",
+        "veterinärrätin",
+        "veterinärrat",
+        "vetr",
+        "technische rätin",
+        "technischer rat",
+        "tr",
+        "schulrätin",
+        "schulrat",
+        "sr",
+        "oberschulrätin",
+        "oberschulrat",
+        "osr",
+        "studienrätin",
+        "studienrat",
+        "str",
+        "oberstudienrätin",
+        "oberstudienrat",
+        "ostr",
+        "universitätsprofessorin",
+        "universitätsprofessor",
+        "univprof",
+        "kammersängerin",
+        "kammersänger",
+        "ksäng",
+        "kammerschauspielerin",
+        "kammerschauspieler",
+        "kschausp",
+        "pfarrer",
+        "pfr",
+        "pfarrerin",
+        "dekan",
+        "dekanin",
+        "kreisdekan",
+        "kreisdekanin",
+        "bischof",
+        "bischöfin",
+        "regionalbischof",
+        "regionalbischöfin",
+        "ddr",
+        "agr",
+        "biol hum",
+        "diac",
+        "disc pol",
+        "e h",
+        "h c mult",
+        "habil",
+        "iur",
+        "iur",
+        "iur et rer pol",
+        "math",
+        "med",
+        "med dent",
+        "med dent et scient med",
+        "med univ",
+        "med univ et scient med",
+        "med vet",
+        "mult",
+        "mus",
+        "nat med",
+        "nat techn",
+        "oec",
+        "oec publ",
+        "oec troph",
+        "paed",
+        "pharm",
+        "phil",
+        "rer agr",
+        "rer biol hum",
+        "rer biol vet",
+        "rer cam",
+        "rer cult",
+        "rer cur",
+        "rer forest",
+        "rer hort",
+        "rer med",
+        "rer merc",
+        "rer mont",
+        "rer nat",
+        "rer oec",
+        "rer physiol",
+        "rer pol",
+        "rer publ",
+        "rer sec",
+        "rer silv",
+        "rer soc",
+        "rer soc oec",
+        "rer tech",
+        "sc agr",
+        "sc hum",
+        "sc inf",
+        "sc inf biomed",
+        "sc inf med",
+        "sc math",
+        "sc mus",
+        "sc nat",
+        "sc oec",
+        "sc pol",
+        "sc rel",
+        "sc soc",
+        "sc techn",
+        "scient med",
+        "techn",
+        "theol",
+        "troph",
+        "dr-ing",
+
+        "hochwürdigste",
+        "hochwürdigster",
+        "hochwürden",
+        "ehrwürden",
+        "montsignore",
+        "hoheit",
+        "königliche",
+        "ihre",
+        "seine",
+        "hochwohlgeborene",
+        "hochwohlgeborener",
+        "heiliger",
+        
+		"der",
+		"die",
+		"das",
+		"dem",
+		"den",
+		"und",
+		"oder"
+    ],
+    "suffixes": [
+        "junior",
+        "jr",
+        "senior",
+        "sr",
+        "i",
+        "iii",
+        "iii",
+        "iv",
+        "v",
+        "vi",
+        "vii",
+        "viii",
+        "ix",
+        "x",
+        "ir",
+        "im ruhestand",
+        "ba",
+        "ma",
+        "phd" 
+    ] 
+};
+ilib.data.name_en = {
+	"prefixes": [
+		"rep",
+		"representative",
+		"senator",
+		"congressman",
+		"congresswoman",
+		"president",
+		"vice president",
+		"vice-president",
+		"mp",
+		"member of parliament",
+		"chief",
+		"justice",
+		"chief justice",
+		"judge",
+		"minister",
+		"prime minister",
+		"governor general",
+		"lieutenant governor",
+		"speaker of the house of commons",
+		"speaker of the house",
+		"speaker of the senate",
+		"supreme court justice",
+		"secretary of state",
+		"mayor",
+		"justice of the peace",
+		"emporer",
+		"chairman",
+		"chairwoman",
+		"alderman",
+		"general secretary",
+		"ambassador",
+		
+		"minister",
+		"cardinal",
+		"bishop",
+		"archbishop",
+		"rabbi",
+		"grand rabbi",
+		"mulah",
+		"mullah",
+		"canon",
+		"cantor",
+		"pastor",
+		"ps",
+		"monsignor",
+		"mgsr",
+		"pope",
+		
+		"chef",
+		"master",
+		"coach",
+		"professor",
+		"prof",
+		"nobel laureate",
+
+		"king",
+		"queen",
+		"prince",
+		"princess",
+		"crown prince",
+		"crown princess",
+		"marquess",
+		"marchioness",
+		"earl",
+		"countess",
+		"count",
+		"archduke",
+		"duke",
+		"duchess",
+		"baron",
+		"baroness",
+		"viscount",
+		
+		"private",
+		"private first class",
+		"corporal",
+		"sargeant",
+		"staff sargeant",
+		"sargeant first class",
+		"master sargeant",
+		"first sargeant",
+		"sargeant major",
+		"command sargeant major",
+		"sargeant major of the army",
+		"pv1",
+		"pv2",
+		"pfc",
+		"spc",
+		"cpl",
+		"sgt",
+		"ssg",
+		"sfc",
+		"msg",
+		"1sg",
+		"sgm",
+		"csm",
+		"sma",
+		"warrant officer",
+		"chief warrant officer",
+		"second lieutenant",
+		"first lieutenant",
+		"captain",
+		"major",
+		"lieutenant colonel",
+		"colonel",
+		"brigadier general",
+		"major general",
+		"lieutenant general",
+		"general",
+		"2lt",
+		"1lt",
+		"cpt",
+		"maj",
+		"ltc",
+		"col",
+		"bg",
+		"mg",
+		"ltg",
+		"gen",
+		"general of the army",
+		"fleet admiral",
+		"admiral",
+		"vice admiral",
+		"rear admiral",
+		"commander",
+		"lieutenant commander",
+		"lieutenant",
+		"lieutenant (junior grade)",
+		"ensign",
+		"fadm",
+		"adm",
+		"vadm",
+		"radm",
+		"rdml",
+		"capt",
+		"cdr",
+		"lcdr",
+		"lt",
+		"ltjg",
+		"ens",
+		"petty officer",
+		"petty officer first class",
+		"petty officer second class",
+		"petty officer third class",
+		"petty officer 1st class",
+		"petty officer 2nd class",
+		"petty officer 3rd class",
+		"po",
+		"po1",
+		"po2",
+		"po3",
+		"chief petty officer",
+		"senior chief petty officer",
+		"master chief petty officer",
+		"cpo",
+		"scpo",
+		"mcpo",
+		"command master chief petty officer",
+		"fleet master chief petty officer",
+		"force master chief petty officer",
+		"cmdcm",
+		"fltcm",
+		"forcm",
+		"master chief petty officer of the navy",
+		"mcpon",
+		"sergeant major of the marine corps",
+		"master gunnery sergeant",
+		"gunnery sergeant",
+		"lance corporal",
+		"sgtmaj",
+		"mgysgt",
+		"1stsgt",
+		"msgt",
+		"gysgt",
+		"ssgt",
+		"sgt",
+		"cpl",
+		"lcpl",
+		"pfc",
+		"pvt",
+		"airman basic",
+		"airman",
+		"airman first class",
+		"senior airman",
+		"technical sergeant",
+		"master sergeant",
+		"senior master sergeant",
+		"chief master sergeant",
+		"command chief master sergeant",
+		"chief master sergeant of the air force",
+		"ab",
+		"amn",
+		"a1c",
+		"sra",
+		"tsgt",
+		"msgt",
+		"smsgt",
+		"cmsgt",
+		"ccm",
+		"cmsaf",
+		"field marshal",
+		"brigadier",
+		"officer cadet",
+		"fm",
+		"lt gen",
+		"maj gen",
+		"brig",
+		"col",
+		"lt col",
+		"maj",
+		"capt",
+		"lt",
+		"2lt",
+		"ocdt",
+		"admiral of the fleet",
+		"marshal",
+		"marshal of the air force",
+		"air marshal",
+		"commodore",
+		"air commodore",
+		"group captain",
+		"lieutenant colonel",
+		"lt colonel",
+		"wing commander",
+		"lt commander",
+		"commandant",
+		"squadron leader",
+		"flight lieutenant",
+		"sub-lieutenant",
+		"flying officer",
+		"ensign",
+		"second lieutenant",
+		"2nd lieutenant",
+		"pilot officer",
+		"midshipman",
+		"warrant officer",
+		"leading seaman",
+		"seaman",
+		"aircraftman",
+		"midshipwoman",
+		"leading seawoman",
+		"seawoman",
+		"aircraftwoman",
+		"vice-admiral",
+		"vadm",
+		"lieutenant-general",
+		"lgen",
+		"rear-admiral",
+		"radm",
+		"major-general",
+		"mgen",
+		"brigadier-general",
+		"bgen",
+		"lieutenant-colonel",
+		"lcol",
+		"naval cadet",
+		"ncdt",
+		"able seaman",
+		"ab",
+		"ordinary seaman",
+		"os",
+		"pte",
+		"master bombardier",
+		"trooper",
+		"bombardier",
+		"sapper",
+		"signalman",
+		"craftsman",
+		"guardsman",
+		"rifleman",
+		"fusilier",
+		
+		"chief of police",
+		"police commissioner",
+		"superintendent",
+		"sheriff",
+		"deputy chief of police",
+		"deputy commissioner",
+		"deputy superintendent",
+		"undersheriff",
+		"deputy sheriff",
+		"inspector",
+		"deputy inspector",
+		"detective",
+		"investigator",
+		"officer",
+		"deputy sheriff",
+		"constable",
+		"police constable",
+		"chief superintendent",
+		"assistant chief constable",
+		"deputy chief constable",
+		"chief constable",
+		"assistant commissioner",
+		"deputy commissioner",
+		"detective constable",
+		"staff inspector",
+		"staff superintendent",
+		"station duty officer",
+		"auxiliary sergeant",
+		"senior constable",
+		"cadet",
+		"probationary constable",
+		"recruit",
+	
+		"sir",
+		"lady",
+		"lord",
+		"dame",
+		"his royal highness",
+		"hrh",
+		"his honour",
+		"his honor",
+		"maestro",
+		"his lordship",
+		"his majesty",
+		"his worship",
+		"the right worshipful",
+		"the worshipful",
+		"the honourable",
+		"the right honourable",
+		"the honorable",
+		"the right honorable",
+		"the hon",
+		"the most noble",
+		"the most honourable",
+		"the most honorable",
+		"the most hon",
+		"the rt hon",
+		"the right honourable and learned",
+		"the right honourable and gallant",
+		"the much honoured",
+		"the right honorable and learned",
+		"the right honorable and gallant",
+		"the much honored",
+		"the much hon",
+		
+		"her royal highness",
+		"her honour",
+		"her honor",
+		"her majesty",
+		"her worship",
+		"his excellency",
+		"her excellency",
+		"his serene highness",
+		"her serene highness",
+		"his most reverend excellency",
+		"her most reverend excellency",
+		"his holiness",
+		"hh",
+		"his all holiness",
+		"hah",
+		"his beatitude",
+		"his eminence",
+		"he",
+		"his beatitude and eminence",
+		"father",
+		"mother",
+		"brother",
+		"br",
+		"sister",
+		"reverend",
+		"rev",
+		"the most reverend",
+		"the most rev",
+		"his grace",
+		"the right reverend",
+		"the rt rev",
+		"the most reverend and right honourable",
+		"the most reverend and right honorable",
+		"the most rev and rt hon",
+		"the right reverend and right honourable monsignor",
+		"the right reverend and right honorable monsignor",
+		"the rt rev and rt hon mgr",
+		"the right reverend and right honourable",
+		"the right reverend and right honorable",
+		"the very reverend",
+		"the very rev",
+		"the reverend monsignor",
+		"the rev msgr",
+		"the venerable",
+		"venerable",
+		"ven",
+		"his imperial majesty",
+		"his imperial and royal majesty",
+		"his apostolic majesty",
+		"his catholic majesty",
+		"his most faithful majesty",
+		"his imperial highness",
+		"his imperial and royal highness",
+		"his royal highness",
+		"his grand ducal highness",
+		"his highness",
+		"his ducal serene highness",
+		"his serene highness",
+		"his illustrious highness",
+		"his highborn",
+		"his grace",
+		"his high well-born",
+		"his excellency",
+		"his high excellency",
+
+		"her imperial majesty",
+		"her imperial and royal majesty",
+		"her apostolic majesty",
+		"her catholic majesty",
+		"her most faithful majesty",
+		"her imperial highness",
+		"her imperial and royal highness",
+		"her royal highness",
+		"her grand ducal highness",
+		"her highness",
+		"her ducal serene highness",
+		"her serene highness",
+		"her illustrious highness",
+		"her highborn",
+		"her grace",
+		"her high well-born",
+		"her excellency",
+		"her high excellency",
+		
+		"him",
+		"hi&rm",
+		"ham",
+		"hcm",
+		"hfm",
+		"hih",
+		"hi&rh",
+		"hrh",
+		"hgdh",
+		"hh",
+		"hdsh",
+		"hsh",
+		"hillh",
+		"he",
+		
+		"the",
+		"and",
+		"or",
+		
+		"aunt",
+		"uncle",
+		"grandma",
+		"grandpa",
+		"granma",
+		"grampa",
+		"cousin"
+	],
+	"suffixes": [
+		"junior",
+		"jr",
+		"senior",
+		"sr",
+		"i",
+		"iii",
+		"iii",
+		"iv",
+		"v",
+		"vi",
+		"vii",
+		"viii",
+		"ix",
+		"x",
+		"2nd",
+		"3rd",
+		"4th",
+		"5th",
+		"6th",
+		"7th",
+		"8th",
+		"9th",
+		"10th",
+		"esquire",
+		"esq",
+		"jd",
+		"phd",
+		"md",
+		"ddm",
+		"dds",
+		"dmv",
+		"bvsc",
+		"ah",
+		"bsc",
+		"ba",
+		"ret",
+		"retired"
+	]
+}
+;
+ilib.data.name_es = {
+	"conjunctions": {
+		"and1": "y",
+		"and2": "e",
+		"or1": "o",
+		"or2": "u"
+	},
+    "prefixes": [
+        "presidente",
+        "vicepresidente",
+        "profesor",
+        "prof",
+        "licenciado",
+        "licenc",
+        "ingeniero",
+        "ing",
+        "arquitecto",
+        "arq",
+        "cardenal",
+        "monseñor",
+        "madre",
+        "padre",
+        "hermana",
+        "hermano",
+        "madrina",
+        "padrino",
+        "mamá",
+        "papá",
+        "tía",
+        "tío",
+        "abuela",
+        "abuelo",
+        "abuelita",
+        "abuelito",
+        "primo",
+        "prima",
+        "nono",
+        "nona",
+        "capitán",
+        "general",
+        "coronel",
+        "mayor",
+        "almirante",
+        "general",
+        "comandante",
+        "teniente",
+        "teniente coronel",
+        "teniente general",
+        "detective",
+        "ministro",
+        "alcalde",
+        "alcaldesa",
+        "embajador",
+        "embajadora",
+
+        "don",
+        "doña",
+        "el señor",
+        "la señora",
+        "la señorita",
+        "el sr",
+        "la sra",
+        "la srta",
+        "reverendo",
+        "reverenda",
+        "su excelencia",
+        "su santidad",
+        "el presidente",
+        "su excelencia",
+        "excelentísimo señor",
+        "excelentísima señora",
+        "señor ministro",
+        "señora ministra",
+        "señor alcalde",
+        "señora alcaldesa",
+        "su eminencia",
+        "honorable señor",
+        "honorable señora",
+        "la",
+        "el",
+        "los",
+        "las",
+        "y",
+        "e",
+        "o",
+        "u" 
+    ],
+    "suffixes": [
+        "sr",
+        "senior",
+        "jr",
+        "junior",
+        "hijo",
+        "padre",
+        "ii",
+        "iii",
+        "iv",
+        "v",
+        "vi",
+        "vii",
+        "viii",
+        "ix",
+        "x"
+    ] 
+}
+;
+ilib.data.name_fr = {
+    "prefixes": [
+        "baron",
+        "baronne",
+        "bey",
+        "calife",
+        "cheikh",
+        "cheykha",
+        "comte",
+        "comtesse",
+        "cousin",
+        "cousine",
+        "docteur",
+        "dom",
+        "dr",
+        "duc",
+        "duchesse",
+        "émir",
+        "émira",
+        "frère",
+        "grand-mère",
+        "grand-oncle",
+        "grand-père",
+        "grand-tante",
+        "hadjib",
+        "lady",
+        "lord",
+        "madame la présidente",
+        "malik",
+        "mamy",
+        "marquis",
+        "marquise",
+        "marraine",
+        "mère",
+        "monsieur le président",
+        "neveu",
+        "nièce",
+        "nizam",
+        "oncle",
+        "padishah",
+        "papy",
+        "parrain",
+        "père",
+        "pervane",
+        "petite-nièce",
+        "petit-neveu",
+        "pr",
+        "président",
+        "présidente",
+        "professeur",
+        "professeure",
+        "râja",
+        "rani",
+        "révérend père",
+        "révérend",
+        "révérende",
+        "révérende mère",
+        "sa",
+        "sai",
+        "sar",
+        "sas",
+        "se",
+        "shah",
+        "sir",
+        "sm",
+        "sm",
+        "smi",
+        "sœur",
+        "sultan",
+        "sultane",
+        "tante",
+        "veuve",
+        "vicomte",
+        "vicomtesse",
+        "vizir",
+
+        "et",
+        "la",
+        "le",
+        "les",
+        "m",
+        "maîtres",
+        "maître",
+        "majesté",
+        "mes",
+        "mesdames",
+        "mesdemoiselles",
+        "messieurs",
+        "mgr",
+        "mlles",
+        "mm",
+        "mme",
+        "mmes",
+        "monseigneur",
+        "ou",
+        "son",
+        "sa",
+        "sainteté",
+        "altesse",
+        "royale",
+        "sérénissime",
+        "éminence",
+        "excellence"
+    ],
+    "suffixes": [
+        "docteur en philosophie",
+        "docteur en médecine",
+        "docteur en linguistique",
+        "docteur en physique",
+        "docteur en chimie",
+        "docteur en mathématiques",
+        "docteur en droit",
+        "docteur en chirurgie dentaire",
+        "docteur en pharmacie",
+        "docteur en médecine vétérinaire",
+        "dep",
+        "dem",
+        "del",
+        "dec",
+        "ded",
+        "decd",
+        "demv" 
+    ] 
+}
+;
+ilib.data.name_it = {
+	"conjunctions": {
+		"and1": "e",
+		"and2": "ed",
+		"or1": "o",
+		"or2": "o"
+	},
+    "auxillaries": {
+        "di": 1,
+	    "de": 1,
+	    "da": 1,
+	    "della": 1,
+		"dalla": 1,
+		"la": 1,
+		"lo": 1,
+		"li": 1, 
+		"del": 1,
+
+		"degli": 1, 
+		"dei": 1, 
+		"lu": 1,
+		"dal": 1
+	},
+    "prefixes": [
+        "ingegnere",
+        "ing",
+        "geometra",
+        "avvocato",
+        "notaio",
+        "dottore",
+        "dott",
+        "ragioniere",
+        "architetto",
+        "dottoressa",
+        "maestro",
+        "prof",
+        "professor",
+        "professore",
+        "professoressa",
+        "fra",
+        "frate",
+        "fratello",
+        "suor",
+        "suora",
+        "sorella",
+        "don",
+        "padre",
+        "monsignore",
+        "cavaliere",
+        "commendatore",
+        "onorevole",
+        "colonnello",
+        "generale",
+        "tenente",
+        "maresciallo",
+        "madre",
+        "zio",
+        "zia",
+        "nonna",
+        "nonno",
+
+        "signor",
+        "signore",
+        "sig",
+        "signora",
+        "sigra",
+        "signorina",
+        "signa",
+        "sgna" 
+    ],
+    "suffixes": [] 
+}
+;
+ilib.data.name_nl = {
+	"sortByHeadWord": true,
+	"conjunctions": {
+		"and1": "en",
+		"and2": "en",
+		"or1": "of",
+		"or2": "of"
+	},
+    "auxillaries": {
+        "van": 1,
+        "van de": 1,
+        "van der": 1,
+        "van den": 1,
+        "van het": 1,
+        "'t": 1,
+        "`t": 1,
+        "olde": 1,
+        "oude": 1,
+        "van `t": 1,
+        "van 't": 1,
+        "ten": 1,
+        "te": 1,
+        "ter": 1,
+        "op het": 1,
+        "op de": 1,
+        "op `t": 1,
+        "op 't": 1,
+        "de": 1,
+        "den": 1,
+        "het": 1,
+        "in de": 1,
+        "op het": 1,
+        "op de": 1,
+        "in den": 1,
+        "in het": 1,
+        "vande": 1,
+        "vander": 1
+    },
+    "prefixes": [
+        "president",
+        "drs",
+        "ds",
+        "mr",
+        "ir",
+        "ing",
+        "prof",
+        "hc",
+        "professor",
+        "jhr",
+        "meester",
+        "moeder",
+        "vader",
+        "zus",
+        "broer",
+        "peetmoeder",
+        "peetvader",
+        "tante",
+        "oom",
+        "oma",
+        "opa",
+        "neef",
+        "nicht",
+        "achterneef",
+        "achterneef",
+        "zwager",
+        "schoonzus",
+        "overgrootmoeder",
+        "overgrootvader",
+        "betovergrootmoeder",
+        "betovergrootvader",
+        "oudoom",
+        "oudtante",
+        "zoon",
+        "dochter",
+        "pleegzoon",
+        "pleegdochter",
+        "kapitein",
+        "generaal",
+        "majoor",
+        "luitenant",
+        "sergeant",
+        "kolonel",
+        "korporaal",
+        "sergeant-majoor",
+        "vaandrig",
+        "adjudant",
+        "admiraal",
+        "veldmaarschalk",
+        "broeder",
+        "vader",
+        "zuster",
+        "graaf",
+        "jonkheer",
+        "baron",
+        "juffrouw",
+        "hertog",
+
+        "dhr",
+        "mw",
+        "mvw",
+        "mevr",
+        "mijnheer",
+        "eerwaarde dame",
+        "de weleerwaarde heer",
+        "de heer",
+        "professor",
+        "excellentie",
+        "de weleerwaarde zeergeleerde",
+        "excellentie",
+        "de hoogedelgestrenge",
+        "de weledelgestrenge",
+        "koninklijke hoogheid",
+        "majesteit",
+        "hoogheid",
+        "de hooggeboren",
+        "de hoogwelgeboren",
+        "paus",
+        "dominee",
+        "kapelaan",
+        "pastoor",
+        "imam",
+        "kardinaal",
+        "bisschop",
+        "aartsbisschop",
+        "rabbijn" 
+    ],
+    "suffixes": [
+		"ba",  
+		"bacc",
+		"lic",
+		"ma",
+		"msc",
+		"bcs",
+		"ba",
+		"llb",
+		"m",
+		"b",
+		"ad",
+		"jr",
+		"sr"
+	]
+};
+ilib.data.name_zh = {
+	"format": "{prefix}{familyName}{middleName}{givenName}{suffix}",
+	"nameStyle": "asian",
+	"conjunctions": {
+		"and1": "与",
+		"and2": "与",
+		"or1": "或",
+		"or2": "或"
+	},
+    "prefixes": [
+		"首席执行官",
+		"首席執行官",
+		"首席财务官",
+		"首席財務官",
+		"首席技术官",
+		"首席技術官",
+		"首席运营官",
+		"首席營運官",
+
+		"外甥女",
+
+		"堂哥",
+		"堂弟",
+		"堂姐",
+		"堂妹",
+		"表哥",
+		"表弟",
+		"表姐",
+		"表妹",
+
+		"全家",
+		"一家",
+		"姥爷",
+		"姥爺",
+		"外婆",
+		"叔父",
+		"婶婶",
+		"舅媽",
+		"嬸嬸",
+		"舅舅",
+		"舅妈",
+		"姨丈",
+		"姨父",
+		"姑妈",
+		"姑媽",
+		"姑父",
+		"姑丈",
+		"儿子",
+		"兒子",
+		"女儿",
+		"女兒",
+		"孙子",
+		"孫子",
+		"孙女",
+		"孫女",
+	    "妹婿",
+		"嫂嫂",
+		"弟媳",
+		"侄子",
+		"侄女",
+		"外甥",
+		"老",
+		"小",
+		"和",
+		"与",
+		"與",
+		"及"
+	],
+	"suffixes": [
+		"首席执行官",
+		"首席财务官",
+		"首席技术官",
+		"首席运营官",
+	    "首席執行官",
+	    "首席財務官",
+	    "首席技術官",
+	    "首席營運官",
+		"总工程师",
+	    "總工程師",
+	    "高級督察",
+		"格拉玛报",
+		"格拉瑪報",
+		"工程师",
+		"总经理",
+		"外甥女",
+	    "工程師",
+	    "總經理",
+		"司令员",
+	    "總督察",
+	    "總警司",
+		"貴婦人",
+		"贵妇人",
+		"姥爷",
+		"姥爺",
+		"姨父",
+		"姑父",
+		"孙子",
+		"孫子",
+		"孙女",
+		"孫女",
+		"外婆",
+		"叔父",
+		"婶婶",
+		"舅媽",
+		"嬸嬸",
+		"舅舅",
+		"舅妈",
+		"姨丈",
+		"姑妈",
+		"姑媽",
+		"姑丈",
+		"儿子",
+		"兒子",
+		"女儿",
+		"女兒",
+		"妹婿",
+		"嫂嫂",
+		"弟媳",
+		"侄子",
+		"侄女",
+		"外甥",
+		"老师",
+		"老師",
+		"校长",
+		"校長",
+		"博士",
+		"教授",
+		"律师",
+		"律師",
+		"法官",
+		"医生",
+		"护士",
+		"会计",
+		"经理",
+		"老板",
+		"老总",
+		"部长",
+		"司长",
+		"局长",
+		"处长",
+		"厅长",
+		"科长",
+		"课长",
+		"组长",
+		"醫生",
+	    "護士",
+	    "會計",
+	    "經理",
+	    "老闆",
+	    "老總",
+	    "部長",
+	    "司長",
+	    "局長",
+	    "處長",
+	    "組長",
+		"助理",
+		"总裁",
+		"班长",
+		"排长",
+		"营长",
+		"旅长",
+		"团长",
+		"师长",
+		"军长",
+		"政委",
+		"上尉",
+		"中尉",
+		"大尉",
+		"大校",
+		"中校",
+		"上校",
+		"上将",
+		"中将",
+		"少将",
+		"元帅",
+		"總裁",
+	    "主席",		    
+	    "班長",
+	    "警員",
+	    "警長",
+	    "督察",
+	    "警司",
+		"先生",
+		"太太",
+		"夫妇",
+		"夫婦",
+		"夫人",
+		"女士",
+		"小姐",
+		"哥哥",
+		"弟弟",
+		"姐姐",
+		"妹妹",
+		"爷爷",
+		"爺爺",
+		"奶奶",
+		"叔叔",
+		"阿姨",
+		"伯父",
+		"伯母",
+		"堂哥",
+		"堂弟",
+		"堂姐",
+		"堂妹",
+		"表哥",
+		"表弟",
+		"表姐",
+		"表妹",
+		"老師",
+		"媽媽",
+		"上帝",
+		"妈妈",
+		"爸爸",
+		"兒子",
+		"女兒",
+		"祖父",
+		"祖母",
+		"外公",
+		"嬸嬸",
+		"舅媽",
+		"姑媽",
+		"姪子",
+		"姪女",
+		"表叔",
+	    "表嬸",
+		"她",
+		"工",
+		"总",
+		"總",
+		"理"
+	],
+	"knownFamilyNames": {
+		"愛": "Ài",
+		"艾": "Ài",
+		"安": "Ān",
+		"敖": "Áo",
+		"白": "Bái1",
+		"百": "Bǎi2",
+		"百里": "Bǎilǐ",
+		"班": "Bān",
+		"包": "Bāo1",
+		"保": "Bǎo2",
+		"鲍": "Bào3",
+		"鮑": "Bào4",
+		"暴": "Bào5",
+		"巴": "Bā",
+		"贝": "Bèi1",
+		"貝": "Bèi2",
+		"賁": "Bēn",
+		"毕": "Bì1",
+		"畢": "Bì2",
+		"边": "Biān1",
+		"邊": "Biān2",
+		"卞": "Biàn3",
+		"別": "Bié",
+		"邴": "Bǐng",
+		"伯": "Bó1",
+		"薄": "Bó2",
+		"柏": "Bò3",
+		"卜": "Bŭ1",
+		"步": "Bù2",
+		"蔡": "Cài",
+		"蒼": "Cāng",
+		"曹": "Cáo",
+		"曾": "Céng",
+		"岑": "Cén",
+		"柴": "Chái",
+		"单": "Chán1",
+		"單": "Chán2",
+		"常": "Cháng1",
+		"昌": "Chāng2",
+		"畅": "Chàng3",
+		"长孙": "Chángsūn1",
+		"長孫": "Chángsūn2",
+		"單于": "Chányú",
+		"晁": "Cháo1",
+		"巢": "Cháo2",
+		"查": "Chá",
+		"车": "Chē1",
+		"車": "Chē2",
+		"沈": "Chén1",
+		"陈": "Chén2",
+		"陳": "Chén3",
+		"成": "Chéng1",
+		"程": "Chéng2",
+		"盛": "Chéng3",
+		"池": "Chí1",
+		"迟": "Chí2",
+		"郗": "Chī3",
+		"充": "Chōng",
+		"仇": "Chóu",
+		"褚": "Chǔ1",
+		"楚": "Chǔ2",
+		"儲": "Chǔ3",
+		"淳于": "Chúnyú",
+		"褚师": "Chǔshī",
+		"丛": "Cóng1",
+		"從": "Cōng2",
+		"崔": "Cuī",
+		"戴": "Dài",
+		"党": "Dǎng1",
+		"黨": "Dǎng2",
+		"澹台": "Dàntái1",
+		"澹臺": "Dàntái2",
+		"石": "Dàn",
+		"达奚": "Dáxī",
+		"笪": "Dá",
+		"邓": "Dèng1",
+		"鄧": "Dèng2",
+		"狄": "Dí1",
+		"翟": "Dí2",
+		"刁": "Diāo",
+		"丁": "Dīng",
+		"第五": "Dìwǔ",
+		"邸": "Dǐ",
+		"東": "Dōng1",
+		"董": "Dǒng2",
+		"东方": "Dōngfāng1",
+		"東方": "Dōngfāng2",
+		"东宫": "Dōnggōng",
+		"东郭": "Dōngguō1",
+		"東郭": "Dōngguō2",
+		"东里": "Dōnglǐ",
+		"東門": "Dōngmén",
+		"窦": "Dòu1",
+		"竇": "Dòu2",
+		"都": "Dōu",
+		"督": "Dū1",
+		"堵": "Dǔ2",
+		"杜": "Dù3",
+		"段干": "Duàngān",
+		"端木": "Duānmù",
+		"段": "Duàn",
+		"独孤": "Dúgū",
+		"佴": "Èr",
+		"鄂": "È",
+		"樊": "Fán1",
+		"范": "Fàn2",
+		"方": "Fāng1",
+		"房": "Fáng2",
+		"法": "Fǎ",
+		"费": "Fèi1",
+		"費": "Fèi2",
+		"封": "Fēng1",
+		"豐": "Fēng2",
+		"酆": "Fēng3",
+		"冯": "Féng4",
+		"馮": "Féng5",
+		"凤": "Fèng6",
+		"鳳": "Fèng7",
+		"伏": "Fú1",
+		"扶": "Fú2",
+		"符": "Fú3",
+		"福": "Fú4",
+		"付": "Fù5",
+		"富": "Fù6",
+		"傅": "Fù7",
+		"盖": "Gài1",
+		"蓋": "Gài2",
+		"干": "Gān1",
+		"甘": "Gān2",
+		"高": "Gāo1",
+		"郜": "Gào2",
+		"戈": "Gē1",
+		"葛": "Gé2",
+		"耿": "Gěng",
+		"公": "Gōng1",
+		"弓": "Gōng2",
+		"宫": "Gōng3",
+		"宮": "Gōng4",
+		"龚": "Gōng5",
+		"龔": "Gōng6",
+		"巩": "Gǒng7",
+		"鞏": "Gǒng8",
+		"公伯": "Gōngbó",
+		"公乘": "Gōngchéng",
+		"公户": "Gōnghù",
+		"公坚": "Gōngjiān",
+		"公良": "Gōngliáng",
+		"公门": "Gōngmén",
+		"公上": "Gōngshàng",
+		"公山": "Gōngshān",
+		"公孙": "Gōngsūn1",
+		"公孫": "Gōngsūn2",
+		"公西": "Gōngxī1",
+		"公皙": "Gōngxī2",
+		"公羊": "Gōngyáng",
+		"公冶": "Gōngyě",
+		"公仪": "Gōngyí",
+		"公玉": "Gōngyù",
+		"公仲": "Gōngzhòng",
+		"公祖": "Gōngzǔ",
+		"貢": "Gòng",
+		"勾": "Gōu1",
+		"緱": "Gōu2",
+		"苟": "Gǒu3",
+		"古": "Gǔ1",
+		"谷": "Gǔ2",
+		"贾": "Gǔ3",
+		"滑": "Gǔ4",
+		"賈": "Gǔ5",
+		"顾": "Gù6",
+		"顧": "Gù7",
+		"关": "Guān1",
+		"官": "Guān2",
+		"關": "Guān3",
+		"廣": "Guǎng",
+		"贯丘": "Guànqiū",
+		"管": "Guǎn",
+		"歸": "Guī1",
+		"桂": "Guì2",
+		"谷梁": "Gǔliáng1",
+		"穀粱": "Gǔliáng2",
+		"郭": "Guō1",
+		"國": "Guó2",
+		"辜": "Gū",
+		"海": "Hǎi",
+		"韩": "Hán1",
+		"韓": "Hán2",
+		"杭": "Háng",
+		"郝": "Hǎo",
+		"哈": "Hā",
+		"何": "Hé1",
+		"和": "Hé2",
+		"贺": "Hè3",
+		"賀": "Hè4",
+		"赫连": "Hèlián1",
+		"赫連": "Hèlián2",
+		"衡": "Héng",
+		"弘": "Hóng1",
+		"紅": "Hóng2",
+		"洪": "Hóng3",
+		"侯": "Hóu1",
+		"后": "Hòu2",
+		"後": "Hòu3",
+		"胡": "Hú1",
+		"扈": "Hù2",
+		"华": "Huá1",
+		"華": "Huá2",
+		"懷": "Huái",
+		"桓": "Huán1",
+		"宦": "Huàn2",
+		"皇甫": "Huángfǔ",
+		"黄": "Huáng",
+		"花": "Huā",
+		"惠": "Huì",
+		"霍": "Huò",
+		"呼延": "Hūyán",
+		"姬": "Jī01",
+		"嵇": "Jī02",
+		"吉": "Jí03",
+		"汲": "Jí04",
+		"籍": "Jí05",
+		"计": "Jì06",
+		"纪": "Jì07",
+		"紀": "Jì08",
+		"計": "Jì09",
+		"季": "Jì10",
+		"薊": "Jì11",
+		"暨": "Jì12",
+		"冀": "Jì13",
+		"家": "Jiā1",
+		"郟": "Jiá2",
+		"夹谷": "Jiāgǔ1",
+		"夾谷": "Jiāgǔ2",
+		"简": "Jiǎn1",
+		"簡": "Jiǎn2",
+		"江": "Jiāng1",
+		"姜": "Jiāng2",
+		"蒋": "Jiǎng3",
+		"蔣": "Jiǎng4",
+		"焦": "Jiāo",
+		"揭": "Jiē1",
+		"解": "Jiě2",
+		"即墨": "Jímò",
+		"晋": "Jìn1",
+		"晉": "Jìn2",
+		"靳": "Jìn3",
+		"荊": "Jīng1",
+		"荆": "Jīng2",
+		"經": "Jīng3",
+		"井": "Jǐng4",
+		"景": "Jǐng5",
+		"金": "Jīn",
+		"鞠": "Jū1",
+		"瞿": "Jù2",
+		"居": "Jū",
+		"康": "Kāng1",
+		"亢": "Kàng2",
+		"闞": "Kàn",
+		"柯": "Kē",
+		"空": "Kōng1",
+		"孔": "Kǒng2",
+		"寇": "Kòu",
+		"蒯": "Kuǎi",
+		"匡": "Kuāng1",
+		"況": "Kuàng2",
+		"夔": "Kuí",
+		"蓝": "La1",
+		"藍": "La2",
+		"来": "Lái1",
+		"赖": "Lài2",
+		"賴": "Lài3",
+		"郎": "Láng",
+		"兰": "Lán",
+		"勞": "Láo",
+		"乐": "Lè1",
+		"樂": "Lè2",
+		"雷": "Léi",
+		"冷": "Lěng",
+		"乐正": "Lèzhēng1",
+		"樂正": "Lèzhēng2",
+		"黎": "Lí1",
+		"李": "Lǐ2",
+		"利": "Lì3",
+		"栗": "Lì4",
+		"厲": "Lì5",
+		"酈": "Lì6",
+		"连": "Lián1",
+		"連": "Lián2",
+		"廉": "Lián3",
+		"梁丘": "Liángqiū",
+		"梁": "Liáng",
+		"练": "Liàn",
+		"廖": "Liào",
+		"林": "Lín1",
+		"藺": "Lìn2",
+		"令狐": "Lìnghú",
+		"凌": "Líng",
+		"刘": "Liú1",
+		"劉": "Liú2",
+		"柳": "Liǔ3",
+		"陆": "Liù4",
+		"陸": "Liù5",
+		"龙": "Lóng1",
+		"龍": "Lóng2",
+		"隆": "Lōng3",
+		"娄": "Lóu1",
+		"婁": "Lóu2",
+		"卢": "Lú01",
+		"芦": "Lú02",
+		"盧": "Lú03",
+		"鲁": "Lǔ04",
+		"魯": "Lǔ05",
+		"祿": "lù06",
+		"逯": "Lù07",
+		"路": "Lù08",
+		"吕": "Lǚ09",
+		"呂": "Lǚ10",
+		"栾": "Luán1",
+		"欒": "Luán2",
+		"罗": "Luō1",
+		"骆": "Luò1",
+		"羅": "Luó2",
+		"駱": "Luò2",
+		"闾丘": "Lǘqiū1",
+		"閭丘": "Lǘqiū2",
+		"麻": "Má1",
+		"马": "Mǎ2",
+		"馬": "Mǎ3",
+		"麦": "Mài",
+		"滿": "Mǎn",
+		"毛": "Máo1",
+		"茅": "Máo2",
+		"梅": "Méi",
+		"蒙": "Mēng1",
+		"孟": "Mèng2",
+		"糜": "Mí1",
+		"米": "Mǐ2",
+		"宓": "Mì3",
+		"苗": "Miáo1",
+		"缪": "Miào2",
+		"繆": "Miào3",
+		"乜": "Miē",
+		"闵": "Mǐn1",
+		"閔": "Mǐn2",
+		"明": "Míng",
+		"莫": "Mò1",
+		"墨": "Mò2",
+		"牟": "Móu",
+		"木": "Mù1",
+		"牧": "Mù2",
+		"慕": "Mù3",
+		"穆": "Mù4",
+		"慕容": "Mùróng",
+		"南宫": "Nángōng1",
+		"南宮": "Nángōng2",
+		"南门": "Nánmén1",
+		"南門": "Nánmén2",
+		"南荣": "Nánróng",
+		"铙": "Náo",
+		"那": "Nǎ",
+		"能": "Néng",
+		"年": "Nián",
+		"聂": "Niè1",
+		"聶": "Niè2",
+		"宁": "Níng1",
+		"寧": "Níng2",
+		"牛": "Niú1",
+		"鈕": "Niǔ2",
+		"倪": "Ní",
+		"農": "Nóng",
+		"欧": "Ōu1",
+		"歐": "Ōu2",
+		"欧阳": "Ōuyáng1",
+		"歐陽": "Ōuyáng2",
+		"庞": "Páng1",
+		"逄": "Páng2",
+		"龐": "Páng3",
+		"潘": "Pān",
+		"裴": "Péi",
+		"彭": "Péng1",
+		"蓬": "Péng2",
+		"平": "Píng",
+		"皮": "Pí",
+		"濮": "Pú1",
+		"蒲": "Pú2",
+		"浦": "Pǔ3",
+		"濮阳": "Púyáng1",
+		"濮陽": "Púyáng2",
+		"祁": "Qí1",
+		"齐": "Qí2",
+		"齊": "Qí3",
+		"钱": "Qián1",
+		"錢": "Qián2",
+		"强": "Qiáng1",
+		"強": "Qiáng2",
+		"乔": "Qiáo1",
+		"喬": "Qiáo2",
+		"譙": "Qiáo3",
+		"漆雕": "Qīdiāo",
+		"亓官": "Qíguān",
+		"欽": "Qīn1",
+		"秦": "Qín2",
+		"琴": "Qín3",
+		"丘": "Qiū1",
+		"邱": "Qiū2",
+		"秋": "Qiū3",
+		"裘": "Qiú4",
+		"戚": "Qī",
+		"曲": "Qū1",
+		"屈": "Qū2",
+		"璩": "Qú3",
+		"麴": "Qú4",
+		"全": "Quán1",
+		"權": "Quán2",
+		"闕": "Quē",
+		"壤驷": "Rǎngsì1",
+		"壤駟": "Rǎngsì2",
+		"冉": "Rǎn",
+		"饒": "Ráo",
+		"任": "Rèn",
+		"戎": "Róng1",
+		"容": "Róng2",
+		"榮": "Róng3",
+		"融": "Róng4",
+		"茹": "Rú1",
+		"汝": "Rǔ2",
+		"阮": "Ruǎn",
+		"芮": "Ruì",
+		"桑": "Sāng",
+		"商": "Shāng1",
+		"賞": "Shǎng2",
+		"尚": "Shàng3",
+		"上官": "Shàngguān",
+		"山": "Shān",
+		"韶": "Sháo1",
+		"邵": "Shào2",
+		"沙": "Shā",
+		"佘": "Shé1",
+		"厙": "Shè2",
+		"申": "Shēn1",
+		"莘": "Shēn2",
+		"慎": "Shèn3",
+		"申屠": "Shēntú",
+		"師": "Shī1",
+		"施": "Shī2",
+		"时": "Shí3",
+		"時": "Shí4",
+		"史": "Shǐ5",
+		"壽": "Shòu",
+		"殳": "Shū1",
+		"舒": "Shū2",
+		"束": "Shù3",
+		"帥": "Shuài",
+		"雙": "Shuāng",
+		"水": "Shuǐ",
+		"司空": "Sīkōng",
+		"司寇": "Sīkòu",
+		"司马": "Sīmǎ1",
+		"司馬": "Sīmǎ2",
+		"司徒": "Sītú",
+		"司": "Sī",
+		"松": "Sōng1",
+		"宋": "Sòng2",
+		"苏": "Sū1",
+		"蘇": "Sū2",
+		"隋": "Suí",
+		"孙": "Sūn1",
+		"孫": "Sūn2",
+		"索": "Suǒ",
+		"宿": "Sù",
+		"拓拔": "Tàbá1",
+		"拓跋": "Tàbá2",
+		"台": "Tái1",
+		"邰": "Tái2",
+		"太史": "Tàishǐ2",
+		"太叔": "Tàishū1",
+		"谈": "Tán1",
+		"覃": "Tán2",
+		"談": "Tán3",
+		"谭": "Tán4",
+		"譚": "Tán5",
+		"汤": "Tāng1",
+		"湯": "Tāng2",
+		"唐": "Táng3",
+		"陶": "Táo",
+		"腾": "Téng1",
+		"滕": "Téng2",
+		"田": "Tián",
+		"通": "Tōng1",
+		"佟": "Tóng2",
+		"童": "Tóng3",
+		"鈄": "Tǒu",
+		"涂": "Tú1",
+		"屠": "Tú2",
+		"万": "Wàn1",
+		"萬": "Wàn2",
+		"汪": "Wāng1",
+		"王": "Wáng2",
+		"万俟": "Wànsì",
+		"危": "Wēi1",
+		"韦": "Wéi2",
+		"韋": "Wéi3",
+		"隗": "Wěi4",
+		"卫": "Wèi5",
+		"位": "Wèi6",
+		"衛": "Wèi7",
+		"蔚": "Wèi8",
+		"魏": "Wèi9",
+		"尉迟": "Wèichí1",
+		"尉遲": "Wèichí2",
+		"微生": "Wēishēng",
+		"溫": "Wēn1",
+		"温": "Wēn2",
+		"文": "Wén3",
+		"聞": "Wén4",
+		"翁": "Wēng",
+		"闻人": "Wénrén1",
+		"聞人": "Wénrén2",
+		"沃": "Wò",
+		"巫": "Wū1",
+		"烏": "Wū2",
+		"邬": "Wū3",
+		"鄔": "Wū4",
+		"毋": "Wú5",
+		"吴": "Wú6",
+		"吳": "Wú7",
+		"伍": "Wǔ8",
+		"武": "Wǔ9",
+		"巫马": "Wūmǎ1",
+		"巫馬": "Wūmǎ2",
+		"习": "Xí1",
+		"奚": "Xī1",
+		"席": "Xí2",
+		"郤": "Xì2",
+		"習": "Xí3",
+		"袭": "Xí4",
+		"夏侯": "Xiàhóu",
+		"冼": "Xiǎn1",
+		"咸": "Xián2",
+		"相": "Xiāng1",
+		"向": "Xiàng2",
+		"项": "Xiàng3",
+		"項": "Xiàng4",
+		"鲜于": "Xiānyú1",
+		"鮮于": "Xiānyú2",
+		"萧": "Xiāo1",
+		"蕭": "Xiāo2",
+		"萧肖": "Xiāoxiào",
+		"夏": "Xià",
+		"谢": "Xiè1",
+		"謝": "Xiè2",
+		"西门": "Xīmén1",
+		"西門": "Xīmén2",
+		"刑": "Xíng1",
+		"邢": "Xíng2",
+		"姓": "Xìng3",
+		"幸": "Xìng4",
+		"辛": "Xīn",
+		"熊": "Xióng",
+		"胥": "Xū1",
+		"須": "Xū2",
+		"许": "Xǔ3",
+		"許": "Xǔ4",
+		"轩辕": "Xuānyuán1",
+		"軒轅": "Xuānyuán2",
+		"宣": "Xuān",
+		"薛": "Xuē",
+		"荀": "Xún",
+		"徐": "Xú",
+		"殷": "Yān01",
+		"燕": "Yān02",
+		"鄢": "Yān03",
+		"言": "Yán04",
+		"严": "Yán05",
+		"閆": "Yán06",
+		"阎": "Yán07",
+		"閻": "Yán08",
+		"颜": "Yán09",
+		"顏": "Yán10",
+		"嚴": "Yán11",
+		"晏": "Yàn12",
+		"羊": "Yáng1",
+		"阳": "Yáng2",
+		"扬": "Yáng3",
+		"杨": "Yáng4",
+		"陽": "Yáng5",
+		"楊": "Yáng6",
+		"仰": "Yǎng7",
+		"養": "Yǎng8",
+		"羊舌": "Yángshé",
+		"姚": "Yáo",
+		"叶": "Yè1",
+		"葉": "Yè2",
+		"衣": "Yī1",
+		"伊": "Yī2",
+		"易": "Yì3",
+		"羿": "Yì4",
+		"益": "Yì5",
+		"陰": "Yīn1",
+		"银": "Yín2",
+		"尹": "Yǐn3",
+		"印": "Yìn4",
+		"应": "Yīng1",
+		"應": "Yīng2",
+		"雍": "Yōng",
+		"尤": "Yóu1",
+		"游": "Yóu2",
+		"有": "Yǒu3",
+		"于": "Yú01",
+		"余": "Yú02",
+		"俞": "Yú03",
+		"魚": "Yú04",
+		"虞": "Yú05",
+		"宇": "Yǔ06",
+		"禹": "Yǔ07",
+		"庾": "Yǔ08",
+		"郁": "Yù09",
+		"喻": "Yù10",
+		"鬱": "Yù11",
+		"元": "Yuán1",
+		"原": "Yuán2",
+		"袁": "Yuán3",
+		"苑": "Yuàn4",
+		"岳": "Yuè1",
+		"越": "Yuè2",
+		"云": "Yún1",
+		"雲": "Yún2",
+		"宇文": "Yǔwén",
+		"於": "Yū",
+		"宰父": "Zǎifù",
+		"宰": "Zǎi",
+		"臧": "Zāng",
+		"昝": "Zăn",
+		"湛": "Zhàn1",
+		"詹": "Zhān2",
+		"张": "Zhāng1",
+		"張": "Zhāng2",
+		"章": "Zhāng3",
+		"仉": "Zhǎng4",
+		"赵": "Zhào1",
+		"趙": "Zhào2",
+		"郑": "Zhèng1",
+		"鄭": "Zhèng2",
+		"甄": "Zhēn",
+		"支": "Zhī1",
+		"植": "Zhí2",
+		"钟": "Zhōng1",
+		"終": "Zhōng2",
+		"鍾": "Zhōng3",
+		"仲": "Zhòng4",
+		"仲长": "Zhòngcháng",
+		"钟离": "Zhōnglí1",
+		"鐘離": "Zhōnglí2",
+		"仲孙": "Zhòngsūn1",
+		"仲孫": "Zhòngsūn2",
+		"周": "Zhōu",
+		"朱": "Zhū1",
+		"竺": "Zhú1",
+		"祝": "Zhù2",
+		"諸": "Zhū2",
+		"庄": "Zhuāng1",
+		"莊": "Zhuāng2",
+		"颛孙": "Zhuānsūn1",
+		"顓孫": "Zhuānsūn2",
+		"诸葛": "Zhūgé1",
+		"諸葛": "Zhūgé2",
+		"卓": "Zhuó",
+		"子车": "Zǐchē1",
+		"子車": "Zǐchē2",
+		"子桑": "Zǐsāng",
+		"子书": "Zǐshū",
+		"訾": "Zī",
+		"宗政": "Zōngzhèng",
+		"宗": "Zōng",
+		"邹": "Zōu1",
+		"鄒": "Zōu2",
+		"左": "Zuǒ3",
+		"左丘": "Zuǒqiū",
+		"祖": "Zǔ"
+    }
+};
+/*
+ * nameprs.js - Person name parser
+ * 
+ * Copyright © 2013, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* !depends 
+ilibglobal.js 
+locale.js
+util/utils.js 
+ctype.isalpha.js 
+ctype.isideo.js 
+ctype.ispunct.js 
+ctype.isspace.js 
+*/
+
+// !data name
+
+// notes:
+// icelandic given names: http://en.wiktionary.org/wiki/Appendix:Icelandic_given_names
+// danish approved given names: http://www.familiestyrelsen.dk/samliv/navne/
+// http://www.mentalfloss.com/blogs/archives/59277
+// other countries with first name restrictions: Norway, China, New Zealand, Japan, Sweden, Germany, Hungary
+
+/**
+ * @class
+ * A class to parse names of people. Different locales have different conventions when it
+ * comes to naming people.<p>
+ * 
+ * The options can contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>locale</i> - use the rules and conventions of the given locale in order to parse
+ * the name
+ * <li><i>style</i> - explicitly use the named style to parse the name. Valid values so 
+ * far are "western" and "asian". If this property is not specified, then the style will 
+ * be gleaned from the name itself. This class will count the total number of Latin or Asian 
+ * characters. If the majority of the characters are in one style, that style will be 
+ * used to parse the whole name. 
+ * <li><i>order</i> - explicitly use the given order for names. In some locales, such
+ * as Russian, names may be written equally validly as "givenName familyName" or "familyName
+ * givenName". This option tells the parser which order to prefer, and overrides the 
+ * default order for the locale. Valid values are "gf" (given-family) or "fg" (family-given).
+ * 
+ * <li>onLoad - a callback function to call when the name info is fully 
+ * loaded and the name has been parsed. When the onLoad option is given, the name object 
+ * will attempt to load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
+ * </ul>
+ * 
+ * When the parser has completed its parsing, it fills in the fields listed below.<p>
+ * 
+ * For names that include auxilliary words, such as the family name "van der Heijden", all 
+ * of the auxilliary words ("van der") will be included in the field.<p>
+ * 
+ * For names in Spanish locales, it is assumed that the family name is doubled. That is,
+ * a person may have a paternal family name followed by a maternal family name. All
+ * family names will be listed in the familyName field as normal, separated by spaces. 
+ * When formatting the short version of such names, only the paternal family name will 
+ * be used.
+ * 
+ * @constructor
+ * @param {string|ilib.Name=} name the name to parse
+ * @param {Object=} options Options governing the construction of this name instance
+ */
+ilib.Name = function(name, options) {
+	var sync = true;
+	
+	if (typeof(name) === 'object') {
+		// copy constructor
+		/**
+		 * The prefixes for this name
+		 * @type string
+		 */
+		this.prefix = name.prefix;
+		/**
+		 * The given (personal) name in this name.
+		 * @type string
+		 */
+		this.givenName = name.givenName;
+		/**
+		 * The middle names used in this name. If there are multiple middle names, they all 
+		 * appear in this field separated by spaces. 
+		 * @type string
+		 */
+		this.middleName = name.middleName;
+		/**
+		 * The family names in this name. If there are multiple family names, they all 
+		 * appear in this field separated by spaces.
+		 * @type string
+		 */
+		this.familyName = name.familyName;
+		/**
+		 * The suffixes for this name. If there are multiple suffixes, they all 
+		 * appear in this field separated by spaces.
+		 * @type string
+		 */
+		this.suffix = name.suffix;
+		
+		// private properties
+		this.locale = name.locale;
+		this.style = name.style;
+		this.order = name.order;
+		return;
+	}
+
+	if (options) {
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		
+		if (options.style && (options.style === "asian" || options.style === "western")) {
+			this.style = options.style;
+		}
+		
+		if (options.order && (options.order === "gf" || options.order === "fg")) {
+			this.order = options.order;
+		}
+		
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
+	}
+
+	if (!ilib.Name.cache) {
+		ilib.Name.cache = {};
+	}
+
+	this.locale = this.locale || new ilib.Locale();
+	var spec = this.locale.getSpec().replace(/-/g, "_");
+	if (typeof(ilib.Name.cache[spec]) === 'undefined') {
+		/**
+		 * @private
+		 * @type {{sortByHeadWord:boolean,conjunctions:Object,auxillaries:Object,prefixes:Object,suffixes:Object,knownFamilyNames:Object,nameStyle:string}}
+		 */
+		this.info = /** @type {{sortByHeadWord:boolean,conjunctions:Object,auxillaries:Object,prefixes:Object,suffixes:Object,knownFamilyNames:Object,nameStyle:string}} */ ilib.mergeLocData("name", this.locale);
+		if (this.info) {
+			ilib.Name.cache[spec] = this.info;
+			this._init(name);
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		} else if (typeof(ilib._load) === 'function') {
+			// locale is not preassembled, so attempt to load it dynamically
+			var files = ilib.getLocFiles(this.locale, "name");
+			
+			ilib._load(files, sync, function(arr) {
+				this.info = {};
+				for (var i = 0; i < arr.length; i++) {
+					if (typeof(arr[i]) !== 'undefined') {
+						this.info = ilib.merge(this.info, arr[i]);
+					}
+				}
+				
+				ilib.Name.cache[spec] = this.info;
+				this._init(name);
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
+			}.bind(this));
+		} else {
+			// no data other than the generic shared data
+			this.info = ilib.data.name;
+			ilib.Name.cache[spec] = this.info;
+			this._init(name);
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		}
+	} else {
+		this.info = ilib.Name.cache[spec];
+		this._init(name);
+		if (options && typeof(options.onLoad) === 'function') {
+			options.onLoad(this);
+		}
+	}
+};
+
+/**
+ * @static
+ * @protected
+ */
+ilib.Name._isAsianName = function (name) {
+	// the idea is to count the number of asian chars and the number
+	// of latin chars. If one is greater than the other, choose
+	// that style.
+	var asian = 0, latin = 0, i;
+	
+	if (name && name.length > 0) {
+		for (i = 0; i < name.length; i++) {
+			if (ilib.CType.isAlpha(name.charAt(i))) {
+				latin++;
+			} else if (ilib.CType.isIdeo(name.charAt(i))) {
+				asian++;
+			}
+		}
+		
+		return latin < asian;
+	}
+
+	return false;
+};
+
+/**
+ * @static
+ * @protected
+ * Return true if any Latin letters are found in the string. Return
+ * false if all the characters are non-Latin.
+ */
+ilib.Name._isEuroName = function(name) {
+	var c, 
+		n = new ilib.String(name),
+		it = n.charIterator();
+	
+	while (it.hasNext()) {
+		c = it.next();
+		
+		if (!ilib.CType.isIdeo(c) && 
+			 !ilib.CType.isPunct(c) &&
+			 !ilib.CType.isSpace(c)) {
+			return true;
+		}
+	}
+	
+	return false;
+};
+
+ilib.Name.prototype = {
+    /**
+     * @protected
+     */
+    _init: function (name) {
+    	var parts, prefixArray, prefix, prefixLower,
+			suffixArray, suffix, suffixLower,
+			asianName, i, info, hpSuffix;
+
+    	if (name) {
+    		// for DFISH-12905, pick off the part that the LDAP server automatically adds to our names in HP emails
+    		i = name.search(/\s*[,\(\[\{<]/);
+    		if (i !== -1) {
+    			hpSuffix = name.substring(i);
+    			hpSuffix = hpSuffix.replace(/\s+/g, ' ');	// compress multiple whitespaces
+    			suffixArray = hpSuffix.split(" ");
+    			var conjunctionIndex = this._findLastConjunction(suffixArray);
+    			if (conjunctionIndex > -1) {
+    				// it's got conjunctions in it, so this is not really a suffix
+    				hpSuffix = undefined;
+    			} else {
+    				name = name.substring(0,i);
+    			}
+    		}
+    		
+    		if (this.info.nameStyle === "asian") {
+    			asianName = !ilib.Name._isEuroName(name);
+    			info = asianName ? this.info : ilib.data.name;
+    		} else {
+    			asianName = ilib.Name._isAsianName(name);
+	    		info = asianName ? ilib.data.name : this.info;
+    		}
+    		
+    		if (asianName) {
+    			// all-asian names
+    			name = name.replace(/\s+/g, '');	// eliminate all whitespaces
+    			parts = name.trim().split('');
+    		} else {
+    			name = name.replace(/, /g, ' , ');
+    			name = name.replace(/\s+/g, ' ');	// compress multiple whitespaces
+    			parts = name.trim().split(' ');
+    		}
+    		
+    		// check for prefixes
+    		if (parts.length > 1) {
+    			for (i = parts.length; i > 0; i--) {
+    				prefixArray = parts.slice(0, i);
+    				prefix = prefixArray.join(asianName ? '' : ' ');
+    				prefixLower = prefix.toLowerCase();
+    				prefixLower = prefixLower.replace(/[,\.]/g, '');  // ignore commas and periods
+    			
+    				if (info.prefixes && info.prefixes.indexOf(prefixLower) > -1) {
+    					if (this.prefix) {
+    						if (!asianName) {
+    							this.prefix += ' ';
+    						} 
+    						this.prefix += prefix;
+    					} else {
+    						this.prefix = prefix;
+    					}
+    					parts = parts.slice(i);
+    					i = parts.length;
+    				}
+    			}
+    		}
+    		
+    		// check for suffixes
+    		if (parts.length > 1) {
+    			for (i = parts.length; i > 0; i--) {
+    				suffixArray = parts.slice(-i);
+    				suffix = suffixArray.join(asianName ? '' : ' ');
+    				suffixLower = suffix.toLowerCase();
+    				suffixLower = suffixLower.replace(/[\.]/g, '');  // ignore periods
+    				
+    				if (info.suffixes && info.suffixes.indexOf(suffixLower) > -1) {
+    					if (this.suffix) {
+    						if (!asianName && !ilib.CType.isPunct(this.suffix.charAt(0))) {
+    							this.suffix = ' ' + this.suffix;
+    						}
+    						this.suffix = suffix + this.suffix;
+    					} else {
+    						this.suffix = suffix;
+    					}
+    					parts = parts.slice(0, parts.length-i);
+    					i = parts.length;
+    				}
+    			}
+    		}
+    		
+    		if (hpSuffix) {
+    			this.suffix = (this.suffix && this.suffix + hpSuffix) || hpSuffix;
+    		}
+
+    		// adjoin auxillary words to their headwords
+    		if (parts.length > 1 && !asianName ) {
+    			parts = this._joinAuxillaries(parts, asianName);
+    		}
+    		
+    		if (asianName) {
+    			this._parseAsianName(parts);
+    		} else {
+    			this._parseWesternName(parts);
+    		}
+    		
+    		this._joinNameArrays();
+    	}
+    },
+    
+	/**
+	 * @return {number} 
+	 *
+	_findSequence: function(parts, hash, isAsian) {
+		var sequence, sequenceLower, sequenceArray, aux = [], i, ret = {};
+		
+		if (parts.length > 0 && hash) {
+			//console.info("_findSequence: finding sequences");
+			for (var start = 0; start < parts.length-1; start++) {
+				for ( i = parts.length; i > start; i-- ) {
+					sequenceArray = parts.slice(start, i);
+					sequence = sequenceArray.join(isAsian ? '' : ' ');
+					sequenceLower = sequence.toLowerCase();
+					sequenceLower = sequenceLower.replace(/[,\.]/g, '');  // ignore commas and periods
+					
+					//console.info("_findSequence: checking sequence: '" + sequenceLower + "'");
+					
+					if ( sequenceLower in hash ) {
+						ret.match = sequenceArray;
+						ret.start = start;
+						ret.end = i;
+						return ret;
+						//console.info("_findSequence: Found sequence '" + sequence + "' New parts list is " + JSON.stringify(parts));
+					}
+				}
+			}
+		}
+	
+		return undefined;
+	},
+	*/
+	
+	/**
+	 * @protected
+	 */
+	_findPrefix: function (parts, names, isAsian) {
+		var i, prefix, prefixLower, prefixArray, aux = [];
+		
+		if (parts.length > 0 && names) {
+			for (i = parts.length; i > 0; i--) {
+				prefixArray = parts.slice(0, i);
+				prefix = prefixArray.join(isAsian ? '' : ' ');
+				prefixLower = prefix.toLowerCase();
+				prefixLower = prefixLower.replace(/[,\.]/g, '');  // ignore commas and periods
+				
+				if (prefixLower in names) {
+					aux = aux.concat(isAsian ? prefix : prefixArray);
+					parts = parts.slice(i);
+					i = parts.length + 1;
+				}
+			}
+		}
+		
+		return aux;
+	},
+
+	/**
+	 * @protected
+	 */
+	_findSuffix: function (parts, names, isAsian) {
+		var i, j, seq = "";
+		
+		for (i = 0; i < names.length; i++) {
+			if (parts.length >= names[i].length) {
+				j = 0;
+				while (j < names[i].length && parts[parts.length-j] === names[i][names[i].length-j]) {
+					j++;
+				}
+				if (j >= names[i].length) {
+					seq = parts.slice(parts.length-j).join(isAsian ? "" : " ") + (isAsian ? "" : " ") + seq;
+					parts = parts.slice(0, parts.length-j);
+					i = -1; // restart the search
+				}
+			}
+		}
+
+		this.suffix = seq;
+		return parts;
+	},
+
+	/**
+	 * @protected
+	 * Find the last instance of 'and' in the name
+	 * @param {Array.<string>} parts
+	 * @returns {number}
+	 */
+	_findLastConjunction: function _findLastConjunction(parts) {
+		var conjunctionIndex = -1, index, part;
+		
+		for (index = 0; index < parts.length; index++) {
+			part = parts[index];
+			if (typeof(part) === 'string') {
+				part = part.toLowerCase();
+				// also recognize English
+				if ("and" === part || "or" === part || "&" === part || "+" === part) {
+					conjunctionIndex = index;
+				}
+				if (this.info.conjunctions.and1 === part || 
+					this.info.conjunctions.and2 === part || 
+					this.info.conjunctions.or1 === part ||
+					this.info.conjunctions.or2 === part || 
+					("&" === part) || 
+					("+" === part)) {
+					conjunctionIndex = index;
+				}
+			}
+		}
+		return conjunctionIndex;
+	},
+
+	/**
+	 * @protected
+	 * @param {Array.<string>} parts the current array of name parts
+	 * @param {boolean} isAsian true if the name is being parsed as an Asian name
+	 * @return {Array.<string>} the remaining parts after the prefixes have been removed
+	 */
+	_extractPrefixes: function (parts, isAsian) {
+		var i = this._findPrefix(parts, this.info.prefixes, isAsian);
+		if (i > 0) {
+			this.prefix = parts.slice(0, i).join(isAsian ? "" : " ");
+			return parts.slice(i);
+		}
+		// prefixes not found, so just return the array unmodified
+		return parts;
+	},
+
+	/**
+	 * @protected
+	 * @param {Array.<string>} parts the current array of name parts
+	 * @param {boolean} isAsian true if the name is being parsed as an Asian name
+	 * @return {Array.<string>} the remaining parts after the suffices have been removed
+	 */
+	_extractSuffixes: function (parts, isAsian) {
+		var i = this._findSuffix(parts, this.info.suffixes, isAsian);
+		if (i > 0) {
+			this.suffix = parts.slice(i).join(isAsian ? "" : " ");
+			return parts.slice(0,i);
+		}
+		// suffices not found, so just return the array unmodified
+		return parts;
+	},
+	
+	/**
+	 * @protected
+	 * Adjoin auxillary words to their head words.
+	 * @param {Array.<string>} parts the current array of name parts
+	 * @param {boolean} isAsian true if the name is being parsed as an Asian name
+	 * @return {Array.<string>} the parts after the auxillary words have been plucked onto their head word
+	 */
+	_joinAuxillaries: function (parts, isAsian) {
+		var start, i, prefixArray, prefix, prefixLower;
+		
+		if (this.info.auxillaries && (parts.length > 2 || this.prefix)) {
+			for (start = 0; start < parts.length-1; start++) {
+				for (i = parts.length; i > start; i--) {
+					prefixArray = parts.slice(start, i);
+					prefix = prefixArray.join(' ');
+					prefixLower = prefix.toLowerCase();
+					prefixLower = prefixLower.replace(/[,\.]/g, '');  // ignore commas and periods
+					
+					if (prefixLower in this.info.auxillaries) {
+						parts.splice(start, i+1-start, prefixArray.concat(parts[i]));
+						i = start;
+					}
+				}
+			}
+		}
+		
+		return parts;
+	},
+
+	/**
+	 * @protected
+	 * Recursively join an array or string into a long string.
+	 */
+	_joinArrayOrString: function _joinArrayOrString(part) {
+		var i;
+		if (typeof(part) === 'object') {
+			for (i = 0; i < part.length; i++) {
+				part[i] = this._joinArrayOrString(part[i]);
+			}
+			var ret = "";
+			part.forEach(function (segment) {
+				if (ret.length > 0 && !ilib.CType.isPunct(segment.charAt(0))) {
+					ret += ' ';
+				}
+				ret += segment;
+			});
+			return ret;
+		}
+		return part;
+	},
+	
+	/**
+	 * @protected
+	 */
+	_joinNameArrays: function _joinNameArrays() {
+		var prop;
+		for (prop in this) {
+			if (this[prop] !== undefined && typeof(this[prop]) === 'object' && this[prop] instanceof Array) {
+				this[prop] = this._joinArrayOrString(this[prop]);
+			}
+		}
+	},
+
+	/**
+	 * @protected
+	 */
+	_parseAsianName: function (parts) {
+		var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true);
+		
+		if (familyNameArray && familyNameArray.length > 0) {
+			this.familyName = familyNameArray.join('');
+			this.givenName = parts.slice(this.familyName.length).join('');
+		} else if (this.suffix || this.prefix) {
+			this.familyName = parts.join('');
+		} else {
+			this.givenName = parts.join('');
+		}
+	},
+	
+	/**
+	 * @protected
+	 */
+	_parseSpanishName: function (parts) {
+		var conjunctionIndex;
+		
+		if (parts.length === 1) {
+			if (this.prefix || typeof(parts[0]) === 'object') {
+				this.familyName = parts[0];
+			} else {
+				this.givenName = parts[0];
+			}
+		} else if (parts.length === 2) {
+			// we do G F
+			this.givenName = parts[0];
+			this.familyName = parts[1];
+		} else if (parts.length === 3) {
+			conjunctionIndex = this._findLastConjunction(parts);
+			// if there's an 'and' in the middle spot, put everything in the first name
+			if (conjunctionIndex === 1) {
+				this.givenName = parts;
+			} else {
+				// else, do G F F
+				this.givenName = parts[0];
+				this.familyName = parts.slice(1);
+			}
+		} else if (parts.length > 3) {
+			//there are at least 4 parts to this name
+			
+			conjunctionIndex = this._findLastConjunction(parts);
+			if (conjunctionIndex > 0) {
+				// if there's a conjunction that's not the first token, put everything up to and 
+				// including the token after it into the first name, the last 2 tokens into
+				// the family name (if they exist) and everything else in to the middle name
+				// 0 1 2 3 4 5
+				// G A G
+				// G A G F
+				// G G A G
+				// G A G F F
+				// G G A G F
+				// G G G A G
+				// G A G M F F
+				// G G A G F F
+				// G G G A G F
+				// G G G G A G
+				this.givenName = parts.splice(0,conjunctionIndex+2);
+				if (parts.length > 1) {
+					this.familyName = parts.splice(parts.length-2, 2);
+					if ( parts.length > 0 ) {
+						this.middleName = parts;
+					}
+				} else if (parts.length === 1) {
+					this.familyName = parts[0];
+				}
+			} else {
+				this.givenName = parts.splice(0,1);
+				this.familyName = parts.splice(parts.length-2, 2);
+				this.middleName = parts;
+			}
+		}
+	},
+
+	/**
+	 * @protected
+	 */
+	_parseWesternName: function (parts) {
+		if (this.locale.getLanguage() === "es") {
+			// in spain and mexico, we parse names differently than in the rest of the world 
+			// because of the double family names
+			this._parseSpanishName(parts);
+		} else if (this.locale.getLanguage() === "ru") {
+			/*
+			 * In Russian, names can be given equally validly as given-family 
+			 * or family-given. Use the value of the "order" property of the
+			 * constructor options to give the default when the order is ambiguous.
+			 */
+			// TODO: this._parseRussianName(parts);
+		} else {
+			/* Western names are parsed as follows, and rules are applied in this 
+			 * order:
+			 * 
+			 * G
+			 * G F
+			 * G M F
+			 * G M M F
+			 * P F
+			 * P G F 
+			 */
+			var conjunctionIndex;
+			
+			if (parts.length === 1) {
+				if (this.prefix || typeof(parts[0]) === 'object') {
+					// already has a prefix, so assume it goes with the family name like "Dr. Roberts" or
+					// it is a name with auxillaries, which is almost always a family name
+					this.familyName = parts[0];
+				} else {
+					this.givenName = parts[0];
+				}
+			} else if (parts.length === 2) {
+				// we do G F
+				this.givenName = parts[0];
+				this.familyName = parts[1];
+			} else if (parts.length >= 3) {
+				//find the first instance of 'and' in the name
+				conjunctionIndex = this._findLastConjunction(parts);
+		
+				if (conjunctionIndex > 0) {
+					// if there's a conjunction that's not the first token, put everything up to and 
+					// including the token after it into the first name, the last token into
+					// the family name (if it exists) and everything else in to the middle name
+					// 0 1 2 3 4 5
+					// G A G M M F
+					// G G A G M F
+					// G G G A G F
+					// G G G G A G
+					this.givenName = parts.slice(0,conjunctionIndex+2);
+					if (conjunctionIndex + 1 < parts.length - 1) {
+						this.familyName = parts.splice(parts.length-1, 1);
+						if (conjunctionIndex + 2 < parts.length - 1) {
+							this.middleName = parts.slice(conjunctionIndex + 2, parts.length - conjunctionIndex - 3);
+						}
+					}
+				} else {
+					this.givenName = parts[0];
+					this.middleName = parts.slice(1, parts.length-1);
+					this.familyName = parts[parts.length-1];
+				}
+			}
+		}
+	},
+
+	/**
+	 * When sorting names with auxiliary words (like "van der" or "de los"), determine
+	 * which is the "head word" and return a string that can be easily sorted by head
+	 * word. In English, names are always sorted by initial characters. In places like
+	 * the Netherlands or Germany, family names are sorted by the head word of a list
+	 * of names rather than the first element of that name.
+	 * @return {string|undefined} a string containing the family name[s] to be used for sorting
+	 * in the current locale, or undefined if there is no family name in this object
+	 */
+	getSortFamilyName: function() {
+		var name,
+			auxillaries, 
+			auxString, 
+			parts,
+			i;
+		
+		// no name to sort by
+		if (!this.familyName) {
+			return undefined;
+		}
+		
+		// first break the name into parts
+		if (this.info) {
+			if (this.info.sortByHeadWord) {
+				if (typeof(this.familyName) === 'string') {
+					name = this.familyName.replace(/\s+/g, ' ');	// compress multiple whitespaces
+					parts = name.trim().split(' ');
+				} else {
+					// already split
+					parts = /** @type Array */ this.familyName;
+				}
+				
+				auxillaries = this._findPrefix(parts, this.info.auxillaries, false);
+				if (auxillaries && auxillaries.length > 0) {
+					if (typeof(this.familyName) === 'string') {
+						auxString = auxillaries.join(' ');
+						name = this.familyName.substring(auxString.length+1) + ', ' + auxString;
+					} else {
+						name = parts.slice(auxillaries.length).join(' ') + 
+							', ' + 
+							parts.slice(0,auxillaries.length).join(' ');
+					}
+				}
+			} else if (this.info.knownFamilyNames && this.familyName) {
+				parts = this.familyName.split('');
+				var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true);
+				name = "";
+				for (i = 0; i < familyNameArray.length; i++) {
+					name += (this.info.knownFamilyNames[familyNameArray[i]] || "");
+				}
+			}
+		}
+	
+		return name || this.familyName;
+	},
+	
+	getHeadFamilyName: function() {
+	},
+	
+	/** 
+	 * @protected
+	 * Return a shallow copy of the current instance.
+	 */
+	clone: function () {
+		var other = new ilib.Name();
+		ilib.shallowCopy(this, other);
+		return other;
+	}
+};
+
+
+/*
+ * namefmt.js - Format person names for display
+ * 
+ * Copyright © 2013, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* !depends 
+ilibglobal.js
+locale.js
+strings.js
+nameprs.js
+ctype.ispunct.js
+*/
+
+// !data name
+
+/**
+ * @class
+ * Creates a formatter that can format person name instances (ilib.Name) for display to
+ * a user. The options may contain the following properties:
+ * 
+ * <ul>
+ * <li><i>locale</i> - Use the conventions of the given locale to construct the name format. 
+ * <li><i>style</i> - Format the name with the given style. The value of this property
+ * should be one of the following strings: 
+ *   <ul>
+ *     <li><i>short</i> - Format a short name with just the given and family names.
+ *     <li><i>medium</i> - Format a medium-length name with the given, middle, and family names.
+ *     <li><i>long</i> - Format a long name with all names available in the given name object, including
+ *     prefixes and suffixes.
+ *   </ul>
+ * <li><i>components</i> - Format the name with the given components in the correct
+ * order for those components. Components are encoded as a string of letters representing
+ * the desired components:
+ *   <ul>
+ *     <li><i>p</i> - prefixes
+ *     <li><i>g</i> - given name
+ *     <li><i>m</i> - middle names
+ *     <li><i>f</i> - family name
+ *     <li><i>s</i> - suffixes
+ *   </ul>
+ * <p>
+ * 
+ * For example, the string "pf" would mean to only format any prefixes and family names 
+ * together and leave out all the other parts of the name.<p>
+ * 
+ * The components can be listed in any order in the string. The <i>components</i> option 
+ * overrides the <i>style</i> option if both are specified.
+ *
+ * <li>onLoad - a callback function to call when the locale info object is fully 
+ * loaded. When the onLoad option is given, the localeinfo object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
+ * </ul>
+ * 
+ * Formatting names is a locale-dependent function, as the order of the components 
+ * depends on the locale. The following explains some of the details:<p>
+ * 
+ * <ul>
+ * <li>In Western countries, the given name comes first, followed by a space, followed 
+ * by the family name. In Asian countries, the family name comes first, followed immediately
+ * by the given name with no space. But, that format is only used with Asian names written
+ * in ideographic characters. In Asian countries, especially ones where both an Asian and 
+ * a Western language are used (Hong Kong, Singapore, etc.), the convention is often to 
+ * follow the language of the name. That is, Asian names are written in Asian style, and 
+ * Western names are written in Western style. This class follows that convention as
+ * well. 
+ * <li>In other Asian countries, Asian names
+ * written in Latin script are written with Asian ordering. eg. "Xu Ping-an" instead
+ * of the more Western order "Ping-an Xu", as the order is thought to go with the style
+ * that is appropriate for the name rather than the style for the language being written.
+ * <li>In some Spanish speaking countries, people often take both their maternal and
+ * paternal last names as their own family name. When formatting a short or medium style
+ * of that family name, only the paternal name is used. In the long style, all the names
+ * are used. eg. "Juan Julio Raul Lopez Ortiz" took the name "Lopez" from his father and 
+ * the name "Ortiz" from his mother. His family name would be "Lopez Ortiz". The formatted
+ * short style of his name would be simply "Juan Lopez" which only uses his paternal
+ * family name of "Lopez".
+ * <li>In many Western languages, it is common to use auxillary words in family names. For
+ * example, the family name of "Ludwig von Beethoven" in German is "von Beethoven", not 
+ * "Beethoven". This class ensures that the family name is formatted correctly with 
+ * all auxillary words.   
+ * </ul>
+ * 
+ * @constructor
+ * @param {Object} options A set of options that govern how the formatter will behave
+ */
+ilib.NameFmt = function(options) {
+	var sync = true;
+	
+	this.style = "short";
+	
+	if (options) {
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		
+		if (options.style) {
+			this.style = options.style;
+		}
+		
+		if (options.components) {
+			this.components = options.components;
+		}
+		
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
+	}
+	
+	// set up defaults in case we need them
+	this.defaultEuroTemplate = new ilib.String("{prefix} {givenName} {middleName} {familyName}{suffix}");
+	this.defaultAsianTemplate = new ilib.String("{prefix}{familyName}{givenName}{middleName}{suffix}");
+	this.useFirstFamilyName = false;
+
+	switch (this.style) {
+		default:
+		case "s":
+		case "short":
+			this.style = "short";
+			break;
+		case "m":
+		case "medium":
+			this.style = "medium";
+			break;
+		case "l":
+		case "long":
+			this.style = "long";
+			break;
+		case "f":
+		case "full":
+			this.style = "full";
+			break;
+	}
+
+	if (!ilib.Name.cache) {
+		ilib.Name.cache = {};
+	}
+
+	this.locale = this.locale || new ilib.Locale();
+	var spec = this.locale.getSpec().replace(/-/g, "_");
+	if (typeof(ilib.Name.cache[spec]) === 'undefined') {
+		/**
+		 * @private
+		 */
+		this.info = ilib.mergeLocData("name", this.locale);
+		if (this.info) {
+			ilib.Name.cache[spec] = this.info;
+			this._init();
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		} else if (typeof(ilib._load) === 'function') {
+			// locale is not preassembled, so attempt to load it dynamically
+			var files = ilib.getLocFiles(this.locale, "name");
+			
+			ilib._load(files, sync, function(arr) {
+				this.info = {};
+				for (var i = 0; i < arr.length; i++) {
+					if (typeof(arr[i]) !== 'undefined') {
+						this.info = ilib.merge(this.info, arr[i]);
+					}
+				}
+				
+				ilib.Name.cache[spec] = this.info;
+				this._init();
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
+			}.bind(this));
+		} else {
+			// no data other than the generic shared data
+			this.info = ilib.data.name;
+			ilib.Name.cache[spec] = this.info;
+			this._init();
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		}
+	} else {
+		this.info = ilib.Name.cache[spec];
+		this._init();
+		if (options && typeof(options.onLoad) === 'function') {
+			options.onLoad(this);
+		}
+	}
+};
+
+ilib.NameFmt.prototype = {
+	/**                          
+	 * @protected
+	 */
+	_init: function() {
+		if (this.components) {
+			var valids = {"p":1,"g":1,"m":1,"f":1,"s":1},
+				arr = this.components.split("");
+			this.comps = {};
+			for (var i = 0; i < arr.length; i++) {
+				if (valids[arr[i].toLowerCase()]) {
+					this.comps[arr[i].toLowerCase()] = true;
+				}
+			}
+		} else {
+			this.comps = this.info.components[this.style];
+		}
+
+		this.template = new ilib.String(this.info.format);
+		
+		if (this.locale.language === "es" && (this.style !== "long" && this.style !== "full")) {
+			this.useFirstFamilyName = true;	// in spanish, they have 2 family names, the maternal and paternal
+		}
+
+		this.isAsianLocale = (this.info.nameStyle === "asian");
+	},
+
+	/**
+	 * @protected
+	 * adjoin auxillary words to their head words
+	 */
+	_adjoinAuxillaries: function (parts, namePrefix) {
+		var start, i, prefixArray, prefix, prefixLower;
+		
+		//console.info("_adjoinAuxillaries: finding and adjoining aux words in " + parts.join(' '));
+		
+		if ( this.info.auxillaries && (parts.length > 2 || namePrefix) ) {
+			for ( start = 0; start < parts.length-1; start++ ) {
+				for ( i = parts.length; i > start; i-- ) {
+					prefixArray = parts.slice(start, i);
+					prefix = prefixArray.join(' ');
+					prefixLower = prefix.toLowerCase();
+					prefixLower = prefixLower.replace(/[,\.]/g, '');  // ignore commas and periods
+					
+					//console.info("_adjoinAuxillaries: checking aux prefix: '" + prefixLower + "' which is " + start + " to " + i);
+					
+					if ( prefixLower in this.info.auxillaries ) {
+						//console.info("Found! Old parts list is " + JSON.stringify(parts));
+						parts.splice(start, i+1-start, prefixArray.concat(parts[i]));
+						//console.info("_adjoinAuxillaries: Found! New parts list is " + JSON.stringify(parts));
+						i = start;
+					}
+				}
+			}
+		}
+		
+		//console.info("_adjoinAuxillaries: done. Result is " + JSON.stringify(parts));
+
+		return parts;
+	},
+
+	/**
+	 * Return the locale for this formatter instance.
+	 * @return {ilib.Locale} the locale instance for this formatter
+	 */
+	getLocale: function () {
+		return this.locale;
+	},
+	
+	/**
+	 * Return the style of names returned by this formatter
+	 * @return {string} the style of names returned by this formatter
+	 */
+	getStyle: function () {
+		return this.style;
+	},
+	
+	/**
+	 * Return the list of components used to format names in this formatter
+	 * @return {string} the list of components
+	 */
+	getComponents: function () {
+		return this.components;
+	},
+	
+	/**
+	 * Format the name for display in the current locale with the options set up
+	 * in the constructor of this formatter instance.<p>
+	 * 
+	 * If the name does not contain all the parts required for the style, those parts
+	 * will be left blank.<p>
+	 * 
+	 * There are two basic styles of formatting: European, and Asian. If this formatter object
+	 * is set for European style, but an Asian name is passed to the format method, then this
+	 * method will format the Asian name with a generic Asian template. Similarly, if the
+	 * formatter is set for an Asian style, and a European name is passed to the format method,
+	 * the formatter will use a generic European template.<p>
+	 * 
+	 * This means it is always safe to format any name with a formatter for any locale. You should
+	 * always get something at least reasonable as output.<p>
+	 * 
+	 * @param {ilib.Name} name the name to format
+	 * @return {string|undefined} the name formatted according to the style of this formatter instance
+	 */
+	format: function(name) {
+		var formatted, temp, modified, isAsianName;
+		
+		if (!name || typeof(name) !== 'object') {
+			return undefined;
+		}
+		
+		if ((!name.givenName || ilib.Name._isEuroName(name.givenName)) &&
+				 (!name.middleName || ilib.Name._isEuroName(name.middleName)) &&
+				 (!name.familyName || ilib.Name._isEuroName(name.familyName))) {
+			isAsianName = false;	// this is a euro name, even if the locale is asian
+			modified = name.clone();
+			
+			// handle the case where there is no space if there is punctuation in the suffix like ", Phd". 
+			// Otherwise, put a space in to transform "PhD" to " PhD"
+			/*
+			console.log("suffix is " + modified.suffix);
+			if ( modified.suffix ) {
+				console.log("first char is " + modified.suffix.charAt(0));
+				console.log("isPunct(modified.suffix.charAt(0)) is " + ilib.CType.isPunct(modified.suffix.charAt(0)));
+			}
+			*/
+			if (modified.suffix && ilib.CType.isPunct(modified.suffix.charAt(0)) === false) {
+				modified.suffix = ' ' + modified.suffix; 
+			}
+			
+			if (this.useFirstFamilyName && name.familyName) {
+				var familyNameParts = modified.familyName.trim().split(' ');
+				if (familyNameParts.length > 1) {
+					familyNameParts = this._adjoinAuxillaries(familyNameParts, name.prefix);
+				}	//in spain and mexico, we parse names differently than in the rest of the world
+	
+				modified.familyName = familyNameParts[0];
+			}
+		
+			modified._joinNameArrays();
+		} else {
+			isAsianName = true;
+			modified = name;
+		}
+		
+		if (!this.template || isAsianName !== this.isAsianLocale) {
+			temp = isAsianName ? this.defaultAsianTemplate : this.defaultEuroTemplate;
+		} else {
+			temp = this.template;
+		}
+		
+		var parts = {
+			prefix: this.comps["p"] && modified.prefix || "",
+			givenName: this.comps["g"] && modified.givenName || "",
+			middleName: this.comps["m"] && modified.middleName || "",
+			familyName: this.comps["f"] && modified.familyName || "",
+			suffix: this.comps["s"] && modified.suffix || ""
+		};
+		
+		formatted = temp.format(parts);
+		return formatted.replace(/\s+/g, ' ').trim();
+	}
+};
+
+ilib.data.address = {};
+ilib.data.address_DE = {
+	"formats": {
+		"default": "{streetAddress}\n{postalCode} {locality}\n{country}",
+		"nocountry": "{streetAddress}\n{postalCode} {locality}"
+	},
+	
+	"startAt": "end",
+	"fields": [
+		{ 
+			"name": "locality",
+			"pattern": "([0-9]{5}\\s+)?([A-zßäöüÄÖÜ\\.\\-'\\/ ]+)$",
+			"line": "startAtLast",
+			"matchGroup": 2
+		},
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "[0-9]{5}"
+		}
+	]
+}
+;
+ilib.data.address_AU = {
+	"formats": {
+		"default": "{streetAddress}\n{locality} {region} {postalCode}\n{country}",
+		"nocountry": "{streetAddress}\n{locality} {region} {postalCode}"
+	},
+	
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "[0-9]{4}"
+		},
+		{
+			"name": "region",
+			"line": "last",
+			"pattern": [
+				"new south wales",
+				"nsw",
+				"queensland",
+				"qld",
+				"western australia",
+				"west australia",
+				"wa",
+				"southern australia",
+				"south australia",
+				"sa",
+				"tasmania",
+				"tas",
+				"victoria",
+				"vic",
+				"australian capital territory",
+				"capital territory",
+				"act",
+				"northern territory",
+				"nt",
+				"jervis bay territory",
+				"jervis bay",
+				"jbt",
+				"ashmore and cartier islands",
+				"ashmore & cartier islands",
+				"cartier island",
+				"ashmore island",
+				"australian antarctic territory",
+				"christmas island",
+				"cx",
+				"cocos and keeling islands",
+				"cocos & keeling islands",
+				"cocos (keeling) islands",
+				"cocos islands",
+				"keeling islands",
+				"cc",
+				"coral sea islands",
+				"willis island",
+				"heard island and mcdonald islands",
+				"heard island & mcdonald islands",
+				"heard island",
+				"mcdonald islands",
+				"hm",
+				"norfolk island",
+				"nf"
+			]
+		},
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "[A-z\\.\\-']+(\\s+[A-z\\.\\-']+)?$",
+			"matchGroup": 0
+		}
+	]
+};
+ilib.data.address_CA = {	
+	"formats": {
+		"default": "{streetAddress}\n{locality}, {region} {postalCode}\n{country}",
+		"nocountry": "{streetAddress}\n{locality}, {region} {postalCode}"
+	},
+	
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "[A-Za-z][0-9][A-Za-z]\\s+[0-9][A-Za-z][0-9]"
+		},
+		{
+			"name": "region",
+			"line": "last",
+			"pattern": [
+				"new foundland",
+				"terre-neuve-et-labrador",
+				"terre neuve et labrador",
+				"nfld",
+				"nl",
+				"nova scotia",
+				"nouvelle-écosse",
+				"nouvelle écosse",
+				"nouvelle-ecosse",
+				"nouvelle ecosse",
+				"ns",
+				"new brunswick",
+				"nouveau-brunswick",
+				"nb",
+				"prince edward island",
+				"île-du-prince-édouard",
+				"île du prince édouard",
+				"ile-du-prince-edouard",
+				"ile du prince edouard",
+				"pei",
+				"pe",
+				"québec",
+				"quebec",
+				"qué",
+				"que",
+				"qc",
+				"ontario",
+				"ont",
+				"on",
+				"manitoba",
+				"man",
+				"mb",
+				"saskatchewan",
+				"sask",
+				"sk",
+				"alberta",
+				"alb",
+				"ab",
+				"british columbia",
+				"colombie-britannique",
+				"colombie britannique",
+				"bc",
+				"nunavut",
+				"nun",
+				"nu",
+				"north west territories",
+				"northwest territories",
+				"territoires du nord-ouest",
+				"territoires du nordouest",
+				"nwt",
+				"nt",
+				"yukon territory",
+				"territoire-yukon",
+				"territoire yukon",
+				"yukon",
+				"yuk",
+				"yt"
+			]
+		},
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "[\\wÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû\\.\\-']+$",
+			"matchGroup": 0
+		}
+	]
+}
+;
+ilib.data.address_GB = {
+	"formats": {
+		"default": "{streetAddress}\n{locality}\n{postalCode}\n{country}",
+		"nocountry": "{streetAddress}\n{locality}\n{postalCode}"
+	},
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "([A-Za-z]{1,2}[0-9]{1,2}[ABCDEFGHJKMNPRSTUVWXYabcdefghjkmnprstuvwxy]?\\s+[0-9][A-Za-z]{2}|GIR 0AA|SAN TA1)",
+			"matchGroup": 0
+		},
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "[A-z\\.\\-']+$"
+		}
+	]
+}
+;
+ilib.data.address_IE = {
+	"formats": {
+		"default": "{streetAddress}\n{locality} {postalCode}\n{region}\n{country}",
+		"nocountry": "{streetAddress}\n{locality} {postalCode}\n{region}"
+	},
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "(D?[0-9]{1,2}W?)$",
+			"matchGroup": 1
+		},
+		{
+			"name": "region",
+			"line": "startAtLast",
+			"pattern": "(([Cc]ounty|[Cc]ontae|[Cc]o)[\\-\\.:;]?\\s+([A-zÁÉÍÓÚáéíóú\\.\\-' ]+))$",
+			"matchGroup": 0
+		},
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "[A-zÁÉÍÓÚáéíóú\\.\\-']+$"
+		}
+	]
+}
+;
+ilib.data.address_IN = {
+	"formats": {
+		"default": "{streetAddress}\n{locality}\n{postalCode}\n{country}",
+		"nocountry": "{streetAddress}\n{locality}\n{postalCode}"
+	},
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "[0-9]{6}$",
+			"matchGroup": 0
+		},
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "[\\w\\.\\-' ]+"
+		}
+	]
+}
+;
+ilib.data.address_NZ = {
+	"formats": {
+		"default": "{streetAddress}\n{locality} {postalCode}\n{country}",
+		"nocountry": "{streetAddress}\n{locality} {postalCode}"
+	},
+	
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "[0-9]{4}"
+		},
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "[A-z\\.\\-']+$",
+			"matchGroup": 0
+		}
+	]
+};
+ilib.data.address_US = {	
+	"formats": {
+		"default": "{streetAddress}\n{locality} {region} {postalCode}\n{country}",
+		"nocountry": "{streetAddress}\n{locality} {region} {postalCode}"
+	},
+	
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "[0-9]{5}(-[0-9]{4})?",
+			"matchGroup": 0
+		},
+		{
+			"name": "region",
+			"line": "last",
+			"pattern": [
+				"alabama",
+				"ala.",
+				"ala",
+				"al",
+				"alaska",
+				"alas.",
+				"alas",
+				"ak",
+				"american samoa",
+				"am. samoa",
+				"am samoa",
+				"as",
+				"arizona",
+				"ariz.",
+				"ariz",
+				"az",
+				"arkansas",
+				"ark.",
+				"ark",
+				"ar",
+				"california",
+				"cal.",
+				"cal",
+				"ca",
+				"colorado",
+				"col.",
+				"col",
+				"co",
+				"connecticut",
+				"conn.",
+				"conn",
+				"ct",
+				"delaware",
+				"del.",
+				"del",
+				"de",
+				"district of columbia",
+				"district columbia",
+				"d of columbia",
+				"dc",
+				"federated states of micronesia",
+				"fsm",
+				"micronesia",
+				"fm",
+				"florida",
+				"flor.",
+				"flor",
+				"flo.",
+				"flo",
+				"fl",
+				"georgia",
+				"ga",
+				"guam",
+				"gu",
+				"hawaii",
+				"hawai'i",
+				"haw.",
+				"haw",
+				"hi",
+				"idaho",
+				"id",
+				"illinois",
+				"ill.",
+				"ill",
+				"il",
+				"indiana",
+				"ind.",
+				"ind",
+				"in",
+				"iowa",
+				"ia",
+				"kansas",
+				"kan.",
+				"kan",
+				"ks",
+				"kentucky",
+				"kent.",
+				"ken.",
+				"ken",
+				"ky",
+				"louisiana",
+				"lou.",
+				"lou",
+				"la",
+				"maine",
+				"me",
+				"marshall islands",
+				"mar. islands",
+				"marshalls",
+				"mh",
+				"maryland",
+				"mar.",
+				"mar",
+				"md",
+				"massachusetts",
+				"mass.",
+				"mass",
+				"mas.",
+				"mas",
+				"ma",
+				"michigan",
+				"mich.",
+				"mich",
+				"mi",
+				"minnesota",
+				"minn.",
+				"minn",
+				"mn",
+				"mississippi",
+				"miss.",
+				"miss",
+				"mis.",
+				"mis",
+				"ms",
+				"missouri",
+				"mo",
+				"montana",
+				"mont.",
+				"mont",
+				"mon.",
+				"mon",
+				"mt",
+				"nebraska",
+				"neb.",
+				"neb",
+				"ne",
+				"nevada",
+				"nev.",
+				"nev",
+				"nv",
+				"new hampshire",
+				"nh",
+				"new jersey",
+				"nj",
+				"new mexico",
+				"nm",
+				"new york",
+				"ny",
+				"north carolina",
+				"n. carolina",
+				"n carolina",
+				"nc",
+				"north dakota",
+				"n. dakota",
+				"n dakota",
+				"nd",
+				"northern mariana islands",
+				"n. mariana islands",
+				"n mariana islands",
+				"marianas",
+				"nmi",
+				"mp",
+				"ohio",
+				"oh",
+				"oklahoma",
+				"okla.",
+				"okla",
+				"okl.",
+				"ok",
+				"oregon",
+				"ore.",
+				"or",
+				"palau",
+				"pw",
+				"pennsylvania",
+				"penn.",
+				"penn",
+				"pen.",
+				"pen",
+				"pa",
+				"puerto rico",
+				"pr",
+				"rhode island",
+				"ri",
+				"south carolina",
+				"s. carolina",
+				"s carolina",
+				"sc",
+				"south dakota",
+				"s. dakota",
+				"s dakota",
+				"sd",
+				"tennessee",
+				"tenn.",
+				"tenn",
+				"ten.",
+				"ten",
+				"tn",
+				"texas",
+				"tex.",
+				"tex",
+				"tx",
+				"utah",
+				"ut",
+				"vermont",
+				"ver.",
+				"ver",
+				"vt",
+				"us virgin islands",
+				"virgin islands",
+				"virgins",
+				"vi",
+				"virginia",
+				"virg.",
+				"virg",
+				"vir.",
+				"va",
+				"washington",
+				"wash",
+				"wa",
+				"west virginia",
+				"w. virginia",
+				"w virginia",
+				"w. virg.",
+				"w virg",
+				"wv",
+				"wisconsin",
+				"wisc.",
+				"wisc",
+				"wis.",
+				"wis",
+				"wi",
+				"wyoming",
+				"wyom.",
+				"wyom",
+				"wy",
+				"armed forces africa",
+				"af africa",
+				"ae",
+				"armed forces americas",
+				"af americas",
+				"aa",
+				"armed forces canada",
+				"af canada",
+				"ae",
+				"armed forces europe",
+				"af europe",
+				"ae",
+				"armed forces middle east",
+				"af middle east",
+				"ae",
+				"armed forces pacific",
+				"af pacific",
+				"ap"
+			]
+		},
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "[A-z\\.\\-']+$",
+			"matchGroup": 0
+		}
+	]
+}
+;
+ilib.data.address_ES = {
+	"formats": {
+		"default": "{streetAddress}\n{postalCode} {locality} {region}\n{country}",
+		"nocountry": "{streetAddress}\n{postalCode} {locality} {region}"
+	},
+	
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "region",
+			"line": "last",
+			"pattern": [
+				"andalusia",
+				"andalucía",
+				"andalucia",
+				"aragon",
+				"aragón",
+				"asturias principality of asturias",
+				"principado de asturias",
+				"principáu d'asturies",
+				"principau d'asturies",
+				"asturias",
+				"asturies",
+				"balearic islands",
+				"islas baleares",
+				"baleares",
+				"illes balears",
+				"basque country",
+				"euskadi",
+				"país vasco",
+				"pais vasco",
+				"comunidad autónoma vasca",
+				"comunidad autonoma vasca",
+				"euskal autonomi erkidegoa",
+				"canary islands",
+				"islas canarias",
+				"canarias",
+				"cantabria",
+				"castile-la mancha",
+				"castilla-la mancha",
+				"castilla la mancha",
+				"la mancha",
+				"castile and león",
+				"castile and leon",
+				"castilla y león",
+				"castilla y leon",
+				"catalonia",
+				"cataluña",
+				"catalunya",
+				"extremadura",
+				"galicia",
+				"galiza",
+				"la rioja",
+				"rioja",
+				"community of madrid ",
+				"comunidad madrid",
+				"madrid",
+				"region of murcia",
+				"región de murcia",
+				"region de murcia",
+				"murcia",
+				"foral community of navarre",
+				"comunidad foral de navarra",
+				"nafarroako foru komunitatea",
+				"navarre",
+				"navarra",
+				"nafarroako",
+				"valencian community",
+				"comunidad valenciana",
+				"comunitat valenciana",
+				"la coruña",
+				"la coruna",
+				"a coruña",
+				"a coruna",
+				"álava",
+				"alava",
+				"araba",
+				"albacete",
+				"alicante",
+				"alacant",
+				"almería",
+				"almeria",
+				"asturias",
+				"avila",
+				"badajoz",
+				"barcelona",
+				"biscay",
+				"bizkaia",
+				"vizcaya",
+				"burgos",
+				"cáceres",
+				"caceres",
+				"cádiz",
+				"cadiz",
+				"cantabria",
+				"castellón",
+				"castellon",
+				"castelló",
+				"castello",
+				"ciudad real",
+				"córdoba",
+				"cordoba",
+				"cuenca",
+				"gipuzkoa",
+				"guipúzcoa",
+				"guipuzcoa",
+				"girona",
+				"gerona",
+				"granada",
+				"guadalajara",
+				"huelva",
+				"huesca",
+				"jaén",
+				"jaen",
+				"las palmas",
+				"león",
+				"leon",
+				"lleida",
+				"lérida",
+				"lerida",
+				"lugo",
+				"málaga",
+				"malaga",
+				"murcia",
+				"navarre",
+				"nafarroa",
+				"navarra",
+				"ourense",
+				"orense",
+				"palencia",
+				"pontevedra",
+				"salamanca",
+				"santa cruz",
+				"sta. cruz",
+				"sta cruz",
+				"segovia",
+				"seville",
+				"sevilla",
+				"soria",
+				"tarragona",
+				"teruel",
+				"toledo",
+				"valència",
+				"valencia",
+				"valladolid",
+				"zamora",
+				"zaragoza"
+			]
+		},
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "([0-9]{5}\\s*-?\\s+)?([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü][A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-' ]*)$",
+			"matchGroup": 2
+		},
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "[0-9]{5}\\s*-?"
+		}
+	]	
+}
+;
+ilib.data.address_MX = {
+	"formats": {
+		"default": "{streetAddress}\n{postalCode} {locality}, {region}\n{country}",
+		"nocountry": "{streetAddress}\n{postalCode} {locality}, {region}"
+	},
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "region",
+			"line": "startAtLast",
+			"pattern": [
+				"aguascalientes",
+				"ags",
+				"morelos",
+				"mor",
+				"baja california",
+				"b. c.",
+				"b.c.",
+				"bc",
+				"nayarit",
+				"nay",
+				"baja california sur",
+				"b. c. s.",
+				"b.c.s.",
+				"bcs",
+				"nuevo león",
+				"nuevo leon",
+				"n. l.",
+				"n.l.",
+				"nl",
+				"campeche",
+				"cam",
+				"oaxaca",
+				"oax",
+				"coahuila",
+				"coah",
+				"puebla",
+				"pue",
+				"colima",
+				"col",
+				"querétaro",
+				"queretaro",
+				"qro",
+				"chiapas",
+				"chis",
+				"quintana roo",
+				"q. roo",
+				"q roo",
+				"chihuahua",
+				"chih",
+				"san luis potosí",
+				"san luis potosi",
+				"s. l. p.",
+				"s.l.p.",
+				"slp",
+				"distrito federal",
+				"d. f.",
+				"d.f.",
+				"df",
+				"sinaloa",
+				"sin",
+				"durango",
+				"dgo",
+				"sonora",
+				"son",
+				"guanajuato",
+				"gto",
+				"tabasco",
+				"tab",
+				"guerrero",
+				"gro",
+				"tamaulipas",
+				"tamps",
+				"hidalgo",
+				"hgo",
+				"tlaxcala",
+				"tlax",
+				"jalisco",
+				"jal",
+				"veracruz",
+				"ver",
+				"mexico",
+				"mex",
+				"yucatán",
+				"yucatan",
+				"yuc",
+				"michoacán",
+				"michoacan",
+				"mich",
+				"zacatecas",
+				"zac"
+			]
+		},
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "(([Cc]\\.?[Pp]\\.?\\s+)?[0-9]{5}\\s+)?([A-zÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû\\.\\-' ]+)$",
+			"matchGroup": 3
+		},
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "(([Cc]\\.?[Pp]\\.?\\s+)?[0-9]{5})",
+			"matchGroup": 0
+		}
+	]
+}
+;
+ilib.data.address_FR = {
+	"formats": {
+		"default": "{streetAddress}\n{postalCode} {locality}\n{country}",
+		"nocountry": "{streetAddress}\n{postalCode} {locality}"
+	},
+	
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "([A-zÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû\\.\\-' ]+)([Cc][Ee][Dd][Ee][Xx]\\s+[0-9]+)?$",
+			"matchGroup": 1
+		},
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "([0-9]{5}(\\s+[Cc][Ee][Dd][Ee][Xx]\\s+[0-9]+)?)",
+			"matchGroup": 0
+		}
+	]
+}
+;
+ilib.data.address_IT = {
+	"formats": {
+		"default": "{streetAddress}\n{postalCode} {locality} {region}\n{country}",
+		"nocountry": "{streetAddress}\n{postalCode} {locality} {region}"
+	},
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "region",
+			"line": "startAtLast",
+			"pattern": [
+				"rm",
+				"(rm)",
+				"scv",
+				"(scv)",
+				"vt",
+				"(vt)",
+				"ri",
+				"(ri)",
+				"fr",
+				"(fr)",
+				"lt",
+				"(lt)",
+				"tr",
+				"(tr)",
+				"pg",
+				"(pg)",
+				"ss",
+				"(ss)",
+				"ot",
+				"(ot)",
+				"nu",
+				"(nu)",
+				"og",
+				"(og)",
+				"ca",
+				"(ca)",
+				"or",
+				"(or)",
+				"ci",
+				"(ci)",
+				"md",
+				"(md)",
+				"vs",
+				"(vs)",
+				"to",
+				"(to)",
+				"ao",
+				"(ao)",
+				"cn",
+				"(cn)",
+				"vc",
+				"(vc)",
+				"bi",
+				"(bi)",
+				"at",
+				"(at)",
+				"al",
+				"(al)",
+				"ge",
+				"(ge)",
+				"sv",
+				"(sv)",
+				"im",
+				"(im)",
+				"sp",
+				"(sp)",
+				"mi",
+				"(mi)",
+				"va",
+				"(va)",
+				"co",
+				"(co)",
+				"so",
+				"(so)",
+				"lc",
+				"(lc)",
+				"bg",
+				"(bg)",
+				"bs",
+				"(bs)",
+				"cr",
+				"(cr)",
+				"lo",
+				"(lo)",
+				"pv",
+				"(pv)",
+				"no",
+				"(no)",
+				"vb",
+				"(vb)",
+				"pc",
+				"(pc)",
+				"ve",
+				"(ve)",
+				"tv",
+				"(tv)",
+				"bl",
+				"(bl)",
+				"ud",
+				"(ud)",
+				"pn",
+				"(pn)",
+				"ts",
+				"(ts)",
+				"go",
+				"(go)",
+				"pd",
+				"(pd)",
+				"vi",
+				"(vi)",
+				"vr",
+				"(vr)",
+				"tn",
+				"(tn)",
+				"bz",
+				"(bz)",
+				"bo",
+				"(bo)",
+				"mo",
+				"(mo)",
+				"re",
+				"(re)",
+				"pr",
+				"(pr)",
+				"fe",
+				"(fe)",
+				"ro",
+				"(ro)",
+				"mn",
+				"(mn)",
+				"fc",
+				"(fc)",
+				"rn",
+				"(rn)",
+				"rsm",
+				"(rsm)",
+				"ra",
+				"(ra)",
+				"fi",
+				"(fi)",
+				"pt",
+				"(pt)",
+				"ar",
+				"(ar)",
+				"si",
+				"(si)",
+				"ms",
+				"(ms)",
+				"lu",
+				"(lu)",
+				"pi",
+				"(pi)",
+				"li",
+				"(li)",
+				"gr",
+				"(gr)",
+				"po",
+				"(po)",
+				"an",
+				"(an)",
+				"pu",
+				"(pu)",
+				"mc",
+				"(mc)",
+				"ap",
+				"(ap)",
+				"te",
+				"(te)",
+				"pe",
+				"(pe)",
+				"ch",
+				"(ch)",
+				"aq",
+				"(aq)",
+				"ba",
+				"(ba)",
+				"fg",
+				"(fg)",
+				"br",
+				"(br)",
+				"le",
+				"(le)",
+				"ta",
+				"(ta)",
+				"mt",
+				"(mt)",
+				"na",
+				"(na)",
+				"ce",
+				"(ce)",
+				"bn",
+				"(bn)",
+				"av",
+				"(av)",
+				"sa",
+				"(sa)",
+				"pz",
+				"(pz)",
+				"cb",
+				"(cb)",
+				"is",
+				"(is)",
+				"cs",
+				"(cs)",
+				"cz",
+				"(cz)",
+				"kr",
+				"(kr)",
+				"rc",
+				"(rc)",
+				"vv",
+				"(vv)",
+				"pa",
+				"(pa)",
+				"tp",
+				"(tp)",
+				"ag",
+				"(ag)",
+				"cl",
+				"(cl)",
+				"en",
+				"(en)",
+				"ct",
+				"(ct)",
+				"sr",
+				"(sr)",
+				"rg",
+				"(rg)",
+				"me",
+				"(me)"
+			]
+		},
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "((I-|IT-)?[0-9]{5}\\s+)?([A-zÀÁÈÉÌÍÒÓÙÚàáèéìíòóùú\\.\\-' ]+)$",
+			"matchGroup": 3
+		},
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "(I-|IT-)?([0-9]{5})",
+			"matchGroup": 0
+		}
+	]
+}
+;
+ilib.data.address_NL = {
+	"formats": {
+		"default": "{streetAddress}\n{postalCode} {locality}\n{country}",
+		"nocountry": "{streetAddress}\n{postalCode} {locality}"
+	},
+	"startAt": "end",
+	"fields": [
+		{ 
+			"name": "locality",
+			"pattern": "([0-9]{4} [A-Z]{2}\\s+)?([A-zÀÁÄÈÉËÌÍÏÒÓÖÙÚÜßàáäèéëìíòóöùúüÿŸ \\.\\-']+?)$",
+			"line": "startAtLast",
+			"matchGroup": 2
+		},
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "[0-9]{4}\\s+[A-Z]{2}"
+		}
+	]
+}
+;
+ilib.data.address_XX = {	
+	"formats": {
+		"default": "{streetAddress}\n{locality} {region} {postalCode}\n{country}",
+		"nocountry": "{streetAddress}\n{locality} {region} {postalCode}"
+	},
+	
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "[0-9]+$"
+		},
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "[\\wÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû\\.\\-']+$"
+		}
+	]
+}
+;
+ilib.data.address_CN = {
+	"multiformat": true,
+	"formats": {
+		"default": {
+			"latin": "{streetAddress}\n{locality}, {region} {postalCode}\n{country}",
+			"asian": "{country}{postalCode}\n{region}{locality}{streetAddress}"
+		},
+		"asian": {
+			"asian": "{postalCode}\n{region}{locality}{streetAddress}",
+			"latin": "{streetAddress}\n{locality} {region} {postalCode}"
+		}
+	},
+	"startAt": {
+		"latin": "end",
+		"asian": "beginning"
+	},
+	"fields": {
+		"latin": [
+			{
+				"name": "postalCode",
+				"line": "startAtLast",
+				"pattern": "[0-9]{6}$"
+			},
+			{
+				"name": "region",
+				"line": "last",
+				"pattern": [
+					"heilongjiang",
+					"hēilóngjiāng",
+					"heilungkiang",
+					"jilin",
+					"jílín",
+					"kirin",
+					"liaoning",
+					"liáoníng",
+					"fengtien",
+					"qinghai",
+					"qīnghǎi",
+					"tsinghai",
+					"gansu",
+					"gānsù",
+					"kansu",
+					"shaanxi",
+					"shǎnxī",
+					"shensi",
+					"shanxi",
+					"shānxī",
+					"shansi",
+					"hebei",
+					"héběi",
+					"hopeh",
+					"sichuan",
+					"sìchuān",
+					"szechuan",
+					"hubei",
+					"húběi",
+					"hupeh",
+					"hena",
+					"hénán",
+					"honan",
+					"shandong",
+					"shāndōng",
+					"shantung",
+					"anhui",
+					"Ānhuī",
+					"anhwei",
+					"jiangsu",
+					"jiāngsū",
+					"kiangsu",
+					"yunnan",
+					"yúnnán",
+					"yunnan",
+					"guizhou",
+					"gùizhōu",
+					"kweichow",
+					"hunan",
+					"húnán",
+					"hunan",
+					"jiangxi",
+					"jiāngxī",
+					"kiangsi",
+					"zhejiang",
+					"zhèjiāng",
+					"chekiang",
+					"hainan",
+					"hǎinán",
+					"hainan",
+					"guangdong",
+					"guǎngdōng",
+					"kwangtung",
+					"fujian",
+					"fújiàn",
+					"fukien",
+					"taiwan",
+					"táiwān",
+					"taiwan",
+					"xīnjiāng wéiwú'ěr zìzhìqū",
+					"xinjiang weiwuer zizhiqu",
+					"xīnjiāng wéiwú'ěr",
+					"xinjiang weiwuer",
+					"nèiměnggǔ zìzhìqū",
+					"neimenggu zizhiqu",
+					"nèiměnggǔ",
+					"neimenggu",
+					"xīzàng zìzhìqū",
+					"xizang zizhiqu",
+					"xīzàng",
+					"xizang",
+					"níngxià huízú zìzhìqū",
+					"ningxia huizu zizhiqu",
+					"níngxià huízú",
+					"ningxia hui",
+					"guǎngxī zhuàngzú zìzhìqū",
+					"guangxi zhuang zizhiqu",
+					"guǎngxī zhuàngzú",
+					"guangxi zhuang",
+					"hong kong",
+					"xiānggǎng",
+					"xianggang",
+					"hongkong",
+					"macau",
+					"àomén",
+					"aomen"
+				]
+			},
+			{
+				"name": "locality",
+				"line": "last",
+				"pattern": "[A-zÀÁÈÉÌÍÒÓÙÚàáèéìíòóùúĀāĂăǍǎĒēĔĕĚěĪīĬĭǏǐŌōŎŏǑǒŪūŬŭǓǔ\\-']+$"
+			}
+		],
+		"asian": [
+			{
+				"name": "postalCode",
+				"line": "startAtLast",
+				"pattern": "[0-9]{6}$"
+			},
+			{
+				"name": "region",
+				"line": "startAtFirst",
+				"pattern": "^\\S{2}省(\\w{2}县)?",
+				"matchGroup": 0
+			},
+			{
+				"name": "locality",
+				"line": "startAtFirst",
+				"pattern": "^(\\S{1,5}[市鎮鄉])",
+				"matchGroup": 0
+			}
+		]
+	}
+	
+}
+;
+ilib.data.address_TW = {
+	"multiformat": true,
+	"formats": {
+		"default": {
+			"asian": "{country}\n{region}{locality}{streetAddress}{postalCode}",
+			"latin": "{streetAddress}\n{locality}, {region}, {postalCode}\n{country}"
+		},
+		"nocountry": {
+			"asian": "{region}{locality}{streetAddress}{postalCode}",
+			"latin": "{streetAddress}\n{locality}, {region}, {postalCode}"
+		}
+	},
+	"startAt": {
+		"latin": "end",
+		"asian": "beginning"
+	},
+	"fields": {
+		"latin": [
+			{
+				"name": "postalCode",
+				"line": "startAtLast",
+				"pattern": "(^[0-9]{3,5}|\\s+[0-9]{3,5})"
+			},
+			{
+				"name": "region",
+				"line": "last",
+				"pattern": [
+					"Taiwan Province",
+					"Táiwān Shěng",
+					"Taiwan Sheng",
+					"Taiwan",
+					"Táiwān",
+					"Fujian Province",
+					"Fújiàn Shěng",
+					"Fujian Sheng",
+					"Fujian",
+					"Fújiàn"
+				]
+			},
+			{
+				"name": "locality",
+				"line": "last",
+				"pattern": "([Nn][Ee][Ww]\\s+)?[A-zÀÁÈÉÌÍÒÓÙÚàáèéìíòóùúĀāĂăǍǎĒēĔĕĚěĪīĬĭǏǐŌōŎŏǑǒŪūŬŭǓǔ\\-']+(\\s+[Cc][Ii][Tt][Yy])?$",
+				"matchGroup": 0
+			}
+		],
+		"asian": [
+			{
+				"name": "postalCode",
+				"line": "startAtLast",
+				"pattern": "\\s*[0-9]{3,5}\\s*"
+			},
+			{
+				"name": "region",
+				"line": "startAtFirst",
+				"pattern": "^\\S{2}省(\\w{2}縣)?"
+			},
+			{
+				"name": "locality",
+				"line": "startAtFirst",
+				"pattern": "^\\S{1,5}[市鎮鄉]"
+			}
+		]
+	}
+	
+}
+;
+ilib.data.address_HK = {
+	"multiformat": true,
+	"formats": {
+		"default": {
+			"asian": "{country}{locality}{streetAddress}",
+			"latin": "{streetAddress}\n{locality}\n{country}"
+		},
+		"nocountry": {
+			"asian": "{locality}{streetAddress}{postalCode}",
+			"latin": "{streetAddress}\n{locality}"
+		}
+	},
+	"startAt": {
+		"latin": "end",
+		"asian": "beginning"
+	},
+	"fields": {
+		"latin": [
+			{
+				"name": "locality",
+				"line": "last",
+				"pattern": [
+					"victoria city", 
+					"victoria harbour", 
+					"victoria",
+					"kowloon", 
+					"jiǔlóng",
+					"jiulong",
+					"causeway bay",
+					"tsuen wan", 
+					"quánwān qū",
+					"quanwan qu",
+					"sha tin",
+					"ma on shan",
+					"tuen mun", 
+					"túnmén xīn shìzhèn",
+					"tunmen xin shizhen", 
+					"túnmén",
+					"tunmen",
+					"tai po",
+					"tai gu", 
+					"dàpǔ xīn shìzhèn",
+					"dapu xin shizhen", 
+					"dàpǔ",
+					"dapu",
+					"yuen long", 
+					"yuánlǎng",
+					"yuanlang",
+					"fanling-sheung shui", 
+					"shàngshuǐ xīn shìzhèn",
+					"shangshui xin shizhen", 
+					"shàngshuǐ",
+					"shangshui",
+					"tseung kwan o", 
+					"jiangjun'ao xin shizhen", 
+					"jiangjun'ao",
+					"tin shui wai",
+					"north lantau",
+					"tung chung",
+					"tai ho",
+					"aberdeen",
+					"cheung chau",
+					"discovery bay",
+					"jardine's lookout",
+					"kennedy town",
+					"kwun tong", 
+					"guāntáng",
+					"guantang",
+					"lei yue mun",
+					"ma wan",
+					"mui wo", 
+					"méiwō",
+					"meiwo",
+					"silvermine bay",
+					"peng chau",
+					"sai kung", 
+					"xīgòng shì",
+					"xigong shi",
+					"xīgòng",
+					"xigong",
+					"sha tau kok",
+					"shek o",
+					"sok kwu wan",
+					"stanley",
+					"tai o",
+					"yuen long town", 
+					"yuánlǎng shìzhōngxīn",
+					"yuanlang shizhongxin", 
+					"yuánlǎng",
+					"yuanlang",
+					"yung shue wan", 
+					"banyan bay",
+					"hong kong",
+					"xiānggǎng",
+					"xianggang",
+					"quarry bay"
+				]
+			}
+		],
+		"asian": [
+			{
+				"name": "locality",
+				"line": "startAtFirst",
+				"pattern": "(^\\S{1,5}[市鎮鄉城]|hong kong|xiānggǎng|xianggang)"
+			}
+		]
+	}
+}
+;
+ilib.data.address_SG = {
+	"multiformat": true,
+	"formats": {
+		"default": {
+			"latin": "{streetAddress}\n{locality} {postalCode}\n{country}",
+			"asian": "{country}{postalCode}{locality}{streetAddress}"
+		},
+		"nocountry": {
+			"asian": "{postalCode}{locality}{streetAddress}",
+			"latin": "{streetAddress}\n{locality} {postalCode}"
+		}
+	},
+	"startAt": {
+		"latin": "end",
+		"asian": "beginning"
+	},
+	"fields": {
+		"latin": [
+			{
+				"name": "postalCode",
+				"line": "startAtLast",
+				"pattern": "[0-9]{6}"
+			},
+			{
+				"name": "locality",
+				"line": "last",
+				"pattern": "[Ss][Ii][Nn][Gg][Aa][Pp][Oo][Rr][Ee]$"
+			}
+		],
+		"asian": [
+			{
+				"name": "postalCode",
+				"line": "startAtLast",
+				"pattern": "^[0-9]{6}"
+			},
+			{
+				"name": "locality",
+				"line": "startAtFirst",
+				"pattern": "^新加坡",
+				"matchGroup": 0
+			}
+		]
+	}
+}
+;
+ilib.data.countries = {"afghanistan":"AF","aland islands":"AX","åland islands":"AX","albania":"AL","algeria":"DZ","american samoa":"AS","andorra":"AD","angola":"AO","anguilla":"AI","antigua and barbuda":"AG","antigua & barbuda":"AG","antigua":"AG","barbuda":"AG","argentina":"AR","armenia":"AM","aruba":"AW","australia":"AU","austria":"AT","azerbaijan":"AZ","bahamas":"BS","the bahamas":"BS","bahrain":"BH","bangladesh":"BD","barbados":"BB","belarus":"BY","belgium":"BE","belize":"BZ","benin":"BJ","bermuda":"BM","bhutan":"BT","bolivia, plurinational state of":"BO","plurinational state of bolivia":"BO","bolivia":"BO","bosnia and herzegovina":"BA","bosnia & herzegovina":"BA","bosnia":"BA","herzegovina":"BA","botswana":"BW","bouvet island":"BV","brazil":"BR","british indian ocean territory":"IO","brunei darussalam":"BN","brunei":"BN","bulgaria":"BG","burkina faso":"BF","burundi":"BI","cambodia":"KH","cameroon":"CM","canada":"CA","cape verde":"CV","cape verde islands":"CV","cayman islands":"KY","caymans":"KY","central african republic":"CF","c.a.r.":"CF","car":"CF","chad":"TD","chile":"CL","people's republic of china":"CN","republic of china":"TW","p. r. of china":"CN","p. r. china":"CN","p.r. of china":"CN","pr china":"CN","R.O.C.":"TW","ROC":"TW","prc":"CN","china":"CN","christmas island":"CX","cocos (keeling) islands":"CC","cocos islands":"CC","cocos and keeling islands":"CC","cocos & keeling islands":"CC","colombia":"CO","comoros":"KM","congo":"CD","congo, the democratic republic of the":"CD","congo, democratic republic of the":"CD","the democratic republic of the congo":"CD","democratic republic of the congo":"CD","drc":"CD","cook islands":"CK","costa rica":"CR","cote d'ivoire":"CI","côte d'ivoire":"CI","ivory coast":"CI","croatia":"HR","cuba":"CU","cyprus":"CY","the czech republic":"CZ","czech republic":"CZ","denmark":"DK","djibouti":"DJ","dominica":"DM","dominican republic":"DO","d.r.":"DO","dr":"DO","ecuador":"EC","egypt":"EG","el salvador":"SV","equatorial guinea":"GQ","eritrea":"ER","estonia":"EE","ethiopia":"ET","falkland islands":"FK","falklands":"FK","malvinas":"FK","faroe islands":"FO","faroes":"FO","fiji":"FJ","finland":"FI","france":"FR","french guiana":"GF","french polynesia":"PF","polynesia":"PF","french southern territories":"TF","gabon":"GA","gabonese republic":"GA","gambia":"GM","republic of the gambia":"GM","georgia":"GE","germany":"DE","ghana":"GH","gibraltar":"GI","greece":"GR","greenland":"GL","grenada":"GD","guadeloupe":"GP","guam":"GU","guatemala":"GT","guernsey":"GG","guinea":"GN","guinea-bissau":"GW","republic of guinea-bissau":"GW","guyana":"GY","cooperative republic of guyana":"GY","haiti":"HT","heard island and mcdonald islands":"HM","heard island & mcdonald islands":"HM","heard and mcdonald islands":"HM","heard island":"HM","mcdonald islands":"HM","holy see":"VA","vatican city state":"VA","vatican city":"VA","vatican":"VA","honduras":"HN","hong kong":"HK","hungary":"HU","iceland":"IS","india":"IN","indonesia":"ID","iran, islamic republic of":"IR","islamic republic of iran":"IR","iran":"IR","iraq":"IQ","republic of ireland":"IE","ireland":"IE","éire":"IE","isle of man":"IM","israel":"IL","italy":"IT","jamaica":"JM","japan":"JP","jersey":"JE","jordan":"JO","kazakhstan":"KZ","kenya":"KE","republic of kenya":"KE","kiribati":"KI","korea, democratic people's republic of":"KP","democratic people's republic of korea":"KP","dprk":"KP","north korea":"KP","korea, republic of":"KR","republic of korea":"KR","south korea":"KR","korea":"KR","kuwait":"KW","kyrgyzstan":"KG","lao people's democratic republic":"LA","laos":"LA","latvia":"LV","lebanon":"LB","lesotho":"LS","liberia":"LR","libyan arab jamahiriya":"LY","libya":"LY","liechtenstein":"LI","lithuania":"LT","luxembourg":"LU","macao":"MO","macedonia, the former yugoslav republic of":"MK","macedonia, former yugoslav republic of":"MK","the former yugoslav republic of macedonia":"MK","former yugoslav republic of macedonia":"MK","f.y.r.o.m.":"MK","fyrom":"MK","macedonia":"MK","madagascar":"MG","malawi":"MW","malaysia":"MY","maldives":"MV","mali":"ML","republic of mali":"ML","malta":"MT","marshall islands":"MH","marshalls":"MH","martinique":"MQ","mauritania":"MR","mauritius":"MU","mayotte":"YT","mexico":"MX","micronesia, federated states of":"FM","federated states of micronesia":"FM","micronesia":"FM","moldova, republic of":"MD","republic of moldova":"MD","moldova":"MD","monaco":"MC","mongolia":"MN","montenegro":"ME","montserrat":"MS","morocco":"MA","mozambique":"MZ","myanmar":"MM","namibia":"NA","nauru":"NR","nepal":"NP","holland":"NL","netherlands antilles":"AN","the netherlands":"NL","netherlands":"NL","new caledonia":"NC","new zealand":"NZ","nicaragua":"NI","niger":"NE","nigeria":"NG","norfolk island":"NF","northern mariana islands":"MP","marianas":"MP","norway":"NO","oman":"OM","pakistan":"PK","palau":"PW","palestinian territory, occupied":"PS","occupied palestinian territory":"PS","palestinian territory":"PS","palestinian authority":"PS","palestine":"PS","panama":"PA","papua new guinea":"PG","png":"PG","paraguay":"PY","peru":"PE","the philippines":"PH","philippines":"PH","pitcairn":"PN","poland":"PL","portugal":"PT","puerto rico":"PR","qatar":"QA","reunion":"RE","réunion":"RE","romania":"RO","russian federation":"RU","russia":"RU","rwanda":"RW","saint barthélemy":"BL","saint barthelemy":"BL","saint barts":"BL","st. barthélemy":"BL","st. barthelemy":"BL","st. barts":"BL","st barthélemy":"BL","st barthelemy":"BL","st barts":"BL","saint helena, ascension and tristan da cunha":"SH","saint helena, ascension & tristan da cunha":"SH","saint helena":"SH","st. helena, ascension and tristan da cunha":"SH","st. helena, ascension & tristan da cunha":"SH","st. helena":"SH","st helena, ascension and tristan da cunha":"SH","st helena, ascension & tristan da cunha":"SH","st helena":"SH","ascension":"SH","tristan da cunha":"SH","saint kitts and nevis":"KN","saint kitts & nevis":"KN","saint kitts":"KN","st. kitts and nevis":"KN","st. kitts & nevis":"KN","st. kitts":"KN","st kitts and nevis":"KN","st kitts & nevis":"KN","st kitts":"KN","nevis":"KN","saint lucia":"LC","st. lucia":"LC","st lucia":"LC","saint martin":"MF","st. martin":"MF","st martin":"MF","saint pierre and miquelon":"PM","saint pierre & miquelon":"PM","saint pierre":"PM","st. pierre and miquelon":"PM","st. pierre & miquelon":"PM","st. pierre":"PM","st pierre and miquelon":"PM","st pierre & miquelon":"PM","st pierre":"PM","miquelon":"PM","saint vincent and the grenadines":"VC","saint vincent & the grenadines":"VC","saint vincent":"VC","st. vincent and the grenadines":"VC","st. vincent & the grenadines":"VC","st. vincent":"VC","st vincent and the grenadines":"VC","st vincent & the grenadines":"VC","st vincent":"VC","the grenadines":"VC","grenadines":"VC","samoa":"WS","san marino":"SM","sao tome and principe":"ST","sao tome & principe":"ST","sao tome":"ST","principe":"ST","saudi arabia":"SA","arabia":"SA","senegal":"SN","sénégal":"SN","serbia":"RS","seychelles":"SC","sierra leone":"SL","the republic of singapore":"SG","republic of singapore":"SG","singapore":"SG","slovakia":"SK","slovenia":"SI","solomon islands":"SB","solomons":"SB","somalia":"SO","south africa":"ZA","south georgia and the south sandwich islands":"GS","south georgia & the south sandwich islands":"GS","south georgia":"GS","the south sandwich islands":"GS","south sandwich islands":"GS","spain":"ES","sri lanka":"LK","the sudan":"SD","sudan":"SD","suriname":"SR","svalbard and jan mayen":"SJ","svalbard & jan mayen":"SJ","svalbard":"SJ","jan mayen":"SJ","swaziland":"SZ","sweden":"SE","switzerland":"CH","syrian arab republic":"SY","syria":"SY","taiwan":"TW","tajikistan":"TJ","tanzania, united republic of":"TZ","united republic of tanzania":"TZ","tanzania":"TZ","thailand":"TH","timor-leste":"TL","east timor":"TL","togo":"TG","tokelau":"TK","tonga":"TO","trinidad and tobago":"TT","trinidad & tobago":"TT","trinidad":"TT","tobago":"TT","tunisia":"TN","turkey":"TR","turkmenistan":"TM","turks and caicos islands":"TC","turks & caicos islands":"TC","turks islands":"TC","turk islands":"TC","caicos islands":"TC","caico islands":"TC","tuvalu":"TV","uganda":"UG","ukraine":"UA","united arab emirates":"AE","u.a.e.":"AE","uae":"AE","dubai":"AE","united kingdom":"GB","u.k.":"GB","uk":"GB","great britain":"GB","g.b.":"GB","gb":"GB","england":"GB","scotland":"GB","wales":"GB","united states":"US","united states of america":"US","u.s.a.":"US","usa":"US","united states minor outlying islands":"UM","uruguay":"UY","uzbekistan":"UZ","vanuatu":"VU","venezuela, bolivarian republic of":"VE","bolivarian republic of venezuela":"VE","venezuela":"VE","viet nam":"VN","vietnam":"VN","british virgin islands":"VG","virgin islands, british":"VG","bvis":"VG","b.v.i.":"VG","bvi":"VG","virgin islands, us":"VI","the us virgin islands":"VI","us virgin islands":"VI","virgin islands":"VI","usvi":"VI","wallis and futuna":"WF","wallis & futuna":"WF","wallis":"WF","futuna":"WF","western sahara":"EH","yemen":"YE","zambia":"ZM","zimbabwe":"ZW"};
+ilib.data.nativecountries = {"افغانستان":"AF","ålandsøerne":"AX","shqipëri":"AL","algérie":"DZ","الجزائر":"DZ","principat d'andorra":"AD","república de angola":"AO","repubilika ya ngola":"AO","Հայաստան":"AM","österreich":"AT","azərbaycan":"AZ","البحرين":"BH","বাংলাদেশ":"BD","গণপ্রজাতন্ত্রী বাংলাদেশ":"BD","gônoprojatontri bangladesh":"BD","беларусь":"BY","belgië":"BE","la belgique":"BE","belgique":"BE","république du bénin":"BJ","bénin":"BJ","འབྲུག་ཡུལ་":"BT","bulivya mamallaqta":"BO","estado plurinacional de bolivia":"BO","wuliwya suyu":"BO","bosna i hercegovina":"BA","босна и херцеговина":"BA","lefatshe la botswana":"BW","bouvetøya":"BV","brasil":"BR","negara brunei darussalam":"BN","българия":"BG","republika y'u burundi":"BI","république du burundi":"BI","ព្រះរាជាណាចក្រកម្ពុជា":"KH","preăh réachéanachâk kâmpŭchéa":"KH","kâmpŭchéa":"KH","cameroun":"CM","cabo verde":"CV","islas de cabo verde":"CV","république centrafricaine":"CF","ködörösêse tî bêafrîka":"CF","république du tchad":"TD","tchad":"TD","جمهورية تشاد":"TD","ǧumhūriyyat tšād":"TD","tšād":"TD","中华人民共和国中国":"CN","共和國的中國":"TW","台灣的":"TW","中国":"CN","union des comores":"KM","udzima wa komori":"KM","الاتحاد القمري":"KM","al-ittiḥād al-qumurī/qamarī":"KM","république du congo":"CG","repubilika ya kongo":"CG","republiki ya kongó":"CG","kongo":"CG","kongó":"CG","république démocratique du congo":"CD","kūki 'āirani":"CK","cote-d'ivoire":"CI","côte-d'ivoire":"CI","hrvatska":"HR","κυπριακή δημοκρατία":"CY","kypriakí dimokratía":"CY","kıbrıs cumhuriyeti":"CY","česká republika":"CZ","danmark":"DK","جمهورية جيبوتي":"DJ","jumhūriyyat jībūtī":"DJ","république de djibouti":"DJ","jamhuuriyadda jabuuti":"DJ","gabuutih ummuuno":"DJ","jībūtī":"DJ","djibouti":"DJ","jabuuti":"DJ","gabuutih":"DJ","Commonwealth de la Dominique":"DM","Dominique":"DM","república dominicana":"DO","مصر":"EG","república de guinea ecuatorial":"GQ","république de guinée équatoriale":"GQ","guinea ecuatorial":"GQ","guinée équatoriale":"GQ","ሃገረ ኤርትራ":"ER","hagere ertra":"ER","دولة إرتريا":"ER","dawlat iritrīya":"ER","eesti":"EE","የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ":"ET","ye-ītyōṗṗyā fēdēralāwī dīmōkrāsīyāwī rīpeblīk":"ET","የኢትዮጵያ":"ET","ye-ītyōṗṗyā":"ET","malvinas":"FK","færøerne":"FO","matanitu ko viti":"FJ","fijī ripablik":"FJ","फ़िजी गणराज्य":"FJ","suomi":"FI","guyane française":"GF","polynésie française":"PF","terres australes françaises":"TF","république gabonaise":"GA","საქართველოს":"GE","deutschland":"DE","ελλάδα":"GR","grønland":"GL","république de guinée":"GN","república da guiné-bissau":"GW","haïti":"HT","ayiti":"HT","santa sede":"VA","città del vaticano":"VA","vaticano":"VA","香港的":"HK","magyarország":"HU","ísland":"IS","भारत":"IN","جمهوری اسلامی ایران":"IR","ایران":"IR","العراق":"IQ","éire":"IE","ישראל":"IL","italia":"IT","日本":"JP","الأردن":"JO","Казахстан":"KZ","jamhuri ya kenya":"KE","ribaberiki kiribati":"KI","조선 민주주의 인민 공화국":"KP","북한":"KP","대한민국":"KR","한국":"KR","الكويت":"KW","кыргыз республикасы":"KG","kırgız respublikası":"KG","кыргызская республика":"KG","kyrgyzskaya respublika":"KG","ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ":"LA","sathalanalat paxathipatai paxaxon lao":"LA","latvija":"LV","لبنان":"LB","muso oa lesotho":"LS","ليبيا":"LY","lietuva":"LT","luxemburg":"LU","macau":"MO","澳门":"MO","澳門":"MO","поранешна југословенска република македонија":"MK","македонија":"MK","repoblikan'i madagasikara":"MG","république de madagascar":"MG","chalo cha malawi":"MW","dziko la malaŵi":"MW","malaŵi":"MW","ދިވެހިރާއްޖޭގެ ޖުމްހޫރިއްޔާ":"MV","dhivehi raa'jeyge jumhooriyya":"MV","république du mali":"ML","mali ka fasojamana":"ML","الجمهورية الإسلامية الموريتانية":"MR","al-ǧumhūriyyah al-ʾislāmiyyah al-mūrītāniyyah":"MR","république islamique de mauritanie":"MR","republik bu lislaamu bu gànnaar":"MR","republik moris":"MU","république de maurice":"MU","méxico":"MX","republica moldova":"MD","mongγol ulus":"MN","монгол улс":"MN","mongol uls":"MN","crna gora":"ME","црна гора":"ME","مغربي":"MA","república de moçambique":"MZ","moçambique":"MZ","pyidaunzu thanmăda myăma nainngandaw":"MM","burma":"MM","republiek van namibië":"NA","republik namibia":"NA","namibië":"NA","ripublik naoero":"NR","सङ्घीय लोकतान्त्रिक गणतन्त्र नेपाल":"NP","sanghiya loktāntrik ganatantra nepāl":"NP","nepāl":"NP","nederland":"NL","nouvelle-calédonie":"NC","la calédonie":"NC","calédonie":"NC","aotearoa":"NZ","jamhuriyar nijar":"NE","nijar":"NE","jamhuriyar tarayyar najeriya":"NG","njíkọtá ọchíchìiwú nàịjíríà":"NG","àpapọ̀ olómìnira ilẹ̀ nàìjíríà":"NG","nàịjíríà":"NG","nàìjíríà":"NG","norge":"NO","سلطنة عمان":"OM","پاکستان":"PK","beluu ęr a belau":"PW","belau":"PW","panamá":"PA","independen stet bilong papua niugini":"PG","papua niugini":"PG","perú":"PE","las filipinas":"PH","filipinas":"PH","polska":"PL","قطر":"QA","românia":"RO","русский Федерации":"RU","россия":"RU","repubulika y'u rwanda":"RW","république du rwanda":"RW","saint-barthélemy":"BL","saint barth":"BL","saint-martin":"MF","sint maarten":"MF","saint-pierre-et-miquelon":"PM","malo sa'oloto tuto'atasi o samoa":"WS","san marino":"SM","sao tome and principe":"ST","sao tome & principe":"ST","sao tome":"ST","principe":"ST","السعودية جزيره العرب":"SA","arabia":"SA","senegal":"SN","sénégal":"SN","serbia":"RS","seychelles":"SC","sierra leone":"SL","新加坡共和国":"SG","新加坡的":"SG","slovensko":"SK","slovenija":"SI","solomon islands":"SB","solomons":"SB","somalia":"SO","suid-afrika":"ZA","españa":"ES","sri lanka":"LK","the sudan":"SD","sudan":"SD","suriname":"SR","svalbard and jan mayen":"SJ","svalbard & jan mayen":"SJ","svalbard":"SJ","jan mayen":"SJ","swaziland":"SZ","sverige":"SE","die schweiz":"CH","schweiz":"CH","la suisse":"CH","suisse":"CH","svizzera":"CH","سوريا":"SY","taiwan, province of china":"TW","taiwan":"TW","tajikistan":"TJ","tanzania, united republic of":"TZ","united republic of tanzania":"TZ","tanzania":"TZ","ประเทศไทย":"TH","timor-leste":"TL","east timor":"TL","togo":"TG","tokelau":"TK","tonga":"TO","trinidad and tobago":"TT","trinidad & tobago":"TT","trinidad":"TT","tobago":"TT","تونس":"TN","türkiye":"TR","turkmenistan":"TM","tuvalu":"TV","uganda":"UG","україна":"UA","الامارات العربية المتحدة":"AE","دبي":"AE","albain":"GB","cymru":"GB","uruguay":"UY","uzbekistan":"UZ","vanuatu":"VU","việt nam":"VN","western sahara":"EH","يمني":"YE","zambia":"ZM","zimbabwe":"ZW"};
+ilib.data.ctrynames_af = {"Ascension-eiland":"AC","Andorra":"AD","Verenigde Arabiese Emirate":"AE","Afganistan":"AF","Antigua en Barbuda":"AG","Anguilla":"AI","Albanië":"AL","Armenië":"AM","Nederlands-Antille":"AN","Angola":"AO","Antarktika":"AQ","Argentinië":"AR","Amerikaans Samoa":"AS","Oostenryk":"AT","Australië":"AU","Aruba":"AW","Åland-eilande":"AX","Aserbeidjan":"AZ","Bosnië en Herzegowina":"BA","Barbados":"BB","Bangladesj":"BD","België":"BE","Boerkina Fasso":"BF","Bulgarye":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","Sint Barthélemy":"BL","Bermuda":"BM","Broenei":"BN","Bolivië":"BO","Karibiese Nederland":"BQ","Brasilië":"BR","Bahamas":"BS","Bhoetan":"BT","Bouveteiland":"BV","Botswana":"BW","Wit-Rusland":"BY","Belize":"BZ","Kanada":"CA","Cocos- [Keeling] eilande":"CC","Demokratiese Republiek van die Kongo":"CD","Sentraal-Afrikaanse Republiek":"CF","Kongo":"CG","Switserland":"CH","Ivoorkus":"CI","Cookeilande":"CK","Chili":"CL","Kameroen":"CM","Sjina":"CN","Kolombië":"CO","Clipperton-eiland":"CP","Costa Rica":"CR","Kuba":"CU","Kaap Verde":"CV","Curaçao":"CW","Kerseiland":"CX","Ciprus":"CY","Tjeggiese Republiek":"CZ","Duitsland":"DE","Diego Garcia":"DG","Djiboeti":"DJ","Denemarke":"DK","Dominika":"DM","Dominikaanse Republiek":"DO","Algerië":"DZ","Ceuta en Melilla":"EA","Ecuador":"EC","Estland":"EE","Egipte":"EG","Wes-Sahara":"EH","Eritrea":"ER","Spanje":"ES","Ethiopië":"ET","Europese Unie":"EU","Finland":"FI","Fidji":"FJ","Falklandeilande":"FK","Mikronesië":"FM","Faroëreilande":"FO","Frankryk":"FR","Gaboen":"GA","Groot-Brittanje":"GB","Grenada":"GD","Georgië":"GE","Frans-Guyana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Groenland":"GL","Gambië":"GM","Guinee":"GN","Guadeloupe":"GP","Ekwatoriaal-Guinee":"GQ","Griekeland":"GR","Suid-Georgië en die Suid-Sandwich-eilande":"GS","Guatemala":"GT","Guam":"GU","Guinee-Bissau":"GW","Guyana":"GY","Hongkong":"HK","Heard-eiland en McDonald-eilande":"HM","Honduras":"HN","Kroasië":"HR","Haïti":"HT","Hongarye":"HU","Kanarie-eilande":"IC","Indonesië":"ID","Ierland":"IE","Israel":"IL","Eiland Man":"IM","Indië":"IN","Britse Indiese Oseaan Gebied":"IO","Irak":"IQ","Iran":"IR","Ysland":"IS","Italië":"IT","Jersey":"JE","Jamaika":"JM","Jordanië":"JO","Japan":"JP","Kenia":"KE","Kirgisië":"KG","Kambodja":"KH","Kiribati":"KI","Comore":"KM","Saint Kitts en Nevis":"KN","Noord-Korea":"KP","Suid-Korea":"KR","Koeweit":"KW","Kaaimanseilande":"KY","Kasakstan":"KZ","Laos":"LA","Libanon":"LB","Sint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberië":"LR","Lesotho":"LS","Litaue":"LT","Luxemburg":"LU","Letland":"LV","Libië":"LY","Marokko":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Sint Martin":"MF","Madagaskar":"MG","Marshall-eilande":"MH","Macedonië":"MK","Mali":"ML","Mianmar":"MM","Mongolië":"MN","Macau SAR China":"MO","Noordelike Marianaeilande":"MP","Martinique":"MQ","Mouritanië":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maledive":"MV","Malawi":"MW","Meksiko":"MX","Maleisië":"MY","Mosambiek":"MZ","Namibië":"NA","Nieu-Kaledonië":"NC","Niger":"NE","Norfolk-eiland":"NF","Nigerië":"NG","Nicaragua":"NI","Nederland":"NL","Noorweë":"NO","Nepal":"NP","Naoeroe":"NR","Niue":"NU","Nieu-Seeland":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Frans-Polinesië":"PF","Papoea Nieu-Guinee":"PG","Filippyne":"PH","Pakistan":"PK","Pole":"PL","Sint-Pierre en Miquelon":"PM","Pitcairn":"PN","Puerto Rico":"PR","Palestina":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Katar":"QA","Omliggende Oseanië":"QO","Réunion":"RE","Roemenië":"RO","Serwië":"RS","Rusland":"RU","Rwanda":"RW","Saoedi-Arabië":"SA","Solomon Eilande":"SB","Seychelle":"SC","Soedan":"SD","Swede":"SE","Singapoer":"SG","Sint Helena":"SH","Slowenië":"SI","Svalbard en Jan Mayen":"SJ","Slowakye":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalië":"SO","Suriname":"SR","Suid-Soedan":"SS","Sao Tome en Principe":"ST","Salvador":"SV","Sint Maarten":"SX","Sirië":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Turks en Caicos Eilande":"TC","Tsjaad":"TD","Franse Suidelike Gebiede":"TF","Togo":"TG","Thailand":"TH","Tadjikistan":"TJ","Tokelau":"TK","Oos-Timor":"TL","Turkmenië":"TM","Tunisië":"TN","Tonga":"TO","Turkye":"TR","Trinidad en Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzanië":"TZ","Oekraine":"UA","Uganda":"UG","VS klein omliggende eilande":"UM","Verenigde State van Amerika":"US","Uruguay":"UY","Oesbekistan":"UZ","Vatikaan":"VA","Saint Vincent en die Grenadine":"VC","Venezuela":"VE","Britse Maagde-eilande":"VG","V.S. Maagde-eilande":"VI","Viëtnam":"VN","Vanuatu":"VU","Wallis en Futuna":"WF","Samoa":"WS","Jemen":"YE","Mayotte":"YT","Suid-Afrika":"ZA","Zambië":"ZM","Zimbabwe":"ZW","Onbekend gebied":"ZZ"};
+ilib.data.ctrynames_da = {"Ascensionøen":"AC","Andorra":"AD","Forenede Arabiske Emirater":"AE","Afghanistan":"AF","Antigua og Barbuda":"AG","Anguilla":"AI","Albanien":"AL","Armenien":"AM","Hollandske Antiller":"AN","Angola":"AO","Antarktis":"AQ","Argentina":"AR","Amerikansk Samoa":"AS","Østrig":"AT","Australien":"AU","Aruba":"AW","Ålandsøerne":"AX","Aserbajdsjan":"AZ","Bosnien-Hercegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgien":"BE","Burkina Faso":"BF","Bulgarien":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei Darussalam":"BN","Bolivia":"BO","Nederlandske antiller":"BQ","Brasilien":"BR","Bahamas":"BS","Bhutan":"BT","Bouvetø":"BV","Botswana":"BW","Hviderusland":"BY","Belize":"BZ","Canada":"CA","Cocosøerne":"CC","Congo-Kinshasa":"CD","Centralafrikanske Republik":"CF","Congo – Brazzaville":"CG","Schweiz":"CH","Côte d’Ivoire":"CI","Cookøerne":"CK","Chile":"CL","Cameroun":"CM","Kina":"CN","Colombia":"CO","Clippertonøen":"CP","Costa Rica":"CR","Cuba":"CU","Kap Verde":"CV","Curacao":"CW","Juleøen":"CX","Cypern":"CY","Tjekkiet":"CZ","Tyskland":"DE","Diego Garcia":"DG","Djibouti":"DJ","Danmark":"DK","Dominica":"DM","Den Dominikanske Republik":"DO","Algeriet":"DZ","Ceuta og Melilla":"EA","Ecuador":"EC","Estland":"EE","Egypten":"EG","Vestsahara":"EH","Eritrea":"ER","Spanien":"ES","Etiopien":"ET","Den Europæiske Union":"EU","Finland":"FI","Fiji":"FJ","Falklandsøerne":"FK","Mikronesiens Forenede Stater":"FM","Færøerne":"FO","Frankrig":"FR","Gabon":"GA","Storbritannien":"GB","Grenada":"GD","Georgien":"GE","Fransk Guyana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grønland":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Ækvatorialguinea":"GQ","Grækenland":"GR","South Georgia og De Sydlige Sandwichøer":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hongkong SAR":"HK","Heard- og McDonald-øerne":"HM","Honduras":"HN","Kroatien":"HR","Haiti":"HT","Ungarn":"HU","Kanariske øer":"IC","Indonesien":"ID","Irland":"IE","Israel":"IL","Isle of Man":"IM","Indien":"IN","Det Britiske Territorium i Det Indiske Ocean":"IO","Irak":"IQ","Iran":"IR","Island":"IS","Italien":"IT","Jersey":"JE","Jamaica":"JM","Jordan":"JO","Japan":"JP","Kenya":"KE","Kirgisistan":"KG","Cambodja":"KH","Kiribati":"KI","Comorerne":"KM","Saint Kitts og Nevis":"KN","Nordkorea":"KP","Sydkorea":"KR","Kuwait":"KW","Caymanøerne":"KY","Kasakhstan":"KZ","Laos":"LA","Libanon":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Litauen":"LT","Luxembourg":"LU","Letland":"LV","Libyen":"LY","Marokko":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagaskar":"MG","Marshalløerne":"MH","Makedonien":"MK","Mali":"ML","Myanmar [Burma]":"MM","Mongoliet":"MN","Macao SAR":"MO","Nordmarianerne":"MP","Martinique":"MQ","Mauretanien":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldiverne":"MV","Malawi":"MW","Mexico":"MX","Malaysia":"MY","Mozambique":"MZ","Namibia":"NA","Ny Caledonien":"NC","Niger":"NE","Norfolkøen":"NF","Nigeria":"NG","Nicaragua":"NI","Holland":"NL","Norge":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","New Zealand":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Fransk Polynesien":"PF","Papua Ny Guinea":"PG","Filippinerne":"PH","Pakistan":"PK","Polen":"PL","Saint Pierre og Miquelon":"PM","Pitcairn":"PN","Puerto Rico":"PR","De palæstinensiske områder":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Ydre Oceanien":"QO","Reunion":"RE","Rumænien":"RO","Serbien":"RS","Rusland":"RU","Rwanda":"RW","Saudi-Arabien":"SA","Salomonøerne":"SB","Seychellerne":"SC","Sudan":"SD","Sverige":"SE","Singapore":"SG","St. Helena":"SH","Slovenien":"SI","Svalbard og Jan Mayen":"SJ","Slovakiet":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Sydsudan":"SS","Sao Tome og Principe":"ST","El Salvador":"SV","Sint Maarten":"SX","Syrien":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Turks- og Caicosøerne":"TC","Tchad":"TD","Franske Besiddelser i Det Sydlige Indiske Ocean":"TF","Togo":"TG","Thailand":"TH","Tadsjikistan":"TJ","Tokelau":"TK","Timor-Leste":"TL","Turkmenistan":"TM","Tunesien":"TN","Tonga":"TO","Tyrkiet":"TR","Trinidad og Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraine":"UA","Uganda":"UG","Amerikanske oversøiske øer":"UM","USA":"US","Uruguay":"UY","Usbekistan":"UZ","Vatikanstaten":"VA","St. Vincent og Grenadinerne":"VC","Venezuela":"VE","De britiske jomfruøer":"VG","De amerikanske jomfruøer":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis og Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Sydafrika":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Ukendt område":"ZZ"};
+ilib.data.ctrynames_de = {"generated":false,"albanien":"AL","algerien":"DZ","amerikanisch-samoa":"AS","antigua und barbuda":"AG","argentinien":"AR","armenien":"AM","ascension":"SH","australien":"AU","österreich":"AT","aserbaidschan":"AZ","britische jungferninseln":"VG","bangladesch":"BD","belgien":"BE","bolivien":"BO","bosnien und herzegowina":"BA","botsuana":"BW","brasilien":"BR","britisches territorium im indischen ozean":"IO","bulgarien":"BG","kambodscha":"KH","kamerun":"CM","kap verde":"CV","kaimaninseln":"KY","zentralafrikanische republik":"CF","tschad":"TD","kolumbien":"CO","komoren":"KM","cookinseln":"CK","kroatien":"HR","kuba":"CU","zypern":"CY","tschechische republik":"CZ","côte d’ivoire":"CI","dominikanische republik":"DO","kongo, demokratische volksrepublik":"CD","kongo, demokratische republik":"CD","dänemark":"DK","dschibuti":"DJ","osttimor":"TL","ägypten":"EG","äquatorialguinea":"GQ","estland":"EE","äthiopien":"ET","mazedonien, ehemalige jugoslawische republik":"MK","falklandinseln":"FK","färöer":"FO","mikronesien":"FM","fidschi":"FJ","finnland":"FI","frankreich":"FR","französisch-guayana":"GF","französisch-polynesien":"PF","gabun":"GA","deutschland":"DE","griechenland":"GR","grönland":"GL","hongkong":"HK","ungarn":"HU","island":"IS","indien":"IN","indonesien":"ID","irak":"IQ","irland":"IE","italien":"IT","jamaika":"JM","jordanien":"JO","kenia":"KE","kirgisistan":"KG","lettland":"LV","libanon":"LB","libyen":"LY","litauen":"LT","luxemburg":"LU","madagaskar":"MG","malediven":"MV","marianen":"MP","marshallinseln":"MH","martinique":"MQ","mauretanien":"MR","mexiko":"MX","moldau":"MD","mongolei":"MN","marokko":"MA","mosambik":"MZ","niederlande":"NL","niederländische antillen":"AN","neukaledonien":"NC","neuseeland":"NZ","norfolkinseln":"NF","nordkorea":"KP","nördliche marianen":"MP","norwegen":"NO","palästinensische autonomiebehörde":"PS","papua-neuguinea":"PG","china, volksrepublik":"CN","philippinen":"PH","polen":"PL","katar":"QA","china, republik":"TW","irland, republik":"IE","rumänien":"RO","russland":"RU","ruanda":"RW","st. helena":"SH","st. kitts und nevis":"KN","st. lucia":"LC","saint-pierre und miquelon":"PM","saint-vincent":"VC","st. vincent und die grenadinen":"VC","saudi-arabien":"SA","serbien":"RS","seychellen":"SC","singapur":"SG","slowakei":"SK","slowenien":"SI","salomoninseln":"SB","südafrika":"ZA","südkorea":"KR","spanien":"ES","surinam":"SR","swasiland":"SZ","schweden":"SE","schweiz":"CH","syrien":"SY","são tomé und príncipe":"ST","tadschikistan":"TJ","tansania":"TZ","bahamas":"BS","gambia":"GM","turks- und caicosinseln":"TC","amerikanische jungferninseln":"VI","trinidad und tobago":"TT","tunesien":"TN","türkei":"TR","vae":"AE","vereinigte arabische emirate":"AE","großbritannien":"GB","usbekistan":"UZ","vatikanstadt":"VA","wallis und futuna":"WF","jemen":"YE","sambia":"ZM","simbabwe":"ZW","afghanistan":"AF","ålandinseln":"AX","andorra":"AD","angola":"AO","anguilla":"AI","antigua":"AG","arabien":"SA","aruba":"AW","bahrain":"BH","barbados":"BB","barbuda":"AG","belarus":"BY","belize":"BZ","benin":"BJ","bermuda":"BM","bhutan":"BT","bolivarische republik venezuela":"VE","bolivien, plurinationaler staat":"BO","bosnien":"BA","bouvetinsel":"BV","britische territorien im indischen ozean":"IO","brunei":"BN","brunei darussalam":"BN","burkina faso":"BF","burundi":"BI","caicosinseln":"TC","kanada":"CA","chile":"CL","china":"CN","weihnachtsinsel":"CX","kokosinseln (keelinginseln)":"CC","kokos- und keelinginseln":"CC","kokosinseln":"CC","kongo":"CD","costa rica":"CR","demokratische republik kongo":"CD","demokratische volksrepublik korea":"KP","dominica":"DM","kdvr":"KP","dubai":"AE","ecuador":"EC","el salvador":"SV","england":"GB","eritrea":"ER","ehemalige jugoslawische republik mazedonien":"MK","föderierte staaten von mikronesien":"FM","französische süd- und antarktisgebiete":"TF","futuna":"WF","georgien":"GE","ghana":"GH","gibraltar":"GI","grenada":"GD","grenadinen":"VC","guadeloupe":"GP","guam":"GU","guatemala":"GT","guernsey":"GG","guinea":"GN","guinea-bissau":"GW","guyana":"GY","haiti":"HT","heard und mcdonaldinseln":"HM","heardinsel":"HM","herzegowina":"BA","holland":"NL","heiliger stuhl":"VA","honduras":"HN","iran":"IR","iran, islamische republik":"IR","islamische republik iran":"IR","isle of man":"IM","israel":"IL","elfenbeinküste":"CI","jan mayen":"SJ","japan":"JP","jersey":"JE","kasachstan":"KZ","kiribati":"KI","korea":"KR","korea, demokatrische volksrepublik":"KP","korea, republik":"KR","kuwait":"KW","laos, demokratische volksrepublik":"LA","laos":"LA","lesotho":"LS","liberia":"LR","libysch-arabische volks-dschamahirija":"LY","liechtenstein":"LI","macau":"MO","mazedonien":"MK","malawi":"MW","malaysia":"MY","mali":"ML","malta":"MT","malwinen":"FK","mauritius":"MU","mayotte":"YT","mcdonaldinseln":"HM","mikronesien, föderierte staaten von":"FM","miquelon":"PM","moldau, republik":"MD","monaco":"MC","montenegro":"ME","montserrat":"MS","myanmar":"MM","namibia":"NA","nauru":"NR","nepal":"NP","nevis":"KN","nicaragua":"NI","niger":"NE","nigeria":"NG","palästinensische gebiete":"PS","oman":"OM","china, vr":"CN","pakistan":"PK","palau":"PW","palästina":"PS","panama":"PA","paraguay":"PY","peru":"PE","pitcairn":"PN","plurinationaler staat bolivien":"BO","polynesien":"PF","portugal":"PT","vrc":"CN","príncipe":"ST","puerto rico":"PR","republik korea":"KR","republik moldau":"MD","singapur, republik":"SG","réunion":"RE","russische föderation":"RU","st. barthélemy":"BL","st. barts":"BL","st. helena, ascension und tristan da cunha":"SH","st. kitts":"KN","st. martin":"MF","st. pierre":"PM","st. pierre und miquelon":"PM","st. vincent":"VC","samoa":"WS","san marino":"SM","são tomé":"ST","schottland":"GB","senegal":"SN","sierra leone":"SL","salomonen":"SB","somalia":"SO","südgeorgien":"GS","südgeorgien und die südlichen sandwichinseln":"GS","südliche sandwichinseln":"GS","sri lanka":"LK","st. bartholomäus":"BL","sudan":"SD","svalbard":"SJ","svalbard und jan mayen":"SJ","arabische republik syrien":"SY","taiwan":"TW","tansania, vereinigte republik":"TZ","thailand":"TH","timor-leste":"TL","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinidad":"TT","tristan da cunha":"SH","turkmenistan":"TM","turksinseln":"TC","tuvalu":"TV","v.a.e.":"AE","vk":"GB","usa":"US","uganda":"UG","ukraine":"UA","vereinigtes königreich":"GB","vereinigte republik tansania":"TZ","vereinigte staaten":"US","vereinigte staaten von amerika":"US","uruguay":"UY","vanuatu":"VU","vatikan":"VA","venezuela":"VE","venezuela, bolivarische republik":"VE","vietnam":"VN","jungferninseln":"VI","jungferninseln, britische":"VG","jungferninseln, amerikanische":"VI","wales":"GB","wallis":"WF","westsahara":"EH","éire":"IE","Ascension":"AC","Andorra":"AD","Vereinigte Arabische Emirate":"AE","Afghanistan":"AF","Antigua und Barbuda":"AG","Anguilla":"AI","Albanien":"AL","Armenien":"AM","Niederländische Antillen":"AN","Angola":"AO","Antarktis":"AQ","Argentinien":"AR","Amerikanisch-Samoa":"AS","Österreich":"AT","Australien":"AU","Aruba":"AW","Alandinseln":"AX","Aserbaidschan":"AZ","Bosnien und Herzegowina":"BA","Barbados":"BB","Bangladesch":"BD","Belgien":"BE","Burkina Faso":"BF","Bulgarien":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","St. Barthélemy":"BL","Bermuda":"BM","Brunei Darussalam":"BN","Bolivien":"BO","Karibische Niederlande":"BQ","Brasilien":"BR","Bahamas":"BS","Bhutan":"BT","Bouvetinsel":"BV","Botsuana":"BW","Belarus":"BY","Belize":"BZ","Kanada":"CA","Kokosinseln":"CC","Kongo-Kinshasa":"CD","Zentralafrikanische Republik":"CF","Kongo-Brazzaville":"CG","Schweiz":"CH","Côte d’Ivoire":"CI","Cookinseln":"CK","Chile":"CL","Kamerun":"CM","China":"CN","Kolumbien":"CO","Clipperton-Insel":"CP","Costa Rica":"CR","Kuba":"CU","Kap Verde":"CV","Curaçao":"CW","Weihnachtsinsel":"CX","Zypern":"CY","Tschechische Republik":"CZ","Deutschland":"DE","Diego Garcia":"DG","Dschibuti":"DJ","Dänemark":"DK","Dominica":"DM","Dominikanische Republik":"DO","Algerien":"DZ","Ceuta und Melilla":"EA","Ecuador":"EC","Estland":"EE","Ägypten":"EG","Westsahara":"EH","Eritrea":"ER","Spanien":"ES","Äthiopien":"ET","Europäische Union":"EU","Finnland":"FI","Fidschi":"FJ","Falklandinseln":"FK","Mikronesien":"FM","Färöer":"FO","Frankreich":"FR","Gabun":"GA","Vereinigtes Königreich":"GB","Grenada":"GD","Georgien":"GE","Französisch-Guayana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grönland":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Äquatorialguinea":"GQ","Griechenland":"GR","Südgeorgien und die Südlichen Sandwichinseln":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Sonderverwaltungszone Hongkong":"HK","Heard- und McDonald-Inseln":"HM","Honduras":"HN","Kroatien":"HR","Haiti":"HT","Ungarn":"HU","Kanarische Inseln":"IC","Indonesien":"ID","Irland":"IE","Israel":"IL","Isle of Man":"IM","Indien":"IN","Britisches Territorium im Indischen Ozean":"IO","Irak":"IQ","Iran":"IR","Island":"IS","Italien":"IT","Jersey":"JE","Jamaika":"JM","Jordanien":"JO","Japan":"JP","Kenia":"KE","Kirgisistan":"KG","Kambodscha":"KH","Kiribati":"KI","Komoren":"KM","St. Kitts und Nevis":"KN","Demokratische Volksrepublik Korea":"KP","Republik Korea":"KR","Kuwait":"KW","Kaimaninseln":"KY","Kasachstan":"KZ","Laos":"LA","Libanon":"LB","St. Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Litauen":"LT","Luxemburg":"LU","Lettland":"LV","Libyen":"LY","Marokko":"MA","Monaco":"MC","Republik Moldau":"MD","Montenegro":"ME","St. Martin":"MF","Madagaskar":"MG","Marshallinseln":"MH","Mazedonien":"MK","Mali":"ML","Myanmar":"MM","Mongolei":"MN","Sonderverwaltungszone Macao":"MO","Nördliche Marianen":"MP","Martinique":"MQ","Mauretanien":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Malediven":"MV","Malawi":"MW","Mexiko":"MX","Malaysia":"MY","Mosambik":"MZ","Namibia":"NA","Neukaledonien":"NC","Niger":"NE","Norfolkinsel":"NF","Nigeria":"NG","Nicaragua":"NI","Niederlande":"NL","Norwegen":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Neuseeland":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Französisch-Polynesien":"PF","Papua-Neuguinea":"PG","Philippinen":"PH","Pakistan":"PK","Polen":"PL","St. Pierre und Miquelon":"PM","Pitcairninseln":"PN","Puerto Rico":"PR","Palästinensische Autonomiegebiete":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Katar":"QA","Äußeres Ozeanien":"QO","Réunion":"RE","Rumänien":"RO","Serbien":"RS","Russische Föderation":"RU","Ruanda":"RW","Saudi-Arabien":"SA","Salomonen":"SB","Seychellen":"SC","Sudan":"SD","Schweden":"SE","Singapur":"SG","St. Helena":"SH","Slowenien":"SI","Svalbard und Jan Mayen":"SJ","Slowakei":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Suriname":"SR","Südsudan":"SS","São Tomé und Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Syrien":"SY","Swasiland":"SZ","Tristan da Cunha":"TA","Turks- und Caicosinseln":"TC","Tschad":"TD","Französische Süd- und Antarktisgebiete":"TF","Togo":"TG","Thailand":"TH","Tadschikistan":"TJ","Tokelau":"TK","Osttimor":"TL","Turkmenistan":"TM","Tunesien":"TN","Tonga":"TO","Türkei":"TR","Trinidad und Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tansania":"TZ","Ukraine":"UA","Uganda":"UG","Amerikanisch-Ozeanien":"UM","Vereinigte Staaten":"US","Uruguay":"UY","Usbekistan":"UZ","Vatikanstadt":"VA","St. Vincent und die Grenadinen":"VC","Venezuela":"VE","Britische Jungferninseln":"VG","Amerikanische Jungferninseln":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis und Futuna":"WF","Samoa":"WS","Jemen":"YE","Mayotte":"YT","Südafrika":"ZA","Sambia":"ZM","Simbabwe":"ZW","Unbekannte Region":"ZZ"};
+ilib.data.ctrynames_de_CH = {"Bangladesh":"BD","Brunei":"BN","Botswana":"BW","Weissrussland":"BY","Kapverden":"CV","Djibouti":"DJ","Grossbritannien":"GB","Marshall-Inseln":"MH","Äusseres Ozeanien":"QO","Rwanda":"RW","Salomon-Inseln":"SB","Sao Tomé und Principe":"ST","Zimbabwe":"ZW"};
+ilib.data.ctrynames_en = {"generated":false,"Antigua & Barbuda":"AG","Arabia":"SA","Bosnia & Herzegovina":"BA","BVI":"VG","Cape Verde Islands":"CV","Cocos & Keeling Islands":"CC","Cocos (Keeling) Islands":"CC","Congo, Democratic Republic of the":"CD","Democratic Republic of the Congo":"CD","DPRK":"KP","Dubai":"AE","East Timor":"TL","England":"GB","Falklands":"FK","Heard Island & McDonald Islands":"HM","Occupied Palestinian Territory":"PS","P. R. China":"CN","P. R. of China":"CN","P.R. of China":"CN","Palestinian Territory":"PS","People's Republic of China":"CN","Polynesia":"PF","PR china":"CN","PRC":"CN","Republic of China":"TW","Republic of Ireland":"IE","Republic of Singapore":"SG","Saint Barts":"BL","Saint Helena, Ascension & Tristan da Cunha":"SH","Saint Kitts & Nevis":"KN","Saint Pierre & Miquelon":"PM","Saint Vincent & the Grenadines":"VC","Sao Tome & Principe":"ST","Scotland":"GB","Solomons":"SB","South Georgia & the South Sandwich Islands":"GS","St Barthelemy":"BL","St Barthélemy":"BL","St Barts":"BL","St Helena":"SH","St Helena, Ascension & Tristan da Cunha":"SH","St Helena, Ascension and Tristan da Cunha":"SH","St Kitts":"KN","St Kitts & Nevis":"KN","St Kitts and Nevis":"KN","St Lucia":"LC","St Martin":"MF","St Pierre":"PM","St Pierre & Miquelon":"PM","St Pierre and Miquelon":"PM","St Vincent":"VC","St Vincent & the Grenadines":"VC","St Vincent and the Grenadines":"VC","St. Barts":"BL","St. Helena, Ascension & Tristan da Cunha":"SH","St. Kitts & Nevis":"KN","St. Pierre & Miquelon":"PM","St. Vincent & the Grenadines":"VC","Svalbard & Jan Mayen":"SJ","Sénégal":"SN","The Bahamas":"BS","The Czech Republic":"CZ","The Grenadines":"VC","The Netherlands":"NL","The Philippines":"PH","The Republic of Singapore":"SG","The South Sandwich Islands":"GS","The Sudan":"SD","The US Virgin Islands":"VI","Trinidad & Tobago":"TT","Turks & Caicos Islands":"TC","Vatican City":"VA","Vatican City State":"VA","Virgin Islands":"VI","Wales":"GB","Wallis & Futuna":"WF","Éire":"IE","Ascension Island":"AC","Andorra":"AD","United Arab Emirates":"AE","Afghanistan":"AF","Antigua and Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Netherlands Antilles":"AN","Angola":"AO","Antarctica":"AQ","Argentina":"AR","American Samoa":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Åland Islands":"AX","Azerbaijan":"AZ","Bosnia and Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgium":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Caribbean Netherlands":"BQ","Brazil":"BR","Bahamas":"BS","Bhutan":"BT","Bouvet Island":"BV","Botswana":"BW","Belarus":"BY","Belize":"BZ","Canada":"CA","Cocos [Keeling] Islands":"CC","Congo - Kinshasa":"CD","Central African Republic":"CF","Congo - Brazzaville":"CG","Switzerland":"CH","Côte d’Ivoire":"CI","Cook Islands":"CK","Chile":"CL","Cameroon":"CM","China":"CN","Colombia":"CO","Clipperton Island":"CP","Costa Rica":"CR","Cuba":"CU","Cape Verde":"CV","Curaçao":"CW","Christmas Island":"CX","Cyprus":"CY","Czech Republic":"CZ","Germany":"DE","Diego Garcia":"DG","Djibouti":"DJ","Denmark":"DK","Dominica":"DM","Dominican Republic":"DO","Algeria":"DZ","Ceuta and Melilla":"EA","Ecuador":"EC","Estonia":"EE","Egypt":"EG","Western Sahara":"EH","Eritrea":"ER","Spain":"ES","Ethiopia":"ET","European Union":"EU","Finland":"FI","Fiji":"FJ","Falkland Islands":"FK","Micronesia":"FM","Faroe Islands":"FO","France":"FR","Gabon":"GA","United Kingdom":"GB","Grenada":"GD","Georgia":"GE","French Guiana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Greenland":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Equatorial Guinea":"GQ","Greece":"GR","South Georgia and the South Sandwich Islands":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hong Kong SAR China":"HK","Heard Island and McDonald Islands":"HM","Honduras":"HN","Croatia":"HR","Haiti":"HT","Hungary":"HU","Canary Islands":"IC","Indonesia":"ID","Ireland":"IE","Israel":"IL","Isle of Man":"IM","India":"IN","British Indian Ocean Territory":"IO","Iraq":"IQ","Iran":"IR","Iceland":"IS","Italy":"IT","Jersey":"JE","Jamaica":"JM","Jordan":"JO","Japan":"JP","Kenya":"KE","Kyrgyzstan":"KG","Cambodia":"KH","Kiribati":"KI","Comoros":"KM","Saint Kitts and Nevis":"KN","North Korea":"KP","South Korea":"KR","Kuwait":"KW","Cayman Islands":"KY","Kazakhstan":"KZ","Laos":"LA","Lebanon":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lithuania":"LT","Luxembourg":"LU","Latvia":"LV","Libya":"LY","Morocco":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagascar":"MG","Marshall Islands":"MH","Macedonia":"MK","Mali":"ML","Myanmar [Burma]":"MM","Mongolia":"MN","Macau SAR China":"MO","Northern Mariana Islands":"MP","Martinique":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldives":"MV","Malawi":"MW","Mexico":"MX","Malaysia":"MY","Mozambique":"MZ","Namibia":"NA","New Caledonia":"NC","Niger":"NE","Norfolk Island":"NF","Nigeria":"NG","Nicaragua":"NI","Netherlands":"NL","Norway":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","New Zealand":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","French Polynesia":"PF","Papua New Guinea":"PG","Philippines":"PH","Pakistan":"PK","Poland":"PL","Saint Pierre and Miquelon":"PM","Pitcairn Islands":"PN","Puerto Rico":"PR","Palestinian Territories":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Outlying Oceania":"QO","Réunion":"RE","Romania":"RO","Serbia":"RS","Russia":"RU","Rwanda":"RW","Saudi Arabia":"SA","Solomon Islands":"SB","Seychelles":"SC","Sudan":"SD","Sweden":"SE","Singapore":"SG","Saint Helena":"SH","Slovenia":"SI","Svalbard and Jan Mayen":"SJ","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Suriname":"SR","South Sudan":"SS","São Tomé and Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Syria":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Turks and Caicos Islands":"TC","Chad":"TD","French Southern Territories":"TF","Togo":"TG","Thailand":"TH","Tajikistan":"TJ","Tokelau":"TK","Timor-Leste":"TL","Turkmenistan":"TM","Tunisia":"TN","Tonga":"TO","Turkey":"TR","Trinidad and Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraine":"UA","Uganda":"UG","U.S. Minor Outlying Islands":"UM","United States":"US","Uruguay":"UY","Uzbekistan":"UZ","Saint Vincent and the Grenadines":"VC","Venezuela":"VE","British Virgin Islands":"VG","U.S. Virgin Islands":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis and Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","South Africa":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Unknown Region":"ZZ"};
+ilib.data.ctrynames_es = {"generated":false,"afganistán":"AF","argelia":"DZ","samoa americana":"AS","anguila":"AI","antigua y barbuda":"AG","ascensión":"SH","azerbaiyán":"AZ","islas vírgenes británicas":"VG","bahrein":"BH","bielorrusia":"BY","bélgica":"BE","belice":"BZ","benín":"BJ","bermudas":"BM","bután":"BT","bosnia y herzegovina":"BA","botsuana":"BW","brasil":"BR","territorio británico del océano índico":"IO","camboya":"KH","camerún":"CM","cabo verde":"CV","caimán":"KY","república centroafricana":"CF","comoras":"KM","islas cook":"CK","croacia":"HR","chipre":"CY","república checa":"CZ","costa de marfil":"CI","república dominicana":"DO","rdc":"CD","república democrática del congo":"CD","dinamarca":"DK","yibuti":"DJ","timor oriental":"TL","egipto":"EG","guinea ecuatorial":"GQ","etiopía":"ET","antigua república yugoslava de macedonia":"MK","islas malvinas":"FK","malvinas":"FK","islas feroe":"FO","estados federados de micronesia":"FM","fiyi":"FJ","finlandia":"FI","francia":"FR","guayana francesa":"GF","polinesia francesa":"PF","gabón":"GA","alemania":"DE","grecia":"GR","groenlandia":"GL","granada":"GD","guadalupe":"GP","haití":"HT","hungría":"HU","islandia":"IS","irán":"IR","irak":"IQ","irlanda":"IE","italia":"IT","japón":"JP","jordania":"JO","kenia":"KE","kirguistán":"KG","letonia":"LV","líbano":"LB","libia":"LY","lituania":"LT","luxemburgo":"LU","malasia":"MY","maldivas":"MV","malí":"ML","islas marshall":"MH","martinica":"MQ","mauricio":"MU","méxico":"MX","moldavia":"MD","mónaco":"MC","marruecos":"MA","países bajos":"NL","antillas holandesas":"AN","nueva caledonia":"NC","nueva zelanda":"NZ","níger":"NE","isla norfolk":"NF","corea del norte":"KP","islas marianas del norte":"MP","noruega":"NO","omán":"OM","pakistán":"PK","palaos":"PW","autoridad palestina":"PS","panamá":"PA","papua nueva guinea":"PG","república popular china":"CN","perú":"PE","filipinas":"PH","polonia":"PL","república de china":"TW","república de irlanda":"IE","rumania":"RO","rusia":"RU","ruanda":"RW","reunión":"RE","santa helena":"SH","san cristóbal y nieves":"KN","santa lucía":"LC","san pedro y miquelón":"PM","saint-vincent":"VC","san vicente y las granadinas":"VC","arabia saudita":"SA","sierra leona":"SL","singapur":"SG","eslovaquia":"SK","eslovenia":"SI","islas salomón":"SB","sudáfrica":"ZA","corea del sur":"KR","españa":"ES","santa lucia":"LC","sudán":"SD","surinam":"SR","swazilandia":"SZ","suecia":"SE","suiza":"CH","siria":"SY","santo tomé y príncipe":"ST","taiwán":"TW","tayikistán":"TJ","tailandia":"TH","las bahamas":"BS","gambia":"GM","trinidad y tobago":"TT","túnez":"TN","turquía":"TR","turkmenistán":"TM","eau":"AE","ucrania":"UA","emiratos árabes unidos":"AE","reino unido":"GB","uzbekistán":"UZ","ciudad del vaticano":"VA","wallis y futuna":"WF","islas de åland":"AX","albania":"AL","andorra":"AD","angola":"AO","antigua":"AG","arabia":"SA","argentina":"AR","armenia":"AM","aruba":"AW","australia":"AU","austria":"AT","ivb":"VG","bahamas":"BS","bangladesh":"BD","barbados":"BB","barbuda":"AG","república bolivariana de venezuela":"VE","bolivia":"BO","bolivia, estado plurinacional de":"BO","bosnia":"BA","isla bouvet":"BV","brunei":"BN","brunei darussalam":"BN","bulgaria":"BG","burkina faso":"BF","burundi":"BI","rca":"CF","islas caicos":"TC","canadá":"CA","islas caimán":"KY","chad":"TD","chile":"CL","china":"CN","isla christmas":"CX","islas cocos y keeling":"CC","islas cocos":"CC","colombia":"CO","congo":"CD","congo, república democrática del":"CD","costa rica":"CR","cuba":"CU","república popular democrática de corea":"KP","dominica":"DM","dprk":"KP","rd":"DO","dubai":"AE","ecuador":"EC","el salvador":"SV","inglaterra":"GB","eritrea":"ER","estonia":"EE","feroe":"FO","tierras australes de francia":"TF","futuna":"WF","georgia":"GE","ghana":"GH","gibraltar":"GI","gran bretaña":"GB","granadinas":"VC","guam":"GU","guatemala":"GT","guernsey":"GG","guinea":"GN","guinea-bissau":"GW","guyana":"GY","islas heard y mcdonald":"HM","isla heard":"HM","herzegovina":"BA","holanda":"NL","santa sede":"VA","honduras":"HN","hong kong":"HK","india":"IN","indonesia":"ID","irán, república islámica de":"IR","república islámica de irán":"IR","isla de man":"IM","israel":"IL","jamaica":"JM","jan mayen":"SJ","jersey":"JE","kazajistán":"KZ","kiribati":"KI","corea":"KR","corea, república popular democrática de":"KP","corea, república de":"KR","kuwait":"KW","república democrática popular lao":"LA","laos":"LA","lesoto":"LS","liberia":"LR","jamahiriya árabe libia":"LY","liechtenstein":"LI","macao":"MO","macedonia":"MK","macedonia, antigua república yugoslava de":"MK","macedonia, la antigua república yugoslava de":"MK","madagascar":"MG","malaui":"MW","mali":"ML","malta":"MT","marianas":"MP","marshalls":"MH","mauritania":"MR","mayotte":"YT","islas mcdonald":"HM","micronesia":"FM","micronesia, estados federados de":"FM","miquelón":"PM","moldovia":"MD","moldovia, república de":"MD","mongolia":"MN","montenegro":"ME","montserrat":"MS","mozambique":"MZ","myanmar":"MM","namibia":"NA","nauru":"NR","nepal":"NP","nieves":"KN","nicaragua":"NI","nigeria":"NG","territorios ocupados palestinos":"PS","r. p. china":"CN","palestine":"PS","territorios palestinos":"PS","paraguay":"PY","pitcairn":"PN","estado plurinacional de bolivia":"BO","png":"PG","polinesia":"PF","portugal":"PT","rp china":"CN","r.p.c.":"CN","príncipe":"ST","puerto rico":"PR","qatar":"QA","república de corea":"KR","república de moldovia":"MD","república de singapur":"SG","federación rusa":"RU","saint barthélemy":"BL","san bartolomé":"BL","santa helena, ascensión y tristán de acuña":"SH","san cristobal":"KN","san martín":"MF","san pedro":"PM","san vicente":"VC","samoa":"WS","san marino":"SM","santo tomé":"ST","escocia":"GB","senegal":"SN","serbia":"RS","seychelles":"SC","somalia":"SO","georgias del sur":"GS","islas georgias del sur y sandwich del sur":"GS","islas sandwich del sur":"GS","sri lanka":"LK","st barthélemy":"BL","st. barthélemy":"BL","s bartolomé":"BL","sta. elena":"SH","sta elena, ascensión y tristán de acuña":"SH","s. cristóbal":"KN","s cristóbal y nieves":"KN","sta lucía":"LC","s. martín":"MF","s. vicente":"VC","s vicente y las granadinas":"VC","s. bartolomé":"BL","svalbard":"SJ","svalbard y jan mayen":"SJ","república árabe siria":"SY","tanzania":"TZ","tanzania, república unida de":"TZ","la república democrática del congo":"CD","la antigua república yugoslava de macedonia":"MK","las granadinas":"VC","islas sándwich del sur":"GS","islas vírgenes de ee.uu.":"VI","timor-leste":"TL","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinidad":"TT","tristán de acuña":"SH","islas turcas y caicos":"TC","islas turcas":"TC","tuvalu":"TV","r.u.":"GB","ee.uu.":"US","uganda":"UG","ru":"GB","república unida de tanzania":"TZ","estados unidos":"US","islas ultramarinas de estados unidos":"UM","estados unidos de américa":"US","uruguay":"UY","usvi":"VI","vanuatu":"VU","vaticano":"VA","venezuela":"VE","venezuela, república bolivariana de":"VE","vietnam":"VN","islas vírgenes":"VI","islas vírgenes, ee.uu.":"VI","gales":"GB","wallis":"WF","sahara occidental":"EH","yemen":"YE","zambia":"ZM","zimbabue":"ZW","éire":"IE","Isla de la Ascensión":"AC","Andorra":"AD","Emiratos Árabes Unidos":"AE","Afganistán":"AF","Antigua y Barbuda":"AG","Anguila":"AI","Albania":"AL","Armenia":"AM","Antillas Neerlandesas":"AN","Angola":"AO","Antártida":"AQ","Argentina":"AR","Samoa Americana":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Islas Åland":"AX","Azerbaiyán":"AZ","Bosnia-Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Bélgica":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahréin":"BH","Burundi":"BI","Benín":"BJ","San Bartolomé":"BL","Bermudas":"BM","Brunéi":"BN","Bolivia":"BO","Caribe neerlandés":"BQ","Brasil":"BR","Bahamas":"BS","Bután":"BT","Isla Bouvet":"BV","Botsuana":"BW","Bielorrusia":"BY","Belice":"BZ","Canadá":"CA","Islas Cocos":"CC","República Democrática del Congo":"CD","República Centroafricana":"CF","Congo - Brazzaville":"CG","Suiza":"CH","Costa de Marfil":"CI","Islas Cook":"CK","Chile":"CL","Camerún":"CM","China":"CN","Colombia":"CO","Isla Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Cabo Verde":"CV","Curazao":"CW","Isla Christmas":"CX","Chipre":"CY","República Checa":"CZ","Alemania":"DE","Diego García":"DG","Yibuti":"DJ","Dinamarca":"DK","Dominica":"DM","República Dominicana":"DO","Argelia":"DZ","Ceuta y Melilla":"EA","Ecuador":"EC","Estonia":"EE","Egipto":"EG","Sáhara Occidental":"EH","Eritrea":"ER","España":"ES","Etiopía":"ET","Unión Europea":"EU","Finlandia":"FI","Fiyi":"FJ","Islas Malvinas":"FK","Micronesia":"FM","Islas Feroe":"FO","Francia":"FR","Gabón":"GA","Reino Unido":"GB","Granada":"GD","Georgia":"GE","Guayana Francesa":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Groenlandia":"GL","Gambia":"GM","Guinea":"GN","Guadalupe":"GP","Guinea Ecuatorial":"GQ","Grecia":"GR","Islas Georgia del Sur y Sandwich del Sur":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Región Administrativa Especial de Hong Kong de la República Popular China":"HK","Islas Heard y McDonald":"HM","Honduras":"HN","Croacia":"HR","Haití":"HT","Hungría":"HU","Islas Canarias":"IC","Indonesia":"ID","Irlanda":"IE","Israel":"IL","Isla de Man":"IM","India":"IN","Territorio Británico del Océano Índico":"IO","Iraq":"IQ","Irán":"IR","Islandia":"IS","Italia":"IT","Jersey":"JE","Jamaica":"JM","Jordania":"JO","Japón":"JP","Kenia":"KE","Kirguistán":"KG","Camboya":"KH","Kiribati":"KI","Comoras":"KM","San Cristóbal y Nieves":"KN","Corea del Norte":"KP","Corea del Sur":"KR","Kuwait":"KW","Islas Caimán":"KY","Kazajistán":"KZ","Laos":"LA","Líbano":"LB","Santa Lucía":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesoto":"LS","Lituania":"LT","Luxemburgo":"LU","Letonia":"LV","Libia":"LY","Marruecos":"MA","Mónaco":"MC","Moldavia":"MD","Montenegro":"ME","San Martín":"MF","Madagascar":"MG","Islas Marshall":"MH","Macedonia":"MK","Mali":"ML","Myanmar [Birmania]":"MM","Mongolia":"MN","Región Administrativa Especial de Macao de la República Popular China":"MO","Islas Marianas del Norte":"MP","Martinica":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauricio":"MU","Maldivas":"MV","Malaui":"MW","México":"MX","Malasia":"MY","Mozambique":"MZ","Namibia":"NA","Nueva Caledonia":"NC","Níger":"NE","Isla Norfolk":"NF","Nigeria":"NG","Nicaragua":"NI","Países Bajos":"NL","Noruega":"NO","Nepal":"NP","Nauru":"NR","Isla Niue":"NU","Nueva Zelanda":"NZ","Omán":"OM","Panamá":"PA","Perú":"PE","Polinesia Francesa":"PF","Papúa Nueva Guinea":"PG","Filipinas":"PH","Pakistán":"PK","Polonia":"PL","San Pedro y Miquelón":"PM","Islas Pitcairn":"PN","Puerto Rico":"PR","Territorios Palestinos":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Territorios alejados de Oceanía":"QO","Reunión":"RE","Rumanía":"RO","Serbia":"RS","Rusia":"RU","Ruanda":"RW","Arabia Saudí":"SA","Islas Salomón":"SB","Seychelles":"SC","Sudán":"SD","Suecia":"SE","Singapur":"SG","Santa Elena":"SH","Eslovenia":"SI","Svalbard y Jan Mayen":"SJ","Eslovaquia":"SK","Sierra Leona":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Sudán del Sur":"SS","Santo Tomé y Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Siria":"SY","Suazilandia":"SZ","Tristán da Cunha":"TA","Islas Turcas y Caicos":"TC","Chad":"TD","Territorios Australes Franceses":"TF","Togo":"TG","Tailandia":"TH","Tayikistán":"TJ","Tokelau":"TK","Timor Oriental":"TL","Turkmenistán":"TM","Túnez":"TN","Tonga":"TO","Turquía":"TR","Trinidad y Tobago":"TT","Tuvalu":"TV","Taiwán":"TW","Tanzania":"TZ","Ucrania":"UA","Uganda":"UG","Islas menores alejadas de los Estados Unidos":"UM","Estados Unidos":"US","Uruguay":"UY","Uzbekistán":"UZ","Ciudad del Vaticano":"VA","San Vicente y las Granadinas":"VC","Venezuela":"VE","Islas Vírgenes Británicas":"VG","Islas Vírgenes de los Estados Unidos":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis y Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Sudáfrica":"ZA","Zambia":"ZM","Zimbabue":"ZW","Región desconocida":"ZZ"};
+ilib.data.ctrynames_fr = {"generated":false,"albanie":"AL","algérie":"DZ","samoa américaines":"AS","andorre":"AD","antigua-et-barbuda":"AG","argentine":"AR","arménie":"AM","australie":"AU","autriche":"AT","azerbaïdjan":"AZ","ivb":"VG","bahreïn":"BH","barbade":"BB","biélorussie":"BY","belgique":"BE","bénin":"BJ","bermudes":"BM","bhoutan":"BT","bolivie":"BO","bosnie-herzégovine":"BA","brésil":"BR","territoire de l’océan indien britannique":"IO","bulgarie":"BG","cambodge":"KH","cameroun":"CM","cap-vert":"CV","caïmans":"KY","république d’afrique centrale":"CF","tchad":"TD","chili":"CL","chine":"CN","colombie":"CO","comores":"KM","îles cook":"CK","croatie":"HR","chypre":"CY","république tchèque":"CZ","côte d’ivoire":"CI","r.d.":"DO","rdc":"CD","république démocratique du congo":"CD","danemark":"DK","dominique":"DM","république dominicaine":"DO","timor oriental":"TL","équateur":"EC","égypte":"EG","guinée équatoriale":"GQ","érythrée":"ER","estonie":"EE","éthiopie":"ET","arym":"MK","îles falkland":"FK","falkland":"FK","îles féroé":"FO","états fédérés de micronésie":"FM","fidji":"FJ","finlande":"FI","ex-république yougoslave de macédoine":"MK","guyane française":"GF","polynésie française":"PF","gambie":"GM","géorgie":"GE","allemagne":"DE","grenade":"GD","grèce":"GR","groenland":"GL","guadeloupe":"GP","guinée":"GN","guinée-bissau":"GW","guyane":"GY","haïti":"HT","hongrie":"HU","islande":"IS","inde":"IN","indonésie":"ID","irak":"IQ","irlande":"IE","israël":"IL","italie":"IT","jamaïque":"JM","japon":"JP","jordanie":"JO","koweït":"KW","kirghizistan":"KG","lettonie":"LV","liban":"LB","libye":"LY","lituanie":"LT","macao":"MO","malaisie":"MY","malte":"MT","marianne":"MP","îles marshall":"MH","mauritanie":"MR","maurice":"MU","mexique":"MX","micronésie":"FM","moldavie":"MD","mongolie":"MN","monténégro":"ME","maroc":"MA","namibie":"NA","népal":"NP","pays-bas":"NL","antilles néerlandaises":"AN","nouvelle-calédonie":"NC","nouvelle-zélande":"NZ","île norfolk":"NF","corée du nord":"KP","îles marianne du nord":"MP","norvège":"NO","palaos":"PW","autorité palestinienne":"PS","panamá":"PA","papouasie-nouvelle-guinée":"PG","république populaire de chine":"CN","pérou":"PE","pologne":"PL","porto rico":"PR","république de chine":"TW","république d’irlande":"IE","roumanie":"RO","russie":"RU","sainte-hélène":"SH","saint-kitts-et-nevis":"KN","sainte-lucie":"LC","saint-vincent":"VC","saint-vincent et les grenadines":"VC","saint-marin":"SM","arabie saoudite":"SA","sénégal":"SN","serbie":"RS","singapour":"SG","saint-martin":"MF","slovaquie":"SK","slovénie":"SI","îles solomon":"SB","somalie":"SO","afrique du sud":"ZA","corée du sud":"KR","espagne":"ES","ste-lucie":"LC","saint-pierre-et-miquelon":"PM","soudan":"SD","suède":"SE","suisse":"CH","syrie":"SY","sao tomé-et-principe":"ST","taïwan":"TW","tadjikistan":"TJ","tanzanie":"TZ","thaïlande":"TH","les bahamas":"BS","îles vierges britanniques":"VG","îles turks et caicos":"TC","îles vierges américaines":"VI","trinité-et-tobago":"TT","tunisie":"TN","turquie":"TR","turkménistan":"TM","éau":"AE","ouganda":"UG","émirats arabes unis":"AE","royaume-uni":"GB","ouzbékistan":"UZ","vatican":"VA","wallis-et-futuna":"WF","yémen":"YE","zambie":"ZM","afghanistan":"AF","îles aland":"AX","angola":"AO","anguilla":"AI","antigua":"AG","arabie":"SA","aruba":"AW","ascension":"SH","i.v.b.":"VG","bahamas":"BS","bangladesh":"BD","barbuda":"AG","bélarus":"BY","belize":"BZ","bermude":"BM","république bolivarienne du venezuela":"VE","bolivie, état plurinational de":"BO","bosnie":"BA","botswana":"BW","île bouvet":"BV","territoire britannique de l’océan indien":"IO","brunéi":"BN","brunéi darussalam":"BN","burkina faso":"BF","burundi":"BI","r.c.a.":"CF","îles caicos":"TC","canada":"CA","îles du cap-vert":"CV","rca":"CF","îles caïmans":"KY","république centrafricaine":"CF","île christmas":"CX","îles cocos et keeling":"CC","îles cocos (keeling)":"CC","îles cocos":"CC","congo":"CD","congo, république démocratique du":"CD","congo, république démocratique":"CD","costa rica":"CR","cuba":"CU","république populaire démocratique de corée":"KP","fjibouti":"DJ","rpdc":"KP","rd":"DO","dubaï":"AE","el salvador":"SV","angleterre":"GB","a.r.y.m.":"MK","malouines":"FK","féroé":"FO","france":"FR","territoires français de l’antarctique":"TF","futuna":"WF","gabon":"GA","ghana":"GH","gibraltar":"GI","grande-bretagne":"GB","grenadines":"VC","guam":"GU","guatemala":"GT","guernesey":"GG","îles heard et mcdonald":"HM","île heard":"HM","île heard et îles mcdonald":"HM","herzégovine":"BA","hollande":"NL","saint-siège":"VA","honduras":"HN","hong kong":"HK","iran":"IR","iran, république islamique":"IR","iraq":"IQ","république islamique d’iran":"IR","île de man":"IM","jan mayen":"SJ","jersey":"JE","kazakhstan":"KZ","kenya":"KE","kiribati":"KI","corée":"KR","corée, république populaire démocratique de":"KP","corée, république de":"KR","république démocratique populaire lao":"LA","laos":"LA","lesotho":"LS","libéria":"LR","jamahiriya arabe libyenne populaire et socialiste":"LY","liechtenstein":"LI","lithuanie":"LT","luxembourg":"LU","macédoine":"MK","macédoine, ex-république yougoslave de":"MK","macédoine, l’ex-république yougoslave de":"MK","madagascar":"MG","malawi":"MW","maldives":"MV","mali":"ML","mariannes":"MP","marshalls":"MH","martinique":"MQ","mayotte":"YT","îles mcdonald":"HM","micronésie, états fédérés de":"FM","miquelon":"PM","moldavie, république de":"MD","monaco":"MC","montserrat":"MS","mozambique":"MZ","myanmar":"MM","nauru":"NR","nevis":"KN","nicaragua":"NI","niger":"NE","nigéria":"NG","îles mariannes du nord":"MP","territoires palestiniens occupés":"PS","oman":"OM","r. p. chine":"CN","r. p. de chine":"CN","r.p. de chine":"CN","pakistan":"PK","palau":"PW","palestine":"PS","territoires palestiniens":"PS","territoires palestiniens, occupés":"PS","panama":"PA","paraguay":"PY","philippines":"PH","pitcairn":"PN","état plurinational de bolivie":"BO","polynésie":"PF","portugal":"PT","rp chine":"CN","rpc":"CN","principe":"ST","qatar":"QA","république de corée":"KR","république de moldavie":"MD","république de singapour":"SG","réunion":"RE","fédération russe":"RU","rwanda":"RW","saint barthélemy":"BL","saint-barthélemy":"BL","sainte-hélène, ascension et tristan da cunha":"SH","saint-kitts":"KN","saint-pierre":"PM","samoa":"WS","sao tomé":"ST","écosse":"GB","seychelles":"SC","sierra leone":"SL","slovakie":"SK","îles salomon":"SB","salomon":"SB","géorgie du sud":"GS","géorgie du sud et îles sandwich du sud":"GS","îles sandwich du sud":"GS","sri lanka":"LK","st. barthélemy":"BL","st barth":"BL","ste hélène":"SH","ste hélène, ascension et tristan da cunha":"SH","st-kitts":"KN","st-kitts-et-nevis":"KN","ste lucie":"LC","st-vincent":"VC","st barthélemy":"BL","st. barth":"BL","st martin":"MF","suriname":"SR","svalbard":"SJ","svalbard et jan mayen":"SJ","swaziland":"SZ","république arabe syrienne":"SY","taiwan":"TW","tanzanie, république unie":"TZ","l’ex-république yougoslave de macédoine":"MK","les grenadines":"VC","les pays-bas":"NL","les philippines":"PH","la république de singapour":"SG","le soudan":"SD","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinité":"TT","tristan da cunha":"SH","îles turks":"TC","tuvalu":"TV","e.a.u.":"AE","r.u.":"GB","é.-u.":"US","eau":"AE","ru":"GB","ukraine":"UA","république unie de tanzanie":"TZ","états-unis":"US","îles mineures éloignées des états-unis":"UM","états-unis d’amérique":"US","uruguay":"UY","é-u":"US","iveu":"VI","vanuatu":"VU","cité du vatican":"VA","état de la cité du vatican":"VA","venezuela":"VE","venezuela, république bolivarienne du":"VE","viêt nam":"VN","vietnam":"VN","îles vierges":"VI","îles vierges, britanniques":"VG","îles vierges, é-u":"VI","pays de galles":"GB","wallis":"WF","sahara occidental":"EH","zimbabwe":"ZW","îles åland":"AX","Île de l’Ascension":"AC","Andorre":"AD","Émirats arabes unis":"AE","Afghanistan":"AF","Antigua-et-Barbuda":"AG","Anguilla":"AI","Albanie":"AL","Arménie":"AM","Antilles néerlandaises":"AN","Angola":"AO","Antarctique":"AQ","Argentine":"AR","Samoa américaines":"AS","Autriche":"AT","Australie":"AU","Aruba":"AW","Îles Åland":"AX","Azerbaïdjan":"AZ","Bosnie-Herzégovine":"BA","Barbade":"BB","Bangladesh":"BD","Belgique":"BE","Burkina Faso":"BF","Bulgarie":"BG","Bahreïn":"BH","Burundi":"BI","Bénin":"BJ","Saint-Barthélémy":"BL","Bermudes":"BM","Brunéi Darussalam":"BN","Bolivie":"BO","Pays-Bas caribéens":"BQ","Brésil":"BR","Bahamas":"BS","Bhoutan":"BT","Île Bouvet":"BV","Botswana":"BW","Bélarus":"BY","Belize":"BZ","Canada":"CA","Îles Cocos [Keeling]":"CC","République démocratique du Congo":"CD","République centrafricaine":"CF","Congo-Brazzaville":"CG","Suisse":"CH","Côte d’Ivoire":"CI","Îles Cook":"CK","Chili":"CL","Cameroun":"CM","Chine":"CN","Colombie":"CO","Île Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Cap-Vert":"CV","Curaçao":"CW","Île Christmas":"CX","Chypre":"CY","République tchèque":"CZ","Allemagne":"DE","Diego Garcia":"DG","Djibouti":"DJ","Danemark":"DK","Dominique":"DM","République dominicaine":"DO","Algérie":"DZ","Ceuta et Melilla":"EA","Équateur":"EC","Estonie":"EE","Égypte":"EG","Sahara occidental":"EH","Érythrée":"ER","Espagne":"ES","Éthiopie":"ET","Union européenne":"EU","Finlande":"FI","Fidji":"FJ","Îles Malouines":"FK","États fédérés de Micronésie":"FM","Îles Féroé":"FO","France":"FR","Gabon":"GA","Royaume-Uni":"GB","Grenade":"GD","Géorgie":"GE","Guyane française":"GF","Guernesey":"GG","Ghana":"GH","Gibraltar":"GI","Groenland":"GL","Gambie":"GM","Guinée":"GN","Guadeloupe":"GP","Guinée équatoriale":"GQ","Grèce":"GR","Géorgie du Sud et les Îles Sandwich du Sud":"GS","Guatemala":"GT","Guam":"GU","Guinée-Bissau":"GW","Guyana":"GY","R.A.S. chinoise de Hong Kong":"HK","Îles Heard et MacDonald":"HM","Honduras":"HN","Croatie":"HR","Haïti":"HT","Hongrie":"HU","Îles Canaries":"IC","Indonésie":"ID","Irlande":"IE","Israël":"IL","Île de Man":"IM","Inde":"IN","Territoire britannique de l'océan Indien":"IO","Irak":"IQ","Iran":"IR","Islande":"IS","Italie":"IT","Jersey":"JE","Jamaïque":"JM","Jordanie":"JO","Japon":"JP","Kenya":"KE","Kirghizistan":"KG","Cambodge":"KH","Kiribati":"KI","Comores":"KM","Saint-Kitts-et-Nevis":"KN","Corée du Nord":"KP","Corée du Sud":"KR","Koweït":"KW","Îles Caïmans":"KY","Kazakhstan":"KZ","Laos":"LA","Liban":"LB","Sainte-Lucie":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Libéria":"LR","Lesotho":"LS","Lituanie":"LT","Luxembourg":"LU","Lettonie":"LV","Libye":"LY","Maroc":"MA","Monaco":"MC","Moldavie":"MD","Monténégro":"ME","Saint-Martin [partie française]":"MF","Madagascar":"MG","Îles Marshall":"MH","Macédoine":"MK","Mali":"ML","Myanmar":"MM","Mongolie":"MN","R.A.S. chinoise de Macao":"MO","Îles Mariannes du Nord":"MP","Martinique":"MQ","Mauritanie":"MR","Montserrat":"MS","Malte":"MT","Maurice":"MU","Maldives":"MV","Malawi":"MW","Mexique":"MX","Malaisie":"MY","Mozambique":"MZ","Namibie":"NA","Nouvelle-Calédonie":"NC","Niger":"NE","Île Norfolk":"NF","Nigéria":"NG","Nicaragua":"NI","Pays-Bas":"NL","Norvège":"NO","Népal":"NP","Nauru":"NR","Niue":"NU","Nouvelle-Zélande":"NZ","Oman":"OM","Panama":"PA","Pérou":"PE","Polynésie française":"PF","Papouasie-Nouvelle-Guinée":"PG","Philippines":"PH","Pakistan":"PK","Pologne":"PL","Saint-Pierre-et-Miquelon":"PM","Pitcairn":"PN","Porto Rico":"PR","Territoire palestinien":"PS","Portugal":"PT","Palaos":"PW","Paraguay":"PY","Qatar":"QA","régions éloignées de l’Océanie":"QO","Réunion":"RE","Roumanie":"RO","Serbie":"RS","Russie":"RU","Rwanda":"RW","Arabie saoudite":"SA","Îles Salomon":"SB","Seychelles":"SC","Soudan":"SD","Suède":"SE","Singapour":"SG","Sainte-Hélène":"SH","Slovénie":"SI","Svalbard et Île Jan Mayen":"SJ","Slovaquie":"SK","Sierra Leone":"SL","Saint-Marin":"SM","Sénégal":"SN","Somalie":"SO","Suriname":"SR","Soudan du Sud":"SS","Sao Tomé-et-Príncipe":"ST","El Salvador":"SV","Saint-Martin [partie néerlandaise]":"SX","Syrie":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Îles Turks et Caïques":"TC","Tchad":"TD","Terres australes françaises":"TF","Togo":"TG","Thaïlande":"TH","Tadjikistan":"TJ","Tokelau":"TK","Timor oriental":"TL","Turkménistan":"TM","Tunisie":"TN","Tonga":"TO","Turquie":"TR","Trinité-et-Tobago":"TT","Tuvalu":"TV","Taïwan":"TW","Tanzanie":"TZ","Ukraine":"UA","Ouganda":"UG","Îles éloignées des États-Unis":"UM","États-Unis":"US","Uruguay":"UY","Ouzbékistan":"UZ","État de la Cité du Vatican":"VA","Saint-Vincent-et-les Grenadines":"VC","Venezuela":"VE","Îles Vierges britanniques":"VG","Îles Vierges des États-Unis":"VI","Viêt Nam":"VN","Vanuatu":"VU","Wallis-et-Futuna":"WF","Samoa":"WS","Yémen":"YE","Mayotte":"YT","Afrique du Sud":"ZA","Zambie":"ZM","Zimbabwe":"ZW","région indéterminée":"ZZ"};
+ilib.data.ctrynames_fr_CA = {"generated":false,"Île de l'Ascension":"AC","Géorgie du Sud et les îles Sandwich du Sud":"GS","Sao Tomé-et-Principe":"ST"};
+ilib.data.ctrynames_id = {"Pulau Ascension":"AC","Andora":"AD","Uni Emirat Arab":"AE","Afganistan":"AF","Antigua dan Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Antilla Belanda":"AN","Angola":"AO","Antarktika":"AQ","Argentina":"AR","Samoa Amerika":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Kepulauan Aland":"AX","Azerbaijan":"AZ","Bosnia dan Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgia":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthelemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Karibia Belanda":"BQ","Brasil":"BR","Bahama":"BS","Bhutan":"BT","Pulau Bouvet":"BV","Botswana":"BW","Belarus":"BY","Belize":"BZ","Kanada":"CA","Kepulauan Cocos":"CC","Kongo - Kinshasa":"CD","Republik Afrika Tengah":"CF","Kongo - Brazzaville":"CG","Swiss":"CH","Cote d'Ivoire":"CI","Kepulauan Cook":"CK","Cile":"CL","Kamerun":"CM","China":"CN","Kolombia":"CO","Pulau Clipperton":"CP","Kosta Rika":"CR","Kuba":"CU","Tanjung Verde":"CV","Curaçao":"CW","Pulau Christmas":"CX","Siprus":"CY","Republik Cheska":"CZ","Jerman":"DE","Diego Garcia":"DG","Jibuti":"DJ","Denmark":"DK","Dominika":"DM","Republik Dominika":"DO","Aljazair":"DZ","Ceuta dan Melilla":"EA","Ekuador":"EC","Estonia":"EE","Mesir":"EG","Sahara Barat":"EH","Eritrea":"ER","Spanyol":"ES","Etiopia":"ET","Uni Eropa":"EU","Finlandia":"FI","Fiji":"FJ","Kepulauan Malvinas":"FK","Mikronesia":"FM","Kepulauan Faroe":"FO","Prancis":"FR","Gabon":"GA","Inggris":"GB","Grenada":"GD","Georgia":"GE","Guyana Prancis":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grinlandia":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Guinea Ekuatorial":"GQ","Yunani":"GR","Kepulauan South Sandwich dan South Georgia":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hong Kong SAR China":"HK","Pulau Heard dan Kepulauan McDonald":"HM","Honduras":"HN","Kroasia":"HR","Haiti":"HT","Hungaria":"HU","Kepulauan Canary":"IC","Indonesia":"ID","Irlandia":"IE","Israel":"IL","Isle of Man":"IM","India":"IN","Wilayah Inggris di Samudra Hindia":"IO","Irak":"IQ","Iran":"IR","Islandia":"IS","Italia":"IT","Jersey":"JE","Jamaika":"JM","Yordania":"JO","Jepang":"JP","Kenya":"KE","Kirgistan":"KG","Kamboja":"KH","Kiribati":"KI","Komoro":"KM","Saint Kitts dan Nevis":"KN","Korea Utara":"KP","Korea Selatan":"KR","Kuwait":"KW","Kepulauan Kayman":"KY","Kazakstan":"KZ","Laos":"LA","Lebanon":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lituania":"LT","Luksemburg":"LU","Latvia":"LV","Libia":"LY","Maroko":"MA","Monako":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagaskar":"MG","Kepulauan Marshall":"MH","Makedonia":"MK","Mali":"ML","Myanmar":"MM","Mongolia":"MN","Makau SAR China":"MO","Kepulauan Mariana Utara":"MP","Martinik":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maladewa":"MV","Malawi":"MW","Meksiko":"MX","Malaysia":"MY","Mozambik":"MZ","Namibia":"NA","Kaledonia Baru":"NC","Niger":"NE","Kepulauan Norfolk":"NF","Nigeria":"NG","Nikaragua":"NI","Belanda":"NL","Norwegia":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Selandia Baru":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Polinesia Prancis":"PF","Papua Nugini":"PG","Filipina":"PH","Pakistan":"PK","Polandia":"PL","Saint Pierre dan Miquelon":"PM","Kepulauan Pitcairn":"PN","Puerto Riko":"PR","Otoritas Palestina":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Oseania Luar":"QO","Réunion":"RE","Rumania":"RO","Serbia":"RS","Rusia":"RU","Rwanda":"RW","Arab Saudi":"SA","Kepulauan Solomon":"SB","Seychelles":"SC","Sudan":"SD","Swedia":"SE","Singapura":"SG","Saint Helena":"SH","Slovenia":"SI","Kepulauan Svalbard dan Jan Mayen":"SJ","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Suriname":"SR","Sudan Selatan":"SS","Sao Tome dan Principe":"ST","El Salvador":"SV","Sint Maarten":"SX","Suriah":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Kepulauan Turks dan Caicos":"TC","Cad":"TD","Teritori Kutub Selatan Prancis":"TF","Togo":"TG","Thailand":"TH","Tajikistan":"TJ","Tokelau":"TK","Timor Leste":"TL","Turkimenistan":"TM","Tunisia":"TN","Tonga":"TO","Turki":"TR","Trinidad dan Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraina":"UA","Uganda":"UG","Kepulauan Terluar A.S.":"UM","Amerika Serikat":"US","Uruguay":"UY","Uzbekistan":"UZ","Vatikan":"VA","Saint Vincent dan Grenadines":"VC","Venezuela":"VE","Kepulauan Virgin Inggris":"VG","Kepulauan Virgin A.S.":"VI","Vietnam":"VN","Vanuatu":"VU","Kepulauan Wallis dan Futuna":"WF","Samoa":"WS","Yaman":"YE","Mayotte":"YT","Afrika Selatan":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Wilayah Tidak Dikenal":"ZZ"};
+ilib.data.ctrynames_it = {"generated":false,"samoa americane":"AS","antigua e barbuda":"AG","ascensione":"SH","azerbaigian":"AZ","isole vergini britanniche":"VG","bielorussia":"BY","belgio":"BE","bosnia erzegovina":"BA","brasile":"BR","territori britannici dell’oceano indiano":"IO","cambogia":"KH","camerun":"CM","capo verde":"CV","cayman":"KY","repubblica centrafricana":"CF","ciad":"TD","cile":"CL","cina":"CN","isole cook":"CK","croazia":"HR","cipro":"CY","repubblica ceca":"CZ","costa d’avorio":"CI","rep. dominicana":"DO","repubblica democratica del congo":"CD","danimarca":"DK","gibuti":"DJ","repubblica dominicana":"DO","timor est":"TL","egitto":"EG","guinea equatoriale":"GQ","etiopia":"ET","macedonia":"MK","isole falkland":"FK","falkland":"FK","isole fær øer":"FO","stati federati di micronesia":"FM","finlandia":"FI","repubblica ex jugoslava di macedonia":"MK","francia":"FR","guiana francese":"GF","polinesia francese":"PF","germania":"DE","gibilterra":"GI","grecia":"GR","groenlandia":"GL","guadalupa":"GP","ungheria":"HU","islanda":"IS","irlanda":"IE","israele":"IL","italia":"IT","giamaica":"JM","giappone":"JP","giordania":"JO","kenia":"KE","kirghizistan":"KG","lettonia":"LV","libano":"LB","libia":"LY","liechtenstein":"LI","lituania":"LT","lussemburgo":"LU","macao":"MO","malesia":"MY","maldive":"MV","marianne":"MP","isole marshall":"MH","martinica":"MQ","messico":"MX","moldavia":"MD","principato di monaco":"MC","marocco":"MA","mozambico":"MZ","paesi bassi":"NL","antille olandesi":"AN","nuova caledonia":"NC","nuova zelanda":"NZ","isola norfolk":"NF","corea del nord":"KP","isole marianne settentrionali":"MP","norvegia":"NO","autorità palestinese":"PS","papua nuova guinea":"PG","repubblica popolare cinese":"CN","perù":"PE","filippine":"PH","polonia":"PL","portogallo":"PT","porto rico":"PR","repubblica di cona":"TW","ruanda":"RW","sant’elena":"SH","saint kitts e nevis":"KN","santa lucia":"LC","saint pierre e miquelon":"PM","saint-vincent":"VC","saint vincent e le grenadines":"VC","arabia saudita":"SA","slovacchia":"SK","isole salomone":"SB","sudafrica":"ZA","corea del sud":"KR","spagna":"ES","st. pierre e miquelon":"PM","svezia":"SE","svizzera":"CH","siria":"SY","sao tome e principe":"ST","tagikistan":"TJ","tailandia":"TH","le bahamas":"BS","isole cayman":"KY","gambia":"GM","isole turks e caicos":"TC","trinidad e tobago":"TT","turchia":"TR","isole vergini statunitensi":"VI","eau":"AE","ucraina":"UA","emirati arabi uniti":"AE","regno unito":"GB","città del vaticano":"VA","wallis e futuna":"WF","afghanistan":"AF","isole åland":"AX","albania":"AL","algeria":"DZ","andorra":"AD","angola":"AO","anguilla":"AI","antigua":"AG","arabia":"SA","argentina":"AR","armenia":"AM","aruba":"AW","australia":"AU","austria":"AT","bahamas":"BS","bahrain":"BH","bangladesh":"BD","barbados":"BB","barbuda":"AG","belize":"BZ","benin":"BJ","bermuda":"BM","bhutan":"BT","repubblica bolivariana del venezuela":"VE","bolivia":"BO","bolivia, stato plurinazionale della":"BO","bosnia":"BA","botswana":"BW","isola bouvet":"BV","territorio britannico dell'oceano indiano":"IO","brunei":"BN","brunei darussalam":"BN","bulgaria":"BG","burkina faso":"BF","burundi":"BI","isole caicos":"TC","canada":"CA","isole di capo verde":"CV","isola christmas":"CX","isole cocos e keeling":"CC","isole cocos":"CC","colombia":"CO","comoros":"KM","congo":"CD","congo, repubblica democratica del":"CD","costa rica":"CR","cuba":"CU","repubblica democratica popolare di corea":"KP","dominica":"DM","dubai":"AE","ecuador":"EC","el salvador":"SV","inghilterra":"GB","eritrea":"ER","estonia":"EE","isole falklands":"FK","falklands":"FK","isole faeroer":"FO","faeroer":"FO","fiji":"FJ","guyana francese":"GF","territori francesi meridionali":"TF","futuna":"WF","gabon":"GA","georgia":"GE","ghana":"GH","gran bretagna":"GB","grenada":"GD","grenadine":"VC","guam":"GU","guatemala":"GT","guernsey":"GG","guinea":"GN","guinea-bissau":"GW","guyana":"GY","haiti":"HT","isole heard e mcdonald":"HM","isola heard":"HM","isola heard ed isole mcdonald":"HM","erzegovina":"BA","olanda":"NL","santa sede":"VA","honduras":"HN","hong kong":"HK","india":"IN","indonesia":"ID","iran":"IR","repubblica islamica dell'iran":"IR","iraq":"IQ","isola di man":"IM","costa d'avorio":"CI","jan mayen":"SJ","jersey":"JE","kazakistan":"KZ","kiribati":"KI","corea":"KR","corea, repubblica democratica popolare di":"KP","corea, repubblica di":"KR","kuwait":"KW","repubblica popolare democratica del laos":"LA","laos":"LA","lesotho":"LS","liberia":"LR","jamahiriya araba di libia":"LY","macedonia, repubblica ex jugoslava di":"MK","madagascar":"MG","malawi":"MW","mali":"ML","malta":"MT","malvine":"FK","marshall":"MH","mauritania":"MR","mauritius":"MU","mayotte":"YT","isole mcdonald":"HM","micronesia":"FM","micronesia, stati federati della":"FM","miquelon":"PM","moldavia, repubblica di":"MD","monaco":"MC","mongolia":"MN","montenegro":"ME","myanmar":"MM","namibia":"NA","nauru":"NR","nepal":"NP","nevis":"KN","nicaragua":"NI","niger":"NE","nigeria":"NG","territori occupati palestinesi":"PS","oman":"OM","r. p. cinese":"CN","pakistan":"PK","palau":"PW","palestina":"PS","territori palestinesi":"PS","panama":"PA","paraguay":"PY","pitcairn":"PN","stato plurinazionale della bolivia":"BO","polinesia":"PF","principe":"ST","qatar":"QA","repubblica di cina":"TW","repubblica della corea":"KR","repubblica della moldavia":"MD","repubblica di singapore ":"SG","riunione":"RE","romania":"RO","russia":"RU","federazione russa":"RU","saint-barthélemy":"BL","san barth":"BL","sant'elena":"SH","sant'elena, ascensione e tristan da cunha":"SH","saint kitts":"KN","saint-pierre":"PM","saint-pierre e miquelon":"PM","saint vincent":"VC","samoa":"WS","san marino":"SM","sao tome":"ST","scozia":"GB","senegal":"SN","serbia":"RS","seychelles":"SC","sierra leone":"SL","singapore":"SG","slovenia":"SI","salomone":"SB","somalia":"SO","georgia del sud":"GS","georgia del sud e isole sandwich meridionali":"GS","isole sandwich meridionali":"GS","sri lanka":"LK","st. lucia":"LC","st. martin":"MF","saint pierre":"PM","st. vincent":"VC","sudan":"SD","suriname":"SR","svalbard":"SJ","svalbard e jan mayen":"SJ","swaziland":"SZ","repubblica araba di siria":"SY","taiwan":"TW","tanzania":"TZ","tanzania, repubblica unita di":"TZ","le grenadines":"VC","repubblica di singapore":"SG","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinidad":"TT","tristan da cunha":"SH","tunisia":"TN","turkmenistan":"TM","isole turks":"TC","tuvalu":"TV","usa":"US","uganda":"UG","repubblica unita di tanzania":"TZ","stati uniti":"US","isole minori esterne degli stati uniti":"UM","stati uniti d’america":"US","uruguay":"UY","uzbekistan":"UZ","vanuatu":"VU","vaticano":"VA","venezuela":"VE","venezuela, repubblica bolivariana del":"VE","vietnam":"VN","isole vergini":"VI","galles":"GB","wallis":"WF","sahara occidentale":"EH","yemen":"YE","zambia":"ZM","zimbabwe":"ZW","eire":"IE","Isola di Ascensione":"AC","Andorra":"AD","Emirati Arabi Uniti":"AE","Afghanistan":"AF","Antigua e Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Antille Olandesi":"AN","Angola":"AO","Antartide":"AQ","Argentina":"AR","Samoa Americane":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Isole Aland":"AX","Azerbaigian":"AZ","Bosnia Erzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgio":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","San Bartolomeo":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Caraibi Olandesi":"BQ","Brasile":"BR","Bahamas":"BS","Bhutan":"BT","Isola Bouvet":"BV","Botswana":"BW","Bielorussia":"BY","Belize":"BZ","Canada":"CA","Isole Cocos":"CC","Congo - Kinshasa":"CD","Repubblica Centrafricana":"CF","Congo":"CG","Svizzera":"CH","Costa d’Avorio":"CI","Isole Cook":"CK","Cile":"CL","Camerun":"CM","Cina":"CN","Colombia":"CO","Isola di Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Capo Verde":"CV","Curaçao":"CW","Isola di Christmas":"CX","Cipro":"CY","Repubblica Ceca":"CZ","Germania":"DE","Diego Garcia":"DG","Gibuti":"DJ","Danimarca":"DK","Dominica":"DM","Repubblica Dominicana":"DO","Algeria":"DZ","Ceuta e Melilla":"EA","Ecuador":"EC","Estonia":"EE","Egitto":"EG","Sahara Occidentale":"EH","Eritrea":"ER","Spagna":"ES","Etiopia":"ET","Unione Europea":"EU","Finlandia":"FI","Figi":"FJ","Isole Falkland":"FK","Micronesia":"FM","Isole Faroe":"FO","Francia":"FR","Gabon":"GA","Regno Unito":"GB","Grenada":"GD","Georgia":"GE","Guiana Francese":"GF","Guernsey":"GG","Ghana":"GH","Gibilterra":"GI","Groenlandia":"GL","Gambia":"GM","Guinea":"GN","Guadalupa":"GP","Guinea Equatoriale":"GQ","Grecia":"GR","Georgia del Sud e Isole Sandwich del Sud":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","RAS di Hong Kong":"HK","Isole Heard ed Isole McDonald":"HM","Honduras":"HN","Croazia":"HR","Haiti":"HT","Ungheria":"HU","Isole Canarie":"IC","Indonesia":"ID","Irlanda":"IE","Israele":"IL","Isola di Man":"IM","India":"IN","Territorio Britannico dell’Oceano Indiano":"IO","Iraq":"IQ","Iran":"IR","Islanda":"IS","Italia":"IT","Jersey":"JE","Giamaica":"JM","Giordania":"JO","Giappone":"JP","Kenya":"KE","Kirghizistan":"KG","Cambogia":"KH","Kiribati":"KI","Comore":"KM","Saint Kitts e Nevis":"KN","Corea del Nord":"KP","Corea del Sud":"KR","Kuwait":"KW","Isole Cayman":"KY","Kazakistan":"KZ","Laos":"LA","Libano":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lituania":"LT","Lussemburgo":"LU","Lettonia":"LV","Libia":"LY","Marocco":"MA","Monaco":"MC","Moldavia":"MD","Montenegro":"ME","Saint Martin":"MF","Madagascar":"MG","Isole Marshall":"MH","Repubblica di Macedonia":"MK","Mali":"ML","Myanmar":"MM","Mongolia":"MN","RAS di Macao":"MO","Isole Marianne Settentrionali":"MP","Martinica":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldive":"MV","Malawi":"MW","Messico":"MX","Malesia":"MY","Mozambico":"MZ","Namibia":"NA","Nuova Caledonia":"NC","Niger":"NE","Isola Norfolk":"NF","Nigeria":"NG","Nicaragua":"NI","Paesi Bassi":"NL","Norvegia":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Nuova Zelanda":"NZ","Oman":"OM","Panama":"PA","Perù":"PE","Polinesia Francese":"PF","Papua Nuova Guinea":"PG","Filippine":"PH","Pakistan":"PK","Polonia":"PL","Saint Pierre e Miquelon":"PM","Pitcairn":"PN","Portorico":"PR","Territori palestinesi":"PS","Portogallo":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Oceania lontana":"QO","Réunion":"RE","Romania":"RO","Serbia":"RS","Federazione Russa":"RU","Ruanda":"RW","Arabia Saudita":"SA","Isole Solomon":"SB","Seychelles":"SC","Sudan":"SD","Svezia":"SE","Singapore":"SG","Sant’Elena":"SH","Slovenia":"SI","Svalbard e Jan Mayen":"SJ","Slovacchia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Suriname":"SR","Sudan del Sud":"SS","Sao Tomé e Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Siria":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Isole Turks e Caicos":"TC","Ciad":"TD","Territori australi francesi":"TF","Togo":"TG","Tailandia":"TH","Tagikistan":"TJ","Tokelau":"TK","Timor Est":"TL","Turkmenistan":"TM","Tunisia":"TN","Tonga":"TO","Turchia":"TR","Trinidad e Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ucraina":"UA","Uganda":"UG","Isole periferiche agli USA":"UM","Stati Uniti":"US","Uruguay":"UY","Uzbekistan":"UZ","Città del Vaticano":"VA","Saint Vincent e Grenadines":"VC","Venezuela":"VE","Isole Vergini Britanniche":"VG","Isole Vergini Americane":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis e Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Sudafrica":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Regione non valida o sconosciuta":"ZZ"};
+ilib.data.ctrynames_ja = {"アセンション島":"AC","アンドラ":"AD","アラブ首長国連邦":"AE","アフガニスタン":"AF","アンティグア・バーブーダ":"AG","アンギラ":"AI","アルバニア":"AL","アルメニア":"AM","オランダ領アンティル":"AN","アンゴラ":"AO","南極":"AQ","アルゼンチン":"AR","米領サモア":"AS","オーストリア":"AT","オーストラリア":"AU","アルバ":"AW","オーランド諸島":"AX","アゼルバイジャン":"AZ","ボスニア・ヘルツェゴビナ":"BA","バルバドス":"BB","バングラデシュ":"BD","ベルギー":"BE","ブルキナファソ":"BF","ブルガリア":"BG","バーレーン":"BH","ブルンジ":"BI","ベナン":"BJ","サン・バルテルミー島":"BL","バミューダ":"BM","ブルネイ":"BN","ボリビア":"BO","オランダ領カリブ":"BQ","ブラジル":"BR","バハマ":"BS","ブータン":"BT","ブーベ島":"BV","ボツワナ":"BW","ベラルーシ":"BY","ベリーズ":"BZ","カナダ":"CA","ココス[キーリング]諸島":"CC","コンゴ民主共和国[キンシャサ]":"CD","中央アフリカ共和国":"CF","コンゴ共和国[ブラザビル]":"CG","スイス":"CH","コートジボワール":"CI","クック諸島":"CK","チリ":"CL","カメルーン":"CM","中国":"CN","コロンビア":"CO","クリッパートン島":"CP","コスタリカ":"CR","キューバ":"CU","カーボベルデ":"CV","キュラソー":"CW","クリスマス島":"CX","キプロス":"CY","チェコ共和国":"CZ","ドイツ":"DE","ディエゴガルシア島":"DG","ジブチ":"DJ","デンマーク":"DK","ドミニカ国":"DM","ドミニカ共和国":"DO","アルジェリア":"DZ","セウタ・メリリャ":"EA","エクアドル":"EC","エストニア":"EE","エジプト":"EG","西サハラ":"EH","エリトリア":"ER","スペイン":"ES","エチオピア":"ET","欧州連合":"EU","フィンランド":"FI","フィジー":"FJ","フォークランド諸島":"FK","ミクロネシア連邦":"FM","フェロー諸島":"FO","フランス":"FR","ガボン":"GA","イギリス":"GB","グレナダ":"GD","グルジア":"GE","仏領ギアナ":"GF","ガーンジー":"GG","ガーナ":"GH","ジブラルタル":"GI","グリーンランド":"GL","ガンビア":"GM","ギニア":"GN","グアドループ":"GP","赤道ギニア":"GQ","ギリシャ":"GR","南ジョージア島・南サンドイッチ諸島":"GS","グアテマラ":"GT","グアム":"GU","ギニアビサウ":"GW","ガイアナ":"GY","中華人民共和国香港特別行政区":"HK","ハード島・マクドナルド諸島":"HM","ホンジュラス":"HN","クロアチア":"HR","ハイチ":"HT","ハンガリー":"HU","カナリア諸島":"IC","インドネシア":"ID","アイルランド":"IE","イスラエル":"IL","マン島":"IM","インド":"IN","英領インド洋地域":"IO","イラク":"IQ","イラン":"IR","アイスランド":"IS","イタリア":"IT","ジャージー":"JE","ジャマイカ":"JM","ヨルダン":"JO","日本":"JP","ケニア":"KE","キルギス":"KG","カンボジア":"KH","キリバス":"KI","コモロ":"KM","セントクリストファー・ネイビス":"KN","朝鮮民主主義人民共和国":"KP","大韓民国":"KR","クウェート":"KW","ケイマン諸島":"KY","カザフスタン":"KZ","ラオス":"LA","レバノン":"LB","セントルシア":"LC","リヒテンシュタイン":"LI","スリランカ":"LK","リベリア":"LR","レソト":"LS","リトアニア":"LT","ルクセンブルグ":"LU","ラトビア":"LV","リビア":"LY","モロッコ":"MA","モナコ":"MC","モルドバ":"MD","モンテネグロ":"ME","サン・マルタン":"MF","マダガスカル":"MG","マーシャル諸島":"MH","マケドニア":"MK","マリ":"ML","ミャンマー":"MM","モンゴル":"MN","中華人民共和国マカオ特別行政区":"MO","北マリアナ諸島":"MP","マルティニーク":"MQ","モーリタニア":"MR","モントセラト":"MS","マルタ":"MT","モーリシャス":"MU","モルジブ":"MV","マラウイ":"MW","メキシコ":"MX","マレーシア":"MY","モザンビーク":"MZ","ナミビア":"NA","ニューカレドニア":"NC","ニジェール":"NE","ノーフォーク島":"NF","ナイジェリア":"NG","ニカラグア":"NI","オランダ":"NL","ノルウェー":"NO","ネパール":"NP","ナウル":"NR","ニウエ島":"NU","ニュージーランド":"NZ","オマーン":"OM","パナマ":"PA","ペルー":"PE","仏領ポリネシア":"PF","パプアニューギニア":"PG","フィリピン":"PH","パキスタン":"PK","ポーランド":"PL","サンピエール島・ミクロン島":"PM","ピトケアン諸島":"PN","プエルトリコ":"PR","パレスチナ":"PS","ポルトガル":"PT","パラオ":"PW","パラグアイ":"PY","カタール":"QA","オセアニア周辺地域":"QO","レユニオン島":"RE","ルーマニア":"RO","セルビア":"RS","ロシア":"RU","ルワンダ":"RW","サウジアラビア":"SA","ソロモン諸島":"SB","セーシェル":"SC","スーダン":"SD","スウェーデン":"SE","シンガポール":"SG","セントヘレナ":"SH","スロベニア":"SI","スバールバル諸島・ヤンマイエン島":"SJ","スロバキア":"SK","シエラレオネ":"SL","サンマリノ":"SM","セネガル":"SN","ソマリア":"SO","スリナム":"SR","南スーダン":"SS","サントメ・プリンシペ":"ST","エルサルバドル":"SV","シント・マールテン":"SX","シリア":"SY","スワジランド":"SZ","トリスタン・ダ・クーニャ":"TA","タークス・カイコス諸島":"TC","チャド":"TD","仏領極南諸島":"TF","トーゴ":"TG","タイ":"TH","タジキスタン":"TJ","トケラウ":"TK","東ティモール":"TL","トルクメニスタン":"TM","チュニジア":"TN","トンガ":"TO","トルコ":"TR","トリニダード・トバゴ":"TT","ツバル":"TV","台湾":"TW","タンザニア":"TZ","ウクライナ":"UA","ウガンダ":"UG","米領太平洋諸島":"UM","アメリカ":"US","ウルグアイ":"UY","ウズベキスタン":"UZ","バチカン市国":"VA","セントビンセント・グレナディーン諸島":"VC","ベネズエラ":"VE","英領ヴァージン諸島":"VG","米領ヴァージン諸島":"VI","ベトナム":"VN","バヌアツ":"VU","ウォリス・フツナ":"WF","サモア":"WS","イエメン":"YE","マヨット島":"YT","南アフリカ":"ZA","ザンビア":"ZM","ジンバブエ":"ZW","不明な地域":"ZZ"};
+ilib.data.ctrynames_ko = {"어센션 섬":"AC","안도라":"AD","아랍에미리트 연합":"AE","아프가니스탄":"AF","앤티가 바부다":"AG","안길라":"AI","알바니아":"AL","아르메니아":"AM","네덜란드령 안틸레스":"AN","앙골라":"AO","남극 대륙":"AQ","아르헨티나":"AR","아메리칸 사모아":"AS","오스트리아":"AT","오스트레일리아":"AU","아루바":"AW","올란드 제도":"AX","아제르바이잔":"AZ","보스니아 헤르체고비나":"BA","바베이도스":"BB","방글라데시":"BD","벨기에":"BE","부르키나파소":"BF","불가리아":"BG","바레인":"BH","부룬디":"BI","베냉":"BJ","생 바르텔르미":"BL","버뮤다":"BM","브루나이":"BN","볼리비아":"BO","네덜란드령 카리브":"BQ","브라질":"BR","바하마":"BS","부탄":"BT","부베":"BV","보츠와나":"BW","벨라루스":"BY","벨리즈":"BZ","캐나다":"CA","코코스제도":"CC","콩고-킨샤사":"CD","중앙 아프리카 공화국":"CF","콩고":"CG","스위스":"CH","코트디부아르":"CI","쿡제도":"CK","칠레":"CL","카메룬":"CM","중국":"CN","콜롬비아":"CO","클립퍼튼 섬":"CP","코스타리카":"CR","쿠바":"CU","까뽀베르데":"CV","퀴라소":"CW","크리스마스섬":"CX","사이프러스":"CY","체코":"CZ","독일":"DE","디에고 가르시아":"DG","지부티":"DJ","덴마크":"DK","도미니카":"DM","도미니카 공화국":"DO","알제리":"DZ","세우타 및 멜리야":"EA","에콰도르":"EC","에스토니아":"EE","이집트":"EG","서사하라":"EH","에리트리아":"ER","스페인":"ES","이디오피아":"ET","유럽 연합":"EU","핀란드":"FI","피지":"FJ","포클랜드 제도":"FK","미크로네시아":"FM","페로제도":"FO","프랑스":"FR","가봉":"GA","영국":"GB","그레나다":"GD","그루지야":"GE","프랑스령 기아나":"GF","건지":"GG","가나":"GH","지브롤터":"GI","그린란드":"GL","감비아":"GM","기니":"GN","과들루프":"GP","적도 기니":"GQ","그리스":"GR","사우스조지아 사우스샌드위치 제도":"GS","과테말라":"GT","괌":"GU","기네비쏘":"GW","가이아나":"GY","홍콩, 중국 특별행정구":"HK","허드섬-맥도널드제도":"HM","온두라스":"HN","크로아티아":"HR","아이티":"HT","헝가리":"HU","카나리아 제도":"IC","인도네시아":"ID","아일랜드":"IE","이스라엘":"IL","맨 섬":"IM","인도":"IN","영국령인도양식민지":"IO","이라크":"IQ","이란":"IR","아이슬란드":"IS","이탈리아":"IT","저지":"JE","자메이카":"JM","요르단":"JO","일본":"JP","케냐":"KE","키르기스스탄":"KG","캄보디아":"KH","키리바시":"KI","코모로스":"KM","세인트크리스토퍼 네비스":"KN","조선 민주주의 인민 공화국":"KP","대한민국":"KR","쿠웨이트":"KW","케이맨제도":"KY","카자흐스탄":"KZ","라오스":"LA","레바논":"LB","세인트루시아":"LC","리히텐슈타인":"LI","스리랑카":"LK","라이베리아":"LR","레소토":"LS","리투아니아":"LT","룩셈부르크":"LU","라트비아":"LV","리비아":"LY","모로코":"MA","모나코":"MC","몰도바":"MD","몬테네그로":"ME","생 마르탱":"MF","마다가스카르":"MG","마샬 군도":"MH","마케도니아":"MK","말리":"ML","미얀마":"MM","몽골":"MN","마카오, 중국 특별행정구":"MO","북마리아나제도":"MP","말티니크":"MQ","모리타니":"MR","몬트세라트":"MS","몰타":"MT","모리셔스":"MU","몰디브":"MV","말라위":"MW","멕시코":"MX","말레이시아":"MY","모잠비크":"MZ","나미비아":"NA","뉴 칼레도니아":"NC","니제르":"NE","노퍽섬":"NF","나이지리아":"NG","니카라과":"NI","네덜란드":"NL","노르웨이":"NO","네팔":"NP","나우루":"NR","니우에":"NU","뉴질랜드":"NZ","오만":"OM","파나마":"PA","페루":"PE","프랑스령 폴리네시아":"PF","파푸아뉴기니":"PG","필리핀":"PH","파키스탄":"PK","폴란드":"PL","세인트피에르-미케롱":"PM","핏케언섬":"PN","푸에르토리코":"PR","팔레스타인 지구":"PS","포르투갈":"PT","팔라우":"PW","파라과이":"PY","카타르":"QA","오세아니아 외곽":"QO","리유니온":"RE","루마니아":"RO","세르비아":"RS","러시아":"RU","르완다":"RW","사우디아라비아":"SA","솔로몬 제도":"SB","쉐이쉘":"SC","수단":"SD","스웨덴":"SE","싱가포르":"SG","세인트헬레나":"SH","슬로베니아":"SI","스발바르제도-얀마웬섬":"SJ","슬로바키아":"SK","시에라리온":"SL","산마리노":"SM","세네갈":"SN","소말리아":"SO","수리남":"SR","남수단":"SS","상투메 프린시페":"ST","엘살바도르":"SV","신트마르턴":"SX","시리아":"SY","스와질랜드":"SZ","트리스탄다쿠나":"TA","터크스케이커스제도":"TC","차드":"TD","프랑스 남부 지방":"TF","토고":"TG","태국":"TH","타지키스탄":"TJ","토켈라우":"TK","동티모르":"TL","투르크메니스탄":"TM","튀니지":"TN","통가":"TO","터키":"TR","트리니다드 토바고":"TT","투발루":"TV","대만":"TW","탄자니아":"TZ","우크라이나":"UA","우간다":"UG","미국령 해외 제도":"UM","미국":"US","우루과이":"UY","우즈베키스탄":"UZ","바티칸":"VA","세인트빈센트그레나딘":"VC","베네수엘라":"VE","영국령 버진 아일랜드":"VG","미국령 버진 아일랜드":"VI","베트남":"VN","바누아투":"VU","왈리스-푸투나 제도":"WF","사모아":"WS","예멘":"YE","마요티":"YT","남아프리카":"ZA","잠비아":"ZM","짐바브웨":"ZW","알수없거나 유효하지 않은 지역":"ZZ"};
+ilib.data.ctrynames_nl = {"generated":false,"albanië":"AL","algerije":"DZ","amerikaans samoa":"AS","antigua en barbuda":"AG","argentinië":"AR","armenië":"AM","australië":"AU","oostenrijk":"AT","britse maagdeneilanden":"VG","bahama’s":"BS","belgië":"BE","bosnië en herzegovina":"BA","brazilië":"BR","brits territorium in de indische oceaan":"IO","bulgarije":"BG","cambodja":"KH","kameroen":"CM","kaapverdië":"CV","kaaimaneilanden":"KY","centraal-afrikaanse republiek":"CF","tsjaad":"TD","chili":"CL","comoren":"KM","cookeilanden":"CK","kroatië":"HR","tsjechië":"CZ","ivoorkust":"CI","d.r.c.":"CD","democratische republiek congo":"CD","denemarken":"DK","dominicaanse republiek":"DO","oost-timor":"TL","egypte":"EG","equatoriaal guinea":"GQ","estland":"EE","ethiopië":"ET","falklandeilanden":"FK","faroëreilanden":"FO","federatieve staten van micronesië":"FM","voormalige joegoslavische republiek van macedonië":"MK","frankrijk":"FR","frans guyana":"GF","frans polynesië":"PF","duitsland":"DE","griekenland":"GR","groenland":"GL","guinee":"GN","guinee-bissau":"GW","haïti":"HT","hongarije":"HU","ijsland":"IS","indonesië":"ID","irak":"IQ","ierland":"IE","israël":"IL","italië":"IT","jordanië":"JO","kenia":"KE","koeweit":"KW","kirgizië":"KG","letland":"LV","libanon":"LB","libië":"LY","liechtenstein":"LI","litouwen":"LT","luxemburg":"LU","madagaskar":"MG","maleisië":"MY","malediven":"MV","marianen":"MP","marshalleilanden":"MH","mauritanië":"MR","micronesië":"FM","moldavië":"MD","mongolië":"MN","marokko":"MA","namibië":"NA","nederland":"NL","nederlandse antillen":"AN","nieuw caledonië":"NC","nieuw-zeeland":"NZ","norfolkeiland":"NF","noord-korea":"KP","noordelijke marianen":"MP","noorwegen":"NO","palestijnse autoriteit":"PS","papoea nieuw guinea":"PG","volksrepubliek china":"CN","filipijnen":"PH","polen":"PL","republiek china":"TW","republiek ierland":"IE","roemenië":"RO","rusland":"RU","saint kitts en nevis":"KN","saint pierre en miquelon":"PM","saint vincent en de grenadines":"VC","saoedi-arabië":"SA","servië":"RS","seychellen":"SC","slowakije":"SK","slovenië":"SI","solomoneilanden":"SB","somalië":"SO","zuid-afrika":"ZA","zuid-korea":"KR","spanje":"ES","st. pierre en miquelon":"PM","soedan":"SD","zweden":"SE","zwitserland":"CH","syrië":"SY","são tomé et príncipe":"ST","de bahama’s":"BS","gambia":"GM","turks- en caicoseilanden":"TC","amerikaanse maagdeneilanden":"VI","trinidad en tobago":"TT","tunesië":"TN","turkije":"TR","v.a.e.":"AE","oeganda":"UG","oekraïne":"UA","verenigde arabische emiraten":"AE","verenigd koninkrijk":"GB","oezbekistan":"UZ","vaticaanstad":"VA","wallis en futuna":"WF","jemen":"YE","afghanistan":"AF","alandeilanden":"AX","andorra":"AD","angola":"AO","anguilla":"AI","antigua":"AG","aruba":"AW","ascension":"SH","azerbaijan":"AZ","bahrain":"BH","bangladesh":"BD","barbados":"BB","barbuda":"AG","belarus":"BY","belize":"BZ","benin":"BJ","bermuda":"BM","bhutan":"BT","bolivariaanse republiek venezuela":"VE","bolivia":"BO","bosnië":"BA","botswana":"BW","bouveteiland":"BV","brunei":"BN","brunei darussalam":"BN","burkina faso":"BF","burundi":"BI","c.a.r.":"CF","caicoseilanden":"TC","canada":"CA","kaap verdië":"CV","kaaiman":"KY","china":"CN","christmaseilanden":"CX","cocos- en keelingeilanden":"CC","cocoseilanden":"CC","colombia":"CO","congo":"CD","congo, democratische republiek":"CD","costa rica":"CR","cuba":"CU","cyprus":"CY","d.r.":"DO","democratische volksrepubliek korea":"KP","djibouti":"DJ","dominica":"DM","ecuador":"EC","el salvador":"SV","eritrea":"ER","f.y.r.o.m.":"MK","faroe-eilanden":"FO","faroe":"FO","fiji":"FJ","finland":"FI","frans territorium in de stille oceaan":"TF","futuna":"WF","fyrom":"MK","gabon":"GA","georgië":"GE","ghana":"GH","gibraltar":"GI","groot-brittannië":"GB","grenada":"GD","grenadines":"VC","guadeloupe":"GP","guam":"GU","guatemala":"GT","guernsey":"GG","guyana":"GY","heard- en mcdonaldeilanden":"HM","heardeiland":"HM","heardeiland en mcdonaldeilanden":"HM","herzegovina":"BA","holland":"NL","heilige stoel":"VA","honduras":"HN","hong kong":"HK","india":"IN","iran":"IR","iran, islamitische republiek":"IR","islamitische republiek iran":"IR","eiland man":"IM","jamaica":"JM","jan mayen":"SJ","japan":"JP","jersey":"JE","kazakhstan":"KZ","kiribati":"KI","korea":"KR","korea, democratische volksrepubliek":"KP","korea, republiek":"KR","laos, democratische volksrepubliek":"LA","laos":"LA","lesotho":"LS","liberia":"LR","libië, arabische jamahiriya":"LY","macao":"MO","macedonië":"MK","macedonië, voormalige joegoslavische republiek":"MK","madagascar":"MG","malawi":"MW","mali":"ML","malta":"MT","malvina’s":"FK","marshalls":"MH","martinique":"MQ","mauritius":"MU","mayotte":"YT","mcdonaldeilanden":"HM","mexico":"MX","micronesië, federatieve staten van":"FM","miquelon":"PM","moldavië, republiek":"MD","monaco":"MC","montenegro":"ME","montserrat":"MS","mozambique":"MZ","myanmar":"MM","nauru":"NR","nepal":"NP","nevis":"KN","nicaragua":"NI","niger":"NE","nigeria":"NG","oman":"OM","pakistan":"PK","palau":"PW","palestina":"PS","palestijnse gebieden, bezet":"PS","panama":"PA","papoea nieuw-guinea":"PG","paraguay":"PY","peru":"PE","pitcairn":"PN","png":"PG","portugal":"PT","príncipe":"ST","puerto rico":"PR","qatar":"QA","republiek korea":"KR","republiek moldavië":"MD","réunion":"RE","russische federatie":"RU","rwanda":"RW","saint barthélemy":"BL","saint helena":"SH","saint helena, ascension en tristan da cunha":"SH","saint kitts":"KN","saint lucia":"LC","saint martin":"MF","saint pierre":"PM","saint vincent":"VC","samoa":"WS","san marino":"SM","são tomé":"ST","senegal":"SN","sierra leone":"SL","singapore":"SG","zuid-georgië":"GS","zuid-georgië en de zuidelijke sandwicheilanden":"GS","zuidelijke sandwicheilanden":"GS","sri lanka":"LK","st. barthélemy":"BL","st. helena":"SH","st. kitts":"KN","st. lucia":"LC","st. martin":"MF","st. pierre":"PM","st. vincent":"VC","suriname":"SR","svalbard":"SJ","svalbard en jan mayen":"SJ","swaziland":"SZ","syrië, arabische republiek":"SY","taiwan":"TW","tajikistan":"TJ","tanzania":"TZ","tanzania, verenigde republiek":"TZ","thailand":"TH","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinidad":"TT","tristan da cunha":"SH","turkmenistan":"TM","turkseilanden":"TC","tuvalu":"TV","v.k.":"GB","v.s.":"US","verenigde republiek van tanzania":"TZ","verenigde staten":"US","kleine afgelegen eilanden van de verenigde staten":"UM","verenigde staten van amerika":"US","uruguay":"UY","vanuatu":"VU","vaticaan":"VA","venezuela":"VE","venezuela, bolivariaanse republiek":"VE","vietnam":"VN","maagdeneilanden, brits":"VG","maagdeneilanden, amerikaans":"VI","wallis":"WF","westelijk sahara":"EH","zambia":"ZM","zimbabwe":"ZW","ålandeilanden":"AX","Ascension":"AC","Andorra":"AD","Verenigde Arabische Emiraten":"AE","Afghanistan":"AF","Antigua en Barbuda":"AG","Anguilla":"AI","Albanië":"AL","Armenië":"AM","Nederlandse Antillen":"AN","Angola":"AO","Antarctica":"AQ","Argentinië":"AR","Amerikaans Samoa":"AS","Oostenrijk":"AT","Australië":"AU","Aruba":"AW","Ålandeilanden":"AX","Azerbeidzjan":"AZ","Bosnië en Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","België":"BE","Burkina Faso":"BF","Bulgarije":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Caribisch Nederland":"BQ","Brazilië":"BR","Bahama’s":"BS","Bhutan":"BT","Bouveteiland":"BV","Botswana":"BW","Wit-Rusland":"BY","Belize":"BZ","Canada":"CA","Cocoseilanden":"CC","Congo-Kinshasa":"CD","Centraal-Afrikaanse Republiek":"CF","Congo-Brazzaville":"CG","Zwitserland":"CH","Ivoorkust":"CI","Cookeilanden":"CK","Chili":"CL","Kameroen":"CM","China":"CN","Colombia":"CO","Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Kaapverdië":"CV","Curaçao":"CW","Christmaseiland":"CX","Cyprus":"CY","Tsjechië":"CZ","Duitsland":"DE","Diego Garcia":"DG","Djibouti":"DJ","Denemarken":"DK","Dominica":"DM","Dominicaanse Republiek":"DO","Algerije":"DZ","Ceuta en Melilla":"EA","Ecuador":"EC","Estland":"EE","Egypte":"EG","Westelijke Sahara":"EH","Eritrea":"ER","Spanje":"ES","Ethiopië":"ET","Europese Unie":"EU","Finland":"FI","Fiji":"FJ","Falklandeilanden":"FK","Micronesië":"FM","Faeröer":"FO","Frankrijk":"FR","Gabon":"GA","Verenigd Koninkrijk":"GB","Grenada":"GD","Georgië":"GE","Frans-Guyana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Groenland":"GL","Gambia":"GM","Guinee":"GN","Guadeloupe":"GP","Equatoriaal-Guinea":"GQ","Griekenland":"GR","Zuid-Georgia en Zuidelijke Sandwicheilanden":"GS","Guatemala":"GT","Guam":"GU","Guinee-Bissau":"GW","Guyana":"GY","Hongkong SAR van China":"HK","Heard- en McDonaldeilanden":"HM","Honduras":"HN","Kroatië":"HR","Haïti":"HT","Hongarije":"HU","Canarische Eilanden":"IC","Indonesië":"ID","Ierland":"IE","Israël":"IL","Isle of Man":"IM","India":"IN","Britse Gebieden in de Indische Oceaan":"IO","Irak":"IQ","Iran":"IR","IJsland":"IS","Italië":"IT","Jersey":"JE","Jamaica":"JM","Jordanië":"JO","Japan":"JP","Kenia":"KE","Kirgizië":"KG","Cambodja":"KH","Kiribati":"KI","Comoren":"KM","Saint Kitts en Nevis":"KN","Noord-Korea":"KP","Zuid-Korea":"KR","Koeweit":"KW","Caymaneilanden":"KY","Kazachstan":"KZ","Laos":"LA","Libanon":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Litouwen":"LT","Luxemburg":"LU","Letland":"LV","Libië":"LY","Marokko":"MA","Monaco":"MC","Moldavië":"MD","Montenegro":"ME","Saint-Martin":"MF","Madagaskar":"MG","Marshalleilanden":"MH","Macedonië":"MK","Mali":"ML","Myanmar":"MM","Mongolië":"MN","Macao SAR van China":"MO","Noordelijke Marianeneilanden":"MP","Martinique":"MQ","Mauritanië":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldiven":"MV","Malawi":"MW","Mexico":"MX","Maleisië":"MY","Mozambique":"MZ","Namibië":"NA","Nieuw-Caledonië":"NC","Niger":"NE","Norfolkeiland":"NF","Nigeria":"NG","Nicaragua":"NI","Nederland":"NL","Noorwegen":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Nieuw-Zeeland":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Frans-Polynesië":"PF","Papoea-Nieuw-Guinea":"PG","Filipijnen":"PH","Pakistan":"PK","Polen":"PL","Saint Pierre en Miquelon":"PM","Pitcairneilanden":"PN","Puerto Rico":"PR","Palestijnse gebieden":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Overig Oceanië":"QO","Réunion":"RE","Roemenië":"RO","Servië":"RS","Rusland":"RU","Rwanda":"RW","Saoedi-Arabië":"SA","Salomonseilanden":"SB","Seychellen":"SC","Soedan":"SD","Zweden":"SE","Singapore":"SG","Sint-Helena":"SH","Slovenië":"SI","Svalbard en Jan Mayen":"SJ","Slowakije":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalië":"SO","Suriname":"SR","Zuid-Soedan":"SS","Sao Tomé en Principe":"ST","El Salvador":"SV","Sint-Maarten":"SX","Syrië":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Turks- en Caicoseilanden":"TC","Tsjaad":"TD","Franse Gebieden in de zuidelijke Indische Oceaan":"TF","Togo":"TG","Thailand":"TH","Tadzjikistan":"TJ","Tokelau":"TK","Oost-Timor":"TL","Turkmenistan":"TM","Tunesië":"TN","Tonga":"TO","Turkije":"TR","Trinidad en Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Oekraïne":"UA","Oeganda":"UG","Kleine afgelegen eilanden van de Verenigde Staten":"UM","Verenigde Staten":"US","Uruguay":"UY","Oezbekistan":"UZ","Vaticaanstad":"VA","Saint Vincent en de Grenadines":"VC","Venezuela":"VE","Britse Maagdeneilanden":"VG","Amerikaanse Maagdeneilanden":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis en Futuna":"WF","Samoa":"WS","Jemen":"YE","Mayotte":"YT","Zuid-Afrika":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Onbekend gebied":"ZZ"};
+ilib.data.ctrynames_pt = {"Ilha de Ascensão":"AC","Andorra":"AD","Emirados Árabes Unidos":"AE","Afeganistão":"AF","Antígua e Barbuda":"AG","Anguilla":"AI","Albânia":"AL","Armênia":"AM","Antilhas Holandesas":"AN","Angola":"AO","Antártida":"AQ","Argentina":"AR","Samoa Americana":"AS","Áustria":"AT","Austrália":"AU","Aruba":"AW","Ilhas Aland":"AX","Azerbaijão":"AZ","Bósnia-Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Bélgica":"BE","Burquina Faso":"BF","Bulgária":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","São Bartolomeu":"BL","Bermudas":"BM","Brunei":"BN","Bolívia":"BO","Brasil":"BR","Bahamas":"BS","Butão":"BT","Ilha Bouvet":"BV","Botsuana":"BW","Belarus":"BY","Belize":"BZ","Canadá":"CA","Ilhas Coco":"CC","Congo-Kinshasa":"CD","República Centro-Africana":"CF","Congo - Brazzaville":"CG","Suíça":"CH","Costa do Marfim":"CI","Ilhas Cook":"CK","Chile":"CL","República dos Camarões":"CM","China":"CN","Colômbia":"CO","Ilha de Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Cabo Verde":"CV","Ilhas Natal":"CX","Chipre":"CY","República Tcheca":"CZ","Alemanha":"DE","Diego Garcia":"DG","Djibuti":"DJ","Dinamarca":"DK","Dominica":"DM","República Dominicana":"DO","Argélia":"DZ","Ceuta e Melilha":"EA","Equador":"EC","Estônia":"EE","Egito":"EG","Saara Ocidental":"EH","Eritreia":"ER","Espanha":"ES","Etiópia":"ET","União Europeia":"EU","Finlândia":"FI","Fiji":"FJ","Ilhas Malvinas":"FK","Micronésia":"FM","Ilhas Faroe":"FO","França":"FR","Gabão":"GA","Reino Unido":"GB","Granada":"GD","Geórgia":"GE","Guiana Francesa":"GF","Guernsey":"GG","Gana":"GH","Gibraltar":"GI","Groênlandia":"GL","Gâmbia":"GM","Guiné":"GN","Guadalupe":"GP","Guiné Equatorial":"GQ","Grécia":"GR","Geórgia do Sul e Ilhas Sandwich do Sul":"GS","Guatemala":"GT","Guam":"GU","Guiné Bissau":"GW","Guiana":"GY","Hong Kong, RAE da China":"HK","Ilha Heard e Ilhas McDonald":"HM","Honduras":"HN","Croácia":"HR","Haiti":"HT","Hungria":"HU","Ilhas Canárias":"IC","Indonésia":"ID","Irlanda":"IE","Israel":"IL","Ilha de Man":"IM","Índia":"IN","Território Britânico do Oceano Índico":"IO","Iraque":"IQ","Irã":"IR","Islândia":"IS","Itália":"IT","Jersey":"JE","Jamaica":"JM","Jordânia":"JO","Japão":"JP","Quênia":"KE","Quirguistão":"KG","Camboja":"KH","Quiribati":"KI","Comores":"KM","São Cristovão e Nevis":"KN","Coreia do Norte":"KP","Coreia do Sul":"KR","Kuwait":"KW","Ilhas Caiman":"KY","Casaquistão":"KZ","Laos":"LA","Líbano":"LB","Santa Lúcia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Libéria":"LR","Lesoto":"LS","Lituânia":"LT","Luxemburgo":"LU","Letônia":"LV","Líbia":"LY","Marrocos":"MA","Mônaco":"MC","Moldávia":"MD","Montenegro":"ME","São Martinho":"MF","Madagascar":"MG","Ilhas Marshall":"MH","Macedônia":"MK","Mali":"ML","Mianmar [Birmânia]":"MM","Mongólia":"MN","Macau, RAE da China":"MO","Ilhas Marianas do Norte":"MP","Martinica":"MQ","Mauritânia":"MR","Montserrat":"MS","Malta":"MT","Maurício":"MU","Maldivas":"MV","Malawi":"MW","México":"MX","Malásia":"MY","Moçambique":"MZ","Namíbia":"NA","Nova Caledônia":"NC","Níger":"NE","Ilha Norfolk":"NF","Nigéria":"NG","Nicarágua":"NI","Holanda":"NL","Noruega":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Nova Zelândia":"NZ","Omã":"OM","Panamá":"PA","Peru":"PE","Polinésia Francesa":"PF","Papua-Nova Guiné":"PG","Filipinas":"PH","Paquistão":"PK","Polônia":"PL","Saint Pierre e Miquelon":"PM","Ilhas Pitcairn":"PN","Porto Rico":"PR","Territórios palestinos":"PS","Portugal":"PT","Palau":"PW","Paraguai":"PY","Catar":"QA","Oceania Remota":"QO","Reunião":"RE","Romênia":"RO","Sérvia":"RS","Rússia":"RU","Ruanda":"RW","Arábia Saudita":"SA","Ilhas Salomão":"SB","Seychelles":"SC","Sudão":"SD","Suécia":"SE","Cingapura":"SG","Santa Helena":"SH","Eslovênia":"SI","Svalbard e Jan Mayen":"SJ","Eslováquia":"SK","Serra Leoa":"SL","San Marino":"SM","Senegal":"SN","Somália":"SO","Suriname":"SR","Sudão do Sul":"SS","São Tomé e Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Síria":"SY","Suazilândia":"SZ","Tristão da Cunha":"TA","Ilhas Turks e Caicos":"TC","Chade":"TD","Territórios Franceses do Sul":"TF","Togo":"TG","Tailândia":"TH","Tadjiquistão":"TJ","Tokelau":"TK","Timor-Leste":"TL","Turcomenistão":"TM","Tunísia":"TN","Tonga":"TO","Turquia":"TR","Trinidad e Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzânia":"TZ","Ucrânia":"UA","Uganda":"UG","Ilhas Distantes dos EUA":"UM","Estados Unidos":"US","Uruguai":"UY","Uzbequistão":"UZ","Vaticano":"VA","São Vicente e Granadinas":"VC","Venezuela":"VE","Ilhas Virgens Britânicas":"VG","Ilhas Virgens dos EUA":"VI","Vietnã":"VN","Vanuatu":"VU","Wallis e Futuna":"WF","Samoa":"WS","Iêmen":"YE","Mayotte":"YT","África do Sul":"ZA","Zâmbia":"ZM","Zimbábue":"ZW","Região desconhecida":"ZZ"};
+ilib.data.ctrynames_pt_PT = {"Anguila":"AI","Arménia":"AM","Ilhas Åland":"AX","Barém":"BH","Benim":"BJ","Países Baixos Caribenhos":"BQ","Bielorrússia":"BY","Ilhas Cocos":"CC","Congo-Brazzaville":"CG","Camarões":"CM","Curaçau":"CW","Ilha do Natal":"CX","República Checa":"CZ","Jibuti":"DJ","Domínica":"DM","Estónia":"EE","Egipto":"EG","Ilhas Falkland":"FK","Ilhas Faroé":"FO","Gronelândia":"GL","Guame":"GU","Guiné-Bissau":"GW","Região Administrativa Especial de Hong Kong":"HK","Irão":"IR","Quénia":"KE","Quirguizistão":"KG","São Cristóvão e Neves":"KN","Ilhas Caimão":"KY","Cazaquistão":"KZ","Letónia":"LV","Mónaco":"MC","Madagáscar":"MG","Macedónia":"MK","Região Administrativa Especial de Macau":"MO","Monserrate":"MS","Maurícias":"MU","Nova Caledónia":"NC","Países Baixos":"NL","Papuásia-Nova Guiné":"PG","Polónia":"PL","Pitcairn":"PN","Território Palestiniano":"PS","Oceânia Insular":"QO","Roménia":"RO","Seicheles":"SC","Singapura":"SG","Eslovénia":"SI","São Marino":"SM","Ilhas Turcas e Caicos":"TC","Tajiquistão":"TJ","Turquemenistão":"TM","Trindade e Tobago":"TT","Usbequistão":"UZ","Vietname":"VN","Iémen":"YE","Maiote":"YT","Zimbabué":"ZW","Região desconhecida ou inválida":"ZZ"};
+ilib.data.ctrynames_ru = {"Остров Вознесения":"AC","Андорра":"AD","ОАЭ":"AE","Афганистан":"AF","Антигуа и Барбуда":"AG","Ангилья":"AI","Албания":"AL","Армения":"AM","Нидерландские Антильские о-ва":"AN","Ангола":"AO","Антарктида":"AQ","Аргентина":"AR","Американское Самоа":"AS","Австрия":"AT","Австралия":"AU","Аруба":"AW","Аландские о-ва":"AX","Азербайджан":"AZ","Босния и Герцеговина":"BA","Барбадос":"BB","Бангладеш":"BD","Бельгия":"BE","Буркина Фасо":"BF","Болгария":"BG","Бахрейн":"BH","Бурунди":"BI","Бенин":"BJ","О-в Св. Бартоломея":"BL","Бермудские о-ва":"BM","Бруней Даруссалам":"BN","Боливия":"BO","Бонэйр, Синт-Эстатиус и Саба":"BQ","Бразилия":"BR","Багамские о-ва":"BS","Бутан":"BT","Остров Буве":"BV","Ботсвана":"BW","Беларусь":"BY","Белиз":"BZ","Канада":"CA","Кокосовые о-ва":"CC","Демократическая Республика Конго":"CD","ЦАР":"CF","Конго - Браззавиль":"CG","Швейцария":"CH","Кот д’Ивуар":"CI","Острова Кука":"CK","Чили":"CL","Камерун":"CM","Китай":"CN","Колумбия":"CO","Остров Клиппертон":"CP","Коста-Рика":"CR","Куба":"CU","Острова Зеленого Мыса":"CV","Кюрасао":"CW","Остров Рождества":"CX","Кипр":"CY","Чехия":"CZ","Германия":"DE","Диего-Гарсия":"DG","Джибути":"DJ","Дания":"DK","Доминика":"DM","Доминиканская Республика":"DO","Алжир":"DZ","Сеута и Мелилья":"EA","Эквадор":"EC","Эстония":"EE","Египет":"EG","Западная Сахара":"EH","Эритрея":"ER","Испания":"ES","Эфиопия":"ET","Европейский союз":"EU","Финляндия":"FI","Фиджи":"FJ","Фолклендские о-ва":"FK","Федеративные Штаты Микронезии":"FM","Фарерские о-ва":"FO","Франция":"FR","Габон":"GA","Великобритания":"GB","Гренада":"GD","Грузия":"GE","Французская Гвиана":"GF","Гернси":"GG","Гана":"GH","Гибралтар":"GI","Гренландия":"GL","Гамбия":"GM","Гвинея":"GN","Гваделупа":"GP","Экваториальная Гвинея":"GQ","Греция":"GR","Южная Джорджия и Южные Сандвичевы Острова":"GS","Гватемала":"GT","Гуам":"GU","Гвинея-Бисау":"GW","Гайана":"GY","Гонконг (особый район)":"HK","Острова Херд и Макдональд":"HM","Гондурас":"HN","Хорватия":"HR","Гаити":"HT","Венгрия":"HU","Канарские о-ва":"IC","Индонезия":"ID","Ирландия":"IE","Израиль":"IL","Остров Мэн":"IM","Индия":"IN","Британская территория в Индийском океане":"IO","Ирак":"IQ","Иран":"IR","Исландия":"IS","Италия":"IT","Джерси":"JE","Ямайка":"JM","Иордания":"JO","Япония":"JP","Кения":"KE","Киргизия":"KG","Камбоджа":"KH","Кирибати":"KI","Коморские о-ва":"KM","Сент-Киттс и Невис":"KN","Северная Корея":"KP","Республика Корея":"KR","Кувейт":"KW","Каймановы о-ва":"KY","Казахстан":"KZ","Лаос":"LA","Ливан":"LB","Сент-Люсия":"LC","Лихтенштейн":"LI","Шри-Ланка":"LK","Либерия":"LR","Лесото":"LS","Литва":"LT","Люксембург":"LU","Латвия":"LV","Ливия":"LY","Марокко":"MA","Монако":"MC","Молдова":"MD","Черногория":"ME","Остров Святого Мартина":"MF","Мадагаскар":"MG","Маршалловы о-ва":"MH","Македония":"MK","Мали":"ML","Мьянма [Бирма]":"MM","Монголия":"MN","Макао (особый район)":"MO","Северные Марианские о-ва":"MP","Мартиника":"MQ","Мавритания":"MR","Монтсеррат":"MS","Мальта":"MT","Маврикий":"MU","Мальдивские о-ва":"MV","Малави":"MW","Мексика":"MX","Малайзия":"MY","Мозамбик":"MZ","Намибия":"NA","Новая Каледония":"NC","Нигер":"NE","Остров Норфолк":"NF","Нигерия":"NG","Никарагуа":"NI","Нидерланды":"NL","Норвегия":"NO","Непал":"NP","Науру":"NR","Ниуе":"NU","Новая Зеландия":"NZ","Оман":"OM","Панама":"PA","Перу":"PE","Французская Полинезия":"PF","Папуа – Новая Гвинея":"PG","Филиппины":"PH","Пакистан":"PK","Польша":"PL","Сен-Пьер и Микелон":"PM","Питкэрн":"PN","Пуэрто-Рико":"PR","Палестинские территории":"PS","Португалия":"PT","Палау":"PW","Парагвай":"PY","Катар":"QA","Внешняя Океания":"QO","Реюньон":"RE","Румыния":"RO","Сербия":"RS","Россия":"RU","Руанда":"RW","Саудовская Аравия":"SA","Соломоновы о-ва":"SB","Сейшельские о-ва":"SC","Судан":"SD","Швеция":"SE","Сингапур":"SG","О-в Св. Елены":"SH","Словения":"SI","Свальбард и Ян-Майен":"SJ","Словакия":"SK","Сьерра-Леоне":"SL","Сан-Марино":"SM","Сенегал":"SN","Сомали":"SO","Суринам":"SR","Южный Судан":"SS","Сан-Томе и Принсипи":"ST","Сальвадор":"SV","Синт-Мартен":"SX","Сирия":"SY","Свазиленд":"SZ","Тристан-да-Кунья":"TA","О-ва Тёркс и Кайкос":"TC","Чад":"TD","Французские Южные Территории":"TF","Того":"TG","Таиланд":"TH","Таджикистан":"TJ","Токелау":"TK","Тимор-Лешти":"TL","Туркменистан":"TM","Тунис":"TN","Тонга":"TO","Турция":"TR","Тринидад и Тобаго":"TT","Тувалу":"TV","Тайвань":"TW","Танзания":"TZ","Украина":"UA","Уганда":"UG","Внешние малые острова (США)":"UM","США":"US","Уругвай":"UY","Узбекистан":"UZ","Ватикан":"VA","Сент-Винсент и Гренадины":"VC","Венесуэла":"VE","Британские Виргинские о-ва":"VG","Виргинские о-ва (США)":"VI","Вьетнам":"VN","Вануату":"VU","Уоллис и Футуна":"WF","Самоа":"WS","Йемен":"YE","Майотта":"YT","ЮАР":"ZA","Замбия":"ZM","Зимбабве":"ZW","Неизвестный регион":"ZZ"};
+ilib.data.ctrynames_sv = {"Ascension":"AC","Andorra":"AD","Förenade Arabemiraten":"AE","Afghanistan":"AF","Antigua och Barbuda":"AG","Anguilla":"AI","Albanien":"AL","Armenien":"AM","Nederländska Antillerna":"AN","Angola":"AO","Antarktis":"AQ","Argentina":"AR","Amerikanska Samoa":"AS","Österrike":"AT","Australien":"AU","Aruba":"AW","Åland":"AX","Azerbajdzjan":"AZ","Bosnien och Hercegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgien":"BE","Burkina Faso":"BF","Bulgarien":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","S:t Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Karibiska Nederländerna":"BQ","Brasilien":"BR","Bahamas":"BS","Bhutan":"BT","Bouvetön":"BV","Botswana":"BW","Vitryssland":"BY","Belize":"BZ","Kanada":"CA","Kokosöarna":"CC","Kongo-Kinshasa":"CD","Centralafrikanska republiken":"CF","Kongo-Brazzaville":"CG","Schweiz":"CH","Elfenbenskusten":"CI","Cooköarna":"CK","Chile":"CL","Kamerun":"CM","Kina":"CN","Colombia":"CO","Clippertonön":"CP","Costa Rica":"CR","Kuba":"CU","Kap Verde":"CV","Curaçao":"CW","Julön":"CX","Cypern":"CY","Tjeckien":"CZ","Tyskland":"DE","Diego Garcia":"DG","Djibouti":"DJ","Danmark":"DK","Dominica":"DM","Dominikanska republiken":"DO","Algeriet":"DZ","Ceuta och Melilla":"EA","Ecuador":"EC","Estland":"EE","Egypten":"EG","Västsahara":"EH","Eritrea":"ER","Spanien":"ES","Etiopien":"ET","Europeiska unionen":"EU","Finland":"FI","Fiji":"FJ","Falklandsöarna":"FK","Mikronesien":"FM","Färöarna":"FO","Frankrike":"FR","Gabon":"GA","Storbritannien":"GB","Grenada":"GD","Georgien":"GE","Franska Guyana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grönland":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Ekvatorialguinea":"GQ","Grekland":"GR","Sydgeorgien och Sydsandwichöarna":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hongkong (S.A.R. Kina)":"HK","Heard- och McDonaldöarna":"HM","Honduras":"HN","Kroatien":"HR","Haiti":"HT","Ungern":"HU","Kanarieöarna":"IC","Indonesien":"ID","Irland":"IE","Israel":"IL","Isle of Man":"IM","Indien":"IN","Brittiska Indiska oceanöarna":"IO","Irak":"IQ","Iran":"IR","Island":"IS","Italien":"IT","Jersey":"JE","Jamaica":"JM","Jordanien":"JO","Japan":"JP","Kenya":"KE","Kirgizistan":"KG","Kambodja":"KH","Kiribati":"KI","Komorerna":"KM","S:t Kitts och Nevis":"KN","Nordkorea":"KP","Sydkorea":"KR","Kuwait":"KW","Caymanöarna":"KY","Kazakstan":"KZ","Laos":"LA","Libanon":"LB","S:t Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Litauen":"LT","Luxemburg":"LU","Lettland":"LV","Libyen":"LY","Marocko":"MA","Monaco":"MC","Moldavien":"MD","Montenegro":"ME","S:t Martin":"MF","Madagaskar":"MG","Marshallöarna":"MH","Makedonien":"MK","Mali":"ML","Myanmar":"MM","Mongoliet":"MN","Macao (S.A.R. Kina)":"MO","Nordmarianerna":"MP","Martinique":"MQ","Mauretanien":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldiverna":"MV","Malawi":"MW","Mexiko":"MX","Malaysia":"MY","Moçambique":"MZ","Namibia":"NA","Nya Kaledonien":"NC","Niger":"NE","Norfolkön":"NF","Nigeria":"NG","Nicaragua":"NI","Nederländerna":"NL","Norge":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Nya Zeeland":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Franska Polynesien":"PF","Papua Nya Guinea":"PG","Filippinerna":"PH","Pakistan":"PK","Polen":"PL","S:t Pierre och Miquelon":"PM","Pitcairnöarna":"PN","Puerto Rico":"PR","Palestinska territoriet":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Yttre öar i Oceanien":"QO","Réunion":"RE","Rumänien":"RO","Serbien":"RS","Ryssland":"RU","Rwanda":"RW","Saudiarabien":"SA","Salomonöarna":"SB","Seychellerna":"SC","Sudan":"SD","Sverige":"SE","Singapore":"SG","S:t Helena":"SH","Slovenien":"SI","Svalbard och Jan Mayen":"SJ","Slovakien":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Sydsudan":"SS","São Tomé och Príncipe":"ST","El Salvador":"SV","Syrien":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Turks- och Caicosöarna":"TC","Tchad":"TD","Franska Sydterritorierna":"TF","Togo":"TG","Thailand":"TH","Tadzjikistan":"TJ","Tokelau":"TK","Östtimor":"TL","Turkmenistan":"TM","Tunisien":"TN","Tonga":"TO","Turkiet":"TR","Trinidad och Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraina":"UA","Uganda":"UG","USA:s yttre öar":"UM","USA":"US","Uruguay":"UY","Uzbekistan":"UZ","Vatikanstaten":"VA","S:t Vincent och Grenadinerna":"VC","Venezuela":"VE","Brittiska Jungfruöarna":"VG","Amerikanska Jungfruöarna":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis- och Futunaöarna":"WF","Samoa":"WS","Jemen":"YE","Mayotte":"YT","Sydafrika":"ZA","Zambia":"ZM","Zimbabwe":"ZW","okänd region":"ZZ"};
+ilib.data.ctrynames_tr = {"Ascension Adası":"AC","Andorra":"AD","Birleşik Arap Emirlikleri":"AE","Afganistan":"AF","Antigua ve Barbuda":"AG","Anguilla":"AI","Arnavutluk":"AL","Ermenistan":"AM","Hollanda Antilleri":"AN","Angola":"AO","Antarktika":"AQ","Arjantin":"AR","Amerikan Samoası":"AS","Avusturya":"AT","Avustralya":"AU","Aruba":"AW","Åland Adaları":"AX","Azerbaycan":"AZ","Bosna Hersek":"BA","Barbados":"BB","Bangladeş":"BD","Belçika":"BE","Burkina Faso":"BF","Bulgaristan":"BG","Bahreyn":"BH","Burundi":"BI","Benin":"BJ","Saint Barthelemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivya":"BO","Karayip Hollanda":"BQ","Brezilya":"BR","Bahamalar":"BS","Butan":"BT","Bouvet Adası":"BV","Botsvana":"BW","Beyaz Rusya":"BY","Belize":"BZ","Kanada":"CA","Cocos [Keeling] Adaları":"CC","Kongo - Kinşasa":"CD","Orta Afrika Cumhuriyeti":"CF","Kongo - Brazavil":"CG","İsviçre":"CH","Fildişi Sahili":"CI","Cook Adaları":"CK","Şili":"CL","Kamerun":"CM","Çin":"CN","Kolombiya":"CO","Clipperton Adası":"CP","Kosta Rika":"CR","Küba":"CU","Cape Verde":"CV","Curaçao":"CW","Christmas Adası":"CX","Güney Kıbrıs Rum Kesimi":"CY","Çek Cumhuriyeti":"CZ","Almanya":"DE","Diego Garcia":"DG","Cibuti":"DJ","Danimarka":"DK","Dominika":"DM","Dominik Cumhuriyeti":"DO","Cezayir":"DZ","Ceuta ve Melilla":"EA","Ekvador":"EC","Estonya":"EE","Mısır":"EG","Batı Sahara":"EH","Eritre":"ER","İspanya":"ES","Etiyopya":"ET","Avrupa Birliği":"EU","Finlandiya":"FI","Fiji":"FJ","Falkland Adaları":"FK","Mikronezya Federal Eyaletleri":"FM","Faroe Adaları":"FO","Fransa":"FR","Gabon":"GA","Birleşik Krallık":"GB","Grenada":"GD","Gürcistan":"GE","Fransız Guyanası":"GF","Guernsey":"GG","Gana":"GH","Cebelitarık":"GI","Grönland":"GL","Gambiya":"GM","Gine":"GN","Guadalupe":"GP","Ekvator Ginesi":"GQ","Yunanistan":"GR","Güney Georgia ve Güney Sandwich Adaları":"GS","Guatemala":"GT","Guam":"GU","Gine-Bissau":"GW","Guyana":"GY","Çin Hong Kong ÖYB":"HK","Heard Adası ve McDonald Adaları":"HM","Honduras":"HN","Hırvatistan":"HR","Haiti":"HT","Macaristan":"HU","Kanarya Adaları":"IC","Endonezya":"ID","İrlanda":"IE","İsrail":"IL","Man Adası":"IM","Hindistan":"IN","İngiliz Hint Okyanusu Bölgesi":"IO","Irak":"IQ","İran":"IR","İzlanda":"IS","İtalya":"IT","Jersey":"JE","Jamaika":"JM","Ürdün":"JO","Japonya":"JP","Kenya":"KE","Kırgızistan":"KG","Kamboçya":"KH","Kiribati":"KI","Komorlar":"KM","Saint Kitts ve Nevis":"KN","Kuzey Kore":"KP","Güney Kore":"KR","Kuveyt":"KW","Cayman Adaları":"KY","Kazakistan":"KZ","Laos":"LA","Lübnan":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberya":"LR","Lesoto":"LS","Litvanya":"LT","Lüksemburg":"LU","Letonya":"LV","Libya":"LY","Fas":"MA","Monako":"MC","Moldova":"MD","Karadağ":"ME","Saint Martin":"MF","Madagaskar":"MG","Marshall Adaları":"MH","Makedonya":"MK","Mali":"ML","Myanmar [Burma]":"MM","Moğolistan":"MN","Çin Makao ÖYB":"MO","Kuzey Mariana Adaları":"MP","Martinik":"MQ","Moritanya":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldivler":"MV","Malavi":"MW","Meksika":"MX","Malezya":"MY","Mozambik":"MZ","Namibya":"NA","Yeni Kaledonya":"NC","Nijer":"NE","Norfolk Adası":"NF","Nijerya":"NG","Nikaragua":"NI","Hollanda":"NL","Norveç":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Yeni Zelanda":"NZ","Umman":"OM","Panama":"PA","Peru":"PE","Fransız Polinezyası":"PF","Papua Yeni Gine":"PG","Filipinler":"PH","Pakistan":"PK","Polonya":"PL","Saint Pierre ve Miquelon":"PM","Pitcairn Adaları":"PN","Porto Riko":"PR","Filistin Bölgeleri":"PS","Portekiz":"PT","Palau":"PW","Paraguay":"PY","Katar":"QA","Uzak Okyanusya":"QO","Réunion":"RE","Romanya":"RO","Sırbistan":"RS","Rusya":"RU","Ruanda":"RW","Suudi Arabistan":"SA","Solomon Adaları":"SB","Seyşeller":"SC","Sudan":"SD","İsveç":"SE","Singapur":"SG","Saint Helena":"SH","Slovenya":"SI","Svalbard ve Jan Mayen Adaları":"SJ","Slovakya":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somali":"SO","Surinam":"SR","Güney Sudan":"SS","São Tomé ve Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Suriye":"SY","Svaziland":"SZ","Tristan da Cunha":"TA","Turks ve Caicos Adaları":"TC","Çad":"TD","Fransız Güney Bölgeleri":"TF","Togo":"TG","Tayland":"TH","Tacikistan":"TJ","Tokelau":"TK","Timor-Leste":"TL","Türkmenistan":"TM","Tunus":"TN","Tonga":"TO","Türkiye":"TR","Trinidad ve Tobago":"TT","Tuvalu":"TV","Tayvan":"TW","Tanzanya":"TZ","Ukrayna":"UA","Uganda":"UG","ABD Dış Adaları":"UM","ABD":"US","Uruguay":"UY","Özbekistan":"UZ","Vatikan":"VA","Saint Vincent ve Grenadinler":"VC","Venezuela":"VE","Britanya Virjin Adaları":"VG","ABD Virjin Adaları":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis ve Futuna Adaları":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Güney Afrika":"ZA","Zambiya":"ZM","Zimbabve":"ZW","Bilinmeyen Bölge":"ZZ"};
+ilib.data.ctrynames_vi = {"Đảo Ascension":"AC","Andorra":"AD","Các Tiểu Vương quốc A-rập Thống nhất":"AE","Afghanistan":"AF","Antigua và Barbuda":"AG","Anguilla":"AI","Albani":"AL","Armenia":"AM","Tây Ấn Hà Lan":"AN","Angola":"AO","Nam Cực":"AQ","Argentina":"AR","Đảo Somoa thuộc Mỹ":"AS","Áo":"AT","Úc":"AU","Aruba":"AW","Quần đảo Aland":"AX","Azerbaijan":"AZ","Bô-xni-a Héc-xê-gô-vi-na":"BA","Barbados":"BB","Bangladesh":"BD","Bỉ":"BE","Burkina Faso":"BF","Bungari":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Bra-xin":"BR","Bahamas":"BS","Bhutan":"BT","Đảo Bouvet":"BV","Botswana":"BW","Belarus":"BY","Bê-li-xê":"BZ","Ca-na-đa":"CA","Quần đảo Cocos":"CC","Congo - Kinshasa":"CD","Cộng hòa Trung Phi":"CF","Công-gô":"CG","Thụy Sĩ":"CH","Bờ Biển Ngà":"CI","Quần Đảo Cook":"CK","Chile":"CL","Ca-mơ-run":"CM","Trung Quốc":"CN","Colombia":"CO","Đảo Clipperton":"CP","Cốt-xta Ri-ca":"CR","Cu Ba":"CU","Cape Verde":"CV","Curaçao":"CW","Đảo Giáng Sinh":"CX","Síp":"CY","Cộng hòa Séc":"CZ","Đức":"DE","Diego Garcia":"DG","Djibouti":"DJ","Đan Mạch":"DK","Dominica":"DM","Cộng hòa Dominica":"DO","Algeria":"DZ","Ceuta và Melilla":"EA","Ecuador":"EC","Estonia":"EE","Ai Cập":"EG","Tây Sahara":"EH","Eritrea":"ER","Tây Ban Nha":"ES","Ethiopia":"ET","Liên Minh Châu Âu":"EU","Phần Lan":"FI","Fiji":"FJ","Quần Đảo Falkland":"FK","Micronesia":"FM","Quần Đảo Faroe":"FO","Pháp":"FR","Gabon":"GA","Vương quốc Anh":"GB","Grenada":"GD","Georgia":"GE","Quiana thuộc Pháp":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Băng Đảo":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Guinea Xích Đạo":"GQ","Hy Lạp":"GR","Quần đảo Nam Georgia và Nam Sandwich":"GS","Goa-tê-ma-la":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Đặc khu hành chính Hồng Kông thuộc CHND Trung Hoa":"HK","Đảo Heard và Quần đảo McDonald":"HM","Hôn-đu-rát":"HN","Croatia":"HR","Haiti":"HT","Hungari":"HU","Quần đảo Canary":"IC","Indonesia":"ID","Ai-len":"IE","Israel":"IL","Đảo Man":"IM","Ấn Độ":"IN","Thuộc địa Anh tại Ấn Độ Dương":"IO","I-rắc":"IQ","I-ran":"IR","Ai-xơ-len":"IS","Ý":"IT","Jersey":"JE","Jamaica":"JM","Jordan":"JO","Nhật Bản":"JP","Kenya":"KE","Kyrgyzstan":"KG","Campuchia":"KH","Kiribati":"KI","Comoros":"KM","Saint Kitts và Nevis":"KN","Bắc Triều Tiên":"KP","Hàn Quốc":"KR","Cô-oét":"KW","Quần Đảo Cayman":"KY","Kazakhstan":"KZ","Lào":"LA","Li-băng":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","LIberia":"LR","Lesotho":"LS","Lithuania":"LT","Luxembourg":"LU","Latvia":"LV","Li-bi":"LY","Ma-rốc":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagascar":"MG","Quần đảo Marshall":"MH","Macedonia":"MK","Mali":"ML","Myanmar [Miến Điện]":"MM","Mông Cổ":"MN","Đặc khu hành chính Macao thuộc CHND Trung Hoa":"MO","Quần Đảo Bắc Mariana":"MP","Martinique":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldives":"MV","Malawi":"MW","Mê-hi-cô":"MX","Malaysia":"MY","Mozambique":"MZ","Namibia":"NA","New Caledonia":"NC","Niger":"NE","Đảo Norfolk":"NF","Nigeria":"NG","Nicaragua":"NI","Hà Lan":"NL","Na Uy":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","New Zealand":"NZ","Oman":"OM","Pa-na-ma":"PA","Peru":"PE","Polynesia thuộc Pháp":"PF","Papua New Guinea":"PG","Philippin":"PH","Pakistan":"PK","Ba Lan":"PL","Saint Pierre và Miquelon":"PM","Quần đảo Pitcairn":"PN","Puerto Rico":"PR","Lãnh thổ Palestine":"PS","Bồ Đào Nha":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Vùng xa xôi thuộc Châu Đại Dương":"QO","Réunion":"RE","Romania":"RO","Serbia":"RS","Nga":"RU","Rwanda":"RW","A-rập Xê-út":"SA","Quần đảo Solomon":"SB","Seychelles":"SC","Xu-đăng":"SD","Thụy Điển":"SE","Singapore":"SG","Saint Helena":"SH","Slovenia":"SI","Svalbard và Jan Mayen":"SJ","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somali":"SO","Suriname":"SR","Nam Sudan":"SS","São Tomé và Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Syria":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Quần Đảo Turk và Caicos":"TC","Chad":"TD","Thuộc Địa Nam của Pháp":"TF","Togo":"TG","Thái Lan":"TH","Tajikistan":"TJ","Tokelau":"TK","Đông Ti-mo":"TL","Turkmenistan":"TM","Tuy-ni-di":"TN","Tonga":"TO","Thổ Nhĩ Kỳ":"TR","Trinidad và Tobago":"TT","Tuvalu":"TV","Đài Loan":"TW","Tanzania":"TZ","Ukraina":"UA","Uganda":"UG","Các đảo nhỏ xa trung tâm thuộc Mỹ":"UM","Hoa Kỳ":"US","Uruguay":"UY","Uzbekistan":"UZ","Va-ti-căng":"VA","Saint Vincent và Grenadines":"VC","Venezuela":"VE","Quần đảo Virgin thuộc Anh":"VG","Quần đảo Virgin thuộc Mỹ":"VI","Việt Nam":"VN","Vanuatu":"VU","Wallis và Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Nam Phi":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Vùng Chưa biết hoặc không Hợp lệ":"ZZ"};
+ilib.data.ctrynames_zh = {"generated":false,"阿富汗":"AF","阿尔巴尼亚":"AL","阿尔及利亚":"DZ","美属萨摩亚":"AS","安道尔":"AD","安哥拉":"AO","安圭拉":"AI","阿根廷":"AR","亚美尼亚":"AM","阿鲁巴":"AW","阿森松":"SH","阿森松岛":"SH","澳大利亚":"AU","奥地利":"AT","阿塞拜疆":"AZ","英属维尔京群岛":"VG","巴哈马":"BS","巴林":"BH","孟加拉国":"BD","巴巴多斯":"BB","白俄罗斯":"BY","比利时":"BE","伯利兹":"BZ","贝宁":"BJ","百慕大":"BM","不丹":"BT","玻利维亚":"BO","博茨瓦纳":"BW","巴西":"BR","英属印度洋领地":"IO","文莱":"BN","文莱达鲁萨兰国":"BN","保加利亚":"BG","布基纳法索":"BF","缅甸":"MM","布隆迪":"BI","柬埔寨":"KH","喀麦隆":"CM","佛得角":"CV","开曼":"KY","中非共和国":"CF","乍得":"TD","智利":"CL","中国":"CN","哥伦比亚":"CO","科摩罗":"KM","库克群岛":"CK","哥斯达黎加":"CR","克罗地亚":"HR","古巴":"CU","塞浦路斯":"CY","捷克共和国":"CZ","科特迪瓦":"CI","多米尼加共和国":"CD","刚果民主共和国":"CD","丹麦":"DK","吉布提":"DJ","多米尼克":"DM","东帝汶":"TL","厄瓜多尔":"EC","埃及":"EG","萨尔瓦多":"SV","赤道几内亚":"GQ","厄立特里亚":"ER","爱沙尼亚":"EE","埃塞俄比亚":"ET","马其顿共和国（前南斯拉夫）":"MK","福克兰群岛":"FK","法罗群岛":"FO","密克罗尼西亚联邦":"FM","斐济":"FJ","芬兰":"FI","法国":"FR","法属圭亚那":"GF","法属波利尼西亚":"PF","加蓬":"GA","冈比亚":"GM","乔治亚州":"GE","德国":"DE","加纳":"GH","直布罗陀":"GI","希腊":"GR","格陵兰":"GL","格林纳达":"GD","瓜德罗普岛":"GP","关岛":"GU","危地马拉":"GT","几内亚":"GN","几内亚比绍":"GW","圭亚那":"GY","海地":"HT","洪都拉斯":"HN","香港":"HK","匈牙利":"HU","冰岛":"IS","印度":"IN","印度尼西亚":"ID","伊朗":"IR","伊拉克":"IQ","爱尔兰":"IE","以色列":"IL","意大利":"IT","牙买加":"JM","日本":"JP","约旦":"JO","肯尼亚":"KE","基里巴斯":"KI","科威特":"KW","吉尔吉斯斯坦":"KG","老挝":"LA","拉脱维亚":"LV","黎巴嫩":"LB","莱索托":"LS","利比里亚":"LR","利比亚":"LY","列支敦士登":"LI","立陶宛":"LT","卢森堡":"LU","澳门":"MO","马达加斯加":"MG","马拉维":"MW","马来西亚":"MY","马尔代夫":"MV","马里":"ML","马耳他":"MT","马绍尔群岛":"MH","马提尼克":"MQ","马提尼克岛":"MQ","毛里塔尼亚":"MR","毛里求斯":"MU","墨西哥":"MX","密克罗尼西亚":"FM","摩尔多瓦":"MD","摩纳哥":"MC","蒙古":"MN","黑山":"ME","摩洛哥":"MA","莫桑比克":"MZ","纳米比亚":"NA","瑙鲁":"NR","尼泊尔":"NP","荷兰":"NL","荷属安的列斯":"AN","新喀里多尼亚":"NC","新西兰":"NZ","尼加拉瓜":"NI","尼日尔":"NE","尼日利亚":"NG","诺福克岛":"NF","朝鲜":"KR","北马里亚纳群岛":"MP","挪威":"NO","阿曼":"OM","巴基斯坦":"PK","帕劳":"PW","巴勒斯坦民族权力机构":"PS","巴拿马":"PA","巴布亚新几内亚":"PG","巴拉圭":"PY","中华人民共和国":"CN","秘鲁":"PE","菲律宾":"PH","皮特凯恩":"PN","波兰":"PL","葡萄牙":"PT","波多黎各":"PR","卡塔尔":"QA","台湾":"TW","爱尔兰共和国":"IE","罗马尼亚":"RO","俄罗斯":"RU","卢旺达":"RW","留尼汪":"RE","圣海伦娜":"SH","圣卢西亚":"LC","圣皮埃尔和密克隆岛":"PM","萨摩亚":"WS","圣马力诺":"SM","沙特阿拉伯":"SA","塞内加尔":"SN","塞尔维亚":"RS","塞舌尔":"SC","塞拉利昂":"SL","新加坡":"SG","斯洛伐克":"SK","斯洛文尼亚":"SI","所罗门群岛":"SB","索马里":"SO","南非":"ZA","韩国":"KR","西班牙":"ES","斯里兰卡":"LK","苏丹":"SD","苏里南":"SR","斯威士兰":"SZ","瑞典":"SE","瑞士":"CH","叙利亚":"SY","塔吉克斯坦":"TJ","坦桑尼亚":"TZ","泰国":"TH","开曼群岛":"KY","美属维尔京群岛":"VI","多哥":"TG","托克劳":"TK","汤加":"TO","突尼斯":"TN","土耳其":"TR","土库曼斯坦":"TM","图瓦卢":"TV","阿联酋":"AE","乌干达":"UG","乌克兰":"UA","阿拉伯联合酋长国":"AE","英国":"GB","乌拉圭":"UY","乌兹别克斯坦":"UZ","瓦努阿图":"VU","梵蒂冈城":"VA","委内瑞拉":"VE","越南":"VN","瓦利斯和富图纳群岛":"WF","也门":"YE","赞比亚":"ZM","津巴布韦":"ZW","奥兰群岛":"AX","安提瓜":"AG","巴布达":"AG","委内瑞拉玻利瓦尔共和国":"VE","多民族玻利维亚国":"BO","波斯尼亚":"BA","布维岛":"BV","汶莱":"BN","凯科斯群岛":"TC","加拿大":"CA","圣诞岛":"CX","茯苓和基林群岛":"CC","茯苓群岛":"CC","刚果":"CD","朝鲜民主人民共和国":"KP","多米尼加":"DM","法罗":"FO","法国南部领土":"TF","富图纳":"WF","格鲁吉亚":"GE","大不列颠":"GB","格林纳丁斯":"VC","根西岛":"GG","赫德岛和麦当劳群岛":"HM","赫德岛":"HM","黑塞哥维那":"BA","教廷":"VA","伊朗共和国":"IR","马恩岛":"IM","象牙海岸":"CI","扬马延":"SJ","哈萨克斯坦":"KZ","大韩民国":"KR","老挝人民民主共和国":"LA","阿拉伯利比亚民众国":"LY","马其顿":"MK","马尔维纳斯":"FK","马里亚纳":"MP","马约特":"YT","麦当劳群岛":"HM","密克隆":"PM","摩尔多瓦共和国":"MD","蒙特内格罗":"ME","蒙特塞拉特":"MS","尼维斯":"KN","北朝鲜":"KP","巴勒斯坦":"PS","巴勒斯坦领土":"PS","被占领的巴勒斯坦领土":"PS","普林西比":"ST","新加坡共和國":"SG","俄罗斯联邦":"RU","圣巴泰勒米":"BL","圣赫勒拿":"SH","圣赫勒拿，阿森松岛和特里斯坦达库尼亚":"SH","圣基茨":"KN","圣马丁":"MF","圣皮埃尔":"PM","圣文森特":"VC","圣多美":"ST","南格鲁吉亚":"GS","南格鲁吉亚和南桑威奇群岛":"GS","南桑威奇群岛":"GS","斯瓦尔巴岛":"SJ","斯瓦尔巴岛和扬马延岛":"SJ","阿拉伯叙利亚共和国":"SY","坦桑尼亚联合共和国":"TZ","多巴哥":"TT","特立尼达":"TT","特里斯坦达库尼亚":"SH","特克斯群岛":"TC","美国":"US","美利坚合众国":"US","梵帝冈":"VA","瓦利斯":"WF","西撒哈拉":"EH","阿拉伯半岛":"SA","佛得角群岛":"CV","科科斯(奇林)群岛":"CC","刚果，民主共和国":"CD","朝鲜民主主义人民共和国":"KP","迪拜":"AE","英格兰":"GB","巴勒斯坦被占领土":"PS","波利尼西亚":"PF","圣巴特岛":"BL","苏格兰":"GB","圣巴尔德勒米":"BL","南德桑威奇群岛":"GS","梵蒂冈城国":"VA","维尔京群岛":"VI","威尔士":"GB"};
+ilib.data.ctrynames_zh_TW = {"generated":false,"阿富汗":"AF","阿爾巴尼亞":"AL","阿爾及利亞":"DZ","美屬薩摩亞":"AS","安道爾":"AD","安哥拉":"AO","安圭拉":"AI","安提瓜和巴佈達":"AG","阿根廷":"AR","亞美尼亞":"AM","阿魯巴":"AW","阿森松":"SH","澳大利亞":"AU","奧地利":"AT","阿塞拜疆":"AZ","英屬維爾京群島":"VG","巴哈馬":"BS","巴林":"BH","孟加拉國":"BD","巴巴多斯":"BB","白俄羅斯":"BY","比利時":"BE","伯利茲":"BZ","貝寧":"BJ","百慕大":"BM","不丹":"BT","玻利維亞":"BO","波斯尼亞和黑塞哥維那":"BA","博茨瓦納":"BW","巴西":"BR","英屬印度洋領地":"IO","汶萊":"BN","汶萊達魯薩蘭國":"BN","保加利亞":"BG","布基納法索":"BF","緬甸":"MM","布隆迪":"BI","柬埔寨":"KH","喀麥隆":"CM","佛得角":"CV","開曼":"KY","中非共和國":"CF","乍得":"TD","智利":"CL","中國":"CN","哥倫比亞":"CO","科摩羅":"KM","庫克群島":"CK","哥斯大黎加":"CR","克羅地亞":"HR","古巴":"CU","塞浦路斯":"CY","捷克共和國":"CZ","科特迪瓦":"CI","多米尼加共和國":"CD","剛果民主共和國":"CD","丹麥":"DK","吉布提":"DJ","多米尼克":"DM","東帝汶":"TL","厄瓜多爾":"EC","埃及":"EG","薩爾瓦多":"SV","赤道幾內亞":"GQ","厄立特里亞":"ER","愛沙尼亞":"EE","衣索比亞":"ET","馬其頓共和國（前南斯拉夫）":"MK","福克蘭群島":"FK","法羅群島":"FO","密克羅尼西亞聯邦":"FM","斐濟":"FJ","芬蘭":"FI","法國":"FR","法屬圭亞那":"GF","法屬波利尼西亞":"PF","加蓬":"GA","岡比亞":"GM","喬治亞州":"GE","德國":"DE","加納":"GH","直布羅陀":"GI","希臘":"GR","格陵蘭":"GL","格林納達":"GD","瓜德羅普島":"GP","關島":"GU","危地馬拉":"GT","畿內亞":"GN","幾內亞比紹":"GW","圭亞那":"GY","海地":"HT","宏都拉斯":"HN","香港":"HK","匈牙利":"HU","冰島":"IS","印度":"IN","印度尼西亞":"ID","伊朗":"IR","伊拉克":"IQ","愛爾蘭":"IE","以色列":"IL","義大利":"IT","牙買加":"JM","日本":"JP","約旦":"JO","肯尼亞":"KE","基裏巴斯":"KI","科威特":"KW","吉爾吉斯斯坦":"KG","老撾":"LA","拉脫維亞":"LV","黎巴嫩":"LB","萊索托":"LS","利比里亞":"LR","利比亞":"LY","列支敦士登":"LI","立陶宛":"LT","盧森堡":"LU","澳門":"MO","馬達加斯加":"MG","馬拉維":"MW","馬來西亞":"MY","馬爾地夫":"MV","馬里":"ML","馬耳他":"MT","馬紹爾群島":"MH","馬提尼克":"MQ","馬提尼克島":"MQ","毛里塔尼亞":"MR","毛里求斯":"MU","墨西哥":"MX","密克羅尼西亞":"FM","摩爾多瓦":"MD","摩納哥":"MC","蒙古":"MN","黑山":"ME","摩洛哥":"MA","莫桑比克":"MZ","納米比亞":"NA","瑙魯":"NR","尼泊爾":"NP","荷蘭":"NL","荷屬安的列斯":"AN","新喀裏多尼亞":"NC","新西蘭":"NZ","尼加拉瓜":"NI","尼日爾":"NE","尼日利亞":"NG","諾福克島":"NF","朝鮮":"KR","北馬里亞納群島":"MP","挪威":"NO","阿曼":"OM","巴基斯坦":"PK","帕勞":"PW","巴勒斯坦民族權力機構":"PS","巴拿馬":"PA","巴布亞新畿內亞":"PG","巴拉圭":"PY","中華人民共和國":"CN","秘魯":"PE","菲律賓":"PH","皮特肯":"PN","波蘭":"PL","葡萄牙":"PT","波多黎各":"PR","卡塔爾":"QA","中華民國":"TW","愛爾蘭共和國":"IE","羅馬尼亞":"RO","俄羅斯":"RU","盧安達":"RW","留尼汪":"RE","聖海倫娜":"SH","聖基茨和尼維斯":"KN","聖盧西亞":"LC","聖皮埃爾和密克隆島":"PM","聖文森特和格林納丁斯":"VC","薩摩亞":"WS","聖馬力諾":"SM","沙烏地阿拉伯":"SA","塞內加爾":"SN","塞爾維亞":"RS","塞舌爾":"SC","塞拉利昂":"SL","新加坡":"SG","斯洛伐克":"SK","斯洛文尼亞":"SI","所羅門群島":"SB","索馬利亞":"SO","南非":"ZA","韓國":"KR","西班牙":"ES","斯里蘭卡":"LK","蘇丹":"SD","蘇里南":"SR","斯威士蘭":"SZ","瑞典":"SE","瑞士":"CH","敍利亞":"SY","聖多美和普林西比":"ST","臺灣":"TW","塔吉克斯坦":"TJ","坦桑尼亞":"TZ","泰國":"TH","開曼群島":"KY","美屬維爾京群島":"VI","多哥":"TG","托克勞":"TK","湯加":"TO","特立尼達和多巴哥":"TT","突尼斯":"TN","土耳其":"TR","土庫曼斯坦":"TM","圖瓦盧":"TV","阿聯酋":"AE","烏干達":"UG","烏克蘭":"UA","阿拉伯聯合酋長國":"AE","英國":"GB","烏拉圭":"UY","烏茲別克斯坦":"UZ","瓦努阿圖":"VU","梵蒂岡城":"VA","委內瑞拉":"VE","越南":"VN","瓦利斯和富圖納群島":"WF","也門":"YE","贊比亞":"ZM","津巴布韋":"ZW","奧蘭群島":"AX","安提瓜":"AG","阿森鬆島":"SH","巴佈達":"AG","委內瑞拉玻利瓦爾共和國":"VE","多民族玻利維亞國":"BO","波斯尼亞":"BA","布維島":"BV","凱科斯群島":"TC","加拿大":"CA","聖誕島":"CX","茯苓和基林群島":"CC","茯苓群島":"CC","剛果":"CD","哥斯達黎加":"CR","朝鮮民主人民共和國":"KP","多米尼加":"DM","埃塞俄比亞":"ET","法羅":"FO","法國南部領土":"TF","富圖納":"WF","格魯吉亞":"GE","大不列顛":"GB","格林納丁斯":"VC","根西島":"GG","幾內亞":"GN","赫德島和麥當勞群島":"HM","赫德島":"HM","黑塞哥維那":"BA","教廷":"VA","洪都拉斯":"HN","伊朗共和國":"IR","馬恩島":"IM","意大利":"IT","象牙海岸":"CI","揚馬延":"SJ","哈薩克斯坦":"KZ","基里巴斯":"KI","大韓民國":"KR","老撾人民民主共和國":"LA","阿拉伯利比亞民眾國":"LY","馬其頓":"MK","馬爾代夫":"MV","馬爾維納斯":"FK","馬里亞納":"MP","馬約特":"YT","麥當勞群島":"HM","密克隆":"PM","摩爾多瓦共和國":"MD","蒙特內格羅":"ME","蒙特塞拉特":"MS","尼維斯":"KN","新喀里多尼亞":"NC","北朝鮮":"KP","巴勒斯坦":"PS","巴勒斯坦領土":"PS","被佔領的巴勒斯坦領土":"PS","巴布亞新幾內亞":"PG","皮特凱恩":"PN","普林西比":"ST","新加坡共和國":"SG","俄羅斯聯邦":"RU","盧旺達":"RW","聖巴泰勒米":"BL","聖赫勒拿":"SH","聖赫勒拿，阿森鬆島和特里斯坦達庫尼亞":"SH","聖基茨":"KN","聖馬丁":"MF","聖皮埃爾":"PM","聖文森特":"VC","聖多美":"ST","沙特阿拉伯":"SA","索馬里":"SO","南格魯吉亞":"GS","南格魯吉亞和南桑威奇群島":"GS","南桑威奇群島":"GS","斯瓦爾巴島":"SJ","斯瓦爾巴島和揚馬延島":"SJ","敘利亞":"SY","阿拉伯敘利亞共和國":"SY","台灣":"TW","坦桑尼亞聯合共和國":"TZ","多巴哥":"TT","特立尼達":"TT","特里斯坦達庫尼亞":"SH","特克斯和凱科斯群島":"TC","特克斯群島":"TC","美國":"US","梵帝岡":"VA","瓦利斯":"WF","西撒哈拉":"EH"};
+ilib.data.ctrynames_zh_HK = {"generated":false,"阿富汗":"AF","阿爾巴尼亞":"AL","阿爾及利亞":"DZ","美屬薩摩亞":"AS","安道爾":"AD","安哥拉":"AO","安圭拉":"AI","安提瓜和巴佈達":"AG","阿根廷":"AR","亞美尼亞":"AM","阿魯巴":"AW","阿森松":"SH","澳大利亞":"AU","奧地利":"AT","阿塞拜疆":"AZ","英屬維爾京群島":"VG","巴哈馬":"BS","巴林":"BH","孟加拉國":"BD","巴巴多斯":"BB","白俄羅斯":"BY","比利時":"BE","伯利茲":"BZ","貝寧":"BJ","百慕大":"BM","不丹":"BT","玻利維亞":"BO","波斯尼亞和黑塞哥維那":"BA","博茨瓦納":"BW","巴西":"BR","英屬印度洋領地":"IO","汶萊":"BN","汶萊達魯薩蘭國":"BN","保加利亞":"BG","布基納法索":"BF","緬甸":"MM","布隆迪":"BI","柬埔寨":"KH","喀麥隆":"CM","佛得角":"CV","開曼":"KY","中非共和國":"CF","乍得":"TD","智利":"CL","中國":"CN","哥倫比亞":"CO","科摩羅":"KM","庫克群島":"CK","哥斯大黎加":"CR","克羅地亞":"HR","古巴":"CU","塞浦路斯":"CY","捷克共和國":"CZ","科特迪瓦":"CI","多米尼加共和國":"CD","剛果民主共和國":"CD","丹麥":"DK","吉布提":"DJ","多米尼克":"DM","東帝汶":"TL","厄瓜多爾":"EC","埃及":"EG","薩爾瓦多":"SV","赤道幾內亞":"GQ","厄立特里亞":"ER","愛沙尼亞":"EE","衣索比亞":"ET","馬其頓共和國（前南斯拉夫）":"MK","福克蘭群島":"FK","法羅群島":"FO","密克羅尼西亞聯邦":"FM","斐濟":"FJ","芬蘭":"FI","法國":"FR","法屬圭亞那":"GF","法屬波利尼西亞":"PF","加蓬":"GA","岡比亞":"GM","喬治亞州":"GE","德國":"DE","加納":"GH","直布羅陀":"GI","希臘":"GR","格陵蘭":"GL","格林納達":"GD","瓜德羅普島":"GP","關島":"GU","危地馬拉":"GT","畿內亞":"GN","幾內亞比紹":"GW","圭亞那":"GY","海地":"HT","宏都拉斯":"HN","香港":"HK","匈牙利":"HU","冰島":"IS","印度":"IN","印度尼西亞":"ID","伊朗":"IR","伊拉克":"IQ","愛爾蘭":"IE","以色列":"IL","義大利":"IT","牙買加":"JM","日本":"JP","約旦":"JO","肯尼亞":"KE","基裏巴斯":"KI","科威特":"KW","吉爾吉斯斯坦":"KG","老撾":"LA","拉脫維亞":"LV","黎巴嫩":"LB","萊索托":"LS","利比里亞":"LR","利比亞":"LY","列支敦士登":"LI","立陶宛":"LT","盧森堡":"LU","澳門":"MO","馬達加斯加":"MG","馬拉維":"MW","馬來西亞":"MY","馬爾地夫":"MV","馬里":"ML","馬耳他":"MT","馬紹爾群島":"MH","馬提尼克":"MQ","馬提尼克島":"MQ","毛里塔尼亞":"MR","毛里求斯":"MU","墨西哥":"MX","密克羅尼西亞":"FM","摩爾多瓦":"MD","摩納哥":"MC","蒙古":"MN","黑山":"ME","摩洛哥":"MA","莫桑比克":"MZ","納米比亞":"NA","瑙魯":"NR","尼泊爾":"NP","荷蘭":"NL","荷屬安的列斯":"AN","新喀裏多尼亞":"NC","新西蘭":"NZ","尼加拉瓜":"NI","尼日爾":"NE","尼日利亞":"NG","諾福克島":"NF","朝鮮":"KR","北馬里亞納群島":"MP","挪威":"NO","阿曼":"OM","巴基斯坦":"PK","帕勞":"PW","巴勒斯坦民族權力機構":"PS","巴拿馬":"PA","巴布亞新畿內亞":"PG","巴拉圭":"PY","中華人民共和國":"CN","秘魯":"PE","菲律賓":"PH","皮特肯":"PN","波蘭":"PL","葡萄牙":"PT","波多黎各":"PR","卡塔爾":"QA","中華民國":"TW","愛爾蘭共和國":"IE","羅馬尼亞":"RO","俄羅斯":"RU","盧安達":"RW","留尼汪":"RE","聖海倫娜":"SH","聖基茨和尼維斯":"KN","聖盧西亞":"LC","聖皮埃爾和密克隆島":"PM","聖文森特和格林納丁斯":"VC","薩摩亞":"WS","聖馬力諾":"SM","沙烏地阿拉伯":"SA","塞內加爾":"SN","塞爾維亞":"RS","塞舌爾":"SC","塞拉利昂":"SL","新加坡":"SG","斯洛伐克":"SK","斯洛文尼亞":"SI","所羅門群島":"SB","索馬利亞":"SO","南非":"ZA","韓國":"KR","西班牙":"ES","斯里蘭卡":"LK","蘇丹":"SD","蘇里南":"SR","斯威士蘭":"SZ","瑞典":"SE","瑞士":"CH","敍利亞":"SY","聖多美和普林西比":"ST","臺灣":"TW","塔吉克斯坦":"TJ","坦桑尼亞":"TZ","泰國":"TH","開曼群島":"KY","美屬維爾京群島":"VI","多哥":"TG","托克勞":"TK","湯加":"TO","特立尼達和多巴哥":"TT","突尼斯":"TN","土耳其":"TR","土庫曼斯坦":"TM","圖瓦盧":"TV","阿聯酋":"AE","烏干達":"UG","烏克蘭":"UA","阿拉伯聯合酋長國":"AE","英國":"GB","烏拉圭":"UY","烏茲別克斯坦":"UZ","瓦努阿圖":"VU","梵蒂岡城":"VA","委內瑞拉":"VE","越南":"VN","瓦利斯和富圖納群島":"WF","也門":"YE","贊比亞":"ZM","津巴布韋":"ZW","奧蘭群島":"AX","安提瓜":"AG","阿森鬆島":"SH","巴佈達":"AG","委內瑞拉玻利瓦爾共和國":"VE","多民族玻利維亞國":"BO","波斯尼亞":"BA","布維島":"BV","凱科斯群島":"TC","加拿大":"CA","聖誕島":"CX","茯苓和基林群島":"CC","茯苓群島":"CC","剛果":"CD","哥斯達黎加":"CR","朝鮮民主人民共和國":"KP","多米尼加":"DM","埃塞俄比亞":"ET","法羅":"FO","法國南部領土":"TF","富圖納":"WF","格魯吉亞":"GE","大不列顛":"GB","格林納丁斯":"VC","根西島":"GG","幾內亞":"GN","赫德島和麥當勞群島":"HM","赫德島":"HM","黑塞哥維那":"BA","教廷":"VA","洪都拉斯":"HN","伊朗共和國":"IR","馬恩島":"IM","意大利":"IT","象牙海岸":"CI","揚馬延":"SJ","哈薩克斯坦":"KZ","基里巴斯":"KI","大韓民國":"KR","老撾人民民主共和國":"LA","阿拉伯利比亞民眾國":"LY","馬其頓":"MK","馬爾代夫":"MV","馬爾維納斯":"FK","馬里亞納":"MP","馬約特":"YT","麥當勞群島":"HM","密克隆":"PM","摩爾多瓦共和國":"MD","蒙特內格羅":"ME","蒙特塞拉特":"MS","尼維斯":"KN","新喀里多尼亞":"NC","北朝鮮":"KP","巴勒斯坦":"PS","巴勒斯坦領土":"PS","被佔領的巴勒斯坦領土":"PS","巴布亞新幾內亞":"PG","皮特凱恩":"PN","普林西比":"ST","新加坡共和國":"SG","俄羅斯聯邦":"RU","盧旺達":"RW","聖巴泰勒米":"BL","聖赫勒拿":"SH","聖赫勒拿，阿森鬆島和特里斯坦達庫尼亞":"SH","聖基茨":"KN","聖馬丁":"MF","聖皮埃爾":"PM","聖文森特":"VC","聖多美":"ST","沙特阿拉伯":"SA","索馬里":"SO","南格魯吉亞":"GS","南格魯吉亞和南桑威奇群島":"GS","南桑威奇群島":"GS","斯瓦爾巴島":"SJ","斯瓦爾巴島和揚馬延島":"SJ","敘利亞":"SY","阿拉伯敘利亞共和國":"SY","台灣":"TW","坦桑尼亞聯合共和國":"TZ","多巴哥":"TT","特立尼達":"TT","特里斯坦達庫尼亞":"SH","特克斯和凱科斯群島":"TC","特克斯群島":"TC","美國":"US","梵帝岡":"VA","瓦利斯":"WF","西撒哈拉":"EH"};
+/**
+ * addressprs.js - Represent a mailing address
+ * 
+ * Copyright © 2013, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*globals console RegExp */
+
+/* !depends 
+ilibglobal.js 
+locale.js 
+ctype.isideo.js 
+ctype.isascii.js
+ctype.isdigit.js
+*/
+
+// !data address countries nativecountries ctrynames
+
+/**
+ * @constructor
+ * @class
+ * 
+ * Create a new Address instance and parse a physical address.<p>
+ * 
+ * This function parses a physical address written in a free-form string. 
+ * It returns an object with a number of properties from the list below 
+ * that it may have extracted from that address.<p>
+ * 
+ * The following is a list of properties that the algorithm will return:<p>
+ * 
+ * <ul>
+ * <li>streetAddress: The street address, including house numbers and all.
+ * <li>locality: The locality of this address (usually a city or town). 
+ * <li>region: The region where the locality is located. In the US, this
+ * corresponds to states. In other countries, this may be provinces,
+ * cantons, prefectures, etc. In some smaller countries, there are no
+ * such divisions.
+ * <li>postalCode: Country-specific code for expediting mail. In the US, 
+ * this is the zip code.
+ * <li>country: The country of the address.
+ * <li>countryCode: The ISO 3166 2-letter region code for the destination
+ * country in this address.
+ * </ul> 
+ * 
+ * The above properties will not necessarily appear in the instance. For 
+ * any individual property, if the free-form address does not contain 
+ * that property or it cannot be parsed out, the it is left out.<p>
+ * 
+ * The options parameter may contain any of the following properties:
+ * 
+ * <ul>
+ * <li>locale - locale or localeSpec to use to parse the address. If not 
+ * specified, this function will use the current ilib locale
+ * 
+ * <li>onLoad - a callback function to call when the address info for the
+ * locale is fully loaded and the address has been parsed. When the onLoad 
+ * option is given, the address object 
+ * will attempt to load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
+ * </ul>
+ * 
+ * When an address cannot be parsed properly, the entire address will be placed
+ * into the streetAddress property.<p>
+ * 
+ * When the freeformAddress is another ilib.Address, this will act like a copy
+ * constructor.<p>
+ * 
+ * @param {string|ilib.Address} freeformAddress free-form address to parse, or a
+ * javascript object containing the fields
+ * @params {Object} options options to the parser
+ */
+ilib.Address = function (freeformAddress, options) {
+	var address;
+
+	if (!freeformAddress) {
+		return undefined;
+	}
+
+	this.sync = true;
+	
+	if (options) {
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		
+		if (typeof(options.sync) !== 'undefined') {
+			this.sync = (options.sync == true);
+		}
+	}
+
+	this.locale = this.locale || new ilib.Locale();
+	// initialize from an already parsed object
+	if (typeof(freeformAddress) === 'object') {
+		/**
+		 * @type {string|undefined} The street address, including house numbers and all
+		 */
+		this.streetAddress = freeformAddress.streetAddress;
+		/**
+		 * @type {string|undefined} The locality of this address (usually a city or town) 
+		 */
+		this.locality = freeformAddress.locality;
+		/**
+		 * @type {string|undefined} The region (province, canton, prefecture, state, etc.) where
+		 * the address is located.
+		 */
+		this.region = freeformAddress.region;
+		/**
+		 * @type {string|undefined} Country-specific code for expediting mail. In the US,
+		 * this is the zip code.
+		 */
+		this.postalCode = freeformAddress.postalCode;
+		/**
+		 * @type {string|undefined} The country of the address.
+		 */
+		this.country = freeformAddress.country;
+		if (freeformAddress.countryCode) {
+			/**
+			 * @type {string} The ISO 3166 2-letter region code for the destination
+			 * country in this address.
+			 */
+			this.countryCode = freeformAddress.countryCode;
+		}
+		if (freeformAddress.format) {
+			/**
+			 * @type {string}
+			 */
+			this.format = freeformAddress.format;
+		}
+		return this;
+	}
+
+	address = freeformAddress.replace(/[ \t\r]+/g, " ").trim();
+	address = address.replace(/[\s\n]+$/, "");
+	address = address.replace(/^[\s\n]+/, "");
+	//console.log("\n\n-------------\nAddress is '" + address + "'");
+	
+	this.lines = address.split(/[,，\n]/g);
+	this.removeEmptyLines(this.lines);
+	
+	if (typeof(ilib.Address.ctry) === 'undefined') {
+		ilib.Address.ctry = {}; // make sure not to conflict with the address info
+	}
+	ilib.loadData(ilib.Address.ctry, this.locale, "ctrynames", this.sync, /** @type {function(Object?):undefined} */ function(ctrynames) {
+		this._determineDest(ctrynames, options.onLoad);
+	}.bind(this));
+};
+
+/** @protected */
+ilib.Address.prototype = {
+	/**
+	 * @private
+	 * @param {Object?} ctrynames
+	 */
+	_findDest: function (ctrynames) {
+		var match;
+		
+		for (var countryName in ctrynames) {
+			if (countryName && countryName !== "generated") {
+				// find the longest match in the current table
+				// ctrynames contains the country names mapped to region code
+				// for efficiency, only test for things longer than the current match
+				if (!match || match.text.length < countryName.length) {
+					var temp = this._findCountry(countryName);
+					if (temp) {
+						match = temp;
+						this.country = match.text;
+						this.countryCode = ctrynames[countryName];
+					}
+				}
+			}
+		}
+		return match;
+	},
+	
+	/**
+	 * @private
+	 * @param {Object?} localizedCountries
+	 * @param {function(ilib.Address):undefined} callback
+	 */
+	_determineDest: function (localizedCountries, callback) {
+		var match;
+		
+		/*
+		 * First, find the name of the destination country, as that determines how to parse
+		 * the rest of the address. For any address, there are three possible ways 
+		 * that the name of the country could be written:
+		 * 1. In the current language
+		 * 2. In its own native language
+		 * 3. In English
+		 * We'll try all three.
+		 */
+		var tables = [];
+		if (localizedCountries) {
+			tables.push(localizedCountries);
+		}
+		tables.push(ilib.data.nativecountries);
+		tables.push(ilib.data.countries);
+		
+		for (var i = 0; i < tables.length; i++) {
+			match = this._findDest(tables[i]);
+			
+			if (match) {
+				this.lines[match.line] = this.lines[match.line].substring(0, match.start) + this.lines[match.line].substring(match.start + match.text.length);
+
+				this._init(callback);
+				return;
+			}
+		}
+		
+		// no country, so try parsing it as if we were in the same country
+		this.country = undefined;
+		this.countryCode = this.locale.getRegion();
+		this._init(callback);
+	},
+
+	/**
+	 * @private
+	 * @param {function(ilib.Address):undefined} callback
+	 */
+	_init: function(callback) {
+		ilib.loadData(ilib.Address, new ilib.Locale(this.countryCode), "address", this.sync, 
+				/** @type {function(Object=):undefined} */ function(info) {
+			if (!info || ilib.isEmpty(info)) {
+				// load the "unknown" locale instead
+				ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, 
+						/** @type {function(Object=):undefined} */ function(info) {
+					this.info = info;
+					this._parseAddress();
+					if (typeof(callback) === 'function') {
+						callback(this);
+					}	
+				}.bind(this));
+			} else {
+				this.info = info;
+				this._parseAddress();
+				if (typeof(callback) === 'function') {
+					callback(this);
+				}
+			}
+		}.bind(this));
+	},
+
+	/**
+	 * @private
+	 */
+	_parseAddress: function() {
+		// clean it up first
+		var i, 
+			asianChars = 0, 
+			latinChars = 0,
+			startAt,
+			infoFields,
+			field,
+			pattern,
+			matchFunction,
+			match,
+			fieldNumber;
+		
+		// for locales that support both latin and asian character addresses, 
+		// decide if we are parsing an asian or latin script address
+		if (this.info && this.info.multiformat) {
+			for (var j = 0; j < this.lines.length; j++) {
+				var line = this.lines[j];
+				// TODO: use a char iterator here
+				for (i = 0; i < line.length; i++) {
+					if (ilib.CType.isIdeo(line.charAt(i))) {
+						asianChars++;
+					} else if (ilib.CType.isAscii(line.charAt(i)) && !ilib.CType.isDigit(line.charAt(i))) {
+						latinChars++;
+					}
+				}
+			}
+			
+			this.format = (asianChars >= latinChars) ? "asian" : "latin";
+			startAt = this.info.startAt[this.format];
+			infoFields = this.info.fields[this.format];
+			// console.log("multiformat locale: format is now " + this.format);
+		} else {
+			startAt = (this.info && this.info.startAt) || "end";
+			infoFields = this.info.fields;
+		}
+		this.compare = (startAt === "end") ? this.endsWith : this.startsWith;
+		
+		//console.log("this.lines is: " + JSON.stringify(this.lines));
+		
+		for (i = 0; i < infoFields.length && this.lines.length > 0; i++) {
+			/** @type {{name:string, line:string, pattern:(string|Array.<string>), matchGroup:number}} */
+			field = infoFields[i];
+			this.removeEmptyLines(this.lines);
+			//console.log("Searching for field " + field.name);
+			if (field.pattern) {
+				if (typeof(field.pattern) === 'string') {
+					pattern = new RegExp(field.pattern, "img");
+					matchFunction = this.matchRegExp;
+				} else {
+					pattern = field.pattern;
+					matchFunction = this.matchPattern;
+				}
+					
+				switch (field.line) {
+				case 'startAtFirst':
+					for (fieldNumber = 0; fieldNumber < this.lines.length; fieldNumber++) {
+						match = matchFunction(this, this.lines[fieldNumber], pattern, field.matchGroup, startAt);
+						if (match) {
+							break;
+						}
+					}
+					break;
+				case 'startAtLast':
+					for (fieldNumber = this.lines.length-1; fieldNumber >= 0; fieldNumber--) {
+						match = matchFunction(this, this.lines[fieldNumber], pattern, field.matchGroup, startAt);
+						if (match) {
+							break;
+						}
+					}
+					break;
+				case 'first':
+					fieldNumber = 0;
+					match = matchFunction(this, this.lines[fieldNumber], pattern, field.matchGroup, startAt);
+					break;
+				case 'last':
+				default:
+					fieldNumber = this.lines.length - 1;
+					match = matchFunction(this, this.lines[fieldNumber], pattern, field.matchGroup, startAt);
+					break;
+				}
+				if (match) {
+					// console.log("found match for " + field.name + ": " + JSON.stringify(match));
+					// console.log("remaining line is " + match.line);
+					this.lines[fieldNumber] = match.line;
+					this[field.name] = match.match;
+				}
+			} else {
+				// if nothing is given, default to taking the whole field
+				this[field.name] = this.lines.splice(fieldNumber,1)[0].trim();
+				//console.log("typeof(this[fieldName]) is " + typeof(this[fieldName]) + " and value is " + JSON.stringify(this[fieldName]));
+			}
+		}
+			
+		// all the left overs go in the street address field
+		this.removeEmptyLines(this.lines);
+		if (this.lines.length > 0) {
+			//console.log("this.lines is " + JSON.stringify(this.lines) + " and splicing to get streetAddress");
+			var joinString = (this.format && this.format === "asian") ? "" : ", ";
+			this.streetAddress = this.lines.join(joinString).trim();
+		}
+		
+		this.lines = undefined;
+		//console.log("final result is " + JSON.stringify(this));
+	},
+	
+	/**
+	 * @protected
+	 * Find the named country either at the end or the beginning of the address.
+	 */
+	_findCountry: function(name) {
+		var start = -1, match, line = 0;
+		
+		if (this.lines.length > 0) {
+			start = this.startsWith(this.lines[line], name);
+			if (start === -1) {
+				line = this.lines.length-1;
+				start = this.endsWith(this.lines[line], name);
+			}
+			if (start !== -1) {
+				match = {
+					text: this.lines[line].substring(start, start + name.length),
+					line: line,
+					start: start
+				};
+			}
+		}
+		
+		return match;
+	},
+	
+	endsWith: function (subject, query) {
+		var start = subject.length-query.length,
+			i,
+			pat;
+		//console.log("endsWith: checking " + query + " against " + subject);
+		for (i = 0; i < query.length; i++) {
+			if (subject.charAt(start+i).toLowerCase() !== query.charAt(i).toLowerCase()) {
+				return -1;
+			}
+		}
+		if (start > 0) {
+			pat = /\s/;
+			if (!pat.test(subject.charAt(start-1))) {
+				// make sure if we are not at the beginning of the string, that the match is 
+				// not the end of some other word
+				return -1;
+			}
+		}
+		return start;
+	},
+	
+	startsWith: function (subject, query) {
+		var i;
+		// console.log("startsWith: checking " + query + " against " + subject);
+		for (i = 0; i < query.length; i++) {
+			if (subject.charAt(i).toLowerCase() !== query.charAt(i).toLowerCase()) {
+				return -1;
+			}
+		}
+		return 0;
+	},
+	
+	removeEmptyLines: function (arr) {
+		var i = 0;
+		
+		while (i < arr.length) {
+			if (arr[i]) {
+				arr[i] = arr[i].trim();
+				if (arr[i].length === 0) {
+					arr.splice(i,1);
+				} else {
+					i++;
+				}
+			} else {
+				arr.splice(i,1);
+			}
+		}
+	},
+	
+	matchRegExp: function(address, line, expression, matchGroup, startAt) {
+		var lastMatch,
+			match,
+			ret = {},
+			last;
+		
+		//console.log("searching for regexp " + expression.source + " in line " + line);
+		
+		match = expression.exec(line);
+		if (startAt === 'end') {
+			while (match !== null && match.length > 0) {
+				//console.log("found matches " + JSON.stringify(match));
+				lastMatch = match;
+				match = expression.exec(line);
+			}
+			match = lastMatch;
+		}
+		
+		if (match && match !== null) {
+			//console.log("found matches " + JSON.stringify(match));
+			matchGroup = matchGroup || 0;
+			if (match[matchGroup] !== undefined) {
+				ret.match = match[matchGroup].trim();
+				last = (startAt === 'end') ? line.lastIndexOf(match[matchGroup]) : line.indexOf(match[matchGroup]); 
+				// console.log("last is " + last);
+				ret.line = line.slice(0,last);
+				if (address.format !== "asian") {
+					ret.line += " ";
+				}
+				ret.line += line.slice(last+match[matchGroup].length);
+				ret.line = ret.line.trim();
+				//console.log("found match " + ret.match + " from matchgroup " + matchGroup + " and rest of line is " + ret.line);
+				return ret;
+			}
+		//} else {
+			//console.log("no match");
+		}
+		
+		return undefined;
+	},
+	
+	matchPattern: function(address, line, pattern, matchGroup) {
+		var start,
+			j,
+			ret = {};
+		
+		//console.log("searching in line " + line);
+		
+		// search an array of possible fixed strings
+		//console.log("Using fixed set of strings.");
+		for (j = 0; j < pattern.length; j++) {
+			start = address.compare(line, pattern[j]); 
+			if (start !== -1) {
+				ret.match = line.substring(start, start+pattern[j].length);
+				ret.line = line.substring(0,start).trim();
+				//console.log("found match " + ret.match + " and rest of line is " + ret.line);
+				return ret;
+			}
+		}
+		
+		return undefined;
+	}
+};
+/*
+ * addressfmt.js - Format an address
+ * 
+ * Copyright © 2013, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* !depends 
+ilibglobal.js 
+locale.js
+addressprs.js
+*/
+
+// !data address
+
+/**
+ * @constructor
+ * @class
+ * 
+ * Create a new formatter object to format physical addresses in a particular way.
+ *
+ * The options object may contain the following properties, both of which are optional:
+ *
+ * <ul>
+ * <li>*locale* - the locale to use to format this address. If not specified, it uses the default locale
+ * 
+ * <li>*style* - the style of this address. The default style for each country usually includes all valid 
+ * fields for that country.
+ * 
+ * <li>onLoad - a callback function to call when the address info for the
+ * locale is fully loaded and the address has been parsed. When the onLoad 
+ * option is given, the address formatter object 
+ * will attempt to load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
+ * </ul>
+ * 
+ * @param {Object} options options that configure how this formatter should work
+ * Returns a formatter instance that can format multiple addresses.
+ */
+ilib.AddressFmt = function(options) {
+	this.sync = true;
+	this.styleName = 'default';
+	
+	if (options) {
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		
+		if (typeof(options.sync) !== 'undefined') {
+			this.sync = (options.sync == true);
+		}
+		
+		if (options.style) {
+			this.styleName = options.style;
+		}
+	}
+
+	// console.log("Creating formatter for region: " + this.locale.region);
+	ilib.loadData(ilib.Address, this.locale, "address", this.sync, /** @type {function(Object?):undefined} */ function(info) {
+		if (!info || ilib.isEmpty(info)) {
+			// load the "unknown" locale instead
+			ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, /** @type {function(Object?):undefined} */ function(info) {
+				this.info = info;
+				this._init();
+				if (typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}	
+			}.bind(this));
+		} else {
+			this.info = info;
+			this._init();
+			if (typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		}
+	}.bind(this));
+};
+
+/**
+ * @private
+ */
+ilib.AddressFmt.prototype._init = function () {
+	this.style = this.info && this.info.formats && this.info.formats[this.styleName];
+	
+	// use generic default -- should not happen, but just in case...
+	this.style = this.style || (this.info && this.info.formats["default"]) || "{streetAddress}\n{locality} {region} {postalCode}\n{country}";
+};
+
+/**
+ * This function formats a physical address (ilib.Address instance) for display. 
+ * Whitespace is trimmed from the beginning and end of final resulting string, and 
+ * multiple consecutive whitespace characters in the middle of the string are 
+ * compressed down to 1 space character.
+ * 
+ * If the Address instance is for a locale that is different than the locale for this
+ * formatter, then a hybrid address is produced. The country name is located in the
+ * correct spot for the current formatter's locale, but the rest of the fields are
+ * formatted according to the default style of the locale of the actual address.
+ * 
+ * Example: a mailing address in China, but formatted for the US might produce the words
+ * "People's Republic of China" in English at the last line of the address, and the 
+ * Chinese-style address will appear in the first line of the address. In the US, the
+ * country is on the last line, but in China the country is usually on the first line.
+ *
+ * @param {ilib.Address} address Address to format
+ * @eturns {string} Returns a string containing the formatted address
+ */
+ilib.AddressFmt.prototype.format = function (address) {
+	var ret, template, other, format;
+	
+	if (!address) {
+		return "";
+	}
+	// console.log("formatting address: " + JSON.stringify(address));
+	if (address.countryCode && 
+			address.countryCode !== this.locale.region && 
+			ilib.Locale._isRegionCode(this.locale.region) && 
+			this.locale.region !== "XX") {
+		// we are formatting an address that is sent from this country to another country,
+		// so only the country should be in this locale, and the rest should be in the other
+		// locale
+		// console.log("formatting for another locale. Loading in its settings: " + address.countryCode);
+		other = new ilib.AddressFmt({
+			locale: new ilib.Locale(address.countryCode), 
+			style: this.styleName
+		});
+		return other.format(address);
+	}
+	
+	format = address.format ? this.style[address.format] : this.style;
+	// console.log("Using format: " + format);
+	// make sure we have a blank string for any missing parts so that
+	// those template parts get blanked out
+	var params = {
+		country: address.country || "",
+		region: address.region || "",
+		locality: address.locality || "",
+		streetAddress: address.streetAddress || "",
+		postalCode: address.postalCode || ""
+	};
+	template = new ilib.String(format);
+	ret = template.format(params);
+	ret = ret.replace(/[ \t]+/g, ' ');
+	return ret.replace(/\n+/g, '\n').trim();
+};
+
 /**
  * @license
  * Copyright © 2012, JEDLSoft
@@ -18489,6 +28197,7 @@ datefmt.js
 calendar.js
 util/utils.js
 locale.js
+nfkc/all.js
 strings.js
 durfmt.js
 resources.js
@@ -18506,7 +28215,13 @@ ctype.isideo.js
 ctype.islower.js
 ctype.isprint.js
 ctype.ispunct.js
+ctype.isscript.js
 ctype.isspace.js
 ctype.isupper.js
 ctype.isxdigit.js
+scriptinfo.js
+nameprs.js
+namefmt.js
+addressprs.js
+addressfmt.js
 */

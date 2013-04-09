@@ -1,7 +1,7 @@
 /*
  * testSuite.js - test suite for this directory
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,7 +73,28 @@ function suite() {
 	    "testname_en.js",
 	    "testname_es.js",
 	    "testname_nl.js",
-	    "testname_zh_CN.js"
+	    "testname_zh_CN.js",
+	    "testaddress.js",
+	    //"testaddress_AT.js",
+	    "testaddress_AU.js",
+	    // "testaddress_BE.js",
+	    "testaddress_CA.js",
+	    //"testaddress_CH.js",
+	    "testaddress_CN.js",
+	    "testaddress_DE.js",
+	    "testaddress_ES.js",
+	    "testaddress_FR.js",
+	    "testaddress_GB.js",
+	    "testaddress_HK.js",
+	    "testaddress_IE.js",
+	    "testaddress_IT.js",
+	    //"testaddress_LU.js",
+	    "testaddress_MO.js",
+	    "testaddress_MX.js",
+	    "testaddress_NL.js",
+	    "testaddress_NZ.js",
+	    "testaddress_SG.js",
+	    "testaddress_TW.js"
 	];
 
     // uncompiled

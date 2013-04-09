@@ -92,7 +92,7 @@ try {
 	languageData = suppData.languageData;
 } catch (e) {
 	util.print("Error: Could not load file " + filename + "\n");
-	process.exist(2);
+	process.exit(2);
 }
 
 
@@ -461,14 +461,17 @@ function getSystemResources(language, script, region, data) {
 				fullOther = unit["unitPattern-count-other"];
 			}
 
-			var unitNames = {
-                 "zero": "0",
-                 "one": "1",
-                 "two": "2",
-                 "few": "few",
-                 "many": "many"
-			};
-			for (var name in unitNames) {
+			var unitNames = [
+				"0",
+				"1",
+                "zero",
+                "one",
+                "two",
+                "few",
+                "many"
+			];
+			for (var j = 0; j < unitNames.length; j++) {
+				name = unitNames[j];
 				mediumClipped = clipForMedium(
 						unit["unitPattern-count-" + name + "-alt-short"],
 						unit["unitPattern-count-" + name]); 
@@ -478,7 +481,7 @@ function getSystemResources(language, script, region, data) {
 						mediumStr += "|";
 					}
 					temp = mediumClipped.replace("{0}", "{num}");
-					mediumStr += unitNames[name] + "#" + temp;
+					mediumStr += name + "#" + temp;
 				}
 				longClipped = clipForLong(unit["unitPattern-count-" + name]);
 				if (typeof(unit["unitPattern-count-" + name]) !== 'undefined' &&
@@ -487,14 +490,14 @@ function getSystemResources(language, script, region, data) {
 						longStr += "|";
 					}
 					temp = longClipped.replace("{0}", "{num}");
-					longStr += unitNames[name] + "#" + temp;
+					longStr += name + "#" + temp;
 				}
 				if (typeof(unit["unitPattern-count-" + name]) !== 'undefined' &&
 						unit["unitPattern-count-" + name] !== fullOther) {
 					if (fullStr.length > 0) {
 						fullStr += "|";
 					}
-					fullStr += unitNames[name] + "#" + unit["unitPattern-count-" + name].replace("{0}", "{num}");
+					fullStr += name + "#" + unit["unitPattern-count-" + name].replace("{0}", "{num}");
 				}
 			}
 			if (typeof(unit["unitPattern-count-other-alt-short"]) !== 'undefined') {
