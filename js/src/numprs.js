@@ -106,7 +106,7 @@ ilib.Number = function (str, options) {
 	
 	new ilib.LocaleInfo(this.locale, {
 		sync: sync,
-		onLoad: function (li) {
+		onLoad: ilib.bind(this, function (li) {
 			this.decimal = li.getDecimalSeparator();
 			
 			switch (typeof(str)) {
@@ -181,12 +181,12 @@ ilib.Number = function (str, options) {
 						locale: this.locale, 
 						sign: stripped,
 						sync: sync,
-						onLoad: function (cur) {
+						onLoad: ilib.bind(this, function (cur) {
 							this.currency = cur;
 							if (options && typeof(options.onLoad) === 'function') {
 								options.onLoad(this);
 							}				
-						}.bind(this)
+						})
 					});
 					return;
 			}
@@ -194,7 +194,7 @@ ilib.Number = function (str, options) {
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
-		}.bind(this)
+		})
 	});
 };
 

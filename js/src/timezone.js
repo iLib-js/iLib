@@ -159,14 +159,14 @@ ilib.TimeZone = function(options) {
 	if (!this.id) {
 		var li = new ilib.LocaleInfo(this.locale, {
 			sync: sync,
-			onLoad: function (li) {
+			onLoad: ilib.bind(this, function (li) {
 				this.id = li.getTimeZone() || "Etc/UTC";
 				this._inittz();
 				
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
 				}
-			}.bind(this)
+			})
 		});
 	} else {
 		this._inittz();

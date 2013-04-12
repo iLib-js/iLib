@@ -21,4 +21,4 @@
  * the ilib project. Modify it to point to the top level of your ilib 
  * check-out. 
  */
-var ilibDir = "/home/edwin/src/ilib-sf";
+var ilibDir = "/home/edwin/src/ilib-1x";

@@ -133,8 +133,26 @@ $(function() {
         case 'PseudoTranslation':
             setupTextPicker(res);
             break;
+        case 'CType':
+            setupCTypePicker(res);
+            break;
         case 'NumFmt':
             setupNumPicker();
+            break;
+        case 'NumPrs':
+            setupNumParsingPicker(res);
+            break;
+        case 'NamePrs':
+            setupNameParsingPicker(res);
+            break;
+        case 'NameFmt':
+            setupNamePicker();
+            break;
+        case 'AddressPrs':
+            setupAddressParsingPicker(res);
+            break;
+        case 'AddressFmt':
+            setupAddressPicker();
             break;
         default:
 			alert(convertName + ": to be implemented");
@@ -673,6 +691,27 @@ $(function() {
 			$('.testSubject').html(str + " -> " + pseudoStr);
             break;
             
+        case 'CType':
+            var str = $('#sampleText').val();
+            
+            $('.testSubject').html(
+                "is alpha numeric: " + ilib.CType.isAlnum(str) + "<br>" +
+                "is alphabetic: " + ilib.CType.isAlpha(str) + "<br>" +
+                "is ASCII: " + ilib.CType.isAscii(str) + "<br>" +
+                "is blank: " + ilib.CType.isBlank(str) + "<br>" +
+                "is control: " + ilib.CType.isCntrl(str) + "<br>" +
+                "is digit: " + ilib.CType.isDigit(str) + "<br>" +
+                "is graphical: " + ilib.CType.isGraph(str) + "<br>" +
+                "is ideographic: " + ilib.CType.isIdeo(str) + "<br>" +
+                "is lower case: " + ilib.CType.isLower(str) + "<br>" +
+                "is printable: " +  ilib.CType.isPrint(str) + "<br>" +
+                "is punctuation: " + ilib.CType.isPunct(str) + "<br>" +
+                "is whitespace char: " + ilib.CType.isSpace(str) + "<br>" +
+                "is upper case: " + ilib.CType.isUpper(str) + "<br>" +
+                "is hex digit: " + ilib.CType.isXdigit(str)
+            );
+            break;
+            
         case 'ISOWeek':
             var calendar = $('#calendarName').val(),
                 cal = ilib.Cal.newInstance({
@@ -851,6 +890,133 @@ $(function() {
             $('.testSubject').html('<b>' + output + '</b><br />');
             break;
 
+        case 'NumPrs':
+            var numStr = $('#sampleText').val(),
+            	type = $('[name="numFmtType"]:checked').val();
+            
+            options = {
+            	locale: localeName,
+                type: type
+            };
+            
+            var num = new ilib.Number(numStr, options);
+            output = res.getString("Number is: ");
+            output += num;
+            output += '<br />';
+            
+            $('.testSubject').html(output);
+            break;
+
+        case 'NamePrs':
+            var nameStr = $('#sampleText').val();
+            
+            options = {
+            	locale: localeName
+            };
+            
+            var name = new ilib.Name(nameStr, options);
+            output = res.getString("Parsed name is:") + "<br>";
+            if (name.prefix) {
+            	output += res.getString("Prefix: ") + name.prefix + "<br>";
+            }
+            if (name.givenName) {
+            	output += res.getString("Given name: ") + name.givenName + "<br>";
+            }
+            if (name.middleName) {
+            	output += res.getString("Middle name: ") + name.middleName + "<br>";
+            }
+            if (name.familyName) {
+            	output += res.getString("Family name: ") + name.familyName + "<br>";
+            }
+            if (name.suffix) {
+            	output += res.getString("Suffix: ") + name.suffix + "<br>";
+            } 
+            output += '<br />';
+            
+            $('.testSubject').html(output);
+            break;
+            
+		case 'NameFmt':
+            var nameLength = $('[name="nameLength"]:checked').val();
+                        
+            options = {
+                locale : localeName,
+                style : nameLength
+            };
+            
+            var n = {
+                prefix: $('#prefix').val(),
+                givenName: $('#given').val(),
+                middleName: $('#middle').val(),
+                familyName: $('#family').val(),
+                suffix: $('#suffix').val(),
+                locale: localeName
+            }
+            
+            var name = new ilib.Name(n);
+            var fmt = new ilib.NameFmt(options);
+            
+            var str1 = res.getString("The name is {name}");
+            output = str1.format({name: fmt.format(name)});
+            
+            $('.testSubject').html('<b>' + output + '</b><br />');
+            break;
+
+        case 'AddressPrs':
+            var addressStr = $('#textBox').val();
+            
+            options = {
+            	locale: localeName
+            };
+            
+            var address = new ilib.Address(addressStr, options);
+            output = res.getString("Parsed address is:") + "<br>";
+            if (address.streetAddress) {
+            	output += res.getString("streetAddress: ") + address.streetAddress + "<br>";
+            }
+            if (address.locality) {
+            	output += res.getString("Locality: ") + address.locality + "<br>";
+            }
+            if (address.postalCode) {
+            	output += res.getString("Postal code: ") + address.postalCode + "<br>";
+            }
+            if (address.region) {
+            	output += res.getString("Region: ") + address.region + "<br>";
+            }
+            if (address.country) {
+            	output += res.getString("Country: ") + address.country + "<br>";
+            } 
+            if (address.countryCode) {
+            	output += res.getString("Country code: ") + address.countryCode + "<br>";
+            } 
+            output += '<br />';
+            
+            $('.testSubject').html(output);
+            break;
+            
+		case 'AddressFmt':
+            options = {
+                locale : localeName
+            };
+            
+            var n = {
+            	streetAddress: $('#streetAddress').val(),
+                locality: $('#locality').val(),
+                postalCode: $('#postalCode').val(),
+                region: $('#region').val(),
+                country: $('#country').val(),
+                locale: localeName
+            }
+            
+            var address = new ilib.Address(n);
+            var fmt = new ilib.AddressFmt(options);
+            
+            var str1 = res.getString("The address is:<p>{address}");
+            output = str1.format({address: fmt.format(address)});
+            output = output.replace(/\n/g, "<br>");
+            $('.testSubject').html('<b>' + output + '</b><br />');
+            break;
+
 		case 'CalendarInfo':
             var output = "",
             	calName = $('#calendarName').val(),
@@ -966,7 +1132,8 @@ $(document).ready(function () {
 				<form action="" id="labForm">
 					<h3>Locale &amp; Format Settings:</h3>
                     <div>
-                        <label for="conversionCtl">Function:</label> <select id="conversionCtl">
+                        <label for="conversionCtl">Function:</label> 
+                        <select id="conversionCtl">
                             <option value="">&mdash;choose one&mdash;</option>
                             <option value="">-------- Dates and Times -------</option>
                             <option value="DateFmt">Date Formatting</option>
@@ -987,16 +1154,20 @@ $(document).ready(function () {
                             <option value="ScriptInfo">Script Info</option>
                             <option value="">-------- String Classes --------</option>
                             <option value="PseudoTranslation">Pseudo Translation</option>
-                            <option value="">-------- Number Classes --------</option>
+                            <option value="CType">Character Type</option>
+                            <option value="">-------- Parsing Classes --------</option>
+                            <option value="NumPrs">Number Parsing</option>
+                            <option value="NamePrs">Name Parsing</option>
+                            <option value="AddressPrs">Address Parsing</option>
+                            <option value="">-------- Formatting Classes --------</option>
                             <option value="NumFmt">Number Formatting</option>
+                            <option value="NameFmt">Name Formatting</option>
+                            <option value="AddressFmt">Address Formatting</option>
 <!--
                             <option value="ShowCalendar">Show Calendar</option>
                             <option value="GetString">Translation</option>
                             <option value="StringFmt">String Formatting</option>
                             <option value="FormatChoice">Choice Formatting</option>
-                            
-                            
-                            <option value="CType">Character Type</option>
 -->            
                         </select>
                     </div>
@@ -1228,14 +1399,14 @@ $(document).ready(function () {
                         <input type="radio" name="resType" id="resType" value="text" checked="checked"/>text
                         <input type="radio" name="resType" id="resType" value="raw"/>raw
                     </div>
+                    <div id="numTypePicker" style="display: none">
+	                    <label>Type:</label>
+	                    <input type="radio" name="numFmtType" id="numFmtType" value="number" checked="checked"/>number
+	                    <input type="radio" name="numFmtType" id="numFmtType" value="percentage"/>percentage
+                    	<input type="radio" name="numFmtType" id="numFmtType" value="currency"/>currency
+                    </div>
                     <div id="numFmtPicker" style="display: none">
-                    	<div>
-	                        <label>Type:</label>
-	                        <input type="radio" name="numFmtType" id="numFmtType" value="number" checked="checked"/>number
-	                        <input type="radio" name="numFmtType" id="numFmtType" value="percentage"/>percentage
-	                        <input type="radio" name="numFmtType" id="numFmtType" value="currency"/>currency
-                        </div>
-                        <div>
+                         <div>
                             <label for="maxFrac">Max Frac Digits:</label>
                             <input type="text" name="maxFrac" id="maxFrac"/>
                         </div>
@@ -1271,6 +1442,62 @@ $(document).ready(function () {
                     	<label id="sampleTextLabel" for="sample">Text:</label>
                     	<input type="text" size="40" id="sampleText"/>
                     </div>
+                    <div id='namePicker' style="display: none">
+                        <div id="nlengthPane">
+                            <label>Length:</label>
+                            <input type="radio" name="nameLength" id="nameShort" value="short"/>Short
+                            <input type="radio" name="nameLength" id="nameMedium" value="medium"/>Medium
+                            <input type="radio" name="nameLength" id="nameLong" value="long"/>Long
+                            <input type="radio" name="nameLength" id="nameFull" value="full" checked="checked"/>Full
+                        </div>
+                        <div>
+                            <label for="prefix">Prefix:</label>
+                            <input type="text" name="prefix" id="prefix"/>
+                        </div>
+                        <div>
+                            <label for="given">Given name:</label>
+                            <input type="text" name="given" id="given"/>
+                        </div>
+                        <div>
+                            <label for="middle">Middle names:</label>
+                            <input type="text" name="middle" id="middle"/>
+                        </div>
+                        <div>
+                            <label for="family">Family names:</label>
+                            <input type="text" name="family" id="family"/>
+                        </div>
+                        <div>
+                            <label for="suffix">Suffix:</label>
+                            <input type="text" name="suffix" id="suffix"/>
+                        </div>
+                    </div>
+                    <div id='textBoxPicker' style="display: none">
+                        <label id="textBoxLabel" for="textBox">Free-form Address:</label>
+                        <textarea rows="5" cols="60" id="textBox"></textarea>
+                    </div>
+                    <div id='addressPicker' style="display: none">
+                        <div>
+                            <label for="streetAddress">Street address:</label>
+                            <input type="text" name="streetAddress" id="streetAddress" size="60"/>
+                        </div>
+                        <div>
+                            <label for="locality">City/Locality:</label>
+                            <input type="text" name="locality" id="locality"/>
+                        </div>
+                        <div>
+                            <label for="postalCode">Postal code/Zip:</label>
+                            <input type="text" name="postalCode" id="postalCode"/>
+                        </div>
+                        <div>
+                            <label for="region">State/Province:</label>
+                            <input type="text" name="region" id="region"/>
+                        </div>
+                        <div>
+                            <label for="country">Country:</label>
+                            <input type="text" name="country" id="country"/>
+                        </div>
+                    </div>
+                    
 					<div id="buttonBar">
 						<button type="button" id="applyButton" class="green90x24">Apply</button>
 						<button type="reset" id="resetButton" class="green90x24">Cancel</button>

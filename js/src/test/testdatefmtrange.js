@@ -202,10 +202,12 @@ function mockLoader(paths, sync, callback) {
 	if (paths[0].indexOf("localeinfo") !== -1) {
 		data.push(ilib.data.localeinfo); // for the generic, shared stuff
 		data.push(ilib.data.localeinfo_en);
+		data.push(ilib.data.localeinfo_US);
 		data.push(ilib.data.localeinfo_en_US);
 	} else {
 		data.push(ilib.data.dateformats); // for the generic, shared stuff
 		data.push(ilib.data.dateformats_en);
+		data.push(ilib.data.dateformats_US);
 		data.push(ilib.data.dateformats_en_US);
 	}
 

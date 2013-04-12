@@ -101,7 +101,7 @@ ilib.LocaleInfo = function(locale, options) {
 			// locale is not preassembled, so attempt to load it dynamically
 			var files = ilib.getLocFiles(this.locale, "localeinfo");
 			
-			ilib._load(files, sync, function(arr) {
+			ilib._load(files, sync, ilib.bind(this, function(arr) {
 				this.info = {};
 				for (var i = 0; i < arr.length; i++) {
 					if (typeof(arr[i]) !== 'undefined') {
@@ -114,7 +114,7 @@ ilib.LocaleInfo = function(locale, options) {
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
 				}
-			}.bind(this));
+			}));
 		} else {
 			// no data other than the generic shared data
 			this.info = ilib.data.localeinfo;

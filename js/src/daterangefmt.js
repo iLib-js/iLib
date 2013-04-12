@@ -137,7 +137,7 @@ ilib.DateRngFmt = function(options) {
 	/**
 	 * @private
 	 */
-	opts.onLoad = function (fmt) {
+	opts.onLoad = ilib.bind(this, function (fmt) {
 		this.dateFmt = fmt;
 		if (fmt) {
 			this.locinfo = this.dateFmt.locinfo;
@@ -162,7 +162,7 @@ ilib.DateRngFmt = function(options) {
 				options.onLoad(this);
 			}
 		}
-	}.bind(this);
+	});
 
 	// delegate a bunch of the formatting to this formatter
 	new ilib.DateFmt(opts);

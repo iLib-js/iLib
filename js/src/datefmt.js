@@ -354,7 +354,7 @@ ilib.DateFmt = function(options) {
 
 	new ilib.LocaleInfo(this.locale, {
 		sync: sync,
-		onLoad: function (li) {
+		onLoad: ilib.bind(this, function (li) {
 			this.locinfo = li;
 			
 			// get the default calendar name from the locale, and if the locale doesn't define
@@ -383,7 +383,7 @@ ilib.DateFmt = function(options) {
 				locale: this.locale,
 				name: "sysres",
 				sync: sync,
-				onLoad: function (rb) {
+				onLoad: ilib.bind(this, function (rb) {
 					this.sysres = rb;
 					if (!this.template) {
 						var spec = this.locale.getSpec().replace(/-/g, '_');
@@ -394,7 +394,7 @@ ilib.DateFmt = function(options) {
 							if (!formats) {
 								if (typeof(ilib._load) === 'function') {
 									var files = ilib.getLocFiles(this.locale, "dateformats");
-									ilib._load(files, sync, function(arr) {
+									ilib._load(files, sync, ilib.bind(this, function(arr) {
 										formats = {};
 										for (var i = 0; i < arr.length; i++) {
 											if (typeof(arr[i]) !== 'undefined') {
@@ -406,7 +406,7 @@ ilib.DateFmt = function(options) {
 										if (options && typeof(options.onLoad) === 'function') {
 											options.onLoad(this);
 										}
-									}.bind(this));
+									}));
 									return;
 								}
 								formats = ilib.data.dateformats;
@@ -419,9 +419,9 @@ ilib.DateFmt = function(options) {
 					if (options && typeof(options.onLoad) === 'function') {
 						options.onLoad(this);
 					}
-				}.bind(this)
+				})
 			});	
-		}.bind(this)
+		})
 	});
 };
 

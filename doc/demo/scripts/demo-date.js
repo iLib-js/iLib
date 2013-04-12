@@ -400,6 +400,11 @@ function setupTextPicker(res) {
 	$('#sampleTextPicker').show();
 };
 
+function setupCTypePicker(res) {
+	$('#sampleTextLabel').text(res.getString("Character"));
+	$('#sampleTextPicker').show();
+};
+
 function setDefaultNumFmtStyleValues(style, res) {
 	style.append($("<option></option>").attr({
 		value: "standard",
@@ -472,6 +477,7 @@ function setupNumPicker() {
 	
 	setDefaultNumFmtStyleValues(style, res);
 	
+	$("#numTypePicker").show();
 	$('#sampleTextLabel').text(res.getString("Number"));
 	$('#sampleTextPicker').show();
 	$('#numFmtPicker').show();
@@ -485,6 +491,12 @@ function setupCurrencyPicker() {
 	setupCurrencyValues($('#currency'));
 	
 	$('#currencyPicker').show();
+};
+
+function setupNumParsingPicker(res) {
+	$("#numTypePicker").show();
+	$('#sampleTextLabel').text(res.getString("Number"));
+	$('#sampleTextPicker').show();
 };
 
 function setupCalendarInfoPicker() {
@@ -542,6 +554,24 @@ function setupScriptInfoPicker() {
 	$('#scriptPicker').show();
 };
 
+function setupNameParsingPicker(res) {
+	$('#sampleTextLabel').text(res.getString("Name"));
+	$('#sampleTextPicker').show();
+};
+
+function setupNamePicker() {
+	$('#namePicker').show();
+};
+
+function setupAddressParsingPicker(res) {
+	$('#textBoxLabel').text(res.getString("Free form address:"));
+	$('#textBoxPicker').show();
+};
+
+function setupAddressPicker() {
+	$('#addressPicker').show();
+};
+
 function hideAllPickers() {
 	$('#calendarPane').hide();
 	$('#lengthPane').hide();
@@ -558,4 +588,6 @@ function hideAllPickers() {
 	$('#numFmtPicker').hide();
 	$('#currencyPicker').hide();
 	$('#scriptPicker').hide();
+	$("#numTypePicker").hide();
+	$('#namePicker').hide();
 };

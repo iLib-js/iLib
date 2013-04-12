@@ -160,7 +160,7 @@ ilib.NumFmt = function (options) {
 	
 	new ilib.LocaleInfo(this.locale, {
 		sync: sync,
-		onLoad: function (li) {
+		onLoad: ilib.bind(this, function (li) {
 			this.localeInfo = li;
 
 			if (this.type === "currency") {
@@ -174,7 +174,7 @@ ilib.NumFmt = function (options) {
 					locale: this.locale,
 					code: this.currency,
 					sync: sync,
-					onLoad: function (cur) {
+					onLoad: ilib.bind(this, function (cur) {
 						this.currencyInfo = cur;
 						if (this.style !== "common" && this.style !== "iso") {
 							this.style = "common";
@@ -197,7 +197,7 @@ ilib.NumFmt = function (options) {
 						if (options && typeof(options.onLoad) === 'function') {
 							options.onLoad(this);
 						}
-					}.bind(this)
+					})
 				});
 				return;
 			} else if (this.type === "percentage") {
@@ -209,7 +209,7 @@ ilib.NumFmt = function (options) {
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
-		}.bind(this)
+		})
 	});
 };
 

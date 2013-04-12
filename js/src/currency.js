@@ -99,7 +99,7 @@ ilib.Currency = function (options) {
 	this.locale = this.locale || new ilib.Locale();
 	
 	new ilib.LocaleInfo(this.locale, {
-		onLoad: function (li) {
+		onLoad: ilib.bind(this, function (li) {
 			this.locinfo = li;
 	    	if (this.code) {
 	    		currInfo = currencies[this.code];
@@ -143,7 +143,7 @@ ilib.Currency = function (options) {
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
-		}.bind(this)
+		})
 	});
 };
 

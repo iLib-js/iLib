@@ -160,9 +160,12 @@ ilib.Address = function (freeformAddress, options) {
 	if (typeof(ilib.Address.ctry) === 'undefined') {
 		ilib.Address.ctry = {}; // make sure not to conflict with the address info
 	}
-	ilib.loadData(ilib.Address.ctry, this.locale, "ctrynames", this.sync, /** @type {function(Object?):undefined} */ function(ctrynames) {
-		this._determineDest(ctrynames, options.onLoad);
-	}.bind(this));
+	ilib.loadData(ilib.Address.ctry, this.locale, "ctrynames", this.sync,
+		/** @type function(Object=):undefined */
+		ilib.bind(this, /** @type function() */ function(ctrynames) {
+			this._determineDest(ctrynames, options.onLoad);
+		}
+	));
 };
 
 /** @protected */
@@ -239,17 +242,17 @@ ilib.Address.prototype = {
 	 */
 	_init: function(callback) {
 		ilib.loadData(ilib.Address, new ilib.Locale(this.countryCode), "address", this.sync, 
-				/** @type {function(Object=):undefined} */ function(info) {
+				/** @type function(Object=):undefined */ ilib.bind(this, function(info) {
 			if (!info || ilib.isEmpty(info)) {
 				// load the "unknown" locale instead
 				ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, 
-						/** @type {function(Object=):undefined} */ function(info) {
+						/** @type function(Object=):undefined */ ilib.bind(this, function(info) {
 					this.info = info;
 					this._parseAddress();
 					if (typeof(callback) === 'function') {
 						callback(this);
 					}	
-				}.bind(this));
+				}));
 			} else {
 				this.info = info;
 				this._parseAddress();
@@ -257,7 +260,7 @@ ilib.Address.prototype = {
 					callback(this);
 				}
 			}
-		}.bind(this));
+		}));
 	},
 
 	/**

@@ -219,7 +219,8 @@ ilib.getTimeZone = function() {
  *        });
  *     }
  * }
- * ilib.setLoaderCallback(function(paths, sync, callback) {
+ * // bind to "this" so that "this" is relative to your own instance
+ * ilib.setLoaderCallback(ilib.bind(this, function(paths, sync, callback) {
  *    if (sync) {
  *        var ret = [];
  *        // synchronous
@@ -234,7 +235,7 @@ ilib.getTimeZone = function() {
  *    // asynchronous
  *    var results = [];
  *    loadFiles(this, paths, results, callback);
- * }.bind(this)); // bind to "this" so that "this" is relative to your own instance
+ * }));
  * </pre>
  * 
  * @param {function(Array.<string>,Boolean,function(Object))} loader function to call to 

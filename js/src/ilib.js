@@ -61,4 +61,6 @@ ctype.isupper.js
 ctype.isxdigit.js
 nameprs.js
 namefmt.js
+addressprs.js
+addressfmt.js
 */

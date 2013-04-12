@@ -123,7 +123,7 @@ ilib.DurFmt = function(options) {
 		locale: this.locale,
 		name: "sysres",
 		sync: sync,
-		onLoad: function (sysres) {
+		onLoad: ilib.bind(this, function (sysres) {
 			switch (this.length) {
 				case 'short':
 					this.components = {
@@ -192,21 +192,21 @@ ilib.DurFmt = function(options) {
 					type: "time",
 					time: "ms",
 					sync: sync,
-					onLoad: function (fmtMS) {
+					onLoad: ilib.bind(this, function (fmtMS) {
 						this.timeFmtMS = fmtMS;
 						new ilib.DateFmt({
 							locale: this.locale,
 							type: "time",
 							time: "hm",
 							sync: sync,
-							onLoad: function (fmtHM) {
+							onLoad: ilib.bind(this, function (fmtHM) {
 								this.timeFmtHM = fmtHM;		
 								new ilib.DateFmt({
 									locale: this.locale,
 									type: "time",
 									time: "hms",
 									sync: sync,
-									onLoad: function (fmtHMS) {
+									onLoad: ilib.bind(this, function (fmtHMS) {
 										this.timeFmtHMS = fmtHMS;		
 
 										// munge with the template to make sure that the hours are not formatted mod 12
@@ -218,11 +218,11 @@ ilib.DurFmt = function(options) {
 										if (options && typeof(options.onLoad) === 'function') {
 											options.onLoad(this);
 										}
-									}.bind(this)
+									})
 								});
-							}.bind(this)
+							})
 						});
-					}.bind(this)
+					})
 				});
 				return;
 			}
@@ -230,7 +230,7 @@ ilib.DurFmt = function(options) {
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
-		}.bind(this)
+		})
 	});
 };
 

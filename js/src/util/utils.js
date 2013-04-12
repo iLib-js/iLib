@@ -20,6 +20,50 @@
 // !depends ilibglobal.js
 
 /**
+ * If Function.prototype.bind does not exist in this JS engine, this
+ * function reimplements it in terms of older JS functions.
+ * bind() doesn't exist in many older browsers.
+ * 
+ * @param {Object} scope object that the method should operate on
+ * @param {function(?)} method method to call
+ * @returns {function(?)|undefined} function that calls the given method 
+ * in the given scope with all of its arguments properly attached, or
+ * undefined if there was a problem with the arguments
+ */
+ilib.bind = function(scope, method/*, bound arguments*/){
+	if (!scope || !method) {
+		return undefined;
+	}
+	
+	/** @protected 
+	 * @param {Arguments} inArrayLike
+	 * @param {number=} inOffset
+	 */
+	function cloneArray(inArrayLike, inOffset) {
+		var arr = [];
+		for(var i = inOffset || 0, l = inArrayLike.length; i<l; i++){
+			arr.push(inArrayLike[i]);
+		}
+		return arr;
+	}
+
+	if (typeof(method) === 'function') {
+		var func, args = cloneArray(arguments, 2);
+		if (typeof(method.bind) === 'function') {
+			func = method.bind.apply(method, [scope].concat(args));
+		} else {
+			func = function() {
+				var nargs = cloneArray(arguments);
+				// invoke with collected args
+				return method.apply(scope, args.concat(nargs));
+			};
+		}
+		return func;
+	}
+	return undefined;
+};
+
+/**
  * Binary search a sorted array for a particular target value.
  * If the exact value is not found, it returns the index of the smallest 
  * entry that is greater than the given target value.<p> 
@@ -307,7 +351,7 @@ ilib.mergeLocData = function (prefix, locale) {
  * language/script/region/variant
  * 
  * @param {ilib.Locale} locale load the json files for this locale
- * @param {string=} basename the base name of each json file to load
+ * @param {string?} basename the base name of each json file to load
  * @returns {Array.<string>} An array of relative path names
  * for the json files that contain the locale data
  */
@@ -552,7 +596,8 @@ ilib._roundFnc = {
  * @param {Object} object The class attempting to load data. The cache is stored inside of here.
  * @param {ilib.Locale} locale The locale to use to find or load the data.
  * @param {string} name The name of the locale data to load.
- * @param {function(Object?):undefined} callback Call back function to call when the data is available.
+ * @param {boolean} sync Whether or not to load the data synchronously
+ * @param {function(?)=} callback Call back function to call when the data is available.
  */
 ilib.loadData = function(object, locale, name, sync, callback) {
 	if (!object.cache) {
@@ -569,7 +614,7 @@ ilib.loadData = function(object, locale, name, sync, callback) {
 			// the data is not preassembled, so attempt to load it dynamically
 			var files = ilib.getLocFiles(locale, name);
 			
-			ilib._load(files, sync, function(arr) {
+			ilib._load(files, sync, ilib.bind(this, function(arr) {
 				data = {};
 				for (var i = 0; i < arr.length; i++) {
 					if (typeof(arr[i]) !== 'undefined') {
@@ -578,7 +623,7 @@ ilib.loadData = function(object, locale, name, sync, callback) {
 				}
 				
 				callback(data);
-			}.bind(this));
+			}));
 		} else {
 			// no data other than the generic shared data
 			callback(data);
@@ -587,3 +632,4 @@ ilib.loadData = function(object, locale, name, sync, callback) {
 		callback(object.cache[spec]);
 	}
 };
+
