@@ -171,7 +171,7 @@ ilib.DateRngFmt = function(options) {
 ilib.DateRngFmt.prototype = {
 	/**
 	 * Return the locale used with this formatter instance.
-	 * @returns {ilib.Locale} the ilib.Locale instance for this formatter
+	 * @return {ilib.Locale} the ilib.Locale instance for this formatter
 	 */
 	getLocale: function() {
 		return this.locale;
@@ -180,7 +180,7 @@ ilib.DateRngFmt.prototype = {
 	/**
 	 * Return the name of the calendar used to format date/times for this
 	 * formatter instance.
-	 * @returns {string} the name of the calendar used by this formatter
+	 * @return {string} the name of the calendar used by this formatter
 	 */
 	getCalendar: function () {
 		return this.dateFmt.getCalendar();
@@ -190,7 +190,7 @@ ilib.DateRngFmt.prototype = {
 	 * Return the length used to format date/times in this formatter. This is either the
 	 * value of the length option to the constructor, or the default value.
 	 * 
-	 * @returns {string} the length of formats this formatter returns
+	 * @return {string} the length of formats this formatter returns
 	 */
 	getLength: function () {
 		return ilib.DateFmt.lenmap[this.length] || "";
@@ -208,7 +208,7 @@ ilib.DateRngFmt.prototype = {
 	/**
 	 * Return the clock option set in the constructor. If the clock option was
 	 * not given, the default from the locale is returned instead.
-	 * @returns {string} "12" or "24" depending on whether this formatter uses
+	 * @return {string} "12" or "24" depending on whether this formatter uses
 	 * the 12-hour or 24-hour clock
 	 */
 	getClock: function () {

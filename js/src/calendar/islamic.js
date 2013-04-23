@@ -84,7 +84,7 @@ ilib.Cal.Islamic.prototype.getNumMonths = function(year) {
  *
  * @param {number} month the month for which the length is sought
  * @param {number} year the year within which that month can be found
- * @returns {number} the number of days within the given month in the given year
+ * @return {number} the number of days within the given month in the given year
  */
 ilib.Cal.Islamic.prototype.getMonLength = function(month, year) {
 	if (month !== 12) {
@@ -98,7 +98,7 @@ ilib.Cal.Islamic.prototype.getMonLength = function(month, year) {
  * Return true if the given year is a leap year in the Islamic calendar.
  * The year parameter may be given as a number, or as a IslamicDate object.
  * @param {number} year the year for which the leap year information is being sought
- * @returns {boolean} true if the given year is a leap year
+ * @return {boolean} true if the given year is a leap year
  */
 ilib.Cal.Islamic.prototype.isLeapYear = function(year) {
 	return (ilib.mod((14 + 11 * year), 30) < 11);
@@ -107,7 +107,7 @@ ilib.Cal.Islamic.prototype.isLeapYear = function(year) {
 /**
  * Return the type of this calendar.
  * 
- * @returns {string} the name of the type of this calendar 
+ * @return {string} the name of the type of this calendar 
  */
 ilib.Cal.Islamic.prototype.getType = function() {
 	return this.type;
@@ -118,7 +118,7 @@ ilib.Cal.Islamic.prototype.getType = function() {
  * options.
  * @param {Object} options options controlling the construction of 
  * the date instance
- * @returns {ilib.Date} a date appropriate for this calendar type
+ * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Islamic.prototype.newDateInstance = function (options) {
 	return new ilib.Date.IslamicDate(options);

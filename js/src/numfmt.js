@@ -215,7 +215,7 @@ ilib.NumFmt = function (options) {
 
 /**
  * Return an array of available locales that this formatter can format
- * @returns {Array.<ilib.Locale>|undefined} an array of available locales
+ * @return {Array.<ilib.Locale>|undefined} an array of available locales
  */
 ilib.NumFmt.getAvailableLocales = function () {
 	return undefined;
@@ -269,7 +269,7 @@ ilib.NumFmt.prototype = {
 	/**
 	 * @private
 	 * @param {Number|ilib.Number|string|number} num object, string, or number to convert to a primitive number
-	 * @returns {number} the primitive number equivalent of the argument
+	 * @return {number} the primitive number equivalent of the argument
 	 */
 	_toPrimitive: function (num) {
 		var n = 0;
@@ -294,7 +294,7 @@ ilib.NumFmt.prototype = {
 	/**
 	 * @private
 	 * @param {number} num the number to format
-	 * @returns {string} the formatted number 
+	 * @return {string} the formatted number 
 	 */
 	_formatScientific: function (num) {
 		var n = new Number(num);
@@ -322,7 +322,7 @@ ilib.NumFmt.prototype = {
 	/**
 	 * @private 
 	 * @param {number} num the number to format
-	 * @returns {string} the formatted number
+	 * @return {string} the formatted number
 	 */ 
 	_formatStandard: function (num) {
 		var i;
@@ -377,7 +377,7 @@ ilib.NumFmt.prototype = {
 	/**
 	 * Format a number according to the settings of this number formatter instance.
 	 * @param num {number|string|Number|ilib.Number} a floating point number to format
-	 * @returns {string} a string containing the formatted number
+	 * @return {string} a string containing the formatted number
 	 */
 	format: function (num) {
 		var formatted, n;
@@ -404,7 +404,7 @@ ilib.NumFmt.prototype = {
 	 * Return the type of formatter. Valid values are "number", "currency", and
 	 * "percentage".
 	 * 
-	 * @returns {string} the type of formatter
+	 * @return {string} the type of formatter
 	 */
 	getType: function () {
 		return this.type;
@@ -412,7 +412,7 @@ ilib.NumFmt.prototype = {
 	
 	/**
 	 * Return the locale for this formatter instance.
-	 * @returns {ilib.Locale} the locale instance for this formatter
+	 * @return {ilib.Locale} the locale instance for this formatter
 	 */
 	getLocale: function () {
 		return this.locale;
@@ -424,7 +424,7 @@ ilib.NumFmt.prototype = {
 	 * most western European cultures, this means separating every 3 digits 
 	 * of the integral portion of a number with a particular character.
 	 * 
-	 * @returns {boolean} true if this formatter groups digits in the integral
+	 * @return {boolean} true if this formatter groups digits in the integral
 	 * portion of the number
 	 */
 	isGroupingUsed: function () {
@@ -435,7 +435,7 @@ ilib.NumFmt.prototype = {
 	/**
 	 * Returns the maximum fraction digits set up in the constructor.
 	 * 
-	 * @returns {number} the maximum number of fractional digits this
+	 * @return {number} the maximum number of fractional digits this
 	 * formatter will format, or -1 for no maximum
 	 */
 	getMaxFractionDigits: function () {
@@ -448,7 +448,7 @@ ilib.NumFmt.prototype = {
 	 * digits is the amount of digits that is standard for the currency
 	 * in question unless overridden in the options to the constructor.
 	 * 
-	 * @returns {number} the minimum number of fractional digits this
+	 * @return {number} the minimum number of fractional digits this
 	 * formatter will format, or -1 for no minimum
 	 */
 	getMinFractionDigits: function () {
@@ -460,7 +460,7 @@ ilib.NumFmt.prototype = {
 	 * IF the typeof this formatter is not "currency", then this method will
 	 * return undefined.
 	 * 
-	 * @returns {string} the ISO 4217 code for the currency that this formatter
+	 * @return {string} the ISO 4217 code for the currency that this formatter
 	 * formats, or undefined if this not a currency formatter
 	 */
 	getCurrency: function () {
@@ -472,7 +472,7 @@ ilib.NumFmt.prototype = {
 	 * controls how numbers are rounded when the integral or fraction digits 
 	 * of a number are limited.
 	 * 
-	 * @returns {string} the name of the rounding mode used in this formatter
+	 * @return {string} the name of the rounding mode used in this formatter
 	 */
 	getRoundingMode: function () {
 		return this.roundingMode;
@@ -483,7 +483,7 @@ ilib.NumFmt.prototype = {
 	 * currency is denoted in the formatted output. This method returns the style
 	 * that this formatter will produce. (See the constructor comment for more about
 	 * the styles.)
-	 * @returns {string} the name of the style this formatter will use to format
+	 * @return {string} the name of the style this formatter will use to format
 	 * currency amounts, or "undefined" if this formatter is not a currency formatter
 	 */
 	getStyle: function () {

@@ -43,11 +43,15 @@ function testGetVersion() {
 }
 
 function testGetTimeZoneDefault() {
-    assertEquals("Etc/UTC", ilib.getTimeZone());
+	ilib._platform = undefined;
+	ilib.tz = undefined;
+	assertEquals("Etc/UTC", ilib.getTimeZone());
 }
 
 function testSetTimeZone() {
-    assertEquals("Etc/UTC", ilib.getTimeZone());
+	ilib._platform = undefined;
+	ilib.tz = undefined;
+	assertEquals("Etc/UTC", ilib.getTimeZone());
     
     ilib.setTimeZone("America/Los_Angeles");
     
@@ -56,26 +60,17 @@ function testSetTimeZone() {
 }
 
 function testSetTimeZoneEmpty() {
-    assertEquals("Etc/UTC", ilib.getTimeZone());
+	ilib._platform = undefined;
+	ilib.tz = undefined;
+	assertEquals("Etc/UTC", ilib.getTimeZone());
     
     ilib.setTimeZone();
     
     assertEquals("Etc/UTC", ilib.getTimeZone());
 }
 
-function testGetTimeZoneBrowser() {
-	ilib.tz = undefined;
-	if (typeof(navigator) === 'undefined') {
-		navigator = {};
-	}
-	navigator.timezone = 'America/Los_Angeles';
-	
-	assertEquals("America/Los_Angeles", ilib.getTimeZone());
-	
-	navigator.timezone = undefined;
-}
-
 function testGetTimeZoneNodejs() {
+	ilib._platform = undefined;
 	ilib.tz = undefined;
 	if (typeof(process) === 'undefined') {
 		process = {
@@ -90,6 +85,7 @@ function testGetTimeZoneNodejs() {
 }
 
 function testGetTimeZoneRhino() {
+	ilib._platform = undefined;
 	ilib.tz = undefined;
 	if (typeof(environment) === 'undefined') {
 		environment = {
@@ -104,6 +100,7 @@ function testGetTimeZoneRhino() {
 }
 
 function testGetTimeZoneWebOS() {
+	ilib._platform = undefined;
 	ilib.tz = undefined;
 	if (typeof(PalmSystem) === 'undefined') {
 		PalmSystem = {};
@@ -115,24 +112,6 @@ function testGetTimeZoneWebOS() {
 	PalmSystem = undefined;
 }
 
-function testGetLocaleBrowser() {
-	if (typeof(navigator.language) !== 'undefined') {
-		// can't test setting things up for the browser when you are testing within the 
-		// the browser already -- navigator.language is read-only!
-		return;
-	}
-	
-	ilib.locale = undefined;
-	if (typeof(navigator) === 'undefined') {
-		navigator = {};
-	}
-	navigator.language = 'ja-JP';
-	
-	assertEquals("ja-JP", ilib.getLocale());
-	
-	navigator.language = undefined;
-}
-
 function testGetLocaleNodejs1() {
 	if (typeof(navigator.language) !== 'undefined') {
 		// can't test setting things up for the browser when you are testing within the 
@@ -141,6 +120,7 @@ function testGetLocaleNodejs1() {
 		return;
 	}
 	
+	ilib._platform = undefined;
 	ilib.locale = undefined;
 	if (typeof(process) === 'undefined') {
 		process = {
@@ -162,6 +142,7 @@ function testGetLocaleNodejs2() {
 		return;
 	}
 	
+	ilib._platform = undefined;
 	ilib.locale = undefined;
 	if (typeof(process) === 'undefined') {
 		process = {
@@ -183,6 +164,7 @@ function testGetLocaleRhino() {
 		return;
 	}
 	
+	ilib._platform = undefined;
 	ilib.locale = undefined;
 	if (typeof(environment) === 'undefined') {
 		environment = {
@@ -205,6 +187,7 @@ function testGetLocaleWebOS() {
 		return;
 	}
 	
+	ilib._platform = undefined;
 	ilib.locale = undefined;
 	if (typeof(PalmSystem) === 'undefined') {
 		PalmSystem = {
@@ -217,3 +200,41 @@ function testGetLocaleWebOS() {
 	
 	PalmSystem = undefined;
 }
+
+function testGetTimeZoneBrowser() {
+	if (typeof(navigator) !== 'undefined') {
+		// can't test setting things up for the browser when you are testing within the 
+		// the browser already -- navigator is read-only!
+		return;
+	}
+
+	ilib._platform = undefined;
+	ilib.tz = undefined;
+	navigator = {
+		timezone: 'America/Los_Angeles'             
+	};
+	
+	assertEquals("America/Los_Angeles", ilib.getTimeZone());
+	
+	navigator = undefined;
+}
+
+function testGetLocaleBrowser() {
+	if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
+		// can't test setting things up for the browser when you are testing within the 
+		// the browser already -- navigator.language is read-only!
+		return;
+	}
+	
+	ilib._platform = undefined;
+	ilib.locale = undefined;
+	if (typeof(navigator) === 'undefined') {
+		navigator = {};
+	}
+	navigator.language = 'ja-JP';
+	
+	assertEquals("ja-JP", ilib.getLocale());
+	
+	navigator.language = undefined;
+}
+

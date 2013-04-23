@@ -385,39 +385,25 @@ ilib.DateFmt = function(options) {
 				sync: sync,
 				onLoad: ilib.bind(this, function (rb) {
 					this.sysres = rb;
+					
 					if (!this.template) {
-						var spec = this.locale.getSpec().replace(/-/g, '_');
-						if (typeof(ilib.DateFmt.cache[spec]) !== 'undefined') {
-							formats = ilib.DateFmt.cache[spec];
-						} else {
-							formats = ilib.mergeLocData("dateformats", this.locale);
+						ilib.loadData(ilib.DateFmt, this.locale, "dateformats", sync, this.loadParams, ilib.bind(this, function (formats) {
 							if (!formats) {
-								if (typeof(ilib._load) === 'function') {
-									var files = ilib.getLocFiles(this.locale, "dateformats");
-									ilib._load(files, sync, ilib.bind(this, function(arr) {
-										formats = {};
-										for (var i = 0; i < arr.length; i++) {
-											if (typeof(arr[i]) !== 'undefined') {
-												formats = ilib.merge(formats, arr[i]);
-											}
-										}
-										this._initTemplate(formats);
-										this._massageTemplate();
-										if (options && typeof(options.onLoad) === 'function') {
-											options.onLoad(this);
-										}
-									}));
-									return;
-								}
 								formats = ilib.data.dateformats;
+								var spec = this.locale.getSpec().replace(/-/g, '_');
+								ilib.DateFmt.cache[spec] = formats;
 							}
+							this._initTemplate(formats);
+							this._massageTemplate();
+							if (options && typeof(options.onLoad) === 'function') {
+								options.onLoad(this);
+							}
+						}));
+					} else {
+						this._massageTemplate();
+						if (options && typeof(options.onLoad) === 'function') {
+							options.onLoad(this);
 						}
-						this._initTemplate(formats);
-						ilib.DateFmt.cache[spec] = formats;
-					}
-					this._massageTemplate();
-					if (options && typeof(options.onLoad) === 'function') {
-						options.onLoad(this);
 					}
 				})
 			});	
@@ -532,7 +518,7 @@ ilib.DateFmt.prototype = {
 	 * @protected
 	 * Convert the template into an array of date components separated by formatting chars.
 	 * @param {string} template Format template to tokenize into components
-	 * @returns {Array.<string>} a tokenized array of date format components
+	 * @return {Array.<string>} a tokenized array of date format components
 	 */
 	_tokenize: function (template) {
 		var i = 0, start, ch, letter, arr = [];
@@ -576,7 +562,7 @@ ilib.DateFmt.prototype = {
 	 * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
 	 * @param {string} components Format components to search
 	 * @param {string} length Length of the requested format
-	 * @returns {string|undefined} the requested format
+	 * @return {string|undefined} the requested format
 	 */
 	_getFormat: function getFormat(obj, components, length) {
 		if (typeof(components) !== 'undefined' && obj[components]) {
@@ -589,7 +575,7 @@ ilib.DateFmt.prototype = {
 	 * @protected
 	 * @param {(string|{s:string,m:string,l:string,f:string})} obj Object to search
 	 * @param {string} length Length of the requested format
-	 * @returns {(string|undefined)} the requested format
+	 * @return {(string|undefined)} the requested format
 	 */
 	_getLengthFormat: function getLengthFormat(obj, length) {
 		if (typeof(obj) === 'string') {
@@ -602,7 +588,7 @@ ilib.DateFmt.prototype = {
 
 	/**
 	 * Return the locale used with this formatter instance.
-	 * @returns {ilib.Locale} the ilib.Locale instance for this formatter
+	 * @return {ilib.Locale} the ilib.Locale instance for this formatter
 	 */
 	getLocale: function() {
 		return this.locale;
@@ -615,7 +601,7 @@ ilib.DateFmt.prototype = {
 	 * will build the appropriate template according to the options and use that template
 	 * in the format method. 
 	 * 
-	 * @returns {string} the format template for this formatter
+	 * @return {string} the format template for this formatter
 	 */
 	getTemplate: function() {
 		return this.template;
@@ -624,7 +610,7 @@ ilib.DateFmt.prototype = {
 	/**
 	 * Return the type of this formatter. The type is a string that has one of the following
 	 * values: "time", "date", "datetime".
-	 * @returns {string} the type of the formatter
+	 * @return {string} the type of the formatter
 	 */
 	getType: function() {
 		return this.type;
@@ -633,7 +619,7 @@ ilib.DateFmt.prototype = {
 	/**
 	 * Return the name of the calendar used to format date/times for this
 	 * formatter instance.
-	 * @returns {string} the name of the calendar used by this formatter
+	 * @return {string} the name of the calendar used by this formatter
 	 */
 	getCalendar: function () {
 		return this.cal.getType();
@@ -643,7 +629,7 @@ ilib.DateFmt.prototype = {
 	 * Return the length used to format date/times in this formatter. This is either the
 	 * value of the length option to the constructor, or the default value.
 	 * 
-	 * @returns {string} the length of formats this formatter returns
+	 * @return {string} the length of formats this formatter returns
 	 */
 	getLength: function () {
 		return ilib.DateFmt.lenmap[this.length] || "";
@@ -657,7 +643,7 @@ ilib.DateFmt.prototype = {
 	 * constructor, but this method will reorder the given components to a standard 
 	 * order.
 	 * 
-	 * @returns {string} the date components that this formatter formats
+	 * @return {string} the date components that this formatter formats
 	 */
 	getDateComponents: function () {
 		return this.dateComponents || "";
@@ -671,7 +657,7 @@ ilib.DateFmt.prototype = {
 	 * constructor, but this method will reorder the given components to a standard 
 	 * order.
 	 * 
-	 * @returns {string} the time components that this formatter formats
+	 * @return {string} the time components that this formatter formats
 	 */
 	getTimeComponents: function () {
 		return this.timeComponents || "";
@@ -697,7 +683,7 @@ ilib.DateFmt.prototype = {
 	/**
 	 * Return the clock option set in the constructor. If the clock option was
 	 * not given, the default from the locale is returned instead.
-	 * @returns {string} "12" or "24" depending on whether this formatter uses
+	 * @return {string} "12" or "24" depending on whether this formatter uses
 	 * the 12-hour or 24-hour clock
 	 */
 	getClock: function () {
@@ -732,7 +718,7 @@ ilib.DateFmt.prototype = {
 	 * Format a date according to a sequence of components. 
 	 * @param {ilib.Date} date a date/time object to format
 	 * @param {Array.<string>} templateArr an array of components to format
-	 * @returns {string} the formatted date
+	 * @return {string} the formatted date
 	 */
 	_formatTemplate: function (date, templateArr) {
 		var i, key, temp, tz, str = "";
@@ -910,7 +896,7 @@ ilib.DateFmt.prototype = {
 	 * produce bogus results.
 	 * 
 	 * @param {ilib.Date} date a date to format
-	 * @returns {string} the formatted version of the given date instance
+	 * @return {string} the formatted version of the given date instance
 	 */
 	format: function (date) {
 		if (!date.getCalendar || date.getCalendar() !== this.calName) {

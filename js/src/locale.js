@@ -155,7 +155,7 @@ ilib.Locale = function(language, region, variant, script) {
  * @private
  * Tell whether or not the str does not start with a lower case ASCII char.
  * @param {string} str the char to check
- * @returns {boolean} true if the char is not a lower case ASCII char
+ * @return {boolean} true if the char is not a lower case ASCII char
  */
 ilib.Locale._notLower = function(str) {
 	// do this with ASCII only so we don't have to depend on the CType functions
@@ -167,7 +167,7 @@ ilib.Locale._notLower = function(str) {
  * @private
  * Tell whether or not the str does not start with an upper case ASCII char.
  * @param {string} str the char to check
- * @returns {boolean} true if the char is a not an upper case ASCII char
+ * @return {boolean} true if the char is a not an upper case ASCII char
  */
 ilib.Locale._notUpper = function(str) {
 	// do this with ASCII only so we don't have to depend on the CType functions
@@ -181,7 +181,7 @@ ilib.Locale._notUpper = function(str) {
  * an ISO 639 language code.
  * 
  * @param {string} str the string to parse
- * @returns {boolean} true if the string could syntactically be a language code.
+ * @return {boolean} true if the string could syntactically be a language code.
  */
 ilib.Locale._isLanguageCode = function(str) {
 	if (typeof(str) === 'undefined' || str.length < 2 || str.length > 3) {
@@ -203,7 +203,7 @@ ilib.Locale._isLanguageCode = function(str) {
  * an ISO 639 language code.
  * 
  * @param {string} str the string to parse
- * @returns {boolean} true if the string could syntactically be a language code.
+ * @return {boolean} true if the string could syntactically be a language code.
  */
 ilib.Locale._isRegionCode = function (str) {
 	if (typeof(str) === 'undefined' || str.length !== 2) {
@@ -225,7 +225,7 @@ ilib.Locale._isRegionCode = function (str) {
  * an ISO 639 language code.
  * 
  * @param {string} str the string to parse
- * @returns {boolean} true if the string could syntactically be a language code.
+ * @return {boolean} true if the string could syntactically be a language code.
  */
 ilib.Locale._isScriptCode = function(str)
 {
@@ -245,7 +245,7 @@ ilib.Locale._isScriptCode = function(str)
 ilib.Locale.prototype = {
 	/**
 	 * Return the ISO 639 language code for this locale. 
-	 * @returns {string|undefined} the language code for this locale 
+	 * @return {string|undefined} the language code for this locale 
 	 */
 	getLanguage: function() {
 		return this.language;
@@ -253,7 +253,7 @@ ilib.Locale.prototype = {
 	
 	/**
 	 * Return the ISO 3166 region code for this locale.
-	 * @returns {string|undefined} the region code of this locale
+	 * @return {string|undefined} the region code of this locale
 	 */
 	getRegion: function() {
 		return this.region;
@@ -261,7 +261,7 @@ ilib.Locale.prototype = {
 	
 	/**
 	 * Return the ISO 15924 script code for this locale
-	 * @returns {string|undefined} the script code of this locale
+	 * @return {string|undefined} the script code of this locale
 	 */
 	getScript: function () {
 		return this.script;
@@ -269,7 +269,7 @@ ilib.Locale.prototype = {
 	
 	/**
 	 * Return the variant code for this locale
-	 * @returns {string|undefined} the variant code of this locale, if any
+	 * @return {string|undefined} the variant code of this locale, if any
 	 */
 	getVariant: function() {
 		return this.variant;
@@ -277,7 +277,7 @@ ilib.Locale.prototype = {
 	
 	/**
 	 * Return the whole locale specifier as a string.
-	 * @returns {string} the locale specifier
+	 * @return {string} the locale specifier
 	 */
 	getSpec: function() {
 		return this.spec;
@@ -287,7 +287,7 @@ ilib.Locale.prototype = {
 	 * Express this locale object as a string. Currently, this simply calls the getSpec
 	 * function to represent the locale as its specifier.
 	 * 
-	 * @returns {string} the locale specifier
+	 * @return {string} the locale specifier
 	 */
 	toString: function() {
 		return this.getSpec();
@@ -295,7 +295,7 @@ ilib.Locale.prototype = {
 	
 	/**
 	 * Return true if the the other locale is exactly equal to the current one.
-	 * @returns {boolean} whether or not the other locale is equal to the current one 
+	 * @return {boolean} whether or not the other locale is equal to the current one 
 	 */
 	equals: function(other) {
 		return this.language === other.language &&
@@ -306,7 +306,7 @@ ilib.Locale.prototype = {
 
 	/**
 	 * Return true if the current locale is the special pseudo locale.
-	 * @returns {boolean} true if the current locale is the special pseudo locale
+	 * @return {boolean} true if the current locale is the special pseudo locale
 	 */
 	isPseudo: function () {
 		return (this.language === 'xx' && this.region === 'XX');
@@ -327,7 +327,7 @@ ilib.Locale.locales = [
  * than the list of all available locales in the iLib repository. The
  * assembly tool will automatically fill in the list.
  * 
- * @returns {Array.<string>} this is an array of locale specs for which 
+ * @return {Array.<string>} this is an array of locale specs for which 
  * this iLib file has locale data for
  */
 ilib.Locale.getAvailableLocales = function () {

@@ -26,7 +26,7 @@
  * 
  * @param {Object} scope object that the method should operate on
  * @param {function(?)} method method to call
- * @returns {function(?)|undefined} function that calls the given method 
+ * @return {function(?)|undefined} function that calls the given method 
  * in the given scope with all of its arguments properly attached, or
  * undefined if there was a problem with the arguments
  */
@@ -165,7 +165,7 @@ ilib.mod = function (dividend, modulus) {
  * @param {*} object2 the object to merge
  * @param {string=} name1 name of the object being merged into
  * @param {string=} name2 name of the object being merged in
- * @returns {Object} the merged object
+ * @return {Object} the merged object
  */
 ilib.merge = function (object1, object2, name1, name2) {
 	var prop = undefined,
@@ -215,7 +215,7 @@ ilib.merge = function (object1, object2, name1, name2) {
  *  
  * @param {string} prefix prefix under ilib.data of the data to merge
  * @param {ilib.Locale} locale locale of the data being sought
- * @returns {Object?} the merged locale data
+ * @return {Object?} the merged locale data
  */
 ilib.mergeLocData = function (prefix, locale) {
 	var data = undefined;
@@ -352,7 +352,7 @@ ilib.mergeLocData = function (prefix, locale) {
  * 
  * @param {ilib.Locale} locale load the json files for this locale
  * @param {string?} basename the base name of each json file to load
- * @returns {Array.<string>} An array of relative path names
+ * @return {Array.<string>} An array of relative path names
  * for the json files that contain the locale data
  */
 ilib.getLocFiles = function(locale, basename) {
@@ -451,7 +451,7 @@ ilib.getLocFiles = function(locale, basename) {
  * Depends directive: !depends utils.js
  * 
  * @param {Object} obj the object to check
- * @returns {boolean} true if the given object has no properties, false otherwise
+ * @return {boolean} true if the given object has no properties, false otherwise
  */
 ilib.isEmpty = function (obj) {
 	var prop = undefined;
@@ -494,7 +494,7 @@ ilib.shallowCopy = function (source, target) {
  * Return the sign of the given number. If the sign is negative, this function
  * returns -1. If the sign is positive or zero, this function returns 1.
  * @param {number} num the number to test
- * @returns {number} -1 if the number is negative, and 1 otherwise
+ * @return {number} -1 if the number is negative, and 1 otherwise
  */
 ilib.signum = function (num) {
 	var n = num;
@@ -514,7 +514,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	floor: function (num) {
 		return Math.floor(num);
@@ -523,7 +523,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	ceiling: function (num) {
 		return Math.ceil(num);
@@ -532,7 +532,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	down: function (num) {
 		return (num < 0) ? Math.ceil(num) : Math.floor(num);
@@ -541,7 +541,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	up: function (num) {
 		return (num < 0) ? Math.floor(num) : Math.ceil(num);
@@ -550,7 +550,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	halfup: function (num) {
 		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
@@ -559,7 +559,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	halfdown: function (num) {
 		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
@@ -568,7 +568,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	halfeven: function (num) {
 		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
@@ -577,7 +577,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	halfodd: function (num) {
 		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
@@ -596,10 +596,11 @@ ilib._roundFnc = {
  * @param {Object} object The class attempting to load data. The cache is stored inside of here.
  * @param {ilib.Locale} locale The locale to use to find or load the data.
  * @param {string} name The name of the locale data to load.
- * @param {boolean} sync Whether or not to load the data synchronously
+ * @param {boolean} sync Whether or not to load the data synchronouslyo
+ * @param {Object} params An object with parameters to pass to the loader function
  * @param {function(?)=} callback Call back function to call when the data is available.
  */
-ilib.loadData = function(object, locale, name, sync, callback) {
+ilib.loadData = function(object, locale, name, sync, params, callback) {
 	if (!object.cache) {
 		object.cache = {};
 	}
@@ -614,7 +615,7 @@ ilib.loadData = function(object, locale, name, sync, callback) {
 			// the data is not preassembled, so attempt to load it dynamically
 			var files = ilib.getLocFiles(locale, name);
 			
-			ilib._load(files, sync, ilib.bind(this, function(arr) {
+			ilib._load(files, sync, params, ilib.bind(this, function(arr) {
 				data = {};
 				for (var i = 0; i < arr.length; i++) {
 					if (typeof(arr[i]) !== 'undefined') {

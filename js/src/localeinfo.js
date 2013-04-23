@@ -43,6 +43,12 @@
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
  * If this copy of ilib is pre-assembled and all the data is already available, 
@@ -65,6 +71,7 @@ ilib.LocaleInfo = function(locale, options) {
 	
 	/* these are all the defaults. Essentially, en-US */
 	this.info = ilib.data.localeinfo;
+	this.loadParams = {};
 	
 	switch (typeof(locale)) {
 		case "string":
@@ -83,52 +90,27 @@ ilib.LocaleInfo = function(locale, options) {
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync == true);
 		}
+		
+		if (typeof(options.loadParams) !== 'undefined') {
+			this.loadParams = options.loadParams;
+		}
 	}
 
 	if (!ilib.LocaleInfo.cache) {
 		ilib.LocaleInfo.cache = {};
 	}
 
-	var spec = this.locale.getSpec().replace(/-/g, "_");
-	if (typeof(ilib.LocaleInfo.cache[spec]) === 'undefined') {
-		this.info = ilib.mergeLocData("localeinfo", this.locale);
-		if (this.info) {
-			ilib.LocaleInfo.cache[spec] = this.info;
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		} else if (typeof(ilib._load) === 'function') {
-			// locale is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles(this.locale, "localeinfo");
-			
-			ilib._load(files, sync, ilib.bind(this, function(arr) {
-				this.info = {};
-				for (var i = 0; i < arr.length; i++) {
-					if (typeof(arr[i]) !== 'undefined') {
-						this.info = ilib.merge(this.info, arr[i]);
-					}
-				}
-	
-				ilib.LocaleInfo.cache[spec] = this.info;
-				
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}
-			}));
-		} else {
-			// no data other than the generic shared data
-			this.info = ilib.data.localeinfo;
-			ilib.LocaleInfo.cache[spec] = this.info;
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
+	ilib.loadData(ilib.LocaleInfo, this.locale, "localeinfo", sync, this.loadParams, ilib.bind(this, function (info) {
+		if (!info) {
+			info = ilib.data.localeinfo;
+			var spec = this.locale.getSpec().replace(/-/g, "_");
+			ilib.LocaleInfo.cache[spec] = info;
 		}
-	} else {
-		this.info = ilib.LocaleInfo.cache[spec];
+		this.info = info;
 		if (options && typeof(options.onLoad) === 'function') {
 			options.onLoad(this);
 		}
-	}
+	}));
 };
 
 ilib.LocaleInfo.prototype = {

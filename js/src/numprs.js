@@ -201,7 +201,7 @@ ilib.Number = function (str, options) {
 ilib.Number.prototype = {
 	/**
 	 * Return the locale for this formatter instance.
-	 * @returns {ilib.Locale} the locale instance for this formatter
+	 * @return {ilib.Locale} the locale instance for this formatter
 	 */
 	getLocale: function () {
 		return this.locale;

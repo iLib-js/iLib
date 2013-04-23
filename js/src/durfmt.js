@@ -269,7 +269,7 @@ ilib.DurFmt.complist = {
  * than "1 day, 9 hours".
  * 
  * @param {Object} components date/time components to be formatted into a duration string
- * @returns {ilib.String} a string with the duration formatted according to the style and 
+ * @return {ilib.String} a string with the duration formatted according to the style and 
  * locale set up for this formatter instance. If the components parameter is empty or 
  * undefined, an empty string is returned.
  */
@@ -310,7 +310,7 @@ ilib.DurFmt.prototype.format = function (components) {
  * locale was not given as parameter to the constructor, this method returns the default
  * locale of the system.
  * 
- * @returns {ilib.Locale} locale that this duration formatter was constructed with
+ * @return {ilib.Locale} locale that this duration formatter was constructed with
  */
 ilib.DurFmt.prototype.getLocale = function () {
 	return this.locale;
@@ -321,7 +321,7 @@ ilib.DurFmt.prototype.getLocale = function () {
  * length was not given as parameter to the constructor, this method returns the default
  * length. Valid values are "short", "medium", "long", and "full".
  * 
- * @returns {string} length that this duration formatter was constructed with
+ * @return {string} length that this duration formatter was constructed with
  */
 ilib.DurFmt.prototype.getLength = function () {
 	return this.length;
@@ -331,7 +331,7 @@ ilib.DurFmt.prototype.getLength = function () {
  * Return the style that was used to construct this duration formatter object. Returns
  * one of "text" or "clock".
  * 
- * @returns {string} style that this duration formatter was constructed with
+ * @return {string} style that this duration formatter was constructed with
  */
 ilib.DurFmt.prototype.getStyle = function () {
 	return this.style;

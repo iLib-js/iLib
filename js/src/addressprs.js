@@ -77,6 +77,12 @@ ctype.isdigit.js
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
  * When an address cannot be parsed properly, the entire address will be placed
@@ -85,9 +91,12 @@ ctype.isdigit.js
  * When the freeformAddress is another ilib.Address, this will act like a copy
  * constructor.<p>
  * 
+ * Depends directive: !depends addressprs.js
+ * 
+ * @dict
  * @param {string|ilib.Address} freeformAddress free-form address to parse, or a
  * javascript object containing the fields
- * @params {Object} options options to the parser
+ * @param {Object} options options to the parser
  */
 ilib.Address = function (freeformAddress, options) {
 	var address;
@@ -97,6 +106,7 @@ ilib.Address = function (freeformAddress, options) {
 	}
 
 	this.sync = true;
+	this.loadParams = {};
 	
 	if (options) {
 		if (options.locale) {
@@ -106,42 +116,57 @@ ilib.Address = function (freeformAddress, options) {
 		if (typeof(options.sync) !== 'undefined') {
 			this.sync = (options.sync == true);
 		}
+		
+		if (options.loadParams) {
+			this.loadParams = options.loadParams;
+		}
 	}
 
 	this.locale = this.locale || new ilib.Locale();
 	// initialize from an already parsed object
 	if (typeof(freeformAddress) === 'object') {
 		/**
-		 * @type {string|undefined} The street address, including house numbers and all
+		 * The street address, including house numbers and all.
+		 * @expose
+		 * @type {string|undefined} 
 		 */
 		this.streetAddress = freeformAddress.streetAddress;
 		/**
-		 * @type {string|undefined} The locality of this address (usually a city or town) 
+		 * The locality of this address (usually a city or town).
+		 * @expose
+		 * @type {string|undefined} 
 		 */
 		this.locality = freeformAddress.locality;
 		/**
-		 * @type {string|undefined} The region (province, canton, prefecture, state, etc.) where
-		 * the address is located.
+		 * The region (province, canton, prefecture, state, etc.) where the address is located.
+		 * @expose
+		 * @type {string|undefined} 
 		 */
 		this.region = freeformAddress.region;
 		/**
-		 * @type {string|undefined} Country-specific code for expediting mail. In the US,
-		 * this is the zip code.
+		 * Country-specific code for expediting mail. In the US, this is the zip code.
+		 * @expose
+		 * @type {string|undefined} 
 		 */
 		this.postalCode = freeformAddress.postalCode;
 		/**
-		 * @type {string|undefined} The country of the address.
+		 * The country of the address.
+		 * @expose
+		 * @type {string|undefined}
 		 */
 		this.country = freeformAddress.country;
 		if (freeformAddress.countryCode) {
 			/**
-			 * @type {string} The ISO 3166 2-letter region code for the destination
-			 * country in this address.
+			 * The 2 or 3 letter ISO 3166 region code for the destination country in this address.
+			 * @expose
+			 * @type {string} 
+			 * 
 			 */
 			this.countryCode = freeformAddress.countryCode;
 		}
 		if (freeformAddress.format) {
 			/**
+			 * @protected
 			 * @type {string}
 			 */
 			this.format = freeformAddress.format;
@@ -160,7 +185,7 @@ ilib.Address = function (freeformAddress, options) {
 	if (typeof(ilib.Address.ctry) === 'undefined') {
 		ilib.Address.ctry = {}; // make sure not to conflict with the address info
 	}
-	ilib.loadData(ilib.Address.ctry, this.locale, "ctrynames", this.sync,
+	ilib.loadData(ilib.Address.ctry, this.locale, "ctrynames", this.sync, this.loadParams, 
 		/** @type function(Object=):undefined */
 		ilib.bind(this, /** @type function() */ function(ctrynames) {
 			this._determineDest(ctrynames, options.onLoad);
@@ -241,11 +266,11 @@ ilib.Address.prototype = {
 	 * @param {function(ilib.Address):undefined} callback
 	 */
 	_init: function(callback) {
-		ilib.loadData(ilib.Address, new ilib.Locale(this.countryCode), "address", this.sync, 
+		ilib.loadData(ilib.Address, new ilib.Locale(this.countryCode), "address", this.sync, this.loadParams, 
 				/** @type function(Object=):undefined */ ilib.bind(this, function(info) {
 			if (!info || ilib.isEmpty(info)) {
 				// load the "unknown" locale instead
-				ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, 
+				ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, this.loadParams, 
 						/** @type function(Object=):undefined */ ilib.bind(this, function(info) {
 					this.info = info;
 					this._parseAddress();

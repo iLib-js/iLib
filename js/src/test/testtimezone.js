@@ -923,7 +923,7 @@ function testTZGetTimeZoneForLocaleUnknown() {
     assertEquals("Etc/UTC", tz.getId());
 }
 
-function mockLoader (paths, sync, callback) {
+function mockLoader (paths, sync, params, callback) {
 	var data = [];
 	
 	data.push(ilib.data.localeinfo); // for the generic, shared stuff

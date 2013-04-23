@@ -62,7 +62,7 @@ ilib.Cal = function() {
  * 
  * @param {Object=} options options controlling the construction of this instance, or
  * undefined to use the default options
- * @returns an instance of a calendar object of the appropriate type
+ * @return {ilib.Cal} an instance of a calendar object of the appropriate type
  */
 ilib.Cal.newInstance = function (options) {
 	var locale = options && options.locale,
@@ -94,7 +94,7 @@ ilib.Cal._constructors = {};
 /**
  * Return an array of known calendar types that the factory method can instantiate.
  * 
- * @returns {Array.<string>} an array of calendar types
+ * @return {Array.<string>} an array of calendar types
  */
 ilib.Cal.getCalendars = function () {
 	var arr = [],
@@ -113,7 +113,7 @@ ilib.Cal.prototype = {
 	/**
 	 * Return the type of this calendar.
 	 * 
-	 * @returns {string} the name of the type of this calendar 
+	 * @return {string} the name of the type of this calendar 
 	 */
 	getType: function() {
 		throw "Cannot call methods of abstract class ilib.Cal";
@@ -126,7 +126,7 @@ ilib.Cal.prototype = {
 	 * where 1=first month, 2=second month, etc.
 	 * 
 	 * @param {number} year a year for which the number of months is sought
-	 * @returns {number} The number of months in the given year
+	 * @return {number} The number of months in the given year
 	 */
 	getNumMonths: function(year) {
 		throw "Cannot call methods of abstract class ilib.Cal";
@@ -139,7 +139,7 @@ ilib.Cal.prototype = {
 	 * 
 	 * @param {number} month the month for which the length is sought
 	 * @param {number} year the year within which that month can be found
-	 * @returns {number} the number of days within the given month in the given year
+	 * @return {number} the number of days within the given month in the given year
 	 */
 	getMonLength: function(month, year) {
 		throw "Cannot call methods of abstract class ilib.Cal";
@@ -150,7 +150,7 @@ ilib.Cal.prototype = {
 	 * The year parameter may be given as a number.
 	 * 
 	 * @param {number} year the year for which the leap year information is being sought
-	 * @returns {boolean} true if the given year is a leap year
+	 * @return {boolean} true if the given year is a leap year
 	 */
 	isLeapYear: function(year) {
 		throw "Cannot call methods of abstract class ilib.Cal";

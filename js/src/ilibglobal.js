@@ -25,7 +25,7 @@ var ilib = ilib || {};
 /**
  * Return the current version of ilib.
  * 
- * @returns {string} a version string for this instance of ilib
+ * @return {string} a version string for this instance of ilib
  */
 ilib.getVersion = function () {
     // increment this for each release
@@ -44,9 +44,39 @@ ilib.data = {
     }
 };
 
-window["ilib"] = ilib;
+if (typeof(window) !== 'undefined') {
+	window["ilib"] = ilib;
+}
+
+// export ilib for use as a module in nodejs
+if (typeof(exports) !== 'undefined') {
+	exports.ilib = ilib;
+}
 
 /**
+ * @private
+ * @static
+ * Return the name of the platform
+ */
+ilib._getPlatform = function () {
+	if (!ilib._platform) {
+		if (typeof(window) !== 'undefined' && typeof(PalmSystem) === 'undefined') {
+			ilib._platform = "browser";
+		} else if (typeof(PalmSystem) !== 'undefined') {
+			ilib._platform = "webos";
+		} else if (typeof(environment) !== 'undefined') {
+			ilib._platform = "rhino";
+		} else if (typeof(process) !== 'undefined') {
+			ilib._platform = "nodejs";
+		} else {
+			ilib._platform = "unknown";
+		}
+	}	
+	return ilib._platform;
+};
+
+/**
+ * @static
  * Sets the default locale for all of ilib. This locale will be used
  * when no explicit locale is passed to any ilib class. If the default
  * locale is not set, ilib will attempt to use the locale of the
@@ -62,6 +92,7 @@ ilib.setLocale = function (spec) {
 };
 
 /**
+ * @static
  * Return the default locale for all of ilib if one has been set. This 
  * locale will be used when no explicit locale is passed to any ilib 
  * class. If the default
@@ -71,7 +102,7 @@ ilib.setLocale = function (spec) {
  * 
  * Depends directive: !depends ilibglobal.js 
  * 
- * @returns {string} the locale specifier for the default locale
+ * @return {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
 	if (typeof(ilib.locale) === 'undefined') {
@@ -113,6 +144,7 @@ ilib.getLocale = function () {
 };
 
 /**
+ * @static
  * Sets the default time zone for all of ilib. This time zone will be used when
  * no explicit time zone is passed to any ilib class. If the default time zone
  * is not set, ilib will attempt to use the time zone of the
@@ -128,6 +160,7 @@ ilib.setTimeZone = function (tz) {
 };
 
 /**
+ * @static
  * Return the default time zone for all of ilib if one has been set. This 
  * time zone will be used when no explicit time zone is passed to any ilib 
  * class. If the default time zone
@@ -137,7 +170,7 @@ ilib.setTimeZone = function (tz) {
  * 
  * Depends directive: !depends ilibglobal.js
  * 
- * @returns {string} the default time zone for ilib
+ * @return {string} the default time zone for ilib
  */
 ilib.getTimeZone = function() {
 	if (typeof(ilib.tz) === 'undefined') {
@@ -162,6 +195,7 @@ ilib.getTimeZone = function() {
 };
 
 /**
+ * @static
  * Define a callback function for loading missing locale data or resources.
  * If this copy of ilib is assembled without including the required locale data
  * or resources, then that data can be lazy loaded dynamically when it is 
@@ -177,14 +211,18 @@ ilib.getTimeZone = function() {
  * The expected API for the call back is:
  * 
  * <pre>
- * function(paths, callback) {}
+ * function(paths, sync, params, callback) {}
  * </pre>
  * 
  * The first parameter to the callback
  * function, paths, is an array of relative paths within the ilib dir structure for the 
  * requested data. These paths will already have the locale spec integrated 
  * into them, so no further tweaking needs to happen to load the data. Simply
- * load the named files. The second parameter, callback,
+ * load the named files. The second
+ * parameter tells the loader whether to load the files synchronously or asynchronously.
+ * If the sync parameters is false, then the onLoad function must also be specified.
+ * The third parameter gives extra parameters to the loader passed from the calling
+ * code. This may contain any property/value pairs.  The last parameter, callback,
  * is a callback function to call when all of the data is finishing loading. Make
  * sure to call the callback with the context of "this" so that the caller has their 
  * context back again.<p>
@@ -220,7 +258,7 @@ ilib.getTimeZone = function() {
  *     }
  * }
  * // bind to "this" so that "this" is relative to your own instance
- * ilib.setLoaderCallback(ilib.bind(this, function(paths, sync, callback) {
+ * ilib.setLoaderCallback(ilib.bind(this, function(paths, sync, params, callback) {
  *    if (sync) {
  *        var ret = [];
  *        // synchronous
@@ -238,9 +276,9 @@ ilib.getTimeZone = function() {
  * }));
  * </pre>
  * 
- * @param {function(Array.<string>,Boolean,function(Object))} loader function to call to 
+ * @param {function(Array.<string>,Boolean,Object,function(Object))} loader function to call to 
  * load the requested data.
- * @returns {boolean} true if the loader was installed correctly, or false
+ * @return {boolean} true if the loader was installed correctly, or false
  * if not
  */
 ilib.setLoaderCallback = function(loader) {

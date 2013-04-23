@@ -292,7 +292,7 @@ function testLocaleInfoGetPercentageSymbol2() {
     assertEquals("%", info.getPercentageSymbol());
 }
 
-function mockLoader(paths, sync, callback) {
+function mockLoader(paths, sync, params, callback) {
 	var data = [];
 	
 	data.push(ilib.data.localeinfo); // for the generic, shared stuff

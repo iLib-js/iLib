@@ -151,7 +151,7 @@ ilib.Currency = function (options) {
  * @static
  * Return an array of the ids for all ISO 4217 currencies that
  * this copy of ilib knows about.
- * @returns {Array.<string>} an array of currency ids that this copy of ilib knows about.
+ * @return {Array.<string>} an array of currency ids that this copy of ilib knows about.
  */
 ilib.Currency.getAvailableCurrencies = function() {
 	var ret = [],
@@ -172,7 +172,7 @@ ilib.Currency.getAvailableCurrencies = function() {
 ilib.Currency.prototype = {
 	/**
 	 * Return the ISO 4217 currency code for this instance.
-	 * @returns {string} the ISO 4217 currency code for this instance
+	 * @return {string} the ISO 4217 currency code for this instance
 	 */
 	getCode: function () {
 		return this.code;
@@ -181,7 +181,7 @@ ilib.Currency.prototype = {
 	/**
 	 * Return the default number of fraction digits that is typically used
 	 * with this type of currency.
-	 * @returns {number} the number of fraction digits for this currency
+	 * @return {number} the number of fraction digits for this currency
 	 */
 	getFractionDigits: function () {
 		return this.fractionDigits;
@@ -189,7 +189,7 @@ ilib.Currency.prototype = {
 	
 	/**
 	 * Return the sign commonly used to represent this currency.
-	 * @returns {string} the sign commonly used to represent this currency
+	 * @return {string} the sign commonly used to represent this currency
 	 */
 	getSign: function () {
 		return this.sign;
@@ -197,7 +197,7 @@ ilib.Currency.prototype = {
 	
 	/**
 	 * Return the name of the currency in English.
-	 * @returns {string} the name of the currency in English
+	 * @return {string} the name of the currency in English
 	 */
 	getName: function () {
 		return this.name;
@@ -208,7 +208,7 @@ ilib.Currency.prototype = {
 	 * included a locale property in order to find the currency that is appropriate
 	 * for that locale, then the locale is returned here. If the options did not
 	 * include a locale, then this method returns undefined.
-	 * @returns {ilib.Locale} the locale used in the constructor of this instance,
+	 * @return {ilib.Locale} the locale used in the constructor of this instance,
 	 * or undefined if no locale was given in the constructor
 	 */
 	getLocale: function () {

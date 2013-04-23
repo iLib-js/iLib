@@ -895,7 +895,7 @@ function testResBundleContainsKeyBothUndefined() {
 
 function testResBundleConstructAsynchPreassembled() {
 	var onloadcalled = false;
-	ilib.ResBundle.cache.resources = undefined;
+	ilib.ResBundle.resources = undefined;
     var rb = new ilib.ResBundle({
     	locale: "fr-CA-govt",
     	sync: false,
@@ -934,7 +934,7 @@ function testResBundleConstructAsynchPreassembledCached() {
     assertTrue(onloadcalled);
 }
 
-function mockLoader(paths, sync, callback) {
+function mockLoader(paths, sync, params, callback) {
 	var data = [];
 	
 	function getResName(path) {

@@ -1973,7 +1973,7 @@ function testDateFmtGetDefault() {
     assertEquals("d/M/yy", fmt.getTemplate());
 };
 
-function mockLoader(paths, sync, callback) {
+function mockLoader(paths, sync, params, callback) {
 	var data = [];
 	
 	if (paths[0].indexOf("localeinfo") !== -1) {

@@ -42,7 +42,7 @@ ilib.JulianDay.prototype = {
 	 * Return the integral portion of this Julian Day instance. This corresponds to
 	 * the number of days since the beginning of the epoch.
 	 * 
-	 * @returns {number} the integral portion of this Julian Day
+	 * @return {number} the integral portion of this Julian Day
 	 */
 	getDays: function() {
 		return this.days;
@@ -82,7 +82,7 @@ ilib.JulianDay.prototype = {
 	
 	/** 
 	 * Return the Julian Day expressed as a floating point number.
-	 * @returns {number} the Julian Day as a number
+	 * @return {number} the Julian Day as a number
 	 */
 	getDate: function () {
 		return this.jd;

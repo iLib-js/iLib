@@ -62,7 +62,7 @@ ilib.Cal.Gregorian.monthLengths = [
  * where 1=first month, 2=second month, etc.
  * 
  * @param {number} year a year for which the number of months is sought
- * @returns {number} The number of months in the given year
+ * @return {number} The number of months in the given year
  */
 ilib.Cal.Gregorian.prototype.getNumMonths = function(year) {
 	return 12;
@@ -75,7 +75,7 @@ ilib.Cal.Gregorian.prototype.getNumMonths = function(year) {
  * 
  * @param {number} month the month for which the length is sought
  * @param {number} year the year within which that month can be found
- * @returns {number} the number of days within the given month in the given year
+ * @return {number} the number of days within the given month in the given year
  */
 ilib.Cal.Gregorian.prototype.getMonLength = function(month, year) {
 	if (month !== 2 || !this.isLeapYear(year)) {
@@ -89,7 +89,7 @@ ilib.Cal.Gregorian.prototype.getMonLength = function(month, year) {
  * Return true if the given year is a leap year in the Gregorian calendar.
  * The year parameter may be given as a number, or as a GregDate object.
  * @param {number|ilib.Date.GregDate} year the year for which the leap year information is being sought
- * @returns {boolean} true if the given year is a leap year
+ * @return {boolean} true if the given year is a leap year
  */
 ilib.Cal.Gregorian.prototype.isLeapYear = function(year) {
 	var y = (typeof(year) === 'number' ? year : year.getYears());
@@ -100,7 +100,7 @@ ilib.Cal.Gregorian.prototype.isLeapYear = function(year) {
 /**
  * Return the type of this calendar.
  * 
- * @returns {string} the name of the type of this calendar 
+ * @return {string} the name of the type of this calendar 
  */
 ilib.Cal.Gregorian.prototype.getType = function() {
 	return this.type;
@@ -111,7 +111,7 @@ ilib.Cal.Gregorian.prototype.getType = function() {
  * options.
  * @param {Object} options options controlling the construction of 
  * the date instance
- * @returns {ilib.Date} a date appropriate for this calendar type
+ * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Gregorian.prototype.newDateInstance = function (options) {
 	return new ilib.Date.GregDate(options);

@@ -40,7 +40,7 @@ ilib.ScriptInfo = function(script) {
  * @static
  * Return an array of all ISO 15924 4-letter identifier script identifiers that
  * this copy of ilib knows about.
- * @returns {Array.<string>} an array of all script identifiers that this copy of
+ * @return {Array.<string>} an array of all script identifiers that this copy of
  * ilib knows about
  */
 ilib.ScriptInfo.getAllScripts = function() {
@@ -61,7 +61,7 @@ ilib.ScriptInfo.prototype = {
 	/**
 	 * Return the 4-letter ISO 15924 identifier associated
 	 * with this script.
-	 * @returns {string} the 4-letter ISO code for this script
+	 * @return {string} the 4-letter ISO code for this script
 	 */
 	getCode: function () {
 		return this.info && this.script;
@@ -71,7 +71,7 @@ ilib.ScriptInfo.prototype = {
 	 * Get the ISO 15924 code number associated with this
 	 * script.
 	 * 
-	 * @returns {number} the ISO 15924 code number
+	 * @return {number} the ISO 15924 code number
 	 */
 	getCodeNumber: function () {
 		return this.info && this.info.nb || 0;
@@ -80,7 +80,7 @@ ilib.ScriptInfo.prototype = {
 	/**
 	 * Get the name of this script in English.
 	 * 
-	 * @returns {string} the name of this script in English
+	 * @return {string} the name of this script in English
 	 */
 	getName: function () {
 		return this.info && this.info.nm;
@@ -89,7 +89,7 @@ ilib.ScriptInfo.prototype = {
 	/**
 	 * Get the long identifier assciated with this script.
 	 * 
-	 * @returns {string} the long identifier of this script
+	 * @return {string} the long identifier of this script
 	 */
 	getLongCode: function () {
 		return this.info && this.info.lid;
@@ -100,7 +100,7 @@ ilib.ScriptInfo.prototype = {
 	 * in. Possible return values are "rtl" for right-to-left,
 	 * "ltr" for left-to-right, and "ttb" for top-to-bottom.
 	 * 
-	 * @returns {string} the usual direction that text in this script is
+	 * @return {string} the usual direction that text in this script is
 	 * written in
 	 */
 	getScriptDirection: function() {

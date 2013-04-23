@@ -51,7 +51,15 @@ addressprs.js
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
+ * 
+ * Depends directive: !depends addressfmt.js
  * 
  * @param {Object} options options that configure how this formatter should work
  * Returns a formatter instance that can format multiple addresses.
@@ -59,6 +67,7 @@ addressprs.js
 ilib.AddressFmt = function(options) {
 	this.sync = true;
 	this.styleName = 'default';
+	this.loadParams = {};
 	
 	if (options) {
 		if (options.locale) {
@@ -72,13 +81,17 @@ ilib.AddressFmt = function(options) {
 		if (options.style) {
 			this.styleName = options.style;
 		}
+		
+		if (options.loadParams) {
+			this.loadParams = options.loadParams;
+		}
 	}
 
 	// console.log("Creating formatter for region: " + this.locale.region);
-	ilib.loadData(ilib.Address, this.locale, "address", this.sync, /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
+	ilib.loadData(ilib.Address, this.locale, "address", this.sync, this.loadParams, /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
 		if (!info || ilib.isEmpty(info)) {
 			// load the "unknown" locale instead
-			ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
+			ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, this.loadParams, /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
 				this.info = info;
 				this._init();
 				if (typeof(options.onLoad) === 'function') {

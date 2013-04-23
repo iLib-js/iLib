@@ -33,8 +33,10 @@
  * <li><i>locale</i> - The locale of the strings to load. If not specified, the default
  * locale is the the default for the web page or app in which the bundle is 
  * being loaded.
+ * 
  * <li><i>name</i> - Base name of the resource bundle to load. If not specified the default
  * base name is "resources".
+ * 
  * <li><i>type</i> - Name the type of strings this bundle contains. Valid values are 
  * "xml", "html", "text", or "raw". The default is "text". If the type is "xml" or "html",
  * then XML/HTML entities and tags are not pseudo-translated. During a real translation, 
@@ -44,16 +46,29 @@
  * are. If the type is "xml", "html", or "text" types, then the replacement parameter names
  * are not pseudo-translated as well so that the output can be used for formatting with 
  * the ilib.String class. If the type is raw, all characters are pseudo-translated, 
- * including replacement parameters as well as XML/HTML tags and entities.  
+ * including replacement parameters as well as XML/HTML tags and entities.
+ * 
  * <li><i>lengthen</i> - when pseudo-translating the string, tell whether or not to 
  * automatically lengthen the string to simulate "long" languages such as German
  * or French. This is a boolean value. Default is false. 
- * <li>onLoad - a callback function to call when the resources are fully 
+ * 
+ * <li><i>onLoad</i> - a callback function to call when the resources are fully 
  * loaded. When the onLoad option is given, this class will attempt to
  * load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
  * The locale option may be given as a locale spec string or as an 
@@ -157,6 +172,7 @@ ilib.ResBundle = function (options) {
 	this.locale = new ilib.Locale();	// use the default locale
 	this.baseName = "strings";
 	this.type = "text";
+	this.loadParams = {};
 	
 	if (options) {
 		if (options.locale) {
@@ -175,58 +191,32 @@ ilib.ResBundle = function (options) {
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync == true);
 		}
+		
+		if (typeof(options.loadParams) !== 'undefined') {
+			this.loadParams = options.loadParams;
+		}
 	}
 	
 	this.map = {};
 
-	if (!ilib.ResBundle.cache) {
-		ilib.ResBundle.cache = {};
+	if (!ilib.ResBundle[this.baseName]) {
+		ilib.ResBundle[this.baseName] = {};
 	}
 
 	lookupLocale = this.locale.isPseudo() ? new ilib.Locale() : this.locale;
-	spec = lookupLocale.getSpec().replace(/-/g, '_');
 	
-	if (typeof(ilib.ResBundle.cache[this.baseName]) === 'undefined') {
-		ilib.ResBundle.cache[this.baseName] = {};
-	}
-	
-	if (typeof(ilib.ResBundle.cache[this.baseName][spec]) !== 'undefined') {
-		this.map = ilib.ResBundle.cache[this.baseName][spec];
+	ilib.loadData(ilib.ResBundle[this.baseName], lookupLocale, this.baseName, sync, this.loadParams, ilib.bind(this, function (map) {
+		if (!map) {
+			map = ilib.data[this.baseName] || {};
+			spec = lookupLocale.getSpec().replace(/-/g, '_');
+			ilib.ResBundle[this.baseName].cache[spec] = map;
+		}
+		this.map = map;
 		if (options && typeof(options.onLoad) === 'function') {
 			options.onLoad(this);
 		}
-	} else {
-		this.map = ilib.mergeLocData(this.baseName, lookupLocale);
-		if (this.map) {
-			ilib.ResBundle.cache[this.baseName][spec] = this.map;
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		} else if (typeof(ilib._load) === 'function') {
-			// locale is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles(this.locale, this.baseName);
-			
-			ilib._load(files, sync, ilib.bind(this, function(arr) {
-				this.map = {};
-				for (var i = 0; i < arr.length; i++) {
-					if (typeof(arr[i]) !== 'undefined') {
-						this.map = ilib.merge(this.map, arr[i]);
-					}
-				}
-				ilib.ResBundle.cache[this.baseName][spec] = this.map;
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}
-			}));
-		} else {
-			this.map = ilib.data[this.baseName] || {};
-			ilib.ResBundle.cache[this.baseName][spec] = this.map;
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		}
-	}	
-	
+	}));
+
 	// console.log("Merged resources " + this.locale.toString() + " are: " + JSON.stringify(this.map));
 	//if (!this.locale.isPseudo() && ilib.isEmpty(this.map)) {
 	//	console.log("Resources for bundle " + this.baseName + " locale " + this.locale.toString() + " are not available.");
@@ -236,7 +226,7 @@ ilib.ResBundle = function (options) {
 ilib.ResBundle.prototype = {
 	/**
 	 * Return the locale of this resource bundle.
-	 * @returns {ilib.Locale} the locale of this resource bundle object 
+	 * @return {ilib.Locale} the locale of this resource bundle object 
 	 */
 	getLocale: function () {
 		return this.locale;
@@ -245,7 +235,7 @@ ilib.ResBundle.prototype = {
 	/**
 	 * Return the name of this resource bundle. This corresponds to the name option
 	 * given to the constructor.
-	 * @returns {string} name of the the current instance
+	 * @return {string} name of the the current instance
 	 */
 	getName: function () {
 		return this.baseName;
@@ -254,7 +244,7 @@ ilib.ResBundle.prototype = {
 	/**
 	 * Return the type of this resource bundle. This corresponds to the type option
 	 * given to the constructor.
-	 * @returns {string} type of the the current instance
+	 * @return {string} type of the the current instance
 	 */
 	getType: function () {
 		return this.type;
@@ -395,7 +385,7 @@ ilib.ResBundle.prototype = {
 	 * @param {?string=} source the source string to translate
 	 * @param {?string=} key optional name of the key, if any
 	 * @param {?string=} escapeMode escape mode, if any
-	 * @returns {ilib.String|undefined} the translation of the given source/key or undefined 
+	 * @return {ilib.String|undefined} the translation of the given source/key or undefined 
 	 * if the translation is not found and the source is undefined 
 	 */
 	getString: function (source, key, escapeMode) {
@@ -433,7 +423,7 @@ ilib.ResBundle.prototype = {
 	 * 
 	 * @param {?string=} source source string to look up
 	 * @param {?string=} key key to look up
-	 * @returns {boolean} true if this bundle contains a translation for the key, and 
+	 * @return {boolean} true if this bundle contains a translation for the key, and 
 	 * false otherwise
 	 */
 	containsKey: function(source, key) {
@@ -464,7 +454,7 @@ ilib.ResBundle.prototype = {
 	 * general rule-of-thumb, resources should be as generic as possible in order to
 	 * cover as many locales as possible.
 	 * 
-	 * @returns {Object} returns the object that is the basis for this resources instance
+	 * @return {Object} returns the object that is the basis for this resources instance
 	 */
 	getResObj: function () {
 		return this.map;

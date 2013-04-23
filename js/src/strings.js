@@ -55,7 +55,7 @@ ilib.String = function (string) {
  * either high or low.
  * 
  * @param {string} ch character to check
- * @returns {boolean} true if the character is a surrogate
+ * @return {boolean} true if the character is a surrogate
  */
 ilib.String._isSurrogate = function (ch) {
 	var n = ch.charCodeAt(0);
@@ -69,7 +69,7 @@ ilib.String._isSurrogate = function (ch) {
  * Return true if the given character is a leading Jamo (Choseong) character.
  * 
  * @param {number} n code point to check
- * @returns {boolean} true if the character is a leading Jamo character, 
+ * @return {boolean} true if the character is a leading Jamo character, 
  * false otherwise
  */
 ilib.String._isJamoL = function (n) {
@@ -83,7 +83,7 @@ ilib.String._isJamoL = function (n) {
  * Return true if the given character is a vowel Jamo (Jungseong) character.
  * 
  * @param {number} n code point to check
- * @returns {boolean} true if the character is a vowel Jamo character, 
+ * @return {boolean} true if the character is a vowel Jamo character, 
  * false otherwise
  */
 ilib.String._isJamoV = function (n) {
@@ -97,7 +97,7 @@ ilib.String._isJamoV = function (n) {
  * Return true if the given character is a trailing Jamo (Jongseong) character.
  * 
  * @param {number} n code point to check
- * @returns {boolean} true if the character is a trailing Jamo character, 
+ * @return {boolean} true if the character is a trailing Jamo character, 
  * false otherwise
  */
 ilib.String._isJamoT = function (n) {
@@ -111,7 +111,7 @@ ilib.String._isJamoT = function (n) {
  * Return true if the given character is a precomposed Hangul character.
  * 
  * @param {number} n code point to check
- * @returns {boolean} true if the character is a precomposed Hangul character, 
+ * @return {boolean} true if the character is a precomposed Hangul character, 
  * false otherwise
  */
 ilib.String._isHangul = function (n) {
@@ -138,7 +138,7 @@ ilib.String._isHangul = function (n) {
  * an iterator to walk through the code points in a string. 
  * 
  * @param {number} codepoint UCS-4 code point to convert to a character
- * @returns {string} a string containing the character represented by the codepoint
+ * @return {string} a string containing the character represented by the codepoint
  */
 ilib.String.fromCodePoint = function (codepoint) {
 	if (codepoint < 0x10000) {
@@ -161,7 +161,7 @@ ilib.String.fromCodePoint = function (codepoint) {
  * character must be in the range of Hangul characters U+AC00 to U+D7A3.
  * 
  * @param {number} cp code point of a Korean Hangul character to decompose
- * @returns {string} the decomposed string of Jamo characters
+ * @return {string} the decomposed string of Jamo characters
  */
 ilib.String._decomposeHangul = function (cp) {
 	var sindex = cp - 0xAC00;
@@ -184,7 +184,7 @@ ilib.String._decomposeHangul = function (cp) {
  * 
  * @param {number} lead the code point of the lead Jamo character to compose
  * @param {number} trail the code point of the trailing Jamo character to compose
- * @returns {string} the composed Hangul character
+ * @return {string} the composed Hangul character
  */
 ilib.String._composeJamoLV = function (lead, trail) {
 	var lindex = lead - 0x1100;
@@ -201,7 +201,7 @@ ilib.String._composeJamoLV = function (lead, trail) {
  * 
  * @param {number} lead the code point of the lead Hangul character to compose
  * @param {number} trail the code point of the trailing Jamo T character to compose
- * @returns {string} the composed Hangul character
+ * @return {string} the composed Hangul character
  */
 ilib.String._composeJamoLVT = function (lead, trail) {
 	return ilib.String.fromCodePoint(lead + (trail - 0x11A7));
@@ -217,7 +217,7 @@ ilib.String._composeJamoLVT = function (lead, trail) {
  * @param {Object} canon the canonical mappings to apply
  * @param {Object=} compat the compatibility mappings to apply, or undefined
  * if only the canonical mappings are needed
- * @returns {string} the mapped character
+ * @return {string} the mapped character
  */
 ilib.String._expand = function (ch, canon, compat) {
 	var i, 
@@ -252,7 +252,7 @@ ilib.String._expand = function (ch, canon, compat) {
  
  * @param {string} lead leading character to compose
  * @param {string} trail the trailing character to compose
- * @returns {string} the fully composed character, or undefined if
+ * @return {string} the fully composed character, or undefined if
  * there is no composition for those two characters
  */
 ilib.String._compose = function (lead, trail) {
@@ -276,7 +276,7 @@ ilib.String._fncs = {
 	/**
 	 * @private
 	 * @param {Object} obj
-	 * @returns {string|undefined}
+	 * @return {string|undefined}
 	 */
 	firstProp: function (obj) {
 		for (var p in obj) {
@@ -291,7 +291,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} obj
 	 * @param {number} n
-	 * @returns {?}
+	 * @return {?}
 	 */
 	getValue: function (obj, n) {
 		if (typeof(obj) === 'object') {
@@ -308,7 +308,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {number} n
 	 * @param {Array.<number|Array.<number>>} range
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	matchRangeContinuous: function(n, range) {
 		for (var num in range) {
@@ -332,7 +332,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {number} n
 	 * @param {Array.<number|Array.<number>>} range
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	matchRange: function(n, range) {
 		if (Math.floor(n) !== n) {
@@ -345,7 +345,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	is: function(rule, n) {
 		var left = ilib.String._fncs.getValue(rule[0], n);
@@ -358,7 +358,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isnot: function(rule, n) {
 		return ilib.String._fncs.getValue(rule[0], n) != ilib.String._fncs.getValue(rule[1], n);
@@ -368,7 +368,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	inrange: function(rule, n) {
 		return ilib.String._fncs.matchRange(ilib.String._fncs.getValue(rule[0], n), rule[1]);
@@ -378,7 +378,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	notin: function(rule, n) {
 		return !ilib.String._fncs.matchRange(ilib.String._fncs.getValue(rule[0], n), rule[1]);
@@ -388,7 +388,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	within: function(rule, n) {
 		return ilib.String._fncs.matchRangeContinuous(ilib.String._fncs.getValue(rule[0], n), rule[1]);		
@@ -398,7 +398,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {number}
+	 * @return {number}
 	 */
 	mod: function(rule, n) {
 		return ilib.mod(ilib.String._fncs.getValue(rule[0], n), ilib.String._fncs.getValue(rule[1], n));
@@ -408,7 +408,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {number}
+	 * @return {number}
 	 */
 	n: function(rule, n) {
 		return n;
@@ -418,7 +418,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	or: function(rule, n) {
 		return ilib.String._fncs.getValue(rule[0], n) || ilib.String._fncs.getValue(rule[1], n);
@@ -427,7 +427,7 @@ ilib.String._fncs = {
 	/**
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	and: function(rule, n) {
 		return ilib.String._fncs.getValue(rule[0], n) && ilib.String._fncs.getValue(rule[1], n);
@@ -623,7 +623,7 @@ ilib.String.prototype = {
 	 * @param {Object} params The hash of parameter values that replace the replacement 
 	 * variables in the string
 	 * @throws "syntax error in choice format pattern: " if there is a syntax error
-	 * @returns {string} the formatted string
+	 * @return {string} the formatted string
 	 */
 	formatChoice: function(argIndex, params) {
 		var choices = this.str.split("|");
@@ -896,7 +896,7 @@ ilib.String.prototype = {
 	 * will be passed through to the output string unmodified.
 	 * 
 	 * @param {string} form The normalization form requested
-	 * @returns {ilib.String} a new instance of an ilib.String that has been normalized
+	 * @return {ilib.String} a new instance of an ilib.String that has been normalized
 	 * according to the requested form. The current instance is not modified.
 	 */
 	normalize: function (form) {
@@ -1037,7 +1037,7 @@ ilib.String.prototype = {
 	// delegates
 	/**
 	 * Same as String.toString()
-	 * @returns {string} this instance as regular Javascript string
+	 * @return {string} this instance as regular Javascript string
 	 */
 	toString: function () {
 		return this.str.toString();
@@ -1045,7 +1045,7 @@ ilib.String.prototype = {
 	
 	/**
 	 * Same as String.valueOf()
-	 * @returns {string} this instance as a regular Javascript string
+	 * @return {string} this instance as a regular Javascript string
 	 */
 	valueOf: function () {
 		return this.str.valueOf();
@@ -1054,7 +1054,7 @@ ilib.String.prototype = {
 	/**
 	 * Same as String.charAt()
 	 * @param {number} index the index of the character being sought
-	 * @returns {ilib.String} the character at the given index
+	 * @return {ilib.String} the character at the given index
 	 */
 	charAt: function(index) {
 		return new ilib.String(this.str.charAt(index));
@@ -1067,7 +1067,7 @@ ilib.String.prototype = {
 	 * If you would like to take account of those characters,
 	 * use codePointAt() instead.
 	 * @param {number} index the index of the character being sought
-	 * @returns {number} the character code of the character at the 
+	 * @return {number} the character code of the character at the 
 	 * given index in the string 
 	 */
 	charCodeAt: function(index) {
@@ -1077,7 +1077,7 @@ ilib.String.prototype = {
 	/**
 	 * Same as String.concat()
 	 * @param {string} strings strings to concatenate to the current one
-	 * @returns {ilib.String} a concatenation of the given strings
+	 * @return {ilib.String} a concatenation of the given strings
 	 */
 	concat: function(strings) {
 		return new ilib.String(this.str.concat(strings));
@@ -1088,7 +1088,7 @@ ilib.String.prototype = {
 	 * @param {string} searchValue string to search for
 	 * @param {number} start index into the string to start searching, or
 	 * undefined to search the entire string
-	 * @returns {number} index into the string of the string being sought,
+	 * @return {number} index into the string of the string being sought,
 	 * or -1 if the string is not found 
 	 */
 	indexOf: function(searchValue, start) {
@@ -1100,7 +1100,7 @@ ilib.String.prototype = {
 	 * @param {string} searchValue string to search for
 	 * @param {number} start index into the string to start searching, or
 	 * undefined to search the entire string
-	 * @returns {number} index into the string of the string being sought,
+	 * @return {number} index into the string of the string being sought,
 	 * or -1 if the string is not found 
 	 */
 	lastIndexOf: function(searchValue, start) {
@@ -1110,7 +1110,7 @@ ilib.String.prototype = {
 	/**
 	 * Same as String.match()
 	 * @param {string} regexp the regular expression to match
-	 * @returns {Array.<string>} an array of matches
+	 * @return {Array.<string>} an array of matches
 	 */
 	match: function(regexp) {
 		return this.str.match(regexp);
@@ -1120,7 +1120,7 @@ ilib.String.prototype = {
 	 * Same as String.replace()
 	 * @param {string} searchValue a regular expression to search for
 	 * @param {string} newValue the string to replace the matches with
-	 * @returns {ilib.String} a new string with all the matches replaced
+	 * @return {ilib.String} a new string with all the matches replaced
 	 * with the new value
 	 */
 	replace: function(searchValue, newValue) {
@@ -1130,7 +1130,7 @@ ilib.String.prototype = {
 	/**
 	 * Same as String.search()
 	 * @param {string} regexp the regular expression to search for
-	 * @returns {number} position of the match, or -1 for no match
+	 * @return {number} position of the match, or -1 for no match
 	 */
 	search: function(regexp) {
 		return this.str.search(regexp);
@@ -1141,7 +1141,7 @@ ilib.String.prototype = {
 	 * @param {number} start first character to include in the string
 	 * @param {number} end include all characters up to, but not including
 	 * the end character
-	 * @returns {ilib.String} a slice of the current string
+	 * @return {ilib.String} a slice of the current string
 	 */
 	slice: function(start, end) {
 		return new ilib.String(this.str.slice(start, end));
@@ -1153,7 +1153,7 @@ ilib.String.prototype = {
 	 * separations between the parts of the text
 	 * @param {number} limit maximum number of items in the final 
 	 * output array. Any items beyond that limit will be ignored.
-	 * @returns {Array.<string>} the parts of the current string split 
+	 * @return {Array.<string>} the parts of the current string split 
 	 * by the separator
 	 */
 	split: function(separator, limit) {
@@ -1166,7 +1166,7 @@ ilib.String.prototype = {
 	 * begin the returned substring
 	 * @param {number} length the number of characters to return after
 	 * the start character.
-	 * @returns {ilib.String} the requested substring 
+	 * @return {ilib.String} the requested substring 
 	 */
 	substr: function(start, length) {
 		return new ilib.String(this.str.substr(start, length));
@@ -1178,7 +1178,7 @@ ilib.String.prototype = {
 	 * begin the returned substring
 	 * @param {number} to the index where to stop the extraction. If
 	 * omitted, extracts the rest of the string
-	 * @returns {ilib.String} the requested substring 
+	 * @return {ilib.String} the requested substring 
 	 */
 	substring: function(from, to) {
 		return this.str.substring(from, to);
@@ -1187,7 +1187,7 @@ ilib.String.prototype = {
 	/**
 	 * Same as String.toLowerCase(). Note that this method is
 	 * not locale-sensitive. 
-	 * @returns {ilib.String} a string with the first character
+	 * @return {ilib.String} a string with the first character
 	 * lower-cased
 	 */
 	toLowerCase: function() {
@@ -1198,7 +1198,7 @@ ilib.String.prototype = {
 	 * Same as String.toUpperCase(). Note that this method is
 	 * not locale-sensitive. Use toLocaleUpperCase() instead
 	 * to get locale-sensitive behaviour. 
-	 * @returns {ilib.String} a string with the first character
+	 * @return {ilib.String} a string with the first character
 	 * upper-cased
 	 */
 	toUpperCase: function() {
@@ -1210,7 +1210,7 @@ ilib.String.prototype = {
 	 * Convert the character or the surrogate pair at the given
 	 * index into the string to a Unicode UCS-4 code point.
 	 * @param {number} index index into the string
-	 * @returns {number} code point of the character at the
+	 * @return {number} code point of the character at the
 	 * given index into the string
 	 */
 	_toCodePoint: function (index) {
@@ -1252,7 +1252,7 @@ ilib.String.prototype = {
 	 * returns true if the iterator has more code points to iterate through,
 	 * and next() which returns the next code point as a number.<p>
 	 * 
-	 * @returns {Object} an iterator 
+	 * @return {Object} an iterator 
 	 * that iterates through all the code points in the string
 	 */
 	iterator: function() {
@@ -1295,7 +1295,7 @@ ilib.String.prototype = {
 	 * returns true if the iterator has more characters to iterate through,
 	 * and next() which returns the next character.<p>
 	 * 
-	 * @returns {Object} an iterator 
+	 * @return {Object} an iterator 
 	 * that iterates through all the characters in the string
 	 */
 	charIterator: function() {
@@ -1330,7 +1330,7 @@ ilib.String.prototype = {
 	 * as an array of code points. If the index is beyond the end of the
 	 * array of code points or if the index is negative, -1 is returned.
 	 * @param {number} index index of the code point 
-	 * @returns {number} code point of the character at the given index into
+	 * @return {number} code point of the character at the given index into
 	 * the string
 	 */
 	codePointAt: function (index) {
@@ -1371,7 +1371,7 @@ ilib.String.prototype = {
 	 * the supplementary character planes. If your string contains no
 	 * characters in the supplementary planes, this method will return the
 	 * same thing as the length() method.
-	 * @returns {number} the number of code points in this string
+	 * @return {number} the number of code points in this string
 	 */
 	codePointLength: function () {
 		if (this.cpLength === -1) {

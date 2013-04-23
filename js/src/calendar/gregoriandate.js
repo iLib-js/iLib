@@ -187,7 +187,7 @@ ilib.Date.GregDate.epoch = 1721424.5;
  * Return the Rata Die (fixed day) number of the given date.
  * 
  * @param {Object} date the date components to calculate
- * @returns {number} the rd date as a number
+ * @return {number} the rd date as a number
  */
 ilib.Date.GregDate.prototype.calcRataDie = function(date) {
 	var years = 365 * (date.year - 1) +
@@ -216,7 +216,7 @@ ilib.Date.GregDate.prototype.calcRataDie = function(date) {
  * @private
  * Return the Rata Die (fixed day) number of this date.
  * 
- * @returns {number} the rd date as a number
+ * @return {number} the rd date as a number
  */
 ilib.Date.GregDate.prototype.getRataDie = function() {
 	return this.calcRataDie(this);
@@ -226,7 +226,7 @@ ilib.Date.GregDate.prototype.getRataDie = function() {
  * @private
  * Calculate date components for the given RD date.
  * @param {number} rd the RD date to calculate components for
- * @returns {Object} object containing the component fields
+ * @return {Object} object containing the component fields
  */
 ilib.Date.GregDate.prototype.calcComponents = function (rd) {
 	var days400,
@@ -373,7 +373,7 @@ ilib.Date.GregDate.prototype.setJulianDay = function (date) {
  * Return the day of the week of this date. The day of the week is encoded
  * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
  * 
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.GregDate.prototype.getDayOfWeek = function() {
 	var rd = Math.floor(this.getRataDie());
@@ -387,7 +387,7 @@ ilib.Date.GregDate.prototype.getDayOfWeek = function() {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.GregDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
 	return rd - ilib.mod(Math.floor(rd) - dayOfWeek, 7);
@@ -400,7 +400,7 @@ ilib.Date.GregDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.GregDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
 	return this.onOrBeforeRd(rd+6, dayOfWeek);
@@ -413,7 +413,7 @@ ilib.Date.GregDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.GregDate.prototype.beforeRd = function(rd, dayOfWeek) {
 	return this.onOrBeforeRd(rd-1, dayOfWeek);
@@ -426,7 +426,7 @@ ilib.Date.GregDate.prototype.beforeRd = function(rd, dayOfWeek) {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.GregDate.prototype.afterRd = function(rd, dayOfWeek) {
 	return this.onOrBeforeRd(rd+7, dayOfWeek);
@@ -436,7 +436,7 @@ ilib.Date.GregDate.prototype.afterRd = function(rd, dayOfWeek) {
  * @private
  * Return the rd of the first Sunday of the given ISO year.
  * @param {number} year the year for which the first Sunday is being sought
- * @returns the rd of the first Sunday of the ISO year
+ * @return the rd of the first Sunday of the ISO year
  */
 ilib.Date.GregDate.prototype.firstSunday = function (year) {
 	var jan1 = this.calcRataDie({
@@ -458,7 +458,7 @@ ilib.Date.GregDate.prototype.firstSunday = function (year) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week before the current date that is being sought
- * @returns {ilib.Date.GregDate} the date being sought
+ * @return {ilib.Date.GregDate} the date being sought
  */
 ilib.Date.GregDate.prototype.before = function (dow) {
 	return new ilib.Date.GregDate({rd: this.beforeRd(this.getRataDie(), dow)});
@@ -470,7 +470,7 @@ ilib.Date.GregDate.prototype.before = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week after the current date that is being sought
- * @returns {ilib.Date.GregDate} the date being sought
+ * @return {ilib.Date.GregDate} the date being sought
  */
 ilib.Date.GregDate.prototype.after = function (dow) {
 	return new ilib.Date.GregDate({rd: this.afterRd(this.getRataDie(), dow)});
@@ -482,7 +482,7 @@ ilib.Date.GregDate.prototype.after = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week on or before the current date that is being sought
- * @returns {ilib.Date.GregDate} the date being sought
+ * @return {ilib.Date.GregDate} the date being sought
  */
 ilib.Date.GregDate.prototype.onOrBefore = function (dow) {
 	return new ilib.Date.GregDate({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
@@ -494,7 +494,7 @@ ilib.Date.GregDate.prototype.onOrBefore = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week on or after the current date that is being sought
- * @returns {ilib.Date.GregDate} the date being sought
+ * @return {ilib.Date.GregDate} the date being sought
  */
 ilib.Date.GregDate.prototype.onOrAfter = function (dow) {
 	return new ilib.Date.GregDate({rd: this.onOrAfterRd(this.getRataDie(), dow)});
@@ -505,7 +505,7 @@ ilib.Date.GregDate.prototype.onOrAfter = function (dow) {
  * number ranges from 1 to 53, as some years have 53 weeks assigned to them, and most
  * only 52.
  * 
- * @returns {number} the week number for the current date
+ * @return {number} the week number for the current date
  */
 ilib.Date.GregDate.prototype.getWeekOfYear = function() {
 	var rd = Math.floor(this.getRataDie()),
@@ -530,7 +530,7 @@ ilib.Date.GregDate.prototype.getWeekOfYear = function() {
  * Return the ordinal day of the year. Days are counted from 1 and proceed linearly up to 
  * 365, regardless of months or weeks, etc. That is, January 1st is day 1, and 
  * December 31st is 365 in regular years, or 366 in leap years.
- * @returns {number} the ordinal day of the year
+ * @return {number} the ordinal day of the year
  */
 ilib.Date.GregDate.prototype.getDayOfYear = function() {
 	var cumulativeMap = this.cal.isLeapYear(this.year) ? 
@@ -552,7 +552,7 @@ ilib.Date.GregDate.prototype.getDayOfYear = function() {
  * 
  * @param {ilib.Locale|string} locale the locale or locale spec to use when figuring out 
  * the first day of the week
- * @returns {number} the ordinal number of the week within the current month
+ * @return {number} the ordinal number of the week within the current month
  */
 ilib.Date.GregDate.prototype.getWeekOfMonth = function(locale) {
 	var li = new ilib.LocaleInfo(locale),
@@ -583,7 +583,7 @@ ilib.Date.GregDate.prototype.getWeekOfMonth = function(locale) {
  * there is a year 0, so any years that are negative or zero are BCE. In the Julian
  * calendar, there is no year 0. Instead, the calendar goes straight from year -1 to 
  * 1.
- * @returns {number} 1 if this date is in the common era, -1 if it is before the 
+ * @return {number} 1 if this date is in the common era, -1 if it is before the 
  * common era 
  */
 ilib.Date.GregDate.prototype.getEra = function() {
@@ -598,7 +598,7 @@ ilib.Date.GregDate.prototype.getEra = function() {
  * encodes a date outside of that range, this method will return -1. This method
  * returns the time in the local time zone, not in UTC.
  * 
- * @returns {number} a number giving the unix time, or -1 if the date is outside the
+ * @return {number} a number giving the unix time, or -1 if the date is outside the
  * valid unix time range
  */
 ilib.Date.GregDate.prototype.getTime = function() {
@@ -644,7 +644,7 @@ ilib.Date.GregDate.prototype.setTime = function(millis) {
  * Return a Javascript Date object that is equivalent to this Gregorian date
  * object.
  * 
- * @returns {Date|undefined} a javascript Date object
+ * @return {Date|undefined} a javascript Date object
  */
 ilib.Date.GregDate.prototype.getJSDate = function() {
 	var unix = this.getTime();

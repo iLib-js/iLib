@@ -25,7 +25,7 @@ var ilib = ilib || {};
 /**
  * Return the current version of ilib.
  * 
- * @returns {string} a version string for this instance of ilib
+ * @return {string} a version string for this instance of ilib
  */
 ilib.getVersion = function () {
     // increment this for each release
@@ -44,9 +44,39 @@ ilib.data = {
     }
 };
 
-window["ilib"] = ilib;
+if (typeof(window) !== 'undefined') {
+	window["ilib"] = ilib;
+}
+
+// export ilib for use as a module in nodejs
+if (typeof(exports) !== 'undefined') {
+	exports.ilib = ilib;
+}
 
 /**
+ * @private
+ * @static
+ * Return the name of the platform
+ */
+ilib._getPlatform = function () {
+	if (!ilib._platform) {
+		if (typeof(window) !== 'undefined' && typeof(PalmSystem) === 'undefined') {
+			ilib._platform = "browser";
+		} else if (typeof(PalmSystem) !== 'undefined') {
+			ilib._platform = "webos";
+		} else if (typeof(environment) !== 'undefined') {
+			ilib._platform = "rhino";
+		} else if (typeof(process) !== 'undefined') {
+			ilib._platform = "nodejs";
+		} else {
+			ilib._platform = "unknown";
+		}
+	}	
+	return ilib._platform;
+};
+
+/**
+ * @static
  * Sets the default locale for all of ilib. This locale will be used
  * when no explicit locale is passed to any ilib class. If the default
  * locale is not set, ilib will attempt to use the locale of the
@@ -62,6 +92,7 @@ ilib.setLocale = function (spec) {
 };
 
 /**
+ * @static
  * Return the default locale for all of ilib if one has been set. This 
  * locale will be used when no explicit locale is passed to any ilib 
  * class. If the default
@@ -71,7 +102,7 @@ ilib.setLocale = function (spec) {
  * 
  * Depends directive: !depends ilibglobal.js 
  * 
- * @returns {string} the locale specifier for the default locale
+ * @return {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
 	if (typeof(ilib.locale) === 'undefined') {
@@ -113,6 +144,7 @@ ilib.getLocale = function () {
 };
 
 /**
+ * @static
  * Sets the default time zone for all of ilib. This time zone will be used when
  * no explicit time zone is passed to any ilib class. If the default time zone
  * is not set, ilib will attempt to use the time zone of the
@@ -128,6 +160,7 @@ ilib.setTimeZone = function (tz) {
 };
 
 /**
+ * @static
  * Return the default time zone for all of ilib if one has been set. This 
  * time zone will be used when no explicit time zone is passed to any ilib 
  * class. If the default time zone
@@ -137,7 +170,7 @@ ilib.setTimeZone = function (tz) {
  * 
  * Depends directive: !depends ilibglobal.js
  * 
- * @returns {string} the default time zone for ilib
+ * @return {string} the default time zone for ilib
  */
 ilib.getTimeZone = function() {
 	if (typeof(ilib.tz) === 'undefined') {
@@ -162,6 +195,7 @@ ilib.getTimeZone = function() {
 };
 
 /**
+ * @static
  * Define a callback function for loading missing locale data or resources.
  * If this copy of ilib is assembled without including the required locale data
  * or resources, then that data can be lazy loaded dynamically when it is 
@@ -177,14 +211,18 @@ ilib.getTimeZone = function() {
  * The expected API for the call back is:
  * 
  * <pre>
- * function(paths, callback) {}
+ * function(paths, sync, params, callback) {}
  * </pre>
  * 
  * The first parameter to the callback
  * function, paths, is an array of relative paths within the ilib dir structure for the 
  * requested data. These paths will already have the locale spec integrated 
  * into them, so no further tweaking needs to happen to load the data. Simply
- * load the named files. The second parameter, callback,
+ * load the named files. The second
+ * parameter tells the loader whether to load the files synchronously or asynchronously.
+ * If the sync parameters is false, then the onLoad function must also be specified.
+ * The third parameter gives extra parameters to the loader passed from the calling
+ * code. This may contain any property/value pairs.  The last parameter, callback,
  * is a callback function to call when all of the data is finishing loading. Make
  * sure to call the callback with the context of "this" so that the caller has their 
  * context back again.<p>
@@ -219,7 +257,8 @@ ilib.getTimeZone = function() {
  *        });
  *     }
  * }
- * ilib.setLoaderCallback(function(paths, sync, callback) {
+ * // bind to "this" so that "this" is relative to your own instance
+ * ilib.setLoaderCallback(ilib.bind(this, function(paths, sync, params, callback) {
  *    if (sync) {
  *        var ret = [];
  *        // synchronous
@@ -234,12 +273,12 @@ ilib.getTimeZone = function() {
  *    // asynchronous
  *    var results = [];
  *    loadFiles(this, paths, results, callback);
- * }.bind(this)); // bind to "this" so that "this" is relative to your own instance
+ * }));
  * </pre>
  * 
- * @param {function(Array.<string>,Boolean,function(Object))} loader function to call to 
+ * @param {function(Array.<string>,Boolean,Object,function(Object))} loader function to call to 
  * load the requested data.
- * @returns {boolean} true if the loader was installed correctly, or false
+ * @return {boolean} true if the loader was installed correctly, or false
  * if not
  */
 ilib.setLoaderCallback = function(loader) {
@@ -408,7 +447,7 @@ ilib.Locale = function(language, region, variant, script) {
  * @private
  * Tell whether or not the str does not start with a lower case ASCII char.
  * @param {string} str the char to check
- * @returns {boolean} true if the char is not a lower case ASCII char
+ * @return {boolean} true if the char is not a lower case ASCII char
  */
 ilib.Locale._notLower = function(str) {
 	// do this with ASCII only so we don't have to depend on the CType functions
@@ -420,7 +459,7 @@ ilib.Locale._notLower = function(str) {
  * @private
  * Tell whether or not the str does not start with an upper case ASCII char.
  * @param {string} str the char to check
- * @returns {boolean} true if the char is a not an upper case ASCII char
+ * @return {boolean} true if the char is a not an upper case ASCII char
  */
 ilib.Locale._notUpper = function(str) {
 	// do this with ASCII only so we don't have to depend on the CType functions
@@ -434,7 +473,7 @@ ilib.Locale._notUpper = function(str) {
  * an ISO 639 language code.
  * 
  * @param {string} str the string to parse
- * @returns {boolean} true if the string could syntactically be a language code.
+ * @return {boolean} true if the string could syntactically be a language code.
  */
 ilib.Locale._isLanguageCode = function(str) {
 	if (typeof(str) === 'undefined' || str.length < 2 || str.length > 3) {
@@ -456,7 +495,7 @@ ilib.Locale._isLanguageCode = function(str) {
  * an ISO 639 language code.
  * 
  * @param {string} str the string to parse
- * @returns {boolean} true if the string could syntactically be a language code.
+ * @return {boolean} true if the string could syntactically be a language code.
  */
 ilib.Locale._isRegionCode = function (str) {
 	if (typeof(str) === 'undefined' || str.length !== 2) {
@@ -478,7 +517,7 @@ ilib.Locale._isRegionCode = function (str) {
  * an ISO 639 language code.
  * 
  * @param {string} str the string to parse
- * @returns {boolean} true if the string could syntactically be a language code.
+ * @return {boolean} true if the string could syntactically be a language code.
  */
 ilib.Locale._isScriptCode = function(str)
 {
@@ -498,7 +537,7 @@ ilib.Locale._isScriptCode = function(str)
 ilib.Locale.prototype = {
 	/**
 	 * Return the ISO 639 language code for this locale. 
-	 * @returns {string|undefined} the language code for this locale 
+	 * @return {string|undefined} the language code for this locale 
 	 */
 	getLanguage: function() {
 		return this.language;
@@ -506,7 +545,7 @@ ilib.Locale.prototype = {
 	
 	/**
 	 * Return the ISO 3166 region code for this locale.
-	 * @returns {string|undefined} the region code of this locale
+	 * @return {string|undefined} the region code of this locale
 	 */
 	getRegion: function() {
 		return this.region;
@@ -514,7 +553,7 @@ ilib.Locale.prototype = {
 	
 	/**
 	 * Return the ISO 15924 script code for this locale
-	 * @returns {string|undefined} the script code of this locale
+	 * @return {string|undefined} the script code of this locale
 	 */
 	getScript: function () {
 		return this.script;
@@ -522,7 +561,7 @@ ilib.Locale.prototype = {
 	
 	/**
 	 * Return the variant code for this locale
-	 * @returns {string|undefined} the variant code of this locale, if any
+	 * @return {string|undefined} the variant code of this locale, if any
 	 */
 	getVariant: function() {
 		return this.variant;
@@ -530,7 +569,7 @@ ilib.Locale.prototype = {
 	
 	/**
 	 * Return the whole locale specifier as a string.
-	 * @returns {string} the locale specifier
+	 * @return {string} the locale specifier
 	 */
 	getSpec: function() {
 		return this.spec;
@@ -540,7 +579,7 @@ ilib.Locale.prototype = {
 	 * Express this locale object as a string. Currently, this simply calls the getSpec
 	 * function to represent the locale as its specifier.
 	 * 
-	 * @returns {string} the locale specifier
+	 * @return {string} the locale specifier
 	 */
 	toString: function() {
 		return this.getSpec();
@@ -548,7 +587,7 @@ ilib.Locale.prototype = {
 	
 	/**
 	 * Return true if the the other locale is exactly equal to the current one.
-	 * @returns {boolean} whether or not the other locale is equal to the current one 
+	 * @return {boolean} whether or not the other locale is equal to the current one 
 	 */
 	equals: function(other) {
 		return this.language === other.language &&
@@ -559,7 +598,7 @@ ilib.Locale.prototype = {
 
 	/**
 	 * Return true if the current locale is the special pseudo locale.
-	 * @returns {boolean} true if the current locale is the special pseudo locale
+	 * @return {boolean} true if the current locale is the special pseudo locale
 	 */
 	isPseudo: function () {
 		return (this.language === 'xx' && this.region === 'XX');
@@ -580,7 +619,7 @@ ilib.Locale.locales = [
  * than the list of all available locales in the iLib repository. The
  * assembly tool will automatically fill in the list.
  * 
- * @returns {Array.<string>} this is an array of locale specs for which 
+ * @return {Array.<string>} this is an array of locale specs for which 
  * this iLib file has locale data for
  */
 ilib.Locale.getAvailableLocales = function () {
@@ -650,7 +689,8 @@ ilib.Date = function(options) {
  *  
  * @param {Object=} options options controlling the construction of this instance, or
  * undefined to use the default options
- * @returns an instance of a calendar object of the appropriate type */
+ * @return {ilib.Date} an instance of a calendar object of the appropriate type 
+ */
 ilib.Date.newInstance = function(options) {
 	var locale = options && options.locale,
 		type = options && options.type,
@@ -750,6 +790,50 @@ ilib.Date.prototype = {
  */
 
 // !depends ilibglobal.js
+
+/**
+ * If Function.prototype.bind does not exist in this JS engine, this
+ * function reimplements it in terms of older JS functions.
+ * bind() doesn't exist in many older browsers.
+ * 
+ * @param {Object} scope object that the method should operate on
+ * @param {function(?)} method method to call
+ * @return {function(?)|undefined} function that calls the given method 
+ * in the given scope with all of its arguments properly attached, or
+ * undefined if there was a problem with the arguments
+ */
+ilib.bind = function(scope, method/*, bound arguments*/){
+	if (!scope || !method) {
+		return undefined;
+	}
+	
+	/** @protected 
+	 * @param {Arguments} inArrayLike
+	 * @param {number=} inOffset
+	 */
+	function cloneArray(inArrayLike, inOffset) {
+		var arr = [];
+		for(var i = inOffset || 0, l = inArrayLike.length; i<l; i++){
+			arr.push(inArrayLike[i]);
+		}
+		return arr;
+	}
+
+	if (typeof(method) === 'function') {
+		var func, args = cloneArray(arguments, 2);
+		if (typeof(method.bind) === 'function') {
+			func = method.bind.apply(method, [scope].concat(args));
+		} else {
+			func = function() {
+				var nargs = cloneArray(arguments);
+				// invoke with collected args
+				return method.apply(scope, args.concat(nargs));
+			};
+		}
+		return func;
+	}
+	return undefined;
+};
 
 /**
  * Binary search a sorted array for a particular target value.
@@ -853,7 +937,7 @@ ilib.mod = function (dividend, modulus) {
  * @param {*} object2 the object to merge
  * @param {string=} name1 name of the object being merged into
  * @param {string=} name2 name of the object being merged in
- * @returns {Object} the merged object
+ * @return {Object} the merged object
  */
 ilib.merge = function (object1, object2, name1, name2) {
 	var prop = undefined,
@@ -903,7 +987,7 @@ ilib.merge = function (object1, object2, name1, name2) {
  *  
  * @param {string} prefix prefix under ilib.data of the data to merge
  * @param {ilib.Locale} locale locale of the data being sought
- * @returns {Object?} the merged locale data
+ * @return {Object?} the merged locale data
  */
 ilib.mergeLocData = function (prefix, locale) {
 	var data = undefined;
@@ -1039,8 +1123,8 @@ ilib.mergeLocData = function (prefix, locale) {
  * language/script/region/variant
  * 
  * @param {ilib.Locale} locale load the json files for this locale
- * @param {string=} basename the base name of each json file to load
- * @returns {Array.<string>} An array of relative path names
+ * @param {string?} basename the base name of each json file to load
+ * @return {Array.<string>} An array of relative path names
  * for the json files that contain the locale data
  */
 ilib.getLocFiles = function(locale, basename) {
@@ -1139,7 +1223,7 @@ ilib.getLocFiles = function(locale, basename) {
  * Depends directive: !depends utils.js
  * 
  * @param {Object} obj the object to check
- * @returns {boolean} true if the given object has no properties, false otherwise
+ * @return {boolean} true if the given object has no properties, false otherwise
  */
 ilib.isEmpty = function (obj) {
 	var prop = undefined;
@@ -1182,7 +1266,7 @@ ilib.shallowCopy = function (source, target) {
  * Return the sign of the given number. If the sign is negative, this function
  * returns -1. If the sign is positive or zero, this function returns 1.
  * @param {number} num the number to test
- * @returns {number} -1 if the number is negative, and 1 otherwise
+ * @return {number} -1 if the number is negative, and 1 otherwise
  */
 ilib.signum = function (num) {
 	var n = num;
@@ -1202,7 +1286,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	floor: function (num) {
 		return Math.floor(num);
@@ -1211,7 +1295,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	ceiling: function (num) {
 		return Math.ceil(num);
@@ -1220,7 +1304,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	down: function (num) {
 		return (num < 0) ? Math.ceil(num) : Math.floor(num);
@@ -1229,7 +1313,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	up: function (num) {
 		return (num < 0) ? Math.floor(num) : Math.ceil(num);
@@ -1238,7 +1322,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	halfup: function (num) {
 		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
@@ -1247,7 +1331,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	halfdown: function (num) {
 		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
@@ -1256,7 +1340,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	halfeven: function (num) {
 		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
@@ -1265,7 +1349,7 @@ ilib._roundFnc = {
 	/**
 	 * @private
 	 * @param {number} num number to round
-	 * @returns {number} rounded number
+	 * @return {number} rounded number
 	 */
 	halfodd: function (num) {
 		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
@@ -1284,9 +1368,11 @@ ilib._roundFnc = {
  * @param {Object} object The class attempting to load data. The cache is stored inside of here.
  * @param {ilib.Locale} locale The locale to use to find or load the data.
  * @param {string} name The name of the locale data to load.
- * @param {function(Object?):undefined} callback Call back function to call when the data is available.
+ * @param {boolean} sync Whether or not to load the data synchronouslyo
+ * @param {Object} params An object with parameters to pass to the loader function
+ * @param {function(?)=} callback Call back function to call when the data is available.
  */
-ilib.loadData = function(object, locale, name, sync, callback) {
+ilib.loadData = function(object, locale, name, sync, params, callback) {
 	if (!object.cache) {
 		object.cache = {};
 	}
@@ -1301,7 +1387,7 @@ ilib.loadData = function(object, locale, name, sync, callback) {
 			// the data is not preassembled, so attempt to load it dynamically
 			var files = ilib.getLocFiles(locale, name);
 			
-			ilib._load(files, sync, function(arr) {
+			ilib._load(files, sync, params, ilib.bind(this, function(arr) {
 				data = {};
 				for (var i = 0; i < arr.length; i++) {
 					if (typeof(arr[i]) !== 'undefined') {
@@ -1310,7 +1396,7 @@ ilib.loadData = function(object, locale, name, sync, callback) {
 				}
 				
 				callback(data);
-			}.bind(this));
+			}));
 		} else {
 			// no data other than the generic shared data
 			callback(data);
@@ -1319,6 +1405,7 @@ ilib.loadData = function(object, locale, name, sync, callback) {
 		callback(object.cache[spec]);
 	}
 };
+
 
 ilib.data.plurals = {
     "version": {
@@ -4042,7 +4129,7 @@ ilib.String = function (string) {
  * either high or low.
  * 
  * @param {string} ch character to check
- * @returns {boolean} true if the character is a surrogate
+ * @return {boolean} true if the character is a surrogate
  */
 ilib.String._isSurrogate = function (ch) {
 	var n = ch.charCodeAt(0);
@@ -4056,7 +4143,7 @@ ilib.String._isSurrogate = function (ch) {
  * Return true if the given character is a leading Jamo (Choseong) character.
  * 
  * @param {number} n code point to check
- * @returns {boolean} true if the character is a leading Jamo character, 
+ * @return {boolean} true if the character is a leading Jamo character, 
  * false otherwise
  */
 ilib.String._isJamoL = function (n) {
@@ -4070,7 +4157,7 @@ ilib.String._isJamoL = function (n) {
  * Return true if the given character is a vowel Jamo (Jungseong) character.
  * 
  * @param {number} n code point to check
- * @returns {boolean} true if the character is a vowel Jamo character, 
+ * @return {boolean} true if the character is a vowel Jamo character, 
  * false otherwise
  */
 ilib.String._isJamoV = function (n) {
@@ -4084,7 +4171,7 @@ ilib.String._isJamoV = function (n) {
  * Return true if the given character is a trailing Jamo (Jongseong) character.
  * 
  * @param {number} n code point to check
- * @returns {boolean} true if the character is a trailing Jamo character, 
+ * @return {boolean} true if the character is a trailing Jamo character, 
  * false otherwise
  */
 ilib.String._isJamoT = function (n) {
@@ -4098,7 +4185,7 @@ ilib.String._isJamoT = function (n) {
  * Return true if the given character is a precomposed Hangul character.
  * 
  * @param {number} n code point to check
- * @returns {boolean} true if the character is a precomposed Hangul character, 
+ * @return {boolean} true if the character is a precomposed Hangul character, 
  * false otherwise
  */
 ilib.String._isHangul = function (n) {
@@ -4125,7 +4212,7 @@ ilib.String._isHangul = function (n) {
  * an iterator to walk through the code points in a string. 
  * 
  * @param {number} codepoint UCS-4 code point to convert to a character
- * @returns {string} a string containing the character represented by the codepoint
+ * @return {string} a string containing the character represented by the codepoint
  */
 ilib.String.fromCodePoint = function (codepoint) {
 	if (codepoint < 0x10000) {
@@ -4148,7 +4235,7 @@ ilib.String.fromCodePoint = function (codepoint) {
  * character must be in the range of Hangul characters U+AC00 to U+D7A3.
  * 
  * @param {number} cp code point of a Korean Hangul character to decompose
- * @returns {string} the decomposed string of Jamo characters
+ * @return {string} the decomposed string of Jamo characters
  */
 ilib.String._decomposeHangul = function (cp) {
 	var sindex = cp - 0xAC00;
@@ -4171,7 +4258,7 @@ ilib.String._decomposeHangul = function (cp) {
  * 
  * @param {number} lead the code point of the lead Jamo character to compose
  * @param {number} trail the code point of the trailing Jamo character to compose
- * @returns {string} the composed Hangul character
+ * @return {string} the composed Hangul character
  */
 ilib.String._composeJamoLV = function (lead, trail) {
 	var lindex = lead - 0x1100;
@@ -4188,7 +4275,7 @@ ilib.String._composeJamoLV = function (lead, trail) {
  * 
  * @param {number} lead the code point of the lead Hangul character to compose
  * @param {number} trail the code point of the trailing Jamo T character to compose
- * @returns {string} the composed Hangul character
+ * @return {string} the composed Hangul character
  */
 ilib.String._composeJamoLVT = function (lead, trail) {
 	return ilib.String.fromCodePoint(lead + (trail - 0x11A7));
@@ -4204,7 +4291,7 @@ ilib.String._composeJamoLVT = function (lead, trail) {
  * @param {Object} canon the canonical mappings to apply
  * @param {Object=} compat the compatibility mappings to apply, or undefined
  * if only the canonical mappings are needed
- * @returns {string} the mapped character
+ * @return {string} the mapped character
  */
 ilib.String._expand = function (ch, canon, compat) {
 	var i, 
@@ -4239,7 +4326,7 @@ ilib.String._expand = function (ch, canon, compat) {
  
  * @param {string} lead leading character to compose
  * @param {string} trail the trailing character to compose
- * @returns {string} the fully composed character, or undefined if
+ * @return {string} the fully composed character, or undefined if
  * there is no composition for those two characters
  */
 ilib.String._compose = function (lead, trail) {
@@ -4263,7 +4350,7 @@ ilib.String._fncs = {
 	/**
 	 * @private
 	 * @param {Object} obj
-	 * @returns {string|undefined}
+	 * @return {string|undefined}
 	 */
 	firstProp: function (obj) {
 		for (var p in obj) {
@@ -4278,7 +4365,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} obj
 	 * @param {number} n
-	 * @returns {?}
+	 * @return {?}
 	 */
 	getValue: function (obj, n) {
 		if (typeof(obj) === 'object') {
@@ -4295,7 +4382,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {number} n
 	 * @param {Array.<number|Array.<number>>} range
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	matchRangeContinuous: function(n, range) {
 		for (var num in range) {
@@ -4319,7 +4406,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {number} n
 	 * @param {Array.<number|Array.<number>>} range
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	matchRange: function(n, range) {
 		if (Math.floor(n) !== n) {
@@ -4332,7 +4419,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	is: function(rule, n) {
 		var left = ilib.String._fncs.getValue(rule[0], n);
@@ -4345,7 +4432,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isnot: function(rule, n) {
 		return ilib.String._fncs.getValue(rule[0], n) != ilib.String._fncs.getValue(rule[1], n);
@@ -4355,7 +4442,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	inrange: function(rule, n) {
 		return ilib.String._fncs.matchRange(ilib.String._fncs.getValue(rule[0], n), rule[1]);
@@ -4365,7 +4452,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	notin: function(rule, n) {
 		return !ilib.String._fncs.matchRange(ilib.String._fncs.getValue(rule[0], n), rule[1]);
@@ -4375,7 +4462,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	within: function(rule, n) {
 		return ilib.String._fncs.matchRangeContinuous(ilib.String._fncs.getValue(rule[0], n), rule[1]);		
@@ -4385,7 +4472,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {number}
+	 * @return {number}
 	 */
 	mod: function(rule, n) {
 		return ilib.mod(ilib.String._fncs.getValue(rule[0], n), ilib.String._fncs.getValue(rule[1], n));
@@ -4395,7 +4482,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {number}
+	 * @return {number}
 	 */
 	n: function(rule, n) {
 		return n;
@@ -4405,7 +4492,7 @@ ilib.String._fncs = {
 	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	or: function(rule, n) {
 		return ilib.String._fncs.getValue(rule[0], n) || ilib.String._fncs.getValue(rule[1], n);
@@ -4414,7 +4501,7 @@ ilib.String._fncs = {
 	/**
 	 * @param {Object} rule
 	 * @param {number} n
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	and: function(rule, n) {
 		return ilib.String._fncs.getValue(rule[0], n) && ilib.String._fncs.getValue(rule[1], n);
@@ -4610,7 +4697,7 @@ ilib.String.prototype = {
 	 * @param {Object} params The hash of parameter values that replace the replacement 
 	 * variables in the string
 	 * @throws "syntax error in choice format pattern: " if there is a syntax error
-	 * @returns {string} the formatted string
+	 * @return {string} the formatted string
 	 */
 	formatChoice: function(argIndex, params) {
 		var choices = this.str.split("|");
@@ -4883,7 +4970,7 @@ ilib.String.prototype = {
 	 * will be passed through to the output string unmodified.
 	 * 
 	 * @param {string} form The normalization form requested
-	 * @returns {ilib.String} a new instance of an ilib.String that has been normalized
+	 * @return {ilib.String} a new instance of an ilib.String that has been normalized
 	 * according to the requested form. The current instance is not modified.
 	 */
 	normalize: function (form) {
@@ -5024,7 +5111,7 @@ ilib.String.prototype = {
 	// delegates
 	/**
 	 * Same as String.toString()
-	 * @returns {string} this instance as regular Javascript string
+	 * @return {string} this instance as regular Javascript string
 	 */
 	toString: function () {
 		return this.str.toString();
@@ -5032,7 +5119,7 @@ ilib.String.prototype = {
 	
 	/**
 	 * Same as String.valueOf()
-	 * @returns {string} this instance as a regular Javascript string
+	 * @return {string} this instance as a regular Javascript string
 	 */
 	valueOf: function () {
 		return this.str.valueOf();
@@ -5041,7 +5128,7 @@ ilib.String.prototype = {
 	/**
 	 * Same as String.charAt()
 	 * @param {number} index the index of the character being sought
-	 * @returns {ilib.String} the character at the given index
+	 * @return {ilib.String} the character at the given index
 	 */
 	charAt: function(index) {
 		return new ilib.String(this.str.charAt(index));
@@ -5054,7 +5141,7 @@ ilib.String.prototype = {
 	 * If you would like to take account of those characters,
 	 * use codePointAt() instead.
 	 * @param {number} index the index of the character being sought
-	 * @returns {number} the character code of the character at the 
+	 * @return {number} the character code of the character at the 
 	 * given index in the string 
 	 */
 	charCodeAt: function(index) {
@@ -5064,7 +5151,7 @@ ilib.String.prototype = {
 	/**
 	 * Same as String.concat()
 	 * @param {string} strings strings to concatenate to the current one
-	 * @returns {ilib.String} a concatenation of the given strings
+	 * @return {ilib.String} a concatenation of the given strings
 	 */
 	concat: function(strings) {
 		return new ilib.String(this.str.concat(strings));
@@ -5075,7 +5162,7 @@ ilib.String.prototype = {
 	 * @param {string} searchValue string to search for
 	 * @param {number} start index into the string to start searching, or
 	 * undefined to search the entire string
-	 * @returns {number} index into the string of the string being sought,
+	 * @return {number} index into the string of the string being sought,
 	 * or -1 if the string is not found 
 	 */
 	indexOf: function(searchValue, start) {
@@ -5087,7 +5174,7 @@ ilib.String.prototype = {
 	 * @param {string} searchValue string to search for
 	 * @param {number} start index into the string to start searching, or
 	 * undefined to search the entire string
-	 * @returns {number} index into the string of the string being sought,
+	 * @return {number} index into the string of the string being sought,
 	 * or -1 if the string is not found 
 	 */
 	lastIndexOf: function(searchValue, start) {
@@ -5097,7 +5184,7 @@ ilib.String.prototype = {
 	/**
 	 * Same as String.match()
 	 * @param {string} regexp the regular expression to match
-	 * @returns {Array.<string>} an array of matches
+	 * @return {Array.<string>} an array of matches
 	 */
 	match: function(regexp) {
 		return this.str.match(regexp);
@@ -5107,7 +5194,7 @@ ilib.String.prototype = {
 	 * Same as String.replace()
 	 * @param {string} searchValue a regular expression to search for
 	 * @param {string} newValue the string to replace the matches with
-	 * @returns {ilib.String} a new string with all the matches replaced
+	 * @return {ilib.String} a new string with all the matches replaced
 	 * with the new value
 	 */
 	replace: function(searchValue, newValue) {
@@ -5117,7 +5204,7 @@ ilib.String.prototype = {
 	/**
 	 * Same as String.search()
 	 * @param {string} regexp the regular expression to search for
-	 * @returns {number} position of the match, or -1 for no match
+	 * @return {number} position of the match, or -1 for no match
 	 */
 	search: function(regexp) {
 		return this.str.search(regexp);
@@ -5128,7 +5215,7 @@ ilib.String.prototype = {
 	 * @param {number} start first character to include in the string
 	 * @param {number} end include all characters up to, but not including
 	 * the end character
-	 * @returns {ilib.String} a slice of the current string
+	 * @return {ilib.String} a slice of the current string
 	 */
 	slice: function(start, end) {
 		return new ilib.String(this.str.slice(start, end));
@@ -5140,7 +5227,7 @@ ilib.String.prototype = {
 	 * separations between the parts of the text
 	 * @param {number} limit maximum number of items in the final 
 	 * output array. Any items beyond that limit will be ignored.
-	 * @returns {Array.<string>} the parts of the current string split 
+	 * @return {Array.<string>} the parts of the current string split 
 	 * by the separator
 	 */
 	split: function(separator, limit) {
@@ -5153,7 +5240,7 @@ ilib.String.prototype = {
 	 * begin the returned substring
 	 * @param {number} length the number of characters to return after
 	 * the start character.
-	 * @returns {ilib.String} the requested substring 
+	 * @return {ilib.String} the requested substring 
 	 */
 	substr: function(start, length) {
 		return new ilib.String(this.str.substr(start, length));
@@ -5165,7 +5252,7 @@ ilib.String.prototype = {
 	 * begin the returned substring
 	 * @param {number} to the index where to stop the extraction. If
 	 * omitted, extracts the rest of the string
-	 * @returns {ilib.String} the requested substring 
+	 * @return {ilib.String} the requested substring 
 	 */
 	substring: function(from, to) {
 		return this.str.substring(from, to);
@@ -5174,7 +5261,7 @@ ilib.String.prototype = {
 	/**
 	 * Same as String.toLowerCase(). Note that this method is
 	 * not locale-sensitive. 
-	 * @returns {ilib.String} a string with the first character
+	 * @return {ilib.String} a string with the first character
 	 * lower-cased
 	 */
 	toLowerCase: function() {
@@ -5185,7 +5272,7 @@ ilib.String.prototype = {
 	 * Same as String.toUpperCase(). Note that this method is
 	 * not locale-sensitive. Use toLocaleUpperCase() instead
 	 * to get locale-sensitive behaviour. 
-	 * @returns {ilib.String} a string with the first character
+	 * @return {ilib.String} a string with the first character
 	 * upper-cased
 	 */
 	toUpperCase: function() {
@@ -5197,7 +5284,7 @@ ilib.String.prototype = {
 	 * Convert the character or the surrogate pair at the given
 	 * index into the string to a Unicode UCS-4 code point.
 	 * @param {number} index index into the string
-	 * @returns {number} code point of the character at the
+	 * @return {number} code point of the character at the
 	 * given index into the string
 	 */
 	_toCodePoint: function (index) {
@@ -5239,7 +5326,7 @@ ilib.String.prototype = {
 	 * returns true if the iterator has more code points to iterate through,
 	 * and next() which returns the next code point as a number.<p>
 	 * 
-	 * @returns {Object} an iterator 
+	 * @return {Object} an iterator 
 	 * that iterates through all the code points in the string
 	 */
 	iterator: function() {
@@ -5282,7 +5369,7 @@ ilib.String.prototype = {
 	 * returns true if the iterator has more characters to iterate through,
 	 * and next() which returns the next character.<p>
 	 * 
-	 * @returns {Object} an iterator 
+	 * @return {Object} an iterator 
 	 * that iterates through all the characters in the string
 	 */
 	charIterator: function() {
@@ -5317,7 +5404,7 @@ ilib.String.prototype = {
 	 * as an array of code points. If the index is beyond the end of the
 	 * array of code points or if the index is negative, -1 is returned.
 	 * @param {number} index index of the code point 
-	 * @returns {number} code point of the character at the given index into
+	 * @return {number} code point of the character at the given index into
 	 * the string
 	 */
 	codePointAt: function (index) {
@@ -5358,7 +5445,7 @@ ilib.String.prototype = {
 	 * the supplementary character planes. If your string contains no
 	 * characters in the supplementary planes, this method will return the
 	 * same thing as the length() method.
-	 * @returns {number} the number of code points in this string
+	 * @return {number} the number of code points in this string
 	 */
 	codePointLength: function () {
 		if (this.cpLength === -1) {
@@ -5401,15 +5488,14 @@ ilib.data.localeinfo_af = {
 }
 ;
 ilib.data.localeinfo_af_ZA = {
-	"clock": "12",
-	"currency": "ZAR",
-	"region.name": "South Africa",
-	"timezone": "Africa/Johannesburg",
 	"locale": "af-ZA"
 }
 ;
 ilib.data.localeinfo_ZA = {
+	"clock": "12",
+	"currency": "ZAR",
 	"region.name": "South Africa",
+	"timezone": "Africa/Johannesburg",
 	"locale": ".-ZA"
 }
 ;
@@ -5422,23 +5508,22 @@ ilib.data.localeinfo_da = {
 		"groupSize": 3,
 		"pctFmt": "{n}%"
 	},
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "4x6"
-	},
 	"scripts": ["Latn"],
 	"locale": "da"
 }
 ;
 ilib.data.localeinfo_da_DK = {
-	"currency": "DKK",
-	"region.name": "Denmark",
-	"timezone": "Europe/Copenhagen",
 	"locale": "da-DK"
 }
 ;
 ilib.data.localeinfo_DK = {
+	"currency": "DKK",
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "4x6"
+	},
 	"region.name": "Denmark",
+	"timezone": "Europe/Copenhagen",
 	"locale": ".-DK"
 }
 ;
@@ -5457,19 +5542,17 @@ ilib.data.localeinfo_de = {
 }
 ;
 ilib.data.localeinfo_de_AT = {
-	"currency": "EUR",
-	"region.name": "Austria",
-	"timezone": "Europe/Vienna",
 	"locale": "de-AT"
 }
 ;
 ilib.data.localeinfo_AT = {
+	"currency": "EUR",
 	"region.name": "Austria",
+	"timezone": "Europe/Vienna",
 	"locale": ".-AT"
 }
 ;
 ilib.data.localeinfo_de_CH = {
-	"currency": "CHF",
 	"numfmt": {
 		"decimalChar": ".",
 		"groupChar": "'",
@@ -5477,25 +5560,24 @@ ilib.data.localeinfo_de_CH = {
 		"pctFmt": "{n}%",
 		"pctChar": "%"
 	},
-	"region.name": "Switzerland",
-	"timezone": "Europe/Zurich",
 	"locale": "de-CH"
 }
 ;
 ilib.data.localeinfo_CH = {
+	"currency": "CHF",
 	"region.name": "Switzerland",
+	"timezone": "Europe/Zurich",
 	"locale": ".-CH"
 }
 ;
 ilib.data.localeinfo_de_DE = {
-	"currency": "EUR",
-	"region.name": "Germany",
-	"timezone": "Europe/Berlin",
 	"locale": "de-DE"
 }
 ;
 ilib.data.localeinfo_DE = {
+	"currency": "EUR",
 	"region.name": "Germany",
+	"timezone": "Europe/Berlin",
 	"locale": ".-DE"
 }
 ;
@@ -5516,18 +5598,21 @@ ilib.data.localeinfo_en = {
 }
 ;
 ilib.data.localeinfo_en_AU = {
-	"clock": "12",	"currency": "AUD",
-	"region.name": "Australia",
-	"timezone": "Australia/Sydney",
 	"locale": "en-AU"
 }
 ;
 ilib.data.localeinfo_AU = {
+	"clock": "12",	"currency": "AUD",
 	"region.name": "Australia",
+	"timezone": "Australia/Sydney",
 	"locale": ".-AU"
 }
 ;
 ilib.data.localeinfo_en_CA = {
+	"locale": "en-CA"
+}
+;
+ilib.data.localeinfo_CA = {
 	"clock": "12",
 	"currency": "CAD",
 	"paperSizes": {
@@ -5536,106 +5621,98 @@ ilib.data.localeinfo_en_CA = {
 	},
 	"region.name": "Canada",
 	"timezone": "America/Toronto",
-	"locale": "en-CA"
-}
-;
-ilib.data.localeinfo_CA = {
-	"region.name": "Canada",
 	"locale": ".-CA"
 }
 ;
 ilib.data.localeinfo_en_GB = {
-	"currency": "GBP",
-	"region.name": "United Kingdom",
-	"timezone": "Europe/London",
-	"units": "imperial",
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "24x16"
-	},
 	"locale": "en-GB"
 }
 ;
 ilib.data.localeinfo_GB = {
+	"currency": "GBP",
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "24x16"
+	},
 	"region.name": "United Kingdom",
+	"timezone": "Europe/London",
+	"units": "imperial",
 	"locale": ".-GB"
 }
 ;
 ilib.data.localeinfo_en_IE = {
-	"currency": "EUR",
-	"region.name": "Ireland",
-	"timezone": "Europe/Dublin",
 	"locale": "en-IE"
 }
 ;
 ilib.data.localeinfo_IE = {
+	"currency": "EUR",
 	"region.name": "Ireland",
+	"timezone": "Europe/Dublin",
 	"locale": ".-IE"
 }
 ;
 ilib.data.localeinfo_en_IN = {
-	"currency": "INR",
-	"region.name": "India",
-	"timezone": "Asia/Kolkata",
 	"locale": "en-IN"
 }
 ;
 ilib.data.localeinfo_IN = {
+	"currency": "INR",
 	"region.name": "India",
+	"timezone": "Asia/Kolkata",
 	"locale": ".-IN"
 }
 ;
 ilib.data.localeinfo_en_NG = {
-	"currency": "NGN",
-	"region.name": "Nigeria",
-	"timezone": "Africa/Lagos",
 	"locale": "en-NG"
 }
 ;
 ilib.data.localeinfo_NG = {
+	"currency": "NGN",
 	"region.name": "Nigeria",
+	"timezone": "Africa/Lagos",
 	"locale": ".-NG"
 }
 ;
 ilib.data.localeinfo_en_NZ = {
-	"clock": "12",
-	"currency": "NZD",
-	"region.name": "New Zealand",
-	"timezone": "Pacific/Auckland",
 	"locale": "en-NZ"
 }
 ;
 ilib.data.localeinfo_NZ = {
+	"clock": "12",	"currency": "NZD",
 	"region.name": "New Zealand",
+	"timezone": "Pacific/Auckland",
 	"locale": ".-NZ"
 }
 ;
 ilib.data.localeinfo_en_PH = {
-	"clock": "12",	"currency": "PHP",
-	"region.name": "Philippines",
-	"timezone": "Asia/Manila",
 	"locale": "en-PH"
 }
 ;
 ilib.data.localeinfo_PH = {
+	"clock": "12",	"currency": "PHP",
 	"region.name": "Philippines",
+	"timezone": "Asia/Manila",
 	"locale": ".-PH"
 }
 ;
 ilib.data.localeinfo_en_PK = {
-	"currency": "PKR",
-	"region.name": "Pakistan",
-	"timezone": "Asia/Karachi",
 	"locale": "en-PK"
 }
 ;
 ilib.data.localeinfo_PK = {
+	"currency": "PKR",
 	"region.name": "Pakistan",
+	"timezone": "Asia/Karachi",
 	"locale": ".-PK"
 }
 ;
 ilib.data.localeinfo_en_US = {
+	"locale": "en-US"
+}
+;
+ilib.data.localeinfo_US = {
 	"clock": "12",
+
 	"currency": "USD",
 	"paperSizes": {
 		"regular": "8x11",
@@ -5644,18 +5721,10 @@ ilib.data.localeinfo_en_US = {
 	"region.name": "United States",
 	"timezone": "America/New_York",
 	"units": "uscustomary",
-	"locale": "en-US"
-}
-;
-ilib.data.localeinfo_US = {
-	"region.name": "United States",
 	"locale": ".-US"
 }
 ;
 ilib.data.localeinfo_en_ZA = {
-	"clock": "12",	"currency": "ZAR",
-	"region.name": "South Africa",
-	"timezone": "Africa/Johannesburg",
 	"locale": "en-ZA"
 }
 ;
@@ -5683,39 +5752,36 @@ ilib.data.localeinfo_es = {
 }
 ;
 ilib.data.localeinfo_es_AR = {
-	"currency": "ARS",
-	"region.name": "Argentina",
-	"timezone": "America/Argentina/Buenos_Aires",
 	"locale": "es-AR"
 }
 ;
 ilib.data.localeinfo_AR = {
+	"currency": "ARS",
 	"region.name": "Argentina",
+	"timezone": "America/Argentina/Buenos_Aires",
 	"locale": ".-AR"
 }
 ;
 ilib.data.localeinfo_es_ES = {
-	"currency": "EUR",
-	"region.name": "Spain",
-	"timezone": "Europe/Madrid",
 	"locale": "es-ES"
 }
 ;
 ilib.data.localeinfo_ES = {
+	"currency": "EUR",
 	"region.name": "Spain",
+	"timezone": "Europe/Madrid",
 	"locale": ".-ES"
 }
 ;
 ilib.data.localeinfo_es_MX = {
-	"clock": "12",
-	"currency": "MXN",
-	"region.name": "Mexico",
-	"timezone": "America/Mexico_City",
 	"locale": "es-MX"
 }
 ;
 ilib.data.localeinfo_MX = {
+	"clock": "12",
+	"currency": "MXN",
 	"region.name": "Mexico",
+	"timezone": "America/Mexico_City",
 	"locale": ".-MX"
 }
 ;
@@ -5740,12 +5806,10 @@ ilib.data.localeinfo_fr = {
 		"pctFmt": "{n}%"
 	},
 	"scripts": ["Latn"],
-	"timezone": "Europe/Paris",
 	"locale": "fr"
 }
 ;
 ilib.data.localeinfo_fr_BE = {
-	"currency": "EUR",
 	"numfmt": {
 		"decimalChar": ",",
 		"groupChar": ".",
@@ -5753,30 +5817,25 @@ ilib.data.localeinfo_fr_BE = {
 		"pctFmt": "{n}%",
 		"pctChar": "%"
 	},
-	"region.name": "Belgium",
-	"timezone": "Europe/Brussels",
 	"locale": "fr-BE"
 }
 ;
 ilib.data.localeinfo_BE = {
+	"currency": "EUR",
 	"region.name": "Belgium",
+	"timezone": "Europe/Brussels",
 	"locale": ".-BE"
 }
 ;
 ilib.data.localeinfo_fr_CA = {
-	"clock": "12",
-	"currency": "CAD",
 	"paperSizes": {
 		"regular": "8x11",
 		"photo": "3x5"
 	},
-	"region.name": "Canada",
-	"timezone": "America/Toronto",
 	"locale": "fr-CA"
 }
 ;
 ilib.data.localeinfo_fr_CH = {
-	"currency": "CHF",
 	"numfmt": {
 		"decimalChar": ".",
 		"groupChar": "'",
@@ -5784,20 +5843,17 @@ ilib.data.localeinfo_fr_CH = {
 		"pctFmt": "{n}%",
 		"pctChar": "%"
 	},
-	"region.name": "Switzerland",
-	"timezone": "Europe/Zurich",
 	"locale": "fr-CH"
 }
 ;
 ilib.data.localeinfo_fr_FR = {
-	"currency": "EUR",
-	"region.name": "France",
-	"timezone": "Europe/Paris",
 	"locale": "fr-FR"
 }
 ;
 ilib.data.localeinfo_FR = {
+	"currency": "EUR",
 	"region.name": "France",
+	"timezone": "Europe/Paris",
 	"locale": ".-FR"
 }
 ;
@@ -5816,14 +5872,13 @@ ilib.data.localeinfo_id = {
 }
 ;
 ilib.data.localeinfo_id_ID = {
-	"currency": "IDR",
-	"region.name": "Indonesia",
-	"timezone": "Asia/Jakarta",
 	"locale": "id-ID"
 }
 ;
 ilib.data.localeinfo_ID = {
+	"currency": "IDR",
 	"region.name": "Indonesia",
+	"timezone": "Asia/Jakarta",
 	"locale": ".-ID"
 }
 ;
@@ -5851,7 +5906,6 @@ ilib.data.localeinfo_it = {
 }
 ;
 ilib.data.localeinfo_it_CH = {
-	"currency": "CHF",
 	"numfmt": {
 		"decimalChar": ",",
 		"groupChar": "'",
@@ -5859,20 +5913,17 @@ ilib.data.localeinfo_it_CH = {
 		"pctFmt": "{n}%",
 		"pctChar": "%"
 	},
-	"region.name": "Switzerland",
-	"timezone": "Europe/Zurich",
 	"locale": "it-CH"
 }
 ;
 ilib.data.localeinfo_it_IT = {
-	"currency": "EUR",
-	"region.name": "Italy",
-	"timezone": "Europe/Rome",
 	"locale": "it-IT"
 }
 ;
 ilib.data.localeinfo_IT = {
+	"currency": "EUR",
 	"region.name": "Italy",
+	"timezone": "Europe/Rome",
 	"locale": ".-IT"
 }
 ;
@@ -5897,14 +5948,13 @@ ilib.data.localeinfo_ja = {
 }
 ;
 ilib.data.localeinfo_ja_JP = {
-	"currency": "JPY",
-	"region.name": "Japan",
-	"timezone": "Asia/Tokyo",
 	"locale": "ja-JP"
 }
 ;
 ilib.data.localeinfo_JP = {
+	"currency": "JPY",
 	"region.name": "Japan",
+	"timezone": "Asia/Tokyo",
 	"locale": ".-JP"
 }
 ;
@@ -5929,14 +5979,13 @@ ilib.data.localeinfo_ko = {
 }
 ;
 ilib.data.localeinfo_ko_KR = {
-	"currency": "KRW",
-	"region.name": "South Korea",
-	"timezone": "Asia/Seoul",
 	"locale": "ko-KR"
 }
 ;
 ilib.data.localeinfo_KR = {
+	"currency": "KRW",
 	"region.name": "South Korea",
+	"timezone": "Asia/Seoul",
 	"locale": ".-KR"
 }
 ;
@@ -5959,21 +6008,17 @@ ilib.data.localeinfo_nl = {
 }
 ;
 ilib.data.localeinfo_nl_BE = {
-	"currency": "EUR",
-	"region.name": "Belgium",
-	"timezone": "Europe/Brussels",
 	"locale": "nl-BE"
 }
 ;
 ilib.data.localeinfo_nl_NL = {
-	"currency": "EUR",
-	"region.name": "Netherlands",
-	"timezone": "Europe/Amsterdam",
 	"locale": "nl-NL"
 }
 ;
 ilib.data.localeinfo_NL = {
+	"currency": "EUR",
 	"region.name": "Netherlands",
+	"timezone": "Europe/Amsterdam",
 	"locale": ".-NL"
 }
 ;
@@ -5986,23 +6031,22 @@ ilib.data.localeinfo_no = {
 		"groupSize": 3,
 		"pctFmt": "{n} %"
 	},
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "4x6"
-	},
 	"scripts": ["Latn"],
 	"locale": "no"
 }
 ;
 ilib.data.localeinfo_no_NO = {
-	"currency": "NOK",
-	"region.name": "Norway",
-	"timezone": "Europe/Oslo",
 	"locale": "no-NO"
 }
 ;
 ilib.data.localeinfo_NO = {
+	"currency": "NOK",
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "4x6"
+	},
 	"region.name": "Norway",
+	"timezone": "Europe/Oslo",
 	"locale": ".-NO"
 }
 ;
@@ -6021,26 +6065,24 @@ ilib.data.localeinfo_pt = {
 }
 ;
 ilib.data.localeinfo_pt_BR = {
-	"currency": "BRL",
-	"region.name": "Brazil",
-	"timezone": "America/Sao_Paulo",
 	"locale": "pt-BR"
 }
 ;
 ilib.data.localeinfo_BR = {
+	"currency": "BRL",
 	"region.name": "Brazil",
+	"timezone": "America/Sao_Paulo",
 	"locale": ".-BR"
 }
 ;
 ilib.data.localeinfo_pt_PT = {
-	"currency": "EUR",
-	"region.name": "Portugal",
-	"timezone": "Europe/Lisbon",
 	"locale": "pt-PT"
 }
 ;
 ilib.data.localeinfo_PT = {
+	"currency": "EUR",
 	"region.name": "Portugal",
+	"timezone": "Europe/Lisbon",
 	"locale": ".-PT"
 }
 ;
@@ -6057,14 +6099,13 @@ ilib.data.localeinfo_ru = {
 }
 ;
 ilib.data.localeinfo_ru_RU = {
-	"currency": "RUB",
-	"region.name": "Russia",
-	"timezone": "Europe/Moscow",
 	"locale": "ru-RU"
 }
 ;
 ilib.data.localeinfo_RU = {
+	"currency": "RUB",
 	"region.name": "Russia",
+	"timezone": "Europe/Moscow",
 	"locale": ".-RU"
 }
 ;
@@ -6077,23 +6118,22 @@ ilib.data.localeinfo_sv = {
 		"groupSize": 3,
 		"pctFmt": "{n}%"
 	},
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "4x6"
-	},
 	"scripts": ["Latn"],
 	"locale": "sv"
 }
 ;
 ilib.data.localeinfo_sv_SE = {
-	"currency": "SEK",
-	"region.name": "Sweden",
-	"timezone": "Europe/Stockholm",
 	"locale": "sv-SE"
 }
 ;
 ilib.data.localeinfo_SE = {
+	"currency": "SEK",
+	"paperSizes": {
+		"regular": "A4",
+		"photo": "4x6"
+	},
 	"region.name": "Sweden",
+	"timezone": "Europe/Stockholm",
 	"locale": ".-SE"
 }
 ;
@@ -6117,14 +6157,13 @@ ilib.data.localeinfo_tr = {
 }
 ;
 ilib.data.localeinfo_tr_TR = {
-	"currency": "TRY",
-	"region.name": "Turkey",
-	"timezone": "Europe/Istanbul",
 	"locale": "tr-TR"
 }
 ;
 ilib.data.localeinfo_TR = {
+	"currency": "TRY",
 	"region.name": "Turkey",
+	"timezone": "Europe/Istanbul",
 	"locale": ".-TR"
 }
 ;
@@ -6143,14 +6182,13 @@ ilib.data.localeinfo_vi = {
 }
 ;
 ilib.data.localeinfo_vi_VN = {
-	"currency": "VND",
-	"region.name": "Vietnam",
-	"timezone": "Asia/Ho_Chi_Minh",
 	"locale": "vi-VN"
 }
 ;
 ilib.data.localeinfo_VN = {
+	"currency": "VND",
 	"region.name": "Vietnam",
+	"timezone": "Asia/Ho_Chi_Minh",
 	"locale": ".-VN"
 }
 ;
@@ -6185,62 +6223,57 @@ ilib.data.localeinfo_zh = {
 }
 ;
 ilib.data.localeinfo_zh_CN = {
-	"currency": "CNY",
-	"region.name": "China",
-	"timezone": "Asia/Shanghai",
 	"locale": "zh-CN"
 }
 ;
 ilib.data.localeinfo_CN = {
+	"currency": "CNY",
 	"region.name": "China",
+	"timezone": "Asia/Shanghai",
 	"locale": ".-CN"
 }
 ;
 ilib.data.localeinfo_zh_TW = {
-	"currency": "TWD",
-	"region.name": "Taiwan",
-	"timezone": "Asia/Taipei",
 	"locale": "zh-TW"
 }
 ;
 ilib.data.localeinfo_TW = {
+	"currency": "TWD",
 	"region.name": "Taiwan",
+	"timezone": "Asia/Taipei",
 	"locale": ".-TW"
 }
 ;
 ilib.data.localeinfo_zh_HK = {
-	"currency": "HKD",
-	"region.name": "Hong Kong SAR China",
-	"timezone": "Asia/Hong_Kong",
 	"locale": "zh-HK"
 }
 ;
 ilib.data.localeinfo_HK = {
+	"currency": "HKD",
 	"region.name": "Hong Kong SAR China",
+	"timezone": "Asia/Hong_Kong",
 	"locale": ".-HK"
 }
 ;
 ilib.data.localeinfo_zh_SG = {
-	"currency": "SGD",
-	"region.name": "Singapore",
-	"timezone": "Asia/Singapore",
 	"locale": "zh-SG"
 }
 ;
 ilib.data.localeinfo_SG = {
+	"currency": "SGD",
 	"region.name": "Singapore",
+	"timezone": "Asia/Singapore",
 	"locale": ".-SG"
 }
 ;
 ilib.data.localeinfo_zh_MO = {
-	"currency": "MOP",
-	"region.name": "Macau SAR China",
-	"timezone": "Asia/Macau",
 	"locale": "zh-MO"
 }
 ;
 ilib.data.localeinfo_MO = {
+	"currency": "MOP",
 	"region.name": "Macau SAR China",
+	"timezone": "Asia/Macau",
 	"locale": ".-MO"
 }
 ;
@@ -6291,6 +6324,12 @@ ilib.data.likelylocales = {"aa":"aa-Latn-ET","ab":"ab-Cyrl-GE","ady":"ady-Cyrl-R
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
  * If this copy of ilib is pre-assembled and all the data is already available, 
@@ -6313,6 +6352,7 @@ ilib.LocaleInfo = function(locale, options) {
 	
 	/* these are all the defaults. Essentially, en-US */
 	this.info = ilib.data.localeinfo;
+	this.loadParams = {};
 	
 	switch (typeof(locale)) {
 		case "string":
@@ -6331,52 +6371,27 @@ ilib.LocaleInfo = function(locale, options) {
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync == true);
 		}
+		
+		if (typeof(options.loadParams) !== 'undefined') {
+			this.loadParams = options.loadParams;
+		}
 	}
 
 	if (!ilib.LocaleInfo.cache) {
 		ilib.LocaleInfo.cache = {};
 	}
 
-	var spec = this.locale.getSpec().replace(/-/g, "_");
-	if (typeof(ilib.LocaleInfo.cache[spec]) === 'undefined') {
-		this.info = ilib.mergeLocData("localeinfo", this.locale);
-		if (this.info) {
-			ilib.LocaleInfo.cache[spec] = this.info;
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		} else if (typeof(ilib._load) === 'function') {
-			// locale is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles(this.locale, "localeinfo");
-			
-			ilib._load(files, sync, function(arr) {
-				this.info = {};
-				for (var i = 0; i < arr.length; i++) {
-					if (typeof(arr[i]) !== 'undefined') {
-						this.info = ilib.merge(this.info, arr[i]);
-					}
-				}
-	
-				ilib.LocaleInfo.cache[spec] = this.info;
-				
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}
-			}.bind(this));
-		} else {
-			// no data other than the generic shared data
-			this.info = ilib.data.localeinfo;
-			ilib.LocaleInfo.cache[spec] = this.info;
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
+	ilib.loadData(ilib.LocaleInfo, this.locale, "localeinfo", sync, this.loadParams, ilib.bind(this, function (info) {
+		if (!info) {
+			info = ilib.data.localeinfo;
+			var spec = this.locale.getSpec().replace(/-/g, "_");
+			ilib.LocaleInfo.cache[spec] = info;
 		}
-	} else {
-		this.info = ilib.LocaleInfo.cache[spec];
+		this.info = info;
 		if (options && typeof(options.onLoad) === 'function') {
 			options.onLoad(this);
 		}
-	}
+	}));
 };
 
 ilib.LocaleInfo.prototype = {
@@ -6649,7 +6664,7 @@ ilib.Cal = function() {
  * 
  * @param {Object=} options options controlling the construction of this instance, or
  * undefined to use the default options
- * @returns an instance of a calendar object of the appropriate type
+ * @return {ilib.Cal} an instance of a calendar object of the appropriate type
  */
 ilib.Cal.newInstance = function (options) {
 	var locale = options && options.locale,
@@ -6681,7 +6696,7 @@ ilib.Cal._constructors = {};
 /**
  * Return an array of known calendar types that the factory method can instantiate.
  * 
- * @returns {Array.<string>} an array of calendar types
+ * @return {Array.<string>} an array of calendar types
  */
 ilib.Cal.getCalendars = function () {
 	var arr = [],
@@ -6700,7 +6715,7 @@ ilib.Cal.prototype = {
 	/**
 	 * Return the type of this calendar.
 	 * 
-	 * @returns {string} the name of the type of this calendar 
+	 * @return {string} the name of the type of this calendar 
 	 */
 	getType: function() {
 		throw "Cannot call methods of abstract class ilib.Cal";
@@ -6713,7 +6728,7 @@ ilib.Cal.prototype = {
 	 * where 1=first month, 2=second month, etc.
 	 * 
 	 * @param {number} year a year for which the number of months is sought
-	 * @returns {number} The number of months in the given year
+	 * @return {number} The number of months in the given year
 	 */
 	getNumMonths: function(year) {
 		throw "Cannot call methods of abstract class ilib.Cal";
@@ -6726,7 +6741,7 @@ ilib.Cal.prototype = {
 	 * 
 	 * @param {number} month the month for which the length is sought
 	 * @param {number} year the year within which that month can be found
-	 * @returns {number} the number of days within the given month in the given year
+	 * @return {number} the number of days within the given month in the given year
 	 */
 	getMonLength: function(month, year) {
 		throw "Cannot call methods of abstract class ilib.Cal";
@@ -6737,7 +6752,7 @@ ilib.Cal.prototype = {
 	 * The year parameter may be given as a number.
 	 * 
 	 * @param {number} year the year for which the leap year information is being sought
-	 * @returns {boolean} true if the given year is a leap year
+	 * @return {boolean} true if the given year is a leap year
 	 */
 	isLeapYear: function(year) {
 		throw "Cannot call methods of abstract class ilib.Cal";
@@ -6788,7 +6803,7 @@ ilib.JulianDay.prototype = {
 	 * Return the integral portion of this Julian Day instance. This corresponds to
 	 * the number of days since the beginning of the epoch.
 	 * 
-	 * @returns {number} the integral portion of this Julian Day
+	 * @return {number} the integral portion of this Julian Day
 	 */
 	getDays: function() {
 		return this.days;
@@ -6828,7 +6843,7 @@ ilib.JulianDay.prototype = {
 	
 	/** 
 	 * Return the Julian Day expressed as a floating point number.
-	 * @returns {number} the Julian Day as a number
+	 * @return {number} the Julian Day as a number
 	 */
 	getDate: function () {
 		return this.jd;
@@ -6923,7 +6938,7 @@ ilib.Cal.Gregorian.monthLengths = [
  * where 1=first month, 2=second month, etc.
  * 
  * @param {number} year a year for which the number of months is sought
- * @returns {number} The number of months in the given year
+ * @return {number} The number of months in the given year
  */
 ilib.Cal.Gregorian.prototype.getNumMonths = function(year) {
 	return 12;
@@ -6936,7 +6951,7 @@ ilib.Cal.Gregorian.prototype.getNumMonths = function(year) {
  * 
  * @param {number} month the month for which the length is sought
  * @param {number} year the year within which that month can be found
- * @returns {number} the number of days within the given month in the given year
+ * @return {number} the number of days within the given month in the given year
  */
 ilib.Cal.Gregorian.prototype.getMonLength = function(month, year) {
 	if (month !== 2 || !this.isLeapYear(year)) {
@@ -6950,7 +6965,7 @@ ilib.Cal.Gregorian.prototype.getMonLength = function(month, year) {
  * Return true if the given year is a leap year in the Gregorian calendar.
  * The year parameter may be given as a number, or as a GregDate object.
  * @param {number|ilib.Date.GregDate} year the year for which the leap year information is being sought
- * @returns {boolean} true if the given year is a leap year
+ * @return {boolean} true if the given year is a leap year
  */
 ilib.Cal.Gregorian.prototype.isLeapYear = function(year) {
 	var y = (typeof(year) === 'number' ? year : year.getYears());
@@ -6961,7 +6976,7 @@ ilib.Cal.Gregorian.prototype.isLeapYear = function(year) {
 /**
  * Return the type of this calendar.
  * 
- * @returns {string} the name of the type of this calendar 
+ * @return {string} the name of the type of this calendar 
  */
 ilib.Cal.Gregorian.prototype.getType = function() {
 	return this.type;
@@ -6972,7 +6987,7 @@ ilib.Cal.Gregorian.prototype.getType = function() {
  * options.
  * @param {Object} options options controlling the construction of 
  * the date instance
- * @returns {ilib.Date} a date appropriate for this calendar type
+ * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Gregorian.prototype.newDateInstance = function (options) {
 	return new ilib.Date.GregDate(options);
@@ -7170,7 +7185,7 @@ ilib.Date.GregDate.epoch = 1721424.5;
  * Return the Rata Die (fixed day) number of the given date.
  * 
  * @param {Object} date the date components to calculate
- * @returns {number} the rd date as a number
+ * @return {number} the rd date as a number
  */
 ilib.Date.GregDate.prototype.calcRataDie = function(date) {
 	var years = 365 * (date.year - 1) +
@@ -7199,7 +7214,7 @@ ilib.Date.GregDate.prototype.calcRataDie = function(date) {
  * @private
  * Return the Rata Die (fixed day) number of this date.
  * 
- * @returns {number} the rd date as a number
+ * @return {number} the rd date as a number
  */
 ilib.Date.GregDate.prototype.getRataDie = function() {
 	return this.calcRataDie(this);
@@ -7209,7 +7224,7 @@ ilib.Date.GregDate.prototype.getRataDie = function() {
  * @private
  * Calculate date components for the given RD date.
  * @param {number} rd the RD date to calculate components for
- * @returns {Object} object containing the component fields
+ * @return {Object} object containing the component fields
  */
 ilib.Date.GregDate.prototype.calcComponents = function (rd) {
 	var days400,
@@ -7356,7 +7371,7 @@ ilib.Date.GregDate.prototype.setJulianDay = function (date) {
  * Return the day of the week of this date. The day of the week is encoded
  * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
  * 
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.GregDate.prototype.getDayOfWeek = function() {
 	var rd = Math.floor(this.getRataDie());
@@ -7370,7 +7385,7 @@ ilib.Date.GregDate.prototype.getDayOfWeek = function() {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.GregDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
 	return rd - ilib.mod(Math.floor(rd) - dayOfWeek, 7);
@@ -7383,7 +7398,7 @@ ilib.Date.GregDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.GregDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
 	return this.onOrBeforeRd(rd+6, dayOfWeek);
@@ -7396,7 +7411,7 @@ ilib.Date.GregDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.GregDate.prototype.beforeRd = function(rd, dayOfWeek) {
 	return this.onOrBeforeRd(rd-1, dayOfWeek);
@@ -7409,7 +7424,7 @@ ilib.Date.GregDate.prototype.beforeRd = function(rd, dayOfWeek) {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.GregDate.prototype.afterRd = function(rd, dayOfWeek) {
 	return this.onOrBeforeRd(rd+7, dayOfWeek);
@@ -7419,7 +7434,7 @@ ilib.Date.GregDate.prototype.afterRd = function(rd, dayOfWeek) {
  * @private
  * Return the rd of the first Sunday of the given ISO year.
  * @param {number} year the year for which the first Sunday is being sought
- * @returns the rd of the first Sunday of the ISO year
+ * @return the rd of the first Sunday of the ISO year
  */
 ilib.Date.GregDate.prototype.firstSunday = function (year) {
 	var jan1 = this.calcRataDie({
@@ -7441,7 +7456,7 @@ ilib.Date.GregDate.prototype.firstSunday = function (year) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week before the current date that is being sought
- * @returns {ilib.Date.GregDate} the date being sought
+ * @return {ilib.Date.GregDate} the date being sought
  */
 ilib.Date.GregDate.prototype.before = function (dow) {
 	return new ilib.Date.GregDate({rd: this.beforeRd(this.getRataDie(), dow)});
@@ -7453,7 +7468,7 @@ ilib.Date.GregDate.prototype.before = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week after the current date that is being sought
- * @returns {ilib.Date.GregDate} the date being sought
+ * @return {ilib.Date.GregDate} the date being sought
  */
 ilib.Date.GregDate.prototype.after = function (dow) {
 	return new ilib.Date.GregDate({rd: this.afterRd(this.getRataDie(), dow)});
@@ -7465,7 +7480,7 @@ ilib.Date.GregDate.prototype.after = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week on or before the current date that is being sought
- * @returns {ilib.Date.GregDate} the date being sought
+ * @return {ilib.Date.GregDate} the date being sought
  */
 ilib.Date.GregDate.prototype.onOrBefore = function (dow) {
 	return new ilib.Date.GregDate({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
@@ -7477,7 +7492,7 @@ ilib.Date.GregDate.prototype.onOrBefore = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week on or after the current date that is being sought
- * @returns {ilib.Date.GregDate} the date being sought
+ * @return {ilib.Date.GregDate} the date being sought
  */
 ilib.Date.GregDate.prototype.onOrAfter = function (dow) {
 	return new ilib.Date.GregDate({rd: this.onOrAfterRd(this.getRataDie(), dow)});
@@ -7488,7 +7503,7 @@ ilib.Date.GregDate.prototype.onOrAfter = function (dow) {
  * number ranges from 1 to 53, as some years have 53 weeks assigned to them, and most
  * only 52.
  * 
- * @returns {number} the week number for the current date
+ * @return {number} the week number for the current date
  */
 ilib.Date.GregDate.prototype.getWeekOfYear = function() {
 	var rd = Math.floor(this.getRataDie()),
@@ -7513,7 +7528,7 @@ ilib.Date.GregDate.prototype.getWeekOfYear = function() {
  * Return the ordinal day of the year. Days are counted from 1 and proceed linearly up to 
  * 365, regardless of months or weeks, etc. That is, January 1st is day 1, and 
  * December 31st is 365 in regular years, or 366 in leap years.
- * @returns {number} the ordinal day of the year
+ * @return {number} the ordinal day of the year
  */
 ilib.Date.GregDate.prototype.getDayOfYear = function() {
 	var cumulativeMap = this.cal.isLeapYear(this.year) ? 
@@ -7535,7 +7550,7 @@ ilib.Date.GregDate.prototype.getDayOfYear = function() {
  * 
  * @param {ilib.Locale|string} locale the locale or locale spec to use when figuring out 
  * the first day of the week
- * @returns {number} the ordinal number of the week within the current month
+ * @return {number} the ordinal number of the week within the current month
  */
 ilib.Date.GregDate.prototype.getWeekOfMonth = function(locale) {
 	var li = new ilib.LocaleInfo(locale),
@@ -7566,7 +7581,7 @@ ilib.Date.GregDate.prototype.getWeekOfMonth = function(locale) {
  * there is a year 0, so any years that are negative or zero are BCE. In the Julian
  * calendar, there is no year 0. Instead, the calendar goes straight from year -1 to 
  * 1.
- * @returns {number} 1 if this date is in the common era, -1 if it is before the 
+ * @return {number} 1 if this date is in the common era, -1 if it is before the 
  * common era 
  */
 ilib.Date.GregDate.prototype.getEra = function() {
@@ -7581,7 +7596,7 @@ ilib.Date.GregDate.prototype.getEra = function() {
  * encodes a date outside of that range, this method will return -1. This method
  * returns the time in the local time zone, not in UTC.
  * 
- * @returns {number} a number giving the unix time, or -1 if the date is outside the
+ * @return {number} a number giving the unix time, or -1 if the date is outside the
  * valid unix time range
  */
 ilib.Date.GregDate.prototype.getTime = function() {
@@ -7627,7 +7642,7 @@ ilib.Date.GregDate.prototype.setTime = function(millis) {
  * Return a Javascript Date object that is equivalent to this Gregorian date
  * object.
  * 
- * @returns {Date|undefined} a javascript Date object
+ * @return {Date|undefined} a javascript Date object
  */
 ilib.Date.GregDate.prototype.getJSDate = function() {
 	var unix = this.getTime();
@@ -7841,14 +7856,14 @@ ilib.TimeZone = function(options) {
 	if (!this.id) {
 		var li = new ilib.LocaleInfo(this.locale, {
 			sync: sync,
-			onLoad: function (li) {
+			onLoad: ilib.bind(this, function (li) {
 				this.id = li.getTimeZone() || "Etc/UTC";
 				this._inittz();
 				
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
 				}
-			}.bind(this)
+			})
 		});
 	} else {
 		this._inittz();
@@ -7875,7 +7890,7 @@ ilib.TimeZone.prototype._inittz = function () {
 
 /**
  * Return an array of available zone ids that the constructor knows about.
- * @returns {Array.<string>} an array of zone id strings
+ * @return {Array.<string>} an array of zone id strings
  */
 ilib.TimeZone.getAvailableIds = function () {
 	var tz, ids = [];
@@ -7894,7 +7909,7 @@ ilib.TimeZone.getAvailableIds = function () {
 
 /**
  * Return the id used to uniquely identify this time zone.
- * @returns {string} a unique id for this time zone
+ * @return {string} a unique id for this time zone
  */
 ilib.TimeZone.prototype.getId = function () {
 	return this.id;
@@ -7916,7 +7931,7 @@ ilib.TimeZone.prototype.getId = function () {
  *  
  * @param {ilib.Date=} date a date to determine if it is in daylight time or standard time
  * @param {string=} style one of "standard" or "rfc822". Default if not specified is "standard"
- * @returns {string} the name of the time zone, abbreviated according to the style 
+ * @return {string} the name of the time zone, abbreviated according to the style 
  */
 ilib.TimeZone.prototype.getDisplayName = function (date, style) {
 	style = (this.isLocal || typeof(this.zone) === 'undefined') ? "rfc822" : (style || "standard");
@@ -7964,7 +7979,7 @@ ilib.TimeZone.prototype.getDisplayName = function (date, style) {
  * to indicate the hours, minutes, and seconds.
  * 
  * @param {string} str the offset string to convert to an object
- * @returns {Object.<{h:number,m:number,s:number}>} an object giving the offset for the zone at 
+ * @return {Object.<{h:number,m:number,s:number}>} an object giving the offset for the zone at 
  * the given date/time, in hours, minutes, and seconds
  */
 ilib.TimeZone.prototype._offsetStringToObj = function (str) {
@@ -8077,7 +8092,7 @@ ilib.TimeZone.prototype.getOffsetStr = function (date) {
 
 /**
  * Gets the offset from UTC for this time zone.
- * @returns {Object.<{h:number,m:number,s:number}>} an object giving the offset from 
+ * @return {Object.<{h:number,m:number,s:number}>} an object giving the offset from 
  * UTC for this time zone, in hours, minutes, and seconds 
  */
 ilib.TimeZone.prototype.getRawOffset = function () {
@@ -8099,7 +8114,7 @@ ilib.TimeZone.prototype.getRawOffset = function () {
  * Gets the offset from UTC for this time zone expressed in milliseconds. Negative numbers
  * indicate zones west of UTC, and positive numbers indicate zones east of UTC.
  * 
- * @returns {number} an number giving the offset from 
+ * @return {number} an number giving the offset from 
  * UTC for this time zone in milliseconds 
  */
 ilib.TimeZone.prototype.getRawOffsetMillis = function () {
@@ -8111,7 +8126,7 @@ ilib.TimeZone.prototype.getRawOffsetMillis = function () {
 
 /**
  * Gets the offset from UTC for this time zone.
- * @returns {string} the offset from UTC for this time zone, in the format "h:m:s" 
+ * @return {string} the offset from UTC for this time zone, in the format "h:m:s" 
  */
 ilib.TimeZone.prototype.getRawOffsetStr = function () {
 	if (this.isLocal) {
@@ -8128,7 +8143,7 @@ ilib.TimeZone.prototype.getRawOffsetStr = function () {
 /**
  * Return the amount of time in hours:minutes that the clock is advanced during
  * daylight savings time.
- * @returns {Object.<{h:number,m:number,s:number}>} the amount of time that the 
+ * @return {Object.<{h:number,m:number,s:number}>} the amount of time that the 
  * clock advances for DST in hours, minutes, and seconds 
  */
 ilib.TimeZone.prototype.getDSTSavings = function () {
@@ -8151,7 +8166,7 @@ ilib.TimeZone.prototype.getDSTSavings = function () {
 /**
  * Return the amount of time in hours:minutes that the clock is advanced during
  * daylight savings time.
- * @returns {string} the amount of time that the clock advances for DST in the
+ * @return {string} the amount of time that the clock advances for DST in the
  * format "h:m:s"
  */
 ilib.TimeZone.prototype.getDSTSavingsStr = function () {
@@ -8169,7 +8184,7 @@ ilib.TimeZone.prototype.getDSTSavingsStr = function () {
  * return the rd of the start of DST transition for the given year
  * @param {Object} rule set of rules
  * @param {number} year year to check
- * @returns {number} the rd of the start of DST for the year
+ * @return {number} the rd of the start of DST for the year
  */
 ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 	var type, 
@@ -8333,7 +8348,7 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 /**
  * Returns true if this time zone switches to daylight savings time at some point
  * in the year, and false otherwise.
- * @returns {boolean} true if the time zone uses daylight savings time
+ * @return {boolean} true if the time zone uses daylight savings time
  */
 ilib.TimeZone.prototype.useDaylightTime = function () {
 	// this zone uses daylight savings time iff there is a rule defining when to start
@@ -8421,8 +8436,10 @@ ilib.data.pseudomap = {
  * <li><i>locale</i> - The locale of the strings to load. If not specified, the default
  * locale is the the default for the web page or app in which the bundle is 
  * being loaded.
+ * 
  * <li><i>name</i> - Base name of the resource bundle to load. If not specified the default
  * base name is "resources".
+ * 
  * <li><i>type</i> - Name the type of strings this bundle contains. Valid values are 
  * "xml", "html", "text", or "raw". The default is "text". If the type is "xml" or "html",
  * then XML/HTML entities and tags are not pseudo-translated. During a real translation, 
@@ -8432,16 +8449,29 @@ ilib.data.pseudomap = {
  * are. If the type is "xml", "html", or "text" types, then the replacement parameter names
  * are not pseudo-translated as well so that the output can be used for formatting with 
  * the ilib.String class. If the type is raw, all characters are pseudo-translated, 
- * including replacement parameters as well as XML/HTML tags and entities.  
+ * including replacement parameters as well as XML/HTML tags and entities.
+ * 
  * <li><i>lengthen</i> - when pseudo-translating the string, tell whether or not to 
  * automatically lengthen the string to simulate "long" languages such as German
  * or French. This is a boolean value. Default is false. 
- * <li>onLoad - a callback function to call when the resources are fully 
+ * 
+ * <li><i>onLoad</i> - a callback function to call when the resources are fully 
  * loaded. When the onLoad option is given, this class will attempt to
  * load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
  * The locale option may be given as a locale spec string or as an 
@@ -8545,6 +8575,7 @@ ilib.ResBundle = function (options) {
 	this.locale = new ilib.Locale();	// use the default locale
 	this.baseName = "strings";
 	this.type = "text";
+	this.loadParams = {};
 	
 	if (options) {
 		if (options.locale) {
@@ -8563,58 +8594,32 @@ ilib.ResBundle = function (options) {
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync == true);
 		}
+		
+		if (typeof(options.loadParams) !== 'undefined') {
+			this.loadParams = options.loadParams;
+		}
 	}
 	
 	this.map = {};
 
-	if (!ilib.ResBundle.cache) {
-		ilib.ResBundle.cache = {};
+	if (!ilib.ResBundle[this.baseName]) {
+		ilib.ResBundle[this.baseName] = {};
 	}
 
 	lookupLocale = this.locale.isPseudo() ? new ilib.Locale() : this.locale;
-	spec = lookupLocale.getSpec().replace(/-/g, '_');
 	
-	if (typeof(ilib.ResBundle.cache[this.baseName]) === 'undefined') {
-		ilib.ResBundle.cache[this.baseName] = {};
-	}
-	
-	if (typeof(ilib.ResBundle.cache[this.baseName][spec]) !== 'undefined') {
-		this.map = ilib.ResBundle.cache[this.baseName][spec];
+	ilib.loadData(ilib.ResBundle[this.baseName], lookupLocale, this.baseName, sync, this.loadParams, ilib.bind(this, function (map) {
+		if (!map) {
+			map = ilib.data[this.baseName] || {};
+			spec = lookupLocale.getSpec().replace(/-/g, '_');
+			ilib.ResBundle[this.baseName].cache[spec] = map;
+		}
+		this.map = map;
 		if (options && typeof(options.onLoad) === 'function') {
 			options.onLoad(this);
 		}
-	} else {
-		this.map = ilib.mergeLocData(this.baseName, lookupLocale);
-		if (this.map) {
-			ilib.ResBundle.cache[this.baseName][spec] = this.map;
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		} else if (typeof(ilib._load) === 'function') {
-			// locale is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles(this.locale, this.baseName);
-			
-			ilib._load(files, sync, function(arr) {
-				this.map = {};
-				for (var i = 0; i < arr.length; i++) {
-					if (typeof(arr[i]) !== 'undefined') {
-						this.map = ilib.merge(this.map, arr[i]);
-					}
-				}
-				ilib.ResBundle.cache[this.baseName][spec] = this.map;
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}
-			}.bind(this));
-		} else {
-			this.map = ilib.data[this.baseName] || {};
-			ilib.ResBundle.cache[this.baseName][spec] = this.map;
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		}
-	}	
-	
+	}));
+
 	// console.log("Merged resources " + this.locale.toString() + " are: " + JSON.stringify(this.map));
 	//if (!this.locale.isPseudo() && ilib.isEmpty(this.map)) {
 	//	console.log("Resources for bundle " + this.baseName + " locale " + this.locale.toString() + " are not available.");
@@ -8624,7 +8629,7 @@ ilib.ResBundle = function (options) {
 ilib.ResBundle.prototype = {
 	/**
 	 * Return the locale of this resource bundle.
-	 * @returns {ilib.Locale} the locale of this resource bundle object 
+	 * @return {ilib.Locale} the locale of this resource bundle object 
 	 */
 	getLocale: function () {
 		return this.locale;
@@ -8633,7 +8638,7 @@ ilib.ResBundle.prototype = {
 	/**
 	 * Return the name of this resource bundle. This corresponds to the name option
 	 * given to the constructor.
-	 * @returns {string} name of the the current instance
+	 * @return {string} name of the the current instance
 	 */
 	getName: function () {
 		return this.baseName;
@@ -8642,7 +8647,7 @@ ilib.ResBundle.prototype = {
 	/**
 	 * Return the type of this resource bundle. This corresponds to the type option
 	 * given to the constructor.
-	 * @returns {string} type of the the current instance
+	 * @return {string} type of the the current instance
 	 */
 	getType: function () {
 		return this.type;
@@ -8783,7 +8788,7 @@ ilib.ResBundle.prototype = {
 	 * @param {?string=} source the source string to translate
 	 * @param {?string=} key optional name of the key, if any
 	 * @param {?string=} escapeMode escape mode, if any
-	 * @returns {ilib.String|undefined} the translation of the given source/key or undefined 
+	 * @return {ilib.String|undefined} the translation of the given source/key or undefined 
 	 * if the translation is not found and the source is undefined 
 	 */
 	getString: function (source, key, escapeMode) {
@@ -8821,7 +8826,7 @@ ilib.ResBundle.prototype = {
 	 * 
 	 * @param {?string=} source source string to look up
 	 * @param {?string=} key key to look up
-	 * @returns {boolean} true if this bundle contains a translation for the key, and 
+	 * @return {boolean} true if this bundle contains a translation for the key, and 
 	 * false otherwise
 	 */
 	containsKey: function(source, key) {
@@ -8852,7 +8857,7 @@ ilib.ResBundle.prototype = {
 	 * general rule-of-thumb, resources should be as generic as possible in order to
 	 * cover as many locales as possible.
 	 * 
-	 * @returns {Object} returns the object that is the basis for this resources instance
+	 * @return {Object} returns the object that is the basis for this resources instance
 	 */
 	getResObj: function () {
 		return this.map;
@@ -14587,7 +14592,7 @@ ilib.DateFmt = function(options) {
 
 	new ilib.LocaleInfo(this.locale, {
 		sync: sync,
-		onLoad: function (li) {
+		onLoad: ilib.bind(this, function (li) {
 			this.locinfo = li;
 			
 			// get the default calendar name from the locale, and if the locale doesn't define
@@ -14616,45 +14621,31 @@ ilib.DateFmt = function(options) {
 				locale: this.locale,
 				name: "sysres",
 				sync: sync,
-				onLoad: function (rb) {
+				onLoad: ilib.bind(this, function (rb) {
 					this.sysres = rb;
+					
 					if (!this.template) {
-						var spec = this.locale.getSpec().replace(/-/g, '_');
-						if (typeof(ilib.DateFmt.cache[spec]) !== 'undefined') {
-							formats = ilib.DateFmt.cache[spec];
-						} else {
-							formats = ilib.mergeLocData("dateformats", this.locale);
+						ilib.loadData(ilib.DateFmt, this.locale, "dateformats", sync, this.loadParams, ilib.bind(this, function (formats) {
 							if (!formats) {
-								if (typeof(ilib._load) === 'function') {
-									var files = ilib.getLocFiles(this.locale, "dateformats");
-									ilib._load(files, sync, function(arr) {
-										formats = {};
-										for (var i = 0; i < arr.length; i++) {
-											if (typeof(arr[i]) !== 'undefined') {
-												formats = ilib.merge(formats, arr[i]);
-											}
-										}
-										this._initTemplate(formats);
-										this._massageTemplate();
-										if (options && typeof(options.onLoad) === 'function') {
-											options.onLoad(this);
-										}
-									}.bind(this));
-									return;
-								}
 								formats = ilib.data.dateformats;
+								var spec = this.locale.getSpec().replace(/-/g, '_');
+								ilib.DateFmt.cache[spec] = formats;
 							}
+							this._initTemplate(formats);
+							this._massageTemplate();
+							if (options && typeof(options.onLoad) === 'function') {
+								options.onLoad(this);
+							}
+						}));
+					} else {
+						this._massageTemplate();
+						if (options && typeof(options.onLoad) === 'function') {
+							options.onLoad(this);
 						}
-						this._initTemplate(formats);
-						ilib.DateFmt.cache[spec] = formats;
 					}
-					this._massageTemplate();
-					if (options && typeof(options.onLoad) === 'function') {
-						options.onLoad(this);
-					}
-				}.bind(this)
+				})
 			});	
-		}.bind(this)
+		})
 	});
 };
 
@@ -14765,7 +14756,7 @@ ilib.DateFmt.prototype = {
 	 * @protected
 	 * Convert the template into an array of date components separated by formatting chars.
 	 * @param {string} template Format template to tokenize into components
-	 * @returns {Array.<string>} a tokenized array of date format components
+	 * @return {Array.<string>} a tokenized array of date format components
 	 */
 	_tokenize: function (template) {
 		var i = 0, start, ch, letter, arr = [];
@@ -14809,7 +14800,7 @@ ilib.DateFmt.prototype = {
 	 * @param {Object.<string, (string|{s:string,m:string,l:string,f:string})>} obj Object to search
 	 * @param {string} components Format components to search
 	 * @param {string} length Length of the requested format
-	 * @returns {string|undefined} the requested format
+	 * @return {string|undefined} the requested format
 	 */
 	_getFormat: function getFormat(obj, components, length) {
 		if (typeof(components) !== 'undefined' && obj[components]) {
@@ -14822,7 +14813,7 @@ ilib.DateFmt.prototype = {
 	 * @protected
 	 * @param {(string|{s:string,m:string,l:string,f:string})} obj Object to search
 	 * @param {string} length Length of the requested format
-	 * @returns {(string|undefined)} the requested format
+	 * @return {(string|undefined)} the requested format
 	 */
 	_getLengthFormat: function getLengthFormat(obj, length) {
 		if (typeof(obj) === 'string') {
@@ -14835,7 +14826,7 @@ ilib.DateFmt.prototype = {
 
 	/**
 	 * Return the locale used with this formatter instance.
-	 * @returns {ilib.Locale} the ilib.Locale instance for this formatter
+	 * @return {ilib.Locale} the ilib.Locale instance for this formatter
 	 */
 	getLocale: function() {
 		return this.locale;
@@ -14848,7 +14839,7 @@ ilib.DateFmt.prototype = {
 	 * will build the appropriate template according to the options and use that template
 	 * in the format method. 
 	 * 
-	 * @returns {string} the format template for this formatter
+	 * @return {string} the format template for this formatter
 	 */
 	getTemplate: function() {
 		return this.template;
@@ -14857,7 +14848,7 @@ ilib.DateFmt.prototype = {
 	/**
 	 * Return the type of this formatter. The type is a string that has one of the following
 	 * values: "time", "date", "datetime".
-	 * @returns {string} the type of the formatter
+	 * @return {string} the type of the formatter
 	 */
 	getType: function() {
 		return this.type;
@@ -14866,7 +14857,7 @@ ilib.DateFmt.prototype = {
 	/**
 	 * Return the name of the calendar used to format date/times for this
 	 * formatter instance.
-	 * @returns {string} the name of the calendar used by this formatter
+	 * @return {string} the name of the calendar used by this formatter
 	 */
 	getCalendar: function () {
 		return this.cal.getType();
@@ -14876,7 +14867,7 @@ ilib.DateFmt.prototype = {
 	 * Return the length used to format date/times in this formatter. This is either the
 	 * value of the length option to the constructor, or the default value.
 	 * 
-	 * @returns {string} the length of formats this formatter returns
+	 * @return {string} the length of formats this formatter returns
 	 */
 	getLength: function () {
 		return ilib.DateFmt.lenmap[this.length] || "";
@@ -14890,7 +14881,7 @@ ilib.DateFmt.prototype = {
 	 * constructor, but this method will reorder the given components to a standard 
 	 * order.
 	 * 
-	 * @returns {string} the date components that this formatter formats
+	 * @return {string} the date components that this formatter formats
 	 */
 	getDateComponents: function () {
 		return this.dateComponents || "";
@@ -14904,7 +14895,7 @@ ilib.DateFmt.prototype = {
 	 * constructor, but this method will reorder the given components to a standard 
 	 * order.
 	 * 
-	 * @returns {string} the time components that this formatter formats
+	 * @return {string} the time components that this formatter formats
 	 */
 	getTimeComponents: function () {
 		return this.timeComponents || "";
@@ -14930,7 +14921,7 @@ ilib.DateFmt.prototype = {
 	/**
 	 * Return the clock option set in the constructor. If the clock option was
 	 * not given, the default from the locale is returned instead.
-	 * @returns {string} "12" or "24" depending on whether this formatter uses
+	 * @return {string} "12" or "24" depending on whether this formatter uses
 	 * the 12-hour or 24-hour clock
 	 */
 	getClock: function () {
@@ -14965,7 +14956,7 @@ ilib.DateFmt.prototype = {
 	 * Format a date according to a sequence of components. 
 	 * @param {ilib.Date} date a date/time object to format
 	 * @param {Array.<string>} templateArr an array of components to format
-	 * @returns {string} the formatted date
+	 * @return {string} the formatted date
 	 */
 	_formatTemplate: function (date, templateArr) {
 		var i, key, temp, tz, str = "";
@@ -15143,7 +15134,7 @@ ilib.DateFmt.prototype = {
 	 * produce bogus results.
 	 * 
 	 * @param {ilib.Date} date a date to format
-	 * @returns {string} the formatted version of the given date instance
+	 * @return {string} the formatted version of the given date instance
 	 */
 	format: function (date) {
 		if (!date.getCalendar || date.getCalendar() !== this.calName) {
@@ -15490,7 +15481,7 @@ ilib.DateRngFmt = function(options) {
 	/**
 	 * @private
 	 */
-	opts.onLoad = function (fmt) {
+	opts.onLoad = ilib.bind(this, function (fmt) {
 		this.dateFmt = fmt;
 		if (fmt) {
 			this.locinfo = this.dateFmt.locinfo;
@@ -15515,7 +15506,7 @@ ilib.DateRngFmt = function(options) {
 				options.onLoad(this);
 			}
 		}
-	}.bind(this);
+	});
 
 	// delegate a bunch of the formatting to this formatter
 	new ilib.DateFmt(opts);
@@ -15524,7 +15515,7 @@ ilib.DateRngFmt = function(options) {
 ilib.DateRngFmt.prototype = {
 	/**
 	 * Return the locale used with this formatter instance.
-	 * @returns {ilib.Locale} the ilib.Locale instance for this formatter
+	 * @return {ilib.Locale} the ilib.Locale instance for this formatter
 	 */
 	getLocale: function() {
 		return this.locale;
@@ -15533,7 +15524,7 @@ ilib.DateRngFmt.prototype = {
 	/**
 	 * Return the name of the calendar used to format date/times for this
 	 * formatter instance.
-	 * @returns {string} the name of the calendar used by this formatter
+	 * @return {string} the name of the calendar used by this formatter
 	 */
 	getCalendar: function () {
 		return this.dateFmt.getCalendar();
@@ -15543,7 +15534,7 @@ ilib.DateRngFmt.prototype = {
 	 * Return the length used to format date/times in this formatter. This is either the
 	 * value of the length option to the constructor, or the default value.
 	 * 
-	 * @returns {string} the length of formats this formatter returns
+	 * @return {string} the length of formats this formatter returns
 	 */
 	getLength: function () {
 		return ilib.DateFmt.lenmap[this.length] || "";
@@ -15561,7 +15552,7 @@ ilib.DateRngFmt.prototype = {
 	/**
 	 * Return the clock option set in the constructor. If the clock option was
 	 * not given, the default from the locale is returned instead.
-	 * @returns {string} "12" or "24" depending on whether this formatter uses
+	 * @return {string} "12" or "24" depending on whether this formatter uses
 	 * the 12-hour or 24-hour clock
 	 */
 	getClock: function () {
@@ -16841,7 +16832,7 @@ ilib.Cal.Islamic.prototype.getNumMonths = function(year) {
  *
  * @param {number} month the month for which the length is sought
  * @param {number} year the year within which that month can be found
- * @returns {number} the number of days within the given month in the given year
+ * @return {number} the number of days within the given month in the given year
  */
 ilib.Cal.Islamic.prototype.getMonLength = function(month, year) {
 	if (month !== 12) {
@@ -16855,7 +16846,7 @@ ilib.Cal.Islamic.prototype.getMonLength = function(month, year) {
  * Return true if the given year is a leap year in the Islamic calendar.
  * The year parameter may be given as a number, or as a IslamicDate object.
  * @param {number} year the year for which the leap year information is being sought
- * @returns {boolean} true if the given year is a leap year
+ * @return {boolean} true if the given year is a leap year
  */
 ilib.Cal.Islamic.prototype.isLeapYear = function(year) {
 	return (ilib.mod((14 + 11 * year), 30) < 11);
@@ -16864,7 +16855,7 @@ ilib.Cal.Islamic.prototype.isLeapYear = function(year) {
 /**
  * Return the type of this calendar.
  * 
- * @returns {string} the name of the type of this calendar 
+ * @return {string} the name of the type of this calendar 
  */
 ilib.Cal.Islamic.prototype.getType = function() {
 	return this.type;
@@ -16875,7 +16866,7 @@ ilib.Cal.Islamic.prototype.getType = function() {
  * options.
  * @param {Object} options options controlling the construction of 
  * the date instance
- * @returns {ilib.Date} a date appropriate for this calendar type
+ * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Islamic.prototype.newDateInstance = function (options) {
 	return new ilib.Date.IslamicDate(options);
@@ -17610,7 +17601,7 @@ ilib.Cal.Julian.prototype.getNumMonths = function(year) {
  * 
  * @param {number} month the month for which the length is sought
  * @param {number} year the year within which that month can be found
- * @returns {number} the number of days within the given month in the given year
+ * @return {number} the number of days within the given month in the given year
  */
 ilib.Cal.Julian.prototype.getMonLength = function(month, year) {
 	if (month !== 2 || !this.isLeapYear(year)) {
@@ -17624,7 +17615,7 @@ ilib.Cal.Julian.prototype.getMonLength = function(month, year) {
  * Return true if the given year is a leap year in the Julian calendar.
  * The year parameter may be given as a number, or as a JulDate object.
  * @param {number|ilib.Date.JulDate} year the year for which the leap year information is being sought
- * @returns {boolean} true if the given year is a leap year
+ * @return {boolean} true if the given year is a leap year
  */
 ilib.Cal.Julian.prototype.isLeapYear = function(year) {
 	var y = (typeof(year) === 'number' ? year : year.year);
@@ -17634,7 +17625,7 @@ ilib.Cal.Julian.prototype.isLeapYear = function(year) {
 /**
  * Return the type of this calendar.
  * 
- * @returns {string} the name of the type of this calendar 
+ * @return {string} the name of the type of this calendar 
  */
 ilib.Cal.Julian.prototype.getType = function() {
 	return this.type;
@@ -17645,7 +17636,7 @@ ilib.Cal.Julian.prototype.getType = function() {
  * options.
  * @param {Object} options options controlling the construction of 
  * the date instance
- * @returns {ilib.Date} a date appropriate for this calendar type
+ * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.Julian.prototype.newDateInstance = function (options) {
 	return new ilib.Date.JulDate(options);
@@ -17895,7 +17886,7 @@ ilib.Date.JulDate.prototype.calcRataDie = function(parts) {
  * @private
  * Return the Rata Die (fixed day) number of this date.
  * 
- * @returns {number} the rd date as a number
+ * @return {number} the rd date as a number
  */
 ilib.Date.JulDate.prototype.getRataDie = function() {
 	return this.calcRataDie(this);
@@ -17905,7 +17896,7 @@ ilib.Date.JulDate.prototype.getRataDie = function() {
  * @private
  * Calculate date components for the given RD date.
  * @param {number} rd the RD date to calculate components for
- * @returns {Object} object containing the component fields
+ * @return {Object} object containing the component fields
  */
 ilib.Date.JulDate.prototype.calcComponents = function (rd) {
 	var year,
@@ -17986,7 +17977,7 @@ ilib.Date.JulDate.prototype.setJulianDay = function (date) {
  * Return the day of the week of this date. The day of the week is encoded
  * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
  * 
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.JulDate.prototype.getDayOfWeek = function() {
 	var rd = Math.floor(this.getRataDie());
@@ -18000,7 +17991,7 @@ ilib.Date.JulDate.prototype.getDayOfWeek = function() {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.JulDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
 	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 2, 7);
@@ -18013,7 +18004,7 @@ ilib.Date.JulDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.JulDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
 	return this.onOrBeforeRd(rd+6, dayOfWeek);
@@ -18026,7 +18017,7 @@ ilib.Date.JulDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.JulDate.prototype.beforeRd = function(rd, dayOfWeek) {
 	return this.onOrBeforeRd(rd-1, dayOfWeek);
@@ -18039,7 +18030,7 @@ ilib.Date.JulDate.prototype.beforeRd = function(rd, dayOfWeek) {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.JulDate.prototype.afterRd = function(rd, dayOfWeek) {
 	return this.onOrBeforeRd(rd+7, dayOfWeek);
@@ -18049,7 +18040,7 @@ ilib.Date.JulDate.prototype.afterRd = function(rd, dayOfWeek) {
  * @private
  * Return the rd of the first Sunday of the given ISO year.
  * @param {number} year the year for which the first Sunday is being sought
- * @returns the rd of the first Sunday of the ISO year
+ * @return the rd of the first Sunday of the ISO year
  */
 ilib.Date.JulDate.prototype.firstSunday = function (year) {
 	var jan1 = this.calcRataDie({
@@ -18071,7 +18062,7 @@ ilib.Date.JulDate.prototype.firstSunday = function (year) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week before the current date that is being sought
- * @returns {ilib.Date.JulDate} the date being sought
+ * @return {ilib.Date.JulDate} the date being sought
  */
 ilib.Date.JulDate.prototype.before = function (dow) {
 	return new ilib.Date.JulDate({rd: this.beforeRd(this.getRataDie(), dow)});
@@ -18083,7 +18074,7 @@ ilib.Date.JulDate.prototype.before = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week after the current date that is being sought
- * @returns {ilib.Date.JulDate} the date being sought
+ * @return {ilib.Date.JulDate} the date being sought
  */
 ilib.Date.JulDate.prototype.after = function (dow) {
 	return new ilib.Date.JulDate({rd: this.afterRd(this.getRataDie(), dow)});
@@ -18095,7 +18086,7 @@ ilib.Date.JulDate.prototype.after = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week on or before the current date that is being sought
- * @returns {ilib.Date.JulDate} the date being sought
+ * @return {ilib.Date.JulDate} the date being sought
  */
 ilib.Date.JulDate.prototype.onOrBefore = function (dow) {
 	return new ilib.Date.JulDate({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
@@ -18107,7 +18098,7 @@ ilib.Date.JulDate.prototype.onOrBefore = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week on or after the current date that is being sought
- * @returns {ilib.Date.JulDate} the date being sought
+ * @return {ilib.Date.JulDate} the date being sought
  */
 ilib.Date.JulDate.prototype.onOrAfter = function (dow) {
 	return new ilib.Date.JulDate({rd: this.onOrAfterRd(this.getRataDie(), dow)});
@@ -18120,7 +18111,7 @@ ilib.Date.JulDate.prototype.onOrAfter = function (dow) {
  * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
  * encodes a date outside of that range, this method will return -1.
  * 
- * @returns {number} a number giving the unix time, or -1 if the date is outside the
+ * @return {number} a number giving the unix time, or -1 if the date is outside the
  * valid unix time range
  */
 ilib.Date.JulDate.prototype.getTime = function() {
@@ -18168,7 +18159,7 @@ ilib.Date.JulDate.prototype.setTime = function(millis) {
  * object. If the julian date object represents a date that cannot be represented
  * by a Javascript Date object, the value undefined is returned
  * 
- * @returns {Date|undefined} a javascript Date object, or undefined if the date is out of range
+ * @return {Date|undefined} a javascript Date object, or undefined if the date is out of range
  */
 ilib.Date.JulDate.prototype.getJSDate = function() {
 	var unix = this.getTime();
@@ -19836,7 +19827,7 @@ ilib.Number = function (str, options) {
 	
 	new ilib.LocaleInfo(this.locale, {
 		sync: sync,
-		onLoad: function (li) {
+		onLoad: ilib.bind(this, function (li) {
 			this.decimal = li.getDecimalSeparator();
 			
 			switch (typeof(str)) {
@@ -19911,12 +19902,12 @@ ilib.Number = function (str, options) {
 						locale: this.locale, 
 						sign: stripped,
 						sync: sync,
-						onLoad: function (cur) {
+						onLoad: ilib.bind(this, function (cur) {
 							this.currency = cur;
 							if (options && typeof(options.onLoad) === 'function') {
 								options.onLoad(this);
 							}				
-						}.bind(this)
+						})
 					});
 					return;
 			}
@@ -19924,14 +19915,14 @@ ilib.Number = function (str, options) {
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
-		}.bind(this)
+		})
 	});
 };
 
 ilib.Number.prototype = {
 	/**
 	 * Return the locale for this formatter instance.
-	 * @returns {ilib.Locale} the locale instance for this formatter
+	 * @return {ilib.Locale} the locale instance for this formatter
 	 */
 	getLocale: function () {
 		return this.locale;
@@ -20866,7 +20857,7 @@ ilib.Currency = function (options) {
 	this.locale = this.locale || new ilib.Locale();
 	
 	new ilib.LocaleInfo(this.locale, {
-		onLoad: function (li) {
+		onLoad: ilib.bind(this, function (li) {
 			this.locinfo = li;
 	    	if (this.code) {
 	    		currInfo = currencies[this.code];
@@ -20910,7 +20901,7 @@ ilib.Currency = function (options) {
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
-		}.bind(this)
+		})
 	});
 };
 
@@ -20918,7 +20909,7 @@ ilib.Currency = function (options) {
  * @static
  * Return an array of the ids for all ISO 4217 currencies that
  * this copy of ilib knows about.
- * @returns {Array.<string>} an array of currency ids that this copy of ilib knows about.
+ * @return {Array.<string>} an array of currency ids that this copy of ilib knows about.
  */
 ilib.Currency.getAvailableCurrencies = function() {
 	var ret = [],
@@ -20939,7 +20930,7 @@ ilib.Currency.getAvailableCurrencies = function() {
 ilib.Currency.prototype = {
 	/**
 	 * Return the ISO 4217 currency code for this instance.
-	 * @returns {string} the ISO 4217 currency code for this instance
+	 * @return {string} the ISO 4217 currency code for this instance
 	 */
 	getCode: function () {
 		return this.code;
@@ -20948,7 +20939,7 @@ ilib.Currency.prototype = {
 	/**
 	 * Return the default number of fraction digits that is typically used
 	 * with this type of currency.
-	 * @returns {number} the number of fraction digits for this currency
+	 * @return {number} the number of fraction digits for this currency
 	 */
 	getFractionDigits: function () {
 		return this.fractionDigits;
@@ -20956,7 +20947,7 @@ ilib.Currency.prototype = {
 	
 	/**
 	 * Return the sign commonly used to represent this currency.
-	 * @returns {string} the sign commonly used to represent this currency
+	 * @return {string} the sign commonly used to represent this currency
 	 */
 	getSign: function () {
 		return this.sign;
@@ -20964,7 +20955,7 @@ ilib.Currency.prototype = {
 	
 	/**
 	 * Return the name of the currency in English.
-	 * @returns {string} the name of the currency in English
+	 * @return {string} the name of the currency in English
 	 */
 	getName: function () {
 		return this.name;
@@ -20975,7 +20966,7 @@ ilib.Currency.prototype = {
 	 * included a locale property in order to find the currency that is appropriate
 	 * for that locale, then the locale is returned here. If the options did not
 	 * include a locale, then this method returns undefined.
-	 * @returns {ilib.Locale} the locale used in the constructor of this instance,
+	 * @return {ilib.Locale} the locale used in the constructor of this instance,
 	 * or undefined if no locale was given in the constructor
 	 */
 	getLocale: function () {
@@ -21145,7 +21136,7 @@ ilib.NumFmt = function (options) {
 	
 	new ilib.LocaleInfo(this.locale, {
 		sync: sync,
-		onLoad: function (li) {
+		onLoad: ilib.bind(this, function (li) {
 			this.localeInfo = li;
 
 			if (this.type === "currency") {
@@ -21159,7 +21150,7 @@ ilib.NumFmt = function (options) {
 					locale: this.locale,
 					code: this.currency,
 					sync: sync,
-					onLoad: function (cur) {
+					onLoad: ilib.bind(this, function (cur) {
 						this.currencyInfo = cur;
 						if (this.style !== "common" && this.style !== "iso") {
 							this.style = "common";
@@ -21182,7 +21173,7 @@ ilib.NumFmt = function (options) {
 						if (options && typeof(options.onLoad) === 'function') {
 							options.onLoad(this);
 						}
-					}.bind(this)
+					})
 				});
 				return;
 			} else if (this.type === "percentage") {
@@ -21194,13 +21185,13 @@ ilib.NumFmt = function (options) {
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
-		}.bind(this)
+		})
 	});
 };
 
 /**
  * Return an array of available locales that this formatter can format
- * @returns {Array.<ilib.Locale>|undefined} an array of available locales
+ * @return {Array.<ilib.Locale>|undefined} an array of available locales
  */
 ilib.NumFmt.getAvailableLocales = function () {
 	return undefined;
@@ -21254,7 +21245,7 @@ ilib.NumFmt.prototype = {
 	/**
 	 * @private
 	 * @param {Number|ilib.Number|string|number} num object, string, or number to convert to a primitive number
-	 * @returns {number} the primitive number equivalent of the argument
+	 * @return {number} the primitive number equivalent of the argument
 	 */
 	_toPrimitive: function (num) {
 		var n = 0;
@@ -21279,7 +21270,7 @@ ilib.NumFmt.prototype = {
 	/**
 	 * @private
 	 * @param {number} num the number to format
-	 * @returns {string} the formatted number 
+	 * @return {string} the formatted number 
 	 */
 	_formatScientific: function (num) {
 		var n = new Number(num);
@@ -21307,7 +21298,7 @@ ilib.NumFmt.prototype = {
 	/**
 	 * @private 
 	 * @param {number} num the number to format
-	 * @returns {string} the formatted number
+	 * @return {string} the formatted number
 	 */ 
 	_formatStandard: function (num) {
 		var i;
@@ -21362,7 +21353,7 @@ ilib.NumFmt.prototype = {
 	/**
 	 * Format a number according to the settings of this number formatter instance.
 	 * @param num {number|string|Number|ilib.Number} a floating point number to format
-	 * @returns {string} a string containing the formatted number
+	 * @return {string} a string containing the formatted number
 	 */
 	format: function (num) {
 		var formatted, n;
@@ -21389,7 +21380,7 @@ ilib.NumFmt.prototype = {
 	 * Return the type of formatter. Valid values are "number", "currency", and
 	 * "percentage".
 	 * 
-	 * @returns {string} the type of formatter
+	 * @return {string} the type of formatter
 	 */
 	getType: function () {
 		return this.type;
@@ -21397,7 +21388,7 @@ ilib.NumFmt.prototype = {
 	
 	/**
 	 * Return the locale for this formatter instance.
-	 * @returns {ilib.Locale} the locale instance for this formatter
+	 * @return {ilib.Locale} the locale instance for this formatter
 	 */
 	getLocale: function () {
 		return this.locale;
@@ -21409,7 +21400,7 @@ ilib.NumFmt.prototype = {
 	 * most western European cultures, this means separating every 3 digits 
 	 * of the integral portion of a number with a particular character.
 	 * 
-	 * @returns {boolean} true if this formatter groups digits in the integral
+	 * @return {boolean} true if this formatter groups digits in the integral
 	 * portion of the number
 	 */
 	isGroupingUsed: function () {
@@ -21420,7 +21411,7 @@ ilib.NumFmt.prototype = {
 	/**
 	 * Returns the maximum fraction digits set up in the constructor.
 	 * 
-	 * @returns {number} the maximum number of fractional digits this
+	 * @return {number} the maximum number of fractional digits this
 	 * formatter will format, or -1 for no maximum
 	 */
 	getMaxFractionDigits: function () {
@@ -21433,7 +21424,7 @@ ilib.NumFmt.prototype = {
 	 * digits is the amount of digits that is standard for the currency
 	 * in question unless overridden in the options to the constructor.
 	 * 
-	 * @returns {number} the minimum number of fractional digits this
+	 * @return {number} the minimum number of fractional digits this
 	 * formatter will format, or -1 for no minimum
 	 */
 	getMinFractionDigits: function () {
@@ -21445,7 +21436,7 @@ ilib.NumFmt.prototype = {
 	 * IF the typeof this formatter is not "currency", then this method will
 	 * return undefined.
 	 * 
-	 * @returns {string} the ISO 4217 code for the currency that this formatter
+	 * @return {string} the ISO 4217 code for the currency that this formatter
 	 * formats, or undefined if this not a currency formatter
 	 */
 	getCurrency: function () {
@@ -21457,7 +21448,7 @@ ilib.NumFmt.prototype = {
 	 * controls how numbers are rounded when the integral or fraction digits 
 	 * of a number are limited.
 	 * 
-	 * @returns {string} the name of the rounding mode used in this formatter
+	 * @return {string} the name of the rounding mode used in this formatter
 	 */
 	getRoundingMode: function () {
 		return this.roundingMode;
@@ -21468,7 +21459,7 @@ ilib.NumFmt.prototype = {
 	 * currency is denoted in the formatted output. This method returns the style
 	 * that this formatter will produce. (See the constructor comment for more about
 	 * the styles.)
-	 * @returns {string} the name of the style this formatter will use to format
+	 * @return {string} the name of the style this formatter will use to format
 	 * currency amounts, or "undefined" if this formatter is not a currency formatter
 	 */
 	getStyle: function () {
@@ -21699,7 +21690,7 @@ ilib.DurFmt = function(options) {
 		locale: this.locale,
 		name: "sysres",
 		sync: sync,
-		onLoad: function (sysres) {
+		onLoad: ilib.bind(this, function (sysres) {
 			switch (this.length) {
 				case 'short':
 					this.components = {
@@ -21768,21 +21759,21 @@ ilib.DurFmt = function(options) {
 					type: "time",
 					time: "ms",
 					sync: sync,
-					onLoad: function (fmtMS) {
+					onLoad: ilib.bind(this, function (fmtMS) {
 						this.timeFmtMS = fmtMS;
 						new ilib.DateFmt({
 							locale: this.locale,
 							type: "time",
 							time: "hm",
 							sync: sync,
-							onLoad: function (fmtHM) {
+							onLoad: ilib.bind(this, function (fmtHM) {
 								this.timeFmtHM = fmtHM;		
 								new ilib.DateFmt({
 									locale: this.locale,
 									type: "time",
 									time: "hms",
 									sync: sync,
-									onLoad: function (fmtHMS) {
+									onLoad: ilib.bind(this, function (fmtHMS) {
 										this.timeFmtHMS = fmtHMS;		
 
 										// munge with the template to make sure that the hours are not formatted mod 12
@@ -21794,11 +21785,11 @@ ilib.DurFmt = function(options) {
 										if (options && typeof(options.onLoad) === 'function') {
 											options.onLoad(this);
 										}
-									}.bind(this)
+									})
 								});
-							}.bind(this)
+							})
 						});
-					}.bind(this)
+					})
 				});
 				return;
 			}
@@ -21806,7 +21797,7 @@ ilib.DurFmt = function(options) {
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
-		}.bind(this)
+		})
 	});
 };
 
@@ -21845,7 +21836,7 @@ ilib.DurFmt.complist = {
  * than "1 day, 9 hours".
  * 
  * @param {Object} components date/time components to be formatted into a duration string
- * @returns {ilib.String} a string with the duration formatted according to the style and 
+ * @return {ilib.String} a string with the duration formatted according to the style and 
  * locale set up for this formatter instance. If the components parameter is empty or 
  * undefined, an empty string is returned.
  */
@@ -21886,7 +21877,7 @@ ilib.DurFmt.prototype.format = function (components) {
  * locale was not given as parameter to the constructor, this method returns the default
  * locale of the system.
  * 
- * @returns {ilib.Locale} locale that this duration formatter was constructed with
+ * @return {ilib.Locale} locale that this duration formatter was constructed with
  */
 ilib.DurFmt.prototype.getLocale = function () {
 	return this.locale;
@@ -21897,7 +21888,7 @@ ilib.DurFmt.prototype.getLocale = function () {
  * length was not given as parameter to the constructor, this method returns the default
  * length. Valid values are "short", "medium", "long", and "full".
  * 
- * @returns {string} length that this duration formatter was constructed with
+ * @return {string} length that this duration formatter was constructed with
  */
 ilib.DurFmt.prototype.getLength = function () {
 	return this.length;
@@ -21907,7 +21898,7 @@ ilib.DurFmt.prototype.getLength = function () {
  * Return the style that was used to construct this duration formatter object. Returns
  * one of "text" or "clock".
  * 
- * @returns {string} style that this duration formatter was constructed with
+ * @return {string} style that this duration formatter was constructed with
  */
 ilib.DurFmt.prototype.getStyle = function () {
 	return this.style;
@@ -22438,7 +22429,7 @@ ilib.ScriptInfo = function(script) {
  * @static
  * Return an array of all ISO 15924 4-letter identifier script identifiers that
  * this copy of ilib knows about.
- * @returns {Array.<string>} an array of all script identifiers that this copy of
+ * @return {Array.<string>} an array of all script identifiers that this copy of
  * ilib knows about
  */
 ilib.ScriptInfo.getAllScripts = function() {
@@ -22459,7 +22450,7 @@ ilib.ScriptInfo.prototype = {
 	/**
 	 * Return the 4-letter ISO 15924 identifier associated
 	 * with this script.
-	 * @returns {string} the 4-letter ISO code for this script
+	 * @return {string} the 4-letter ISO code for this script
 	 */
 	getCode: function () {
 		return this.info && this.script;
@@ -22469,7 +22460,7 @@ ilib.ScriptInfo.prototype = {
 	 * Get the ISO 15924 code number associated with this
 	 * script.
 	 * 
-	 * @returns {number} the ISO 15924 code number
+	 * @return {number} the ISO 15924 code number
 	 */
 	getCodeNumber: function () {
 		return this.info && this.info.nb || 0;
@@ -22478,7 +22469,7 @@ ilib.ScriptInfo.prototype = {
 	/**
 	 * Get the name of this script in English.
 	 * 
-	 * @returns {string} the name of this script in English
+	 * @return {string} the name of this script in English
 	 */
 	getName: function () {
 		return this.info && this.info.nm;
@@ -22487,7 +22478,7 @@ ilib.ScriptInfo.prototype = {
 	/**
 	 * Get the long identifier assciated with this script.
 	 * 
-	 * @returns {string} the long identifier of this script
+	 * @return {string} the long identifier of this script
 	 */
 	getLongCode: function () {
 		return this.info && this.info.lid;
@@ -22498,7 +22489,7 @@ ilib.ScriptInfo.prototype = {
 	 * in. Possible return values are "rtl" for right-to-left,
 	 * "ltr" for left-to-right, and "ttb" for top-to-bottom.
 	 * 
-	 * @returns {string} the usual direction that text in this script is
+	 * @return {string} the usual direction that text in this script is
 	 * written in
 	 */
 	getScriptDirection: function() {
@@ -24876,6 +24867,12 @@ ctype.isspace.js
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
  * When the parser has completed its parsing, it fills in the fields listed below.<p>
@@ -24889,7 +24886,10 @@ ctype.isspace.js
  * When formatting the short version of such names, only the paternal family name will 
  * be used.
  * 
+ * Depends directive: !depends nameprs.js
+ * 
  * @constructor
+ * @dict
  * @param {string|ilib.Name=} name the name to parse
  * @param {Object=} options Options governing the construction of this name instance
  */
@@ -24934,6 +24934,8 @@ ilib.Name = function(name, options) {
 		return;
 	}
 
+	this.loadParams = {};
+	
 	if (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
@@ -24950,6 +24952,10 @@ ilib.Name = function(name, options) {
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync == true);
 		}
+		
+		if (typeof(options.loadParams) !== 'undefined') {
+			this.loadParams = options.loadParams;
+		}
 	}
 
 	if (!ilib.Name.cache) {
@@ -24957,53 +24963,19 @@ ilib.Name = function(name, options) {
 	}
 
 	this.locale = this.locale || new ilib.Locale();
-	var spec = this.locale.getSpec().replace(/-/g, "_");
-	if (typeof(ilib.Name.cache[spec]) === 'undefined') {
-		/**
-		 * @private
-		 * @type {{sortByHeadWord:boolean,conjunctions:Object,auxillaries:Object,prefixes:Object,suffixes:Object,knownFamilyNames:Object,nameStyle:string}}
-		 */
-		this.info = /** @type {{sortByHeadWord:boolean,conjunctions:Object,auxillaries:Object,prefixes:Object,suffixes:Object,knownFamilyNames:Object,nameStyle:string}} */ ilib.mergeLocData("name", this.locale);
-		if (this.info) {
-			ilib.Name.cache[spec] = this.info;
-			this._init(name);
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		} else if (typeof(ilib._load) === 'function') {
-			// locale is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles(this.locale, "name");
-			
-			ilib._load(files, sync, function(arr) {
-				this.info = {};
-				for (var i = 0; i < arr.length; i++) {
-					if (typeof(arr[i]) !== 'undefined') {
-						this.info = ilib.merge(this.info, arr[i]);
-					}
-				}
-				
-				ilib.Name.cache[spec] = this.info;
-				this._init(name);
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}
-			}.bind(this));
-		} else {
-			// no data other than the generic shared data
-			this.info = ilib.data.name;
-			ilib.Name.cache[spec] = this.info;
-			this._init(name);
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
+	
+	ilib.loadData(ilib.Name, this.locale, "name", sync, this.loadParams, ilib.bind(this, function (info) {
+		if (!info) {
+			info = ilib.data.name;
+			var spec = this.locale.getSpec().replace(/-/g, "_");
+			ilib.Name.cache[spec] = info;
 		}
-	} else {
-		this.info = ilib.Name.cache[spec];
+		this.info = info;
 		this._init(name);
 		if (options && typeof(options.onLoad) === 'function') {
 			options.onLoad(this);
 		}
-	}
+	}));
 };
 
 /**
@@ -25247,7 +25219,7 @@ ilib.Name.prototype = {
 	 * @protected
 	 * Find the last instance of 'and' in the name
 	 * @param {Array.<string>} parts
-	 * @returns {number}
+	 * @return {number}
 	 */
 	_findLastConjunction: function _findLastConjunction(parts) {
 		var conjunctionIndex = -1, index, part;
@@ -25659,6 +25631,12 @@ ctype.ispunct.js
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
  * Formatting names is a locale-dependent function, as the order of the components 
@@ -25690,6 +25668,8 @@ ctype.ispunct.js
  * all auxillary words.   
  * </ul>
  * 
+ * Depends directive: !depends namefmt.js
+ * 
  * @constructor
  * @param {Object} options A set of options that govern how the formatter will behave
  */
@@ -25697,6 +25677,7 @@ ilib.NameFmt = function(options) {
 	var sync = true;
 	
 	this.style = "short";
+	this.loadParams = {};
 	
 	if (options) {
 		if (options.locale) {
@@ -25713,6 +25694,10 @@ ilib.NameFmt = function(options) {
 		
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync == true);
+		}
+		
+		if (typeof(options.loadParams) !== 'undefined') {
+			this.loadParams = options.loadParams;
 		}
 	}
 	
@@ -25746,52 +25731,19 @@ ilib.NameFmt = function(options) {
 	}
 
 	this.locale = this.locale || new ilib.Locale();
-	var spec = this.locale.getSpec().replace(/-/g, "_");
-	if (typeof(ilib.Name.cache[spec]) === 'undefined') {
-		/**
-		 * @private
-		 */
-		this.info = ilib.mergeLocData("name", this.locale);
-		if (this.info) {
-			ilib.Name.cache[spec] = this.info;
-			this._init();
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		} else if (typeof(ilib._load) === 'function') {
-			// locale is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles(this.locale, "name");
-			
-			ilib._load(files, sync, function(arr) {
-				this.info = {};
-				for (var i = 0; i < arr.length; i++) {
-					if (typeof(arr[i]) !== 'undefined') {
-						this.info = ilib.merge(this.info, arr[i]);
-					}
-				}
-				
-				ilib.Name.cache[spec] = this.info;
-				this._init();
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}
-			}.bind(this));
-		} else {
-			// no data other than the generic shared data
-			this.info = ilib.data.name;
-			ilib.Name.cache[spec] = this.info;
-			this._init();
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
+	
+	ilib.loadData(ilib.Name, this.locale, "name", sync, this.loadParams, ilib.bind(this, function (info) {
+		if (!info) {
+			info = ilib.data.name;
+			var spec = this.locale.getSpec().replace(/-/g, "_");
+			ilib.Name.cache[spec] = info;
 		}
-	} else {
-		this.info = ilib.Name.cache[spec];
+		this.info = info;
 		this._init();
 		if (options && typeof(options.onLoad) === 'function') {
 			options.onLoad(this);
 		}
-	}
+	}));
 };
 
 ilib.NameFmt.prototype = {
@@ -27467,6 +27419,7 @@ ilib.data.ctrynames_de = {"generated":false,"albanien":"AL","algerien":"DZ","ame
 ilib.data.ctrynames_de_CH = {"Bangladesh":"BD","Brunei":"BN","Botswana":"BW","Weissrussland":"BY","Kapverden":"CV","Djibouti":"DJ","Grossbritannien":"GB","Marshall-Inseln":"MH","Äusseres Ozeanien":"QO","Rwanda":"RW","Salomon-Inseln":"SB","Sao Tomé und Principe":"ST","Zimbabwe":"ZW"};
 ilib.data.ctrynames_en = {"generated":false,"Antigua & Barbuda":"AG","Arabia":"SA","Bosnia & Herzegovina":"BA","BVI":"VG","Cape Verde Islands":"CV","Cocos & Keeling Islands":"CC","Cocos (Keeling) Islands":"CC","Congo, Democratic Republic of the":"CD","Democratic Republic of the Congo":"CD","DPRK":"KP","Dubai":"AE","East Timor":"TL","England":"GB","Falklands":"FK","Heard Island & McDonald Islands":"HM","Occupied Palestinian Territory":"PS","P. R. China":"CN","P. R. of China":"CN","P.R. of China":"CN","Palestinian Territory":"PS","People's Republic of China":"CN","Polynesia":"PF","PR china":"CN","PRC":"CN","Republic of China":"TW","Republic of Ireland":"IE","Republic of Singapore":"SG","Saint Barts":"BL","Saint Helena, Ascension & Tristan da Cunha":"SH","Saint Kitts & Nevis":"KN","Saint Pierre & Miquelon":"PM","Saint Vincent & the Grenadines":"VC","Sao Tome & Principe":"ST","Scotland":"GB","Solomons":"SB","South Georgia & the South Sandwich Islands":"GS","St Barthelemy":"BL","St Barthélemy":"BL","St Barts":"BL","St Helena":"SH","St Helena, Ascension & Tristan da Cunha":"SH","St Helena, Ascension and Tristan da Cunha":"SH","St Kitts":"KN","St Kitts & Nevis":"KN","St Kitts and Nevis":"KN","St Lucia":"LC","St Martin":"MF","St Pierre":"PM","St Pierre & Miquelon":"PM","St Pierre and Miquelon":"PM","St Vincent":"VC","St Vincent & the Grenadines":"VC","St Vincent and the Grenadines":"VC","St. Barts":"BL","St. Helena, Ascension & Tristan da Cunha":"SH","St. Kitts & Nevis":"KN","St. Pierre & Miquelon":"PM","St. Vincent & the Grenadines":"VC","Svalbard & Jan Mayen":"SJ","Sénégal":"SN","The Bahamas":"BS","The Czech Republic":"CZ","The Grenadines":"VC","The Netherlands":"NL","The Philippines":"PH","The Republic of Singapore":"SG","The South Sandwich Islands":"GS","The Sudan":"SD","The US Virgin Islands":"VI","Trinidad & Tobago":"TT","Turks & Caicos Islands":"TC","Vatican City":"VA","Vatican City State":"VA","Virgin Islands":"VI","Wales":"GB","Wallis & Futuna":"WF","Éire":"IE","Ascension Island":"AC","Andorra":"AD","United Arab Emirates":"AE","Afghanistan":"AF","Antigua and Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Netherlands Antilles":"AN","Angola":"AO","Antarctica":"AQ","Argentina":"AR","American Samoa":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Åland Islands":"AX","Azerbaijan":"AZ","Bosnia and Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgium":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Caribbean Netherlands":"BQ","Brazil":"BR","Bahamas":"BS","Bhutan":"BT","Bouvet Island":"BV","Botswana":"BW","Belarus":"BY","Belize":"BZ","Canada":"CA","Cocos [Keeling] Islands":"CC","Congo - Kinshasa":"CD","Central African Republic":"CF","Congo - Brazzaville":"CG","Switzerland":"CH","Côte d’Ivoire":"CI","Cook Islands":"CK","Chile":"CL","Cameroon":"CM","China":"CN","Colombia":"CO","Clipperton Island":"CP","Costa Rica":"CR","Cuba":"CU","Cape Verde":"CV","Curaçao":"CW","Christmas Island":"CX","Cyprus":"CY","Czech Republic":"CZ","Germany":"DE","Diego Garcia":"DG","Djibouti":"DJ","Denmark":"DK","Dominica":"DM","Dominican Republic":"DO","Algeria":"DZ","Ceuta and Melilla":"EA","Ecuador":"EC","Estonia":"EE","Egypt":"EG","Western Sahara":"EH","Eritrea":"ER","Spain":"ES","Ethiopia":"ET","European Union":"EU","Finland":"FI","Fiji":"FJ","Falkland Islands":"FK","Micronesia":"FM","Faroe Islands":"FO","France":"FR","Gabon":"GA","United Kingdom":"GB","Grenada":"GD","Georgia":"GE","French Guiana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Greenland":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Equatorial Guinea":"GQ","Greece":"GR","South Georgia and the South Sandwich Islands":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hong Kong SAR China":"HK","Heard Island and McDonald Islands":"HM","Honduras":"HN","Croatia":"HR","Haiti":"HT","Hungary":"HU","Canary Islands":"IC","Indonesia":"ID","Ireland":"IE","Israel":"IL","Isle of Man":"IM","India":"IN","British Indian Ocean Territory":"IO","Iraq":"IQ","Iran":"IR","Iceland":"IS","Italy":"IT","Jersey":"JE","Jamaica":"JM","Jordan":"JO","Japan":"JP","Kenya":"KE","Kyrgyzstan":"KG","Cambodia":"KH","Kiribati":"KI","Comoros":"KM","Saint Kitts and Nevis":"KN","North Korea":"KP","South Korea":"KR","Kuwait":"KW","Cayman Islands":"KY","Kazakhstan":"KZ","Laos":"LA","Lebanon":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lithuania":"LT","Luxembourg":"LU","Latvia":"LV","Libya":"LY","Morocco":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagascar":"MG","Marshall Islands":"MH","Macedonia":"MK","Mali":"ML","Myanmar [Burma]":"MM","Mongolia":"MN","Macau SAR China":"MO","Northern Mariana Islands":"MP","Martinique":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldives":"MV","Malawi":"MW","Mexico":"MX","Malaysia":"MY","Mozambique":"MZ","Namibia":"NA","New Caledonia":"NC","Niger":"NE","Norfolk Island":"NF","Nigeria":"NG","Nicaragua":"NI","Netherlands":"NL","Norway":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","New Zealand":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","French Polynesia":"PF","Papua New Guinea":"PG","Philippines":"PH","Pakistan":"PK","Poland":"PL","Saint Pierre and Miquelon":"PM","Pitcairn Islands":"PN","Puerto Rico":"PR","Palestinian Territories":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Outlying Oceania":"QO","Réunion":"RE","Romania":"RO","Serbia":"RS","Russia":"RU","Rwanda":"RW","Saudi Arabia":"SA","Solomon Islands":"SB","Seychelles":"SC","Sudan":"SD","Sweden":"SE","Singapore":"SG","Saint Helena":"SH","Slovenia":"SI","Svalbard and Jan Mayen":"SJ","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Suriname":"SR","South Sudan":"SS","São Tomé and Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Syria":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Turks and Caicos Islands":"TC","Chad":"TD","French Southern Territories":"TF","Togo":"TG","Thailand":"TH","Tajikistan":"TJ","Tokelau":"TK","Timor-Leste":"TL","Turkmenistan":"TM","Tunisia":"TN","Tonga":"TO","Turkey":"TR","Trinidad and Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraine":"UA","Uganda":"UG","U.S. Minor Outlying Islands":"UM","United States":"US","Uruguay":"UY","Uzbekistan":"UZ","Saint Vincent and the Grenadines":"VC","Venezuela":"VE","British Virgin Islands":"VG","U.S. Virgin Islands":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis and Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","South Africa":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Unknown Region":"ZZ"};
 ilib.data.ctrynames_es = {"generated":false,"afganistán":"AF","argelia":"DZ","samoa americana":"AS","anguila":"AI","antigua y barbuda":"AG","ascensión":"SH","azerbaiyán":"AZ","islas vírgenes británicas":"VG","bahrein":"BH","bielorrusia":"BY","bélgica":"BE","belice":"BZ","benín":"BJ","bermudas":"BM","bután":"BT","bosnia y herzegovina":"BA","botsuana":"BW","brasil":"BR","territorio británico del océano índico":"IO","camboya":"KH","camerún":"CM","cabo verde":"CV","caimán":"KY","república centroafricana":"CF","comoras":"KM","islas cook":"CK","croacia":"HR","chipre":"CY","república checa":"CZ","costa de marfil":"CI","república dominicana":"DO","rdc":"CD","república democrática del congo":"CD","dinamarca":"DK","yibuti":"DJ","timor oriental":"TL","egipto":"EG","guinea ecuatorial":"GQ","etiopía":"ET","antigua república yugoslava de macedonia":"MK","islas malvinas":"FK","malvinas":"FK","islas feroe":"FO","estados federados de micronesia":"FM","fiyi":"FJ","finlandia":"FI","francia":"FR","guayana francesa":"GF","polinesia francesa":"PF","gabón":"GA","alemania":"DE","grecia":"GR","groenlandia":"GL","granada":"GD","guadalupe":"GP","haití":"HT","hungría":"HU","islandia":"IS","irán":"IR","irak":"IQ","irlanda":"IE","italia":"IT","japón":"JP","jordania":"JO","kenia":"KE","kirguistán":"KG","letonia":"LV","líbano":"LB","libia":"LY","lituania":"LT","luxemburgo":"LU","malasia":"MY","maldivas":"MV","malí":"ML","islas marshall":"MH","martinica":"MQ","mauricio":"MU","méxico":"MX","moldavia":"MD","mónaco":"MC","marruecos":"MA","países bajos":"NL","antillas holandesas":"AN","nueva caledonia":"NC","nueva zelanda":"NZ","níger":"NE","isla norfolk":"NF","corea del norte":"KP","islas marianas del norte":"MP","noruega":"NO","omán":"OM","pakistán":"PK","palaos":"PW","autoridad palestina":"PS","panamá":"PA","papua nueva guinea":"PG","república popular china":"CN","perú":"PE","filipinas":"PH","polonia":"PL","república de china":"TW","república de irlanda":"IE","rumania":"RO","rusia":"RU","ruanda":"RW","reunión":"RE","santa helena":"SH","san cristóbal y nieves":"KN","santa lucía":"LC","san pedro y miquelón":"PM","saint-vincent":"VC","san vicente y las granadinas":"VC","arabia saudita":"SA","sierra leona":"SL","singapur":"SG","eslovaquia":"SK","eslovenia":"SI","islas salomón":"SB","sudáfrica":"ZA","corea del sur":"KR","españa":"ES","santa lucia":"LC","sudán":"SD","surinam":"SR","swazilandia":"SZ","suecia":"SE","suiza":"CH","siria":"SY","santo tomé y príncipe":"ST","taiwán":"TW","tayikistán":"TJ","tailandia":"TH","las bahamas":"BS","gambia":"GM","trinidad y tobago":"TT","túnez":"TN","turquía":"TR","turkmenistán":"TM","eau":"AE","ucrania":"UA","emiratos árabes unidos":"AE","reino unido":"GB","uzbekistán":"UZ","ciudad del vaticano":"VA","wallis y futuna":"WF","islas de åland":"AX","albania":"AL","andorra":"AD","angola":"AO","antigua":"AG","arabia":"SA","argentina":"AR","armenia":"AM","aruba":"AW","australia":"AU","austria":"AT","ivb":"VG","bahamas":"BS","bangladesh":"BD","barbados":"BB","barbuda":"AG","república bolivariana de venezuela":"VE","bolivia":"BO","bolivia, estado plurinacional de":"BO","bosnia":"BA","isla bouvet":"BV","brunei":"BN","brunei darussalam":"BN","bulgaria":"BG","burkina faso":"BF","burundi":"BI","rca":"CF","islas caicos":"TC","canadá":"CA","islas caimán":"KY","chad":"TD","chile":"CL","china":"CN","isla christmas":"CX","islas cocos y keeling":"CC","islas cocos":"CC","colombia":"CO","congo":"CD","congo, república democrática del":"CD","costa rica":"CR","cuba":"CU","república popular democrática de corea":"KP","dominica":"DM","dprk":"KP","rd":"DO","dubai":"AE","ecuador":"EC","el salvador":"SV","inglaterra":"GB","eritrea":"ER","estonia":"EE","feroe":"FO","tierras australes de francia":"TF","futuna":"WF","georgia":"GE","ghana":"GH","gibraltar":"GI","gran bretaña":"GB","granadinas":"VC","guam":"GU","guatemala":"GT","guernsey":"GG","guinea":"GN","guinea-bissau":"GW","guyana":"GY","islas heard y mcdonald":"HM","isla heard":"HM","herzegovina":"BA","holanda":"NL","santa sede":"VA","honduras":"HN","hong kong":"HK","india":"IN","indonesia":"ID","irán, república islámica de":"IR","república islámica de irán":"IR","isla de man":"IM","israel":"IL","jamaica":"JM","jan mayen":"SJ","jersey":"JE","kazajistán":"KZ","kiribati":"KI","corea":"KR","corea, república popular democrática de":"KP","corea, república de":"KR","kuwait":"KW","república democrática popular lao":"LA","laos":"LA","lesoto":"LS","liberia":"LR","jamahiriya árabe libia":"LY","liechtenstein":"LI","macao":"MO","macedonia":"MK","macedonia, antigua república yugoslava de":"MK","macedonia, la antigua república yugoslava de":"MK","madagascar":"MG","malaui":"MW","mali":"ML","malta":"MT","marianas":"MP","marshalls":"MH","mauritania":"MR","mayotte":"YT","islas mcdonald":"HM","micronesia":"FM","micronesia, estados federados de":"FM","miquelón":"PM","moldovia":"MD","moldovia, república de":"MD","mongolia":"MN","montenegro":"ME","montserrat":"MS","mozambique":"MZ","myanmar":"MM","namibia":"NA","nauru":"NR","nepal":"NP","nieves":"KN","nicaragua":"NI","nigeria":"NG","territorios ocupados palestinos":"PS","r. p. china":"CN","palestine":"PS","territorios palestinos":"PS","paraguay":"PY","pitcairn":"PN","estado plurinacional de bolivia":"BO","png":"PG","polinesia":"PF","portugal":"PT","rp china":"CN","r.p.c.":"CN","príncipe":"ST","puerto rico":"PR","qatar":"QA","república de corea":"KR","república de moldovia":"MD","república de singapur":"SG","federación rusa":"RU","saint barthélemy":"BL","san bartolomé":"BL","santa helena, ascensión y tristán de acuña":"SH","san cristobal":"KN","san martín":"MF","san pedro":"PM","san vicente":"VC","samoa":"WS","san marino":"SM","santo tomé":"ST","escocia":"GB","senegal":"SN","serbia":"RS","seychelles":"SC","somalia":"SO","georgias del sur":"GS","islas georgias del sur y sandwich del sur":"GS","islas sandwich del sur":"GS","sri lanka":"LK","st barthélemy":"BL","st. barthélemy":"BL","s bartolomé":"BL","sta. elena":"SH","sta elena, ascensión y tristán de acuña":"SH","s. cristóbal":"KN","s cristóbal y nieves":"KN","sta lucía":"LC","s. martín":"MF","s. vicente":"VC","s vicente y las granadinas":"VC","s. bartolomé":"BL","svalbard":"SJ","svalbard y jan mayen":"SJ","república árabe siria":"SY","tanzania":"TZ","tanzania, república unida de":"TZ","la república democrática del congo":"CD","la antigua república yugoslava de macedonia":"MK","las granadinas":"VC","islas sándwich del sur":"GS","islas vírgenes de ee.uu.":"VI","timor-leste":"TL","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinidad":"TT","tristán de acuña":"SH","islas turcas y caicos":"TC","islas turcas":"TC","tuvalu":"TV","r.u.":"GB","ee.uu.":"US","uganda":"UG","ru":"GB","república unida de tanzania":"TZ","estados unidos":"US","islas ultramarinas de estados unidos":"UM","estados unidos de américa":"US","uruguay":"UY","usvi":"VI","vanuatu":"VU","vaticano":"VA","venezuela":"VE","venezuela, república bolivariana de":"VE","vietnam":"VN","islas vírgenes":"VI","islas vírgenes, ee.uu.":"VI","gales":"GB","wallis":"WF","sahara occidental":"EH","yemen":"YE","zambia":"ZM","zimbabue":"ZW","éire":"IE","Isla de la Ascensión":"AC","Andorra":"AD","Emiratos Árabes Unidos":"AE","Afganistán":"AF","Antigua y Barbuda":"AG","Anguila":"AI","Albania":"AL","Armenia":"AM","Antillas Neerlandesas":"AN","Angola":"AO","Antártida":"AQ","Argentina":"AR","Samoa Americana":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Islas Åland":"AX","Azerbaiyán":"AZ","Bosnia-Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Bélgica":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahréin":"BH","Burundi":"BI","Benín":"BJ","San Bartolomé":"BL","Bermudas":"BM","Brunéi":"BN","Bolivia":"BO","Caribe neerlandés":"BQ","Brasil":"BR","Bahamas":"BS","Bután":"BT","Isla Bouvet":"BV","Botsuana":"BW","Bielorrusia":"BY","Belice":"BZ","Canadá":"CA","Islas Cocos":"CC","República Democrática del Congo":"CD","República Centroafricana":"CF","Congo - Brazzaville":"CG","Suiza":"CH","Costa de Marfil":"CI","Islas Cook":"CK","Chile":"CL","Camerún":"CM","China":"CN","Colombia":"CO","Isla Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Cabo Verde":"CV","Curazao":"CW","Isla Christmas":"CX","Chipre":"CY","República Checa":"CZ","Alemania":"DE","Diego García":"DG","Yibuti":"DJ","Dinamarca":"DK","Dominica":"DM","República Dominicana":"DO","Argelia":"DZ","Ceuta y Melilla":"EA","Ecuador":"EC","Estonia":"EE","Egipto":"EG","Sáhara Occidental":"EH","Eritrea":"ER","España":"ES","Etiopía":"ET","Unión Europea":"EU","Finlandia":"FI","Fiyi":"FJ","Islas Malvinas":"FK","Micronesia":"FM","Islas Feroe":"FO","Francia":"FR","Gabón":"GA","Reino Unido":"GB","Granada":"GD","Georgia":"GE","Guayana Francesa":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Groenlandia":"GL","Gambia":"GM","Guinea":"GN","Guadalupe":"GP","Guinea Ecuatorial":"GQ","Grecia":"GR","Islas Georgia del Sur y Sandwich del Sur":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Región Administrativa Especial de Hong Kong de la República Popular China":"HK","Islas Heard y McDonald":"HM","Honduras":"HN","Croacia":"HR","Haití":"HT","Hungría":"HU","Islas Canarias":"IC","Indonesia":"ID","Irlanda":"IE","Israel":"IL","Isla de Man":"IM","India":"IN","Territorio Británico del Océano Índico":"IO","Iraq":"IQ","Irán":"IR","Islandia":"IS","Italia":"IT","Jersey":"JE","Jamaica":"JM","Jordania":"JO","Japón":"JP","Kenia":"KE","Kirguistán":"KG","Camboya":"KH","Kiribati":"KI","Comoras":"KM","San Cristóbal y Nieves":"KN","Corea del Norte":"KP","Corea del Sur":"KR","Kuwait":"KW","Islas Caimán":"KY","Kazajistán":"KZ","Laos":"LA","Líbano":"LB","Santa Lucía":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesoto":"LS","Lituania":"LT","Luxemburgo":"LU","Letonia":"LV","Libia":"LY","Marruecos":"MA","Mónaco":"MC","Moldavia":"MD","Montenegro":"ME","San Martín":"MF","Madagascar":"MG","Islas Marshall":"MH","Macedonia":"MK","Mali":"ML","Myanmar [Birmania]":"MM","Mongolia":"MN","Región Administrativa Especial de Macao de la República Popular China":"MO","Islas Marianas del Norte":"MP","Martinica":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauricio":"MU","Maldivas":"MV","Malaui":"MW","México":"MX","Malasia":"MY","Mozambique":"MZ","Namibia":"NA","Nueva Caledonia":"NC","Níger":"NE","Isla Norfolk":"NF","Nigeria":"NG","Nicaragua":"NI","Países Bajos":"NL","Noruega":"NO","Nepal":"NP","Nauru":"NR","Isla Niue":"NU","Nueva Zelanda":"NZ","Omán":"OM","Panamá":"PA","Perú":"PE","Polinesia Francesa":"PF","Papúa Nueva Guinea":"PG","Filipinas":"PH","Pakistán":"PK","Polonia":"PL","San Pedro y Miquelón":"PM","Islas Pitcairn":"PN","Puerto Rico":"PR","Territorios Palestinos":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Territorios alejados de Oceanía":"QO","Reunión":"RE","Rumanía":"RO","Serbia":"RS","Rusia":"RU","Ruanda":"RW","Arabia Saudí":"SA","Islas Salomón":"SB","Seychelles":"SC","Sudán":"SD","Suecia":"SE","Singapur":"SG","Santa Elena":"SH","Eslovenia":"SI","Svalbard y Jan Mayen":"SJ","Eslovaquia":"SK","Sierra Leona":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Sudán del Sur":"SS","Santo Tomé y Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Siria":"SY","Suazilandia":"SZ","Tristán da Cunha":"TA","Islas Turcas y Caicos":"TC","Chad":"TD","Territorios Australes Franceses":"TF","Togo":"TG","Tailandia":"TH","Tayikistán":"TJ","Tokelau":"TK","Timor Oriental":"TL","Turkmenistán":"TM","Túnez":"TN","Tonga":"TO","Turquía":"TR","Trinidad y Tobago":"TT","Tuvalu":"TV","Taiwán":"TW","Tanzania":"TZ","Ucrania":"UA","Uganda":"UG","Islas menores alejadas de los Estados Unidos":"UM","Estados Unidos":"US","Uruguay":"UY","Uzbekistán":"UZ","Ciudad del Vaticano":"VA","San Vicente y las Granadinas":"VC","Venezuela":"VE","Islas Vírgenes Británicas":"VG","Islas Vírgenes de los Estados Unidos":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis y Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Sudáfrica":"ZA","Zambia":"ZM","Zimbabue":"ZW","Región desconocida":"ZZ"};
+ilib.data.ctrynames_es_ES = {"generated":false,"costa de marfil":"CI"};
 ilib.data.ctrynames_fr = {"generated":false,"albanie":"AL","algérie":"DZ","samoa américaines":"AS","andorre":"AD","antigua-et-barbuda":"AG","argentine":"AR","arménie":"AM","australie":"AU","autriche":"AT","azerbaïdjan":"AZ","ivb":"VG","bahreïn":"BH","barbade":"BB","biélorussie":"BY","belgique":"BE","bénin":"BJ","bermudes":"BM","bhoutan":"BT","bolivie":"BO","bosnie-herzégovine":"BA","brésil":"BR","territoire de l’océan indien britannique":"IO","bulgarie":"BG","cambodge":"KH","cameroun":"CM","cap-vert":"CV","caïmans":"KY","république d’afrique centrale":"CF","tchad":"TD","chili":"CL","chine":"CN","colombie":"CO","comores":"KM","îles cook":"CK","croatie":"HR","chypre":"CY","république tchèque":"CZ","côte d’ivoire":"CI","r.d.":"DO","rdc":"CD","république démocratique du congo":"CD","danemark":"DK","dominique":"DM","république dominicaine":"DO","timor oriental":"TL","équateur":"EC","égypte":"EG","guinée équatoriale":"GQ","érythrée":"ER","estonie":"EE","éthiopie":"ET","arym":"MK","îles falkland":"FK","falkland":"FK","îles féroé":"FO","états fédérés de micronésie":"FM","fidji":"FJ","finlande":"FI","ex-république yougoslave de macédoine":"MK","guyane française":"GF","polynésie française":"PF","gambie":"GM","géorgie":"GE","allemagne":"DE","grenade":"GD","grèce":"GR","groenland":"GL","guadeloupe":"GP","guinée":"GN","guinée-bissau":"GW","guyane":"GY","haïti":"HT","hongrie":"HU","islande":"IS","inde":"IN","indonésie":"ID","irak":"IQ","irlande":"IE","israël":"IL","italie":"IT","jamaïque":"JM","japon":"JP","jordanie":"JO","koweït":"KW","kirghizistan":"KG","lettonie":"LV","liban":"LB","libye":"LY","lituanie":"LT","macao":"MO","malaisie":"MY","malte":"MT","marianne":"MP","îles marshall":"MH","mauritanie":"MR","maurice":"MU","mexique":"MX","micronésie":"FM","moldavie":"MD","mongolie":"MN","monténégro":"ME","maroc":"MA","namibie":"NA","népal":"NP","pays-bas":"NL","antilles néerlandaises":"AN","nouvelle-calédonie":"NC","nouvelle-zélande":"NZ","île norfolk":"NF","corée du nord":"KP","îles marianne du nord":"MP","norvège":"NO","palaos":"PW","autorité palestinienne":"PS","panamá":"PA","papouasie-nouvelle-guinée":"PG","république populaire de chine":"CN","pérou":"PE","pologne":"PL","porto rico":"PR","république de chine":"TW","république d’irlande":"IE","roumanie":"RO","russie":"RU","sainte-hélène":"SH","saint-kitts-et-nevis":"KN","sainte-lucie":"LC","saint-vincent":"VC","saint-vincent et les grenadines":"VC","saint-marin":"SM","arabie saoudite":"SA","sénégal":"SN","serbie":"RS","singapour":"SG","saint-martin":"MF","slovaquie":"SK","slovénie":"SI","îles solomon":"SB","somalie":"SO","afrique du sud":"ZA","corée du sud":"KR","espagne":"ES","ste-lucie":"LC","saint-pierre-et-miquelon":"PM","soudan":"SD","suède":"SE","suisse":"CH","syrie":"SY","sao tomé-et-principe":"ST","taïwan":"TW","tadjikistan":"TJ","tanzanie":"TZ","thaïlande":"TH","les bahamas":"BS","îles vierges britanniques":"VG","îles turks et caicos":"TC","îles vierges américaines":"VI","trinité-et-tobago":"TT","tunisie":"TN","turquie":"TR","turkménistan":"TM","éau":"AE","ouganda":"UG","émirats arabes unis":"AE","royaume-uni":"GB","ouzbékistan":"UZ","vatican":"VA","wallis-et-futuna":"WF","yémen":"YE","zambie":"ZM","afghanistan":"AF","îles aland":"AX","angola":"AO","anguilla":"AI","antigua":"AG","arabie":"SA","aruba":"AW","ascension":"SH","i.v.b.":"VG","bahamas":"BS","bangladesh":"BD","barbuda":"AG","bélarus":"BY","belize":"BZ","bermude":"BM","république bolivarienne du venezuela":"VE","bolivie, état plurinational de":"BO","bosnie":"BA","botswana":"BW","île bouvet":"BV","territoire britannique de l’océan indien":"IO","brunéi":"BN","brunéi darussalam":"BN","burkina faso":"BF","burundi":"BI","r.c.a.":"CF","îles caicos":"TC","canada":"CA","îles du cap-vert":"CV","rca":"CF","îles caïmans":"KY","république centrafricaine":"CF","île christmas":"CX","îles cocos et keeling":"CC","îles cocos (keeling)":"CC","îles cocos":"CC","congo":"CD","congo, république démocratique du":"CD","congo, république démocratique":"CD","costa rica":"CR","cuba":"CU","république populaire démocratique de corée":"KP","fjibouti":"DJ","rpdc":"KP","rd":"DO","dubaï":"AE","el salvador":"SV","angleterre":"GB","a.r.y.m.":"MK","malouines":"FK","féroé":"FO","france":"FR","territoires français de l’antarctique":"TF","futuna":"WF","gabon":"GA","ghana":"GH","gibraltar":"GI","grande-bretagne":"GB","grenadines":"VC","guam":"GU","guatemala":"GT","guernesey":"GG","îles heard et mcdonald":"HM","île heard":"HM","île heard et îles mcdonald":"HM","herzégovine":"BA","hollande":"NL","saint-siège":"VA","honduras":"HN","hong kong":"HK","iran":"IR","iran, république islamique":"IR","iraq":"IQ","république islamique d’iran":"IR","île de man":"IM","jan mayen":"SJ","jersey":"JE","kazakhstan":"KZ","kenya":"KE","kiribati":"KI","corée":"KR","corée, république populaire démocratique de":"KP","corée, république de":"KR","république démocratique populaire lao":"LA","laos":"LA","lesotho":"LS","libéria":"LR","jamahiriya arabe libyenne populaire et socialiste":"LY","liechtenstein":"LI","lithuanie":"LT","luxembourg":"LU","macédoine":"MK","macédoine, ex-république yougoslave de":"MK","macédoine, l’ex-république yougoslave de":"MK","madagascar":"MG","malawi":"MW","maldives":"MV","mali":"ML","mariannes":"MP","marshalls":"MH","martinique":"MQ","mayotte":"YT","îles mcdonald":"HM","micronésie, états fédérés de":"FM","miquelon":"PM","moldavie, république de":"MD","monaco":"MC","montserrat":"MS","mozambique":"MZ","myanmar":"MM","nauru":"NR","nevis":"KN","nicaragua":"NI","niger":"NE","nigéria":"NG","îles mariannes du nord":"MP","territoires palestiniens occupés":"PS","oman":"OM","r. p. chine":"CN","r. p. de chine":"CN","r.p. de chine":"CN","pakistan":"PK","palau":"PW","palestine":"PS","territoires palestiniens":"PS","territoires palestiniens, occupés":"PS","panama":"PA","paraguay":"PY","philippines":"PH","pitcairn":"PN","état plurinational de bolivie":"BO","polynésie":"PF","portugal":"PT","rp chine":"CN","rpc":"CN","principe":"ST","qatar":"QA","république de corée":"KR","république de moldavie":"MD","république de singapour":"SG","réunion":"RE","fédération russe":"RU","rwanda":"RW","saint barthélemy":"BL","saint-barthélemy":"BL","sainte-hélène, ascension et tristan da cunha":"SH","saint-kitts":"KN","saint-pierre":"PM","samoa":"WS","sao tomé":"ST","écosse":"GB","seychelles":"SC","sierra leone":"SL","slovakie":"SK","îles salomon":"SB","salomon":"SB","géorgie du sud":"GS","géorgie du sud et îles sandwich du sud":"GS","îles sandwich du sud":"GS","sri lanka":"LK","st. barthélemy":"BL","st barth":"BL","ste hélène":"SH","ste hélène, ascension et tristan da cunha":"SH","st-kitts":"KN","st-kitts-et-nevis":"KN","ste lucie":"LC","st-vincent":"VC","st barthélemy":"BL","st. barth":"BL","st martin":"MF","suriname":"SR","svalbard":"SJ","svalbard et jan mayen":"SJ","swaziland":"SZ","république arabe syrienne":"SY","taiwan":"TW","tanzanie, république unie":"TZ","l’ex-république yougoslave de macédoine":"MK","les grenadines":"VC","les pays-bas":"NL","les philippines":"PH","la république de singapour":"SG","le soudan":"SD","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinité":"TT","tristan da cunha":"SH","îles turks":"TC","tuvalu":"TV","e.a.u.":"AE","r.u.":"GB","é.-u.":"US","eau":"AE","ru":"GB","ukraine":"UA","république unie de tanzanie":"TZ","états-unis":"US","îles mineures éloignées des états-unis":"UM","états-unis d’amérique":"US","uruguay":"UY","é-u":"US","iveu":"VI","vanuatu":"VU","cité du vatican":"VA","état de la cité du vatican":"VA","venezuela":"VE","venezuela, république bolivarienne du":"VE","viêt nam":"VN","vietnam":"VN","îles vierges":"VI","îles vierges, britanniques":"VG","îles vierges, é-u":"VI","pays de galles":"GB","wallis":"WF","sahara occidental":"EH","zimbabwe":"ZW","îles åland":"AX","Île de l’Ascension":"AC","Andorre":"AD","Émirats arabes unis":"AE","Afghanistan":"AF","Antigua-et-Barbuda":"AG","Anguilla":"AI","Albanie":"AL","Arménie":"AM","Antilles néerlandaises":"AN","Angola":"AO","Antarctique":"AQ","Argentine":"AR","Samoa américaines":"AS","Autriche":"AT","Australie":"AU","Aruba":"AW","Îles Åland":"AX","Azerbaïdjan":"AZ","Bosnie-Herzégovine":"BA","Barbade":"BB","Bangladesh":"BD","Belgique":"BE","Burkina Faso":"BF","Bulgarie":"BG","Bahreïn":"BH","Burundi":"BI","Bénin":"BJ","Saint-Barthélémy":"BL","Bermudes":"BM","Brunéi Darussalam":"BN","Bolivie":"BO","Pays-Bas caribéens":"BQ","Brésil":"BR","Bahamas":"BS","Bhoutan":"BT","Île Bouvet":"BV","Botswana":"BW","Bélarus":"BY","Belize":"BZ","Canada":"CA","Îles Cocos [Keeling]":"CC","République démocratique du Congo":"CD","République centrafricaine":"CF","Congo-Brazzaville":"CG","Suisse":"CH","Côte d’Ivoire":"CI","Îles Cook":"CK","Chili":"CL","Cameroun":"CM","Chine":"CN","Colombie":"CO","Île Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Cap-Vert":"CV","Curaçao":"CW","Île Christmas":"CX","Chypre":"CY","République tchèque":"CZ","Allemagne":"DE","Diego Garcia":"DG","Djibouti":"DJ","Danemark":"DK","Dominique":"DM","République dominicaine":"DO","Algérie":"DZ","Ceuta et Melilla":"EA","Équateur":"EC","Estonie":"EE","Égypte":"EG","Sahara occidental":"EH","Érythrée":"ER","Espagne":"ES","Éthiopie":"ET","Union européenne":"EU","Finlande":"FI","Fidji":"FJ","Îles Malouines":"FK","États fédérés de Micronésie":"FM","Îles Féroé":"FO","France":"FR","Gabon":"GA","Royaume-Uni":"GB","Grenade":"GD","Géorgie":"GE","Guyane française":"GF","Guernesey":"GG","Ghana":"GH","Gibraltar":"GI","Groenland":"GL","Gambie":"GM","Guinée":"GN","Guadeloupe":"GP","Guinée équatoriale":"GQ","Grèce":"GR","Géorgie du Sud et les Îles Sandwich du Sud":"GS","Guatemala":"GT","Guam":"GU","Guinée-Bissau":"GW","Guyana":"GY","R.A.S. chinoise de Hong Kong":"HK","Îles Heard et MacDonald":"HM","Honduras":"HN","Croatie":"HR","Haïti":"HT","Hongrie":"HU","Îles Canaries":"IC","Indonésie":"ID","Irlande":"IE","Israël":"IL","Île de Man":"IM","Inde":"IN","Territoire britannique de l'océan Indien":"IO","Irak":"IQ","Iran":"IR","Islande":"IS","Italie":"IT","Jersey":"JE","Jamaïque":"JM","Jordanie":"JO","Japon":"JP","Kenya":"KE","Kirghizistan":"KG","Cambodge":"KH","Kiribati":"KI","Comores":"KM","Saint-Kitts-et-Nevis":"KN","Corée du Nord":"KP","Corée du Sud":"KR","Koweït":"KW","Îles Caïmans":"KY","Kazakhstan":"KZ","Laos":"LA","Liban":"LB","Sainte-Lucie":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Libéria":"LR","Lesotho":"LS","Lituanie":"LT","Luxembourg":"LU","Lettonie":"LV","Libye":"LY","Maroc":"MA","Monaco":"MC","Moldavie":"MD","Monténégro":"ME","Saint-Martin [partie française]":"MF","Madagascar":"MG","Îles Marshall":"MH","Macédoine":"MK","Mali":"ML","Myanmar":"MM","Mongolie":"MN","R.A.S. chinoise de Macao":"MO","Îles Mariannes du Nord":"MP","Martinique":"MQ","Mauritanie":"MR","Montserrat":"MS","Malte":"MT","Maurice":"MU","Maldives":"MV","Malawi":"MW","Mexique":"MX","Malaisie":"MY","Mozambique":"MZ","Namibie":"NA","Nouvelle-Calédonie":"NC","Niger":"NE","Île Norfolk":"NF","Nigéria":"NG","Nicaragua":"NI","Pays-Bas":"NL","Norvège":"NO","Népal":"NP","Nauru":"NR","Niue":"NU","Nouvelle-Zélande":"NZ","Oman":"OM","Panama":"PA","Pérou":"PE","Polynésie française":"PF","Papouasie-Nouvelle-Guinée":"PG","Philippines":"PH","Pakistan":"PK","Pologne":"PL","Saint-Pierre-et-Miquelon":"PM","Pitcairn":"PN","Porto Rico":"PR","Territoire palestinien":"PS","Portugal":"PT","Palaos":"PW","Paraguay":"PY","Qatar":"QA","régions éloignées de l’Océanie":"QO","Réunion":"RE","Roumanie":"RO","Serbie":"RS","Russie":"RU","Rwanda":"RW","Arabie saoudite":"SA","Îles Salomon":"SB","Seychelles":"SC","Soudan":"SD","Suède":"SE","Singapour":"SG","Sainte-Hélène":"SH","Slovénie":"SI","Svalbard et Île Jan Mayen":"SJ","Slovaquie":"SK","Sierra Leone":"SL","Saint-Marin":"SM","Sénégal":"SN","Somalie":"SO","Suriname":"SR","Soudan du Sud":"SS","Sao Tomé-et-Príncipe":"ST","El Salvador":"SV","Saint-Martin [partie néerlandaise]":"SX","Syrie":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Îles Turks et Caïques":"TC","Tchad":"TD","Terres australes françaises":"TF","Togo":"TG","Thaïlande":"TH","Tadjikistan":"TJ","Tokelau":"TK","Timor oriental":"TL","Turkménistan":"TM","Tunisie":"TN","Tonga":"TO","Turquie":"TR","Trinité-et-Tobago":"TT","Tuvalu":"TV","Taïwan":"TW","Tanzanie":"TZ","Ukraine":"UA","Ouganda":"UG","Îles éloignées des États-Unis":"UM","États-Unis":"US","Uruguay":"UY","Ouzbékistan":"UZ","État de la Cité du Vatican":"VA","Saint-Vincent-et-les Grenadines":"VC","Venezuela":"VE","Îles Vierges britanniques":"VG","Îles Vierges des États-Unis":"VI","Viêt Nam":"VN","Vanuatu":"VU","Wallis-et-Futuna":"WF","Samoa":"WS","Yémen":"YE","Mayotte":"YT","Afrique du Sud":"ZA","Zambie":"ZM","Zimbabwe":"ZW","région indéterminée":"ZZ"};
 ilib.data.ctrynames_fr_CA = {"generated":false,"Île de l'Ascension":"AC","Géorgie du Sud et les îles Sandwich du Sud":"GS","Sao Tomé-et-Principe":"ST"};
 ilib.data.ctrynames_id = {"Pulau Ascension":"AC","Andora":"AD","Uni Emirat Arab":"AE","Afganistan":"AF","Antigua dan Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Antilla Belanda":"AN","Angola":"AO","Antarktika":"AQ","Argentina":"AR","Samoa Amerika":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Kepulauan Aland":"AX","Azerbaijan":"AZ","Bosnia dan Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgia":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthelemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Karibia Belanda":"BQ","Brasil":"BR","Bahama":"BS","Bhutan":"BT","Pulau Bouvet":"BV","Botswana":"BW","Belarus":"BY","Belize":"BZ","Kanada":"CA","Kepulauan Cocos":"CC","Kongo - Kinshasa":"CD","Republik Afrika Tengah":"CF","Kongo - Brazzaville":"CG","Swiss":"CH","Cote d'Ivoire":"CI","Kepulauan Cook":"CK","Cile":"CL","Kamerun":"CM","China":"CN","Kolombia":"CO","Pulau Clipperton":"CP","Kosta Rika":"CR","Kuba":"CU","Tanjung Verde":"CV","Curaçao":"CW","Pulau Christmas":"CX","Siprus":"CY","Republik Cheska":"CZ","Jerman":"DE","Diego Garcia":"DG","Jibuti":"DJ","Denmark":"DK","Dominika":"DM","Republik Dominika":"DO","Aljazair":"DZ","Ceuta dan Melilla":"EA","Ekuador":"EC","Estonia":"EE","Mesir":"EG","Sahara Barat":"EH","Eritrea":"ER","Spanyol":"ES","Etiopia":"ET","Uni Eropa":"EU","Finlandia":"FI","Fiji":"FJ","Kepulauan Malvinas":"FK","Mikronesia":"FM","Kepulauan Faroe":"FO","Prancis":"FR","Gabon":"GA","Inggris":"GB","Grenada":"GD","Georgia":"GE","Guyana Prancis":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grinlandia":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Guinea Ekuatorial":"GQ","Yunani":"GR","Kepulauan South Sandwich dan South Georgia":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hong Kong SAR China":"HK","Pulau Heard dan Kepulauan McDonald":"HM","Honduras":"HN","Kroasia":"HR","Haiti":"HT","Hungaria":"HU","Kepulauan Canary":"IC","Indonesia":"ID","Irlandia":"IE","Israel":"IL","Isle of Man":"IM","India":"IN","Wilayah Inggris di Samudra Hindia":"IO","Irak":"IQ","Iran":"IR","Islandia":"IS","Italia":"IT","Jersey":"JE","Jamaika":"JM","Yordania":"JO","Jepang":"JP","Kenya":"KE","Kirgistan":"KG","Kamboja":"KH","Kiribati":"KI","Komoro":"KM","Saint Kitts dan Nevis":"KN","Korea Utara":"KP","Korea Selatan":"KR","Kuwait":"KW","Kepulauan Kayman":"KY","Kazakstan":"KZ","Laos":"LA","Lebanon":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lituania":"LT","Luksemburg":"LU","Latvia":"LV","Libia":"LY","Maroko":"MA","Monako":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagaskar":"MG","Kepulauan Marshall":"MH","Makedonia":"MK","Mali":"ML","Myanmar":"MM","Mongolia":"MN","Makau SAR China":"MO","Kepulauan Mariana Utara":"MP","Martinik":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maladewa":"MV","Malawi":"MW","Meksiko":"MX","Malaysia":"MY","Mozambik":"MZ","Namibia":"NA","Kaledonia Baru":"NC","Niger":"NE","Kepulauan Norfolk":"NF","Nigeria":"NG","Nikaragua":"NI","Belanda":"NL","Norwegia":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Selandia Baru":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Polinesia Prancis":"PF","Papua Nugini":"PG","Filipina":"PH","Pakistan":"PK","Polandia":"PL","Saint Pierre dan Miquelon":"PM","Kepulauan Pitcairn":"PN","Puerto Riko":"PR","Otoritas Palestina":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Oseania Luar":"QO","Réunion":"RE","Rumania":"RO","Serbia":"RS","Rusia":"RU","Rwanda":"RW","Arab Saudi":"SA","Kepulauan Solomon":"SB","Seychelles":"SC","Sudan":"SD","Swedia":"SE","Singapura":"SG","Saint Helena":"SH","Slovenia":"SI","Kepulauan Svalbard dan Jan Mayen":"SJ","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Suriname":"SR","Sudan Selatan":"SS","Sao Tome dan Principe":"ST","El Salvador":"SV","Sint Maarten":"SX","Suriah":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Kepulauan Turks dan Caicos":"TC","Cad":"TD","Teritori Kutub Selatan Prancis":"TF","Togo":"TG","Thailand":"TH","Tajikistan":"TJ","Tokelau":"TK","Timor Leste":"TL","Turkimenistan":"TM","Tunisia":"TN","Tonga":"TO","Turki":"TR","Trinidad dan Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraina":"UA","Uganda":"UG","Kepulauan Terluar A.S.":"UM","Amerika Serikat":"US","Uruguay":"UY","Uzbekistan":"UZ","Vatikan":"VA","Saint Vincent dan Grenadines":"VC","Venezuela":"VE","Kepulauan Virgin Inggris":"VG","Kepulauan Virgin A.S.":"VI","Vietnam":"VN","Vanuatu":"VU","Kepulauan Wallis dan Futuna":"WF","Samoa":"WS","Yaman":"YE","Mayotte":"YT","Afrika Selatan":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Wilayah Tidak Dikenal":"ZZ"};
@@ -27562,6 +27515,12 @@ ctype.isdigit.js
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
  * When an address cannot be parsed properly, the entire address will be placed
@@ -27570,9 +27529,12 @@ ctype.isdigit.js
  * When the freeformAddress is another ilib.Address, this will act like a copy
  * constructor.<p>
  * 
+ * Depends directive: !depends addressprs.js
+ * 
+ * @dict
  * @param {string|ilib.Address} freeformAddress free-form address to parse, or a
  * javascript object containing the fields
- * @params {Object} options options to the parser
+ * @param {Object} options options to the parser
  */
 ilib.Address = function (freeformAddress, options) {
 	var address;
@@ -27582,6 +27544,7 @@ ilib.Address = function (freeformAddress, options) {
 	}
 
 	this.sync = true;
+	this.loadParams = {};
 	
 	if (options) {
 		if (options.locale) {
@@ -27591,42 +27554,57 @@ ilib.Address = function (freeformAddress, options) {
 		if (typeof(options.sync) !== 'undefined') {
 			this.sync = (options.sync == true);
 		}
+		
+		if (options.loadParams) {
+			this.loadParams = options.loadParams;
+		}
 	}
 
 	this.locale = this.locale || new ilib.Locale();
 	// initialize from an already parsed object
 	if (typeof(freeformAddress) === 'object') {
 		/**
-		 * @type {string|undefined} The street address, including house numbers and all
+		 * The street address, including house numbers and all.
+		 * @expose
+		 * @type {string|undefined} 
 		 */
 		this.streetAddress = freeformAddress.streetAddress;
 		/**
-		 * @type {string|undefined} The locality of this address (usually a city or town) 
+		 * The locality of this address (usually a city or town).
+		 * @expose
+		 * @type {string|undefined} 
 		 */
 		this.locality = freeformAddress.locality;
 		/**
-		 * @type {string|undefined} The region (province, canton, prefecture, state, etc.) where
-		 * the address is located.
+		 * The region (province, canton, prefecture, state, etc.) where the address is located.
+		 * @expose
+		 * @type {string|undefined} 
 		 */
 		this.region = freeformAddress.region;
 		/**
-		 * @type {string|undefined} Country-specific code for expediting mail. In the US,
-		 * this is the zip code.
+		 * Country-specific code for expediting mail. In the US, this is the zip code.
+		 * @expose
+		 * @type {string|undefined} 
 		 */
 		this.postalCode = freeformAddress.postalCode;
 		/**
-		 * @type {string|undefined} The country of the address.
+		 * The country of the address.
+		 * @expose
+		 * @type {string|undefined}
 		 */
 		this.country = freeformAddress.country;
 		if (freeformAddress.countryCode) {
 			/**
-			 * @type {string} The ISO 3166 2-letter region code for the destination
-			 * country in this address.
+			 * The 2 or 3 letter ISO 3166 region code for the destination country in this address.
+			 * @expose
+			 * @type {string} 
+			 * 
 			 */
 			this.countryCode = freeformAddress.countryCode;
 		}
 		if (freeformAddress.format) {
 			/**
+			 * @protected
 			 * @type {string}
 			 */
 			this.format = freeformAddress.format;
@@ -27645,9 +27623,12 @@ ilib.Address = function (freeformAddress, options) {
 	if (typeof(ilib.Address.ctry) === 'undefined') {
 		ilib.Address.ctry = {}; // make sure not to conflict with the address info
 	}
-	ilib.loadData(ilib.Address.ctry, this.locale, "ctrynames", this.sync, /** @type {function(Object?):undefined} */ function(ctrynames) {
-		this._determineDest(ctrynames, options.onLoad);
-	}.bind(this));
+	ilib.loadData(ilib.Address.ctry, this.locale, "ctrynames", this.sync, this.loadParams, 
+		/** @type function(Object=):undefined */
+		ilib.bind(this, /** @type function() */ function(ctrynames) {
+			this._determineDest(ctrynames, options.onLoad);
+		}
+	));
 };
 
 /** @protected */
@@ -27723,18 +27704,18 @@ ilib.Address.prototype = {
 	 * @param {function(ilib.Address):undefined} callback
 	 */
 	_init: function(callback) {
-		ilib.loadData(ilib.Address, new ilib.Locale(this.countryCode), "address", this.sync, 
-				/** @type {function(Object=):undefined} */ function(info) {
+		ilib.loadData(ilib.Address, new ilib.Locale(this.countryCode), "address", this.sync, this.loadParams, 
+				/** @type function(Object=):undefined */ ilib.bind(this, function(info) {
 			if (!info || ilib.isEmpty(info)) {
 				// load the "unknown" locale instead
-				ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, 
-						/** @type {function(Object=):undefined} */ function(info) {
+				ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, this.loadParams, 
+						/** @type function(Object=):undefined */ ilib.bind(this, function(info) {
 					this.info = info;
 					this._parseAddress();
 					if (typeof(callback) === 'function') {
 						callback(this);
 					}	
-				}.bind(this));
+				}));
 			} else {
 				this.info = info;
 				this._parseAddress();
@@ -27742,7 +27723,7 @@ ilib.Address.prototype = {
 					callback(this);
 				}
 			}
-		}.bind(this));
+		}));
 	},
 
 	/**
@@ -28044,7 +28025,15 @@ addressprs.js
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
+ * 
+ * Depends directive: !depends addressfmt.js
  * 
  * @param {Object} options options that configure how this formatter should work
  * Returns a formatter instance that can format multiple addresses.
@@ -28052,6 +28041,7 @@ addressprs.js
 ilib.AddressFmt = function(options) {
 	this.sync = true;
 	this.styleName = 'default';
+	this.loadParams = {};
 	
 	if (options) {
 		if (options.locale) {
@@ -28065,19 +28055,23 @@ ilib.AddressFmt = function(options) {
 		if (options.style) {
 			this.styleName = options.style;
 		}
+		
+		if (options.loadParams) {
+			this.loadParams = options.loadParams;
+		}
 	}
 
 	// console.log("Creating formatter for region: " + this.locale.region);
-	ilib.loadData(ilib.Address, this.locale, "address", this.sync, /** @type {function(Object?):undefined} */ function(info) {
+	ilib.loadData(ilib.Address, this.locale, "address", this.sync, this.loadParams, /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
 		if (!info || ilib.isEmpty(info)) {
 			// load the "unknown" locale instead
-			ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, /** @type {function(Object?):undefined} */ function(info) {
+			ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, this.loadParams, /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
 				this.info = info;
 				this._init();
 				if (typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
 				}	
-			}.bind(this));
+			}));
 		} else {
 			this.info = info;
 			this._init();
@@ -28085,7 +28079,7 @@ ilib.AddressFmt = function(options) {
 				options.onLoad(this);
 			}
 		}
-	}.bind(this));
+	}));
 };
 
 /**

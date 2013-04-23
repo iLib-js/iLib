@@ -62,7 +62,8 @@ ilib.Date = function(options) {
  *  
  * @param {Object=} options options controlling the construction of this instance, or
  * undefined to use the default options
- * @returns an instance of a calendar object of the appropriate type */
+ * @return {ilib.Date} an instance of a calendar object of the appropriate type 
+ */
 ilib.Date.newInstance = function(options) {
 	var locale = options && options.locale,
 		type = options && options.type,

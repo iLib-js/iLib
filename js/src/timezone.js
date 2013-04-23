@@ -193,7 +193,7 @@ ilib.TimeZone.prototype._inittz = function () {
 
 /**
  * Return an array of available zone ids that the constructor knows about.
- * @returns {Array.<string>} an array of zone id strings
+ * @return {Array.<string>} an array of zone id strings
  */
 ilib.TimeZone.getAvailableIds = function () {
 	var tz, ids = [];
@@ -212,7 +212,7 @@ ilib.TimeZone.getAvailableIds = function () {
 
 /**
  * Return the id used to uniquely identify this time zone.
- * @returns {string} a unique id for this time zone
+ * @return {string} a unique id for this time zone
  */
 ilib.TimeZone.prototype.getId = function () {
 	return this.id;
@@ -234,7 +234,7 @@ ilib.TimeZone.prototype.getId = function () {
  *  
  * @param {ilib.Date=} date a date to determine if it is in daylight time or standard time
  * @param {string=} style one of "standard" or "rfc822". Default if not specified is "standard"
- * @returns {string} the name of the time zone, abbreviated according to the style 
+ * @return {string} the name of the time zone, abbreviated according to the style 
  */
 ilib.TimeZone.prototype.getDisplayName = function (date, style) {
 	style = (this.isLocal || typeof(this.zone) === 'undefined') ? "rfc822" : (style || "standard");
@@ -282,7 +282,7 @@ ilib.TimeZone.prototype.getDisplayName = function (date, style) {
  * to indicate the hours, minutes, and seconds.
  * 
  * @param {string} str the offset string to convert to an object
- * @returns {Object.<{h:number,m:number,s:number}>} an object giving the offset for the zone at 
+ * @return {Object.<{h:number,m:number,s:number}>} an object giving the offset for the zone at 
  * the given date/time, in hours, minutes, and seconds
  */
 ilib.TimeZone.prototype._offsetStringToObj = function (str) {
@@ -395,7 +395,7 @@ ilib.TimeZone.prototype.getOffsetStr = function (date) {
 
 /**
  * Gets the offset from UTC for this time zone.
- * @returns {Object.<{h:number,m:number,s:number}>} an object giving the offset from 
+ * @return {Object.<{h:number,m:number,s:number}>} an object giving the offset from 
  * UTC for this time zone, in hours, minutes, and seconds 
  */
 ilib.TimeZone.prototype.getRawOffset = function () {
@@ -417,7 +417,7 @@ ilib.TimeZone.prototype.getRawOffset = function () {
  * Gets the offset from UTC for this time zone expressed in milliseconds. Negative numbers
  * indicate zones west of UTC, and positive numbers indicate zones east of UTC.
  * 
- * @returns {number} an number giving the offset from 
+ * @return {number} an number giving the offset from 
  * UTC for this time zone in milliseconds 
  */
 ilib.TimeZone.prototype.getRawOffsetMillis = function () {
@@ -429,7 +429,7 @@ ilib.TimeZone.prototype.getRawOffsetMillis = function () {
 
 /**
  * Gets the offset from UTC for this time zone.
- * @returns {string} the offset from UTC for this time zone, in the format "h:m:s" 
+ * @return {string} the offset from UTC for this time zone, in the format "h:m:s" 
  */
 ilib.TimeZone.prototype.getRawOffsetStr = function () {
 	if (this.isLocal) {
@@ -446,7 +446,7 @@ ilib.TimeZone.prototype.getRawOffsetStr = function () {
 /**
  * Return the amount of time in hours:minutes that the clock is advanced during
  * daylight savings time.
- * @returns {Object.<{h:number,m:number,s:number}>} the amount of time that the 
+ * @return {Object.<{h:number,m:number,s:number}>} the amount of time that the 
  * clock advances for DST in hours, minutes, and seconds 
  */
 ilib.TimeZone.prototype.getDSTSavings = function () {
@@ -469,7 +469,7 @@ ilib.TimeZone.prototype.getDSTSavings = function () {
 /**
  * Return the amount of time in hours:minutes that the clock is advanced during
  * daylight savings time.
- * @returns {string} the amount of time that the clock advances for DST in the
+ * @return {string} the amount of time that the clock advances for DST in the
  * format "h:m:s"
  */
 ilib.TimeZone.prototype.getDSTSavingsStr = function () {
@@ -487,7 +487,7 @@ ilib.TimeZone.prototype.getDSTSavingsStr = function () {
  * return the rd of the start of DST transition for the given year
  * @param {Object} rule set of rules
  * @param {number} year year to check
- * @returns {number} the rd of the start of DST for the year
+ * @return {number} the rd of the start of DST for the year
  */
 ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 	var type, 
@@ -651,7 +651,7 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 /**
  * Returns true if this time zone switches to daylight savings time at some point
  * in the year, and false otherwise.
- * @returns {boolean} true if the time zone uses daylight savings time
+ * @return {boolean} true if the time zone uses daylight savings time
  */
 ilib.TimeZone.prototype.useDaylightTime = function () {
 	// this zone uses daylight savings time iff there is a rule defining when to start

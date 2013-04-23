@@ -240,7 +240,7 @@ ilib.Date.JulDate.prototype.calcRataDie = function(parts) {
  * @private
  * Return the Rata Die (fixed day) number of this date.
  * 
- * @returns {number} the rd date as a number
+ * @return {number} the rd date as a number
  */
 ilib.Date.JulDate.prototype.getRataDie = function() {
 	return this.calcRataDie(this);
@@ -250,7 +250,7 @@ ilib.Date.JulDate.prototype.getRataDie = function() {
  * @private
  * Calculate date components for the given RD date.
  * @param {number} rd the RD date to calculate components for
- * @returns {Object} object containing the component fields
+ * @return {Object} object containing the component fields
  */
 ilib.Date.JulDate.prototype.calcComponents = function (rd) {
 	var year,
@@ -331,7 +331,7 @@ ilib.Date.JulDate.prototype.setJulianDay = function (date) {
  * Return the day of the week of this date. The day of the week is encoded
  * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
  * 
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.JulDate.prototype.getDayOfWeek = function() {
 	var rd = Math.floor(this.getRataDie());
@@ -345,7 +345,7 @@ ilib.Date.JulDate.prototype.getDayOfWeek = function() {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.JulDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
 	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 2, 7);
@@ -358,7 +358,7 @@ ilib.Date.JulDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.JulDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
 	return this.onOrBeforeRd(rd+6, dayOfWeek);
@@ -371,7 +371,7 @@ ilib.Date.JulDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.JulDate.prototype.beforeRd = function(rd, dayOfWeek) {
 	return this.onOrBeforeRd(rd-1, dayOfWeek);
@@ -384,7 +384,7 @@ ilib.Date.JulDate.prototype.beforeRd = function(rd, dayOfWeek) {
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
- * @returns {number} the day of the week
+ * @return {number} the day of the week
  */
 ilib.Date.JulDate.prototype.afterRd = function(rd, dayOfWeek) {
 	return this.onOrBeforeRd(rd+7, dayOfWeek);
@@ -394,7 +394,7 @@ ilib.Date.JulDate.prototype.afterRd = function(rd, dayOfWeek) {
  * @private
  * Return the rd of the first Sunday of the given ISO year.
  * @param {number} year the year for which the first Sunday is being sought
- * @returns the rd of the first Sunday of the ISO year
+ * @return the rd of the first Sunday of the ISO year
  */
 ilib.Date.JulDate.prototype.firstSunday = function (year) {
 	var jan1 = this.calcRataDie({
@@ -416,7 +416,7 @@ ilib.Date.JulDate.prototype.firstSunday = function (year) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week before the current date that is being sought
- * @returns {ilib.Date.JulDate} the date being sought
+ * @return {ilib.Date.JulDate} the date being sought
  */
 ilib.Date.JulDate.prototype.before = function (dow) {
 	return new ilib.Date.JulDate({rd: this.beforeRd(this.getRataDie(), dow)});
@@ -428,7 +428,7 @@ ilib.Date.JulDate.prototype.before = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week after the current date that is being sought
- * @returns {ilib.Date.JulDate} the date being sought
+ * @return {ilib.Date.JulDate} the date being sought
  */
 ilib.Date.JulDate.prototype.after = function (dow) {
 	return new ilib.Date.JulDate({rd: this.afterRd(this.getRataDie(), dow)});
@@ -440,7 +440,7 @@ ilib.Date.JulDate.prototype.after = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week on or before the current date that is being sought
- * @returns {ilib.Date.JulDate} the date being sought
+ * @return {ilib.Date.JulDate} the date being sought
  */
 ilib.Date.JulDate.prototype.onOrBefore = function (dow) {
 	return new ilib.Date.JulDate({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
@@ -452,7 +452,7 @@ ilib.Date.JulDate.prototype.onOrBefore = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week on or after the current date that is being sought
- * @returns {ilib.Date.JulDate} the date being sought
+ * @return {ilib.Date.JulDate} the date being sought
  */
 ilib.Date.JulDate.prototype.onOrAfter = function (dow) {
 	return new ilib.Date.JulDate({rd: this.onOrAfterRd(this.getRataDie(), dow)});
@@ -465,7 +465,7 @@ ilib.Date.JulDate.prototype.onOrAfter = function (dow) {
  * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
  * encodes a date outside of that range, this method will return -1.
  * 
- * @returns {number} a number giving the unix time, or -1 if the date is outside the
+ * @return {number} a number giving the unix time, or -1 if the date is outside the
  * valid unix time range
  */
 ilib.Date.JulDate.prototype.getTime = function() {
@@ -513,7 +513,7 @@ ilib.Date.JulDate.prototype.setTime = function(millis) {
  * object. If the julian date object represents a date that cannot be represented
  * by a Javascript Date object, the value undefined is returned
  * 
- * @returns {Date|undefined} a javascript Date object, or undefined if the date is out of range
+ * @return {Date|undefined} a javascript Date object, or undefined if the date is out of range
  */
 ilib.Date.JulDate.prototype.getJSDate = function() {
 	var unix = this.getTime();
