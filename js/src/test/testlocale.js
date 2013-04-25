@@ -213,7 +213,7 @@ function testLocaleEqualsTrueShort() {
 }
 
 function testLocaleIsPseudoTrue() {
-    var loc = new ilib.Locale("xx-XX");
+    var loc = new ilib.Locale("zxx-XX");
     
     assertNotNull(loc);
     
@@ -229,7 +229,7 @@ function testLocaleIsPseudoFalse() {
 }
 
 function testLocaleIsPseudoFalseButClosLang() {
-    var loc = new ilib.Locale("xx-US");
+    var loc = new ilib.Locale("zxx-US");
     
     assertNotNull(loc);
     

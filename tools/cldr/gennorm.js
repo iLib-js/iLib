@@ -126,7 +126,7 @@ var compositionExclusions = [];
  * @param {object} canon the canonical mappings to apply
  * @param {object} compat the compatibility mappings to apply, or undefined
  * if only the canonical mappings are needed
- * @returns {string} the mapped character
+ * @return {string} the mapped character
  */
 function expand(ch, canon, compat) {
 	var expansion = "";

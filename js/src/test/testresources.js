@@ -246,7 +246,7 @@ function testResBundleGetStringOtherBundleesMXslang() {
 function testResBundleGetStringOtherBundlePsuedoRaw() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "raw"
     });
     
@@ -261,7 +261,7 @@ function testResBundleGetStringOtherBundlePsuedoRaw() {
 function testResBundleGetStringOtherBundlePsuedoText() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "text"
     });
     
@@ -276,7 +276,7 @@ function testResBundleGetStringOtherBundlePsuedoText() {
 function testResBundleGetStringOtherBundlePsuedoHtml() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "html"
     });
     
@@ -291,7 +291,7 @@ function testResBundleGetStringOtherBundlePsuedoHtml() {
 function testResBundleGetStringOtherBundlePsuedoXml() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "xml"
     });
     
@@ -306,7 +306,7 @@ function testResBundleGetStringOtherBundlePsuedoXml() {
 function testResBundleGetStringOtherBundlePsuedoDefault() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX"
+        locale: "zxx-XX"
     });
     
     assertNotNull(rb);
@@ -320,7 +320,7 @@ function testResBundleGetStringOtherBundlePsuedoDefault() {
 function testResBundleGetStringMissingBundlePsuedoHtml() {
     var rb = new ilib.ResBundle({
         name: "asdfasdffoobar",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "html"
     });
     
@@ -335,7 +335,7 @@ function testResBundleGetStringMissingBundlePsuedoHtml() {
 function testResBundleGetStringPsuedoHtmlLengthenShort() {
     var rb = new ilib.ResBundle({
         name: "asdfasdffoobar",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "html",
         lengthen: true
     });
@@ -349,7 +349,7 @@ function testResBundleGetStringPsuedoHtmlLengthenShort() {
 function testResBundleGetStringPsuedoHtmlLengthenMedium() {
     var rb = new ilib.ResBundle({
         name: "asdfasdffoobar",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "html",
         lengthen: true
     });
@@ -363,7 +363,7 @@ function testResBundleGetStringPsuedoHtmlLengthenMedium() {
 function testResBundleGetStringPsuedoHtmlLengthenLong() {
     var rb = new ilib.ResBundle({
         name: "asdfasdffoobar",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "html",
         lengthen: true
     });
@@ -377,7 +377,7 @@ function testResBundleGetStringPsuedoHtmlLengthenLong() {
 function testResBundleGetStringPsuedoLeaveHTMLTags() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "html"
     });
     
@@ -389,7 +389,7 @@ function testResBundleGetStringPsuedoLeaveHTMLTags() {
 function testResBundleGetStringPsuedoLeaveHTMLTags2() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "html"
     });
     
@@ -401,7 +401,7 @@ function testResBundleGetStringPsuedoLeaveHTMLTags2() {
 function testResBundleGetStringPsuedoNotLeaveHTMLTagsRaw() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "raw"
     });
     
@@ -413,7 +413,7 @@ function testResBundleGetStringPsuedoNotLeaveHTMLTagsRaw() {
 function testResBundleGetStringPsuedoNotLeaveHTMLTagsText() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "text"
     });
     
@@ -425,7 +425,7 @@ function testResBundleGetStringPsuedoNotLeaveHTMLTagsText() {
 function testResBundleGetStringPsuedoLeaveHTMLEntities() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "html"
     });
     
@@ -437,7 +437,7 @@ function testResBundleGetStringPsuedoLeaveHTMLEntities() {
 function testResBundleGetStringPsuedoNotLeaveHTMLEntitiesRaw() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "raw"
     });
     
@@ -449,7 +449,7 @@ function testResBundleGetStringPsuedoNotLeaveHTMLEntitiesRaw() {
 function testResBundleGetStringPsuedoNotLeaveHTMLEntitiesText() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "text"
     });
     
@@ -461,7 +461,7 @@ function testResBundleGetStringPsuedoNotLeaveHTMLEntitiesText() {
 function testResBundleGetStringMissingBundlePsuedoXml() {
     var rb = new ilib.ResBundle({
         name: "asdfasdffoobar",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "xml"
     });
     
@@ -476,7 +476,7 @@ function testResBundleGetStringMissingBundlePsuedoXml() {
 function testResBundleGetStringPsuedoXmlLengthenShort() {
     var rb = new ilib.ResBundle({
         name: "asdfasdffoobar",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "xml",
         lengthen: true
     });
@@ -490,7 +490,7 @@ function testResBundleGetStringPsuedoXmlLengthenShort() {
 function testResBundleGetStringPsuedoXmlLengthenMedium() {
     var rb = new ilib.ResBundle({
         name: "asdfasdffoobar",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "xml",
         lengthen: true
     });
@@ -504,7 +504,7 @@ function testResBundleGetStringPsuedoXmlLengthenMedium() {
 function testResBundleGetStringPsuedoXmlLengthenLong() {
     var rb = new ilib.ResBundle({
         name: "asdfasdffoobar",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "xml",
         lengthen: true
     });
@@ -518,7 +518,7 @@ function testResBundleGetStringPsuedoXmlLengthenLong() {
 function testResBundleGetStringPsuedoLeaveXmlTags() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "xml"
     });
     
@@ -530,7 +530,7 @@ function testResBundleGetStringPsuedoLeaveXmlTags() {
 function testResBundleGetStringPsuedoLeaveXmlEntities() {
     var rb = new ilib.ResBundle({
         name: "tester",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         type: "xml"
     });
     
@@ -794,7 +794,7 @@ function testResBundleGetStringNoResourcesReturnSourceTypeHtmlWithEscapeJS() {
 function testResBundleGetStringPsuedoHtmlNoEscape() {
    var rb = new ilib.ResBundle({
        name: "asdfasdffoobar",
-       locale: "xx-XX",
+       locale: "zxx-XX",
        type: "html"
    });
    
@@ -806,7 +806,7 @@ function testResBundleGetStringPsuedoHtmlNoEscape() {
 function testResBundleGetStringPsuedoHtmlEscapeHtml() {
    var rb = new ilib.ResBundle({
        name: "asdfasdffoobar",
-       locale: "xx-XX",
+       locale: "zxx-XX",
        type: "html"
    });
    
@@ -818,7 +818,7 @@ function testResBundleGetStringPsuedoHtmlEscapeHtml() {
 function testResBundleGetStringPsuedoHtmlEscapeJS() {
    var rb = new ilib.ResBundle({
        name: "asdfasdffoobar",
-       locale: "xx-XX",
+       locale: "zxx-XX",
        type: "html"
    });
    
@@ -1070,4 +1070,110 @@ function testResBundleConstructSynchDynamicNoStrings() {
     assertEquals("first string", rb.getString("first string").toString());
     assertEquals("second string", rb.getString("second string").toString());
     assertEquals("third string", rb.getString("third string").toString());
+}
+
+
+function testResBundleGetStringCyrlPsuedoRaw() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "zxx-Cyrl-XX",
+        type: "raw"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("Хэлло фром {чоунтря}", rb.getString("Hello from {country}").toString());
+    assertEquals("Хэлло фром {читя}", rb.getString("Hello from {city}").toString());
+    assertEquals("Грээтингс фром {читя} ин {чоунтря}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringCyrlPsuedoText() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "zxx-Cyrl-XX",
+        type: "text"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("Хэлло фром {country}", rb.getString("Hello from {country}").toString());
+    assertEquals("Хэлло фром {city}", rb.getString("Hello from {city}").toString());
+    assertEquals("Грээтингс фром {city} ин {country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringCyrlPsuedoHtml() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "zxx-Cyrl-XX",
+        type: "html"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("Хэлло фром {country}", rb.getString("Hello from {country}").toString());
+    assertEquals("Хэлло фром {city}", rb.getString("Hello from {city}").toString());
+    assertEquals("Грээтингс фром {city} ин {country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringCyrlPsuedoXml() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "zxx-Cyrl-XX",
+        type: "xml"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("Хэлло фром {country}", rb.getString("Hello from {country}").toString());
+    assertEquals("Хэлло фром {city}", rb.getString("Hello from {city}").toString());
+    assertEquals("Грээтингс фром {city} ин {country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringCyrlPsuedoDefault() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "zxx-Cyrl-XX"
+    });
+    
+    assertNotNull(rb);
+    
+    // should be equivalent to "text" and not pseudo-ize the replacement parameter names
+    assertEquals("Хэлло фром {country}", rb.getString("Hello from {country}").toString());
+    assertEquals("Хэлло фром {city}", rb.getString("Hello from {city}").toString());
+    assertEquals("Грээтингс фром {city} ин {country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringHansPsuedoText() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "zxx-Hans-XX",
+        type: "text"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    // for Chinese scripts, remove the spaces to the simulate Chinese writing style
+    assertEquals("和俄了了夥凡熱夥们{country}", rb.getString("Hello from {country}").toString());
+    assertEquals("和俄了了夥凡熱夥们{city}", rb.getString("Hello from {city}").toString());
+    assertEquals("个熱俄俄推意尼个思凡熱夥们{city}意尼{country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringHebrPsuedoText() {
+    var rb = new ilib.ResBundle({
+        name: "tester",
+        locale: "zxx-Hebr-XX",
+        type: "text"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("הֶללֹ פרֹמ {country}", rb.getString("Hello from {country}").toString());
+    assertEquals("הֶללֹ פרֹמ {city}", rb.getString("Hello from {city}").toString());
+    assertEquals("גרֶֶטִנגס פרֹמ {city} ִנ {country}", rb.getString("Greetings from {city} in {country}").toString());
 }

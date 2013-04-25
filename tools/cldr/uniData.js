@@ -69,91 +69,91 @@ exports.CharacterInfo = function(fields) {
 
 exports.CharacterInfo.prototype = {
 	/**
-	 * @returns {string}
+	 * @return {string}
 	 */
 	getCharacter: function () {
 		return this.c;
 	},
 	
 	/**
-	 * @returns {string}
+	 * @return {string}
 	 */
 	getName: function () {
 		return this.name;
 	},
 	
 	/**
-	 * @returns {string}
+	 * @return {string}
 	 */
 	getCategory: function () {
 		return this.category;
 	},
 	
 	/**
-	 * @returns {number}
+	 * @return {number}
 	 */
 	getCombiningClass: function () {
 		return this.ccc;
 	},
 	
 	/**
-	 * @returns {string}
+	 * @return {string}
 	 */
 	getBidiClass: function () {
 		return this.bidiClass;
 	},
 	
 	/**
-	 * @returns {string}
+	 * @return {string}
 	 */
 	getDecompositionType: function () {
 		return this.decompType || "";
 	},
 	
 	/**
-	 * @returns {string}
+	 * @return {string}
 	 */
 	getDecomposition: function () {
 		return this.decomp || this.c;
 	},
 	
 	/**
-	 * @returns {string}
+	 * @return {string}
 	 */
 	getNumericType: function () {
 		
 	},
 	
 	/**
-	 * @returns {number}
+	 * @return {number}
 	 */
 	getNumericValue: function () {
 		
 	},
 	
 	/**
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	getBidiMirrored: function () {
 		return this.bidiMirrored;
 	},
 	
 	/**
-	 * @returns {string}
+	 * @return {string}
 	 */
 	getSimpleUppercase: function () {
 		return this.upper;
 	},
 	
 	/**
-	 * @returns {string}
+	 * @return {string}
 	 */
 	getSimpleLowercase: function () {
 		return this.lower;
 	},
 	
 	/**
-	 * @returns {string}
+	 * @return {string}
 	 */
 	getSimpleTitlecase: function () {
 		return this.title;
@@ -183,7 +183,7 @@ exports.UnicodeData.prototype = {
 	 * Return the number of rows in this character database. Each row is
 	 * represented by a CharacterInfo object.
 	 * 
-	 * @returns {number} the number of rows in this character database 
+	 * @return {number} the number of rows in this character database 
 	 */
 	length: function () {
 		return this.uf.length();
@@ -193,7 +193,7 @@ exports.UnicodeData.prototype = {
 	 * Return the character info for a particular row in the database.
 	 * 
 	 * @param {number} index the row to return 
-	 * @returns {exports.CharacterInfo?} the character info at the given row
+	 * @return {exports.CharacterInfo?} the character info at the given row
 	 */
 	get: function (index) {
 		return new exports.CharacterInfo(this.uf.get(index));

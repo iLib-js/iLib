@@ -67,10 +67,10 @@ function testDurFmtGetLocaleDefault() {
 };
 
 function testDurFmtGetLocaleBogus() {
-    var fmt = new ilib.DurFmt({locale: "xx-XX"});
+    var fmt = new ilib.DurFmt({locale: "zyy-XX"});
     assertNotNull(fmt);
     
-    assertEquals("xx-XX", fmt.getLocale().toString());
+    assertEquals("zyy-XX", fmt.getLocale().toString());
 };
 
 function testDurFmtGetStyleDefault() {

@@ -107,10 +107,10 @@ function testDateRngFmtGetLocaleDefault() {
 }
 
 function testDateRngFmtGetLocaleBogus() {
-    var fmt = new ilib.DateRngFmt({locale: "xx-XX"});
+    var fmt = new ilib.DateRngFmt({locale: "zyy-XX"});
     assertNotNull(fmt);
     
-    assertEquals("xx-XX", fmt.getLocale().toString());
+    assertEquals("zyy-XX", fmt.getLocale().toString());
 }
 
 function testDateRngFmtGetClockDefaultUS() {

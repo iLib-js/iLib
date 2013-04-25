@@ -997,7 +997,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale() {
 function testNumFmtCurrencyUseCorrectRoundingModeForLocale() {
     var fmt = new ilib.NumFmt({
         type: "currency",
-        locale: "xx-XX",
+        locale: "zxx-XX",
         currency: "USD"
     });
     

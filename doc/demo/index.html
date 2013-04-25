@@ -628,16 +628,8 @@ $(function() {
                     id: targettz
                 }),
                 today = new ilib.Date.GregDate(),
-                jan1 = new ilib.Date.GregDate({
-                    year: today.year,
-                    month: 1,
-                    day: 1
-                }),
-                jul1 = new ilib.Date.GregDate({
-                    year: today.year,
-                    month: 7,
-                    day: 1
-                }),
+                startDate,
+                endDate,
                 fmt = new ilib.DateFmt({
                     locale: localeName,
                     type: "date",
@@ -654,22 +646,47 @@ $(function() {
                     hours: res.getString("1#1 hour|#{h} hours").formatChoice(offset.h || 0, {h: offset.h || 0}),
                     minutes: res.getString("1#1 minute|#{m} minutes").formatChoice(offset.m || 0, {m: offset.m || 0})
                 });
-            }
-            output += "</p>";
+                startDate = new ilib.Date.GregDate({
+                    rd: tz._calcRuleStart(tz.zone.s, today.year)
+                })
+				endDate = new ilib.Date.GregDate({
+                	rd: tz._calcRuleStart(tz.zone.e, today.year)
+                });
+
+	            output += "</p>";
+
+    	        str = res.getString('<p>DST starts on {date}:<br>Offset: {offset}<br>RFC 822 Abbreviation: {rfc822}<br>Standard Abbreviation: {standard}</p>');
+        	    output += str.format({
+            	    date: fmt.format(startDate),
+                	offset: tz.getOffsetStr(startDate),
+	                standard: tz.getDisplayName(startDate, "standard"),
+    	            rfc822: tz.getDisplayName(startDate, "rfc822")
+        	    });
+        	    
+        	    str = res.getString('<p>DST ends on {date}:<br>Offset: {offset}<br>RFC 822 Abbreviation: {rfc822}<br>Standard Abbreviation: {standard}</p>');
+            	output += str.format({
+                	date: fmt.format(endDate),
+	                offset: tz.getOffsetStr(endDate),
+    	            standard: tz.getDisplayName(endDate, "standard"),
+        	        rfc822: tz.getDisplayName(endDate, "rfc822")
+            	}); 
+            } else {
+            	output += "</p>";
             
-            str = res.getString('<p>On {date}:<br>Offset: {offset}<br>RFC 822 Abbreviation: {rfc822}<br>Standard Abbreviation: {standard}</p>');
-            output += str.format({
-                date: fmt.format(jan1),
-                offset: tz.getOffsetStr(jan1),
-                standard: tz.getDisplayName(jan1, "standard"),
-                rfc822: tz.getDisplayName(jan1, "rfc822")
-            });
-            output += str.format({
-                date: fmt.format(jul1),
-                offset: tz.getOffsetStr(jul1),
-                standard: tz.getDisplayName(jul1, "standard"),
-                rfc822: tz.getDisplayName(jul1, "rfc822")
-            }); 
+            	str = res.getString('<p>Offset: {offset}<br>RFC 822 Abbreviation: {rfc822}<br>Standard Abbreviation: {standard}</p>');
+        	    
+        	    startDate = new ilib.Date.GregDate({
+                    year: today.year,
+                    month: 1,
+                    day: 1
+                }),
+                
+                output += str.format({
+    	            offset: tz.getOffsetStr(startDate),
+	                standard: tz.getDisplayName(startDate, "standard"),
+               		rfc822: tz.getDisplayName(startDate, "rfc822")
+            	});
+            }
             $('.testSubject').html('<b>' + output + '</b><br />');
             break;
             
@@ -938,12 +955,23 @@ $(function() {
             
 		case 'NameFmt':
             var nameLength = $('[name="nameLength"]:checked').val();
+            var parts = [];
+            var nameparts = $('.namepart:checked').each(function() {
+            	parts.push(this.value);
+            });
                         
             options = {
-                locale : localeName,
-                style : nameLength
+                locale : localeName
             };
             
+            if (nameLength) {
+                options.style = nameLength;
+            }
+            
+            if (nameparts) {
+            	options.components = parts.join('');
+            }
+                
             var n = {
                 prefix: $('#prefix').val(),
                 givenName: $('#given').val(),
@@ -1445,10 +1473,17 @@ $(document).ready(function () {
                     <div id='namePicker' style="display: none">
                         <div id="nlengthPane">
                             <label>Length:</label>
-                            <input type="radio" name="nameLength" id="nameShort" value="short"/>Short
-                            <input type="radio" name="nameLength" id="nameMedium" value="medium"/>Medium
-                            <input type="radio" name="nameLength" id="nameLong" value="long"/>Long
-                            <input type="radio" name="nameLength" id="nameFull" value="full" checked="checked"/>Full
+                            <input type="radio" name="nameLength" id="nameShort" value="short" class="nameLength"/>Short
+                            <input type="radio" name="nameLength" id="nameMedium" value="medium" class="nameLength"/>Medium
+                            <input type="radio" name="nameLength" id="nameLong" value="long" class="nameLength"/>Long
+                        </div>
+                        <div id="nameParts">
+                        	<label>(or) Parts:</label>
+                        	<input type="checkbox" id="partsp" value="p" class="namepart"/>Prefix
+                            <input type="checkbox" id="partsg" value="g" class="namepart"/>Given
+                            <input type="checkbox" id="partsm" value="m" class="namepart"/>Middle
+                            <input type="checkbox" id="partsf" value="f" class="namepart"/>Family
+                            <input type="checkbox" id="partss" value="s" class="namepart"/>Suffix
                         </div>
                         <div>
                             <label for="prefix">Prefix:</label>

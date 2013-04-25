@@ -91,7 +91,7 @@ exports.charIterator = function charIterator(string) {
  * Return the character that is represented by the given hexadecimal encoding.
  * 
  * @param {string} hex the hexadecimal encoding of the code point of the character
- * @returns {string} the character that is equivalent to the hexadecimal
+ * @return {string} the character that is equivalent to the hexadecimal
  */
 exports.hexToChar = function hexToChar(hex) {
 	return exports.codePointToUTF16(parseInt(hex,16));
@@ -102,7 +102,7 @@ exports.hexToChar = function hexToChar(hex) {
  * hex values.
  * 
  * @param {string} string string to re-encode 
- * @returns {string} the re-encoded string
+ * @return {string} the re-encoded string
  */
 exports.toHexString = function toHexString(string) {
 	var i, result = ""; 
@@ -132,7 +132,7 @@ exports.toHexString = function toHexString(string) {
  * 
  * @param {Array.<{Array.<number>|number}>} arr array of number or array of number to search 
  * @param {number} num value to search for
- * @returns {number} the index in the array of the matching element or -1 to indicate no
+ * @return {number} the index in the array of the matching element or -1 to indicate no
  * match
  */
 exports.findMember = function findMember(arr, num) {
@@ -170,7 +170,7 @@ exports.findMember = function findMember(arr, num) {
  * 
  * @param {Array.<{Array.<number>|number}>} arr 
  * @param {number} num number to search for
- * @returns {boolean} true if the number is in the array or within a range in the array
+ * @return {boolean} true if the number is in the array or within a range in the array
  */
 exports.isMember = function isMember(arr, num) {
 	return exports.findMember(arr, num) !== -1;
@@ -190,7 +190,7 @@ exports.isMember = function isMember(arr, num) {
  * @param {number} skip the number of elements to skip before the range.  
  * If it is 0, look at elements 0 and 1, and if it is 1, then the range is 
  * in elements 1 and 2.
- * @returns {Array.<{Array.<string|number>}>} a coelesced array of ranges
+ * @return {Array.<{Array.<string|number>}>} a coelesced array of ranges
  */
 exports.coelesce = function coelesce(ranges, skip) {
 	var ret = [];
@@ -235,7 +235,7 @@ exports.coelesce = function coelesce(ranges, skip) {
  * @param {*} object2 the object to merge
  * @param {string=} name1 name of the object being merged into
  * @param {string=} name2 name of the object being merged in
- * @returns {Object} the merged object
+ * @return {Object} the merged object
  */
 exports.merge = function merge(object1, object2, name1, name2) {
 	var prop = undefined,
@@ -401,7 +401,7 @@ exports.Locale = function(language, region, variant, script) {
  * @private
  * Tell whether or not the str does not start with a lower case ASCII char.
  * @param {string} str the char to check
- * @returns {boolean} true if the char is not a lower case ASCII char
+ * @return {boolean} true if the char is not a lower case ASCII char
  */
 exports.Locale._notLower = function(str) {
 	// do this with ASCII only so we don't have to depend on the CType functions
@@ -413,7 +413,7 @@ exports.Locale._notLower = function(str) {
  * @private
  * Tell whether or not the str does not start with an upper case ASCII char.
  * @param {string} str the char to check
- * @returns {boolean} true if the char is a not an upper case ASCII char
+ * @return {boolean} true if the char is a not an upper case ASCII char
  */
 exports.Locale._notUpper = function(str) {
 	// do this with ASCII only so we don't have to depend on the CType functions
@@ -426,7 +426,7 @@ exports.Locale._notUpper = function(str) {
  * an ISO 639 language code.
  * 
  * @param {string} str the string to parse
- * @returns {boolean} true if the string could syntactically be a language code.
+ * @return {boolean} true if the string could syntactically be a language code.
  */
 exports.Locale.isLanguageCode = function isLanguageCode(str) {
 	if (str.length < 2 || str.length > 3) {
@@ -447,7 +447,7 @@ exports.Locale.isLanguageCode = function isLanguageCode(str) {
  * an ISO 639 language code.
  * 
  * @param {string} str the string to parse
- * @returns {boolean} true if the string could syntactically be a language code.
+ * @return {boolean} true if the string could syntactically be a language code.
  */
 exports.Locale.isRegionCode = function isRegionCode(str) {
 	if (str.length != 2) {
@@ -468,7 +468,7 @@ exports.Locale.isRegionCode = function isRegionCode(str) {
  * an ISO 639 language code.
  * 
  * @param {string} str the string to parse
- * @returns {boolean} true if the string could syntactically be a language code.
+ * @return {boolean} true if the string could syntactically be a language code.
  */
 exports.Locale.isScriptCode = function isScriptCode(str)
 {
@@ -488,7 +488,7 @@ exports.Locale.isScriptCode = function isScriptCode(str)
 exports.Locale.prototype = {
 	/**
 	 * Return the ISO 639 language code for this locale. 
-	 * @returns {string|undefined} the language code for this locale 
+	 * @return {string|undefined} the language code for this locale 
 	 */
 	getLanguage: function() {
 		return this.language;
@@ -496,7 +496,7 @@ exports.Locale.prototype = {
 	
 	/**
 	 * Return the ISO 3166 region code for this locale.
-	 * @returns {string|undefined} the region code of this locale
+	 * @return {string|undefined} the region code of this locale
 	 */
 	getRegion: function() {
 		return this.region;
@@ -504,7 +504,7 @@ exports.Locale.prototype = {
 	
 	/**
 	 * Return the ISO 15924 script code for this locale
-	 * @returns {string|undefined} the script code of this locale
+	 * @return {string|undefined} the script code of this locale
 	 */
 	getScript: function () {
 		return this.script;
@@ -512,7 +512,7 @@ exports.Locale.prototype = {
 	
 	/**
 	 * Return the variant code for this locale
-	 * @returns {string|undefined} the variant code of this locale, if any
+	 * @return {string|undefined} the variant code of this locale, if any
 	 */
 	getVariant: function() {
 		return this.variant;
@@ -520,7 +520,7 @@ exports.Locale.prototype = {
 	
 	/**
 	 * Return the whole locale specifier as a string.
-	 * @returns {string} the locale specifier
+	 * @return {string} the locale specifier
 	 */
 	getSpec: function() {
 		return this.spec;
@@ -530,7 +530,7 @@ exports.Locale.prototype = {
 	 * Express this locale object as a string. Currently, this simply calls the getSpec
 	 * function to represent the locale as its specifier.
 	 * 
-	 * @returns {string} the locale specifier
+	 * @return {string} the locale specifier
 	 */
 	toString: function() {
 		return this.getSpec();
@@ -538,7 +538,7 @@ exports.Locale.prototype = {
 	
 	/**
 	 * Return true if the the other locale is exactly equal to the current one.
-	 * @returns {boolean} whether or not the other locale is equal to the current one 
+	 * @return {boolean} whether or not the other locale is equal to the current one 
 	 */
 	equals: function(other) {
 		return this.language === other.language &&
@@ -549,7 +549,7 @@ exports.Locale.prototype = {
 
 	/**
 	 * Return true if the current locale is the special pseudo locale.
-	 * @returns {boolean} true if the current locale is the special pseudo locale
+	 * @return {boolean} true if the current locale is the special pseudo locale
 	 */
 	isPseudo: function () {
 		return (this.language === 'xx' && this.region === 'XX');

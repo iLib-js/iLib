@@ -79,7 +79,7 @@ exports.UnicodeFile = function (options) {
 exports.UnicodeFile.prototype = {
 	/**
 	 * Return the number of content lines in this unicode file.
-	 * @returns {number} the number of content lines in this unicode file
+	 * @return {number} the number of content lines in this unicode file
 	 */
 	length: function () {
 		return this.rows.length;
@@ -89,7 +89,7 @@ exports.UnicodeFile.prototype = {
 	 * Return the content line with the given index.
 	 * 
 	 * @param index the index of the given content line
-	 * @returns {Array.<string>} an array of content values as strings
+	 * @return {Array.<string>} an array of content values as strings
 	 */
 	get: function (index) {
 		var row = (index >= 0 && index < this.rows.length) ? this.rows[index] : undefined;

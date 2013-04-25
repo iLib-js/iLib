@@ -118,12 +118,14 @@
  * object. It is up to the web page or app to make sure the JS file that defines
  * the bundle is included before creating the ResBundle instance.<p>
  * 
- * A special locale "xx-XX" is used as the pseudo-translation locale because
- * xx and XX are not a valid ISO language or country specifiers. 
+ * A special locale "zxx-XX" is used as the pseudo-translation locale because
+ * zxx means "no linguistic information" in the ISO 639 standard, and the region 
+ * code XX is defined to be user-defined in the ISO 3166 standard. 
  * Pseudo-translation is a locale where the translations are generated on
  * the fly based on the contents of the source string. Characters in the source 
- * string are replaced with accented versions of those characters and returned. 
- * This allows the strings to be readable in the UI (if somewhat funky-looking), 
+ * string are replaced with other characters and returned. When pseudo-localizing
+ * the Latin script, this allows the strings to be readable in the UI in the 
+ * source language (if somewhat funky-looking), 
  * and yet a tester can easily verify that the string is properly externalized 
  * and loaded from a resource bundle without waiting for any translations to 
  * be completed.<p>
@@ -139,8 +141,19 @@
  * <pre>
  * "Ţħïş ïş á şţřïñĝ"
  * </pre>
- *<p>
+ * <p>
  * 
+ * If one of a list of script tags is given in the pseudo-locale specifier, then the
+ * pseudo-localization can map characters to very rough transliterations of
+ * characters in the given script. For example, zxx-Hebr-XX maps strings to
+ * Hebrew characters, which can be used to test your UI in a right-to-left
+ * language to catch bidi bugs before a translation is done. Currently, the
+ * list of target scripts includes Hebrew (Hebr), Chinese Simplified Han (Hans),
+ * and Cyrillic (Cyrl) with more to be added later. If no script is explicitly
+ * specified in the locale spec, or if the script is not supported,
+ * then the default mapping maps Latin base characters to accented versions of
+ * those Latin characters as in the example above.
+ *  
  * When the "lengthen" property is set to true in the options, the 
  * pseudotranslation code will add digits to the end of the string to simulate
  * the lengthening that occurs when translating to other languages. The above 
@@ -203,8 +216,8 @@ ilib.ResBundle = function (options) {
 		ilib.ResBundle[this.baseName] = {};
 	}
 
-	lookupLocale = this.locale.isPseudo() ? new ilib.Locale() : this.locale;
-	
+	lookupLocale = this.locale.isPseudo() ? new ilib.Locale("en-US") : this.locale;
+
 	ilib.loadData(ilib.ResBundle[this.baseName], lookupLocale, this.baseName, sync, this.loadParams, ilib.bind(this, function (map) {
 		if (!map) {
 			map = ilib.data[this.baseName] || {};
@@ -212,8 +225,26 @@ ilib.ResBundle = function (options) {
 			ilib.ResBundle[this.baseName].cache[spec] = map;
 		}
 		this.map = map;
-		if (options && typeof(options.onLoad) === 'function') {
-			options.onLoad(this);
+		if (this.locale.isPseudo()) {
+			if (!ilib.ResBundle.pseudomap) {
+				ilib.ResBundle.pseudomap = {};
+			}
+
+			ilib.loadData(ilib.ResBundle.pseudomap, this.locale, "pseudomap", sync, this.loadParams, ilib.bind(this, function (map) {
+				if (!map) {
+					map = ilib.data.pseudomap;
+					var spec = this.locale.getSpec().replace(/-/g, '_');
+					ilib.ResBundle.pseudomap.cache[spec] = map;
+				}
+				this.pseudomap = map;
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}	
+			}));
+		} else {
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
 		}
 	}));
 
@@ -290,11 +321,11 @@ ilib.ResBundle.prototype = {
 							ret += str.charAt(i);
 						}
 					} else {
-						ret += ilib.data.pseudomap[str.charAt(i)] || str.charAt(i);
+						ret += this.pseudomap[str.charAt(i)] || str.charAt(i);
 					}
 				}
 			} else {
-				ret += ilib.data.pseudomap[str.charAt(i)] || str.charAt(i);
+				ret += this.pseudomap[str.charAt(i)] || str.charAt(i);
 			}
 		}
 		if (this.lengthen) {
@@ -309,6 +340,13 @@ ilib.ResBundle.prototype = {
 			for (i = add-1; i >= 0; i--) {
 				ret += (i % 10);
 			}
+		}
+		if (this.locale.getScript() === "Hans" || this.locale.getScript() === "Hant" ||
+				this.locale.getScript() === "Hani" ||
+				this.locale.getScript() === "Hrkt" || this.locale.getScript() === "Jpan" ||
+				this.locale.getScript() === "Hira" || this.locale.getScript() === "Kana" ) {
+			// simulate Asian languages by getting rid of all the spaces
+			ret = ret.replace(/ /g, "");
 		}
 		return ret;
 	},

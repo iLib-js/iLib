@@ -130,10 +130,10 @@ function testDateFmtGetLocaleDefault() {
 };
 
 function testDateFmtGetLocaleBogus() {
-    var fmt = new ilib.DateFmt({locale: "xx-XX"});
+    var fmt = new ilib.DateFmt({locale: "zyy-XX"});
     assertNotNull(fmt);
     
-    assertEquals("xx-XX", fmt.getLocale().toString());
+    assertEquals("zyy-XX", fmt.getLocale().toString());
 };
 
 function testDateFmtGetTimeComponentsDefault() {

@@ -561,6 +561,32 @@ function setupNameParsingPicker(res) {
 
 function setupNamePicker() {
 	$('#namePicker').show();
+	
+	$('.namepart').click(function (element) {
+		$('.nameLength').attr('checked', false);
+	});
+	
+	$('#nameShort').click(function () {
+		$('#partsp').prop('checked', false);
+		$('#partsg').prop('checked', true);
+		$('#partsm').prop('checked', false);
+		$('#partsf').prop('checked', true);
+		$('#partss').prop('checked', false);
+	});
+	$('#nameMedium').click(function () {
+		$('#partsp').prop('checked', false);
+		$('#partsg').prop('checked', true);
+		$('#partsm').prop('checked', true);
+		$('#partsf').prop('checked', true);
+		$('#partss').prop('checked', false);
+	});
+	$('#nameLong').click(function () {
+		$('#partsp').prop('checked', true);
+		$('#partsg').prop('checked', true);
+		$('#partsm').prop('checked', true);
+		$('#partsf').prop('checked', true);
+		$('#partss').prop('checked', true);
+	});
 };
 
 function setupAddressParsingPicker(res) {
@@ -590,4 +616,6 @@ function hideAllPickers() {
 	$('#scriptPicker').hide();
 	$("#numTypePicker").hide();
 	$('#namePicker').hide();
+	$('#addressPicker').hide();
+	$('#textBoxPicker').hide();
 };

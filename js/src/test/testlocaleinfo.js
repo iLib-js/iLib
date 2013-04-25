@@ -188,7 +188,7 @@ function testLocaleInfoGetCurrencyGB() {
 }
 
 function testLocaleInfoGetCurrencyUnknown() {
-    var info = new ilib.LocaleInfo("xx-XX");    
+    var info = new ilib.LocaleInfo("zxx-XX");    
     assertNotNull(info);
 
     assertEquals("USD", info.getCurrency());
@@ -202,7 +202,7 @@ function testLocaleInfoGetRoundingModeDefault() {
 }
 
 function testLocaleInfoGetRoundingModexx() {
-    var info = new ilib.LocaleInfo("xx-XX");    
+    var info = new ilib.LocaleInfo("zxx-XX");    
     assertNotNull(info);
 
     assertEquals("halfeven", info.getRoundingMode());
@@ -316,7 +316,7 @@ function mockLoader(paths, sync, params, callback) {
 				"pctFmt": "{n} %",
 				"pctChar": "%"
 			},
-			"locale": "xx-XX"
+			"locale": "zxx-XX"
 		});
 	});
 	if (typeof(callback) !== 'undefined') {

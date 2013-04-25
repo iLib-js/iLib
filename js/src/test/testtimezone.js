@@ -947,7 +947,7 @@ function mockLoader (paths, sync, params, callback) {
 				"pctFmt": "{n} %",
 				"pctChar": "%"
 			},
-			"locale": "xx-XX"
+			"locale": "zxx-XX"
 		});
 	});
 	if (typeof(callback) !== 'undefined') {

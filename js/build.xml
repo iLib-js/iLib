@@ -150,7 +150,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="iliball.js" 
 			srcfilename="ilib.js" 
-			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,xx-XX,zh-CN"/>
+			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-CN,zh-HK,zh-TW,zh-SG"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
@@ -177,7 +177,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="ilib-ut.js" 
 			srcfilename="ilib-ut-inc.js" 
-			locales="ar-AE,ar-EG,en-AU,en-US,en-CA,en-GB,en-IE,en-NG,en-PH,en-ZA,de-AT,de-DE,es-ES,es-MX,es-AR,fr-FR,fr-CA,it-IT,ja-JP,nl-NL,tr-TR,zh-CN,ja-JP,ko-KR,zh-TW,he-IL,vi-VN,id-ID,ru-RU,pt-BR,xx-XX,da-DK,no-NO,sv-SE,uz-UZ,zh-SG,zh-HK,zh-TW"/>
+			locales="ar-AE,ar-EG,en-AU,en-US,en-CA,en-GB,en-IE,en-NG,en-PH,en-ZA,de-AT,de-DE,es-ES,es-MX,es-AR,fr-FR,fr-CA,it-IT,ja-JP,nl-NL,tr-TR,zh-CN,ja-JP,ko-KR,zh-TW,he-IL,vi-VN,id-ID,ru-RU,pt-BR,da-DK,no-NO,sv-SE,uz-UZ,zh-SG,zh-HK,zh-TW,zxx-XX,zxx-Cyrl-XX,zxx-Hebr-XX,zxx-Hans-XX"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"

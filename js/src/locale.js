@@ -309,7 +309,7 @@ ilib.Locale.prototype = {
 	 * @return {boolean} true if the current locale is the special pseudo locale
 	 */
 	isPseudo: function () {
-		return (this.language === 'xx' && this.region === 'XX');
+		return (this.language === 'zxx' && this.region === 'XX');
 	}
 };
 
