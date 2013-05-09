@@ -19,11 +19,10 @@
 
 var JsUnit = require("./testcli/runner.js");
 
-var runner = new JsUnit.TestRunner();
+var runner = new JsUnit.TestRunner("../..");
 
 runner.addSuite(new JsUnit.TestSuite("util/test/testSuite.js"));
 runner.addSuite(new JsUnit.TestSuite("test/testSuite.js"));
 runner.addSuite(new JsUnit.TestSuite("calendar/test/testSuite.js"));
-
 
 runner.runTests();

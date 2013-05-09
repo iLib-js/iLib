@@ -647,7 +647,7 @@ function testGetLocFilesRegionOnly() {
 	var f = ilib.getLocFiles(locale, "localeinfo");
 	var expected = [
 		"localeinfo.json",
-		"US/localeinfo.json"
+		"und/US/localeinfo.json"
 	];
 	
 	assertEquals(expected.length, f.length);
@@ -673,7 +673,7 @@ function testGetLocFilesLangRegion() {
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
-		"US/localeinfo.json",
+		"und/US/localeinfo.json",
 		"en/US/localeinfo.json"
 	];
 	
@@ -698,7 +698,7 @@ function testGetLocFilesScriptRegion() {
 	var f = ilib.getLocFiles(locale, "localeinfo");
 	var expected = [
 		"localeinfo.json",
-		"US/localeinfo.json"
+		"und/US/localeinfo.json"
 	];
 	
 	assertEquals(expected.length, f.length);
@@ -710,8 +710,8 @@ function testGetLocFilesRegionVariant() {
 	var f = ilib.getLocFiles(locale, "localeinfo");
 	var expected = [
 		"localeinfo.json",
-		"US/localeinfo.json",
-		"US/govt/localeinfo.json"
+		"und/US/localeinfo.json",
+		"und/US/govt/localeinfo.json"
 	];
 	
 	assertEquals(expected.length, f.length);
@@ -724,7 +724,7 @@ function testGetLocFilesLangScriptRegion() {
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
-		"US/localeinfo.json",
+		"und/US/localeinfo.json",
 		"en/Latn/localeinfo.json",
 		"en/US/localeinfo.json",
 		"en/Latn/US/localeinfo.json"
@@ -753,9 +753,9 @@ function testGetLocFilesLangRegionVariant() {
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
-		"US/localeinfo.json",
+		"und/US/localeinfo.json",
 		"en/US/localeinfo.json",
-		"US/govt/localeinfo.json",
+		"und/US/govt/localeinfo.json",
 		"en/US/govt/localeinfo.json"
 	];
 	
@@ -769,10 +769,10 @@ function testGetLocFilesAll() {
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
-		"US/localeinfo.json",
+		"und/US/localeinfo.json",
 		"en/Latn/localeinfo.json",
 		"en/US/localeinfo.json",
-		"US/govt/localeinfo.json",
+		"und/US/govt/localeinfo.json",
 		"en/Latn/US/localeinfo.json",
 		"en/US/govt/localeinfo.json",
 		"en/Latn/US/govt/localeinfo.json"
@@ -788,10 +788,10 @@ function testGetLocFilesNoBasename() {
 	var expected = [
 		"resources.json",
 		"en/resources.json",
-		"US/resources.json",
+		"und/US/resources.json",
 		"en/Latn/resources.json",
 		"en/US/resources.json",
-		"US/govt/resources.json",
+		"und/US/govt/resources.json",
 		"en/Latn/US/resources.json",
 		"en/US/govt/resources.json",
 		"en/Latn/US/govt/resources.json"
@@ -806,7 +806,7 @@ function testGetLocFilesDefaultLocale() {
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
-		"US/localeinfo.json",
+		"und/US/localeinfo.json",
 		"en/US/localeinfo.json"
 	];
 	

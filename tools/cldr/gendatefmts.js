@@ -132,6 +132,8 @@ function calcLocalePath(language, script, region, filename) {
 	var path = localeDirName + "/";
 	if (language) {
 		path += language + "/";
+	} else {
+		path += "und/";
 	}
 	if (script) {
 		path += script + "/";

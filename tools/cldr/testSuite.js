@@ -19,9 +19,8 @@
 
 var JsUnit = require("../../js/src/testcli/runner.js");
 
-var runner = new JsUnit.TestRunner();
+var runner = new JsUnit.TestRunner("../..");
 
 runner.addSuite(new JsUnit.TestSuite("test/testSuite.js"));
-
 
 runner.runTests();

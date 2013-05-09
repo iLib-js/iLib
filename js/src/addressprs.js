@@ -42,16 +42,16 @@ ctype.isdigit.js
  * The following is a list of properties that the algorithm will return:<p>
  * 
  * <ul>
- * <li>streetAddress: The street address, including house numbers and all.
- * <li>locality: The locality of this address (usually a city or town). 
- * <li>region: The region where the locality is located. In the US, this
+ * <li><i>streetAddress</i>: The street address, including house numbers and all.
+ * <li><i>locality</i>: The locality of this address (usually a city or town). 
+ * <li><i>region</i>: The region where the locality is located. In the US, this
  * corresponds to states. In other countries, this may be provinces,
  * cantons, prefectures, etc. In some smaller countries, there are no
  * such divisions.
- * <li>postalCode: Country-specific code for expediting mail. In the US, 
+ * <li><i>postalCode</i>: Country-specific code for expediting mail. In the US, 
  * this is the zip code.
- * <li>country: The country of the address.
- * <li>countryCode: The ISO 3166 2-letter region code for the destination
+ * <li><i>country</i>: The country of the address.
+ * <li><i>countryCode</i>: The ISO 3166 2-letter region code for the destination
  * country in this address.
  * </ul> 
  * 
@@ -62,10 +62,10 @@ ctype.isdigit.js
  * The options parameter may contain any of the following properties:
  * 
  * <ul>
- * <li>locale - locale or localeSpec to use to parse the address. If not 
+ * <li><i>locale</i> - locale or localeSpec to use to parse the address. If not 
  * specified, this function will use the current ilib locale
  * 
- * <li>onLoad - a callback function to call when the address info for the
+ * <li><i>onLoad</i> - a callback function to call when the address info for the
  * locale is fully loaded and the address has been parsed. When the onLoad 
  * option is given, the address object 
  * will attempt to load any missing locale data using the ilib loader callback.
@@ -73,7 +73,7 @@ ctype.isdigit.js
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * 
- * <li>sync - tell whether to load any missing locale data synchronously or 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 

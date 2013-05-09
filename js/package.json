@@ -1,0 +1,31 @@
+{
+	"name": "ilib",
+	"version": "1.3-009",
+	"description": "iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
+	"keywords": [
+		"internationalization", 
+		"i18n", 
+		"localization", 
+		"l10n", 
+		"globalization", 
+		"g11n",
+		"date",
+		"time",
+		"format",
+		"locale",
+		"translation"
+	],
+	"homepage": "http://sourceforge.net/p/i18nlib/",
+	"bugs": "https://sourceforge.net/p/i18nlib/tickets/new/",
+	"email": "marketing@jedlsoft.com",
+	"license": "apache2",
+	"files": [
+		"./ilib-dyn-compiled.js",
+		"./locale",
+		"README.md"
+	],
+	"repository": {
+		"type": "svn",
+		"url": "svn://svn.code.sf.net/p/i18nlib/code/trunk"
+	}
+}

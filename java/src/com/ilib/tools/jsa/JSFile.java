@@ -204,13 +204,13 @@ public class JSFile
 		localeDir = new StringBuilder();
 		if ( locale.getRegion() != null && locale.getRegion().length() > 0) {
 			localeDir.append(locale.getRegion());
-			fileName = localeDir + "/" + baseFileName;
+			fileName = "und/" + localeDir + "/" + baseFileName;
 			locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 
 			if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
 				localeDir.append("/");
 				localeDir.append(locale.getVariant());
-		        fileName = localeDir + "/" + baseFileName;
+		        fileName = "und/" + localeDir + "/" + baseFileName;
 		        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 			}
 		}

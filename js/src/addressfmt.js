@@ -34,12 +34,12 @@ addressprs.js
  * The options object may contain the following properties, both of which are optional:
  *
  * <ul>
- * <li>*locale* - the locale to use to format this address. If not specified, it uses the default locale
+ * <li><i>locale</i> - the locale to use to format this address. If not specified, it uses the default locale
  * 
- * <li>*style* - the style of this address. The default style for each country usually includes all valid 
+ * <li><i>style</i> - the style of this address. The default style for each country usually includes all valid 
  * fields for that country.
  * 
- * <li>onLoad - a callback function to call when the address info for the
+ * <li><i>onLoad</i> - a callback function to call when the address info for the
  * locale is fully loaded and the address has been parsed. When the onLoad 
  * option is given, the address formatter object 
  * will attempt to load any missing locale data using the ilib loader callback.
@@ -47,7 +47,7 @@ addressprs.js
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * 
- * <li>sync - tell whether to load any missing locale data synchronously or 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 

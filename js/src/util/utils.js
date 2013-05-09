@@ -299,7 +299,20 @@ ilib.mergeLocData = function (prefix, locale) {
 /**
  * Return an array of relative path names for the json
  * files that represent the data for the given locale. Only
- * language and region are top-level directories.
+ * language and region are top-level directories.<p>
+ * 
+ * Note that to prevent the situation where a directory for
+ * a language exists next to the directory for a region where
+ * the language code and region code differ only by case, the 
+ * plain region directories are located under the special 
+ * "undefined" language directory which has the ISO code "und".
+ * The reason is that some platforms have case-insensitive 
+ * file systems, and you cannot have 2 directories with the 
+ * same name which only differ by case. For example, "es" is
+ * the ISO 639 code for the language "Spanish" and "ES" is
+ * the ISO 3166 code for the region "Spain", so both the
+ * directories cannot exist underneath "locale". The region
+ * therefore will be loaded from "und/ES" instead.<p>  
  * 
  * Variations
  * 
@@ -375,7 +388,7 @@ ilib.getLocFiles = function(locale, basename) {
 	}
 	
 	if (region) {
-		dir = region + "/";
+		dir = "und/" + region + "/";
 		files.push(dir + filename);
 	}
 	
@@ -391,7 +404,7 @@ ilib.getLocFiles = function(locale, basename) {
 	}
 	
 	if (region && variant) {
-		dir = region + "/" + variant + "/";
+		dir = "und/" + region + "/" + variant + "/";
 		files.push(dir + filename);
 	}
 
@@ -409,38 +422,6 @@ ilib.getLocFiles = function(locale, basename) {
 		dir = language + "/" + script + "/" + region + "/" + variant + "/";
 		files.push(dir + filename);
 	}
-	
-	/*
-	dir += loc.getLanguage() + "/";
-	files.push(dir + filename + ".json");
-	if (loc.getVariant()) {
-		var dir2 = dir;
-		dir2 += loc.getVariant() + "/";
-		files.push(dir2 + filename + ".json");
-	}
-	if (loc.getRegion()) {
-		var dir2 = dir;
-		dir2 += loc.getRegion() + "/";
-		files.push(dir2 + filename + ".json");
-		if (loc.getVariant()) {
-			dir2 += loc.getVariant() + "/";
-			files.push(dir2 + filename + ".json");
-		}
-	}
-	if (loc.getScript()) {
-		var dir2 = dir;
-		dir2 += loc.getScript() + "/";
-		files.push(dir2 + filename + ".json");
-		if (loc.getRegion()) {
-			dir2 += loc.getRegion() + "/";
-			files.push(dir2 + filename + ".json");
-			if (loc.getVariant()) {
-				dir2 += loc.getVariant() + "/";
-				files.push(dir2 + filename + ".json");
-			}
-		}
-	}
-	*/
 	
 	return files;
 };

@@ -73,6 +73,10 @@ TestSuite.prototype = {
 		return this.tests;
 	},
 	
+	addSetup: function(code) {
+		this.setupCode = code;
+	},
+	
 	_runAllTests: function() {
 		var tests = [];
 		
@@ -117,7 +121,7 @@ TestSuite.prototype = {
 		}.bind(this));
 	},
 	
-	runTests: function(results) {
+	runTests: function(results, root) {
 		// console.log("Suite " + this.path);
 		if (this.path) {
 			this.context = vm.createContext({
@@ -133,7 +137,11 @@ TestSuite.prototype = {
 				results: results,
 				path: this.path
 			});
-			load("../../tools/jsunit/app/jsUnitCore.js", this.context);
+			if (this.setupCode) {
+				// allow arbitrary set up before the includes and running the tests
+				vm.runInContext(this.setupCode, this.context);
+			}
+			load(root + "/tools/jsunit/app/jsUnitCore.js", this.context);
 			this.includes.forEach(function (inc) {
 				load(inc, this.context);
 			}.bind(this));
@@ -146,7 +154,7 @@ TestSuite.prototype = {
 			}
 		}
 		this.subSuites.forEach(function (suite) {
-			suite.runTests(results);
+			suite.runTests(results, root);
 		});
 	}
 };
@@ -159,7 +167,7 @@ TestSuite.prototype = {
  * @constructor
  * @param {string|ilib.String=} string initialize this instance with this string 
  */
-function TestRunner() {
+function TestRunner(root) {
 	this.results = {
 		pass: 0,
 		fail: 0,
@@ -168,12 +176,13 @@ function TestRunner() {
 	};
 	this.context = vm.createContext(newSandbox());
 	this.subSuites = [];
+	this.root = root || "../..";
 };
 
 TestRunner.prototype = {
 	runTests: function() {
 		this.subSuites.forEach(function (suite) {
-			suite.runTests(this.results);
+			suite.runTests(this.results, this.root);
 		}.bind(this));
 		
 		console.log("Summary - " + this.results.runs + " tests run, " + this.results.pass + " pass, " + this.results.fail + " fail.");
