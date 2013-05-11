@@ -1082,7 +1082,7 @@ function testResBundleGetStringCyrlPsuedoRaw() {
     
     assertNotNull(rb);
     
-    // should not pseudo-ize the replacement parameter names
+    // should pseudo-ize the replacement parameter names
     assertEquals("Хэлло фром {чоунтря}", rb.getString("Hello from {country}").toString());
     assertEquals("Хэлло фром {читя}", rb.getString("Hello from {city}").toString());
     assertEquals("Грээтингс фром {читя} ин {чоунтря}", rb.getString("Greetings from {city} in {country}").toString());
@@ -1176,4 +1176,159 @@ function testResBundleGetStringHebrPsuedoText() {
     assertEquals("הֶללֹ פרֹמ {country}", rb.getString("Hello from {country}").toString());
     assertEquals("הֶללֹ פרֹמ {city}", rb.getString("Hello from {city}").toString());
     assertEquals("גרֶֶטִנגס פרֹמ {city} ִנ {country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+
+function testResBundleGetStringMissingWrongValue() {
+    var rb = new ilib.ResBundle({
+        name: "tester2",
+        locale: "ru-RU",
+        missing: "foo"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("source", rb.missing);
+}
+
+function testResBundleGetStringMissingRightValue1() {
+    var rb = new ilib.ResBundle({
+        name: "tester2",
+        locale: "ru-RU",
+        missing: "pseudo"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("pseudo", rb.missing);
+}
+
+function testResBundleGetStringMissingRightValue2() {
+    var rb = new ilib.ResBundle({
+        name: "tester2",
+        locale: "ru-RU",
+        missing: "source"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("source", rb.missing);
+}
+
+function testResBundleGetStringMissingRightValue3() {
+    var rb = new ilib.ResBundle({
+        name: "tester2",
+        locale: "ru-RU",
+        missing: "empty"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("empty", rb.missing);
+}
+
+function testResBundleGetStringCyrlMissingRawSource() {
+    var rb = new ilib.ResBundle({
+        name: "tester2",
+        locale: "ru-RU",
+        type: "raw",
+        missing: "source"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("Hello from {country}", rb.getString("Hello from {country}").toString());
+    assertEquals("Hello from {city}", rb.getString("Hello from {city}").toString());
+    assertEquals("Greetings from {city} in {country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringCyrlMissingRawPseudo() {
+    var rb = new ilib.ResBundle({
+        name: "tester2",
+        locale: "ru-RU",
+        type: "raw",
+        missing: "pseudo"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("Хэлло фром {чоунтря}", rb.getString("Hello from {country}").toString());
+    assertEquals("Хэлло фром {читя}", rb.getString("Hello from {city}").toString());
+    assertEquals("Грээтингс фром {читя} ин {чоунтря}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringCyrlMissingRawEmpty() {
+    var rb = new ilib.ResBundle({
+        name: "tester2",
+        locale: "ru-RU",
+        type: "raw",
+        missing: "empty"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("", rb.getString("Hello from {country}").toString());
+    assertEquals("", rb.getString("Hello from {city}").toString());
+    assertEquals("", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringLatnMissingPsuedo() {
+    var rb = new ilib.ResBundle({
+        name: "tester2",
+        locale: "de-DE",
+        missing: "pseudo"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("Ħëľľõ fŕõm {country}", rb.getString("Hello from {country}").toString());
+    assertEquals("Ħëľľõ fŕõm {city}", rb.getString("Hello from {city}").toString());
+    assertEquals("Ĝŕëëţíñğš fŕõm {city} íñ {country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringCyrlMissingPsuedo() {
+    var rb = new ilib.ResBundle({
+        name: "tester2",
+        locale: "ru-RU",
+        missing: "pseudo"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("Хэлло фром {country}", rb.getString("Hello from {country}").toString());
+    assertEquals("Хэлло фром {city}", rb.getString("Hello from {city}").toString());
+    assertEquals("Грээтингс фром {city} ин {country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringHebrMissingPsuedo() {
+    var rb = new ilib.ResBundle({
+        name: "tester2",
+        locale: "he-IL",
+        missing: "pseudo"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    assertEquals("הֶללֹ פרֹמ {country}", rb.getString("Hello from {country}").toString());
+    assertEquals("הֶללֹ פרֹמ {city}", rb.getString("Hello from {city}").toString());
+    assertEquals("גרֶֶטִנגס פרֹמ {city} ִנ {country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringHansMissingPsuedo() {
+    var rb = new ilib.ResBundle({
+        name: "tester2",
+        locale: "zh-Hans-CN",
+        missing: "pseudo"
+    });
+    
+    assertNotNull(rb);
+    
+    // should not pseudo-ize the replacement parameter names
+    // for Chinese scripts, remove the spaces to the simulate Chinese writing style
+    assertEquals("和俄了了夥凡熱夥们{country}", rb.getString("Hello from {country}").toString());
+    assertEquals("和俄了了夥凡熱夥们{city}", rb.getString("Hello from {city}").toString());
+    assertEquals("个熱俄俄推意尼个思凡熱夥们{city}意尼{country}", rb.getString("Greetings from {city} in {country}").toString());
 }

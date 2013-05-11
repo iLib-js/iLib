@@ -254,7 +254,7 @@ function setupCalendarPicker() {
 	$('#calendarPicker').show();
 };
 
-function setupRangePicker(startname, endname) {
+function setupRangePicker(startname, endname, jdname) {
 	var calName = $("#calendarName"),
 		startYearElement = $('#syear'),
 		startMonthElement = $('#smonth'),
@@ -276,7 +276,7 @@ function setupRangePicker(startname, endname) {
 	$('#endname').text(endname);
 	
 	setCalendarValues();
-	calName.append($("<option></option>").attr("value", "julianday").text(res.getString("julianday")));
+	calName.append($("<option></option>").attr("value", "julianday").text(jdname));
 
 	cal = ilib.Cal.newInstance({
 		type: "gregorian",

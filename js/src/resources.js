@@ -50,7 +50,18 @@
  * 
  * <li><i>lengthen</i> - when pseudo-translating the string, tell whether or not to 
  * automatically lengthen the string to simulate "long" languages such as German
- * or French. This is a boolean value. Default is false. 
+ * or French. This is a boolean value. Default is false.
+ * 
+ * <li><i>missing</i> - what to do when a resource is missing. The choices are:
+ * <ul>
+ *   <li><i>source</i> - return the source string unchanged
+ *   <li><i>pseudo</i> - return the pseudo-translated source string, translated to the
+ *   script of the locale if the mapping is available, or just the default Latin 
+ *   pseudo-translation if not
+ *   <li><i>empty</i> - return the empty string 
+ * </ul>
+ * The default behaviour is the same as before, which is to return the source string
+ * unchanged.
  * 
  * <li><i>onLoad</i> - a callback function to call when the resources are fully 
  * loaded. When the onLoad option is given, this class will attempt to
@@ -80,28 +91,38 @@
  * a JS file that can be included before the ilib.<p>
  * 
  * A resource bundle with a particular name is actually a set of bundles
- * that are each specific to a language, a language plus a region, or a language
- * plus a region plus a variant. All bundles with the same base name should
+ * that are each specific to a language, a language plus a region, etc. 
+ * All bundles with the same base name should
  * contain the same set of source strings, but with different translations for 
  * the given locale. The user of the bundle does not need to be aware of 
  * the locale of the bundle, as long as it contains values for the strings 
  * it needs.<p>
  * 
  * Strings in bundles for a particular locale are inherited from parent bundles
- * that are more generic. In general, the hierarchy is as follows:
+ * that are more generic. In general, the hierarchy is as follows (from 
+ * least locale-specific to most locale-specific):
  * 
  * <ol>
- * <li>base_language_region_variant inherits from
- * <li>base_language_region inherits from
- * <li>base_language inherits from
- * <li>base
+ * <li> language
+ * <li> region
+ * <li> language_script
+ * <li> language_region
+ * <li> region_variant
+ * <li> language_script_region
+ * <li> language_region_variant
+ * <li> language_script_region_variant
  * </ol>
  * 
  * That is, if the translation for a string does not exist in the current
  * locale, the more-generic parent locale is searched for the string. In the
  * worst case scenario, the string is not found in the base locale's strings. 
- * In this case, the original source is returned as the translation. This allows
- * developers to create code with new or changed strings in it and check in that
+ * In this case, the missing option guides this class on what to do. If
+ * the missing option is "source", then the original source is returned as 
+ * the translation. If it is "empty", the empty string is returned. If it
+ * is "pseudo", then the pseudo-translated string that is appropriate for
+ * the default script of the locale is returned.<p> 
+ * 
+ * This allows developers to create code with new or changed strings in it and check in that
  * code without waiting for the translations to be done first. The translated
  * version of the app or web site will still function properly, but will show 
  * a spurious untranslated string here and there until the translations are 
@@ -112,7 +133,8 @@
  * for example. Often this base is English, as many web sites are coded in
  * English, but that is not required.<p>
  * 
- * The strings can be extracted with the ilib localization tool. Once the strings
+ * The strings can be extracted with the ilib localization tool (which will be
+ * shipped at some future time.) Once the strings
  * have been translated, the set of translated files can be generated with the
  * same tool. The output from the tool can be used as input to the ResBundle
  * object. It is up to the web page or app to make sure the JS file that defines
@@ -123,12 +145,7 @@
  * code XX is defined to be user-defined in the ISO 3166 standard. 
  * Pseudo-translation is a locale where the translations are generated on
  * the fly based on the contents of the source string. Characters in the source 
- * string are replaced with other characters and returned. When pseudo-localizing
- * the Latin script, this allows the strings to be readable in the UI in the 
- * source language (if somewhat funky-looking), 
- * and yet a tester can easily verify that the string is properly externalized 
- * and loaded from a resource bundle without waiting for any translations to 
- * be completed.<p>
+ * string are replaced with other characters and returned. 
  * 
  * Example. If the source string is:
  * 
@@ -142,6 +159,17 @@
  * "Ţħïş ïş á şţřïñĝ"
  * </pre>
  * <p>
+ * 
+ * Pseudo-translation can be used to test that your app or web site is translatable
+ * before an actual translation has happened. These bugs can then be fixed 
+ * before the translation starts, avoiding an explosion of bugs later when
+ * each language's tester registers the same bug complaining that the same 
+ * string is not translated. When pseudo-localizing with
+ * the Latin script, this allows the strings to be readable in the UI in the 
+ * source language (if somewhat funky-looking), 
+ * so that a tester can easily verify that the string is properly externalized 
+ * and loaded from a resource bundle without the need to be able to read a
+ * foreign language.<p> 
  * 
  * If one of a list of script tags is given in the pseudo-locale specifier, then the
  * pseudo-localization can map characters to very rough transliterations of
@@ -180,12 +208,14 @@
  * @param {?Object} options Options controlling how the bundle is created
  */
 ilib.ResBundle = function (options) {
-	var lookupLocale, spec, sync = true;
+	var lookupLocale, spec;
 	
 	this.locale = new ilib.Locale();	// use the default locale
 	this.baseName = "strings";
 	this.type = "text";
 	this.loadParams = {};
+	this.missing = "source";
+	this.sync = true;
 	
 	if (options) {
 		if (options.locale) {
@@ -202,11 +232,16 @@ ilib.ResBundle = function (options) {
 		this.lengthen = options.lengthen || false;
 		
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			this.sync = (options.sync == true);
 		}
 		
 		if (typeof(options.loadParams) !== 'undefined') {
 			this.loadParams = options.loadParams;
+		}
+		if (typeof(options.missing) !== 'undefined') {
+			if (options.missing === "pseudo" || options.missing === "empty") {
+				this.missing = options.missing;
+			}
 		}
 	}
 	
@@ -218,7 +253,7 @@ ilib.ResBundle = function (options) {
 
 	lookupLocale = this.locale.isPseudo() ? new ilib.Locale("en-US") : this.locale;
 
-	ilib.loadData(ilib.ResBundle[this.baseName], lookupLocale, this.baseName, sync, this.loadParams, ilib.bind(this, function (map) {
+	ilib.loadData(ilib.ResBundle[this.baseName], lookupLocale, this.baseName, this.sync, this.loadParams, ilib.bind(this, function (map) {
 		if (!map) {
 			map = ilib.data[this.baseName] || {};
 			spec = lookupLocale.getSpec().replace(/-/g, '_');
@@ -230,17 +265,20 @@ ilib.ResBundle = function (options) {
 				ilib.ResBundle.pseudomap = {};
 			}
 
-			ilib.loadData(ilib.ResBundle.pseudomap, this.locale, "pseudomap", sync, this.loadParams, ilib.bind(this, function (map) {
-				if (!map) {
-					map = ilib.data.pseudomap;
-					var spec = this.locale.getSpec().replace(/-/g, '_');
-					ilib.ResBundle.pseudomap.cache[spec] = map;
-				}
-				this.pseudomap = map;
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}	
-			}));
+			this._loadPseudo(this.locale, options.onLoad);
+		} else if (this.missing === "pseudo") {
+			if (!ilib.ResBundle.pseudomap) {
+				ilib.ResBundle.pseudomap = {};
+			}
+
+			new ilib.LocaleInfo(this.locale, {
+				sync: this.sync,
+				loadParams: this.loadParams,
+				onLoad: ilib.bind(this, function (li) {
+					var pseudoLocale = new ilib.Locale("zxx", "XX", undefined, li.getDefaultScript());
+					this._loadPseudo(pseudoLocale, options.onLoad);
+				})
+			});
 		} else {
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
@@ -255,6 +293,23 @@ ilib.ResBundle = function (options) {
 };
 
 ilib.ResBundle.prototype = {
+    /**
+     * @protected
+     */
+    _loadPseudo: function (pseudoLocale, onLoad) {
+		ilib.loadData(ilib.ResBundle.pseudomap, pseudoLocale, "pseudomap", this.sync, this.loadParams, ilib.bind(this, function (map) {
+			if (!map || ilib.isEmpty(map)) {
+				map = ilib.data.pseudomap;
+				var spec = pseudoLocale.getSpec().replace(/-/g, '_');
+				ilib.ResBundle.pseudomap.cache[spec] = map;
+			}
+			this.pseudomap = map;
+			if (typeof(onLoad) === 'function') {
+				onLoad(this);
+			}	
+		}));
+    },
+    
 	/**
 	 * Return the locale of this resource bundle.
 	 * @return {ilib.Locale} the locale of this resource bundle object 
@@ -435,7 +490,15 @@ ilib.ResBundle.prototype = {
 			trans = this.pseudo(str || key);
 		} else {
 			var keyName = key || this.makeKey(source);
-			trans = typeof(this.map[keyName]) !== 'undefined' ? this.map[keyName] : source;
+			if (typeof(this.map[keyName]) !== 'undefined') {
+				trans = this.map[keyName];
+			} else if (this.missing === "pseudo") {
+				trans = this.pseudo(source || key);
+			} else if (this.missing === "empty") {
+				trans = "";
+			} else {
+				trans = source;
+			}
 		}
 
 		if (escapeMode && escapeMode !== "none") {
@@ -476,19 +539,30 @@ ilib.ResBundle.prototype = {
 	/**
 	 * Return the merged resources as an entire object. When loading resources for a
 	 * locale that are not just a set of translated strings, but instead an entire 
-	 * structured object, you can gain access to that object via this call. This method
-	 * will ensure that all the of the parts of the object are correct for the locale.
-	 * It starts by loading <i>ilib.data[name]</i>, where <i>name</i> is the base name
-	 * for this set of resources. Then, it successively overwrites objects in the base
-	 * data using locale-specific data. It loads it in this order from <i>ilib.data</i>:
+	 * structured javascript object, you can gain access to that object via this call. This method
+	 * will ensure that all the of the parts of the object are correct for the locale.<p>
+	 * 
+	 * For pre-assembled data, it starts by loading <i>ilib.data[name]</i>, where 
+	 * <i>name</i> is the base name for this set of resources. Then, it successively 
+	 * merges objects in the base data using progressively more locale-specific data. 
+	 * It loads it in this order from <i>ilib.data</i>:
 	 * 
 	 * <ol>
-	 * <li> name + "_" + language
-	 * <li> name + "_" + language + "_" + region
-	 * <li> name + "_" + language + "_" + region + "_" + variant
+	 * <li> language
+	 * <li> region
+	 * <li> language_script
+	 * <li> language_region
+	 * <li> region_variant
+	 * <li> language_script_region
+	 * <li> language_region_variant
+	 * <li> language_script_region_variant
+	 * </ol>
 	 * 
+	 * For dynamically loaded data, the code attempts to load the same sequence as
+	 * above, but with slash path separators instead of underscores.<p>
+	 *  
 	 * Loading the resources this way allows the program to share resources between all
-	 * locales that share a common language, or a common language and region. As a 
+	 * locales that share a common language, region, or script. As a 
 	 * general rule-of-thumb, resources should be as generic as possible in order to
 	 * cover as many locales as possible.
 	 * 

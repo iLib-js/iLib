@@ -67,6 +67,7 @@ function suite() {
 	    "testdurfmt.js",
 	    "testglobal.js",
 	    "testscriptinfo.js",
+	    "testcollation.js",
 	    "testname.js",
 	    "testnamefmt.js",
 	    "testname_de.js",

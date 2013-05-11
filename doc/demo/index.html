@@ -103,7 +103,7 @@ $(function() {
             setupCalendarPicker();
             break;
         case 'DateFmtRange':
-            setupRangePicker(res.getString("Start"), res.getString("End"));
+            setupRangePicker(res.getString("Start"), res.getString("End"), res.getString("Julian Day"));
             break;
         case 'RelativeDate':
             setupRangePicker(res.getString("Reference Date"), res.getString("Relative Date"));
