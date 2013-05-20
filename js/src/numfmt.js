@@ -376,7 +376,7 @@ ilib.NumFmt.prototype = {
 	
 	/**
 	 * Format a number according to the settings of this number formatter instance.
-	 * @param num {number|string|Number|ilib.Number} a floating point number to format
+	 * @param {number|string|Number|ilib.Number} num a floating point number to format
 	 * @return {string} a string containing the formatted number
 	 */
 	format: function (num) {

@@ -63,4 +63,5 @@ nameprs.js
 namefmt.js
 addressprs.js
 addressfmt.js
+collate.js
 */

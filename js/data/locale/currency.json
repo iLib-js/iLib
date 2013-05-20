@@ -337,7 +337,7 @@
 	"INR": {
 		"name": "Indian Rupee",
 		"decimals": 2,
-		"sign": "INR"
+		"sign": "₹"
 	},
 	"IQD": {
 		"name": "Iraqi Dinar",
