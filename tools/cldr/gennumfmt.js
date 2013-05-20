@@ -224,39 +224,39 @@ function writeNumberFormats(language, script, region, data) {
 		if (anyProperties(data)) {
 			util.print("Writing " + path + "\n");
 			
-			var empty_data=data["symbol"];
+			var empty_data = data["symbol"];
 			
-			if((Object.keys(empty_data).length===0)) {
+			if((Object.keys(empty_data).length === 0)) {
 				util.print("no need to create the file "+"\n");
 				return;
 			}
 				
 			makeDirs(path);
                     
-			var numfmt={};
-			var numberformat={};
-			numfmt.decimalChar=data["symbol"]["decimal"];
-			numfmt.groupChar=data["symbol"]["group"];
-			numfmt.pctChar=data["symbol"]["percentSign"];
-			numfmt.groupSize=data["symbol"]["groupSize"];
-			numfmt.pctFmt=data["symbol"]["pctFmt"];
-			numfmt.curFmt=data["symbol"]["curFmt"];
-			numberformat["numfmt"]=numfmt;
-			if(data["symbol"]["negativenumFmt"]===undefined) {
-				numfmt.negativenumFmt=data["symbol"]["numFmtnegative"];
+			var numfmt = {};
+			var numberformat = {};
+			numfmt.decimalChar = data["symbol"]["decimal"];
+			numfmt.groupChar = data["symbol"]["group"];
+			numfmt.pctChar = data["symbol"]["percentSign"];
+			numfmt.groupSize = data["symbol"]["groupSize"];
+			numfmt.pctFmt = data["symbol"]["pctFmt"];
+			numfmt.curFmt = data["symbol"]["curFmt"];
+			numberformat["numfmt"] = numfmt;
+			if(data["symbol"]["negativenumFmt"] === undefined) {
+				numfmt.negativenumFmt = data["symbol"]["numFmtnegative"];
 			}
 			
-			if(data["symbol"]["negativepctFmt"]===undefined) {
-				numfmt.negativepctFmt=data["symbol"]["pctFmtnegative"];
+			if(data["symbol"]["negativepctFmt"] === undefined) {
+				numfmt.negativepctFmt = data["symbol"]["pctFmtnegative"];
 			}
-			if(data["symbol"]["negativecurFmt"]===undefined) {
-				numfmt.negativecurFmt=data["symbol"]["curFmtnegative"];
+			if(data["symbol"]["negativecurFmt"] === undefined) {
+				numfmt.negativecurFmt = data["symbol"]["curFmtnegative"];
 			}
-			numfmt.roundingMode=data["symbol"]["roundingMode"];
+			numfmt.roundingMode = data["symbol"]["roundingMode"];
 			
 			util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(numfmt)+"\n");
 			//fs.writeFileSync(path + "/numfmt.jf",'\"numfmt :\"' +JSON.stringify(numfmt), "utf-8");
-			fs.writeFileSync(path + "/numfmt.jf",JSON.stringify(numberformat), "utf-8");
+			fs.writeFileSync(path + "/numfmt.jf", JSON.stringify(numberformat), "utf-8");
 		} else {
 			util.print("Skipping empty " + path + "\n");
 		}
@@ -264,168 +264,135 @@ function writeNumberFormats(language, script, region, data) {
 		util.print("Skipping existing " + path + "\n");
 	}
 }
+
 function getNumberFormats(language, script, region, data) {
 	// if it is already there and non-generated, return it
 	var numbers = loadFileNonGenerated(language, script, region);
-	
+
 	if (numbers) {
 		util.print("\nLoaded existing resources from " + calcLocalePath(language, script, region, "numfmt.jf") + "\n");
-		
+
 		numbers.generated = false;
 		return numbers;
-		     }
-	
+	}
+
 	// else generate a new one
-	
 	numbers = {
-		generated: true
+	    generated: true
 	};
-var symbols=data.numbers;
+	var symbols = data.numbers;
 
-var def_num_system=symbols.defaultNumberingSystem;
+	var def_num_system = symbols.defaultNumberingSystem;
 
-util.print("the language is  " + JSON.stringify(language) +"\n");
+	util.print("the language is  " + JSON.stringify(language) +"\n");
+	util.print("the default numbering system is " + JSON.stringify(def_num_system)+"\n");
 
+	var symbol = "symbols-numberSystem-";
 
-util.print("the default numbering system is " + JSON.stringify(def_num_system)+"\n");
+	var decimal = "decimalFormats-numberSystem-";
 
-var symbol="symbols-numberSystem-";
+	var percentage = "percentFormats-numberSystem-";
 
-var decimal="decimalFormats-numberSystem-";
+	var currency = "currencyFormats-numberSystem-";
 
-var percentage="percentFormats-numberSystem-";
+	symbol_number_system = symbol.concat(def_num_system);
+	decimal_number_system = decimal.concat(def_num_system);
+	percentage_number_system = percentage.concat(def_num_system);
+	currency_number_system = currency.concat(def_num_system);
 
-var currency="currencyFormats-numberSystem-";
+	util.print("the symbol numbering system " +symbol_number_system+"\n");
 
-symbol_number_system=symbol.concat(def_num_system);
-decimal_number_system=decimal.concat(def_num_system);
-percentage_number_system=percentage.concat(def_num_system);
-currency_number_system=currency.concat(def_num_system);
+	var symbol_format = data.numbers[symbol_number_system];
+	var decimal_format = data.numbers[decimal_number_system]["standard"]["decimalFormat"]["pattern"];
+	var percent_format = data.numbers[percentage_number_system]["standard"]["percentFormat"]["pattern"];
+	var currency_format = data.numbers[currency_number_system]["standard"]["currencyFormat"]["pattern"];
+	var symbol_format_data = {};
 
+	var decimal_separator = symbol_format["decimal"];
+	var group_separator = symbol_format["group"];
 
-util.print("the symbol numbering system " +symbol_number_system+"\n");
+//	var index_of_semi_colon=0;
+	var index_of_decimal = 0;
+	var index_of_group = 0;
 
-var symbol_format=data.numbers[symbol_number_system];
-var decimal_format=data.numbers[decimal_number_system]["standard"]["decimalFormat"]["pattern"];
-var percent_format=data.numbers[percentage_number_system]["standard"]["percentFormat"]["pattern"];
-var currency_format=data.numbers[currency_number_system]["standard"]["currencyFormat"]["pattern"];
-var symbol_format_data={};
-
-
-var decimal_separator=symbol_format["decimal"];
-var group_separator=symbol_format["group"];
-
-//var index_of_semi_colon=0;
-var index_of_decimal=0;
-var index_of_group=0;
-
-var groupsize;
-decimal_format=decimal_format.replace(/'(.)+'/g,"");
-if(decimal_format.lastIndexOf(",")===-1)
-		{
-
-			 groupsize=0;
+	var groupsize;
+	decimal_format = decimal_format.replace(/'(.)+'/g,"");
+	if (decimal_format.lastIndexOf(",") === -1) {
+		groupsize = 0;
+	} else {
+		if (decimal_format.lastIndexOf(".") != -1)	{
+			if (decimal_format.lastIndexOf(".") > decimal_format.lastIndexOf(","))	{
+				index_of_decimal = decimal_format.lastIndexOf(".");
+				index_of_group = decimal_format.lastIndexOf(",")+1;
+			} else if (decimal_format.lastIndexOf(".") < (decimal_format.lastIndexOf(","))) {
+				index_of_decimal = decimal_format.lastIndexOf(".")+1;
+				index_of_group = decimal_format.lastIndexOf(",");
+			}
+			groupsize = Math.abs(index_of_decimal-index_of_group);
+		} else {
+			group_size = decimal_format.length-decimal_format.lastIndexOf(",")+1;
 		}
-	else 
-	{
-	if(decimal_format.lastIndexOf(".")!=-1)
-		{
-		if(decimal_format.lastIndexOf(".")>decimal_format.lastIndexOf(","))
-			{
-			index_of_decimal=decimal_format.lastIndexOf(".");
-			index_of_group=decimal_format.lastIndexOf(",")+1;
-			}
-		else if(decimal_format.lastIndexOf(".")<(decimal_format.lastIndexOf(",")))
-			{
-			index_of_decimal=decimal_format.lastIndexOf(".")+1;
-			index_of_group=decimal_format.lastIndexOf(",");
-			}
-		 groupsize=Math.abs(index_of_decimal-index_of_group);
-		}
-		else
-			{
-			group_size=decimal_format.length-decimal_format.lastIndexOf(",")+1;
-			}
-		
 	}
 
-percent_format=percent_format.replace(/'(.)+'/g,"");
-var pctFmt=percent_format.replace(/[0#,\.]+/,"{n}");
+	percent_format=percent_format.replace(/'(.)+'/g,"");
+	var pctFmt=percent_format.replace(/[0#,\.]+/,"{n}");
 
+	symbol_format_data["decimal"] = decimal_separator;
+	symbol_format_data["group"] = group_separator;
+	symbol_format_data["groupSize"] = groupsize;
+//	symbol_format_data["pctFmt"]=pctFmt;
 
-symbol_format_data["decimal"]=decimal_separator;
-symbol_format_data["group"]=group_separator;
-symbol_format_data["groupSize"]=groupsize;
-//symbol_format_data["pctFmt"]=pctFmt;
-
-currency_format=currency_format.replace(/'(.)+'/g,"");
-	if(currency_format.indexOf(";")!=-1)
-	{
-	index_of_semi_colon= currency_format.indexOf(";");
-	var cur_fmt=currency_format.substring(0,index_of_semi_colon);
-	util.print("cur_fmt      is  ...................."+cur_fmt+"==================="+"\n");
-	var curFmt=cur_fmt.replace(/[0#,\.]+/,"{n}");
-	curFmt=curFmt.replace(/¤/g,"{s}");
-	symbol_format_data["curFmt"]=curFmt;
-	}
-	else 
-	{
-	 curFmt=currency_format.replace(/[0#,\.]+/,"{n}");
-	curFmt=curFmt.replace(/¤/g,"{s}");
-	symbol_format_data["curFmt"]=curFmt;
-	}
-	
-	//symbol_format_data["curFmt"]=curFmt;
-	if(decimal_format.indexOf(";")!=-1)
-	{
-  	index_of_semi_colon= decimal_format.indexOf(";");
-  	var negative_num_format=decimal_format.substring(index_of_semi_colon,decimal_format.length);
-	var numfmtnegative=negative_num_format.replace(/[0#,\.]+/,"{n}");
-	symbol_format_data["numFmtnegative"]=numfmtnegative;
-		
-	
+	currency_format=currency_format.replace(/'(.)+'/g,"");
+	if (currency_format.indexOf(";") != -1) {
+		index_of_semi_colon = currency_format.indexOf(";");
+		var cur_fmt=currency_format.substring(0,index_of_semi_colon);
+		util.print("cur_fmt      is  ...................."+cur_fmt+"==================="+"\n");
+		var curFmt=cur_fmt.replace(/[0#,\.]+/,"{n}");
+		curFmt=curFmt.replace(/¤/g,"{s}");
+		symbol_format_data["curFmt"] = curFmt;
+	} else {
+		curFmt=currency_format.replace(/[0#,\.]+/,"{n}");
+		curFmt=curFmt.replace(/¤/g,"{s}");
+		symbol_format_data["curFmt"] = curFmt;
 	}
 
-	if(percent_format.indexOf(";")!=-1)
-	{
-	index_of_semi_colon= percent_format.indexOf(";");
-       var negative_pct_format=percent_format.substring(index_of_semi_colon,percent_format.length);	
-	var pctfmtnegative=negative_pct_format.replace(/[0#,\.]+/,"{n}");
-	symbol_format_data["pctFmtnegative"]=pctfmtnegative;
-	
-	var positive_pct_format=percent_format.substring(0,index_of_semi_colon-1);	
-	pctFmt=positive_pct_format.replace(/[0#,\.]+/,"{n}");
-	//pctFmt=pctFmt.replace(/¤/g,"{s}");
-	symbol_format_data["pctFmt"]=pctFmt;
-	
+//	symbol_format_data["curFmt"]=curFmt;
+	if (decimal_format.indexOf(";") != -1) {
+		index_of_semi_colon = decimal_format.indexOf(";");
+		var negative_num_format = decimal_format.substring(index_of_semi_colon,decimal_format.length);
+		var numfmtnegative = negative_num_format.replace(/[0#,\.]+/,"{n}");
+		symbol_format_data["numFmtnegative"] = numfmtnegative;
 	}
-	else
-	{
-	 pctFmt=percent_format.replace(/[0#,\.]+/,"{n}");
-	//pctFmt=pctFmt.replace(/¤/g,"{s}");
-	symbol_format_data["pctFmt"]=pctFmt;
-	
-	}
-	
 
-	
-	if((JSON.stringify(currency_format).indexOf(";"))!=-1)
-	{
-	index_of_semi_colon=currency_format.indexOf(";");	
-      var negative_cur_format=currency_format.substring(index_of_semi_colon+1,currency_format.length);	
-	var curfmtnegative=negative_cur_format.replace(/[0#,\.]+/,"{n}");
-		curfmtnegative=curfmtnegative.replace(/¤/g,"{s}");
-	symbol_format_data["curFmtnegative"]=curfmtnegative;
-	
+	if(percent_format.indexOf(";") != -1) {
+		index_of_semi_colon = percent_format.indexOf(";");
+		var negative_pct_format = percent_format.substring(index_of_semi_colon,percent_format.length);	
+		var pctfmtnegative = negative_pct_format.replace(/[0#,\.]+/,"{n}");
+		symbol_format_data["pctFmtnegative"] = pctfmtnegative;
+
+		var positive_pct_format = percent_format.substring(0,index_of_semi_colon-1);	
+		pctFmt=positive_pct_format.replace(/[0#,\.]+/,"{n}");
+		//pctFmt=pctFmt.replace(/¤/g,"{s}");
+		symbol_format_data["pctFmt"] = pctFmt;
+	} else {
+		pctFmt=percent_format.replace(/[0#,\.]+/,"{n}");
+		//pctFmt=pctFmt.replace(/¤/g,"{s}");
+		symbol_format_data["pctFmt"] = pctFmt;
 	}
-	
+
+	if ((JSON.stringify(currency_format).indexOf(";")) != -1) {
+		index_of_semi_colon = currency_format.indexOf(";");	
+		var negative_cur_format = currency_format.substring(index_of_semi_colon+1,currency_format.length);	
+		var curfmtnegative = negative_cur_format.replace(/[0#,\.]+/,"{n}");
+		curfmtnegativ = curfmtnegative.replace(/¤/g,"{s}");
+		symbol_format_data["curFmtnegative"] = curfmtnegative;
+	}
+
 	symbol_format_data["roundingMode"]="halfdown";
-	numbers["symbol"]=symbol_format_data;
-
+	numbers["symbol"] = symbol_format_data;
 
 	return numbers;
-
-	}
+}
 
 /*function calcLocalePath(language, script, region, filename) {
 	var path = localeDirName + "/";
@@ -456,7 +423,6 @@ for (var i = 0; i < files.length; i++) {
 	} else {
 		locale = file.split(/\./)[0].replace(/_/g, "-");
 		var l = new Locale(locale);
-		
 		
 		getLocaleData(file, l.getLanguage(), l.getScript(), l.getRegion());
 	}
