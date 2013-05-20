@@ -422,6 +422,18 @@ exports.Locale._notUpper = function(str) {
 };
 
 /**
+ * @private
+ * Tell whether or not the str does not start with a digit char.
+ * @param {string} str the char to check
+ * @return {boolean} true if the char is a not an upper case ASCII char
+ */
+exports.Locale._notDigit = function(str) {
+	// do this with ASCII only so we don't have to depend on the CType functions
+	var ch = str.charCodeAt(0);
+	return ch < 48 || ch > 57;
+};
+
+/**
  * Tell whether or not the given string has the correct syntax to be 
  * an ISO 639 language code.
  * 
@@ -449,14 +461,22 @@ exports.Locale.isLanguageCode = function isLanguageCode(str) {
  * @param {string} str the string to parse
  * @return {boolean} true if the string could syntactically be a language code.
  */
-exports.Locale.isRegionCode = function isRegionCode(str) {
-	if (str.length != 2) {
+exports.Locale.isRegionCode = function (str) {
+	if (typeof(str) === 'undefined' || str.length < 2 || str.length > 3) {
 		return false;
 	}
 	
-	for (var i = 0; i < str.length; i++) {
-		if (exports.Locale._notUpper(str.charAt(i))) {
-			return false;
+	if (str.length === 2) {
+		for (var i = 0; i < str.length; i++) {
+			if (exports.Locale._notUpper(str.charAt(i))) {
+				return false;
+			}
+		}
+	} else {
+		for (var i = 0; i < str.length; i++) {
+			if (exports.Locale._notDigit(str.charAt(i))) {
+				return false;
+			}
 		}
 	}
 	
