@@ -295,7 +295,7 @@ var decimal="decimalFormats-numberSystem-";
 
 var percentage="percentFormats-numberSystem-";
 
-var currency="currencyFormats-numberSystem-"
+var currency="currencyFormats-numberSystem-";
 
 symbol_number_system=symbol.concat(def_num_system);
 decimal_number_system=decimal.concat(def_num_system);
