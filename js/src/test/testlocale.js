@@ -364,3 +364,31 @@ function testLocaleGetSpecAll() {
     
     assertEquals("en-Latn-CA-asdf", loc.getSpec());
 }
+
+function testLocaleM49RegionCodeGetParts() {
+    var loc = new ilib.Locale("en-001");
+    
+    assertNotNull(loc);
+    
+    assertEquals("en", loc.getLanguage());
+    assertEquals("001", loc.getRegion());
+    assertUndefined(loc.getVariant());
+}
+
+function testLocaleM49RegionCodeGetParts2() {
+    var loc = new ilib.Locale("en-150");
+    
+    assertNotNull(loc);
+    
+    assertEquals("en", loc.getLanguage());
+    assertEquals("150", loc.getRegion());
+    assertUndefined(loc.getVariant());
+}
+
+function testLocaleM49RegionCodeGetSpec() {
+    var loc = new ilib.Locale("en-001");
+    
+    assertNotNull(loc);
+    
+    assertEquals("en-001", loc.getSpec());
+}

@@ -177,6 +177,18 @@ ilib.Locale._notUpper = function(str) {
 
 /**
  * @private
+ * Tell whether or not the str does not start with a digit char.
+ * @param {string} str the char to check
+ * @return {boolean} true if the char is a not an upper case ASCII char
+ */
+ilib.Locale._notDigit = function(str) {
+	// do this with ASCII only so we don't have to depend on the CType functions
+	var ch = str.charCodeAt(0);
+	return ch < 48 || ch > 57;
+};
+
+/**
+ * @private
  * Tell whether or not the given string has the correct syntax to be 
  * an ISO 639 language code.
  * 
@@ -200,19 +212,27 @@ ilib.Locale._isLanguageCode = function(str) {
 /**
  * @private
  * Tell whether or not the given string has the correct syntax to be 
- * an ISO 639 language code.
+ * an ISO 3166 2-letter region code or M.49 3-digit region code.
  * 
  * @param {string} str the string to parse
  * @return {boolean} true if the string could syntactically be a language code.
  */
 ilib.Locale._isRegionCode = function (str) {
-	if (typeof(str) === 'undefined' || str.length !== 2) {
+	if (typeof(str) === 'undefined' || str.length < 2 || str.length > 3) {
 		return false;
 	}
 	
-	for (var i = 0; i < str.length; i++) {
-		if (ilib.Locale._notUpper(str.charAt(i))) {
-			return false;
+	if (str.length === 2) {
+		for (var i = 0; i < str.length; i++) {
+			if (ilib.Locale._notUpper(str.charAt(i))) {
+				return false;
+			}
+		}
+	} else {
+		for (var i = 0; i < str.length; i++) {
+			if (ilib.Locale._notDigit(str.charAt(i))) {
+				return false;
+			}
 		}
 	}
 	
