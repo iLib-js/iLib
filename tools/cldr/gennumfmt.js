@@ -31,7 +31,7 @@ var makeDirs = common.makeDirs;
 
 function usage() {
 	util.print("Usage: gennumfmts [-h] CLDR_json_dir locale_data_dir\n" +
-			"Generate date formats information files.\n\n" +
+			"Generate number formats information files.\n\n" +
 			"-h or --help\n" +
 			"  this help\n" +
 			"CLDR_json_dir\n" +
@@ -121,6 +121,21 @@ function loadFile(path) {
 	if (fs.existsSync(path)) {
 		json = fs.readFileSync(path, "utf-8");
 		ret = JSON.parse(json);
+		//util.print("path is :"+path+"\n");
+	}
+	
+	return ret;
+}
+
+function loadFile_jf(path) {
+	var ret = undefined;
+	
+	if (fs.existsSync(path)) {
+		
+		json = fs.readFileSync(path, "utf-8");
+		json=json.substring(0,json.length-2);
+		ret = JSON.parse("{"+json+"}");
+		util.print("path is :"+path+"\n");
 	}
 	
 	return ret;
@@ -143,7 +158,7 @@ function calcLocalePath(language, script, region, filename) {
 
 function loadFileNonGenerated(language, script, region) {
 	var path = calcLocalePath(language, script, region, "numfmt.jf");
-	var obj = loadFile(path);
+	var obj = loadFile_jf(path);
 	if (typeof(obj) !== 'undefined' && (typeof(obj.generated) === 'undefined' || obj.generated === false)) {
 		// only return non-generated files
 		return obj;
@@ -211,22 +226,14 @@ function anyProperties(data) {
 function writeNumberFormats(language, script, region, data) {
 	
 	var path = calcLocalePath(language, script, region, "");
-	/*var empty_data=data["symbol"];
-			
-			
-			
-			if((Object.keys(empty_data).length===0))
-			{
-			util.print("no need to create the file "+"\n");
-						return;
-				}*/
+	
 	if (data.generated) {
 		if (anyProperties(data)) {
 			util.print("Writing " + path + "\n");
 			
 			var empty_data = data["symbol"];
 			
-			if((Object.keys(empty_data).length === 0)) {
+			if ((Object.keys(empty_data).length === 0)) {
 				util.print("no need to create the file "+"\n");
 				return;
 			}
@@ -238,25 +245,27 @@ function writeNumberFormats(language, script, region, data) {
 			numfmt.decimalChar = data["symbol"]["decimal"];
 			numfmt.groupChar = data["symbol"]["group"];
 			numfmt.pctChar = data["symbol"]["percentSign"];
-			numfmt.groupSize = data["symbol"]["groupSize"];
+			numfmt.prigroupSize = data["symbol"]["primarygroupSize"];
 			numfmt.pctFmt = data["symbol"]["pctFmt"];
 			numfmt.curFmt = data["symbol"]["curFmt"];
 			numberformat["numfmt"] = numfmt;
-			if(data["symbol"]["negativenumFmt"] === undefined) {
-				numfmt.negativenumFmt = data["symbol"]["numFmtnegative"];
+			if (data["symbol"]["secondarygroupSize"] !== undefined) {
+				numfmt.secgroupSize=data["symbol"]["secondarygroupSize"];
+			}
+			if (data["symbol"]["negativenumFmt"] !== undefined) {
+				numfmt.negativenumFmt=data["symbol"]["numFmtnegative"];
 			}
 			
-			if(data["symbol"]["negativepctFmt"] === undefined) {
+			if (data["symbol"]["negativepctFmt"] !== undefined) {
 				numfmt.negativepctFmt = data["symbol"]["pctFmtnegative"];
 			}
-			if(data["symbol"]["negativecurFmt"] === undefined) {
+			if (data["symbol"]["negativecurFmt"] !== undefined) {
 				numfmt.negativecurFmt = data["symbol"]["curFmtnegative"];
 			}
 			numfmt.roundingMode = data["symbol"]["roundingMode"];
 			
-			util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(numfmt)+"\n");
-			//fs.writeFileSync(path + "/numfmt.jf",'\"numfmt :\"' +JSON.stringify(numfmt), "utf-8");
-			fs.writeFileSync(path + "/numfmt.jf", JSON.stringify(numberformat), "utf-8");
+			//util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(numfmt)+"\n");
+			fs.writeFileSync(path + "/numfmt.jf",'\"numfmt\" :' +JSON.stringify(numfmt)+',\n', "utf-8");
 		} else {
 			util.print("Skipping empty " + path + "\n");
 		}
@@ -314,13 +323,16 @@ function getNumberFormats(language, script, region, data) {
 //	var index_of_semi_colon=0;
 	var index_of_decimal = 0;
 	var index_of_group = 0;
-
-	var groupsize;
+	
+	var primarygroupsize;
+	var secondarygroupsize;
+	var separator_count = 0;
+	
 	decimal_format = decimal_format.replace(/'(.)+'/g,"");
-	if (decimal_format.lastIndexOf(",") === -1) {
-		groupsize = 0;
+	if(decimal_format.lastIndexOf(",") === -1) {
+		primarygroupsize = 0;
 	} else {
-		if (decimal_format.lastIndexOf(".") != -1)	{
+		if (decimal_format.lastIndexOf(".") !== -1)	{
 			if (decimal_format.lastIndexOf(".") > decimal_format.lastIndexOf(","))	{
 				index_of_decimal = decimal_format.lastIndexOf(".");
 				index_of_group = decimal_format.lastIndexOf(",")+1;
@@ -328,19 +340,25 @@ function getNumberFormats(language, script, region, data) {
 				index_of_decimal = decimal_format.lastIndexOf(".")+1;
 				index_of_group = decimal_format.lastIndexOf(",");
 			}
-			groupsize = Math.abs(index_of_decimal-index_of_group);
+			primarygroupsize = Math.abs(index_of_decimal-index_of_group);
 		} else {
-			group_size = decimal_format.length-decimal_format.lastIndexOf(",")+1;
+			primarygroup_size = decimal_format.length-(decimal_format.lastIndexOf(",")+1);
 		}
+		separator_count = (decimal_format.match(/,/g)).length;
+		
+        if(separator_count > 1)	{
+			secondarygroupsize = decimal_format.lastIndexOf(",")-(decimal_format.indexOf(",")+1);
+		}			
 	}
 
-	percent_format=percent_format.replace(/'(.)+'/g,"");
-	var pctFmt=percent_format.replace(/[0#,\.]+/,"{n}");
+	percent_format = percent_format.replace(/'(.)+'/g,"");
+	var pctFmt = percent_format.replace(/[0#,\.]+/,"{n}");
 
 	symbol_format_data["decimal"] = decimal_separator;
 	symbol_format_data["group"] = group_separator;
-	symbol_format_data["groupSize"] = groupsize;
-//	symbol_format_data["pctFmt"]=pctFmt;
+	symbol_format_data["primarygroupSize"] = primarygroupsize;
+	symbol_format_data["secondarygroupSize"] = secondarygroupsize;
+	//	symbol_format_data["pctFmt"]=pctFmt;
 
 	currency_format=currency_format.replace(/'(.)+'/g,"");
 	if (currency_format.indexOf(";") != -1) {
@@ -384,7 +402,7 @@ function getNumberFormats(language, script, region, data) {
 		index_of_semi_colon = currency_format.indexOf(";");	
 		var negative_cur_format = currency_format.substring(index_of_semi_colon+1,currency_format.length);	
 		var curfmtnegative = negative_cur_format.replace(/[0#,\.]+/,"{n}");
-		curfmtnegativ = curfmtnegative.replace(/¤/g,"{s}");
+		curfmtnegative = curfmtnegative.replace(/¤/g,"{s}");
 		symbol_format_data["curFmtnegative"] = curfmtnegative;
 	}
 
@@ -393,22 +411,6 @@ function getNumberFormats(language, script, region, data) {
 
 	return numbers;
 }
-
-/*function calcLocalePath(language, script, region, filename) {
-	var path = localeDirName + "/";
-	if (language) {
-		path += language + "/";
-	}
-	if (script) {
-		path += script + "/";
-	}
-	if (region) {
-		path += region + "/";
-	}
-	path += filename;
-	return path;
-}*/
-
 
 var language, region, script, files;
 	files = fs.readdirSync(cldrDirName + "/main/");
