@@ -221,7 +221,148 @@ function testLocaleInfoGetDecimalSeparator2() {
 
     assertEquals(",", info.getDecimalSeparator());
 }
+//*************************************************Added By Birendra**********************************************************
+function testLocaleInfoGetDecimalSeparatorforKorea() {
+    var info = new ilib.LocaleInfo("ko-KR");    
+    assertNotNull(info);
+    assertEquals(".", info.getDecimalSeparator());
+}
 
+function testLocaleInfoGetDecimalSeparatorfor_English_GreatBritain() {
+    var info = new ilib.LocaleInfo("en-GB");    
+    assertNotNull(info);
+    assertEquals(".", info.getDecimalSeparator());
+}
+
+
+function testLocaleInfoGetDecimalSeparatorfor_Chinese_China_Simplified() {
+    var info = new ilib.LocaleInfo("zh-CN-Hans");    
+    assertNotNull(info);
+    assertEquals(".", info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetDecimalSeparatorfor_Chinese_HongKong_Simplified() {
+    var info = new ilib.LocaleInfo("zh-HK-Hans");    
+    assertNotNull(info);
+    assertEquals(".", info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetDecimalSeparatorfor_Chinese_Taiwan_Traditional() {
+    var info = new ilib.LocaleInfo("zh-TW-Hant");    
+    assertNotNull(info);
+    assertEquals(".", info.getDecimalSeparator());
+}
+function testLocaleInfoGetGroupingSeparatorforKorea() {
+    var info = new ilib.LocaleInfo("ko-KR");    
+    assertNotNull(info);
+
+    assertEquals(",", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_English_GreatBritain() {
+    var info = new ilib.LocaleInfo("en-GB");    
+    assertNotNull(info);
+
+    assertEquals(",", info.getGroupingSeparator());
+}
+
+
+function testLocaleInfoGetGroupingSeparatorfor_Chinese_China_Simplified() {
+    var info = new ilib.LocaleInfo("zh-CN-Hans");    
+    assertNotNull(info);
+    assertEquals(",", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_Chinese_HongKong_Simplified() {
+    var info = new ilib.LocaleInfo("zh-HK-Hans");    
+    assertNotNull(info);
+    assertEquals(",", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_Chinese_Taiwan_Traditional() {
+    var info = new ilib.LocaleInfo("zh-TW-Hant");    
+    assertNotNull(info);
+    assertEquals(",", info.getGroupingSeparator());
+}
+
+
+function testLocaleInfoGetPercentageFormat_eu_ES() {
+    var info = new ilib.LocaleInfo("eu-ES");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetPercentageFormat_tr_TR() {
+    var info = new ilib.LocaleInfo("tr-TR");    
+    assertNotNull(info);
+
+    assertEquals("%{n}", info.getPercentageFormat());
+}
+
+
+function testLocaleInfoGetPercentageFormat_da_DK() {
+    var info = new ilib.LocaleInfo("da-DK");    
+    assertNotNull(info);
+
+    assertEquals("{n} %", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetPercentageFormat_ru_KG() {
+    var info = new ilib.LocaleInfo("ru-KG");    
+    assertNotNull(info);
+
+    assertEquals("{n} %", info.getPercentageFormat());
+}
+
+
+
+function testLocaleInfoGetCurrencyFormat_aa_DJ() {
+    var info = new ilib.LocaleInfo("aa-DJ");    
+    assertNotNull(info);
+
+    assertEquals("{s} {n}", info.getCurrencyFormat());
+}
+
+
+function testLocaleInfoGetCurrencyFormat_kln() {
+    var info = new ilib.LocaleInfo("en_US");    
+    assertNotNull(info);
+
+    assertEquals("{s} {n}", info.getCurrencyFormat());
+}
+
+function testLocaleRoundingMode_da_DK() {
+    var info = new ilib.LocaleInfo("da-DK");    
+    assertNotNull(info);
+
+    assertEquals("halfdown", info.getRoundingMode());
+}
+
+function testLocaleGroupingDigit_default() {
+    var info = new ilib.LocaleInfo("kok");    
+    assertNotNull(info);
+
+    assertEquals(3, info.getGroupingDigits());
+}
+
+
+function testLocaleGroupingDigit_en_GB() {
+    var info = new ilib.LocaleInfo("en-GB");    
+    assertNotNull(info);
+
+    assertEquals(3, info.getGroupingDigits());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_English_GreatBritain() {
+    var info = new ilib.LocaleInfo("en-GB");    
+    assertNotNull(info);
+
+    assertEquals(",", info.getGroupingSeparator());
+}
+
+
+//*************************************************Added By Birendra**********************************************************
 function testLocaleInfoGetGroupingSeparator1() {
     var info = new ilib.LocaleInfo();    
     assertNotNull(info);
@@ -277,6 +418,14 @@ function testLocaleInfoGetPercentageFormat2() {
 
     assertEquals("{n}%", info.getPercentageFormat());
 }
+
+function testLocaleInfoGetPercentageFormat1() {
+    var info = new ilib.LocaleInfo();    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
 
 function testLocaleInfoGetPercentageSymbol1() {
     var info = new ilib.LocaleInfo();    
