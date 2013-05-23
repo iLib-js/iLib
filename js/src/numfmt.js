@@ -342,7 +342,7 @@ ilib.NumFmt.prototype = {
 			integral = parts[0],
 			fraction = parts[1],
 			cycle,
-			groupSize = this.localeInfo.getGroupingDigits(),
+			groupSize = this.localeInfo.getPrimaryGroupingDigits(),
 			formatted;
 		
 		

@@ -199,7 +199,7 @@ ilib.LocaleInfo.prototype = {
 	 * @returns {number} the number of digits in a primary grouping, or 0 for no grouping
 	 */
 	getPrimaryGroupingDigits: function () {
-		return this.info.numfmt.prigroupSize;
+		return (typeof(this.info.numfmt.prigroupSize) !== 'undefined' ?  this.info.numfmt.prigroupSize : this.info.numfmt.groupSize) || 0;
 	},
 
 	/**

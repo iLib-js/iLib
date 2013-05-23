@@ -221,148 +221,679 @@ function testLocaleInfoGetDecimalSeparator2() {
 
     assertEquals(",", info.getDecimalSeparator());
 }
-//*************************************************Added By Birendra**********************************************************
-function testLocaleInfoGetDecimalSeparatorforKorea() {
-    var info = new ilib.LocaleInfo("ko-KR");    
-    assertNotNull(info);
-    assertEquals(".", info.getDecimalSeparator());
-}
+//*************************************************Added By Birendra 23/05**********************************************************
 
-function testLocaleInfoGetDecimalSeparatorfor_English_GreatBritain() {
+
+
+//test cases for en-GB number format
+
+function testLocaleInfoGetDecimalSeparatorfor_en_GB() {
     var info = new ilib.LocaleInfo("en-GB");    
     assertNotNull(info);
-    assertEquals(".", info.getDecimalSeparator());
+    assertEquals(".",info.getDecimalSeparator());
 }
 
-
-function testLocaleInfoGetDecimalSeparatorfor_Chinese_China_Simplified() {
-    var info = new ilib.LocaleInfo("zh-CN-Hans");    
-    assertNotNull(info);
-    assertEquals(".", info.getDecimalSeparator());
-}
-
-function testLocaleInfoGetDecimalSeparatorfor_Chinese_HongKong_Simplified() {
-    var info = new ilib.LocaleInfo("zh-HK-Hans");    
-    assertNotNull(info);
-    assertEquals(".", info.getDecimalSeparator());
-}
-
-function testLocaleInfoGetDecimalSeparatorfor_Chinese_Taiwan_Traditional() {
-    var info = new ilib.LocaleInfo("zh-TW-Hant");    
-    assertNotNull(info);
-    assertEquals(".", info.getDecimalSeparator());
-}
-function testLocaleInfoGetGroupingSeparatorforKorea() {
-    var info = new ilib.LocaleInfo("ko-KR");    
-    assertNotNull(info);
-
-    assertEquals(",", info.getGroupingSeparator());
-}
-
-function testLocaleInfoGetGroupingSeparatorfor_English_GreatBritain() {
+function testLocaleInfoGetGroupingSeparatorfor_en_GB() {
     var info = new ilib.LocaleInfo("en-GB");    
     assertNotNull(info);
 
     assertEquals(",", info.getGroupingSeparator());
 }
 
-
-function testLocaleInfoGetGroupingSeparatorfor_Chinese_China_Simplified() {
-    var info = new ilib.LocaleInfo("zh-CN-Hans");    
-    assertNotNull(info);
-    assertEquals(",", info.getGroupingSeparator());
-}
-
-function testLocaleInfoGetGroupingSeparatorfor_Chinese_HongKong_Simplified() {
-    var info = new ilib.LocaleInfo("zh-HK-Hans");    
-    assertNotNull(info);
-    assertEquals(",", info.getGroupingSeparator());
-}
-
-function testLocaleInfoGetGroupingSeparatorfor_Chinese_Taiwan_Traditional() {
-    var info = new ilib.LocaleInfo("zh-TW-Hant");    
-    assertNotNull(info);
-    assertEquals(",", info.getGroupingSeparator());
-}
-
-
-function testLocaleInfoGetPercentageFormat_eu_ES() {
-    var info = new ilib.LocaleInfo("eu-ES");    
+function testLocaleInfoGetPercentageFormat_en_GB() {
+    var info = new ilib.LocaleInfo("en-GB");    
     assertNotNull(info);
 
     assertEquals("{n}%", info.getPercentageFormat());
 }
 
-function testLocaleInfoGetPercentageFormat_tr_TR() {
-    var info = new ilib.LocaleInfo("tr-TR");    
-    assertNotNull(info);
-
-    assertEquals("%{n}", info.getPercentageFormat());
-}
-
-
-function testLocaleInfoGetPercentageFormat_da_DK() {
-    var info = new ilib.LocaleInfo("da-DK");    
-    assertNotNull(info);
-
-    assertEquals("{n} %", info.getPercentageFormat());
-}
-
-function testLocaleInfoGetPercentageFormat_ru_KG() {
-    var info = new ilib.LocaleInfo("ru-KG");    
-    assertNotNull(info);
-
-    assertEquals("{n} %", info.getPercentageFormat());
-}
-
-
-
-function testLocaleInfoGetCurrencyFormat_aa_DJ() {
-    var info = new ilib.LocaleInfo("aa-DJ");    
-    assertNotNull(info);
-
-    assertEquals("{s} {n}", info.getCurrencyFormat());
-}
-
-
-function testLocaleInfoGetCurrencyFormat_kln() {
-    var info = new ilib.LocaleInfo("en_US");    
-    assertNotNull(info);
-
-    assertEquals("{s} {n}", info.getCurrencyFormat());
-}
-
-function testLocaleRoundingMode_da_DK() {
-    var info = new ilib.LocaleInfo("da-DK");    
-    assertNotNull(info);
-
-    assertEquals("halfdown", info.getRoundingMode());
-}
-
-function testLocaleGroupingDigit_default() {
-    var info = new ilib.LocaleInfo("kok");    
-    assertNotNull(info);
-
-    assertEquals(3, info.getGroupingDigits());
-}
-
-
-function testLocaleGroupingDigit_en_GB() {
+function testLocaleInfoGetCurrencyFormat_en_GB() {
     var info = new ilib.LocaleInfo("en-GB");    
     assertNotNull(info);
 
-    assertEquals(3, info.getGroupingDigits());
+    assertEquals("{s}{n}", info.getCurrencyFormat());
 }
 
-function testLocaleInfoGetGroupingSeparatorfor_English_GreatBritain() {
-    var info = new ilib.LocaleInfo("en-GB");    
+
+
+//test cases for ko-KR number format
+function testLocaleInfoGetDecimalSeparatorfor_ko_KR() {
+    var info = new ilib.LocaleInfo("ko-KR");    
+    assertNotNull(info);
+    assertEquals(".",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_ko_KR() {
+    var info = new ilib.LocaleInfo("ko-KR");    
     assertNotNull(info);
 
     assertEquals(",", info.getGroupingSeparator());
 }
 
+function testLocaleInfoGetPercentageFormat_ko_KR() {
+    var info = new ilib.LocaleInfo("ko-KR");    
+    assertNotNull(info);
 
-//*************************************************Added By Birendra**********************************************************
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_ko_KR() {
+    var info = new ilib.LocaleInfo("ko-KR");    
+    assertNotNull(info);
+
+    assertEquals("{s}{n}", info.getCurrencyFormat());
+}
+
+
+
+//test cases for zh-CN-Hans number format
+function testLocaleInfoGetDecimalSeparatorfor_zh_CN_Hans() {
+    var info = new ilib.LocaleInfo("zh-CN-Hans");    
+    assertNotNull(info);
+    assertEquals(".",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_zh_CN_Hans() {
+    var info = new ilib.LocaleInfo("zh-CN-Hans");    
+    assertNotNull(info);
+
+    assertEquals(",", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_zh_CN_Hans() {
+    var info = new ilib.LocaleInfo("zh-CN-Hans");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_zh_CN_Hans() {
+    var info = new ilib.LocaleInfo("zh-CN-Hans");    
+    assertNotNull(info);
+
+    assertEquals("{s}{n}", info.getCurrencyFormat());
+}
+
+
+//test cases for zh-HK-Hans
+
+function testLocaleInfoGetDecimalSeparatorfor_zh_HK_Hans() {
+    var info = new ilib.LocaleInfo("zh-HK-Hans");    
+    assertNotNull(info);
+    assertEquals(".",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_zh_HK_Hans() {
+    var info = new ilib.LocaleInfo("zh-HK-Hans");    
+    assertNotNull(info);
+
+    assertEquals(",", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_zh_HK_Hans() {
+    var info = new ilib.LocaleInfo("zh-HK-Hans");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_zh_HK_Hans() {
+    var info = new ilib.LocaleInfo("zh-HK-Hans");    
+    assertNotNull(info);
+
+    assertEquals("{s}{n}", info.getCurrencyFormat());
+}
+
+//test cases fot zh-TW-Hant
+function testLocaleInfoGetDecimalSeparatorfor_zh_TW_Hant() {
+    var info = new ilib.LocaleInfo("zh-TW-Hant");    
+    assertNotNull(info);
+    assertEquals(".",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_zh_TW_Hant() {
+    var info = new ilib.LocaleInfo("zh-TW-Hant");    
+    assertNotNull(info);
+
+    assertEquals(",", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_zh_TW_Hant() {
+    var info = new ilib.LocaleInfo("zh-TW-Hant");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_zh_TW_Hant() {
+    var info = new ilib.LocaleInfo("zh-TW-Hant");    
+    assertNotNull(info);
+
+    assertEquals("{s}{n}", info.getCurrencyFormat());
+}
+
+//test cases for fr-FR number format
+function testLocaleInfoGetDecimalSeparatorfor_fr_FR() {
+    var info = new ilib.LocaleInfo("fr-FR");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_fr_FR() {
+    var info = new ilib.LocaleInfo("fr-FR");    
+    assertNotNull(info);
+
+    assertEquals(" ", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_fr_FR() {
+    var info = new ilib.LocaleInfo("fr-FR");    
+    assertNotNull(info);
+
+    assertEquals("{n} %", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_fr_FR() {
+    var info = new ilib.LocaleInfo("fr-FR");    
+    assertNotNull(info);
+
+    assertEquals("{n} {s}", info.getCurrencyFormat());
+}
+
+//test cases for fr-CA unmber format
+function testLocaleInfoGetDecimalSeparatorfor_fr_CA() {
+    var info = new ilib.LocaleInfo("fr-CA");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_fr_CA() {
+    var info = new ilib.LocaleInfo("fr-CA");    
+    assertNotNull(info);
+
+    assertEquals(" ", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_fr_CA() {
+    var info = new ilib.LocaleInfo("fr-CA");    
+    assertNotNull(info);
+
+    assertEquals("{n} %", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_fr_CA() {
+    var info = new ilib.LocaleInfo("fr-CA");    
+    assertNotNull(info);
+
+    assertEquals("{n} {s}", info.getCurrencyFormat());
+}
+
+
+//test cases for pt_BR numberformat
+function testLocaleInfoGetDecimalSeparatorfor_pt_BR() {
+    var info = new ilib.LocaleInfo("pt-BR");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_pt_BR() {
+    var info = new ilib.LocaleInfo("pt-BR");    
+    assertNotNull(info);
+
+    assertEquals(".", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_pt_BR() {
+    var info = new ilib.LocaleInfo("pt-BR");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_pt_BR() {
+    var info = new ilib.LocaleInfo("pt-BR");    
+    assertNotNull(info);
+
+    assertEquals("{s}{n}", info.getCurrencyFormat());
+}
+
+
+//test cases for pt_PT
+function testLocaleInfoGetDecimalSeparatorfor_pt_PT() {
+    var info = new ilib.LocaleInfo("pt-PT");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_pt_PT() {
+    var info = new ilib.LocaleInfo("pt-PT");    
+    assertNotNull(info);
+
+    assertEquals(" ", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_pt_PT() {
+    var info = new ilib.LocaleInfo("pt-PT");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_pt_PT() {
+    var info = new ilib.LocaleInfo("pt-PT");    
+    assertNotNull(info);
+
+    assertEquals("{n} {s}", info.getCurrencyFormat());
+}
+
+
+//test cases for es_ES number format
+
+function testLocaleInfoGetDecimalSeparatorfor_es_ES() {
+    var info = new ilib.LocaleInfo("es-ES");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_es_ES() {
+    var info = new ilib.LocaleInfo("es-ES");    
+    assertNotNull(info);
+
+    assertEquals(".", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_es_ES() {
+    var info = new ilib.LocaleInfo("es-ES");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_es_ES() {
+    var info = new ilib.LocaleInfo("es-ES");    
+    assertNotNull(info);
+
+    assertEquals("{n} {s}", info.getCurrencyFormat());
+}
+
+
+//test case for es_Co
+function testLocaleInfoGetDecimalSeparatorfor_es_CO() {
+    var info = new ilib.LocaleInfo("es-CO");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_es_CO() {
+    var info = new ilib.LocaleInfo("es-CO");    
+    assertNotNull(info);
+
+    assertEquals(".", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_es_CO() {
+    var info = new ilib.LocaleInfo("es-CO");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_es_CO() {
+    var info = new ilib.LocaleInfo("es-CO");    
+    assertNotNull(info);
+
+    assertEquals("{s}{n}", info.getCurrencyFormat());
+}
+
+
+//test cases for ja-JP
+function testLocaleInfoGetDecimalSeparatorfor_ja_JP() {
+    var info = new ilib.LocaleInfo("ja-JP");    
+    assertNotNull(info);
+    assertEquals(".",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_ja_JP() {
+    var info = new ilib.LocaleInfo("ja-JP");    
+    assertNotNull(info);
+
+    assertEquals(",", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_ja_JP() {
+    var info = new ilib.LocaleInfo("ja-JP");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_ja_JP() {
+    var info = new ilib.LocaleInfo("ja-JP");    
+    assertNotNull(info);
+
+    assertEquals("{s}{n}", info.getCurrencyFormat());
+}
+
+
+//test cases for de-DE
+function testLocaleInfoGetDecimalSeparatorfor_de_DE() {
+    var info = new ilib.LocaleInfo("de-DE");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_de_DE() {
+    var info = new ilib.LocaleInfo("de-DE");    
+    assertNotNull(info);
+
+    assertEquals(".", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_de_DE() {
+    var info = new ilib.LocaleInfo("de-DE");    
+    assertNotNull(info);
+
+    assertEquals("{n} %", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_de_DE() {
+    var info = new ilib.LocaleInfo("de-DE");    
+    assertNotNull(info);
+
+    assertEquals("{n} {s}", info.getCurrencyFormat());
+}
+
+//test cases for it-IT
+function testLocaleInfoGetDecimalSeparatorfor_it_IT() {
+    var info = new ilib.LocaleInfo("it-IT");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_it_IT() {
+    var info = new ilib.LocaleInfo("it-IT");    
+    assertNotNull(info);
+
+    assertEquals(".", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_it_IT() {
+    var info = new ilib.LocaleInfo("it-IT");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_it_IT() {
+    var info = new ilib.LocaleInfo("it-IT");    
+    assertNotNull(info);
+
+    assertEquals("{s} {n}", info.getCurrencyFormat());
+}
+
+//test cases for sv-SE
+function testLocaleInfoGetDecimalSeparatorfor_sv_SE() {
+    var info = new ilib.LocaleInfo("sv-SE");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_sv_SE() {
+    var info = new ilib.LocaleInfo("sv-SE");    
+    assertNotNull(info);
+
+    assertEquals(" ", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_sv_SE() {
+    var info = new ilib.LocaleInfo("sv-SE");    
+    assertNotNull(info);
+
+    assertEquals("{n} %", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_sv_SE() {
+    var info = new ilib.LocaleInfo("sv-SE");    
+    assertNotNull(info);
+
+    assertEquals("{n} {s}", info.getCurrencyFormat());
+}
+
+//test cases for fi-FI
+function testLocaleInfoGetDecimalSeparatorfor_fi_FI() {
+    var info = new ilib.LocaleInfo("fi-FI");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_fi_FI() {
+    var info = new ilib.LocaleInfo("fi-FI");    
+    assertNotNull(info);
+
+    assertEquals(" ", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_fi_FI() {
+    var info = new ilib.LocaleInfo("fi-FI");    
+    assertNotNull(info);
+
+    assertEquals("{n} %", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_fi_FI() {
+    var info = new ilib.LocaleInfo("fi-FI");    
+    assertNotNull(info);
+
+    assertEquals("{n} {s}", info.getCurrencyFormat());
+}
+
+//test cases for cs_CZ 
+
+function testLocaleInfoGetDecimalSeparatorfor_cs_CZ() {
+    var info = new ilib.LocaleInfo("cs-CZ");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_cs_CZ() {
+    var info = new ilib.LocaleInfo("cs-CZ");    
+    assertNotNull(info);
+
+    assertEquals(" ", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_cs_CZ() {
+    var info = new ilib.LocaleInfo("cs-CZ");    
+    assertNotNull(info);
+
+    assertEquals("{n} %", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_cs_CZ() {
+    var info = new ilib.LocaleInfo("cs-CZ");    
+    assertNotNull(info);
+
+    assertEquals("{n} {s}", info.getCurrencyFormat());
+}
+
+//test cases for el_GR
+
+function testLocaleInfoGetDecimalSeparatorfor_el_GR() {
+    var info = new ilib.LocaleInfo("el-GR");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_el_GR() {
+    var info = new ilib.LocaleInfo("el-GR");    
+    assertNotNull(info);
+
+    assertEquals(".", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_el_GR() {
+    var info = new ilib.LocaleInfo("el-GR");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_el_GR() {
+    var info = new ilib.LocaleInfo("el-GR");    
+    assertNotNull(info);
+
+    assertEquals("{n} {s}", info.getCurrencyFormat());
+}
+
+//test cases for hu-HU
+
+function testLocaleInfoGetDecimalSeparatorfor_hu_HU() {
+    var info = new ilib.LocaleInfo("hu-HU");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_hu_HU() {
+    var info = new ilib.LocaleInfo("hu-HU");    
+    assertNotNull(info);
+
+    assertEquals(" ", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_hu_HU() {
+    var info = new ilib.LocaleInfo("hu-HU");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_hu_HU() {
+    var info = new ilib.LocaleInfo("hu-HU");    
+    assertNotNull(info);
+
+    assertEquals("{n} {s}", info.getCurrencyFormat());
+}
+
+//test cases for nl_NL
+
+
+function testLocaleInfoGetDecimalSeparatorfor_nl_NL() {
+    var info = new ilib.LocaleInfo("nl-NL");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_nl_NL() {
+    var info = new ilib.LocaleInfo("nl-NL");    
+    assertNotNull(info);
+
+    assertEquals(".", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_nl_NL() {
+    var info = new ilib.LocaleInfo("nl-NL");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_nl_NL() {
+    var info = new ilib.LocaleInfo("nl-NL");    
+    assertNotNull(info);
+
+    assertEquals("{s} {n}", info.getCurrencyFormat());
+}
+
+//test cases for pl_PL
+function testLocaleInfoGetDecimalSeparatorfor_pl_PL() {
+    var info = new ilib.LocaleInfo("pl-PL");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_pl_PL() {
+    var info = new ilib.LocaleInfo("pl-PL");    
+    assertNotNull(info);
+
+    assertEquals(" ", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_pl_PL() {
+    var info = new ilib.LocaleInfo("pl-PL");    
+    assertNotNull(info);
+
+    assertEquals("{n}%", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_pl_PL() {
+    var info = new ilib.LocaleInfo("pl-PL");    
+    assertNotNull(info);
+
+    assertEquals("{n} {s}", info.getCurrencyFormat());
+}
+
+
+
+//test cases for da-DK
+function testLocaleInfoGetDecimalSeparatorfor_da_Dk() {
+    var info = new ilib.LocaleInfo("da-DK");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_da_Dk() {
+    var info = new ilib.LocaleInfo("da-DK");    
+    assertNotNull(info);
+
+    assertEquals(".", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_da_Dk() {
+    var info = new ilib.LocaleInfo("da-DK");    
+    assertNotNull(info);
+
+    assertEquals("{n} %", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_da_Dk() {
+    var info = new ilib.LocaleInfo("da-DK");    
+    assertNotNull(info);
+
+    assertEquals("{n} {s}", info.getCurrencyFormat());
+}
+
+//test cases for roRO
+function testLocaleInfoGetDecimalSeparatorfor_ro_RO() {
+    var info = new ilib.LocaleInfo("ro-RO");    
+    assertNotNull(info);
+    assertEquals(",",info.getDecimalSeparator());
+}
+
+function testLocaleInfoGetGroupingSeparatorfor_ro_RO() {
+    var info = new ilib.LocaleInfo("ro-RO");    
+    assertNotNull(info);
+
+    assertEquals(".", info.getGroupingSeparator());
+}
+
+function testLocaleInfoGetPercentageFormat_ro_RO() {
+    var info = new ilib.LocaleInfo("ro-RO");    
+    assertNotNull(info);
+
+    assertEquals("{n} %", info.getPercentageFormat());
+}
+
+function testLocaleInfoGetCurrencyFormat_ro_RO() {
+    var info = new ilib.LocaleInfo("ro-RO");    
+    assertNotNull(info);
+
+    assertEquals("{n} {s}", info.getCurrencyFormat());
+}
+
+
+
+
+//************************************************End 23/05/2013**********************************************************
 function testLocaleInfoGetGroupingSeparator1() {
     var info = new ilib.LocaleInfo();    
     assertNotNull(info);
@@ -388,29 +919,23 @@ function testLocaleInfoGetGroupingDigits1() {
     var info = new ilib.LocaleInfo();    
     assertNotNull(info);
 
-    assertEquals(3, info.getGroupingDigits());
+    assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
 function testLocaleInfoGetGroupingDigits2() {
     var info = new ilib.LocaleInfo("de-DE");    
     assertNotNull(info);
 
-    assertEquals(3, info.getGroupingDigits());
+    assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
 function testLocaleInfoGetGroupingDigits3() {
     var info = new ilib.LocaleInfo("zh-CN");    
     assertNotNull(info);
 
-    assertEquals(3, info.getGroupingDigits());
+    assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
-function testLocaleInfoGetPercentageFormat1() {
-    var info = new ilib.LocaleInfo();    
-    assertNotNull(info);
-
-    assertEquals("{n}%", info.getPercentageFormat());
-}
 
 function testLocaleInfoGetPercentageFormat2() {
     var info = new ilib.LocaleInfo("fr-FR");    
