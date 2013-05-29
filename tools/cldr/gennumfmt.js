@@ -114,7 +114,8 @@ function loadFile_jf(path) {
 	var ret = undefined;
 	if (fs.existsSync(path)) {
 		json = fs.readFileSync(path, "utf-8");
-		json = json.substring(0, json.length - 2);
+		var lastComma = json.lastIndexOf(",");
+		json = json.substring(0, lastComma);
 		ret = JSON.parse("{" + json + "}");
 		util.print("path is :" + path + "\n");
 	}
