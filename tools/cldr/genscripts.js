@@ -29,21 +29,26 @@ var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
 
 function usage() {
-	util.print("Usage: genscripts [-h] ISO-15924-file.txt Scripts.txt [toDir]\n" +
+	util.print("Usage: genscripts [-h] ISO-15924-file.txt UCD-dir CLDR-dir [toDir]\n" +
 			"Generate the normalization data.\n\n" +
 			"-h or --help\n" +
 			"  this help\n" +
 			"ISO-15924-file.txt\n" +
 			"  the Unicode script code definition file downloaded from the Unicode site\n" +
-			"Scripts.txt\n" +
-			"  the Unicode scripts definition file downloaded from the Unicode site\n" +
+			"UCD-dir\n" +
+			"  path to the Unicode Character Database files downloaded from the Unicode site\n" +
+			"CLDR-dir\n" +
+			"  path to the json CLDR files downloaded from the Unicode site\n" +
 			"toDir\n" +
 			"  directory to output the normalization json files. Default: current dir.\n");
 	process.exit(1);
 }
 
-var unicodeFileName;
+var iso15924FileName;
 var scriptFileName;
+var scriptMetaDataFileName;
+var ucdDir;
+var cldrDir;
 var toDir = ".";
 
 process.argv.forEach(function (val, index, array) {
@@ -57,24 +62,31 @@ if (process.argv.length < 4) {
 	usage();
 }
 
-unicodeFileName = process.argv[2];
-scriptFileName = process.argv[3];
-if (process.argv.length > 4) {
-	toDir = process.argv[4];
+iso15924FileName = process.argv[2];
+ucdDir = process.argv[3];
+cldrDir = process.argv[4];
+if (process.argv.length > 5) {
+	toDir = process.argv[5];
 }
 
 util.print("genscripts - generate scripts data.\n" +
 		"Copyright (c) 2012 JEDLSoft\n");
 
-fs.exists(unicodeFileName, function (exists) {
+fs.exists(iso15924FileName, function (exists) {
 	if (!exists) {
-		util.error("Could not access file " + unicodeFileName);
+		util.error("Could not access file " + iso15924FileName);
 		usage();
 	}
 });
-fs.exists(scriptFileName, function (exists) {
+fs.exists(ucdDir, function (exists) {
 	if (!exists) {
-		util.error("Could not access file " + scriptFileName);
+		util.error("Could not access UCD directory " + ucdDir);
+		usage();
+	}
+});
+fs.exists(cldrDir, function (exists) {
+	if (!exists) {
+		util.error("Could not access CLDR directory " + cldrDir);
 		usage();
 	}
 });
@@ -86,17 +98,37 @@ fs.exists(toDir, function (exists) {
 	}
 });
 
+scriptFileName = ucdDir + "/Scripts.txt";
+
+fs.exists(scriptFileName, function (exists) {
+	if (!exists) {
+		util.error("Could not access file " + scriptFileName);
+		usage();
+	}
+});
+
+scriptMetaDataFileName = cldrDir + "/common/properties/scriptMetadata.txt";
+
+fs.exists(scriptMetaDataFileName, function (exists) {
+	if (!exists) {
+		util.error("Could not access file " + scriptMetaDataFileName);
+		usage();
+	}
+});
+
 var scripts = {};
 var fullToShortMap = {};
 
-var uf = new UnicodeFile({path: unicodeFileName});
-var len = uf.length();
+var iso15924 = new UnicodeFile({path: iso15924FileName});
+var len = iso15924.length();
 var row;
 var script;
 var longCode;
+var code;
 
 for (var i = 0; i < len; i++ ) {
-	row = uf.get(i);
+	row = iso15924.get(i);
+	code = row[0];
 
 	longCode = (row[4].length == 0) ? row[2] : row[4];
 	longCode = longCode.replace(/ +/g, '_');
@@ -110,6 +142,24 @@ for (var i = 0; i < len; i++ ) {
 	if (longCode.length > 0) {
 		fullToShortMap[longCode.toLowerCase()] = row[0];
 	}
+}
+
+var scriptMetaData = new UnicodeFile({path: scriptMetaDataFileName});
+var len = scriptMetaData.length();
+
+for (var i = 0; i < len; i++ ) {
+	row = scriptMetaData.get(i);
+	code = row[0];
+	util.print(code + " isrtl " + row[6] + "\n"	);
+
+	// is this script written right-to-left?
+	scripts[code].rtl = (row[6] === " YES" ? true : false);
+	
+	// does this script require an IME to enter text?
+	scripts[code].ime = (row[9] === " YES" ? true : false);
+	
+	// does this script have the concept of upper- and lower-case?
+	scripts[code].casing = (row[10] === " YES" ? true : false);
 }
 
 // the Unicode data has only the binary decompositions. That is, the first of 
