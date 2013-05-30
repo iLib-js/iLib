@@ -359,7 +359,7 @@ ilib.NumFmt.prototype = {
 				var size1 = prigroupSize;
 				var size2 = integral.length;
 		       	var size3 = size2 - size1;
-				formatted = integral.slice(0, size3) + separator + integral.slice(size3);
+				integral = integral.slice(0, size3) + separator + integral.slice(size3);
 				var num_sec = integral.substring(0,integral.indexOf(separator));
 				k = num_sec.length;
 				while (k > secgroupSize) {
