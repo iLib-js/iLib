@@ -177,7 +177,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="ilib-ut.js" 
 			srcfilename="ilib-ut-inc.js" 
-			locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-DZ,ar-EG,ar-TN,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bez-TZ,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,brx-IN,bs-Cyrl-BA,bs-ME,ca-FR,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AU,en-CA,en-CA-Latn,en-GB,en-IE,en-NG,en-PH,en-US,en-ZA,es-AR,es-CO,es-ES,es-MX,fi-FI,fr-CA,fr-FR,fr-FR-overseas,he-IL,hu-HU,id-ID,it-IT,ja-JP,kln,ko-KR,MA-Latn,mm-MM,nl-NL,no-NO,pa-Arab,pl-PL,pt-BR,pt-PT,qq-QQ,ro-RO,ru-KG,ru-RU,sv-SE,tr-TR,uz-AF,uz-Cyrl-UZ,uz-UZ,vi-VN,zh-CN,zh-CN-Hans,zh-HK,zh-HK-Hans,zh-SG,zh-TW,zh-TW-Hant,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX,zz-ZZ"/>
+			locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-DZ,ar-EG,ar-TN,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bez-TZ,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,brx-IN,bs-Cyrl-BA,bs-ME,ca-FR,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AU,en-CA,en-CA-Latn,en-GB,en-IE,en-IN,en-NG,en-PH,en-US,en-ZA,es-AR,es-CO,es-ES,es-MX,fi-FI,fr-CA,fr-FR,fr-FR-overseas,he-IL,hi-IN,hu-HU,id-ID,it-IT,ja-JP,kln,ko-KR,MA-Latn,mm-MM,nl-NL,no-NO,pa-Arab,pl-PL,pt-BR,pt-PT,qq-QQ,ro-RO,ru-KG,ru-RU,sv-SE,tr-TR,uz-AF,uz-Cyrl-UZ,uz-UZ,vi-VN,zh-CN,zh-CN-Hans,zh-HK,zh-HK-Hans,zh-SG,zh-TW,zh-TW-Hant,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX,zz-ZZ"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
