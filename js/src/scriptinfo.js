@@ -104,6 +104,25 @@ ilib.ScriptInfo.prototype = {
 	 * written in
 	 */
 	getScriptDirection: function() {
-		// TODO fill in getScriptDirection
+		return (typeof(this.info.rtl) !== 'undefined' && this.info.rtl) ? "rtl" : "ltr";
+	},
+	
+	/**
+	 * Return true if this script typically requires an input method engine
+	 * to enter its characters.
+	 * 
+	 * @return {boolean} true if this script typically requires an IME
+	 */
+	getNeedsIME: function () {
+		return this.info.ime ? true : false; // converts undefined to false
+	},
+	
+	/**
+	 * Return true if this script uses lower- and upper-case characters.
+	 * 
+	 * @return {boolean} true if this script uses letter case
+	 */
+	getCasing: function () {
+		return this.info.casing ? true : false; // converts undefined to false
 	}
 };

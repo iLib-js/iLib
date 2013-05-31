@@ -531,8 +531,7 @@ $(function() {
             output += res.getString("Default Time Zone: ") + li.getTimeZone() + "<br/>";
             output += res.getString("Decimal Char: ") + li.getDecimalSeparator() + "<br/>";
             output += res.getString("Digits Group Char: ") + li.getGroupingSeparator() + "<br/>";
-            output += res.getString("Primary Digit Group Size: ") + li.getPrimaryGroupingDigits() + "<br/>";
-            output += res.getString("Secondary Digit Group Size: ") + li.getSecondaryGroupingDigits() + "<br/>";
+            output += res.getString("Digit Group Size: ") + li.getGroupingDigits() + "<br/>";
             output += res.getString("Percentage format: ") + li.getPercentageFormat() + "<br/>";
             output += res.getString("Percentage symbol: ") + li.getPercentageSymbol() + "<br/>";
             output += res.getString("Currency format common: ") + li.getCurrencyFormats().common + "<br/>";

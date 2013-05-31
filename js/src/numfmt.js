@@ -326,7 +326,7 @@ ilib.NumFmt.prototype = {
 	 */ 
 	_formatStandard: function (num) {
 		var i;
-		var j,k;
+		
 		// console.log("_formatNumberStandard: formatting number " + num);
 		if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
 			var factor = Math.pow(10, this.maxFractionDigits);
@@ -342,47 +342,23 @@ ilib.NumFmt.prototype = {
 			integral = parts[0],
 			fraction = parts[1],
 			cycle,
-			prigroupSize = this.localeInfo.getPrimaryGroupingDigits(),
-			secgroupSize = this.localeInfo.getSecondaryGroupingDigits(),
-			separator = this.localeInfo.getGroupingSeparator(),
+			groupSize = this.localeInfo.getGroupingDigits(),
 			formatted;
-			
-		integral = Math.abs(integral);
-		integral = integral.toString();
+		
 		
 		if (this.minFractionDigits > 0) {
 			fraction = this._pad(fraction || "", this.minFractionDigits, false);
 		}
-		
-		if (secgroupSize > 0) {
-			if (integral.length > prigroupSize) {
-				var size1 = prigroupSize;
-				var size2 = integral.length;
-		       	var size3 = size2 - size1;
-				integral = integral.slice(0, size3) + separator + integral.slice(size3);
-				var num_sec = integral.substring(0,integral.indexOf(separator));
-				k = num_sec.length;
-				while (k > secgroupSize) {
-			    	var secsize1 = secgroupSize;
-				   	var secsize2 = num_sec.length;
-					var secsize3 = secsize2 - secsize1;
-					integral = integral.slice(0, secsize3) + separator + integral.slice(secsize3);
-					num_sec = integral.substring(0,integral.indexOf(separator));
-					k = num_sec.length;			
-				}
-			}
 
-			formatted = negative ? "-" : "";
-			formatted = formatted + integral;
-		} else if (prigroupSize !== 0) {
-			cycle = ilib.mod(integral.length-1, prigroupSize);
+		if (groupSize > 0) {
+			cycle = ilib.mod(integral.length-1, groupSize);
 			formatted = negative ? "-" : "";
 			for (i = 0; i < integral.length-1; i++) {
 				formatted += integral.charAt(i);
 				if (cycle === 0) {
-					formatted += separator;
+					formatted += this.localeInfo.getGroupingSeparator();
 				}
-				cycle = ilib.mod(cycle - 1, prigroupSize);
+				cycle = ilib.mod(cycle - 1, groupSize);
 			}
 			formatted += integral.charAt(integral.length-1);
 		} else {
@@ -400,7 +376,7 @@ ilib.NumFmt.prototype = {
 	
 	/**
 	 * Format a number according to the settings of this number formatter instance.
-	 * @param num {number|string|Number|ilib.Number} a floating point number to format
+	 * @param {number|string|Number|ilib.Number} num a floating point number to format
 	 * @return {string} a string containing the formatted number
 	 */
 	format: function (num) {
@@ -412,9 +388,8 @@ ilib.NumFmt.prototype = {
 		
 		// convert to a real primitive number type
 		n = this._toPrimitive(num);
-				
+		
 		if (this.type === "number") {
-	
 			formatted = (this.style === "scientific") ? 
 					this._formatScientific(n) : 
 					this._formatStandard(n);

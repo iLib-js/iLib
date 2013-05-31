@@ -30,6 +30,9 @@ function testScriptGet1() {
     assertEquals(215, si.getCodeNumber());
     assertEquals("Latin", si.getName());
     assertEquals("Latin", si.getLongCode());
+    assertEquals("ltr", si.getScriptDirection());
+    assertFalse(si.getNeedsIME());
+    assertTrue(si.getCasing());
 }
 
 function testScriptGet2() {
@@ -40,6 +43,35 @@ function testScriptGet2() {
     assertEquals(331, si.getCodeNumber());
     assertEquals("Phags-pa", si.getName());
     assertEquals("Phags_Pa", si.getLongCode());
+    assertEquals("ltr", si.getScriptDirection());
+    assertFalse(si.getNeedsIME());
+    assertFalse(si.getCasing());
+}
+
+function testScriptGet3() {
+    var si = new ilib.ScriptInfo("Hebr");
+    assertNotNull(si);
+    
+    assertEquals("Hebr", si.getCode());
+    assertEquals(125, si.getCodeNumber());
+    assertEquals("Hebrew", si.getName());
+    assertEquals("Hebrew", si.getLongCode());
+    assertEquals("rtl", si.getScriptDirection());
+    assertFalse(si.getNeedsIME());
+    assertFalse(si.getCasing());
+}
+
+function testScriptGet4() {
+    var si = new ilib.ScriptInfo("Hans");
+    assertNotNull(si);
+    
+    assertEquals("Hans", si.getCode());
+    assertEquals(501, si.getCodeNumber());
+    assertEquals("Han (Simplified variant)", si.getName());
+    assertEquals("Han_(Simplified_variant)", si.getLongCode());
+    assertEquals("ltr", si.getScriptDirection());
+    assertTrue(si.getNeedsIME());
+    assertFalse(si.getCasing());
 }
 
 function testScriptGetDefaultLongCode() {
@@ -60,6 +92,9 @@ function testScriptGetDefaultLongCodeWithSpaces() {
     assertEquals(287, si.getCodeNumber());
     assertEquals("Korean (alias for Hangul + Han)", si.getName());
     assertEquals("Korean_(alias_for_Hangul_+_Han)", si.getLongCode());
+    assertEquals("ltr", si.getScriptDirection());
+    assertTrue(si.getNeedsIME());
+    assertFalse(si.getCasing());
 }
 
 function testScriptGetUnknown() {
