@@ -57,7 +57,7 @@ if (process.argv.length < 4) {
 cldrDirName = process.argv[2];
 localeDirName = process.argv[3];
 
-util.print("gendatefmts - generate date formats information files.\n" +
+util.print("gendatefmts - generate date and time formats information files.\n" +
 	"Copyright (c) 2013 JEDLSoft\n");
 
 util.print("CLDR dir: " + cldrDirName + "\n");
@@ -102,7 +102,7 @@ for (var locale in languageData) {
 		//util.print("languageData[locale][@scripts] === " + JSON.stringify(languageData[locale]["@scripts"]) + "\n");
 		if (typeof (languageData[locale]["@scripts"]) === 'string') {
 			var language = (locale.length <= 3) ? locale : locale.split(/-/)[0];
-			//util.print("language ******" + language + "\n");	
+			//util.print("language ******" + language + "\n");    
 			//util.print("scripts[language] @@@@ " + (scripts[language]) + "\n"); 
 			if (typeof (scripts[language]) === 'undefined') {
 				scripts[language] = [];
@@ -112,7 +112,7 @@ for (var locale in languageData) {
 			if (locale.length <= 3) {
 				// util.print("language " + language + " prepending " + JSON.stringify(newLangs));
 				scripts[language] = newLangs.concat(scripts[language]);
-				// util.print("scripts[language] $$$$$  " + JSON.stringify(scripts[language]) + "\n");	
+				// util.print("scripts[language] $$$$$  " + JSON.stringify(scripts[language]) + "\n");    
 			} else {
 				// util.print("language " + language + " appending " + JSON.stringify(newLangs));
 				scripts[language] = scripts[language].concat(newLangs);
@@ -565,14 +565,14 @@ function getSystemResources(language, script, region, data) {
 			}
 
 			var unitNames = [
-				"0",
-				"1",
+                "0",
+                "1",
                 "zero",
                 "one",
                 "two",
                 "few",
                 "many"
-			];
+            ];
 			for (var j = 0; j < unitNames.length; j++) {
 				name = unitNames[j];
 				mediumClipped = clipForMedium(
@@ -674,48 +674,48 @@ function getSystemResources(language, script, region, data) {
 }
 
 /*function writeDateFormats(language, script, region) {
-	var filename;
-	
-	if (script) {
-		if (getDefaultScript(language) === script) {
-			// util.print("default script for language " + language + " is " + getDefaultScript(language) + "\n");
-			filename = localeDirName + "/" + language + "/" + region + "/dateformats.json";
-				//util.print("FileName ######", filename);
-		
-		} else {
-			filename = localeDirName + "/" + language + "/" + script + "/" + region + "/dateformats.json";
-		}
-	} else {
-		filename = localeDirName + "/" + language + "/" + region + "/dateformats.json";
-	}
+    var filename;
+    
+    if (script) {
+        if (getDefaultScript(language) === script) {
+            // util.print("default script for language " + language + " is " + getDefaultScript(language) + "\n");
+            filename = localeDirName + "/" + language + "/" + region + "/dateformats.json";
+                //util.print("FileName ######", filename);
+        
+        } else {
+            filename = localeDirName + "/" + language + "/" + script + "/" + region + "/dateformats.json";
+        }
+    } else {
+        filename = localeDirName + "/" + language + "/" + region + "/dateformats.json";
+    }
 
-	// first check if there is an existing file, and if so, if it is hand-tweaked. If it is, skip this one.
-	// If it is generated, overwrite it with the new generation.
-	var output = loadFile(filename);
-	if (!output || (typeof(output.generated) !== 'undefined' && output.generated)) {
-		var data = getMergedData(language, script, region);
-		//util.print("merged data is "+JSON.stringify(data)+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+"\n");
-		var default_calendar=data.dates.calendars["default"];
-		util.print("default calendar is :"+default_calendar+"\n");
-		var gregorian_order=data.dates.calendars["gregorian"]["dateTimeFormats"]["full"]["dateTimeFormat"]["pattern"];
-		util.print("default calendar format pattern is "+gregorian_order+"\n");
-		var gregorian={};
-		var output={};
-		//output["gregorian"]="gregorian";
-		
-		if(gregorian_order=="{0} {1}")
-		{
-		//util.print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"+"\n");
-		gregorian["order"]="{date} {time}";
-		}
-		else
-		{
-		gregorian["order"]="{time} {date}";
-		}
-		util.print("gregorian calendar order is :"+gregorian["order"]+"\n");
-		var available_formats=data.dates.calendars["gregorian"]["dateTimeFormats"]["availableFormats"];
-		util.print("available formats are :"+JSON.stringify(available_formats)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
-		
+    // first check if there is an existing file, and if so, if it is hand-tweaked. If it is, skip this one.
+    // If it is generated, overwrite it with the new generation.
+    var output = loadFile(filename);
+    if (!output || (typeof(output.generated) !== 'undefined' && output.generated)) {
+        var data = getMergedData(language, script, region);
+        //util.print("merged data is "+JSON.stringify(data)+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+"\n");
+        var default_calendar=data.dates.calendars["default"];
+        util.print("default calendar is :"+default_calendar+"\n");
+        var gregorian_order=data.dates.calendars["gregorian"]["dateTimeFormats"]["full"]["dateTimeFormat"]["pattern"];
+        util.print("default calendar format pattern is "+gregorian_order+"\n");
+        var gregorian={};
+        var output={};
+        //output["gregorian"]="gregorian";
+        
+        if(gregorian_order=="{0} {1}")
+        {
+        //util.print("rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr"+"\n");
+        gregorian["order"]="{date} {time}";
+        }
+        else
+        {
+        gregorian["order"]="{time} {date}";
+        }
+        util.print("gregorian calendar order is :"+gregorian["order"]+"\n");
+        var available_formats=data.dates.calendars["gregorian"]["dateTimeFormats"]["availableFormats"];
+        util.print("available formats are :"+JSON.stringify(available_formats)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
+        
 
 
 
@@ -727,22 +727,22 @@ function getSystemResources(language, script, region, data) {
 
 
 
-			
-			
+            
+            
 
 
 
 
 
 
-		makeDirs(filename);
-		
-		output["gregorian"]=gregorian;
-		fs.writeFileSync(filename, JSON.stringify(data), "utf-8");
-		util.print("writing to " + filename + "\n");
-	} else {
-		util.print("not overwriting " + filename + "\n");
-	}
+        makeDirs(filename);
+        
+        output["gregorian"]=gregorian;
+        fs.writeFileSync(filename, JSON.stringify(data), "utf-8");
+        util.print("writing to " + filename + "\n");
+    } else {
+        util.print("not overwriting " + filename + "\n");
+    }
 }*/
 
 function anyProperties(data) {
@@ -843,23 +843,23 @@ util.print("\nWriting system resources...\n");
 
 /*writeDateFormats(undefined,undefined,undefined);
 for (language in localeData) {
-	if (language && localeData[language] && language !== 'data') {
-		for (var subpart in localeData[language]) {
-			if (subpart && localeData[language][subpart] && subpart !== 'data') {
-				if (Locale.isScriptCode(subpart)) {
-					script = subpart;
-					for (region in localeData[language][script]) {
-						if (region && localeData[language][script][region] && region !== 'data') {
-							writeDateFormats(language, script, region);
-						}			
-					}		
-				} else {
-					region = subpart;
-					writeDateFormats(language, undefined, region);
-				}
-			}
-		}
-	}
+    if (language && localeData[language] && language !== 'data') {
+        for (var subpart in localeData[language]) {
+            if (subpart && localeData[language][subpart] && subpart !== 'data') {
+                if (Locale.isScriptCode(subpart)) {
+                    script = subpart;
+                    for (region in localeData[language][script]) {
+                        if (region && localeData[language][script][region] && region !== 'data') {
+                            writeDateFormats(language, script, region);
+                        }            
+                    }        
+                } else {
+                    region = subpart;
+                    writeDateFormats(language, undefined, region);
+                }
+            }
+        }
+    }
 }
 */
 
@@ -975,11 +975,14 @@ function getDateFormats(language, script, region, data) {
 	//for (var i=0;i<keys_dateformats.length;i++)
 	//{
 	if (available_formats["Md"] || available_formats["Mdd"]) {
+
 		dm["s"] = available_formats["Md"] || available_formats["Mdd"];
 		//break;
+
 	} else if ((available_formats["Md"] === undefined) && (available_formats["Md"] === undefined)) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
+
 			if (((arr_values[j].split("M").length - 1) == 1) && ((arr_values[j].split("d").length - 1) == 1)) {
 
 				dm["s"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].indexOf("M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].indexOf("d")));
@@ -1476,10 +1479,60 @@ function getDateFormats(language, script, region, data) {
 	date["dmwy"] = dmwy;
 	date["n"] = n;
 	gregorian["date"] = date;
-	dates["gregorian"] = gregorian;
+	//dates["gregorian"]=gregorian;
 	//}
 
-	// util.print("gregorian date formats are :" + JSON.stringify(gregorian) + "++++++++++++++++++++++++++++++++++++++++++++" + "\n");
+	//util.print("gregorian date formats are :"+JSON.stringify(gregorian)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");    
+
+	//code to map Time Formats
+	var time = {};
+	available_formats = JSON.parse(JSON.stringify(available_formats).replace(/HH/g, "H"));
+	if (available_formats["hms"]) {
+		var index_of_a = available_formats["hms"].indexOf("a");
+		var index_of_h = available_formats["hms"].indexOf("h");
+		var max_index = Math.max(index_of_a, index_of_h);
+		available_formats["hms"] = available_formats["hms"].replace(/h/g, "H");
+		available_formats["hms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("H"), 1 + available_formats["hms"].lastIndexOf("s"));
+		//available_formats["hms"]==available_formats["hms"].replace(/a/g,"");
+		if (max_index == index_of_a) {
+			time["ahmsz"] = available_formats["hms"] + "a" + " " + "z";
+			time["ahms"] = available_formats["hms"] + "a";
+		} else {
+			time["ahmsz"] = "a" + available_formats["hms"] + " " + "z";
+			time["ahms"] = "a" + available_formats["hms"];
+		}
+		time["hms"] = available_formats["hms"];
+		time["ms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("m"), 1 + available_formats["hms"].lastIndexOf("s"));
+	}
+
+	if (available_formats["hm"]) {
+		var index_of_a = available_formats["hm"].indexOf("a");
+		var index_of_h = available_formats["hm"].indexOf("h");
+		var max_index = Math.max(index_of_a, index_of_h);
+		available_formats["hm"] = available_formats["hm"].replace(/h/g, "H");
+		available_formats["hm"] = available_formats["hm"].substring(available_formats["hm"].indexOf("H"), 1 + available_formats["hm"].lastIndexOf("s"));
+
+		if (max_index == index_of_a) {
+			time["ahmz"] = available_formats["hm"] + "a" + " " + "z";
+			time["ahm"] = available_formats["hm"] + "a";
+			time["ah"] = "Ha";
+		} else {
+			time["ahmz"] = "a" + available_formats["hm"] + " " + "z";
+			time["ahm"] = "a" + available_formats["hm"];
+			time["ah"] = "aH";
+		}
+		time["hm"] = available_formats["hm"];
+
+	}
+	time["m"] = "mm";
+	time["s"] = "ss";
+
+	gregorian["time"] = time;
+	util.print("gregorian date formats are :" + JSON.stringify(time) + "++++++++++++++++++++++++++++++++++++++++++++" + "\n");
+	dates["gregorian"] = gregorian;
+
+	//util.print("gregorian date formats are :"+JSON.stringify(gregorian)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");    
+
 	return dates;
 }
 //util.print("\nMerging and pruning resources...\n");
@@ -1503,7 +1556,6 @@ function writeDateFormats(language, script, region, data) {
 			for (var i = 0; i < arr_data.length; i++) {
 
 				if ((Object.keys(arr_keys[i]).length != 0)) {
-					//
 					date[arr_data[i]] = arr_keys[i];
 				}
 			}
@@ -1511,6 +1563,9 @@ function writeDateFormats(language, script, region, data) {
 			if (Object.keys(date).length != 0) {
 				gregorian["date"] = date;
 
+			}
+			if (Object.keys(data["gregorian"]["time"]).length != 0) {
+				gregorian["time"] = data["gregorian"]["time"];
 			}
 			if (Object.keys(gregorian).length === 0) {
 				util.print("Skipping empty " + path + "\n");
