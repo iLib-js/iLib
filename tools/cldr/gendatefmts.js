@@ -241,7 +241,7 @@ function leaveSame(str) {
 function getSystemResources(language, script, region, data) {
 	// if it is already there and non-generated, return it
 	var sysres = loadFileNonGenerated(language, script, region);
-	//util.print("\n Niranjan");
+	
 	if (sysres) {
 		util.print("\nLoaded existing resources from " + calcLocalePath(language, script, region, "sysres.json") + "\n");
 
@@ -951,8 +951,8 @@ function getDateFormats(language, script, region, data) {
 	var available_formats = data.dates.calendars["gregorian"]["dateTimeFormats"]["availableFormats"];
 	//util.print("available formats are :" + JSON.stringify(available_formats) + "++++++++++++++++++++++++++++++++++++++++++++" + "\n");
 	available_formats = JSON.parse(JSON.stringify(available_formats).replace(/L/g, "M"));
-
-	//util.print("available formats after conversion :" + JSON.stringify(available_formats) + "++++++++++++++++++++++++++++++++++++++++++++" + "\n");
+	available_formats = JSON.parse(JSON.stringify(available_formats).replace(/G /g, ""));
+	util.print("available formats after conversion :" + JSON.stringify(available_formats) + "++++++++++++++++++++++++++++++++++++++++++++" + "\n");
 	var keys_dateformats = Object.keys(available_formats);
 	//var values_dateformats = JSON.stringify(keys_dateformats);
 	var arr_values = [];
@@ -985,7 +985,7 @@ function getDateFormats(language, script, region, data) {
 
 			if (((arr_values[j].split("M").length - 1) == 1) && ((arr_values[j].split("d").length - 1) == 1)) {
 
-				dm["s"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].indexOf("M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].indexOf("d")));
+				dm["s"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].lastIndexOf("M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("d")));
 				//}
 
 				flag = true;
@@ -995,7 +995,7 @@ function getDateFormats(language, script, region, data) {
 		if (flag == false) {
 			var short = date_formats["short"]["dateFormat"]["pattern"];
 
-			dm["s"] = (short.indexOf("d") < short.indexOf("M")) ? short.substring(short.indexOf("d"), 1 + short.indexOf("M")) : (short.indexOf("M"), 1 + short.indexOf("d"));
+			dm["s"] = (short.indexOf("d") < short.indexOf("M")) ? short.substring(short.indexOf("d"), 1 + short.lastIndexOf("M")) : short.substring(short.indexOf("M"), 1 + short.lastIndexOf("d"));
 		}
 	}
 	//end of short
@@ -1013,7 +1013,7 @@ function getDateFormats(language, script, region, data) {
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 2) && ((arr_values[j].split("d").length - 1) >= 1)) {
 
-				dm["m"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].indexOf("M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].indexOf("d")));
+				dm["m"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].indexOf("M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("d")));
 				flag = true;
 				break;
 			}
@@ -1021,7 +1021,7 @@ function getDateFormats(language, script, region, data) {
 
 		if (flag == false) {
 			var medium = date_formats["medium"]["dateFormat"]["pattern"];
-			dm["m"] = (medium.indexOf("M") < medium.lastIndexOf("d")) ? medium.substring(medium.indexOf("M"), 1 + medium.lastIndexOf("d")) : medium.substring(medium.indexOf("d"), 1 + medium.lastIndexOf("M"));
+			dm["m"] = (medium.indexOf("M") < medium.indexOf("d")) ? medium.substring(medium.indexOf("M"), 1 + medium.lastIndexOf("d")) : medium.substring(medium.indexOf("d"), 1 + medium.lastIndexOf("M"));
 		}
 	}
 
@@ -1031,7 +1031,7 @@ function getDateFormats(language, script, region, data) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 3) && ((arr_values[j].split("d").length - 1) >= 1)) {
-				dm["l"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].indexOf("M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].indexOf("d")));
+				dm["l"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].lastIndexOf("M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("d")));
 				flag = true;
 				break;
 			}
@@ -1039,7 +1039,7 @@ function getDateFormats(language, script, region, data) {
 
 		if (flag == false) {
 			var long = date_formats["long"]["dateFormat"]["pattern"];
-			dm["l"] = (long.indexOf("M") < long.lastIndexOf("d")) ? long.substring(long.indexOf("M"), 1 + long.lastIndexOf("d")) : (long.substring(long.indexOf("d"), 1 + long.lastIndexOf("M")));
+			dm["l"] = (long.indexOf("M") < long.indexOf("d")) ? long.substring(long.indexOf("M"), 1 + long.lastIndexOf("d")) : (long.substring(long.indexOf("d"), 1 + long.lastIndexOf("M")));
 		}
 	}
 
@@ -1049,7 +1049,7 @@ function getDateFormats(language, script, region, data) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 4) && ((arr_values[j].split("d").length - 1) >= 1)) {
-				dm["f"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].indexOf("M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].indexOf("d")));
+				dm["f"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].lastIndexOf("M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("d")));
 				flag = true;
 				break;
 			}
@@ -1057,7 +1057,7 @@ function getDateFormats(language, script, region, data) {
 
 		if (flag == false) {
 			var full = date_formats["long"]["dateFormat"]["pattern"];
-			dm["f"] = full.indexOf("M") < (full.lastIndexOf("d")) ? full.substring(full.indexOf("M"), 1 + full.lastIndexOf("d")) : full.substring(full.indexOf("d"), 1 + full.lastIndexOf("M"));
+			dm["f"] = full.indexOf("M") < (full.indexOf("d")) ? full.substring(full.indexOf("M"), 1 + full.lastIndexOf("d")) : full.substring(full.indexOf("d"), 1 + full.lastIndexOf("M"));
 		}
 	}
 
@@ -1069,7 +1069,7 @@ function getDateFormats(language, script, region, data) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 1) && ((arr_values[j].split("y").length - 1) >= 1)) {
-				my["s"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].indexOf("y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].indexOf("M")));
+				my["s"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].lastIndexOf("M")));
 				flag = true;
 				break;
 			}
@@ -1078,25 +1078,26 @@ function getDateFormats(language, script, region, data) {
 		if (flag == false) {
 			var short = date_formats["short"]["dateFormat"]["pattern"];
 
-			my["s"] = (short.indexOf("M") < short.indexOf("y")) ? short.substring(short.indexOf("M"), 1 + short.indexOf("y")) : (short.indexOf("y"), 1 + short.indexOf("M"));
+			my["s"] = (short.indexOf("M") < short.indexOf("y")) ? short.substring(short.indexOf("M"), 1 + short.lastIndexOf("y")) : short.substring(short.indexOf("y"), 1 + short.lastIndexOf("M"));
 		}
 	}
 
 	if (available_formats["yyyyMM"] || available_formats["yyMM"] || available_formats["yMM"]) {
+		
 		my["m"] = available_formats["yyyyMM"] || available_formats["yyMM"] || available_formats["yMM"];
 	} else if ((available_formats["yMM"] === undefined) && (available_formats["yyMM"] === undefined) && (available_formats["yyyyMM"] === undefined)) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 2) && ((arr_values[j].split("y").length - 1) >= 1)) {
-				my["m"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].indexOf("y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].indexOf("M")));
+				my["m"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].lastIndexOf("M")));			
 				flag = true;
 				break;
 			}
 		}
 		if (flag == false)	{
 			var medium = date_formats["medium"]["dateFormat"]["pattern"];
-
-			my["m"] = medium.indexOf("M") < medium.indexOf("y") ? medium.substring(medium.indexOf("M"), 1 + medium.indexOf("y")) : medium.indexOf("y"), 1 + medium.indexOf("M");
+			
+			my["m"] = medium.indexOf("M") < medium.indexOf("y") ? medium.substring(medium.indexOf("M"), 1 + medium.lastIndexOf("y")) : medium.substring(medium.indexOf("y"), 1 + medium.lastIndexOf("M"));
 		}
 	}
 
@@ -1106,7 +1107,7 @@ function getDateFormats(language, script, region, data) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 3) && ((arr_values[j].split("y").length - 1) >= 1)) {
-				my["l"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].indexOf("y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].indexOf("M")));
+				my["l"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].lastIndexOf("M")));
 				flag = true;
 				break;
 			}
@@ -1114,7 +1115,7 @@ function getDateFormats(language, script, region, data) {
 		if (flag == false)	{
 			var long = date_formats["long"]["dateFormat"]["pattern"];
 
-			my["l"] = (long.indexOf("M") < long.indexOf("y")) ? long.substring(long.indexOf("M"), 1 + long.indexOf("y")) : (long.indexOf("y"), 1 + long.indexOf("M"));
+			my["l"] = (long.indexOf("M") < long.indexOf("y")) ? long.substring(long.indexOf("M"), 1 + long.lastIndexOf("y")) :long.substring(long.indexOf("y"), 1 + long.lastIndexOf("M"));
 		}
 	}
 
@@ -1124,7 +1125,7 @@ function getDateFormats(language, script, region, data) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 4) && ((arr_values[j].split("y").length - 1) >= 1)) {
-				my["f"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].indexOf("y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].indexOf("M")));
+				my["f"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].lastIndexOf("M")));
 				flag = true;
 				break;
 			}
@@ -1132,7 +1133,7 @@ function getDateFormats(language, script, region, data) {
 		if (flag == false)	{
 			var full = date_formats["full"]["dateFormat"]["pattern"];
 
-			my["f"] = (full.indexOf("M") < full.indexOf("y")) ? full.substring(full.indexOf("M"), 1 + full.indexOf("y")) : (full.indexOf("y"), 1 + full.indexOf("M"));
+			my["f"] = (full.indexOf("M") < full.indexOf("y")) ? full.substring(full.indexOf("M"), 1 + full.lastIndexOf("y")) :full.substring(full.indexOf("y"), 1 + full.lastIndexOf("M"));
 		}
 	}
 
@@ -1151,7 +1152,7 @@ function getDateFormats(language, script, region, data) {
 				var max_index = Math.max(index_of_d, index_of_m, index_of_y);
 				var min_index = Math.min(index_of_d, index_of_m, index_of_y);
 
-				dmy["s"] = arr_values[j].substring(min_index, 1 + max_index);
+				dmy["s"] = arr_values[j].substring(min_index, 1 + arr_values[j].lastIndexOf(arr_values[j].charAt(max_index)));
 				flag = true;
 				break;
 			}
@@ -1165,7 +1166,7 @@ function getDateFormats(language, script, region, data) {
 
 			var max_index = Math.max(index_of_d, index_of_m, index_of_y);
 			var min_index = Math.min(index_of_d, index_of_m, index_of_y);
-			dmy["s"] = short.substring(min_index, 1 + max_index);
+			dmy["s"] = short.substring(min_index, 1 + short.lastIndexOf(short.charAt(max_index)));
 		}
 	}
 
@@ -1182,7 +1183,7 @@ function getDateFormats(language, script, region, data) {
 				var max_index = Math.max(index_of_d, index_of_m, index_of_y);
 				var min_index = Math.min(index_of_d, index_of_m, index_of_y);
 
-				dmy["m"] = arr_values[j].substring(min_index, 1 + max_index);
+				dmy["m"] = arr_values[j].substring(min_index, 1 + arr_values[j].lastIndexOf(arr_values[j].charAt(max_index)));
 				flag = true;
 				break;
 			}
@@ -1195,7 +1196,7 @@ function getDateFormats(language, script, region, data) {
 
 			var max_index = Math.max(index_of_d, index_of_m, index_of_y);
 			var min_index = Math.min(index_of_d, index_of_m, index_of_y);
-			dmy["m"] = medium.substring(min_index, 1 + max_index);
+			dmy["m"] = medium.substring(min_index, 1 + medium.lastIndexOf(medium.charAt(max_index)));
 		}
 	}
 
@@ -1212,7 +1213,7 @@ function getDateFormats(language, script, region, data) {
 				var max_index = Math.max(index_of_d, index_of_m, index_of_y);
 				var min_index = Math.min(index_of_d, index_of_m, index_of_y);
 
-				dmy["l"] = arr_values[j].substring(min_index, 1 + max_index);
+				dmy["l"] = arr_values[j].substring(min_index, 1 + arr_values[j].lastIndexOf(arr_values[j].charAt(max_index)));
 				flag = true;
 				break;
 			}
@@ -1226,7 +1227,7 @@ function getDateFormats(language, script, region, data) {
 			var max_index = Math.max(index_of_d, index_of_m, index_of_y);
 			var min_index = Math.min(index_of_d, index_of_m, index_of_y);
 
-			dmy["l"] = long.substring(min_index, 1 + max_index);
+			dmy["l"] = long.substring(min_index, 1 + long.lastIndexOf(long.charAt(max_index)));
 		}
 	}
 
@@ -1243,7 +1244,7 @@ function getDateFormats(language, script, region, data) {
 				var max_index = Math.max(index_of_d, index_of_m, index_of_y);
 				var min_index = Math.min(index_of_d, index_of_m, index_of_y);
 
-				dmy["f"] = arr_values[j].substring(min_index, 1 + max_index);
+				dmy["f"] = arr_values[j].substring(min_index, 1 + arr_values[j].lastIndexOf(arr_values[j].charAt(max_index)));
 				flag = true;
 				break;
 			}
@@ -1256,7 +1257,7 @@ function getDateFormats(language, script, region, data) {
 
 			var max_index = Math.max(index_of_d, index_of_m, index_of_y);
 			var min_index = Math.min(index_of_d, index_of_m, index_of_y);
-			dmy["f"] = full.substring(min_index, 1 + max_index);
+			dmy["f"] = full.substring(min_index, 1 + full.lastIndexOf(full.charAt(max_index)));
 		}
 	}
 
@@ -1361,8 +1362,10 @@ function getDateFormats(language, script, region, data) {
 	//end of m combination
 
 	if (available_formats["y"]) {
+		util.print("debugging"+"\n");
 		y["s"] = available_formats["y"];
 		y["s"] = y["m"] = y["l"] = y["f"];
+		util.print("year format is " +JSON.stringify(y)+"\n");
 	} else if (available_formats["y"] === undefined) {
 		//var flag=false;
 		for (var j = 0; j < arr_values.length; j++) {
@@ -1422,7 +1425,7 @@ function getDateFormats(language, script, region, data) {
 	if (available_formats["yyyy"]) {
 		y["f"] = available_formats["yyyy"];
 	}
-
+	util.print("year format is " +JSON.stringify(y)+"\n");
 	//end of y combination
 
 	if (available_formats["MEd"]) {
@@ -1488,19 +1491,19 @@ function getDateFormats(language, script, region, data) {
 	var time = {};
 	available_formats = JSON.parse(JSON.stringify(available_formats).replace(/HH/g, "H"));
 	if (available_formats["hms"]) {
-		var index_of_a = available_formats["hms"].indexOf("a");
-		var index_of_h = available_formats["hms"].indexOf("h");
+		//var index_of_a = available_formats["hms"].indexOf("a");
+		//var index_of_h = available_formats["hms"].indexOf("h");
 		var max_index = Math.max(index_of_a, index_of_h);
 		available_formats["hms"] = available_formats["hms"].replace(/h/g, "H");
 		available_formats["hms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("H"), 1 + available_formats["hms"].lastIndexOf("s"));
 		//available_formats["hms"]==available_formats["hms"].replace(/a/g,"");
-		if (max_index == index_of_a) {
-			time["ahmsz"] = available_formats["hms"] + "a" + " " + "z";
-			time["ahms"] = available_formats["hms"] + "a";
-		} else {
-			time["ahmsz"] = "a" + available_formats["hms"] + " " + "z";
-			time["ahms"] = "a" + available_formats["hms"];
-		}
+		//if (max_index == index_of_a) {
+			time["ahmsz"] = available_formats["hms"]  + " " + "z";
+			time["ahms"] = available_formats["hms"] ;
+		//} else {
+			time["ahmsz"] = available_formats["hms"] + " " + "z";
+			time["ahms"] = available_formats["hms"];
+		//}
 		time["hms"] = available_formats["hms"];
 		time["ms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("m"), 1 + available_formats["hms"].lastIndexOf("s"));
 	}
@@ -1510,17 +1513,17 @@ function getDateFormats(language, script, region, data) {
 		var index_of_h = available_formats["hm"].indexOf("h");
 		var max_index = Math.max(index_of_a, index_of_h);
 		available_formats["hm"] = available_formats["hm"].replace(/h/g, "H");
-		available_formats["hm"] = available_formats["hm"].substring(available_formats["hm"].indexOf("H"), 1 + available_formats["hm"].lastIndexOf("s"));
+		available_formats["hm"] = available_formats["hm"].substring(available_formats["hm"].indexOf("H"), 1 + available_formats["hm"].lastIndexOf("m"));
 
-		if (max_index == index_of_a) {
-			time["ahmz"] = available_formats["hm"] + "a" + " " + "z";
-			time["ahm"] = available_formats["hm"] + "a";
-			time["ah"] = "Ha";
-		} else {
-			time["ahmz"] = "a" + available_formats["hm"] + " " + "z";
-			time["ahm"] = "a" + available_formats["hm"];
-			time["ah"] = "aH";
-		}
+		//if (max_index == index_of_a) {
+			time["ahmz"] = available_formats["hm"]  + " " + "z";
+			time["ahm"] = available_formats["hm"] ;
+			time["ah"] = "H";
+		//} else {
+			time["ahmz"] = available_formats["hm"] + " " + "z";
+			time["ahm"] = available_formats["hm"];
+			time["ah"] = "H";
+		//}
 		time["hm"] = available_formats["hm"];
 
 	}
@@ -1587,7 +1590,7 @@ function writeDateFormats(language, script, region, data) {
 		util.print("Skipping existing " + path + "dateformats.json\n");
 	}
 }
-
+writeDateFormats(undefined, undefined, undefined, resources_dateformat_data.data);
 for (language in resources_dateformat_data) {
 	if (language && resources_dateformat_data[language] && language !== 'data' && language !== 'merged') {
 		for (var subpart in resources_dateformat_data[language]) {
@@ -1608,6 +1611,6 @@ for (language in resources_dateformat_data) {
 		writeDateFormats(language, undefined, undefined, resources_dateformat_data[language].data);
 	}
 }
-writeDateFormats(undefined, undefined, undefined, resources_dateformat_data.data);
+//writeDateFormats(undefined, undefined, undefined, resources_dateformat_data.data);
 
 process.exit(0);

@@ -57,7 +57,7 @@ if (process.argv.length < 4) {
 cldrDirName = process.argv[2];
 localeDirName = process.argv[3];
 
-util.print("gendatefmts - generate number formats information files.\n" +
+util.print("gennumfmts - generate number formats information files.\n" +
 	"Copyright (c) 2013 LGE\n");
 
 util.print("CLDR dir: " + cldrDirName + "\n");
@@ -268,7 +268,7 @@ function getNumberFormats(language, script, region, data) {
 
 	if (numbers) {
 		util.print("\nLoaded existing resources from " + calcLocalePath(language, script, region, "numfmt.jf") + "\n");
-
+		//util.print("\nLoaded existing resources data " + JSON.stringify(numbers) + "\n");
 		numbers.generated = false;
 		return numbers;
 	}
@@ -321,7 +321,7 @@ function getNumberFormats(language, script, region, data) {
 		primarygroupsize = 0;
 	}
 
-	var decimal_format = "";
+	//var decimal_format = "";
 	
 	if (decimal_format.indexOf(";") != -1) {
 		index_of_semi_colon = decimal_format.indexOf(";");
@@ -364,7 +364,7 @@ function getNumberFormats(language, script, region, data) {
 	if (currency_format.indexOf(";") != -1) {
 		index_of_semi_colon = currency_format.indexOf(";");
 		var cur_fmt = currency_format.substring(0, index_of_semi_colon);
-		util.print("cur_fmt      is  ...................." + cur_fmt + "===================" + "\n");
+		//util.print("cur_fmt      is  ...................." + cur_fmt + "===================" + "\n");
 		var curFmt = cur_fmt.replace(/[0#,\.]+/, "{n}");
 		curFmt = curFmt.replace(/¤/g, "{s}");
 		symbol_format_data["curFmt"] = curFmt;
@@ -463,7 +463,7 @@ for (language in localeData) {
 
 //resources.data = getNumberFormats(undefined, undefined, undefined, localeData.data); 
 util.print("\nMerging and pruning r...\n");
-
+//util.print("\nLoaded existing resources " + JSON.stringify(resources) + "\n");
 //writeNumberFormats(undefined, undefined, undefined, resources.data); 
 
 mergeAndPrune(resources);
