@@ -227,12 +227,12 @@ function anyProperties(data) {
 function writeNumberFormats(language, script, region, data) {
 
 	var path = calcLocalePath(language, script, region, "");
-
+	//util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data)+"\n");
 	if (data.generated) {
 		if (anyProperties(data)) {
 			util.print("Writing " + path + "\n");
 
-			var empty_data = data["symbol"];
+			var empty_data = data["numfmt"];
 
 			if ((Object.keys(empty_data).length === 0)) {
 				util.print("no need to create the file " + "\n");
@@ -244,7 +244,7 @@ function writeNumberFormats(language, script, region, data) {
 			var numfmt = {};
 			
 			var arr_data = ["decimalChar", "groupChar", "pctChar", "prigroupSize", "pctFmt", "curFmt", "secgroupSize", "negativenumFmt", "negativepctFmt", "negativecurFmt", "roundingMode"];
-			var arr_keys = [empty_data["decimal"], empty_data["group"], empty_data["percentSign"], empty_data["primarygroupSize"], empty_data["pctFmt"], empty_data["curFmt"], empty_data["secondarygroupSize"], empty_data["numFmtnegative"], empty_data["pctFmtnegative"], empty_data["curFmtnegative"], empty_data["roundingMode"]];
+			var arr_keys = [empty_data["decimalChar"], empty_data["groupChar"] , empty_data["pctChar"], empty_data["prigroupSize"], empty_data["pctFmt"], empty_data["curFmt"], empty_data["secondarygroupSize"], empty_data["negativenumFmt"], empty_data["negativepctFmt"], empty_data["negativecurFmt"], empty_data["roundingMode"]];
 
 			for (var i = 0; i < arr_data.length; i++) {
 				if (typeof (arr_keys[i]) != undefined) {
@@ -354,10 +354,11 @@ function getNumberFormats(language, script, region, data) {
 	percent_format = percent_format.replace(/'(.)+'/g, "");
 	var pctFmt = percent_format.replace(/[0#,\.]+/, "{n}");
 
-	symbol_format_data["decimal"] = decimal_separator;
-	symbol_format_data["group"] = group_separator;
-	symbol_format_data["primarygroupSize"] = primarygroupsize;
-	symbol_format_data["secondarygroupSize"] = secondarygroupsize;
+	symbol_format_data["decimalChar"] = decimal_separator;
+	symbol_format_data["groupChar"] = group_separator;
+	symbol_format_data["pctChar"]=symbol_format["percentSign"];
+	symbol_format_data["prigroupSize"] = primarygroupsize;
+	symbol_format_data["secgroupSize"] = secondarygroupsize;
 	//    symbol_format_data["pctFmt"]=pctFmt; 
 
 	currency_format = currency_format.replace(/'(.)+'/g, "");
@@ -379,14 +380,14 @@ function getNumberFormats(language, script, region, data) {
 		index_of_semi_colon = decimal_fmt.indexOf(";");
 		var negative_num_format = decimal_fmt.substring(index_of_semi_colon, decimal_fmt.length);
 		var numfmtnegative = negative_num_format.replace(/[0#,\.]+/, "{n}");
-		symbol_format_data["numFmtnegative"] = numfmtnegative;
+		symbol_format_data["negativenumFmt"] = numfmtnegative;
 	}
 
 	if (percent_format.indexOf(";") != -1) {
 		index_of_semi_colon = percent_format.indexOf(";");
 		var negative_pct_format = percent_format.substring(index_of_semi_colon, percent_format.length);
 		var pctfmtnegative = negative_pct_format.replace(/[0#,\.]+/, "{n}");
-		symbol_format_data["pctFmtnegative"] = pctfmtnegative;
+		symbol_format_data["negativepctFmt"] = pctfmtnegative;
 
 		var positive_pct_format = percent_format.substring(0, index_of_semi_colon - 1);
 		pctFmt = positive_pct_format.replace(/[0#,\.]+/, "{n}");
@@ -403,11 +404,13 @@ function getNumberFormats(language, script, region, data) {
 		var negative_cur_format = currency_format.substring(index_of_semi_colon + 1, currency_format.length);
 		var curfmtnegative = negative_cur_format.replace(/[0#,\.]+/, "{n}");
 		curfmtnegative = curfmtnegative.replace(/¤/g, "{s}");
-		symbol_format_data["curFmtnegative"] = curfmtnegative;
+		symbol_format_data["negativecurFmt"] = curfmtnegative;
 	}
 
 	symbol_format_data["roundingMode"] = "halfdown";
-	numbers["symbol"] = symbol_format_data;
+	//var numfmt={};
+	//numfmt=symbol_format_data;
+	numbers["numfmt"] = symbol_format_data;
 
 	return numbers;
 }
@@ -465,10 +468,10 @@ for (language in localeData) {
 util.print("\nMerging and pruning r...\n");
 //util.print("\nLoaded existing resources " + JSON.stringify(resources) + "\n");
 //writeNumberFormats(undefined, undefined, undefined, resources.data); 
-
+util.print("\ndata before merge and pruning\n"+JSON.stringify(resources)+"\n");
 mergeAndPrune(resources);
-
-writeNumberFormats(undefined, undefined, undefined, resources.data);
+util.print("\ndata after merge and pruning\n"+JSON.stringify(resources)+"\n");
+//writeNumberFormats(undefined, undefined, undefined, resources.data);
 
 for (language in resources) {
 	if (language && resources[language] && language !== 'data' && language !== 'merged') {
@@ -491,5 +494,5 @@ for (language in resources) {
 	}
 }
 
-//writeNumberFormats(undefined, undefined, undefined, resources.data); 
+writeNumberFormats(undefined, undefined, undefined, resources.data); 
 process.exit(0);
