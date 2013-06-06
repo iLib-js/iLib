@@ -149,6 +149,18 @@ function testTZDisplayNameDST() {
     assertEquals("PDT", tz.getDisplayName(gd, 'standard'));
 }
 
+function testTZDisplayNameDST() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+    
+    var gd = new ilib.Date.GregDate({
+		year: 2011,
+		month: 8,
+		day: 1
+	});
+    assertEquals("Pacific Daylight Time", tz.getDisplayName(gd, 'long'));
+}
+
 function testTZDisplayNameStandardTime() {
     var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
     assertNotNull(tz);
@@ -171,6 +183,18 @@ function testTZDisplayNameStandardTimeRFC() {
 		day: 1
 	});
     assertEquals("UTC-0800", tz.getDisplayName(gd, 'rfc822'));
+}
+
+function testTZDisplayNameStandardTimeLong() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+    
+    var gd = new ilib.Date.GregDate({
+		year: 2011,
+		month: 12,
+		day: 1
+	});
+    assertEquals("Pacific Standard Time", tz.getDisplayName(gd, 'long'));
 }
 
 function testTZDisplayNameStandardTimeESWithNoDST() {
@@ -620,6 +644,102 @@ function testTZGetAvailableIdsRightValues() {
     assertContains("Africa/Cairo", zones);
 }
 
+function testTZGetAvailableIdsNoFilterContainsLocal() {
+    var zones = ilib.TimeZone.getAvailableIds();
+    assertNotNull(zones);
+    
+    assertTrue(zones.indexOf("local") != -1);
+}
+
+function testTZGetAvailableIdsByCountryRightLength() {
+    var zones = ilib.TimeZone.getAvailableIds("US");
+    assertNotNull(zones);
+    
+    assertEquals(29, zones.length);
+}
+
+function testTZGetAvailableIdsWithFilterContainsNoLocal() {
+    var zones = ilib.TimeZone.getAvailableIds("US");
+    assertNotNull(zones);
+    
+    assertTrue(zones.indexOf("local") == -1);
+}
+
+function testTZGetAvailableIdsByCountryRightContents() {
+    var zones = ilib.TimeZone.getAvailableIds("US");
+    assertNotNull(zones);
+    
+    var expected = [
+		"America/New_York",
+		"America/Detroit",
+		"America/Kentucky/Louisville",
+		"America/Kentucky/Monticello",
+		"America/Indiana/Indianapolis",
+		"America/Indiana/Vincennes",
+		"America/Indiana/Winamac",
+		"America/Indiana/Marengo",
+		"America/Indiana/Petersburg",
+		"America/Indiana/Vevay",
+		"America/Chicago",
+		"America/Indiana/Tell_City",
+		"America/Indiana/Knox",
+		"America/Menominee",
+		"America/North_Dakota/Center",
+		"America/North_Dakota/New_Salem",
+		"America/North_Dakota/Beulah",
+		"America/Denver",
+		"America/Boise",
+		"America/Phoenix",
+		"America/Los_Angeles",
+		"America/Anchorage",
+		"America/Juneau",
+		"America/Sitka",
+		"America/Yakutat",
+		"America/Nome",
+		"America/Adak",
+		"America/Metlakatla",
+		"Pacific/Honolulu"
+    ];
+    
+    assertArrayEqualsIgnoringOrder(expected, zones);
+}
+
+function testTZGetAvailableIdsByCountry2RightLength() {
+    var zones = ilib.TimeZone.getAvailableIds("SG");
+    assertNotNull(zones);
+    
+    assertEquals(1, zones.length);
+}
+
+function testTZGetAvailableIdsByCountry2RightContents() {
+    var zones = ilib.TimeZone.getAvailableIds("SG");
+    assertNotNull(zones);
+    
+    var expected = [
+		"Asia/Singapore"
+	];
+    
+    assertArrayEqualsIgnoringOrder(expected, zones);
+}
+
+function testTZGetAvailableIdsByCountry3RightLength() {
+    var zones = ilib.TimeZone.getAvailableIds("IN");
+    assertNotNull(zones);
+    
+    assertEquals(1, zones.length);
+}
+
+function testTZGetAvailableIdsByCountry3RightContents() {
+    var zones = ilib.TimeZone.getAvailableIds("IN");
+    assertNotNull(zones);
+    
+    var expected = [
+		"Asia/Kolkata"
+	];
+    
+    assertArrayEqualsIgnoringOrder(expected, zones);
+}
+
 function testTZUseDaylightTimeID() {
     var tz = new ilib.TimeZone({id: "Asia/Jakarta"});
     assertNotNull(tz);
@@ -640,6 +760,21 @@ function testTZDisplayNameStandardID() {
 		second: 37
 	});
     assertEquals("WIT", tz.getDisplayName(gd, 'standard'));
+}
+
+function testTZDisplayNameLongID() {
+    var tz = new ilib.TimeZone({id: "Asia/Jakarta"});
+    assertNotNull(tz);
+    
+    var gd = new ilib.Date.GregDate({
+		year: 2011,
+		month: 12,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 37
+	});
+    assertEquals("SE Asia Standard Time", tz.getDisplayName(gd, 'long'));
 }
 
 function testTZConstructUsingOffset() {
@@ -1000,4 +1135,25 @@ function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
     	    ilib.setLoaderCallback(undefined);
     	}
     });
+}
+
+function testTZGetCountry1() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+    
+    assertEquals("US", tz.getCountry());
+}
+
+function testTZGetCountry2() {
+    var tz = new ilib.TimeZone({id: "Europe/Berlin"});
+    assertNotNull(tz);
+    
+    assertEquals("DE", tz.getCountry());
+}
+
+function testTZGetCountry3() {
+    var tz = new ilib.TimeZone({id: "Europe/Kiev"});
+    assertNotNull(tz);
+    
+    assertEquals("UA", tz.getCountry());
 }

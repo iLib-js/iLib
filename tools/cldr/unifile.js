@@ -46,6 +46,7 @@ exports.UnicodeFile = function (options) {
 	var data;
 	
 	this.rows = [];
+	this.splitChar = ';';
 
 	if (options) {
 		if (options.path) {
@@ -53,6 +54,9 @@ exports.UnicodeFile = function (options) {
 		}
 		if (options.string) {
 			data = options.string;
+		}
+		if (options.splitChar) {
+			this.splitChar = options.splitChar;
 		}
 	}
 	
@@ -88,11 +92,11 @@ exports.UnicodeFile.prototype = {
 	/**
 	 * Return the content line with the given index.
 	 * 
-	 * @param index the index of the given content line
+	 * @param {number} index the index of the given content line
 	 * @return {Array.<string>} an array of content values as strings
 	 */
 	get: function (index) {
 		var row = (index >= 0 && index < this.rows.length) ? this.rows[index] : undefined;
-		return row && row.split(/;/); 
+		return row && row.split(this.splitChar); 
 	}
 };

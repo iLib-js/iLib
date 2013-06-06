@@ -182,7 +182,7 @@ ilib.TimeZone = function(options) {
 ilib.TimeZone.prototype._inittz = function () {
 	/** 
 	 * @private
-	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>}} 
+	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>,c:string,n:string}} 
 	 */
 	this.zone = ilib.data.timezones[this.id];
 	if (!this.zone && !this.offset) {
@@ -193,16 +193,23 @@ ilib.TimeZone.prototype._inittz = function () {
 
 /**
  * Return an array of available zone ids that the constructor knows about.
+ * The country parameter is optional. If it is not given, all time zones will
+ * be returned. If it specifies a country code, then only time zones for that
+ * country will be returned.
+ * 
+ * @param {string} country country code for which time zones are being sought
  * @return {Array.<string>} an array of zone id strings
  */
-ilib.TimeZone.getAvailableIds = function () {
+ilib.TimeZone.getAvailableIds = function (country) {
 	var tz, ids = [];
 	
-	// special zone meaning "the local time zone according to the JS engine we are running upon"
-	ids.push("local"); 
+	if (!country) {
+		// special zone meaning "the local time zone according to the JS engine we are running upon"
+		ids.push("local");
+	}
 	
 	for (tz in ilib.data.timezones) {
-		if (tz) {
+		if (tz && (!country || ilib.data.timezones[tz].c === country)) {
 			ids.push(tz);
 		}
 	}
@@ -230,6 +237,7 @@ ilib.TimeZone.prototype.getId = function () {
  * as "CET" for "Central European Time" or "PDT" for "Pacific Daylight Time"
  * <li>rfc822 - returns an RFC 822 style time zone specifier, which specifies more
  * explicitly what the offset is from UTC
+ * <li>long - returns the long name of the zone in English
  * </ol>
  *  
  * @param {ilib.Date=} date a date to determine if it is in daylight time or standard time
@@ -249,13 +257,12 @@ ilib.TimeZone.prototype.getDisplayName = function (date, style) {
 					return temp.format({c: letter || ""});
 				}
 				return this.zone.f;
-			} else {
-				var temp = "GMT" + this.zone.o;
-				if (this.inDaylightTime(date)) {
-					temp += "+" + this.zone.s.v;
-				}
-				return temp;
+			} 
+			var temp = "GMT" + this.zone.o;
+			if (this.inDaylightTime(date)) {
+				temp += "+" + this.zone.s.v;
 			}
+			return temp;
 			break;
 		case 'rfc822':
 			var offset = this.getOffset(date), // includes the DST if applicable
@@ -273,6 +280,21 @@ ilib.TimeZone.prototype.getDisplayName = function (date, style) {
 			}
 			ret += minute;
 			return ret; 
+		case 'long':
+			if (this.zone.n) {
+				if (this.zone.n.indexOf("{c}") !== -1) {
+					var str = this.inDaylightTime(date) ? "Daylight" : "Standard"; 
+					var temp = new ilib.String(this.zone.n);
+					return temp.format({c: str || ""});
+				}
+				return this.zone.n;
+			}
+			var temp = "GMT" + this.zone.o;
+			if (this.inDaylightTime(date)) {
+				temp += "+" + this.zone.s.v;
+			}
+			return temp;
+			break;
 	}
 };
 
@@ -642,10 +664,9 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 	if (startRd < endRd) {
 		// northern hemisphere
 		return (rd >= startRd && rd < endRd) ? true : false;
-	} else {
-		// southern hemisphere
-		return (rd >= startRd || rd < endRd) ? true : false;
-	}
+	} 
+	// southern hemisphere
+	return (rd >= startRd || rd < endRd) ? true : false;
 };
 
 /**
@@ -660,4 +681,12 @@ ilib.TimeZone.prototype.useDaylightTime = function () {
 		(typeof(this.zone) !== 'undefined' && 
 		typeof(this.zone.s) !== 'undefined' && 
 		typeof(this.zone.e) !== 'undefined');
+};
+
+/**
+ * Returns the ISO 3166 code of the country for which this time zone is defined.
+ * @return {string} the ISO 3166 code of the country for this zone
+ */
+ilib.TimeZone.prototype.getCountry = function () {
+	return this.zone.c;
 };
