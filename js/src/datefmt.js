@@ -254,7 +254,9 @@ timezone.js
  * @param {Object} options options governing the way this date formatter instance works
  */
 ilib.DateFmt = function(options) {
-	var arr, i, bad, formats, sync = true;
+	var arr, i, bad, 
+		sync = true, 
+		loadParams = undefined;
 	
 	this.locale = new ilib.Locale();
 	this.type = "date";
@@ -346,6 +348,8 @@ ilib.DateFmt = function(options) {
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync == true);
 		}
+		
+		loadParams = options.loadParams;
 	}
 
 	if (!ilib.DateFmt.cache) {
@@ -387,7 +391,7 @@ ilib.DateFmt = function(options) {
 					this.sysres = rb;
 					
 					if (!this.template) {
-						ilib.loadData(ilib.DateFmt, this.locale, "dateformats", sync, this.loadParams, ilib.bind(this, function (formats) {
+						ilib.loadData(ilib.DateFmt, this.locale, "dateformats", sync, loadParams, ilib.bind(this, function (formats) {
 							if (!formats) {
 								formats = ilib.data.dateformats;
 								var spec = this.locale.getSpec().replace(/-/g, '_');
