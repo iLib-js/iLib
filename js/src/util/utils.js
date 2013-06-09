@@ -615,3 +615,7 @@ ilib.loadData = function(object, locale, name, sync, params, callback) {
 	}
 };
 
+
+ilib.loadJson = function(path, options) {
+	ilib.loadData({});
+};
