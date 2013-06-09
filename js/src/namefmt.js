@@ -172,18 +172,25 @@ ilib.NameFmt = function(options) {
 
 	this.locale = this.locale || new ilib.Locale();
 	
-	ilib.loadData(ilib.Name, this.locale, "name", sync, this.loadParams, ilib.bind(this, function (info) {
-		if (!info) {
-			info = ilib.data.name;
-			var spec = this.locale.getSpec().replace(/-/g, "_");
-			ilib.Name.cache[spec] = info;
-		}
-		this.info = info;
-		this._init();
-		if (options && typeof(options.onLoad) === 'function') {
-			options.onLoad(this);
-		}
-	}));
+	ilib.loadData({
+		object: ilib.Name, 
+		locale: this.locale, 
+		name: "name.json", 
+		sync: sync, 
+		loadParams: this.loadParams, 
+		callback: ilib.bind(this, function (info) {
+			if (!info) {
+				info = ilib.data.name;
+				var spec = this.locale.getSpec().replace(/-/g, "_");
+				ilib.Name.cache[spec] = info;
+			}
+			this.info = info;
+			this._init();
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		})
+	});
 };
 
 ilib.NameFmt.prototype = {

@@ -632,7 +632,7 @@ function testMergeLocDataMissingLocaleParts() {
 
 function testGetLocFilesLanguageOnly() {
 	var locale = new ilib.Locale("en");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json"
@@ -644,7 +644,7 @@ function testGetLocFilesLanguageOnly() {
 
 function testGetLocFilesRegionOnly() {
 	var locale = new ilib.Locale("US");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"und/US/localeinfo.json"
@@ -656,7 +656,7 @@ function testGetLocFilesRegionOnly() {
 
 function testGetLocFilesLangScript() {
 	var locale = new ilib.Locale("en-Latn");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -669,7 +669,7 @@ function testGetLocFilesLangScript() {
 
 function testGetLocFilesLangRegion() {
 	var locale = new ilib.Locale("en-US");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -683,7 +683,7 @@ function testGetLocFilesLangRegion() {
 
 function testGetLocFilesLangVariant() {
 	var locale = new ilib.Locale("en-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json"
@@ -695,7 +695,7 @@ function testGetLocFilesLangVariant() {
 
 function testGetLocFilesScriptRegion() {
 	var locale = new ilib.Locale("Latn-US");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"und/US/localeinfo.json"
@@ -707,7 +707,7 @@ function testGetLocFilesScriptRegion() {
 
 function testGetLocFilesRegionVariant() {
 	var locale = new ilib.Locale("US-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"und/US/localeinfo.json",
@@ -720,7 +720,7 @@ function testGetLocFilesRegionVariant() {
 
 function testGetLocFilesLangScriptRegion() {
 	var locale = new ilib.Locale("en-Latn-US");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -736,7 +736,7 @@ function testGetLocFilesLangScriptRegion() {
 
 function testGetLocFilesLangScriptVariant() {
 	var locale = new ilib.Locale("en-Latn-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -749,7 +749,7 @@ function testGetLocFilesLangScriptVariant() {
 
 function testGetLocFilesLangRegionVariant() {
 	var locale = new ilib.Locale("en-US-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -765,7 +765,7 @@ function testGetLocFilesLangRegionVariant() {
 
 function testGetLocFilesAll() {
 	var locale = new ilib.Locale("en-US-Latn-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -802,7 +802,7 @@ function testGetLocFilesNoBasename() {
 }
 
 function testGetLocFilesDefaultLocale() {
-	var f = ilib.getLocFiles(undefined, "localeinfo");
+	var f = ilib.getLocFiles(undefined, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",

@@ -253,38 +253,45 @@ ilib.ResBundle = function (options) {
 
 	lookupLocale = this.locale.isPseudo() ? new ilib.Locale("en-US") : this.locale;
 
-	ilib.loadData(ilib.ResBundle[this.baseName], lookupLocale, this.baseName, this.sync, this.loadParams, ilib.bind(this, function (map) {
-		if (!map) {
-			map = ilib.data[this.baseName] || {};
-			spec = lookupLocale.getSpec().replace(/-/g, '_');
-			ilib.ResBundle[this.baseName].cache[spec] = map;
-		}
-		this.map = map;
-		if (this.locale.isPseudo()) {
-			if (!ilib.ResBundle.pseudomap) {
-				ilib.ResBundle.pseudomap = {};
+	ilib.loadData({
+		object: ilib.ResBundle[this.baseName], 
+		locale: lookupLocale, 
+		name: this.baseName + ".json", 
+		sync: this.sync, 
+		loadParmas: this.loadParams, 
+		callback: ilib.bind(this, function (map) {
+			if (!map) {
+				map = ilib.data[this.baseName] || {};
+				spec = lookupLocale.getSpec().replace(/-/g, '_');
+				ilib.ResBundle[this.baseName].cache[spec] = map;
 			}
-
-			this._loadPseudo(this.locale, options.onLoad);
-		} else if (this.missing === "pseudo") {
-			if (!ilib.ResBundle.pseudomap) {
-				ilib.ResBundle.pseudomap = {};
+			this.map = map;
+			if (this.locale.isPseudo()) {
+				if (!ilib.ResBundle.pseudomap) {
+					ilib.ResBundle.pseudomap = {};
+				}
+	
+				this._loadPseudo(this.locale, options.onLoad);
+			} else if (this.missing === "pseudo") {
+				if (!ilib.ResBundle.pseudomap) {
+					ilib.ResBundle.pseudomap = {};
+				}
+	
+				new ilib.LocaleInfo(this.locale, {
+					sync: this.sync,
+					loadParams: this.loadParams,
+					onLoad: ilib.bind(this, function (li) {
+						var pseudoLocale = new ilib.Locale("zxx", "XX", undefined, li.getDefaultScript());
+						this._loadPseudo(pseudoLocale, options.onLoad);
+					})
+				});
+			} else {
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
 			}
-
-			new ilib.LocaleInfo(this.locale, {
-				sync: this.sync,
-				loadParams: this.loadParams,
-				onLoad: ilib.bind(this, function (li) {
-					var pseudoLocale = new ilib.Locale("zxx", "XX", undefined, li.getDefaultScript());
-					this._loadPseudo(pseudoLocale, options.onLoad);
-				})
-			});
-		} else {
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		}
-	}));
+		})
+	});
 
 	// console.log("Merged resources " + this.locale.toString() + " are: " + JSON.stringify(this.map));
 	//if (!this.locale.isPseudo() && ilib.isEmpty(this.map)) {
@@ -297,17 +304,24 @@ ilib.ResBundle.prototype = {
      * @protected
      */
     _loadPseudo: function (pseudoLocale, onLoad) {
-		ilib.loadData(ilib.ResBundle.pseudomap, pseudoLocale, "pseudomap", this.sync, this.loadParams, ilib.bind(this, function (map) {
-			if (!map || ilib.isEmpty(map)) {
-				map = ilib.data.pseudomap;
-				var spec = pseudoLocale.getSpec().replace(/-/g, '_');
-				ilib.ResBundle.pseudomap.cache[spec] = map;
-			}
-			this.pseudomap = map;
-			if (typeof(onLoad) === 'function') {
-				onLoad(this);
-			}	
-		}));
+		ilib.loadData({
+			object: ilib.ResBundle.pseudomap, 
+			locale: pseudoLocale, 
+			name: "pseudomap.json", 
+			sync: this.sync, 
+			loadParams: this.loadParams, 
+			callback: ilib.bind(this, function (map) {
+				if (!map || ilib.isEmpty(map)) {
+					map = ilib.data.pseudomap;
+					var spec = pseudoLocale.getSpec().replace(/-/g, '_');
+					ilib.ResBundle.pseudomap.cache[spec] = map;
+				}
+				this.pseudomap = map;
+				if (typeof(onLoad) === 'function') {
+					onLoad(this);
+				}	
+			})
+		});
     },
     
 	/**

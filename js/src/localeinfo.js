@@ -100,17 +100,24 @@ ilib.LocaleInfo = function(locale, options) {
 		ilib.LocaleInfo.cache = {};
 	}
 
-	ilib.loadData(ilib.LocaleInfo, this.locale, "localeinfo", sync, this.loadParams, ilib.bind(this, function (info) {
-		if (!info) {
-			info = ilib.data.localeinfo;
-			var spec = this.locale.getSpec().replace(/-/g, "_");
-			ilib.LocaleInfo.cache[spec] = info;
-		}
-		this.info = info;
-		if (options && typeof(options.onLoad) === 'function') {
-			options.onLoad(this);
-		}
-	}));
+	ilib.loadData({
+		object: ilib.LocaleInfo, 
+		locale: this.locale, 
+		name: "localeinfo.json", 
+		sync: sync, 
+		loadParams: this.loadParams, 
+		callback: ilib.bind(this, function (info) {
+			if (!info) {
+				info = ilib.data.localeinfo;
+				var spec = this.locale.getSpec().replace(/-/g, "_");
+				ilib.LocaleInfo.cache[spec] = info;
+			}
+			this.info = info;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		})
+	});
 };
 
 ilib.LocaleInfo.prototype = {

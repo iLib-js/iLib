@@ -391,18 +391,25 @@ ilib.DateFmt = function(options) {
 					this.sysres = rb;
 					
 					if (!this.template) {
-						ilib.loadData(ilib.DateFmt, this.locale, "dateformats", sync, loadParams, ilib.bind(this, function (formats) {
-							if (!formats) {
-								formats = ilib.data.dateformats;
-								var spec = this.locale.getSpec().replace(/-/g, '_');
-								ilib.DateFmt.cache[spec] = formats;
-							}
-							this._initTemplate(formats);
-							this._massageTemplate();
-							if (options && typeof(options.onLoad) === 'function') {
-								options.onLoad(this);
-							}
-						}));
+						ilib.loadData({
+							object: ilib.DateFmt, 
+							locale: this.locale, 
+							name: "dateformats.json", 
+							sync: sync, 
+							loadParams: loadParams, 
+							callback: ilib.bind(this, function (formats) {
+								if (!formats) {
+									formats = ilib.data.dateformats;
+									var spec = this.locale.getSpec().replace(/-/g, '_');
+									ilib.DateFmt.cache[spec] = formats;
+								}
+								this._initTemplate(formats);
+								this._massageTemplate();
+								if (options && typeof(options.onLoad) === 'function') {
+									options.onLoad(this);
+								}
+							})
+						});
 					} else {
 						this._massageTemplate();
 						if (options && typeof(options.onLoad) === 'function') {

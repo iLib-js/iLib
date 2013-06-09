@@ -297,9 +297,8 @@ ilib.mergeLocData = function (prefix, locale) {
 };
 
 /**
- * Return an array of relative path names for the json
- * files that represent the data for the given locale. Only
- * language and region are top-level directories.<p>
+ * Return an array of relative path names for the
+ * files that represent the data for the given locale.<p>
  * 
  * Note that to prevent the situation where a directory for
  * a language exists next to the directory for a region where
@@ -314,65 +313,80 @@ ilib.mergeLocData = function (prefix, locale) {
  * directories cannot exist underneath "locale". The region
  * therefore will be loaded from "und/ES" instead.<p>  
  * 
- * Variations
+ * <h4>Variations</h4>
  * 
- * only language and region specified:
+ * With only language and region specified, the following
+ * sequence of paths will be generated:<p>
  * 
+ * <pre>
  * language
- * region
+ * und/region
  * language/region
+ * </pre>
  * 
- * only language and script specified:
+ * With only language and script specified:<p>
  * 
+ * <pre>
  * language
  * language/script
+ * </pre>
  * 
- * only script and region specified:
+ * With only script and region specified:<p>
  * 
- * region
+ * <pre>
+ * und/region  
+ * </pre>
  * 
- * only region and variant specified:
+ * With only region and variant specified:<p>
  * 
- * region
+ * <pre>
+ * und/region
  * region/variant
- *
- * only language, script, and region specified:
+ * </pre>
  * 
+ * With only language, script, and region specified:<p>
+ * 
+ * <pre>
  * language
- * region
+ * und/region
  * language/script
  * language/region
  * language/script/region
+ * </pre>
  * 
- * only language, region, and variant specified:
+ * With only language, region, and variant specified:<p>
  * 
+ * <pre>
  * language
- * region
+ * und/region
  * language/region
  * region/variant
  * language/region/variant
+ * </pre>
  * 
- * all parts specified:
+ * With all parts specified:<p>
  * 
+ * <pre>
  * language
- * region
+ * und/region
  * language/script
  * language/region
  * region/variant
  * language/script/region
  * language/region/variant
  * language/script/region/variant
+ * </pre>
  * 
- * @param {ilib.Locale} locale load the json files for this locale
- * @param {string?} basename the base name of each json file to load
+ * @param {ilib.Locale} locale load the files for this locale
+ * @param {string?} name the file name of each file to load without
+ * any path
  * @return {Array.<string>} An array of relative path names
- * for the json files that contain the locale data
+ * for the files that contain the locale data
  */
-ilib.getLocFiles = function(locale, basename) {
+ilib.getLocFiles = function(locale, name) {
 	var dir = "";
 	var files = [];
-	var filename = basename || "resources";
-	filename += ".json";
+	var filename = name || "resources.json";
 	var loc = locale || new ilib.Locale();
 	
 	var language = loc.getLanguage();
@@ -572,39 +586,92 @@ ilib._roundFnc = {
  * this function will call it to load the data. Otherwise, the callback will be called with
  * undefined as the data. This function will create a cache under the given class object.
  * If data was successfully loaded, it will be set into the cache so that future access to 
- * the same data for the same locale is much quicker. 
+ * the same data for the same locale is much quicker.<p>
  * 
- * @param {Object} object The class attempting to load data. The cache is stored inside of here.
- * @param {ilib.Locale} locale The locale to use to find or load the data.
- * @param {string} name The name of the locale data to load.
- * @param {boolean} sync Whether or not to load the data synchronouslyo
- * @param {Object} params An object with parameters to pass to the loader function
- * @param {function(?)=} callback Call back function to call when the data is available.
+ * The parameters can specify any of the following properties:
+ * 
+ * <ul>
+ * <li><i>name</i> - String. The name of the file being loaded.
+ * <li><i>object</i> - Object. The class attempting to load data. The cache is stored inside of here.
+ * <li><i>locale</i> - ilib.Locale. The name of the locale data to load. Default is the current locale.
+ * <li><i>type</i> - String. Type of file to load. This can be "json" or "other" type. Default: "json" 
+ * <li><i>loadParams</i> - Object. An object with parameters to pass to the loader function
+ * <li><i>sync</i> - boolean. Whether or not to load the data synchronously
+ * <li><i>callback</i> - function(?)=. callback Call back function to call when the data is available.
+ * Data is not returned from this method, so a callback function is mandatory.
+ * </ul>
+ * 
+ * @param {Object} params Parameters configuring how to load the files (see above)
  */
-ilib.loadData = function(object, locale, name, sync, params, callback) {
-	if (!object.cache) {
+ilib.loadData = function(params) {
+	var name = "resources.json",
+		object = undefined, 
+		locale = new ilib.Locale(ilib.getLocale()), 
+		sync = false, 
+		type = "json",
+		loadParams = {},
+		callback = undefined;
+	
+	if (!params || typeof(params.callback) !== 'function') {
+		return;
+	}
+
+	if (params.name) {
+		name = params.name;
+	}
+	if (params.object) {
+		object = params.object;
+	}
+	if (params.locale) {
+		locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
+	}			
+	if (params.type) {
+		type = params.type;
+	}
+	if (params.loadParams) {
+		loadParams = params.loadParams;
+	}
+	if (params.sync) {
+		sync = params.sync;
+	}
+	
+	callback = params.callback;
+	
+	if (object && !object.cache) {
 		object.cache = {};
 	}
 
 	var spec = locale.getSpec().replace(/-/g, '_');
-	if (typeof(object.cache[spec]) === 'undefined') {
-		var data = ilib.mergeLocData(name, locale);
+	if (!object || typeof(object.cache[spec]) === 'undefined') {
+		var basename = name.substring(0,name.lastIndexOf("."));
+		var data = ilib.mergeLocData(basename, locale);
 		if (data) {
-			object.cache[spec] = data;
+			if (object) {
+				object.cache[spec] = data;
+			}
 			callback(data);
 		} else if (typeof(ilib._load) === 'function') {
 			// the data is not preassembled, so attempt to load it dynamically
 			var files = ilib.getLocFiles(locale, name);
+			if (type !== "json") {
+				loadParams.returnOne = true;
+				loadParams.nonLocale = true;
+			}
 			
-			ilib._load(files, sync, params, ilib.bind(this, function(arr) {
-				data = {};
-				for (var i = 0; i < arr.length; i++) {
-					if (typeof(arr[i]) !== 'undefined') {
-						data = ilib.merge(data, arr[i]);
+			ilib._load(files, sync, loadParams, ilib.bind(this, function(arr) {
+				if (type === "json") {
+					data = {};
+					for (var i = 0; i < arr.length; i++) {
+						if (typeof(arr[i]) !== 'undefined') {
+							data = ilib.merge(data, arr[i]);
+						}
 					}
+					
+					callback(data);
+				} else {
+					// only returns the most locale-specific file in 0th element
+					callback(arr[0]);
 				}
-				
-				callback(data);
 			}));
 		} else {
 			// no data other than the generic shared data
@@ -613,9 +680,4 @@ ilib.loadData = function(object, locale, name, sync, params, callback) {
 	} else {
 		callback(object.cache[spec]);
 	}
-};
-
-
-ilib.loadJson = function(path, options) {
-	ilib.loadData({});
 };
