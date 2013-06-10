@@ -918,9 +918,9 @@ mergeAndPrune(resources_dateformat_data);
 function getDateFormats(language, script, region, data) {
 	// if it is already there and non-generated, return it
 	var dates = loadFileNonGenerated(language, script, region);
-	//util.print("language: " + language + "\n");
-	//util.print("script: " + script + "\n");
-	//util.print("region: " + region + "\n");
+	util.print("language: " + language + "\n");
+	util.print("script: " + script + "\n");
+	util.print("region: " + region + "\n");
 	if (dates) {
 		util.print("\nLoaded existing resources from " + calcLocalePath(language, script, region, "dateformats.json") + "\n");
 		dates.generated = false;
@@ -1367,14 +1367,14 @@ function getDateFormats(language, script, region, data) {
 	//end of y combination
 	if (available_formats["MEd"]) {
 		dmw["s"] = available_formats["MEd"];
-		dmw["m"] = "E" + dmw["s"];
+		dmw["m"] = available_formats["MEd"].replace(/E+/g, "EE");
 	} else if (available_formats["MEd"] === undefined) {
 		dmw["s"] = "E" + " " + dm["s"];
 		dmw["m"] = "EE" + " " + dm["m"];
 	}
 	//dmw["m"]="E"+dm["s"];
 	if (available_formats["MMMEd"]) {
-		dmw["l"] = "EE" + available_formats["MMMEd"];
+		dmw["l"] = available_formats["MMMEd"].replace(/E+/g, "EEEE");;
 		dmw["f"] = available_formats["MMMEd"].replace(/E+/g, "EEEE");
 	} else if (available_formats["MMMEd"] === undefined) {
 		dmw["l"] = "EEE" + " " + dm["l"];
@@ -1384,12 +1384,12 @@ function getDateFormats(language, script, region, data) {
 	//end of dmw
 	if (available_formats["yMEd"]) {
 		dmwy["s"] = available_formats["yMEd"];
-		dmwy["m"] = "E" + dmwy["s"];
+		dmwy["m"] = available_formats["yMEd"].replace(/E+/g,"EE");
 	} else if (available_formats["yMEd"] === undefined) {
 		dmw["s"] = "EE" + " " + dmy["s"];
 	}
 	if (available_formats["yMMMEd"]) {
-		dmwy["l"] = "EE" + available_formats["yMMMEd"];
+		dmwy["l"] = available_formats["yMMMEd"].replace(/E+/g,"EEE");
 		dmwy["f"] = available_formats["yMMMEd"].replace(/E+/g, "EEEE");
 	} else if (available_formats["yMMMEd"] === undefined) {
 		dmwy["l"] = "EEE" + " " + dmy["l"];
@@ -1429,7 +1429,7 @@ function getDateFormats(language, script, region, data) {
 		//time["ahmsz"] = available_formats["Hms"]  + " " + "z";
 		//time["ahms"] = available_formats["Hms"] ;
 		//} else {
-		time_24["ahmsz"] = available_formats["Hms"] + " " + "z";
+		time_24["ahmsz"] = "XXXXX" + available_formats["Hms"] + " " + "z";
 		time_24["ahms"] = available_formats["Hms"];
 		//}
 		time_24["hms"] = available_formats["Hms"];
@@ -1458,13 +1458,13 @@ function getDateFormats(language, script, region, data) {
 	//code for 12 hour clock setting
 	if (available_formats["hms"]) {
 		//available_formats["Hms"] = available_formats["Hms"].substring(available_formats["Hms"].indexOf("H"), 1 + available_formats["Hms"].lastIndexOf("s"));
-		time_12["ahmsz"] = available_formats["hms"] + " " + "z";
+		time_12["ahmsz"] = "XXXXX"+available_formats["hms"] + " " + "z";
 		time_12["ahms"] = available_formats["hms"];
 		time_12["hms"] = available_formats["hms"];
 		time_12["ms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("m"), 1 + available_formats["hms"].lastIndexOf("s"));
 	}
 	if (available_formats["hm"]) {
-		time_12["ahmz"] = available_formats["hm"] + " " + "z";
+		time_12["ahmz"] = "XXXXX"+available_formats["hm"] + " " + "z";
 		time_12["ahm"] = available_formats["hm"];
 		time_12["hm"] = available_formats["hm"];
 	}
@@ -1538,7 +1538,7 @@ function getDateFormats(language, script, region, data) {
 	var end_my = [];
 	//var sy=[];
 	for (var i = 0; i < array_interval_dmy.length; i++) {
-		//util.print("array_interval_dmy "+array_interval_dmy[i]+"\n");
+		util.print("array_interval_dmy "+array_interval_dmy[i]+"\n");
 		/*start_dmy[i]=array_interval_dmy[i].substring(0,array_interval_dmy[i].length/2);
 		end_dmy[i]=array_interval_dmy[i].substring(array_interval_dmy[i].length/2+1,array_interval_dmy[i].length);
 		start_dmy[i]=start_dmy[i].replace(/[^Mdy–.\/\s]/g,"");
@@ -1551,19 +1551,23 @@ function getDateFormats(language, script, region, data) {
 		end_dmy[i]=end_dmy[i].replace(/[y]+/g,"{sy}");
 		util.print("start date and time "+start_dmy[i]+"\n");
 		util.print("end date and time "+end_dmy[i]+"\n");*/
+		//var index_of_separator = array_interval_dmy[i].indexOf(intervalFormats["Hm"]["H"]);
+		//util.print("index of separator  "+index_of_separator+"\n");
+		array_interval_dmy[i] = array_interval_dmy[i].replace(intervalFormats["Hm"]["H"], "–");
+		util.print("array_interval_dmy "+array_interval_dmy[i]+"\n");
 		array_interval_dmy[i] = array_interval_dmy[i].replace(/[^Mdy–.\/\s]/g, "");
 		array_interval_dmy[i] = array_interval_dmy[i].replace(/[d]+/g, "{sd}");
 		array_interval_dmy[i] = array_interval_dmy[i].replace(/[M]+/g, "{sm}");
 		array_interval_dmy[i] = array_interval_dmy[i].replace(/[y]+/g, "{sy}");
-		var index_of_separator = array_interval_dmy[i].indexOf(intervalFormats["Hm"]["H"]);
+		index_of_separator = array_interval_dmy[i].indexOf("–");
 		start_dmy[i] = array_interval_dmy[i].substring(0, index_of_separator);
 		end_dmy[i] = array_interval_dmy[i].substring(1 + index_of_separator, array_interval_dmy[i].length);
 		end_dmy[i] = end_dmy[i].replace("{sd}", "{ed}");
 		end_dmy[i] = end_dmy[i].replace("{sm}", "{em}");
 		end_dmy[i] = end_dmy[i].replace("{sy}", "{ey}");
-		//util.print("array_interval_dmy "+array_interval_dmy[i]+"\n");
-		//util.print("start_interval_dmy "+start_dmy[i]+"\n");
-		//util.print("end_interval_dmy "+end_dmy[i]+"\n");
+		util.print("array_interval_dmy "+array_interval_dmy[i]+"\n");
+		util.print("start_interval_dmy "+start_dmy[i]+"\n");
+		util.print("end_interval_dmy "+end_dmy[i]+"\n");
 	}
 	var array_interval_my = [ym_m, ym_y, ymmm_m, ymmm_y, ymmmm_m, ymmmm_y];
 	for (var i = 0; i < array_interval_my.length; i++) {
@@ -1577,11 +1581,13 @@ function getDateFormats(language, script, region, data) {
 		//end_my[i]=end_my[i].replace(/[d]+/g,"{sd}");
 		end_my[i]=end_my[i].replace(/[M]+/g,"{sm}");
 		end_my[i]=end_my[i].replace(/[y]+/g,"{sy}");*/
+		//var index_of_separator = array_interval_my[i].indexOf(intervalFormats["Hm"]["H"]);
+		array_interval_my[i] = array_interval_my[i].replace(intervalFormats["Hm"]["H"], "–");
 		array_interval_my[i] = array_interval_my[i].replace(/[^Mdy–.\/\s]/g, "");
 		array_interval_my[i] = array_interval_my[i].replace(/[d]+/g, "{sd}");
 		array_interval_my[i] = array_interval_my[i].replace(/[M]+/g, "{sm}");
 		array_interval_my[i] = array_interval_my[i].replace(/[y]+/g, "{sy}");
-		var index_of_separator = array_interval_my[i].indexOf(intervalFormats["Hm"]["H"]);
+		index_of_separator = array_interval_my[i].indexOf("–");
 		start_my[i] = array_interval_my[i].substring(0, index_of_separator);
 		end_my[i] = array_interval_my[i].substring(1 + index_of_separator, array_interval_my[i].length);
 		end_my[i] = end_my[i].replace("{sd}", "{ed}");
