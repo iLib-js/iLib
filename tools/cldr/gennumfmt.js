@@ -428,8 +428,9 @@ for (var i = 0; i < files.length; i++) {
 	} else {
 		locale = file.split(/\./)[0].replace(/_/g, "-");
 		var l = new Locale(locale);
-
+		if(typeof(l.getVariant())==='undefined') {
 		getLocaleData(file, l.getLanguage(), l.getScript(), l.getRegion());
+		}
 	}
 }
 util.print("\n");
@@ -468,9 +469,9 @@ for (language in localeData) {
 util.print("\nMerging and pruning r...\n");
 //util.print("\nLoaded existing resources " + JSON.stringify(resources) + "\n");
 //writeNumberFormats(undefined, undefined, undefined, resources.data); 
-util.print("\ndata before merge and pruning\n"+JSON.stringify(resources)+"\n");
+//util.print("\ndata before merge and pruning\n"+JSON.stringify(resources)+"\n");
 mergeAndPrune(resources);
-util.print("\ndata after merge and pruning\n"+JSON.stringify(resources)+"\n");
+//util.print("\ndata after merge and pruning\n"+JSON.stringify(resources)+"\n");
 //writeNumberFormats(undefined, undefined, undefined, resources.data);
 
 for (language in resources) {
