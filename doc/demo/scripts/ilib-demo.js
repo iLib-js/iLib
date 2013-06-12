@@ -630,7 +630,7 @@ ilib.Locale.prototype = {
  * @private
  */
 ilib.Locale.locales = [
-	"af-ZA","da-DK","de-AT","de-CH","de-DE","en-AU","en-CA","en-GB","en-IE","en-IN","en-NG","en-NZ","en-PH","en-PK","en-US","en-ZA","es-AR","es-ES","es-MX","fr-BE","fr-CA","fr-CH","fr-FR","he-IL","id-ID","it-CH","it-IT","ja-JP","ko-KR","nl-BE","nl-NL","no-NO","pt-BR","pt-PT","ru-RU","sv-SE","tr-TR","vi-VN","zxx-XX-Hans","zxx-XX-Cyrl","zxx-XX-Hebr","zh-CN","zh-TW","zh-HK","zh-SG","zh-MO"
+	"af-ZA","da-DK","de-AT","de-CH","de-DE","en-AU","en-CA","en-GB","en-IE","en-IN","en-NG","en-NZ","en-PH","en-PK","en-US","en-ZA","es-AR","es-ES","es-MX","fr-BE","fr-CA","fr-CH","fr-FR","he-IL","id-ID","it-CH","it-IT","ja-JP","ko-KR","nl-BE","nl-NL","no-NO","pt-BR","pt-PT","ru-RU","sv-SE","tr-TR","vi-VN","zxx-XX","zxx-Hans-XX","zxx-Cyrl-XX","zxx-Hebr-XX","zh-CN","zh-TW","zh-HK","zh-SG","zh-MO"
 ];
 
 /**
@@ -6271,6 +6271,10 @@ ilib.data.localeinfo_zxx = {
 	},
 	"scripts": ["Latn"],
 	"locale": "zxx"
+}
+;
+ilib.data.localeinfo_zxx_XX = {
+	"locale": "zxx-XX"
 }
 ;
 ilib.data.localeinfo_XX = {

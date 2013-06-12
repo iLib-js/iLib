@@ -203,7 +203,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="ilib-demo.js" 
 			srcfilename="ilib-ut-inc.js" 
-			locales="af-ZA,da-DK,de-AT,de-CH,de-DE,en-AU,en-CA,en-GB,en-IE,en-IN,en-NG,en-NZ,en-PH,en-PK,en-US,en-ZA,es-AR,es-ES,es-MX,fr-BE,fr-CA,fr-CH,fr-FR,he-IL,id-ID,it-CH,it-IT,ja-JP,ko-KR,nl-BE,nl-NL,no-NO,pt-BR,pt-PT,ru-RU,sv-SE,tr-TR,vi-VN,zxx-Hans-XX,zxx-Cyrl-XX,zxx-Hebr-XX,zh-CN,zh-TW,zh-HK,zh-SG,zh-MO"/>
+			locales="af-ZA,da-DK,de-AT,de-CH,de-DE,en-AU,en-CA,en-GB,en-IE,en-IN,en-NG,en-NZ,en-PH,en-PK,en-US,en-ZA,es-AR,es-ES,es-MX,fr-BE,fr-CA,fr-CH,fr-FR,he-IL,id-ID,it-CH,it-IT,ja-JP,ko-KR,nl-BE,nl-NL,no-NO,pt-BR,pt-PT,ru-RU,sv-SE,tr-TR,vi-VN,zxx-XX,zxx-Hans-XX,zxx-Cyrl-XX,zxx-Hebr-XX,zh-CN,zh-TW,zh-HK,zh-SG,zh-MO"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"

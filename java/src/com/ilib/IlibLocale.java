@@ -118,18 +118,18 @@ public class IlibLocale
     		ret.append(language);
     	}
     	
-    	if ( region != null && region.length() > 0 ) {
-    		if ( ret.length() > 0 ) {
-    			ret.append("-");
-    		}
-    		ret.append(region);
-    	}
-
     	if ( script != null && script.length() > 0 ) {
     		if ( ret.length() > 0 ) {
     			ret.append("-");
     		}
     		ret.append(script);
+    	}
+
+    	if ( region != null && region.length() > 0 ) {
+    		if ( ret.length() > 0 ) {
+    			ret.append("-");
+    		}
+    		ret.append(region);
     	}
 
     	if ( variant != null && variant.length() > 0 ) {
