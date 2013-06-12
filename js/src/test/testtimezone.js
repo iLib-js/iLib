@@ -917,7 +917,7 @@ function testTZGetTimeZoneForLocale() {
 }
 
 function testTZGetTimeZoneForLocaleUnknown() {
-    var tz = new ilib.TimeZone({locale: "mm-MM"});
+    var tz = new ilib.TimeZone({locale: "mm-ZZ"});
     assertNotNull(tz);
     
     assertEquals("Etc/UTC", tz.getId());
@@ -959,7 +959,8 @@ function mockLoader (paths, sync, params, callback) {
 function testTZGetTimeZoneForLocaleUnknownWithLoader() {
 	ilib.setLoaderCallback(mockLoader);
 	ilib.LocaleInfo.cache = {}; // clear the locale info cache
-    var tz = new ilib.TimeZone({locale: "mm-MM"});
+	ilib.TimeZone.cache = {}; // clear the cache
+    var tz = new ilib.TimeZone({locale: "mm-ZZ"});
     assertNotNull(tz);
     ilib.setLoaderCallback(undefined);
     assertEquals("Asia/Tokyo", tz.getId());
@@ -968,8 +969,9 @@ function testTZGetTimeZoneForLocaleUnknownWithLoader() {
 function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
 	ilib.setLoaderCallback(mockLoader);
 	ilib.LocaleInfo.cache = {}; // clear the locale info cache
+	ilib.TimeZone.cache = {}; // clear the cache
     new ilib.TimeZone({
-    	locale: "mm-MM",
+    	locale: "mm-ZZ",
     	sync: false,
     	onLoad: function (tz) {
     		assertNotNull(tz);
