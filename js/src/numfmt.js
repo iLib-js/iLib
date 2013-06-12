@@ -170,6 +170,7 @@ ilib.NumFmt = function (options) {
 					throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
 				}
 				
+				
 				new ilib.Currency({
 					locale: this.locale,
 					code: this.currency,
@@ -179,15 +180,29 @@ ilib.NumFmt = function (options) {
 						if (this.style !== "common" && this.style !== "iso") {
 							this.style = "common";
 						}
+				
 						
 						if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
 							this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
 						}
 						
-						templates = this.localeInfo.getCurrencyFormats();
-						this.template = new ilib.String(templates[this.style]);
+						templates = this.localeInfo.getCurrencyFormat();
+						if(this.style ===  "iso"){
+							templates=this.localeInfo.getCurrencyFormats();
+							this.template = new ilib.String(templates[this.style]);
+							this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
+						}
+						else if(typeof(templates) === 'undefined'){
+							
+							templates=this.localeInfo.getCurrencyFormats();
+							this.template = new ilib.String(templates[this.style]);
+							this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
+						}
+						else{
+					
+						this.template = new ilib.String(templates);
 						this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
-						
+					}	
 						if (!this.roundingMode) {
 							this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
 						}
@@ -201,8 +216,11 @@ ilib.NumFmt = function (options) {
 				});
 				return;
 			} else if (this.type === "percentage") {
+			
 				this.template = new ilib.String(this.localeInfo.getPercentageFormat());
+					
 			}
+
 
 			this._init();
 			
