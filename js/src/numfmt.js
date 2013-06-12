@@ -170,6 +170,7 @@ ilib.NumFmt = function (options) {
 					throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
 				}
 				
+				
 				new ilib.Currency({
 					locale: this.locale,
 					code: this.currency,
@@ -179,15 +180,29 @@ ilib.NumFmt = function (options) {
 						if (this.style !== "common" && this.style !== "iso") {
 							this.style = "common";
 						}
+				
 						
 						if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
 							this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
 						}
 						
-						templates = this.localeInfo.getCurrencyFormats();
-						this.template = new ilib.String(templates[this.style]);
+						templates = this.localeInfo.getCurrencyFormat();
+						if(this.style ===  "iso"){
+							templates=this.localeInfo.getCurrencyFormats();
+							this.template = new ilib.String(templates[this.style]);
+							this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
+						}
+						else if(typeof(templates) === 'undefined'){
+							
+							templates=this.localeInfo.getCurrencyFormats();
+							this.template = new ilib.String(templates[this.style]);
+							this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
+						}
+						else{
+					
+						this.template = new ilib.String(templates);
 						this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
-						
+					}	
 						if (!this.roundingMode) {
 							this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
 						}
@@ -201,8 +216,11 @@ ilib.NumFmt = function (options) {
 				});
 				return;
 			} else if (this.type === "percentage") {
+			
 				this.template = new ilib.String(this.localeInfo.getPercentageFormat());
+					
 			}
+
 
 			this._init();
 			
@@ -326,7 +344,7 @@ ilib.NumFmt.prototype = {
 	 */ 
 	_formatStandard: function (num) {
 		var i;
-		
+		var j,k;
 		// console.log("_formatNumberStandard: formatting number " + num);
 		if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
 			var factor = Math.pow(10, this.maxFractionDigits);
@@ -342,23 +360,47 @@ ilib.NumFmt.prototype = {
 			integral = parts[0],
 			fraction = parts[1],
 			cycle,
-			groupSize = this.localeInfo.getGroupingDigits(),
+			prigroupSize = this.localeInfo.getPrimaryGroupingDigits(),
+			secgroupSize = this.localeInfo.getSecondaryGroupingDigits(),
+			separator = this.localeInfo.getGroupingSeparator(),
 			formatted;
-		
+			
+		integral = Math.abs(integral);
+		integral = integral.toString();
 		
 		if (this.minFractionDigits > 0) {
 			fraction = this._pad(fraction || "", this.minFractionDigits, false);
 		}
+		
+		if (secgroupSize > 0) {
+			if (integral.length > prigroupSize) {
+				var size1 = prigroupSize;
+				var size2 = integral.length;
+		       	var size3 = size2 - size1;
+				integral = integral.slice(0, size3) + separator + integral.slice(size3);
+				var num_sec = integral.substring(0,integral.indexOf(separator));
+				k = num_sec.length;
+				while (k > secgroupSize) {
+			    	var secsize1 = secgroupSize;
+				   	var secsize2 = num_sec.length;
+					var secsize3 = secsize2 - secsize1;
+					integral = integral.slice(0, secsize3) + separator + integral.slice(secsize3);
+					num_sec = integral.substring(0,integral.indexOf(separator));
+					k = num_sec.length;			
+				}
+			}
 
-		if (groupSize > 0) {
-			cycle = ilib.mod(integral.length-1, groupSize);
+			formatted = negative ? "-" : "";
+			formatted = formatted + integral;
+		} else if (prigroupSize !== 0) {
+			cycle = ilib.mod(integral.length-1, prigroupSize);
 			formatted = negative ? "-" : "";
 			for (i = 0; i < integral.length-1; i++) {
 				formatted += integral.charAt(i);
 				if (cycle === 0) {
-					formatted += this.localeInfo.getGroupingSeparator();
+					formatted += separator;
 				}
-				cycle = ilib.mod(cycle - 1, groupSize);
+				cycle = ilib.mod(cycle - 1, prigroupSize);
 			}
 			formatted += integral.charAt(integral.length-1);
 		} else {
@@ -376,7 +418,7 @@ ilib.NumFmt.prototype = {
 	
 	/**
 	 * Format a number according to the settings of this number formatter instance.
-	 * @param {number|string|Number|ilib.Number} num a floating point number to format
+	 * @param num {number|string|Number|ilib.Number} a floating point number to format
 	 * @return {string} a string containing the formatted number
 	 */
 	format: function (num) {
@@ -388,8 +430,9 @@ ilib.NumFmt.prototype = {
 		
 		// convert to a real primitive number type
 		n = this._toPrimitive(num);
-		
+				
 		if (this.type === "number") {
+	
 			formatted = (this.style === "scientific") ? 
 					this._formatScientific(n) : 
 					this._formatStandard(n);
