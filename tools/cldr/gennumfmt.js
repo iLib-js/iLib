@@ -159,6 +159,7 @@ function calcLocalePath(language, script, region, filename) {
 function loadFileNonGenerated(language, script, region) {
 	var path = calcLocalePath(language, script, region, "numfmt.jf");
 	var obj = loadFile_jf(path);
+	//var obj = loadFile(path);
 	if (typeof (obj) !== 'undefined' && (typeof (obj.generated) === 'undefined' || obj.generated === false)) {
 		// only return non-generated files 
 		return obj;
@@ -235,7 +236,7 @@ function writeNumberFormats(language, script, region, data) {
 			var empty_data = data["numfmt"];
 
 			if ((Object.keys(empty_data).length === 0)) {
-				util.print("no need to create the file " + "\n");
+				//util.print("no need to create the file " + "\n");
 				return;
 			}
 
@@ -244,7 +245,7 @@ function writeNumberFormats(language, script, region, data) {
 			var numfmt = {};
 			
 			var arr_data = ["decimalChar", "groupChar", "pctChar", "prigroupSize", "pctFmt", "curFmt", "secgroupSize", "negativenumFmt", "negativepctFmt", "negativecurFmt", "roundingMode"];
-			var arr_keys = [empty_data["decimalChar"], empty_data["groupChar"] , empty_data["pctChar"], empty_data["prigroupSize"], empty_data["pctFmt"], empty_data["curFmt"], empty_data["secondarygroupSize"], empty_data["negativenumFmt"], empty_data["negativepctFmt"], empty_data["negativecurFmt"], empty_data["roundingMode"]];
+			var arr_keys = [empty_data["decimalChar"], empty_data["groupChar"] , empty_data["pctChar"], empty_data["prigroupSize"], empty_data["pctFmt"], empty_data["curFmt"], empty_data["secgroupSize"], empty_data["negativenumFmt"], empty_data["negativepctFmt"], empty_data["negativecurFmt"], empty_data["roundingMode"]];
 
 			for (var i = 0; i < arr_data.length; i++) {
 				if (typeof (arr_keys[i]) != undefined) {
@@ -252,8 +253,9 @@ function writeNumberFormats(language, script, region, data) {
 				}
 			}
 
-			//util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(numfmt)+"\n"); 
+			//util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(numfmt)+"\n"); */
 			fs.writeFileSync(path + "/numfmt.jf", '\"numfmt\" :' + JSON.stringify(numfmt) + ',\n', "utf-8");
+			//fs.writeFileSync(path + "/numfmt.jf",JSON.stringify(data), "utf-8");
 		} else {
 			util.print("Skipping empty " + path + "\n");
 		}
@@ -281,8 +283,8 @@ function getNumberFormats(language, script, region, data) {
 
 	var def_num_system = symbols.defaultNumberingSystem;
 
-	util.print("the language is  " + JSON.stringify(language) + "\n");
-	util.print("the default numbering system is " + JSON.stringify(def_num_system) + "\n");
+	//util.print("the language is  " + JSON.stringify(language) + "\n");
+	//util.print("the default numbering system is " + JSON.stringify(def_num_system) + "\n");
 
 	var symbol = "symbols-numberSystem-";
 
@@ -297,7 +299,7 @@ function getNumberFormats(language, script, region, data) {
 	percentage_number_system = percentage.concat(def_num_system);
 	currency_number_system = currency.concat(def_num_system);
 
-	util.print("the symbol numbering system " + symbol_number_system + "\n");
+	//util.print("the symbol numbering system " + symbol_number_system + "\n");
 
 	var symbol_format = data.numbers[symbol_number_system];
 	var decimal_format = data.numbers[decimal_number_system]["standard"]["decimalFormat"]["pattern"];
@@ -428,9 +430,8 @@ for (var i = 0; i < files.length; i++) {
 	} else {
 		locale = file.split(/\./)[0].replace(/_/g, "-");
 		var l = new Locale(locale);
-		if(typeof(l.getVariant())==='undefined') {
+		if(typeof(l.getVariant())!=undefined)
 		getLocaleData(file, l.getLanguage(), l.getScript(), l.getRegion());
-		}
 	}
 }
 util.print("\n");
@@ -497,3 +498,4 @@ for (language in resources) {
 
 writeNumberFormats(undefined, undefined, undefined, resources.data); 
 process.exit(0);
+
