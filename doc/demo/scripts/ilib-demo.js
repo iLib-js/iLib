@@ -469,6 +469,18 @@ ilib.Locale._notUpper = function(str) {
 
 /**
  * @private
+ * Tell whether or not the str does not start with a digit char.
+ * @param {string} str the char to check
+ * @return {boolean} true if the char is a not an upper case ASCII char
+ */
+ilib.Locale._notDigit = function(str) {
+	// do this with ASCII only so we don't have to depend on the CType functions
+	var ch = str.charCodeAt(0);
+	return ch < 48 || ch > 57;
+};
+
+/**
+ * @private
  * Tell whether or not the given string has the correct syntax to be 
  * an ISO 639 language code.
  * 
@@ -492,19 +504,27 @@ ilib.Locale._isLanguageCode = function(str) {
 /**
  * @private
  * Tell whether or not the given string has the correct syntax to be 
- * an ISO 639 language code.
+ * an ISO 3166 2-letter region code or M.49 3-digit region code.
  * 
  * @param {string} str the string to parse
  * @return {boolean} true if the string could syntactically be a language code.
  */
 ilib.Locale._isRegionCode = function (str) {
-	if (typeof(str) === 'undefined' || str.length !== 2) {
+	if (typeof(str) === 'undefined' || str.length < 2 || str.length > 3) {
 		return false;
 	}
 	
-	for (var i = 0; i < str.length; i++) {
-		if (ilib.Locale._notUpper(str.charAt(i))) {
-			return false;
+	if (str.length === 2) {
+		for (var i = 0; i < str.length; i++) {
+			if (ilib.Locale._notUpper(str.charAt(i))) {
+				return false;
+			}
+		}
+	} else {
+		for (var i = 0; i < str.length; i++) {
+			if (ilib.Locale._notDigit(str.charAt(i))) {
+				return false;
+			}
 		}
 	}
 	
@@ -601,7 +621,7 @@ ilib.Locale.prototype = {
 	 * @return {boolean} true if the current locale is the special pseudo locale
 	 */
 	isPseudo: function () {
-		return (this.language === 'xx' && this.region === 'XX');
+		return (this.language === 'zxx' && this.region === 'XX');
 	}
 };
 
@@ -610,7 +630,7 @@ ilib.Locale.prototype = {
  * @private
  */
 ilib.Locale.locales = [
-	"af-ZA","da-DK","de-AT","de-CH","de-DE","en-AU","en-CA","en-GB","en-IE","en-IN","en-NG","en-NZ","en-PH","en-PK","en-US","en-ZA","es-AR","es-ES","es-MX","fr-BE","fr-CA","fr-CH","fr-FR","id-ID","it-CH","it-IT","ja-JP","ko-KR","nl-BE","nl-NL","no-NO","pt-BR","pt-PT","ru-RU","sv-SE","tr-TR","vi-VN","xx-XX","zh-CN","zh-TW","zh-HK","zh-SG","zh-MO"
+	"af-ZA","da-DK","de-AT","de-CH","de-DE","en-AU","en-CA","en-GB","en-IE","en-IN","en-NG","en-NZ","en-PH","en-PK","en-US","en-ZA","es-AR","es-ES","es-MX","fr-BE","fr-CA","fr-CH","fr-FR","he-IL","id-ID","it-CH","it-IT","ja-JP","ko-KR","nl-BE","nl-NL","no-NO","pt-BR","pt-PT","ru-RU","sv-SE","tr-TR","vi-VN","zxx-XX-Hans","zxx-XX-Cyrl","zxx-XX-Hebr","zh-CN","zh-TW","zh-HK","zh-SG","zh-MO"
 ];
 
 /**
@@ -1071,7 +1091,20 @@ ilib.mergeLocData = function (prefix, locale) {
 /**
  * Return an array of relative path names for the json
  * files that represent the data for the given locale. Only
- * language and region are top-level directories.
+ * language and region are top-level directories.<p>
+ * 
+ * Note that to prevent the situation where a directory for
+ * a language exists next to the directory for a region where
+ * the language code and region code differ only by case, the 
+ * plain region directories are located under the special 
+ * "undefined" language directory which has the ISO code "und".
+ * The reason is that some platforms have case-insensitive 
+ * file systems, and you cannot have 2 directories with the 
+ * same name which only differ by case. For example, "es" is
+ * the ISO 639 code for the language "Spanish" and "ES" is
+ * the ISO 3166 code for the region "Spain", so both the
+ * directories cannot exist underneath "locale". The region
+ * therefore will be loaded from "und/ES" instead.<p>  
  * 
  * Variations
  * 
@@ -1147,7 +1180,7 @@ ilib.getLocFiles = function(locale, basename) {
 	}
 	
 	if (region) {
-		dir = region + "/";
+		dir = "und/" + region + "/";
 		files.push(dir + filename);
 	}
 	
@@ -1163,7 +1196,7 @@ ilib.getLocFiles = function(locale, basename) {
 	}
 	
 	if (region && variant) {
-		dir = region + "/" + variant + "/";
+		dir = "und/" + region + "/" + variant + "/";
 		files.push(dir + filename);
 	}
 
@@ -1181,38 +1214,6 @@ ilib.getLocFiles = function(locale, basename) {
 		dir = language + "/" + script + "/" + region + "/" + variant + "/";
 		files.push(dir + filename);
 	}
-	
-	/*
-	dir += loc.getLanguage() + "/";
-	files.push(dir + filename + ".json");
-	if (loc.getVariant()) {
-		var dir2 = dir;
-		dir2 += loc.getVariant() + "/";
-		files.push(dir2 + filename + ".json");
-	}
-	if (loc.getRegion()) {
-		var dir2 = dir;
-		dir2 += loc.getRegion() + "/";
-		files.push(dir2 + filename + ".json");
-		if (loc.getVariant()) {
-			dir2 += loc.getVariant() + "/";
-			files.push(dir2 + filename + ".json");
-		}
-	}
-	if (loc.getScript()) {
-		var dir2 = dir;
-		dir2 += loc.getScript() + "/";
-		files.push(dir2 + filename + ".json");
-		if (loc.getRegion()) {
-			dir2 += loc.getRegion() + "/";
-			files.push(dir2 + filename + ".json");
-			if (loc.getVariant()) {
-				dir2 += loc.getVariant() + "/";
-				files.push(dir2 + filename + ".json");
-			}
-		}
-	}
-	*/
 	
 	return files;
 };
@@ -5467,13 +5468,12 @@ ilib.data.localeinfo = {
 	},
 	"units": "metric",
 	"calendar": "gregorian",
-	"firstDayOfWeek": 0,
 	"currency": "USD",
 	"timezone": "Etc/UTC",
 	"numfmt": {
 		"decimalChar": ",",
 		"groupChar": ".",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "{n}%",
 		"pctChar": "%",
 		"roundingMode": "halfdown"
@@ -5483,6 +5483,7 @@ ilib.data.localeinfo = {
 ;
 ilib.data.localeinfo_af = {
 	"language.name": "Afrikaans",
+"numfmt" :{"groupChar":" ","curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
 	"scripts": ["Latn"],
 	"locale": "af"
 }
@@ -5496,7 +5497,7 @@ ilib.data.localeinfo_ZA = {
 	"currency": "ZAR",
 	"region.name": "South Africa",
 	"timezone": "Africa/Johannesburg",
-	"locale": ".-ZA"
+	"locale": "und-ZA"
 }
 ;
 ilib.data.localeinfo_da = {
@@ -5505,7 +5506,7 @@ ilib.data.localeinfo_da = {
 	"numfmt": {
 		"decimalChar": ",",
 		"groupChar": ".",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "{n}%"
 	},
 	"scripts": ["Latn"],
@@ -5513,6 +5514,7 @@ ilib.data.localeinfo_da = {
 }
 ;
 ilib.data.localeinfo_da_DK = {
+"numfmt" :{"pctFmt":"{n} %","curFmt":"{n} {s}","secgroupSize":0},
 	"locale": "da-DK"
 }
 ;
@@ -5524,7 +5526,7 @@ ilib.data.localeinfo_DK = {
 	},
 	"region.name": "Denmark",
 	"timezone": "Europe/Copenhagen",
-	"locale": ".-DK"
+	"locale": "und-DK"
 }
 ;
 ilib.data.localeinfo_de = {
@@ -5542,6 +5544,7 @@ ilib.data.localeinfo_de = {
 }
 ;
 ilib.data.localeinfo_de_AT = {
+"numfmt" :{"pctFmt":"{n} %","curFmt":"{s} {n}","secgroupSize":0},
 	"locale": "de-AT"
 }
 ;
@@ -5549,14 +5552,14 @@ ilib.data.localeinfo_AT = {
 	"currency": "EUR",
 	"region.name": "Austria",
 	"timezone": "Europe/Vienna",
-	"locale": ".-AT"
+	"locale": "und-AT"
 }
 ;
 ilib.data.localeinfo_de_CH = {
 	"numfmt": {
 		"decimalChar": ".",
 		"groupChar": "'",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "{n}%",
 		"pctChar": "%"
 	},
@@ -5567,10 +5570,11 @@ ilib.data.localeinfo_CH = {
 	"currency": "CHF",
 	"region.name": "Switzerland",
 	"timezone": "Europe/Zurich",
-	"locale": ".-CH"
+	"locale": "und-CH"
 }
 ;
 ilib.data.localeinfo_de_DE = {
+"numfmt" :{"pctFmt":"{n} %","curFmt":"{n} {s}","secgroupSize":0},
 	"locale": "de-DE"
 }
 ;
@@ -5578,7 +5582,7 @@ ilib.data.localeinfo_DE = {
 	"currency": "EUR",
 	"region.name": "Germany",
 	"timezone": "Europe/Berlin",
-	"locale": ".-DE"
+	"locale": "und-DE"
 }
 ;
 ilib.data.localeinfo_en = {
@@ -5590,7 +5594,7 @@ ilib.data.localeinfo_en = {
 	"numfmt": {
 		"decimalChar": ".",
 		"groupChar": ",",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "{n}%"
 	},
 	"scripts": ["Latn","Dsrt","Shaw"],
@@ -5598,6 +5602,7 @@ ilib.data.localeinfo_en = {
 }
 ;
 ilib.data.localeinfo_en_AU = {
+"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
 	"locale": "en-AU"
 }
 ;
@@ -5605,10 +5610,11 @@ ilib.data.localeinfo_AU = {
 	"clock": "12",	"currency": "AUD",
 	"region.name": "Australia",
 	"timezone": "Australia/Sydney",
-	"locale": ".-AU"
+	"locale": "und-AU"
 }
 ;
 ilib.data.localeinfo_en_CA = {
+"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
 	"locale": "en-CA"
 }
 ;
@@ -5621,10 +5627,11 @@ ilib.data.localeinfo_CA = {
 	},
 	"region.name": "Canada",
 	"timezone": "America/Toronto",
-	"locale": ".-CA"
+	"locale": "und-CA"
 }
 ;
 ilib.data.localeinfo_en_GB = {
+"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
 	"locale": "en-GB"
 }
 ;
@@ -5637,10 +5644,11 @@ ilib.data.localeinfo_GB = {
 	"region.name": "United Kingdom",
 	"timezone": "Europe/London",
 	"units": "imperial",
-	"locale": ".-GB"
+	"locale": "und-GB"
 }
 ;
 ilib.data.localeinfo_en_IE = {
+"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
 	"locale": "en-IE"
 }
 ;
@@ -5648,10 +5656,11 @@ ilib.data.localeinfo_IE = {
 	"currency": "EUR",
 	"region.name": "Ireland",
 	"timezone": "Europe/Dublin",
-	"locale": ".-IE"
+	"locale": "und-IE"
 }
 ;
 ilib.data.localeinfo_en_IN = {
+"numfmt" :{"curFmt":"{s} {n}","secgroupSize":2},
 	"locale": "en-IN"
 }
 ;
@@ -5659,10 +5668,11 @@ ilib.data.localeinfo_IN = {
 	"currency": "INR",
 	"region.name": "India",
 	"timezone": "Asia/Kolkata",
-	"locale": ".-IN"
+	"locale": "und-IN"
 }
 ;
 ilib.data.localeinfo_en_NG = {
+"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
 	"locale": "en-NG"
 }
 ;
@@ -5670,10 +5680,11 @@ ilib.data.localeinfo_NG = {
 	"currency": "NGN",
 	"region.name": "Nigeria",
 	"timezone": "Africa/Lagos",
-	"locale": ".-NG"
+	"locale": "und-NG"
 }
 ;
 ilib.data.localeinfo_en_NZ = {
+"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
 	"locale": "en-NZ"
 }
 ;
@@ -5681,10 +5692,11 @@ ilib.data.localeinfo_NZ = {
 	"clock": "12",	"currency": "NZD",
 	"region.name": "New Zealand",
 	"timezone": "Pacific/Auckland",
-	"locale": ".-NZ"
+	"locale": "und-NZ"
 }
 ;
 ilib.data.localeinfo_en_PH = {
+"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
 	"locale": "en-PH"
 }
 ;
@@ -5692,10 +5704,11 @@ ilib.data.localeinfo_PH = {
 	"clock": "12",	"currency": "PHP",
 	"region.name": "Philippines",
 	"timezone": "Asia/Manila",
-	"locale": ".-PH"
+	"locale": "und-PH"
 }
 ;
 ilib.data.localeinfo_en_PK = {
+"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
 	"locale": "en-PK"
 }
 ;
@@ -5703,10 +5716,11 @@ ilib.data.localeinfo_PK = {
 	"currency": "PKR",
 	"region.name": "Pakistan",
 	"timezone": "Asia/Karachi",
-	"locale": ".-PK"
+	"locale": "und-PK"
 }
 ;
 ilib.data.localeinfo_en_US = {
+"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
 	"locale": "en-US"
 }
 ;
@@ -5721,10 +5735,11 @@ ilib.data.localeinfo_US = {
 	"region.name": "United States",
 	"timezone": "America/New_York",
 	"units": "uscustomary",
-	"locale": ".-US"
+	"locale": "und-US"
 }
 ;
 ilib.data.localeinfo_en_ZA = {
+"numfmt" :{"decimalChar":",","groupChar":" ","curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
 	"locale": "en-ZA"
 }
 ;
@@ -5742,7 +5757,7 @@ ilib.data.localeinfo_es = {
 "numfmt": {
 	"decimalChar": ",",
 	"groupChar": ".",
-	"groupSize": 3,
+	"prigroupSize": 3,
 	"pctFmt": "{n}%",
 	"pctChar": "%"
 },
@@ -5752,6 +5767,7 @@ ilib.data.localeinfo_es = {
 }
 ;
 ilib.data.localeinfo_es_AR = {
+"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
 	"locale": "es-AR"
 }
 ;
@@ -5759,10 +5775,11 @@ ilib.data.localeinfo_AR = {
 	"currency": "ARS",
 	"region.name": "Argentina",
 	"timezone": "America/Argentina/Buenos_Aires",
-	"locale": ".-AR"
+	"locale": "und-AR"
 }
 ;
 ilib.data.localeinfo_es_ES = {
+"numfmt" :{"curFmt":"{n} {s}","secgroupSize":0},
 	"locale": "es-ES"
 }
 ;
@@ -5770,10 +5787,11 @@ ilib.data.localeinfo_ES = {
 	"currency": "EUR",
 	"region.name": "Spain",
 	"timezone": "Europe/Madrid",
-	"locale": ".-ES"
+	"locale": "und-ES"
 }
 ;
 ilib.data.localeinfo_es_MX = {
+"numfmt" :{"decimalChar":".","groupChar":",","curFmt":"{s}{n}","secgroupSize":0},
 	"locale": "es-MX"
 }
 ;
@@ -5782,7 +5800,7 @@ ilib.data.localeinfo_MX = {
 	"currency": "MXN",
 	"region.name": "Mexico",
 	"timezone": "America/Mexico_City",
-	"locale": ".-MX"
+	"locale": "und-MX"
 }
 ;
 ilib.data.localeinfo_fr = {
@@ -5802,7 +5820,7 @@ ilib.data.localeinfo_fr = {
 	"numfmt": {
 		"decimalChar": ",",
 		"groupChar": " ",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "{n}%"
 	},
 	"scripts": ["Latn"],
@@ -5813,7 +5831,7 @@ ilib.data.localeinfo_fr_BE = {
 	"numfmt": {
 		"decimalChar": ",",
 		"groupChar": ".",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "{n}%",
 		"pctChar": "%"
 	},
@@ -5824,7 +5842,7 @@ ilib.data.localeinfo_BE = {
 	"currency": "EUR",
 	"region.name": "Belgium",
 	"timezone": "Europe/Brussels",
-	"locale": ".-BE"
+	"locale": "und-BE"
 }
 ;
 ilib.data.localeinfo_fr_CA = {
@@ -5832,6 +5850,7 @@ ilib.data.localeinfo_fr_CA = {
 		"regular": "8x11",
 		"photo": "3x5"
 	},
+"numfmt" :{"groupChar":" ","pctFmt":"{n} %","curFmt":"{n} {s}","secgroupSize":0,"negativecurFmt":"({n} {s})"},
 	"locale": "fr-CA"
 }
 ;
@@ -5839,7 +5858,7 @@ ilib.data.localeinfo_fr_CH = {
 	"numfmt": {
 		"decimalChar": ".",
 		"groupChar": "'",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "{n}%",
 		"pctChar": "%"
 	},
@@ -5847,6 +5866,7 @@ ilib.data.localeinfo_fr_CH = {
 }
 ;
 ilib.data.localeinfo_fr_FR = {
+"numfmt" :{"groupChar":" ","pctFmt":"{n} %","curFmt":"{n} {s}","secgroupSize":0,"negativecurFmt":"({n} {s})"},
 	"locale": "fr-FR"
 }
 ;
@@ -5854,7 +5874,34 @@ ilib.data.localeinfo_FR = {
 	"currency": "EUR",
 	"region.name": "France",
 	"timezone": "Europe/Paris",
-	"locale": ".-FR"
+	"locale": "und-FR"
+}
+;
+ilib.data.localeinfo_he = {
+	"language.name": "Hebrew",
+	"numfmt": {
+		"decimalChar": ".",
+		"groupChar": ",",
+		"prigroupSize": 3,
+		"pctFmt": "{n}%",
+		"pctChar": "%"
+	},
+	"scripts": ["Hebr"],
+	"locale": "he"
+}
+;
+ilib.data.localeinfo_he_IL = {
+	"calendar": "hebrew",
+	"firstDayOfWeek": 6,
+"numfmt" :{"curFmt":"{n} {s}","secgroupSize":0},
+	"locale": "he-IL"
+}
+;
+ilib.data.localeinfo_IL = {
+	"currency": "ILS",
+	"region.name": "Israel",
+	"timezone": "Asia/Jerusalem",
+	"locale": "und-IL"
 }
 ;
 ilib.data.localeinfo_id = {
@@ -5862,7 +5909,7 @@ ilib.data.localeinfo_id = {
 "numfmt": {
 	"decimalChar": ",",
 	"groupChar": ".",
-	"groupSize": 3,
+	"prigroupSize": 3,
 	"pctFmt": "{n}%",
 	"pctChar": "%"
 },
@@ -5872,6 +5919,7 @@ ilib.data.localeinfo_id = {
 }
 ;
 ilib.data.localeinfo_id_ID = {
+"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
 	"locale": "id-ID"
 }
 ;
@@ -5879,7 +5927,7 @@ ilib.data.localeinfo_ID = {
 	"currency": "IDR",
 	"region.name": "Indonesia",
 	"timezone": "Asia/Jakarta",
-	"locale": ".-ID"
+	"locale": "und-ID"
 }
 ;
 ilib.data.localeinfo_it = {
@@ -5896,7 +5944,7 @@ ilib.data.localeinfo_it = {
 "numfmt": {
 	"decimalChar": ",",
 	"groupChar": ".",
-	"groupSize": 3,
+	"prigroupSize": 3,
 	"pctFmt": "{n}%",
 	"pctChar": "%"
 },
@@ -5909,7 +5957,7 @@ ilib.data.localeinfo_it_CH = {
 	"numfmt": {
 		"decimalChar": ",",
 		"groupChar": "'",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "{n}%",
 		"pctChar": "%"
 	},
@@ -5917,6 +5965,7 @@ ilib.data.localeinfo_it_CH = {
 }
 ;
 ilib.data.localeinfo_it_IT = {
+"numfmt" :{"curFmt":"{s} {n}","secgroupSize":0},
 	"locale": "it-IT"
 }
 ;
@@ -5924,7 +5973,7 @@ ilib.data.localeinfo_IT = {
 	"currency": "EUR",
 	"region.name": "Italy",
 	"timezone": "Europe/Rome",
-	"locale": ".-IT"
+	"locale": "und-IT"
 }
 ;
 ilib.data.localeinfo_ja = {
@@ -5940,7 +5989,7 @@ ilib.data.localeinfo_ja = {
 	"numfmt": {
 		"decimalChar": ".",
 		"groupChar": "",
-		"groupSize": 0,
+		"prigroupSize": 0,
 		"pctFmt": "{n}％"
 	},
 	"scripts": ["Jpan"],
@@ -5948,6 +5997,7 @@ ilib.data.localeinfo_ja = {
 }
 ;
 ilib.data.localeinfo_ja_JP = {
+"numfmt" :{"groupChar":",","prigroupSize":3,"pctFmt":"{n}%","curFmt":"{s}{n}","secgroupSize":0},
 	"locale": "ja-JP"
 }
 ;
@@ -5955,7 +6005,7 @@ ilib.data.localeinfo_JP = {
 	"currency": "JPY",
 	"region.name": "Japan",
 	"timezone": "Asia/Tokyo",
-	"locale": ".-JP"
+	"locale": "und-JP"
 }
 ;
 ilib.data.localeinfo_ko = {
@@ -5971,7 +6021,7 @@ ilib.data.localeinfo_ko = {
 	"numfmt": {
 		"decimalChar": ".",
 		"groupChar": ",",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "{n} %"
 	},
 	"scripts": ["Kore"],
@@ -5979,6 +6029,7 @@ ilib.data.localeinfo_ko = {
 }
 ;
 ilib.data.localeinfo_ko_KR = {
+"numfmt" :{"pctFmt":"{n}%","curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
 	"locale": "ko-KR"
 }
 ;
@@ -5986,7 +6037,7 @@ ilib.data.localeinfo_KR = {
 	"currency": "KRW",
 	"region.name": "South Korea",
 	"timezone": "Asia/Seoul",
-	"locale": ".-KR"
+	"locale": "und-KR"
 }
 ;
 ilib.data.localeinfo_nl = {
@@ -5998,7 +6049,7 @@ ilib.data.localeinfo_nl = {
 "numfmt": {
 	"decimalChar": ",",
 	"groupChar": ".",
-	"groupSize": 3,
+	"prigroupSize": 3,
 	"pctFmt": "{n}%",
 	"pctChar": "%"
 },
@@ -6008,10 +6059,12 @@ ilib.data.localeinfo_nl = {
 }
 ;
 ilib.data.localeinfo_nl_BE = {
+"numfmt" :{"curFmt":"{n} {s}","secgroupSize":0},
 	"locale": "nl-BE"
 }
 ;
 ilib.data.localeinfo_nl_NL = {
+"numfmt" :{"curFmt":"{s} {n}","secgroupSize":0,"negativecurFmt":"{s} {n}-"},
 	"locale": "nl-NL"
 }
 ;
@@ -6019,7 +6072,7 @@ ilib.data.localeinfo_NL = {
 	"currency": "EUR",
 	"region.name": "Netherlands",
 	"timezone": "Europe/Amsterdam",
-	"locale": ".-NL"
+	"locale": "und-NL"
 }
 ;
 ilib.data.localeinfo_no = {
@@ -6028,7 +6081,7 @@ ilib.data.localeinfo_no = {
 	"numfmt": {
 		"decimalChar": ",",
 		"groupChar": " ",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "{n} %"
 	},
 	"scripts": ["Latn"],
@@ -6047,7 +6100,7 @@ ilib.data.localeinfo_NO = {
 	},
 	"region.name": "Norway",
 	"timezone": "Europe/Oslo",
-	"locale": ".-NO"
+	"locale": "und-NO"
 }
 ;
 ilib.data.localeinfo_pt = {
@@ -6055,7 +6108,7 @@ ilib.data.localeinfo_pt = {
 "numfmt": {
 	"decimalChar": ",",
 	"groupChar": ".",
-	"groupSize": 3,
+	"prigroupSize": 3,
 	"pctFmt": "{n}%",
 	"pctChar": "%"
 },
@@ -6065,6 +6118,7 @@ ilib.data.localeinfo_pt = {
 }
 ;
 ilib.data.localeinfo_pt_BR = {
+"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
 	"locale": "pt-BR"
 }
 ;
@@ -6072,10 +6126,11 @@ ilib.data.localeinfo_BR = {
 	"currency": "BRL",
 	"region.name": "Brazil",
 	"timezone": "America/Sao_Paulo",
-	"locale": ".-BR"
+	"locale": "und-BR"
 }
 ;
 ilib.data.localeinfo_pt_PT = {
+"numfmt" :{"groupChar":" ","curFmt":"{n} {s}","secgroupSize":0},
 	"locale": "pt-PT"
 }
 ;
@@ -6083,7 +6138,7 @@ ilib.data.localeinfo_PT = {
 	"currency": "EUR",
 	"region.name": "Portugal",
 	"timezone": "Europe/Lisbon",
-	"locale": ".-PT"
+	"locale": "und-PT"
 }
 ;
 ilib.data.localeinfo_ru = {
@@ -6091,7 +6146,7 @@ ilib.data.localeinfo_ru = {
 	"numfmt": {
 		"decimalChar": ",",
 		"groupChar": " ",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "{n} %"
 	},
 	"scripts": ["Cyrl"],
@@ -6099,6 +6154,7 @@ ilib.data.localeinfo_ru = {
 }
 ;
 ilib.data.localeinfo_ru_RU = {
+"numfmt" :{"groupChar":" ","pctFmt":"{n} %","curFmt":"{n} {s}","secgroupSize":0},
 	"locale": "ru-RU"
 }
 ;
@@ -6106,7 +6162,7 @@ ilib.data.localeinfo_RU = {
 	"currency": "RUB",
 	"region.name": "Russia",
 	"timezone": "Europe/Moscow",
-	"locale": ".-RU"
+	"locale": "und-RU"
 }
 ;
 ilib.data.localeinfo_sv = {
@@ -6115,7 +6171,7 @@ ilib.data.localeinfo_sv = {
 	"numfmt": {
 		"decimalChar": ",",
 		"groupChar": " ",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "{n}%"
 	},
 	"scripts": ["Latn"],
@@ -6123,6 +6179,7 @@ ilib.data.localeinfo_sv = {
 }
 ;
 ilib.data.localeinfo_sv_SE = {
+"numfmt" :{"groupChar":" ","pctFmt":"{n} %","curFmt":"{n} {s}","secgroupSize":0},
 	"locale": "sv-SE"
 }
 ;
@@ -6134,7 +6191,7 @@ ilib.data.localeinfo_SE = {
 	},
 	"region.name": "Sweden",
 	"timezone": "Europe/Stockholm",
-	"locale": ".-SE"
+	"locale": "und-SE"
 }
 ;
 ilib.data.localeinfo_tr = {
@@ -6146,7 +6203,7 @@ ilib.data.localeinfo_tr = {
 	"numfmt": {
 		"decimalChar": ",",
 		"groupChar": ".",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "% {n}",
 		"pctChar": "%",
 		"roundingMode": "halfup"
@@ -6157,6 +6214,7 @@ ilib.data.localeinfo_tr = {
 }
 ;
 ilib.data.localeinfo_tr_TR = {
+"numfmt" :{"pctFmt":"%{n}","curFmt":"{n} {s}","secgroupSize":0,"negativecurFmt":"({n} {s})","roundingMode":"halfdown"},
 	"locale": "tr-TR"
 }
 ;
@@ -6164,7 +6222,7 @@ ilib.data.localeinfo_TR = {
 	"currency": "TRY",
 	"region.name": "Turkey",
 	"timezone": "Europe/Istanbul",
-	"locale": ".-TR"
+	"locale": "und-TR"
 }
 ;
 ilib.data.localeinfo_vi = {
@@ -6172,7 +6230,7 @@ ilib.data.localeinfo_vi = {
 "numfmt": {
 	"decimalChar": ",",
 	"groupChar": ".",
-	"groupSize": 3,
+	"prigroupSize": 3,
 	"pctFmt": "{n}%",
 	"pctChar": "%"
 },
@@ -6182,6 +6240,7 @@ ilib.data.localeinfo_vi = {
 }
 ;
 ilib.data.localeinfo_vi_VN = {
+"numfmt" :{"curFmt":"{n} {s}","secgroupSize":0},
 	"locale": "vi-VN"
 }
 ;
@@ -6189,20 +6248,34 @@ ilib.data.localeinfo_VN = {
 	"currency": "VND",
 	"region.name": "Vietnam",
 	"timezone": "Asia/Ho_Chi_Minh",
-	"locale": ".-VN"
+	"locale": "und-VN"
 }
 ;
-ilib.data.localeinfo_xx = {
-	"language.name": "Unknown",
+ilib.data.localeinfo_zxx = {
+	"currency": "USD",
+	"units": "metric",
+	"clock": "24",
+	"calendar": "gregorian",
+	"firstDayOfWeek": 0,
+	"language.name": "No linguistic content",
 	"numfmt": {
+		"decimalChar": ".",
+		"groupChar": ",",
+		"prigroupSize": 3,
+		"pctFmt": "{n}%",
 		"roundingMode": "halfeven"
 	},
-	"locale": "xx"
+	"paperSizes": {
+		"regular": "8x11",
+		"photo": "3x5"
+	},
+	"scripts": ["Latn"],
+	"locale": "zxx"
 }
 ;
 ilib.data.localeinfo_XX = {
 	"region.name": "Unknown",
-	"locale": ".-XX"
+	"locale": "und-XX"
 }
 ;
 ilib.data.localeinfo_zh = {
@@ -6215,7 +6288,7 @@ ilib.data.localeinfo_zh = {
 	"numfmt": {
 		"decimalChar": ".",
 		"groupChar": ",",
-		"groupSize": 3,
+		"prigroupSize": 3,
 		"pctFmt": "{n}％"
 	},
 	"scripts": ["Hans","Hant","Bopo","Phag"],
@@ -6230,7 +6303,7 @@ ilib.data.localeinfo_CN = {
 	"currency": "CNY",
 	"region.name": "China",
 	"timezone": "Asia/Shanghai",
-	"locale": ".-CN"
+	"locale": "und-CN"
 }
 ;
 ilib.data.localeinfo_zh_TW = {
@@ -6241,7 +6314,7 @@ ilib.data.localeinfo_TW = {
 	"currency": "TWD",
 	"region.name": "Taiwan",
 	"timezone": "Asia/Taipei",
-	"locale": ".-TW"
+	"locale": "und-TW"
 }
 ;
 ilib.data.localeinfo_zh_HK = {
@@ -6252,7 +6325,7 @@ ilib.data.localeinfo_HK = {
 	"currency": "HKD",
 	"region.name": "Hong Kong SAR China",
 	"timezone": "Asia/Hong_Kong",
-	"locale": ".-HK"
+	"locale": "und-HK"
 }
 ;
 ilib.data.localeinfo_zh_SG = {
@@ -6263,7 +6336,7 @@ ilib.data.localeinfo_SG = {
 	"currency": "SGD",
 	"region.name": "Singapore",
 	"timezone": "Asia/Singapore",
-	"locale": ".-SG"
+	"locale": "und-SG"
 }
 ;
 ilib.data.localeinfo_zh_MO = {
@@ -6274,7 +6347,7 @@ ilib.data.localeinfo_MO = {
 	"currency": "MOP",
 	"region.name": "Macau SAR China",
 	"timezone": "Asia/Macau",
-	"locale": ".-MO"
+	"locale": "und-MO"
 }
 ;
 ilib.data.likelylocales = {"aa":"aa-Latn-ET","ab":"ab-Cyrl-GE","ady":"ady-Cyrl-RU","af":"af-Latn-ZA","agq":"agq-Latn-CM","ak":"ak-Latn-GH","am":"am-Ethi-ET","ar":"ar-Arab-EG","as":"as-Beng-IN","asa":"asa-Latn-TZ","ast":"ast-Latn-ES","av":"av-Cyrl-RU","ay":"ay-Latn-BO","az":"az-Latn-AZ","az-Arab":"az-Arab-IR","az-IR":"az-Arab-IR","ba":"ba-Cyrl-RU","bas":"bas-Latn-CM","be":"be-Cyrl-BY","bem":"bem-Latn-ZM","bez":"bez-Latn-TZ","bg":"bg-Cyrl-BG","bi":"bi-Latn-VU","bm":"bm-Latn-ML","bn":"bn-Beng-BD","bo":"bo-Tibt-CN","br":"br-Latn-FR","brx":"brx-Deva-IN","bs":"bs-Latn-BA","byn":"byn-Ethi-ER","ca":"ca-Latn-ES","cch":"cch-Latn-NG","ce":"ce-Cyrl-RU","ceb":"ceb-Latn-PH","cgg":"cgg-Latn-UG","ch":"ch-Latn-GU","chk":"chk-Latn-FM","chr":"chr-Cher-US","ckb":"ckb-Arab-IQ","cs":"cs-Latn-CZ","csb":"csb-Latn-PL","cy":"cy-Latn-GB","da":"da-Latn-DK","dav":"dav-Latn-KE","de":"de-Latn-DE","dje":"dje-Latn-NE","dua":"dua-Latn-CM","dv":"dv-Thaa-MV","dyo":"dyo-Latn-SN","dz":"dz-Tibt-BT","ebu":"ebu-Latn-KE","ee":"ee-Latn-GH","efi":"efi-Latn-NG","el":"el-Grek-GR","en":"en-Latn-US","eo":"eo-Latn-001","es":"es-Latn-ES","et":"et-Latn-EE","eu":"eu-Latn-ES","ewo":"ewo-Latn-CM","fa":"fa-Arab-IR","ff":"ff-Latn-SN","fi":"fi-Latn-FI","fil":"fil-Latn-PH","fj":"fj-Latn-FJ","fo":"fo-Latn-FO","fr":"fr-Latn-FR","fur":"fur-Latn-IT","fy":"fy-Latn-NL","ga":"ga-Latn-IE","gaa":"gaa-Latn-GH","gag":"gag-Latn-MD","gd":"gd-Latn-GB","gil":"gil-Latn-KI","gl":"gl-Latn-ES","gn":"gn-Latn-PY","gsw":"gsw-Latn-CH","gu":"gu-Gujr-IN","guz":"guz-Latn-KE","gv":"gv-Latn-GB","gv-Latn":"gv-Latn-IM","ha":"ha-Latn-NG","haw":"haw-Latn-US","he":"he-Hebr-IL","hi":"hi-Deva-IN","hil":"hil-Latn-PH","ho":"ho-Latn-PG","hr":"hr-Latn-HR","ht":"ht-Latn-HT","hu":"hu-Latn-HU","hy":"hy-Armn-AM","ia":"ia-Latn-001","id":"id-Latn-ID","ig":"ig-Latn-NG","ii":"ii-Yiii-CN","ilo":"ilo-Latn-PH","inh":"inh-Cyrl-RU","is":"is-Latn-IS","it":"it-Latn-IT","ja":"ja-Jpan-JP","jgo":"jgo-Latn-CM","jmc":"jmc-Latn-TZ","jv":"jv-Latn-ID","ka":"ka-Geor-GE","kab":"kab-Latn-DZ","kaj":"kaj-Latn-NG","kam":"kam-Latn-KE","kbd":"kbd-Cyrl-RU","kcg":"kcg-Latn-NG","kde":"kde-Latn-TZ","kea":"kea-Latn-CV","kg":"kg-Latn-CD","kha":"kha-Latn-IN","khq":"khq-Latn-ML","ki":"ki-Latn-KE","kj":"kj-Latn-NA","kk":"kk-Cyrl-KZ","kkj":"kkj-Latn-CM","kl":"kl-Latn-GL","kln":"kln-Latn-KE","km":"km-Khmr-KH","kn":"kn-Knda-IN","ko":"ko-Kore-KR","koi":"koi-Cyrl-RU","kok":"kok-Deva-IN","kos":"kos-Latn-FM","kpe":"kpe-Latn-LR","kpv":"kpv-Cyrl-RU","krc":"krc-Cyrl-RU","ks":"ks-Arab-IN","ksb":"ksb-Latn-TZ","ksf":"ksf-Latn-CM","ksh":"ksh-Latn-DE","ku":"ku-Latn-TR","ku-Arab":"ku-Arab-IQ","ku-IQ":"ku-Arab-IQ","kum":"kum-Cyrl-RU","kv":"kv-Cyrl-RU","kw":"kw-Latn-GB","ky":"ky-Cyrl-KG","la":"la-Latn-VA","lag":"lag-Latn-TZ","lah":"lah-Arab-PK","lb":"lb-Latn-LU","lbe":"lbe-Cyrl-RU","lez":"lez-Cyrl-RU","lg":"lg-Latn-UG","ln":"ln-Latn-CD","lo":"lo-Laoo-LA","lt":"lt-Latn-LT","lu":"lu-Latn-CD","lua":"lua-Latn-CD","luo":"luo-Latn-KE","luy":"luy-Latn-KE","lv":"lv-Latn-LV","mai":"mai-Deva-IN","mas":"mas-Latn-KE","mdf":"mdf-Cyrl-RU","mdh":"mdh-Latn-PH","mer":"mer-Latn-KE","mfe":"mfe-Latn-MU","mg":"mg-Latn-MG","mgh":"mgh-Latn-MZ","mgo":"mgo-Latn-CM","mh":"mh-Latn-MH","mi":"mi-Latn-NZ","mk":"mk-Cyrl-MK","ml":"ml-Mlym-IN","mn":"mn-Cyrl-MN","mn-CN":"mn-Mong-CN","mn-Mong":"mn-Mong-CN","mr":"mr-Deva-IN","ms":"ms-Latn-MY","mt":"mt-Latn-MT","mua":"mua-Latn-CM","my":"my-Mymr-MM","myv":"myv-Cyrl-RU","na":"na-Latn-NR","naq":"naq-Latn-NA","nb":"nb-Latn-NO","nd":"nd-Latn-ZW","nds":"nds-Latn-DE","ne":"ne-Deva-NP","niu":"niu-Latn-NU","nl":"nl-Latn-NL","nmg":"nmg-Latn-CM","nn":"nn-Latn-NO","nnh":"nnh-Latn-CM","nr":"nr-Latn-ZA","nso":"nso-Latn-ZA","nus":"nus-Latn-SD","ny":"ny-Latn-MW","nyn":"nyn-Latn-UG","oc":"oc-Latn-FR","om":"om-Latn-ET","or":"or-Orya-IN","os":"os-Cyrl-GE","pa":"pa-Guru-IN","pa-Arab":"pa-Arab-PK","pa-PK":"pa-Arab-PK","pag":"pag-Latn-PH","pap":"pap-Latn-AN","pau":"pau-Latn-PW","pl":"pl-Latn-PL","pon":"pon-Latn-FM","ps":"ps-Arab-AF","pt":"pt-Latn-BR","qu":"qu-Latn-PE","rm":"rm-Latn-CH","rn":"rn-Latn-BI","ro":"ro-Latn-RO","rof":"rof-Latn-TZ","ru":"ru-Cyrl-RU","rw":"rw-Latn-RW","rwk":"rwk-Latn-TZ","sa":"sa-Deva-IN","sah":"sah-Cyrl-RU","saq":"saq-Latn-KE","sat":"sat-Latn-IN","sbp":"sbp-Latn-TZ","sd":"sd-Arab-IN","se":"se-Latn-NO","seh":"seh-Latn-MZ","ses":"ses-Latn-ML","sg":"sg-Latn-CF","shi":"shi-Tfng-MA","shi-MA":"shi-Latn-MA","si":"si-Sinh-LK","sid":"sid-Latn-ET","sk":"sk-Latn-SK","sl":"sl-Latn-SI","sm":"sm-Latn-WS","sn":"sn-Latn-ZW","so":"so-Latn-SO","sq":"sq-Latn-AL","sr":"sr-Cyrl-RS","sr-ME":"sr-Latn-ME","ss":"ss-Latn-ZA","ssy":"ssy-Latn-ER","st":"st-Latn-ZA","su":"su-Latn-ID","sv":"sv-Latn-SE","sw":"sw-Latn-TZ","swc":"swc-Latn-CD","ta":"ta-Taml-IN","te":"te-Telu-IN","teo":"teo-Latn-UG","tet":"tet-Latn-TL","tg":"tg-Cyrl-TJ","th":"th-Thai-TH","ti":"ti-Ethi-ET","tig":"tig-Ethi-ER","tk":"tk-Latn-TM","tkl":"tkl-Latn-TK","tl":"tl-Latn-PH","tn":"tn-Latn-ZA","to":"to-Latn-TO","tpi":"tpi-Latn-PG","tr":"tr-Latn-TR","trv":"trv-Latn-TW","ts":"ts-Latn-ZA","tsg":"tsg-Latn-PH","tt":"tt-Cyrl-RU","tvl":"tvl-Latn-TV","twq":"twq-Latn-NE","ty":"ty-Latn-PF","tyv":"tyv-Cyrl-RU","tzm":"tzm-Latn-MA","udm":"udm-Cyrl-RU","ug":"ug-Arab-CN","uk":"uk-Cyrl-UA","uli":"uli-Latn-FM","und":"en-Latn-US","AD":"ca-Latn-AD","AE":"ar-Arab-AE","AF":"fa-Arab-AF","AL":"sq-Latn-AL","AM":"hy-Armn-AM","AN":"pap-Latn-AN","AO":"pt-Latn-AO","AR":"es-Latn-AR","Arab":"ar-Arab-EG","Arab-CN":"ug-Arab-CN","Arab-IN":"ur-Arab-IN","Arab-NG":"ha-Arab-NG","Arab-PK":"ur-Arab-PK","Armi":"arc-Armi-IR","Armn":"hy-Armn-AM","AS":"sm-Latn-AS","AT":"de-Latn-AT","Avst":"ae-Avst-IR","AW":"nl-Latn-AW","AX":"sv-Latn-AX","AZ":"az-Latn-AZ","BA":"bs-Latn-BA","Bali":"ban-Bali-ID","Bamu":"bax-Bamu-CM","Batk":"bbc-Batk-ID","BD":"bn-Beng-BD","BE":"nl-Latn-BE","Beng":"bn-Beng-BD","BF":"fr-Latn-BF","BG":"bg-Cyrl-BG","BH":"ar-Arab-BH","BI":"rn-Latn-BI","BJ":"fr-Latn-BJ","BL":"fr-Latn-BL","BN":"ms-Latn-BN","BO":"es-Latn-BO","Bopo":"zh-Bopo-TW","BR":"pt-Latn-BR","Brah":"pra-Brah-IN","Brai":"und-Brai-FR","BT":"dz-Tibt-BT","Bugi":"bug-Bugi-ID","Buhd":"bku-Buhd-PH","BY":"be-Cyrl-BY","Cakm":"ccp-Cakm-BD","Cans":"cr-Cans-CA","Cari":"xcr-Cari-TR","CD":"sw-Latn-CD","CF":"fr-Latn-CF","CG":"fr-Latn-CG","CH":"de-Latn-CH","Cham":"cjm-Cham-VN","Cher":"chr-Cher-US","CI":"fr-Latn-CI","CL":"es-Latn-CL","CM":"fr-Latn-CM","CN":"zh-Hans-CN","CO":"es-Latn-CO","Copt":"cop-Copt-EG","CP":"fr-Latn-CP","Cprt":"grc-Cprt-CY","CR":"es-Latn-CR","CU":"es-Latn-CU","CV":"pt-Latn-CV","CY":"el-Grek-CY","Cyrl":"ru-Cyrl-RU","Cyrl-BA":"sr-Cyrl-BA","Cyrl-GE":"ab-Cyrl-GE","CZ":"cs-Latn-CZ","DE":"de-Latn-DE","Deva":"hi-Deva-IN","DJ":"aa-Latn-DJ","DK":"da-Latn-DK","DO":"es-Latn-DO","DZ":"ar-Arab-DZ","EA":"es-Latn-EA","EC":"es-Latn-EC","EE":"et-Latn-EE","EG":"ar-Arab-EG","Egyp":"egy-Egyp-EG","EH":"ar-Arab-EH","ER":"ti-Ethi-ER","ES":"es-Latn-ES","Ethi":"am-Ethi-ET","FI":"fi-Latn-FI","FM":"chk-Latn-FM","FO":"fo-Latn-FO","FR":"fr-Latn-FR","GA":"fr-Latn-GA","GE":"ka-Geor-GE","Geor":"ka-Geor-GE","GF":"fr-Latn-GF","GH":"ak-Latn-GH","GL":"kl-Latn-GL","Glag":"cu-Glag-BG","GN":"fr-Latn-GN","Goth":"got-Goth-UA","GP":"fr-Latn-GP","GQ":"es-Latn-GQ","GR":"el-Grek-GR","Grek":"el-Grek-GR","GT":"es-Latn-GT","Gujr":"gu-Gujr-IN","Guru":"pa-Guru-IN","GW":"pt-Latn-GW","Hang":"ko-Hang-KR","Hani":"zh-Hans-CN","Hano":"hnn-Hano-PH","Hans":"zh-Hans-CN","Hant":"zh-Hant-TW","Hebr":"he-Hebr-IL","Hira":"ja-Hira-JP","HK":"zh-Hant-HK","HN":"es-Latn-HN","HR":"hr-Latn-HR","HT":"ht-Latn-HT","HU":"hu-Latn-HU","IC":"es-Latn-IC","ID":"id-Latn-ID","IL":"he-Hebr-IL","IN":"hi-Deva-IN","IQ":"ar-Arab-IQ","IR":"fa-Arab-IR","IS":"is-Latn-IS","IT":"it-Latn-IT","Ital":"ett-Ital-IT","Java":"jv-Java-ID","JO":"ar-Arab-JO","JP":"ja-Jpan-JP","Jpan":"ja-Jpan-JP","Kali":"eky-Kali-MM","Kana":"ja-Kana-JP","KG":"ky-Cyrl-KG","KH":"km-Khmr-KH","Khar":"pra-Khar-PK","Khmr":"km-Khmr-KH","KM":"ar-Arab-KM","Knda":"kn-Knda-IN","Kore":"ko-Kore-KR","KP":"ko-Kore-KP","KR":"ko-Kore-KR","Kthi":"bh-Kthi-IN","KW":"ar-Arab-KW","KZ":"ru-Cyrl-KZ","LA":"lo-Laoo-LA","Lana":"nod-Lana-TH","Laoo":"lo-Laoo-LA","Latn-CN":"za-Latn-CN","Latn-CY":"tr-Latn-CY","Latn-DZ":"fr-Latn-DZ","Latn-ER":"aa-Latn-ER","Latn-KM":"fr-Latn-KM","Latn-MA":"fr-Latn-MA","Latn-MK":"sq-Latn-MK","Latn-MR":"fr-Latn-MR","Latn-SY":"fr-Latn-SY","Latn-TN":"fr-Latn-TN","LB":"ar-Arab-LB","Lepc":"lep-Lepc-IN","LI":"de-Latn-LI","Limb":"lif-Limb-IN","Linb":"grc-Linb-GR","Lisu":"lis-Lisu-CN","LK":"si-Sinh-LK","LS":"st-Latn-LS","LT":"lt-Latn-LT","LU":"fr-Latn-LU","LV":"lv-Latn-LV","LY":"ar-Arab-LY","Lyci":"xlc-Lyci-TR","Lydi":"xld-Lydi-TR","MA":"ar-Arab-MA","Mand":"myz-Mand-IR","MC":"fr-Latn-MC","MD":"ro-Latn-MD","ME":"sr-Latn-ME","Merc":"xmr-Merc-SD","Mero":"xmr-Mero-SD","MF":"fr-Latn-MF","MG":"mg-Latn-MG","MK":"mk-Cyrl-MK","ML":"bm-Latn-ML","Mlym":"ml-Mlym-IN","MM":"my-Mymr-MM","MN":"mn-Cyrl-MN","MO":"zh-Hant-MO","Mong":"mn-Mong-CN","MQ":"fr-Latn-MQ","MR":"ar-Arab-MR","MT":"mt-Latn-MT","Mtei":"mni-Mtei-IN","MU":"mfe-Latn-MU","MV":"dv-Thaa-MV","MX":"es-Latn-MX","MY":"ms-Latn-MY","Mymr":"my-Mymr-MM","MZ":"pt-Latn-MZ","NA":"kj-Latn-NA","NC":"fr-Latn-NC","NE":"ha-Latn-NE","NI":"es-Latn-NI","Nkoo":"man-Nkoo-GN","NL":"nl-Latn-NL","NO":"nb-Latn-NO","NP":"ne-Deva-NP","Ogam":"sga-Ogam-IE","Olck":"sat-Olck-IN","OM":"ar-Arab-OM","Orkh":"otk-Orkh-MN","Orya":"or-Orya-IN","Osma":"so-Osma-SO","PA":"es-Latn-PA","PE":"es-Latn-PE","PF":"fr-Latn-PF","PG":"tpi-Latn-PG","PH":"fil-Latn-PH","Phag":"lzh-Phag-CN","Phli":"pal-Phli-IR","Phnx":"phn-Phnx-LB","PK":"ur-Arab-PK","PL":"pl-Latn-PL","Plrd":"hmd-Plrd-CN","PM":"fr-Latn-PM","PR":"es-Latn-PR","Prti":"xpr-Prti-IR","PS":"ar-Arab-PS","PT":"pt-Latn-PT","PW":"pau-Latn-PW","PY":"gn-Latn-PY","QA":"ar-Arab-QA","RE":"fr-Latn-RE","Rjng":"rej-Rjng-ID","RO":"ro-Latn-RO","RS":"sr-Cyrl-RS","RU":"ru-Cyrl-RU","Runr":"non-Runr-SE","RW":"rw-Latn-RW","SA":"ar-Arab-SA","Samr":"smp-Samr-IL","Sarb":"xsa-Sarb-YE","Saur":"saz-Saur-IN","SC":"fr-Latn-SC","SD":"ar-Arab-SD","SE":"sv-Latn-SE","Shaw":"en-Shaw-GB","Shrd":"sa-Shrd-IN","SI":"sl-Latn-SI","Sinh":"si-Sinh-LK","SJ":"nb-Latn-SJ","SK":"sk-Latn-SK","SM":"it-Latn-SM","SN":"fr-Latn-SN","SO":"so-Latn-SO","Sora":"srb-Sora-IN","SR":"nl-Latn-SR","ST":"pt-Latn-ST","Sund":"su-Sund-ID","SV":"es-Latn-SV","SY":"ar-Arab-SY","Sylo":"syl-Sylo-BD","Syrc":"syr-Syrc-SY","Tagb":"tbw-Tagb-PH","Takr":"doi-Takr-IN","Tale":"tdd-Tale-CN","Talu":"khb-Talu-CN","Taml":"ta-Taml-IN","Tavt":"blt-Tavt-VN","TD":"fr-Latn-TD","Telu":"te-Telu-IN","Tfng":"shi-Tfng-TN","TG":"fr-Latn-TG","Tglg":"fil-Tglg-PH","TH":"th-Thai-TH","Thaa":"dv-Thaa-MV","Thai":"th-Thai-TH","Tibt":"bo-Tibt-CN","TJ":"tg-Cyrl-TJ","TK":"tkl-Latn-TK","TL":"pt-Latn-TL","TM":"tk-Latn-TM","TN":"ar-Arab-TN","TO":"to-Latn-TO","TR":"tr-Latn-TR","TV":"tvl-Latn-TV","TW":"zh-Hant-TW","TZ":"sw-Latn-TZ","UA":"uk-Cyrl-UA","UG":"sw-Latn-UG","Ugar":"uga-Ugar-SY","UY":"es-Latn-UY","UZ":"uz-Cyrl-UZ","VA":"la-Latn-VA","Vaii":"vai-Vaii-LR","VE":"es-Latn-VE","VN":"vi-Latn-VN","VU":"bi-Latn-VU","WF":"fr-Latn-WF","WS":"sm-Latn-WS","Xpeo":"peo-Xpeo-IR","Xsux":"akk-Xsux-IQ","YE":"ar-Arab-YE","Yiii":"ii-Yiii-CN","YT":"fr-Latn-YT","ur":"ur-Arab-PK","uz":"uz-Cyrl-UZ","uz-AF":"uz-Arab-AF","uz-Arab":"uz-Arab-AF","vai":"vai-Vaii-LR","ve":"ve-Latn-ZA","vi":"vi-Latn-VN","vo":"vo-Latn-001","vun":"vun-Latn-TZ","wae":"wae-Latn-CH","wal":"wal-Ethi-ET","war":"war-Latn-PH","wo":"wo-Latn-SN","xh":"xh-Latn-ZA","xog":"xog-Latn-UG","yap":"yap-Latn-FM","yav":"yav-Latn-CM","yi":"yi-Hebr-IL","yo":"yo-Latn-NG","za":"za-Latn-CN","zh":"zh-Hans-CN","zh-Hani":"zh-Hans-CN","zh-Hant":"zh-Hant-TW","zh-HK":"zh-Hant-HK","zh-MO":"zh-Hant-MO","zh-TW":"zh-Hant-TW","zu":"zu-Latn-ZA"}
@@ -6473,15 +6546,35 @@ ilib.LocaleInfo.prototype = {
 	},
 	
 	/**
-	 * Return the minimum number of digits grouped together on the integer side. 
+	 * Return the minimum number of digits grouped together on the integer side 
+	 * for the first (primary) group. 
 	 * In western European cultures, groupings are in 1000s, so the number of digits
-	 * is 3. In other cultures, the groupings are in 10000s so the number is 4.
-	 * @returns {number} the number of digits in a grouping, or 0 for no grouping
+	 * is 3. 
+	 * @returns {number} the number of digits in a primary grouping, or 0 for no grouping
 	 */
-	getGroupingDigits: function () {
-		return this.info.numfmt.groupSize;
+	getPrimaryGroupingDigits: function () {
+		return (typeof(this.info.numfmt.prigroupSize) !== 'undefined' ?  this.info.numfmt.prigroupSize : this.info.numfmt.groupSize) || 0;
 	},
-	
+
+	/**
+	 * Return the minimum number of digits grouped together on the integer side
+	 * for the second or more (secondary) group.<p>
+	 *   
+	 * In western European cultures, all groupings are by 1000s, so the secondary
+	 * size should be 0 because there is no secondary size. In general, if this 
+	 * method returns 0, then all groupings are of the primary size.<p> 
+	 * 
+	 * For some other cultures, the first grouping (primary)
+	 * is 3 and any subsequent groupings (secondary) are two. So, 100000 would be
+	 * written as: "1,00,000".
+	 * 
+	 * @returns {number} the number of digits in a secondary grouping, or 0 for no 
+	 * secondary grouping. 
+	 */
+	getSecondaryGroupingDigits: function () {
+		return this.info.numfmt.secgroupSize || 0;
+	},
+
 	/**
 	 * Return the format template used to format percentages in this locale.
 	 * @returns {string} the format template for formatting percentages
@@ -6489,7 +6582,10 @@ ilib.LocaleInfo.prototype = {
 	getPercentageFormat: function () {
 		return this.info.numfmt.pctFmt;
 	},
-	
+
+	getCurrencyFormat: function () {
+		return this.info.numfmt.curFmt;
+	},
 	/**
 	 * Return the symbol used for percentages in this locale.
 	 * @returns {string} the symbol used for percentages in this locale
@@ -8360,46 +8456,204 @@ ilib.TimeZone.prototype.useDaylightTime = function () {
 };
 
 ilib.data.pseudomap = {
-	"a": "à",	
-	"c": "ç",	
-	"d": "ð",	
-	"e": "ë",	
-	"g": "ğ",	
+	"a": "à",
+	"c": "ç",
+	"d": "ð",
+	"e": "ë",
+	"g": "ğ",
 	"h": "ĥ",
-	"i": "í",	
-	"j": "ĵ",	
-	"k": "ķ",	
-	"l": "ľ",	
-	"n": "ñ",	
-	"o": "õ",	
-	"p": "þ",	
-	"r": "ŕ",	
-	"s": "š",	
-	"t": "ţ",	
-	"u": "ü",	
-	"w": "ŵ",	
-	"y": "ÿ",	
-	"z": "ž",	
+	"i": "í",
+	"j": "ĵ",
+	"k": "ķ",
+	"l": "ľ",
+	"n": "ñ",
+	"o": "õ",
+	"p": "þ",
+	"r": "ŕ",
+	"s": "š",
+	"t": "ţ",
+	"u": "ü",
+	"w": "ŵ",
+	"y": "ÿ",
+	"z": "ž",
 	"A": "Ã",
 	"B": "ß",
-	"C": "Ç",	
-	"D": "Ð",	
-	"E": "Ë",	
-	"G": "Ĝ",	
+	"C": "Ç",
+	"D": "Ð",
+	"E": "Ë",
+	"G": "Ĝ",
 	"H": "Ħ",
-	"I": "Ï",	
-	"J": "Ĵ",	
-	"K": "ĸ",	
-	"L": "Ľ",	
-	"N": "Ň",	
-	"O": "Ø",	
-	"R": "Ŗ",	
-	"S": "Š",	
-	"T": "Ť",	
-	"U": "Ú",	
-	"W": "Ŵ",	
-	"Y": "Ŷ",	
-	"Z": "Ż"	
+	"I": "Ï",
+	"J": "Ĵ",
+	"K": "ĸ",
+	"L": "Ľ",
+	"N": "Ň",
+	"O": "Ø",
+	"R": "Ŗ",
+	"S": "Š",
+	"T": "Ť",
+	"U": "Ú",
+	"W": "Ŵ",
+	"Y": "Ŷ",
+	"Z": "Ż"
+};
+ilib.data.pseudomap_zxx_Hans = {
+	"a": "阿",
+	"b": "不",
+	"c": "可",
+	"d": "的",
+	"e": "俄",
+	"f": "凡",
+	"g": "个",
+	"h": "和",
+	"i": "意",
+	"j": "中",
+	"k": "可",
+	"l": "了",
+	"m": "们",
+	"n": "尼",
+	"o": "夥",
+	"p": "琶",
+	"q": "氣",
+	"r": "熱",
+	"s": "思",
+	"t": "推",
+	"u": "思",
+	"v": "於",
+	"x": "相",
+	"y": "謝",
+	"z": "子",
+	"A": "阿",
+	"B": "不",
+	"C": "可",
+	"D": "的",
+	"E": "俄",
+	"F": "凡",
+	"G": "个",
+	"H": "和",
+	"I": "意",
+	"J": "中",
+	"K": "可",
+	"L": "了",
+	"M": "们",
+	"N": "尼",
+	"O": "夥",
+	"P": "琶",
+	"Q": "氣",
+	"R": "熱",
+	"S": "思",
+	"T": "推",
+	"U": "思",
+	"V": "於",
+	"X": "相",
+	"Y": "謝",
+	"Z": "子"
+};
+ilib.data.pseudomap_zxx_Cyrl = {
+	"a": "а",
+	"b": "б",
+	"c": "ч",
+	"d": "д",
+	"e": "э",
+	"f": "ф",
+	"g": "г",
+	"h": "х",
+	"i": "и",
+	"j": "ж",
+	"k": "к",
+	"l": "л",
+	"m": "м",
+	"n": "н",
+	"o": "о",
+	"p": "п",
+	"q": "ку",
+	"r": "р",
+	"s": "с",
+	"t": "т",
+	"u": "у",
+	"v": "в",
+	"x": "кс",
+	"y": "я",
+	"z": "з",
+	"A": "А",
+	"B": "Б",
+	"C": "Ч",
+	"D": "Д",
+	"E": "Э",
+	"F": "Ф",
+	"G": "Г",
+	"H": "Х",
+	"I": "И",
+	"J": "Ж",
+	"K": "К",
+	"L": "Л",
+	"M": "М",
+	"N": "Н",
+	"O": "О",
+	"P": "П",
+	"Q": "КУ",
+	"R": "Р",
+	"S": "С",
+	"T": "Т",
+	"U": "У",
+	"V": "В",
+	"X": "КС",
+	"Y": "Я",
+	"Z": "З"
+};
+ilib.data.pseudomap_zxx_Hebr = {
+	"a": "ַ",
+	"b": "בּ",
+	"c": "ק",
+	"d": "ד",
+	"e": "ֶ",
+	"f": "פ",
+	"g": "ג",
+	"h": "ה",
+	"i": "ִ",
+	"j": "ג׳",
+	"k": "כ",
+	"l": "ל",
+	"m": "מ",
+	"n": "נ",
+	"o": "ֹ",
+	"p": "פ",
+	"q": "ק",
+	"r": "ר",
+	"s": "ס",
+	"t": "ט",
+	"u": "ֻ",
+	"v": "ב",
+	"w": "ו",
+	"x": "שׂק",
+	"y": "י",
+	"z": "ז",
+	"A": "ַ",
+	"B": "בּ",
+	"C": "ק",
+	"D": "דּ",
+	"E": "ֶ",
+	"F": "פ",
+	"G": "ג",
+	"H": "ה",
+	"I": "ִ",
+	"J": "ג׳",
+	"K": "כ",
+	"L": "ל",
+	"M": "מ",
+	"N": "נ",
+	"O": "ֹ",
+	"P": "פ",
+	"Q": "ק",
+	"R": "ר",
+	"S": "ס",
+	"T": "ט",
+	"U": "ֻ",
+	"V": "ב",
+	"W": "ו",
+	"X": "שׂק",
+	"Y": "י",
+	"Z": "ז"
 };
 /*
  * resources.js - Resource bundle definition
@@ -8453,7 +8707,18 @@ ilib.data.pseudomap = {
  * 
  * <li><i>lengthen</i> - when pseudo-translating the string, tell whether or not to 
  * automatically lengthen the string to simulate "long" languages such as German
- * or French. This is a boolean value. Default is false. 
+ * or French. This is a boolean value. Default is false.
+ * 
+ * <li><i>missing</i> - what to do when a resource is missing. The choices are:
+ * <ul>
+ *   <li><i>source</i> - return the source string unchanged
+ *   <li><i>pseudo</i> - return the pseudo-translated source string, translated to the
+ *   script of the locale if the mapping is available, or just the default Latin 
+ *   pseudo-translation if not
+ *   <li><i>empty</i> - return the empty string 
+ * </ul>
+ * The default behaviour is the same as before, which is to return the source string
+ * unchanged.
  * 
  * <li><i>onLoad</i> - a callback function to call when the resources are fully 
  * loaded. When the onLoad option is given, this class will attempt to
@@ -8483,28 +8748,38 @@ ilib.data.pseudomap = {
  * a JS file that can be included before the ilib.<p>
  * 
  * A resource bundle with a particular name is actually a set of bundles
- * that are each specific to a language, a language plus a region, or a language
- * plus a region plus a variant. All bundles with the same base name should
+ * that are each specific to a language, a language plus a region, etc. 
+ * All bundles with the same base name should
  * contain the same set of source strings, but with different translations for 
  * the given locale. The user of the bundle does not need to be aware of 
  * the locale of the bundle, as long as it contains values for the strings 
  * it needs.<p>
  * 
  * Strings in bundles for a particular locale are inherited from parent bundles
- * that are more generic. In general, the hierarchy is as follows:
+ * that are more generic. In general, the hierarchy is as follows (from 
+ * least locale-specific to most locale-specific):
  * 
  * <ol>
- * <li>base_language_region_variant inherits from
- * <li>base_language_region inherits from
- * <li>base_language inherits from
- * <li>base
+ * <li> language
+ * <li> region
+ * <li> language_script
+ * <li> language_region
+ * <li> region_variant
+ * <li> language_script_region
+ * <li> language_region_variant
+ * <li> language_script_region_variant
  * </ol>
  * 
  * That is, if the translation for a string does not exist in the current
  * locale, the more-generic parent locale is searched for the string. In the
  * worst case scenario, the string is not found in the base locale's strings. 
- * In this case, the original source is returned as the translation. This allows
- * developers to create code with new or changed strings in it and check in that
+ * In this case, the missing option guides this class on what to do. If
+ * the missing option is "source", then the original source is returned as 
+ * the translation. If it is "empty", the empty string is returned. If it
+ * is "pseudo", then the pseudo-translated string that is appropriate for
+ * the default script of the locale is returned.<p> 
+ * 
+ * This allows developers to create code with new or changed strings in it and check in that
  * code without waiting for the translations to be done first. The translated
  * version of the app or web site will still function properly, but will show 
  * a spurious untranslated string here and there until the translations are 
@@ -8515,21 +8790,19 @@ ilib.data.pseudomap = {
  * for example. Often this base is English, as many web sites are coded in
  * English, but that is not required.<p>
  * 
- * The strings can be extracted with the ilib localization tool. Once the strings
+ * The strings can be extracted with the ilib localization tool (which will be
+ * shipped at some future time.) Once the strings
  * have been translated, the set of translated files can be generated with the
  * same tool. The output from the tool can be used as input to the ResBundle
  * object. It is up to the web page or app to make sure the JS file that defines
  * the bundle is included before creating the ResBundle instance.<p>
  * 
- * A special locale "xx-XX" is used as the pseudo-translation locale because
- * xx and XX are not a valid ISO language or country specifiers. 
+ * A special locale "zxx-XX" is used as the pseudo-translation locale because
+ * zxx means "no linguistic information" in the ISO 639 standard, and the region 
+ * code XX is defined to be user-defined in the ISO 3166 standard. 
  * Pseudo-translation is a locale where the translations are generated on
  * the fly based on the contents of the source string. Characters in the source 
- * string are replaced with accented versions of those characters and returned. 
- * This allows the strings to be readable in the UI (if somewhat funky-looking), 
- * and yet a tester can easily verify that the string is properly externalized 
- * and loaded from a resource bundle without waiting for any translations to 
- * be completed.<p>
+ * string are replaced with other characters and returned. 
  * 
  * Example. If the source string is:
  * 
@@ -8542,8 +8815,30 @@ ilib.data.pseudomap = {
  * <pre>
  * "Ţħïş ïş á şţřïñĝ"
  * </pre>
- *<p>
+ * <p>
  * 
+ * Pseudo-translation can be used to test that your app or web site is translatable
+ * before an actual translation has happened. These bugs can then be fixed 
+ * before the translation starts, avoiding an explosion of bugs later when
+ * each language's tester registers the same bug complaining that the same 
+ * string is not translated. When pseudo-localizing with
+ * the Latin script, this allows the strings to be readable in the UI in the 
+ * source language (if somewhat funky-looking), 
+ * so that a tester can easily verify that the string is properly externalized 
+ * and loaded from a resource bundle without the need to be able to read a
+ * foreign language.<p> 
+ * 
+ * If one of a list of script tags is given in the pseudo-locale specifier, then the
+ * pseudo-localization can map characters to very rough transliterations of
+ * characters in the given script. For example, zxx-Hebr-XX maps strings to
+ * Hebrew characters, which can be used to test your UI in a right-to-left
+ * language to catch bidi bugs before a translation is done. Currently, the
+ * list of target scripts includes Hebrew (Hebr), Chinese Simplified Han (Hans),
+ * and Cyrillic (Cyrl) with more to be added later. If no script is explicitly
+ * specified in the locale spec, or if the script is not supported,
+ * then the default mapping maps Latin base characters to accented versions of
+ * those Latin characters as in the example above.
+ *  
  * When the "lengthen" property is set to true in the options, the 
  * pseudotranslation code will add digits to the end of the string to simulate
  * the lengthening that occurs when translating to other languages. The above 
@@ -8570,12 +8865,14 @@ ilib.data.pseudomap = {
  * @param {?Object} options Options controlling how the bundle is created
  */
 ilib.ResBundle = function (options) {
-	var lookupLocale, spec, sync = true;
+	var lookupLocale, spec;
 	
 	this.locale = new ilib.Locale();	// use the default locale
 	this.baseName = "strings";
 	this.type = "text";
 	this.loadParams = {};
+	this.missing = "source";
+	this.sync = true;
 	
 	if (options) {
 		if (options.locale) {
@@ -8592,11 +8889,16 @@ ilib.ResBundle = function (options) {
 		this.lengthen = options.lengthen || false;
 		
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			this.sync = (options.sync == true);
 		}
 		
 		if (typeof(options.loadParams) !== 'undefined') {
 			this.loadParams = options.loadParams;
+		}
+		if (typeof(options.missing) !== 'undefined') {
+			if (options.missing === "pseudo" || options.missing === "empty") {
+				this.missing = options.missing;
+			}
 		}
 	}
 	
@@ -8606,17 +8908,38 @@ ilib.ResBundle = function (options) {
 		ilib.ResBundle[this.baseName] = {};
 	}
 
-	lookupLocale = this.locale.isPseudo() ? new ilib.Locale() : this.locale;
-	
-	ilib.loadData(ilib.ResBundle[this.baseName], lookupLocale, this.baseName, sync, this.loadParams, ilib.bind(this, function (map) {
+	lookupLocale = this.locale.isPseudo() ? new ilib.Locale("en-US") : this.locale;
+
+	ilib.loadData(ilib.ResBundle[this.baseName], lookupLocale, this.baseName, this.sync, this.loadParams, ilib.bind(this, function (map) {
 		if (!map) {
 			map = ilib.data[this.baseName] || {};
 			spec = lookupLocale.getSpec().replace(/-/g, '_');
 			ilib.ResBundle[this.baseName].cache[spec] = map;
 		}
 		this.map = map;
-		if (options && typeof(options.onLoad) === 'function') {
-			options.onLoad(this);
+		if (this.locale.isPseudo()) {
+			if (!ilib.ResBundle.pseudomap) {
+				ilib.ResBundle.pseudomap = {};
+			}
+
+			this._loadPseudo(this.locale, options.onLoad);
+		} else if (this.missing === "pseudo") {
+			if (!ilib.ResBundle.pseudomap) {
+				ilib.ResBundle.pseudomap = {};
+			}
+
+			new ilib.LocaleInfo(this.locale, {
+				sync: this.sync,
+				loadParams: this.loadParams,
+				onLoad: ilib.bind(this, function (li) {
+					var pseudoLocale = new ilib.Locale("zxx", "XX", undefined, li.getDefaultScript());
+					this._loadPseudo(pseudoLocale, options.onLoad);
+				})
+			});
+		} else {
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
 		}
 	}));
 
@@ -8627,6 +8950,23 @@ ilib.ResBundle = function (options) {
 };
 
 ilib.ResBundle.prototype = {
+    /**
+     * @protected
+     */
+    _loadPseudo: function (pseudoLocale, onLoad) {
+		ilib.loadData(ilib.ResBundle.pseudomap, pseudoLocale, "pseudomap", this.sync, this.loadParams, ilib.bind(this, function (map) {
+			if (!map || ilib.isEmpty(map)) {
+				map = ilib.data.pseudomap;
+				var spec = pseudoLocale.getSpec().replace(/-/g, '_');
+				ilib.ResBundle.pseudomap.cache[spec] = map;
+			}
+			this.pseudomap = map;
+			if (typeof(onLoad) === 'function') {
+				onLoad(this);
+			}	
+		}));
+    },
+    
 	/**
 	 * Return the locale of this resource bundle.
 	 * @return {ilib.Locale} the locale of this resource bundle object 
@@ -8693,11 +9033,11 @@ ilib.ResBundle.prototype = {
 							ret += str.charAt(i);
 						}
 					} else {
-						ret += ilib.data.pseudomap[str.charAt(i)] || str.charAt(i);
+						ret += this.pseudomap[str.charAt(i)] || str.charAt(i);
 					}
 				}
 			} else {
-				ret += ilib.data.pseudomap[str.charAt(i)] || str.charAt(i);
+				ret += this.pseudomap[str.charAt(i)] || str.charAt(i);
 			}
 		}
 		if (this.lengthen) {
@@ -8712,6 +9052,13 @@ ilib.ResBundle.prototype = {
 			for (i = add-1; i >= 0; i--) {
 				ret += (i % 10);
 			}
+		}
+		if (this.locale.getScript() === "Hans" || this.locale.getScript() === "Hant" ||
+				this.locale.getScript() === "Hani" ||
+				this.locale.getScript() === "Hrkt" || this.locale.getScript() === "Jpan" ||
+				this.locale.getScript() === "Hira" || this.locale.getScript() === "Kana" ) {
+			// simulate Asian languages by getting rid of all the spaces
+			ret = ret.replace(/ /g, "");
 		}
 		return ret;
 	},
@@ -8800,7 +9147,15 @@ ilib.ResBundle.prototype = {
 			trans = this.pseudo(str || key);
 		} else {
 			var keyName = key || this.makeKey(source);
-			trans = typeof(this.map[keyName]) !== 'undefined' ? this.map[keyName] : source;
+			if (typeof(this.map[keyName]) !== 'undefined') {
+				trans = this.map[keyName];
+			} else if (this.missing === "pseudo") {
+				trans = this.pseudo(source || key);
+			} else if (this.missing === "empty") {
+				trans = "";
+			} else {
+				trans = source;
+			}
 		}
 
 		if (escapeMode && escapeMode !== "none") {
@@ -8841,19 +9196,30 @@ ilib.ResBundle.prototype = {
 	/**
 	 * Return the merged resources as an entire object. When loading resources for a
 	 * locale that are not just a set of translated strings, but instead an entire 
-	 * structured object, you can gain access to that object via this call. This method
-	 * will ensure that all the of the parts of the object are correct for the locale.
-	 * It starts by loading <i>ilib.data[name]</i>, where <i>name</i> is the base name
-	 * for this set of resources. Then, it successively overwrites objects in the base
-	 * data using locale-specific data. It loads it in this order from <i>ilib.data</i>:
+	 * structured javascript object, you can gain access to that object via this call. This method
+	 * will ensure that all the of the parts of the object are correct for the locale.<p>
+	 * 
+	 * For pre-assembled data, it starts by loading <i>ilib.data[name]</i>, where 
+	 * <i>name</i> is the base name for this set of resources. Then, it successively 
+	 * merges objects in the base data using progressively more locale-specific data. 
+	 * It loads it in this order from <i>ilib.data</i>:
 	 * 
 	 * <ol>
-	 * <li> name + "_" + language
-	 * <li> name + "_" + language + "_" + region
-	 * <li> name + "_" + language + "_" + region + "_" + variant
+	 * <li> language
+	 * <li> region
+	 * <li> language_script
+	 * <li> language_region
+	 * <li> region_variant
+	 * <li> language_script_region
+	 * <li> language_region_variant
+	 * <li> language_script_region_variant
+	 * </ol>
 	 * 
+	 * For dynamically loaded data, the code attempts to load the same sequence as
+	 * above, but with slash path separators instead of underscores.<p>
+	 *  
 	 * Loading the resources this way allows the program to share resources between all
-	 * locales that share a common language, or a common language and region. As a 
+	 * locales that share a common language, region, or script. As a 
 	 * general rule-of-thumb, resources should be as generic as possible in order to
 	 * cover as many locales as possible.
 	 * 
@@ -9967,6 +10333,7 @@ ilib.data.dateformats_fr_CA = {
 		}
 	}
 };
+ilib.data.dateformats_he = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d/M","m":"dd/MM","l":"d בMMM","f":"d בMMMM"},"dmy":{"s":"d.M.yyyy","m":"d בMMM yyyy","l":"d בMMM y","f":"d בMMMM y"},"my":{"s":"M.yyyy","m":"MM/yyyy","l":"MMM y","f":"MMMM y"},"m":{"s":"MM","m":"MM","l":"MMM","f":"MMMM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"s":"yy","l":"yyyy","m":"yy","f":"y"},"dmwy":{"s":"E, d/M/y","m":"E, d/M/y","l":"E, d בMMM y","f":"EEEE, d בMMM y"},"dmw":{"s":"E, d/M","m":"E, d/M","l":"E, d בMMM","f":"EEEE, d בMMM"},"n":{"s":"N","m":"N","l":"MMM","f":"MMMM"}},"time":{"ahmsz":"H:mm:ss z","ahms":"H:mm:ss","hms":"H:mm:ss","ms":"mm:ss","ahmz":"H:mm z","ahm":"H:mm","ah":"H","hm":"H:mm","m":"mm","s":"ss"}}};
 ilib.data.dateformats_id = {
 	"gregorian": {
 		"date": {
@@ -11413,7 +11780,7 @@ ilib.data.dateformats_vi = {
 	}
 }
 ;
-ilib.data.dateformats_xx = {
+ilib.data.dateformats_zxx = {
 	"gregorian": {
 		"order": "{date} {time}",
 		"date": {
@@ -12632,6 +12999,7 @@ ilib.data.sysres_fr_CH = {}
 ;
 ilib.data.sysres_fr_FR = {}
 ;
+ilib.data.sysres_he = {"generated":true,"NN1":"ינ","NN2":"פב","NN3":"מר","NN4":"אפ","NN5":"מא","NN6":"יו","NN7":"יו","NN8":"או","NN9":"ספ","NN10":"או","NN11":"נו","NN12":"דצ","MMM1":"ינו","MMM2":"פבר","MMM3":"מרץ","MMM4":"אפר","MMM5":"מאי","MMM6":"יונ","MMM7":"יול","MMM8":"אוג","MMM9":"ספט","MMM10":"אוק","MMM11":"נוב","MMM12":"דצמ","MMMM1":"ינואר","MMMM2":"פברואר","MMMM3":"מרץ","MMMM4":"אפריל","MMMM5":"מאי","MMMM6":"יוני","MMMM7":"יולי","MMMM8":"אוגוסט","MMMM9":"ספטמבר","MMMM10":"אוקטובר","MMMM11":"נובמבר","MMMM12":"דצמבר","E0":"א'","E1":"ב'","E2":"ג'","E3":"ד'","E4":"ה'","E5":"ו׳","E6":"ש׳","EE0":"א'","EE1":"ב'","EE2":"ג'","EE3":"ד'","EE4":"ה'","EE5":"ו'","EE6":"ש'","EEE0":"יום א׳","EEE1":"יום ב׳","EEE2":"יום ג׳","EEE3":"יום ד׳","EEE4":"יום ה׳","EEE5":"יום ו׳","EEE6":"שבת","EEEE0":"יום ראשון","EEEE1":"יום שני","EEEE2":"יום שלישי","EEEE3":"יום רביעי","EEEE4":"יום חמישי","EEEE5":"יום שישי","EEEE6":"יום שבת","a0":"לפנה״צ","a1":"אחה״צ","G-1":"לפנה״ס","G1":"לסה״נ","#{num}s":"#{num}ש","1#1 se|#{num} sec":"one#{num} שנ׳|two#{num} שנ׳|many#{num} שנ׳|#{num} שנ","1#1 sec|#{num} sec":"one#{num} שניה|many#‏{num} שני|#{num} שני","1#1 second|#{num} seconds":"one#{num} שניה|many#‏{num} שניות|#{num} שניות","durationShortMinutes":"#{num}ד","1#1 mi|#{num} min":"#{num} דק׳","1#1 min|#{num} min":"one#{num} דקה|#{num} דקות","1#1 minute|#{num} minutes":"one#{num} דקה|#{num} דקות","#{num}h":"#{num}ש","durationMediumHours":"one#{num} שעה|#{num} שע","1#1 hr|#{num} hrs":"one#{num} שעה|#{num} שעות","1#1 hour|#{num} hours":"one#{num} שעה|#{num} שעות","#{num}d":"#‏{num} יום","1#1 dy|#{num} dys":"one#{num} יום|#{num} ימ","durationLongDays":"one#‏{num} יום|#{num} ימים","1#1 day|#{num} days":"one#‏{num} יום|#{num} ימים","#{num}w":"#{num}ש","durationMediumWeeks":"#{num} שב","1#1 wk|#{num} wks":"one#{num} שבוע|#{num} שבו","1#1 week|#{num} weeks":"one#{num} שבוע|#{num} שבועות","durationShortMonths":"#{num}ח","1#1 mo|#{num} mos":"#{num} חו","1#1 mon|#{num} mons":"one#{num} חודש|#{num} חוד","1#1 month|#{num} months":"one#{num} חודש|#{num} חודשים","#{num}y":"#{num}ש","durationMediumYears":"one#{num} שנה|#{num} שנ","1#1 yr|#{num} yrs":"one#{num} שנה|#{num} שנים","1#1 year|#{num} years":"one#{num} שנה|#{num} שנים","{duration} ago":"לפני {0} ימים","in {duration}":"בעוד {0} ימים","finalSeparatorFull":" ו","separatorLong":" "};
 ilib.data.sysres_id = {
 	"NN5": "Me",
 	"NN8": "Ag",
@@ -20307,7 +20675,7 @@ ilib.data.currency = {
 	"INR": {
 		"name": "Indian Rupee",
 		"decimals": 2,
-		"sign": "INR"
+		"sign": "₹"
 	},
 	"IQD": {
 		"name": "Iraqi Dinar",
@@ -21146,6 +21514,7 @@ ilib.NumFmt = function (options) {
 					throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
 				}
 				
+				
 				new ilib.Currency({
 					locale: this.locale,
 					code: this.currency,
@@ -21155,15 +21524,29 @@ ilib.NumFmt = function (options) {
 						if (this.style !== "common" && this.style !== "iso") {
 							this.style = "common";
 						}
+				
 						
 						if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
 							this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
 						}
 						
-						templates = this.localeInfo.getCurrencyFormats();
-						this.template = new ilib.String(templates[this.style]);
+						templates = this.localeInfo.getCurrencyFormat();
+						if(this.style ===  "iso"){
+							templates=this.localeInfo.getCurrencyFormats();
+							this.template = new ilib.String(templates[this.style]);
+							this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
+						}
+						else if(typeof(templates) === 'undefined'){
+							
+							templates=this.localeInfo.getCurrencyFormats();
+							this.template = new ilib.String(templates[this.style]);
+							this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
+						}
+						else{
+					
+						this.template = new ilib.String(templates);
 						this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
-						
+					}	
 						if (!this.roundingMode) {
 							this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
 						}
@@ -21177,8 +21560,11 @@ ilib.NumFmt = function (options) {
 				});
 				return;
 			} else if (this.type === "percentage") {
+			
 				this.template = new ilib.String(this.localeInfo.getPercentageFormat());
+					
 			}
+
 
 			this._init();
 			
@@ -21302,7 +21688,7 @@ ilib.NumFmt.prototype = {
 	 */ 
 	_formatStandard: function (num) {
 		var i;
-		
+		var j,k;
 		// console.log("_formatNumberStandard: formatting number " + num);
 		if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
 			var factor = Math.pow(10, this.maxFractionDigits);
@@ -21318,23 +21704,47 @@ ilib.NumFmt.prototype = {
 			integral = parts[0],
 			fraction = parts[1],
 			cycle,
-			groupSize = this.localeInfo.getGroupingDigits(),
+			prigroupSize = this.localeInfo.getPrimaryGroupingDigits(),
+			secgroupSize = this.localeInfo.getSecondaryGroupingDigits(),
+			separator = this.localeInfo.getGroupingSeparator(),
 			formatted;
-		
+			
+		integral = Math.abs(integral);
+		integral = integral.toString();
 		
 		if (this.minFractionDigits > 0) {
 			fraction = this._pad(fraction || "", this.minFractionDigits, false);
 		}
+		
+		if (secgroupSize > 0) {
+			if (integral.length > prigroupSize) {
+				var size1 = prigroupSize;
+				var size2 = integral.length;
+		       	var size3 = size2 - size1;
+				integral = integral.slice(0, size3) + separator + integral.slice(size3);
+				var num_sec = integral.substring(0,integral.indexOf(separator));
+				k = num_sec.length;
+				while (k > secgroupSize) {
+			    	var secsize1 = secgroupSize;
+				   	var secsize2 = num_sec.length;
+					var secsize3 = secsize2 - secsize1;
+					integral = integral.slice(0, secsize3) + separator + integral.slice(secsize3);
+					num_sec = integral.substring(0,integral.indexOf(separator));
+					k = num_sec.length;			
+				}
+			}
 
-		if (groupSize > 0) {
-			cycle = ilib.mod(integral.length-1, groupSize);
+			formatted = negative ? "-" : "";
+			formatted = formatted + integral;
+		} else if (prigroupSize !== 0) {
+			cycle = ilib.mod(integral.length-1, prigroupSize);
 			formatted = negative ? "-" : "";
 			for (i = 0; i < integral.length-1; i++) {
 				formatted += integral.charAt(i);
 				if (cycle === 0) {
-					formatted += this.localeInfo.getGroupingSeparator();
+					formatted += separator;
 				}
-				cycle = ilib.mod(cycle - 1, groupSize);
+				cycle = ilib.mod(cycle - 1, prigroupSize);
 			}
 			formatted += integral.charAt(integral.length-1);
 		} else {
@@ -21364,8 +21774,9 @@ ilib.NumFmt.prototype = {
 		
 		// convert to a real primitive number type
 		n = this._toPrimitive(num);
-		
+				
 		if (this.type === "number") {
+	
 			formatted = (this.style === "scientific") ? 
 					this._formatScientific(n) : 
 					this._formatStandard(n);
@@ -23886,6 +24297,497 @@ ilib.data.name_nl = {
 		"sr"
 	]
 };
+ilib.data.name_zxx = {
+	"prefixes": [
+		"rep",
+		"representative",
+		"senator",
+		"congressman",
+		"congresswoman",
+		"president",
+		"vice president",
+		"vice-president",
+		"mp",
+		"member of parliament",
+		"chief",
+		"justice",
+		"chief justice",
+		"judge",
+		"minister",
+		"prime minister",
+		"governor general",
+		"lieutenant governor",
+		"speaker of the house of commons",
+		"speaker of the house",
+		"speaker of the senate",
+		"supreme court justice",
+		"secretary of state",
+		"mayor",
+		"justice of the peace",
+		"emporer",
+		"chairman",
+		"chairwoman",
+		"alderman",
+		"general secretary",
+		"ambassador",
+		
+		"minister",
+		"cardinal",
+		"bishop",
+		"archbishop",
+		"rabbi",
+		"grand rabbi",
+		"mulah",
+		"mullah",
+		"canon",
+		"cantor",
+		"pastor",
+		"ps",
+		"monsignor",
+		"mgsr",
+		"pope",
+		
+		"chef",
+		"master",
+		"coach",
+		"professor",
+		"prof",
+		"nobel laureate",
+
+		"king",
+		"queen",
+		"prince",
+		"princess",
+		"crown prince",
+		"crown princess",
+		"marquess",
+		"marchioness",
+		"earl",
+		"countess",
+		"count",
+		"archduke",
+		"duke",
+		"duchess",
+		"baron",
+		"baroness",
+		"viscount",
+		
+		"private",
+		"private first class",
+		"corporal",
+		"sargeant",
+		"staff sargeant",
+		"sargeant first class",
+		"master sargeant",
+		"first sargeant",
+		"sargeant major",
+		"command sargeant major",
+		"sargeant major of the army",
+		"pv1",
+		"pv2",
+		"pfc",
+		"spc",
+		"cpl",
+		"sgt",
+		"ssg",
+		"sfc",
+		"msg",
+		"1sg",
+		"sgm",
+		"csm",
+		"sma",
+		"warrant officer",
+		"chief warrant officer",
+		"second lieutenant",
+		"first lieutenant",
+		"captain",
+		"major",
+		"lieutenant colonel",
+		"colonel",
+		"brigadier general",
+		"major general",
+		"lieutenant general",
+		"general",
+		"2lt",
+		"1lt",
+		"cpt",
+		"maj",
+		"ltc",
+		"col",
+		"bg",
+		"mg",
+		"ltg",
+		"gen",
+		"general of the army",
+		"fleet admiral",
+		"admiral",
+		"vice admiral",
+		"rear admiral",
+		"commander",
+		"lieutenant commander",
+		"lieutenant",
+		"lieutenant (junior grade)",
+		"ensign",
+		"fadm",
+		"adm",
+		"vadm",
+		"radm",
+		"rdml",
+		"capt",
+		"cdr",
+		"lcdr",
+		"lt",
+		"ltjg",
+		"ens",
+		"petty officer",
+		"petty officer first class",
+		"petty officer second class",
+		"petty officer third class",
+		"petty officer 1st class",
+		"petty officer 2nd class",
+		"petty officer 3rd class",
+		"po",
+		"po1",
+		"po2",
+		"po3",
+		"chief petty officer",
+		"senior chief petty officer",
+		"master chief petty officer",
+		"cpo",
+		"scpo",
+		"mcpo",
+		"command master chief petty officer",
+		"fleet master chief petty officer",
+		"force master chief petty officer",
+		"cmdcm",
+		"fltcm",
+		"forcm",
+		"master chief petty officer of the navy",
+		"mcpon",
+		"sergeant major of the marine corps",
+		"master gunnery sergeant",
+		"gunnery sergeant",
+		"lance corporal",
+		"sgtmaj",
+		"mgysgt",
+		"1stsgt",
+		"msgt",
+		"gysgt",
+		"ssgt",
+		"sgt",
+		"cpl",
+		"lcpl",
+		"pfc",
+		"pvt",
+		"airman basic",
+		"airman",
+		"airman first class",
+		"senior airman",
+		"technical sergeant",
+		"master sergeant",
+		"senior master sergeant",
+		"chief master sergeant",
+		"command chief master sergeant",
+		"chief master sergeant of the air force",
+		"ab",
+		"amn",
+		"a1c",
+		"sra",
+		"tsgt",
+		"msgt",
+		"smsgt",
+		"cmsgt",
+		"ccm",
+		"cmsaf",
+		"field marshal",
+		"brigadier",
+		"officer cadet",
+		"fm",
+		"lt gen",
+		"maj gen",
+		"brig",
+		"col",
+		"lt col",
+		"maj",
+		"capt",
+		"lt",
+		"2lt",
+		"ocdt",
+		"admiral of the fleet",
+		"marshal",
+		"marshal of the air force",
+		"air marshal",
+		"commodore",
+		"air commodore",
+		"group captain",
+		"lieutenant colonel",
+		"lt colonel",
+		"wing commander",
+		"lt commander",
+		"commandant",
+		"squadron leader",
+		"flight lieutenant",
+		"sub-lieutenant",
+		"flying officer",
+		"ensign",
+		"second lieutenant",
+		"2nd lieutenant",
+		"pilot officer",
+		"midshipman",
+		"warrant officer",
+		"leading seaman",
+		"seaman",
+		"aircraftman",
+		"midshipwoman",
+		"leading seawoman",
+		"seawoman",
+		"aircraftwoman",
+		"vice-admiral",
+		"vadm",
+		"lieutenant-general",
+		"lgen",
+		"rear-admiral",
+		"radm",
+		"major-general",
+		"mgen",
+		"brigadier-general",
+		"bgen",
+		"lieutenant-colonel",
+		"lcol",
+		"naval cadet",
+		"ncdt",
+		"able seaman",
+		"ab",
+		"ordinary seaman",
+		"os",
+		"pte",
+		"master bombardier",
+		"trooper",
+		"bombardier",
+		"sapper",
+		"signalman",
+		"craftsman",
+		"guardsman",
+		"rifleman",
+		"fusilier",
+		
+		"chief of police",
+		"police commissioner",
+		"superintendent",
+		"sheriff",
+		"deputy chief of police",
+		"deputy commissioner",
+		"deputy superintendent",
+		"undersheriff",
+		"deputy sheriff",
+		"inspector",
+		"deputy inspector",
+		"detective",
+		"investigator",
+		"officer",
+		"deputy sheriff",
+		"constable",
+		"police constable",
+		"chief superintendent",
+		"assistant chief constable",
+		"deputy chief constable",
+		"chief constable",
+		"assistant commissioner",
+		"deputy commissioner",
+		"detective constable",
+		"staff inspector",
+		"staff superintendent",
+		"station duty officer",
+		"auxiliary sergeant",
+		"senior constable",
+		"cadet",
+		"probationary constable",
+		"recruit",
+	
+		"sir",
+		"lady",
+		"lord",
+		"dame",
+		"his royal highness",
+		"hrh",
+		"his honour",
+		"his honor",
+		"maestro",
+		"his lordship",
+		"his majesty",
+		"his worship",
+		"the right worshipful",
+		"the worshipful",
+		"the honourable",
+		"the right honourable",
+		"the honorable",
+		"the right honorable",
+		"the hon",
+		"the most noble",
+		"the most honourable",
+		"the most honorable",
+		"the most hon",
+		"the rt hon",
+		"the right honourable and learned",
+		"the right honourable and gallant",
+		"the much honoured",
+		"the right honorable and learned",
+		"the right honorable and gallant",
+		"the much honored",
+		"the much hon",
+		
+		"her royal highness",
+		"her honour",
+		"her honor",
+		"her majesty",
+		"her worship",
+		"his excellency",
+		"her excellency",
+		"his serene highness",
+		"her serene highness",
+		"his most reverend excellency",
+		"her most reverend excellency",
+		"his holiness",
+		"hh",
+		"his all holiness",
+		"hah",
+		"his beatitude",
+		"his eminence",
+		"he",
+		"his beatitude and eminence",
+		"father",
+		"mother",
+		"brother",
+		"br",
+		"sister",
+		"reverend",
+		"rev",
+		"the most reverend",
+		"the most rev",
+		"his grace",
+		"the right reverend",
+		"the rt rev",
+		"the most reverend and right honourable",
+		"the most reverend and right honorable",
+		"the most rev and rt hon",
+		"the right reverend and right honourable monsignor",
+		"the right reverend and right honorable monsignor",
+		"the rt rev and rt hon mgr",
+		"the right reverend and right honourable",
+		"the right reverend and right honorable",
+		"the very reverend",
+		"the very rev",
+		"the reverend monsignor",
+		"the rev msgr",
+		"the venerable",
+		"venerable",
+		"ven",
+		"his imperial majesty",
+		"his imperial and royal majesty",
+		"his apostolic majesty",
+		"his catholic majesty",
+		"his most faithful majesty",
+		"his imperial highness",
+		"his imperial and royal highness",
+		"his royal highness",
+		"his grand ducal highness",
+		"his highness",
+		"his ducal serene highness",
+		"his serene highness",
+		"his illustrious highness",
+		"his highborn",
+		"his grace",
+		"his high well-born",
+		"his excellency",
+		"his high excellency",
+
+		"her imperial majesty",
+		"her imperial and royal majesty",
+		"her apostolic majesty",
+		"her catholic majesty",
+		"her most faithful majesty",
+		"her imperial highness",
+		"her imperial and royal highness",
+		"her royal highness",
+		"her grand ducal highness",
+		"her highness",
+		"her ducal serene highness",
+		"her serene highness",
+		"her illustrious highness",
+		"her highborn",
+		"her grace",
+		"her high well-born",
+		"her excellency",
+		"her high excellency",
+		
+		"him",
+		"hi&rm",
+		"ham",
+		"hcm",
+		"hfm",
+		"hih",
+		"hi&rh",
+		"hrh",
+		"hgdh",
+		"hh",
+		"hdsh",
+		"hsh",
+		"hillh",
+		"he",
+		
+		"the",
+		"and",
+		"or",
+		
+		"aunt",
+		"uncle",
+		"grandma",
+		"grandpa",
+		"granma",
+		"grampa",
+		"cousin"
+	],
+	"suffixes": [
+		"junior",
+		"jr",
+		"senior",
+		"sr",
+		"i",
+		"iii",
+		"iii",
+		"iv",
+		"v",
+		"vi",
+		"vii",
+		"viii",
+		"ix",
+		"x",
+		"2nd",
+		"3rd",
+		"4th",
+		"5th",
+		"6th",
+		"7th",
+		"8th",
+		"9th",
+		"10th",
+		"esquire",
+		"esq",
+		"jd",
+		"phd",
+		"md",
+		"ddm",
+		"dds",
+		"dmv",
+		"bvsc",
+		"ah",
+		"bsc",
+		"ba",
+		"ret",
+		"retired"
+	]
+}
+;
 ilib.data.name_zh = {
 	"format": "{prefix}{familyName}{middleName}{givenName}{suffix}",
 	"nameStyle": "asian",
@@ -27422,6 +28324,7 @@ ilib.data.ctrynames_es = {"generated":false,"afganistán":"AF","argelia":"DZ","s
 ilib.data.ctrynames_es_ES = {"generated":false,"costa de marfil":"CI"};
 ilib.data.ctrynames_fr = {"generated":false,"albanie":"AL","algérie":"DZ","samoa américaines":"AS","andorre":"AD","antigua-et-barbuda":"AG","argentine":"AR","arménie":"AM","australie":"AU","autriche":"AT","azerbaïdjan":"AZ","ivb":"VG","bahreïn":"BH","barbade":"BB","biélorussie":"BY","belgique":"BE","bénin":"BJ","bermudes":"BM","bhoutan":"BT","bolivie":"BO","bosnie-herzégovine":"BA","brésil":"BR","territoire de l’océan indien britannique":"IO","bulgarie":"BG","cambodge":"KH","cameroun":"CM","cap-vert":"CV","caïmans":"KY","république d’afrique centrale":"CF","tchad":"TD","chili":"CL","chine":"CN","colombie":"CO","comores":"KM","îles cook":"CK","croatie":"HR","chypre":"CY","république tchèque":"CZ","côte d’ivoire":"CI","r.d.":"DO","rdc":"CD","république démocratique du congo":"CD","danemark":"DK","dominique":"DM","république dominicaine":"DO","timor oriental":"TL","équateur":"EC","égypte":"EG","guinée équatoriale":"GQ","érythrée":"ER","estonie":"EE","éthiopie":"ET","arym":"MK","îles falkland":"FK","falkland":"FK","îles féroé":"FO","états fédérés de micronésie":"FM","fidji":"FJ","finlande":"FI","ex-république yougoslave de macédoine":"MK","guyane française":"GF","polynésie française":"PF","gambie":"GM","géorgie":"GE","allemagne":"DE","grenade":"GD","grèce":"GR","groenland":"GL","guadeloupe":"GP","guinée":"GN","guinée-bissau":"GW","guyane":"GY","haïti":"HT","hongrie":"HU","islande":"IS","inde":"IN","indonésie":"ID","irak":"IQ","irlande":"IE","israël":"IL","italie":"IT","jamaïque":"JM","japon":"JP","jordanie":"JO","koweït":"KW","kirghizistan":"KG","lettonie":"LV","liban":"LB","libye":"LY","lituanie":"LT","macao":"MO","malaisie":"MY","malte":"MT","marianne":"MP","îles marshall":"MH","mauritanie":"MR","maurice":"MU","mexique":"MX","micronésie":"FM","moldavie":"MD","mongolie":"MN","monténégro":"ME","maroc":"MA","namibie":"NA","népal":"NP","pays-bas":"NL","antilles néerlandaises":"AN","nouvelle-calédonie":"NC","nouvelle-zélande":"NZ","île norfolk":"NF","corée du nord":"KP","îles marianne du nord":"MP","norvège":"NO","palaos":"PW","autorité palestinienne":"PS","panamá":"PA","papouasie-nouvelle-guinée":"PG","république populaire de chine":"CN","pérou":"PE","pologne":"PL","porto rico":"PR","république de chine":"TW","république d’irlande":"IE","roumanie":"RO","russie":"RU","sainte-hélène":"SH","saint-kitts-et-nevis":"KN","sainte-lucie":"LC","saint-vincent":"VC","saint-vincent et les grenadines":"VC","saint-marin":"SM","arabie saoudite":"SA","sénégal":"SN","serbie":"RS","singapour":"SG","saint-martin":"MF","slovaquie":"SK","slovénie":"SI","îles solomon":"SB","somalie":"SO","afrique du sud":"ZA","corée du sud":"KR","espagne":"ES","ste-lucie":"LC","saint-pierre-et-miquelon":"PM","soudan":"SD","suède":"SE","suisse":"CH","syrie":"SY","sao tomé-et-principe":"ST","taïwan":"TW","tadjikistan":"TJ","tanzanie":"TZ","thaïlande":"TH","les bahamas":"BS","îles vierges britanniques":"VG","îles turks et caicos":"TC","îles vierges américaines":"VI","trinité-et-tobago":"TT","tunisie":"TN","turquie":"TR","turkménistan":"TM","éau":"AE","ouganda":"UG","émirats arabes unis":"AE","royaume-uni":"GB","ouzbékistan":"UZ","vatican":"VA","wallis-et-futuna":"WF","yémen":"YE","zambie":"ZM","afghanistan":"AF","îles aland":"AX","angola":"AO","anguilla":"AI","antigua":"AG","arabie":"SA","aruba":"AW","ascension":"SH","i.v.b.":"VG","bahamas":"BS","bangladesh":"BD","barbuda":"AG","bélarus":"BY","belize":"BZ","bermude":"BM","république bolivarienne du venezuela":"VE","bolivie, état plurinational de":"BO","bosnie":"BA","botswana":"BW","île bouvet":"BV","territoire britannique de l’océan indien":"IO","brunéi":"BN","brunéi darussalam":"BN","burkina faso":"BF","burundi":"BI","r.c.a.":"CF","îles caicos":"TC","canada":"CA","îles du cap-vert":"CV","rca":"CF","îles caïmans":"KY","république centrafricaine":"CF","île christmas":"CX","îles cocos et keeling":"CC","îles cocos (keeling)":"CC","îles cocos":"CC","congo":"CD","congo, république démocratique du":"CD","congo, république démocratique":"CD","costa rica":"CR","cuba":"CU","république populaire démocratique de corée":"KP","fjibouti":"DJ","rpdc":"KP","rd":"DO","dubaï":"AE","el salvador":"SV","angleterre":"GB","a.r.y.m.":"MK","malouines":"FK","féroé":"FO","france":"FR","territoires français de l’antarctique":"TF","futuna":"WF","gabon":"GA","ghana":"GH","gibraltar":"GI","grande-bretagne":"GB","grenadines":"VC","guam":"GU","guatemala":"GT","guernesey":"GG","îles heard et mcdonald":"HM","île heard":"HM","île heard et îles mcdonald":"HM","herzégovine":"BA","hollande":"NL","saint-siège":"VA","honduras":"HN","hong kong":"HK","iran":"IR","iran, république islamique":"IR","iraq":"IQ","république islamique d’iran":"IR","île de man":"IM","jan mayen":"SJ","jersey":"JE","kazakhstan":"KZ","kenya":"KE","kiribati":"KI","corée":"KR","corée, république populaire démocratique de":"KP","corée, république de":"KR","république démocratique populaire lao":"LA","laos":"LA","lesotho":"LS","libéria":"LR","jamahiriya arabe libyenne populaire et socialiste":"LY","liechtenstein":"LI","lithuanie":"LT","luxembourg":"LU","macédoine":"MK","macédoine, ex-république yougoslave de":"MK","macédoine, l’ex-république yougoslave de":"MK","madagascar":"MG","malawi":"MW","maldives":"MV","mali":"ML","mariannes":"MP","marshalls":"MH","martinique":"MQ","mayotte":"YT","îles mcdonald":"HM","micronésie, états fédérés de":"FM","miquelon":"PM","moldavie, république de":"MD","monaco":"MC","montserrat":"MS","mozambique":"MZ","myanmar":"MM","nauru":"NR","nevis":"KN","nicaragua":"NI","niger":"NE","nigéria":"NG","îles mariannes du nord":"MP","territoires palestiniens occupés":"PS","oman":"OM","r. p. chine":"CN","r. p. de chine":"CN","r.p. de chine":"CN","pakistan":"PK","palau":"PW","palestine":"PS","territoires palestiniens":"PS","territoires palestiniens, occupés":"PS","panama":"PA","paraguay":"PY","philippines":"PH","pitcairn":"PN","état plurinational de bolivie":"BO","polynésie":"PF","portugal":"PT","rp chine":"CN","rpc":"CN","principe":"ST","qatar":"QA","république de corée":"KR","république de moldavie":"MD","république de singapour":"SG","réunion":"RE","fédération russe":"RU","rwanda":"RW","saint barthélemy":"BL","saint-barthélemy":"BL","sainte-hélène, ascension et tristan da cunha":"SH","saint-kitts":"KN","saint-pierre":"PM","samoa":"WS","sao tomé":"ST","écosse":"GB","seychelles":"SC","sierra leone":"SL","slovakie":"SK","îles salomon":"SB","salomon":"SB","géorgie du sud":"GS","géorgie du sud et îles sandwich du sud":"GS","îles sandwich du sud":"GS","sri lanka":"LK","st. barthélemy":"BL","st barth":"BL","ste hélène":"SH","ste hélène, ascension et tristan da cunha":"SH","st-kitts":"KN","st-kitts-et-nevis":"KN","ste lucie":"LC","st-vincent":"VC","st barthélemy":"BL","st. barth":"BL","st martin":"MF","suriname":"SR","svalbard":"SJ","svalbard et jan mayen":"SJ","swaziland":"SZ","république arabe syrienne":"SY","taiwan":"TW","tanzanie, république unie":"TZ","l’ex-république yougoslave de macédoine":"MK","les grenadines":"VC","les pays-bas":"NL","les philippines":"PH","la république de singapour":"SG","le soudan":"SD","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinité":"TT","tristan da cunha":"SH","îles turks":"TC","tuvalu":"TV","e.a.u.":"AE","r.u.":"GB","é.-u.":"US","eau":"AE","ru":"GB","ukraine":"UA","république unie de tanzanie":"TZ","états-unis":"US","îles mineures éloignées des états-unis":"UM","états-unis d’amérique":"US","uruguay":"UY","é-u":"US","iveu":"VI","vanuatu":"VU","cité du vatican":"VA","état de la cité du vatican":"VA","venezuela":"VE","venezuela, république bolivarienne du":"VE","viêt nam":"VN","vietnam":"VN","îles vierges":"VI","îles vierges, britanniques":"VG","îles vierges, é-u":"VI","pays de galles":"GB","wallis":"WF","sahara occidental":"EH","zimbabwe":"ZW","îles åland":"AX","Île de l’Ascension":"AC","Andorre":"AD","Émirats arabes unis":"AE","Afghanistan":"AF","Antigua-et-Barbuda":"AG","Anguilla":"AI","Albanie":"AL","Arménie":"AM","Antilles néerlandaises":"AN","Angola":"AO","Antarctique":"AQ","Argentine":"AR","Samoa américaines":"AS","Autriche":"AT","Australie":"AU","Aruba":"AW","Îles Åland":"AX","Azerbaïdjan":"AZ","Bosnie-Herzégovine":"BA","Barbade":"BB","Bangladesh":"BD","Belgique":"BE","Burkina Faso":"BF","Bulgarie":"BG","Bahreïn":"BH","Burundi":"BI","Bénin":"BJ","Saint-Barthélémy":"BL","Bermudes":"BM","Brunéi Darussalam":"BN","Bolivie":"BO","Pays-Bas caribéens":"BQ","Brésil":"BR","Bahamas":"BS","Bhoutan":"BT","Île Bouvet":"BV","Botswana":"BW","Bélarus":"BY","Belize":"BZ","Canada":"CA","Îles Cocos [Keeling]":"CC","République démocratique du Congo":"CD","République centrafricaine":"CF","Congo-Brazzaville":"CG","Suisse":"CH","Côte d’Ivoire":"CI","Îles Cook":"CK","Chili":"CL","Cameroun":"CM","Chine":"CN","Colombie":"CO","Île Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Cap-Vert":"CV","Curaçao":"CW","Île Christmas":"CX","Chypre":"CY","République tchèque":"CZ","Allemagne":"DE","Diego Garcia":"DG","Djibouti":"DJ","Danemark":"DK","Dominique":"DM","République dominicaine":"DO","Algérie":"DZ","Ceuta et Melilla":"EA","Équateur":"EC","Estonie":"EE","Égypte":"EG","Sahara occidental":"EH","Érythrée":"ER","Espagne":"ES","Éthiopie":"ET","Union européenne":"EU","Finlande":"FI","Fidji":"FJ","Îles Malouines":"FK","États fédérés de Micronésie":"FM","Îles Féroé":"FO","France":"FR","Gabon":"GA","Royaume-Uni":"GB","Grenade":"GD","Géorgie":"GE","Guyane française":"GF","Guernesey":"GG","Ghana":"GH","Gibraltar":"GI","Groenland":"GL","Gambie":"GM","Guinée":"GN","Guadeloupe":"GP","Guinée équatoriale":"GQ","Grèce":"GR","Géorgie du Sud et les Îles Sandwich du Sud":"GS","Guatemala":"GT","Guam":"GU","Guinée-Bissau":"GW","Guyana":"GY","R.A.S. chinoise de Hong Kong":"HK","Îles Heard et MacDonald":"HM","Honduras":"HN","Croatie":"HR","Haïti":"HT","Hongrie":"HU","Îles Canaries":"IC","Indonésie":"ID","Irlande":"IE","Israël":"IL","Île de Man":"IM","Inde":"IN","Territoire britannique de l'océan Indien":"IO","Irak":"IQ","Iran":"IR","Islande":"IS","Italie":"IT","Jersey":"JE","Jamaïque":"JM","Jordanie":"JO","Japon":"JP","Kenya":"KE","Kirghizistan":"KG","Cambodge":"KH","Kiribati":"KI","Comores":"KM","Saint-Kitts-et-Nevis":"KN","Corée du Nord":"KP","Corée du Sud":"KR","Koweït":"KW","Îles Caïmans":"KY","Kazakhstan":"KZ","Laos":"LA","Liban":"LB","Sainte-Lucie":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Libéria":"LR","Lesotho":"LS","Lituanie":"LT","Luxembourg":"LU","Lettonie":"LV","Libye":"LY","Maroc":"MA","Monaco":"MC","Moldavie":"MD","Monténégro":"ME","Saint-Martin [partie française]":"MF","Madagascar":"MG","Îles Marshall":"MH","Macédoine":"MK","Mali":"ML","Myanmar":"MM","Mongolie":"MN","R.A.S. chinoise de Macao":"MO","Îles Mariannes du Nord":"MP","Martinique":"MQ","Mauritanie":"MR","Montserrat":"MS","Malte":"MT","Maurice":"MU","Maldives":"MV","Malawi":"MW","Mexique":"MX","Malaisie":"MY","Mozambique":"MZ","Namibie":"NA","Nouvelle-Calédonie":"NC","Niger":"NE","Île Norfolk":"NF","Nigéria":"NG","Nicaragua":"NI","Pays-Bas":"NL","Norvège":"NO","Népal":"NP","Nauru":"NR","Niue":"NU","Nouvelle-Zélande":"NZ","Oman":"OM","Panama":"PA","Pérou":"PE","Polynésie française":"PF","Papouasie-Nouvelle-Guinée":"PG","Philippines":"PH","Pakistan":"PK","Pologne":"PL","Saint-Pierre-et-Miquelon":"PM","Pitcairn":"PN","Porto Rico":"PR","Territoire palestinien":"PS","Portugal":"PT","Palaos":"PW","Paraguay":"PY","Qatar":"QA","régions éloignées de l’Océanie":"QO","Réunion":"RE","Roumanie":"RO","Serbie":"RS","Russie":"RU","Rwanda":"RW","Arabie saoudite":"SA","Îles Salomon":"SB","Seychelles":"SC","Soudan":"SD","Suède":"SE","Singapour":"SG","Sainte-Hélène":"SH","Slovénie":"SI","Svalbard et Île Jan Mayen":"SJ","Slovaquie":"SK","Sierra Leone":"SL","Saint-Marin":"SM","Sénégal":"SN","Somalie":"SO","Suriname":"SR","Soudan du Sud":"SS","Sao Tomé-et-Príncipe":"ST","El Salvador":"SV","Saint-Martin [partie néerlandaise]":"SX","Syrie":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Îles Turks et Caïques":"TC","Tchad":"TD","Terres australes françaises":"TF","Togo":"TG","Thaïlande":"TH","Tadjikistan":"TJ","Tokelau":"TK","Timor oriental":"TL","Turkménistan":"TM","Tunisie":"TN","Tonga":"TO","Turquie":"TR","Trinité-et-Tobago":"TT","Tuvalu":"TV","Taïwan":"TW","Tanzanie":"TZ","Ukraine":"UA","Ouganda":"UG","Îles éloignées des États-Unis":"UM","États-Unis":"US","Uruguay":"UY","Ouzbékistan":"UZ","État de la Cité du Vatican":"VA","Saint-Vincent-et-les Grenadines":"VC","Venezuela":"VE","Îles Vierges britanniques":"VG","Îles Vierges des États-Unis":"VI","Viêt Nam":"VN","Vanuatu":"VU","Wallis-et-Futuna":"WF","Samoa":"WS","Yémen":"YE","Mayotte":"YT","Afrique du Sud":"ZA","Zambie":"ZM","Zimbabwe":"ZW","région indéterminée":"ZZ"};
 ilib.data.ctrynames_fr_CA = {"generated":false,"Île de l'Ascension":"AC","Géorgie du Sud et les îles Sandwich du Sud":"GS","Sao Tomé-et-Principe":"ST"};
+ilib.data.ctrynames_he = {"האי אסנשן":"AC","אנדורה":"AD","איחוד האמירויות הערביות":"AE","אפגניסטן":"AF","אנטיגואה וברבודה":"AG","אנגילה":"AI","אלבניה":"AL","ארמניה":"AM","אנטילים הולנדיים":"AN","אנגולה":"AO","אנטארקטיקה":"AQ","ארגנטינה":"AR","סמואה האמריקנית":"AS","אוסטריה":"AT","אוסטרליה":"AU","ארובה":"AW","איי אלנד":"AX","אזרביג׳ן":"AZ","בוסניה והרצגובינה":"BA","ברבדוס":"BB","בנגלדש":"BD","בלגיה":"BE","בורקינה פאסו":"BF","בולגריה":"BG","בחריין":"BH","בורונדי":"BI","בנין":"BJ","סנט ברתולומיאו":"BL","ברמודה":"BM","ברוניי":"BN","בוליביה":"BO","האיים הקריביים ההולנדיים":"BQ","ברזיל":"BR","איי בהאמה":"BS","בהוטן":"BT","איי בובה":"BV","בוטסוואנה":"BW","בלארוס":"BY","בליז":"BZ","קנדה":"CA","איי קוקס [קילינג]":"CC","קונגו - קינשאסה":"CD","הרפובליקה של מרכז אפריקה":"CF","קונגו - ברזאויל":"CG","שווייץ":"CH","חוף השנהב":"CI","איי קוק":"CK","צ׳ילה":"CL","קמרון":"CM","סין":"CN","קולומביה":"CO","האי קליפרטון":"CP","קוסטה ריקה":"CR","קובה":"CU","כף ורדה":"CV","קוראסאו":"CW","איי כריסטמס":"CX","קפריסין":"CY","צ׳כיה":"CZ","גרמניה":"DE","דייגו גרסיה":"DG","ג׳יבוטי":"DJ","דנמרק":"DK","דומיניקה":"DM","הרפובליקה הדומיניקנית":"DO","אלג׳יריה":"DZ","סאוטה ומלייה":"EA","אקוודור":"EC","אסטוניה":"EE","מצרים":"EG","סהרה המערבית":"EH","אריתריאה":"ER","ספרד":"ES","אתיופיה":"ET","האיחוד האירופי":"EU","פינלנד":"FI","פיג׳י":"FJ","איי פוקלנד":"FK","מיקרונזיה":"FM","איי פארו":"FO","צרפת":"FR","גאבון":"GA","בריטניה":"GB","גרנדה":"GD","גאורגיה":"GE","גיאנה הצרפתית":"GF","גרנסי":"GG","גאנה":"GH","גיברלטר":"GI","גרינלנד":"GL","גמביה":"GM","גיניאה":"GN","גוואדלופ":"GP","גיניאה המשוונית":"GQ","יוון":"GR","ג׳ורג׳יה הדרומית ואיי סנדוויץ׳ הדרומיים":"GS","גואטמלה":"GT","גואם":"GU","גיניאה-ביסאו":"GW","גיאנה":"GY","הונג קונג - מחוז מנהלי מיוחד של סין":"HK","איי הרד ואיי מקדונלנד":"HM","הונדורס":"HN","קרואטיה":"HR","האיטי":"HT","הונגריה":"HU","האיים הקנריים":"IC","אינדונזיה":"ID","אירלנד":"IE","ישראל":"IL","האי מאן":"IM","הודו":"IN","טריטוריה בריטית באוקיאנוס ההודי":"IO","עיראק":"IQ","איראן":"IR","איסלנד":"IS","איטליה":"IT","ג׳רסי":"JE","ג׳מייקה":"JM","ירדן":"JO","יפן":"JP","קניה":"KE","קירגיזסטן":"KG","קמבודיה":"KH","קיריבאטי":"KI","קומורוס":"KM","סנט קיטס ונוויס":"KN","צפ' קוריאה":"KP","דר' קוריאה":"KR","כווית":"KW","איי קיימן":"KY","קזחסטן":"KZ","לאוס":"LA","לבנון":"LB","סנט לוסיה":"LC","ליכטנשטיין":"LI","סרי לנקה":"LK","ליבריה":"LR","לסוטו":"LS","ליטא":"LT","לוקסמבורג":"LU","לטביה":"LV","לוב":"LY","מרוקו":"MA","מונקו":"MC","מולדובה":"MD","מונטנגרו":"ME","סנט מרטין":"MF","מדגסקר":"MG","איי מרשל":"MH","מקדוניה":"MK","מאלי":"ML","מיאנמאר [בורמה]‎":"MM","מונגוליה":"MN","מקאו - מחוז מנהלי מיוחד של סין":"MO","איי מריאנה הצפוניים":"MP","מרטיניק":"MQ","מאוריטניה":"MR","מונסראט":"MS","מלטה":"MT","מאוריציוס":"MU","מלדיבים":"MV","מלאווי":"MW","מקסיקו":"MX","מלזיה":"MY","מוזמביק":"MZ","נמיביה":"NA","קלדוניה החדשה":"NC","ניז׳ר":"NE","איי נורפוק":"NF","ניגריה":"NG","ניקרגואה":"NI","הולנד":"NL","נורווגיה":"NO","נפאל":"NP","נאורו":"NR","ניווה":"NU","ניו זילנד":"NZ","עומאן":"OM","פנמה":"PA","פרו":"PE","פולינזיה הצרפתית":"PF","פפואה גיניאה החדשה":"PG","פיליפינים":"PH","פקיסטן":"PK","פולין":"PL","סנט פייר ומיקלון":"PM","איי פיטקרן":"PN","פורטו ריקו":"PR","השטחים הפלסטיניים":"PS","פורטוגל":"PT","פאלאו":"PW","פרגוואי":"PY","קטאר":"QA","אוקיאניה פרושה":"QO","ראוניון":"RE","רומניה":"RO","סרביה":"RS","רוסיה":"RU","רואנדה":"RW","ערב הסעודית":"SA","איי שלמה":"SB","איי סיישל":"SC","סודן":"SD","שוודיה":"SE","סינגפור":"SG","סנט הלנה":"SH","סלובניה":"SI","סוולבארד וז׳אן מאיין":"SJ","סלובקיה":"SK","סיירה לאונה":"SL","סן מרינו":"SM","סנגל":"SN","סומליה":"SO","סורינם":"SR","דרום סודן":"SS","סאו טומה ופרינסיפה":"ST","אל סלבדור":"SV","סינט מארטן":"SX","סוריה":"SY","סווזילנד":"SZ","טריסטן דה קונה":"TA","איי טורקס וקאיקוס":"TC","צ׳אד":"TD","טריטוריות דרומיות של צרפת":"TF","טוגו":"TG","תאילנד":"TH","טג׳יקיסטן":"TJ","טוקלאו":"TK","מזרח טימור":"TL","טורקמניסטן":"TM","תוניסיה":"TN","טונגה":"TO","טורקיה":"TR","טרינידד וטובגו":"TT","טובלו":"TV","טייוואן":"TW","טנזניה":"TZ","אוקראינה":"UA","אוגנדה":"UG","איים לחוף ארצות הברית":"UM","ארצות הברית":"US","אורוגוואי":"UY","אוזבקיסטן":"UZ","הוותיקן":"VA","סנט וינסנט והגרנדינים":"VC","ונצואלה":"VE","איי הבתולה הבריטיים":"VG","איי הבתולה האמריקניים":"VI","וייטנאם":"VN","ונואטו":"VU","איי ווליס ופוטונה":"WF","סמואה":"WS","תימן":"YE","מאיוט":"YT","דרום אפריקה":"ZA","זמביה":"ZM","זימבאבווה":"ZW","אזור לא ידוע":"ZZ"};
 ilib.data.ctrynames_id = {"Pulau Ascension":"AC","Andora":"AD","Uni Emirat Arab":"AE","Afganistan":"AF","Antigua dan Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Antilla Belanda":"AN","Angola":"AO","Antarktika":"AQ","Argentina":"AR","Samoa Amerika":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Kepulauan Aland":"AX","Azerbaijan":"AZ","Bosnia dan Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgia":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthelemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Karibia Belanda":"BQ","Brasil":"BR","Bahama":"BS","Bhutan":"BT","Pulau Bouvet":"BV","Botswana":"BW","Belarus":"BY","Belize":"BZ","Kanada":"CA","Kepulauan Cocos":"CC","Kongo - Kinshasa":"CD","Republik Afrika Tengah":"CF","Kongo - Brazzaville":"CG","Swiss":"CH","Cote d'Ivoire":"CI","Kepulauan Cook":"CK","Cile":"CL","Kamerun":"CM","China":"CN","Kolombia":"CO","Pulau Clipperton":"CP","Kosta Rika":"CR","Kuba":"CU","Tanjung Verde":"CV","Curaçao":"CW","Pulau Christmas":"CX","Siprus":"CY","Republik Cheska":"CZ","Jerman":"DE","Diego Garcia":"DG","Jibuti":"DJ","Denmark":"DK","Dominika":"DM","Republik Dominika":"DO","Aljazair":"DZ","Ceuta dan Melilla":"EA","Ekuador":"EC","Estonia":"EE","Mesir":"EG","Sahara Barat":"EH","Eritrea":"ER","Spanyol":"ES","Etiopia":"ET","Uni Eropa":"EU","Finlandia":"FI","Fiji":"FJ","Kepulauan Malvinas":"FK","Mikronesia":"FM","Kepulauan Faroe":"FO","Prancis":"FR","Gabon":"GA","Inggris":"GB","Grenada":"GD","Georgia":"GE","Guyana Prancis":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grinlandia":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Guinea Ekuatorial":"GQ","Yunani":"GR","Kepulauan South Sandwich dan South Georgia":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hong Kong SAR China":"HK","Pulau Heard dan Kepulauan McDonald":"HM","Honduras":"HN","Kroasia":"HR","Haiti":"HT","Hungaria":"HU","Kepulauan Canary":"IC","Indonesia":"ID","Irlandia":"IE","Israel":"IL","Isle of Man":"IM","India":"IN","Wilayah Inggris di Samudra Hindia":"IO","Irak":"IQ","Iran":"IR","Islandia":"IS","Italia":"IT","Jersey":"JE","Jamaika":"JM","Yordania":"JO","Jepang":"JP","Kenya":"KE","Kirgistan":"KG","Kamboja":"KH","Kiribati":"KI","Komoro":"KM","Saint Kitts dan Nevis":"KN","Korea Utara":"KP","Korea Selatan":"KR","Kuwait":"KW","Kepulauan Kayman":"KY","Kazakstan":"KZ","Laos":"LA","Lebanon":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lituania":"LT","Luksemburg":"LU","Latvia":"LV","Libia":"LY","Maroko":"MA","Monako":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagaskar":"MG","Kepulauan Marshall":"MH","Makedonia":"MK","Mali":"ML","Myanmar":"MM","Mongolia":"MN","Makau SAR China":"MO","Kepulauan Mariana Utara":"MP","Martinik":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maladewa":"MV","Malawi":"MW","Meksiko":"MX","Malaysia":"MY","Mozambik":"MZ","Namibia":"NA","Kaledonia Baru":"NC","Niger":"NE","Kepulauan Norfolk":"NF","Nigeria":"NG","Nikaragua":"NI","Belanda":"NL","Norwegia":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Selandia Baru":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Polinesia Prancis":"PF","Papua Nugini":"PG","Filipina":"PH","Pakistan":"PK","Polandia":"PL","Saint Pierre dan Miquelon":"PM","Kepulauan Pitcairn":"PN","Puerto Riko":"PR","Otoritas Palestina":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Oseania Luar":"QO","Réunion":"RE","Rumania":"RO","Serbia":"RS","Rusia":"RU","Rwanda":"RW","Arab Saudi":"SA","Kepulauan Solomon":"SB","Seychelles":"SC","Sudan":"SD","Swedia":"SE","Singapura":"SG","Saint Helena":"SH","Slovenia":"SI","Kepulauan Svalbard dan Jan Mayen":"SJ","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Suriname":"SR","Sudan Selatan":"SS","Sao Tome dan Principe":"ST","El Salvador":"SV","Sint Maarten":"SX","Suriah":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Kepulauan Turks dan Caicos":"TC","Cad":"TD","Teritori Kutub Selatan Prancis":"TF","Togo":"TG","Thailand":"TH","Tajikistan":"TJ","Tokelau":"TK","Timor Leste":"TL","Turkimenistan":"TM","Tunisia":"TN","Tonga":"TO","Turki":"TR","Trinidad dan Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraina":"UA","Uganda":"UG","Kepulauan Terluar A.S.":"UM","Amerika Serikat":"US","Uruguay":"UY","Uzbekistan":"UZ","Vatikan":"VA","Saint Vincent dan Grenadines":"VC","Venezuela":"VE","Kepulauan Virgin Inggris":"VG","Kepulauan Virgin A.S.":"VI","Vietnam":"VN","Vanuatu":"VU","Kepulauan Wallis dan Futuna":"WF","Samoa":"WS","Yaman":"YE","Mayotte":"YT","Afrika Selatan":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Wilayah Tidak Dikenal":"ZZ"};
 ilib.data.ctrynames_it = {"generated":false,"samoa americane":"AS","antigua e barbuda":"AG","ascensione":"SH","azerbaigian":"AZ","isole vergini britanniche":"VG","bielorussia":"BY","belgio":"BE","bosnia erzegovina":"BA","brasile":"BR","territori britannici dell’oceano indiano":"IO","cambogia":"KH","camerun":"CM","capo verde":"CV","cayman":"KY","repubblica centrafricana":"CF","ciad":"TD","cile":"CL","cina":"CN","isole cook":"CK","croazia":"HR","cipro":"CY","repubblica ceca":"CZ","costa d’avorio":"CI","rep. dominicana":"DO","repubblica democratica del congo":"CD","danimarca":"DK","gibuti":"DJ","repubblica dominicana":"DO","timor est":"TL","egitto":"EG","guinea equatoriale":"GQ","etiopia":"ET","macedonia":"MK","isole falkland":"FK","falkland":"FK","isole fær øer":"FO","stati federati di micronesia":"FM","finlandia":"FI","repubblica ex jugoslava di macedonia":"MK","francia":"FR","guiana francese":"GF","polinesia francese":"PF","germania":"DE","gibilterra":"GI","grecia":"GR","groenlandia":"GL","guadalupa":"GP","ungheria":"HU","islanda":"IS","irlanda":"IE","israele":"IL","italia":"IT","giamaica":"JM","giappone":"JP","giordania":"JO","kenia":"KE","kirghizistan":"KG","lettonia":"LV","libano":"LB","libia":"LY","liechtenstein":"LI","lituania":"LT","lussemburgo":"LU","macao":"MO","malesia":"MY","maldive":"MV","marianne":"MP","isole marshall":"MH","martinica":"MQ","messico":"MX","moldavia":"MD","principato di monaco":"MC","marocco":"MA","mozambico":"MZ","paesi bassi":"NL","antille olandesi":"AN","nuova caledonia":"NC","nuova zelanda":"NZ","isola norfolk":"NF","corea del nord":"KP","isole marianne settentrionali":"MP","norvegia":"NO","autorità palestinese":"PS","papua nuova guinea":"PG","repubblica popolare cinese":"CN","perù":"PE","filippine":"PH","polonia":"PL","portogallo":"PT","porto rico":"PR","repubblica di cona":"TW","ruanda":"RW","sant’elena":"SH","saint kitts e nevis":"KN","santa lucia":"LC","saint pierre e miquelon":"PM","saint-vincent":"VC","saint vincent e le grenadines":"VC","arabia saudita":"SA","slovacchia":"SK","isole salomone":"SB","sudafrica":"ZA","corea del sud":"KR","spagna":"ES","st. pierre e miquelon":"PM","svezia":"SE","svizzera":"CH","siria":"SY","sao tome e principe":"ST","tagikistan":"TJ","tailandia":"TH","le bahamas":"BS","isole cayman":"KY","gambia":"GM","isole turks e caicos":"TC","trinidad e tobago":"TT","turchia":"TR","isole vergini statunitensi":"VI","eau":"AE","ucraina":"UA","emirati arabi uniti":"AE","regno unito":"GB","città del vaticano":"VA","wallis e futuna":"WF","afghanistan":"AF","isole åland":"AX","albania":"AL","algeria":"DZ","andorra":"AD","angola":"AO","anguilla":"AI","antigua":"AG","arabia":"SA","argentina":"AR","armenia":"AM","aruba":"AW","australia":"AU","austria":"AT","bahamas":"BS","bahrain":"BH","bangladesh":"BD","barbados":"BB","barbuda":"AG","belize":"BZ","benin":"BJ","bermuda":"BM","bhutan":"BT","repubblica bolivariana del venezuela":"VE","bolivia":"BO","bolivia, stato plurinazionale della":"BO","bosnia":"BA","botswana":"BW","isola bouvet":"BV","territorio britannico dell'oceano indiano":"IO","brunei":"BN","brunei darussalam":"BN","bulgaria":"BG","burkina faso":"BF","burundi":"BI","isole caicos":"TC","canada":"CA","isole di capo verde":"CV","isola christmas":"CX","isole cocos e keeling":"CC","isole cocos":"CC","colombia":"CO","comoros":"KM","congo":"CD","congo, repubblica democratica del":"CD","costa rica":"CR","cuba":"CU","repubblica democratica popolare di corea":"KP","dominica":"DM","dubai":"AE","ecuador":"EC","el salvador":"SV","inghilterra":"GB","eritrea":"ER","estonia":"EE","isole falklands":"FK","falklands":"FK","isole faeroer":"FO","faeroer":"FO","fiji":"FJ","guyana francese":"GF","territori francesi meridionali":"TF","futuna":"WF","gabon":"GA","georgia":"GE","ghana":"GH","gran bretagna":"GB","grenada":"GD","grenadine":"VC","guam":"GU","guatemala":"GT","guernsey":"GG","guinea":"GN","guinea-bissau":"GW","guyana":"GY","haiti":"HT","isole heard e mcdonald":"HM","isola heard":"HM","isola heard ed isole mcdonald":"HM","erzegovina":"BA","olanda":"NL","santa sede":"VA","honduras":"HN","hong kong":"HK","india":"IN","indonesia":"ID","iran":"IR","repubblica islamica dell'iran":"IR","iraq":"IQ","isola di man":"IM","costa d'avorio":"CI","jan mayen":"SJ","jersey":"JE","kazakistan":"KZ","kiribati":"KI","corea":"KR","corea, repubblica democratica popolare di":"KP","corea, repubblica di":"KR","kuwait":"KW","repubblica popolare democratica del laos":"LA","laos":"LA","lesotho":"LS","liberia":"LR","jamahiriya araba di libia":"LY","macedonia, repubblica ex jugoslava di":"MK","madagascar":"MG","malawi":"MW","mali":"ML","malta":"MT","malvine":"FK","marshall":"MH","mauritania":"MR","mauritius":"MU","mayotte":"YT","isole mcdonald":"HM","micronesia":"FM","micronesia, stati federati della":"FM","miquelon":"PM","moldavia, repubblica di":"MD","monaco":"MC","mongolia":"MN","montenegro":"ME","myanmar":"MM","namibia":"NA","nauru":"NR","nepal":"NP","nevis":"KN","nicaragua":"NI","niger":"NE","nigeria":"NG","territori occupati palestinesi":"PS","oman":"OM","r. p. cinese":"CN","pakistan":"PK","palau":"PW","palestina":"PS","territori palestinesi":"PS","panama":"PA","paraguay":"PY","pitcairn":"PN","stato plurinazionale della bolivia":"BO","polinesia":"PF","principe":"ST","qatar":"QA","repubblica di cina":"TW","repubblica della corea":"KR","repubblica della moldavia":"MD","repubblica di singapore ":"SG","riunione":"RE","romania":"RO","russia":"RU","federazione russa":"RU","saint-barthélemy":"BL","san barth":"BL","sant'elena":"SH","sant'elena, ascensione e tristan da cunha":"SH","saint kitts":"KN","saint-pierre":"PM","saint-pierre e miquelon":"PM","saint vincent":"VC","samoa":"WS","san marino":"SM","sao tome":"ST","scozia":"GB","senegal":"SN","serbia":"RS","seychelles":"SC","sierra leone":"SL","singapore":"SG","slovenia":"SI","salomone":"SB","somalia":"SO","georgia del sud":"GS","georgia del sud e isole sandwich meridionali":"GS","isole sandwich meridionali":"GS","sri lanka":"LK","st. lucia":"LC","st. martin":"MF","saint pierre":"PM","st. vincent":"VC","sudan":"SD","suriname":"SR","svalbard":"SJ","svalbard e jan mayen":"SJ","swaziland":"SZ","repubblica araba di siria":"SY","taiwan":"TW","tanzania":"TZ","tanzania, repubblica unita di":"TZ","le grenadines":"VC","repubblica di singapore":"SG","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinidad":"TT","tristan da cunha":"SH","tunisia":"TN","turkmenistan":"TM","isole turks":"TC","tuvalu":"TV","usa":"US","uganda":"UG","repubblica unita di tanzania":"TZ","stati uniti":"US","isole minori esterne degli stati uniti":"UM","stati uniti d’america":"US","uruguay":"UY","uzbekistan":"UZ","vanuatu":"VU","vaticano":"VA","venezuela":"VE","venezuela, repubblica bolivariana del":"VE","vietnam":"VN","isole vergini":"VI","galles":"GB","wallis":"WF","sahara occidentale":"EH","yemen":"YE","zambia":"ZM","zimbabwe":"ZW","eire":"IE","Isola di Ascensione":"AC","Andorra":"AD","Emirati Arabi Uniti":"AE","Afghanistan":"AF","Antigua e Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Antille Olandesi":"AN","Angola":"AO","Antartide":"AQ","Argentina":"AR","Samoa Americane":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Isole Aland":"AX","Azerbaigian":"AZ","Bosnia Erzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgio":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","San Bartolomeo":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Caraibi Olandesi":"BQ","Brasile":"BR","Bahamas":"BS","Bhutan":"BT","Isola Bouvet":"BV","Botswana":"BW","Bielorussia":"BY","Belize":"BZ","Canada":"CA","Isole Cocos":"CC","Congo - Kinshasa":"CD","Repubblica Centrafricana":"CF","Congo":"CG","Svizzera":"CH","Costa d’Avorio":"CI","Isole Cook":"CK","Cile":"CL","Camerun":"CM","Cina":"CN","Colombia":"CO","Isola di Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Capo Verde":"CV","Curaçao":"CW","Isola di Christmas":"CX","Cipro":"CY","Repubblica Ceca":"CZ","Germania":"DE","Diego Garcia":"DG","Gibuti":"DJ","Danimarca":"DK","Dominica":"DM","Repubblica Dominicana":"DO","Algeria":"DZ","Ceuta e Melilla":"EA","Ecuador":"EC","Estonia":"EE","Egitto":"EG","Sahara Occidentale":"EH","Eritrea":"ER","Spagna":"ES","Etiopia":"ET","Unione Europea":"EU","Finlandia":"FI","Figi":"FJ","Isole Falkland":"FK","Micronesia":"FM","Isole Faroe":"FO","Francia":"FR","Gabon":"GA","Regno Unito":"GB","Grenada":"GD","Georgia":"GE","Guiana Francese":"GF","Guernsey":"GG","Ghana":"GH","Gibilterra":"GI","Groenlandia":"GL","Gambia":"GM","Guinea":"GN","Guadalupa":"GP","Guinea Equatoriale":"GQ","Grecia":"GR","Georgia del Sud e Isole Sandwich del Sud":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","RAS di Hong Kong":"HK","Isole Heard ed Isole McDonald":"HM","Honduras":"HN","Croazia":"HR","Haiti":"HT","Ungheria":"HU","Isole Canarie":"IC","Indonesia":"ID","Irlanda":"IE","Israele":"IL","Isola di Man":"IM","India":"IN","Territorio Britannico dell’Oceano Indiano":"IO","Iraq":"IQ","Iran":"IR","Islanda":"IS","Italia":"IT","Jersey":"JE","Giamaica":"JM","Giordania":"JO","Giappone":"JP","Kenya":"KE","Kirghizistan":"KG","Cambogia":"KH","Kiribati":"KI","Comore":"KM","Saint Kitts e Nevis":"KN","Corea del Nord":"KP","Corea del Sud":"KR","Kuwait":"KW","Isole Cayman":"KY","Kazakistan":"KZ","Laos":"LA","Libano":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lituania":"LT","Lussemburgo":"LU","Lettonia":"LV","Libia":"LY","Marocco":"MA","Monaco":"MC","Moldavia":"MD","Montenegro":"ME","Saint Martin":"MF","Madagascar":"MG","Isole Marshall":"MH","Repubblica di Macedonia":"MK","Mali":"ML","Myanmar":"MM","Mongolia":"MN","RAS di Macao":"MO","Isole Marianne Settentrionali":"MP","Martinica":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldive":"MV","Malawi":"MW","Messico":"MX","Malesia":"MY","Mozambico":"MZ","Namibia":"NA","Nuova Caledonia":"NC","Niger":"NE","Isola Norfolk":"NF","Nigeria":"NG","Nicaragua":"NI","Paesi Bassi":"NL","Norvegia":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Nuova Zelanda":"NZ","Oman":"OM","Panama":"PA","Perù":"PE","Polinesia Francese":"PF","Papua Nuova Guinea":"PG","Filippine":"PH","Pakistan":"PK","Polonia":"PL","Saint Pierre e Miquelon":"PM","Pitcairn":"PN","Portorico":"PR","Territori palestinesi":"PS","Portogallo":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Oceania lontana":"QO","Réunion":"RE","Romania":"RO","Serbia":"RS","Federazione Russa":"RU","Ruanda":"RW","Arabia Saudita":"SA","Isole Solomon":"SB","Seychelles":"SC","Sudan":"SD","Svezia":"SE","Singapore":"SG","Sant’Elena":"SH","Slovenia":"SI","Svalbard e Jan Mayen":"SJ","Slovacchia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Suriname":"SR","Sudan del Sud":"SS","Sao Tomé e Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Siria":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Isole Turks e Caicos":"TC","Ciad":"TD","Territori australi francesi":"TF","Togo":"TG","Tailandia":"TH","Tagikistan":"TJ","Tokelau":"TK","Timor Est":"TL","Turkmenistan":"TM","Tunisia":"TN","Tonga":"TO","Turchia":"TR","Trinidad e Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ucraina":"UA","Uganda":"UG","Isole periferiche agli USA":"UM","Stati Uniti":"US","Uruguay":"UY","Uzbekistan":"UZ","Città del Vaticano":"VA","Saint Vincent e Grenadines":"VC","Venezuela":"VE","Isole Vergini Britanniche":"VG","Isole Vergini Americane":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis e Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Sudafrica":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Regione non valida o sconosciuta":"ZZ"};
 ilib.data.ctrynames_ja = {"アセンション島":"AC","アンドラ":"AD","アラブ首長国連邦":"AE","アフガニスタン":"AF","アンティグア・バーブーダ":"AG","アンギラ":"AI","アルバニア":"AL","アルメニア":"AM","オランダ領アンティル":"AN","アンゴラ":"AO","南極":"AQ","アルゼンチン":"AR","米領サモア":"AS","オーストリア":"AT","オーストラリア":"AU","アルバ":"AW","オーランド諸島":"AX","アゼルバイジャン":"AZ","ボスニア・ヘルツェゴビナ":"BA","バルバドス":"BB","バングラデシュ":"BD","ベルギー":"BE","ブルキナファソ":"BF","ブルガリア":"BG","バーレーン":"BH","ブルンジ":"BI","ベナン":"BJ","サン・バルテルミー島":"BL","バミューダ":"BM","ブルネイ":"BN","ボリビア":"BO","オランダ領カリブ":"BQ","ブラジル":"BR","バハマ":"BS","ブータン":"BT","ブーベ島":"BV","ボツワナ":"BW","ベラルーシ":"BY","ベリーズ":"BZ","カナダ":"CA","ココス[キーリング]諸島":"CC","コンゴ民主共和国[キンシャサ]":"CD","中央アフリカ共和国":"CF","コンゴ共和国[ブラザビル]":"CG","スイス":"CH","コートジボワール":"CI","クック諸島":"CK","チリ":"CL","カメルーン":"CM","中国":"CN","コロンビア":"CO","クリッパートン島":"CP","コスタリカ":"CR","キューバ":"CU","カーボベルデ":"CV","キュラソー":"CW","クリスマス島":"CX","キプロス":"CY","チェコ共和国":"CZ","ドイツ":"DE","ディエゴガルシア島":"DG","ジブチ":"DJ","デンマーク":"DK","ドミニカ国":"DM","ドミニカ共和国":"DO","アルジェリア":"DZ","セウタ・メリリャ":"EA","エクアドル":"EC","エストニア":"EE","エジプト":"EG","西サハラ":"EH","エリトリア":"ER","スペイン":"ES","エチオピア":"ET","欧州連合":"EU","フィンランド":"FI","フィジー":"FJ","フォークランド諸島":"FK","ミクロネシア連邦":"FM","フェロー諸島":"FO","フランス":"FR","ガボン":"GA","イギリス":"GB","グレナダ":"GD","グルジア":"GE","仏領ギアナ":"GF","ガーンジー":"GG","ガーナ":"GH","ジブラルタル":"GI","グリーンランド":"GL","ガンビア":"GM","ギニア":"GN","グアドループ":"GP","赤道ギニア":"GQ","ギリシャ":"GR","南ジョージア島・南サンドイッチ諸島":"GS","グアテマラ":"GT","グアム":"GU","ギニアビサウ":"GW","ガイアナ":"GY","中華人民共和国香港特別行政区":"HK","ハード島・マクドナルド諸島":"HM","ホンジュラス":"HN","クロアチア":"HR","ハイチ":"HT","ハンガリー":"HU","カナリア諸島":"IC","インドネシア":"ID","アイルランド":"IE","イスラエル":"IL","マン島":"IM","インド":"IN","英領インド洋地域":"IO","イラク":"IQ","イラン":"IR","アイスランド":"IS","イタリア":"IT","ジャージー":"JE","ジャマイカ":"JM","ヨルダン":"JO","日本":"JP","ケニア":"KE","キルギス":"KG","カンボジア":"KH","キリバス":"KI","コモロ":"KM","セントクリストファー・ネイビス":"KN","朝鮮民主主義人民共和国":"KP","大韓民国":"KR","クウェート":"KW","ケイマン諸島":"KY","カザフスタン":"KZ","ラオス":"LA","レバノン":"LB","セントルシア":"LC","リヒテンシュタイン":"LI","スリランカ":"LK","リベリア":"LR","レソト":"LS","リトアニア":"LT","ルクセンブルグ":"LU","ラトビア":"LV","リビア":"LY","モロッコ":"MA","モナコ":"MC","モルドバ":"MD","モンテネグロ":"ME","サン・マルタン":"MF","マダガスカル":"MG","マーシャル諸島":"MH","マケドニア":"MK","マリ":"ML","ミャンマー":"MM","モンゴル":"MN","中華人民共和国マカオ特別行政区":"MO","北マリアナ諸島":"MP","マルティニーク":"MQ","モーリタニア":"MR","モントセラト":"MS","マルタ":"MT","モーリシャス":"MU","モルジブ":"MV","マラウイ":"MW","メキシコ":"MX","マレーシア":"MY","モザンビーク":"MZ","ナミビア":"NA","ニューカレドニア":"NC","ニジェール":"NE","ノーフォーク島":"NF","ナイジェリア":"NG","ニカラグア":"NI","オランダ":"NL","ノルウェー":"NO","ネパール":"NP","ナウル":"NR","ニウエ島":"NU","ニュージーランド":"NZ","オマーン":"OM","パナマ":"PA","ペルー":"PE","仏領ポリネシア":"PF","パプアニューギニア":"PG","フィリピン":"PH","パキスタン":"PK","ポーランド":"PL","サンピエール島・ミクロン島":"PM","ピトケアン諸島":"PN","プエルトリコ":"PR","パレスチナ":"PS","ポルトガル":"PT","パラオ":"PW","パラグアイ":"PY","カタール":"QA","オセアニア周辺地域":"QO","レユニオン島":"RE","ルーマニア":"RO","セルビア":"RS","ロシア":"RU","ルワンダ":"RW","サウジアラビア":"SA","ソロモン諸島":"SB","セーシェル":"SC","スーダン":"SD","スウェーデン":"SE","シンガポール":"SG","セントヘレナ":"SH","スロベニア":"SI","スバールバル諸島・ヤンマイエン島":"SJ","スロバキア":"SK","シエラレオネ":"SL","サンマリノ":"SM","セネガル":"SN","ソマリア":"SO","スリナム":"SR","南スーダン":"SS","サントメ・プリンシペ":"ST","エルサルバドル":"SV","シント・マールテン":"SX","シリア":"SY","スワジランド":"SZ","トリスタン・ダ・クーニャ":"TA","タークス・カイコス諸島":"TC","チャド":"TD","仏領極南諸島":"TF","トーゴ":"TG","タイ":"TH","タジキスタン":"TJ","トケラウ":"TK","東ティモール":"TL","トルクメニスタン":"TM","チュニジア":"TN","トンガ":"TO","トルコ":"TR","トリニダード・トバゴ":"TT","ツバル":"TV","台湾":"TW","タンザニア":"TZ","ウクライナ":"UA","ウガンダ":"UG","米領太平洋諸島":"UM","アメリカ":"US","ウルグアイ":"UY","ウズベキスタン":"UZ","バチカン市国":"VA","セントビンセント・グレナディーン諸島":"VC","ベネズエラ":"VE","英領ヴァージン諸島":"VG","米領ヴァージン諸島":"VI","ベトナム":"VN","バヌアツ":"VU","ウォリス・フツナ":"WF","サモア":"WS","イエメン":"YE","マヨット島":"YT","南アフリカ":"ZA","ザンビア":"ZM","ジンバブエ":"ZW","不明な地域":"ZZ"};
@@ -27480,16 +28383,16 @@ ctype.isdigit.js
  * The following is a list of properties that the algorithm will return:<p>
  * 
  * <ul>
- * <li>streetAddress: The street address, including house numbers and all.
- * <li>locality: The locality of this address (usually a city or town). 
- * <li>region: The region where the locality is located. In the US, this
+ * <li><i>streetAddress</i>: The street address, including house numbers and all.
+ * <li><i>locality</i>: The locality of this address (usually a city or town). 
+ * <li><i>region</i>: The region where the locality is located. In the US, this
  * corresponds to states. In other countries, this may be provinces,
  * cantons, prefectures, etc. In some smaller countries, there are no
  * such divisions.
- * <li>postalCode: Country-specific code for expediting mail. In the US, 
+ * <li><i>postalCode</i>: Country-specific code for expediting mail. In the US, 
  * this is the zip code.
- * <li>country: The country of the address.
- * <li>countryCode: The ISO 3166 2-letter region code for the destination
+ * <li><i>country</i>: The country of the address.
+ * <li><i>countryCode</i>: The ISO 3166 2-letter region code for the destination
  * country in this address.
  * </ul> 
  * 
@@ -27500,10 +28403,10 @@ ctype.isdigit.js
  * The options parameter may contain any of the following properties:
  * 
  * <ul>
- * <li>locale - locale or localeSpec to use to parse the address. If not 
+ * <li><i>locale</i> - locale or localeSpec to use to parse the address. If not 
  * specified, this function will use the current ilib locale
  * 
- * <li>onLoad - a callback function to call when the address info for the
+ * <li><i>onLoad</i> - a callback function to call when the address info for the
  * locale is fully loaded and the address has been parsed. When the onLoad 
  * option is given, the address object 
  * will attempt to load any missing locale data using the ilib loader callback.
@@ -27511,7 +28414,7 @@ ctype.isdigit.js
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * 
- * <li>sync - tell whether to load any missing locale data synchronously or 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 
@@ -28008,12 +28911,12 @@ addressprs.js
  * The options object may contain the following properties, both of which are optional:
  *
  * <ul>
- * <li>*locale* - the locale to use to format this address. If not specified, it uses the default locale
+ * <li><i>locale</i> - the locale to use to format this address. If not specified, it uses the default locale
  * 
- * <li>*style* - the style of this address. The default style for each country usually includes all valid 
+ * <li><i>style</i> - the style of this address. The default style for each country usually includes all valid 
  * fields for that country.
  * 
- * <li>onLoad - a callback function to call when the address info for the
+ * <li><i>onLoad</i> - a callback function to call when the address info for the
  * locale is fully loaded and the address has been parsed. When the onLoad 
  * option is given, the address formatter object 
  * will attempt to load any missing locale data using the ilib loader callback.
@@ -28021,7 +28924,7 @@ addressprs.js
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two. 
  * 
- * <li>sync - tell whether to load any missing locale data synchronously or 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 
@@ -28150,6 +29053,356 @@ ilib.AddressFmt.prototype.format = function (address) {
 	return ret.replace(/\n+/g, '\n').trim();
 };
 
+/*
+ * collate.js - Collation routines
+ * 
+ * Copyright © 2013, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends locale.js ilibglobal.js
+
+// !data collation
+
+/**
+ * @class
+ * A class that implements a locale-sensitive comparator function 
+ * for use with sorting function. The comparator function
+ * assumes that the strings it is comparing contain Unicode characters
+ * encoded in UTF-16.<p>
+ * 
+ * Collations usually depend only on the language, because most collation orders 
+ * are shared between locales that speak the same language. There are, however, a
+ * number of instances where a locale collates differently than other locales
+ * that share the same language. There are also a number of instances where a
+ * locale collates differently based on the script used. This object can handle
+ * these cases automatically if a full locale is specified in the options rather
+ * than just a language code.<p>
+ * 
+ * <h2>Options</h2>
+ * 
+ * The options parameter can contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>locale</i> - String|Locale. The locale which the comparator function 
+ * will collate with. Default: the current iLib locale.
+ * 
+ * <li><i>level</i> - String. Strength of collator. This is one of "primary", "secondary", 
+ * "tertiary", or "quaternary". Default: "primary"
+ *   <ol>
+ *   <li>primary - Only the primary distinctions between characters are significant.
+ *   Another way of saying that is that the collator will be case-, accent-, and 
+ *   variation-insensitive, and only distinguish between the base characters
+ *   <li>secondary - Both the primary and secondary distinctions between characters
+ *   are significant. That is, the collator will be accent- and variation-insensitive
+ *   and will distinguish between base characters and character case.
+ *   <li>tertiary - The primary, secondary, and tertiary distinctions between
+ *   characters are all significant. That is, the collator will be 
+ *   variation-insensitive, but accent-, case-, and base-character-sensitive. 
+ *   <li>quaternary - All distinctions between characters are significant. That is,
+ *   the algorithm is base character-, case-, accent-, and variation-sensitive.
+ *   </ol>
+ *   
+ * <li><i>upperFirst</i> - boolean. When collating case-sensitively in a script that
+ * has the concept of case, put upper-case
+ * characters first, otherwise lower-case will come first. Default: true
+ * 
+ * <li><i>reverse</i> - boolean. Return the list sorted in reverse order. When the
+ * upperFirst option is also set to true, upper-case characters would then come at 
+ * the end of the list. Default: false.
+ * 
+ * <li><i>scriptOrder</i> - string. When collating strings in multiple scripts,
+ * this property specifies what order those scripts should be sorted. The default
+ * Unicode Collation Algorithm (UCA) already has a default order for scripts, but
+ * this can be tailored via this property. The value of this option is a 
+ * space-separated list of ISO 15924 scripts codes. If a code is specified in this
+ * property, its default data must be included using the JS assembly tool. If the
+ * data is not included, the ordering for the script will be ignored. Default:
+ * the default order defined by the UCA. 
+ * 
+ * <li><i>style</i> - The value of the style parameter is dependent on the locale.
+ * For some locales, there are different styles of collating strings depending
+ * on what kind of strings are being collated or what the preference of the user 
+ * is. For example, in German, there is a phonebook order and a dictionary ordering
+ * that sort the same array of strings slightly differently.
+ * The static method ilib.Collator.getStyles will return a list of styles that ilib
+ * currently knows about for any given locale. If the value of the style option is 
+ * not recognized for a locale, it will be ignored. Default style is "standard".<p>
+ * 
+ * <li>onLoad - a callback function to call when the collator object is fully 
+ * loaded. When the onLoad option is given, the collator object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ * 
+ * <li>sync - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
+ * </ul>
+ * 
+ * <h2>Operation</h2>
+ * 
+ * The Collator constructor returns a collator object tailored with the above 
+ * options. The object contains an internal compare() method which compares two 
+ * strings according to those options. This can be used directly to compare
+ * two strings, but is not useful for passing to the javascript sort function
+ * because then it will not have its collation data available. Instead, use the 
+ * getComparator() method to retrieve a function that is bound to the collator
+ * object. (You could also bind it yourself using ilib.bind()). The bound function 
+ * can be used with the standard Javascript array sorting algorithm, or as a 
+ * comparator with your own sorting algorithm.<p>
+ * 
+ * Example using the standard Javascript array sorting call with the bound
+ * function:<p>
+ * 
+ * <code>
+ * <pre>
+ * var arr = ["ö", "oe", "ü", "o", "a", "ae", "u", "ß", "ä"];
+ * var collator = ilib.Collator({locale: 'de-DE', style: "dictionary"});
+ * arr.sort(collator.getComparator());
+ * console.log(JSON.stringify(arr));
+ * </pre>
+ * </code>
+ * <p>
+ * 
+ * Would give the output:<p>
+ * 
+ * <code>
+ * <pre>
+ * ["a", "ae", "ä", "o", "oe", "ö", "ß", "u", "ü"]
+ * </pre>
+ * </code>
+ * 
+ * When sorting an array of Javascript objects according to one of the 
+ * string properties of the objects, wrap the collator's compare function 
+ * in your own comparator function that knows the structure of the objects
+ * being sorted:<p>
+ * 
+ * <code>
+ * <pre>
+ * var collator = ilib.Collator({locale: 'de-DE'});
+ * var myComparator = function (collator) {
+ *   var comparator = collator.getComparator();
+ *   // left and right are your own objects
+ *   return function (left, right) {
+ *   	return comparator(left.x.y.textProperty, right.x.y.textProperty);
+ *   };
+ * };
+ * arr.sort(myComparator(collator));
+ * </pre>
+ * </code>
+ * <p>
+ * 
+ * <h2>Sort Keys</h2>
+ * 
+ * The collator class also has a method to retrieve the sort key for a
+ * string. The sort key is an array of values that represent how each  
+ * character in the string should be collated according to the characteristics
+ * of the collation algorithm and the given options. Thus, sort keys can be 
+ * compared directly value-for-value with other sort keys that were generated 
+ * by the same collator, and the resulting ordering is guaranteed to be the 
+ * same as if the original strings were compared by the collator.
+ * Sort keys generated by different collators are not guaranteed to give
+ * any reasonable results when compared together unless the two collators 
+ * were constructed with 
+ * exactly the same options and therefore end up representing the exact same 
+ * collation sequence.<p>
+ * 
+ * A good rule of thumb is that you would use a sort key if you had 10 or more
+ * items to sort or if your array might be resorted arbitrarily. For example, if your 
+ * user interface was displaying a table with 100 rows in it, and each row had
+ * 4 sortable text columns which could be sorted in acending or descending order,
+ * the recommended practice would be to generate a sort key for each of the 4
+ * sortable fields in each row and store that in the Javascript representation of the
+ * table data. Then, when the user clicks on a column header to resort the
+ * table according to that column, the resorting would be relatively quick 
+ * because it would only be comparing arrays of values, and not recalculating 
+ * the collation values for each character in each string for every comparison.<p>
+ * 
+ * For tables that are large, it is usually a better idea to do the sorting
+ * on the server side, especially if the table is the result of a database
+ * query. In this case, the table is usually a view of the cursor of a large
+ * results set, and only a few entries are sent to the front end at a time.
+ * In order to sort the set efficiently, it should be done on the database
+ * level instead.
+ * 
+ * <h2>Data</h2>
+ * 
+ * Doing correct collation entails a huge amount of mapping data, much of which is
+ * not necessary when collating in one language with one script, which is the most
+ * common case. Thus, ilib implements a number of ways to include the data you
+ * need or leave out the data you don't need using the JS assembly tool:
+ * 
+ * <ol>
+ * <li>Full multilingual data - if you are sorting multilingual data and need to collate 
+ * text written in multiple scripts, you can use the directive "!data collation/ducet" to 
+ * load in the full collation data.  This allows the collator to perform the entire 
+ * Unicode Collation Algorithm (UCA) based on the Default Unicode Collation Element 
+ * Table (DUCET). The data is very large, on the order of multiple megabytes, but 
+ * sometimes it is necessary.
+ * <li>A few scripts - if you are sorting text written in only a few scripts, you may 
+ * want to include only the data for those scripts. Each ISO 15924 script code has its
+ * own data available in a separate file, so you can use the data directive to include
+ * only the data for the scripts you need. For example, use  
+ * "!data collation/Latn" to retrieve the collation information for the Latin script.
+ * Because the "ducet" table mentioned in the previous point is a superset of the 
+ * tables for all other scripts, you do not need to include explicitly the data for 
+ * any particular script when using "ducet". That is, you either include "ducet" or 
+ * you include a specific list of scripts.
+ * <li>Only one script - if you are sorting text written only in one script, you can
+ * either include the data directly as in the previous point, or you can rely on the 
+ * locale to include the correct data for you. In this case, you can use the directive
+ * "!data collate" to load in the locale's collation data for its most common script.
+ * </ol>
+ *   
+ * With any of the above ways of including the data, the collator will only perform the
+ * correct language-sensitive sorting for the given locale. All other scripts will be
+ * sorted in the default manner according to the UCA. For example, if you include the
+ * "ducet" data and pass in "de-DE" (German for Germany) as the locale spec, then
+ * only the Latin script (the default script for German) will be sorted according to
+ * German rules. All other scripts in the DUCET, such as Japanese or Arabic, will use 
+ * the default UCA collation rules.<p>
+ * 
+ * If this collator encounters a character for which it has no collation data, it will
+ * sort those characters by pure Unicode value after all characters for which it does have
+ * collation data. For example, if you only loaded in the German collation data (ie. the
+ * data for the Latin script tailored to German) to sort a list of person names, but that
+ * list happens to include the names of a few Japanese people written in Japanese 
+ * characters, the Japanese names will sort at the end of the list after all German names,
+ * and will sort according to the Unicode values of the characters.
+ * 
+ * @param {Object} options options governing how the resulting comparator 
+ * function will operate
+ */
+ilib.Collator = function(options) {
+	// TODO: fill in the collator constructor function
+};
+
+ilib.Collator.prototype = {
+	/**
+	 * Return a comparator function that can compare two strings together
+	 * according to the rules of this collator instance. The function 
+	 * returns a negative number if the left 
+	 * string comes before right, a positive number if the right string comes 
+	 * before the left, and zero if left and right are equivalent. If the
+	 * reverse property was given as true to the collator constructor, this 
+	 * function will
+	 * switch the sign of those values to cause sorting to happen in the
+	 * reverse order.
+	 * 
+	 * @return {function(string,string):number} a comparator function that 
+	 * can compare two strings together according to the rules of this 
+	 * collator instance
+	 */
+	getComparator: function() {
+		// bind the function to this instance so that we have the collation
+		// rules available to do the work
+		return /** @type function(string,string):number */ ilib.bind(this, this.compare);
+	},
+	
+	/**
+	 * Compare two strings together according to the rules of this 
+	 * collator instance. Do not use this function directly with 
+	 * Array.sort, as it will not have its collation data available
+	 * and therefore will not function properly. Use the function
+	 * returned by getComparator() instead.
+	 * 
+	 * @param {string} left the left string to compare
+	 * @param {string} right the right string to compare
+	 * @return {number} a negative number if left comes before right, a
+	 * positive number if right comes before left, and zero if left and 
+	 * right are equivalent according to this collator
+	 */
+	compare: function (left, right) {
+		// TODO: fill in the full comparison algorithm here
+		return (left < right) ? -1 : ((left > right) ? 1 : 0);
+	},
+	
+	/**
+	 * Return a sort key string for the given string. The sort key
+	 * string is a list of values that represent each character 
+	 * in the original string. The sort key
+	 * values for any particular character consists of 3 numbers that
+	 * encode the primary, secondary, and tertiary characteristics
+	 * of that character. The values of each characteristic are 
+	 * modified according to the strength of this collator instance 
+	 * to give the correct collation order. The idea is that this
+	 * sort key string is directly comparable byte-for-byte to 
+	 * other sort key strings generated by this collator without
+	 * any further knowledge of the collation rules for the locale.
+	 * More formally, if a < b according to the rules of this collation, 
+	 * then it is guaranteed that sortkey(a) < sortkey(b) when compared
+	 * byte-for-byte. The sort key string can therefore be used
+	 * without the collator to sort an array of strings efficiently
+	 * because the work of determining the applicability of various
+	 * collation rules is done once up-front when generating 
+	 * the sort key.<p>
+	 * 
+	 * The sort key string can be treated as a regular, albeit somewhat
+	 * odd-looking, string. That is, it can be pass to regular 
+	 * Javascript functions without problems.  
+	 * 
+	 * @param {string} str the original string to generate the sort key for
+	 * @return {string} a sort key string for the given string
+	 */
+	sortKey: function (str) {
+		// TODO: fill in the full sort key algorithm here
+		return str;
+	}
+};
+
+/**
+ * Retrieve the list of collation style names that are available for the 
+ * given locale. This list varies depending on the locale, and depending
+ * on whether or not the data for that locale was assembled into this copy
+ * of ilib.
+ * 
+ * @param {ilib.Locale|string=} locale The locale for which the available
+ * styles are being sought
+ * @return Array.<string> an array of style names that are available for
+ * the given locale
+ */
+ilib.Collator.getAvailableStyles = function (locale) {
+	return [ "standard" ];
+};
+
+/**
+ * Retrieve the list of ISO 15924 script codes that are available in this
+ * copy of ilib. This list varies depending on whether or not the data for 
+ * various scripts was assembled into this copy of ilib. If the "ducet"
+ * data is assembled into this copy of ilib, this method will report the
+ * entire list of scripts as being available. If a collator instance is
+ * instantiated with a script code that is not on the list returned by this
+ * function, it will be ignored and text in that script will be sorted by
+ * numeric Unicode values of the characters.
+ * 
+ * @return Array.<string> an array of ISO 15924 script codes that are 
+ * available
+ */
+ilib.Collator.getAvailableScripts = function () {
+	return [ "Latn" ];
+};
+
 /**
  * @license
  * Copyright © 2012, JEDLSoft
@@ -28218,4 +29471,5 @@ nameprs.js
 namefmt.js
 addressprs.js
 addressfmt.js
+collate.js
 */

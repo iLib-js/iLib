@@ -46,7 +46,7 @@ $(function() {
     var localeInfo;
     var res;
     var pseudorb;
-    var psudoStr;
+    var pseudoStr;
     var localeElement = $('#localeControl');
     
     var localeMap = [],
@@ -696,16 +696,17 @@ $(function() {
 			var str = $('#sampleText').val();
 			
 			options = {
-				locale: "xx-XX",
+				locale: localeName,
 				name: "resources",
+				missing: "pseudo",
 				type: type
 			};
 			
-			if (!pseudorb || pseudorb.getType() !== type) {
+			if (!pseudorb || pseudorb.getType() !== type || pseudorb.getLocale().getSpec() !== localeName) {
 	        	pseudorb = new ilib.ResBundle(options);
 			}
 			pseudoStr = pseudorb.getString(str);
-			pseudoStr = pseudorb.escape(pseudoStr.toString());
+			pseudoStr = pseudorb.escapeXml(pseudoStr.toString());
 			$('.testSubject').html(str + " -> " + pseudoStr);
             break;
             
