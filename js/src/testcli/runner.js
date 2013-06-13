@@ -102,13 +102,13 @@ TestSuite.prototype = {
 				var msg = "FAIL: " + path + ":" + t + "()\n\t";
 				if (typeof(e) === 'object' && e.isJsUnitFailure) {
 					if (e.comment) {
-						msg += " " + e.comment;
+						msg += t + ": " + e.comment;
 					}
 					if (e.jsUnitMessage) {
-						msg += " " + e.jsUnitMessage;
+						msg += t + ": " + e.jsUnitMessage;
 					}
 					if (e.stackTrace) {
-						msg += " " + e.stackTrace;
+						msg += t + ": " + e.stackTrace;
 					}
 				} else {
 					msg = e.toString();
