@@ -46,7 +46,7 @@ $(function() {
     var localeInfo;
     var res;
     var pseudorb;
-    var psudoStr;
+    var pseudoStr;
     var localeElement = $('#localeControl');
     
     var localeMap = [],
@@ -531,7 +531,8 @@ $(function() {
             output += res.getString("Default Time Zone: ") + li.getTimeZone() + "<br/>";
             output += res.getString("Decimal Char: ") + li.getDecimalSeparator() + "<br/>";
             output += res.getString("Digits Group Char: ") + li.getGroupingSeparator() + "<br/>";
-            output += res.getString("Digit Group Size: ") + li.getGroupingDigits() + "<br/>";
+            output += res.getString("Primary Digit Group Size: ") + li.getPrimaryGroupingDigits() + "<br/>";
+            output += res.getString("Secondary Digit Group Size: ") + li.getSecondaryGroupingDigits() + "<br/>";
             output += res.getString("Percentage format: ") + li.getPercentageFormat() + "<br/>";
             output += res.getString("Percentage symbol: ") + li.getPercentageSymbol() + "<br/>";
             output += res.getString("Currency format common: ") + li.getCurrencyFormats().common + "<br/>";
@@ -695,16 +696,17 @@ $(function() {
 			var str = $('#sampleText').val();
 			
 			options = {
-				locale: "xx-XX",
+				locale: localeName,
 				name: "resources",
+				missing: "pseudo",
 				type: type
 			};
 			
-			if (!pseudorb || pseudorb.getType() !== type) {
+			if (!pseudorb || pseudorb.getType() !== type || pseudorb.getLocale().getSpec() !== localeName) {
 	        	pseudorb = new ilib.ResBundle(options);
 			}
 			pseudoStr = pseudorb.getString(str);
-			pseudoStr = pseudorb.escape(pseudoStr.toString());
+			pseudoStr = pseudorb.escapeXml(pseudoStr.toString());
 			$('.testSubject').html(str + " -> " + pseudoStr);
             break;
             

@@ -385,5 +385,8 @@ ilib.data.ilibTutorial = {
 	"zh-SG": "Chinese Simplified (Singapore)",
 	"zh-TW": "Chinese Traditional (Taiwan)",
 	"zh-US": "Chinese Traditional (United States)",
-	"zxx-XX": "Unknown/Pseudo Locale"
+	"zxx-XX": "Unknown/Pseudo Locale/Latin",
+	"zxx-Hans-XX": "Unknown/Pseudo Locale/Chinese",
+	"zxx-Cyrl-XX": "Unknown/Pseudo Locale/Cyrillic",
+	"zxx-Hebr-XX": "Unknown/Pseudo Locale/Hebrew"
 };

@@ -613,10 +613,12 @@ exports.mergeAndPrune = function mergeAndPrune(localeData) {
 			localeData.merged = localeData.data;
 		}
 		for (var prop in localeData) {
+			// util.print("merging " + prop + "\n");
 			if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
 				util.print(prop + " ");
 				localeData[prop].merged = exports.merge(localeData.merged || {}, localeData[prop].data || {});
 				localeData[prop].data = exports.prune(localeData.merged || {}, localeData[prop].data || {});
+				// util.print("recursing\n");
 				exports.mergeAndPrune(localeData[prop]);
 			}
 		}
