@@ -5482,6 +5482,7 @@ ilib.data.localeinfo = {
 }
 ;
 ilib.data.localeinfo_af = {
+"clock" :"12",
 	"language.name": "Afrikaans",
 "numfmt" :{"groupChar":" ","curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
 	"scripts": ["Latn"],
@@ -5586,6 +5587,7 @@ ilib.data.localeinfo_DE = {
 }
 ;
 ilib.data.localeinfo_en = {
+"clock" :"12",
 	"units": "metric",
 	"clock": "24",
 	"calendar": "gregorian",
@@ -5631,6 +5633,7 @@ ilib.data.localeinfo_CA = {
 }
 ;
 ilib.data.localeinfo_en_GB = {
+"clock" :"24",
 "numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
 	"locale": "en-GB"
 }
@@ -5648,6 +5651,7 @@ ilib.data.localeinfo_GB = {
 }
 ;
 ilib.data.localeinfo_en_IE = {
+"clock" :"24",
 "numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
 	"locale": "en-IE"
 }
@@ -10337,7 +10341,7 @@ ilib.data.dateformats_fr_CA = {
 		}
 	}
 };
-ilib.data.dateformats_he = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d/M","m":"dd/MM","l":"d בMMM","f":"d בMMMM"},"dmy":{"s":"d.M.yyyy","m":"d בMMM yyyy","l":"d בMMM y","f":"d בMMMM y"},"my":{"s":"M.yyyy","m":"MM/yyyy","l":"MMM y","f":"MMMM y"},"m":{"s":"MM","m":"MM","l":"MMM","f":"MMMM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"s":"yy","l":"yyyy","m":"yy","f":"y"},"dmwy":{"s":"E, d/M/y","m":"E, d/M/y","l":"E, d בMMM y","f":"EEEE, d בMMM y"},"dmw":{"s":"E, d/M","m":"E, d/M","l":"E, d בMMM","f":"EEEE, d בMMM"},"n":{"s":"N","m":"N","l":"MMM","f":"MMMM"}},"time":{"ahmsz":"H:mm:ss z","ahms":"H:mm:ss","hms":"H:mm:ss","ms":"mm:ss","ahmz":"H:mm z","ahm":"H:mm","ah":"H","hm":"H:mm","m":"mm","s":"ss"}}};
+ilib.data.dateformats_he = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d/M","m":"dd/MM","l":"d בMMM","f":"d בMMMM"},"dmy":{"s":"d.M.yyyy","m":"d בMMM yyyy","l":"d בMMM y","f":"d בMMMM y"},"my":{"s":"M.yyyy","m":"MM/yyyy","l":"MMM y","f":"MMMM y"},"m":{"s":"MM","m":"MM","l":"MMM","f":"MMMM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"s":"yy","l":"yyyy","m":"yy","f":"y"},"dmwy":{"s":"E, d/M/y","m":"EE, d/M/y","l":"EEE, d בMMM y","f":"EEEE, d בMMM y"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d בMMM","f":"EEEE, d בMMM"},"n":{"s":"N","m":"N","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss","ahmz":"XXXXXh:mm a z","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahms":"H:mm:ss","hms":"H:mm:ss","ms":"mm:ss","ahmz":"XXXXX H:mm z","ahm":"H:mm","ah":"H","hm":"H:mm","m":"mm","s":"ss"}},"range":{"c00":{"s":"{st}–{et}{sd}.{sm}.{sy}","m":"{st}–{et}{sd} {sm} {sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy}–{em} {ey}"},"c30":"{sy}–{ey}"}},"generated":true};
 ilib.data.dateformats_id = {
 	"gregorian": {
 		"date": {
