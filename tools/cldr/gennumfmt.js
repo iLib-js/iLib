@@ -235,7 +235,7 @@ function writeNumberFormats(language, script, region, data) {
 		if (anyProperties(data)) {
 			util.print("Writing " + path + "\n");
 
-			var empty_data_default = data["numfmt"]["default"];
+			var empty_data_default = data["numfmt"]["defaults"];
 			var empty_data_native = data["numfmt"]["native"];
 			if ((Object.keys(empty_data_default).length === 0)) {
 				//util.print("no need to create the file " + "\n");
@@ -255,7 +255,7 @@ function writeNumberFormats(language, script, region, data) {
 					default_data[arr_data[i]] = arr_keys_default[i];
 				}
 			}
-			numfmt["default"]=default_data;
+			numfmt["defaults"]=default_data;
 			if(typeof(empty_data_native)!='undefined') {
 			var arr_keys_native = [empty_data_native["decimalChar"], empty_data_native["groupChar"] , empty_data_native["pctChar"], empty_data_native["prigroupSize"], empty_data_native["pctFmt"], empty_data_native["curFmt"], empty_data_native["secgroupSize"], empty_data_native["negativenumFmt"], empty_data_native["negativepctFmt"], empty_data_native["negativecurFmt"], empty_data_native["roundingMode"], empty_data_native["digits"] ];
 
@@ -313,7 +313,7 @@ function getNumberFormats(language, script, region, data) {
 	var native_data={};
 	var numfmt={};
 	default_data = getNumberFormats_num_system(def_num_system,data);
-	numfmt["default"]=default_data;
+	numfmt["defaults"]=default_data;
 	if(native_num_system!=def_num_system) {
 	native_data = getNumberFormats_num_system(native_num_system,data);
 	util.print("the native numbering system  data is ---------------------------------------- " + JSON.stringify(native_data) + "\n");
