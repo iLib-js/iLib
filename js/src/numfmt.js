@@ -345,16 +345,18 @@ ilib.NumFmt.prototype = {
 	_formatStandard: function (num) {
 		var i;
 		var j,k;
-		// console.log("_formatNumberStandard: formatting number " + num);
+		
 		if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
 			var factor = Math.pow(10, this.maxFractionDigits);
 			num = this.round(num * factor) / factor;
 		}
 
 		var negative = (num < 0);
-		if (negative) {
+		/*if (negative) 
+		{
 			num = -num;
-		}
+		}*/
+		num = Math.abs(num);
 		
 		var parts = ("" + num).split("."),
 			integral = parts[0],
@@ -389,12 +391,17 @@ ilib.NumFmt.prototype = {
 					k = num_sec.length;			
 				}
 			}
-
-			formatted = negative ? "-" : "";
+				
+					formatted = negative ? "-" : "";
+				
 			formatted = formatted + integral;
+			
 		} else if (prigroupSize !== 0) {
 			cycle = ilib.mod(integral.length-1, prigroupSize);
-			formatted = negative ? "-" : "";
+			
+					
+					formatted = negative ? "-" : "";
+			
 			for (i = 0; i < integral.length-1; i++) {
 				formatted += integral.charAt(i);
 				if (cycle === 0) {
@@ -404,7 +411,9 @@ ilib.NumFmt.prototype = {
 			}
 			formatted += integral.charAt(integral.length-1);
 		} else {
-			formatted = (negative ? "-" : "") + integral;
+			
+				formatted = (negative ? "-" : "") + integral;
+		
 		}
 		
 		if (fraction && (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits > 0)) {
@@ -412,7 +421,8 @@ ilib.NumFmt.prototype = {
 			formatted += fraction;
 		}
 		
-		// console.log("_formatNumberStandard: returning " + formatted);
+
+		
 		return formatted;
 	},
 	
@@ -432,12 +442,53 @@ ilib.NumFmt.prototype = {
 		n = this._toPrimitive(num);
 				
 		if (this.type === "number") {
+			
 	
 			formatted = (this.style === "scientific") ? 
 					this._formatScientific(n) : 
 					this._formatStandard(n);
-		} else {			
+			
+			if(formatted.indexOf("-")!=-1){
+				
+				if( typeof(this.localeInfo.getNegativeNumberFormat())!== 'undefined'){
+						var temp = formatted.split("-");
+						formatted = temp[1];	
+						
+						var temp_number = this.localeInfo.getNegativeNumberFormat();
+			 	       	        formatted = temp_number.replace("{n}",formatted)
+						
+				   }
+			}
+		} else {
+							
 			formatted = this.template.format({n: this._formatStandard(n), s: this.sign});
+			
+			if(formatted.indexOf("-") != -1){
+				
+				
+				if( typeof(this.localeInfo.getNegativeCurrencyFormat())!== 'undefined'){
+						
+						var temp_number = this.localeInfo.getNegativeCurrencyFormat();
+						if(temp_number === "{s}-{n}" || temp_number === "{s} -{n}" || temp_number === "{s}- {n}"){
+						formatted = temp_number.replace("{s}-{n}",formatted).replace("{s} -{n}",formatted);	
+						}
+						else {
+			 	       	       formatted = temp_number.replace("{n} {s}",formatted).replace("{s}{n}",formatted).replace("{n}{s}",formatted).replace("{s} {n}",formatted);
+					
+						formatted = formatted.replace("-","");
+						
+						}
+				   }
+				else{
+					var temp = "-";
+					temp = temp + formatted;
+					formatted = temp;
+					formatted = formatted.replace(/-([^-]*)$/,'$1');	
+       				  }
+			
+				
+			}
+			
 		}
 		
 		return formatted;
