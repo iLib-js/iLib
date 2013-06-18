@@ -813,3 +813,261 @@ function testGetLocFilesDefaultLocale() {
 	assertEquals(expected.length, f.length);
 	assertArrayEquals(expected, f);
 }
+
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+
+	var returnValues = {
+		"foo.json": {
+			"a": "b",
+			"c": "d",
+			"e": "f"
+		},
+		"en/foo.json": {
+			"c": "x"
+		},
+		"en/US/foo.json": {
+			"e": "y"
+		},
+		"und/US/foo.json": {
+			"c": "m"
+		},
+		"de/foo.json": {
+			"c": "de1"
+		},
+		"de/DE/foo.json": {
+			"a": "a1"
+		},
+		"und/DE/foo.json": {
+			"c": "de2"
+		},
+		"fr/foo.json": {
+			"c": "fr1"
+		}
+	};
+	
+	for (var i = 0; i < paths.length; i++) {
+		data.push(returnValues[paths[i]]);
+	}
+
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	
+	return data;
+}
+
+function testLoadDataCorrectType() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertTrue(typeof(results) === 'object');
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataCorrectItems() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "b",
+				"c": "m",
+				"e": "y"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataWithLocale() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "de-DE",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "a1",
+				"c": "de2",
+				"e": "f"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataWithLocaleMissingParts() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "fr-Latn-FR",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "b",
+				"c": "fr1",
+				"e": "f"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataDefaultLocale() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "b",
+				"c": "m",
+				"e": "y"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+
+function testLoadDataNonJson() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "en-US",
+		type: "other",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertObjectEquals({
+				"e": "y"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataCached() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "b",
+				"c": "m",
+				"e": "y"
+			}, obj.cache["en_US"]);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataNoCache() {
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			// should not crash
+			assertObjectEquals({
+				"a": "b",
+				"c": "m",
+				"e": "y"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataAsynch() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: false,
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "b",
+				"c": "m",
+				"e": "y"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataDefaults() {
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "b",
+				"c": "m",
+				"e": "y"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}

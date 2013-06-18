@@ -588,7 +588,7 @@ ilib._roundFnc = {
  * If data was successfully loaded, it will be set into the cache so that future access to 
  * the same data for the same locale is much quicker.<p>
  * 
- * The parameters can specify any of the following properties:
+ * The parameters can specify any of the following properties:<p>
  * 
  * <ul>
  * <li><i>name</i> - String. The name of the file being loaded.
@@ -667,14 +667,23 @@ ilib.loadData = function(params) {
 						}
 					}
 					
+					if (object) {
+						object.cache[spec] = data;
+					}
 					callback(data);
 				} else {
 					// only returns the most locale-specific file in 0th element
-					callback(arr[0]);
+					if (object) {
+						object.cache[spec] = arr[arr.length-1];
+					}
+					callback(arr[arr.length-1]);
 				}
 			}));
 		} else {
 			// no data other than the generic shared data
+			if (object) {
+				object.cache[spec] = data;
+			}
 			callback(data);
 		}
 	} else {
