@@ -138,7 +138,7 @@ function loadFile_jf(path) {
 		var lastComma = json.lastIndexOf(",");
 		json = json.substring(0, lastComma);
 		ret = JSON.parse("{" + json + "}");
-		ret.generated=true;
+		//ret.generated=true;
 		//util.print("path is :"+path+"\n"); 
 	}
 	return ret;
@@ -248,8 +248,8 @@ function writeNumberFormats(language, script, region, data) {
 			var numfmt = {};
 			var default_data={};
 			var native_data={};
-			var arr_data = ["decimalChar", "groupChar", "pctChar", "prigroupSize", "pctFmt", "curFmt", "secgroupSize", "negativenumFmt", "negativepctFmt", "negativecurFmt", "roundingMode" , "digits"];
-			var arr_keys_default = [empty_data_default["decimalChar"], empty_data_default["groupChar"] , empty_data_default["pctChar"], empty_data_default["prigroupSize"], empty_data_default["pctFmt"], empty_data_default["curFmt"], empty_data_default["secgroupSize"], empty_data_default["negativenumFmt"], empty_data_default["negativepctFmt"], empty_data_default["negativecurFmt"], empty_data_default["roundingMode"], empty_data_default["digits"] ];
+			var arr_data = ["script", "decimalChar", "groupChar", "pctChar", "exponential", "prigroupSize", "pctFmt", "curFmt", "secgroupSize", "negativenumFmt", "negativepctFmt", "negativecurFmt", "roundingMode" , "digits"];
+			var arr_keys_default = [empty_data_default["script"], empty_data_default["decimalChar"], empty_data_default["groupChar"] , empty_data_default["pctChar"], empty_data_default["exponential"], empty_data_default["prigroupSize"], empty_data_default["pctFmt"], empty_data_default["curFmt"], empty_data_default["secgroupSize"], empty_data_default["negativenumFmt"], empty_data_default["negativepctFmt"], empty_data_default["negativecurFmt"], empty_data_default["roundingMode"], empty_data_default["digits"] ];
 
 			for (var i = 0; i < arr_data.length; i++) {
 				if (typeof (arr_keys_default[i]) != undefined) {
@@ -258,7 +258,7 @@ function writeNumberFormats(language, script, region, data) {
 			}
 			numfmt["numfmt"]=default_data;
 			if(typeof(empty_data_native)!='undefined') {
-			var arr_keys_native = [empty_data_native["decimalChar"], empty_data_native["groupChar"] , empty_data_native["pctChar"], empty_data_native["prigroupSize"], empty_data_native["pctFmt"], empty_data_native["curFmt"], empty_data_native["secgroupSize"], empty_data_native["negativenumFmt"], empty_data_native["negativepctFmt"], empty_data_native["negativecurFmt"], empty_data_native["roundingMode"], empty_data_native["digits"] ];
+			var arr_keys_native = [empty_data_native["script"], empty_data_native["decimalChar"], empty_data_native["groupChar"] , empty_data_native["pctChar"], empty_data_native["exponential"], empty_data_native["prigroupSize"], empty_data_native["pctFmt"], empty_data_native["curFmt"], empty_data_native["secgroupSize"], empty_data_native["negativenumFmt"], empty_data_native["negativepctFmt"], empty_data_native["negativecurFmt"], empty_data_native["roundingMode"], empty_data_native["digits"] ];
 
 			for (var i = 0; i < arr_data.length; i++) {
 				if (typeof (arr_keys_native[i]) != 'undefined') {
@@ -311,11 +311,11 @@ function getNumberFormats(language, script, region, data) {
 	var def_num_system = symbols.defaultNumberingSystem;
 	var native_num_system =symbols["otherNumberingSystems"]["native"];
 
-	util.print("the language is  " + JSON.stringify(language) + "\n");
-	util.print("the script is  " + JSON.stringify(script) + "\n");
-	util.print("the region is  " + JSON.stringify(region) + "\n");
-	util.print("the default numbering system is " + JSON.stringify(def_num_system) + "\n");
-	util.print("the native numbering system is " + JSON.stringify(native_num_system) + "\n");
+	//util.print("the language is  " + JSON.stringify(language) + "\n");
+	//util.print("the script is  " + JSON.stringify(script) + "\n");
+	//util.print("the region is  " + JSON.stringify(region) + "\n");
+	//util.print("the default numbering system is " + JSON.stringify(def_num_system) + "\n");
+	//util.print("the native numbering system is " + JSON.stringify(native_num_system) + "\n");
 	var default_data={};
 	var native_data={};
 	var numfmt={};
@@ -413,10 +413,13 @@ function getNumberFormats_num_system(def_num_system, data) {
 
 	percent_format = percent_format.replace(/'(.)+'/g, "");
 	var pctFmt = percent_format.replace(/[0#,\.]+/, "{n}");
-
+	//if(def_num_system == "latn") {
+	symbol_format_data["script"] = def_num_system;
+	//}
 	symbol_format_data["decimalChar"] = decimal_separator;
 	symbol_format_data["groupChar"] = group_separator;
 	symbol_format_data["pctChar"]=symbol_format["percentSign"];
+	symbol_format_data["exponential"]=symbol_format["exponential"];
 	symbol_format_data["prigroupSize"] = primarygroupsize;
 	symbol_format_data["secgroupSize"] = secondarygroupsize;
 	//    symbol_format_data["pctFmt"]=pctFmt; 
@@ -489,8 +492,9 @@ function getNumberFormats_num_system(def_num_system, data) {
 	
 	util.print("native digits are...................." + JSON.stringify(native_digits) + "===================" + "\n");
 	
-	
+	if(native_digits!==0123456789) {
 	symbol_format_data["digits"]= native_digits;
+	}
 	//numbers["numfmt"] = symbol_format_data;
 
 	return symbol_format_data;
