@@ -632,7 +632,7 @@ function testMergeLocDataMissingLocaleParts() {
 
 function testGetLocFilesLanguageOnly() {
 	var locale = new ilib.Locale("en");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json"
@@ -644,7 +644,7 @@ function testGetLocFilesLanguageOnly() {
 
 function testGetLocFilesRegionOnly() {
 	var locale = new ilib.Locale("US");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"und/US/localeinfo.json"
@@ -656,7 +656,7 @@ function testGetLocFilesRegionOnly() {
 
 function testGetLocFilesLangScript() {
 	var locale = new ilib.Locale("en-Latn");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -669,7 +669,7 @@ function testGetLocFilesLangScript() {
 
 function testGetLocFilesLangRegion() {
 	var locale = new ilib.Locale("en-US");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -683,7 +683,7 @@ function testGetLocFilesLangRegion() {
 
 function testGetLocFilesLangVariant() {
 	var locale = new ilib.Locale("en-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json"
@@ -695,7 +695,7 @@ function testGetLocFilesLangVariant() {
 
 function testGetLocFilesScriptRegion() {
 	var locale = new ilib.Locale("Latn-US");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"und/US/localeinfo.json"
@@ -707,7 +707,7 @@ function testGetLocFilesScriptRegion() {
 
 function testGetLocFilesRegionVariant() {
 	var locale = new ilib.Locale("US-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"und/US/localeinfo.json",
@@ -720,7 +720,7 @@ function testGetLocFilesRegionVariant() {
 
 function testGetLocFilesLangScriptRegion() {
 	var locale = new ilib.Locale("en-Latn-US");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -736,7 +736,7 @@ function testGetLocFilesLangScriptRegion() {
 
 function testGetLocFilesLangScriptVariant() {
 	var locale = new ilib.Locale("en-Latn-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -749,7 +749,7 @@ function testGetLocFilesLangScriptVariant() {
 
 function testGetLocFilesLangRegionVariant() {
 	var locale = new ilib.Locale("en-US-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -765,7 +765,7 @@ function testGetLocFilesLangRegionVariant() {
 
 function testGetLocFilesAll() {
 	var locale = new ilib.Locale("en-US-Latn-govt");
-	var f = ilib.getLocFiles(locale, "localeinfo");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -802,7 +802,7 @@ function testGetLocFilesNoBasename() {
 }
 
 function testGetLocFilesDefaultLocale() {
-	var f = ilib.getLocFiles(undefined, "localeinfo");
+	var f = ilib.getLocFiles(undefined, "localeinfo.json");
 	var expected = [
 		"localeinfo.json",
 		"en/localeinfo.json",
@@ -812,4 +812,262 @@ function testGetLocFilesDefaultLocale() {
 	
 	assertEquals(expected.length, f.length);
 	assertArrayEquals(expected, f);
+}
+
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+
+	var returnValues = {
+		"foo.json": {
+			"a": "b",
+			"c": "d",
+			"e": "f"
+		},
+		"en/foo.json": {
+			"c": "x"
+		},
+		"en/US/foo.json": {
+			"e": "y"
+		},
+		"und/US/foo.json": {
+			"c": "m"
+		},
+		"de/foo.json": {
+			"c": "de1"
+		},
+		"de/DE/foo.json": {
+			"a": "a1"
+		},
+		"und/DE/foo.json": {
+			"c": "de2"
+		},
+		"fr/foo.json": {
+			"c": "fr1"
+		}
+	};
+	
+	for (var i = 0; i < paths.length; i++) {
+		data.push(returnValues[paths[i]]);
+	}
+
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	
+	return data;
+}
+
+function testLoadDataCorrectType() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertTrue(typeof(results) === 'object');
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataCorrectItems() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "b",
+				"c": "m",
+				"e": "y"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataWithLocale() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "de-DE",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "a1",
+				"c": "de2",
+				"e": "f"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataWithLocaleMissingParts() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "fr-Latn-FR",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "b",
+				"c": "fr1",
+				"e": "f"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataDefaultLocale() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "b",
+				"c": "m",
+				"e": "y"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+
+function testLoadDataNonJson() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "en-US",
+		type: "other",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertObjectEquals({
+				"e": "y"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataCached() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "b",
+				"c": "m",
+				"e": "y"
+			}, obj.cache["en_US"]);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataNoCache() {
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			// should not crash
+			assertObjectEquals({
+				"a": "b",
+				"c": "m",
+				"e": "y"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataAsynch() {
+	var obj = {};
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		object: obj,
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: false,
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "b",
+				"c": "m",
+				"e": "y"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
+}
+
+function testLoadDataDefaults() {
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.json",
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "b",
+				"c": "m",
+				"e": "y"
+			}, results);
+		}
+	});
+	ilib._load = undefined;
 }

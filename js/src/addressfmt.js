@@ -88,24 +88,38 @@ ilib.AddressFmt = function(options) {
 	}
 
 	// console.log("Creating formatter for region: " + this.locale.region);
-	ilib.loadData(ilib.Address, this.locale, "address", this.sync, this.loadParams, /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
-		if (!info || ilib.isEmpty(info)) {
-			// load the "unknown" locale instead
-			ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, this.loadParams, /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
+	ilib.loadData({
+		name: "address.json",
+		object: ilib.Address, 
+		locale: this.locale,
+		sync: this.sync, 
+		loadParams: this.loadParams, 
+		callback: /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
+			if (!info || ilib.isEmpty(info)) {
+				// load the "unknown" locale instead
+				ilib.loadData({
+					name: "address.json",
+					object: ilib.Address, 
+					locale: new ilib.Locale("XX"),
+					sync: this.sync, 
+					loadParams: this.loadParams, 
+					callback: /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
+						this.info = info;
+						this._init();
+						if (typeof(options.onLoad) === 'function') {
+							options.onLoad(this);
+						}
+					})
+				});
+			} else {
 				this.info = info;
 				this._init();
 				if (typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
-				}	
-			}));
-		} else {
-			this.info = info;
-			this._init();
-			if (typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
+				}
 			}
-		}
-	}));
+		})
+	});
 };
 
 /**
