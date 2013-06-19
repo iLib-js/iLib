@@ -239,6 +239,14 @@ ilib.LocaleInfo.prototype = {
 	getPercentageSymbol: function () {
 		return this.info.numfmt.pctChar || "%";
 	},
+	
+	getNegativeNumberFormat: function () { 
+			return this.info.numfmt.negativenumFmt;
+	},
+	
+	getNegativeCurrencyFormat: function () { 
+			return this.info.numfmt.negativecurFmt;
+	},
 
 	/**
 	 * Return an object containing the format templates for formatting currencies
