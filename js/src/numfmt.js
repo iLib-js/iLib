@@ -91,11 +91,13 @@ strings.js
  * not specified.<p>
  * 
  * When the type of this formatter is "number",
- * the style can be either "standard" or "scientific". A "standard" style means a fully
- * specified floating point number formatted for the locale, whereas "scientific" uses
+ * the style can be either "standard" or "scientific" or "native". A "standard" style means 
+ * a fully specified floating point number formatted for the locale, whereas "scientific" uses
  * scientific notation for all numbers. That is, 1 integral digit, followed by a number
  * of fractional digits, followed by an "e" which denotes exponentiation, followed digits
- * which give the power of 10 in the exponent. Note that if you specify a maximum number
+ * which give the power of 10 in the exponent. The native style will format a floating point 
+ * number using the native digits and formatting symbols for the script of the locale. Note 
+ * that if you specify a maximum number
  * of integral digits, the formatter with a standard style will give you standard 
  * formatting for smaller numbers and scientific notation for larger numbers. The default
  * is standard style if this is not specified.
@@ -455,7 +457,7 @@ ilib.NumFmt.prototype = {
 						formatted = temp[1];	
 						
 						var temp_number = this.localeInfo.getNegativeNumberFormat();
-			 	       	        formatted = temp_number.replace("{n}",formatted)
+			 	       	        formatted = temp_number.replace("{n}",formatted);
 						
 				   }
 			}

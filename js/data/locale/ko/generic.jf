@@ -1,7 +1,0 @@
-	"calendar": "gregorian",
-	"firstDayOfWeek": 0,
-	"units": "metric",
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "3R"
-	},

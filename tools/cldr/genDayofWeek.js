@@ -112,7 +112,7 @@ for (var day_of_week in firstDayOfWeekData) {
 		var dayProperties = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 		for (var i=0;i<7;i++){
 		if(firstDayOfWeekData[day_of_week]===dayProperties[i]){
-		fs.writeFile(filename + "/day_of_week.jf", '\t"day_of_week": ' + /*JSON.stringify(firstDayOfWeekData[day_of_week]) */i+ ',\n', function (err) {
+		fs.writeFile(filename + "/firstdayofweek.jf", '\t"firstDayOfWeek": ' + /*JSON.stringify(firstDayOfWeekData[day_of_week]) */i+ ',\n', function (err) {
 						if (err) {
 						console.log(err);
 						throw err;

@@ -1,24 +1,24 @@
 /* 
- * genclockprefs.js - ilib tool to generate the  clock json fragments from  
- * the CLDR data files 
- *  
- * Copyright © 2013, LGE 
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
- * You may obtain a copy of the License at 
- * 
- *     http://www.apache.org/licenses/LICENSE-2.0 
- * 
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an "AS IS" BASIS, 
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
- * 
- * See the License for the specific language governing permissions and 
- * limitations under the License. 
+ * genclockprefs.js - ilib tool to generate the  clock json fragments from
+ * the CLDR data files
+ *
+ * Copyright © 2013, LGE
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 /* 
- * This code is intended to be run under node.js  
+ * This code is intended to be run under node.js
  */
 var fs = require('fs');
 var util = require('util');
@@ -44,10 +44,10 @@ var cldrDirName;
 var localeDirName;
 
 process.argv.forEach(function (val, index, array) {
-		if (val === "-h" || val === "--help") {
-			usage();
-		}
-	});
+	if (val === "-h" || val === "--help") {
+		usage();
+	}
+});
 
 if (process.argv.length < 4) {
 	util.error('Error: not enough arguments');
@@ -64,18 +64,18 @@ util.print("CLDR dir: " + cldrDirName + "\n");
 util.print("locale dir: " + localeDirName + "\n");
 
 fs.exists(cldrDirName, function (exists) {
-		if (!exists) {
-			util.error("Could not access CLDR dir " + cldrDirName);
-			usage();
-		}
-	});
+	if (!exists) {
+		util.error("Could not access CLDR dir " + cldrDirName);
+		usage();
+	}
+});
 
 fs.exists(localeDirName, function (exists) {
-		if (!exists) {
-			util.error("Could not access locale data directory " + localeDirName);
-			usage();
-		}
-	});
+	if (!exists) {
+		util.error("Could not access locale data directory " + localeDirName);
+		usage();
+	}
+});
 
 var filename, root, json, suppData, languageData, scripts = {};
 
@@ -235,8 +235,8 @@ function writeClockPrefs(language, script, region, data) {
 			makeDirs(path);
 
 			//util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data["clock"])+"\n"); 
-			if(data["clock"]!=undefined){
-			fs.writeFileSync(path + "/clock.jf", '\"clock\" :' + JSON.stringify(data["clock"]) + ',\n', "utf-8");
+			if (data["clock"] != undefined) {
+				fs.writeFileSync(path + "/clock.jf", '\"clock\" :' + JSON.stringify(data["clock"]) + ',\n', "utf-8");
 			}
 		} else {
 			util.print("Skipping empty " + path + "\n");
@@ -261,18 +261,16 @@ function getClockPrefs(language, script, region, data) {
 	clockprefs = {
 		generated: true
 	};
-	var default_calendar=data.dates.calendars["default"];
-	var timeformat=	data.dates.calendars[default_calendar]["timeFormats"]["short"]["timeFormat"]["pattern"];
-	if(timeformat.indexOf("H")!=-1){
-	clockprefs["clock"]="24";
+	var default_calendar = data.dates.calendars["default"];
+	var timeformat = data.dates.calendars[default_calendar]["timeFormats"]["short"]["timeFormat"]["pattern"];
+	if (timeformat.indexOf("H") != -1) {
+		clockprefs["clock"] = "24";
+	} else if (timeformat.indexOf("h") != -1) {
+		clockprefs["clock"] = "12";
+	} else {
+		util.print("could not find default clock preference \n");
 	}
-	else if(timeformat.indexOf("h")!=-1){
-	clockprefs["clock"]="12";
-	}
-	else{
-	util.print("could not find default clock preference \n");
-	}
-	
+
 	//util.print("time format is :"+JSON.stringify(timeformat)+"\n");
 	//util.print("clock preference is :"+JSON.stringify(clockprefs)+"\n");
 	return clockprefs;
@@ -291,8 +289,8 @@ for (var i = 0; i < files.length; i++) {
 	} else {
 		locale = file.split(/\./)[0].replace(/_/g, "-");
 		var l = new Locale(locale);
-		if(typeof(l.getVariant())==='undefined') {
-		getLocaleData(file, l.getLanguage(), l.getScript(), l.getRegion());
+		if (typeof (l.getVariant()) === 'undefined') {
+			getLocaleData(file, l.getLanguage(), l.getScript(), l.getRegion());
 		}
 	}
 }
@@ -308,7 +306,7 @@ resources.data = getClockPrefs(undefined, undefined, undefined, localeData.data)
 for (language in localeData) {
 	if (language && localeData[language] && language !== 'data' && language !== 'merged') {
 		resources[language] = resources[language] || {};
-		util.print(language + " "); 
+		util.print(language + " ");
 		for (var subpart in localeData[language]) {
 			if (subpart && localeData[language][subpart] && subpart !== 'data' && subpart !== 'merged') {
 				resources[language][subpart] = resources[language][subpart] || {};
@@ -358,5 +356,5 @@ for (language in resources) {
 	}
 }
 
-writeClockPrefs(undefined, undefined, undefined, resources.data); 
+writeClockPrefs(undefined, undefined, undefined, resources.data);
 process.exit(0);

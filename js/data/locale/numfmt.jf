@@ -1,3 +1,4 @@
+{
 	"numfmt": {
 		"decimalChar": ",",
 		"groupChar": ".",
@@ -5,4 +6,5 @@
 		"pctFmt": "{n}%",
 		"pctChar": "%",
 		"roundingMode": "halfdown"
-	},
+	}
+}
