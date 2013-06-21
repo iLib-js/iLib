@@ -231,12 +231,14 @@ function writeQuotationChars(language, script, region, data) {
 	if (data.generated) {
 		if (anyProperties(data)) {
 			util.print("Writing " + path + "\n");
-
+			//var delimiters={};
+			//makeDirs(path);
+			if ((Object.keys(data["delimiter"]).length !== 0))	{
+			data.generated=true;
 			makeDirs(path);
-
-			
 			//if(data=undefined){
-			fs.writeFileSync(path + "/delimiters.jf", '\"delimiters\" :' + JSON.stringify(data["delimiter"]) + ',\n', "utf-8");
+			fs.writeFileSync(path + "/delimiters.jf", JSON.stringify(data) , "utf-8");
+			}
 			//}
 		} else {
 			util.print("Skipping empty " + path + "\n");
