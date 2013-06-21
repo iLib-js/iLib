@@ -243,7 +243,7 @@ function writeNumberFormats(language, script, region, data) {
 				return;
 			}
 
-			makeDirs(path);
+			//makeDirs(path);
 
 			var numfmt = {};
 			var default_data={};
@@ -256,7 +256,13 @@ function writeNumberFormats(language, script, region, data) {
 					default_data[arr_data[i]] = arr_keys_default[i];
 				}
 			}
-			numfmt["numfmt"]=default_data;
+			if(typeof(default_data)!='undefined') {
+				if ((Object.keys(default_data).length !== 0)) {
+				numfmt["numfmt"]=default_data;
+				}
+			
+		}
+			
 			if(typeof(empty_data_native)!='undefined') {
 			var arr_keys_native = [empty_data_native["script"], empty_data_native["decimalChar"], empty_data_native["groupChar"] , empty_data_native["pctChar"], empty_data_native["exponential"], empty_data_native["prigroupSize"], empty_data_native["pctFmt"], empty_data_native["curFmt"], empty_data_native["secgroupSize"], empty_data_native["negativenumFmt"], empty_data_native["negativepctFmt"], empty_data_native["negativecurFmt"], empty_data_native["roundingMode"], empty_data_native["digits"] ];
 
@@ -265,7 +271,12 @@ function writeNumberFormats(language, script, region, data) {
 					native_data[arr_data[i]] = arr_keys_native[i];
 				}
 			}
-			numfmt["native"]=native_data;
+		}
+			if(typeof(native_data)!='undefined') {
+				if ((Object.keys(native_data).length !== 0)) {
+				numfmt["native"]=native_data;
+				}
+			
 		}
 			/*if(typeof (empty_data_default["digits"]) != 'undefined'){
 			if ((Object.keys(empty_data_default["digits"]).length != 0)) {
@@ -275,13 +286,16 @@ function writeNumberFormats(language, script, region, data) {
 			}*/
 
 			//util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(numfmt)+"\n"); */
-			//numfmt["generated"]=true;
-			fs.writeFileSync(path + "/numfmt.jf", '\"numfmt\" :' + JSON.stringify(numfmt["numfmt"]) + ',\n', "utf-8");
-			if(typeof(numfmt["native"])!='undefined') {
+			if ((Object.keys(numfmt).length !== 0))	{
+			numfmt.generated=true;
+			makeDirs(path);
+			fs.writeFileSync(path + "/numfmt.jf",JSON.stringify(numfmt), "utf-8");
+			}
+			/*if(typeof(numfmt["native"])!='undefined') {
 				if ((Object.keys(numfmt["native"]).length !== 0)) {
 			fs.appendFileSync(path + "/numfmt.jf", '\"native_numfmt\" :' + JSON.stringify(numfmt["native"]) + ',\n', "utf-8");
 				}
-			}
+			}*/
 			//fs.writeFileSync(path + "/numfmt.jf",JSON.stringify(data), "utf-8");
 		} else {
 			util.print("Skipping empty " + path + "\n");
