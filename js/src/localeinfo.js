@@ -182,6 +182,16 @@ ilib.LocaleInfo.prototype = {
 		return this.info.numfmt.decimalChar;
 	},
 	
+	
+	/**
+	 * Return the decimal separator for formatted numbers in this locale for native script.
+	 * @returns {string} the decimal separator char
+	 */
+	getNativeDecimalSeparator: function () {
+		return (typeof(this.info.native_numfmt) != 'undefined' ? this.info.native_numfmt.decimalChar||this.info.numfmt.decimalChar :  this.info.numfmt.decimalChar);
+	},
+	
+	
 	/**
 	 * Return the separator character used to separate groups of digits on the 
 	 * integer side of the decimal character.
@@ -189,6 +199,16 @@ ilib.LocaleInfo.prototype = {
 	 */
 	getGroupingSeparator: function () {
 		return this.info.numfmt.groupChar;
+	},
+
+
+	/**
+	 * Return the separator character used to separate groups of digits on the 
+	 * integer side of the decimal character for the native script if present other than the default script.
+	 * @returns {string} the grouping separator char
+	 */
+	getNativeGroupingSeparator: function () {
+		return (typeof(this.info.native_numfmt) != 'undefined' ? this.info.native_numfmt.groupChar||this.info.numfmt.groupChar :  this.info.numfmt.groupChar);
 	},
 	
 	/**
@@ -228,10 +248,23 @@ ilib.LocaleInfo.prototype = {
 	getPercentageFormat: function () {
 		return this.info.numfmt.pctFmt;
 	},
-
+	/**
+	 * Return the format template used to format currencies in this locale.
+	 * @returns {string} the format template for formatting currencies
+	 */
 	getCurrencyFormat: function () {
 		return this.info.numfmt.curFmt;
 	},
+
+
+	/**
+	 * Return the format template used to format currencies in this locale for native script.
+	 * @returns {string} the format template for formatting currencies for native script
+	 */
+	getNativeCurrencyFormat: function () {
+		return (typeof(this.info.native_numfmt) != 'undefined' ? this.info.native_numfmt.curFmt||this.info.numfmt.curFmt :  this.info.numfmt.curFmt);
+	},
+	
 	/**
 	 * Return the symbol used for percentages in this locale.
 	 * @returns {string} the symbol used for percentages in this locale
@@ -239,11 +272,40 @@ ilib.LocaleInfo.prototype = {
 	getPercentageSymbol: function () {
 		return this.info.numfmt.pctChar || "%";
 	},
+	/**
+	 * Return the symbol used for exponential in this locale.
+	 * @returns {string} the symbol used for exponential in this locale
+	 */
+	getExponential: function () {
+		return this.info.numfmt.exponential ;
+	},
+	/**
+	 * Return the symbol used for exponential in this locale for native script.
+	 * @returns {string} the symbol used for exponential in this locale for native script
+	 */
+	getNativeExponential: function () {
+		return (typeof(this.info.native_numfmt) != 'undefined' ? this.info.native_numfmt.exponential||this.info.numfmt.exponential :  this.info.numfmt.exponential );
+	},
+	/**
+	 * Return the symbol used for percentages in this locale for native script.
+	 * @returns {string} the symbol used for percentages in this locale for native script
+	 */
+	getNativePercentageSymbol: function () {
+		return (typeof(this.info.native_numfmt) != 'undefined' ? this.info.native_numfmt.pctChar||this.info.numfmt.pctChar :  this.info.numfmt.pctChar || "%");
 	
+	},
+	/**
+	 * Return the format template used to format negative numbers in this locale.
+	 * @returns {string} the format template for formatting negative numbers
+	 */
 	getNegativeNumberFormat: function () { 
 			return this.info.numfmt.negativenumFmt;
 	},
 	
+	/**
+	 * Return the format template used to format negative currencies in this locale.
+	 * @returns {string} the format template for formatting negative currencies
+	 */
 	getNegativeCurrencyFormat: function () { 
 			return this.info.numfmt.negativecurFmt;
 	},
@@ -266,6 +328,24 @@ ilib.LocaleInfo.prototype = {
 	 */
 	getCurrency: function () {
 		return this.info.currency;
+	},
+	
+	/**
+	 * Return the digits of the default script  
+	 * @returns {string} the digits used in the default script 
+	 */
+	getDigits: function () {
+		var num = "0123456789";
+		return this.info.numfmt.digits|| num ;
+	},
+	
+	/**
+	 * Return the digits of the native script other than 0,1,2,3,4.....9 
+	 * @returns {string} the digits used in the default script 
+	 */
+	getNativeDigits: function () {
+		var num = "0123456789";
+		return (typeof(this.info.native_numfmt) != 'undefined' ? this.info.native_numfmt.digits||this.info.numfmt.pctChar :  this.info.numfmt.digits || num);
 	},
 	
 	/**
