@@ -1,24 +1,24 @@
 /* 
- * gennumfmts.js - ilib tool to generate the  number json fragments from  
- * the CLDR data files 
- *  
- * Copyright © 2013, LGE 
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
- * You may obtain a copy of the License at 
- * 
- *     http://www.apache.org/licenses/LICENSE-2.0 
- * 
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an "AS IS" BASIS, 
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
- * 
- * See the License for the specific language governing permissions and 
- * limitations under the License. 
+ * gennumfmts.js - ilib tool to generate the  number json fragments from
+ * the CLDR data files
+ *
+ * Copyright © 2013, LGE
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 /* 
- * This code is intended to be run under node.js  
+ * This code is intended to be run under node.js
  */
 var fs = require('fs');
 var util = require('util');
@@ -44,10 +44,10 @@ var cldrDirName;
 var localeDirName;
 
 process.argv.forEach(function (val, index, array) {
-		if (val === "-h" || val === "--help") {
-			usage();
-		}
-	});
+	if (val === "-h" || val === "--help") {
+		usage();
+	}
+});
 
 if (process.argv.length < 4) {
 	util.error('Error: not enough arguments');
@@ -64,18 +64,18 @@ util.print("CLDR dir: " + cldrDirName + "\n");
 util.print("locale dir: " + localeDirName + "\n");
 
 fs.exists(cldrDirName, function (exists) {
-		if (!exists) {
-			util.error("Could not access CLDR dir " + cldrDirName);
-			usage();
-		}
-	});
+	if (!exists) {
+		util.error("Could not access CLDR dir " + cldrDirName);
+		usage();
+	}
+});
 
 fs.exists(localeDirName, function (exists) {
-		if (!exists) {
-			util.error("Could not access locale data directory " + localeDirName);
-			usage();
-		}
-	});
+	if (!exists) {
+		util.error("Could not access locale data directory " + localeDirName);
+		usage();
+	}
+});
 
 var filename, root, json, suppData, languageData, numberingSystemsData, digitsData, scripts = {};
 
@@ -114,8 +114,6 @@ for (var locale in languageData) {
 	}
 }
 
-
-
 function loadFile(path) {
 	var ret = undefined;
 
@@ -128,7 +126,7 @@ function loadFile(path) {
 	return ret;
 }
 
-function loadFile_jf(path) {
+/*function loadFile_jf(path) {
 	var ret = undefined;
 
 	if (fs.existsSync(path)) {
@@ -142,7 +140,7 @@ function loadFile_jf(path) {
 		//util.print("path is :"+path+"\n"); 
 	}
 	return ret;
-}
+}*/
 
 function calcLocalePath(language, script, region, filename) {
 	var path = localeDirName + "/";
@@ -161,7 +159,7 @@ function calcLocalePath(language, script, region, filename) {
 
 function loadFileNonGenerated(language, script, region) {
 	var path = calcLocalePath(language, script, region, "numfmt.jf");
-	var obj = loadFile_jf(path);
+	var obj = loadFile(path);
 	//var obj = loadFile(path);
 	if (typeof (obj) !== 'undefined' && (typeof (obj.generated) === 'undefined' || obj.generated === false)) {
 		// only return non-generated files 
@@ -246,38 +244,48 @@ function writeNumberFormats(language, script, region, data) {
 			//makeDirs(path);
 
 			var numfmt = {};
-			var default_data={};
-			var native_data={};
-			var arr_data = ["script", "decimalChar", "groupChar", "pctChar", "exponential", "prigroupSize", "pctFmt", "curFmt", "secgroupSize", "negativenumFmt", "negativepctFmt", "negativecurFmt", "roundingMode" , "digits"];
-			var arr_keys_default = [empty_data_default["script"], empty_data_default["decimalChar"], empty_data_default["groupChar"] , empty_data_default["pctChar"], empty_data_default["exponential"], empty_data_default["prigroupSize"], empty_data_default["pctFmt"], empty_data_default["curFmt"], empty_data_default["secgroupSize"], empty_data_default["negativenumFmt"], empty_data_default["negativepctFmt"], empty_data_default["negativecurFmt"], empty_data_default["roundingMode"], empty_data_default["digits"] ];
+			var default_data = {};
+			var native_data = {};
+			var arr_data = ["script", "decimalChar", "groupChar", "pctChar", "exponential", "prigroupSize", "pctFmt", "curFmt", "secgroupSize", "negativenumFmt",
+				"negativepctFmt", "negativecurFmt", "roundingMode", "digits"
+			];
+			var arr_keys_default = [empty_data_default["script"], empty_data_default["decimalChar"], empty_data_default["groupChar"], empty_data_default["pctChar"],
+				empty_data_default["exponential"], empty_data_default["prigroupSize"], empty_data_default["pctFmt"], empty_data_default["curFmt"], empty_data_default[
+					"secgroupSize"], empty_data_default["negativenumFmt"], empty_data_default["negativepctFmt"], empty_data_default["negativecurFmt"], empty_data_default[
+					"roundingMode"], empty_data_default["digits"]
+			];
 
 			for (var i = 0; i < arr_data.length; i++) {
 				if (typeof (arr_keys_default[i]) != undefined) {
 					default_data[arr_data[i]] = arr_keys_default[i];
 				}
 			}
-			if(typeof(default_data)!='undefined') {
+			if (typeof (default_data) != 'undefined') {
 				if ((Object.keys(default_data).length !== 0)) {
-				numfmt["numfmt"]=default_data;
+					numfmt["numfmt"] = default_data;
 				}
-			
-		}
-			
-			if(typeof(empty_data_native)!='undefined') {
-			var arr_keys_native = [empty_data_native["script"], empty_data_native["decimalChar"], empty_data_native["groupChar"] , empty_data_native["pctChar"], empty_data_native["exponential"], empty_data_native["prigroupSize"], empty_data_native["pctFmt"], empty_data_native["curFmt"], empty_data_native["secgroupSize"], empty_data_native["negativenumFmt"], empty_data_native["negativepctFmt"], empty_data_native["negativecurFmt"], empty_data_native["roundingMode"], empty_data_native["digits"] ];
 
-			for (var i = 0; i < arr_data.length; i++) {
-				if (typeof (arr_keys_native[i]) != 'undefined') {
-					native_data[arr_data[i]] = arr_keys_native[i];
+			}
+
+			if (typeof (empty_data_native) != 'undefined') {
+				var arr_keys_native = [empty_data_native["script"], empty_data_native["decimalChar"], empty_data_native["groupChar"], empty_data_native["pctChar"],
+					empty_data_native["exponential"], empty_data_native["prigroupSize"], empty_data_native["pctFmt"], empty_data_native["curFmt"], empty_data_native[
+						"secgroupSize"], empty_data_native["negativenumFmt"], empty_data_native["negativepctFmt"], empty_data_native["negativecurFmt"], empty_data_native[
+						"roundingMode"], empty_data_native["digits"]
+				];
+
+				for (var i = 0; i < arr_data.length; i++) {
+					if (typeof (arr_keys_native[i]) != 'undefined') {
+						native_data[arr_data[i]] = arr_keys_native[i];
+					}
 				}
 			}
-		}
-			if(typeof(native_data)!='undefined') {
+			if (typeof (native_data) != 'undefined') {
 				if ((Object.keys(native_data).length !== 0)) {
-				numfmt["native"]=native_data;
+					numfmt["native_numfmt"] = native_data;
 				}
-			
-		}
+
+			}
 			/*if(typeof (empty_data_default["digits"]) != 'undefined'){
 			if ((Object.keys(empty_data_default["digits"]).length != 0)) {
 				//util.print("no need to create the file " + "\n");
@@ -286,10 +294,10 @@ function writeNumberFormats(language, script, region, data) {
 			}*/
 
 			//util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(numfmt)+"\n"); */
-			if ((Object.keys(numfmt).length !== 0))	{
-			numfmt.generated=true;
-			makeDirs(path);
-			fs.writeFileSync(path + "/numfmt.jf",JSON.stringify(numfmt), "utf-8");
+			if ((Object.keys(numfmt).length !== 0)) {
+				numfmt.generated = true;
+				makeDirs(path);
+				fs.writeFileSync(path + "/numfmt.jf", JSON.stringify(numfmt), "utf-8");
 			}
 			/*if(typeof(numfmt["native"])!='undefined') {
 				if ((Object.keys(numfmt["native"]).length !== 0)) {
@@ -323,39 +331,37 @@ function getNumberFormats(language, script, region, data) {
 	var symbols = data.numbers;
 
 	var def_num_system = symbols.defaultNumberingSystem;
-	var native_num_system =symbols["otherNumberingSystems"]["native"];
+	var native_num_system = symbols["otherNumberingSystems"]["native"];
 
 	//util.print("the language is  " + JSON.stringify(language) + "\n");
 	//util.print("the script is  " + JSON.stringify(script) + "\n");
 	//util.print("the region is  " + JSON.stringify(region) + "\n");
 	//util.print("the default numbering system is " + JSON.stringify(def_num_system) + "\n");
 	//util.print("the native numbering system is " + JSON.stringify(native_num_system) + "\n");
-	var default_data={};
-	var native_data={};
-	var numfmt={};
-	default_data = getNumberFormats_num_system(def_num_system,data);
-	numfmt	= default_data;
+	var default_data = {};
+	var native_data = {};
+	var numfmt = {};
+	default_data = getNumberFormats_num_system(def_num_system, data);
+	numfmt = default_data;
 	//numfmt["defaults"]=default_data;
-	if(native_num_system!=def_num_system) {
-	native_data = getNumberFormats_num_system(native_num_system,data);
-	var native_data_pruned={};
-	util.print("the native numbering system  data is ---------------------------------------- " + JSON.stringify(native_data) + "\n");
-	for(var keys in numfmt) {
-		if (numfmt[keys]!==native_data[keys]) {
-		native_data_pruned[keys]=native_data[keys];
-		}
-	if(Object.keys(native_data_pruned).length!=0) {
-	numbers["native_numfmt"]=native_data_pruned;
+	if (native_num_system != def_num_system) {
+		native_data = getNumberFormats_num_system(native_num_system, data);
+		var native_data_pruned = {};
+		//util.print("the native numbering system  data is ---------------------------------------- " + JSON.stringify(native_data) + "\n");
+		for (var keys in numfmt) {
+			if (numfmt[keys] !== native_data[keys]) {
+				native_data_pruned[keys] = native_data[keys];
 			}
-		 }
+			if (Object.keys(native_data_pruned).length != 0) {
+				numbers["native_numfmt"] = native_data_pruned;
+			}
+		}
 
 	}
 	numbers["numfmt"] = numfmt;
-	
+
 	return numbers;
 }
-
-
 
 function getNumberFormats_num_system(def_num_system, data) {
 	var symbol = "symbols-numberSystem-";
@@ -388,7 +394,7 @@ function getNumberFormats_num_system(def_num_system, data) {
 
 	var primarygroupsize = 0;
 	var secondarygroupsize = 0;
-	
+
 	decimal_format = decimal_format.replace(/'(.)+'/g, "");
 	var decimal_fmt = decimal_format;
 	if (decimal_format.lastIndexOf(",") === -1) {
@@ -396,7 +402,7 @@ function getNumberFormats_num_system(def_num_system, data) {
 	}
 
 	//var decimal_format = "";
-	
+
 	if (decimal_format.indexOf(";") != -1) {
 		index_of_semi_colon = decimal_format.indexOf(";");
 		decimal_format = decimal_format.substring(index_of_semi_colon, decimal_format.length);
@@ -432,8 +438,8 @@ function getNumberFormats_num_system(def_num_system, data) {
 	//}
 	symbol_format_data["decimalChar"] = decimal_separator;
 	symbol_format_data["groupChar"] = group_separator;
-	symbol_format_data["pctChar"]=symbol_format["percentSign"];
-	symbol_format_data["exponential"]=symbol_format["exponential"];
+	symbol_format_data["pctChar"] = symbol_format["percentSign"];
+	symbol_format_data["exponential"] = symbol_format["exponential"];
 	symbol_format_data["prigroupSize"] = primarygroupsize;
 	symbol_format_data["secgroupSize"] = secondarygroupsize;
 	//    symbol_format_data["pctFmt"]=pctFmt; 
@@ -490,7 +496,7 @@ function getNumberFormats_num_system(def_num_system, data) {
 	//var digits= {};
 	var native_digits;
 	//if(typeof(script) == 'undefined') {
-	native_digits= getNativeDigits(def_num_system.toLowerCase());
+	native_digits = getNativeDigits(def_num_system.toLowerCase());
 	//}
 	/*else if(script) {
 		native_digits= getNativeDigits_default(def_num_system.toLowerCase(),script.toLowerCase());
@@ -503,12 +509,14 @@ function getNumberFormats_num_system(def_num_system, data) {
 		}
 	}*/
 	//native_digits
+
+	//util.print("native digits are...................." + JSON.stringify(native_digits) + "===================" + "\n");
 	
-	util.print("native digits are...................." + JSON.stringify(native_digits) + "===================" + "\n");
-	
-	if(native_digits!==0123456789) {
-	symbol_format_data["digits"]= native_digits;
-	}
+	//var standard_digits="0123456789";
+
+	//if (native_digits != standard_digits) {
+		symbol_format_data["digits"] = native_digits;
+	//}
 	//numbers["numfmt"] = symbol_format_data;
 
 	return symbol_format_data;
@@ -542,24 +550,25 @@ function getNumberFormats_num_system(def_num_system, data) {
 	
 }
 */
+
 function getNativeDigits(script) {
 	//var digits=[];
-	
-	util.print("script for native digits "+ script + "\n");
-	var numberingSystemsfile= cldrDirName + "/supplemental/numberingSystems.json";
+
+	//util.print("script for native digits " + script + "\n");
+	var numberingSystemsfile = cldrDirName + "/supplemental/numberingSystems.json";
 	json = fs.readFileSync(numberingSystemsfile, "utf-8");
 	numberingSystemsData = JSON.parse(json);
-	digitsData= numberingSystemsData.numberingSystems;
-	digits_script=digitsData[script];
+	digitsData = numberingSystemsData.numberingSystems;
+	digits_script = digitsData[script];
 	//digits_defscript=digitsData[def_script];
-	util.print("digits for script are:" + JSON.stringify(digits_script)+"\n");
-	if(typeof(digits_script)!='undefined') {
-		if(digits_script["@type"]=="numeric") {
-		var digits=digits_script["@digits"];
-		util.print("digits for script are:" + JSON.stringify(digits)+"\n");
-		return digits;
-			}
+	//util.print("digits for script are:" + JSON.stringify(digits_script) + "\n");
+	if (typeof (digits_script) != 'undefined') {
+		if (digits_script["@type"] == "numeric") {
+			var digits = digits_script["@digits"];
+			//util.print("digits for script are:" + JSON.stringify(digits) + "\n");
+			return digits;
 		}
+	}
 	/*else if(typeof(digits_defscript)!='undefined') {
 		if(digits_defscript["@type"]=="numeric") {
 		var digits=digits_defscript["@digits"];
@@ -567,11 +576,8 @@ function getNativeDigits(script) {
 			}
 	}
 	//util.print("numbersystemdata is :" + JSON.stringify(digitsData)+"\n");*/
-	
+
 }
-
-
-
 
 //code for getting the native digits for the locales for native scripts
 
@@ -627,8 +633,8 @@ for (var i = 0; i < files.length; i++) {
 	} else {
 		locale = file.split(/\./)[0].replace(/_/g, "-");
 		var l = new Locale(locale);
-		if(typeof(l.getVariant())==='undefined') {
-		getLocaleData(file, l.getLanguage(), l.getScript(), l.getRegion());
+		if (typeof (l.getVariant()) === 'undefined') {
+			getLocaleData(file, l.getLanguage(), l.getScript(), l.getRegion());
 		}
 	}
 }
@@ -644,7 +650,7 @@ resources.data = getNumberFormats(undefined, undefined, undefined, localeData.da
 for (language in localeData) {
 	if (language && localeData[language] && language !== 'data' && language !== 'merged') {
 		resources[language] = resources[language] || {};
-		util.print(language + " "); 
+		util.print(language + " ");
 		for (var subpart in localeData[language]) {
 			if (subpart && localeData[language][subpart] && subpart !== 'data' && subpart !== 'merged') {
 				resources[language][subpart] = resources[language][subpart] || {};
@@ -694,8 +700,7 @@ for (language in resources) {
 	}
 }
 
-writeNumberFormats(undefined, undefined, undefined, resources.data); 
-
+writeNumberFormats(undefined, undefined, undefined, resources.data);
 
 /*util.print("digits data is "+  digitsData);
 
@@ -717,4 +722,3 @@ for (var script_number in digitsData) {
 		}
 	}*/
 process.exit(0);
-
