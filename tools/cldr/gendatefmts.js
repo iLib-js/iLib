@@ -1,7 +1,7 @@
 /*
- * gendatefmts.js - ilib tool to generate the dateformats.json files and the date json fragments from 
+ * gendatefmts.js - ilib tool to generate the dateformats.json files and the date json fragments from
  * the CLDR data files
- * 
+ *
  * Copyright © 2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 /*
- * This code is intended to be run under node.js 
+ * This code is intended to be run under node.js
  */
 var fs = require('fs');
 var util = require('util');
@@ -39,66 +39,52 @@ function usage() {
 		"  the top level of the ilib locale data directory\n");
 	process.exit(1);
 }
-
 var cldrDirName;
 var localeDirName;
-
 process.argv.forEach(function (val, index, array) {
-		if (val === "-h" || val === "--help") {
-			usage();
-		}
-	});
-
+	if (val === "-h" || val === "--help") {
+		usage();
+	}
+});
 if (process.argv.length < 4) {
 	util.error('Error: not enough arguments');
 	usage();
 }
-
 cldrDirName = process.argv[2];
 localeDirName = process.argv[3];
-
 util.print("gendatefmts - generate date and time formats information files.\n" +
 	"Copyright (c) 2013 JEDLSoft\n");
-
 util.print("CLDR dir: " + cldrDirName + "\n");
 util.print("locale dir: " + localeDirName + "\n");
-
 fs.exists(cldrDirName, function (exists) {
-		if (!exists) {
-			util.error("Could not access CLDR dir " + cldrDirName);
-			usage();
-		}
-	});
-
+	if (!exists) {
+		util.error("Could not access CLDR dir " + cldrDirName);
+		usage();
+	}
+});
 fs.exists(localeDirName, function (exists) {
-		if (!exists) {
-			util.error("Could not access locale data directory " + localeDirName);
-			usage();
-		}
-	});
-
+	if (!exists) {
+		util.error("Could not access locale data directory " + localeDirName);
+		usage();
+	}
+});
 var filename, root, json, suppData, languageData, scripts = {};
-
 try {
 	filename = cldrDirName + "/main/en.json";
 	json = fs.readFileSync(filename, "utf-8");
 	root = JSON.parse(json);
-
 	filename = cldrDirName + "/supplemental/supplementalData.json";
 	json = fs.readFileSync(filename, "utf-8");
 	suppData = JSON.parse(json);
-
 	languageData = suppData.languageData; //I dont get it
 } catch (e) {
 	util.print("Error: Could not load file " + filename + "\n");
 	process.exit(2);
 }
-
 // get the information about scripts if necessary
 for (var locale in languageData) {
 	if (locale && languageData[locale]) {
 		// util.print("checking scripts for locale " + locale +"languageData[locale]   " + JSON.stringify(languageData[locale]) + "\n");
-
 		//util.print("languageData[locale][@scripts] === " + JSON.stringify(languageData[locale]["@scripts"]) + "\n");
 		if (typeof (languageData[locale]["@scripts"]) === 'string') {
 			var language = (locale.length <= 3) ? locale : locale.split(/-/)[0];
@@ -117,21 +103,17 @@ for (var locale in languageData) {
 				// util.print("language " + language + " appending " + JSON.stringify(newLangs));
 				scripts[language] = scripts[language].concat(newLangs);
 			}
-
 			//util.print("scripts[language] &&&&&&  " + JSON.stringify(scripts[language]) + "\n");
 		}
-
 	}
 }
 
 function loadFile(path) {
 	var ret = undefined;
-
 	if (fs.existsSync(path)) {
 		json = fs.readFileSync(path, "utf-8");
 		ret = JSON.parse(json);
 	}
-
 	return ret;
 }
 
@@ -159,7 +141,6 @@ function loadFileNonGenerated(language, script, region) {
 	}
 	return undefined;
 }
-
 var localeData = {};
 
 function getLocaleData(path, language, script, region) {
@@ -167,7 +148,6 @@ function getLocaleData(path, language, script, region) {
 	try {
 		filename = cldrDirName + "/main/" + path;
 		data = loadFile(filename);
-
 		util.print(language + " ");
 		if (script) {
 			if (region) {
@@ -202,7 +182,6 @@ function getLocaleData(path, language, script, region) {
 	} catch (e) {
 		return undefined;
 	}
-
 	return data;
 }
 
@@ -241,20 +220,15 @@ function leaveSame(str) {
 function getSystemResources(language, script, region, data) {
 	// if it is already there and non-generated, return it
 	var sysres = loadFileNonGenerated(language, script, region);
-	
 	if (sysres) {
 		util.print("\nLoaded existing resources from " + calcLocalePath(language, script, region, "sysres.json") + "\n");
-
 		sysres.generated = false;
 		return sysres;
 	}
-
 	// else generate a new one
-
 	sysres = {
 		generated: true
 	};
-
 	// from https://meta.wikimedia.org/wiki/Capitalization_of_Wiktionary_pages#Capitalization_of_month_names
 	var capitalizedMonthLocales = {
 		"af": 1,
@@ -278,7 +252,6 @@ function getSystemResources(language, script, region, data) {
 		"xh": 1,
 		"zu": 1,
 	};
-
 	var lowercasedMonthLocales = {
 		"bs": 1,
 		"bg": 1,
@@ -319,20 +292,16 @@ function getSystemResources(language, script, region, data) {
 		"vi": 1,
 		"wa": 1
 	};
-
 	var str = "";
 	var parent = typeof (data.dates.calendars.gregorian.months.format) === 'undefined' ?
 		data.dates.calendars.gregorian.months.standalone :
 		data.dates.calendars.gregorian.months.format;
-
 	var capFunction = (typeof (lowercasedMonthLocales[language]) !== 'undefined' || typeof (lowercasedMonthLocales[region]) !== 'undefined') ? initialLower :
-	(typeof (capitalizedMonthLocales[language]) !== 'undefined' ? initialCap : leaveSame);
-
+		(typeof (capitalizedMonthLocales[language]) !== 'undefined' ? initialCap : leaveSame);
 	table = parent.narrow;
 	for (var i = 1; i < 13; i++) {
 		sysres["N" + i] = str;
 	}
-
 	table = parent.abbreviated;
 	for (var i = 1; i < 13; i++) {
 		sysres["NN" + i] = capFunction(table[i].substring(0, 2));
@@ -340,12 +309,10 @@ function getSystemResources(language, script, region, data) {
 	for (var i = 1; i < 13; i++) {
 		sysres["MMM" + i] = capFunction(table[i]);
 	}
-
 	table = parent.wide;
 	for (var i = 1; i < 13; i++) {
 		sysres["MMMM" + i] = capFunction(table[i]);
 	}
-
 	// from https://meta.wikimedia.org/wiki/Capitalization_of_Wiktionary_pages#Capitalization_of_month_names
 	var capitalizedDayLocales = {
 		"af": 1,
@@ -367,7 +334,6 @@ function getSystemResources(language, script, region, data) {
 		"xh": 1,
 		"zu": 1,
 	};
-
 	var lowercasedDayLocales = {
 		"bs": 1,
 		"bg": 1,
@@ -400,45 +366,37 @@ function getSystemResources(language, script, region, data) {
 		"vi": 1,
 		"wa": 1
 	};
-
 	var dayProperties = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 	var parent = typeof (data.dates.calendars.gregorian.days.format) === 'undefined' ?
 		data.dates.calendars.gregorian.days.standalone :
 		data.dates.calendars.gregorian.days.format;
 	capFunction = (typeof (capitalizedDayLocales[language]) !== 'undefined') ? initialCap :
-	(typeof (lowercasedDayLocales[language]) !== 'undefined') ? initialLower :
+		(typeof (lowercasedDayLocales[language]) !== 'undefined') ? initialLower :
 		leaveSame;
-
 	table = parent.narrow;
 	for (var i = 0; i < 7; i++) {
 		sysres["E" + i] = table[dayProperties[i]];
 	}
-
 	table = parent.short;
 	for (var i = 0; i < 7; i++) {
 		sysres["EE" + i] = capFunction(table[dayProperties[i]].substring(0, 2));
 	}
-
 	table = parent.abbreviated;
 	for (var i = 0; i < 7; i++) {
 		sysres["EEE" + i] = capFunction(table[dayProperties[i]]);
 	}
-
 	table = parent.wide;
 	for (var i = 0; i < 7; i++) {
 		sysres["EEEE" + i] = capFunction(table[dayProperties[i]]);
 	}
-
 	var periodProperties = ["am", "pm"];
 	parent = typeof (data.dates.calendars.gregorian.dayPeriods.format) === 'undefined' ?
 		data.dates.calendars.gregorian.dayPeriods.standalone :
 		data.dates.calendars.gregorian.dayPeriods.format;
-
 	table = parent.wide;
 	for (var i = 0; i < 2; i++) {
 		sysres["a" + i] = table[periodProperties[i]];
 	}
-
 	table = data.dates.calendars.gregorian.eras.eraAbbr;
 	sysres["G-1"] = table["0"];
 	sysres["G1"] = table["1"];
@@ -450,7 +408,6 @@ function getSystemResources(language, script, region, data) {
 			while (str.charAt(i) === ' ') {
 				i++;
 			}
-
 			if (i + size <= str.length) {
 				if (i + size + 1 === str.length) {
 					return str.substring(0, i + size + 1);
@@ -486,7 +443,6 @@ function getSystemResources(language, script, region, data) {
 	function clipForLong(longStr) {
 		return clip(longStr, undefined, 3);
 	}
-
 	var durationPropertiesFull = {
 		"second": "1#1 second|#{num} seconds",
 		"minute": "1#1 minute|#{num} minutes",
@@ -496,7 +452,6 @@ function getSystemResources(language, script, region, data) {
 		"month": "1#1 month|#{num} months",
 		"year": "1#1 year|#{num} years"
 	};
-
 	var durationPropertiesLong = {
 		"second": "1#1 sec|#{num} sec",
 		"minute": "1#1 min|#{num} min",
@@ -506,7 +461,6 @@ function getSystemResources(language, script, region, data) {
 		"month": "1#1 mon|#{num} mons",
 		"year": "1#1 yr|#{num} yrs"
 	};
-
 	var durationPropertiesMedium = {
 		"second": "1#1 se|#{num} sec",
 		"minute": "1#1 mi|#{num} min",
@@ -516,7 +470,6 @@ function getSystemResources(language, script, region, data) {
 		"month": "1#1 mo|#{num} mos",
 		"year": "durationMediumYears"
 	};
-
 	var durationPropertiesShort = {
 		"second": "#{num}s",
 		"minute": "durationShortMinutes",
@@ -526,28 +479,22 @@ function getSystemResources(language, script, region, data) {
 		"month": "durationShortMonths",
 		"year": "#{num}y"
 	};
-
 	table = data.units;
-
 	for (duration in durationPropertiesMedium) {
 		if (duration && durationPropertiesMedium[duration]) {
 			var unit = table[duration];
-
 			var shortStr = unit["unitPattern-count-one"];
 			if (!shortStr) {
 				shortStr = unit["unitPattern-count-other"];
 			}
-
 			if (shortStr) {
 				var unitOnly = shortStr.replace("{0}", "");
 				var initial = unitOnly.trim().charAt(0);
 				shortStr = shortStr.replace(unitOnly, initial).replace("{0}", "{num}");
-
 				if (shortStr.length > 0) {
 					sysres[durationPropertiesShort[duration]] = "#" + shortStr;
 				}
 			}
-
 			var mediumOther = "",
 				longOther = "",
 				fullOther = "";
@@ -563,16 +510,15 @@ function getSystemResources(language, script, region, data) {
 				longOther = clipForLong(unit["unitPattern-count-other"]);
 				fullOther = unit["unitPattern-count-other"];
 			}
-
 			var unitNames = [
-                "0",
-                "1",
-                "zero",
-                "one",
-                "two",
-                "few",
-                "many"
-            ];
+				"0",
+				"1",
+				"zero",
+				"one",
+				"two",
+				"few",
+				"many"
+			];
 			for (var j = 0; j < unitNames.length; j++) {
 				name = unitNames[j];
 				mediumClipped = clipForMedium(
@@ -619,10 +565,8 @@ function getSystemResources(language, script, region, data) {
 				}
 				temp = clipForLong(unit["unitPattern-count-other"]).replace("{0}", "{num}");
 				longStr += "#" + temp;
-
 				fullStr += "#" + unit["unitPattern-count-other"].replace("{0}", "{num}");
 			}
-
 			if (mediumStr.length > 0) {
 				sysres[durationPropertiesMedium[duration]] = mediumStr;
 			}
@@ -634,7 +578,6 @@ function getSystemResources(language, script, region, data) {
 			}
 		}
 	}
-
 	unit = table;
 	str = "";
 	if (typeof (unit["day-past"]["unitPattern-count-one"]) !== 'undefined') {
@@ -642,7 +585,6 @@ function getSystemResources(language, script, region, data) {
 		var dayPast = table["day-past"]["unitPattern-count-one"];
 		sysres["{duration} ago"] = dayPast.replace(day, "{duration}").toLowerCase();
 	}
-
 	unit = table;
 	str = "";
 	if (typeof (table["day-future"]["unitPattern-count-one"]) !== 'undefined') {
@@ -650,14 +592,11 @@ function getSystemResources(language, script, region, data) {
 		var dayFuture = table["day-future"]["unitPattern-count-one"];
 		sysres["in {duration}"] = dayFuture.replace(day, "{duration}").toLowerCase();
 	}
-
 	var listProperties = {
 		"separatorFull": "middle",
 		"finalSeparatorFull": "end"
 	};
-
 	table = data.listPatterns.listPattern;
-
 	for (pattern in listProperties) {
 		if (pattern && listProperties[pattern]) {
 			var unit = table[listProperties[pattern]];
@@ -669,10 +608,8 @@ function getSystemResources(language, script, region, data) {
 	sysres["separatorShort"] = " ";
 	sysres["separatorMedium"] = " ";
 	sysres["separatorLong"] = " ";
-
 	return sysres;
 }
-
 /*function writeDateFormats(language, script, region) {
     var filename;
     
@@ -772,14 +709,10 @@ function writeSystemResources(language, script, region, data) {
 		util.print("Skipping existing " + path + "\n");
 	}
 }
-
 // for each locale, get the data
-
 var language, region, script, file,
 	files = fs.readdirSync(cldrDirName + "/main/");
-
 util.print("Reading locale data into memory...\n");
-
 for (var i = 0; i < files.length; i++) {
 	file = files[i];
 	if (file === "root.json") {
@@ -788,22 +721,18 @@ for (var i = 0; i < files.length; i++) {
 	} else {
 		locale = file.split(/\./)[0].replace(/_/g, "-");
 		var l = new Locale(locale);
-		if(typeof(l.getVariant())==='undefined') {
+		if (typeof (l.getVariant()) === 'undefined') {
 			getLocaleData(file, l.getLanguage(), l.getScript(), l.getRegion());
 		}
 	}
 }
 util.print("\n");
-
 // find the system resources
 util.print("Merging and pruning locale data...\n");
-
 mergeAndPrune(localeData);
-
 var resources = {};
 var resources_dateformat_data = {};
 util.print("\nCalculating system resources...\n");
-
 resources.data = getSystemResources(undefined, undefined, undefined, localeData.data);
 //resources_dateformat_data=resources.data;
 for (language in localeData) {
@@ -828,20 +757,13 @@ for (language in localeData) {
 		resources[language].data = getSystemResources(language, undefined, undefined, localeData[language].merged);
 	}
 }
-
 util.print("\nMerging and pruning resources...\n");
-
 mergeAndPrune(resources);
-
 util.print("\nWriting system resources...\n");
-
 // now write out the system resources
-
 //process.exit(0);
-
 // Now write out the data. Do not overwrite existing data, as it has probably 
 // been hand-tweaked.
-
 /*writeDateFormats(undefined,undefined,undefined);
 for (language in localeData) {
     if (language && localeData[language] && language !== 'data') {
@@ -863,7 +785,6 @@ for (language in localeData) {
     }
 }
 */
-
 for (language in resources) {
 	if (language && resources[language] && language !== 'data' && language !== 'merged') {
 		for (var subpart in resources[language]) {
@@ -884,9 +805,7 @@ for (language in resources) {
 		writeSystemResources(language, undefined, undefined, resources[language].data);
 	}
 }
-
 writeSystemResources(undefined, undefined, undefined, resources.data);
-
 resources_dateformat_data.data = getDateFormats(undefined, undefined, undefined, localeData.data);
 for (language in localeData) {
 	if (language && localeData[language] && language !== 'data' && language !== 'merged') {
@@ -910,17 +829,15 @@ for (language in localeData) {
 		resources_dateformat_data[language].data = getDateFormats(language, undefined, undefined, localeData[language].merged);
 	}
 }
-
 util.print("\nMerging and pruning data for dateformats.\n");
-
 mergeAndPrune(resources_dateformat_data);
 
 function getDateFormats(language, script, region, data) {
 	// if it is already there and non-generated, return it
 	var dates = loadFileNonGenerated(language, script, region);
-	util.print("language: " + language + "\n");
-	util.print("script: " + script + "\n");
-	util.print("region: " + region + "\n");
+	//util.print("language: " + language + "\n");
+	//util.print("script: " + script + "\n");
+	//util.print("region: " + region + "\n");
 	if (dates) {
 		util.print("\nLoaded existing resources from " + calcLocalePath(language, script, region, "dateformats.json") + "\n");
 		dates.generated = false;
@@ -978,7 +895,8 @@ function getDateFormats(language, script, region, data) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 1) && ((arr_values[j].split("d").length - 1) == 1)) {
-				dm["s"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].lastIndexOf("M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("d")));
+				dm["s"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].lastIndexOf(
+					"M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("d")));
 				//}
 				flag = true;
 				break;
@@ -986,7 +904,8 @@ function getDateFormats(language, script, region, data) {
 		}
 		if (flag == false) {
 			var short = date_formats["short"]["dateFormat"]["pattern"];
-			dm["s"] = (short.indexOf("d") < short.indexOf("M")) ? short.substring(short.indexOf("d"), 1 + short.lastIndexOf("M")) : short.substring(short.indexOf("M"), 1 + short.lastIndexOf("d"));
+			dm["s"] = (short.indexOf("d") < short.indexOf("M")) ? short.substring(short.indexOf("d"), 1 + short.lastIndexOf("M")) : short.substring(short.indexOf("M"),
+				1 + short.lastIndexOf("d"));
 		}
 	}
 	//end of short
@@ -1001,14 +920,16 @@ function getDateFormats(language, script, region, data) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 2) && ((arr_values[j].split("d").length - 1) >= 1)) {
-				dm["m"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].indexOf("M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("d")));
+				dm["m"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].indexOf("M"))) :
+					(arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("d")));
 				flag = true;
 				break;
 			}
 		}
 		if (flag == false) {
 			var medium = date_formats["medium"]["dateFormat"]["pattern"];
-			dm["m"] = (medium.indexOf("M") < medium.indexOf("d")) ? medium.substring(medium.indexOf("M"), 1 + medium.lastIndexOf("d")) : medium.substring(medium.indexOf("d"), 1 + medium.lastIndexOf("M"));
+			dm["m"] = (medium.indexOf("M") < medium.indexOf("d")) ? medium.substring(medium.indexOf("M"), 1 + medium.lastIndexOf("d")) : medium.substring(medium.indexOf(
+				"d"), 1 + medium.lastIndexOf("M"));
 		}
 	}
 	if (available_formats["MMMd"] || available_formats["MMMdd"]) {
@@ -1017,14 +938,16 @@ function getDateFormats(language, script, region, data) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 3) && ((arr_values[j].split("d").length - 1) >= 1)) {
-				dm["l"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].lastIndexOf("M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("d")));
+				dm["l"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].lastIndexOf(
+					"M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("d")));
 				flag = true;
 				break;
 			}
 		}
 		if (flag == false) {
 			var long = date_formats["long"]["dateFormat"]["pattern"];
-			dm["l"] = (long.indexOf("M") < long.indexOf("d")) ? long.substring(long.indexOf("M"), 1 + long.lastIndexOf("d")) : (long.substring(long.indexOf("d"), 1 + long.lastIndexOf("M")));
+			dm["l"] = (long.indexOf("M") < long.indexOf("d")) ? long.substring(long.indexOf("M"), 1 + long.lastIndexOf("d")) : (long.substring(long.indexOf("d"), 1 +
+				long.lastIndexOf("M")));
 		}
 	}
 	if (available_formats["MMMMd"] || available_formats["MMMMdd"]) {
@@ -1033,14 +956,16 @@ function getDateFormats(language, script, region, data) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 4) && ((arr_values[j].split("d").length - 1) >= 1)) {
-				dm["f"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].lastIndexOf("M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("d")));
+				dm["f"] = (arr_values[j].indexOf("M") > arr_values[j].indexOf("d")) ? (arr_values[j].substring(arr_values[j].indexOf("d"), 1 + arr_values[j].lastIndexOf(
+					"M"))) : (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("d")));
 				flag = true;
 				break;
 			}
 		}
 		if (flag == false) {
 			var full = date_formats["long"]["dateFormat"]["pattern"];
-			dm["f"] = full.indexOf("M") < (full.indexOf("d")) ? full.substring(full.indexOf("M"), 1 + full.lastIndexOf("d")) : full.substring(full.indexOf("d"), 1 + full.lastIndexOf("M"));
+			dm["f"] = full.indexOf("M") < (full.indexOf("d")) ? full.substring(full.indexOf("M"), 1 + full.lastIndexOf("d")) : full.substring(full.indexOf("d"), 1 +
+				full.lastIndexOf("M"));
 		}
 	}
 	//end of combination dm
@@ -1050,14 +975,16 @@ function getDateFormats(language, script, region, data) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 1) && ((arr_values[j].split("y").length - 1) >= 1)) {
-				my["s"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].lastIndexOf("M")));
+				my["s"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf(
+					"y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].lastIndexOf("M")));
 				flag = true;
 				break;
 			}
 		}
 		if (flag == false) {
 			var short = date_formats["short"]["dateFormat"]["pattern"];
-			my["s"] = (short.indexOf("M") < short.indexOf("y")) ? short.substring(short.indexOf("M"), 1 + short.lastIndexOf("y")) : short.substring(short.indexOf("y"), 1 + short.lastIndexOf("M"));
+			my["s"] = (short.indexOf("M") < short.indexOf("y")) ? short.substring(short.indexOf("M"), 1 + short.lastIndexOf("y")) : short.substring(short.indexOf("y"),
+				1 + short.lastIndexOf("M"));
 		}
 	}
 	if (available_formats["yyyyMM"] || available_formats["yyMM"] || available_formats["yMM"]) {
@@ -1066,14 +993,16 @@ function getDateFormats(language, script, region, data) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 2) && ((arr_values[j].split("y").length - 1) >= 1)) {
-				my["m"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].lastIndexOf("M")));
+				my["m"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf(
+					"y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].lastIndexOf("M")));
 				flag = true;
 				break;
 			}
 		}
 		if (flag == false) {
 			var medium = date_formats["medium"]["dateFormat"]["pattern"];
-			my["m"] = medium.indexOf("M") < medium.indexOf("y") ? medium.substring(medium.indexOf("M"), 1 + medium.lastIndexOf("y")) : medium.substring(medium.indexOf("y"), 1 + medium.lastIndexOf("M"));
+			my["m"] = medium.indexOf("M") < medium.indexOf("y") ? medium.substring(medium.indexOf("M"), 1 + medium.lastIndexOf("y")) : medium.substring(medium.indexOf(
+				"y"), 1 + medium.lastIndexOf("M"));
 		}
 	}
 	if (available_formats["yMMM"] || available_formats["yyMMM"] || available_formats["yyyyMMM"]) {
@@ -1082,14 +1011,16 @@ function getDateFormats(language, script, region, data) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 3) && ((arr_values[j].split("y").length - 1) >= 1)) {
-				my["l"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].lastIndexOf("M")));
+				my["l"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf(
+					"y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].lastIndexOf("M")));
 				flag = true;
 				break;
 			}
 		}
 		if (flag == false) {
 			var long = date_formats["long"]["dateFormat"]["pattern"];
-			my["l"] = (long.indexOf("M") < long.indexOf("y")) ? long.substring(long.indexOf("M"), 1 + long.lastIndexOf("y")) : long.substring(long.indexOf("y"), 1 + long.lastIndexOf("M"));
+			my["l"] = (long.indexOf("M") < long.indexOf("y")) ? long.substring(long.indexOf("M"), 1 + long.lastIndexOf("y")) : long.substring(long.indexOf("y"), 1 +
+				long.lastIndexOf("M"));
 		}
 	}
 	if (available_formats["yyyyMMMM"] || available_formats["yyMMMM"] || available_formats["yMMMM"]) {
@@ -1098,14 +1029,16 @@ function getDateFormats(language, script, region, data) {
 		var flag = false;
 		for (var j = 0; j < arr_values.length; j++) {
 			if (((arr_values[j].split("M").length - 1) == 4) && ((arr_values[j].split("y").length - 1) >= 1)) {
-				my["f"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf("y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].lastIndexOf("M")));
+				my["f"] = (arr_values[j].indexOf("y") > arr_values[j].indexOf("M")) ? (arr_values[j].substring(arr_values[j].indexOf("M"), 1 + arr_values[j].lastIndexOf(
+					"y"))) : (arr_values[j].substring(arr_values[j].indexOf("y"), 1 + arr_values[j].lastIndexOf("M")));
 				flag = true;
 				break;
 			}
 		}
 		if (flag == false) {
 			var full = date_formats["full"]["dateFormat"]["pattern"];
-			my["f"] = (full.indexOf("M") < full.indexOf("y")) ? full.substring(full.indexOf("M"), 1 + full.lastIndexOf("y")) : full.substring(full.indexOf("y"), 1 + full.lastIndexOf("M"));
+			my["f"] = (full.indexOf("M") < full.indexOf("y")) ? full.substring(full.indexOf("M"), 1 + full.lastIndexOf("y")) : full.substring(full.indexOf("y"), 1 +
+				full.lastIndexOf("M"));
 		}
 	}
 	//end of my combination
@@ -1384,12 +1317,12 @@ function getDateFormats(language, script, region, data) {
 	//end of dmw
 	if (available_formats["yMEd"]) {
 		dmwy["s"] = available_formats["yMEd"];
-		dmwy["m"] = available_formats["yMEd"].replace(/E+/g,"EE");
+		dmwy["m"] = available_formats["yMEd"].replace(/E+/g, "EE");
 	} else if (available_formats["yMEd"] === undefined) {
 		dmw["s"] = "EE" + " " + dmy["s"];
 	}
 	if (available_formats["yMMMEd"]) {
-		dmwy["l"] = available_formats["yMMMEd"].replace(/E+/g,"EEE");
+		dmwy["l"] = available_formats["yMMMEd"].replace(/E+/g, "EEE");
 		dmwy["f"] = available_formats["yMMMEd"].replace(/E+/g, "EEEE");
 	} else if (available_formats["yMMMEd"] === undefined) {
 		dmwy["l"] = "EEE" + " " + dmy["l"];
@@ -1458,13 +1391,13 @@ function getDateFormats(language, script, region, data) {
 	//code for 12 hour clock setting
 	if (available_formats["hms"]) {
 		//available_formats["Hms"] = available_formats["Hms"].substring(available_formats["Hms"].indexOf("H"), 1 + available_formats["Hms"].lastIndexOf("s"));
-		time_12["ahmsz"] = "XXXXX"+available_formats["hms"] + " " + "z";
+		time_12["ahmsz"] = "XXXXX" + available_formats["hms"] + " " + "z";
 		time_12["ahms"] = available_formats["hms"];
 		time_12["hms"] = available_formats["hms"];
 		time_12["ms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("m"), 1 + available_formats["hms"].lastIndexOf("s"));
 	}
 	if (available_formats["hm"]) {
-		time_12["ahmz"] = "XXXXX"+available_formats["hm"] + " " + "z";
+		time_12["ahmz"] = "XXXXX" + available_formats["hm"] + " " + "z";
 		time_12["ahm"] = available_formats["hm"];
 		time_12["hm"] = available_formats["hm"];
 	}
@@ -1538,7 +1471,7 @@ function getDateFormats(language, script, region, data) {
 	var end_my = [];
 	//var sy=[];
 	for (var i = 0; i < array_interval_dmy.length; i++) {
-		util.print("array_interval_dmy "+array_interval_dmy[i]+"\n");
+		util.print("array_interval_dmy " + array_interval_dmy[i] + "\n");
 		/*start_dmy[i]=array_interval_dmy[i].substring(0,array_interval_dmy[i].length/2);
 		end_dmy[i]=array_interval_dmy[i].substring(array_interval_dmy[i].length/2+1,array_interval_dmy[i].length);
 		start_dmy[i]=start_dmy[i].replace(/[^Mdy–.\/\s]/g,"");
@@ -1554,7 +1487,7 @@ function getDateFormats(language, script, region, data) {
 		//var index_of_separator = array_interval_dmy[i].indexOf(intervalFormats["Hm"]["H"]);
 		//util.print("index of separator  "+index_of_separator+"\n");
 		array_interval_dmy[i] = array_interval_dmy[i].replace(intervalFormats["Hm"]["H"], "–");
-		util.print("array_interval_dmy "+array_interval_dmy[i]+"\n");
+		//util.print("array_interval_dmy " + array_interval_dmy[i] + "\n");
 		array_interval_dmy[i] = array_interval_dmy[i].replace(/[^Mdy–.\/\s]/g, "");
 		array_interval_dmy[i] = array_interval_dmy[i].replace(/[d]+/g, "{sd}");
 		array_interval_dmy[i] = array_interval_dmy[i].replace(/[M]+/g, "{sm}");
@@ -1565,9 +1498,9 @@ function getDateFormats(language, script, region, data) {
 		end_dmy[i] = end_dmy[i].replace("{sd}", "{ed}");
 		end_dmy[i] = end_dmy[i].replace("{sm}", "{em}");
 		end_dmy[i] = end_dmy[i].replace("{sy}", "{ey}");
-		util.print("array_interval_dmy "+array_interval_dmy[i]+"\n");
-		util.print("start_interval_dmy "+start_dmy[i]+"\n");
-		util.print("end_interval_dmy "+end_dmy[i]+"\n");
+		//util.print("array_interval_dmy " + array_interval_dmy[i] + "\n");
+		//util.print("start_interval_dmy " + start_dmy[i] + "\n");
+		//util.print("end_interval_dmy " + end_dmy[i] + "\n");
 	}
 	var array_interval_my = [ym_m, ym_y, ymmm_m, ymmm_y, ymmmm_m, ymmmm_y];
 	for (var i = 0; i < array_interval_my.length; i++) {
@@ -1688,7 +1621,7 @@ function getDateFormats(language, script, region, data) {
 	util.print("END MONTH:"+end_month+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
 	util.print("START YEAR:"+start_year+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
 	util.print("END YEAR:"+end_year+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");*/
-	//il.print("END TIME :"+end_time+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
+	//util.print("END TIME :"+end_time+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
 	//util.print("c00:"+JSON.stringify(c00)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
 	//util.print("interval codes are "+JSON.stringify(range)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
 	gregorian["range"] = range;
@@ -1699,9 +1632,7 @@ function getDateFormats(language, script, region, data) {
 //util.print("\nMerging and pruning resources...\n");
 
 function writeDateFormats(language, script, region, data) {
-
 	var path = calcLocalePath(language, script, region, "");
-
 	if (data.generated) {
 		if (anyProperties(data)) {
 			var empty_data = data["gregorian"]["date"];
@@ -1709,74 +1640,59 @@ function writeDateFormats(language, script, region, data) {
 			var dateFormat = {};
 			var gregorian = {};
 			var date = {};
-			var time_fmt=data["gregorian"]["time"];
-			var time={};
-			var range=data["gregorian"]["range"];
+			var time_fmt = data["gregorian"]["time"];
+			var time = {};
+			var range = data["gregorian"]["range"];
 			//util.print("gregorian range formats are :"+JSON.stringify(range)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
-			var range_fmt={};
+			var range_fmt = {};
 			//var time_12={};
 			if (data["gregorian"]["order"] != undefined)
 				gregorian["order"] = data["gregorian"]["order"];
-
 			var arr_data = ["dm", "dmy", "my", "m", "d", "y", "dmwy", "dmw", "n"];
-			var arr_keys = [empty_data["dm"], empty_data["dmy"], empty_data["my"], empty_data["m"], empty_data["d"], empty_data["y"], empty_data["dmwy"], empty_data["dmw"], empty_data["n"]];
-
+			var arr_keys = [empty_data["dm"], empty_data["dmy"], empty_data["my"], empty_data["m"], empty_data["d"], empty_data["y"], empty_data["dmwy"], empty_data[
+				"dmw"], empty_data["n"]];
 			for (var i = 0; i < arr_data.length; i++) {
-
 				if ((Object.keys(arr_keys[i]).length != 0)) {
 					date[arr_data[i]] = arr_keys[i];
 				}
 			}
-
 			if (Object.keys(date).length != 0) {
 				gregorian["date"] = date;
-
 			}
-			time_fmt["24"]=data["gregorian"]["time"]["24"];
+			time_fmt["24"] = data["gregorian"]["time"]["24"];
 			if (Object.keys(data["gregorian"]["time"]["24"]).length != 0) {
-				time["24"]=data["gregorian"]["time"]["24"];
+				time["24"] = data["gregorian"]["time"]["24"];
 				//gregorian["time"]= time_24;
 			}
-
-
 			if (Object.keys(data["gregorian"]["time"]["12"]).length != 0) {
-				time["12"]=data["gregorian"]["time"]["12"];
+				time["12"] = data["gregorian"]["time"]["12"];
 				//gregorian["time"]= time_12;
 			}
 			if (Object.keys(time).length != 0) {
-				
-				gregorian["time"]= time;
+				gregorian["time"] = time;
 			}
-			var range_keys=["c00","c01","c02","c10","c11","c12","c20"];
-			var array_range_codes=[range["c00"],range["c01"],range["c02"],range["c10"],range["c11"],range["c12"],range["c20"]];
+			var range_keys = ["c00", "c01", "c02", "c10", "c11", "c12", "c20"];
+			var array_range_codes = [range["c00"], range["c01"], range["c02"], range["c10"], range["c11"], range["c12"], range["c20"]];
 			for (var i = 0; i < range_keys.length; i++) {
-//util.print("gregorian range formats are :"+JSON.stringify(array_range_codes[i])+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
+				//util.print("gregorian range formats are :"+JSON.stringify(array_range_codes[i])+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
 				if ((Object.keys(array_range_codes[i]).length != 0)) {
 					range_fmt[range_keys[i]] = array_range_codes[i];
 				}
 			}
-			if(range["c30"])
-			range_fmt["c30"]=range["c30"];
-
-
+			if (range["c30"])
+				range_fmt["c30"] = range["c30"];
 			if (Object.keys(range_fmt).length != 0) {
-				
-				gregorian["range"]= range_fmt;
+				gregorian["range"] = range_fmt;
 			}
-			
 			if (Object.keys(gregorian).length === 0) {
 				util.print("Skipping empty " + path + "\n");
 				return;
 			}
-			
-
 			makeDirs(path);
-
 			//gregorian["date"]=date;
 			dateFormat["gregorian"] = gregorian;
 			dateFormat["generated"] = true;
 			util.print("Writing " + path + "dateformats.json\n");
-
 			fs.writeFileSync(path + "/dateformats.json", JSON.stringify(dateFormat), "utf-8");
 		} else {
 			util.print("Skipping empty " + path + "dateformats.json\n");
@@ -1807,5 +1723,4 @@ for (language in resources_dateformat_data) {
 	}
 }
 //writeDateFormats(undefined, undefined, undefined, resources_dateformat_data.data);
-
 process.exit(0);
