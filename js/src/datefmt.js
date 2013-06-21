@@ -27,6 +27,7 @@ resources.js
 calendar.js
 localeinfo.js
 timezone.js
+localeinfo.js
 */
 
 // !data dateformats sysres
@@ -208,6 +209,9 @@ timezone.js
  * <li><i>Z</i> - RFC 822 time zone
  * </ul>
  * 
+ *<li><i>useNative</i> - the flag used to determaine whether to use the native script settings 
+ * for formatting the numbers .
+ *
  * <li>onLoad - a callback function to call when the date format object is fully 
  * loaded. When the onLoad option is given, the DateFmt object will attempt to
  * load any missing locale data using the ilib loader callback.
@@ -263,7 +267,7 @@ ilib.DateFmt = function(options) {
 	this.length = "s";
 	this.dateComponents = "dmy";
 	this.timeComponents = "ahm";
-	
+	this.useNative=false;
 	if (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
@@ -344,7 +348,9 @@ ilib.DateFmt = function(options) {
 				id: options.timezone
 			});
 		}
-		
+		if (typeof(options.useNative) !== 'undefined') {
+			this.useNative = options.useNative;
+		}
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync == true);
 		}
@@ -888,6 +894,24 @@ ilib.DateFmt.prototype = {
 					str += templateArr[i].replace(/'/g, "");
 					break;
 			}
+		}
+		if(this.locinfo.getDigits() != "0123456789") {
+		var standard_digits="0123456789";
+		var digits= this.locinfo.getDigits();
+		for (var i=0; i < digits.length; i++) {
+		var digit=standard_digits.charAt(i);
+		var regex = new RegExp(digit,"g");
+		str=str.replace(regex,digits.charAt(i));
+			}
+		}
+		if(this.useNative) {
+		var standard_digits="0123456789";
+		var native_digits= this.locinfo.getNativeDigits();
+		for (var i=0; i < native_digits.length; i++) {
+		var digit=standard_digits.charAt(i);
+		var regex = new RegExp(digit,"g");
+		str=str.replace(regex,native_digits.charAt(i));
+				}	
 		}
 		return str;
 	},
