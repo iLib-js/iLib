@@ -39,61 +39,48 @@ function usage() {
 		"  the top level of the ilib locale data directory\n");
 	process.exit(1);
 }
-
 var cldrDirName;
 var localeDirName;
-
 process.argv.forEach(function (val, index, array) {
 	if (val === "-h" || val === "--help") {
 		usage();
 	}
 });
-
 if (process.argv.length < 4) {
 	util.error('Error: not enough arguments');
 	usage();
 }
-
 cldrDirName = process.argv[2];
 localeDirName = process.argv[3];
-
 util.print("genclockprefs - generate clock preferences information files.\n" +
 	"Copyright (c) 2013 LGE\n");
-
 util.print("CLDR dir: " + cldrDirName + "\n");
 util.print("locale dir: " + localeDirName + "\n");
-
 fs.exists(cldrDirName, function (exists) {
 	if (!exists) {
 		util.error("Could not access CLDR dir " + cldrDirName);
 		usage();
 	}
 });
-
 fs.exists(localeDirName, function (exists) {
 	if (!exists) {
 		util.error("Could not access locale data directory " + localeDirName);
 		usage();
 	}
 });
-
 var filename, root, json, suppData, languageData, scripts = {};
-
 try {
 	filename = cldrDirName + "/main/en.json";
 	json = fs.readFileSync(filename, "utf-8");
 	root = JSON.parse(json);
-
 	filename = cldrDirName + "/supplemental/supplementalData.json";
 	json = fs.readFileSync(filename, "utf-8");
 	suppData = JSON.parse(json);
-
 	languageData = suppData.languageData;
 } catch (e) {
 	util.print("Error: Could not load file " + filename + "\n");
 	process.exit(2);
 }
-
 for (var locale in languageData) {
 	if (locale && languageData[locale]) {
 		if (typeof (languageData[locale]["@scripts"]) === 'string') {
@@ -105,7 +92,6 @@ for (var locale in languageData) {
 			if (locale.length <= 3) {
 				// util.print("language " + language + " prepending " + JSON.stringify(newLangs)); 
 				scripts[language] = newLangs.concat(scripts[language]);
-
 			} else {
 				// util.print("language " + language + " appending " + JSON.stringify(newLangs)); 
 				scripts[language] = scripts[language].concat(newLangs);
@@ -116,21 +102,16 @@ for (var locale in languageData) {
 
 function loadFile(path) {
 	var ret = undefined;
-
 	if (fs.existsSync(path)) {
 		json = fs.readFileSync(path, "utf-8");
 		ret = JSON.parse(json);
 		//util.print("path is :"+path+"\n"); 
 	}
-
 	return ret;
 }
-
-function loadFile_jf(path) {
+/*function loadFile_jf(path) {
 	var ret = undefined;
-
 	if (fs.existsSync(path)) {
-
 		//util.print("path is :" + path + "\n");
 		json = fs.readFileSync(path, "utf-8");
 		var lastComma = json.lastIndexOf(",");
@@ -139,7 +120,7 @@ function loadFile_jf(path) {
 		//util.print("path is :"+path+"\n"); 
 	}
 	return ret;
-}
+}*/
 
 function calcLocalePath(language, script, region, filename) {
 	var path = localeDirName + "/";
@@ -158,14 +139,13 @@ function calcLocalePath(language, script, region, filename) {
 
 function loadFileNonGenerated(language, script, region) {
 	var path = calcLocalePath(language, script, region, "clock.jf");
-	var obj = loadFile_jf(path);
+	var obj = loadFile(path);
 	if (typeof (obj) !== 'undefined' && (typeof (obj.generated) === 'undefined' || obj.generated === false)) {
 		// only return non-generated files 
 		return obj;
 	}
 	return undefined;
 }
-
 var localeData = {};
 
 function getLocaleData(path, language, script, region) {
@@ -173,7 +153,6 @@ function getLocaleData(path, language, script, region) {
 	try {
 		filename = cldrDirName + "/main/" + path;
 		data = loadFile(filename);
-
 		if (script) {
 			if (region) {
 				if (!localeData[language]) {
@@ -207,7 +186,6 @@ function getLocaleData(path, language, script, region) {
 	} catch (e) {
 		return undefined;
 	}
-
 	return data;
 }
 
@@ -225,18 +203,17 @@ function anyProperties(data) {
 }
 
 function writeClockPrefs(language, script, region, data) {
-
 	var path = calcLocalePath(language, script, region, "");
 	//util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data)+"\n");
 	if (data.generated) {
 		if (anyProperties(data)) {
 			util.print("Writing " + path + "\n");
-
 			makeDirs(path);
-
 			//util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(data["clock"])+"\n"); 
-			if (data["clock"] != undefined) {
-				fs.writeFileSync(path + "/clock.jf", '\"clock\" :' + JSON.stringify(data["clock"]) + ',\n', "utf-8");
+			if (typeof (data["clock"]) != 'undefined') {
+				data.generated = true;
+				makeDirs(path);
+				fs.writeFileSync(path + "/clock.jf", JSON.stringify(data), "utf-8");
 			}
 		} else {
 			util.print("Skipping empty " + path + "\n");
@@ -249,14 +226,12 @@ function writeClockPrefs(language, script, region, data) {
 function getClockPrefs(language, script, region, data) {
 	// if it is already there and non-generated, return it 
 	var clockprefs = loadFileNonGenerated(language, script, region);
-
 	if (clockprefs) {
 		util.print("\nLoaded existing resources from " + calcLocalePath(language, script, region, "clock.jf") + "\n");
 		//util.print("\nLoaded existing resources data " + JSON.stringify(clockprefs) + "\n");
 		clockprefs.generated = false;
 		return clockprefs;
 	}
-
 	// else generate a new one 
 	clockprefs = {
 		generated: true
@@ -270,17 +245,13 @@ function getClockPrefs(language, script, region, data) {
 	} else {
 		util.print("could not find default clock preference \n");
 	}
-
 	//util.print("time format is :"+JSON.stringify(timeformat)+"\n");
 	//util.print("clock preference is :"+JSON.stringify(clockprefs)+"\n");
 	return clockprefs;
 }
-
 var language, region, script, files;
 files = fs.readdirSync(cldrDirName + "/main/");
-
 util.print("Reading locale data into memory...\n");
-
 for (var i = 0; i < files.length; i++) {
 	file = files[i];
 	if (file === "root.json") {
@@ -295,13 +266,9 @@ for (var i = 0; i < files.length; i++) {
 	}
 }
 util.print("\n");
-
 util.print("Merging and pruning locale data...\n");
-
 mergeAndPrune(localeData);
-
 var resources = {};
-
 resources.data = getClockPrefs(undefined, undefined, undefined, localeData.data);
 for (language in localeData) {
 	if (language && localeData[language] && language !== 'data' && language !== 'merged') {
@@ -325,7 +292,6 @@ for (language in localeData) {
 		resources[language].data = getClockPrefs(language, undefined, undefined, localeData[language].merged);
 	}
 }
-
 //resources.data = getClockPrefs(undefined, undefined, undefined, localeData.data); 
 util.print("\nMerging and pruning r...\n");
 //util.print("\nLoaded existing resources " + JSON.stringify(resources) + "\n");
@@ -334,7 +300,6 @@ util.print("\nMerging and pruning r...\n");
 mergeAndPrune(resources);
 //util.print("\ndata after merge and pruning\n"+JSON.stringify(resources)+"\n");
 //writeClockPrefs(undefined, undefined, undefined, resources.data);
-
 for (language in resources) {
 	if (language && resources[language] && language !== 'data' && language !== 'merged') {
 		for (var subpart in resources[language]) {
@@ -355,6 +320,5 @@ for (language in resources) {
 		writeClockPrefs(language, undefined, undefined, resources[language].data);
 	}
 }
-
 writeClockPrefs(undefined, undefined, undefined, resources.data);
 process.exit(0);
