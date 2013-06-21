@@ -64,6 +64,8 @@ strings.js
  * If the type of the formatter is "currency" and this
  * property is not specified, then the minimum fraction digits is set to the normal number
  * of digits used with that currency, which is almost always 0, 2, or 3 digits.
+ * <li><i>useNative</i> - the flag used to determaine whether to use the native script settings 
+ * for formatting the numbers .
  * <li><i>roundingMode</i> - When the maxFractionDigits or maxIntegerDigits is specified,
  * this property governs how the least significant digits are rounded to conform to that
  * maximum. The value of this property is a string with one of the following values:
@@ -125,7 +127,8 @@ ilib.NumFmt = function (options) {
 	var sync = true;
 	this.locale = new ilib.Locale();
 	this.type = "number";
-	
+	this.useNative=false;
+
 	if (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
@@ -152,7 +155,9 @@ ilib.NumFmt = function (options) {
 		if (options.style) {
 			this.style = options.style;
 		}
-		
+		if (options.useNative) {
+			this.useNative = options.useNative;
+		}
 		this.roundingMode = options.roundingMode;
 
 		if (typeof(options.sync) !== 'undefined') {
@@ -319,6 +324,7 @@ ilib.NumFmt.prototype = {
 	_formatScientific: function (num) {
 		var n = new Number(num);
 		var formatted;
+		var exponent = this.localeInfo.getExponential();
 		if (typeof(this.maxFractionDigits) !== 'undefined') {
 			// if there is fraction digits, round it to the right length first
 			// divide or multiply by 10 by manipulating the exponent so as to
@@ -332,10 +338,22 @@ ilib.NumFmt.prototype = {
 			e = parts[1];	
 			factor = Math.pow(10, this.maxFractionDigits);
 			significant = this.round(significant * factor) / factor;
-			formatted = "" + significant + "e" + e;
+			if(typeof (this.localeInfo.getExponential()) !== 'undefined'){
+				
+				formatted = "" + significant + exponent + e;
+			}
+			else {
+				formatted = "" + significant + "e" + e;
+			}				
+
 		} else {
 			formatted = n.toExponential(this.minFractionDigits);
-		}
+			if(typeof (this.localeInfo.getExponential()) !== 'undefined'){
+				
+				formatted = formatted.replace(/e/,exponent);	
+				}
+			
+			}
 		return formatted;
 	},
 	
@@ -368,7 +386,9 @@ ilib.NumFmt.prototype = {
 			secgroupSize = this.localeInfo.getSecondaryGroupingDigits(),
 			separator = this.localeInfo.getGroupingSeparator(),
 			formatted;
-			
+		if(this.useNative) {
+		separator = this.localeInfo.getNativeGroupingSeparator();
+		}	
 		integral = Math.abs(integral);
 		integral = integral.toString();
 		
@@ -420,9 +440,29 @@ ilib.NumFmt.prototype = {
 		
 		if (fraction && (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits > 0)) {
 			formatted += this.localeInfo.getDecimalSeparator();
+			if(this.useNative) {
+			formatted  = formatted.replace(this.localeInfo.getDecimalSeparator(),this.localeInfo.getNativeDecimalSeparator());
+				}
 			formatted += fraction;
 		}
-		
+		if(this.localeInfo.getDigits() != "0123456789") {
+		var standard_digits="0123456789";
+		var digits= this.localeInfo.getDigits();
+		for (var i=0; i < digits.length; i++) {
+		var digit=standard_digits.charAt(i);
+		var regex = new RegExp(digit,"g");
+		formatted=formatted.replace(regex,digits.charAt(i));
+			}
+		}
+		if(this.useNative) {
+		var standard_digits="0123456789";
+		var native_digits= this.localeInfo.getNativeDigits();
+		for (var i=0; i < native_digits.length; i++) {
+		var digit=standard_digits.charAt(i);
+		var regex = new RegExp(digit,"g");
+		formatted=formatted.replace(regex,native_digits.charAt(i));
+				}
+			}
 
 		
 		return formatted;
