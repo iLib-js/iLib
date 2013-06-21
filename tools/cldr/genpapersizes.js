@@ -82,9 +82,9 @@ fs.exists(toDir, function (exists) {
 var languageDataString = fs.readFileSync(languageDataFileName, "utf-8");
 var supplementalData = JSON.parse(languageDataString);
 var paperSizeData = supplementalData.measurementData.paperSize;
-util.print("paperSize data is " + JSON.stringify(paperSizeData));
+//util.print("paperSize data is " + JSON.stringify(paperSizeData));
 var paperSizes = {};
-
+var papersize = {};
 var territories_US_Letter = paperSizeData["US-Letter"]["@territories"].split(" ");
 
 for (var territories in territories_US_Letter) {
@@ -94,7 +94,8 @@ for (var territories in territories_US_Letter) {
 	if (!fs.existsSync(filename)) {
 		fs.mkdirSync(filename);
 		//}
-		fs.writeFile(filename + "/papersize.jf", '\t"papaerSizes": ' + JSON.stringify(paperSizes) + ',\n', function (err) {
+		papersize["paperSizes"] = paperSizes;
+		fs.writeFile(filename + "/papersize.jf", JSON.stringify(papersize), function (err) {
 			if (err) {
 				console.log(err);
 				throw err;
@@ -104,14 +105,17 @@ for (var territories in territories_US_Letter) {
 	}
 }
 
-var filename = toDir + '/';
+var filename = toDir;
 if (!fs.existsSync(filename)) {
 	fs.mkdirSync(filename);
-	paperSizes["regular"] = "A4";
-	fs.writeFile(filename + "/papersize.jf", '\t"papaerSizes": ' + JSON.stringify(paperSizes) + ',\n', function (err) {
-		if (err) {
-			console.log(err);
-			throw err;
-		}
-	});
+//}
+paperSizes["regular"] = "A4";
+papersize["paperSizes"] = paperSizes;
+fs.writeFile(filename + "/papersize.jf", JSON.stringify(papersize), function (err) {
+	if (err) {
+		console.log(err);
+		throw err;
+	}
+});
 }
+//}
