@@ -37,69 +37,89 @@ function usage() {
 		"  directory to output the measuresys.jf json files. Default: current dir.\n");
 	process.exit(1);
 }
+
 var cldrDir, languageDataFileName;
 var toDir = ".";
+
 process.argv.forEach(function (val, index, array) {
 	if (val === "-h" || val === "--help") {
 		usage();
 	}
 });
+
 if (process.argv.length < 3) {
 	util.error('Error: not enough arguments');
 	usage();
 }
+
 cldrDir = process.argv[2];
 if (process.argv.length > 3) {
 	toDir = process.argv[3];
 }
+
 util.print("genmeasurementsystem - generate the localeinfo measuresys.jf files.\n" +
 	"Copyright (c) 2013 JEDLSoft\n");
+
 util.print("CLDR dir: " + cldrDir + "\n");
 util.print("output dir: " + toDir + "\n");
+
 languageDataFileName = cldrDir + "/supplemental/supplementalData.json";
+
 fs.exists(languageDataFileName, function (exists) {
 	if (!exists) {
 		util.error("Could not access file " + languageDataFileName);
 		usage();
 	}
 });
+
 fs.exists(toDir, function (exists) {
 	if (!exists) {
 		util.error("Could not access target directory " + toDir);
 		usage();
 	}
 });
+
 var languageDataString = fs.readFileSync(languageDataFileName, "utf-8");
 var supplementalData = JSON.parse(languageDataString);
+
 var measurementData = supplementalData.measurementData;
 //util.print("measurementData data is "+ JSON.stringify(measurementData));
+
+var units = {};
+
 for (var measure_system in measurementData) {
 	var filename;
 	//util.print("Measurement system is :"+measure_system+"\n");
 	//util.print("measurementData  is "+measurementData[measure_system]);
+
 	if (measure_system && measurementData[measure_system]) {
 		if (measure_system.length < 4) {
 			if (measure_system == 001) {
-				filename = toDir + '/';
+				filename = toDir;
 			} else {
+
 				filename = toDir + '/' + 'und/' + measure_system;
 			}
+
 			if (!fs.existsSync(filename)) {
 				fs.mkdirSync(filename);
-				//}
+				}
 				//console.log(measure_system + ':\t"Units": ' + JSON.stringify(measurementData[measure_system]));
 				var measureUnits = ["metric", "uscustomary"];
 				for (var i = 0; i < 2; i++) {
 					if (measurementData[measure_system] == "US") {
 						console.log(measure_system + ':\t"Units are ": ' + measureUnits[1]);
-						fs.writeFile(filename + "/measuresys.jf", '\t"Units": ' + measureUnits[1] + ',\n', function (err) {
+						units["Units"] = measureUnits[1];
+						fs.writeFile(filename + "/measuresys.jf", JSON.stringify(units), function (err) {
 							if (err) {
 								console.log(err);
 								throw err;
 							}
 						});
 					} else {
-						fs.writeFile(filename + "/measuresys.jf", '\t"Units": ' + measureUnits[0] + ',\n', function (err) {
+						units["Units"] = measureUnits[0];
+						console.log(measure_system + ':\t"Units are ": ' + measureUnits[0]);
+						fs.writeFile(filename + "/measuresys.jf", JSON.stringify(units), function (err) {
 							if (err) {
 								console.log(err);
 								throw err;
@@ -109,5 +129,5 @@ for (var measure_system in measurementData) {
 				}
 			}
 		}
-	}
+	//}
 }
