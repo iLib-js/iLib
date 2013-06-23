@@ -258,7 +258,7 @@ ilib.ResBundle = function (options) {
 		locale: lookupLocale, 
 		name: this.baseName + ".json", 
 		sync: this.sync, 
-		loadParmas: this.loadParams, 
+		loadParams: this.loadParams, 
 		callback: ilib.bind(this, function (map) {
 			if (!map) {
 				map = ilib.data[this.baseName] || {};
