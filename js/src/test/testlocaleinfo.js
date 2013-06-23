@@ -15301,7 +15301,7 @@ function testLocaleInfoRoundingMode_zu() {
     assertEquals("halfdown", info.getRoundingMode());
 }
 
-//************************************************end 04-JUN-2013**********************************************************
+/************************************************end 04-JUN-2013**********************************************************
 function testLocaleInfoGetGroupingSeparator1() {
     var info = new ilib.LocaleInfo();    
     assertNotNull(info);
