@@ -1,3 +1,25 @@
+/* 
+ * mkli.js - ilib tool to remove the non-json fragments 
+ *
+ * Copyright © 2013, LGE
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/* 
+ * This code is intended to be run under node.js
+ */
+
 var fs = require('fs');
 var util = require('util');
 var common = require('./common');
@@ -5,8 +27,8 @@ var common = require('./common');
 
 
 function usage() {
-	util.print("Usage: gennumfmts [-h] CLDR_json_dir locale_data_dir\n" +
-		"Generate number formats information files.\n\n" +
+	util.print("Usage: mkli.jss [-h] locale_data_dir\n" +
+		"remove non-json files.\n\n" +
 		"-h or --help\n" +
 		"  this help\n" +
 		"locale_data_dir\n" +
