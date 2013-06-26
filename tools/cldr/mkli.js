@@ -50,9 +50,9 @@ if (process.argv.length < 3) {
 function walk(dir) {
 	var results = [];
 	var list = fs.readdirSync(dir);
+	var merged = {};
 	list.forEach(function (file) {
 		file = dir + '/' + file;
-		var merged = {};
 		var stat = fs.statSync(file);
 		if (stat && stat.isDirectory())(walk(file));
 
@@ -62,26 +62,21 @@ function walk(dir) {
 				var data = fs.readFileSync(file, 'utf8');
 				try {
 					obj = JSON.parse(data);
+					merged = common.merge(merged, obj);
 				} catch (err) {
 					fs.unlink(file);
 					file = '[]';
-				}
-
-				if (file != '[]') {
-					results.push(file);
 				}
 			}
 		}
 	});
 
-	for (var i = 0; i < results.length; i++) {
-		var json = fs.readFileSync(results[i], 'utf8');
-		var root = JSON.parse(json);
-		merged = common.merge(merged, root);
-	}
 	var path = dir;
 	if (Object.keys(merged).length != 0) {
 		fs.writeFileSync(path + "/localeinfo.json", JSON.stringify(merged), 'utf8');
+		util.print(path + ": merged *.jf into localeinfo.json\n");
+	} else {
+		util.print(path + ": nothing to write\n");
 	}
 
 	return results;
