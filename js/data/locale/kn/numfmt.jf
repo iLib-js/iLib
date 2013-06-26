@@ -1,1 +1,1 @@
-"numfmt" :{"decimalChar":".","groupChar":",","curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
+{"numfmt":{"exponential":"ಈ","curFmt":"{s}{n}","negativecurFmt":"({s}{n})"},"native_numfmt":{"script":"knda","digits":"೦೧೨೩೪೫೬೭೮೯"},"generated":true}

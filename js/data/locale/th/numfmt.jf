@@ -1,1 +1,1 @@
-"numfmt" :{"decimalChar":".","groupChar":",","curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
+{"numfmt":{"curFmt":"{s}{n}","negativecurFmt":"({s}{n})"},"native_numfmt":{"script":"thai","digits":"๐๑๒๓๔๕๖๗๘๙"},"generated":true}

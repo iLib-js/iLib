@@ -1,4 +1,6 @@
+{
 	"numfmt": {
 		"decimalChar": ".",
 		"groupChar": ","
-	},
+	}
+}

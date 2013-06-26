@@ -1,1 +1,1 @@
-"numfmt" :{"decimalChar":".","groupChar":",","curFmt":"{s} {n}","secgroupSize":0},
+{"numfmt":{"script":"mymr","digits":"၀၁၂၃၄၅၆၇၈၉"},"generated":true}

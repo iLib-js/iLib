@@ -1,1 +1,1 @@
-"numfmt" :{"decimalChar":".","groupChar":",","curFmt":"{s} {n}","secgroupSize":2},
+{"numfmt":{"script":"beng","secgroupSize":2,"digits":"০১২৩৪৫৬৭৮৯"},"generated":true}

@@ -1,1 +1,1 @@
-"numfmt" :{"decimalChar":"٫","groupChar":"٬","pctChar":"٪"},
+{"numfmt":{"script":"arabext","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"×۱۰^","digits":"۰۱۲۳۴۵۶۷۸۹"},"generated":true}

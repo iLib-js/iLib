@@ -1,6 +1,8 @@
+{
 	"numfmt": {
 		"decimalChar": ".",
 		"groupChar": "",
 		"prigroupSize": 0,
 		"pctFmt": "{n}％"
-	},
+	}
+}

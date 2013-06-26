@@ -1,1 +1,1 @@
-"numfmt" :{"decimalChar":".","groupChar":",","curFmt":"{s} {n}","secgroupSize":2},
+{"numfmt":{"secgroupSize":2},"native_numfmt":{"script":"guru","digits":"੦੧੨੩੪੫੬੭੮੯"},"generated":true}

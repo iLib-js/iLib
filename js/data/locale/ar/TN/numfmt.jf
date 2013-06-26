@@ -1,1 +1,1 @@
-"numfmt" :{"decimalChar":",","groupChar":".","curFmt":"{s}{n}","secgroupSize":0,"negativenumFmt":";{n}-"},
+{"numfmt":{"script":"latn","decimalChar":",","groupChar":".","pctChar":"%","exponential":"E","curFmt":"{s}{n}","digits":"0123456789"},"native_numfmt":{"script":"arab","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"اس","curFmt":"{s} {n}","digits":"٠١٢٣٤٥٦٧٨٩"},"generated":true}

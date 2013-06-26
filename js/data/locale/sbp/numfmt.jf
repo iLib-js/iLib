@@ -1,1 +1,1 @@
-"numfmt" :{"decimalChar":".","groupChar":",","curFmt":"{n}{s}","secgroupSize":0},
+{"numfmt":{"curFmt":"{n}{s}"},"generated":true}
