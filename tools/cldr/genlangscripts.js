@@ -113,6 +113,7 @@ for (var language in scripts) {
 		}
 		console.log(language + ':\t"scripts": ' + JSON.stringify(scripts[language]) + ',');
 		scripts_name["scripts"] = scripts[language];
+		scripts_name.generated = true;
 		fs.writeFile(filename + "/scripts.jf", JSON.stringify(scripts_name), function (err) {
 			if (err) {
 				console.log(err);
