@@ -13,7 +13,7 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
- * See the License for the specific day_of_week governing permissions and
+ * See the License for the specific firstdayofweek governing permissions and
  * limitations under the License.
  */
 /*
@@ -25,16 +25,17 @@ var unifile = require('./unifile.js');
 var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
+var mkdirs = common.makeDirs;
 
 function usage() {
 	util.print("Usage: genDayofWeek [-h] CLDR_dir [toDir]\n" +
-		"Generate the day_of_week.jf files for each day_of_week.\n\n" +
+		"Generate the firstdayofweek.jf files for each country.\n\n" +
 		"-h or --help\n" +
 		"  this help\n" +
 		"CLDR_dir\n" +
 		"  directory with CLDR represented in json format downloaded from the Unicode site\n" +
 		"toDir\n" +
-		"  directory to output the day_of_week.jf json files. Default: current dir.\n");
+		"  directory to output the firstdayofweek.jf json files. Default: current dir.\n");
 	process.exit(1);
 }
 var cldrDir, languageDataFileName;
@@ -52,7 +53,7 @@ cldrDir = process.argv[2];
 if (process.argv.length > 3) {
 	toDir = process.argv[3];
 }
-util.print("genDayofWeek - generate the localeinfo day_of_week.jf files.\n" +
+util.print("genDayofWeek - generate the localeinfo firstdayofweek.jf files.\n" +
 	"Copyright (c) 2013 JEDLSoft\n");
 util.print("CLDR dir: " + cldrDir + "\n");
 util.print("output dir: " + toDir + "\n");
@@ -73,27 +74,28 @@ var languageDataString = fs.readFileSync(languageDataFileName, "utf-8");
 var supplementalData = JSON.parse(languageDataString);
 var firstDayOfWeekData = supplementalData.weekData.firstDay;
 //util.print("data is "+ JSON.stringify(firstDayOfWeekData));
-for (var day_of_week in firstDayOfWeekData) {
+for (var firstdayofweek in firstDayOfWeekData) {
 	var filename;
-	//util.print("day of the week is :"+day_of_week+"\n");
-	//util.print("firstDayOfWeekData  is "+firstDayOfWeekData[day_of_week]);
-	if (day_of_week && firstDayOfWeekData[day_of_week]) {
-		if (day_of_week.length < 9) {
-			if (day_of_week == 001) {
+	//util.print("day of the week is :"+firstdayofweek+"\n");
+	//util.print("firstDayOfWeekData  is "+firstDayOfWeekData[firstdayofweek]);
+	if (firstdayofweek && firstDayOfWeekData[firstdayofweek]) {
+		if (firstdayofweek.length < 9) {
+			if (firstdayofweek == 001) {
 				filename = toDir;
 			} else {
-				filename = toDir + '/' + 'und/' + day_of_week;
+				filename = toDir + '/' + 'und/' + firstdayofweek;
 			}
 			if (!fs.existsSync(filename)) {
-				fs.mkdirSync(filename);
+				mkdirs(filename);
 			}
-			console.log(day_of_week + ':\t"day_of_week": ' + JSON.stringify(firstDayOfWeekData[day_of_week]));
+			console.log(firstdayofweek + ':\t' + JSON.stringify(firstDayOfWeekData[firstdayofweek]));
 			var dayProperties = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 			for (var i = 0; i < 7; i++) {
-				if (firstDayOfWeekData[day_of_week] === dayProperties[i]) {
-					var day_of_week = {};
-					day_of_week["day_of_week"] = i;
-					fs.writeFile(filename + "/day_of_week.jf", JSON.stringify(day_of_week), function (err) {
+				if (firstDayOfWeekData[firstdayofweek] === dayProperties[i]) {
+					var firstdayofweek = {};
+					firstdayofweek.firstdayofweek = i;
+					firstdayofweek.generated = true;
+					fs.writeFile(filename + "/firstdayofweek.jf", JSON.stringify(firstdayofweek), function (err) {
 						if (err) {
 							console.log(err);
 							throw err;
