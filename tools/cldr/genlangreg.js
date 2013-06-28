@@ -24,6 +24,7 @@ var fs = require('fs');
 var util = require('util');
 var common = require("./common");
 var Locale = common.Locale;
+var mkdirs = common.makeDirs;
 
 function usage() {
 	util.print("Usage: genlangreg [-h] CLDR_json_dir locale_data_dir\n" +
@@ -75,8 +76,12 @@ fs.exists(localeDirName, function (exists) {
 });
 
 var english;
-var language_name = {};
-var region_name = {};
+var language_name = {
+	generated: true
+};
+var region_name = {
+	generated: true
+};
 try {
 	var enData = fs.readFileSync(cldrDirName + "/main/en.json", "utf-8");
 	english = JSON.parse(enData);
@@ -85,51 +90,33 @@ try {
 	process.exist(2);
 }
 
-var lang, region, script, languages = fs.readdirSync(localeDirName);
-for (var i = 0; i < languages.length; i++) {
-	lang = languages[i];
-	var langdir = localeDirName + "/" + lang;
-	if (Locale.isRegionCode(lang) && fs.existsSync(langdir)) {
-		region = lang;
-		filename = langdir + "/regionname.jf";
-		if (typeof (english.localeDisplayNames.territories[region]) !== 'undefined') {
-			util.print("\t" + filename + ": " + english.localeDisplayNames.territories[region] + "\n");
-			region_name["region.name"] = english.localeDisplayNames.territories[region];
-			fs.writeFileSync(filename, JSON.stringify(region_name), "utf-8");
-		}
-	} else if (Locale.isLanguageCode(lang) && fs.existsSync(langdir)) {
+util.print("Generating language name data\n");
+
+var lang, region, script, 
+	languages = english.localeDisplayNames.languages,
+	regions = english.localeDisplayNames.territories;
+
+for (var lang in languages) {
+	if (lang.search(/[_-]/) === -1) {
+		var langdir = localeDirName + "/" + lang;
 		var filename = langdir + "/langname.jf";
-		if (typeof (english.localeDisplayNames.languages[lang]) !== 'undefined') {
-			util.print(filename + ": " + english.localeDisplayNames.languages[lang] + "\n");
-			language_name["language.name"] = english.localeDisplayNames.languages[lang];
-			fs.writeFileSync(filename, JSON.stringify(language_name), "utf-8");
-			var regions = fs.readdirSync(langdir);
-			for (var j = 0; j < regions.length; j++) {
-				var region = regions[j];
-				var regiondir = langdir + "/" + region;
-				if (Locale.isRegionCode(region) && fs.existsSync(regiondir)) {
-					filename = regiondir + "/regionname.jf";
-					if (typeof (english.localeDisplayNames.territories[region]) !== 'undefined') {
-						util.print("\t" + filename + ": " + english.localeDisplayNames.territories[region] + "\n");
-						region_name["region.name"] = english.localeDisplayNames.territories[region];
-						fs.writeFileSync(filename, JSON.stringify(region_name), "utf-8");
-					}
-				} else if (Locale.isScriptCode(region) && fs.existsSync(regiondir)) {
-					var scriptregions = fs.readdirSync(regiondir);
-					for (var k = 0; k < scriptregions.length; k++) {
-						var scriptregion = scriptregions[k];
-						var scriptregiondir = regiondir + "/" + scriptregion;
-						if (Locale.isRegionCode(scriptregion) && fs.existsSync(scriptregiondir)) {
-							filename = scriptregiondir + "/regionname.jf";
-							if (typeof (english.localeDisplayNames.territories[scriptregion]) !== 'undefined') {
-								util.print("\t" + filename + ": " + english.localeDisplayNames.territories[scriptregion] + "\n");
-								region_name["region.name"] = english.localeDisplayNames.territories[region];
-								fs.writeFileSync(filename, JSON.stringify(region_name), "utf-8");
-							}
-						}
-					}
-				}
-			}
-		}
+		util.print(filename + ": " + languages[lang] + "\n");
+		mkdirs(langdir);
+		language_name["language.name"] = languages[lang];
+		language_name.generated = true;
+		fs.writeFileSync(filename, JSON.stringify(language_name), "utf-8");
 	}
 }
+
+for (region in regions) {
+	if (region.search(/[_\-0123456789]/) === -1) {
+		var regdir = localeDirName + "/und/" + region;
+		var filename = regdir + "/regionname.jf";
+		util.print(filename + ": " + regions[region] + "\n");
+		mkdirs(regdir);
+		language_name["region.name"] = regions[region];
+		language_name.generated = true;
+		fs.writeFileSync(filename, JSON.stringify(language_name), "utf-8");
+	}
+}
+

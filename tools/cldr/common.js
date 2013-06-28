@@ -628,7 +628,7 @@ exports.mergeAndPrune = function mergeAndPrune(localeData) {
 exports.makeDirs = function makeDirs(path) {
 	var parts = path.split("\/");
 	
-	for (var i = 1; i < parts.length; i++) {
+	for (var i = 1; i <= parts.length; i++) {
 		var p = parts.slice(0, i).join("/");
 		if (!fs.existsSync(p)) {
 			fs.mkdirSync(p);
