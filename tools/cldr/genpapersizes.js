@@ -93,7 +93,7 @@ for (var territories in territories_US_Letter) {
 	
 	filename = toDir + 'und/' + territories_US_Letter[territories];
 	util.print(filename + "\n");
-	paperSizes["regular"] = "US-Letter";
+	paperSizes["regular"] = "8x11";
 	if (!fs.existsSync(filename)) {
 		mkdirs(filename);
 		util.print(territories + "\n");
