@@ -25,10 +25,11 @@ var unifile = require('./unifile.js');
 var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
+var mkdirs = common.makeDirs;
 
 function usage() {
 	util.print("Usage: genpapersize [-h] CLDR_dir [toDir]\n" +
-		"Generate the papaersize.jf files for each day_of_week.\n\n" +
+		"Generate the papersizes.jf files for each locale.\n\n" +
 		"-h or --help\n" +
 		"  this help\n" +
 		"CLDR_dir\n" +
@@ -89,20 +90,23 @@ var territories_US_Letter = paperSizeData["US-Letter"]["@territories"].split(" "
 
 for (var territories in territories_US_Letter) {
 	var filename;
-	filename = toDir + '/' + 'und/' + territories_US_Letter[territories];
+	
+	filename = toDir + 'und/' + territories_US_Letter[territories];
+	util.print(filename + "\n");
 	paperSizes["regular"] = "US-Letter";
 	if (!fs.existsSync(filename)) {
-		fs.mkdirSync(filename);
-		//}
-		papersize["paperSizes"] = paperSizes;
-		fs.writeFile(filename + "/papersize.jf", JSON.stringify(papersize), function (err) {
-			if (err) {
-				console.log(err);
-				throw err;
-			}
-		});
-
+		mkdirs(filename);
+		util.print(territories + "\n");
 	}
+	papersize["paperSizes"] = paperSizes;
+	papersize.generated = true;
+	fs.writeFile(filename + "/papersizes.jf", JSON.stringify(papersize), function (err) {
+		util.print(filename + "papersizes.jf\n");
+		if (err) {
+			console.log(err);
+			throw err;
+		}
+	});
 }
 
 var filename = toDir;
@@ -111,7 +115,8 @@ if (!fs.existsSync(filename)) {
 //}
 paperSizes["regular"] = "A4";
 papersize["paperSizes"] = paperSizes;
-fs.writeFile(filename + "/papersize.jf", JSON.stringify(papersize), function (err) {
+papersize.generated = true;
+fs.writeFile(filename + "/papersizes.jf", JSON.stringify(papersize), function (err) {
 	if (err) {
 		console.log(err);
 		throw err;
