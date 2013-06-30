@@ -25,6 +25,7 @@ var unifile = require('./unifile.js');
 var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
+var mkdirs = common.makeDirs;
 
 function usage() {
 	util.print("Usage: genmeasurementsystem [-h] CLDR_dir [toDir]\n" +
@@ -85,7 +86,9 @@ var supplementalData = JSON.parse(languageDataString);
 var measurementData = supplementalData.measurementData;
 //util.print("measurementData data is "+ JSON.stringify(measurementData));
 
-var units = {};
+var units = {
+	generated: true
+};
 
 for (var measure_system in measurementData) {
 	var filename;
@@ -97,37 +100,36 @@ for (var measure_system in measurementData) {
 			if (measure_system == 001) {
 				filename = toDir;
 			} else {
-
 				filename = toDir + '/' + 'und/' + measure_system;
 			}
 
 			if (!fs.existsSync(filename)) {
-				fs.mkdirSync(filename);
-				}
-				//console.log(measure_system + ':\t"Units": ' + JSON.stringify(measurementData[measure_system]));
-				var measureUnits = ["metric", "uscustomary"];
-				for (var i = 0; i < 2; i++) {
-					if (measurementData[measure_system] == "US") {
-						console.log(measure_system + ':\t"Units are ": ' + measureUnits[1]);
-						units["Units"] = measureUnits[1];
-						fs.writeFile(filename + "/measuresys.jf", JSON.stringify(units), function (err) {
-							if (err) {
-								console.log(err);
-								throw err;
-							}
-						});
-					} else {
-						units["Units"] = measureUnits[0];
-						console.log(measure_system + ':\t"Units are ": ' + measureUnits[0]);
-						fs.writeFile(filename + "/measuresys.jf", JSON.stringify(units), function (err) {
-							if (err) {
-								console.log(err);
-								throw err;
-							}
-						});
-					}
+				mkdirs(filename);
+			}
+			//console.log(measure_system + ':\t"Units": ' + JSON.stringify(measurementData[measure_system]));
+			
+			var measureUnits = ["metric", "uscustomary"];
+			for (var i = 0; i < 2; i++) {
+				if (measurementData[measure_system] === "US") {
+					console.log(measure_system + ':\t"Units are ": ' + measureUnits[1]);
+					units.units = measureUnits[1];
+					fs.writeFile(filename + "/units.jf", JSON.stringify(units), function (err) {
+						if (err) {
+							console.log(err);
+							throw err;
+						}
+					});
+				} else {
+					units.units = measureUnits[0];
+					console.log(measure_system + ':\t"Units are ": ' + measureUnits[0]);
+					fs.writeFile(filename + "/units.jf", JSON.stringify(units), function (err) {
+						if (err) {
+							console.log(err);
+							throw err;
+						}
+					});
 				}
 			}
 		}
-	//}
+	}
 }
