@@ -1,8 +1,1 @@
-{
-	"numfmt": {
-		"decimalChar": ".",
-		"groupChar": ",",
-		"prigroupSize": 3,
-		"pctFmt": "{n}％"
-	}
-}
+{"generated":true,"native_numfmt":{"script":"hanidec","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"({s}{n})"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"〇一二三四五六七八九"},"numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}}}

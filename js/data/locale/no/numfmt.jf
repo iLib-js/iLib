@@ -1,8 +1,9 @@
 {
-	"numfmt": {
-		"decimalChar": ",",
-		"groupChar": " ",
-		"prigroupSize": 3,
-		"pctFmt": "{n} %"
-	}
+    "numfmt": {
+        "groupChar": " ",
+        "currencyFormats": {
+            "common": "{s} {n}"
+        },
+        "pctFmt": "{n} %"
+    }
 }

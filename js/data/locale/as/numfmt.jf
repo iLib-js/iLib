@@ -1,1 +1,1 @@
-{"numfmt":{"script":"beng","secgroupSize":2,"digits":"০১২৩৪৫৬৭৮৯"},"generated":true}
+{"generated":true,"numfmt":{"script":"Beng","decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{s} {n}"},"digits":"০১২৩৪৫৬৭৮৯"}}

@@ -1,1 +1,1 @@
-{"numfmt":{"script":"arabext","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"×۱۰^","secgroupSize":2,"digits":"۰۱۲۳۴۵۶۷۸۹"},"generated":true}
+{"generated":true,"numfmt":{"script":"arabext","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"×۱۰^","secgroupSize":2,"currencyFormats":{"common":"{s} {n}"},"digits":"۰۱۲۳۴۵۶۷۸۹"}}

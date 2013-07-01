@@ -27,6 +27,7 @@ var merge = common.merge;
 var Locale = common.Locale;
 var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
+var isEmpty = common.isEmpty;
 
 function usage() {
 	util.print("Usage: gennumfmts [-h] CLDR_json_dir locale_data_dir\n" +
@@ -126,22 +127,6 @@ function loadFile(path) {
 	return ret;
 }
 
-/*function loadFile_jf(path) {
-	var ret = undefined;
-
-	if (fs.existsSync(path)) {
-
-		//util.print("path is :" + path + "\n");
-		json = fs.readFileSync(path, "utf-8");
-		var lastComma = json.lastIndexOf(",");
-		json = json.substring(0, lastComma);
-		ret = JSON.parse("{" + json + "}");
-		//ret.generated=true;
-		//util.print("path is :"+path+"\n"); 
-	}
-	return ret;
-}*/
-
 function calcLocalePath(language, script, region, filename) {
 	var path = localeDirName + "/";
 	if (language) {
@@ -236,13 +221,14 @@ function writeNumberFormats(language, script, region, data) {
 
 			var empty_data_default = data["numfmt"];
 			var empty_data_native = data["native_numfmt"];
-			if ((Object.keys(empty_data_default).length === 0)) {
+			if (isEmpty(empty_data_default) && isEmpty(empty_data_native)) {
 				//util.print("no need to create the file " + "\n");
 				return;
 			}
 
 			//makeDirs(path);
 
+			/*
 			var numfmt = {};
 			var default_data = {};
 			var native_data = {};
@@ -261,7 +247,7 @@ function writeNumberFormats(language, script, region, data) {
 				}
 			}
 			if (typeof (default_data) != 'undefined') {
-				if ((Object.keys(default_data).length !== 0)) {
+				if ((!isEmpty(default_data))) {
 					numfmt["numfmt"] = default_data;
 				}
 
@@ -281,26 +267,27 @@ function writeNumberFormats(language, script, region, data) {
 				}
 			}
 			if (typeof (native_data) != 'undefined') {
-				if ((Object.keys(native_data).length !== 0)) {
+				if ((!isEmpty(native_data))) {
 					numfmt["native_numfmt"] = native_data;
 				}
 
 			}
 			/*if(typeof (empty_data_default["digits"]) != 'undefined'){
-			if ((Object.keys(empty_data_default["digits"]).length != 0)) {
+			if ((!isEmpty(empty_data_default["digits"]))) {
 				//util.print("no need to create the file " + "\n");
 				numfmt["digits"]=empty_data_default["digits"];
 				}
-			}*/
+			}
+			*/
 
 			//util.print("data to be written into jf files" + path + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+JSON.stringify(numfmt)+"\n"); */
-			if ((Object.keys(numfmt).length !== 0)) {
-				numfmt.generated = true;
+			if (!isEmpty(data)) {
+				data.generated = true;
 				makeDirs(path);
-				fs.writeFileSync(path + "/numfmt.jf", JSON.stringify(numfmt), "utf-8");
+				fs.writeFileSync(path + "/numfmt.jf", JSON.stringify(data), "utf-8");
 			}
 			/*if(typeof(numfmt["native"])!='undefined') {
-				if ((Object.keys(numfmt["native"]).length !== 0)) {
+				if ((!isEmpty(numfmt["native"]))) {
 			fs.appendFileSync(path + "/numfmt.jf", '\"native_numfmt\" :' + JSON.stringify(numfmt["native"]) + ',\n', "utf-8");
 				}
 			}*/
@@ -345,18 +332,19 @@ function getNumberFormats(language, script, region, data) {
 	numfmt = default_data;
 	//numfmt["defaults"]=default_data;
 	if (native_num_system != def_num_system) {
-		native_data = getNumberFormats_num_system(native_num_system, data);
+		numbers.native_numfmt = getNumberFormats_num_system(native_num_system, data);
+		/*
 		var native_data_pruned = {};
 		//util.print("the native numbering system  data is ---------------------------------------- " + JSON.stringify(native_data) + "\n");
 		for (var keys in numfmt) {
 			if (numfmt[keys] !== native_data[keys]) {
 				native_data_pruned[keys] = native_data[keys];
 			}
-			if (Object.keys(native_data_pruned).length != 0) {
+			if (!isEmpty(native_data_pruned)) {
 				numbers["native_numfmt"] = native_data_pruned;
 			}
 		}
-
+		*/
 	}
 	numbers["numfmt"] = numfmt;
 
@@ -434,6 +422,9 @@ function getNumberFormats_num_system(def_num_system, data) {
 	percent_format = percent_format.replace(/'(.)+'/g, "");
 	var pctFmt = percent_format.replace(/[0#,\.]+/, "{n}");
 	//if(def_num_system == "latn") {
+	if (def_num_system.length == 4) {
+		def_num_system = def_num_system.charAt(0).toUpperCase() + def_num_system.substring(1);
+	}
 	symbol_format_data["script"] = def_num_system;
 	//}
 	symbol_format_data["decimalChar"] = decimal_separator;
@@ -441,34 +432,42 @@ function getNumberFormats_num_system(def_num_system, data) {
 	symbol_format_data["pctChar"] = symbol_format["percentSign"];
 	symbol_format_data["exponential"] = symbol_format["exponential"];
 	symbol_format_data["prigroupSize"] = primarygroupsize;
-	symbol_format_data["secgroupSize"] = secondarygroupsize;
+	if (secondarygroupsize !== 0) {
+		symbol_format_data["secgroupSize"] = secondarygroupsize;
+	}
 	//    symbol_format_data["pctFmt"]=pctFmt; 
 
 	currency_format = currency_format.replace(/'(.)+'/g, "");
+	symbol_format_data.currencyFormats = {};
 	if (currency_format.indexOf(";") != -1) {
 		index_of_semi_colon = currency_format.indexOf(";");
 		var cur_fmt = currency_format.substring(0, index_of_semi_colon);
 		//util.print("cur_fmt      is  ...................." + cur_fmt + "===================" + "\n");
 		var curFmt = cur_fmt.replace(/[0#,\.]+/, "{n}");
 		curFmt = curFmt.replace(/¤/g, "{s}");
-		symbol_format_data["curFmt"] = curFmt;
+		symbol_format_data.currencyFormats.common = curFmt;
+		
+		var negative_cur_format = currency_format.substring(index_of_semi_colon + 1, currency_format.length);
+		var curfmtnegative = negative_cur_format.replace(/[0#,\.]+/, "{n}");
+		curfmtnegative = curfmtnegative.replace(/¤/g, "{s}");
+		symbol_format_data.currencyFormats.commonNegative = curfmtnegative;
 	} else {
 		curFmt = currency_format.replace(/[0#,\.]+/, "{n}");
 		curFmt = curFmt.replace(/¤/g, "{s}");
-		symbol_format_data["curFmt"] = curFmt;
+		symbol_format_data.currencyFormats.common = curFmt;
 	}
 
 	//    symbol_format_data["curFmt"]=curFmt; 
 	if (decimal_fmt.indexOf(";") != -1) {
 		index_of_semi_colon = decimal_fmt.indexOf(";");
-		var negative_num_format = decimal_fmt.substring(index_of_semi_colon, decimal_fmt.length);
+		var negative_num_format = decimal_fmt.substring(index_of_semi_colon + 1, decimal_fmt.length);
 		var numfmtnegative = negative_num_format.replace(/[0#,\.]+/, "{n}");
 		symbol_format_data["negativenumFmt"] = numfmtnegative;
 	}
 
 	if (percent_format.indexOf(";") != -1) {
 		index_of_semi_colon = percent_format.indexOf(";");
-		var negative_pct_format = percent_format.substring(index_of_semi_colon, percent_format.length);
+		var negative_pct_format = percent_format.substring(index_of_semi_colon + 1, percent_format.length);
 		var pctfmtnegative = negative_pct_format.replace(/[0#,\.]+/, "{n}");
 		symbol_format_data["negativepctFmt"] = pctfmtnegative;
 
@@ -480,14 +479,6 @@ function getNumberFormats_num_system(def_num_system, data) {
 		pctFmt = percent_format.replace(/[0#,\.]+/, "{n}");
 		//pctFmt=pctFmt.replace(/¤/g,"{s}"); 
 		symbol_format_data["pctFmt"] = pctFmt;
-	}
-
-	if ((JSON.stringify(currency_format).indexOf(";")) != -1) {
-		index_of_semi_colon = currency_format.indexOf(";");
-		var negative_cur_format = currency_format.substring(index_of_semi_colon + 1, currency_format.length);
-		var curfmtnegative = negative_cur_format.replace(/[0#,\.]+/, "{n}");
-		curfmtnegative = curfmtnegative.replace(/¤/g, "{s}");
-		symbol_format_data["negativecurFmt"] = curfmtnegative;
 	}
 
 	symbol_format_data["roundingMode"] = "halfdown";
@@ -512,11 +503,11 @@ function getNumberFormats_num_system(def_num_system, data) {
 
 	//util.print("native digits are...................." + JSON.stringify(native_digits) + "===================" + "\n");
 	
-	//var standard_digits="0123456789";
+	var standard_digits="0123456789";
 
-	//if (native_digits != standard_digits) {
+	if (native_digits != standard_digits) {
 		symbol_format_data["digits"] = native_digits;
-	//}
+	}
 	//numbers["numfmt"] = symbol_format_data;
 
 	return symbol_format_data;
@@ -562,7 +553,7 @@ function getNativeDigits(script) {
 	digits_script = digitsData[script];
 	//digits_defscript=digitsData[def_script];
 	//util.print("digits for script are:" + JSON.stringify(digits_script) + "\n");
-	if (typeof (digits_script) != 'undefined') {
+	if (typeof (digits_script) != 'undefined' && digits_script !== "latn") {
 		if (digits_script["@type"] == "numeric") {
 			var digits = digits_script["@digits"];
 			//util.print("digits for script are:" + JSON.stringify(digits) + "\n");
@@ -644,6 +635,8 @@ util.print("Merging and pruning locale data...\n");
 
 mergeAndPrune(localeData);
 
+util.print("Extracting number formats...\n");
+
 var resources = {};
 
 resources.data = getNumberFormats(undefined, undefined, undefined, localeData.data);
@@ -671,13 +664,15 @@ for (language in localeData) {
 }
 
 //resources.data = getNumberFormats(undefined, undefined, undefined, localeData.data); 
-util.print("\nMerging and pruning r...\n");
+util.print("\nMerging and pruning formats...\n");
 //util.print("\nLoaded existing resources " + JSON.stringify(resources) + "\n");
 //writeNumberFormats(undefined, undefined, undefined, resources.data); 
 //util.print("\ndata before merge and pruning\n"+JSON.stringify(resources)+"\n");
 mergeAndPrune(resources);
 //util.print("\ndata after merge and pruning\n"+JSON.stringify(resources)+"\n");
 //writeNumberFormats(undefined, undefined, undefined, resources.data);
+
+util.print("\nWriting formats...\n");
 
 for (language in resources) {
 	if (language && resources[language] && language !== 'data' && language !== 'merged') {

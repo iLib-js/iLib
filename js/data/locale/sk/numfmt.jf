@@ -1,6 +1,1 @@
-	"numfmt": {
-		"decimalChar": ",",
-		"groupChar": " ",
-		"prigroupSize": 3,
-		"pctFmt": "{n} %"
-	},
+{"generated":true,"numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"}}

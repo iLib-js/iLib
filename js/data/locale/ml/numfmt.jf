@@ -1,1 +1,1 @@
-{"numfmt":{"curFmt":"{n}{s}","secgroupSize":2},"native_numfmt":{"script":"mlym","digits":"൦൧൨൩൪൫൬൭൮൯"},"generated":true}
+{"generated":true,"native_numfmt":{"script":"Mlym","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"secgroupSize":2,"currencyFormats":{"common":"{n}{s}"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"൦൧൨൩൪൫൬൭൮൯"},"numfmt":{"decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{n}{s}"}}}

@@ -1,1 +1,1 @@
-{"numfmt":{"secgroupSize":2},"native_numfmt":{"script":"orya","digits":"୦୧୨୩୪୫୬୭୮୯"},"generated":true}
+{"generated":true,"native_numfmt":{"script":"Orya","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"secgroupSize":2,"currencyFormats":{"common":"{s} {n}"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"୦୧୨୩୪୫୬୭୮୯"},"numfmt":{"decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{s} {n}"}}}

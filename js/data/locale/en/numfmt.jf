@@ -1,6 +1,1 @@
-{
-	"numfmt": {
-		"decimalChar": ".",
-		"groupChar": ","
-	}
-}
+{"generated":true,"numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}}}

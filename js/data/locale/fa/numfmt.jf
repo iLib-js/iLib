@@ -1,6 +1,1 @@
-	"numfmt": {
-		"decimalChar": "/",
-		"groupChar": ",",
-		"prigroupSize": 3,
-		"pctFmt": "{n} %"
-	},
+{"generated":true,"numfmt":{"script":"arabext","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"×۱۰^","currencyFormats":{"common":"‎{s}{n}","commonNegative":"‎({s}{n})"},"digits":"۰۱۲۳۴۵۶۷۸۹"}}

@@ -1,1 +1,1 @@
-{"numfmt":{"exponential":"ಈ","curFmt":"{s}{n}","negativecurFmt":"({s}{n})"},"native_numfmt":{"script":"knda","digits":"೦೧೨೩೪೫೬೭೮೯"},"generated":true}
+{"generated":true,"native_numfmt":{"script":"Knda","decimalChar":".","groupChar":",","pctChar":"%","exponential":"ಈ","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"({s}{n})"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"೦೧೨೩೪೫೬೭೮೯"},"numfmt":{"decimalChar":".","groupChar":",","exponential":"ಈ","currencyFormats":{"commonNegative":"({s}{n})"}}}

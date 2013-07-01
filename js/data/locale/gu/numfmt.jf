@@ -1,1 +1,1 @@
-{"numfmt":{"curFmt":"{s}{n}","negativecurFmt":"({s}{n})"},"native_numfmt":{"script":"gujr","digits":"૦૧૨૩૪૫૬૭૮૯"},"generated":true}
+{"generated":true,"native_numfmt":{"script":"Gujr","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"({s}{n})"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"૦૧૨૩૪૫૬૭૮૯"},"numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}}}

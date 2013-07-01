@@ -1,1 +1,1 @@
-{"numfmt":{"decimalChar":",","groupChar":".","curFmt":"{s}{n}","negativecurFmt":"{s}-{n}"},"native_numfmt":{"script":"laoo","digits":"໐໑໒໓໔໕໖໗໘໙"},"generated":true}
+{"generated":true,"native_numfmt":{"script":"Laoo","decimalChar":",","groupChar":".","pctChar":"%","exponential":"E","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"{s}-{n}"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"໐໑໒໓໔໕໖໗໘໙"}}

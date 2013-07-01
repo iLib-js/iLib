@@ -1,1 +1,1 @@
-{"numfmt":{"curFmt":"{s}{n}","negativecurFmt":"({s}{n})"},"generated":true}
+{"generated":true,"numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}}}
