@@ -114,9 +114,9 @@ for (region in regions) {
 		var filename = regdir + "/regionname.jf";
 		util.print(filename + ": " + regions[region] + "\n");
 		mkdirs(regdir);
-		language_name["region.name"] = regions[region];
-		language_name.generated = true;
-		fs.writeFileSync(filename, JSON.stringify(language_name), "utf-8");
+		region_name["region.name"] = regions[region];
+		region_name.generated = true;
+		fs.writeFileSync(filename, JSON.stringify(region_name), "utf-8");
 	}
 }
 
