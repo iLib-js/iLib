@@ -37,6 +37,7 @@ limitations under the License.
 	<property name="build.dist"						value="${build.base}/../dist"/>
 	<property name="build.export"					value="${build.base}/../export"/>
 	<property name="build.demo"						value="${build.base}/../doc/demo"/>
+	<property name="build.tools"					value="${build.base}/../tools"/>
 	
 	<property name="build.lib"						value="${build.base}/lib"/>
 	<property name="build.output"					value="${build.base}/output"/>
@@ -391,7 +392,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 	
-	<target name="geninfo"
+	<!-- target name="geninfo"
 			depends="testinfo"
 			description="generates the localeinfo.json files out of the *.jf files"
 			unless="info.not.needed">
@@ -400,6 +401,19 @@ limitations under the License.
 		</exec>
 		<exec os="Windows XP" executable="c:/cygwin/bin/bash.exe" dir="${build.locale}">
 			<arg value="${build.bin}/mkli"/>
+		</exec>
+		<touch file="${build.locale}/localeinfo.stamp"/>
+	</target -->
+	
+	<target name="geninfo"
+			depends="testinfo"
+			description="generates the localeinfo.json files out of the *.jf files"
+			unless="info.not.needed">
+		<exec os="Linux" executable="node" dir="${build.locale}">
+			<arg value="${build.tools}/cldr/mkli.js"/>
+		</exec>
+		<exec os="Windows XP" executable="node.exe" dir="${build.locale}">
+			<arg value="${build.tools}/cldr/mkli.js"/>
 		</exec>
 		<touch file="${build.locale}/localeinfo.stamp"/>
 	</target>

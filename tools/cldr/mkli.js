@@ -24,16 +24,16 @@ var util = require('util');
 var common = require('./common');
 
 function usage() {
-	util.print("Usage: mkli.jss [-h] locale_data_dir\n" +
-		"remove non-json files.\n\n" +
+	util.print("Usage: mkli.js [-h] [locale_data_dir]\n" +
+		"Make the localeinfo.json files from the jf fragment files.\n\n" +
 		"-h or --help\n" +
 		"  this help\n" +
 		"locale_data_dir\n" +
-		"  the top level of the ilib locale data directory\n");
+		'  the top level of the ilib locale data directory. Default "."\n');
 	process.exit(1);
 }
 
-localeDirName = process.argv[2];
+localeDirName = process.argv[2] || ".";
 util.print("locale dir: " + localeDirName + "\n");
 fs.exists(localeDirName, function (exists) {
 	if (!exists) {
@@ -42,11 +42,6 @@ fs.exists(localeDirName, function (exists) {
 	}
 });
 
-if (process.argv.length < 3) {
-	util.print('Error: not enough arguments');
-	usage();
-}
-
 function walk(dir) {
 	var results = [];
 	var list = fs.readdirSync(dir);
@@ -54,25 +49,30 @@ function walk(dir) {
 	list.forEach(function (file) {
 		file = dir + '/' + file;
 		var stat = fs.statSync(file);
-		if (stat && stat.isDirectory())(walk(file));
-
-		else {
+		if (stat && stat.isDirectory()) {
+			walk(file);
+		} else {
 			var obj = {};
 			if (file.match(/[a-z]+\.jf/)) {
-				var data = fs.readFileSync(file, 'utf8');
 				try {
-					obj = JSON.parse(data);
-					merged = common.merge(merged, obj);
+					var data = fs.readFileSync(file, 'utf8');
+					if (data.length > 0) {
+						obj = JSON.parse(data);
+						merged = common.merge(merged, obj);
+					}
 				} catch (err) {
-					fs.unlink(file);
-					file = '[]';
+					util.print("File " + file + " is not readable or does not contain valid JSON.\n");
+					util.print(err + "\n");
 				}
 			}
 		}
 	});
 
 	var path = dir;
-	if (Object.keys(merged).length != 0) {
+	if (!common.isEmpty(merged)) {
+		if (merged.generated) {
+			delete merged.generated;
+		}
 		fs.writeFileSync(path + "/localeinfo.json", JSON.stringify(merged), 'utf8');
 		util.print(path + ": merged *.jf into localeinfo.json\n");
 	} else {
@@ -82,9 +82,7 @@ function walk(dir) {
 	return results;
 }
 
-if (process.argv.length < 3) {
-	util.print('Error: not enough arguments');
-	usage();
-}
-
 walk(localeDirName);
+
+// make sure all the output is written before this script ends
+process.stdout.end();
