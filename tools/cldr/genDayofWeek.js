@@ -93,7 +93,7 @@ for (var firstdayofweek in firstDayOfWeekData) {
 			for (var i = 0; i < 7; i++) {
 				if (firstDayOfWeekData[firstdayofweek] === dayProperties[i]) {
 					var firstdayofweek = {};
-					firstdayofweek.firstdayofweek = i;
+					firstdayofweek.firstDayOfWeek = i;
 					firstdayofweek.generated = true;
 					fs.writeFile(filename + "/firstdayofweek.jf", JSON.stringify(firstdayofweek), function (err) {
 						if (err) {
