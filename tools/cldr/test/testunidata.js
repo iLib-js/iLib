@@ -17,6 +17,9 @@
  * limitations under the License.
  */
 
+var common = require("../../../tools/cldr/common.js");
+var unidata = require("../../../tools/cldr/uniData.js");
+
 var sampleData =
 	"0041;LATIN CAPITAL LETTER A;Lu;0;L;;;;;N;;;;0061;\n" +
 	"00A8;DIAERESIS;Sk;0;ON;<compat> 0020 0308;;;;N;SPACING DIAERESIS;;;;\n" +
@@ -41,12 +44,12 @@ var sampleData =
 	"FF76;HALFWIDTH KATAKANA LETTER KA;Lo;0;L;<narrow> 30AB;;;;N;;;;;\n";
 
 function testUDConstructor() {
-    var ud = new exports.UnicodeData({string: sampleData});
+    var ud = new unidata.UnicodeData({string: sampleData});
     assertNotNull(ud);
 }
 
 function testUDGetRow() {
-	var ud = new exports.UnicodeData({string: sampleData});
+	var ud = new unidata.UnicodeData({string: sampleData});
     assertNotNull(ud);
     
     var row = ud.get(2);
@@ -54,7 +57,7 @@ function testUDGetRow() {
 }
 
 function testUDGetRowRightData() {
-	var ud = new exports.UnicodeData({string: sampleData});
+	var ud = new unidata.UnicodeData({string: sampleData});
     assertNotNull(ud);
     
     var row = ud.get(2);
@@ -74,7 +77,7 @@ function testUDGetRowRightData() {
 }
 
 function testUDGetRowRightData2() {
-	var ud = new exports.UnicodeData({string: sampleData});
+	var ud = new unidata.UnicodeData({string: sampleData});
     assertNotNull(ud);
     
     var row = ud.get(7);
@@ -94,14 +97,14 @@ function testUDGetRowRightData2() {
 }
 
 function testUDGetRowRightNumberOfFields() {
-	var ud = new exports.UnicodeData({string: sampleData});
+	var ud = new unidata.UnicodeData({string: sampleData});
     assertNotNull(ud);
     
     assertEquals(21, ud.length());
 }
 
 function testUDGetOtherDecompType() {
-	var ud = new exports.UnicodeData({string: sampleData});
+	var ud = new unidata.UnicodeData({string: sampleData});
     assertNotNull(ud);
     
     var row = ud.get(4);

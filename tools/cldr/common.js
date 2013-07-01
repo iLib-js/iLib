@@ -593,7 +593,10 @@ exports.prune = function prune(parent, child) {
 			if (prop === 'generated') {
 				ret[prop] = child[prop];
 			} else if (typeof(parent[prop]) === 'object') {
-				ret[prop] = exports.prune(parent[prop], child[prop]);
+				var obj = exports.prune(parent[prop], child[prop]);
+				if (!exports.isEmpty(obj)) {
+					ret[prop] = obj;
+				}
 			} else if (typeof(parent[prop]) === 'undefined') {
 				if (prop !== child[prop]) {
 					ret[prop] = child[prop];
@@ -636,3 +639,17 @@ exports.makeDirs = function makeDirs(path) {
 	}
 };
 
+exports.isEmpty = function (obj) {
+	var prop = undefined;
+	
+	if (!obj) {
+		return true;
+	}
+	
+	for (prop in obj) {
+		if (prop && obj[prop]) {
+			return false;
+		}
+	}
+	return true;
+};

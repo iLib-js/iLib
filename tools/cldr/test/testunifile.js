@@ -17,6 +17,9 @@
  * limitations under the License.
  */
 
+var common = require("../../../tools/cldr/common.js");
+var unifile = require("../../../tools/cldr/unifile.js");
+
 var unifileData =
 	"0041;LATIN CAPITAL LETTER A;Lu;0;L;;;;;N;;;;0061;\n" +
 	"00A8;DIAERESIS;Sk;0;ON;<compat> 0020 0308;;;;N;SPACING DIAERESIS;;;;\n" +
@@ -39,19 +42,19 @@ var unifileData2 =
 	"FF76;HALFWIDTH KATAKANA LETTER KA;Lo;0;L;<narrow> 30AB;;;;N;;;;;\n";
 
 function testUFConstructor() {
-    var uf = new exports.UnicodeFile({string: unifileData});
+    var uf = new unifile.UnicodeFile({string: unifileData});
     assertNotNull(uf);
 }
 
 function testUFLength() {
-    var uf = new exports.UnicodeFile({string: unifileData});
+    var uf = new unifile.UnicodeFile({string: unifileData});
     assertNotNull(uf);
     
     assertEquals(5, uf.length());
 }
 
 function testUFGetRow() {
-    var uf = new exports.UnicodeFile({string: unifileData});
+    var uf = new unifile.UnicodeFile({string: unifileData});
     assertNotNull(uf);
     
     var row = uf.get(2);
@@ -59,7 +62,7 @@ function testUFGetRow() {
 }
 
 function testUFGetRowRightLength() {
-    var uf = new exports.UnicodeFile({string: unifileData});
+    var uf = new unifile.UnicodeFile({string: unifileData});
     assertNotNull(uf);
     
     var row = uf.get(2);
@@ -69,7 +72,7 @@ function testUFGetRowRightLength() {
 }
 
 function testUFGetRowRightData() {
-    var uf = new exports.UnicodeFile({string: unifileData});
+    var uf = new unifile.UnicodeFile({string: unifileData});
     assertNotNull(uf);
     
     var row = uf.get(2);
@@ -93,14 +96,14 @@ function testUFGetRowRightData() {
 }
 
 function testUFSkipCommentsAndBlankLines() {
-    var uf = new exports.UnicodeFile({string: unifileData2});
+    var uf = new unifile.UnicodeFile({string: unifileData2});
     assertNotNull(uf);
     
     assertEquals(5, uf.length());
 }
 
 function testUFSkipTrailingComments() {
-    var uf = new exports.UnicodeFile({string: unifileData2});
+    var uf = new unifile.UnicodeFile({string: unifileData2});
     assertNotNull(uf);
     
     var row = uf.get(0);
@@ -110,7 +113,7 @@ function testUFSkipTrailingComments() {
 }
 
 function testUFSkipCommentsRightData() {
-    var uf = new exports.UnicodeFile({string: unifileData2});
+    var uf = new unifile.UnicodeFile({string: unifileData2});
     assertNotNull(uf);
     
     var row = uf.get(2);

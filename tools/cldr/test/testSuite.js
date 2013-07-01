@@ -18,12 +18,11 @@
  */
 
 var cli = require('../../../js/src/testcli/runner.js');
-
 function newSuite(path) {
 	var suite = new cli.TestSuite("test/" + path);
-	suite.include("./common.js");
-	suite.include("./unifile.js");
-	suite.include("./uniData.js");
+	//suite.include("./common.js");
+	//suite.include("./unifile.js");
+	//suite.include("./uniData.js");
 	return suite;
 };
 
