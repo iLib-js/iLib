@@ -132,8 +132,8 @@ function calcLocalePath(language, script, region, filename) {
 	return path;
 }
 
-function loadFileNonGenerated(language, script, region) {
-	var path = calcLocalePath(language, script, region, "sysres.json");
+function loadFileNonGenerated(language, script, region, filename) {
+	var path = calcLocalePath(language, script, region, filename);
 	var obj = loadFile(path);
 	if (typeof (obj) !== 'undefined' && (typeof (obj.generated) === 'undefined' || obj.generated === false)) {
 		// only return non-generated files
@@ -219,8 +219,8 @@ function leaveSame(str) {
 
 function getSystemResources(language, script, region, data) {
 	// if it is already there and non-generated, return it
-	var sysres = loadFileNonGenerated(language, script, region);
-	if (sysres) {
+	var sysres = loadFileNonGenerated(language, script, region, "sysres.json");
+	if (sysres && !sysres.generated) {
 		util.print("\nLoaded existing resources from " + calcLocalePath(language, script, region, "sysres.json") + "\n");
 		sysres.generated = false;
 		return sysres;
@@ -834,11 +834,11 @@ mergeAndPrune(resources_dateformat_data);
 
 function getDateFormats(language, script, region, data) {
 	// if it is already there and non-generated, return it
-	var dates = loadFileNonGenerated(language, script, region);
+	var dates = loadFileNonGenerated(language, script, region, "dateformats.json");
 	//util.print("language: " + language + "\n");
 	//util.print("script: " + script + "\n");
 	//util.print("region: " + region + "\n");
-	if (dates) {
+	if (dates && !dates.generated) {
 		util.print("\nLoaded existing resources from " + calcLocalePath(language, script, region, "dateformats.json") + "\n");
 		dates.generated = false;
 		return dates;
@@ -1403,7 +1403,7 @@ function getDateFormats(language, script, region, data) {
 	}
 	time_fmt["12"] = time_12;
 	gregorian["time"] = time_fmt;
-	//util.print("gregorian date formats are :" + JSON.stringify(time) + "++++++++++++++++++++++++++++++++++++++++++++" + "\n");
+	util.print("gregorian date formats are :" + JSON.stringify(gregorian.time) + "++++++++++++++++++++++++++++++++++++++++++++" + "\n");
 	//code to get the date range
 	var range = {};
 	var intervalFormats = data.dates.calendars["gregorian"]["dateTimeFormats"]["intervalFormats"];
@@ -1633,7 +1633,7 @@ function getDateFormats(language, script, region, data) {
 
 function writeDateFormats(language, script, region, data) {
 	var path = calcLocalePath(language, script, region, "");
-	if (data.generated) {
+	if (!data.byhand || data.generated) {
 		if (anyProperties(data)) {
 			var empty_data = data["gregorian"]["date"];
 			//var empty_data_time = data["gregorian"]["time"];
@@ -1648,43 +1648,50 @@ function writeDateFormats(language, script, region, data) {
 			//var time_12={};
 			if (data["gregorian"]["order"] != undefined)
 				gregorian["order"] = data["gregorian"]["order"];
-			var arr_data = ["dm", "dmy", "my", "m", "d", "y", "dmwy", "dmw", "n"];
-			var arr_keys = [empty_data["dm"], empty_data["dmy"], empty_data["my"], empty_data["m"], empty_data["d"], empty_data["y"], empty_data["dmwy"], empty_data[
-				"dmw"], empty_data["n"]];
-			for (var i = 0; i < arr_data.length; i++) {
-				if ((Object.keys(arr_keys[i]).length != 0)) {
-					date[arr_data[i]] = arr_keys[i];
+			if (empty_data) {
+				var arr_data = ["dm", "dmy", "my", "m", "d", "y", "dmwy", "dmw", "n"];
+				var arr_keys = [empty_data["dm"], empty_data["dmy"], empty_data["my"], empty_data["m"], empty_data["d"], empty_data["y"], empty_data["dmwy"], empty_data[
+					"dmw"], empty_data["n"]];
+				for (var i = 0; i < arr_data.length; i++) {
+					if (!common.isEmpty(arr_keys[i])) {
+						date[arr_data[i]] = arr_keys[i];
+					}
 				}
 			}
-			if (Object.keys(date).length != 0) {
+			if (!common.isEmpty(date)) {
 				gregorian["date"] = date;
 			}
-			time_fmt["24"] = data["gregorian"]["time"]["24"];
-			if (Object.keys(data["gregorian"]["time"]["24"]).length != 0) {
-				time["24"] = data["gregorian"]["time"]["24"];
-				//gregorian["time"]= time_24;
-			}
-			if (Object.keys(data["gregorian"]["time"]["12"]).length != 0) {
-				time["12"] = data["gregorian"]["time"]["12"];
-				//gregorian["time"]= time_12;
-			}
-			if (Object.keys(time).length != 0) {
-				gregorian["time"] = time;
-			}
-			var range_keys = ["c00", "c01", "c02", "c10", "c11", "c12", "c20"];
-			var array_range_codes = [range["c00"], range["c01"], range["c02"], range["c10"], range["c11"], range["c12"], range["c20"]];
-			for (var i = 0; i < range_keys.length; i++) {
-				//util.print("gregorian range formats are :"+JSON.stringify(array_range_codes[i])+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
-				if ((Object.keys(array_range_codes[i]).length != 0)) {
-					range_fmt[range_keys[i]] = array_range_codes[i];
+			if (data["gregorian"]["time"]) {
+				time_fmt["24"] = data["gregorian"]["time"]["24"];
+				if (!common.isEmpty(data["gregorian"]["time"]["24"])) {
+					time["24"] = data["gregorian"]["time"]["24"];
+					//gregorian["time"]= time_24;
+				}
+				if (!common.isEmpty(data["gregorian"]["time"]["12"])) {
+					time["12"] = data["gregorian"]["time"]["12"];
+					//gregorian["time"]= time_12;
 				}
 			}
-			if (range["c30"])
-				range_fmt["c30"] = range["c30"];
-			if (Object.keys(range_fmt).length != 0) {
+			if (!common.isEmpty(time)) {
+				gregorian["time"] = time;
+			}
+			if (range) {
+				var range_keys = ["c00", "c01", "c02", "c10", "c11", "c12", "c20"];
+				var array_range_codes = [range["c00"], range["c01"], range["c02"], range["c10"], range["c11"], range["c12"], range["c20"]];
+				for (var i = 0; i < range_keys.length; i++) {
+					//util.print("gregorian range formats are :"+JSON.stringify(array_range_codes[i])+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
+					if ((!common.isEmpty(array_range_codes[i]))) {
+						range_fmt[range_keys[i]] = array_range_codes[i];
+					}
+				}
+				if (range["c30"]) {
+					range_fmt["c30"] = range["c30"];
+				}
+			}
+			if (!common.isEmpty(range_fmt)) {
 				gregorian["range"] = range_fmt;
 			}
-			if (Object.keys(gregorian).length === 0) {
+			if (common.isEmpty(gregorian)) {
 				util.print("Skipping empty " + path + "\n");
 				return;
 			}
