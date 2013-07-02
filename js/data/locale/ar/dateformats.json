@@ -57,19 +57,21 @@
 			}
 		},
 		"time": {
-			"ahmsz": "Z h:mm:ss a",
-			"ahms": " h:mm:ss a",
-			"hmsz": "Z h:mm:ss",
-			"ahmz": "Z h:mm a",
-			"hms": "h:mm:ss",
-			"ahm": "h:mm a",
-			"hmz": "Z h:mm",
-			"ah": "h a",
-			"hm": "h:mm",
-			"ms": "mm:ss",
-			"h": "h",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "Z h:mm:ss a",
+				"ahms": "h:mm:ss a",
+				"hmsz": "Z h:mm:ss",
+				"ahmz": "Z h:mm a",
+				"ahm": "h:mm a",
+				"hmz": "Z h:mm",
+				"ah": "h a"
+			},
+			"24": {
+				"ahmsz": "Z H:mm:ss",
+				"hmsz": "Z H:mm:ss",
+				"ahmz": "Z H:mm",
+				"hmz": "Z H:mm"
+			}
 		},
 		"range": {
 			"c00": {

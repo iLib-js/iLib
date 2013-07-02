@@ -62,21 +62,6 @@
 				"f": "MMMM"
 			}
 		},
-		"time": {
-			"ahmsz": "H:mm:ss a z",
-			"ahms": "H:mm:ss a",
-			"hmsz": "H:mm:ss z",
-			"ahmz": "H:mm a z",
-			"hms": "HH:mm:ss",
-			"ahm": "H:mm a",
-			"hmz": "H:mm z",
-			"ah": "Ha",
-			"hm": "H:mm",
-			"ms": "mm:ss",
-			"h": "H",
-			"m": "mm",
-			"s": "ss"
-		},
 		"range": {
 			"c00": {
 				"s": "{sd}/{sm}/{sy} {st} – {et}",

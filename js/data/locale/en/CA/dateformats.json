@@ -10,18 +10,6 @@
 				"f": "d MMMM, yyyy"
 			}
 		},
-		"time": {
-			"ahmsz": "h:mm:ssa z",
-			"ahms": "h:mm:ssa",
-			"hmsz": "h:mm:ss z",
-			"hms": "h:mm:ss",
-			"ahmz": "h:mma z",
-			"ahm": "h:mma",
-			"hmz": "h:mm z",
-			"ah": "ha",
-			"hm": "h:mm",
-			"h": "h"
-		},
 		"range": {
 			"c00": {
 				"l": "{st} - {et}, {sd} {sm}, {sy}",

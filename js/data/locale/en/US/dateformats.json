@@ -26,21 +26,6 @@
 				"f": "MMMM d"
 			}
 		},
-		"time": {
-			"ahmsz": "h:mm:ssa z",
-			"ahms": "h:mm:ssa",
-			"hmsz": "h:mm:ss z",
-			"hms": "h:mm:ss",
-			"ahmz": "h:mma z",
-			"ahm": "h:mma",
-			"hmz": "h:mm z",
-			"ah": "ha",
-			"hm": "h:mm",
-			"ms": "mm:ss",
-			"h": "h",
-			"m": "mm",
-			"s": "ss"
-		},
 		"range": {
 			"c00": {
 				"s": "{st} - {et} {sm}/{sd}/{sy}",

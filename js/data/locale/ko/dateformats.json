@@ -59,19 +59,13 @@
 			}
 		},
 		"time": {
-			"ahmsz": "a h:mm:ss z",
-			"ahms": "a h:mm:ss",
-			"hmsz": "h:mm:ss z",
-			"hms": "h:mm:ss",
-			"ahmz": "a h:mm z",
-			"ahm": "a h:mm",
-			"hmz": "h:mm z",
-			"ah": "a h",
-			"hm": "h:mm",
-			"ms": "mm:ss",
-			"h": "h",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "a h:mm:ss z",
+				"ahms": "a h:mm:ss",
+				"ahmz": "a h:mm z",
+				"ahm": "a h:mm",
+				"ah": "a h"
+			}
 		},
 		"range": {
 			"c00": {

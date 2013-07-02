@@ -63,19 +63,32 @@
 			}
 		},
 		"time": {
-			"ahmsz": "HH'h'mm'min'ss's' a z",
-			"ahms": "HH'h'mm'min'ss's' a",
-			"hmsz": "HH'h'mm'min'ss's' z",
-			"ahmz": "HH'h'mm'min' a z",
-			"hms": "HH'h'mm'min'ss's'",
-			"ahm": "HH'h'mm'min' a",
-			"hmz": "HH'h'mm'min' z",
-			"ah": "HH",
-			"hm": "HH'h'mm'min'",
-			"ms": "mm'min'ss's'",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "hh'h'mm'min'ss's' a z",
+				"ahms": "hh'h'mm'min'ss's' a",
+				"hmsz": "hh'h'mm'min'ss's' z",
+				"ahmz": "hh'h'mm'min' a z",
+				"hms": "hh'h'mm'min'ss's'",
+				"ahm": "hh'h'mm'min' a",
+				"hmz": "hh'h'mm'min' z",
+				"ah": "hh'h' a",
+				"hm": "hh'h'mm'min'",
+				"ms": "mm'min'ss's'",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH'h'mm'min'ss's' z",
+				"ahms": "HH'h'mm'min'ss's'",
+				"hmsz": "HH'h'mm'min'ss's' z",
+				"ahmz": "HH'h'mm'min' z",
+				"hms": "HH'h'mm'min'ss's'",
+				"ahm": "HH'h'mm'min'",
+				"hmz": "HH'h'mm'min' z",
+				"ah": "HH'h'",
+				"hm": "HH'h'mm'min'",
+				"ms": "mm'min'ss's'",
+				"h": "HH"
+			}
 		},
 		"range": {
 			"c00": {
