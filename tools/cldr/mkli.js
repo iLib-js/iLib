@@ -42,26 +42,26 @@ fs.exists(localeDirName, function (exists) {
 	}
 });
 
-function walk(dir) {
+function walk(dir, locale) {
 	var results = [];
 	var list = fs.readdirSync(dir);
 	var merged = {};
 	list.forEach(function (file) {
-		file = dir + '/' + file;
-		var stat = fs.statSync(file);
+		var path = dir + '/' + file;
+		var stat = fs.statSync(path);
 		if (stat && stat.isDirectory()) {
-			walk(file);
+			walk(path, (locale && locale !== "und" && locale !== '.') ? locale + "-" + file : file);
 		} else {
 			var obj = {};
-			if (file.match(/[a-z]+\.jf/)) {
+			if (path.match(/[a-z]+\.jf/)) {
 				try {
-					var data = fs.readFileSync(file, 'utf8');
+					var data = fs.readFileSync(path, 'utf8');
 					if (data.length > 0) {
 						obj = JSON.parse(data);
 						merged = common.merge(merged, obj);
 					}
 				} catch (err) {
-					util.print("File " + file + " is not readable or does not contain valid JSON.\n");
+					util.print("File " + path + " is not readable or does not contain valid JSON.\n");
 					util.print(err + "\n");
 				}
 			}
@@ -73,6 +73,7 @@ function walk(dir) {
 		if (merged.generated) {
 			delete merged.generated;
 		}
+		merged.locale = locale;
 		fs.writeFileSync(path + "/localeinfo.json", JSON.stringify(merged), 'utf8');
 		util.print(path + ": merged *.jf into localeinfo.json\n");
 	} else {
@@ -82,7 +83,4 @@ function walk(dir) {
 	return results;
 }
 
-walk(localeDirName);
-
-// make sure all the output is written before this script ends
-process.stdout.end();
+walk(localeDirName, undefined);

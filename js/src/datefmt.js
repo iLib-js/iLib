@@ -380,6 +380,7 @@ ilib.DateFmt = function(options) {
 					break;
 			}
 
+			/*
 			if (this.timeComponents &&
 					(this.clock === '24' || 
 					(!this.clock && this.locinfo.getClock() === "24"))) {
@@ -387,6 +388,7 @@ ilib.DateFmt = function(options) {
 				// requested it in the time component option
 				this.timeComponents = this.timeComponents.replace("a", "");
 			}
+			*/
 			
 			// load the strings used to translate the components
 			new ilib.ResBundle({
@@ -402,6 +404,10 @@ ilib.DateFmt = function(options) {
 								formats = ilib.data.dateformats;
 								var spec = this.locale.getSpec().replace(/-/g, '_');
 								ilib.DateFmt.cache[spec] = formats;
+							}
+							if (typeof(this.clock) === 'undefined') {
+								// default to the locale instead
+								this.clock = this.locinfo.getClock();
 							}
 							this._initTemplate(formats);
 							this._massageTemplate();
@@ -452,14 +458,14 @@ ilib.DateFmt.prototype = {
 			switch (this.type) {
 				case "datetime":
 					this.template = (this.formats && this._getLengthFormat(this.formats.order, this.length)) || "{date} {time}";
-					this.template = this.template.replace("{date}", this._getFormat(this.formats.date, this.dateComponents, this.length));
-					this.template = this.template.replace("{time}", this._getFormat(this.formats.time, this.timeComponents, this.length));
+					this.template = this.template.replace("{date}", this._getFormat(this.formats.date, this.dateComponents, this.length) || "");
+					this.template = this.template.replace("{time}", this._getFormat(this.formats.time[this.clock], this.timeComponents, this.length) || "");
 					break;
 				case "date":
 					this.template = this._getFormat(this.formats.date, this.dateComponents, this.length);
 					break;
 				case "time":
-					this.template = this._getFormat(this.formats.time, this.timeComponents, this.length);
+					this.template = this._getFormat(this.formats.time[this.clock], this.timeComponents, this.length);
 					break;
 			}
 		} else {
@@ -895,23 +901,25 @@ ilib.DateFmt.prototype = {
 					break;
 			}
 		}
-		if(this.locinfo.getDigits() != "0123456789") {
-		var standard_digits="0123456789";
-		var digits= this.locinfo.getDigits();
-		for (var i=0; i < digits.length; i++) {
-		var digit=standard_digits.charAt(i);
-		var regex = new RegExp(digit,"g");
-		str=str.replace(regex,digits.charAt(i));
+		var digits = this.locinfo.getDigits();
+		if (digits && digits != "0123456789") {
+			var standard_digits="0123456789";
+			for (var j=0; j < digits.length; j++) {
+				var digit=standard_digits.charAt(j);
+				var regex = new RegExp(digit,"g");
+				str=str.replace(regex,digits.charAt(j));
 			}
 		}
 		if(this.useNative) {
-		var standard_digits="0123456789";
-		var native_digits= this.locinfo.getNativeDigits();
-		for (var i=0; i < native_digits.length; i++) {
-		var digit=standard_digits.charAt(i);
-		var regex = new RegExp(digit,"g");
-		str=str.replace(regex,native_digits.charAt(i));
-				}	
+			var standard_digits="0123456789";
+			var native_digits = this.locinfo.getNativeDigits();
+			if (native_digits) {
+				for (var j=0; j < native_digits.length; j++) {
+					var digit=standard_digits.charAt(j);
+					var regex = new RegExp(digit,"g");
+					str=str.replace(regex,native_digits.charAt(j));
+				}
+			}
 		}
 		return str;
 	},

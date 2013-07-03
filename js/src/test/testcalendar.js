@@ -19,19 +19,19 @@
 
 function testCalendarFactoryDefault() {
     var cal = ilib.Cal.newInstance();
-    assertNotNull(cal);
+    assertNotUndefined(cal);
 }
 
 function testCalendarFactoryDefaultRightType() {
     var cal = ilib.Cal.newInstance();
-    assertNotNull(cal);
+    assertNotUndefined(cal);
     
     assertEquals("gregorian", cal.getType());
 }
 
 function testCalendarFactorySpecific() {
     var cal = ilib.Cal.newInstance({type: "julian"});
-    assertNotNull(cal);
+    assertNotUndefined(cal);
     
     assertEquals("julian", cal.getType());
 }
@@ -43,14 +43,21 @@ function testCalendarFactoryUnknown() {
 
 function testCalendarFactoryDefaultForLocale() {
     var cal = ilib.Cal.newInstance({locale: "ar-AE"});
-    assertNotNull(cal);
+    assertNotUndefined(cal);
     
-    assertEquals("islamic", cal.getType());
+    assertEquals("gregorian", cal.getType());
+}
+
+function testCalendarFactoryDefaultForLocaleOther() {
+    var cal = ilib.Cal.newInstance({locale: "th-TH"});
+    assertNotUndefined(cal);
+    
+    assertEquals("buddhist", cal.getType());
 }
 
 function testCalendarFactoryOverrideLocale() {
     var cal = ilib.Cal.newInstance({locale: "ar-AE", type: "gregorian"});
-    assertNotNull(cal);
+    assertNotUndefined(cal);
     
     assertEquals("gregorian", cal.getType());
 }

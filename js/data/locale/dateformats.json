@@ -150,5 +150,6 @@
 	},
 	"islamic": "gregorian",
 	"hebrew": "gregorian",
-	"julian": "gregorian"
+	"julian": "gregorian",
+	"buddhist": "gregorian"
 }

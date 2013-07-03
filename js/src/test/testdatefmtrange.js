@@ -162,16 +162,16 @@ function testDateRngFmtGetTimeZone() {
 }
 
 function testDateRngFmtGetDefaultLocale() {
-    var fmt = new ilib.DateRngFmt({locale: "zz-ZZ"});
+    var fmt = new ilib.DateRngFmt({locale: "yy-YY"});
     assertNotNull(fmt);
     
-    assertEquals("zz-ZZ", fmt.getLocale().toString());
+    assertEquals("yy-YY", fmt.getLocale().toString());
 }
 
 function testDateRngFmtGetDefaultFormat() {
 	ilib.DateFmt.cache = {};
 	ilib.LocaleInfo.cache = {};
-	var fmt = new ilib.DateRngFmt({locale: "zz-ZZ"});
+	var fmt = new ilib.DateRngFmt({locale: "yy-YY"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -223,7 +223,7 @@ function testDateRngFmtDynamicLoadSync() {
 	ilib.setLoaderCallback(mockLoader);
 	
     var fmt = new ilib.DateRngFmt({
-    	locale: "zz-ZZ"
+    	locale: "yy-YY"
 	});
     assertNotNull(fmt);
     
@@ -252,7 +252,7 @@ function testDateRngFmtDynamicLoadSyncCached() {
 	ilib.setLoaderCallback(mockLoader);
 	
     var fmt = new ilib.DateRngFmt({
-    	locale: "zz-ZZ"
+    	locale: "yy-YY"
 	});
     assertNotNull(fmt);
     
@@ -301,7 +301,7 @@ function testDateRngFmtDynamicLoadAsync() {
     });
 	
     new ilib.DateRngFmt({
-    	locale: "zz-ZZ",
+    	locale: "yy-YY",
     	sync: false,
     	onLoad: function (fmt) {
     		assertNotNull(fmt);
@@ -332,7 +332,7 @@ function testDateRngFmtDynamicLoadAsyncCached() {
     });
 	
     new ilib.DateRngFmt({
-    	locale: "zz-ZZ",
+    	locale: "yy-YY",
     	sync: false,
     	onLoad: function (fmt) {
     		assertNotNull(fmt);

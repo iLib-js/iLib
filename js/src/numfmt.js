@@ -1,6 +1,6 @@
 /*
  * numfmt.js - Number formatter definition
- * 
+ *
  * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,6 @@
  */
 
 // !depends ilibglobal.js locale.js strings.js currency.js
-
-
 /*
 !depends 
 ilibglobal.js 
@@ -35,36 +33,36 @@ strings.js
 /**
  * @class
  * Create a new number formatter instance. Locales differ in the way that digits
- * in a formatted number are grouped, in the way the decimal character is represented, 
+ * in a formatted number are grouped, in the way the decimal character is represented,
  * etc. Use this formatter to get it right for any locale.<p>
- * 
- * This formatter can format plain numbers, currency amounts, and percentage amounts.<p>  
- * 
+ *
+ * This formatter can format plain numbers, currency amounts, and percentage amounts.<p>
+ *
  * As with all formatters, the recommended
  * practice is to create one formatter and use it multiple times to format various
  * numbers.<p>
- * 
+ *
  * The options can contain any of the following properties:
- * 
+ *
  * <ul>
  * <li><i>locale</i> - use the conventions of the specified locale when figuring out how to
  * format a number.
- * <li><i>type</i> - the type of this formatter. Valid values are "number", "currency", or 
+ * <li><i>type</i> - the type of this formatter. Valid values are "number", "currency", or
  * "percentage". If this property is not specified, the default is "number".
- * <li><i>currency</i> - the ISO 4217 3-letter currency code to use when the formatter type 
- * is "currency". This property is required for currency formatting. If the type property 
+ * <li><i>currency</i> - the ISO 4217 3-letter currency code to use when the formatter type
+ * is "currency". This property is required for currency formatting. If the type property
  * is "currency" and the currency property is not specified, the constructor will throw a
- * an exception. 
+ * an exception.
  * <li><i>maxFractionDigits</i> - the maximum number of digits that should appear in the
  * formatted output after the decimal. A value of -1 means unlimited, and 0 means only print
- * the integral part of the number. 
+ * the integral part of the number.
  * <li><i>minFractionDigits</i> - the minimum number of fractional digits that should
  * appear in the formatted output. If the number does not have enough fractional digits
  * to reach this minimum, the number will be zero-padded at the end to get to the limit.
  * If the type of the formatter is "currency" and this
  * property is not specified, then the minimum fraction digits is set to the normal number
  * of digits used with that currency, which is almost always 0, 2, or 3 digits.
- * <li><i>useNative</i> - the flag used to determaine whether to use the native script settings 
+ * <li><i>useNative</i> - the flag used to determaine whether to use the native script settings
  * for formatting the numbers .
  * <li><i>roundingMode</i> - When the maxFractionDigits or maxIntegerDigits is specified,
  * this property governs how the least significant digits are rounded to conform to that
@@ -81,75 +79,75 @@ strings.js
  * </ul>
  * When the type of the formatter is "currency" and the <i>roundingMode</i> property is not
  * set, then the standard legal rounding rules for the locale are followed. If the type
- * is "number" or "percentage" and the <i>roundingMode</i> property is not set, then the 
+ * is "number" or "percentage" and the <i>roundingMode</i> property is not set, then the
  * default mode is "halfdown".</i>.
- * 
+ *
  * <li><i>style</i> - When the type of this formatter is "currency", the currency amount
  * can be formatted in the following styles: "common" and "iso". The common style is the
- * one commonly used in every day writing where the currency unit is represented using a 
- * symbol. eg. "$57.35" for fifty-seven dollars and thirty five cents. The iso style is 
+ * one commonly used in every day writing where the currency unit is represented using a
+ * symbol. eg. "$57.35" for fifty-seven dollars and thirty five cents. The iso style is
  * the international style where the currency unit is represented using the ISO 4217 code.
  * eg. "USD 57.35" for the same amount. The default is "common" style if the style is
  * not specified.<p>
- * 
+ *
  * When the type of this formatter is "number",
- * the style can be either "standard" or "scientific" or "native". A "standard" style means 
+ * the style can be either "standard" or "scientific" or "native". A "standard" style means
  * a fully specified floating point number formatted for the locale, whereas "scientific" uses
  * scientific notation for all numbers. That is, 1 integral digit, followed by a number
  * of fractional digits, followed by an "e" which denotes exponentiation, followed digits
- * which give the power of 10 in the exponent. The native style will format a floating point 
- * number using the native digits and formatting symbols for the script of the locale. Note 
+ * which give the power of 10 in the exponent. The native style will format a floating point
+ * number using the native digits and formatting symbols for the script of the locale. Note
  * that if you specify a maximum number
- * of integral digits, the formatter with a standard style will give you standard 
+ * of integral digits, the formatter with a standard style will give you standard
  * formatting for smaller numbers and scientific notation for larger numbers. The default
  * is standard style if this is not specified.
- *  
- * <li><i>onLoad</i> - a callback function to call when the format data is fully 
+ *
+ * <li><i>onLoad</i> - a callback function to call when the format data is fully
  * loaded. When the onLoad option is given, this class will attempt to
  * load any missing locale data using the ilib loader callback.
- * When the constructor is done (even if the data is already preassembled), the 
+ * When the constructor is done (even if the data is already preassembled), the
  * onLoad function is called with the current instance as a parameter, so this
- * callback can be used with preassembled or dynamic loading or a mix of the two. 
- * 
- * <li>sync - tell whether to load any missing locale data synchronously or 
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ *
+ * <li>sync - tell whether to load any missing locale data synchronously or
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
- * not be usable for a while. 
+ * not be usable for a while.
  * </ul>
  * <p>
- * 
+ *
  * Depends directive: !depends numfmt.js
- * 
+ *
  * @constructor
- * @param {Object.<string,*>} options A set of options that govern how the formatter will behave 
+ * @param {Object.<string,*>} options A set of options that govern how the formatter will behave
  */
 ilib.NumFmt = function (options) {
 	var sync = true;
 	this.locale = new ilib.Locale();
 	this.type = "number";
-	this.useNative=false;
+	this.useNative = false;
 
 	if (options) {
 		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+			this.locale = (typeof (options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
 		}
-		
+
 		if (options.type) {
-			if (options.type === 'number' || 
-				options.type === 'currency' || 
+			if (options.type === 'number' ||
+				options.type === 'currency' ||
 				options.type === 'percentage') {
 				this.type = options.type;
 			}
 		}
-		
+
 		if (options.currency) {
 			this.currency = options.currency;
 		}
-		
-		if (typeof(options.maxFractionDigits) === 'number') {
+
+		if (typeof (options.maxFractionDigits) === 'number') {
 			this.maxFractionDigits = this._toPrimitive(options.maxFractionDigits);
 		}
-		if (typeof(options.minFractionDigits) === 'number') {
+		if (typeof (options.minFractionDigits) === 'number') {
 			this.minFractionDigits = this._toPrimitive(options.minFractionDigits);
 		}
 		if (options.style) {
@@ -160,24 +158,25 @@ ilib.NumFmt = function (options) {
 		}
 		this.roundingMode = options.roundingMode;
 
-		if (typeof(options.sync) !== 'undefined') {
+		if (typeof (options.sync) !== 'undefined') {
 			sync = (options.sync == true);
 		}
 	}
-	
+
 	new ilib.LocaleInfo(this.locale, {
 		sync: sync,
 		onLoad: ilib.bind(this, function (li) {
 			this.localeInfo = li;
 
-			if (this.type === "currency") {
+			if (this.type === "number") {
+				this.templateNegative = new ilib.String(this.localeInfo.getNegativeNumberFormat() || "-{n}");
+			} else if (this.type === "currency") {
 				var templates;
-				
-				if (!this.currency || typeof(this.currency) != 'string') {
+
+				if (!this.currency || typeof (this.currency) != 'string') {
 					throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
 				}
-				
-				
+
 				new ilib.Currency({
 					locale: this.locale,
 					code: this.currency,
@@ -187,51 +186,36 @@ ilib.NumFmt = function (options) {
 						if (this.style !== "common" && this.style !== "iso") {
 							this.style = "common";
 						}
-				
-						
-						if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
+
+						if (typeof (this.maxFractionDigits) !== 'number' && typeof (this.minFractionDigits) !== 'number') {
 							this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
 						}
-						
-						templates = this.localeInfo.getCurrencyFormat();
-						if(this.style ===  "iso"){
-							templates=this.localeInfo.getCurrencyFormats();
-							this.template = new ilib.String(templates[this.style]);
-							this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
-						}
-						else if(typeof(templates) === 'undefined'){
-							
-							templates=this.localeInfo.getCurrencyFormats();
-							this.template = new ilib.String(templates[this.style]);
-							this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
-						}
-						else{
-					
-						this.template = new ilib.String(templates);
+
+						templates = this.localeInfo.getCurrencyFormats();
+						this.template = new ilib.String(templates[this.style] || templates.common);
+						this.templateNegative = new ilib.String(templates[this.style + "Negative"] || templates["commonNegative"]);
 						this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
-					}	
+						
 						if (!this.roundingMode) {
 							this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
 						}
 
 						this._init();
-						
-						if (options && typeof(options.onLoad) === 'function') {
+
+						if (options && typeof (options.onLoad) === 'function') {
 							options.onLoad(this);
 						}
 					})
 				});
 				return;
 			} else if (this.type === "percentage") {
-			
-				this.template = new ilib.String(this.localeInfo.getPercentageFormat());
-					
+				this.template =  new ilib.String(this.localeInfo.getPercentageFormat() || "{n}%");
+				this.templateNegative = new ilib.String(this.localeInfo.getNegativePercentageFormat() || this.localeInfo.getNegativeNumberFormat() + "%");
 			}
 
-
 			this._init();
-			
-			if (options && typeof(options.onLoad) === 'function') {
+
+			if (options && typeof (options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
 		})
@@ -253,7 +237,6 @@ ilib.NumFmt.getAvailableLocales = function () {
  */
 ilib.NumFmt.zeros = "0000000000000000000000000000000000000000000000000000000000000000000000";
 
-
 ilib.NumFmt.prototype = {
 	/**
 	 * @private
@@ -261,16 +244,16 @@ ilib.NumFmt.prototype = {
 	_init: function () {
 		if (this.maxFractionDigits < this.minFractionDigits) {
 			this.minFractionDigits = this.maxFractionDigits;
-		}		
-		
+		}
+
 		if (!this.roundingMode) {
 			this.roundingMode = this.localeInfo.getRoundingMode();
 		}
-		
+
 		if (!this.roundingMode) {
 			this.roundingMode = "halfdown";
 		}
-		
+
 		// set up the function, so we only have to figure it out once
 		// and not every time we do format()
 		this.round = ilib._roundFnc[this.roundingMode];
@@ -278,19 +261,38 @@ ilib.NumFmt.prototype = {
 			this.roundingMode = "halfdown";
 			this.round = ilib._roundFnc[this.roundingMode];
 		}
+		
+		this.prigroupSize = this.localeInfo.getPrimaryGroupingDigits(),
+		this.secgroupSize = this.localeInfo.getSecondaryGroupingDigits(),
+		this.groupingSeparator = this.useNative ? this.localeInfo.getNativeGroupingSeparator() : this.localeInfo.getGroupingSeparator();
+		this.decimalSeparator = this.useNative ? this.localeInfo.getNativeDecimalSeparator() : this.localeInfo.getDecimalSeparator();
+		
+		if (this.useNative) {
+			var nd = this.localeInfo.getNativeDigits() || this.localeInfo.getDigits();
+			if (nd) {
+				this.digits = nd.split("");
+			}
+		} else {
+			var digitsStr = this.localeInfo.getDigits();
+			if (digitsStr && digitsStr !== "0123456789") {
+				this.digits = digitsStr.split("");
+			}
+		}
+		
+		this.exponentSymbol = this.localeInfo.getExponential() || "e";
 	},
-	
+
 	/*
 	 * @private
 	 */
 	_pad: function (str, length, left) {
-		return (str.length >= length) ? 
-			str : 
-			(left ? 
-				ilib.NumFmt.zeros.substring(0,length-str.length) + str : 
-				str + ilib.NumFmt.zeros.substring(0,length-str.length));  
+		return (str.length >= length) ?
+			str :
+			(left ?
+			ilib.NumFmt.zeros.substring(0, length - str.length) + str :
+			str + ilib.NumFmt.zeros.substring(0, length - str.length));
 	},
-	
+
 	/**
 	 * @private
 	 * @param {Number|ilib.Number|string|number} num object, string, or number to convert to a primitive number
@@ -298,8 +300,8 @@ ilib.NumFmt.prototype = {
 	 */
 	_toPrimitive: function (num) {
 		var n = 0;
-		
-		switch (typeof(num)) {
+
+		switch (typeof (num)) {
 		case 'number':
 			n = num;
 			break;
@@ -312,162 +314,126 @@ ilib.NumFmt.prototype = {
 			n = /** @type {number} */ num.valueOf();
 			break;
 		}
-		
+
 		return n;
 	},
-	
+
 	/**
 	 * @private
+	 * Format the number using scientific notation as a positive number. Negative
+	 * formatting to be applied later.
 	 * @param {number} num the number to format
-	 * @return {string} the formatted number 
+	 * @return {string} the formatted number
 	 */
 	_formatScientific: function (num) {
 		var n = new Number(num);
 		var formatted;
-		var exponent = this.localeInfo.getExponential();
-		if (typeof(this.maxFractionDigits) !== 'undefined') {
+		if (typeof (this.maxFractionDigits) !== 'undefined') {
 			// if there is fraction digits, round it to the right length first
 			// divide or multiply by 10 by manipulating the exponent so as to
 			// avoid the rounding errors of floating point numbers
-			var e, 
+			var e,
 				factor,
 				str = n.toExponential(),
 				parts = str.split("e"),
 				significant = parts[0];
-			
-			e = parts[1];	
+
+			e = parts[1];
 			factor = Math.pow(10, this.maxFractionDigits);
 			significant = this.round(significant * factor) / factor;
-			if(typeof (this.localeInfo.getExponential()) !== 'undefined'){
-				
-				formatted = "" + significant + exponent + e;
-			}
-			else {
-				formatted = "" + significant + "e" + e;
-			}				
-
+			formatted = "" + significant + this.exponentSymbol + e;
 		} else {
 			formatted = n.toExponential(this.minFractionDigits);
-			if(typeof (this.localeInfo.getExponential()) !== 'undefined'){
-				
-				formatted = formatted.replace(/e/,exponent);	
-				}
-			
+			if (this.exponentSymbol !== 'e') {
+				formatted = formatted.replace(/e/, this.exponentSymbol);
 			}
+		}
 		return formatted;
 	},
-	
+
 	/**
-	 * @private 
+	 * @private
+	 * Formats the number as a positive number. Negative formatting to be applied later.
 	 * @param {number} num the number to format
 	 * @return {string} the formatted number
-	 */ 
+	 */
 	_formatStandard: function (num) {
 		var i;
-		var j,k;
-		
-		if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
+		var k;
+
+		if (typeof (this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
 			var factor = Math.pow(10, this.maxFractionDigits);
 			num = this.round(num * factor) / factor;
 		}
 
-		var negative = (num < 0);
-		/*if (negative) 
-		{
-			num = -num;
-		}*/
 		num = Math.abs(num);
-		
+
 		var parts = ("" + num).split("."),
 			integral = parts[0],
 			fraction = parts[1],
 			cycle,
-			prigroupSize = this.localeInfo.getPrimaryGroupingDigits(),
-			secgroupSize = this.localeInfo.getSecondaryGroupingDigits(),
-			separator = this.localeInfo.getGroupingSeparator(),
 			formatted;
-		if(this.useNative) {
-		separator = this.localeInfo.getNativeGroupingSeparator();
-		}	
-		integral = Math.abs(integral);
-		integral = integral.toString();
 		
+		integral = integral.toString();
+
 		if (this.minFractionDigits > 0) {
 			fraction = this._pad(fraction || "", this.minFractionDigits, false);
 		}
-		
-		if (secgroupSize > 0) {
-			if (integral.length > prigroupSize) {
-				var size1 = prigroupSize;
+
+		if (this.secgroupSize > 0) {
+			if (integral.length > this.prigroupSize) {
+				var size1 = this.prigroupSize;
 				var size2 = integral.length;
-		       	var size3 = size2 - size1;
-				integral = integral.slice(0, size3) + separator + integral.slice(size3);
-				var num_sec = integral.substring(0,integral.indexOf(separator));
+				var size3 = size2 - size1;
+				integral = integral.slice(0, size3) + this.groupingSeparator + integral.slice(size3);
+				var num_sec = integral.substring(0, integral.indexOf(this.groupingSeparator));
 				k = num_sec.length;
-				while (k > secgroupSize) {
-			    	var secsize1 = secgroupSize;
-				   	var secsize2 = num_sec.length;
+				while (k > this.secgroupSize) {
+					var secsize1 = this.secgroupSize;
+					var secsize2 = num_sec.length;
 					var secsize3 = secsize2 - secsize1;
-					integral = integral.slice(0, secsize3) + separator + integral.slice(secsize3);
-					num_sec = integral.substring(0,integral.indexOf(separator));
-					k = num_sec.length;			
-				}
-			}
-				
-					formatted = negative ? "-" : "";
-				
-			formatted = formatted + integral;
-			
-		} else if (prigroupSize !== 0) {
-			cycle = ilib.mod(integral.length-1, prigroupSize);
-			
-					
-					formatted = negative ? "-" : "";
-			
-			for (i = 0; i < integral.length-1; i++) {
-				formatted += integral.charAt(i);
-				if (cycle === 0) {
-					formatted += separator;
-				}
-				cycle = ilib.mod(cycle - 1, prigroupSize);
-			}
-			formatted += integral.charAt(integral.length-1);
-		} else {
-			
-				formatted = (negative ? "-" : "") + integral;
-		
-		}
-		
-		if (fraction && (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits > 0)) {
-			formatted += this.localeInfo.getDecimalSeparator();
-			if(this.useNative) {
-			formatted  = formatted.replace(this.localeInfo.getDecimalSeparator(),this.localeInfo.getNativeDecimalSeparator());
-				}
-			formatted += fraction;
-		}
-		if(this.localeInfo.getDigits() != "0123456789") {
-		var standard_digits="0123456789";
-		var digits= this.localeInfo.getDigits();
-		for (var i=0; i < digits.length; i++) {
-		var digit=standard_digits.charAt(i);
-		var regex = new RegExp(digit,"g");
-		formatted=formatted.replace(regex,digits.charAt(i));
-			}
-		}
-		if(this.useNative) {
-		var standard_digits="0123456789";
-		var native_digits= this.localeInfo.getNativeDigits();
-		for (var i=0; i < native_digits.length; i++) {
-		var digit=standard_digits.charAt(i);
-		var regex = new RegExp(digit,"g");
-		formatted=formatted.replace(regex,native_digits.charAt(i));
+					integral = integral.slice(0, secsize3) + this.groupingSeparator + integral.slice(secsize3);
+					num_sec = integral.substring(0, integral.indexOf(this.groupingSeparator));
+					k = num_sec.length;
 				}
 			}
 
+			formatted = integral;
+		} else if (this.prigroupSize !== 0) {
+			cycle = ilib.mod(integral.length - 1, this.prigroupSize);
+
+			formatted = "";
+
+			for (i = 0; i < integral.length - 1; i++) {
+				formatted += integral.charAt(i);
+				if (cycle === 0) {
+					formatted += this.groupingSeparator;
+				}
+				cycle = ilib.mod(cycle - 1, this.prigroupSize);
+			}
+			formatted += integral.charAt(integral.length - 1);
+		} else {
+			formatted = integral;
+		}
+
+		if (fraction && (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits > 0)) {
+			formatted += this.decimalSeparator;
+			formatted += fraction;
+		}
+		
+		if (this.digits) {
+			// if digits is defined, map this number to alternate digits
+			var translated = "";
+			for (i = 0; i < formatted.length; i++) {
+				var c = formatted.charAt(i);
+				translated += this.digits[c] || c; 
+			}
+			formatted = translated;
+		}
 		
 		return formatted;
 	},
-	
+
 	/**
 	 * Format a number according to the settings of this number formatter instance.
 	 * @param num {number|string|Number|ilib.Number} a floating point number to format
@@ -476,76 +442,43 @@ ilib.NumFmt.prototype = {
 	format: function (num) {
 		var formatted, n;
 
-		if (typeof(num) === 'undefined') {
+		if (typeof (num) === 'undefined') {
 			return "";
 		}
-		
+
 		// convert to a real primitive number type
 		n = this._toPrimitive(num);
-				
+
 		if (this.type === "number") {
-			
-	
-			formatted = (this.style === "scientific") ? 
-					this._formatScientific(n) : 
-					this._formatStandard(n);
-			
-			if(formatted.indexOf("-")!=-1){
-				
-				if( typeof(this.localeInfo.getNegativeNumberFormat())!== 'undefined'){
-						var temp = formatted.split("-");
-						formatted = temp[1];	
-						
-						var temp_number = this.localeInfo.getNegativeNumberFormat();
-			 	       	        formatted = temp_number.replace("{n}",formatted);
-						
-				   }
+			formatted = (this.style === "scientific") ?
+				this._formatScientific(n) :
+				this._formatStandard(n);
+
+			if (num < 0) {
+				formatted = this.templateNegative.format({n: formatted});
 			}
 		} else {
-							
-			formatted = this.template.format({n: this._formatStandard(n), s: this.sign});
-			
-			if(formatted.indexOf("-") != -1){
-				
-				
-				if( typeof(this.localeInfo.getNegativeCurrencyFormat())!== 'undefined'){
-						
-						var temp_number = this.localeInfo.getNegativeCurrencyFormat();
-						if(temp_number === "{s}-{n}" || temp_number === "{s} -{n}" || temp_number === "{s}- {n}"){
-						formatted = temp_number.replace("{s}-{n}",formatted).replace("{s} -{n}",formatted);	
-						}
-						else {
-			 	       	       formatted = temp_number.replace("{n} {s}",formatted).replace("{s}{n}",formatted).replace("{n}{s}",formatted).replace("{s} {n}",formatted);
-					
-						formatted = formatted.replace("-","");
-						
-						}
-				   }
-				else{
-					var temp = "-";
-					temp = temp + formatted;
-					formatted = temp;
-					formatted = formatted.replace(/-([^-]*)$/,'$1');	
-       				  }
-			
-				
-			}
-			
+			formatted = this._formatStandard(n);
+			var template = (n < 0) ? this.templateNegative : this.template;
+			formatted = template.format({
+				n: formatted,
+				s: this.sign
+			});
 		}
-		
+
 		return formatted;
 	},
-	
+
 	/**
 	 * Return the type of formatter. Valid values are "number", "currency", and
 	 * "percentage".
-	 * 
+	 *
 	 * @return {string} the type of formatter
 	 */
 	getType: function () {
 		return this.type;
 	},
-	
+
 	/**
 	 * Return the locale for this formatter instance.
 	 * @return {ilib.Locale} the locale instance for this formatter
@@ -553,67 +486,66 @@ ilib.NumFmt.prototype = {
 	getLocale: function () {
 		return this.locale;
 	},
-	
+
 	/**
-	 * Returns true if this formatter groups together digits in the integral 
-	 * portion of a number, based on the options set up in the constructor. In 
-	 * most western European cultures, this means separating every 3 digits 
+	 * Returns true if this formatter groups together digits in the integral
+	 * portion of a number, based on the options set up in the constructor. In
+	 * most western European cultures, this means separating every 3 digits
 	 * of the integral portion of a number with a particular character.
-	 * 
+	 *
 	 * @return {boolean} true if this formatter groups digits in the integral
 	 * portion of the number
 	 */
 	isGroupingUsed: function () {
-		var c = this.localeInfo.getGroupingSeparator();
-		return (c !== 'undefined' && c.length > 0);
+		return (this.groupingSeparator !== 'undefined' && this.groupingSeparator.length > 0);
 	},
-	
+
 	/**
 	 * Returns the maximum fraction digits set up in the constructor.
-	 * 
+	 *
 	 * @return {number} the maximum number of fractional digits this
 	 * formatter will format, or -1 for no maximum
 	 */
 	getMaxFractionDigits: function () {
-		return typeof(this.maxFractionDigits) !== 'undefined' ? this.maxFractionDigits : -1;
+		return typeof (this.maxFractionDigits) !== 'undefined' ? this.maxFractionDigits : -1;
 	},
-	
+
 	/**
 	 * Returns the minimum fraction digits set up in the constructor. If
 	 * the formatter has the type "currency", then the minimum fraction
 	 * digits is the amount of digits that is standard for the currency
 	 * in question unless overridden in the options to the constructor.
-	 * 
+	 *
 	 * @return {number} the minimum number of fractional digits this
 	 * formatter will format, or -1 for no minimum
 	 */
 	getMinFractionDigits: function () {
-		return typeof(this.minFractionDigits) !== 'undefined' ? this.minFractionDigits : -1;
+		return typeof (this.minFractionDigits) !== 'undefined' ? this.minFractionDigits : -1;
 	},
 
 	/**
 	 * Returns the ISO 4217 code for the currency that this formatter formats.
 	 * IF the typeof this formatter is not "currency", then this method will
 	 * return undefined.
-	 * 
+	 *
 	 * @return {string} the ISO 4217 code for the currency that this formatter
 	 * formats, or undefined if this not a currency formatter
 	 */
 	getCurrency: function () {
 		return this.currencyInfo && this.currencyInfo.getCode();
 	},
-	
+
 	/**
 	 * Returns the rounding mode set up in the constructor. The rounding mode
-	 * controls how numbers are rounded when the integral or fraction digits 
+	 * controls how numbers are rounded when the integral or fraction digits
 	 * of a number are limited.
-	 * 
+	 *
 	 * @return {string} the name of the rounding mode used in this formatter
 	 */
 	getRoundingMode: function () {
 		return this.roundingMode;
 	},
-	
+
 	/**
 	 * If this formatter is a currency formatter, then the style determines how the
 	 * currency is denoted in the formatted output. This method returns the style

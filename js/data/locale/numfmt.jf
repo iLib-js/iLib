@@ -7,7 +7,7 @@
 		"pctFmt": "{n}%",
 		"pctChar": "%",
 		"roundingMode": "halfdown",
-		"exponential":"E",
+		"exponential":"e",
 		"currencyFormats": {
 			"common": "{s}{n}",
 			"commonNegative": "{s}-{n}"
