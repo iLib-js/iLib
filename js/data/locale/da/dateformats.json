@@ -9,8 +9,8 @@
 				"f": "EEEE 'den' d. MMMM yyyy"
 			},
 			"dmy": {
-				"s": "d/M/yy",
-				"m": "d/M/yyyy",
+				"s": "dd/MM/yy",
+				"m": "dd/MM/yyyy",
 				"l": "d. MMM yyyy",
 				"f": "d. MMMM yyyy"
 			},
