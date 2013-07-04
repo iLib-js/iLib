@@ -334,6 +334,17 @@ ilib.LocaleInfo.prototype = {
 	getCurrencyFormats: function () {
 		return this.info.numfmt.currencyFormats;
 	},
+	
+	/**Return an object containing the format templates for formatting currencies
+	 * in this locale. It returns only symbol representation 
+	 */
+
+
+	getCurrencyFmt : function () {
+		var sysmbol = this.info.numfmt.currencyFormats;
+		//console.log(common);
+		return symbol.common;
+	},
 
 	/**
 	 * Return the currency that is legal in the locale, or which is most commonly 
