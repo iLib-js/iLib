@@ -528,6 +528,18 @@ ilib.DateFmt.prototype = {
 		
 		// tokenize it now for easy formatting
 		this.templateArr = this._tokenize(this.template);
+
+		// set up the mapping to native or alternate digits if necessary
+		var digits = this.locinfo.getDigits();
+		if (digits && digits != "0123456789") {
+			this.digits = digits;
+		}
+		if (this.useNative) {
+			digits = this.locinfo.getNativeDigits();
+			if (digits) {
+				this.digits = digits;
+			}
+		}
 	},
     
 	/**
@@ -901,25 +913,9 @@ ilib.DateFmt.prototype = {
 					break;
 			}
 		}
-		var digits = this.locinfo.getDigits();
-		if (digits && digits != "0123456789") {
-			var standard_digits="0123456789";
-			for (var j=0; j < digits.length; j++) {
-				var digit=standard_digits.charAt(j);
-				var regex = new RegExp(digit,"g");
-				str=str.replace(regex,digits.charAt(j));
-			}
-		}
-		if(this.useNative) {
-			var standard_digits="0123456789";
-			var native_digits = this.locinfo.getNativeDigits();
-			if (native_digits) {
-				for (var j=0; j < native_digits.length; j++) {
-					var digit=standard_digits.charAt(j);
-					var regex = new RegExp(digit,"g");
-					str=str.replace(regex,native_digits.charAt(j));
-				}
-			}
+
+		if (this.digits) {
+			str = ilib.mapString(str, this.digits);
 		}
 		return str;
 	},

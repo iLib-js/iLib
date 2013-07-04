@@ -223,6 +223,7 @@ ilib.NumFmt = function (options) {
 };
 
 /**
+ * @static
  * Return an array of available locales that this formatter can format
  * @return {Array.<ilib.Locale>|undefined} an array of available locales
  */
@@ -422,13 +423,7 @@ ilib.NumFmt.prototype = {
 		}
 		
 		if (this.digits) {
-			// if digits is defined, map this number to alternate digits
-			var translated = "";
-			for (i = 0; i < formatted.length; i++) {
-				var c = formatted.charAt(i);
-				translated += this.digits[c] || c; 
-			}
-			formatted = translated;
+			formatted = ilib.mapString(formatted, this.digits);
 		}
 		
 		return formatted;
