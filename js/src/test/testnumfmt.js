@@ -159,7 +159,7 @@ function testNumFmtNumberStyleScientific() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.2345678901234568e+28", fmt.format(12345678901234567890123456789.0));
+    assertEquals("1.2345678901234568E+28", fmt.format(12345678901234567890123456789.0));
 }
 
 function testNumFmtNumberStyleScientificSmall() {
@@ -169,7 +169,7 @@ function testNumFmtNumberStyleScientificSmall() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.234567890123456e-6", fmt.format(0.000001234567890123456));
+    assertEquals("1.234567890123456E-6", fmt.format(0.000001234567890123456));
 }
 
 function testNumFmtNumberStyleScientificWithMaxFractionDigits() {
@@ -180,7 +180,7 @@ function testNumFmtNumberStyleScientificWithMaxFractionDigits() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.23457e+28", fmt.format(12345678901234567890123456789.0));
+    assertEquals("1.23457E+28", fmt.format(12345678901234567890123456789.0));
 }
 
 function testNumFmtNumberStyleScientificSmallWithMaxFractionDigits() {
@@ -191,7 +191,7 @@ function testNumFmtNumberStyleScientificSmallWithMaxFractionDigits() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.23457e-6", fmt.format(0.0000012345678901234567890123456789));
+    assertEquals("1.23457E-6", fmt.format(0.0000012345678901234567890123456789));
 }
 
 function testNumFmtNumberStyleScientificWithMaxAndRoundUp() {
@@ -203,7 +203,7 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundUp() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.23457e+28", fmt.format(12345678901234567890123456789.0));
+    assertEquals("1.23457E+28", fmt.format(12345678901234567890123456789.0));
 }
 
 function testNumFmtNumberStyleScientificWithMaxAndRoundDown() {
@@ -215,7 +215,7 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundDown() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.23456e+28", fmt.format(12345678901234567890123456789.0));
+    assertEquals("1.23456E+28", fmt.format(12345678901234567890123456789.0));
 }
 
 function testNumFmtNumberStyleScientificWithMaxAndRoundHalfDown() {
@@ -227,7 +227,7 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundHalfDown() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.234e+28", fmt.format(12345000000000000000000000000.0));
+    assertEquals("1.234E+28", fmt.format(12345000000000000000000000000.0));
 }
 
 function testNumFmtNumberStyleScientificSmallWithMaxAndRoundHalfDown() {
@@ -239,7 +239,7 @@ function testNumFmtNumberStyleScientificSmallWithMaxAndRoundHalfDown() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.234e-6", fmt.format(0.0000012345));
+    assertEquals("1.234E-6", fmt.format(0.0000012345));
 }
 
 function testNumFmtNumberStyleScientificWithMaxAndRoundHalfUp() {
@@ -251,7 +251,7 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundHalfUp() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.235e+28", fmt.format(12345000000000000000000000000.0));
+    assertEquals("1.235E+28", fmt.format(12345000000000000000000000000.0));
 }
 
 function testNumFmtNumberFormatRoundingCeiling() {
@@ -386,10 +386,10 @@ function testNumFmtNumberFormatRoundingHalfdownNegAtHalf() {
     assertEquals("-1.74", fmt.format(-1.745));
 }
 
-function testNumFmtNumberFormatRoundingHalfevenLessThan5() {
+function testNumFmtNumberFormatRoundinghalfdownLessThan5() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
@@ -397,10 +397,10 @@ function testNumFmtNumberFormatRoundingHalfevenLessThan5() {
     assertEquals("1.74", fmt.format(1.743));
 }
 
-function testNumFmtNumberFormatRoundingHalfeven5() {
+function testNumFmtNumberFormatRoundinghalfdown5() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
@@ -408,10 +408,10 @@ function testNumFmtNumberFormatRoundingHalfeven5() {
     assertEquals("1.74", fmt.format(1.745));
 }
 
-function testNumFmtNumberFormatRoundingHalfevenMoreThan5() {
+function testNumFmtNumberFormatRoundinghalfdownMoreThan5() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
@@ -420,10 +420,10 @@ function testNumFmtNumberFormatRoundingHalfevenMoreThan5() {
     assertEquals("1.75", fmt.format(1.747));
 }
 
-function testNumFmtNumberFormatRoundingHalfevenExactly5() {
+function testNumFmtNumberFormatRoundinghalfdownExactly5() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
@@ -432,10 +432,10 @@ function testNumFmtNumberFormatRoundingHalfevenExactly5() {
     assertEquals("1.75", fmt.format(1.75));
 }
 
-function testNumFmtNumberFormatRoundingHalfevenLessThan5Up() {
+function testNumFmtNumberFormatRoundinghalfdownLessThan5Up() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
@@ -443,21 +443,21 @@ function testNumFmtNumberFormatRoundingHalfevenLessThan5Up() {
     assertEquals("1.75", fmt.format(1.753));
 }
 
-function testNumFmtNumberFormatRoundingHalfeven5Up() {
+function testNumFmtNumberFormatRoundinghalfdown5Up() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
     
-    assertEquals("1.76", fmt.format(1.755));
+    assertEquals("1.75", fmt.format(1.755));
 }
 
-function testNumFmtNumberFormatRoundingHalfevenMoreThan5Up() {
+function testNumFmtNumberFormatRoundinghalfdownMoreThan5Up() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
@@ -892,7 +892,7 @@ function testNumFmtCurrencyFormatAlternateStyle() {
     
     assertNotNull(fmt);
     
-    assertEquals("USD 57.35", fmt.format(57.35));
+    assertEquals("USD57.35", fmt.format(57.35));
 }
 
 function testNumFmtCurrencyFormatOtherCurrency() {
@@ -915,7 +915,7 @@ function testNumFmtCurrencyFormatOtherCurrencyIsoStyle() {
     
     assertNotNull(fmt);
     
-    assertEquals("EUR 57.35", fmt.format(57.35));
+    assertEquals("EUR57.35", fmt.format(57.35));
 }
 
 function testNumFmtCurrencyGetDefaultFractionDigits() {
@@ -1027,7 +1027,7 @@ function testNumFmtCurrencyUseCorrectRoundingModeForLocale() {
     
     assertNotNull(fmt);
     
-    assertEquals("halfeven", fmt.getRoundingMode());
+    assertEquals("halfdown", fmt.getRoundingMode());
 }
 
 function testNumFmtJAIsGroupingUsed() {
@@ -1067,7 +1067,7 @@ function testNumFmtNumberFormatJAWithThousandsWithMultiGroupsja() {
     
     assertNotNull(fmt);
     
-    assertEquals("123456789.4", fmt.format(123456789.4));
+    assertEquals("123,456,789.4", fmt.format(123456789.4));
 }
 
 function testNumFmtNumberFormatJAWithThousandsWithMultiGroupsNegativeja() {
@@ -1077,7 +1077,7 @@ function testNumFmtNumberFormatJAWithThousandsWithMultiGroupsNegativeja() {
     
     assertNotNull(fmt);
     
-    assertEquals("-123456789.4", fmt.format(-123456789.4));
+    assertEquals("-123,456,789.4", fmt.format(-123456789.4));
 }
 
 function testNumFmtNumberFormatJALessThanOne() {
@@ -1133,7 +1133,7 @@ function testNumFmtasIN() {
     
     assertNotNull(fmt);
     
-    assertEquals("-1,23,456.78", fmt.format(-123456.785));
+    assertEquals("-১,২৩,৪৫৬.৭৮", fmt.format(-123456.785));
 }
 
 
@@ -1992,7 +1992,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_asIN() {
     
     assertNotNull(fmt);
     
-    assertEquals("₹ 1,00,110.57", fmt.format(100110.57));
+    assertEquals("₹ ১,০০,১১০.৫৭", fmt.format(100110.57));
 }
 
 //test cases for ar-SA
@@ -2004,7 +2004,7 @@ function testNumFmt_ar_SA() {
     
     assertNotNull(fmt);
     
-    assertEquals("-123٬456٫78", fmt.format(-123456.785));
+    assertEquals("١٢٣٬٤٥٦٫٧٨-", fmt.format(-123456.785));
 }
 
 /*function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ar_SA() {
@@ -2026,7 +2026,7 @@ function testNumFmtPercentageFormatRegular_ar_SA() {
     
     assertNotNull(fmt);
     
-    assertEquals("57٫8%", fmt.format(57.8));
+    assertEquals("٥٧٫٨%", fmt.format(57.8));
 }
 
 //test cases for bg-BG
@@ -2163,7 +2163,7 @@ function testNumFmtCurrencyFormatCorrectNEgativeCurrencyForLocale_cs_CZ() {
     
     assertNotNull(fmt);
     
-    assertEquals("-100 110,57 Kč", fmt.format(-100110.57));
+    assertEquals("Kč-100 110,57", fmt.format(-100110.57));
 }
 function testNumFmtPercentageFormatRegular_et_EE() {
     var fmt = new ilib.NumFmt({
@@ -2184,7 +2184,7 @@ function testNumFmt_fa_IR() {
     
     assertNotNull(fmt);
     
-    assertEquals("-111٬123٬456٫78", fmt.format(-111123456.785));
+    assertEquals("-۱۱۱٬۱۲۳٬۴۵۶٫۷۸", fmt.format(-111123456.785));
 }
 
 /*function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fa_IR() {
@@ -2206,7 +2206,7 @@ function testNumFmtPercentageFormatRegular_fa_IR() {
     
     assertNotNull(fmt);
     
-    assertEquals("57٫8%", fmt.format(57.8));
+    assertEquals("۵۷٫۸%", fmt.format(57.8));
 }
 //test cases for fr-FR
 function testNumFmt_fr_FR() {
@@ -2890,7 +2890,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_MY() {
     
     assertNotNull(fmt);
     
-    assertEquals("-RM100,110.57", fmt.format(-100110.57));
+    assertEquals("(RM100,110.57)", fmt.format(-100110.57));
 }
 
 //test cases for en-MM
@@ -2937,7 +2937,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_MM() {
     
     assertNotNull(fmt);
     
-    assertEquals("-K100,110.57", fmt.format(-100110.57));
+    assertEquals("(K100,110.57)", fmt.format(-100110.57));
 }
 
 //test cases for en-NZ
@@ -2984,7 +2984,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_NZ() {
     
     assertNotNull(fmt);
     
-    assertEquals("-$100,110.57", fmt.format(-100110.57));
+    assertEquals("($100,110.57)", fmt.format(-100110.57));
 }
 
 //test cases for en-NG
@@ -3077,7 +3077,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_PK() {
     
     assertNotNull(fmt);
     
-    assertEquals("-₨100,110.57", fmt.format(-100110.57));
+    assertEquals("(₨100,110.57)", fmt.format(-100110.57));
 }
 
 //test cases for en-PH
@@ -3216,7 +3216,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_RW() {
     
     assertNotNull(fmt);
     
-    assertEquals("-Fr100,111", fmt.format(-100110.57));
+    assertEquals("(Fr100,111)", fmt.format(-100110.57));
 }
 
 //test cases for en-LK
@@ -3263,7 +3263,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_LK() {
     
     assertNotNull(fmt);
     
-    assertEquals("-Rs100,110.57", fmt.format(-100110.57));
+    assertEquals("(Rs100,110.57)", fmt.format(-100110.57));
 }
 
 //test cases for en-SD
@@ -3310,7 +3310,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_en_SD() {
     
     assertNotNull(fmt);
     
-    assertEquals("-£100,110.57", fmt.format(-100110.57));
+    assertEquals("(£100,110.57)", fmt.format(-100110.57));
 }
 
 //test cases for en-TZ
@@ -3404,7 +3404,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_CR() {
     
     assertNotNull(fmt);
     
-    assertEquals("-₡100.110,57", fmt.format(-100110.57));
+    assertEquals("₡-100.110,57", fmt.format(-100110.57));
 }
 
 //test cases for es-DO
@@ -3451,7 +3451,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_DO() {
     
     assertNotNull(fmt);
     
-    assertEquals("-$100,110.57", fmt.format(-100110.57));
+    assertEquals("$-100,110.57", fmt.format(-100110.57));
 }
 
 
@@ -3499,7 +3499,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_SV() {
     
     assertNotNull(fmt);
     
-    assertEquals("-$100,110.57", fmt.format(-100110.57));
+    assertEquals("$-100,110.57", fmt.format(-100110.57));
 }
 
 //test cases for es-GQ
@@ -3524,7 +3524,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_GQ() {
     
     assertNotNull(fmt);
     
-    assertEquals("Fr100.110,57", fmt.format(100110.57));
+    assertEquals("Fr100.111", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_es_GQ() {
     var fmt = new ilib.NumFmt({
@@ -3546,7 +3546,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_GQ() {
     
     assertNotNull(fmt);
     
-    assertEquals("-Fr100.110,57", fmt.format(-100110.57));
+    assertEquals("Fr-100.111", fmt.format(-100110.57));
 }
 //test cases for es-GT
 
@@ -3592,7 +3592,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_GT() {
     
     assertNotNull(fmt);
     
-    assertEquals("-Q100,110.57", fmt.format(-100110.57));
+    assertEquals("Q-100,110.57", fmt.format(-100110.57));
 }
 
 //test cases for es-HN
@@ -3639,7 +3639,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_HN() {
     
     assertNotNull(fmt);
     
-    assertEquals("-L100,110.57", fmt.format(-100110.57));
+    assertEquals("L-100,110.57", fmt.format(-100110.57));
 }
 
 //test cases for es-MX
@@ -3686,7 +3686,7 @@ function testNumFmtNegativeCurrencyFormatForLocale_es_MX() {
     
     assertNotNull(fmt);
     
-    assertEquals("$100,110.57", fmt.format(-100110.57));
+    assertEquals("$-100,110.57", fmt.format(-100110.57));
 }
 /******************************** End of test cases****************************************************/
 function testNumFmtenGB() {
@@ -3720,17 +3720,6 @@ function testNumFmtjaJP() {
     assertNotNull(fmt);
     
     assertEquals("-123,456.78", fmt.format(-123456.785));
-}
-
-function testNumFmtja() {
-    var fmt = new ilib.NumFmt({
-        locale: "ja",
-        maxFractionDigits: 2
-    });
-    
-    assertNotNull(fmt);
-    
-    assertEquals("-123456.78", fmt.format(-123456.785));
 }
 
 function testNumFmtptBR() {
