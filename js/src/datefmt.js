@@ -831,19 +831,19 @@ ilib.DateFmt.prototype = {
 				case 'a':
 					if (this.locale.getLanguage() === 'zh') {
 						if (date.hour < 6) {
-							key = "azh0";
+							key = "azh0";	// before dawn
 						} else if (date.hour < 9) {
-							key = "azh1";
+							key = "azh1";	// morning
 						} else if (date.hour < 12) {
-							key = "azh2";
+							key = "azh2";	// late morning/day before noon
 						} else if (date.hour < 13) {
-							key = "azh3";
+							key = "azh3";	// noon hour/midday
 						} else if (date.hour < 18) {
-							key = "azh4";
+							key = "azh4";	// afternoon
 						} else if (date.hour < 21) {
-							key = "azh5";
+							key = "azh5";	// evening time/dusk
 						} else {
-							key = "azh6";
+							key = "azh6";	// night time
 						}
 					} else {
 						key = date.hour < 12 ? "a0" : "a1";
