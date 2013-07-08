@@ -1,7 +1,7 @@
 /*
- * testdatefmt_en_IN.js - test the date formatter object in Indian English
+ * testdatefmt_hi_IN.js - test the date formatter object in Hindi for India
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,15 +18,15 @@
  */
 
 function testDateFmtINConstructorEmpty_hi_IN() {
-    var fmt = new ilib.DateFmt_hi_IN();
+    var fmt = new ilib.DateFmt({locale: "hi-IN"});
     
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
 }
 
 
 function testDateFmtINSimpleShort_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "short"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -41,7 +41,7 @@ function testDateFmtINSimpleShort_hi_IN() {
 
 function testDateFmtINSimpleMedium_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "medium"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -57,7 +57,7 @@ function testDateFmtINSimpleMedium_hi_IN() {
 
 function testDateFmtINSimpleLong_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "long"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -73,7 +73,7 @@ function testDateFmtINSimpleLong_hi_IN() {
 
 function testDateFmtINSimpleFull_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "full"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -89,7 +89,7 @@ function testDateFmtINSimpleFull_hi_IN() {
 
 function testDateFmtINSimpleTimeShort_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "short", type: "time"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -105,7 +105,7 @@ function testDateFmtINSimpleTimeShort_hi_IN() {
 
 function testDateFmtINSimpleTimeShort_hi_IN1() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "short", type: "time"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -121,7 +121,7 @@ function testDateFmtINSimpleTimeShort_hi_IN1() {
 
 function testDateFmtINSimpleTimeMedium_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "medium", type: "time"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -137,7 +137,7 @@ function testDateFmtINSimpleTimeMedium_hi_IN() {
 
 function testDateFmtINSimpleTimeLong_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", timelength: "long", type: "time"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -153,7 +153,7 @@ function testDateFmtINSimpleTimeLong_hi_IN() {
 
 function testDateFmtINSimpleTimeFull_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "full", type: "time"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -169,7 +169,7 @@ function testDateFmtINSimpleTimeFull_hi_IN() {
 
 function testDateFmtINDateTimeSimpleShort_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "short", type: "datetime"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -185,7 +185,7 @@ function testDateFmtINDateTimeSimpleShort_hi_IN() {
 
 function testDateFmtINDateTimeSimpleMedium_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "medium", type: "datetime"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -201,7 +201,7 @@ function testDateFmtINDateTimeSimpleMedium_hi_IN() {
 
 function testDateFmtINDateTimeSimpleLong_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "long", type: "datetime"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -217,7 +217,7 @@ function testDateFmtINDateTimeSimpleLong_hi_IN() {
 
 function testDateFmtINDateTimeSimpleFull_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "full", type: "datetime"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -234,7 +234,7 @@ function testDateFmtINDateTimeSimpleFull_hi_IN() {
 
 function testDateFmtINTemplateCalendar_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", calendar: "julian", template: "yyyy-MM-dd"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.JulDate({
 		year: 2011,
@@ -252,7 +252,7 @@ function testDateFmtINTemplateCalendar_hi_IN() {
 
 function testDateFmtINTemplateClock12SwitchHH_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", clock: "12", template: "HH:mm"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -268,7 +268,7 @@ function testDateFmtINTemplateClock12SwitchHH_hi_IN() {
 
 function testDateFmtINTemplateClock12Switchkk_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", clock: "12", template: "kk:mm"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -284,7 +284,7 @@ function testDateFmtINTemplateClock12Switchkk_hi_IN() {
 
 function testDateFmtINTemplateClock24Switchhh_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", clock: "24", template: "hh:mm"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -300,7 +300,7 @@ function testDateFmtINTemplateClock24Switchhh_hi_IN() {
 
 function testDateFmtINTemplateClock24SwitchKK_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", clock: "24", template: "KK:mm"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -316,7 +316,7 @@ function testDateFmtINTemplateClock24SwitchKK_hi_IN() {
 
 function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12hh_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", template: "hh:mm"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -332,7 +332,7 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12hh_hi_IN() {
 
 function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12KK_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", template: "KK:mm"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -348,7 +348,7 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12KK_hi_IN() {
 
 function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24HH_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", template: "HH:mm"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -364,7 +364,7 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24HH_hi_IN() {
 
 function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24kk_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", template: "kk:mm"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -381,7 +381,7 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24kk_hi_IN() {
 
 function testDateFmtINTypeDate_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "date"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -397,7 +397,7 @@ function testDateFmtINTypeDate_hi_IN() {
 
 function testDateFmtINTypeTime_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -413,7 +413,7 @@ function testDateFmtINTypeTime_hi_IN() {
 
 function testDateFmtINTypeDateTime_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "datetime"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -430,7 +430,7 @@ function testDateFmtINTypeDateTime_hi_IN() {
 
 function testDateFmtINShortDateComponentsY_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", date: "y"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -446,7 +446,7 @@ function testDateFmtINShortDateComponentsY_hi_IN() {
 
 function testDateFmtINShortDateComponentsM_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", date: "m"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -462,7 +462,7 @@ function testDateFmtINShortDateComponentsM_hi_IN() {
 
 function testDateFmtINShortDateComponentsN_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", date: "n"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -478,7 +478,7 @@ function testDateFmtINShortDateComponentsN_hi_IN() {
 
 function testDateFmtINShortDateComponentsD_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", date: "d"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -494,7 +494,7 @@ function testDateFmtINShortDateComponentsD_hi_IN() {
 
 function testDateFmtINShortDateComponentsDM_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", date: "dm"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -510,7 +510,7 @@ function testDateFmtINShortDateComponentsDM_hi_IN() {
 
 function testDateFmtINShortDateComponentsMY_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", date: "my"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -526,7 +526,7 @@ function testDateFmtINShortDateComponentsMY_hi_IN() {
 
 function testDateFmtINShortDateComponentsDMY_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", date: "dmy"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -542,7 +542,7 @@ function testDateFmtINShortDateComponentsDMY_hi_IN() {
 
 function testDateFmtINShortDateComponentsWDM_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", date: "wdm"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -558,7 +558,7 @@ function testDateFmtINShortDateComponentsWDM_hi_IN() {
 
 function testDateFmtINShortDateComponentsWDMY_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", date: "wdmy"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -575,7 +575,7 @@ function testDateFmtINShortDateComponentsWDMY_hi_IN() {
 
 function testDateFmtINFullDateComponentsY_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "full", date: "y"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -591,7 +591,7 @@ function testDateFmtINFullDateComponentsY_hi_IN() {
 
 function testDateFmtINFullDateComponentsM_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "full", date: "m"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -607,7 +607,7 @@ function testDateFmtINFullDateComponentsM_hi_IN() {
 
 function testDateFmtINFullDateComponentsD_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "full", date: "d"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -623,7 +623,7 @@ function testDateFmtINFullDateComponentsD_hi_IN() {
 
 function testDateFmtINFullDateComponentsDM_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "full", date: "dm"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -639,7 +639,7 @@ function testDateFmtINFullDateComponentsDM_hi_IN() {
 
 function testDateFmtINFullDateComponentsMY_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "full", date: "my"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -655,7 +655,7 @@ function testDateFmtINFullDateComponentsMY_hi_IN() {
 
 function testDateFmtINFullDateComponentsDMY_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "full", date: "dmy"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -671,7 +671,7 @@ function testDateFmtINFullDateComponentsDMY_hi_IN() {
 
 function testDateFmtINFullDateComponentsWDM_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "full", date: "wdm"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -687,7 +687,7 @@ function testDateFmtINFullDateComponentsWDM_hi_IN() {
 
 function testDateFmtINFullDateComponentsWDMY_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", length: "full", date: "wdmy"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -704,7 +704,7 @@ function testDateFmtINFullDateComponentsWDMY_hi_IN() {
 
 function testDateFmtINShortTimeComponentsS_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", time: "s"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -720,7 +720,7 @@ function testDateFmtINShortTimeComponentsS_hi_IN() {
 
 function testDateFmtINShortTimeComponentsM_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", time: "m"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -736,7 +736,7 @@ function testDateFmtINShortTimeComponentsM_hi_IN() {
 
 function testDateFmtINShortTimeComponentsH_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", time: "h"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -752,7 +752,7 @@ function testDateFmtINShortTimeComponentsH_hi_IN() {
 
 function testDateFmtINShortTimeComponentsMS_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", time: "ms"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -768,7 +768,7 @@ function testDateFmtINShortTimeComponentsMS_hi_IN() {
 
 function testDateFmtINShortTimeComponentsHM_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", time: "hm"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -784,7 +784,7 @@ function testDateFmtINShortTimeComponentsHM_hi_IN() {
 
 function testDateFmtINShortTimeComponentsHMS_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", time: "hms"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -800,7 +800,7 @@ function testDateFmtINShortTimeComponentsHMS_hi_IN() {
 
 function testDateFmtINShortTimeComponentsHMA_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", time: "hma"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -821,7 +821,7 @@ function testDateFmtINShortTimeComponentsHMZ_hi_IN() {
         time: "hmaz", 
         timezone: "Asia/Kolkata"
     });
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -842,7 +842,7 @@ function testDateFmtINShortTimeComponentsHMAZ_hi_IN() {
         time: "hmaz", 
         timezone: "Asia/Kolkata"
     });
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -858,7 +858,7 @@ function testDateFmtINShortTimeComponentsHMAZ_hi_IN() {
 
 function testDateFmtINShortTimeComponentsHMSA_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", time: "hmsa"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -879,7 +879,7 @@ function testDateFmtINShortTimeComponentsHMSZ_hi_IN() {
         time: "hmsaz", 
         timezone: "Asia/Kolkata"
     });
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -900,7 +900,7 @@ function testDateFmtINShortTimeComponentsHMSAZ_hi_IN() {
         time: "hmsaz", 
         timezone: "Asia/Kolkata"
     });
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -917,7 +917,7 @@ function testDateFmtINShortTimeComponentsHMSAZ_hi_IN() {
 
 function testDateFmtINFullTimeComponentsS_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", length: "full", time: "s"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -933,7 +933,7 @@ function testDateFmtINFullTimeComponentsS_hi_IN() {
 
 function testDateFmtINFullTimeComponentsM_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", length: "full", time: "m"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -949,7 +949,7 @@ function testDateFmtINFullTimeComponentsM_hi_IN() {
 
 function testDateFmtINFullTimeComponentsH_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", length: "full", time: "h"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -965,7 +965,7 @@ function testDateFmtINFullTimeComponentsH_hi_IN() {
 
 function testDateFmtINFullTimeComponentsMS_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", length: "full", time: "ms"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -981,7 +981,7 @@ function testDateFmtINFullTimeComponentsMS_hi_IN() {
 
 function testDateFmtINFullTimeComponentsHM_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", length: "full", time: "hma"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -997,7 +997,7 @@ function testDateFmtINFullTimeComponentsHM_hi_IN() {
 
 function testDateFmtINFullTimeComponentsHMS_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", length: "full", time: "hmsa"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -1013,7 +1013,7 @@ function testDateFmtINFullTimeComponentsHMS_hi_IN() {
 
 function testDateFmtINFullTimeComponentsHMA_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", length: "full", time: "hma"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -1035,7 +1035,7 @@ function testDateFmtINFullTimeComponentsHMZ_hi_IN() {
         time: "hmaz", 
         timezone: "Asia/Kolkata"
     });
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -1057,7 +1057,7 @@ function testDateFmtINFullTimeComponentsHMAZ_hi_IN() {
         time: "hmaz", 
         timezone: "Asia/Kolkata"
     });
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -1073,7 +1073,7 @@ function testDateFmtINFullTimeComponentsHMAZ_hi_IN() {
 
 function testDateFmtINFullTimeComponentsHMSA_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", length: "full", time: "hmsa"});
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -1095,7 +1095,7 @@ function testDateFmtINFullTimeComponentsHMSZ_hi_IN() {
         time: "hmsaz", 
         timezone: "Asia/Kolkata"
     });
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -1117,7 +1117,7 @@ function testDateFmtINFullTimeComponentsHMSAZ_hi_IN() {
         time: "hmsaz", 
         timezone: "Asia/Kolkata"
     });
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
@@ -1139,7 +1139,7 @@ function testDateFmtINWithTimeZoneAndNoDST_hi_IN() {
         time: "hmsaz", 
         timezone: "Asia/Kolkata"
     });
-    assertNotNull(fmt);
+    assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
