@@ -1,152 +1,79 @@
 {
-	"format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
-	"sortByHeadWord": false,
-	"nameStyle": "western",
-	"conjunctions": {
-		"and1": "và",
-		"and2": "và",
-		"or1": "hoặc",
-		"or2": "hoặc"
-	},
-	
-	 "prefixes": [
-
-	     "Ông",
-
-            "Bà",
-
-            "Bà",
-
-            "Chủ tịch",
-
-            "phó chủ tịch",
-
-            "thủ tướng",
-
-            "thị trưởng",
-
-            "Thống đốc",
-
-            "Chủ tịch",
-
-            "chủ tịch đàn bà",
-
-            "bộ trưởng",
-
-            "pháp sư",
-
-            "mulah",
-
-            "Mục sư",
-
-            "đầu bếp",
-
-            "HLV",
-
-            "giáo sư",
-
-            "prof",
-
-            "vua",
-
-            "nữ hoàng",
-
-            "vua",
-
-            "công chúa",
-
-            "chung",
-
-            "thuyền trưởng",
-
-            "ủy viên",
-
-            "giám đốc",
-
-            "cảnh sát trưởng",
-
-            "viên thanh tra",
-
-            "thám tử",
-
-            "viên",
-
-            "thưa ông",
-
-            "phụ nữ",
-
-            "chúa",
-
-            "phu nhân",
-
-            "cha",
-
-            "mẹ",
-
-            "em trai",
-
-            "chị",
-
-            "tôn trọng",
-
-            "cô",
-
-            "chú",
-
-            "bà",
-
-            "bà",
-
-            "ông nội",
-
-            "ông nội",
-
-            "Granma",
-
-            "Grampa",
-
-            "anh em họ"
-
-     ],
-
-     "suffixes": [
-
-           "em",
-
-           "jr",
-
-           "cao cấp",
-
-           "sr",
-
-           "i",
-
-           "iii",
-
-           "iii",
-
-           "iv",
-
-           "v",
-
-           "vi",
-
-           "vii",
-
-           "viii",
-
-           "ix",
-
-           "x",
-
-           "Tiến Sỹ",
-
-           "md",
-
-           "ret",
-
-           "nghỉ hưu"
-
-     ]
-
+    "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
+    "sortByHeadWord": false,
+    "nameStyle": "western",
+    "conjunctions": {
+        "and1": "và",
+        "and2": "và",
+        "or1": "hoặc",
+        "or2": "hoặc"
+    },
+    "prefixes": [
+        "Ông",
+        "Bà",
+        "Bà",
+        "Chủ tịch",
+        "phó chủ tịch",
+        "thủ tướng",
+        "thị trưởng",
+        "Thống đốc",
+        "Chủ tịch",
+        "chủ tịch đàn bà",
+        "bộ trưởng",
+        "pháp sư",
+        "mulah",
+        "Mục sư",
+        "đầu bếp",
+        "HLV",
+        "giáo sư",
+        "prof",
+        "vua",
+        "nữ hoàng",
+        "vua",
+        "công chúa",
+        "chung",
+        "thuyền trưởng",
+        "ủy viên",
+        "giám đốc",
+        "cảnh sát trưởng",
+        "viên thanh tra",
+        "thám tử",
+        "viên",
+        "thưa ông",
+        "phụ nữ",
+        "chúa",
+        "phu nhân",
+        "cha",
+        "mẹ",
+        "em trai",
+        "chị",
+        "tôn trọng",
+        "cô",
+        "chú",
+        "bà",
+        "bà",
+        "ông nội",
+        "ông nội",
+        "anh em họ"
+    ],
+    "suffixes": [
+        "em",
+        "jr",
+        "cao cấp",
+        "sr",
+        "i",
+        "iii",
+        "iii",
+        "iv",
+        "v",
+        "vi",
+        "vii",
+        "viii",
+        "ix",
+        "x",
+        "Tiến Sỹ",
+        "md",
+        "ret",
+        "nghỉ hưu"
+    ]
 }
