@@ -1,150 +1,81 @@
 {
-	"format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
-	"sortByHeadWord": false,
-	"nameStyle": "western",
-	"conjunctions": {
-		"and1": "a",
-		"and2": "a",
-		"or1": "nebo",
-		"or2": "nebo"
-	},
-	
-	 "prefixes": [
-		
-		 "Pan",
-
-            "Paní",
-
-            "Paní",
-
-            "prezident",
-
-            "viceprezident",
-
-            "ministerský předseda",
-
-            "starosta",
-
-            "guvernér",
-
-            "předseda",
-
-            "předsedkyně",
-
-            "ministr",
-
-            "rabín",
-
-            "mūlaḥ",
-
-            "pastor",
-
-            "šéfkuchař",
-
-            "trenér",
-
-            "profesor",
-
-            "profesor",
-
-            "král",
-
-            "královna",
-
-            "princ",
-
-            "princezna",
-
-            "obecný",
-
-            "admirál",
-
-            "komisař",
-
-            "správce",
-
-            "šerif",
-
-            "inspektor",
-
-            "detektivní",
-
-            "důstojník",
-
-            "pane",
-
-            "dáma",
-
-            "pán",
-
-            "dáma",
-
-            "otec",
-
-            "matka",
-
-            "bratr",
-
-            "sestra",
-
-            "ctihodný",
-
-            "teta",
-
-            "strýc",
-
-            "babička",
-
-            "babička",
-
-            "dědeček",
-
-            "dědeček",
-
-            "Granma",
-
-            "dědeček",
-
-            "bratranec"
-		
-          ],
-
-	 "suffixes": [
-
-           "junior",
-
-           "jr",
-
-           "senior",
-
-           "sr",
-
-           "i",
-
-           "iii",
-
-           "iii",
-
-           "iv",
-
-           "v",
-
-           "vi",
-
-           "vii",
-
-           "viii",
-
-           "ix",
-
-           "x",
-
-           "phD",
-
-           "md",
-
-           "ret",
-
-           "v důchodu"
-
-     ]
+    "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
+    "sortByHeadWord": false,
+    "nameStyle": "western",
+    "conjunctions": {
+        "and1": "a",
+        "and2": "a",
+        "or1": "nebo",
+        "or2": "nebo"
+    },
+    "prefixes": [
+        "Pan",
+        "Paní",
+        "Paní",
+        "prezident",
+        "viceprezident",
+        "ministerský předseda",
+        "starosta",
+        "guvernér",
+        "předseda",
+        "předsedkyně",
+        "ministr",
+        "rabín",
+        "mūlaḥ",
+        "pastor",
+        "šéfkuchař",
+        "trenér",
+        "profesor",
+        "profesor",
+        "král",
+        "královna",
+        "princ",
+        "princezna",
+        "obecný",
+        "admirál",
+        "komisař",
+        "správce",
+        "šerif",
+        "inspektor",
+        "detektivní",
+        "důstojník",
+        "pane",
+        "dáma",
+        "pán",
+        "dáma",
+        "otec",
+        "matka",
+        "bratr",
+        "sestra",
+        "ctihodný",
+        "teta",
+        "strýc",
+        "babička",
+        "babička",
+        "dědeček",
+        "dědeček",
+        "Granma",
+        "dědeček",
+        "bratranec"
+    ],
+    "suffixes": [
+        "junior",
+        "jr",
+        "senior",
+        "sr",
+        "i",
+        "iii",
+        "iii",
+        "iv",
+        "v",
+        "vi",
+        "vii",
+        "viii",
+        "ix",
+        "x",
+        "phD",
+        "md",
+        "ret",
+        "v důchodu"
+    ]
+}
