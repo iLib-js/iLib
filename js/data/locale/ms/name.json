@@ -1,0 +1,158 @@
+{
+	"format": "{prefix} {givenName} {middleName} {suffix}",
+	"sortByHeadWord": false,
+	"nameStyle": "asian",
+	"conjunctions": {
+		"and1": "dan",
+		"and2": "dan",
+		"or1": "atau",
+		"or2": "atau"
+	},
+
+	 "prefixes": [
+
+         "Encik",
+
+	"Cik",
+
+	"Puan",
+
+	"Presiden",
+
+	"naib presiden",
+
+	"Perdana Menteri",
+
+	"Datuk Bandar",
+
+	"Gabenor",
+
+	"pengerusi",
+
+	"pengerusi",
+
+	"Menteri",
+
+	"Rabbi",
+
+	"mulah",
+
+	"pastor",
+
+	"chef",
+
+	"jurulatih",
+
+	"profesor",
+
+	"prof",
+
+	"raja",
+
+	"queen",
+
+	"putera",
+
+	"puteri",
+
+	"umum",
+
+	"laksamana",
+
+	"Pesuruhjaya",
+
+	"penguasa",
+
+	"sheriff",
+
+	"inspektor",
+
+	"detektif",
+
+	"pegawai",
+
+	"tuan",
+
+	"wanita",
+
+	"tuan",
+
+	"dame",
+
+	"bapa",
+
+	"ibu",
+
+	"saudara",
+
+	"kakak",
+
+	"terhormat",
+
+	"makcik",
+
+	"bapa saudara",
+
+	"nenek",
+
+	"nenek",
+
+	"datuk",
+
+	"datuk",
+
+	"Granma",
+
+	"grampa",
+
+	"sepupu" 
+
+     ],
+
+     "suffixes": [
+
+           "junior",
+
+           "jr",
+
+           "kanan",
+
+           "sr",
+
+           "i",
+
+           "iii",
+
+           "iii",
+
+           "iv",
+
+           "v",
+
+           "vi",
+
+           "vii",
+
+           "viii",
+
+           "ix",
+
+           "x",
+
+           "phd",
+
+           "md",
+
+           "ret",
+
+           "bersara"
+
+     ]
+
+}
+
+ 
+
+ 
+
+

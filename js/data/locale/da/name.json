@@ -1,0 +1,160 @@
+{
+	"sortByHeadWord": false,
+	"nameStyle": "western",
+	"conjunctions": {
+		"and1": "og",
+		"and2": "og",
+		"or1": "eller",
+		"or2": "eller"
+	},
+	
+
+     "prefixes": [
+
+            "Mr",
+
+            "Ms",
+
+            "Mrs",
+
+            "præsident",
+
+            "vice president",
+
+            "premierminister",
+
+            "borgmester",
+
+            "guvernør",
+
+            "formand",
+
+            "forkvinde",
+
+            "minister",
+
+            "rabbiner",
+
+            "mulah",
+
+            "præst",
+
+            "kok",
+
+            "træner",
+
+            "professor",
+
+            "prof",
+
+            "konge",
+
+            "dronning",
+
+            "prince",
+
+            "prinsesse",
+
+            "generelt",
+
+            "admiral",
+
+            "kommissær",
+
+            "Overlægen",
+
+            "sherif",
+
+            "inspektør",
+
+            "detektiv",
+
+            "officer",
+
+            "sir",
+
+            "lady",
+
+            "lord",
+
+            "dame",
+
+            "far",
+
+            "mor",
+
+            "bror",
+
+            "søster",
+
+            "ærværdige",
+
+            "tante",
+
+            "onkel",
+
+            "bedstemor",
+
+            "bedstemor",
+
+            "bedstefar",
+
+            "bedstefar",
+
+            "Granma",
+
+            "grampa",
+
+            "fætter"
+
+
+     ],
+
+     "suffixes": [
+
+           "junior",
+
+           "jr",
+
+           "senior",
+
+           "sr",
+
+           "i",
+
+           "iii",
+
+           "iii",
+
+           "iv",
+
+           "v",
+
+           "vi",
+
+           "vii",
+
+           "viii",
+
+           "ix",
+
+           "x",
+
+           "ph.d.",
+
+           "md",
+
+           "ret",
+
+           "pensioneret"
+
+     ]
+
+}
+
+ 
+
+ 
+
+
+	

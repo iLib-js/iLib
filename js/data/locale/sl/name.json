@@ -1,0 +1,158 @@
+{
+	"format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
+	"sortByHeadWord": false,
+	"nameStyle": "western",
+	"conjunctions": {
+		"and1": "in",
+		"and2": "in",
+		"or1": "ali",
+		"or2": "ali"
+	},
+
+	 "prefixes": [
+
+             "G",
+
+            "Ga",
+
+            "Ga",
+
+            "predsednik",
+
+            "podpredsednik",
+
+            "predsednik vlade",
+
+            "župan",
+
+            "guverner",
+
+            "predsednik",
+
+            "Predsednica",
+
+            "minister",
+
+            "rabin",
+
+            "mulah",
+
+            "pastor",
+
+            "kuhar",
+
+            "trener",
+
+            "profesor",
+
+            "prof",
+
+            "kralj",
+
+            "kraljica",
+
+            "princ",
+
+            "princeska",
+
+            "splošni",
+
+            "admiral",
+
+            "komisar",
+
+            "superintendent",
+
+            "šerif",
+
+            "inšpektor",
+
+            "detektiv",
+
+            "častnik",
+
+            "gospod",
+
+            "lady",
+
+            "gospodar",
+
+            "dame",
+
+            "oče",
+
+            "mati",
+
+            "brat",
+
+            "sestra",
+
+            "prečastiti",
+
+            "teta",
+
+            "stric",
+
+            "babica",
+
+            "babica",
+
+            "dedek",
+
+            "dedek",
+
+            "Granma",
+
+            "Grampa",
+
+            "bratranec"
+
+     ],
+
+     "suffixes": [
+
+           "junior",
+
+           "jr",
+
+           "višji",
+
+           "sr",
+
+           "i",
+
+           "iii",
+
+           "iii",
+
+           "iv",
+
+           "v",
+
+           "vi",
+
+           "vii",
+
+           "viii",
+
+           "ix",
+
+           "x",
+
+           "phd",
+
+           "md",
+
+           "ret",
+
+           "upokojil"
+
+     ]
+
+}
+
+ 
+
+ 
+
+

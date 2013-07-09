@@ -1,0 +1,152 @@
+{
+	"format": "{prefix} {givenName} {middleName} {suffix}",
+	"sortByHeadWord": false,
+	"nameStyle": "asian",
+	"conjunctions": {
+		"and1": "dan",
+		"and2": "dan",
+		"or1": "atau",
+		"or2": "atau"
+	},
+	
+	"prefixes": [
+
+	  	"Bapak",
+
+		"Ibu",
+
+		"Ibu",
+
+		"presiden",
+
+		"wakil presiden",
+
+		"perdana menteri",
+
+		"walikota",
+
+		"gubernur",
+
+		"ketua",
+
+		"ketua",
+
+		"melayani",
+
+		"pendeta Yahudi",
+
+		"mu",
+
+		"pendeta",
+
+		"koki",
+
+		"melatih",
+
+		"profesor",
+
+		"prof",
+
+		"raja",
+
+		"ratu",
+
+		"pangeran",
+
+		"puteri",
+
+		"umum",
+
+		"laksamana",
+
+		"komisaris",
+
+		"pengawas",
+
+		"kepala polisi daerah",
+
+		"inspektur",
+
+		"detektif",
+
+		"petugas",
+
+		"tuan",
+
+		"wanita",
+
+		"raja",
+
+		"nyonya",
+
+		"ayah",
+
+		"ibu",
+
+		"saudara",
+
+		"saudara",
+
+		"pendeta",
+
+		"bibi",
+
+		"paman",
+
+		"nenek",
+
+		"nenek",
+
+		"kakek",
+
+		"kakek",
+
+		"granma",
+
+		"grampa",
+
+		"sepupu",
+
+     ],
+
+     "suffixes": [
+
+           "muda",
+
+           "jr",
+
+           "lebih tua",
+
+           "sr",
+
+           "i",
+
+           "iii",
+
+           "iii",
+
+           "iv",
+
+           "v",
+
+           "vi",
+
+           "vii",
+
+           "viii",
+
+           "ix",
+
+           "x",
+
+           "phd",
+
+           "md",
+
+           "ret",
+
+           "mundur"
+
+     ]
+
+}

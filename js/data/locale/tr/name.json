@@ -1,0 +1,150 @@
+{
+	"format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
+	"sortByHeadWord": false,
+	"nameStyle": "western",
+	"conjunctions": {
+		"and1": "ve",
+		"and2": "ve",
+		"or1": "veya",
+		"or2": "veya"
+	},
+	
+	  "prefixes": [
+	      "Bay",
+
+              "Bayan",
+
+              "Bayan",
+
+              "başkan",
+
+              "başkan Yardımcısı",
+
+              "başbakan",
+
+              "belediye başkanı",
+
+              "vali",
+
+              "başkan",
+
+              "kadın başkan",
+
+              "bakan",
+
+              "haham",
+
+              "mulah",
+
+              "papaz",
+
+              "şef",
+
+              "koç",
+
+              "profesör",
+
+              "profesör",
+
+              "kral",
+
+              "kraliçe",
+
+              "prens",
+
+              "prenses",
+
+              "genel",
+
+              "amiral",
+
+              "komiser",
+
+              "başkomiser",
+
+              "şerif",
+
+              "müfettiş",
+
+              "dedektif",
+
+              "subay",
+
+              "bayım",
+
+              "bayan",
+
+              "lord",
+
+              "kadın",
+
+              "baba",
+
+              "anne",
+
+              "kardeş",
+
+              "kardeş",
+
+              "muhterem",
+
+              "teyze",
+
+              "amca",
+
+              "büyükanne",
+
+              "büyükanne",
+
+              "dede",
+
+              "dede",
+
+              "nine",
+
+              "grampa",
+
+              "kuzen"
+     ],
+
+     "suffixes": [
+
+           "genç",
+
+           "jr",
+
+           "kıdemli",
+
+           "sr",
+
+           "i",
+
+           "iii",
+
+           "iii",
+
+           "iv",
+
+           "v",
+
+           "vi",
+
+           "vii",
+
+           "viii",
+
+           "ix",
+
+           "x",
+
+           "doktoralı",
+
+           "md",
+
+           "çürümek",
+
+           "emekli"
+
+     ]
+
+}

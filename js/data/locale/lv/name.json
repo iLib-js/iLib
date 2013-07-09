@@ -1,0 +1,157 @@
+{
+	"format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
+	"sortByHeadWord": false,
+	"nameStyle": "western",
+	"conjunctions": {
+		"and1": "un",
+		"and2": "un",
+		"or1": "vai",
+		"or2": "vai"
+	},
+
+     "prefixes": [
+
+             "Kungs",
+
+            "Ms",
+
+            "Kundze",
+
+            "priekšsēdētājs",
+
+            "viceprezidents",
+
+            "premjerministrs",
+
+            "mērs",
+
+            "gubernators",
+
+            "priekšsēdētājs",
+
+            "priekšsēdētāja",
+
+            "ministrs",
+
+            "rabīns",
+
+            "mulah",
+
+            "mācītājs",
+
+            "šefpavārs",
+
+            "treneris",
+
+            "profesors",
+
+            "prof",
+
+            "karalis",
+
+            "karaliene",
+
+            "princis",
+
+            "princese",
+
+            "vispārējs",
+
+            "admirālis",
+
+            "pilnvarotais",
+
+            "vadītājs",
+
+            "šerifs",
+
+            "inspektors",
+
+            "detektīvs",
+
+            "virsnieks",
+
+            "kungs",
+
+            "dāma",
+
+            "kungs",
+
+            "dāma",
+
+            "tēvs",
+
+            "māte",
+
+            "brālis",
+
+            "māsa",
+
+            "godājams",
+
+            "tante",
+
+            "tēvocis",
+
+            "vecmāmiņa",
+
+            "vecmāmiņa",
+
+            "grandpa",
+
+            "vectēvs",
+
+            "Granma",
+
+            "grampa",
+
+            "brālēns"
+     ],
+
+     "suffixes": [
+
+           "jaunākais",
+
+           "jr",
+
+           "vecākais",
+
+           "sr",
+
+           "i",
+
+           "iii",
+
+           "iii",
+
+           "iv",
+
+           "v",
+
+           "vi",
+
+           "vii",
+
+           "viii",
+
+           "ix",
+
+           "x",
+
+           "phd",
+
+           "md",
+
+           "pūt",
+
+           "pensijā"
+
+     ]
+
+}
+
+ 
+
+ 
+
+

@@ -1,0 +1,155 @@
+{
+	"sortByHeadWord": true,
+	"conjunctions": {
+		"and1": "ja",
+		"and2": "ja",
+		"or1": "tai",
+		"or2": "tai"
+	},
+
+
+     "prefixes": [
+            "Herra",
+
+            "Neiti",
+
+            "Rouva",
+
+            "presidentti",
+
+            "varatoimitusjohtaja",
+
+            "pääministeri",
+
+            "pormestari",
+
+            "kuvernööri",
+
+            "puheenjohtaja",
+
+            "puheenjohtaja",
+
+            "ministeri",
+
+            "rabbi",
+
+            "mulah",
+
+            "pastori",
+
+            "kokki",
+
+            "valmentaja",
+
+            "professori",
+
+            "prof",
+
+            "kuningas",
+
+            "kuningatar",
+
+            "prinssi",
+
+            "prinsessa",
+
+            "yleinen",
+
+            "amiraali",
+
+            "komissaari",
+
+            "komisario",
+
+            "seriffi",
+
+            "tarkastaja",
+
+            "etsivä",
+
+            "upseeri",
+
+            "sir",
+
+            "lady",
+
+            "herra",
+
+            "rouva",
+
+            "isä",
+
+            "äiti",
+
+            "veli",
+
+            "sisko",
+
+            "kunnianarvoisa",
+
+            "täti",
+
+            "setä",
+
+            "mummo",
+
+            "isoäiti",
+
+            "ukki",
+
+            "isoisä",
+
+            "Granma",
+
+            "grampa",
+
+            "serkku"
+     ],
+
+     "suffixes": [
+
+           "nuorempi",
+
+           "jr",
+
+           "vanhempi",
+
+           "sr",
+
+           "i",
+
+           "iii",
+
+           "iii",
+
+           "iv",
+
+           "v",
+
+           "vi",
+
+           "vii",
+
+           "viii",
+
+           "ix",
+
+           "x",
+
+           "phd",
+
+           "md",
+
+           "ret",
+
+           "eläkkeellä"
+
+     ]
+
+}
+
+ 
+
+ 
+
+
