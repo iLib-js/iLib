@@ -1,5 +1,5 @@
 {
-    "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
+    "format": "{prefix} {givenName} {middleName} {familyName}{suffix}",
     "sortByHeadWord": false,
     "nameStyle": "western",
     "conjunctions": {
@@ -58,22 +58,8 @@
     ],
     "suffixes": [
         "em",
-        "jr",
         "cao cấp",
-        "sr",
-        "i",
-        "iii",
-        "iii",
-        "iv",
-        "v",
-        "vi",
-        "vii",
-        "viii",
-        "ix",
-        "x",
         "Tiến Sỹ",
-        "md",
-        "ret",
         "nghỉ hưu"
     ]
 }

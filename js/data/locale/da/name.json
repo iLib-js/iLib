@@ -8,9 +8,6 @@
         "or2": "eller"
     },
     "prefixes": [
-        "Mr",
-        "Ms",
-        "Mrs",
         "præsident",
         "vice president",
         "premierminister",
@@ -37,11 +34,6 @@
         "sherif",
         "inspektør",
         "detektiv",
-        "officer",
-        "sir",
-        "lady",
-        "lord",
-        "dame",
         "far",
         "mor",
         "bror",
@@ -53,28 +45,9 @@
         "bedstemor",
         "bedstefar",
         "bedstefar",
-        "Granma",
-        "grampa",
         "fætter"
     ],
     "suffixes": [
-        "junior",
-        "jr",
-        "senior",
-        "sr",
-        "i",
-        "iii",
-        "iii",
-        "iv",
-        "v",
-        "vi",
-        "vii",
-        "viii",
-        "ix",
-        "x",
-        "ph.d.",
-        "md",
-        "ret",
         "pensioneret"
     ]
 }

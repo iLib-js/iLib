@@ -1,152 +1,49 @@
 {
-	"format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
-	"sortByHeadWord": false,
-	"nameStyle": "western",
-	"conjunctions": {
-		"and1": "og",
-		"and2": "og",
-		"or1": "eller",
-		"or2": "eller"
-	},
-
-
-     "prefixes": [
-            	"president",
-
-            	"vice president",
-
-            	"statsminister",
-
-            	"ordfører",
-
-            	"guvernør",
-
-            	"formann",
-
-            	"Chairwoman",
-
-            	"minister",
-
-            	"rabbi",
-
-            	"mulah",
-
-            	"pastor",
-
-            	"kokk",
-
-            	"trener",
-
-            	"professor",
-
-            	"prof",
-
-            	"konge",
-
-            	"dronning",
-
-            	"prince",
-
-            	"prinsesse",
-
-            	"generell",
-
-            	"admiral",
-
-            	"kommisjonær",
-
-            	"superintendent",
-
-            	"sheriff",
-
-            	"inspektør",
-
-            	"detektiv",
-
-            	"offiser",
-
-            	"sir",
-
-            	"lady",
-
-            	"herre",
-
-            	"dame",
-
-            	"far",
-
-            	"mor",
-
-            	"bror",
-
-            	"søster",
-
-            	"reverend",
-
-            	"tante",
-
-            	"onkel",
-
-            	"bestemor",
-
-            	"bestemor",
-
-            	"grandpa",
-
-            	"bestefar",
-
-            	"granma",
-
-            	"grampa",
-
-            	"fetter"
-
-     ],
-
-     "suffixes": [
-
-           "junior",
-
-           "jr",
-
-           "senior",
-
-           "sr",
-
-           "i",
-
-           "iii",
-
-           "iii",
-
-           "iv",
-
-           "v",
-
-           "vi",
-
-           "vii",
-
-           "viii",
-
-           "ix",
-
-           "x",
-
-           "phd",
-
-           "md",
-
-           "ret",
-
-           "pensjonert"
-
-     ]
-
+    "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
+    "sortByHeadWord": false,
+    "nameStyle": "western",
+    "conjunctions": {
+        "and1": "og",
+        "and2": "og",
+        "or1": "eller",
+        "or2": "eller"
+    },
+    "prefixes": [
+        "president",
+        "vice president",
+        "statsminister",
+        "ordfører",
+        "guvernør",
+        "formann",
+        "kokk",
+        "trener",
+        "konge",
+        "dronning",
+        "prince",
+        "prinsesse",
+        "generell",
+        "admiral",
+        "kommisjonær",
+        "superintendent",
+        "sheriff",
+        "inspektør",
+        "detektiv",
+        "offiser",
+        "herre",
+        "dame",
+        "far",
+        "mor",
+        "bror",
+        "søster",
+        "reverend",
+        "tante",
+        "onkel",
+        "bestemor",
+        "bestemor",
+        "bestefar",
+        "fetter"
+    ],
+    "suffixes": [
+        "pensjonert"
+    ]
 }
-
- 
-
- 
-
-

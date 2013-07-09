@@ -1,150 +1,60 @@
 {
-	"format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
-	"sortByHeadWord": false,
-	"nameStyle": "western",
-	"conjunctions": {
-		"and1": "dhe",
-		"and2": "dhe",
-		"or1": "ose",
-		"or2": "ose"
-	},
-	
-	 "prefixes": [
-              "Zoti",
-
-              "Znj",
-
-              "Zonja",
-
-              "president",
-
-              "zëvendëspresident",
-
-              "Kryeministri",
-
-              "kryetar bashkie",
-
-              "guvernator",
-
-              "kryetar",
-
-              "kryetare",
-
-              "ministër",
-
-              "rabin",
-
-              "mulah",
-
-              "pastor",
-
-              "kuzhinier",
-
-              "trajner",
-
-              "profesor",
-
-              "prof",
-
-              "mbret",
-
-              "mbretëreshë",
-
-              "princ",
-
-              "princeshë",
-
-              "i përgjithshëm",
-
-              "admiral",
-
-              "përfaqësues",
-
-              "inspektor",
-
-              "sherif",
-
-              "inspektor",
-
-              "detektiv",
-
-              "oficer",
-
-              "zotëri",
-
-              "zonjë",
-
-              "lord",
-
-              "plakushë",
-
-              "baba",
-
-              "nënë",
-
-              "vëlla",
-
-              "motër",
-
-              "Reverend",
-
-              "hallë",
-
-              "ungji",
-
-              "gjyshe",
-
-              "gjyshe",
-
-              "gjysh",
-
-              "gjysh",
-
-              "granma",
-
-              "Grampa",
-
-              "kushëri"
-     ],
-
-     "suffixes": [
-
-           "i ri",
-
-           "jr",
-
-           "lartë",
-
-           "sr",
-
-           "i",
-
-           "iii",
-
-           "iii",
-
-           "iv",
-
-           "v",
-
-           "vi",
-
-           "vii",
-
-           "viii",
-
-           "ix",
-
-           "x",
-
-           "",
-
-           "md",
-
-           "njom",
-
-           "pension"
-
-     ]
-
+    "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
+    "sortByHeadWord": false,
+    "nameStyle": "western",
+    "conjunctions": {
+        "and1": "dhe",
+        "and2": "dhe",
+        "or1": "ose",
+        "or2": "ose"
+    },
+    "prefixes": [
+        "Zoti",
+        "Znj",
+        "Zonja",
+        "president",
+        "zëvendëspresident",
+        "Kryeministri",
+        "kryetar bashkie",
+        "guvernator",
+        "kryetar",
+        "kryetare",
+        "ministër",
+        "rabin",
+        "kuzhinier",
+        "trajner",
+        "profesor",
+        "mbret",
+        "mbretëreshë",
+        "princ",
+        "princeshë",
+        "i përgjithshëm",
+        "përfaqësues",
+        "inspektor",
+        "sherif",
+        "inspektor",
+        "detektiv",
+        "oficer",
+        "zotëri",
+        "zonjë",
+        "plakushë",
+        "baba",
+        "nënë",
+        "vëlla",
+        "motër",
+        "Reverend",
+        "hallë",
+        "ungji",
+        "gjyshe",
+        "gjyshe",
+        "gjysh",
+        "gjysh",
+        "kushëri"
+    ],
+    "suffixes": [
+        "i ri",
+        "lartë",
+        "njom",
+        "pension"
+    ]
 }

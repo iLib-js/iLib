@@ -1,158 +1,59 @@
 {
-	"format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
-	"sortByHeadWord": false,
-	"nameStyle": "western",
-	"conjunctions": {
-		"and1": "și",
-		"and2": "și",
-		"or1": "sau",
-		"or2": "sau"
-	},
-	
-
-	 "prefixes": [
-
-                       "Dl",
-
-              "Domnișoară",
-
-              "D-na",
-
-              "Președintele",
-
-              "vice-presedinte",
-
-              "prim-ministru",
-
-              "primar",
-
-              "guvernator",
-
-              "președinte",
-
-              "președintă",
-
-              "ministru",
-
-              "rabin",
-
-              "Mulah",
-
-              "pastor",
-
-              "bucătar-șef",
-
-              "antrenor",
-
-              "profesor",
-
-              "prof",
-
-              "rege",
-
-              "regină",
-
-              "prinț",
-
-              "prințesă",
-
-              "general",
-
-              "amiral",
-
-              "comisar",
-
-              "administrator",
-
-              "șerif",
-
-              "inspector",
-
-              "detectiv",
-
-              "ofițer",
-
-              "domn",
-
-              "doamnă",
-
-              "lord",
-
-              "doamnă",
-
-              "tată",
-
-              "mamă",
-
-              "frate",
-
-              "soră",
-
-              "preot",
-
-              "mătușă",
-
-              "unchi",
-
-              "bunică",
-
-              "bunică",
-
-              "bunic",
-
-              "bunic",
-
-              "Granma",
-
-              "Grampa",
-
-              "văr"
-     ],
-
-     "suffixes": [
-
-           "junior",
-
-           "jr",
-
-           "senior",
-
-           "sr",
-
-           "i",
-
-           "iii",
-
-           "iii",
-
-           "iv",
-
-           "v",
-
-           "vi",
-
-           "vii",
-
-           "viii",
-
-           "ix",
-
-           "x",
-
-           "doctorand",
-
-           "md",
-
-           "putrezi",
-
-           "retras"
-
-     ]
-
+    "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
+    "sortByHeadWord": false,
+    "nameStyle": "western",
+    "conjunctions": {
+        "and1": "și",
+        "and2": "și",
+        "or1": "sau",
+        "or2": "sau"
+    },
+    "prefixes": [
+        "Dl",
+        "Domnișoară",
+        "D-na",
+        "Președintele",
+        "vice-presedinte",
+        "prim-ministru",
+        "primar",
+        "guvernator",
+        "președinte",
+        "președintă",
+        "ministru",
+        "rabin",
+        "bucătar-șef",
+        "antrenor",
+        "profesor",
+        "rege",
+        "regină",
+        "prinț",
+        "prințesă",
+        "general",
+        "amiral",
+        "comisar",
+        "administrator",
+        "șerif",
+        "inspector",
+        "detectiv",
+        "ofițer",
+        "domn",
+        "doamnă",
+        "lord",
+        "doamnă",
+        "tată",
+        "mamă",
+        "frate",
+        "soră",
+        "preot",
+        "mătușă",
+        "unchi",
+        "bunică",
+        "bunic",
+        "văr"
+    ],
+    "suffixes": [
+        "doctorand",
+        "putrezi",
+        "retras"
+    ]
 }
-
- 
-
- 
-
-

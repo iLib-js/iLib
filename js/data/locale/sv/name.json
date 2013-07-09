@@ -1,152 +1,54 @@
 {
-	"format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
-	"sortByHeadWord": false,
-	"nameStyle": "western",
-	"conjunctions": {
-		"and1": "и",
-		"and2": "и",
-		"or1": "или",
-		"or2": "или"
-	},
-	
-	  "prefixes": [
-
-	              "Herr",
-
-	      "ms",
-
-              "fru",
-
-              "president",
-
-              "vice president",
-
-              "premiärminister",
-
-              "borgmästare",
-
-              "guvernör",
-
-              "ordförande",
-
-              "ordförande",
-
-              "minister",
-
-              "rabbin",
-
-              "mulah",
-
-              "pastor",
-
-              "kock",
-
-              "tränare",
-
-              "professor",
-
-              "prof",
-
-              "kung",
-
-              "drottning",
-
-              "prince",
-
-              "princess",
-
-              "allmän",
-
-              "amiral",
-
-              "commissioner",
-
-              "superintendent",
-
-              "sheriff",
-
-              "inspektör",
-
-              "detektiv",
-
-              "officer",
-
-              "sir",
-
-              "lady",
-
-              "Lord",
-
-              "dame",
-
-              "far",
-
-              "mor",
-
-              "bror",
-
-              "syster",
-
-              "reverend",
-
-              "faster",
-
-              "farbror",
-
-              "farmor",
-
-              "mormor",
-
-              "morfar",
-
-              "morfar",
-
-              "granma",
-
-              "grampa",
-
-              "kusin"
-
-     ],
-
-     "suffixes": [
-
-           "junior",
-
-           "jr",
-
-           "senior",
-
-           "sr",
-
-           "i",
-
-           "iii",
-
-           "iii",
-
-           "iv",
-
-           "v",
-
-           "vi",
-
-           "vii",
-
-           "viii",
-
-           "ix",
-
-           "x",
-
-           "phd",
-
-           "md",
-
-           "ret",
-
-           "pension"
-
-     ]
-
+    "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
+    "sortByHeadWord": false,
+    "nameStyle": "western",
+    "conjunctions": {
+        "and1": "и",
+        "and2": "и",
+        "or1": "или",
+        "or2": "или"
+    },
+    "prefixes": [
+        "Herr",
+        "fru",
+        "president",
+        "vice president",
+        "premiärminister",
+        "borgmästare",
+        "guvernör",
+        "ordförande",
+        "ordförande",
+        "minister",
+        "rabbin",
+        "kock",
+        "tränare",
+        "kung",
+        "drottning",
+        "prince",
+        "princess",
+        "allmän",
+        "amiral",
+        "commissioner",
+        "superintendent",
+        "sheriff",
+        "inspektör",
+        "detektiv",
+        "officer",
+        "dame",
+        "far",
+        "mor",
+        "bror",
+        "syster",
+        "reverend",
+        "faster",
+        "farbror",
+        "farmor",
+        "mormor",
+        "morfar",
+        "morfar",
+        "kusin"
+    ],
+    "suffixes": [
+        "pension"
+    ]
 }

@@ -1,153 +1,58 @@
 {
-	"format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
-	"sortByHeadWord": false,
-	"nameStyle": "western",
-	"conjunctions": {
-		"and1": "i",
-		"and2": "i",
-		"or1": "lub",
-		"or2": "lub"
-	},
-	
-	"prefixes": [
-
-            "Pan",
-
-            "Panna",
-
-            "Pani",
-
-            "prezydent",
-
-            "wiceprezes",
-
-            "premier",
-
-            "burmistrz",
-
-            "gubernator",
-
-            "przewodniczący",
-
-            "przewodnicząca",
-
-            "minister",
-
-            "rabbi",
-
-            "mulah",
-
-            "pastor",
-
-            "szef kuchni",
-
-            "trener",
-
-            "profesor",
-
-            "prof",
-
-            "król",
-
-            "królowa",
-
-            "książę",
-
-            "księżniczka",
-
-            "ogólny",
-
-            "admirał",
-
-            "komisarz",
-
-            "superintendent",
-
-            "szeryf",
-
-            "inspektor",
-
-            "detektyw",
-
-            "oficer",
-
-            "pan",
-
-            "pani",
-
-            "lord",
-
-            "paniusia",
-
-            "ojciec",
-
-            "matka",
-
-            "brat",
-
-            "siostra",
-
-            "wielebny",
-
-            "ciotka",
-
-            "wujek",
-
-            "babcia",
-
-            "babcia",
-
-            "dziadzio",
-
-            "dziadek",
-
-            "Granma",
-
-            "grampa",
-
-            "kuzyn"
-
-     ],
-
-     "suffixes": [
-
-           "junior",
-
-           "jr",
-
-           "senior",
-
-           "sr",
-
-           "i",
-
-           "iii",
-
-           "iii",
-
-           "iv",
-
-           "v",
-
-           "vi",
-
-           "vii",
-
-           "viii",
-
-           "ix",
-
-           "x",
-
-           "phd",
-
-           "md",
-
-           "gnić",
-
-           "emeryturę"
-
-     ]
-
+    "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
+    "sortByHeadWord": false,
+    "nameStyle": "western",
+    "conjunctions": {
+        "and1": "i",
+        "and2": "i",
+        "or1": "lub",
+        "or2": "lub"
+    },
+    "prefixes": [
+        "Pan",
+        "Panna",
+        "Pani",
+        "prezydent",
+        "wiceprezes",
+        "premier",
+        "burmistrz",
+        "gubernator",
+        "przewodniczący",
+        "przewodnicząca",
+        "szef kuchni",
+        "trener",
+        "profesor",
+        "król",
+        "królowa",
+        "książę",
+        "księżniczka",
+        "ogólny",
+        "admirał",
+        "komisarz",
+        "superintendent",
+        "szeryf",
+        "inspektor",
+        "detektyw",
+        "oficer",
+        "pan",
+        "pani",
+        "lord",
+        "paniusia",
+        "ojciec",
+        "matka",
+        "brat",
+        "siostra",
+        "wielebny",
+        "ciotka",
+        "wujek",
+        "babcia",
+        "babcia",
+        "dziadzio",
+        "dziadek",
+        "kuzyn"
+    ],
+    "suffixes": [
+        "gnić",
+        "emeryturę"
+    ]
 }
-
