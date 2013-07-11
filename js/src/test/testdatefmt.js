@@ -1693,7 +1693,7 @@ function testDateFmtenNG() {
     	length: "full",
     	type: "datetime",
     	locale: "en-NG",
-    	date: "wdmy",
+    	date: "dmwy",
     	time: "hma"
     });
     assertNotNull(fmt);
@@ -1708,7 +1708,7 @@ function testDateFmtenNG() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 13:45", fmt.format(date));
+    assertEquals("Tuesday 20 September 2011 1:45PM", fmt.format(date));
 };
 
 function testDateFmtenPH() {
@@ -1716,7 +1716,7 @@ function testDateFmtenPH() {
     	length: "full",
     	type: "datetime",
     	locale: "en-PH",
-    	date: "wdmy",
+    	date: "dmwy",
     	time: "hma"
     });
     assertNotNull(fmt);
@@ -1739,7 +1739,7 @@ function testDateFmtenPK() {
     	length: "full",
     	type: "datetime",
     	locale: "en-PK",
-    	date: "wdmy",
+    	date: "dmwy",
     	time: "hma"
     });
     assertNotNull(fmt);
@@ -1754,7 +1754,7 @@ function testDateFmtenPK() {
 		millisecond: 0
 	});
     
-    assertEquals("Tuesday 20 September 2011 13:45", fmt.format(date));
+    assertEquals("Tuesday 20 September 2011 1:45PM", fmt.format(date));
 };
 
 function testDateFmtenAU() {
@@ -1762,7 +1762,7 @@ function testDateFmtenAU() {
     	length: "full",
     	type: "datetime",
     	locale: "en-AU",
-    	date: "wdmy",
+    	date: "dmwy",
     	time: "hma"
     });
     assertNotNull(fmt);
@@ -1785,7 +1785,7 @@ function testDateFmtenZA() {
     	length: "full",
     	type: "datetime",
     	locale: "en-ZA",
-    	date: "wdmy",
+    	date: "dmwy",
     	time: "hma"
     });
     assertNotNull(fmt);
@@ -1808,7 +1808,7 @@ function testDateFmtesES() {
     	length: "full",
     	type: "datetime",
     	locale: "es-ES",
-    	date: "wdmy",
+    	date: "dmwy",
     	time: "hma"
     });
     assertNotNull(fmt);
@@ -1831,7 +1831,7 @@ function testDateFmtesMX() {
     	length: "full",
     	type: "datetime",
     	locale: "es-MX",
-    	date: "wdmy",
+    	date: "dmwy",
     	time: "hma"
     });
     assertNotNull(fmt);
@@ -1846,7 +1846,7 @@ function testDateFmtesMX() {
 		millisecond: 0
 	});
     
-    assertEquals("martes 20 de septiembre 2011 1:45p.m.", fmt.format(date));
+    assertEquals("martes 20 de septiembre 2011 13:45", fmt.format(date));
 };
 
 function testDateFmtesAR() {
@@ -1854,7 +1854,7 @@ function testDateFmtesAR() {
     	length: "full",
     	type: "datetime",
     	locale: "es-AR",
-    	date: "wdmy",
+    	date: "dmwy",
     	time: "hma"
     });
     assertNotNull(fmt);
@@ -1877,7 +1877,7 @@ function testDateFmttrTR() {
     	length: "full",
     	type: "datetime",
     	locale: "tr-TR",
-    	date: "wdmy",
+    	date: "dmwy",
     	time: "hma"
     });
     assertNotNull(fmt);
@@ -1900,7 +1900,7 @@ function testDateFmttrSV() {
     	length: "full",
     	type: "datetime",
     	locale: "sv-SE",
-    	date: "wdmy",
+    	date: "dmwy",
     	time: "hma"
     });
     assertNotNull(fmt);
@@ -1923,7 +1923,7 @@ function testDateFmttrNO() {
     	length: "full",
     	type: "datetime",
     	locale: "no-NO",
-    	date: "wdmy",
+    	date: "dmwy",
     	time: "hma"
     });
     assertNotNull(fmt);
@@ -1946,7 +1946,7 @@ function testDateFmttrDA() {
     	length: "full",
     	type: "datetime",
     	locale: "da-DK",
-    	date: "wdmy",
+    	date: "dmwy",
     	time: "hma"
     });
     assertNotNull(fmt);
