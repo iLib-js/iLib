@@ -783,7 +783,7 @@ function testDateFmtINShortTimeComponentsHM() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45PM", fmt.format(date));
+    assertEquals("1:45", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMS() {
@@ -799,7 +799,7 @@ function testDateFmtINShortTimeComponentsHMS() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37PM", fmt.format(date));
+    assertEquals("1:45:37", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMA() {
@@ -822,7 +822,7 @@ function testDateFmtINShortTimeComponentsHMZ() {
     var fmt = new ilib.DateFmt({
 		locale: "en-IN", 
         type: "time", 
-        time: "hmz", 
+        time: "hmaz", 
         timezone: "Asia/Kolkata"
     });
     assertNotNull(fmt);
@@ -880,7 +880,7 @@ function testDateFmtINShortTimeComponentsHMSZ() {
     var fmt = new ilib.DateFmt({
 		locale: "en-IN", 
         type: "time", 
-        time: "hmsz", 
+        time: "hmsaz", 
         timezone: "Asia/Kolkata"
     });
     assertNotNull(fmt);
@@ -984,7 +984,7 @@ function testDateFmtINFullTimeComponentsMS() {
 }
 
 function testDateFmtINFullTimeComponentsHM() {
-    var fmt = new ilib.DateFmt({locale: "en-IN", type: "time", length: "full", time: "hm"});
+    var fmt = new ilib.DateFmt({locale: "en-IN", type: "time", length: "full", time: "hma"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1000,7 +1000,7 @@ function testDateFmtINFullTimeComponentsHM() {
 }
 
 function testDateFmtINFullTimeComponentsHMS() {
-    var fmt = new ilib.DateFmt({locale: "en-IN", type: "time", length: "full", time: "hms"});
+    var fmt = new ilib.DateFmt({locale: "en-IN", type: "time", length: "full", time: "hmsa"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1036,7 +1036,7 @@ function testDateFmtINFullTimeComponentsHMZ() {
 		locale: "en-IN", 
         type: "time", 
         length: "full", 
-        time: "hmz", 
+        time: "hmaz", 
         timezone: "Asia/Kolkata"
     });
     assertNotNull(fmt);
@@ -1096,7 +1096,7 @@ function testDateFmtINFullTimeComponentsHMSZ() {
 		locale: "en-IN", 
         type: "time", 
         length: "full", 
-        time: "hmsz", 
+        time: "hmsaz", 
         timezone: "Asia/Kolkata"
     });
     assertNotNull(fmt);
@@ -1140,7 +1140,7 @@ function testDateFmtINWithTimeZoneAndNoDST() {
 		locale: "en-IN", 
         type: "time", 
         length: "full", 
-        time: "hmsz", 
+        time: "hmsaz", 
         timezone: "Asia/Kolkata"
     });
     assertNotNull(fmt);
