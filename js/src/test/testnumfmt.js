@@ -7,7 +7,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSe-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -159,7 +159,7 @@ function testNumFmtNumberStyleScientific() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.2345678901234568E+28", fmt.format(12345678901234567890123456789.0));
+    assertEquals("1.2345678901234568e+28", fmt.format(12345678901234567890123456789.0));
 }
 
 function testNumFmtNumberStyleScientificSmall() {
@@ -169,7 +169,7 @@ function testNumFmtNumberStyleScientificSmall() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.234567890123456E-6", fmt.format(0.000001234567890123456));
+    assertEquals("1.234567890123456e-6", fmt.format(0.000001234567890123456));
 }
 
 function testNumFmtNumberStyleScientificWithMaxFractionDigits() {
@@ -180,7 +180,7 @@ function testNumFmtNumberStyleScientificWithMaxFractionDigits() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.23457E+28", fmt.format(12345678901234567890123456789.0));
+    assertEquals("1.23457e+28", fmt.format(12345678901234567890123456789.0));
 }
 
 function testNumFmtNumberStyleScientificSmallWithMaxFractionDigits() {
@@ -191,7 +191,7 @@ function testNumFmtNumberStyleScientificSmallWithMaxFractionDigits() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.23457E-6", fmt.format(0.0000012345678901234567890123456789));
+    assertEquals("1.23457e-6", fmt.format(0.0000012345678901234567890123456789));
 }
 
 function testNumFmtNumberStyleScientificWithMaxAndRoundUp() {
@@ -203,7 +203,7 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundUp() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.23457E+28", fmt.format(12345678901234567890123456789.0));
+    assertEquals("1.23457e+28", fmt.format(12345678901234567890123456789.0));
 }
 
 function testNumFmtNumberStyleScientificWithMaxAndRoundDown() {
@@ -215,7 +215,7 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundDown() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.23456E+28", fmt.format(12345678901234567890123456789.0));
+    assertEquals("1.23456e+28", fmt.format(12345678901234567890123456789.0));
 }
 
 function testNumFmtNumberStyleScientificWithMaxAndRoundHalfDown() {
@@ -227,7 +227,7 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundHalfDown() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.234E+28", fmt.format(12345000000000000000000000000.0));
+    assertEquals("1.234e+28", fmt.format(12345000000000000000000000000.0));
 }
 
 function testNumFmtNumberStyleScientificSmallWithMaxAndRoundHalfDown() {
@@ -239,7 +239,7 @@ function testNumFmtNumberStyleScientificSmallWithMaxAndRoundHalfDown() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.234E-6", fmt.format(0.0000012345));
+    assertEquals("1.234e-6", fmt.format(0.0000012345));
 }
 
 function testNumFmtNumberStyleScientificWithMaxAndRoundHalfUp() {
@@ -251,7 +251,7 @@ function testNumFmtNumberStyleScientificWithMaxAndRoundHalfUp() {
     
     assertNotNull(fmt);
     
-    assertEquals("1.235E+28", fmt.format(12345000000000000000000000000.0));
+    assertEquals("1.235e+28", fmt.format(12345000000000000000000000000.0));
 }
 
 function testNumFmtNumberFormatRoundingCeiling() {
