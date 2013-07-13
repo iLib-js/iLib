@@ -59,19 +59,30 @@
 			}
 		},
 		"time": {
-			"ahmsz": "aHH:mm:ss z",
-			"ahms": "aHH:mm:ss",
-			"hmsz": "HH:mm:ss z",
-			"hms": "HH:mm:ss",
-			"ahmz": "aHH:mm z",
-			"ahm": "aHH:mm",
-			"hmz": "HH:mm z",
-			"ah": "HH",
-			"hm": "HH:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "ahh:mm:ss z",
+				"ahms": "ahh:mm:ss",
+				"hmsz": "hh:mm:ss z",
+				"hms": "hh:mm:ss",
+				"ahmz": "ahh:mm z",
+				"ahm": "ahh:mm",
+				"hmz": "hh:mm z",
+				"ah": "ahh",
+				"hm": "hh:mm",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH:mm:ss z",
+				"ahms": "HH:mm:ss",
+				"hmsz": "HH:mm:ss z",
+				"hms": "HH:mm:ss",
+				"ahmz": "HH:mm z",
+				"ahm": "HH:mm",
+				"hmz": "HH:mm z",
+				"ah": "HH",
+				"hm": "HH:mm",
+				"h": "HH"
+			}
 		},
 		"range": {
 			"c00": {

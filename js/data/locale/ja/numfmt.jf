@@ -1,6 +1,1 @@
-	"numfmt": {
-		"decimalChar": ".",
-		"groupChar": "",
-		"prigroupSize": 0,
-		"pctFmt": "{n}％"
-	},
+{"generated":true,"numfmt":{"decimalChar":".","groupChar":","}}

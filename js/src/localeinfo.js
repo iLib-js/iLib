@@ -112,6 +112,35 @@ ilib.LocaleInfo = function(locale, options) {
 				var spec = this.locale.getSpec().replace(/-/g, "_");
 				ilib.LocaleInfo.cache[spec] = info;
 			}
+			/**
+			 * @private
+			 * @type {{
+			 * 	timezone:string,
+			 * 	units:string,
+			 *	calendar:string,
+			 *	clock:string,
+			 *	currency:string,
+			 *	firstDayOfWeek:string,
+			 * 	numfmt:Object.<{
+			 * 		currencyFormats:Object.<{
+			 * 			common:string,
+			 * 			commonNegative:string,
+			 * 			iso:string,
+			 * 			isoNegative:string
+			 * 		}>,
+			 * 		script:string,
+			 * 		decimalChar:string,
+			 * 		groupChar:string,
+			 * 		prigroupSize:number,
+			 * 		secgroupSize:number,
+			 * 		pctFmt:string,
+			 * 		negativepctFmt:string,
+			 * 		pctChar:string,
+			 * 		roundingMode:string,
+			 * 		exponential:string
+			 *	}>
+			 * }}
+			 */
 			this.info = info;
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
@@ -190,12 +219,29 @@ ilib.LocaleInfo.prototype = {
 	},
 	
 	/**
+	 * Return the decimal separator for formatted numbers in this locale for native script.
+	 * @returns {string} the decimal separator char
+	 */
+	getNativeDecimalSeparator: function () {
+		return (this.info.native_numfmt && this.info.native_numfmt.decimalChar) || this.info.numfmt.decimalChar;
+	},
+	
+	/**
 	 * Return the separator character used to separate groups of digits on the 
 	 * integer side of the decimal character.
 	 * @returns {string} the grouping separator char
 	 */
 	getGroupingSeparator: function () {
 		return this.info.numfmt.groupChar;
+	},
+
+	/**
+	 * Return the separator character used to separate groups of digits on the 
+	 * integer side of the decimal character for the native script if present other than the default script.
+	 * @returns {string} the grouping separator char
+	 */
+	getNativeGroupingSeparator: function () {
+		return (this.info.native_numfmt && this.info.native_numfmt.groupChar) || this.info.numfmt.groupChar;
 	},
 	
 	/**
@@ -206,7 +252,7 @@ ilib.LocaleInfo.prototype = {
 	 * @returns {number} the number of digits in a primary grouping, or 0 for no grouping
 	 */
 	getPrimaryGroupingDigits: function () {
-		return (typeof(this.info.numfmt.prigroupSize) !== 'undefined' ?  this.info.numfmt.prigroupSize : this.info.numfmt.groupSize) || 0;
+		return (typeof(this.info.numfmt.prigroupSize) !== 'undefined' && this.info.numfmt.prigroupSize) || 0;
 	},
 
 	/**
@@ -236,9 +282,15 @@ ilib.LocaleInfo.prototype = {
 		return this.info.numfmt.pctFmt;
 	},
 
-	getCurrencyFormat: function () {
-		return this.info.numfmt.curFmt;
+	/**
+	 * Return the format template used to format percentages in this locale
+	 * with negative amounts.
+	 * @returns {string} the format template for formatting percentages
+	 */
+	getNegativePercentageFormat: function () {
+		return this.info.numfmt.negativepctFmt;
 	},
+
 	/**
 	 * Return the symbol used for percentages in this locale.
 	 * @returns {string} the symbol used for percentages in this locale
@@ -248,6 +300,38 @@ ilib.LocaleInfo.prototype = {
 	},
 
 	/**
+	 * Return the symbol used for exponential in this locale.
+	 * @returns {string} the symbol used for exponential in this locale
+	 */
+	getExponential: function () {
+		return this.info.numfmt.exponential;
+	},
+
+	/**
+	 * Return the symbol used for exponential in this locale for native script.
+	 * @returns {string} the symbol used for exponential in this locale for native script
+	 */
+	getNativeExponential: function () {
+		return (this.info.native_numfmt && this.info.native_numfmt.exponential) || this.info.numfmt.exponential;
+	},
+
+	/**
+	 * Return the symbol used for percentages in this locale for native script.
+	 * @returns {string} the symbol used for percentages in this locale for native script
+	 */
+	getNativePercentageSymbol: function () {
+		return (this.info.native_numfmt && this.info.native_numfmt.pctChar) || this.info.numfmt.pctChar || "%";
+	
+	},
+	/**
+	 * Return the format template used to format negative numbers in this locale.
+	 * @returns {string} the format template for formatting negative numbers
+	 */
+	getNegativeNumberFormat: function () { 
+		return this.info.numfmt.negativenumFmt;
+	},
+	
+	/**
 	 * Return an object containing the format templates for formatting currencies
 	 * in this locale. The object has a number of properties in it that each are
 	 * a particular style of format. Normally, this contains a "common" and an "iso"
@@ -255,9 +339,9 @@ ilib.LocaleInfo.prototype = {
 	 * @returns {Object} an object containing the format templates for currencies
 	 */
 	getCurrencyFormats: function () {
-		return this.info.currencyFormats;
+		return this.info.numfmt.currencyFormats;
 	},
-
+	
 	/**
 	 * Return the currency that is legal in the locale, or which is most commonly 
 	 * used in regular commerce.
@@ -265,6 +349,24 @@ ilib.LocaleInfo.prototype = {
 	 */
 	getCurrency: function () {
 		return this.info.currency;
+	},
+	
+	/**
+	 * Return the digits of the default script if they are defined.
+	 * If not defined, the default should be the regular "Arabic numerals"
+	 * used in the Latin script. (0-9)
+	 * @returns {string|undefined} the digits used in the default script 
+	 */
+	getDigits: function () {
+		return this.info.numfmt.digits;
+	},
+	
+	/**
+	 * Return the digits of the native script if they are defined. 
+	 * @returns {string|undefined} the digits used in the default script 
+	 */
+	getNativeDigits: function () {
+		return this.info.native_numfmt && this.info.native_numfmt.digits;
 	},
 	
 	/**

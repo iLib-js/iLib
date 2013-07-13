@@ -1,1 +1,1 @@
-"numfmt" :{"prigroupSize":2,"curFmt":"{n} {s}","secgroupSize":0},
+{"generated":true,"numfmt":{"prigroupSize":2,"currencyFormats":{"common":"{n} {s}"}}}

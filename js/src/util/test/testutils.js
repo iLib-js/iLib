@@ -1071,3 +1071,59 @@ function testLoadDataDefaults() {
 	});
 	ilib._load = undefined;
 }
+
+function testMapStringDigits() {
+	var map = "abcdefghij".split("");
+	
+	assertEquals("jihgfedcba", ilib.mapString("9876543210", map));
+}
+
+function testMapStringDigitsUnknown() {
+	var map = "abcde".split("");
+	
+	assertEquals("98765edcba", ilib.mapString("9876543210", map));
+}
+
+function testMapStringHash() {
+	var map = {
+		"a": "x",
+		"b": "y",
+		"c": "z"
+	};
+	
+	assertEquals("xyzzy", ilib.mapString("abccb", map));
+}
+
+function testMapStringUndefined() {
+	var map = {
+		"a": "x",
+		"b": "y",
+		"c": "z"
+	};
+	
+	assertUndefined(ilib.mapString(undefined, map));
+}
+
+function testMapStringUndefinedMap() {
+	assertEquals("abccb", ilib.mapString("abccb", undefined));
+}
+
+function testMapStringHashUnknown() {
+	var map = {
+		"a": "x",
+		"b": "y",
+		"c": "z"
+	};
+	
+	assertEquals("xyzdefxyz", ilib.mapString("abcdefabc", map));
+}
+
+function testMapStringHashMulti() {
+	var map = {
+		"a": "xm",
+		"b": "yn",
+		"c": "zo"
+	};
+	
+	assertEquals("xmynzoxmynzo", ilib.mapString("abcabc", map));
+}

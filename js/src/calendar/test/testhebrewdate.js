@@ -1107,7 +1107,7 @@ function testHebrewDateGetWeekOfMonth10() {
 	});
     assertNotNull(id);
     
-    assertEquals(1, id.getWeekOfMonth("he-IL"));
+    assertEquals(0, id.getWeekOfMonth("he-IL"));
 }
 
 function testHebrewDateGetWeekOfMonthUS() {

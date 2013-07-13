@@ -155,7 +155,7 @@ ilib.DateRngFmt = function(options) {
 					break;
 			}
 			
-			this.timeTemplate = this.dateFmt._getFormat(this.dateFmt.formats.time, this.dateFmt.timeComponents, this.length) || "hh:mm";
+			this.timeTemplate = this.dateFmt._getFormat(this.dateFmt.formats.time[this.dateFmt.clock], this.dateFmt.timeComponents, this.length) || "hh:mm";
 			this.timeTemplateArr = this.dateFmt._tokenize(this.timeTemplate);
 			
 			if (options && typeof(options.onLoad) === 'function') {

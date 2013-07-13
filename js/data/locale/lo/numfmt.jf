@@ -1,1 +1,1 @@
-"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"{s}-{n}"},
+{"generated":true,"native_numfmt":{"script":"Laoo","decimalChar":",","groupChar":".","pctChar":"%","exponential":"E","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"{s}-{n}"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"໐໑໒໓໔໕໖໗໘໙"}}

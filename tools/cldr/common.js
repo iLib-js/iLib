@@ -593,7 +593,10 @@ exports.prune = function prune(parent, child) {
 			if (prop === 'generated') {
 				ret[prop] = child[prop];
 			} else if (typeof(parent[prop]) === 'object') {
-				ret[prop] = exports.prune(parent[prop], child[prop]);
+				var obj = exports.prune(parent[prop], child[prop]);
+				if (!exports.isEmpty(obj)) {
+					ret[prop] = obj;
+				}
 			} else if (typeof(parent[prop]) === 'undefined') {
 				if (prop !== child[prop]) {
 					ret[prop] = child[prop];
@@ -628,7 +631,7 @@ exports.mergeAndPrune = function mergeAndPrune(localeData) {
 exports.makeDirs = function makeDirs(path) {
 	var parts = path.split("\/");
 	
-	for (var i = 1; i < parts.length; i++) {
+	for (var i = 1; i <= parts.length; i++) {
 		var p = parts.slice(0, i).join("/");
 		if (!fs.existsSync(p)) {
 			fs.mkdirSync(p);
@@ -636,3 +639,17 @@ exports.makeDirs = function makeDirs(path) {
 	}
 };
 
+exports.isEmpty = function (obj) {
+	var prop = undefined;
+	
+	if (!obj) {
+		return true;
+	}
+	
+	for (prop in obj) {
+		if (prop && obj[prop]) {
+			return false;
+		}
+	}
+	return true;
+};

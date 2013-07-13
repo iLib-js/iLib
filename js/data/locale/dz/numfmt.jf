@@ -1,1 +1,1 @@
-"numfmt" :{"decimalChar":".","groupChar":",","pctFmt":"{n} %","curFmt":"{s}{n}","secgroupSize":2},
+{"generated":true,"numfmt":{"script":"Tibt","decimalChar":".","groupChar":",","secgroupSize":2,"pctFmt":"{n} %","digits":"༠༡༢༣༤༥༦༧༨༩"}}

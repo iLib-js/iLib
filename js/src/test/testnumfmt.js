@@ -7,7 +7,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSe-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -386,10 +386,10 @@ function testNumFmtNumberFormatRoundingHalfdownNegAtHalf() {
     assertEquals("-1.74", fmt.format(-1.745));
 }
 
-function testNumFmtNumberFormatRoundingHalfevenLessThan5() {
+function testNumFmtNumberFormatRoundinghalfdownLessThan5() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
@@ -397,10 +397,10 @@ function testNumFmtNumberFormatRoundingHalfevenLessThan5() {
     assertEquals("1.74", fmt.format(1.743));
 }
 
-function testNumFmtNumberFormatRoundingHalfeven5() {
+function testNumFmtNumberFormatRoundinghalfdown5() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
@@ -408,10 +408,10 @@ function testNumFmtNumberFormatRoundingHalfeven5() {
     assertEquals("1.74", fmt.format(1.745));
 }
 
-function testNumFmtNumberFormatRoundingHalfevenMoreThan5() {
+function testNumFmtNumberFormatRoundinghalfdownMoreThan5() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
@@ -420,10 +420,10 @@ function testNumFmtNumberFormatRoundingHalfevenMoreThan5() {
     assertEquals("1.75", fmt.format(1.747));
 }
 
-function testNumFmtNumberFormatRoundingHalfevenExactly5() {
+function testNumFmtNumberFormatRoundinghalfdownExactly5() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
@@ -432,10 +432,10 @@ function testNumFmtNumberFormatRoundingHalfevenExactly5() {
     assertEquals("1.75", fmt.format(1.75));
 }
 
-function testNumFmtNumberFormatRoundingHalfevenLessThan5Up() {
+function testNumFmtNumberFormatRoundinghalfdownLessThan5Up() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
@@ -443,21 +443,21 @@ function testNumFmtNumberFormatRoundingHalfevenLessThan5Up() {
     assertEquals("1.75", fmt.format(1.753));
 }
 
-function testNumFmtNumberFormatRoundingHalfeven5Up() {
+function testNumFmtNumberFormatRoundinghalfdown5Up() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
     
-    assertEquals("1.76", fmt.format(1.755));
+    assertEquals("1.75", fmt.format(1.755));
 }
 
-function testNumFmtNumberFormatRoundingHalfevenMoreThan5Up() {
+function testNumFmtNumberFormatRoundinghalfdownMoreThan5Up() {
     var fmt = new ilib.NumFmt({
         maxFractionDigits: 2,
-        roundingMode: "halfeven"
+        roundingMode: "halfdown"
     });
     
     assertNotNull(fmt);
@@ -892,7 +892,7 @@ function testNumFmtCurrencyFormatAlternateStyle() {
     
     assertNotNull(fmt);
     
-    assertEquals("USD 57.35", fmt.format(57.35));
+    assertEquals("USD57.35", fmt.format(57.35));
 }
 
 function testNumFmtCurrencyFormatOtherCurrency() {
@@ -915,7 +915,7 @@ function testNumFmtCurrencyFormatOtherCurrencyIsoStyle() {
     
     assertNotNull(fmt);
     
-    assertEquals("EUR 57.35", fmt.format(57.35));
+    assertEquals("EUR57.35", fmt.format(57.35));
 }
 
 function testNumFmtCurrencyGetDefaultFractionDigits() {
@@ -1027,7 +1027,7 @@ function testNumFmtCurrencyUseCorrectRoundingModeForLocale() {
     
     assertNotNull(fmt);
     
-    assertEquals("halfeven", fmt.getRoundingMode());
+    assertEquals("halfdown", fmt.getRoundingMode());
 }
 
 function testNumFmtJAIsGroupingUsed() {
@@ -1067,7 +1067,7 @@ function testNumFmtNumberFormatJAWithThousandsWithMultiGroupsja() {
     
     assertNotNull(fmt);
     
-    assertEquals("123456789.4", fmt.format(123456789.4));
+    assertEquals("123,456,789.4", fmt.format(123456789.4));
 }
 
 function testNumFmtNumberFormatJAWithThousandsWithMultiGroupsNegativeja() {
@@ -1077,7 +1077,7 @@ function testNumFmtNumberFormatJAWithThousandsWithMultiGroupsNegativeja() {
     
     assertNotNull(fmt);
     
-    assertEquals("-123456789.4", fmt.format(-123456789.4));
+    assertEquals("-123,456,789.4", fmt.format(-123456789.4));
 }
 
 function testNumFmtNumberFormatJALessThanOne() {
@@ -1133,7 +1133,7 @@ function testNumFmtasIN() {
     
     assertNotNull(fmt);
     
-    assertEquals("-1,23,456.78", fmt.format(-123456.785));
+    assertEquals("-১,২৩,৪৫৬.৭৮", fmt.format(-123456.785));
 }
 
 
@@ -1162,6 +1162,32 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_hi_IN() {
     assertNotNull(fmt);
     
     assertEquals("₹ 1,00,110.57", fmt.format(100110.57));
+}
+
+function testNumFmtCurrencyFormatNativeCurrencyForLocale_hi_IN() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "hi-IN",
+	useNative: true,
+	currency: "INR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₹ १,००,११०.५७", fmt.format(100110.57));
+}
+
+function testNumFmtCurrencyFormatNativeCurrencyForLocale_hi_IN1() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "hi-IN",
+	useNative: true,
+	currency: "INR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₹ १,००,११०.५७", fmt.format(100110.57));
 }
 //test cases for en-US
 function testNumFmt_en_US() {
@@ -1820,16 +1846,16 @@ function testNumFmt_nl_NL() {
     assertEquals("-123.456,78", fmt.format(-123456.785));
 }
 
-function testNumFmtCurrencyFormatCorrectCurrencyForLocale_nl_NL() {
+function testNumFmtCurrencyFormatCorrectNEgativeCurrencyForLocale_nl_NL() {
     var fmt = new ilib.NumFmt({
         type: "currency",
         locale: "nl-NL",
-	currency: "EUR"
+	currency: "ANG"
     });
     
     assertNotNull(fmt);
     
-    assertEquals("€ 100.110,57", fmt.format(100110.57));
+    assertEquals("ƒ 100.110,57", fmt.format(100110.57));
 }
 function testNumFmtPercentageFormatRegular_fiFI() {
     var fmt = new ilib.NumFmt({
@@ -1966,7 +1992,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_asIN() {
     
     assertNotNull(fmt);
     
-    assertEquals("₹ 1,00,110.57", fmt.format(100110.57));
+    assertEquals("₹ ১,০০,১১০.৫৭", fmt.format(100110.57));
 }
 
 //test cases for ar-SA
@@ -1978,7 +2004,7 @@ function testNumFmt_ar_SA() {
     
     assertNotNull(fmt);
     
-    assertEquals("-123٬456٫78", fmt.format(-123456.785));
+    assertEquals("١٢٣٬٤٥٦٫٧٨-", fmt.format(-123456.785));
 }
 
 /*function testNumFmtCurrencyFormatCorrectCurrencyForLocale_ar_SA() {
@@ -1994,13 +2020,13 @@ function testNumFmt_ar_SA() {
 }*/
 function testNumFmtPercentageFormatRegular_ar_SA() {
     var fmt = new ilib.NumFmt({
-		locale: "ar-SA",
+	locale: "ar-SA",
         type: "percentage"
     });
     
     assertNotNull(fmt);
     
-    assertEquals("57٫8%", fmt.format(57.8));
+    assertEquals("٥٧٫٨%", fmt.format(57.8));
 }
 
 //test cases for bg-BG
@@ -2019,7 +2045,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bg_BG() {
     var fmt = new ilib.NumFmt({
         type: "currency",
         locale: "bg-BG",
-		currency: "BGN"
+	currency: "BGN"
     });
     
     assertNotNull(fmt);
@@ -2028,7 +2054,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bg_BG() {
 }
 function testNumFmtPercentageFormatRegular_bg_BG() {
     var fmt = new ilib.NumFmt({
-		locale: "bg-BG",
+	locale: "bg-BG",
         type: "percentage"
     });
     
@@ -2052,7 +2078,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bs_Latn_BA() {
     var fmt = new ilib.NumFmt({
         type: "currency",
         locale: "bs-BA-Latn",
-		currency: "BAM"
+	currency: "BAM"
     });
     
     assertNotNull(fmt);
@@ -2061,7 +2087,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bs_Latn_BA() {
 }
 function testNumFmtPercentageFormatRegular_bs_Latn_BA() {
     var fmt = new ilib.NumFmt({
-		locale: "bs-BA-Latn",
+	locale: "bs-BA-Latn",
         type: "percentage"
     });
     
@@ -2085,7 +2111,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_de_DE() {
     var fmt = new ilib.NumFmt({
         type: "currency",
         locale: "de-DE",
-		currency: "EUR"
+	currency: "EUR"
     });
     
     assertNotNull(fmt);
@@ -2094,7 +2120,7 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_de_DE() {
 }
 function testNumFmtPercentageFormatRegular_de_DE() {
     var fmt = new ilib.NumFmt({
-		locale: "de-DE",
+	locale: "de-DE",
         type: "percentage"
     });
     
@@ -2119,12 +2145,25 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_et_EE() {
     var fmt = new ilib.NumFmt({
         type: "currency",
         locale: "et-EE",
-		currency: "EUR"
+	currency: "EUR"
     });
     
     assertNotNull(fmt);
     
     assertEquals("100 110,57€", fmt.format(100110.57));
+}
+
+
+function testNumFmtCurrencyFormatCorrectNEgativeCurrencyForLocale_cs_CZ() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "cs-CZ",
+	currency: "CZK"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("Kč-100 110,57", fmt.format(-100110.57));
 }
 function testNumFmtPercentageFormatRegular_et_EE() {
     var fmt = new ilib.NumFmt({
@@ -2145,7 +2184,7 @@ function testNumFmt_fa_IR() {
     
     assertNotNull(fmt);
     
-    assertEquals("-111٬123٬456٫78", fmt.format(-111123456.785));
+    assertEquals("-۱۱۱٬۱۲۳٬۴۵۶٫۷۸", fmt.format(-111123456.785));
 }
 
 /*function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fa_IR() {
@@ -2167,7 +2206,7 @@ function testNumFmtPercentageFormatRegular_fa_IR() {
     
     assertNotNull(fmt);
     
-    assertEquals("57٫8%", fmt.format(57.8));
+    assertEquals("۵۷٫۸%", fmt.format(57.8));
 }
 //test cases for fr-FR
 function testNumFmt_fr_FR() {
@@ -2567,6 +2606,1088 @@ function testNumFmtPercentageFormatRegular_ru_RU() {
     
     assertEquals("57,8 %", fmt.format(57.8));
 }
+
+//test cases for negative currency
+function testNumFmtNegativeCurrencyFormatForLocale_nl_NL() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "nl-NL",
+	currency: "ANG"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("ƒ 100.110,57-", fmt.format(-100110.57));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_pl_PL() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "pl-PL",
+	currency: "PLN"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(100 110,57 zł)", fmt.format(-100110.57));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_US() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-US",
+	currency: "USD"
+    });
+    
+    assertNotNull(fmt);
+    
+     assertEquals("($100,110.57)", fmt.format(-100110.57));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_et_EE() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "et-EE",
+	currency: "EUR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(100 110,57€)", fmt.format(-100110.57));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_ko_KR() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "ko-KR",
+	currency: "KRW",
+	 maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(₩100,110.57)", fmt.format(-100110.57));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_ms_MY() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "ms-MY",
+	currency: "MNT"
+    });
+    
+    assertNotNull(fmt);
+    
+     assertEquals("(₮100,110.57)", fmt.format(-100110.57));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_pt_BR() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "pt-BR",
+	currency: "BRL"
+    });
+    
+    assertNotNull(fmt);
+    
+      assertEquals("(R$100.110,57)", fmt.format(-100110.57));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_es_EC() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-EC",
+	currency: "USD"
+    });
+    
+    assertNotNull(fmt);
+    
+      assertEquals("$-100.110,57", fmt.format(-100110.57));
+}
+
+//test cases for en-SL
+
+function testNumFmt_en_SL() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-SL",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SL() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-SL",
+	currency: "SLL"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("Le100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_SL() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-SL",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_SL() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-SL",
+	currency: "SLL"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(Le100,110.57)", fmt.format(-100110.57));
+}
+
+//test cases for en-SG
+
+
+function testNumFmt_en_SG() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-SG",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SG() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-SG",
+	currency: "SGD"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("$100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_SG() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-SG",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_SG() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-SG",
+	currency: "SGD"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("($100,110.57)", fmt.format(-100110.57));
+}
+
+//test caes for en-ZA
+function testNumFmt_en_ZA() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-ZA",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111 123 456,78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_ZA() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-ZA",
+	currency: "ZAR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("R100 110,57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_ZA() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-ZA",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57,8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_ZA() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-ZA",
+	currency: "ZAR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(R100 110,57)", fmt.format(-100110.57));
+}
+
+//test cases for en-MY
+
+function testNumFmt_en_MY() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-MY",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_MY() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-MY",
+	currency: "MYR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("RM100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_MY() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-MY",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_MY() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-MY",
+	currency: "MYR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(RM100,110.57)", fmt.format(-100110.57));
+}
+
+//test cases for en-MM
+
+function testNumFmt_en_MM() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-MM",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_MM() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-MM",
+	currency: "MMK"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("K100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_MM() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-MM",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_MM() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-MM",
+	currency: "MMK"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(K100,110.57)", fmt.format(-100110.57));
+}
+
+//test cases for en-NZ
+
+function testNumFmt_en_NZ() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-NZ",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_NZ() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-NZ",
+	currency: "NZD"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("$100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_NZ() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-NZ",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_NZ() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-NZ",
+	currency: "NZD"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("($100,110.57)", fmt.format(-100110.57));
+}
+
+//test cases for en-NG
+function testNumFmt_en_NG() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-NG",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_NG() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-NG",
+	currency: "NGN"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₦100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_NG() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-NG",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_NG() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-NG",
+	currency: "NGN"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(₦100,110.57)", fmt.format(-100110.57));
+}
+
+//test cases for en-PK
+
+function testNumFmt_en_PK() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-PK",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PK() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-PK",
+	currency: "PKR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₨100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_PK() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-PK",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_PK() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-PK",
+	currency: "PKR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(₨100,110.57)", fmt.format(-100110.57));
+}
+
+//test cases for en-PH
+
+function testNumFmt_en_PH() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-PH",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PH() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-PH",
+	currency: "PHP"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₱100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_PH() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-PH",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_PH() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-PH",
+	currency: "PHP"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(₱100,110.57)", fmt.format(-100110.57));
+}
+//test cases for en-PR
+
+function testNumFmt_en_PR() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-PR",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_PR() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-PR",
+	currency: "USD"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("$100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_PR() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-PR",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_PR() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-PR",
+	currency: "USD"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("($100,110.57)", fmt.format(-100110.57));
+}
+
+//test cases for en-RW
+function testNumFmt_en_RW() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-RW",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_RW() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-RW",
+	currency: "RWF"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("Fr100,111", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_RW() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-RW",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_RW() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-RW",
+	currency: "RWF"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(Fr100,111)", fmt.format(-100110.57));
+}
+
+//test cases for en-LK
+
+function testNumFmt_en_LK() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-LK",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_LK() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-LK",
+	currency: "LKR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("Rs100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_LK() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-LK",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_LK() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-LK",
+	currency: "LKR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(Rs100,110.57)", fmt.format(-100110.57));
+}
+
+//test cases for en-SD
+
+function testNumFmt_en_SD() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-SD",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_SD() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-SD",
+	currency: "SDG"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("£100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_SD() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-SD",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_SD() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-SD",
+	currency: "SDG"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(£100,110.57)", fmt.format(-100110.57));
+}
+
+//test cases for en-TZ
+
+function testNumFmt_en_TZ() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-TZ",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_en_TZ() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-TZ",
+	currency: "TZS"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("Sh100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_en_TZ() {
+    var fmt = new ilib.NumFmt({
+	locale: "en-TZ",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_en_TZ() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "en-TZ",
+	currency: "TZS"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("(Sh100,110.57)", fmt.format(-100110.57));
+}
+
+//test cases for es-CR
+
+function testNumFmt_es_CR() {
+    var fmt = new ilib.NumFmt({
+        locale: "es-CR",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111.123.456,78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_CR() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-CR",
+	currency: "CRC"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₡100.110,57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_es_CR() {
+    var fmt = new ilib.NumFmt({
+	locale: "es-CR",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57,8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_es_CR() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-CR",
+	currency: "CRC"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₡-100.110,57", fmt.format(-100110.57));
+}
+
+//test cases for es-DO
+
+function testNumFmt_es_DO() {
+    var fmt = new ilib.NumFmt({
+        locale: "es-DO",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_DO() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-DO",
+	currency: "DOP"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("$100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_es_DO() {
+    var fmt = new ilib.NumFmt({
+	locale: "es-DO",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_es_DO() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-DO",
+	currency: "DOP"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("$-100,110.57", fmt.format(-100110.57));
+}
+
+
+//test cases for es-SV
+
+function testNumFmt_es_SV() {
+    var fmt = new ilib.NumFmt({
+        locale: "es-SV",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_SV() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-SV",
+	currency: "USD"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("$100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_es_SV() {
+    var fmt = new ilib.NumFmt({
+	locale: "es-SV",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_es_SV() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-SV",
+	currency: "USD"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("$-100,110.57", fmt.format(-100110.57));
+}
+
+//test cases for es-GQ
+
+function testNumFmt_es_GQ() {
+    var fmt = new ilib.NumFmt({
+        locale: "es-GQ",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111.123.456,78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_GQ() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-GQ",
+	currency: "XAF"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("Fr100.111", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_es_GQ() {
+    var fmt = new ilib.NumFmt({
+	locale: "es-GQ",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57,8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_es_GQ() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-GQ",
+	currency: "XAF"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("Fr-100.111", fmt.format(-100110.57));
+}
+//test cases for es-GT
+
+function testNumFmt_es_GT() {
+    var fmt = new ilib.NumFmt({
+        locale: "es-GT",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_GT() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-GT",
+	currency: "GTQ"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("Q100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_es_GT() {
+    var fmt = new ilib.NumFmt({
+	locale: "es-GT",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_es_GT() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-GT",
+	currency: "GTQ"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("Q-100,110.57", fmt.format(-100110.57));
+}
+
+//test cases for es-HN
+
+function testNumFmt_es_HN() {
+    var fmt = new ilib.NumFmt({
+        locale: "es-HN",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_HN() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-HN",
+	currency: "HNL"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("L100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_es_HN() {
+    var fmt = new ilib.NumFmt({
+	locale: "es-HN",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_es_HN() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-HN",
+	currency: "HNL"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("L-100,110.57", fmt.format(-100110.57));
+}
+
+//test cases for es-MX
+
+function testNumFmt_es_MX() {
+    var fmt = new ilib.NumFmt({
+        locale: "es-MX",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-111,123,456.78", fmt.format(-111123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_es_MX() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-MX",
+	currency: "MXN"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("$100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_es_MX() {
+    var fmt = new ilib.NumFmt({
+	locale: "es-MX",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_es_MX() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "es-MX",
+	currency: "MXN"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("$-100,110.57", fmt.format(-100110.57));
+}
 /******************************** End of test cases****************************************************/
 function testNumFmtenGB() {
     var fmt = new ilib.NumFmt({
@@ -2599,17 +3720,6 @@ function testNumFmtjaJP() {
     assertNotNull(fmt);
     
     assertEquals("-123,456.78", fmt.format(-123456.785));
-}
-
-function testNumFmtja() {
-    var fmt = new ilib.NumFmt({
-        locale: "ja",
-        maxFractionDigits: 2
-    });
-    
-    assertNotNull(fmt);
-    
-    assertEquals("-123456.78", fmt.format(-123456.785));
 }
 
 function testNumFmtptBR() {

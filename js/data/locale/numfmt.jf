@@ -1,8 +1,16 @@
+{
 	"numfmt": {
+		"script": "Latn",
 		"decimalChar": ",",
 		"groupChar": ".",
 		"prigroupSize": 3,
 		"pctFmt": "{n}%",
 		"pctChar": "%",
-		"roundingMode": "halfdown"
-	},
+		"roundingMode": "halfdown",
+		"exponential":"e",
+		"currencyFormats": {
+			"common": "{s}{n}",
+			"commonNegative": "{s}-{n}"
+		}
+	}
+}

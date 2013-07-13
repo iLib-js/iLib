@@ -1,6 +1,6 @@
 /*
  * genscripts.js - ilib tool to generate the json data about ISO 15924 scripts
- * 
+ *
  * Copyright © 2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,11 +16,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 /*
- * This code is intended to be run under node.js 
+ * This code is intended to be run under node.js
  */
-
 var fs = require('fs');
 var util = require('util');
 var unifile = require('./unifile.js');
@@ -30,13 +28,13 @@ var coelesce = common.coelesce;
 
 function usage() {
 	util.print("Usage: genlangscripts [-h] CLDR_dir [toDir]\n" +
-			"Generate the script.jf files for each language.\n\n" +
-			"-h or --help\n" +
-			"  this help\n" +
-			"CLDR_dir\n" +
-			"  directory with CLDR represented in json format downloaded from the Unicode site\n" +
-			"toDir\n" +
-			"  directory to output the script.jf json files. Default: current dir.\n");
+		"Generate the script.jf files for each language.\n\n" +
+		"-h or --help\n" +
+		"  this help\n" +
+		"CLDR_dir\n" +
+		"  directory with CLDR represented in json format downloaded from the Unicode site\n" +
+		"toDir\n" +
+		"  directory to output the script.jf json files. Default: current dir.\n");
 	process.exit(1);
 }
 
@@ -60,7 +58,7 @@ if (process.argv.length > 3) {
 }
 
 util.print("genlangscripts - generate the localeinfo script.jf files.\n" +
-		"Copyright (c) 2013 JEDLSoft\n");
+	"Copyright (c) 2013 JEDLSoft\n");
 
 util.print("CLDR dir: " + cldrDir + "\n");
 util.print("output dir: " + toDir + "\n");
@@ -81,19 +79,18 @@ fs.exists(toDir, function (exists) {
 	}
 });
 
-
 var languageDataString = fs.readFileSync(languageDataFileName, "utf-8");
 var supplementalData = JSON.parse(languageDataString);
 
 var scripts = {};
-
+var scripts_name = {};
 var languageData = supplementalData.languageData;
 
 for (var locale in languageData) {
 	if (locale && languageData[locale]) {
-		if (typeof(languageData[locale]["@scripts"]) === 'string') {
+		if (typeof (languageData[locale]["@scripts"]) === 'string') {
 			var language = (locale.length <= 3) ? locale : locale.split(/-/)[0];
-			if (typeof(scripts[language]) === 'undefined') {
+			if (typeof (scripts[language]) === 'undefined') {
 				scripts[language] = [];
 			}
 			var newLangs = languageData[locale]["@scripts"].split(/ /g);
@@ -115,7 +112,9 @@ for (var language in scripts) {
 			fs.mkdirSync(filename);
 		}
 		console.log(language + ':\t"scripts": ' + JSON.stringify(scripts[language]) + ',');
-		fs.writeFile(filename + "/scripts.jf", '\t"scripts": ' + JSON.stringify(scripts[language]) + ',\n', function (err) {
+		scripts_name["scripts"] = scripts[language];
+		scripts_name.generated = true;
+		fs.writeFile(filename + "/scripts.jf", JSON.stringify(scripts_name), function (err) {
 			if (err) {
 				console.log(err);
 				throw err;
@@ -123,4 +122,3 @@ for (var language in scripts) {
 		});
 	}
 }
-

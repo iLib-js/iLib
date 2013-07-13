@@ -690,3 +690,27 @@ ilib.loadData = function(params) {
 		callback(object.cache[spec]);
 	}
 };
+
+/**
+ * @static
+ * 
+ * Map a string to the given set of alternate characters. If the target set
+ * does not contain a particular character in the input string, then that
+ * character will be copied to the output unmapped.
+ * 
+ * @param {string} str a string to map to an alternate set of characters
+ * @param {Array.<string>|Object} map a mapping to alternate characters
+ * @return {string} the source string where each character is mapped to alternate characters
+ */
+ilib.mapString = function (str, map) {
+	var mapped = "";
+	if (map && str) {
+		for (var i = 0; i < str.length; i++) {
+			var c = str.charAt(i); // TODO use a char iterator?
+			mapped += map[c] || c; 
+		}
+	} else {
+		mapped = str;
+	}
+	return mapped;
+};

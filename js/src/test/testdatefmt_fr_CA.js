@@ -101,7 +101,7 @@ function testDateFmtCASimpleTimeShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45soir", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtCASimpleTimeMedium() {
@@ -117,7 +117,7 @@ function testDateFmtCASimpleTimeMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45soir", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtCASimpleTimeLong() {
@@ -133,7 +133,7 @@ function testDateFmtCASimpleTimeLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45soir", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtCASimpleTimeFull() {
@@ -149,7 +149,7 @@ function testDateFmtCASimpleTimeFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45soir", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtCADateTimeSimpleShort() {
@@ -165,7 +165,7 @@ function testDateFmtCADateTimeSimpleShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45soir 29/09/11", fmt.format(date));
+    assertEquals("13:45 29/09/11", fmt.format(date));
 }
 
 function testDateFmtCADateTimeSimpleMedium() {
@@ -181,7 +181,7 @@ function testDateFmtCADateTimeSimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45soir 29/09/2011", fmt.format(date));
+    assertEquals("13:45 29/09/2011", fmt.format(date));
 }
 
 function testDateFmtCADateTimeSimpleLong() {
@@ -197,7 +197,7 @@ function testDateFmtCADateTimeSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45soir 29 sept 2011", fmt.format(date));
+    assertEquals("13:45 29 sept 2011", fmt.format(date));
 }
 
 function testDateFmtCADateTimeSimpleFull() {
@@ -213,7 +213,7 @@ function testDateFmtCADateTimeSimpleFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45soir 29 septembre 2011", fmt.format(date));
+    assertEquals("13:45 29 septembre 2011", fmt.format(date));
 }
 
 
@@ -413,7 +413,7 @@ function testDateFmtCATypeTime() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45soir", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtCATypeDateTime() {
@@ -429,7 +429,7 @@ function testDateFmtCATypeDateTime() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45soir 29/09/11", fmt.format(date));
+    assertEquals("13:45 29/09/11", fmt.format(date));
 }
 
 
@@ -752,7 +752,7 @@ function testDateFmtCAShortTimeComponentsH() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1", fmt.format(date));
+    assertEquals("13", fmt.format(date));
 }
 
 function testDateFmtCAShortTimeComponentsMS() {
@@ -784,7 +784,7 @@ function testDateFmtCAShortTimeComponentsHM() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtCAShortTimeComponentsHMS() {
@@ -800,7 +800,7 @@ function testDateFmtCAShortTimeComponentsHMS() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37", fmt.format(date));
+    assertEquals("13:45:37", fmt.format(date));
 }
 
 function testDateFmtCAShortTimeComponentsHMA() {
@@ -816,7 +816,7 @@ function testDateFmtCAShortTimeComponentsHMA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45soir", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtCAShortTimeComponentsHMZ() {
@@ -837,7 +837,7 @@ function testDateFmtCAShortTimeComponentsHMZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 EDT", fmt.format(date));
+    assertEquals("13:45 EDT", fmt.format(date));
 }
 
 function testDateFmtCAShortTimeComponentsHMAZ() {
@@ -858,7 +858,7 @@ function testDateFmtCAShortTimeComponentsHMAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45soir EDT", fmt.format(date));
+    assertEquals("13:45 EDT", fmt.format(date));
 }
 
 function testDateFmtCAShortTimeComponentsHMSA() {
@@ -874,7 +874,7 @@ function testDateFmtCAShortTimeComponentsHMSA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37soir", fmt.format(date));
+    assertEquals("13:45:37", fmt.format(date));
 }
 
 function testDateFmtCAShortTimeComponentsHMSZ() {
@@ -895,7 +895,7 @@ function testDateFmtCAShortTimeComponentsHMSZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 EDT", fmt.format(date));
+    assertEquals("13:45:37 EDT", fmt.format(date));
 }
 
 function testDateFmtCAShortTimeComponentsHMSAZ() {
@@ -916,7 +916,7 @@ function testDateFmtCAShortTimeComponentsHMSAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37soir EDT", fmt.format(date));
+    assertEquals("13:45:37 EDT", fmt.format(date));
 }
 
 
@@ -965,7 +965,7 @@ function testDateFmtCAFullTimeComponentsH() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1", fmt.format(date));
+    assertEquals("13", fmt.format(date));
 }
 
 function testDateFmtCAFullTimeComponentsMS() {
@@ -997,7 +997,7 @@ function testDateFmtCAFullTimeComponentsHM() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtCAFullTimeComponentsHMS() {
@@ -1013,7 +1013,7 @@ function testDateFmtCAFullTimeComponentsHMS() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37", fmt.format(date));
+    assertEquals("13:45:37", fmt.format(date));
 }
 
 function testDateFmtCAFullTimeComponentsHMA() {
@@ -1029,7 +1029,7 @@ function testDateFmtCAFullTimeComponentsHMA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45soir", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtCAFullTimeComponentsHMZ() {
@@ -1051,7 +1051,7 @@ function testDateFmtCAFullTimeComponentsHMZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 EDT", fmt.format(date));
+    assertEquals("13:45 EDT", fmt.format(date));
 }
 
 function testDateFmtCAFullTimeComponentsHMAZ() {
@@ -1073,7 +1073,7 @@ function testDateFmtCAFullTimeComponentsHMAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45soir EDT", fmt.format(date));
+    assertEquals("13:45 EDT", fmt.format(date));
 }
 
 function testDateFmtCAFullTimeComponentsHMSA() {
@@ -1089,7 +1089,7 @@ function testDateFmtCAFullTimeComponentsHMSA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37soir", fmt.format(date));
+    assertEquals("13:45:37", fmt.format(date));
 }
 
 function testDateFmtCAFullTimeComponentsHMSZ() {
@@ -1111,7 +1111,7 @@ function testDateFmtCAFullTimeComponentsHMSZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 EDT", fmt.format(date));
+    assertEquals("13:45:37 EDT", fmt.format(date));
 }
 
 function testDateFmtCAFullTimeComponentsHMSAZ() {
@@ -1133,7 +1133,7 @@ function testDateFmtCAFullTimeComponentsHMSAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37soir EDT", fmt.format(date));
+    assertEquals("13:45:37 EDT", fmt.format(date));
 }
 
 function testDateFmtCAWithTimeZoneAndNoDST() {
@@ -1155,6 +1155,6 @@ function testDateFmtCAWithTimeZoneAndNoDST() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 EST", fmt.format(date));
+    assertEquals("13:45:37 EST", fmt.format(date));
 }
 

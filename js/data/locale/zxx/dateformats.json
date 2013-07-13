@@ -51,21 +51,6 @@
 				"l": "MMM",
 				"f": "MMMM"
 			}
-		},
-		"time": {
-			"ahmsz": "h:mm:ssa Z",
-			"ahms": "h:mm:ssa",
-			"hmsz": "h:mm:ss Z",
-			"hms": "h:mm:ss",
-			"ahmz": "h:mma Z",
-			"ahm": "h:mma",
-			"hmz": "h:mm Z",
-			"ah": "ha",
-			"hm": "h:mm",
-			"ms": "mm:ss",
-			"h": "h",
-			"m": "mm",
-			"s": "ss"
 		}
 	},
 	"julian": "gregorian"

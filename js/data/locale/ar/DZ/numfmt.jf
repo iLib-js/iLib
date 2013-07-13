@@ -1,1 +1,1 @@
-"numfmt" :{"decimalChar":",","groupChar":".","curFmt":"{s} {n}","secgroupSize":0,"negativenumFmt":";{n}-","negativecurFmt":"{s} {n}-"},
+{"generated":true,"native_numfmt":{"script":"Arab","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"اس","prigroupSize":3,"currencyFormats":{"common":"{s} {n}","commonNegative":"{s} {n}-"},"negativenumFmt":"{n}-","pctFmt":"{n}%","roundingMode":"halfdown","digits":"٠١٢٣٤٥٦٧٨٩"},"numfmt":{"script":"Latn","decimalChar":",","groupChar":".","pctChar":"%","exponential":"E"}}

@@ -27,6 +27,7 @@ resources.js
 calendar.js
 localeinfo.js
 timezone.js
+localeinfo.js
 */
 
 // !data dateformats sysres
@@ -208,6 +209,9 @@ timezone.js
  * <li><i>Z</i> - RFC 822 time zone
  * </ul>
  * 
+ *<li><i>useNative</i> - the flag used to determaine whether to use the native script settings 
+ * for formatting the numbers .
+ *
  * <li>onLoad - a callback function to call when the date format object is fully 
  * loaded. When the onLoad option is given, the DateFmt object will attempt to
  * load any missing locale data using the ilib loader callback.
@@ -263,7 +267,7 @@ ilib.DateFmt = function(options) {
 	this.length = "s";
 	this.dateComponents = "dmy";
 	this.timeComponents = "ahm";
-	
+	this.useNative=false;
 	if (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
@@ -344,7 +348,9 @@ ilib.DateFmt = function(options) {
 				id: options.timezone
 			});
 		}
-		
+		if (typeof(options.useNative) !== 'undefined') {
+			this.useNative = options.useNative;
+		}
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync == true);
 		}
@@ -374,6 +380,7 @@ ilib.DateFmt = function(options) {
 					break;
 			}
 
+			/*
 			if (this.timeComponents &&
 					(this.clock === '24' || 
 					(!this.clock && this.locinfo.getClock() === "24"))) {
@@ -381,6 +388,7 @@ ilib.DateFmt = function(options) {
 				// requested it in the time component option
 				this.timeComponents = this.timeComponents.replace("a", "");
 			}
+			*/
 			
 			// load the strings used to translate the components
 			new ilib.ResBundle({
@@ -402,6 +410,10 @@ ilib.DateFmt = function(options) {
 									formats = ilib.data.dateformats;
 									var spec = this.locale.getSpec().replace(/-/g, '_');
 									ilib.DateFmt.cache[spec] = formats;
+								}
+								if (typeof(this.clock) === 'undefined') {
+									// default to the locale instead
+									this.clock = this.locinfo.getClock();
 								}
 								this._initTemplate(formats);
 								this._massageTemplate();
@@ -453,14 +465,14 @@ ilib.DateFmt.prototype = {
 			switch (this.type) {
 				case "datetime":
 					this.template = (this.formats && this._getLengthFormat(this.formats.order, this.length)) || "{date} {time}";
-					this.template = this.template.replace("{date}", this._getFormat(this.formats.date, this.dateComponents, this.length));
-					this.template = this.template.replace("{time}", this._getFormat(this.formats.time, this.timeComponents, this.length));
+					this.template = this.template.replace("{date}", this._getFormat(this.formats.date, this.dateComponents, this.length) || "");
+					this.template = this.template.replace("{time}", this._getFormat(this.formats.time[this.clock], this.timeComponents, this.length) || "");
 					break;
 				case "date":
 					this.template = this._getFormat(this.formats.date, this.dateComponents, this.length);
 					break;
 				case "time":
-					this.template = this._getFormat(this.formats.time, this.timeComponents, this.length);
+					this.template = this._getFormat(this.formats.time[this.clock], this.timeComponents, this.length);
 					break;
 			}
 		} else {
@@ -523,6 +535,18 @@ ilib.DateFmt.prototype = {
 		
 		// tokenize it now for easy formatting
 		this.templateArr = this._tokenize(this.template);
+
+		// set up the mapping to native or alternate digits if necessary
+		var digits = this.locinfo.getDigits();
+		if (digits && digits != "0123456789") {
+			this.digits = digits;
+		}
+		if (this.useNative) {
+			digits = this.locinfo.getNativeDigits();
+			if (digits) {
+				this.digits = digits;
+			}
+		}
 	},
     
 	/**
@@ -895,6 +919,10 @@ ilib.DateFmt.prototype = {
 					str += templateArr[i].replace(/'/g, "");
 					break;
 			}
+		}
+
+		if (this.digits) {
+			str = ilib.mapString(str, this.digits);
 		}
 		return str;
 	},
