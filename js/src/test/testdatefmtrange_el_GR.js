@@ -451,7 +451,7 @@ function testDateRngFmtRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/11 – 31/01/12", fmt.format(start, end));
+    assertEquals("20/11/2011 – 31/01/2012", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "el-GR", length: "long"});
@@ -475,7 +475,7 @@ function testDateRngFmtRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 नवम्बर 2011 – 31 जनवरी 2012", fmt.format(start, end));
+    assertEquals("20 Νοε 2011 – 31 Ιαν 2012", fmt.format(start, end));
 }
 function testDateRngFmtRangeNextYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "el-GR", length: "full"});
@@ -499,7 +499,7 @@ function testDateRngFmtRangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 नवम्बर 2011 – 31 जनवरी 2012", fmt.format(start, end));
+    assertEquals("20 Νοεμβρίου 2011 – 31 Ιανουαρίου 2012", fmt.format(start, end));
 }
 
 function testDateRngFmtRangeMultiYearShort() {
@@ -620,5 +620,5 @@ function testDateRngFmtGRManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–2064", fmt.format(start, end));
+    assertEquals("2011 - 2064", fmt.format(start, end));
 }
