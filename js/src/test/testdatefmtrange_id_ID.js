@@ -18,7 +18,7 @@
  */
 
 /*
- * testdatefmtrange_id_ID.js - test the date range formatter object in German/Germany
+ * testdatefmtrange_id_ID.js - test the date range formatter object in Indonesian/Indonesia
  * 
  * Copyright © 2012-2013, JEDLSoft
  *

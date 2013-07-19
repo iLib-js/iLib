@@ -86,10 +86,10 @@ function suite() {
             "testdatefmtrange_sv_SE.js",
             "testdatefmtrange_bs_Latn_BA.js",
             "testdatefmtrange_en_GB.js",
-	    //"testdatefmtrange_hi_IN.js",
+	    "testdatefmtrange_hi_IN.js",
 	    "testdatefmtrange_nl_NL.js",
-	   // "testdatefmtrange_el_GR.js",
-	    //"testdatefmtrange_da_DK.js",
+	    "testdatefmtrange_el_GR.js",
+	    "testdatefmtrange_da_DK.js",
            
 	    "testdatefmtrange_vi_VN.js",
 	    "testname.js",
