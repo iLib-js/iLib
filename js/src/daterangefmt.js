@@ -133,7 +133,7 @@ ilib.DateRngFmt = function(options) {
 	
 	var opts = {};
 	ilib.shallowCopy(options, opts);
-	opts.sync = true;
+	opts.sync = sync;
 	/**
 	 * @private
 	 */
