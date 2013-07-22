@@ -1516,7 +1516,7 @@ function getDateFormats(language, script, region, data) {
         array_interval_dmy[i] = array_interval_dmy[i].replace(intervalFormats["Hm"]["H"], "–");
         array_interval_dmy[i] = array_interval_dmy[i].replace(/[-]+/g, "–");
         //util.print("array_interval_dmy " + array_interval_dmy[i] + "\n");
-        array_interval_dmy[i] = array_interval_dmy[i].replace(/[^Mdy–./\s]/g, "");
+        array_interval_dmy[i] = array_interval_dmy[i].replace(/[^Mdy–.\/\s]/g, "");
         array_interval_dmy[i] = array_interval_dmy[i].replace(/[d]+/g, "{sd}");
         array_interval_dmy[i] = array_interval_dmy[i].replace(/[M]+/g, "{sm}");
         array_interval_dmy[i] = array_interval_dmy[i].replace(/[y]+/g, "{sy}");
@@ -1545,7 +1545,7 @@ function getDateFormats(language, script, region, data) {
         //var index_of_separator = array_interval_my[i].indexOf(intervalFormats["Hm"]["H"]);
         array_interval_my[i] = array_interval_my[i].replace(intervalFormats["Hm"]["H"], "–");
         array_interval_my[i] = array_interval_my[i].replace(/[-]+/g, "–");
-        array_interval_my[i] = array_interval_my[i].replace(/[^Mdy–./\s]/g, "");
+        array_interval_my[i] = array_interval_my[i].replace(/[^Mdy–.\/\s]/g, "");
         array_interval_my[i] = array_interval_my[i].replace(/[d]+/g, "{sd}");
         array_interval_my[i] = array_interval_my[i].replace(/[M]+/g, "{sm}");
         array_interval_my[i] = array_interval_my[i].replace(/[y]+/g, "{sy}");
