@@ -131,10 +131,25 @@ function calcLocalePath(language, script, region, filename) {
     path += filename;
     return path;
 }
+function calcLocalePath(language, script, region, filename) {
+    var path = localeDirName + "/";
+    if (language) {
+        path += language + "/";
+    }
+    if (script) {
+        path += script + "/";
+    }
+    if (region) {
+        path += region + "/";
+    }
+    path += filename;
+    return path;
+}
 
 function loadFileNonGenerated(language, script, region, filename) {
     var path = calcLocalePath(language, script, region, filename);
     var obj = loadFile(path);
+    
     if (typeof (obj) !== 'undefined' && (typeof (obj.generated) === 'undefined' || obj.generated === false)) {
         // only return non-generated files
         return obj;
@@ -1377,35 +1392,42 @@ function getDateFormats(language, script, region, data) {
     var time_12 = {};
     var time_fmt = {};
     available_formats = JSON.parse(JSON.stringify(available_formats).replace(/HH/g, "H"));
+    var timeformat = data.dates.calendars["gregorian"]["timeFormats"];
+    util.print("time formats are :"+JSON.stringify(timeformat)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
     if (available_formats["Hms"]) {
         //var index_of_a = available_formats["hms"].indexOf("a");
         //var index_of_h = available_formats["hms"].indexOf("h");
         //var max_index = Math.max(index_of_a, index_of_h);
         //available_formats["Hms"] = available_formats["Hms"].replace(/h/g, "H");
-        available_formats["Hms"] = available_formats["Hms"].substring(available_formats["Hms"].indexOf("H"), 1 + available_formats["Hms"].lastIndexOf("s"));
+        //available_formats["Hms"] = available_formats["Hms"].substring(available_formats["Hms"].indexOf("H"), 1 + available_formats["Hms"].lastIndexOf("s"));
         available_formats["Hms"] == available_formats["Hms"].replace(/a/g, "");
         //if (max_index == index_of_a) {
         //time["ahmsz"] = available_formats["Hms"]  + " " + "z";
         //time["ahms"] = available_formats["Hms"] ;
         //} else {
-        time_24["ahmsz"] = "XXXXX" + available_formats["Hms"] + " " + "z";
+        //time_24["ahmsz"] = "XXXXX" + available_formats["Hms"] + " " + "z";
+        time_24["ahmsz"] = timeformat["long"]["timeFormat"]["pattern"].replace(/a/g, "");
+        time_24["ahmsz"] = time_24["ahmsz"].replace(/h/g, "H");
         time_24["ahms"] = available_formats["Hms"];
         //}
         time_24["hms"] = available_formats["Hms"];
-        time_24["ms"] = available_formats["Hms"].substring(available_formats["Hms"].indexOf("m"), 1 + available_formats["Hms"].lastIndexOf("s"));
+        //time_24["ms"] = available_formats["Hms"].substring(available_formats["Hms"].indexOf("m"), 1 + available_formats["Hms"].lastIndexOf("s"));
+        time_24["ms"] = available_formats["Hms"].substring(available_formats["Hms"].indexOf("m"),available_formats["Hms"].length);
     }
     if (available_formats["Hm"]) {
         //var index_of_a = available_formats["Hm"].indexOf("a");
         //var index_of_h = available_formats["Hm"].indexOf("H");
         //var max_index = Math.max(index_of_a, index_of_h);
         //available_formats["hm"] = available_formats["hm"].replace(/h/g, "H");
-        available_formats["Hm"] = available_formats["Hm"].substring(available_formats["Hm"].indexOf("H"), 1 + available_formats["Hm"].lastIndexOf("m"));
+       // available_formats["Hm"] = available_formats["Hm"].substring(available_formats["Hm"].indexOf("H"), 1 + available_formats["Hm"].lastIndexOf("m"));
+	available_formats["Hm"] = available_formats["Hm"].substring(available_formats["Hm"].indexOf("H"),available_formats["Hm"].indexOf("s")-1);
         //if (max_index == index_of_a) {
         //time_24["ahmz"] = available_formats["Hm"]  + " " + "z";
         //time_24["ahm"] = available_formats["Hm"] ;
         //time_24["ah"] = "H";
         //} else {
-        time_24["ahmz"] = "XXXXX " + available_formats["Hm"] + " " + "z";
+        //time_24["ahmz"] = "XXXXX " + available_formats["Hm"] + " " + "z";
+        time_24["ahmz"] = time_24["ahmsz"].substring(time_24["ahmsz"].indexOf("H"),time_24["ahmsz"].indexOf("s")-1);
         time_24["ahm"] = available_formats["Hm"];
         time_24["ah"] = "H";
         //}
@@ -1417,29 +1439,33 @@ function getDateFormats(language, script, region, data) {
     //code for 12 hour clock setting
     if (available_formats["hms"]) {
         //available_formats["Hms"] = available_formats["Hms"].substring(available_formats["Hms"].indexOf("H"), 1 + available_formats["Hms"].lastIndexOf("s"));
-        time_12["ahmsz"] = "XXXXX" + available_formats["hms"] + " " + "z";
+        //time_12["ahmsz"] = "XXXXX" + available_formats["hms"] + " " + "z";
+        time_12["ahmsz"] = timeformat["long"]["timeFormat"]["pattern"];
         time_12["ahms"] = available_formats["hms"];
         time_12["hms"] = available_formats["hms"];
-        time_12["ms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("m"), 1 + available_formats["hms"].lastIndexOf("s"));
+        //time_12["ms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("m"), available_formats["hms"].lastIndexOf("s"));
+        time_12["ms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("m"), available_formats["hms"].length);
     }
     if (available_formats["hm"]) {
-        time_12["ahmz"] = "XXXXX" + available_formats["hm"] + " " + "z";
+        //time_12["ahmz"] = "XXXXX" + available_formats["hm"] + " " + "z";
+        time_12["ahmz"] = time_12["ahmsz"].substring(time_12["ahmsz"].indexOf("H"),time_12["ahmsz"].indexOf("s")-1);
         time_12["ahm"] = available_formats["hm"];
         time_12["hm"] = available_formats["hm"];
     }
     time_fmt["12"] = time_12;
     gregorian["time"] = time_fmt;
-    //util.print("gregorian date formats are :" + JSON.stringify(gregorian.time) + "++++++++++++++++++++++++++++++++++++++++++++" + "\n");
+    util.print("gregorian date formats are :" + JSON.stringify(gregorian.time) + "++++++++++++++++++++++++++++++++++++++++++++" + "\n");
     //code to get the date range
     var range = {};
     var intervalFormats = data.dates.calendars["gregorian"]["dateTimeFormats"]["intervalFormats"];
     //intervalFormats =JSON.parse(JSON.stringify(intervalFormats).replace(/'[^']+'/, ""));
     //util.print("interval formats  "+JSON.stringify(intervalFormats)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
     //intervalFormats=JSON.parse(JSON.stringify(intervalFormats).replace(/[^.–\s\/Mdy]/g,""));
-    var start_time = intervalFormats["Hm"]["H"].substring(0, intervalFormats["Hm"]["H"].length / 2);
-    var end_time = intervalFormats["Hm"]["H"].substring(intervalFormats["Hm"]["H"].length / 2 + 1, intervalFormats["Hm"]["H"].length);
-    intervalFormats["Hm"]["H"] = intervalFormats["Hm"]["H"].replace(start_time, "");
-    intervalFormats["Hm"]["H"] = intervalFormats["Hm"]["H"].replace(end_time, "");
+    //var start_time = intervalFormats["Hm"]["H"].substring(0, intervalFormats["Hm"]["H"].length / 2);
+    //var end_time = intervalFormats["Hm"]["H"].substring(intervalFormats["Hm"]["H"].length / 2 + 1, intervalFormats["Hm"]["H"].length);
+    //intervalFormats["Hm"]["H"] = intervalFormats["Hm"]["H"].replace(start_time, "");
+    //intervalFormats["Hm"]["H"] = intervalFormats["Hm"]["H"].replace(end_time, "");
+   intervalFormats["Hm"]["H"] = intervalFormats["intervalFormatFallback"].charAt((intervalFormats["intervalFormatFallback"].length-1)/2);
     //util.print("time format after replace "+intervalFormats["Hm"]["H"]+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
     var ymd_d = intervalFormats["yMd"]["d"].replace(/'[^']+'/g, "");
     var ymd_m = intervalFormats["yMd"]["M"].replace(/'[^']+'/g, "");
@@ -1526,9 +1552,15 @@ function getDateFormats(language, script, region, data) {
         end_dmy[i] = end_dmy[i].replace("{sd}", "{ed}");
         end_dmy[i] = end_dmy[i].replace("{sm}", "{em}");
         end_dmy[i] = end_dmy[i].replace("{sy}", "{ey}");
-        //util.print("array_interval_dmy " + array_interval_dmy[i] + "\n");
-        //util.print("start_interval_dmy " + start_dmy[i] + "\n");
-        //util.print("end_interval_dmy " + end_dmy[i] + "\n");
+        end_dmy[i] = end_dmy[i].replace("{sy}", "{ey}");
+        if (start_dmy[i].charAt(start_dmy[i].length-1) === " ") {
+	start_dmy[i]=start_dmy[i].slice(0,-1);
+	intervalFormats["Hm"]["H"] = " "+ intervalFormats["Hm"]["H"] + " ";
+	end_dmy[i]=end_my[i].slice(0,-1);
+	}
+        util.print("array_interval_dmy " + array_interval_dmy[i] + "\n");
+        util.print("start_interval_dmy " + start_dmy[i] + "\n");
+        util.print("end_interval_dmy " + end_dmy[i] + "\n");
     }
     var array_interval_my = [ym_m, ym_y, ymmm_m, ymmm_y, ymmmm_m, ymmmm_y];
     for (var i = 0; i < array_interval_my.length; i++) {
@@ -1555,9 +1587,14 @@ function getDateFormats(language, script, region, data) {
         end_my[i] = end_my[i].replace("{sd}", "{ed}");
         end_my[i] = end_my[i].replace("{sm}", "{em}");
         end_my[i] = end_my[i].replace("{sy}", "{ey}");
-        //util.print("array_interval_my "+array_interval_my[i]+"\n");
-        //util.print("start_interval_my "+start_my[i]+"\n");
-        //util.print("end_interval_my "+end_my[i]+"\n");
+	if (start_my[i].charAt(start_my[i].length-1) === " ") {
+	start_my[i]=start_my[i].slice(0,-1);
+	intervalFormats["Hm"]["H"] = " "+ intervalFormats["Hm"]["H"] + " ";
+	end_my[i]=end_my[i].slice(0,-1);
+	}
+        util.print("array_interval_my "+array_interval_my[i]+"\n");
+        util.print("start_interval_my "+start_my[i]+"\n");
+        util.print("end_interval_my "+end_my[i]+"\n");
     }
     //c01
     //c01["s"]=array_interval_dmy[0]+
