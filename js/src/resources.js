@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ilibglobal.js locale.js strings.js util/utils.js
+// !depends ilibglobal.js locale.js localeinfo.js strings.js util/utils.js
 
 // !data pseudomap
 
