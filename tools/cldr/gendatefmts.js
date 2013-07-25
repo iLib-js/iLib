@@ -146,14 +146,81 @@ function calcLocalePath(language, script, region, filename) {
     return path;
 }
 
+function checkifHandwritten(language, script, region, filename) {
+    if (typeof(language) == 'undefined') {
+		return false;
+		}
+    if (language) {
+		if (language == 'en' ) {
+			return false;
+			}
+		if (script && region ) {
+                    
+                    var file = localeDirName + "/" + language + "/" + script + "/" + filename ;
+		    var obj = loadFile(file);
+                    util.print("LANGUAGE is " + "~~~~~~~~~~~~~~~~~~~~~~~" + language + "\n");
+                        util.print("SCRIPT is " + "~~~~~~~~~~~~~~~~~~~~~~~" + script + "\n");
+			util.print("REGION is " + "~~~~~~~~~~~~~~~~~~~~~~~" + region + "\n");
+		   if (typeof (obj) !== 'undefined') {
+		    	if ( typeof(obj.generated) === 'undefined' || obj.generated === false) {
+			return false;
+			}
+		    }
+                else {
+                       file = localeDirName + "/" + language + "/" + filename ;
+                       util.print("COMING here " + "~~~~~~~~~~~~~~~~~~~~~~~" + region + "\n");
+		       obj = loadFile(file);
+                       util.print("FILE is " + "~~~~~~~~~~~~~~~~~~~~~~~" + file + "\n");
+                        if (typeof (obj) !== 'undefined') {
+                         util.print("working" + "~~~~~~~~~~~~~~~~~~~~~~~" + file + "\n");
+		    	if ( typeof(obj.generated) === 'undefined' || obj.generated === false) {
+                          util.print("working here " + "~~~~~~~~~~~~~~~~~~~~~~~" + file + "\n");
+			   return false;
+						}
+					}				
+		   
+				}
+			}
+	
+		    else {
+			if  (script || region) {
+                        //util.print("LANGUAGE is " + "~~~~~~~~~~~~~~~~~~~~~~~" + language + "\n");
+                        //util.print("SCRIPT is " + "~~~~~~~~~~~~~~~~~~~~~~~" + script + "\n");
+			//util.print("REGION is " + "~~~~~~~~~~~~~~~~~~~~~~~" + region + "\n");
+                    	file = localeDirName + "/" + language + "/" + filename ;
+			//util.print("FILE is " + "~~~~~~~~~~~~~~~~~~~~~~~" + file + "\n");
+                    	obj = loadFile(file);
+			if (typeof (obj) !== 'undefined') {
+		    	if (typeof (obj.generated) === 'undefined' || obj.generated === false) {
+			return false;
+					}
+				}				
+			}
+		}
+          return true;
+	 }
+		
+}
 function loadFileNonGenerated(language, script, region, filename) {
     var path = calcLocalePath(language, script, region, filename);
     var obj = loadFile(path);
-    
+    var flag= checkifHandwritten(language, script, region, filename) ;
     if (typeof (obj) !== 'undefined' && (typeof (obj.generated) === 'undefined' || obj.generated === false)) {
         // only return non-generated files
         return obj;
     }
+	
+  // else if (typeof (obj) !== 'undefined' && obj.generated) {
+              // if (typeof (obj) !== 'undefined') {
+		//var flag= checkifHandwritten(language, script, region, filename) ;
+             //if (typeof (obj) !== 'undefined') {
+		if (flag == false) {
+                  var obj = {};
+		  obj.generated = false;
+		  return obj ;
+			}
+		//}
+	//}
     return undefined;
 }
 var localeData = {};
@@ -1335,7 +1402,7 @@ function getDateFormats(language, script, region, data) {
     n["l"] = "MMM";
     n["f"] = "MMMM";
     //}
-    var allkeys_datefmts = [dm, my, dmy, d, m, y, dmw, dmwy];
+   /* var allkeys_datefmts = [dm, my, dmy, d, m, y, dmw, dmwy];
     for (var i = 0; i < allkeys_datefmts.length; i++) {
         var array_keys = Object.keys(allkeys_datefmts[i]);
         for (var j = 0; j < array_keys.length; j++) {
@@ -1343,7 +1410,7 @@ function getDateFormats(language, script, region, data) {
                 allkeys_datefmts[i][array_keys[j]] = "XXXXX";
             }
         }
-    }
+    }*/
 
     var keys_datefmts = [my, dmy, y, dmwy];
     //var values_dateformats = JSON.stringify(keys_dateformats);
@@ -1556,7 +1623,7 @@ function getDateFormats(language, script, region, data) {
         if (start_dmy[i].charAt(start_dmy[i].length-1) === " ") {
 	start_dmy[i]=start_dmy[i].slice(0,-1);
 	intervalFormats["Hm"]["H"] = " "+ intervalFormats["Hm"]["H"] + " ";
-	end_dmy[i]=end_my[i].slice(0,-1);
+	//end_dmy[i]=end_dmy[i].slice(0,-1);
 	}
         util.print("array_interval_dmy " + array_interval_dmy[i] + "\n");
         util.print("start_interval_dmy " + start_dmy[i] + "\n");
@@ -1589,8 +1656,8 @@ function getDateFormats(language, script, region, data) {
         end_my[i] = end_my[i].replace("{sy}", "{ey}");
 	if (start_my[i].charAt(start_my[i].length-1) === " ") {
 	start_my[i]=start_my[i].slice(0,-1);
-	intervalFormats["Hm"]["H"] = " "+ intervalFormats["Hm"]["H"] + " ";
-	end_my[i]=end_my[i].slice(0,-1);
+	//intervalFormats["Hm"]["H"] = " "+ intervalFormats["Hm"]["H"] + " ";
+	//end_my[i]=end_my[i].slice(0,-1);
 	}
         util.print("array_interval_my "+array_interval_my[i]+"\n");
         util.print("start_interval_my "+start_my[i]+"\n");
