@@ -148,9 +148,7 @@ function calcLocalePath(language, script, region, filename) {
 }
 
 function checkifHandwritten(language, script, region, filename) {
-    if (typeof (language) == 'undefined') {
-        return false;
-    }
+   
     if (language) {
         if (language == 'en') {
             return false;
@@ -191,15 +189,21 @@ function checkifHandwritten(language, script, region, filename) {
                 }
             }
         }
-        return true;
+        
     }
-
+          return true;
 }
 
 function loadFileNonGenerated(language, script, region, filename) {
     var path = calcLocalePath(language, script, region, filename);
     var obj = loadFile(path);
-    var flag = checkifHandwritten(language, script, region, filename);
+    var flag ;
+    if (typeof(language) != 'undefined') {
+	
+     flag = checkifHandwritten(language, script, region, filename);
+	
+	}
+	
     if (typeof (obj) !== 'undefined' && (typeof (obj.generated) === 'undefined' || obj.generated === false)) {
         // only return non-generated files
         return obj;
@@ -209,7 +213,7 @@ function loadFileNonGenerated(language, script, region, filename) {
     // if (typeof (obj) !== 'undefined') {
     //var flag= checkifHandwritten(language, script, region, filename) ;
     //if (typeof (obj) !== 'undefined') {
-    if (flag == false) {
+    if (typeof (flag) == 'undefined' || flag == false) {
         var obj = {};
         obj.generated = false;
         return obj;
@@ -1233,6 +1237,7 @@ function getDateFormats(language, script, region, data) {
     //end of dmy combination
     if (available_formats["d"]) {
         d["s"] = available_formats["d"];
+        d["s"] = d["s"].replace(/\./ , "");
         d["m"] = d["l"] = d["f"] = d["s"];
     }
     if (available_formats["d"] === undefined) {
@@ -1260,6 +1265,8 @@ function getDateFormats(language, script, region, data) {
             break;
         }
     }
+   
+   //d = JSON.stringify(d).replace(/./g,"");
     //}
     //}
     //end of d combination
@@ -1520,6 +1527,8 @@ function getDateFormats(language, script, region, data) {
     //code to get the date range
     var range = {};
     var intervalFormats = data.dates.calendars["gregorian"]["dateTimeFormats"]["intervalFormats"];
+    intervalFormats = JSON.parse(JSON.stringify(intervalFormats).replace(/L/g, "M"));
+    intervalFormats = JSON.parse(JSON.stringify(intervalFormats).replace(/G/g, ""));
     //intervalFormats =JSON.parse(JSON.stringify(intervalFormats).replace(/'[^']+'/, ""));
     //util.print("interval formats  "+JSON.stringify(intervalFormats)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
     //intervalFormats=JSON.parse(JSON.stringify(intervalFormats).replace(/[^.–\s\/Mdy]/g,""));
@@ -1618,8 +1627,12 @@ function getDateFormats(language, script, region, data) {
         if (start_dmy[i].charAt(start_dmy[i].length - 1) === " ") {
             start_dmy[i] = start_dmy[i].slice(0, -1);
             intervalFormats["Hm"]["H"] = " " + intervalFormats["Hm"]["H"] + " ";
-            //end_dmy[i]=end_dmy[i].slice(1);
+            end_dmy[i]=end_dmy[i].slice(1);
         }
+	
+	 if (start_dmy[i].charAt(0) === " ") {
+            start_dmy[i] = start_dmy[i].slice(1);
+		}
         //util.print("array_interval_dmy " + array_interval_dmy[i] + "\n");
         //util.print("start_interval_dmy " + start_dmy[i] + "\n");
         //util.print("end_interval_dmy " + end_dmy[i] + "\n");
@@ -1652,7 +1665,7 @@ function getDateFormats(language, script, region, data) {
         if (start_my[i].charAt(start_my[i].length - 1) === " ") {
             start_my[i] = start_my[i].slice(0, -1);
             //intervalFormats["Hm"]["H"] = " "+ intervalFormats["Hm"]["H"] + " ";
-            //end_my[i]=end_my[i].slice(0,-1);
+            end_my[i]=end_my[i].slice(1);
         }
         //util.print("array_interval_my "+array_interval_my[i]+"\n");
         //util.print("start_interval_my "+start_my[i]+"\n");
@@ -1661,43 +1674,43 @@ function getDateFormats(language, script, region, data) {
     //c01
     //c01["s"]=array_interval_dmy[0]+
     if (gregorian["order"] === "{time} {date}") {
-        c00["s"] = "{st}" + intervalFormats["Hm"]["H"] + "{et}" + array[0];
-        c00["m"] = "{st}" + intervalFormats["Hm"]["H"] + "{et}" + array[1];
-        c00["l"] = "{st}" + intervalFormats["Hm"]["H"] + "{et}" + array[2];
-        c00["f"] = "{st}" + intervalFormats["Hm"]["H"] + "{et}" + array[3];
+        c00["s"] = "{st}" + intervalFormats["Hm"]["H"] + "{et}" + " " + array[0];
+        c00["m"] = "{st}" + intervalFormats["Hm"]["H"] + "{et}" + " " + array[1];
+        c00["l"] = "{st}" + intervalFormats["Hm"]["H"] + "{et}" + " " + array[2];
+        c00["f"] = "{st}" + intervalFormats["Hm"]["H"] + "{et}" + " " + array[3];
     } else {
-        c00["s"] = array[0] + "{st}" + intervalFormats["Hm"]["H"] + "{et}";
-        c00["m"] = array[1] + "{st}" + intervalFormats["Hm"]["H"] + "{et}";
-        c00["l"] = array[2] + "{st}" + intervalFormats["Hm"]["H"] + "{et}";
-        c00["f"] = array[3] + "{st}" + intervalFormats["Hm"]["H"] + "{et}";
+        c00["s"] = array[0] + "{st}" + intervalFormats["Hm"]["H"] + " " + "{et}";
+        c00["m"] = array[1] + "{st}" + intervalFormats["Hm"]["H"] + " " + "{et}";
+        c00["l"] = array[2] + "{st}" + intervalFormats["Hm"]["H"] + " " + "{et}";
+        c00["f"] = array[3] + "{st}" + intervalFormats["Hm"]["H"] + " " + "{et}";
     }
     //for c01
     if (gregorian["order"] === "{time} {date}") {
-        c01["s"] = "{st}" + start_dmy[0] + intervalFormats["Hm"]["H"] + "{et}" + end_dmy[0];
-        c01["l"] = "{st}" + start_dmy[3] + intervalFormats["Hm"]["H"] + "{et}" + end_dmy[0];
+        c01["s"] = "{st}" + " " + start_dmy[0] + intervalFormats["Hm"]["H"] + "{et}" + " " + end_dmy[0];
+        c01["l"] = "{st}" + " " + start_dmy[3] + intervalFormats["Hm"]["H"] + "{et}" + " " + end_dmy[0];
     } else {
-        c01["s"] = start_dmy[0] + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[0] + "{et}";
-        c01["l"] = start_dmy[3] + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[0] + "{et}";
+        c01["s"] = start_dmy[0] + " " + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[0] + " " + "{et}";
+        c01["l"] = start_dmy[3] + " " + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[0] + " " + "{et}";
     }
     c01["m"] = c01["s"];
     c01["f"] = c01["l"];
     //for c02
     if (gregorian["order"] === "{time} {date}") {
-        c02["s"] = "{st}" + start_dmy[1] + intervalFormats["Hm"]["H"] + "{et}" + end_dmy[1];
-        c02["l"] = "{st}" + start_dmy[4] + intervalFormats["Hm"]["H"] + "{et}" + end_dmy[4];
+        c02["s"] = "{st}" + " "+ start_dmy[1] + intervalFormats["Hm"]["H"] + "{et}" + " " + end_dmy[1];
+        c02["l"] = "{st}" + " "+ start_dmy[4] + intervalFormats["Hm"]["H"] + "{et}" + " " + end_dmy[4];
     } else {
-        c02["s"] = start_dmy[1] + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[1] + "{et}";
-        c02["l"] = start_dmy[4] + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[4] + "{et}";
+        c02["s"] = start_dmy[1] + " " + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[1] + " " + "{et}";
+        c02["l"] = start_dmy[4] + " " + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[4] + " " + "{et}";
     }
     c02["f"] = c02["l"];
     c02["m"] = c02["s"];
     //for c03
     if (gregorian["order"] === "{time} {date}") {
-        c03["s"] = "{st}" + start_dmy[2] + intervalFormats["Hm"]["H"] + "{et}" + end_dmy[2];
-        c03["l"] = "{st}" + start_dmy[5] + intervalFormats["Hm"]["H"] + "{et}" + end_dmy[5];
+        c03["s"] = "{st}" + " " + start_dmy[2] + intervalFormats["Hm"]["H"] + "{et}" + " " + end_dmy[2];
+        c03["l"] = "{st}" + " " + start_dmy[5] + intervalFormats["Hm"]["H"] + "{et}" + " " + end_dmy[5];
     } else {
-        c03["s"] = start_dmy[2] + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[2] + "{et}";
-        c03["l"] = start_dmy[5] + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[5] + "{et}";
+        c03["s"] = start_dmy[2] + " " + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[2] + " " + "{et}";
+        c03["l"] = start_dmy[5] + " " + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[5] + " " + "{et}";
     }
     c03["f"] = c03["l"];
     c03["m"] = c03["s"];
