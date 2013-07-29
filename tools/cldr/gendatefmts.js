@@ -887,6 +887,7 @@ for (language in resources) {
     }
 }
 writeSystemResources(undefined, undefined, undefined, resources.data);
+
 resources_dateformat_data.data = getDateFormats(undefined, undefined, undefined, localeData.data);
 for (language in localeData) {
     if (language && localeData[language] && language !== 'data' && language !== 'merged') {
@@ -919,8 +920,8 @@ function getDateFormats(language, script, region, data) {
     // util.print("language: " + language + "\n");
     //  util.print("script: " + script + "\n");
     // util.print("region: " + region + "\n");
-    if (dates && !dates.generated) {
-        util.print("\nLoaded existing resources from " + calcLocalePath(language, script, region, "dateformats.json") + "\n");
+    if (dates && (typeof(dates.generated) === 'undefined' || !dates.generated)) {
+        util.print("\nLoaded existing dateformats from " + calcLocalePath(language, script, region, "dateformats.json") + "\n");
         dates.generated = false;
         return dates;
     }
@@ -1416,7 +1417,7 @@ function getDateFormats(language, script, region, data) {
 
     var keys_datefmts = [my, dmy, y, dmwy];
     //var values_dateformats = JSON.stringify(keys_dateformats);
-    var datefmt_values = [];
+    //var datefmt_values = [];
     //util.print("date fomat keys are :" + keys_dateformats + "*********************************" + "\n");
     for (var i = 0; i < keys_datefmts.length; i++) {
         if (typeof (keys_datefmts[i] != 'undefined')) {
@@ -1523,7 +1524,7 @@ function getDateFormats(language, script, region, data) {
     }
     time_fmt["12"] = time_12;
     gregorian["time"] = time_fmt;
-    util.print("gregorian date formats are :" + JSON.stringify(gregorian.time) + "++++++++++++++++++++++++++++++++++++++++++++" + "\n");
+    //util.print("gregorian date formats are :" + JSON.stringify(gregorian.time) + "++++++++++++++++++++++++++++++++++++++++++++" + "\n");
     //code to get the date range
     var range = {};
     var intervalFormats = data.dates.calendars["gregorian"]["dateTimeFormats"]["intervalFormats"];
@@ -1563,30 +1564,32 @@ function getDateFormats(language, script, region, data) {
     var c12 = {};
     var c20 = {};
     var c30 = {};
-    var s_sd = [];
-    var s_sm = [];
-    var s_sy = [];
+    //var s_sd = [];
+    //var s_sm = [];
+    //var s_sy = [];
     //var array=[date["dmy"]["s"],date["dmy"]["m"],date["dmy"]["l"],date["dmy"]["f"]]
     var array = [dmy["s"], dmy["m"], dmy["l"], dmy["f"]];
-    var arr_dm = [];
-    var arr_y = [];
+    //var arr_dm = [];
+    //var arr_y = [];
     for (var i = 0; i < array.length; i++) {
         //util.print("array"+array[i]+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
-        var index_of_d = array[i].indexOf("d");
-        var index_of_m = array[i].indexOf("M");
-        var index_of_y = array[i].indexOf("y");
+        //var index_of_d = array[i].indexOf("d");
+        //var index_of_m = array[i].indexOf("M");
+        //var index_of_y = array[i].indexOf("y");
         array[i] = array[i].replace(/[^Mdy–.\/\s]/g, "");
         //util.print("array after replace "+array[i]+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
         array[i] = array[i].replace(/[d]+/g, "{sd}");
         array[i] = array[i].replace(/[M]+/g, "{sm}");
         array[i] = array[i].replace(/[y]+/g, "{sy}");
     }
+    /*
     for (var i = 0; i < array.length; i++) {
         var index_of_st = array[i].indexOf("{st}");
         var index_of_sd = array[i].indexOf("{sd}");
         var index_of_sm = array[i].indexOf("{sm}");
         var index_of_sm = array[i].indexOf("{sy}");
     }
+    */
     var array_interval_dmy = [ymd_d, ymd_m, ymd_y, ymmmd_d, ymmmd_m, ymmmd_y];
     var start_dmy = [];
     var end_dmy = [];
@@ -1774,7 +1777,7 @@ function getDateFormats(language, script, region, data) {
 
 function writeDateFormats(language, script, region, data) {
     var path = calcLocalePath(language, script, region, "");
-    if (!data.byhand || data.generated) {
+    if (data.generated) {
         if (anyProperties(data)) {
             var empty_data = data["gregorian"]["date"];
             //var empty_data_time = data["gregorian"]["time"];
