@@ -39,10 +39,10 @@
 				"f": "EEEE 'den' d."
 			},
 			"d": {
-				"s": "d.",
-				"m": "d.",
-				"l": "d.",
-				"f": "d."
+				"s": "d",
+				"m": "d",
+				"l": "d",
+				"f": "d"
 			},
 			"m": {
 				"s": "M",
@@ -93,7 +93,7 @@
 				"s": "{sd}/{sm}/{sy} {st} - {et}",
 				"m": "{sd}/{sm}/{sy} {st} - {et}",
 				"l": "{sd}/{sm}/{sy} {st} - {et}",
-				"f": "{sd} 'den' {sm} {sy} {st} - {et} "
+				"f": "{sd} 'den' {sm} {sy} {st} - {et}"
 			},
 			"c01": {
 				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
