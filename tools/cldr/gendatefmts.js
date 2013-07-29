@@ -948,7 +948,7 @@ function getDateFormats(language, script, region, data) {
     // util.print("available formats are :" + JSON.stringify(available_formats) + "+++++++++++++++++++++" + "\n");
     available_formats = JSON.parse(JSON.stringify(available_formats).replace(/L/g, "M"));
     available_formats = JSON.parse(JSON.stringify(available_formats).replace(/G/g, ""));
-    available_formats = JSON.parse(JSON.stringify(available_formats).replace(/'[^']+'/g, ""));
+    //available_formats = JSON.parse(JSON.stringify(available_formats).replace(/'[^']+'/g, ""));
     //util.print("available formats after conversion :" + JSON.stringify(available_formats) + "++++++++++++++++++++++++++++++++++++++++++++" + "\n");
     var keys_dateformats = Object.keys(available_formats);
     //var values_dateformats = JSON.stringify(keys_dateformats);
@@ -1539,20 +1539,20 @@ function getDateFormats(language, script, region, data) {
     //intervalFormats["Hm"]["H"] = intervalFormats["Hm"]["H"].replace(end_time, "");
     intervalFormats["Hm"]["H"] = intervalFormats["intervalFormatFallback"].charAt((intervalFormats["intervalFormatFallback"].length - 1) / 2);
     //util.print("time format after replace "+intervalFormats["Hm"]["H"]+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
-    var ymd_d = intervalFormats["yMd"]["d"].replace(/'[^']+'/g, "");
-    var ymd_m = intervalFormats["yMd"]["M"].replace(/'[^']+'/g, "");
-    var ymd_y = intervalFormats["yMd"]["y"].replace(/'[^']+'/g, "");
-    var ymmmd_d = intervalFormats["yMMMd"]["d"].replace(/'[^']+'/g, "");
-    var ymmmd_m = intervalFormats["yMMMd"]["M"].replace(/'[^']+'/g, "");
-    var ymmmd_y = intervalFormats["yMMMd"]["y"].replace(/'[^']+'/g, "");
+    var ymd_d = intervalFormats["yMd"]["d"]//.replace(/'[^']+'/g, "");
+    var ymd_m = intervalFormats["yMd"]["M"]//.replace(/'[^']+'/g, "");
+    var ymd_y = intervalFormats["yMd"]["y"]//.replace(/'[^']+'/g, "");
+    var ymmmd_d = intervalFormats["yMMMd"]["d"]//.replace(/'[^']+'/g, "");
+    var ymmmd_m = intervalFormats["yMMMd"]["M"]//.replace(/'[^']+'/g, "");
+    var ymmmd_y = intervalFormats["yMMMd"]["y"]//.replace(/'[^']+'/g, "");
     //var ym_d=intervalFormats["yM"]["d"];
-    var ym_m = intervalFormats["yM"]["M"].replace(/'[^']+'/g, "");
-    var ym_y = intervalFormats["yM"]["y"].replace(/'[^']+'/g, "");
+    var ym_m = intervalFormats["yM"]["M"]//.replace(/'[^']+'/g, "");
+    var ym_y = intervalFormats["yM"]["y"]//.replace(/'[^']+'/g, "");
     //var ymmm_d=intervalFormats["yMMM"]["d"];
-    var ymmm_m = intervalFormats["yMMM"]["M"].replace(/'[^']+'/g, "");
-    var ymmm_y = intervalFormats["yMMM"]["y"].replace(/'[^']+'/g, "");
-    var ymmmm_m = intervalFormats["yMMMM"]["M"].replace(/'[^']+'/g, "");
-    var ymmmm_y = intervalFormats["yMMMM"]["y"].replace(/'[^']+'/g, "");
+    var ymmm_m = intervalFormats["yMMM"]["M"]//.replace(/'[^']+'/g, "");
+    var ymmm_y = intervalFormats["yMMM"]["y"]//.replace(/'[^']+'/g, "");
+    var ymmmm_m = intervalFormats["yMMMM"]["M"]//.replace(/'[^']+'/g, "");
+    var ymmmm_y = intervalFormats["yMMMM"]["y"]//.replace(/'[^']+'/g, "");
     //for coo
     //intervalFormats =JSON.parse(JSON.stringify(intervalFormats).replace(/'[^']+'/g, ""));
     var c00 = {};
@@ -1636,9 +1636,9 @@ function getDateFormats(language, script, region, data) {
 	 if (start_dmy[i].charAt(0) === " ") {
             start_dmy[i] = start_dmy[i].slice(1);
 		}
-        //util.print("array_interval_dmy " + array_interval_dmy[i] + "\n");
-        //util.print("start_interval_dmy " + start_dmy[i] + "\n");
-        //util.print("end_interval_dmy " + end_dmy[i] + "\n");
+        util.print("array_interval_dmy " + array_interval_dmy[i] + "\n");
+        util.print("start_interval_dmy " + start_dmy[i] + "\n");
+        util.print("end_interval_dmy " + end_dmy[i] + "\n");
     }
     var array_interval_my = [ym_m, ym_y, ymmm_m, ymmm_y, ymmmm_m, ymmmm_y];
     for (var i = 0; i < array_interval_my.length; i++) {
@@ -1670,9 +1670,9 @@ function getDateFormats(language, script, region, data) {
             //intervalFormats["Hm"]["H"] = " "+ intervalFormats["Hm"]["H"] + " ";
             end_my[i]=end_my[i].slice(1);
         }
-        //util.print("array_interval_my "+array_interval_my[i]+"\n");
-        //util.print("start_interval_my "+start_my[i]+"\n");
-        //util.print("end_interval_my "+end_my[i]+"\n");
+        util.print("array_interval_my "+array_interval_my[i]+"\n");
+        util.print("start_interval_my "+start_my[i]+"\n");
+        util.print("end_interval_my "+end_my[i]+"\n");
     }
     //c01
     //c01["s"]=array_interval_dmy[0]+
@@ -1751,6 +1751,7 @@ function getDateFormats(language, script, region, data) {
     range["c12"] = c12;
     range["c20"] = c20;
     range["c30"] = c30;
+    range = JSON.parse(JSON.stringify(range).replace(/  /g, " "));
     //range["c00"]=c00;
     //var start_time=JSON.stringify(intervalFormats["Hm"]["H"]).replace(start_time_fmt,"st");
     //r end_time=intervalFormats["Hm"]["H"].substring(1+intervalFormats["Hm"]["H"].lastIndexOf("–"),intervalFormats["Hm"]["H"].length).replace("et");
