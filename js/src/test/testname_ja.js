@@ -47,11 +47,11 @@ function testDEParseSimpleName_ja_JP() {
 
 
 function testDEParseSingleNameWithPrefixAndAdjunct_ja_JP() {
-	var parsed = new ilib.Name("高橋 拓海 総裁", {locale: 'ja-JP'});
+	var parsed = new ilib.Name("さん 拓海 総裁", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		 suffix : "総裁",
+		 suffix : "さん",
 		givenName: "拓海",
 		familyName: "高橋"
 	};
