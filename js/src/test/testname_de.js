@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testDEParseSimpleName() {
+function testParseSimpleName_de_DE() {
 	var parsed = new ilib.Name("Johan Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -29,7 +29,7 @@ function testDEParseSimpleName() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseTripleName() {
+function testParseTripleName_de_DE() {
 	var parsed = new ilib.Name("Johan Michael Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -42,7 +42,7 @@ function testDEParseTripleName() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseAdjunctNames() {
+function testParseAdjunctNames_de_DE() {
 	var parsed = new ilib.Name("Ludwig Klaus von Beethoven", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -55,7 +55,7 @@ function testDEParseAdjunctNames() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseSingleName() {
+function testParseSingleName_de_DE() {
 	var parsed = new ilib.Name("Ludwig", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -66,7 +66,7 @@ function testDEParseSingleName() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseSingleNameWithAdjunct() {
+function testParseSingleNameWithAdjunct_de_DE() {
 	var parsed = new ilib.Name("von Beethoven", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -78,7 +78,7 @@ function testDEParseSingleNameWithAdjunct() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseSingleNameWithPrefixAndAdjunct() {
+function testParseSingleNameWithPrefixAndAdjunct_de_DE() {
 	var parsed = new ilib.Name("Herr von Beethoven", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -90,7 +90,7 @@ function testDEParseSingleNameWithPrefixAndAdjunct() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseMultiAdjunctNames() {
+function testParseMultiAdjunctNames_de_DE() {
 	var parsed = new ilib.Name("Ludwig von den Wiesthal", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -102,7 +102,7 @@ function testDEParseMultiAdjunctNames() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseHypenatedName() {
+function testParseHypenatedName_de_DE() {
 	var parsed = new ilib.Name("Johan Michael Bergische-Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -115,7 +115,7 @@ function testDEParseHypenatedName() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseQuadrupleName() {
+function testParseQuadrupleName_de_DE() {
 	var parsed = new ilib.Name("Johan Michael Jürgen Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -128,7 +128,7 @@ function testDEParseQuadrupleName() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseTitle() {
+function testParseTitle_de_DE() {
 	var parsed = new ilib.Name("Herr Dr. Johan Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -141,7 +141,7 @@ function testDEParseTitle() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseTitleWithFamilyOnly() {
+function testParseTitleWithFamilyOnly_de_DE() {
 	var parsed = new ilib.Name("Herr Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -153,7 +153,7 @@ function testDEParseTitleWithFamilyOnly() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseTitleWithFamilyOnlyAndAdjunct() {
+function testParseTitleWithFamilyOnlyAndAdjunct_de_DE() {
 	var parsed = new ilib.Name("Herr von Schmidt", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -165,7 +165,7 @@ function testDEParseTitleWithFamilyOnlyAndAdjunct() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseHonorific() {
+function testParseHonorific_de_DE() {
 	var parsed = new ilib.Name("Fr. Julia Maier", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -178,7 +178,7 @@ function testDEParseHonorific() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseEverything() {
+function testParseEverything_de_DE() {
 	var parsed = new ilib.Name("Herr Präsident Johan Michael Jürgen Schmidt III", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -193,7 +193,7 @@ function testDEParseEverything() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseFamily() {
+function testParseFamily_de_DE() {
 	var parsed = new ilib.Name("Die Maiers", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -205,7 +205,7 @@ function testDEParseFamily() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseCompoundHonorific() {
+function testParseCompoundHonorific_de_DE() {
 	var parsed = new ilib.Name("Herr und Frau Maier", {locale: 'de-DE'});
 	assertNotUndefined(parsed);
 	
@@ -221,7 +221,7 @@ function testDEParseCompoundHonorific() {
  * Format Tests
  */
 
-function testDEFormatSimpleNameShort() {
+function testFormatSimpleNameShort_de_DE() {
 	var name = new ilib.Name({
 		givenName: "Johan",
 		middleName: "Michael",
@@ -239,7 +239,7 @@ function testDEFormatSimpleNameShort() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatSimpleNameMedium() {
+function testFormatSimpleNameMedium_de_DE() {
 	var name = new ilib.Name({
 		givenName: "Johan",
 		middleName: "Michael",
@@ -257,7 +257,7 @@ function testDEFormatSimpleNameMedium() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatSimpleNameLong() {
+function testFormatSimpleNameLong_de_DE() {
 	var name = new ilib.Name({
 		givenName: "Johan",
 		middleName: "Michael",
@@ -276,7 +276,7 @@ function testDEFormatSimpleNameLong() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatSimpleNameFull() {
+function testFormatSimpleNameFull_de_DE() {
 	var name = new ilib.Name({
 		prefix: "Herr Doktor",
 		givenName: "Johan",
@@ -296,7 +296,7 @@ function testDEFormatSimpleNameFull() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatComplexNameShort() {
+function testFormatComplexNameShort_de_DE() {
 	var name = new ilib.Name({
 		prefix: "Herr Doktor",
 		givenName: "Johan",
@@ -316,7 +316,7 @@ function testDEFormatComplexNameShort() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatComplexNameMedium() {
+function testFormatComplexNameMedium_de_DE() {
 	var name = new ilib.Name({
 		prefix: "Herr Doktor",
 		givenName: "Johan",
@@ -336,7 +336,7 @@ function testDEFormatComplexNameMedium() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatComplexNameLong() {
+function testFormatComplexNameLong_de_DE() {
 	var name = new ilib.Name({
 		prefix: "Herr Doktor",
 		givenName: "Johan",
@@ -356,7 +356,7 @@ function testDEFormatComplexNameLong() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatAsianNameShort() {
+function testFormatAsianNameShort_de_DE() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
@@ -375,7 +375,7 @@ function testDEFormatAsianNameShort() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatAsianNameMedium() {
+function testFormatAsianNameMedium_de_DE() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
@@ -394,7 +394,7 @@ function testDEFormatAsianNameMedium() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatAsianNameLong() {
+function testFormatAsianNameLong_de_DE() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",

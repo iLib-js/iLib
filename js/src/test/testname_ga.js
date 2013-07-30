@@ -31,7 +31,7 @@ function testJAJPParseSimpleName_ga_IE() {
 
 
 
-function testDEParseSimpleName_ga_IE() {
+function testParseSimpleName_ga_IE() {
 	var parsed = new ilib.Name("An tUasal. Kertu O'Reilly", {locale: 'ga-IE'});
 	assertNotUndefined(parsed);
 	
@@ -47,7 +47,7 @@ function testDEParseSimpleName_ga_IE() {
 
 
 
-function testDEParseSingleNameWithPrefixAndAdjunct_ga_IE() {
+function testParseSingleNameWithPrefixAndAdjunct_ga_IE() {
 	var parsed = new ilib.Name("Daniel O'Reilly sóisearach", {locale: 'ga-IE'});
 	assertNotUndefined(parsed);
 	
@@ -61,7 +61,7 @@ function testDEParseSingleNameWithPrefixAndAdjunct_ga_IE() {
 };
 
 
-function testDEParseTitle_ga_IE1() {
+function testParseTitle_ga_IE1() {
 	var parsed = new ilib.Name("príomh-aire Daniel O'Reilly", {locale: 'ga-IE'});
 	assertNotUndefined(parsed);
 	
@@ -75,7 +75,7 @@ function testDEParseTitle_ga_IE1() {
 };
 
 
-function testDEParseTitle_ga_IE_second() {
+function testParseTitle_ga_IE_second() {
 	var parsed = new ilib.Name("An tUasal. agus Mrs. O'Reilly", {locale: 'ga-IE'});
 	assertNotUndefined(parsed);
 	
@@ -88,7 +88,7 @@ function testDEParseTitle_ga_IE_second() {
 };
 
 
-function testDEParseTitleWithFamilyOnlyAndAdjunct_ga_IE() {
+function testParseTitleWithFamilyOnlyAndAdjunct_ga_IE() {
 
 	var name = new ilib.Name({
 		prefix: "príomh-aire",
@@ -111,7 +111,7 @@ function testDEParseTitleWithFamilyOnlyAndAdjunct_ga_IE() {
 
 
 
-function testDEParseCompoundHonorific_ga_IE() {
+function testParseCompoundHonorific_ga_IE() {
 	var parsed = new ilib.Name("príomh-aire O'Reilly", {locale: 'ga-IE'});
 	assertNotUndefined(parsed);
 	
@@ -127,7 +127,7 @@ function testDEParseCompoundHonorific_ga_IE() {
  * Format Tests
  */
 
-function testDEFormatSimpleNameShort_ga_IE() {
+function testFormatSimpleNameShort_ga_IE() {
 	var name = new ilib.Name({
 		givenName: "Daniel",
 		familyName: "O'Reilly"
@@ -144,7 +144,7 @@ function testDEFormatSimpleNameShort_ga_IE() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatSimpleNameMedium_ga_IE() {
+function testFormatSimpleNameMedium_ga_IE() {
 	var name = new ilib.Name({
 		givenName: "Daniel",
 		familyName: "O'Reilly"
@@ -161,7 +161,7 @@ function testDEFormatSimpleNameMedium_ga_IE() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatSimpleNameFull_ga_IE() {
+function testFormatSimpleNameFull_ga_IE() {
 	var name = new ilib.Name({
 		
 		givenName: "Daniel",
@@ -180,7 +180,7 @@ function testDEFormatSimpleNameFull_ga_IE() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatComplexNameShort_ga_IE() {
+function testFormatComplexNameShort_ga_IE() {
 	var name = new ilib.Name({
 		suffix: "scor",
 		givenName: "Daniel",
@@ -199,7 +199,7 @@ function testDEFormatComplexNameShort_ga_IE() {
 };
 
 
-function testDEFormatAsianNameMedium_ga_IE() {
+function testFormatAsianNameMedium_ga_IE() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
@@ -218,7 +218,7 @@ function testDEFormatAsianNameMedium_ga_IE() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatAsianNameLong_ga_IE() {
+function testFormatAsianNameLong_ga_IE() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",

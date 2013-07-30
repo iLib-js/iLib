@@ -31,7 +31,7 @@ function testJAJPParseSimpleName_hr_HR() {
 
 
 
-function testDEParseSimpleName_hr_HR() {
+function testParseSimpleName_hr_HR() {
 	var parsed = new ilib.Name("G. Kertu Pavlović", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	
@@ -46,7 +46,7 @@ function testDEParseSimpleName_hr_HR() {
 };
 
 
-function testDEParseSimpleName_hr_HR() {
+function testParseSimpleName_hr_HR() {
 	var parsed = new ilib.Name("Gospođa. Kertu Pavlović", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	
@@ -62,7 +62,7 @@ function testDEParseSimpleName_hr_HR() {
 
 
 
-function testDEParseSingleNameWithPrefixAndAdjunct_hr_HR() {
+function testParseSingleNameWithPrefixAndAdjunct_hr_HR() {
 	var parsed = new ilib.Name("Antonio Vesna Pavlović mlađi", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	
@@ -77,7 +77,7 @@ function testDEParseSingleNameWithPrefixAndAdjunct_hr_HR() {
 };
 
 
-function testDEParseTitle_hr_HR1() {
+function testParseTitle_hr_HR1() {
 	var parsed = new ilib.Name("predsjednik Antonio Vesna Pavlović", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	
@@ -92,7 +92,7 @@ function testDEParseTitle_hr_HR1() {
 };
 
 
-function testDEParseTitle_hr_HR_second() {
+function testParseTitle_hr_HR_second() {
 	var parsed = new ilib.Name("G. i Gospođa. Pavlović", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	
@@ -104,7 +104,7 @@ function testDEParseTitle_hr_HR_second() {
 };
 
 
-function testDEParseTitleWithFamilyOnlyAndAdjunct_hr_HR() {
+function testParseTitleWithFamilyOnlyAndAdjunct_hr_HR() {
 
 	var name = new ilib.Name({
 		prefix: "predsjednik",
@@ -128,7 +128,7 @@ function testDEParseTitleWithFamilyOnlyAndAdjunct_hr_HR() {
 
 
 
-function testDEParseCompoundHonorific_hr_HR() {
+function testParseCompoundHonorific_hr_HR() {
 	var parsed = new ilib.Name("predsjednik Pavlović", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	
@@ -144,7 +144,7 @@ function testDEParseCompoundHonorific_hr_HR() {
  * Format Tests
  */
 
-function testDEFormatSimpleNameShort_hr_HR() {
+function testFormatSimpleNameShort_hr_HR() {
 	var name = new ilib.Name({
 		givenName: "Antonio",
 	middleName : "Vesna",
@@ -162,7 +162,7 @@ function testDEFormatSimpleNameShort_hr_HR() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatSimpleNameMedium_hr_HR() {
+function testFormatSimpleNameMedium_hr_HR() {
 	var name = new ilib.Name({
 		givenName: "Antonio",
 	middleName : "Vesna",
@@ -180,7 +180,7 @@ function testDEFormatSimpleNameMedium_hr_HR() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatSimpleNameFull_hr_HR() {
+function testFormatSimpleNameFull_hr_HR() {
 	var name = new ilib.Name({
 		
 		givenName: "Antonio",
@@ -200,7 +200,7 @@ function testDEFormatSimpleNameFull_hr_HR() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatComplexNameShort_hr_HR() {
+function testFormatComplexNameShort_hr_HR() {
 	var name = new ilib.Name({
 		suffix: "mirovini",
 		givenName: "Antonio",
@@ -220,7 +220,7 @@ function testDEFormatComplexNameShort_hr_HR() {
 };
 
 
-function testDEFormatAsianNameMedium_hr_HR() {
+function testFormatAsianNameMedium_hr_HR() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
@@ -239,7 +239,7 @@ function testDEFormatAsianNameMedium_hr_HR() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatAsianNameLong_hr_HR() {
+function testFormatAsianNameLong_hr_HR() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",

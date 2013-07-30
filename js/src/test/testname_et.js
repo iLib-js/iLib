@@ -31,7 +31,7 @@ function testJAJPParseSimpleName_et_EE() {
 
 
 
-function testDEParseSimpleName_et_EE() {
+function testParseSimpleName_et_EE() {
 	var parsed = new ilib.Name("professor Kertu Sepp", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	
@@ -47,7 +47,7 @@ function testDEParseSimpleName_et_EE() {
 
 
 
-function testDEParseSingleNameWithPrefixAndAdjunct_et_EE() {
+function testParseSingleNameWithPrefixAndAdjunct_et_EE() {
 	var parsed = new ilib.Name("Kertu-Triin Sepp jr.", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	
@@ -61,7 +61,7 @@ function testDEParseSingleNameWithPrefixAndAdjunct_et_EE() {
 };
 
 
-function testDEParseTitle_et_EE1() {
+function testParseTitle_et_EE1() {
 	var parsed = new ilib.Name("Hr. Kertu-Triin Sepp", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	
@@ -75,7 +75,7 @@ function testDEParseTitle_et_EE1() {
 };
 
 
-function testDEParseTitle_et_EE_second() {
+function testParseTitle_et_EE_second() {
 	var parsed = new ilib.Name("Prl. Kertu-Triin Sepp", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	
@@ -89,7 +89,7 @@ function testDEParseTitle_et_EE_second() {
 };
 
 
-function testDEParseTitleWithFamilyOnlyAndAdjunct_et_EE() {
+function testParseTitleWithFamilyOnlyAndAdjunct_et_EE() {
 
 	var name = new ilib.Name({
 		prefix: "Hr.",
@@ -111,7 +111,7 @@ function testDEParseTitleWithFamilyOnlyAndAdjunct_et_EE() {
 };
 
 
-function testDEParseTitleWithFamilyOnlyAndAdjunctex_et_EE() {
+function testParseTitleWithFamilyOnlyAndAdjunctex_et_EE() {
 	var parsed = new ilib.Name("inspektor Kertu-Triin Sepp pensionile", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	
@@ -126,7 +126,7 @@ function testDEParseTitleWithFamilyOnlyAndAdjunctex_et_EE() {
 };
 
 
-function testDEParseCompoundHonorific_et_EE() {
+function testParseCompoundHonorific_et_EE() {
 	var parsed = new ilib.Name("Hr. Sepp", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	
@@ -142,7 +142,7 @@ function testDEParseCompoundHonorific_et_EE() {
  * Format Tests
  */
 
-function testDEFormatSimpleNameShort_et_EE() {
+function testFormatSimpleNameShort_et_EE() {
 	var name = new ilib.Name({
 		givenName: "Kertu-Triin",
 		familyName: "Sepp"
@@ -159,7 +159,7 @@ function testDEFormatSimpleNameShort_et_EE() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatSimpleNameMedium_et_EE() {
+function testFormatSimpleNameMedium_et_EE() {
 	var name = new ilib.Name({
 		givenName: "Kertu-Triin",
 		familyName: "Sepp"
@@ -176,7 +176,7 @@ function testDEFormatSimpleNameMedium_et_EE() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatSimpleNameFull_et_EE() {
+function testFormatSimpleNameFull_et_EE() {
 	var name = new ilib.Name({
 		
 		givenName: "Kertu-Triin",
@@ -195,7 +195,7 @@ function testDEFormatSimpleNameFull_et_EE() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatComplexNameShort_et_EE() {
+function testFormatComplexNameShort_et_EE() {
 	var name = new ilib.Name({
 		suffix: "pensionile",
 		givenName: "Kertu-Triin",
@@ -214,7 +214,7 @@ function testDEFormatComplexNameShort_et_EE() {
 };
 
 
-function testDEFormatAsianNameMedium_et_EE() {
+function testFormatAsianNameMedium_et_EE() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
@@ -233,7 +233,7 @@ function testDEFormatAsianNameMedium_et_EE() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatAsianNameLong_et_EE() {
+function testFormatAsianNameLong_et_EE() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",

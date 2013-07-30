@@ -32,7 +32,7 @@ function testJAJPParseSimpleName_fi_FI() {
 
 
 
-function testDEParseSimpleName_fi_FI() {
+function testParseSimpleName_fi_FI() {
 	var parsed = new ilib.Name("Herra Kertu Mikkeli", {locale: 'fi-FI'});
 	assertNotUndefined(parsed);
 	
@@ -48,7 +48,7 @@ function testDEParseSimpleName_fi_FI() {
 
 
 
-function testDEParseSingleNameWithPrefixAndAdjunct_fi_FI() {
+function testParseSingleNameWithPrefixAndAdjunct_fi_FI() {
 	var parsed = new ilib.Name("Pihla Viitala Mikkeli nuorempi", {locale: 'fi-FI'});
 	assertNotUndefined(parsed);
 	
@@ -63,7 +63,7 @@ function testDEParseSingleNameWithPrefixAndAdjunct_fi_FI() {
 };
 
 
-function testDEParseTitle_fi_FI1() {
+function testParseTitle_fi_FI1() {
 	var parsed = new ilib.Name("presidentti Pihla Viitala Mikkeli", {locale: 'fi-FI'});
 	assertNotUndefined(parsed);
 	
@@ -78,7 +78,7 @@ function testDEParseTitle_fi_FI1() {
 };
 
 
-function testDEParseTitle_fi_FI_second() {
+function testParseTitle_fi_FI_second() {
 	var parsed = new ilib.Name("Herra ja Neiti Mikkeli", {locale: 'fi-FI'});
 	assertNotUndefined(parsed);
 	
@@ -91,7 +91,7 @@ function testDEParseTitle_fi_FI_second() {
 };
 
 
-function testDEParseTitleWithFamilyOnlyAndAdjunct_fi_FI() {
+function testParseTitleWithFamilyOnlyAndAdjunct_fi_FI() {
 
 	var name = new ilib.Name({
 		prefix: "presidentti",
@@ -115,7 +115,7 @@ function testDEParseTitleWithFamilyOnlyAndAdjunct_fi_FI() {
 
 
 
-function testDEParseCompoundHonorific_fi_FI() {
+function testParseCompoundHonorific_fi_FI() {
 	var parsed = new ilib.Name("presidentti Mikkeli", {locale: 'fi-FI'});
 	assertNotUndefined(parsed);
 	
@@ -131,7 +131,7 @@ function testDEParseCompoundHonorific_fi_FI() {
  * Format Tests
  */
 
-function testDEFormatSimpleNameShort_fi_FI() {
+function testFormatSimpleNameShort_fi_FI() {
 	var name = new ilib.Name({
 		givenName: "Pihla",
 	middleName : "Viitala",
@@ -149,7 +149,7 @@ function testDEFormatSimpleNameShort_fi_FI() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatSimpleNameMedium_fi_FI() {
+function testFormatSimpleNameMedium_fi_FI() {
 	var name = new ilib.Name({
 		givenName: "Pihla",
 	middleName : "Viitala",
@@ -167,7 +167,7 @@ function testDEFormatSimpleNameMedium_fi_FI() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatSimpleNameFull_fi_FI() {
+function testFormatSimpleNameFull_fi_FI() {
 	var name = new ilib.Name({
 		
 		givenName: "Pihla",
@@ -187,7 +187,7 @@ function testDEFormatSimpleNameFull_fi_FI() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatComplexNameShort_fi_FI() {
+function testFormatComplexNameShort_fi_FI() {
 	var name = new ilib.Name({
 		suffix: "vanhempi",
 		givenName: "Pihla",
@@ -207,7 +207,7 @@ function testDEFormatComplexNameShort_fi_FI() {
 };
 
 
-function testDEFormatAsianNameMedium_fi_FI() {
+function testFormatAsianNameMedium_fi_FI() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
@@ -226,7 +226,7 @@ function testDEFormatAsianNameMedium_fi_FI() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatAsianNameLong_fi_FI() {
+function testFormatAsianNameLong_fi_FI() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",

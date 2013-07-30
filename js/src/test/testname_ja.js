@@ -31,7 +31,7 @@ function testJAJPParseSimpleName_ja_JP() {
 
 
 
-function testDEParseSimpleName_ja_JP() {
+function testParseSimpleName_ja_JP() {
 	var parsed = new ilib.Name("高橋 拓海", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	
@@ -46,7 +46,7 @@ function testDEParseSimpleName_ja_JP() {
 
 
 
-function testDEParseSingleNameWithPrefixAndAdjunct_ja_JP() {
+function testParseSingleNameWithPrefixAndAdjunct_ja_JP() {
 	var parsed = new ilib.Name("さん 拓海 総裁", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	
@@ -60,7 +60,7 @@ function testDEParseSingleNameWithPrefixAndAdjunct_ja_JP() {
 };
 
 
-function testDEParseTitle_ja_JP1() {
+function testParseTitle_ja_JP1() {
 	var parsed = new ilib.Name("高橋 拓海 知事", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	
@@ -75,7 +75,7 @@ function testDEParseTitle_ja_JP1() {
 
 
 
-function testDEParseTitleWithFamilyOnlyAndAdjunct_ja_JP() {
+function testParseTitleWithFamilyOnlyAndAdjunct_ja_JP() {
 	var parsed = new ilib.Name("高橋 拓海 教授", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	
@@ -91,7 +91,7 @@ function testDEParseTitleWithFamilyOnlyAndAdjunct_ja_JP() {
 
 
 
-function testDEParseCompoundHonorific_ja_JP() {
+function testParseCompoundHonorific_ja_JP() {
 	var parsed = new ilib.Name("高橋 教授", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	
@@ -103,7 +103,7 @@ function testDEParseCompoundHonorific_ja_JP() {
 	assertObjectContains(expected, parsed);
 };
 
-function testDEParseCompoundHonorific_ja_JP1() {
+function testParseCompoundHonorific_ja_JP1() {
 	var parsed = new ilib.Name("高橋 総裁.", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	
@@ -118,7 +118,7 @@ function testDEParseCompoundHonorific_ja_JP1() {
  * Format Tests
  */
 
-function testDEFormatSimpleNameShort_ja_JP() {
+function testFormatSimpleNameShort_ja_JP() {
 	var name = new ilib.Name({
 		givenName: "拓海",
 		familyName: "高橋"
@@ -135,7 +135,7 @@ function testDEFormatSimpleNameShort_ja_JP() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatSimpleNameMedium_ja_JP() {
+function testFormatSimpleNameMedium_ja_JP() {
 	var name = new ilib.Name({
 		givenName: "拓海",
 		familyName: "高橋"
@@ -152,7 +152,7 @@ function testDEFormatSimpleNameMedium_ja_JP() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatSimpleNameFull_ja_JP() {
+function testFormatSimpleNameFull_ja_JP() {
 	var name = new ilib.Name({
 		
 		givenName: "拓海",
@@ -171,7 +171,7 @@ function testDEFormatSimpleNameFull_ja_JP() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatComplexNameShort_ja_JP() {
+function testFormatComplexNameShort_ja_JP() {
 	var name = new ilib.Name({
 		suffix: "きゅう",
 		givenName: "拓海",
@@ -190,7 +190,7 @@ function testDEFormatComplexNameShort_ja_JP() {
 };
 
 
-function testDEFormatAsianNameMedium_ja_JP() {
+function testFormatAsianNameMedium_ja_JP() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
@@ -209,7 +209,7 @@ function testDEFormatAsianNameMedium_ja_JP() {
 	assertEquals(expected, formatted);
 };
 
-function testDEFormatAsianNameLong_ja_JP() {
+function testFormatAsianNameLong_ja_JP() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
