@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testJAJPParseSimpleName_ja_JP() {
+function testParseSimpleName_ja_JP() {
 	var parsed = new ilib.Name("Takuya Kimura", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	

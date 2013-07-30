@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testJAJPParseSimpleName_et_EE() {
+function testParseSimpleName_et_EE() {
 	var parsed = new ilib.Name("Kertu-Triin Sepp", {locale: 'et-EE'});
 	assertNotUndefined(parsed);
 	

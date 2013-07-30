@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testJAJPParseSimpleName_hr_HR() {
+function testParseSimpleName_hr_HR() {
 	var parsed = new ilib.Name("Antonio Pavlović", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);
 	

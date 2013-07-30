@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testJAJPParseSimpleName_ga_IE() {
+function testParseSimpleName_ga_IE() {
 	var parsed = new ilib.Name("Daniel O'Reilly", {locale: 'ga-IE'});
 	assertNotUndefined(parsed);
 	

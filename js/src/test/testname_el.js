@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testJAJPParseSimpleName_el_GR() {
+function testParseSimpleName_el_GR() {
 	var parsed = new ilib.Name("Dimitri Αλεξόπουλος", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	

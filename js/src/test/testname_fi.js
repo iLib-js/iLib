@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testJAJPParseSimpleName_fi_FI() {
+function testParseSimpleName_fi_FI() {
 	var parsed = new ilib.Name("Pihla Viitala Mikkeli", {locale: 'fi-FI'});
 	assertNotUndefined(parsed);
 	
