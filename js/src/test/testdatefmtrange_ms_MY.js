@@ -40,7 +40,7 @@ function testDateRngFmtMYRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:00 PTG – 2:00 PTG 31/12/2011", fmt.format(start, end));
+    assertEquals("1:00 PTG – 2:00 PTG 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtMYRangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ms-MY", length: "medium"});
@@ -137,7 +137,7 @@ function testDateRngFmtMYRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:00 PTG 30/12/2011 – 2:00 PTG 31/12/2011", fmt.format(start, end));
+    assertEquals("1:00 PTG 30/12/11 – 2:00 PTG 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtMYRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ms-MY", length: "medium"});
@@ -234,7 +234,7 @@ function testDateRngFmtMYRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/12/2011 – 31/12/2011", fmt.format(start, end));
+    assertEquals("20/12/11 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtMYRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ms-MY", length: "medium"});
@@ -331,7 +331,7 @@ function testDateRngFmtMYRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/2011 – 31/12/2011", fmt.format(start, end));
+    assertEquals("20/11/11 – 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtMYRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ms-MY", length: "medium"});
@@ -428,7 +428,7 @@ function testDateRngFmtMYRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20/11/2011 – 31/01/2012", fmt.format(start, end));
+    assertEquals("20/11/11 – 31/01/12", fmt.format(start, end));
 }
 function testDateRngFmtMYRangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ms-MY", length: "medium"});
@@ -525,7 +525,7 @@ function testDateRngFmtMYRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/2011 – 01/2014", fmt.format(start, end));
+    assertEquals("11/11 – 01/14", fmt.format(start, end));
 }
 function testDateRngFmtMYRangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ms-MY", length: "medium"});

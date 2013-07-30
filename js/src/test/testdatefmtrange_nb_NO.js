@@ -572,7 +572,7 @@ function testDateRngFmtNORangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("november 2011–januar 2014", fmt.format(start, end));
+    assertEquals("nov. 2011–jan. 2014", fmt.format(start, end));
 }
 function testDateRngFmtNORangeMultiYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "nb-NO", length: "full"});

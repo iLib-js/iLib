@@ -17,24 +17,7 @@
  * limitations unrur the License.
  */
 
-/*
- * testdatefmtrange_ru_RU.js - test the date range formatter object in German/Germany
- * 
- * Copyright © 2012-2013, JEDLSoft
- *
- * Licensed unrur the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed unrur the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations unrur the License.
- */
+
 
 function testDateRngFmtRURangeInDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "ru-RU", length: "short"});
@@ -106,7 +89,7 @@ function testDateRngFmtRURangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31.дек..2011 13:45-14:30", fmt.format(start, end));
+    assertEquals("31.дек.2011 13:45-14:30", fmt.format(start, end));
 }
 function testDateRngFmtRURangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "ru-RU", length: "full"});
