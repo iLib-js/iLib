@@ -1751,7 +1751,7 @@ function getDateFormats(language, script, region, data) {
     range["c12"] = c12;
     range["c20"] = c20;
     range["c30"] = c30;
-    range = JSON.parse(JSON.stringify(range).replace(/  /g, " "));
+    range = JSON.parse(JSON.stringify(range).replace(/[ ]+/g, " "));
     //range["c00"]=c00;
     //var start_time=JSON.stringify(intervalFormats["Hm"]["H"]).replace(start_time_fmt,"st");
     //r end_time=intervalFormats["Hm"]["H"].substring(1+intervalFormats["Hm"]["H"].lastIndexOf("–"),intervalFormats["Hm"]["H"].length).replace("et");
