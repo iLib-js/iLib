@@ -1424,22 +1424,27 @@ function getDateFormats(language, script, region, data) {
             key = keys_datefmts[i];
             //util.print("date fomat key are :" + JSON.stringify(key) + "*********************************" + "\n");
 
-            if ((key["s"].split(/y/g).length - 1 != 2) && (key["s"].split(/y/g).length - 1 != 4)) {
-                if (key["m"].split(/y/g).length - 1 == 2) {
-                    key["s"] = key["s"].replace(/y/g, "yy");
-                } else if (key["m"].split(/y/g).length - 1 == 4) {
-                    key["s"] = key["s"].replace(/y/g, "yyyy");
-                } else {
+           // if ((key["s"].split(/y/g).length - 1 != 2) && (key["s"].split(/y/g).length - 1 != 4)) {
+               // if (key["m"].split(/y/g).length - 1 == 2) {
+                  //  key["s"] = key["s"].replace(/[y]+/g, "yy");
+                //} 
+		 //
 
-                    key["s"] = key["s"].replace(/y/g, "yy");
-                    key["m"] = key["m"].replace(/y/g, "yy");
+                    key["s"] = key["s"].replace(/[y]+/g, "yy");
+                    
+
+		    if (key["m"].split(/y/g).length - 1 == 4) {
+                   key["m"] = key["m"].replace(/[y]+/g, "yyyy");
                 }
-            }
+		else {
+                key["m"] = key["m"].replace(/[y]+/g, "yy");
+		}
+            //}
             if ((key["l"].split(/y/g).length - 1 != 2) && (key["l"].split(/y/g).length - 1 != 4)) {
-                key["l"] = key["l"].replace(/y/g, "yyyy");
+                key["l"] = key["l"].replace(/[y]+/g, "yyyy");
             }
             if ((key["f"].split(/y/g).length - 1 != 2) && (key["f"].split(/y/g).length - 1 != 4)) {
-                key["f"] = key["f"].replace(/y/g, "yyyy");
+                key["f"] = key["f"].replace(/[y]+/g, "yyyy");
             }
         }
     }
