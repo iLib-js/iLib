@@ -148,7 +148,7 @@ function calcLocalePath(language, script, region, filename) {
 }
 
 function checkifHandwritten(language, script, region, filename) {
-   
+
     if (language) {
         if (language == 'en') {
             return false;
@@ -189,21 +189,21 @@ function checkifHandwritten(language, script, region, filename) {
                 }
             }
         }
-        
+
     }
-          return true;
+    return true;
 }
 
 function loadFileNonGenerated(language, script, region, filename) {
     var path = calcLocalePath(language, script, region, filename);
     var obj = loadFile(path);
-    var flag ;
-    if (typeof(language) != 'undefined') {
-	
-     flag = checkifHandwritten(language, script, region, filename);
-	
-	}
-	
+    var flag;
+    if (typeof (language) != 'undefined') {
+
+        flag = checkifHandwritten(language, script, region, filename);
+
+    }
+
     if (typeof (obj) !== 'undefined' && (typeof (obj.generated) === 'undefined' || obj.generated === false)) {
         // only return non-generated files
         return obj;
@@ -920,7 +920,7 @@ function getDateFormats(language, script, region, data) {
     // util.print("language: " + language + "\n");
     //  util.print("script: " + script + "\n");
     // util.print("region: " + region + "\n");
-    if (dates && (typeof(dates.generated) === 'undefined' || !dates.generated)) {
+    if (dates && (typeof (dates.generated) === 'undefined' || !dates.generated)) {
         util.print("\nLoaded existing dateformats from " + calcLocalePath(language, script, region, "dateformats.json") + "\n");
         dates.generated = false;
         return dates;
@@ -1238,7 +1238,7 @@ function getDateFormats(language, script, region, data) {
     //end of dmy combination
     if (available_formats["d"]) {
         d["s"] = available_formats["d"];
-        d["s"] = d["s"].replace(/\./ , "");
+        d["s"] = d["s"].replace(/\./, "");
         d["m"] = d["l"] = d["f"] = d["s"];
     }
     if (available_formats["d"] === undefined) {
@@ -1266,8 +1266,8 @@ function getDateFormats(language, script, region, data) {
             break;
         }
     }
-   
-   //d = JSON.stringify(d).replace(/./g,"");
+
+    //d = JSON.stringify(d).replace(/./g,"");
     //}
     //}
     //end of d combination
@@ -1424,21 +1424,20 @@ function getDateFormats(language, script, region, data) {
             key = keys_datefmts[i];
             //util.print("date fomat key are :" + JSON.stringify(key) + "*********************************" + "\n");
 
-           // if ((key["s"].split(/y/g).length - 1 != 2) && (key["s"].split(/y/g).length - 1 != 4)) {
-               // if (key["m"].split(/y/g).length - 1 == 2) {
-                  //  key["s"] = key["s"].replace(/[y]+/g, "yy");
-                //} 
-		 //
+            // if ((key["s"].split(/y/g).length - 1 != 2) && (key["s"].split(/y/g).length - 1 != 4)) {
+            // if (key["m"].split(/y/g).length - 1 == 2) {
+            //  key["s"] = key["s"].replace(/[y]+/g, "yy");
+            //} 
+            //
 
-                    key["s"] = key["s"].replace(/[y]+/g, "yy");
-                    
+            key["s"] = key["s"].replace(/[y]+/g, "yy");
 
-		    if (key["m"].split(/y/g).length - 1 == 4) {
-                   key["m"] = key["m"].replace(/[y]+/g, "yyyy");
-                }
-		else {
+
+            if (key["m"].split(/y/g).length - 1 == 4) {
+                key["m"] = key["m"].replace(/[y]+/g, "yyyy");
+            } else {
                 key["m"] = key["m"].replace(/[y]+/g, "yy");
-		}
+            }
             //}
             if ((key["l"].split(/y/g).length - 1 != 2) && (key["l"].split(/y/g).length - 1 != 4)) {
                 key["l"] = key["l"].replace(/[y]+/g, "yyyy");
@@ -1478,7 +1477,7 @@ function getDateFormats(language, script, region, data) {
         available_formats["Hms"] == available_formats["Hms"].replace(/a/g, "");
         //if (max_index == index_of_a) {
         //time["ahmsz"] = available_formats["Hms"]  + " " + "z";
-        //time["ahms"] = available_formats["Hms"] ;
+        //time["ahms"] = available_formats["HH:mm:ssHms"] ;
         //} else {
         //time_24["ahmsz"] = "XXXXX" + available_formats["Hms"] + " " + "z";
         time_24["ahmsz"] = timeformat["long"]["timeFormat"]["pattern"].replace(/a/g, "");
@@ -1495,14 +1494,14 @@ function getDateFormats(language, script, region, data) {
         //var max_index = Math.max(index_of_a, index_of_h);
         //available_formats["hm"] = available_formats["hm"].replace(/h/g, "H");
         // available_formats["Hm"] = available_formats["Hm"].substring(available_formats["Hm"].indexOf("H"), 1 + available_formats["Hm"].lastIndexOf("m"));
-        available_formats["Hm"] = available_formats["Hm"].substring(available_formats["Hm"].indexOf("H"), available_formats["Hm"].indexOf("s") - 1);
+        available_formats["Hm"] = available_formats["Hm"].replace(/a/g, ""); //.substring(available_formats["Hm"].indexOf("H"), available_formats["Hm"].indexOf("s") - 1);
         //if (max_index == index_of_a) {
         //time_24["ahmz"] = available_formats["Hm"]  + " " + "z";
         //time_24["ahm"] = available_formats["Hm"] ;
         //time_24["ah"] = "H";
         //} else {
         //time_24["ahmz"] = "XXXXX " + available_formats["Hm"] + " " + "z";
-        time_24["ahmz"] = time_24["ahmsz"].substring(time_24["ahmsz"].indexOf("H"), time_24["ahmsz"].indexOf("s") - 1);
+        time_24["ahmz"] = time_24["ahmsz"].replace(":ss", "");
         time_24["ahm"] = available_formats["Hm"];
         time_24["ah"] = "H";
         //}
@@ -1515,7 +1514,13 @@ function getDateFormats(language, script, region, data) {
     if (available_formats["hms"]) {
         //available_formats["Hms"] = available_formats["Hms"].substring(available_formats["Hms"].indexOf("H"), 1 + available_formats["Hms"].lastIndexOf("s"));
         //time_12["ahmsz"] = "XXXXX" + available_formats["hms"] + " " + "z";
-        time_12["ahmsz"] = timeformat["long"]["timeFormat"]["pattern"];
+        if (timeformat["long"]["timeFormat"]["pattern"].indexOf("H:mm:ss") != -1) {
+            time_12["ahmsz"] = timeformat["long"]["timeFormat"]["pattern"].replace("H:mm:ss", available_formats["hms"]);
+            util.print("XXXXXXXXXXXXXXXXXXXXXx" + time_12["ahmsz"] + "\n");
+        } else {
+            time_12["ahmsz"] = timeformat["long"]["timeFormat"]["pattern"].replace("HH:mm:ss", available_formats["hms"]);
+            util.print("XXXXXXXXXXXXXXXXXXXXXx" + time_12["ahmsz"] + "\n");
+        }
         time_12["ahms"] = available_formats["hms"];
         time_12["hms"] = available_formats["hms"];
         //time_12["ms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("m"), available_formats["hms"].lastIndexOf("s"));
@@ -1523,7 +1528,7 @@ function getDateFormats(language, script, region, data) {
     }
     if (available_formats["hm"]) {
         //time_12["ahmz"] = "XXXXX" + available_formats["hm"] + " " + "z";
-        time_12["ahmz"] = time_12["ahmsz"].substring(time_12["ahmsz"].indexOf("H"), time_12["ahmsz"].indexOf("s") - 1);
+        time_12["ahmz"] = time_12["ahmsz"].replace(/[s]+/g, "");
         time_12["ahm"] = available_formats["hm"];
         time_12["hm"] = available_formats["hm"];
     }
@@ -1544,20 +1549,20 @@ function getDateFormats(language, script, region, data) {
     //intervalFormats["Hm"]["H"] = intervalFormats["Hm"]["H"].replace(end_time, "");
     intervalFormats["Hm"]["H"] = intervalFormats["intervalFormatFallback"].charAt((intervalFormats["intervalFormatFallback"].length - 1) / 2);
     //util.print("time format after replace "+intervalFormats["Hm"]["H"]+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
-    var ymd_d = intervalFormats["yMd"]["d"]//.replace(/'[^']+'/g, "");
-    var ymd_m = intervalFormats["yMd"]["M"]//.replace(/'[^']+'/g, "");
-    var ymd_y = intervalFormats["yMd"]["y"]//.replace(/'[^']+'/g, "");
-    var ymmmd_d = intervalFormats["yMMMd"]["d"]//.replace(/'[^']+'/g, "");
-    var ymmmd_m = intervalFormats["yMMMd"]["M"]//.replace(/'[^']+'/g, "");
-    var ymmmd_y = intervalFormats["yMMMd"]["y"]//.replace(/'[^']+'/g, "");
+    var ymd_d = intervalFormats["yMd"]["d"]; //.replace(/'[^']+'/g, "");
+    var ymd_m = intervalFormats["yMd"]["M"]; //.replace(/'[^']+'/g, "");
+    var ymd_y = intervalFormats["yMd"]["y"]; //.replace(/'[^']+'/g, "");
+    var ymmmd_d = intervalFormats["yMMMd"]["d"]; //.replace(/'[^']+'/g, "");
+    var ymmmd_m = intervalFormats["yMMMd"]["M"]; //.replace(/'[^']+'/g, "");
+    var ymmmd_y = intervalFormats["yMMMd"]["y"]; //.replace(/'[^']+'/g, "");
     //var ym_d=intervalFormats["yM"]["d"];
-    var ym_m = intervalFormats["yM"]["M"]//.replace(/'[^']+'/g, "");
-    var ym_y = intervalFormats["yM"]["y"]//.replace(/'[^']+'/g, "");
+    var ym_m = intervalFormats["yM"]["M"]; //.replace(/'[^']+'/g, "");
+    var ym_y = intervalFormats["yM"]["y"]; //.replace(/'[^']+'/g, "");
     //var ymmm_d=intervalFormats["yMMM"]["d"];
-    var ymmm_m = intervalFormats["yMMM"]["M"]//.replace(/'[^']+'/g, "");
-    var ymmm_y = intervalFormats["yMMM"]["y"]//.replace(/'[^']+'/g, "");
-    var ymmmm_m = intervalFormats["yMMMM"]["M"]//.replace(/'[^']+'/g, "");
-    var ymmmm_y = intervalFormats["yMMMM"]["y"]//.replace(/'[^']+'/g, "");
+    var ymmm_m = intervalFormats["yMMM"]["M"]; //.replace(/'[^']+'/g, "");
+    var ymmm_y = intervalFormats["yMMM"]["y"]; //.replace(/'[^']+'/g, "");
+    var ymmmm_m = intervalFormats["yMMMM"]["M"]; //.replace(/'[^']+'/g, "");
+    var ymmmm_y = intervalFormats["yMMMM"]["y"]; //.replace(/'[^']+'/g, "");
     //for coo
     //intervalFormats =JSON.parse(JSON.stringify(intervalFormats).replace(/'[^']+'/g, ""));
     var c00 = {};
@@ -1635,12 +1640,12 @@ function getDateFormats(language, script, region, data) {
         if (start_dmy[i].charAt(start_dmy[i].length - 1) === " ") {
             start_dmy[i] = start_dmy[i].slice(0, -1);
             intervalFormats["Hm"]["H"] = " " + intervalFormats["Hm"]["H"] + " ";
-            end_dmy[i]=end_dmy[i].slice(1);
+            end_dmy[i] = end_dmy[i].slice(1);
         }
-	
-	 if (start_dmy[i].charAt(0) === " ") {
+
+        if (start_dmy[i].charAt(0) === " ") {
             start_dmy[i] = start_dmy[i].slice(1);
-		}
+        }
         util.print("array_interval_dmy " + array_interval_dmy[i] + "\n");
         util.print("start_interval_dmy " + start_dmy[i] + "\n");
         util.print("end_interval_dmy " + end_dmy[i] + "\n");
@@ -1673,11 +1678,11 @@ function getDateFormats(language, script, region, data) {
         if (start_my[i].charAt(start_my[i].length - 1) === " ") {
             start_my[i] = start_my[i].slice(0, -1);
             //intervalFormats["Hm"]["H"] = " "+ intervalFormats["Hm"]["H"] + " ";
-            end_my[i]=end_my[i].slice(1);
+            end_my[i] = end_my[i].slice(1);
         }
-        util.print("array_interval_my "+array_interval_my[i]+"\n");
-        util.print("start_interval_my "+start_my[i]+"\n");
-        util.print("end_interval_my "+end_my[i]+"\n");
+        util.print("array_interval_my " + array_interval_my[i] + "\n");
+        util.print("start_interval_my " + start_my[i] + "\n");
+        util.print("end_interval_my " + end_my[i] + "\n");
     }
     //c01
     //c01["s"]=array_interval_dmy[0]+
@@ -1704,8 +1709,8 @@ function getDateFormats(language, script, region, data) {
     c01["f"] = c01["l"];
     //for c02
     if (gregorian["order"] === "{time} {date}") {
-        c02["s"] = "{st}" + " "+ start_dmy[1] + intervalFormats["Hm"]["H"] + "{et}" + " " + end_dmy[1];
-        c02["l"] = "{st}" + " "+ start_dmy[4] + intervalFormats["Hm"]["H"] + "{et}" + " " + end_dmy[4];
+        c02["s"] = "{st}" + " " + start_dmy[1] + intervalFormats["Hm"]["H"] + "{et}" + " " + end_dmy[1];
+        c02["l"] = "{st}" + " " + start_dmy[4] + intervalFormats["Hm"]["H"] + "{et}" + " " + end_dmy[4];
     } else {
         c02["s"] = start_dmy[1] + " " + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[1] + " " + "{et}";
         c02["l"] = start_dmy[4] + " " + "{st}" + intervalFormats["Hm"]["H"] + end_dmy[4] + " " + "{et}";
