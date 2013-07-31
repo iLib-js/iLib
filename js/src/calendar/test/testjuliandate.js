@@ -785,3 +785,30 @@ function testJulDateSetTimeZoneEmpty() {
     
     assertUndefined(gd.getTimeZone());
 }
+
+function testJulDateInitWithUnixTimeRightTimeZone() {
+    var gd = new ilib.Date.JulDate({
+    	unixtime: 0
+    });
+    assertNotNull(gd);
+    
+    assertEquals("Etc/UTC", gd.getTimeZone());
+}
+
+function testJulDateInitWithJDRightTimeZone() {
+    var gd = new ilib.Date.JulDate({
+    	julianday: 0
+    });
+    assertNotNull(gd);
+    
+    assertEquals("Etc/UTC", gd.getTimeZone());
+}
+
+function testJulDateInitWithRDRightTimeZone() {
+    var gd = new ilib.Date.JulDate({
+    	rd: 0
+    });
+    assertNotNull(gd);
+    
+    assertEquals("Etc/UTC", gd.getTimeZone());
+}

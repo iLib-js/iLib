@@ -94,8 +94,12 @@ ilib.Date.JulDate = function(params) {
 		}
 
 		if (typeof(params.unixtime) != 'undefined') {
+			// unix time is defined to be UTC
+			this.timezone = "Etc/UTC";
 			this.setTime(parseInt(params.unixtime, 10));
 		} else if (typeof(params.julianday) != 'undefined') {
+			// JD time is defined to be UTC
+			this.timezone = "Etc/UTC";
 			this.setJulianDay(parseFloat(params.julianday));
 		} else if (params.year || params.month || params.day || params.hour ||
 				params.minute || params.second || params.millisecond ) {
@@ -137,6 +141,8 @@ ilib.Date.JulDate = function(params) {
 			this.millisecond = parseInt(params.millisecond, 10) || 0;
 		} else if (typeof(params.rd) != 'undefined') {
 			// private parameter. Do not document this!
+			// RD time is defined to be UTC
+			this.timezone = "Etc/UTC";
 			this.setRd(params.rd);
 		} else {
 			// Date.getTime() gets unix time in UTC

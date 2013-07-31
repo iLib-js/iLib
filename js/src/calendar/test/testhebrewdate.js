@@ -1248,3 +1248,29 @@ function testHebrewDateSetTimeZoneEmpty() {
     assertUndefined(gd.getTimeZone());
 }
 
+function testHebrewDateInitWithUnixTimeRightTimeZone() {
+    var gd = new ilib.Date.HebrewDate({
+    	unixtime: 0
+    });
+    assertNotNull(gd);
+    
+    assertEquals("Etc/UTC", gd.getTimeZone());
+}
+
+function testHebrewDateInitWithJDRightTimeZone() {
+    var gd = new ilib.Date.HebrewDate({
+    	julianday: 0
+    });
+    assertNotNull(gd);
+    
+    assertEquals("Etc/UTC", gd.getTimeZone());
+}
+
+function testHebrewDateInitWithRDRightTimeZone() {
+    var gd = new ilib.Date.HebrewDate({
+    	rd: 0
+    });
+    assertNotNull(gd);
+    
+    assertEquals("Etc/UTC", gd.getTimeZone());
+}

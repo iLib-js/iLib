@@ -1172,3 +1172,30 @@ function testIslamicDateSetTimeZoneEmpty() {
     
     assertUndefined(gd.getTimeZone());
 }
+
+function testIslamicDateInitWithUnixTimeRightTimeZone() {
+    var gd = new ilib.Date.IslamicDate({
+    	unixtime: 0
+    });
+    assertNotNull(gd);
+    
+    assertEquals("Etc/UTC", gd.getTimeZone());
+}
+
+function testIslamicDateInitWithJDRightTimeZone() {
+    var gd = new ilib.Date.IslamicDate({
+    	julianday: 0
+    });
+    assertNotNull(gd);
+    
+    assertEquals("Etc/UTC", gd.getTimeZone());
+}
+
+function testIslamicDateInitWithRDRightTimeZone() {
+    var gd = new ilib.Date.IslamicDate({
+    	rd: 0
+    });
+    assertNotNull(gd);
+    
+    assertEquals("Etc/UTC", gd.getTimeZone());
+}

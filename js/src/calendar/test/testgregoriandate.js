@@ -1869,3 +1869,31 @@ function testGregDateSetTimeZoneEmpty() {
     
     assertUndefined(gd.getTimeZone());
 }
+
+function testGregDateInitWithUnixTimeRightTimeZone() {
+    var gd = new ilib.Date.GregDate({
+    	unixtime: 0
+    });
+    assertNotNull(gd);
+    
+    assertEquals("Etc/UTC", gd.getTimeZone());
+}
+
+function testGregDateInitWithJDRightTimeZone() {
+    var gd = new ilib.Date.GregDate({
+    	julianday: 0
+    });
+    assertNotNull(gd);
+    
+    assertEquals("Etc/UTC", gd.getTimeZone());
+}
+
+function testGregDateInitWithRDRightTimeZone() {
+    var gd = new ilib.Date.GregDate({
+    	rd: 0
+    });
+    assertNotNull(gd);
+    
+    assertEquals("Etc/UTC", gd.getTimeZone());
+}
+
