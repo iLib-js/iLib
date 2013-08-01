@@ -521,7 +521,7 @@ function testDateFmtINShortDateComponentsMY_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9-2011", fmt.format(date));
+    assertEquals("9-11", fmt.format(date));
 }
 
 function testDateFmtINShortDateComponentsDMY_hi_IN() {

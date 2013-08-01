@@ -430,7 +430,7 @@ function testDateRngFmtTRRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.11 - 31.01.12", fmt.format(start, end));
+    assertEquals("20.11.11 - 31.1.12", fmt.format(start, end));
 }
 function testDateRngFmtTRRangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "tr-TR", length: "medium"});

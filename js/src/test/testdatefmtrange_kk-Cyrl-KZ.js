@@ -451,7 +451,7 @@ function testDateRngFmtKZRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11.2011 - 01.2014", fmt.format(start, end));
+    assertEquals("20.11.2011 - 31.01.2012", fmt.format(start, end));
 }
 function testDateRngFmtKZRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "kk-Cyrl-KZ", length: "long"});
