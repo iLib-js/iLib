@@ -756,7 +756,7 @@ function getSystemResources(language, script, region, data) {
         makeDirs(filename);
         
         output["gregorian"]=gregorian;
-        fs.writeFileSync(filename, JSON.stringify(data), "utf-8");
+        fs.writeFileSync(filename, JSON.stringify(data, true, 4), "utf-8");
         util.print("writing to " + filename + "\n");
     } else {
         util.print("not overwriting " + filename + "\n");
@@ -782,7 +782,7 @@ function writeSystemResources(language, script, region, data) {
         if (anyProperties(data)) {
             util.print("Writing " + path + "\n");
             makeDirs(path);
-            fs.writeFileSync(path + "/sysres.json", JSON.stringify(data), "utf-8");
+            fs.writeFileSync(path + "/sysres.json", JSON.stringify(data, true, 4), "utf-8");
         } else {
             util.print("Skipping empty " + path + "\n");
         }
@@ -1855,7 +1855,7 @@ function writeDateFormats(language, script, region, data) {
             dateFormat["gregorian"] = gregorian;
             dateFormat["generated"] = true;
             util.print("Writing " + path + "dateformats.json\n");
-            fs.writeFileSync(path + "/dateformats.json", JSON.stringify(dateFormat), "utf-8");
+            fs.writeFileSync(path + "/dateformats.json", JSON.stringify(dateFormat, true, 4), "utf-8");
         } else {
             util.print("Skipping empty " + path + "dateformats.json\n");
         }

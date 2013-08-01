@@ -112,7 +112,7 @@ for (var i = 0; i < len; i++ ) {
 
 for (letter in map) {
 	if (letter && map[letter]) {
-		fs.writeFile(toDir + "/ctype_" + letter + ".json", JSON.stringify(map[letter]), function (err) {
+		fs.writeFile(toDir + "/ctype_" + letter + ".json", JSON.stringify(map[letter], true, 4), function (err) {
 			if (err) {
 				throw err;
 			}

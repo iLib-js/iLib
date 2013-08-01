@@ -213,7 +213,7 @@ function writeClockPrefs(language, script, region, data) {
 			if (typeof (data["clock"]) != 'undefined') {
 				data.generated = true;
 				makeDirs(path);
-				fs.writeFileSync(path + "/clock.jf", JSON.stringify(data), "utf-8");
+				fs.writeFileSync(path + "/clock.jf", JSON.stringify(data, true, 4), "utf-8");
 			}
 		} else {
 			util.print("Skipping empty " + path + "\n");

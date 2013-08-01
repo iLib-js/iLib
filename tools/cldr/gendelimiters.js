@@ -237,7 +237,7 @@ function writeQuotationChars(language, script, region, data) {
 			data.generated=true;
 			makeDirs(path);
 			//if(data=undefined){
-			fs.writeFileSync(path + "/delimiters.jf", JSON.stringify(data) , "utf-8");
+			fs.writeFileSync(path + "/delimiters.jf", JSON.stringify(data, true, 4) , "utf-8");
 			}
 			//}
 		} else {

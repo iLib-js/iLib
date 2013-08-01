@@ -104,7 +104,7 @@ for (var lang in languages) {
 		mkdirs(langdir);
 		language_name["language.name"] = languages[lang];
 		language_name.generated = true;
-		fs.writeFileSync(filename, JSON.stringify(language_name), "utf-8");
+		fs.writeFileSync(filename, JSON.stringify(language_name, true, 4), "utf-8");
 	}
 }
 
@@ -116,7 +116,7 @@ for (region in regions) {
 		mkdirs(regdir);
 		region_name["region.name"] = regions[region];
 		region_name.generated = true;
-		fs.writeFileSync(filename, JSON.stringify(region_name), "utf-8");
+		fs.writeFileSync(filename, JSON.stringify(region_name, true, 4), "utf-8");
 	}
 }
 

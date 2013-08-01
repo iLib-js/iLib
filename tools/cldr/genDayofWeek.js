@@ -95,7 +95,7 @@ for (var firstdayofweek in firstDayOfWeekData) {
 					var firstdayofweek = {};
 					firstdayofweek.firstDayOfWeek = i;
 					firstdayofweek.generated = true;
-					fs.writeFile(filename + "/firstdayofweek.jf", JSON.stringify(firstdayofweek), function (err) {
+					fs.writeFile(filename + "/firstdayofweek.jf", JSON.stringify(firstdayofweek, true, 4), function (err) {
 						if (err) {
 							console.log(err);
 							throw err;

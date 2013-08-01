@@ -284,7 +284,7 @@ function writeNumberFormats(language, script, region, data) {
 			if (!isEmpty(data)) {
 				data.generated = true;
 				makeDirs(path);
-				fs.writeFileSync(path + "/numfmt.jf", JSON.stringify(data), "utf-8");
+				fs.writeFileSync(path + "/numfmt.jf", JSON.stringify(data, true, 4), "utf-8");
 			}
 			/*if(typeof(numfmt["native"])!='undefined') {
 				if ((!isEmpty(numfmt["native"]))) {

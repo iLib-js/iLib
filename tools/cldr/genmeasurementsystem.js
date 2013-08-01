@@ -113,7 +113,7 @@ for (var measure_system in measurementData) {
 				if (measurementData[measure_system] === "US") {
 					console.log(measure_system + ':\t"Units are ": ' + measureUnits[1]);
 					units.units = measureUnits[1];
-					fs.writeFile(filename + "/units.jf", JSON.stringify(units), function (err) {
+					fs.writeFile(filename + "/units.jf", JSON.stringify(units, true, 4), function (err) {
 						if (err) {
 							console.log(err);
 							throw err;
@@ -122,7 +122,7 @@ for (var measure_system in measurementData) {
 				} else {
 					units.units = measureUnits[0];
 					console.log(measure_system + ':\t"Units are ": ' + measureUnits[0]);
-					fs.writeFile(filename + "/units.jf", JSON.stringify(units), function (err) {
+					fs.writeFile(filename + "/units.jf", JSON.stringify(units, true, 4), function (err) {
 						if (err) {
 							console.log(err);
 							throw err;

@@ -167,7 +167,7 @@ for (var i = 0; i < len; i++ ) {
 // decompositions recursively here to pre-calculate the full decomposition 
 // before writing out the files.
 
-fs.writeFile(toDir + "/scripts.json", JSON.stringify(scripts), function (err) {
+fs.writeFile(toDir + "/scripts.json", JSON.stringify(scripts, true, 4), function (err) {
 	if (err) {
 		throw err;
 	}
@@ -215,13 +215,13 @@ function compareByStart(left, right) {
 ranges.sort(compareByStart);
 rangeToScript = coelesce(ranges, 1);
 
-fs.writeFile(toDir + "/scriptToRange.json", JSON.stringify(scriptToRange), function (err) {
+fs.writeFile(toDir + "/scriptToRange.json", JSON.stringify(scriptToRange, true, 4), function (err) {
 	if (err) {
 		throw err;
 	}
 });
 
-fs.writeFile(toDir + "/rangeToScript.json", JSON.stringify(rangeToScript), function (err) {
+fs.writeFile(toDir + "/rangeToScript.json", JSON.stringify(rangeToScript, true, 4), function (err) {
 	if (err) {
 		throw err;
 	}
