@@ -1,1 +1,6 @@
-{"scripts":["Avst"],"generated":true}
+{
+    "scripts": [
+        "Avst"
+    ],
+    "generated": true
+}

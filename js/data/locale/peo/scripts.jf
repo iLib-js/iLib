@@ -1,1 +1,6 @@
-{"scripts":["Xpeo"],"generated":true}
+{
+    "scripts": [
+        "Xpeo"
+    ],
+    "generated": true
+}

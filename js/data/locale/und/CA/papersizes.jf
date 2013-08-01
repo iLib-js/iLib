@@ -1,1 +1,6 @@
-{"paperSizes":{"regular":"8x11"},"generated":true}
+{
+    "paperSizes": {
+        "regular": "8x11"
+    },
+    "generated": true
+}

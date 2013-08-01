@@ -1,1 +1,6 @@
-{"scripts":["Mymr"],"generated":true}
+{
+    "scripts": [
+        "Mymr"
+    ],
+    "generated": true
+}

@@ -1,1 +1,7 @@
-{"scripts":["Ital","Latn"],"generated":true}
+{
+    "scripts": [
+        "Ital",
+        "Latn"
+    ],
+    "generated": true
+}

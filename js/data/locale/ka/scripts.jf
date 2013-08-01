@@ -1,1 +1,6 @@
-{"scripts":["Geor"],"generated":true}
+{
+    "scripts": [
+        "Geor"
+    ],
+    "generated": true
+}

@@ -1,1 +1,8 @@
-{"scripts":["Deva","Sinh","Thai"],"generated":true}
+{
+    "scripts": [
+        "Deva",
+        "Sinh",
+        "Thai"
+    ],
+    "generated": true
+}

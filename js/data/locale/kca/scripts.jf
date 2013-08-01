@@ -1,1 +1,6 @@
-{"scripts":["Cyrl"],"generated":true}
+{
+    "scripts": [
+        "Cyrl"
+    ],
+    "generated": true
+}

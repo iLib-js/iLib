@@ -1,1 +1,6 @@
-{"scripts":["Khmr"],"generated":true}
+{
+    "scripts": [
+        "Khmr"
+    ],
+    "generated": true
+}

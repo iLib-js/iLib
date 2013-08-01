@@ -1,1 +1,7 @@
-{"scripts":["Cher","Latn"],"generated":true}
+{
+    "scripts": [
+        "Cher",
+        "Latn"
+    ],
+    "generated": true
+}

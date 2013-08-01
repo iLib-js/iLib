@@ -1,1 +1,27 @@
-{"generated":true,"native_numfmt":{"script":"Deva","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"secgroupSize":2,"currencyFormats":{"common":"{s} {n}"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"०१२३४५६७८९"},"numfmt":{"decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{s} {n}"}}}
+{
+    "generated": true,
+    "native_numfmt": {
+        "script": "Deva",
+        "decimalChar": ".",
+        "groupChar": ",",
+        "pctChar": "%",
+        "exponential": "E",
+        "prigroupSize": 3,
+        "secgroupSize": 2,
+        "currencyFormats": {
+            "common": "{s} {n}"
+        },
+        "pctFmt": "{n}%",
+        "roundingMode": "halfdown",
+        "digits": "०१२३४५६७८९"
+    },
+    "numfmt": {
+        "decimalChar": ".",
+        "groupChar": ",",
+        "exponential": "E",
+        "secgroupSize": 2,
+        "currencyFormats": {
+            "common": "{s} {n}"
+        }
+    }
+}

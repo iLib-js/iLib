@@ -1,1 +1,6 @@
-{"scripts":["Glag"],"generated":true}
+{
+    "scripts": [
+        "Glag"
+    ],
+    "generated": true
+}

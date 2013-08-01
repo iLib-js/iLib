@@ -1,1 +1,6 @@
-{"scripts":["Kali"],"generated":true}
+{
+    "scripts": [
+        "Kali"
+    ],
+    "generated": true
+}

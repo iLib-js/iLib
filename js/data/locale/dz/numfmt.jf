@@ -1,1 +1,12 @@
-{"generated":true,"numfmt":{"script":"Tibt","decimalChar":".","groupChar":",","secgroupSize":2,"pctFmt":"{n} %","digits":"༠༡༢༣༤༥༦༧༨༩"}}
+{
+    "generated": true,
+    "numfmt": {
+        "script": "Tibt",
+        "decimalChar": ".",
+        "groupChar": ",",
+        "exponential": "E",
+        "secgroupSize": 2,
+        "pctFmt": "{n} %",
+        "digits": "༠༡༢༣༤༥༦༧༨༩"
+    }
+}

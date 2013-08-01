@@ -1,1 +1,7 @@
-{"scripts":["Arab","Cham"],"generated":true}
+{
+    "scripts": [
+        "Arab",
+        "Cham"
+    ],
+    "generated": true
+}

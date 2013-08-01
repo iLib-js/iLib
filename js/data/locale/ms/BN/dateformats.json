@@ -1,1 +1,10 @@
-{"gregorian":{"date":{"dmy":{"f":"dd MMMM yyyy"}}},"generated":true}
+{
+    "gregorian": {
+        "date": {
+            "dmy": {
+                "f": "dd MMMM yyyy"
+            }
+        }
+    },
+    "generated": true
+}

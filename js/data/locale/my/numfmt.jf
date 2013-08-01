@@ -1,1 +1,13 @@
-{"generated":true,"numfmt":{"script":"Mymr","decimalChar":".","groupChar":",","currencyFormats":{"common":"{s} {n}"},"digits":"၀၁၂၃၄၅၆၇၈၉"}}
+{
+    "generated": true,
+    "numfmt": {
+        "script": "Mymr",
+        "decimalChar": ".",
+        "groupChar": ",",
+        "exponential": "E",
+        "currencyFormats": {
+            "common": "{s} {n}"
+        },
+        "digits": "၀၁၂၃၄၅၆၇၈၉"
+    }
+}

@@ -1,1 +1,5166 @@
-{"Africa/Douala":{"o":"1:0","f":"WAT","c":"CM","n":"W. Central Africa {c} Time"},"Europe/Sofia":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"BG","n":"FLE {c} Time"},"America/Dawson":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Pacific {c} Time"},"Asia/Yerevan":{"o":"4:0","f":"AMT","c":"AM","n":"Caucasus {c} Time"},"Asia/Bangkok":{"o":"7:0","f":"ICT","c":"TH","n":"SE Asia {c} Time"},"America/Bogota":{"o":"-5:0","f":"CO{c}T","e":{"m":4,"r":"4","t":"0:0"},"s":{"m":5,"r":"3","t":"0:0","v":"1:0","c":"S"},"c":"CO","n":"SA Pacific {c} Time"},"Asia/Colombo":{"o":"5:30","f":"IST","c":"LK","n":"Sri Lanka {c} Time"},"Africa/Kampala":{"o":"3:0","f":"EAT","c":"UG","n":"E. Africa {c} Time"},"Africa/Blantyre":{"o":"2:0","f":"CAT","c":"MW","n":"South Africa {c} Time"},"Europe/Volgograd":{"o":"4:0","f":"VOLT","c":"RU","n":"Russian {c} Time"},"Atlantic/St_Helena":{"o":"0:0","f":"GMT","c":"SH","n":"Greenwich {c} Time"},"Africa/Malabo":{"o":"1:0","f":"WAT","c":"GQ","n":"W. Central Africa {c} Time"},"Asia/Nicosia":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"CY","n":"E. Europe {c} Time"},"America/Resolute":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Central {c} Time"},"America/Danmarkshavn":{"o":"0:0","f":"GMT","c":"GL","n":"UTC"},"America/Anguilla":{"o":"-4:0","f":"AST","c":"AI","n":"SA Western {c} Time"},"America/Regina":{"o":"-6:0","f":"CST","c":"CA","n":"Canada Central {c} Time"},"Asia/Amman":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l5","t":"0:0","z":"s"},"s":{"m":3,"r":"l4","t":"24:0","v":"1:0","c":"S"},"c":"JO","n":"Jordan {c} Time"},"Europe/Brussels":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"BE","n":"Romance {c} Time"},"Europe/Simferopol":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"UA","n":"FLE {c} Time"},"America/Argentina/Ushuaia":{"o":"-3:0","f":"ART","c":"AR","n":"Argentina {c} Time"},"America/North_Dakota/Center":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Central {c} Time"},"Indian/Kerguelen":{"o":"5:0","f":"TFT","c":"TF","n":"West Asia {c} Time"},"Europe/Istanbul":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"TR","n":"Turkey {c} Time"},"Etc/UTC":{"o":"0:0","f":"UTC"},"Pacific/Chuuk":{"o":"10:0","f":"CHUT","c":"FM","n":"West Pacific {c} Time"},"America/Bahia_Banderas":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"},"c":"MX","n":"Central {c} Time (Mexico)"},"Pacific/Rarotonga":{"o":"-10:0","f":"CK{c}T","e":{"m":3,"r":"0>1","t":"0:0"},"s":{"m":10,"r":"l0","t":"0:0","v":"0:30","c":"HS"},"c":"CK","n":"Hawaiian {c} Time"},"Asia/Hebron":{"o":"2:0","f":"EE{c}T","e":{"m":9,"r":"5>21","t":"1:0"},"s":{"m":3,"r":"l4","t":"24:0","v":"1:0","c":"S"},"c":"PS","n":"Egypt {c} Time"},"Australia/Broken_Hill":{"o":"9:30","f":"CST","s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"c":"AU","n":"Cen. Australia {c} Time"},"PST8PDT":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"n":"Pacific {c} Time"},"Antarctica/Casey":{"o":"8:0","f":"WST","c":"AQ","n":"W. Australia {c} Time"},"Europe/Stockholm":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"SE","n":"W. Europe {c} Time"},"Africa/Bamako":{"o":"0:0","f":"GMT","c":"ML","n":"Greenwich {c} Time"},"America/St_Johns":{"o":"-3:30","f":"N{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Newfoundland {c} Time"},"Africa/Dar_es_Salaam":{"o":"3:0","f":"EAT","c":"TZ","n":"E. Africa {c} Time"},"Asia/Novosibirsk":{"o":"7:0","f":"NOVT","c":"RU","n":"N. Central Asia {c} Time"},"Asia/Sakhalin":{"o":"11:0","f":"SAKT","c":"RU","n":"Vladivostok {c} Time"},"America/Argentina/Tucuman":{"o":"-3:0","f":"AR{c}T","e":{"m":3,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"},"c":"AR","n":"Argentina {c} Time"},"Europe/Budapest":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"HU","n":"Central Europe {c} Time"},"America/Curacao":{"o":"-4:0","f":"AST","c":"CW","n":"SA Western {c} Time"},"Africa/Tunis":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"2:0","z":"s"},"s":{"m":3,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"S"},"c":"TN","n":"W. Central Africa {c} Time"},"Pacific/Guam":{"o":"10:0","f":"ChST","c":"GU","n":"West Pacific {c} Time"},"Africa/Asmara":{"o":"3:0","f":"EAT","c":"ER","n":"E. Africa {c} Time"},"Africa/Maseru":{"o":"2:0","f":"SAST","c":"LS","n":"South Africa {c} Time"},"America/Asuncion":{"o":"-4:0","f":"PY{c}T","e":{"m":3,"r":"0>22","t":"0:0"},"s":{"m":10,"r":"0>1","t":"0:0","v":"1:0","c":"S"},"c":"PY","n":"Paraguay {c} Time"},"America/Indiana/Winamac":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Eastern {c} Time"},"Europe/Vaduz":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"LI","n":"W. Europe {c} Time"},"Asia/Ulaanbaatar":{"o":"8:0","f":"ULA{c}T","s":{"m":3,"r":"l6","t":"2:0","v":"1:0","c":"S"},"e":{"m":9,"r":"l6","t":"2:0"},"c":"MN","n":"Ulaanbaatar {c} Time"},"Asia/Vientiane":{"o":"7:0","f":"ICT","c":"LA","n":"SE Asia {c} Time"},"Africa/Niamey":{"o":"1:0","f":"WAT","c":"NE","n":"W. Central Africa {c} Time"},"Asia/Brunei":{"o":"8:0","f":"BNT","c":"BN","n":"Singapore {c} Time"},"America/Thunder_Bay":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Eastern {c} Time"},"Africa/Djibouti":{"o":"3:0","f":"EAT","c":"DJ","n":"E. Africa {c} Time"},"Asia/Tbilisi":{"o":"4:0","f":"GET","c":"GE","n":"Georgian {c} Time"},"America/Merida":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"},"c":"MX","n":"Central {c} Time (Mexico)"},"America/Recife":{"o":"-3:0","f":"BRT","c":"BR","n":"SA Eastern {c} Time"},"Indian/Reunion":{"o":"4:0","f":"RET","c":"RE","n":"Mauritius {c} Time"},"Asia/Oral":{"o":"5:0","f":"ORAT","c":"KZ","n":"West Asia {c} Time"},"Africa/Lusaka":{"o":"2:0","f":"CAT","c":"ZM","n":"South Africa {c} Time"},"America/Tortola":{"o":"-4:0","f":"AST","c":"VG","n":"SA Western {c} Time"},"Africa/Ouagadougou":{"o":"0:0","f":"GMT","c":"BF","n":"Greenwich {c} Time"},"Asia/Kuching":{"o":"8:0","f":"MYT","c":"MY","n":"Singapore {c} Time"},"America/Tegucigalpa":{"o":"-6:0","f":"C{c}T","e":{"m":8,"r":"1>1","t":"0:0","c":"S"},"s":{"m":5,"r":"0>1","t":"0:0","v":"1:0","c":"D"},"c":"HN","n":"Central America {c} Time"},"Asia/Novokuznetsk":{"o":"7:0","f":"NOVT","c":"RU","n":"N. Central Asia {c} Time"},"Europe/Vilnius":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"LT","n":"FLE {c} Time"},"Asia/Bishkek":{"o":"6:0","f":"KGT","c":"KG","n":"Central Asia {c} Time"},"America/Moncton":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Atlantic {c} Time"},"America/Maceio":{"o":"-3:0","f":"BRT","c":"BR","n":"SA Eastern {c} Time"},"Africa/Dakar":{"o":"0:0","f":"GMT","c":"SN","n":"Greenwich {c} Time"},"America/Belize":{"o":"-6:0","f":"C{c}T","e":{"m":2,"r":"12","t":"0:0","c":"S"},"s":{"m":12,"r":"18","t":"0:0","v":"1:0","c":"D"},"c":"BZ","n":"Central America {c} Time"},"Etc/GMT":{"o":"0:0","f":"GMT","n":"UTC"},"America/Cuiaba":{"o":"-4:0","f":"AM{c}T","e":{"m":2,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"},"c":"BR","n":"Central Brazilian {c} Time"},"Asia/Tashkent":{"o":"5:0","f":"UZT","c":"UZ","n":"West Asia {c} Time"},"Atlantic/Canary":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"ES","n":"GMT {c} Time"},"America/Rankin_Inlet":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Central {c} Time"},"Asia/Jerusalem":{"o":"2:0","f":"I{c}T","e":{"m":10,"r":"0>2","t":"2:0","c":"S"},"s":{"m":3,"r":"5>23","t":"2:0","v":"1:0","c":"D"},"c":"IL","n":"Israel {c} Time"},"Antarctica/Rothera":{"o":"-3:0","f":"ROTT","c":"AQ","n":"SA Eastern {c} Time"},"Indian/Cocos":{"o":"6:30","f":"CCT","c":"CC","n":"Myanmar {c} Time"},"America/Glace_Bay":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Atlantic {c} Time"},"Atlantic/Cape_Verde":{"o":"-1:0","f":"CVT","c":"CV","n":"Cape Verde {c} Time"},"America/Cambridge_Bay":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Mountain {c} Time"},"Indian/Mauritius":{"o":"4:0","f":"MU{c}T","e":{"m":3,"r":"l0","t":"2:0"},"s":{"m":10,"r":"l0","t":"2:0","v":"1:0","c":"S"},"c":"MU","n":"Mauritius {c} Time"},"Etc/GMT-14":{"o":"14:0","f":"GMT-14"},"Etc/GMT-13":{"o":"13:0","f":"GMT-13","n":"Tonga {c} Time"},"Australia/Brisbane":{"o":"10:0","f":"EST","e":{"m":3,"r":"0>1","t":"2:0","z":"s"},"s":{"m":10,"r":"l0","t":"2:0","z":"s","v":"1:0"},"c":"AU","n":"E. Australia {c} Time"},"Etc/GMT-12":{"o":"12:0","f":"GMT-12","n":"UTC+12"},"Etc/GMT-11":{"o":"11:0","f":"GMT-11","n":"Central Pacific {c} Time"},"America/Grenada":{"o":"-4:0","f":"AST","c":"GD","n":"SA Western {c} Time"},"Etc/GMT-10":{"o":"10:0","f":"GMT-10","n":"West Pacific {c} Time"},"Antarctica/Vostok":{"o":"6:0","f":"VOST","c":"AQ","n":"Central Asia {c} Time"},"Etc/GMT+11":{"o":"-11:0","f":"GMT+11","n":"UTC-11"},"Etc/GMT+12":{"o":"-12:0","f":"GMT+12","n":"Dateline {c} Time"},"Pacific/Auckland":{"o":"12:0","f":"NZ{c}T","e":{"m":4,"r":"0>1","t":"2:0","z":"s","c":"S"},"s":{"m":9,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"D"},"c":"NZ","n":"New Zealand {c} Time"},"Antarctica/DumontDUrville":{"o":"10:0","f":"DDUT","c":"AQ","n":"West Pacific {c} Time"},"Etc/GMT+10":{"o":"-10:0","f":"GMT+10","n":"Hawaiian {c} Time"},"Africa/Nairobi":{"o":"3:0","f":"EAT","c":"KE","n":"E. Africa {c} Time"},"Pacific/Norfolk":{"o":"11:30","f":"NFT","c":"NF"},"Europe/Paris":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"FR","n":"Romance {c} Time"},"Asia/Irkutsk":{"o":"9:0","f":"IRKT","c":"RU","n":"North Asia East {c} Time"},"Pacific/Apia":{"o":"13:0","f":"WS{c}T","e":{"m":4,"r":"0>1","t":"4:0"},"s":{"m":9,"r":"l0","t":"3:0","v":"1:00","c":"D"},"c":"WS","n":"Samoa {c} Time"},"America/Caracas":{"o":"-4:30","f":"VET","c":"VE","n":"Venezuela {c} Time"},"Pacific/Chatham":{"o":"12:45","f":"CHA{c}T","e":{"m":4,"r":"0>1","t":"2:45","z":"s","c":"S"},"s":{"m":9,"r":"l0","t":"2:45","z":"s","v":"1:0","c":"D"},"c":"NZ"},"Africa/Maputo":{"o":"2:0","f":"CAT","c":"MZ","n":"South Africa {c} Time"},"America/Metlakatla":{"o":"-8:0","f":"MeST","c":"US"},"Atlantic/South_Georgia":{"o":"-2:0","f":"GST","c":"GS","n":"UTC-02"},"Asia/Baghdad":{"o":"3:0","f":"A{c}T","e":{"m":10,"r":"1","t":"3:0","z":"s","c":"S"},"s":{"m":4,"r":"1","t":"3:0","z":"s","v":"1:0","c":"D"},"c":"IQ","n":"Arabic {c} Time"},"Pacific/Saipan":{"o":"10:0","f":"ChST","c":"MP","n":"West Pacific {c} Time"},"Asia/Dhaka":{"o":"6:0","f":"BD{c}T","e":{"m":12,"r":"31","t":"23:59"},"s":{"m":6,"r":"19","t":"23:0","v":"1:0","c":"S"},"c":"BD","n":"Bangladesh {c} Time"},"Asia/Singapore":{"o":"8:0","f":"SGT","c":"SG","n":"Singapore {c} Time"},"Africa/Cairo":{"o":"2:0","f":"EE{c}T","e":{"m":9,"r":"l4","t":"23:0","z":"s"},"s":{"m":9,"r":"10","t":"0:0","v":"1:0","c":"S"},"c":"EG","n":"Egypt {c} Time"},"Europe/Belgrade":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"RS","n":"Central Europe {c} Time"},"Europe/Moscow":{"o":"4:0","f":"MSK","c":"RU","n":"Russian {c} Time"},"America/Inuvik":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Mountain {c} Time"},"Pacific/Funafuti":{"o":"12:0","f":"TVT","c":"TV","n":"UTC+12"},"Africa/Bissau":{"o":"0:0","f":"GMT","c":"GW","n":"Greenwich {c} Time"},"Atlantic/Faroe":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"FO","n":"GMT {c} Time"},"Asia/Taipei":{"o":"8:0","f":"C{c}T","e":{"m":9,"r":"30","t":"0:0","c":"S"},"s":{"m":6,"r":"30","t":"0:0","v":"1:0","c":"D"},"c":"TW","n":"Taipei {c} Time"},"America/Argentina/Catamarca":{"o":"-3:0","f":"ART","c":"AR","n":"Argentina {c} Time"},"Pacific/Majuro":{"o":"12:0","f":"MHT","c":"MH","n":"UTC+12"},"EET":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Indian/Comoro":{"o":"3:0","f":"EAT","c":"KM","n":"E. Africa {c} Time"},"America/Manaus":{"o":"-4:0","f":"AMT","c":"BR","n":"SA Western {c} Time"},"Asia/Shanghai":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"},"c":"CN","n":"China {c} Time"},"America/Indiana/Vevay":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"US Eastern {c} Time"},"Australia/Hobart":{"o":"10:0","f":"EST","e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"c":"AU","n":"Tasmania {c} Time"},"Asia/Dili":{"o":"9:0","f":"TLT","c":"TL","n":"Tokyo {c} Time"},"America/Indiana/Marengo":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"US Eastern {c} Time"},"Asia/Aqtobe":{"o":"5:0","f":"AQTT","c":"KZ","n":"West Asia {c} Time"},"Australia/Sydney":{"o":"10:0","f":"EST","s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"c":"AU","n":"AUS Eastern {c} Time"},"Indian/Chagos":{"o":"6:0","f":"IOT","c":"IO","n":"Central Asia {c} Time"},"America/Phoenix":{"o":"-7:0","f":"MST","c":"US","n":"US Mountain {c} Time"},"Europe/Luxembourg":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"LU","n":"W. Europe {c} Time"},"Asia/Makassar":{"o":"8:0","f":"CIT","c":"ID","n":"Singapore {c} Time"},"Asia/Phnom_Penh":{"o":"7:0","f":"ICT","c":"KH","n":"SE Asia {c} Time"},"Australia/Currie":{"o":"10:0","f":"EST","e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"c":"AU","n":"Tasmania {c} Time"},"America/Cancun":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"},"c":"MX","n":"Central {c} Time (Mexico)"},"America/Argentina/Cordoba":{"o":"-3:0","f":"AR{c}T","e":{"m":3,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"},"c":"AR","n":"Argentina {c} Time"},"Asia/Baku":{"o":"4:0","f":"AZ{c}T","e":{"m":10,"r":"l0","t":"5:0"},"s":{"m":3,"r":"l0","t":"4:0","v":"1:0","c":"S"},"c":"AZ","n":"Azerbaijan {c} Time"},"Asia/Seoul":{"o":"9:0","f":"K{c}T","e":{"m":10,"r":"0>8","t":"0:0","c":"S"},"s":{"m":5,"r":"0>8","t":"0:0","v":"1:0","c":"D"},"c":"KR","n":"Korea {c} Time"},"WET":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"}},"Antarctica/McMurdo":{"o":"12:0","f":"NZ{c}T","e":{"m":4,"r":"0>1","t":"2:0","z":"s","c":"S"},"s":{"m":9,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"D"},"c":"AQ","n":"New Zealand {c} Time"},"Europe/Rome":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"IT","n":"W. Europe {c} Time"},"America/Lima":{"o":"-5:0","f":"PE{c}T","e":{"m":4,"r":"1","t":"0:0"},"s":{"m":1,"r":"1","t":"0:0","v":"1:0","c":"S"},"c":"PE","n":"SA Pacific {c} Time"},"Atlantic/Stanley":{"o":"-3:0","f":"FKST","c":"FK","n":"SA Eastern {c} Time"},"America/Dawson_Creek":{"o":"-7:0","f":"MST","c":"CA","n":"US Mountain {c} Time"},"Asia/Anadyr":{"o":"12:0","f":"ANAT","c":"RU","n":"Magadan {c} Time"},"Europe/Helsinki":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"FI","n":"FLE {c} Time"},"America/Matamoros":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"MX","n":"Central {c} Time"},"America/Argentina/San_Juan":{"o":"-3:0","f":"ART","c":"AR","n":"Argentina {c} Time"},"America/Denver":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Mountain {c} Time"},"Australia/Eucla":{"o":"8:45","f":"CWST","e":{"m":3,"r":"l0","t":"2:0","z":"s"},"s":{"m":10,"r":"l0","t":"2:0","z":"s","v":"1:0"},"c":"AU"},"America/Detroit":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Eastern {c} Time"},"America/Campo_Grande":{"o":"-4:0","f":"AM{c}T","e":{"m":2,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"},"c":"BR","n":"Central Brazilian {c} Time"},"America/Indiana/Tell_City":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Central {c} Time"},"America/Hermosillo":{"o":"-7:0","f":"MST","c":"MX","n":"US Mountain {c} Time"},"America/Whitehorse":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Pacific {c} Time"},"America/Boise":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Mountain {c} Time"},"America/St_Kitts":{"o":"-4:0","f":"AST","c":"KN","n":"SA Western {c} Time"},"America/Pangnirtung":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Eastern {c} Time"},"MET":{"o":"1:0","f":"ME{c}T","e":{"m":10,"r":"l0","t":"2:0","z":"s"},"s":{"m":3,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"S"}},"Asia/Tehran":{"o":"3:30","f":"IR{c}T","e":{"m":9,"r":"21","t":"0:0","c":"S"},"s":{"m":3,"r":"21","t":"0:0","v":"1:0","c":"D"},"c":"IR","n":"Iran {c} Time"},"Asia/Almaty":{"o":"6:0","f":"ALMT","c":"KZ","n":"Central Asia {c} Time"},"America/Santa_Isabel":{"o":"-8:0","f":"P{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"},"c":"MX","n":"Pacific {c} Time (Mexico)"},"America/Chicago":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Central {c} Time"},"Asia/Ho_Chi_Minh":{"o":"7:0","f":"ICT","c":"VN","n":"SE Asia {c} Time"},"America/Boa_Vista":{"o":"-4:0","f":"AMT","c":"BR","n":"SA Western {c} Time"},"America/Mazatlan":{"o":"-7:0","f":"M{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"},"c":"MX","n":"Mountain {c} Time (Mexico)"},"America/Indiana/Petersburg":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Eastern {c} Time"},"America/Iqaluit":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Eastern {c} Time"},"Africa/Algiers":{"o":"1:0","f":"CET","c":"DZ","n":"W. Central Africa {c} Time"},"America/Araguaina":{"o":"-3:0","f":"BR{c}T","e":{"m":2,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"},"c":"BR","n":"SA Eastern {c} Time"},"America/St_Lucia":{"o":"-4:0","f":"AST","c":"LC","n":"SA Western {c} Time"},"Pacific/Kiritimati":{"o":"14:0","f":"LINT","c":"KI"},"Asia/Yakutsk":{"o":"10:0","f":"YAKT","c":"RU","n":"Yakutsk {c} Time"},"Indian/Mahe":{"o":"4:0","f":"SCT","c":"SC","n":"Mauritius {c} Time"},"Asia/Hong_Kong":{"o":"8:0","f":"HK{c}T","e":{"m":10,"r":"0>16","t":"3:30"},"s":{"m":5,"r":"0>8","t":"3:30","v":"1:0","c":"S"},"c":"HK","n":"China {c} Time"},"America/Panama":{"o":"-5:0","f":"EST","c":"PA","n":"SA Pacific {c} Time"},"Europe/Gibraltar":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"GI","n":"W. Europe {c} Time"},"America/Scoresbysund":{"o":"-1:0","f":"EG{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"GL","n":"Azores {c} Time"},"America/Aruba":{"o":"-4:0","f":"AST","c":"AW","n":"SA Western {c} Time"},"Asia/Muscat":{"o":"4:0","f":"GST","c":"OM","n":"Arabian {c} Time"},"Africa/Freetown":{"o":"0:0","f":"{c}","e":{"m":9,"r":"1","t":"0:0","c":"GMT"},"s":{"m":6,"r":"1","t":"0:0","v":"1:0","c":"SLST"},"c":"SL","n":"Greenwich {c} Time"},"America/Argentina/San_Luis":{"o":"-4:0","f":"WAR{c}T","s":{"m":10,"r":"0>8","t":"0:0","v":"1:0","c":"S"},"e":{"m":3,"r":"0>8","t":"0:0"},"c":"AR","n":"Argentina {c} Time"},"America/Paramaribo":{"o":"-3:0","f":"SRT","c":"SR","n":"SA Eastern {c} Time"},"Australia/Lindeman":{"o":"10:0","f":"EST","e":{"m":3,"r":"0>1","t":"2:0","z":"s"},"s":{"m":10,"r":"l0","t":"2:0","z":"s","v":"1:0"},"c":"AU","n":"E. Australia {c} Time"},"Asia/Hovd":{"o":"7:0","f":"HOV{c}T","s":{"m":3,"r":"l6","t":"2:0","v":"1:0","c":"S"},"e":{"m":9,"r":"l6","t":"2:0"},"c":"MN","n":"SE Asia {c} Time"},"America/Bahia":{"o":"-3:0","f":"BRT","c":"BR","n":"Bahia {c} Time"},"Pacific/Pohnpei":{"o":"11:0","f":"PONT","c":"FM","n":"Central Pacific {c} Time"},"Pacific/Guadalcanal":{"o":"11:0","f":"SBT","c":"SB","n":"Central Pacific {c} Time"},"Australia/Perth":{"o":"8:0","f":"WST","e":{"m":3,"r":"l0","t":"2:0","z":"s"},"s":{"m":10,"r":"l0","t":"2:0","z":"s","v":"1:0"},"c":"AU","n":"W. Australia {c} Time"},"Pacific/Pago_Pago":{"o":"-11:0","f":"SST","c":"AS","n":"UTC-11"},"Factory":{"o":"0:0","f":"\"Local"},"America/Edmonton":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Mountain {c} Time"},"Antarctica/Syowa":{"o":"3:0","f":"SYOT","c":"AQ","n":"E. Africa {c} Time"},"America/Los_Angeles":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Pacific {c} Time"},"America/Creston":{"o":"-7:0","f":"MST","c":"CA","n":"US Mountain {c} Time"},"Africa/Nouakchott":{"o":"0:0","f":"GMT","c":"MR","n":"Greenwich {c} Time"},"America/Noronha":{"o":"-2:0","f":"FNT","c":"BR","n":"UTC-02"},"Asia/Riyadh89":{"o":"3:7","f":"zzz"},"Asia/Riyadh88":{"o":"3:7","f":"zzz"},"America/La_Paz":{"o":"-4:0","f":"BOT","c":"BO","n":"SA Western {c} Time"},"America/Dominica":{"o":"-4:0","f":"AST","c":"DM","n":"SA Western {c} Time"},"Asia/Riyadh87":{"o":"3:7","f":"zzz"},"Antarctica/Macquarie":{"o":"11:0","f":"MIST","c":"AU","n":"Central Pacific {c} Time"},"MST7MDT":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"n":"Mountain {c} Time"},"Africa/Ceuta":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"ES","n":"Romance {c} Time"},"Africa/El_Aaiun":{"o":"0:0","f":"WET","c":"EH","n":"Greenwich {c} Time"},"Africa/Luanda":{"o":"1:0","f":"WAT","c":"AO","n":"W. Central Africa {c} Time"},"Europe/Andorra":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"AD","n":"W. Europe {c} Time"},"Africa/Addis_Ababa":{"o":"3:0","f":"EAT","c":"ET","n":"E. Africa {c} Time"},"America/Atikokan":{"o":"-5:0","f":"EST","c":"CA","n":"SA Pacific {c} Time"},"America/Argentina/Salta":{"o":"-3:0","f":"ART","c":"AR","n":"Argentina {c} Time"},"Asia/Beirut":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"0:0"},"s":{"m":3,"r":"l0","t":"0:0","v":"1:0","c":"S"},"c":"LB","n":"Middle East {c} Time"},"Africa/Brazzaville":{"o":"1:0","f":"WAT","c":"CG","n":"W. Central Africa {c} Time"},"Pacific/Nauru":{"o":"12:0","f":"NRT","c":"NR","n":"UTC+12"},"America/Guadeloupe":{"o":"-4:0","f":"AST","c":"GP","n":"SA Western {c} Time"},"Africa/Bangui":{"o":"1:0","f":"WAT","c":"CF","n":"W. Central Africa {c} Time"},"Asia/Kamchatka":{"o":"12:0","f":"PETT","c":"RU","n":"Magadan {c} Time"},"Asia/Aqtau":{"o":"5:0","f":"AQTT","c":"KZ","n":"West Asia {c} Time"},"America/Eirunepe":{"o":"-4:0","f":"AMT","c":"BR","n":"SA Western {c} Time"},"Antarctica/Palmer":{"o":"-4:0","f":"CL{c}T","s":{"m":9,"r":"0>2","t":"4:0","z":"u","v":"1:0","c":"S"},"e":{"m":4,"r":"0>23","t":"3:0","z":"u"},"c":"AQ","n":"Pacific SA {c} Time"},"Africa/Lubumbashi":{"o":"2:0","f":"CAT","c":"CD","n":"South Africa {c} Time"},"Asia/Kolkata":{"o":"5:30","f":"IST","c":"IN","n":"India {c} Time"},"America/Monterrey":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"},"c":"MX","n":"Central {c} Time (Mexico)"},"Pacific/Galapagos":{"o":"-6:0","f":"GALT","c":"EC","n":"Central America {c} Time"},"Europe/London":{"o":"0:0","f":"GMT/BST","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"GB","n":"GMT {c} Time"},"Europe/Samara":{"o":"4:0","f":"SAMT","c":"RU","n":"Russian {c} Time"},"Europe/Monaco":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"MC","n":"W. Europe {c} Time"},"Atlantic/Bermuda":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"BM","n":"Atlantic {c} Time"},"America/Indiana/Indianapolis":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"US Eastern {c} Time"},"Indian/Christmas":{"o":"7:0","f":"CXT","c":"CX","n":"SE Asia {c} Time"},"Pacific/Tarawa":{"o":"12:0","f":"GILT","c":"KI","n":"UTC+12"},"America/Yakutat":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Alaskan {c} Time"},"America/St_Vincent":{"o":"-4:0","f":"AST","c":"VC","n":"SA Western {c} Time"},"Europe/Vienna":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"AT","n":"W. Europe {c} Time"},"America/Port-au-Prince":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"HT","n":"SA Pacific {c} Time"},"America/New_York":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Eastern {c} Time"},"Africa/Mogadishu":{"o":"3:0","f":"EAT","c":"SO","n":"E. Africa {c} Time"},"Asia/Qatar":{"o":"3:0","f":"AST","c":"QA","n":"Arab {c} Time"},"Pacific/Niue":{"o":"-11:0","f":"NUT","c":"NU","n":"UTC-11"},"Africa/Gaborone":{"o":"2:0","f":"CAT","c":"BW","n":"South Africa {c} Time"},"America/Antigua":{"o":"-4:0","f":"AST","c":"AG","n":"SA Western {c} Time"},"Australia/Lord_Howe":{"o":"10:30","f":"LHST","s":{"m":10,"r":"0>1","t":"2:0","v":"0:30"},"e":{"m":4,"r":"0>1","t":"2:0"},"c":"AU"},"Europe/Lisbon":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"PT","n":"GMT {c} Time"},"Europe/Zurich":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"CH","n":"W. Europe {c} Time"},"America/Montevideo":{"o":"-3:0","f":"UY{c}T","e":{"m":3,"r":"0>8","t":"2:0"},"s":{"m":10,"r":"0>1","t":"2:0","v":"1:0","c":"S"},"c":"UY","n":"Montevideo {c} Time"},"America/Winnipeg":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Central {c} Time"},"America/Guyana":{"o":"-4:0","f":"GYT","c":"GY","n":"SA Western {c} Time"},"America/Santarem":{"o":"-3:0","f":"BRT","c":"BR","n":"SA Eastern {c} Time"},"Asia/Macau":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"},"c":"MO","n":"China {c} Time"},"Europe/Dublin":{"o":"0:0","f":"GMT/IST","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"IE","n":"GMT {c} Time"},"Asia/Vladivostok":{"o":"11:0","f":"VLAT","c":"RU","n":"Vladivostok {c} Time"},"Europe/Zaporozhye":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"UA","n":"FLE {c} Time"},"Indian/Mayotte":{"o":"3:0","f":"EAT","c":"YT","n":"E. Africa {c} Time"},"America/Tijuana":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"MX","n":"Pacific {c} Time"},"Africa/Ndjamena":{"o":"1:0","f":"WAT","c":"TD","n":"W. Central Africa {c} Time"},"Africa/Monrovia":{"o":"0:0","f":"GMT","c":"LR","n":"Greenwich {c} Time"},"Pacific/Tahiti":{"o":"-10:0","f":"TAHT","c":"PF","n":"Hawaiian {c} Time"},"Asia/Qyzylorda":{"o":"6:0","f":"QYZT","c":"KZ","n":"Central Asia {c} Time"},"America/Thule":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"GL","n":"Atlantic {c} Time"},"Europe/Copenhagen":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"DK","n":"Romance {c} Time"},"Europe/Amsterdam":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"NL","n":"W. Europe {c} Time"},"Asia/Thimphu":{"o":"6:0","f":"BTT","c":"BT","n":"Bangladesh {c} Time"},"America/Chihuahua":{"o":"-7:0","f":"M{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"},"c":"MX","n":"Mountain {c} Time (Mexico)"},"America/Yellowknife":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Mountain {c} Time"},"Africa/Windhoek":{"o":"1:0","f":"WA{c}T","e":{"m":4,"r":"0>1","t":"2:0"},"s":{"m":9,"r":"0>1","t":"2:0","v":"1:0","c":"S"},"c":"NA","n":"Namibia {c} Time"},"America/Cayman":{"o":"-5:0","f":"EST","c":"KY","n":"SA Pacific {c} Time"},"Antarctica/Davis":{"o":"7:0","f":"DAVT","c":"AQ","n":"SE Asia {c} Time"},"Europe/Berlin":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"DE","n":"W. Europe {c} Time"},"Asia/Omsk":{"o":"7:0","f":"OMST","c":"RU","n":"N. Central Asia {c} Time"},"Africa/Kinshasa":{"o":"1:0","f":"WAT","c":"CD","n":"W. Central Africa {c} Time"},"Asia/Kathmandu":{"o":"5:45","f":"NPT","c":"NP","n":"Nepal {c} Time"},"Europe/Chisinau":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"MD","n":"GTB {c} Time"},"Asia/Choibalsan":{"o":"8:0","f":"CHO{c}T","s":{"m":3,"r":"l6","t":"2:0","v":"1:0","c":"S"},"e":{"m":9,"r":"l6","t":"2:0"},"c":"MN","n":"Ulaanbaatar {c} Time"},"Etc/UCT":{"o":"0:0","f":"UCT"},"CET":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"2:0","z":"s"},"s":{"m":3,"r":"l0","t":"2:0","z":"s","v":"1:0","c":"S"}},"Europe/Prague":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"CZ","n":"Central Europe {c} Time"},"America/Toronto":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Eastern {c} Time"},"Africa/Harare":{"o":"2:0","f":"CAT","c":"ZW","n":"South Africa {c} Time"},"America/Montserrat":{"o":"-4:0","f":"AST","c":"MS","n":"SA Western {c} Time"},"Pacific/Honolulu":{"o":"-10:0","f":"HST","c":"US","n":"Hawaiian {c} Time"},"America/Miquelon":{"o":"-3:0","f":"PM{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"PM"},"Africa/Sao_Tome":{"o":"0:0","f":"GMT","c":"ST","n":"Greenwich {c} Time"},"America/Kentucky/Louisville":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Eastern {c} Time"},"Asia/Pyongyang":{"o":"9:0","f":"KST","c":"KP","n":"Korea {c} Time"},"America/Porto_Velho":{"o":"-4:0","f":"AMT","c":"BR","n":"SA Western {c} Time"},"America/Costa_Rica":{"o":"-6:0","f":"C{c}T","e":{"m":3,"r":"15","t":"0:0","c":"S"},"s":{"m":1,"r":"6>15","t":"0:0","v":"1:0","c":"D"},"c":"CR","n":"Central America {c} Time"},"America/Fortaleza":{"o":"-3:0","f":"BRT","c":"BR","n":"SA Eastern {c} Time"},"America/Mexico_City":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"l0","t":"2:0","c":"S"},"s":{"m":4,"r":"0>1","t":"2:0","v":"1:0","c":"D"},"c":"MX","n":"Central {c} Time (Mexico)"},"America/El_Salvador":{"o":"-6:0","f":"C{c}T","e":{"m":9,"r":"l0","t":"0:0","c":"S"},"s":{"m":5,"r":"0>1","t":"0:0","v":"1:0","c":"D"},"c":"SV","n":"Central America {c} Time"},"Europe/Kaliningrad":{"o":"3:0","f":"FET","c":"RU","n":"Kaliningrad {c} Time"},"Asia/Kashgar":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"},"c":"CN","n":"China {c} Time"},"Asia/Damascus":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l5","t":"0:0"},"s":{"m":3,"r":"l5","t":"0:0","v":"1:0","c":"S"},"c":"SY","n":"Syria {c} Time"},"America/Port_of_Spain":{"o":"-4:0","f":"AST","c":"TT","n":"SA Western {c} Time"},"America/Kentucky/Monticello":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Eastern {c} Time"},"CST6CDT":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"n":"Central {c} Time"},"America/Halifax":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Atlantic {c} Time"},"Asia/Karachi":{"o":"5:0","f":"PK{c}T","e":{"m":11,"r":"1","t":"0:0"},"s":{"m":4,"r":"15","t":"0:0","v":"1:0","c":"S"},"c":"PK","n":"Pakistan {c} Time"},"America/Managua":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"0>1","t":"1:0","c":"S"},"s":{"m":4,"r":"30","t":"2:0","v":"1:0","c":"D"},"c":"NI","n":"Central America {c} Time"},"EST5EDT":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"n":"Eastern {c} Time"},"America/North_Dakota/Beulah":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Central {c} Time"},"Pacific/Wallis":{"o":"12:0","f":"WFT","c":"WF","n":"UTC+12"},"America/Nome":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Alaskan {c} Time"},"Africa/Bujumbura":{"o":"2:0","f":"CAT","c":"BI","n":"South Africa {c} Time"},"Asia/Khandyga":{"o":"10:0","f":"YAKT","c":"RU"},"America/Rio_Branco":{"o":"-4:0","f":"AMT","c":"BR","n":"SA Western {c} Time"},"America/Santiago":{"o":"-4:0","f":"CL{c}T","s":{"m":9,"r":"0>2","t":"4:0","z":"u","v":"1:0","c":"S"},"e":{"m":4,"r":"0>23","t":"3:0","z":"u"},"c":"CL","n":"Pacific SA {c} Time"},"America/Vancouver":{"o":"-8:0","f":"P{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Pacific {c} Time"},"Asia/Bahrain":{"o":"3:0","f":"AST","c":"BH","n":"Arab {c} Time"},"America/Indiana/Vincennes":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Eastern {c} Time"},"Pacific/Enderbury":{"o":"13:0","f":"PHOT","c":"KI","n":"Tonga {c} Time"},"Pacific/Wake":{"o":"12:0","f":"WAKT","c":"UM","n":"UTC+12"},"Europe/Oslo":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"NO","n":"W. Europe {c} Time"},"America/Guatemala":{"o":"-6:0","f":"C{c}T","e":{"m":10,"r":"1","t":"0:0","c":"S"},"s":{"m":4,"r":"30","t":"0:0","v":"1:0","c":"D"},"c":"GT","n":"Central America {c} Time"},"America/Montreal":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Eastern {c} Time"},"Asia/Dubai":{"o":"4:0","f":"GST","c":"AE","n":"Arabian {c} Time"},"Asia/Harbin":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"},"c":"CN","n":"China {c} Time"},"Africa/Johannesburg":{"o":"2:0","f":"SAST","e":{"m":3,"r":"0>15","t":"2:0"},"s":{"m":9,"r":"0>15","t":"2:0","v":"1:0"},"c":"ZA","n":"South Africa {c} Time"},"Europe/Tallinn":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"EE","n":"FLE {c} Time"},"America/Ojinaga":{"o":"-7:0","f":"M{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"MX","n":"Mountain {c} Time"},"Europe/Uzhgorod":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"UA","n":"FLE {c} Time"},"Asia/Ust-Nera":{"o":"11:0","f":"VLAT","c":"RU"},"America/Barbados":{"o":"-4:0","f":"A{c}T","e":{"m":9,"r":"25","t":"2:0","c":"S"},"s":{"m":4,"r":"0>15","t":"2:0","v":"1:0","c":"D"},"c":"BB","n":"SA Western {c} Time"},"Asia/Urumqi":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"},"c":"CN","n":"China {c} Time"},"Asia/Gaza":{"o":"2:0","f":"EE{c}T","e":{"m":9,"r":"5>21","t":"1:0"},"s":{"m":3,"r":"l4","t":"24:0","v":"1:0","c":"S"},"c":"PS","n":"Egypt {c} Time"},"Atlantic/Azores":{"o":"-1:0","f":"AZO{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"PT","n":"Azores {c} Time"},"Asia/Kuwait":{"o":"3:0","f":"AST","c":"KW","n":"Arab {c} Time"},"Africa/Lagos":{"o":"1:0","f":"WAT","c":"NG","n":"W. Central Africa {c} Time"},"Africa/Porto-Novo":{"o":"1:0","f":"WAT","c":"BJ","n":"W. Central Africa {c} Time"},"Africa/Accra":{"o":"0:0","f":"{c}","e":{"m":12,"r":"31","t":"0:0","c":"GMT"},"s":{"m":9,"r":"1","t":"0:0","v":"0:20","c":"GHST"},"c":"GH","n":"Greenwich {c} Time"},"Pacific/Port_Moresby":{"o":"10:0","f":"PGT","c":"PG","n":"West Pacific {c} Time"},"America/Blanc-Sablon":{"o":"-4:0","f":"AST","c":"CA","n":"SA Western {c} Time"},"Africa/Juba":{"o":"3:0","f":"EAT","c":"SS","n":"E. Africa {c} Time"},"America/Indiana/Knox":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Central {c} Time"},"Europe/Kiev":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"UA","n":"FLE {c} Time"},"Pacific/Noumea":{"o":"11:0","f":"NC{c}T","e":{"m":3,"r":"2","t":"2:0","z":"s"},"s":{"m":12,"r":"1","t":"2:0","z":"s","v":"1:0","c":"S"},"c":"NC","n":"Central Pacific {c} Time"},"Asia/Dushanbe":{"o":"5:0","f":"TJT","c":"TJ","n":"West Asia {c} Time"},"HST":{"o":"-10:0","f":"HST"},"America/Jamaica":{"o":"-5:0","f":"EST","c":"JM","n":"SA Pacific {c} Time"},"Asia/Tokyo":{"o":"9:0","f":"J{c}T","s":{"m":5,"r":"0>1","t":"2:0","v":"1:0","c":"D"},"e":{"m":9,"r":"6>8","t":"2:0","c":"S"},"c":"JP","n":"Tokyo {c} Time"},"Indian/Maldives":{"o":"5:0","f":"MVT","c":"MV","n":"West Asia {c} Time"},"Africa/Abidjan":{"o":"0:0","f":"GMT","c":"CI","n":"Greenwich {c} Time"},"Pacific/Pitcairn":{"o":"-8:0","f":"PST","c":"PN"},"Europe/Malta":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"MT","n":"W. Europe {c} Time"},"Europe/Madrid":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"ES","n":"Romance {c} Time"},"Atlantic/Reykjavik":{"o":"0:0","f":"GMT","c":"IS","n":"Greenwich {c} Time"},"Asia/Magadan":{"o":"12:0","f":"MAGT","c":"RU","n":"Magadan {c} Time"},"Asia/Kabul":{"o":"4:30","f":"AFT","c":"AF","n":"Afghanistan {c} Time"},"America/Argentina/Rio_Gallegos":{"o":"-3:0","f":"ART","c":"AR","n":"Argentina {c} Time"},"Australia/Melbourne":{"o":"10:0","f":"EST","s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"c":"AU","n":"AUS Eastern {c} Time"},"Indian/Antananarivo":{"o":"3:0","f":"EAT","c":"MG","n":"E. Africa {c} Time"},"Asia/Pontianak":{"o":"7:0","f":"WIT","c":"ID","n":"SE Asia {c} Time"},"Africa/Mbabane":{"o":"2:0","f":"SAST","c":"SZ","n":"South Africa {c} Time"},"Pacific/Kwajalein":{"o":"12:0","f":"MHT","c":"MH","n":"UTC+12"},"Africa/Banjul":{"o":"0:0","f":"GMT","c":"GM","n":"Greenwich {c} Time"},"America/Argentina/Jujuy":{"o":"-3:0","f":"ART","c":"AR","n":"Argentina {c} Time"},"America/Anchorage":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Alaskan {c} Time"},"America/Argentina/La_Rioja":{"o":"-3:0","f":"ART","c":"AR","n":"Argentina {c} Time"},"Africa/Tripoli":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l5","t":"2:0"},"s":{"m":3,"r":"l5","t":"1:0","v":"1:0","c":"S"},"c":"LY","n":"South Africa {c} Time"},"Africa/Khartoum":{"o":"3:0","f":"EAT","c":"SD","n":"E. Africa {c} Time"},"Pacific/Marquesas":{"o":"-9:30","f":"MART","c":"PF"},"Asia/Rangoon":{"o":"6:30","f":"MMT","c":"MM","n":"Myanmar {c} Time"},"Europe/Bucharest":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"RO","n":"GTB {c} Time"},"Europe/Athens":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"GR","n":"GTB {c} Time"},"America/Puerto_Rico":{"o":"-4:0","f":"AST","c":"PR","n":"SA Western {c} Time"},"America/Nassau":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"BS","n":"Eastern {c} Time"},"America/Swift_Current":{"o":"-6:0","f":"CST","c":"CA","n":"Canada Central {c} Time"},"America/Havana":{"o":"-5:0","f":"C{c}T","s":{"m":3,"r":"0>8","t":"0:0","z":"s","v":"1:0","c":"D"},"e":{"m":11,"r":"0>1","t":"0:0","z":"s","c":"S"},"c":"CU"},"Asia/Jayapura":{"o":"9:0","f":"EIT","c":"ID","n":"Tokyo {c} Time"},"Pacific/Gambier":{"o":"-9:0","f":"GAMT","c":"PF"},"America/Argentina/Mendoza":{"o":"-3:0","f":"ART","c":"AR","n":"Argentina {c} Time"},"America/Rainy_River":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Central {c} Time"},"America/Belem":{"o":"-3:0","f":"BRT","c":"BR","n":"SA Eastern {c} Time"},"America/Sao_Paulo":{"o":"-3:0","f":"BR{c}T","e":{"m":2,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"},"c":"BR","n":"E. South America {c} Time"},"Pacific/Easter":{"o":"-6:0","f":"EAS{c}T","s":{"m":9,"r":"0>2","t":"4:0","z":"u","v":"1:0","c":"S"},"e":{"m":4,"r":"0>23","t":"3:0","z":"u"},"c":"CL"},"America/Menominee":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Central {c} Time"},"America/Juneau":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Alaskan {c} Time"},"Pacific/Fakaofo":{"o":"13:0","f":"TKT","c":"TK","n":"Tonga {c} Time"},"America/Martinique":{"o":"-4:0","f":"AST","c":"MQ","n":"SA Western {c} Time"},"Africa/Conakry":{"o":"0:0","f":"GMT","c":"GN","n":"Greenwich {c} Time"},"America/North_Dakota/New_Salem":{"o":"-6:0","f":"C{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Central {c} Time"},"America/Adak":{"o":"-10:0","f":"HA{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US"},"America/Godthab":{"o":"-3:0","f":"WG{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"GL","n":"Greenland {c} Time"},"Africa/Libreville":{"o":"1:0","f":"WAT","c":"GA","n":"W. Central Africa {c} Time"},"Pacific/Kosrae":{"o":"11:0","f":"KOST","c":"FM","n":"Central Pacific {c} Time"},"America/St_Thomas":{"o":"-4:0","f":"AST","c":"VI","n":"SA Western {c} Time"},"Etc/GMT+7":{"o":"-7:0","f":"GMT+7","n":"US Mountain {c} Time"},"Etc/GMT+6":{"o":"-6:0","f":"GMT+6","n":"Central America {c} Time"},"Etc/GMT+5":{"o":"-5:0","f":"GMT+5","n":"SA Pacific {c} Time"},"Europe/Minsk":{"o":"3:0","f":"FET","c":"BY","n":"Kaliningrad {c} Time"},"Etc/GMT+4":{"o":"-4:0","f":"GMT+4","n":"SA Western {c} Time"},"Etc/GMT+3":{"o":"-3:0","f":"GMT+3","n":"SA Eastern {c} Time"},"Pacific/Efate":{"o":"11:0","f":"VU{c}T","e":{"m":1,"r":"0>23","t":"0:0"},"s":{"m":10,"r":"0>23","t":"0:0","v":"1:0","c":"S"},"c":"VU","n":"Central Pacific {c} Time"},"MST":{"o":"-7:0","f":"MST"},"Etc/GMT+2":{"o":"-2:0","f":"GMT+2","n":"UTC-02"},"Etc/GMT+1":{"o":"-1:0","f":"GMT+1","n":"Cape Verde {c} Time"},"Asia/Yekaterinburg":{"o":"6:0","f":"YEKT","c":"RU","n":"Ekaterinburg {c} Time"},"Pacific/Tongatapu":{"o":"13:0","f":"TO{c}T","e":{"m":1,"r":"l0","t":"2:0"},"s":{"m":11,"r":"0>1","t":"2:0","v":"1:0","c":"S"},"c":"TO","n":"Tonga {c} Time"},"Europe/Riga":{"o":"2:0","f":"EE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"LV","n":"FLE {c} Time"},"America/Guayaquil":{"o":"-5:0","f":"ECT","c":"EC","n":"SA Pacific {c} Time"},"America/Grand_Turk":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"TC","n":"Eastern {c} Time"},"Asia/Manila":{"o":"8:0","f":"PH{c}T","e":{"m":9,"r":"21","t":"0:0"},"s":{"m":3,"r":"22","t":"0:0","v":"1:0","c":"S"},"c":"PH","n":"Singapore {c} Time"},"Asia/Jakarta":{"o":"7:0","f":"WIT","c":"ID","n":"SE Asia {c} Time"},"Asia/Ashgabat":{"o":"5:0","f":"TMT","c":"TM","n":"West Asia {c} Time"},"Africa/Kigali":{"o":"2:0","f":"CAT","c":"RW","n":"South Africa {c} Time"},"America/Santo_Domingo":{"o":"-4:0","f":"AST","c":"DO","n":"SA Western {c} Time"},"America/Argentina/Buenos_Aires":{"o":"-3:0","f":"AR{c}T","e":{"m":3,"r":"0>15","t":"0:0"},"s":{"m":10,"r":"0>15","t":"0:0","v":"1:0","c":"S"},"c":"AR","n":"Argentina {c} Time"},"Antarctica/Mawson":{"o":"5:0","f":"MAWT","c":"AQ","n":"West Asia {c} Time"},"EST":{"o":"-5:0","f":"EST"},"America/Goose_Bay":{"o":"-4:0","f":"A{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Atlantic {c} Time"},"Europe/Tirane":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"AL","n":"Central Europe {c} Time"},"America/Nipigon":{"o":"-5:0","f":"E{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"CA","n":"Eastern {c} Time"},"Asia/Chongqing":{"o":"8:0","f":"C{c}T","s":{"m":4,"r":"0>10","t":"0:0","v":"1:0","c":"D"},"e":{"m":9,"r":"0>11","t":"0:0","c":"S"},"c":"CN","n":"China {c} Time"},"America/Cayenne":{"o":"-3:0","f":"GFT","c":"GF","n":"SA Eastern {c} Time"},"Asia/Samarkand":{"o":"5:0","f":"UZT","c":"UZ","n":"West Asia {c} Time"},"Pacific/Fiji":{"o":"12:0","f":"FJ{c}T","e":{"m":1,"r":"0>18","t":"3:0"},"s":{"m":10,"r":"0>18","t":"2:0","v":"1:0","c":"S"},"c":"FJ","n":"Fiji {c} Time"},"Australia/Darwin":{"o":"9:30","f":"CST","e":{"m":3,"r":"l0","t":"2:0"},"s":{"m":10,"r":"3","t":"2:0","v":"1:0"},"c":"AU","n":"AUS Central {c} Time"},"Etc/GMT-1":{"o":"1:0","f":"GMT-1","n":"W. Central Africa {c} Time"},"Australia/Adelaide":{"o":"9:30","f":"CST","s":{"m":10,"r":"0>1","t":"2:0","z":"s","v":"1:0"},"e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"c":"AU","n":"Cen. Australia {c} Time"},"Etc/GMT-5":{"o":"5:0","f":"GMT-5","n":"West Asia {c} Time"},"Etc/GMT-4":{"o":"4:0","f":"GMT-4","n":"Arabian {c} Time"},"Asia/Riyadh":{"o":"3:0","f":"AST","c":"SA","n":"Arab {c} Time"},"Etc/GMT-3":{"o":"3:0","f":"GMT-3","n":"E. Africa {c} Time"},"Etc/GMT-2":{"o":"2:0","f":"GMT-2","n":"South Africa {c} Time"},"Asia/Aden":{"o":"3:0","f":"AST","c":"YE","n":"Arab {c} Time"},"Etc/GMT-9":{"o":"9:0","f":"GMT-9","n":"Tokyo {c} Time"},"Asia/Krasnoyarsk":{"o":"8:0","f":"KRAT","c":"RU","n":"North Asia {c} Time"},"Africa/Casablanca":{"o":"0:0","f":"WE{c}T","s":{"m":4,"r":"l0","t":"2:0","v":"1:0","c":"S"},"e":{"m":9,"r":"l0","t":"3:0"},"c":"MA","n":"Morocco {c} Time"},"Etc/GMT-8":{"o":"8:0","f":"GMT-8","n":"Singapore {c} Time"},"Etc/GMT-7":{"o":"7:0","f":"GMT-7","n":"SE Asia {c} Time"},"Pacific/Johnston":{"o":"-10:0","f":"HST","c":"UM","n":"Hawaiian {c} Time"},"Etc/GMT-6":{"o":"6:0","f":"GMT-6","n":"Central Asia {c} Time"},"Pacific/Midway":{"o":"-11:0","f":"SST","c":"UM","n":"UTC-11"},"Etc/GMT+8":{"o":"-8:0","f":"GMT+8"},"Etc/GMT+9":{"o":"-9:0","f":"GMT+9"},"Pacific/Palau":{"o":"9:0","f":"PWT","c":"PW","n":"Tokyo {c} Time"},"Asia/Kuala_Lumpur":{"o":"8:0","f":"MYT","c":"MY","n":"Singapore {c} Time"},"Europe/Warsaw":{"o":"1:0","f":"CE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"PL","n":"Central European {c} Time"},"Africa/Lome":{"o":"0:0","f":"GMT","c":"TG","n":"Greenwich {c} Time"},"Atlantic/Madeira":{"o":"0:0","f":"WE{c}T","e":{"m":10,"r":"l0","t":"1:0","z":"u"},"s":{"m":3,"r":"l0","t":"1:0","z":"u","v":"1:0","c":"S"},"c":"PT","n":"GMT {c} Time"},"America/Sitka":{"o":"-9:0","f":"AK{c}T","e":{"m":11,"r":"0>1","t":"2:0","c":"S"},"s":{"m":3,"r":"0>8","t":"2:0","v":"1:0","c":"D"},"c":"US","n":"Alaskan {c} Time"}}
+{
+    "Africa/Douala": {
+        "o": "1:0",
+        "f": "WAT",
+        "c": "CM",
+        "n": "W. Central Africa {c} Time"
+    },
+    "Europe/Sofia": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "BG",
+        "n": "FLE {c} Time"
+    },
+    "America/Dawson": {
+        "o": "-8:0",
+        "f": "P{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Pacific {c} Time"
+    },
+    "Asia/Yerevan": {
+        "o": "4:0",
+        "f": "AMT",
+        "c": "AM",
+        "n": "Caucasus {c} Time"
+    },
+    "Asia/Bangkok": {
+        "o": "7:0",
+        "f": "ICT",
+        "c": "TH",
+        "n": "SE Asia {c} Time"
+    },
+    "America/Bogota": {
+        "o": "-5:0",
+        "f": "CO{c}T",
+        "e": {
+            "m": 4,
+            "r": "4",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 5,
+            "r": "3",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "CO",
+        "n": "SA Pacific {c} Time"
+    },
+    "Asia/Colombo": {
+        "o": "5:30",
+        "f": "IST",
+        "c": "LK",
+        "n": "Sri Lanka {c} Time"
+    },
+    "Africa/Kampala": {
+        "o": "3:0",
+        "f": "EAT",
+        "c": "UG",
+        "n": "E. Africa {c} Time"
+    },
+    "Africa/Blantyre": {
+        "o": "2:0",
+        "f": "CAT",
+        "c": "MW",
+        "n": "South Africa {c} Time"
+    },
+    "Europe/Volgograd": {
+        "o": "4:0",
+        "f": "VOLT",
+        "c": "RU",
+        "n": "Russian {c} Time"
+    },
+    "Atlantic/St_Helena": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "SH",
+        "n": "Greenwich {c} Time"
+    },
+    "Africa/Malabo": {
+        "o": "1:0",
+        "f": "WAT",
+        "c": "GQ",
+        "n": "W. Central Africa {c} Time"
+    },
+    "Asia/Nicosia": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "CY",
+        "n": "E. Europe {c} Time"
+    },
+    "America/Resolute": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Central {c} Time"
+    },
+    "America/Danmarkshavn": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "GL",
+        "n": "UTC"
+    },
+    "America/Anguilla": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "AI",
+        "n": "SA Western {c} Time"
+    },
+    "America/Regina": {
+        "o": "-6:0",
+        "f": "CST",
+        "c": "CA",
+        "n": "Canada Central {c} Time"
+    },
+    "Asia/Amman": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l5",
+            "t": "0:0",
+            "z": "s"
+        },
+        "s": {
+            "m": 3,
+            "r": "l4",
+            "t": "24:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "JO",
+        "n": "Jordan {c} Time"
+    },
+    "Europe/Brussels": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "BE",
+        "n": "Romance {c} Time"
+    },
+    "Europe/Simferopol": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "UA",
+        "n": "FLE {c} Time"
+    },
+    "America/Argentina/Ushuaia": {
+        "o": "-3:0",
+        "f": "ART",
+        "c": "AR",
+        "n": "Argentina {c} Time"
+    },
+    "America/North_Dakota/Center": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Central {c} Time"
+    },
+    "Indian/Kerguelen": {
+        "o": "5:0",
+        "f": "TFT",
+        "c": "TF",
+        "n": "West Asia {c} Time"
+    },
+    "Europe/Istanbul": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "TR",
+        "n": "Turkey {c} Time"
+    },
+    "Etc/UTC": {
+        "o": "0:0",
+        "f": "UTC"
+    },
+    "Pacific/Chuuk": {
+        "o": "10:0",
+        "f": "CHUT",
+        "c": "FM",
+        "n": "West Pacific {c} Time"
+    },
+    "America/Bahia_Banderas": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "MX",
+        "n": "Central {c} Time (Mexico)"
+    },
+    "Pacific/Rarotonga": {
+        "o": "-10:0",
+        "f": "CK{c}T",
+        "e": {
+            "m": 3,
+            "r": "0>1",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "l0",
+            "t": "0:0",
+            "v": "0:30",
+            "c": "HS"
+        },
+        "c": "CK",
+        "n": "Hawaiian {c} Time"
+    },
+    "Asia/Hebron": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 9,
+            "r": "5>21",
+            "t": "1:0"
+        },
+        "s": {
+            "m": 3,
+            "r": "l4",
+            "t": "24:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "PS",
+        "n": "Egypt {c} Time"
+    },
+    "Australia/Broken_Hill": {
+        "o": "9:30",
+        "f": "CST",
+        "s": {
+            "m": 10,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0"
+        },
+        "e": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s"
+        },
+        "c": "AU",
+        "n": "Cen. Australia {c} Time"
+    },
+    "PST8PDT": {
+        "o": "-8:0",
+        "f": "P{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "n": "Pacific {c} Time"
+    },
+    "Antarctica/Casey": {
+        "o": "8:0",
+        "f": "WST",
+        "c": "AQ",
+        "n": "W. Australia {c} Time"
+    },
+    "Europe/Stockholm": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "SE",
+        "n": "W. Europe {c} Time"
+    },
+    "Africa/Bamako": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "ML",
+        "n": "Greenwich {c} Time"
+    },
+    "America/St_Johns": {
+        "o": "-3:30",
+        "f": "N{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Newfoundland {c} Time"
+    },
+    "Africa/Dar_es_Salaam": {
+        "o": "3:0",
+        "f": "EAT",
+        "c": "TZ",
+        "n": "E. Africa {c} Time"
+    },
+    "Asia/Novosibirsk": {
+        "o": "7:0",
+        "f": "NOVT",
+        "c": "RU",
+        "n": "N. Central Asia {c} Time"
+    },
+    "Asia/Sakhalin": {
+        "o": "11:0",
+        "f": "SAKT",
+        "c": "RU",
+        "n": "Vladivostok {c} Time"
+    },
+    "America/Argentina/Tucuman": {
+        "o": "-3:0",
+        "f": "AR{c}T",
+        "e": {
+            "m": 3,
+            "r": "0>15",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "0>15",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "AR",
+        "n": "Argentina {c} Time"
+    },
+    "Europe/Budapest": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "HU",
+        "n": "Central Europe {c} Time"
+    },
+    "America/Curacao": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "CW",
+        "n": "SA Western {c} Time"
+    },
+    "Africa/Tunis": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "TN",
+        "n": "W. Central Africa {c} Time"
+    },
+    "Pacific/Guam": {
+        "o": "10:0",
+        "f": "ChST",
+        "c": "GU",
+        "n": "West Pacific {c} Time"
+    },
+    "Africa/Asmara": {
+        "o": "3:0",
+        "f": "EAT",
+        "c": "ER",
+        "n": "E. Africa {c} Time"
+    },
+    "Africa/Maseru": {
+        "o": "2:0",
+        "f": "SAST",
+        "c": "LS",
+        "n": "South Africa {c} Time"
+    },
+    "America/Asuncion": {
+        "o": "-4:0",
+        "f": "PY{c}T",
+        "e": {
+            "m": 3,
+            "r": "0>22",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "0>1",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "PY",
+        "n": "Paraguay {c} Time"
+    },
+    "America/Indiana/Winamac": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Eastern {c} Time"
+    },
+    "Europe/Vaduz": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "LI",
+        "n": "W. Europe {c} Time"
+    },
+    "Asia/Ulaanbaatar": {
+        "o": "8:0",
+        "f": "ULA{c}T",
+        "s": {
+            "m": 3,
+            "r": "l6",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "e": {
+            "m": 9,
+            "r": "l6",
+            "t": "2:0"
+        },
+        "c": "MN",
+        "n": "Ulaanbaatar {c} Time"
+    },
+    "Asia/Vientiane": {
+        "o": "7:0",
+        "f": "ICT",
+        "c": "LA",
+        "n": "SE Asia {c} Time"
+    },
+    "Africa/Niamey": {
+        "o": "1:0",
+        "f": "WAT",
+        "c": "NE",
+        "n": "W. Central Africa {c} Time"
+    },
+    "Asia/Brunei": {
+        "o": "8:0",
+        "f": "BNT",
+        "c": "BN",
+        "n": "Singapore {c} Time"
+    },
+    "America/Thunder_Bay": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Eastern {c} Time"
+    },
+    "Africa/Djibouti": {
+        "o": "3:0",
+        "f": "EAT",
+        "c": "DJ",
+        "n": "E. Africa {c} Time"
+    },
+    "Asia/Tbilisi": {
+        "o": "4:0",
+        "f": "GET",
+        "c": "GE",
+        "n": "Georgian {c} Time"
+    },
+    "America/Merida": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "MX",
+        "n": "Central {c} Time (Mexico)"
+    },
+    "America/Recife": {
+        "o": "-3:0",
+        "f": "BRT",
+        "c": "BR",
+        "n": "SA Eastern {c} Time"
+    },
+    "Indian/Reunion": {
+        "o": "4:0",
+        "f": "RET",
+        "c": "RE",
+        "n": "Mauritius {c} Time"
+    },
+    "Asia/Oral": {
+        "o": "5:0",
+        "f": "ORAT",
+        "c": "KZ",
+        "n": "West Asia {c} Time"
+    },
+    "Africa/Lusaka": {
+        "o": "2:0",
+        "f": "CAT",
+        "c": "ZM",
+        "n": "South Africa {c} Time"
+    },
+    "America/Tortola": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "VG",
+        "n": "SA Western {c} Time"
+    },
+    "Africa/Ouagadougou": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "BF",
+        "n": "Greenwich {c} Time"
+    },
+    "Asia/Kuching": {
+        "o": "8:0",
+        "f": "MYT",
+        "c": "MY",
+        "n": "Singapore {c} Time"
+    },
+    "America/Tegucigalpa": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 8,
+            "r": "1>1",
+            "t": "0:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 5,
+            "r": "0>1",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "HN",
+        "n": "Central America {c} Time"
+    },
+    "Asia/Novokuznetsk": {
+        "o": "7:0",
+        "f": "NOVT",
+        "c": "RU",
+        "n": "N. Central Asia {c} Time"
+    },
+    "Europe/Vilnius": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "LT",
+        "n": "FLE {c} Time"
+    },
+    "Asia/Bishkek": {
+        "o": "6:0",
+        "f": "KGT",
+        "c": "KG",
+        "n": "Central Asia {c} Time"
+    },
+    "America/Moncton": {
+        "o": "-4:0",
+        "f": "A{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Atlantic {c} Time"
+    },
+    "America/Maceio": {
+        "o": "-3:0",
+        "f": "BRT",
+        "c": "BR",
+        "n": "SA Eastern {c} Time"
+    },
+    "Africa/Dakar": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "SN",
+        "n": "Greenwich {c} Time"
+    },
+    "America/Belize": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 2,
+            "r": "12",
+            "t": "0:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 12,
+            "r": "18",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "BZ",
+        "n": "Central America {c} Time"
+    },
+    "Etc/GMT": {
+        "o": "0:0",
+        "f": "GMT",
+        "n": "UTC"
+    },
+    "America/Cuiaba": {
+        "o": "-4:0",
+        "f": "AM{c}T",
+        "e": {
+            "m": 2,
+            "r": "0>15",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "0>15",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "BR",
+        "n": "Central Brazilian {c} Time"
+    },
+    "Asia/Tashkent": {
+        "o": "5:0",
+        "f": "UZT",
+        "c": "UZ",
+        "n": "West Asia {c} Time"
+    },
+    "Atlantic/Canary": {
+        "o": "0:0",
+        "f": "WE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "ES",
+        "n": "GMT {c} Time"
+    },
+    "America/Rankin_Inlet": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Central {c} Time"
+    },
+    "Asia/Jerusalem": {
+        "o": "2:0",
+        "f": "I{c}T",
+        "e": {
+            "m": 10,
+            "r": "0>2",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "5>23",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "IL",
+        "n": "Israel {c} Time"
+    },
+    "Antarctica/Rothera": {
+        "o": "-3:0",
+        "f": "ROTT",
+        "c": "AQ",
+        "n": "SA Eastern {c} Time"
+    },
+    "Indian/Cocos": {
+        "o": "6:30",
+        "f": "CCT",
+        "c": "CC",
+        "n": "Myanmar {c} Time"
+    },
+    "America/Glace_Bay": {
+        "o": "-4:0",
+        "f": "A{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Atlantic {c} Time"
+    },
+    "Atlantic/Cape_Verde": {
+        "o": "-1:0",
+        "f": "CVT",
+        "c": "CV",
+        "n": "Cape Verde {c} Time"
+    },
+    "America/Cambridge_Bay": {
+        "o": "-7:0",
+        "f": "M{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Mountain {c} Time"
+    },
+    "Indian/Mauritius": {
+        "o": "4:0",
+        "f": "MU{c}T",
+        "e": {
+            "m": 3,
+            "r": "l0",
+            "t": "2:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "MU",
+        "n": "Mauritius {c} Time"
+    },
+    "Etc/GMT-14": {
+        "o": "14:0",
+        "f": "GMT-14"
+    },
+    "Etc/GMT-13": {
+        "o": "13:0",
+        "f": "GMT-13",
+        "n": "Tonga {c} Time"
+    },
+    "Australia/Brisbane": {
+        "o": "10:0",
+        "f": "EST",
+        "e": {
+            "m": 3,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s"
+        },
+        "s": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0"
+        },
+        "c": "AU",
+        "n": "E. Australia {c} Time"
+    },
+    "Etc/GMT-12": {
+        "o": "12:0",
+        "f": "GMT-12",
+        "n": "UTC+12"
+    },
+    "Etc/GMT-11": {
+        "o": "11:0",
+        "f": "GMT-11",
+        "n": "Central Pacific {c} Time"
+    },
+    "America/Grenada": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "GD",
+        "n": "SA Western {c} Time"
+    },
+    "Etc/GMT-10": {
+        "o": "10:0",
+        "f": "GMT-10",
+        "n": "West Pacific {c} Time"
+    },
+    "Antarctica/Vostok": {
+        "o": "6:0",
+        "f": "VOST",
+        "c": "AQ",
+        "n": "Central Asia {c} Time"
+    },
+    "Etc/GMT+11": {
+        "o": "-11:0",
+        "f": "GMT+11",
+        "n": "UTC-11"
+    },
+    "Etc/GMT+12": {
+        "o": "-12:0",
+        "f": "GMT+12",
+        "n": "Dateline {c} Time"
+    },
+    "Pacific/Auckland": {
+        "o": "12:0",
+        "f": "NZ{c}T",
+        "e": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s",
+            "c": "S"
+        },
+        "s": {
+            "m": 9,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "NZ",
+        "n": "New Zealand {c} Time"
+    },
+    "Antarctica/DumontDUrville": {
+        "o": "10:0",
+        "f": "DDUT",
+        "c": "AQ",
+        "n": "West Pacific {c} Time"
+    },
+    "Etc/GMT+10": {
+        "o": "-10:0",
+        "f": "GMT+10",
+        "n": "Hawaiian {c} Time"
+    },
+    "Africa/Nairobi": {
+        "o": "3:0",
+        "f": "EAT",
+        "c": "KE",
+        "n": "E. Africa {c} Time"
+    },
+    "Pacific/Norfolk": {
+        "o": "11:30",
+        "f": "NFT",
+        "c": "NF"
+    },
+    "Europe/Paris": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "FR",
+        "n": "Romance {c} Time"
+    },
+    "Asia/Irkutsk": {
+        "o": "9:0",
+        "f": "IRKT",
+        "c": "RU",
+        "n": "North Asia East {c} Time"
+    },
+    "Pacific/Apia": {
+        "o": "13:0",
+        "f": "WS{c}T",
+        "e": {
+            "m": 4,
+            "r": "0>1",
+            "t": "4:0"
+        },
+        "s": {
+            "m": 9,
+            "r": "l0",
+            "t": "3:0",
+            "v": "1:00",
+            "c": "D"
+        },
+        "c": "WS",
+        "n": "Samoa {c} Time"
+    },
+    "America/Caracas": {
+        "o": "-4:30",
+        "f": "VET",
+        "c": "VE",
+        "n": "Venezuela {c} Time"
+    },
+    "Pacific/Chatham": {
+        "o": "12:45",
+        "f": "CHA{c}T",
+        "e": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:45",
+            "z": "s",
+            "c": "S"
+        },
+        "s": {
+            "m": 9,
+            "r": "l0",
+            "t": "2:45",
+            "z": "s",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "NZ"
+    },
+    "Africa/Maputo": {
+        "o": "2:0",
+        "f": "CAT",
+        "c": "MZ",
+        "n": "South Africa {c} Time"
+    },
+    "America/Metlakatla": {
+        "o": "-8:0",
+        "f": "MeST",
+        "c": "US"
+    },
+    "Atlantic/South_Georgia": {
+        "o": "-2:0",
+        "f": "GST",
+        "c": "GS",
+        "n": "UTC-02"
+    },
+    "Asia/Baghdad": {
+        "o": "3:0",
+        "f": "A{c}T",
+        "e": {
+            "m": 10,
+            "r": "1",
+            "t": "3:0",
+            "z": "s",
+            "c": "S"
+        },
+        "s": {
+            "m": 4,
+            "r": "1",
+            "t": "3:0",
+            "z": "s",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "IQ",
+        "n": "Arabic {c} Time"
+    },
+    "Pacific/Saipan": {
+        "o": "10:0",
+        "f": "ChST",
+        "c": "MP",
+        "n": "West Pacific {c} Time"
+    },
+    "Asia/Dhaka": {
+        "o": "6:0",
+        "f": "BD{c}T",
+        "e": {
+            "m": 12,
+            "r": "31",
+            "t": "23:59"
+        },
+        "s": {
+            "m": 6,
+            "r": "19",
+            "t": "23:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "BD",
+        "n": "Bangladesh {c} Time"
+    },
+    "Asia/Singapore": {
+        "o": "8:0",
+        "f": "SGT",
+        "c": "SG",
+        "n": "Singapore {c} Time"
+    },
+    "Africa/Cairo": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 9,
+            "r": "l4",
+            "t": "23:0",
+            "z": "s"
+        },
+        "s": {
+            "m": 9,
+            "r": "10",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "EG",
+        "n": "Egypt {c} Time"
+    },
+    "Europe/Belgrade": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "RS",
+        "n": "Central Europe {c} Time"
+    },
+    "Europe/Moscow": {
+        "o": "4:0",
+        "f": "MSK",
+        "c": "RU",
+        "n": "Russian {c} Time"
+    },
+    "America/Inuvik": {
+        "o": "-7:0",
+        "f": "M{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Mountain {c} Time"
+    },
+    "Pacific/Funafuti": {
+        "o": "12:0",
+        "f": "TVT",
+        "c": "TV",
+        "n": "UTC+12"
+    },
+    "Africa/Bissau": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "GW",
+        "n": "Greenwich {c} Time"
+    },
+    "Atlantic/Faroe": {
+        "o": "0:0",
+        "f": "WE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "FO",
+        "n": "GMT {c} Time"
+    },
+    "Asia/Taipei": {
+        "o": "8:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 9,
+            "r": "30",
+            "t": "0:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 6,
+            "r": "30",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "TW",
+        "n": "Taipei {c} Time"
+    },
+    "America/Argentina/Catamarca": {
+        "o": "-3:0",
+        "f": "ART",
+        "c": "AR",
+        "n": "Argentina {c} Time"
+    },
+    "Pacific/Majuro": {
+        "o": "12:0",
+        "f": "MHT",
+        "c": "MH",
+        "n": "UTC+12"
+    },
+    "EET": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        }
+    },
+    "Indian/Comoro": {
+        "o": "3:0",
+        "f": "EAT",
+        "c": "KM",
+        "n": "E. Africa {c} Time"
+    },
+    "America/Manaus": {
+        "o": "-4:0",
+        "f": "AMT",
+        "c": "BR",
+        "n": "SA Western {c} Time"
+    },
+    "Asia/Shanghai": {
+        "o": "8:0",
+        "f": "C{c}T",
+        "s": {
+            "m": 4,
+            "r": "0>10",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "e": {
+            "m": 9,
+            "r": "0>11",
+            "t": "0:0",
+            "c": "S"
+        },
+        "c": "CN",
+        "n": "China {c} Time"
+    },
+    "America/Indiana/Vevay": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "US Eastern {c} Time"
+    },
+    "Australia/Hobart": {
+        "o": "10:0",
+        "f": "EST",
+        "e": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s"
+        },
+        "s": {
+            "m": 10,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0"
+        },
+        "c": "AU",
+        "n": "Tasmania {c} Time"
+    },
+    "Asia/Dili": {
+        "o": "9:0",
+        "f": "TLT",
+        "c": "TL",
+        "n": "Tokyo {c} Time"
+    },
+    "America/Indiana/Marengo": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "US Eastern {c} Time"
+    },
+    "Asia/Aqtobe": {
+        "o": "5:0",
+        "f": "AQTT",
+        "c": "KZ",
+        "n": "West Asia {c} Time"
+    },
+    "Australia/Sydney": {
+        "o": "10:0",
+        "f": "EST",
+        "s": {
+            "m": 10,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0"
+        },
+        "e": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s"
+        },
+        "c": "AU",
+        "n": "AUS Eastern {c} Time"
+    },
+    "Indian/Chagos": {
+        "o": "6:0",
+        "f": "IOT",
+        "c": "IO",
+        "n": "Central Asia {c} Time"
+    },
+    "America/Phoenix": {
+        "o": "-7:0",
+        "f": "MST",
+        "c": "US",
+        "n": "US Mountain {c} Time"
+    },
+    "Europe/Luxembourg": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "LU",
+        "n": "W. Europe {c} Time"
+    },
+    "Asia/Makassar": {
+        "o": "8:0",
+        "f": "CIT",
+        "c": "ID",
+        "n": "Singapore {c} Time"
+    },
+    "Asia/Phnom_Penh": {
+        "o": "7:0",
+        "f": "ICT",
+        "c": "KH",
+        "n": "SE Asia {c} Time"
+    },
+    "Australia/Currie": {
+        "o": "10:0",
+        "f": "EST",
+        "e": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s"
+        },
+        "s": {
+            "m": 10,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0"
+        },
+        "c": "AU",
+        "n": "Tasmania {c} Time"
+    },
+    "America/Cancun": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "MX",
+        "n": "Central {c} Time (Mexico)"
+    },
+    "America/Argentina/Cordoba": {
+        "o": "-3:0",
+        "f": "AR{c}T",
+        "e": {
+            "m": 3,
+            "r": "0>15",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "0>15",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "AR",
+        "n": "Argentina {c} Time"
+    },
+    "Asia/Baku": {
+        "o": "4:0",
+        "f": "AZ{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "5:0"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "4:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "AZ",
+        "n": "Azerbaijan {c} Time"
+    },
+    "Asia/Seoul": {
+        "o": "9:0",
+        "f": "K{c}T",
+        "e": {
+            "m": 10,
+            "r": "0>8",
+            "t": "0:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 5,
+            "r": "0>8",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "KR",
+        "n": "Korea {c} Time"
+    },
+    "WET": {
+        "o": "0:0",
+        "f": "WE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        }
+    },
+    "Antarctica/McMurdo": {
+        "o": "12:0",
+        "f": "NZ{c}T",
+        "e": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s",
+            "c": "S"
+        },
+        "s": {
+            "m": 9,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "AQ",
+        "n": "New Zealand {c} Time"
+    },
+    "Europe/Rome": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "IT",
+        "n": "W. Europe {c} Time"
+    },
+    "America/Lima": {
+        "o": "-5:0",
+        "f": "PE{c}T",
+        "e": {
+            "m": 4,
+            "r": "1",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 1,
+            "r": "1",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "PE",
+        "n": "SA Pacific {c} Time"
+    },
+    "Atlantic/Stanley": {
+        "o": "-3:0",
+        "f": "FKST",
+        "c": "FK",
+        "n": "SA Eastern {c} Time"
+    },
+    "America/Dawson_Creek": {
+        "o": "-7:0",
+        "f": "MST",
+        "c": "CA",
+        "n": "US Mountain {c} Time"
+    },
+    "Asia/Anadyr": {
+        "o": "12:0",
+        "f": "ANAT",
+        "c": "RU",
+        "n": "Magadan {c} Time"
+    },
+    "Europe/Helsinki": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "FI",
+        "n": "FLE {c} Time"
+    },
+    "America/Matamoros": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "MX",
+        "n": "Central {c} Time"
+    },
+    "America/Argentina/San_Juan": {
+        "o": "-3:0",
+        "f": "ART",
+        "c": "AR",
+        "n": "Argentina {c} Time"
+    },
+    "America/Denver": {
+        "o": "-7:0",
+        "f": "M{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Mountain {c} Time"
+    },
+    "Australia/Eucla": {
+        "o": "8:45",
+        "f": "CWST",
+        "e": {
+            "m": 3,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s"
+        },
+        "s": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0"
+        },
+        "c": "AU"
+    },
+    "America/Detroit": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Eastern {c} Time"
+    },
+    "America/Campo_Grande": {
+        "o": "-4:0",
+        "f": "AM{c}T",
+        "e": {
+            "m": 2,
+            "r": "0>15",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "0>15",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "BR",
+        "n": "Central Brazilian {c} Time"
+    },
+    "America/Indiana/Tell_City": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Central {c} Time"
+    },
+    "America/Hermosillo": {
+        "o": "-7:0",
+        "f": "MST",
+        "c": "MX",
+        "n": "US Mountain {c} Time"
+    },
+    "America/Whitehorse": {
+        "o": "-8:0",
+        "f": "P{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Pacific {c} Time"
+    },
+    "America/Boise": {
+        "o": "-7:0",
+        "f": "M{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Mountain {c} Time"
+    },
+    "America/St_Kitts": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "KN",
+        "n": "SA Western {c} Time"
+    },
+    "America/Pangnirtung": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Eastern {c} Time"
+    },
+    "MET": {
+        "o": "1:0",
+        "f": "ME{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0",
+            "c": "S"
+        }
+    },
+    "Asia/Tehran": {
+        "o": "3:30",
+        "f": "IR{c}T",
+        "e": {
+            "m": 9,
+            "r": "21",
+            "t": "0:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "21",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "IR",
+        "n": "Iran {c} Time"
+    },
+    "Asia/Almaty": {
+        "o": "6:0",
+        "f": "ALMT",
+        "c": "KZ",
+        "n": "Central Asia {c} Time"
+    },
+    "America/Santa_Isabel": {
+        "o": "-8:0",
+        "f": "P{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "MX",
+        "n": "Pacific {c} Time (Mexico)"
+    },
+    "America/Chicago": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Central {c} Time"
+    },
+    "Asia/Ho_Chi_Minh": {
+        "o": "7:0",
+        "f": "ICT",
+        "c": "VN",
+        "n": "SE Asia {c} Time"
+    },
+    "America/Boa_Vista": {
+        "o": "-4:0",
+        "f": "AMT",
+        "c": "BR",
+        "n": "SA Western {c} Time"
+    },
+    "America/Mazatlan": {
+        "o": "-7:0",
+        "f": "M{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "MX",
+        "n": "Mountain {c} Time (Mexico)"
+    },
+    "America/Indiana/Petersburg": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Eastern {c} Time"
+    },
+    "America/Iqaluit": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Eastern {c} Time"
+    },
+    "Africa/Algiers": {
+        "o": "1:0",
+        "f": "CET",
+        "c": "DZ",
+        "n": "W. Central Africa {c} Time"
+    },
+    "America/Araguaina": {
+        "o": "-3:0",
+        "f": "BR{c}T",
+        "e": {
+            "m": 2,
+            "r": "0>15",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "0>15",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "BR",
+        "n": "SA Eastern {c} Time"
+    },
+    "America/St_Lucia": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "LC",
+        "n": "SA Western {c} Time"
+    },
+    "Pacific/Kiritimati": {
+        "o": "14:0",
+        "f": "LINT",
+        "c": "KI"
+    },
+    "Asia/Yakutsk": {
+        "o": "10:0",
+        "f": "YAKT",
+        "c": "RU",
+        "n": "Yakutsk {c} Time"
+    },
+    "Indian/Mahe": {
+        "o": "4:0",
+        "f": "SCT",
+        "c": "SC",
+        "n": "Mauritius {c} Time"
+    },
+    "Asia/Hong_Kong": {
+        "o": "8:0",
+        "f": "HK{c}T",
+        "e": {
+            "m": 10,
+            "r": "0>16",
+            "t": "3:30"
+        },
+        "s": {
+            "m": 5,
+            "r": "0>8",
+            "t": "3:30",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "HK",
+        "n": "China {c} Time"
+    },
+    "America/Panama": {
+        "o": "-5:0",
+        "f": "EST",
+        "c": "PA",
+        "n": "SA Pacific {c} Time"
+    },
+    "Europe/Gibraltar": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "GI",
+        "n": "W. Europe {c} Time"
+    },
+    "America/Scoresbysund": {
+        "o": "-1:0",
+        "f": "EG{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "GL",
+        "n": "Azores {c} Time"
+    },
+    "America/Aruba": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "AW",
+        "n": "SA Western {c} Time"
+    },
+    "Asia/Muscat": {
+        "o": "4:0",
+        "f": "GST",
+        "c": "OM",
+        "n": "Arabian {c} Time"
+    },
+    "Africa/Freetown": {
+        "o": "0:0",
+        "f": "{c}",
+        "e": {
+            "m": 9,
+            "r": "1",
+            "t": "0:0",
+            "c": "GMT"
+        },
+        "s": {
+            "m": 6,
+            "r": "1",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "SLST"
+        },
+        "c": "SL",
+        "n": "Greenwich {c} Time"
+    },
+    "America/Argentina/San_Luis": {
+        "o": "-4:0",
+        "f": "WAR{c}T",
+        "s": {
+            "m": 10,
+            "r": "0>8",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "e": {
+            "m": 3,
+            "r": "0>8",
+            "t": "0:0"
+        },
+        "c": "AR",
+        "n": "Argentina {c} Time"
+    },
+    "America/Paramaribo": {
+        "o": "-3:0",
+        "f": "SRT",
+        "c": "SR",
+        "n": "SA Eastern {c} Time"
+    },
+    "Australia/Lindeman": {
+        "o": "10:0",
+        "f": "EST",
+        "e": {
+            "m": 3,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s"
+        },
+        "s": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0"
+        },
+        "c": "AU",
+        "n": "E. Australia {c} Time"
+    },
+    "Asia/Hovd": {
+        "o": "7:0",
+        "f": "HOV{c}T",
+        "s": {
+            "m": 3,
+            "r": "l6",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "e": {
+            "m": 9,
+            "r": "l6",
+            "t": "2:0"
+        },
+        "c": "MN",
+        "n": "SE Asia {c} Time"
+    },
+    "America/Bahia": {
+        "o": "-3:0",
+        "f": "BRT",
+        "c": "BR",
+        "n": "Bahia {c} Time"
+    },
+    "Pacific/Pohnpei": {
+        "o": "11:0",
+        "f": "PONT",
+        "c": "FM",
+        "n": "Central Pacific {c} Time"
+    },
+    "Pacific/Guadalcanal": {
+        "o": "11:0",
+        "f": "SBT",
+        "c": "SB",
+        "n": "Central Pacific {c} Time"
+    },
+    "Australia/Perth": {
+        "o": "8:0",
+        "f": "WST",
+        "e": {
+            "m": 3,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s"
+        },
+        "s": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0"
+        },
+        "c": "AU",
+        "n": "W. Australia {c} Time"
+    },
+    "Pacific/Pago_Pago": {
+        "o": "-11:0",
+        "f": "SST",
+        "c": "AS",
+        "n": "UTC-11"
+    },
+    "Factory": {
+        "o": "0:0",
+        "f": "\"Local"
+    },
+    "America/Edmonton": {
+        "o": "-7:0",
+        "f": "M{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Mountain {c} Time"
+    },
+    "Antarctica/Syowa": {
+        "o": "3:0",
+        "f": "SYOT",
+        "c": "AQ",
+        "n": "E. Africa {c} Time"
+    },
+    "America/Los_Angeles": {
+        "o": "-8:0",
+        "f": "P{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Pacific {c} Time"
+    },
+    "America/Creston": {
+        "o": "-7:0",
+        "f": "MST",
+        "c": "CA",
+        "n": "US Mountain {c} Time"
+    },
+    "Africa/Nouakchott": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "MR",
+        "n": "Greenwich {c} Time"
+    },
+    "America/Noronha": {
+        "o": "-2:0",
+        "f": "FNT",
+        "c": "BR",
+        "n": "UTC-02"
+    },
+    "Asia/Riyadh89": {
+        "o": "3:7",
+        "f": "zzz"
+    },
+    "Asia/Riyadh88": {
+        "o": "3:7",
+        "f": "zzz"
+    },
+    "America/La_Paz": {
+        "o": "-4:0",
+        "f": "BOT",
+        "c": "BO",
+        "n": "SA Western {c} Time"
+    },
+    "America/Dominica": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "DM",
+        "n": "SA Western {c} Time"
+    },
+    "Asia/Riyadh87": {
+        "o": "3:7",
+        "f": "zzz"
+    },
+    "Antarctica/Macquarie": {
+        "o": "11:0",
+        "f": "MIST",
+        "c": "AU",
+        "n": "Central Pacific {c} Time"
+    },
+    "MST7MDT": {
+        "o": "-7:0",
+        "f": "M{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "n": "Mountain {c} Time"
+    },
+    "Africa/Ceuta": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "ES",
+        "n": "Romance {c} Time"
+    },
+    "Africa/El_Aaiun": {
+        "o": "0:0",
+        "f": "WET",
+        "c": "EH",
+        "n": "Greenwich {c} Time"
+    },
+    "Africa/Luanda": {
+        "o": "1:0",
+        "f": "WAT",
+        "c": "AO",
+        "n": "W. Central Africa {c} Time"
+    },
+    "Europe/Andorra": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "AD",
+        "n": "W. Europe {c} Time"
+    },
+    "Africa/Addis_Ababa": {
+        "o": "3:0",
+        "f": "EAT",
+        "c": "ET",
+        "n": "E. Africa {c} Time"
+    },
+    "America/Atikokan": {
+        "o": "-5:0",
+        "f": "EST",
+        "c": "CA",
+        "n": "SA Pacific {c} Time"
+    },
+    "America/Argentina/Salta": {
+        "o": "-3:0",
+        "f": "ART",
+        "c": "AR",
+        "n": "Argentina {c} Time"
+    },
+    "Asia/Beirut": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "LB",
+        "n": "Middle East {c} Time"
+    },
+    "Africa/Brazzaville": {
+        "o": "1:0",
+        "f": "WAT",
+        "c": "CG",
+        "n": "W. Central Africa {c} Time"
+    },
+    "Pacific/Nauru": {
+        "o": "12:0",
+        "f": "NRT",
+        "c": "NR",
+        "n": "UTC+12"
+    },
+    "America/Guadeloupe": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "GP",
+        "n": "SA Western {c} Time"
+    },
+    "Africa/Bangui": {
+        "o": "1:0",
+        "f": "WAT",
+        "c": "CF",
+        "n": "W. Central Africa {c} Time"
+    },
+    "Asia/Kamchatka": {
+        "o": "12:0",
+        "f": "PETT",
+        "c": "RU",
+        "n": "Magadan {c} Time"
+    },
+    "Asia/Aqtau": {
+        "o": "5:0",
+        "f": "AQTT",
+        "c": "KZ",
+        "n": "West Asia {c} Time"
+    },
+    "America/Eirunepe": {
+        "o": "-4:0",
+        "f": "AMT",
+        "c": "BR",
+        "n": "SA Western {c} Time"
+    },
+    "Antarctica/Palmer": {
+        "o": "-4:0",
+        "f": "CL{c}T",
+        "s": {
+            "m": 9,
+            "r": "0>2",
+            "t": "4:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "e": {
+            "m": 4,
+            "r": "0>23",
+            "t": "3:0",
+            "z": "u"
+        },
+        "c": "AQ",
+        "n": "Pacific SA {c} Time"
+    },
+    "Africa/Lubumbashi": {
+        "o": "2:0",
+        "f": "CAT",
+        "c": "CD",
+        "n": "South Africa {c} Time"
+    },
+    "Asia/Kolkata": {
+        "o": "5:30",
+        "f": "IST",
+        "c": "IN",
+        "n": "India {c} Time"
+    },
+    "America/Monterrey": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "MX",
+        "n": "Central {c} Time (Mexico)"
+    },
+    "Pacific/Galapagos": {
+        "o": "-6:0",
+        "f": "GALT",
+        "c": "EC",
+        "n": "Central America {c} Time"
+    },
+    "Europe/London": {
+        "o": "0:0",
+        "f": "GMT/BST",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "GB",
+        "n": "GMT {c} Time"
+    },
+    "Europe/Samara": {
+        "o": "4:0",
+        "f": "SAMT",
+        "c": "RU",
+        "n": "Russian {c} Time"
+    },
+    "Europe/Monaco": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "MC",
+        "n": "W. Europe {c} Time"
+    },
+    "Atlantic/Bermuda": {
+        "o": "-4:0",
+        "f": "A{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "BM",
+        "n": "Atlantic {c} Time"
+    },
+    "America/Indiana/Indianapolis": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "US Eastern {c} Time"
+    },
+    "Indian/Christmas": {
+        "o": "7:0",
+        "f": "CXT",
+        "c": "CX",
+        "n": "SE Asia {c} Time"
+    },
+    "Pacific/Tarawa": {
+        "o": "12:0",
+        "f": "GILT",
+        "c": "KI",
+        "n": "UTC+12"
+    },
+    "America/Yakutat": {
+        "o": "-9:0",
+        "f": "AK{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Alaskan {c} Time"
+    },
+    "America/St_Vincent": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "VC",
+        "n": "SA Western {c} Time"
+    },
+    "Europe/Vienna": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "AT",
+        "n": "W. Europe {c} Time"
+    },
+    "America/Port-au-Prince": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "HT",
+        "n": "SA Pacific {c} Time"
+    },
+    "America/New_York": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Eastern {c} Time"
+    },
+    "Africa/Mogadishu": {
+        "o": "3:0",
+        "f": "EAT",
+        "c": "SO",
+        "n": "E. Africa {c} Time"
+    },
+    "Asia/Qatar": {
+        "o": "3:0",
+        "f": "AST",
+        "c": "QA",
+        "n": "Arab {c} Time"
+    },
+    "Pacific/Niue": {
+        "o": "-11:0",
+        "f": "NUT",
+        "c": "NU",
+        "n": "UTC-11"
+    },
+    "Africa/Gaborone": {
+        "o": "2:0",
+        "f": "CAT",
+        "c": "BW",
+        "n": "South Africa {c} Time"
+    },
+    "America/Antigua": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "AG",
+        "n": "SA Western {c} Time"
+    },
+    "Australia/Lord_Howe": {
+        "o": "10:30",
+        "f": "LHST",
+        "s": {
+            "m": 10,
+            "r": "0>1",
+            "t": "2:0",
+            "v": "0:30"
+        },
+        "e": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0"
+        },
+        "c": "AU"
+    },
+    "Europe/Lisbon": {
+        "o": "0:0",
+        "f": "WE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "PT",
+        "n": "GMT {c} Time"
+    },
+    "Europe/Zurich": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "CH",
+        "n": "W. Europe {c} Time"
+    },
+    "America/Montevideo": {
+        "o": "-3:0",
+        "f": "UY{c}T",
+        "e": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "0>1",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "UY",
+        "n": "Montevideo {c} Time"
+    },
+    "America/Winnipeg": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Central {c} Time"
+    },
+    "America/Guyana": {
+        "o": "-4:0",
+        "f": "GYT",
+        "c": "GY",
+        "n": "SA Western {c} Time"
+    },
+    "America/Santarem": {
+        "o": "-3:0",
+        "f": "BRT",
+        "c": "BR",
+        "n": "SA Eastern {c} Time"
+    },
+    "Asia/Macau": {
+        "o": "8:0",
+        "f": "C{c}T",
+        "s": {
+            "m": 4,
+            "r": "0>10",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "e": {
+            "m": 9,
+            "r": "0>11",
+            "t": "0:0",
+            "c": "S"
+        },
+        "c": "MO",
+        "n": "China {c} Time"
+    },
+    "Europe/Dublin": {
+        "o": "0:0",
+        "f": "GMT/IST",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "IE",
+        "n": "GMT {c} Time"
+    },
+    "Asia/Vladivostok": {
+        "o": "11:0",
+        "f": "VLAT",
+        "c": "RU",
+        "n": "Vladivostok {c} Time"
+    },
+    "Europe/Zaporozhye": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "UA",
+        "n": "FLE {c} Time"
+    },
+    "Indian/Mayotte": {
+        "o": "3:0",
+        "f": "EAT",
+        "c": "YT",
+        "n": "E. Africa {c} Time"
+    },
+    "America/Tijuana": {
+        "o": "-8:0",
+        "f": "P{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "MX",
+        "n": "Pacific {c} Time"
+    },
+    "Africa/Ndjamena": {
+        "o": "1:0",
+        "f": "WAT",
+        "c": "TD",
+        "n": "W. Central Africa {c} Time"
+    },
+    "Africa/Monrovia": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "LR",
+        "n": "Greenwich {c} Time"
+    },
+    "Pacific/Tahiti": {
+        "o": "-10:0",
+        "f": "TAHT",
+        "c": "PF",
+        "n": "Hawaiian {c} Time"
+    },
+    "Asia/Qyzylorda": {
+        "o": "6:0",
+        "f": "QYZT",
+        "c": "KZ",
+        "n": "Central Asia {c} Time"
+    },
+    "America/Thule": {
+        "o": "-4:0",
+        "f": "A{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "GL",
+        "n": "Atlantic {c} Time"
+    },
+    "Europe/Copenhagen": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "DK",
+        "n": "Romance {c} Time"
+    },
+    "Europe/Amsterdam": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "NL",
+        "n": "W. Europe {c} Time"
+    },
+    "Asia/Thimphu": {
+        "o": "6:0",
+        "f": "BTT",
+        "c": "BT",
+        "n": "Bangladesh {c} Time"
+    },
+    "America/Chihuahua": {
+        "o": "-7:0",
+        "f": "M{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "MX",
+        "n": "Mountain {c} Time (Mexico)"
+    },
+    "America/Yellowknife": {
+        "o": "-7:0",
+        "f": "M{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Mountain {c} Time"
+    },
+    "Africa/Windhoek": {
+        "o": "1:0",
+        "f": "WA{c}T",
+        "e": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0"
+        },
+        "s": {
+            "m": 9,
+            "r": "0>1",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "NA",
+        "n": "Namibia {c} Time"
+    },
+    "America/Cayman": {
+        "o": "-5:0",
+        "f": "EST",
+        "c": "KY",
+        "n": "SA Pacific {c} Time"
+    },
+    "Antarctica/Davis": {
+        "o": "7:0",
+        "f": "DAVT",
+        "c": "AQ",
+        "n": "SE Asia {c} Time"
+    },
+    "Europe/Berlin": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "DE",
+        "n": "W. Europe {c} Time"
+    },
+    "Asia/Omsk": {
+        "o": "7:0",
+        "f": "OMST",
+        "c": "RU",
+        "n": "N. Central Asia {c} Time"
+    },
+    "Africa/Kinshasa": {
+        "o": "1:0",
+        "f": "WAT",
+        "c": "CD",
+        "n": "W. Central Africa {c} Time"
+    },
+    "Asia/Kathmandu": {
+        "o": "5:45",
+        "f": "NPT",
+        "c": "NP",
+        "n": "Nepal {c} Time"
+    },
+    "Europe/Chisinau": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "MD",
+        "n": "GTB {c} Time"
+    },
+    "Asia/Choibalsan": {
+        "o": "8:0",
+        "f": "CHO{c}T",
+        "s": {
+            "m": 3,
+            "r": "l6",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "e": {
+            "m": 9,
+            "r": "l6",
+            "t": "2:0"
+        },
+        "c": "MN",
+        "n": "Ulaanbaatar {c} Time"
+    },
+    "Etc/UCT": {
+        "o": "0:0",
+        "f": "UCT"
+    },
+    "CET": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0",
+            "c": "S"
+        }
+    },
+    "Europe/Prague": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "CZ",
+        "n": "Central Europe {c} Time"
+    },
+    "America/Toronto": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Eastern {c} Time"
+    },
+    "Africa/Harare": {
+        "o": "2:0",
+        "f": "CAT",
+        "c": "ZW",
+        "n": "South Africa {c} Time"
+    },
+    "America/Montserrat": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "MS",
+        "n": "SA Western {c} Time"
+    },
+    "Pacific/Honolulu": {
+        "o": "-10:0",
+        "f": "HST",
+        "c": "US",
+        "n": "Hawaiian {c} Time"
+    },
+    "America/Miquelon": {
+        "o": "-3:0",
+        "f": "PM{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "PM"
+    },
+    "Africa/Sao_Tome": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "ST",
+        "n": "Greenwich {c} Time"
+    },
+    "America/Kentucky/Louisville": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Eastern {c} Time"
+    },
+    "Asia/Pyongyang": {
+        "o": "9:0",
+        "f": "KST",
+        "c": "KP",
+        "n": "Korea {c} Time"
+    },
+    "America/Porto_Velho": {
+        "o": "-4:0",
+        "f": "AMT",
+        "c": "BR",
+        "n": "SA Western {c} Time"
+    },
+    "America/Costa_Rica": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 3,
+            "r": "15",
+            "t": "0:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 1,
+            "r": "6>15",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CR",
+        "n": "Central America {c} Time"
+    },
+    "America/Fortaleza": {
+        "o": "-3:0",
+        "f": "BRT",
+        "c": "BR",
+        "n": "SA Eastern {c} Time"
+    },
+    "America/Mexico_City": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "MX",
+        "n": "Central {c} Time (Mexico)"
+    },
+    "America/El_Salvador": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 9,
+            "r": "l0",
+            "t": "0:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 5,
+            "r": "0>1",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "SV",
+        "n": "Central America {c} Time"
+    },
+    "Europe/Kaliningrad": {
+        "o": "3:0",
+        "f": "FET",
+        "c": "RU",
+        "n": "Kaliningrad {c} Time"
+    },
+    "Asia/Kashgar": {
+        "o": "8:0",
+        "f": "C{c}T",
+        "s": {
+            "m": 4,
+            "r": "0>10",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "e": {
+            "m": 9,
+            "r": "0>11",
+            "t": "0:0",
+            "c": "S"
+        },
+        "c": "CN",
+        "n": "China {c} Time"
+    },
+    "Asia/Damascus": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l5",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 3,
+            "r": "l5",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "SY",
+        "n": "Syria {c} Time"
+    },
+    "America/Port_of_Spain": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "TT",
+        "n": "SA Western {c} Time"
+    },
+    "America/Kentucky/Monticello": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Eastern {c} Time"
+    },
+    "CST6CDT": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "n": "Central {c} Time"
+    },
+    "America/Halifax": {
+        "o": "-4:0",
+        "f": "A{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Atlantic {c} Time"
+    },
+    "Asia/Karachi": {
+        "o": "5:0",
+        "f": "PK{c}T",
+        "e": {
+            "m": 11,
+            "r": "1",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 4,
+            "r": "15",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "PK",
+        "n": "Pakistan {c} Time"
+    },
+    "America/Managua": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 10,
+            "r": "0>1",
+            "t": "1:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 4,
+            "r": "30",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "NI",
+        "n": "Central America {c} Time"
+    },
+    "EST5EDT": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "n": "Eastern {c} Time"
+    },
+    "America/North_Dakota/Beulah": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Central {c} Time"
+    },
+    "Pacific/Wallis": {
+        "o": "12:0",
+        "f": "WFT",
+        "c": "WF",
+        "n": "UTC+12"
+    },
+    "America/Nome": {
+        "o": "-9:0",
+        "f": "AK{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Alaskan {c} Time"
+    },
+    "Africa/Bujumbura": {
+        "o": "2:0",
+        "f": "CAT",
+        "c": "BI",
+        "n": "South Africa {c} Time"
+    },
+    "Asia/Khandyga": {
+        "o": "10:0",
+        "f": "YAKT",
+        "c": "RU"
+    },
+    "America/Rio_Branco": {
+        "o": "-4:0",
+        "f": "AMT",
+        "c": "BR",
+        "n": "SA Western {c} Time"
+    },
+    "America/Santiago": {
+        "o": "-4:0",
+        "f": "CL{c}T",
+        "s": {
+            "m": 9,
+            "r": "0>2",
+            "t": "4:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "e": {
+            "m": 4,
+            "r": "0>23",
+            "t": "3:0",
+            "z": "u"
+        },
+        "c": "CL",
+        "n": "Pacific SA {c} Time"
+    },
+    "America/Vancouver": {
+        "o": "-8:0",
+        "f": "P{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Pacific {c} Time"
+    },
+    "Asia/Bahrain": {
+        "o": "3:0",
+        "f": "AST",
+        "c": "BH",
+        "n": "Arab {c} Time"
+    },
+    "America/Indiana/Vincennes": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Eastern {c} Time"
+    },
+    "Pacific/Enderbury": {
+        "o": "13:0",
+        "f": "PHOT",
+        "c": "KI",
+        "n": "Tonga {c} Time"
+    },
+    "Pacific/Wake": {
+        "o": "12:0",
+        "f": "WAKT",
+        "c": "UM",
+        "n": "UTC+12"
+    },
+    "Europe/Oslo": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "NO",
+        "n": "W. Europe {c} Time"
+    },
+    "America/Guatemala": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 10,
+            "r": "1",
+            "t": "0:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 4,
+            "r": "30",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "GT",
+        "n": "Central America {c} Time"
+    },
+    "America/Montreal": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Eastern {c} Time"
+    },
+    "Asia/Dubai": {
+        "o": "4:0",
+        "f": "GST",
+        "c": "AE",
+        "n": "Arabian {c} Time"
+    },
+    "Asia/Harbin": {
+        "o": "8:0",
+        "f": "C{c}T",
+        "s": {
+            "m": 4,
+            "r": "0>10",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "e": {
+            "m": 9,
+            "r": "0>11",
+            "t": "0:0",
+            "c": "S"
+        },
+        "c": "CN",
+        "n": "China {c} Time"
+    },
+    "Africa/Johannesburg": {
+        "o": "2:0",
+        "f": "SAST",
+        "e": {
+            "m": 3,
+            "r": "0>15",
+            "t": "2:0"
+        },
+        "s": {
+            "m": 9,
+            "r": "0>15",
+            "t": "2:0",
+            "v": "1:0"
+        },
+        "c": "ZA",
+        "n": "South Africa {c} Time"
+    },
+    "Europe/Tallinn": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "EE",
+        "n": "FLE {c} Time"
+    },
+    "America/Ojinaga": {
+        "o": "-7:0",
+        "f": "M{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "MX",
+        "n": "Mountain {c} Time"
+    },
+    "Europe/Uzhgorod": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "UA",
+        "n": "FLE {c} Time"
+    },
+    "Asia/Ust-Nera": {
+        "o": "11:0",
+        "f": "VLAT",
+        "c": "RU"
+    },
+    "America/Barbados": {
+        "o": "-4:0",
+        "f": "A{c}T",
+        "e": {
+            "m": 9,
+            "r": "25",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 4,
+            "r": "0>15",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "BB",
+        "n": "SA Western {c} Time"
+    },
+    "Asia/Urumqi": {
+        "o": "8:0",
+        "f": "C{c}T",
+        "s": {
+            "m": 4,
+            "r": "0>10",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "e": {
+            "m": 9,
+            "r": "0>11",
+            "t": "0:0",
+            "c": "S"
+        },
+        "c": "CN",
+        "n": "China {c} Time"
+    },
+    "Asia/Gaza": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 9,
+            "r": "5>21",
+            "t": "1:0"
+        },
+        "s": {
+            "m": 3,
+            "r": "l4",
+            "t": "24:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "PS",
+        "n": "Egypt {c} Time"
+    },
+    "Atlantic/Azores": {
+        "o": "-1:0",
+        "f": "AZO{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "PT",
+        "n": "Azores {c} Time"
+    },
+    "Asia/Kuwait": {
+        "o": "3:0",
+        "f": "AST",
+        "c": "KW",
+        "n": "Arab {c} Time"
+    },
+    "Africa/Lagos": {
+        "o": "1:0",
+        "f": "WAT",
+        "c": "NG",
+        "n": "W. Central Africa {c} Time"
+    },
+    "Africa/Porto-Novo": {
+        "o": "1:0",
+        "f": "WAT",
+        "c": "BJ",
+        "n": "W. Central Africa {c} Time"
+    },
+    "Africa/Accra": {
+        "o": "0:0",
+        "f": "{c}",
+        "e": {
+            "m": 12,
+            "r": "31",
+            "t": "0:0",
+            "c": "GMT"
+        },
+        "s": {
+            "m": 9,
+            "r": "1",
+            "t": "0:0",
+            "v": "0:20",
+            "c": "GHST"
+        },
+        "c": "GH",
+        "n": "Greenwich {c} Time"
+    },
+    "Pacific/Port_Moresby": {
+        "o": "10:0",
+        "f": "PGT",
+        "c": "PG",
+        "n": "West Pacific {c} Time"
+    },
+    "America/Blanc-Sablon": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "CA",
+        "n": "SA Western {c} Time"
+    },
+    "Africa/Juba": {
+        "o": "3:0",
+        "f": "EAT",
+        "c": "SS",
+        "n": "E. Africa {c} Time"
+    },
+    "America/Indiana/Knox": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Central {c} Time"
+    },
+    "Europe/Kiev": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "UA",
+        "n": "FLE {c} Time"
+    },
+    "Pacific/Noumea": {
+        "o": "11:0",
+        "f": "NC{c}T",
+        "e": {
+            "m": 3,
+            "r": "2",
+            "t": "2:0",
+            "z": "s"
+        },
+        "s": {
+            "m": 12,
+            "r": "1",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "NC",
+        "n": "Central Pacific {c} Time"
+    },
+    "Asia/Dushanbe": {
+        "o": "5:0",
+        "f": "TJT",
+        "c": "TJ",
+        "n": "West Asia {c} Time"
+    },
+    "HST": {
+        "o": "-10:0",
+        "f": "HST"
+    },
+    "America/Jamaica": {
+        "o": "-5:0",
+        "f": "EST",
+        "c": "JM",
+        "n": "SA Pacific {c} Time"
+    },
+    "Asia/Tokyo": {
+        "o": "9:0",
+        "f": "J{c}T",
+        "s": {
+            "m": 5,
+            "r": "0>1",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "e": {
+            "m": 9,
+            "r": "6>8",
+            "t": "2:0",
+            "c": "S"
+        },
+        "c": "JP",
+        "n": "Tokyo {c} Time"
+    },
+    "Indian/Maldives": {
+        "o": "5:0",
+        "f": "MVT",
+        "c": "MV",
+        "n": "West Asia {c} Time"
+    },
+    "Africa/Abidjan": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "CI",
+        "n": "Greenwich {c} Time"
+    },
+    "Pacific/Pitcairn": {
+        "o": "-8:0",
+        "f": "PST",
+        "c": "PN"
+    },
+    "Europe/Malta": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "MT",
+        "n": "W. Europe {c} Time"
+    },
+    "Europe/Madrid": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "ES",
+        "n": "Romance {c} Time"
+    },
+    "Atlantic/Reykjavik": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "IS",
+        "n": "Greenwich {c} Time"
+    },
+    "Asia/Magadan": {
+        "o": "12:0",
+        "f": "MAGT",
+        "c": "RU",
+        "n": "Magadan {c} Time"
+    },
+    "Asia/Kabul": {
+        "o": "4:30",
+        "f": "AFT",
+        "c": "AF",
+        "n": "Afghanistan {c} Time"
+    },
+    "America/Argentina/Rio_Gallegos": {
+        "o": "-3:0",
+        "f": "ART",
+        "c": "AR",
+        "n": "Argentina {c} Time"
+    },
+    "Australia/Melbourne": {
+        "o": "10:0",
+        "f": "EST",
+        "s": {
+            "m": 10,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0"
+        },
+        "e": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s"
+        },
+        "c": "AU",
+        "n": "AUS Eastern {c} Time"
+    },
+    "Indian/Antananarivo": {
+        "o": "3:0",
+        "f": "EAT",
+        "c": "MG",
+        "n": "E. Africa {c} Time"
+    },
+    "Asia/Pontianak": {
+        "o": "7:0",
+        "f": "WIT",
+        "c": "ID",
+        "n": "SE Asia {c} Time"
+    },
+    "Africa/Mbabane": {
+        "o": "2:0",
+        "f": "SAST",
+        "c": "SZ",
+        "n": "South Africa {c} Time"
+    },
+    "Pacific/Kwajalein": {
+        "o": "12:0",
+        "f": "MHT",
+        "c": "MH",
+        "n": "UTC+12"
+    },
+    "Africa/Banjul": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "GM",
+        "n": "Greenwich {c} Time"
+    },
+    "America/Argentina/Jujuy": {
+        "o": "-3:0",
+        "f": "ART",
+        "c": "AR",
+        "n": "Argentina {c} Time"
+    },
+    "America/Anchorage": {
+        "o": "-9:0",
+        "f": "AK{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Alaskan {c} Time"
+    },
+    "America/Argentina/La_Rioja": {
+        "o": "-3:0",
+        "f": "ART",
+        "c": "AR",
+        "n": "Argentina {c} Time"
+    },
+    "Africa/Tripoli": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l5",
+            "t": "2:0"
+        },
+        "s": {
+            "m": 3,
+            "r": "l5",
+            "t": "1:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "LY",
+        "n": "South Africa {c} Time"
+    },
+    "Africa/Khartoum": {
+        "o": "3:0",
+        "f": "EAT",
+        "c": "SD",
+        "n": "E. Africa {c} Time"
+    },
+    "Pacific/Marquesas": {
+        "o": "-9:30",
+        "f": "MART",
+        "c": "PF"
+    },
+    "Asia/Rangoon": {
+        "o": "6:30",
+        "f": "MMT",
+        "c": "MM",
+        "n": "Myanmar {c} Time"
+    },
+    "Europe/Bucharest": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "RO",
+        "n": "GTB {c} Time"
+    },
+    "Europe/Athens": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "GR",
+        "n": "GTB {c} Time"
+    },
+    "America/Puerto_Rico": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "PR",
+        "n": "SA Western {c} Time"
+    },
+    "America/Nassau": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "BS",
+        "n": "Eastern {c} Time"
+    },
+    "America/Swift_Current": {
+        "o": "-6:0",
+        "f": "CST",
+        "c": "CA",
+        "n": "Canada Central {c} Time"
+    },
+    "America/Havana": {
+        "o": "-5:0",
+        "f": "C{c}T",
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "0:0",
+            "z": "s",
+            "v": "1:0",
+            "c": "D"
+        },
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "0:0",
+            "z": "s",
+            "c": "S"
+        },
+        "c": "CU"
+    },
+    "Asia/Jayapura": {
+        "o": "9:0",
+        "f": "EIT",
+        "c": "ID",
+        "n": "Tokyo {c} Time"
+    },
+    "Pacific/Gambier": {
+        "o": "-9:0",
+        "f": "GAMT",
+        "c": "PF"
+    },
+    "America/Argentina/Mendoza": {
+        "o": "-3:0",
+        "f": "ART",
+        "c": "AR",
+        "n": "Argentina {c} Time"
+    },
+    "America/Rainy_River": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Central {c} Time"
+    },
+    "America/Belem": {
+        "o": "-3:0",
+        "f": "BRT",
+        "c": "BR",
+        "n": "SA Eastern {c} Time"
+    },
+    "America/Sao_Paulo": {
+        "o": "-3:0",
+        "f": "BR{c}T",
+        "e": {
+            "m": 2,
+            "r": "0>15",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "0>15",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "BR",
+        "n": "E. South America {c} Time"
+    },
+    "Pacific/Easter": {
+        "o": "-6:0",
+        "f": "EAS{c}T",
+        "s": {
+            "m": 9,
+            "r": "0>2",
+            "t": "4:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "e": {
+            "m": 4,
+            "r": "0>23",
+            "t": "3:0",
+            "z": "u"
+        },
+        "c": "CL"
+    },
+    "America/Menominee": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Central {c} Time"
+    },
+    "America/Juneau": {
+        "o": "-9:0",
+        "f": "AK{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Alaskan {c} Time"
+    },
+    "Pacific/Fakaofo": {
+        "o": "13:0",
+        "f": "TKT",
+        "c": "TK",
+        "n": "Tonga {c} Time"
+    },
+    "America/Martinique": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "MQ",
+        "n": "SA Western {c} Time"
+    },
+    "Africa/Conakry": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "GN",
+        "n": "Greenwich {c} Time"
+    },
+    "America/North_Dakota/New_Salem": {
+        "o": "-6:0",
+        "f": "C{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Central {c} Time"
+    },
+    "America/Adak": {
+        "o": "-10:0",
+        "f": "HA{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US"
+    },
+    "America/Godthab": {
+        "o": "-3:0",
+        "f": "WG{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "GL",
+        "n": "Greenland {c} Time"
+    },
+    "Africa/Libreville": {
+        "o": "1:0",
+        "f": "WAT",
+        "c": "GA",
+        "n": "W. Central Africa {c} Time"
+    },
+    "Pacific/Kosrae": {
+        "o": "11:0",
+        "f": "KOST",
+        "c": "FM",
+        "n": "Central Pacific {c} Time"
+    },
+    "America/St_Thomas": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "VI",
+        "n": "SA Western {c} Time"
+    },
+    "Etc/GMT+7": {
+        "o": "-7:0",
+        "f": "GMT+7",
+        "n": "US Mountain {c} Time"
+    },
+    "Etc/GMT+6": {
+        "o": "-6:0",
+        "f": "GMT+6",
+        "n": "Central America {c} Time"
+    },
+    "Etc/GMT+5": {
+        "o": "-5:0",
+        "f": "GMT+5",
+        "n": "SA Pacific {c} Time"
+    },
+    "Europe/Minsk": {
+        "o": "3:0",
+        "f": "FET",
+        "c": "BY",
+        "n": "Kaliningrad {c} Time"
+    },
+    "Etc/GMT+4": {
+        "o": "-4:0",
+        "f": "GMT+4",
+        "n": "SA Western {c} Time"
+    },
+    "Etc/GMT+3": {
+        "o": "-3:0",
+        "f": "GMT+3",
+        "n": "SA Eastern {c} Time"
+    },
+    "Pacific/Efate": {
+        "o": "11:0",
+        "f": "VU{c}T",
+        "e": {
+            "m": 1,
+            "r": "0>23",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "0>23",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "VU",
+        "n": "Central Pacific {c} Time"
+    },
+    "MST": {
+        "o": "-7:0",
+        "f": "MST"
+    },
+    "Etc/GMT+2": {
+        "o": "-2:0",
+        "f": "GMT+2",
+        "n": "UTC-02"
+    },
+    "Etc/GMT+1": {
+        "o": "-1:0",
+        "f": "GMT+1",
+        "n": "Cape Verde {c} Time"
+    },
+    "Asia/Yekaterinburg": {
+        "o": "6:0",
+        "f": "YEKT",
+        "c": "RU",
+        "n": "Ekaterinburg {c} Time"
+    },
+    "Pacific/Tongatapu": {
+        "o": "13:0",
+        "f": "TO{c}T",
+        "e": {
+            "m": 1,
+            "r": "l0",
+            "t": "2:0"
+        },
+        "s": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "TO",
+        "n": "Tonga {c} Time"
+    },
+    "Europe/Riga": {
+        "o": "2:0",
+        "f": "EE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "LV",
+        "n": "FLE {c} Time"
+    },
+    "America/Guayaquil": {
+        "o": "-5:0",
+        "f": "ECT",
+        "c": "EC",
+        "n": "SA Pacific {c} Time"
+    },
+    "America/Grand_Turk": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "TC",
+        "n": "Eastern {c} Time"
+    },
+    "Asia/Manila": {
+        "o": "8:0",
+        "f": "PH{c}T",
+        "e": {
+            "m": 9,
+            "r": "21",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 3,
+            "r": "22",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "PH",
+        "n": "Singapore {c} Time"
+    },
+    "Asia/Jakarta": {
+        "o": "7:0",
+        "f": "WIT",
+        "c": "ID",
+        "n": "SE Asia {c} Time"
+    },
+    "Asia/Ashgabat": {
+        "o": "5:0",
+        "f": "TMT",
+        "c": "TM",
+        "n": "West Asia {c} Time"
+    },
+    "Africa/Kigali": {
+        "o": "2:0",
+        "f": "CAT",
+        "c": "RW",
+        "n": "South Africa {c} Time"
+    },
+    "America/Santo_Domingo": {
+        "o": "-4:0",
+        "f": "AST",
+        "c": "DO",
+        "n": "SA Western {c} Time"
+    },
+    "America/Argentina/Buenos_Aires": {
+        "o": "-3:0",
+        "f": "AR{c}T",
+        "e": {
+            "m": 3,
+            "r": "0>15",
+            "t": "0:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "0>15",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "AR",
+        "n": "Argentina {c} Time"
+    },
+    "Antarctica/Mawson": {
+        "o": "5:0",
+        "f": "MAWT",
+        "c": "AQ",
+        "n": "West Asia {c} Time"
+    },
+    "EST": {
+        "o": "-5:0",
+        "f": "EST"
+    },
+    "America/Goose_Bay": {
+        "o": "-4:0",
+        "f": "A{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Atlantic {c} Time"
+    },
+    "Europe/Tirane": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "AL",
+        "n": "Central Europe {c} Time"
+    },
+    "America/Nipigon": {
+        "o": "-5:0",
+        "f": "E{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "CA",
+        "n": "Eastern {c} Time"
+    },
+    "Asia/Chongqing": {
+        "o": "8:0",
+        "f": "C{c}T",
+        "s": {
+            "m": 4,
+            "r": "0>10",
+            "t": "0:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "e": {
+            "m": 9,
+            "r": "0>11",
+            "t": "0:0",
+            "c": "S"
+        },
+        "c": "CN",
+        "n": "China {c} Time"
+    },
+    "America/Cayenne": {
+        "o": "-3:0",
+        "f": "GFT",
+        "c": "GF",
+        "n": "SA Eastern {c} Time"
+    },
+    "Asia/Samarkand": {
+        "o": "5:0",
+        "f": "UZT",
+        "c": "UZ",
+        "n": "West Asia {c} Time"
+    },
+    "Pacific/Fiji": {
+        "o": "12:0",
+        "f": "FJ{c}T",
+        "e": {
+            "m": 1,
+            "r": "0>18",
+            "t": "3:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "0>18",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "FJ",
+        "n": "Fiji {c} Time"
+    },
+    "Australia/Darwin": {
+        "o": "9:30",
+        "f": "CST",
+        "e": {
+            "m": 3,
+            "r": "l0",
+            "t": "2:0"
+        },
+        "s": {
+            "m": 10,
+            "r": "3",
+            "t": "2:0",
+            "v": "1:0"
+        },
+        "c": "AU",
+        "n": "AUS Central {c} Time"
+    },
+    "Etc/GMT-1": {
+        "o": "1:0",
+        "f": "GMT-1",
+        "n": "W. Central Africa {c} Time"
+    },
+    "Australia/Adelaide": {
+        "o": "9:30",
+        "f": "CST",
+        "s": {
+            "m": 10,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s",
+            "v": "1:0"
+        },
+        "e": {
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s"
+        },
+        "c": "AU",
+        "n": "Cen. Australia {c} Time"
+    },
+    "Etc/GMT-5": {
+        "o": "5:0",
+        "f": "GMT-5",
+        "n": "West Asia {c} Time"
+    },
+    "Etc/GMT-4": {
+        "o": "4:0",
+        "f": "GMT-4",
+        "n": "Arabian {c} Time"
+    },
+    "Asia/Riyadh": {
+        "o": "3:0",
+        "f": "AST",
+        "c": "SA",
+        "n": "Arab {c} Time"
+    },
+    "Etc/GMT-3": {
+        "o": "3:0",
+        "f": "GMT-3",
+        "n": "E. Africa {c} Time"
+    },
+    "Etc/GMT-2": {
+        "o": "2:0",
+        "f": "GMT-2",
+        "n": "South Africa {c} Time"
+    },
+    "Asia/Aden": {
+        "o": "3:0",
+        "f": "AST",
+        "c": "YE",
+        "n": "Arab {c} Time"
+    },
+    "Etc/GMT-9": {
+        "o": "9:0",
+        "f": "GMT-9",
+        "n": "Tokyo {c} Time"
+    },
+    "Asia/Krasnoyarsk": {
+        "o": "8:0",
+        "f": "KRAT",
+        "c": "RU",
+        "n": "North Asia {c} Time"
+    },
+    "Africa/Casablanca": {
+        "o": "0:0",
+        "f": "WE{c}T",
+        "s": {
+            "m": 4,
+            "r": "l0",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "S"
+        },
+        "e": {
+            "m": 9,
+            "r": "l0",
+            "t": "3:0"
+        },
+        "c": "MA",
+        "n": "Morocco {c} Time"
+    },
+    "Etc/GMT-8": {
+        "o": "8:0",
+        "f": "GMT-8",
+        "n": "Singapore {c} Time"
+    },
+    "Etc/GMT-7": {
+        "o": "7:0",
+        "f": "GMT-7",
+        "n": "SE Asia {c} Time"
+    },
+    "Pacific/Johnston": {
+        "o": "-10:0",
+        "f": "HST",
+        "c": "UM",
+        "n": "Hawaiian {c} Time"
+    },
+    "Etc/GMT-6": {
+        "o": "6:0",
+        "f": "GMT-6",
+        "n": "Central Asia {c} Time"
+    },
+    "Pacific/Midway": {
+        "o": "-11:0",
+        "f": "SST",
+        "c": "UM",
+        "n": "UTC-11"
+    },
+    "Etc/GMT+8": {
+        "o": "-8:0",
+        "f": "GMT+8"
+    },
+    "Etc/GMT+9": {
+        "o": "-9:0",
+        "f": "GMT+9"
+    },
+    "Pacific/Palau": {
+        "o": "9:0",
+        "f": "PWT",
+        "c": "PW",
+        "n": "Tokyo {c} Time"
+    },
+    "Asia/Kuala_Lumpur": {
+        "o": "8:0",
+        "f": "MYT",
+        "c": "MY",
+        "n": "Singapore {c} Time"
+    },
+    "Europe/Warsaw": {
+        "o": "1:0",
+        "f": "CE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "PL",
+        "n": "Central European {c} Time"
+    },
+    "Africa/Lome": {
+        "o": "0:0",
+        "f": "GMT",
+        "c": "TG",
+        "n": "Greenwich {c} Time"
+    },
+    "Atlantic/Madeira": {
+        "o": "0:0",
+        "f": "WE{c}T",
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "s": {
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u",
+            "v": "1:0",
+            "c": "S"
+        },
+        "c": "PT",
+        "n": "GMT {c} Time"
+    },
+    "America/Sitka": {
+        "o": "-9:0",
+        "f": "AK{c}T",
+        "e": {
+            "m": 11,
+            "r": "0>1",
+            "t": "2:0",
+            "c": "S"
+        },
+        "s": {
+            "m": 3,
+            "r": "0>8",
+            "t": "2:0",
+            "v": "1:0",
+            "c": "D"
+        },
+        "c": "US",
+        "n": "Alaskan {c} Time"
+    }
+}

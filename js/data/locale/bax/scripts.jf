@@ -1,1 +1,6 @@
-{"scripts":["Bamu"],"generated":true}
+{
+    "scripts": [
+        "Bamu"
+    ],
+    "generated": true
+}
