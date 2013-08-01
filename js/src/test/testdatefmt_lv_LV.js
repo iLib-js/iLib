@@ -486,7 +486,7 @@ function testDateFmtShortDateComponentsMY_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09.11", fmt.format(date));
+    assertEquals("09.11.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_lv_LV() {
@@ -518,7 +518,7 @@ function testDateFmtShortDateComponentsWDM_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("C, 29.09", fmt.format(date));
+    assertEquals("C, 29.09.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_lv_LV() {
@@ -534,7 +534,7 @@ function testDateFmtShortDateComponentsWDMY_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("C, 29.9.2011", fmt.format(date));
+    assertEquals("C, 29.9.11.", fmt.format(date));
 }
 
 
