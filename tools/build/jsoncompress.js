@@ -1,7 +1,7 @@
 /* 
- * mkli.js - ilib tool to remove the non-json fragments
+ * jsoncompress.js - ilib tool to remove the whitespace from json files
  *
- * Copyright © 2013, LGE
+ * Copyright © 2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -93,6 +93,7 @@ function walk(root, dir) {
 						
 						var targetDir = path.dirname(targetPath);
 						common.makeDirs(targetDir);
+						
 						fs.writeFileSync(targetPath, JSON.stringify(obj), 'utf8');
 					}
 				} catch (err) {
