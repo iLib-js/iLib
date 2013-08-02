@@ -47,6 +47,7 @@ limitations under the License.
 	<property name="build.jsdoc"					value="${build.output}/jsdoc"/>
 	<property name="build.data"						value="${build.base}/data"/>
 	<property name="build.locale"					value="${build.data}/locale"/>
+	<property name="build.localetemp"				value="${build.data}/temp"/>
 	<property name="build.config"					value="config"/>
 	<property name="log4j.config.file"				value="${build.config}/log4j.properties"/>
 
@@ -113,7 +114,9 @@ limitations under the License.
 			</fileset>
 		</delete>
 		<delete file="${build.locale}/localeinfo.stamp"/>
+		<delete file="${build.locale}/jsoncompress.stamp"/>
 		<delete file="${build.demo}/demo.tgz"/>
+		<delete dir="${build.localetemp}"/>
 	</target>
 
 	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
@@ -126,7 +129,7 @@ limitations under the License.
 	<target name="testiliball" description="test whether or not the iliball single file needs to be rebuilt">
 		<uptodate property="core.iliball.not.needed" targetfile="${build.src}/iliball-compiled.js">
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-ut.js,ilib-ut-compiled.js,iliball.js,iliball-compiled.js,ilib-dyn.js,ilib-dyn-compiled.js,**/test/**,testcli/**" />
-			<srcfiles dir="${build.locale}" includes="**/*.json" excludes="iliball.js" />
+			<srcfiles dir="${build.localetemp}" includes="**/*.json" excludes="iliball.js" />
 		</uptodate>
 	</target>
 
@@ -137,7 +140,7 @@ limitations under the License.
 		<sequential>
 			<java dir="${build.src}" fork="true" classname="com.ilib.tools.jsa.JSAssemble" classpathref="project.classpath.jsa">
 				<arg value="-I"/>
-				<arg value="${build.base}/data/locale"/>
+				<arg value="${build.localetemp}"/>
 				<arg value="-I"/>
 				<arg value="${build.src}"/>
 				<arg value="-o"/>
@@ -149,7 +152,7 @@ limitations under the License.
 		</sequential>
 	</macrodef>
 	
-	<target name="assemble" depends="prepare,geninfo,testiliball" unless="core.iliball.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+	<target name="assemble" depends="prepare,compress.locale.json,testiliball" unless="core.iliball.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
 			tgtfilename="iliball.js" 
 			srcfilename="ilib.js" 
@@ -172,11 +175,11 @@ limitations under the License.
 		<uptodate property="ilib-ut.not.needed" targetfile="${build.src}/ilib-ut-compiled.js">
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
 			<srcfiles dir="${build.src}" includes="ilib-ut-inc.js"/>
-			<srcfiles dir="${build.locale}" includes="**/*.json"/>
+			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 	
-	<target name="assemble.unittest" depends="prepare,geninfo,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.unittest" depends="prepare,compress.locale.json,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble 
 			tgtfilename="ilib-ut.js" 
 			srcfilename="ilib-ut-inc.js" 
@@ -198,11 +201,11 @@ limitations under the License.
 	<target name="testilibdemo" description="test whether or not the ilib-demo file needs to be rebuilt">
 		<uptodate property="ilib-demo.not.needed" targetfile="${build.src}/ilib-demo-compiled.js">
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
-			<srcfiles dir="${build.locale}" includes="**/*.json"/>
+			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
-	<target name="assemble.demo" depends="prepare,geninfo,testiliball" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
+	<target name="assemble.demo" depends="prepare,compress.locale.json,testiliball" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
 		<runassemble 
 			tgtfilename="ilib-demo.js" 
 			srcfilename="ilib-ut-inc.js" 
@@ -225,11 +228,11 @@ limitations under the License.
 		<uptodate property="ilib-dyn.not.needed" targetfile="${build.src}/ilib-dyn-compiled.js">
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
 			<srcfiles dir="${build.src}" includes="ilib-mini-inc.js"/>
-			<srcfiles dir="${build.locale}" includes="**/*.json"/>
+			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn" depends="prepare,geninfo,testilibdyn" unless="ilib-dyn.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
+	<target name="assemble.dyn" depends="prepare,compress.locale.json,testilibdyn" unless="ilib-dyn.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
 		<runassemble 
 			tgtfilename="ilib-dyn.js" 
 			srcfilename="ilib.js" 
@@ -251,11 +254,11 @@ limitations under the License.
 	<target name="testilibmini" description="test whether or not the ilib-mini file needs to be rebuilt">
 		<uptodate property="ilib-mini.not.needed" targetfile="${build.src}/ilib-mini-compiled.js">
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
-			<srcfiles dir="${build.locale}" includes="**/*.json"/>
+			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
-	<target name="assemble.mini" depends="prepare,geninfo,testilibmini" unless="ilib-mini.not.needed" description="assembles a minimal set of the js files into a single file">
+	<target name="assemble.mini" depends="prepare,compress.locale.json,testilibmini" unless="ilib-mini.not.needed" description="assembles a minimal set of the js files into a single file">
 		<runassemble 
 			tgtfilename="ilib-mini.js" 
 			srcfilename="ilib-mini-inc.js" 
@@ -277,11 +280,11 @@ limitations under the License.
 	<target name="testiliblg" description="test whether or not the ilib-lg file needs to be rebuilt">
 		<uptodate property="ilib-lg.not.needed" targetfile="${build.src}/ilib-lg-compiled.js">
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
-			<srcfiles dir="${build.locale}" includes="**/*.json"/>
+			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
-	<target name="assemble.lg" depends="prepare,geninfo,testiliblg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
+	<target name="assemble.lg" depends="prepare,compress.locale.json,testiliblg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
 		<runassemble 
 			tgtfilename="ilib-lg.js" 
 			srcfilename="ilib.js" 
@@ -333,7 +336,7 @@ limitations under the License.
 		</copy>
 		<mkdir dir="${build.export}/locale"/>
 		<copy todir="${build.export}/locale">
-			<fileset dir="${build.base}/data/locale">
+			<fileset dir="${build.localetemp}">
 				<include name="**/*.json"/>
 			</fileset>
 		</copy>
@@ -446,29 +449,40 @@ limitations under the License.
 		</uptodate>
 	</target>
 	
-	<!-- target name="geninfo"
-			depends="testinfo"
-			description="generates the localeinfo.json files out of the *.jf files"
-			unless="info.not.needed">
-		<exec os="Linux" executable="/bin/bash" dir="${build.locale}">
-			<arg value="${build.bin}/mkli"/>
-		</exec>
-		<exec os="Windows XP" executable="c:/cygwin/bin/bash.exe" dir="${build.locale}">
-			<arg value="${build.bin}/mkli"/>
-		</exec>
-		<touch file="${build.locale}/localeinfo.stamp"/>
-	</target -->
-	
 	<target name="geninfo"
 			depends="testinfo"
 			description="generates the localeinfo.json files out of the *.jf files"
 			unless="info.not.needed">
 		<exec os="Linux" executable="node" dir="${build.locale}">
-			<arg value="${build.tools}/cldr/mkli.js"/>
+			<arg value="${build.tools}/build/mkli.js"/>
 		</exec>
 		<exec os="Windows XP" executable="node.exe" dir="${build.locale}">
-			<arg value="${build.tools}/cldr/mkli.js"/>
+			<arg value="${build.tools}/build/mkli.js"/>
 		</exec>
 		<touch file="${build.locale}/localeinfo.stamp"/>
 	</target>
+	
+	<target name="testlocalejson" description="test whether or not the json files need to compressed">
+		<uptodate property="json.compress.not.needed" targetFile="${build.locale}/jsoncompress.stamp">
+			<srcfiles dir="${build.locale}" includes="**/*.json"/>
+		</uptodate>
+	</target>
+
+	<target name="compress.locale.json"
+			depends="geninfo,testlocalejson"
+			description="compresses the json files"
+			unless="json.compress.not.needed">
+		<exec os="Linux" executable="node" dir="${build.locale}">
+			<arg value="${build.tools}/build/jsoncompress.js"/>
+			<arg value="."/>
+			<arg value="${build.localetemp}"/>
+		</exec>
+		<exec os="Windows XP" executable="node.exe" dir="${build.locale}">
+			<arg value="${build.tools}/build/jsoncompress.js"/>
+			<arg value="."/>
+			<arg value="${build.localetemp}"/>
+		</exec>
+		<touch file="${build.locale}/jsoncompress.stamp"/>
+	</target>
+
 </project>

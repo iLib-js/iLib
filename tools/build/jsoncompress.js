@@ -89,11 +89,13 @@ function walk(root, dir) {
 						obj = JSON.parse(data);
 						var targetPath = path.join(targetdir, sourcePathRelative);
 						
-						util.print(sourcePath + " -> " + targetPath + "\n");
+						util.print("compress " + sourcePath + " -> " + targetPath + "\n");
 						
 						var targetDir = path.dirname(targetPath);
+						//util.print("dirname is " + targetDir + "\n");
 						common.makeDirs(targetDir);
 						
+						//util.print("writing file " + targetPath + "\n");
 						fs.writeFileSync(targetPath, JSON.stringify(obj), 'utf8');
 					}
 				} catch (err) {
