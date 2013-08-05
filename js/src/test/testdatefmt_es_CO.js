@@ -1,5 +1,5 @@
 /*
- * tCOSTdatefmt_fr_FR.js - tCOST the date formatter object in standard French
+ * testdatefmt_es_CO.js - tCOST the date formatter object in spainish Columbia
  * 
  * Copyright © 2012-2013, JEDLSoft
  *
@@ -9,7 +9,7 @@
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
+ * Unless required by applible law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
@@ -17,15 +17,15 @@
  * limitations under the License.
  */
 
-function tCOSTDateFmtCAConstructorEmpty_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO"});
+function tCOSTDateFmtConstructorEmpty_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO"});
     
     assertNotNull(fmt);
 }
 
 
-function tCOSTDateFmtCASimpleShort_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "short"});
+function tCOSTDateFmtSimpleShort_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "short"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -40,8 +40,8 @@ function tCOSTDateFmtCASimpleShort_es_CO() {
     assertEquals("29/09/11", fmt.format(date));
 }
 
-function tCOSTDateFmtCASimpleMedium_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "medium"});
+function tCOSTDateFmtSimpleMedium_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "medium"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -56,8 +56,8 @@ function tCOSTDateFmtCASimpleMedium_es_CO() {
     assertEquals("29/09/2011", fmt.format(date));
 }
 
-function tCOSTDateFmtCASimpleLong_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "long"});
+function tCOSTDateFmtSimpleLong_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "long"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -72,8 +72,8 @@ function tCOSTDateFmtCASimpleLong_es_CO() {
     assertEquals("29 de sep 2011", fmt.format(date));
 }
 
-function tCOSTDateFmtCASimpleFull_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "full"});
+function tCOSTDateFmtSimpleFull_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -88,8 +88,8 @@ function tCOSTDateFmtCASimpleFull_es_CO() {
     assertEquals("29 de septiembre 2011", fmt.format(date));
 }
 
-function tCOSTDateFmtCASimpleTimeShort_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "short", type: "time"});
+function tCOSTDateFmtSimpleTimeShort_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "short", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -104,8 +104,8 @@ function tCOSTDateFmtCASimpleTimeShort_es_CO() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCASimpleTimeMedium_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "medium", type: "time"});
+function tCOSTDateFmtSimpleTimeMedium_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "medium", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -120,8 +120,8 @@ function tCOSTDateFmtCASimpleTimeMedium_es_CO() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCASimpleTimeLong_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", timelength: "long", type: "time"});
+function tCOSTDateFmtSimpleTimeLong_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", timelength: "long", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -136,8 +136,8 @@ function tCOSTDateFmtCASimpleTimeLong_es_CO() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCASimpleTimeFull_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "full", type: "time"});
+function tCOSTDateFmtSimpleTimeFull_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "full", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -152,8 +152,8 @@ function tCOSTDateFmtCASimpleTimeFull_es_CO() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCADateTimeSimpleShort_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "short", type: "datetime"});
+function tCOSTDateFmtDateTimeSimpleShort_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "short", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -168,8 +168,8 @@ function tCOSTDateFmtCADateTimeSimpleShort_es_CO() {
     assertEquals("29/09/11 13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCADateTimeSimpleMedium_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "medium", type: "datetime"});
+function tCOSTDateFmtDateTimeSimpleMedium_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "medium", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -184,8 +184,8 @@ function tCOSTDateFmtCADateTimeSimpleMedium_es_CO() {
     assertEquals("09/09/2011 13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCADateTimeSimpleLong_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "long", type: "datetime"});
+function tCOSTDateFmtDateTimeSimpleLong_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "long", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -200,8 +200,8 @@ function tCOSTDateFmtCADateTimeSimpleLong_es_CO() {
     assertEquals("29 de sep 2011 13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCADateTimeSimpleFull_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "full", type: "datetime"});
+function tCOSTDateFmtDateTimeSimpleFull_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "full", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -217,8 +217,8 @@ function tCOSTDateFmtCADateTimeSimpleFull_es_CO() {
 }
 
 
-function tCOSTDateFmtCATemplateCalendar_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", calendar: "julian", template: "yyyy-MM-dd"});
+function tCOSTDateFmtTemplatelendar_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", lendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
@@ -234,8 +234,8 @@ function tCOSTDateFmtCATemplateCalendar_es_CO() {
 }
 
 
-function tCOSTDateFmtCATemplateClock12SwitchHH_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", clock: "12", template: "HH:mm"});
+function tCOSTDateFmtTemplateClock12SwitchHH_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", clock: "12", template: "HH:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -250,8 +250,8 @@ function tCOSTDateFmtCATemplateClock12SwitchHH_es_CO() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCATemplateClock12Switchkk_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", clock: "12", template: "kk:mm"});
+function tCOSTDateFmtTemplateClock12Switchkk_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", clock: "12", template: "kk:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -266,8 +266,8 @@ function tCOSTDateFmtCATemplateClock12Switchkk_es_CO() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCATemplateClock24Switchhh_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", clock: "24", template: "hh:mm"});
+function tCOSTDateFmtTemplateClock24Switchhh_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", clock: "24", template: "hh:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -282,8 +282,8 @@ function tCOSTDateFmtCATemplateClock24Switchhh_es_CO() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCATemplateClock24SwitchKK_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", clock: "24", template: "KK:mm"});
+function tCOSTDateFmtTemplateClock24SwitchKK_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", clock: "24", template: "KK:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -298,8 +298,8 @@ function tCOSTDateFmtCATemplateClock24SwitchKK_es_CO() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCATemplateNoClockDoNotFollowLocaleDefault12hh_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", template: "hh:mm"});
+function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault12hh_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", template: "hh:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -314,8 +314,8 @@ function tCOSTDateFmtCATemplateNoClockDoNotFollowLocaleDefault12hh_es_CO() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCATemplateNoClockDoNotFollowLocaleDefault12KK_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", template: "KK:mm"});
+function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault12KK_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", template: "KK:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -330,8 +330,8 @@ function tCOSTDateFmtCATemplateNoClockDoNotFollowLocaleDefault12KK_es_CO() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCATemplateNoClockDoNotFollowLocaleDefault24HH_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", template: "HH:mm"});
+function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault24HH_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", template: "HH:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -346,8 +346,8 @@ function tCOSTDateFmtCATemplateNoClockDoNotFollowLocaleDefault24HH_es_CO() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCATemplateNoClockDoNotFollowLocaleDefault24kk_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", template: "kk:mm"});
+function tCOSTDateFmtTemplateNoClockDoNotFollowLoleDefault24kk_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", template: "kk:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -363,8 +363,8 @@ function tCOSTDateFmtCATemplateNoClockDoNotFollowLocaleDefault24kk_es_CO() {
 }
 
 
-function tCOSTDateFmtCATypeDate_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "date"});
+function tCOSTDateFmtTypeDate_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "date"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -379,8 +379,8 @@ function tCOSTDateFmtCATypeDate_es_CO() {
     assertEquals("29/09/11", fmt.format(date));
 }
 
-function tCOSTDateFmtCATypeTime_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time"});
+function tCOSTDateFmtTypeTime_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -395,8 +395,8 @@ function tCOSTDateFmtCATypeTime_es_CO() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCATypeDateTime_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "datetime"});
+function tCOSTDateFmtTypeDateTime_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -412,8 +412,8 @@ function tCOSTDateFmtCATypeDateTime_es_CO() {
 }
 
 
-function tCOSTDateFmtCAShortDateComponentsY_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", date: "y"});
+function tCOSTDateFmtShortDateComponentsY_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", date: "y"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -428,8 +428,8 @@ function tCOSTDateFmtCAShortDateComponentsY_es_CO() {
     assertEquals("11", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortDateComponentsM_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", date: "m"});
+function tCOSTDateFmtShortDateComponentsM_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", date: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -444,8 +444,8 @@ function tCOSTDateFmtCAShortDateComponentsM_es_CO() {
     assertEquals("9", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortDateComponentsN_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", date: "n"});
+function tCOSTDateFmtShortDateComponentsN_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", date: "n"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -460,8 +460,8 @@ function tCOSTDateFmtCAShortDateComponentsN_es_CO() {
     assertEquals("S", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortDateComponentsD_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", date: "d"});
+function tCOSTDateFmtShortDateComponentsD_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", date: "d"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -476,8 +476,8 @@ function tCOSTDateFmtCAShortDateComponentsD_es_CO() {
     assertEquals("29", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortDateComponentsDM_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", date: "dm"});
+function tCOSTDateFmtShortDateComponentsDM_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", date: "dm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -492,8 +492,8 @@ function tCOSTDateFmtCAShortDateComponentsDM_es_CO() {
     assertEquals("29/09", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortDateComponentsMY_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", date: "my"});
+function tCOSTDateFmtShortDateComponentsMY_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", date: "my"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -508,8 +508,8 @@ function tCOSTDateFmtCAShortDateComponentsMY_es_CO() {
     assertEquals("09/11", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortDateComponentsDMY_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", date: "dmy"});
+function tCOSTDateFmtShortDateComponentsDMY_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", date: "dmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -524,8 +524,8 @@ function tCOSTDateFmtCAShortDateComponentsDMY_es_CO() {
     assertEquals("29/09/11", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortDateComponentsWDM_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", date: "wdm"});
+function tCOSTDateFmtShortDateComponentsWDM_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", date: "wdm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -540,8 +540,8 @@ function tCOSTDateFmtCAShortDateComponentsWDM_es_CO() {
     assertEquals("ju 29/09", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortDateComponentsWDMY_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", date: "wdmy"});
+function tCOSTDateFmtShortDateComponentsWDMY_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", date: "wdmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -557,8 +557,8 @@ function tCOSTDateFmtCAShortDateComponentsWDMY_es_CO() {
 }
 
 
-function tCOSTDateFmtCAFullDateComponentsY_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "full", date: "y"});
+function tCOSTDateFmtFullDateComponentsY_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "full", date: "y"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -573,8 +573,8 @@ function tCOSTDateFmtCAFullDateComponentsY_es_CO() {
     assertEquals("2011 d.C.", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullDateComponentsM_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "full", date: "m"});
+function tCOSTDateFmtFullDateComponentsM_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "full", date: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -589,8 +589,8 @@ function tCOSTDateFmtCAFullDateComponentsM_es_CO() {
     assertEquals("septiembre", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullDateComponentsD_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "full", date: "d"});
+function tCOSTDateFmtFullDateComponentsD_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "full", date: "d"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -605,8 +605,8 @@ function tCOSTDateFmtCAFullDateComponentsD_es_CO() {
     assertEquals("29", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullDateComponentsDM_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "full", date: "dm"});
+function tCOSTDateFmtFullDateComponentsDM_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "full", date: "dm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -621,8 +621,8 @@ function tCOSTDateFmtCAFullDateComponentsDM_es_CO() {
     assertEquals("29 de septiembre", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullDateComponentsMY_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "full", date: "my"});
+function tCOSTDateFmtFullDateComponentsMY_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "full", date: "my"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -637,8 +637,8 @@ function tCOSTDateFmtCAFullDateComponentsMY_es_CO() {
     assertEquals("septiembre 2011", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullDateComponentsDMY_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "full", date: "dmy"});
+function tCOSTDateFmtFullDateComponentsDMY_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "full", date: "dmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -653,8 +653,8 @@ function tCOSTDateFmtCAFullDateComponentsDMY_es_CO() {
     assertEquals("29 de septiembre 2011", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullDateComponentsWDM_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "full", date: "wdm"});
+function tCOSTDateFmtFullDateComponentsWDM_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "full", date: "wdm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -669,8 +669,8 @@ function tCOSTDateFmtCAFullDateComponentsWDM_es_CO() {
     assertEquals("jueves 29 de septiembre", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullDateComponentsWDMY_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", length: "full", date: "wdmy"});
+function tCOSTDateFmtFullDateComponentsWDMY_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", length: "full", date: "wdmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -686,8 +686,8 @@ function tCOSTDateFmtCAFullDateComponentsWDMY_es_CO() {
 }
 
 
-function tCOSTDateFmtCAShortTimeComponentsS_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", time: "s"});
+function tCOSTDateFmtShortTimeComponentsS_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", time: "s"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -702,8 +702,8 @@ function tCOSTDateFmtCAShortTimeComponentsS_es_CO() {
     assertEquals("37", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortTimeComponentsM_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", time: "m"});
+function tCOSTDateFmtShortTimeComponentsM_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", time: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -718,8 +718,8 @@ function tCOSTDateFmtCAShortTimeComponentsM_es_CO() {
     assertEquals("45", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortTimeComponentsH_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", time: "h"});
+function tCOSTDateFmtShortTimeComponentsH_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", time: "h"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -734,8 +734,8 @@ function tCOSTDateFmtCAShortTimeComponentsH_es_CO() {
     assertEquals("13", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortTimeComponentsMS_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", time: "ms"});
+function tCOSTDateFmtShortTimeComponentsMS_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", time: "ms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -750,8 +750,8 @@ function tCOSTDateFmtCAShortTimeComponentsMS_es_CO() {
     assertEquals("45:37", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortTimeComponentsHM_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", time: "hm"});
+function tCOSTDateFmtShortTimeComponentsHM_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", time: "hm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -766,8 +766,8 @@ function tCOSTDateFmtCAShortTimeComponentsHM_es_CO() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortTimeComponentsHMS_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", time: "hms"});
+function tCOSTDateFmtShortTimeComponentsHMS_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", time: "hms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -782,8 +782,8 @@ function tCOSTDateFmtCAShortTimeComponentsHMS_es_CO() {
     assertEquals("13:45:37", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortTimeComponentsHMA_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", time: "hma"});
+function tCOSTDateFmtShortTimeComponentsHMA_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", time: "hma"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -798,9 +798,9 @@ function tCOSTDateFmtCAShortTimeComponentsHMA_es_CO() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortTimeComponentsHMZ_es_CO() {
+function tCOSTDateFmtShortTimeComponentsHMZ_es_CO() {
     var fmt = new ilib.DateFmt({
-        locale: "es-CO", 
+        lole: "es-CO", 
         type: "time", 
         time: "hmz", 
        
@@ -819,9 +819,9 @@ function tCOSTDateFmtCAShortTimeComponentsHMZ_es_CO() {
     assertEquals("13:45 COST", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortTimeComponentsHMAZ_es_CO() {
+function tCOSTDateFmtShortTimeComponentsHMAZ_es_CO() {
     var fmt = new ilib.DateFmt({
-        locale: "es-CO", 
+        lole: "es-CO", 
         type: "time", 
         time: "hmaz" 
        
@@ -840,8 +840,8 @@ function tCOSTDateFmtCAShortTimeComponentsHMAZ_es_CO() {
     assertEquals("13:45 COST", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortTimeComponentsHMSA_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", time: "hmsa"});
+function tCOSTDateFmtShortTimeComponentsHMSA_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", time: "hmsa"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -856,9 +856,9 @@ function tCOSTDateFmtCAShortTimeComponentsHMSA_es_CO() {
     assertEquals("13:45:37", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortTimeComponentsHMSZ_es_CO() {
+function tCOSTDateFmtShortTimeComponentsHMSZ_es_CO() {
     var fmt = new ilib.DateFmt({
-        locale: "es-CO", 
+        lole: "es-CO", 
         type: "time", 
         time: "hmsz"
        
@@ -877,9 +877,9 @@ function tCOSTDateFmtCAShortTimeComponentsHMSZ_es_CO() {
     assertEquals("13:45:37 COST", fmt.format(date));
 }
 
-function tCOSTDateFmtCAShortTimeComponentsHMSAZ_es_CO() {
+function tCOSTDateFmtShortTimeComponentsHMSAZ_es_CO() {
     var fmt = new ilib.DateFmt({
-        locale: "es-CO", 
+        lole: "es-CO", 
         type: "time", 
         time: "hmsaz"
        
@@ -899,8 +899,8 @@ function tCOSTDateFmtCAShortTimeComponentsHMSAZ_es_CO() {
 }
 
 
-function tCOSTDateFmtCAFullTimeComponentsS_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", length: "full", time: "s"});
+function tCOSTDateFmtFullTimeComponentsS_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", length: "full", time: "s"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -915,8 +915,8 @@ function tCOSTDateFmtCAFullTimeComponentsS_es_CO() {
     assertEquals("37", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullTimeComponentsM_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", length: "full", time: "m"});
+function tCOSTDateFmtFullTimeComponentsM_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", length: "full", time: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -931,8 +931,8 @@ function tCOSTDateFmtCAFullTimeComponentsM_es_CO() {
     assertEquals("45", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullTimeComponentsH_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", length: "full", time: "h"});
+function tCOSTDateFmtFullTimeComponentsH_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", length: "full", time: "h"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -947,8 +947,8 @@ function tCOSTDateFmtCAFullTimeComponentsH_es_CO() {
     assertEquals("13", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullTimeComponentsMS_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", length: "full", time: "ms"});
+function tCOSTDateFmtFullTimeComponentsMS_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", length: "full", time: "ms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -963,8 +963,8 @@ function tCOSTDateFmtCAFullTimeComponentsMS_es_CO() {
     assertEquals("45:37", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullTimeComponentsHM_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", length: "full", time: "hm"});
+function tCOSTDateFmtFullTimeComponentsHM_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", length: "full", time: "hm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -979,8 +979,8 @@ function tCOSTDateFmtCAFullTimeComponentsHM_es_CO() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullTimeComponentsHMS_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", length: "full", time: "hms"});
+function tCOSTDateFmtFullTimeComponentsHMS_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", length: "full", time: "hms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -995,8 +995,8 @@ function tCOSTDateFmtCAFullTimeComponentsHMS_es_CO() {
     assertEquals("13:45:37", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullTimeComponentsHMA_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", length: "full", time: "hma"});
+function tCOSTDateFmtFullTimeComponentsHMA_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", length: "full", time: "hma"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1011,9 +1011,9 @@ function tCOSTDateFmtCAFullTimeComponentsHMA_es_CO() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullTimeComponentsHMZ_es_CO() {
+function tCOSTDateFmtFullTimeComponentsHMZ_es_CO() {
     var fmt = new ilib.DateFmt({
-        locale: "es-CO", 
+        lole: "es-CO", 
         type: "time", 
         length: "full", 
         time: "hmz", 
@@ -1033,9 +1033,9 @@ function tCOSTDateFmtCAFullTimeComponentsHMZ_es_CO() {
     assertEquals("13:45 COST", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullTimeComponentsHMAZ_es_CO() {
+function tCOSTDateFmtFullTimeComponentsHMAZ_es_CO() {
     var fmt = new ilib.DateFmt({
-        locale: "es-CO", 
+        lole: "es-CO", 
         type: "time", 
         length: "full", 
         time: "hmaz" 
@@ -1055,8 +1055,8 @@ function tCOSTDateFmtCAFullTimeComponentsHMAZ_es_CO() {
     assertEquals("13:45 COST", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullTimeComponentsHMSA_es_CO() {
-    var fmt = new ilib.DateFmt({locale: "es-CO", type: "time", length: "full", time: "hmsa"});
+function tCOSTDateFmtFullTimeComponentsHMSA_es_CO() {
+    var fmt = new ilib.DateFmt({lole: "es-CO", type: "time", length: "full", time: "hmsa"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1071,9 +1071,9 @@ function tCOSTDateFmtCAFullTimeComponentsHMSA_es_CO() {
     assertEquals("13:45:37", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullTimeComponentsHMSZ_es_CO() {
+function tCOSTDateFmtFullTimeComponentsHMSZ_es_CO() {
     var fmt = new ilib.DateFmt({
-        locale: "es-CO", 
+        lole: "es-CO", 
         type: "time", 
         length: "full", 
         time: "hmsz", 
@@ -1093,9 +1093,9 @@ function tCOSTDateFmtCAFullTimeComponentsHMSZ_es_CO() {
     assertEquals("13:45:37 COST", fmt.format(date));
 }
 
-function tCOSTDateFmtCAFullTimeComponentsHMSAZ_es_CO() {
+function tCOSTDateFmtFullTimeComponentsHMSAZ_es_CO() {
     var fmt = new ilib.DateFmt({
-        locale: "es-CO", 
+        lole: "es-CO", 
         type: "time", 
         length: "full", 
         time: "hmsaz", 
@@ -1115,9 +1115,9 @@ function tCOSTDateFmtCAFullTimeComponentsHMSAZ_es_CO() {
     assertEquals("13:45:37 COST", fmt.format(date));
 }
 
-function tCOSTDateFmtCAWithTimeZoneAndNoDST_es_CO() {
+function tCOSTDateFmtWithTimeZoneAndNoDST_es_CO() {
     var fmt = new ilib.DateFmt({
-        locale: "es-CO", 
+        lole: "es-CO", 
         type: "time", 
         length: "full", 
         time: "hmsz", 

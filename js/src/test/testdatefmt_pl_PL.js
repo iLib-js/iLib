@@ -1,5 +1,5 @@
 /*
- * testdatefmt_fr_FR.js - test the date formatter object in standard French
+ * testdatefmt_pl_PL.js - test the date formatter object in Polish
  * 
  * Copyright © 2012-2013, JEDLSoft
  *

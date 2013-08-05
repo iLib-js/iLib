@@ -1,5 +1,5 @@
 /*
- * testdatefmt_de_DE.js - test the date formatter object in German
+ * testdatefmt_bg_BG.js - test the date formatter object in bulgarian
  * 
  * Copyright © 2012-2013, JEDLSoft
  *
