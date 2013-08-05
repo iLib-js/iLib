@@ -184,7 +184,7 @@ function testDateRngFmtGRNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:00 μ.μ. 30 - 2:00 μ.μ. 31/Δεκ/2011", fmt.format(start, end));
+    assertEquals("1:00 μ.μ. 30 - 2:00 μ.μ. 31 Δεκ 2011", fmt.format(start, end));
 }
 function testDateRngFmtGRNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "el-GR", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtGRNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:00 μ.μ. 30 - 2:00 μ.μ. 31/Δεκεμβρίου/2011", fmt.format(start, end));
+    assertEquals("1:00 μ.μ. 30 - 2:00 μ.μ. 31 Δεκεμβρίου 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtGRMultiDayShort() {

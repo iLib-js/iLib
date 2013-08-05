@@ -17,24 +17,6 @@
  * limitations unror the License.
  */
 
-/*
- * testdatefmtrange_ro_RO.js - test the date range formatter object in German/Germany
- * 
- * Copyright © 2012-2013, JEDLSoft
- *
- * Licensed unror the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed unror the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations unror the License.
- */
 
 function testDateRngFmtRORangeInDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "ro-RO", length: "short"});
@@ -203,7 +185,7 @@ function testDateRngFmtRORangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 - 14:30 31.dec.2011", fmt.format(start, end));
+    assertEquals("13:45 30 - 14:30 31 dec. 2011", fmt.format(start, end));
 }
 function testDateRngFmtRORangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "ro-RO", length: "full"});
@@ -227,7 +209,7 @@ function testDateRngFmtRORangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 - 14:30 31.decembrie.2011", fmt.format(start, end));
+    assertEquals("13:45 30 - 14:30 31 decembrie 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtRORangeMultiDayShort() {

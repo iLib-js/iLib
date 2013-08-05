@@ -378,7 +378,7 @@ function testDateRngFmtHURangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. nov. 20. - dec. 31.", fmt.format(start, end));
+    assertEquals("2011. nov. 20 - dec. 31.", fmt.format(start, end));
 }
 function testDateRngFmtHURangeNextMonthFull() {
     var fmt = new ilib.DateRngFmt({locale: "hu-HU", length: "full"});
@@ -402,7 +402,7 @@ function testDateRngFmtHURangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. november 20. - december 31.", fmt.format(start, end));
+    assertEquals("2011. november 20 - december 31.", fmt.format(start, end));
 }
 
 function testDateRngFmtHURangeNextYearShort() {

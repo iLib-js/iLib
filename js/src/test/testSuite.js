@@ -62,6 +62,7 @@ function suite() {
 	    "testdatefmt_ko_KR.js",
 	    "testdatefmt_pt_BR.js",
 	    "testdatefmt_ru_RU.js",
+	    "testdatefmt_vi_VN.js",
 	    "testdatefmt_zh_CN.js",
 	    "testdatefmt_es_CO.js",
 	    "testdatefmt_nl_NL.js",

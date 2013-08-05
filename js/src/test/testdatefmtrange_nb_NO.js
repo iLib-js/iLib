@@ -39,7 +39,7 @@ function testDateRngFmtNORangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31.12.11 13:45– 14:30", fmt.format(start, end));
+    assertEquals("31.12.11 13:45–14:30", fmt.format(start, end));
 }
 function testDateRngFmtNORangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "nb-NO", length: "medium"});
@@ -63,7 +63,7 @@ function testDateRngFmtNORangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31.12.11 13:45– 14:30", fmt.format(start, end));
+    assertEquals("31.12.11 13:45–14:30", fmt.format(start, end));
 }
 function testDateRngFmtNORangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "nb-NO", length: "long"});
@@ -87,7 +87,7 @@ function testDateRngFmtNORangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31. des. 2011 13:45– 14:30", fmt.format(start, end));
+    assertEquals("31. des. 2011 13:45–14:30", fmt.format(start, end));
 }
 function testDateRngFmtNORangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "nb-NO", length: "full"});
@@ -111,7 +111,7 @@ function testDateRngFmtNORangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31. desember 2011 13:45– 14:30", fmt.format(start, end));
+    assertEquals("31. desember 2011 13:45–14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtNORangeNextDayShort() {
@@ -184,7 +184,7 @@ function testDateRngFmtNORangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30. 13:45–31.des..2011 14:30", fmt.format(start, end));
+    assertEquals("30. 13:45–31. des. 2011 14:30", fmt.format(start, end));
 }
 function testDateRngFmtNORangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "nb-NO", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtNORangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("30. 13:45–31.desember.2011 14:30", fmt.format(start, end));
+    assertEquals("30. 13:45–31. desember 2011 14:30", fmt.format(start, end));
 }
 
 function testDateRngFmtNORangeMultiDayShort() {

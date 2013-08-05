@@ -184,7 +184,7 @@ function testDateRngFmtBGRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 - 14:30 31.дек.2011", fmt.format(start, end));
+    assertEquals("13:45 30 - 14:30 31 дек. 2011", fmt.format(start, end));
 }
 function testDateRngFmtBGRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "bg-BG", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtBGRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 - 14:30 31.декември.2011", fmt.format(start, end));
+    assertEquals("13:45 30 - 14:30 31 декември 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtBGRangeMultiDayShort() {
@@ -596,7 +596,7 @@ function testDateRngFmtBGRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ноември 2011 . - януари 2014 .", fmt.format(start, end));
+    assertEquals("ноември 2011 г. - януари 2014 г.", fmt.format(start, end));
 }
 function testDateRngFmtBGManyYearsFull() {
     var fmt = new ilib.DateRngFmt({locale: "bg-BG", length: "full"});

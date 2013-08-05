@@ -39,7 +39,7 @@ function testDateRngFmtEERangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45–14:30 31.12.11", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31.12.11", fmt.format(start, end));
 }
 function testDateRngFmtEERangeinDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "medium"});
@@ -63,7 +63,7 @@ function testDateRngFmtEERangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45–14:30 31.12.2011", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31.12.2011", fmt.format(start, end));
 }
 function testDateRngFmtEERangeinDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "long"});
@@ -87,7 +87,7 @@ function testDateRngFmtEERangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45–14:30 31. detsember 2011", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31. detsember 2011", fmt.format(start, end));
 }
 function testDateRngFmtEERangeinDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "full"});
@@ -111,7 +111,7 @@ function testDateRngFmtEERangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45–14:30 31. detsember 2011", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31. detsember 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtEERangeNextDayShort() {
@@ -136,7 +136,7 @@ function testDateRngFmtEERangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30.12.11–14:30 31.12.11", fmt.format(start, end));
+    assertEquals("13:45 30.12.11 – 14:30 31.12.11", fmt.format(start, end));
 }
 function testDateRngFmtEERangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "medium"});
@@ -160,7 +160,7 @@ function testDateRngFmtEERangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30.12.2011–14:30 31.12.2011", fmt.format(start, end));
+    assertEquals("13:45 30.12.2011 – 14:30 31.12.2011", fmt.format(start, end));
 }
 function testDateRngFmtEERangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "long"});
@@ -184,7 +184,7 @@ function testDateRngFmtEERangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30.–14:30 31.detsember.2011", fmt.format(start, end));
+    assertEquals("13:45 30. – 14:30 31. detsember 2011", fmt.format(start, end));
 }
 function testDateRngFmtEERangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtEERangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30.–14:30 31.detsember.2011", fmt.format(start, end));
+    assertEquals("13:45 30. – 14:30 31. detsember 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtEERangeMultiDayShort() {
@@ -233,7 +233,7 @@ function testDateRngFmtEERangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.12.11–31.12.11", fmt.format(start, end));
+    assertEquals("20.12.11 – 31.12.11", fmt.format(start, end));
 }
 function testDateRngFmtEERangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "medium"});
@@ -257,7 +257,7 @@ function testDateRngFmtEERangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.12.2011–31.12.2011", fmt.format(start, end));
+    assertEquals("20.12.2011 – 31.12.2011", fmt.format(start, end));
 }
 function testDateRngFmtEERangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "long"});
@@ -281,7 +281,7 @@ function testDateRngFmtEERangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.–31. detsember 2011", fmt.format(start, end));
+    assertEquals("20. – 31. detsember 2011", fmt.format(start, end));
 }
 function testDateRngFmtEERangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "full"});
@@ -305,7 +305,7 @@ function testDateRngFmtEERangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.–31. detsember 2011", fmt.format(start, end));
+    assertEquals("20. – 31. detsember 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtEERangeNextMonthShort() {
@@ -330,7 +330,7 @@ function testDateRngFmtEERangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.11–31.12.11", fmt.format(start, end));
+    assertEquals("20.11.11 – 31.12.11", fmt.format(start, end));
 }
 function testDateRngFmtEERangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "medium"});
@@ -354,7 +354,7 @@ function testDateRngFmtEERangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.2011–31.12.2011", fmt.format(start, end));
+    assertEquals("20.11.2011 – 31.12.2011", fmt.format(start, end));
 }
 function testDateRngFmtEERangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "long"});
@@ -378,7 +378,7 @@ function testDateRngFmtEERangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. november–31. detsember 2011", fmt.format(start, end));
+    assertEquals("20. november – 31. detsember 2011", fmt.format(start, end));
 }
 function testDateRngFmtEERangeNextMonthFull() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "full"});
@@ -402,7 +402,7 @@ function testDateRngFmtEERangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. november–31. detsember 2011", fmt.format(start, end));
+    assertEquals("20. november – 31. detsember 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtEERangeNextYearShort() {
@@ -427,7 +427,7 @@ function testDateRngFmtEERangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.11–31.01.12", fmt.format(start, end));
+    assertEquals("20.11.11 – 31.01.12", fmt.format(start, end));
 }
 function testDateRngFmtEERangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "medium"});
@@ -451,7 +451,7 @@ function testDateRngFmtEERangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.2011–31.01.2012", fmt.format(start, end));
+    assertEquals("20.11.2011 – 31.01.2012", fmt.format(start, end));
 }
 function testDateRngFmtEERangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "long"});
@@ -475,7 +475,7 @@ function testDateRngFmtEERangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. november 2011–31. jaanuar 2012", fmt.format(start, end));
+    assertEquals("20. november 2011 – 31. jaanuar 2012", fmt.format(start, end));
 }
 function testDateRngFmtEERangeNextYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "full"});
@@ -499,7 +499,7 @@ function testDateRngFmtEERangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20. november 2011–31. jaanuar 2012", fmt.format(start, end));
+    assertEquals("20. november 2011 – 31. jaanuar 2012", fmt.format(start, end));
 }
 
 function testDateRngFmtEERangeMultiYearShort() {
@@ -524,7 +524,7 @@ function testDateRngFmtEERangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11.11–01.14", fmt.format(start, end));
+    assertEquals("11.11 – 01.14", fmt.format(start, end));
 }
 function testDateRngFmtEERangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "medium"});
@@ -548,7 +548,7 @@ function testDateRngFmtEERangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11.2011–01.2014", fmt.format(start, end));
+    assertEquals("11.2011 – 01.2014", fmt.format(start, end));
 }
 function testDateRngFmtEERangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "long"});
@@ -572,7 +572,7 @@ function testDateRngFmtEERangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("november 2011–jaanuar 2014", fmt.format(start, end));
+    assertEquals("november 2011 – jaanuar 2014", fmt.format(start, end));
 }
 function testDateRngFmtEERangeMultiYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "full"});
@@ -596,7 +596,7 @@ function testDateRngFmtEERangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("november 2011–jaanuar 2014", fmt.format(start, end));
+    assertEquals("november 2011 – jaanuar 2014", fmt.format(start, end));
 }
 function testDateRngFmtEEManyYearsFull() {
     var fmt = new ilib.DateRngFmt({locale: "et-EE", length: "full"});
@@ -620,5 +620,5 @@ function testDateRngFmtEEManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011–2064", fmt.format(start, end));
+    assertEquals("2011 – 2064", fmt.format(start, end));
 }
