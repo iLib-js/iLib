@@ -46,11 +46,10 @@
         },
         "time": {
             "12": {
-                "ahmsz": "Hh:mm:ss a z",
+                "ahmsz": "h:mm:ss a z",
                 "ahms": "h:mm:ss a",
                 "hms": "h:mm:ss a",
-                "ms": "mm:ss a",
-                "ahmz": "Hh:mm: a z",
+                "ahmz": "h:mm: a z",
                 "ahm": "h:mm a",
                 "hm": "h:mm a"
             },
@@ -61,16 +60,16 @@
         },
         "range": {
             "c00": {
-                "s": "{st} – {et} {sy}{sm}{sd}",
+                "s": "{st} – {et} {sy}-{sm}-{sd}",
                 "m": "{st} – {et} {sy} {sm} {sd}",
-                "l": "{st} – {et} {sm} {sd} {sy}",
+                "l": "{st} – {et} {sm} {sd}, {sy}",
                 "f": "{st} – {et} {sy} {sm} {sd}"
             },
             "c01": {
                 "s": "{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}",
-                "l": "{st} {sm} {sd} – {et} {em}/{ed}/{ey}",
+                "l": "{st} {sm} {sd} – {et} {ed} {ey}",
                 "m": "{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}",
-                "f": "{st} {sm} {sd} – {et} {em}/{ed}/{ey}"
+                "f": "{st} {sm} {sd} – {et} {ed} {ey}"
             },
             "c02": {
                 "s": "{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}",

@@ -52,7 +52,7 @@
                 "ahmsz": "HH.mm.ss z",
                 "ahms": "hh.mm.ss a",
                 "hms": "hh.mm.ss a",
-                "ms": "mm.ss a",
+                "ms": "mm.s",
                 "ahmz": "HH.mm. z",
                 "ahm": "hh.mm a",
                 "hm": "hh.mm a"
@@ -76,9 +76,9 @@
             },
             "c01": {
                 "s": "{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.",
-                "l": "{st} {sd}. - {et} {ed}.{em}.{ey}.",
+                "l": "{st} {sd}. - {et} {ed}. {em} {ey}.",
                 "m": "{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.",
-                "f": "{st} {sd}. - {et} {ed}.{em}.{ey}."
+                "f": "{st} {sd}. - {et} {ed}. {em} {ey}."
             },
             "c02": {
                 "s": "{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.",
@@ -108,7 +108,7 @@
                 "s": "{sy} {sm} - {em}",
                 "m": "{sy} {sm} - {em}",
                 "l": "{sm} {sy}. - {em} {ey}.",
-                "f": "{sy} - {em} – {ey}–{sm}"
+                "f": "{sy}–{sm} - {ey}–{em}"
             }
         }
     },

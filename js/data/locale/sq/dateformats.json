@@ -43,7 +43,7 @@
                 "ahmsz": "h.mm.ss.a z",
                 "ahms": "h.mm.ss.a",
                 "hms": "h.mm.ss.a",
-                "ms": "mm.ss.a",
+                "ms": "mm.ss",
                 "ahmz": "h.mm..a z",
                 "ahm": "h.mm.a",
                 "hm": "h.mm.a"
@@ -60,46 +60,46 @@
         },
         "range": {
             "c00": {
-                "s": "{st} – {et} {sy}{sm}{sd}",
-                "m": "{st} – {et} {sy}{sm}{sd}",
+                "s": "{st} – {et} {sy}-{sm}-{sd}",
+                "m": "{st} – {et} {sy}-{sm}-{sd}",
                 "l": "{st} – {et} {sy} {sm} {sd}",
                 "f": "{st} – {et} {sd} {sm} {sy}"
             },
             "c01": {
-                "s": "{st} {sy} – {et} {em}–{ed} – {sd}",
-                "l": "{st} {sd} – {et} {em}–{ed} – {sd}",
-                "m": "{st} {sy} – {et} {em}–{ed} – {sd}",
-                "f": "{st} {sd} – {et} {em}–{ed} – {sd}"
+                "s": "{st} {sy}–{sm}–{sd} – {et} {ed}",
+                "l": "{st} {sd} – {et} {ed} {em} {ey}",
+                "m": "{st} {sy}–{sm}–{sd} – {et} {ed}",
+                "f": "{st} {sd} – {et} {ed} {em} {ey}"
             },
             "c02": {
-                "s": "{st} {sy} – {et} {em}–{ed} – {sm}–{sd}",
+                "s": "{st} {sy}–{sm}–{sd} – {et} {em}–{ed}",
                 "l": "{st} {sd} {sm} – {et} {ed} {em} {ey}",
                 "f": "{st} {sd} {sm} – {et} {ed} {em} {ey}",
-                "m": "{st} {sy} – {et} {em}–{ed} – {sm}–{sd}"
+                "m": "{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"
             },
             "c10": {
-                "s": "{sy} – {em}–{ed} – {sd}",
+                "s": "{sy}–{sm}–{sd} – {ed}",
                 "l": "{sd} – {ed} {em} {ey}",
                 "f": "{sd} – {ed} {em} {ey}",
-                "m": "{sy} – {em}–{ed} – {sd}"
+                "m": "{sy}–{sm}–{sd} – {ed}"
             },
             "c11": {
-                "s": "{sy} – {em}–{ed} – {sm}–{sd}",
-                "m": "{sy} – {em}–{ed} – {sm}–{sd}",
+                "s": "{sy}–{sm}–{sd} – {em}–{ed}",
+                "m": "{sy}–{sm}–{sd} – {em}–{ed}",
                 "l": "{sd} {sm} – {ed} {em} {ey}",
                 "f": "{sd} {sm} – {ed} {em} {ey}"
             },
             "c12": {
-                "s": "{sy} – {em}–{ed} – {ey}–{sm}–{sd}",
-                "m": "{sy} – {em}–{ed} – {ey}–{sm}–{sd}",
+                "s": "{sy}–{sm}–{sd} – {ey}–{em}–{ed}",
+                "m": "{sy}–{sm}–{sd} – {ey}–{em}–{ed}",
                 "l": "{sd} {sm} {sy} – {ed} {em} {ey}",
                 "f": "{sd} {sm} {sy} – {ed} {em} {ey}"
             },
             "c20": {
-                "s": "{sy} – {em} – {ey}–{sm}",
-                "m": "{sy} – {em} – {ey}–{sm}",
+                "s": "{sy}–{sm} – {ey}–{em}",
+                "m": "{sy}–{sm} – {ey}–{em}",
                 "l": "{sm} {sy} – {em} {ey}",
-                "f": "{sy} – {em} – {ey}–{sm}"
+                "f": "{sy}–{sm} – {ey}–{em}"
             },
             "c30": "{sy} – {ey}"
         }

@@ -43,6 +43,7 @@
                 "ahmsz": "a 'ga' h:mm:ss z",
                 "ahms": "a 'ga' h:mm:ss",
                 "hms": "a 'ga' h:mm:ss",
+                "ms": "h:",
                 "ahmz": "a 'ga' h:mm: z",
                 "ahm": "a 'ga' h:mm",
                 "hm": "a 'ga' h:mm"
@@ -54,40 +55,40 @@
         },
         "range": {
             "c00": {
-                "s": "{sm}/{sd}/{sy}{st} - {et}",
-                "m": "{sm} {sd} {sy}{st} - {et}",
-                "l": "{sm} {sd} {sy}{st} - {et}",
-                "f": "{sm} {sd} {sy}{st} - {et}"
+                "s": "{sm}/{sd}/{sy} {st} - {et}",
+                "m": "{sm} {sd} lia, {sy} {st} - {et}",
+                "l": "{sm} {sd} lia, {sy} {st} - {et}",
+                "f": "{sm} {sd} lia {sy} {st} - {et}"
             },
             "c01": {
                 "s": "{sm}/{sd}/{sy} {st} - {em}/{ed}/{ey} {et}",
-                "l": "{sm} {sd} {st} - {em}/{ed}/{ey} {et}",
+                "l": "{sm} {sd} lia {st} - {ed} lia {ey} {et}",
                 "m": "{sm}/{sd}/{sy} {st} - {em}/{ed}/{ey} {et}",
-                "f": "{sm} {sd} {st} - {em}/{ed}/{ey} {et}"
+                "f": "{sm} {sd} lia {st} - {ed} lia {ey} {et}"
             },
             "c02": {
                 "s": "{sm}/{sd}/{sy} {st} - {em}/{ed}/{ey} {et}",
-                "l": "{sm} {sd} {st} - {em} {ed} {ey} {et}",
-                "f": "{sm} {sd} {st} - {em} {ed} {ey} {et}",
+                "l": "{sm} {sd} lia {st} - {em} {ed} lia {ey} {et}",
+                "f": "{sm} {sd} lia {st} - {em} {ed} lia {ey} {et}",
                 "m": "{sm}/{sd}/{sy} {st} - {em}/{ed}/{ey} {et}"
             },
             "c10": {
                 "s": "{sm}/{sd}/{sy} - {em}/{ed}/{ey}",
-                "l": "{sm} {sd} - {ed} {ey}",
-                "f": "{sm} {sd} - {ed} {ey}",
+                "l": "{sm} {sd} lia - {ed} lia {ey}",
+                "f": "{sm} {sd} lia - {ed} lia {ey}",
                 "m": "{sm}/{sd}/{sy} - {em}/{ed}/{ey}"
             },
             "c11": {
                 "s": "{sm}/{sd}/{sy} - {em}/{ed}/{ey}",
                 "m": "{sm}/{sd}/{sy} - {em}/{ed}/{ey}",
-                "l": "{sm} {sd} - {em} {ed} {ey}",
-                "f": "{sm} {sd} - {em} {ed} {ey}"
+                "l": "{sm} {sd} lia - {em} {ed} lia {ey}",
+                "f": "{sm} {sd} lia - {em} {ed} lia {ey}"
             },
             "c12": {
                 "s": "{sm}/{sd}/{sy} - {em}/{ed}/{ey}",
                 "m": "{sm}/{sd}/{sy} - {em}/{ed}/{ey}",
-                "l": "{sm} {sd} {sy} - {em} {ed} {ey}",
-                "f": "{sm} {sd} {sy} - {em} {ed} {ey}"
+                "l": "{sm} {sd} lia {sy} - {em} {ed} lia {ey}",
+                "f": "{sm} {sd} lia {sy} - {em} {ed} lia {ey}"
             },
             "c20": {
                 "s": "{sm}/{sy} - {em}/{ey}"

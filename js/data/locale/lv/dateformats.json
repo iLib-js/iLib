@@ -47,11 +47,10 @@
         },
         "time": {
             "12": {
-                "ahmsz": "Hh:mm:ss a z",
+                "ahmsz": "h:mm:ss a z",
                 "ahms": "h:mm:ss a",
                 "hms": "h:mm:ss a",
-                "ms": "mm:ss a",
-                "ahmz": "Hh:mm: a z",
+                "ahmz": "h:mm: a z",
                 "ahm": "h:mm a",
                 "hm": "h:mm a"
             },
@@ -63,44 +62,44 @@
         "range": {
             "c00": {
                 "s": "{st} - {et} {sd}.{sm}.{sy}",
-                "m": "{st} - {et} {sy}. {sd} {sd}. {sm}",
-                "l": "{st} - {et} {sy}. . {sd}. {sm}",
-                "f": "{st} - {et} {sy}. {sd} {sd}. {sm}"
+                "m": "{st} - {et} {sy}. gada {sd}. {sm}",
+                "l": "{st} - {et} {sy}. g. {sd}. {sm}",
+                "f": "{st} - {et} {sy}. gada {sd}. {sm}"
             },
             "c01": {
                 "s": "{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.",
-                "l": "{st} {sy}. {sd} {sd}. - {et} {ed}.{em}.{ey}.",
+                "l": "{st} {sy}. gada {sd}. - {et} {ed}. {em}",
                 "m": "{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.",
-                "f": "{st} {sy}. {sd} {sd}. - {et} {ed}.{em}.{ey}."
+                "f": "{st} {sy}. gada {sd}. - {et} {ed}. {em}"
             },
             "c02": {
                 "s": "{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.",
-                "l": "{st} {sy}. {sd} {sd}. {sm} - {et} {ed}. {em}",
-                "f": "{st} {sy}. {sd} {sd}. {sm} - {et} {ed}. {em}",
+                "l": "{st} {sy}. gada {sd}. {sm} - {et} {ed}. {em}",
+                "f": "{st} {sy}. gada {sd}. {sm} - {et} {ed}. {em}",
                 "m": "{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}."
             },
             "c10": {
                 "s": "{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.",
-                "l": "{sy}. {sd} {sd}. - {ed}. {em}",
-                "f": "{sy}. {sd} {sd}. - {ed}. {em}",
+                "l": "{sy}. gada {sd}. - {ed}. {em}",
+                "f": "{sy}. gada {sd}. - {ed}. {em}",
                 "m": "{sd}.{sm}.{sy}. - {ed}.{em}.{ey}."
             },
             "c11": {
                 "s": "{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.",
                 "m": "{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.",
-                "l": "{sy}. {sd} {sd}. {sm} - {ed}. {em}",
-                "f": "{sy}. {sd} {sd}. {sm} - {ed}. {em}"
+                "l": "{sy}. gada {sd}. {sm} - {ed}. {em}",
+                "f": "{sy}. gada {sd}. {sm} - {ed}. {em}"
             },
             "c12": {
                 "s": "{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.",
                 "m": "{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.",
-                "l": "{sy}. {sd} {sd}. {sm} - {ey}. {ed} {sd}. {em}",
-                "f": "{sy}. {sd} {sd}. {sm} - {ey}. {ed} {sd}. {em}"
+                "l": "{sy}. gada {sd}. {sm} - {ey}. gada {ed}. {em}",
+                "f": "{sy}. gada {sd}. {sm} - {ey}. gada {ed}. {em}"
             },
             "c20": {
                 "s": "{sm}.{sy}. - {em}.{ey}.",
                 "m": "{sm}.{sy}. - {em}.{ey}.",
-                "l": "{sy}. {sd} {sm} - {ey}. {ed} {em}",
+                "l": "{sy}. gada {sm} - {ey}. gada {em}",
                 "f": "{sm}.{sy}. - {em}.{ey}."
             }
         }

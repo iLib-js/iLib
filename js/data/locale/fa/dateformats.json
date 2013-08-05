@@ -40,7 +40,6 @@
                 "ahmsz": "h:mm:ss a (z)",
                 "ahms": "h:mm:ss a",
                 "hms": "h:mm:ss a",
-                "ms": "mm:ss a",
                 "ahmz": "h:mm: a (z)",
                 "ahm": "h:mm a",
                 "hm": "h:mm a"
@@ -59,39 +58,39 @@
             },
             "c01": {
                 "s": "{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}",
-                "l": "{st} ت {et} {ey}/{em}/{ed}",
+                "l": "{st} {sd} ت {et} {ed} {em} {ey}",
                 "m": "{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}",
-                "f": "{st} ت {et} {ey}/{em}/{ed}"
+                "f": "{st} {sd} ت {et} {ed} {em} {ey}"
             },
             "c02": {
-                "s": "{st} ت {et} {ey}/{em}/{ed} {ey}/{sm}/{sd}",
-                "l": "{st} ت {et} {ed} {em} {sd} {sm} {ey}",
-                "f": "{st} ت {et} {ed} {em} {sd} {sm} {ey}",
-                "m": "{st} ت {et} {ey}/{em}/{ed} {ey}/{sm}/{sd}"
+                "s": "{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}",
+                "l": "{st} {sd} {sm} ت {et} {ed} {em} {ey}",
+                "f": "{st} {sd} {sm} ت {et} {ed} {em} {ey}",
+                "m": "{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}"
             },
             "c10": {
                 "s": "{sy}/{sm}/{sd} ت {ey}/{em}/{ed}",
-                "l": " ت {ed} {sd} {em} {ey}",
-                "f": " ت {ed} {sd} {em} {ey}",
+                "l": "{sd} ت {ed} {em} {ey}",
+                "f": "{sd} ت {ed} {em} {ey}",
                 "m": "{sy}/{sm}/{sd} ت {ey}/{em}/{ed}"
             },
             "c11": {
-                "s": " ت {ey}/{em}/{ed} {ey}/{sm}/{sd}",
-                "m": " ت {ey}/{em}/{ed} {ey}/{sm}/{sd}",
-                "l": " ت {ed} {em} {sd} {sm} {ey}",
-                "f": " ت {ed} {em} {sd} {sm} {ey}"
+                "s": "{sy}/{sm}/{sd} ت {ey}/{em}/{ed}",
+                "m": "{sy}/{sm}/{sd} ت {ey}/{em}/{ed}",
+                "l": "{sd} {sm} ت {ed} {em} {ey}",
+                "f": "{sd} {sm} ت {ed} {em} {ey}"
             },
             "c12": {
-                "s": " ت {ey}/{em}/{ed} {ey}/{sm}/{sd}",
-                "m": " ت {ey}/{em}/{ed} {ey}/{sm}/{sd}",
-                "l": " ت {ed} {em} {ey} {sd} {sm} {ey}",
-                "f": " ت {ed} {em} {ey} {sd} {sm} {ey}"
+                "s": "{sy}/{sm}/{sd} ت {ey}/{em}/{ed}",
+                "m": "{sy}/{sm}/{sd} ت {ey}/{em}/{ed}",
+                "l": "{sd} {sm} {sy} ت {ed} {em} {ey}",
+                "f": "{sd} {sm} {sy} ت {ed} {em} {ey}"
             },
             "c20": {
-                "s": " ت {ey}/{em} {sy}/{sm}",
-                "m": " ت {ey}/{em} {sy}/{sm}",
-                "l": " ت {em} {ey} {sm} {sy}",
-                "f": " ت {em} {ey} {sm} {sy}"
+                "s": "{sy}/{sm} ت {ey}/{em}",
+                "m": "{sy}/{sm} ت {ey}/{em}",
+                "l": "{sm} {sy} ت {em} {ey}",
+                "f": "{sm} {sy} ت {em} {ey}"
             },
             "c30": "{sy} ت {ey}"
         }

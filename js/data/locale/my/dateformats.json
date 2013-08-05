@@ -47,11 +47,10 @@
         },
         "time": {
             "12": {
-                "ahmsz": "Hh:mm:ss a z",
+                "ahmsz": "h:mm:ss a z",
                 "ahms": "h:mm:ss a",
                 "hms": "h:mm:ss a",
-                "ms": "mm:ss a",
-                "ahmz": "Hh:mm: a z",
+                "ahmz": "h:mm: a z",
                 "ahm": "h:mm a",
                 "hm": "h:mm a"
             },
@@ -62,16 +61,16 @@
         },
         "range": {
             "c00": {
-                "s": "{st} – {et} {sy}{sm}{sd}",
+                "s": "{st} – {et} {sy}-{sm}-{sd}",
                 "m": "{st} – {et} {sy} {sm} {sd}",
                 "l": "{st} – {et} {sy} {sm} {sd}",
                 "f": "{st} – {et} {sy} {sm} {sd}"
             },
             "c01": {
                 "s": "{st} {sy}/{sm}/{sd} – {et} {ey}/{em}/{ed}",
-                "l": "{st} {sy} – {et} {ey}/{em}/{ed}",
+                "l": "{st} {sy}–{sm}–{sd} – {et} {ed}",
                 "m": "{st} {sy}/{sm}/{sd} – {et} {ey}/{em}/{ed}",
-                "f": "{st} {sy} – {et} {ey}/{em}/{ed}"
+                "f": "{st} {sy}–{sm}–{sd} – {et} {ed}"
             },
             "c02": {
                 "s": "{st} {sy}/{sm}/{sd} – {et} {ey}/{em}/{ed}",
@@ -81,8 +80,8 @@
             },
             "c10": {
                 "s": "{sy}/{sm}/{sd} – {ey}/{em}/{ed}",
-                "l": "{sy} – {em}–{ed}–{sd}",
-                "f": "{sy} – {em}–{ed}–{sd}",
+                "l": "{sy}–{sm}–{sd} – {ed}",
+                "f": "{sy}–{sm}–{sd} – {ed}",
                 "m": "{sy}/{sm}/{sd} – {ey}/{em}/{ed}"
             },
             "c11": {
@@ -101,7 +100,7 @@
                 "s": "{sy}/{sm} – {ey}/{em}",
                 "m": "{sy}/{sm} – {ey}/{em}",
                 "l": "{sy} {sm} – {ey} {em}",
-                "f": "{sy} – {em}–{ey}–{sm}"
+                "f": "{sy}–{sm} – {ey}–{em}"
             },
             "c30": "{sy} – {ey}"
         }

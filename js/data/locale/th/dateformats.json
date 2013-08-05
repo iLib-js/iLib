@@ -1,16 +1,28 @@
 {
-    "gregorian": {
+    "buddhist": {
         "order": "{time} {date}",
         "date": {
             "dm": {
-                "m": "d MMM"
+                "s": "d/M",
+                "m": "d MMM",
+                "l": "d MMM",
+                "f": "d MMMM"
             },
             "dmy": {
+                "s": "d/M/yy",
                 "m": "d MMM yy",
+                "l": "d MMM yyyy",
                 "f": "d MMMM G yyyy"
             },
             "my": {
-                "m": "MMM yy"
+                "s": "M/yy",
+                "m": "MMM yy",
+                "l": "MMM yyyy",
+                "f": "MMMM yyyy"
+            },
+            "m": {
+                "l": "MMM",
+                "f": "MMMM"
             },
             "d": {
                 "s": "d",
@@ -18,9 +30,16 @@
                 "l": "d",
                 "m": "d"
             },
+            "y": {
+                "s": "yy",
+                "l": "yyyy",
+                "m": "yyyy",
+                "f": "yyyy"
+            },
             "dmwy": {
                 "s": "E d/M/yy",
                 "m": "EE d/M/yyyy",
+                "l": "EEE d MMM yyyy",
                 "f": "EEEE d MMM yyyy"
             },
             "dmw": {
@@ -30,7 +49,10 @@
                 "f": "EEEE d MMM"
             },
             "n": {
-                "m": "N"
+                "s": "N",
+                "m": "N",
+                "l": "MMM",
+                "f": "MMMM"
             }
         },
         "time": {
@@ -38,27 +60,36 @@
                 "ahmsz": "H นาฬิกา mm นาที ss วินาที z",
                 "ahms": "h:mm:ss a",
                 "hms": "h:mm:ss a",
-                "ms": "mm:ss a",
-                "ahmz": "H นาฬิกา mm นาที  วินาที z",
+                "ms": "mm:ss",
+                "ahmz": "H นาฬิกา mm นาที วินาที z",
                 "ahm": "h:mm a",
                 "hm": "h:mm a"
             },
             "24": {
                 "ahmsz": "H นาฬิกา mm นาที ss วินาที z",
-                "ahmz": "H นาฬิกา mm นาที ss วินาที z"
+                "ahms": "H:mm:ss",
+                "hms": "H:mm:ss",
+                "ms": "mm:ss",
+                "ahmz": "H นาฬิกา mm นาที ss วินาที z",
+                "ahm": "H:mm",
+                "ah": "H",
+                "hm": "H:mm",
+                "m": "mm",
+                "s": "ss"
             }
         },
         "range": {
             "c00": {
+                "s": "{st} - {et} {sd}/{sm}/{sy}",
                 "m": "{st} - {et} {sd} {sm} {sy}",
                 "l": "{st} - {et} {sd} {sm} {sy}",
-                "f": "{st} - {et} {sd} {sm} {sy}"
+                "f": "{st} - {et} {sd} {sm} G {sy}"
             },
             "c01": {
                 "s": "{st} {sd} - {et} {ed}/{em}/{ey}",
-                "l": "{st} {sd} - {et} {ed}/{em}/{ey}",
+                "l": "{st} {sd} - {et} {ed} {em} {ey}",
                 "m": "{st} {sd} - {et} {ed}/{em}/{ey}",
-                "f": "{st} {sd} - {et} {ed}/{em}/{ey}"
+                "f": "{st} {sd} - {et} {ed} {em} {ey}"
             },
             "c02": {
                 "s": "{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}",
@@ -79,11 +110,18 @@
                 "f": "{sd} {sm} - {ed} {em} {ey}"
             },
             "c12": {
-                "s": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}"
+                "s": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+                "m": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+                "l": "{sd} {sm} {sy} - {ed} {em} {ey}",
+                "f": "{sd} {sm} {sy} - {ed} {em} {ey}"
             },
             "c20": {
-                "s": "{sm}/{sy} - {em}/{ey}"
-            }
+                "s": "{sm}/{sy} - {em}/{ey}",
+                "m": "{sm}/{sy} - {em}/{ey}",
+                "l": "{sm} {sy} - {em} {ey}",
+                "f": "{sm} {sy} - {em} {ey}"
+            },
+            "c30": "{sy} - {ey}"
         }
     },
     "generated": true

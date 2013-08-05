@@ -50,11 +50,11 @@
         },
         "time": {
             "12": {
-                "ahmsz": "Hhh:mm:ss a z",
+                "ahmsz": "hh:mm:ss a z",
                 "ahms": "hh:mm:ss a",
                 "hms": "hh:mm:ss a",
-                "ms": "mm:ss a",
-                "ahmz": "Hhh:mm: a z",
+                "ms": "mm:s",
+                "ahmz": "hh:mm: a z",
                 "ahm": "hh:mm a",
                 "hm": "hh:mm a"
             },
@@ -72,9 +72,9 @@
             },
             "c01": {
                 "s": "{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.",
-                "l": "{st} {sd}. - {et} {ed}.{em}.{ey}.",
+                "l": "{st} {sd}. - {et} {ed}. {em} {ey}.",
                 "m": "{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.",
-                "f": "{st} {sd}. - {et} {ed}.{em}.{ey}."
+                "f": "{st} {sd}. - {et} {ed}. {em} {ey}."
             },
             "c02": {
                 "s": "{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.",
