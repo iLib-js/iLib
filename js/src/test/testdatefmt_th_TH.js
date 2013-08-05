@@ -165,7 +165,7 @@ function testDateFmtDateTimeSimpleShort_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29/9/11", fmt.format(date));
+    assertEquals("29/9/11 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_th_TH() {
@@ -181,7 +181,7 @@ function testDateFmtDateTimeSimpleMedium_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29/09/2011", fmt.format(date));
+    assertEquals("29/09/2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_th_TH() {
@@ -197,7 +197,7 @@ function testDateFmtDateTimeSimpleLong_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 Sep 2011", fmt.format(date));
+    assertEquals("29 Sep 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_th_TH() {
@@ -213,7 +213,7 @@ function testDateFmtDateTimeSimpleFull_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 September 2011", fmt.format(date));
+    assertEquals("29 September 2011 13:45", fmt.format(date));
 }
 
 
@@ -409,7 +409,7 @@ function testDateFmtTypeDateTime_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29/9/11", fmt.format(date));
+    assertEquals("29/9/11 13:45", fmt.format(date));
 }
 
 
@@ -442,7 +442,7 @@ function testDateFmtShortDateComponentsM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09", fmt.format(date));
+    assertEquals("9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_th_TH() {
@@ -490,7 +490,7 @@ function testDateFmtShortDateComponentsDM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.", fmt.format(date));
+    assertEquals("29/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_th_TH() {
@@ -506,7 +506,7 @@ function testDateFmtShortDateComponentsMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09.11", fmt.format(date));
+    assertEquals("9/11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_th_TH() {
@@ -538,7 +538,7 @@ function testDateFmtShortDateComponentsWDM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("5, 29.09.", fmt.format(date));
+    assertEquals("Th 29/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_th_TH() {
@@ -554,7 +554,7 @@ function testDateFmtShortDateComponentsWDMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("5, 29/09/2011", fmt.format(date));
+    assertEquals("Th 29/9/11", fmt.format(date));
 }
 
 
@@ -587,7 +587,7 @@ function testDateFmtFullDateComponentsM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("sep", fmt.format(date));
+    assertEquals("September", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_th_TH() {
@@ -635,7 +635,7 @@ function testDateFmtFullDateComponentsMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("septembar 2011", fmt.format(date));
+    assertEquals("September 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_th_TH() {
@@ -667,7 +667,7 @@ function testDateFmtFullDateComponentsWDM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("četvrtak, 29 Sep", fmt.format(date));
+    assertEquals("Thursday 29 September", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_th_TH() {
@@ -683,7 +683,7 @@ function testDateFmtFullDateComponentsWDMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("četvrtak, 29 Sep 2011.", fmt.format(date));
+    assertEquals("Thursday 29 September 2011", fmt.format(date));
 }
 
 
@@ -1151,7 +1151,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_th_TH() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("in 30 sekundi", fmt.formatRelative(reference, date));
+    assertEquals("in 30 seconds", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
@@ -1175,7 +1175,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_th_TH() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 sekundi ago", fmt.formatRelative(reference, date));
+    assertEquals("30 seconds ago", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
@@ -1199,7 +1199,7 @@ function testDateFmtFormatRelativeWithinHourAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 10 minuta", fmt.formatRelative(reference, date));
+    assertEquals("in 10 minutes", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
@@ -1223,7 +1223,7 @@ function testDateFmtFormatRelativeWithinHourBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 minuta ago", fmt.formatRelative(reference, date));
+    assertEquals("10 minutes ago", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
@@ -1247,7 +1247,7 @@ function testDateFmtFormatRelativeWithinDayAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 4 sati", fmt.formatRelative(reference, date));
+    assertEquals("in 4 hours", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
@@ -1271,7 +1271,7 @@ function testDateFmtFormatRelativeWithinDayBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 sati ago", fmt.formatRelative(reference, date));
+    assertEquals("4 hours ago", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_th_TH() {
@@ -1296,7 +1296,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 4 dana", fmt.formatRelative(reference, date));
+    assertEquals("in 4 days", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
@@ -1320,7 +1320,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 dana ago", fmt.formatRelative(reference, date));
+    assertEquals("4 days ago", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_th_TH() {
@@ -1345,7 +1345,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 9 nedelja", fmt.formatRelative(reference, date));
+    assertEquals("in 9 weeks", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
@@ -1369,7 +1369,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 nedelja ago", fmt.formatRelative(reference, date));
+    assertEquals("9 weeks ago", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_th_TH() {
@@ -1394,7 +1394,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 16 meseci", fmt.formatRelative(reference, date));
+    assertEquals("in 16 months", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
@@ -1418,7 +1418,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 meseci ago", fmt.formatRelative(reference, date));
+    assertEquals("14 months ago", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_th_TH() {
@@ -1443,7 +1443,7 @@ function testDateFmtFormatRelativeYearsAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 14 godina", fmt.formatRelative(reference, date));
+    assertEquals("in 14 years", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
@@ -1467,6 +1467,6 @@ function testDateFmtFormatRelativeYearsBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21 godina ago", fmt.formatRelative(reference, date));
+    assertEquals("21 years ago", fmt.formatRelative(reference, date));
 }
 
