@@ -342,7 +342,7 @@ function testDateFmtTemplateNoClockŠNotFollowLocaleDefault24HH_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13h45", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtTemplateNoClockŠNotFollowLocaleDefault24kk_vi_VN() {
@@ -358,7 +358,7 @@ function testDateFmtTemplateNoClockŠNotFollowLocaleDefault24kk_vi_VN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13h45", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 
