@@ -834,9 +834,12 @@ function getDateFormats(language, script, region, data) {
     dates = {
         generated: true
     };
-    //var default_calendar = data.dates.calendars["default"];
+    var default_calendar = data.dates.calendars["default"];
     //util.print("default calendar is :" + default_calendar + "\n");
-    var gregorian_order = data.dates.calendars["gregorian"]["dateTimeFormats"]["full"]["dateTimeFormat"]["pattern"];
+    var gregorian_order = data.dates.calendars[default_calendar]["dateTimeFormats"]["full"]["dateTimeFormat"]["pattern"];
+     //util.print("default format is :" + JSON.stringify(gregorian_order_formats) + "\n");
+    //var gregorian_order_full = gregorian_order_formats[full] ;//full"]["dateTimeFormat"]["pattern"];
+    //var gregorian_order = gregorian_order_full["dateTimeFormat"]["pattern"];
     //util.print("default calendar format pattern is " + gregorian_order + "\n");
     var gregorian = {};
     //var output = {};
@@ -848,8 +851,8 @@ function getDateFormats(language, script, region, data) {
         gregorian["order"] = "{time} {date}";
     }
     //util.print("gregorian calendar order is :" + gregorian["order"] + "\n");
-    var date_formats = data.dates.calendars["gregorian"]["dateFormats"];
-    var available_formats = data.dates.calendars["gregorian"]["dateTimeFormats"]["availableFormats"];
+    var date_formats = data.dates.calendars[default_calendar]["dateFormats"];
+    var available_formats = data.dates.calendars[default_calendar]["dateTimeFormats"]["availableFormats"];
     // util.print("available formats are :" + JSON.stringify(available_formats) + "+++++++++++++++++++++" + "\n");
     available_formats = JSON.parse(JSON.stringify(available_formats).replace(/L/g, "M"));
     available_formats = JSON.parse(JSON.stringify(available_formats).replace(/G/g, ""));
@@ -1352,7 +1355,7 @@ function getDateFormats(language, script, region, data) {
     var time_12 = {};
     var time_fmt = {};
     available_formats = JSON.parse(JSON.stringify(available_formats).replace(/HH/g, "H"));
-    var timeformat = data.dates.calendars["gregorian"]["timeFormats"];
+    var timeformat = data.dates.calendars[default_calendar]["timeFormats"];
     //util.print("time formats are :"+JSON.stringify(timeformat)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
     if (available_formats["Hms"]) {
         //var index_of_a = available_formats["hms"].indexOf("a");
@@ -1424,7 +1427,7 @@ function getDateFormats(language, script, region, data) {
     //util.print("gregorian date formats are :" + JSON.stringify(gregorian.time) + "++++++++++++++++++++++++++++++++++++++++++++" + "\n");
     //code to get the date range
     var range = {};
-    var intervalFormats = data.dates.calendars["gregorian"]["dateTimeFormats"]["intervalFormats"];
+    var intervalFormats = data.dates.calendars[default_calendar]["dateTimeFormats"]["intervalFormats"];
     intervalFormats = JSON.parse(JSON.stringify(intervalFormats).replace(/L/g, "M"));
     intervalFormats = JSON.parse(JSON.stringify(intervalFormats).replace(/G/g, ""));
     //intervalFormats =JSON.parse(JSON.stringify(intervalFormats).replace(/'[^']+'/, ""));
@@ -1823,7 +1826,7 @@ function getDateFormats(language, script, region, data) {
     //util.print("c00:"+JSON.stringify(c00)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
     //util.print("interval codes are "+JSON.stringify(range)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
     gregorian["range"] = range;
-    dates["gregorian"] = gregorian;
+    dates[default_calendar] = gregorian;
     //util.print("gregorian date formats are :"+JSON.stringify(gregorian)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");    
     return dates;
 }
@@ -1833,19 +1836,28 @@ function writeDateFormats(language, script, region, data) {
     var path = calcLocalePath(language, script, region, "");
     if (data.generated) {
         if (anyProperties(data)) {
-            var empty_data = data["gregorian"]["date"];
+	   if (data.gregorian) {
+		def_calendar = "gregorian" ;
+		}
+		else {
+		def_calendar = "buddhist" ;
+		}
+	   //util.print("date formats are :"+JSON.stringify(data)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");  
+	  // util.print("default calendar is :"+def_calendar+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");  
+	    
+            var empty_data = data[def_calendar]["date"];
             //var empty_data_time = data["gregorian"]["time"];
             var dateFormat = {};
             var gregorian = {};
             var date = {};
-            var time_fmt = data["gregorian"]["time"];
+            var time_fmt = data[def_calendar]["time"];
             var time = {};
-            var range = data["gregorian"]["range"];
+            var range = data[def_calendar]["range"];
             //util.print("gregorian range formats are :"+JSON.stringify(range)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");
             var range_fmt = {};
             //var time_12={};
-            if (data["gregorian"]["order"] != undefined)
-                gregorian["order"] = data["gregorian"]["order"];
+            if (data[def_calendar]["order"] != undefined)
+                gregorian["order"] = data[def_calendar]["order"];
             if (empty_data) {
                 var arr_data = ["dm", "dmy", "my", "m", "d", "y", "dmwy", "dmw", "n"];
                 var arr_keys = [empty_data["dm"], empty_data["dmy"], empty_data["my"], empty_data["m"], empty_data["d"], empty_data["y"], empty_data["dmwy"], empty_data[
@@ -1859,14 +1871,14 @@ function writeDateFormats(language, script, region, data) {
             if (!common.isEmpty(date)) {
                 gregorian["date"] = date;
             }
-            if (data["gregorian"]["time"]) {
-                time_fmt["24"] = data["gregorian"]["time"]["24"];
-                if (!common.isEmpty(data["gregorian"]["time"]["24"])) {
-                    time["24"] = data["gregorian"]["time"]["24"];
+            if (data[def_calendar]["time"]) {
+                time_fmt["24"] = data[def_calendar]["time"]["24"];
+                if (!common.isEmpty(data[def_calendar]["time"]["24"])) {
+                    time["24"] = data[def_calendar]["time"]["24"];
                     //gregorian["time"]= time_24;
                 }
-                if (!common.isEmpty(data["gregorian"]["time"]["12"])) {
-                    time["12"] = data["gregorian"]["time"]["12"];
+                if (!common.isEmpty(data[def_calendar]["time"]["12"])) {
+                    time["12"] = data[def_calendar]["time"]["12"];
                     //gregorian["time"]= time_12;
                 }
             }
@@ -1895,7 +1907,7 @@ function writeDateFormats(language, script, region, data) {
             }
             makeDirs(path);
             //gregorian["date"]=date;
-            dateFormat["gregorian"] = gregorian;
+            dateFormat[def_calendar] = gregorian;
             dateFormat["generated"] = true;
             util.print("Writing " + path + "dateformats.json\n");
             fs.writeFileSync(path + "/dateformats.json", JSON.stringify(dateFormat, true, 4), "utf-8");
