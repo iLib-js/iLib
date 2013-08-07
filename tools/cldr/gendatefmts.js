@@ -663,15 +663,51 @@ function getSystemResources(language, script, region, data) {
     if (typeof (unit["day-past"]["unitPattern-count-one"]) !== 'undefined') {
         var day = table["day"]["unitPattern-count-one"];
         var dayPast = table["day-past"]["unitPattern-count-one"];
+	if (dayPast.indexOf(day) != -1) {
         sysres["{duration} ago"] = dayPast.replace(day, "{duration}").toLowerCase();
-    }
+	}
+	else {
+	var dayPast_few = table["day-past"]["unitPattern-count-few"] || table["day-past"]["unitPattern-count-other"] ;
+	dayPast_few = dayPast_few.replace("{0}", "");
+	dayPast = dayPast.replace("{0}", "");
+	arr_dayPast_few = dayPast_few.split(" ") ;
+	arr_dayPast = dayPast.split(" ") ;
+	var mismatch ;
+	for ( var i = 0 ; i < arr_dayPast.length ; i++) {
+		if (arr_dayPast_few[i] != arr_dayPast[i]) {
+		mismatch = arr_dayPast[i] ;
+				}
+			}
+        sysres["{duration} ago"] = dayPast.replace(mismatch, "{duration}").toLowerCase();
+	sysres["{duration} ago"] = sysres["{duration} ago"].replace("  "," ");
+    		}
+	}
+
+
     unit = table;
     str = "";
     if (typeof (table["day-future"]["unitPattern-count-one"]) !== 'undefined') {
         var day = table["day"]["unitPattern-count-one"];
         var dayFuture = table["day-future"]["unitPattern-count-one"];
+	if (dayFuture.indexOf(day) != -1) {
         sysres["in {duration}"] = dayFuture.replace(day, "{duration}").toLowerCase();
     }
+    else {
+	var dayFuture_few = table["day-future"]["unitPattern-count-few"] || table["day-future"]["unitPattern-count-other"] ;
+	dayFuture_few = dayFuture_few.replace("{0}", "");
+	dayFuture = dayFuture.replace("{0}", "");
+	arr_dayFuture_few = dayFuture_few.split(" ") ;
+	arr_dayFuture = dayFuture.split(" ") ;
+	var mismatch ;
+	for ( var i = 0 ; i < arr_dayFuture.length ; i++) {
+		if (arr_dayFuture_few[i] != arr_dayFuture[i]) {
+		mismatch = arr_dayFuture[i] ;
+				}
+			}
+        sysres["in {duration}"] = dayFuture.replace(mismatch, "{duration}").toLowerCase();
+	sysres["in {duration}"] = sysres["in {duration}"].replace("  "," ");
+    		}
+	}
     var listProperties = {
         "separatorFull": "middle",
         "finalSeparatorFull": "end"
@@ -853,7 +889,7 @@ function getDateFormats(language, script, region, data) {
     //util.print("gregorian calendar order is :" + gregorian["order"] + "\n");
     var date_formats = data.dates.calendars[default_calendar]["dateFormats"];
     var available_formats = data.dates.calendars[default_calendar]["dateTimeFormats"]["availableFormats"];
-    // util.print("available formats are :" + JSON.stringify(available_formats) + "+++++++++++++++++++++" + "\n");
+   // util.print("available formats are :" + JSON.stringify(available_formats) + "+++++++++++++++++++++" + "\n");
     available_formats = JSON.parse(JSON.stringify(available_formats).replace(/L/g, "M"));
     available_formats = JSON.parse(JSON.stringify(available_formats).replace(/G/g, ""));
     //available_formats = JSON.parse(JSON.stringify(available_formats).replace(/'[^']+'/g, ""));
@@ -866,7 +902,7 @@ function getDateFormats(language, script, region, data) {
         arr_values[i] = available_formats[keys_dateformats[i]];
 
     }
-
+    //util.print("date fomat keys are :" + JSON.stringify(arr_values) + "*********************************" + "\n");
 
 
     var date = {};
@@ -1035,8 +1071,8 @@ function getDateFormats(language, script, region, data) {
         }
     }
     //end of my combination
-    if (available_formats["yyyyMd"]) {
-        dmy["s"] = available_formats["yyyyMd"];
+    if (available_formats["yyyyMd"] || available_formats["yMd"]) {
+        dmy["s"] = available_formats["yyyyMd"] || available_formats["yMd"] ;
     } else if (available_formats["yyyyMd"] === undefined) {
         var flag = false;
         for (var j = 0; j < arr_values.length; j++) {
@@ -1062,7 +1098,7 @@ function getDateFormats(language, script, region, data) {
         }
     }
     if (available_formats["yyMMdd"]) {
-        dmy["m"] = available_formats["yyMMdd"];
+        dmy["m"] = available_formats["yyMMdd"] ;
     } else if (available_formats["yyMMdd"] === undefined) {
         var flag = false;
         for (var j = 0; j < arr_values.length; j++) {
