@@ -85,8 +85,8 @@
     "#{num}y": "#{num}ж",
     "1#1 yr|#{num} yrs": "#{num} жыл",
     "1#1 year|#{num} years": "#{num} жыл",
-    "{duration} ago": "{0} күн бұрын",
-    "in {duration}": "{0} күннен кейін",
+    "{duration} ago": " күн бұрын",
+    "in {duration}": " күннен кейін",
     "finalSeparatorFull": ", ",
     "separatorLong": " "
 }

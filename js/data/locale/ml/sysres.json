@@ -95,7 +95,7 @@
     "1#1 yr|#{num} yrs": "#{num} വർഷം",
     "1#1 year|#{num} years": "#{num} വർഷം",
     "{duration} ago": "{duration} മുമ്പ്",
-    "in {duration}": "{0} ദിവസത്തിൽ",
+    "in {duration}": " ദിവസത്തിൽ",
     "finalSeparatorFull": ",  എന്നിവ",
     "separatorLong": " "
 }

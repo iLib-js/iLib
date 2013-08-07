@@ -8,6 +8,7 @@
                 "f": "d 'di' MMMM"
             },
             "dmy": {
+                "s": "dd/MM/yy",
                 "m": "dd/MM/yy",
                 "l": "d 'de' MMM 'de' yy",
                 "f": "MMMM 'di' yyyy"

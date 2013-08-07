@@ -89,7 +89,7 @@
     "#{num}y": "#ƒe {num} wo",
     "1#1 yr|#{num} yrs": "#ƒe {num} wo",
     "1#1 year|#{num} years": "#ƒe {num} wo",
-    "{duration} ago": "ŋkeke {0} si wo va yi",
+    "{duration} ago": "ŋkeke si wo va yi",
     "in {duration}": "le {duration} me",
     "finalSeparatorFull": ", kple ",
     "separatorLong": " "

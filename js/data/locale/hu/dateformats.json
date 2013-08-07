@@ -9,7 +9,7 @@
                 "f": "MMMM d."
             },
             "dmy": {
-                "s": "yy.MM.dd",
+                "s": "yy.MM.dd.",
                 "m": "yyyy.MM.dd",
                 "l": "yyyy. MMM d.",
                 "f": "yyyy. MMMM d"
@@ -61,7 +61,7 @@
         },
         "range": {
             "c00": {
-                "s": "{st} - {et} {sy}.{sm}.{sd}",
+                "s": "{st} - {et} {sy}.{sm}.{sd}.",
                 "m": "{st} - {et} {sy}.{sm}.{sd}",
                 "l": "{st} - {et} {sy}. {sm} {sd}.",
                 "f": "{st} - {et} {sy}. {sm} {sd}"

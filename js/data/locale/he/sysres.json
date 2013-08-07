@@ -96,8 +96,8 @@
     "durationMediumYears": "one#{num} שנה|#{num} שנ",
     "1#1 yr|#{num} yrs": "one#{num} שנה|#{num} שנים",
     "1#1 year|#{num} years": "one#{num} שנה|#{num} שנים",
-    "{duration} ago": "לפני {0} ימים",
-    "in {duration}": "בעוד {0} ימים",
+    "{duration} ago": "לפני ימים",
+    "in {duration}": "בעוד ימים",
     "finalSeparatorFull": " ו",
     "separatorLong": " "
 }

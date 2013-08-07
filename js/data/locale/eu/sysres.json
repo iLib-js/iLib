@@ -92,8 +92,8 @@
     "durationMediumYears": "#{num} ur",
     "1#1 yr|#{num} yrs": "one#{num} urt|#{num} urte",
     "1#1 year|#{num} years": "one#{num} urtea|#{num} urte",
-    "{duration} ago": "duela {0} egun",
-    "in {duration}": "{0} egun barru",
+    "{duration} ago": "duela egun",
+    "in {duration}": " egun barru",
     "finalSeparatorFull": " eta ",
     "separatorLong": " "
 }

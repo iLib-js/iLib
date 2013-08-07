@@ -80,7 +80,7 @@
     "durationMediumYears": "one#mwaka {num}|#miaka {num}",
     "1#1 yr|#{num} yrs": "one#mwaka {num}|#miaka {num}",
     "1#1 year|#{num} years": "one#mwaka {num}|#miaka {num}",
-    "{duration} ago": "siku {0} iliyopita",
+    "{duration} ago": "siku {duration}",
     "in {duration}": "baada ya {duration}",
     "finalSeparatorFull": ", na ",
     "separatorLong": " "

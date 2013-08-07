@@ -7,7 +7,7 @@
                 "m": "d.MM"
             },
             "dmy": {
-                "s": "dd.MM.yy",
+                "s": "d.MM.yy",
                 "m": "d.MM.yyyy"
             },
             "my": {

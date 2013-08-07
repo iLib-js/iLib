@@ -93,8 +93,8 @@
     "durationMediumYears": "#{num} m.",
     "1#1 yr|#{num} yrs": "one#{num} met|few#{num} met|#{num} metų",
     "1#1 year|#{num} years": "one#{num} metai|few#{num} metai|#{num} metų",
-    "{duration} ago": "prieš {0} dieną",
-    "in {duration}": "po {0} dienos",
+    "{duration} ago": "prieš {duration}",
+    "in {duration}": "po {duration}",
     "finalSeparatorFull": " ir ",
     "separatorLong": " "
 }

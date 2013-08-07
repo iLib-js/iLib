@@ -9,7 +9,7 @@
                 "f": "d. MMMM"
             },
             "dmy": {
-                "s": "d.M.yy",
+                "s": "d.M.yy.",
                 "m": "yy. 'gada' d. MMM",
                 "l": "yyyy. 'g'. d. MMM",
                 "f": "yyyy. 'gada' d. MMMM"
@@ -61,7 +61,7 @@
         },
         "range": {
             "c00": {
-                "s": "{st} - {et} {sd}.{sm}.{sy}",
+                "s": "{st} - {et} {sd}.{sm}.{sy}.",
                 "m": "{st} - {et} {sy}. gada {sd}. {sm}",
                 "l": "{st} - {et} {sy}. g. {sd}. {sm}",
                 "f": "{st} - {et} {sy}. gada {sd}. {sm}"

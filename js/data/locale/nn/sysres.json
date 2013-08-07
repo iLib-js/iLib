@@ -82,8 +82,8 @@
     "#{num}y": "#{num}å",
     "1#1 yr|#{num} yrs": "#{num} år",
     "1#1 year|#{num} years": "#{num} år",
-    "{duration} ago": "for {0} dag sidan",
-    "in {duration}": "om {0} dag",
+    "{duration} ago": "for {duration} sidan",
+    "in {duration}": "om {duration}",
     "finalSeparatorFull": " og ",
     "separatorLong": " "
 }
