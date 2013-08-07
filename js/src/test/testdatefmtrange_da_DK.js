@@ -111,7 +111,7 @@ function testDateRngFmtDKRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("31 'den' december 2011 13.45 - 14.30", fmt.format(start, end));
+    assertEquals("31 den december 2011 13.45 - 14.30", fmt.format(start, end));
 }
 
 function testDateRngFmtDKRangeNextDayShort() {
@@ -208,7 +208,7 @@ function testDateRngFmtDKRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30. Dezember - 14:30 31. Dezember 2011", fmt.format(start, end));
+    assertEquals("30 den december 2011 13.45 - 31 den december 2011 14.30", fmt.format(start, end));
 }
 
 function testDateRngFmtDKRangeMultiDayShort() {

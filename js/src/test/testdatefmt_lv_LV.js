@@ -38,7 +38,7 @@ function testDateFmtSimpleShort_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.11", fmt.format(date));
+    assertEquals("29.9.11.", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_lv_LV() {
@@ -166,7 +166,7 @@ function testDateFmtDateTimeSimpleShort_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.9.11", fmt.format(date));
+    assertEquals("13:45 29.9.11.", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_lv_LV() {
@@ -377,7 +377,7 @@ function testDateFmtTypeDate_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.11", fmt.format(date));
+    assertEquals("29.9.11.", fmt.format(date));
 }
 
 function testDateFmtTypeTime_lv_LV() {
@@ -409,7 +409,7 @@ function testDateFmtTypeDateTime_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.9.11", fmt.format(date));
+    assertEquals("13:45 29.9.11.", fmt.format(date));
 }
 
 
@@ -522,7 +522,7 @@ function testDateFmtShortDateComponentsDMY_lv_LV() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.11", fmt.format(date));
+    assertEquals("29.9.11.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_lv_LV() {

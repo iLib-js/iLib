@@ -1078,7 +1078,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_cs_CZ() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("πριν από 30 δευτερόλεπτα", fmt.formatRelative(reference, date));
+    assertEquals("před 30 sekund", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_cs_CZ() {
     var fmt = new ilib.DateFmt({locale: "cs-CZ", length: "full"});
@@ -1126,7 +1126,7 @@ function testDateFmtFormatRelativeWithinHourBefore_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("πριν από 10 λεπτά", fmt.formatRelative(reference, date));
+    assertEquals("před 10 minut", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_cs_CZ() {
     var fmt = new ilib.DateFmt({locale: "cs-CZ", length: "full"});
@@ -1174,7 +1174,7 @@ function testDateFmtFormatRelativeWithinDayBefore_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("πριν από 4 ώρες", fmt.formatRelative(reference, date));
+    assertEquals("před 4 hodin", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_cs_CZ() {
@@ -1223,7 +1223,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("πριν από 4 ημέρες", fmt.formatRelative(reference, date));
+    assertEquals("před 4 dní", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_cs_CZ() {
@@ -1272,7 +1272,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("πριν από 9 εβδομάδες", fmt.formatRelative(reference, date));
+    assertEquals("před 9 týdnů", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_cs_CZ() {
@@ -1321,7 +1321,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("πριν από 14 μήνες", fmt.formatRelative(reference, date));
+    assertEquals("před 14 měsíců", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_cs_CZ() {
@@ -1370,7 +1370,7 @@ function testDateFmtFormatRelativeYearsBefore_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("πριν από 21 έτη", fmt.formatRelative(reference, date));
+    assertEquals("před 21 let", fmt.formatRelative(reference, date));
 }
 
 

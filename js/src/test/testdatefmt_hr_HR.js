@@ -37,7 +37,7 @@ function testDateFmtSimpleShort_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. 9. 11", fmt.format(date));
+    assertEquals("29. 9. 11.", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_hr_HR() {
@@ -165,7 +165,7 @@ function testDateFmtDateTimeSimpleShort_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29. 9. 11", fmt.format(date));
+    assertEquals("13:45 29. 9. 11.", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_hr_HR() {
@@ -475,7 +475,7 @@ function testDateFmtShortDateComponentsDMY_hr_HR() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. 9. 11", fmt.format(date));
+    assertEquals("29. 9. 11.", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_hr_HR() {

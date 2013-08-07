@@ -87,7 +87,7 @@ function testDateRngFmtILRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31 בדצמבר 2011", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31 בדצמ 2011", fmt.format(start, end));
 }
 function testDateRngFmtILRangeinDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "he-IL", length: "full"});
@@ -111,7 +111,7 @@ function testDateRngFmtILRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31 דצמבר 2011", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31 בדצמבר 2011",fmt.format(start, end));
 }
 
 function testDateRngFmtILRangeNextDayShort() {
@@ -184,7 +184,7 @@ function testDateRngFmtILRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31 בדצמ 2011", fmt.format(start, end));
+    assertEquals("13:45 30 – 14:30 31 דצמ 2011", fmt.format(start, end));
 }
 function testDateRngFmtILRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "he-IL", length: "full"});

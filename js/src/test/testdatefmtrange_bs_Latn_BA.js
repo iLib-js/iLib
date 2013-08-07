@@ -39,7 +39,7 @@ function testDateRngFmtBARangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 – 14:30 31.12.11", fmt.format(start, end));
+    assertEquals("13:45 – 14:30 31.12.11.", fmt.format(start, end));
 }
 function testDateRngFmtBARangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "bs-Latn-BA", length: "medium"});

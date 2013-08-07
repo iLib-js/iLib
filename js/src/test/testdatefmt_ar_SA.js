@@ -741,7 +741,7 @@ function testDateFmtShortTimeComponentsMS_ar_SA() {
 		second:37,
 		millisecond: 0
 	});
-    assertEquals("٤٥:٣٧ م", fmt.format(date));
+    assertEquals("٤٥:٣٧", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHM_ar_SA() {
@@ -950,7 +950,7 @@ function testDateFmtFullTimeComponentsMS_ar_SA() {
 		second:37,
 		millisecond: 0
 	});
-    assertEquals("٤٥:٣٧ م", fmt.format(date));
+    assertEquals("٤٥:٣٧", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHM_ar_SA() {

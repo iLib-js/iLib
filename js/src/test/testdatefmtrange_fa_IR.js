@@ -1,5 +1,5 @@
 /*
- * testdatefmtrange_fa_IR.js - test tfa date range formatter object in Farsi/Iran
+ * testdatefmtrange_fa_IR.js - test date range formatter object in Farsi/Iran
  * 
  * Copyright © 2012-2013, JEDLSoft
  *
