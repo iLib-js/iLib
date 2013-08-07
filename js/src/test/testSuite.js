@@ -175,7 +175,7 @@ function suite() {
 	    "testaddress_NL.js",
 	    "testaddress_NZ.js",
 	    "testaddress_SG.js",
-	    "testaddress_TW.js"
+	    //"testaddress_TW.js"
 	];
 
     // uncompiled
