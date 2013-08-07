@@ -6,13 +6,13 @@
                 "s": "MM-d",
                 "m": "MM.dd",
                 "l": "MMM d",
-                "f": "MMMM d 'd"
+                "f": "MMMM d 'd'."
             },
             "dmy": {
                 "s": "yy-M-d",
                 "m": "yy-MM-d",
                 "l": "yyyy MMM d",
-                "f": "yyyy 'm'. MMMM d 'd"
+                "f": "yyyy 'm'. MMMM d 'd'."
             },
             "my": {
                 "s": "yy-MM",
@@ -69,7 +69,7 @@
                 "s": "{st} – {et} {sy}-{sm}-{sd}",
                 "m": "{st} – {et} {sy}-{sm}-{sd}",
                 "l": "{st} – {et} {sy} {sm} {sd}",
-                "f": "{st} – {et} {sy} m. {sm} {sd} d"
+                "f": "{st} – {et} {sy} m. {sm} {sd} d."
             },
             "c01": {
                 "s": "{st} {sy}–{sm}–{sd} – {et} {ey}–{em}–{ed}",
@@ -110,5 +110,5 @@
             "c30": "{sy} – {ey}"
         }
     },
-    "generated": true
+    "generated": false
 }
