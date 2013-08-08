@@ -10,13 +10,13 @@
 			"dmwy": {
 				"s": "yy-MM-dd(E)",
 				"m": "yyyy-MM-dd(EE)",
-				"l": "yy年MMM月d日(EEE)",
+				"l": "yyyy年MMM月d日(EEE)",
 				"f": "yyyy年MMMM月d日(EEEE)"
 			},
 			"dmy": {
 				"s": "yy-MM-dd",
 				"m": "yyyy-MM-dd",
-				"l": "yy年MMM月d日",
+				"l": "yyyy年MMM月d日",
 				"f": "yyyy年MMMM月d日"
 			},
 			"dmw": {
@@ -34,7 +34,7 @@
 			"my": {
 				"s": "yy-MM",
 				"m": "yyyy-MM",
-				"l": "yy年MMM月",
+				"l": "yyyy年MMM月",
 				"f": "yyyy年MMMM月"
 			},
 			"dw": {
@@ -58,7 +58,7 @@
 			"y": {
 				"s": "yy",
 				"m": "yyyy",
-				"l": "yy年",
+				"l": "yyyy年",
 				"f": "yyyy年"
 			},
 			"n": {
