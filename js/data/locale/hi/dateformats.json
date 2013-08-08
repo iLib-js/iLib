@@ -73,8 +73,8 @@
             },
             "c10": {
                 "s": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}",
-                "l": "{sd} {sm} – {ed} {ey}",
-                "f": "{sd} {sm} – {ed} {ey}",
+                "l": "{sd} – {ed} {sm} {ey}",
+                "f": "{sd} – {ed} {sm} {ey}",
                 "m": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}"
             },
             "c11": {
@@ -98,5 +98,5 @@
             "c30": "{sy} – {ey}"
         }
     },
-    "generated": true
+    "generated": false
 }
