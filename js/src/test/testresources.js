@@ -133,6 +133,22 @@ function testResBundleGetString() {
     assertEquals("third", rb.getString("third string").toString());
 }
 
+function testResBundleGetStringEmpty() {
+    var rb = new ilib.ResBundle(); // default locale
+    
+    assertNotNull(rb);
+    
+    assertEquals("", rb.getString("").toString());
+}
+
+function testResBundleGetStringUndefined() {
+    var rb = new ilib.ResBundle(); // default locale
+    
+    assertNotNull(rb);
+    
+    assertEquals("", rb.getString(undefined).toString());
+}
+
 function testResBundleGetStringde() {
     var rb = new ilib.ResBundle({locale: "de"});
     

@@ -496,7 +496,7 @@ ilib.ResBundle.prototype = {
 	 * if the translation is not found and the source is undefined 
 	 */
 	getString: function (source, key, escapeMode) {
-		if (!source && !key) return undefined;
+		if (!source && !key) return new ilib.String("");
 
 		var trans;
 		if (this.locale.isPseudo()) {
