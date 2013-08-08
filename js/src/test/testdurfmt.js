@@ -9518,3 +9518,867 @@ function testDurFmtZHFormatShortClockAsync() {
     });
     assertTrue(callbackCalled);
 };
+
+
+//test cases for zh-Hank-HK
+
+function testDurFmtZHHKFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "zh-Hant-HK",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1年1個月1週1天1小時1分鐘1秒", duration.toString());
+};
+
+
+function testDurFmtZHHKFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "zh-Hant-HK",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1年1個月1週1天1小時1分鐘1秒", duration.toString());
+};
+
+function testDurFmtZHHKFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "zh-Hant-HK",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1年1個月1週1天1:01:01", duration.toString());
+};
+
+function testDurFmtZHHKFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "zh-Hant-HK",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1年1個月1周1天1小時1分鐘1秒", duration.toString());
+};
+
+function testDurFmtZHHKFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "zh-Hant-HK",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1年、1個月、1週、1天、1小時、1分鐘、1秒", duration.toString());
+};
+
+function testDurFmtZHHKFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "zh-Hant-HK",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1年、1個月、1週、1天、1小時、1分鐘和1秒", duration.toString());
+};
+
+
+function testDurFmtZHHKAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "zh-Hant-HK",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("2年、2個月、2週、2天、2小時、2分鐘和2秒", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+function testDurFmtZHHKFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "zh-Hant-HK",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("1年1個月1週1天1:01:01", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};
+
+
+//test cases for tr-TR
+
+function testDurFmtTRFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "tr-TR",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1y 1a 1h 1g 1s 1d 1s", duration.toString());
+};
+
+function testDurFmtTRFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "tr-TR",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1y 1a 1h 1g 1s 1d 1s", duration.toString());
+};
+
+function testDurFmtTRFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "tr-TR",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1y 1a 1h 1g 01:01:01", duration.toString());
+};
+
+function testDurFmtTRFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "tr-TR",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 yıl 1 ay 1 hf 1 gün 1 sa 1 dk 1 sn", duration.toString());
+};
+
+function testDurFmtTRFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "tr-TR",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 yıl 1 ay 1 haf 1 gün 1 saat 1 dak 1 san", duration.toString());
+};
+
+function testDurFmtTRFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "tr-TR",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 yıl, 1 ay, 1 hafta, 1 gün, 1 saat, 1 dakika ve 1 saniye", duration.toString());
+};
+
+
+function testDurFmtTRAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "tr-TR",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("2 yıl, 2 ay, 2 hafta, 2 gün, 2 saat, 2 dakika ve 2 saniye", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+function testDurFmtTRFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "tr-TR",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("1y 1a 1h 1g 01:01:01", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};
+
+
+//test cases for swedish
+
+function testDurFmtSVFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "sv-SE",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1å 1må 1v 1d 1t 1m 1s", duration.toString());
+};
+
+function testDurFmtSVFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "sv-SE",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1å 1må 1v 1d 1t 1m 1s", duration.toString());
+};
+
+function testDurFmtSVFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "sv-SE",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1å 1må 1v 1d 01:01:01", duration.toString());
+};
+
+function testDurFmtSVFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "sv-SE",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 år 1 må 1 ve 1 dy 1 ti 1 mi 1 se", duration.toString());
+};
+
+function testDurFmtSVFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "sv-SE",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 år, 1 mån, 1 vec, 1 dygn, 1 tim, 1 min, 1 sek", duration.toString());
+};
+
+function testDurFmtSVFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "sv-SE",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 år, 1 månad, 1 vecka, 1 dygn, 1 timme, 1 minut och 1 sekund", duration.toString());
+};
+
+
+function testDurFmtSVAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "sv-SE",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("2 år, 2 månader, 2 veckor, 2 dygn, 2 timmar, 2 minuter och 2 sekunder", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+function testDurFmtSVFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "sv-SE",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("1å 1må 1v 1d 01:01:01", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};
+
+
+//test cases for sl-SL
+
+
+function testDurFmtSLFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "sl-SL",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1y 1m 1w 1d 1h 1m 1s", duration.toString());
+};
+
+function testDurFmtSLFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "sl-SL",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1y 1m 1w 1d 1h 1m 1s", duration.toString());
+};
+
+function testDurFmtSLFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "sl-SL",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1y 1m 1w 1d 1:01:01", duration.toString());
+};
+
+function testDurFmtSLFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "sl-SL",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 yr 1 mo 1 wk 1 dy 1 hr 1 mi 1 se", duration.toString());
+};
+
+function testDurFmtSLFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "sl-SL",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 yr, 1 mon, 1 wk, 1 day, 1 hr, 1 min, 1 sec", duration.toString());
+};
+
+function testDurFmtSLFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "sl-SL",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 year, 1 month, 1 week, 1 day, 1 hour, 1 minute, and 1 second", duration.toString());
+};
+
+
+function testDurFmtSLAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "sl-SL",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("2 years, 2 months, 2 weeks, 2 days, 2 hours, 2 minutes, and 2 seconds", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+function testDurFmtSLFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "sl-SL",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("1y 1m 1w 1d 1:01:01", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};
+
+//test cases for portuguese pt-PU
+
+
+function testDurFmtPTPTFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "pt-PT",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1a 1me 1sm 1d 1h 1m 1s", duration.toString());
+};
+
+function testDurFmtPTPTFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "pt-PT",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1a 1me 1sm 1d 1h 1m 1s", duration.toString());
+};
+
+function testDurFmtPTPTFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "pt-PT",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1a 1me 1sm 1d 01H01min01s", duration.toString());
+};
+
+function testDurFmtPTPTFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "pt-PT",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 an 1 mê 1 sm 1 di 1 hr 1 mn 1 sg", duration.toString());
+};
+
+function testDurFmtPTPTFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "pt-PT",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 ano 1 mês 1 sem 1 dia 1 hor 1 min 1 seg", duration.toString());
+};
+
+function testDurFmtPTPTFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "pt-PT",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 ano, 1 mês, 1 semana, 1 dia, 1 hora, 1 minuto e 1 segundo", duration.toString());
+};
+
+
+function testDurFmtPTPTAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "pt-PT",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("2 anos, 2 meses, 2 semanas, 2 dias, 2 horas, 2 minutos e 2 segundos", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+function testDurFmtPTPTFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "pt-PT",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("1a 1me 1sm 1d 01H01min01s", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};
+
+
