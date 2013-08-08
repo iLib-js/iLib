@@ -87,7 +87,7 @@ function testDateRngFmtHKRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11年12月31日，下午01:45至下午02:30", fmt.format(start, end));
+    assertEquals("2011年12月31日，下午01:45至下午02:30", fmt.format(start, end));
 }
 function testDateRngFmtHKRangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-HK", length: "full"});
@@ -184,7 +184,7 @@ function testDateRngFmtHKRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11年12月30日下午01:45至31日下午02:30", fmt.format(start, end));
+    assertEquals("2011年12月30日下午01:45至31日下午02:30", fmt.format(start, end));
 }
 function testDateRngFmtHKRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-HK", length: "full"});
@@ -281,7 +281,7 @@ function testDateRngFmtHKRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11年12月20日至31日", fmt.format(start, end));
+    assertEquals("2011年12月20日至31日", fmt.format(start, end));
 }
 function testDateRngFmtHKRangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-HK", length: "full"});
@@ -378,7 +378,7 @@ function testDateRngFmtHKRangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11年11月20日至12月31日", fmt.format(start, end));
+    assertEquals("2011年11月20日至12月31日", fmt.format(start, end));
 }
 function testDateRngFmtHKRangeNextMonthFull() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-HK", length: "full"});
@@ -475,7 +475,7 @@ function testDateRngFmtHKRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11年11月20日至12年1月31日", fmt.format(start, end));
+    assertEquals("2011年11月20日至2012年1月31日", fmt.format(start, end));
 }
 function testDateRngFmtHKRangeNextYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-HK", length: "full"});
@@ -572,7 +572,7 @@ function testDateRngFmtHKRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11年11月至14年1月", fmt.format(start, end));
+    assertEquals("2011年11月至2014年1月", fmt.format(start, end));
 }
 function testDateRngFmtHKRangeMultiYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "zh-Hant-HK", length: "full"});

@@ -282,7 +282,7 @@ function testDateRngFmtinRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 दिसम्बर 2011", fmt.format(start, end));
+    assertEquals("20 – 31 दिसम्बर 2011", fmt.format(start, end));
 }
 function testDateRngFmtinRangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "hi-IN", length: "full"});
@@ -306,7 +306,7 @@ function testDateRngFmtinRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20-31 दिसम्बर  2011", fmt.format(start, end));
+    assertEquals("20 – 31 दिसम्बर 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtinRangeNextMonthShort() {

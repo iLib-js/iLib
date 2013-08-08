@@ -1,5 +1,5 @@
 /*
- * testdatefmt_zh_CN.js - test the date formatter object in Chinese (simplified)
+ * testdatefmt_zh_HK.js - test the date formatter object in Chinese (traditional)
  * 
  * Copyright © 2012-2013, JEDLSoft
  *
@@ -18,13 +18,13 @@
  */
 
 function testDateFmtConstructorEmpty() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK"});
     
     assertNotNull(fmt);
 }
 
 function testDateFmtSimpleShort() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "short"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "short"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -40,7 +40,7 @@ function testDateFmtSimpleShort() {
 }
 
 function testDateFmtSimpleMedium() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "medium"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "medium"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -56,7 +56,7 @@ function testDateFmtSimpleMedium() {
 }
 
 function testDateFmtSimpleLong() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "long"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "long"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -72,7 +72,7 @@ function testDateFmtSimpleLong() {
 }
 
 function testDateFmtSimpleFull() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -88,7 +88,7 @@ function testDateFmtSimpleFull() {
 }
 
 function testDateFmtSimpleTimeShort() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "short", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "short", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -104,7 +104,7 @@ function testDateFmtSimpleTimeShort() {
 }
 
 function testDateFmtSimpleTimeMedium() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "medium", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "medium", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -120,7 +120,7 @@ function testDateFmtSimpleTimeMedium() {
 }
 
 function testDateFmtSimpleTimeLong() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", timelength: "long", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", timelength: "long", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -136,7 +136,7 @@ function testDateFmtSimpleTimeLong() {
 }
 
 function testDateFmtSimpleTimeFull() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -152,7 +152,7 @@ function testDateFmtSimpleTimeFull() {
 }
 
 function testDateFmtDateTimeSimpleShort() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "short", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "short", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -168,7 +168,7 @@ function testDateFmtDateTimeSimpleShort() {
 }
 
 function testDateFmtDateTimeSimpleMedium() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "medium", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "medium", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -184,7 +184,7 @@ function testDateFmtDateTimeSimpleMedium() {
 }
 
 function testDateFmtDateTimeSimpleLong() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "long", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "long", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -200,7 +200,7 @@ function testDateFmtDateTimeSimpleLong() {
 }
 
 function testDateFmtDateTimeSimpleFull() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -217,7 +217,7 @@ function testDateFmtDateTimeSimpleFull() {
 
 
 function testDateFmtTemplateCalendar() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", calendar: "julian", template: "yyyy-MM-dd"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
@@ -233,7 +233,7 @@ function testDateFmtTemplateCalendar() {
 }
 
 function testDateFmtTemplateCalendarIncompatibleDateType() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", calendar: "julian", template: "yyyy-MM-dd"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -255,7 +255,7 @@ function testDateFmtTemplateCalendarIncompatibleDateType() {
 }
 
 function testDateFmtTemplateClock12SwitchHH() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", clock: "12", template: "HH:mm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", clock: "12", template: "HH:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -271,7 +271,7 @@ function testDateFmtTemplateClock12SwitchHH() {
 }
 
 function testDateFmtTemplateClock12Switchkk() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", clock: "12", template: "kk:mm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", clock: "12", template: "kk:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -287,7 +287,7 @@ function testDateFmtTemplateClock12Switchkk() {
 }
 
 function testDateFmtTemplateClock24Switchhh() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", clock: "24", template: "hh:mm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", clock: "24", template: "hh:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -303,7 +303,7 @@ function testDateFmtTemplateClock24Switchhh() {
 }
 
 function testDateFmtTemplateClock24SwitchKK() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", clock: "24", template: "KK:mm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", clock: "24", template: "KK:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -319,7 +319,7 @@ function testDateFmtTemplateClock24SwitchKK() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", template: "hh:mm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", template: "hh:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -335,7 +335,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", template: "KK:mm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", template: "KK:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -351,7 +351,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", template: "HH:mm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", template: "HH:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -367,7 +367,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", template: "kk:mm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", template: "kk:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -384,7 +384,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk() {
 
 
 function testDateFmtTypeDate() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "date"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "date"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -400,7 +400,7 @@ function testDateFmtTypeDate() {
 }
 
 function testDateFmtTypeTime() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -416,7 +416,7 @@ function testDateFmtTypeTime() {
 }
 
 function testDateFmtTypeDateTime() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -433,7 +433,7 @@ function testDateFmtTypeDateTime() {
 
 
 function testDateFmtShortDateComponentsY() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", date: "y"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", date: "y"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -449,7 +449,7 @@ function testDateFmtShortDateComponentsY() {
 }
 
 function testDateFmtShortDateComponentsM() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", date: "m"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", date: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -465,7 +465,7 @@ function testDateFmtShortDateComponentsM() {
 }
 
 function testDateFmtShortDateComponentsN() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", date: "n"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", date: "n"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -481,7 +481,7 @@ function testDateFmtShortDateComponentsN() {
 }
 
 function testDateFmtShortDateComponentsD() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", date: "d"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", date: "d"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -497,7 +497,7 @@ function testDateFmtShortDateComponentsD() {
 }
 
 function testDateFmtShortDateComponentsDM() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", date: "dm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", date: "dm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -513,7 +513,7 @@ function testDateFmtShortDateComponentsDM() {
 }
 
 function testDateFmtShortDateComponentsMY() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", date: "my"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", date: "my"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -529,7 +529,7 @@ function testDateFmtShortDateComponentsMY() {
 }
 
 function testDateFmtShortDateComponentsDMY() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", date: "dmy"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", date: "dmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -545,7 +545,7 @@ function testDateFmtShortDateComponentsDMY() {
 }
 
 function testDateFmtShortDateComponentsWDM() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", date: "wdm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", date: "wdm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -557,11 +557,11 @@ function testDateFmtShortDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09-29(四)", fmt.format(date));
+    assertEquals("09-29(週四)", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", date: "wdmy"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", date: "wdmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -573,12 +573,12 @@ function testDateFmtShortDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11-09-29(四)", fmt.format(date));
+    assertEquals("11-09-29(週四)", fmt.format(date));
 }
 
 
 function testDateFmtFullDateComponentsY() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full", date: "y"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full", date: "y"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -594,7 +594,7 @@ function testDateFmtFullDateComponentsY() {
 }
 
 function testDateFmtFullDateComponentsM() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full", date: "m"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full", date: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -610,7 +610,7 @@ function testDateFmtFullDateComponentsM() {
 }
 
 function testDateFmtFullDateComponentsD() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full", date: "d"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full", date: "d"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -626,7 +626,7 @@ function testDateFmtFullDateComponentsD() {
 }
 
 function testDateFmtFullDateComponentsDM() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full", date: "dm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full", date: "dm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -642,7 +642,7 @@ function testDateFmtFullDateComponentsDM() {
 }
 
 function testDateFmtFullDateComponentsMY() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full", date: "my"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full", date: "my"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -658,7 +658,7 @@ function testDateFmtFullDateComponentsMY() {
 }
 
 function testDateFmtFullDateComponentsDMY() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full", date: "dmy"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full", date: "dmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -674,7 +674,7 @@ function testDateFmtFullDateComponentsDMY() {
 }
 
 function testDateFmtFullDateComponentsWDM() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full", date: "wdm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full", date: "wdm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -690,7 +690,7 @@ function testDateFmtFullDateComponentsWDM() {
 }
 
 function testDateFmtFullDateComponentsWDMY() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full", date: "wdmy"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full", date: "wdmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -707,7 +707,7 @@ function testDateFmtFullDateComponentsWDMY() {
 
 
 function testDateFmtShortTimeComponentsS() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", time: "s"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", time: "s"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -723,7 +723,7 @@ function testDateFmtShortTimeComponentsS() {
 }
 
 function testDateFmtShortTimeComponentsM() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", time: "m"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", time: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -739,7 +739,7 @@ function testDateFmtShortTimeComponentsM() {
 }
 
 function testDateFmtShortTimeComponentsH() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", time: "h"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", time: "h"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -755,7 +755,7 @@ function testDateFmtShortTimeComponentsH() {
 }
 
 function testDateFmtShortTimeComponentsMS() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", time: "ms"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", time: "ms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -771,7 +771,7 @@ function testDateFmtShortTimeComponentsMS() {
 }
 
 function testDateFmtShortTimeComponentsHM() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", time: "hm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", time: "hm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -787,7 +787,7 @@ function testDateFmtShortTimeComponentsHM() {
 }
 
 function testDateFmtShortTimeComponentsHMS() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", time: "hms"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", time: "hms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -803,7 +803,7 @@ function testDateFmtShortTimeComponentsHMS() {
 }
 
 function testDateFmtShortTimeComponentsHMA() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", time: "hma"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", time: "hma"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -820,7 +820,7 @@ function testDateFmtShortTimeComponentsHMA() {
 
 function testDateFmtShortTimeComponentsHMZ() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         time: "hmz", 
         timezone: "Asia/Shanghai"
@@ -841,7 +841,7 @@ function testDateFmtShortTimeComponentsHMZ() {
 
 function testDateFmtShortTimeComponentsHMAZ() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         time: "hmaz", 
         timezone: "Asia/Shanghai"
@@ -861,7 +861,7 @@ function testDateFmtShortTimeComponentsHMAZ() {
 }
 
 function testDateFmtShortTimeComponentsHMSA() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", time: "hmsa"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", time: "hmsa"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -878,7 +878,7 @@ function testDateFmtShortTimeComponentsHMSA() {
 
 function testDateFmtShortTimeComponentsHMSZ() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         time: "hmsz", 
         timezone: "Asia/Shanghai"
@@ -899,7 +899,7 @@ function testDateFmtShortTimeComponentsHMSZ() {
 
 function testDateFmtShortTimeComponentsHMSAZ() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         time: "hmsaz", 
         timezone: "Asia/Shanghai"
@@ -920,7 +920,7 @@ function testDateFmtShortTimeComponentsHMSAZ() {
 
 
 function testDateFmtFullTimeComponentsS() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", length: "full", time: "s"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", length: "full", time: "s"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -936,7 +936,7 @@ function testDateFmtFullTimeComponentsS() {
 }
 
 function testDateFmtFullTimeComponentsM() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", length: "full", time: "m"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", length: "full", time: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -952,7 +952,7 @@ function testDateFmtFullTimeComponentsM() {
 }
 
 function testDateFmtFullTimeComponentsH() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", length: "full", time: "h"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", length: "full", time: "h"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -968,7 +968,7 @@ function testDateFmtFullTimeComponentsH() {
 }
 
 function testDateFmtFullTimeComponentsMS() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", length: "full", time: "ms"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", length: "full", time: "ms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -984,7 +984,7 @@ function testDateFmtFullTimeComponentsMS() {
 }
 
 function testDateFmtFullTimeComponentsHM() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", length: "full", time: "hm"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", length: "full", time: "hm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1000,7 +1000,7 @@ function testDateFmtFullTimeComponentsHM() {
 }
 
 function testDateFmtFullTimeComponentsHMS() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", length: "full", time: "hms"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", length: "full", time: "hms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1016,7 +1016,7 @@ function testDateFmtFullTimeComponentsHMS() {
 }
 
 function testDateFmtFullTimeComponentsHMA() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", length: "full", time: "hma"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", length: "full", time: "hma"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1033,7 +1033,7 @@ function testDateFmtFullTimeComponentsHMA() {
 
 function testDateFmtFullTimeComponentsHMZ() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         length: "full", 
         time: "hmz", 
@@ -1055,7 +1055,7 @@ function testDateFmtFullTimeComponentsHMZ() {
 
 function testDateFmtFullTimeComponentsHMAZ() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         length: "full", 
         time: "hmaz", 
@@ -1076,7 +1076,7 @@ function testDateFmtFullTimeComponentsHMAZ() {
 }
 
 function testDateFmtFullTimeComponentsHMSA() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", type: "time", length: "full", time: "hmsa"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", type: "time", length: "full", time: "hmsa"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1093,7 +1093,7 @@ function testDateFmtFullTimeComponentsHMSA() {
 
 function testDateFmtFullTimeComponentsHMSZ() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         length: "full", 
         time: "hmsz", 
@@ -1115,7 +1115,7 @@ function testDateFmtFullTimeComponentsHMSZ() {
 
 function testDateFmtFullTimeComponentsHMSAZ() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         length: "full", 
         time: "hmsaz", 
@@ -1137,7 +1137,7 @@ function testDateFmtFullTimeComponentsHMSAZ() {
 
 function testDateFmtTimeFrameWeeHours() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         length: "full", 
         time: "hma"
@@ -1158,7 +1158,7 @@ function testDateFmtTimeFrameWeeHours() {
 
 function testDateFmtTimeFrameEarlyMorning() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         length: "full", 
         time: "hma"
@@ -1179,7 +1179,7 @@ function testDateFmtTimeFrameEarlyMorning() {
 
 function testDateFmtTimeFrameLateMorning() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         length: "full", 
         time: "hma"
@@ -1200,7 +1200,7 @@ function testDateFmtTimeFrameLateMorning() {
 
 function testDateFmtTimeFrameNoonHour() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         length: "full", 
         time: "hma"
@@ -1216,12 +1216,12 @@ function testDateFmtTimeFrameNoonHour() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("中午12:37", fmt.format(date));
+    assertEquals("正午12:37", fmt.format(date));
 }
 
 function testDateFmtTimeFrameAfterNoon() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         length: "full", 
         time: "hma"
@@ -1242,7 +1242,7 @@ function testDateFmtTimeFrameAfterNoon() {
 
 function testDateFmtTimeFrameEvening() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         length: "full", 
         time: "hma"
@@ -1263,7 +1263,7 @@ function testDateFmtTimeFrameEvening() {
 
 function testDateFmtTimeFrameNight() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         length: "full", 
         time: "hma"
@@ -1284,7 +1284,7 @@ function testDateFmtTimeFrameNight() {
 
 function testDateFmtWithTimeZoneAndNoDST() {
     var fmt = new ilib.DateFmt({
-        locale: "zh-CN", 
+        locale: "zh-Hant-HK", 
         type: "time", 
         length: "full", 
         time: "hmsz", 
@@ -1305,7 +1305,7 @@ function testDateFmtWithTimeZoneAndNoDST() {
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
@@ -1329,7 +1329,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter() {
     assertEquals("30秒后", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
@@ -1353,7 +1353,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore() {
     assertEquals("30秒前", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
@@ -1374,10 +1374,10 @@ function testDateFmtFormatRelativeWithinHourAfter() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10分钟后", fmt.formatRelative(reference, date));
+    assertEquals("10分鐘后", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
@@ -1398,10 +1398,10 @@ function testDateFmtFormatRelativeWithinHourBefore() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10分钟前", fmt.formatRelative(reference, date));
+    assertEquals("10分鐘前", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
@@ -1422,10 +1422,10 @@ function testDateFmtFormatRelativeWithinDayAfter() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4小时后", fmt.formatRelative(reference, date));
+    assertEquals("4小時后", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
@@ -1446,11 +1446,11 @@ function testDateFmtFormatRelativeWithinDayBefore() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4小时前", fmt.formatRelative(reference, date));
+    assertEquals("4小時前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
@@ -1474,7 +1474,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter() {
     assertEquals("4天后", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
@@ -1499,7 +1499,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore() {
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
@@ -1520,10 +1520,10 @@ function testDateFmtFormatRelativeWithinQuarterAfter() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9周后", fmt.formatRelative(reference, date));
+    assertEquals("9週后", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
@@ -1544,11 +1544,11 @@ function testDateFmtFormatRelativeWithinQuarterBefore() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9周前", fmt.formatRelative(reference, date));
+    assertEquals("9週前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
@@ -1569,10 +1569,10 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("16个月后", fmt.formatRelative(reference, date));
+    assertEquals("16個月后", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
@@ -1593,11 +1593,11 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14个月前", fmt.formatRelative(reference, date));
+    assertEquals("14個月前", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
@@ -1621,7 +1621,7 @@ function testDateFmtFormatRelativeYearsAfter() {
     assertEquals("14年后", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore() {
-    var fmt = new ilib.DateFmt({locale: "zh-CN", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "zh-Hant-HK", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({

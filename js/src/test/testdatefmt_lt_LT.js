@@ -87,7 +87,7 @@ function testDateFmtSimpleFull_lt_LT() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011 m. rugsėjis 29 d.", fmt.format(date));
+    assertEquals("2011 m. rugsėjis 29 d.", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeShort_lt_LT() {
@@ -215,7 +215,7 @@ function testDateFmtDateTimeSimpleFull_lt_LT() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 2011 m. rugsėjis 29 d", fmt.format(date));
+    assertEquals("13:45 2011 m. rugsėjis 29 d.", fmt.format(date));
 }
 
 
