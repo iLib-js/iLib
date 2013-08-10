@@ -68,7 +68,7 @@ function testDateFmtINSimpleLong_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 सितम्बर, 2011", fmt.format(date));
+    assertEquals("29 सितम्बर, 11", fmt.format(date));
 }
 
 function testDateFmtINSimpleFull_hi_IN() {
@@ -212,7 +212,7 @@ function testDateFmtINDateTimeSimpleLong_hi_IN() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("1:45 अपराह्न 29 सितम्बर, 2011", fmt.format(date));
+    assertEquals("1:45 अपराह्न 29 सितम्बर, 11", fmt.format(date));
 }
 
 function testDateFmtINDateTimeSimpleFull_hi_IN() {
@@ -750,21 +750,6 @@ function testDateFmtINShortTimeComponentsH_hi_IN() {
     assertEquals("1", fmt.format(date));
 }
 
-function testDateFmtINShortTimeComponentsMS_hi_IN() {
-    var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", time: "ms"});
-    assertNotUndefined(fmt);
-    
-    var date = new ilib.Date.GregDate({
-		year: 2011,
-		month: 9,
-		day: 29,
-		hour: 13,
-		minute: 45,
-		second: 37,
-		millisecond: 0
-	});
-    assertEquals("45:37", fmt.format(date));
-}
 
 function testDateFmtINShortTimeComponentsHM_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", time: "hm"});
@@ -818,8 +803,7 @@ function testDateFmtINShortTimeComponentsHMZ_hi_IN() {
     var fmt = new ilib.DateFmt({
 		locale: "hi-IN", 
         type: "time", 
-        time: "hmaz", 
-        timezone: "Asia/Kolkata"
+        time: "ahmsz"
     });
     assertNotUndefined(fmt);
     
@@ -832,14 +816,14 @@ function testDateFmtINShortTimeComponentsHMZ_hi_IN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 अपराह्न IST", fmt.format(date));
+    assertEquals("1:45:37 अपराह्न IST", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMAZ_hi_IN() {
     var fmt = new ilib.DateFmt({
 		locale: "hi-IN", 
         type: "time", 
-        time: "hmaz", 
+        time: "ahmsz", 
         timezone: "Asia/Kolkata"
     });
     assertNotUndefined(fmt);
@@ -853,7 +837,7 @@ function testDateFmtINShortTimeComponentsHMAZ_hi_IN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 अपराह्न IST", fmt.format(date));
+    assertEquals("1:45:37 अपराह्न IST", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMSA_hi_IN() {
@@ -963,21 +947,7 @@ function testDateFmtINFullTimeComponentsH_hi_IN() {
     assertEquals("1", fmt.format(date));
 }
 
-function testDateFmtINFullTimeComponentsMS_hi_IN() {
-    var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", length: "full", time: "ms"});
-    assertNotUndefined(fmt);
-    
-    var date = new ilib.Date.GregDate({
-		year: 2011,
-		month: 9,
-		day: 29,
-		hour: 13,
-		minute: 45,
-		second: 37,
-		millisecond: 0
-	});
-    assertEquals("45:37", fmt.format(date));
-}
+
 
 function testDateFmtINFullTimeComponentsHM_hi_IN() {
     var fmt = new ilib.DateFmt({locale: "hi-IN", type: "time", length: "full", time: "hma"});
@@ -1027,34 +997,14 @@ function testDateFmtINFullTimeComponentsHMA_hi_IN() {
     assertEquals("1:45 अपराह्न", fmt.format(date));
 }
 
-function testDateFmtINFullTimeComponentsHMZ_hi_IN() {
-    var fmt = new ilib.DateFmt({
-		locale: "hi-IN", 
-        type: "time", 
-        length: "full", 
-        time: "hmaz", 
-        timezone: "Asia/Kolkata"
-    });
-    assertNotUndefined(fmt);
-    
-    var date = new ilib.Date.GregDate({
-		year: 2011,
-		month: 9,
-		day: 29,
-		hour: 13,
-		minute: 45,
-		second: 37,
-		millisecond: 0
-	});
-    assertEquals("1:45 अपराह्न IST", fmt.format(date));
-}
+
 
 function testDateFmtINFullTimeComponentsHMAZ_hi_IN() {
     var fmt = new ilib.DateFmt({
 		locale: "hi-IN", 
         type: "time", 
         length: "full", 
-        time: "hmaz", 
+        time: "ahmsz", 
         timezone: "Asia/Kolkata"
     });
     assertNotUndefined(fmt);
@@ -1068,7 +1018,7 @@ function testDateFmtINFullTimeComponentsHMAZ_hi_IN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 अपराह्न IST", fmt.format(date));
+    assertEquals("1:45:37 अपराह्न IST", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMSA_hi_IN() {

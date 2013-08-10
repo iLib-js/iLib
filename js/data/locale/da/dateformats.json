@@ -39,10 +39,10 @@
 				"f": "EEEE 'den' d."
 			},
 			"d": {
-				"s": "d.",
-				"m": "d.",
-				"l": "d.",
-				"f": "d."
+				"s": "d",
+				"m": "d",
+				"l": "d",
+				"f": "d"
 			},
 			"m": {
 				"s": "M",
@@ -93,25 +93,25 @@
 				"s": "{sd}/{sm}/{sy} {st} - {et}",
 				"m": "{sd}/{sm}/{sy} {st} - {et}",
 				"l": "{sd}/{sm}/{sy} {st} - {et}",
-				"f": "{sd} 'den' {sm} {sy} {st} - {et} "
+				"f": "{sd} den {sm} {sy} {st} - {et}"
 			},
 			"c01": {
 				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
 				"m": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
 				"l": "{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}",
-				"f": "{sd} 'den' {ed} {sm} {sy} {st} - {ed} 'den' {em} {ey} {et}"
+				"f": "{sd} den {sm} {sy} {st} - {ed} den {em} {ey} {et}"
 			},
 			"c02": {
 				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
 				"m": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
 				"l": "{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}",
-				"f": "{sd} 'den' {ed} {sm} {sy} {st} - {ed} 'den' {em} {ey} {et}"
+				"f": "{sd} den {ed} {sm} {sy} {st} - {ed} den {em} {ey} {et}"
 			},
 			"c03": {
 				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
 				"m": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
 				"l": "{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}",
-				"f": "{sd} 'den' {ed} {sm} {sy} {st} - {ed} 'den' {em} {ey} {et}"
+				"f": "{sd} den {ed} {sm} {sy} {st} - {ed} den {em} {ey} {et}"
 			},
 			"c10": {
 				"s": "{sd} - {ed}/{sm}/{sy}",

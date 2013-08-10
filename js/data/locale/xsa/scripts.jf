@@ -1,1 +1,6 @@
-{"scripts":["Sarb"],"generated":true}
+{
+    "scripts": [
+        "Sarb"
+    ],
+    "generated": true
+}

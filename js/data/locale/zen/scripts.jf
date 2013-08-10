@@ -1,1 +1,6 @@
-{"scripts":["Tfng"],"generated":true}
+{
+    "scripts": [
+        "Tfng"
+    ],
+    "generated": true
+}

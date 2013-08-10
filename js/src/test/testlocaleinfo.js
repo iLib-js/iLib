@@ -6791,3 +6791,40 @@ function testLocaleInfoGetLikelyLocaleByLanguageAndRegionMissing() {
 	assertNotUndefined(locale);
 	assertEquals("en-GB", locale.getSpec());
 }
+
+
+function testLocaleInfoGetLanguageName1() {
+	var li = new ilib.LocaleInfo("he-IL");
+	assertNotUndefined(li);
+	assertEquals("Hebrew", li.getLanguageName());
+}
+
+function testLocaleInfoGetLanguageName2() {
+	var li = new ilib.LocaleInfo("es-MX");
+	assertNotUndefined(li);
+	assertEquals("Spanish", li.getLanguageName());
+}
+
+function testLocaleInfoGetLanguageName3() {
+	var li = new ilib.LocaleInfo("asa-TZ");
+	assertNotUndefined(li);
+	assertEquals("Asu", li.getLanguageName());
+}
+
+function testLocaleInfoGetRegionName1() {
+	var li = new ilib.LocaleInfo("he-IL");
+	assertNotUndefined(li);
+	assertEquals("Israel", li.getRegionName());
+}
+
+function testLocaleInfoGetRegionName2() {
+	var li = new ilib.LocaleInfo("es-MX");
+	assertNotUndefined(li);
+	assertEquals("Mexico", li.getRegionName());
+}
+
+function testLocaleInfoGetRegionName3() {
+	var li = new ilib.LocaleInfo("asa-TZ");
+	assertNotUndefined(li);
+	assertEquals("Tanzania", li.getRegionName());
+}

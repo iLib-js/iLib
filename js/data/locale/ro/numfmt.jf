@@ -1,1 +1,10 @@
-{"generated":true,"numfmt":{"currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"}}
+{
+    "generated": true,
+    "numfmt": {
+        "exponential": "E",
+        "currencyFormats": {
+            "common": "{n} {s}"
+        },
+        "pctFmt": "{n} %"
+    }
+}

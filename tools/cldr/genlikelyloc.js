@@ -104,7 +104,7 @@ util.print("Writing likelylocales.json...\n");
 // now write out the system resources
 
 var filename = localeDirName + "/likelylocales.json";
-fs.writeFile(filename, JSON.stringify(likelylocales) + '\n', function (err) {
+fs.writeFile(filename, JSON.stringify(likelylocales, true, 4), function (err) {
 	if (err) {
 		console.log(err);
 		throw err;

@@ -1,1 +1,7 @@
-{"scripts":["Latn","Syrc"],"generated":true}
+{
+    "scripts": [
+        "Latn",
+        "Syrc"
+    ],
+    "generated": true
+}

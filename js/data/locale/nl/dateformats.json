@@ -88,7 +88,7 @@
 				"s": "{sd}-{sm}-{sy} {st}-{et}",
 				"m": "{sd}-{sm}-{sy} {st}-{et}",
 				"l": "{sd} {sm} {sy} {st}-{et}",
-				"f": "{sd} {sm} {sy} {st}-{et} "
+				"f": "{sd} {sm} {sy} {st}-{et}"
 			},
 			"c01": {
 				"s": "{sd}-{sm}-{sy} {st} - {ed}-{em}-{ey} {et}",

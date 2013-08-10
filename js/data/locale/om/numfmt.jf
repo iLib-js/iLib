@@ -1,1 +1,8 @@
-{"generated":true,"numfmt":{"decimalChar":".","groupChar":","}}
+{
+    "generated": true,
+    "numfmt": {
+        "decimalChar": ".",
+        "groupChar": ",",
+        "exponential": "E"
+    }
+}

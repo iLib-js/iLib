@@ -1,1 +1,6 @@
-{"scripts":["Phnx"],"generated":true}
+{
+    "scripts": [
+        "Phnx"
+    ],
+    "generated": true
+}

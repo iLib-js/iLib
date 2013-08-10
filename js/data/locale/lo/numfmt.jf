@@ -1,1 +1,21 @@
-{"generated":true,"native_numfmt":{"script":"Laoo","decimalChar":",","groupChar":".","pctChar":"%","exponential":"E","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"{s}-{n}"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"໐໑໒໓໔໕໖໗໘໙"}}
+{
+    "generated": true,
+    "native_numfmt": {
+        "script": "Laoo",
+        "decimalChar": ",",
+        "groupChar": ".",
+        "pctChar": "%",
+        "exponential": "E",
+        "prigroupSize": 3,
+        "currencyFormats": {
+            "common": "{s}{n}",
+            "commonNegative": "{s}-{n}"
+        },
+        "pctFmt": "{n}%",
+        "roundingMode": "halfdown",
+        "digits": "໐໑໒໓໔໕໖໗໘໙"
+    },
+    "numfmt": {
+        "exponential": "E"
+    }
+}

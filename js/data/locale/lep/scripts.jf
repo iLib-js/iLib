@@ -1,1 +1,6 @@
-{"scripts":["Lepc"],"generated":true}
+{
+    "scripts": [
+        "Lepc"
+    ],
+    "generated": true
+}

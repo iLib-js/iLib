@@ -68,7 +68,7 @@ function testDateFmtSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11年9月29日", fmt.format(date));
+    assertEquals("2011年9月29日", fmt.format(date));
 }
 
 function testDateFmtSimpleFull() {
@@ -196,7 +196,7 @@ function testDateFmtDateTimeSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11年9月29日下午01:45", fmt.format(date));
+    assertEquals("2011年9月29日下午01:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull() {

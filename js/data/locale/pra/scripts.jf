@@ -1,1 +1,7 @@
-{"scripts":["Brah","Khar"],"generated":true}
+{
+    "scripts": [
+        "Brah",
+        "Khar"
+    ],
+    "generated": true
+}

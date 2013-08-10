@@ -1,1 +1,24 @@
-{"generated":true,"native_numfmt":{"script":"Khmr","decimalChar":",","groupChar":".","pctChar":"%","exponential":"E","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"({s}{n})"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"០១២៣៤៥៦៧៨៩"},"numfmt":{"currencyFormats":{"commonNegative":"({s}{n})"}}}
+{
+    "generated": true,
+    "native_numfmt": {
+        "script": "Khmr",
+        "decimalChar": ",",
+        "groupChar": ".",
+        "pctChar": "%",
+        "exponential": "E",
+        "prigroupSize": 3,
+        "currencyFormats": {
+            "common": "{s}{n}",
+            "commonNegative": "({s}{n})"
+        },
+        "pctFmt": "{n}%",
+        "roundingMode": "halfdown",
+        "digits": "០១២៣៤៥៦៧៨៩"
+    },
+    "numfmt": {
+        "exponential": "E",
+        "currencyFormats": {
+            "commonNegative": "({s}{n})"
+        }
+    }
+}

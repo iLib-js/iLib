@@ -167,7 +167,7 @@ for (var zone = 0; zone < windowsZones.windowsZones.mapTimezones.length; zone++)
 	}
 }
 
-fs.writeFile(timezonesFile, JSON.stringify(timezones), function (err) {
+fs.writeFile(timezonesFile, JSON.stringify(timezones, true, 4), function (err) {
 	if (err) {
 		throw err;
 	}

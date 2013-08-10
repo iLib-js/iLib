@@ -1,1 +1,9 @@
-{"generated":true,"numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}}}
+{
+    "generated": true,
+    "numfmt": {
+        "groupChar": " ",
+        "currencyFormats": {
+            "common": "{n} {s}"
+        }
+    }
+}

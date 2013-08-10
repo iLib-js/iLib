@@ -1,1 +1,23 @@
-{"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"MM/dd","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"yyyy/MM/dd","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"yyyy/M","m":"yyyy/MM","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sy}/{sm}/{sd}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"–{ed} {em} {ey}","f":"–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true}
+{
+    "gregorian": {
+        "date": {
+            "dm": {
+                "s": "M/d",
+                "m": "MM/dd"
+            },
+            "dmy": {
+                "m": "yyyy/MM/dd"
+            },
+            "my": {
+                "s": "yy/M",
+                "m": "yyyy/MM"
+            }
+        },
+        "range": {
+            "c00": {
+                "m": "{st} – {et} {sy}/{sm}/{sd}"
+            }
+        }
+    },
+    "generated": true
+}

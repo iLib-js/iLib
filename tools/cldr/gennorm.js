@@ -237,7 +237,7 @@ function genCode(script, form) {
 		"/*\n" +
 		" * " + script + ".js - include file for normalization data for a particular script\n" +
 		" * \n" +
-		" * Copyright © 2012, JEDLSoft\n" +
+		" * Copyright © 2013, JEDLSoft\n" +
 		" *\n" +
 		" * Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
 		" * you may not use this file except in compliance with the License.\n" +
@@ -348,7 +348,7 @@ mkdirs(codeDir + "/nfc");
 mkdirs(codeDir + "/nfkd");
 mkdirs(codeDir + "/nfkc");
 
-fs.writeFile(toDir + "/nfd/all.json", JSON.stringify(canonicalDecomp), function (err) {
+fs.writeFile(toDir + "/nfd/all.json", JSON.stringify(canonicalDecomp, true, 4), function (err) {
 	if (err) {
 		throw err;
 	}
@@ -361,7 +361,7 @@ fs.writeFile(codeDir + "/nfd/all.js", genCode("all", "nfd"), function (err) {
 
 for (script in nfdByScript) {
 	if (script && nfdByScript[script]) {
-		fs.writeFile(toDir + "/nfd/" + script + ".json", JSON.stringify(nfdByScript[script]), function (err) {
+		fs.writeFile(toDir + "/nfd/" + script + ".json", JSON.stringify(nfdByScript[script], true, 4), function (err) {
 			if (err) {
 				throw err;
 			}
@@ -375,7 +375,7 @@ for (script in nfdByScript) {
 	}
 }
 
-fs.writeFile(toDir + "/nfc/all.json", JSON.stringify(canonicalComp), function (err) {
+fs.writeFile(toDir + "/nfc/all.json", JSON.stringify(canonicalComp, true, 4), function (err) {
 	if (err) {
 		throw err;
 	}
@@ -388,7 +388,7 @@ fs.writeFile(codeDir + "/nfc/all.js", genCode("all", "nfc"), function (err) {
 
 for (script in nfcByScript) {
 	if (script && nfcByScript[script]) {
-		fs.writeFile(toDir + "/nfc/" + script + ".json", JSON.stringify(nfcByScript[script]), function (err) {
+		fs.writeFile(toDir + "/nfc/" + script + ".json", JSON.stringify(nfcByScript[script], true, 4), function (err) {
 			if (err) {
 				throw err;
 			}
@@ -402,7 +402,7 @@ for (script in nfcByScript) {
 	}
 }
 
-fs.writeFile(toDir + "/nfkd/all.json", JSON.stringify(compatibilityDecomp), function (err) {
+fs.writeFile(toDir + "/nfkd/all.json", JSON.stringify(compatibilityDecomp, true, 4), function (err) {
 	if (err) {
 		throw err;
 	}
@@ -415,7 +415,7 @@ fs.writeFile(codeDir + "/nfkd/all.js", genCode("all", "nfkd"), function (err) {
 
 for (script in nfkdByScript) {
 	if (script && nfkdByScript[script]) {
-		fs.writeFile(toDir + "/nfkd/" + script + ".json", JSON.stringify(nfkdByScript[script]), function (err) {
+		fs.writeFile(toDir + "/nfkd/" + script + ".json", JSON.stringify(nfkdByScript[script], true, 4), function (err) {
 			if (err) {
 				throw err;
 			}
@@ -445,7 +445,7 @@ for (script in nfkdByScript) {
 	}
 }
 
-fs.writeFile(toDir + "/norm.ccc.json", JSON.stringify(combiningMappings), function (err) {
+fs.writeFile(toDir + "/norm.ccc.json", JSON.stringify(combiningMappings, true, 4), function (err) {
 	if (err) {
 		throw err;
 	}

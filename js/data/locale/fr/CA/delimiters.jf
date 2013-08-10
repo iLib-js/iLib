@@ -1,0 +1,7 @@
+{
+    "generated": true,
+    "delimiter": {
+        "alternateQuotationStart": "‹",
+        "alternateQuotationEnd": "›"
+    }
+}

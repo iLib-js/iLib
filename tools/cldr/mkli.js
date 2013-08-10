@@ -74,7 +74,7 @@ function walk(dir, locale) {
 			delete merged.generated;
 		}
 		merged.locale = locale;
-		fs.writeFileSync(path + "/localeinfo.json", JSON.stringify(merged), 'utf8');
+		fs.writeFileSync(path + "/localeinfo.json", JSON.stringify(merged, true, 4), 'utf8');
 		util.print(path + ": merged *.jf into localeinfo.json\n");
 	} else {
 		util.print(path + ": nothing to write\n");

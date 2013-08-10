@@ -206,7 +206,7 @@ function writeCountryNameResources(language, script, region, data) {
 	if (anyProperties(data)) {
 		util.print("Writing " + path + "\n");
 		makeDirs(path);
-		fs.writeFileSync(path + "/ctrynames.json", JSON.stringify(data), "utf-8");
+		fs.writeFileSync(path + "/ctrynames.json", JSON.stringify(data, true, 4), "utf-8");
 	} else {
 		// util.print("Skipping empty " + path + "\n");
 	}

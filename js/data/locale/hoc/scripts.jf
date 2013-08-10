@@ -1,1 +1,7 @@
-{"scripts":["Deva","Wara"],"generated":true}
+{
+    "scripts": [
+        "Deva",
+        "Wara"
+    ],
+    "generated": true
+}

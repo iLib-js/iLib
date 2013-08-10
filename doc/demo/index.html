@@ -58,7 +58,16 @@ $(function() {
     });
 
     $.each(locales, function(i,locale) {
-        localeMap.push({id: locale, name: res.getString(locale)});
+    	var name = res.getString(locale);
+    	console.log("locale is " + locale + " and name is " + name);
+    	if (name.toString() === locale) {
+    		var li = new ilib.LocaleInfo(locale);
+    		name = li.getLanguageName();
+    		if (li.getRegionName()) {
+    			name += " (" + li.getRegionName() + ")"; 
+    		}
+    	}
+        localeMap.push({id: locale, name: name});
     });
     
     localeMap.sort(function (left, right) {
@@ -182,6 +191,7 @@ $(function() {
     			dateFmt = $('[name="dateFmt"]:checked').val(),
     			timeFmt = $('[name="timeFmt"]:checked').val(),
                 clockFmt = $('[name="clockFmt"]:checked').val(),
+                useNative = $('[name="useNative"]:checked').val() === "true" ? true : false,
                 timezone = $('#timezone').val(),
                 calendar = $('#calendarName').val();
                         
@@ -190,7 +200,8 @@ $(function() {
                 length : dateLength,
                 type : dateType,
                 date : dateFmt,
-                time : timeFmt
+                time : timeFmt,
+                useNative : useNative
             };
             
             var date,
@@ -1242,29 +1253,36 @@ $(document).ready(function () {
                             <div id="timePane">
                                 <label>Time:</label>
                                 <div>
-                                <input type="radio" name="timeFmt" id="timeFmt" value="ahmsz"/>ahmsz
-                                <input type="radio" name="timeFmt" id="timeFmt" value="ahms"/>ahms
-                                <input type="radio" name="timeFmt" id="timeFmt" value="hmsz"/>hmsz
-                                <input type="radio" name="timeFmt" id="timeFmt" value="hms"/>hms
-                                <input type="radio" name="timeFmt" id="timeFmt" value="ahmz"/>ahmz
-                                <input type="radio" name="timeFmt" id="timeFmt" value="ahm"/>ahm
-                                <input type="radio" name="timeFmt" id="timeFmt" value="hmz" checked="checked"/>hmz
-                                <input type="radio" name="timeFmt" id="timeFmt" value="ah"/>ah
-                                <input type="radio" name="timeFmt" id="timeFmt" value="hm"/>hm
-                                <input type="radio" name="timeFmt" id="timeFmt" value="ms"/>ms
-                                <input type="radio" name="timeFmt" id="timeFmt" value="h"/>h
-                                <input type="radio" name="timeFmt" id="timeFmt" value="m"/>m
-                                <input type="radio" name="timeFmt" id="timeFmt" value="s"/>s
+	                                <input type="radio" name="timeFmt" id="timeFmt" value="ahmsz"/>ahmsz
+	                                <input type="radio" name="timeFmt" id="timeFmt" value="ahms"/>ahms
+	                                <input type="radio" name="timeFmt" id="timeFmt" value="hmsz"/>hmsz
+	                                <input type="radio" name="timeFmt" id="timeFmt" value="hms"/>hms
+	                                <input type="radio" name="timeFmt" id="timeFmt" value="ahmz"/>ahmz
+	                                <input type="radio" name="timeFmt" id="timeFmt" value="ahm"/>ahm
+	                                <input type="radio" name="timeFmt" id="timeFmt" value="hmz" checked="checked"/>hmz
+	                                <input type="radio" name="timeFmt" id="timeFmt" value="ah"/>ah
+	                                <input type="radio" name="timeFmt" id="timeFmt" value="hm"/>hm
+	                                <input type="radio" name="timeFmt" id="timeFmt" value="ms"/>ms
+	                                <input type="radio" name="timeFmt" id="timeFmt" value="h"/>h
+	                                <input type="radio" name="timeFmt" id="timeFmt" value="m"/>m
+	                                <input type="radio" name="timeFmt" id="timeFmt" value="s"/>s
                                 </div>
                             </div>
                             <div id="clockPane">
                                 <label>Clock:</label>
                                 <div>
-                                <input type="radio" name="clockFmt" id="clockFmt" value="12"/>12-hour clock
-                                <input type="radio" name="clockFmt" id="clockFmt" value="24"/>24-hour clock
-                                <input type="radio" name="clockFmt" id="clockFmt" value="none" checked="checked"/>Default to locale settings
+	                                <input type="radio" name="clockFmt" id="clockFmt" value="12"/>12-hour clock
+	                                <input type="radio" name="clockFmt" id="clockFmt" value="24"/>24-hour clock
+	                                <input type="radio" name="clockFmt" id="clockFmt" value="none" checked="checked"/>Default to locale settings
                                 </div>
                             </div>
+                            <div id="nativePane">
+                                <label>Native Digits:</label>
+                                <div>
+	                                <input type="radio" name="useNative" id="useNative" value="false" checked="checked"/>Western digits
+	                                <input type="radio" name="useNative" id="useNative" value="true"/>Native digits
+                                </div>
+                            </div>                          
                         </div>
                         <div id='yearMonthPicker' style="display: none">
                             <div>

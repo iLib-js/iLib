@@ -1,5 +1,5 @@
 /*
- * testdatefmt_it_IT.js - test the date formatter object in Italian
+ * testdatefmt_nl_NL.js - test the date formatter object in Netherland
  * 
  * Copyright © 2012-2013, JEDLSoft
  *

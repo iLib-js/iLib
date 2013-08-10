@@ -1,1 +1,11 @@
-{"generated":true,"numfmt":{"groupChar":" ","exponential":"×10^","currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"}}
+{
+    "generated": true,
+    "numfmt": {
+        "groupChar": " ",
+        "exponential": "×10^",
+        "currencyFormats": {
+            "common": "{n} {s}"
+        },
+        "pctFmt": "{n} %"
+    }
+}

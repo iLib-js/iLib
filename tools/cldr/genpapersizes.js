@@ -100,7 +100,7 @@ for (var territories in territories_US_Letter) {
 	}
 	papersize["paperSizes"] = paperSizes;
 	papersize.generated = true;
-	fs.writeFile(filename + "/papersizes.jf", JSON.stringify(papersize), function (err) {
+	fs.writeFile(filename + "/papersizes.jf", JSON.stringify(papersize, true, 4), function (err) {
 		util.print(filename + "papersizes.jf\n");
 		if (err) {
 			console.log(err);
@@ -116,7 +116,7 @@ if (!fs.existsSync(filename)) {
 paperSizes["regular"] = "A4";
 papersize["paperSizes"] = paperSizes;
 papersize.generated = true;
-fs.writeFile(filename + "/papersizes.jf", JSON.stringify(papersize), function (err) {
+fs.writeFile(filename + "/papersizes.jf", JSON.stringify(papersize, true, 4), function (err) {
 	if (err) {
 		console.log(err);
 		throw err;

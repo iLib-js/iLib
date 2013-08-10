@@ -1,1 +1,6 @@
-{"scripts":["Taml"],"generated":true}
+{
+    "scripts": [
+        "Taml"
+    ],
+    "generated": true
+}

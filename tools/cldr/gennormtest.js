@@ -70,7 +70,7 @@ if (process.argv.length > 3) {
 }
 
 util.print("gennorm - generate normalization test data.\n" +
-		"Copyright (c) 2012 JEDLSoft\n");
+		"Copyright (c) 2013 JEDLSoft\n");
 
 fs.exists(unicodeFileName, function (exists) {
 	if (!exists) {
@@ -102,7 +102,7 @@ for (var i = 0; i < len; i++ ) {
 	]);
 }
 
-fs.writeFile(toDir + "/normdata.js", "var normtests = " + JSON.stringify(tests) + ";", function (err) {
+fs.writeFile(toDir + "/normdata.js", "var normtests = " + JSON.stringify(tests, true, 4) + ";", function (err) {
 	if (err) {
 		throw err;
 	}

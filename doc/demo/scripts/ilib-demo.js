@@ -29,7 +29,7 @@ var ilib = ilib || {};
  */
 ilib.getVersion = function () {
     // increment this for each release
-    return "1.3";
+    return "2.0";
 };
 
 /*
@@ -630,7 +630,7 @@ ilib.Locale.prototype = {
  * @private
  */
 ilib.Locale.locales = [
-	"af-ZA","da-DK","de-AT","de-CH","de-DE","en-AU","en-CA","en-GB","en-IE","en-IN","en-NG","en-NZ","en-PH","en-PK","en-US","en-ZA","es-AR","es-ES","es-MX","fr-BE","fr-CA","fr-CH","fr-FR","he-IL","id-ID","it-CH","it-IT","ja-JP","ko-KR","nl-BE","nl-NL","no-NO","pt-BR","pt-PT","ru-RU","sv-SE","tr-TR","vi-VN","zxx-XX","zxx-Hans-XX","zxx-Cyrl-XX","zxx-Hebr-XX","zh-CN","zh-TW","zh-HK","zh-SG","zh-MO"
+	"aa-DJ","af-NA","agq-CM","ak-GH","am-ET","ar-AE","ar-BH","ar-DJ","ar-DZ","ar-EG","ar-IQ","ar-JO","ar-KW","ar-LB","ar-LY","ar-MA","ar-MR","ar-OM","ar-QA","ar-SA","ar-SD","ar-SY","ar-TN","ar-YE","asa-TZ","as-IN","az-AZ","bas-CM","be-BY","bem-ZM","bg-BG","bh-IN","bm-ML","bn-IN","br-FR","bs-Cyrl-BA","bs-Latn-BA","bs-ME","ca-FR","cs-CZ","da-DK","de-AT","de-DE","el-GR","en-AU","en-CA","en-Latn-CA","en-ET","en-GB","en-GH","en-GM","en-HK","en-IE","en-IN","en-KE","en-LK","en-LR","en-MW","en-MY","en-NG","en-NZ","en-PH","en-PK","en-PR","en-RW","en-SG","en-SL","en-TZ","en-UG","en-US","en-ZA","en-ZM","es-AR","es-CO","es-CR","es-DO","es-EC","es-ES","es-GQ","es-GT","es-HN","es-MX","es-SV","es-UY","es-VE","et-EE","fa-AF","fa-IR","ff-SN","fi-FI","fj-FJ","fr-AD","fr-BE","fr-BF","fr-BJ","fr-CA","fr-CD","fr-CF","fr-CG","fr-CH","fr-CI","fr-CM","fr-DJ","fr-DZ","fr-FR","fr-GA","fr-GN","fr-LB","fr-LU","fr-MG","fr-ML","fr-RW","fr-SN","fr-TG","fr-YT","ga-IE","gl-ES","ha-Latn-NG","he-IL","hi-IN","hr-HR","hr-ME","hu-HU","hy-AZ","id-ID","id-MY","it-CH","it-IT","it-SM","ja-JP","ka-IR","kk-Cyrl-KZ","kn-IN","ko-KR","ks-Arab-IN","ku-IR","lg-UG","ln-CF","lt-LT","lv-LV","mi-CK","mk-MK","ml-IN","mn-CN","ms-BN","ms-MY","nb-NO","ne-IN","nl-BE","nl-CW","nl-GF","nl-NL","nl-SR","no-BV","no-NO","no-SJ","om-ET","or-IN","os-RU","pa-Arab-PK","pl-PL","pt-AO","pt-BR","pt-CV","pt-GW","pt-MO","pt-MZ","pt-PT","pt-ST","pt-TL","ro-RO","ro-RS","ru-KG","ru-KZ","ru-RU","ru-TM","si-LK","sk-SK","so-ET","so-SO","sq-AL","sq-ME","sq-MK","sr-Cyrl-BA","sr-Latn-BA","sr-Latn-ME","sr-RS","sr-Latn-RS","ss-ZA","st-LS","sv-FI","sv-SE","sw-UG","ta-LK","ta-MY","ta-SG","te-IN","tr-TR","uk-UA","ur-IN","ur-PK","uz-AF","uz-Arab-AF","uz-Cyrl-UZ","uz-UZ","uz-Latn-UZ","vai-Latn-LR","vi-VN","zh-Hans-CN","zh-Hant-MY","zh-Hans-HK","zh-Hant-MO","zh-Hans-SG","zh-Hant-TW","zh-Hant-US","zu-ZA","zxx-Cyrl-XX","zxx-Hans-XX","zxx-Hebr-XX","zxx-XX"
 ];
 
 /**
@@ -1089,9 +1089,8 @@ ilib.mergeLocData = function (prefix, locale) {
 };
 
 /**
- * Return an array of relative path names for the json
- * files that represent the data for the given locale. Only
- * language and region are top-level directories.<p>
+ * Return an array of relative path names for the
+ * files that represent the data for the given locale.<p>
  * 
  * Note that to prevent the situation where a directory for
  * a language exists next to the directory for a region where
@@ -1106,65 +1105,80 @@ ilib.mergeLocData = function (prefix, locale) {
  * directories cannot exist underneath "locale". The region
  * therefore will be loaded from "und/ES" instead.<p>  
  * 
- * Variations
+ * <h4>Variations</h4>
  * 
- * only language and region specified:
+ * With only language and region specified, the following
+ * sequence of paths will be generated:<p>
  * 
+ * <pre>
  * language
- * region
+ * und/region
  * language/region
+ * </pre>
  * 
- * only language and script specified:
+ * With only language and script specified:<p>
  * 
+ * <pre>
  * language
  * language/script
+ * </pre>
  * 
- * only script and region specified:
+ * With only script and region specified:<p>
  * 
- * region
+ * <pre>
+ * und/region  
+ * </pre>
  * 
- * only region and variant specified:
+ * With only region and variant specified:<p>
  * 
- * region
+ * <pre>
+ * und/region
  * region/variant
- *
- * only language, script, and region specified:
+ * </pre>
  * 
+ * With only language, script, and region specified:<p>
+ * 
+ * <pre>
  * language
- * region
+ * und/region
  * language/script
  * language/region
  * language/script/region
+ * </pre>
  * 
- * only language, region, and variant specified:
+ * With only language, region, and variant specified:<p>
  * 
+ * <pre>
  * language
- * region
+ * und/region
  * language/region
  * region/variant
  * language/region/variant
+ * </pre>
  * 
- * all parts specified:
+ * With all parts specified:<p>
  * 
+ * <pre>
  * language
- * region
+ * und/region
  * language/script
  * language/region
  * region/variant
  * language/script/region
  * language/region/variant
  * language/script/region/variant
+ * </pre>
  * 
- * @param {ilib.Locale} locale load the json files for this locale
- * @param {string?} basename the base name of each json file to load
+ * @param {ilib.Locale} locale load the files for this locale
+ * @param {string?} name the file name of each file to load without
+ * any path
  * @return {Array.<string>} An array of relative path names
- * for the json files that contain the locale data
+ * for the files that contain the locale data
  */
-ilib.getLocFiles = function(locale, basename) {
+ilib.getLocFiles = function(locale, name) {
 	var dir = "";
 	var files = [];
-	var filename = basename || "resources";
-	filename += ".json";
+	var filename = name || "resources.json";
 	var loc = locale || new ilib.Locale();
 	
 	var language = loc.getLanguage();
@@ -1364,42 +1378,104 @@ ilib._roundFnc = {
  * this function will call it to load the data. Otherwise, the callback will be called with
  * undefined as the data. This function will create a cache under the given class object.
  * If data was successfully loaded, it will be set into the cache so that future access to 
- * the same data for the same locale is much quicker. 
+ * the same data for the same locale is much quicker.<p>
  * 
- * @param {Object} object The class attempting to load data. The cache is stored inside of here.
- * @param {ilib.Locale} locale The locale to use to find or load the data.
- * @param {string} name The name of the locale data to load.
- * @param {boolean} sync Whether or not to load the data synchronouslyo
- * @param {Object} params An object with parameters to pass to the loader function
- * @param {function(?)=} callback Call back function to call when the data is available.
+ * The parameters can specify any of the following properties:<p>
+ * 
+ * <ul>
+ * <li><i>name</i> - String. The name of the file being loaded.
+ * <li><i>object</i> - Object. The class attempting to load data. The cache is stored inside of here.
+ * <li><i>locale</i> - ilib.Locale. The name of the locale data to load. Default is the current locale.
+ * <li><i>type</i> - String. Type of file to load. This can be "json" or "other" type. Default: "json" 
+ * <li><i>loadParams</i> - Object. An object with parameters to pass to the loader function
+ * <li><i>sync</i> - boolean. Whether or not to load the data synchronously
+ * <li><i>callback</i> - function(?)=. callback Call back function to call when the data is available.
+ * Data is not returned from this method, so a callback function is mandatory.
+ * </ul>
+ * 
+ * @param {Object} params Parameters configuring how to load the files (see above)
  */
-ilib.loadData = function(object, locale, name, sync, params, callback) {
-	if (!object.cache) {
+ilib.loadData = function(params) {
+	var name = "resources.json",
+		object = undefined, 
+		locale = new ilib.Locale(ilib.getLocale()), 
+		sync = false, 
+		type = "json",
+		loadParams = {},
+		callback = undefined;
+	
+	if (!params || typeof(params.callback) !== 'function') {
+		return;
+	}
+
+	if (params.name) {
+		name = params.name;
+	}
+	if (params.object) {
+		object = params.object;
+	}
+	if (params.locale) {
+		locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
+	}			
+	if (params.type) {
+		type = params.type;
+	}
+	if (params.loadParams) {
+		loadParams = params.loadParams;
+	}
+	if (params.sync) {
+		sync = params.sync;
+	}
+	
+	callback = params.callback;
+	
+	if (object && !object.cache) {
 		object.cache = {};
 	}
 
 	var spec = locale.getSpec().replace(/-/g, '_');
-	if (typeof(object.cache[spec]) === 'undefined') {
-		var data = ilib.mergeLocData(name, locale);
+	if (!object || typeof(object.cache[spec]) === 'undefined') {
+		var basename = name.substring(0,name.lastIndexOf("."));
+		var data = ilib.mergeLocData(basename, locale);
 		if (data) {
-			object.cache[spec] = data;
+			if (object) {
+				object.cache[spec] = data;
+			}
 			callback(data);
 		} else if (typeof(ilib._load) === 'function') {
 			// the data is not preassembled, so attempt to load it dynamically
 			var files = ilib.getLocFiles(locale, name);
+			if (type !== "json") {
+				loadParams.returnOne = true;
+				loadParams.nonLocale = true;
+			}
 			
-			ilib._load(files, sync, params, ilib.bind(this, function(arr) {
-				data = {};
-				for (var i = 0; i < arr.length; i++) {
-					if (typeof(arr[i]) !== 'undefined') {
-						data = ilib.merge(data, arr[i]);
+			ilib._load(files, sync, loadParams, ilib.bind(this, function(arr) {
+				if (type === "json") {
+					data = {};
+					for (var i = 0; i < arr.length; i++) {
+						if (typeof(arr[i]) !== 'undefined') {
+							data = ilib.merge(data, arr[i]);
+						}
 					}
+					
+					if (object) {
+						object.cache[spec] = data;
+					}
+					callback(data);
+				} else {
+					// only returns the most locale-specific file in 0th element
+					if (object) {
+						object.cache[spec] = arr[arr.length-1];
+					}
+					callback(arr[arr.length-1]);
 				}
-				
-				callback(data);
 			}));
 		} else {
 			// no data other than the generic shared data
+			if (object) {
+				object.cache[spec] = data;
+			}
 			callback(data);
 		}
 	} else {
@@ -1407,6 +1483,29 @@ ilib.loadData = function(object, locale, name, sync, params, callback) {
 	}
 };
 
+/**
+ * @static
+ * 
+ * Map a string to the given set of alternate characters. If the target set
+ * does not contain a particular character in the input string, then that
+ * character will be copied to the output unmapped.
+ * 
+ * @param {string} str a string to map to an alternate set of characters
+ * @param {Array.<string>|Object} map a mapping to alternate characters
+ * @return {string} the source string where each character is mapped to alternate characters
+ */
+ilib.mapString = function (str, map) {
+	var mapped = "";
+	if (map && str) {
+		for (var i = 0; i < str.length; i++) {
+			var c = str.charAt(i); // TODO use a char iterator?
+			mapped += map[c] || c; 
+		}
+	} else {
+		mapped = str;
+	}
+	return mapped;
+};
 
 ilib.data.plurals = {
     "version": {
@@ -5460,902 +5559,281 @@ ilib.String.prototype = {
 		return this.cpLength;	
 	}
 };
-ilib.data.localeinfo = {
-	"clock": "24",
-	"currencyFormats": {
-		"common": "{s}{n}",
-		"iso": "{s} {n}"
-	},
-	"units": "metric",
-	"calendar": "gregorian",
-	"currency": "USD",
-	"timezone": "Etc/UTC",
-	"numfmt": {
-		"decimalChar": ",",
-		"groupChar": ".",
-		"prigroupSize": 3,
-		"pctFmt": "{n}%",
-		"pctChar": "%",
-		"roundingMode": "halfdown"
-	},
-	"locale": "."
-}
-;
-ilib.data.localeinfo_af = {
-"clock" :"12",
-	"language.name": "Afrikaans",
-"numfmt" :{"groupChar":" ","curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
-	"scripts": ["Latn"],
-	"locale": "af"
-}
-;
-ilib.data.localeinfo_af_ZA = {
-	"locale": "af-ZA"
-}
-;
-ilib.data.localeinfo_ZA = {
-	"clock": "12",
-	"currency": "ZAR",
-	"region.name": "South Africa",
-	"timezone": "Africa/Johannesburg",
-	"locale": "und-ZA"
-}
-;
-ilib.data.localeinfo_da = {
-	"firstDayOfWeek": 1,
-	"language.name": "Danish",
-	"numfmt": {
-		"decimalChar": ",",
-		"groupChar": ".",
-		"prigroupSize": 3,
-		"pctFmt": "{n}%"
-	},
-	"scripts": ["Latn"],
-	"locale": "da"
-}
-;
-ilib.data.localeinfo_da_DK = {
-"numfmt" :{"pctFmt":"{n} %","curFmt":"{n} {s}","secgroupSize":0},
-	"locale": "da-DK"
-}
-;
-ilib.data.localeinfo_DK = {
-	"currency": "DKK",
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "4x6"
-	},
-	"region.name": "Denmark",
-	"timezone": "Europe/Copenhagen",
-	"locale": "und-DK"
-}
-;
-ilib.data.localeinfo_de = {
-	"firstDayOfWeek": 1,
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "4x6"
-	},
-	"language.name": "German",
-	"numfmt": {
-		"pctFmt": "{n} %"
-	},
-	"scripts": ["Latn","Runr"],
-	"locale": "de"
-}
-;
-ilib.data.localeinfo_de_AT = {
-"numfmt" :{"pctFmt":"{n} %","curFmt":"{s} {n}","secgroupSize":0},
-	"locale": "de-AT"
-}
-;
-ilib.data.localeinfo_AT = {
-	"currency": "EUR",
-	"region.name": "Austria",
-	"timezone": "Europe/Vienna",
-	"locale": "und-AT"
-}
-;
-ilib.data.localeinfo_de_CH = {
-	"numfmt": {
-		"decimalChar": ".",
-		"groupChar": "'",
-		"prigroupSize": 3,
-		"pctFmt": "{n}%",
-		"pctChar": "%"
-	},
-	"locale": "de-CH"
-}
-;
-ilib.data.localeinfo_CH = {
-	"currency": "CHF",
-	"region.name": "Switzerland",
-	"timezone": "Europe/Zurich",
-	"locale": "und-CH"
-}
-;
-ilib.data.localeinfo_de_DE = {
-"numfmt" :{"pctFmt":"{n} %","curFmt":"{n} {s}","secgroupSize":0},
-	"locale": "de-DE"
-}
-;
-ilib.data.localeinfo_DE = {
-	"currency": "EUR",
-	"region.name": "Germany",
-	"timezone": "Europe/Berlin",
-	"locale": "und-DE"
-}
-;
-ilib.data.localeinfo_en = {
-"clock" :"12",
-	"units": "metric",
-	"clock": "24",
-	"calendar": "gregorian",
-	"firstDayOfWeek": 0,
-	"language.name": "English",
-	"numfmt": {
-		"decimalChar": ".",
-		"groupChar": ","
-	},
-	"scripts": ["Latn","Dsrt","Shaw"],
-	"locale": "en"
-}
-;
-ilib.data.localeinfo_en_AU = {
-"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
-	"locale": "en-AU"
-}
-;
-ilib.data.localeinfo_AU = {
-	"clock": "12",	"currency": "AUD",
-	"region.name": "Australia",
-	"timezone": "Australia/Sydney",
-	"locale": "und-AU"
-}
-;
-ilib.data.localeinfo_en_CA = {
-"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
-	"locale": "en-CA"
-}
-;
-ilib.data.localeinfo_CA = {
-	"clock": "12",
-	"currency": "CAD",
-	"paperSizes": {
-		"regular": "8x11",
-		"photo": "3x5"
-	},
-	"region.name": "Canada",
-	"timezone": "America/Toronto",
-	"locale": "und-CA"
-}
-;
-ilib.data.localeinfo_en_GB = {
-"clock" :"24",
-"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
-	"locale": "en-GB"
-}
-;
-ilib.data.localeinfo_GB = {
-	"currency": "GBP",
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "24x16"
-	},
-	"region.name": "United Kingdom",
-	"timezone": "Europe/London",
-	"units": "imperial",
-	"locale": "und-GB"
-}
-;
-ilib.data.localeinfo_en_IE = {
-"clock" :"24",
-"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
-	"locale": "en-IE"
-}
-;
-ilib.data.localeinfo_IE = {
-	"currency": "EUR",
-	"region.name": "Ireland",
-	"timezone": "Europe/Dublin",
-	"locale": "und-IE"
-}
-;
-ilib.data.localeinfo_en_IN = {
-"numfmt" :{"curFmt":"{s} {n}","secgroupSize":2},
-	"locale": "en-IN"
-}
-;
-ilib.data.localeinfo_IN = {
-	"currency": "INR",
-	"region.name": "India",
-	"timezone": "Asia/Kolkata",
-	"locale": "und-IN"
-}
-;
-ilib.data.localeinfo_en_NG = {
-"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
-	"locale": "en-NG"
-}
-;
-ilib.data.localeinfo_NG = {
-	"currency": "NGN",
-	"region.name": "Nigeria",
-	"timezone": "Africa/Lagos",
-	"locale": "und-NG"
-}
-;
-ilib.data.localeinfo_en_NZ = {
-"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
-	"locale": "en-NZ"
-}
-;
-ilib.data.localeinfo_NZ = {
-	"clock": "12",	"currency": "NZD",
-	"region.name": "New Zealand",
-	"timezone": "Pacific/Auckland",
-	"locale": "und-NZ"
-}
-;
-ilib.data.localeinfo_en_PH = {
-"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
-	"locale": "en-PH"
-}
-;
-ilib.data.localeinfo_PH = {
-	"clock": "12",	"currency": "PHP",
-	"region.name": "Philippines",
-	"timezone": "Asia/Manila",
-	"locale": "und-PH"
-}
-;
-ilib.data.localeinfo_en_PK = {
-"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
-	"locale": "en-PK"
-}
-;
-ilib.data.localeinfo_PK = {
-	"currency": "PKR",
-	"region.name": "Pakistan",
-	"timezone": "Asia/Karachi",
-	"locale": "und-PK"
-}
-;
-ilib.data.localeinfo_en_US = {
-"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
-	"locale": "en-US"
-}
-;
-ilib.data.localeinfo_US = {
-	"clock": "12",
-
-	"currency": "USD",
-	"paperSizes": {
-		"regular": "8x11",
-		"photo": "3x5"
-	},
-	"region.name": "United States",
-	"timezone": "America/New_York",
-	"units": "uscustomary",
-	"locale": "und-US"
-}
-;
-ilib.data.localeinfo_en_ZA = {
-"numfmt" :{"decimalChar":",","groupChar":" ","curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
-	"locale": "en-ZA"
-}
-;
-ilib.data.localeinfo_es = {
-	"clock": "24",
-	"calendar": "gregorian",
-	"firstDayOfWeek": 1,
-	"units": "metric",
-	"timezone": "Europe/Madrid",
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "4x6"
-	},
-	"language.name": "Spanish",
-"numfmt": {
-	"decimalChar": ",",
-	"groupChar": ".",
-	"prigroupSize": 3,
-	"pctFmt": "{n}%",
-	"pctChar": "%"
-},
-
-	"scripts": ["Latn"],
-	"locale": "es"
-}
-;
-ilib.data.localeinfo_es_AR = {
-"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
-	"locale": "es-AR"
-}
-;
-ilib.data.localeinfo_AR = {
-	"currency": "ARS",
-	"region.name": "Argentina",
-	"timezone": "America/Argentina/Buenos_Aires",
-	"locale": "und-AR"
-}
-;
-ilib.data.localeinfo_es_ES = {
-"numfmt" :{"curFmt":"{n} {s}","secgroupSize":0},
-	"locale": "es-ES"
-}
-;
-ilib.data.localeinfo_ES = {
-	"currency": "EUR",
-	"region.name": "Spain",
-	"timezone": "Europe/Madrid",
-	"locale": "und-ES"
-}
-;
-ilib.data.localeinfo_es_MX = {
-"numfmt" :{"decimalChar":".","groupChar":",","curFmt":"{s}{n}","secgroupSize":0},
-	"locale": "es-MX"
-}
-;
-ilib.data.localeinfo_MX = {
-	"clock": "12",
-	"currency": "MXN",
-	"region.name": "Mexico",
-	"timezone": "America/Mexico_City",
-	"locale": "und-MX"
-}
-;
-ilib.data.localeinfo_fr = {
-	"calendar": "gregorian",
-	"firstDayOfWeek": 1,
-	"clock": "24",
-	"currencyFormats": {
-		"common": "{n} {s}",
-		"iso": "{n} {s}"
-	},
-	"units": "metric",
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "4x6"
-	},
-	"language.name": "French",
-	"numfmt": {
-		"decimalChar": ",",
-		"groupChar": " ",
-		"prigroupSize": 3,
-		"pctFmt": "{n}%"
-	},
-	"scripts": ["Latn"],
-	"locale": "fr"
-}
-;
-ilib.data.localeinfo_fr_BE = {
-	"numfmt": {
-		"decimalChar": ",",
-		"groupChar": ".",
-		"prigroupSize": 3,
-		"pctFmt": "{n}%",
-		"pctChar": "%"
-	},
-	"locale": "fr-BE"
-}
-;
-ilib.data.localeinfo_BE = {
-	"currency": "EUR",
-	"region.name": "Belgium",
-	"timezone": "Europe/Brussels",
-	"locale": "und-BE"
-}
-;
-ilib.data.localeinfo_fr_CA = {
-	"paperSizes": {
-		"regular": "8x11",
-		"photo": "3x5"
-	},
-"numfmt" :{"groupChar":" ","pctFmt":"{n} %","curFmt":"{n} {s}","secgroupSize":0,"negativecurFmt":"({n} {s})"},
-	"locale": "fr-CA"
-}
-;
-ilib.data.localeinfo_fr_CH = {
-	"numfmt": {
-		"decimalChar": ".",
-		"groupChar": "'",
-		"prigroupSize": 3,
-		"pctFmt": "{n}%",
-		"pctChar": "%"
-	},
-	"locale": "fr-CH"
-}
-;
-ilib.data.localeinfo_fr_FR = {
-"numfmt" :{"groupChar":" ","pctFmt":"{n} %","curFmt":"{n} {s}","secgroupSize":0,"negativecurFmt":"({n} {s})"},
-	"locale": "fr-FR"
-}
-;
-ilib.data.localeinfo_FR = {
-	"currency": "EUR",
-	"region.name": "France",
-	"timezone": "Europe/Paris",
-	"locale": "und-FR"
-}
-;
-ilib.data.localeinfo_he = {
-	"language.name": "Hebrew",
-	"numfmt": {
-		"decimalChar": ".",
-		"groupChar": ",",
-		"prigroupSize": 3,
-		"pctFmt": "{n}%",
-		"pctChar": "%"
-	},
-	"scripts": ["Hebr"],
-	"locale": "he"
-}
-;
-ilib.data.localeinfo_he_IL = {
-	"calendar": "hebrew",
-	"firstDayOfWeek": 6,
-"numfmt" :{"curFmt":"{n} {s}","secgroupSize":0},
-	"locale": "he-IL"
-}
-;
-ilib.data.localeinfo_IL = {
-	"currency": "ILS",
-	"region.name": "Israel",
-	"timezone": "Asia/Jerusalem",
-	"locale": "und-IL"
-}
-;
-ilib.data.localeinfo_id = {
-	"language.name": "Indonesian",
-"numfmt": {
-	"decimalChar": ",",
-	"groupChar": ".",
-	"prigroupSize": 3,
-	"pctFmt": "{n}%",
-	"pctChar": "%"
-},
-
-	"scripts": ["Latn","Arab"],
-	"locale": "id"
-}
-;
-ilib.data.localeinfo_id_ID = {
-"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0},
-	"locale": "id-ID"
-}
-;
-ilib.data.localeinfo_ID = {
-	"currency": "IDR",
-	"region.name": "Indonesia",
-	"timezone": "Asia/Jakarta",
-	"locale": "und-ID"
-}
-;
-ilib.data.localeinfo_it = {
-	"clock": "24",
-	"calendar": "gregorian",
-	"firstDayOfWeek": 1,
-	"units": "metric",
-	"timezone": "Europe/Rome",
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "4x6"
-	},
-	"language.name": "Italian",
-"numfmt": {
-	"decimalChar": ",",
-	"groupChar": ".",
-	"prigroupSize": 3,
-	"pctFmt": "{n}%",
-	"pctChar": "%"
-},
-
-	"scripts": ["Latn"],
-	"locale": "it"
-}
-;
-ilib.data.localeinfo_it_CH = {
-	"numfmt": {
-		"decimalChar": ",",
-		"groupChar": "'",
-		"prigroupSize": 3,
-		"pctFmt": "{n}%",
-		"pctChar": "%"
-	},
-	"locale": "it-CH"
-}
-;
-ilib.data.localeinfo_it_IT = {
-"numfmt" :{"curFmt":"{s} {n}","secgroupSize":0},
-	"locale": "it-IT"
-}
-;
-ilib.data.localeinfo_IT = {
-	"currency": "EUR",
-	"region.name": "Italy",
-	"timezone": "Europe/Rome",
-	"locale": "und-IT"
-}
-;
-ilib.data.localeinfo_ja = {
-	"clock": "24",
-	"calendar": "gregorian",
-	"firstDayOfWeek": 0,
-	"units": "metric",
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "L"
-	},
-	"language.name": "Japanese",
-	"numfmt": {
-		"decimalChar": ".",
-		"groupChar": "",
-		"prigroupSize": 0,
-		"pctFmt": "{n}％"
-	},
-	"scripts": ["Jpan"],
-	"locale": "ja"
-}
-;
-ilib.data.localeinfo_ja_JP = {
-"numfmt" :{"groupChar":",","prigroupSize":3,"pctFmt":"{n}%","curFmt":"{s}{n}","secgroupSize":0},
-	"locale": "ja-JP"
-}
-;
-ilib.data.localeinfo_JP = {
-	"currency": "JPY",
-	"region.name": "Japan",
-	"timezone": "Asia/Tokyo",
-	"locale": "und-JP"
-}
-;
-ilib.data.localeinfo_ko = {
-	"clock": "12",
-	"calendar": "gregorian",
-	"firstDayOfWeek": 0,
-	"units": "metric",
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "3R"
-	},
-	"language.name": "Korean",
-	"numfmt": {
-		"decimalChar": ".",
-		"groupChar": ",",
-		"prigroupSize": 3,
-		"pctFmt": "{n} %"
-	},
-	"scripts": ["Kore"],
-	"locale": "ko"
-}
-;
-ilib.data.localeinfo_ko_KR = {
-"numfmt" :{"pctFmt":"{n}%","curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
-	"locale": "ko-KR"
-}
-;
-ilib.data.localeinfo_KR = {
-	"currency": "KRW",
-	"region.name": "South Korea",
-	"timezone": "Asia/Seoul",
-	"locale": "und-KR"
-}
-;
-ilib.data.localeinfo_nl = {
-	"currencyFormats": {
-		"common": "{n} {s}",
-		"iso": "{n} {s}"
-	},
-	"language.name": "Dutch",
-"numfmt": {
-	"decimalChar": ",",
-	"groupChar": ".",
-	"prigroupSize": 3,
-	"pctFmt": "{n}%",
-	"pctChar": "%"
-},
-
-	"scripts": ["Latn"],
-	"locale": "nl"
-}
-;
-ilib.data.localeinfo_nl_BE = {
-"numfmt" :{"curFmt":"{n} {s}","secgroupSize":0},
-	"locale": "nl-BE"
-}
-;
-ilib.data.localeinfo_nl_NL = {
-"numfmt" :{"curFmt":"{s} {n}","secgroupSize":0,"negativecurFmt":"{s} {n}-"},
-	"locale": "nl-NL"
-}
-;
-ilib.data.localeinfo_NL = {
-	"currency": "EUR",
-	"region.name": "Netherlands",
-	"timezone": "Europe/Amsterdam",
-	"locale": "und-NL"
-}
-;
-ilib.data.localeinfo_no = {
-	"firstDayOfWeek": 1,
-	"language.name": "Norwegian",
-	"numfmt": {
-		"decimalChar": ",",
-		"groupChar": " ",
-		"prigroupSize": 3,
-		"pctFmt": "{n} %"
-	},
-	"scripts": ["Latn"],
-	"locale": "no"
-}
-;
-ilib.data.localeinfo_no_NO = {
-	"locale": "no-NO"
-}
-;
-ilib.data.localeinfo_NO = {
-	"currency": "NOK",
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "4x6"
-	},
-	"region.name": "Norway",
-	"timezone": "Europe/Oslo",
-	"locale": "und-NO"
-}
-;
-ilib.data.localeinfo_pt = {
-	"language.name": "Portuguese",
-"numfmt": {
-	"decimalChar": ",",
-	"groupChar": ".",
-	"prigroupSize": 3,
-	"pctFmt": "{n}%",
-	"pctChar": "%"
-},
-
-	"scripts": ["Latn"],
-	"locale": "pt"
-}
-;
-ilib.data.localeinfo_pt_BR = {
-"numfmt" :{"curFmt":"{s}{n}","secgroupSize":0,"negativecurFmt":"({s}{n})"},
-	"locale": "pt-BR"
-}
-;
-ilib.data.localeinfo_BR = {
-	"currency": "BRL",
-	"region.name": "Brazil",
-	"timezone": "America/Sao_Paulo",
-	"locale": "und-BR"
-}
-;
-ilib.data.localeinfo_pt_PT = {
-"numfmt" :{"groupChar":" ","curFmt":"{n} {s}","secgroupSize":0},
-	"locale": "pt-PT"
-}
-;
-ilib.data.localeinfo_PT = {
-	"currency": "EUR",
-	"region.name": "Portugal",
-	"timezone": "Europe/Lisbon",
-	"locale": "und-PT"
-}
-;
-ilib.data.localeinfo_ru = {
-	"language.name": "Russian",
-	"numfmt": {
-		"decimalChar": ",",
-		"groupChar": " ",
-		"prigroupSize": 3,
-		"pctFmt": "{n} %"
-	},
-	"scripts": ["Cyrl"],
-	"locale": "ru"
-}
-;
-ilib.data.localeinfo_ru_RU = {
-"numfmt" :{"groupChar":" ","pctFmt":"{n} %","curFmt":"{n} {s}","secgroupSize":0},
-	"locale": "ru-RU"
-}
-;
-ilib.data.localeinfo_RU = {
-	"currency": "RUB",
-	"region.name": "Russia",
-	"timezone": "Europe/Moscow",
-	"locale": "und-RU"
-}
-;
-ilib.data.localeinfo_sv = {
-	"firstDayOfWeek": 1,
-		"language.name": "Swedish",
-	"numfmt": {
-		"decimalChar": ",",
-		"groupChar": " ",
-		"prigroupSize": 3,
-		"pctFmt": "{n}%"
-	},
-	"scripts": ["Latn"],
-	"locale": "sv"
-}
-;
-ilib.data.localeinfo_sv_SE = {
-"numfmt" :{"groupChar":" ","pctFmt":"{n} %","curFmt":"{n} {s}","secgroupSize":0},
-	"locale": "sv-SE"
-}
-;
-ilib.data.localeinfo_SE = {
-	"currency": "SEK",
-	"paperSizes": {
-		"regular": "A4",
-		"photo": "4x6"
-	},
-	"region.name": "Sweden",
-	"timezone": "Europe/Stockholm",
-	"locale": "und-SE"
-}
-;
-ilib.data.localeinfo_tr = {
-	"currencyFormats": {
-		"common": "{n} {s}",
-		"iso": "{n} {s}"
-	},
-	"language.name": "Turkish",
-	"numfmt": {
-		"decimalChar": ",",
-		"groupChar": ".",
-		"prigroupSize": 3,
-		"pctFmt": "% {n}",
-		"pctChar": "%",
-		"roundingMode": "halfup"
-	},
-
-	"scripts": ["Latn","Arab"],
-	"locale": "tr"
-}
-;
-ilib.data.localeinfo_tr_TR = {
-"numfmt" :{"pctFmt":"%{n}","curFmt":"{n} {s}","secgroupSize":0,"negativecurFmt":"({n} {s})","roundingMode":"halfdown"},
-	"locale": "tr-TR"
-}
-;
-ilib.data.localeinfo_TR = {
-	"currency": "TRY",
-	"region.name": "Turkey",
-	"timezone": "Europe/Istanbul",
-	"locale": "und-TR"
-}
-;
-ilib.data.localeinfo_vi = {
-	"language.name": "Vietnamese",
-"numfmt": {
-	"decimalChar": ",",
-	"groupChar": ".",
-	"prigroupSize": 3,
-	"pctFmt": "{n}%",
-	"pctChar": "%"
-},
-
-	"scripts": ["Latn","Hani"],
-	"locale": "vi"
-}
-;
-ilib.data.localeinfo_vi_VN = {
-"numfmt" :{"curFmt":"{n} {s}","secgroupSize":0},
-	"locale": "vi-VN"
-}
-;
-ilib.data.localeinfo_VN = {
-	"currency": "VND",
-	"region.name": "Vietnam",
-	"timezone": "Asia/Ho_Chi_Minh",
-	"locale": "und-VN"
-}
-;
-ilib.data.localeinfo_zxx = {
-	"currency": "USD",
-	"units": "metric",
-	"clock": "24",
-	"calendar": "gregorian",
-	"firstDayOfWeek": 0,
-	"language.name": "No linguistic content",
-	"numfmt": {
-		"decimalChar": ".",
-		"groupChar": ",",
-		"prigroupSize": 3,
-		"pctFmt": "{n}%",
-		"roundingMode": "halfeven"
-	},
-	"paperSizes": {
-		"regular": "8x11",
-		"photo": "3x5"
-	},
-	"scripts": ["Latn"],
-	"locale": "zxx"
-}
-;
-ilib.data.localeinfo_zxx_XX = {
-	"locale": "zxx-XX"
-}
-;
-ilib.data.localeinfo_XX = {
-	"region.name": "Unknown",
-	"locale": "und-XX"
-}
-;
-ilib.data.localeinfo_zh = {
-	"clock": "12",
-	"currencyFormats": {
-		"common": "{n}{s}",
-		"iso": "{s}{n}"
-	},
-	"language.name": "Chinese",
-	"numfmt": {
-		"decimalChar": ".",
-		"groupChar": ",",
-		"prigroupSize": 3,
-		"pctFmt": "{n}％"
-	},
-	"scripts": ["Hans","Hant","Bopo","Phag"],
-	"locale": "zh"
-}
-;
-ilib.data.localeinfo_zh_CN = {
-	"locale": "zh-CN"
-}
-;
-ilib.data.localeinfo_CN = {
-	"currency": "CNY",
-	"region.name": "China",
-	"timezone": "Asia/Shanghai",
-	"locale": "und-CN"
-}
-;
-ilib.data.localeinfo_zh_TW = {
-	"locale": "zh-TW"
-}
-;
-ilib.data.localeinfo_TW = {
-	"currency": "TWD",
-	"region.name": "Taiwan",
-	"timezone": "Asia/Taipei",
-	"locale": "und-TW"
-}
-;
-ilib.data.localeinfo_zh_HK = {
-	"locale": "zh-HK"
-}
-;
-ilib.data.localeinfo_HK = {
-	"currency": "HKD",
-	"region.name": "Hong Kong SAR China",
-	"timezone": "Asia/Hong_Kong",
-	"locale": "und-HK"
-}
-;
-ilib.data.localeinfo_zh_SG = {
-	"locale": "zh-SG"
-}
-;
-ilib.data.localeinfo_SG = {
-	"currency": "SGD",
-	"region.name": "Singapore",
-	"timezone": "Asia/Singapore",
-	"locale": "und-SG"
-}
-;
-ilib.data.localeinfo_zh_MO = {
-	"locale": "zh-MO"
-}
-;
-ilib.data.localeinfo_MO = {
-	"currency": "MOP",
-	"region.name": "Macau SAR China",
-	"timezone": "Asia/Macau",
-	"locale": "und-MO"
-}
-;
+ilib.data.localeinfo = {"calendar":"gregorian","clock":"24","currency":"USD","firstDayOfWeek":1,"numfmt":{"script":"Latn","decimalChar":",","groupChar":".","prigroupSize":3,"pctFmt":"{n}%","pctChar":"%","roundingMode":"halfdown","exponential":"e","currencyFormats":{"common":"{s}{n}","commonNegative":"{s}-{n}"}},"timezone":"Etc/UTC","units":"metric"};
+ilib.data.localeinfo_aa = {"clock":"12","language.name":"Afar","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"common":"{s} {n}"}},"scripts":["Latn"],"locale":"aa"};
+ilib.data.localeinfo_DJ = {"currency":"DJF","firstDayOfWeek":6,"region.name":"Djibouti","timezone":"Africa/Djibouti","locale":"DJ"};
+ilib.data.localeinfo_af = {"clock":"12","language.name":"Afrikaans","numfmt":{"groupChar":" ","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Latn"],"locale":"af"};
+ilib.data.localeinfo_af_NA = {"numfmt":{"currencyFormats":{"common":"{s} {n}"}},"locale":"af-NA"};
+ilib.data.localeinfo_NA = {"currency":"NAD","region.name":"Namibia","timezone":"Africa/Windhoek","locale":"NA"};
+ilib.data.localeinfo_agq = {"language.name":"Aghem","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n}{s}"}},"scripts":["Latn"],"locale":"agq"};
+ilib.data.localeinfo_CM = {"currency":"XAF","firstDayOfWeek":1,"region.name":"Cameroon","timezone":"Africa/Douala","locale":"CM"};
+ilib.data.localeinfo_ak = {"language.name":"Akan","numfmt":{"decimalChar":".","groupChar":","},"scripts":["Latn"],"locale":"ak"};
+ilib.data.localeinfo_GH = {"currency":"GHS","region.name":"Ghana","timezone":"Africa/Accra","locale":"GH"};
+ilib.data.localeinfo_am = {"clock":"12","language.name":"Amharic","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Ethi"],"locale":"am"};
+ilib.data.localeinfo_ET = {"currency":"ETB","firstDayOfWeek":0,"region.name":"Ethiopia","timezone":"Africa/Addis_Ababa","locale":"ET"};
+ilib.data.localeinfo_ar = {"clock":"12","language.name":"Arabic","numfmt":{"script":"Arab","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"اس","currencyFormats":{"common":"{s} {n}","commonNegative":"{s} {n}-"},"negativenumFmt":"{n}-","digits":"٠١٢٣٤٥٦٧٨٩"},"scripts":["Arab","Syrc"],"locale":"ar"};
+ilib.data.localeinfo_AE = {"currency":"AED","firstDayOfWeek":6,"region.name":"United Arab Emirates","timezone":"Asia/Dubai","locale":"AE"};
+ilib.data.localeinfo_BH = {"currency":"BHD","firstDayOfWeek":6,"region.name":"Bahrain","timezone":"Asia/Bahrain","locale":"BH"};
+ilib.data.localeinfo_ar_DZ = {"native_numfmt":{"script":"Arab","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"اس","prigroupSize":3,"currencyFormats":{"common":"{s} {n}","commonNegative":"{s} {n}-"},"negativenumFmt":"{n}-","pctFmt":"{n}%","roundingMode":"halfdown","digits":"٠١٢٣٤٥٦٧٨٩"},"numfmt":{"script":"Latn","decimalChar":",","groupChar":".","pctChar":"%","exponential":"E"},"locale":"ar-DZ"};
+ilib.data.localeinfo_DZ = {"currency":"DZD","firstDayOfWeek":6,"region.name":"Algeria","timezone":"Africa/Algiers","locale":"DZ"};
+ilib.data.localeinfo_EG = {"currency":"EGP","firstDayOfWeek":6,"region.name":"Egypt","timezone":"Africa/Cairo","locale":"EG"};
+ilib.data.localeinfo_IQ = {"currency":"IQD","firstDayOfWeek":6,"region.name":"Iraq","timezone":"Asia/Baghdad","locale":"IQ"};
+ilib.data.localeinfo_JO = {"currency":"JOD","firstDayOfWeek":6,"region.name":"Jordan","timezone":"Asia/Amman","locale":"JO"};
+ilib.data.localeinfo_KW = {"currency":"KWD","firstDayOfWeek":6,"region.name":"Kuwait","timezone":"Asia/Kuwait","locale":"KW"};
+ilib.data.localeinfo_LB = {"currency":"LBP","firstDayOfWeek":1,"region.name":"Lebanon","timezone":"Asia/Beirut","locale":"LB"};
+ilib.data.localeinfo_LY = {"currency":"LYD","firstDayOfWeek":6,"region.name":"Libya","timezone":"Africa/Tripoli","locale":"LY"};
+ilib.data.localeinfo_ar_MA = {"native_numfmt":{"script":"Arab","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"اس","prigroupSize":3,"currencyFormats":{"common":"{s} {n}","commonNegative":"{s} {n}-"},"negativenumFmt":"{n}-","pctFmt":"{n}%","roundingMode":"halfdown","digits":"٠١٢٣٤٥٦٧٨٩"},"numfmt":{"script":"Latn","decimalChar":",","groupChar":".","pctChar":"%","exponential":"E"},"locale":"ar-MA"};
+ilib.data.localeinfo_MA = {"currency":"MAD","firstDayOfWeek":6,"region.name":"Morocco","timezone":"Africa/Casablanca","locale":"MA"};
+ilib.data.localeinfo_MR = {"currency":"MRO","region.name":"Mauritania","timezone":"Africa/Nouakchott","locale":"MR"};
+ilib.data.localeinfo_OM = {"currency":"OMR","firstDayOfWeek":6,"region.name":"Oman","timezone":"Asia/Muscat","locale":"OM"};
+ilib.data.localeinfo_QA = {"currency":"QAR","firstDayOfWeek":6,"region.name":"Qatar","timezone":"Asia/Qatar","locale":"QA"};
+ilib.data.localeinfo_SA = {"currency":"SAR","firstDayOfWeek":6,"region.name":"Saudi Arabia","timezone":"Asia/Riyadh","locale":"SA"};
+ilib.data.localeinfo_SD = {"currency":"SDG","firstDayOfWeek":6,"region.name":"Sudan","timezone":"Africa/Khartoum","locale":"SD"};
+ilib.data.localeinfo_SY = {"currency":"SYP","firstDayOfWeek":6,"region.name":"Syria","timezone":"Asia/Damascus","locale":"SY"};
+ilib.data.localeinfo_ar_TN = {"native_numfmt":{"script":"Arab","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"اس","prigroupSize":3,"currencyFormats":{"common":"{s} {n}","commonNegative":"{s} {n}-"},"negativenumFmt":"{n}-","pctFmt":"{n}%","roundingMode":"halfdown","digits":"٠١٢٣٤٥٦٧٨٩"},"numfmt":{"script":"Latn","decimalChar":",","groupChar":".","pctChar":"%","exponential":"E","currencyFormats":{"common":"{s}{n}"}},"locale":"ar-TN"};
+ilib.data.localeinfo_TN = {"currency":"TND","firstDayOfWeek":0,"region.name":"Tunisia","timezone":"Africa/Tunis","locale":"TN"};
+ilib.data.localeinfo_YE = {"currency":"YER","firstDayOfWeek":6,"region.name":"Yemen","timezone":"Asia/Aden","locale":"YE"};
+ilib.data.localeinfo_asa = {"clock":"12","language.name":"Asu","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"common":"{n} {s}"}},"scripts":["Latn"],"locale":"asa"};
+ilib.data.localeinfo_TZ = {"currency":"TZS","region.name":"Tanzania","timezone":"Africa/Dar_es_Salaam","locale":"TZ"};
+ilib.data.localeinfo_as = {"language.name":"Assamese","numfmt":{"script":"Beng","decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{s} {n}"},"digits":"০১২৩৪৫৬৭৮৯"},"scripts":["Beng"],"locale":"as"};
+ilib.data.localeinfo_IN = {"currency":"INR","firstDayOfWeek":0,"region.name":"India","timezone":"Asia/Kolkata","locale":"IN"};
+ilib.data.localeinfo_az = {"language.name":"Azerbaijani","numfmt":{"currencyFormats":{"common":"{s} {n}"}},"scripts":["Arab","Cyrl","Latn"],"locale":"az"};
+ilib.data.localeinfo_AZ = {"currency":"AZN","firstDayOfWeek":1,"region.name":"Azerbaijan","timezone":"Asia/Baku","locale":"AZ"};
+ilib.data.localeinfo_bas = {"language.name":"Basaa","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"},"scripts":["Latn"],"locale":"bas"};
+ilib.data.localeinfo_be = {"language.name":"Belarusian","numfmt":{"groupChar":" "},"scripts":["Cyrl"],"locale":"be"};
+ilib.data.localeinfo_BY = {"currency":"BYR","firstDayOfWeek":0,"region.name":"Belarus","timezone":"Europe/Minsk","locale":"BY"};
+ilib.data.localeinfo_bem = {"clock":"12","language.name":"Bemba","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Latn"],"locale":"bem"};
+ilib.data.localeinfo_ZM = {"currency":"ZMK","region.name":"Zambia","timezone":"Africa/Lusaka","locale":"ZM"};
+ilib.data.localeinfo_bg = {"language.name":"Bulgarian","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}},"scripts":["Cyrl"],"locale":"bg"};
+ilib.data.localeinfo_BG = {"currency":"BGN","firstDayOfWeek":1,"region.name":"Bulgaria","timezone":"Europe/Sofia","locale":"BG"};
+ilib.data.localeinfo_bh = {"language.name":"Bihari","scripts":["Deva","Kthi"],"locale":"bh"};
+ilib.data.localeinfo_bm = {"language.name":"Bambara","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Latn"],"locale":"bm"};
+ilib.data.localeinfo_ML = {"currency":"XOF","region.name":"Mali","timezone":"Africa/Bamako","locale":"ML"};
+ilib.data.localeinfo_bn = {"clock":"12","language.name":"Bengali","numfmt":{"script":"Beng","decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{n}{s}","commonNegative":"({n}{s})"},"digits":"০১২৩৪৫৬৭৮৯"},"scripts":["Beng"],"locale":"bn"};
+ilib.data.localeinfo_br = {"language.name":"Breton","numfmt":{"groupChar":" ","currencyFormats":{"common":"{s} {n}"}},"scripts":["Latn"],"locale":"br"};
+ilib.data.localeinfo_FR = {"currency":"EUR","firstDayOfWeek":1,"region.name":"France","timezone":"Europe/Paris","locale":"FR"};
+ilib.data.localeinfo_bs = {"language.name":"Bosnian","numfmt":{"currencyFormats":{"common":"{s} {n}"}},"scripts":["Latn"],"locale":"bs"};
+ilib.data.localeinfo_bs_Cyrl_BA = {"numfmt":{"currencyFormats":{"common":"{n} {s}"}},"locale":"bs-Cyrl-BA"};
+ilib.data.localeinfo_BA = {"currency":"BAM","firstDayOfWeek":1,"region.name":"Bosnia and Herzegovina","timezone":"Europe/Sarajevo","locale":"BA"};
+ilib.data.localeinfo_ME = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Montenegro","timezone":"Europe/Podgorica","locale":"ME"};
+ilib.data.localeinfo_ca = {"language.name":"Catalan","numfmt":{"currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Latn"],"locale":"ca"};
+ilib.data.localeinfo_cs = {"language.name":"Czech","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"},"scripts":["Latn"],"locale":"cs"};
+ilib.data.localeinfo_CZ = {"currency":"CZK","firstDayOfWeek":1,"region.name":"Czech Republic","timezone":"Europe/Prague","locale":"CZ"};
+ilib.data.localeinfo_da = {"language.name":"Danish","numfmt":{"currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"},"scripts":["Latn"],"locale":"da"};
+ilib.data.localeinfo_DK = {"currency":"DKK","firstDayOfWeek":1,"paperSizes":{"regular":"A4","photo":"4x6"},"region.name":"Denmark","timezone":"Europe/Copenhagen","locale":"DK"};
+ilib.data.localeinfo_de = {"language.name":"German","numfmt":{"currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"},"paperSizes":{"regular":"A4","photo":"4x6"},"scripts":["Latn","Runr"],"locale":"de"};
+ilib.data.localeinfo_de_AT = {"numfmt":{"currencyFormats":{"common":"{s} {n}"}},"locale":"de-AT"};
+ilib.data.localeinfo_AT = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Austria","timezone":"Europe/Vienna","locale":"AT"};
+ilib.data.localeinfo_DE = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Germany","timezone":"Europe/Berlin","locale":"DE"};
+ilib.data.localeinfo_el = {"clock":"12","language.name":"Greek","numfmt":{"exponential":"e","currencyFormats":{"common":"{n} {s}"}},"scripts":["Grek"],"locale":"el"};
+ilib.data.localeinfo_GR = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Greece","timezone":"Europe/Athens","locale":"GR"};
+ilib.data.localeinfo_en = {"clock":"12","language.name":"English","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Latn","Dsrt","Shaw"],"locale":"en"};
+ilib.data.localeinfo_AU = {"currency":"AUD","firstDayOfWeek":0,"region.name":"Australia","timezone":"Australia/Sydney","locale":"AU"};
+ilib.data.localeinfo_CA = {"currency":"CAD","firstDayOfWeek":0,"paperSizes":{"regular":"8x11"},"region.name":"Canada","timezone":"America/Toronto","locale":"CA"};
+ilib.data.localeinfo_en_GB = {"clock":"24","locale":"en-GB"};
+ilib.data.localeinfo_GB = {"currency":"GBP","firstDayOfWeek":1,"paperSizes":{"regular":"A4","photo":"24x16"},"region.name":"United Kingdom","timezone":"Europe/London","units":"imperial","locale":"GB"};
+ilib.data.localeinfo_GM = {"currency":"GMD","region.name":"Gambia","timezone":"Africa/Banjul","locale":"GM"};
+ilib.data.localeinfo_HK = {"currency":"HKD","firstDayOfWeek":0,"region.name":"Hong Kong SAR China","timezone":"Asia/Hong_Kong","locale":"HK"};
+ilib.data.localeinfo_en_IE = {"clock":"24","locale":"en-IE"};
+ilib.data.localeinfo_IE = {"currency":"EUR","firstDayOfWeek":0,"region.name":"Ireland","timezone":"Europe/Dublin","locale":"IE"};
+ilib.data.localeinfo_en_IN = {"numfmt":{"secgroupSize":2,"currencyFormats":{"common":"{s} {n}"}},"locale":"en-IN"};
+ilib.data.localeinfo_KE = {"currency":"KES","firstDayOfWeek":0,"region.name":"Kenya","timezone":"Africa/Nairobi","locale":"KE"};
+ilib.data.localeinfo_LK = {"currency":"LKR","firstDayOfWeek":1,"region.name":"Sri Lanka","timezone":"Asia/Colombo","locale":"LK"};
+ilib.data.localeinfo_LR = {"currency":"LRD","region.name":"Liberia","timezone":"Africa/Monrovia","units":"uscustomary","locale":"LR"};
+ilib.data.localeinfo_MW = {"currency":"MWK","region.name":"Malawi","timezone":"Africa/Blantyre","locale":"MW"};
+ilib.data.localeinfo_MY = {"currency":"MYR","firstDayOfWeek":1,"region.name":"Malaysia","timezone":"Asia/Kuala_Lumpur","locale":"MY"};
+ilib.data.localeinfo_NG = {"currency":"NGN","region.name":"Nigeria","timezone":"Africa/Lagos","locale":"NG"};
+ilib.data.localeinfo_NZ = {"currency":"NZD","firstDayOfWeek":0,"region.name":"New Zealand","timezone":"Pacific/Auckland","locale":"NZ"};
+ilib.data.localeinfo_PH = {"currency":"PHP","firstDayOfWeek":0,"paperSizes":{"regular":"8x11"},"region.name":"Philippines","timezone":"Asia/Manila","locale":"PH"};
+ilib.data.localeinfo_PK = {"currency":"PKR","firstDayOfWeek":0,"region.name":"Pakistan","timezone":"Asia/Karachi","locale":"PK"};
+ilib.data.localeinfo_PR = {"currency":"USD","firstDayOfWeek":0,"paperSizes":{"regular":"8x11"},"region.name":"Puerto Rico","timezone":"America/Puerto_Rico","locale":"PR"};
+ilib.data.localeinfo_RW = {"currency":"RWF","region.name":"Rwanda","timezone":"Africa/Kigali","locale":"RW"};
+ilib.data.localeinfo_SG = {"currency":"SGD","firstDayOfWeek":0,"region.name":"Singapore","timezone":"Asia/Singapore","locale":"SG"};
+ilib.data.localeinfo_SL = {"currency":"SLL","region.name":"Sierra Leone","timezone":"Africa/Freetown","locale":"SL"};
+ilib.data.localeinfo_UG = {"currency":"UGX","region.name":"Uganda","timezone":"Africa/Kampala","locale":"UG"};
+ilib.data.localeinfo_US = {"currency":"USD","firstDayOfWeek":0,"paperSizes":{"regular":"8x11"},"region.name":"United States","timezone":"America/New_York","units":"uscustomary","locale":"US"};
+ilib.data.localeinfo_en_ZA = {"numfmt":{"decimalChar":",","groupChar":" "},"locale":"en-ZA"};
+ilib.data.localeinfo_ZA = {"currency":"ZAR","firstDayOfWeek":0,"region.name":"South Africa","timezone":"Africa/Johannesburg","locale":"ZA"};
+ilib.data.localeinfo_es = {"language.name":"Spanish","numfmt":{"currencyFormats":{"common":"{n} {s}"}},"paperSizes":{"regular":"A4","photo":"4x6"},"scripts":["Latn"],"locale":"es"};
+ilib.data.localeinfo_es_AR = {"numfmt":{"currencyFormats":{"common":"{s}{n}"}},"locale":"es-AR"};
+ilib.data.localeinfo_AR = {"currency":"ARS","firstDayOfWeek":0,"region.name":"Argentina","timezone":"America/Argentina/Buenos_Aires","locale":"AR"};
+ilib.data.localeinfo_es_CO = {"numfmt":{"currencyFormats":{"common":"{s}{n}"}},"locale":"es-CO"};
+ilib.data.localeinfo_CO = {"currency":"COP","firstDayOfWeek":0,"paperSizes":{"regular":"8x11"},"region.name":"Colombia","timezone":"America/Bogota","locale":"CO"};
+ilib.data.localeinfo_es_CR = {"numfmt":{"currencyFormats":{"common":"{s}{n}"}},"locale":"es-CR"};
+ilib.data.localeinfo_CR = {"currency":"CRC","firstDayOfWeek":1,"paperSizes":{"regular":"8x11"},"region.name":"Costa Rica","timezone":"America/Costa_Rica","locale":"CR"};
+ilib.data.localeinfo_es_DO = {"numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"common":"{s}{n}"}},"locale":"es-DO"};
+ilib.data.localeinfo_DO = {"currency":"DOP","firstDayOfWeek":0,"region.name":"Dominican Republic","timezone":"America/Santo_Domingo","locale":"DO"};
+ilib.data.localeinfo_es_EC = {"numfmt":{"currencyFormats":{"common":"{s}{n}"}},"locale":"es-EC"};
+ilib.data.localeinfo_EC = {"currency":"USD","firstDayOfWeek":1,"region.name":"Ecuador","timezone":"America/Guayaquil","locale":"EC"};
+ilib.data.localeinfo_ES = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Spain","timezone":"Europe/Madrid","locale":"ES"};
+ilib.data.localeinfo_es_GQ = {"numfmt":{"currencyFormats":{"common":"{s}{n}"}},"locale":"es-GQ"};
+ilib.data.localeinfo_GQ = {"currency":"XAF","region.name":"Equatorial Guinea","timezone":"Africa/Malabo","locale":"GQ"};
+ilib.data.localeinfo_es_GT = {"numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"common":"{s}{n}"}},"locale":"es-GT"};
+ilib.data.localeinfo_GT = {"currency":"GTQ","firstDayOfWeek":0,"paperSizes":{"regular":"8x11"},"region.name":"Guatemala","timezone":"America/Guatemala","locale":"GT"};
+ilib.data.localeinfo_es_HN = {"numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"common":"{s}{n}"}},"locale":"es-HN"};
+ilib.data.localeinfo_HN = {"currency":"HNL","firstDayOfWeek":0,"region.name":"Honduras","timezone":"America/Tegucigalpa","locale":"HN"};
+ilib.data.localeinfo_es_MX = {"numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"common":"{s}{n}"}},"locale":"es-MX"};
+ilib.data.localeinfo_MX = {"currency":"MXN","firstDayOfWeek":0,"paperSizes":{"regular":"8x11"},"region.name":"Mexico","timezone":"America/Mexico_City","locale":"MX"};
+ilib.data.localeinfo_es_SV = {"numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"common":"{s}{n}"}},"locale":"es-SV"};
+ilib.data.localeinfo_SV = {"currency":"USD","firstDayOfWeek":0,"paperSizes":{"regular":"8x11"},"region.name":"El Salvador","timezone":"America/El_Salvador","locale":"SV"};
+ilib.data.localeinfo_es_UY = {"numfmt":{"currencyFormats":{"common":"{s} {n}","commonNegative":"({s} {n})"}},"locale":"es-UY"};
+ilib.data.localeinfo_UY = {"currency":"UYU","firstDayOfWeek":1,"region.name":"Uruguay","timezone":"America/Montevideo","locale":"UY"};
+ilib.data.localeinfo_es_VE = {"numfmt":{"currencyFormats":{"common":"{s}{n}"}},"locale":"es-VE"};
+ilib.data.localeinfo_VE = {"currency":"VEF","firstDayOfWeek":0,"paperSizes":{"regular":"8x11"},"region.name":"Venezuela","timezone":"America/Caracas","locale":"VE"};
+ilib.data.localeinfo_et = {"language.name":"Estonian","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n}{s}","commonNegative":"({n}{s})"}},"scripts":["Latn"],"locale":"et"};
+ilib.data.localeinfo_EE = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Estonia","timezone":"Europe/Tallinn","locale":"EE"};
+ilib.data.localeinfo_fa = {"language.name":"Persian","numfmt":{"script":"arabext","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"×۱۰^","currencyFormats":{"common":"‎{s}{n}","commonNegative":"‎({s}{n})"},"digits":"۰۱۲۳۴۵۶۷۸۹"},"scripts":["Arab"],"locale":"fa"};
+ilib.data.localeinfo_AF = {"currency":"AFN","firstDayOfWeek":6,"region.name":"Afghanistan","timezone":"Asia/Kabul","locale":"AF"};
+ilib.data.localeinfo_IR = {"currency":"IRR","firstDayOfWeek":6,"region.name":"Iran","timezone":"Asia/Tehran","locale":"IR"};
+ilib.data.localeinfo_ff = {"language.name":"Fulah","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}},"scripts":["Latn"],"locale":"ff"};
+ilib.data.localeinfo_SN = {"currency":"XOF","region.name":"Senegal","timezone":"Africa/Dakar","locale":"SN"};
+ilib.data.localeinfo_fi = {"language.name":"Finnish","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"},"scripts":["Latn"],"locale":"fi"};
+ilib.data.localeinfo_FI = {"currency":"EUR","firstDayOfWeek":1,"paperSizes":{"regular":"A4","photo":"4x6"},"region.name":"Finland","timezone":"Europe/Helsinki","locale":"FI"};
+ilib.data.localeinfo_fj = {"language.name":"Fijian","scripts":["Latn"],"locale":"fj"};
+ilib.data.localeinfo_FJ = {"currency":"FJD","firstDayOfWeek":1,"region.name":"Fiji","timezone":"Pacific/Fiji","locale":"FJ"};
+ilib.data.localeinfo_fr = {"language.name":"French","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}","commonNegative":"({n} {s})"},"pctFmt":"{n} %"},"paperSizes":{"regular":"A4","photo":"4x6"},"scripts":["Latn"],"locale":"fr"};
+ilib.data.localeinfo_AD = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Andorra","timezone":"Europe/Andorra","locale":"AD"};
+ilib.data.localeinfo_fr_BE = {"numfmt":{"groupChar":"."},"locale":"fr-BE"};
+ilib.data.localeinfo_BE = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Belgium","timezone":"Europe/Brussels","locale":"BE"};
+ilib.data.localeinfo_BF = {"currency":"XOF","region.name":"Burkina Faso","timezone":"Africa/Ouagadougou","locale":"BF"};
+ilib.data.localeinfo_BJ = {"currency":"XOF","region.name":"Benin","timezone":"Africa/Porto-Novo","locale":"BJ"};
+ilib.data.localeinfo_fr_CA = {"paperSizes":{"regular":"8x11","photo":"3x5"},"locale":"fr-CA"};
+ilib.data.localeinfo_CD = {"currency":"CDF","region.name":"Congo - Kinshasa","timezone":"Africa/Kinshasa","locale":"CD"};
+ilib.data.localeinfo_CF = {"currency":"XAF","region.name":"Central African Republic","timezone":"Africa/Bangui","locale":"CF"};
+ilib.data.localeinfo_CG = {"region.name":"Congo - Brazzaville","timezone":"Africa/Brazzaville","locale":"CG"};
+ilib.data.localeinfo_fr_CH = {"numfmt":{"decimalChar":".","groupChar":"'","currencyFormats":{"common":"{s} {n}","commonNegative":"{s}-{n}"}},"locale":"fr-CH"};
+ilib.data.localeinfo_CH = {"currency":"CHF","firstDayOfWeek":1,"region.name":"Switzerland","timezone":"Europe/Zurich","locale":"CH"};
+ilib.data.localeinfo_CI = {"currency":"XOF","region.name":"Côte d’Ivoire","timezone":"Africa/Abidjan","locale":"CI"};
+ilib.data.localeinfo_GA = {"currency":"XAF","region.name":"Gabon","timezone":"Africa/Libreville","locale":"GA"};
+ilib.data.localeinfo_GN = {"currency":"GNF","region.name":"Guinea","timezone":"Africa/Conakry","locale":"GN"};
+ilib.data.localeinfo_fr_LU = {"numfmt":{"groupChar":"."},"locale":"fr-LU"};
+ilib.data.localeinfo_LU = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Luxembourg","timezone":"Europe/Luxembourg","locale":"LU"};
+ilib.data.localeinfo_MG = {"currency":"MGA","region.name":"Madagascar","timezone":"Indian/Antananarivo","locale":"MG"};
+ilib.data.localeinfo_TG = {"currency":"XOF","region.name":"Togo","timezone":"Africa/Lome","locale":"TG"};
+ilib.data.localeinfo_YT = {"currency":"EUR","region.name":"Mayotte","timezone":"Indian/Mayotte","locale":"YT"};
+ilib.data.localeinfo_ga = {"language.name":"Irish","numfmt":{"decimalChar":".","groupChar":","},"scripts":["Latn"],"locale":"ga"};
+ilib.data.localeinfo_gl = {"language.name":"Galician","numfmt":{"currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Latn"],"locale":"gl"};
+ilib.data.localeinfo_ha = {"language.name":"Hausa","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"common":"{s} {n}"}},"scripts":["Arab","Latn"],"locale":"ha"};
+ilib.data.localeinfo_he = {"language.name":"Hebrew","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"common":"{n} {s}"}},"scripts":["Hebr"],"locale":"he"};
+ilib.data.localeinfo_IL = {"currency":"ILS","firstDayOfWeek":0,"region.name":"Israel","timezone":"Asia/Jerusalem","locale":"IL"};
+ilib.data.localeinfo_hi = {"clock":"12","language.name":"Hindi","native_numfmt":{"script":"Deva","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"secgroupSize":2,"currencyFormats":{"common":"{s} {n}"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"०१२३४५६७८९"},"numfmt":{"decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{s} {n}"}},"scripts":["Deva"],"locale":"hi"};
+ilib.data.localeinfo_hr = {"language.name":"Croatian","numfmt":{"currencyFormats":{"common":"{n} {s}"}},"scripts":["Latn"],"locale":"hr"};
+ilib.data.localeinfo_HR = {"currency":"HRK","firstDayOfWeek":1,"region.name":"Croatia","timezone":"Europe/Zagreb","locale":"HR"};
+ilib.data.localeinfo_hu = {"language.name":"Hungarian","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}},"scripts":["Latn"],"locale":"hu"};
+ilib.data.localeinfo_HU = {"currency":"HUF","firstDayOfWeek":1,"region.name":"Hungary","timezone":"Europe/Budapest","locale":"HU"};
+ilib.data.localeinfo_hy = {"language.name":"Armenian","numfmt":{"prigroupSize":2,"currencyFormats":{"common":"{n} {s}"}},"scripts":["Armn"],"locale":"hy"};
+ilib.data.localeinfo_id = {"language.name":"Indonesian","scripts":["Latn","Arab"],"locale":"id"};
+ilib.data.localeinfo_ID = {"currency":"IDR","firstDayOfWeek":0,"region.name":"Indonesia","timezone":"Asia/Jakarta","locale":"ID"};
+ilib.data.localeinfo_it = {"language.name":"Italian","numfmt":{"currencyFormats":{"common":"{s} {n}"}},"paperSizes":{"regular":"A4","photo":"4x6"},"scripts":["Latn"],"locale":"it"};
+ilib.data.localeinfo_it_CH = {"numfmt":{"decimalChar":".","groupChar":"'"},"locale":"it-CH"};
+ilib.data.localeinfo_IT = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Italy","timezone":"Europe/Rome","locale":"IT"};
+ilib.data.localeinfo_SM = {"currency":"EUR","firstDayOfWeek":1,"region.name":"San Marino","timezone":"Europe/San_Marino","locale":"SM"};
+ilib.data.localeinfo_ja = {"language.name":"Japanese","numfmt":{"decimalChar":".","groupChar":","},"paperSizes":{"regular":"A4","photo":"L"},"scripts":["Jpan"],"locale":"ja"};
+ilib.data.localeinfo_JP = {"currency":"JPY","firstDayOfWeek":0,"region.name":"Japan","timezone":"Asia/Tokyo","locale":"JP"};
+ilib.data.localeinfo_ka = {"language.name":"Georgian","numfmt":{"currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"},"scripts":["Geor"],"locale":"ka"};
+ilib.data.localeinfo_kk = {"language.name":"Kazakh","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}},"scripts":["Cyrl","Arab"],"locale":"kk"};
+ilib.data.localeinfo_KZ = {"currency":"KZT","firstDayOfWeek":1,"region.name":"Kazakhstan","timezone":"Asia/Almaty","locale":"KZ"};
+ilib.data.localeinfo_kn = {"clock":"12","language.name":"Kannada","native_numfmt":{"script":"Knda","decimalChar":".","groupChar":",","pctChar":"%","exponential":"ಈ","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"({s}{n})"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"೦೧೨೩೪೫೬೭೮೯"},"numfmt":{"decimalChar":".","groupChar":",","exponential":"ಈ","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Knda"],"locale":"kn"};
+ilib.data.localeinfo_ko = {"clock":"12","language.name":"Korean","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}},"paperSizes":{"regular":"A4","photo":"3R"},"scripts":["Kore"],"locale":"ko"};
+ilib.data.localeinfo_KR = {"currency":"KRW","firstDayOfWeek":0,"region.name":"South Korea","timezone":"Asia/Seoul","locale":"KR"};
+ilib.data.localeinfo_ks = {"clock":"12","language.name":"Kashmiri","numfmt":{"script":"arabext","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"×۱۰^","secgroupSize":2,"currencyFormats":{"common":"{s} {n}"},"digits":"۰۱۲۳۴۵۶۷۸۹"},"scripts":["Arab","Deva"],"locale":"ks"};
+ilib.data.localeinfo_ku = {"language.name":"Kurdish","scripts":["Latn","Arab","Cyrl"],"locale":"ku"};
+ilib.data.localeinfo_lg = {"clock":"12","language.name":"Ganda","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"common":"{n}{s}"}},"scripts":["Latn"],"locale":"lg"};
+ilib.data.localeinfo_ln = {"language.name":"Lingala","numfmt":{"currencyFormats":{"common":"{n} {s}"}},"scripts":["Latn"],"locale":"ln"};
+ilib.data.localeinfo_lt = {"language.name":"Lithuanian","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}},"scripts":["Latn"],"locale":"lt"};
+ilib.data.localeinfo_LT = {"currency":"LTL","firstDayOfWeek":1,"region.name":"Lithuania","timezone":"Europe/Vilnius","locale":"LT"};
+ilib.data.localeinfo_lv = {"language.name":"Latvian","numfmt":{"groupChar":" ","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Latn"],"locale":"lv"};
+ilib.data.localeinfo_LV = {"currency":"LVL","firstDayOfWeek":1,"region.name":"Latvia","timezone":"Europe/Riga","locale":"LV"};
+ilib.data.localeinfo_mi = {"language.name":"Maori","scripts":["Latn"],"locale":"mi"};
+ilib.data.localeinfo_CK = {"currency":"NZD","region.name":"Cook Islands","timezone":"Pacific/Rarotonga","locale":"CK"};
+ilib.data.localeinfo_mk = {"language.name":"Macedonian","numfmt":{"currencyFormats":{"common":"{s} {n}"}},"scripts":["Cyrl"],"locale":"mk"};
+ilib.data.localeinfo_MK = {"currency":"MKD","firstDayOfWeek":1,"region.name":"Macedonia","timezone":"Europe/Skopje","locale":"MK"};
+ilib.data.localeinfo_ml = {"clock":"12","language.name":"Malayalam","native_numfmt":{"script":"Mlym","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"secgroupSize":2,"currencyFormats":{"common":"{n}{s}"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"൦൧൨൩൪൫൬൭൮൯"},"numfmt":{"decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{n}{s}"}},"scripts":["Mlym"],"locale":"ml"};
+ilib.data.localeinfo_mn = {"language.name":"Mongolian","scripts":["Cyrl","Mong","Phag"],"locale":"mn"};
+ilib.data.localeinfo_CN = {"currency":"CNY","firstDayOfWeek":0,"region.name":"China","timezone":"Asia/Shanghai","locale":"CN"};
+ilib.data.localeinfo_ms = {"clock":"12","language.name":"Malay","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Latn","Arab"],"locale":"ms"};
+ilib.data.localeinfo_ms_BN = {"numfmt":{"decimalChar":",","groupChar":".","currencyFormats":{"common":"{s} {n}"}},"locale":"ms-BN"};
+ilib.data.localeinfo_BN = {"currency":"BND","firstDayOfWeek":1,"region.name":"Brunei","timezone":"Asia/Brunei","locale":"BN"};
+ilib.data.localeinfo_nb = {"language.name":"Norwegian Bokmål","numfmt":{"groupChar":" ","currencyFormats":{"common":"{s} {n}"},"pctFmt":"{n} %"},"scripts":["Latn"],"locale":"nb"};
+ilib.data.localeinfo_NO = {"currency":"NOK","firstDayOfWeek":1,"paperSizes":{"regular":"A4","photo":"4x6"},"region.name":"Norway","timezone":"Europe/Oslo","locale":"NO"};
+ilib.data.localeinfo_ne = {"language.name":"Nepali","native_numfmt":{"script":"Deva","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"currencyFormats":{"common":"{s} {n}"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"०१२३४५६७८९"},"numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"common":"{s} {n}"}},"scripts":["Deva"],"locale":"ne"};
+ilib.data.localeinfo_nl = {"language.name":"Dutch","numfmt":{"currencyFormats":{"common":"{s} {n}","commonNegative":"{s} {n}-"}},"scripts":["Latn"],"locale":"nl"};
+ilib.data.localeinfo_nl_BE = {"numfmt":{"currencyFormats":{"common":"{n} {s}"}},"locale":"nl-BE"};
+ilib.data.localeinfo_CW = {"currency":"ANG","region.name":"Curaçao","locale":"CW"};
+ilib.data.localeinfo_GF = {"currency":"EUR","firstDayOfWeek":1,"region.name":"French Guiana","timezone":"America/Cayenne","locale":"GF"};
+ilib.data.localeinfo_NL = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Netherlands","timezone":"Europe/Amsterdam","locale":"NL"};
+ilib.data.localeinfo_SR = {"currency":"SRD","region.name":"Suriname","timezone":"America/Paramaribo","locale":"SR"};
+ilib.data.localeinfo_no = {"language.name":"Norwegian","numfmt":{"groupChar":" ","currencyFormats":{"common":"{s} {n}"},"pctFmt":"{n} %"},"scripts":["Latn"],"locale":"no"};
+ilib.data.localeinfo_BV = {"currency":"NOK","paperSizes":{"regular":"A4","photo":"4x6"},"region.name":"Bouvet Island","locale":"BV"};
+ilib.data.localeinfo_SJ = {"currency":"NOK","paperSizes":{"regular":"A4","photo":"4x6"},"region.name":"Svalbard and Jan Mayen","timezone":"Arctic/Longyearbyen","locale":"SJ"};
+ilib.data.localeinfo_om = {"clock":"12","language.name":"Oromo","numfmt":{"decimalChar":".","groupChar":","},"scripts":["Latn","Ethi"],"locale":"om"};
+ilib.data.localeinfo_or = {"clock":"12","language.name":"Oriya","native_numfmt":{"script":"Orya","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"secgroupSize":2,"currencyFormats":{"common":"{s} {n}"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"୦୧୨୩୪୫୬୭୮୯"},"numfmt":{"decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{s} {n}"}},"scripts":["Orya"],"locale":"or"};
+ilib.data.localeinfo_os = {"language.name":"Ossetic","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"common":"{s} {n}"}},"scripts":["Cyrl","Latn"],"locale":"os"};
+ilib.data.localeinfo_RU = {"currency":"RUB","firstDayOfWeek":1,"region.name":"Russia","timezone":"Europe/Moscow","locale":"RU"};
+ilib.data.localeinfo_pa = {"clock":"12","language.name":"Punjabi","native_numfmt":{"script":"Guru","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"secgroupSize":2,"currencyFormats":{"common":"{s} {n}"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"੦੧੨੩੪੫੬੭੮੯"},"numfmt":{"decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{s} {n}"}},"scripts":["Guru","Arab"],"locale":"pa"};
+ilib.data.localeinfo_pa_Arab_PK = {"numfmt":{"script":"arabext","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"×۱۰^","digits":"۰۱۲۳۴۵۶۷۸۹"},"locale":"pa-Arab-PK"};
+ilib.data.localeinfo_pl = {"language.name":"Polish","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}","commonNegative":"({n} {s})"}},"scripts":["Latn"],"locale":"pl"};
+ilib.data.localeinfo_PL = {"currency":"PLN","firstDayOfWeek":1,"region.name":"Poland","timezone":"Europe/Warsaw","locale":"PL"};
+ilib.data.localeinfo_pt = {"language.name":"Portuguese","numfmt":{"currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Latn"],"locale":"pt"};
+ilib.data.localeinfo_pt_AO = {"numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}},"locale":"pt-AO"};
+ilib.data.localeinfo_AO = {"currency":"AOA","region.name":"Angola","timezone":"Africa/Luanda","locale":"AO"};
+ilib.data.localeinfo_BR = {"currency":"BRL","firstDayOfWeek":0,"region.name":"Brazil","timezone":"America/Sao_Paulo","locale":"BR"};
+ilib.data.localeinfo_pt_CV = {"numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}},"locale":"pt-CV"};
+ilib.data.localeinfo_CV = {"currency":"CVE","region.name":"Cape Verde","timezone":"Atlantic/Cape_Verde","locale":"CV"};
+ilib.data.localeinfo_pt_GW = {"numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}},"locale":"pt-GW"};
+ilib.data.localeinfo_GW = {"currency":"XOF","region.name":"Guinea-Bissau","timezone":"Africa/Bissau","locale":"GW"};
+ilib.data.localeinfo_pt_MO = {"numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}},"locale":"pt-MO"};
+ilib.data.localeinfo_MO = {"currency":"MOP","firstDayOfWeek":0,"region.name":"Macau SAR China","timezone":"Asia/Macau","locale":"MO"};
+ilib.data.localeinfo_pt_MZ = {"numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}},"locale":"pt-MZ"};
+ilib.data.localeinfo_MZ = {"currency":"MZN","firstDayOfWeek":0,"region.name":"Mozambique","timezone":"Africa/Maputo","locale":"MZ"};
+ilib.data.localeinfo_pt_PT = {"numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}},"locale":"pt-PT"};
+ilib.data.localeinfo_PT = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Portugal","timezone":"Europe/Lisbon","locale":"PT"};
+ilib.data.localeinfo_pt_ST = {"numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}},"locale":"pt-ST"};
+ilib.data.localeinfo_ST = {"currency":"STD","region.name":"São Tomé and Príncipe","timezone":"Africa/Sao_Tome","locale":"ST"};
+ilib.data.localeinfo_pt_TL = {"numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"}},"locale":"pt-TL"};
+ilib.data.localeinfo_TL = {"currency":"USD","region.name":"Timor-Leste","timezone":"Asia/Dili","locale":"TL"};
+ilib.data.localeinfo_ro = {"language.name":"Romanian","numfmt":{"currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"},"scripts":["Latn","Cyrl"],"locale":"ro"};
+ilib.data.localeinfo_RO = {"currency":"RON","firstDayOfWeek":1,"region.name":"Romania","timezone":"Europe/Bucharest","locale":"RO"};
+ilib.data.localeinfo_RS = {"currency":"RSD","firstDayOfWeek":1,"region.name":"Serbia","timezone":"Europe/Belgrade","locale":"RS"};
+ilib.data.localeinfo_ru = {"language.name":"Russian","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"},"scripts":["Cyrl"],"locale":"ru"};
+ilib.data.localeinfo_KG = {"currency":"KGS","firstDayOfWeek":1,"region.name":"Kyrgyzstan","timezone":"Asia/Bishkek","locale":"KG"};
+ilib.data.localeinfo_TM = {"currency":"TMT","firstDayOfWeek":1,"region.name":"Turkmenistan","timezone":"Asia/Ashgabat","locale":"TM"};
+ilib.data.localeinfo_si = {"clock":"12","language.name":"Sinhala","numfmt":{"decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{s} {n}"}},"scripts":["Sinh"],"locale":"si"};
+ilib.data.localeinfo_sk = {"language.name":"Slovak","numfmt":{"groupChar":" ","currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"},"scripts":["Latn"],"locale":"sk"};
+ilib.data.localeinfo_SK = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Slovakia","timezone":"Europe/Bratislava","locale":"SK"};
+ilib.data.localeinfo_so = {"clock":"12","language.name":"Somali","numfmt":{"decimalChar":".","groupChar":","},"scripts":["Latn","Arab","Osma"],"locale":"so"};
+ilib.data.localeinfo_SO = {"currency":"SOS","region.name":"Somalia","timezone":"Africa/Mogadishu","locale":"SO"};
+ilib.data.localeinfo_sq = {"clock":"12","language.name":"Albanian","numfmt":{"groupChar":" "},"scripts":["Latn"],"locale":"sq"};
+ilib.data.localeinfo_AL = {"currency":"ALL","firstDayOfWeek":1,"region.name":"Albania","timezone":"Europe/Tirane","locale":"AL"};
+ilib.data.localeinfo_sr = {"language.name":"Serbian","numfmt":{"currencyFormats":{"common":"{n} {s}"}},"scripts":["Cyrl","Latn"],"locale":"sr"};
+ilib.data.localeinfo_sr_Latn_BA = {"numfmt":{"currencyFormats":{"common":"{s} {n}"}},"locale":"sr-Latn-BA"};
+ilib.data.localeinfo_sr_Latn_ME = {"numfmt":{"currencyFormats":{"common":"{s} {n}"}},"locale":"sr-Latn-ME"};
+ilib.data.localeinfo_sr_Latn_RS = {"numfmt":{"currencyFormats":{"common":"{s} {n}"}},"locale":"sr-Latn-RS"};
+ilib.data.localeinfo_ss = {"language.name":"Swati","numfmt":{"groupChar":" "},"scripts":["Latn"],"locale":"ss"};
+ilib.data.localeinfo_st = {"language.name":"Southern Sotho","numfmt":{"groupChar":" "},"scripts":["Latn"],"locale":"st"};
+ilib.data.localeinfo_LS = {"currency":"LSL","region.name":"Lesotho","timezone":"Africa/Maseru","locale":"LS"};
+ilib.data.localeinfo_sv = {"language.name":"Swedish","numfmt":{"groupChar":" ","exponential":"×10^","currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"},"scripts":["Latn"],"locale":"sv"};
+ilib.data.localeinfo_SE = {"currency":"SEK","firstDayOfWeek":1,"paperSizes":{"regular":"A4","photo":"4x6"},"region.name":"Sweden","timezone":"Europe/Stockholm","locale":"SE"};
+ilib.data.localeinfo_sw = {"clock":"12","language.name":"Swahili","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Latn"],"locale":"sw"};
+ilib.data.localeinfo_ta = {"clock":"12","language.name":"Tamil","native_numfmt":{"script":"tamldec","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"secgroupSize":2,"currencyFormats":{"common":"{s} {n}"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"௦௧௨௩௪௫௬௭௮௯"},"numfmt":{"decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{s} {n}"}},"scripts":["Taml"],"locale":"ta"};
+ilib.data.localeinfo_te = {"clock":"12","language.name":"Telugu","native_numfmt":{"script":"Telu","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"({s}{n})"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"౦౧౨౩౪౫౬౭౮౯"},"numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Telu"],"locale":"te"};
+ilib.data.localeinfo_tr = {"language.name":"Turkish","numfmt":{"currencyFormats":{"common":"{n} {s}","commonNegative":"({n} {s})"},"pctFmt":"%{n}"},"scripts":["Latn","Arab"],"locale":"tr"};
+ilib.data.localeinfo_TR = {"currency":"TRY","firstDayOfWeek":1,"region.name":"Turkey","timezone":"Europe/Istanbul","locale":"TR"};
+ilib.data.localeinfo_uk = {"language.name":"Ukrainian","numfmt":{"groupChar":" ","exponential":"Е","currencyFormats":{"common":"{n} {s}"}},"scripts":["Cyrl"],"locale":"uk"};
+ilib.data.localeinfo_UA = {"currency":"UAH","firstDayOfWeek":1,"region.name":"Ukraine","timezone":"Europe/Kiev","locale":"UA"};
+ilib.data.localeinfo_ur = {"clock":"12","language.name":"Urdu","native_numfmt":{"script":"arabext","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"×۱۰^","prigroupSize":3,"currencyFormats":{"common":"{s}{n}"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"۰۱۲۳۴۵۶۷۸۹"},"numfmt":{"decimalChar":".","groupChar":","},"scripts":["Arab"],"locale":"ur"};
+ilib.data.localeinfo_ur_IN = {"numfmt":{"script":"arabext","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"×۱۰^","secgroupSize":2,"currencyFormats":{"common":"{s} {n}"},"digits":"۰۱۲۳۴۵۶۷۸۹"},"locale":"ur-IN"};
+ilib.data.localeinfo_uz = {"language.name":"Uzbek","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"common":"{s} {n}"}},"scripts":["Arab","Cyrl","Latn"],"locale":"uz"};
+ilib.data.localeinfo_uz_Arab_AF = {"numfmt":{"script":"arabext","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"×۱۰^","digits":"۰۱۲۳۴۵۶۷۸۹"},"locale":"uz-Arab-AF"};
+ilib.data.localeinfo_UZ = {"currency":"UZS","firstDayOfWeek":1,"region.name":"Uzbekistan","timezone":"Asia/Samarkand","locale":"UZ"};
+ilib.data.localeinfo_vai = {"clock":"12","language.name":"Vai","native_numfmt":{"script":"Vaii","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"({s}{n})"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"꘠꘡꘢꘣꘤꘥꘦꘧꘨꘩"},"numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Vaii","Latn"],"locale":"vai"};
+ilib.data.localeinfo_vi = {"language.name":"Vietnamese","numfmt":{"currencyFormats":{"common":"{n} {s}"}},"scripts":["Latn","Hani"],"locale":"vi"};
+ilib.data.localeinfo_VN = {"currency":"VND","firstDayOfWeek":1,"region.name":"Vietnam","timezone":"Asia/Ho_Chi_Minh","locale":"VN"};
+ilib.data.localeinfo_zh = {"clock":"12","language.name":"Chinese","native_numfmt":{"script":"hanidec","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"({s}{n})"},"pctFmt":"{n}%","roundingMode":"halfdown","digits":"〇一二三四五六七八九"},"numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Hans","Hant","Bopo","Phag"],"locale":"zh"};
+ilib.data.localeinfo_TW = {"currency":"TWD","firstDayOfWeek":0,"region.name":"Taiwan","timezone":"Asia/Taipei","locale":"TW"};
+ilib.data.localeinfo_zu = {"clock":"12","language.name":"Zulu","numfmt":{"decimalChar":".","groupChar":",","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Latn"],"locale":"zu"};
+ilib.data.localeinfo_zxx = {"currency":"USD","language.name":"No linguistic content","paperSizes":{"regular":"8x11","photo":"3x5"},"scripts":["Latn"],"locale":"zxx"};
+ilib.data.localeinfo_XX = {"region.name":"Unknown","locale":"XX"};
 ilib.data.likelylocales = {"aa":"aa-Latn-ET","ab":"ab-Cyrl-GE","ady":"ady-Cyrl-RU","af":"af-Latn-ZA","agq":"agq-Latn-CM","ak":"ak-Latn-GH","am":"am-Ethi-ET","ar":"ar-Arab-EG","as":"as-Beng-IN","asa":"asa-Latn-TZ","ast":"ast-Latn-ES","av":"av-Cyrl-RU","ay":"ay-Latn-BO","az":"az-Latn-AZ","az-Arab":"az-Arab-IR","az-IR":"az-Arab-IR","ba":"ba-Cyrl-RU","bas":"bas-Latn-CM","be":"be-Cyrl-BY","bem":"bem-Latn-ZM","bez":"bez-Latn-TZ","bg":"bg-Cyrl-BG","bi":"bi-Latn-VU","bm":"bm-Latn-ML","bn":"bn-Beng-BD","bo":"bo-Tibt-CN","br":"br-Latn-FR","brx":"brx-Deva-IN","bs":"bs-Latn-BA","byn":"byn-Ethi-ER","ca":"ca-Latn-ES","cch":"cch-Latn-NG","ce":"ce-Cyrl-RU","ceb":"ceb-Latn-PH","cgg":"cgg-Latn-UG","ch":"ch-Latn-GU","chk":"chk-Latn-FM","chr":"chr-Cher-US","ckb":"ckb-Arab-IQ","cs":"cs-Latn-CZ","csb":"csb-Latn-PL","cy":"cy-Latn-GB","da":"da-Latn-DK","dav":"dav-Latn-KE","de":"de-Latn-DE","dje":"dje-Latn-NE","dua":"dua-Latn-CM","dv":"dv-Thaa-MV","dyo":"dyo-Latn-SN","dz":"dz-Tibt-BT","ebu":"ebu-Latn-KE","ee":"ee-Latn-GH","efi":"efi-Latn-NG","el":"el-Grek-GR","en":"en-Latn-US","eo":"eo-Latn-001","es":"es-Latn-ES","et":"et-Latn-EE","eu":"eu-Latn-ES","ewo":"ewo-Latn-CM","fa":"fa-Arab-IR","ff":"ff-Latn-SN","fi":"fi-Latn-FI","fil":"fil-Latn-PH","fj":"fj-Latn-FJ","fo":"fo-Latn-FO","fr":"fr-Latn-FR","fur":"fur-Latn-IT","fy":"fy-Latn-NL","ga":"ga-Latn-IE","gaa":"gaa-Latn-GH","gag":"gag-Latn-MD","gd":"gd-Latn-GB","gil":"gil-Latn-KI","gl":"gl-Latn-ES","gn":"gn-Latn-PY","gsw":"gsw-Latn-CH","gu":"gu-Gujr-IN","guz":"guz-Latn-KE","gv":"gv-Latn-GB","gv-Latn":"gv-Latn-IM","ha":"ha-Latn-NG","haw":"haw-Latn-US","he":"he-Hebr-IL","hi":"hi-Deva-IN","hil":"hil-Latn-PH","ho":"ho-Latn-PG","hr":"hr-Latn-HR","ht":"ht-Latn-HT","hu":"hu-Latn-HU","hy":"hy-Armn-AM","ia":"ia-Latn-001","id":"id-Latn-ID","ig":"ig-Latn-NG","ii":"ii-Yiii-CN","ilo":"ilo-Latn-PH","inh":"inh-Cyrl-RU","is":"is-Latn-IS","it":"it-Latn-IT","ja":"ja-Jpan-JP","jgo":"jgo-Latn-CM","jmc":"jmc-Latn-TZ","jv":"jv-Latn-ID","ka":"ka-Geor-GE","kab":"kab-Latn-DZ","kaj":"kaj-Latn-NG","kam":"kam-Latn-KE","kbd":"kbd-Cyrl-RU","kcg":"kcg-Latn-NG","kde":"kde-Latn-TZ","kea":"kea-Latn-CV","kg":"kg-Latn-CD","kha":"kha-Latn-IN","khq":"khq-Latn-ML","ki":"ki-Latn-KE","kj":"kj-Latn-NA","kk":"kk-Cyrl-KZ","kkj":"kkj-Latn-CM","kl":"kl-Latn-GL","kln":"kln-Latn-KE","km":"km-Khmr-KH","kn":"kn-Knda-IN","ko":"ko-Kore-KR","koi":"koi-Cyrl-RU","kok":"kok-Deva-IN","kos":"kos-Latn-FM","kpe":"kpe-Latn-LR","kpv":"kpv-Cyrl-RU","krc":"krc-Cyrl-RU","ks":"ks-Arab-IN","ksb":"ksb-Latn-TZ","ksf":"ksf-Latn-CM","ksh":"ksh-Latn-DE","ku":"ku-Latn-TR","ku-Arab":"ku-Arab-IQ","ku-IQ":"ku-Arab-IQ","kum":"kum-Cyrl-RU","kv":"kv-Cyrl-RU","kw":"kw-Latn-GB","ky":"ky-Cyrl-KG","la":"la-Latn-VA","lag":"lag-Latn-TZ","lah":"lah-Arab-PK","lb":"lb-Latn-LU","lbe":"lbe-Cyrl-RU","lez":"lez-Cyrl-RU","lg":"lg-Latn-UG","ln":"ln-Latn-CD","lo":"lo-Laoo-LA","lt":"lt-Latn-LT","lu":"lu-Latn-CD","lua":"lua-Latn-CD","luo":"luo-Latn-KE","luy":"luy-Latn-KE","lv":"lv-Latn-LV","mai":"mai-Deva-IN","mas":"mas-Latn-KE","mdf":"mdf-Cyrl-RU","mdh":"mdh-Latn-PH","mer":"mer-Latn-KE","mfe":"mfe-Latn-MU","mg":"mg-Latn-MG","mgh":"mgh-Latn-MZ","mgo":"mgo-Latn-CM","mh":"mh-Latn-MH","mi":"mi-Latn-NZ","mk":"mk-Cyrl-MK","ml":"ml-Mlym-IN","mn":"mn-Cyrl-MN","mn-CN":"mn-Mong-CN","mn-Mong":"mn-Mong-CN","mr":"mr-Deva-IN","ms":"ms-Latn-MY","mt":"mt-Latn-MT","mua":"mua-Latn-CM","my":"my-Mymr-MM","myv":"myv-Cyrl-RU","na":"na-Latn-NR","naq":"naq-Latn-NA","nb":"nb-Latn-NO","nd":"nd-Latn-ZW","nds":"nds-Latn-DE","ne":"ne-Deva-NP","niu":"niu-Latn-NU","nl":"nl-Latn-NL","nmg":"nmg-Latn-CM","nn":"nn-Latn-NO","nnh":"nnh-Latn-CM","nr":"nr-Latn-ZA","nso":"nso-Latn-ZA","nus":"nus-Latn-SD","ny":"ny-Latn-MW","nyn":"nyn-Latn-UG","oc":"oc-Latn-FR","om":"om-Latn-ET","or":"or-Orya-IN","os":"os-Cyrl-GE","pa":"pa-Guru-IN","pa-Arab":"pa-Arab-PK","pa-PK":"pa-Arab-PK","pag":"pag-Latn-PH","pap":"pap-Latn-AN","pau":"pau-Latn-PW","pl":"pl-Latn-PL","pon":"pon-Latn-FM","ps":"ps-Arab-AF","pt":"pt-Latn-BR","qu":"qu-Latn-PE","rm":"rm-Latn-CH","rn":"rn-Latn-BI","ro":"ro-Latn-RO","rof":"rof-Latn-TZ","ru":"ru-Cyrl-RU","rw":"rw-Latn-RW","rwk":"rwk-Latn-TZ","sa":"sa-Deva-IN","sah":"sah-Cyrl-RU","saq":"saq-Latn-KE","sat":"sat-Latn-IN","sbp":"sbp-Latn-TZ","sd":"sd-Arab-IN","se":"se-Latn-NO","seh":"seh-Latn-MZ","ses":"ses-Latn-ML","sg":"sg-Latn-CF","shi":"shi-Tfng-MA","shi-MA":"shi-Latn-MA","si":"si-Sinh-LK","sid":"sid-Latn-ET","sk":"sk-Latn-SK","sl":"sl-Latn-SI","sm":"sm-Latn-WS","sn":"sn-Latn-ZW","so":"so-Latn-SO","sq":"sq-Latn-AL","sr":"sr-Cyrl-RS","sr-ME":"sr-Latn-ME","ss":"ss-Latn-ZA","ssy":"ssy-Latn-ER","st":"st-Latn-ZA","su":"su-Latn-ID","sv":"sv-Latn-SE","sw":"sw-Latn-TZ","swc":"swc-Latn-CD","ta":"ta-Taml-IN","te":"te-Telu-IN","teo":"teo-Latn-UG","tet":"tet-Latn-TL","tg":"tg-Cyrl-TJ","th":"th-Thai-TH","ti":"ti-Ethi-ET","tig":"tig-Ethi-ER","tk":"tk-Latn-TM","tkl":"tkl-Latn-TK","tl":"tl-Latn-PH","tn":"tn-Latn-ZA","to":"to-Latn-TO","tpi":"tpi-Latn-PG","tr":"tr-Latn-TR","trv":"trv-Latn-TW","ts":"ts-Latn-ZA","tsg":"tsg-Latn-PH","tt":"tt-Cyrl-RU","tvl":"tvl-Latn-TV","twq":"twq-Latn-NE","ty":"ty-Latn-PF","tyv":"tyv-Cyrl-RU","tzm":"tzm-Latn-MA","udm":"udm-Cyrl-RU","ug":"ug-Arab-CN","uk":"uk-Cyrl-UA","uli":"uli-Latn-FM","und":"en-Latn-US","AD":"ca-Latn-AD","AE":"ar-Arab-AE","AF":"fa-Arab-AF","AL":"sq-Latn-AL","AM":"hy-Armn-AM","AN":"pap-Latn-AN","AO":"pt-Latn-AO","AR":"es-Latn-AR","Arab":"ar-Arab-EG","Arab-CN":"ug-Arab-CN","Arab-IN":"ur-Arab-IN","Arab-NG":"ha-Arab-NG","Arab-PK":"ur-Arab-PK","Armi":"arc-Armi-IR","Armn":"hy-Armn-AM","AS":"sm-Latn-AS","AT":"de-Latn-AT","Avst":"ae-Avst-IR","AW":"nl-Latn-AW","AX":"sv-Latn-AX","AZ":"az-Latn-AZ","BA":"bs-Latn-BA","Bali":"ban-Bali-ID","Bamu":"bax-Bamu-CM","Batk":"bbc-Batk-ID","BD":"bn-Beng-BD","BE":"nl-Latn-BE","Beng":"bn-Beng-BD","BF":"fr-Latn-BF","BG":"bg-Cyrl-BG","BH":"ar-Arab-BH","BI":"rn-Latn-BI","BJ":"fr-Latn-BJ","BL":"fr-Latn-BL","BN":"ms-Latn-BN","BO":"es-Latn-BO","Bopo":"zh-Bopo-TW","BR":"pt-Latn-BR","Brah":"pra-Brah-IN","Brai":"und-Brai-FR","BT":"dz-Tibt-BT","Bugi":"bug-Bugi-ID","Buhd":"bku-Buhd-PH","BY":"be-Cyrl-BY","Cakm":"ccp-Cakm-BD","Cans":"cr-Cans-CA","Cari":"xcr-Cari-TR","CD":"sw-Latn-CD","CF":"fr-Latn-CF","CG":"fr-Latn-CG","CH":"de-Latn-CH","Cham":"cjm-Cham-VN","Cher":"chr-Cher-US","CI":"fr-Latn-CI","CL":"es-Latn-CL","CM":"fr-Latn-CM","CN":"zh-Hans-CN","CO":"es-Latn-CO","Copt":"cop-Copt-EG","CP":"fr-Latn-CP","Cprt":"grc-Cprt-CY","CR":"es-Latn-CR","CU":"es-Latn-CU","CV":"pt-Latn-CV","CY":"el-Grek-CY","Cyrl":"ru-Cyrl-RU","Cyrl-BA":"sr-Cyrl-BA","Cyrl-GE":"ab-Cyrl-GE","CZ":"cs-Latn-CZ","DE":"de-Latn-DE","Deva":"hi-Deva-IN","DJ":"aa-Latn-DJ","DK":"da-Latn-DK","DO":"es-Latn-DO","DZ":"ar-Arab-DZ","EA":"es-Latn-EA","EC":"es-Latn-EC","EE":"et-Latn-EE","EG":"ar-Arab-EG","Egyp":"egy-Egyp-EG","EH":"ar-Arab-EH","ER":"ti-Ethi-ER","ES":"es-Latn-ES","Ethi":"am-Ethi-ET","FI":"fi-Latn-FI","FM":"chk-Latn-FM","FO":"fo-Latn-FO","FR":"fr-Latn-FR","GA":"fr-Latn-GA","GE":"ka-Geor-GE","Geor":"ka-Geor-GE","GF":"fr-Latn-GF","GH":"ak-Latn-GH","GL":"kl-Latn-GL","Glag":"cu-Glag-BG","GN":"fr-Latn-GN","Goth":"got-Goth-UA","GP":"fr-Latn-GP","GQ":"es-Latn-GQ","GR":"el-Grek-GR","Grek":"el-Grek-GR","GT":"es-Latn-GT","Gujr":"gu-Gujr-IN","Guru":"pa-Guru-IN","GW":"pt-Latn-GW","Hang":"ko-Hang-KR","Hani":"zh-Hans-CN","Hano":"hnn-Hano-PH","Hans":"zh-Hans-CN","Hant":"zh-Hant-TW","Hebr":"he-Hebr-IL","Hira":"ja-Hira-JP","HK":"zh-Hant-HK","HN":"es-Latn-HN","HR":"hr-Latn-HR","HT":"ht-Latn-HT","HU":"hu-Latn-HU","IC":"es-Latn-IC","ID":"id-Latn-ID","IL":"he-Hebr-IL","IN":"hi-Deva-IN","IQ":"ar-Arab-IQ","IR":"fa-Arab-IR","IS":"is-Latn-IS","IT":"it-Latn-IT","Ital":"ett-Ital-IT","Java":"jv-Java-ID","JO":"ar-Arab-JO","JP":"ja-Jpan-JP","Jpan":"ja-Jpan-JP","Kali":"eky-Kali-MM","Kana":"ja-Kana-JP","KG":"ky-Cyrl-KG","KH":"km-Khmr-KH","Khar":"pra-Khar-PK","Khmr":"km-Khmr-KH","KM":"ar-Arab-KM","Knda":"kn-Knda-IN","Kore":"ko-Kore-KR","KP":"ko-Kore-KP","KR":"ko-Kore-KR","Kthi":"bh-Kthi-IN","KW":"ar-Arab-KW","KZ":"ru-Cyrl-KZ","LA":"lo-Laoo-LA","Lana":"nod-Lana-TH","Laoo":"lo-Laoo-LA","Latn-CN":"za-Latn-CN","Latn-CY":"tr-Latn-CY","Latn-DZ":"fr-Latn-DZ","Latn-ER":"aa-Latn-ER","Latn-KM":"fr-Latn-KM","Latn-MA":"fr-Latn-MA","Latn-MK":"sq-Latn-MK","Latn-MR":"fr-Latn-MR","Latn-SY":"fr-Latn-SY","Latn-TN":"fr-Latn-TN","LB":"ar-Arab-LB","Lepc":"lep-Lepc-IN","LI":"de-Latn-LI","Limb":"lif-Limb-IN","Linb":"grc-Linb-GR","Lisu":"lis-Lisu-CN","LK":"si-Sinh-LK","LS":"st-Latn-LS","LT":"lt-Latn-LT","LU":"fr-Latn-LU","LV":"lv-Latn-LV","LY":"ar-Arab-LY","Lyci":"xlc-Lyci-TR","Lydi":"xld-Lydi-TR","MA":"ar-Arab-MA","Mand":"myz-Mand-IR","MC":"fr-Latn-MC","MD":"ro-Latn-MD","ME":"sr-Latn-ME","Merc":"xmr-Merc-SD","Mero":"xmr-Mero-SD","MF":"fr-Latn-MF","MG":"mg-Latn-MG","MK":"mk-Cyrl-MK","ML":"bm-Latn-ML","Mlym":"ml-Mlym-IN","MM":"my-Mymr-MM","MN":"mn-Cyrl-MN","MO":"zh-Hant-MO","Mong":"mn-Mong-CN","MQ":"fr-Latn-MQ","MR":"ar-Arab-MR","MT":"mt-Latn-MT","Mtei":"mni-Mtei-IN","MU":"mfe-Latn-MU","MV":"dv-Thaa-MV","MX":"es-Latn-MX","MY":"ms-Latn-MY","Mymr":"my-Mymr-MM","MZ":"pt-Latn-MZ","NA":"kj-Latn-NA","NC":"fr-Latn-NC","NE":"ha-Latn-NE","NI":"es-Latn-NI","Nkoo":"man-Nkoo-GN","NL":"nl-Latn-NL","NO":"nb-Latn-NO","NP":"ne-Deva-NP","Ogam":"sga-Ogam-IE","Olck":"sat-Olck-IN","OM":"ar-Arab-OM","Orkh":"otk-Orkh-MN","Orya":"or-Orya-IN","Osma":"so-Osma-SO","PA":"es-Latn-PA","PE":"es-Latn-PE","PF":"fr-Latn-PF","PG":"tpi-Latn-PG","PH":"fil-Latn-PH","Phag":"lzh-Phag-CN","Phli":"pal-Phli-IR","Phnx":"phn-Phnx-LB","PK":"ur-Arab-PK","PL":"pl-Latn-PL","Plrd":"hmd-Plrd-CN","PM":"fr-Latn-PM","PR":"es-Latn-PR","Prti":"xpr-Prti-IR","PS":"ar-Arab-PS","PT":"pt-Latn-PT","PW":"pau-Latn-PW","PY":"gn-Latn-PY","QA":"ar-Arab-QA","RE":"fr-Latn-RE","Rjng":"rej-Rjng-ID","RO":"ro-Latn-RO","RS":"sr-Cyrl-RS","RU":"ru-Cyrl-RU","Runr":"non-Runr-SE","RW":"rw-Latn-RW","SA":"ar-Arab-SA","Samr":"smp-Samr-IL","Sarb":"xsa-Sarb-YE","Saur":"saz-Saur-IN","SC":"fr-Latn-SC","SD":"ar-Arab-SD","SE":"sv-Latn-SE","Shaw":"en-Shaw-GB","Shrd":"sa-Shrd-IN","SI":"sl-Latn-SI","Sinh":"si-Sinh-LK","SJ":"nb-Latn-SJ","SK":"sk-Latn-SK","SM":"it-Latn-SM","SN":"fr-Latn-SN","SO":"so-Latn-SO","Sora":"srb-Sora-IN","SR":"nl-Latn-SR","ST":"pt-Latn-ST","Sund":"su-Sund-ID","SV":"es-Latn-SV","SY":"ar-Arab-SY","Sylo":"syl-Sylo-BD","Syrc":"syr-Syrc-SY","Tagb":"tbw-Tagb-PH","Takr":"doi-Takr-IN","Tale":"tdd-Tale-CN","Talu":"khb-Talu-CN","Taml":"ta-Taml-IN","Tavt":"blt-Tavt-VN","TD":"fr-Latn-TD","Telu":"te-Telu-IN","Tfng":"shi-Tfng-TN","TG":"fr-Latn-TG","Tglg":"fil-Tglg-PH","TH":"th-Thai-TH","Thaa":"dv-Thaa-MV","Thai":"th-Thai-TH","Tibt":"bo-Tibt-CN","TJ":"tg-Cyrl-TJ","TK":"tkl-Latn-TK","TL":"pt-Latn-TL","TM":"tk-Latn-TM","TN":"ar-Arab-TN","TO":"to-Latn-TO","TR":"tr-Latn-TR","TV":"tvl-Latn-TV","TW":"zh-Hant-TW","TZ":"sw-Latn-TZ","UA":"uk-Cyrl-UA","UG":"sw-Latn-UG","Ugar":"uga-Ugar-SY","UY":"es-Latn-UY","UZ":"uz-Cyrl-UZ","VA":"la-Latn-VA","Vaii":"vai-Vaii-LR","VE":"es-Latn-VE","VN":"vi-Latn-VN","VU":"bi-Latn-VU","WF":"fr-Latn-WF","WS":"sm-Latn-WS","Xpeo":"peo-Xpeo-IR","Xsux":"akk-Xsux-IQ","YE":"ar-Arab-YE","Yiii":"ii-Yiii-CN","YT":"fr-Latn-YT","ur":"ur-Arab-PK","uz":"uz-Cyrl-UZ","uz-AF":"uz-Arab-AF","uz-Arab":"uz-Arab-AF","vai":"vai-Vaii-LR","ve":"ve-Latn-ZA","vi":"vi-Latn-VN","vo":"vo-Latn-001","vun":"vun-Latn-TZ","wae":"wae-Latn-CH","wal":"wal-Ethi-ET","war":"war-Latn-PH","wo":"wo-Latn-SN","xh":"xh-Latn-ZA","xog":"xog-Latn-UG","yap":"yap-Latn-FM","yav":"yav-Latn-CM","yi":"yi-Hebr-IL","yo":"yo-Latn-NG","za":"za-Latn-CN","zh":"zh-Hans-CN","zh-Hani":"zh-Hans-CN","zh-Hant":"zh-Hant-TW","zh-HK":"zh-Hant-HK","zh-MO":"zh-Hant-MO","zh-TW":"zh-Hant-TW","zu":"zu-Latn-ZA"}
 ;
 /*
@@ -6460,21 +5938,75 @@ ilib.LocaleInfo = function(locale, options) {
 		ilib.LocaleInfo.cache = {};
 	}
 
-	ilib.loadData(ilib.LocaleInfo, this.locale, "localeinfo", sync, this.loadParams, ilib.bind(this, function (info) {
-		if (!info) {
-			info = ilib.data.localeinfo;
-			var spec = this.locale.getSpec().replace(/-/g, "_");
-			ilib.LocaleInfo.cache[spec] = info;
-		}
-		this.info = info;
-		if (options && typeof(options.onLoad) === 'function') {
-			options.onLoad(this);
-		}
-	}));
+	ilib.loadData({
+		object: ilib.LocaleInfo, 
+		locale: this.locale, 
+		name: "localeinfo.json", 
+		sync: sync, 
+		loadParams: this.loadParams, 
+		callback: ilib.bind(this, function (info) {
+			if (!info) {
+				info = ilib.data.localeinfo;
+				var spec = this.locale.getSpec().replace(/-/g, "_");
+				ilib.LocaleInfo.cache[spec] = info;
+			}
+			/**
+			 * @private
+			 * @type {{
+			 * 	timezone:string,
+			 * 	units:string,
+			 *	calendar:string,
+			 *	clock:string,
+			 *	currency:string,
+			 *	firstDayOfWeek:string,
+			 * 	numfmt:Object.<{
+			 * 		currencyFormats:Object.<{
+			 * 			common:string,
+			 * 			commonNegative:string,
+			 * 			iso:string,
+			 * 			isoNegative:string
+			 * 		}>,
+			 * 		script:string,
+			 * 		decimalChar:string,
+			 * 		groupChar:string,
+			 * 		prigroupSize:number,
+			 * 		secgroupSize:number,
+			 * 		pctFmt:string,
+			 * 		negativepctFmt:string,
+			 * 		pctChar:string,
+			 * 		roundingMode:string,
+			 * 		exponential:string
+			 *	}>
+			 * }}
+			 */
+			this.info = info;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		})
+	});
 };
 
 ilib.LocaleInfo.prototype = {
-	/**
+    /**
+     * Return the name of the locale's language in English.
+     * @returns {string} the name of the locale's language in English
+     */
+    getLanguageName: function () {
+    	return this.info["language.name"];	
+    },
+    
+    /**
+     * Return the name of the locale's region in English. If the locale
+     * has no region, this returns undefined.
+     * 
+     * @returns {string|undefined} the name of the locale's region in English
+     */
+    getRegionName: function () {
+    	return this.info["region.name"];	
+    },
+
+    /**
 	 * Return whether this locale commonly uses the 12- or the 24-hour clock.
 	 *  
 	 * @returns {string} "12" if the locale commonly uses a 12-hour clock, or "24"
@@ -6543,12 +6075,29 @@ ilib.LocaleInfo.prototype = {
 	},
 	
 	/**
+	 * Return the decimal separator for formatted numbers in this locale for native script.
+	 * @returns {string} the decimal separator char
+	 */
+	getNativeDecimalSeparator: function () {
+		return (this.info.native_numfmt && this.info.native_numfmt.decimalChar) || this.info.numfmt.decimalChar;
+	},
+	
+	/**
 	 * Return the separator character used to separate groups of digits on the 
 	 * integer side of the decimal character.
 	 * @returns {string} the grouping separator char
 	 */
 	getGroupingSeparator: function () {
 		return this.info.numfmt.groupChar;
+	},
+
+	/**
+	 * Return the separator character used to separate groups of digits on the 
+	 * integer side of the decimal character for the native script if present other than the default script.
+	 * @returns {string} the grouping separator char
+	 */
+	getNativeGroupingSeparator: function () {
+		return (this.info.native_numfmt && this.info.native_numfmt.groupChar) || this.info.numfmt.groupChar;
 	},
 	
 	/**
@@ -6559,7 +6108,7 @@ ilib.LocaleInfo.prototype = {
 	 * @returns {number} the number of digits in a primary grouping, or 0 for no grouping
 	 */
 	getPrimaryGroupingDigits: function () {
-		return (typeof(this.info.numfmt.prigroupSize) !== 'undefined' ?  this.info.numfmt.prigroupSize : this.info.numfmt.groupSize) || 0;
+		return (typeof(this.info.numfmt.prigroupSize) !== 'undefined' && this.info.numfmt.prigroupSize) || 0;
 	},
 
 	/**
@@ -6589,9 +6138,15 @@ ilib.LocaleInfo.prototype = {
 		return this.info.numfmt.pctFmt;
 	},
 
-	getCurrencyFormat: function () {
-		return this.info.numfmt.curFmt;
+	/**
+	 * Return the format template used to format percentages in this locale
+	 * with negative amounts.
+	 * @returns {string} the format template for formatting percentages
+	 */
+	getNegativePercentageFormat: function () {
+		return this.info.numfmt.negativepctFmt;
 	},
+
 	/**
 	 * Return the symbol used for percentages in this locale.
 	 * @returns {string} the symbol used for percentages in this locale
@@ -6601,6 +6156,38 @@ ilib.LocaleInfo.prototype = {
 	},
 
 	/**
+	 * Return the symbol used for exponential in this locale.
+	 * @returns {string} the symbol used for exponential in this locale
+	 */
+	getExponential: function () {
+		return this.info.numfmt.exponential;
+	},
+
+	/**
+	 * Return the symbol used for exponential in this locale for native script.
+	 * @returns {string} the symbol used for exponential in this locale for native script
+	 */
+	getNativeExponential: function () {
+		return (this.info.native_numfmt && this.info.native_numfmt.exponential) || this.info.numfmt.exponential;
+	},
+
+	/**
+	 * Return the symbol used for percentages in this locale for native script.
+	 * @returns {string} the symbol used for percentages in this locale for native script
+	 */
+	getNativePercentageSymbol: function () {
+		return (this.info.native_numfmt && this.info.native_numfmt.pctChar) || this.info.numfmt.pctChar || "%";
+	
+	},
+	/**
+	 * Return the format template used to format negative numbers in this locale.
+	 * @returns {string} the format template for formatting negative numbers
+	 */
+	getNegativeNumberFormat: function () { 
+		return this.info.numfmt.negativenumFmt;
+	},
+	
+	/**
 	 * Return an object containing the format templates for formatting currencies
 	 * in this locale. The object has a number of properties in it that each are
 	 * a particular style of format. Normally, this contains a "common" and an "iso"
@@ -6608,9 +6195,9 @@ ilib.LocaleInfo.prototype = {
 	 * @returns {Object} an object containing the format templates for currencies
 	 */
 	getCurrencyFormats: function () {
-		return this.info.currencyFormats;
+		return this.info.numfmt.currencyFormats;
 	},
-
+	
 	/**
 	 * Return the currency that is legal in the locale, or which is most commonly 
 	 * used in regular commerce.
@@ -6618,6 +6205,24 @@ ilib.LocaleInfo.prototype = {
 	 */
 	getCurrency: function () {
 		return this.info.currency;
+	},
+	
+	/**
+	 * Return the digits of the default script if they are defined.
+	 * If not defined, the default should be the regular "Arabic numerals"
+	 * used in the Latin script. (0-9)
+	 * @returns {string|undefined} the digits used in the default script 
+	 */
+	getDigits: function () {
+		return this.info.numfmt.digits;
+	},
+	
+	/**
+	 * Return the digits of the native script if they are defined. 
+	 * @returns {string|undefined} the digits used in the default script 
+	 */
+	getNativeDigits: function () {
+		return this.info.native_numfmt && this.info.native_numfmt.digits;
 	},
 	
 	/**
@@ -8531,58 +8136,6 @@ ilib.data.pseudomap = {
 	"Y": "Ŷ",
 	"Z": "Ż"
 };
-ilib.data.pseudomap_zxx_Hans = {
-	"a": "阿",
-	"b": "不",
-	"c": "可",
-	"d": "的",
-	"e": "俄",
-	"f": "凡",
-	"g": "个",
-	"h": "和",
-	"i": "意",
-	"j": "中",
-	"k": "可",
-	"l": "了",
-	"m": "们",
-	"n": "尼",
-	"o": "夥",
-	"p": "琶",
-	"q": "氣",
-	"r": "熱",
-	"s": "思",
-	"t": "推",
-	"u": "思",
-	"v": "於",
-	"x": "相",
-	"y": "謝",
-	"z": "子",
-	"A": "阿",
-	"B": "不",
-	"C": "可",
-	"D": "的",
-	"E": "俄",
-	"F": "凡",
-	"G": "个",
-	"H": "和",
-	"I": "意",
-	"J": "中",
-	"K": "可",
-	"L": "了",
-	"M": "们",
-	"N": "尼",
-	"O": "夥",
-	"P": "琶",
-	"Q": "氣",
-	"R": "熱",
-	"S": "思",
-	"T": "推",
-	"U": "思",
-	"V": "於",
-	"X": "相",
-	"Y": "謝",
-	"Z": "子"
-};
 ilib.data.pseudomap_zxx_Cyrl = {
 	"a": "а",
 	"b": "б",
@@ -8634,6 +8187,58 @@ ilib.data.pseudomap_zxx_Cyrl = {
 	"X": "КС",
 	"Y": "Я",
 	"Z": "З"
+};
+ilib.data.pseudomap_zxx_Hans = {
+	"a": "阿",
+	"b": "不",
+	"c": "可",
+	"d": "的",
+	"e": "俄",
+	"f": "凡",
+	"g": "个",
+	"h": "和",
+	"i": "意",
+	"j": "中",
+	"k": "可",
+	"l": "了",
+	"m": "们",
+	"n": "尼",
+	"o": "夥",
+	"p": "琶",
+	"q": "氣",
+	"r": "熱",
+	"s": "思",
+	"t": "推",
+	"u": "思",
+	"v": "於",
+	"x": "相",
+	"y": "謝",
+	"z": "子",
+	"A": "阿",
+	"B": "不",
+	"C": "可",
+	"D": "的",
+	"E": "俄",
+	"F": "凡",
+	"G": "个",
+	"H": "和",
+	"I": "意",
+	"J": "中",
+	"K": "可",
+	"L": "了",
+	"M": "们",
+	"N": "尼",
+	"O": "夥",
+	"P": "琶",
+	"Q": "氣",
+	"R": "熱",
+	"S": "思",
+	"T": "推",
+	"U": "思",
+	"V": "於",
+	"X": "相",
+	"Y": "謝",
+	"Z": "子"
 };
 ilib.data.pseudomap_zxx_Hebr = {
 	"a": "ַ",
@@ -8944,38 +8549,45 @@ ilib.ResBundle = function (options) {
 
 	lookupLocale = this.locale.isPseudo() ? new ilib.Locale("en-US") : this.locale;
 
-	ilib.loadData(ilib.ResBundle[this.baseName], lookupLocale, this.baseName, this.sync, this.loadParams, ilib.bind(this, function (map) {
-		if (!map) {
-			map = ilib.data[this.baseName] || {};
-			spec = lookupLocale.getSpec().replace(/-/g, '_');
-			ilib.ResBundle[this.baseName].cache[spec] = map;
-		}
-		this.map = map;
-		if (this.locale.isPseudo()) {
-			if (!ilib.ResBundle.pseudomap) {
-				ilib.ResBundle.pseudomap = {};
+	ilib.loadData({
+		object: ilib.ResBundle[this.baseName], 
+		locale: lookupLocale, 
+		name: this.baseName + ".json", 
+		sync: this.sync, 
+		loadParams: this.loadParams, 
+		callback: ilib.bind(this, function (map) {
+			if (!map) {
+				map = ilib.data[this.baseName] || {};
+				spec = lookupLocale.getSpec().replace(/-/g, '_');
+				ilib.ResBundle[this.baseName].cache[spec] = map;
 			}
-
-			this._loadPseudo(this.locale, options.onLoad);
-		} else if (this.missing === "pseudo") {
-			if (!ilib.ResBundle.pseudomap) {
-				ilib.ResBundle.pseudomap = {};
+			this.map = map;
+			if (this.locale.isPseudo()) {
+				if (!ilib.ResBundle.pseudomap) {
+					ilib.ResBundle.pseudomap = {};
+				}
+	
+				this._loadPseudo(this.locale, options.onLoad);
+			} else if (this.missing === "pseudo") {
+				if (!ilib.ResBundle.pseudomap) {
+					ilib.ResBundle.pseudomap = {};
+				}
+	
+				new ilib.LocaleInfo(this.locale, {
+					sync: this.sync,
+					loadParams: this.loadParams,
+					onLoad: ilib.bind(this, function (li) {
+						var pseudoLocale = new ilib.Locale("zxx", "XX", undefined, li.getDefaultScript());
+						this._loadPseudo(pseudoLocale, options.onLoad);
+					})
+				});
+			} else {
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
 			}
-
-			new ilib.LocaleInfo(this.locale, {
-				sync: this.sync,
-				loadParams: this.loadParams,
-				onLoad: ilib.bind(this, function (li) {
-					var pseudoLocale = new ilib.Locale("zxx", "XX", undefined, li.getDefaultScript());
-					this._loadPseudo(pseudoLocale, options.onLoad);
-				})
-			});
-		} else {
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		}
-	}));
+		})
+	});
 
 	// console.log("Merged resources " + this.locale.toString() + " are: " + JSON.stringify(this.map));
 	//if (!this.locale.isPseudo() && ilib.isEmpty(this.map)) {
@@ -8988,17 +8600,24 @@ ilib.ResBundle.prototype = {
      * @protected
      */
     _loadPseudo: function (pseudoLocale, onLoad) {
-		ilib.loadData(ilib.ResBundle.pseudomap, pseudoLocale, "pseudomap", this.sync, this.loadParams, ilib.bind(this, function (map) {
-			if (!map || ilib.isEmpty(map)) {
-				map = ilib.data.pseudomap;
-				var spec = pseudoLocale.getSpec().replace(/-/g, '_');
-				ilib.ResBundle.pseudomap.cache[spec] = map;
-			}
-			this.pseudomap = map;
-			if (typeof(onLoad) === 'function') {
-				onLoad(this);
-			}	
-		}));
+		ilib.loadData({
+			object: ilib.ResBundle.pseudomap, 
+			locale: pseudoLocale, 
+			name: "pseudomap.json", 
+			sync: this.sync, 
+			loadParams: this.loadParams, 
+			callback: ilib.bind(this, function (map) {
+				if (!map || ilib.isEmpty(map)) {
+					map = ilib.data.pseudomap;
+					var spec = pseudoLocale.getSpec().replace(/-/g, '_');
+					ilib.ResBundle.pseudomap.cache[spec] = map;
+				}
+				this.pseudomap = map;
+				if (typeof(onLoad) === 'function') {
+					onLoad(this);
+				}	
+			})
+		});
     },
     
 	/**
@@ -9331,19 +8950,36 @@ ilib.data.dateformats = {
 			}
 		},
 		"time": {
-			"ahmsz": "H:mm:ssa z",
-			"ahms": "H:mm:ssa",
-			"hmsz": "H:mm:ss z",
-			"hms": "H:mm:ss",
-			"ahmz": "H:mma z",
-			"ahm": "H:mma",
-			"hmz": "H:mm z",
-			"ah": "Ha",
-			"hm": "H:mm",
-			"ms": "mm:ss",
-			"h": "H",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "h:mm:ssa z",
+				"ahms": "h:mm:ssa",
+				"hmsz": "h:mm:ss z",
+				"hms": "h:mm:ss",
+				"ahmz": "h:mma z",
+				"ahm": "h:mma",
+				"hmz": "h:mm z",
+				"ah": "ha",
+				"hm": "h:mm",
+				"ms": "mm:ss",
+				"h": "h",
+				"m": "mm",
+				"s": "ss"
+			},
+			"24": {
+				"ahmsz": "H:mm:ss z",
+				"ahms": "H:mm:ss",
+				"hmsz": "H:mm:ss z",
+				"hms": "H:mm:ss",
+				"ahmz": "H:mm z",
+				"ahm": "H:mm",
+				"hmz": "H:mm z",
+				"ah": "H",
+				"hm": "H:mm",
+				"ms": "mm:ss",
+				"h": "H",
+				"m": "mm",
+				"s": "ss"
+			}
 		},
 		"range": {
 			"c00": {
@@ -9399,137 +9035,49 @@ ilib.data.dateformats = {
 	},
 	"islamic": "gregorian",
 	"hebrew": "gregorian",
-	"julian": "gregorian"
+	"julian": "gregorian",
+	"buddhist": "gregorian"
 };
-ilib.data.dateformats_af = {
-	"gregorian": {
-		"order": "{date} {time}",
-		"date": {
-			"dmwy": {
-				"s": "E yy/MM/dd",
-				"m": "EE yyyy/MM/dd",
-				"l": "EEE dd MMM yy",
-				"f": "EEEE dd MMMM yyyy"
-			},
-			"dmy": {
-				"s": "yy/MM/dd",
-				"m": "yyyy/MM/dd",
-				"l": "dd MMM yy",
-				"f": "dd MMMM yyyy"
-			},
-			"dmw": {
-				"s": "E MM/dd",
-				"m": "EE MM/dd",
-				"l": "EEE dd MMM",
-				"f": "EEEE dd MMMM"
-			},
-			"dm": {
-				"s": "MM/dd",
-				"m": "MM/dd",
-				"l": "dd MMM",
-				"f": "dd MMMM"
-			},
-			"my": {
-				"s": "yy/MM",
-				"m": "yyyy/MM",
-				"l": "MMM yy",
-				"f": "MMMM yyyy"
-			},
-			"d": {
-				"s": "dd",
-				"m": "dd",
-				"l": "dd",
-				"f": "dd"
-			},
-			"m": {
-				"s": "M",
-				"m": "MM",
-				"l": "MMM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yy",
-				"l": "yyyy",
-				"f": "yyyy"
-			},
-			"n": {
-				"s": "N",
-				"m": "NN",
-				"l": "MMM",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "h:mm:ss a Z",
-			"ahms": "h:mm:ss a ",
-			"hmsz": "h:mm:ss Z",
-			"ahmz": "h:mm a Z",
-			"hms": "h:mm:ss",
-			"ahm": "h:mm a",
-			"hmz": "h:mm Z",
-			"ah": "h a",
-			"hm": "h:mm",
-			"ms": "mm:ss",
-			"h": "h",
-			"m": "mm",
-			"s": "ss"
-		},
-		"range": {
-			"c00": {
-				"s": "{sy}/{sm}/{sd}, {st} - {et}",
-				"m": "{sy}/{sm}/{sd}, {st} - {et}",
-				"l": "{sd} {sm} {sy}, {st} - {et}",
-				"f": "{sd} {sm} {sy}, {st} - {et}"
-			},
-			"c01": {
-				"s": "{sy}/{sm}/{sd} {st} – {ed} {et}",
-				"m": "{sy}/{sm}/{sd} {st} – {ed} {et}",
-				"l": "{sd} {sm} {sy} {st} – {ed} {em} {et}",
-				"f": "{sd} {sm} {sy} {st} – {ed} {em} {et}"
-			},
-			"c02": {
-				"s": "{sm}/{sd} {st} - {em}/{ed} {et}, {sy}",
-				"m": "{sm}/{sd} {st} - {em}/{ed} {et}, {sy}",
-				"l": "{sd} {sm} {st} - {ed} {em} {et}, {sy}",
-				"f": "{sd} {sm} {st} - {ed} {em} {et}, {sy}"
-			},
-			"c03": {
-				"s": "{sy}/{sm}/{sd} {st} - {ey}/{em}/{ed} {et}",
-				"m": "{sy}/{sm}/{sd} {st} - {ey}/{em}/{ed} {et}",
-				"l": "{sd} {sm} {sy}, {st} - {ed} {em} {ey}, {et}",
-				"f": "{sd} {sm} {sy}, {st} - {ed} {em} {ey}, {et}"
-			},
-			"c10": {
-				"s": "{sy}/{sm}/{sd} – {ed}",
-				"m": "{sy}/{sm}/{sd} – {ed}",
-				"l": "{sd} – {ed} {sm} {sy}",
-				"f": "{sd} – {ed} {sm} {sy}"
-			},
-			"c11": {
-				"s": "{sy}/{sm}/{sd} – {em}/{ed}",
-				"m": "{sy}/{sm}/{sd} – {em}/{ed}",
-				"l": "{sd} {sm} – {ed} {em} {sy}",
-				"f": "{sd} {sm} – {ed} {em} {sy}"
-			},
-			"c12": {
-				"s": "{sy}/{sm}/{sd} – {ey}/{em}/{ed}",
-				"m": "{sy}/{sm}/{sd} – {ey}/{em}/{ed}",
-				"l": "{sd} {sm} {sy} – {ed} {em} {ey}",
-				"f": "{sd} {sm} {sy} – {ed} {em} {ey}"
-			},
-			"c20": {
-				"s": "{sy}/{sm} – {ey}/{em}",
-				"m": "{sy}/{sm} – {ey}/{em}",
-				"l": "{sm} {sy} – {em} {ey}",
-				"f": "{sm} {sy} – {em} {ey}"
-			},
-			"c30": "{sy} – {ey}"
-		}
-	},
-	"julian": "gregorian"
-}
+ilib.data.dateformats_aa = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sy} {sm} {sd}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_af = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"dd MMM","l":"MMM d","f":"MMMM d"},"dmy":{"s":"M/d/yy","m":"dd MMM yy","f":"dd MMMM yyyy"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"s":"yyyy"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st} – {et} {sm}/{sd}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sd} – {et} {em}/{ed}/{ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","f":"{st} {sd} – {et} {em}/{ed}/{ey}"},"c02":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sm} {sd} – {et} {em} {ed} {ey}","f":"{st} {sm} {sd} – {et} {em} {ed} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}"},"c10":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}"},"c11":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} – {em} {ed} {ey}","f":"{sm} {sd} – {em} {ed} {ey}"},"c12":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_agq = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"d MMM"},"dmy":{"m":"d MMM, yy"},"my":{"m":"MMM, yy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E d/M/yy","m":"EE d/M/yy","f":"EEEE d MMM yyyy"},"dmw":{"s":"E d/M","m":"EE d/M","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sd}/{sm}/{sy}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sd} {sm} {sy}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_ak = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy/M/d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"M/yyyy","m":"y MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, M/d/yyyy","m":"EE, M/d/yyyy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}/{sm}/{sd}","m":"{st}–{et} {sy} {sm} {sd}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_am = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d","f":"MMMM d"},"dmy":{"m":"d MMM yy"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E፣ d/M/yy","m":"EE፣ d/M/yy","l":"EEE፣ MMM d yyyy","f":"EEEE፣ MMM d yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sm} {sd} – {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sm} {sd} – {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sm} {sd} – {et} {em} {ed} {ey}","f":"{st} {sm} {sd} – {et} {em} {ed} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sm} {sd} – {ed} {ey}","f":"{sm} {sd} – {ed} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sm} {sd} – {em} {ed} {ey}","f":"{sm} {sd} – {em} {ed} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sm} {sd} {sy} – {em} {ed} {ey}","f":"{sm} {sd} {sy} – {em} {ed} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_ar = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d/‏M","m":"dd‏/MM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، yyyy","f":"d MMMM، yyyy"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","f":"MMMM، yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"s":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","m":"EE، d/‏M/‏yyyy","l":"EEE، d MMM، yyyy","f":"EEEE، d MMM، yyyy"},"dmw":{"s":"E، d/M","m":"EE، d/M","l":"EEEE، d MMM","f":"EEEE، d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd}/{sm}/{sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_ar_AE = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_BH = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_DJ = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_DZ = {"gregorian":{"date":{"dm":{"s":"M/d","m":"MM/dd"},"dmy":{"m":"yyyy/MM/dd"},"my":{"s":"yyyy/M","m":"yyyy/MM"}},"range":{"c00":{"m":"{st} – {et} {sy}/{sm}/{sd}"}}},"generated":true};
+ilib.data.dateformats_ar_EG = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_IQ = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_JO = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_KW = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_LB = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_LY = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_MA = {"gregorian":{"date":{"dm":{"s":"M/d","m":"MM/dd"},"dmy":{"m":"yyyy/MM/dd"},"my":{"s":"yyyy/M","m":"yyyy/MM"}},"range":{"c00":{"m":"{st} – {et} {sy}/{sm}/{sd}"}}},"generated":true};
+ilib.data.dateformats_ar_MR = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_OM = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_QA = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_SA = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_SD = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_SY = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_ar_TN = {"gregorian":{"date":{"dm":{"s":"M/d","m":"MM/dd"},"dmy":{"m":"yyyy/MM/dd"},"my":{"s":"yyyy/M","m":"yyyy/MM"}},"range":{"c00":{"m":"{st} – {et} {sy}/{sm}/{sd}"}}},"generated":true};
+ilib.data.dateformats_ar_YE = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd‏/MM","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d‏/M‏/yyyy","m":"dd‏/MM‏/yyyy","l":"d MMM، y","f":"d MMMM، y"},"my":{"s":"M‏/yyyy","m":"MM‏/yyyy","l":"MMM y","f":"MMMM، y"},"m":{"s":"MM","m":"MM"},"d":{"f":"dd","l":"dd","m":"dd"},"y":{"l":"yyyy"},"dmwy":{"s":"E، d/‏M/‏yyyy","l":"EEE، d MMM، y","f":"EEEE، d MMM، y"},"dmw":{"l":"EEEE، d MMM","f":"EEEE، d MMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","hms":"h:mm:ss a","ahmz":"XXXXXh:mm a z","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahmz":"XXXXX H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}/{sm}/{sy}","m":"{st}–{et}{sd}/{sm}/{sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"}}},"generated":true};
+ilib.data.dateformats_asa = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d","f":"MMMM d"},"dmy":{"m":"d MMM yy"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}–{et} {sd}/{sm}/{sy}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sd} {sm} {sy}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_as = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sy} {sm} {sd}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_az = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"d MMM"},"dmy":{"s":"yy-M-d","m":"d MMM, yy","l":"d MMM, yyyy","f":"d, MMMM, yyyy"},"my":{"s":"yy-M","m":"MMM, yy","l":"MMM, yyyy","f":"MMMM, yyyy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, d, MMM, yyyy","f":"EEEE, d, MMM, yyyy"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE, d, MMM","f":"EEEE, d, MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sd} {sm} {sy}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_bas = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"d MMM"},"dmy":{"m":"d MMM, yy"},"my":{"m":"MMM, yy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E d/M/yy","m":"EE d/M/yy","f":"EEEE d MMM yyyy"},"dmw":{"s":"E d/M","m":"EE d/M","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sd}/{sm}/{sy}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sd} {sm} {sy}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_be = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"dd/M","f":"MMMM d"},"dmy":{"s":"d.M.yy","m":"dd/MM/yyyy"},"my":{"s":"MM/yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, dd/MM/yyyy","m":"EE, dd/MM/yyyy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, d MMM","m":"EE, d MMM","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH.mm.ss z","ahms":"h.mm.ss a","hms":"h.mm.ss a","ms":"mm.ss a","ahmz":"HH.mm","ahm":"h.mm a","hm":"h.mm a"},"24":{"ahmsz":"HH.mm.ss z","ahms":"H.mm.ss","hms":"H.mm.ss","ms":"mm.ss","ahmz":"HH.mm"}},"range":{"c00":{"s":"{st}–{et} {sd}.{sm}.{sy}","m":"{st}–{et} {sd}/{sm}/{sy}","l":"{st}–{et} {sd} {sm} {sy}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_bem = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d","f":"MMMM d"},"dmy":{"m":"d MMM yy"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}–{et} {sd}/{sm}/{sy}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sd} {sm} {sy}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_bg = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d.M","m":"dd.MM"},"dmy":{"s":"dd.MM.yy","m":"dd.MM.yy","l":"dd MMM yyyy","f":"dd MMMM yyyy"},"my":{"s":"M.yyyy 'г'.","m":"MM.yyyy","l":"MMM yyyy 'г'."},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, d.MM.yy 'г'.","m":"EE, d.MM.yy 'г'.","l":"EEE, d MMM yyyy 'г'.","f":"EEEE, d MMM yyyy 'г'."},"dmw":{"s":"E, d.MM","m":"EE, d.MM","l":"d MMM, EEEE","f":"d MMM, EEEE"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st} - {et} {sd}.{sm}.{sy}","m":"{st} - {et} {sd}.{sm}.{sy}","l":"{st} - {et} {sd} {sm} {sy}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} - {et} {ed}.{em}.{ey}","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","f":"{st} {sd} - {et} {ed}.{em}.{ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} {sm} - {et} {ed} {em} {ey}","f":"{st} {sd} {sm} - {et} {ed} {em} {ey}","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} - {ed} {em} {ey}","f":"{sd} - {ed} {em} {ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} {sm} - {ed} {em} {ey}","f":"{sd} {sm} - {ed} {em} {ey}"},"c12":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}"},"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}","f":"{sm} {sy} . - {em} {ey} ."}}},"generated":true};
+ilib.data.dateformats_bm = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd/MM"},"dmy":{"m":"d MMM, yy","l":"d MMM yy"},"my":{"m":"MM/yy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E d/M/yy","m":"EE d/M/yy","f":"EEEE d MMM yyyy"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sd}/{sm}/{sy}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sd} {sm} {sy}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_bn = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"d MMM, yy","l":"d MMM, yyyy","f":"d MMMM, yyyy"},"my":{"s":"M/yyyy","m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM, yyyy","f":"EEEE, d MMM, yyyy"},"dmw":{"s":"E, d-M","m":"EE, d-M","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} – {ey}–{em}–{sy}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_br = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sy} {sm} {sd}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_bs = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"dd.MM.","m":"dd.M","l":"dd. MMM","f":"dd. MMMM"},"dmy":{"s":"dd.MM.yy","m":"dd.MM.yyyy","l":"dd. MMM yyyy","f":"dd. MMMM yyyy"},"my":{"s":"MM.yy","m":"MM.yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"m":{"s":"MM","f":"MMM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, dd.MM.yyyy","m":"EE, dd.MM.yyyy","l":"EEE, dd. MMM yyyy.","f":"EEEE, dd. MMM yyyy."},"dmw":{"s":"E, dd.MM.","m":"EE, dd.MM.","l":"EEEE, dd. MMM","f":"EEEE, dd. MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"hh:mm:ss a z","ahms":"hh:mm:ss a","hms":"hh:mm:ss a","ahmz":"hh:mm a z","ahm":"hh:mm a","hm":"hh:mm a"},"24":{"ahmsz":"H:mm:ss z","ahmz":"H:mm z"}},"range":{"c00":{"s":"{st}–{et}{sd}.{sm}.{sy}","m":"{st}–{et}{sd}.{sm}.{sy}","l":"{st}–{et}{sd}. {sm} {sy}.","f":"{st}–{et}{sd}. {sm} {sy}"},"c01":{"s":"{st}{sy}{sm}{sd} –{et} {ed}","l":"{st}{sy}{sm}{sd} –{et} {ed}","m":"{st}{sy}{sm}{sd} –{et} {ed}","f":"{st}{sy}{sm}{sd} –{et} {ed}"},"c02":{"s":"{st}{sy}{sm}{sd} –{et} {em}{ed}","l":"{st}{sy}{sm}{sd} –{et} {em}{ed}","f":"{st}{sy}{sm}{sd} –{et} {em}{ed}","m":"{st}{sy}{sm}{sd} –{et} {em}{ed}"},"c10":{"s":"{sy}{sm}{sd} – {ed}","l":"{sy}{sm}{sd} – {ed}","f":"{sy}{sm}{sd} – {ed}","m":"{sy}{sm}{sd} – {ed}"},"c11":{"s":"{sy}{sm}{sd} – {em}{ed}","m":"{sy}{sm}{sd} – {em}{ed}","l":"{sy}{sm}{sd} – {em}{ed}","f":"{sy}{sm}{sd} – {em}{ed}"},"c12":{"s":"{sy}{sm}{sd} – {ey}{em}{ed}","m":"{sy}{sm}{sd} – {ey}{em}{ed}","l":"{sy}{sm}{sd} – {ey}{em}{ed}","f":"{sy}{sm}{sd} – {ey}{em}{ed}"},"c20":{"s":"{sy}{sm} – {ey}{em}","m":"{sy}{sm} – {ey}{em}","l":"{sy}{sm} – {ey}{em}","f":"{sy}{sm} – {ey}{em}"},"c30":"{sy}–{ey}"}}}
 ;
+ilib.data.dateformats_bs_Cyrl_BA = {"gregorian":{"date":{"dmy":{"s":"d.M.yy"}},"range":{"c00":{"s":"{st}-{et}{sd}.{sm}.{sy}","m":"{st}-{et}{sd}.{sm}.{sy}","l":"{st}-{et}{sd}. {sm} {sy}.","f":"{st}-{et}{sd}. {sm} {sy}"},"c01":{"s":"{st}{sd}.{sm}.{sy}. -{et} {ed}.{em}.{ey}.","l":"{st}{sd}.-{et} {ed}.{em}.{ey}.","m":"{st}{sd}.{sm}.{sy}. -{et} {ed}.{em}.{ey}.","f":"{st}{sd}.-{et} {ed}.{em}.{ey}."},"c02":{"s":"{st}{sd}.{sm}.{sy}. -{et} {ed}.{em}.{ey}.","l":"{st}{sd}. {sm} -{et} {ed}. {em} {ey}.","f":"{st}{sd}. {sm} -{et} {ed}. {em} {ey}.","m":"{st}{sd}.{sm}.{sy}. -{et} {ed}.{em}.{ey}."},"c10":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}.-{ed}. {em} {ey}.","f":"{sd}.-{ed}. {em} {ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}."},"c11":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. {sm} - {ed}. {em} {ey}.","f":"{sd}. {sm} - {ed}. {em} {ey}."},"c12":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. {sm} {sy}. - {ed}. {em} {ey}.","f":"{sd}. {sm} {sy}. - {ed}. {em} {ey}."},"c20":{"s":"{sm}.{sy}. - {em}.{ey}.","m":"{sm}.{sy}. - {em}.{ey}.","l":"{sm} {sy}. - {em} {ey}.","f":"{sm} {sy}. - {em} {ey}."},"c30":"{sy}-{ey}"}},"generated":true};
+ilib.data.dateformats_ca = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd/MM"},"dmy":{"s":"d/M/yyyy","m":"dd/MM/yyyy","f":"MMMM 'de' yyyy"},"my":{"s":"M/yyyy","f":"MMMM 'de' yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, d.M.yy","m":"EE, d.M.yy","l":"EEE, d MMM, yyyy","f":"EEEE, d MMM, yyyy"},"dmw":{"s":"E d/M","m":"EE d/M","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"H.mm.ss z","ahms":"h.mm.ss a","hms":"h.mm.ss a","ms":"mm.ss a","ahmz":"H.mm","ahm":"h.mm a","hm":"h.mm a"},"24":{"ahmsz":"H.mm.ss z","ahms":"H.mm.ss","hms":"H.mm.ss","ms":"mm.ss","ahmz":"H.mm"}},"range":{"c00":{"m":"{st} - {et} {sd}/{sm}/{sy}","l":"{st} - {et} {sd} {sm} {sy}","f":"{st} - {et} {sm} {sd} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sd} - {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","f":"{st} {sd} - {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} - {et} {ed} {em} {sd} {ey}","f":"{st} {sd} {sm} - {et} {ed} {em} {sd} {ey}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} - {ed} {em} {sd} {ey}","f":"{sd} - {ed} {em} {sd} {ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} - {ed} {em} {sd} {ey}","f":"{sd} {sm} - {ed} {em} {sd} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sd} {sy} - {ed} {em} {sd} {ey}","f":"{sd} {sm} {sd} {sy} - {ed} {em} {sd} {ey}"},"c20":{"s":"{sm}/{sy} - {em}/{ey}","l":"{sm} {sd} {sy} - {em} {ed} {ey}","f":"{sm} {sd} {sy} - {em} {ed} {ey}"}}},"generated":true};
+ilib.data.dateformats_cs = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d. M.","m":"d. M","l":"d. M.","f":"d. MMMM"},"dmy":{"s":"d. M. yyyy","m":"d. M. yyyy","l":"d. M. yyyy","f":"d. MMMM yyyy"},"my":{"s":"M/yyyy","m":"M. yyyy","l":"MMMM yyyy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, d. M. yy","m":"EE, d. M. yy","l":"EEE, d. M. yyyy","f":"EEEE, d. M. yyyy"},"dmw":{"s":"E, d. M.","m":"EE, d. M.","l":"EEEE, d. M.","f":"EEEE, d. M."},"n":{"m":"N"}},"time":{"12":{"ahmsz":"H:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"H:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmz":"H:mm"}},"range":{"c00":{"s":"{st} – {et} {sd}. {sm}. {sy}","m":"{st} – {et} {sd}. {sm}. {sy}","l":"{st} – {et} {sd}. {sm}. {sy}","f":"{st} – {et} {sd}. {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd}. – {et} {ed}.{em}.{ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","f":"{st} {sd}. – {et} {ed}.{em}.{ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd}. {sm}. – {et} {ed}. {em}. {ey}","f":"{st} {sd}. {sm}. – {et} {ed}. {em}. {ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. – {ed}. {em}. {ey}","f":"{sd}. – {ed}. {em}. {ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm}. – {ed}. {em}. {ey}","f":"{sd}. {sm}. – {ed}. {em}. {ey}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm}. {sy} – {ed}. {em}. {ey}","f":"{sd}. {sm}. {sy} – {ed}. {em}. {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_da = {
 	"gregorian": {
 		"order": "{date} {time}",
@@ -9541,8 +9089,8 @@ ilib.data.dateformats_da = {
 				"f": "EEEE 'den' d. MMMM yyyy"
 			},
 			"dmy": {
-				"s": "d/M/yy",
-				"m": "d/M/yyyy",
+				"s": "dd/MM/yy",
+				"m": "dd/MM/yyyy",
 				"l": "d. MMM yyyy",
 				"f": "d. MMMM yyyy"
 			},
@@ -9571,10 +9119,10 @@ ilib.data.dateformats_da = {
 				"f": "EEEE 'den' d."
 			},
 			"d": {
-				"s": "d.",
-				"m": "d.",
-				"l": "d.",
-				"f": "d."
+				"s": "d",
+				"m": "d",
+				"l": "d",
+				"f": "d"
 			},
 			"m": {
 				"s": "M",
@@ -9596,26 +9144,36 @@ ilib.data.dateformats_da = {
 			}
 		},
 		"time": {
-			"ahmsz": "H.mm.ss a Z",
-			"ahms": "H.mm.ss a",
-			"hmsz": "H.mm.ss Z",
-			"ahmz": "H.mm a Z",
-			"hms": "H.mm.ss",
-			"ahm": "H.mm a",
-			"hmz": "H.mm Z",
-			"ah": "H",
-			"hm": "H.mm",
-			"ms": "mm.ss",
-			"h": "H",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "h.mm.ss a Z",
+				"ahms": "h.mm.ss a",
+				"hmsz": "h.mm.ss Z",
+				"ahmz": "h.mm a Z",
+				"hms": "h.mm.ss",
+				"ahm": "h.mm a",
+				"hmz": "h.mm Z",
+				"ah": "h a",
+				"hm": "h.mm",
+				"ms": "mm.ss"
+			},
+			"24": {
+				"ahmsz": "H.mm.ss Z",
+				"ahms": "H.mm.ss",
+				"hmsz": "H.mm.ss Z",
+				"ahmz": "H.mm Z",
+				"hms": "H.mm.ss",
+				"ahm": "H.mm",
+				"hmz": "H.mm Z",
+				"hm": "H.mm",
+				"ms": "mm.ss"
+			}
 		},
 		"range": {
 			"c00": {
 				"s": "{sd}/{sm}/{sy} {st} - {et}",
 				"m": "{sd}/{sm}/{sy} {st} - {et}",
 				"l": "{sd}/{sm}/{sy} {st} - {et}",
-				"f": "{sd} 'den' {sm} {sy} {st} - {et} "
+				"f": "{sd} 'den' {sm} {sy} {st} - {et}"
 			},
 			"c01": {
 				"s": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
@@ -9725,19 +9283,30 @@ ilib.data.dateformats_de = {
 			}
 		},
 		"time": {
-			"ahmsz": "HH:mm:ss a z",
-			"ahms": "HH:mm:ss a",
-			"hmsz": "HH:mm:ss z",
-			"hms": "HH:mm:ss",
-			"ahmz": "HH:mm a z",
-			"ahm": "HH:mm a",
-			"hmz": "HH:mm z",
-			"ah": "HH",
-			"hm": "HH:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "hh:mm:ss a z",
+				"ahms": "hh:mm:ss a",
+				"hmsz": "hh:mm:ss z",
+				"hms": "hh:mm:ss",
+				"ahmz": "hh:mm a z",
+				"ahm": "hh:mm a",
+				"hmz": "hh:mm z",
+				"ah": "hh a",
+				"hm": "hh:mm",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH:mm:ss z",
+				"ahms": "HH:mm:ss",
+				"hmsz": "HH:mm:ss z",
+				"hms": "HH:mm:ss",
+				"ahmz": "HH:mm z",
+				"ahm": "HH:mm",
+				"hmz": "HH:mm z",
+				"ah": "HH",
+				"hm": "HH:mm",
+				"h": "HH"
+			}
 		},
 		"range": {
 			"c00": {
@@ -9791,23 +9360,9 @@ ilib.data.dateformats_de = {
 			"c30": "{sy} - {ey}"
 		}
 	}
-};
-ilib.data.dateformats_en_AU = {
-	"gregorian": {
-		"time": {
-			"ahmsz": "h:mm:ssa z",
-			"ahms": "h:mm:ssa",
-			"hmsz": "h:mm:ss z",
-			"hms": "h:mm:ss",
-			"ahmz": "h:mma z",
-			"ahm": "h:mma",
-			"hmz": "h:mm z",
-			"ah": "ha",
-			"hm": "h:mm",
-			"h": "h"
-		}
-	}
-};
+}
+;
+ilib.data.dateformats_el = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd/MM"},"dmy":{"s":"d/M/yyyy","m":"d MMM y"},"my":{"s":"M/yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, d/M/yyyy","m":"EE, d/M/yyyy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"m":"{st} - {et} {sd} {sm} {sy}","l":"{st} - {et} {sd} {sm} {sy}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sd} - {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","f":"{st} {sd} - {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} - {et} {ed} {em} {ey}","f":"{st} {sd} {sm} - {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} - {ed} {em} {ey}","f":"{sd} - {ed} {em} {ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} - {ed} {em} {ey}","f":"{sd} {sm} - {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}"},"c20":{"s":"{sm}/{sy} - {em}/{ey}"}}},"generated":true};
 ilib.data.dateformats_en_CA = {
 	"gregorian": {
 		"date": {
@@ -9819,18 +9374,6 @@ ilib.data.dateformats_en_CA = {
 				"l": "d MMM, yyyy",
 				"f": "d MMMM, yyyy"
 			}
-		},
-		"time": {
-			"ahmsz": "h:mm:ssa z",
-			"ahms": "h:mm:ssa",
-			"hmsz": "h:mm:ss z",
-			"hms": "h:mm:ss",
-			"ahmz": "h:mma z",
-			"ahm": "h:mma",
-			"hmz": "h:mm z",
-			"ah": "ha",
-			"hm": "h:mm",
-			"h": "h"
 		},
 		"range": {
 			"c00": {
@@ -9859,39 +9402,8 @@ ilib.data.dateformats_en_CA = {
 			}
 		}
 	}
-};
-ilib.data.dateformats_en_NZ = {
-	"gregorian": {
-		"time": {
-			"ahmsz": "h:mm:ssa z",
-			"ahms": "h:mm:ssa",
-			"hmsz": "h:mm:ss z",
-			"hms": "h:mm:ss",
-			"ahmz": "h:mma z",
-			"ahm": "h:mma",
-			"hmz": "h:mm z",
-			"ah": "ha",
-			"hm": "h:mm",
-			"h": "h"
-		}
-	}
-};
-ilib.data.dateformats_en_PH = {
-	"gregorian": {
-		"time": {
-			"ahmsz": "h:mm:ssa z",
-			"ahms": "h:mm:ssa",
-			"hmsz": "h:mm:ss z",
-			"hms": "h:mm:ss",
-			"ahmz": "h:mma z",
-			"ahm": "h:mma",
-			"hmz": "h:mm z",
-			"ah": "ha",
-			"hm": "h:mm",
-			"h": "h"
-		}
-	}
-};
+}
+;
 ilib.data.dateformats_en_US = {
 	"gregorian": {
 		"date": {
@@ -9919,21 +9431,6 @@ ilib.data.dateformats_en_US = {
 				"l": "MMM d",
 				"f": "MMMM d"
 			}
-		},
-		"time": {
-			"ahmsz": "h:mm:ssa z",
-			"ahms": "h:mm:ssa",
-			"hmsz": "h:mm:ss z",
-			"hms": "h:mm:ss",
-			"ahmz": "h:mma z",
-			"ahm": "h:mma",
-			"hmz": "h:mm z",
-			"ah": "ha",
-			"hm": "h:mm",
-			"ms": "mm:ss",
-			"h": "h",
-			"m": "mm",
-			"s": "ss"
 		},
 		"range": {
 			"c00": {
@@ -9987,7 +9484,8 @@ ilib.data.dateformats_en_US = {
 			"c30": "{sy} - {ey}"
 		}
 	}
-};
+}
+;
 ilib.data.dateformats_en_ZA = {
 	"gregorian": {
 		"order": "{date} {time}",
@@ -10048,19 +9546,22 @@ ilib.data.dateformats_en_ZA = {
 			}
 		},
 		"time": {
-			"ahmsz": "h:mm:ss a Z",
-			"ahms": "h:mm:ss a ",
-			"hmsz": "h:mm:ss Z",
-			"ahmz": "h:mm a Z",
-			"hms": "h:mm:ss",
-			"ahm": "h:mm a",
-			"hmz": "h:mm Z",
-			"ah": "h a",
-			"hm": "h:mm",
-			"ms": "mm:ss",
-			"h": "h",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "h:mm:ss a Z",
+				"ahms": "h:mm:ss a ",
+				"hmsz": "h:mm:ss Z",
+				"ahmz": "h:mm a Z",
+				"ahm": "h:mm a",
+				"hmz": "h:mm Z",
+				"ah": "h a"
+			},
+			"24": {
+				"ahmsz": "H:mm:ss Z",
+				"hmsz": "H:mm:ss Z",
+				"ahmz": "H:mm Z",
+				"hmz": "H:mm Z",
+				"h": "H"
+			}
 		},
 		"range": {
 			"c00": {
@@ -10177,58 +9678,203 @@ ilib.data.dateformats_es = {
 			}
 		},
 		"time": {
-			"ahmsz": "hh:mm:ssa z",
-			"ahms": "hh:mm:ssa",
-			"hmsz": "HH:mm:ss z",
-			"hms": "HH:mm:ss",
-			"ahmz": "hh:mma z",
-			"ahm": "hh:mma",
-			"hmz": "HH:mm z",
-			"ah": "HH",
-			"hm": "HH:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
-		}
-	}
-};
-ilib.data.dateformats_es_AR = {
-	"gregorian": {
-		"time": {
-			"ahmsz": "HH'h'mm:ss a Z",
-			"ahms": "HH'h'mm:ss a",
-			"hmsz": "HH'h'mm:ss Z",
-			"ahmz": "HH'h'mm a Z",
-			"hms": "HH'h'mm:ss",
-			"ahm": "HH'h'mm a",
-			"hmz": "HH'h'mm Z",
-			"ah": "HH",
-			"hm": "HH'h'mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "hh:mm:ssa z",
+				"ahms": "hh:mm:ssa",
+				"hmsz": "hh:mm:ss z",
+				"hms": "hh:mm:ss",
+				"ahmz": "hh:mma z",
+				"ahm": "hh:mma",
+				"hmz": "hh:mm z",
+				"ah": "hha",
+				"hm": "hh:mm",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH:mm:ss z",
+				"ahms": "HH:mm:ss",
+				"hmsz": "HH:mm:ss z",
+				"hms": "HH:mm:ss",
+				"ahmz": "HH:mm z",
+				"ahm": "HH:mm",
+				"hmz": "HH:mm z",
+				"ah": "HH",
+				"hm": "HH:mm",
+				"h": "HH"
+			}
 		}
 	}
 }
 ;
-ilib.data.dateformats_es_MX = {
+ilib.data.dateformats_es_AR = {
 	"gregorian": {
 		"time": {
-			"ahmsz": "h:mm:ssa z",
-			"ahms": "h:mm:ssa",
-			"hmsz": "h:mm:ss z",
-			"hms": "h:mm:ss",
-			"ahmz": "h:mma z",
-			"ahm": "h:mma",
-			"hmz": "h:mm z",
-			"ah": "ha",
-			"hm": "h:mm",
-			"h": "h"
+			"12": {
+				"ahmsz": "hh'h'mm:ss a Z",
+				"ahms": "hh'h'mm:ss a",
+				"hmsz": "hh'h'mm:ss Z",
+				"ahmz": "hh'h'mm a Z",
+				"hms": "hh'h'mm:ss",
+				"ahm": "hh'h'mm a",
+				"hmz": "hh'h'mm Z",
+				"ah": "hh a",
+				"hm": "hh'h'mm"
+			},
+			"24": {
+				"ahmsz": "HH'h'mm:ss Z",
+				"ahms": "HH'h'mm:ss",
+				"hmsz": "HH'h'mm:ss Z",
+				"ahmz": "HH'h'mm Z",
+				"hms": "HH'h'mm:ss",
+				"ahm": "HH'h'mm",
+				"hmz": "HH'h'mm Z",
+				"hm": "HH'h'mm"
+			}
 		}
 	}
-};
+}
+;
+ilib.data.dateformats_et = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d.M","m":"dd.MM","l":"d. MMM","f":"d. MMMM"},"dmy":{"s":"d.M.yyyy","m":"dd.MM.yyyy","l":"d. MMM yyyy","f":"d. MMMM yyyy"},"my":{"s":"M.yyyy","m":"MM.yyyy"},"m":{"s":"MM","l":"MMMM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"s":"yyyy"},"dmwy":{"s":"E, d.M yy","m":"EE, d.M yy","l":"EEE, d. MMMM yyyy","f":"EEEE, d. MMMM yyyy"},"dmw":{"s":"E, d.M","m":"EE, d.M","l":"EEEE, d. MMM","f":"EEEE, d. MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"H:mm.ss z","ahms":"h:mm.ss a","hms":"h:mm.ss a","ms":"mm.ss a","ahmz":"H:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm.ss z","ahms":"H:mm.ss","hms":"H:mm.ss","ms":"mm.ss","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}–{et} {sd}.{sm}.{sy}","m":"{st}–{et} {sd}.{sm}.{sy}","l":"{st}–{et} {sd}. {sm} {sy}","f":"{st}–{et} {sd}. {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy}–{et} {ed}.{em}.{ey}","l":"{st} {sd}.–{et} {ed}.{em}.{ey}","m":"{st} {sd}.{sm}.{sy}–{et} {ed}.{em}.{ey}","f":"{st} {sd}.–{et} {ed}.{em}.{ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy}–{et} {ed}.{em}.{ey}","l":"{st} {sd}. {sm}–{et} {ed}. {em} {ey}","f":"{st} {sd}. {sm}–{et} {ed}. {em} {ey}","m":"{st} {sd}.{sm}.{sy}–{et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy}–{ed}.{em}.{ey}","l":"{sd}.–{ed}. {em} {ey}","f":"{sd}.–{ed}. {em} {ey}","m":"{sd}.{sm}.{sy}–{ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy}–{ed}.{em}.{ey}","m":"{sd}.{sm}.{sy}–{ed}.{em}.{ey}","l":"{sd}. {sm}–{ed}. {em} {ey}","f":"{sd}. {sm}–{ed}. {em} {ey}"},"c12":{"s":"{sd}.{sm}.{sy}–{ed}.{em}.{ey}","m":"{sd}.{sm}.{sy}–{ed}.{em}.{ey}","l":"{sd}. {sm} {sy}–{ed}. {em} {ey}","f":"{sd}. {sm} {sy}–{ed}. {em} {ey}"},"c20":{"s":"{sm}.{sy}–{em}.{ey}","m":"{sm}.{sy}–{em}.{ey}","l":"{sm} {sy}–{em} {ey}","f":"{sm} {sy}–{em} {ey}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_fa = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM"},"dmy":{"s":"yy/M/d","m":"d MMM yy"},"my":{"s":"yy/M","m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E yy/M/d","m":"EE yy/M/d","f":"EEEE d MMM yyyy"},"dmw":{"s":"E M/d","m":"EE M/d","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"H:mm:ss (z)","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"H:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss (z)","ahmz":"H:mm"}},"range":{"c00":{"s":"{st} ت {et} {sy}/{sm}/{sd}","m":"{st} ت {et} {sd} {sm} {sy}","l":"{st} ت {et} {sd} {sm} {sy}","f":"{st} ت {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","l":"{st} ت {et} {ey}/{em}/{ed}","m":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","f":"{st} ت {et} {ey}/{em}/{ed}"},"c02":{"s":"{st} ت {et} {ey}/{em}/{ed} {ey}/{sm}/{sd}","l":"{st} ت {et} {ed} {em} {sd} {sm} {ey}","f":"{st} ت {et} {ed} {em} {sd} {sm} {ey}","m":"{st} ت {et} {ey}/{em}/{ed} {ey}/{sm}/{sd}"},"c10":{"s":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","l":" ت {ed} {sd} {em} {ey}","f":" ت {ed} {sd} {em} {ey}","m":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}"},"c11":{"s":" ت {ey}/{em}/{ed} {ey}/{sm}/{sd}","m":" ت {ey}/{em}/{ed} {ey}/{sm}/{sd}","l":" ت {ed} {em} {sd} {sm} {ey}","f":" ت {ed} {em} {sd} {sm} {ey}"},"c12":{"s":" ت {ey}/{em}/{ed} {ey}/{sm}/{sd}","m":" ت {ey}/{em}/{ed} {ey}/{sm}/{sd}","l":" ت {ed} {em} {ey} {sd} {sm} {ey}","f":" ت {ed} {em} {ey} {sd} {sm} {ey}"},"c20":{"s":" ت {ey}/{em} {sy}/{sm}","m":" ت {ey}/{em} {sy}/{sm}","l":" ت {em} {ey} {sm} {sy}","f":" ت {em} {ey} {sm} {sy}"},"c30":"{sy} ت {ey}"}},"generated":true};
+ilib.data.dateformats_ff = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd/MM"},"dmy":{"s":"yy-M-d","m":"d MMM, yy","l":"d MMM yy"},"my":{"m":"MM/yy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E d/M/yy","m":"EE d/M/yy","f":"EEEE d MMM yyyy"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sd} {sm} {sy}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_fi = {
+	"gregorian": {
+		"order": "{date} {time}",
+		"date": {
+			"dmwy": {
+				"s": "E d.M.yy",
+				"m": "EE d.M.yyyy",
+				"l": "EEE d. MMM yyyy",
+				"f": "EEEE d. MMMM yyyy"
+			},
+			"dmy": {
+				"s": "d.M.yy",
+				"m": "d.M.yyyy",
+				"l": "d. MMM yyyy",
+				"f": "d. MMMM yyyy"
+			},
+			"dmw": {
+				"s": "E d.M.",
+				"m": "EE d.M.",
+				"l": "EEE d. MMM",
+				"f": "EEEE d. MMMM"
+			},
+			"dm": {
+				"s": "d.M",
+				"m": "d.M",
+				"l": "d. MMM",
+				"f": "d. MMMM"
+			},
+			"my": {
+				"s": "M.yy",
+				"m": "M.yyyy",
+				"l": "MMM yyyy",
+				"f": "MMMM yyyy"
+			},
+			"d": {
+				"s": "d",
+				"m": "d",
+				"l": "d",
+				"f": "d"
+			},
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
+			},
+			"y": {
+				"s": "yy",
+				"m": "yyyy",
+				"l": "yyyy",
+				"f": "yyyy"
+			},
+			"n": {
+				"s": "N",
+				"m": "N",
+				"l": "MMM",
+				"f": "MMMM"
+			}
+		},
+		"time": {
+			"12": {
+				"ahmsz": "h.mm.ss a Z",
+				"ahms": "h.mm.ss a",
+				"hmsz": "h.mm.ss Z",
+				"ahmz": "h.mm a Z",
+				"hms": "h.mm.ss",
+				"ahm": "h.mm a",
+				"hmz": "h.mm Z",
+				"ah": "h a",
+				"hm": "h.mm",
+				"ms": "mm.ss"
+			},
+			"24": {
+				"ahmsz": "H.mm.ss Z",
+				"ahms": "H.mm.ss",
+				"hmsz": "H.mm.ss Z",
+				"ahmz": "H.mm Z",
+				"hms": "H.mm.ss",
+				"ahm": "H.mm",
+				"hmz": "H.mm Z",
+				"hm": "H.mm",
+				"ms": "mm.ss"
+			}
+		},
+		"range": {
+			"c00": {
+				"s": "{sd}.{sm}.{sy} {st} – {et}",
+				"m": "{sd}.{sm}.{sy} {st} – {et}",
+				"l": "{sd}. {sm} {sy} {st} – {et}",
+				"f": "{sd}. {sm} {sy} {st} – {et} "
+			},
+			"c01": {
+				"s": "{sd}.{sm} {st} – {ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm} {st} – {ed}.{em}.{ey} {et}",
+				"l": "{sd}. {st} – {ed}. {et} {sm} {sy}",
+				"f": "{sd}. {st} – {ed}. {et} {sm} {sy}"
+			},
+			"c02": {
+				"s": "{sd}.{sm} {st} – {ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm} {st} – {ed}.{em}.{ey} {et}",
+				"l": "{sd}. {sm} {st} – {ed}. {em} {sy} {et}",
+				"f": "{sd}. {sm} {st} – {ed}. {em} {sy} {et}"
+			},
+			"c03": {
+				"s": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}",
+				"l": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}",
+				"f": "{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}"
+			},
+			"c10": {
+				"s": "{sd}–{ed}.{sm}.{sy}",
+				"m": "{sd}–{ed}.{sm}.{sy}",
+				"l": "{sd}. – {ed}. {sm} {sy}",
+				"f": "{sd}. – {ed}. {sm} {sy}"
+			},
+			"c11": {
+				"s": "{sd}.{sm} – {ed}.{em}.{sy}",
+				"m": "{sd}.{sm} – {ed}.{em}.{sy}",
+				"l": "{sd}. {sm} – {ed}. {em} {sy}",
+				"f": "{sd}. {sm} – {ed}. {em} {sy}"
+			},
+			"c12": {
+				"s": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
+				"m": "{sd}.{sm}.{sy} – {ed}.{em}.{ey}",
+				"l": "{sd}. {sm} {sy} – {ed}. {em} {ey}",
+				"f": "{sd}. {sm} {sy} – {ed}. {em} {ey}"
+			},
+			"c20": {
+				"s": "{sm}.{sy} – {em}.{ey}",
+				"m": "{sm}.{sy} – {em}.{ey}",
+				"l": "{sm} {sy} – {em} {ey}",
+				"f": "{sm} {sy} – {em} {ey}"
+			},
+			"c30": "{sy} – {ey}"
+		}
+	}
+}
+;
 ilib.data.dateformats_fr = {
 	"gregorian": {
 		"order": "{time} {date}",
@@ -10284,19 +9930,30 @@ ilib.data.dateformats_fr = {
 			}
 		},
 		"time": {
-			"ahmsz": "HH:mm:ss a z",
-			"ahms": "HH:mm:ss a",
-			"hmsz": "HH:mm:ss z",
-			"hms": "HH:mm:ss",
-			"ahmz": "HH:mm a z",
-			"ahm": "HH:mm a",
-			"hmz": "HH:mm z",
-			"ah": "HH",
-			"hm": "HH:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "hh:mm:ss a z",
+				"ahms": "hh:mm:ss a",
+				"hmsz": "hh:mm:ss z",
+				"hms": "hh:mm:ss",
+				"ahmz": "hh:mm a z",
+				"ahm": "hh:mm a",
+				"hmz": "hh:mm z",
+				"ah": "hh a",
+				"hm": "hh:mm",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH:mm:ss z",
+				"ahms": "HH:mm:ss",
+				"hmsz": "HH:mm:ss z",
+				"hms": "HH:mm:ss",
+				"ahmz": "HH:mm z",
+				"ahm": "HH:mm",
+				"hmz": "HH:mm z",
+				"ah": "HH",
+				"hm": "HH:mm",
+				"h": "HH"
+			}
 		},
 		"range": {
 			"c00": {
@@ -10350,24 +10007,16 @@ ilib.data.dateformats_fr = {
 			"c30": "{sy} - {ey}"
 		}
 	}
-};
-ilib.data.dateformats_fr_CA = {
-	"gregorian": {
-		"time": {
-			"ahmsz": "h:mm:ssa z",
-			"ahms": "h:mm:ssa",
-			"hmsz": "h:mm:ss z",
-			"hms": "h:mm:ss",
-			"ahmz": "h:mma z",
-			"ahm": "h:mma",
-			"hmz": "h:mm z",
-			"ah": "ha",
-			"hm": "h:mm",
-			"h": "h"
-		}
-	}
-};
-ilib.data.dateformats_he = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d/M","m":"dd/MM","l":"d בMMM","f":"d בMMMM"},"dmy":{"s":"d.M.yyyy","m":"d בMMM yyyy","l":"d בMMM y","f":"d בMMMM y"},"my":{"s":"M.yyyy","m":"MM/yyyy","l":"MMM y","f":"MMMM y"},"m":{"s":"MM","m":"MM","l":"MMM","f":"MMMM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"s":"yy","l":"yyyy","m":"yy","f":"y"},"dmwy":{"s":"E, d/M/y","m":"EE, d/M/y","l":"EEE, d בMMM y","f":"EEEE, d בMMM y"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d בMMM","f":"EEEE, d בMMM"},"n":{"s":"N","m":"N","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"XXXXXh:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss","ahmz":"XXXXXh:mm a z","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"XXXXXH:mm:ss z","ahms":"H:mm:ss","hms":"H:mm:ss","ms":"mm:ss","ahmz":"XXXXX H:mm z","ahm":"H:mm","ah":"H","hm":"H:mm","m":"mm","s":"ss"}},"range":{"c00":{"s":"{st}–{et}{sd}.{sm}.{sy}","m":"{st}–{et}{sd} {sm} {sy}","l":"{st}–{et}{sd} {sm} {sy}","f":"{st}–{et}{sd} {sm} {sy}"},"c01":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd}–{et} {ed}/{em}/{ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","f":"{st}{sd}–{et} {ed}/{em}/{ey}"},"c02":{"s":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}","l":"{st}{sd} {sm} –{et} {ed} {em} {ey}","f":"{st}{sd} {sm} –{et} {ed} {em} {ey}","m":"{st}{sd}/{sm}/{sy} –{et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {em} {ey}","f":"{sd}–{ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy}–{em} {ey}"},"c30":"{sy}–{ey}"}},"generated":true};
+}
+;
+ilib.data.dateformats_ga = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"d MMM","l":"MMM d"},"dmy":{"s":"yy-M-d","m":"d MMM yy","l":"yyyy MMM d"},"my":{"s":"yy-M","m":"MMM yy","l":"yyyy MMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_gl = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d-M","m":"dd/MM"},"dmy":{"m":"d MMM, yy","l":"d MMM, yyyy","f":"dd MMMM yyyy"},"my":{"s":"M-yyyy","m":"MM/yy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM, yyyy","f":"EEEE, d MMM, yyyy"},"dmw":{"s":"E, d-M","m":"EE, d-M","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_ha = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"d MMM, yy","l":"yyyy MMM d","f":"d MMMM, yyyy"},"my":{"m":"MMM, yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_he = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd/MM","l":"d בMMM","f":"d בMMMM"},"dmy":{"s":"d.M.yyyy","m":"d בMMM yyyy","l":"d בMMM yyyy","f":"d בMMMM yyyy"},"my":{"s":"M.yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d בMMM yyyy","f":"EEEE, d בMMM yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d בMMM","f":"EEEE, d בMMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st} – {et} {sd}.{sm}.{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_hi = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"dd-MM-yy","l":"d MMM, yy","f":"dd MMMM yyyy"},"my":{"s":"M-yyyy","m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd}{sm}{sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} {sm} – {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {ey}","f":"{sd} {sm} – {ed} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_hr = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d. M.","m":"dd. MM.","l":"d. MMM","f":"d. MMMM"},"dmy":{"s":"d. M. yy","m":"d. M. yy","l":"d. MMM yyyy.","f":"d. MMMM yyyy"},"my":{"s":"M. yyyy.","m":"MM. yyyy.","l":"MMM yyyy.","f":"MMMM yyyy."},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, d. M. yy.","m":"EE, d. M. yy.","l":"EEE, d. MMM yyyy.","f":"EEEE, d. MMM yyyy."},"dmw":{"s":"E, d. M.","m":"EE, d. M.","l":"EEEE, d. MMM","f":"EEEE, d. MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"hh:mm:ss a","hms":"hh:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"hh:mm a","hm":"hh:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st} - {et} {sd}. {sm}. {sy}","m":"{st} - {et} {sd}. {sm}. {sy}","l":"{st} - {et} {sd}. {sm} {sy}.","f":"{st} - {et} {sd}. {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","l":"{st} {sd}. - {et} {ed}.{em}.{ey}.","m":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","f":"{st} {sd}. - {et} {ed}.{em}.{ey}."},"c02":{"s":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","l":"{st} {sd}. {sm} - {et} {ed}. {em} {ey}.","f":"{st} {sd}. {sm} - {et} {ed}. {em} {ey}.","m":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}."},"c10":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. - {ed}. {em} {ey}.","f":"{sd}. - {ed}. {em} {ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}."},"c11":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. {sm} - {ed}. {em} {ey}.","f":"{sd}. {sm} - {ed}. {em} {ey}."},"c12":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. {sm} {sy}. - {ed}. {em} {ey}.","f":"{sd}. {sm} {sy}. - {ed}. {em} {ey}."},"c20":{"s":"{sm}.{sy}. - {em}.{ey}.","m":"{sm}.{sy}. - {em}.{ey}.","l":"{sm} {sy}. - {em} {ey}.","f":"{sm} {sy}. - {em} {ey}."}}},"generated":true};
+ilib.data.dateformats_hu = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M. d.","m":"MM.dd.","l":"MMM d.","f":"MMMM d."},"dmy":{"s":"yyyy.MM.dd","m":"yyyy.MM.dd","l":"yyyy. MMM d.","f":"yyyy. MMMM d"},"my":{"s":"yyyy.M.","m":"yyyy.MM","l":"yyyy. MMM","f":"yyyy. MMMM"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"yyyy.MM.dd., E","m":"yyyy.MM.dd., EE","l":"yyyy. MMM d., EEE","f":"yyyy. MMM d., EEEE"},"dmw":{"s":"M. d., E","m":"M. d., EE","l":"MMM d., EEEE","f":"MMM d., EEEE"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"H:mm:ss z","ahms":"a h:mm:ss","hms":"a h:mm:ss","ahmz":"H:mm","ahm":"a h:mm","hm":"a h:mm"},"24":{"ahmz":"H:mm"}},"range":{"c00":{"s":"{st} - {et} {sy}.{sm}.{sd}","m":"{st} - {et} {sy}.{sm}.{sd}","l":"{st} - {et} {sy}. {sm} {sd}.","f":"{st} - {et} {sy}. {sm} {sd}"},"c01":{"s":"{st} {sy}.{sm}.{sd} - {et} {ed}.","l":"{st} {sy}. {sm} {sd} - {et} {ed}.","m":"{st} {sy}.{sm}.{sd} - {et} {ed}.","f":"{st} {sy}. {sm} {sd} - {et} {ed}."},"c02":{"s":"{st} {sy}.{sm}.{sd}. - {et} {em}.{ed}.","l":"{st} {sy}. {sm} {sd}. - {et} {em} {ed}.","f":"{st} {sy}. {sm} {sd}. - {et} {em} {ed}.","m":"{st} {sy}.{sm}.{sd}. - {et} {em}.{ed}."},"c10":{"s":"{sy}.{sm}.{sd} - {ed}.","l":"{sy}. {sm} {sd} - {ed}.","f":"{sy}. {sm} {sd} - {ed}.","m":"{sy}.{sm}.{sd} - {ed}."},"c11":{"s":"{sy}.{sm}.{sd}. - {em}.{ed}.","m":"{sy}.{sm}.{sd}. - {em}.{ed}.","l":"{sy}. {sm} {sd}. - {em} {ed}.","f":"{sy}. {sm} {sd}. - {em} {ed}."},"c12":{"s":"{sy}.{sm}.{sd}. - {ey}.{em}.{ed}.","m":"{sy}.{sm}.{sd}. - {ey}.{em}.{ed}.","l":"{sy}. {sm} {sd}. - {ey}. {em} {ed}.","f":"{sy}. {sm} {sd}. - {ey}. {em} {ed}."},"c20":{"s":"{sy}.{sm}. - {ey}.{em}.","m":"{sy}.{sm}. - {ey}.{em}.","l":"{sy}. {sm} - {ey}. {em}","f":"{sy}. {sm} - {ey}. {em}"}}},"generated":true};
+ilib.data.dateformats_hy = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM dd"},"dmy":{"s":"yy-M-d","m":"MMM d, yy","l":"yyyy MMM d","f":"MMMM d, yyyy"},"my":{"s":"yy-M","m":"MMM d, yy","l":"yyyy MMM","f":"MMMM d, yyyy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sm} {sd} {sy}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sm} {sd} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
 ilib.data.dateformats_id = {
 	"gregorian": {
 		"date": {
@@ -10431,21 +10080,6 @@ ilib.data.dateformats_id = {
 				"l": "MMM",
 				"f": "MMMM"
 			}
-		},
-		"time": {
-			"ahmsz": "H:mm:ss a z",
-			"ahms": "H:mm:ss a",
-			"hmsz": "H:mm:ss z",
-			"ahmz": "H:mm a z",
-			"hms": "HH:mm:ss",
-			"ahm": "H:mm a",
-			"hmz": "H:mm z",
-			"ah": "Ha",
-			"hm": "H:mm",
-			"ms": "mm:ss",
-			"h": "H",
-			"m": "mm",
-			"s": "ss"
 		},
 		"range": {
 			"c00": {
@@ -10562,19 +10196,32 @@ ilib.data.dateformats_it = {
 			}
 		},
 		"time": {
-			"ahmsz": "hh.mm.ss a z",
-			"ahms": "hh.mm.ss a",
-			"hmsz": "HH.mm.ss z",
-			"hms": "HH.mm.ss",
-			"ahmz": "hh.mm a z",
-			"ahm": "hh.mm a",
-			"hmz": "HH.mm z",
-			"ah": "HH",
-			"hm": "HH.mm",
-			"ms": "mm.ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "hh.mm.ss a z",
+				"ahms": "hh.mm.ss a",
+				"hmsz": "hh.mm.ss z",
+				"hms": "hh.mm.ss",
+				"ahmz": "hh.mm a z",
+				"ahm": "hh.mm a",
+				"hmz": "hh.mm z",
+				"ah": "hh a",
+				"hm": "hh.mm",
+				"ms": "mm.ss",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH.mm.ss z",
+				"ahms": "HH.mm.ss",
+				"hmsz": "HH.mm.ss z",
+				"hms": "HH.mm.ss",
+				"ahmz": "HH.mm z",
+				"ahm": "HH.mm",
+				"hmz": "HH.mm z",
+				"ah": "HH",
+				"hm": "HH.mm",
+				"ms": "mm.ss",
+				"h": "HH"
+			}
 		},
 		"range": {
 			"c00": {
@@ -10628,7 +10275,8 @@ ilib.data.dateformats_it = {
 			"c30": "{sy} - {ey}"
 		}
 	}
-};
+}
+;
 ilib.data.dateformats_ja = {
 	"gregorian": {
 		"order": "{date}、{time}",
@@ -10690,19 +10338,30 @@ ilib.data.dateformats_ja = {
 			}
 		},
 		"time": {
-			"ahmsz": "aHH:mm:ss z",
-			"ahms": "aHH:mm:ss",
-			"hmsz": "HH:mm:ss z",
-			"hms": "HH:mm:ss",
-			"ahmz": "aHH:mm z",
-			"ahm": "aHH:mm",
-			"hmz": "HH:mm z",
-			"ah": "HH",
-			"hm": "HH:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "ahh:mm:ss z",
+				"ahms": "ahh:mm:ss",
+				"hmsz": "hh:mm:ss z",
+				"hms": "hh:mm:ss",
+				"ahmz": "ahh:mm z",
+				"ahm": "ahh:mm",
+				"hmz": "hh:mm z",
+				"ah": "ahh",
+				"hm": "hh:mm",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH:mm:ss z",
+				"ahms": "HH:mm:ss",
+				"hmsz": "HH:mm:ss z",
+				"hms": "HH:mm:ss",
+				"ahmz": "HH:mm z",
+				"ahm": "HH:mm",
+				"hmz": "HH:mm z",
+				"ah": "HH",
+				"hm": "HH:mm",
+				"h": "HH"
+			}
 		},
 		"range": {
 			"c00": {
@@ -10756,7 +10415,11 @@ ilib.data.dateformats_ja = {
 			"c30": "{sy}-{ey}"
 		}
 	}
-};
+}
+;
+ilib.data.dateformats_ka = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d.M.","m":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"M.yy","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, d.M.yy","m":"EE, d.M.yy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}  –  {et} {sy}{sm}{sd}","m":"{st}  –  {et} {sy} {sm} {sd}","l":"{st}  –  {et} {sy} {sm} {sd}","f":"{st}  –  {et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sd}.{sm}.{sy}  –  {et} {ed}.{em}.{ey}","l":"{st} {sy}  –  {et} {ed}.{em}.{ey}","m":"{st} {sd}.{sm}.{sy}  –  {et} {ed}.{em}.{ey}","f":"{st} {sy}  –  {et} {ed}.{em}.{ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy}  –  {et} {ed}.{em}.{ey}","l":"{st} {sy}  –  {et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}  –  {et} {em}–{ed} – {sm}–{sd}","m":"{st} {sd}.{sm}.{sy}  –  {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy}  –  {ed}.{em}.{ey}","l":"{sy}  –  {em}–{ed} – {sd}","f":"{sy}  –  {em}–{ed} – {sd}","m":"{sd}.{sm}.{sy}  –  {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy}  –  {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy}  –  {ed}.{em}.{ey}","l":"{sy}  –  {em}–{ed} – {sm}–{sd}","f":"{sy}  –  {em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sd}.{sm}.{sy}  –  {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy}  –  {ed}.{em}.{ey}","l":"{sy}  –  {em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}  –  {em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sm}.{sy}  –  {em}.{ey}","m":"{sm}.{sy}  –  {em}.{ey}","l":"{sm} {sy}  –  {em} {ey}","f":"{sm}.{sy}  –  {em}.{ey}"},"c30":"{sy}  –  {ey}"}},"generated":true};
+ilib.data.dateformats_kk = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"dd.MM","l":"MMM d"},"dmy":{"s":"yyyy-M-d","m":"dd.MM.yyyy","l":"yyyy MMM d"},"my":{"s":"yyyy-M","m":"MM.yyyy","l":"yyyy MMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st} - {et} {sy}{sm}{sd}","m":"{st} - {et} {sd}.{sm}.{sy}","l":"{st} - {et} {sy} {sm} {sd}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} - {et} {ed}.{em}.{ey}","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","f":"{st} {sd} - {et} {ed}.{em}.{ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} {sm} - {et} {ed} {em} {ey} .","f":"{st} {sd} {sm} - {et} {ed} {em} {ey} .","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} - {ed} {em} {ey} .","f":"{sd} - {ed} {em} {ey} .","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} {sm} - {ed} {em} {ey} .","f":"{sd} {sm} - {ed} {em} {ey} ."},"c12":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} {sm} {sy} . - {ed} {em} {ey} .","f":"{sd} {sm} {sy} . - {ed} {em} {ey} ."},"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}","l":"{sm} {sy} . - {em} {ey} .","f":"{sy} - {em} – {ey}–{sm}"}}},"generated":true};
+ilib.data.dateformats_kn = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"d MMM yy","l":"d, MMM, yyyy"},"my":{"s":"M/yyyy","m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"s":"yyyy"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"hh:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"hh:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss  z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}  –  {et} {sd}/{sm}/{sy}","m":"{st}  –  {et} {sd} {sm} {sy}","l":"{st}  –  {et} {sd} {sm} {sy}","f":"{st}  –  {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy}  –  {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm}  –  {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy}  –  {et} {ed}/{em}/{ey}","f":"{st} {sd} {sm}  –  {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy}  –  {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm}  –  {et} {ed} {em} {ey}","f":"{st} {sd} {sm}  –  {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy}  –  {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy}  –  {ed}/{em}/{ey}","l":"{sd} {sm}  –  ed} {ey}","f":"{sd} {sm}  –  ed} {ey}","m":"{sd}/{sm}/{sy}  –  {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy}  –  {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy}  –  {ed}/{em}/{ey}","l":"{sd} {sm}  –  {ed} {em} {ey}","f":"{sd} {sm}  –  {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy}  –  {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy}  –  {ed}/{em}/{ey}","l":"{sd} {sm} {sy}  –  {ed} {em} {ey}","f":"{sd} {sm} {sy}  –  {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy}  –  {em}/{ey}","m":"{sm}/{sy}  –  {em}/{ey}","l":"{sm} {sy}  –  {em} {ey}","f":"{sm} {sy}  –  {em} {ey}"},"c30":"{sy}  –  {ey}"}},"generated":true};
 ilib.data.dateformats_ko = {
 	"gregorian": {
 		"order": "{date} {time}",
@@ -10818,19 +10481,13 @@ ilib.data.dateformats_ko = {
 			}
 		},
 		"time": {
-			"ahmsz": "a h:mm:ss z",
-			"ahms": "a h:mm:ss",
-			"hmsz": "h:mm:ss z",
-			"hms": "h:mm:ss",
-			"ahmz": "a h:mm z",
-			"ahm": "a h:mm",
-			"hmz": "h:mm z",
-			"ah": "a h",
-			"hm": "h:mm",
-			"ms": "mm:ss",
-			"h": "h",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "a h:mm:ss z",
+				"ahms": "a h:mm:ss",
+				"ahmz": "a h:mm z",
+				"ahm": "a h:mm",
+				"ah": "a h"
+			}
 		},
 		"range": {
 			"c00": {
@@ -10884,7 +10541,19 @@ ilib.data.dateformats_ko = {
 			"c30": "{sy}년에서 {ey}년까지"
 		}
 	}
-};
+}
+;
+ilib.data.dateformats_ks = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"MMM d","l":"d-MMM","f":"MMMM d"},"dmy":{"s":"yyyy-M-d","m":"MMM d, yyyy","l":"yyyy MMM d","f":"dd MMMM yyyy"},"my":{"s":"M/yyyy","m":"MMM d, yyyy"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"s":"yyyy"},"dmwy":{"s":"EEE, M/d/yyyy","m":"EE, M/d/yyyy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sm} {sd} {sy}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_lg = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"d MMM yy","l":"yyyy MMM d"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_ln = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"d MMM"},"dmy":{"m":"d MMM yy"},"my":{"m":"MMM yy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E d/M/yy","m":"EE d/M/yy","f":"EEEE d MMM yyyy"},"dmw":{"s":"E d/M","m":"EE d/M","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sd}/{sm}/{sy}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sd} {sm} {sy}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_lt = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"MM-d","m":"MM.dd","l":"MMM d","f":"MMMM d 'd"},"dmy":{"s":"yy-M-d","m":"yy-MM-d","l":"yyyy MMM d","f":"yyyy 'm'. MMMM d 'd"},"my":{"s":"yyyy-MM","m":"yyyy.MM","l":"MMM, yyyy","f":"yyyy 'm'. MMMM"},"m":{"s":"MM","f":"MMM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, yy-MM-d","m":"EE, yy-MM-d","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"M-d, E","m":"M-d, EE","l":"MMM d, EEEE","f":"MMM d, EEEE"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"hh:mm:ss a","hms":"hh:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"hh:mm a","hm":"hh:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sy}{sm}{sd}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sy} . {sm} {sd} {sd}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed}–{ey}–{sm}–{sd}","l":"{st} {sy} . {sm} {sd} {sd}.–{et} {em}–{ed}–{ey}–{sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed}–{ey}–{sm}–{sd}","f":"{st} {sy} . {sm} {sd} {sd}.–{et} {em}–{ed}–{ey}–{sm}–{sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed}– {ey}–{sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed}– {ey}–{sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed}–{ey}–{sm}–{sd}","l":"{sy} . {sm} {sd} {sd}.–{ed} {sd}.","f":"{sy} . {sm} {sd} {sd}.–{ed} {sd}.","m":"{sy}–{em}–{ed}–{ey}–{sm}–{sd}"},"c11":{"s":"{sy}–{em}–{ed}– {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed}– {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sm} {sy}–{em} {ey}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_lv = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"dd.MM.","m":"dd.M","l":"d. MMM","f":"d. MMMM"},"dmy":{"s":"d.M.yy","m":"yy. 'gada' d. MMM","l":"yyyy. 'g'. d. MMM","f":"yyyy. 'gada' d. MMMM"},"my":{"s":"MM.yyyy.","m":"MM.yyyy","l":"yyyy. 'g'. MMM","f":"yyyy. 'g'. MMMM"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"s":"yyyy"},"dmwy":{"s":"E, d.M.yy.","m":"EE, d.M.yy.","l":"EEE, yyyy. 'g'. d. MMM","f":"EEEE, yyyy. 'g'. d. MMM"},"dmw":{"s":"E, dd.MM.","m":"EE, dd.MM.","l":"EEEE, d. MMM","f":"EEEE, d. MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st} - {et} {sd}.{sm}.{sy}","m":"{st} - {et} {sy}. {sd} {sd}. {sm}","l":"{st} - {et} {sy}. . {sd}. {sm}","f":"{st} - {et} {sy}. {sd} {sd}. {sm}"},"c01":{"s":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","l":"{st} {sy}. {sd} {sd}. - {et} {ed}.{em}.{ey}.","m":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","f":"{st} {sy}. {sd} {sd}. - {et} {ed}.{em}.{ey}."},"c02":{"s":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","l":"{st} {sy}. {sd} {sd}. {sm} - {et} {ed}. {em}","f":"{st} {sy}. {sd} {sd}. {sm} - {et} {ed}. {em}","m":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}."},"c10":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sy}. {sd} {sd}. - {ed}. {em}","f":"{sy}. {sd} {sd}. - {ed}. {em}","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}."},"c11":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sy}. {sd} {sd}. {sm} - {ed}. {em}","f":"{sy}. {sd} {sd}. {sm} - {ed}. {em}"},"c12":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sy}. {sd} {sd}. {sm} - {ey}. {ed} {sd}. {em}","f":"{sy}. {sd} {sd}. {sm} - {ey}. {ed} {sd}. {em}"},"c20":{"s":"{sm}.{sy}. - {em}.{ey}.","m":"{sm}.{sy}. - {em}.{ey}.","l":"{sy}. {sd} {sm} - {ey}. {ed} {em}","f":"{sm}.{sy}. - {em}.{ey}."}}},"generated":true};
+ilib.data.dateformats_mk = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"dd.M","l":"MMM d","f":"MMMM d"},"dmy":{"s":"d-M-yyyy","m":"dd.M.yyyy","l":"yyyy MMM d","f":"dd MMMM yyyy"},"my":{"s":"yyyy-M","m":"M.yyyy","l":"yyyy MMM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st} - {et} {sd}{sm}{sy}","m":"{st} - {et} {sd}.{sm}.{sy}","l":"{st} - {et} {sy} {sm} {sd}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} - {et} {ed}.{em}.{ey}","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","f":"{st} {sd} - {et} {ed}.{em}.{ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} {sm} - {et} {ed} {em} {ey}","f":"{st} {sd} {sm} - {et} {ed} {em} {ey}","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} - {ed} {em} {ey}","f":"{sd} - {ed} {em} {ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} {sm} - {ed} {em} {ey}","f":"{sd} {sm} - {ed} {em} {ey}"},"c12":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}"},"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}","f":"{sy} - {em} – {ey}–{sm}"}}},"generated":true};
+ilib.data.dateformats_ml = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM","l":"MMM d","f":"MMMM d"},"dmy":{"m":"yy, MMM d","l":"yyyy MMM d","f":"yyyy, MMMM d"},"my":{"s":"M-yyyy","m":"MM-yyyy","l":"yyyy MMM"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"d-M-yyyy, E","m":"d-M-yyyy, EE","l":"yyyy MMM d, EEE","f":"yyyy MMM d, EEEE"},"dmw":{"s":"M/d, E","m":"M/d, EE","l":"MMM d, EEEE","f":"MMM d, EEEE"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}   -   {et} {sd}/{sm}/{sy}","m":"{st}   -   {et} {sy} {sm} {sd}","l":"{st}   -   {et} {sy} {sm} {sd}","f":"{st}   -   {et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sd}/{sm}/{sy}   -   {et} {ed}/{em}/{ey}","l":"{st} {sy} {sm} {sd}   -   {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy}   -   {et} {ed}/{em}/{ey}","f":"{st} {sy} {sm} {sd}   -   {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy}   -   {et} {ed}/{em}/{ey}","l":"{st} {sy} {sm} {sd}   -   {et} {em} {ed}","f":"{st} {sy} {sm} {sd}   -   {et} {em} {ed}","m":"{st} {sd}/{sm}/{sy}   -   {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy}   -   {ed}/{em}/{ey}","l":"{sy} {sm} {sd}   -   {ed}","f":"{sy} {sm} {sd}   -   {ed}","m":"{sd}/{sm}/{sy}   -   {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy}   -   {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy}   -   {ed}/{em}/{ey}","l":"{sy} {sm} {sd}   -   {em} {ed}","f":"{sy} {sm} {sd}   -   {em} {ed}"},"c12":{"s":"{sd}/{sm}/{sy}   -   {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy}   -   {ed}/{em}/{ey}","l":"{sy} {sm} {sd}   -   {ey} {em} {ed}","f":"{sy} {sm} {sd}   -   {ey} {em} {ed}"},"c20":{"s":"{sm}/{sy}   -   {em}/{ey}","m":"{sm}/{sy}   -   {em}/{ey}","l":"{sy} {sm}   -   {ey} {em}","f":"{sy}   -   {em} – {ey}–{sm}"},"c30":"{sy}   -   {ey}"}},"generated":true};
+ilib.data.dateformats_ms = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d-M","m":"dd/MM"},"dmy":{"s":"d/M/yyyy","m":"dd/MM/yyyy"},"my":{"s":"M-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"s":"yyyy"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, d-M","m":"EE, d-M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd}/{sm}/{sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_ms_BN = {"gregorian":{"date":{"dmy":{"f":"dd MMMM yyyy"}}},"generated":true};
+ilib.data.dateformats_nb = {"gregorian":{"date":{"dm":{"s":"d.M.","m":"d.M.","l":"d. MMM","f":"d. MMMM"},"dmy":{"s":"d.M.yyyy","m":"d.MM.y","l":"d. MMM yyyy","f":"d. MMMM yyyy"},"my":{"s":"M yy","m":"MM.yy"},"m":{"s":"MM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"m":"yy"},"dmwy":{"s":"E d.MM.yy","m":"EE d.MM.yy","l":"EEE d. MMM yyyy","f":"EEEE d. MMM yyyy"},"dmw":{"s":"E d.M","m":"EE d.M","l":"EEEE d. MMM","f":"EEEE d. MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{sd}.{sm}.{sy}{st}– {et}","m":"{sd}.{sm}.{sy}{st}– {et}","l":"{sd}. {sm} {sy}{st}– {et}","f":"{sd}. {sm} {sy}{st}– {et}"},"c01":{"s":"{sd}.{sm}.{sy} {st}–{ed}.{em}.{ey} {et}","l":"{sd}. {st}–{ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st}–{ed}.{em}.{ey} {et}","f":"{sd}. {st}–{ed}.{em}.{ey} {et}"},"c02":{"s":"{sd}.{sm}.{sy} {st}–{ed}.{em}.{ey} {et}","l":"{sd}. {sm} {st}–{ed}. {em} {ey} {et}","f":"{sd}. {sm} {st}–{ed}. {em} {ey} {et}","m":"{sd}.{sm}.{sy} {st}–{ed}.{em}.{ey} {et}"},"c10":{"s":"{sd}.{sm}.{sy}–{ed}.{em}.{ey}","l":"{sd}.–{ed}. {em} {ey}","f":"{sd}.–{ed}. {em} {ey}","m":"{sd}.{sm}.{sy}–{ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy}–{ed}.{em}.{ey}","m":"{sd}.{sm}.{sy}–{ed}.{em}.{ey}","l":"{sd}. {sm}–{ed}. {em} {ey}","f":"{sd}. {sm}–{ed}. {em} {ey}"},"c12":{"s":"{sd}.{sm}.{sy}–{ed}.{em}.{ey}","m":"{sd}.{sm}.{sy}–{ed}.{em}.{ey}","l":"{sd}. {sm} {sy}–{ed}. {em} {ey}","f":"{sd}. {sm} {sy}–{ed}. {em} {ey}"},"c20":{"s":"{sm}.{sy}–{em}.{ey}","m":"{sm}.{sy}–{em}.{ey}","l":"{sm} {sy}–{em} {ey}","f":"{sm} {sy}–{em} {ey}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_ne = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sy} {sm} {sd}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
 ilib.data.dateformats_nl = {
 	"gregorian": {
 		"order": "{date} {time}",
@@ -10945,19 +10614,30 @@ ilib.data.dateformats_nl = {
 			}
 		},
 		"time": {
-			"ahmsz": "HH:mm:ss a z",
-			"ahms": "HH:mm:ss a",
-			"hmsz": "HH:mm:ss z",
-			"ahmz": "HH:mm a z",
-			"hms": "HH:mm:ss",
-			"ahm": "HH:mm a",
-			"hmz": "HH:mm z",
-			"ah": "HH",
-			"hm": "HH:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "hh:mm:ss a z",
+				"ahms": "hh:mm:ss a",
+				"hmsz": "hh:mm:ss z",
+				"ahmz": "hh:mm a z",
+				"hms": "hh:mm:ss",
+				"ahm": "hh:mm a",
+				"hmz": "hh:mm z",
+				"ah": "hh a",
+				"hm": "hh:mm",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH:mm:ss z",
+				"ahms": "HH:mm:ss",
+				"hmsz": "HH:mm:ss z",
+				"ahmz": "HH:mm z",
+				"hms": "HH:mm:ss",
+				"ahm": "HH:mm",
+				"hmz": "HH:mm z",
+				"ah": "HH",
+				"hm": "HH:mm",
+				"h": "HH"
+			}
 		},
 		"range": {
 			"c00": {
@@ -11074,19 +10754,32 @@ ilib.data.dateformats_no = {
 			}
 		},
 		"time": {
-			"ahmsz": "HH.mm.ss a z",
-			"ahms": "HH.mm.ss a",
-			"hmsz": "HH.mm.ss z",
-			"hms": "HH.mm.ss",
-			"ahmz": "HH.mm a z",
-			"ahm": "HH.mm a",
-			"hmz": "HH.mm z",
-			"ah": "HH",
-			"hm": "HH.mm",
-			"ms": "mm.ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "hh.mm.ss a z",
+				"ahms": "hh.mm.ss a",
+				"hmsz": "hh.mm.ss z",
+				"hms": "hh.mm.ss",
+				"ahmz": "hh.mm a z",
+				"ahm": "hh.mm a",
+				"hmz": "hh.mm z",
+				"ah": "hh a",
+				"hm": "hh.mm",
+				"ms": "mm.ss",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH.mm.ss z",
+				"ahms": "HH.mm.ss",
+				"hmsz": "HH.mm.ss z",
+				"hms": "HH.mm.ss",
+				"ahmz": "HH.mm z",
+				"ahm": "HH.mm",
+				"hmz": "HH.mm z",
+				"ah": "HH",
+				"hm": "HH.mm",
+				"ms": "mm.ss",
+				"h": "HH"
+			}
 		},
 		"range": {
 			"c00": {
@@ -11140,7 +10833,13 @@ ilib.data.dateformats_no = {
 			"c30": "{sy} - {ey}"
 		}
 	}
-};
+}
+;
+ilib.data.dateformats_om = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"dd/MM","l":"MMM d","f":"dd MMMM"},"dmy":{"s":"yy-M-d","m":"dd-MMM-yy","l":"yyyy MMM d","f":"MMMM d, yyyy"},"my":{"s":"yy-M","m":"MM/yy","l":"yyyy MMM"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sd}{sm}{sy}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sm} {sd} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_or = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"dd-MM","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"d MMM yy","l":"yyyy MMM d"},"my":{"s":"yyyy-M","m":"MM-yyyy","l":"yyyy MMM"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_os = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sy} {sm} {sd}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_pa = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"d MMM","l":"MMM d"},"dmy":{"s":"yy-M-d","m":"d MMM yy","l":"yyyy MMM d","f":"dd MMMM yyyy"},"my":{"s":"yy-M","m":"MMM yy","l":"yyyy MMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"m":"yy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_pl = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d.MM","m":"d.MM"},"dmy":{"s":"dd.MM.yyyy","m":"d.MM.yyyy"},"my":{"s":"MM.yyyy","m":"MM.yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"m":"yy"},"dmwy":{"s":"E, d.MM.yyyy","m":"EE, d.MM.yyyy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, d.MM","m":"EE, d.MM","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"hh:mm:ss a","hms":"hh:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"hh:mm a","hm":"hh:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st} – {et} {sd}.{sm}.{sy}","m":"{st} – {et} {sd}.{sm}.{sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd} – {et} {ed}.{em}.{ey}","l":"{st} {sd} – {et} {ed}.{em}.{ey}","m":"{st} {sd} – {et} {ed}.{em}.{ey}","f":"{st} {sd} – {et} {ed}.{em}.{ey}"},"c02":{"s":"{st} {sd}.{sm} – {et} {ed}.{em}.{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}.{sm} – {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd} – {ed}.{em}.{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd} – {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm} – {ed}.{em}.{ey}","m":"{sd}.{sm} – {ed}.{em}.{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}.{sy} – {em}.{ey}","m":"{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_pt = {
 	"gregorian": {
 		"date": {
@@ -11206,19 +10905,32 @@ ilib.data.dateformats_pt = {
 			}
 		},
 		"time": {
-			"ahmsz": "HH'h'mm'min'ss's' a z",
-			"ahms": "HH'h'mm'min'ss's' a",
-			"hmsz": "HH'h'mm'min'ss's' z",
-			"ahmz": "HH'h'mm'min' a z",
-			"hms": "HH'h'mm'min'ss's'",
-			"ahm": "HH'h'mm'min' a",
-			"hmz": "HH'h'mm'min' z",
-			"ah": "HH",
-			"hm": "HH'h'mm'min'",
-			"ms": "mm'min'ss's'",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "hh'h'mm'min'ss's' a z",
+				"ahms": "hh'h'mm'min'ss's' a",
+				"hmsz": "hh'h'mm'min'ss's' z",
+				"ahmz": "hh'h'mm'min' a z",
+				"hms": "hh'h'mm'min'ss's'",
+				"ahm": "hh'h'mm'min' a",
+				"hmz": "hh'h'mm'min' z",
+				"ah": "hh'h' a",
+				"hm": "hh'h'mm'min'",
+				"ms": "mm'min'ss's'",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH'h'mm'min'ss's' z",
+				"ahms": "HH'h'mm'min'ss's'",
+				"hmsz": "HH'h'mm'min'ss's' z",
+				"ahmz": "HH'h'mm'min' z",
+				"hms": "HH'h'mm'min'ss's'",
+				"ahm": "HH'h'mm'min'",
+				"hmz": "HH'h'mm'min' z",
+				"ah": "HH'h'",
+				"hm": "HH'h'mm'min'",
+				"ms": "mm'min'ss's'",
+				"h": "HH"
+			}
 		},
 		"range": {
 			"c00": {
@@ -11274,6 +10986,7 @@ ilib.data.dateformats_pt = {
 	}
 }
 ;
+ilib.data.dateformats_ro = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"dd.MM","m":"dd.MM"},"dmy":{"s":"dd.MM.yyyy","m":"dd.MM.yyyy"},"my":{"s":"MM.yyyy","m":"MM.yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, dd.MM.yyyy","m":"EE, dd.MM.yyyy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, dd.MM","m":"EE, dd.MM","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st} - {et} {sd}.{sm}.{sy}","m":"{st} - {et} {sd}.{sm}.{sy}","l":"{st} - {et} {sd} {sm} {sy}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} - {et} {ed}.{em}.{ey}","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","f":"{st} {sd} - {et} {ed}.{em}.{ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} {sm} - {et} {ed} {em} {ey}","f":"{st} {sd} {sm} - {et} {ed} {em} {ey}","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} - {ed} {em} {ey}","f":"{sd} - {ed} {em} {ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} {sm} - {ed} {em} {ey}","f":"{sd} {sm} - {ed} {em} {ey}"},"c12":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}"},"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}"}}},"generated":true};
 ilib.data.dateformats_ru = {
 	"gregorian": {
 		"date": {
@@ -11339,26 +11052,20 @@ ilib.data.dateformats_ru = {
 			}
 		},
 		"time": {
-			"ahmsz": "H:mm:ss a z",
-			"ahms": "H:mm:ss a",
-			"hmsz": "H:mm:ss z",
-			"ahmz": "H:mm a z",
-			"hms": "H:mm:ss",
-			"ahm": "H:mm a",
-			"hmz": "H:mm z",
-			"ah": "H a",
-			"hm": "H:mm",
-			"ms": "mm:ss",
-			"h": "H",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "h:mm:ss a z",
+				"ahms": "h:mm:ss a",
+				"ahmz": "h:mm a z",
+				"ahm": "h:mm a",
+				"ah": "h a"
+			}
 		},
 		"range": {
 			"c00": {
 				"s": "{sd}.{sm}.{sy} {st}-{et}",
 				"m": "{sd}.{sm}.{sy} {st}-{et}",
 				"l": "{sd}.{sm}.{sy} {st}-{et}",
-				"f": "{sd} {sm} {sy} 'г'. {st}-{et} "
+				"f": "{sd} {sm} {sy} 'г'. {st}-{et}"
 			},
 			"c01": {
 				"s": "{sd}.{sm} {st} - {ed}.{em} {et}, {sy}",
@@ -11407,6 +11114,17 @@ ilib.data.dateformats_ru = {
 	}
 }
 ;
+ilib.data.dateformats_si = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM d"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"yy-M-d, E","m":"yy-M-d, EE","l":"yyyy MMM d, EEE","f":"yyyy MMM d, EEEE"},"dmw":{"s":"M-d, E","m":"M-d, EE","l":"MMM d EEEE","f":"MMM d EEEE"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"a h:mm:ss z","ahms":"a h.mm.ss","hms":"a h.mm.ss","ms":"mm.ss","ahmz":"a h:mm","ahm":"a h.mm","hm":"a h.mm"},"24":{"ahmsz":" H:mm:ss z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}  –  {et} {sy}{sm}{sd}","m":"{st}  –  {et} {sy} {sm} {sd}","l":"{st}  –  {et} {sy} {sm} {sd}","f":"{st}  –  {et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sm}  –  {et} {ed}–{ey} – {em}–{sd}–{ey}","l":"{st} {sy} {sm} {sd}  –  {et} {ed}–{ey} – {em}–{sd}–{ey}","m":"{st} {sm}  –  {et} {ed}–{ey} – {em}–{sd}–{ey}","f":"{st} {sy} {sm} {sd}  –  {et} {ed}–{ey} – {em}–{sd}–{ey}"},"c02":{"s":"{st} {sm}  –  {et} {ed}–{ey} – {em}–{sd}–{ey}","l":"{st} {sy} {sm} {sd}  –  {et} {em} {ed}","f":"{st} {sy} {sm} {sd}  –  {et} {em} {ed}","m":"{st} {sm}  –  {et} {ed}–{ey} – {em}–{sd}–{ey}"},"c10":{"s":"{sm}  –  {ed}–{ey} – {em}–{sd}–{ey}","l":"{sy} {sm} {sd}  –  {ed}","f":"{sy} {sm} {sd}  –  {ed}","m":"{sm}  –  {ed}–{ey} – {em}–{sd}–{ey}"},"c11":{"s":"{sm}  –  {ed}–{ey} – {em}–{sd}–{ey}","m":"{sm}  –  {ed}–{ey} – {em}–{sd}–{ey}","l":"{sy} {sm} {sd}  –  {em} {ed}","f":"{sy} {sm} {sd}  –  {em} {ed}"},"c12":{"s":"{sm}  –  {ed}–{ey} – {em}–{sd}–{ey}","m":"{sm}  –  {ed}–{ey} – {em}–{sd}–{ey}","l":"{sy} {sm} {sd}  –  {ey} {em} {ed}","f":"{sy} {sm} {sd}  –  {ey} {em} {ed}"},"c20":{"s":"{sm}  –  {ey} – {em}–{sy}","m":"{sm}  –  {ey} – {em}–{sy}","l":"{sy} {sm}  –  {ey} {em}","f":"{sy} {sm}  –  {ey} {em}"},"c30":"{sy}  –  {ey}"}},"generated":true};
+ilib.data.dateformats_sk = {"gregorian":{"date":{"dm":{"s":"d.M.","m":"d.M","l":"d. MMM.","f":"d. MMMM"},"dmy":{"s":"d.M.yyyy","m":"d.M.yyyy","l":"d.M.yyyy","f":"d. MMMM yyyy"},"my":{"s":"M.yyyy","m":"M.yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"m":{"f":"MMMM"},"d":{"s":"d.","f":"d.","l":"d.","m":"d."},"y":{"l":"yyyy","f":"yyyy"},"dmwy":{"s":"E d. M. yyyy","m":"EE d. M. yyyy","l":"EEE, d. MMM yyyy","f":"EEEE, d. MMM yyyy"},"dmw":{"s":"E, d.M.","m":"EE, d.M.","l":"EEEE, d. MMM.","f":"EEEE, d. MMM."}},"range":{"c00":{"s":"{st}–{et}{sd}.{sm}.{sy}","m":"{st}–{et}{sd}.{sm}.{sy}","l":"{st}–{et}{sd}.{sm}.{sy}","f":"{st}–{et}{sd}. {sm} {sy}"},"c01":{"s":"{st}–{et}{ed}.{em}.{ey}  {sd}.{sm}.{sy}","l":"{st}–{et}{ed}.{em}.{ey}  {sd}.{sm}.{sy}","m":"{st}–{et}{ed}.{em}.{ey}  {sd}.{sm}.{sy}","f":"{st}–{et}{ed}.{em}.{ey}  {sd}.{sm}.{sy}"},"c02":{"s":"{st}–{et}{ed}.{em}.{ey}  {sd}.{sm}.{sy}","l":"{st}–{et}{ed}. {em}  {sd}. {sm} {ey}","f":"{st}–{et}{ed}. {em}  {sd}. {sm} {ey}","m":"{st}–{et}{ed}.{em}.{ey}  {sd}.{sm}.{sy}"},"c10":{"s":"–{ed}.{em}.{ey}  {sd}.{sm}.{sy}","l":"–{ed}.  {sd}. {em} {ey}","f":"–{ed}.  {sd}. {em} {ey}","m":"–{ed}.{em}.{ey}  {sd}.{sm}.{sy}"},"c11":{"s":"–{ed}.{em}.{ey}  {sd}.{sm}.{sy}","m":"–{ed}.{em}.{ey}  {sd}.{sm}.{sy}","l":"–{ed}. {em}  {sd}. {sm} {ey}","f":"–{ed}. {em}  {sd}. {sm} {ey}"},"c12":{"s":"–{ed}.{em}.{ey}  {sd}.{sm}.{sy}","m":"–{ed}.{em}.{ey}  {sd}.{sm}.{sy}","l":"–{ed}. {em} {ey}  {sd}. {sm} {sy}","f":"–{ed}. {em} {ey}  {sd}. {sm} {sy}"},"c20":{"s":"–{em}.{ey}  {sm}.{sy}","m":"–{em}.{ey}  {sm}.{sy}","l":"– {ey}   {sy}","f":"– {ey}   {sy}"}}}}
+;
+ilib.data.dateformats_so = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"dd-MMM","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"dd-MMM-yy","l":"yyyy MMM d","f":"MMMM dd, yyyy"},"my":{"m":"MMM-yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sd}{sm}{sy}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sm} {sd} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_sq = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MM-dd"},"dmy":{"s":"yyyy-M-d","m":"yyyy-MM-dd","l":"yyyy MMM d","f":"dd MMMM yyyy"},"my":{"s":"M.yyyy","m":"yyyy-MM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, d.M.yyyy","m":"EE, d.M.yyyy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, d.M","m":"EE, d.M","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h.mm.ss.a z","ahms":"h.mm.ss.a","hms":"h.mm.ss.a","ms":"mm.ss.a","ahmz":"h.mm","ahm":"h.mm.a","hm":"h.mm.a"},"24":{"ahmsz":"H.mm.ss. z","ahms":"H.mm.ss","hms":"H.mm.ss","ms":"mm.ss","ahmz":"H.mm"}},"range":{"c00":{"s":"{st} – {et} {sy}{sm}{sd}","m":"{st} – {et} {sy}{sm}{sd}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy} – {et} {em}–{ed} – {sd}","l":"{st} {sd} – {et} {em}–{ed} – {sd}","m":"{st} {sy} – {et} {em}–{ed} – {sd}","f":"{st} {sd} – {et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy} – {et} {em}–{ed} – {sm}–{sd}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sy} – {et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy} – {em}–{ed} – {sd}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sy} – {em}–{ed} – {sd}"},"c11":{"s":"{sy} – {em}–{ed} – {sm}–{sd}","m":"{sy} – {em}–{ed} – {sm}–{sd}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sy} – {em}–{ed} – {ey}–{sm}–{sd}","m":"{sy} – {em}–{ed} – {ey}–{sm}–{sd}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sy} – {em} – {ey}–{sm}","m":"{sy} – {em} – {ey}–{sm}","l":"{sm} {sy} – {em} {ey}","f":"{sy} – {em} – {ey}–{sm}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_sr = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"MM-dd","l":"d. MMM","f":"d. MMMM"},"dmy":{"s":"d. M. yy","m":"dd.MM.yy","l":"d. MMM yy.","f":"dd. MMMM yyyy"},"my":{"s":"yyyy-M","m":"yyyy-MM","l":"MMM yyyy.","f":"MMMM yyyy."},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, d. M. yyyy.","m":"EE, d. M. yyyy.","l":"EEE, d. MMM yyyy.","f":"EEEE, d. MMM yyyy."},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE d. MMM","f":"EEEE d. MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH.mm.ss z","ahms":"hh.mm.ss a","hms":"hh.mm.ss a","ms":"mm.ss a","ahmz":"HH.mm","ahm":"hh.mm a","hm":"hh.mm a"},"24":{"ahmsz":"HH.mm.ss z","ahms":"H.mm.ss","hms":"H.mm.ss","ms":"mm.ss","ahmz":"HH.mm"}},"range":{"c00":{"s":"{st} - {et} {sd}. {sm}. {sy}","m":"{st} - {et} {sd}.{sm}.{sy}","l":"{st} - {et} {sd}. {sm} {sy}.","f":"{st} - {et} {sd}. {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","l":"{st} {sd}. - {et} {ed}.{em}.{ey}.","m":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","f":"{st} {sd}. - {et} {ed}.{em}.{ey}."},"c02":{"s":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","l":"{st} {sd}. {sm} - {et} {ed}. {em} {ey}.","f":"{st} {sd}. {sm} - {et} {ed}. {em} {ey}.","m":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}."},"c10":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. - {ed}. {em} {ey}.","f":"{sd}. - {ed}. {em} {ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}."},"c11":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. {sm} - {ed}. {em} {ey}.","f":"{sd}. {sm} - {ed}. {em} {ey}."},"c12":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. {sm} {sy}. - {ed}. {em} {ey}.","f":"{sd}. {sm} {sy}. - {ed}. {em} {ey}."},"c20":{"s":"{sy} {sm} - {em}","m":"{sy} {sm} - {em}","l":"{sm} {sy}. - {em} {ey}.","f":"{sy} - {em} – {ey}–{sm}"}}},"generated":true};
+ilib.data.dateformats_sr_Latn_BA = {"gregorian":{"range":{"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}"}}},"generated":true};
+ilib.data.dateformats_sr_Latn_ME = {"gregorian":{"range":{"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}"}}},"generated":true};
+ilib.data.dateformats_sr_Latn_RS = {"gregorian":{"range":{"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}"}}},"generated":true};
+ilib.data.dateformats_ss = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sy} {sm} {sd}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_st = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sy} {sm} {sd}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
 ilib.data.dateformats_sv = {
 	"gregorian": {
 		"order": "{date} {time}",
@@ -11473,19 +11191,31 @@ ilib.data.dateformats_sv = {
 			}
 		},
 		"time": {
-			"ahmsz": "HH:mm:ss a Z",
-			"ahms": "HH:mm:ss a",
-			"hmsz": "HH:mm:ss Z",
-			"ahmz": "HH:mm a Z",
-			"hms": "HH:mm:ss",
-			"ahm": "HH:mm a",
-			"hmz": "HH:mm Z",
-			"ah": "HH",
-			"hm": "HH:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "hh:mm:ss a Z",
+				"ahms": "hh:mm:ss a",
+				"hmsz": "hh:mm:ss Z",
+				"ahmz": "hh:mm a Z",
+				"hms": "hh:mm:ss",
+				"ahm": "hh:mm a",
+				"hmz": "hh:mm Z",
+				"ah": "hh a",
+				"hm": "hh:mm",
+				"ms": "hh:ss",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH:mm:ss Z",
+				"ahms": "HH:mm:ss",
+				"hmsz": "HH:mm:ss Z",
+				"ahmz": "HH:mm Z",
+				"hms": "HH:mm:ss",
+				"ahm": "HH:mm",
+				"hmz": "HH:mm Z",
+				"ah": "HH",
+				"hm": "HH:mm",
+				"h": "HH"
+			}
 		},
 		"range": {
 			"c00": {
@@ -11541,6 +11271,9 @@ ilib.data.dateformats_sv = {
 	}
 }
 ;
+ilib.data.dateformats_sw = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d-M","m":"d MMM"},"dmy":{"m":"d MMM yy"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}   –   {et} {sd}/{sm}/{sy}","m":"{st}   –   {et} {sd} {sm} {sy}","l":"{st}   –   {et} {sd} {sm} {sy}","f":"{st}   –   {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy}   –   {et} {ed}/{em}/{ey}","l":"{st} {sd}   –   {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy}   –   {et} {ed}/{em}/{ey}","f":"{st} {sd}   –   {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy}   –   {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm}   –   {et} {ed} {em} {ey}","f":"{st} {sd} {sm}   –   {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy}   –   {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy}   –   {ed}/{em}/{ey}","l":"{sd}   –   {ed} {em} {ey}","f":"{sd}   –   {ed} {em} {ey}","m":"{sd}/{sm}/{sy}   –   {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy}   –   {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy}   –   {ed}/{em}/{ey}","l":"{sd} {sm}   –   {ed} {em} {ey}","f":"{sd} {sm}   –   {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy}   –   {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy}   –   {ed}/{em}/{ey}","l":"{sd} {sm} {sy}   –   {ed} {em} {ey}","f":"{sd} {sm} {sy}   –   {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy}   –   {em}/{ey}","m":"{sm}/{sy}   –   {em}/{ey}","l":"{sm} {sy}   –   {em} {ey}","f":"{sm} {sy}   –   {em} {ey}"},"c30":"{sy}   –   {ey}"}},"generated":true};
+ilib.data.dateformats_ta = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"d MMM, yy","l":"d MMM, yyyy","f":"d MMMM, yyyy"},"my":{"s":"M/yyyy","m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"s":"yyyy"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM, yyyy","f":"EEEE, d MMM, yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_te = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"d MMM yy","l":"d, MMM yyyy"},"my":{"s":"M/yyyy","m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"s":"yyyy"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d, MMM yyyy","f":"EEEE, d, MMM yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}–{et} {sd}/{sm}/{sy}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sd} {sm} {sy}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sm}/{sy}–{em}/{ey}","m":"{sm}/{sy}–{em}/{ey}","l":"{sm} {sy}–{em} {ey}","f":"{sm} {sy}–{em} {ey}"},"c30":"{sy}–{ey}"}},"generated":true};
 ilib.data.dateformats_tr = {
 	"gregorian": {
 		"order": "{date} {time}",
@@ -11607,19 +11340,30 @@ ilib.data.dateformats_tr = {
 			}
 		},
 		"time": {
-			"ahmsz": "HH:mm:ss a Z",
-			"ahms": "HH:mm:ss a",
-			"hmsz": "HH:mm:ss Z",
-			"ahmz": "HH:mm a Z",
-			"hms": "HH:mm:ss",
-			"ahm": "HH:mm a",
-			"hmz": "HH:mm Z",
-			"ah": "HH",
-			"hm": "HH:mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "hh:mm:ss a Z",
+				"ahms": "hh:mm:ss a",
+				"hmsz": "hh:mm:ss Z",
+				"ahmz": "hh:mm a Z",
+				"hms": "hh:mm:ss",
+				"ahm": "hh:mm a",
+				"hmz": "hh:mm Z",
+				"ah": "hh a",
+				"hm": "hh:mm",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH:mm:ss Z",
+				"ahms": "HH:mm:ss",
+				"hmsz": "HH:mm:ss Z",
+				"ahmz": "HH:mm Z",
+				"hms": "HH:mm:ss",
+				"ahm": "HH:mm",
+				"hmz": "HH:mm Z",
+				"ah": "HH",
+				"hm": "HH:mm",
+				"h": "HH"
+			}
 		},
 		"range": {
 			"c00": {
@@ -11675,6 +11419,11 @@ ilib.data.dateformats_tr = {
 	}
 }
 ;
+ilib.data.dateformats_uk = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"dd.MM","m":"dd.MM"},"dmy":{"s":"dd.MM.yy","m":"dd.MM.yy"},"my":{"s":"MM.yyyy","m":"MM.yy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, dd.MM.yyyy","m":"EE, dd.MM.yyyy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, dd.MM","m":"EE, dd.MM","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st} – {et} {sd}.{sm}.{sy}","m":"{st} – {et} {sd}.{sm}.{sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd} – {et} {ed}.{em}.{ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","f":"{st} {sd} – {et} {ed}.{em}.{ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}.{sy} – {em}.{ey}","m":"{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_ur = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"d MMM"},"dmy":{"m":"d MMM، yy","l":"d MMM، yyyy","f":"d MMMM، yyyy"},"my":{"m":"MMM، yy","f":"MMMM، yyyy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E، d/M/yy","m":"EE، d/M/yy","l":"EEE، d MMM، yyyy","f":"EEEE، d MMM، yyyy"},"dmw":{"s":"E، d/M","m":"EE، d/M","l":"EEEE، d MMM","f":"EEEE، d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed}/{em}/{ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_uz = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"HH:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"HH:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sy} {sm} {sd}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_vai = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"d MMM yy","l":"yyyy MMM d"},"my":{"s":"M/yyyy","m":"MMM y"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, M/d/yyyy","m":"EE, M/d/yyyy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st}–{et} {sy}{sm}{sd}","m":"{st}–{et} {sd} {sm} {sy}","l":"{st}–{et} {sy} {sm} {sd}","f":"{st}–{et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{et} {em}–{ed} – {sd}","l":"{st} {sy}–{et} {em}–{ed} – {sd}","m":"{st} {sy}–{et} {em}–{ed} – {sd}","f":"{st} {sy}–{et} {em}–{ed} – {sd}"},"c02":{"s":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","l":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","f":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}","m":"{st} {sy}–{et} {em}–{ed} – {sm}–{sd}"},"c10":{"s":"{sy}–{em}–{ed} – {sd}","l":"{sy}–{em}–{ed} – {sd}","f":"{sy}–{em}–{ed} – {sd}","m":"{sy}–{em}–{ed} – {sd}"},"c11":{"s":"{sy}–{em}–{ed} – {sm}–{sd}","m":"{sy}–{em}–{ed} – {sm}–{sd}","l":"{sy}–{em}–{ed} – {sm}–{sd}","f":"{sy}–{em}–{ed} – {sm}–{sd}"},"c12":{"s":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","m":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","l":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}","f":"{sy}–{em}–{ed} – {ey}–{sm}–{sd}"},"c20":{"s":"{sy}–{em} – {ey}–{sm}","m":"{sy}–{em} – {ey}–{sm}","l":"{sy}–{em} – {ey}–{sm}","f":"{sy}–{em} – {ey}–{sm}"},"c30":"{sy}–{ey}"}},"generated":true};
+ilib.data.dateformats_vai_Latn_LR = {"gregorian":{"date":{"dmy":{"s":"M/d/yy","l":"MMM d yyyy"},"my":{"s":"M/yy","m":"MMM yy"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy"}},"range":{"c00":{"s":"{st}–{et} {sm}/{sd}/{sy}","l":"{st}–{et} {sm} {sd} {sy}"}}},"generated":true};
 ilib.data.dateformats_vi = {
 	"gregorian": {
 		"order": "{time} {date}",
@@ -11741,19 +11490,30 @@ ilib.data.dateformats_vi = {
 			}
 		},
 		"time": {
-			"ahmsz": "HH'h'mm:ss a Z",
-			"ahms": "HH'h'mm:ss a",
-			"hmsz": "HH'h'mm:ss Z",
-			"ahmz": "HH'h'mm a Z",
-			"hms": "HH'h'mm:ss",
-			"ahm": "HH'h'mm a",
-			"hmz": "HH'h'mm Z",
-			"ah": "HH",
-			"hm": "HH'h'mm",
-			"ms": "mm:ss",
-			"h": "HH",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "hh'h'mm:ss a Z",
+				"ahms": "hh'h'mm:ss a",
+				"hmsz": "hh'h'mm:ss Z",
+				"ahmz": "hh'h'mm a Z",
+				"hms": "hh'h'mm:ss",
+				"ahm": "hh'h'mm a",
+				"hmz": "hh'h'mm Z",
+				"ah": "hh a",
+				"hm": "hh'h'mm",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH'h'mm:ss Z",
+				"ahms": "HH'h'mm:ss",
+				"hmsz": "HH'h'mm:ss Z",
+				"ahmz": "HH'h'mm Z",
+				"hms": "HH'h'mm:ss",
+				"ahm": "HH'h'mm",
+				"hmz": "HH'h'mm Z",
+				"ah": "HH",
+				"hm": "HH'h'mm",
+				"h": "HH"
+			}
 		},
 		"range": {
 			"c00": {
@@ -11814,78 +11574,6 @@ ilib.data.dateformats_vi = {
 	}
 }
 ;
-ilib.data.dateformats_zxx = {
-	"gregorian": {
-		"order": "{date} {time}",
-		"date": {
-			"dmwy": {
-				"s": "EE d/MM/yy",
-				"m": "EEE d/MM/yyyy",
-				"l": "EEE d MMM, yyyy",
-				"f": "EEEE d MMMM, yyyy"
-			},
-			"dmy": {
-				"s": "d/MM/yy",
-				"m": "d/MM/yyyy",
-				"l": "d MMM, yyyy",
-				"f": "d MMMM, yyyy"
-			},
-			"dmw": {
-				"s": "EE d/M",
-				"m": "EE d/MM",
-				"l": "EEE d MMM",
-				"f": "EEEE d MMMM"
-			},
-			"dm": {
-				"s": "d/M",
-				"m": "d/M",
-				"l": "d MMM",
-				"f": "d MMMM"
-			},
-			"my": {
-				"s": "M/yy",
-				"m": "MM/yyyy",
-				"l": "MMM yy",
-				"f": "MMMM yyyy"
-			},
-			"d": "dd",
-			"m": {
-				"s": "M",
-				"m": "MM",
-				"l": "MMM",
-				"f": "MMMM"
-			},
-			"y": {
-				"s": "yy",
-				"m": "yy",
-				"l": "yyyy",
-				"f": "yyyy G"
-			},
-			"n": {
-				"s": "N",
-				"m": "NN",
-				"l": "MMM",
-				"f": "MMMM"
-			}
-		},
-		"time": {
-			"ahmsz": "h:mm:ssa Z",
-			"ahms": "h:mm:ssa",
-			"hmsz": "h:mm:ss Z",
-			"hms": "h:mm:ss",
-			"ahmz": "h:mma Z",
-			"ahm": "h:mma",
-			"hmz": "h:mm Z",
-			"ah": "ha",
-			"hm": "h:mm",
-			"ms": "mm:ss",
-			"h": "h",
-			"m": "mm",
-			"s": "ss"
-		}
-	},
-	"julian": "gregorian"
-};
 ilib.data.dateformats_zh = {
 	"gregorian": {
 		"order": {
@@ -11957,19 +11645,30 @@ ilib.data.dateformats_zh = {
 			}
 		},
 		"time": {
-			"ahmsz": "ahh:mm:ssz",
-			"ahms": "ahh:mm:ss",
-			"hmsz": "hh:mm:ssz",
-			"hms": "hh:mm:ss",
-			"ahmz": "ahh:mmz",
-			"ahm": "ahh:mm",
-			"hmz": "hh:mmz",
-			"ah": "ahh",
-			"hm": "hh:mm",
-			"ms": "mm:ss",
-			"h": "hh",
-			"m": "mm",
-			"s": "ss"
+			"12": {
+				"ahmsz": "ahh:mm:ssz",
+				"ahms": "ahh:mm:ss",
+				"hmsz": "hh:mm:ssz",
+				"hms": "hh:mm:ss",
+				"ahmz": "ahh:mmz",
+				"ahm": "ahh:mm",
+				"hmz": "hh:mmz",
+				"ah": "ahh",
+				"hm": "hh:mm",
+				"h": "hh"
+			},
+			"24": {
+				"ahmsz": "HH:mm:ssz",
+				"ahms": "HH:mm:ss",
+				"hmsz": "HH:mm:ssz",
+				"hms": "HH:mm:ss",
+				"ahmz": "HH:mmz",
+				"ahm": "HH:mm",
+				"hmz": "HH:mmz",
+				"ah": "HH",
+				"hm": "HH:mm",
+				"h": "HH"
+			}
 		},
 		"range": {
 			"c00": {
@@ -12023,8 +11722,129 @@ ilib.data.dateformats_zh = {
 			"c30": "{sy}至{ey}"
 		}
 	}
+}
+;
+ilib.data.dateformats_zh_Hans_HK = {
+	"gregorian": {
+		"date": {
+			"dmwy": {
+				"s": "dd.MM.yy(E)",
+				"m": "dd.MM.yyyy(EE)"
+			},
+			"dmy": {
+				"s": "dd.MM.yy",
+				"m": "dd.MM.yyyy"
+			},
+			"dmw": {
+				"s": "dd.MM(E)",
+				"m": "dd.MM(EE)"
+			},
+			"dm": {
+				"s": "dd.MM",
+				"m": "dd.MM"
+			},
+			"my": {
+				"s": "MM.yy",
+				"m": "MM.yyyy"
+			}
+		},
+		"range": {
+			"c00": {
+				"s": "{sd}.{sm}.{sy} {st}至{et}",
+				"m": "{sd}.{sm}.{sy} {st}至{et}"
+			},
+			"c01": {
+				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+			},
+			"c02": {
+				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+			},
+			"c03": {
+				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+			},
+			"c10": {
+				"s": "{sd}至{ed}.{sm}.{sy}",
+				"m": "{sd}至{ed}.{sm}.{sy}"
+			},
+			"c11": {
+				"s": "{sd}.{sm}至{ed}.{em}.{sy}",
+				"m": "{sd}.{sm}至{ed}.{em}.{sy}"
+			},
+			"c12": {
+				"s": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}",
+				"m": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}"
+			},
+			"c20": {
+				"s": "{sm}.{sy}至{em}.{ey}",
+				"m": "{sm}.{sy}至{em}.{ey}"
+			}
+		}
+	}
 };
-ilib.data.dateformats_zh_TW = {
+ilib.data.dateformats_zh_Hant_MO = {
+	"gregorian": {
+		"date": {
+			"dmwy": {
+				"s": "dd.MM.yy(E)",
+				"m": "dd.MM.yyyy(EE)"
+			},
+			"dmy": {
+				"s": "dd.MM.yy",
+				"m": "dd.MM.yyyy"
+			},
+			"dmw": {
+				"s": "dd.MM(E)",
+				"m": "dd.MM(EE)"
+			},
+			"dm": {
+				"s": "dd.MM",
+				"m": "dd.MM"
+			},
+			"my": {
+				"s": "MM.yy",
+				"m": "MM.yyyy"
+			}
+		},
+		"range": {
+			"c00": {
+				"s": "{sd}.{sm}.{sy} {st}至{et}",
+				"m": "{sd}.{sm}.{sy} {st}至{et}"
+			},
+			"c01": {
+				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+			},
+			"c02": {
+				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+			},
+			"c03": {
+				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
+				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+			},
+			"c10": {
+				"s": "{sd}至{ed}.{sm}.{sy}",
+				"m": "{sd}至{ed}.{sm}.{sy}"
+			},
+			"c11": {
+				"s": "{sd}.{sm}至{ed}.{em}.{sy}",
+				"m": "{sd}.{sm}至{ed}.{em}.{sy}"
+			},
+			"c12": {
+				"s": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}",
+				"m": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}"
+			},
+			"c20": {
+				"s": "{sm}.{sy}至{em}.{ey}",
+				"m": "{sm}.{sy}至{em}.{ey}"
+			}
+		}
+	}
+};
+ilib.data.dateformats_zh_Hant_TW = {
 	"gregorian": {
 		"date": {
 			"dmwy": {
@@ -12046,126 +11866,95 @@ ilib.data.dateformats_zh_TW = {
 		}
 	}
 };
-ilib.data.dateformats_zh_HK = {
+ilib.data.dateformats_zh_Hant_US = {
 	"gregorian": {
-		"date": {
-			"dmwy": {
-				"s": "dd.MM.yy(E)",
-				"m": "dd.MM.yyyy(EE)"
+		"time": {
+			"12": {
+				"ahmsz": "h:mm:ssa z",
+				"ahms": "h:mm:ssa",
+				"hmsz": "h:mm:ss z",
+				"hms": "h:mm:ss",
+				"ahmz": "h:mma z",
+				"ahm": "h:mma",
+				"hmz": "h:mm z",
+				"ah": "ha",
+				"hm": "h:mm",
+				"h": "h"
 			},
-			"dmy": {
-				"s": "dd.MM.yy",
-				"m": "dd.MM.yyyy"
-			},
-			"dmw": {
-				"s": "dd.MM(E)",
-				"m": "dd.MM(EE)"
-			},
-			"dm": {
-				"s": "dd.MM",
-				"m": "dd.MM"
-			},
-			"my": {
-				"s": "MM.yy",
-				"m": "MM.yyyy"
-			}
-		},
-		"range": {
-			"c00": {
-				"s": "{sd}.{sm}.{sy} {st}至{et}",
-				"m": "{sd}.{sm}.{sy} {st}至{et}"
-			},
-			"c01": {
-				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
-			},
-			"c02": {
-				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
-			},
-			"c03": {
-				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
-			},
-			"c10": {
-				"s": "{sd}至{ed}.{sm}.{sy}",
-				"m": "{sd}至{ed}.{sm}.{sy}"
-			},
-			"c11": {
-				"s": "{sd}.{sm}至{ed}.{em}.{sy}",
-				"m": "{sd}.{sm}至{ed}.{em}.{sy}"
-			},
-			"c12": {
-				"s": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}",
-				"m": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}"
-			},
-			"c20": {
-				"s": "{sm}.{sy}至{em}.{ey}",
-				"m": "{sm}.{sy}至{em}.{ey}"
+			"24": {
+				"ahmsz": "H:mm:ss z",
+				"ahms": "H:mm:ss",
+				"hmsz": "H:mm:ss z",
+				"hms": "H:mm:ss",
+				"ahmz": "H:mm z",
+				"ahm": "H:mm",
+				"hmz": "H:mm z",
+				"hm": "H:mm",
+				"h": "H"
 			}
 		}
 	}
-};
-ilib.data.dateformats_zh_MO = {
+}
+;
+ilib.data.dateformats_zu = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d"},"dmy":{"s":"M/d/yy","m":"d MMM yy","l":"MMM d, yyyy","f":"dd MMMM yyyy"},"my":{"m":"MMM yy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yyyy"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ms":"mm:ss a","ahmz":"h:mm","ahm":"h:mm a","hm":"h:mm a"},"24":{"ahmsz":"H:mm:ss  z","ahmz":"H:mm"}},"range":{"c00":{"s":"{st} – {et} {sm}/{sd}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sm} {sd} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sm} {sd} – {et} {em}/{ed}/{ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","f":"{st} {sm} {sd} – {et} {em}/{ed}/{ey}"},"c02":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sm} {sd} – {et} {em} {ed} {ey}","f":"{st} {sm} {sd} – {et} {em} {ed} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}"},"c10":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} – {ed} {ey}","f":"{sm} {sd} – {ed} {ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}"},"c11":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} – {em} {ed} {ey}","f":"{sm} {sd} – {em} {ed} {ey}"},"c12":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} {sy} – {em} {ed} {ey}","f":"{sm} {sd} {sy} – {em} {ed} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_zxx = {
 	"gregorian": {
+		"order": "{date} {time}",
 		"date": {
 			"dmwy": {
-				"s": "dd.MM.yy(E)",
-				"m": "dd.MM.yyyy(EE)"
+				"s": "EE d/MM/yy",
+				"m": "EEE d/MM/yyyy",
+				"l": "EEE d MMM, yyyy",
+				"f": "EEEE d MMMM, yyyy"
 			},
 			"dmy": {
-				"s": "dd.MM.yy",
-				"m": "dd.MM.yyyy"
+				"s": "d/MM/yy",
+				"m": "d/MM/yyyy",
+				"l": "d MMM, yyyy",
+				"f": "d MMMM, yyyy"
 			},
 			"dmw": {
-				"s": "dd.MM(E)",
-				"m": "dd.MM(EE)"
+				"s": "EE d/M",
+				"m": "EE d/MM",
+				"l": "EEE d MMM",
+				"f": "EEEE d MMMM"
 			},
 			"dm": {
-				"s": "dd.MM",
-				"m": "dd.MM"
+				"s": "d/M",
+				"m": "d/M",
+				"l": "d MMM",
+				"f": "d MMMM"
 			},
 			"my": {
-				"s": "MM.yy",
-				"m": "MM.yyyy"
-			}
-		},
-		"range": {
-			"c00": {
-				"s": "{sd}.{sm}.{sy} {st}至{et}",
-				"m": "{sd}.{sm}.{sy} {st}至{et}"
+				"s": "M/yy",
+				"m": "MM/yyyy",
+				"l": "MMM yy",
+				"f": "MMMM yyyy"
 			},
-			"c01": {
-				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+			"d": "dd",
+			"m": {
+				"s": "M",
+				"m": "MM",
+				"l": "MMM",
+				"f": "MMMM"
 			},
-			"c02": {
-				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
+			"y": {
+				"s": "yy",
+				"m": "yy",
+				"l": "yyyy",
+				"f": "yyyy G"
 			},
-			"c03": {
-				"s": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}",
-				"m": "{sd}.{sm}.{sy} {st}至{ed}.{em}.{ey} {et}"
-			},
-			"c10": {
-				"s": "{sd}至{ed}.{sm}.{sy}",
-				"m": "{sd}至{ed}.{sm}.{sy}"
-			},
-			"c11": {
-				"s": "{sd}.{sm}至{ed}.{em}.{sy}",
-				"m": "{sd}.{sm}至{ed}.{em}.{sy}"
-			},
-			"c12": {
-				"s": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}",
-				"m": "{sd}.{sm}.{sy}至{ed}.{em}.{ey}"
-			},
-			"c20": {
-				"s": "{sm}.{sy}至{em}.{ey}",
-				"m": "{sm}.{sy}至{em}.{ey}"
+			"n": {
+				"s": "N",
+				"m": "NN",
+				"l": "MMM",
+				"f": "MMMM"
 			}
 		}
-	}
-};
+	},
+	"julian": "gregorian"
+}
+;
 ilib.data.sysres = {
 	"MMMM1": "January",
 	"MMM1": "Jan",
@@ -12427,6 +12216,7 @@ ilib.data.sysres = {
 	"EEEE5-islamic": "yawn al-jum‘a",
 	"EEEE6-islamic": "yawn as-sabt"
 };
+ilib.data.sysres_aa = {"generated":true,"NN1":"1","NN2":"2","NN3":"3","NN4":"4","NN5":"5","NN6":"6","NN7":"7","NN8":"8","NN9":"9","NN10":"10","NN11":"11","NN12":"12","MMM1":"1","MMM2":"2","MMM3":"3","MMM4":"4","MMM5":"5","MMM6":"6","MMM7":"7","MMM8":"8","MMM9":"9","MMM10":"10","MMM11":"11","MMM12":"12","MMMM1":"1","MMMM2":"2","MMMM3":"3","MMMM4":"4","MMMM5":"5","MMMM6":"6","MMMM7":"7","MMMM8":"8","MMMM9":"9","MMMM10":"10","MMMM11":"11","MMMM12":"12","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"1","EE1":"2","EE2":"3","EE3":"4","EE4":"5","EE5":"6","EE6":"7","EEE0":"1","EEE1":"2","EEE2":"3","EEE3":"4","EEE4":"5","EEE5":"6","EEE6":"7","EEEE0":"1","EEEE1":"2","EEEE2":"3","EEEE3":"4","EEEE4":"5","EEEE5":"6","EEEE6":"7","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_af = {
 	"N1": "J",
 	"N2": "F",
@@ -12547,7 +12337,161 @@ ilib.data.sysres_af = {
 	"#{num} ms": "#{num} ms"
 }
 ;
-ilib.data.sysres_af_ZA = {};
+ilib.data.sysres_af_NA = {};
+ilib.data.sysres_agq = {"generated":true,"NN1":"nù","NN2":"kɨ","NN3":"tɨ","NN4":"ta","NN5":"se","NN6":"nz","NN7":"du","NN8":"fɔ","NN9":"dz","NN10":"lɔ","NN11":"ka","NN12":"fw","MMM1":"nùm","MMM2":"kɨz","MMM3":"tɨd","MMM4":"taa","MMM5":"see","MMM6":"nzu","MMM7":"dum","MMM8":"fɔe","MMM9":"dzu","MMM10":"lɔm","MMM11":"kaa","MMM12":"fwo","MMMM1":"ndzɔ̀ŋɔ̀nùm","MMMM2":"ndzɔ̀ŋɔ̀kƗ̀zùʔ","MMMM3":"ndzɔ̀ŋɔ̀tƗ̀dʉ̀ghà","MMMM4":"ndzɔ̀ŋɔ̀tǎafʉ̄ghā","MMMM5":"ndzɔ̀ŋèsèe","MMMM6":"ndzɔ̀ŋɔ̀nzùghò","MMMM7":"ndzɔ̀ŋɔ̀dùmlo","MMMM8":"ndzɔ̀ŋɔ̀kwîfɔ̀e","MMMM9":"ndzɔ̀ŋɔ̀tƗ̀fʉ̀ghàdzughù","MMMM10":"ndzɔ̀ŋɔ̀ghǔuwelɔ̀m","MMMM11":"ndzɔ̀ŋɔ̀chwaʔàkaa wo","MMMM12":"ndzɔ̀ŋèfwòo","E0":"n","E1":"k","E2":"g","E3":"t","E4":"u","E5":"g","E6":"d","EE0":"nt","EE1":"kp","EE2":"gh","EE3":"tɔ","EE4":"um","EE5":"gh","EE6":"dz","EEE0":"nts","EEE1":"kpa","EEE2":"ghɔ","EEE3":"tɔm","EEE4":"ume","EEE5":"ghɨ","EEE6":"dzk","EEEE0":"tsuʔntsɨ","EEEE1":"tsuʔukpà","EEEE2":"tsuʔughɔe","EEEE3":"tsuʔutɔ̀mlò","EEEE4":"tsuʔumè","EEEE5":"tsuʔughɨ̂m","EEEE6":"tsuʔndzɨkɔʔɔ","a0":"a.g","a1":"a.k","G-1":"SK","G1":"BK","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_ak = {"generated":true,"NN1":"S-","NN2":"K-","NN3":"E-","NN4":"E-","NN5":"E-","NN6":"O-","NN7":"A-","NN8":"D-","NN9":"F-","NN10":"Ɔ-","NN11":"Ɔ-","NN12":"M-","MMM1":"S-Ɔ","MMM2":"K-Ɔ","MMM3":"E-Ɔ","MMM4":"E-O","MMM5":"E-K","MMM6":"O-A","MMM7":"A-K","MMM8":"D-Ɔ","MMM9":"F-Ɛ","MMM10":"Ɔ-A","MMM11":"Ɔ-O","MMM12":"M-Ɔ","MMMM1":"Sanda-Ɔpɛpɔn","MMMM2":"Kwakwar-Ɔgyefuo","MMMM3":"Ebɔw-Ɔbenem","MMMM4":"Ebɔbira-Oforisuo","MMMM5":"Esusow Aketseaba-Kɔtɔnimba","MMMM6":"Obirade-Ayɛwohomumu","MMMM7":"Ayɛwoho-Kitawonsa","MMMM8":"Difuu-Ɔsandaa","MMMM9":"Fankwa-Ɛbɔ","MMMM10":"Ɔbɛsɛ-Ahinime","MMMM11":"Ɔberɛfɛw-Obubuo","MMMM12":"Mumu-Ɔpɛnimba","E0":"K","E1":"D","E2":"B","E4":"Y","E6":"M","EE0":"Kw","EE1":"Dw","EE2":"Be","EE3":"Wu","EE4":"Ya","EE5":"Fi","EE6":"Me","EEE0":"Kwe","EEE1":"Dwo","EEE2":"Ben","EEE3":"Wuk","EEE4":"Yaw","EEE5":"Fia","EEE6":"Mem","EEEE0":"Kwesida","EEEE1":"Dwowda","EEEE2":"Benada","EEEE3":"Wukuda","EEEE4":"Yawda","EEEE5":"Fida","EEEE6":"Memeneda","a0":"AN","a1":"EW","G-1":"AK","G1":"KE","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_am = {"generated":true,"NN1":"ጃን","NN2":"ፌብ","NN3":"ማር","NN4":"ኤፕ","NN5":"ሜይ","NN6":"ጁን","NN7":"ጁላ","NN8":"ኦገ","NN9":"ሴፕ","NN10":"ኦክ","NN11":"ኖቬ","NN12":"ዲሴ","MMM1":"ጃንዩ","MMM2":"ፌብሩ","MMM3":"ማርች","MMM4":"ኤፕሪ","MMM5":"ሜይ","MMM6":"ጁን","MMM7":"ጁላይ","MMM8":"ኦገስ","MMM9":"ሴፕቴ","MMM10":"ኦክተ","MMM11":"ኖቬም","MMM12":"ዲሴም","MMMM1":"ጃንዩወሪ","MMMM2":"ፌብሩወሪ","MMMM3":"ማርች","MMMM4":"ኤፕሪል","MMMM5":"ሜይ","MMMM6":"ጁን","MMMM7":"ጁላይ","MMMM8":"ኦገስት","MMMM9":"ሴፕቴምበር","MMMM10":"ኦክተውበር","MMMM11":"ኖቬምበር","MMMM12":"ዲሴምበር","E0":"እ","E1":"ሰ","E2":"ማ","E3":"ረ","E4":"ሐ","E5":"ዓ","E6":"ቅ","EE0":"እ","EE1":"ሰ","EE2":"ማ","EE3":"ረ","EE4":"ሐ","EE5":"ዓ","EE6":"ቅ","EEE0":"እሑድ","EEE1":"ሰኞ","EEE2":"ማክሰ","EEE3":"ረቡዕ","EEE4":"ሐሙስ","EEE5":"ዓርብ","EEE6":"ቅዳሜ","EEEE0":"እሑድ","EEEE1":"ሰኞ","EEEE2":"ማክሰኞ","EEEE3":"ረቡዕ","EEEE4":"ሐሙስ","EEEE5":"ዓርብ","EEEE6":"ቅዳሜ","a0":"ጥዋት","a1":"ከሰዓት","G-1":"ዓ/ዓ","G1":"ዓ/ም","#{num}s":"#{num}ሰ","1#1 se|#{num} sec":"#{num} ሰከ","1#1 sec|#{num} sec":"#{num} ሰከን","1#1 second|#{num} seconds":"#{num} ሰከንዶች","durationShortMinutes":"#{num}ደ","1#1 mi|#{num} min":"#{num} ደቂ","1#1 min|#{num} min":"#{num} ደቂቃ","1#1 minute|#{num} minutes":"#{num} ደቂቃዎች","#{num}h":"#{num}ሰ","durationMediumHours":"one#{num} ሰዓት|#{num} ሰዓ","1#1 hr|#{num} hrs":"#{num} ሰዓቶች","1#1 hour|#{num} hours":"#{num} ሰዓቶች","#{num}d":"#{num}ቀ","1#1 dy|#{num} dys":"#{num} ቀናት","durationLongDays":"#{num} ቀናት","1#1 day|#{num} days":"#{num} ቀናት","#{num}w":"#{num}ሳ","durationMediumWeeks":"#{num} ሳም","1#1 wk|#{num} wks":"#{num} ሳምን","1#1 week|#{num} weeks":"#{num} ሳምንታት","durationShortMonths":"#{num}ወ","1#1 mo|#{num} mos":"#{num} ወራት","1#1 mon|#{num} mons":"#{num} ወራት","1#1 month|#{num} months":"#{num} ወራት","#{num}y":"#{num}ዓ","durationMediumYears":"#{num} ዓመ","1#1 yr|#{num} yrs":"#{num} ዓመታት","1#1 year|#{num} years":"#{num} ዓመታት","{duration} ago":"ከ{duration} በፊት","in {duration}":"በ {duration} ውስጥ","separatorFull":"፣ ","finalSeparatorFull":", እና ","separatorLong":" "};
+ilib.data.sysres_ar = {
+	"N1": "ي",
+	"N2": "ف",
+	"N3": "م",
+	"N4": "أ",
+	"N5": "و",
+	"N6": "ن",
+	"N7": "ل",
+	"N8": "غ",
+	"N9": "س",
+	"N10": "ك",
+	"N11": "ب",
+	"N12": "د",
+	"NN1": "ين",
+	"NN2": "فب",
+	"NN3": "ما",
+	"NN4": "أب",
+	"NN5": "ما",
+	"NN6": "يو",
+	"NN7": "يو",
+	"NN8": "أغ",
+	"NN9": "سب",
+	"NN10": "أك",
+	"NN11": "نو",
+	"NN12": "دي",
+	"MMM1": "ينا",
+	"MMM2": "فبر",
+	"MMM3": "مار",
+	"MMM4": "أبر",
+	"MMM5": "ماي",
+	"MMM6": "يون",
+	"MMM7": "يول",
+	"MMM8": "أغس",
+	"MMM9": "سبت",
+	"MMM10": "أكت",
+	"MMM11": "نوف",
+	"MMM12": "ديس",
+	"MMMM1": "يناير",
+	"MMMM2": "فبراير",
+	"MMMM3": "مارس",
+	"MMMM4": "أبريل",
+	"MMMM5": "مايو",
+	"MMMM6": "يونيو",
+	"MMMM7": "يوليو",
+	"MMMM8": "أغسطس",
+	"MMMM9": "سبتمبر",
+	"MMMM10": "أكتوبر",
+	"MMMM11": "نوفمبر",
+	"MMMM12": "ديسمبر",
+	"E0": "ح",
+	"E1": "ن",
+	"E2": "ث",
+	"E3": "ر",
+	"E4": "خ",
+	"E5": "ج",
+	"E6": "س",
+	"EE0": "الأحد",
+	"EE1": "الاثنين",
+	"EE2": "الثلاثاء",
+	"EE3": "الأربعاء",
+	"EE4": "الخميس",
+	"EE5": "الجمعة",
+	"EE6": "السبت",
+	"EEE0": "الأحد",
+	"EEE1": "الاثنين",
+	"EEE2": "الثلاثاء",
+	"EEE3": "الأربعاء",
+	"EEE4": "الخميس",
+	"EEE5": "الجمعة",
+	"EEE6": "السبت",
+	"EEEE0": "الأحد",
+	"EEEE1": "الاثنين",
+	"EEEE2": "الثلاثاء",
+	"EEEE3": "الأربعاء",
+	"EEEE4": "الخميس",
+	"EEEE5": "الجمعة",
+	"EEEE6": "السبت",
+	"a0": "ص",
+	"a1": "م",
+	"G-1": "ق.م",
+	"G1": "م",
+	"in {duration}": "خلال {0} من الأيام",
+	"{duration} ago": "قبل {0} من الأيام",
+	"1#1 year|#{num} years": "0#لا سنوات|1#سنة|2#{num} سنوات|3#{num} سنوات|4#{num} سنوات|#{num} سنة",
+	"1#1 month|#{num} months": "0#لا أشهر|1#شهر|2#{num} أشهر|3#{num} أشهر|4#{num} أشهر|#{num} شهر",
+	"1#1 week|#{num} weeks": "0#لا أسابيع|1#أسبوع|2#{num} أسابيع|3#{num} أسابيع|4#{num} أسابيع|#{num} أسبوع",
+	"1#1 day|#{num} days": "0#لا أيام|1#يوم|2#{num} أيام|3#{num} أيام|4#{num} أيام|#{num} يوم",
+	"1#1 hour|#{num} hours": "0#لا ساعات|1#ساعة|2#{num} ساعات|3#{num} ساعات|4#{num} ساعات|#{num} ساعة",
+	"1#1 minute|#{num} minutes": "0#لا دقائق|1#دقيقة|2#{num} دقائق|3#{num} دقائق|4#{num} دقائق|#{num} دقيقة",
+	"1#1 second|#{num} seconds": "0#لا ثوان|1#ثانية|2#{num} ثوان|3#{num} ثوان|4#{num} ثوان|#{num} ثانية",
+	"1#1 yr|#{num} yrs": "0#لا سنوات|1#سنة|2#{num} سنوات|3#{num} سنوات|4#{num} سنوات|#{num} سنة",
+	"1#1 mon|#{num} mons": "0#لا أشهر|1#شهر|2#{num} أشهر|3#{num} أشهر|4#{num} أشهر|#{num} شهر",
+	"1#1 wk|#{num} wks": "0#لا أسابيع|1#أسبوع|2#{num} أسابيع|3#{num} أسابيع|4#{num} أسابيع|#{num} أسبوع",
+	"durationLongDays": "0#لا أيام|1#يوم|2#{num} أيام|3#{num} أيام|4#{num} أيام|#{num} يوم",
+	"1#1 hr|#{num} hrs": "0#لا ساعات|1#ساعة|2#{num} س|3#{num} س|4#{num} س|#{num} س",
+	"1#1 min|#{num} min": "0#لا دقائق|1#دقيقة|2#{num} د|3#{num} د|4#{num} د|#{num} د",
+	"1#1 sec|#{num} sec": "0#لا ثوان|1#ثانية|2#{num} ث|3#{num} ث|4#{num} ث|#{num} ث",
+	"durationMediumYears": "0#لا سنوات|1#سنة|2#{num} سن|3#{num} سن|4#{num} سن|#{num} سن",
+	"1#1 mo|#{num} mos": "0#لا أشهر|1#شهر|2#{num} أش|3#{num} أش|4#{num} أش|#{num} شه",
+	"durationMediumWeeks": "0#لا أسابيع|1#أسبوع|2#{num} أس|3#{num} أس|4#{num} أس|#{num} أس",
+	"1#1 dy|#{num} dys": "0#لا أيام|1#يوم|2#{num} أي|3#{num} أي|4#{num} أي|#{num} يو",
+	"durationMediumHours": "0#لا ساعات|1#ساعة|2#{0} س|3#{0} س|4#{0} س|#{0} س",
+	"1#1 mi|#{num} min": "0#لا دقائق|1#دقيقة|2#{0} د|3#{0} د|4#{0} د|#{0} د",
+	"1#1 se|#{num} sec": "0#لا ثوان|1#ثانية|2#{0} ث|3#{0} ث|4#{0} ث|#{0} ث",
+	"#{num}y": "#لا سنوات",
+	"durationShortMonths": "#لا أشهر",
+	"#{num}w": "#لا أسابيع",
+	"#{num}d": "#لا أيام",
+	"#{num}h": "#لا ساعات",
+	"durationShortMinutes": "#لا دقائق",
+	"#{num}s": "#لا ثوان",
+	"separatorShort": " ",
+	"separatorMedium": " ",
+	"separatorLong": " ",
+	"separatorFull": ", ",
+	"finalSeparatorFull": "، و "
+}
+;
+ilib.data.sysres_ar_AE = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_BH = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_DJ = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_DZ = {"generated":true,"NN1":"جا","NN2":"في","NN4":"أف","NN6":"جو","NN7":"جو","NN8":"أو","MMM1":"جانفي","MMM2":"فيفري","MMM3":"مارس","MMM4":"أفريل","MMM6":"جوان","MMM7":"جويلية","MMM8":"أوت","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","MMMM1":"جانفي","MMMM2":"فيفري","MMMM4":"أفريل","MMMM5":"ماي","MMMM6":"جوان","MMMM7":"جويلية","MMMM8":"أوت","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_EG = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_IQ = {"generated":true,"NN1":"كا","NN2":"شب","NN3":"آذ","NN4":"ني","NN5":"أي","NN6":"حز","NN7":"تم","NN8":"آب","NN9":"أي","NN10":"تش","NN11":"تش","NN12":"كا","MMM1":"كانون الثاني","MMM2":"شباط","MMM3":"آذار","MMM4":"نيسان","MMM5":"أيار","MMM6":"حزيران","MMM7":"تموز","MMM8":"آب","MMM9":"أيلول","MMM10":"تشرین الأول","MMM11":"تشرين الثاني","MMM12":"كانون الأول","MMMM1":"كانون الثاني","MMMM2":"شباط","MMMM3":"آذار","MMMM4":"نيسان","MMMM5":"أيار","MMMM6":"حزيران","MMMM7":"تموز","MMMM8":"آب","MMMM9":"أيلول","MMMM10":"تشرين الأول","MMMM11":"تشرين الثاني","MMMM12":"كانون الأول","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_JO = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","MMMM1":"كانون الثاني","MMMM2":"شباط","MMMM3":"آذار","MMMM4":"نيسان","MMMM5":"أيار","MMMM6":"حزيران","MMMM7":"تموز","MMMM8":"آب","MMMM9":"أيلول","MMMM10":"تشرين الأول","MMMM11":"تشرين الثاني","MMMM12":"كانون الأول","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_KW = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_LB = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","MMMM1":"كانون الثاني","MMMM2":"شباط","MMMM3":"آذار","MMMM4":"نيسان","MMMM5":"أيار","MMMM6":"حزيران","MMMM7":"تموز","MMMM8":"آب","MMMM9":"أيلول","MMMM10":"تشرين الأول","MMMM11":"تشرين الثاني","MMMM12":"كانون الأول","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_LY = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_MA = {"generated":true,"NN4":"ﺄب","NN8":"غش","MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"ﺄبﺮيﻟ","MMM6":"يونيو","MMM7":"يوليو","MMM8":"غشت","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نونبر","MMM12":"ديسمبر","MMMM4":"إبريل","MMMM5":"ماي","MMMM8":"غشت","MMMM11":"نونبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_MR = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_OM = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_QA = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_SA = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_SD = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_SY = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","MMMM1":"كانون الثاني","MMMM2":"شباط","MMMM3":"آذار","MMMM4":"نيسان","MMMM5":"أيار","MMMM6":"حزيران","MMMM7":"تموز","MMMM8":"آب","MMMM9":"أيلول","MMMM10":"تشرين الأول","MMMM11":"تشرين الثاني","MMMM12":"كانون الأول","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_TN = {"generated":true,"NN1":"جا","NN2":"في","NN4":"أف","NN6":"جو","NN7":"جو","NN8":"أو","MMM1":"جانفي","MMM2":"فيفري","MMM3":"مارس","MMM4":"أفريل","MMM6":"جوان","MMM7":"جويلية","MMM8":"أوت","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","MMMM1":"جانفي","MMMM2":"فيفري","MMMM4":"أفريل","MMMM5":"ماي","MMMM6":"جوان","MMMM7":"جويلية","MMMM8":"أوت","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar_YE = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_asa = {"generated":true,"NN5":"Me","NN8":"Ag","NN10":"Ok","MMM3":"Mac","MMM5":"Mei","MMM8":"Ago","MMM10":"Okt","MMMM1":"Januari","MMMM2":"Februari","MMMM3":"Machi","MMMM4":"Aprili","MMMM5":"Mei","MMMM6":"Juni","MMMM7":"Julai","MMMM8":"Agosti","MMMM9":"Septemba","MMMM10":"Oktoba","MMMM11":"Novemba","MMMM12":"Desemba","E0":"J","E1":"J","E2":"J","E3":"J","E4":"A","E5":"I","E6":"J","EE0":"Jp","EE1":"Jt","EE2":"Jn","EE3":"Jt","EE4":"Al","EE5":"Ij","EE6":"Jm","EEE0":"Jpi","EEE1":"Jtt","EEE2":"Jnn","EEE3":"Jtn","EEE4":"Alh","EEE5":"Ijm","EEE6":"Jmo","EEEE0":"Jumapili","EEEE1":"Jumatatu","EEEE2":"Jumanne","EEEE3":"Jumatano","EEEE4":"Alhamisi","EEEE5":"Ijumaa","EEEE6":"Jumamosi","a0":"icheheavo","a1":"ichamthi","G-1":"KM","G1":"BM","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_as = {"generated":true,"NN1":"জা","NN2":"ফে","NN3":"মা","NN4":"এপ","NN5":"মে","NN6":"জু","NN7":"জু","NN8":"আগ","NN9":"সে","NN10":"অক","NN11":"নভ","NN12":"ডি","MMM1":"জানু","MMM2":"ফেব্ৰু","MMM3":"মাৰ্চ","MMM4":"এপ্ৰিল","MMM5":"মে","MMM6":"জুন","MMM7":"জুলাই","MMM8":"আগ","MMM9":"সেপ্ট","MMM10":"অক্টো","MMM11":"নভে","MMM12":"ডিসে","MMMM1":"জানুৱাৰী","MMMM2":"ফেব্ৰুৱাৰী","MMMM3":"মাৰ্চ","MMMM4":"এপ্ৰিল","MMMM5":"মে","MMMM6":"জুন","MMMM7":"জুলাই","MMMM8":"আগষ্ট","MMMM9":"ছেপ্তেম্বৰ","MMMM10":"অক্টোবৰ","MMMM11":"নৱেম্বৰ","MMMM12":"ডিচেম্বৰ","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"ৰব","EE1":"সো","EE2":"মঙ","EE3":"বু","EE4":"বৃ","EE5":"শু","EE6":"শন","EEE0":"ৰবি","EEE1":"সোম","EEE2":"মঙ্গল","EEE3":"বুধ","EEE4":"বৃহষ্পতি","EEE5":"শুক্ৰ","EEE6":"শনি","EEEE0":"দেওবাৰ","EEEE1":"সোমবাৰ","EEEE2":"মঙ্গলবাৰ","EEEE3":"বুধবাৰ","EEEE4":"বৃহষ্পতিবাৰ","EEEE5":"শুক্ৰবাৰ","EEEE6":"শনিবাৰ","a0":"পূৰ্বাহ্ণ","a1":"অপৰাহ্ণ","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_az = {"generated":true,"NN1":"ya","NN2":"fe","NN3":"ma","NN4":"ap","NN5":"ma","NN6":"iy","NN7":"iy","NN8":"av","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"yan","MMM2":"fev","MMM3":"mar","MMM4":"apr","MMM5":"may","MMM6":"iyn","MMM7":"iyl","MMM8":"avq","MMM9":"sen","MMM10":"okt","MMM11":"noy","MMM12":"dek","MMMM1":"Yanvar","MMMM2":"Fevral","MMMM3":"Mart","MMMM4":"Aprel","MMMM6":"İyun","MMMM7":"İyul","MMMM8":"Avqust","MMMM9":"Sentyabr","MMMM10":"Oktyabr","MMMM11":"Noyabr","MMMM12":"Dekabr","E0":"7","E1":"1","E2":"2","E3":"3","E4":"4","E5":"5","E6":"6","EE0":"B.","EE1":"B.","EE2":"Ç.","EE3":"Ç.","EE4":"C.","EE5":"C","EE6":"Ş.","EEE0":"B.","EEE1":"B.E.","EEE2":"Ç.A.","EEE3":"Ç.","EEE4":"C.A.","EEE5":"C","EEE6":"Ş.","EEEE0":"bazar","EEEE1":"bazar ertəsi","EEEE2":"çərşənbə axşamı","EEEE3":"çərşənbə","EEEE4":"cümə axşamı","EEEE5":"cümə","EEEE6":"şənbə","G-1":"e.ə.","G1":"b.e.","1#1 sec|#{num} sec":"#{num} san","1#1 second|#{num} seconds":"#{num} saniyə","durationShortMinutes":"#{num}d","1#1 min|#{num} min":"#{num} dəq","1#1 minute|#{num} minutes":"#{num} dəqiqə","#{num}h":"#{num}s","1#1 hr|#{num} hrs":"#{num} saat","1#1 hour|#{num} hours":"#{num} saat","#{num}d":"#{num}g","durationLongDays":"#{num} gün","1#1 day|#{num} days":"#{num} gün","#{num}w":"#{num}h","1#1 wk|#{num} wks":"#{num} həf","1#1 week|#{num} weeks":"#{num} həftə","durationShortMonths":"#{num}a","1#1 mon|#{num} mons":"#{num} ay","1#1 month|#{num} months":"#{num} ay","#{num}y":"#{num}i","1#1 yr|#{num} yrs":"#{num} il","1#1 year|#{num} years":"#{num} il","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_bas = {"generated":true,"NN1":"kɔ","NN2":"ma","NN3":"ma","NN4":"mt","NN5":"mp","NN6":"hi","NN7":"nj","NN8":"hi","NN9":"di","NN10":"bi","NN11":"ma","NN12":"li","MMM1":"kɔn","MMM2":"mac","MMM3":"mat","MMM4":"mto","MMM5":"mpu","MMM6":"hil","MMM7":"nje","MMM8":"hik","MMM9":"dip","MMM10":"bio","MMM11":"may","MMM12":"liɓ","MMMM1":"Kɔndɔŋ","MMMM2":"Màcɛ̂l","MMMM3":"Màtùmb","MMMM4":"Màtop","MMMM5":"M̀puyɛ","MMMM6":"Hìlòndɛ̀","MMMM7":"Njèbà","MMMM8":"Hìkaŋ","MMMM9":"Dìpɔ̀s","MMMM10":"Bìòôm","MMMM11":"Màyɛsèp","MMMM12":"Lìbuy li ńyèe","E0":"n","E1":"n","E2":"u","E3":"ŋ","E4":"m","E5":"k","E6":"j","EE0":"nɔ","EE1":"nj","EE2":"uu","EE3":"ŋg","EE4":"mb","EE5":"kɔ","EE6":"jo","EEE0":"nɔy","EEE1":"nja","EEE2":"uum","EEE3":"ŋge","EEE4":"mbɔ","EEE5":"kɔɔ","EEE6":"jon","EEEE0":"ŋgwà nɔ̂y","EEEE1":"ŋgwà njaŋgumba","EEEE2":"ŋgwà ûm","EEEE3":"ŋgwà ŋgê","EEEE4":"ŋgwà mbɔk","EEEE5":"ŋgwà kɔɔ","EEEE6":"ŋgwà jôn","a0":"I bikɛ̂glà","a1":"I ɓugajɔp","G-1":"b.Y.K","G1":"m.Y.K","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_be = {"generated":true,"NN1":"ст","NN2":"лю","NN3":"са","NN4":"кр","NN5":"ма","NN6":"чэ","NN7":"лі","NN8":"жн","NN9":"ве","NN10":"ка","NN11":"лі","NN12":"сн","MMM1":"сту","MMM2":"лют","MMM3":"сак","MMM4":"кра","MMM5":"май","MMM6":"чэр","MMM7":"ліп","MMM8":"жні","MMM9":"вер","MMM10":"кас","MMM11":"ліс","MMM12":"сне","MMMM1":"студзень","MMMM2":"люты","MMMM3":"сакавік","MMMM4":"красавік","MMMM5":"май","MMMM6":"чэрвень","MMMM7":"ліпень","MMMM8":"жнівень","MMMM9":"верасень","MMMM10":"кастрычнік","MMMM11":"лістапад","MMMM12":"снежань","E0":"н","E1":"п","E2":"а","E3":"с","E4":"ч","E5":"п","E6":"с","EE0":"нд","EE1":"пн","EE2":"аў","EE3":"ср","EE4":"чц","EE5":"пт","EE6":"сб","EEE0":"нд","EEE1":"пн","EEE2":"аў","EEE3":"ср","EEE4":"чц","EEE5":"пт","EEE6":"сб","EEEE0":"нядзеля","EEEE1":"панядзелак","EEEE2":"аўторак","EEEE3":"серада","EEEE4":"чацвер","EEEE5":"пятніца","EEEE6":"субота","a0":"да палудня","a1":"пасля палудня","G-1":"да н.э.","G1":"н.э.","#{num}s":"#{num}с","1#1 sec|#{num} sec":"#{num} сэк","1#1 second|#{num} seconds":"one#{num} сэкунда|many#{num} сэкунд|#{num} сэкунды","durationShortMinutes":"#{num}х","1#1 min|#{num} min":"#{num} хві","1#1 minute|#{num} minutes":"one#{num} хвіліна|many#{num} хвілін|#{num} хвіліны","#{num}h":"#{num}г","1#1 hr|#{num} hrs":"#{num} гад","1#1 hour|#{num} hours":"one#{num} гадзіна|many#{num} гадзін|#{num} гадзіны","#{num}d":"#{num}д","durationLongDays":"one#{num} дзе|few#{num} дні|many#{num} дзён|#{num} дня","1#1 day|#{num} days":"one#{num} дзень|few#{num} дні|many#{num} дзён|#{num} дня","#{num}w":"#{num}т","1#1 wk|#{num} wks":"#{num} тыд","1#1 week|#{num} weeks":"one#{num} тыдзень|few#{num} тыдні|many#{num} тыдняў|#{num} тыдня","durationShortMonths":"#{num}м","1#1 mon|#{num} mons":"#{num} мес","1#1 month|#{num} months":"one#{num} месяц|many#{num} месяцаў|#{num} месяца","#{num}y":"#{num}г","1#1 yr|#{num} yrs":"one#{num} год|few#{num} гады|many#{num} гад|#{num} году","1#1 year|#{num} years":"one#{num} год|few#{num} гады|many#{num} гадоў|#{num} году","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_bem = {"generated":true,"NN4":"Ep","NN5":"Me","NN8":"Og","NN10":"Ok","NN12":"Di","MMM3":"Mac","MMM4":"Epr","MMM5":"Mei","MMM8":"Oga","MMM10":"Okt","MMM12":"Dis","MMMM1":"Januari","MMMM2":"Februari","MMMM3":"Machi","MMMM4":"Epreo","MMMM5":"Mei","MMMM6":"Juni","MMMM7":"Julai","MMMM8":"Ogasti","MMMM9":"Septemba","MMMM10":"Oktoba","MMMM11":"Novemba","MMMM12":"Disemba","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"Pa","EE1":"Pa","EE2":"Pa","EE3":"Pa","EE4":"Pa","EE5":"Pa","EE6":"Pa","EEE0":"Pa Mulungu","EEE1":"Palichimo","EEE2":"Palichibuli","EEE3":"Palichitatu","EEE4":"Palichine","EEE5":"Palichisano","EEE6":"Pachibelushi","EEEE0":"Pa Mulungu","EEEE1":"Palichimo","EEEE2":"Palichibuli","EEEE3":"Palichitatu","EEEE4":"Palichine","EEEE5":"Palichisano","EEEE6":"Pachibelushi","a0":"uluchelo","a1":"akasuba","G-1":"BC","G1":"AD","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_bg = {"generated":true,"NN1":"ян","NN2":"фе","NN3":"ма","NN4":"ап","NN5":"ма","NN6":"юн","NN7":"юл","NN8":"ав","NN9":"се","NN10":"ок","NN11":"но","NN12":"де","MMM1":"ян.","MMM2":"февр.","MMM3":"март","MMM4":"апр.","MMM5":"май","MMM6":"юни","MMM7":"юли","MMM8":"авг.","MMM9":"септ.","MMM10":"окт.","MMM11":"ноем.","MMM12":"дек.","MMMM1":"януари","MMMM2":"февруари","MMMM3":"март","MMMM4":"април","MMMM5":"май","MMMM6":"юни","MMMM7":"юли","MMMM8":"август","MMMM9":"септември","MMMM10":"октомври","MMMM11":"ноември","MMMM12":"декември","E0":"н","E1":"п","E2":"в","E3":"с","E4":"ч","E5":"п","E6":"с","EE0":"нд","EE1":"пн","EE2":"вт","EE3":"ср","EE4":"чт","EE5":"пт","EE6":"сб","EEE0":"нд","EEE1":"пн","EEE2":"вт","EEE3":"ср","EEE4":"чт","EEE5":"пт","EEE6":"сб","EEEE0":"неделя","EEEE1":"понеделник","EEEE2":"вторник","EEEE3":"сряда","EEEE4":"четвъртък","EEEE5":"петък","EEEE6":"събота","a0":"пр. об.","a1":"сл. об.","G-1":"пр. н. е.","G1":"от н. е.","#{num}s":"#{num}с","1#1 se|#{num} sec":"#{num} сек","1#1 sec|#{num} sec":"#{num} сек","1#1 second|#{num} seconds":"one#{num} секунда|#{num} секунди","durationShortMinutes":"#{num}м","1#1 mi|#{num} min":"#{num} мин","1#1 min|#{num} min":"#{num} мин","1#1 minute|#{num} minutes":"one#{num} минута|#{num} минути","#{num}h":"#{num}ч","durationMediumHours":"one#{num} час|#{num} ча","1#1 hr|#{num} hrs":"one#{num} час|#{num} часа","1#1 hour|#{num} hours":"one#{num} час|#{num} часа","#{num}d":"#{num}д","1#1 dy|#{num} dys":"#{num} дн.","durationLongDays":"one#{num} ден|#{num} дена","1#1 day|#{num} days":"one#{num} ден|#{num} дена","#{num}w":"#{num}с","durationMediumWeeks":"#{num} се","1#1 wk|#{num} wks":"#{num} сед","1#1 week|#{num} weeks":"one#{num} седмица|#{num} седмици","durationShortMonths":"#{num}м","1#1 mo|#{num} mos":"#{num} ме","1#1 mon|#{num} mons":"#{num} мес","1#1 month|#{num} months":"one#{num} месец|#{num} месеца","#{num}y":"#{num}г","durationMediumYears":"#{num} го","1#1 yr|#{num} yrs":"#{num} год","1#1 year|#{num} years":"one#{num} година|#{num} години","{duration} ago":"преди {duration}","in {duration}":"след {0} дни","finalSeparatorFull":" и ","separatorLong":" "};
+ilib.data.sysres_bm = {"generated":true,"NN1":"za","NN2":"fe","NN3":"ma","NN4":"aw","NN5":"mɛ","NN6":"zu","NN7":"zu","NN8":"ut","NN9":"sɛ","NN10":"ɔk","NN11":"no","NN12":"de","MMM1":"zan","MMM2":"feb","MMM3":"mar","MMM4":"awi","MMM5":"mɛ","MMM6":"zuw","MMM7":"zul","MMM8":"uti","MMM9":"sɛt","MMM10":"ɔku","MMM11":"now","MMM12":"des","MMMM1":"zanwuye","MMMM2":"feburuye","MMMM3":"marisi","MMMM4":"awirili","MMMM5":"mɛ","MMMM6":"zuwɛn","MMMM7":"zuluye","MMMM8":"uti","MMMM9":"sɛtanburu","MMMM10":"ɔkutɔburu","MMMM11":"nowanburu","MMMM12":"desanburu","E0":"K","E1":"N","E3":"A","E4":"A","E5":"J","EE0":"ka","EE1":"nt","EE2":"ta","EE3":"ar","EE4":"al","EE5":"ju","EE6":"si","EEE0":"kar","EEE1":"ntɛ","EEE2":"tar","EEE3":"ara","EEE4":"ala","EEE5":"jum","EEE6":"sib","EEEE0":"kari","EEEE1":"ntɛnɛ","EEEE2":"tarata","EEEE3":"araba","EEEE4":"alamisa","EEEE5":"juma","EEEE6":"sibiri","G-1":"J.-C. ɲɛ","G1":"ni J.-C.","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_bn = {"generated":true,"NN1":"জা","NN2":"ফে","NN3":"মা","NN4":"এপ","NN5":"মে","NN6":"জু","NN7":"জু","NN8":"আগ","NN9":"সে","NN10":"অক","NN11":"নভ","NN12":"ডি","MMM1":"জানুয়ারী","MMM2":"ফেব্রুয়ারী","MMM3":"মার্চ","MMM4":"এপ্রিল","MMM5":"মে","MMM6":"জুন","MMM7":"জুলাই","MMM8":"আগস্ট","MMM9":"সেপ্টেম্বর","MMM10":"অক্টোবর","MMM11":"নভেম্বর","MMM12":"ডিসেম্বর","MMMM1":"জানুয়ারী","MMMM2":"ফেব্রুয়ারী","MMMM3":"মার্চ","MMMM4":"এপ্রিল","MMMM5":"মে","MMMM6":"জুন","MMMM7":"জুলাই","MMMM8":"আগস্ট","MMMM9":"সেপ্টেম্বর","MMMM10":"অক্টোবর","MMMM11":"নভেম্বর","MMMM12":"ডিসেম্বর","E0":"র","E1":"সো","E2":"ম","E3":"বু","E4":"বৃ","E5":"শু","E6":"শ","EE0":"রঃ","EE1":"সো","EE2":"মঃ","EE3":"বু","EE4":"বৃ","EE5":"শু","EE6":"শো","EEE0":"রবি","EEE1":"সোম","EEE2":"মঙ্গল","EEE3":"বুধ","EEE4":"বৃহস্পতি","EEE5":"শুক্র","EEE6":"শনি","EEEE0":"রবিবার","EEEE1":"সোমবার","EEEE2":"মঙ্গলবার","EEEE3":"বুধবার","EEEE4":"বৃহষ্পতিবার","EEEE5":"শুক্রবার","EEEE6":"শনিবার","a0":"পূর্বাহ্ণ","a1":"অপরাহ্ণ","G-1":"খৃষ্টপূর্ব","G1":"খৃষ্টাব্দ","#{num}s":"#{num}স","1#1 se|#{num} sec":"#{num} সে","1#1 sec|#{num} sec":"#{num} সেক","1#1 second|#{num} seconds":"#{num} সেকেন্ড","durationShortMinutes":"#{num}ম","1#1 mi|#{num} min":"#{num} মি","1#1 min|#{num} min":"#{num} মিন","1#1 minute|#{num} minutes":"#{num} মিনিট","#{num}h":"#{num}ঘ","durationMediumHours":"#{num} ঘন","1#1 hr|#{num} hrs":"#{num} ঘন্","1#1 hour|#{num} hours":"#{num} ঘন্টা","#{num}d":"#{num}দ","1#1 dy|#{num} dys":"#{num} দিন","durationLongDays":"#{num} দিন","1#1 day|#{num} days":"#{num} দিন","#{num}w":"#{num}স","durationMediumWeeks":"#{num} সপ","1#1 wk|#{num} wks":"#{num} সপ্","1#1 week|#{num} weeks":"#{num} সপ্তাহ","durationShortMonths":"#{num}ম","1#1 mo|#{num} mos":"#{num} মাস","1#1 mon|#{num} mons":"#{num} মাস","1#1 month|#{num} months":"#{num} মাস","#{num}y":"#{num}ব","durationMediumYears":"#{num} বছর","1#1 yr|#{num} yrs":"#{num} বছর","1#1 year|#{num} years":"#{num} বছর","{duration} ago":"{duration} পূর্বে","in {duration}":"{duration}ের মধ্যে","finalSeparatorFull":", এবং ","separatorLong":" "};
+ilib.data.sysres_br = {"generated":true,"NN1":"Ge","NN2":"Cʼ","NN3":"Me","NN4":"Eb","NN6":"Me","NN7":"Go","NN8":"Eo","NN9":"Gw","NN10":"He","NN11":"Du","NN12":"Ke","MMM1":"Gen","MMM2":"Cʼhwe","MMM3":"Meur","MMM4":"Ebr","MMM5":"Mae","MMM6":"Mezh","MMM7":"Goue","MMM8":"Eost","MMM9":"Gwen","MMM10":"Here","MMM11":"Du","MMM12":"Ker","MMMM1":"Genver","MMMM2":"Cʼhwevrer","MMMM3":"Meurzh","MMMM4":"Ebrel","MMMM5":"Mae","MMMM6":"Mezheven","MMMM7":"Gouere","MMMM8":"Eost","MMMM9":"Gwengolo","MMMM10":"Here","MMMM11":"Du","MMMM12":"Kerzu","E0":"su","E1":"lu","E2":"mz","E3":"mc","E4":"ya","E5":"gw","E6":"sa","EE1":"Lu","EE2":"Me","EE3":"Me","EE4":"Ya","EE5":"Gw","EEE0":"Sul","EEE1":"Lun","EEE2":"Meu.","EEE3":"Mer.","EEE4":"Yaou","EEE5":"Gwe.","EEE6":"Sad.","EEEE0":"Sul","EEEE1":"Lun","EEEE2":"Meurzh","EEEE3":"Mercʼher","EEEE4":"Yaou","EEEE5":"Gwener","EEEE6":"Sadorn","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_bs = {"generated":true,"NN1":"ja","NN2":"fe","NN3":"ma","NN4":"ap","NN5":"ma","NN6":"ju","NN7":"ju","NN8":"av","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"jan","MMM2":"feb","MMM3":"mar","MMM4":"apr","MMM5":"maj","MMM6":"jun","MMM7":"jul","MMM8":"avg","MMM9":"sep","MMM10":"okt","MMM11":"nov","MMM12":"dec","MMMM1":"januar","MMMM2":"februar","MMMM3":"mart","MMMM4":"april","MMMM5":"maj","MMMM6":"juni","MMMM7":"juli","MMMM8":"avgust","MMMM9":"septembar","MMMM10":"oktobar","MMMM11":"novembar","MMMM12":"decembar","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"ne","EE1":"po","EE2":"ut","EE3":"sr","EE4":"če","EE5":"pe","EE6":"su","EEE0":"ned","EEE1":"pon","EEE2":"uto","EEE3":"sri","EEE4":"čet","EEE5":"pet","EEE6":"sub","EEEE0":"nedjelja","EEEE1":"ponedjeljak","EEEE2":"utorak","EEEE3":"srijeda","EEEE4":"četvrtak","EEEE5":"petak","EEEE6":"subota","a0":"pre podne","a1":"popodne","G-1":"p. n. e.","G1":"n. e","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekunda|few#{num} sekunde|#{num} sekundi","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minut|few#{num} minute|#{num} minuta","#{num}h":"#{num}s","1#1 hr|#{num} hrs":"one#{num} sat|few#{num} sata|#{num} sati","1#1 hour|#{num} hours":"one#{num} sat|few#{num} sata|#{num} sati","durationLongDays":"one#{num} dan|#{num} dana","1#1 day|#{num} days":"one#{num} dan|#{num} dana","#{num}w":"#{num}n","1#1 wk|#{num} wks":"#{num} ned","1#1 week|#{num} weeks":"few#{num} nedelje|#{num} nedelja","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} mes","1#1 month|#{num} months":"one#{num} mesec|few#{num} meseca|#{num} meseci","#{num}y":"#{num}g","durationMediumYears":"#{num} god","1#1 yr|#{num} yrs":"#{num} god","1#1 year|#{num} years":"few#{num} godine|#{num} godina","finalSeparatorFull":" i ","separatorLong":" "};
+ilib.data.sysres_bs_Cyrl_BA = {"generated":true,"NN1":"ја","NN2":"фе","NN3":"ма","NN4":"ап","NN5":"ма","NN6":"ју","NN7":"ју","NN8":"ав","NN9":"се","NN10":"ок","NN11":"но","NN12":"де","MMM1":"јан","MMM2":"феб","MMM3":"мар","MMM4":"апр","MMM5":"мај","MMM6":"јун","MMM7":"јул","MMM8":"авг","MMM9":"сеп","MMM10":"окт","MMM11":"нов","MMM12":"дец","MMMM1":"јануар","MMMM2":"фебруар","MMMM3":"март","MMMM4":"април","MMMM5":"мај","MMMM6":"јуни","MMMM7":"јули","MMMM8":"август","MMMM9":"септембар","MMMM10":"октобар","MMMM11":"новембар","MMMM12":"децембар","E0":"н","E1":"п","E2":"у","E3":"с","E4":"ч","E5":"п","E6":"с","EE0":"не","EE1":"по","EE2":"ут","EE3":"ср","EE4":"че","EE5":"пе","EE6":"су","EEE0":"нед","EEE1":"пон","EEE2":"уто","EEE3":"сри","EEE4":"чет","EEE5":"пет","EEE6":"суб","EEEE0":"недеља","EEEE1":"понедељак","EEEE2":"уторак","EEEE3":"сриједа","EEEE4":"четвртак","EEEE5":"петак","EEEE6":"субота","a0":"пре подне","a1":"поподне","G-1":"п. н. е.","G1":"н. е.","#{num}s":"#{num}с","1#1 se|#{num} sec":"#{num} сек","1#1 sec|#{num} sec":"#{num} сек","1#1 second|#{num} seconds":"few#{num} секунде|many#{num} секунди|#{num} секунда","durationShortMinutes":"#{num}м","1#1 mi|#{num} min":"#{num} мин","1#1 min|#{num} min":"#{num} мин","1#1 minute|#{num} minutes":"few#{num} минута|many#{num} минута|#{num} минут","#{num}h":"#{num}с","durationMediumHours":"few#{num} са|many#{num} са|#{num} сат","1#1 hr|#{num} hrs":"few#{num} сата|many#{num} сати|#{num} сат","1#1 hour|#{num} hours":"few#{num} сата|many#{num} сати|#{num} сат","#{num}d":"#{num}д","1#1 dy|#{num} dys":"few#{num} да|many#{num} да|#{num} дан","durationLongDays":"few#{num} дана|many#{num} дана|#{num} дан","1#1 day|#{num} days":"few#{num} дана|many#{num} дана|#{num} дан","#{num}w":"#{num}н","durationMediumWeeks":"#{num} нед","1#1 wk|#{num} wks":"#{num} нед","1#1 week|#{num} weeks":"few#{num} недеље|#{num} недеља","durationShortMonths":"#{num}м","1#1 mo|#{num} mos":"#{num} мес","1#1 mon|#{num} mons":"#{num} мес","1#1 month|#{num} months":"few#{num} месеца|many#{num} месеци|#{num} месец","#{num}y":"#{num}г","durationMediumYears":"#{num} год","1#1 yr|#{num} yrs":"#{num} год","1#1 year|#{num} years":"few#{num} године|#{num} година","{duration} ago":"пре {duration}","in {duration}":"за {duration}","finalSeparatorFull":" и "};
+ilib.data.sysres_ca = {"generated":true,"NN1":"de","NN2":"de","NN3":"de","NN4":"d’","NN5":"de","NN6":"de","NN7":"de","NN8":"d’","NN9":"de","NN10":"d’","NN11":"de","NN12":"de","MMM1":"de gen.","MMM2":"de febr.","MMM3":"de març","MMM4":"d’abr.","MMM5":"de maig","MMM6":"de juny","MMM7":"de jul.","MMM8":"d’ag.","MMM9":"de set.","MMM10":"d’oct.","MMM11":"de nov.","MMM12":"de des.","MMMM1":"de gener","MMMM2":"de febrer","MMMM3":"de març","MMMM4":"d’abril","MMMM5":"de maig","MMMM6":"de juny","MMMM7":"de juliol","MMMM8":"d’agost","MMMM9":"de setembre","MMMM10":"d’octubre","MMMM11":"de novembre","MMMM12":"de desembre","E0":"dg","E1":"dl","E2":"dt","E3":"dc","E4":"dj","E5":"dv","E6":"ds","EE0":"dg","EE1":"dl","EE2":"dt","EE3":"dc","EE4":"dj","EE5":"dv","EE6":"ds","EEE0":"dg.","EEE1":"dl.","EEE2":"dt.","EEE3":"dc.","EEE4":"dj.","EEE5":"dv.","EEE6":"ds.","EEEE0":"diumenge","EEEE1":"dilluns","EEEE2":"dimarts","EEEE3":"dimecres","EEEE4":"dijous","EEEE5":"divendres","EEEE6":"dissabte","a0":"a.m.","a1":"p.m.","G-1":"aC","G1":"dC","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"#{num} seg","1#1 second|#{num} seconds":"one#{num} segon|#{num} segons","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} mi","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minut|#{num} minuts","durationMediumHours":"#{num} ho","1#1 hr|#{num} hrs":"one#{num} hora|#{num} hor","1#1 hour|#{num} hours":"one#{num} hora|#{num} hores","1#1 dy|#{num} dys":"one#{num} dia|#{num} di","durationLongDays":"one#{num} dia|#{num} dies","1#1 day|#{num} days":"one#{num} dia|#{num} dies","#{num}w":"#{num}s","durationMediumWeeks":"#{num} se","1#1 wk|#{num} wks":"#{num} set","1#1 week|#{num} weeks":"one#{num} setmana|#{num} setmanes","durationShortMonths":"#{num}m","1#1 mo|#{num} mos":"one#{num} mes|#{num} me","1#1 mon|#{num} mons":"#{num} mes","1#1 month|#{num} months":"one#{num} mes|#{num} mesos","#{num}y":"#{num}a","durationMediumYears":"one#{num} any|#{num} an","1#1 yr|#{num} yrs":"one#{num} any|#{num} anys","1#1 year|#{num} years":"one#{num} any|#{num} anys","{duration} ago":"fa {duration}","in {duration}":"d'aquí a {duration}","finalSeparatorFull":" i ","separatorLong":" "};
+ilib.data.sysres_cs = {"generated":true,"NN1":"le","NN2":"ún","NN3":"bř","NN4":"du","NN5":"kv","NN6":"čv","NN7":"čv","NN8":"sr","NN9":"zá","NN10":"ří","NN11":"li","NN12":"pr","MMM1":"led","MMM2":"úno","MMM3":"bře","MMM4":"dub","MMM5":"kvě","MMM6":"čvn","MMM7":"čvc","MMM8":"srp","MMM9":"zář","MMM10":"říj","MMM11":"lis","MMM12":"pro","MMMM1":"ledna","MMMM2":"února","MMMM3":"března","MMMM4":"dubna","MMMM5":"května","MMMM6":"června","MMMM7":"července","MMMM8":"srpna","MMMM9":"září","MMMM10":"října","MMMM11":"listopadu","MMMM12":"prosince","E0":"N","E1":"P","E2":"Ú","E3":"S","E4":"Č","E5":"P","EE0":"ne","EE1":"po","EE2":"út","EE3":"st","EE4":"čt","EE5":"pá","EE6":"so","EEE0":"ne","EEE1":"po","EEE2":"út","EEE3":"st","EEE4":"čt","EEE5":"pá","EEE6":"so","EEEE0":"neděle","EEEE1":"pondělí","EEEE2":"úterý","EEEE3":"středa","EEEE4":"čtvrtek","EEEE5":"pátek","EEEE6":"sobota","G-1":"př. n. l.","G1":"n. l.","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekunda|few#{num} sekundy|#{num} sekund","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} mi","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minuta|few#{num} minuty|#{num} minut","durationMediumHours":"#{num} ho","1#1 hr|#{num} hrs":"#{num} hod","1#1 hour|#{num} hours":"one#{num} hodina|few#{num} hodiny|#{num} hodin","1#1 dy|#{num} dys":"one#{num} den|few#{num} dny|#{num} dní","durationLongDays":"one#{num} den|few#{num} dny|#{num} dní","1#1 day|#{num} days":"one#{num} den|few#{num} dny|#{num} dní","#{num}w":"#{num}t","durationMediumWeeks":"#{num} tý","1#1 wk|#{num} wks":"#{num} týd","1#1 week|#{num} weeks":"one#{num} týden|few#{num} týdny|#{num} týdnů","durationShortMonths":"#{num}m","1#1 mo|#{num} mos":"#{num} mě","1#1 mon|#{num} mons":"#{num} měs","1#1 month|#{num} months":"one#{num} měsíc|few#{num} měsíce|#{num} měsíců","#{num}y":"#{num}r","durationMediumYears":"one#{num} rok|few#{num} ro|#{num} let","1#1 yr|#{num} yrs":"one#{num} rok|few#{num} roky|#{num} let","1#1 year|#{num} years":"one#{num} rok|few#{num} roky|#{num} let","{duration} ago":"před {0} dnem","in {duration}":"za {duration}","finalSeparatorFull":" a ","separatorLong":" "};
 ilib.data.sysres_da = {
 	"NN1": "ja",
 	"NN2": "fe",
@@ -12752,8 +12696,8 @@ ilib.data.sysres_de_AT = {
 	"MMM1":"Jän",
 	"MMMM1":"Jänner"
 };
-ilib.data.sysres_de_CH = {};
 ilib.data.sysres_de_DE = {};
+ilib.data.sysres_el = {"generated":true,"NN1":"Ια","NN2":"Φε","NN3":"Μα","NN4":"Απ","NN5":"Μα","NN6":"Ιο","NN7":"Ιο","NN8":"Αυ","NN9":"Σε","NN10":"Οκ","NN11":"Νο","NN12":"Δε","MMM1":"Ιαν","MMM2":"Φεβ","MMM3":"Μαρ","MMM4":"Απρ","MMM5":"Μαϊ","MMM6":"Ιουν","MMM7":"Ιουλ","MMM8":"Αυγ","MMM9":"Σεπ","MMM10":"Οκτ","MMM11":"Νοε","MMM12":"Δεκ","MMMM1":"Ιανουαρίου","MMMM2":"Φεβρουαρίου","MMMM3":"Μαρτίου","MMMM4":"Απριλίου","MMMM5":"Μαΐου","MMMM6":"Ιουνίου","MMMM7":"Ιουλίου","MMMM8":"Αυγούστου","MMMM9":"Σεπτεμβρίου","MMMM10":"Οκτωβρίου","MMMM11":"Νοεμβρίου","MMMM12":"Δεκεμβρίου","E0":"Κ","E1":"Δ","E2":"Τ","E3":"Τ","E4":"Π","E5":"Π","E6":"Σ","EE0":"Κυ","EE1":"Δε","EE2":"Τρ","EE3":"Τε","EE4":"Πε","EE5":"Πα","EE6":"Σα","EEE0":"Κυρ","EEE1":"Δευ","EEE2":"Τρί","EEE3":"Τετ","EEE4":"Πέμ","EEE5":"Παρ","EEE6":"Σάβ","EEEE0":"Κυριακή","EEEE1":"Δευτέρα","EEEE2":"Τρίτη","EEEE3":"Τετάρτη","EEEE4":"Πέμπτη","EEEE5":"Παρασκευή","EEEE6":"Σάββατο","a0":"π.μ.","a1":"μ.μ.","G-1":"π.Χ.","G1":"μ.Χ.","#{num}s":"#{num}δ","1#1 se|#{num} sec":"#{num} δε","1#1 sec|#{num} sec":"#{num} δευ","1#1 second|#{num} seconds":"one#{num} δευτερόλεπτο|#{num} δευτερόλεπτα","durationShortMinutes":"#{num}λ","1#1 mi|#{num} min":"#{num} λε","1#1 min|#{num} min":"#{num} λεπ","1#1 minute|#{num} minutes":"one#{num} λεπτό|#{num} λεπτά","#{num}h":"#{num}ώ","durationMediumHours":"one#{num} ώρα|#{num} ώρ","1#1 hr|#{num} hrs":"one#{num} ώρα|#{num} ώρες","1#1 hour|#{num} hours":"one#{num} ώρα|#{num} ώρες","#{num}d":"#{num}η","1#1 dy|#{num} dys":"#{num} ημ","durationLongDays":"#{num} ημέ","1#1 day|#{num} days":"one#{num} ημέρα|#{num} ημέρες","#{num}w":"#{num}ε","durationMediumWeeks":"#{num} εβ","1#1 wk|#{num} wks":"#{num} εβδ","1#1 week|#{num} weeks":"one#{num} εβδομάδα|#{num} εβδομάδες","durationShortMonths":"#{num}μ","1#1 mo|#{num} mos":"#{num} μή","1#1 mon|#{num} mons":"#{num} μήν","1#1 month|#{num} months":"one#{num} μήνας|#{num} μήνες","#{num}y":"#{num}έ","durationMediumYears":"one#{num} έτ|#{num} έτη","1#1 yr|#{num} yrs":"one#{num} έτος|#{num} έτη","1#1 year|#{num} years":"one#{num} έτος|#{num} έτη","{duration} ago":"πριν από {duration}","in {duration}":"σε {duration}","finalSeparatorFull":" και ","separatorLong":" "};
 ilib.data.sysres_en = {}
 ;
 ilib.data.sysres_en_AU = {}
@@ -12762,11 +12706,23 @@ ilib.data.sysres_en_CA = {}
 ;
 ilib.data.sysres_en_GB = {}
 ;
+ilib.data.sysres_en_GH = {}
+;
+ilib.data.sysres_en_GM = {}
+;
+ilib.data.sysres_en_HK = {}
+;
 ilib.data.sysres_en_IE = {
 	"a0":"a.m.",
 	"a1":"p.m."
 };
 ilib.data.sysres_en_IN = {}
+;
+ilib.data.sysres_en_KE = {}
+;
+ilib.data.sysres_en_LR = {}
+;
+ilib.data.sysres_en_MW = {}
 ;
 ilib.data.sysres_en_NG = {}
 ;
@@ -12776,6 +12732,16 @@ ilib.data.sysres_en_PH = {}
 ;
 ilib.data.sysres_en_PK = {}
 ;
+ilib.data.sysres_en_PR = {}
+;
+ilib.data.sysres_en_SG = {}
+;
+ilib.data.sysres_en_SL = {}
+;
+ilib.data.sysres_en_TZ = {}
+;
+ilib.data.sysres_en_UG = {}
+;
 ilib.data.sysres_en_US = {
 	"a0":"am",
 	"a1":"pm",
@@ -12784,6 +12750,8 @@ ilib.data.sysres_en_US = {
 	"finalSeparatorFull":" and "
 };
 ilib.data.sysres_en_ZA = {}
+;
+ilib.data.sysres_en_ZM = {}
 ;
 ilib.data.sysres_es = {
 	"MMMM1": "enero",
@@ -12904,11 +12872,143 @@ ilib.data.sysres_es = {
 	"finalSeparatorFull": " y "
 };
 ilib.data.sysres_es_AR = {};
+ilib.data.sysres_es_CO = {};
+ilib.data.sysres_es_CR = {};
+ilib.data.sysres_es_DO = {};
+ilib.data.sysres_es_EC = {};
 ilib.data.sysres_es_ES = {
 	"E3": "X",
 	"in {duration}": "dentro de {duration}"
 };
+ilib.data.sysres_es_GQ = {
+	"E3": "X",
+	"in {duration}": "dentro de {duration}"
+};
+ilib.data.sysres_es_GT = {};
+ilib.data.sysres_es_HN = {};
 ilib.data.sysres_es_MX = {};
+ilib.data.sysres_es_SV = {};
+ilib.data.sysres_es_UY = {};
+ilib.data.sysres_es_VE = {};
+ilib.data.sysres_et = {"generated":true,"NN1":"ja","NN2":"ve","NN3":"mä","NN4":"ap","NN5":"ma","NN6":"ju","NN7":"ju","NN8":"au","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"jaan","MMM2":"veebr","MMM3":"märts","MMM4":"apr","MMM5":"mai","MMM6":"juuni","MMM7":"juuli","MMM8":"aug","MMM9":"sept","MMM10":"okt","MMM11":"nov","MMM12":"dets","MMMM1":"jaanuar","MMMM2":"veebruar","MMMM3":"märts","MMMM4":"aprill","MMMM5":"mai","MMMM6":"juuni","MMMM7":"juuli","MMMM8":"august","MMMM9":"september","MMMM10":"oktoober","MMMM11":"november","MMMM12":"detsember","E0":"P","E1":"E","E3":"K","E4":"N","E5":"R","E6":"L","EE0":"P","EE1":"E","EE2":"T","EE3":"K","EE4":"N","EE5":"R","EE6":"L","EEE0":"P","EEE1":"E","EEE2":"T","EEE3":"K","EEE4":"N","EEE5":"R","EEE6":"L","EEEE0":"pühapäev","EEEE1":"esmaspäev","EEEE2":"teisipäev","EEEE3":"kolmapäev","EEEE4":"neljapäev","EEEE5":"reede","EEEE6":"laupäev","G-1":"e.m.a.","G1":"m.a.j.","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekund|#{num} sekundit","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} min","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minut|#{num} minutit","#{num}h":"#{num}t","durationMediumHours":"#{num} tu","1#1 hr|#{num} hrs":"#{num} tun","1#1 hour|#{num} hours":"#{num} tundi","#{num}d":"#{num}ö","1#1 dy|#{num} dys":"#{num} pä","durationLongDays":"#{num} ööp","1#1 day|#{num} days":"one#{num} ööpäev|#{num} ööpäeva","#{num}w":"#{num}n","durationMediumWeeks":"#{num} nä","1#1 wk|#{num} wks":"#{num} näd","1#1 week|#{num} weeks":"one#{num} nädal|#{num} nädalat","durationShortMonths":"#{num}k","1#1 mo|#{num} mos":"#{num} ku","1#1 mon|#{num} mons":"one#{num} kuu|#{num} kuud","1#1 month|#{num} months":"one#{num} kuu|#{num} kuud","#{num}y":"#{num}a","durationMediumYears":"#{num} aa","1#1 yr|#{num} yrs":"#{num} aas","1#1 year|#{num} years":"one#{num} aasta|#{num} aastat","{duration} ago":"{0} päeva eest","in {duration}":"{0} päeva pärast","finalSeparatorFull":" ja ","separatorLong":" "};
+ilib.data.sysres_fa = {"generated":true,"NN1":"ژا","NN2":"فو","NN3":"ما","NN4":"آو","NN5":"مه","NN6":"ژو","NN7":"ژو","NN8":"او","NN9":"سپ","NN10":"اک","NN11":"نو","NN12":"دس","MMM1":"ژانویهٔ","MMM2":"فوریهٔ","MMM3":"مارس","MMM4":"آوریل","MMM5":"مهٔ","MMM6":"ژوئن","MMM7":"ژوئیهٔ","MMM8":"اوت","MMM9":"سپتامبر","MMM10":"اکتبر","MMM11":"نوامبر","MMM12":"دسامبر","MMMM1":"ژانویهٔ","MMMM2":"فوریهٔ","MMMM3":"مارس","MMMM4":"آوریل","MMMM5":"مهٔ","MMMM6":"ژوئن","MMMM7":"ژوئیهٔ","MMMM8":"اوت","MMMM9":"سپتامبر","MMMM10":"اکتبر","MMMM11":"نوامبر","MMMM12":"دسامبر","E0":"ی","E1":"د","E2":"س","E3":"چ","E4":"پ","E5":"ج","E6":"ش","EE0":"۱ش","EE1":"۲ش","EE2":"۳ش","EE3":"۴ش","EE4":"۵ش","EE5":"ج","EE6":"ش","EEE0":"یکشنبه","EEE1":"دوشنبه","EEE2":"سه‌شنبه","EEE3":"چهارشنبه","EEE4":"پنجشنبه","EEE5":"جمعه","EEE6":"شنبه","EEEE0":"یکشنبه","EEEE1":"دوشنبه","EEEE2":"سه‌شنبه","EEEE3":"چهارشنبه","EEEE4":"پنجشنبه","EEEE5":"جمعه","EEEE6":"شنبه","a0":"قبل‌ازظهر","a1":"بعدازظهر","G-1":"ق.م.","G1":"م.","#{num}s":"#{num}ث","1#1 se|#{num} sec":"#{num} ثا","1#1 sec|#{num} sec":"#{num} ثان","1#1 second|#{num} seconds":"#{num} ثانیه","durationShortMinutes":"#{num}د","1#1 mi|#{num} min":"#{num} دق","1#1 min|#{num} min":"#{num} دقی","1#1 minute|#{num} minutes":"#{num} دقیقه","#{num}h":"#{num}س","durationMediumHours":"#{num} سا","1#1 hr|#{num} hrs":"#{num} ساعت","1#1 hour|#{num} hours":"#{num} ساعت","#{num}d":"#{num}ر","1#1 dy|#{num} dys":"#{num} روز","durationLongDays":"#{num} روز","1#1 day|#{num} days":"#{num} روز","#{num}w":"#{num}ه","durationMediumWeeks":"#{num} هف","1#1 wk|#{num} wks":"#{num} هفته","1#1 week|#{num} weeks":"#{num} هفته","durationShortMonths":"#{num}م","1#1 mo|#{num} mos":"#{num} ماه","1#1 mon|#{num} mons":"#{num} ماه","1#1 month|#{num} months":"#{num} ماه","#{num}y":"#{num}س","durationMediumYears":"#{num} سال","1#1 yr|#{num} yrs":"#{num} سال","1#1 year|#{num} years":"#{num} سال","separatorFull":"،‏ ","finalSeparatorFull":"، و ","separatorLong":" "};
+ilib.data.sysres_fa_AF = {"generated":true,"NN1":"جن","NN5":"مـ","NN7":"جو","MMM1":"جنو","MMM5":"مـی","MMM7":"جول","MMM12":"دسم","MMMM1":"جنوری","MMMM2":"فبروری","MMMM3":"مارچ","MMMM4":"اپریل","MMMM5":"می","MMMM6":"جون","MMMM7":"جولای","MMMM8":"اگست","MMMM9":"سپتمبر","MMMM10":"اکتوبر","MMMM11":"نومبر","MMMM12":"دسمبر"};
+ilib.data.sysres_ff = {"generated":true,"NN1":"si","NN2":"co","NN3":"mb","NN4":"se","NN5":"du","NN6":"ko","NN7":"mo","NN8":"ju","NN9":"sl","NN10":"ya","NN11":"jo","NN12":"bo","MMM1":"sii","MMM2":"col","MMM3":"mbo","MMM4":"see","MMM5":"duu","MMM6":"kor","MMM7":"mor","MMM8":"juk","MMM9":"slt","MMM10":"yar","MMM11":"jol","MMM12":"bow","MMMM1":"siilo","MMMM2":"colte","MMMM3":"mbooy","MMMM4":"seeɗto","MMMM5":"duujal","MMMM6":"korse","MMMM7":"morso","MMMM8":"juko","MMMM9":"siilto","MMMM10":"yarkomaa","MMMM11":"jolal","MMMM12":"bowte","E0":"d","E1":"a","E2":"m","E3":"n","E4":"n","E5":"m","E6":"h","EE0":"de","EE1":"aa","EE2":"ma","EE3":"nj","EE4":"na","EE5":"mw","EE6":"hb","EEE0":"dew","EEE1":"aaɓ","EEE2":"maw","EEE3":"nje","EEE4":"naa","EEE5":"mwd","EEE6":"hbi","EEEE0":"dewo","EEEE1":"aaɓnde","EEEE2":"mawbaare","EEEE3":"njeslaare","EEEE4":"naasaande","EEEE5":"mawnde","EEEE6":"hoore-biir","a0":"subaka","a1":"kikiiɗe","G-1":"H-I","G1":"C-I","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_fi = {
+	"N1": "T",
+	"N2": "H",
+	"N3": "M",
+	"N4": "H",
+	"N5": "T",
+	"N6": "K",
+	"N7": "H",
+	"N8": "E",
+	"N9": "S",
+	"N10": "L",
+	"N11": "M",
+	"N12": "J",
+	"NN1": "ta",
+	"NN2": "he",
+	"NN3": "ma",
+	"NN4": "hu",
+	"NN5": "to",
+	"NN6": "ke",
+	"NN7": "he",
+	"NN8": "el",
+	"NN9": "sy",
+	"NN10": "lo",
+	"NN11": "ma",
+	"NN12": "jo",
+	"MMM1": "tam",
+	"MMM2": "hel",
+	"MMM3": "maa",
+	"MMM4": "huh",
+	"MMM5": "tou",
+	"MMM6": "kes",
+	"MMM7": "hei",
+	"MMM8": "elo",
+	"MMM9": "syy",
+	"MMM10": "lok",
+	"MMM11": "mar",
+	"MMM12": "jou",
+	"MMMM1": "tammikuuta",
+	"MMMM2": "helmikuuta",
+	"MMMM3": "maaliskuuta",
+	"MMMM4": "huhtikuuta",
+	"MMMM5": "toukokuuta",
+	"MMMM6": "kesäkuuta",
+	"MMMM7": "heinäkuuta",
+	"MMMM8": "elokuuta",
+	"MMMM9": "syyskuuta",
+	"MMMM10": "lokakuuta",
+	"MMMM11": "marraskuuta",
+	"MMMM12": "joulukuuta",
+	"E3": "K",
+	"E5": "P",
+	"E6": "L",
+	"EE0": "su",
+	"EE1": "ma",
+	"EE2": "ti",
+	"EE3": "ke",
+	"EE4": "to",
+	"EE5": "pe",
+	"EE6": "la",
+	"EEE0": "sun",
+	"EEE1": "maa",
+	"EEE2": "tii",
+	"EEE3": "kes",
+	"EEE4": "tor",
+	"EEE5": "per",
+	"EEE6": "lau",
+	"EEEE0": "sunnuntaina",
+	"EEEE1": "maanantaina",
+	"EEEE2": "tiistaina",
+	"EEEE3": "keskiviikkona",
+	"EEEE4": "torstaina",
+	"EEEE5": "perjantaina",
+	"EEEE6": "lauantaina",
+	"a0": "ap.",
+	"a1": "ip.",
+	"G-1": "eKr.",
+	"G1": "jKr.",
+	"in {duration}": "{duration} päästä",
+	"{duration} ago": "{duration} sitten",
+	"1#1 year|#{num} years": "1#{num} vuosi|#{num} vuotta",
+	"1#1 month|#{num} months": "1#{num} kuukausi|#{num} kuukautta",
+	"1#1 week|#{num} weeks": "1#{num} viikko|#{num} viikkoa",
+	"1#1 day|#{num} days": "1#{num} päivä|#{num} päivää",
+	"1#1 hour|#{num} hours": "1#{num} tunti|#{num} tuntia",
+	"1#1 minute|#{num} minutes": "1#{num} minuutti|#{num} minuuttia",
+	"1#1 second|#{num} seconds": "1#{num} sekunti|#{num} sekuntia",
+	"1#1 yr|#{num} yrs": "#{num} vuo",
+	"1#1 mon|#{num} mons": "#{num} kuu",
+	"1#1 wk|#{num} wks": "#{num} vii",
+	"durationLongDays": "#{num} päi",
+	"1#1 hr|#{num} hrs": "#{num} tun",
+	"1#1 min|#{num} min": "#{num} min",
+	"1#1 sec|#{num} sec": "#{num} sek",
+	"durationMediumYears": "#{num} vs",
+	"1#1 mo|#{num} mos": "#{num} kk",
+	"durationMediumWeeks": "#{num} vk",
+	"1#1 dy|#{num} dys": "#{num} pv",
+	"durationMediumHours": "#{num} tt",
+	"1#1 mi|#{num} min": "#{num} mn",
+	"1#1 se|#{num} sec": "#{num} sk",
+	"#{num}y": "#{num}v",
+	"durationShortMonths": "#{num}k",
+	"#{num}w": "#{num}vk",
+	"#{num}d": "#{num}p",
+	"#{num}h": "#{num}t",
+	"durationShortMinutes": "#{num}m",
+	"#{num}s": "#{num}s",
+	"separatorShort": " ",
+	"separatorMedium": " ",
+	"separatorLong": " ",
+	"separatorFull": ", ",
+	"finalSeparatorFull": " ja "
+}
+;
+ilib.data.sysres_fi_FI = {};
 ilib.data.sysres_fr = {
 	"MMMM1": "janvier",
 	"MMM1": "janv",
@@ -13025,15 +13125,62 @@ ilib.data.sysres_fr = {
 	"separatorFull": ", ",
 	"finalSeparatorFull": " et "
 };
+ilib.data.sysres_fr_AD = {}
+;
 ilib.data.sysres_fr_BE = {}
+;
+ilib.data.sysres_fr_BF = {}
+;
+ilib.data.sysres_fr_BJ = {}
 ;
 ilib.data.sysres_fr_CA = {}
 ;
+ilib.data.sysres_fr_CD = {}
+;
+ilib.data.sysres_fr_CF = {}
+;
+ilib.data.sysres_fr_CG = {}
+;
 ilib.data.sysres_fr_CH = {}
+;
+ilib.data.sysres_fr_CI = {}
+;
+ilib.data.sysres_fr_CM = {}
+;
+ilib.data.sysres_fr_DJ = {}
+;
+ilib.data.sysres_fr_DZ = {}
 ;
 ilib.data.sysres_fr_FR = {}
 ;
+ilib.data.sysres_fr_GA = {}
+;
+ilib.data.sysres_fr_GN = {}
+;
+ilib.data.sysres_fr_LB = {}
+;
+ilib.data.sysres_fr_LU = {}
+;
+ilib.data.sysres_fr_MG = {}
+;
+ilib.data.sysres_fr_ML = {}
+;
+ilib.data.sysres_fr_RW = {}
+;
+ilib.data.sysres_fr_SN = {}
+;
+ilib.data.sysres_fr_TG = {}
+;
+ilib.data.sysres_fr_YT = {}
+;
+ilib.data.sysres_ga = {"generated":true,"NN1":"Ea","NN3":"Má","NN4":"Ai","NN5":"Be","NN6":"Me","NN7":"Iú","NN8":"Lú","NN9":"MF","NN10":"DF","NN11":"Sa","NN12":"No","MMM1":"Ean","MMM2":"Feabh","MMM3":"Márta","MMM4":"Aib","MMM5":"Beal","MMM6":"Meith","MMM7":"Iúil","MMM8":"Lún","MMM9":"MFómh","MMM10":"DFómh","MMM11":"Samh","MMM12":"Noll","MMMM1":"Eanáir","MMMM2":"Feabhra","MMMM3":"Márta","MMMM4":"Aibreán","MMMM5":"Bealtaine","MMMM6":"Meitheamh","MMMM7":"Iúil","MMMM8":"Lúnasa","MMMM9":"Meán Fómhair","MMMM10":"Deireadh Fómhair","MMMM11":"Samhain","MMMM12":"Nollaig","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"Do","EE1":"Lu","EE2":"Má","EE3":"Cé","EE4":"Dé","EE5":"Ao","EEE0":"Domh","EEE1":"Luan","EEE2":"Máirt","EEE3":"Céad","EEE4":"Déar","EEE5":"Aoine","EEE6":"Sath","EEEE0":"Dé Domhnaigh","EEEE1":"Dé Luain","EEEE2":"Dé Máirt","EEEE3":"Dé Céadaoin","EEEE4":"Déardaoin","EEEE5":"Dé hAoine","EEEE6":"Dé Sathairn","a0":"a.m.","a1":"p.m.","G-1":"RC","G1":"AD","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_gl = {"generated":true,"NN1":"Xa","NN4":"Ab","NN6":"Xu","NN7":"Xu","NN8":"Ag","NN10":"Ou","MMM1":"Xan","MMM4":"Abr","MMM5":"Mai","MMM6":"Xuñ","MMM7":"Xul","MMM8":"Ago","MMM9":"Set","MMM10":"Out","MMMM1":"Xaneiro","MMMM2":"Febreiro","MMMM3":"Marzo","MMMM4":"Abril","MMMM5":"Maio","MMMM6":"Xuño","MMMM7":"Xullo","MMMM8":"Agosto","MMMM9":"Setembro","MMMM10":"Outubro","MMMM11":"Novembro","MMMM12":"Decembro","E0":"D","E1":"L","E2":"M","E3":"M","E4":"X","E5":"V","EE0":"Do","EE1":"Lu","EE2":"Mt","EE3":"Mc","EE4":"Xv","EE5":"Ve","EE6":"Sá","EEE0":"Dom","EEE1":"Lun","EEE2":"Mar","EEE3":"Mér","EEE4":"Xov","EEE5":"Ven","EEE6":"Sáb","EEEE0":"Domingo","EEEE1":"Luns","EEEE2":"Martes","EEEE3":"Mércores","EEEE4":"Xoves","EEEE5":"Venres","EEEE6":"Sábado","a0":"a.m.","a1":"p.m.","G-1":"a.C.","G1":"d.C.","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"#{num} seg","1#1 second|#{num} seconds":"one#{num} segundo|#{num} segundos","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} min","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minuto|#{num} minutos","durationMediumHours":"#{num} ho","1#1 hr|#{num} hrs":"one#{num} hora|#{num} hor","1#1 hour|#{num} hours":"one#{num} hora|#{num} horas","1#1 dy|#{num} dys":"one#{num} día|#{num} dí","durationLongDays":"one#{num} día|#{num} días","1#1 day|#{num} days":"one#{num} día|#{num} días","#{num}w":"#{num}s","durationMediumWeeks":"one#{num} se|#{num} sem","1#1 wk|#{num} wks":"#{num} sem","1#1 week|#{num} weeks":"one#{num} semana|#{num} semanas","durationShortMonths":"#{num}m","1#1 mo|#{num} mos":"one#{num} mes|#{num} me","1#1 mon|#{num} mons":"#{num} mes","1#1 month|#{num} months":"one#{num} mes|#{num} meses","#{num}y":"#{num}a","durationMediumYears":"one#{num} ano|#{num} an","1#1 yr|#{num} yrs":"one#{num} ano|#{num} anos","1#1 year|#{num} years":"one#{num} ano|#{num} anos","{duration} ago":"hai {duration}","in {duration}":"en {duration}","finalSeparatorFull":" e ","separatorLong":" "};
+ilib.data.sysres_ha = {"generated":true,"NN2":"Fa","NN4":"Af","NN6":"Yu","NN7":"Yu","NN8":"Ag","NN9":"Sa","NN10":"Ok","NN11":"Nu","NN12":"Di","MMM2":"Fab","MMM4":"Afi","MMM6":"Yun","MMM7":"Yul","MMM8":"Agu","MMM9":"Sat","MMM10":"Okt","MMM11":"Nuw","MMM12":"Dis","MMMM1":"Janairu","MMMM2":"Faburairu","MMMM3":"Maris","MMMM4":"Afirilu","MMMM5":"Mayu","MMMM6":"Yuni","MMMM7":"Yuli","MMMM8":"Agusta","MMMM9":"Satumba","MMMM10":"Oktoba","MMMM11":"Nuwamba","MMMM12":"Disamba","E0":"L","E1":"L","E3":"L","E4":"A","E5":"J","E6":"A","EE0":"Lh","EE1":"Li","EE2":"Ta","EE3":"Lr","EE4":"Al","EE5":"Ju","EE6":"As","EEE0":"Lh","EEE1":"Li","EEE2":"Ta","EEE3":"Lr","EEE4":"Al","EEE5":"Ju","EEE6":"As","EEEE0":"Lahadi","EEEE1":"Litinin","EEEE2":"Talata","EEEE3":"Laraba","EEEE4":"Alhamis","EEEE5":"Jumma'a","EEEE6":"Asabar","G-1":"KHAI","G1":"BHAI","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_he = {"generated":true,"NN1":"ינ","NN2":"פב","NN3":"מר","NN4":"אפ","NN5":"מא","NN6":"יו","NN7":"יו","NN8":"או","NN9":"ספ","NN10":"או","NN11":"נו","NN12":"דצ","MMM1":"ינו","MMM2":"פבר","MMM3":"מרץ","MMM4":"אפר","MMM5":"מאי","MMM6":"יונ","MMM7":"יול","MMM8":"אוג","MMM9":"ספט","MMM10":"אוק","MMM11":"נוב","MMM12":"דצמ","MMMM1":"ינואר","MMMM2":"פברואר","MMMM3":"מרץ","MMMM4":"אפריל","MMMM5":"מאי","MMMM6":"יוני","MMMM7":"יולי","MMMM8":"אוגוסט","MMMM9":"ספטמבר","MMMM10":"אוקטובר","MMMM11":"נובמבר","MMMM12":"דצמבר","E0":"א'","E1":"ב'","E2":"ג'","E3":"ד'","E4":"ה'","E5":"ו׳","E6":"ש׳","EE0":"א'","EE1":"ב'","EE2":"ג'","EE3":"ד'","EE4":"ה'","EE5":"ו'","EE6":"ש'","EEE0":"יום א׳","EEE1":"יום ב׳","EEE2":"יום ג׳","EEE3":"יום ד׳","EEE4":"יום ה׳","EEE5":"יום ו׳","EEE6":"שבת","EEEE0":"יום ראשון","EEEE1":"יום שני","EEEE2":"יום שלישי","EEEE3":"יום רביעי","EEEE4":"יום חמישי","EEEE5":"יום שישי","EEEE6":"יום שבת","a0":"לפנה״צ","a1":"אחה״צ","G-1":"לפנה״ס","G1":"לסה״נ","#{num}s":"#{num}ש","1#1 se|#{num} sec":"one#{num} שנ׳|two#{num} שנ׳|many#{num} שנ׳|#{num} שנ","1#1 sec|#{num} sec":"one#{num} שניה|many#‏{num} שני|#{num} שני","1#1 second|#{num} seconds":"one#{num} שניה|many#‏{num} שניות|#{num} שניות","durationShortMinutes":"#{num}ד","1#1 mi|#{num} min":"#{num} דק׳","1#1 min|#{num} min":"one#{num} דקה|#{num} דקות","1#1 minute|#{num} minutes":"one#{num} דקה|#{num} דקות","#{num}h":"#{num}ש","durationMediumHours":"one#{num} שעה|#{num} שע","1#1 hr|#{num} hrs":"one#{num} שעה|#{num} שעות","1#1 hour|#{num} hours":"one#{num} שעה|#{num} שעות","#{num}d":"#‏{num} יום","1#1 dy|#{num} dys":"one#{num} יום|#{num} ימ","durationLongDays":"one#‏{num} יום|#{num} ימים","1#1 day|#{num} days":"one#‏{num} יום|#{num} ימים","#{num}w":"#{num}ש","durationMediumWeeks":"#{num} שב","1#1 wk|#{num} wks":"one#{num} שבוע|#{num} שבו","1#1 week|#{num} weeks":"one#{num} שבוע|#{num} שבועות","durationShortMonths":"#{num}ח","1#1 mo|#{num} mos":"#{num} חו","1#1 mon|#{num} mons":"one#{num} חודש|#{num} חוד","1#1 month|#{num} months":"one#{num} חודש|#{num} חודשים","#{num}y":"#{num}ש","durationMediumYears":"one#{num} שנה|#{num} שנ","1#1 yr|#{num} yrs":"one#{num} שנה|#{num} שנים","1#1 year|#{num} years":"one#{num} שנה|#{num} שנים","{duration} ago":"לפני {0} ימים","in {duration}":"בעוד {0} ימים","finalSeparatorFull":" ו","separatorLong":" "};
+ilib.data.sysres_hi = {"generated":true,"NN1":"जन","NN2":"फर","NN3":"मा","NN4":"अप","NN5":"मई","NN6":"जू","NN7":"जु","NN8":"अग","NN9":"सि","NN10":"अक","NN11":"नव","NN12":"दि","MMM1":"जनवरी","MMM2":"फरवरी","MMM3":"मार्च","MMM4":"अप्रैल","MMM5":"मई","MMM6":"जून","MMM7":"जुलाई","MMM8":"अगस्त","MMM9":"सितम्बर","MMM10":"अक्तूबर","MMM11":"नवम्बर","MMM12":"दिसम्बर","MMMM1":"जनवरी","MMMM2":"फरवरी","MMMM3":"मार्च","MMMM4":"अप्रैल","MMMM5":"मई","MMMM6":"जून","MMMM7":"जुलाई","MMMM8":"अगस्त","MMMM9":"सितम्बर","MMMM10":"अक्तूबर","MMMM11":"नवम्बर","MMMM12":"दिसम्बर","E0":"र","E1":"सो","E2":"मं","E3":"बु","E4":"गु","E5":"शु","E6":"श","EE0":"र","EE1":"सो","EE2":"मं","EE3":"बु","EE4":"गु","EE5":"शु","EE6":"श","EEE0":"रवि.","EEE1":"सोम.","EEE2":"मंगल.","EEE3":"बुध.","EEE4":"बृह.","EEE5":"शुक्र.","EEE6":"शनि.","EEEE0":"रविवार","EEEE1":"सोमवार","EEEE2":"मंगलवार","EEEE3":"बुधवार","EEEE4":"बृहस्पतिवार","EEEE5":"शुक्रवार","EEEE6":"शनिवार","a0":"पूर्वाह्न","a1":"अपराह्न","G-1":"ईसापूर्व","G1":"सन","#{num}s":"#{num}स","1#1 se|#{num} sec":"#{num} से","1#1 sec|#{num} sec":"#{num} सेक","1#1 second|#{num} seconds":"#{num} सेकंड","durationShortMinutes":"#{num}म","1#1 mi|#{num} min":"#{num} मि","1#1 min|#{num} min":"#{num} मिनट","1#1 minute|#{num} minutes":"#{num} मिनट","#{num}h":"#{num}घ","durationMediumHours":"one#{num} घं.|#{num} घं","1#1 hr|#{num} hrs":"one#{num} घंटा|#{num} घंटे","1#1 hour|#{num} hours":"one#{num} घंटा|#{num} घंटे","#{num}d":"#{num}द","1#1 dy|#{num} dys":"#{num} दि.","durationLongDays":"#{num} दिन","1#1 day|#{num} days":"#{num} दिन","#{num}w":"#{num}स","durationMediumWeeks":"#{num} सप","1#1 wk|#{num} wks":"#{num} सप्","1#1 week|#{num} weeks":"#{num} सप्ताह","durationShortMonths":"#{num}म","1#1 mo|#{num} mos":"#{num} मह","1#1 mon|#{num} mons":"#{num} मही","1#1 month|#{num} months":"one#{num} महीना|#{num} महीने","#{num}y":"#{num}स","durationMediumYears":"#{num} साल","1#1 yr|#{num} yrs":"#{num} साल","1#1 year|#{num} years":"#{num} साल","{duration} ago":"{duration} पहले","in {duration}":"{duration} में","finalSeparatorFull":", और ","separatorLong":" "};
+ilib.data.sysres_hr = {"generated":true,"NN1":"si","NN2":"ve","NN3":"ož","NN4":"tr","NN5":"sv","NN6":"li","NN7":"sr","NN8":"ko","NN9":"ru","NN10":"li","NN11":"st","NN12":"pr","MMM1":"sij","MMM2":"velj","MMM3":"ožu","MMM4":"tra","MMM5":"svi","MMM6":"lip","MMM7":"srp","MMM8":"kol","MMM9":"ruj","MMM10":"lis","MMM11":"stu","MMM12":"pro","MMMM1":"siječnja","MMMM2":"veljače","MMMM3":"ožujka","MMMM4":"travnja","MMMM5":"svibnja","MMMM6":"lipnja","MMMM7":"srpnja","MMMM8":"kolovoza","MMMM9":"rujna","MMMM10":"listopada","MMMM11":"studenoga","MMMM12":"prosinca","E0":"N","E1":"P","E2":"U","E3":"S","E4":"Č","E5":"P","EE0":"ne","EE1":"po","EE2":"ut","EE3":"sr","EE4":"če","EE5":"pe","EE6":"su","EEE0":"ned","EEE1":"pon","EEE2":"uto","EEE3":"sri","EEE4":"čet","EEE5":"pet","EEE6":"sub","EEEE0":"nedjelja","EEEE1":"ponedjeljak","EEEE2":"utorak","EEEE3":"srijeda","EEEE4":"četvrtak","EEEE5":"petak","EEEE6":"subota","G-1":"p. n. e.","G1":"A. D.","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"few#{num} sekunde|many#{num} sekundi|#{num} sekunda","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} min","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"few#{num} minute|#{num} minuta","#{num}h":"#{num}s","durationMediumHours":"one#{num} sat|#{num} sa","1#1 hr|#{num} hrs":"one#{num} sat|many#{num} sati|#{num} sata","1#1 hour|#{num} hours":"one#{num} sat|many#{num} sati|#{num} sata","1#1 dy|#{num} dys":"few#{num} da|many#{num} da|#{num} dan","durationLongDays":"few#{num} dana|many#{num} dana|#{num} dan","1#1 day|#{num} days":"few#{num} dana|many#{num} dana|#{num} dan","#{num}w":"#{num}t","durationMediumWeeks":"#{num} tj.","1#1 wk|#{num} wks":"#{num} tje","1#1 week|#{num} weeks":"few#{num} tjedna|many#{num} tjedana|#{num} tjedan","durationShortMonths":"#{num}m","1#1 mo|#{num} mos":"#{num} mj.","1#1 mon|#{num} mons":"#{num} mje","1#1 month|#{num} months":"few#{num} mjeseca|many#{num} mjeseci|#{num} mjesec","#{num}y":"#{num}g","durationMediumYears":"#{num} g.","1#1 yr|#{num} yrs":"#{num} god","1#1 year|#{num} years":"few#{num} godine|#{num} godina","{duration} ago":"prije {duration}","in {duration}":"za {duration}","finalSeparatorFull":" i ","separatorLong":" "};
+ilib.data.sysres_hu = {"generated":true,"NN1":"ja","NN2":"fe","NN3":"má","NN4":"áp","NN5":"má","NN6":"jú","NN7":"jú","NN8":"au","NN9":"sz","NN10":"ok","NN11":"no","NN12":"de","MMM1":"jan.","MMM2":"febr.","MMM3":"márc.","MMM4":"ápr.","MMM5":"máj.","MMM6":"jún.","MMM7":"júl.","MMM8":"aug.","MMM9":"szept.","MMM10":"okt.","MMM11":"nov.","MMM12":"dec.","MMMM1":"január","MMMM2":"február","MMMM3":"március","MMMM4":"április","MMMM5":"május","MMMM6":"június","MMMM7":"július","MMMM8":"augusztus","MMMM9":"szeptember","MMMM10":"október","MMMM11":"november","MMMM12":"december","E0":"V","E1":"H","E2":"K","E3":"Sz","E4":"Cs","E5":"P","E6":"Sz","EE0":"v","EE1":"h","EE2":"k","EE3":"sz","EE4":"cs","EE5":"p","EE6":"sz","EEE0":"v","EEE1":"h","EEE2":"k","EEE3":"sze","EEE4":"cs","EEE5":"p","EEE6":"szo","EEEE0":"vasárnap","EEEE1":"hétfő","EEEE2":"kedd","EEEE3":"szerda","EEEE4":"csütörtök","EEEE5":"péntek","EEEE6":"szombat","a0":"de.","a1":"du.","G-1":"i. e.","G1":"i. sz.","#{num}s":"#{num}m","1#1 se|#{num} sec":"#{num} mp","1#1 sec|#{num} sec":"#{num} más","1#1 second|#{num} seconds":"#{num} másodperc","durationShortMinutes":"#{num}p","1#1 mi|#{num} min":"#{num} pe","1#1 min|#{num} min":"#{num} perc","1#1 minute|#{num} minutes":"#{num} perc","#{num}h":"#{num}ó","durationMediumHours":"#{num} óra","1#1 hr|#{num} hrs":"#{num} óra","1#1 hour|#{num} hours":"#{num} óra","#{num}d":"#{num}n","1#1 dy|#{num} dys":"#{num} nap","durationLongDays":"#{num} nap","1#1 day|#{num} days":"#{num} nap","#{num}w":"#{num}h","durationMediumWeeks":"#{num} hét","1#1 wk|#{num} wks":"#{num} hét","1#1 week|#{num} weeks":"#{num} hét","durationShortMonths":"#{num}h","1#1 mo|#{num} mos":"#{num} hó","1#1 mon|#{num} mons":"#{num} hón","1#1 month|#{num} months":"#{num} hónap","#{num}y":"#{num}é","durationMediumYears":"#{num} év","1#1 yr|#{num} yrs":"#{num} év","1#1 year|#{num} years":"#{num} év","finalSeparatorFull":" és ","separatorLong":" "};
+ilib.data.sysres_hy = {"generated":true,"NN1":"հն","NN2":"փտ","NN3":"մր","NN4":"ապ","NN5":"մյ","NN6":"հն","NN7":"հլ","NN8":"օգ","NN9":"սե","NN10":"հո","NN11":"նո","NN12":"դե","MMM1":"հնվ","MMM2":"փտվ","MMM3":"մրտ","MMM4":"ապր","MMM5":"մյս","MMM6":"հնս","MMM7":"հլս","MMM8":"օգս","MMM9":"սեպ","MMM10":"հոկ","MMM11":"նոյ","MMM12":"դեկ","MMMM1":"հունվար","MMMM2":"փետրվար","MMMM3":"մարտ","MMMM4":"ապրիլ","MMMM5":"մայիս","MMMM6":"հունիս","MMMM7":"հուլիս","MMMM8":"օգոստոս","MMMM9":"սեպտեմբեր","MMMM10":"հոկտեմբեր","MMMM11":"նոյեմբեր","MMMM12":"դեկտեմբեր","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"կի","EE1":"եր","EE2":"եր","EE3":"չո","EE4":"հն","EE5":"ու","EE6":"շա","EEE0":"կիր","EEE1":"երկ","EEE2":"երք","EEE3":"չոր","EEE4":"հնգ","EEE5":"ուր","EEE6":"շաբ","EEEE0":"կիրակի","EEEE1":"երկուշաբթի","EEEE2":"երեքշաբթի","EEEE3":"չորեքշաբթի","EEEE4":"հինգշաբթի","EEEE5":"ուրբաթ","EEEE6":"շաբաթ","a0":"Առ․","a1":"Կե․","G-1":"Մ․Թ․Ա․","G1":"Մ․Թ․","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_id = {
 	"NN5": "Me",
 	"NN8": "Ag",
@@ -13240,6 +13387,7 @@ ilib.data.sysres_it = {
 };
 ilib.data.sysres_it_CH = {};
 ilib.data.sysres_it_IT = {};
+ilib.data.sysres_it_SM = {};
 ilib.data.sysres_ja = {
 	"MMMM1": "1",
 	"MMM1": "1",
@@ -13369,6 +13517,9 @@ ilib.data.sysres_ja = {
 	"finalSeparatorFull": "、"
 };
 ilib.data.sysres_ja_JP = {};
+ilib.data.sysres_ka = {"generated":true,"NN1":"ია","NN2":"თე","NN3":"მა","NN4":"აპ","NN5":"მა","NN6":"ივ","NN7":"ივ","NN8":"აგ","NN9":"სე","NN10":"ოქ","NN11":"ნო","NN12":"დე","MMM1":"იან","MMM2":"თებ","MMM3":"მარ","MMM4":"აპრ","MMM5":"მაი","MMM6":"ივნ","MMM7":"ივლ","MMM8":"აგვ","MMM9":"სექ","MMM10":"ოქტ","MMM11":"ნოე","MMM12":"დეკ","MMMM1":"იანვარი","MMMM2":"თებერვალი","MMMM3":"მარტი","MMMM4":"აპრილი","MMMM5":"მაისი","MMMM6":"ივნისი","MMMM7":"ივლის","MMMM8":"აგვისტო","MMMM9":"სექტემბერი","MMMM10":"ოქტომბერი","MMMM11":"ნოემბერი","MMMM12":"დეკემბერი","E0":"კ","E1":"ო","E2":"ს","E3":"ო","E4":"ხ","E5":"პ","E6":"შ","EE0":"კვ","EE1":"ორ","EE2":"სა","EE3":"ოთ","EE4":"ხუ","EE5":"პა","EE6":"შა","EEE0":"კვი","EEE1":"ორშ","EEE2":"სამ","EEE3":"ოთხ","EEE4":"ხუთ","EEE5":"პარ","EEE6":"შაბ","EEEE0":"კვირა","EEEE1":"ორშაბათი","EEEE2":"სამშაბათი","EEEE3":"ოთხშაბათი","EEEE4":"ხუთშაბათი","EEEE5":"პარასკევი","EEEE6":"შაბათი","G-1":"ჩვენს წელთაღრიცხვამდე","G1":"ჩვენი წელთაღრიცხვით","#{num}s":"#{num}წ","1#1 sec|#{num} sec":"#{num} წამი","1#1 second|#{num} seconds":"#{num} წამი","durationShortMinutes":"#{num}წ","1#1 min|#{num} min":"#{num} წუთი","1#1 minute|#{num} minutes":"#{num} წუთი","#{num}h":"#{num}ს","1#1 hr|#{num} hrs":"#{num} საა","1#1 hour|#{num} hours":"#{num} საათი","#{num}d":"#{num}დ","durationLongDays":"#{num} დღე","1#1 day|#{num} days":"#{num} დღე","#{num}w":"#{num}კ","1#1 wk|#{num} wks":"#{num} კვი","1#1 week|#{num} weeks":"#{num} კვირა","durationShortMonths":"#{num}თ","1#1 mon|#{num} mons":"#{num} თვე","1#1 month|#{num} months":"#{num} თვე","#{num}y":"#{num}წ","1#1 yr|#{num} yrs":"#{num} წელი","1#1 year|#{num} years":"#{num} წელი","finalSeparatorFull":" და ","separatorLong":" "};
+ilib.data.sysres_kk = {"generated":true,"NN1":"қа","NN2":"ақ","NN3":"на","NN4":"сә","NN5":"ма","NN6":"ма","NN7":"ші","NN8":"та","NN9":"қы","NN10":"қа","NN11":"қа","NN12":"же","MMM1":"қаң.","MMM2":"ақп.","MMM3":"нау.","MMM4":"сәу.","MMM5":"мам.","MMM6":"мау.","MMM7":"шіл.","MMM8":"там.","MMM9":"қыр.","MMM10":"қаз.","MMM11":"қар.","MMM12":"желт.","MMMM1":"қаңтар","MMMM2":"ақпан","MMMM3":"наурыз","MMMM4":"сәуір","MMMM5":"мамыр","MMMM6":"маусым","MMMM7":"шілде","MMMM8":"тамыз","MMMM9":"қыркүйек","MMMM10":"қазан","MMMM11":"қараша","MMMM12":"желтоқсан","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"жс","EE1":"дс","EE2":"сс","EE3":"ср","EE4":"бс","EE5":"жм","EE6":"сһ","EEE0":"жс.","EEE1":"дс.","EEE2":"сс.","EEE3":"ср.","EEE4":"бс.","EEE5":"жм.","EEE6":"сһ.","EEEE0":"жексені","EEEE1":"дуйсенбі","EEEE2":"сейсенбі","EEEE3":"сәренбі","EEEE4":"бейсенбі","EEEE5":"жұма","EEEE6":"сенбі","#{num}s":"#{num}с","1#1 sec|#{num} sec":"#{num} сек","1#1 second|#{num} seconds":"#{num} секунд","durationShortMinutes":"#{num}м","1#1 min|#{num} min":"#{num} мин","1#1 minute|#{num} minutes":"#{num} минут","#{num}h":"#{num}с","1#1 hr|#{num} hrs":"#{num} сағ","1#1 hour|#{num} hours":"#{num} сағат","#{num}d":"#{num}т","durationLongDays":"#{num} тәу","1#1 day|#{num} days":"#{num} тәулік","#{num}w":"#{num}а","1#1 wk|#{num} wks":"#{num} апта","1#1 week|#{num} weeks":"#{num} апта","durationShortMonths":"#{num}а","1#1 mon|#{num} mons":"#{num} ай","1#1 month|#{num} months":"#{num} ай","#{num}y":"#{num}ж","1#1 yr|#{num} yrs":"#{num} жыл","1#1 year|#{num} years":"#{num} жыл","{duration} ago":"{0} күн бұрын","in {duration}":"{0} күннен кейін","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_kn = {"generated":true,"NN1":"ಜನ","NN2":"ಫೆ","NN3":"ಮಾ","NN4":"ಏಪ","NN5":"ಮೇ","NN6":"ಜೂ","NN7":"ಜು","NN8":"ಆಗ","NN9":"ಸೆ","NN10":"ಅಕ","NN11":"ನವ","NN12":"ಡಿ","MMM1":"ಜನವರಿ","MMM2":"ಫೆಬ್ರುವರಿ","MMM3":"ಮಾರ್ಚ್","MMM4":"ಏಪ್ರಿಲ್‌‌","MMM5":"ಮೇ","MMM6":"ಜೂನ್","MMM7":"ಜುಲೈ","MMM8":"ಆಗಸ್ಟ್","MMM9":"ಸೆಪ್ಟೆಂಬರ್‌","MMM10":"ಅಕ್ಟೋಬರ್","MMM11":"ನವೆಂಬರ್","MMM12":"ಡಿಸೆಂಬರ್","MMMM1":"ಜನವರೀ","MMMM2":"ಫೆಬ್ರವರೀ","MMMM3":"ಮಾರ್ಚ್","MMMM4":"ಎಪ್ರಿಲ್","MMMM5":"ಮೆ","MMMM6":"ಜೂನ್","MMMM7":"ಜುಲೈ","MMMM8":"ಆಗಸ್ಟ್","MMMM9":"ಸಪ್ಟೆಂಬರ್","MMMM10":"ಅಕ್ಟೋಬರ್","MMMM11":"ನವೆಂಬರ್","MMMM12":"ಡಿಸೆಂಬರ್","E0":"ರ","E1":"ಸೋ","E2":"ಮಂ","E3":"ಬು","E4":"ಗು","E5":"ಶು","E6":"ಶ","EE0":"ಭಾ","EE1":"ಸೋ","EE2":"ಮಂ","EE3":"ಬು","EE4":"ಗು","EE5":"ಶು","EE6":"ಶನ","EEE0":"ರ.","EEE1":"ಸೋ.","EEE2":"ಮಂ.","EEE3":"ಬು.","EEE4":"ಗು.","EEE5":"ಶು.","EEE6":"ಶನಿ.","EEEE0":"ರವಿವಾರ","EEEE1":"ಸೋಮವಾರ","EEEE2":"ಮಂಗಳವಾರ","EEEE3":"ಬುಧವಾರ","EEEE4":"ಗುರುವಾರ","EEEE5":"ಶುಕ್ರವಾರ","EEEE6":"ಶನಿವಾರ","G-1":"ಕ್ರಿ.ಪೂ","G1":"ಜಾಹೀ","#{num}s":"#{num}ಸ","1#1 se|#{num} sec":"#{num} ಸೆ","1#1 sec|#{num} sec":"#{num} ಸೆಕ","1#1 second|#{num} seconds":"#{num} ಸೆಕೆಂಡುಗಳು","durationShortMinutes":"#{num}ನ","1#1 mi|#{num} min":"#{num} ನಿ","1#1 min|#{num} min":"#{num} ನಿಮ","1#1 minute|#{num} minutes":"#{num} ನಿಮಿಷಗಳು","#{num}h":"#{num}ಗ","durationMediumHours":"#{num} ಗಂ.","1#1 hr|#{num} hrs":"#{num} ಗಂಟ","1#1 hour|#{num} hours":"#{num} ಗಂಟೆಗಳು","#{num}d":"#{num}ದ","1#1 dy|#{num} dys":"#{num} ದಿನ","durationLongDays":"#{num} ದಿನ","1#1 day|#{num} days":"#{num} ದಿನಗಳು","#{num}w":"#{num}ವ","durationMediumWeeks":"#{num} ವಾ","1#1 wk|#{num} wks":"#{num} ವಾರ","1#1 week|#{num} weeks":"#{num} ವಾರಗಳು","durationShortMonths":"#{num}ತ","1#1 mo|#{num} mos":"#{num} ತಿ","1#1 mon|#{num} mons":"#{num} ತಿಂ","1#1 month|#{num} months":"#{num} ತಿಂಗಳುಗಳು","#{num}y":"#{num}ವ","durationMediumYears":"#{num} ವರ","1#1 yr|#{num} yrs":"#{num} ವರ್","1#1 year|#{num} years":"#{num} ವರ್ಷಗಳು","finalSeparatorFull":", ಮತ್ತು ","separatorLong":" "};
 ilib.data.sysres_ko = {
 	"MMMM1": "일",
 	"MMM1": "1",
@@ -13498,6 +13649,17 @@ ilib.data.sysres_ko = {
 	"finalSeparatorFull": " 및 "
 };
 ilib.data.sysres_ko_KR = {};
+ilib.data.sysres_ks = {"generated":true,"NN1":"جن","NN2":"فر","NN3":"ما","NN4":"اپ","NN5":"می","NN6":"جو","NN7":"جو","NN8":"اگ","NN9":"ست","NN10":"اک","NN11":"نو","NN12":"دس","MMM1":"جنؤری","MMM2":"فرؤری","MMM3":"مارٕچ","MMM4":"اپریل","MMM5":"میٔ","MMM6":"جوٗن","MMM7":"جوٗلایی","MMM8":"اگست","MMM9":"ستمبر","MMM10":"اکتوٗبر","MMM11":"نومبر","MMM12":"دسمبر","MMMM1":"جنؤری","MMMM2":"فرؤری","MMMM3":"مارٕچ","MMMM4":"اپریل","MMMM5":"میٔ","MMMM6":"جوٗن","MMMM7":"جوٗلایی","MMMM8":"اگست","MMMM9":"ستمبر","MMMM10":"اکتوٗبر","MMMM11":"نومبر","MMMM12":"دسمبر","E0":"ا","E1":"ژ","E2":"ب","E3":"ب","E4":"ب","E5":"ج","E6":"ب","EE0":"آت","EE1":"ژٔ","EE2":"بو","EE3":"بو","EE4":"بر","EE5":"جُ","EE6":"بٹ","EEE0":"آتھوار","EEE1":"ژٔنٛدٕروار","EEE2":"بوٚموار","EEE3":"بودوار","EEE4":"برٛٮ۪سوار","EEE5":"جُمہ","EEE6":"بٹوار","EEEE0":"اَتھوار","EEEE1":"ژٔنٛدرٕروار","EEEE2":"بوٚموار","EEEE3":"بودوار","EEEE4":"برٛٮ۪سوار","EEEE5":"جُمہ","EEEE6":"بٹوار","G-1":"بی سی","G1":"اے ڈی","#{num}s":"#{num}س","1#1 sec|#{num} sec":"#{num} سیٚ","1#1 second|#{num} seconds":"#{num} سیٚکَنٛڈ","durationShortMinutes":"#{num}م","1#1 min|#{num} min":"#{num} مِن","1#1 minute|#{num} minutes":"#{num} مِنَٹ","#{num}h":"#{num}گ","1#1 hr|#{num} hrs":"one#{num} گَن|#{num} گٲن","1#1 hour|#{num} hours":"one#{num} گَنٹہٕ|#{num} گٲنٛٹہٕ","#{num}d":"#{num}د","durationLongDays":"#{num} دۄہ","1#1 day|#{num} days":"#{num} دۄہ","#{num}w":"#{num}ہ","1#1 wk|#{num} wks":"#{num} ہَف","1#1 week|#{num} weeks":"#{num} ہَفتہٕ","durationShortMonths":"#{num}ر","1#1 mon|#{num} mons":"#{num} ریٚ","1#1 month|#{num} months":"#{num} ریٚتھ","#{num}y":"#{num}ؤ","1#1 yr|#{num} yrs":"#{num} ؤری","1#1 year|#{num} years":"#{num} ؤری","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_lg = {"generated":true,"NN8":"Ag","NN10":"Ok","MMM4":"Apu","MMM5":"Maa","MMM6":"Juu","MMM8":"Agu","MMM9":"Seb","MMM10":"Oki","MMM12":"Des","MMMM1":"Janwaliyo","MMMM2":"Febwaliyo","MMMM3":"Marisi","MMMM4":"Apuli","MMMM5":"Maayi","MMMM6":"Juuni","MMMM7":"Julaayi","MMMM8":"Agusito","MMMM9":"Sebuttemba","MMMM10":"Okitobba","MMMM11":"Novemba","MMMM12":"Desemba","E1":"B","E2":"L","E3":"L","E4":"L","E5":"L","E6":"L","EE0":"Sa","EE1":"Ba","EE2":"Lw","EE3":"Lw","EE4":"Lw","EE5":"Lw","EE6":"Lw","EEE0":"Sab","EEE1":"Bal","EEE2":"Lw2","EEE3":"Lw3","EEE4":"Lw4","EEE5":"Lw5","EEE6":"Lw6","EEEE0":"Sabbiiti","EEEE1":"Balaza","EEEE2":"Lwakubiri","EEEE3":"Lwakusatu","EEEE4":"Lwakuna","EEEE5":"Lwakutaano","EEEE6":"Lwamukaaga","G-1":"BC","G1":"AD","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_ln = {"generated":true,"NN1":"ya","NN2":"fb","NN3":"ms","NN4":"ap","NN5":"ma","NN6":"yu","NN7":"yu","NN8":"ag","NN9":"st","NN10":"ɔt","NN11":"nv","NN12":"ds","MMM1":"yan","MMM2":"fbl","MMM3":"msi","MMM4":"apl","MMM5":"mai","MMM6":"yun","MMM7":"yul","MMM8":"agt","MMM9":"stb","MMM10":"ɔtb","MMM11":"nvb","MMM12":"dsb","MMMM1":"sánzá ya yambo","MMMM2":"sánzá ya míbalé","MMMM3":"sánzá ya mísáto","MMMM4":"sánzá ya mínei","MMMM5":"sánzá ya mítáno","MMMM6":"sánzá ya motóbá","MMMM7":"sánzá ya nsambo","MMMM8":"sánzá ya mwambe","MMMM9":"sánzá ya libwa","MMMM10":"sánzá ya zómi","MMMM11":"sánzá ya zómi na mɔ̌kɔ́","MMMM12":"sánzá ya zómi na míbalé","E0":"e","E1":"y","E2":"m","E3":"m","E4":"m","E5":"m","E6":"p","EE0":"ey","EE1":"yb","EE2":"mb","EE3":"ms","EE4":"mi","EE5":"mt","EE6":"mp","EEE0":"eye","EEE1":"ybo","EEE2":"mbl","EEE3":"mst","EEE4":"min","EEE5":"mtn","EEE6":"mps","EEEE0":"eyenga","EEEE1":"mokɔlɔ mwa yambo","EEEE2":"mokɔlɔ mwa míbalé","EEEE3":"mokɔlɔ mwa mísáto","EEEE4":"mokɔlɔ ya mínéi","EEEE5":"mokɔlɔ ya mítáno","EEEE6":"mpɔ́sɔ","a0":"ntɔ́ngɔ́","a1":"mpókwa","G-1":"libóso ya","G1":"nsima ya Y","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_lt = {"generated":true,"NN1":"sa","NN2":"va","NN3":"ko","NN4":"ba","NN5":"ge","NN6":"bi","NN7":"li","NN8":"ru","NN9":"ru","NN10":"sp","NN11":"la","NN12":"gr","MMM1":"saus.","MMM2":"vas.","MMM3":"kov.","MMM4":"bal.","MMM5":"geg.","MMM6":"birž.","MMM7":"liep.","MMM8":"rugp.","MMM9":"rugs.","MMM10":"spal.","MMM11":"lapkr.","MMM12":"gruod.","MMMM1":"sausis","MMMM2":"vasaris","MMMM3":"kovas","MMMM4":"balandis","MMMM5":"gegužė","MMMM6":"birželis","MMMM7":"liepa","MMMM8":"rugpjūtis","MMMM9":"rugsėjis","MMMM10":"spalis","MMMM11":"lapkritis","MMMM12":"gruodis","E1":"P","E2":"A","E3":"T","E4":"K","E5":"P","E6":"Š","EE0":"sk","EE1":"pr","EE2":"an","EE3":"tr","EE4":"kt","EE5":"pn","EE6":"št","EEE0":"sk","EEE1":"pr","EEE2":"an","EEE3":"tr","EEE4":"kt","EEE5":"pn","EEE6":"št","EEEE0":"sekmadienis","EEEE1":"pirmadienis","EEEE2":"antradienis","EEEE3":"trečiadienis","EEEE4":"ketvirtadienis","EEEE5":"penktadienis","EEEE6":"šeštadienis","a0":"priešpiet","a1":"popiet","G-1":"pr. Kr.","G1":"po Kr.","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekundė|few#{num} sekundės|#{num} sekundžių","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} mi","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minutė|few#{num} minutės|#{num} minučių","#{num}h":"#{num}v","durationMediumHours":"#{num} va","1#1 hr|#{num} hrs":"#{num} val","1#1 hour|#{num} hours":"one#{num} valanda|few#{num} valandos|#{num} valandų","1#1 dy|#{num} dys":"#{num} d.","durationLongDays":"#{num} die","1#1 day|#{num} days":"one#{num} diena|few#{num} dienos|#{num} dienų","#{num}w":"#{num}s","durationMediumWeeks":"#{num} sa","1#1 wk|#{num} wks":"#{num} sav","1#1 week|#{num} weeks":"one#{num} savaitė|few#{num} savaitės|#{num} savaičių","durationShortMonths":"#{num}m","1#1 mo|#{num} mos":"#{num} mė","1#1 mon|#{num} mons":"#{num} mėn","1#1 month|#{num} months":"one#{num} mėnuo|few#{num} mėnesiai|#{num} mėnesių","#{num}y":"#{num}m","durationMediumYears":"#{num} m.","1#1 yr|#{num} yrs":"one#{num} met|few#{num} met|#{num} metų","1#1 year|#{num} years":"one#{num} metai|few#{num} metai|#{num} metų","{duration} ago":"prieš {0} dieną","in {duration}":"po {0} dienos","finalSeparatorFull":" ir ","separatorLong":" "};
+ilib.data.sysres_lv = {"generated":true,"NN1":"ja","NN2":"fe","NN3":"ma","NN4":"ap","NN5":"ma","NN6":"jū","NN7":"jū","NN8":"au","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"janv.","MMM2":"febr.","MMM3":"marts","MMM4":"apr.","MMM5":"maijs","MMM6":"jūn.","MMM7":"jūl.","MMM8":"aug.","MMM9":"sept.","MMM10":"okt.","MMM11":"nov.","MMM12":"dec.","MMMM1":"janvāris","MMMM2":"februāris","MMMM3":"marts","MMMM4":"aprīlis","MMMM5":"maijs","MMMM6":"jūnijs","MMMM7":"jūlijs","MMMM8":"augusts","MMMM9":"septembris","MMMM10":"oktobris","MMMM11":"novembris","MMMM12":"decembris","E1":"P","E2":"O","E3":"T","E4":"C","E5":"P","EE0":"sv","EE1":"pr","EE2":"ot","EE3":"tr","EE4":"ce","EE5":"pk","EE6":"se","EEE0":"sv","EEE1":"pr","EEE2":"ot","EEE3":"tr","EEE4":"ce","EEE5":"pk","EEE6":"se","EEEE0":"svētdiena","EEEE1":"pirmdiena","EEEE2":"otrdiena","EEEE3":"trešdiena","EEEE4":"ceturtdiena","EEEE5":"piektdiena","EEEE6":"sestdiena","a0":"priekšpusdienā","a1":"pēcpusdienā","G-1":"p.m.ē.","G1":"m.ē.","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekunde|#{num} sekundes","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} min","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minūte|#{num} minūtes","#{num}h":"#{num}s","durationMediumHours":"#{num} st","1#1 hr|#{num} hrs":"#{num} stu","1#1 hour|#{num} hours":"one#{num} stunda|#{num} stundas","1#1 dy|#{num} dys":"#{num} di","durationLongDays":"#{num} die","1#1 day|#{num} days":"one#{num} diennakts|#{num} diennaktis","#{num}w":"#{num}n","durationMediumWeeks":"#{num} ne","1#1 wk|#{num} wks":"#{num} ned","1#1 week|#{num} weeks":"one#{num} nedēļa|#{num} nedēļas","durationShortMonths":"#{num}m","1#1 mo|#{num} mos":"#{num} mē","1#1 mon|#{num} mons":"#{num} mēn","1#1 month|#{num} months":"one#{num} mēnesis|#{num} mēneši","#{num}y":"#{num}g","durationMediumYears":"#{num} g.","1#1 yr|#{num} yrs":"one#{num} gads|#{num} gadi","1#1 year|#{num} years":"one#{num} gads|#{num} gadi","{duration} ago":"pirms {0} dienas","in {duration}":"pēc {0} dienas","finalSeparatorFull":" un ","separatorLong":" "};
+ilib.data.sysres_mk = {"generated":true,"NN1":"ја","NN2":"фе","NN3":"ма","NN4":"ап","NN5":"ма","NN6":"ју","NN7":"ју","NN8":"ав","NN9":"се","NN10":"ок","NN11":"но","NN12":"де","MMM1":"јан.","MMM2":"фев.","MMM3":"мар.","MMM4":"апр.","MMM5":"мај","MMM6":"јун.","MMM7":"јул.","MMM8":"авг.","MMM9":"септ.","MMM10":"окт.","MMM11":"ноем.","MMM12":"декем.","MMMM1":"јануари","MMMM2":"февруари","MMMM3":"март","MMMM4":"април","MMMM5":"мај","MMMM6":"јуни","MMMM7":"јули","MMMM8":"август","MMMM9":"септември","MMMM10":"октомври","MMMM11":"ноември","MMMM12":"декември","E0":"н","E1":"п","E2":"в","E3":"с","E4":"ч","E5":"п","E6":"с","EE0":"не","EE1":"по","EE2":"3","EE3":"ср","EE4":"че","EE5":"пе","EE6":"7","EEE0":"нед.","EEE1":"пон.","EEE2":"вт.","EEE3":"сре.","EEE4":"чет.","EEE5":"пет.","EEE6":"саб.","EEEE0":"недела","EEEE1":"понеделник","EEEE2":"вторник","EEEE3":"среда","EEEE4":"четврток","EEEE5":"петок","EEEE6":"сабота","a0":"претпладне","a1":"попладне","G-1":"пр.н.е.","G1":"ае.","#{num}s":"#{num}с","1#1 se|#{num} sec":"one#{num} сек|#{num} се","1#1 sec|#{num} sec":"#{num} сек","1#1 second|#{num} seconds":"one#{num} секунда|#{num} секунди","durationShortMinutes":"#{num}м","1#1 mi|#{num} min":"one#{num} мин|#{num} ми","1#1 min|#{num} min":"#{num} мин","1#1 minute|#{num} minutes":"one#{num} минута|#{num} минути","#{num}h":"#{num}ч","durationMediumHours":"one#{num} час|#{num} ча","1#1 hr|#{num} hrs":"#{num} час","1#1 hour|#{num} hours":"one#{num} час|#{num} часови","#{num}d":"#{num}д","1#1 dy|#{num} dys":"one#{num} ден|#{num} де","durationLongDays":"#{num} ден","1#1 day|#{num} days":"one#{num} ден|#{num} денови","#{num}w":"#{num}н","durationMediumWeeks":"one#{num} нед|#{num} не","1#1 wk|#{num} wks":"#{num} нед","1#1 week|#{num} weeks":"one#{num} недела|#{num} недели","durationShortMonths":"#{num}м","1#1 mo|#{num} mos":"one#{num} мсц|#{num} мс","1#1 mon|#{num} mons":"#{num} мес","1#1 month|#{num} months":"one#{num} месец|#{num} месеци","#{num}y":"#{num}г","durationMediumYears":"one#{num} год|#{num} го","1#1 yr|#{num} yrs":"#{num} год","1#1 year|#{num} years":"one#{num} година|#{num} години","{duration} ago":"пред {duration}","in {duration}":"за {duration}","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_ml = {"generated":true,"NN1":"ജന","NN2":"ഫെ","NN3":"മാ","NN4":"ഏപ","NN5":"മേ","NN6":"ജൂ","NN7":"ജൂ","NN8":"ഓഗ","NN9":"സെ","NN10":"ഒക","NN11":"നവ","NN12":"ഡി","MMM1":"ജനു","MMM2":"ഫെബ്രു","MMM3":"മാർ","MMM4":"ഏപ്രി","MMM5":"മേയ്","MMM6":"ജൂൺ","MMM7":"ജൂലൈ","MMM8":"ഓഗ","MMM9":"സെപ്റ്റം","MMM10":"ഒക്ടോ","MMM11":"നവം","MMM12":"ഡിസം","MMMM1":"ജനുവരി","MMMM2":"ഫെബ്രുവരി","MMMM3":"മാർച്ച്","MMMM4":"ഏപ്രിൽ","MMMM5":"മേയ്","MMMM6":"ജൂൺ","MMMM7":"ജൂലൈ","MMMM8":"ആഗസ്റ്റ്","MMMM9":"സെപ്റ്റംബർ","MMMM10":"ഒക്ടോബർ","MMMM11":"നവംബർ","MMMM12":"ഡിസംബർ","E0":"ഞാ","E1":"തി","E2":"ചൊ","E3":"ബു","E4":"വ്യാ","E5":"വെ","E6":"ശ","EE0":"ഞാ","EE1":"തി","EE2":"ചൊ","EE3":"ബു","EE4":"വ്","EE5":"വെ","EE6":"ശ","EEE0":"ഞായർ","EEE1":"തിങ്കൾ","EEE2":"ചൊവ്വ","EEE3":"ബുധൻ","EEE4":"വ്യാഴം","EEE5":"വെള്ളി","EEE6":"ശനി","EEEE0":"ഞായറാഴ്ച","EEEE1":"തിങ്കളാഴ്ച","EEEE2":"ചൊവ്വാഴ്ച","EEEE3":"ബുധനാഴ്ച","EEEE4":"വ്യാഴാഴ്ച","EEEE5":"വെള്ളിയാഴ്ച","EEEE6":"ശനിയാഴ്ച","G-1":"ക്രി.മൂ","G1":"ക്രി.പി.","#{num}s":"#{num}സ","1#1 se|#{num} sec":"#{num} സെ","1#1 sec|#{num} sec":"#{num} സെക","1#1 second|#{num} seconds":"#{num} സെക്കന്റ്","durationShortMinutes":"#{num}മ","1#1 mi|#{num} min":"#{num} മി","1#1 min|#{num} min":"#{num} മിന","1#1 minute|#{num} minutes":"#{num} മിനിട്ട്","#{num}h":"#{num}മ","durationMediumHours":"#{num} മണ","1#1 hr|#{num} hrs":"#{num} മണി","1#1 hour|#{num} hours":"#{num} മണിക്കൂർ","#{num}d":"#{num}ദ","1#1 dy|#{num} dys":"#{num} ദി","durationLongDays":"#{num} ദിവ","1#1 day|#{num} days":"#{num} ദിവസം","#{num}w":"#{num}ആ","durationMediumWeeks":"#{num} ആഴ","1#1 wk|#{num} wks":"#{num} ആഴ്ച","1#1 week|#{num} weeks":"#{num} ആഴ്ച","durationShortMonths":"#{num}മ","1#1 mo|#{num} mos":"#{num} മാ","1#1 mon|#{num} mons":"#{num} മാസം","1#1 month|#{num} months":"#{num} മാസം","#{num}y":"#{num}വ","durationMediumYears":"#{num} വർ","1#1 yr|#{num} yrs":"#{num} വർഷം","1#1 year|#{num} years":"#{num} വർഷം","{duration} ago":"{duration} മുമ്പ്","in {duration}":"{0} ദിവസത്തിൽ","finalSeparatorFull":",  എന്നിവ","separatorLong":" "};
+ilib.data.sysres_ms = {"generated":true,"NN5":"Me","NN8":"Og","NN10":"Ok","NN12":"Di","MMM3":"Mac","MMM5":"Mei","MMM8":"Ogos","MMM10":"Okt","MMM12":"Dis","MMMM1":"Januari","MMMM2":"Februari","MMMM3":"Mac","MMMM5":"Mei","MMMM6":"Jun","MMMM7":"Julai","MMMM8":"Ogos","MMMM10":"Oktober","MMMM12":"Disember","E0":"A","E1":"I","E2":"S","E3":"R","E4":"K","E5":"J","EE0":"Ah","EE1":"Is","EE2":"Se","EE3":"Ra","EE4":"Kh","EE5":"Ju","EEE0":"Ahd","EEE1":"Isn","EEE2":"Sel","EEE3":"Rab","EEE4":"Kha","EEE5":"Jum","EEE6":"Sab","EEEE0":"Ahad","EEEE1":"Isnin","EEEE2":"Selasa","EEEE3":"Rabu","EEEE4":"Khamis","EEEE5":"Jumaat","EEEE6":"Sabtu","a0":"PG","a1":"PTG","G-1":"S.M.","G1":"TM","1#1 se|#{num} sec":"#{num} sa","1#1 sec|#{num} sec":"#{num} saat","1#1 second|#{num} seconds":"#{num} saat","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} min","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} minit","#{num}h":"#{num}j","durationMediumHours":"#{num} jam","1#1 hr|#{num} hrs":"#{num} jam","1#1 hour|#{num} hours":"#{num} jam","#{num}d":"#{num}h","1#1 dy|#{num} dys":"#{num} ha","durationLongDays":"#{num} hari","1#1 day|#{num} days":"#{num} hari","#{num}w":"#{num}m","durationMediumWeeks":"#{num} mi","1#1 wk|#{num} wks":"#{num} min","1#1 week|#{num} weeks":"#{num} minggu","durationShortMonths":"#{num}b","1#1 mo|#{num} mos":"#{num} bu","1#1 mon|#{num} mons":"#{num} bul","1#1 month|#{num} months":"#{num} bulan","#{num}y":"#{num}t","durationMediumYears":"#{num} thn","1#1 yr|#{num} yrs":"#{num} tah","1#1 year|#{num} years":"#{num} tahun","finalSeparatorFull":", dan ","separatorLong":" "};
+ilib.data.sysres_nb = {"generated":true,"NN1":"ja","NN2":"fe","NN3":"ma","NN4":"ap","NN5":"ma","NN6":"ju","NN7":"ju","NN8":"au","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"jan.","MMM2":"feb.","MMM3":"mars","MMM4":"apr.","MMM5":"mai","MMM6":"juni","MMM7":"juli","MMM8":"aug.","MMM9":"sep.","MMM10":"okt.","MMM11":"nov.","MMM12":"des.","MMMM1":"januar","MMMM2":"februar","MMMM3":"mars","MMMM4":"april","MMMM5":"mai","MMMM6":"juni","MMMM7":"juli","MMMM8":"august","MMMM9":"september","MMMM10":"oktober","MMMM11":"november","MMMM12":"desember","E3":"O","E6":"L","EE0":"sø","EE1":"ma","EE2":"ti","EE3":"on","EE4":"to","EE5":"fr","EE6":"lø","EEE0":"søn.","EEE1":"man.","EEE2":"tir.","EEE3":"ons.","EEE4":"tor.","EEE5":"fre.","EEE6":"lør.","EEEE0":"søndag","EEEE1":"mandag","EEEE2":"tirsdag","EEEE3":"onsdag","EEEE4":"torsdag","EEEE5":"fredag","EEEE6":"lørdag","G-1":"f.Kr.","G1":"e.Kr.","1#1 se|#{num} sec":"#{num} sek","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekund|#{num} sekunder","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} min","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minutt|#{num} minutter","#{num}h":"#{num}t","durationMediumHours":"#{num} ti","1#1 hr|#{num} hrs":"one#{num} time|#{num} tim","1#1 hour|#{num} hours":"one#{num} time|#{num} timer","1#1 dy|#{num} dys":"one#{num} dag|#{num} da","durationLongDays":"#{num} dag","1#1 day|#{num} days":"one#{num} dag|#{num} dager","#{num}w":"#{num}u","durationMediumWeeks":"one#{num} uke|#{num} uk","1#1 wk|#{num} wks":"one#{num} uke|#{num} uker","1#1 week|#{num} weeks":"one#{num} uke|#{num} uker","durationShortMonths":"#{num}m","1#1 mo|#{num} mos":"#{num} md.","1#1 mon|#{num} mons":"#{num} mån","1#1 month|#{num} months":"one#{num} måned|#{num} måneder","#{num}y":"#{num}å","durationMediumYears":"#{num} år","1#1 yr|#{num} yrs":"#{num} år","1#1 year|#{num} years":"#{num} år","{duration} ago":"for {duration} siden","in {duration}":"om {duration}","finalSeparatorFull":" og ","separatorLong":" "};
+ilib.data.sysres_ne = {"generated":true,"NN1":"जन","NN2":"फे","NN3":"मा","NN4":"अप","NN5":"मे","NN6":"जु","NN7":"जु","NN8":"अग","NN9":"से","NN10":"अक","NN11":"नो","NN12":"डि","MMM1":"जन","MMM2":"फेब","MMM3":"मार्च","MMM4":"अप्रि","MMM5":"मे","MMM6":"जुन","MMM7":"जुला","MMM8":"अग","MMM9":"सेप्ट","MMM10":"अक्टो","MMM11":"नोभे","MMM12":"डिसे","MMMM1":"जनवरी","MMMM2":"फेब्रुअरी","MMMM3":"मार्च","MMMM4":"अप्रिल","MMMM5":"मे","MMMM6":"जुन","MMMM7":"जुलाई","MMMM8":"अगस्ट","MMMM9":"सेप्टेम्बर","MMMM10":"अक्टोबर","MMMM11":"नोभेम्बर","MMMM12":"डिसेम्बर","E0":"१","E1":"२","E2":"३","E3":"४","E4":"५","E5":"६","E6":"७","EE0":"आइ","EE1":"सो","EE2":"मङ","EE3":"बु","EE4":"बि","EE5":"शु","EE6":"शन","EEE0":"आइत","EEE1":"सोम","EEE2":"मङ्गल","EEE3":"बुध","EEE4":"बिही","EEE5":"शुक्र","EEE6":"शनि","EEEE0":"आइतबार","EEEE1":"सोमबार","EEEE2":"मङ्गलबार","EEEE3":"बुधबार","EEEE4":"बिहीबार","EEEE5":"शुक्रबार","EEEE6":"शनिबार","a0":"पूर्व मध्यान्ह","a1":"उत्तर मध्यान्ह","G-1":"ईसा पूर्व","G1":"सन्","#{num}s":"#{num}स","1#1 sec|#{num} sec":"#{num} सेक","1#1 second|#{num} seconds":"#{num} सेकेण्ड","durationShortMinutes":"#{num}म","1#1 min|#{num} min":"#{num} मिन","1#1 minute|#{num} minutes":"#{num} मिनेट","#{num}h":"#{num}घ","1#1 hr|#{num} hrs":"#{num} घण्","1#1 hour|#{num} hours":"#{num} घण्टा","#{num}d":"#{num}द","durationLongDays":"#{num} दिन","1#1 day|#{num} days":"#{num} दिन","#{num}w":"#{num}ह","1#1 wk|#{num} wks":"#{num} हप्","1#1 week|#{num} weeks":"#{num} हप्ता","durationShortMonths":"#{num}म","1#1 mon|#{num} mons":"#{num} महि","1#1 month|#{num} months":"#{num} महिना","#{num}y":"#{num}ब","1#1 yr|#{num} yrs":"#{num} बर्ष","1#1 year|#{num} years":"#{num} बर्ष","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_ne_IN = {"generated":true,"MMMM2":"फरवरी","MMMM4":"अप्रेल","MMMM5":"मई","MMMM8":"अगस्त","MMMM12":"दिसम्बर","EEEE0":"आइतवार","EEEE1":"सोमवार","EEEE2":"मङ्गलवार","EEEE3":"बुधवार","EEEE4":"बिहीवार","EEEE5":"शुक्रवार","EEEE6":"शनिवार","a0":"पूर्वाह्न","a1":"अपराह्न","#{num}w":"#{num}स","1#1 wk|#{num} wks":"one#{num} साता|#{num} हप्","1#1 week|#{num} weeks":"one#{num} साता|#{num} हप्ता","#{num}y":"#{num}व","1#1 yr|#{num} yrs":"#{num} वर्ष","1#1 year|#{num} years":"#{num} वर्ष"};
 ilib.data.sysres_nl = {
 	"N1": "J",
 	"N2": "F",
@@ -13617,7 +13779,9 @@ ilib.data.sysres_nl = {
 }
 ;
 ilib.data.sysres_nl_BE = {};
+ilib.data.sysres_nl_CW = {};
 ilib.data.sysres_nl_NL = {};
+ilib.data.sysres_nl_SR = {};
 ilib.data.sysres_no = {
 	"MMMM1": "januar",
 	"MMM1": "jan.",
@@ -13728,6 +13892,12 @@ ilib.data.sysres_no = {
 	"separatorFull": ", ",
 	"finalSeparatorFull": " og "
 };
+ilib.data.sysres_om = {"generated":true,"NN1":"Am","NN2":"Gu","NN3":"Bi","NN4":"El","NN5":"Ca","NN6":"Wa","NN7":"Ad","NN8":"Ha","NN9":"Fu","NN10":"On","NN11":"Sa","NN12":"Mu","MMM1":"Ama","MMM2":"Gur","MMM3":"Bit","MMM4":"Elb","MMM5":"Cam","MMM6":"Wax","MMM7":"Ado","MMM8":"Hag","MMM9":"Ful","MMM10":"Onk","MMM11":"Sad","MMM12":"Mud","MMMM1":"Amajjii","MMMM2":"Guraandhala","MMMM3":"Bitooteessa","MMMM4":"Elba","MMMM5":"Caamsa","MMMM6":"Waxabajjii","MMMM7":"Adooleessa","MMMM8":"Hagayya","MMMM9":"Fuulbana","MMMM10":"Onkololeessa","MMMM11":"Sadaasa","MMMM12":"Muddee","EE0":"Di","EE1":"Wi","EE2":"Qi","EE3":"Ro","EE4":"Ka","EE5":"Ji","EEE0":"Dil","EEE1":"Wix","EEE2":"Qib","EEE3":"Rob","EEE4":"Kam","EEE5":"Jim","EEE6":"San","EEEE0":"Dilbata","EEEE1":"Wiixata","EEEE2":"Qibxata","EEEE3":"Roobii","EEEE4":"Kamiisa","EEEE5":"Jimaata","EEEE6":"Sanbata","a0":"WD","a1":"WB","G-1":"KD","G1":"KB","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_or = {"generated":true,"NN1":"ଜା","NN2":"ଫେ","NN3":"ମା","NN4":"ଅପ","NN5":"ମେ","NN6":"ଜୁ","NN7":"ଜୁ","NN8":"ଅଗ","NN9":"ସେ","NN10":"ଅକ","NN11":"ନଭ","NN12":"ଡି","MMM1":"ଜାନୁଆରୀ","MMM2":"ଫେବ୍ରୁୟାରୀ","MMM3":"ମାର୍ଚ୍ଚ","MMM4":"ଅପ୍ରେଲ","MMM5":"ମେ","MMM6":"ଜୁନ","MMM7":"ଜୁଲାଇ","MMM8":"ଅଗଷ୍ଟ","MMM9":"ସେପ୍ଟେମ୍ବର","MMM10":"ଅକ୍ଟୋବର","MMM11":"ନଭେମ୍ବର","MMM12":"ଡିସେମ୍ବର","MMMM1":"ଜାନୁଆରୀ","MMMM2":"ଫେବ୍ରୁୟାରୀ","MMMM3":"ମାର୍ଚ୍ଚ","MMMM4":"ଅପ୍ରେଲ","MMMM5":"ମେ","MMMM6":"ଜୁନ","MMMM7":"ଜୁଲାଇ","MMMM8":"ଅଗଷ୍ଟ","MMMM9":"ସେପ୍ଟେମ୍ବର","MMMM10":"ଅକ୍ଟୋବର","MMMM11":"ନଭେମ୍ବର","MMMM12":"ଡିସେମ୍ବର","E0":"ର","E1":"ସୋ","E2":"ମ","E3":"ବୁ","E4":"ଗୁ","E5":"ଶୁ","E6":"ଶ","EE0":"ରବ","EE1":"ସୋ","EE2":"ମଙ","EE3":"ବୁ","EE4":"ଗୁ","EE5":"ଶୁ","EE6":"ଶନ","EEE0":"ରବି","EEE1":"ସୋମ","EEE2":"ମଙ୍ଗଳ","EEE3":"ବୁଧ","EEE4":"ଗୁରୁ","EEE5":"ଶୁକ୍ର","EEE6":"ଶନି","EEEE0":"ରବିବାର","EEEE1":"ସୋମବାର","EEEE2":"ମଙ୍ଗଳବାର","EEEE3":"ବୁଧବାର","EEEE4":"ଗୁରୁବାର","EEEE5":"ଶୁକ୍ରବାର","EEEE6":"ଶନିବାର","a0":"am","a1":"pm","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_os = {"generated":true,"NN1":"1","NN2":"2","NN3":"3","NN4":"4","NN5":"5","NN6":"6","NN7":"7","NN8":"8","NN9":"9","NN10":"10","NN11":"11","NN12":"12","MMM1":"1","MMM2":"2","MMM3":"3","MMM4":"4","MMM5":"5","MMM6":"6","MMM7":"7","MMM8":"8","MMM9":"9","MMM10":"10","MMM11":"11","MMM12":"12","MMMM1":"1","MMMM2":"2","MMMM3":"3","MMMM4":"4","MMMM5":"5","MMMM6":"6","MMMM7":"7","MMMM8":"8","MMMM9":"9","MMMM10":"10","MMMM11":"11","MMMM12":"12","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"1","EE1":"2","EE2":"3","EE3":"4","EE4":"5","EE5":"6","EE6":"7","EEE0":"1","EEE1":"2","EEE2":"3","EEE3":"4","EEE4":"5","EEE5":"6","EEE6":"7","EEEE0":"1","EEEE1":"2","EEEE2":"3","EEEE3":"4","EEEE4":"5","EEEE5":"6","EEEE6":"7","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_pa = {"generated":true,"NN1":"ਜਨ","NN2":"ਫ਼","NN3":"ਮਾ","NN4":"ਅਪ","NN5":"ਮਈ","NN6":"ਜੂ","NN7":"ਜੁ","NN8":"ਅਗ","NN9":"ਸਤ","NN10":"ਅਕ","NN11":"ਨਵ","NN12":"ਦਸ","MMM1":"ਜਨਵਰੀ","MMM2":"ਫ਼ਰਵਰੀ","MMM3":"ਮਾਰਚ","MMM4":"ਅਪ੍ਰੈਲ","MMM5":"ਮਈ","MMM6":"ਜੂਨ","MMM7":"ਜੁਲਾਈ","MMM8":"ਅਗਸਤ","MMM9":"ਸਤੰਬਰ","MMM10":"ਅਕਤੂਬਰ","MMM11":"ਨਵੰਬਰ","MMM12":"ਦਸੰਬਰ","MMMM1":"ਜਨਵਰੀ","MMMM2":"ਫ਼ਰਵਰੀ","MMMM3":"ਮਾਰਚ","MMMM4":"ਅਪ੍ਰੈਲ","MMMM5":"ਮਈ","MMMM6":"ਜੂਨ","MMMM7":"ਜੁਲਾਈ","MMMM8":"ਅਗਸਤ","MMMM9":"ਸਤੰਬਰ","MMMM10":"ਅਕਤੂਬਰ","MMMM11":"ਨਵੰਬਰ","MMMM12":"ਦਸੰਬਰ","E0":"ਐ","E1":"ਸੋ","E2":"ਮੰ","E3":"ਬੁੱ","E4":"ਵੀ","E5":"ਸ਼ੁੱ","E6":"ਸ਼","EE0":"ਐਤ","EE1":"ਸੋ","EE2":"ਮੰ","EE3":"ਬੁ","EE4":"ਵੀ","EE5":"ਸ਼","EE6":"ਸ਼","EEE0":"ਐਤ.","EEE1":"ਸੋਮ.","EEE2":"ਮੰਗਲ.","EEE3":"ਬੁਧ.","EEE4":"ਵੀਰ.","EEE5":"ਸ਼ੁਕਰ.","EEE6":"ਸ਼ਨੀ.","EEEE0":"ਐਤਵਾਰ","EEEE1":"ਸੋਮਵਾਰ","EEEE2":"ਮੰਗਲਵਾਰ","EEEE3":"ਬੁਧਵਾਰ","EEEE4":"ਵੀਰਵਾਰ","EEEE5":"ਸ਼ੁੱਕਰਵਾਰ","EEEE6":"ਸ਼ਨੀਚਰਵਾਰ","a0":"ਪੂਰਵ ਦੁਪਹਿਰ","a1":"ਬਾਅਦ ਦੁਪਹਿਰ","G-1":"ਈ. ਪੂ.","G1":"ਸਾਲ","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_pa_Arab_PK = {"generated":true,"NN1":"جن","NN2":"فر","NN3":"ما","NN4":"اپ","NN5":"مئ","NN6":"جو","NN7":"جو","NN8":"اگ","NN9":"ست","NN10":"اک","NN11":"نو","NN12":"دس","MMM1":"جنوری","MMM2":"فروری","MMM3":"مارچ","MMM4":"اپریل","MMM5":"مئ","MMM6":"جون","MMM7":"جولائی","MMM8":"اگست","MMM9":"ستمبر","MMM10":"اکتوبر","MMM11":"نومبر","MMM12":"دسمبر","MMMM1":"جنوری","MMMM2":"فروری","MMMM3":"مارچ","MMMM4":"اپریل","MMMM5":"مئ","MMMM6":"جون","MMMM7":"جولائی","MMMM8":"اگست","MMMM9":"ستمبر","MMMM10":"اکتوبر","MMMM11":"نومبر","MMMM12":"دسمبر","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"ات","EE1":"پی","EE2":"من","EE3":"بُ","EE4":"جم","EE5":"جم","EE6":"ہف","EEE0":"اتوار","EEE1":"پیر","EEE2":"منگل","EEE3":"بُدھ","EEE4":"جمعرات","EEE5":"جمعہ","EEE6":"ہفتہ","EEEE0":"اتوار","EEEE1":"پیر","EEEE2":"منگل","EEEE3":"بُدھ","EEEE4":"جمعرات","EEEE5":"جمعہ","EEEE6":"ہفتہ","a0":"AM","a1":"PM","G-1":"BCE","G1":"CE"};
+ilib.data.sysres_pl = {"generated":true,"NN1":"st","NN2":"lu","NN3":"ma","NN4":"kw","NN5":"ma","NN6":"cz","NN7":"li","NN8":"si","NN9":"wr","NN10":"pa","NN11":"li","NN12":"gr","MMM1":"sty","MMM2":"lut","MMM3":"mar","MMM4":"kwi","MMM5":"maj","MMM6":"cze","MMM7":"lip","MMM8":"sie","MMM9":"wrz","MMM10":"paź","MMM11":"lis","MMM12":"gru","MMMM1":"stycznia","MMMM2":"lutego","MMMM3":"marca","MMMM4":"kwietnia","MMMM5":"maja","MMMM6":"czerwca","MMMM7":"lipca","MMMM8":"sierpnia","MMMM9":"września","MMMM10":"października","MMMM11":"listopada","MMMM12":"grudnia","E0":"N","E1":"P","E2":"W","E3":"Ś","E4":"C","E5":"P","EE0":"ni","EE1":"po","EE2":"wt","EE3":"śr","EE4":"cz","EE5":"pt","EE6":"so","EEE0":"niedz.","EEE1":"pon.","EEE2":"wt.","EEE3":"śr.","EEE4":"czw.","EEE5":"pt.","EEE6":"sob.","EEEE0":"niedziela","EEEE1":"poniedziałek","EEEE2":"wtorek","EEEE3":"środa","EEEE4":"czwartek","EEEE5":"piątek","EEEE6":"sobota","G-1":"p.n.e.","G1":"n.e.","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekunda|few#{num} sekundy|#{num} sekund","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} mi","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minuta|many#{num} minut|#{num} minuty","#{num}h":"#{num}g","durationMediumHours":"#{num} go","1#1 hr|#{num} hrs":"#{num} god","1#1 hour|#{num} hours":"one#{num} godzina|few#{num} godziny|#{num} godzin","1#1 dy|#{num} dys":"one#{num} dz|few#{num} dni|many#{num} dni|#{num} dn","durationLongDays":"one#{num} dzi|few#{num} dni|many#{num} dni|#{num} dnia","1#1 day|#{num} days":"one#{num} dzień|few#{num} dni|many#{num} dni|#{num} dnia","#{num}w":"#{num}t","durationMediumWeeks":"#{num} ty","1#1 wk|#{num} wks":"one#{num} tyd|#{num} tyg","1#1 week|#{num} weeks":"one#{num} tydzień|few#{num} tygodnie|many#{num} tygodni|#{num} tygodnia","durationShortMonths":"#{num}m","1#1 mo|#{num} mos":"#{num} mi","1#1 mon|#{num} mons":"#{num} mie","1#1 month|#{num} months":"one#{num} miesiąc|few#{num} miesiące|many#{num} miesięcy|#{num} miesiąca","#{num}y":"#{num}r","durationMediumYears":"one#{num} rok|few#{num} la|many#{num} lat|#{num} ro","1#1 yr|#{num} yrs":"one#{num} rok|few#{num} lata|many#{num} lat|#{num} roku","1#1 year|#{num} years":"one#{num} rok|few#{num} lata|many#{num} lat|#{num} roku","{duration} ago":"{duration} temu","in {duration}":"za {duration}","finalSeparatorFull":" i ","separatorLong":" "};
 ilib.data.sysres_pt = {
 	"MMMM1": "Janeiro",
 	"MMM1": "Jan",
@@ -13834,6 +14004,7 @@ ilib.data.sysres_pt = {
 	"1#1 year|#{num} years": "1#{num} ano|#{num} anos",
                                                  	  	"{duration} ago": "há {duration}",  	"in {duration}": "dentro de {duration}",  	  	"separatorShort": " ",  	"separatorMedium": " ",  	"separatorLong": " ",  	"separatorFull": ", ",  	"finalSeparatorFull": " e "
 };
+ilib.data.sysres_pt_AO = {};
 ilib.data.sysres_pt_BR = {
     "NN1": "ja",
     "NN2": "fe",
@@ -13876,7 +14047,14 @@ ilib.data.sysres_pt_BR = {
     "EE5": "se",
     "EE6": "sá"
 };
+ilib.data.sysres_pt_CV = {};
+ilib.data.sysres_pt_GW = {};
+ilib.data.sysres_pt_MO = {};
+ilib.data.sysres_pt_MZ = {};
 ilib.data.sysres_pt_PT = {};
+ilib.data.sysres_pt_ST = {};
+ilib.data.sysres_pt_TL = {};
+ilib.data.sysres_ro = {"generated":true,"NN1":"ia","NN2":"fe","NN3":"ma","NN4":"ap","NN5":"ma","NN6":"iu","NN7":"iu","NN8":"au","NN9":"se","NN10":"oc","NN11":"no","NN12":"de","MMM1":"ian.","MMM2":"feb.","MMM3":"mar.","MMM4":"apr.","MMM5":"mai","MMM6":"iun.","MMM7":"iul.","MMM8":"aug.","MMM9":"sept.","MMM10":"oct.","MMM11":"nov.","MMM12":"dec.","MMMM1":"ianuarie","MMMM2":"februarie","MMMM3":"martie","MMMM4":"aprilie","MMMM5":"mai","MMMM6":"iunie","MMMM7":"iulie","MMMM8":"august","MMMM9":"septembrie","MMMM10":"octombrie","MMMM11":"noiembrie","MMMM12":"decembrie","E0":"D","E1":"L","E2":"M","E3":"M","E4":"J","E5":"V","EE0":"du","EE1":"lu","EE2":"ma","EE3":"mi","EE4":"jo","EE5":"vi","EE6":"sâ","EEE0":"du","EEE1":"lu","EEE2":"ma","EEE3":"mi","EEE4":"jo","EEE5":"vi","EEE6":"sâ","EEEE0":"duminică","EEEE1":"luni","EEEE2":"marți","EEEE3":"miercuri","EEEE4":"joi","EEEE5":"vineri","EEEE6":"sâmbătă","G-1":"î.Hr.","G1":"d.Hr.","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"one#{num} sec|few#{num} sec|#{num} de ","1#1 second|#{num} seconds":"one#{num} secundă|few#{num} secunde|#{num} de secunde","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} mi","1#1 min|#{num} min":"one#{num} min|few#{num} min|#{num} de ","1#1 minute|#{num} minutes":"one#{num} minut|few#{num} minute|#{num} de minute","#{num}h":"#{num}o","durationMediumHours":"one#{num} oră|#{num} ore","1#1 hr|#{num} hrs":"one#{num} oră|few#{num} ore|#{num} de ","1#1 hour|#{num} hours":"one#{num} oră|few#{num} ore|#{num} de ore","#{num}d":"#{num}z","1#1 dy|#{num} dys":"#{num} zi","durationLongDays":"one#{num} zi|few#{num} zile|#{num} de ","1#1 day|#{num} days":"one#{num} zi|few#{num} zile|#{num} de zile","#{num}w":"#{num}s","durationMediumWeeks":"#{num} să","1#1 wk|#{num} wks":"one#{num} săp|few#{num} săp|#{num} de ","1#1 week|#{num} weeks":"one#{num} săptămână|few#{num} săptămâni|#{num} de săptămâni","durationShortMonths":"#{num}l","1#1 mo|#{num} mos":"#{num} lu","1#1 mon|#{num} mons":"one#{num} lună|few#{num} luni|#{num} de ","1#1 month|#{num} months":"one#{num} lună|few#{num} luni|#{num} de luni","#{num}y":"#{num}a","durationMediumYears":"one#{num} an|#{num} ani","1#1 yr|#{num} yrs":"one#{num} an|few#{num} ani|#{num} de ","1#1 year|#{num} years":"one#{num} an|few#{num} ani|#{num} de ani","{duration} ago":"în urmă cu {duration}","in {duration}":"în {duration}","finalSeparatorFull":" şi ","separatorLong":" "};
 ilib.data.sysres_ru = {
 	"N1": "Я",
 	"N2": "Ф",
@@ -14004,7 +14182,20 @@ ilib.data.sysres_ru = {
 	"finalSeparatorFull": " и "
 }
 ;
+ilib.data.sysres_ru_KG = {};
+ilib.data.sysres_ru_KZ = {};
 ilib.data.sysres_ru_RU = {};
+ilib.data.sysres_si = {"generated":true,"NN1":"ජන","NN2":"පෙ","NN3":"මා","NN4":"අප","NN5":"මැ","NN6":"ජූ","NN7":"ජූ","NN8":"අග","NN9":"සැ","NN10":"ඔක","NN11":"නො","NN12":"දෙ","MMM1":"ජන","MMM2":"පෙබ","MMM3":"මාර්තු","MMM4":"අප්‍රේල්","MMM5":"මැයි","MMM6":"ජූනි","MMM7":"ජූලි","MMM8":"අගෝ","MMM9":"සැප්","MMM10":"ඔක්","MMM11":"නොවැ","MMM12":"දෙසැ","MMMM1":"ජනවාරි","MMMM2":"පෙබරවාරි","MMMM3":"මාර්තු","MMMM4":"අප්‍රේල්","MMMM5":"මැයි","MMMM6":"ජූනි","MMMM7":"ජූලි","MMMM8":"අගෝස්තු","MMMM9":"සැප්තැම්බර්","MMMM10":"ඔක්තෝබර්","MMMM11":"නොවැම්බර්","MMMM12":"දෙසැම්බර්","E0":"ඉ","E1":"ස","E2":"අ","E3":"බ","E4":"බ්‍ර","E5":"සි","E6":"සෙ","EE0":"ඉ","EE1":"ස","EE2":"අ","EE3":"බ","EE4":"බ්","EE5":"සි","EE6":"සෙ","EEE0":"ඉරි","EEE1":"සඳු","EEE2":"අඟ","EEE3":"බදා","EEE4":"බ්‍රහ","EEE5":"සිකු","EEE6":"සෙන","EEEE0":"ඉරිදා","EEEE1":"සඳුදා","EEEE2":"අඟහරුවාදා","EEEE3":"බදාදා","EEEE4":"බ්‍රහස්පතින්දා","EEEE5":"සිකුරාදා","EEEE6":"සෙනසුරාදා","a0":"පෙ.ව.","a1":"ප.ව.","G-1":"ක්‍රි.පූ.","G1":"ක්‍රි.ව.","#{num}s":"#විනාඩි {num}ක්","1#1 sec|#{num} sec":"#විනාඩි {num}ක්","1#1 second|#{num} seconds":"#විනාඩි {num}ක්","durationShortMinutes":"#විනාඩි {num}ක්","1#1 min|#{num} min":"#විනාඩි {num}ක්","1#1 minute|#{num} minutes":"#විනාඩි {num}ක්","#{num}h":"#පැය {num}ක්","1#1 hr|#{num} hrs":"#පැය {num}ක්","1#1 hour|#{num} hours":"#පැය {num}ක්","#{num}d":"#දින {num}ක්","durationLongDays":"#දින {num}ක්","1#1 day|#{num} days":"#දින {num}ක්","#{num}w":"#සති {num}ක්","1#1 wk|#{num} wks":"#සති {num}ක්","1#1 week|#{num} weeks":"#සති {num}ක්","durationShortMonths":"#මාස {num}ක්","1#1 mon|#{num} mons":"#මාස {num}ක්","1#1 month|#{num} months":"#මාස {num}ක්","#{num}y":"#වසර {num}ක්","1#1 yr|#{num} yrs":"#වසර {num}ක්","1#1 year|#{num} years":"#වසර {num}ක්","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_sk = {"generated":true,"NN1":"ja","NN2":"fe","NN3":"ma","NN4":"ap","NN5":"má","NN6":"jú","NN7":"jú","NN8":"au","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"jan","MMM2":"feb","MMM3":"mar","MMM4":"apr","MMM5":"máj","MMM6":"jún","MMM7":"júl","MMM8":"aug","MMM9":"sep","MMM10":"okt","MMM11":"nov","MMM12":"dec","MMMM1":"január","MMMM2":"február","MMMM3":"marec","MMMM4":"apríl","MMMM5":"máj","MMMM6":"jún","MMMM7":"júl","MMMM8":"august","MMMM9":"september","MMMM10":"október","MMMM11":"november","MMMM12":"december","E0":"N","E1":"P","E2":"U","E3":"S","E4":"Š","E5":"P","EE0":"ne","EE1":"po","EE2":"ut","EE3":"st","EE4":"št","EE5":"pi","EE6":"so","EEE0":"ne","EEE1":"po","EEE2":"ut","EEE3":"st","EEE4":"št","EEE5":"pi","EEE6":"so","EEEE0":"nedeľa","EEEE1":"pondelok","EEEE2":"utorok","EEEE3":"streda","EEEE4":"štvrtok","EEEE5":"piatok","EEEE6":"sobota","a0":"dopoludnia","a1":"popoludní","G-1":"pred n.l.","G1":"n.l.","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekunda|few#{num} sekundy|#{num} sekúnd","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} min","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minúta|few#{num} minúty|#{num} minút","durationMediumHours":"#{num} ho","1#1 hr|#{num} hrs":"#{num} hod","1#1 hour|#{num} hours":"one#{num} hodina|few#{num} hodiny|#{num} hodín","1#1 dy|#{num} dys":"#{num} d.","durationLongDays":"one#{num} deň|few#{num} dni|#{num} dní","1#1 day|#{num} days":"one#{num} deň|few#{num} dni|#{num} dní","#{num}w":"#{num}t","durationMediumWeeks":"#{num} tý","1#1 wk|#{num} wks":"#{num} týž","1#1 week|#{num} weeks":"one#{num} týždeň|few#{num} týždne|#{num} týždňov","durationShortMonths":"#{num}m","1#1 mo|#{num} mos":"#{num} me","1#1 mon|#{num} mons":"#{num} mes","1#1 month|#{num} months":"one#{num} mesiac|few#{num} mesiace|#{num} mesiacov","#{num}y":"#{num}r","durationMediumYears":"#{num} r.","1#1 yr|#{num} yrs":"few#{num} roky|#{num} rok","1#1 year|#{num} years":"one#{num} rok|few#{num} roky|#{num} rokov","{duration} ago":"pred {0} dňom","in {duration}":"{duration}","finalSeparatorFull":" a ","separatorLong":" "};
+ilib.data.sysres_so = {"generated":true,"NN1":"Ko","NN2":"La","NN3":"Sa","NN4":"Af","NN5":"Sh","NN6":"Li","NN7":"To","NN8":"Si","NN9":"Sa","NN10":"To","NN11":"KI","NN12":"LI","MMM1":"Kob","MMM2":"Lab","MMM3":"Sad","MMM4":"Afr","MMM5":"Sha","MMM6":"Lix","MMM7":"Tod","MMM8":"Sid","MMM9":"Sag","MMM10":"Tob","MMM11":"KIT","MMM12":"LIT","MMMM1":"Bisha Koobaad","MMMM2":"Bisha Labaad","MMMM3":"Bisha Saddexaad","MMMM4":"Bisha Afraad","MMMM5":"Bisha Shanaad","MMMM6":"Bisha Lixaad","MMMM7":"Bisha Todobaad","MMMM8":"Bisha Sideedaad","MMMM9":"Bisha Sagaalaad","MMMM10":"Bisha Tobnaad","MMMM11":"Bisha Kow iyo Tobnaad","MMMM12":"Bisha Laba iyo Tobnaad","E0":"A","E1":"I","E3":"A","E4":"K","E5":"J","EE0":"Ax","EE1":"Is","EE2":"Ta","EE3":"Ar","EE4":"Kh","EE5":"Ji","EEE0":"Axd","EEE1":"Isn","EEE2":"Tal","EEE3":"Arb","EEE4":"Kha","EEE5":"Jim","EEE6":"Sab","EEEE0":"Axad","EEEE1":"Isniin","EEEE2":"Talaado","EEEE3":"Arbaco","EEEE4":"Khamiis","EEEE5":"Jimco","EEEE6":"Sabti","a0":"sn.","a1":"gn.","G-1":"CK","G1":"CD","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_sq = {"generated":true,"NN2":"Sh","NN4":"Pr","NN6":"Qe","NN7":"Ko","NN8":"Gs","NN9":"Sh","NN10":"Te","NN11":"Në","NN12":"Dh","MMM2":"Shk","MMM4":"Pri","MMM5":"Maj","MMM6":"Qer","MMM7":"Kor","MMM8":"Gsh","MMM9":"Sht","MMM10":"Tet","MMM11":"Nën","MMM12":"Dhj","MMMM1":"janar","MMMM2":"shkurt","MMMM3":"mars","MMMM4":"prill","MMMM5":"maj","MMMM6":"qershor","MMMM7":"korrik","MMMM8":"gusht","MMMM9":"shtator","MMMM10":"tetor","MMMM11":"nëntor","MMMM12":"dhjetor","E0":"D","E1":"H","E2":"M","E3":"M","E4":"E","E5":"P","EE0":"Di","EE1":"Hë","EE2":"Ma","EE3":"Më","EE4":"En","EE5":"Pr","EE6":"Sh","EEE0":"Die","EEE1":"Hën","EEE2":"Mar","EEE3":"Mër","EEE4":"Enj","EEE5":"Pre","EEE6":"Sht","EEEE0":"e diel","EEEE1":"e hënë","EEEE2":"e martë","EEEE3":"e mërkurë","EEEE4":"e enjte","EEEE5":"e premte","EEEE6":"e shtunë","a0":"PD","a1":"MD","G-1":"p.e.r.","G1":"n.e.r.","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekondë|#{num} sekonda","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minutë|#{num} minuta","#{num}h":"#{num}o","1#1 hr|#{num} hrs":"#{num} orë","1#1 hour|#{num} hours":"#{num} orë","durationLongDays":"#{num} ditë","1#1 day|#{num} days":"#{num} ditë","#{num}w":"#{num}j","1#1 wk|#{num} wks":"#{num} javë","1#1 week|#{num} weeks":"#{num} javë","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} muaj","1#1 month|#{num} months":"#{num} muaj","#{num}y":"#{num}v","1#1 yr|#{num} yrs":"one#{num} vit|#{num} vjet","1#1 year|#{num} years":"one#{num} vit|#{num} vjet","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_sr = {"generated":true,"NN1":"ја","NN2":"фе","NN3":"ма","NN4":"ап","NN5":"ма","NN6":"ју","NN7":"ју","NN8":"ав","NN9":"се","NN10":"ок","NN11":"но","NN12":"де","MMM1":"јан","MMM2":"феб","MMM3":"мар","MMM4":"апр","MMM5":"мај","MMM6":"јун","MMM7":"јул","MMM8":"авг","MMM9":"сеп","MMM10":"окт","MMM11":"нов","MMM12":"дец","MMMM1":"јануар","MMMM2":"фебруар","MMMM3":"март","MMMM4":"април","MMMM5":"мај","MMMM6":"јун","MMMM7":"јул","MMMM8":"август","MMMM9":"септембар","MMMM10":"октобар","MMMM11":"новембар","MMMM12":"децембар","E0":"н","E1":"п","E2":"у","E3":"с","E4":"ч","E5":"п","E6":"с","EE0":"не","EE1":"по","EE2":"ут","EE3":"ср","EE4":"че","EE5":"пе","EE6":"су","EEE0":"нед","EEE1":"пон","EEE2":"уто","EEE3":"сре","EEE4":"чет","EEE5":"пет","EEE6":"суб","EEEE0":"недеља","EEEE1":"понедељак","EEEE2":"уторак","EEEE3":"среда","EEEE4":"четвртак","EEEE5":"петак","EEEE6":"субота","a0":"пре подне","a1":"поподне","G-1":"п. н. е.","G1":"н. е.","#{num}s":"#{num}с","1#1 se|#{num} sec":"#{num} сек","1#1 sec|#{num} sec":"#{num} сек","1#1 second|#{num} seconds":"few#{num} секунде|many#{num} секунди|#{num} секунда","durationShortMinutes":"#{num}м","1#1 mi|#{num} min":"#{num} мин","1#1 min|#{num} min":"#{num} мин","1#1 minute|#{num} minutes":"few#{num} минута|many#{num} минута|#{num} минут","#{num}h":"#{num}с","durationMediumHours":"few#{num} са|many#{num} са|#{num} сат","1#1 hr|#{num} hrs":"few#{num} сата|many#{num} сати|#{num} сат","1#1 hour|#{num} hours":"few#{num} сата|many#{num} сати|#{num} сат","#{num}d":"#{num}д","1#1 dy|#{num} dys":"few#{num} да|many#{num} да|#{num} дан","durationLongDays":"few#{num} дана|many#{num} дана|#{num} дан","1#1 day|#{num} days":"few#{num} дана|many#{num} дана|#{num} дан","#{num}w":"#{num}н","durationMediumWeeks":"#{num} нед","1#1 wk|#{num} wks":"#{num} нед","1#1 week|#{num} weeks":"few#{num} недеље|#{num} недеља","durationShortMonths":"#{num}м","1#1 mo|#{num} mos":"#{num} мес","1#1 mon|#{num} mons":"#{num} мес","1#1 month|#{num} months":"few#{num} месеца|many#{num} месеци|#{num} месец","#{num}y":"#{num}г","durationMediumYears":"#{num} год","1#1 yr|#{num} yrs":"#{num} год","1#1 year|#{num} years":"few#{num} године|#{num} година","{duration} ago":"пре {duration}","in {duration}":"за {duration}","finalSeparatorFull":" и ","separatorLong":" "};
+ilib.data.sysres_sr_Cyrl_BA = {"generated":true,"MMMM6":"јуни","MMMM7":"јули","EEE3":"сри","EEEE3":"сриједа"};
+ilib.data.sysres_sr_Latn_BA = {"generated":true,"NN1":"ja","NN2":"fe","NN3":"ma","NN4":"ap","NN5":"ma","NN6":"ju","NN7":"ju","NN8":"av","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"jan","MMM2":"feb","MMM3":"mar","MMM4":"apr","MMM5":"maj","MMM6":"jun","MMM7":"jul","MMM8":"avg","MMM9":"sep","MMM10":"okt","MMM11":"nov","MMM12":"dec","MMMM1":"januar","MMMM2":"februar","MMMM3":"mart","MMMM4":"april","MMMM5":"maj","MMMM6":"jun","MMMM7":"jul","MMMM8":"avgust","MMMM9":"septembar","MMMM10":"oktobar","MMMM11":"novembar","MMMM12":"decembar","E0":"n","E1":"p","E2":"u","E3":"s","E4":"č","E5":"p","E6":"s","EE0":"ne","EE1":"po","EE2":"ut","EE3":"sr","EE4":"če","EE5":"pe","EE6":"su","EEE0":"ned","EEE1":"pon","EEE2":"uto","EEE3":"sre","EEE4":"čet","EEE5":"pet","EEE6":"sub","EEEE0":"nedelja","EEEE1":"ponedeljak","EEEE2":"utorak","EEEE3":"sreda","EEEE4":"četvrtak","EEEE5":"petak","EEEE6":"subota","a0":"pre podne","a1":"popodne","G-1":"p. n. e.","G1":"n. e","#{num}s":"#{num}s","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekunda|few#{num} sekunde|#{num} sekundi","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minut|few#{num} minute|#{num} minuta","#{num}h":"#{num}s","1#1 hr|#{num} hrs":"one#{num} sat|few#{num} sata|#{num} sati","1#1 hour|#{num} hours":"one#{num} sat|few#{num} sata|#{num} sati","#{num}d":"#{num}d","durationLongDays":"one#{num} dan|#{num} dana","1#1 day|#{num} days":"one#{num} dan|#{num} dana","#{num}w":"#{num}n","1#1 wk|#{num} wks":"#{num} ned","1#1 week|#{num} weeks":"few#{num} nedelje|#{num} nedelja","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} mes","1#1 month|#{num} months":"one#{num} mesec|few#{num} meseca|#{num} meseci","#{num}y":"#{num}g","1#1 yr|#{num} yrs":"#{num} god","1#1 year|#{num} years":"few#{num} godine|#{num} godina","{duration} ago":"пре {0} дан","in {duration}":"за {0} дан","finalSeparatorFull":" i "};
+ilib.data.sysres_sr_Latn_ME = {"generated":true,"NN1":"ja","NN2":"fe","NN3":"ma","NN4":"ap","NN5":"ma","NN6":"ju","NN7":"ju","NN8":"av","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"jan","MMM2":"feb","MMM3":"mar","MMM4":"apr","MMM5":"maj","MMM6":"jun","MMM7":"jul","MMM8":"avg","MMM9":"sep","MMM10":"okt","MMM11":"nov","MMM12":"dec","MMMM1":"januar","MMMM2":"februar","MMMM3":"mart","MMMM4":"april","MMMM5":"maj","MMMM6":"jun","MMMM7":"jul","MMMM8":"avgust","MMMM9":"septembar","MMMM10":"oktobar","MMMM11":"novembar","MMMM12":"decembar","E0":"n","E1":"p","E2":"u","E3":"s","E4":"č","E5":"p","E6":"s","EE0":"ne","EE1":"po","EE2":"ut","EE3":"sr","EE4":"če","EE5":"pe","EE6":"su","EEE0":"ned","EEE1":"pon","EEE2":"uto","EEE3":"sre","EEE4":"čet","EEE5":"pet","EEE6":"sub","EEEE0":"nedelja","EEEE1":"ponedeljak","EEEE2":"utorak","EEEE3":"sreda","EEEE4":"četvrtak","EEEE5":"petak","EEEE6":"subota","a0":"pre podne","a1":"popodne","G-1":"p. n. e.","G1":"n. e","#{num}s":"#{num}s","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekunda|few#{num} sekunde|#{num} sekundi","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minut|few#{num} minute|#{num} minuta","#{num}h":"#{num}s","1#1 hr|#{num} hrs":"one#{num} sat|few#{num} sata|#{num} sati","1#1 hour|#{num} hours":"one#{num} sat|few#{num} sata|#{num} sati","#{num}d":"#{num}d","durationLongDays":"one#{num} dan|#{num} dana","1#1 day|#{num} days":"one#{num} dan|#{num} dana","#{num}w":"#{num}n","1#1 wk|#{num} wks":"#{num} ned","1#1 week|#{num} weeks":"few#{num} nedelje|#{num} nedelja","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} mes","1#1 month|#{num} months":"one#{num} mesec|few#{num} meseca|#{num} meseci","#{num}y":"#{num}g","1#1 yr|#{num} yrs":"#{num} god","1#1 year|#{num} years":"few#{num} godine|#{num} godina","{duration} ago":"пре {0} дан","in {duration}":"за {0} дан","finalSeparatorFull":" i "};
+ilib.data.sysres_sr_Latn_RS = {"generated":true,"NN1":"ja","NN2":"fe","NN3":"ma","NN4":"ap","NN5":"ma","NN6":"ju","NN7":"ju","NN8":"av","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"jan","MMM2":"feb","MMM3":"mar","MMM4":"apr","MMM5":"maj","MMM6":"jun","MMM7":"jul","MMM8":"avg","MMM9":"sep","MMM10":"okt","MMM11":"nov","MMM12":"dec","MMMM1":"januar","MMMM2":"februar","MMMM3":"mart","MMMM4":"april","MMMM5":"maj","MMMM6":"jun","MMMM7":"jul","MMMM8":"avgust","MMMM9":"septembar","MMMM10":"oktobar","MMMM11":"novembar","MMMM12":"decembar","E0":"n","E1":"p","E2":"u","E3":"s","E4":"č","E5":"p","E6":"s","EE0":"ne","EE1":"po","EE2":"ut","EE3":"sr","EE4":"če","EE5":"pe","EE6":"su","EEE0":"ned","EEE1":"pon","EEE2":"uto","EEE3":"sre","EEE4":"čet","EEE5":"pet","EEE6":"sub","EEEE0":"nedelja","EEEE1":"ponedeljak","EEEE2":"utorak","EEEE3":"sreda","EEEE4":"četvrtak","EEEE5":"petak","EEEE6":"subota","a0":"pre podne","a1":"popodne","G-1":"p. n. e.","G1":"n. e","#{num}s":"#{num}s","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekunda|few#{num} sekunde|#{num} sekundi","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minut|few#{num} minute|#{num} minuta","#{num}h":"#{num}s","1#1 hr|#{num} hrs":"one#{num} sat|few#{num} sata|#{num} sati","1#1 hour|#{num} hours":"one#{num} sat|few#{num} sata|#{num} sati","#{num}d":"#{num}d","durationLongDays":"one#{num} dan|#{num} dana","1#1 day|#{num} days":"one#{num} dan|#{num} dana","#{num}w":"#{num}n","1#1 wk|#{num} wks":"#{num} ned","1#1 week|#{num} weeks":"few#{num} nedelje|#{num} nedelja","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} mes","1#1 month|#{num} months":"one#{num} mesec|few#{num} meseca|#{num} meseci","#{num}y":"#{num}g","1#1 yr|#{num} yrs":"#{num} god","1#1 year|#{num} years":"few#{num} godine|#{num} godina","{duration} ago":"пре {0} дан","in {duration}":"за {0} дан","finalSeparatorFull":" i "};
+ilib.data.sysres_ss = {"generated":true,"NN1":"1","NN2":"2","NN3":"3","NN4":"4","NN5":"5","NN6":"6","NN7":"7","NN8":"8","NN9":"9","NN10":"10","NN11":"11","NN12":"12","MMM1":"1","MMM2":"2","MMM3":"3","MMM4":"4","MMM5":"5","MMM6":"6","MMM7":"7","MMM8":"8","MMM9":"9","MMM10":"10","MMM11":"11","MMM12":"12","MMMM1":"1","MMMM2":"2","MMMM3":"3","MMMM4":"4","MMMM5":"5","MMMM6":"6","MMMM7":"7","MMMM8":"8","MMMM9":"9","MMMM10":"10","MMMM11":"11","MMMM12":"12","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"1","EE1":"2","EE2":"3","EE3":"4","EE4":"5","EE5":"6","EE6":"7","EEE0":"1","EEE1":"2","EEE2":"3","EEE3":"4","EEE4":"5","EEE5":"6","EEE6":"7","EEEE0":"1","EEEE1":"2","EEEE2":"3","EEEE3":"4","EEEE4":"5","EEEE5":"6","EEEE6":"7","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_st = {"generated":true,"NN1":"1","NN2":"2","NN3":"3","NN4":"4","NN5":"5","NN6":"6","NN7":"7","NN8":"8","NN9":"9","NN10":"10","NN11":"11","NN12":"12","MMM1":"1","MMM2":"2","MMM3":"3","MMM4":"4","MMM5":"5","MMM6":"6","MMM7":"7","MMM8":"8","MMM9":"9","MMM10":"10","MMM11":"11","MMM12":"12","MMMM1":"1","MMMM2":"2","MMMM3":"3","MMMM4":"4","MMMM5":"5","MMMM6":"6","MMMM7":"7","MMMM8":"8","MMMM9":"9","MMMM10":"10","MMMM11":"11","MMMM12":"12","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"1","EE1":"2","EE2":"3","EE3":"4","EE4":"5","EE5":"6","EE6":"7","EEE0":"1","EEE1":"2","EEE2":"3","EEE3":"4","EEE4":"5","EEE5":"6","EEE6":"7","EEEE0":"1","EEEE1":"2","EEEE2":"3","EEEE3":"4","EEEE4":"5","EEEE5":"6","EEEE6":"7","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_sv = {
 	"NN1": "ja",
 	"NN2": "fe",
@@ -14116,7 +14307,11 @@ ilib.data.sysres_sv = {
 	"finalSeparatorFull": " och "
 }
 ;
+ilib.data.sysres_sv_FI = {};
 ilib.data.sysres_sv_SE = {};
+ilib.data.sysres_sw = {"generated":true,"NN5":"Me","NN8":"Ag","NN10":"Ok","MMM3":"Mac","MMM5":"Mei","MMM8":"Ago","MMM10":"Okt","MMM12":"Des","MMMM1":"Januari","MMMM2":"Februari","MMMM3":"Machi","MMMM4":"Aprili","MMMM5":"Mei","MMMM6":"Juni","MMMM7":"Julai","MMMM8":"Agosti","MMMM9":"Septemba","MMMM10":"Oktoba","MMMM11":"Novemba","MMMM12":"Desemba","E0":"2","E1":"3","E2":"4","E3":"5","E4":"A","E5":"I","E6":"1","EE0":"Ju","EE1":"Ju","EE2":"Ju","EE3":"Ju","EE4":"Al","EE5":"Ij","EE6":"Ju","EEE0":"J2","EEE1":"J3","EEE2":"J4","EEE3":"J5","EEE4":"Alh","EEE5":"Ij","EEE6":"J1","EEEE0":"Jumapili","EEEE1":"Jumatatu","EEEE2":"Jumanne","EEEE3":"Jumatano","EEEE4":"Alhamisi","EEEE5":"Ijumaa","EEEE6":"Jumamosi","a0":"asubuhi","a1":"alasiri","G-1":"KK","G1":"BK","#{num}s":"#s{num}","1#1 se|#{num} sec":"#sekunde {num}","1#1 sec|#{num} sec":"#sekunde {num}","1#1 second|#{num} seconds":"#sekunde {num}","durationShortMinutes":"#d{num}","1#1 mi|#{num} min":"#dakika {num}","1#1 min|#{num} min":"#dakika {num}","1#1 minute|#{num} minutes":"#dakika {num}","#{num}h":"#s{num}","durationMediumHours":"one#saa {num}|#masaa {num}","1#1 hr|#{num} hrs":"one#saa {num}|#masaa {num}","1#1 hour|#{num} hours":"one#saa {num}|#masaa {num}","#{num}d":"#s{num}","1#1 dy|#{num} dys":"#siku {num}","durationLongDays":"#siku {num}","1#1 day|#{num} days":"#siku {num}","#{num}w":"#w{num}","durationMediumWeeks":"#wiki {num}","1#1 wk|#{num} wks":"#wiki {num}","1#1 week|#{num} weeks":"#wiki {num}","durationShortMonths":"#m{num}","1#1 mo|#{num} mos":"one#mwezi {num}|#miezi {num}","1#1 mon|#{num} mons":"one#mwezi {num}|#miezi {num}","1#1 month|#{num} months":"one#mwezi {num}|#miezi {num}","#{num}y":"#m{num}","durationMediumYears":"one#mwaka {num}|#miaka {num}","1#1 yr|#{num} yrs":"one#mwaka {num}|#miaka {num}","1#1 year|#{num} years":"one#mwaka {num}|#miaka {num}","{duration} ago":"siku {0} iliyopita","in {duration}":"baada ya {duration}","finalSeparatorFull":", na ","separatorLong":" "};
+ilib.data.sysres_ta = {"generated":true,"NN1":"ஜன","NN2":"பி","NN3":"மா","NN4":"ஏப","NN5":"மே","NN6":"ஜூ","NN7":"ஜூ","NN8":"ஆக","NN9":"செ","NN10":"அக","NN11":"நவ","NN12":"டி","MMM1":"ஜன.","MMM2":"பிப்.","MMM3":"மார்.","MMM4":"ஏப்.","MMM5":"மே","MMM6":"ஜூன்","MMM7":"ஜூலை","MMM8":"ஆக.","MMM9":"செப்.","MMM10":"அக்.","MMM11":"நவ.","MMM12":"டிச.","MMMM1":"ஜனவரி","MMMM2":"பிப்ரவரி","MMMM3":"மார்ச்","MMMM4":"ஏப்ரல்","MMMM5":"மே","MMMM6":"ஜூன்","MMMM7":"ஜூலை","MMMM8":"ஆகஸ்ட்","MMMM9":"செப்டம்பர்","MMMM10":"அக்டோபர்","MMMM11":"நவம்பர்","MMMM12":"டிசம்பர்","E0":"ஞா","E1":"தி","E2":"செ","E3":"பு","E4":"வி","E5":"வெ","E6":"ச","EE0":"ஞா","EE1":"தி","EE2":"செ","EE3":"பு","EE4":"வி","EE5":"வெ","EE6":"ச","EEE0":"ஞா","EEE1":"தி","EEE2":"செ","EEE3":"பு","EEE4":"வி","EEE5":"வெ","EEE6":"ச","EEEE0":"ஞாயிறு","EEEE1":"திங்கள்","EEEE2":"செவ்வாய்","EEEE3":"புதன்","EEEE4":"வியாழன்","EEEE5":"வெள்ளி","EEEE6":"சனி","G-1":"கி.மு.","G1":"கி.பி.","#{num}s":"#{num}வ","1#1 se|#{num} sec":"#{num} வி","1#1 sec|#{num} sec":"#{num} வின","1#1 second|#{num} seconds":"one#{num} வினாடி|#{num} வினாடிகள்","durationShortMinutes":"#{num}ந","1#1 mi|#{num} min":"#{num} நி","1#1 min|#{num} min":"#{num} நிம","1#1 minute|#{num} minutes":"one#{num} நிமிடம்|#{num} நிமிடங்கள்","#{num}h":"#{num}ம","durationMediumHours":"#{num} மண","1#1 hr|#{num} hrs":"#{num} மணி","1#1 hour|#{num} hours":"#{num} மணிநேரம்","#{num}d":"#{num}ந","1#1 dy|#{num} dys":"#{num} நா","durationLongDays":"one#{num} நாள்|#{num} நாட","1#1 day|#{num} days":"one#{num} நாள்|#{num} நாட்கள்","#{num}w":"#{num}வ","durationMediumWeeks":"#{num} வா","1#1 wk|#{num} wks":"#{num} வார","1#1 week|#{num} weeks":"one#{num} வாரம்|#{num} வாரங்கள்","durationShortMonths":"#{num}ம","1#1 mo|#{num} mos":"#{num} மா","1#1 mon|#{num} mons":"#{num} மாத","1#1 month|#{num} months":"one#{num} மாதம்|#{num} மாதங்கள்","#{num}y":"#{num}வ","durationMediumYears":"#{num} வர","1#1 yr|#{num} yrs":"#{num} வரு","1#1 year|#{num} years":"one#{num} வருடம்|#{num} வருடங்கள்","{duration} ago":"{0} நாளுக்கு முன்","in {duration}":"{0} நாளில்","finalSeparatorFull":" மற்றும் ","separatorLong":" "};
+ilib.data.sysres_te = {"generated":true,"NN1":"జన","NN2":"ఫి","NN3":"మా","NN4":"ఏప","NN5":"మే","NN6":"జూ","NN7":"జూ","NN8":"ఆగ","NN9":"సె","NN10":"అక","NN11":"నవ","NN12":"డి","MMM1":"జన","MMM2":"ఫిబ్ర","MMM3":"మార్చి","MMM4":"ఏప్రి","MMM5":"మే","MMM6":"జూన్","MMM7":"జూలై","MMM8":"ఆగస్టు","MMM9":"సెప్టెంబర్","MMM10":"అక్టోబర్","MMM11":"నవంబర్","MMM12":"డిసెంబర్","MMMM1":"జనవరి","MMMM2":"ఫిబ్రవరి","MMMM3":"మార్చి","MMMM4":"ఎప్రిల్","MMMM5":"మే","MMMM6":"జూన్","MMMM7":"జూలై","MMMM8":"ఆగస్టు","MMMM9":"సెప్టెంబర్","MMMM10":"అక్టోబర్","MMMM11":"నవంబర్","MMMM12":"డిసెంబర్","E0":"ఆ","E1":"సో","E2":"మ","E3":"బు","E4":"గు","E5":"శు","E6":"శ","EE0":"ఆద","EE1":"సో","EE2":"మం","EE3":"బు","EE4":"గు","EE5":"శు","EE6":"శన","EEE0":"ఆది","EEE1":"సోమ","EEE2":"మంగళ","EEE3":"బుధ","EEE4":"గురు","EEE5":"శుక్ర","EEE6":"శని","EEEE0":"ఆదివారం","EEEE1":"సోమవారం","EEEE2":"మంగళవారం","EEEE3":"బుధవారం","EEEE4":"గురువారం","EEEE5":"శుక్రవారం","EEEE6":"శనివారం","G-1":"క్రీపూ","G1":"క్రీశ","#{num}s":"#{num}స","1#1 se|#{num} sec":"#{num} సె","1#1 sec|#{num} sec":"#{num} సెక","1#1 second|#{num} seconds":"one#{num} సెకను|#{num} సెకన్లు","durationShortMinutes":"#{num}న","1#1 mi|#{num} min":"#{num} ని","1#1 min|#{num} min":"#{num} నిమ","1#1 minute|#{num} minutes":"one#{num} నిమిషం|#{num} నిమిషాలు","#{num}h":"#{num}గ","durationMediumHours":"one#{num} గంట|#{num} గం","1#1 hr|#{num} hrs":"#{num} గంట","1#1 hour|#{num} hours":"one#{num} గంట|#{num} గంటలు","#{num}d":"#{num}ర","1#1 dy|#{num} dys":"one#{num} రో|#{num} da","durationLongDays":"one#{num} రోజు|#{num} days","1#1 day|#{num} days":"one#{num} రోజు|#{num} days","#{num}w":"#{num}వ","durationMediumWeeks":"#{num} వా","1#1 wk|#{num} wks":"one#{num} వారం|#{num} wee","1#1 week|#{num} weeks":"one#{num} వారం|#{num} weeks","durationShortMonths":"#{num}న","1#1 mo|#{num} mos":"one#{num} నెల|#{num} నె","1#1 mon|#{num} mons":"#{num} నెల","1#1 month|#{num} months":"one#{num} నెల|#{num} నెలలు","#{num}y":"#{num}స","durationMediumYears":"#{num} సం","1#1 yr|#{num} yrs":"#{num} సంవ","1#1 year|#{num} years":"one#{num} సంవత్సరం|#{num} సంవత్సరాలు","{duration} ago":"{duration} క్రితం","in {duration}":"{duration}లో","finalSeparatorFull":" మరియు ","separatorLong":" "};
 ilib.data.sysres_tr = {
 	"N1": "O",
 	"N2": "Ş",
@@ -14244,6 +14439,13 @@ ilib.data.sysres_tr = {
 }
 ;
 ilib.data.sysres_tr_TR = {};
+ilib.data.sysres_uk = {"generated":true,"NN1":"сі","NN2":"лю","NN3":"бе","NN4":"кв","NN5":"тр","NN6":"че","NN7":"ли","NN8":"се","NN9":"ве","NN10":"жо","NN11":"ли","NN12":"гр","MMM1":"січ.","MMM2":"лют.","MMM3":"бер.","MMM4":"квіт.","MMM5":"трав.","MMM6":"черв.","MMM7":"лип.","MMM8":"серп.","MMM9":"вер.","MMM10":"жовт.","MMM11":"лист.","MMM12":"груд.","MMMM1":"січня","MMMM2":"лютого","MMMM3":"березня","MMMM4":"квітня","MMMM5":"травня","MMMM6":"червня","MMMM7":"липня","MMMM8":"серпня","MMMM9":"вересня","MMMM10":"жовтня","MMMM11":"листопада","MMMM12":"грудня","E0":"Н","E1":"П","E2":"В","E3":"С","E4":"Ч","E5":"П","E6":"С","EE0":"Нд","EE1":"Пн","EE2":"Вт","EE3":"Ср","EE4":"Чт","EE5":"Пт","EE6":"Сб","EEE0":"Нд","EEE1":"Пн","EEE2":"Вт","EEE3":"Ср","EEE4":"Чт","EEE5":"Пт","EEE6":"Сб","EEEE0":"Неділя","EEEE1":"Понеділок","EEEE2":"Вівторок","EEEE3":"Середа","EEEE4":"Четвер","EEEE5":"Пʼятниця","EEEE6":"Субота","a0":"дп","a1":"пп","G-1":"до н.е.","G1":"н.е.","#{num}s":"#{num}с","1#1 se|#{num} sec":"#{num} се","1#1 sec|#{num} sec":"#{num} сек","1#1 second|#{num} seconds":"one#{num} секунда|many#{num} секунд|#{num} секунди","durationShortMinutes":"#{num}х","1#1 mi|#{num} min":"#{num} хв.","1#1 min|#{num} min":"#{num} хви","1#1 minute|#{num} minutes":"one#{num} хвилина|many#{num} хвилин|#{num} хвилини","#{num}h":"#{num}г","durationMediumHours":"#{num} го","1#1 hr|#{num} hrs":"#{num} год","1#1 hour|#{num} hours":"one#{num} година|many#{num} годин|#{num} години","#{num}d":"#{num}д","1#1 dy|#{num} dys":"one#{num} де|few#{num} дні|many#{num} дн|#{num} дня","durationLongDays":"one#{num} день|few#{num} дні|many#{num} днів|#{num} дня","1#1 day|#{num} days":"one#{num} день|few#{num} дні|many#{num} днів|#{num} дня","#{num}w":"#{num}т","durationMediumWeeks":"#{num} ти","1#1 wk|#{num} wks":"#{num} тиж","1#1 week|#{num} weeks":"one#{num} тиждень|few#{num} тижні|many#{num} тижнів|#{num} тижня","durationShortMonths":"#{num}м","1#1 mo|#{num} mos":"#{num} мі","1#1 mon|#{num} mons":"#{num} міс","1#1 month|#{num} months":"one#{num} місяць|few#{num} місяці|many#{num} місяців|#{num} місяця","#{num}y":"#{num}р","durationMediumYears":"#{num} р.","1#1 yr|#{num} yrs":"one#{num} рік|few#{num} роки|many#{num} рок|#{num} року","1#1 year|#{num} years":"one#{num} рік|few#{num} роки|many#{num} років|#{num} року","{duration} ago":"{duration} тому","in {duration}":"через {duration}","finalSeparatorFull":" та ","separatorLong":" "};
+ilib.data.sysres_ur = {"generated":true,"NN1":"جن","NN2":"فر","NN3":"ما","NN4":"اپ","NN5":"مئ","NN6":"جو","NN7":"جو","NN8":"اگ","NN9":"ست","NN10":"اک","NN11":"نو","NN12":"دس","MMM1":"جنوری","MMM2":"فروری","MMM3":"مارچ","MMM4":"اپریل","MMM5":"مئ","MMM6":"جون","MMM7":"جولائ","MMM8":"اگست","MMM9":"ستمبر","MMM10":"اکتوبر","MMM11":"نومبر","MMM12":"دسمبر","MMMM1":"جنوری","MMMM2":"فروری","MMMM3":"مارچ","MMMM4":"اپریل","MMMM5":"مئ","MMMM6":"جون","MMMM7":"جولائ","MMMM8":"اگست","MMMM9":"ستمبر","MMMM10":"اکتوبر","MMMM11":"نومبر","MMMM12":"دسمبر","EE0":"ات","EE1":"سو","EE2":"من","EE3":"بد","EE4":"جم","EE5":"جم","EE6":"ہف","EEE0":"اتوار","EEE1":"پیر","EEE2":"منگل","EEE3":"بده","EEE4":"جمعرات","EEE5":"جمعہ","EEE6":"ہفتہ","EEEE0":"اتوار","EEEE1":"پیر","EEEE2":"منگل","EEEE3":"بده","EEEE4":"جمعرات","EEEE5":"جمعہ","EEEE6":"ہفتہ","a0":"دن","a1":"رات","G-1":"ق م","G1":"عیسوی سن","#{num}s":"#{num}س","1#1 se|#{num} sec":"#{num} سی","1#1 sec|#{num} sec":"#{num} سیک","1#1 second|#{num} seconds":"#{num} سیکنڈ","durationShortMinutes":"#{num}م","1#1 mi|#{num} min":"#{num} منٹ","1#1 min|#{num} min":"#{num} منٹ","1#1 minute|#{num} minutes":"#{num} منٹ","#{num}h":"#{num}گ","durationMediumHours":"#{num} گھ","1#1 hr|#{num} hrs":"#{num} گھن","1#1 hour|#{num} hours":"one#{num} گھنٹہ|#{num} گھنٹے","#{num}d":"#{num}د","1#1 dy|#{num} dys":"#{num} دن","durationLongDays":"#{num} دن","1#1 day|#{num} days":"#{num} دن","#{num}w":"#{num}ہ","durationMediumWeeks":"#{num} ہف","1#1 wk|#{num} wks":"one#{num} ہفتہ|#{num} ہفتے","1#1 week|#{num} weeks":"one#{num} ہفتہ|#{num} ہفتے","durationShortMonths":"#{num}م","1#1 mo|#{num} mos":"#{num} مہ","1#1 mon|#{num} mons":"#{num} مہی","1#1 month|#{num} months":"one#{num} مہینہ|#{num} مہینے","#{num}y":"#{num}س","durationMediumYears":"#{num} سال","1#1 yr|#{num} yrs":"#{num} سال","1#1 year|#{num} years":"#{num} سال","{duration} ago":"{duration} پہلے","in {duration}":"{duration} میں","separatorFull":"، ","finalSeparatorFull":"، اور ","separatorLong":" "};
+ilib.data.sysres_uz = {"generated":true,"NN1":"Ян","NN2":"Фе","NN3":"Ма","NN4":"Ап","NN5":"Ма","NN6":"Ию","NN7":"Ию","NN8":"Ав","NN9":"Се","NN10":"Ок","NN11":"Но","NN12":"Де","MMM1":"Янв","MMM2":"Фев","MMM3":"Мар","MMM4":"Апр","MMM5":"Май","MMM6":"Июн","MMM7":"Июл","MMM8":"Авг","MMM9":"Сен","MMM10":"Окт","MMM11":"Ноя","MMM12":"Дек","MMMM1":"Январ","MMMM2":"Феврал","MMMM3":"Март","MMMM4":"Апрел","MMMM5":"Май","MMMM6":"Июн","MMMM7":"Июл","MMMM8":"Август","MMMM9":"Сентябр","MMMM10":"Октябр","MMMM11":"Ноябр","MMMM12":"Декабр","E0":"Я","E1":"Д","E2":"С","E3":"Ч","E4":"П","E5":"Ж","E6":"Ш","EE0":"Як","EE1":"Ду","EE2":"Се","EE3":"Чо","EE4":"Па","EE5":"Жу","EE6":"Ша","EEE0":"Якш","EEE1":"Душ","EEE2":"Сеш","EEE3":"Чор","EEE4":"Пай","EEE5":"Жум","EEE6":"Шан","EEEE0":"якшанба","EEEE1":"душанба","EEEE2":"сешанба","EEEE3":"чоршанба","EEEE4":"пайшанба","EEEE5":"жума","EEEE6":"шанба","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_uz_Arab_AF = {"generated":true,"NN1":"1","NN2":"2","NN3":"3","NN4":"4","NN5":"5","NN6":"6","NN7":"7","NN8":"8","NN9":"9","NN10":"10","NN11":"11","NN12":"12","MMM1":"1","MMM2":"2","MMM3":"3","MMM4":"4","MMM5":"5","MMM6":"6","MMM7":"7","MMM8":"8","MMM9":"9","MMM10":"10","MMM11":"11","MMM12":"12","MMMM1":"1","MMMM2":"2","MMMM3":"3","MMMM4":"4","MMMM5":"5","MMMM6":"6","MMMM7":"7","MMMM8":"8","MMMM9":"9","MMMM10":"10","MMMM11":"11","MMMM12":"12","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"1","EE1":"2","EE2":"3","EE3":"4","EE4":"5","EE5":"6","EE6":"7","EEE0":"1","EEE1":"2","EEE2":"3","EEE3":"4","EEE4":"5","EEE5":"6","EEE6":"7","EEEE0":"1","EEEE1":"2","EEEE2":"3","EEEE3":"4","EEEE4":"5","EEEE5":"6","EEEE6":"7"};
+ilib.data.sysres_uz_Latn_UZ = {"generated":true,"NN1":"Ya","NN2":"Fe","NN3":"Ma","NN4":"Ap","NN5":"Ma","NN6":"Iy","NN7":"Iy","NN8":"Av","NN9":"Se","NN10":"Ok","NN11":"No","NN12":"De","MMM1":"Yanv","MMM2":"Fev","MMM3":"Mar","MMM4":"Apr","MMM5":"May","MMM6":"Iyun","MMM7":"Iyul","MMM8":"Avg","MMM9":"Sen","MMM10":"Okt","MMM11":"Noya","MMM12":"Dek","MMMM1":"Yanvar","MMMM2":"Fevral","MMMM3":"Mart","MMMM4":"Aprel","MMMM5":"May","MMMM6":"Iyun","MMMM7":"Iyul","MMMM8":"Avgust","MMMM9":"Sentyabr","MMMM10":"Oktyabr","MMMM11":"Noyabr","MMMM12":"Dekabr","E0":"Y","E1":"D","E2":"S","E3":"C","E4":"P","E5":"C","E6":"S","EE0":"Ya","EE1":"Du","EE2":"Se","EE3":"Ch","EE4":"Pa","EE5":"Cu","EE6":"Sh","EEE0":"Yaksh","EEE1":"Dush","EEE2":"Sesh","EEE3":"Chor","EEE4":"Pay","EEE5":"Cum","EEE6":"Shan","EEEE0":"yakshanba","EEEE1":"dushanba","EEEE2":"seshanba","EEEE3":"chorshanba","EEEE4":"payshanba","EEEE5":"cuma","EEEE6":"shanba"};
+ilib.data.sysres_vai = {"generated":true,"NN1":"ꖨꕪ","NN2":"ꕒꕡ","NN3":"ꕾꖺ","NN4":"ꖢꖕ","NN5":"ꖑꕱ","NN6":"6","NN7":"7","NN8":"ꗛꔕ","NN9":"ꕢꕌ","NN10":"ꕭꖃ","NN11":"ꔞꘋ","NN12":"ꖨꕪ","MMM1":"ꖨꕪꖃ ꔞꕮ","MMM2":"ꕒꕡꖝꖕ","MMM3":"ꕾꖺ","MMM4":"ꖢꖕ","MMM5":"ꖑꕱ","MMM6":"6","MMM7":"7","MMM8":"ꗛꔕ","MMM9":"ꕢꕌ","MMM10":"ꕭꖃ","MMM11":"ꔞꘋꕔꕿ ꕸꖃꗏ","MMM12":"ꖨꕪꕱ ꗏꕮ","MMMM1":"ꖨꕪꖃ ꔞꕮ","MMMM2":"ꕒꕡꖝꖕ","MMMM3":"ꕾꖺ","MMMM4":"ꖢꖕ","MMMM5":"ꖑꕱ","MMMM6":"6","MMMM7":"7","MMMM8":"ꗛꔕ","MMMM9":"ꕢꕌ","MMMM10":"ꕭꖃ","MMMM11":"ꔞꘋꕔꕿ ꕸꖃꗏ","MMMM12":"ꖨꕪꕱ ꗏꕮ","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"ꕞꕌ","EE1":"ꗳꗡ","EE2":"ꕚꕞ","EE3":"ꕉꕞ","EE4":"ꕉꔤ","EE5":"ꕉꔤ","EE6":"ꔻꔬ","EEE0":"ꕞꕌꔵ","EEE1":"ꗳꗡꘉ","EEE2":"ꕚꕞꕚ","EEE3":"ꕉꕞꕒ","EEE4":"ꕉꔤꕆꕢ","EEE5":"ꕉꔤꕀꕮ","EEE6":"ꔻꔬꔳ","EEEE0":"ꕞꕌꔵ","EEEE1":"ꗳꗡꘉ","EEEE2":"ꕚꕞꕚ","EEEE3":"ꕉꕞꕒ","EEEE4":"ꕉꔤꕆꕢ","EEEE5":"ꕉꔤꕀꕮ","EEEE6":"ꔻꔬꔳ","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","finalSeparatorFull":", ","separatorLong":" "};
+ilib.data.sysres_vai_Latn_LR = {"generated":true,"NN1":"lu","NN2":"ɓa","NN3":"vɔ","NN4":"fu","NN5":"go","NN8":"kɔ","NN9":"sa","NN10":"ga","NN11":"ke","NN12":"lu","MMM1":"luukao kemã","MMM2":"ɓandaɓu","MMM3":"vɔɔ","MMM4":"fulu","MMM5":"goo","MMM8":"kɔnde","MMM9":"saah","MMM10":"galo","MMM11":"kenpkato ɓololɔ","MMM12":"luukao lɔma","MMMM1":"luukao kemã","MMMM2":"ɓandaɓu","MMMM3":"vɔɔ","MMMM4":"fulu","MMMM5":"goo","MMMM8":"kɔnde","MMMM9":"saah","MMMM10":"galo","MMMM11":"kenpkato ɓololɔ","MMMM12":"luukao lɔma","EE0":"la","EE1":"tɛ","EE2":"ta","EE3":"al","EE4":"ai","EE5":"ai","EE6":"si","EEE0":"lahadi","EEE1":"tɛɛnɛɛ","EEE2":"talata","EEE3":"alaba","EEE4":"aimisa","EEE5":"aijima","EEE6":"siɓiti","EEEE0":"lahadi","EEEE1":"tɛɛnɛɛ","EEEE2":"talata","EEEE3":"alaba","EEEE4":"aimisa","EEEE5":"aijima","EEEE6":"siɓiti"};
 ilib.data.sysres_vi = {
 	"N1": "1",
 	"N2": "2",
@@ -14503,7 +14705,9 @@ ilib.data.sysres_zh = {
 	"separatorFull": "、",
 	"finalSeparatorFull": "和"
 };
-ilib.data.sysres_zh_TW = {
+ilib.data.sysres_zh_Hans = {};
+ilib.data.sysres_zh_Hans_CN = {};
+ilib.data.sysres_zh_Hant = {
 	"EEE0": "週日",
 	"EE0": "週日",
 	"E0": "週日",
@@ -14548,96 +14752,11 @@ ilib.data.sysres_zh_TW = {
 	"1#1 week|#{num} weeks": "#{num}週",
 	"1#1 month|#{num} months": "#{num}個月"
 };
-ilib.data.sysres_zh_HK = {
-	"EEE0": "週日",
-	"EE0": "週日",
-	"E0": "週日",
-	"EEE1": "週一",
-	"EE1": "週一",
-	"E1": "週一",
-	"EEE2": "週二",
-	"EE2": "週二",
-	"E2": "週二",
-	"EEE3": "週三",
-	"EE3": "週三",
-	"E3": "週三",
-	"EEE4": "週四",
-	"EE4": "週四",
-	"E4": "週四",
-	"EEE5": "週五",
-	"EE5": "週五",
-	"E5": "週五",
-	"EEE6": "週六",
-	"EE6": "週六",
-	"E6": "週六",
-
-	"azh3": "正午",
-
-	"durationShortMinutes": "#{num}分鐘",
-	"#{num}h": "#{num}小時",
-	"#{num}w": "#{num}週",
-	"durationShortMonths": "#{num}個月",
-
-	"1#1 mi|#{num} min": "#{num}分鐘",
-	"durationMediumHours": "#{num}小時",
-	"1#1 wk|#{num} wks": "#{num}週",
-	"1#1 mo|#{num} mos": "#{num}個月",
-
-	"1#1 min|#{num} min": "#{num}分鐘",
-	"1#1 hr|#{num} hrs": "#{num}小時",
-	"1#1 wk|#{num} wks": "#{num}週",
-	"1#1 mon|#{num} mons": "#{num}個月",
-	
-	"1#1 minute|#{num} minutes": "#{num}分鐘",
-	"1#1 hour|#{num} hours": "#{num}小時",
-	"1#1 week|#{num} weeks": "#{num}週",
-	"1#1 month|#{num} months": "#{num}個月"
-};
-ilib.data.sysres_zh_MO = {
-	"EEE0": "週日",
-	"EE0": "週日",
-	"E0": "週日",
-	"EEE1": "週一",
-	"EE1": "週一",
-	"E1": "週一",
-	"EEE2": "週二",
-	"EE2": "週二",
-	"E2": "週二",
-	"EEE3": "週三",
-	"EE3": "週三",
-	"E3": "週三",
-	"EEE4": "週四",
-	"EE4": "週四",
-	"E4": "週四",
-	"EEE5": "週五",
-	"EE5": "週五",
-	"E5": "週五",
-	"EEE6": "週六",
-	"EE6": "週六",
-	"E6": "週六",
-
-	"azh3": "正午",
-
-	"durationShortMinutes": "#{num}分鐘",
-	"#{num}h": "#{num}小時",
-	"#{num}w": "#{num}週",
-	"durationShortMonths": "#{num}個月",
-
-	"1#1 mi|#{num} min": "#{num}分鐘",
-	"durationMediumHours": "#{num}小時",
-	"1#1 wk|#{num} wks": "#{num}週",
-	"1#1 mo|#{num} mos": "#{num}個月",
-
-	"1#1 min|#{num} min": "#{num}分鐘",
-	"1#1 hr|#{num} hrs": "#{num}小時",
-	"1#1 wk|#{num} wks": "#{num}週",
-	"1#1 mon|#{num} mons": "#{num}個月",
-	
-	"1#1 minute|#{num} minutes": "#{num}分鐘",
-	"1#1 hour|#{num} hours": "#{num}小時",
-	"1#1 week|#{num} weeks": "#{num}週",
-	"1#1 month|#{num} months": "#{num}個月"
-};
+ilib.data.sysres_zh_Hans_HK = {};
+ilib.data.sysres_zh_Hant_MO = {};
+ilib.data.sysres_zh_Hans_SG = {};
+ilib.data.sysres_zh_Hant_TW = {};
+ilib.data.sysres_zu = {"generated":true,"NN5":"Me","NN8":"Ag","NN10":"Ok","NN12":"Di","MMM3":"Mas","MMM5":"Mey","MMM8":"Aga","MMM10":"Okt","MMM12":"Dis","MMMM1":"Januwari","MMMM2":"Februwari","MMMM3":"Mashi","MMMM4":"Apreli","MMMM5":"Meyi","MMMM6":"Juni","MMMM7":"Julayi","MMMM8":"Agasti","MMMM9":"Septhemba","MMMM10":"Okthoba","MMMM11":"Novemba","MMMM12":"Disemba","E2":"B","E3":"T","E4":"S","E5":"H","E6":"M","EE0":"Is","EE1":"Um","EE2":"Ul","EE3":"Ul","EE4":"Ul","EE5":"Ul","EE6":"Um","EEE0":"Son","EEE1":"Mso","EEE2":"Bil","EEE3":"Tha","EEE4":"Sin","EEE5":"Hla","EEE6":"Mgq","EEEE0":"Sonto","EEEE1":"Msombuluko","EEEE2":"Lwesibili","EEEE3":"Lwesithathu","EEEE4":"ULwesine","EEEE5":"Lwesihlanu","EEEE6":"Mgqibelo","a0":"Ekuseni","a1":"Ntambama","G-1":"BC","G1":"AD","#{num}s":"#i{num}","1#1 se|#{num} sec":"one#isekhondi elingu-{num}|#{num} am","1#1 sec|#{num} sec":"one#isekhondi elingu-{num}|#{num} ama","1#1 second|#{num} seconds":"one#isekhondi elingu-{num}|#{num} amasekhondi","durationShortMinutes":"#i{num}","1#1 mi|#{num} min":"one#iminithi elingu-{num}|#{num} am","1#1 min|#{num} min":"one#iminithi elingu-{num}|#{num} ama","1#1 minute|#{num} minutes":"one#iminithi elingu-{num}|#{num} amaminithi","#{num}h":"#i{num}","durationMediumHours":"one#ihora elingu-{num}|#{num} am","1#1 hr|#{num} hrs":"one#ihora elingu-{num}|#{num} ama","1#1 hour|#{num} hours":"one#ihora elingu-{num}|#{num} amahora","#{num}d":"#u{num}","1#1 dy|#{num} dys":"one#usuku olungu-{num}|#{num} iz","durationLongDays":"one#usuku olungu-{num}|#{num} izi","1#1 day|#{num} days":"one#usuku olungu-{num}|#{num} izinsuku","#{num}w":"#i{num}","durationMediumWeeks":"one#iviki elingu-{num}|#{num} am","1#1 wk|#{num} wks":"one#iviki elingu-{num}|#{num} ama","1#1 week|#{num} weeks":"one#iviki elingu-{num}|#{num} amaviki","durationShortMonths":"#i{num}","1#1 mo|#{num} mos":"one#inyanga engu-{num}|#{num} iz","1#1 mon|#{num} mons":"one#inyana engu-{num}|#{num} izi","1#1 month|#{num} months":"one#inyana engu-{num}|#{num} izinyanga","#{num}y":"#u{num}","durationMediumYears":"one#unyaka ongu-{num}|#{num} im","1#1 yr|#{num} yrs":"one#unyaka ongu-{num}|#{num} imi","1#1 year|#{num} years":"one#unyaka ongu-{num}|#{num} iminyaka","{duration} ago":"osukwini olungu-{0} olwedlule","in {duration}":"osukwini olungu-{0}","finalSeparatorFull":", no-","separatorLong":" "};
 /*
  * datefmt.js - Date formatter definition
  * 
@@ -14667,6 +14786,7 @@ resources.js
 calendar.js
 localeinfo.js
 timezone.js
+localeinfo.js
 */
 
 // !data dateformats sysres
@@ -14848,6 +14968,9 @@ timezone.js
  * <li><i>Z</i> - RFC 822 time zone
  * </ul>
  * 
+ *<li><i>useNative</i> - the flag used to determaine whether to use the native script settings 
+ * for formatting the numbers .
+ *
  * <li>onLoad - a callback function to call when the date format object is fully 
  * loaded. When the onLoad option is given, the DateFmt object will attempt to
  * load any missing locale data using the ilib loader callback.
@@ -14903,7 +15026,7 @@ ilib.DateFmt = function(options) {
 	this.length = "s";
 	this.dateComponents = "dmy";
 	this.timeComponents = "ahm";
-	
+	this.useNative= false;
 	if (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
@@ -14984,7 +15107,9 @@ ilib.DateFmt = function(options) {
 				id: options.timezone
 			});
 		}
-		
+		if (typeof(options.useNative) !== 'undefined') {
+			this.useNative = options.useNative;
+		}
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync == true);
 		}
@@ -15014,6 +15139,7 @@ ilib.DateFmt = function(options) {
 					break;
 			}
 
+			/*
 			if (this.timeComponents &&
 					(this.clock === '24' || 
 					(!this.clock && this.locinfo.getClock() === "24"))) {
@@ -15021,6 +15147,7 @@ ilib.DateFmt = function(options) {
 				// requested it in the time component option
 				this.timeComponents = this.timeComponents.replace("a", "");
 			}
+			*/
 			
 			// load the strings used to translate the components
 			new ilib.ResBundle({
@@ -15031,18 +15158,29 @@ ilib.DateFmt = function(options) {
 					this.sysres = rb;
 					
 					if (!this.template) {
-						ilib.loadData(ilib.DateFmt, this.locale, "dateformats", sync, loadParams, ilib.bind(this, function (formats) {
-							if (!formats) {
-								formats = ilib.data.dateformats;
-								var spec = this.locale.getSpec().replace(/-/g, '_');
-								ilib.DateFmt.cache[spec] = formats;
-							}
-							this._initTemplate(formats);
-							this._massageTemplate();
-							if (options && typeof(options.onLoad) === 'function') {
-								options.onLoad(this);
-							}
-						}));
+						ilib.loadData({
+							object: ilib.DateFmt, 
+							locale: this.locale, 
+							name: "dateformats.json", 
+							sync: sync, 
+							loadParams: loadParams, 
+							callback: ilib.bind(this, function (formats) {
+								if (!formats) {
+									formats = ilib.data.dateformats;
+									var spec = this.locale.getSpec().replace(/-/g, '_');
+									ilib.DateFmt.cache[spec] = formats;
+								}
+								if (typeof(this.clock) === 'undefined') {
+									// default to the locale instead
+									this.clock = this.locinfo.getClock();
+								}
+								this._initTemplate(formats);
+								this._massageTemplate();
+								if (options && typeof(options.onLoad) === 'function') {
+									options.onLoad(this);
+								}
+							})
+						});
 					} else {
 						this._massageTemplate();
 						if (options && typeof(options.onLoad) === 'function') {
@@ -15086,14 +15224,14 @@ ilib.DateFmt.prototype = {
 			switch (this.type) {
 				case "datetime":
 					this.template = (this.formats && this._getLengthFormat(this.formats.order, this.length)) || "{date} {time}";
-					this.template = this.template.replace("{date}", this._getFormat(this.formats.date, this.dateComponents, this.length));
-					this.template = this.template.replace("{time}", this._getFormat(this.formats.time, this.timeComponents, this.length));
+					this.template = this.template.replace("{date}", this._getFormat(this.formats.date, this.dateComponents, this.length) || "");
+					this.template = this.template.replace("{time}", this._getFormat(this.formats.time[this.clock], this.timeComponents, this.length) || "");
 					break;
 				case "date":
 					this.template = this._getFormat(this.formats.date, this.dateComponents, this.length);
 					break;
 				case "time":
-					this.template = this._getFormat(this.formats.time, this.timeComponents, this.length);
+					this.template = this._getFormat(this.formats.time[this.clock], this.timeComponents, this.length);
 					break;
 			}
 		} else {
@@ -15156,6 +15294,18 @@ ilib.DateFmt.prototype = {
 		
 		// tokenize it now for easy formatting
 		this.templateArr = this._tokenize(this.template);
+
+		// set up the mapping to native or alternate digits if necessary
+		var digits = this.locinfo.getDigits();
+		if (digits && digits != "0123456789") {
+			this.digits = digits;
+		}
+		if (this.useNative) {
+			digits = this.locinfo.getNativeDigits();
+			if (digits) {
+				this.digits = digits;
+			}
+		}
 	},
     
 	/**
@@ -15464,19 +15614,19 @@ ilib.DateFmt.prototype = {
 				case 'a':
 					if (this.locale.getLanguage() === 'zh') {
 						if (date.hour < 6) {
-							key = "azh0";
+							key = "azh0";	// before dawn
 						} else if (date.hour < 9) {
-							key = "azh1";
+							key = "azh1";	// morning
 						} else if (date.hour < 12) {
-							key = "azh2";
+							key = "azh2";	// late morning/day before noon
 						} else if (date.hour < 13) {
-							key = "azh3";
+							key = "azh3";	// noon hour/midday
 						} else if (date.hour < 18) {
-							key = "azh4";
+							key = "azh4";	// afternoon
 						} else if (date.hour < 21) {
-							key = "azh5";
+							key = "azh5";	// evening time/dusk
 						} else {
-							key = "azh6";
+							key = "azh6";	// night time
 						}
 					} else {
 						key = date.hour < 12 ? "a0" : "a1";
@@ -15528,6 +15678,10 @@ ilib.DateFmt.prototype = {
 					str += templateArr[i].replace(/'/g, "");
 					break;
 			}
+		}
+
+		if (this.digits) {
+			str = ilib.mapString(str, this.digits);
 		}
 		return str;
 	},
@@ -15905,7 +16059,7 @@ ilib.DateRngFmt = function(options) {
 					break;
 			}
 			
-			this.timeTemplate = this.dateFmt._getFormat(this.dateFmt.formats.time, this.dateFmt.timeComponents, this.length) || "hh:mm";
+			this.timeTemplate = this.dateFmt._getFormat(this.dateFmt.formats.time[this.dateFmt.clock], this.dateFmt.timeComponents, this.length) || "hh:mm";
 			this.timeTemplateArr = this.dateFmt._tokenize(this.timeTemplate);
 			
 			if (options && typeof(options.onLoad) === 'function') {
@@ -21382,7 +21536,7 @@ ilib.Currency.prototype = {
 
 /*
  * numfmt.js - Number formatter definition
- * 
+ *
  * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21400,8 +21554,6 @@ ilib.Currency.prototype = {
  */
 
 // !depends ilibglobal.js locale.js strings.js currency.js
-
-
 /*
 !depends 
 ilibglobal.js 
@@ -21417,35 +21569,37 @@ strings.js
 /**
  * @class
  * Create a new number formatter instance. Locales differ in the way that digits
- * in a formatted number are grouped, in the way the decimal character is represented, 
+ * in a formatted number are grouped, in the way the decimal character is represented,
  * etc. Use this formatter to get it right for any locale.<p>
- * 
- * This formatter can format plain numbers, currency amounts, and percentage amounts.<p>  
- * 
+ *
+ * This formatter can format plain numbers, currency amounts, and percentage amounts.<p>
+ *
  * As with all formatters, the recommended
  * practice is to create one formatter and use it multiple times to format various
  * numbers.<p>
- * 
+ *
  * The options can contain any of the following properties:
- * 
+ *
  * <ul>
  * <li><i>locale</i> - use the conventions of the specified locale when figuring out how to
  * format a number.
- * <li><i>type</i> - the type of this formatter. Valid values are "number", "currency", or 
+ * <li><i>type</i> - the type of this formatter. Valid values are "number", "currency", or
  * "percentage". If this property is not specified, the default is "number".
- * <li><i>currency</i> - the ISO 4217 3-letter currency code to use when the formatter type 
- * is "currency". This property is required for currency formatting. If the type property 
+ * <li><i>currency</i> - the ISO 4217 3-letter currency code to use when the formatter type
+ * is "currency". This property is required for currency formatting. If the type property
  * is "currency" and the currency property is not specified, the constructor will throw a
- * an exception. 
+ * an exception.
  * <li><i>maxFractionDigits</i> - the maximum number of digits that should appear in the
  * formatted output after the decimal. A value of -1 means unlimited, and 0 means only print
- * the integral part of the number. 
+ * the integral part of the number.
  * <li><i>minFractionDigits</i> - the minimum number of fractional digits that should
  * appear in the formatted output. If the number does not have enough fractional digits
  * to reach this minimum, the number will be zero-padded at the end to get to the limit.
  * If the type of the formatter is "currency" and this
  * property is not specified, then the minimum fraction digits is set to the normal number
  * of digits used with that currency, which is almost always 0, 2, or 3 digits.
+ * <li><i>useNative</i> - the flag used to determaine whether to use the native script settings
+ * for formatting the numbers .
  * <li><i>roundingMode</i> - When the maxFractionDigits or maxIntegerDigits is specified,
  * this property governs how the least significant digits are rounded to conform to that
  * maximum. The value of this property is a string with one of the following values:
@@ -21461,98 +21615,104 @@ strings.js
  * </ul>
  * When the type of the formatter is "currency" and the <i>roundingMode</i> property is not
  * set, then the standard legal rounding rules for the locale are followed. If the type
- * is "number" or "percentage" and the <i>roundingMode</i> property is not set, then the 
+ * is "number" or "percentage" and the <i>roundingMode</i> property is not set, then the
  * default mode is "halfdown".</i>.
- * 
+ *
  * <li><i>style</i> - When the type of this formatter is "currency", the currency amount
  * can be formatted in the following styles: "common" and "iso". The common style is the
- * one commonly used in every day writing where the currency unit is represented using a 
- * symbol. eg. "$57.35" for fifty-seven dollars and thirty five cents. The iso style is 
+ * one commonly used in every day writing where the currency unit is represented using a
+ * symbol. eg. "$57.35" for fifty-seven dollars and thirty five cents. The iso style is
  * the international style where the currency unit is represented using the ISO 4217 code.
  * eg. "USD 57.35" for the same amount. The default is "common" style if the style is
  * not specified.<p>
- * 
+ *
  * When the type of this formatter is "number",
- * the style can be either "standard" or "scientific". A "standard" style means a fully
- * specified floating point number formatted for the locale, whereas "scientific" uses
+ * the style can be either "standard" or "scientific" or "native". A "standard" style means
+ * a fully specified floating point number formatted for the locale, whereas "scientific" uses
  * scientific notation for all numbers. That is, 1 integral digit, followed by a number
  * of fractional digits, followed by an "e" which denotes exponentiation, followed digits
- * which give the power of 10 in the exponent. Note that if you specify a maximum number
- * of integral digits, the formatter with a standard style will give you standard 
+ * which give the power of 10 in the exponent. The native style will format a floating point
+ * number using the native digits and formatting symbols for the script of the locale. Note
+ * that if you specify a maximum number
+ * of integral digits, the formatter with a standard style will give you standard
  * formatting for smaller numbers and scientific notation for larger numbers. The default
  * is standard style if this is not specified.
- *  
- * <li><i>onLoad</i> - a callback function to call when the format data is fully 
+ *
+ * <li><i>onLoad</i> - a callback function to call when the format data is fully
  * loaded. When the onLoad option is given, this class will attempt to
  * load any missing locale data using the ilib loader callback.
- * When the constructor is done (even if the data is already preassembled), the 
+ * When the constructor is done (even if the data is already preassembled), the
  * onLoad function is called with the current instance as a parameter, so this
- * callback can be used with preassembled or dynamic loading or a mix of the two. 
- * 
- * <li>sync - tell whether to load any missing locale data synchronously or 
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ *
+ * <li>sync - tell whether to load any missing locale data synchronously or
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
- * not be usable for a while. 
+ * not be usable for a while.
  * </ul>
  * <p>
- * 
+ *
  * Depends directive: !depends numfmt.js
- * 
+ *
  * @constructor
- * @param {Object.<string,*>} options A set of options that govern how the formatter will behave 
+ * @param {Object.<string,*>} options A set of options that govern how the formatter will behave
  */
 ilib.NumFmt = function (options) {
 	var sync = true;
 	this.locale = new ilib.Locale();
 	this.type = "number";
-	
+	this.useNative = false;
+
 	if (options) {
 		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+			this.locale = (typeof (options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
 		}
-		
+
 		if (options.type) {
-			if (options.type === 'number' || 
-				options.type === 'currency' || 
+			if (options.type === 'number' ||
+				options.type === 'currency' ||
 				options.type === 'percentage') {
 				this.type = options.type;
 			}
 		}
-		
+
 		if (options.currency) {
 			this.currency = options.currency;
 		}
-		
-		if (typeof(options.maxFractionDigits) === 'number') {
+
+		if (typeof (options.maxFractionDigits) === 'number') {
 			this.maxFractionDigits = this._toPrimitive(options.maxFractionDigits);
 		}
-		if (typeof(options.minFractionDigits) === 'number') {
+		if (typeof (options.minFractionDigits) === 'number') {
 			this.minFractionDigits = this._toPrimitive(options.minFractionDigits);
 		}
 		if (options.style) {
 			this.style = options.style;
 		}
-		
+		if (options.useNative) {
+			this.useNative = options.useNative;
+		}
 		this.roundingMode = options.roundingMode;
 
-		if (typeof(options.sync) !== 'undefined') {
+		if (typeof (options.sync) !== 'undefined') {
 			sync = (options.sync == true);
 		}
 	}
-	
+
 	new ilib.LocaleInfo(this.locale, {
 		sync: sync,
 		onLoad: ilib.bind(this, function (li) {
 			this.localeInfo = li;
 
-			if (this.type === "currency") {
+			if (this.type === "number") {
+				this.templateNegative = new ilib.String(this.localeInfo.getNegativeNumberFormat() || "-{n}");
+			} else if (this.type === "currency") {
 				var templates;
-				
-				if (!this.currency || typeof(this.currency) != 'string') {
+
+				if (!this.currency || typeof (this.currency) != 'string') {
 					throw "A currency property is required in the options to the number formatter constructor when the type property is set to currency.";
 				}
-				
-				
+
 				new ilib.Currency({
 					locale: this.locale,
 					code: this.currency,
@@ -21562,51 +21722,36 @@ ilib.NumFmt = function (options) {
 						if (this.style !== "common" && this.style !== "iso") {
 							this.style = "common";
 						}
-				
-						
-						if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
+
+						if (typeof (this.maxFractionDigits) !== 'number' && typeof (this.minFractionDigits) !== 'number') {
 							this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
 						}
-						
-						templates = this.localeInfo.getCurrencyFormat();
-						if(this.style ===  "iso"){
-							templates=this.localeInfo.getCurrencyFormats();
-							this.template = new ilib.String(templates[this.style]);
-							this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
-						}
-						else if(typeof(templates) === 'undefined'){
-							
-							templates=this.localeInfo.getCurrencyFormats();
-							this.template = new ilib.String(templates[this.style]);
-							this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
-						}
-						else{
-					
-						this.template = new ilib.String(templates);
+
+						templates = this.localeInfo.getCurrencyFormats();
+						this.template = new ilib.String(templates[this.style] || templates.common);
+						this.templateNegative = new ilib.String(templates[this.style + "Negative"] || templates["commonNegative"]);
 						this.sign = (this.style === "iso") ? this.currencyInfo.getCode() : this.currencyInfo.getSign();
-					}	
+						
 						if (!this.roundingMode) {
 							this.roundingMode = this.currencyInfo && this.currencyInfo.roundingMode;
 						}
 
 						this._init();
-						
-						if (options && typeof(options.onLoad) === 'function') {
+
+						if (options && typeof (options.onLoad) === 'function') {
 							options.onLoad(this);
 						}
 					})
 				});
 				return;
 			} else if (this.type === "percentage") {
-			
-				this.template = new ilib.String(this.localeInfo.getPercentageFormat());
-					
+				this.template =  new ilib.String(this.localeInfo.getPercentageFormat() || "{n}%");
+				this.templateNegative = new ilib.String(this.localeInfo.getNegativePercentageFormat() || this.localeInfo.getNegativeNumberFormat() + "%");
 			}
 
-
 			this._init();
-			
-			if (options && typeof(options.onLoad) === 'function') {
+
+			if (options && typeof (options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
 		})
@@ -21614,6 +21759,7 @@ ilib.NumFmt = function (options) {
 };
 
 /**
+ * @static
  * Return an array of available locales that this formatter can format
  * @return {Array.<ilib.Locale>|undefined} an array of available locales
  */
@@ -21628,7 +21774,6 @@ ilib.NumFmt.getAvailableLocales = function () {
  */
 ilib.NumFmt.zeros = "0000000000000000000000000000000000000000000000000000000000000000000000";
 
-
 ilib.NumFmt.prototype = {
 	/**
 	 * @private
@@ -21636,16 +21781,16 @@ ilib.NumFmt.prototype = {
 	_init: function () {
 		if (this.maxFractionDigits < this.minFractionDigits) {
 			this.minFractionDigits = this.maxFractionDigits;
-		}		
-		
+		}
+
 		if (!this.roundingMode) {
 			this.roundingMode = this.localeInfo.getRoundingMode();
 		}
-		
+
 		if (!this.roundingMode) {
 			this.roundingMode = "halfdown";
 		}
-		
+
 		// set up the function, so we only have to figure it out once
 		// and not every time we do format()
 		this.round = ilib._roundFnc[this.roundingMode];
@@ -21653,19 +21798,38 @@ ilib.NumFmt.prototype = {
 			this.roundingMode = "halfdown";
 			this.round = ilib._roundFnc[this.roundingMode];
 		}
+		
+		this.prigroupSize = this.localeInfo.getPrimaryGroupingDigits(),
+		this.secgroupSize = this.localeInfo.getSecondaryGroupingDigits(),
+		this.groupingSeparator = this.useNative ? this.localeInfo.getNativeGroupingSeparator() : this.localeInfo.getGroupingSeparator();
+		this.decimalSeparator = this.useNative ? this.localeInfo.getNativeDecimalSeparator() : this.localeInfo.getDecimalSeparator();
+		
+		if (this.useNative) {
+			var nd = this.localeInfo.getNativeDigits() || this.localeInfo.getDigits();
+			if (nd) {
+				this.digits = nd.split("");
+			}
+		} else {
+			var digitsStr = this.localeInfo.getDigits();
+			if (digitsStr && digitsStr !== "0123456789") {
+				this.digits = digitsStr.split("");
+			}
+		}
+		
+		this.exponentSymbol = this.localeInfo.getExponential() || "e";
 	},
-	
+
 	/*
 	 * @private
 	 */
 	_pad: function (str, length, left) {
-		return (str.length >= length) ? 
-			str : 
-			(left ? 
-				ilib.NumFmt.zeros.substring(0,length-str.length) + str : 
-				str + ilib.NumFmt.zeros.substring(0,length-str.length));  
+		return (str.length >= length) ?
+			str :
+			(left ?
+			ilib.NumFmt.zeros.substring(0, length - str.length) + str :
+			str + ilib.NumFmt.zeros.substring(0, length - str.length));
 	},
-	
+
 	/**
 	 * @private
 	 * @param {Number|ilib.Number|string|number} num object, string, or number to convert to a primitive number
@@ -21673,8 +21837,8 @@ ilib.NumFmt.prototype = {
 	 */
 	_toPrimitive: function (num) {
 		var n = 0;
-		
-		switch (typeof(num)) {
+
+		switch (typeof (num)) {
 		case 'number':
 			n = num;
 			break;
@@ -21687,117 +21851,120 @@ ilib.NumFmt.prototype = {
 			n = /** @type {number} */ num.valueOf();
 			break;
 		}
-		
+
 		return n;
 	},
-	
+
 	/**
 	 * @private
+	 * Format the number using scientific notation as a positive number. Negative
+	 * formatting to be applied later.
 	 * @param {number} num the number to format
-	 * @return {string} the formatted number 
+	 * @return {string} the formatted number
 	 */
 	_formatScientific: function (num) {
 		var n = new Number(num);
 		var formatted;
-		if (typeof(this.maxFractionDigits) !== 'undefined') {
+		if (typeof (this.maxFractionDigits) !== 'undefined') {
 			// if there is fraction digits, round it to the right length first
 			// divide or multiply by 10 by manipulating the exponent so as to
 			// avoid the rounding errors of floating point numbers
-			var e, 
+			var e,
 				factor,
 				str = n.toExponential(),
 				parts = str.split("e"),
 				significant = parts[0];
-			
-			e = parts[1];	
+
+			e = parts[1];
 			factor = Math.pow(10, this.maxFractionDigits);
 			significant = this.round(significant * factor) / factor;
-			formatted = "" + significant + "e" + e;
+			formatted = "" + significant + this.exponentSymbol + e;
 		} else {
 			formatted = n.toExponential(this.minFractionDigits);
+			if (this.exponentSymbol !== 'e') {
+				formatted = formatted.replace(/e/, this.exponentSymbol);
+			}
 		}
 		return formatted;
 	},
-	
+
 	/**
-	 * @private 
+	 * @private
+	 * Formats the number as a positive number. Negative formatting to be applied later.
 	 * @param {number} num the number to format
 	 * @return {string} the formatted number
-	 */ 
+	 */
 	_formatStandard: function (num) {
 		var i;
-		var j,k;
-		// console.log("_formatNumberStandard: formatting number " + num);
-		if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
+		var k;
+
+		if (typeof (this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
 			var factor = Math.pow(10, this.maxFractionDigits);
 			num = this.round(num * factor) / factor;
 		}
 
-		var negative = (num < 0);
-		if (negative) {
-			num = -num;
-		}
-		
+		num = Math.abs(num);
+
 		var parts = ("" + num).split("."),
 			integral = parts[0],
 			fraction = parts[1],
 			cycle,
-			prigroupSize = this.localeInfo.getPrimaryGroupingDigits(),
-			secgroupSize = this.localeInfo.getSecondaryGroupingDigits(),
-			separator = this.localeInfo.getGroupingSeparator(),
 			formatted;
-			
-		integral = Math.abs(integral);
-		integral = integral.toString();
 		
+		integral = integral.toString();
+
 		if (this.minFractionDigits > 0) {
 			fraction = this._pad(fraction || "", this.minFractionDigits, false);
 		}
-		
-		if (secgroupSize > 0) {
-			if (integral.length > prigroupSize) {
-				var size1 = prigroupSize;
+
+		if (this.secgroupSize > 0) {
+			if (integral.length > this.prigroupSize) {
+				var size1 = this.prigroupSize;
 				var size2 = integral.length;
-		       	var size3 = size2 - size1;
-				integral = integral.slice(0, size3) + separator + integral.slice(size3);
-				var num_sec = integral.substring(0,integral.indexOf(separator));
+				var size3 = size2 - size1;
+				integral = integral.slice(0, size3) + this.groupingSeparator + integral.slice(size3);
+				var num_sec = integral.substring(0, integral.indexOf(this.groupingSeparator));
 				k = num_sec.length;
-				while (k > secgroupSize) {
-			    	var secsize1 = secgroupSize;
-				   	var secsize2 = num_sec.length;
+				while (k > this.secgroupSize) {
+					var secsize1 = this.secgroupSize;
+					var secsize2 = num_sec.length;
 					var secsize3 = secsize2 - secsize1;
-					integral = integral.slice(0, secsize3) + separator + integral.slice(secsize3);
-					num_sec = integral.substring(0,integral.indexOf(separator));
-					k = num_sec.length;			
+					integral = integral.slice(0, secsize3) + this.groupingSeparator + integral.slice(secsize3);
+					num_sec = integral.substring(0, integral.indexOf(this.groupingSeparator));
+					k = num_sec.length;
 				}
 			}
 
-			formatted = negative ? "-" : "";
-			formatted = formatted + integral;
-		} else if (prigroupSize !== 0) {
-			cycle = ilib.mod(integral.length-1, prigroupSize);
-			formatted = negative ? "-" : "";
-			for (i = 0; i < integral.length-1; i++) {
+			formatted = integral;
+		} else if (this.prigroupSize !== 0) {
+			cycle = ilib.mod(integral.length - 1, this.prigroupSize);
+
+			formatted = "";
+
+			for (i = 0; i < integral.length - 1; i++) {
 				formatted += integral.charAt(i);
 				if (cycle === 0) {
-					formatted += separator;
+					formatted += this.groupingSeparator;
 				}
-				cycle = ilib.mod(cycle - 1, prigroupSize);
+				cycle = ilib.mod(cycle - 1, this.prigroupSize);
 			}
-			formatted += integral.charAt(integral.length-1);
+			formatted += integral.charAt(integral.length - 1);
 		} else {
-			formatted = (negative ? "-" : "") + integral;
+			formatted = integral;
 		}
-		
+
 		if (fraction && (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits > 0)) {
-			formatted += this.localeInfo.getDecimalSeparator();
+			formatted += this.decimalSeparator;
 			formatted += fraction;
 		}
 		
-		// console.log("_formatNumberStandard: returning " + formatted);
+		if (this.digits) {
+			formatted = ilib.mapString(formatted, this.digits);
+		}
+		
 		return formatted;
 	},
-	
+
 	/**
 	 * Format a number according to the settings of this number formatter instance.
 	 * @param num {number|string|Number|ilib.Number} a floating point number to format
@@ -21806,35 +21973,43 @@ ilib.NumFmt.prototype = {
 	format: function (num) {
 		var formatted, n;
 
-		if (typeof(num) === 'undefined') {
+		if (typeof (num) === 'undefined') {
 			return "";
 		}
-		
+
 		// convert to a real primitive number type
 		n = this._toPrimitive(num);
-				
+
 		if (this.type === "number") {
-	
-			formatted = (this.style === "scientific") ? 
-					this._formatScientific(n) : 
-					this._formatStandard(n);
-		} else {			
-			formatted = this.template.format({n: this._formatStandard(n), s: this.sign});
+			formatted = (this.style === "scientific") ?
+				this._formatScientific(n) :
+				this._formatStandard(n);
+
+			if (num < 0) {
+				formatted = this.templateNegative.format({n: formatted});
+			}
+		} else {
+			formatted = this._formatStandard(n);
+			var template = (n < 0) ? this.templateNegative : this.template;
+			formatted = template.format({
+				n: formatted,
+				s: this.sign
+			});
 		}
-		
+
 		return formatted;
 	},
-	
+
 	/**
 	 * Return the type of formatter. Valid values are "number", "currency", and
 	 * "percentage".
-	 * 
+	 *
 	 * @return {string} the type of formatter
 	 */
 	getType: function () {
 		return this.type;
 	},
-	
+
 	/**
 	 * Return the locale for this formatter instance.
 	 * @return {ilib.Locale} the locale instance for this formatter
@@ -21842,67 +22017,66 @@ ilib.NumFmt.prototype = {
 	getLocale: function () {
 		return this.locale;
 	},
-	
+
 	/**
-	 * Returns true if this formatter groups together digits in the integral 
-	 * portion of a number, based on the options set up in the constructor. In 
-	 * most western European cultures, this means separating every 3 digits 
+	 * Returns true if this formatter groups together digits in the integral
+	 * portion of a number, based on the options set up in the constructor. In
+	 * most western European cultures, this means separating every 3 digits
 	 * of the integral portion of a number with a particular character.
-	 * 
+	 *
 	 * @return {boolean} true if this formatter groups digits in the integral
 	 * portion of the number
 	 */
 	isGroupingUsed: function () {
-		var c = this.localeInfo.getGroupingSeparator();
-		return (c !== 'undefined' && c.length > 0);
+		return (this.groupingSeparator !== 'undefined' && this.groupingSeparator.length > 0);
 	},
-	
+
 	/**
 	 * Returns the maximum fraction digits set up in the constructor.
-	 * 
+	 *
 	 * @return {number} the maximum number of fractional digits this
 	 * formatter will format, or -1 for no maximum
 	 */
 	getMaxFractionDigits: function () {
-		return typeof(this.maxFractionDigits) !== 'undefined' ? this.maxFractionDigits : -1;
+		return typeof (this.maxFractionDigits) !== 'undefined' ? this.maxFractionDigits : -1;
 	},
-	
+
 	/**
 	 * Returns the minimum fraction digits set up in the constructor. If
 	 * the formatter has the type "currency", then the minimum fraction
 	 * digits is the amount of digits that is standard for the currency
 	 * in question unless overridden in the options to the constructor.
-	 * 
+	 *
 	 * @return {number} the minimum number of fractional digits this
 	 * formatter will format, or -1 for no minimum
 	 */
 	getMinFractionDigits: function () {
-		return typeof(this.minFractionDigits) !== 'undefined' ? this.minFractionDigits : -1;
+		return typeof (this.minFractionDigits) !== 'undefined' ? this.minFractionDigits : -1;
 	},
 
 	/**
 	 * Returns the ISO 4217 code for the currency that this formatter formats.
 	 * IF the typeof this formatter is not "currency", then this method will
 	 * return undefined.
-	 * 
+	 *
 	 * @return {string} the ISO 4217 code for the currency that this formatter
 	 * formats, or undefined if this not a currency formatter
 	 */
 	getCurrency: function () {
 		return this.currencyInfo && this.currencyInfo.getCode();
 	},
-	
+
 	/**
 	 * Returns the rounding mode set up in the constructor. The rounding mode
-	 * controls how numbers are rounded when the integral or fraction digits 
+	 * controls how numbers are rounded when the integral or fraction digits
 	 * of a number are limited.
-	 * 
+	 *
 	 * @return {string} the name of the rounding mode used in this formatter
 	 */
 	getRoundingMode: function () {
 		return this.roundingMode;
 	},
-	
+
 	/**
 	 * If this formatter is a currency formatter, then the style determines how the
 	 * currency is denoted in the formatted output. This method returns the style
@@ -24354,497 +24528,6 @@ ilib.data.name_nl = {
 		"sr"
 	]
 };
-ilib.data.name_zxx = {
-	"prefixes": [
-		"rep",
-		"representative",
-		"senator",
-		"congressman",
-		"congresswoman",
-		"president",
-		"vice president",
-		"vice-president",
-		"mp",
-		"member of parliament",
-		"chief",
-		"justice",
-		"chief justice",
-		"judge",
-		"minister",
-		"prime minister",
-		"governor general",
-		"lieutenant governor",
-		"speaker of the house of commons",
-		"speaker of the house",
-		"speaker of the senate",
-		"supreme court justice",
-		"secretary of state",
-		"mayor",
-		"justice of the peace",
-		"emporer",
-		"chairman",
-		"chairwoman",
-		"alderman",
-		"general secretary",
-		"ambassador",
-		
-		"minister",
-		"cardinal",
-		"bishop",
-		"archbishop",
-		"rabbi",
-		"grand rabbi",
-		"mulah",
-		"mullah",
-		"canon",
-		"cantor",
-		"pastor",
-		"ps",
-		"monsignor",
-		"mgsr",
-		"pope",
-		
-		"chef",
-		"master",
-		"coach",
-		"professor",
-		"prof",
-		"nobel laureate",
-
-		"king",
-		"queen",
-		"prince",
-		"princess",
-		"crown prince",
-		"crown princess",
-		"marquess",
-		"marchioness",
-		"earl",
-		"countess",
-		"count",
-		"archduke",
-		"duke",
-		"duchess",
-		"baron",
-		"baroness",
-		"viscount",
-		
-		"private",
-		"private first class",
-		"corporal",
-		"sargeant",
-		"staff sargeant",
-		"sargeant first class",
-		"master sargeant",
-		"first sargeant",
-		"sargeant major",
-		"command sargeant major",
-		"sargeant major of the army",
-		"pv1",
-		"pv2",
-		"pfc",
-		"spc",
-		"cpl",
-		"sgt",
-		"ssg",
-		"sfc",
-		"msg",
-		"1sg",
-		"sgm",
-		"csm",
-		"sma",
-		"warrant officer",
-		"chief warrant officer",
-		"second lieutenant",
-		"first lieutenant",
-		"captain",
-		"major",
-		"lieutenant colonel",
-		"colonel",
-		"brigadier general",
-		"major general",
-		"lieutenant general",
-		"general",
-		"2lt",
-		"1lt",
-		"cpt",
-		"maj",
-		"ltc",
-		"col",
-		"bg",
-		"mg",
-		"ltg",
-		"gen",
-		"general of the army",
-		"fleet admiral",
-		"admiral",
-		"vice admiral",
-		"rear admiral",
-		"commander",
-		"lieutenant commander",
-		"lieutenant",
-		"lieutenant (junior grade)",
-		"ensign",
-		"fadm",
-		"adm",
-		"vadm",
-		"radm",
-		"rdml",
-		"capt",
-		"cdr",
-		"lcdr",
-		"lt",
-		"ltjg",
-		"ens",
-		"petty officer",
-		"petty officer first class",
-		"petty officer second class",
-		"petty officer third class",
-		"petty officer 1st class",
-		"petty officer 2nd class",
-		"petty officer 3rd class",
-		"po",
-		"po1",
-		"po2",
-		"po3",
-		"chief petty officer",
-		"senior chief petty officer",
-		"master chief petty officer",
-		"cpo",
-		"scpo",
-		"mcpo",
-		"command master chief petty officer",
-		"fleet master chief petty officer",
-		"force master chief petty officer",
-		"cmdcm",
-		"fltcm",
-		"forcm",
-		"master chief petty officer of the navy",
-		"mcpon",
-		"sergeant major of the marine corps",
-		"master gunnery sergeant",
-		"gunnery sergeant",
-		"lance corporal",
-		"sgtmaj",
-		"mgysgt",
-		"1stsgt",
-		"msgt",
-		"gysgt",
-		"ssgt",
-		"sgt",
-		"cpl",
-		"lcpl",
-		"pfc",
-		"pvt",
-		"airman basic",
-		"airman",
-		"airman first class",
-		"senior airman",
-		"technical sergeant",
-		"master sergeant",
-		"senior master sergeant",
-		"chief master sergeant",
-		"command chief master sergeant",
-		"chief master sergeant of the air force",
-		"ab",
-		"amn",
-		"a1c",
-		"sra",
-		"tsgt",
-		"msgt",
-		"smsgt",
-		"cmsgt",
-		"ccm",
-		"cmsaf",
-		"field marshal",
-		"brigadier",
-		"officer cadet",
-		"fm",
-		"lt gen",
-		"maj gen",
-		"brig",
-		"col",
-		"lt col",
-		"maj",
-		"capt",
-		"lt",
-		"2lt",
-		"ocdt",
-		"admiral of the fleet",
-		"marshal",
-		"marshal of the air force",
-		"air marshal",
-		"commodore",
-		"air commodore",
-		"group captain",
-		"lieutenant colonel",
-		"lt colonel",
-		"wing commander",
-		"lt commander",
-		"commandant",
-		"squadron leader",
-		"flight lieutenant",
-		"sub-lieutenant",
-		"flying officer",
-		"ensign",
-		"second lieutenant",
-		"2nd lieutenant",
-		"pilot officer",
-		"midshipman",
-		"warrant officer",
-		"leading seaman",
-		"seaman",
-		"aircraftman",
-		"midshipwoman",
-		"leading seawoman",
-		"seawoman",
-		"aircraftwoman",
-		"vice-admiral",
-		"vadm",
-		"lieutenant-general",
-		"lgen",
-		"rear-admiral",
-		"radm",
-		"major-general",
-		"mgen",
-		"brigadier-general",
-		"bgen",
-		"lieutenant-colonel",
-		"lcol",
-		"naval cadet",
-		"ncdt",
-		"able seaman",
-		"ab",
-		"ordinary seaman",
-		"os",
-		"pte",
-		"master bombardier",
-		"trooper",
-		"bombardier",
-		"sapper",
-		"signalman",
-		"craftsman",
-		"guardsman",
-		"rifleman",
-		"fusilier",
-		
-		"chief of police",
-		"police commissioner",
-		"superintendent",
-		"sheriff",
-		"deputy chief of police",
-		"deputy commissioner",
-		"deputy superintendent",
-		"undersheriff",
-		"deputy sheriff",
-		"inspector",
-		"deputy inspector",
-		"detective",
-		"investigator",
-		"officer",
-		"deputy sheriff",
-		"constable",
-		"police constable",
-		"chief superintendent",
-		"assistant chief constable",
-		"deputy chief constable",
-		"chief constable",
-		"assistant commissioner",
-		"deputy commissioner",
-		"detective constable",
-		"staff inspector",
-		"staff superintendent",
-		"station duty officer",
-		"auxiliary sergeant",
-		"senior constable",
-		"cadet",
-		"probationary constable",
-		"recruit",
-	
-		"sir",
-		"lady",
-		"lord",
-		"dame",
-		"his royal highness",
-		"hrh",
-		"his honour",
-		"his honor",
-		"maestro",
-		"his lordship",
-		"his majesty",
-		"his worship",
-		"the right worshipful",
-		"the worshipful",
-		"the honourable",
-		"the right honourable",
-		"the honorable",
-		"the right honorable",
-		"the hon",
-		"the most noble",
-		"the most honourable",
-		"the most honorable",
-		"the most hon",
-		"the rt hon",
-		"the right honourable and learned",
-		"the right honourable and gallant",
-		"the much honoured",
-		"the right honorable and learned",
-		"the right honorable and gallant",
-		"the much honored",
-		"the much hon",
-		
-		"her royal highness",
-		"her honour",
-		"her honor",
-		"her majesty",
-		"her worship",
-		"his excellency",
-		"her excellency",
-		"his serene highness",
-		"her serene highness",
-		"his most reverend excellency",
-		"her most reverend excellency",
-		"his holiness",
-		"hh",
-		"his all holiness",
-		"hah",
-		"his beatitude",
-		"his eminence",
-		"he",
-		"his beatitude and eminence",
-		"father",
-		"mother",
-		"brother",
-		"br",
-		"sister",
-		"reverend",
-		"rev",
-		"the most reverend",
-		"the most rev",
-		"his grace",
-		"the right reverend",
-		"the rt rev",
-		"the most reverend and right honourable",
-		"the most reverend and right honorable",
-		"the most rev and rt hon",
-		"the right reverend and right honourable monsignor",
-		"the right reverend and right honorable monsignor",
-		"the rt rev and rt hon mgr",
-		"the right reverend and right honourable",
-		"the right reverend and right honorable",
-		"the very reverend",
-		"the very rev",
-		"the reverend monsignor",
-		"the rev msgr",
-		"the venerable",
-		"venerable",
-		"ven",
-		"his imperial majesty",
-		"his imperial and royal majesty",
-		"his apostolic majesty",
-		"his catholic majesty",
-		"his most faithful majesty",
-		"his imperial highness",
-		"his imperial and royal highness",
-		"his royal highness",
-		"his grand ducal highness",
-		"his highness",
-		"his ducal serene highness",
-		"his serene highness",
-		"his illustrious highness",
-		"his highborn",
-		"his grace",
-		"his high well-born",
-		"his excellency",
-		"his high excellency",
-
-		"her imperial majesty",
-		"her imperial and royal majesty",
-		"her apostolic majesty",
-		"her catholic majesty",
-		"her most faithful majesty",
-		"her imperial highness",
-		"her imperial and royal highness",
-		"her royal highness",
-		"her grand ducal highness",
-		"her highness",
-		"her ducal serene highness",
-		"her serene highness",
-		"her illustrious highness",
-		"her highborn",
-		"her grace",
-		"her high well-born",
-		"her excellency",
-		"her high excellency",
-		
-		"him",
-		"hi&rm",
-		"ham",
-		"hcm",
-		"hfm",
-		"hih",
-		"hi&rh",
-		"hrh",
-		"hgdh",
-		"hh",
-		"hdsh",
-		"hsh",
-		"hillh",
-		"he",
-		
-		"the",
-		"and",
-		"or",
-		
-		"aunt",
-		"uncle",
-		"grandma",
-		"grandpa",
-		"granma",
-		"grampa",
-		"cousin"
-	],
-	"suffixes": [
-		"junior",
-		"jr",
-		"senior",
-		"sr",
-		"i",
-		"iii",
-		"iii",
-		"iv",
-		"v",
-		"vi",
-		"vii",
-		"viii",
-		"ix",
-		"x",
-		"2nd",
-		"3rd",
-		"4th",
-		"5th",
-		"6th",
-		"7th",
-		"8th",
-		"9th",
-		"10th",
-		"esquire",
-		"esq",
-		"jd",
-		"phd",
-		"md",
-		"ddm",
-		"dds",
-		"dmv",
-		"bvsc",
-		"ah",
-		"bsc",
-		"ba",
-		"ret",
-		"retired"
-	]
-}
-;
 ilib.data.name_zh = {
 	"format": "{prefix}{familyName}{middleName}{givenName}{suffix}",
 	"nameStyle": "asian",
@@ -25758,6 +25441,497 @@ ilib.data.name_zh = {
 		"祖": "Zǔ"
     }
 };
+ilib.data.name_zxx = {
+	"prefixes": [
+		"rep",
+		"representative",
+		"senator",
+		"congressman",
+		"congresswoman",
+		"president",
+		"vice president",
+		"vice-president",
+		"mp",
+		"member of parliament",
+		"chief",
+		"justice",
+		"chief justice",
+		"judge",
+		"minister",
+		"prime minister",
+		"governor general",
+		"lieutenant governor",
+		"speaker of the house of commons",
+		"speaker of the house",
+		"speaker of the senate",
+		"supreme court justice",
+		"secretary of state",
+		"mayor",
+		"justice of the peace",
+		"emporer",
+		"chairman",
+		"chairwoman",
+		"alderman",
+		"general secretary",
+		"ambassador",
+		
+		"minister",
+		"cardinal",
+		"bishop",
+		"archbishop",
+		"rabbi",
+		"grand rabbi",
+		"mulah",
+		"mullah",
+		"canon",
+		"cantor",
+		"pastor",
+		"ps",
+		"monsignor",
+		"mgsr",
+		"pope",
+		
+		"chef",
+		"master",
+		"coach",
+		"professor",
+		"prof",
+		"nobel laureate",
+
+		"king",
+		"queen",
+		"prince",
+		"princess",
+		"crown prince",
+		"crown princess",
+		"marquess",
+		"marchioness",
+		"earl",
+		"countess",
+		"count",
+		"archduke",
+		"duke",
+		"duchess",
+		"baron",
+		"baroness",
+		"viscount",
+		
+		"private",
+		"private first class",
+		"corporal",
+		"sargeant",
+		"staff sargeant",
+		"sargeant first class",
+		"master sargeant",
+		"first sargeant",
+		"sargeant major",
+		"command sargeant major",
+		"sargeant major of the army",
+		"pv1",
+		"pv2",
+		"pfc",
+		"spc",
+		"cpl",
+		"sgt",
+		"ssg",
+		"sfc",
+		"msg",
+		"1sg",
+		"sgm",
+		"csm",
+		"sma",
+		"warrant officer",
+		"chief warrant officer",
+		"second lieutenant",
+		"first lieutenant",
+		"captain",
+		"major",
+		"lieutenant colonel",
+		"colonel",
+		"brigadier general",
+		"major general",
+		"lieutenant general",
+		"general",
+		"2lt",
+		"1lt",
+		"cpt",
+		"maj",
+		"ltc",
+		"col",
+		"bg",
+		"mg",
+		"ltg",
+		"gen",
+		"general of the army",
+		"fleet admiral",
+		"admiral",
+		"vice admiral",
+		"rear admiral",
+		"commander",
+		"lieutenant commander",
+		"lieutenant",
+		"lieutenant (junior grade)",
+		"ensign",
+		"fadm",
+		"adm",
+		"vadm",
+		"radm",
+		"rdml",
+		"capt",
+		"cdr",
+		"lcdr",
+		"lt",
+		"ltjg",
+		"ens",
+		"petty officer",
+		"petty officer first class",
+		"petty officer second class",
+		"petty officer third class",
+		"petty officer 1st class",
+		"petty officer 2nd class",
+		"petty officer 3rd class",
+		"po",
+		"po1",
+		"po2",
+		"po3",
+		"chief petty officer",
+		"senior chief petty officer",
+		"master chief petty officer",
+		"cpo",
+		"scpo",
+		"mcpo",
+		"command master chief petty officer",
+		"fleet master chief petty officer",
+		"force master chief petty officer",
+		"cmdcm",
+		"fltcm",
+		"forcm",
+		"master chief petty officer of the navy",
+		"mcpon",
+		"sergeant major of the marine corps",
+		"master gunnery sergeant",
+		"gunnery sergeant",
+		"lance corporal",
+		"sgtmaj",
+		"mgysgt",
+		"1stsgt",
+		"msgt",
+		"gysgt",
+		"ssgt",
+		"sgt",
+		"cpl",
+		"lcpl",
+		"pfc",
+		"pvt",
+		"airman basic",
+		"airman",
+		"airman first class",
+		"senior airman",
+		"technical sergeant",
+		"master sergeant",
+		"senior master sergeant",
+		"chief master sergeant",
+		"command chief master sergeant",
+		"chief master sergeant of the air force",
+		"ab",
+		"amn",
+		"a1c",
+		"sra",
+		"tsgt",
+		"msgt",
+		"smsgt",
+		"cmsgt",
+		"ccm",
+		"cmsaf",
+		"field marshal",
+		"brigadier",
+		"officer cadet",
+		"fm",
+		"lt gen",
+		"maj gen",
+		"brig",
+		"col",
+		"lt col",
+		"maj",
+		"capt",
+		"lt",
+		"2lt",
+		"ocdt",
+		"admiral of the fleet",
+		"marshal",
+		"marshal of the air force",
+		"air marshal",
+		"commodore",
+		"air commodore",
+		"group captain",
+		"lieutenant colonel",
+		"lt colonel",
+		"wing commander",
+		"lt commander",
+		"commandant",
+		"squadron leader",
+		"flight lieutenant",
+		"sub-lieutenant",
+		"flying officer",
+		"ensign",
+		"second lieutenant",
+		"2nd lieutenant",
+		"pilot officer",
+		"midshipman",
+		"warrant officer",
+		"leading seaman",
+		"seaman",
+		"aircraftman",
+		"midshipwoman",
+		"leading seawoman",
+		"seawoman",
+		"aircraftwoman",
+		"vice-admiral",
+		"vadm",
+		"lieutenant-general",
+		"lgen",
+		"rear-admiral",
+		"radm",
+		"major-general",
+		"mgen",
+		"brigadier-general",
+		"bgen",
+		"lieutenant-colonel",
+		"lcol",
+		"naval cadet",
+		"ncdt",
+		"able seaman",
+		"ab",
+		"ordinary seaman",
+		"os",
+		"pte",
+		"master bombardier",
+		"trooper",
+		"bombardier",
+		"sapper",
+		"signalman",
+		"craftsman",
+		"guardsman",
+		"rifleman",
+		"fusilier",
+		
+		"chief of police",
+		"police commissioner",
+		"superintendent",
+		"sheriff",
+		"deputy chief of police",
+		"deputy commissioner",
+		"deputy superintendent",
+		"undersheriff",
+		"deputy sheriff",
+		"inspector",
+		"deputy inspector",
+		"detective",
+		"investigator",
+		"officer",
+		"deputy sheriff",
+		"constable",
+		"police constable",
+		"chief superintendent",
+		"assistant chief constable",
+		"deputy chief constable",
+		"chief constable",
+		"assistant commissioner",
+		"deputy commissioner",
+		"detective constable",
+		"staff inspector",
+		"staff superintendent",
+		"station duty officer",
+		"auxiliary sergeant",
+		"senior constable",
+		"cadet",
+		"probationary constable",
+		"recruit",
+	
+		"sir",
+		"lady",
+		"lord",
+		"dame",
+		"his royal highness",
+		"hrh",
+		"his honour",
+		"his honor",
+		"maestro",
+		"his lordship",
+		"his majesty",
+		"his worship",
+		"the right worshipful",
+		"the worshipful",
+		"the honourable",
+		"the right honourable",
+		"the honorable",
+		"the right honorable",
+		"the hon",
+		"the most noble",
+		"the most honourable",
+		"the most honorable",
+		"the most hon",
+		"the rt hon",
+		"the right honourable and learned",
+		"the right honourable and gallant",
+		"the much honoured",
+		"the right honorable and learned",
+		"the right honorable and gallant",
+		"the much honored",
+		"the much hon",
+		
+		"her royal highness",
+		"her honour",
+		"her honor",
+		"her majesty",
+		"her worship",
+		"his excellency",
+		"her excellency",
+		"his serene highness",
+		"her serene highness",
+		"his most reverend excellency",
+		"her most reverend excellency",
+		"his holiness",
+		"hh",
+		"his all holiness",
+		"hah",
+		"his beatitude",
+		"his eminence",
+		"he",
+		"his beatitude and eminence",
+		"father",
+		"mother",
+		"brother",
+		"br",
+		"sister",
+		"reverend",
+		"rev",
+		"the most reverend",
+		"the most rev",
+		"his grace",
+		"the right reverend",
+		"the rt rev",
+		"the most reverend and right honourable",
+		"the most reverend and right honorable",
+		"the most rev and rt hon",
+		"the right reverend and right honourable monsignor",
+		"the right reverend and right honorable monsignor",
+		"the rt rev and rt hon mgr",
+		"the right reverend and right honourable",
+		"the right reverend and right honorable",
+		"the very reverend",
+		"the very rev",
+		"the reverend monsignor",
+		"the rev msgr",
+		"the venerable",
+		"venerable",
+		"ven",
+		"his imperial majesty",
+		"his imperial and royal majesty",
+		"his apostolic majesty",
+		"his catholic majesty",
+		"his most faithful majesty",
+		"his imperial highness",
+		"his imperial and royal highness",
+		"his royal highness",
+		"his grand ducal highness",
+		"his highness",
+		"his ducal serene highness",
+		"his serene highness",
+		"his illustrious highness",
+		"his highborn",
+		"his grace",
+		"his high well-born",
+		"his excellency",
+		"his high excellency",
+
+		"her imperial majesty",
+		"her imperial and royal majesty",
+		"her apostolic majesty",
+		"her catholic majesty",
+		"her most faithful majesty",
+		"her imperial highness",
+		"her imperial and royal highness",
+		"her royal highness",
+		"her grand ducal highness",
+		"her highness",
+		"her ducal serene highness",
+		"her serene highness",
+		"her illustrious highness",
+		"her highborn",
+		"her grace",
+		"her high well-born",
+		"her excellency",
+		"her high excellency",
+		
+		"him",
+		"hi&rm",
+		"ham",
+		"hcm",
+		"hfm",
+		"hih",
+		"hi&rh",
+		"hrh",
+		"hgdh",
+		"hh",
+		"hdsh",
+		"hsh",
+		"hillh",
+		"he",
+		
+		"the",
+		"and",
+		"or",
+		
+		"aunt",
+		"uncle",
+		"grandma",
+		"grandpa",
+		"granma",
+		"grampa",
+		"cousin"
+	],
+	"suffixes": [
+		"junior",
+		"jr",
+		"senior",
+		"sr",
+		"i",
+		"iii",
+		"iii",
+		"iv",
+		"v",
+		"vi",
+		"vii",
+		"viii",
+		"ix",
+		"x",
+		"2nd",
+		"3rd",
+		"4th",
+		"5th",
+		"6th",
+		"7th",
+		"8th",
+		"9th",
+		"10th",
+		"esquire",
+		"esq",
+		"jd",
+		"phd",
+		"md",
+		"ddm",
+		"dds",
+		"dmv",
+		"bvsc",
+		"ah",
+		"bsc",
+		"ba",
+		"ret",
+		"retired"
+	]
+}
+;
 /*
  * nameprs.js - Person name parser
  * 
@@ -25923,18 +26097,25 @@ ilib.Name = function(name, options) {
 
 	this.locale = this.locale || new ilib.Locale();
 	
-	ilib.loadData(ilib.Name, this.locale, "name", sync, this.loadParams, ilib.bind(this, function (info) {
-		if (!info) {
-			info = ilib.data.name;
-			var spec = this.locale.getSpec().replace(/-/g, "_");
-			ilib.Name.cache[spec] = info;
-		}
-		this.info = info;
-		this._init(name);
-		if (options && typeof(options.onLoad) === 'function') {
-			options.onLoad(this);
-		}
-	}));
+	ilib.loadData({
+		object: ilib.Name, 
+		locale: this.locale, 
+		name: "name.json", 
+		sync: sync, 
+		loadParams: this.loadParams, 
+		callback: ilib.bind(this, function (info) {
+			if (!info) {
+				info = ilib.data.name;
+				var spec = this.locale.getSpec().replace(/-/g, "_");
+				ilib.Name.cache[spec] = info;
+			}
+			this.info = info;
+			this._init(name);
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		})
+	});
 };
 
 /**
@@ -26691,18 +26872,25 @@ ilib.NameFmt = function(options) {
 
 	this.locale = this.locale || new ilib.Locale();
 	
-	ilib.loadData(ilib.Name, this.locale, "name", sync, this.loadParams, ilib.bind(this, function (info) {
-		if (!info) {
-			info = ilib.data.name;
-			var spec = this.locale.getSpec().replace(/-/g, "_");
-			ilib.Name.cache[spec] = info;
-		}
-		this.info = info;
-		this._init();
-		if (options && typeof(options.onLoad) === 'function') {
-			options.onLoad(this);
-		}
-	}));
+	ilib.loadData({
+		object: ilib.Name, 
+		locale: this.locale, 
+		name: "name.json", 
+		sync: sync, 
+		loadParams: this.loadParams, 
+		callback: ilib.bind(this, function (info) {
+			if (!info) {
+				info = ilib.data.name;
+				var spec = this.locale.getSpec().replace(/-/g, "_");
+				ilib.Name.cache[spec] = info;
+			}
+			this.info = info;
+			this._init();
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		})
+	});
 };
 
 ilib.NameFmt.prototype = {
@@ -26870,6 +27058,50 @@ ilib.NameFmt.prototype = {
 };
 
 ilib.data.address = {};
+ilib.data.address_IN = {
+	"formats": {
+		"default": "{streetAddress}\n{locality}\n{postalCode}\n{country}",
+		"nocountry": "{streetAddress}\n{locality}\n{postalCode}"
+	},
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "[0-9]{6}$",
+			"matchGroup": 0
+		},
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "[\\w\\.\\-' ]+"
+		}
+	]
+}
+;
+ilib.data.address_FR = {
+	"formats": {
+		"default": "{streetAddress}\n{postalCode} {locality}\n{country}",
+		"nocountry": "{streetAddress}\n{postalCode} {locality}"
+	},
+	
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "([A-zÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû\\.\\-' ]+)([Cc][Ee][Dd][Ee][Xx]\\s+[0-9]+)?$",
+			"matchGroup": 1
+		},
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "([0-9]{5}(\\s+[Cc][Ee][Dd][Ee][Xx]\\s+[0-9]+)?)",
+			"matchGroup": 0
+		}
+	]
+}
+;
 ilib.data.address_DE = {
 	"formats": {
 		"default": "{streetAddress}\n{postalCode} {locality}\n{country}",
@@ -27069,6 +27301,115 @@ ilib.data.address_GB = {
 	]
 }
 ;
+ilib.data.address_HK = {
+	"multiformat": true,
+	"formats": {
+		"default": {
+			"asian": "{country}{locality}{streetAddress}",
+			"latin": "{streetAddress}\n{locality}\n{country}"
+		},
+		"nocountry": {
+			"asian": "{locality}{streetAddress}{postalCode}",
+			"latin": "{streetAddress}\n{locality}"
+		}
+	},
+	"startAt": {
+		"latin": "end",
+		"asian": "beginning"
+	},
+	"fields": {
+		"latin": [
+			{
+				"name": "locality",
+				"line": "last",
+				"pattern": [
+					"victoria city", 
+					"victoria harbour", 
+					"victoria",
+					"kowloon", 
+					"jiǔlóng",
+					"jiulong",
+					"causeway bay",
+					"tsuen wan", 
+					"quánwān qū",
+					"quanwan qu",
+					"sha tin",
+					"ma on shan",
+					"tuen mun", 
+					"túnmén xīn shìzhèn",
+					"tunmen xin shizhen", 
+					"túnmén",
+					"tunmen",
+					"tai po",
+					"tai gu", 
+					"dàpǔ xīn shìzhèn",
+					"dapu xin shizhen", 
+					"dàpǔ",
+					"dapu",
+					"yuen long", 
+					"yuánlǎng",
+					"yuanlang",
+					"fanling-sheung shui", 
+					"shàngshuǐ xīn shìzhèn",
+					"shangshui xin shizhen", 
+					"shàngshuǐ",
+					"shangshui",
+					"tseung kwan o", 
+					"jiangjun'ao xin shizhen", 
+					"jiangjun'ao",
+					"tin shui wai",
+					"north lantau",
+					"tung chung",
+					"tai ho",
+					"aberdeen",
+					"cheung chau",
+					"discovery bay",
+					"jardine's lookout",
+					"kennedy town",
+					"kwun tong", 
+					"guāntáng",
+					"guantang",
+					"lei yue mun",
+					"ma wan",
+					"mui wo", 
+					"méiwō",
+					"meiwo",
+					"silvermine bay",
+					"peng chau",
+					"sai kung", 
+					"xīgòng shì",
+					"xigong shi",
+					"xīgòng",
+					"xigong",
+					"sha tau kok",
+					"shek o",
+					"sok kwu wan",
+					"stanley",
+					"tai o",
+					"yuen long town", 
+					"yuánlǎng shìzhōngxīn",
+					"yuanlang shizhongxin", 
+					"yuánlǎng",
+					"yuanlang",
+					"yung shue wan", 
+					"banyan bay",
+					"hong kong",
+					"xiānggǎng",
+					"xianggang",
+					"quarry bay"
+				]
+			}
+		],
+		"asian": [
+			{
+				"name": "locality",
+				"line": "startAtFirst",
+				"pattern": "(^\\S{1,5}[市鎮鄉城]|hong kong|xiānggǎng|xianggang)"
+			}
+		]
+	}
+}
+;
 ilib.data.address_IE = {
 	"formats": {
 		"default": "{streetAddress}\n{locality} {postalCode}\n{region}\n{country}",
@@ -27096,27 +27437,6 @@ ilib.data.address_IE = {
 	]
 }
 ;
-ilib.data.address_IN = {
-	"formats": {
-		"default": "{streetAddress}\n{locality}\n{postalCode}\n{country}",
-		"nocountry": "{streetAddress}\n{locality}\n{postalCode}"
-	},
-	"startAt": "end",
-	"fields": [
-		{
-			"name": "postalCode",
-			"line": "startAtLast",
-			"pattern": "[0-9]{6}$",
-			"matchGroup": 0
-		},
-		{
-			"name": "locality",
-			"line": "last",
-			"pattern": "[\\w\\.\\-' ]+"
-		}
-	]
-}
-;
 ilib.data.address_NZ = {
 	"formats": {
 		"default": "{streetAddress}\n{locality} {postalCode}\n{country}",
@@ -27138,6 +27458,51 @@ ilib.data.address_NZ = {
 		}
 	]
 };
+ilib.data.address_SG = {
+	"multiformat": true,
+	"formats": {
+		"default": {
+			"latin": "{streetAddress}\n{locality} {postalCode}\n{country}",
+			"asian": "{country}{postalCode}{locality}{streetAddress}"
+		},
+		"nocountry": {
+			"asian": "{postalCode}{locality}{streetAddress}",
+			"latin": "{streetAddress}\n{locality} {postalCode}"
+		}
+	},
+	"startAt": {
+		"latin": "end",
+		"asian": "beginning"
+	},
+	"fields": {
+		"latin": [
+			{
+				"name": "postalCode",
+				"line": "startAtLast",
+				"pattern": "[0-9]{6}"
+			},
+			{
+				"name": "locality",
+				"line": "last",
+				"pattern": "[Ss][Ii][Nn][Gg][Aa][Pp][Oo][Rr][Ee]$"
+			}
+		],
+		"asian": [
+			{
+				"name": "postalCode",
+				"line": "startAtLast",
+				"pattern": "^[0-9]{6}"
+			},
+			{
+				"name": "locality",
+				"line": "startAtFirst",
+				"pattern": "^新加坡",
+				"matchGroup": 0
+			}
+		]
+	}
+}
+;
 ilib.data.address_US = {	
 	"formats": {
 		"default": "{streetAddress}\n{locality} {region} {postalCode}\n{country}",
@@ -27682,25 +28047,24 @@ ilib.data.address_MX = {
 	]
 }
 ;
-ilib.data.address_FR = {
+ilib.data.address_LU = {
 	"formats": {
 		"default": "{streetAddress}\n{postalCode} {locality}\n{country}",
 		"nocountry": "{streetAddress}\n{postalCode} {locality}"
 	},
-	
 	"startAt": "end",
 	"fields": [
 		{
 			"name": "locality",
 			"line": "last",
-			"pattern": "([A-zÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû\\.\\-' ]+)([Cc][Ee][Dd][Ee][Xx]\\s+[0-9]+)?$",
-			"matchGroup": 1
+			"pattern": "((L-)?[0-9]{4}\\s+)?([\\wÀÁÂÄÆÇÈÉÊËÌÍÎÏÒÓÔÖÙÚÛÜàáâäæçèéêëìíîïòóôöùúûüß\\.\\-' ]+)$",
+			"matchGroup": 3
 		},
 		{
 			"name": "postalCode",
 			"line": "startAtLast",
-			"pattern": "([0-9]{5}(\\s+[Cc][Ee][Dd][Ee][Xx]\\s+[0-9]+)?)",
-			"matchGroup": 0
+			"pattern": "((L-)?([0-9]{4}))",
+			"matchGroup": 1
 		}
 	]
 }
@@ -27953,48 +28317,6 @@ ilib.data.address_IT = {
 	]
 }
 ;
-ilib.data.address_NL = {
-	"formats": {
-		"default": "{streetAddress}\n{postalCode} {locality}\n{country}",
-		"nocountry": "{streetAddress}\n{postalCode} {locality}"
-	},
-	"startAt": "end",
-	"fields": [
-		{ 
-			"name": "locality",
-			"pattern": "([0-9]{4} [A-Z]{2}\\s+)?([A-zÀÁÄÈÉËÌÍÏÒÓÖÙÚÜßàáäèéëìíòóöùúüÿŸ \\.\\-']+?)$",
-			"line": "startAtLast",
-			"matchGroup": 2
-		},
-		{
-			"name": "postalCode",
-			"line": "startAtLast",
-			"pattern": "[0-9]{4}\\s+[A-Z]{2}"
-		}
-	]
-}
-;
-ilib.data.address_XX = {	
-	"formats": {
-		"default": "{streetAddress}\n{locality} {region} {postalCode}\n{country}",
-		"nocountry": "{streetAddress}\n{locality} {region} {postalCode}"
-	},
-	
-	"startAt": "end",
-	"fields": [
-		{
-			"name": "postalCode",
-			"line": "startAtLast",
-			"pattern": "[0-9]+$"
-		},
-		{
-			"name": "locality",
-			"line": "last",
-			"pattern": "[\\wÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû\\.\\-']+$"
-		}
-	]
-}
-;
 ilib.data.address_CN = {
 	"multiformat": true,
 	"formats": {
@@ -28149,6 +28471,27 @@ ilib.data.address_CN = {
 	
 }
 ;
+ilib.data.address_NL = {
+	"formats": {
+		"default": "{streetAddress}\n{postalCode} {locality}\n{country}",
+		"nocountry": "{streetAddress}\n{postalCode} {locality}"
+	},
+	"startAt": "end",
+	"fields": [
+		{ 
+			"name": "locality",
+			"pattern": "([0-9]{4} [A-Z]{2}\\s+)?([A-zÀÁÄÈÉËÌÍÏÒÓÖÙÚÜßàáäèéëìíòóöùúüÿŸ \\.\\-']+?)$",
+			"line": "startAtLast",
+			"matchGroup": 2
+		},
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "[0-9]{4}\\s+[A-Z]{2}"
+		}
+	]
+}
+;
 ilib.data.address_TW = {
 	"multiformat": true,
 	"formats": {
@@ -28216,186 +28559,125 @@ ilib.data.address_TW = {
 	
 }
 ;
-ilib.data.address_HK = {
-	"multiformat": true,
+ilib.data.address_XX = {	
 	"formats": {
-		"default": {
-			"asian": "{country}{locality}{streetAddress}",
-			"latin": "{streetAddress}\n{locality}\n{country}"
+		"default": "{streetAddress}\n{locality} {region} {postalCode}\n{country}",
+		"nocountry": "{streetAddress}\n{locality} {region} {postalCode}"
+	},
+	
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "postalCode",
+			"line": "startAtLast",
+			"pattern": "[0-9]+$"
 		},
-		"nocountry": {
-			"asian": "{locality}{streetAddress}{postalCode}",
-			"latin": "{streetAddress}\n{locality}"
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "[\\wÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû\\.\\-']+$"
 		}
-	},
-	"startAt": {
-		"latin": "end",
-		"asian": "beginning"
-	},
-	"fields": {
-		"latin": [
-			{
-				"name": "locality",
-				"line": "last",
-				"pattern": [
-					"victoria city", 
-					"victoria harbour", 
-					"victoria",
-					"kowloon", 
-					"jiǔlóng",
-					"jiulong",
-					"causeway bay",
-					"tsuen wan", 
-					"quánwān qū",
-					"quanwan qu",
-					"sha tin",
-					"ma on shan",
-					"tuen mun", 
-					"túnmén xīn shìzhèn",
-					"tunmen xin shizhen", 
-					"túnmén",
-					"tunmen",
-					"tai po",
-					"tai gu", 
-					"dàpǔ xīn shìzhèn",
-					"dapu xin shizhen", 
-					"dàpǔ",
-					"dapu",
-					"yuen long", 
-					"yuánlǎng",
-					"yuanlang",
-					"fanling-sheung shui", 
-					"shàngshuǐ xīn shìzhèn",
-					"shangshui xin shizhen", 
-					"shàngshuǐ",
-					"shangshui",
-					"tseung kwan o", 
-					"jiangjun'ao xin shizhen", 
-					"jiangjun'ao",
-					"tin shui wai",
-					"north lantau",
-					"tung chung",
-					"tai ho",
-					"aberdeen",
-					"cheung chau",
-					"discovery bay",
-					"jardine's lookout",
-					"kennedy town",
-					"kwun tong", 
-					"guāntáng",
-					"guantang",
-					"lei yue mun",
-					"ma wan",
-					"mui wo", 
-					"méiwō",
-					"meiwo",
-					"silvermine bay",
-					"peng chau",
-					"sai kung", 
-					"xīgòng shì",
-					"xigong shi",
-					"xīgòng",
-					"xigong",
-					"sha tau kok",
-					"shek o",
-					"sok kwu wan",
-					"stanley",
-					"tai o",
-					"yuen long town", 
-					"yuánlǎng shìzhōngxīn",
-					"yuanlang shizhongxin", 
-					"yuánlǎng",
-					"yuanlang",
-					"yung shue wan", 
-					"banyan bay",
-					"hong kong",
-					"xiānggǎng",
-					"xianggang",
-					"quarry bay"
-				]
-			}
-		],
-		"asian": [
-			{
-				"name": "locality",
-				"line": "startAtFirst",
-				"pattern": "(^\\S{1,5}[市鎮鄉城]|hong kong|xiānggǎng|xianggang)"
-			}
-		]
-	}
-}
-;
-ilib.data.address_SG = {
-	"multiformat": true,
-	"formats": {
-		"default": {
-			"latin": "{streetAddress}\n{locality} {postalCode}\n{country}",
-			"asian": "{country}{postalCode}{locality}{streetAddress}"
-		},
-		"nocountry": {
-			"asian": "{postalCode}{locality}{streetAddress}",
-			"latin": "{streetAddress}\n{locality} {postalCode}"
-		}
-	},
-	"startAt": {
-		"latin": "end",
-		"asian": "beginning"
-	},
-	"fields": {
-		"latin": [
-			{
-				"name": "postalCode",
-				"line": "startAtLast",
-				"pattern": "[0-9]{6}"
-			},
-			{
-				"name": "locality",
-				"line": "last",
-				"pattern": "[Ss][Ii][Nn][Gg][Aa][Pp][Oo][Rr][Ee]$"
-			}
-		],
-		"asian": [
-			{
-				"name": "postalCode",
-				"line": "startAtLast",
-				"pattern": "^[0-9]{6}"
-			},
-			{
-				"name": "locality",
-				"line": "startAtFirst",
-				"pattern": "^新加坡",
-				"matchGroup": 0
-			}
-		]
-	}
+	]
 }
 ;
 ilib.data.countries = {"afghanistan":"AF","aland islands":"AX","åland islands":"AX","albania":"AL","algeria":"DZ","american samoa":"AS","andorra":"AD","angola":"AO","anguilla":"AI","antigua and barbuda":"AG","antigua & barbuda":"AG","antigua":"AG","barbuda":"AG","argentina":"AR","armenia":"AM","aruba":"AW","australia":"AU","austria":"AT","azerbaijan":"AZ","bahamas":"BS","the bahamas":"BS","bahrain":"BH","bangladesh":"BD","barbados":"BB","belarus":"BY","belgium":"BE","belize":"BZ","benin":"BJ","bermuda":"BM","bhutan":"BT","bolivia, plurinational state of":"BO","plurinational state of bolivia":"BO","bolivia":"BO","bosnia and herzegovina":"BA","bosnia & herzegovina":"BA","bosnia":"BA","herzegovina":"BA","botswana":"BW","bouvet island":"BV","brazil":"BR","british indian ocean territory":"IO","brunei darussalam":"BN","brunei":"BN","bulgaria":"BG","burkina faso":"BF","burundi":"BI","cambodia":"KH","cameroon":"CM","canada":"CA","cape verde":"CV","cape verde islands":"CV","cayman islands":"KY","caymans":"KY","central african republic":"CF","c.a.r.":"CF","car":"CF","chad":"TD","chile":"CL","people's republic of china":"CN","republic of china":"TW","p. r. of china":"CN","p. r. china":"CN","p.r. of china":"CN","pr china":"CN","R.O.C.":"TW","ROC":"TW","prc":"CN","china":"CN","christmas island":"CX","cocos (keeling) islands":"CC","cocos islands":"CC","cocos and keeling islands":"CC","cocos & keeling islands":"CC","colombia":"CO","comoros":"KM","congo":"CD","congo, the democratic republic of the":"CD","congo, democratic republic of the":"CD","the democratic republic of the congo":"CD","democratic republic of the congo":"CD","drc":"CD","cook islands":"CK","costa rica":"CR","cote d'ivoire":"CI","côte d'ivoire":"CI","ivory coast":"CI","croatia":"HR","cuba":"CU","cyprus":"CY","the czech republic":"CZ","czech republic":"CZ","denmark":"DK","djibouti":"DJ","dominica":"DM","dominican republic":"DO","d.r.":"DO","dr":"DO","ecuador":"EC","egypt":"EG","el salvador":"SV","equatorial guinea":"GQ","eritrea":"ER","estonia":"EE","ethiopia":"ET","falkland islands":"FK","falklands":"FK","malvinas":"FK","faroe islands":"FO","faroes":"FO","fiji":"FJ","finland":"FI","france":"FR","french guiana":"GF","french polynesia":"PF","polynesia":"PF","french southern territories":"TF","gabon":"GA","gabonese republic":"GA","gambia":"GM","republic of the gambia":"GM","georgia":"GE","germany":"DE","ghana":"GH","gibraltar":"GI","greece":"GR","greenland":"GL","grenada":"GD","guadeloupe":"GP","guam":"GU","guatemala":"GT","guernsey":"GG","guinea":"GN","guinea-bissau":"GW","republic of guinea-bissau":"GW","guyana":"GY","cooperative republic of guyana":"GY","haiti":"HT","heard island and mcdonald islands":"HM","heard island & mcdonald islands":"HM","heard and mcdonald islands":"HM","heard island":"HM","mcdonald islands":"HM","holy see":"VA","vatican city state":"VA","vatican city":"VA","vatican":"VA","honduras":"HN","hong kong":"HK","hungary":"HU","iceland":"IS","india":"IN","indonesia":"ID","iran, islamic republic of":"IR","islamic republic of iran":"IR","iran":"IR","iraq":"IQ","republic of ireland":"IE","ireland":"IE","éire":"IE","isle of man":"IM","israel":"IL","italy":"IT","jamaica":"JM","japan":"JP","jersey":"JE","jordan":"JO","kazakhstan":"KZ","kenya":"KE","republic of kenya":"KE","kiribati":"KI","korea, democratic people's republic of":"KP","democratic people's republic of korea":"KP","dprk":"KP","north korea":"KP","korea, republic of":"KR","republic of korea":"KR","south korea":"KR","korea":"KR","kuwait":"KW","kyrgyzstan":"KG","lao people's democratic republic":"LA","laos":"LA","latvia":"LV","lebanon":"LB","lesotho":"LS","liberia":"LR","libyan arab jamahiriya":"LY","libya":"LY","liechtenstein":"LI","lithuania":"LT","luxembourg":"LU","macao":"MO","macedonia, the former yugoslav republic of":"MK","macedonia, former yugoslav republic of":"MK","the former yugoslav republic of macedonia":"MK","former yugoslav republic of macedonia":"MK","f.y.r.o.m.":"MK","fyrom":"MK","macedonia":"MK","madagascar":"MG","malawi":"MW","malaysia":"MY","maldives":"MV","mali":"ML","republic of mali":"ML","malta":"MT","marshall islands":"MH","marshalls":"MH","martinique":"MQ","mauritania":"MR","mauritius":"MU","mayotte":"YT","mexico":"MX","micronesia, federated states of":"FM","federated states of micronesia":"FM","micronesia":"FM","moldova, republic of":"MD","republic of moldova":"MD","moldova":"MD","monaco":"MC","mongolia":"MN","montenegro":"ME","montserrat":"MS","morocco":"MA","mozambique":"MZ","myanmar":"MM","namibia":"NA","nauru":"NR","nepal":"NP","holland":"NL","netherlands antilles":"AN","the netherlands":"NL","netherlands":"NL","new caledonia":"NC","new zealand":"NZ","nicaragua":"NI","niger":"NE","nigeria":"NG","norfolk island":"NF","northern mariana islands":"MP","marianas":"MP","norway":"NO","oman":"OM","pakistan":"PK","palau":"PW","palestinian territory, occupied":"PS","occupied palestinian territory":"PS","palestinian territory":"PS","palestinian authority":"PS","palestine":"PS","panama":"PA","papua new guinea":"PG","png":"PG","paraguay":"PY","peru":"PE","the philippines":"PH","philippines":"PH","pitcairn":"PN","poland":"PL","portugal":"PT","puerto rico":"PR","qatar":"QA","reunion":"RE","réunion":"RE","romania":"RO","russian federation":"RU","russia":"RU","rwanda":"RW","saint barthélemy":"BL","saint barthelemy":"BL","saint barts":"BL","st. barthélemy":"BL","st. barthelemy":"BL","st. barts":"BL","st barthélemy":"BL","st barthelemy":"BL","st barts":"BL","saint helena, ascension and tristan da cunha":"SH","saint helena, ascension & tristan da cunha":"SH","saint helena":"SH","st. helena, ascension and tristan da cunha":"SH","st. helena, ascension & tristan da cunha":"SH","st. helena":"SH","st helena, ascension and tristan da cunha":"SH","st helena, ascension & tristan da cunha":"SH","st helena":"SH","ascension":"SH","tristan da cunha":"SH","saint kitts and nevis":"KN","saint kitts & nevis":"KN","saint kitts":"KN","st. kitts and nevis":"KN","st. kitts & nevis":"KN","st. kitts":"KN","st kitts and nevis":"KN","st kitts & nevis":"KN","st kitts":"KN","nevis":"KN","saint lucia":"LC","st. lucia":"LC","st lucia":"LC","saint martin":"MF","st. martin":"MF","st martin":"MF","saint pierre and miquelon":"PM","saint pierre & miquelon":"PM","saint pierre":"PM","st. pierre and miquelon":"PM","st. pierre & miquelon":"PM","st. pierre":"PM","st pierre and miquelon":"PM","st pierre & miquelon":"PM","st pierre":"PM","miquelon":"PM","saint vincent and the grenadines":"VC","saint vincent & the grenadines":"VC","saint vincent":"VC","st. vincent and the grenadines":"VC","st. vincent & the grenadines":"VC","st. vincent":"VC","st vincent and the grenadines":"VC","st vincent & the grenadines":"VC","st vincent":"VC","the grenadines":"VC","grenadines":"VC","samoa":"WS","san marino":"SM","sao tome and principe":"ST","sao tome & principe":"ST","sao tome":"ST","principe":"ST","saudi arabia":"SA","arabia":"SA","senegal":"SN","sénégal":"SN","serbia":"RS","seychelles":"SC","sierra leone":"SL","the republic of singapore":"SG","republic of singapore":"SG","singapore":"SG","slovakia":"SK","slovenia":"SI","solomon islands":"SB","solomons":"SB","somalia":"SO","south africa":"ZA","south georgia and the south sandwich islands":"GS","south georgia & the south sandwich islands":"GS","south georgia":"GS","the south sandwich islands":"GS","south sandwich islands":"GS","spain":"ES","sri lanka":"LK","the sudan":"SD","sudan":"SD","suriname":"SR","svalbard and jan mayen":"SJ","svalbard & jan mayen":"SJ","svalbard":"SJ","jan mayen":"SJ","swaziland":"SZ","sweden":"SE","switzerland":"CH","syrian arab republic":"SY","syria":"SY","taiwan":"TW","tajikistan":"TJ","tanzania, united republic of":"TZ","united republic of tanzania":"TZ","tanzania":"TZ","thailand":"TH","timor-leste":"TL","east timor":"TL","togo":"TG","tokelau":"TK","tonga":"TO","trinidad and tobago":"TT","trinidad & tobago":"TT","trinidad":"TT","tobago":"TT","tunisia":"TN","turkey":"TR","turkmenistan":"TM","turks and caicos islands":"TC","turks & caicos islands":"TC","turks islands":"TC","turk islands":"TC","caicos islands":"TC","caico islands":"TC","tuvalu":"TV","uganda":"UG","ukraine":"UA","united arab emirates":"AE","u.a.e.":"AE","uae":"AE","dubai":"AE","united kingdom":"GB","u.k.":"GB","uk":"GB","great britain":"GB","g.b.":"GB","gb":"GB","england":"GB","scotland":"GB","wales":"GB","united states":"US","united states of america":"US","u.s.a.":"US","usa":"US","united states minor outlying islands":"UM","uruguay":"UY","uzbekistan":"UZ","vanuatu":"VU","venezuela, bolivarian republic of":"VE","bolivarian republic of venezuela":"VE","venezuela":"VE","viet nam":"VN","vietnam":"VN","british virgin islands":"VG","virgin islands, british":"VG","bvis":"VG","b.v.i.":"VG","bvi":"VG","virgin islands, us":"VI","the us virgin islands":"VI","us virgin islands":"VI","virgin islands":"VI","usvi":"VI","wallis and futuna":"WF","wallis & futuna":"WF","wallis":"WF","futuna":"WF","western sahara":"EH","yemen":"YE","zambia":"ZM","zimbabwe":"ZW"};
 ilib.data.nativecountries = {"افغانستان":"AF","ålandsøerne":"AX","shqipëri":"AL","algérie":"DZ","الجزائر":"DZ","principat d'andorra":"AD","república de angola":"AO","repubilika ya ngola":"AO","Հայաստան":"AM","österreich":"AT","azərbaycan":"AZ","البحرين":"BH","বাংলাদেশ":"BD","গণপ্রজাতন্ত্রী বাংলাদেশ":"BD","gônoprojatontri bangladesh":"BD","беларусь":"BY","belgië":"BE","la belgique":"BE","belgique":"BE","république du bénin":"BJ","bénin":"BJ","འབྲུག་ཡུལ་":"BT","bulivya mamallaqta":"BO","estado plurinacional de bolivia":"BO","wuliwya suyu":"BO","bosna i hercegovina":"BA","босна и херцеговина":"BA","lefatshe la botswana":"BW","bouvetøya":"BV","brasil":"BR","negara brunei darussalam":"BN","българия":"BG","republika y'u burundi":"BI","république du burundi":"BI","ព្រះរាជាណាចក្រកម្ពុជា":"KH","preăh réachéanachâk kâmpŭchéa":"KH","kâmpŭchéa":"KH","cameroun":"CM","cabo verde":"CV","islas de cabo verde":"CV","république centrafricaine":"CF","ködörösêse tî bêafrîka":"CF","république du tchad":"TD","tchad":"TD","جمهورية تشاد":"TD","ǧumhūriyyat tšād":"TD","tšād":"TD","中华人民共和国中国":"CN","共和國的中國":"TW","台灣的":"TW","中国":"CN","union des comores":"KM","udzima wa komori":"KM","الاتحاد القمري":"KM","al-ittiḥād al-qumurī/qamarī":"KM","république du congo":"CG","repubilika ya kongo":"CG","republiki ya kongó":"CG","kongo":"CG","kongó":"CG","république démocratique du congo":"CD","kūki 'āirani":"CK","cote-d'ivoire":"CI","côte-d'ivoire":"CI","hrvatska":"HR","κυπριακή δημοκρατία":"CY","kypriakí dimokratía":"CY","kıbrıs cumhuriyeti":"CY","česká republika":"CZ","danmark":"DK","جمهورية جيبوتي":"DJ","jumhūriyyat jībūtī":"DJ","république de djibouti":"DJ","jamhuuriyadda jabuuti":"DJ","gabuutih ummuuno":"DJ","jībūtī":"DJ","djibouti":"DJ","jabuuti":"DJ","gabuutih":"DJ","Commonwealth de la Dominique":"DM","Dominique":"DM","república dominicana":"DO","مصر":"EG","república de guinea ecuatorial":"GQ","république de guinée équatoriale":"GQ","guinea ecuatorial":"GQ","guinée équatoriale":"GQ","ሃገረ ኤርትራ":"ER","hagere ertra":"ER","دولة إرتريا":"ER","dawlat iritrīya":"ER","eesti":"EE","የኢትዮጵያ ፌዴራላዊ ዲሞክራሲያዊ ሪፐብሊክ":"ET","ye-ītyōṗṗyā fēdēralāwī dīmōkrāsīyāwī rīpeblīk":"ET","የኢትዮጵያ":"ET","ye-ītyōṗṗyā":"ET","malvinas":"FK","færøerne":"FO","matanitu ko viti":"FJ","fijī ripablik":"FJ","फ़िजी गणराज्य":"FJ","suomi":"FI","guyane française":"GF","polynésie française":"PF","terres australes françaises":"TF","république gabonaise":"GA","საქართველოს":"GE","deutschland":"DE","ελλάδα":"GR","grønland":"GL","république de guinée":"GN","república da guiné-bissau":"GW","haïti":"HT","ayiti":"HT","santa sede":"VA","città del vaticano":"VA","vaticano":"VA","香港的":"HK","magyarország":"HU","ísland":"IS","भारत":"IN","جمهوری اسلامی ایران":"IR","ایران":"IR","العراق":"IQ","éire":"IE","ישראל":"IL","italia":"IT","日本":"JP","الأردن":"JO","Казахстан":"KZ","jamhuri ya kenya":"KE","ribaberiki kiribati":"KI","조선 민주주의 인민 공화국":"KP","북한":"KP","대한민국":"KR","한국":"KR","الكويت":"KW","кыргыз республикасы":"KG","kırgız respublikası":"KG","кыргызская республика":"KG","kyrgyzskaya respublika":"KG","ສາທາລະນະລັດ ປະຊາທິປະໄຕ ປະຊາຊົນລາວ":"LA","sathalanalat paxathipatai paxaxon lao":"LA","latvija":"LV","لبنان":"LB","muso oa lesotho":"LS","ليبيا":"LY","lietuva":"LT","luxemburg":"LU","macau":"MO","澳门":"MO","澳門":"MO","поранешна југословенска република македонија":"MK","македонија":"MK","repoblikan'i madagasikara":"MG","république de madagascar":"MG","chalo cha malawi":"MW","dziko la malaŵi":"MW","malaŵi":"MW","ދިވެހިރާއްޖޭގެ ޖުމްހޫރިއްޔާ":"MV","dhivehi raa'jeyge jumhooriyya":"MV","république du mali":"ML","mali ka fasojamana":"ML","الجمهورية الإسلامية الموريتانية":"MR","al-ǧumhūriyyah al-ʾislāmiyyah al-mūrītāniyyah":"MR","république islamique de mauritanie":"MR","republik bu lislaamu bu gànnaar":"MR","republik moris":"MU","république de maurice":"MU","méxico":"MX","republica moldova":"MD","mongγol ulus":"MN","монгол улс":"MN","mongol uls":"MN","crna gora":"ME","црна гора":"ME","مغربي":"MA","república de moçambique":"MZ","moçambique":"MZ","pyidaunzu thanmăda myăma nainngandaw":"MM","burma":"MM","republiek van namibië":"NA","republik namibia":"NA","namibië":"NA","ripublik naoero":"NR","सङ्घीय लोकतान्त्रिक गणतन्त्र नेपाल":"NP","sanghiya loktāntrik ganatantra nepāl":"NP","nepāl":"NP","nederland":"NL","nouvelle-calédonie":"NC","la calédonie":"NC","calédonie":"NC","aotearoa":"NZ","jamhuriyar nijar":"NE","nijar":"NE","jamhuriyar tarayyar najeriya":"NG","njíkọtá ọchíchìiwú nàịjíríà":"NG","àpapọ̀ olómìnira ilẹ̀ nàìjíríà":"NG","nàịjíríà":"NG","nàìjíríà":"NG","norge":"NO","سلطنة عمان":"OM","پاکستان":"PK","beluu ęr a belau":"PW","belau":"PW","panamá":"PA","independen stet bilong papua niugini":"PG","papua niugini":"PG","perú":"PE","las filipinas":"PH","filipinas":"PH","polska":"PL","قطر":"QA","românia":"RO","русский Федерации":"RU","россия":"RU","repubulika y'u rwanda":"RW","république du rwanda":"RW","saint-barthélemy":"BL","saint barth":"BL","saint-martin":"MF","sint maarten":"MF","saint-pierre-et-miquelon":"PM","malo sa'oloto tuto'atasi o samoa":"WS","san marino":"SM","sao tome and principe":"ST","sao tome & principe":"ST","sao tome":"ST","principe":"ST","السعودية جزيره العرب":"SA","arabia":"SA","senegal":"SN","sénégal":"SN","serbia":"RS","seychelles":"SC","sierra leone":"SL","新加坡共和国":"SG","新加坡的":"SG","slovensko":"SK","slovenija":"SI","solomon islands":"SB","solomons":"SB","somalia":"SO","suid-afrika":"ZA","españa":"ES","sri lanka":"LK","the sudan":"SD","sudan":"SD","suriname":"SR","svalbard and jan mayen":"SJ","svalbard & jan mayen":"SJ","svalbard":"SJ","jan mayen":"SJ","swaziland":"SZ","sverige":"SE","die schweiz":"CH","schweiz":"CH","la suisse":"CH","suisse":"CH","svizzera":"CH","سوريا":"SY","taiwan, province of china":"TW","taiwan":"TW","tajikistan":"TJ","tanzania, united republic of":"TZ","united republic of tanzania":"TZ","tanzania":"TZ","ประเทศไทย":"TH","timor-leste":"TL","east timor":"TL","togo":"TG","tokelau":"TK","tonga":"TO","trinidad and tobago":"TT","trinidad & tobago":"TT","trinidad":"TT","tobago":"TT","تونس":"TN","türkiye":"TR","turkmenistan":"TM","tuvalu":"TV","uganda":"UG","україна":"UA","الامارات العربية المتحدة":"AE","دبي":"AE","albain":"GB","cymru":"GB","uruguay":"UY","uzbekistan":"UZ","vanuatu":"VU","việt nam":"VN","western sahara":"EH","يمني":"YE","zambia":"ZM","zimbabwe":"ZW"};
 ilib.data.ctrynames_af = {"Ascension-eiland":"AC","Andorra":"AD","Verenigde Arabiese Emirate":"AE","Afganistan":"AF","Antigua en Barbuda":"AG","Anguilla":"AI","Albanië":"AL","Armenië":"AM","Nederlands-Antille":"AN","Angola":"AO","Antarktika":"AQ","Argentinië":"AR","Amerikaans Samoa":"AS","Oostenryk":"AT","Australië":"AU","Aruba":"AW","Åland-eilande":"AX","Aserbeidjan":"AZ","Bosnië en Herzegowina":"BA","Barbados":"BB","Bangladesj":"BD","België":"BE","Boerkina Fasso":"BF","Bulgarye":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","Sint Barthélemy":"BL","Bermuda":"BM","Broenei":"BN","Bolivië":"BO","Karibiese Nederland":"BQ","Brasilië":"BR","Bahamas":"BS","Bhoetan":"BT","Bouveteiland":"BV","Botswana":"BW","Wit-Rusland":"BY","Belize":"BZ","Kanada":"CA","Cocos- [Keeling] eilande":"CC","Demokratiese Republiek van die Kongo":"CD","Sentraal-Afrikaanse Republiek":"CF","Kongo":"CG","Switserland":"CH","Ivoorkus":"CI","Cookeilande":"CK","Chili":"CL","Kameroen":"CM","Sjina":"CN","Kolombië":"CO","Clipperton-eiland":"CP","Costa Rica":"CR","Kuba":"CU","Kaap Verde":"CV","Curaçao":"CW","Kerseiland":"CX","Ciprus":"CY","Tjeggiese Republiek":"CZ","Duitsland":"DE","Diego Garcia":"DG","Djiboeti":"DJ","Denemarke":"DK","Dominika":"DM","Dominikaanse Republiek":"DO","Algerië":"DZ","Ceuta en Melilla":"EA","Ecuador":"EC","Estland":"EE","Egipte":"EG","Wes-Sahara":"EH","Eritrea":"ER","Spanje":"ES","Ethiopië":"ET","Europese Unie":"EU","Finland":"FI","Fidji":"FJ","Falklandeilande":"FK","Mikronesië":"FM","Faroëreilande":"FO","Frankryk":"FR","Gaboen":"GA","Groot-Brittanje":"GB","Grenada":"GD","Georgië":"GE","Frans-Guyana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Groenland":"GL","Gambië":"GM","Guinee":"GN","Guadeloupe":"GP","Ekwatoriaal-Guinee":"GQ","Griekeland":"GR","Suid-Georgië en die Suid-Sandwich-eilande":"GS","Guatemala":"GT","Guam":"GU","Guinee-Bissau":"GW","Guyana":"GY","Hongkong":"HK","Heard-eiland en McDonald-eilande":"HM","Honduras":"HN","Kroasië":"HR","Haïti":"HT","Hongarye":"HU","Kanarie-eilande":"IC","Indonesië":"ID","Ierland":"IE","Israel":"IL","Eiland Man":"IM","Indië":"IN","Britse Indiese Oseaan Gebied":"IO","Irak":"IQ","Iran":"IR","Ysland":"IS","Italië":"IT","Jersey":"JE","Jamaika":"JM","Jordanië":"JO","Japan":"JP","Kenia":"KE","Kirgisië":"KG","Kambodja":"KH","Kiribati":"KI","Comore":"KM","Saint Kitts en Nevis":"KN","Noord-Korea":"KP","Suid-Korea":"KR","Koeweit":"KW","Kaaimanseilande":"KY","Kasakstan":"KZ","Laos":"LA","Libanon":"LB","Sint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberië":"LR","Lesotho":"LS","Litaue":"LT","Luxemburg":"LU","Letland":"LV","Libië":"LY","Marokko":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Sint Martin":"MF","Madagaskar":"MG","Marshall-eilande":"MH","Macedonië":"MK","Mali":"ML","Mianmar":"MM","Mongolië":"MN","Macau SAR China":"MO","Noordelike Marianaeilande":"MP","Martinique":"MQ","Mouritanië":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maledive":"MV","Malawi":"MW","Meksiko":"MX","Maleisië":"MY","Mosambiek":"MZ","Namibië":"NA","Nieu-Kaledonië":"NC","Niger":"NE","Norfolk-eiland":"NF","Nigerië":"NG","Nicaragua":"NI","Nederland":"NL","Noorweë":"NO","Nepal":"NP","Naoeroe":"NR","Niue":"NU","Nieu-Seeland":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Frans-Polinesië":"PF","Papoea Nieu-Guinee":"PG","Filippyne":"PH","Pakistan":"PK","Pole":"PL","Sint-Pierre en Miquelon":"PM","Pitcairn":"PN","Puerto Rico":"PR","Palestina":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Katar":"QA","Omliggende Oseanië":"QO","Réunion":"RE","Roemenië":"RO","Serwië":"RS","Rusland":"RU","Rwanda":"RW","Saoedi-Arabië":"SA","Solomon Eilande":"SB","Seychelle":"SC","Soedan":"SD","Swede":"SE","Singapoer":"SG","Sint Helena":"SH","Slowenië":"SI","Svalbard en Jan Mayen":"SJ","Slowakye":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalië":"SO","Suriname":"SR","Suid-Soedan":"SS","Sao Tome en Principe":"ST","Salvador":"SV","Sint Maarten":"SX","Sirië":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Turks en Caicos Eilande":"TC","Tsjaad":"TD","Franse Suidelike Gebiede":"TF","Togo":"TG","Thailand":"TH","Tadjikistan":"TJ","Tokelau":"TK","Oos-Timor":"TL","Turkmenië":"TM","Tunisië":"TN","Tonga":"TO","Turkye":"TR","Trinidad en Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzanië":"TZ","Oekraine":"UA","Uganda":"UG","VS klein omliggende eilande":"UM","Verenigde State van Amerika":"US","Uruguay":"UY","Oesbekistan":"UZ","Vatikaan":"VA","Saint Vincent en die Grenadine":"VC","Venezuela":"VE","Britse Maagde-eilande":"VG","V.S. Maagde-eilande":"VI","Viëtnam":"VN","Vanuatu":"VU","Wallis en Futuna":"WF","Samoa":"WS","Jemen":"YE","Mayotte":"YT","Suid-Afrika":"ZA","Zambië":"ZM","Zimbabwe":"ZW","Onbekend gebied":"ZZ"};
+ilib.data.ctrynames_agq = {"Àndolà":"AD","Yùnaetɛ Alab ɛmelɛ̀":"AE","Àfɨ̀ganìsɨ̀tân":"AF","Àntigwà à Bàbudà":"AG","Àŋgwilà":"AI","Àabɛnìa":"AL","Àmɛnyìa":"AM","Nedàlân Antàe":"AN","Àŋgolà":"AO","Àdzɛ̀ntinà":"AR","Àmɛlekan Samwà":"AS","Usɨtɨ̀là":"AT","Ùsɨ̀tɛ̀lɛlìa":"AU","Àlubà":"AW","Àzɨbɛ̀dzân":"AZ","Bosɨnyìa à Hɛ̀zɛ̀gòvinà":"BA","Bàbadòs":"BB","Baŋgɨ̀làdɛ̂":"BD","Bɛɛdzwùm":"BE","Bùkinà Fasò":"BF","Bùugɛlìa":"BG","Bàlaen":"BH","Bùlundì":"BI","Bɛ̀nɨ̂ŋ":"BJ","Bɛ̀mudà":"BM","Bɨ̀lunè":"BN","Bòlevà":"BO","Bɨ̀làzîi":"BR","Bàhamàs":"BS","Mbutàn":"BT","Bòtɨ̀swǎnà":"BW","Bɛlàlûs":"BY","Bɛ̀lezɨ̀":"BZ","Kanadà":"CA","Dɛ̀mùkàlatì Lèkpubèlè è Kuŋgù":"CD","Sɛnta Afɨlekan Lèkpobèlè":"CF","Kuŋgù":"CG","Suezàlân":"CH","Ku Dɨ̀vûa":"CI","Chwɨla ŋ̀ Kûʔ":"CK","Chilè":"CL","Kàmàlûŋ":"CM","Chaenà":"CN","Kòlombìa":"CO","Kòsɨ̀tà Lekà":"CR","Kuuwbà":"CU","Chwɨla ŋ̀ Kɛ̀b Vɛ̂ɛ":"CV","Saekpùlù":"CY","Chɛ̂ Lèkpubèlè":"CZ","Dzamanè":"DE","Dzìbuwtì":"DJ","Dɛnɨmà":"DK","Dòmenekà":"DM","Dòmenekà Lèkpubèlè":"DO","Àadzɛlìa":"DZ","Ekwadò":"EC","Èsɨ̀tonyìa":"EE","Edzì":"EG","Èletɨ̀là":"ER","Sɨ̀kpɛ̂n":"ES","Ètyǒpìa":"ET","Fɨnlàn":"FI","Fidzi":"FJ","Chwɨlà fɨ Fakɨlàn":"FK","Maekòlòneshìa":"FM","Fàlâŋnsì":"FR","Gàbûn":"GA","Yùnaetɛ Kiŋdɔ̀m":"GB","Gɨ̀lɛnadà":"GD","Dzɔɔdzìa":"GE","Gàyanà è Fàlâŋnsì":"GF","Gaanà":"GH","Dzibɨ̀latà":"GI","Gɨ̀lenlân":"GL","Gambìa":"GM","Ginè":"GN","Gwadalukpɛ̀":"GP","Èkwɛ̀tolia Ginè":"GQ","Gɨ̀lês":"GR","Gwàtɨ̀malà":"GT","Gwam":"GU","Ginè Bìsawù":"GW","Gùyanà":"GY","Hɔndulàs":"HN","Kòwɛshìa":"HR","Hǎetì":"HT","Hɔŋgàlè":"HU","Èndòneshìa":"ID","Aelɨ̀lân":"IE","Ezɨ̀lɛ̂":"IL","Endìa":"IN","Dɨŋò kɨ dzughùnstòʔ kɨ Endìa kɨ Bɨ̀letì kò":"IO","Èlâkɨ̀":"IQ","Èlân":"IR","Aesɨ̀lân":"IS","Etalè":"IT","Dzàmɛkà":"JM","Dzodàn":"JO","Dzàkpân":"JP","Kɨnyà":"KE","Kìdzisɨ̀tân":"KG","Kàmbodìa":"KH","Kèlèbati":"KI","Komolòs":"KM","Sɛ̀n Kî à Nevì":"KN","Kùulîa, Ekùw":"KP","Kùulîa, Emàm":"KR","Kùwɛ̂":"KW","Chwɨlà ŋ̀ Kaemàn":"KY","Kàzasɨ̀tân":"KZ","Làwos":"LA","Lɛbanè":"LB","Sɛ̀n Lushìa":"LC","Letɨnshɨ̀n":"LI","Sɨ̀le Laŋkà":"LK","Làebɛlìa":"LR","Lɛ̀sotù":"LS","Lètwǎnyìa":"LT","Luzɨmbùʔ":"LU","Làtɨva":"LV","Lebìa":"LY","Mòlokò":"MA","Mùnaku":"MC","Mòodovà":"MD","Màdàgasɨkà":"MG","Chwɨlà fɨ Mashà":"MH","Mɨ̀sɨ̀donyìa":"MK","Malè":"ML","Mǐanmà":"MM","Mùŋgolìa":"MN","Chwɨlà m̀ Màlǐanà mɨ̀ Ekùw mò":"MP","Màtìnekì":"MQ","Mùlètanyìa":"MR","Mùŋtselà":"MS","Maatà":"MT","Mùleshwɨ̀s":"MU","Màdivè":"MV","Màlawì":"MW","Mɛkɨzikù":"MX","Màlɛshìa":"MY","Mùzàmbî":"MZ","Nàmibìa":"NA","Kàlèdonyìa È fūghū":"NC","Naedzà":"NE","Chwɨlà fɨ Nufòʔ":"NF","Gɨ̀anyɨ":"NG","Nikàlagwà":"NI","Nedàlân":"NL","Noowɛ̂ɛ":"NO","Nɛkpâa":"NP","Nàwulù":"NR","Niyu":"NU","Zìlân È fūghū":"NZ","Umàn":"OM","Kpanàma":"PA","Kpɛlû":"PE","Kpoleneshìa è Fàlâŋnsì":"PF","Kpakpua Ginè È fūghū":"PG","Felèkpî":"PH","Kpakìsɨ̀tân":"PK","Kpulàn":"PL","Sɛ̀n Kpiyɛ̀ à Mikelɔŋ":"PM","Kpitɨ̀kalè":"PN","Kpǒto Leko":"PR","Adzɨmā kɨ ŋgùŋ kɨ Palɛsɨtɨnyia à kɨ Gazà kò":"PS","Kputuwgà":"PT","Kpàlawù":"PW","Kpalàgwɛ̂":"PY","Katà":"QA","Lèyunyɔ̀ŋ":"RE","Lùmanyìa":"RO","Loshìa":"RU","Lùwandà":"RW","Sawudi Alabi":"SA","Chwɨlà fɨ Solomwɨ̀n":"SB","Sɛchɛ̀lɛ̀s":"SC","Sùdân":"SD","Suedɨ̀n":"SE","Siŋgàkpôo":"SG","Sɛ̀n Èlenà":"SH","Sɨ̀lòvɨnyìa":"SI","Sɨ̀lòvɨkɨ̀a":"SK","Silìa lûŋ":"SL","Sàn Màlenù":"SM","Sɛ̀nɛ̀gâa":"SN","Sòmalìa":"SO","Sulènamè":"SR","Sawo Tɔ̀me à Kpèlènsikpɛ̀":"ST","Esàvadò":"SV","Silîa":"SY","Shǔazìlân":"SZ","Chwɨla n Tɨtê à Kaekùs":"TC","Châ":"TD","Tugù":"TG","Taelàn":"TH","Tàdzikìsɨ̀tân":"TJ","Tuwkelawù":"TK","Ês Taemò":"TL","Tekɨmènèsɨ̀tân":"TM","Tùneshìa":"TN","Tuŋgà":"TO","Teekì":"TR","Tèlenedà à Tòbagù":"TT","Tuwvalùw":"TV","Taewàn":"TW","Tàanzanyìa":"TZ","Yùkɛ̀lɛ̂":"UA","Yùgandà":"UG","USA":"US","Yulùgwɛ̂":"UY","Yùzɨ̀bɛkìsɨ̀tân":"UZ","Vatikàn Sɨ̀tɛ̂":"VA","Sɛ̀n Vinsɨ̀n à Gɨlenadi Ù tē":"VC","Vɛ̀nɛ̀zǔɛɛlà":"VE","Chwɨlà m̀ Vidzinyìa m̀ Bɨ̀letì mò":"VG","U. S. Chwɨlà fɨ Mbuʔmbu":"VI","Vìyɛnàm":"VN","Vànǔatùw":"VU","Wales à Fùwtuwnà":"WF","Sàmowà":"WS","Yɛmɛ̀n":"YE","Màyotì":"YT","Afɨlekà ghɨ Emàm ghò":"ZA","Zambìa":"ZM","Zìmbagbɛ̀":"ZW"};
+ilib.data.ctrynames_ak = {"Andora":"AD","United Arab Emirates":"AE","Afganistan":"AF","Antigua ne Baabuda":"AG","Anguila":"AI","Albenia":"AL","Aamenia":"AM","Nɛdɛland Antelez":"AN","Angola":"AO","Agyɛntina":"AR","Amɛrika Samoa":"AS","Ɔstria":"AT","Ɔstrelia":"AU","Aruba":"AW","Azebaegyan":"AZ","Bosnia ne Hɛzegovina":"BA","Baabados":"BB","Bangladɛhye":"BD","Bɛlgyium":"BE","Bɔkina Faso":"BF","Bɔlgeria":"BG","Baren":"BH","Burundi":"BI","Bɛnin":"BJ","Bɛmuda":"BM","Brunae":"BN","Bolivia":"BO","Brazil":"BR","Bahama":"BS","Butan":"BT","Bɔtswana":"BW","Bɛlarus":"BY","Beliz":"BZ","Kanada":"CA","Kongo (Zair)":"CD","Afrika Finimfin Man":"CF","Kongo":"CG","Swetzaland":"CH","La Côte d'Ivoire":"CI","Kook Nsupɔw":"CK","Kyili":"CL","Kamɛrun":"CM","Kyaena":"CN","Kolombia":"CO","Kɔsta Rika":"CR","Kuba":"CU","Kepvɛdfo Islands":"CV","Saeprɔs":"CY","Kyɛk Kurokɛse":"CZ","Gyaaman":"DE","Gyibuti":"DJ","Dɛnmak":"DK","Dɔmeneka":"DM","Dɔmeneka Kurokɛse":"DO","Ɔlgyeria":"DZ","Ikuwadɔ":"EC","Ɛstonia":"EE","Nisrim":"EG","Ɛritrea":"ER","Spain":"ES","Ithiopia":"ET","Finland":"FI","Figyi":"FJ","Fɔlkman Aeland":"FK","Maekronehyia":"FM","Frɛnkyeman":"FR","Gabɔn":"GA","Ahendiman Nkabom":"GB","Grenada":"GD","Gyɔgyea":"GE","Frɛnkye Gayana":"GF","Gaana":"GH","Gyebralta":"GI","Greenman":"GL","Gambia":"GM","Gini":"GN","Guwadelup":"GP","Gini Ikuweta":"GQ","Greekman":"GR","Guwatemala":"GT","Guam":"GU","Gini Bisaw":"GW","Gayana":"GY","Hɔnduras":"HN","Krowehyia":"HR","Heiti":"HT","Hangari":"HU","Indɔnehyia":"ID","Aereland":"IE","Israel":"IL","India":"IN","Britenfo Hɔn Man Wɔ India Po No Mu":"IO","Irak":"IQ","Iran":"IR","Aesland":"IS","Itali":"IT","Gyameka":"JM","Gyɔdan":"JO","Gyapan":"JP","Kɛnya":"KE","Kɛɛgestan":"KG","Kambodia":"KH","Kiribati":"KI","Kɔmɔrɔs":"KM","Saint Kitts ne Nɛves":"KN","Etifi Koria":"KP","Anaafo Koria":"KR","Kuwete":"KW","Kemanfo Islands":"KY","Kazakstan":"KZ","Laos":"LA","Lɛbanɔn":"LB","Saint Lucia":"LC","Lektenstaen":"LI","Sri Lanka":"LK","Laeberia":"LR","Lɛsutu":"LS","Lituwenia":"LT","Laksembɛg":"LU","Latvia":"LV","Libya":"LY","Moroko":"MA","Mɔnako":"MC","Mɔldova":"MD","Madagaska":"MG","Marshall Islands":"MH","Masedonia":"MK","Mali":"ML","Miyanma":"MM","Mɔngolia":"MN","Northern Mariana Islands":"MP","Matinik":"MQ","Mɔretenia":"MR","Mantserat":"MS","Mɔlta":"MT","Mɔrehyeɔs":"MU","Maldives":"MV","Malawi":"MW","Mɛksiko":"MX","Malehyia":"MY","Mozambik":"MZ","Namibia":"NA","Kaledonia Foforo":"NC","Nigyɛ":"NE","Nɔfolk Aeland":"NF","Naegyeria":"NG","Nekaraguwa":"NI","Nɛdɛland":"NL","Nɔɔwe":"NO","Nɛpɔl":"NP","Naworu":"NR","Niyu":"NU","Ziland Foforo":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Frɛnkye Pɔlenehyia":"PF","Papua Guinea Foforo":"PG","Philippines":"PH","Pakistan":"PK","Poland":"PL","Saint Pierre ne Miquelon":"PM","Pitcairn":"PN","Puɛto Riko":"PR","Palestaen West Bank ne Gaza":"PS","Pɔtugal":"PT","Palau":"PW","Paraguay":"PY","Kata":"QA","Reyuniɔn":"RE","Romenia":"RO","Rɔhyea":"RU","Rwanda":"RW","Saudi Arabia":"SA","Solomon Islands":"SB","Seyhyɛl":"SC","Sudan":"SD","Sweden":"SE","Singapɔ":"SG","Saint Helena":"SH","Slovinia":"SI","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Suriname":"SR","São Tomé and Príncipe":"ST","Ɛl Salvadɔ":"SV","Siria":"SY","Swaziland":"SZ","Turks ne Caicos Islands":"TC","Kyad":"TD","Togo":"TG","Taeland":"TH","Tajikistan":"TJ","Tokelau":"TK","Timɔ Boka":"TL","Tɛkmɛnistan":"TM","Tunihyia":"TN","Tonga":"TO","Tɛɛki":"TR","Trinidad ne Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukren":"UA","Uganda":"UG","Amɛrika":"US","Yurugwae":"UY","Uzbɛkistan":"UZ","Vatican Man":"VA","Saint Vincent ne Grenadines":"VC","Venezuela":"VE","Britainfo Virgin Islands":"VG","Amɛrika Virgin Islands":"VI","Viɛtnam":"VN","Vanuatu":"VU","Wallis ne Futuna":"WF","Samoa":"WS","Yɛmen":"YE","Mayɔte":"YT","Afrika Anaafo":"ZA","Zambia":"ZM","Zembabwe":"ZW"};
+ilib.data.ctrynames_am = {"አሴንሽን ደሴት":"AC","አንዶራ":"AD","የተባበሩት አረብ ኤምሬትስ":"AE","አፍጋኒስታን":"AF","አንቲጓ እና ባሩዳ":"AG","አንጉኢላ":"AI","አልባኒያ":"AL","አርሜኒያ":"AM","ኔዘርላንድስ አንቲልስ":"AN","አንጐላ":"AO","አንታርክቲካ":"AQ","አርጀንቲና":"AR","የአሜሪካ ሳሞአ":"AS","ኦስትሪያ":"AT","አውስትሬሊያ":"AU","አሩባ":"AW","የአላንድ ደሴቶች":"AX","አዘርባጃን":"AZ","ቦስኒያ እና ሄርዞጎቪኒያ":"BA","ባርቤዶስ":"BB","ባንግላዲሽ":"BD","ቤልጄም":"BE","ቡርኪና ፋሶ":"BF","ቡልጌሪያ":"BG","ባህሬን":"BH","ብሩንዲ":"BI","ቤኒን":"BJ","ቅዱስ በርቴሎሜ":"BL","ቤርሙዳ":"BM","ብሩኒ":"BN","ቦሊቪያ":"BO","የካሪቢያን ኔዘርላንድስ":"BQ","ብራዚል":"BR","ባሃማስ":"BS","ቡህታን":"BT","ቡቬት ደሴት":"BV","ቦትስዋና":"BW","ቤላሩስ":"BY","ቤሊዘ":"BZ","ካናዳ":"CA","ኮኮስ[ኬሊንግ] ደሴቶች":"CC","ኮንጎ":"CD","የመካከለኛው አፍሪካ ሪፐብሊክ":"CF","ኮንጎ ብራዛቪል":"CG","ስዊዘርላንድ":"CH","ኮት ዲቯር":"CI","ኩክ ደሴቶች":"CK","ቺሊ":"CL","ካሜሩን":"CM","ቻይና":"CN","ኮሎምቢያ":"CO","ክሊፐርቶን ደሴት":"CP","ኮስታ ሪካ":"CR","ኩባ":"CU","ኬፕ ቬርዴ":"CV","ኩራሳዎ":"CW","የገና ደሴት":"CX","ሳይፕረስ":"CY","ቼክ ሪፑብሊክ":"CZ","ጀርመን":"DE","ዲዬጎ ጋርሺያ":"DG","ጂቡቲ":"DJ","ዴንማርክ":"DK","ዶሚኒካ":"DM","ዶሚኒክ ሪፑብሊክ":"DO","አልጄሪያ":"DZ","ሴኡታና ሜሊላ":"EA","ኢኳዶር":"EC","ኤስቶኒያ":"EE","ግብጽ":"EG","ምዕራባዊ ሳህራ":"EH","ኤርትራ":"ER","ስፔን":"ES","ኢትዮጵያ":"ET","የአውሮፓ ህብረት":"EU","ፊንላንድ":"FI","ፊጂ":"FJ","የፎልክላንድ ደሴቶች":"FK","ሚክሮኔዢያ":"FM","የፋሮ ደሴቶች":"FO","ፈረንሳይ":"FR","ጋቦን":"GA","እንግሊዝ":"GB","ግሬናዳ":"GD","ጆርጂያ":"GE","የፈረንሳይ ጉዊአና":"GF","ጉርነሲ":"GG","ጋና":"GH","ጊብራልታር":"GI","ግሪንላንድ":"GL","ጋምቢያ":"GM","ጊኒ":"GN","ጉዋደሉፕ":"GP","ኢኳቶሪያል ጊኒ":"GQ","ግሪክ":"GR","ደቡብ ጆርጂያ እና የደቡብ ሳንድዊች ደሴቶች":"GS","ጉዋቲማላ":"GT","ጉዋም":"GU","ጊኒ ቢሳኦ":"GW","ጉያና":"GY","ሆንግ ኮንግ SAR ቻይና":"HK","ኽርድ ደሴቶችና ማክዶናልድ ደሴቶች":"HM","ሆንዱራስ":"HN","ክሮኤሽያ":"HR","ሀይቲ":"HT","ሀንጋሪ":"HU","የካናሪ ደሴቶች":"IC","ኢንዶኔዢያ":"ID","አየርላንድ":"IE","እስራኤል":"IL","አይል ኦፍ ማን":"IM","ህንድ":"IN","የብሪታኒያ ህንድ ውቂያኖስ ግዛት":"IO","ኢራቅ":"IQ","ኢራን":"IR","አይስላንድ":"IS","ጣሊያን":"IT","ጀርሲ":"JE","ጃማይካ":"JM","ጆርዳን":"JO","ጃፓን":"JP","ኬንያ":"KE","ኪርጊስታን":"KG","ካምቦዲያ":"KH","ኪሪባቲ":"KI","ኮሞሮስ":"KM","ቅዱስ ኪትስ እና ኔቪስ":"KN","ሰሜን ኮሪያ":"KP","ደቡብ ኮሪያ":"KR","ክዌት":"KW","ካይማን ደሴቶች":"KY","ካዛኪስታን":"KZ","ላኦስ":"LA","ሊባኖስ":"LB","ሴንት ሉቺያ":"LC","ሊችተንስታይን":"LI","ሲሪላንካ":"LK","ላይቤሪያ":"LR","ሌሶቶ":"LS","ሊቱዌኒያ":"LT","ሉክሰምበርግ":"LU","ላትቪያ":"LV","ሊቢያ":"LY","ሞሮኮ":"MA","ሞናኮ":"MC","ሞልዶቫ":"MD","ሞንተኔግሮ":"ME","ሴንት ማርቲን":"MF","ማዳጋስካር":"MG","ማርሻል አይላንድ":"MH","ማከዶኒያ":"MK","ማሊ":"ML","ማይናማር[በርማ]":"MM","ሞንጎሊያ":"MN","ማካኡSAR ቻይና":"MO","የሰሜናዊ ማሪያና ደሴቶች":"MP","ማርቲኒክ":"MQ","ሞሪቴኒያ":"MR","ሞንትሴራት":"MS","ማልታ":"MT","ማሩሸስ":"MU","ማልዲቭስ":"MV","ማላዊ":"MW","ሜክሲኮ":"MX","ማሌዢያ":"MY","ሞዛምቢክ":"MZ","ናሚቢያ":"NA","ኒው ካሌዶኒያ":"NC","ኒጀር":"NE","ኖርፎልክ ደሴት":"NF","ናይጄሪያ":"NG","ኒካራጓ":"NI","ኔዘርላንድ":"NL","ኖርዌ":"NO","ኔፓል":"NP","ናኡሩ":"NR","ኒኡይ":"NU","ኒው ዚላንድ":"NZ","ኦማን":"OM","ፓናማ":"PA","ፔሩ":"PE","የፈረንሳይ ፖሊኔዢያ":"PF","ፓፑዋ ኒው ጊኒ":"PG","ፊሊፒንስ":"PH","ፓኪስታን":"PK","ፖላንድ":"PL","ቅዱስ ፒዬር እና ሚኩኤሎን":"PM","ፒትካኢርን አይስላንድ":"PN","ፖርታ ሪኮ":"PR","የፍልስጤም ግዛት":"PS","ፖርቱጋል":"PT","ፓላው":"PW","ፓራጓይ":"PY","ኳታር":"QA","አውትላይንግ ኦሽንያ":"QO","ሪዩኒየን":"RE","ሮሜኒያ":"RO","ሰርብያ":"RS","ራሺያ":"RU","ሩዋንዳ":"RW","ሳውድአረቢያ":"SA","ሰሎሞን ደሴት":"SB","ሲሼልስ":"SC","ሱዳን":"SD","ስዊድን":"SE","ሲንጋፖር":"SG","ሴንት ሄለና":"SH","ስሎቬኒያ":"SI","ስቫልባርድ እና ጃን ማየን":"SJ","ስሎቫኪያ":"SK","ሴራሊዮን":"SL","ሳን ማሪኖ":"SM","ሴኔጋል":"SN","ሱማሌ":"SO","ሱሪናም":"SR","ደቡብ ሱዳን":"SS","ሳኦ ቶሜ እና ፕሪንሲፔ":"ST","ኤል ሳልቫዶር":"SV","ሲንት ማርተን":"SX","ሲሪያ":"SY","ሱዋዚላንድ":"SZ","ትሪስታን ዲ ኩንሃ":"TA","የቱርኮችና የካኢኮስ ደሴቶች":"TC","ቻድ":"TD","የፈረንሳይ ደቡባዊ ግዛቶች":"TF","ቶጐ":"TG","ታይላንድ":"TH","ታጃኪስታን":"TJ","ቶክላው":"TK","ምስራቅ ሌስት":"TL","ቱርክሜኒስታን":"TM","ቱኒዚያ":"TN","ቶንጋ":"TO","ቱርክ":"TR","ትሪናዳድ እና ቶቤጎ":"TT","ቱቫሉ":"TV","ታይዋን":"TW","ታንዛኒያ":"TZ","ዩክሬን":"UA","ዩጋንዳ":"UG","የዩ ኤስ ጠረፍ ላይ ያሉ ደሴቶች":"UM","ዩናይትድ ስቴትስ":"US","ኡራጓይ":"UY","ዩዝበኪስታን":"UZ","ቫቲካን ከተማ":"VA","ቅዱስ ቪንሴንት እና ግሬናዲንስ":"VC","ቬንዙዌላ":"VE","የእንግሊዝ ድንግል ደሴቶች":"VG","የአሜሪካ ቨርጂን ደሴቶች":"VI","ቬትናም":"VN","ቫኑአቱ":"VU","ዋሊስ እና ፉቱና ደሴቶች":"WF","ሳሞአ":"WS","የመን":"YE","ሜይኦቴ":"YT","ደቡብ አፍሪካ":"ZA","ዛምቢያ":"ZM","ዚምቧቤ":"ZW","ያልታወቀ ክልል":"ZZ"};
+ilib.data.ctrynames_ar = {"جزيرة أسينشيون":"AC","أندورا":"AD","الإمارات العربية المتحدة":"AE","أفغانستان":"AF","أنتيغوا وبربودا":"AG","أنغويلا":"AI","ألبانيا":"AL","أرمينيا":"AM","جزر الأنتيل الهولندية":"AN","أنغولا":"AO","أنتاركتيكا":"AQ","الأرجنتين":"AR","ساموا الأمريكية":"AS","النمسا":"AT","أستراليا":"AU","آروبا":"AW","جزر أولان":"AX","أذربيجان":"AZ","البوسنة والهرسك":"BA","بربادوس":"BB","بنجلاديش":"BD","بلجيكا":"BE","بوركينا فاسو":"BF","بلغاريا":"BG","البحرين":"BH","بوروندي":"BI","بنين":"BJ","سان بارتليمي":"BL","برمودا":"BM","بروناي":"BN","بوليفيا":"BO","هولندا الكاريبية":"BQ","البرازيل":"BR","الباهاما":"BS","بوتان":"BT","جزيرة بوفيه":"BV","بتسوانا":"BW","روسيا البيضاء":"BY","بليز":"BZ","كندا":"CA","جزر كوكوس":"CC","الكونغو - كينشاسا":"CD","جمهورية أفريقيا الوسطى":"CF","الكونغو - برازافيل":"CG","سويسرا":"CH","ساحل العاج":"CI","جزر كوك":"CK","شيلي":"CL","الكاميرون":"CM","الصين":"CN","كولومبيا":"CO","جزيرة كليبيرتون":"CP","كوستاريكا":"CR","كوبا":"CU","الرأس الأخضر":"CV","كوراساو":"CW","جزيرة الكريسماس":"CX","قبرص":"CY","جمهورية التشيك":"CZ","ألمانيا":"DE","دييغو غارسيا":"DG","جيبوتي":"DJ","الدانمرك":"DK","دومينيكا":"DM","جمهورية الدومينيك":"DO","الجزائر":"DZ","سيوتا وميليلا":"EA","الإكوادور":"EC","أستونيا":"EE","مصر":"EG","الصحراء الغربية":"EH","أريتريا":"ER","إسبانيا":"ES","إثيوبيا":"ET","الاتحاد الأوروبي":"EU","فنلندا":"FI","فيجي":"FJ","جزر فوكلاند":"FK","ميكرونيزيا":"FM","جزر فارو":"FO","فرنسا":"FR","الجابون":"GA","المملكة المتحدة":"GB","غرينادا":"GD","جورجيا":"GE","غويانا الفرنسية":"GF","غيرنزي":"GG","غانا":"GH","جبل طارق":"GI","غرينلاند":"GL","غامبيا":"GM","غينيا":"GN","جوادلوب":"GP","غينيا الإستوائية":"GQ","اليونان":"GR","جورجيا الجنوبية وجزر ساندويتش الجنوبية":"GS","غواتيمالا":"GT","غوام":"GU","غينيا بيساو":"GW","غيانا":"GY","هونغ كونغ الصينية":"HK","جزيرة هيرد وجزر ماكدونالد":"HM","هندوراس":"HN","كرواتيا":"HR","هايتي":"HT","هنغاريا":"HU","جزر الكناري":"IC","أندونيسيا":"ID","أيرلندا":"IE","إسرائيل":"IL","جزيرة مان":"IM","الهند":"IN","الإقليم البريطاني في المحيط الهندي":"IO","العراق":"IQ","إيران":"IR","أيسلندا":"IS","إيطاليا":"IT","جيرسي":"JE","جامايكا":"JM","الأردن":"JO","اليابان":"JP","كينيا":"KE","قرغيزستان":"KG","كمبوديا":"KH","كيريباتي":"KI","جزر القمر":"KM","سانت كيتس ونيفيس":"KN","كوريا الشمالية":"KP","كوريا الجنوبية":"KR","الكويت":"KW","جزر الكايمن":"KY","كازاخستان":"KZ","لاوس":"LA","لبنان":"LB","سانت لوسيا":"LC","ليختنشتاين":"LI","سريلانكا":"LK","ليبيريا":"LR","ليسوتو":"LS","ليتوانيا":"LT","لوكسمبورغ":"LU","لاتفيا":"LV","ليبيا":"LY","المغرب":"MA","موناكو":"MC","مولدافيا":"MD","الجبل الأسود":"ME","سانت مارتن":"MF","مدغشقر":"MG","جزر المارشال":"MH","مقدونيا":"MK","مالي":"ML","ميانمار -بورما":"MM","منغوليا":"MN","مكاو الصينية [منطقة إدارية خاصة]":"MO","جزر ماريانا الشمالية":"MP","مارتينيك":"MQ","موريتانيا":"MR","مونتسرات":"MS","مالطا":"MT","موريشيوس":"MU","جزر المالديف":"MV","ملاوي":"MW","المكسيك":"MX","ماليزيا":"MY","موزمبيق":"MZ","ناميبيا":"NA","كاليدونيا الجديدة":"NC","النيجر":"NE","جزيرة نورفوك":"NF","نيجيريا":"NG","نيكاراغوا":"NI","هولندا":"NL","النرويج":"NO","نيبال":"NP","ناورو":"NR","نيوي":"NU","نيوزيلاندا":"NZ","عُمان":"OM","بنما":"PA","بيرو":"PE","بولينيزيا الفرنسية":"PF","بابوا غينيا الجديدة":"PG","الفيلبين":"PH","باكستان":"PK","بولندا":"PL","سانت بيير وميكولون":"PM","جزر بيتكيرن":"PN","بورتوريكو":"PR","فلسطين":"PS","البرتغال":"PT","بالاو":"PW","باراغواي":"PY","قطر":"QA","أوقيانوسيا النائية":"QO","روينيون":"RE","رومانيا":"RO","صربيا":"RS","روسيا":"RU","رواندا":"RW","المملكة العربية السعودية":"SA","جزر سليمان":"SB","سيشل":"SC","السودان":"SD","السويد":"SE","سنغافورة":"SG","سانت هيلنا":"SH","سلوفينيا":"SI","سفالبارد وجان مايان":"SJ","سلوفاكيا":"SK","سيراليون":"SL","سان مارينو":"SM","السنغال":"SN","الصومال":"SO","سورينام":"SR","جنوب السودان":"SS","ساو تومي وبرينسيبي":"ST","السلفادور":"SV","سينت مارتن":"SX","سوريا":"SY","سوازيلاند":"SZ","تريستان دي كونها":"TA","جزر الترك وجايكوس":"TC","تشاد":"TD","المقاطعات الجنوبية الفرنسية":"TF","توجو":"TG","تايلند":"TH","طاجكستان":"TJ","توكيلو":"TK","تيمور الشرقية":"TL","تركمانستان":"TM","تونس":"TN","تونغا":"TO","تركيا":"TR","ترينيداد وتوباغو":"TT","توفالو":"TV","تايوان":"TW","تانزانيا":"TZ","أوكرانيا":"UA","أوغندا":"UG","جزر الولايات المتحدة البعيدة الصغيرة":"UM","الولايات المتحدة":"US","أورغواي":"UY","أوزبكستان":"UZ","الفاتيكان":"VA","سانت فنسنت وغرنادين":"VC","فنزويلا":"VE","جزر فرجين البريطانية":"VG","جزر فرجين الأمريكية":"VI","فيتنام":"VN","فانواتو":"VU","جزر والس وفوتونا":"WF","ساموا":"WS","اليمن":"YE","مايوت":"YT","جنوب أفريقيا":"ZA","زامبيا":"ZM","زيمبابوي":"ZW","منطقة غير معروفة":"ZZ"};
+ilib.data.ctrynames_asa = {"Andora":"AD","Falme dha Kiarabu":"AE","Afuganistani":"AF","Antigua na Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Antili za Uholandhi":"AN","Angola":"AO","Ajentina":"AR","Thamoa ya Marekani":"AS","Authtria":"AT","Authtralia":"AU","Aruba":"AW","Adhabajani":"AZ","Bothnia na Hedhegovina":"BA","Babadothi":"BB","Bangladeshi":"BD","Ubelgiji":"BE","Bukinafatho":"BF","Bulgaria":"BG","Bahareni":"BH","Burundi":"BI","Benini":"BJ","Bermuda":"BM","Brunei":"BN","Brazili":"BR","Bahama":"BS","Butani":"BT","Botthwana":"BW","Belaruthi":"BY","Belidhe":"BZ","Kanada":"CA","Jamhuri ya Kidemokrathia ya Kongo":"CD","Jamhuri ya Afrika ya Kati":"CF","Kongo":"CG","Uthwithi":"CH","Kodivaa":"CI","Vithiwa vya Cook":"CK","Chile":"CL","Kameruni":"CM","China":"CN","Kolombia":"CO","Kothtarika":"CR","Kuba":"CU","Kepuvede":"CV","Kuprothi":"CY","Jamhuri ya Cheki":"CZ","Ujerumani":"DE","Jibuti":"DJ","Denmaki":"DK","Dominika":"DM","Jamhuri ya Dominika":"DO","Aljeria":"DZ","Ekwado":"EC","Ethtonia":"EE","Mithri":"EG","Eritrea":"ER","Hithpania":"ES","Uhabeshi":"ET","Ufini":"FI","Fiji":"FJ","Vithiwa vya Falkland":"FK","Mikronethia":"FM","Ufarantha":"FR","Gaboni":"GA","Uingeredha":"GB","Grenada":"GD","Jojia":"GE","Gwiyana ya Ufarantha":"GF","Ghana":"GH","Jibralta":"GI","Grinlandi":"GL","Gambia":"GM","Gine":"GN","Gwadelupe":"GP","Ginekweta":"GQ","Ugiriki":"GR","Gwatemala":"GT","Gwam":"GU","Ginebisau":"GW","Guyana":"GY","Hondurathi":"HN","Korathia":"HR","Haiti":"HT","Hungaria":"HU","Indonethia":"ID","Ayalandi":"IE","Ithraeli":"IL","India":"IN","Ieneo la Uingeredha katika Bahari Hindi":"IO","Iraki":"IQ","Uajemi":"IR","Aithlandi":"IS","Italia":"IT","Jamaika":"JM","Yordani":"JO","Japani":"JP","Kenya":"KE","Kirigizithtani":"KG","Kambodia":"KH","Kiribati":"KI","Komoro":"KM","Thantakitdhi na Nevith":"KN","Korea Kathkazini":"KP","Korea Kuthini":"KR","Kuwaiti":"KW","Vithiwa vya Kayman":"KY","Kazakithtani":"KZ","Laothi":"LA","Lebanoni":"LB","Thantaluthia":"LC","Lishenteni":"LI","Thirilanka":"LK","Liberia":"LR","Lethoto":"LS","Litwania":"LT","Lathembagi":"LU","Lativia":"LV","Libya":"LY","Moroko":"MA","Monako":"MC","Moldova":"MD","Bukini":"MG","Vithiwa vya Marshal":"MH","Mathedonia":"MK","Mali":"ML","Myama":"MM","Mongolia":"MN","Vithiwa vya Mariana vya Kathkazini":"MP","Martiniki":"MQ","Moritania":"MR","Monttherrati":"MS","Malta":"MT","Morithi":"MU","Modivu":"MV","Malawi":"MW","Mekthiko":"MX","Malethia":"MY","Mthumbiji":"MZ","Namibia":"NA","Nyukaledonia":"NC","Nijeri":"NE","Kithiwa cha Norfok":"NF","Nijeria":"NG","Nikaragwa":"NI","Uholandhi":"NL","Norwe":"NO","Nepali":"NP","Nauru":"NR","Niue":"NU","Nyudhilandi":"NZ","Omani":"OM","Panama":"PA","Peru":"PE","Polinesia ya Ufarantha":"PF","Papua":"PG","Filipino":"PH","Pakithtani":"PK","Polandi":"PL","Thantapieri na Mikeloni":"PM","Pitkairni":"PN","Pwetoriko":"PR","Palestina":"PS","Ureno":"PT","Palau":"PW","Paragwai":"PY","Katari":"QA","Riyunioni":"RE","Romania":"RO","Uruthi":"RU","Rwanda":"RW","Thaudi":"SA","Vithiwa vya Tholomon":"SB","Shelisheli":"SC","Thudani":"SD","Uthwidi":"SE","Thingapoo":"SG","Thantahelena":"SH","Thlovenia":"SI","Tholvakia":"SK","Thiera Leoni":"SL","Thamarino":"SM","Thenegali":"SN","Thomalia":"SO","Thurinamu":"SR","Thao Tome na Principe":"ST","Elsavado":"SV","Thiria":"SY","Uthwadhi":"SZ","Vithiwa vya Turki na Kaiko":"TC","Chadi":"TD","Togo":"TG","Tailandi":"TH","Tajikithtani":"TJ","Tokelau":"TK","Timori ya Mashariki":"TL","Turukimenithtani":"TM","Tunithia":"TN","Tonga":"TO","Uturuki":"TR","Trinidad na Tobago":"TT","Tuvalu":"TV","Taiwani":"TW","Tadhania":"TZ","Uganda":"UG","Marekani":"US","Urugwai":"UY","Udhibekithtani":"UZ","Vatikani":"VA","Thantavithenti na Grenadini":"VC","Venezuela":"VE","Vithiwa vya Virgin vya Uingeredha":"VG","Vithiwa vya Virgin vya Marekani":"VI","Vietinamu":"VN","Vanuatu":"VU","Walith na Futuna":"WF","Thamoa":"WS","Yemeni":"YE","Mayotte":"YT","Afrika Kuthini":"ZA","Dhambia":"ZM","Dhimbabwe":"ZW"};
+ilib.data.ctrynames_as = {"এন্টাৰ্টিকা":"AQ","ব্ৰাজিল":"BR","বভেট দ্বীপ":"BV","চীন":"CN","জাৰ্মানি":"DE","ফ্ৰান্স":"FR","সংযুক্ত ৰাজ্য":"GB","দক্ষিণ জৰ্জিয়া আৰু দক্ষিণ চেণ্ডৱিচ্‌ দ্বীপ":"GS","হাৰ্ড দ্বীপ আৰু মেক্‌ডোনাল্ড দ্বীপ":"HM","ভাৰত":"IN","ব্ৰিটিশ্ব ইণ্ডিয়ান মহাসাগৰৰ অঞ্চল":"IO","ইটালি":"IT","জাপান":"JP","ৰুচ":"RU","দক্ষিণ ফ্ৰান্সৰ অঞ্চল":"TF","যুক্তৰাষ্ট্ৰ":"US","অজ্ঞাত বা অবৈধ অঞ্চল":"ZZ"};
+ilib.data.ctrynames_az = {"Andorra":"AD","Birləşmiş Ərəb Emiratları":"AE","Əfqənistan":"AF","Antiqua və Barbuda":"AG","Anquila":"AI","Albaniya":"AL","Ermənistan":"AM","Hollandiya antilleri":"AN","Angola":"AO","Antarktika":"AQ","Arqentina":"AR","Amerika Samoası":"AS","Avstriya":"AT","Avstraliya":"AU","Aruba":"AW","Aland Adaları":"AX","Azərbaycan":"AZ","Bosniya və Herzokovina":"BA","Barbados":"BB","Banqladeş":"BD","Belçika":"BE","Burkina Faso":"BF","Bolqariya":"BG","Bahreyn":"BH","Burundi":"BI","Benin":"BJ","Seynt Bartelemey":"BL","Bermuda":"BM","Bruney":"BN","Boliviya":"BO","Braziliya":"BR","Bahamalar":"BS","Butan":"BT","Bove Adası":"BV","Botsvana":"BW","Belarus":"BY","Beliz":"BZ","Kanada":"CA","Kokos Adaları":"CC","Konqo - Kinşasa":"CD","Orta Afrika respublikası":"CF","Konqo - Brazavil":"CG","isveçriya":"CH","İvori Sahili":"CI","Kuk Adaları":"CK","Çile":"CL","Kamerun":"CM","Çin":"CN","Kolumbiya":"CO","Kosta Rika":"CR","Kuba":"CU","Kape Verde":"CV","Çristmas Adası":"CX","Kipr":"CY","Çex respublikası":"CZ","Almaniya":"DE","Ciboti":"DJ","Danemarka":"DK","Dominika":"DM","Dominik Respublikası":"DO","Cezayır":"DZ","Ekvador":"EC","Estoniya":"EE","Misir":"EG","Qərb Sahara":"EH","Eritreya":"ER","İspaniya":"ES","Efiopiya":"ET","Avropa Birləşliyi":"EU","Finlandiya":"FI","Fici":"FJ","Folkland Adaları":"FK","Mikronesiya":"FM","Faro Adaları":"FO","Fransa":"FR","Qabon":"GA","Birləşmiş Krallıq":"GB","Qrenada":"GD","Gürcüstan":"GE","Fransız Quyanası":"GF","Görnsey":"GG","Qana":"GH","Gibraltar":"GI","Qrinland":"GL","Qambiya":"GM","Qvineya":"GN","Qvadalup":"GP","Ekvator Qineya":"GQ","Yunanıstan":"GR","Cənub Gürcüstan və Cənub Sandvilç Adaları":"GS","Qvatemala":"GT","Quam":"GU","Qvineya-Bisau":"GW","Quyana":"GY","Honk Konq çina":"HK","Hörd və Makdonald Adaları":"HM","Qonduras":"HN","Xorvatiya":"HR","Haiti":"HT","Macaristan":"HU","İndoneziya":"ID","İrlandiya":"IE","İzrail":"IL","Man Adası":"IM","Hindistan":"IN","Britaniya-Hindistan Okeanik territoriyası":"IO","İrak":"IQ","İran":"IR","İslandiya":"IS","İtaliya":"IT","Cörsi":"JE","Yamayka":"JM","Ürdün":"JO","Yaponiya":"JP","Kenya":"KE","Kırqızstan":"KG","Kambodiya":"KH","Kiribati":"KI","Komoros":"KM","Seynt Kits və Nevis":"KN","Şimal Koreya":"KP","Cənub Koreya":"KR","Kuveyt":"KW","Kayman Adaları":"KY","Kazaxstan":"KZ","Laos":"LA","Lebanon":"LB","Seynt Lusiya":"LC","Lixtenşteyn":"LI","Şri Lanka":"LK","Liberiya":"LR","Lesoto":"LS","Litva":"LT","Lüksemburq":"LU","Latviya":"LV","Libya":"LY","Morokko":"MA","Monako":"MC","Moldova":"MD","Monteneqro":"ME","Seynt Martin":"MF","Madaqaskar":"MG","Marşal Adaları":"MH","Masedoniya":"MK","Mali":"ML","Myanmar":"MM","Monqoliya":"MN","Makao Çina":"MO","Şimal Mariana Adaları":"MP","Martiniqu":"MQ","Mavritaniya":"MR","Montserat":"MS","Malta":"MT","Mavritis":"MU","Maldiv":"MV","Malavi":"MW","Meksika":"MX","Malaysiya":"MY","Mazambik":"MZ","Namibiya":"NA","Yeni Kaledoniya":"NC","nijer":"NE","Norfolk Adası":"NF","Nijeriya":"NG","Nikaraqua":"NI","Hollandiya":"NL","Norvec":"NO","Nepal":"NP","Nauru":"NR","Niye":"NU","Yeni Zelandiya":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Fransız Polineziya":"PF","Papua Yeni Qvineya":"PG","Filipin":"PH","Pakistan":"PK","Polşa":"PL","Seynt Piyer və Mikelon":"PM","Pitkarn":"PN","Puerto Riko":"PR","Fələstin Bölqüsü":"PS","Portuqal":"PT","Palav":"PW","Paraqvay":"PY","Qatar":"QA","Uzak Okeyaniya":"QO","Reyunion":"RE","Romaniya":"RO","Serbiya":"RS","Rusiya":"RU","Rvanda":"RW","Saudi Ərəbistan":"SA","Solomon Adaları":"SB","Seyçels":"SC","sudan":"SD","isveç":"SE","Sinqapur":"SG","Seynt Elena":"SH","Sloveniya":"SI","svalbard və yan mayen":"SJ","Slovakiya":"SK","Siyera Leon":"SL","San Marino":"SM","Seneqal":"SN","Somaliya":"SO","surinamə":"SR","Sao Tom və Prinsip":"ST","El Salvador":"SV","siriya":"SY","svazilənd":"SZ","Türk və Kaykos Adaları":"TC","Çad":"TD","Fransız Cənub teritoriyası":"TF","Toqo":"TG","tayland":"TH","tacikistan":"TJ","Tokelau":"TK","Şərq Timor":"TL","Türkmənistan":"TM","Tunisiya":"TN","Tonqa":"TO","Türkiya":"TR","Trinidan və Tobaqo":"TT","Tuvalu":"TV","tayvan":"TW","tanzaniya":"TZ","Ukraina":"UA","Uqanda":"UG","Birləşmiş Ştatların uzaq adaları":"UM","Amerika Birləşmiş Ştatları":"US","Uruqvay":"UY","Özbəkistan":"UZ","Vatikan":"VA","Seynt Vinsent və Qrenada":"VC","Venesuela":"VE","Britaniya Virgin Adaları":"VG","ABŞ Virqin Adaları":"VI","Vyetnam":"VN","Vanuatu":"VU","Valis və Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayot":"YT","Cənub Afrika":"ZA","Zambiya":"ZM","Zimbabve":"ZW","bilinmir":"ZZ"};
+ilib.data.ctrynames_bas = {"Àŋdɔ̂r":"AD","Àdnà i Bilɔ̀ŋ bi Arābìà":"AE","Àfgànìstâŋ":"AF","Àŋtigà ɓɔ Bàrbudà":"AG","Àŋgiyà":"AI","Àlbanìà":"AL","Àrmenìà":"AM","Àŋtîy ǹlɛ̀ndi":"AN","Àŋgolà":"AO","Àrgàŋtinà":"AR","Òstrǐk":"AT","Òstralìà":"AU","Àrubà":"AW","Àzɛ̀rbajàŋ":"AZ","Bòhnià Ɛrzègòvinà":"BA","Bàrbadò":"BB","Bàŋglàdɛ̂s":"BD","Bɛlgyùm":"BE","Bùrkìnà Fasò":"BF","Bùlgarìà":"BG","Bàraìn":"BH","Bùrundì":"BI","Bènɛ̂ŋ":"BJ","Bɛ̀rmudà":"BM","Brunei":"BN","Bòlivìà":"BO","Bràsîl":"BR","Bàhamàs":"BS","Bùtân":"BT","Bòdsùanà":"BW","Bèlarùs":"BY","Bèlîs":"BZ","Kànadà":"CA","Kòŋgo ìkɛŋi":"CD","Ŋ̀ɛm Afrīkà":"CF","Kòŋgo":"CG","Sùwîs":"CH","Màŋ mi Njɔ̂k":"CI","Bìòn bi Kook":"CK","Kìlî":"CL","Kàmɛ̀rûn":"CM","Kinà":"CN","Kɔ̀lɔmbìà":"CO","Kòstà Rikà":"CR","Kubà":"CU","Kabwɛ᷆r":"CV","Kiprò":"CY","Jamân":"DE","Jìbutì":"DJ","Dànmârk":"DK","Dòmnîk":"DM","Dòmnikà":"DO","Àlgerìà":"DZ","Èkwàtorìà":"EC","Èstonìà":"EE","Ègîptò":"EG","Èrìtrěà":"ER","Pànya":"ES","Ètìopìà":"ET","Fìnlând":"FI","Fiji":"FJ","Bìòn bi Falkland":"FK","Mìkrònesìà":"FM","Pùlàsi / Fɛ̀lɛ̀nsi /":"FR","Gàbɔ̂ŋ":"GA","Àdnà i Lɔ̂ŋ":"GB","Grènadà":"GD","Gèɔrgìà":"GE","Gùyanà Pùlàsi":"GF","Ganà":"GH","Gìlbràtâr":"GI","Grǐnlànd":"GL","Gàmbià":"GM","Gìnê":"GN","Gwàdèlûp":"GP","Gìne Èkwàtorìà":"GQ","Grǐkyà":"GR","Gwàtèmalà":"GT","Gùâm":"GU","Gìne Bìsàô":"GW","Gùyanà":"GY","Ɔ̀ŋduràs":"HN","Kròasìà":"HR","Àitì":"HT","Ɔ̀ŋgriì":"HU","Indònèsià":"ID","Ìrlând":"IE","Isràɛ̂l":"IL","Indìà":"IN","Bìtèk bi Ŋgisì i Tūyɛ Īndìà":"IO","Ìrâk":"IQ","Ìrâŋ":"IR","Ìslandìà":"IS","Ìtalìà":"IT","Jàmàikà":"JM","Yɔ̀rdanià":"JO","Kenìà":"KE","Kìrgìzìstàŋ":"KG","Kàmbodìà":"KH","Kìrìbatì":"KI","Kɔ̀mɔ̂r":"KM","Nûmpubi Kîts nì Nevìs":"KN","Kɔ̀re ì Ŋ̀ɔmbɔk":"KP","Kɔ̀re ì Ŋ̀wɛ̀lmbɔk":"KR","Kòwêt":"KW","Bìòn bi Kaymàn":"KY","Kàzàkstâŋ":"KZ","Làôs":"LA","Lèbanòn":"LB","Nûmpubi Lusì":"LC","Ligstɛntàn":"LI","Srìlaŋkà":"LK","Lìberìà":"LR","Lesòtò":"LS","Lìtùanìà":"LT","Lùgsàmbûr":"LU","Làdvià":"LV","Libìà":"LY","Màrokò":"MA","Mònakò":"MC","Moldavìà":"MD","Màdàgàskâr":"MG","Bìòn bi Marcàl":"MH","Màsèdonìà":"MK","Màli":"ML","Myànmâr":"MM","Mòŋgolìà":"MN","Bìòn bi Marìanà ŋ̀ɔmbɔk":"MP","Màrtìnîk":"MQ","Mòrìtanìà":"MR","Mɔ̀ŋseràt":"MS","Maltà":"MT","Mòrîs":"MU","Màldîf":"MV","Màlàwi":"MW","Mɛ̀gsîk":"MX","Màlɛ̀sìà":"MY","Mòsàmbîk":"MZ","Nàmibìà":"NA","Kàlèdonìà Yɔ̀ndɔ":"NC","Nìjɛ̂r":"NE","Òn i Nɔrfɔ̂k":"NF","Nìgerìà":"NG","Nìkàragwà":"NI","Ǹlɛndi":"NL","Nɔ̀rvegìà":"NO","Nèpâl":"NP","Nerù":"NR","Nìuɛ̀":"NU","Sìlând Yɔ̀ndɔ":"NZ","Òmân":"OM","Pànàma":"PA","Pèrû":"PE","Pòlìnesìà Pùlàsi":"PF","Gìne ì Pàpu":"PG","Fìlìpîn":"PH","Pàkìstân":"PK","Pòlànd":"PL","Nûmpubi Petrò nì Mikèlôn":"PM","Pìdkaìrn":"PN","Pɔ̀rtò Rikò":"PR","Pàlɛ̀htinà Hyɔ̀ŋg nì Gazà":"PS","Pɔ̀tɔkì":"PT","Pàlaù":"PW","Pàràgwê":"PY","Kàtâr":"QA","Rèunyɔ̂ŋ":"RE","Rùmanìà":"RO","Ruslànd":"RU","Rùandà":"RW","Sàudi Àrabìà":"SA","Bìòn bi Salōmò":"SB","Sèsɛ̂l":"SC","Sùdâŋ":"SD","Swedɛ̀n":"SE","Sìŋgàpûr":"SG","Nûmpubi Ɛlēnà":"SH","Slòvanìà":"SI","Slòvakìà":"SK","Sièra Lèɔ̂n":"SL","Nûmpubi Māatìn":"SM","Sènègâl":"SN","Sòmalìà":"SO","Sùrinâm":"SR","Sào Tòme ɓɔ Prɛ̀ŋcipè":"ST","Sàlvàdɔ̂r":"SV","Sirìà":"SY","Swàzìlând":"SZ","Bìòn bi Tûrks nì Kalkòs":"TC","Câd":"TD","Tògo":"TG","Taylànd":"TH","Tàjìkìstaŋ":"TJ","Tòkèlaò":"TK","Tìmɔ̂r lìkòl":"TL","Tùrgmènìstân":"TM","Tùnisìà":"TN","Tɔŋgà":"TO","Tùrkây":"TR","Trìnidàd ɓɔ Tòbagò":"TT","Tùvàlù":"TV","Tàywân":"TW","Tànzànià":"TZ","Ùkrɛ̌n":"UA","Ùgandà":"UG","Àdnà i Bilɔ̀ŋ bi Amerkà":"US","Ùrùgwêy":"UY","Ùzbèkìstân":"UZ","Vàtìkâŋ":"VA","Nûmpubi Vɛ̂ŋsâŋ nì grènàdîn":"VC","Vènèzùelà":"VE","Bìòn bi kɔnji bi Ŋgisì":"VG","Bìòn bi kɔnji bi U.S.":"VI","Vìɛ̀dnâm":"VN","Vànùatù":"VU","Wàlîs nì Fùtunà":"WF","Sàmoà":"WS","Yèmɛ̂n":"YE","Màyɔ̂t":"YT","Àfrǐkà Sɔ̀":"ZA","Zàmbià":"ZM","Zìmbàbwê":"ZW"};
+ilib.data.ctrynames_be = {"Андора":"AD","Аб'яднаныя Арабскія Эміраты":"AE","Афганістан":"AF","Антыгуа і Барбуда":"AG","Ангуілля":"AI","Албанія":"AL","Арменія":"AM","Нідэрландскія Антылы":"AN","Ангола":"AO","Антарктыка":"AQ","Аргенціна":"AR","Амерыканскае Самоа":"AS","Аўстрыя":"AT","Аўстралія":"AU","Аруба":"AW","Аландскія астравы":"AX","Азербайджан":"AZ","Боснія і Герцагавіна":"BA","Барбадас":"BB","Бангладэш":"BD","Бельгія":"BE","Буркіна-Фасо":"BF","Балгарыя":"BG","Бахрэйн":"BH","Бурундзі":"BI","Бенін":"BJ","Бермудскія астравы":"BM","Бруней-Дарусалам":"BN","Балівія":"BO","Бразілія":"BR","Багамскія Астравы":"BS","Бутан":"BT","Бувэ востраў":"BV","Батсвана":"BW","Беларусь":"BY","Беліз":"BZ","Канада":"CA","Какосавыя астравы":"CC","Конга, Дэмакратычная Рэспубліка":"CD","Цэнтральна-Афрыканская Рэспубліка":"CF","Конга":"CG","Швейцарыя":"CH","Кука астравы":"CK","Чылі":"CL","Камерун":"CM","Кітай":"CN","Калумбія":"CO","Коста-Рыка":"CR","Куба":"CU","Каба-Вердэ":"CV","Калядаў востраў":"CX","Кіпр":"CY","Чэхія":"CZ","Германія":"DE","Джыбуці":"DJ","Данія":"DK","Дамініка":"DM","Дамініканская Рэспубліка":"DO","Алжыр":"DZ","Эквадор":"EC","Эстонія":"EE","Егіпет":"EG","Заходняя Сахара":"EH","Эрытрэя":"ER","Іспанія":"ES","Эфіопія":"ET","Еўрапейскі Звяз":"EU","Фінляндыя":"FI","Фіджы":"FJ","Фолклэндскія астравы":"FK","Мікранезія":"FM","Францыя":"FR","Габон":"GA","Велікабрытанія":"GB","Грэнада":"GD","Грузія":"GE","Французская Гвіяна":"GF","Гана":"GH","Гібралтар":"GI","Грэнландыя":"GL","Гамбія":"GM","Гвінея":"GN","Гвадэлупа":"GP","Экватарыяльная Гвінея":"GQ","Грэцыя":"GR","Паўднёвая Джорджыя і Паўднёвыя Сандвічавы астравы":"GS","Гватэмала":"GT","Гвінея-Бісаў":"GW","Гаяна":"GY","Гон-Конг, Кітай (САР)":"HK","Гэрда востраў і МакДоналда астравы":"HM","Гандурас":"HN","Харватыя":"HR","Гаіці":"HT","Венгрыя":"HU","Інданезія":"ID","Ірландыя":"IE","Ізраіль":"IL","Індыя":"IN","Брытанская тэрыторыя Індыйскага акіяну":"IO","Ірак":"IQ","Іран, Ісламская Рэспубліка":"IR","Ісландыя":"IS","Італія":"IT","Ямайка":"JM","Іарданія":"JO","Японія":"JP","Кенія":"KE","Кыргызстан":"KG","Камбоджа":"KH","Кірыбаці":"KI","Каморскія Астравы":"KM","Сэнт-Кітс і Нэвіс":"KN","Паўночная Карэя":"KP","Паўднёвая Карэя":"KR","Кувейт":"KW","Кайманавы астравы":"KY","Казахстан":"KZ","Лаоская Народна-Дэмакратычная Рэспубліка":"LA","Ліван":"LB","Сэнт-Люсія":"LC","Ліхтэнштэйн":"LI","Шры-Ланка":"LK","Ліберыя":"LR","Лесота":"LS","Літва":"LT","Люксембург":"LU","Латвія":"LV","Лівійская Арабская Джамахірыя":"LY","Марока":"MA","Манака":"MC","Малдова":"MD","Чарнагорыя":"ME","Мадагаскар":"MG","Маршалавы Астравы":"MH","Македонія, БЮР":"MK","Малі":"ML","М'янма":"MM","Манголія":"MN","Макао, Кітай (САР)":"MO","Паўночныя Марыянскія астравы":"MP","Марцініка":"MQ","Маўрытанія":"MR","Монсэрат":"MS","Мальта":"MT","Маўрыкій":"MU","Мальдыўскія Астравы":"MV","Малаві":"MW","Мексіка":"MX","Малайзія":"MY","Мазамбік":"MZ","Намібія":"NA","Новая Каледонія":"NC","Нігер":"NE","Норфалкскія астравы":"NF","Нігерыя":"NG","Нікарагуа":"NI","Нідэрланды":"NL","Нарвегія":"NO","Непал":"NP","Науру":"NR","Ніуэ":"NU","Новая Зеландыя":"NZ","Аман":"OM","Панама":"PA","Перу":"PE","Франузская Палінэзія":"PF","Папуа-Новая Гвінея":"PG","Філіпіны":"PH","Пакістан":"PK","Польшча":"PL","Палестынскія тэрыторыі":"PS","Партугалія":"PT","Палаў":"PW","Парагвай":"PY","Катар":"QA","Вонкавая Акіянія":"QO","Рэюньён":"RE","Румынія":"RO","Сербія":"RS","Расія":"RU","Руанда":"RW","Саудаўская Аравія":"SA","Саламонавы Астравы":"SB","Сейшэльскія Астравы":"SC","Судан":"SD","Швецыя":"SE","Сінгапур":"SG","Святой Алены, Востраў":"SH","Славенія":"SI","Свальбард (Паўночна-Усходняя Зямля) і Ян-Маен":"SJ","Славакія":"SK","Сьера-Леонэ":"SL","Сенегал":"SN","Самалі":"SO","Сурынам":"SR","Сан-Томэ і Прынсіпі":"ST","Сальвадор":"SV","Сірыйская Арабская Рэспубліка":"SY","Свазіленд":"SZ","Тэркс і Кайкас астравы":"TC","Чад":"TD","Французскія Паўднёвыя тэрыторыі":"TF","Тога":"TG","Тайланд":"TH","Таджыкістан":"TJ","Такелаў":"TK","Усходні Тымор":"TL","Туркменістан":"TM","Туніс":"TN","Тангійская":"TO","Турцыя":"TR","Трынідад і Табага":"TT","Тувалу":"TV","Тайвань":"TW","Танзанія, Аб'яднаная Рэспубліка":"TZ","Украіна":"UA","Уганда":"UG","Злучаныя Штаты":"US","Уругвай":"UY","Узбекістан":"UZ","Ватыкан":"VA","Сэнт-Вінсэнт і Грэнадыны":"VC","Венесуэла":"VE","Віргінскія астравы":"VG","Віргінскія астравы, ЗША":"VI","В'етнам":"VN","Вануату":"VU","Уоліс і Футуна":"WF","Самоа (Заходняе)":"WS","Емен":"YE","Паўднёва-Афрыканская Рэспубліка":"ZA","Замбія":"ZM","Зімбабвэ":"ZW","Невядомы рэгіён":"ZZ"};
+ilib.data.ctrynames_bg = {"Остров Възнесение":"AC","Андора":"AD","Обединени арабски емирства":"AE","Афганистан":"AF","Антигуа и Барбуда":"AG","Ангуила":"AI","Албания":"AL","Армения":"AM","Холандски Антили":"AN","Ангола":"AO","Антарктика":"AQ","Аржентина":"AR","Американско Самоа":"AS","Австрия":"AT","Австралия":"AU","Аруба":"AW","Аландски о-ви":"AX","Азербайджан":"AZ","Босна и Херцеговина":"BA","Барбадос":"BB","Бангладеш":"BD","Белгия":"BE","Буркина Фасо":"BF","България":"BG","Бахрейн":"BH","Бурунди":"BI","Бенин":"BJ","Сейнт Бартоломей":"BL","Бермуда":"BM","Бруней Дарусалам":"BN","Боливия":"BO","Карибска Нидерландия":"BQ","Бразилия":"BR","Бахами":"BS","Бутан":"BT","Остров Буве":"BV","Ботсуана":"BW","Беларус":"BY","Белиз":"BZ","Канада":"CA","Кокосови [Кийлинг] острови":"CC","Демократична република Конго":"CD","Централноафриканска Република":"CF","Конго":"CG","Швейцария":"CH","Бряг на слоновата кост":"CI","Острови Кук":"CK","Чили":"CL","Камерун":"CM","Китай":"CN","Колумбия":"CO","Остров Клипертон":"CP","Коста Рика":"CR","Куба":"CU","Кабо Верде":"CV","Кюрасао":"CW","Остров Кристмас":"CX","Кипър":"CY","Чешка република":"CZ","Германия":"DE","Диего Гарсия":"DG","Джибути":"DJ","Дания":"DK","Доминика":"DM","Доминиканска република":"DO","Алжир":"DZ","Сеута и Мелия":"EA","Еквадор":"EC","Естония":"EE","Египет":"EG","Западна Сахара":"EH","Еритрея":"ER","Испания":"ES","Етиопия":"ET","Европейски съюз":"EU","Финландия":"FI","Фиджи":"FJ","Фолклендски острови":"FK","Микронезия, Обединени Щати":"FM","Фарьорски острови":"FO","Франция":"FR","Габон":"GA","Обединено кралство":"GB","Гренада":"GD","Грузия":"GE","Френска Гвиана":"GF","о. Гърнзи":"GG","Гана":"GH","Гибралтар":"GI","Гренландия":"GL","Гамбия":"GM","Гвинея":"GN","Гваделупа":"GP","Екваториална Гвинея":"GQ","Гърция":"GR","Южна Джорджия и Южни Сандвичеви Острови":"GS","Гватемала":"GT","Гуам":"GU","Гвинея-Бисау":"GW","Гвиана":"GY","Хонг-Конг О.А.Р. на Китай":"HK","Остров Хърд и Острови Макдоналд":"HM","Хондурас":"HN","Хърватска":"HR","Хаити":"HT","Унгария":"HU","Канарски острови":"IC","Индонезия":"ID","Ирландия":"IE","Израел":"IL","Острови Ман":"IM","Индия":"IN","Британски територии в Индийския океан":"IO","Ирак":"IQ","Иран, Ислямска република":"IR","Исландия":"IS","Италия":"IT","о. Джързи":"JE","Ямайка":"JM","Йордания":"JO","Япония":"JP","Кения":"KE","Киргизстан":"KG","Камбоджа":"KH","Кирибати":"KI","Комори":"KM","Сейнт Китс и Невис":"KN","Северна Корея":"KP","Корея, Южна":"KR","Кувейт":"KW","Кайманови острови":"KY","Казахстан":"KZ","Народна демократична република Лаос":"LA","Ливан":"LB","Сейнт Лусия":"LC","Лихтенщайн":"LI","Шри Ланка":"LK","Либерия":"LR","Лесото":"LS","Литва":"LT","Люксембург":"LU","Латвия":"LV","Либийска арабска джамахирия":"LY","Мароко":"MA","Монако":"MC","Молдова, Република":"MD","Черна гора":"ME","Сейнт Мартин":"MF","Мадагаскар":"MG","Маршалови острови":"MH","Македония":"MK","Мали":"ML","Мианмар [Бирма]":"MM","Монголия":"MN","Макао О.А.Р. на Китай":"MO","Северни Мариански Острови":"MP","Мартиника":"MQ","Мавритания":"MR","Монсерат":"MS","Малта":"MT","Мавриций":"MU","Малдиви":"MV","Малави":"MW","Мексико":"MX","Малайзия":"MY","Мозамбик":"MZ","Намибия":"NA","Нова Каледония":"NC","Нигер":"NE","Остров Норфолк":"NF","Нигерия":"NG","Никарагуа":"NI","Холандия":"NL","Норвегия":"NO","Непал":"NP","Науру":"NR","Ниуе":"NU","Нова Зеландия":"NZ","Оман":"OM","Панама":"PA","Перу":"PE","Френска Полинезия":"PF","Папуа Нова Гвинея":"PG","Филипини":"PH","Пакистан":"PK","Полша":"PL","Сен Пиер и Мигелон":"PM","Питкайрн":"PN","Пуерто Рико":"PR","Палестински територии":"PS","Португалия":"PT","Палау":"PW","Парагвай":"PY","Катар":"QA","Океания [QO]":"QO","Реюниън":"RE","Румъния":"RO","Сърбия":"RS","Руска федерация":"RU","Руанда":"RW","Саудитска Арабия":"SA","Соломонови острови":"SB","Сейшели":"SC","Судан":"SD","Швеция":"SE","Сингапур":"SG","Света Елена":"SH","Словения":"SI","Свалбард и Ян Майен":"SJ","Словакия":"SK","Сиера Леоне":"SL","Сан Марино":"SM","Сенегал":"SN","Сомалия":"SO","Суринам":"SR","Южен Судан":"SS","Сао Томе и Принципе":"ST","Ел Салвадор":"SV","Синт Мартен":"SX","Сирийска арабска република":"SY","Суазиленд":"SZ","Тристан да Куня":"TA","Острови Туркс и Кайкос":"TC","Чад":"TD","Френски южни територии":"TF","Того":"TG","Тайланд":"TH","Таджикистан":"TJ","Токелау":"TK","Източен Тимор":"TL","Туркменистан":"TM","Тунис":"TN","Тонга":"TO","Турция":"TR","Тринидад и Тобаго":"TT","Тувалу":"TV","Тайван":"TW","Танзания":"TZ","Украйна":"UA","Уганда":"UG","САЩ - външни острови":"UM","САЩ":"US","Уругвай":"UY","Узбекистан":"UZ","Свещено море [Ватиканска държава]":"VA","Сейнт Винсънт и Гренадини":"VC","Венецуела":"VE","Британски Вирджински острони":"VG","САЩ, Вирджински острови":"VI","Виетнам":"VN","Вануату":"VU","Уолис и Футуна":"WF","Самоа":"WS","Йемен":"YE","Мейот":"YT","Южна Африка":"ZA","Замбия":"ZM","Зимбабве":"ZW","Непозната или несъществуваща област":"ZZ"};
+ilib.data.ctrynames_bm = {"Andɔr":"AD","Arabu mara kafoli":"AE","Afiganistaŋ":"AF","Antiga-ni-Barbuda":"AG","Angiya":"AI","Alibani":"AL","Arimeni":"AM","Peyiba ka Antiyi":"AN","Angola":"AO","Arizantin":"AR","Samowa amerikani":"AS","Otirisi":"AT","Ositirali":"AU","Aruba":"AW","Azɛrbayjaŋ":"AZ","Bozni-Ɛrizigovini":"BA","Barbadi":"BB","Bɛngiladɛsi":"BD","Bɛliziki":"BE","Burukina Faso":"BF","Buligari":"BG","Bareyini":"BH","Burundi":"BI","Benɛn":"BJ","Bermudi":"BM","Burinɛyi":"BN","Bolivi":"BO","Berezili":"BR","Bahamasi":"BS","Butaŋ":"BT","Bɔtisiwana":"BW","Belarusi":"BY","Belizi":"BZ","Kanada":"CA","Kongo ka republiki demɔkratiki":"CD","Santarafiriki":"CF","Kongo":"CG","Suwisi":"CH","Kodiwari":"CI","Kuki Gun":"CK","Sili":"CL","Kameruni":"CM","Siniwajamana":"CN","Kolombi":"CO","Kɔsitarika":"CR","Kuba":"CU","Capivɛrdi":"CV","Cipri":"CY","Ceki republiki":"CZ","Alimaɲi":"DE","Jibuti":"DJ","Danemarki":"DK","Dɔminiki":"DM","Dɔmimiki republiki":"DO","Alizeri":"DZ","Ekwatɔr":"EC","Esetoni":"EE","Eziputi":"EG","Eritere":"ER","Esipaɲi":"ES","Etiopi":"ET","Finilandi":"FI","Fiji":"FJ","Maluwini Gun":"FK","Mikironesi":"FM","Faransi":"FR","Gabɔŋ":"GA","Angilɛtɛri":"GB","Granadi":"GD","Zeyɔrzi":"GE","Faransi ka gwiyani":"GF","Gana":"GH","Zibralitari":"GI","Gɔrɔhenelandi":"GL","Ganbi":"GM","Gine":"GN","Gwadelup":"GP","Gine ekwatɔri":"GQ","Gɛrɛsi":"GR","Gwatemala":"GT","Gwam":"GU","Gine Bisawo":"GW","Gwiyana":"GY","Hɔndirasi":"HN","Kroasi":"HR","Ayiti":"HT","Hɔngri":"HU","Ɛndonezi":"ID","Irilandi":"IE","Isirayeli":"IL","Ɛndujamana":"IN","Angilɛ ka ɛndu dugukolo":"IO","Iraki":"IQ","Iraŋ":"IR","Isilandi":"IS","Itali":"IT","Zamayiki":"JM","Zɔrdani":"JO","Zapɔn":"JP","Keniya":"KE","Kirigizisitaŋ":"KG","Kamboji":"KH","Kiribati":"KI","Komɔri":"KM","Kristɔfo-Senu-ni-Ɲevɛs":"KN","Kɛɲɛka Kore":"KP","Worodugu Kore":"KR","Kowɛti":"KW","Bama Gun":"KY","Kazakistaŋ":"KZ","Layosi":"LA","Libaŋ":"LB","Lusi-Senu":"LC","Lisɛnsitayini":"LI","Sirilanka":"LK","Liberiya":"LR","Lesoto":"LS","Lituyani":"LT","Likisanburu":"LU","Letoni":"LV","Libi":"LY","Marɔku":"MA","Monako":"MC","Molidavi":"MD","Madagasikari":"MG","Marisali Gun":"MH","Macedɔni":"MK","Mali":"ML","Myanimari":"MM","Moŋoli":"MN","Kɛɲɛka Mariyani Gun":"MP","Maritiniki":"MQ","Mɔritani":"MR","Moŋsera":"MS","Malti":"MT","Morisi":"MU","Maldivi":"MV","Malawi":"MW","Meksiki":"MX","Malɛzi":"MY","Mozanbiki":"MZ","Namibi":"NA","Kaledoni Koura":"NC","Nizɛri":"NE","Nɔrofoliki Gun":"NF","Nizeriya":"NG","Nikaragwa":"NI","Peyiba":"NL","Nɔriwɛzi":"NO","Nepali":"NP","Nawuru":"NR","Nyuwe":"NU","Zelandi Koura":"NZ","Omaŋ":"OM","Panama":"PA","Peru":"PE","Faransi ka polinezi":"PF","Papuwasi-Gine-Koura":"PG","Filipini":"PH","Pakisitaŋ":"PK","Poloɲi":"PL","Piyɛri-Senu-ni-Mikelɔŋ":"PM","Pitikarini":"PN","Pɔrotoriko":"PR","Palesitini":"PS","Pɔritigali":"PT","Palawu":"PW","Paraguwayi":"PY","Katari":"QA","Reyuɲɔŋ":"RE","Rumani":"RO","Irisi":"RU","Ruwanda":"RW","Arabiya Sawudiya":"SA","Salomo Gun":"SB","Sesɛli":"SC","Sudaŋ":"SD","Suwɛdi":"SE","Sɛngapuri":"SG","Ɛlɛni Senu":"SH","Sloveni":"SI","Slowaki":"SK","Siyera Lewɔni":"SL","Marini-Senu":"SM","Senegali":"SN","Somali":"SO","Surinami":"SR","Sawo Tome-ni-Prinicipe":"ST","Salivadɔr":"SV","Siri":"SY","Swazilandi":"SZ","Turiki Gun ni Kayiki":"TC","Cadi":"TD","Togo":"TG","Tayilandi":"TH","Tajikisitani":"TJ","Tokelo":"TK","Kɔrɔn Timɔr":"TL","Turikimenisitani":"TM","Tunizi":"TN","Tonga":"TO","Turiki":"TR","Trinite-ni-Tobago":"TT","Tuvalu":"TV","Tayiwani":"TW","Tanzani":"TZ","Ukɛrɛni":"UA","Uganda":"UG","Ameriki":"US","Urugwayi":"UY","Uzebekisitani":"UZ","Vatikaŋ":"VA","Vinisɛn-Senu-ni-Grenadini":"VC","Venezuwela":"VE","Angilɛ ka Sungurunnin Gun":"VG","Ameriki ka Sungurunnin Gun":"VI","Wiyɛtinamu":"VN","Vanuwatu":"VU","Walisi-ni-Futuna":"WF","Samowa":"WS","Yemɛni":"YE","Mayoti":"YT","Worodugu Afriki":"ZA","Zanbi":"ZM","Zimbabuwe":"ZW"};
+ilib.data.ctrynames_bn = {"অ্যাসসেনশন আইল্যান্ড":"AC","এ্যান্ডোরা":"AD","সংযুক্ত আরব আমিরাত":"AE","আফগানিস্তান":"AF","এন্টিগুয়া ও বারবুডা":"AG","এ্যাঙ্গুইলা":"AI","আলব্যানিয়া":"AL","আর্মেনিয়া":"AM","নেদারল্যান্ডস এ্যান্টিলিস":"AN","এ্যাঙ্গোলা":"AO","এন্টার্কটিকা":"AQ","আর্জেণ্টাইনা":"AR","আমেরিকান সামোয়া":"AS","অস্ট্রিয়া":"AT","অস্ট্রেলিয়া":"AU","আরুবা":"AW","আলান্ড দ্বীপপুঞ্জ":"AX","আজারবাইজান":"AZ","বসনিয়া ও হার্জেগোভিনা":"BA","বারবাদোস":"BB","বাংলাদেশ":"BD","বেলজিয়াম":"BE","বুরকিনা ফাসো":"BF","বুলগেরিয়া":"BG","বাহরাইন":"BH","বুরুন্ডি":"BI","বেনিন":"BJ","সেন্ট বারথেলিমি":"BL","বারমুডা":"BM","ব্রুনেই":"BN","বোলিভিয়া":"BO","ক্যারিবিয়ান নেদারল্যান্ডস":"BQ","ব্রাজিল":"BR","বাহামা দ্বীপপুঞ্জ":"BS","ভুটান":"BT","বোভেট দ্বীপ":"BV","বতসোয়ানা":"BW","বেলোরুশিয়া":"BY","বেলিয":"BZ","কানাডা":"CA","কোকোস দ্বীপপুঞ্জ":"CC","কঙ্গো - কিনসাসা":"CD","মধ্য আফ্রিকান প্রজাতন্ত্র":"CF","কঙ্গো":"CG","সুইজারল্যান্ড":"CH","আইভরি কোস্ট":"CI","কুক দ্বীপপুঞ্জ":"CK","চিলি":"CL","ক্যামেরুন":"CM","চীন":"CN","কোলোম্বিয়া":"CO","ক্লিপারটন আইল্যান্ড":"CP","কোস্টারিকা":"CR","কিউবা":"CU","কেপভার্দে":"CV","কুরাসাও":"CW","ক্রিসমাস দ্বীপ":"CX","সাইপ্রাস":"CY","চেক প্রজাতন্ত্র":"CZ","জার্মানি":"DE","দিয়েগো গার্সিয়া":"DG","জিবুতি":"DJ","ডেনমার্ক":"DK","ডোমিনিকা":"DM","ডোমেনিকান প্রজাতন্ত্র":"DO","এলজিরিয়া":"DZ","কুউটা এবং মেলিলা":"EA","ইকুয়েডর":"EC","এস্তোনিয়া":"EE","মিশর":"EG","পশ্চিমী সাহারা":"EH","ইরিত্রিয়া":"ER","স্পেন":"ES","ইফিওপিয়া":"ET","ইউরোপীয় ইউনিয়ন":"EU","ফিনল্যান্ড":"FI","ফিজি":"FJ","ফকল্যান্ড দ্বীপপুঞ্জ":"FK","মাইক্রোনেশিয়া":"FM","ফ্যারও দ্বীপপুঞ্জ":"FO","ফ্রান্স":"FR","গ্যাবন":"GA","যুক্তরাজ্য":"GB","গ্রেনাডা":"GD","জর্জিয়া":"GE","ফরাসী গায়ানা":"GF","গ্রাঞ্জি":"GG","ঘানা":"GH","জিব্রাল্টার":"GI","গ্রীনল্যান্ড":"GL","গাম্বিয়া":"GM","গিনি":"GN","গুয়াদেলৌপ":"GP","নিরক্ষীয় গিনি":"GQ","গ্রীস্":"GR","দক্ষিণ জর্জিয়া ও দক্ষিণ স্যান্ডউইচ দ্বীপপুঞ":"GS","গোয়াটিমালা":"GT","গুয়াম":"GU","গিনি-বিসাউ":"GW","গিয়ানা":"GY","হংকং এসএআর চীনা":"HK","হার্ড দ্বীপ এবং ম্যাকডোনাল্ড দ্বীপপুঞ্জ":"HM","হণ্ডুরাস":"HN","ক্রোয়েশিয়া":"HR","হাইতি":"HT","হাঙ্গেরি":"HU","ক্যানারি দ্বীপপুঞ্জ":"IC","ইন্দোনেশিয়া":"ID","আয়ার্লণ্ড":"IE","ইস্রায়েল":"IL","আইল অফ ম্যান":"IM","ভারত":"IN","ব্রিটিশ ভারত মহাসাগরীয় অঞ্চল":"IO","ইরাক":"IQ","ইরান":"IR","আইসলণ্ড":"IS","ইতালী":"IT","জার্সি":"JE","জ্যামেকা":"JM","জর্ডন":"JO","জাপান":"JP","কেনিয়া":"KE","কির্গিজিয়া":"KG","কাম্বোজ":"KH","কিরিবাতি":"KI","কমোরোস":"KM","সেন্ট কিটস ও নেভিস":"KN","উত্তর কোরিয়া":"KP","দক্ষিণ কোরিয়া":"KR","কুয়েত":"KW","কেম্যান দ্বীপপুঞ্জ":"KY","কাজাকস্থান":"KZ","লাওস":"LA","লেবানন":"LB","সেন্ট লুসিয়া":"LC","লিচেনস্টেইন":"LI","শ্রীলঙ্কা":"LK","লাইবেরিয়া":"LR","লেসোথো":"LS","লিত্ভা":"LT","লাক্সেমবার্গ":"LU","লাত্ভিয়া":"LV","লিবিয়া":"LY","মোরক্কো":"MA","মোনাকো":"MC","মোল্দাভিয়া":"MD","মন্টিনিগ্রো":"ME","সেন্ট মার্টিন":"MF","মাদাগাস্কার":"MG","মার্শাল দ্বীপপুঞ্জ":"MH","ম্যাসাডোনিয়া":"MK","মালি":"ML","মায়ানমার":"MM","মঙ্গোলিয়া":"MN","ম্যাকাও এসএআর চীনা":"MO","উত্তরাঞ্চলীয় মারিয়ানা দ্বীপপুঞ্জ":"MP","মার্টিনিক":"MQ","মরিতানিয়া":"MR","মন্টসেরাট":"MS","মাল্টা":"MT","মরিশাস":"MU","মালদ্বীপ":"MV","মালাউই":"MW","মক্সিকো":"MX","মাল্যাশিয়া":"MY","মোজাম্বিক":"MZ","নামিবিয়া":"NA","নিউ ক্যালেডোনিয়া":"NC","নাইজার":"NE","নিরফোক দ্বীপ":"NF","নাইজেরিয়া":"NG","নিকারাগুয়া":"NI","নেদারল্যান্ডস":"NL","নরওয়ে":"NO","নেপাল":"NP","নাউরু":"NR","নিউয়ে":"NU","নিউ জিলণ্ড":"NZ","ওমান":"OM","পানামা":"PA","পিরু":"PE","ফরাসী পলিনেশিয়া":"PF","পাপুয়া নিউ গিনি":"PG","ফিলিপাইন":"PH","পাকিস্তান":"PK","পোল্যাণ্ড":"PL","সেন্ট পিয়ের ও মিকুয়েলন":"PM","পিটকেয়ার্ন":"PN","পুয়ের্টোরিকো":"PR","ফিলিস্তিন অঞ্চল":"PS","পর্তুগাল":"PT","পালাউ":"PW","প্যারাগোয়ে":"PY","কাতার":"QA","আউটলাইনিং ওসানিয়া":"QO","রিইউনিয়ন":"RE","রুমানিয়া":"RO","সারবিয়া":"RS","রাশিয়া":"RU","রুয়ান্ডা":"RW","সাউদি আরব":"SA","সলোমন দ্বীপপুঞ্জ":"SB","সিসিলি":"SC","সুদান":"SD","সুইডেন":"SE","সিঙ্গাপুর":"SG","সেন্ট হেলেনা":"SH","স্লোভানিয়া":"SI","স্বালবার্ড ও জান মেয়েন":"SJ","শ্লোভাকিয়া":"SK","সিয়েরালিওন":"SL","সান মারিনো":"SM","সেনেগাল":"SN","সোমালি":"SO","সুরিনাম":"SR","দক্ষিন সুদান":"SS","সাওটোমা ও প্রিন্সিপি":"ST","এল সালভেদর":"SV","সিন্ট মার্টেন":"SX","সিরিয়া":"SY","সোয়াজিল্যান্ড":"SZ","ট্রিস্টান ডা কুনা":"TA","তুর্কস ও কাইকোস দ্বীপপুঞ্জ":"TC","চাদ":"TD","ফরাসী দক্ষিণাঞ্চল":"TF","টোগো":"TG","থাই":"TH","তাজিকস্থান":"TJ","টোকেলাউ":"TK","পূর্ব-তিমুর":"TL","তুর্কমেনিয়া":"TM","টিউনিস্":"TN","টোঙ্গা":"TO","তুরস্ক":"TR","ত্রিনিনাদ ও টোব্যাগো":"TT","টুভালু":"TV","তাইওয়ান":"TW","তাঞ্জানিয়া":"TZ","ইউক্রেইন":"UA","উগান্ডা":"UG","যুক্তরাষ্ট্রের ক্ষুদ্র ও পার্শ্ববর্তী দ্বীপপুঞ্জ":"UM","মার্কিন যুক্তরাষ্ট্র":"US","উরুগোয়ে":"UY","উজ্বেকিস্থান":"UZ","ভ্যাটিকান সিটি":"VA","সেন্ট ভিনসেন্ট ও দ্যা গ্রেনাডিনস":"VC","ভেনেজুয়েলা":"VE","ব্রিটিশ ভার্জিন দ্বীপপুঞ্জ":"VG","মার্কিন ভার্জিন দ্বীপপুঞ্জ":"VI","ভিয়েতনাম":"VN","ভানুয়াটু":"VU","ওয়ালিস ও ফুটুনা":"WF","সামোয়া":"WS","ইমেন":"YE","মায়োত্তে":"YT","দক্ষিণ আফ্রিকা":"ZA","জাম্বিয়া":"ZM","জিম্বাবুয়ে":"ZW","অজানা অথবা ভুল স্থান":"ZZ"};
+ilib.data.ctrynames_br = {"Enez Ascension":"AC","Andorra":"AD","Emirelezhioù Arab Unanet":"AE","Afghanistan":"AF","Antigua ha Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Antilhez Nederlandat":"AN","Angola":"AO","Antarktika":"AQ","Arcʼhantina":"AR","Samoa Amerikan":"AS","Aostria":"AT","Aostralia":"AU","Aruba":"AW","Inizi Åland":"AX","Azerbaidjan":"AZ","Bosnia ha Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgia":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Antilhez nederlandat":"BQ","Brazil":"BR","Bahamas":"BS","Bhoutan":"BT","Enez Bouvet":"BV","Botswana":"BW","Belarus":"BY","Belize":"BZ","Kanada":"CA","Inizi Kokoz":"CC","Kongo - Kinshasa":"CD","Republik Kreizafrikan":"CF","Kongo - Brazzaville":"CG","Suis":"CH","Aod an Olifant":"CI","Inizi Cook":"CK","Chile":"CL","Kameroun":"CM","Sina":"CN","Kolombia":"CO","Enez Clipperton":"CP","Costa Rica":"CR","Kuba":"CU","Kab Glas":"CV","Curaçao":"CW","Enez Christmas":"CX","Kiprenez":"CY","Republik Tchek":"CZ","Alamagn":"DE","Diego Garcia":"DG","Djibouti":"DJ","Danmark":"DK","Dominica":"DM","Republik Dominikan":"DO","Aljeria":"DZ","Ceuta ha Melilla":"EA","Ecuador":"EC","Estonia":"EE","Egipt":"EG","Sahara ar Cʼhornôg":"EH","Eritrea":"ER","Spagn":"ES","Etiopia":"ET","Unaniezh Europa":"EU","Finland":"FI","Fidji":"FJ","Inizi Falkland":"FK","Mikronezia":"FM","Inizi Faero":"FO","Frañs":"FR","Gabon":"GA","Rouantelezh-Unanet":"GB","Grenada":"GD","Jorjia":"GE","Gwiana cʼhall":"GF","Gwernenez":"GG","Ghana":"GH","Jibraltar":"GI","Greunland":"GL","Gambia":"GM","Ginea":"GN","Gwadeloup":"GP","Ginea ar Cʼheheder":"GQ","Gres":"GR","Inizi Georgia ar Su hag Inizi Sandwich ar Su":"GS","Guatemala":"GT","Guam":"GU","Ginea-Bissau":"GW","Guyana":"GY","Hong Kong RMD Sina":"HK","Inizi Heard ha McDonald":"HM","Honduras":"HN","Kroatia":"HR","Haiti":"HT","Hungaria":"HU","Inizi Kanariez":"IC","Indonezia":"ID","Iwerzhon":"IE","Israel":"IL","Enez Vanav":"IM","India":"IN","Tiriad breizhveurat Meurvor Indez":"IO","Iraq":"IQ","Iran":"IR","Island":"IS","Italia":"IT","Jerzenez":"JE","Jamaika":"JM","Jordania":"JO","Japan":"JP","Kenya":"KE","Kyrgyzstan":"KG","Kambodja":"KH","Kiribati":"KI","Komorez":"KM","Saint Kitts ha Nevis":"KN","Korea an Norzh":"KP","Korea ar Su":"KR","Koweit":"KW","Inizi Cayman":"KY","Kazakstan":"KZ","Laos":"LA","Liban":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lituania":"LT","Luksembourg":"LU","Latvia":"LV","Libia":"LY","Maroko":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagaskar":"MG","Inizi Marshall":"MH","Makedonia":"MK","Mali":"ML","Myanmar [Birmania]":"MM","Mongolia":"MN","Macau RMD Sina":"MO","Inizi Mariana an Norzh":"MP","Martinik":"MQ","Maouritania":"MR","Montserrat":"MS","Malta":"MT","Moris":"MU","Maldivez":"MV","Malawi":"MW","Mecʼhiko":"MX","Malaysia":"MY","Mozambik":"MZ","Namibia":"NA","Kaledonia Nevez":"NC","Niger":"NE","Enez Norfolk":"NF","Nigeria":"NG","Nicaragua":"NI","Izelvroioù":"NL","Norvegia":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Zeland-Nevez":"NZ","Oman":"OM","Panamá":"PA","Perou":"PE","Polinezia cʼhall":"PF","Papoua Ginea-Nevez":"PG","Filipinez":"PH","Pakistan":"PK","Polonia":"PL","Sant-Pêr-ha-Mikelon":"PM","Enez Pitcairn":"PN","Puerto Rico":"PR","Tiriadoù Palestina":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Oseania diabell":"QO","Reünion":"RE","Roumania":"RO","Serbia":"RS","Rusia":"RU","Rwanda":"RW","Arabia Saoudat":"SA","Salomon":"SB","Sechelez":"SC","Soudan":"SD","Sveden":"SE","Singapour":"SG","Saint Helena":"SH","Slovenia":"SI","Svalbard":"SJ","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Su Soudan":"SS","São Tomé ha Príncipe":"ST","Salvador":"SV","Sint Maarten":"SX","Siria":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Inizi Turks ha Caicos":"TC","Tchad":"TD","Douaroù aostral Frañs":"TF","Togo":"TG","Thailand":"TH","Tadjikistan":"TJ","Tokelau":"TK","Timor-Leste":"TL","Turkmenistan":"TM","Tunizia":"TN","Tonga":"TO","Turkia":"TR","Trinidad ha Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraina":"UA","Ouganda":"UG","Inizi diabell ar Stadoù-Unanet":"UM","Stadoù-Unanet":"US","Uruguay":"UY","Ouzbekistan":"UZ","Vatikan":"VA","Sant Visant hag ar Grenadinez":"VC","Venezuela":"VE","Inizi Gwercʼh Breizh-Veur":"VG","Inizi Gwercʼh ar Stadoù-Unanet":"VI","Viêt Nam":"VN","Vanuatu":"VU","Wallis ha Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Suafrika":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Rannved dianav":"ZZ"};
+ilib.data.ctrynames_bs = {"Andora":"AD","Ujedinjeni Arapski Emirati":"AE","Avganistan":"AF","Antigva i Barbuda":"AG","Angvila":"AI","Albanija":"AL","Armenija":"AM","Holandski Antili":"AN","Angola":"AO","Antarktika":"AQ","Argentina":"AR","Američka Samoa":"AS","Austrija":"AT","Australija":"AU","Aruba":"AW","Alandska ostrva":"AX","Azerbejdžan":"AZ","Bosna i Hercegovina":"BA","Barbados":"BB","Bangladeš":"BD","Belgija":"BE","Burkina Faso":"BF","Bugarska":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","Sv. Bartolomej":"BL","Bermuda":"BM","Brunej":"BN","Bolivija":"BO","Brazil":"BR","Bahami":"BS","Butan":"BT","Buve Ostrva":"BV","Bocvana":"BW","Belorusija":"BY","Belise":"BZ","Kanada":"CA","Kokos (Keling) Ostrva":"CC","Demokratska Republika Kongo":"CD","Centralno Afrička Republika":"CF","Kongo":"CG","Švajcarska":"CH","Obala Slonovače":"CI","Kukova Ostrva":"CK","Čile":"CL","Kamerun":"CM","Kina":"CN","Kolumbija":"CO","Kostarika":"CR","Kuba":"CU","Kape Verde":"CV","Božićna Ostrva":"CX","Kipar":"CY","Češka":"CZ","Nemačka":"DE","Džibuti":"DJ","Danska":"DK","Dominika":"DM","Dominikanska Republika":"DO","Alžir":"DZ","Ekvador":"EC","Estonija":"EE","Egipat":"EG","Zapadna Sahara":"EH","Eritreja":"ER","Španija":"ES","Etiopija":"ET","Evropska unija":"EU","Finska":"FI","Fidži":"FJ","Folklandska Ostrva":"FK","Mikronezija":"FM","Farska Ostrva":"FO","Francuska":"FR","Gabon":"GA","Velika Britanija":"GB","Grenada":"GD","Gruzija":"GE","Francuska Gvajana":"GF","Gurnsi":"GG","Gana":"GH","Gibraltar":"GI","Grenland":"GL","Gambija":"GM","Gvineja":"GN","Gvadelupe":"GP","Ekvatorijalna Gvineja":"GQ","Grčka":"GR","Južna Džordžija i Južna Sendvič Ostrva":"GS","Gvatemala":"GT","Guam":"GU","Gvineja-Bisao":"GW","Gvajana":"GY","Hong Kong (S. A. R. Kina)":"HK","Herd i Mekdonald Ostrva":"HM","Honduras":"HN","Hrvatska":"HR","Haiti":"HT","Mađarska":"HU","Indonezija":"ID","Irska":"IE","Izrael":"IL","Ostrvo Man":"IM","Indija":"IN","Britansko Indijska Okeanska Teritorija":"IO","Irak":"IQ","Iran":"IR","Island":"IS","Italija":"IT","Džersi":"JE","Jamajka":"JM","Jordan":"JO","Japan":"JP","Kenija":"KE","Kirgizstan":"KG","Kambodža":"KH","Kiribati":"KI","Komorska Ostrva":"KM","Sent Kits i Nevis":"KN","Severna Koreja":"KP","Južna Koreja":"KR","Kuvajt":"KW","Kajmanska Ostrva":"KY","Kazahstan":"KZ","Laos":"LA","Liban":"LB","Sent Lucija":"LC","Lihtenštajn":"LI","Šri Lanka":"LK","Liberija":"LR","Lesoto":"LS","Litvanija":"LT","Luksemburg":"LU","Letonija":"LV","Libija":"LY","Maroko":"MA","Monako":"MC","Moldavija":"MD","Crna Gora":"ME","Sv. Martin":"MF","Madagaskar":"MG","Maršalska Ostrva":"MH","Makedonija":"MK","Mali":"ML","Mijanmar":"MM","Mongolija":"MN","Makao (S. A. R. Kina)":"MO","Severna Marijanska Ostrva":"MP","Martinik":"MQ","Mauritanija":"MR","Monserat":"MS","Malta":"MT","Mauricius":"MU","Maldivi":"MV","Malavi":"MW","Meksiko":"MX","Malezija":"MY","Mozambik":"MZ","Namibija":"NA","Nova Kaledonija":"NC","Niger":"NE","Norfolk Ostrvo":"NF","Nigerija":"NG","Nikaragva":"NI","Holandija":"NL","Norveška":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Novi Zeland":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Francuska Polinezija":"PF","Papua Nova Gvineja":"PG","Filipini":"PH","Pakistan":"PK","Poljska":"PL","Sen Pjer i Mikelon":"PM","Pitcairn":"PN","Porto Riko":"PR","Palestinska Teritorija":"PS","Portugal":"PT","Palau":"PW","Paragvaj":"PY","Katar":"QA","Ostala okeanija":"QO","Rejunion":"RE","Rumunija":"RO","Srbija":"RS","Rusija":"RU","Ruanda":"RW","Saudijska Arabija":"SA","Solomonska Ostrva":"SB","Sejšeli":"SC","Sudan":"SD","Švedska":"SE","Singapur":"SG","Sveta Jelena":"SH","Slovenija":"SI","Svalbard i Janmajen Ostrva":"SJ","Slovačka":"SK","Sijera Leone":"SL","San Marino":"SM","Senegal":"SN","Somalija":"SO","Surinam":"SR","Sao Tome i Principe":"ST","Salvador":"SV","Sirija":"SY","Svazilend":"SZ","Turks i Kajkos Ostrva":"TC","Čad":"TD","Francuske Južne Teritorije":"TF","Togo":"TG","Tajland":"TH","Tadžikistan":"TJ","Tokelau":"TK","Timor Leste":"TL","Turkmenistan":"TM","Tunis":"TN","Tonga":"TO","Turska":"TR","Trinidad i Tobago":"TT","Tuvalu":"TV","Tajvan":"TW","Tanzanija":"TZ","Ukrajina":"UA","Uganda":"UG","Manja Udaljena Ostrva SAD":"UM","Sjedinjene Američke Države":"US","Urugvaj":"UY","Uzbekistan":"UZ","Vatikan":"VA","Sent Vinsent i Grenadini":"VC","Venecuela":"VE","Britanska Devičanska Ostrva":"VG","S.A.D. Devičanska Ostrva":"VI","Vijetnam":"VN","Vanuatu":"VU","Valis i Futuna Ostrva":"WF","Samoa":"WS","Jemen":"YE","Majote":"YT","Južnoafrička Republika":"ZA","Zambija":"ZM","Zimbabve":"ZW","Nepoznata ili nevažeća oblast":"ZZ"};
+ilib.data.ctrynames_bs_Cyrl_BA = {"Острво Асенсион":"AC","Андора":"AD","Уједињени Арапски Емирати":"AE","Авганистан":"AF","Антигве и Барбуда":"AG","Ангвила":"AI","Албанија":"AL","Арменија":"AM","Холандски Антили":"AN","Ангола":"AO","Антарктик":"AQ","Аргентина":"AR","Америчка Самоа":"AS","Аустрија":"AT","Аустралија":"AU","Аруба":"AW","Аландска острва":"AX","Азербејџан":"AZ","Босна и Херцеговина":"BA","Барбадос":"BB","Бангладеш":"BD","Белгија":"BE","Буркина Фасо":"BF","Бугарска":"BG","Бахреин":"BH","Бурунди":"BI","Бенин":"BJ","Свети Бартоломеј":"BL","Бермуда":"BM","Брунеј":"BN","Боливија":"BO","Бразил":"BR","Бахами":"BS","Бутан":"BT","Буве Острва":"BV","Боцвана":"BW","Белорусија":"BY","Белизе":"BZ","Канада":"CA","Кокос (Келинг) Острва":"CC","Конго - Киншаса":"CD","Централно Афричка Република":"CF","Конго - Бразавил":"CG","Швајцарска":"CH","Обала Слоноваче":"CI","Кукова Острва":"CK","Чиле":"CL","Камерун":"CM","Кина":"CN","Колумбија":"CO","Острво Клипертон":"CP","Костарика":"CR","Куба":"CU","Капе Верде":"CV","Божићна острва":"CX","Кипар":"CY","Чешка":"CZ","Немачка":"DE","Дијего Гарсија":"DG","Џибути":"DJ","Данска":"DK","Доминика":"DM","Доминиканска Република":"DO","Алжир":"DZ","Сеута и Мелиља":"EA","Еквадор":"EC","Естонија":"EE","Египат":"EG","Западна Сахара":"EH","Еритреја":"ER","Шпанија":"ES","Етиопија":"ET","Европска Унија":"EU","Финска":"FI","Фиџи":"FJ","Фокландска острва":"FK","Микронезија":"FM","Фарска Острва":"FO","Француска":"FR","Габон":"GA","Велика Британија":"GB","Гренада":"GD","Грузија":"GE","Француска Гвајана":"GF","Гурнси":"GG","Гана":"GH","Гибралтар":"GI","Гренланд":"GL","Гамбија":"GM","Гвинеја":"GN","Гваделупе":"GP","Екваторијална Гвинеја":"GQ","Грчка":"GR","Јужна Џорџија и Јужна Сендвич Острва":"GS","Гватемала":"GT","Гуам":"GU","Гвинеја-Бисао":"GW","Гвајана":"GY","Хонг Конг С. А. Р. Кина":"HK","Херд и Мекдоналд Острва":"HM","Хондурас":"HN","Хрватска":"HR","Хаити":"HT","Мађарска":"HU","Канарска острва":"IC","Индонезија":"ID","Ирска":"IE","Израел":"IL","Острво Ман":"IM","Индија":"IN","Британска територија у Индијском океану":"IO","Ирак":"IQ","Иран":"IR","Исланд":"IS","Италија":"IT","Џерси":"JE","Јамајка":"JM","Јордан":"JO","Јапан":"JP","Кенија":"KE","Киргизстан":"KG","Камбоџа":"KH","Кирибати":"KI","Коморска Острва":"KM","Сент Китс и Невис":"KN","Северна Кореја":"KP","Јужна Кореја":"KR","Кувајт":"KW","Кајманска Острва":"KY","Казахстан":"KZ","Лаос":"LA","Либан":"LB","Сент Луција":"LC","Лихтенштајн":"LI","Шри Ланка":"LK","Либерија":"LR","Лесото":"LS","Литванија":"LT","Луксембург":"LU","Летонија":"LV","Либија":"LY","Мароко":"MA","Монако":"MC","Молдавија":"MD","Црна Гора":"ME","Сент Мартин":"MF","Мадагаскар":"MG","Маршалска Острва":"MH","Македонија":"MK","Мали":"ML","Мијанмар [Бурма]":"MM","Монголија":"MN","Макао С. А. Р. Кина":"MO","Северна Маријанска Острва":"MP","Мартиник":"MQ","Мауританија":"MR","Монсерат":"MS","Малта":"MT","Маурицијус":"MU","Малдиви":"MV","Малави":"MW","Мексико":"MX","Малезија":"MY","Мозамбик":"MZ","Намибија":"NA","Нова Каледонија":"NC","Нигер":"NE","Норфолк Острво":"NF","Нигерија":"NG","Никарагва":"NI","Холандија":"NL","Норвешка":"NO","Непал":"NP","Науру":"NR","Ниуе":"NU","Нови Зеланд":"NZ","Оман":"OM","Панама":"PA","Перу":"PE","Француска Полинезија":"PF","Папуа Нова Гвинеја":"PG","Филипини":"PH","Пакистан":"PK","Пољска":"PL","Сен Пјер и Микелон":"PM","Питкерн":"PN","Порто Рико":"PR","Палестинске територије":"PS","Португалија":"PT","Палау":"PW","Парагвај":"PY","Катар":"QA","Остала океанија":"QO","Реинион":"RE","Румунија":"RO","Србија":"RS","Русија":"RU","Руанда":"RW","Саудијска Арабија":"SA","Соломонска Острва":"SB","Сејшели":"SC","Судан":"SD","Шведска":"SE","Сингапур":"SG","Света Јелена":"SH","Словенија":"SI","Свалбард и Јанмајен Острва":"SJ","Словачка":"SK","Сијера Леоне":"SL","Сан Марино":"SM","Сенегал":"SN","Сомалија":"SO","Суринам":"SR","Сао Томе и Принципе":"ST","Салвадор":"SV","Сирија":"SY","Свазиленд":"SZ","Тристан да Куња":"TA","Туркс и Кајкос Острва":"TC","Чад":"TD","Француске Јужне Територије":"TF","Того":"TG","Тајланд":"TH","Таџикистан":"TJ","Токелау":"TK","Источни Тимор":"TL","Туркменистан":"TM","Тунис":"TN","Тонга":"TO","Турска":"TR","Тринидад и Тобаго":"TT","Тувалу":"TV","Тајван":"TW","Танзанија":"TZ","Украјина":"UA","Уганда":"UG","Мања удаљена острва САД":"UM","Сједињене Америчке Државе":"US","Уругвај":"UY","Узбекистан":"UZ","Ватикан":"VA","Сент Винсент и Гренадини":"VC","Венецуела":"VE","Британска Девичанска Острва":"VG","С.А.Д. Девичанска Острва":"VI","Вијетнам":"VN","Вануату":"VU","Валис и Футуна Острва":"WF","Самоа":"WS","Јемен":"YE","Мајоте":"YT","Јужноафричка Република":"ZA","Замбија":"ZM","Зимбабве":"ZW","Непозната или неважећа област":"ZZ"};
+ilib.data.ctrynames_ca = {"Illa de l'Ascensió":"AC","Andorra":"AD","Unió dels Emirats Àrabs":"AE","Afganistan":"AF","Antigua i Barbuda":"AG","Anguilla":"AI","Albània":"AL","Armènia":"AM","Antilles Neerlandeses":"AN","Angola":"AO","Antàrtida":"AQ","Argentina":"AR","Samoa Americana":"AS","Àustria":"AT","Austràlia":"AU","Aruba":"AW","Illes Åland":"AX","Azerbaidjan":"AZ","Bòsnia i Hercegovina":"BA","Barbados":"BB","Bangla Desh":"BD","Bèlgica":"BE","Burkina Faso":"BF","Bulgària":"BG","Bahrain":"BH","Burundi":"BI","Benín":"BJ","Saint Barthélemy":"BL","Bermudes":"BM","Brunei":"BN","Bolívia":"BO","Carib Neerlandès":"BQ","Brasil":"BR","Bahames":"BS","Bhutan":"BT","Illa Bouvet":"BV","Botswana":"BW","Bielorússia":"BY","Belize":"BZ","Canadà":"CA","Illes Cocos":"CC","Congo - Kinshasa":"CD","República Centreafricana":"CF","Congo - Brazzaville":"CG","Suïssa":"CH","Costa d’Ivori":"CI","Illes Cook":"CK","Xile":"CL","Camerun":"CM","Xina":"CN","Colòmbia":"CO","Illa Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Cap Verd":"CV","Curaçao":"CW","Illa Christmas":"CX","Xipre":"CY","República Txeca":"CZ","Alemanya":"DE","Diego Garcia":"DG","Djibouti":"DJ","Dinamarca":"DK","Dominica":"DM","República Dominicana":"DO","Algèria":"DZ","Ceuta i Melilla":"EA","Equador":"EC","Estònia":"EE","Egipte":"EG","Sàhara Occidental":"EH","Eritrea":"ER","Espanya":"ES","Etiòpia":"ET","Unió Europea":"EU","Finlàndia":"FI","Fiji":"FJ","Illes Malvines":"FK","Micronèsia":"FM","Illes Fèroe":"FO","França":"FR","Gabon":"GA","Regne Unit":"GB","Grenada":"GD","Geòrgia":"GE","Guaiana Francesa":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grenlàndia":"GL","Gàmbia":"GM","Guinea":"GN","Guadeloupe":"GP","Guinea Equatorial":"GQ","Grècia":"GR","Illes Geòrgia del Sud i Sandwich del Sud":"GS","Guatemala":"GT","Guam":"GU","Guinea Bissau":"GW","Guyana":"GY","Regió adm. especial xinesa de Hong Kong":"HK","Illa Heard i Illes McDonald":"HM","Hondures":"HN","Croàcia":"HR","Haití":"HT","Hongria":"HU","Illes Canàries":"IC","Indonèsia":"ID","Irlanda":"IE","Israel":"IL","Illa de Man":"IM","Índia":"IN","Territori Britànic de l'Oceà Índic":"IO","Iraq":"IQ","Iran":"IR","Islàndia":"IS","Itàlia":"IT","Jersey":"JE","Jamaica":"JM","Jordània":"JO","Japó":"JP","Kenya":"KE","Kirguizistan":"KG","Cambodja":"KH","Kiribati":"KI","Comores":"KM","Saint Christopher i Nevis":"KN","Corea del Nord":"KP","Corea del Sud":"KR","Kuwait":"KW","Illes Caiman":"KY","Kazakhstan":"KZ","Laos":"LA","Líban":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Libèria":"LR","Lesotho":"LS","Lituània":"LT","Luxemburg":"LU","Letònia":"LV","Líbia":"LY","Marroc":"MA","Mònaco":"MC","Moldàvia":"MD","Montenegro":"ME","Saint Martin":"MF","Madagascar":"MG","Illes Marshall":"MH","Macedònia":"MK","Mali":"ML","Myanmar [Birmània]":"MM","Mongòlia":"MN","Regió administrativa especial xinesa de Macau":"MO","Illes Mariannes del Nord":"MP","Martinica":"MQ","Mauritània":"MR","Montserrat":"MS","Malta":"MT","Maurici":"MU","Maldives":"MV","Malawi":"MW","Mèxic":"MX","Malàisia":"MY","Moçambic":"MZ","Namíbia":"NA","Nova Caledònia":"NC","Níger":"NE","Illa Norfolk":"NF","Nigèria":"NG","Nicaragua":"NI","Països Baixos":"NL","Noruega":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Nova Zelanda":"NZ","Oman":"OM","Panamà":"PA","Perú":"PE","Polinèsia Francesa":"PF","Papua Nova Guinea":"PG","Filipines":"PH","Pakistan":"PK","Polònia":"PL","Saint-Pierre-et-Miquelon":"PM","Illes Pitcairn":"PN","Puerto Rico":"PR","Palestina":"PS","Portugal":"PT","Palau":"PW","Paraguai":"PY","Qatar":"QA","Territoris allunyats d'Oceania":"QO","Illa de la Reunió":"RE","Romania":"RO","Sèrbia":"RS","Rússia":"RU","Rwanda":"RW","Aràbia Saudita":"SA","Illes Salomó":"SB","Seychelles":"SC","Sudan":"SD","Suècia":"SE","Singapur":"SG","Saint Helena":"SH","Eslovènia":"SI","Svalbard i Jan Mayen":"SJ","Eslovàquia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somàlia":"SO","Surinam":"SR","Sudan del Sud":"SS","São Tomé i Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Síria":"SY","Swazilàndia":"SZ","Tristão da Cunha":"TA","Illes Turks i Caicos":"TC","Txad":"TD","Territoris Francesos del Sud":"TF","Togo":"TG","Tailàndia":"TH","Tadjikistan":"TJ","Tokelau":"TK","Timor Oriental":"TL","Turkmenistan":"TM","Tunísia":"TN","Tonga":"TO","Turquia":"TR","Trinitat i Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzània":"TZ","Ucraïna":"UA","Uganda":"UG","Illes Perifèriques Menors dels EUA":"UM","Estats Units":"US","Uruguai":"UY","Uzbekistan":"UZ","Vaticà":"VA","Saint Vincent i les Grenadines":"VC","Veneçuela":"VE","Illes Verges Britàniques":"VG","Illes Verges Nord-americanes":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis i Futuna":"WF","Samoa":"WS","Iemen":"YE","Mayotte":"YT","República de Sud-àfrica":"ZA","Zàmbia":"ZM","Zimbabwe":"ZW","Regió desconeguda":"ZZ"};
+ilib.data.ctrynames_cs = {"Ostrov Ascension":"AC","Andorra":"AD","Spojené arabské emiráty":"AE","Afghánistán":"AF","Antigua a Barbuda":"AG","Anguilla":"AI","Albánie":"AL","Arménie":"AM","Nizozemské Antily":"AN","Angola":"AO","Antarktida":"AQ","Argentina":"AR","Americká Samoa":"AS","Rakousko":"AT","Austrálie":"AU","Aruba":"AW","Alandy":"AX","Ázerbájdžán":"AZ","Bosna a Hercegovina":"BA","Barbados":"BB","Bangladéš":"BD","Belgie":"BE","Burkina Faso":"BF","Bulharsko":"BG","Bahrajn":"BH","Burundi":"BI","Benin":"BJ","Svatý Bartoloměj":"BL","Bermudy":"BM","Brunej":"BN","Bolívie":"BO","Karibské Nizozemsko":"BQ","Brazílie":"BR","Bahamy":"BS","Bhútán":"BT","Bouvetův ostrov":"BV","Botswana":"BW","Bělorusko":"BY","Belize":"BZ","Kanada":"CA","Kokosové ostrovy":"CC","Kongo - Kinshasa":"CD","Středoafrická republika":"CF","Kongo - Brazzaville":"CG","Švýcarsko":"CH","Pobřeží slonoviny":"CI","Cookovy ostrovy":"CK","Chile":"CL","Kamerun":"CM","Čína":"CN","Kolumbie":"CO","Clippertonův ostrov":"CP","Kostarika":"CR","Kuba":"CU","Kapverdy":"CV","Curaçao":"CW","Vánoční ostrovy":"CX","Kypr":"CY","Česká republika":"CZ","Německo":"DE","Diego García":"DG","Džibutsko":"DJ","Dánsko":"DK","Dominika":"DM","Dominikánská republika":"DO","Alžírsko":"DZ","Ceuta a Melilla":"EA","Ekvádor":"EC","Estonsko":"EE","Egypt":"EG","Západní Sahara":"EH","Eritrea":"ER","Španělsko":"ES","Etiopie":"ET","Evropská unie":"EU","Finsko":"FI","Fidži":"FJ","Falklandské ostrovy":"FK","Mikronésie":"FM","Faerské ostrovy":"FO","Francie":"FR","Gabon":"GA","Velká Británie":"GB","Grenada":"GD","Gruzie":"GE","Francouzská Guyana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grónsko":"GL","Gambie":"GM","Guinea":"GN","Guadeloupe":"GP","Rovníková Guinea":"GQ","Řecko":"GR","Jižní Georgie a Jižní Sandwichovy ostrovy":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hongkong - ZAO Číny":"HK","Heardův ostrov a McDonaldovy ostrovy":"HM","Honduras":"HN","Chorvatsko":"HR","Haiti":"HT","Maďarsko":"HU","Kanárské ostrovy":"IC","Indonésie":"ID","Irsko":"IE","Izrael":"IL","Ostrov Man":"IM","Indie":"IN","Britské indickooceánské území":"IO","Irák":"IQ","Írán":"IR","Island":"IS","Itálie":"IT","Jersey":"JE","Jamajka":"JM","Jordánsko":"JO","Japonsko":"JP","Keňa":"KE","Kyrgyzstán":"KG","Kambodža":"KH","Kiribati":"KI","Komory":"KM","Svatý Kitts a Nevis":"KN","Severní Korea":"KP","Jižní Korea":"KR","Kuvajt":"KW","Kajmanské ostrovy":"KY","Kazachstán":"KZ","Laos":"LA","Libanon":"LB","Svatá Lucie":"LC","Lichtenštejnsko":"LI","Srí Lanka":"LK","Libérie":"LR","Lesotho":"LS","Litva":"LT","Lucembursko":"LU","Lotyšsko":"LV","Libye":"LY","Maroko":"MA","Monako":"MC","Moldavsko":"MD","Černá Hora":"ME","Svatý Martin":"MF","Madagaskar":"MG","Marshallovy ostrovy":"MH","Makedonie":"MK","Mali":"ML","Myanmar":"MM","Mongolsko":"MN","Macao - ZAO Číny":"MO","Severní Mariany":"MP","Martinik":"MQ","Mauritánie":"MR","Montserrat":"MS","Malta":"MT","Mauricius":"MU","Maledivy":"MV","Malawi":"MW","Mexiko":"MX","Malajsie":"MY","Mosambik":"MZ","Namibie":"NA","Nová Kaledonie":"NC","Niger":"NE","Norfolk":"NF","Nigérie":"NG","Nikaragua":"NI","Nizozemsko":"NL","Norsko":"NO","Nepál":"NP","Nauru":"NR","Niue":"NU","Nový Zéland":"NZ","Omán":"OM","Panama":"PA","Peru":"PE","Francouzská Polynésie":"PF","Papua-Nová Guinea":"PG","Filipíny":"PH","Pákistán":"PK","Polsko":"PL","Svatý Pierre a Miquelon":"PM","Pitcairnovy ostrovy":"PN","Portoriko":"PR","Palestinská území":"PS","Portugalsko":"PT","Palau":"PW","Paraguay":"PY","Katar":"QA","Vnější Oceánie":"QO","Réunion":"RE","Rumunsko":"RO","Srbsko":"RS","Rusko":"RU","Rwanda":"RW","Saúdská Arábie":"SA","Šalamounovy ostrovy":"SB","Seychely":"SC","Súdán":"SD","Švédsko":"SE","Singapur":"SG","Svatá Helena":"SH","Slovinsko":"SI","Špicberky a Jan Mayen":"SJ","Slovensko":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somálsko":"SO","Surinam":"SR","Jižní Súdán":"SS","Svatý Tomáš a Princův ostrov":"ST","Salvador":"SV","Sint Maarten":"SX","Sýrie":"SY","Svazijsko":"SZ","Tristan da Cunha":"TA","Ostrovy Turks a Caicos":"TC","Čad":"TD","Francouzská jižní teritoria":"TF","Togo":"TG","Thajsko":"TH","Tádžikistán":"TJ","Tokelau":"TK","Východní Timor":"TL","Turkmenistán":"TM","Tunisko":"TN","Tonga":"TO","Turecko":"TR","Trinidad a Tobago":"TT","Tuvalu":"TV","Tchaj-wan":"TW","Tanzanie":"TZ","Ukrajina":"UA","Uganda":"UG","Menší odlehlé ostrovy USA":"UM","Spojené státy":"US","Uruguay":"UY","Uzbekistán":"UZ","Vatikán":"VA","Svatý Vincenc a Grenadiny":"VC","Venezuela":"VE","Britské Panenské ostrovy":"VG","Americké Panenské ostrovy":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis a Futuna":"WF","Samoa":"WS","Jemen":"YE","Mayotte":"YT","Jihoafrická republika":"ZA","Zambie":"ZM","Zimbabwe":"ZW","Neznámá oblast":"ZZ"};
 ilib.data.ctrynames_da = {"Ascensionøen":"AC","Andorra":"AD","Forenede Arabiske Emirater":"AE","Afghanistan":"AF","Antigua og Barbuda":"AG","Anguilla":"AI","Albanien":"AL","Armenien":"AM","Hollandske Antiller":"AN","Angola":"AO","Antarktis":"AQ","Argentina":"AR","Amerikansk Samoa":"AS","Østrig":"AT","Australien":"AU","Aruba":"AW","Ålandsøerne":"AX","Aserbajdsjan":"AZ","Bosnien-Hercegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgien":"BE","Burkina Faso":"BF","Bulgarien":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei Darussalam":"BN","Bolivia":"BO","Nederlandske antiller":"BQ","Brasilien":"BR","Bahamas":"BS","Bhutan":"BT","Bouvetø":"BV","Botswana":"BW","Hviderusland":"BY","Belize":"BZ","Canada":"CA","Cocosøerne":"CC","Congo-Kinshasa":"CD","Centralafrikanske Republik":"CF","Congo – Brazzaville":"CG","Schweiz":"CH","Côte d’Ivoire":"CI","Cookøerne":"CK","Chile":"CL","Cameroun":"CM","Kina":"CN","Colombia":"CO","Clippertonøen":"CP","Costa Rica":"CR","Cuba":"CU","Kap Verde":"CV","Curacao":"CW","Juleøen":"CX","Cypern":"CY","Tjekkiet":"CZ","Tyskland":"DE","Diego Garcia":"DG","Djibouti":"DJ","Danmark":"DK","Dominica":"DM","Den Dominikanske Republik":"DO","Algeriet":"DZ","Ceuta og Melilla":"EA","Ecuador":"EC","Estland":"EE","Egypten":"EG","Vestsahara":"EH","Eritrea":"ER","Spanien":"ES","Etiopien":"ET","Den Europæiske Union":"EU","Finland":"FI","Fiji":"FJ","Falklandsøerne":"FK","Mikronesiens Forenede Stater":"FM","Færøerne":"FO","Frankrig":"FR","Gabon":"GA","Storbritannien":"GB","Grenada":"GD","Georgien":"GE","Fransk Guyana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grønland":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Ækvatorialguinea":"GQ","Grækenland":"GR","South Georgia og De Sydlige Sandwichøer":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hongkong SAR":"HK","Heard- og McDonald-øerne":"HM","Honduras":"HN","Kroatien":"HR","Haiti":"HT","Ungarn":"HU","Kanariske øer":"IC","Indonesien":"ID","Irland":"IE","Israel":"IL","Isle of Man":"IM","Indien":"IN","Det Britiske Territorium i Det Indiske Ocean":"IO","Irak":"IQ","Iran":"IR","Island":"IS","Italien":"IT","Jersey":"JE","Jamaica":"JM","Jordan":"JO","Japan":"JP","Kenya":"KE","Kirgisistan":"KG","Cambodja":"KH","Kiribati":"KI","Comorerne":"KM","Saint Kitts og Nevis":"KN","Nordkorea":"KP","Sydkorea":"KR","Kuwait":"KW","Caymanøerne":"KY","Kasakhstan":"KZ","Laos":"LA","Libanon":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Litauen":"LT","Luxembourg":"LU","Letland":"LV","Libyen":"LY","Marokko":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagaskar":"MG","Marshalløerne":"MH","Makedonien":"MK","Mali":"ML","Myanmar [Burma]":"MM","Mongoliet":"MN","Macao SAR":"MO","Nordmarianerne":"MP","Martinique":"MQ","Mauretanien":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldiverne":"MV","Malawi":"MW","Mexico":"MX","Malaysia":"MY","Mozambique":"MZ","Namibia":"NA","Ny Caledonien":"NC","Niger":"NE","Norfolkøen":"NF","Nigeria":"NG","Nicaragua":"NI","Holland":"NL","Norge":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","New Zealand":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Fransk Polynesien":"PF","Papua Ny Guinea":"PG","Filippinerne":"PH","Pakistan":"PK","Polen":"PL","Saint Pierre og Miquelon":"PM","Pitcairn":"PN","Puerto Rico":"PR","De palæstinensiske områder":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Ydre Oceanien":"QO","Reunion":"RE","Rumænien":"RO","Serbien":"RS","Rusland":"RU","Rwanda":"RW","Saudi-Arabien":"SA","Salomonøerne":"SB","Seychellerne":"SC","Sudan":"SD","Sverige":"SE","Singapore":"SG","St. Helena":"SH","Slovenien":"SI","Svalbard og Jan Mayen":"SJ","Slovakiet":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Sydsudan":"SS","Sao Tome og Principe":"ST","El Salvador":"SV","Sint Maarten":"SX","Syrien":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Turks- og Caicosøerne":"TC","Tchad":"TD","Franske Besiddelser i Det Sydlige Indiske Ocean":"TF","Togo":"TG","Thailand":"TH","Tadsjikistan":"TJ","Tokelau":"TK","Timor-Leste":"TL","Turkmenistan":"TM","Tunesien":"TN","Tonga":"TO","Tyrkiet":"TR","Trinidad og Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraine":"UA","Uganda":"UG","Amerikanske oversøiske øer":"UM","USA":"US","Uruguay":"UY","Usbekistan":"UZ","Vatikanstaten":"VA","St. Vincent og Grenadinerne":"VC","Venezuela":"VE","De britiske jomfruøer":"VG","De amerikanske jomfruøer":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis og Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Sydafrika":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Ukendt område":"ZZ"};
 ilib.data.ctrynames_de = {"generated":false,"albanien":"AL","algerien":"DZ","amerikanisch-samoa":"AS","antigua und barbuda":"AG","argentinien":"AR","armenien":"AM","ascension":"SH","australien":"AU","österreich":"AT","aserbaidschan":"AZ","britische jungferninseln":"VG","bangladesch":"BD","belgien":"BE","bolivien":"BO","bosnien und herzegowina":"BA","botsuana":"BW","brasilien":"BR","britisches territorium im indischen ozean":"IO","bulgarien":"BG","kambodscha":"KH","kamerun":"CM","kap verde":"CV","kaimaninseln":"KY","zentralafrikanische republik":"CF","tschad":"TD","kolumbien":"CO","komoren":"KM","cookinseln":"CK","kroatien":"HR","kuba":"CU","zypern":"CY","tschechische republik":"CZ","côte d’ivoire":"CI","dominikanische republik":"DO","kongo, demokratische volksrepublik":"CD","kongo, demokratische republik":"CD","dänemark":"DK","dschibuti":"DJ","osttimor":"TL","ägypten":"EG","äquatorialguinea":"GQ","estland":"EE","äthiopien":"ET","mazedonien, ehemalige jugoslawische republik":"MK","falklandinseln":"FK","färöer":"FO","mikronesien":"FM","fidschi":"FJ","finnland":"FI","frankreich":"FR","französisch-guayana":"GF","französisch-polynesien":"PF","gabun":"GA","deutschland":"DE","griechenland":"GR","grönland":"GL","hongkong":"HK","ungarn":"HU","island":"IS","indien":"IN","indonesien":"ID","irak":"IQ","irland":"IE","italien":"IT","jamaika":"JM","jordanien":"JO","kenia":"KE","kirgisistan":"KG","lettland":"LV","libanon":"LB","libyen":"LY","litauen":"LT","luxemburg":"LU","madagaskar":"MG","malediven":"MV","marianen":"MP","marshallinseln":"MH","martinique":"MQ","mauretanien":"MR","mexiko":"MX","moldau":"MD","mongolei":"MN","marokko":"MA","mosambik":"MZ","niederlande":"NL","niederländische antillen":"AN","neukaledonien":"NC","neuseeland":"NZ","norfolkinseln":"NF","nordkorea":"KP","nördliche marianen":"MP","norwegen":"NO","palästinensische autonomiebehörde":"PS","papua-neuguinea":"PG","china, volksrepublik":"CN","philippinen":"PH","polen":"PL","katar":"QA","china, republik":"TW","irland, republik":"IE","rumänien":"RO","russland":"RU","ruanda":"RW","st. helena":"SH","st. kitts und nevis":"KN","st. lucia":"LC","saint-pierre und miquelon":"PM","saint-vincent":"VC","st. vincent und die grenadinen":"VC","saudi-arabien":"SA","serbien":"RS","seychellen":"SC","singapur":"SG","slowakei":"SK","slowenien":"SI","salomoninseln":"SB","südafrika":"ZA","südkorea":"KR","spanien":"ES","surinam":"SR","swasiland":"SZ","schweden":"SE","schweiz":"CH","syrien":"SY","são tomé und príncipe":"ST","tadschikistan":"TJ","tansania":"TZ","bahamas":"BS","gambia":"GM","turks- und caicosinseln":"TC","amerikanische jungferninseln":"VI","trinidad und tobago":"TT","tunesien":"TN","türkei":"TR","vae":"AE","vereinigte arabische emirate":"AE","großbritannien":"GB","usbekistan":"UZ","vatikanstadt":"VA","wallis und futuna":"WF","jemen":"YE","sambia":"ZM","simbabwe":"ZW","afghanistan":"AF","ålandinseln":"AX","andorra":"AD","angola":"AO","anguilla":"AI","antigua":"AG","arabien":"SA","aruba":"AW","bahrain":"BH","barbados":"BB","barbuda":"AG","belarus":"BY","belize":"BZ","benin":"BJ","bermuda":"BM","bhutan":"BT","bolivarische republik venezuela":"VE","bolivien, plurinationaler staat":"BO","bosnien":"BA","bouvetinsel":"BV","britische territorien im indischen ozean":"IO","brunei":"BN","brunei darussalam":"BN","burkina faso":"BF","burundi":"BI","caicosinseln":"TC","kanada":"CA","chile":"CL","china":"CN","weihnachtsinsel":"CX","kokosinseln (keelinginseln)":"CC","kokos- und keelinginseln":"CC","kokosinseln":"CC","kongo":"CD","costa rica":"CR","demokratische republik kongo":"CD","demokratische volksrepublik korea":"KP","dominica":"DM","kdvr":"KP","dubai":"AE","ecuador":"EC","el salvador":"SV","england":"GB","eritrea":"ER","ehemalige jugoslawische republik mazedonien":"MK","föderierte staaten von mikronesien":"FM","französische süd- und antarktisgebiete":"TF","futuna":"WF","georgien":"GE","ghana":"GH","gibraltar":"GI","grenada":"GD","grenadinen":"VC","guadeloupe":"GP","guam":"GU","guatemala":"GT","guernsey":"GG","guinea":"GN","guinea-bissau":"GW","guyana":"GY","haiti":"HT","heard und mcdonaldinseln":"HM","heardinsel":"HM","herzegowina":"BA","holland":"NL","heiliger stuhl":"VA","honduras":"HN","iran":"IR","iran, islamische republik":"IR","islamische republik iran":"IR","isle of man":"IM","israel":"IL","elfenbeinküste":"CI","jan mayen":"SJ","japan":"JP","jersey":"JE","kasachstan":"KZ","kiribati":"KI","korea":"KR","korea, demokatrische volksrepublik":"KP","korea, republik":"KR","kuwait":"KW","laos, demokratische volksrepublik":"LA","laos":"LA","lesotho":"LS","liberia":"LR","libysch-arabische volks-dschamahirija":"LY","liechtenstein":"LI","macau":"MO","mazedonien":"MK","malawi":"MW","malaysia":"MY","mali":"ML","malta":"MT","malwinen":"FK","mauritius":"MU","mayotte":"YT","mcdonaldinseln":"HM","mikronesien, föderierte staaten von":"FM","miquelon":"PM","moldau, republik":"MD","monaco":"MC","montenegro":"ME","montserrat":"MS","myanmar":"MM","namibia":"NA","nauru":"NR","nepal":"NP","nevis":"KN","nicaragua":"NI","niger":"NE","nigeria":"NG","palästinensische gebiete":"PS","oman":"OM","china, vr":"CN","pakistan":"PK","palau":"PW","palästina":"PS","panama":"PA","paraguay":"PY","peru":"PE","pitcairn":"PN","plurinationaler staat bolivien":"BO","polynesien":"PF","portugal":"PT","vrc":"CN","príncipe":"ST","puerto rico":"PR","republik korea":"KR","republik moldau":"MD","singapur, republik":"SG","réunion":"RE","russische föderation":"RU","st. barthélemy":"BL","st. barts":"BL","st. helena, ascension und tristan da cunha":"SH","st. kitts":"KN","st. martin":"MF","st. pierre":"PM","st. pierre und miquelon":"PM","st. vincent":"VC","samoa":"WS","san marino":"SM","são tomé":"ST","schottland":"GB","senegal":"SN","sierra leone":"SL","salomonen":"SB","somalia":"SO","südgeorgien":"GS","südgeorgien und die südlichen sandwichinseln":"GS","südliche sandwichinseln":"GS","sri lanka":"LK","st. bartholomäus":"BL","sudan":"SD","svalbard":"SJ","svalbard und jan mayen":"SJ","arabische republik syrien":"SY","taiwan":"TW","tansania, vereinigte republik":"TZ","thailand":"TH","timor-leste":"TL","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinidad":"TT","tristan da cunha":"SH","turkmenistan":"TM","turksinseln":"TC","tuvalu":"TV","v.a.e.":"AE","vk":"GB","usa":"US","uganda":"UG","ukraine":"UA","vereinigtes königreich":"GB","vereinigte republik tansania":"TZ","vereinigte staaten":"US","vereinigte staaten von amerika":"US","uruguay":"UY","vanuatu":"VU","vatikan":"VA","venezuela":"VE","venezuela, bolivarische republik":"VE","vietnam":"VN","jungferninseln":"VI","jungferninseln, britische":"VG","jungferninseln, amerikanische":"VI","wales":"GB","wallis":"WF","westsahara":"EH","éire":"IE","Ascension":"AC","Andorra":"AD","Vereinigte Arabische Emirate":"AE","Afghanistan":"AF","Antigua und Barbuda":"AG","Anguilla":"AI","Albanien":"AL","Armenien":"AM","Niederländische Antillen":"AN","Angola":"AO","Antarktis":"AQ","Argentinien":"AR","Amerikanisch-Samoa":"AS","Österreich":"AT","Australien":"AU","Aruba":"AW","Alandinseln":"AX","Aserbaidschan":"AZ","Bosnien und Herzegowina":"BA","Barbados":"BB","Bangladesch":"BD","Belgien":"BE","Burkina Faso":"BF","Bulgarien":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","St. Barthélemy":"BL","Bermuda":"BM","Brunei Darussalam":"BN","Bolivien":"BO","Karibische Niederlande":"BQ","Brasilien":"BR","Bahamas":"BS","Bhutan":"BT","Bouvetinsel":"BV","Botsuana":"BW","Belarus":"BY","Belize":"BZ","Kanada":"CA","Kokosinseln":"CC","Kongo-Kinshasa":"CD","Zentralafrikanische Republik":"CF","Kongo-Brazzaville":"CG","Schweiz":"CH","Côte d’Ivoire":"CI","Cookinseln":"CK","Chile":"CL","Kamerun":"CM","China":"CN","Kolumbien":"CO","Clipperton-Insel":"CP","Costa Rica":"CR","Kuba":"CU","Kap Verde":"CV","Curaçao":"CW","Weihnachtsinsel":"CX","Zypern":"CY","Tschechische Republik":"CZ","Deutschland":"DE","Diego Garcia":"DG","Dschibuti":"DJ","Dänemark":"DK","Dominica":"DM","Dominikanische Republik":"DO","Algerien":"DZ","Ceuta und Melilla":"EA","Ecuador":"EC","Estland":"EE","Ägypten":"EG","Westsahara":"EH","Eritrea":"ER","Spanien":"ES","Äthiopien":"ET","Europäische Union":"EU","Finnland":"FI","Fidschi":"FJ","Falklandinseln":"FK","Mikronesien":"FM","Färöer":"FO","Frankreich":"FR","Gabun":"GA","Vereinigtes Königreich":"GB","Grenada":"GD","Georgien":"GE","Französisch-Guayana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grönland":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Äquatorialguinea":"GQ","Griechenland":"GR","Südgeorgien und die Südlichen Sandwichinseln":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Sonderverwaltungszone Hongkong":"HK","Heard- und McDonald-Inseln":"HM","Honduras":"HN","Kroatien":"HR","Haiti":"HT","Ungarn":"HU","Kanarische Inseln":"IC","Indonesien":"ID","Irland":"IE","Israel":"IL","Isle of Man":"IM","Indien":"IN","Britisches Territorium im Indischen Ozean":"IO","Irak":"IQ","Iran":"IR","Island":"IS","Italien":"IT","Jersey":"JE","Jamaika":"JM","Jordanien":"JO","Japan":"JP","Kenia":"KE","Kirgisistan":"KG","Kambodscha":"KH","Kiribati":"KI","Komoren":"KM","St. Kitts und Nevis":"KN","Demokratische Volksrepublik Korea":"KP","Republik Korea":"KR","Kuwait":"KW","Kaimaninseln":"KY","Kasachstan":"KZ","Laos":"LA","Libanon":"LB","St. Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Litauen":"LT","Luxemburg":"LU","Lettland":"LV","Libyen":"LY","Marokko":"MA","Monaco":"MC","Republik Moldau":"MD","Montenegro":"ME","St. Martin":"MF","Madagaskar":"MG","Marshallinseln":"MH","Mazedonien":"MK","Mali":"ML","Myanmar":"MM","Mongolei":"MN","Sonderverwaltungszone Macao":"MO","Nördliche Marianen":"MP","Martinique":"MQ","Mauretanien":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Malediven":"MV","Malawi":"MW","Mexiko":"MX","Malaysia":"MY","Mosambik":"MZ","Namibia":"NA","Neukaledonien":"NC","Niger":"NE","Norfolkinsel":"NF","Nigeria":"NG","Nicaragua":"NI","Niederlande":"NL","Norwegen":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Neuseeland":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Französisch-Polynesien":"PF","Papua-Neuguinea":"PG","Philippinen":"PH","Pakistan":"PK","Polen":"PL","St. Pierre und Miquelon":"PM","Pitcairninseln":"PN","Puerto Rico":"PR","Palästinensische Autonomiegebiete":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Katar":"QA","Äußeres Ozeanien":"QO","Réunion":"RE","Rumänien":"RO","Serbien":"RS","Russische Föderation":"RU","Ruanda":"RW","Saudi-Arabien":"SA","Salomonen":"SB","Seychellen":"SC","Sudan":"SD","Schweden":"SE","Singapur":"SG","St. Helena":"SH","Slowenien":"SI","Svalbard und Jan Mayen":"SJ","Slowakei":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Suriname":"SR","Südsudan":"SS","São Tomé und Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Syrien":"SY","Swasiland":"SZ","Tristan da Cunha":"TA","Turks- und Caicosinseln":"TC","Tschad":"TD","Französische Süd- und Antarktisgebiete":"TF","Togo":"TG","Thailand":"TH","Tadschikistan":"TJ","Tokelau":"TK","Osttimor":"TL","Turkmenistan":"TM","Tunesien":"TN","Tonga":"TO","Türkei":"TR","Trinidad und Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tansania":"TZ","Ukraine":"UA","Uganda":"UG","Amerikanisch-Ozeanien":"UM","Vereinigte Staaten":"US","Uruguay":"UY","Usbekistan":"UZ","Vatikanstadt":"VA","St. Vincent und die Grenadinen":"VC","Venezuela":"VE","Britische Jungferninseln":"VG","Amerikanische Jungferninseln":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis und Futuna":"WF","Samoa":"WS","Jemen":"YE","Mayotte":"YT","Südafrika":"ZA","Sambia":"ZM","Simbabwe":"ZW","Unbekannte Region":"ZZ"};
-ilib.data.ctrynames_de_CH = {"Bangladesh":"BD","Brunei":"BN","Botswana":"BW","Weissrussland":"BY","Kapverden":"CV","Djibouti":"DJ","Grossbritannien":"GB","Marshall-Inseln":"MH","Äusseres Ozeanien":"QO","Rwanda":"RW","Salomon-Inseln":"SB","Sao Tomé und Principe":"ST","Zimbabwe":"ZW"};
+ilib.data.ctrynames_el = {"Νήσος Ασενσιόν":"AC","Ανδόρα":"AD","Ηνωμένα Αραβικά Εμιράτα":"AE","Αφγανιστάν":"AF","Αντίγκουα και Μπαρμπούντα":"AG","Ανγκουίλα":"AI","Αλβανία":"AL","Αρμενία":"AM","Ολλανδικές Αντίλλες":"AN","Ανγκόλα":"AO","Ανταρκτική":"AQ","Αργεντινή":"AR","Αμερικανική Σαμόα":"AS","Αυστρία":"AT","Αυστραλία":"AU","Αρούμπα":"AW","Νησιά Όλαντ":"AX","Αζερμπαϊτζάν":"AZ","Βοσνία - Ερζεγοβίνη":"BA","Μπαρμπάντος":"BB","Μπανγκλαντές":"BD","Βέλγιο":"BE","Μπουρκίνα Φάσο":"BF","Βουλγαρία":"BG","Μπαχρέιν":"BH","Μπουρούντι":"BI","Μπενίν":"BJ","Άγιος Βαρθολομαίος":"BL","Βερμούδες":"BM","Μπρουνέι":"BN","Βολιβία":"BO","Ολλανδία Καραϊβικής":"BQ","Βραζιλία":"BR","Μπαχάμες":"BS","Μπουτάν":"BT","Νήσος Μπουβέ":"BV","Μποτσουάνα":"BW","Λευκορωσία":"BY","Μπελίσε":"BZ","Καναδάς":"CA","Νησιά Κόκος [Κίλινγκ]":"CC","Κονγκό - Κινσάσα":"CD","Κεντροαφρικανική Δημοκρατία":"CF","Κονγκό - Μπραζαβίλ":"CG","Ελβετία":"CH","Ακτή Ελεφαντοστού":"CI","Νήσοι Κουκ":"CK","Χιλή":"CL","Καμερούν":"CM","Κίνα":"CN","Κολομβία":"CO","Νήσος Κλίπερτον":"CP","Κόστα Ρίκα":"CR","Κούβα":"CU","Πράσινο Ακρωτήριο":"CV","Κουρασάο":"CW","Νήσος Χριστουγέννων":"CX","Κύπρος":"CY","Τσεχία":"CZ","Γερμανία":"DE","Ντιέγκο Γκαρσία":"DG","Τζιμπουτί":"DJ","Δανία":"DK","Ντομίνικα":"DM","Δομινικανή Δημοκρατία":"DO","Αλγερία":"DZ","Θεούτα και Μελίλα":"EA","Εκουαδόρ":"EC","Εσθονία":"EE","Αίγυπτος":"EG","Δυτική Σαχάρα":"EH","Ερυθραία":"ER","Ισπανία":"ES","Αιθιοπία":"ET","Ευρωπαϊκή Ένωση":"EU","Φινλανδία":"FI","Φίτζι":"FJ","Νήσοι Φώκλαντ":"FK","Μικρονησία":"FM","Νήσοι Φερόε":"FO","Γαλλία":"FR","Γκαμπόν":"GA","Ηνωμένο Βασίλειο":"GB","Γρενάδα":"GD","Γεωργία":"GE","Γαλλική Γουιάνα":"GF","Γκερνσέι":"GG","Γκάνα":"GH","Γιβραλτάρ":"GI","Γροιλανδία":"GL","Γκάμπια":"GM","Γουινέα":"GN","Γουαδελούπη":"GP","Ισημερινή Γουινέα":"GQ","Ελλάδα":"GR","Νότια Γεωργία και Νότιες Νήσοι Σάντουιτς":"GS","Γουατεμάλα":"GT","Γκουάμ":"GU","Γουινέα-Μπισάου":"GW","Γουιάνα":"GY","Χονγκ Κονγκ ΕΔΠ Κίνας":"HK","Νήσοι Χερντ και Μακντόναλντ":"HM","Ονδούρα":"HN","Κροατία":"HR","Αϊτή":"HT","Ουγγαρία":"HU","Κανάριοι Νήσοι":"IC","Ινδονησία":"ID","Ιρλανδία":"IE","Ισραήλ":"IL","Νήσος Μαν":"IM","Ινδία":"IN","Βρετανικά Εδάφη Ινδικού Ωκεανού":"IO","Ιράκ":"IQ","Ιράν":"IR","Ισλανδία":"IS","Ιταλία":"IT","Υερσέη":"JE","Τζαμάικα":"JM","Ιορδανία":"JO","Ιαπωνία":"JP","Κένυα":"KE","Κιργιστάν":"KG","Καμπότζη":"KH","Κιριμπάτι":"KI","Κομόρος":"KM","Σαιντ Κιτς και Νέβις":"KN","Βόρεια Κορέα":"KP","Νότια Κορέα":"KR","Κουβέιτ":"KW","Νήσοι Κέιμαν":"KY","Καζακστάν":"KZ","Λάος":"LA","Λίβανος":"LB","Αγία Λουκία":"LC","Λιχτενστάιν":"LI","Σρι Λάνκα":"LK","Λιβερία":"LR","Λεσότο":"LS","Λιθουανία":"LT","Λουξεμβούργο":"LU","Λετονία":"LV","Λιβύη":"LY","Μαρόκο":"MA","Μονακό":"MC","Μολδαβία":"MD","Μαυροβούνιο":"ME","Άγιος Μαρτίνος (Γαλλικό τμήμα)":"MF","Μαδαγασκάρη":"MG","Νήσοι Μάρσαλ":"MH","ΠΓΔΜ":"MK","Μάλι":"ML","Μιανμάρ [Μπούρμα]":"MM","Μογγολία":"MN","Μακάο ΕΔΠ Κίνας":"MO","Βόρειες Μαριάνες Νήσοι":"MP","Μαρτινίκα":"MQ","Μαυριτανία":"MR","Μονσεράτ":"MS","Μάλτα":"MT","Μαυρίκιος":"MU","Μαλδίβες":"MV","Μαλάουι":"MW","Μεξικό":"MX","Μαλαισία":"MY","Μοζαμβίκη":"MZ","Ναμίμπια":"NA","Νέα Καληδονία":"NC","Νίγηρας":"NE","Νήσος Νόρφολκ":"NF","Νιγηρία":"NG","Νικαράγουα":"NI","Ολλανδία":"NL","Νορβηγία":"NO","Νεπάλ":"NP","Ναούρου":"NR","Νιούε":"NU","Νέα Ζηλανδία":"NZ","Ομάν":"OM","Παναμάς":"PA","Περού":"PE","Γαλλική Πολυνησία":"PF","Παπούα Νέα Γουινέα":"PG","Φιλιππίνες":"PH","Πακιστάν":"PK","Πολωνία":"PL","Σαιντ Πιέρ και Μικελόν":"PM","Νησιά Πίτκερν":"PN","Πουέρτο Ρίκο":"PR","Παλαιστινιακά Εδάφη":"PS","Πορτογαλία":"PT","Παλάου":"PW","Παραγουάη":"PY","Κατάρ":"QA","Περιφερειακή Ωκεανία":"QO","Ρεϊνιόν":"RE","Ρουμανία":"RO","Σερβία":"RS","Ρωσία":"RU","Ρουάντα":"RW","Σαουδική Αραβία":"SA","Νήσοι Σολομώντος":"SB","Σεϋχέλλες":"SC","Σουδάν":"SD","Σουηδία":"SE","Σιγκαπούρη":"SG","Αγία Ελένη":"SH","Σλοβενία":"SI","Νησιά Σβάλμπαρντ και Γιαν Μάγεν":"SJ","Σλοβακία":"SK","Σιέρα Λεόνε":"SL","Άγιος Μαρίνος":"SM","Σενεγάλη":"SN","Σομαλία":"SO","Σουρινάμ":"SR","Νότιο Σουδάν":"SS","Σάο Τομέ και Πρίνσιπε":"ST","Ελ Σαλβαδόρ":"SV","Άγιος Μαρτίνος (Ολλανδικό τμήμα)":"SX","Συρία":"SY","Ζουαζηλάνδη":"SZ","Τριστάν ντα Κούνια":"TA","Νήσοι Τερκς και Κάικος":"TC","Τσαντ":"TD","Γαλλικά Νότια Εδάφη":"TF","Τόγκο":"TG","Ταϊλάνδη":"TH","Τατζικιστάν":"TJ","Τοκελάου":"TK","Τιμόρ-Λέστε":"TL","Τουρκμενιστάν":"TM","Τυνησία":"TN","Τόνγκα":"TO","Τουρκία":"TR","Τρινιντάντ και Τομπάγκο":"TT","Τουβαλού":"TV","Ταϊβάν":"TW","Τανζανία":"TZ","Ουκρανία":"UA","Ουγκάντα":"UG","Απομακρυσμένες Νησίδες Η.Π.Α.":"UM","Ηνωμένες Πολιτείες της Αμερικής":"US","Ουρουγουάη":"UY","Ουζμπεκιστάν":"UZ","Βατικανό":"VA","Άγιος Βικέντιος και Γρεναδίνες":"VC","Βενεζουέλα":"VE","Βρετανικές Παρθένοι Νήσοι":"VG","Αμερικανικές Παρθένοι Νήσοι":"VI","Βιετνάμ":"VN","Βανουάτου":"VU","Ουόλις και Φουτούνα":"WF","Σαμόα":"WS","Υεμένη":"YE","Μαγιότ":"YT","Νότια Αφρική":"ZA","Ζάμπια":"ZM","Ζιμπάμπουε":"ZW","Άγνωστη περιοχή":"ZZ"};
 ilib.data.ctrynames_en = {"generated":false,"Antigua & Barbuda":"AG","Arabia":"SA","Bosnia & Herzegovina":"BA","BVI":"VG","Cape Verde Islands":"CV","Cocos & Keeling Islands":"CC","Cocos (Keeling) Islands":"CC","Congo, Democratic Republic of the":"CD","Democratic Republic of the Congo":"CD","DPRK":"KP","Dubai":"AE","East Timor":"TL","England":"GB","Falklands":"FK","Heard Island & McDonald Islands":"HM","Occupied Palestinian Territory":"PS","P. R. China":"CN","P. R. of China":"CN","P.R. of China":"CN","Palestinian Territory":"PS","People's Republic of China":"CN","Polynesia":"PF","PR china":"CN","PRC":"CN","Republic of China":"TW","Republic of Ireland":"IE","Republic of Singapore":"SG","Saint Barts":"BL","Saint Helena, Ascension & Tristan da Cunha":"SH","Saint Kitts & Nevis":"KN","Saint Pierre & Miquelon":"PM","Saint Vincent & the Grenadines":"VC","Sao Tome & Principe":"ST","Scotland":"GB","Solomons":"SB","South Georgia & the South Sandwich Islands":"GS","St Barthelemy":"BL","St Barthélemy":"BL","St Barts":"BL","St Helena":"SH","St Helena, Ascension & Tristan da Cunha":"SH","St Helena, Ascension and Tristan da Cunha":"SH","St Kitts":"KN","St Kitts & Nevis":"KN","St Kitts and Nevis":"KN","St Lucia":"LC","St Martin":"MF","St Pierre":"PM","St Pierre & Miquelon":"PM","St Pierre and Miquelon":"PM","St Vincent":"VC","St Vincent & the Grenadines":"VC","St Vincent and the Grenadines":"VC","St. Barts":"BL","St. Helena, Ascension & Tristan da Cunha":"SH","St. Kitts & Nevis":"KN","St. Pierre & Miquelon":"PM","St. Vincent & the Grenadines":"VC","Svalbard & Jan Mayen":"SJ","Sénégal":"SN","The Bahamas":"BS","The Czech Republic":"CZ","The Grenadines":"VC","The Netherlands":"NL","The Philippines":"PH","The Republic of Singapore":"SG","The South Sandwich Islands":"GS","The Sudan":"SD","The US Virgin Islands":"VI","Trinidad & Tobago":"TT","Turks & Caicos Islands":"TC","Vatican City":"VA","Vatican City State":"VA","Virgin Islands":"VI","Wales":"GB","Wallis & Futuna":"WF","Éire":"IE","Ascension Island":"AC","Andorra":"AD","United Arab Emirates":"AE","Afghanistan":"AF","Antigua and Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Netherlands Antilles":"AN","Angola":"AO","Antarctica":"AQ","Argentina":"AR","American Samoa":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Åland Islands":"AX","Azerbaijan":"AZ","Bosnia and Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgium":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Caribbean Netherlands":"BQ","Brazil":"BR","Bahamas":"BS","Bhutan":"BT","Bouvet Island":"BV","Botswana":"BW","Belarus":"BY","Belize":"BZ","Canada":"CA","Cocos [Keeling] Islands":"CC","Congo - Kinshasa":"CD","Central African Republic":"CF","Congo - Brazzaville":"CG","Switzerland":"CH","Côte d’Ivoire":"CI","Cook Islands":"CK","Chile":"CL","Cameroon":"CM","China":"CN","Colombia":"CO","Clipperton Island":"CP","Costa Rica":"CR","Cuba":"CU","Cape Verde":"CV","Curaçao":"CW","Christmas Island":"CX","Cyprus":"CY","Czech Republic":"CZ","Germany":"DE","Diego Garcia":"DG","Djibouti":"DJ","Denmark":"DK","Dominica":"DM","Dominican Republic":"DO","Algeria":"DZ","Ceuta and Melilla":"EA","Ecuador":"EC","Estonia":"EE","Egypt":"EG","Western Sahara":"EH","Eritrea":"ER","Spain":"ES","Ethiopia":"ET","European Union":"EU","Finland":"FI","Fiji":"FJ","Falkland Islands":"FK","Micronesia":"FM","Faroe Islands":"FO","France":"FR","Gabon":"GA","United Kingdom":"GB","Grenada":"GD","Georgia":"GE","French Guiana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Greenland":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Equatorial Guinea":"GQ","Greece":"GR","South Georgia and the South Sandwich Islands":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hong Kong SAR China":"HK","Heard Island and McDonald Islands":"HM","Honduras":"HN","Croatia":"HR","Haiti":"HT","Hungary":"HU","Canary Islands":"IC","Indonesia":"ID","Ireland":"IE","Israel":"IL","Isle of Man":"IM","India":"IN","British Indian Ocean Territory":"IO","Iraq":"IQ","Iran":"IR","Iceland":"IS","Italy":"IT","Jersey":"JE","Jamaica":"JM","Jordan":"JO","Japan":"JP","Kenya":"KE","Kyrgyzstan":"KG","Cambodia":"KH","Kiribati":"KI","Comoros":"KM","Saint Kitts and Nevis":"KN","North Korea":"KP","South Korea":"KR","Kuwait":"KW","Cayman Islands":"KY","Kazakhstan":"KZ","Laos":"LA","Lebanon":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lithuania":"LT","Luxembourg":"LU","Latvia":"LV","Libya":"LY","Morocco":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagascar":"MG","Marshall Islands":"MH","Macedonia":"MK","Mali":"ML","Myanmar [Burma]":"MM","Mongolia":"MN","Macau SAR China":"MO","Northern Mariana Islands":"MP","Martinique":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldives":"MV","Malawi":"MW","Mexico":"MX","Malaysia":"MY","Mozambique":"MZ","Namibia":"NA","New Caledonia":"NC","Niger":"NE","Norfolk Island":"NF","Nigeria":"NG","Nicaragua":"NI","Netherlands":"NL","Norway":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","New Zealand":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","French Polynesia":"PF","Papua New Guinea":"PG","Philippines":"PH","Pakistan":"PK","Poland":"PL","Saint Pierre and Miquelon":"PM","Pitcairn Islands":"PN","Puerto Rico":"PR","Palestinian Territories":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Outlying Oceania":"QO","Réunion":"RE","Romania":"RO","Serbia":"RS","Russia":"RU","Rwanda":"RW","Saudi Arabia":"SA","Solomon Islands":"SB","Seychelles":"SC","Sudan":"SD","Sweden":"SE","Singapore":"SG","Saint Helena":"SH","Slovenia":"SI","Svalbard and Jan Mayen":"SJ","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Suriname":"SR","South Sudan":"SS","São Tomé and Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Syria":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Turks and Caicos Islands":"TC","Chad":"TD","French Southern Territories":"TF","Togo":"TG","Thailand":"TH","Tajikistan":"TJ","Tokelau":"TK","Timor-Leste":"TL","Turkmenistan":"TM","Tunisia":"TN","Tonga":"TO","Turkey":"TR","Trinidad and Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraine":"UA","Uganda":"UG","U.S. Minor Outlying Islands":"UM","United States":"US","Uruguay":"UY","Uzbekistan":"UZ","Saint Vincent and the Grenadines":"VC","Venezuela":"VE","British Virgin Islands":"VG","U.S. Virgin Islands":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis and Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","South Africa":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Unknown Region":"ZZ"};
 ilib.data.ctrynames_es = {"generated":false,"afganistán":"AF","argelia":"DZ","samoa americana":"AS","anguila":"AI","antigua y barbuda":"AG","ascensión":"SH","azerbaiyán":"AZ","islas vírgenes británicas":"VG","bahrein":"BH","bielorrusia":"BY","bélgica":"BE","belice":"BZ","benín":"BJ","bermudas":"BM","bután":"BT","bosnia y herzegovina":"BA","botsuana":"BW","brasil":"BR","territorio británico del océano índico":"IO","camboya":"KH","camerún":"CM","cabo verde":"CV","caimán":"KY","república centroafricana":"CF","comoras":"KM","islas cook":"CK","croacia":"HR","chipre":"CY","república checa":"CZ","costa de marfil":"CI","república dominicana":"DO","rdc":"CD","república democrática del congo":"CD","dinamarca":"DK","yibuti":"DJ","timor oriental":"TL","egipto":"EG","guinea ecuatorial":"GQ","etiopía":"ET","antigua república yugoslava de macedonia":"MK","islas malvinas":"FK","malvinas":"FK","islas feroe":"FO","estados federados de micronesia":"FM","fiyi":"FJ","finlandia":"FI","francia":"FR","guayana francesa":"GF","polinesia francesa":"PF","gabón":"GA","alemania":"DE","grecia":"GR","groenlandia":"GL","granada":"GD","guadalupe":"GP","haití":"HT","hungría":"HU","islandia":"IS","irán":"IR","irak":"IQ","irlanda":"IE","italia":"IT","japón":"JP","jordania":"JO","kenia":"KE","kirguistán":"KG","letonia":"LV","líbano":"LB","libia":"LY","lituania":"LT","luxemburgo":"LU","malasia":"MY","maldivas":"MV","malí":"ML","islas marshall":"MH","martinica":"MQ","mauricio":"MU","méxico":"MX","moldavia":"MD","mónaco":"MC","marruecos":"MA","países bajos":"NL","antillas holandesas":"AN","nueva caledonia":"NC","nueva zelanda":"NZ","níger":"NE","isla norfolk":"NF","corea del norte":"KP","islas marianas del norte":"MP","noruega":"NO","omán":"OM","pakistán":"PK","palaos":"PW","autoridad palestina":"PS","panamá":"PA","papua nueva guinea":"PG","república popular china":"CN","perú":"PE","filipinas":"PH","polonia":"PL","república de china":"TW","república de irlanda":"IE","rumania":"RO","rusia":"RU","ruanda":"RW","reunión":"RE","santa helena":"SH","san cristóbal y nieves":"KN","santa lucía":"LC","san pedro y miquelón":"PM","saint-vincent":"VC","san vicente y las granadinas":"VC","arabia saudita":"SA","sierra leona":"SL","singapur":"SG","eslovaquia":"SK","eslovenia":"SI","islas salomón":"SB","sudáfrica":"ZA","corea del sur":"KR","españa":"ES","santa lucia":"LC","sudán":"SD","surinam":"SR","swazilandia":"SZ","suecia":"SE","suiza":"CH","siria":"SY","santo tomé y príncipe":"ST","taiwán":"TW","tayikistán":"TJ","tailandia":"TH","las bahamas":"BS","gambia":"GM","trinidad y tobago":"TT","túnez":"TN","turquía":"TR","turkmenistán":"TM","eau":"AE","ucrania":"UA","emiratos árabes unidos":"AE","reino unido":"GB","uzbekistán":"UZ","ciudad del vaticano":"VA","wallis y futuna":"WF","islas de åland":"AX","albania":"AL","andorra":"AD","angola":"AO","antigua":"AG","arabia":"SA","argentina":"AR","armenia":"AM","aruba":"AW","australia":"AU","austria":"AT","ivb":"VG","bahamas":"BS","bangladesh":"BD","barbados":"BB","barbuda":"AG","república bolivariana de venezuela":"VE","bolivia":"BO","bolivia, estado plurinacional de":"BO","bosnia":"BA","isla bouvet":"BV","brunei":"BN","brunei darussalam":"BN","bulgaria":"BG","burkina faso":"BF","burundi":"BI","rca":"CF","islas caicos":"TC","canadá":"CA","islas caimán":"KY","chad":"TD","chile":"CL","china":"CN","isla christmas":"CX","islas cocos y keeling":"CC","islas cocos":"CC","colombia":"CO","congo":"CD","congo, república democrática del":"CD","costa rica":"CR","cuba":"CU","república popular democrática de corea":"KP","dominica":"DM","dprk":"KP","rd":"DO","dubai":"AE","ecuador":"EC","el salvador":"SV","inglaterra":"GB","eritrea":"ER","estonia":"EE","feroe":"FO","tierras australes de francia":"TF","futuna":"WF","georgia":"GE","ghana":"GH","gibraltar":"GI","gran bretaña":"GB","granadinas":"VC","guam":"GU","guatemala":"GT","guernsey":"GG","guinea":"GN","guinea-bissau":"GW","guyana":"GY","islas heard y mcdonald":"HM","isla heard":"HM","herzegovina":"BA","holanda":"NL","santa sede":"VA","honduras":"HN","hong kong":"HK","india":"IN","indonesia":"ID","irán, república islámica de":"IR","república islámica de irán":"IR","isla de man":"IM","israel":"IL","jamaica":"JM","jan mayen":"SJ","jersey":"JE","kazajistán":"KZ","kiribati":"KI","corea":"KR","corea, república popular democrática de":"KP","corea, república de":"KR","kuwait":"KW","república democrática popular lao":"LA","laos":"LA","lesoto":"LS","liberia":"LR","jamahiriya árabe libia":"LY","liechtenstein":"LI","macao":"MO","macedonia":"MK","macedonia, antigua república yugoslava de":"MK","macedonia, la antigua república yugoslava de":"MK","madagascar":"MG","malaui":"MW","mali":"ML","malta":"MT","marianas":"MP","marshalls":"MH","mauritania":"MR","mayotte":"YT","islas mcdonald":"HM","micronesia":"FM","micronesia, estados federados de":"FM","miquelón":"PM","moldovia":"MD","moldovia, república de":"MD","mongolia":"MN","montenegro":"ME","montserrat":"MS","mozambique":"MZ","myanmar":"MM","namibia":"NA","nauru":"NR","nepal":"NP","nieves":"KN","nicaragua":"NI","nigeria":"NG","territorios ocupados palestinos":"PS","r. p. china":"CN","palestine":"PS","territorios palestinos":"PS","paraguay":"PY","pitcairn":"PN","estado plurinacional de bolivia":"BO","png":"PG","polinesia":"PF","portugal":"PT","rp china":"CN","r.p.c.":"CN","príncipe":"ST","puerto rico":"PR","qatar":"QA","república de corea":"KR","república de moldovia":"MD","república de singapur":"SG","federación rusa":"RU","saint barthélemy":"BL","san bartolomé":"BL","santa helena, ascensión y tristán de acuña":"SH","san cristobal":"KN","san martín":"MF","san pedro":"PM","san vicente":"VC","samoa":"WS","san marino":"SM","santo tomé":"ST","escocia":"GB","senegal":"SN","serbia":"RS","seychelles":"SC","somalia":"SO","georgias del sur":"GS","islas georgias del sur y sandwich del sur":"GS","islas sandwich del sur":"GS","sri lanka":"LK","st barthélemy":"BL","st. barthélemy":"BL","s bartolomé":"BL","sta. elena":"SH","sta elena, ascensión y tristán de acuña":"SH","s. cristóbal":"KN","s cristóbal y nieves":"KN","sta lucía":"LC","s. martín":"MF","s. vicente":"VC","s vicente y las granadinas":"VC","s. bartolomé":"BL","svalbard":"SJ","svalbard y jan mayen":"SJ","república árabe siria":"SY","tanzania":"TZ","tanzania, república unida de":"TZ","la república democrática del congo":"CD","la antigua república yugoslava de macedonia":"MK","las granadinas":"VC","islas sándwich del sur":"GS","islas vírgenes de ee.uu.":"VI","timor-leste":"TL","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinidad":"TT","tristán de acuña":"SH","islas turcas y caicos":"TC","islas turcas":"TC","tuvalu":"TV","r.u.":"GB","ee.uu.":"US","uganda":"UG","ru":"GB","república unida de tanzania":"TZ","estados unidos":"US","islas ultramarinas de estados unidos":"UM","estados unidos de américa":"US","uruguay":"UY","usvi":"VI","vanuatu":"VU","vaticano":"VA","venezuela":"VE","venezuela, república bolivariana de":"VE","vietnam":"VN","islas vírgenes":"VI","islas vírgenes, ee.uu.":"VI","gales":"GB","wallis":"WF","sahara occidental":"EH","yemen":"YE","zambia":"ZM","zimbabue":"ZW","éire":"IE","Isla de la Ascensión":"AC","Andorra":"AD","Emiratos Árabes Unidos":"AE","Afganistán":"AF","Antigua y Barbuda":"AG","Anguila":"AI","Albania":"AL","Armenia":"AM","Antillas Neerlandesas":"AN","Angola":"AO","Antártida":"AQ","Argentina":"AR","Samoa Americana":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Islas Åland":"AX","Azerbaiyán":"AZ","Bosnia-Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Bélgica":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahréin":"BH","Burundi":"BI","Benín":"BJ","San Bartolomé":"BL","Bermudas":"BM","Brunéi":"BN","Bolivia":"BO","Caribe neerlandés":"BQ","Brasil":"BR","Bahamas":"BS","Bután":"BT","Isla Bouvet":"BV","Botsuana":"BW","Bielorrusia":"BY","Belice":"BZ","Canadá":"CA","Islas Cocos":"CC","República Democrática del Congo":"CD","República Centroafricana":"CF","Congo - Brazzaville":"CG","Suiza":"CH","Costa de Marfil":"CI","Islas Cook":"CK","Chile":"CL","Camerún":"CM","China":"CN","Colombia":"CO","Isla Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Cabo Verde":"CV","Curazao":"CW","Isla Christmas":"CX","Chipre":"CY","República Checa":"CZ","Alemania":"DE","Diego García":"DG","Yibuti":"DJ","Dinamarca":"DK","Dominica":"DM","República Dominicana":"DO","Argelia":"DZ","Ceuta y Melilla":"EA","Ecuador":"EC","Estonia":"EE","Egipto":"EG","Sáhara Occidental":"EH","Eritrea":"ER","España":"ES","Etiopía":"ET","Unión Europea":"EU","Finlandia":"FI","Fiyi":"FJ","Islas Malvinas":"FK","Micronesia":"FM","Islas Feroe":"FO","Francia":"FR","Gabón":"GA","Reino Unido":"GB","Granada":"GD","Georgia":"GE","Guayana Francesa":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Groenlandia":"GL","Gambia":"GM","Guinea":"GN","Guadalupe":"GP","Guinea Ecuatorial":"GQ","Grecia":"GR","Islas Georgia del Sur y Sandwich del Sur":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Región Administrativa Especial de Hong Kong de la República Popular China":"HK","Islas Heard y McDonald":"HM","Honduras":"HN","Croacia":"HR","Haití":"HT","Hungría":"HU","Islas Canarias":"IC","Indonesia":"ID","Irlanda":"IE","Israel":"IL","Isla de Man":"IM","India":"IN","Territorio Británico del Océano Índico":"IO","Iraq":"IQ","Irán":"IR","Islandia":"IS","Italia":"IT","Jersey":"JE","Jamaica":"JM","Jordania":"JO","Japón":"JP","Kenia":"KE","Kirguistán":"KG","Camboya":"KH","Kiribati":"KI","Comoras":"KM","San Cristóbal y Nieves":"KN","Corea del Norte":"KP","Corea del Sur":"KR","Kuwait":"KW","Islas Caimán":"KY","Kazajistán":"KZ","Laos":"LA","Líbano":"LB","Santa Lucía":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesoto":"LS","Lituania":"LT","Luxemburgo":"LU","Letonia":"LV","Libia":"LY","Marruecos":"MA","Mónaco":"MC","Moldavia":"MD","Montenegro":"ME","San Martín":"MF","Madagascar":"MG","Islas Marshall":"MH","Macedonia":"MK","Mali":"ML","Myanmar [Birmania]":"MM","Mongolia":"MN","Región Administrativa Especial de Macao de la República Popular China":"MO","Islas Marianas del Norte":"MP","Martinica":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauricio":"MU","Maldivas":"MV","Malaui":"MW","México":"MX","Malasia":"MY","Mozambique":"MZ","Namibia":"NA","Nueva Caledonia":"NC","Níger":"NE","Isla Norfolk":"NF","Nigeria":"NG","Nicaragua":"NI","Países Bajos":"NL","Noruega":"NO","Nepal":"NP","Nauru":"NR","Isla Niue":"NU","Nueva Zelanda":"NZ","Omán":"OM","Panamá":"PA","Perú":"PE","Polinesia Francesa":"PF","Papúa Nueva Guinea":"PG","Filipinas":"PH","Pakistán":"PK","Polonia":"PL","San Pedro y Miquelón":"PM","Islas Pitcairn":"PN","Puerto Rico":"PR","Territorios Palestinos":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Territorios alejados de Oceanía":"QO","Reunión":"RE","Rumanía":"RO","Serbia":"RS","Rusia":"RU","Ruanda":"RW","Arabia Saudí":"SA","Islas Salomón":"SB","Seychelles":"SC","Sudán":"SD","Suecia":"SE","Singapur":"SG","Santa Elena":"SH","Eslovenia":"SI","Svalbard y Jan Mayen":"SJ","Eslovaquia":"SK","Sierra Leona":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Sudán del Sur":"SS","Santo Tomé y Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Siria":"SY","Suazilandia":"SZ","Tristán da Cunha":"TA","Islas Turcas y Caicos":"TC","Chad":"TD","Territorios Australes Franceses":"TF","Togo":"TG","Tailandia":"TH","Tayikistán":"TJ","Tokelau":"TK","Timor Oriental":"TL","Turkmenistán":"TM","Túnez":"TN","Tonga":"TO","Turquía":"TR","Trinidad y Tobago":"TT","Tuvalu":"TV","Taiwán":"TW","Tanzania":"TZ","Ucrania":"UA","Uganda":"UG","Islas menores alejadas de los Estados Unidos":"UM","Estados Unidos":"US","Uruguay":"UY","Uzbekistán":"UZ","Ciudad del Vaticano":"VA","San Vicente y las Granadinas":"VC","Venezuela":"VE","Islas Vírgenes Británicas":"VG","Islas Vírgenes de los Estados Unidos":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis y Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Sudáfrica":"ZA","Zambia":"ZM","Zimbabue":"ZW","Región desconocida":"ZZ"};
 ilib.data.ctrynames_es_ES = {"generated":false,"costa de marfil":"CI"};
+ilib.data.ctrynames_et = {"Ascensioni saar":"AC","Andorra":"AD","Araabia Ühendemiraadid":"AE","Afganistan":"AF","Antigua ja Barbuda":"AG","Anguilla":"AI","Albaania":"AL","Armeenia":"AM","Hollandi Antillid":"AN","Angola":"AO","Antarktis":"AQ","Argentina":"AR","Ameerika Samoa":"AS","Austria":"AT","Austraalia":"AU","Aruba":"AW","Ahvenamaa":"AX","Aserbaidžaan":"AZ","Bosnia ja Hertsegoviina":"BA","Barbados":"BB","Bangladesh":"BD","Belgia":"BE","Burkina Faso":"BF","Bulgaaria":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Boliivia":"BO","Hollandi Kariibi mere saared":"BQ","Brasiilia":"BR","Bahama":"BS","Bhutan":"BT","Bouvet’ saar":"BV","Botswana":"BW","Valgevene":"BY","Belize":"BZ","Kanada":"CA","Kookossaared":"CC","Kongo DV":"CD","Kesk-Aafrika Vabariik":"CF","Kongo-Brazzaville":"CG","Šveits":"CH","Côte d'Ivoire":"CI","Cooki saared":"CK","Tšiili":"CL","Kamerun":"CM","Hiina":"CN","Colombia":"CO","Clippertoni saar":"CP","Costa Rica":"CR","Kuuba":"CU","Roheneemesaared":"CV","Curaçao":"CW","Jõulusaar":"CX","Küpros":"CY","Tšehhi":"CZ","Saksamaa":"DE","Diego Garcia":"DG","Djibouti":"DJ","Taani":"DK","Dominica":"DM","Dominikaani Vabariik":"DO","Alžeeria":"DZ","Ceuta ja Melilla":"EA","Ecuador":"EC","Eesti":"EE","Egiptus":"EG","Lääne-Sahara":"EH","Eritrea":"ER","Hispaania":"ES","Etioopia":"ET","Euroopa Liit":"EU","Soome":"FI","Fidži":"FJ","Falklandi saared":"FK","Mikroneesia Liiduriigid":"FM","Fääri saared":"FO","Prantsusmaa":"FR","Gabon":"GA","Suurbritannia":"GB","Grenada":"GD","Gruusia":"GE","Prantsuse Guajaana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Gröönimaa":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Ekvatoriaal-Guinea":"GQ","Kreeka":"GR","Lõuna-Georgia ja Lõuna-Sandwichi saared":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hongkong - Hiina erihalduspiirkond":"HK","Heard ja McDonald saared":"HM","Honduras":"HN","Horvaatia":"HR","Haiti":"HT","Ungari":"HU","Kanaari saared":"IC","Indoneesia":"ID","Iirimaa":"IE","Iisrael":"IL","Mani saar":"IM","India":"IN","Briti India ookeani ala":"IO","Iraak":"IQ","Iraan":"IR","Island":"IS","Itaalia":"IT","Jersey":"JE","Jamaica":"JM","Jordaania":"JO","Jaapan":"JP","Kenya":"KE","Kõrgõzstan":"KG","Kambodža":"KH","Kiribati":"KI","Komoorid":"KM","Saint Kitts ja Nevis":"KN","Põhja-Korea":"KP","Lõuna-Korea":"KR","Kuveit":"KW","Kaimanisaared":"KY","Kasahstan":"KZ","Laos":"LA","Liibanon":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Libeeria":"LR","Lesotho":"LS","Leedu":"LT","Luksemburg":"LU","Läti":"LV","Liibüa":"LY","Maroko":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagaskar":"MG","Marshalli saared":"MH","Makedoonia":"MK","Mali":"ML","Myanmar":"MM","Mongoolia":"MN","Macau - Hiina erihalduspiirkond":"MO","Põhja-Mariaanid":"MP","Martinique":"MQ","Mauritaania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldiivid":"MV","Malawi":"MW","Mehhiko":"MX","Malaisia":"MY","Mosambiik":"MZ","Namiibia":"NA","Uus-Kaledoonia":"NC","Niger":"NE","Norfolk":"NF","Nigeeria":"NG","Nicaragua":"NI","Holland":"NL","Norra":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Uus-Meremaa":"NZ","Omaan":"OM","Panama":"PA","Peruu":"PE","Prantsuse Polüneesia":"PF","Paapua Uus-Guinea":"PG","Filipiinid":"PH","Pakistan":"PK","Poola":"PL","Saint Pierre ja Miquelon":"PM","Pitcairn":"PN","Puerto Rico":"PR","Palestiina ala":"PS","Portugal":"PT","Belau":"PW","Paraguay":"PY","Katar":"QA","Okeaania hajasaared":"QO","Réunion":"RE","Rumeenia":"RO","Serbia":"RS","Venemaa":"RU","Rwanda":"RW","Saudi Araabia":"SA","Saalomoni Saared":"SB","Seišellid":"SC","Sudaan":"SD","Rootsi":"SE","Singapur":"SG","Saint Helena":"SH","Sloveenia":"SI","Svalbard ja Jan Mayen":"SJ","Slovakkia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somaalia":"SO","Suriname":"SR","Lõuna-Sudaan":"SS","São Tomé ja Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Süüria":"SY","Svaasimaa":"SZ","Tristan da Cunha":"TA","Turks ja Caicos":"TC","Tšaad":"TD","Prantsuse Lõunaalad":"TF","Togo":"TG","Tai":"TH","Tadžikistan":"TJ","Tokelau":"TK","Ida-Timor":"TL","Türkmenistan":"TM","Tuneesia":"TN","Tonga":"TO","Türgi":"TR","Trinidad ja Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tansaania":"TZ","Ukraina":"UA","Uganda":"UG","Ühendriikide hajasaared":"UM","Ameerika Ühendriigid":"US","Uruguay":"UY","Usbekistan":"UZ","Vatikan":"VA","Saint Vincent ja Grenadiinid":"VC","Venezuela":"VE","Briti Neitsisaared":"VG","USA Neitsisaared":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis ja Futuna":"WF","Samoa":"WS","Jeemen":"YE","Mayotte":"YT","Lõuna-Aafrika Vabariik":"ZA","Sambia":"ZM","Zimbabwe":"ZW"};
+ilib.data.ctrynames_fa = {"جزایر آسنسیون":"AC","آندورا":"AD","امارات متحدهٔ عربی":"AE","افغانستان":"AF","آنتیگوا و باربودا":"AG","آنگیل":"AI","آلبانی":"AL","ارمنستان":"AM","آنتیل هلند":"AN","آنگولا":"AO","جنوبگان":"AQ","آرژانتین":"AR","ساموای امریکا":"AS","اتریش":"AT","استرالیا":"AU","آروبا":"AW","جزایر آلاند":"AX","جمهوری آذربایجان":"AZ","بوسنی و هرزگوین":"BA","باربادوس":"BB","بنگلادش":"BD","بلژیک":"BE","بورکینافاسو":"BF","بلغارستان":"BG","بحرین":"BH","بوروندی":"BI","بنین":"BJ","سنت بارتیلمی":"BL","برمودا":"BM","برونئی":"BN","بولیوی":"BO","کارائیب هلند":"BQ","برزیل":"BR","باهاما":"BS","بوتان":"BT","جزیره بووت":"BV","بوتسوانا":"BW","بیلوروسی":"BY","بلیز":"BZ","کانادا":"CA","جزایر کوکوس [کیلینگ]":"CC","کنگو - کینشاسا":"CD","جمهوری افریقای مرکزی":"CF","کنگو - برازویل":"CG","سوئیس":"CH","ساحل عاج":"CI","جزایر کوک":"CK","شیلی":"CL","کامرون":"CM","چین":"CN","کلمبیا":"CO","جزایر کلیپرتون":"CP","کاستاریکا":"CR","کوبا":"CU","کیپ‌ورد":"CV","کوراکائو":"CW","جزیرهٔ کریسمس":"CX","قبرس":"CY","جمهوری چک":"CZ","آلمان":"DE","دیه‌گو گارسیا":"DG","جیبوتی":"DJ","دانمارک":"DK","دومینیک":"DM","جمهوری دومینیکن":"DO","الجزایر":"DZ","سبته و ملیله":"EA","اکوادور":"EC","استونی":"EE","مصر":"EG","صحرای غربی":"EH","اریتره":"ER","اسپانیا":"ES","اتیوپی":"ET","اتحادیهٔ اروپا":"EU","فنلاند":"FI","فیجی":"FJ","جزایر فالکلند":"FK","میکرونزی":"FM","جزایر فارو":"FO","فرانسه":"FR","گابون":"GA","بریتانیا":"GB","گرانادا":"GD","گرجستان":"GE","گویان فرانسه":"GF","گرنزی":"GG","غنا":"GH","جبل‌الطارق":"GI","گرینلند":"GL","گامبیا":"GM","گینه":"GN","گوادلوپ":"GP","گینهٔ استوایی":"GQ","یونان":"GR","جورجیای جنوبی و جزایر ساندویچ جنوبی":"GS","گواتمالا":"GT","گوام":"GU","گینهٔ بیسائو":"GW","گویان":"GY","هنگ‌کنگ، ناحیهٔ ویژهٔ حکومتی چین":"HK","جزیرهٔ هرد و جزایر مک‌دونالد":"HM","هندوراس":"HN","کرواسی":"HR","هائیتی":"HT","مجارستان":"HU","جزایر قناری":"IC","اندونزی":"ID","ایرلند":"IE","اسرائیل":"IL","جزیرهٔ من":"IM","هند":"IN","مستعمره‌های بریتانیا در اقیانوس هند":"IO","عراق":"IQ","ایران":"IR","ایسلند":"IS","ایتالیا":"IT","جرزی":"JE","جامائیکا":"JM","اردن":"JO","ژاپن":"JP","کنیا":"KE","قرقیزستان":"KG","کامبوج":"KH","کریباتی":"KI","کومورو":"KM","سنت کیتس و نویس":"KN","کرهٔ شمالی":"KP","کرهٔ جنوبی":"KR","کویت":"KW","جزایر کِیمن":"KY","قزاقستان":"KZ","لائوس":"LA","لبنان":"LB","سنت لوسیا":"LC","لیختن‌اشتاین":"LI","سری‌لانکا":"LK","لیبریا":"LR","لسوتو":"LS","لیتوانی":"LT","لوکزامبورگ":"LU","لتونی":"LV","لیبی":"LY","مراکش":"MA","موناکو":"MC","مولداوی":"MD","مونته‌نگرو":"ME","سنت مارتین":"MF","ماداگاسکار":"MG","جزایر مارشال":"MH","مقدونیه":"MK","مالی":"ML","میانمار [برمه]":"MM","مغولستان":"MN","ماکائو، ناحیهٔ ویژهٔ حکومتی چین":"MO","جزایر ماریانای شمالی":"MP","مارتینیک":"MQ","موریتانی":"MR","مونت‌سرات":"MS","مالت":"MT","موریس":"MU","مالدیو":"MV","مالاوی":"MW","مکزیک":"MX","مالزی":"MY","موزامبیک":"MZ","نامیبیا":"NA","کالدونیای جدید":"NC","نیجر":"NE","جزیرهٔ نورفولک":"NF","نیجریه":"NG","نیکاراگوئه":"NI","هلند":"NL","نروژ":"NO","نپال":"NP","نائورو":"NR","نیوئه":"NU","زلاند نو":"NZ","عمان":"OM","پاناما":"PA","پرو":"PE","پلی‌نزی فرانسه":"PF","پاپوا گینهٔ نو":"PG","فیلیپین":"PH","پاکستان":"PK","لهستان":"PL","سنت پیر و میکلون":"PM","جزایر پیت‌کرن":"PN","پورتوریکو":"PR","سرزمین‌های فلسطینی":"PS","پرتغال":"PT","پالائو":"PW","پاراگوئه":"PY","قطر":"QA","بخش‌های دورافتادهٔ اقیانوسیه":"QO","ریونیون":"RE","رومانی":"RO","صربستان":"RS","روسیه":"RU","رواندا":"RW","عربستان سعودی":"SA","جزایر سلیمان":"SB","سیشل":"SC","سودان":"SD","سوئد":"SE","سنگاپور":"SG","سنت هلن":"SH","اسلوونی":"SI","اسوالبارد و جان‌ماین":"SJ","اسلواکی":"SK","سیرالئون":"SL","سان‌مارینو":"SM","سنگال":"SN","سومالی":"SO","سورینام":"SR","سودان جنوبی":"SS","سائوتومه و پرینسیپه":"ST","السالوادور":"SV","سنت مارتن":"SX","سوریه":"SY","سوازیلند":"SZ","تریستان دا کونا":"TA","جزایر ترک و کایکوس":"TC","چاد":"TD","مستعمره‌های جنوبی فرانسه":"TF","توگو":"TG","تایلند":"TH","تاجیکستان":"TJ","توکلائو":"TK","تیمور لسته":"TL","ترکمنستان":"TM","تونس":"TN","تونگا":"TO","ترکیه":"TR","ترینیداد و توباگو":"TT","تووالو":"TV","تایوان":"TW","تانزانیا":"TZ","اوکراین":"UA","اوگاندا":"UG","جزایر دورافتادهٔ ایالات متحده":"UM","ایالات متحدهٔ امریکا":"US","اروگوئه":"UY","ازبکستان":"UZ","واتیکان":"VA","سنت وینسنت و گرنادین":"VC","ونزوئلا":"VE","جزایر ویرجین بریتانیا":"VG","جزایر ویرجین ایالات متحده":"VI","ویتنام":"VN","وانواتو":"VU","والیس و فیوتونا":"WF","ساموا":"WS","یمن":"YE","مایوت":"YT","افریقای جنوبی":"ZA","زامبیا":"ZM","زیمبابوه":"ZW","ناحیهٔ نامشخص":"ZZ"};
+ilib.data.ctrynames_fa_AF = {"اندورا":"AD","انتیگوا و باربودا":"AG","البانیا":"AL","انگولا":"AO","ارجنتاین":"AR","آسترالیا":"AU","بوسنیا و هرزه‌گوینا":"BA","بنگله‌دیش":"BD","بلجیم":"BE","بلغاریا":"BG","برونی":"BN","بولیویا":"BO","برازیل":"BR","بهاماس":"BS","روسیهٔ سفید":"BY","جمهوری دموکراتیک کانگو":"CD","افریقای مرکزی":"CF","کانگو":"CG","سویس":"CH","چلی":"CL","کولمبیا":"CO","کاستریکا":"CR","کیوبا":"CU","دنمارک":"DK","استونیا":"EE","اریتریا":"ER","هسپانیه":"ES","ایتوپیا":"ET","فنلند":"FI","میکرونزیا":"FM","گرینادا":"GD","گینیا":"GN","گینیا استوایی":"GQ","گواتیمالا":"GT","گینیا بیسائو":"GW","گیانا":"GY","هاندوراس":"HN","کروشیا":"HR","هایتی":"HT","اندونیزیا":"ID","آیرلند":"IE","آیسلند":"IS","جاپان":"JP","کینیا":"KE","قرغزستان":"KG","کمپوچیا":"KH","کومور":"KM","سنت کیتس و نیویس":"KN","کوریای شمالی":"KP","کوریای جنوبی":"KR","سریلانکا":"LK","لیسوتو":"LS","لتوانیا":"LT","لاتویا":"LV","لیبیا":"LY","مادغاسکر":"MG","منگولیا":"MN","موریتانیا":"MR","مالتا":"MT","مکسیکو":"MX","مالیزیا":"MY","موزمبیق":"MZ","نیجریا":"NG","نیکاراگوا":"NI","هالند":"NL","ناروی":"NO","نیپال":"NP","زیلاند جدید":"NZ","پانامه":"PA","پیرو":"PE","پاپوا نیو گینیا":"PG","پولند":"PL","پرتگال":"PT","پاراگوای":"PY","رومانیا":"RO","روآندا":"RW","جزایر سلومون":"SB","سویدن":"SE","سینگاپور":"SG","سلونیا":"SI","سلواکیا":"SK","سیرالیون":"SL","سینیگال":"SN","سومالیه":"SO","سائو تومه و پرینسیپ":"ST","السلوادور":"SV","تاجکستان":"TJ","اکراین":"UA","یوروگوای":"UY","سنت وینسنت و گرینادین":"VC","ونزویلا":"VE","ساموآ":"WS","زیمبابوی":"ZW"};
+ilib.data.ctrynames_ff = {"Anndoora":"AD","Emiraat Araab Denntuɗe":"AE","Afganistaan":"AF","Antiguwaa e Barbudaa":"AG","Anngiyaa":"AI","Albanii":"AL","Armenii":"AM","Antiiye Nederlanndeeje":"AN","Anngolaa":"AO","Arjantiin":"AR","Samowa Amerik":"AS","Otiriis":"AT","Ostaraalii":"AU","Aruuba":"AW","Ajerbayjaan":"AZ","Bosnii Hersegowiin":"BA","Barbadoos":"BB","Banglaadees":"BD","Beljik":"BE","Burkibaa Faaso":"BF","Bulgarii":"BG","Bahreyn":"BH","Burunndi":"BI","Benee":"BJ","Bermudaa":"BM","Burnaay":"BN","Boliwii":"BO","Beresiil":"BR","Bahamaas":"BS","Butaan":"BT","Botswaana":"BW","Belaruus":"BY","Beliise":"BZ","Kanadaa":"CA","Ndenndaandi Demokaraasiire Konngo":"CD","Ndenndaandi Santarafrik":"CF","Konngo":"CG","Suwiis":"CH","Kodduwaar":"CI","Duuɗe Kuuk":"CK","Cilii":"CL","Kameruun":"CM","Siin":"CN","Kolombiya":"CO","Kosta Rikaa":"CR","Kubaa":"CU","Duuɗe Kap Weer":"CV","Siipar":"CY","Ndenndaandi Cek":"CZ","Almaañ":"DE","Jibutii":"DJ","Danmark":"DK","Dominika":"DM","Ndenndanndi Dominika":"DO","Alaseri":"DZ","Ekuwatoor":"EC","Estoni":"EE","Ejipt":"EG","Eriteree":"ER","Espaañ":"ES","Ecoppi":"ET","Fenland":"FI","Fijji":"FJ","Duuɗe Falkland":"FK","Mikoronesii":"FM","Farayse":"FR","Gaboo":"GA","Laamateeri Rentundi":"GB","Garnaad":"GD","Jeorgii":"GE","Giyaan Farayse":"GF","Ganaa":"GH","Jibraltaar":"GI","Gorwendland":"GL","Gammbi":"GM","Gine":"GN","Gwaadalup":"GP","Ginee Ekuwaatoriyaal":"GQ","Gerees":"GR","Gwaatemalaa":"GT","Guwam":"GU","Gine-Bisaawo":"GW","Giyaan":"GY","Onnduraas":"HN","Korwasii":"HR","Haytii":"HT","Onngiri":"HU","Enndonesii":"ID","Irlannda":"IE","Israa'iila":"IL","Enndo":"IN","Keeriindi britaani to maayo enndo":"IO","Iraak":"IQ","Iraan":"IR","Islannda":"IS","Itali":"IT","Jamayka":"JM","Jordani":"JO","Sapoo":"JP","Keñaa":"KE","Kirgistaan":"KG","Kambodso":"KH","Kiribari":"KI","Komoor":"KM","Sent Kits e Newis":"KN","Koree Rewo":"KP","Koree Worgo":"KR","Kuweyti":"KW","Duuɗe Kaymaa":"KY","Kasakstaan":"KZ","Lawoos":"LA","Libaa":"LB","Sent Lusiyaa":"LC","Lincenstayn":"LI","Siri Lanka":"LK","Liberiyaa":"LR","Lesoto":"LS","Lituaanii":"LT","Liksembuur":"LU","Letonii":"LV","Libi":"LY","Maruk":"MA","Monaakoo":"MC","Moldawii":"MD","Madagaskaar":"MG","Duuɗe Marsaal":"MH","Meceduwaan":"MK","Maali":"ML","Miyamaar":"MM","Monngolii":"MN","Duuɗe Mariyaana Rewo":"MP","Martinik":"MQ","Muritani":"MR","Monseraat":"MS","Malte":"MT","Moriis":"MU","Maldiiwe":"MV","Malaawi":"MW","Meksik":"MX","Malesii":"MY","Mosammbik":"MZ","Namibii":"NA","Nuwel Kaledonii":"NC","Nijeer":"NE","Duuɗe Norfolk":"NF","Nijeriyaa":"NG","Nikaraguwaa":"NI","Nederlannda":"NL","Norwees":"NO","Nepaal":"NP","Nawuru":"NR","Niuwe":"NU","Nuwel Selannda":"NZ","Omaan":"OM","Panamaa":"PA","Peru":"PE","Polinesii Farayse":"PF","Papuwaa Nuwel Gine":"PG","Filipiin":"PH","Pakistaan":"PK","Poloñ":"PL","See Piyeer e Mikeloo":"PM","Pitkern":"PN","Porto Rikoo":"PR","Palestiin Sisjordani e Gaasaa":"PS","Purtugaal":"PT","Palawu":"PW","Paraguwaay":"PY","Kataar":"QA","Rewiñoo":"RE","Rumanii":"RO","Riisii":"RU","Ruwanndaa":"RW","Arabii Sawdit":"SA","Duuɗe Solomon":"SB","Seysel":"SC","Sudaan":"SD","Suweed":"SE","Sinngapuur":"SG","Sent Helen":"SH","Slowenii":"SI","Slowakii":"SK","Seraa liyon":"SL","See Maree":"SM","Senegaal":"SN","Somalii":"SO","Surinaam":"SR","Sawo Tome e Perensipe":"ST","El Salwador":"SV","Sirii":"SY","Swaasilannda":"SZ","Duuɗe Turke e Keikoos":"TC","Caad":"TD","Togoo":"TG","Taylannda":"TH","Tajikistaan":"TJ","Tokelaaw":"TK","Timoor Fuɗnaange":"TL","Turkmenistaan":"TM","Tunisii":"TN","Tonngaa":"TO","Turkii":"TR","Tirnidaad e Tobaago":"TT","Tuwaluu":"TV","Taywaan":"TW","Tansanii":"TZ","Ukereen":"UA","Unganndaa":"UG","Dowlaaji Dentuɗi Amerik":"US","Uruguwaay":"UY","Usbekistaan":"UZ","Dowla Waticaan":"VA","See Weesaa e Garnadiin":"VC","Wenesuwelaa":"VE","duuɗe kecce britanii":"VG","Duuɗe Kecce Amerik":"VI","Wiyetnaam":"VN","Wanuwaatuu":"VU","Walis e Futuna":"WF","Samowaa":"WS","Yemen":"YE","Mayoot":"YT","Afrik bŋ Worgo":"ZA","Sammbi":"ZM","Simbaabuwe":"ZW"};
+ilib.data.ctrynames_fi = {"Ascension-saari":"AC","Andorra":"AD","Arabiemiirikunnat":"AE","Afganistan":"AF","Antigua ja Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Alankomaiden Antillit":"AN","Angola":"AO","Antarktis":"AQ","Argentiina":"AR","Amerikan Samoa":"AS","Itävalta":"AT","Australia":"AU","Aruba":"AW","Ahvenanmaa":"AX","Azerbaidžan":"AZ","Bosnia ja Hertsegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgia":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint-Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Karibian Alankomaat":"BQ","Brasilia":"BR","Bahama":"BS","Bhutan":"BT","Bouvet’nsaari":"BV","Botswana":"BW","Valko-Venäjä":"BY","Belize":"BZ","Kanada":"CA","Kookossaaret [Keelingsaaret]":"CC","Kongon demokraattinen tasavalta":"CD","Keski-Afrikan tasavalta":"CF","Kongon tasavalta":"CG","Sveitsi":"CH","Norsunluurannikko":"CI","Cookinsaaret":"CK","Chile":"CL","Kamerun":"CM","Kiina":"CN","Kolumbia":"CO","Clippertoninsaari":"CP","Costa Rica":"CR","Kuuba":"CU","Kap Verde":"CV","Curaçao":"CW","Joulusaari":"CX","Kypros":"CY","Tšekki":"CZ","Saksa":"DE","Diego Garcia":"DG","Djibouti":"DJ","Tanska":"DK","Dominica":"DM","Dominikaaninen tasavalta":"DO","Algeria":"DZ","Ceuta ja Melilla":"EA","Ecuador":"EC","Viro":"EE","Egypti":"EG","Länsi-Sahara":"EH","Eritrea":"ER","Espanja":"ES","Etiopia":"ET","Euroopan unioni":"EU","Suomi":"FI","Fidži":"FJ","Falklandinsaaret":"FK","Mikronesian liittovaltio":"FM","Färsaaret":"FO","Ranska":"FR","Gabon":"GA","Britannia":"GB","Grenada":"GD","Georgia":"GE","Ranskan Guayana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grönlanti":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Päiväntasaajan Guinea":"GQ","Kreikka":"GR","Etelä-Georgia ja Eteläiset Sandwichsaaret":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hongkong – Kiinan e.h.a.":"HK","Heard- ja McDonaldinsaaret":"HM","Honduras":"HN","Kroatia":"HR","Haiti":"HT","Unkari":"HU","Kanariansaaret":"IC","Indonesia":"ID","Irlanti":"IE","Israel":"IL","Mansaari":"IM","Intia":"IN","Brittiläinen Intian valtameren alue":"IO","Irak":"IQ","Iran":"IR","Islanti":"IS","Italia":"IT","Jersey":"JE","Jamaika":"JM","Jordania":"JO","Japani":"JP","Kenia":"KE","Kirgisia":"KG","Kambodža":"KH","Kiribati":"KI","Komorit":"KM","Saint Kitts ja Nevis":"KN","Pohjois-Korea":"KP","Etelä-Korea":"KR","Kuwait":"KW","Caymansaaret":"KY","Kazakstan":"KZ","Laos":"LA","Libanon":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Liettua":"LT","Luxemburg":"LU","Latvia":"LV","Libya":"LY","Marokko":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Saint-Martin":"MF","Madagaskar":"MG","Marshallinsaaret":"MH","Makedonia":"MK","Mali":"ML","Myanmar [Burma]":"MM","Mongolia":"MN","Macao – Kiinan e.h.a.":"MO","Pohjois-Mariaanit":"MP","Martinique":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Malediivit":"MV","Malawi":"MW","Meksiko":"MX","Malesia":"MY","Mosambik":"MZ","Namibia":"NA","Uusi-Kaledonia":"NC","Niger":"NE","Norfolkinsaari":"NF","Nigeria":"NG","Nicaragua":"NI","Alankomaat":"NL","Norja":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Uusi-Seelanti":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Ranskan Polynesia":"PF","Papua-Uusi-Guinea":"PG","Filippiinit":"PH","Pakistan":"PK","Puola":"PL","Saint-Pierre ja Miquelon":"PM","Pitcairn":"PN","Puerto Rico":"PR","Palestiina":"PS","Portugali":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","ulkomeri":"QO","Réunion":"RE","Romania":"RO","Serbia":"RS","Venäjä":"RU","Ruanda":"RW","Saudi-Arabia":"SA","Salomonsaaret":"SB","Seychellit":"SC","Sudan":"SD","Ruotsi":"SE","Singapore":"SG","Saint Helena":"SH","Slovenia":"SI","Huippuvuoret ja Jan Mayen":"SJ","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Etelä-Sudan":"SS","São Tomé ja Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Syyria":"SY","Swazimaa":"SZ","Tristan da Cunha":"TA","Turks- ja Caicossaaret":"TC","Tšad":"TD","Ranskan ulkopuoliset eteläiset alueet":"TF","Togo":"TG","Thaimaa":"TH","Tadžikistan":"TJ","Tokelau":"TK","Itä-Timor":"TL","Turkmenistan":"TM","Tunisia":"TN","Tonga":"TO","Turkki":"TR","Trinidad ja Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tansania":"TZ","Ukraina":"UA","Uganda":"UG","Yhdysvaltain pienet erillissaaret":"UM","Yhdysvallat":"US","Uruguay":"UY","Uzbekistan":"UZ","Vatikaani":"VA","Saint Vincent ja Grenadiinit":"VC","Venezuela":"VE","Brittiläiset Neitsytsaaret":"VG","Yhdysvaltain Neitsytsaaret":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis ja Futuna":"WF","Samoa":"WS","Jemen":"YE","Mayotte":"YT","Etelä-Afrikka":"ZA","Sambia":"ZM","Zimbabwe":"ZW","tuntematon alue":"ZZ"};
 ilib.data.ctrynames_fr = {"generated":false,"albanie":"AL","algérie":"DZ","samoa américaines":"AS","andorre":"AD","antigua-et-barbuda":"AG","argentine":"AR","arménie":"AM","australie":"AU","autriche":"AT","azerbaïdjan":"AZ","ivb":"VG","bahreïn":"BH","barbade":"BB","biélorussie":"BY","belgique":"BE","bénin":"BJ","bermudes":"BM","bhoutan":"BT","bolivie":"BO","bosnie-herzégovine":"BA","brésil":"BR","territoire de l’océan indien britannique":"IO","bulgarie":"BG","cambodge":"KH","cameroun":"CM","cap-vert":"CV","caïmans":"KY","république d’afrique centrale":"CF","tchad":"TD","chili":"CL","chine":"CN","colombie":"CO","comores":"KM","îles cook":"CK","croatie":"HR","chypre":"CY","république tchèque":"CZ","côte d’ivoire":"CI","r.d.":"DO","rdc":"CD","république démocratique du congo":"CD","danemark":"DK","dominique":"DM","république dominicaine":"DO","timor oriental":"TL","équateur":"EC","égypte":"EG","guinée équatoriale":"GQ","érythrée":"ER","estonie":"EE","éthiopie":"ET","arym":"MK","îles falkland":"FK","falkland":"FK","îles féroé":"FO","états fédérés de micronésie":"FM","fidji":"FJ","finlande":"FI","ex-république yougoslave de macédoine":"MK","guyane française":"GF","polynésie française":"PF","gambie":"GM","géorgie":"GE","allemagne":"DE","grenade":"GD","grèce":"GR","groenland":"GL","guadeloupe":"GP","guinée":"GN","guinée-bissau":"GW","guyane":"GY","haïti":"HT","hongrie":"HU","islande":"IS","inde":"IN","indonésie":"ID","irak":"IQ","irlande":"IE","israël":"IL","italie":"IT","jamaïque":"JM","japon":"JP","jordanie":"JO","koweït":"KW","kirghizistan":"KG","lettonie":"LV","liban":"LB","libye":"LY","lituanie":"LT","macao":"MO","malaisie":"MY","malte":"MT","marianne":"MP","îles marshall":"MH","mauritanie":"MR","maurice":"MU","mexique":"MX","micronésie":"FM","moldavie":"MD","mongolie":"MN","monténégro":"ME","maroc":"MA","namibie":"NA","népal":"NP","pays-bas":"NL","antilles néerlandaises":"AN","nouvelle-calédonie":"NC","nouvelle-zélande":"NZ","île norfolk":"NF","corée du nord":"KP","îles marianne du nord":"MP","norvège":"NO","palaos":"PW","autorité palestinienne":"PS","panamá":"PA","papouasie-nouvelle-guinée":"PG","république populaire de chine":"CN","pérou":"PE","pologne":"PL","porto rico":"PR","république de chine":"TW","république d’irlande":"IE","roumanie":"RO","russie":"RU","sainte-hélène":"SH","saint-kitts-et-nevis":"KN","sainte-lucie":"LC","saint-vincent":"VC","saint-vincent et les grenadines":"VC","saint-marin":"SM","arabie saoudite":"SA","sénégal":"SN","serbie":"RS","singapour":"SG","saint-martin":"MF","slovaquie":"SK","slovénie":"SI","îles solomon":"SB","somalie":"SO","afrique du sud":"ZA","corée du sud":"KR","espagne":"ES","ste-lucie":"LC","saint-pierre-et-miquelon":"PM","soudan":"SD","suède":"SE","suisse":"CH","syrie":"SY","sao tomé-et-principe":"ST","taïwan":"TW","tadjikistan":"TJ","tanzanie":"TZ","thaïlande":"TH","les bahamas":"BS","îles vierges britanniques":"VG","îles turks et caicos":"TC","îles vierges américaines":"VI","trinité-et-tobago":"TT","tunisie":"TN","turquie":"TR","turkménistan":"TM","éau":"AE","ouganda":"UG","émirats arabes unis":"AE","royaume-uni":"GB","ouzbékistan":"UZ","vatican":"VA","wallis-et-futuna":"WF","yémen":"YE","zambie":"ZM","afghanistan":"AF","îles aland":"AX","angola":"AO","anguilla":"AI","antigua":"AG","arabie":"SA","aruba":"AW","ascension":"SH","i.v.b.":"VG","bahamas":"BS","bangladesh":"BD","barbuda":"AG","bélarus":"BY","belize":"BZ","bermude":"BM","république bolivarienne du venezuela":"VE","bolivie, état plurinational de":"BO","bosnie":"BA","botswana":"BW","île bouvet":"BV","territoire britannique de l’océan indien":"IO","brunéi":"BN","brunéi darussalam":"BN","burkina faso":"BF","burundi":"BI","r.c.a.":"CF","îles caicos":"TC","canada":"CA","îles du cap-vert":"CV","rca":"CF","îles caïmans":"KY","république centrafricaine":"CF","île christmas":"CX","îles cocos et keeling":"CC","îles cocos (keeling)":"CC","îles cocos":"CC","congo":"CD","congo, république démocratique du":"CD","congo, république démocratique":"CD","costa rica":"CR","cuba":"CU","république populaire démocratique de corée":"KP","fjibouti":"DJ","rpdc":"KP","rd":"DO","dubaï":"AE","el salvador":"SV","angleterre":"GB","a.r.y.m.":"MK","malouines":"FK","féroé":"FO","france":"FR","territoires français de l’antarctique":"TF","futuna":"WF","gabon":"GA","ghana":"GH","gibraltar":"GI","grande-bretagne":"GB","grenadines":"VC","guam":"GU","guatemala":"GT","guernesey":"GG","îles heard et mcdonald":"HM","île heard":"HM","île heard et îles mcdonald":"HM","herzégovine":"BA","hollande":"NL","saint-siège":"VA","honduras":"HN","hong kong":"HK","iran":"IR","iran, république islamique":"IR","iraq":"IQ","république islamique d’iran":"IR","île de man":"IM","jan mayen":"SJ","jersey":"JE","kazakhstan":"KZ","kenya":"KE","kiribati":"KI","corée":"KR","corée, république populaire démocratique de":"KP","corée, république de":"KR","république démocratique populaire lao":"LA","laos":"LA","lesotho":"LS","libéria":"LR","jamahiriya arabe libyenne populaire et socialiste":"LY","liechtenstein":"LI","lithuanie":"LT","luxembourg":"LU","macédoine":"MK","macédoine, ex-république yougoslave de":"MK","macédoine, l’ex-république yougoslave de":"MK","madagascar":"MG","malawi":"MW","maldives":"MV","mali":"ML","mariannes":"MP","marshalls":"MH","martinique":"MQ","mayotte":"YT","îles mcdonald":"HM","micronésie, états fédérés de":"FM","miquelon":"PM","moldavie, république de":"MD","monaco":"MC","montserrat":"MS","mozambique":"MZ","myanmar":"MM","nauru":"NR","nevis":"KN","nicaragua":"NI","niger":"NE","nigéria":"NG","îles mariannes du nord":"MP","territoires palestiniens occupés":"PS","oman":"OM","r. p. chine":"CN","r. p. de chine":"CN","r.p. de chine":"CN","pakistan":"PK","palau":"PW","palestine":"PS","territoires palestiniens":"PS","territoires palestiniens, occupés":"PS","panama":"PA","paraguay":"PY","philippines":"PH","pitcairn":"PN","état plurinational de bolivie":"BO","polynésie":"PF","portugal":"PT","rp chine":"CN","rpc":"CN","principe":"ST","qatar":"QA","république de corée":"KR","république de moldavie":"MD","république de singapour":"SG","réunion":"RE","fédération russe":"RU","rwanda":"RW","saint barthélemy":"BL","saint-barthélemy":"BL","sainte-hélène, ascension et tristan da cunha":"SH","saint-kitts":"KN","saint-pierre":"PM","samoa":"WS","sao tomé":"ST","écosse":"GB","seychelles":"SC","sierra leone":"SL","slovakie":"SK","îles salomon":"SB","salomon":"SB","géorgie du sud":"GS","géorgie du sud et îles sandwich du sud":"GS","îles sandwich du sud":"GS","sri lanka":"LK","st. barthélemy":"BL","st barth":"BL","ste hélène":"SH","ste hélène, ascension et tristan da cunha":"SH","st-kitts":"KN","st-kitts-et-nevis":"KN","ste lucie":"LC","st-vincent":"VC","st barthélemy":"BL","st. barth":"BL","st martin":"MF","suriname":"SR","svalbard":"SJ","svalbard et jan mayen":"SJ","swaziland":"SZ","république arabe syrienne":"SY","taiwan":"TW","tanzanie, république unie":"TZ","l’ex-république yougoslave de macédoine":"MK","les grenadines":"VC","les pays-bas":"NL","les philippines":"PH","la république de singapour":"SG","le soudan":"SD","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinité":"TT","tristan da cunha":"SH","îles turks":"TC","tuvalu":"TV","e.a.u.":"AE","r.u.":"GB","é.-u.":"US","eau":"AE","ru":"GB","ukraine":"UA","république unie de tanzanie":"TZ","états-unis":"US","îles mineures éloignées des états-unis":"UM","états-unis d’amérique":"US","uruguay":"UY","é-u":"US","iveu":"VI","vanuatu":"VU","cité du vatican":"VA","état de la cité du vatican":"VA","venezuela":"VE","venezuela, république bolivarienne du":"VE","viêt nam":"VN","vietnam":"VN","îles vierges":"VI","îles vierges, britanniques":"VG","îles vierges, é-u":"VI","pays de galles":"GB","wallis":"WF","sahara occidental":"EH","zimbabwe":"ZW","îles åland":"AX","Île de l’Ascension":"AC","Andorre":"AD","Émirats arabes unis":"AE","Afghanistan":"AF","Antigua-et-Barbuda":"AG","Anguilla":"AI","Albanie":"AL","Arménie":"AM","Antilles néerlandaises":"AN","Angola":"AO","Antarctique":"AQ","Argentine":"AR","Samoa américaines":"AS","Autriche":"AT","Australie":"AU","Aruba":"AW","Îles Åland":"AX","Azerbaïdjan":"AZ","Bosnie-Herzégovine":"BA","Barbade":"BB","Bangladesh":"BD","Belgique":"BE","Burkina Faso":"BF","Bulgarie":"BG","Bahreïn":"BH","Burundi":"BI","Bénin":"BJ","Saint-Barthélémy":"BL","Bermudes":"BM","Brunéi Darussalam":"BN","Bolivie":"BO","Pays-Bas caribéens":"BQ","Brésil":"BR","Bahamas":"BS","Bhoutan":"BT","Île Bouvet":"BV","Botswana":"BW","Bélarus":"BY","Belize":"BZ","Canada":"CA","Îles Cocos [Keeling]":"CC","République démocratique du Congo":"CD","République centrafricaine":"CF","Congo-Brazzaville":"CG","Suisse":"CH","Côte d’Ivoire":"CI","Îles Cook":"CK","Chili":"CL","Cameroun":"CM","Chine":"CN","Colombie":"CO","Île Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Cap-Vert":"CV","Curaçao":"CW","Île Christmas":"CX","Chypre":"CY","République tchèque":"CZ","Allemagne":"DE","Diego Garcia":"DG","Djibouti":"DJ","Danemark":"DK","Dominique":"DM","République dominicaine":"DO","Algérie":"DZ","Ceuta et Melilla":"EA","Équateur":"EC","Estonie":"EE","Égypte":"EG","Sahara occidental":"EH","Érythrée":"ER","Espagne":"ES","Éthiopie":"ET","Union européenne":"EU","Finlande":"FI","Fidji":"FJ","Îles Malouines":"FK","États fédérés de Micronésie":"FM","Îles Féroé":"FO","France":"FR","Gabon":"GA","Royaume-Uni":"GB","Grenade":"GD","Géorgie":"GE","Guyane française":"GF","Guernesey":"GG","Ghana":"GH","Gibraltar":"GI","Groenland":"GL","Gambie":"GM","Guinée":"GN","Guadeloupe":"GP","Guinée équatoriale":"GQ","Grèce":"GR","Géorgie du Sud et les Îles Sandwich du Sud":"GS","Guatemala":"GT","Guam":"GU","Guinée-Bissau":"GW","Guyana":"GY","R.A.S. chinoise de Hong Kong":"HK","Îles Heard et MacDonald":"HM","Honduras":"HN","Croatie":"HR","Haïti":"HT","Hongrie":"HU","Îles Canaries":"IC","Indonésie":"ID","Irlande":"IE","Israël":"IL","Île de Man":"IM","Inde":"IN","Territoire britannique de l'océan Indien":"IO","Irak":"IQ","Iran":"IR","Islande":"IS","Italie":"IT","Jersey":"JE","Jamaïque":"JM","Jordanie":"JO","Japon":"JP","Kenya":"KE","Kirghizistan":"KG","Cambodge":"KH","Kiribati":"KI","Comores":"KM","Saint-Kitts-et-Nevis":"KN","Corée du Nord":"KP","Corée du Sud":"KR","Koweït":"KW","Îles Caïmans":"KY","Kazakhstan":"KZ","Laos":"LA","Liban":"LB","Sainte-Lucie":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Libéria":"LR","Lesotho":"LS","Lituanie":"LT","Luxembourg":"LU","Lettonie":"LV","Libye":"LY","Maroc":"MA","Monaco":"MC","Moldavie":"MD","Monténégro":"ME","Saint-Martin [partie française]":"MF","Madagascar":"MG","Îles Marshall":"MH","Macédoine":"MK","Mali":"ML","Myanmar":"MM","Mongolie":"MN","R.A.S. chinoise de Macao":"MO","Îles Mariannes du Nord":"MP","Martinique":"MQ","Mauritanie":"MR","Montserrat":"MS","Malte":"MT","Maurice":"MU","Maldives":"MV","Malawi":"MW","Mexique":"MX","Malaisie":"MY","Mozambique":"MZ","Namibie":"NA","Nouvelle-Calédonie":"NC","Niger":"NE","Île Norfolk":"NF","Nigéria":"NG","Nicaragua":"NI","Pays-Bas":"NL","Norvège":"NO","Népal":"NP","Nauru":"NR","Niue":"NU","Nouvelle-Zélande":"NZ","Oman":"OM","Panama":"PA","Pérou":"PE","Polynésie française":"PF","Papouasie-Nouvelle-Guinée":"PG","Philippines":"PH","Pakistan":"PK","Pologne":"PL","Saint-Pierre-et-Miquelon":"PM","Pitcairn":"PN","Porto Rico":"PR","Territoire palestinien":"PS","Portugal":"PT","Palaos":"PW","Paraguay":"PY","Qatar":"QA","régions éloignées de l’Océanie":"QO","Réunion":"RE","Roumanie":"RO","Serbie":"RS","Russie":"RU","Rwanda":"RW","Arabie saoudite":"SA","Îles Salomon":"SB","Seychelles":"SC","Soudan":"SD","Suède":"SE","Singapour":"SG","Sainte-Hélène":"SH","Slovénie":"SI","Svalbard et Île Jan Mayen":"SJ","Slovaquie":"SK","Sierra Leone":"SL","Saint-Marin":"SM","Sénégal":"SN","Somalie":"SO","Suriname":"SR","Soudan du Sud":"SS","Sao Tomé-et-Príncipe":"ST","El Salvador":"SV","Saint-Martin [partie néerlandaise]":"SX","Syrie":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Îles Turks et Caïques":"TC","Tchad":"TD","Terres australes françaises":"TF","Togo":"TG","Thaïlande":"TH","Tadjikistan":"TJ","Tokelau":"TK","Timor oriental":"TL","Turkménistan":"TM","Tunisie":"TN","Tonga":"TO","Turquie":"TR","Trinité-et-Tobago":"TT","Tuvalu":"TV","Taïwan":"TW","Tanzanie":"TZ","Ukraine":"UA","Ouganda":"UG","Îles éloignées des États-Unis":"UM","États-Unis":"US","Uruguay":"UY","Ouzbékistan":"UZ","État de la Cité du Vatican":"VA","Saint-Vincent-et-les Grenadines":"VC","Venezuela":"VE","Îles Vierges britanniques":"VG","Îles Vierges des États-Unis":"VI","Viêt Nam":"VN","Vanuatu":"VU","Wallis-et-Futuna":"WF","Samoa":"WS","Yémen":"YE","Mayotte":"YT","Afrique du Sud":"ZA","Zambie":"ZM","Zimbabwe":"ZW","région indéterminée":"ZZ"};
 ilib.data.ctrynames_fr_CA = {"generated":false,"Île de l'Ascension":"AC","Géorgie du Sud et les îles Sandwich du Sud":"GS","Sao Tomé-et-Principe":"ST"};
+ilib.data.ctrynames_ga = {"Andóra":"AD","Aontas na nÉimíríochtaí Arabacha":"AE","An Afganastáin":"AF","Aintíge agus Barbúda":"AG","Anguilla":"AI","An Albáin":"AL","An Airméin":"AM","Antillí na hÍsiltíre":"AN","Angóla":"AO","An Antartaice":"AQ","An Airgintín":"AR","Samó Meiriceánach":"AS","An Ostair":"AT","An Astráil":"AU","Arúba":"AW","Oileáin Alaind":"AX","An Asarbaiseáin":"AZ","An Bhoisnia agus Heirseagóvéin":"BA","Barbadós":"BB","An Bhanglaidéis":"BD","An Bheilg":"BE","Buircíne Fasó":"BF","An Bhulgáir":"BG","Bairéin":"BH","An Bhurúin":"BI","Beinin":"BJ","Beirmiúda":"BM","Brúiné":"BN","An Bholaiv":"BO","An Bhrasaíl":"BR","Na Bahámaí":"BS","An Bhútáin":"BT","Oileán Bouvet":"BV","An Bhotsuáin":"BW","An Bhealarúis":"BY","An Bheilís":"BZ","Ceanada":"CA","Oileáin na gCócónna":"CC","Poblacht Dhaonlathach an Chongó":"CD","Poblacht na hAfraice Láir":"CF","An Congó":"CG","An Eilvéis":"CH","An Cósta Eabhair":"CI","Oileáin Cook":"CK","An tSile":"CL","Camarún":"CM","An tSín":"CN","An Cholóim":"CO","Cósta Ríce":"CR","Cúba":"CU","An Rinn Ghlas":"CV","Oileán na Nollag":"CX","An Chipir":"CY","Poblacht na Seice":"CZ","An Ghearmáin":"DE","Djibouti":"DJ","An Danmhairg":"DK","Doiminice":"DM","An Phoblacht Dhoiminiceach":"DO","An Ailgéir":"DZ","Eacuadór":"EC","An Eastóin":"EE","An Éigipt":"EG","An Sahára Thiar":"EH","An Eiritré":"ER","An Spáinn":"ES","An Aetóip":"ET","An tAontas Eorpach":"EU","An Fhionlainn":"FI","Fidsí":"FJ","Oileáin Fháclainne":"FK","An Mhicrinéis":"FM","Oileáin Fharó":"FO","An Fhrainc":"FR","An Ghabúin":"GA","An Ríocht Aontaithe":"GB","Grenada":"GD","An tSeoirsia":"GE","An Ghuáin Fhrancach":"GF","Geansaí":"GG","Gána":"GH","Giobráltar":"GI","An Ghraonlainn":"GL","An Ghaimbia":"GM","An Ghuine":"GN","Guadalúip":"GP","An Ghuine Mheánchriosach":"GQ","An Ghréig":"GR","An tSeoirsia Theas agus Oileáin Sandwich Theas":"GS","Guatamala":"GT","Guam":"GU","An Ghuine-Bhissau":"GW","An Ghuáin":"GY","R.R.S. na Síne Hong Cong":"HK","Oileán Heard agus Oileáin McDonald":"HM","Hondúras":"HN","An Chróit":"HR","Háití":"HT","An Ungáir":"HU","An Indinéis":"ID","Éire":"IE","Iosrael":"IL","Oileán Mhanann":"IM","An India":"IN","Críocha Briotanacha an Aigéin Indiagh":"IO","An Iaráic":"IQ","An Iaráin":"IR","An Íoslainn":"IS","An Iodáil":"IT","Geirsí":"JE","Iamáice":"JM","An Iordáin":"JO","An tSeapáin":"JP","An Chéinia":"KE","An Chirgeastáin":"KG","An Chambóid":"KH","Ciribeas":"KI","Oileáin Chomóra":"KM","Saint Kitts agus Nevis":"KN","An Chóiré Thuaidh":"KP","An Chóiré Theas":"KR","Cuáit":"KW","Oileáin na gCadhman":"KY","An Chasacstáin":"KZ","Laos":"LA","An Liobáin":"LB","San Lúisia":"LC","Lichtinstéin":"LI","Srí Lanca":"LK","An Libéir":"LR","Leosóta":"LS","An Liotuáin":"LT","Lucsamburg":"LU","An Laitvia":"LV","An Libia":"LY","Maracó":"MA","Monacó":"MC","An Mholdóiv":"MD","Montainéagró":"ME","Madagascar":"MG","Oileáin Marshall":"MH","An Mhacadóin":"MK","Mailí":"ML","Maenmar":"MM","An Mhongóil":"MN","R.R.S. na Síne Macáó":"MO","Oileáin Mariana Thuaidh":"MP","Martainíc":"MQ","An Mharatáin":"MR","Montsarat":"MS","Málta":"MT","Oileán Mhuirís":"MU","Na Maildiví":"MV","An Mhaláiv":"MW","Meicsiceo":"MX","An Mhalaeisia":"MY","Mósaimbíc":"MZ","An Namaib":"NA","An Nua-Chaladóin":"NC","An Nígir":"NE","Oileán Norfolk":"NF","An Nigéir":"NG","Nicearagua":"NI","An Ísiltír":"NL","An Iorua":"NO","Neipeal":"NP","Nárú":"NR","Nívé":"NU","An Nua-Shéalainn":"NZ","Óman":"OM","Panama":"PA","Peiriú":"PE","An Pholainéis Fhrancach":"PF","Nua-Ghuine Phapua":"PG","Na hOileáin Fhilipíneacha":"PH","An Phacastáin":"PK","An Pholainn":"PL","Saint Pierre agus Miquelon":"PM","Pitcairn":"PN","Portó Ríce":"PR","Na Críocha Pailistíneacha":"PS","An Phortaingéil":"PT","Palau":"PW","Paragua":"PY","Catar":"QA","An Aigéine Imeallach":"QO","Réunion":"RE","An Rómáin":"RO","An tSeirbia":"RS","Cónaidhm na Rúise":"RU","Ruanda":"RW","An Araib Shádach":"SA","Oileáin Sholaimh":"SB","Na Séiséil":"SC","An tSúdáin":"SD","An tSualainn":"SE","Singeapór":"SG","San Héilin":"SH","An tSlóvéin":"SI","Svalbard agus Jan Mayen":"SJ","An tSlóvaic":"SK","Siarra Leon":"SL","San Mairíne":"SM","An tSeineagáil":"SN","An tSomáil":"SO","Suranam":"SR","Sao Tome agus Principe":"ST","An tSalvadóir":"SV","An tSiria":"SY","An tSuasalainn":"SZ","Oileáin Turks agus Caicos":"TC","Sead":"TD","Críocha Deisceartacha na Fraince":"TF","Tóga":"TG","An Téalainn":"TH","An Táidsíceastáin":"TJ","Tócalá":"TK","Tíomór Thoir":"TL","An Tuircméanastáin":"TM","An Túinéis":"TN","Tonga":"TO","An Tuirc":"TR","Oileáin na Tríonóide agus Tobága":"TT","Túválú":"TV","An Téaváin":"TW","An Tansáin":"TZ","An Úcráin":"UA","Úganda":"UG","Mion-Oileáin Imeallacha S.A.M.":"UM","Stáit Aontaithe Mheiriceá":"US","Urugua":"UY","Úisbéiceastáin":"UZ","An Vatacáin":"VA","Saint Vincent agus na Grenadines":"VC","Veiniséala":"VE","Oileáin Bhriotanacha na Maighdean":"VG","Oileáin na Maighdean S.A.M.":"VI","Vít Neam":"VN","Vanuatú":"VU","Oileáin Vailís agus Futúna":"WF","Samó":"WS","Éimin":"YE","Mayotte":"YT","An Afraic Theas":"ZA","An tSaimbia":"ZM","An tSiombáib":"ZW","Réigiún Anaithnid nó Neamhbhailí":"ZZ"};
+ilib.data.ctrynames_gl = {"Illa de Ascensión":"AC","Andorra":"AD","Emiratos Árabes Unidos":"AE","Afganistán":"AF","Antiga e Barbuda":"AG","Anguila":"AI","Albania":"AL","Armenia":"AM","Antillas Holandesas":"AN","Angola":"AO","Antártida":"AQ","Arxentina":"AR","Samoa Americana":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Illas Aland":"AX","Acerbaixán":"AZ","Bosnia e Hercegovina":"BA","Barbados":"BB","Bangladesh":"BD","Bélxica":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","San Bartolomé":"BL","Bermudas":"BM","Brunei":"BN","Bolivia":"BO","Caribe neerlandés":"BQ","Brasil":"BR","Bahamas":"BS","Bután":"BT","Illa Bouvet":"BV","Botsuana":"BW","Bielorrusia":"BY","Belice":"BZ","Canadá":"CA","Illas Cocos [Keeling]":"CC","República Democrática do Congo":"CD","República Africana Central":"CF","Congo":"CG","Suíza":"CH","Costa de Marfil":"CI","Illas Cook":"CK","Chile":"CL","Camerún":"CM","China":"CN","Colombia":"CO","Illa Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Cabo Verde":"CV","Curaçao":"CW","Illa Christmas":"CX","Chipre":"CY","República Checa":"CZ","Alemaña":"DE","Diego García":"DG","Xibuti":"DJ","Dinamarca":"DK","Dominica":"DM","República Dominicana":"DO","Arxelia":"DZ","Ceuta e Melilla":"EA","Ecuador":"EC","Estonia":"EE","Exipto":"EG","Sahara Occidental":"EH","Eritrea":"ER","España":"ES","Etiopía":"ET","Unión Europea":"EU","Finlandia":"FI","Fixi":"FJ","Illas Malvinas":"FK","Micronesia":"FM","Illas Feroe":"FO","Francia":"FR","Gabón":"GA","Reino Unido":"GB","Granada":"GD","Xeorxia":"GE","Güiana Francesa":"GF","Guernsey":"GG","Gana":"GH","Xibraltar":"GI","Grenlandia":"GL","Gambia":"GM","Guinea":"GN","Guadalupe":"GP","Guinea Ecuatorial":"GQ","Grecia":"GR","Xeorxia do Sur e Illas Sandwich":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Güiana":"GY","Hong Kong RAE de China":"HK","Illa Heard e Illas McDonald":"HM","Honduras":"HN","Croacia":"HR","Haití":"HT","Hungría":"HU","Illas Canarias":"IC","Indonesia":"ID","Irlanda":"IE","Israel":"IL","Illa de Man":"IM","India":"IN","Territorio Británico do Océano Índico":"IO","Iraq":"IQ","Irán":"IR","Islandia":"IS","Italia":"IT","Jersey":"JE","Xamaica":"JM","Xordania":"JO","Xapón":"JP","Quenia":"KE","Quirguicistán":"KG","Cambodia":"KH","Kiribati":"KI","Comores":"KM","San Cristovo e Nevis":"KN","Corea do Norte":"KP","Corea do Sur":"KR","Kuwait":"KW","Illas Caimán":"KY","Kazakhstan":"KZ","Laos":"LA","Líbano":"LB","Santa Lucía":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lituania":"LT","Luxemburgo":"LU","Letonia":"LV","Libia":"LY","Marrocos":"MA","Mónaco":"MC","Moldova":"MD","Montenegro":"ME","San Martiño":"MF","Madagascar":"MG","Illas Marshall":"MH","Macedonia":"MK","Mali":"ML","Myanmar [Birmania]":"MM","Mongolia":"MN","Macau RAE de China":"MO","Illas Marianas do norte":"MP","Martinica":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauricio":"MU","Maldivas":"MV","Malaui":"MW","México":"MX","Malaisia":"MY","Mozambique":"MZ","Namibia":"NA","Nova Caledonia":"NC","Níxer":"NE","Illa Norfolk":"NF","Nixeria":"NG","Nicaragua":"NI","Países Baixos":"NL","Noruega":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Nova Celandia":"NZ","Omán":"OM","Panamá":"PA","Perú":"PE","Polinesia Francesa":"PF","Papúa Nova Guinea":"PG","Filipinas":"PH","Paquistán":"PK","Polonia":"PL","San Pedro e Miguelón":"PM","Illas Pitcairn":"PN","Porto Rico":"PR","Territorios palestinos":"PS","Portugal":"PT","Palau":"PW","Paraguai":"PY","Qatar":"QA","Oceanía Distante":"QO","Reunión":"RE","Romanía":"RO","Serbia":"RS","Rusia":"RU","Ruanda":"RW","Arabia Saudita":"SA","Illas Salomón":"SB","Seixeles":"SC","Sudán":"SD","Suecia":"SE","Singapur":"SG","Santa Helena":"SH","Eslovenia":"SI","Svalbard e Jan Mayen":"SJ","Eslovaquia":"SK","Serra Leoa":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Sudán do sur":"SS","Santo Tomé e Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Siria":"SY","Suacilandia":"SZ","Tristán da Cunha":"TA","Illas Turks e Caicos":"TC","Chad":"TD","Territorios Franceses do Sul":"TF","Togo":"TG","Tailandia":"TH","Taxiquistán":"TJ","Tokelau":"TK","Timor Leste":"TL","Turkmenistán":"TM","Tunisia":"TN","Tonga":"TO","Turquía":"TR","Trindade e Tobago":"TT","Tuvalu":"TV","Taiwán":"TW","Tanzania":"TZ","Ucraína":"UA","Uganda":"UG","Illas Menores Distantes dos EUA.":"UM","Estados Unidos de América":"US","Uruguai":"UY","Uzbekistán":"UZ","Cidade do Vaticano":"VA","San Vicente e Granadinas":"VC","Venezuela":"VE","Illas Virxes Británicas":"VG","Illas Virxes Estadounidenses":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis e Futuna":"WF","Samoa":"WS","Iemen":"YE","Mayotte":"YT","Sudáfrica":"ZA","Zambia":"ZM","Cimbabue":"ZW","Rexión descoñecida":"ZZ"};
+ilib.data.ctrynames_ha = {"Andora":"AD","Haɗaɗɗiyar Daular Larabawa":"AE","Afaganistan":"AF","Antigwa da Barbuba":"AG","Angila":"AI","Albaniya":"AL","Armeniya":"AM","Antiya Na Holan":"AN","Angola":"AO","Arjantiniya":"AR","Samowa Ta Amurka":"AS","Ostiriya":"AT","Ostareliya":"AU","Aruba":"AW","Azarbaijan":"AZ","Bosniya Harzagobina":"BA","Barbadas":"BB","Bangiladas":"BD","Belgiyom":"BE","Burkina Faso":"BF","Bulgariya":"BG","Baharan":"BH","Burundi":"BI","Binin":"BJ","Barmuda":"BM","Burune":"BN","Bolibiya":"BO","Birazil":"BR","Bahamas":"BS","Butan":"BT","Baswana":"BW","Belarus":"BY","Beliz":"BZ","Kanada":"CA","Jamhuriyar Dimokuraɗiyyar Kongo":"CD","Jamhuriyar Afirka Ta Tsakiya":"CF","Kongo":"CG","Suwizalan":"CH","Aibari Kwas":"CI","Tsibiran Kuku":"CK","Cayile":"CL","Kamaru":"CM","Caina, Sin":"CN","Kolambiya":"CO","Kwasta Rika":"CR","Kyuba":"CU","Tsibiran Kap Barde":"CV","Sifurus":"CY","Jamhuriyar Cak":"CZ","Jamus":"DE","Jibuti":"DJ","Danmark":"DK","Dominika":"DM","Jamhuriyar Dominika":"DO","Aljeriya":"DZ","Ekwador":"EC","Estoniya":"EE","Masar, Misira":"EG","Eritireya":"ER","Sipen":"ES","Habasha":"ET","Finlan":"FI","Fiji":"FJ","Tsibiran Falkilan":"FK","Mikuronesiya":"FM","Faransa":"FR","Gabon":"GA","Birtaniya":"GB","Girnada":"GD","Jiwarjiya":"GE","Gini Ta Faransa":"GF","Gana":"GH","Jibaraltar":"GI","Grinlan":"GL","Gambiya":"GM","Gini":"GN","Gwadaluf":"GP","Gini Ta Ikwaita":"GQ","Girka":"GR","Gwatamala":"GT","Gwam":"GU","Gini Bisau":"GW","Guyana":"GY","Honduras":"HN","Kurowaishiya":"HR","Haiti":"HT","Hungari":"HU","Indunusiya":"ID","Ayalan":"IE","Izira'ila":"IL","Indiya":"IN","Yankin Birtaniya Na Tekun Indiya":"IO","Iraƙi":"IQ","Iran":"IR","Aisalan":"IS","Italiya":"IT","Jamaika":"JM","Jordan":"JO","Japan":"JP","Kenya":"KE","Kirgizistan":"KG","Kambodiya":"KH","Kiribati":"KI","Kwamoras":"KM","San Kiti Da Nebis":"KN","Koreya Ta Arewa":"KP","Koreya Ta Kudu":"KR","Kwiyat":"KW","Tsibiran Kaiman":"KY","Kazakistan":"KZ","Lawas":"LA","Labanan":"LB","San Lusiya":"LC","Licansitan":"LI","Siri Lanka":"LK","Laberiya":"LR","Lesoto":"LS","Lituweniya":"LT","Lukusambur":"LU","latibiya":"LV","Libiya":"LY","Maroko":"MA","Monako":"MC","Maldoba":"MD","Madagaskar":"MG","Tsibiran Marshal":"MH","Masedoniya":"MK","Mali":"ML","Burma, Miyamar":"MM","Mangoliya":"MN","Tsibiran Mariyana Na Arewa":"MP","Martinik":"MQ","Moritaniya":"MR","Manserati":"MS","Malta":"MT","Moritus":"MU","Maldibi":"MV","Malawi":"MW","Makasiko":"MX","Malaisiya":"MY","Mozambik":"MZ","Namibiya":"NA","Kaledoniya Sabuwa":"NC","Nijar":"NE","Tsibirin Narfalk":"NF","Najeriya":"NG","Nikaraguwa":"NI","Holan":"NL","Norwe":"NO","Nefal":"NP","Nauru":"NR","Niyu":"NU","Nuzilan":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Folinesiya Ta Faransa":"PF","Papuwa Nugini":"PG","Filipin":"PH","Pakistan":"PK","Polan":"PL","San Piyar Da Mikelan":"PM","Pitakarin":"PN","Porto Riko":"PR","Palasɗinu":"PS","Portugal":"PT","Palau":"PW","Paragai":"PY","Kwatar":"QA","Rawuniyan":"RE","Romaniya":"RO","Rasha":"RU","Ruwanda":"RW","Ƙasar Makka":"SA","Tsibiran Salaman":"SB","Saishal":"SC","Sudan":"SD","Suwedan":"SE","Singapur":"SG","San Helena":"SH","Sulobeniya":"SI","Sulobakiya":"SK","Salewo":"SL","San Marino":"SM","Sinigal":"SN","Somaliya":"SO","Suriname":"SR","Sawo Tome Da Paransip":"ST","El Salbador":"SV","Sham, Siriya":"SY","Suwazilan":"SZ","Turkis Da Tsibiran Kaikwas":"TC","Cadi":"TD","Togo":"TG","Tailan":"TH","Tajikistan":"TJ","Takelau":"TK","Timor Ta Gabas":"TL","Turkumenistan":"TM","Tunisiya":"TN","Tanga":"TO","Turkiyya":"TR","Tirinidad Da Tobago":"TT","Tubalu":"TV","Taiwan":"TW","Tanzaniya":"TZ","Yukaran":"UA","Yuganda":"UG","Amurka":"US","Yurugai":"UY","Uzubekistan":"UZ","Batikan":"VA","San Binsan Da Girnadin":"VC","Benezuwela":"VE","Tsibirin Birjin Na Birtaniya":"VG","Tsibiran Birjin Ta Amurka":"VI","Biyetinam":"VN","Banuwatu":"VU","Walis Da Futuna":"WF","Samowa":"WS","Yamal":"YE","Mayoti":"YT","Afirka Ta Kudu":"ZA","Zambiya":"ZM","Zimbabuwe":"ZW"};
 ilib.data.ctrynames_he = {"האי אסנשן":"AC","אנדורה":"AD","איחוד האמירויות הערביות":"AE","אפגניסטן":"AF","אנטיגואה וברבודה":"AG","אנגילה":"AI","אלבניה":"AL","ארמניה":"AM","אנטילים הולנדיים":"AN","אנגולה":"AO","אנטארקטיקה":"AQ","ארגנטינה":"AR","סמואה האמריקנית":"AS","אוסטריה":"AT","אוסטרליה":"AU","ארובה":"AW","איי אלנד":"AX","אזרביג׳ן":"AZ","בוסניה והרצגובינה":"BA","ברבדוס":"BB","בנגלדש":"BD","בלגיה":"BE","בורקינה פאסו":"BF","בולגריה":"BG","בחריין":"BH","בורונדי":"BI","בנין":"BJ","סנט ברתולומיאו":"BL","ברמודה":"BM","ברוניי":"BN","בוליביה":"BO","האיים הקריביים ההולנדיים":"BQ","ברזיל":"BR","איי בהאמה":"BS","בהוטן":"BT","איי בובה":"BV","בוטסוואנה":"BW","בלארוס":"BY","בליז":"BZ","קנדה":"CA","איי קוקס [קילינג]":"CC","קונגו - קינשאסה":"CD","הרפובליקה של מרכז אפריקה":"CF","קונגו - ברזאויל":"CG","שווייץ":"CH","חוף השנהב":"CI","איי קוק":"CK","צ׳ילה":"CL","קמרון":"CM","סין":"CN","קולומביה":"CO","האי קליפרטון":"CP","קוסטה ריקה":"CR","קובה":"CU","כף ורדה":"CV","קוראסאו":"CW","איי כריסטמס":"CX","קפריסין":"CY","צ׳כיה":"CZ","גרמניה":"DE","דייגו גרסיה":"DG","ג׳יבוטי":"DJ","דנמרק":"DK","דומיניקה":"DM","הרפובליקה הדומיניקנית":"DO","אלג׳יריה":"DZ","סאוטה ומלייה":"EA","אקוודור":"EC","אסטוניה":"EE","מצרים":"EG","סהרה המערבית":"EH","אריתריאה":"ER","ספרד":"ES","אתיופיה":"ET","האיחוד האירופי":"EU","פינלנד":"FI","פיג׳י":"FJ","איי פוקלנד":"FK","מיקרונזיה":"FM","איי פארו":"FO","צרפת":"FR","גאבון":"GA","בריטניה":"GB","גרנדה":"GD","גאורגיה":"GE","גיאנה הצרפתית":"GF","גרנסי":"GG","גאנה":"GH","גיברלטר":"GI","גרינלנד":"GL","גמביה":"GM","גיניאה":"GN","גוואדלופ":"GP","גיניאה המשוונית":"GQ","יוון":"GR","ג׳ורג׳יה הדרומית ואיי סנדוויץ׳ הדרומיים":"GS","גואטמלה":"GT","גואם":"GU","גיניאה-ביסאו":"GW","גיאנה":"GY","הונג קונג - מחוז מנהלי מיוחד של סין":"HK","איי הרד ואיי מקדונלנד":"HM","הונדורס":"HN","קרואטיה":"HR","האיטי":"HT","הונגריה":"HU","האיים הקנריים":"IC","אינדונזיה":"ID","אירלנד":"IE","ישראל":"IL","האי מאן":"IM","הודו":"IN","טריטוריה בריטית באוקיאנוס ההודי":"IO","עיראק":"IQ","איראן":"IR","איסלנד":"IS","איטליה":"IT","ג׳רסי":"JE","ג׳מייקה":"JM","ירדן":"JO","יפן":"JP","קניה":"KE","קירגיזסטן":"KG","קמבודיה":"KH","קיריבאטי":"KI","קומורוס":"KM","סנט קיטס ונוויס":"KN","צפ' קוריאה":"KP","דר' קוריאה":"KR","כווית":"KW","איי קיימן":"KY","קזחסטן":"KZ","לאוס":"LA","לבנון":"LB","סנט לוסיה":"LC","ליכטנשטיין":"LI","סרי לנקה":"LK","ליבריה":"LR","לסוטו":"LS","ליטא":"LT","לוקסמבורג":"LU","לטביה":"LV","לוב":"LY","מרוקו":"MA","מונקו":"MC","מולדובה":"MD","מונטנגרו":"ME","סנט מרטין":"MF","מדגסקר":"MG","איי מרשל":"MH","מקדוניה":"MK","מאלי":"ML","מיאנמאר [בורמה]‎":"MM","מונגוליה":"MN","מקאו - מחוז מנהלי מיוחד של סין":"MO","איי מריאנה הצפוניים":"MP","מרטיניק":"MQ","מאוריטניה":"MR","מונסראט":"MS","מלטה":"MT","מאוריציוס":"MU","מלדיבים":"MV","מלאווי":"MW","מקסיקו":"MX","מלזיה":"MY","מוזמביק":"MZ","נמיביה":"NA","קלדוניה החדשה":"NC","ניז׳ר":"NE","איי נורפוק":"NF","ניגריה":"NG","ניקרגואה":"NI","הולנד":"NL","נורווגיה":"NO","נפאל":"NP","נאורו":"NR","ניווה":"NU","ניו זילנד":"NZ","עומאן":"OM","פנמה":"PA","פרו":"PE","פולינזיה הצרפתית":"PF","פפואה גיניאה החדשה":"PG","פיליפינים":"PH","פקיסטן":"PK","פולין":"PL","סנט פייר ומיקלון":"PM","איי פיטקרן":"PN","פורטו ריקו":"PR","השטחים הפלסטיניים":"PS","פורטוגל":"PT","פאלאו":"PW","פרגוואי":"PY","קטאר":"QA","אוקיאניה פרושה":"QO","ראוניון":"RE","רומניה":"RO","סרביה":"RS","רוסיה":"RU","רואנדה":"RW","ערב הסעודית":"SA","איי שלמה":"SB","איי סיישל":"SC","סודן":"SD","שוודיה":"SE","סינגפור":"SG","סנט הלנה":"SH","סלובניה":"SI","סוולבארד וז׳אן מאיין":"SJ","סלובקיה":"SK","סיירה לאונה":"SL","סן מרינו":"SM","סנגל":"SN","סומליה":"SO","סורינם":"SR","דרום סודן":"SS","סאו טומה ופרינסיפה":"ST","אל סלבדור":"SV","סינט מארטן":"SX","סוריה":"SY","סווזילנד":"SZ","טריסטן דה קונה":"TA","איי טורקס וקאיקוס":"TC","צ׳אד":"TD","טריטוריות דרומיות של צרפת":"TF","טוגו":"TG","תאילנד":"TH","טג׳יקיסטן":"TJ","טוקלאו":"TK","מזרח טימור":"TL","טורקמניסטן":"TM","תוניסיה":"TN","טונגה":"TO","טורקיה":"TR","טרינידד וטובגו":"TT","טובלו":"TV","טייוואן":"TW","טנזניה":"TZ","אוקראינה":"UA","אוגנדה":"UG","איים לחוף ארצות הברית":"UM","ארצות הברית":"US","אורוגוואי":"UY","אוזבקיסטן":"UZ","הוותיקן":"VA","סנט וינסנט והגרנדינים":"VC","ונצואלה":"VE","איי הבתולה הבריטיים":"VG","איי הבתולה האמריקניים":"VI","וייטנאם":"VN","ונואטו":"VU","איי ווליס ופוטונה":"WF","סמואה":"WS","תימן":"YE","מאיוט":"YT","דרום אפריקה":"ZA","זמביה":"ZM","זימבאבווה":"ZW","אזור לא ידוע":"ZZ"};
+ilib.data.ctrynames_hi = {"असेंशन आइलैंड":"AC","अन्डोरा":"AD","संयुक्त अरब अमीरात":"AE","अफ़गानिस्तान":"AF","एंटिगुआ और बरबुडा":"AG","एंगुइला":"AI","अल्बानिया":"AL","आर्मेनिया":"AM","नीदरलैंड्स एंटिलीज़":"AN","अंगोला":"AO","अंटार्कटिका":"AQ","अर्जेन्टीना":"AR","अमेरिकी समोआ":"AS","ऑस्ट्रिया":"AT","ऑस्ट्रेलिया":"AU","अरूबा":"AW","एलैंड द्वीपसमूह":"AX","अज़रबैजान":"AZ","बोस्निया और हर्ज़िगोविना":"BA","बारबाडोस":"BB","बांग्लादेश":"BD","बेल्जियम":"BE","बुर्किना फ़ासो":"BF","बुल्गारिया":"BG","बाहरेन":"BH","बुरुंडी":"BI","बेनिन":"BJ","सेंट बार्थेलेमी":"BL","बरमूडा":"BM","ब्रुनेई":"BN","बोलीविया":"BO","कैरेबियाई नीदरलैंड्स":"BQ","ब्राजील":"BR","बहामा":"BS","भूटान":"BT","बौवेत द्वीप":"BV","बोत्स्वाना":"BW","बेलारूस":"BY","बेलिज":"BZ","कनाडा":"CA","कोकोस द्वीप":"CC","कोंगो जनतांत्रिक गणतंत्र":"CD","सेंट्रल अफ्रीकन रिपब्लिक":"CF","कांगो":"CG","स्विस":"CH","आईवरी कोस्ट":"CI","कुक द्वीपसमूह":"CK","चिली":"CL","कैमरून":"CM","चीन":"CN","कोलम्बिया":"CO","क्लिपर्टन आइलैंड":"CP","कोस्टारीका":"CR","क्यूबा":"CU","कैप वर्डे":"CV","क्यूरासाओ":"CW","क्रिसमस द्वीप":"CX","साइप्रस":"CY","चेक गणराज्य":"CZ","जर्मनी":"DE","डिएगो गार्सिया":"DG","जिबूती":"DJ","डेनमार्क":"DK","डोमिनिक":"DM","डोमिनिकन गणराज्य":"DO","अल्जीरिया":"DZ","सेउटा और मेलिला":"EA","इक्वाडोर":"EC","एस्टोनिया":"EE","मिस्र":"EG","पश्चिमी सहारा":"EH","इरिट्रिया":"ER","स्पेन":"ES","इथियोपिया":"ET","यूरोपीय संघ":"EU","फिनलैंड":"FI","फिजी":"FJ","फ़ॉकलैंड द्वीप":"FK","माइक्रोनेशिया":"FM","फरोए द्वीप":"FO","फ्रांस":"FR","गैबॉन":"GA","ब्रितन":"GB","ग्रेनेडा":"GD","जॉर्जिया":"GE","फ़्रांसीसी गिआना":"GF","ग्वेर्नसे":"GG","घाना":"GH","जिब्राल्टर":"GI","ग्रीनलैण्ड":"GL","गाम्बिया":"GM","गिनी":"GN","ग्वाडेलोप":"GP","इक्वेटोरियल गिनी":"GQ","ग्रीस":"GR","दक्षिण जोर्जिया और दक्षिण सैंडविच द्वीपसमूह":"GS","गोतेदाला":"GT","गुआम":"GU","गीनी-बिसाउ":"GW","गुयाना":"GY","हांगकांग विशेष प्रशासनिक क्षेत्र चीन":"HK","हर्ड द्वीप और मैकडोनॉल्ड द्वीप":"HM","हाण्डूरस":"HN","क्रोशिया":"HR","हाइती":"HT","हंगरी":"HU","कैनेरी द्वीपसमूह":"IC","इंडोनेशिया":"ID","आयरलैंड":"IE","इसराइल":"IL","आइल ऑफ मैन":"IM","भारत":"IN","ब्रिटिश हिंद महासागरीय क्षेत्र":"IO","इराक":"IQ","ईरान":"IR","आइसलैंड":"IS","इटली":"IT","जर्सी":"JE","जमाइका":"JM","जोर्डन":"JO","जापान":"JP","केन्या":"KE","किर्गिज़तान":"KG","कम्बोडिया":"KH","किरिबाती":"KI","कोमोरोस":"KM","सेंट किट्स और नेविस":"KN","उत्तर कोरिया":"KP","दक्षिण कोरिया":"KR","कुवैत":"KW","केमैन द्वीपसमूह":"KY","कजाखस्तान":"KZ","लाओस":"LA","लेबनान":"LB","सेंट लूसिया":"LC","लिकटेंस्टीन":"LI","श्रीलंका":"LK","लाइबेरिया":"LR","लेसोथो":"LS","लिथुआनिया":"LT","लक्समबर्ग":"LU","लात्विया":"LV","लीबिया":"LY","मोरक्को":"MA","मोनाको":"MC","मोल्डाविया":"MD","मोंटेनेग्रो":"ME","सेंट मार्टिन":"MF","मैडागास्कर":"MG","मार्शल द्वीप":"MH","मैसेडोनिया":"MK","माली":"ML","म्यानमार":"MM","मंगोलिया":"MN","मकाओ चीन":"MO","नॉर्दन मारियाना द्वीपसमूह":"MP","मार्टीनिक":"MQ","मॉरिटानिया":"MR","मॉन्ट्सेराट":"MS","माल्टा":"MT","मॉरिशस":"MU","मालदीव":"MV","मलावी":"MW","मेक्सिको":"MX","मलेशिया":"MY","मोजाम्बिक":"MZ","नामीबिया":"NA","न्यू कैलेडोनिया":"NC","नाइजर":"NE","नॉरफ़ॉक द्वीप":"NF","नाइजीरिया":"NG","निकारागुआ":"NI","नीदरलैण्ड":"NL","नॉर्वे":"NO","नेपाल":"NP","नाउरु":"NR","नीयू":"NU","न्यूज़ीलैंड":"NZ","ओमान":"OM","पनामा":"PA","पेरू":"PE","फ़्रांसीसी पॉलिनेशिया":"PF","पापुआ न्यू गिनी":"PG","फिलीपिंस":"PH","पाकिस्तान":"PK","पोलैंड":"PL","सेंट पिएरे और मिक्वेलन":"PM","पिटकैर्न":"PN","पर्टो रीको":"PR","फ़िलिस्तीन":"PS","पुर्तगाल":"PT","पलाऊ":"PW","पारागुए":"PY","कतर":"QA","आउटलाइंग ओशिनिया":"QO","रियूनियन":"RE","रोमानिया":"RO","सर्बिया":"RS","रूस":"RU","रूआण्डा":"RW","सऊदी अरब":"SA","सोलोमन द्वीप":"SB","सेशेल्स":"SC","सूडान":"SD","स्वीडन":"SE","सिंगापुर":"SG","सेंट हेलेना":"SH","स्लोवेनिया":"SI","स्वालबर्ड और जान मायेन":"SJ","स्लोवाकिया":"SK","सियरालेओन":"SL","सैन मेरीनो":"SM","सेनेगल":"SN","सोमालिया":"SO","सुरिनाम":"SR","दक्षिण सूडान":"SS","साउ-तोम-प्रिंसिप":"ST","अल साल्वाडोर":"SV","सिंट मार्टिन":"SX","सीरिया":"SY","सुआजीलैंड":"SZ","त्रिस्टान डा कुना":"TA","तुर्क् और् कैकोज़ द्वीप":"TC","चाड":"TD","फ़्रांसीसी दक्षिणी क्षेत्र":"TF","टोगो":"TG","थाइलैंड":"TH","ताजिकिस्तान":"TJ","तोकेलाउ":"TK","पूर्वी तिमोर":"TL","तुर्कमेनिस्तान":"TM","तुनिशिया":"TN","टोंगा":"TO","तुर्की":"TR","त्रिनिडाड और टोबैगो":"TT","तुवालु":"TV","ताइवान":"TW","तंजा़निया":"TZ","यूक्रेन":"UA","युगांडा":"UG","युनाइटेड स्टेट्स माइनर आउटलाइंग द्वीपसमूह":"UM","संयुक्त राज्य अमेरिका":"US","युरूगुए":"UY","उजबेकिस्तान":"UZ","वैटिकन":"VA","सेंट विनसेंट एंड ग्रेनाडाइन्स":"VC","वेनेजुएला":"VE","ब्रिटिश वर्जिन द्वीपसमूह":"VG","अमेरिकी वर्जिन टापू":"VI","वियतनाम":"VN","वानुअतु":"VU","वालिस और फ़्यूचूना":"WF","समोआ":"WS","यमन":"YE","मैयट":"YT","दक्षिण अफ्रीका":"ZA","जाम्बिया":"ZM","जिम्बाब्वे":"ZW","अज्ञात या अवैध क्षेत्र":"ZZ"};
+ilib.data.ctrynames_hr = {"Otok Ascension":"AC","Andora":"AD","Ujedinjeni Arapski Emirati":"AE","Afganistan":"AF","Antigua i Barbuda":"AG","Anguila":"AI","Albanija":"AL","Armenija":"AM","Nizozemski Antili":"AN","Angola":"AO","Antarktik":"AQ","Argentina":"AR","Američka Samoa":"AS","Austrija":"AT","Australija":"AU","Aruba":"AW","Otoci Aland":"AX","Azerbajdžan":"AZ","Bosna i Hercegovina":"BA","Barbados":"BB","Bangladeš":"BD","Belgija":"BE","Burkina Faso":"BF","Bugarska":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","Sveti Bartolomej":"BL","Bermuda":"BM","Brunej":"BN","Bolivija":"BO","Karipski otoci Nizozemske":"BQ","Brazil":"BR","Bahami":"BS","Butan":"BT","Otok Bouvet":"BV","Bocvana":"BW","Bjelorusija":"BY","Belize":"BZ","Kanada":"CA","Kokosovi [Keeling] Otoci":"CC","Demokratska Republika Kongo":"CD","Srednjoafrička Republika":"CF","Kongo - Brazzaville":"CG","Švicarska":"CH","Bjelokosna Obala":"CI","Kukovi Otoci":"CK","Čile":"CL","Kamerun":"CM","Kina":"CN","Kolumbija":"CO","Otok Clipperton":"CP","Kostarika":"CR","Kuba":"CU","Zeleni Rt":"CV","Curaçao":"CW","Božićni Otok":"CX","Cipar":"CY","Češka Republika":"CZ","Njemačka":"DE","Diego Garcia":"DG","Džibuti":"DJ","Danska":"DK","Dominika":"DM","Dominikanska Republika":"DO","Alžir":"DZ","Ceuta i Melilla":"EA","Ekvador":"EC","Estonija":"EE","Egipat":"EG","Zapadna Sahara":"EH","Eritreja":"ER","Španjolska":"ES","Etiopija":"ET","Europska Unija":"EU","Finska":"FI","Fidži":"FJ","Falklandski Otoci":"FK","Mikronezija":"FM","Farski Otoci":"FO","Francuska":"FR","Gabon":"GA","Velika Britanija":"GB","Grenada":"GD","Gruzija":"GE","Francuska Gvajana":"GF","Guernsey":"GG","Gana":"GH","Gibraltar":"GI","Grenland":"GL","Gambija":"GM","Gvineja":"GN","Guadeloupe":"GP","Ekvatorska Gvineja":"GQ","Grčka":"GR","Južna Gruzija i Južni Sendvič Otoci":"GS","Gvatemala":"GT","Guam":"GU","Gvineja Bisau":"GW","Gvajana":"GY","Kinesko Posebno Upravno Područje Hong Kong":"HK","Otok Heard i Otoci McDonald":"HM","Honduras":"HN","Hrvatska":"HR","Haiti":"HT","Mađarska":"HU","Kanarski Otoci":"IC","Indonezija":"ID","Irska":"IE","Izrael":"IL","Otok Man":"IM","Indija":"IN","Britanski Teritorij Indijskog Oceana":"IO","Irak":"IQ","Iran":"IR","Island":"IS","Italija":"IT","Jersey":"JE","Jamajka":"JM","Jordan":"JO","Japan":"JP","Kenija":"KE","Kirgistan":"KG","Kambodža":"KH","Kiribati":"KI","Komori":"KM","Sveti Kristofor i Nevis":"KN","Sjeverna Koreja":"KP","Južna Koreja":"KR","Kuvajt":"KW","Kajmanski Otoci":"KY","Kazakstan":"KZ","Laos":"LA","Libanon":"LB","Sveta Lucija":"LC","Lihtenštajn":"LI","Šri Lanka":"LK","Liberija":"LR","Lesoto":"LS","Litva":"LT","Luksemburg":"LU","Latvija":"LV","Libija":"LY","Maroko":"MA","Monako":"MC","Moldavija":"MD","Crna Gora":"ME","Sveti Martin":"MF","Madagaskar":"MG","Maršalovi Otoci":"MH","Makedonija":"MK","Mali":"ML","Mijanmar [Burma]":"MM","Mongolija":"MN","Kinesko Posebno Upravno Područje Makao":"MO","Sjeverni Marijanski Otoci":"MP","Martinik":"MQ","Mauritanija":"MR","Montserat":"MS","Malta":"MT","Mauricijus":"MU","Maldivi":"MV","Malavi":"MW","Meksiko":"MX","Malezija":"MY","Mozambik":"MZ","Namibija":"NA","Nova Kaledonija":"NC","Niger":"NE","Otok Norfolk":"NF","Nigerija":"NG","Nikaragva":"NI","Nizozemska":"NL","Norveška":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Novi Zeland":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Francuska Polinezija":"PF","Papua Nova Gvineja":"PG","Filipini":"PH","Pakistan":"PK","Poljska":"PL","Sveti Petar i Mikelon":"PM","Otoci Pitcairn":"PN","Portoriko":"PR","Palestinsko Područje":"PS","Portugal":"PT","Palau":"PW","Paragvaj":"PY","Katar":"QA","Ostala oceanija":"QO","Reunion":"RE","Rumunjska":"RO","Srbija":"RS","Rusija":"RU","Ruanda":"RW","Saudijska Arabija":"SA","Solomonski Otoci":"SB","Sejšeli":"SC","Sudan":"SD","Švedska":"SE","Singapur":"SG","Sveta Helena":"SH","Slovenija":"SI","Svalbard i Jan Mayen":"SJ","Slovačka":"SK","Sijera Leone":"SL","San Marino":"SM","Senegal":"SN","Somalija":"SO","Surinam":"SR","Južni Sudan":"SS","Sveti Toma i Prinsipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Sirija":"SY","Svazi":"SZ","Tristan da Cunha":"TA","Turkski i Kaikos Otoci":"TC","Čad":"TD","Francuski Južni Teritoriji":"TF","Togo":"TG","Tajland":"TH","Tadžikistan":"TJ","Tokelau":"TK","Istočni Timor":"TL","Turkmenistan":"TM","Tunis":"TN","Tonga":"TO","Turska":"TR","Trinidad i Tobago":"TT","Tuvalu":"TV","Tajvan":"TW","Tanzanija":"TZ","Ukrajina":"UA","Uganda":"UG","Ujedinjene Države Manjih Pacifičkih Otoka":"UM","Sjedinjene Države":"US","Urugvaj":"UY","Uzbekistan":"UZ","Grad Vatikan":"VA","Sveti Vincent i Grenadini":"VC","Venezuela":"VE","Britanski Djevičanski Otoci":"VG","Američki Djevičanski Otoci":"VI","Vijetnam":"VN","Vanuatu":"VU","Wallis i Futuna":"WF","Samoa":"WS","Jemen":"YE","Majote":"YT","Južnoafrička Republika":"ZA","Zambija":"ZM","Zimbabve":"ZW","nepoznato područje":"ZZ"};
+ilib.data.ctrynames_hu = {"Ascension-sziget":"AC","Andorra":"AD","Egyesült Arab Emirátus":"AE","Afganisztán":"AF","Antigua és Barbuda":"AG","Anguilla":"AI","Albánia":"AL","Örményország":"AM","Holland Antillák":"AN","Angola":"AO","Antarktisz":"AQ","Argentína":"AR","Amerikai Szamoa":"AS","Ausztria":"AT","Ausztrália":"AU","Aruba":"AW","Åland-szigetek":"AX","Azerbajdzsán":"AZ","Bosznia-Hercegovina":"BA","Barbados":"BB","Banglades":"BD","Belgium":"BE","Burkina Faso":"BF","Bulgária":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolívia":"BO","Holland Karib-térség":"BQ","Brazília":"BR","Bahama-szigetek":"BS","Bhután":"BT","Bouvet-sziget":"BV","Botswana":"BW","Fehéroroszország":"BY","Belize":"BZ","Kanada":"CA","Kókusz-szigetek":"CC","Kongó - Kinshasa":"CD","Közép-afrikai Köztársaság":"CF","Kongó - Brazzaville":"CG","Svájc":"CH","Elefántcsontpart":"CI","Cook-szigetek":"CK","Chile":"CL","Kamerun":"CM","Kína":"CN","Kolumbia":"CO","Clipperton-sziget":"CP","Costa Rica":"CR","Kuba":"CU","Zöld-foki Köztársaság":"CV","Curaçao":"CW","Karácsony-szigetek":"CX","Ciprus":"CY","Csehország":"CZ","Németország":"DE","Diego Garcia":"DG","Dzsibuti":"DJ","Dánia":"DK","Dominika":"DM","Dominikai Köztársaság":"DO","Algéria":"DZ","Ceuta és Melilla":"EA","Ecuador":"EC","Észtország":"EE","Egyiptom":"EG","Nyugat-Szahara":"EH","Eritrea":"ER","Spanyolország":"ES","Etiópia":"ET","Európai Unió":"EU","Finnország":"FI","Fidzsi":"FJ","Falkland-szigetek":"FK","Mikronézia":"FM","Feröer-szigetek":"FO","Franciaország":"FR","Gabon":"GA","Egyesült Királyság":"GB","Grenada":"GD","Grúzia":"GE","Francia Guyana":"GF","Guernsey":"GG","Ghána":"GH","Gibraltár":"GI","Grönland":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Egyenlítői-Guinea":"GQ","Görögország":"GR","Dél Grúzia és a Déli Szendvics-szigetek":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hongkong SAR Kína":"HK","Heard és McDonald Szigetek":"HM","Honduras":"HN","Horvátország":"HR","Haiti":"HT","Magyarország":"HU","Kanári-szigetek":"IC","Indonézia":"ID","Írország":"IE","Izrael":"IL","Man-sziget":"IM","India":"IN","Brit Indiai-óceáni Terület":"IO","Irak":"IQ","Irán":"IR","Izland":"IS","Olaszország":"IT","Jersey":"JE","Jamaica":"JM","Jordánia":"JO","Japán":"JP","Kenya":"KE","Kirgizisztán":"KG","Kambodzsa":"KH","Kiribati":"KI","Comore-szigetek":"KM","Saint Kitts és Nevis":"KN","Észak-Korea":"KP","Dél-Korea":"KR","Kuvait":"KW","Kajmán-szigetek":"KY","Kazahsztán":"KZ","Laosz":"LA","Libanon":"LB","Santa Lucia":"LC","Liechtenstein":"LI","Srí Lanka":"LK","Libéria":"LR","Lesotho":"LS","Litvánia":"LT","Luxemburg":"LU","Lettország":"LV","Líbia":"LY","Marokkó":"MA","Monaco":"MC","Moldova":"MD","Montenegró":"ME","Saint Martin":"MF","Madagaszkár":"MG","Marshall-szigetek":"MH","Macedónia":"MK","Mali":"ML","Mianmar [Burma]":"MM","Mongólia":"MN","Makaó SAR Kína":"MO","Északi Mariana-szigetek":"MP","Martinique":"MQ","Mauritánia":"MR","Montserrat":"MS","Málta":"MT","Mauritius":"MU","Maldív-szigetek":"MV","Malawi":"MW","Mexikó":"MX","Malajzia":"MY","Mozambik":"MZ","Namíbia":"NA","Új-Kaledónia":"NC","Niger":"NE","Norfolk-sziget":"NF","Nigéria":"NG","Nicaragua":"NI","Hollandia":"NL","Norvégia":"NO","Nepál":"NP","Nauru":"NR","Niue":"NU","Új-Zéland":"NZ","Omán":"OM","Panama":"PA","Peru":"PE","Francia Polinézia":"PF","Pápua Új-Guinea":"PG","Fülöp-szigetek":"PH","Pakisztán":"PK","Lengyelország":"PL","Saint Pierre és Miquelon":"PM","Pitcairn-szigetek":"PN","Puerto Rico":"PR","Palesztin Terület":"PS","Portugália":"PT","Palau":"PW","Paraguay":"PY","Katar":"QA","Külső-Óceánia":"QO","Reunion":"RE","Románia":"RO","Szerbia":"RS","Oroszországi Föderáció":"RU","Ruanda":"RW","Szaúd-Arábia":"SA","Salamon-szigetek":"SB","Seychelle-szigetek":"SC","Szudán":"SD","Svédország":"SE","Szingapúr":"SG","Szent Helena":"SH","Szlovénia":"SI","Spitzbergák és Jan Mayen-szigetek":"SJ","Szlovákia":"SK","Sierra Leone":"SL","San Marino":"SM","Szenegál":"SN","Szomália":"SO","Suriname":"SR","Dél-Szudán":"SS","Sao Tomé és Príncipe":"ST","Salvador":"SV","Sint Maarten":"SX","Szíria":"SY","Szváziföld":"SZ","Tristan da Cunha":"TA","Turks- és Caicos-szigetek":"TC","Csád":"TD","Francia Déli Területek":"TF","Togo":"TG","Thaiföld":"TH","Tadzsikisztán":"TJ","Tokelau":"TK","Kelet-Timor":"TL","Türkmenisztán":"TM","Tunézia":"TN","Tonga":"TO","Törökország":"TR","Trinidad és Tobago":"TT","Tuvalu":"TV","Tajvan":"TW","Tanzánia":"TZ","Ukrajna":"UA","Uganda":"UG","Amerikai Csendes-óceáni Szigetek":"UM","Egyesült Államok":"US","Uruguay":"UY","Üzbegisztán":"UZ","Vatikán":"VA","Saint Vincent és a Grenadine-szigetek":"VC","Venezuela":"VE","Brit Virgin-szigetek":"VG","Amerikai Virgin-szigetek":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis- és Futuna-szigetek":"WF","Szamoa":"WS","Jemen":"YE","Mayotte":"YT","Dél-afrikai Köztársaság":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Ismeretlen vagy érvénytelen körzet":"ZZ"};
+ilib.data.ctrynames_hy = {"Անդորա":"AD","Միացյալ Արաբական Էմիրաթներ":"AE","Աֆղանստան":"AF","Անտիգուա-Բարբուդա":"AG","Ալբանիա":"AL","Հայաստանի Հանրապետություն":"AM","Անգոլա":"AO","Արգենտինա":"AR","Ավստրիա":"AT","Ավստրալիա":"AU","Ադրբեջան":"AZ","Բոսնիա-Հերցեգովինա":"BA","Բարբադոս":"BB","Բանգլադեշ":"BD","Բելգիա":"BE","Բուրկինա Ֆասո":"BF","Բուլղարիա":"BG","Բահրեյն":"BH","Բուրունդի":"BI","Բենին":"BJ","Բրունեյ":"BN","Բոլիվիա":"BO","Բրազիլիա":"BR","Բահամներ":"BS","Բուտան":"BT","Բոտսվանա":"BW","Բելոռուս":"BY","Բելիզ":"BZ","Կանադա":"CA","Կենտրոնական Աֆրիկյան Հանրապետություն":"CF","Կոնգո":"CG","Շվեյցարիա":"CH","Փղոսկրի Ափ":"CI","Չիլի":"CL","Կամերուն":"CM","Չինաստան":"CN","Կոլումբիա":"CO","Կոստա-Ռիկա":"CR","Կուբա":"CU","Կաբո-Վերդե":"CV","Կիպրոս":"CY","Չեխիայի Հանրապետություն":"CZ","Գերմանիա":"DE","Ջիբուտի":"DJ","Դանիա":"DK","Դոմինիկա":"DM","Դոմինիկյան Հանրապետություն":"DO","Ալժիր":"DZ","Էկվադոր":"EC","Էստոնիա":"EE","Եգիպտոս":"EG","Արեվմտյան Սահարա":"EH","Էրիտրեա":"ER","Իսպանիա":"ES","Եթովպիա":"ET","Ֆինլանդիա":"FI","Ֆիջի":"FJ","Միկրոնեզիա":"FM","Ֆրանսիա":"FR","Գաբոն":"GA","Մեծ Բրիտանիա":"GB","Գրենադա":"GD","Վրաստան":"GE","Գանա":"GH","Գամբիա":"GM","Գվինեա":"GN","Հասարակածային Գվինեա":"GQ","Հունաստան":"GR","Գվատեմալա":"GT","Գվինեա-Բիսաու":"GW","Գայանա":"GY","Հոնդուրաս":"HN","Հորվաթիա":"HR","Հաիթի":"HT","Հունգարիա":"HU","Ինդոնեզիա":"ID","Իռլանդիա":"IE","Իսրայել":"IL","Հնդկաստան":"IN","Իրաք":"IQ","Իրան":"IR","Իսլանդիա":"IS","Իտալիա":"IT","Ջամայկա":"JM","Հորդանան":"JO","Ճապոնիա":"JP","Քենիա":"KE","Կիրգիզստան":"KG","Կամբոջա":"KH","Կիրիբատի":"KI","Կոմորոս":"KM","Սենտ Կիտս-Նեվիս":"KN","Հյուսիսային Կորեա":"KP","Հարավային Կորեա":"KR","Քուվեյթ":"KW","Ղազախստան":"KZ","Լաոս":"LA","Լիբանան":"LB","Սանտա Լուչիա":"LC","Լիխտենշտեյն":"LI","Շրի Լանկա":"LK","Լիբերիա":"LR","Լեսոտո":"LS","Լիտվա":"LT","Լյուքսեմբուրգ":"LU","Լատվիա":"LV","Լիբիա":"LY","Մարոկո":"MA","Մոնակո":"MC","Մոլդովա":"MD","Մադագասկար":"MG","Մարշալյան կղզիներ":"MH","Մակեդոնիա":"MK","Մալի":"ML","Մյանմա":"MM","Մոնղոլիա":"MN","Մավրիտանիա":"MR","Մալթա":"MT","Մավրիտոս":"MU","Մալդիվներ":"MV","Մալավի":"MW","Մեքսիկա":"MX","Մալայզիա":"MY","Մոզամբիկ":"MZ","Նամիբիա":"NA","Նիգեր":"NE","Նիգերիա":"NG","Նիկարագուա":"NI","Նիդերլանդեր":"NL","Նորվեգիա":"NO","Նեպալ":"NP","Նաուրու":"NR","Նոր Զելանդիա":"NZ","Օման":"OM","Պանամա":"PA","Պերու":"PE","Պապուա Նոր Գվինեա":"PG","Ֆիլիպիններ":"PH","Պակիստան":"PK","Լեհաստան":"PL","Պորտուգալիա":"PT","Պալաու":"PW","Պարագվայ":"PY","Կատար":"QA","Ռումինիա":"RO","Ռուսաստան":"RU","Ռուանդա":"RW","Սաուդիան Արաբիա":"SA","Սոլոմոնյան կղզիներ":"SB","Սեյշելներ":"SC","Սուդան":"SD","Շվեդիա":"SE","Սինգապուր":"SG","Սլովենիա":"SI","Սլովակիա":"SK","Սյերա-Լեոնե":"SL","Սան Մարինո":"SM","Սենեգալ":"SN","Սոմալի":"SO","Սուրինամ":"SR","Սան-Թոմե-Փրինսիպի":"ST","Սալվադոր":"SV","Սիրիա":"SY","Սվազիլենդ":"SZ","Չադ":"TD","Տոգո":"TG","Թաիլանդ":"TH","Տաճիկստան":"TJ","Թուրքմենստան":"TM","Թունիս":"TN","Տոնգա":"TO","Թուրքիա":"TR","Տրինիդադ-Տոբագո":"TT","Տուվալու":"TV","Թայվան":"TW","Տանզանիա":"TZ","Ուկրաինա":"UA","Ուգանդա":"UG","Ամէրիկայի Միացյալ Նահանգնէր":"US","Ուրուգվայ":"UY","Ուզբեկստան":"UZ","Վատիկան":"VA","Սենտ Վիսենտ-Գրենադիններ":"VC","Վենեսուելա":"VE","Վիետնամ":"VN","Վանուատու":"VU","Սամոա":"WS","Եմեն":"YE","Հարավային Աֆրիկա":"ZA","Զամբիա":"ZM","Զիմբաբվե":"ZW"};
 ilib.data.ctrynames_id = {"Pulau Ascension":"AC","Andora":"AD","Uni Emirat Arab":"AE","Afganistan":"AF","Antigua dan Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Antilla Belanda":"AN","Angola":"AO","Antarktika":"AQ","Argentina":"AR","Samoa Amerika":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Kepulauan Aland":"AX","Azerbaijan":"AZ","Bosnia dan Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgia":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthelemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Karibia Belanda":"BQ","Brasil":"BR","Bahama":"BS","Bhutan":"BT","Pulau Bouvet":"BV","Botswana":"BW","Belarus":"BY","Belize":"BZ","Kanada":"CA","Kepulauan Cocos":"CC","Kongo - Kinshasa":"CD","Republik Afrika Tengah":"CF","Kongo - Brazzaville":"CG","Swiss":"CH","Cote d'Ivoire":"CI","Kepulauan Cook":"CK","Cile":"CL","Kamerun":"CM","China":"CN","Kolombia":"CO","Pulau Clipperton":"CP","Kosta Rika":"CR","Kuba":"CU","Tanjung Verde":"CV","Curaçao":"CW","Pulau Christmas":"CX","Siprus":"CY","Republik Cheska":"CZ","Jerman":"DE","Diego Garcia":"DG","Jibuti":"DJ","Denmark":"DK","Dominika":"DM","Republik Dominika":"DO","Aljazair":"DZ","Ceuta dan Melilla":"EA","Ekuador":"EC","Estonia":"EE","Mesir":"EG","Sahara Barat":"EH","Eritrea":"ER","Spanyol":"ES","Etiopia":"ET","Uni Eropa":"EU","Finlandia":"FI","Fiji":"FJ","Kepulauan Malvinas":"FK","Mikronesia":"FM","Kepulauan Faroe":"FO","Prancis":"FR","Gabon":"GA","Inggris":"GB","Grenada":"GD","Georgia":"GE","Guyana Prancis":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grinlandia":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Guinea Ekuatorial":"GQ","Yunani":"GR","Kepulauan South Sandwich dan South Georgia":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hong Kong SAR China":"HK","Pulau Heard dan Kepulauan McDonald":"HM","Honduras":"HN","Kroasia":"HR","Haiti":"HT","Hungaria":"HU","Kepulauan Canary":"IC","Indonesia":"ID","Irlandia":"IE","Israel":"IL","Isle of Man":"IM","India":"IN","Wilayah Inggris di Samudra Hindia":"IO","Irak":"IQ","Iran":"IR","Islandia":"IS","Italia":"IT","Jersey":"JE","Jamaika":"JM","Yordania":"JO","Jepang":"JP","Kenya":"KE","Kirgistan":"KG","Kamboja":"KH","Kiribati":"KI","Komoro":"KM","Saint Kitts dan Nevis":"KN","Korea Utara":"KP","Korea Selatan":"KR","Kuwait":"KW","Kepulauan Kayman":"KY","Kazakstan":"KZ","Laos":"LA","Lebanon":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lituania":"LT","Luksemburg":"LU","Latvia":"LV","Libia":"LY","Maroko":"MA","Monako":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagaskar":"MG","Kepulauan Marshall":"MH","Makedonia":"MK","Mali":"ML","Myanmar":"MM","Mongolia":"MN","Makau SAR China":"MO","Kepulauan Mariana Utara":"MP","Martinik":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maladewa":"MV","Malawi":"MW","Meksiko":"MX","Malaysia":"MY","Mozambik":"MZ","Namibia":"NA","Kaledonia Baru":"NC","Niger":"NE","Kepulauan Norfolk":"NF","Nigeria":"NG","Nikaragua":"NI","Belanda":"NL","Norwegia":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Selandia Baru":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Polinesia Prancis":"PF","Papua Nugini":"PG","Filipina":"PH","Pakistan":"PK","Polandia":"PL","Saint Pierre dan Miquelon":"PM","Kepulauan Pitcairn":"PN","Puerto Riko":"PR","Otoritas Palestina":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Oseania Luar":"QO","Réunion":"RE","Rumania":"RO","Serbia":"RS","Rusia":"RU","Rwanda":"RW","Arab Saudi":"SA","Kepulauan Solomon":"SB","Seychelles":"SC","Sudan":"SD","Swedia":"SE","Singapura":"SG","Saint Helena":"SH","Slovenia":"SI","Kepulauan Svalbard dan Jan Mayen":"SJ","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Suriname":"SR","Sudan Selatan":"SS","Sao Tome dan Principe":"ST","El Salvador":"SV","Sint Maarten":"SX","Suriah":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Kepulauan Turks dan Caicos":"TC","Cad":"TD","Teritori Kutub Selatan Prancis":"TF","Togo":"TG","Thailand":"TH","Tajikistan":"TJ","Tokelau":"TK","Timor Leste":"TL","Turkimenistan":"TM","Tunisia":"TN","Tonga":"TO","Turki":"TR","Trinidad dan Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraina":"UA","Uganda":"UG","Kepulauan Terluar A.S.":"UM","Amerika Serikat":"US","Uruguay":"UY","Uzbekistan":"UZ","Vatikan":"VA","Saint Vincent dan Grenadines":"VC","Venezuela":"VE","Kepulauan Virgin Inggris":"VG","Kepulauan Virgin A.S.":"VI","Vietnam":"VN","Vanuatu":"VU","Kepulauan Wallis dan Futuna":"WF","Samoa":"WS","Yaman":"YE","Mayotte":"YT","Afrika Selatan":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Wilayah Tidak Dikenal":"ZZ"};
 ilib.data.ctrynames_it = {"generated":false,"samoa americane":"AS","antigua e barbuda":"AG","ascensione":"SH","azerbaigian":"AZ","isole vergini britanniche":"VG","bielorussia":"BY","belgio":"BE","bosnia erzegovina":"BA","brasile":"BR","territori britannici dell’oceano indiano":"IO","cambogia":"KH","camerun":"CM","capo verde":"CV","cayman":"KY","repubblica centrafricana":"CF","ciad":"TD","cile":"CL","cina":"CN","isole cook":"CK","croazia":"HR","cipro":"CY","repubblica ceca":"CZ","costa d’avorio":"CI","rep. dominicana":"DO","repubblica democratica del congo":"CD","danimarca":"DK","gibuti":"DJ","repubblica dominicana":"DO","timor est":"TL","egitto":"EG","guinea equatoriale":"GQ","etiopia":"ET","macedonia":"MK","isole falkland":"FK","falkland":"FK","isole fær øer":"FO","stati federati di micronesia":"FM","finlandia":"FI","repubblica ex jugoslava di macedonia":"MK","francia":"FR","guiana francese":"GF","polinesia francese":"PF","germania":"DE","gibilterra":"GI","grecia":"GR","groenlandia":"GL","guadalupa":"GP","ungheria":"HU","islanda":"IS","irlanda":"IE","israele":"IL","italia":"IT","giamaica":"JM","giappone":"JP","giordania":"JO","kenia":"KE","kirghizistan":"KG","lettonia":"LV","libano":"LB","libia":"LY","liechtenstein":"LI","lituania":"LT","lussemburgo":"LU","macao":"MO","malesia":"MY","maldive":"MV","marianne":"MP","isole marshall":"MH","martinica":"MQ","messico":"MX","moldavia":"MD","principato di monaco":"MC","marocco":"MA","mozambico":"MZ","paesi bassi":"NL","antille olandesi":"AN","nuova caledonia":"NC","nuova zelanda":"NZ","isola norfolk":"NF","corea del nord":"KP","isole marianne settentrionali":"MP","norvegia":"NO","autorità palestinese":"PS","papua nuova guinea":"PG","repubblica popolare cinese":"CN","perù":"PE","filippine":"PH","polonia":"PL","portogallo":"PT","porto rico":"PR","repubblica di cona":"TW","ruanda":"RW","sant’elena":"SH","saint kitts e nevis":"KN","santa lucia":"LC","saint pierre e miquelon":"PM","saint-vincent":"VC","saint vincent e le grenadines":"VC","arabia saudita":"SA","slovacchia":"SK","isole salomone":"SB","sudafrica":"ZA","corea del sud":"KR","spagna":"ES","st. pierre e miquelon":"PM","svezia":"SE","svizzera":"CH","siria":"SY","sao tome e principe":"ST","tagikistan":"TJ","tailandia":"TH","le bahamas":"BS","isole cayman":"KY","gambia":"GM","isole turks e caicos":"TC","trinidad e tobago":"TT","turchia":"TR","isole vergini statunitensi":"VI","eau":"AE","ucraina":"UA","emirati arabi uniti":"AE","regno unito":"GB","città del vaticano":"VA","wallis e futuna":"WF","afghanistan":"AF","isole åland":"AX","albania":"AL","algeria":"DZ","andorra":"AD","angola":"AO","anguilla":"AI","antigua":"AG","arabia":"SA","argentina":"AR","armenia":"AM","aruba":"AW","australia":"AU","austria":"AT","bahamas":"BS","bahrain":"BH","bangladesh":"BD","barbados":"BB","barbuda":"AG","belize":"BZ","benin":"BJ","bermuda":"BM","bhutan":"BT","repubblica bolivariana del venezuela":"VE","bolivia":"BO","bolivia, stato plurinazionale della":"BO","bosnia":"BA","botswana":"BW","isola bouvet":"BV","territorio britannico dell'oceano indiano":"IO","brunei":"BN","brunei darussalam":"BN","bulgaria":"BG","burkina faso":"BF","burundi":"BI","isole caicos":"TC","canada":"CA","isole di capo verde":"CV","isola christmas":"CX","isole cocos e keeling":"CC","isole cocos":"CC","colombia":"CO","comoros":"KM","congo":"CD","congo, repubblica democratica del":"CD","costa rica":"CR","cuba":"CU","repubblica democratica popolare di corea":"KP","dominica":"DM","dubai":"AE","ecuador":"EC","el salvador":"SV","inghilterra":"GB","eritrea":"ER","estonia":"EE","isole falklands":"FK","falklands":"FK","isole faeroer":"FO","faeroer":"FO","fiji":"FJ","guyana francese":"GF","territori francesi meridionali":"TF","futuna":"WF","gabon":"GA","georgia":"GE","ghana":"GH","gran bretagna":"GB","grenada":"GD","grenadine":"VC","guam":"GU","guatemala":"GT","guernsey":"GG","guinea":"GN","guinea-bissau":"GW","guyana":"GY","haiti":"HT","isole heard e mcdonald":"HM","isola heard":"HM","isola heard ed isole mcdonald":"HM","erzegovina":"BA","olanda":"NL","santa sede":"VA","honduras":"HN","hong kong":"HK","india":"IN","indonesia":"ID","iran":"IR","repubblica islamica dell'iran":"IR","iraq":"IQ","isola di man":"IM","costa d'avorio":"CI","jan mayen":"SJ","jersey":"JE","kazakistan":"KZ","kiribati":"KI","corea":"KR","corea, repubblica democratica popolare di":"KP","corea, repubblica di":"KR","kuwait":"KW","repubblica popolare democratica del laos":"LA","laos":"LA","lesotho":"LS","liberia":"LR","jamahiriya araba di libia":"LY","macedonia, repubblica ex jugoslava di":"MK","madagascar":"MG","malawi":"MW","mali":"ML","malta":"MT","malvine":"FK","marshall":"MH","mauritania":"MR","mauritius":"MU","mayotte":"YT","isole mcdonald":"HM","micronesia":"FM","micronesia, stati federati della":"FM","miquelon":"PM","moldavia, repubblica di":"MD","monaco":"MC","mongolia":"MN","montenegro":"ME","myanmar":"MM","namibia":"NA","nauru":"NR","nepal":"NP","nevis":"KN","nicaragua":"NI","niger":"NE","nigeria":"NG","territori occupati palestinesi":"PS","oman":"OM","r. p. cinese":"CN","pakistan":"PK","palau":"PW","palestina":"PS","territori palestinesi":"PS","panama":"PA","paraguay":"PY","pitcairn":"PN","stato plurinazionale della bolivia":"BO","polinesia":"PF","principe":"ST","qatar":"QA","repubblica di cina":"TW","repubblica della corea":"KR","repubblica della moldavia":"MD","repubblica di singapore ":"SG","riunione":"RE","romania":"RO","russia":"RU","federazione russa":"RU","saint-barthélemy":"BL","san barth":"BL","sant'elena":"SH","sant'elena, ascensione e tristan da cunha":"SH","saint kitts":"KN","saint-pierre":"PM","saint-pierre e miquelon":"PM","saint vincent":"VC","samoa":"WS","san marino":"SM","sao tome":"ST","scozia":"GB","senegal":"SN","serbia":"RS","seychelles":"SC","sierra leone":"SL","singapore":"SG","slovenia":"SI","salomone":"SB","somalia":"SO","georgia del sud":"GS","georgia del sud e isole sandwich meridionali":"GS","isole sandwich meridionali":"GS","sri lanka":"LK","st. lucia":"LC","st. martin":"MF","saint pierre":"PM","st. vincent":"VC","sudan":"SD","suriname":"SR","svalbard":"SJ","svalbard e jan mayen":"SJ","swaziland":"SZ","repubblica araba di siria":"SY","taiwan":"TW","tanzania":"TZ","tanzania, repubblica unita di":"TZ","le grenadines":"VC","repubblica di singapore":"SG","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinidad":"TT","tristan da cunha":"SH","tunisia":"TN","turkmenistan":"TM","isole turks":"TC","tuvalu":"TV","usa":"US","uganda":"UG","repubblica unita di tanzania":"TZ","stati uniti":"US","isole minori esterne degli stati uniti":"UM","stati uniti d’america":"US","uruguay":"UY","uzbekistan":"UZ","vanuatu":"VU","vaticano":"VA","venezuela":"VE","venezuela, repubblica bolivariana del":"VE","vietnam":"VN","isole vergini":"VI","galles":"GB","wallis":"WF","sahara occidentale":"EH","yemen":"YE","zambia":"ZM","zimbabwe":"ZW","eire":"IE","Isola di Ascensione":"AC","Andorra":"AD","Emirati Arabi Uniti":"AE","Afghanistan":"AF","Antigua e Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Antille Olandesi":"AN","Angola":"AO","Antartide":"AQ","Argentina":"AR","Samoa Americane":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Isole Aland":"AX","Azerbaigian":"AZ","Bosnia Erzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgio":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","San Bartolomeo":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Caraibi Olandesi":"BQ","Brasile":"BR","Bahamas":"BS","Bhutan":"BT","Isola Bouvet":"BV","Botswana":"BW","Bielorussia":"BY","Belize":"BZ","Canada":"CA","Isole Cocos":"CC","Congo - Kinshasa":"CD","Repubblica Centrafricana":"CF","Congo":"CG","Svizzera":"CH","Costa d’Avorio":"CI","Isole Cook":"CK","Cile":"CL","Camerun":"CM","Cina":"CN","Colombia":"CO","Isola di Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Capo Verde":"CV","Curaçao":"CW","Isola di Christmas":"CX","Cipro":"CY","Repubblica Ceca":"CZ","Germania":"DE","Diego Garcia":"DG","Gibuti":"DJ","Danimarca":"DK","Dominica":"DM","Repubblica Dominicana":"DO","Algeria":"DZ","Ceuta e Melilla":"EA","Ecuador":"EC","Estonia":"EE","Egitto":"EG","Sahara Occidentale":"EH","Eritrea":"ER","Spagna":"ES","Etiopia":"ET","Unione Europea":"EU","Finlandia":"FI","Figi":"FJ","Isole Falkland":"FK","Micronesia":"FM","Isole Faroe":"FO","Francia":"FR","Gabon":"GA","Regno Unito":"GB","Grenada":"GD","Georgia":"GE","Guiana Francese":"GF","Guernsey":"GG","Ghana":"GH","Gibilterra":"GI","Groenlandia":"GL","Gambia":"GM","Guinea":"GN","Guadalupa":"GP","Guinea Equatoriale":"GQ","Grecia":"GR","Georgia del Sud e Isole Sandwich del Sud":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","RAS di Hong Kong":"HK","Isole Heard ed Isole McDonald":"HM","Honduras":"HN","Croazia":"HR","Haiti":"HT","Ungheria":"HU","Isole Canarie":"IC","Indonesia":"ID","Irlanda":"IE","Israele":"IL","Isola di Man":"IM","India":"IN","Territorio Britannico dell’Oceano Indiano":"IO","Iraq":"IQ","Iran":"IR","Islanda":"IS","Italia":"IT","Jersey":"JE","Giamaica":"JM","Giordania":"JO","Giappone":"JP","Kenya":"KE","Kirghizistan":"KG","Cambogia":"KH","Kiribati":"KI","Comore":"KM","Saint Kitts e Nevis":"KN","Corea del Nord":"KP","Corea del Sud":"KR","Kuwait":"KW","Isole Cayman":"KY","Kazakistan":"KZ","Laos":"LA","Libano":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lituania":"LT","Lussemburgo":"LU","Lettonia":"LV","Libia":"LY","Marocco":"MA","Monaco":"MC","Moldavia":"MD","Montenegro":"ME","Saint Martin":"MF","Madagascar":"MG","Isole Marshall":"MH","Repubblica di Macedonia":"MK","Mali":"ML","Myanmar":"MM","Mongolia":"MN","RAS di Macao":"MO","Isole Marianne Settentrionali":"MP","Martinica":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldive":"MV","Malawi":"MW","Messico":"MX","Malesia":"MY","Mozambico":"MZ","Namibia":"NA","Nuova Caledonia":"NC","Niger":"NE","Isola Norfolk":"NF","Nigeria":"NG","Nicaragua":"NI","Paesi Bassi":"NL","Norvegia":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Nuova Zelanda":"NZ","Oman":"OM","Panama":"PA","Perù":"PE","Polinesia Francese":"PF","Papua Nuova Guinea":"PG","Filippine":"PH","Pakistan":"PK","Polonia":"PL","Saint Pierre e Miquelon":"PM","Pitcairn":"PN","Portorico":"PR","Territori palestinesi":"PS","Portogallo":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Oceania lontana":"QO","Réunion":"RE","Romania":"RO","Serbia":"RS","Federazione Russa":"RU","Ruanda":"RW","Arabia Saudita":"SA","Isole Solomon":"SB","Seychelles":"SC","Sudan":"SD","Svezia":"SE","Singapore":"SG","Sant’Elena":"SH","Slovenia":"SI","Svalbard e Jan Mayen":"SJ","Slovacchia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Suriname":"SR","Sudan del Sud":"SS","Sao Tomé e Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Siria":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Isole Turks e Caicos":"TC","Ciad":"TD","Territori australi francesi":"TF","Togo":"TG","Tailandia":"TH","Tagikistan":"TJ","Tokelau":"TK","Timor Est":"TL","Turkmenistan":"TM","Tunisia":"TN","Tonga":"TO","Turchia":"TR","Trinidad e Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ucraina":"UA","Uganda":"UG","Isole periferiche agli USA":"UM","Stati Uniti":"US","Uruguay":"UY","Uzbekistan":"UZ","Città del Vaticano":"VA","Saint Vincent e Grenadines":"VC","Venezuela":"VE","Isole Vergini Britanniche":"VG","Isole Vergini Americane":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis e Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Sudafrica":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Regione non valida o sconosciuta":"ZZ"};
 ilib.data.ctrynames_ja = {"アセンション島":"AC","アンドラ":"AD","アラブ首長国連邦":"AE","アフガニスタン":"AF","アンティグア・バーブーダ":"AG","アンギラ":"AI","アルバニア":"AL","アルメニア":"AM","オランダ領アンティル":"AN","アンゴラ":"AO","南極":"AQ","アルゼンチン":"AR","米領サモア":"AS","オーストリア":"AT","オーストラリア":"AU","アルバ":"AW","オーランド諸島":"AX","アゼルバイジャン":"AZ","ボスニア・ヘルツェゴビナ":"BA","バルバドス":"BB","バングラデシュ":"BD","ベルギー":"BE","ブルキナファソ":"BF","ブルガリア":"BG","バーレーン":"BH","ブルンジ":"BI","ベナン":"BJ","サン・バルテルミー島":"BL","バミューダ":"BM","ブルネイ":"BN","ボリビア":"BO","オランダ領カリブ":"BQ","ブラジル":"BR","バハマ":"BS","ブータン":"BT","ブーベ島":"BV","ボツワナ":"BW","ベラルーシ":"BY","ベリーズ":"BZ","カナダ":"CA","ココス[キーリング]諸島":"CC","コンゴ民主共和国[キンシャサ]":"CD","中央アフリカ共和国":"CF","コンゴ共和国[ブラザビル]":"CG","スイス":"CH","コートジボワール":"CI","クック諸島":"CK","チリ":"CL","カメルーン":"CM","中国":"CN","コロンビア":"CO","クリッパートン島":"CP","コスタリカ":"CR","キューバ":"CU","カーボベルデ":"CV","キュラソー":"CW","クリスマス島":"CX","キプロス":"CY","チェコ共和国":"CZ","ドイツ":"DE","ディエゴガルシア島":"DG","ジブチ":"DJ","デンマーク":"DK","ドミニカ国":"DM","ドミニカ共和国":"DO","アルジェリア":"DZ","セウタ・メリリャ":"EA","エクアドル":"EC","エストニア":"EE","エジプト":"EG","西サハラ":"EH","エリトリア":"ER","スペイン":"ES","エチオピア":"ET","欧州連合":"EU","フィンランド":"FI","フィジー":"FJ","フォークランド諸島":"FK","ミクロネシア連邦":"FM","フェロー諸島":"FO","フランス":"FR","ガボン":"GA","イギリス":"GB","グレナダ":"GD","グルジア":"GE","仏領ギアナ":"GF","ガーンジー":"GG","ガーナ":"GH","ジブラルタル":"GI","グリーンランド":"GL","ガンビア":"GM","ギニア":"GN","グアドループ":"GP","赤道ギニア":"GQ","ギリシャ":"GR","南ジョージア島・南サンドイッチ諸島":"GS","グアテマラ":"GT","グアム":"GU","ギニアビサウ":"GW","ガイアナ":"GY","中華人民共和国香港特別行政区":"HK","ハード島・マクドナルド諸島":"HM","ホンジュラス":"HN","クロアチア":"HR","ハイチ":"HT","ハンガリー":"HU","カナリア諸島":"IC","インドネシア":"ID","アイルランド":"IE","イスラエル":"IL","マン島":"IM","インド":"IN","英領インド洋地域":"IO","イラク":"IQ","イラン":"IR","アイスランド":"IS","イタリア":"IT","ジャージー":"JE","ジャマイカ":"JM","ヨルダン":"JO","日本":"JP","ケニア":"KE","キルギス":"KG","カンボジア":"KH","キリバス":"KI","コモロ":"KM","セントクリストファー・ネイビス":"KN","朝鮮民主主義人民共和国":"KP","大韓民国":"KR","クウェート":"KW","ケイマン諸島":"KY","カザフスタン":"KZ","ラオス":"LA","レバノン":"LB","セントルシア":"LC","リヒテンシュタイン":"LI","スリランカ":"LK","リベリア":"LR","レソト":"LS","リトアニア":"LT","ルクセンブルグ":"LU","ラトビア":"LV","リビア":"LY","モロッコ":"MA","モナコ":"MC","モルドバ":"MD","モンテネグロ":"ME","サン・マルタン":"MF","マダガスカル":"MG","マーシャル諸島":"MH","マケドニア":"MK","マリ":"ML","ミャンマー":"MM","モンゴル":"MN","中華人民共和国マカオ特別行政区":"MO","北マリアナ諸島":"MP","マルティニーク":"MQ","モーリタニア":"MR","モントセラト":"MS","マルタ":"MT","モーリシャス":"MU","モルジブ":"MV","マラウイ":"MW","メキシコ":"MX","マレーシア":"MY","モザンビーク":"MZ","ナミビア":"NA","ニューカレドニア":"NC","ニジェール":"NE","ノーフォーク島":"NF","ナイジェリア":"NG","ニカラグア":"NI","オランダ":"NL","ノルウェー":"NO","ネパール":"NP","ナウル":"NR","ニウエ島":"NU","ニュージーランド":"NZ","オマーン":"OM","パナマ":"PA","ペルー":"PE","仏領ポリネシア":"PF","パプアニューギニア":"PG","フィリピン":"PH","パキスタン":"PK","ポーランド":"PL","サンピエール島・ミクロン島":"PM","ピトケアン諸島":"PN","プエルトリコ":"PR","パレスチナ":"PS","ポルトガル":"PT","パラオ":"PW","パラグアイ":"PY","カタール":"QA","オセアニア周辺地域":"QO","レユニオン島":"RE","ルーマニア":"RO","セルビア":"RS","ロシア":"RU","ルワンダ":"RW","サウジアラビア":"SA","ソロモン諸島":"SB","セーシェル":"SC","スーダン":"SD","スウェーデン":"SE","シンガポール":"SG","セントヘレナ":"SH","スロベニア":"SI","スバールバル諸島・ヤンマイエン島":"SJ","スロバキア":"SK","シエラレオネ":"SL","サンマリノ":"SM","セネガル":"SN","ソマリア":"SO","スリナム":"SR","南スーダン":"SS","サントメ・プリンシペ":"ST","エルサルバドル":"SV","シント・マールテン":"SX","シリア":"SY","スワジランド":"SZ","トリスタン・ダ・クーニャ":"TA","タークス・カイコス諸島":"TC","チャド":"TD","仏領極南諸島":"TF","トーゴ":"TG","タイ":"TH","タジキスタン":"TJ","トケラウ":"TK","東ティモール":"TL","トルクメニスタン":"TM","チュニジア":"TN","トンガ":"TO","トルコ":"TR","トリニダード・トバゴ":"TT","ツバル":"TV","台湾":"TW","タンザニア":"TZ","ウクライナ":"UA","ウガンダ":"UG","米領太平洋諸島":"UM","アメリカ":"US","ウルグアイ":"UY","ウズベキスタン":"UZ","バチカン市国":"VA","セントビンセント・グレナディーン諸島":"VC","ベネズエラ":"VE","英領ヴァージン諸島":"VG","米領ヴァージン諸島":"VI","ベトナム":"VN","バヌアツ":"VU","ウォリス・フツナ":"WF","サモア":"WS","イエメン":"YE","マヨット島":"YT","南アフリカ":"ZA","ザンビア":"ZM","ジンバブエ":"ZW","不明な地域":"ZZ"};
+ilib.data.ctrynames_ka = {"ანდორა":"AD","არაბეთის გაერთიანებული ემირატები":"AE","ავღანეთი":"AF","ანტიგუა და ბარბუდა":"AG","ანგვილა":"AI","ალბანეთი":"AL","სომხეთი":"AM","ნიდერლანდების ანტილები":"AN","ანგოლა":"AO","ანტარქტიკა":"AQ","არგენტინა":"AR","ამერიკული სამოა":"AS","ავსტრია":"AT","ავსტრალია":"AU","არუბა":"AW","ალანდის კუნძულები":"AX","აზერბაიჯანი":"AZ","ბოსნია და ჰერცეგოვინა":"BA","ბარბადოსი":"BB","ბანგლადეში":"BD","ბელგია":"BE","ბურკინა-ფასო":"BF","ბულგარეთი":"BG","ბაჰრეინი":"BH","ბურუნდი":"BI","ბენინი":"BJ","ბერმუდა":"BM","ბრუნეი":"BN","ბოლივია":"BO","ბრაზილია":"BR","ბაჰამის კუნძულები":"BS","ბუტანი":"BT","ბუვეს კუნძული":"BV","ბოტსვანა":"BW","ბელორუსია":"BY","ბელიზი":"BZ","კანადა":"CA","კონგო - კინშასა":"CD","ცენტრალური აფრიკის რესპუბლიკა":"CF","კონგო":"CG","შვეიცარია":"CH","სპილოს ძვლის სანაპირო":"CI","კუკის კუნძულები":"CK","ჩილე":"CL","კამერუნი":"CM","ჩინეთი":"CN","კოლუმბია":"CO","კოსტა-რიკა":"CR","კუბა":"CU","კაბო-ვერდე":"CV","შობის კუნძული":"CX","კვიპროსი":"CY","ჩეხეთის რესპუბლიკა":"CZ","გერმანია":"DE","ჯიბუტი":"DJ","დანია":"DK","დომინიკა":"DM","დომინიკანის რესპუბლიკა":"DO","ალჟირი":"DZ","ეკვადორი":"EC","ესტონეთი":"EE","ეგვიპტე":"EG","დასავლეთი საჰარა":"EH","ერიტრეა":"ER","ესპანეთი":"ES","ეთიოპია":"ET","ევროკავშირი":"EU","ფინეთი":"FI","ფიჯი":"FJ","ფალკლენდის კუნძულები":"FK","მიკრონეზია":"FM","ფაროს კუნძულები":"FO","საფრანგეთი":"FR","გაბონი":"GA","დიდი ბრიტანეთი":"GB","გრენადა":"GD","საქართველო":"GE","განა":"GH","გიბრალტარი":"GI","გრენლანდია":"GL","გამბია":"GM","გვინეა":"GN","გვადელუპე":"GP","ეკვატორული გვინეა":"GQ","საბერძნეთი":"GR","სამხრეთი ჯორჯია და სამხრეთ სენდვიჩის კუნძულები":"GS","გვატემალა":"GT","გუამი":"GU","გვინეა-ბისაუ":"GW","გაიანა":"GY","ჰონგ კონგი":"HK","ჰერდის კუნძული და მაკდონალდის კუნძულები":"HM","ჰონდურასი":"HN","ჰორვატია":"HR","ჰაიტი":"HT","უნგრეთი":"HU","ინდონეზია":"ID","ირლანდია":"IE","ისრაელი":"IL","მანის კუნძული":"IM","ინდოეთი":"IN","ბრიტანული ტერიტორია ინდოეთის ოკეანეში":"IO","ერაყი":"IQ","ირანი":"IR","ისლანდია":"IS","იტალია":"IT","ჯერსი":"JE","იამაიკა":"JM","იორდანია":"JO","იაპონია":"JP","კენია":"KE","ყირგიზეთი":"KG","კამბოჯა":"KH","კირიბატი":"KI","კომორის კუნძულები":"KM","სენტ-კიტსი და ნევისი":"KN","ჩრდილოეთი კორეა":"KP","სამხრეთი კორეა":"KR","კუვეიტი":"KW","კაიმანის კუნძულები":"KY","ყაზახეთი":"KZ","ლაოსი":"LA","ლიბანი":"LB","სენტ-ლუსია":"LC","ლიხტენშტაინი":"LI","შრი-ლანკა":"LK","ლიბერია":"LR","ლესოთო":"LS","ლიტვა":"LT","ლუქსემბურგი":"LU","ლატვია":"LV","ლიბია":"LY","მაროკო":"MA","მონაკო":"MC","მოლდოვა":"MD","მონტენეგრო":"ME","მადაგასკარი":"MG","მარშალის კუნძულები":"MH","მაკედონია":"MK","მალი":"ML","მიანმარი":"MM","მონღოლეთი":"MN","მაკაო":"MO","მარტინიკი":"MQ","მავრიტანია":"MR","მონსერატი":"MS","მალტა":"MT","მავრიკია":"MU","მალდივის კუნძულები":"MV","მალავი":"MW","მექსიკა":"MX","მალაიზია":"MY","მოზამბიკი":"MZ","ნამიბია":"NA","ახალი კალედონია":"NC","ნიგერი":"NE","ნორფოლკის კუნძული":"NF","ნიგერია":"NG","ნიკარაგუა":"NI","ნიდერლანდები":"NL","ნორვეგია":"NO","ნეპალი":"NP","ნაურუ":"NR","ახალი ზელანდია":"NZ","ომანი":"OM","პანამა":"PA","პერუ":"PE","ფრანგული პოლინეზია":"PF","პაპუა-ახალი გვინეა":"PG","ფილიპინები":"PH","პაკისტანი":"PK","პოლონეთი":"PL","სენტ-პიერი და მიქელონი":"PM","პუერტო რიკო":"PR","პალესტინის ტერიტორია":"PS","პორტუგალია":"PT","პალაუ":"PW","პარაგვაი":"PY","კატარი":"QA","დაშორებული ოკეანია":"QO","რეიუნიონი":"RE","რუმინეთი":"RO","სერბია":"RS","რუსეთი":"RU","რუანდა":"RW","საუდის არაბეთი":"SA","სოლომონის კუნძულები":"SB","სეიშელის კუნძულები":"SC","სუდანი":"SD","შვეცია":"SE","სინგაპური":"SG","წმინდა ელენეს კუნძული":"SH","სლოვენია":"SI","სლოვაკეთი":"SK","სიერა-ლეონე":"SL","სან-მარინო":"SM","სენეგალი":"SN","სომალი":"SO","სურინამი":"SR","საო-ტომე და პრინსიპი":"ST","სალვადორი":"SV","სირია":"SY","სვაზილენდი":"SZ","ჩადი":"TD","ფრანგული სამხრეთის ტერიტორიები":"TF","ტოგო":"TG","ტაილანდი":"TH","ტაჯიკეთი":"TJ","აღმოსავლეთი ტიმორი":"TL","თურქმენეთი":"TM","ტუნისი":"TN","ტონგა":"TO","თურქეთი":"TR","ტრინიდადი და ტობაგო":"TT","ტუვალუ":"TV","ტაივანი":"TW","ტანზანია":"TZ","უკრაინა":"UA","უგანდა":"UG","შეერთებული შტატების მცირე დაშორებული კუნძულები":"UM","ამერიკის შეერთებული შტატები":"US","ურუგვაი":"UY","უზბეკეთი":"UZ","ვატიკანი":"VA","სენტ-ვინსენტი და გრენადინები":"VC","ვენესუელა":"VE","ვიეტნამი":"VN","ვანუატუ":"VU","ვალისი და ფუტუნა":"WF","სამოა":"WS","იემენი":"YE","სამხრეთ აფრიკა":"ZA","ზამბია":"ZM","ზიმბაბვე":"ZW","უცნობი ან არასწორი რეგიონი":"ZZ"};
+ilib.data.ctrynames_kk = {"Андорра":"AD","Біріккен Араб Эмираттары":"AE","Австрия":"AT","Австралия":"AU","Әзербайжан":"AZ","Бельгия":"BE","Болгария":"BG","Бахрейн":"BH","Бурунди":"BI","Бенин":"BJ","Боливия":"BO","Бразилия":"BR","Бутан":"BT","Ботсвана":"BW","Беларусь":"BY","Белиз":"BZ","Канада":"CA","Швейцария":"CH","Чили":"CL","Камерун":"CM","Қытай":"CN","Колумбия":"CO","Алмания":"DE","Дания":"DK","Испания":"ES","Финляндия":"FI","Франция":"FR","Ұлыбритания":"GB","Грекия":"GR","Гонконг (арнайы әкімшілік аймақ)":"HK","Индонезия":"ID","Ирландия":"IE","Индия":"IN","Италия":"IT","Жапония":"JP","Солтүстік Корея":"KR","Қазақстан":"KZ","Мексика":"MX","Голландия":"NL","Норвегия":"NO","Польша":"PL","Португалия":"PT","Ресей":"RU","Сауд Арабиясы":"SA","Швеция":"SE","Тайланд":"TH","Түркия":"TR","Тайвань":"TW","АҚШ":"US","Оңтүстік Африка республикасы":"ZA","Белгісіз аймақ":"ZZ"};
+ilib.data.ctrynames_kn = {"ಅಸೆನ್ಶನ್ ದ್ವೀಪ":"AC","ಅಂಡೋರಾ":"AD","ಸಂಯುಕ್ತ ಅರಬ್ ಎಮಿರೇಟಸ್":"AE","ಅಫಘಾನಿಸ್ಥಾನ್":"AF","ಆಂಟಿಗುವಾ ಮತ್ತು ಬರ್ಬುಡಾ":"AG","ಆಂಗುಯಿಲ್ಲಾ":"AI","ಅಲ್ಬೇನಿಯಾ":"AL","ಅರ್ಮೇನಿಯಾ":"AM","ನೆದರ್‌ಲ್ಯಾಂಡ್":"AN","ಅಂಗೋಲಾ":"AO","ಅಂಟಾರ್ಟಿಕಾ":"AQ","ಅರ್ಜೆಂಟೈನಾ":"AR","ಅಮೇರಿಕನ್ ಸಮೋವಾ":"AS","ಆಸ್ಟ್ರಿಯಾ":"AT","ಆಸ್ಟ್ರೇಲಿಯ":"AU","ಅರುಬಾ":"AW","ಆಲ್ಯಾಂಡ್ ದ್ವೀಪಗಳು":"AX","ಅಜರ್ಬೈಜಾನ್":"AZ","ಬೋಸ್ನಿಯಾ ಮತ್ತು ಹರ್ಜೆಗೋವಿನಾ":"BA","ಬಾರ್ಬಡೋಸ್":"BB","ಬಾಂಗ್ಲಾದೇಶ್":"BD","ಬೆಲ್ಜಿಯಮ್":"BE","ಬುರ್ಕಿನಾ ಫಾಸೋ":"BF","ಬಲ್ಗೇರಿಯಾ":"BG","ಬಹರೈನ್":"BH","ಬುರುಂಡಿ":"BI","ಬೆನಿನ್":"BJ","ಸೇಂಟ್ ಬಾರ್ಥೆಲೆಮಿ":"BL","ಬರ್ಮುಡಾ":"BM","ಬ್ರೂನಿ":"BN","ಬೊಲಿವಿಯಾ":"BO","ಕೆರಾಬಿಯನ್ ನೆದರ್‌ಲ್ಯಾಂಡ್ಸ್":"BQ","ಬ್ರೆಜಿಲ್":"BR","ಬಹಾಮಾಸ್":"BS","ಭೂತಾನ್":"BT","ಬೋವೆಟ್ ದ್ವೀಪ":"BV","ಬೊಟ್ಸ್‌ವಾನಾ":"BW","ಬೆಲಾರಸ್":"BY","ಬೆಲಿಜ್":"BZ","ಕೆನಡಾ":"CA","ಕೊಕೊಸ್ ದ್ವೀಪಗಳು":"CC","ಕಾಂಗೋ - ಕಿನ್ಶಾಸಾ":"CD","ಮಧ್ಯ ಆಫ್ರಿಕಾ ಗಣರಾಜ್ಯ":"CF","ಕಾಂಗೋ - ಬ್ರಾಜಾವಿಲ್ಲೇ":"CG","ಸ್ವಿಟ್ಜರ್ಲ್ಯಾಂಡ್":"CH","ಐವರಿ ಕೋಸ್ಟ್":"CI","ಕುಕ್ ದ್ವೀಪಗಳು":"CK","ಚಿಲಿ":"CL","ಕ್ಯಾಮರೋನ್":"CM","ಚೀನ":"CN","ಕೊಲಂಬಿಯಾ":"CO","ಕ್ಲಿಪ್ಪರ್‌ಟಾನ್ ದ್ವೀಪಗಳು":"CP","ಕೊಸ್ಟಾ ರಿಕಾ":"CR","ಕ್ಯೂಬಾ":"CU","ಕೇಪ್ ವರ್ಡೆ":"CV","ಕುರಾಕಾವ್":"CW","ಕ್ರಿಸ್ಮಸ್ ದ್ವೀಪ":"CX","ಸೈಪ್ರಸ್":"CY","ಚೆಕ್ ರಿಪಬ್ಲಿಕ್":"CZ","ಜರ್ಮನಿ":"DE","ಡೈಗೋ ಗಾರ್ಸಿಯ":"DG","ಜಿಬೋಟಿ":"DJ","ಡೆನ್ಮಾರ್ಕ್":"DK","ಡೊಮಿನಿಕಾ":"DM","ಡೊಮೆನಿಕ್ ರಿಪಬ್ಲಿಕ್":"DO","ಅಲ್ಗೇರಿಯಾ":"DZ","ಸೆಯುಟಾ ಹಾಗೂ ಮೆಲಿಲ್ಲಾ":"EA","ಈಕ್ವೆಡಾರ್":"EC","ಎಸ್ತೊನಿಯ":"EE","ಈಜಿಪ್ಟ್":"EG","ಪಶ್ಚಿಮ ಸಹಾರಾ":"EH","ಏರಿಟ್ರಿಯಾ":"ER","ಸ್ಪೈನ್":"ES","ಇಥಿಯೋಪಿಯಾ":"ET","ಯುರೋಪಿಯನ್ ಯೂನಿಯನ್":"EU","ಫಿನ್‌ಲ್ಯಾಂಡ್":"FI","ಫಿಜಿ":"FJ","ಫಾಲ್ಕ್‌ಲ್ಯಾಂಡ್ ದ್ವೀಪಗಳು":"FK","ಮೈಕ್ರೋನೇಶಿಯಾ":"FM","ಫರೋ ದ್ವೀಪಗಳು":"FO","ಫ್ರಾನ್ಸ್":"FR","ಗೆಬೊನ್":"GA","ಬ್ರಿಟನ್/ಇಂಗ್ಲೆಂಡ್":"GB","ಗ್ರೆನೆಡಾ":"GD","ಜಾರ್ಜಿಯಾ":"GE","ಫ್ರೆಂಚ್ ಗಯಾನಾ":"GF","ಗುರ್ನಜೀ":"GG","ಘಾನಾ":"GH","ಗಿಬ್ರಾಲ್ಟರ್":"GI","ಗ್ರೀನ್‌ಲ್ಯಾಂಡ್":"GL","ಗ್ಯಾಂಬಿಯಾ":"GM","ಗಿನಿ":"GN","ಗುಡೆಲೋಪ್":"GP","ಈಕ್ವೆಟೋರಿಯಲ್ ಗಿನಿ":"GQ","ಗ್ರೀಸ್":"GR","ದಕ್ಷಿಣ ಜಾರ್ಜಿಯಾ ಮತ್ತು ದಕ್ಷಿಣ ಸ್ಯಾಂಡ್ವಿಚ್ ದ್ವೀಪಗಳು":"GS","ಗ್ವಾಟೆಮಾಲಾ":"GT","ಗುಯಾಮ್":"GU","ಗಿನಿ-ಬಿಸ್ಸಾವ್":"GW","ಗಯಾನಾ":"GY","ಹಾಂಕ್‌ ಕಾಂಗ್ SAR ಚೈನಾ":"HK","ಹರ್ಡ್ ದ್ವೀಪ ಮತ್ತು ಮ್ಯಾಕ್ಡೊನಾಲ್ಡ್ ದ್ವೀಪಗಳು":"HM","ಹೊಂಡುರಾಸ್":"HN","ಕ್ರೋಯೇಶಿಯಾ":"HR","ಹೈಟಿ":"HT","ಹಂಗೇರಿ":"HU","ಕ್ಯಾನರಿ ದ್ವೀಪಗಳು":"IC","ಇಂಡೋನೇಶಿಯಾ":"ID","ಐರ್ಲೆಂಡ್":"IE","ಇಸ್ರೇಲ್":"IL","ಐಲ್ ಆಫ್ ಮ್ಯಾನ್":"IM","ಭಾರತ":"IN","ಬ್ರಿಟೀಶ್ ಇಂಡಿಯನ್ ಮಹಾಸಾಗರ ಪ್ರದೇಶ":"IO","ಇರಾಕ್":"IQ","ಇರಾನ್":"IR","ಐಸ್‌ಲ್ಯಾಂಡ್":"IS","ಇಟಲಿ":"IT","ಜೆರ್ಸಿ":"JE","ಜಮೈಕಾ":"JM","ಜೋರ್ಡಾನ್":"JO","ಜಪಾನ್":"JP","ಕೀನ್ಯಾ":"KE","ಕಿರ್ಗಿಸ್ಥಾನ್":"KG","ಕಾಂಬೋಡಿಯಾ":"KH","ಕಿರಿಬಾತಿ":"KI","ಕೊಮೊರೊಸ್":"KM","ಸೇಂಟ್ ಕಿಟ್ಸ್ ಮತ್ತು ನೆವಿಸ್":"KN","ಉತ್ತರ ಕೋರಿಯಾ":"KP","ದಕ್ಷಿಣ ಕೋರಿಯಾ":"KR","ಕುವೈತ್":"KW","ಕೇಮನ್ ದ್ವೀಪಗಳು":"KY","ಕಝಾಕಿಸ್ಥಾನ್":"KZ","ಲಾವೋಸ್":"LA","ಲೆಬನಾನ್":"LB","ಸೇಂಟ್ ಲೂಸಿಯಾ":"LC","ಲೈಕೆನ್‌ಸ್ಟೈನ್":"LI","ಶ್ರೀಲಂಕಾ":"LK","ಲಿಬೇರಿಯಾ":"LR","ಲೆಥೋಸೊ":"LS","ಲಿಥುವೇನಿಯಾ":"LT","ಲಕ್ಸಂಬರ್ಗ್":"LU","ಲಾಟ್ವಿಯಾ":"LV","ಲಿಬಿಯಾ":"LY","ಮೊರಾಕ್ಕೊ":"MA","ಮೊನಾಕೊ":"MC","ಮೊಲ್ಡೋವಾ":"MD","ಮೊಂಟೆನೆಗ್ರೋ":"ME","ಸೇಂಟ್ ಮಾರ್ಟಿನ್":"MF","ಮಡಗಾಸ್ಕರ್":"MG","ಮಾರ್ಶಲ್ ದ್ವೀಪಗಳು":"MH","ಮ್ಯಾಸಿಡೋನಿಯಾ":"MK","ಮಾಲಿ":"ML","ಮಯನ್ಮಾರ್":"MM","ಮೊಂಗೋಲಿಯಾ":"MN","ಮ್ಯಾಕು SAR ಚೈನಾ":"MO","ಉತ್ತರ ಮರಿಯಾನಾ ದ್ವೀಪಗಳು":"MP","ಮಾರ್ಟಿನಿಕ್":"MQ","ಮಾರಿಟಾನಿಯಾ":"MR","ಮಾಂಟ್‌ಸೆರೇಟ್":"MS","ಮಾಲ್ಟಾ":"MT","ಮಾರಿಶಿಯಸ್":"MU","ಮಾಲ್ಡಿವ್ಸ್":"MV","ಮಲಾವಿ":"MW","ಮೆಕ್ಸಿಕೊ":"MX","ಮಲೇಶಿಯಾ":"MY","ಮೊಜಾಂಬಿಕ್":"MZ","ನಮೀಬಿಯಾ":"NA","ನ್ಯೂ ಕ್ಯಾಲಿಡೋನಿಯಾ":"NC","ನೈಜರ್":"NE","ನಾರ್ಫೋಕ್ ದ್ವೀಪ":"NF","ನೈಜೀರಿಯಾ":"NG","ನಿಕಾರಾಗುವಾ":"NI","ನೆದರ್‌ಲ್ಯಾಂಡ್ಸ್":"NL","ನಾರ್ವೇ":"NO","ನೇಪಾಳ":"NP","ನೌರು":"NR","ನಿಯು":"NU","ನ್ಯೂಜಿಲೆಂಡ್":"NZ","ಓಮನ್":"OM","ಪನಾಮಾ":"PA","ಪೆರು":"PE","ಫ್ರೆಂಚ್ ಪೋಲಿನೇಶಿಯಾ":"PF","ಪಪುವಾ ನ್ಯೂಗೀನಿಯಾ":"PG","ಫಿಲಿಫೈನ್ಸ್":"PH","ಪಾಕಿಸ್ತಾನ":"PK","ಪೋಲ್ಯಾಂಡ್":"PL","ಸೇಂಟ್ ಪಿಯರೆ ಮತ್ತು ಮಿಕೆಲನ್":"PM","ಪಿಟ್‌ಕೈರ್ನ್ ದ್ವೀಪಗಳು":"PN","ಪ್ಯೂರ್ಟೋ ರಿಕೊ":"PR","ಪ್ಯಾಲಿಸ್ಟೇನಿಯನ್ ಪ್ರದೇಶ":"PS","ಪೋರ್ಚುಗಲ್":"PT","ಪಲಾವು":"PW","ಪರಾಗ್ವೇ":"PY","ಕತಾರ್":"QA","ಔಟ್‌‌ಲೇಯಿಂಗ್ ಓಷಿಯಾನಿಯ":"QO","ರೀಯೂನಿಯನ್":"RE","ರೊಮ್ಯಾನಿಯಾ":"RO","ಸೆರ್ಬಿಯಾ":"RS","ರಶಿಯಾ":"RU","ರುವಾಂಡಾ":"RW","ಸೌದಿ ಅರೇಬಿಯಾ":"SA","ಸೊಲೊಮನ್ ದ್ವೀಪಗಳು":"SB","ಸೀಶೆಲ್ಲೆಸ್":"SC","ಸೂಡಾನ್":"SD","ಸ್ವೀಡನ್":"SE","ಸಿಂಗಪುರ":"SG","ಸೇಂಟ್ ಹೆಲೆನಾ":"SH","ಸ್ಲೋವೇನಿಯಾ":"SI","ಸ್ವಾಲ್ಬಾರ್ಡ್ ಮತ್ತು ಜಾನ್ ಮಾಯೆನ್":"SJ","ಸ್ಲೋವಾಕಿಯಾ":"SK","ಸಿಯೆರ್ರಾ ಲಿಯೋನ್":"SL","ಸ್ಯಾನ್ ಮೆರಿನೋ":"SM","ಸೆನೆಗಲ್":"SN","ಸೊಮಾಲಿಯಾ":"SO","ಸುರಿನಾಮ":"SR","ದಕ್ಷಿಣ ಸೂಡಾನ್":"SS","ಸಾವೋ ಟೋಮ್ ಮತ್ತು ಪ್ರಿನ್ಸಿಪೆ":"ST","ಎಲ್ ಸಾಲ್ವೇಡಾರ್":"SV","ಸಿಂಟ್ ಮಾರ್ಟನ್":"SX","ಸಿರಿಯಾ":"SY","ಸ್ವಾಜಿಲ್ಯಾಂಡ್":"SZ","ಟ್ರಿಸ್ತನ್ ಡಾ ಕುನ್ಹಾ":"TA","ಟರ್ಕ್ಸ್ ಮತ್ತು ಕೈಕೋಸ್ ದ್ವೀಪಗಳು":"TC","ಚಾಡ್":"TD","ಫ್ರೆಂಚ್ ದಕ್ಷಿಣ ಪ್ರದೇಶಗಳು":"TF","ಟೋಗೋ":"TG","ಥೈಲ್ಯಾಂಡ್":"TH","ತಜಾಕಿಸ್ಥಾನ್":"TJ","ಟೊಕೆಲಾವ್":"TK","ಪೂರ್ವ ತಿಮೋರ್":"TL","ತುರ್ಕಮೆನಿಸ್ಥಾನ್":"TM","ಟುನಿಶಿಯಾ":"TN","ಟೊಂಗ":"TO","ಟರ್ಕಿ":"TR","ಟ್ರಿನಿಡಾಡ್ ಮತ್ತು ಟೊಬ್ಯಾಗೊ":"TT","ಟುವಾಲು":"TV","ಥೈವಾನ್":"TW","ಟಾಂಜಾನಿಯಾ":"TZ","ಉಕ್ರೈನ್":"UA","ಉಗಾಂಡಾ":"UG","U.S. ಮೈನರ್ ಔಟ್‌ಲೇಯಿಂಗ್ ದ್ವೀಪಗಳು":"UM","ಅಮೇರಿಕಾ ಸಂಯುಕ್ತ ಸಂಸ್ಥಾನ":"US","ಉರುಗ್ವೇ":"UY","ಉಜ್ಬೇಕಿಸ್ಥಾನ್":"UZ","ವ್ಯಾಟಿಕನ್":"VA","ಸೇಂಟ್ ವಿನ್ಸೆಂಟ್ ಮತ್ತು ಗ್ರೆನೆಡೈನ್ಸ್":"VC","ವೆನೆಜುವೆಲಾ":"VE","ಬ್ರಿಟಿಷ್ ವರ್ಜಿನ್ ದ್ವೀಪಗಳು":"VG","ಯು.ಎಸ್. ವರ್ಜಿನ್ ದ್ವೀಪಗಳು":"VI","ವಿಯೇಟ್ನಾಮ್":"VN","ವನೌಟು":"VU","ವಾಲಿಸ್ ಮತ್ತು ಫುಟುನಾ":"WF","ಸಮೋವಾ":"WS","ಯೆಮನ್":"YE","ಮಯೊಟ್ಟೆ":"YT","ದಕ್ಷಿಣ ಆಫ್ರಿಕಾ":"ZA","ಝಾಂಬಿಯಾ":"ZM","ಜಿಂಬಾಬ್ವೆ":"ZW","ಅಪರಿಚಿತ ಅಥವಾ ಅಮಾನ್ಯ ಪ್ರದೇಶ":"ZZ"};
 ilib.data.ctrynames_ko = {"어센션 섬":"AC","안도라":"AD","아랍에미리트 연합":"AE","아프가니스탄":"AF","앤티가 바부다":"AG","안길라":"AI","알바니아":"AL","아르메니아":"AM","네덜란드령 안틸레스":"AN","앙골라":"AO","남극 대륙":"AQ","아르헨티나":"AR","아메리칸 사모아":"AS","오스트리아":"AT","오스트레일리아":"AU","아루바":"AW","올란드 제도":"AX","아제르바이잔":"AZ","보스니아 헤르체고비나":"BA","바베이도스":"BB","방글라데시":"BD","벨기에":"BE","부르키나파소":"BF","불가리아":"BG","바레인":"BH","부룬디":"BI","베냉":"BJ","생 바르텔르미":"BL","버뮤다":"BM","브루나이":"BN","볼리비아":"BO","네덜란드령 카리브":"BQ","브라질":"BR","바하마":"BS","부탄":"BT","부베":"BV","보츠와나":"BW","벨라루스":"BY","벨리즈":"BZ","캐나다":"CA","코코스제도":"CC","콩고-킨샤사":"CD","중앙 아프리카 공화국":"CF","콩고":"CG","스위스":"CH","코트디부아르":"CI","쿡제도":"CK","칠레":"CL","카메룬":"CM","중국":"CN","콜롬비아":"CO","클립퍼튼 섬":"CP","코스타리카":"CR","쿠바":"CU","까뽀베르데":"CV","퀴라소":"CW","크리스마스섬":"CX","사이프러스":"CY","체코":"CZ","독일":"DE","디에고 가르시아":"DG","지부티":"DJ","덴마크":"DK","도미니카":"DM","도미니카 공화국":"DO","알제리":"DZ","세우타 및 멜리야":"EA","에콰도르":"EC","에스토니아":"EE","이집트":"EG","서사하라":"EH","에리트리아":"ER","스페인":"ES","이디오피아":"ET","유럽 연합":"EU","핀란드":"FI","피지":"FJ","포클랜드 제도":"FK","미크로네시아":"FM","페로제도":"FO","프랑스":"FR","가봉":"GA","영국":"GB","그레나다":"GD","그루지야":"GE","프랑스령 기아나":"GF","건지":"GG","가나":"GH","지브롤터":"GI","그린란드":"GL","감비아":"GM","기니":"GN","과들루프":"GP","적도 기니":"GQ","그리스":"GR","사우스조지아 사우스샌드위치 제도":"GS","과테말라":"GT","괌":"GU","기네비쏘":"GW","가이아나":"GY","홍콩, 중국 특별행정구":"HK","허드섬-맥도널드제도":"HM","온두라스":"HN","크로아티아":"HR","아이티":"HT","헝가리":"HU","카나리아 제도":"IC","인도네시아":"ID","아일랜드":"IE","이스라엘":"IL","맨 섬":"IM","인도":"IN","영국령인도양식민지":"IO","이라크":"IQ","이란":"IR","아이슬란드":"IS","이탈리아":"IT","저지":"JE","자메이카":"JM","요르단":"JO","일본":"JP","케냐":"KE","키르기스스탄":"KG","캄보디아":"KH","키리바시":"KI","코모로스":"KM","세인트크리스토퍼 네비스":"KN","조선 민주주의 인민 공화국":"KP","대한민국":"KR","쿠웨이트":"KW","케이맨제도":"KY","카자흐스탄":"KZ","라오스":"LA","레바논":"LB","세인트루시아":"LC","리히텐슈타인":"LI","스리랑카":"LK","라이베리아":"LR","레소토":"LS","리투아니아":"LT","룩셈부르크":"LU","라트비아":"LV","리비아":"LY","모로코":"MA","모나코":"MC","몰도바":"MD","몬테네그로":"ME","생 마르탱":"MF","마다가스카르":"MG","마샬 군도":"MH","마케도니아":"MK","말리":"ML","미얀마":"MM","몽골":"MN","마카오, 중국 특별행정구":"MO","북마리아나제도":"MP","말티니크":"MQ","모리타니":"MR","몬트세라트":"MS","몰타":"MT","모리셔스":"MU","몰디브":"MV","말라위":"MW","멕시코":"MX","말레이시아":"MY","모잠비크":"MZ","나미비아":"NA","뉴 칼레도니아":"NC","니제르":"NE","노퍽섬":"NF","나이지리아":"NG","니카라과":"NI","네덜란드":"NL","노르웨이":"NO","네팔":"NP","나우루":"NR","니우에":"NU","뉴질랜드":"NZ","오만":"OM","파나마":"PA","페루":"PE","프랑스령 폴리네시아":"PF","파푸아뉴기니":"PG","필리핀":"PH","파키스탄":"PK","폴란드":"PL","세인트피에르-미케롱":"PM","핏케언섬":"PN","푸에르토리코":"PR","팔레스타인 지구":"PS","포르투갈":"PT","팔라우":"PW","파라과이":"PY","카타르":"QA","오세아니아 외곽":"QO","리유니온":"RE","루마니아":"RO","세르비아":"RS","러시아":"RU","르완다":"RW","사우디아라비아":"SA","솔로몬 제도":"SB","쉐이쉘":"SC","수단":"SD","스웨덴":"SE","싱가포르":"SG","세인트헬레나":"SH","슬로베니아":"SI","스발바르제도-얀마웬섬":"SJ","슬로바키아":"SK","시에라리온":"SL","산마리노":"SM","세네갈":"SN","소말리아":"SO","수리남":"SR","남수단":"SS","상투메 프린시페":"ST","엘살바도르":"SV","신트마르턴":"SX","시리아":"SY","스와질랜드":"SZ","트리스탄다쿠나":"TA","터크스케이커스제도":"TC","차드":"TD","프랑스 남부 지방":"TF","토고":"TG","태국":"TH","타지키스탄":"TJ","토켈라우":"TK","동티모르":"TL","투르크메니스탄":"TM","튀니지":"TN","통가":"TO","터키":"TR","트리니다드 토바고":"TT","투발루":"TV","대만":"TW","탄자니아":"TZ","우크라이나":"UA","우간다":"UG","미국령 해외 제도":"UM","미국":"US","우루과이":"UY","우즈베키스탄":"UZ","바티칸":"VA","세인트빈센트그레나딘":"VC","베네수엘라":"VE","영국령 버진 아일랜드":"VG","미국령 버진 아일랜드":"VI","베트남":"VN","바누아투":"VU","왈리스-푸투나 제도":"WF","사모아":"WS","예멘":"YE","마요티":"YT","남아프리카":"ZA","잠비아":"ZM","짐바브웨":"ZW","알수없거나 유효하지 않은 지역":"ZZ"};
+ilib.data.ctrynames_ks = {"اٮ۪نڑورا":"AD","مُتحدہ عرَب امارات":"AE","اَفغانَستان":"AF","اٮ۪نٹِگُوا تہٕ باربوڑا":"AG","اینٛگوِلا":"AI","اٮ۪لبانِیا":"AL","اَرمانِیا":"AM","نَیدَرلینٛڑٕس اٮ۪نٹَیلٕس":"AN","اینٛگولا":"AO","اینٹارٹِکا":"AQ","أرجَنٹینا":"AR","اَمریٖکَن سَموا":"AS","آسٹِیا":"AT","آسٹریلِیا":"AU","اَروٗبا":"AW","ایلینٛڑ جٔزیٖرٕ":"AX","آزَرباجان":"AZ","بوسنِیا تہٕ ہَرزِگووِنا":"BA","باربیڈاس":"BB","بَنٛگلادیش":"BD","بیٛلجِیَم":"BE","بُرکِنا فیسو":"BF","بَلجیرِیا":"BG","بحریٖن":"BH","بورَنڈِ":"BI","بِنِن":"BJ","سینٛٹ بارتَھیلمی":"BL","بٔرمیوڈا":"BM","بُرنٔے":"BN","بولِوِیا":"BO","برطانوی قُطبہِ جَنوٗبی علاقہٕ":"BQ","برٛازِل":"BR","بَہامَس":"BS","بوٗٹان":"BT","بووَٹ جٔزیٖرٕ":"BV","بوتَسوانا":"BW","بیلاروٗس":"BY","بیلِج":"BZ","کینَڑا":"CA","کوکَس کیٖلِنٛگ جٔزیٖرٕ":"CC","کونٛگو کِنشاسا":"CD","مرکٔزی اَفریٖکی جموٗریَت":"CF","کونٛگو بٔرٛزاوِلی":"CG","سُوِزَرلینٛڑ":"CH","اَیوٕری کوسٹ":"CI","کُک جٔزیٖرٕ":"CK","چِلی":"CL","کیٚمِروٗن":"CM","چیٖن":"CN","کولَمبِیا":"CO","کوسٹا رِکا":"CR","کیوٗبا":"CU","کیپ ؤرڑی":"CV","کرِسمَس جٔزیٖرٕ":"CX","سایفرٛس":"CY","چیک جَموٗرِیَت":"CZ","جرمٔنی":"DE","جِبوٗتی":"DJ","ڈینٛمارٕک":"DK","ڈومِنِکا":"DM","ڈومِنِکَن جموٗرِیَت":"DO","اٮ۪لجیرِیا":"DZ","اِکواڑور":"EC","ایسٹونِیا":"EE","مِسٔر":"EG","مشرِقی سَہارا":"EH","اِرٕٹِیا":"ER","سٕپین":"ES","اِتھوپِیا":"ET","فِنلینٛڑ":"FI","فِجی":"FJ","فٕلاکلینٛڑ جٔزیٖرٕ":"FK","فرٛانس":"FR","گیبان":"GA","یُنایٹِڑ کِنٛگڈَم":"GB","گرٛنیڑا":"GD","جارجِیا":"GE","فرٛانسِسی گِانا":"GF","گیوَنَرسے":"GG","گانا":"GH","جِبرالٹَر":"GI","گریٖنلینٛڑ":"GL","گَمبِیا":"GM","گِنی":"GN","گَواڑیلوپ":"GP","اِکوِٹورِیَل گِنی":"GQ","گریٖس":"GR","جنوٗبی جارجِیا تہٕ جنوٗبی سینٛڑوٕچ جٔزیٖرٕ":"GS","گوتیدالا":"GT","گُوام":"GU","گیٖنی بِساو":"GW","گُیانا":"GY","ہانٛگ کانٛگ ایس اے آر چیٖن":"HK","ہَرٕڑ جٔزیٖرٕ تہٕ مٮ۪کڈونالڑٕ جٔزیٖرٕ":"HM","ہانٛڈوٗرِس":"HN","کرٛوشِیا":"HR","ہایتی":"HT","ہَنٛگری":"HU","اِنڑونیشِیا":"ID","اَیَرلینٛڑ":"IE","اِسرایٖل":"IL","آیِل آف میٛن":"IM","ہِنٛدوستان":"IN","برطانوی بحرِ ہِنٛدۍ علاقہٕ":"IO","ایٖراق":"IQ","ایٖران":"IR","اَیِسلینٛڑ":"IS","اِٹلی":"IT","جٔرسی":"JE","جَمایکا":"JM","جاپان":"JP","کِنٛیا":"KE","کِرگِستان":"KG","کَمبوڑِیا":"KH","کِرٕباتی":"KI","کَمورَس":"KM","سینٛٹ کِٹَس تہٕ نیوِس":"KN","شُمٲلی کورِیا":"KP","جنوٗبی کورِیا":"KR","کُویت":"KW","کیمَن جٔزیٖرٕ":"KY","کَزاکِستان":"KZ","لاس":"LA","لٮ۪بنان":"LB","سینٛٹ لوٗسِیا":"LC","لِکٹیٛسٹیٖن":"LI","سِریٖلَنٛکا":"LK","لایبیرِیا":"LR","لیسوتھو":"LS","لِتھُوانِیا":"LT","لَکسَمبٔرٕگ":"LU","لیٛٹوِیا":"LV","لِبیا":"LY","موروکو":"MA","مونیٚکو":"MC","مولڑاوِیا":"MD","موٹونیٛگِریو":"ME","سینٛٹ مارٹِن":"MF","میڑاگاسکار":"MG","مارشَل جٔزیٖرٕ":"MH","مٮ۪سوڑونِیا":"MK","مالی":"ML","مَیَنما بٔرما":"MM","مَنٛگولِیا":"MN","مَکاوو ایس اے آر چیٖن":"MO","شُمٲلی مارِیانا جٔزیٖرٕ":"MP","مارٹِنِک":"MQ","مارٕٹانِیا":"MR","مانٛٹسیراٹ":"MS","مالٹا":"MT","مورِشَس":"MU","مالدیٖو":"MV","ملاوی":"MW","مٮ۪کسِکو":"MX","مَلیشِیا":"MY","موزَمبِک":"MZ","نامِبِیا":"NA","نِو کیلِڑونِیا":"NC","نایجَر":"NE","نارفاک جٔزیٖرٕ":"NF","نایجیرِیا":"NG","ناکاراگُوا":"NI","نیٖدَرلینٛڑ":"NL","ناروے":"NO","نیپال":"NP","نارووٗ":"NR","نیوٗ":"NU","نیوٗزِلینٛڑ":"NZ","اومان":"OM","پَناما":"PA","پیٖروٗ":"PE","فرٛانسی پولِنیشِیا":"PF","پاپُوا نیوٗ گیٖنی":"PG","فِلِپِینس":"PH","پاکِستان":"PK","پولینٛڑ":"PL","سینٛٹ پیٖری تہٕ موکیلِیَن":"PM","پِٹکیرٕنۍ جٔزیٖرٕ":"PN","پٔرٹو رِکو":"PR","فَلَستیٖن":"PS","پُرتِگال":"PT","پَلاو":"PW","پَراگُے":"PY","قَطِر":"QA","آوُٹلاینِگ اوشینِیا":"QO","رِیوٗنِیَن":"RE","رومانِیا":"RO","سَربِیا":"RS","روٗس":"RU","روٗوانٛڈا":"RW","سوٗدی عربِیہ":"SA","سولامان جٔزیٖرٕ":"SB","سیشَلِس":"SC","سوٗڈان":"SD","سُوِڈَن":"SE","ٛسِنٛگاپوٗر":"SG","سینٛٹ ہٮ۪لِنا":"SH","سَلووینِیا":"SI","سَوالبریڑ تہٕ جان ماییڑ":"SJ","سَلوواکِیا":"SK","سیٖرالیوون":"SL","سین میرِنو":"SM","سینیگَل":"SN","سومالِیا":"SO","سُرِنام":"SR","ساو توم تہٕ پرٛنسِپی":"ST","اٮ۪ل سَلواڑور":"SV","شام":"SY","سُوزِلینٛڑ":"SZ","تُرُک تہٕ کیکوس جٔزیٖرٕ":"TC","چاڑ":"TD","فرٛانسِسی جَنوٗبی عَلاقہٕ":"TF","ٹوگو":"TG","تھایلینٛڑ":"TH","تاجکِستان":"TJ","توکیلاو":"TK","مَشرِقی تایمور":"TL","تُرمِنِستان":"TM","ٹونیشِیا":"TN","ٹونٛگا":"TO","تُرکی":"TR","ٹرٛنِنداد تہٕ ٹوبیگو":"TT","توٗوالوٗ":"TV","تایوان":"TW","تَنجانِیا":"TZ","یوٗرِکین":"UA","یوٗگانٛڑا":"UG","یوٗنایٹِڑ سِٹیٹِس ماینَر آوُٹلییِنٛگ جٔزیٖرٕ":"UM","یوٗنایٹِڑ سِٹیٹِس":"US","یوٗروگے":"UY","اُزبِکِستان":"UZ","ویٹِکَن سِٹی":"VA","سینٛٹ وینسٮ۪ٹ تہٕ گرٛیناڑاینٕز":"VC","وینازوٗلا":"VE","بَرطانوی ؤرجِن جٔزیٖرٕ":"VG","یوٗ ایس ؤرجِن جٔزیٖرٕ":"VI","ویٹِنام":"VN","وانوٗتوٗ":"VU","والِس تہٕ فیوٗچوٗنا":"WF","سیمووا":"WS","یَمَن":"YE","مَییٹ":"YT","جَنوٗبی اَفریٖکا":"ZA","جامبِیا":"ZM","زِمبابے":"ZW","نامعلوٗم تہٕ نالَگہار عَلاقہٕ":"ZZ"};
+ilib.data.ctrynames_lg = {"Andora":"AD","Emireeti":"AE","Afaganisitani":"AF","Antigwa ne Barabuda":"AG","Angwila":"AI","Alibaniya":"AL","Arameniya":"AM","Bizinga bya Antile eby'abaHolandi":"AN","Angola":"AO","Arigentina":"AR","Samowa omumerika":"AS","Awusituriya":"AT","Awusitureliya":"AU","Aruba":"AW","Azerebayijaani":"AZ","Boziniya Hezegovina":"BA","Barabadosi":"BB","Bangaladesi":"BD","Bubirigi":"BE","Burukina Faso":"BF","Bulugariya":"BG","Baareeni":"BH","Burundi":"BI","Benini":"BJ","Beremuda":"BM","Burunayi":"BN","Boliviya":"BO","Buraziiri":"BR","Bahamasi":"BS","Butaani":"BT","Botiswana":"BW","Belarusi":"BY","Belize":"BZ","Kanada":"CA","Kongo - Zayire":"CD","Lipubulika eya Senturafiriki":"CF","Kongo":"CG","Switizirandi":"CH","Kote Divwa":"CI","Bizinga bya Kkuki":"CK","Cile":"CL","Kameruuni":"CM","Cayina":"CN","Kolombya":"CO","Kosita Rika":"CR","Cuba":"CU","Bizinga by'e Kepu Veredi":"CV","Sipuriya":"CY","Lipubulika ya Ceeka":"CZ","Budaaki":"DE","Jjibuti":"DJ","Denimaaka":"DK","Dominika":"DM","Lipubulika ya Dominika":"DO","Aligerya":"DZ","Ekwado":"EC","Esitoniya":"EE","Misiri":"EG","Eritureya":"ER","Sipeyini":"ES","Esyopya":"ET","Finilandi":"FI","Fiji":"FJ","Bizinga by'eFalikalandi":"FK","Mikuronezya":"FM","Bufalansa":"FR","Gaboni":"GA","Bungereza":"GB","Gurenada":"GD","Gyogya":"GE","Guyana enfalansa":"GF","Gana":"GH","Giburalita":"GI","Gurenelandi":"GL","Gambya":"GM","Gini":"GN","Gwadalupe":"GP","Gayana ey'oku ekweta":"GQ","Bugereeki/Buyonaani":"GR","Gwatemala":"GT","Gwamu":"GU","Gini-Bisawu":"GW","Gayana":"GY","Hundurasi":"HN","Kurowesya":"HR","Hayiti":"HT","Hangare":"HU","Yindonezya":"ID","Ayalandi":"IE","Yisirayeri":"IL","Buyindi":"IN","Bizinga by'eCago":"IO","Yiraaka":"IQ","Yiraani":"IR","Ayisirandi":"IS","Yitale":"IT","Jamayika":"JM","Yorodani":"JO","Japani":"JP","Kenya":"KE","Kirigizisitaani":"KG","Kambodya":"KH","Kiribati":"KI","Bizinga by'eKomoro":"KM","Senti Kitisi ne Nevisi":"KN","Koreya ey'omumambuka":"KP","Koreya ey'omumaserengeta":"KR","Kuweti":"KW","Bizinga ebya Kayimaani":"KY","Kazakisitaani":"KZ","Lawosi":"LA","Lebanoni":"LB","Senti Luciya":"LC","Licitensitayini":"LI","Sirilanka":"LK","Liberya":"LR","Lesoso":"LS","Lisuwenya":"LT","Lukisembaaga":"LU","Lativya":"LV","Libya":"LY","Moroko":"MA","Monako":"MC","Molodova":"MD","Madagasika":"MG","Bizinga bya Mariso":"MH","Masedoniya":"MK","Mali":"ML","Myanima":"MM","Mongoliya":"MN","Bizinga bya Mariyana eby'omumambuka":"MP","Maritiniiki":"MQ","Mawulitenya":"MR","Monteseraati":"MS","Malita":"MT","Mawulisyasi":"MU","Bizinga by'eMalidive":"MV","Malawi":"MW","Mekisiko":"MX","Malezya":"MY","Mozambiiki":"MZ","Namibiya":"NA","Kaledonya mupya":"NC","Nije":"NE","Kizinga ky'eNorofoko":"NF","Nayijerya":"NG","Nikaraguwa":"NI","Holandi":"NL","Nowe":"NO","Nepalo":"NP","Nawuru":"NR","Niyuwe":"NU","Niyuziirandi":"NZ","Omaani":"OM","Panama":"PA","Peru":"PE","Polinesiya enfalansa":"PF","Papwa Nyugini":"PG","Bizinga bya Firipino":"PH","Pakisitaani":"PK","Polandi":"PL","Senti Piyere ne Mikeloni":"PM","Pitikeeni":"PN","Potoriko":"PR","Palesitayini":"PS","Potugaali":"PT","Palawu":"PW","Paragwayi":"PY","Kataa":"QA","Leyunyoni":"RE","Lomaniya":"RO","Lasa":"RU","Rwanda":"RW","Sawudarebya - Buwarabu":"SA","Bizanga by'eSolomooni":"SB","Sesere":"SC","Sudaani":"SD","Swideni":"SE","Singapowa":"SG","Senti Herena":"SH","Sirovenya":"SI","Sirovakya":"SK","Siyeralewone":"SL","Sanimarino":"SM","Senegaalo":"SN","Somaliya":"SO","Surinaamu":"SR","Sanitome ne Purincipe":"ST","El salivado":"SV","Siriya":"SY","Swazirandi":"SZ","Bizinga by'eTaaka ne Kayikosi":"TC","Caadi":"TD","Togo":"TG","Tayirandi":"TH","Tajikisitaani":"TJ","Tokelawu":"TK","Timowa":"TL","Takimenesitaani":"TM","Tunisya":"TN","Tonga":"TO","Ttake":"TR","Turindaadi ne Tobago":"TT","Tuvalu":"TV","Tayiwani":"TW","Tanzaniya":"TZ","Yukurayine":"UA","Yuganda":"UG","Amerika":"US","Wurugwayi":"UY","Wuzibekisitaani":"UZ","Vatikaani":"VA","Senti Vinsenti ne Gurendadiini":"VC","Venzwera":"VE","Bizinga ebya Virigini ebitwalibwa Bungereza":"VG","Bizinga bya Virigini eby'Amerika":"VI","Vyetinaamu":"VN","Vanawuwatu":"VU","Walisi ne Futuna":"WF","Samowa":"WS","Yemeni":"YE","Mayotte":"YT","Sawusafirika":"ZA","Zambya":"ZM","Zimbabwe":"ZW"};
+ilib.data.ctrynames_ln = {"Andorɛ":"AD","Lɛmila alabo":"AE","Afiganisitá":"AF","Antiga mpé Barbuda":"AG","Angiyɛ":"AI","Alibani":"AL","Amɛni":"AM","Antiyɛ ya Olandɛ":"AN","Angóla":"AO","Arizantinɛ":"AR","Samoa ya Ameriki":"AS","Otilisi":"AT","Ositáli":"AU","Aruba":"AW","Azɛlɛbaizá":"AZ","Bosini mpé Hezegovine":"BA","Barɛbadɛ":"BB","Bengalidɛsi":"BD","Beleziki":"BE","Bukina Faso":"BF","Biligari":"BG","Bahrɛnɛ":"BH","Burundi":"BI","Benɛ":"BJ","Bermuda":"BM","Brineyi":"BN","Bolivi":"BO","Brezílɛ":"BR","Bahamasɛ":"BS","Butáni":"BT","Botswana":"BW","Byelorisi":"BY","Belizɛ":"BZ","Kanada":"CA","Repibiki demokratiki ya Kongó":"CD","Repibiki ya Afríka ya Káti":"CF","Kongo":"CG","Swisɛ":"CH","Kotídivualɛ":"CI","Bisanga bya Kookɛ":"CK","Síli":"CL","Kamɛrune":"CM","Sinɛ":"CN","Kolombi":"CO","Kositarika":"CR","Kiba":"CU","Bisanga bya Kapevɛrɛ":"CV","Sípɛlɛ":"CY","Repibiki Tsekɛ":"CZ","Alemani":"DE","Dzibuti":"DJ","Danɛmarike":"DK","Domínike":"DM","Repibiki ya Domínikɛ":"DO","Alizɛri":"DZ","Ekwatɛ́lɛ":"EC","Esitoni":"EE","Ezípite":"EG","Elitelɛ":"ER","Esipanye":"ES","Etsíopi":"ET","Filandɛ":"FI","Fidzi":"FJ","Bisanga bya Maluni":"FK","Mikronezi":"FM","Falánsɛ":"FR","Gabɔ":"GA","Angɛlɛtɛ́lɛ":"GB","Gelenadɛ":"GD","Zorzi":"GE","Giyanɛ ya Falánsɛ":"GF","Gana":"GH","Zibatalɛ":"GI","Gowelande":"GL","Gambi":"GM","Ginɛ":"GN","Gwadɛlupɛ":"GP","Ginɛ́kwatɛ́lɛ":"GQ","Geleki":"GR","Gwatémala":"GT","Gwamɛ":"GU","Ginɛbisau":"GW","Giyane":"GY","Ondurasɛ":"HN","Krowasi":"HR","Ayiti":"HT","Ongili":"HU","Indonezi":"ID","Irelandɛ":"IE","Isirayelɛ":"IL","Índɛ":"IN","Mabelé ya Angɛlɛtɛ́lɛ na mbú ya Indiya":"IO","Iraki":"IQ","Irâ":"IR","Isilandɛ":"IS","Itali":"IT","Zamaiki":"JM","Zɔdani":"JO","Zapɔ":"JP","Kenya":"KE","Kigizisitá":"KG","Kambodza":"KH","Kiribati":"KI","Komorɛ":"KM","Sántu krístofe mpé Nevɛ̀s":"KN","Korɛ ya nɔ́rdi":"KP","Korɛ ya súdi":"KR","Koweti":"KW","Bisanga bya Kayíma":"KY","Kazakisitá":"KZ","Lawosi":"LA","Libá":"LB","Sántu lisi":"LC","Lishɛteni":"LI","Sirilanka":"LK","Libériya":"LR","Lesoto":"LS","Litwani":"LT","Likisambulu":"LU","Letoni":"LV","Libí":"LY","Marokɛ":"MA","Monako":"MC","Molidavi":"MD","Madagasikari":"MG","Bisanga bya Marishalɛ":"MH","Masedwanɛ":"MK","Malí":"ML","Mongolí":"MN","Bisanga bya Marianɛ ya nɔ́rdi":"MP","Martiniki":"MQ","Moritani":"MR","Mɔsera":"MS","Malitɛ":"MT","Morisɛ":"MU","Madívɛ":"MV","Malawi":"MW","Meksike":"MX","Malezi":"MY","Mozambíki":"MZ","Namibi":"NA","Kaledoni ya sika":"NC","Nizɛrɛ":"NE","Esanga Norfokɛ":"NF","Nizerya":"NG","Nikaragwa":"NI","Olandɛ":"NL","Norivezɛ":"NO","Nepálɛ":"NP","Nauru":"NR","Nyué":"NU","Zelandɛ ya sika":"NZ","Ománɛ":"OM","Panama":"PA","Péru":"PE","Polinezi ya Falánsɛ":"PF","Papwazi Ginɛ ya sika":"PG","Filipinɛ":"PH","Pakisitá":"PK","Poloni":"PL","Sántu pététo mpé Mikelɔ":"PM","Pikairni":"PN","Pɔtoriko":"PR","Palɛsine":"PS","Putúlugɛsi":"PT","Palau":"PW","Palagwei":"PY","Katari":"QA","Lenyo":"RE","Romani":"RO","Risí":"RU","Rwanda":"RW","Alabi Sawuditɛ":"SA","Bisanga Solomɔ":"SB","Sɛshɛlɛ":"SC","Sudá":"SD","Swédɛ":"SE","Singapurɛ":"SG","Sántu eleni":"SH","Siloveni":"SI","Silovaki":"SK","Siera Leonɛ":"SL","Sántu Marinɛ":"SM","Senegalɛ":"SN","Somali":"SO","Surinamɛ":"SR","Sao Tomé mpé Presipɛ":"ST","Savadɔrɛ":"SV","Sirí":"SY","Swazilandi":"SZ","Bisanga bya Turki mpé Kaiko":"TC","Tsádi":"TD","Togo":"TG","Tailandɛ":"TH","Tazikisitá":"TJ","Tokelau":"TK","Timorɛ ya Moniɛlɛ":"TL","Tikɛménisitá":"TM","Tinizi":"TN","Tonga":"TO","Tiliki":"TR","Tinidadɛ mpé Tobago":"TT","Tuvalu":"TV","Taiwanin":"TW","Tanzani":"TZ","Ikrɛni":"UA","Uganda":"UG","Ameriki":"US","Irigwei":"UY","Uzibɛkisitá":"UZ","Vatiká":"VA","Sántu vesá mpé Gelenadinɛ":"VC","Venézuela":"VE","Bisanga bya Vierzi ya Angɛlɛtɛ́lɛ":"VG","Bisanga bya Vierzi ya Ameriki":"VI","Viyetinamɛ":"VN","Vanuatu":"VU","Walisɛ mpé Futuna":"WF","Samoa":"WS","Yemɛnɛ":"YE","Mayotɛ":"YT","Afríka ya Súdi":"ZA","Zambi":"ZM","Zimbabwe":"ZW"};
+ilib.data.ctrynames_lt = {"Ascension sala":"AC","Andora":"AD","Jungtiniai Arabų Emyratai":"AE","Afganistanas":"AF","Antigva ir Barbuda":"AG","Angilija":"AI","Albanija":"AL","Armėnija":"AM","Olandijos Antilai":"AN","Angola":"AO","Antarktis":"AQ","Argentina":"AR","Amerikos Samoa":"AS","Austrija":"AT","Australija":"AU","Aruba":"AW","Alandų Salos":"AX","Azerbaidžanas":"AZ","Bosnija ir Hercegovina":"BA","Barbadosas":"BB","Bangladešas":"BD","Belgija":"BE","Burkina Fasas":"BF","Bulgarija":"BG","Bahreinas":"BH","Burundis":"BI","Beninas":"BJ","Švento Baltramiejaus Sala":"BL","Bermuda":"BM","Brunėjus":"BN","Bolivija":"BO","Karibų Nyderlandai":"BQ","Brazilija":"BR","Bahamos":"BS","Butanas":"BT","Bouvet sala":"BV","Botsvana":"BW","Baltarusija":"BY","Belizas":"BZ","Kanada":"CA","Kokosų salos":"CC","Kongas-Kinšasa":"CD","Centrinės Afrikos Respublika":"CF","Kongas-Brazavilis":"CG","Šveicarija":"CH","Dramblio Kaulo Krantas":"CI","Kuko salos":"CK","Čilė":"CL","Kamerūnas":"CM","Kinija":"CN","Kolumbija":"CO","Clipperton sala":"CP","Kosta Rika":"CR","Kuba":"CU","Žaliasis Kyšulys":"CV","Kiurasao":"CW","Kalėdų sala":"CX","Kipras":"CY","Čekija":"CZ","Vokietija":"DE","Diego Garcia":"DG","Džibutis":"DJ","Danija":"DK","Dominika":"DM","Dominikos Respublika":"DO","Alžyras":"DZ","Seuta ir Melila":"EA","Ekvadoras":"EC","Estija":"EE","Egiptas":"EG","Vakarų Sachara":"EH","Eritrėja":"ER","Ispanija":"ES","Etiopija":"ET","Europos Sąjunga":"EU","Suomija":"FI","Fidžis":"FJ","Folklando Salos":"FK","Mikronezija":"FM","Farerų Salos":"FO","Prancūzija":"FR","Gabonas":"GA","Didžioji Britanija":"GB","Grenada":"GD","Gruzija":"GE","Prancūzijos Gviana":"GF","Gernsis":"GG","Gana":"GH","Gibraltaras":"GI","Grenlandija":"GL","Gambija":"GM","Gvinėja":"GN","Gvadelupė":"GP","Pusiaujo Gvinėja":"GQ","Graikija":"GR","Pietų Džordžija ir Pietų Sandvičo salos":"GS","Gvatemala":"GT","Guamas":"GU","Bisau Gvinėja":"GW","Gajana":"GY","Kinijos S. A. R. Honkongas":"HK","Heardo ir McDonaldo Salų Sritis":"HM","Hondūras":"HN","Kroatija":"HR","Haitis":"HT","Vengrija":"HU","Kanarų Salos":"IC","Indonezija":"ID","Airija":"IE","Izraelis":"IL","Meno Sala":"IM","Indija":"IN","Indijos vandenyno britų sritis":"IO","Irakas":"IQ","Iranas":"IR","Islandija":"IS","Italija":"IT","Džersis":"JE","Jamaika":"JM","Jordanija":"JO","Japonija":"JP","Kenija":"KE","Kirgiztanas":"KG","Kambodža":"KH","Kiribatis":"KI","Komorai":"KM","Sent Kitsas ir Nevis":"KN","Šiaurės Korėja":"KP","Pietų Korėja":"KR","Kuveitas":"KW","Kaimanų Salos":"KY","Kazachstanas":"KZ","Laosas":"LA","Libanas":"LB","Šventoji Liucija":"LC","Lichtenšteinas":"LI","Šri Lanka":"LK","Liberija":"LR","Lesotas":"LS","Lietuva":"LT","Liuksemburgas":"LU","Latvija":"LV","Libija":"LY","Marokas":"MA","Monakas":"MC","Moldova":"MD","Juodkalnija":"ME","Sen Martenas":"MF","Madagaskaras":"MG","Maršalo Salos":"MH","Makedonija":"MK","Malis":"ML","Mianmaras":"MM","Mongolija":"MN","Macao":"MO","Marianos šiaurinės salos":"MP","Martinika":"MQ","Mauritanija":"MR","Montseratas":"MS","Malta":"MT","Mauricijus":"MU","Maldivai":"MV","Malavis":"MW","Meksika":"MX","Malaizija":"MY","Mozambikas":"MZ","Namibija":"NA","Naujoji Kaledonija":"NC","Nigeris":"NE","Norfolko sala":"NF","Nigerija":"NG","Nikaragva":"NI","Nyderlandai":"NL","Norvegija":"NO","Nepalas":"NP","Nauru":"NR","Niue":"NU","Naujoji Zelandija":"NZ","Omanas":"OM","Panama":"PA","Peru":"PE","Prancūzų Polinezija":"PF","Papua Naujoji Gvinėja":"PG","Filipinai":"PH","Pakistanas":"PK","Lenkija":"PL","Sen Pjeras ir Mikelonas":"PM","Pitkerno Salos":"PN","Puerto Rikas":"PR","Palestinos teritorija":"PS","Portugalija":"PT","Palau":"PW","Paragvajus":"PY","Kataras":"QA","Nuošali Okeanija":"QO","Reunjonas":"RE","Rumunija":"RO","Serbija":"RS","Rusija":"RU","Ruanda":"RW","Saudo Arabija":"SA","Saliamono salos":"SB","Seišeliai":"SC","Sudanas":"SD","Švedija":"SE","Singapūras":"SG","Šventoji Elena":"SH","Slovėnija":"SI","Svalbardo ir Jan Majen salos":"SJ","Slovakija":"SK","Siera Leonė":"SL","San Marinas":"SM","Senegalas":"SN","Somalis":"SO","Surinamas":"SR","Pietų Sudanas":"SS","San Tomė ir Prinsipė":"ST","Salvadoras":"SV","Sint Martenas":"SX","Sirija":"SY","Svazilandas":"SZ","Tristan da Cunha":"TA","Terkso ir Kaikoso Salos":"TC","Čadas":"TD","Prancūzijos Pietų sritys":"TF","Togas":"TG","Tailandas":"TH","Tadžikistanas":"TJ","Tokelau":"TK","Rytų Timoras":"TL","Turkmėnistanas":"TM","Tunisas":"TN","Tonga":"TO","Turkija":"TR","Trinidadas ir Tobagas":"TT","Tuvalu":"TV","Taivanas":"TW","Tanzanija":"TZ","Ukraina":"UA","Uganda":"UG","Jungtinių Valstijų mažosios aplinkinės salos":"UM","Jungtinės Valstijos":"US","Urugvajus":"UY","Uzbekistanas":"UZ","Vatikanas":"VA","Šventasis Vincentas ir Grenadinai":"VC","Venesuela":"VE","Didžiosios Britanijos Mergelių Salos":"VG","Mergelių Salos (JAV)":"VI","Vietnamas":"VN","Vanuatu":"VU","Wallisas ir Futuna":"WF","Samoa":"WS","Jemenas":"YE","Majotas":"YT","Pietų Afrika":"ZA","Zambija":"ZM","Zimbabvė":"ZW","nežinoma sritis":"ZZ"};
+ilib.data.ctrynames_lv = {"Debesbraukšanas sala":"AC","Andora":"AD","Apvienotie Arābu Emirāti":"AE","Afganistāna":"AF","Antigva un Barbuda":"AG","Angilja":"AI","Albānija":"AL","Armēnija":"AM","Nīderlandes Antiļas":"AN","Angola":"AO","Antarktika":"AQ","Argentīna":"AR","Amerikāņu Samoa":"AS","Austrija":"AT","Austrālija":"AU","Aruba":"AW","Olandes salas":"AX","Azerbaidžāna":"AZ","Bosnija un Hercegovina":"BA","Barbadosa":"BB","Bangladeša":"BD","Beļģija":"BE","Burkinafaso":"BF","Bulgārija":"BG","Bahreina":"BH","Burundi":"BI","Benina":"BJ","Senbartelmī":"BL","Bermudu salas":"BM","Bruneja":"BN","Bolīvija":"BO","Nīderlandes Karību salas":"BQ","Brazīlija":"BR","Bahamu salas":"BS","Butāna":"BT","Buvē sala":"BV","Botsvāna":"BW","Baltkrievija":"BY","Beliza":"BZ","Kanāda":"CA","Kokosu jeb Kīlinga salas":"CC","Kongo-Kinšasa":"CD","Centrālāfrikas Republika":"CF","Kongo - Brazavila":"CG","Šveice":"CH","Kotdivuāra":"CI","Kuka salas":"CK","Čīle":"CL","Kamerūna":"CM","Ķīna":"CN","Kolumbija":"CO","Klipertona sala":"CP","Kostarika":"CR","Kuba":"CU","Kaboverde":"CV","Kirasao":"CW","Ziemsvētku sala":"CX","Kipra":"CY","Čehija":"CZ","Vācija":"DE","Djego Garsijas atols":"DG","Džibutija":"DJ","Dānija":"DK","Dominika":"DM","Dominikānas Republika":"DO","Alžīrija":"DZ","Seūta un Melilja":"EA","Ekvadora":"EC","Igaunija":"EE","Ēģipte":"EG","Rietumsahāra":"EH","Eritreja":"ER","Spānija":"ES","Etiopija":"ET","Eiropas Savienība":"EU","Somija":"FI","Fidži":"FJ","Folklenda salas":"FK","Mikronēzija":"FM","Fēru Salas":"FO","Francija":"FR","Gabona":"GA","Lielbritānija":"GB","Grenāda":"GD","Gruzija":"GE","Franču Gviāna":"GF","Gērnsija":"GG","Gana":"GH","Gibraltārs":"GI","Grenlande":"GL","Gambija":"GM","Gvineja":"GN","Gvadelupa":"GP","Ekvatoriālā Gvineja":"GQ","Grieķija":"GR","Dienviddžordžija un Dienvidsendviču salas":"GS","Gvatemala":"GT","Guama":"GU","Gvineja-Bisava":"GW","Gajāna":"GY","Ķīnas īpašās pārvaldes apgabals Honkonga":"HK","Hērda un Makdonalda salas":"HM","Hondurasa":"HN","Horvātija":"HR","Haiti":"HT","Ungārija":"HU","Kanāriju salas":"IC","Indonēzija":"ID","Īrija":"IE","Izraēla":"IL","Mena":"IM","Indija":"IN","Indijas okeāna Britu teritorija":"IO","Irāka":"IQ","Irāna":"IR","Īslande":"IS","Itālija":"IT","Džērsija":"JE","Jamaika":"JM","Jordānija":"JO","Japāna":"JP","Kenija":"KE","Kirgizstāna":"KG","Kambodža":"KH","Kiribati":"KI","Komoru salas":"KM","Sentkitsa un Nevisa":"KN","Ziemeļkoreja":"KP","Dienvidkoreja":"KR","Kuveita":"KW","Kaimanu salas":"KY","Kazahstāna":"KZ","Laosa":"LA","Libāna":"LB","Sentlūsija":"LC","Lihtenšteina":"LI","Šrilanka":"LK","Libērija":"LR","Lesoto":"LS","Lietuva":"LT","Luksemburga":"LU","Latvija":"LV","Lībija":"LY","Maroka":"MA","Monako":"MC","Moldova":"MD","Melnkalne":"ME","Senmartēna":"MF","Madagaskara":"MG","Māršala salas":"MH","Maķedonija":"MK","Mali":"ML","Mjanma [Birma]":"MM","Mongolija":"MN","Ķīnas īpašās pārvaldes apgabals Makao":"MO","Ziemeļu Marianas salas":"MP","Martinika":"MQ","Mauritānija":"MR","Montserrata":"MS","Malta":"MT","Maurīcija":"MU","Maldīvija":"MV","Malāvija":"MW","Meksika":"MX","Malaizija":"MY","Mozambika":"MZ","Namībija":"NA","Jaunkaledonija":"NC","Nigēra":"NE","Norfolkas sala":"NF","Nigērija":"NG","Nikaragva":"NI","Nīderlande":"NL","Norvēģija":"NO","Nepāla":"NP","Nauru":"NR","Niue":"NU","Jaunzēlande":"NZ","Omāna":"OM","Panama":"PA","Peru":"PE","Franču Polinēzija":"PF","Papua-Jaungvineja":"PG","Filipīnas":"PH","Pakistāna":"PK","Polija":"PL","Senpjēra un Mikelona":"PM","Pitkērna":"PN","Puertoriko":"PR","Palestīna":"PS","Portugāle":"PT","Palau":"PW","Paragvaja":"PY","Katara":"QA","Okeānijas attālās salas":"QO","Reinjona":"RE","Rumānija":"RO","Serbija":"RS","Krievija":"RU","Ruanda":"RW","Saūda Arābija":"SA","Zālamana salas":"SB","Seišeļu salas":"SC","Sudāna":"SD","Zviedrija":"SE","Singapūra":"SG","Sv. Helēnas sala":"SH","Slovēnija":"SI","Svalbāra un Jana Majena sala":"SJ","Slovākija":"SK","Sjerraleone":"SL","Sanmarīno":"SM","Senegāla":"SN","Somālija":"SO","Surinama":"SR","Dienvidsudāna":"SS","Santome un Prinsipi":"ST","Salvadora":"SV","Sintmārtena":"SX","Sīrija":"SY","Svazilenda":"SZ","Tristana da Kuņas salas":"TA","Tērksas un Kaikosas salas":"TC","Čada":"TD","Franču dienvidu teritorijas":"TF","Togo":"TG","Taizeme":"TH","Tadžikistāna":"TJ","Tokelau":"TK","Austrumtimora":"TL","Turkmenistāna":"TM","Tunisija":"TN","Tonga":"TO","Turcija":"TR","Trinidāda un Tobāgo":"TT","Tuvalu":"TV","Taivāna":"TW","Tanzānija":"TZ","Ukraina":"UA","Uganda":"UG","ASV Mazās Aizjūras salas":"UM","Amerikas Savienotās Valstis":"US","Urugvaja":"UY","Uzbekistāna":"UZ","Vatikāns":"VA","Sentvinsenta un Grenadīnas":"VC","Venecuēla":"VE","Britu Virdžīnas":"VG","ASV Virdžīnas":"VI","Vjetnama":"VN","Vanuatu":"VU","Volisa un Futuna":"WF","Samoa":"WS","Jemena":"YE","Majota":"YT","Dienvidāfrikas Republika":"ZA","Zambija":"ZM","Zimbabve":"ZW","nezināms reģions":"ZZ"};
+ilib.data.ctrynames_mk = {"Остров Асенсион":"AC","Андора":"AD","Обединети Арапски Емирати":"AE","Авганистан":"AF","Антигва и Барбуда":"AG","Ангвила":"AI","Албанија":"AL","Ерменија":"AM","Холандски Антили":"AN","Ангола":"AO","Антарктик":"AQ","Аргентина":"AR","Американска Самоа":"AS","Австрија":"AT","Австралија":"AU","Аруба":"AW","Аландски острови":"AX","Азербејџан":"AZ","Босна и Херцеговина":"BA","Барбадос":"BB","Бангладеш":"BD","Белгија":"BE","Буркина Фасо":"BF","Бугарија":"BG","Бахреин":"BH","Бурунди":"BI","Бенин":"BJ","Сент Бартоломеј":"BL","Бермуди":"BM","Брунеи":"BN","Боливија":"BO","Карипска Холандија":"BQ","Бразил":"BR","Бахами":"BS","Бутан":"BT","Боувитови острови":"BV","Боцвана":"BW","Белорусија":"BY","Белизе":"BZ","Канада":"CA","Кокосови острови":"CC","Конго - Киншаса":"CD","Централна Африканска Република":"CF","Конго - Бразавил":"CG","Швајцарија":"CH","Брегот на Слоновата Коска":"CI","Кукови Острови":"CK","Чиле":"CL","Камерун":"CM","Кина":"CN","Колумбија":"CO","Остров Клипертон":"CP","Костарика":"CR","Куба":"CU","Зеленортски Острови":"CV","Курасао":"CW","Божиќни Острови":"CX","Кипар":"CY","Чешка Република":"CZ","Германија":"DE","Диего Гарсија":"DG","Џибути":"DJ","Данска":"DK","Доминика":"DM","Доминиканска Република":"DO","Алжир":"DZ","Сеута и Мелија":"EA","Еквадор":"EC","Естонија":"EE","Египет":"EG","Западна Сахара":"EH","Еритреја":"ER","Шпанија":"ES","Етиопија":"ET","Европска унија":"EU","Финска":"FI","Фиџи":"FJ","Фолкландски Острови":"FK","Микронезија":"FM","Фарски Острови":"FO","Франција":"FR","Габон":"GA","Велика Британија":"GB","Гренада":"GD","Грузија":"GE","Француска Гвајана":"GF","Гвернзи":"GG","Гана":"GH","Гибралтар":"GI","Гренланд":"GL","Гамбија":"GM","Гвинеја":"GN","Гвадалупе":"GP","Екваторска Гвинеја":"GQ","Грција":"GR","Јужна Грузија и Јужни Сендвич Острови":"GS","Гватемала":"GT","Гвам":"GU","Гвинеа-Биса":"GW","Гвајана":"GY","Хонг Конг С.А.Р Кина":"HK","Хардови острови и Мекдоналд Острови":"HM","Хондурас":"HN","Хрватска":"HR","Хаити":"HT","Унгарија":"HU","Канарски острови":"IC","Индонезија":"ID","Ирска":"IE","Израел":"IL","Островот Ман":"IM","Индија":"IN","Британско Индиско Океанска територија":"IO","Ирак":"IQ","Иран":"IR","Исланд":"IS","Италија":"IT","Џерси":"JE","Јамајка":"JM","Јордан":"JO","Јапонија":"JP","Кенија":"KE","Киргистан":"KG","Камбоџа":"KH","Кирибати":"KI","Коморос":"KM","Сент Кристофер и Невис":"KN","Северна Кореја":"KP","Јужна Кореја":"KR","Кувајт":"KW","Кајмански Острови":"KY","Казахстан":"KZ","Лаос":"LA","Либан":"LB","Света Лучија":"LC","Лихтенштајн":"LI","Шри Ланка":"LK","Либерија":"LR","Лесото":"LS","Литванија":"LT","Луксембург":"LU","Латвија":"LV","Либија":"LY","Мароко":"MA","Монако":"MC","Молдавија":"MD","Црна Гора":"ME","Сент Мартин":"MF","Мадагаскар":"MG","Маршалови острови":"MH","Македонија":"MK","Мали":"ML","Мјанмар [Бурма]":"MM","Монголија":"MN","Макао С.А.Р Кина":"MO","Северни Маријанини Острови":"MP","Мартиник":"MQ","Мавританија":"MR","Монсерат":"MS","Малта":"MT","Маурициус":"MU","Малдиви":"MV","Малави":"MW","Мексико":"MX","Малезија":"MY","Мозамбик":"MZ","Намибија":"NA","Нова Каледонија":"NC","Нигер":"NE","Нофролк Остров":"NF","Нигерија":"NG","Никарагва":"NI","Холандија":"NL","Норвешка":"NO","Непал":"NP","Науру":"NR","Ние":"NU","Нов Зеланд":"NZ","Оман":"OM","Панама":"PA","Перу":"PE","Француска Полинезија":"PF","Папуа Нова Гвинеја":"PG","Филипини":"PH","Пакистан":"PK","Полска":"PL","Сент Пјер и Микелан":"PM","Питкарн":"PN","Порторико":"PR","Палестински територии":"PS","Португалија":"PT","Палау":"PW","Парагвај":"PY","Катар":"QA","Зависни земји во Океанија":"QO","Ријунион":"RE","Романија":"RO","Србија":"RS","Русија":"RU","Руанда":"RW","Саудиска Арабија":"SA","Соломоновите Острови":"SB","Сејшели":"SC","Судан":"SD","Шведска":"SE","Сингапур":"SG","Света Елена":"SH","Словенија":"SI","Свалбард и Жан Мејен":"SJ","Словачка":"SK","Сиера Леоне":"SL","Сан Марино":"SM","Сенегал":"SN","Сомалија":"SO","Суринам":"SR","Јужен Судан":"SS","Сао Томе и Принчипе":"ST","Ел Салвадор":"SV","Свети Мартин":"SX","Сирија":"SY","Свазиленд":"SZ","Тристан да Куња":"TA","Турк и Каикос Острови":"TC","Чад":"TD","Француски Јужни територии":"TF","Того":"TG","Тајланд":"TH","Таџикистан":"TJ","Токелау":"TK","Источен Тимор [Тимор Лесте]":"TL","Туркменистан":"TM","Тунис":"TN","Тонга":"TO","Турција":"TR","Тринидад и Тобаго":"TT","Тувалу":"TV","Тајван":"TW","Танзанија":"TZ","Украина":"UA","Уганда":"UG","Американски територии во Пацификот":"UM","Соединети Американски Држави":"US","Уругвај":"UY","Узбекистан":"UZ","Ватикан":"VA","Сент Винсент и Гренадините":"VC","Венецуела":"VE","Британски Девствени Острови":"VG","Девствени Острови на САД":"VI","Виетнам":"VN","Ванату":"VU","Волис и Футуна острови":"WF","Самоа":"WS","Јемен":"YE","Мајоте":"YT","Јужна Африка":"ZA","Замбија":"ZM","Зимбабве":"ZW","Непознат регион":"ZZ"};
+ilib.data.ctrynames_ml = {"അസൻഷൻ ദ്വീപ്":"AC","അൻറോറ":"AD","സംയുക്ത അറബ് രാഷ്ട്രം":"AE","അഫ്ഗാനിസ്ഥാൻ":"AF","ആൻറിഗ്വയും ബർബുഡയും":"AG","ആൻഗ്വില്ല":"AI","അൽബേനിയ":"AL","അർമേനിയ":"AM","നെതർലൻഡ്സ് ആൻറിലിസ്":"AN","അംഗോള":"AO","അൻറാർട്ടിക്ക":"AQ","അർജൻറീന":"AR","അമേരിക്കൻ സാമോവ":"AS","ഓസ്ട്രിയ":"AT","ഓസ്ട്രേലിയ":"AU","അറുബ":"AW","അലൻഡ് ദ്വീപുകൾ":"AX","അസർബൈജാൻ":"AZ","ബോസ്നിയയും ഹെർസഗോവിനയും":"BA","ബാർബഡോസ്":"BB","ബംഗ്ലാദേശ്":"BD","ബെൽജിയം":"BE","ബുർക്കിനാ ഫാസോ":"BF","ബൾഗേറിയ":"BG","ബഹ്റൈൻ":"BH","ബുറുണ്ടി":"BI","ബെനിൻ":"BJ","സെൻറ് ബാർത്തെൽമി":"BL","ബർമുഡ":"BM","ബ്രൂണൈ":"BN","ബൊളീവിയ":"BO","ബൊണെയ്ർ, സിന്റ് യുസ്റ്റേഷ്യസ്, സാബ എന്നിവ":"BQ","ബ്രസീൽ":"BR","ബഹാമാസ്":"BS","ഭൂട്ടാൻ":"BT","ബൗവെറ്റ് ദ്വീപ്":"BV","ബോട്സ്വാന":"BW","ബെലറൂസ്":"BY","ബെലീസ്":"BZ","കാനഡ":"CA","കോക്കസ്":"CC","കോംഗോ - കിൻഷാസ":"CD","സെൻട്രൽ ആഫ്രിക്കൻ റിപ്പബ്ലിക്":"CF","കോംഗോ - ബ്രാസാവിൽ":"CG","സ്വിറ്റ്സർലാൻഡ്":"CH","ഐവറി കോസ്റ്റ്":"CI","കൂക്ക് ദ്വീപുകൾ":"CK","ചിലി":"CL","കാമറൂൺ":"CM","ചൈന":"CN","കൊളംബിയ":"CO","ക്ലിപ്പെർട്ടൻ ദ്വീപ്":"CP","കോസ്റ്ററിക്ക":"CR","ക്യൂബ":"CU","കേപ്പ് വെർഡെ":"CV","കുറാകാവോ":"CW","ക്രിസ്മസ് ദ്വീപ്":"CX","സൈപ്രസ്സ്":"CY","ചെക്ക് റിപ്പബ്ലിക്":"CZ","ജർമനി":"DE","ഡീഗോ ഗ്രാഷ്യ":"DG","ജിബൂട്ടി":"DJ","ഡെൻമാർക്ക്":"DK","ഡൊമിനിക്ക":"DM","ഡൊമിനിക്കൻ റിപ്പബ്ലിക്":"DO","അൾജീരിയ":"DZ","സെയൂത്ത ആൻഡ് മെലിയ":"EA","ഇക്വഡോർ":"EC","എസ്റ്റോണിയ‍":"EE","ഈജിപ്ത്":"EG","പശ്ചിമ സഹാറ":"EH","എറിത്രിയ":"ER","സ്പെയിൻ":"ES","എത്യോപ്യ":"ET","യൂറോപ്യൻ യൂണിയൻ":"EU","ഫിൻലാൻഡ്":"FI","ഫിജി":"FJ","ഫാക്ക്‌ലാന്റ് ഐലന്റ്":"FK","മൈക്രോനേഷ്യ":"FM","ഫറോയി ദ്വീപുകൾ":"FO","ഫ്രാൻസ്":"FR","ഗാബോൺ":"GA","ബ്രിട്ടൻ":"GB","ഗ്രനേഡ":"GD","ജോർജിയ":"GE","ഫ്രഞ്ച് ഗയാന":"GF","ഗേൺസി":"GG","ഘാന":"GH","ജിബ്രാൾട്ടർ":"GI","ഗ്രീൻലാൻറ്":"GL","ഗാംബിയ":"GM","ഗ്വിനിയ":"GN","ഗുവാഡെലോപ്":"GP","ഇക്വിറ്റോറിയൽ ഗ്വിനിയ":"GQ","ഗ്രീസ്":"GR","ദക്ഷിണ ജോർജ്ജിയയും ദക്ഷിണ സാൻഡ്‌വിച്ച് ദ്വീപുകളും":"GS","ഗ്വാട്ടിമാലാ":"GT","ഗ്വാം":"GU","ഗിനി-ബിസോ":"GW","ഗയാന":"GY","ഹോങ് കോങ് എസ്.ഏ.ആർ. ചൈന":"HK","ഹിയേർഡ് ദ്വീപും മക്ഡൊണാള്ഡ് ദ്വീപുകളും":"HM","ഹോണ്ടുറാസ്":"HN","ക്രൊയേഷ്യ":"HR","ഹെയ്തി":"HT","ഹംഗറി":"HU","കാനറി ദ്വീപുകൾ":"IC","ഇൻഡോനേഷ്യ":"ID","അയർലാൻഡ്":"IE","ഇസ്രായേൽ":"IL","ഐൽ ഓഫ് മാൻ":"IM","ഇന്ത്യ":"IN","ബ്രിട്ടീഷ് ഇന്ത്യൻ മഹാസമുദ്ര പ്രദേശം":"IO","ഇറാക്ക്":"IQ","ഇറാൻ":"IR","ഐസ്‌ലാന്റ്":"IS","ഇറ്റലി":"IT","ജേഴ്സി":"JE","ജമൈക്ക":"JM","ജോർദ്ദാൻ":"JO","ജപ്പാൻ":"JP","കെനിയ":"KE","കിർഗിസ്ഥാൻ":"KG","കംബോഡിയ":"KH","കിരിബാത്തി":"KI","കോമറോസ്":"KM","സെയ്ൻറ് കിറ്റ്സും നെവിസും":"KN","ഉത്തരകൊറിയ":"KP","ദക്ഷിണകൊറിയ":"KR","കുവൈറ്റ്":"KW","കേയ്മാൻ ദ്വീപുകൾ":"KY","കസാഖിസ്ഥാൻ":"KZ","ലാവോസ്":"LA","ലബനോൺ":"LB","സെൻറ് ലൂസിയ":"LC","ലൈച്ടെസ്റ്റിൻ":"LI","ശ്രീലങ്ക":"LK","ലൈബീരിയ":"LR","ലെസോത്തോ":"LS","ലിത്വാനിയ":"LT","ലക്സംബർഗ്":"LU","ലാത്വിയ":"LV","ലിബിയ":"LY","മൊറോക്കൊ":"MA","മൊണോക്കൊ":"MC","മൾഡോവ":"MD","മോണ്ടേനേഗ്രോ":"ME","സെൻറ് മാർട്ടിൻ":"MF","മഡഗാസ്കർ":"MG","മാർഷൽ‍‍ ദ്വീപുകൾ":"MH","മാസിഡോണിയ":"MK","മാലി":"ML","മ്യാൻമാർ":"MM","മംഗോളിയ":"MN","മക്കാവോ SAR ചൈന":"MO","ഉത്തര മറിയാനാ ദ്വീപുകൾ":"MP","മാർട്ടീനിക്":"MQ","മൗറിറ്റാനിയ":"MR","മോണ്ട്സെറാറ്റ്":"MS","മാൾട്ട":"MT","മൗറീഷ്യസ്":"MU","മാലിദ്വീപ്":"MV","മലാവി":"MW","മെക്സിക്കോ":"MX","മലേഷ്യ":"MY","മൊസാംബിക്ക്":"MZ","നമീബിയ":"NA","പുതിയ കാലിഡോണിയ":"NC","നൈജർ":"NE","നോർഫോക് ദ്വീപ്":"NF","നൈജീരിയ":"NG","നിക്കാരഗ്വ":"NI","നെതർലൻഡ്സ്":"NL","നോർവെ":"NO","നേപ്പാൾ":"NP","നൗറൂ":"NR","ന്യൂവേ":"NU","ന്യൂസിലാൻറ്":"NZ","ഒമാൻ":"OM","പനാമ":"PA","പെറു":"PE","ഫ്രഞ്ച് പോളിനേഷ്യ":"PF","പപ്പുവ ന്യൂ ഗ്വിനി":"PG","ഫിലിപ്പൈൻസ്":"PH","പാക്കിസ്ഥാൻ":"PK","പോളണ്ട്":"PL","സെൻറ് പിറേയും മിക്വലണും":"PM","പിറ്റ്കെയ്ൻ":"PN","പോർട്ടോ റിക്കോ":"PR","പാലസ്തീൻ പ്രദേശങ്ങൾ":"PS","പോർച്ചുഗൽ":"PT","പലാവു":"PW","പരാഗ്വേ":"PY","ഖത്തർ":"QA","പുറംദ്വീപുകൾ":"QO","റീയൂണിയൻ":"RE","റുമേനിയ":"RO","സെർബിയ":"RS","റഷ്യ":"RU","റുവാണ്ട":"RW","സൗദി അറേബ്യ":"SA","സോളമൻ‍ ദ്വീപുകൾ":"SB","സെയ്ഷെൽസ്":"SC","സുഡാൻ":"SD","സ്വീഡൻ":"SE","സിംഗപ്പുർ":"SG","സെൻറ് ഹെലീന":"SH","സ്ലോവേനിയ":"SI","സ്വാൽബാഡും ജാൻ മായേനും":"SJ","സ്ലോവാക്യ":"SK","സിയേറാ ലിയോൺ":"SL","സാൻ മറിനോ":"SM","സെനഗൽ":"SN","സോമാലിയ":"SO","സുറിനാം":"SR","ദക്ഷിണ സുഡാൻ":"SS","സാവോ റ്റമെ ആൻഡ് പ്രിൻസിപ്പി":"ST","എൽ സാൽവദോർ":"SV","സിന്റ് മാർട്ടെൻ":"SX","സിറിയ":"SY","സ്വാസിലാൻറ്":"SZ","ട്രസ്റ്റൻ ഡ കൂന":"TA","ടർക്ക്സും കൈക്കോ ദ്വീപുകളും":"TC","ചാഡ്":"TD","ഫ്രഞ്ച് ദക്ഷിണ ഭൂപ്രദേശം":"TF","ടോഗോ":"TG","തായ്‌ലാൻഡ്":"TH","താജിക്കിസ്ഥാൻ":"TJ","ടൊകെലാവു":"TK","കിഴക്കൻ തിമൂർ":"TL","തുർക്ക്മെനിസ്ഥാൻ":"TM","ടുണീഷ്യ":"TN","ടോംഗ":"TO","തുർക്കി":"TR","ട്രിനിഡാഡും റ്റൊബാഗോയും":"TT","തുവാലു":"TV","തായ്‌വാൻ":"TW","ടാൻസാനിയ":"TZ","ഉക്രൈൻ":"UA","ഉഗാണ്ട":"UG","യുണൈറ്റഡ് സ്റ്റേറ്റ്സും ചെറിയ പുറംദ്വീപുകളും":"UM","അമേരിക്കൻ ഐക്യനാടുകൾ":"US","ഉറുഗ്വേ":"UY","ഉസ്ബെക്കിസ്ഥാൻ":"UZ","വത്തിക്കാൻ":"VA","സെൻറ് വിൻസൻറും ഗ്രനഡൈൻസും":"VC","വെനിസ്വേല":"VE","ബ്രിട്ടീഷ് വിർജിൻ ദ്വീപുകൾ":"VG","യു.എസ്. വെർജിൻ ദ്വീപുകൾ":"VI","വിയറ്റ്നാം":"VN","വന്വാത്തു":"VU","വാലിസ് ആൻഡ് ഫ്യുചൂന":"WF","സാമോവ":"WS","യമൻ":"YE","മയോട്ട്":"YT","ദക്ഷിണാഫ്രിക്ക":"ZA","സാംബിയ":"ZM","സിംബാബ്വേ":"ZW","അറിയപ്പെടാത്തതോ നിലവിലില്ലാത്തതോ ആയ പ്രദേശം":"ZZ"};
+ilib.data.ctrynames_ms = {"Pulau Ascension":"AC","Andorra":"AD","Emiriah Arab Bersatu":"AE","Afghanistan":"AF","Antigua dan Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Netherlands Antilles":"AN","Angola":"AO","Antarctica":"AQ","Argentina":"AR","American Samoa":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Kepulauan Åland":"AX","Azerbaijan":"AZ","Bosnia dan Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgium":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Caribbean Belanda":"BQ","Brazil":"BR","Bahamas":"BS","Bhutan":"BT","Bouvet Island":"BV","Botswana":"BW","Belarus":"BY","Belize":"BZ","Kanada":"CA","Cocos [Keeling] Islands":"CC","Congo - Kinshasa":"CD","Republik Afrika Tengah":"CF","Congo - Brazzaville":"CG","Switzerland":"CH","Côte d’Ivoire":"CI","Cook Islands":"CK","Cile":"CL","Kamerun":"CM","China":"CN","Colombia":"CO","Pulau Clipperton":"CP","Kosta Rika":"CR","Cuba":"CU","Cape Verde":"CV","Curacao":"CW","Christmas Island":"CX","Kibris":"CY","Republik Czech":"CZ","Jerman":"DE","Diego Garcia":"DG","Jibouti":"DJ","Denmark":"DK","Dominica":"DM","Republik Dominican":"DO","Aljazair":"DZ","Ceuta dan Melilla":"EA","Ecuador":"EC","Estonia":"EE","Mesir":"EG","Sahara Barat":"EH","Eritrea":"ER","Sepanyol":"ES","Ethiopia":"ET","Kesatuan Eropah":"EU","Finland":"FI","Fiji":"FJ","Falkland Islands":"FK","Micronesia":"FM","Faroe Islands":"FO","Perancis":"FR","Gabon":"GA","United Kingdom":"GB","Grenada":"GD","Georgia":"GE","French Guiana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Greenland":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Equatorial Guinea":"GQ","Yunani":"GR","South Georgia and the South Sandwich Islands":"GS","Guatemala":"GT","Guam":"GU","Guinea Bissau":"GW","Guyana":"GY","Hong Kong SAR China":"HK","Heard Island and McDonald Islands":"HM","Honduras":"HN","Croatia":"HR","Haiti":"HT","Hungari":"HU","Kepulauan Canary":"IC","Indonesia":"ID","Ireland":"IE","Israel":"IL","Isle of Man":"IM","India":"IN","British Indian Ocean Territory":"IO","Iraq":"IQ","Iran":"IR","Iceland":"IS","Itali":"IT","Jersey":"JE","Jamaika":"JM","Jordan":"JO","Jepun":"JP","Kenya":"KE","Kyrgyzstan":"KG","Kemboja":"KH","Kiribati":"KI","Comoros":"KM","Saint Kitts dan Nevis":"KN","Utara Korea":"KP","Selatan Korea":"KR","Kuwait":"KW","Cayman Islands":"KY","Kazakhstan":"KZ","Laos":"LA","Lubnan":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lithuania":"LT","Luksembourg":"LU","Latvia":"LV","Libya":"LY","Maghribi":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagaskar":"MG","Kepulauan Marshall":"MH","Macedonia":"MK","Mali":"ML","Myanmar [Burma]":"MM","Mongolia":"MN","Macau SAR China":"MO","Northern Mariana Islands":"MP","Martinique":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldiv":"MV","Malawi":"MW","Meksiko":"MX","Malaysia":"MY","Mozambik":"MZ","Namibia":"NA","New Caledonia":"NC","Niger":"NE","Norfolk Island":"NF","Nigeria":"NG","Nicaragua":"NI","Belanda":"NL","Norway":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","New Zealand":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Polinesia Perancis":"PF","Papua New Guinea":"PG","Filipina":"PH","Pakistan":"PK","Poland":"PL","Saint Pierre and Miquelon":"PM","Kepulauan Pitcairn":"PN","Puerto Rico":"PR","Wilayah Palestin":"PS","Feringgi":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Oceania Terpencil":"QO","Réunion":"RE","Romania":"RO","Serbia":"RS","Rusia":"RU","Rwanda":"RW","Arab Saudi":"SA","Kepulauan Solomon":"SB","Seychelles":"SC","Sudan":"SD","Sweden":"SE","Singapura":"SG","Saint Helena":"SH","Slovenia":"SI","Svalbard and Jan Mayen":"SJ","Slovakia":"SK","Siera Leon":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Sudan Selatan":"SS","São Tomé dan Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Syria":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Turks and Caicos Islands":"TC","Cad":"TD","French Southern Territories":"TF","Togo":"TG","Thailand":"TH","Tadjikistan":"TJ","Tokelau":"TK","Timor-Leste":"TL","Turkmenistan":"TM","Tunisia":"TN","Tonga":"TO","Turki":"TR","Trinidad dan Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraine":"UA","Uganda":"UG","United States Minor Outlying Islands":"UM","Amerika Syarikat":"US","Uruguay":"UY","Uzbekistan":"UZ","Kota Vatican":"VA","Saint Vincent dan Grenadines":"VC","Venezuela":"VE","British Virgin Islands":"VG","U.S. Virgin Islands":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis and Futuna":"WF","Samoa":"WS","Yaman":"YE","Mayotte":"YT","Afrika Selatan":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Wilayah Tidak Diketahui":"ZZ"};
+ilib.data.ctrynames_nb = {"Ascension":"AC","Andorra":"AD","De forente arabiske emirater":"AE","Afghanistan":"AF","Antigua og Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","De nederlandske antiller":"AN","Angola":"AO","Antarktis":"AQ","Argentina":"AR","Amerikansk Samoa":"AS","Østerrike":"AT","Australia":"AU","Aruba":"AW","Åland":"AX","Aserbajdsjan":"AZ","Bosnia-Hercegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgia":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei Darussalam":"BN","Bolivia":"BO","Karibisk Nederland":"BQ","Brasil":"BR","Bahamas":"BS","Bhutan":"BT","Bouvetøya":"BV","Botswana":"BW","Hviterussland":"BY","Belize":"BZ","Canada":"CA","Kokosøyene":"CC","Kongo-Kinshasa":"CD","Den sentralafrikanske republikk":"CF","Kongo-Brazzaville":"CG","Sveits":"CH","Elfenbenskysten":"CI","Cookøyene":"CK","Chile":"CL","Kamerun":"CM","Kina":"CN","Colombia":"CO","Clippertonøya":"CP","Costa Rica":"CR","Cuba":"CU","Kapp Verde":"CV","Curaçao":"CW","Christmasøya":"CX","Kypros":"CY","Tsjekkia":"CZ","Tyskland":"DE","Diego Garcia":"DG","Djibouti":"DJ","Danmark":"DK","Dominica":"DM","Den dominikanske republikk":"DO","Algerie":"DZ","Ceuta og Melilla":"EA","Ecuador":"EC","Estland":"EE","Egypt":"EG","Vest-Sahara":"EH","Eritrea":"ER","Spania":"ES","Etiopia":"ET","Den europeiske union":"EU","Finland":"FI","Fiji":"FJ","Falklandsøyene":"FK","Mikronesiaføderasjonen":"FM","Færøyene":"FO","Frankrike":"FR","Gabon":"GA","Storbritannia":"GB","Grenada":"GD","Georgia":"GE","Fransk Guyana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grønland":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Ekvatorial-Guinea":"GQ","Hellas":"GR","Sør-Georgia og de sørlige Sandwich-øyene":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hongkong S.A.R. Kina":"HK","Heardøya og McDonaldøyene":"HM","Honduras":"HN","Kroatia":"HR","Haiti":"HT","Ungarn":"HU","Kanariøyene":"IC","Indonesia":"ID","Irland":"IE","Israel":"IL","Man":"IM","India":"IN","Britiske territorier i Indiahavet":"IO","Irak":"IQ","Iran":"IR","Island":"IS","Italia":"IT","Jersey":"JE","Jamaica":"JM","Jordan":"JO","Japan":"JP","Kenya":"KE","Kirgisistan":"KG","Kambodsja":"KH","Kiribati":"KI","Komorene":"KM","St. Kitts og Nevis":"KN","Nord-Korea":"KP","Sør-Korea":"KR","Kuwait":"KW","Caymanøyene":"KY","Kasakhstan":"KZ","Laos":"LA","Libanon":"LB","St. Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Litauen":"LT","Luxembourg":"LU","Latvia":"LV","Libya":"LY","Marokko":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Saint-Martin":"MF","Madagaskar":"MG","Marshalløyene":"MH","Makedonia":"MK","Mali":"ML","Myanmar [Burma]":"MM","Mongolia":"MN","Macao S.A.R. Kina":"MO","Nord-Marianene":"MP","Martinique":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldivene":"MV","Malawi":"MW","Mexico":"MX","Malaysia":"MY","Mosambik":"MZ","Namibia":"NA","Ny-Caledonia":"NC","Niger":"NE","Norfolkøya":"NF","Nigeria":"NG","Nicaragua":"NI","Nederland":"NL","Norge":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","New Zealand":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Fransk Polynesia":"PF","Papua Ny-Guinea":"PG","Filippinene":"PH","Pakistan":"PK","Polen":"PL","St. Pierre og Miquelon":"PM","Pitcairn":"PN","Puerto Rico":"PR","Det palestinske området":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","avsidesliggende Oceania":"QO","Réunion":"RE","Romania":"RO","Serbia":"RS","Russland":"RU","Rwanda":"RW","Saudi-Arabia":"SA","Salomonøyene":"SB","Seychellene":"SC","Sudan":"SD","Sverige":"SE","Singapore":"SG","St. Helena":"SH","Slovenia":"SI","Svalbard og Jan Mayen":"SJ","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Sør-Sudan":"SS","São Tomé og Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Syria":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Turks- og Caicosøyene":"TC","Tsjad":"TD","De franske sørterritorier":"TF","Togo":"TG","Thailand":"TH","Tadsjikistan":"TJ","Tokelau":"TK","Øst-Timor":"TL","Turkmenistan":"TM","Tunisia":"TN","Tonga":"TO","Tyrkia":"TR","Trinidad og Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraina":"UA","Uganda":"UG","USAs ytre småøyer":"UM","USA":"US","Uruguay":"UY","Usbekistan":"UZ","Vatikanstaten":"VA","St. Vincent og Grenadinene":"VC","Venezuela":"VE","De britiske jomfruøyene":"VG","De amerikanske jomfruøyene":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis og Futuna":"WF","Samoa":"WS","Jemen":"YE","Mayotte":"YT","Sør-Afrika":"ZA","Zambia":"ZM","Zimbabwe":"ZW","ukjent område":"ZZ"};
+ilib.data.ctrynames_ne = {"एस्केन्सन टाइु":"AC","अन्डोर्रा":"AD","संयुक्त अरब इमिराट्स":"AE","अफ्गानिष्तान":"AF","एन्टिगुआ र बारबुडा":"AG","आङ्गुइला":"AI","अल्बानिया":"AL","आर्मेनिया":"AM","नेदरल्याण्ड्स एण्टिलिस":"AN","अङ्गोला":"AO","अन्टारतिका":"AQ","अर्जेण्टिना":"AR","अमेरिकी समोआ":"AS","अष्ट्रिया":"AT","अष्ट्रेलिया":"AU","आरूबा":"AW","अलान्ड टापु":"AX","अजरबैजान":"AZ","बोस्निया र हर्जगोभिनिया":"BA","बार्बाडोस":"BB","बङ्गलादेश":"BD","बेल्जियम":"BE","बर्किना फासो":"BF","बल्गेरिया":"BG","बाह्रेन":"BH","बुरूण्डी":"BI","बेनिन":"BJ","सेन्ट बार्थालेमी":"BL","बर्मुडा":"BM","ब्रुनाइ":"BN","बोलिभिया":"BO","क्यारिवियन नेदरल्याण्ड्स":"BQ","ब्राजिल":"BR","बहामास":"BS","भुटान":"BT","बुभेट टापु":"BV","बोट्स्वाना":"BW","बेलारूस":"BY","बेलिज":"BZ","क्यानाडा":"CA","कोकोस [किलिंग] टापु":"CC","कोङ्गो-किन्शासा":"CD","केन्द्रीय अफ्रिकी गणतन्त्र":"CF","कोङ्गो - ब्राज्जाभिल्ले":"CG","स्विजरल्याण्ड":"CH","आइभोरी कोष्ट":"CI","कुक टापु":"CK","चिली":"CL","क्यामेरून":"CM","चीन":"CN","कोलोम्बिया":"CO","क्लिप्पेर्टन टापु":"CP","कोष्टारिका":"CR","क्युबा":"CU","केप भर्डे":"CV","कुराकाओ":"CW","क्रिष्टमस टापु":"CX","साइप्रस":"CY","चेख गणतन्त्र":"CZ","जर्मनी":"DE","डियगो गार्सिया":"DG","डिजिबुटी":"DJ","डेन्मार्क":"DK","डोमिनिका":"DM","डोमिनिकन गणतन्त्र":"DO","अल्जेरिया":"DZ","सिउटा र मेलिला":"EA","इक्वडेर":"EC","इस्टोनिया":"EE","इजिप्ट":"EG","पश्चिमी साहारा":"EH","एरित्रिया":"ER","स्पेन":"ES","इथोपिया":"ET","युरोपियन युनियन":"EU","फिन्ल्याण्ड":"FI","फिजी":"FJ","फकल्याण्ड टापु":"FK","माइक्रोनेसिया":"FM","फारोर टापु":"FO","फ्रान्स":"FR","गावोन":"GA","संयुक्त अधिराज्य":"GB","ग्रेनाडा":"GD","जोर्जिया":"GE","फ्रान्सेली गायना":"GF","गुएर्नसे":"GG","घाना":"GH","जिब्राल्टार":"GI","ग्रिनल्याण्ड":"GL","गाम्विया":"GM","गिनी":"GN","ग्वाडेलुप":"GP","भू-मध्यीय गिनी":"GQ","ग्रिश":"GR","दक्षिण जर्जिया र दक्षिण स्यान्डवीच टापुहरू":"GS","ग्वाटेमाला":"GT","गुवाम":"GU","गिनी-बिसाउ":"GW","गुयाना":"GY","हङकङ चिनिँया समाजवादी स्वायत्त क्षेत्र":"HK","हर्ड टापु र म्याकडोनाल्ड टापु":"HM","हन्डुरास":"HN","क्रोएशिया":"HR","हैटी":"HT","हङ्गेरी":"HU","क्यानारी टापुहरू":"IC","इन्डोनेशिया":"ID","आइरल्याण्ड":"IE","इज्रायल":"IL","आइज्ले अफ् म्यान":"IM","भारत":"IN","बेलायती हिन्द महासागर क्षेत्र":"IO","इराक":"IQ","इरान":"IR","आइस्ल्याण्ड":"IS","इटाली":"IT","जर्सी":"JE","जमाइका":"JM","जोर्डन":"JO","जापान":"JP","केन्या":"KE","किर्गिस्थान":"KG","कम्बोडिया":"KH","किरिबाटी":"KI","कोमोरोस":"KM","सेन्ट किट्स र नेभिस":"KN","उत्तर कोरिया":"KP","दक्षिण कोरिया":"KR","कुवेत":"KW","केयमान टापु":"KY","काजाकस्थान":"KZ","लाओस":"LA","लेबनोन":"LB","सेन्ट लुसिया":"LC","लिएखटेन्स्टाइन":"LI","श्रीलङ्का":"LK","लाइबेरिया":"LR","लेसोथो":"LS","लिथुअनिया":"LT","लक्जेमबर्ग":"LU","लाट्भिया":"LV","लिबिया":"LY","मोरोक्को":"MA","मोनाको":"MC","माल्डोभा":"MD","मोन्टेनेग्रो":"ME","सेन्ट मार्टिन":"MF","मडागास्कर":"MG","मार्शल टापु":"MH","म्याकेडोनिया":"MK","माली":"ML","म्यान्मार [बर्मा]":"MM","मङ्गोलिया":"MN","मकावो चिनिँया स्वशासित क्षेत्र":"MO","उत्तरी मारिआना टापु":"MP","मार्टिनिक":"MQ","माउरिटानिया":"MR","मोन्टसेर्राट":"MS","माल्टा":"MT","माउरिटस":"MU","माल्दिभ्स":"MV","मालावी":"MW","मेक्सिको":"MX","मलेसिया":"MY","मोजाम्बिक":"MZ","नामिबिया":"NA","नयाँ कालेडोनिया":"NC","नाइजर":"NE","नोरफोल्क टापु":"NF","नाइजेरिया":"NG","निकारागुवा":"NI","नेदरल्याण्ड्स":"NL","नर्वे":"NO","नेपाल":"NP","नाउरू":"NR","नियुइ":"NU","न्युजिल्याण्ड":"NZ","ओमन":"OM","पनामा":"PA","पेरू":"PE","फ्रान्सेली पोलिनेसिया":"PF","पपुआ न्यू गाइनिया":"PG","फिलिपिन्स":"PH","पाकिस्तान":"PK","पोल्याण्ड":"PL","सेन्ट पिर्रे र मिक्केलोन":"PM","पिटकाइर्न टापु":"PN","प्युर्टोरिको":"PR","प्यालेस्टनी भू-भागहरु":"PS","पोर्तुगल":"PT","पलाउ":"PW","प्यारागुये":"PY","कतार":"QA","बाह्य ओसनिया":"QO","रियुनियन":"RE","रोमानिया":"RO","सर्बिया":"RS","रूस":"RU","रवाण्डा":"RW","साउदी अरब":"SA","सोलोमोन टापु":"SB","सेचेलेस":"SC","सुडान":"SD","स्विडेन":"SE","सिङ्गापुर":"SG","सेन्ट हेलेना":"SH","स्लोभेनिया":"SI","सभाल्बार्ड र जान मायेन":"SJ","स्लोभाकिया":"SK","सिएर्रा लिओन":"SL","सान् मारिनो":"SM","सेनेगाल":"SN","सोमालिया":"SO","सुरिनेम":"SR","दक्षिणी सुडान":"SS","साओ टोमे र प्रिन्सिप":"ST","एल् साल्भाडोर":"SV","सिन्ट मार्टेन":"SX","सिरिया":"SY","स्वाजिल्याण्ड":"SZ","ट्रिस्टान डा कुन्हा":"TA","तुर्क र काइकोस टापु":"TC","चाड":"TD","फ्रान्सेली दक्षिणी क्षेत्र":"TF","टोगो":"TG","थाइल्याण्ड":"TH","ताजिकिस्तान":"TJ","तोगो":"TK","टिमोर-लेस्टे":"TL","तुर्कमेनिस्तान":"TM","टुनिसिया":"TN","टोंगा":"TO","टर्की":"TR","त्रिनिडाड र तोबागो":"TT","तुभालु":"TV","ताइवान":"TW","तान्जानिया":"TZ","युक्रेन":"UA","युगाण्डा":"UG","संयुक्त राज्य बाह्य टापु":"UM","संयुक्त राज्य":"US","युरूगुए":"UY","उज्बेकिस्तान":"UZ","भेटिकन सिटी":"VA","सेन्ट भिन्सेन्ट र ग्रेनाडिन्स":"VC","भेनेजुएला":"VE","बेलायती भर्जिन टापु":"VG","संयुक्त राज्य भर्जिन टापु":"VI","भिएतनाम":"VN","भानुआतु":"VU","वालिस र फुटुना":"WF","सामोआ":"WS","येमेन":"YE","मायोट्ट":"YT","दक्षिण अफ्रिका":"ZA","जाम्बिया":"ZM","जिम्बाबे":"ZW","अपरिचित क्षेत्र":"ZZ"};
 ilib.data.ctrynames_nl = {"generated":false,"albanië":"AL","algerije":"DZ","amerikaans samoa":"AS","antigua en barbuda":"AG","argentinië":"AR","armenië":"AM","australië":"AU","oostenrijk":"AT","britse maagdeneilanden":"VG","bahama’s":"BS","belgië":"BE","bosnië en herzegovina":"BA","brazilië":"BR","brits territorium in de indische oceaan":"IO","bulgarije":"BG","cambodja":"KH","kameroen":"CM","kaapverdië":"CV","kaaimaneilanden":"KY","centraal-afrikaanse republiek":"CF","tsjaad":"TD","chili":"CL","comoren":"KM","cookeilanden":"CK","kroatië":"HR","tsjechië":"CZ","ivoorkust":"CI","d.r.c.":"CD","democratische republiek congo":"CD","denemarken":"DK","dominicaanse republiek":"DO","oost-timor":"TL","egypte":"EG","equatoriaal guinea":"GQ","estland":"EE","ethiopië":"ET","falklandeilanden":"FK","faroëreilanden":"FO","federatieve staten van micronesië":"FM","voormalige joegoslavische republiek van macedonië":"MK","frankrijk":"FR","frans guyana":"GF","frans polynesië":"PF","duitsland":"DE","griekenland":"GR","groenland":"GL","guinee":"GN","guinee-bissau":"GW","haïti":"HT","hongarije":"HU","ijsland":"IS","indonesië":"ID","irak":"IQ","ierland":"IE","israël":"IL","italië":"IT","jordanië":"JO","kenia":"KE","koeweit":"KW","kirgizië":"KG","letland":"LV","libanon":"LB","libië":"LY","liechtenstein":"LI","litouwen":"LT","luxemburg":"LU","madagaskar":"MG","maleisië":"MY","malediven":"MV","marianen":"MP","marshalleilanden":"MH","mauritanië":"MR","micronesië":"FM","moldavië":"MD","mongolië":"MN","marokko":"MA","namibië":"NA","nederland":"NL","nederlandse antillen":"AN","nieuw caledonië":"NC","nieuw-zeeland":"NZ","norfolkeiland":"NF","noord-korea":"KP","noordelijke marianen":"MP","noorwegen":"NO","palestijnse autoriteit":"PS","papoea nieuw guinea":"PG","volksrepubliek china":"CN","filipijnen":"PH","polen":"PL","republiek china":"TW","republiek ierland":"IE","roemenië":"RO","rusland":"RU","saint kitts en nevis":"KN","saint pierre en miquelon":"PM","saint vincent en de grenadines":"VC","saoedi-arabië":"SA","servië":"RS","seychellen":"SC","slowakije":"SK","slovenië":"SI","solomoneilanden":"SB","somalië":"SO","zuid-afrika":"ZA","zuid-korea":"KR","spanje":"ES","st. pierre en miquelon":"PM","soedan":"SD","zweden":"SE","zwitserland":"CH","syrië":"SY","são tomé et príncipe":"ST","de bahama’s":"BS","gambia":"GM","turks- en caicoseilanden":"TC","amerikaanse maagdeneilanden":"VI","trinidad en tobago":"TT","tunesië":"TN","turkije":"TR","v.a.e.":"AE","oeganda":"UG","oekraïne":"UA","verenigde arabische emiraten":"AE","verenigd koninkrijk":"GB","oezbekistan":"UZ","vaticaanstad":"VA","wallis en futuna":"WF","jemen":"YE","afghanistan":"AF","alandeilanden":"AX","andorra":"AD","angola":"AO","anguilla":"AI","antigua":"AG","aruba":"AW","ascension":"SH","azerbaijan":"AZ","bahrain":"BH","bangladesh":"BD","barbados":"BB","barbuda":"AG","belarus":"BY","belize":"BZ","benin":"BJ","bermuda":"BM","bhutan":"BT","bolivariaanse republiek venezuela":"VE","bolivia":"BO","bosnië":"BA","botswana":"BW","bouveteiland":"BV","brunei":"BN","brunei darussalam":"BN","burkina faso":"BF","burundi":"BI","c.a.r.":"CF","caicoseilanden":"TC","canada":"CA","kaap verdië":"CV","kaaiman":"KY","china":"CN","christmaseilanden":"CX","cocos- en keelingeilanden":"CC","cocoseilanden":"CC","colombia":"CO","congo":"CD","congo, democratische republiek":"CD","costa rica":"CR","cuba":"CU","cyprus":"CY","d.r.":"DO","democratische volksrepubliek korea":"KP","djibouti":"DJ","dominica":"DM","ecuador":"EC","el salvador":"SV","eritrea":"ER","f.y.r.o.m.":"MK","faroe-eilanden":"FO","faroe":"FO","fiji":"FJ","finland":"FI","frans territorium in de stille oceaan":"TF","futuna":"WF","fyrom":"MK","gabon":"GA","georgië":"GE","ghana":"GH","gibraltar":"GI","groot-brittannië":"GB","grenada":"GD","grenadines":"VC","guadeloupe":"GP","guam":"GU","guatemala":"GT","guernsey":"GG","guyana":"GY","heard- en mcdonaldeilanden":"HM","heardeiland":"HM","heardeiland en mcdonaldeilanden":"HM","herzegovina":"BA","holland":"NL","heilige stoel":"VA","honduras":"HN","hong kong":"HK","india":"IN","iran":"IR","iran, islamitische republiek":"IR","islamitische republiek iran":"IR","eiland man":"IM","jamaica":"JM","jan mayen":"SJ","japan":"JP","jersey":"JE","kazakhstan":"KZ","kiribati":"KI","korea":"KR","korea, democratische volksrepubliek":"KP","korea, republiek":"KR","laos, democratische volksrepubliek":"LA","laos":"LA","lesotho":"LS","liberia":"LR","libië, arabische jamahiriya":"LY","macao":"MO","macedonië":"MK","macedonië, voormalige joegoslavische republiek":"MK","madagascar":"MG","malawi":"MW","mali":"ML","malta":"MT","malvina’s":"FK","marshalls":"MH","martinique":"MQ","mauritius":"MU","mayotte":"YT","mcdonaldeilanden":"HM","mexico":"MX","micronesië, federatieve staten van":"FM","miquelon":"PM","moldavië, republiek":"MD","monaco":"MC","montenegro":"ME","montserrat":"MS","mozambique":"MZ","myanmar":"MM","nauru":"NR","nepal":"NP","nevis":"KN","nicaragua":"NI","niger":"NE","nigeria":"NG","oman":"OM","pakistan":"PK","palau":"PW","palestina":"PS","palestijnse gebieden, bezet":"PS","panama":"PA","papoea nieuw-guinea":"PG","paraguay":"PY","peru":"PE","pitcairn":"PN","png":"PG","portugal":"PT","príncipe":"ST","puerto rico":"PR","qatar":"QA","republiek korea":"KR","republiek moldavië":"MD","réunion":"RE","russische federatie":"RU","rwanda":"RW","saint barthélemy":"BL","saint helena":"SH","saint helena, ascension en tristan da cunha":"SH","saint kitts":"KN","saint lucia":"LC","saint martin":"MF","saint pierre":"PM","saint vincent":"VC","samoa":"WS","san marino":"SM","são tomé":"ST","senegal":"SN","sierra leone":"SL","singapore":"SG","zuid-georgië":"GS","zuid-georgië en de zuidelijke sandwicheilanden":"GS","zuidelijke sandwicheilanden":"GS","sri lanka":"LK","st. barthélemy":"BL","st. helena":"SH","st. kitts":"KN","st. lucia":"LC","st. martin":"MF","st. pierre":"PM","st. vincent":"VC","suriname":"SR","svalbard":"SJ","svalbard en jan mayen":"SJ","swaziland":"SZ","syrië, arabische republiek":"SY","taiwan":"TW","tajikistan":"TJ","tanzania":"TZ","tanzania, verenigde republiek":"TZ","thailand":"TH","tobago":"TT","togo":"TG","tokelau":"TK","tonga":"TO","trinidad":"TT","tristan da cunha":"SH","turkmenistan":"TM","turkseilanden":"TC","tuvalu":"TV","v.k.":"GB","v.s.":"US","verenigde republiek van tanzania":"TZ","verenigde staten":"US","kleine afgelegen eilanden van de verenigde staten":"UM","verenigde staten van amerika":"US","uruguay":"UY","vanuatu":"VU","vaticaan":"VA","venezuela":"VE","venezuela, bolivariaanse republiek":"VE","vietnam":"VN","maagdeneilanden, brits":"VG","maagdeneilanden, amerikaans":"VI","wallis":"WF","westelijk sahara":"EH","zambia":"ZM","zimbabwe":"ZW","ålandeilanden":"AX","Ascension":"AC","Andorra":"AD","Verenigde Arabische Emiraten":"AE","Afghanistan":"AF","Antigua en Barbuda":"AG","Anguilla":"AI","Albanië":"AL","Armenië":"AM","Nederlandse Antillen":"AN","Angola":"AO","Antarctica":"AQ","Argentinië":"AR","Amerikaans Samoa":"AS","Oostenrijk":"AT","Australië":"AU","Aruba":"AW","Ålandeilanden":"AX","Azerbeidzjan":"AZ","Bosnië en Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","België":"BE","Burkina Faso":"BF","Bulgarije":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Caribisch Nederland":"BQ","Brazilië":"BR","Bahama’s":"BS","Bhutan":"BT","Bouveteiland":"BV","Botswana":"BW","Wit-Rusland":"BY","Belize":"BZ","Canada":"CA","Cocoseilanden":"CC","Congo-Kinshasa":"CD","Centraal-Afrikaanse Republiek":"CF","Congo-Brazzaville":"CG","Zwitserland":"CH","Ivoorkust":"CI","Cookeilanden":"CK","Chili":"CL","Kameroen":"CM","China":"CN","Colombia":"CO","Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Kaapverdië":"CV","Curaçao":"CW","Christmaseiland":"CX","Cyprus":"CY","Tsjechië":"CZ","Duitsland":"DE","Diego Garcia":"DG","Djibouti":"DJ","Denemarken":"DK","Dominica":"DM","Dominicaanse Republiek":"DO","Algerije":"DZ","Ceuta en Melilla":"EA","Ecuador":"EC","Estland":"EE","Egypte":"EG","Westelijke Sahara":"EH","Eritrea":"ER","Spanje":"ES","Ethiopië":"ET","Europese Unie":"EU","Finland":"FI","Fiji":"FJ","Falklandeilanden":"FK","Micronesië":"FM","Faeröer":"FO","Frankrijk":"FR","Gabon":"GA","Verenigd Koninkrijk":"GB","Grenada":"GD","Georgië":"GE","Frans-Guyana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Groenland":"GL","Gambia":"GM","Guinee":"GN","Guadeloupe":"GP","Equatoriaal-Guinea":"GQ","Griekenland":"GR","Zuid-Georgia en Zuidelijke Sandwicheilanden":"GS","Guatemala":"GT","Guam":"GU","Guinee-Bissau":"GW","Guyana":"GY","Hongkong SAR van China":"HK","Heard- en McDonaldeilanden":"HM","Honduras":"HN","Kroatië":"HR","Haïti":"HT","Hongarije":"HU","Canarische Eilanden":"IC","Indonesië":"ID","Ierland":"IE","Israël":"IL","Isle of Man":"IM","India":"IN","Britse Gebieden in de Indische Oceaan":"IO","Irak":"IQ","Iran":"IR","IJsland":"IS","Italië":"IT","Jersey":"JE","Jamaica":"JM","Jordanië":"JO","Japan":"JP","Kenia":"KE","Kirgizië":"KG","Cambodja":"KH","Kiribati":"KI","Comoren":"KM","Saint Kitts en Nevis":"KN","Noord-Korea":"KP","Zuid-Korea":"KR","Koeweit":"KW","Caymaneilanden":"KY","Kazachstan":"KZ","Laos":"LA","Libanon":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Litouwen":"LT","Luxemburg":"LU","Letland":"LV","Libië":"LY","Marokko":"MA","Monaco":"MC","Moldavië":"MD","Montenegro":"ME","Saint-Martin":"MF","Madagaskar":"MG","Marshalleilanden":"MH","Macedonië":"MK","Mali":"ML","Myanmar":"MM","Mongolië":"MN","Macao SAR van China":"MO","Noordelijke Marianeneilanden":"MP","Martinique":"MQ","Mauritanië":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldiven":"MV","Malawi":"MW","Mexico":"MX","Maleisië":"MY","Mozambique":"MZ","Namibië":"NA","Nieuw-Caledonië":"NC","Niger":"NE","Norfolkeiland":"NF","Nigeria":"NG","Nicaragua":"NI","Nederland":"NL","Noorwegen":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Nieuw-Zeeland":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Frans-Polynesië":"PF","Papoea-Nieuw-Guinea":"PG","Filipijnen":"PH","Pakistan":"PK","Polen":"PL","Saint Pierre en Miquelon":"PM","Pitcairneilanden":"PN","Puerto Rico":"PR","Palestijnse gebieden":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Overig Oceanië":"QO","Réunion":"RE","Roemenië":"RO","Servië":"RS","Rusland":"RU","Rwanda":"RW","Saoedi-Arabië":"SA","Salomonseilanden":"SB","Seychellen":"SC","Soedan":"SD","Zweden":"SE","Singapore":"SG","Sint-Helena":"SH","Slovenië":"SI","Svalbard en Jan Mayen":"SJ","Slowakije":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalië":"SO","Suriname":"SR","Zuid-Soedan":"SS","Sao Tomé en Principe":"ST","El Salvador":"SV","Sint-Maarten":"SX","Syrië":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Turks- en Caicoseilanden":"TC","Tsjaad":"TD","Franse Gebieden in de zuidelijke Indische Oceaan":"TF","Togo":"TG","Thailand":"TH","Tadzjikistan":"TJ","Tokelau":"TK","Oost-Timor":"TL","Turkmenistan":"TM","Tunesië":"TN","Tonga":"TO","Turkije":"TR","Trinidad en Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Oekraïne":"UA","Oeganda":"UG","Kleine afgelegen eilanden van de Verenigde Staten":"UM","Verenigde Staten":"US","Uruguay":"UY","Oezbekistan":"UZ","Vaticaanstad":"VA","Saint Vincent en de Grenadines":"VC","Venezuela":"VE","Britse Maagdeneilanden":"VG","Amerikaanse Maagdeneilanden":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis en Futuna":"WF","Samoa":"WS","Jemen":"YE","Mayotte":"YT","Zuid-Afrika":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Onbekend gebied":"ZZ"};
+ilib.data.ctrynames_om = {"Brazil":"BR","China":"CN","Germany":"DE","Itoophiyaa":"ET","France":"FR","United Kingdom":"GB","India":"IN","Italy":"IT","Japan":"JP","Keeniyaa":"KE","Russia":"RU","United States":"US"};
+ilib.data.ctrynames_or = {"ଆଣ୍ଡୋରା":"AD","ସଂଯୁକ୍ତ ଆରବ ଏମିରେଟସ୍":"AE","ଆଫାଗାନିସ୍ତାନ୍":"AF","ଆଣ୍ଟିଗୁଆ ଏବଂ ବାରବୁଦା":"AG","ଆଙ୍ଗୁଇଲ୍ଲା":"AI","ଆଲବାନିଆ":"AL","ଆର୍ମେନିଆ":"AM","ନେଦରଲ୍ୟାଣ୍ଡସ୍ ଆଣ୍ଟିଲିଜ୍":"AN","ଆଙ୍ଗୋଲା":"AO","ଆର୍ଣ୍ଟକଟିକା":"AQ","ଆର୍ଜେଣ୍ଟିନା":"AR","ଆମେରିକାନ୍ ସାମୋଆ":"AS","ଅଷ୍ଟ୍ରିଆ":"AT","ଅଷ୍ଟ୍ରେଲିଆ":"AU","ଆରୁବା":"AW","ଆଲାଣ୍ଡ ଆଇସଲ୍ୟାଣ୍ଡ":"AX","ଆଜେରବାଇଜାନ୍":"AZ","ବୋସନିଆ ଏବଂ ହର୍ଜଗୋଭିନା":"BA","ବାରବାଡୋସ୍":"BB","ବାଙ୍ଗଲାଦେଶ୍":"BD","ବେଲଜିୟମ୍":"BE","ବୁର୍କିନୋ ଫାସୋ":"BF","ବୁଲଗେରିଆ":"BG","ବାହାରିନ୍":"BH","ବୁରୁନ୍ଦି":"BI","ବେନିନ୍":"BJ","ସେଣ୍ଟ ବାର୍ଥେଲେମି":"BL","ବରମୁଡା":"BM","ବ୍ରୁନେଇ":"BN","ବୋଲଭିଆ":"BO","ବ୍ରାଜିଲ୍":"BR","ବାହାମାସ୍":"BS","ଭୁଟାନ୍":"BT","ବୌଭେଟ୍ ଆଇସଲ୍ୟାଣ୍ଡ":"BV","ବୋଟସ୍ବାନ୍":"BW","ବେଲାରୁଷ୍":"BY","ବେଲିଜ୍":"BZ","କାନାଡା":"CA","କୋକୋସ୍ ଆଇସଲ୍ୟାଣ୍ଡ":"CC","କଙ୍ଗୋ-କିନସାସା":"CD","ମଧ୍ୟ ଆଫ୍ରିକୀୟ ଗଣତନ୍ତ୍ର":"CF","କଙ୍ଗୋ-ବ୍ରାଜିଭିଲ୍ଲେ":"CG","ସ୍ବିଜରଲ୍ୟାଣ୍ଡ":"CH","ଆଇବରୀ କୋଷ୍ଟ":"CI","କୁକ୍ ଆଇସଲ୍ୟାଣ୍ଡ":"CK","ଚିଲ୍ଲୀ":"CL","କାମେରୁନ୍":"CM","ଚିନ୍":"CN","କୋଲମ୍ବିଆ":"CO","କୋଷ୍ଟା ରିକା":"CR","କ୍ୱିବା":"CU","କେପ୍ ଭର୍ଦେ":"CV","ଖ୍ରୀଷ୍ଟମାସ ଆଇଲ୍ୟାଣ୍ଡ":"CX","ସାଇପ୍ରସ୍":"CY","ଚେକ୍ ସାଧାରଣତନ୍ତ୍ର":"CZ","ଜର୍ମାନୀ":"DE","ଡିବୌଟି":"DJ","ଡେନମାର୍କ":"DK","ଡୋମିନାକା":"DM","ଡୋମିନକାନ୍ ପ୍ରଜାତନ୍ତ୍ର":"DO","ଆଲଜେରିଆ":"DZ","ଇକ୍ୱାଡୋର୍":"EC","ଏସ୍ତୋନିଆ":"EE","ଇଜିପ୍ଟ":"EG","ପଶ୍ଚିମ ସାହାରା":"EH","ଇରିଟ୍ରିୟା":"ER","ସ୍ପେନ୍":"ES","ଇଥିଓପିଆ":"ET","ୟୁରୋପିଆନ୍ ୟୁନିଅନ୍":"EU","ଫିନଲ୍ୟାଣ୍ଡ":"FI","ଫିଜି":"FJ","ଫଲ୍କଲ୍ୟାଣ୍ଡ ଦ୍ବୀପପୁଞ୍ଜ":"FK","ମାଇକ୍ରୋନେସିଆ":"FM","ଫାରୋଇ ଦ୍ବୀପପୁଞ୍ଜ":"FO","ଫ୍ରାନ୍ସ":"FR","ଗାବୋନ୍":"GA","ବ୍ରିଟେନ୍":"GB","ଗ୍ରେନାଡା":"GD","ଜର୍ଜିଆ":"GE","ଫ୍ରେଞ୍ଚ ଗୁଇନା":"GF","ଗୁଏରନେସି":"GG","ଘାନା":"GH","ଜିବ୍ରାଲ୍ଟର୍":"GI","ଗ୍ରୀନଲ୍ୟାଣ୍ଡ":"GL","ଗାମ୍ବିଆ":"GM","ଗୁଏନେଆ":"GN","ଗୌଡେଲୌପେ":"GP","ଇକ୍ବାଟେରିଆଲ୍ ଗୁଇନିଆ":"GQ","ଗ୍ରୀସ୍":"GR","ଦକ୍ଷିଣ ଜର୍ଜିଆ ଏବଂ ଦକ୍ଷିଣ ସାଣ୍ଡୱିଚ୍ ଦ୍ବୀପପୁଞ୍ଜ":"GS","ଗୁଏତମାଲା":"GT","ଗୁଆମ୍":"GU","ଗୁଇନିଆ-ବିସାଉ":"GW","ଗୁଇନା":"GY","ହଂକଂ ବିଶେଷ ପ୍ରଶାସନିକ କ୍ଷେତ୍ର ଚୀନ୍":"HK","ହାର୍ଡ ଦ୍ବୀପପୁଞ୍ଜ ଏବଂ ମ୍ୟାକଡୋନାଲ୍ ଦ୍ବୀପପୁଞ୍ଜ":"HM","ହୋଣ୍ଡାରୁସ୍":"HN","କ୍ରୋଆଟିଆ":"HR","ହାଇତି":"HT","ହଙ୍ଗେରୀ":"HU","ଇଣ୍ଡୋନେସିଆ":"ID","ଆୟରଲ୍ୟାଣ୍ଡ":"IE","ଇସ୍ରାଏଲ୍":"IL","ଆଇଲ୍ ଅଫ୍ ମୈନ୍":"IM","ଭାରତ":"IN","ବ୍ରିଟିଶ୍ ଭାରତୀୟ ସାମୁଦ୍ରିକ କ୍ଷେତ୍ର":"IO","ଇରାକ୍":"IQ","ଇରାନ୍":"IR","ଆଇସଲ୍ୟାଣ୍ଡ":"IS","ଇଟାଲୀ":"IT","ଜର୍ସି":"JE","ଜାମାଇକା":"JM","ଜୋର୍ଡାନ୍":"JO","ଜାପାନ୍":"JP","କେନିୟା":"KE","କିର୍ଗିଜିସ୍ଥାନ":"KG","କାମ୍ବୋଡିଆ":"KH","କିରିବାଟୀ":"KI","କାମୋରସ୍":"KM","ସେଣ୍ଟ କିଟସ୍ ଏଣ୍ଡ ନେଭିସ୍":"KN","ଉତ୍ତର କୋରିଆ":"KP","ଦକ୍ଷିଣ କୋରିଆ":"KR","କୁଏତ୍":"KW","କେମ୍ୟାନ୍ ଦ୍ବୀପପୁଞ୍ଜ":"KY","କାଜାକାସ୍ଥାନ୍":"KZ","ଲାଓସ୍":"LA","ଲେବାନନ୍":"LB","ସେଣ୍ଟ ଲୁସିଆ":"LC","ଲିଚେସ୍ତିଆନାନ୍":"LI","ଶ୍ରୀଲଙ୍କା":"LK","ଲିବେରିଆ":"LR","ଲେସୋଥୋ":"LS","ଲିଥାଆନିଆ":"LT","ଲକ୍ସେମବର୍ଗ":"LU","ଲାଟଭିଆ":"LV","ଲିବିଆ":"LY","ମୋରୋକ୍କୋ":"MA","ମୋନାକୋ":"MC","ମାଲଡୋଭା":"MD","ମଣ୍ଟେଗ୍ରୋ":"ME","ସେଣ୍ଟ ମାର୍ଟିନ୍":"MF","ମାଡାଗାସ୍କର୍":"MG","ମାର୍ଶଲ୍ ଦ୍ବୀପପୁଞ୍ଜ":"MH","ମାସେଡୋନିଆ":"MK","ମାଳୀ":"ML","ମିୟାମାର୍":"MM","ମଙ୍ଗୋଲିଆ":"MN","ମାକାଉ SAR ଚିନ୍":"MO","ଉତ୍ତର ମାରିଆନା ଦ୍ବୀପପୁଞ୍ଜ":"MP","ମାର୍ଟିନିକ୍ୟୁ":"MQ","ମାଉରିଟାନିଆ":"MR","ମଣ୍ଟେସେରାଟ୍":"MS","ମାଲ୍ଟା":"MT","ମୌରିସସ୍":"MU","ମାଳଦ୍ବୀପ":"MV","ମାଲୱି":"MW","ମେକ୍ସିକୋ":"MX","ମାଲେସିଆ":"MY","ମୋଜାମ୍ବିକ୍ୟୁ":"MZ","ନାମ୍ବିଆ":"NA","ନୂତନ କାଲେଡୋନିଆ":"NC","ନାଇଜର୍":"NE","ନରଫ୍ଲକ୍ ଦ୍ବୀପ":"NF","ନାଇଜେରିଆ":"NG","ନିକାରାଗୁଆ":"NI","ନେଦରଲ୍ୟାଣ୍ଡ":"NL","ନରୱେ":"NO","ନେପାଳ":"NP","ନାଉରୁ":"NR","ନିଉ":"NU","ନ୍ୟୁଜିଲାଣ୍ଡ":"NZ","ଓମାନ୍":"OM","ପାନାମା":"PA","ପେରୁ":"PE","ଫ୍ରେଞ୍ଚ ପଲିନେସିଆ":"PF","ପପୁଆ ନ୍ୟୁ ଗୁଏନିଆ":"PG","ଫିଲିପାଇନସ୍":"PH","ପାକିସ୍ତାନ":"PK","ପୋଲାଣ୍ଡ":"PL","ସେଣ୍ଟ ପିଏରେ ଏବଂ ମିକ୍ବାଲୋନ୍":"PM","ପିଟକାଇରିନ୍":"PN","ପୁଏର୍ତ୍ତୋ ରିକୋ":"PR","ପାଲେସ୍ତେନିଆ":"PS","ପର୍ତ୍ତୁଗାଲ୍":"PT","ପାଲାଉ":"PW","ପାରାଗୁଏ":"PY","କତାର୍":"QA","ଆଉଟଲେଇଂ ଓସେନିଆ":"QO","ରିୟୁନିଅନ୍":"RE","ରୋମାନିଆ":"RO","ସର୍ବିଆ":"RS","ରୁଷିଆ":"RU","ରାୱାଣ୍ଡା":"RW","ସାଉଦି ଆରବିଆ":"SA","ସୋଲୋମନ୍ ଦ୍ବୀପପୁଞ୍ଜ":"SB","ସେଚେଲସ୍":"SC","ସୁଦାନ୍":"SD","ସ୍ୱେଡେନ୍":"SE","ସିଙ୍ଗାପୁର୍":"SG","ସେଣ୍ଟ ହେଲେନା":"SH","ସ୍ଲୋଭେନିଆ":"SI","ସାଲ୍ଭାର୍ଡ ଏବଂ ଜାନ୍ ମାୟୋନ୍":"SJ","ସ୍ଲୋଭାକିଆ":"SK","ସିଓରା ଲିଓନ୍":"SL","ସାନ୍ ମାରିନୋ":"SM","ସେନେଗାଲ୍":"SN","ସୋମାଲିଆ":"SO","ସୁରିନାମ":"SR","ସାଓ ଟୋମେ ଏବଂ ପ୍ରିନସିପି":"ST","ଏଲ୍ ସାଲଭାଡୋର୍":"SV","ସିରିଆ":"SY","ସ୍ବାଜିଲାଣ୍ଡ":"SZ","ତୁର୍କସ୍ ଏବଂ ସାଇକସ୍ ଦ୍ବୀପପୁଞ୍ଜ":"TC","ଚାଦ୍":"TD","ଫରାସୀ ଦକ୍ଷିଣ କ୍ଷେତ୍ର":"TF","ଟୋଗୋ":"TG","ଥାଇଲାଣ୍ଡ":"TH","ତାଜିକିସ୍ଥାନ୍":"TJ","ଟୋକେଲାଉ":"TK","ପୁର୍ବ ତିମୋର୍":"TL","ତୁର୍କମେନିସ୍ତାନ୍":"TM","ତୁନିସିଆ":"TN","ଟୋଙ୍ଗା":"TO","ତୁର୍କୀ":"TR","ତ୍ରିନିଦାଦ୍ ଏବଂ ଟୋବାଗୋ":"TT","ଟୁଭାଲୁ":"TV","ତାଇୱାନ୍":"TW","ତାଞ୍ଜାନିଆ":"TZ","ୟୁକ୍ରାଇନ୍":"UA","ଉଗାଣ୍ଡା":"UG","ୟୁନାଇଟେଡ୍ ଷ୍ଟେଟସ୍ ମାଇନର୍ ଆଉଟଲେଇଂ ଦ୍ବୀପପୁଞ୍ଜ":"UM","ଯୁକ୍ତ ରାଷ୍ଟ୍ର ଆମେରିକା":"US","ଉରୁଗୁଏ":"UY","ଉଜବେକିସ୍ଥାନ୍":"UZ","ଭାଟିକାନ୍":"VA","ସେଣ୍ଟ ଭିନସେଣ୍ଟ ଏବଂ ଦି ଗ୍ରେନାଡିସ୍":"VC","ଭେନଜୁଏଲା":"VE","ବ୍ରିଟିଶ୍ ଭର୍ଜିନ୍ ଦ୍ବୀପପୁଞ୍ଜ":"VG","ୟୁଏସ୍ ଭର୍ଜିନ୍ ଦ୍ବୀପପୁଞ୍ଜ":"VI","ଭିଏତନାମ୍":"VN","ଭାନୁଆତୁ":"VU","ୱାଲିସ୍ ଏବଂ ଫୁତୁନା":"WF","ସାମୋଆ":"WS","ୟେମେନ୍":"YE","ମାୟୋଟେ":"YT","ଦକ୍ଷିଣ ଆଫ୍ରିକା":"ZA","ଜାମ୍ବିଆ":"ZM","ଜିମ୍ବାୱେ":"ZW","ଅଜଣା କିମ୍ବା ଅବୈଧ ପ୍ରଦେଶ":"ZZ"};
+ilib.data.ctrynames_pa_Arab_PK = {"IN":"IN","PK":"پکستان"};
+ilib.data.ctrynames_pl = {"Wyspa Wniebowstąpienia":"AC","Andora":"AD","Zjednoczone Emiraty Arabskie":"AE","Afganistan":"AF","Antigua i Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Antyle Holenderskie":"AN","Angola":"AO","Antarktyka":"AQ","Argentyna":"AR","Samoa Amerykańskie":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Wyspy Alandzkie":"AX","Azerbejdżan":"AZ","Bośnia i Hercegowina":"BA","Barbados":"BB","Bangladesz":"BD","Belgia":"BE","Burkina Faso":"BF","Bułgaria":"BG","Bahrajn":"BH","Burundi":"BI","Benin":"BJ","Saint-Barthélemy":"BL","Bermudy":"BM","Brunei Darussalam":"BN","Boliwia":"BO","Niderlandy Karaibskie":"BQ","Brazylia":"BR","Bahamy":"BS","Bhutan":"BT","Wyspa Bouveta":"BV","Botswana":"BW","Białoruś":"BY","Belize":"BZ","Kanada":"CA","Wyspy Kokosowe":"CC","Demokratyczna Republika Konga":"CD","Republika Środkowoafrykańska":"CF","Kongo":"CG","Szwajcaria":"CH","Wybrzeże Kości Słoniowej":"CI","Wyspy Cooka":"CK","Chile":"CL","Kamerun":"CM","Chiny":"CN","Kolumbia":"CO","Clipperton":"CP","Kostaryka":"CR","Kuba":"CU","Republika Zielonego Przylądka":"CV","Curaçao":"CW","Wyspa Bożego Narodzenia":"CX","Cypr":"CY","Czechy":"CZ","Niemcy":"DE","Diego Garcia":"DG","Dżibuti":"DJ","Dania":"DK","Dominika":"DM","Republika Dominikańska":"DO","Algieria":"DZ","Ceuta i Melilla":"EA","Ekwador":"EC","Estonia":"EE","Egipt":"EG","Sahara Zachodnia":"EH","Erytrea":"ER","Hiszpania":"ES","Etiopia":"ET","Unia Europejska":"EU","Finlandia":"FI","Fidżi":"FJ","Falklandy":"FK","Federalne Stany Mikronezji":"FM","Wyspy Owcze":"FO","Francja":"FR","Gabon":"GA","Wielka Brytania":"GB","Grenada":"GD","Gruzja":"GE","Gujana Francuska":"GF","Wyspa Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grenlandia":"GL","Gambia":"GM","Gwinea":"GN","Gwadelupa":"GP","Gwinea Równikowa":"GQ","Grecja":"GR","Georgia Południowa i Sandwich Południowy":"GS","Gwatemala":"GT","Guam":"GU","Gwinea Bissau":"GW","Gujana":"GY","Hongkong SAR":"HK","Wyspy Heard i McDonalda":"HM","Honduras":"HN","Chorwacja":"HR","Haiti":"HT","Węgry":"HU","Wyspy Kanaryjskie":"IC","Indonezja":"ID","Irlandia":"IE","Izrael":"IL","Wyspa Man":"IM","Indie":"IN","Terytorium Brytyjskie Oceanu Indyjskiego":"IO","Irak":"IQ","Iran":"IR","Islandia":"IS","Włochy":"IT","Wyspa Jersey":"JE","Jamajka":"JM","Jordania":"JO","Japonia":"JP","Kenia":"KE","Kirgistan":"KG","Kambodża":"KH","Kiribati":"KI","Komory":"KM","Saint Kitts i Nevis":"KN","Korea Północna":"KP","Korea Południowa":"KR","Kuwejt":"KW","Kajmany":"KY","Kazachstan":"KZ","Laos":"LA","Liban":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Litwa":"LT","Luksemburg":"LU","Łotwa":"LV","Libia":"LY","Maroko":"MA","Monako":"MC","Mołdawia":"MD","Czarnogóra":"ME","Saint-Martin":"MF","Madagaskar":"MG","Wyspy Marshalla":"MH","Macedonia":"MK","Mali":"ML","Birma":"MM","Mongolia":"MN","Makau SAR":"MO","Mariany Północne":"MP","Martynika":"MQ","Mauretania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Malediwy":"MV","Malawi":"MW","Meksyk":"MX","Malezja":"MY","Mozambik":"MZ","Namibia":"NA","Nowa Kaledonia":"NC","Niger":"NE","Norfolk":"NF","Nigeria":"NG","Nikaragua":"NI","Holandia":"NL","Norwegia":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Nowa Zelandia":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Polinezja Francuska":"PF","Papua Nowa Gwinea":"PG","Filipiny":"PH","Pakistan":"PK","Polska":"PL","Saint-Pierre i Miquelon":"PM","Pitcairn":"PN","Portoryko":"PR","Terytoria Palestyńskie":"PS","Portugalia":"PT","Palau":"PW","Paragwaj":"PY","Katar":"QA","Oceania inne":"QO","Reunion":"RE","Rumunia":"RO","Serbia":"RS","Rosja":"RU","Rwanda":"RW","Arabia Saudyjska":"SA","Wyspy Salomona":"SB","Seszele":"SC","Sudan":"SD","Szwecja":"SE","Singapur":"SG","Wyspa Świętej Heleny":"SH","Słowenia":"SI","Svalbard i Jan Mayen":"SJ","Słowacja":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Sudan Południowy":"SS","Wyspy Świętego Tomasza i Książęca":"ST","Salwador":"SV","Sint Maarten":"SX","Syria":"SY","Suazi":"SZ","Tristan da Cunha":"TA","Turks i Caicos":"TC","Czad":"TD","Francuskie Terytoria Południowe":"TF","Togo":"TG","Tajlandia":"TH","Tadżykistan":"TJ","Tokelau":"TK","Timor Wschodni":"TL","Turkmenistan":"TM","Tunezja":"TN","Tonga":"TO","Turcja":"TR","Trynidad i Tobago":"TT","Tuvalu":"TV","Tajwan":"TW","Tanzania":"TZ","Ukraina":"UA","Uganda":"UG","Dalekie Wyspy Mniejsze Stanów Zjednoczonych":"UM","Stany Zjednoczone":"US","Urugwaj":"UY","Uzbekistan":"UZ","Watykan":"VA","Saint Vincent i Grenadyny":"VC","Wenezuela":"VE","Brytyjskie Wyspy Dziewicze":"VG","Wyspy Dziewicze Stanów Zjednoczonych":"VI","Wietnam":"VN","Vanuatu":"VU","Wallis i Futuna":"WF","Samoa":"WS","Jemen":"YE","Majotta":"YT","Republika Południowej Afryki":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Nieznany region":"ZZ"};
 ilib.data.ctrynames_pt = {"Ilha de Ascensão":"AC","Andorra":"AD","Emirados Árabes Unidos":"AE","Afeganistão":"AF","Antígua e Barbuda":"AG","Anguilla":"AI","Albânia":"AL","Armênia":"AM","Antilhas Holandesas":"AN","Angola":"AO","Antártida":"AQ","Argentina":"AR","Samoa Americana":"AS","Áustria":"AT","Austrália":"AU","Aruba":"AW","Ilhas Aland":"AX","Azerbaijão":"AZ","Bósnia-Herzegovina":"BA","Barbados":"BB","Bangladesh":"BD","Bélgica":"BE","Burquina Faso":"BF","Bulgária":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","São Bartolomeu":"BL","Bermudas":"BM","Brunei":"BN","Bolívia":"BO","Brasil":"BR","Bahamas":"BS","Butão":"BT","Ilha Bouvet":"BV","Botsuana":"BW","Belarus":"BY","Belize":"BZ","Canadá":"CA","Ilhas Coco":"CC","Congo-Kinshasa":"CD","República Centro-Africana":"CF","Congo - Brazzaville":"CG","Suíça":"CH","Costa do Marfim":"CI","Ilhas Cook":"CK","Chile":"CL","República dos Camarões":"CM","China":"CN","Colômbia":"CO","Ilha de Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Cabo Verde":"CV","Ilhas Natal":"CX","Chipre":"CY","República Tcheca":"CZ","Alemanha":"DE","Diego Garcia":"DG","Djibuti":"DJ","Dinamarca":"DK","Dominica":"DM","República Dominicana":"DO","Argélia":"DZ","Ceuta e Melilha":"EA","Equador":"EC","Estônia":"EE","Egito":"EG","Saara Ocidental":"EH","Eritreia":"ER","Espanha":"ES","Etiópia":"ET","União Europeia":"EU","Finlândia":"FI","Fiji":"FJ","Ilhas Malvinas":"FK","Micronésia":"FM","Ilhas Faroe":"FO","França":"FR","Gabão":"GA","Reino Unido":"GB","Granada":"GD","Geórgia":"GE","Guiana Francesa":"GF","Guernsey":"GG","Gana":"GH","Gibraltar":"GI","Groênlandia":"GL","Gâmbia":"GM","Guiné":"GN","Guadalupe":"GP","Guiné Equatorial":"GQ","Grécia":"GR","Geórgia do Sul e Ilhas Sandwich do Sul":"GS","Guatemala":"GT","Guam":"GU","Guiné Bissau":"GW","Guiana":"GY","Hong Kong, RAE da China":"HK","Ilha Heard e Ilhas McDonald":"HM","Honduras":"HN","Croácia":"HR","Haiti":"HT","Hungria":"HU","Ilhas Canárias":"IC","Indonésia":"ID","Irlanda":"IE","Israel":"IL","Ilha de Man":"IM","Índia":"IN","Território Britânico do Oceano Índico":"IO","Iraque":"IQ","Irã":"IR","Islândia":"IS","Itália":"IT","Jersey":"JE","Jamaica":"JM","Jordânia":"JO","Japão":"JP","Quênia":"KE","Quirguistão":"KG","Camboja":"KH","Quiribati":"KI","Comores":"KM","São Cristovão e Nevis":"KN","Coreia do Norte":"KP","Coreia do Sul":"KR","Kuwait":"KW","Ilhas Caiman":"KY","Casaquistão":"KZ","Laos":"LA","Líbano":"LB","Santa Lúcia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Libéria":"LR","Lesoto":"LS","Lituânia":"LT","Luxemburgo":"LU","Letônia":"LV","Líbia":"LY","Marrocos":"MA","Mônaco":"MC","Moldávia":"MD","Montenegro":"ME","São Martinho":"MF","Madagascar":"MG","Ilhas Marshall":"MH","Macedônia":"MK","Mali":"ML","Mianmar [Birmânia]":"MM","Mongólia":"MN","Macau, RAE da China":"MO","Ilhas Marianas do Norte":"MP","Martinica":"MQ","Mauritânia":"MR","Montserrat":"MS","Malta":"MT","Maurício":"MU","Maldivas":"MV","Malawi":"MW","México":"MX","Malásia":"MY","Moçambique":"MZ","Namíbia":"NA","Nova Caledônia":"NC","Níger":"NE","Ilha Norfolk":"NF","Nigéria":"NG","Nicarágua":"NI","Holanda":"NL","Noruega":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Nova Zelândia":"NZ","Omã":"OM","Panamá":"PA","Peru":"PE","Polinésia Francesa":"PF","Papua-Nova Guiné":"PG","Filipinas":"PH","Paquistão":"PK","Polônia":"PL","Saint Pierre e Miquelon":"PM","Ilhas Pitcairn":"PN","Porto Rico":"PR","Territórios palestinos":"PS","Portugal":"PT","Palau":"PW","Paraguai":"PY","Catar":"QA","Oceania Remota":"QO","Reunião":"RE","Romênia":"RO","Sérvia":"RS","Rússia":"RU","Ruanda":"RW","Arábia Saudita":"SA","Ilhas Salomão":"SB","Seychelles":"SC","Sudão":"SD","Suécia":"SE","Cingapura":"SG","Santa Helena":"SH","Eslovênia":"SI","Svalbard e Jan Mayen":"SJ","Eslováquia":"SK","Serra Leoa":"SL","San Marino":"SM","Senegal":"SN","Somália":"SO","Suriname":"SR","Sudão do Sul":"SS","São Tomé e Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Síria":"SY","Suazilândia":"SZ","Tristão da Cunha":"TA","Ilhas Turks e Caicos":"TC","Chade":"TD","Territórios Franceses do Sul":"TF","Togo":"TG","Tailândia":"TH","Tadjiquistão":"TJ","Tokelau":"TK","Timor-Leste":"TL","Turcomenistão":"TM","Tunísia":"TN","Tonga":"TO","Turquia":"TR","Trinidad e Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzânia":"TZ","Ucrânia":"UA","Uganda":"UG","Ilhas Distantes dos EUA":"UM","Estados Unidos":"US","Uruguai":"UY","Uzbequistão":"UZ","Vaticano":"VA","São Vicente e Granadinas":"VC","Venezuela":"VE","Ilhas Virgens Britânicas":"VG","Ilhas Virgens dos EUA":"VI","Vietnã":"VN","Vanuatu":"VU","Wallis e Futuna":"WF","Samoa":"WS","Iêmen":"YE","Mayotte":"YT","África do Sul":"ZA","Zâmbia":"ZM","Zimbábue":"ZW","Região desconhecida":"ZZ"};
+ilib.data.ctrynames_pt_AO = {"Anguila":"AI","Arménia":"AM","Ilhas Åland":"AX","Barém":"BH","Benim":"BJ","Países Baixos Caribenhos":"BQ","Bielorrússia":"BY","Ilhas Cocos":"CC","Congo-Brazzaville":"CG","Camarões":"CM","Curaçau":"CW","Ilha do Natal":"CX","República Checa":"CZ","Jibuti":"DJ","Domínica":"DM","Estónia":"EE","Egipto":"EG","Ilhas Falkland":"FK","Ilhas Faroé":"FO","Gronelândia":"GL","Guame":"GU","Guiné-Bissau":"GW","Região Administrativa Especial de Hong Kong":"HK","Irão":"IR","Quénia":"KE","Quirguizistão":"KG","São Cristóvão e Neves":"KN","Ilhas Caimão":"KY","Cazaquistão":"KZ","Letónia":"LV","Mónaco":"MC","Madagáscar":"MG","Macedónia":"MK","Região Administrativa Especial de Macau":"MO","Monserrate":"MS","Maurícias":"MU","Nova Caledónia":"NC","Países Baixos":"NL","Papuásia-Nova Guiné":"PG","Polónia":"PL","Pitcairn":"PN","Território Palestiniano":"PS","Oceânia Insular":"QO","Roménia":"RO","Seicheles":"SC","Singapura":"SG","Eslovénia":"SI","São Marino":"SM","Ilhas Turcas e Caicos":"TC","Tajiquistão":"TJ","Turquemenistão":"TM","Trindade e Tobago":"TT","Usbequistão":"UZ","Vietname":"VN","Iémen":"YE","Maiote":"YT","Zimbabué":"ZW","Região desconhecida ou inválida":"ZZ"};
+ilib.data.ctrynames_pt_CV = {"Anguila":"AI","Arménia":"AM","Ilhas Åland":"AX","Barém":"BH","Benim":"BJ","Países Baixos Caribenhos":"BQ","Bielorrússia":"BY","Ilhas Cocos":"CC","Congo-Brazzaville":"CG","Camarões":"CM","Curaçau":"CW","Ilha do Natal":"CX","República Checa":"CZ","Jibuti":"DJ","Domínica":"DM","Estónia":"EE","Egipto":"EG","Ilhas Falkland":"FK","Ilhas Faroé":"FO","Gronelândia":"GL","Guame":"GU","Guiné-Bissau":"GW","Região Administrativa Especial de Hong Kong":"HK","Irão":"IR","Quénia":"KE","Quirguizistão":"KG","São Cristóvão e Neves":"KN","Ilhas Caimão":"KY","Cazaquistão":"KZ","Letónia":"LV","Mónaco":"MC","Madagáscar":"MG","Macedónia":"MK","Região Administrativa Especial de Macau":"MO","Monserrate":"MS","Maurícias":"MU","Nova Caledónia":"NC","Países Baixos":"NL","Papuásia-Nova Guiné":"PG","Polónia":"PL","Pitcairn":"PN","Território Palestiniano":"PS","Oceânia Insular":"QO","Roménia":"RO","Seicheles":"SC","Singapura":"SG","Eslovénia":"SI","São Marino":"SM","Ilhas Turcas e Caicos":"TC","Tajiquistão":"TJ","Turquemenistão":"TM","Trindade e Tobago":"TT","Usbequistão":"UZ","Vietname":"VN","Iémen":"YE","Maiote":"YT","Zimbabué":"ZW","Região desconhecida ou inválida":"ZZ"};
+ilib.data.ctrynames_pt_GW = {"Anguila":"AI","Arménia":"AM","Ilhas Åland":"AX","Barém":"BH","Benim":"BJ","Países Baixos Caribenhos":"BQ","Bielorrússia":"BY","Ilhas Cocos":"CC","Congo-Brazzaville":"CG","Camarões":"CM","Curaçau":"CW","Ilha do Natal":"CX","República Checa":"CZ","Jibuti":"DJ","Domínica":"DM","Estónia":"EE","Egipto":"EG","Ilhas Falkland":"FK","Ilhas Faroé":"FO","Gronelândia":"GL","Guame":"GU","Guiné-Bissau":"GW","Região Administrativa Especial de Hong Kong":"HK","Irão":"IR","Quénia":"KE","Quirguizistão":"KG","São Cristóvão e Neves":"KN","Ilhas Caimão":"KY","Cazaquistão":"KZ","Letónia":"LV","Mónaco":"MC","Madagáscar":"MG","Macedónia":"MK","Região Administrativa Especial de Macau":"MO","Monserrate":"MS","Maurícias":"MU","Nova Caledónia":"NC","Países Baixos":"NL","Papuásia-Nova Guiné":"PG","Polónia":"PL","Pitcairn":"PN","Território Palestiniano":"PS","Oceânia Insular":"QO","Roménia":"RO","Seicheles":"SC","Singapura":"SG","Eslovénia":"SI","São Marino":"SM","Ilhas Turcas e Caicos":"TC","Tajiquistão":"TJ","Turquemenistão":"TM","Trindade e Tobago":"TT","Usbequistão":"UZ","Vietname":"VN","Iémen":"YE","Maiote":"YT","Zimbabué":"ZW","Região desconhecida ou inválida":"ZZ"};
+ilib.data.ctrynames_pt_MO = {"Anguila":"AI","Arménia":"AM","Ilhas Åland":"AX","Barém":"BH","Benim":"BJ","Países Baixos Caribenhos":"BQ","Bielorrússia":"BY","Ilhas Cocos":"CC","Congo-Brazzaville":"CG","Camarões":"CM","Curaçau":"CW","Ilha do Natal":"CX","República Checa":"CZ","Jibuti":"DJ","Domínica":"DM","Estónia":"EE","Egipto":"EG","Ilhas Falkland":"FK","Ilhas Faroé":"FO","Gronelândia":"GL","Guame":"GU","Guiné-Bissau":"GW","Região Administrativa Especial de Hong Kong":"HK","Irão":"IR","Quénia":"KE","Quirguizistão":"KG","São Cristóvão e Neves":"KN","Ilhas Caimão":"KY","Cazaquistão":"KZ","Letónia":"LV","Mónaco":"MC","Madagáscar":"MG","Macedónia":"MK","Região Administrativa Especial de Macau":"MO","Monserrate":"MS","Maurícias":"MU","Nova Caledónia":"NC","Países Baixos":"NL","Papuásia-Nova Guiné":"PG","Polónia":"PL","Pitcairn":"PN","Território Palestiniano":"PS","Oceânia Insular":"QO","Roménia":"RO","Seicheles":"SC","Singapura":"SG","Eslovénia":"SI","São Marino":"SM","Ilhas Turcas e Caicos":"TC","Tajiquistão":"TJ","Turquemenistão":"TM","Trindade e Tobago":"TT","Usbequistão":"UZ","Vietname":"VN","Iémen":"YE","Maiote":"YT","Zimbabué":"ZW","Região desconhecida ou inválida":"ZZ"};
+ilib.data.ctrynames_pt_MZ = {"Anguila":"AI","Arménia":"AM","Ilhas Åland":"AX","Barém":"BH","Benim":"BJ","Países Baixos Caribenhos":"BQ","Bielorrússia":"BY","Ilhas Cocos":"CC","Congo-Brazzaville":"CG","Camarões":"CM","Curaçau":"CW","Ilha do Natal":"CX","República Checa":"CZ","Jibuti":"DJ","Domínica":"DM","Estónia":"EE","Egipto":"EG","Ilhas Falkland":"FK","Ilhas Faroé":"FO","Gronelândia":"GL","Guame":"GU","Guiné-Bissau":"GW","Região Administrativa Especial de Hong Kong":"HK","Irão":"IR","Quénia":"KE","Quirguizistão":"KG","São Cristóvão e Neves":"KN","Ilhas Caimão":"KY","Cazaquistão":"KZ","Letónia":"LV","Mónaco":"MC","Madagáscar":"MG","Macedónia":"MK","Região Administrativa Especial de Macau":"MO","Monserrate":"MS","Maurícias":"MU","Nova Caledónia":"NC","Países Baixos":"NL","Papuásia-Nova Guiné":"PG","Polónia":"PL","Pitcairn":"PN","Território Palestiniano":"PS","Oceânia Insular":"QO","Roménia":"RO","Seicheles":"SC","Singapura":"SG","Eslovénia":"SI","São Marino":"SM","Ilhas Turcas e Caicos":"TC","Tajiquistão":"TJ","Turquemenistão":"TM","Trindade e Tobago":"TT","Usbequistão":"UZ","Vietname":"VN","Iémen":"YE","Maiote":"YT","Zimbabué":"ZW","Região desconhecida ou inválida":"ZZ"};
 ilib.data.ctrynames_pt_PT = {"Anguila":"AI","Arménia":"AM","Ilhas Åland":"AX","Barém":"BH","Benim":"BJ","Países Baixos Caribenhos":"BQ","Bielorrússia":"BY","Ilhas Cocos":"CC","Congo-Brazzaville":"CG","Camarões":"CM","Curaçau":"CW","Ilha do Natal":"CX","República Checa":"CZ","Jibuti":"DJ","Domínica":"DM","Estónia":"EE","Egipto":"EG","Ilhas Falkland":"FK","Ilhas Faroé":"FO","Gronelândia":"GL","Guame":"GU","Guiné-Bissau":"GW","Região Administrativa Especial de Hong Kong":"HK","Irão":"IR","Quénia":"KE","Quirguizistão":"KG","São Cristóvão e Neves":"KN","Ilhas Caimão":"KY","Cazaquistão":"KZ","Letónia":"LV","Mónaco":"MC","Madagáscar":"MG","Macedónia":"MK","Região Administrativa Especial de Macau":"MO","Monserrate":"MS","Maurícias":"MU","Nova Caledónia":"NC","Países Baixos":"NL","Papuásia-Nova Guiné":"PG","Polónia":"PL","Pitcairn":"PN","Território Palestiniano":"PS","Oceânia Insular":"QO","Roménia":"RO","Seicheles":"SC","Singapura":"SG","Eslovénia":"SI","São Marino":"SM","Ilhas Turcas e Caicos":"TC","Tajiquistão":"TJ","Turquemenistão":"TM","Trindade e Tobago":"TT","Usbequistão":"UZ","Vietname":"VN","Iémen":"YE","Maiote":"YT","Zimbabué":"ZW","Região desconhecida ou inválida":"ZZ"};
+ilib.data.ctrynames_pt_ST = {"Anguila":"AI","Arménia":"AM","Ilhas Åland":"AX","Barém":"BH","Benim":"BJ","Países Baixos Caribenhos":"BQ","Bielorrússia":"BY","Ilhas Cocos":"CC","Congo-Brazzaville":"CG","Camarões":"CM","Curaçau":"CW","Ilha do Natal":"CX","República Checa":"CZ","Jibuti":"DJ","Domínica":"DM","Estónia":"EE","Egipto":"EG","Ilhas Falkland":"FK","Ilhas Faroé":"FO","Gronelândia":"GL","Guame":"GU","Guiné-Bissau":"GW","Região Administrativa Especial de Hong Kong":"HK","Irão":"IR","Quénia":"KE","Quirguizistão":"KG","São Cristóvão e Neves":"KN","Ilhas Caimão":"KY","Cazaquistão":"KZ","Letónia":"LV","Mónaco":"MC","Madagáscar":"MG","Macedónia":"MK","Região Administrativa Especial de Macau":"MO","Monserrate":"MS","Maurícias":"MU","Nova Caledónia":"NC","Países Baixos":"NL","Papuásia-Nova Guiné":"PG","Polónia":"PL","Pitcairn":"PN","Território Palestiniano":"PS","Oceânia Insular":"QO","Roménia":"RO","Seicheles":"SC","Singapura":"SG","Eslovénia":"SI","São Marino":"SM","Ilhas Turcas e Caicos":"TC","Tajiquistão":"TJ","Turquemenistão":"TM","Trindade e Tobago":"TT","Usbequistão":"UZ","Vietname":"VN","Iémen":"YE","Maiote":"YT","Zimbabué":"ZW","Região desconhecida ou inválida":"ZZ"};
+ilib.data.ctrynames_pt_TL = {"Anguila":"AI","Arménia":"AM","Ilhas Åland":"AX","Barém":"BH","Benim":"BJ","Países Baixos Caribenhos":"BQ","Bielorrússia":"BY","Ilhas Cocos":"CC","Congo-Brazzaville":"CG","Camarões":"CM","Curaçau":"CW","Ilha do Natal":"CX","República Checa":"CZ","Jibuti":"DJ","Domínica":"DM","Estónia":"EE","Egipto":"EG","Ilhas Falkland":"FK","Ilhas Faroé":"FO","Gronelândia":"GL","Guame":"GU","Guiné-Bissau":"GW","Região Administrativa Especial de Hong Kong":"HK","Irão":"IR","Quénia":"KE","Quirguizistão":"KG","São Cristóvão e Neves":"KN","Ilhas Caimão":"KY","Cazaquistão":"KZ","Letónia":"LV","Mónaco":"MC","Madagáscar":"MG","Macedónia":"MK","Região Administrativa Especial de Macau":"MO","Monserrate":"MS","Maurícias":"MU","Nova Caledónia":"NC","Países Baixos":"NL","Papuásia-Nova Guiné":"PG","Polónia":"PL","Pitcairn":"PN","Território Palestiniano":"PS","Oceânia Insular":"QO","Roménia":"RO","Seicheles":"SC","Singapura":"SG","Eslovénia":"SI","São Marino":"SM","Ilhas Turcas e Caicos":"TC","Tajiquistão":"TJ","Turquemenistão":"TM","Trindade e Tobago":"TT","Usbequistão":"UZ","Vietname":"VN","Iémen":"YE","Maiote":"YT","Zimbabué":"ZW","Região desconhecida ou inválida":"ZZ"};
+ilib.data.ctrynames_ro = {"Insula Ascension":"AC","Andorra":"AD","Emiratele Arabe Unite":"AE","Afganistan":"AF","Antigua și Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Antilele Olandeze":"AN","Angola":"AO","Antarctica":"AQ","Argentina":"AR","Samoa Americană":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Insulele Aland":"AX","Azerbaidjan":"AZ","Bosnia și Herțegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgia":"BE","Burkina Faso":"BF","Bulgaria":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Sfântul Bartolomeu":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Insulele Caraibe Olandeze":"BQ","Brazilia":"BR","Bahamas":"BS","Bhutan":"BT","Insula Bouvet":"BV","Botswana":"BW","Bielorusia":"BY","Belize":"BZ","Canada":"CA","Insulele Cocos":"CC","Republica Democrată Congo":"CD","Republica Centrafricană":"CF","Congo":"CG","Elveția":"CH","Coasta de Fildeș":"CI","Insulele Cook":"CK","Chile":"CL","Camerun":"CM","China":"CN","Columbia":"CO","Insula Clipperton":"CP","Costa Rica":"CR","Cuba":"CU","Capul Verde":"CV","Curaçao":"CW","Insula Christmas":"CX","Cipru":"CY","Republica Cehă":"CZ","Germania":"DE","Diego Garcia":"DG","Djibouti":"DJ","Danemarca":"DK","Dominica":"DM","Republica Dominicană":"DO","Algeria":"DZ","Ceuta şi Melilla":"EA","Ecuador":"EC","Estonia":"EE","Egipt":"EG","Sahara Occidentală":"EH","Eritreea":"ER","Spania":"ES","Etiopia":"ET","Uniunea Europeană":"EU","Finlanda":"FI","Fiji":"FJ","Insulele Falkland":"FK","Micronezia":"FM","Insulele Feroe":"FO","Franța":"FR","Gabon":"GA","Marea Britanie":"GB","Grenada":"GD","Georgia":"GE","Guyana Franceză":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Groenlanda":"GL","Gambia":"GM","Guineea":"GN","Guadelupa":"GP","Guineea Ecuatorială":"GQ","Grecia":"GR","Georgia de Sud şi Insulele Sandwich de Sud":"GS","Guatemala":"GT","Guam":"GU","Guineea-Bissau":"GW","Guyana":"GY","R.A.S. Hong Kong a Chinei":"HK","Insula Heard și Insulele McDonald":"HM","Honduras":"HN","Croația":"HR","Haiti":"HT","Ungaria":"HU","Insulele Canare":"IC","Indonezia":"ID","Irlanda":"IE","Israel":"IL","Insula Man":"IM","India":"IN","Teritoriul Britanic din Oceanul Indian":"IO","Irak":"IQ","Iran":"IR","Islanda":"IS","Italia":"IT","Jersey":"JE","Jamaica":"JM","Iordania":"JO","Japonia":"JP","Kenya":"KE","Kârgâzstan":"KG","Cambodgia":"KH","Kiribati":"KI","Comore":"KM","Sfântul Kitts și Nevis":"KN","Coreea de Nord":"KP","Coreea de Sud":"KR","Kuweit":"KW","Insulele Cayman":"KY","Kazahstan":"KZ","Laos":"LA","Liban":"LB","Sfânta Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Lituania":"LT","Luxemburg":"LU","Letonia":"LV","Libia":"LY","Maroc":"MA","Monaco":"MC","Republica Moldova":"MD","Muntenegru":"ME","Sfântul Martin":"MF","Madagascar":"MG","Insulele Marshall":"MH","Macedonia":"MK","Mali":"ML","Myanmar":"MM","Mongolia":"MN","R.A.S. Macao a Chinei":"MO","Insulele Mariane de Nord":"MP","Martinica":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldive":"MV","Malawi":"MW","Mexic":"MX","Malaezia":"MY","Mozambic":"MZ","Namibia":"NA","Noua Caledonie":"NC","Niger":"NE","Insulele Norfolk":"NF","Nigeria":"NG","Nicaragua":"NI","Olanda":"NL","Norvegia":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Noua Zeelandă":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Polinezia Franceză":"PF","Papua Noua Guinee":"PG","Filipine":"PH","Pakistan":"PK","Polonia":"PL","Sfântul Pierre și Miquelon":"PM","Pitcairn":"PN","Porto Rico":"PR","Teritoriul Palestinian":"PS","Portugalia":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Oceania Periferică":"QO","Reunion":"RE","România":"RO","Serbia":"RS","Rusia":"RU","Rwanda":"RW","Arabia Saudită":"SA","Insulele Solomon":"SB","Seychelles":"SC","Sudan":"SD","Suedia":"SE","Singapore":"SG","Sfânta Elena":"SH","Slovenia":"SI","Svalbard și Jan Mayen":"SJ","Slovacia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Sudanul de Sud":"SS","Sao Tome și Principe":"ST","El Salvador":"SV","Sint Maarten":"SX","Siria":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Insulele Turks și Caicos":"TC","Ciad":"TD","Teritoriile Australe și Antarctice Franceze":"TF","Togo":"TG","Thailanda":"TH","Tadjikistan":"TJ","Tokelau":"TK","Timorul de Est":"TL","Turkmenistan":"TM","Tunisia":"TN","Tonga":"TO","Turcia":"TR","Trinidad-Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ucraina":"UA","Uganda":"UG","Insulele Minore Îndepărtate ale Statelor Unite ale Americii":"UM","Statele Unite ale Americii":"US","Uruguay":"UY","Uzbekistan":"UZ","Vatican":"VA","Sfântul Vincent și Grenadine":"VC","Venezuela":"VE","Insulele Virgine Britanice":"VG","Insulele Virgine S.U.A.":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis și Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Africa de Sud":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Regiune necunoscută":"ZZ"};
 ilib.data.ctrynames_ru = {"Остров Вознесения":"AC","Андорра":"AD","ОАЭ":"AE","Афганистан":"AF","Антигуа и Барбуда":"AG","Ангилья":"AI","Албания":"AL","Армения":"AM","Нидерландские Антильские о-ва":"AN","Ангола":"AO","Антарктида":"AQ","Аргентина":"AR","Американское Самоа":"AS","Австрия":"AT","Австралия":"AU","Аруба":"AW","Аландские о-ва":"AX","Азербайджан":"AZ","Босния и Герцеговина":"BA","Барбадос":"BB","Бангладеш":"BD","Бельгия":"BE","Буркина Фасо":"BF","Болгария":"BG","Бахрейн":"BH","Бурунди":"BI","Бенин":"BJ","О-в Св. Бартоломея":"BL","Бермудские о-ва":"BM","Бруней Даруссалам":"BN","Боливия":"BO","Бонэйр, Синт-Эстатиус и Саба":"BQ","Бразилия":"BR","Багамские о-ва":"BS","Бутан":"BT","Остров Буве":"BV","Ботсвана":"BW","Беларусь":"BY","Белиз":"BZ","Канада":"CA","Кокосовые о-ва":"CC","Демократическая Республика Конго":"CD","ЦАР":"CF","Конго - Браззавиль":"CG","Швейцария":"CH","Кот д’Ивуар":"CI","Острова Кука":"CK","Чили":"CL","Камерун":"CM","Китай":"CN","Колумбия":"CO","Остров Клиппертон":"CP","Коста-Рика":"CR","Куба":"CU","Острова Зеленого Мыса":"CV","Кюрасао":"CW","Остров Рождества":"CX","Кипр":"CY","Чехия":"CZ","Германия":"DE","Диего-Гарсия":"DG","Джибути":"DJ","Дания":"DK","Доминика":"DM","Доминиканская Республика":"DO","Алжир":"DZ","Сеута и Мелилья":"EA","Эквадор":"EC","Эстония":"EE","Египет":"EG","Западная Сахара":"EH","Эритрея":"ER","Испания":"ES","Эфиопия":"ET","Европейский союз":"EU","Финляндия":"FI","Фиджи":"FJ","Фолклендские о-ва":"FK","Федеративные Штаты Микронезии":"FM","Фарерские о-ва":"FO","Франция":"FR","Габон":"GA","Великобритания":"GB","Гренада":"GD","Грузия":"GE","Французская Гвиана":"GF","Гернси":"GG","Гана":"GH","Гибралтар":"GI","Гренландия":"GL","Гамбия":"GM","Гвинея":"GN","Гваделупа":"GP","Экваториальная Гвинея":"GQ","Греция":"GR","Южная Джорджия и Южные Сандвичевы Острова":"GS","Гватемала":"GT","Гуам":"GU","Гвинея-Бисау":"GW","Гайана":"GY","Гонконг (особый район)":"HK","Острова Херд и Макдональд":"HM","Гондурас":"HN","Хорватия":"HR","Гаити":"HT","Венгрия":"HU","Канарские о-ва":"IC","Индонезия":"ID","Ирландия":"IE","Израиль":"IL","Остров Мэн":"IM","Индия":"IN","Британская территория в Индийском океане":"IO","Ирак":"IQ","Иран":"IR","Исландия":"IS","Италия":"IT","Джерси":"JE","Ямайка":"JM","Иордания":"JO","Япония":"JP","Кения":"KE","Киргизия":"KG","Камбоджа":"KH","Кирибати":"KI","Коморские о-ва":"KM","Сент-Киттс и Невис":"KN","Северная Корея":"KP","Республика Корея":"KR","Кувейт":"KW","Каймановы о-ва":"KY","Казахстан":"KZ","Лаос":"LA","Ливан":"LB","Сент-Люсия":"LC","Лихтенштейн":"LI","Шри-Ланка":"LK","Либерия":"LR","Лесото":"LS","Литва":"LT","Люксембург":"LU","Латвия":"LV","Ливия":"LY","Марокко":"MA","Монако":"MC","Молдова":"MD","Черногория":"ME","Остров Святого Мартина":"MF","Мадагаскар":"MG","Маршалловы о-ва":"MH","Македония":"MK","Мали":"ML","Мьянма [Бирма]":"MM","Монголия":"MN","Макао (особый район)":"MO","Северные Марианские о-ва":"MP","Мартиника":"MQ","Мавритания":"MR","Монтсеррат":"MS","Мальта":"MT","Маврикий":"MU","Мальдивские о-ва":"MV","Малави":"MW","Мексика":"MX","Малайзия":"MY","Мозамбик":"MZ","Намибия":"NA","Новая Каледония":"NC","Нигер":"NE","Остров Норфолк":"NF","Нигерия":"NG","Никарагуа":"NI","Нидерланды":"NL","Норвегия":"NO","Непал":"NP","Науру":"NR","Ниуе":"NU","Новая Зеландия":"NZ","Оман":"OM","Панама":"PA","Перу":"PE","Французская Полинезия":"PF","Папуа – Новая Гвинея":"PG","Филиппины":"PH","Пакистан":"PK","Польша":"PL","Сен-Пьер и Микелон":"PM","Питкэрн":"PN","Пуэрто-Рико":"PR","Палестинские территории":"PS","Португалия":"PT","Палау":"PW","Парагвай":"PY","Катар":"QA","Внешняя Океания":"QO","Реюньон":"RE","Румыния":"RO","Сербия":"RS","Россия":"RU","Руанда":"RW","Саудовская Аравия":"SA","Соломоновы о-ва":"SB","Сейшельские о-ва":"SC","Судан":"SD","Швеция":"SE","Сингапур":"SG","О-в Св. Елены":"SH","Словения":"SI","Свальбард и Ян-Майен":"SJ","Словакия":"SK","Сьерра-Леоне":"SL","Сан-Марино":"SM","Сенегал":"SN","Сомали":"SO","Суринам":"SR","Южный Судан":"SS","Сан-Томе и Принсипи":"ST","Сальвадор":"SV","Синт-Мартен":"SX","Сирия":"SY","Свазиленд":"SZ","Тристан-да-Кунья":"TA","О-ва Тёркс и Кайкос":"TC","Чад":"TD","Французские Южные Территории":"TF","Того":"TG","Таиланд":"TH","Таджикистан":"TJ","Токелау":"TK","Тимор-Лешти":"TL","Туркменистан":"TM","Тунис":"TN","Тонга":"TO","Турция":"TR","Тринидад и Тобаго":"TT","Тувалу":"TV","Тайвань":"TW","Танзания":"TZ","Украина":"UA","Уганда":"UG","Внешние малые острова (США)":"UM","США":"US","Уругвай":"UY","Узбекистан":"UZ","Ватикан":"VA","Сент-Винсент и Гренадины":"VC","Венесуэла":"VE","Британские Виргинские о-ва":"VG","Виргинские о-ва (США)":"VI","Вьетнам":"VN","Вануату":"VU","Уоллис и Футуна":"WF","Самоа":"WS","Йемен":"YE","Майотта":"YT","ЮАР":"ZA","Замбия":"ZM","Зимбабве":"ZW","Неизвестный регион":"ZZ"};
+ilib.data.ctrynames_si = {"ඇසෙන්ෂන් දිවයින":"AC","ඇන්ඩෝරාව":"AD","එක්සත් අරාබි එමිර් රාජ්‍යය":"AE","ඇෆ්ගනිස්ථානය":"AF","ඇන්ටිගුවා සහ බාබියුඩා":"AG","ඇන්ගුයිලාව":"AI","ඇල්බේනියාව":"AL","ආර්මේනියාව":"AM","නෙදර්ලන්ත ඇන්ටිලීසිය":"AN","ඇන්ගෝලාව":"AO","ඇන්ටාක්ටිකාව":"AQ","ආර්ජෙන්ටිනාව":"AR","ඇමරිකානු සැමෝවාව":"AS","ඔස්ට්‍රියාව":"AT","ඕස්ට්‍රේලියාව":"AU","අරුබාව":"AW","ඕලන්ඩ් දූපත්":"AX","අසර්බයිජානය":"AZ","බොස්නියාව සහ හර්සගොවීනාව":"BA","බාර්බඩෝස්":"BB","බංගලිදේශය":"BD","බෙල්ජියම":"BE","බර්කිනා ෆාසෝ":"BF","බල්ගේරියාව":"BG","බහරේන්":"BH","බුරුන්ඩි":"BI","බෙනින්":"BJ","ශාන්ත බෙත්ලහෙම":"BL","බර්මියුඩා":"BM","බෲනායි":"BN","බොලීවියාව":"BO","කැරිබියානු නෙදර්ලන්තය":"BQ","බ්‍රසීලය":"BR","බහමාස්":"BS","භූතානය":"BT","බුවර්ට් දුපත්":"BV","බොස්ට්වානා":"BW","බෙලරුස්":"BY","බෙලීස්":"BZ","කැනඩාව":"CA","කොකෝස් දූපත්":"CC","කොංගො - නින්ශාසා":"CD","මධ්‍යම අප්‍රිකානු ජනරජය":"CF","කොංගො - බ්‍රසාවිල්":"CG","ස්විස්ටර්ලන්තය":"CH","කෝට් දි අයිවරි":"CI","කුක් දූපත්":"CK","චිලී":"CL","කැමරූන්":"CM","චීනය":"CN","කොළොම්බියාව":"CO","ක්ලීපර්ටන් දූපත්":"CP","කොස්ටරිකාව":"CR","කියුබාව":"CU","වර්ඩි කේප්":"CV","කුරකාවෝ":"CW","ක්‍රිස්ට්මස් දූපත්":"CX","සයිප්‍රසය":"CY","චෙක් ජනරජය":"CZ","ජර්මනිය":"DE","දියාගෝ ගාර්සියා":"DG","ජිබෝල්ටි":"DJ","ඩෙන්මාර්කය":"DK","ඩොමිනිකාව":"DM","ඩොමිනිකා ජනරජය":"DO","ඇල්ජීරියාව":"DZ","සෙකිව්ටා සහ මෙරිල්ලා":"EA","ඉක්වදෝරය":"EC","එස්තෝනියාව":"EE","ඊජිප්තුව":"EG","බටහිර සහරාව":"EH","එරිත්‍රියාව":"ER","ස්පාඤ්ඤය":"ES","ඉතියෝපියාව":"ET","යුරෝපා සංගමය":"EU","ෆින්ලන්තය":"FI","ෆීජී":"FJ","ෆෝක්ලන්ත දූපත්":"FK","මයික්‍රොනීසියාව":"FM","ෆැරෝ දූපත්":"FO","ප්‍රංශය":"FR","ගැබොන්":"GA","එක්සත් රාජධානිය":"GB","ග්‍රැනඩාව":"GD","ජෝර්ජියාව":"GE","ප්‍රංශ ගයනාව":"GF","ගර්නිසි":"GG","ඝානාව":"GH","ජිබ්‍රෝල්ටාව":"GI","ග්‍රීන්ලන්තය":"GL","ගැම්බියාව":"GM","ගිණියාව":"GN","ග්වෝඩලෝප්":"GP","සමක ගිනියාව":"GQ","ග්‍රීසිය":"GR","දකුණු ජෝර්ජියාව සහ දකුණු සැන්ඩ්ිච් දූපත්":"GS","ගෝතමාලාව":"GT","ගුවාම්":"GU","ගිනි බිසව්":"GW","ගයනාව":"GY","හොංකොං චීන විශේෂ පරිපාලන කලාපය":"HK","හාඩ් සහ මැක්ඩොනල්ඩ් දූපත්":"HM","හොන්ඩුරාස්":"HN","ක්‍රොටියා":"HR","හයිටි":"HT","හන්ගේරියාව":"HU","කැනරි සූපත්":"IC","ඉන්දුනීසියාව":"ID","අයර්ලන්තය":"IE","ඊශ්‍රායලය":"IL","අයිස්ල් ඔෆ් මෑන්":"IM","ඉන්දියාව":"IN","බ්‍රිතාන්‍ය ඉන්දීය සාගර ප්‍රාන්තය":"IO","ඉරාකය":"IQ","ඉරානය":"IR","අයිස්ලන්තය":"IS","ඉතාලිය":"IT","ජර්සි":"JE","ජැමෙයිකාව":"JM","ජෝර්දානය":"JO","ජපානය":"JP","කෙන්යාව":"KE","කිර්ගිස්තානය":"KG","කාම්බෝජය":"KH","කිරිබති":"KI","කැමොරෝස්":"KM","ශාන්ත කිට්ස් සහ නේවිස්":"KN","උතුරු කොරියාව":"KP","දකුණු කොරියාව":"KR","කුවේටය":"KW","කේමන් දූපත්":"KY","කසකස්තානය":"KZ","ලාඕසය":"LA","ලෙබනනය":"LB","ශාන්ත ලුසියා":"LC","ලිච්ටන්ස්ටීන්":"LI","ශ්‍රී ලංකාව":"LK","ලයිබීරියාව":"LR","ලෙසතෝ":"LS","ලිතුවේනියාව":"LT","ලක්ශම්බර්ග්":"LU","ලැට්වියාව":"LV","ලිබියාව":"LY","මොරොක්කෝව":"MA","මොනාකෝව":"MC","මොල්ඩෝවාව":"MD","මොන්ඩිනීග්‍රෝ":"ME","ශාන්ත මාර්ටින්":"MF","මැඩගස්තරය":"MG","මාෂල් දූපත්":"MH","මැසිඩෝනියාව":"MK","මාලි":"ML","මියන්මාරය":"MM","මොන්ගෝලියාව":"MN","මකාවු සාර් චීන":"MO","උතුරු මරියානා දූපත්":"MP","මර්ටිනික්":"MQ","මාර්ටිනික්":"MR","මොන්සෙරාට්":"MS","මෝල්ටාව":"MT","මුරුසිය":"MU","මාල දිවයින":"MV","මලාවි":"MW","මෙක්සිකෝව":"MX","මැලේසියාව":"MY","මොසැම්බික්":"MZ","නැමීබියාව":"NA","නව කැලිඩෝනියාව":"NC","නයිජර්":"NE","නෝෆෝක් දූපත":"NF","නයිජීරියාව":"NG","නිකරගුවාව":"NI","නෙදර්ලන්තය":"NL","නෝර්වේ":"NO","නේපාලය":"NP","නාවුරු":"NR","නියූ":"NU","නවසීලන්තය":"NZ","ඕමානය":"OM","පැනමා":"PA","පේරු":"PE","ප්‍රංශ පොලිනීසියාව":"PF","පැපුවා නිව් ගිනියාව":"PG","පිලිපීනය":"PH","පාකිස්තානය":"PK","පෝලන්තය":"PL","ශාන්ත පියරේ සහ මැකෝලන්":"PM","පිට්කෙය්න් දූපත්":"PN","පුවටෝ රිකෝ":"PR","පලස්තීනය":"PS","පෘතුගාලය":"PT","පලාවු":"PW","පැරගුවේ":"PY","කටාර්ය":"QA","ඈත ඕසනියාව":"QO","රීයුනියන්":"RE","රුමේනියාව":"RO","සර්බියාව":"RS","රුසියාව":"RU","රුවන්ඩාව":"RW","සෞදි අරාබිය":"SA","සොලමන් දූපත්":"SB","සීශෙල්ස්":"SC","සූඩානය":"SD","ස්වීඩනය":"SE","සිංගප්පූරුව":"SG","ශාන්ත හෙලේනා":"SH","ස්ලෝවේනියාව":"SI","ස්වෙල්බර්ඩ් සහ ජේන් මයෝන්":"SJ","ස්ලෝවැකියාව":"SK","සියරාලියෝන්":"SL","ශාන්ත මැරිනෝ":"SM","සෙනගාල්":"SN","සෝමාලියාව":"SO","සුරිනාමය":"SR","දකුණු සුඩානය":"SS","සාලො සහ ප්‍රින්සිප්":"ST","එල් සැල්වදෝරය":"SV","ශාන්ත මාර්ටෙන්":"SX","සිරියාව":"SY","ස්වාසිලන්තය":"SZ","ට්‍රින්ටන් ද කුන්හා":"TA","ටර්ක්ස් සහ කයිකොස් දූපත්":"TC","චැච්":"TD","දකුණු ප්‍රංශ දූපත් සමූහය":"TF","ටොගෝ":"TG","තායිලන්තය":"TH","ටජිකිස්තානය":"TJ","ටොකලාවු":"TK","ටිමෝර් - ලෙස්ට්":"TL","තුර්ක්මෙනිස්ථානය":"TM","ටියුනීසියාව":"TN","ටොංගා":"TO","තුර්කිය":"TR","ට්‍රිනිඩෑඩ් සහ ටොබැගෝ":"TT","ටුවාලූ":"TV","තායිවානය":"TW","ටැන්සානියාව":"TZ","යුක්රේනය":"UA","උගන්ඩාව":"UG","එක්සත් ජනපද ඈත දූපත්":"UM","එක්සත් ජනපදය":"US","උරුගුවේ":"UY","උස්බෙකිස්ථානය":"UZ","වෙටිකන් සිටි":"VA","ශාන්ත වින්සන්ට් සහ ග්‍රෙනඩිනස්":"VC","වෙනිසියුපාව":"VE","බ්‍රිතාන්‍ය වර්ජින් දූපත්":"VG","ඇමරිකානු වර්ජින් දූපත්":"VI","වියට්නාමය":"VN","වනුවාටු":"VU","වැලිස් සහ ෆුටුනා":"WF","සැමෝවා":"WS","යේමනය":"YE","මයෝටි":"YT","දකුණු අප්‍රිකාව":"ZA","සැම්බියාව":"ZM","සිම්බාබ්වේ":"ZW","හඳුනා නොගත් කළාපය":"ZZ"};
+ilib.data.ctrynames_sk = {"Ostrov Ascensión":"AC","Andorra":"AD","Spojené arabské emiráty":"AE","Afganistan":"AF","Antigua a Barbados":"AG","Anguilla":"AI","Albánsko":"AL","Arménsko":"AM","Holandské Antily":"AN","Angola":"AO","Antarktída":"AQ","Argentína":"AR","Americká Samoa":"AS","Rakúsko":"AT","Austrália":"AU","Aruba":"AW","Alandské ostrovy":"AX","Azerbajdžan":"AZ","Bosna a Hercegovina":"BA","Barbados":"BB","Bangladéš":"BD","Belgicko":"BE","Burkina Faso":"BF","Bulharsko":"BG","Bahrajn":"BH","Burundi":"BI","Benin":"BJ","Svätý Bartolomej":"BL","Bermudy":"BM","Brunej":"BN","Bolívia":"BO","Karibské Holandsko":"BQ","Brazília":"BR","Bahamy":"BS","Bhután":"BT","Bouvetov ostrov":"BV","Botswana":"BW","Bielorusko":"BY","Belize":"BZ","Kanada":"CA","Kokosové ostrovy":"CC","Konžská demokratická republika":"CD","Stredoafrická republika":"CF","Kongo":"CG","Švajčiarsko":"CH","Pobrežie Slonoviny":"CI","Cookove ostrovy":"CK","Čile":"CL","Kamerun":"CM","Čína":"CN","Kolumbia":"CO","Ostrov Clipperton":"CP","Kostarika":"CR","Kuba":"CU","Kapverdy":"CV","Curaçao":"CW","Vianočný ostrov":"CX","Cyprus":"CY","Česká republika":"CZ","Nemecko":"DE","Diego Garcia":"DG","Džibutsko":"DJ","Dánsko":"DK","Dominika":"DM","Dominikánska republika":"DO","Alžírsko":"DZ","Ceuta a Melilla":"EA","Ekvádor":"EC","Estónsko":"EE","Egypt":"EG","Západná Sahara":"EH","Eritrea":"ER","Španielsko":"ES","Etiópia":"ET","Európska únia":"EU","Fínsko":"FI","Fidži":"FJ","Falklandské ostrovy":"FK","Mikronézia":"FM","Faerské ostrovy":"FO","Francúzsko":"FR","Gabon":"GA","Spojené kráľovstvo":"GB","Grenada":"GD","Gruzínsko":"GE","Francúzska Guayana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltár":"GI","Grónsko":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Rovníková Guinea":"GQ","Grécko":"GR","Južná Georgia a Južné Sandwichove ostrovy":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guayana":"GY","Hongkong OAO Číny":"HK","Heardov ostrov a McDonaldove ostrovy":"HM","Honduras":"HN","Chorvátsko":"HR","Haiti":"HT","Maďarsko":"HU","Kanárske ostrovy":"IC","Indonézia":"ID","Írsko":"IE","Izrael":"IL","Ostrov Man":"IM","India":"IN","Britské územie v Indickom oceáne":"IO","Irak":"IQ","Irán":"IR","Island":"IS","Taliansko":"IT","Jersey":"JE","Jamajka":"JM","Jordánsko":"JO","Japonsko":"JP","Keňa":"KE","Kirgizsko":"KG","Kambodža":"KH","Kiribati":"KI","Komory":"KM","Saint Kitts a Nevis":"KN","Kórejská ľudovodemokratická republika":"KP","Južná Kórea":"KR","Kuvajt":"KW","Kajmanské ostrovy":"KY","Kazachstan":"KZ","Laos":"LA","Libanon":"LB","Svätá Lucia":"LC","Lichtenštajnsko":"LI","Srí Lanka":"LK","Libéria":"LR","Lesotho":"LS","Litva":"LT","Luxembursko":"LU","Lotyšsko":"LV","Líbya":"LY","Maroko":"MA","Monako":"MC","Moldavsko":"MD","Čierna Hora":"ME","Saint Martin":"MF","Madagaskar":"MG","Marshallove ostrovy":"MH","Macedónsko":"MK","Mali":"ML","Mjanmarsko":"MM","Mongolsko":"MN","Macao OAO Číny":"MO","Severné Mariány":"MP","Martinik":"MQ","Mauritánia":"MR","Montserrat":"MS","Malta":"MT","Maurícius":"MU","Maldivy":"MV","Malawi":"MW","Mexiko":"MX","Malajzia":"MY","Mozambik":"MZ","Namíbia":"NA","Nová Kaledónia":"NC","Niger":"NE","Norfolkov ostrov":"NF","Nigéria":"NG","Nikaragua":"NI","Holandsko":"NL","Nórsko":"NO","Nepál":"NP","Nauru":"NR","Niue":"NU","Nový Zéland":"NZ","Omán":"OM","Panama":"PA","Peru":"PE","Francúzska Polynézia":"PF","Papua Nová Guinea":"PG","Filipíny":"PH","Pakistan":"PK","Poľsko":"PL","Saint Pierre a Miquelon":"PM","Pitcairnove ostrovy":"PN","Portoriko":"PR","Palestínske územie":"PS","Portugalsko":"PT","Palau":"PW","Paraguaj":"PY","Katar":"QA","Tichomorie - ostatné":"QO","Reunion":"RE","Rumunsko":"RO","Srbsko":"RS","Rusko":"RU","Rwanda":"RW","Saudská Arábia":"SA","Šalamúnove ostrovy":"SB","Seychelské ostrovy":"SC","Sudán":"SD","Švédsko":"SE","Singapur":"SG","Svätá Helena":"SH","Slovinsko":"SI","Špicbergy a Jan Mayen":"SJ","Slovensko":"SK","Sierra Leone":"SL","San Maríno":"SM","Senegal":"SN","Somálsko":"SO","Surinam":"SR","Južný Sudán":"SS","Svätý Tomáš a Princove ostrovy":"ST","Salvador":"SV","Sint Maarten":"SX","Sýria":"SY","Svazijsko":"SZ","Tristan da Cunha":"TA","Turks a Caicos":"TC","Čad":"TD","Francúzske južné územia":"TF","Togo":"TG","Thajsko":"TH","Tadžikistan":"TJ","Tokelau":"TK","Východný Timor":"TL","Turkménsko":"TM","Tunisko":"TN","Tonga":"TO","Turecko":"TR","Trinidad a Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzánia":"TZ","Ukrajina":"UA","Uganda":"UG","Menšie odľahlé ostrovy USA":"UM","Spojené štáty":"US","Uruguaj":"UY","Uzbekistan":"UZ","Vatikán":"VA","Svätý Vincent a Grenadíny":"VC","Venezuela":"VE","Britské panenské ostrovy":"VG","Panenské ostrovy - USA":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis a Futuna":"WF","Samoa":"WS","Jemen":"YE","Mayotte":"YT","Južná Afrika":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Neznámy región":"ZZ"};
+ilib.data.ctrynames_so = {"Andora":"AD","Imaaraadka Carabta ee Midoobay":"AE","Afgaanistaan":"AF","Antigua iyo Barbuda":"AG","Anguilla":"AI","Albaaniya":"AL","Armeeniya":"AM","Netherlands Antilles":"AN","Angoola":"AO","Arjantiin":"AR","Samowa Ameerika":"AS","Awsteriya":"AT","Awstaraaliya":"AU","Aruba":"AW","Azerbajaan":"AZ","Bosniya Hersigoviina":"BA","Baarbadoos":"BB","Bangaaladheesh":"BD","Biljam":"BE","Burkiina Faaso":"BF","Bulgaariya":"BG","Baxreyn":"BH","Burundi":"BI","Biniin":"BJ","Bermuuda":"BM","Buruneeya":"BN","Boliifiya":"BO","Braasiil":"BR","Bahaamas":"BS","Bhutan":"BT","Botuswaana":"BW","Belarus":"BY","Belize":"BZ","Kanada":"CA","Jamhuuriyadda Dimuquraadiga Kongo":"CD","Jamhuuriyadda Afrikada Dhexe":"CF","Kongo":"CG","Swiiserlaand":"CH","Ivory coast":"CI","Jaziiradda Cook":"CK","Jili":"CL","Kaameruun":"CM","Shiinaha":"CN","Kolombiya":"CO","Kosta Riika":"CR","Kuuba":"CU","Cape Verde Islands":"CV","Qubrus":"CY","Jamhuuriyadda Jek":"CZ","Jarmal":"DE","Jabuuti":"DJ","Denmark":"DK","Domeenika":"DM","Jamhuuriyadda Domeenika":"DO","Aljeeriya":"DZ","Ikuwadoor":"EC","Estooniya":"EE","Masar":"EG","Eretereeya":"ER","Isbeyn":"ES","Itoobiya":"ET","Finland":"FI","Fiji":"FJ","Jaziiradaha Fooklaan":"FK","Micronesia":"FM","Faransiis":"FR","Gaaboon":"GA","United Kingdom":"GB","Giriinaada":"GD","Joorjiya":"GE","French Guiana":"GF","Gaana":"GH","Gibraltar":"GI","Greenland":"GL","Gambiya":"GM","Gini":"GN","Guadeloupe":"GP","Equatorial Guinea":"GQ","Giriig":"GR","Guwaatamaala":"GT","Guam":"GU","Gini-Bisaaw":"GW","Guyana":"GY","Honduras":"HN","Korweeshiya":"HR","Hayti":"HT","Hangeri":"HU","Indoneesiya":"ID","Ayrlaand":"IE","Israaʼiil":"IL","Hindiya":"IN","British Indian Ocean Territory":"IO","Ciraaq":"IQ","Iiraan":"IR","Iislaand":"IS","Talyaani":"IT","Jameyka":"JM","Urdun":"JO","Jabaan":"JP","Kiiniya":"KE","Kirgistaan":"KG","Kamboodiya":"KH","Kiribati":"KI","Komooros":"KM","Saint Kitts and Nevis":"KN","Kuuriyada Waqooyi":"KP","Kuuriyada Koonfureed":"KR","Kuwayt":"KW","Cayman Islands":"KY","Kasaakhistaan":"KZ","Laos":"LA","Lubnaan":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sirilaanka":"LK","Laybeeriya":"LR","Losooto":"LS","Lituweeniya":"LT","Luksemboorg":"LU","Latfiya":"LV","Liibiya":"LY","Marooko":"MA","Moonako":"MC","Moldofa":"MD","Madagaskar":"MG","Marshall Islands":"MH","Makadooniya":"MK","Maali":"ML","Myanmar":"MM","Mongooliya":"MN","Northern Mariana Islands":"MP","Martinique":"MQ","Muritaaniya":"MR","Montserrat":"MS","Maalda":"MT","Murishiyoos":"MU","Maaldiqeen":"MV","Malaawi":"MW","Meksiko":"MX","Malaysia":"MY","Musambiig":"MZ","Namiibiya":"NA","New Caledonia":"NC","Nayjer":"NE","Norfolk Island":"NF","Nayjeeriya":"NG","Nikaraaguwa":"NI","Netherlands":"NL","Noorweey":"NO","Nebaal":"NP","Nauru":"NR","Niue":"NU","Neyuusilaand":"NZ","Cumaan":"OM","Panama":"PA","Peru":"PE","French Polynesia":"PF","Papua New Guinea":"PG","Filibiin":"PH","Bakistaan":"PK","Booland":"PL","Saint Pierre and Miquelon":"PM","Pitcairn":"PN","Puerto Rico":"PR","Falastiin Daanka galbeed iyo Qasa":"PS","Bortuqaal":"PT","Palau":"PW","Paraguay":"PY","Qadar":"QA","Réunion":"RE","Rumaaniya":"RO","Ruush":"RU","Ruwanda":"RW","Sacuudi Carabiya":"SA","Solomon Islands":"SB","Sishelis":"SC","Suudaan":"SD","Iswidhan":"SE","Singaboor":"SG","Saint Helena":"SH","Slovenia":"SI","Slovakia":"SK","Siraaliyoon":"SL","San Marino":"SM","Sinigaal":"SN","Soomaaliya":"SO","Suriname":"SR","São Tomé and Príncipe":"ST","El Salvador":"SV","Suuriya":"SY","Iswaasilaand":"SZ","Turks and Caicos Islands":"TC","Jaad":"TD","Toogo":"TG","Taylaand":"TH","Tajikistan":"TJ","Tokelau":"TK","Timorka bari":"TL","Turkmenistan":"TM","Tuniisiya":"TN","Tonga":"TO","Turki":"TR","Trinidad and Tobago":"TT","Tuvalu":"TV","Taywaan":"TW","Tansaaniya":"TZ","Ukrayn":"UA","Ugaanda":"UG","Maraykanka":"US","Uruguwaay":"UY","Uusbakistaan":"UZ","Faatikaan":"VA","Saint Vincent and the Grenadines":"VC","Fenisuweela":"VE","British Virgin Islands":"VG","U.S. Virgin Islands":"VI","Fiyetnaam":"VN","Vanuatu":"VU","Wallis and Futuna":"WF","Samoa":"WS","Yaman":"YE","Mayotte":"YT","Koonfur Afrika":"ZA","Saambiya":"ZM","Simbaabwe":"ZW","Far aan la aqoon amase aan saxnayn":"ZZ"};
+ilib.data.ctrynames_sq = {"Andorrë":"AD","Emiratet Arabe te Bashkuara":"AE","Afganistan":"AF","Antigua e Barbuda":"AG","Shqipëria":"AL","Armeni":"AM","Angolë":"AO","Argjentinë":"AR","Austri":"AT","Australi":"AU","Ishujt Aland":"AX","Azerbajxhan":"AZ","Bosnja dhe Hercegovina":"BA","Belgjikë":"BE","Bullgari":"BG","Bahrein":"BH","Brunej":"BN","Bolivi":"BO","Brazili":"BR","Butan":"BT","Botsvana":"BW","Bjellorusi":"BY","Kanada":"CA","Republika Qendrore e Afrikës":"CF","Kongo":"CG","Zvicër":"CH","Bregu i Fildishtë":"CI","Kili":"CL","Kamerun":"CM","Kinë":"CN","Kolumbi":"CO","Kosta Rika":"CR","Kubë":"CU","Kap Verde":"CV","Qipro":"CY","Republika e Çekisë":"CZ","Gjermani":"DE","Xhibuti":"DJ","Danimarkë":"DK","Dominikë":"DM","Republika Dominikanë":"DO","Algjeri":"DZ","Ekuator":"EC","Estoni":"EE","Egjipt":"EG","Saharaja Perëndimore":"EH","Eritre":"ER","Spanjë":"ES","Etiopi":"ET","Finlandë":"FI","Fixhi":"FJ","Mikronezi":"FM","Francë":"FR","Gjabon":"GA","Mbretëria e Bashkuar":"GB","Gjeorgji":"GE","Ganë":"GH","Gambi":"GM","Guine":"GN","Guineja Ekuatoriale":"GQ","Greqi":"GR","Guatemalë":"GT","Guine Bisau":"GW","Guajana":"GY","Kroaci":"HR","Hungari":"HU","Indonezi":"ID","Irlandë":"IE","Izrael":"IL","Indi":"IN","Irak":"IQ","Islandë":"IS","Itali":"IT","Xhamajkë":"JM","Jordani":"JO","Japoni":"JP","Kenia":"KE","Kirgistan":"KG","Kamboxhi":"KH","Qiribati":"KI","Komore":"KM","Saint Kitts e Nevis":"KN","Koreja e Veriut":"KP","Koreja e Jugut":"KR","Kuvajt":"KW","Kazakistan":"KZ","Liban":"LB","Lihtënshtajn":"LI","Liberi":"LR","Lesoto":"LS","Lituani":"LT","Luksemburg":"LU","Letoni":"LV","Libi":"LY","Maroko":"MA","Monako":"MC","Moldavi":"MD","Madagaskar":"MG","Ishujt Marshall":"MH","Maqedoni":"MK","Mongoli":"MN","Mauritani":"MR","Maltë":"MT","Maldivit":"MV","Malavi":"MW","Meksikë":"MX","Malajzi":"MY","Mozambik":"MZ","Namibi":"NA","Nigeri":"NG","Nikaragua":"NI","Vendet e Ulëta":"NL","Norvegji":"NO","Zelanda e Re":"NZ","Papua Guineja e Re":"PG","Filipine":"PH","Poloni":"PL","Portugali":"PT","Paraguaj":"PY","Katar":"QA","Rumani":"RO","Rusi":"RU","Ruanda":"RW","Arabia Saudite":"SA","Ishujt Solomon":"SB","Sishel":"SC","Suedi":"SE","Singapor":"SG","Slloveni":"SI","Sllovaki":"SK","Siera Leone":"SL","Somali":"SO","Sao Tome e Prinsipe":"ST","Siri":"SY","Svazilandë":"SZ","Çad":"TD","Togo":"TG","Tajlandë":"TH","Taxhikistan":"TJ","Tunisi":"TN","Tonga":"TO","Turqi":"TR","Trinidad e Tobago":"TT","Tajvan":"TW","Tanzani":"TZ","Ukrainë":"UA","Shtetet e Bashkuara të Amerikës":"US","Uruguaj":"UY","Vatikan":"VA","Saint Vincent e Grenadinet":"VC","Venezuelë":"VE","Jemen":"YE","Afrika e Jugut":"ZA","Zambi":"ZM","Zimbabve":"ZW","Rajon i panjohur":"ZZ"};
+ilib.data.ctrynames_sr = {"Острво Асенсион":"AC","Андора":"AD","Уједињени Арапски Емирати":"AE","Авганистан":"AF","Антигве и Барбуда":"AG","Ангвила":"AI","Албанија":"AL","Арменија":"AM","Холандски Антили":"AN","Ангола":"AO","Антарктик":"AQ","Аргентина":"AR","Америчка Самоа":"AS","Аустрија":"AT","Аустралија":"AU","Аруба":"AW","Аландска острва":"AX","Азербејџан":"AZ","Босна и Херцеговина":"BA","Барбадос":"BB","Бангладеш":"BD","Белгија":"BE","Буркина Фасо":"BF","Бугарска":"BG","Бахреин":"BH","Бурунди":"BI","Бенин":"BJ","Свети Бартоломеј":"BL","Бермуда":"BM","Брунеј":"BN","Боливија":"BO","Карипска Холандија":"BQ","Бразил":"BR","Бахами":"BS","Бутан":"BT","Буве Острва":"BV","Боцвана":"BW","Белорусија":"BY","Белизе":"BZ","Канада":"CA","Кокос (Келинг) Острва":"CC","Конго - Киншаса":"CD","Централно Афричка Република":"CF","Конго - Бразавил":"CG","Швајцарска":"CH","Обала Слоноваче":"CI","Кукова Острва":"CK","Чиле":"CL","Камерун":"CM","Кина":"CN","Колумбија":"CO","Острво Клипертон":"CP","Костарика":"CR","Куба":"CU","Капе Верде":"CV","Курасао":"CW","Божићна острва":"CX","Кипар":"CY","Чешка":"CZ","Немачка":"DE","Дијего Гарсија":"DG","Џибути":"DJ","Данска":"DK","Доминика":"DM","Доминиканска Република":"DO","Алжир":"DZ","Сеута и Мелиља":"EA","Еквадор":"EC","Естонија":"EE","Египат":"EG","Западна Сахара":"EH","Еритреја":"ER","Шпанија":"ES","Етиопија":"ET","Европска Унија":"EU","Финска":"FI","Фиџи":"FJ","Фокландска острва":"FK","Микронезија":"FM","Фарска Острва":"FO","Француска":"FR","Габон":"GA","Велика Британија":"GB","Гренада":"GD","Грузија":"GE","Француска Гвајана":"GF","Гурнси":"GG","Гана":"GH","Гибралтар":"GI","Гренланд":"GL","Гамбија":"GM","Гвинеја":"GN","Гваделупе":"GP","Екваторијална Гвинеја":"GQ","Грчка":"GR","Јужна Џорџија и Јужна Сендвич Острва":"GS","Гватемала":"GT","Гуам":"GU","Гвинеја-Бисао":"GW","Гвајана":"GY","Хонг Конг С. А. Р. Кина":"HK","Херд и Мекдоналд Острва":"HM","Хондурас":"HN","Хрватска":"HR","Хаити":"HT","Мађарска":"HU","Канарска острва":"IC","Индонезија":"ID","Ирска":"IE","Израел":"IL","Острво Ман":"IM","Индија":"IN","Британска територија у Индијском океану":"IO","Ирак":"IQ","Иран":"IR","Исланд":"IS","Италија":"IT","Џерси":"JE","Јамајка":"JM","Јордан":"JO","Јапан":"JP","Кенија":"KE","Киргизстан":"KG","Камбоџа":"KH","Кирибати":"KI","Коморска Острва":"KM","Сент Китс и Невис":"KN","Северна Кореја":"KP","Јужна Кореја":"KR","Кувајт":"KW","Кајманска Острва":"KY","Казахстан":"KZ","Лаос":"LA","Либан":"LB","Сент Луција":"LC","Лихтенштајн":"LI","Шри Ланка":"LK","Либерија":"LR","Лесото":"LS","Литванија":"LT","Луксембург":"LU","Летонија":"LV","Либија":"LY","Мароко":"MA","Монако":"MC","Молдавија":"MD","Црна Гора":"ME","Сент Мартин":"MF","Мадагаскар":"MG","Маршалска Острва":"MH","Македонија":"MK","Мали":"ML","Мијанмар [Бурма]":"MM","Монголија":"MN","Макао С. А. Р. Кина":"MO","Северна Маријанска Острва":"MP","Мартиник":"MQ","Мауританија":"MR","Монсерат":"MS","Малта":"MT","Маурицијус":"MU","Малдиви":"MV","Малави":"MW","Мексико":"MX","Малезија":"MY","Мозамбик":"MZ","Намибија":"NA","Нова Каледонија":"NC","Нигер":"NE","Норфолк Острво":"NF","Нигерија":"NG","Никарагва":"NI","Холандија":"NL","Норвешка":"NO","Непал":"NP","Науру":"NR","Ниуе":"NU","Нови Зеланд":"NZ","Оман":"OM","Панама":"PA","Перу":"PE","Француска Полинезија":"PF","Папуа Нова Гвинеја":"PG","Филипини":"PH","Пакистан":"PK","Пољска":"PL","Сен Пјер и Микелон":"PM","Питкерн":"PN","Порто Рико":"PR","Палестинске територије":"PS","Португал":"PT","Палау":"PW","Парагвај":"PY","Катар":"QA","Остала океанија":"QO","Реинион":"RE","Румунија":"RO","Србија":"RS","Русија":"RU","Руанда":"RW","Саудијска Арабија":"SA","Соломонска Острва":"SB","Сејшели":"SC","Судан":"SD","Шведска":"SE","Сингапур":"SG","Света Јелена":"SH","Словенија":"SI","Свалбард и Јанмајен Острва":"SJ","Словачка":"SK","Сијера Леоне":"SL","Сан Марино":"SM","Сенегал":"SN","Сомалија":"SO","Суринам":"SR","Јужни Судан":"SS","Сао Томе и Принципе":"ST","Салвадор":"SV","Свети Мартин":"SX","Сирија":"SY","Свазиленд":"SZ","Тристан да Куња":"TA","Туркс и Кајкос Острва":"TC","Чад":"TD","Француске Јужне Територије":"TF","Того":"TG","Тајланд":"TH","Таџикистан":"TJ","Токелау":"TK","Источни Тимор":"TL","Туркменистан":"TM","Тунис":"TN","Тонга":"TO","Турска":"TR","Тринидад и Тобаго":"TT","Тувалу":"TV","Тајван":"TW","Танзанија":"TZ","Украјина":"UA","Уганда":"UG","Мања удаљена острва САД":"UM","Сједињене Америчке Државе":"US","Уругвај":"UY","Узбекистан":"UZ","Ватикан":"VA","Сент Винсент и Гренадини":"VC","Венецуела":"VE","Британска Девичанска Острва":"VG","С.А.Д. Девичанска Острва":"VI","Вијетнам":"VN","Вануату":"VU","Валис и Футуна Острва":"WF","Самоа":"WS","Јемен":"YE","Мајоте":"YT","Јужноафричка Република":"ZA","Замбија":"ZM","Зимбабве":"ZW","Непозната или неважећа област":"ZZ"};
+ilib.data.ctrynames_sr_Latn_BA = {"Andora":"AD","Ujedinjeni Arapski Emirati":"AE","Avganistan":"AF","Antigva i Barbuda":"AG","Angvila":"AI","Albanija":"AL","Armenija":"AM","Holandski Antili":"AN","Angola":"AO","Antarktika":"AQ","Argentina":"AR","Američka Samoa":"AS","Austrija":"AT","Australija":"AU","Aruba":"AW","Alandska ostrva":"AX","Azerbejdžan":"AZ","Bosna i Hercegovina":"BA","Barbados":"BB","Bangladeš":"BD","Belgija":"BE","Burkina Faso":"BF","Bugarska":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","Sv. Bartolomej":"BL","Bermuda":"BM","Brunej":"BN","Bolivija":"BO","Brazil":"BR","Bahami":"BS","Butan":"BT","Buve Ostrva":"BV","Bocvana":"BW","Belorusija":"BY","Belise":"BZ","Kanada":"CA","Kokos (Keling) Ostrva":"CC","Demokratska Republika Kongo":"CD","Centralno Afrička Republika":"CF","Kongo":"CG","Švajcarska":"CH","Obala Slonovače":"CI","Kukova Ostrva":"CK","Čile":"CL","Kamerun":"CM","Kina":"CN","Kolumbija":"CO","Kostarika":"CR","Kuba":"CU","Kape Verde":"CV","Božićna Ostrva":"CX","Kipar":"CY","Češka":"CZ","Nemačka":"DE","Džibuti":"DJ","Danska":"DK","Dominika":"DM","Dominikanska Republika":"DO","Alžir":"DZ","Ekvador":"EC","Estonija":"EE","Egipat":"EG","Zapadna Sahara":"EH","Eritreja":"ER","Španija":"ES","Etiopija":"ET","Evropska unija":"EU","Finska":"FI","Fidži":"FJ","Folklandska Ostrva":"FK","Mikronezija":"FM","Farska Ostrva":"FO","Francuska":"FR","Gabon":"GA","Velika Britanija":"GB","Grenada":"GD","Gruzija":"GE","Francuska Gvajana":"GF","Gurnsi":"GG","Gana":"GH","Gibraltar":"GI","Grenland":"GL","Gambija":"GM","Gvineja":"GN","Gvadelupe":"GP","Ekvatorijalna Gvineja":"GQ","Grčka":"GR","Južna Džordžija i Južna Sendvič Ostrva":"GS","Gvatemala":"GT","Guam":"GU","Gvineja-Bisao":"GW","Gvajana":"GY","Hong Kong (S. A. R. Kina)":"HK","Herd i Mekdonald Ostrva":"HM","Honduras":"HN","Hrvatska":"HR","Haiti":"HT","Mađarska":"HU","Indonezija":"ID","Irska":"IE","Izrael":"IL","Ostrvo Man":"IM","Indija":"IN","Britansko Indijska Okeanska Teritorija":"IO","Irak":"IQ","Iran":"IR","Island":"IS","Italija":"IT","Džersi":"JE","Jamajka":"JM","Jordan":"JO","Japan":"JP","Kenija":"KE","Kirgizstan":"KG","Kambodža":"KH","Kiribati":"KI","Komorska Ostrva":"KM","Sent Kits i Nevis":"KN","Severna Koreja":"KP","Južna Koreja":"KR","Kuvajt":"KW","Kajmanska Ostrva":"KY","Kazahstan":"KZ","Laos":"LA","Liban":"LB","Sent Lucija":"LC","Lihtenštajn":"LI","Šri Lanka":"LK","Liberija":"LR","Lesoto":"LS","Litvanija":"LT","Luksemburg":"LU","Letonija":"LV","Libija":"LY","Maroko":"MA","Monako":"MC","Moldavija":"MD","Crna Gora":"ME","Sv. Martin":"MF","Madagaskar":"MG","Maršalska Ostrva":"MH","Makedonija":"MK","Mali":"ML","Mijanmar":"MM","Mongolija":"MN","Makao (S. A. R. Kina)":"MO","Severna Marijanska Ostrva":"MP","Martinik":"MQ","Mauritanija":"MR","Monserat":"MS","Malta":"MT","Mauricius":"MU","Maldivi":"MV","Malavi":"MW","Meksiko":"MX","Malezija":"MY","Mozambik":"MZ","Namibija":"NA","Nova Kaledonija":"NC","Niger":"NE","Norfolk Ostrvo":"NF","Nigerija":"NG","Nikaragva":"NI","Holandija":"NL","Norveška":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Novi Zeland":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Francuska Polinezija":"PF","Papua Nova Gvineja":"PG","Filipini":"PH","Pakistan":"PK","Poljska":"PL","Sen Pjer i Mikelon":"PM","Pitcairn":"PN","Porto Riko":"PR","Palestinska Teritorija":"PS","Portugal":"PT","Palau":"PW","Paragvaj":"PY","Katar":"QA","Ostala okeanija":"QO","Rejunion":"RE","Rumunija":"RO","Srbija":"RS","Rusija":"RU","Ruanda":"RW","Saudijska Arabija":"SA","Solomonska Ostrva":"SB","Sejšeli":"SC","Sudan":"SD","Švedska":"SE","Singapur":"SG","Sveta Jelena":"SH","Slovenija":"SI","Svalbard i Janmajen Ostrva":"SJ","Slovačka":"SK","Sijera Leone":"SL","San Marino":"SM","Senegal":"SN","Somalija":"SO","Surinam":"SR","Sao Tome i Principe":"ST","Salvador":"SV","Sirija":"SY","Svazilend":"SZ","Turks i Kajkos Ostrva":"TC","Čad":"TD","Francuske Južne Teritorije":"TF","Togo":"TG","Tajland":"TH","Tadžikistan":"TJ","Tokelau":"TK","Istočni Timor":"TL","Turkmenistan":"TM","Tunis":"TN","Tonga":"TO","Turska":"TR","Trinidad i Tobago":"TT","Tuvalu":"TV","Tajvan":"TW","Tanzanija":"TZ","Ukrajina":"UA","Uganda":"UG","Manja Udaljena Ostrva SAD":"UM","Sjedinjene Američke Države":"US","Urugvaj":"UY","Uzbekistan":"UZ","Vatikan":"VA","Sent Vinsent i Grenadini":"VC","Venecuela":"VE","Britanska Devičanska Ostrva":"VG","S.A.D. Devičanska Ostrva":"VI","Vijetnam":"VN","Vanuatu":"VU","Valis i Futuna Ostrva":"WF","Samoa":"WS","Jemen":"YE","Majote":"YT","Južnoafrička Republika":"ZA","Zambija":"ZM","Zimbabve":"ZW","Nepoznat ili nevažeći region":"ZZ"};
+ilib.data.ctrynames_sr_Latn_ME = {"Andora":"AD","Ujedinjeni Arapski Emirati":"AE","Avganistan":"AF","Antigva i Barbuda":"AG","Angvila":"AI","Albanija":"AL","Armenija":"AM","Holandski Antili":"AN","Angola":"AO","Antarktika":"AQ","Argentina":"AR","Američka Samoa":"AS","Austrija":"AT","Australija":"AU","Aruba":"AW","Alandska ostrva":"AX","Azerbejdžan":"AZ","Bosna i Hercegovina":"BA","Barbados":"BB","Bangladeš":"BD","Belgija":"BE","Burkina Faso":"BF","Bugarska":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","Sv. Bartolomej":"BL","Bermuda":"BM","Brunej":"BN","Bolivija":"BO","Brazil":"BR","Bahami":"BS","Butan":"BT","Buve Ostrva":"BV","Bocvana":"BW","Belorusija":"BY","Belise":"BZ","Kanada":"CA","Kokos (Keling) Ostrva":"CC","Demokratska Republika Kongo":"CD","Centralno Afrička Republika":"CF","Kongo":"CG","Švajcarska":"CH","Obala Slonovače":"CI","Kukova Ostrva":"CK","Čile":"CL","Kamerun":"CM","Kina":"CN","Kolumbija":"CO","Kostarika":"CR","Kuba":"CU","Kape Verde":"CV","Božićna Ostrva":"CX","Kipar":"CY","Češka":"CZ","Nemačka":"DE","Džibuti":"DJ","Danska":"DK","Dominika":"DM","Dominikanska Republika":"DO","Alžir":"DZ","Ekvador":"EC","Estonija":"EE","Egipat":"EG","Zapadna Sahara":"EH","Eritreja":"ER","Španija":"ES","Etiopija":"ET","Evropska unija":"EU","Finska":"FI","Fidži":"FJ","Folklandska Ostrva":"FK","Mikronezija":"FM","Farska Ostrva":"FO","Francuska":"FR","Gabon":"GA","Velika Britanija":"GB","Grenada":"GD","Gruzija":"GE","Francuska Gvajana":"GF","Gurnsi":"GG","Gana":"GH","Gibraltar":"GI","Grenland":"GL","Gambija":"GM","Gvineja":"GN","Gvadelupe":"GP","Ekvatorijalna Gvineja":"GQ","Grčka":"GR","Južna Džordžija i Južna Sendvič Ostrva":"GS","Gvatemala":"GT","Guam":"GU","Gvineja-Bisao":"GW","Gvajana":"GY","Hong Kong (S. A. R. Kina)":"HK","Herd i Mekdonald Ostrva":"HM","Honduras":"HN","Hrvatska":"HR","Haiti":"HT","Mađarska":"HU","Indonezija":"ID","Irska":"IE","Izrael":"IL","Ostrvo Man":"IM","Indija":"IN","Britansko Indijska Okeanska Teritorija":"IO","Irak":"IQ","Iran":"IR","Island":"IS","Italija":"IT","Džersi":"JE","Jamajka":"JM","Jordan":"JO","Japan":"JP","Kenija":"KE","Kirgizstan":"KG","Kambodža":"KH","Kiribati":"KI","Komorska Ostrva":"KM","Sent Kits i Nevis":"KN","Severna Koreja":"KP","Južna Koreja":"KR","Kuvajt":"KW","Kajmanska Ostrva":"KY","Kazahstan":"KZ","Laos":"LA","Liban":"LB","Sent Lucija":"LC","Lihtenštajn":"LI","Šri Lanka":"LK","Liberija":"LR","Lesoto":"LS","Litvanija":"LT","Luksemburg":"LU","Letonija":"LV","Libija":"LY","Maroko":"MA","Monako":"MC","Moldavija":"MD","Crna Gora":"ME","Sv. Martin":"MF","Madagaskar":"MG","Maršalska Ostrva":"MH","Makedonija":"MK","Mali":"ML","Mijanmar":"MM","Mongolija":"MN","Makao (S. A. R. Kina)":"MO","Severna Marijanska Ostrva":"MP","Martinik":"MQ","Mauritanija":"MR","Monserat":"MS","Malta":"MT","Mauricius":"MU","Maldivi":"MV","Malavi":"MW","Meksiko":"MX","Malezija":"MY","Mozambik":"MZ","Namibija":"NA","Nova Kaledonija":"NC","Niger":"NE","Norfolk Ostrvo":"NF","Nigerija":"NG","Nikaragva":"NI","Holandija":"NL","Norveška":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Novi Zeland":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Francuska Polinezija":"PF","Papua Nova Gvineja":"PG","Filipini":"PH","Pakistan":"PK","Poljska":"PL","Sen Pjer i Mikelon":"PM","Pitcairn":"PN","Porto Riko":"PR","Palestinska Teritorija":"PS","Portugal":"PT","Palau":"PW","Paragvaj":"PY","Katar":"QA","Ostala okeanija":"QO","Rejunion":"RE","Rumunija":"RO","Srbija":"RS","Rusija":"RU","Ruanda":"RW","Saudijska Arabija":"SA","Solomonska Ostrva":"SB","Sejšeli":"SC","Sudan":"SD","Švedska":"SE","Singapur":"SG","Sveta Jelena":"SH","Slovenija":"SI","Svalbard i Janmajen Ostrva":"SJ","Slovačka":"SK","Sijera Leone":"SL","San Marino":"SM","Senegal":"SN","Somalija":"SO","Surinam":"SR","Sao Tome i Principe":"ST","Salvador":"SV","Sirija":"SY","Svazilend":"SZ","Turks i Kajkos Ostrva":"TC","Čad":"TD","Francuske Južne Teritorije":"TF","Togo":"TG","Tajland":"TH","Tadžikistan":"TJ","Tokelau":"TK","Istočni Timor":"TL","Turkmenistan":"TM","Tunis":"TN","Tonga":"TO","Turska":"TR","Trinidad i Tobago":"TT","Tuvalu":"TV","Tajvan":"TW","Tanzanija":"TZ","Ukrajina":"UA","Uganda":"UG","Manja Udaljena Ostrva SAD":"UM","Sjedinjene Američke Države":"US","Urugvaj":"UY","Uzbekistan":"UZ","Vatikan":"VA","Sent Vinsent i Grenadini":"VC","Venecuela":"VE","Britanska Devičanska Ostrva":"VG","S.A.D. Devičanska Ostrva":"VI","Vijetnam":"VN","Vanuatu":"VU","Valis i Futuna Ostrva":"WF","Samoa":"WS","Jemen":"YE","Majote":"YT","Južnoafrička Republika":"ZA","Zambija":"ZM","Zimbabve":"ZW","Nepoznat ili nevažeći region":"ZZ"};
+ilib.data.ctrynames_sr_Latn_RS = {"Andora":"AD","Ujedinjeni Arapski Emirati":"AE","Avganistan":"AF","Antigva i Barbuda":"AG","Angvila":"AI","Albanija":"AL","Armenija":"AM","Holandski Antili":"AN","Angola":"AO","Antarktika":"AQ","Argentina":"AR","Američka Samoa":"AS","Austrija":"AT","Australija":"AU","Aruba":"AW","Alandska ostrva":"AX","Azerbejdžan":"AZ","Bosna i Hercegovina":"BA","Barbados":"BB","Bangladeš":"BD","Belgija":"BE","Burkina Faso":"BF","Bugarska":"BG","Bahrein":"BH","Burundi":"BI","Benin":"BJ","Sv. Bartolomej":"BL","Bermuda":"BM","Brunej":"BN","Bolivija":"BO","Brazil":"BR","Bahami":"BS","Butan":"BT","Buve Ostrva":"BV","Bocvana":"BW","Belorusija":"BY","Belise":"BZ","Kanada":"CA","Kokos (Keling) Ostrva":"CC","Demokratska Republika Kongo":"CD","Centralno Afrička Republika":"CF","Kongo":"CG","Švajcarska":"CH","Obala Slonovače":"CI","Kukova Ostrva":"CK","Čile":"CL","Kamerun":"CM","Kina":"CN","Kolumbija":"CO","Kostarika":"CR","Kuba":"CU","Kape Verde":"CV","Božićna Ostrva":"CX","Kipar":"CY","Češka":"CZ","Nemačka":"DE","Džibuti":"DJ","Danska":"DK","Dominika":"DM","Dominikanska Republika":"DO","Alžir":"DZ","Ekvador":"EC","Estonija":"EE","Egipat":"EG","Zapadna Sahara":"EH","Eritreja":"ER","Španija":"ES","Etiopija":"ET","Evropska unija":"EU","Finska":"FI","Fidži":"FJ","Folklandska Ostrva":"FK","Mikronezija":"FM","Farska Ostrva":"FO","Francuska":"FR","Gabon":"GA","Velika Britanija":"GB","Grenada":"GD","Gruzija":"GE","Francuska Gvajana":"GF","Gurnsi":"GG","Gana":"GH","Gibraltar":"GI","Grenland":"GL","Gambija":"GM","Gvineja":"GN","Gvadelupe":"GP","Ekvatorijalna Gvineja":"GQ","Grčka":"GR","Južna Džordžija i Južna Sendvič Ostrva":"GS","Gvatemala":"GT","Guam":"GU","Gvineja-Bisao":"GW","Gvajana":"GY","Hong Kong (S. A. R. Kina)":"HK","Herd i Mekdonald Ostrva":"HM","Honduras":"HN","Hrvatska":"HR","Haiti":"HT","Mađarska":"HU","Indonezija":"ID","Irska":"IE","Izrael":"IL","Ostrvo Man":"IM","Indija":"IN","Britansko Indijska Okeanska Teritorija":"IO","Irak":"IQ","Iran":"IR","Island":"IS","Italija":"IT","Džersi":"JE","Jamajka":"JM","Jordan":"JO","Japan":"JP","Kenija":"KE","Kirgizstan":"KG","Kambodža":"KH","Kiribati":"KI","Komorska Ostrva":"KM","Sent Kits i Nevis":"KN","Severna Koreja":"KP","Južna Koreja":"KR","Kuvajt":"KW","Kajmanska Ostrva":"KY","Kazahstan":"KZ","Laos":"LA","Liban":"LB","Sent Lucija":"LC","Lihtenštajn":"LI","Šri Lanka":"LK","Liberija":"LR","Lesoto":"LS","Litvanija":"LT","Luksemburg":"LU","Letonija":"LV","Libija":"LY","Maroko":"MA","Monako":"MC","Moldavija":"MD","Crna Gora":"ME","Sv. Martin":"MF","Madagaskar":"MG","Maršalska Ostrva":"MH","Makedonija":"MK","Mali":"ML","Mijanmar":"MM","Mongolija":"MN","Makao (S. A. R. Kina)":"MO","Severna Marijanska Ostrva":"MP","Martinik":"MQ","Mauritanija":"MR","Monserat":"MS","Malta":"MT","Mauricius":"MU","Maldivi":"MV","Malavi":"MW","Meksiko":"MX","Malezija":"MY","Mozambik":"MZ","Namibija":"NA","Nova Kaledonija":"NC","Niger":"NE","Norfolk Ostrvo":"NF","Nigerija":"NG","Nikaragva":"NI","Holandija":"NL","Norveška":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Novi Zeland":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Francuska Polinezija":"PF","Papua Nova Gvineja":"PG","Filipini":"PH","Pakistan":"PK","Poljska":"PL","Sen Pjer i Mikelon":"PM","Pitcairn":"PN","Porto Riko":"PR","Palestinska Teritorija":"PS","Portugal":"PT","Palau":"PW","Paragvaj":"PY","Katar":"QA","Ostala okeanija":"QO","Rejunion":"RE","Rumunija":"RO","Srbija":"RS","Rusija":"RU","Ruanda":"RW","Saudijska Arabija":"SA","Solomonska Ostrva":"SB","Sejšeli":"SC","Sudan":"SD","Švedska":"SE","Singapur":"SG","Sveta Jelena":"SH","Slovenija":"SI","Svalbard i Janmajen Ostrva":"SJ","Slovačka":"SK","Sijera Leone":"SL","San Marino":"SM","Senegal":"SN","Somalija":"SO","Surinam":"SR","Sao Tome i Principe":"ST","Salvador":"SV","Sirija":"SY","Svazilend":"SZ","Turks i Kajkos Ostrva":"TC","Čad":"TD","Francuske Južne Teritorije":"TF","Togo":"TG","Tajland":"TH","Tadžikistan":"TJ","Tokelau":"TK","Istočni Timor":"TL","Turkmenistan":"TM","Tunis":"TN","Tonga":"TO","Turska":"TR","Trinidad i Tobago":"TT","Tuvalu":"TV","Tajvan":"TW","Tanzanija":"TZ","Ukrajina":"UA","Uganda":"UG","Manja Udaljena Ostrva SAD":"UM","Sjedinjene Američke Države":"US","Urugvaj":"UY","Uzbekistan":"UZ","Vatikan":"VA","Sent Vinsent i Grenadini":"VC","Venecuela":"VE","Britanska Devičanska Ostrva":"VG","S.A.D. Devičanska Ostrva":"VI","Vijetnam":"VN","Vanuatu":"VU","Valis i Futuna Ostrva":"WF","Samoa":"WS","Jemen":"YE","Majote":"YT","Južnoafrička Republika":"ZA","Zambija":"ZM","Zimbabve":"ZW","Nepoznat ili nevažeći region":"ZZ"};
 ilib.data.ctrynames_sv = {"Ascension":"AC","Andorra":"AD","Förenade Arabemiraten":"AE","Afghanistan":"AF","Antigua och Barbuda":"AG","Anguilla":"AI","Albanien":"AL","Armenien":"AM","Nederländska Antillerna":"AN","Angola":"AO","Antarktis":"AQ","Argentina":"AR","Amerikanska Samoa":"AS","Österrike":"AT","Australien":"AU","Aruba":"AW","Åland":"AX","Azerbajdzjan":"AZ","Bosnien och Hercegovina":"BA","Barbados":"BB","Bangladesh":"BD","Belgien":"BE","Burkina Faso":"BF","Bulgarien":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","S:t Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Karibiska Nederländerna":"BQ","Brasilien":"BR","Bahamas":"BS","Bhutan":"BT","Bouvetön":"BV","Botswana":"BW","Vitryssland":"BY","Belize":"BZ","Kanada":"CA","Kokosöarna":"CC","Kongo-Kinshasa":"CD","Centralafrikanska republiken":"CF","Kongo-Brazzaville":"CG","Schweiz":"CH","Elfenbenskusten":"CI","Cooköarna":"CK","Chile":"CL","Kamerun":"CM","Kina":"CN","Colombia":"CO","Clippertonön":"CP","Costa Rica":"CR","Kuba":"CU","Kap Verde":"CV","Curaçao":"CW","Julön":"CX","Cypern":"CY","Tjeckien":"CZ","Tyskland":"DE","Diego Garcia":"DG","Djibouti":"DJ","Danmark":"DK","Dominica":"DM","Dominikanska republiken":"DO","Algeriet":"DZ","Ceuta och Melilla":"EA","Ecuador":"EC","Estland":"EE","Egypten":"EG","Västsahara":"EH","Eritrea":"ER","Spanien":"ES","Etiopien":"ET","Europeiska unionen":"EU","Finland":"FI","Fiji":"FJ","Falklandsöarna":"FK","Mikronesien":"FM","Färöarna":"FO","Frankrike":"FR","Gabon":"GA","Storbritannien":"GB","Grenada":"GD","Georgien":"GE","Franska Guyana":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Grönland":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Ekvatorialguinea":"GQ","Grekland":"GR","Sydgeorgien och Sydsandwichöarna":"GS","Guatemala":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Hongkong (S.A.R. Kina)":"HK","Heard- och McDonaldöarna":"HM","Honduras":"HN","Kroatien":"HR","Haiti":"HT","Ungern":"HU","Kanarieöarna":"IC","Indonesien":"ID","Irland":"IE","Israel":"IL","Isle of Man":"IM","Indien":"IN","Brittiska Indiska oceanöarna":"IO","Irak":"IQ","Iran":"IR","Island":"IS","Italien":"IT","Jersey":"JE","Jamaica":"JM","Jordanien":"JO","Japan":"JP","Kenya":"KE","Kirgizistan":"KG","Kambodja":"KH","Kiribati":"KI","Komorerna":"KM","S:t Kitts och Nevis":"KN","Nordkorea":"KP","Sydkorea":"KR","Kuwait":"KW","Caymanöarna":"KY","Kazakstan":"KZ","Laos":"LA","Libanon":"LB","S:t Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberia":"LR","Lesotho":"LS","Litauen":"LT","Luxemburg":"LU","Lettland":"LV","Libyen":"LY","Marocko":"MA","Monaco":"MC","Moldavien":"MD","Montenegro":"ME","S:t Martin":"MF","Madagaskar":"MG","Marshallöarna":"MH","Makedonien":"MK","Mali":"ML","Myanmar":"MM","Mongoliet":"MN","Macao (S.A.R. Kina)":"MO","Nordmarianerna":"MP","Martinique":"MQ","Mauretanien":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldiverna":"MV","Malawi":"MW","Mexiko":"MX","Malaysia":"MY","Moçambique":"MZ","Namibia":"NA","Nya Kaledonien":"NC","Niger":"NE","Norfolkön":"NF","Nigeria":"NG","Nicaragua":"NI","Nederländerna":"NL","Norge":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Nya Zeeland":"NZ","Oman":"OM","Panama":"PA","Peru":"PE","Franska Polynesien":"PF","Papua Nya Guinea":"PG","Filippinerna":"PH","Pakistan":"PK","Polen":"PL","S:t Pierre och Miquelon":"PM","Pitcairnöarna":"PN","Puerto Rico":"PR","Palestinska territoriet":"PS","Portugal":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Yttre öar i Oceanien":"QO","Réunion":"RE","Rumänien":"RO","Serbien":"RS","Ryssland":"RU","Rwanda":"RW","Saudiarabien":"SA","Salomonöarna":"SB","Seychellerna":"SC","Sudan":"SD","Sverige":"SE","Singapore":"SG","S:t Helena":"SH","Slovenien":"SI","Svalbard och Jan Mayen":"SJ","Slovakien":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somalia":"SO","Surinam":"SR","Sydsudan":"SS","São Tomé och Príncipe":"ST","El Salvador":"SV","Syrien":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Turks- och Caicosöarna":"TC","Tchad":"TD","Franska Sydterritorierna":"TF","Togo":"TG","Thailand":"TH","Tadzjikistan":"TJ","Tokelau":"TK","Östtimor":"TL","Turkmenistan":"TM","Tunisien":"TN","Tonga":"TO","Turkiet":"TR","Trinidad och Tobago":"TT","Tuvalu":"TV","Taiwan":"TW","Tanzania":"TZ","Ukraina":"UA","Uganda":"UG","USA:s yttre öar":"UM","USA":"US","Uruguay":"UY","Uzbekistan":"UZ","Vatikanstaten":"VA","S:t Vincent och Grenadinerna":"VC","Venezuela":"VE","Brittiska Jungfruöarna":"VG","Amerikanska Jungfruöarna":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis- och Futunaöarna":"WF","Samoa":"WS","Jemen":"YE","Mayotte":"YT","Sydafrika":"ZA","Zambia":"ZM","Zimbabwe":"ZW","okänd region":"ZZ"};
+ilib.data.ctrynames_sv_FI = {"Bonaire, S:t Eustatius och Saba":"BQ","S:t Martin (franska delen)":"MF","Nordsudan":"SD"};
+ilib.data.ctrynames_sw = {"Kisiwa cha Ascension":"AC","Andora":"AD","Falme za Kiarabu":"AE","Afuganistani":"AF","Antigua na Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Antili za Uholanzi":"AN","Angola":"AO","Antaktika":"AQ","Ajentina":"AR","Samoa ya Marekani":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Visiwa vya Alandi":"AX","Azabajani":"AZ","Bosnia na Hezegovina":"BA","Babadosi":"BB","Bangladeshi":"BD","Ubelgiji":"BE","Bukinafaso":"BF","Bulgaria":"BG","Bahareni":"BH","Burundi":"BI","Benini":"BJ","Santabathelemi":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Uholanzi ya Karibiani":"BQ","Brazili":"BR","Bahama":"BS","Butani":"BT","Kisiwa cha Bouvet":"BV","Botswana":"BW","Belarusi":"BY","Belize":"BZ","Kanada":"CA","Visiwa vya Cocos [Keeling]":"CC","Jamhuri ya Kidemokrasia ya Kongo":"CD","Jamhuri ya Afrika ya Kati":"CF","Kongo":"CG","Uswisi":"CH","Kodivaa":"CI","Visiwa vya Cook":"CK","Chile":"CL","Kameruni":"CM","China":"CN","Kolombia":"CO","Kisiwa cha Clipperton":"CP","Kostarika":"CR","Kuba":"CU","Kepuvede":"CV","Kurakao":"CW","Kisiwa cha Krismasi":"CX","Kuprosi":"CY","Jamhuri ya Cheki":"CZ","Ujerumani":"DE","Diego Garcia":"DG","Jibuti":"DJ","Denmaki":"DK","Dominika":"DM","Jamhuri ya Dominika":"DO","Aljeria":"DZ","Ceuta na Melilla":"EA","Ekwado":"EC","Estonia":"EE","Misri":"EG","Sahara Magharibi":"EH","Eritrea":"ER","Hispania":"ES","Uhabeshi":"ET","Umoja wa Ulaya":"EU","Ufini":"FI","Fiji":"FJ","Visiwa vya Falkland":"FK","Mikronesia":"FM","Visiwa vya Faroe":"FO","Ufaransa":"FR","Gaboni":"GA","Uingereza":"GB","Grenada":"GD","Jojia":"GE","Gwiyana ya Ufaransa":"GF","Guernsey":"GG","Ghana":"GH","Jibralta":"GI","Grinlandi":"GL","Gambia":"GM","Gine":"GN","Gwadelupe":"GP","Ginekweta":"GQ","Ugiriki":"GR","Jojia Kusini na Visiwa vya Sandwich Kusini":"GS","Gwatemala":"GT","Gwam":"GU","Ginebisau":"GW","Guyana":"GY","Hong Kong SAR China":"HK","Kisiwa cha Heard na Visiwa vya McDonald":"HM","Hondurasi":"HN","Korasia":"HR","Haiti":"HT","Hungaria":"HU","Visiwa vya Kanari":"IC","Indonesia":"ID","Ayalandi":"IE","Israeli":"IL","Isle of Man":"IM","India":"IN","Eneo la Uingereza katika Bahari Hindi":"IO","Iraki":"IQ","Uajemi":"IR","Aislandi":"IS","Italia":"IT","Jersey":"JE","Jamaika":"JM","Yordani":"JO","Japani":"JP","Kenya":"KE","Kirigizistani":"KG","Kambodia":"KH","Kiribati":"KI","Komoro":"KM","Santakitzi na Nevis":"KN","Korea Kaskazini":"KP","Korea Kusini":"KR","Kuwaiti":"KW","Visiwa vya Kayman":"KY","Kazakistani":"KZ","Laosi":"LA","Lebanoni":"LB","Santalusia":"LC","Lishenteni":"LI","Sirilanka":"LK","Liberia":"LR","Lesoto":"LS","Litwania":"LT","Lasembagi":"LU","Lativia":"LV","Libya":"LY","Moroko":"MA","Monako":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Bukini":"MG","Visiwa vya Marshal":"MH","Masedonia":"MK","Mali":"ML","Myama":"MM","Mongolia":"MN","Macau SAR China":"MO","Visiwa vya Mariana vya Kaskazini":"MP","Martiniki":"MQ","Moritania":"MR","Montserrati":"MS","Malta":"MT","Morisi":"MU","Modivu":"MV","Malawi":"MW","Meksiko":"MX","Malesia":"MY","Msumbiji":"MZ","Namibia":"NA","Nyukaledonia":"NC","Nijeri":"NE","Kisiwa cha Norfok":"NF","Nijeria":"NG","Nikaragwa":"NI","Uholanzi":"NL","Norwe":"NO","Nepali":"NP","Nauru":"NR","Niue":"NU","Nyuzilandi":"NZ","Omani":"OM","Panama":"PA","Peru":"PE","Polinesia ya Ufaransa":"PF","Papua":"PG","Filipino":"PH","Pakistani":"PK","Polandi":"PL","Santapieri na Mikeloni":"PM","Pitkairni":"PN","Pwetoriko":"PR","Ukingo wa Magharibi na Ukanda wa Gaza wa Palestina":"PS","Ureno":"PT","Palau":"PW","Paragwai":"PY","Katari":"QA","Oceania ya Nje":"QO","Riyunioni":"RE","Romania":"RO","Serbia":"RS","Urusi":"RU","Rwanda":"RW","Saudi":"SA","Visiwa vya Solomon":"SB","Shelisheli":"SC","Sudani":"SD","Uswidi":"SE","Singapoo":"SG","Santahelena":"SH","Slovenia":"SI","Svalbard na Jan Mayen":"SJ","Slovakia":"SK","Siera Leoni":"SL","Samarino":"SM","Senegali":"SN","Somalia":"SO","Surinamu":"SR","Sudani Kusini":"SS","Sao Tome na Principe":"ST","Elsavado":"SV","Santamatini":"SX","Siria":"SY","Uswazi":"SZ","Tristan da Cunha":"TA","Visiwa vya Turki na Kaiko":"TC","Chadi":"TD","Maeneo ya Kusini ya Ufaransa":"TF","Togo":"TG","Tailandi":"TH","Tajikistani":"TJ","Tokelau":"TK","Timori ya Mashariki":"TL","Turukimenistani":"TM","Tunisia":"TN","Tonga":"TO","Uturuki":"TR","Trinidad na Tobago":"TT","Tuvalu":"TV","Taiwani":"TW","Tanzania":"TZ","Ukraini":"UA","Uganda":"UG","Visiwa Vidogo vya Nje vya Marekani":"UM","Marekani":"US","Urugwai":"UY","Uzibekistani":"UZ","Vatikani":"VA","Santavisenti na Grenadini":"VC","Venezuela":"VE","Visiwa vya Virgin vya Uingereza":"VG","Visiwa vya Virgin vya Marekani":"VI","Vietinamu":"VN","Vanuatu":"VU","Walis na Futuna":"WF","Samoa":"WS","Yemeni":"YE","Mayotte":"YT","Afrika Kusini":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Eneo lisilojulikana":"ZZ"};
+ilib.data.ctrynames_ta = {"அஷன்ஷியன் தீவு":"AC","அன்டோரா":"AD","ஐக்கிய அரபு கூட்டாட்சி":"AE","ஆப்கானிஸ்தான்":"AF","ஆண்டிகுவா மற்றும் பார்புடா":"AG","அங்குய்லா":"AI","அல்பேனியா":"AL","ஆர்மேனியா":"AM","நெதர்லாந்து ஆண்டில்லெஸ்":"AN","அங்கோலா":"AO","அண்டார்டிகா":"AQ","அர்ஜென்டினா":"AR","அமெரிக்க சமோவா":"AS","ஆஸ்திரியா":"AT","ஆஸ்திரேலியா":"AU","அரூபா":"AW","ஆலந்து தீவுகள்":"AX","அசர்பைஜான்":"AZ","போஸ்னியா மற்றும் ஹெர்ஸிகோவினா":"BA","பார்படோஸ்":"BB","பங்களாதேஷ்":"BD","பெல்ஜியம்":"BE","புர்கினா ஃபாஸோ":"BF","பல்கேரியா":"BG","பஹ்ரைன்":"BH","புருண்டி":"BI","பெனின்":"BJ","செயின்ட் பார்தேலெமி":"BL","பெர்முடா":"BM","புரூனேய்":"BN","பொலிவியா":"BO","கரீபியன் நெதர்லாந்து":"BQ","பிரேஸில்":"BR","பஹாமாஸ்":"BS","பூடான்":"BT","பொவேட் தீவுகள்":"BV","போட்ஸ்வானா":"BW","பெலாரூஸ்":"BY","பெலிஸ்":"BZ","கனடா":"CA","காகோஸ் தீவுகள்":"CC","காங்கோ - கின்ஷாசா":"CD","மத்திய ஆப்ரிக்கக் குடியரசு":"CF","காங்கோ - ப்ராஸாவில்லே":"CG","ஸ்விட்சர்லாந்து":"CH","ஐவரி கோஸ்ட்":"CI","குக் தீவுகள்":"CK","சிலி":"CL","கேமரூன்":"CM","சீனா":"CN","கொலம்பியா":"CO","கிலிப்பர்டன் தீவு":"CP","கோஸ்டாரிகா":"CR","கியூபா":"CU","கேப் வெர்டே":"CV","குராகவ்":"CW","கிறிஸ்துமஸ் தீவு":"CX","சைப்ரஸ்":"CY","செக் குடியரசு":"CZ","ஜெர்மன்":"DE","டியகோ கார்ஷியா":"DG","ஜிபௌட்டி":"DJ","டென்மார்க்":"DK","டொமினிகா":"DM","டொமினிகன் குடியரசு":"DO","அல்ஜீரியா":"DZ","சியூடா மற்றும் மெலில்லா":"EA","ஈக்வடார்":"EC","எஸ்டோனியா":"EE","எகிப்து":"EG","மேற்கு சஹாரா":"EH","எரிட்ரியா":"ER","ஸ்பெயின்":"ES","எதியோப்பியா":"ET","ஐரோப்பியன் யூனியன்":"EU","பின்லாந்து":"FI","ஃபிஜி":"FJ","ஃபாக்லாந்து தீவுகள்":"FK","மைக்ரோனேஷியா":"FM","ஃபெரௌ தீவுகள்":"FO","பிரான்ஸ்":"FR","கேபான்":"GA","பிரிடிஷ் கூட்டரசு":"GB","கிரனெடா":"GD","ஜார்ஜியா":"GE","ஃப்ரென்ச் கயானா":"GF","கெர்ன்சி":"GG","கானா":"GH","ஜிப்ரால்டர்":"GI","கிரீன்லாந்து":"GL","காம்பியா":"GM","கினியா":"GN","க்வாதேலோப்":"GP","ஈக்குவாடோரியல் கினி":"GQ","கிரீஸ்":"GR","தென் ஜியார்ஜியா மற்றும் தென் சான்ட்விச் தீவுகள்":"GS","குவாத்தாமாலா":"GT","குவாம்":"GU","கினி-பிஸ்ஸாவ்":"GW","கயானா":"GY","ஹாங்காங் சார் சீனா":"HK","ஹேர்ட் மற்றும் மெக்டொனால்டு":"HM","ஹாண்டுராஸ்":"HN","குரோசியா":"HR","ஹெய்தி":"HT","ஹங்கேரி":"HU","கேனரி தீவுகள்":"IC","இந்தோனேஷியா":"ID","அயர்லாந்து":"IE","இஸ்ரேல்":"IL","ஐல் ஆஃப் மேன்":"IM","இந்தியா":"IN","பிரிட்டிஷ் இந்தியப் பெருங்கடல் பகுதி":"IO","இராக்":"IQ","ஈரான்":"IR","ஐஸ்லாந்து":"IS","இத்தாலி":"IT","ஜெர்சி":"JE","ஜமைகா":"JM","ஜொர்டான்":"JO","ஜப்பான்":"JP","கென்யா":"KE","கிர்கிஸ்தான்":"KG","கம்போடியா":"KH","கிரிபடி":"KI","கோமரோஸ்":"KM","செயின்ட் கிட்ஸ் மற்றும் நெவிஸ்":"KN","வட கொரியா":"KP","தென் கொரியா":"KR","குவைத்து":"KW","கேமென் தீவுகள்":"KY","கஸகஸ்தான்":"KZ","லாவோஸ்":"LA","லெபனான்":"LB","செயின்ட் லூசியா":"LC","லிச்செண்ஸ்டெய்ன்":"LI","இலங்கை":"LK","லைபீரியா":"LR","லெசோதோ":"LS","லிதுவேனியா":"LT","லக்ஸ்சம்பர்க்":"LU","லாட்வியா":"LV","லிபியா":"LY","மொராக்கோ":"MA","மொனாக்கோ":"MC","மால்டோவா":"MD","மான்டேனெக்ரோ":"ME","செயின் மார்டீன்":"MF","மடகாஸ்கர்":"MG","மார்ஷல் தீவுகள்":"MH","மாசிடோனியா":"MK","மாலீ":"ML","மியான்மார் [பர்மா]":"MM","மங்கோலியா":"MN","மகாவோ சார் சீனா":"MO","வடக்கு மரியானா தீவுகள்":"MP","மார்டினிக்":"MQ","மௌரிடானியா":"MR","மௌன்ட்செராட்":"MS","மால்டா":"MT","மொரிசியஸ்":"MU","மாலத்தீவு":"MV","மாலவி":"MW","மெக்சிகோ":"MX","மலேஷியா":"MY","மொசாம்பிக்":"MZ","நமீபியா":"NA","நியூ கேலிடோனியா":"NC","நைஜர்":"NE","நார்ஃபாக் தீவுகள்":"NF","நைஜீரியா":"NG","நிகாரகுவா":"NI","நெதர்லாந்து":"NL","நார்வே":"NO","நேபாளம்":"NP","நௌரு":"NR","நியூ":"NU","நியூசிலாந்து":"NZ","ஓமன்":"OM","பனாமா":"PA","பெரு":"PE","ஃப்ரென்ச் பாலினேஷியா":"PF","பாப்புவா நியூ கினி":"PG","பிலிப்பைன்ஸ்":"PH","பாகிஸ்தான்":"PK","போலந்து":"PL","செயின்ட் பியர் மற்றும் மிக்வேலான்":"PM","பிட்கெய்ர்ன்":"PN","பியூர்டோ ரிகோ":"PR","பாலஸ்தீனியன் மாஹாணங்கள்":"PS","போர்ச்சுக்கல்":"PT","பாலோ":"PW","பாரகுவே":"PY","கதார்":"QA","ஔட்லையிங் ஓசானியா":"QO","ரீயூனியன்":"RE","ருமேனியா":"RO","செர்பியா":"RS","ரஷ்யா":"RU","ருவான்டா":"RW","சவூதி அரேபியா":"SA","சாலமன் தீவுகள்":"SB","ஸேசேல்ஸ்":"SC","சூடான்":"SD","ஸ்வீடன்":"SE","சிங்கப்பூர்":"SG","செயின்ட் ஹெலெனா":"SH","ஸ்லோவேனியா":"SI","ஸ்வல்பார்டு மற்றும் ஜான் மேயன்":"SJ","ஸ்லோவாகியா":"SK","சியர்ரா லியோன்":"SL","சான் மெரினோ":"SM","செனெகல்":"SN","சொமாலியா":"SO","சூரினாம்":"SR","தெற்கு சூடான்":"SS","சாவ் தோம் மற்றும் ப்ரின்சிபி":"ST","எல் சால்வடார்":"SV","செயின்ட் மார்ட்டீன்":"SX","சிரியா":"SY","ஸ்வாஸிலாண்ட்":"SZ","டிரிஸ்டன் டா குன்ஹா":"TA","டர்க்ஸ் மற்றும் கைகோஸ் தீவுகள்":"TC","சாட்":"TD","ஃப்ரென்ச் தெற்கு மாஹாணங்கள்":"TF","டோகோ":"TG","தாய்லாந்து":"TH","தாஜிகிஸ்தான்":"TJ","டோகேலோ":"TK","கிழக்கு தைமூர்":"TL","துர்க்மெனிஸ்தான்":"TM","டுனிசியா":"TN","டோங்கா":"TO","துருக்கி":"TR","ட்ரினிடாட் மற்றும் டுபாகோ":"TT","துவாலூ":"TV","தைவான்":"TW","டான்சானியா":"TZ","உக்ரைன்":"UA","உகாண்டா":"UG","ஐக்கிய அமெரிக்காவை சுற்றியுள்ள தீவுகள்":"UM","ஐக்கிய அமெரிக்க குடியரசு":"US","உருகுவே":"UY","உஸ்பெகிஸ்தான்":"UZ","வாடிகன் நகரம்":"VA","செயின் வின்சன்ட் மற்றும் கிரெனடைன்ஸ்":"VC","வெனஜுவேலா":"VE","பிரிட்டீஷ் கன்னித் தீவுகள்":"VG","யூ.எஸ் கன்னித் தீவுகள்":"VI","வியட்நாம்":"VN","வனுவாட்டு":"VU","வாலிஸ் மற்றும் ஃபுடுனா தீவுகள்":"WF","சமோவா":"WS","ஏமன்":"YE","மயோத்":"YT","தென் ஆப்பிரிக்கா":"ZA","சாம்பியா":"ZM","ஜிம்பாப்வே":"ZW","அறியப்படாத பிரதேசம்":"ZZ"};
+ilib.data.ctrynames_te = {"ఎసెషన్ దీవి":"AC","అన్డోరా":"AD","యునైటెడ్ ఆరబ్ ఎమిరేట్స్":"AE","ఆఫ్ఘానిస్తాన్":"AF","ఆంటిగ్వా మరియు బార్బుడా":"AG","ఆంగవిల్లా":"AI","అల్బేనియా":"AL","ఆర్మేనియా":"AM","నేదేర్లేండ్స్ అంటిల్లిస్":"AN","అంగోలా":"AO","అంటార్కటికా":"AQ","ఆర్జెంటినా":"AR","అమెరికన్ సమోవా":"AS","ఆస్ట్రియా":"AT","ఆస్ట్రేలియా":"AU","అరుబా":"AW","ఆలేండ్ దీవులు":"AX","అజర్బైజాన్":"AZ","బాస్నియా మరియు హీర్జిగోవినా":"BA","బార్బడోస్":"BB","బాంగ్లాదేష్":"BD","బెల్జియం":"BE","బుర్కినా ఫాసో":"BF","బల్గేరియా":"BG","బహరేన్":"BH","బురుండి":"BI","బెనిన్":"BJ","సెంట్ బర్తేలెమీ":"BL","బర్మయుడా":"BM","బ్రునై":"BN","బొలీవియా":"BO","కరీబియన్ నెదర్లాండ్స్":"BQ","బ్రజిల్":"BR","బహామాస్":"BS","భూటాన్":"BT","బొవెట్ దీవి":"BV","బోట్స్వానా":"BW","బెలారస్":"BY","బెలీజ్":"BZ","కెనడా":"CA","కోకోస్ దీవులు":"CC","కాంగో- కిన్షాసా":"CD","మధ్యమ ఆఫ్రికా రిపబ్లిక్":"CF","కాంగో- బ్రాజావిల్లి":"CG","స్విట్జర్లేండ్":"CH","ఐవరీ కోస్ట్":"CI","కుక్ దీవులు":"CK","చిలి":"CL","కెమరూన్":"CM","చైనా":"CN","కొలంబియా":"CO","క్లిప్పర్టన్ దీవి":"CP","కోస్టారికా":"CR","క్యూబా":"CU","కేప్ వెర్డే":"CV","కురాకవో":"CW","క్రిస్మస్ దీవి":"CX","సైప్రస్":"CY","చెక్ గణరాజ్యం":"CZ","ఙర్మని":"DE","డియాగో గార్సియా":"DG","జిబౌటి":"DJ","డెన్మార్క్":"DK","డోమెనిక":"DM","డొమినికన్ గణ రాజ్యం":"DO","అల్జీరియా":"DZ","స్యూటా మరియు మెలిల్లా":"EA","ఈక్వడోర్":"EC","ఎస్టోనియా":"EE","ఈజిప్ట్":"EG","పడమటి సహారా":"EH","ఎరిట్రియా":"ER","స్పేన్":"ES","ఇథియోపియా":"ET","యురోపియన్ యునియన్":"EU","ఫిన్లాండ్":"FI","ఫిజి":"FJ","ఫాక్ లేండ్ దీవులు":"FK","మైక్రోనేశియ":"FM","ఫారో దీవులు":"FO","ఫ్రాన్స్‌":"FR","గేబన్":"GA","బ్రిటన్":"GB","గ్రెనెడా":"GD","జార్జియా":"GE","ఫ్రెంచ్ గియానా":"GF","గ్వేర్నసే":"GG","ఘానా":"GH","జిబ్రాల్టార్":"GI","గ్రీన్లేండ్":"GL","గాంబియా":"GM","గినియా":"GN","గ్వాడేలోప్":"GP","ఎక్వేటోరియాల్ గినియా":"GQ","గ్రీస్":"GR","దక్షిణ జార్జియా మరియు దక్షిణ సాండ్విచ్ దీవులు":"GS","గ్వాటిమాల":"GT","గ్వామ్":"GU","గినియా-బిస్సావ్":"GW","గయానా":"GY","చైనా యొక్క హాంగ్కాంగ్":"HK","హెర్డ్ దీవి మరియు మాక్ డోనాల్డ్ దీవులు":"HM","హోండోరాస్":"HN","క్రోయేషియా":"HR","హైటి":"HT","హన్గేరి":"HU","కేనరీ దీవులు":"IC","ఇండోనేషియా":"ID","ఐర్ లాండ్":"IE","ఇస్రాయేల్":"IL","ఐల్ ఆఫ్ మాన్":"IM","భారత దేశం":"IN","బ్రిటిష్ భారతీయ ఓషన్ ప్రాంతం":"IO","ఇరాక్":"IQ","ఇరాన్":"IR","ఐస్లాండ్":"IS","ఇటలి":"IT","జర్సి":"JE","జమైకా":"JM","జార్డాన్":"JO","జపాన్":"JP","కెన్యా":"KE","కిర్జిస్తాన్":"KG","కంబోడియా":"KH","కిరిబాటి":"KI","కొమొరోస్":"KM","సెంట్ కిట్ట్స్ మరియు నెవిస్":"KN","ఉత్తర కొరియా":"KP","దక్షిణ కొరియా":"KR","కువైట్":"KW","కేమాన్ దీవులు":"KY","కజాఖస్తాన్":"KZ","లావోస్":"LA","లెబనాన్":"LB","సెంట్ లూసియా":"LC","లిక్టెస్టేన్":"LI","శ్రీలంక":"LK","లైబీరియా":"LR","లెసోతో":"LS","లిథుయేనియా":"LT","లక్సంబర్గ్":"LU","లాట్వియ":"LV","లిబియా":"LY","మొరాక్కో":"MA","మొనాకో":"MC","మోల్ డోవ":"MD","మోంటేనేగ్రో":"ME","సెంట్ మార్టిన్":"MF","మాడ్గాస్కార్":"MG","మార్షల్ దీవులు":"MH","మేసెడోనియా":"MK","మాలి":"ML","మ్యాన్మార్":"MM","మంగోలియా":"MN","మాకావ్ సార్ చైనా":"MO","ఉత్తర మరియానా దీవులు":"MP","మార్టినిక్":"MQ","మౌరిటేనియా":"MR","మోంట్సేర్రాట్":"MS","మాల్టా":"MT","మారిషస్":"MU","మాల్దీవులు":"MV","మాలావి":"MW","మెక్సికో":"MX","మలేషియా":"MY","మొజాంబిక్":"MZ","నమీబియా":"NA","క్రొత్త కాలెడోనియా":"NC","నైజర్":"NE","నార్ఫాక్ దీవి":"NF","నైజీరియా":"NG","నికరాగువా":"NI","నేదర్లాండ్స్":"NL","నారవే":"NO","నేపాల్":"NP","నౌరు":"NR","నియు":"NU","న్యుజిలేండ్":"NZ","ఒమాన్":"OM","పనామా":"PA","పెరూ":"PE","ఫ్రెంచ్ పోలినిషియా":"PF","పాపువా న్యు గినియా":"PG","ఫిలి పైన్స్":"PH","పాకిస్తాన్":"PK","పోలాండ్":"PL","సెంట్ పియెర్ మరియు మికెలాన్":"PM","పిట్కెర్న్":"PN","పోటోరికో":"PR","పాలిస్తినియాన్ ప్రాంతం":"PS","పోర్చుగల్":"PT","పలావు":"PW","పెరగువే":"PY","కతర్":"QA","ఒషేనియా బయటున్నవి":"QO","రియూనియన్":"RE","రోమానియా":"RO","సెర్బియా":"RS","రష్య":"RU","ర్వాండా":"RW","సౌదీ అరేబియా":"SA","సోలోమన్ దీవులు":"SB","సీషెల్స్":"SC","సుడాన్":"SD","స్వీడన్":"SE","సింగపూర్":"SG","సెంట్ హెలినా":"SH","స్లోవేనియా":"SI","స్వాల్బార్డ్ మరియు యాన్ మాయేన్":"SJ","స్లోవేకియా":"SK","సియెర్రా లియాన్":"SL","సాన్ మారినో":"SM","సెనెగల్":"SN","సోమాలియా":"SO","సురినామ్":"SR","దక్షిణ సూడాన్":"SS","సావోటోమ్ మరియు ప్రిన్సిపే":"ST","ఎల్ సాల్వడోర్":"SV","సింట్ మార్టెన్":"SX","సిరియా":"SY","స్వాజీలేండ్":"SZ","ట్రిస్టన్ డ కన్హా":"TA","తుర్క్ మరియు కాలికోస్ దీవులు":"TC","చాద్":"TD","ఫ్రెంచ్ దక్షిణ ప్రాంతాలు":"TF","టోగో":"TG","థాయ్ లాండ్":"TH","టాజీకిస్తాన్":"TJ","టోకేలావ్":"TK","టిమోర్-లెస్టె":"TL","తుర్కమెస్తాన్":"TM","ట్యునీషియా":"TN","టోంగా":"TO","టర్కీ":"TR","ట్రినిడేడ్ మరియు టొబాగో":"TT","టువాలు":"TV","టైవాన్":"TW","టాంజానియా":"TZ","యుక్రెన్":"UA","యుగాండా":"UG","సంయుక్త రాజ్య అమెరికా యునైటెడ్ స్టేట్స్ మైనర్ బయట ఉన్న దీవులు":"UM","సంయుక్త రాజ్య అమెరికా":"US","ఉరుగువే":"UY","ఉజ్బెకిస్తాన్":"UZ","వేటికెన్":"VA","సెంట్ విన్సెంట్ మరియు గ్రెనడీన్స్":"VC","వెనుజువేలా":"VE","బ్రిటిష్ వర్జిన్ దీవులు":"VG","యు.ఎస్. వర్జిన్ దీవులు":"VI","వియట్నాం":"VN","వనౌటు":"VU","వాలిస్ మరియు ఫ్యుత్యునా":"WF","సమోవా":"WS","యెమెన్":"YE","మాయొట్టి":"YT","దక్షిణ ఆఫ్రికా రాజ్యం":"ZA","జాంబియా":"ZM","జింబాబ్వే":"ZW","తెలియని లేదా చెల్లని ప్రాంతం":"ZZ"};
 ilib.data.ctrynames_tr = {"Ascension Adası":"AC","Andorra":"AD","Birleşik Arap Emirlikleri":"AE","Afganistan":"AF","Antigua ve Barbuda":"AG","Anguilla":"AI","Arnavutluk":"AL","Ermenistan":"AM","Hollanda Antilleri":"AN","Angola":"AO","Antarktika":"AQ","Arjantin":"AR","Amerikan Samoası":"AS","Avusturya":"AT","Avustralya":"AU","Aruba":"AW","Åland Adaları":"AX","Azerbaycan":"AZ","Bosna Hersek":"BA","Barbados":"BB","Bangladeş":"BD","Belçika":"BE","Burkina Faso":"BF","Bulgaristan":"BG","Bahreyn":"BH","Burundi":"BI","Benin":"BJ","Saint Barthelemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivya":"BO","Karayip Hollanda":"BQ","Brezilya":"BR","Bahamalar":"BS","Butan":"BT","Bouvet Adası":"BV","Botsvana":"BW","Beyaz Rusya":"BY","Belize":"BZ","Kanada":"CA","Cocos [Keeling] Adaları":"CC","Kongo - Kinşasa":"CD","Orta Afrika Cumhuriyeti":"CF","Kongo - Brazavil":"CG","İsviçre":"CH","Fildişi Sahili":"CI","Cook Adaları":"CK","Şili":"CL","Kamerun":"CM","Çin":"CN","Kolombiya":"CO","Clipperton Adası":"CP","Kosta Rika":"CR","Küba":"CU","Cape Verde":"CV","Curaçao":"CW","Christmas Adası":"CX","Güney Kıbrıs Rum Kesimi":"CY","Çek Cumhuriyeti":"CZ","Almanya":"DE","Diego Garcia":"DG","Cibuti":"DJ","Danimarka":"DK","Dominika":"DM","Dominik Cumhuriyeti":"DO","Cezayir":"DZ","Ceuta ve Melilla":"EA","Ekvador":"EC","Estonya":"EE","Mısır":"EG","Batı Sahara":"EH","Eritre":"ER","İspanya":"ES","Etiyopya":"ET","Avrupa Birliği":"EU","Finlandiya":"FI","Fiji":"FJ","Falkland Adaları":"FK","Mikronezya Federal Eyaletleri":"FM","Faroe Adaları":"FO","Fransa":"FR","Gabon":"GA","Birleşik Krallık":"GB","Grenada":"GD","Gürcistan":"GE","Fransız Guyanası":"GF","Guernsey":"GG","Gana":"GH","Cebelitarık":"GI","Grönland":"GL","Gambiya":"GM","Gine":"GN","Guadalupe":"GP","Ekvator Ginesi":"GQ","Yunanistan":"GR","Güney Georgia ve Güney Sandwich Adaları":"GS","Guatemala":"GT","Guam":"GU","Gine-Bissau":"GW","Guyana":"GY","Çin Hong Kong ÖYB":"HK","Heard Adası ve McDonald Adaları":"HM","Honduras":"HN","Hırvatistan":"HR","Haiti":"HT","Macaristan":"HU","Kanarya Adaları":"IC","Endonezya":"ID","İrlanda":"IE","İsrail":"IL","Man Adası":"IM","Hindistan":"IN","İngiliz Hint Okyanusu Bölgesi":"IO","Irak":"IQ","İran":"IR","İzlanda":"IS","İtalya":"IT","Jersey":"JE","Jamaika":"JM","Ürdün":"JO","Japonya":"JP","Kenya":"KE","Kırgızistan":"KG","Kamboçya":"KH","Kiribati":"KI","Komorlar":"KM","Saint Kitts ve Nevis":"KN","Kuzey Kore":"KP","Güney Kore":"KR","Kuveyt":"KW","Cayman Adaları":"KY","Kazakistan":"KZ","Laos":"LA","Lübnan":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberya":"LR","Lesoto":"LS","Litvanya":"LT","Lüksemburg":"LU","Letonya":"LV","Libya":"LY","Fas":"MA","Monako":"MC","Moldova":"MD","Karadağ":"ME","Saint Martin":"MF","Madagaskar":"MG","Marshall Adaları":"MH","Makedonya":"MK","Mali":"ML","Myanmar [Burma]":"MM","Moğolistan":"MN","Çin Makao ÖYB":"MO","Kuzey Mariana Adaları":"MP","Martinik":"MQ","Moritanya":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldivler":"MV","Malavi":"MW","Meksika":"MX","Malezya":"MY","Mozambik":"MZ","Namibya":"NA","Yeni Kaledonya":"NC","Nijer":"NE","Norfolk Adası":"NF","Nijerya":"NG","Nikaragua":"NI","Hollanda":"NL","Norveç":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Yeni Zelanda":"NZ","Umman":"OM","Panama":"PA","Peru":"PE","Fransız Polinezyası":"PF","Papua Yeni Gine":"PG","Filipinler":"PH","Pakistan":"PK","Polonya":"PL","Saint Pierre ve Miquelon":"PM","Pitcairn Adaları":"PN","Porto Riko":"PR","Filistin Bölgeleri":"PS","Portekiz":"PT","Palau":"PW","Paraguay":"PY","Katar":"QA","Uzak Okyanusya":"QO","Réunion":"RE","Romanya":"RO","Sırbistan":"RS","Rusya":"RU","Ruanda":"RW","Suudi Arabistan":"SA","Solomon Adaları":"SB","Seyşeller":"SC","Sudan":"SD","İsveç":"SE","Singapur":"SG","Saint Helena":"SH","Slovenya":"SI","Svalbard ve Jan Mayen Adaları":"SJ","Slovakya":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somali":"SO","Surinam":"SR","Güney Sudan":"SS","São Tomé ve Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Suriye":"SY","Svaziland":"SZ","Tristan da Cunha":"TA","Turks ve Caicos Adaları":"TC","Çad":"TD","Fransız Güney Bölgeleri":"TF","Togo":"TG","Tayland":"TH","Tacikistan":"TJ","Tokelau":"TK","Timor-Leste":"TL","Türkmenistan":"TM","Tunus":"TN","Tonga":"TO","Türkiye":"TR","Trinidad ve Tobago":"TT","Tuvalu":"TV","Tayvan":"TW","Tanzanya":"TZ","Ukrayna":"UA","Uganda":"UG","ABD Dış Adaları":"UM","ABD":"US","Uruguay":"UY","Özbekistan":"UZ","Vatikan":"VA","Saint Vincent ve Grenadinler":"VC","Venezuela":"VE","Britanya Virjin Adaları":"VG","ABD Virjin Adaları":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis ve Futuna Adaları":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Güney Afrika":"ZA","Zambiya":"ZM","Zimbabve":"ZW","Bilinmeyen Bölge":"ZZ"};
+ilib.data.ctrynames_uk = {"Острів Вознесіння":"AC","Андорра":"AD","Обʼєднані Арабські Емірати":"AE","Афганістан":"AF","Антигуа і Барбуда":"AG","Ангілья":"AI","Албанія":"AL","Вірменія":"AM","Нідерландські Антильські Острови":"AN","Ангола":"AO","Антарктида":"AQ","Аргентина":"AR","Американське Самоа":"AS","Австрія":"AT","Австралія":"AU","Аруба":"AW","Аландські острови":"AX","Азербайджан":"AZ","Боснія і Герцоговина":"BA","Барбадос":"BB","Бангладеш":"BD","Бельгія":"BE","Буркіна-Фасо":"BF","Болгарія":"BG","Бахрейн":"BH","Бурунді":"BI","Бенін":"BJ","Острів Святого Бартоломея":"BL","Бермуди":"BM","Бруней":"BN","Болівія":"BO","Бразилія":"BR","Багами":"BS","Бутан":"BT","Острів Буве":"BV","Ботсвана":"BW","Білорусь":"BY","Беліз":"BZ","Канада":"CA","Кокосові острови":"CC","Конґо - Кіншаса":"CD","Центральноафриканська Республіка":"CF","Конґо - Браззавіль":"CG","Швейцарія":"CH","Кот д’Івуар":"CI","Острови Кука":"CK","Чилі":"CL","Камерун":"CM","Китай":"CN","Колумбія":"CO","Острів Кліппертон":"CP","Коста-Рика":"CR","Куба":"CU","Кабо-Верде":"CV","Кюрасао":"CW","Острів Різдва":"CX","Кіпр":"CY","Чеська республіка":"CZ","Німеччина":"DE","Дієґо-Ґарсія":"DG","Джібуті":"DJ","Данія":"DK","Домінік":"DM","Домініканська Республіка":"DO","Алжир":"DZ","Сеута і Мелілья":"EA","Еквадор":"EC","Естонія":"EE","Єгипет":"EG","Західна Сахара":"EH","Еритрея":"ER","Іспанія":"ES","Ефіопія":"ET","Європейський Союз":"EU","Фінляндія":"FI","Фіджі":"FJ","Фолклендські острови":"FK","Мікронезія":"FM","Фарерські острови":"FO","Франція":"FR","Габон":"GA","Велика Британія":"GB","Гренада":"GD","Грузія":"GE","Французька Гвіана":"GF","Гернсі":"GG","Гана":"GH","Гібралтар":"GI","Гренландія":"GL","Гамбія":"GM","Гвінея":"GN","Гваделупа":"GP","Екваторіальна Гвінея":"GQ","Греція":"GR","Південна Джорджія та Південні Сандвічеві Острови":"GS","Гватемала":"GT","Гуам":"GU","Гвінея-Біссау":"GW","Гайана":"GY","Гонконґ О.А.Р. Китаю":"HK","Острови Херд і Мак-Дональд":"HM","Гондурас":"HN","Хорватія":"HR","Гаїті":"HT","Угорщина":"HU","Канарські острови":"IC","Індонезія":"ID","Ірландія":"IE","Ізраїль":"IL","Острів Мен":"IM","Індія":"IN","Британські території Індійського океану":"IO","Ірак":"IQ","Іран":"IR","Ісландія":"IS","Італія":"IT","Джерсі":"JE","Ямайка":"JM","Йорданія":"JO","Японія":"JP","Кенія":"KE","Киргизстан":"KG","Камбоджа":"KH","Кірибаті":"KI","Коморські Острови":"KM","Сент-Кітс і Невіс":"KN","Північна Корея":"KP","Південна Корея":"KR","Кувейт":"KW","Кайманові острови":"KY","Казахстан":"KZ","Лаос":"LA","Ліван":"LB","Сент-Люсія":"LC","Ліхтенштейн":"LI","Шрі-Ланка":"LK","Ліберія":"LR","Лесото":"LS","Литва":"LT","Люксембург":"LU","Латвія":"LV","Лівія":"LY","Марокко":"MA","Монако":"MC","Молдова":"MD","Чорногорія":"ME","Острів Святого Мартіна":"MF","Мадагаскар":"MG","Маршаллові Острови":"MH","Македонія":"MK","Малі":"ML","Мʼянма [Бірма]":"MM","Монголія":"MN","Макао О.А.Р. Китаю":"MO","Північні Маріанські Острови":"MP","Мартиніка":"MQ","Мавританія":"MR","Монсеррат":"MS","Мальта":"MT","Маврикій":"MU","Мальдіви":"MV","Малаві":"MW","Мексика":"MX","Малайзія":"MY","Мозамбік":"MZ","Намібія":"NA","Нова Каледонія":"NC","Нігер":"NE","Острів Норфолк":"NF","Нігерія":"NG","Нікарагуа":"NI","Нідерланди":"NL","Норвегія":"NO","Непал":"NP","Науру":"NR","Нія":"NU","Нова Зеландія":"NZ","Оман":"OM","Панама":"PA","Перу":"PE","Французька Полінезія":"PF","Папуа Нова Гвінея":"PG","Філіппіни":"PH","Пакистан":"PK","Польща":"PL","Сен-Пʼєр і Мікелон":"PM","Острови Піткерн":"PN","Пуерто-Ріко":"PR","Палестина":"PS","Португалія":"PT","Палау":"PW","Парагвай":"PY","Катар":"QA","Інша Океанія":"QO","Реюньйон":"RE","Румунія":"RO","Сербія":"RS","Росія":"RU","Руанда":"RW","Саудівська Аравія":"SA","Соломонові Острови":"SB","Сейшели":"SC","Судан":"SD","Швеція":"SE","Сінгапур":"SG","Острів Святої Єлени":"SH","Словенія":"SI","Острови Свальбард та Ян-Маєн":"SJ","Словакія":"SK","Сьєрра-Леоне":"SL","Сан-Марино":"SM","Сенегал":"SN","Сомалі":"SO","Суринам":"SR","Південний Судан":"SS","Сан-Томе і Прінсіпі":"ST","Сальвадор":"SV","Сінт-Мартен":"SX","Сирія":"SY","Свазіленд":"SZ","Трістан-да-Кунья":"TA","Теркс і Кайкос":"TC","Чад":"TD","Французькі Південні Території":"TF","Того":"TG","Таїланд":"TH","Таджикистан":"TJ","Токелау":"TK","Тімор-Лешті":"TL","Туркменистан":"TM","Туніс":"TN","Тонга":"TO","Туреччина":"TR","Тринідад і Тобаго":"TT","Тувалу":"TV","Тайвань":"TW","Танзанія":"TZ","Україна":"UA","Уганда":"UG","Віддалені Острови США":"UM","США":"US","Уругвай":"UY","Узбекистан":"UZ","Ватикан":"VA","Сент-Вінсент і Гренадини":"VC","Венесуела":"VE","Віргінські острови Британії":"VG","Віргінські острови США":"VI","Вʼєтнам":"VN","Вануату":"VU","Уолліс і Футуна":"WF","Самоа":"WS","Ємен":"YE","Майот":"YT","ПАР":"ZA","Замбія":"ZM","Зімбабве":"ZW","Невідомий регіон":"ZZ"};
+ilib.data.ctrynames_ur = {"اسکینسیئن آئلینڈ":"AC","انڈورا":"AD","متحدہ عرب امارات":"AE","افغانستان":"AF","انٹیگوا اور باربودا":"AG","انگوئیلا":"AI","البانیہ":"AL","آرمینیا":"AM","نیدرلینڈز انٹیلیز":"AN","انگولا":"AO","انٹارکٹیکا":"AQ","ارجنٹینا":"AR","امریکی ساموآ":"AS","آسٹریا":"AT","آسٹریلیا":"AU","اروبا":"AW","آلینڈ آئلینڈز":"AX","آذربائجان":"AZ","بوسنیا اور ہرزیگووینا":"BA","باربادوس":"BB","بنگلہ دیش":"BD","بیلجیم":"BE","برکینا فاسو":"BF","بلغاریہ":"BG","بحرین":"BH","برونڈی":"BI","بینن":"BJ","سینٹ برتھلیمی":"BL","برمودا":"BM","برونئی":"BN","بولیویا":"BO","کریبیائی نیدرلینڈز":"BQ","برازیلی":"BR","بہاماس":"BS","بھوٹان":"BT","بؤویٹ آئلینڈ":"BV","بوتسوانا":"BW","بیلاروس":"BY","بیلائز":"BZ","کینیڈا":"CA","کوکوس [کیلنگ] جزائر":"CC","کانگو - کنشاسا":"CD","وسط افریقی جمہوریہ":"CF","کانگو - برازاویلے":"CG","سوئٹزر لینڈ":"CH","کوٹ ڈی آئیوری":"CI","کک آئلینڈز":"CK","چلی":"CL","کیمرون":"CM","چین":"CN","کولمبیا":"CO","کلپّرٹن آئلینڈ":"CP","کوسٹا ریکا":"CR","کیوبا":"CU","کیپ ورڈی":"CV","کیوراکاؤ":"CW","کرسمس آئلینڈ":"CX","قبرص":"CY","چیک جمہوریہ":"CZ","جرمنی":"DE","ڈائجو گارسیا":"DG","جبوتی":"DJ","ڈنمارک":"DK","ڈومنیکا":"DM","ڈومنیکن جمہوریہ":"DO","الجیریا":"DZ","سیئوٹا اور میلیلا":"EA","ایکواڈور":"EC","اسٹونیا":"EE","مصر":"EG","مغربی صحارا":"EH","اریٹیریا":"ER","ہسپانیہ":"ES","ایتھوپیا":"ET","یوروپی یونین":"EU","فن لینڈ":"FI","فجی":"FJ","فاکلینڈ آئلینڈز":"FK","مائکرونیشیا":"FM","فروئی آئلینڈز":"FO","فرانس":"FR","گیبون":"GA","سلطنت متحدہ":"GB","غرناطہ":"GD","جارجیا":"GE","فرینچ گیانا":"GF","گوئرنسی":"GG","گھانا":"GH","جبل الطارق":"GI","گرین لینڈ":"GL","گامبیا":"GM","گنی":"GN","گواڈیلوپ":"GP","استوائی گیانا":"GQ","یونان":"GR","جنوبی جارجیا اور جنوبی سینڈوچ جزائر":"GS","گواٹے مالا":"GT","گوآم":"GU","گنی بساؤ":"GW","گیانا":"GY","ہانگ کانگ SAR چین":"HK","ہیئرڈ آئلینڈ اور میکڈونالڈ آئلینڈز":"HM","ہونڈاروس":"HN","کروشیا":"HR","ہیتی":"HT","ہنگری":"HU","کینری آئلینڈز":"IC","انڈونیشیا":"ID","آئرلینڈ":"IE","اسرائیل":"IL","آئل آف مین":"IM","بھارت":"IN","برطانوی ہندوستانی سمندری خطہ":"IO","عراق":"IQ","ایران":"IR","آئس لینڈ":"IS","اٹلی":"IT","جرسی":"JE","جمائیکا":"JM","اردن":"JO","جاپان":"JP","کینیا":"KE","کرغزستان":"KG","کمبوڈیا":"KH","کریباتی":"KI","کوموروس":"KM","سینٹ کٹس اور نیویس":"KN","شمالی کوریا":"KP","جنوبی کوریا":"KR","کویت":"KW","کیمین آئلینڈز":"KY","قزاخستان":"KZ","لاؤس":"LA","لبنان":"LB","سینٹ لوسیا":"LC","لیشٹنسٹائن":"LI","سری لنکا":"LK","لائبیریا":"LR","لیسوتھو":"LS","لتھوانیا":"LT","لگژمبرگ":"LU","لٹویا":"LV","لیبیا":"LY","مراقش":"MA","موناکو":"MC","مالدووا":"MD","مونٹے نیگرو":"ME","سینٹ مارٹن":"MF","مڈغاسکر":"MG","مارشل آئلینڈز":"MH","مقدونیہ":"MK","مالی":"ML","میانمار [برما]":"MM","منگولیا":"MN","مکاؤ SAR چین":"MO","شمالی ماریانا آئلینڈز":"MP","مارٹینک":"MQ","موریطانیہ":"MR","مونٹسیراٹ":"MS","مالٹا":"MT","ماریشس":"MU","مالدیو":"MV","ملاوی":"MW","میکسیکو":"MX","ملیشیا":"MY","موزمبیق":"MZ","نامیبیا":"NA","نیو کلیڈونیا":"NC","نائجر":"NE","نار فاک آئلینڈ":"NF","نائجیریا":"NG","نکاراگووا":"NI","نیدر لینڈز":"NL","ناروے":"NO","نیپال":"NP","نؤرو":"NR","نیئو":"NU","نیوزی ینڈ":"NZ","عمان":"OM","پنامہ":"PA","پیرو":"PE","فرانسیسی پولینیشیا":"PF","پاپوآ نیو گنی":"PG","فلپائنی":"PH","پاکستان":"PK","پولینڈ":"PL","سینٹ پیئر اور میکلیئون":"PM","پٹکائرن جزائر":"PN","پیورٹو ریکو":"PR","فلسطینی خطے":"PS","پرتگال":"PT","پلاؤ":"PW","پیراگوئے":"PY","قطر":"QA","بیرونی اوشیانیا":"QO","ری یونین":"RE","رومانیا":"RO","سربیا":"RS","روسی":"RU","روانڈا":"RW","سعودی عرب":"SA","سولومن آئلینڈز":"SB","سشلیز":"SC","سوڈان":"SD","سویڈن":"SE","سنگاپور":"SG","سینٹ ہیلینا":"SH","سلووینیا":"SI","سوالبرڈ اور جان ماین":"SJ","سلوواکیہ":"SK","سیئر لیون":"SL","سان مارینو":"SM","سینیگل":"SN","صومالیہ":"SO","سورینام":"SR","جنوبی سوڈان":"SS","ساؤ ٹوم اور پرنسپے":"ST","ال سلواڈور":"SV","سنٹ مارٹن":"SX","شام":"SY","سوازی لینڈ":"SZ","ٹرسٹن ڈا کیونہا":"TA","ترکس اور کیکاؤس جزائر":"TC","چاڈ":"TD","فرانسیسی جنوبی خطے":"TF","ٹوگو":"TG","تھائی لینڈ":"TH","تاجکستان":"TJ","ٹوکیلاؤ":"TK","تیمور لیسٹ":"TL","ترکمانستان":"TM","تیونیسیا":"TN","ٹونگا":"TO","ترکی":"TR","ترینیداد اور ٹوباگو":"TT","ٹووالو":"TV","تائیوان":"TW","تنزانیہ":"TZ","یوکرین":"UA","یوگانڈا":"UG","امریکہ سے باہر کے چھوٹے جزائز":"UM","ریاستہائے متحدہ":"US","یوروگوئے":"UY","ازبکستان":"UZ","واٹیکن سٹی":"VA","سینٹ ونسنٹ اور گرینیڈائنز":"VC","وینزوئیلا":"VE","برٹش ورجن آئلینڈز":"VG","امریکی ورجن آئلینڈز":"VI","ویتنام":"VN","وینوآٹو":"VU","ویلیز اور فیوٹیونا":"WF","ساموآ":"WS","یمن":"YE","مایوٹ":"YT","جنوبی افریقہ":"ZA","زامبیا":"ZM","زمبابوے":"ZW","نامعلوم علاقہ":"ZZ"};
+ilib.data.ctrynames_uz_Arab_AF = {"AF":"افغانستان","UZ":"UZ"};
+ilib.data.ctrynames_uz_Latn_UZ = {"Afgʻoniston":"AF","Braziliya":"BR","Xitoy":"CN","Olmoniya":"DE","Fransiya":"FR","Birlashgan Qirollik":"GB","Hindiston":"IN","Italiya":"IT","Yaponiya":"JP","Rossiya":"RU","Qoʻshma Shtatlar":"US","Oʻzbekiston":"UZ"};
+ilib.data.ctrynames_vai = {"ꕉꖆꕟ":"AD","ꖳꕯꔤꗳ ꕉꕟꔬ ꗡꕆꔓꔻ":"AE","ꕉꔱꕭꔕꔻꕚꘋ":"AF","ꕉꘋꔳꖶꕎ ꗪ ꕑꖜꕜ":"AG","ꕉꕄꕞ":"AI","ꕉꔷꕑꕇꕩ":"AL","ꕉꕆꕯ":"AM","ꘉꕜ ꖨꕮꕊ ꕉꘋꔳꔷ":"AN","ꕉꖐꕞ":"AO","ꕉꘀꘋꔳꕯ":"AR","ꕶꕱ ꕢꕹꕎ":"AS","ꖺꔻꖤꕎ":"AT","ꖺꖬꖤꔃꔷꕩ":"AU","ꕉꖩꕑ":"AW","ꕉꕤꕑꔤꕧꘋ":"AZ","ꕷꔻꕇꕰ ꗪ ꗥꕤꖑꔲꕯ":"BA","ꕑꔆꖁꔻ":"BB","ꕑꕅꕞꗵꔼ":"BD","ꗩꕀꗚꘋ":"BE","ꕷꕃꕯ ꕘꖇ":"BF","ꗂꔠꔸꕩ":"BG","ꕑꗸꘋ":"BH","ꖜꖩꔺ":"BI","ꗩꕇꘋ":"BJ","ꗩꖷꕜ":"BM","ꖜꖩꘉꔧ":"BN","ꕷꔷꔲꕩ":"BO","ꖜꕟꔘꔀ":"BR","ꕑꕌꕮꔻ":"BS","ꖜꕚꘋ":"BT","ꕷꖬꕎꕯ":"BW","ꗩꕞꖩꔻ":"BY","ꔆꔷꔘ":"BZ","ꕪꕯꕜ":"CA","ꖏꖐ ꗵꗞꖴꕟꔎ ꕸꖃꔀ":"CD","ꕉꔱꔸꕪ ꗳ ꗳ ꕸꖃꔀ":"CF","ꖏꖐ":"CG","ꖬꔃꕤ ꖨꕮꕊ":"CH","ꖏꔳ ꕾꕎ":"CI","ꖏꕃ ꔳꘋꗣ":"CK","ꔚꔷ":"CL","ꕪꔈꖩꘋ":"CM","ꕦꔤꕯ":"CN","ꗛꗏꔭꕩ":"CO","ꖏꔻꕚ ꔸꕪ":"CR","ꕃꖳꕑ":"CU","ꔞꔪ ꗲꔵ ꔳꘋꗣ":"CV","ꕢꗡꖛꗐꔻ":"CY","ꗿꕃ ꕸꖃꔀ":"CZ","ꕧꕮꔧ":"DE","ꕀꖜꔳ":"DJ","ꕜꕇꕮꕃ":"DK","ꖁꕆꕇꕪ":"DM","ꖁꕆꕇꕪꘋ ꕸꕱꔀ":"DO","ꕉꔷꔠꔸꕩ":"DZ","ꗡꖴꔃꗍ":"EC","ꗡꔻꕿꕇꕰ":"EE","ꕆꔖꕞ":"EG","ꔀꔸꔳꕟ":"ER","ꕐꘊꔧ":"ES","ꔤꔳꖎꔪꕩ":"ET","ꔱꘋ ꖨꕮꕊ":"FI","ꔱꔤꕀ":"FJ","ꕘꔷꕃ ꖨꕮ ꔳꘋꗣ":"FK","ꕆꖏꕇꔻꕩ":"FM","ꖢꕟꘋꔻ":"FR","ꕭꕷꘋ":"GA","ꖕꕯꔤꗳ":"GB","ꖶꕟꕯꕜ":"GD","ꗘꖺꕀꕩ":"GE","ꗱꘋꔻ ꖶꕎꕯ":"GF","ꕭꕌꕯ":"GH","ꕀꖜꕟꕚ":"GI","ꕧꕓ ꖴꕎ ꖨꕮꕊ":"GL","ꕭꔭꕩ":"GM","ꕅꔤꕇ":"GN","ꖶꕎꔐꖨꔅ":"GP","ꖦꕰꕊ ꗳ ꕅꔤꕇ":"GQ","ꗥꗷꘋ":"GR","ꖶꕎꔎꕮꕞ":"GT","ꖶꕎꕆ":"GU","ꕅꔤꕇ ꔫꕢꕴ":"GW","ꖶꕩꕯ":"GY","ꖽꖫꕟ":"HN","ꖏꔓꔻꕩ":"HR","ꕌꔤꔳ":"HT","ꖽꘋꕭꔓ":"HU","ꔤꖆꕇꔻꕩ":"ID","ꕉꔓ ꖨꕮꕊ":"IE","ꕑꕇꔻꕞꔤꕞ":"IL","ꔤꔺꕩ":"IN","ꔛꔟꔻ ꔤꔺꕩ ꗛꔤꘂ ꕗꕴꔀ ꕮ":"IO","ꔤꕟꕃ":"IQ","ꔤꕟꘋ":"IR","ꕉꔤꔻ ꖨꕮꕊ":"IS","ꔤꕚꔷ":"IT","ꕧꕮꔧꕪ":"JM","ꗘꖺꗵꘋ":"JO","ꔛꗨꗢ":"JP","ꔞꕰ":"KE","ꕃꕅꔻꕚꘋ":"KG","ꕪꕹꔵꕩ":"KH","ꕃꔸꕑꔳ":"KI","ꖏꕹꖄꔻ":"KM","ꔻꘋ ꕃꔳꔻ ꗪ ꔕꔲꔻ":"KN","ꖏꔸꕩ ꗛꔤ ꕪꘋꗒ":"KP","ꖏꔸꕩ ꗛꔤ ꔒꘋꗣ ꗏ":"KR","ꖴꔃꔳ":"KW","ꔞꔀꕮꘋ ꔳꘋꗣ":"KY","ꕪꕤꔻꕚꘋ":"KZ","ꕞꕴꔻ":"LA","ꔒꕑꗟꘋ":"LB","ꔻꘋ ꖨꔻꕩ":"LC","ꔷꗿꘋꔻꗳꘋ":"LI","ꖬꔸ ꕞꘋꕪ":"LK","ꕞꔤꔫꕩ":"LR","ꔷꖇꕿ":"LS","ꔷꖤꔃꕇꕰ":"LT","ꗏꔻꘋꗂꖺ":"LU","ꕞꔳꔲꕩ":"LV","ꔒꔫꕩ":"LY","ꗞꕟꖏ":"MA","ꗞꕯꖏ":"MC","ꖒꔷꖁꕙ":"MD","ꕮꕜꕭꔻꕪ":"MG","ꕮꕊꕣ ꔳꘋꗣ":"MH","ꕮꔖꖁꕇꕰ":"MK","ꕮꔷ":"ML","ꕆꕩꘋꕮ":"MM","ꗞꖐꔷꕩ":"MN","ꗛꔤ ꕪꘋꗒ ꕮꔸꕩꕯ ꔳꘋꗣ":"MP","ꕮꔳꕇꕃ":"MQ","ꗞꔓꔎꕇꕰ":"MR","ꗞꘋꔖꕟꔳ":"MS","ꕮꕊꕚ":"MT","ꗞꔓꗔ":"MU","ꕮꔷꕜꔍ":"MV","ꕮꕞꕌꔨ":"MW","ꘈꔻꖏ":"MX","ꕮꔒꔻꕩ":"MY","ꕹꕤꔭꕃ":"MZ","ꕯꕆꔫꕩ":"NA","ꕪꔷꖁꕇꕰ ꕯꕮꕊ":"NC","ꕯꔤꕧ":"NE","ꗟꖺꗉ ꔳꘋꗣ":"NF","ꕯꔤꕀꔸꕩ":"NG","ꕇꕪꕟꖶꕎ":"NI","ꘉꕜ ꖨꕮꕊ":"NL","ꗟꖺꔃ":"NO","ꕇꕐꔷ":"NP","ꖆꖩ":"NR","ꖸꔃꔤ":"NU","ꔽꔤ ꖨꕮ ꕯꕮꕊ":"NZ","ꕱꕮꘋ":"OM","ꕐꕯꕮ":"PA","ꗨꗡꖩ":"PE","ꗱꘋꔻ ꕶꔷꕇꔻꕩ":"PF","ꕐꖛꕎ ꕅꔤꕇ ꕯꕮꕊ":"PG","ꔱꔒꔪꘋ":"PH","ꕐꕃꔻꕚꘋ":"PK","ꕶꗷꘋ":"PL","ꔻꘋ ꔪꘂ ꗪ ꕆꔞꗏꘋ":"PM","ꔪꔳꕪꕆ":"PN","ꔪꖳꕿ ꔸꖏ":"PR","ꕐꔒꔻꔳꕯ ꔎꔒ ꕀꔤ ꗛꔤ ꕞ ꗱ ꗪ ꕭꕌꕤ":"PS","ꕶꕿꕃꔤ ꕸꖃꔀ":"PT","ꕐꖃ":"PW","ꕐꕟꗝꔀ":"PY","ꕪꕚꕌ":"QA","ꔓꗠꖻ":"RE","ꖄꕆꕇꕰ":"RO","ꗐꖺꔻꕩ":"RU","ꕟꖙꕡ":"RW","ꕞꕌꖝ ꕸꖃꔀ":"SA","ꖬꕞꔤꕮꕊꕯ ꔳꘋꗣ":"SB","ꔖꗼꔷ":"SC","ꖬꗵꘋ":"SD","ꖬꔨꗵꘋ":"SE","ꔻꕬꕶꕱ":"SG","ꔻꘋ ꗥꔷꕯ":"SH","ꔻꖃꔍꕇꕰ":"SI","ꔻꖃꕙꕃꕩ":"SK","ꔋꕩ ꕒꕌꖺ ꕸꖃꔀ":"SL","ꕮꔸꖆ ꕢꘋ":"SM","ꔻꕇꕭꕌ":"SN","ꖇꕮꔷꕩ":"SO","ꖬꔸꕯꔈ":"SR","ꕢꕴ ꕿꔈ ꗪ ꕉ ꕮꔧ ꕗꕴꔀ":"ST","ꗡꗷ ꕢꔍꗍꖺ":"SV","ꔻꕩꘋ":"SY","ꖬꕎꔽ ꖨꕮꕊ":"SZ","ꗋꖺꕃꔻ ꗪ ꕪꔤꖏꔻ ꔳꘋꗣ":"TC","ꕦꔵ":"TD","ꕿꖑ":"TG","ꕚꔤ ꖨꕮꕊ":"TH","ꕚꕀꕃꔻꕚꘋ":"TJ","ꕿꔞꖃ":"TK","ꔎꔒ ꗃ ꔳꗞꖻ":"TL","ꗋꖺꕃꕮꕇꔻꕚꘋ":"TM","ꖤꕇꔻꕩ":"TN","ꗋꕬ":"TO","ꗋꖺꕃ":"TR","ꖤꔸꔕꕜ ꗪ ꕿꔆꖑ":"TT","ꕚꖣꖨ":"TV","ꕚꔤꕎꘋ":"TW","ꕚꘋꕤꕇꕰ":"TZ","ꖳꖴꔓꘋ":"UA","ꖳꕭꕡ":"UG","ꕶꕱ":"US","ꖳꔓꗝꔀ":"UY","ꖳꗩꕃꔻꕚꘋ":"UZ","ꔻꘋ ꔲꘋꔻꘋ ꗪ ꖶꔓꕯꔵꘋ ꖸ":"VC","ꕙꔳꕪꘋ ꕸꖃꔀ":"VE","ꔛꔟꔻ ꗩꗡ ꗏ ꖷꖬ ꔳꘋꗣ":"VG","ꕶꕱ ꗩꗡ ꗏ ꖷꖬ ꔳꘋꗣ":"VI","ꗲꕇꖮꔃꕞ":"VN","ꕙꖸꕎꖤ":"VU","ꕎꔷꔻ ꗪ ꖢꖤꕯ":"WF","ꕢꕹꖙꕉ":"WS","ꔝꘈꘋ":"YE","ꕮꗚꔎ":"YT","ꕉꔱꔸꕪ ꗛꔤ ꔒꘋꗣ ꗏ ꕸꖃꔀ":"ZA","ꕤꔭꕩ":"ZM","ꔽꕓꖜꔃ":"ZW"};
+ilib.data.ctrynames_vai_Latn_LR = {"Aŋdóra":"AD","Yunaitɛ Arabhi Ɛmire":"AE","Afigándesitaŋ":"AF","Aŋtígwa Ɓahabhuda":"AG","Aŋgíla":"AI","Abhaniya":"AL","Améniya":"AM","Nidɔlɛŋ Aŋtili":"AN","Aŋgóla":"AO","Ajɛŋtína":"AR","Poo Sambowa":"AS","Ɔ́situwa":"AT","Ɔsituwéeliya":"AU","Arubha":"AW","Azabhaijaŋ":"AZ","Bhɔsiniya":"BA","Bhabhedo":"BB","Bhangiladɛ̀shi":"BD","Bhɛgiyɔŋ":"BE","Bhokina Fáso":"BF","Bhɔgeriya":"BG","Bharɛŋ":"BH","Bhurundi":"BI","Bhɛni":"BJ","Bhɛmuda":"BM","Bhurunɛĩ":"BN","Bholiviya":"BO","Bhurazeli":"BR","Bahámasi":"BS","Bhutaŋ":"BT","Bhosuwana":"BW","Bhɛlarusi":"BY","Bheliz":"BZ","Kánáda":"CA","Avorekoo":"CD","Áfíríka Lumaã Tɛ Boloe":"CF","Kóngo":"CG","Suweza Lumaã":"CH","Kódivówa":"CI","Kóki Tiŋŋɛ":"CK","Chéli":"CL","Kameruŋ":"CM","Cháína":"CN","Kɔlɔmbiya":"CO","Kósíta Ríko":"CR","Kiyubha":"CU","Kepi Vɛdi Tiŋŋɛ":"CV","Saɛpurɔ":"CY","Chɛki Boloe":"CZ","Jamáĩ":"DE","Jibhuti":"DJ","Danimaha":"DK","Domíiníka":"DM","Domíiníka Ɓoloe":"DO","Agiriya":"DZ","Ɛ́kúwédɔ":"EC","Ɛsitóninya":"EE","Míséla":"EG","Ɛritera":"ER","Panyɛĩ":"ES","Ítiyópiya":"ET","Fiŋlɛŋ":"FI","Fíji":"FJ","Fáháki Luma Tiŋŋɛ":"FK","Mikonisiya":"FM","Fɛŋsi":"FR","Gabhɔŋ":"GA","Yunaitɛ Kíŋdɔŋ":"GB","Gurinéda":"GD","Jɔɔjiya":"GE","Fɛŋsi Giwana":"GF","Gana":"GH","Jibhurata":"GI","Jamba Kuwa Lumaã":"GL","Gambiya":"GM","Gini":"GN","Guwadelupe":"GP","Dúúnyá Tɛ Giini":"GQ","Hɛlɛŋ":"GR","Guwatɛmala":"GT","Guwami":"GU","Gini Bhisawo":"GW","Guyana":"GY","Hɔndura":"HN","Koresiya":"HR","Háiti":"HT","Hɔ́ngare":"HU","Índonisiya":"ID","Áre Lumaã":"IE","Bhanísiláila":"IL","Índiya":"IN","Jengéesi Gbawoe Índiya Kɔiyɛ Lɔ":"IO","Iraki":"IQ","Iraŋ":"IR","Áisi Lumaã":"IS","Ítali":"IT","Jamaika":"JM","Jɔɔdaŋ":"JO","Japaŋ":"JP","Kénya":"KE","Kigisitaŋ":"KG","Kaŋbhodiya":"KH","Kiribhati":"KI","Komorosi":"KM","Siŋ Kisi ɓɛ́ Nevisi":"KN","Koriya Kɔi Kaŋndɔ":"KP","Koriya Kɔi Leŋŋɛ Lɔ":"KR","Kuweti":"KW","Keemaŋ Tiŋŋɛ":"KY","Kazasitaŋ":"KZ","Lawosi":"LA","Lebhanɔ":"LB","Siŋ Lusiya":"LC","Suri Laŋka":"LK","Laibhiya":"LR","Lisóto":"LS","Lituweninya":"LT","Lusimbɔ":"LU","Lativiya":"LV","Lebhiya":"LY","Mɔroko":"MA","Mɔnako":"MC","Mɔlidova":"MD","Madagasita":"MG","Masha Tiŋŋɛ":"MH","Masedoninya":"MK","Mali":"ML","Miyamaha":"MM","Mɔngoliya":"MN","Kɔi Kaŋndɔ Mariyana Tiŋŋɛ":"MP","Matiniki":"MQ","Mɔretaninya":"MR","Mɔserati":"MS","Malita":"MT","Mɔreshɔ":"MU","Malidavi":"MV","Malawi":"MW","Mɛsíko":"MX","Malesiya":"MY","Mozambiki":"MZ","Namibiya":"NA","Kalidoninya Námaá":"NC","Naĩja":"NE","Nɔfɔ Tiŋŋɛ":"NF","Naĩjiriya":"NG","Nikaraguwa":"NI","Nidɔlɛŋ":"NL","Nɔɔwe":"NO","Nepa":"NP","Noru":"NR","Niwe":"NU","Zilɛŋ Námaá":"NZ","Omaŋ":"OM","Panama":"PA","Pɛru":"PE","Fɛŋsi Polinísiya":"PF","Papuwa Gini Námaá":"PG","Félepiŋ":"PH","Pakisitaŋ":"PK","Pólɛŋ":"PL","Siŋ Piiyɛ ɓɛ́ Mikelɔŋ":"PM","Pitikɛŋ":"PN","Piyuto Riko":"PR","Palesitininya Tele Jii Kɔiyɛ lá hĩ Gaza":"PS","Potokíi":"PT","Palo":"PW","Paragɔe":"PY","Kataha":"QA","Renyɔɔ̃":"RE","Romininya":"RO","Rɔshiya":"RU","Rawunda":"RW","Lahabu":"SA","Sulaimaãna Tiŋŋɛ":"SB","Seshɛɛ":"SC","Sudɛŋ":"SD","Suwidɛŋ":"SE","Síingapoo":"SG","Siŋ Hɛlina":"SH","Suloveninya":"SI","Sulovakiya":"SK","Gbeya Bahawɔ":"SL","Saŋ Marindo":"SM","Sinigaha":"SN","Somaliya":"SO","Surinambe":"SR","Sawo Tombe ɓɛ a Gbawoe":"ST","Ɛlɛ Sávádɔ":"SV","Síyaŋ":"SY","Suwazi Lumaã":"SZ","Tukisi ɓɛ̀ Kaikóosi Tiŋŋɛ":"TC","Chádi":"TD","Togo":"TG","Tai Lumaã":"TH","Tajikisitaŋ":"TJ","Tokelo":"TK","Tele Ɓɔ́ Timɔɔ̃":"TL","Tukimɛnisitaŋ":"TM","Tunisiya":"TN","Tɔnga":"TO","Tɔ́ɔ́ki":"TR","Turindeda ɓɛ́ Tobhego":"TT","Tuválu":"TV","Taiwaŋ":"TW","Taŋzaninya":"TZ","Yukuréŋ":"UA","Yuganda":"UG","Poo":"US","Yuwegɔwe":"UY","Yubhɛkisitaŋ":"UZ","Vatikaŋ Ɓoloe":"VA","Siŋ Viŋsi":"VC","Vɛnɛzuwela":"VE","Jengéesi Bhɛɛ Lɔ Musu Tiŋŋɛ":"VG","Poo Bhɛɛ lɔ Musu Tiŋŋɛ":"VI","Viyanami":"VN","Vanuwátu":"VU","Walísi":"WF","Samowa":"WS","Yemɛni":"YE","Mavote":"YT","Afirika Kɔi Leŋŋɛ Lɔ":"ZA","Zambiya":"ZM","Zimbabhuwe":"ZW"};
 ilib.data.ctrynames_vi = {"Đảo Ascension":"AC","Andorra":"AD","Các Tiểu Vương quốc A-rập Thống nhất":"AE","Afghanistan":"AF","Antigua và Barbuda":"AG","Anguilla":"AI","Albani":"AL","Armenia":"AM","Tây Ấn Hà Lan":"AN","Angola":"AO","Nam Cực":"AQ","Argentina":"AR","Đảo Somoa thuộc Mỹ":"AS","Áo":"AT","Úc":"AU","Aruba":"AW","Quần đảo Aland":"AX","Azerbaijan":"AZ","Bô-xni-a Héc-xê-gô-vi-na":"BA","Barbados":"BB","Bangladesh":"BD","Bỉ":"BE","Burkina Faso":"BF","Bungari":"BG","Bahrain":"BH","Burundi":"BI","Benin":"BJ","Saint Barthélemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Bra-xin":"BR","Bahamas":"BS","Bhutan":"BT","Đảo Bouvet":"BV","Botswana":"BW","Belarus":"BY","Bê-li-xê":"BZ","Ca-na-đa":"CA","Quần đảo Cocos":"CC","Congo - Kinshasa":"CD","Cộng hòa Trung Phi":"CF","Công-gô":"CG","Thụy Sĩ":"CH","Bờ Biển Ngà":"CI","Quần Đảo Cook":"CK","Chile":"CL","Ca-mơ-run":"CM","Trung Quốc":"CN","Colombia":"CO","Đảo Clipperton":"CP","Cốt-xta Ri-ca":"CR","Cu Ba":"CU","Cape Verde":"CV","Curaçao":"CW","Đảo Giáng Sinh":"CX","Síp":"CY","Cộng hòa Séc":"CZ","Đức":"DE","Diego Garcia":"DG","Djibouti":"DJ","Đan Mạch":"DK","Dominica":"DM","Cộng hòa Dominica":"DO","Algeria":"DZ","Ceuta và Melilla":"EA","Ecuador":"EC","Estonia":"EE","Ai Cập":"EG","Tây Sahara":"EH","Eritrea":"ER","Tây Ban Nha":"ES","Ethiopia":"ET","Liên Minh Châu Âu":"EU","Phần Lan":"FI","Fiji":"FJ","Quần Đảo Falkland":"FK","Micronesia":"FM","Quần Đảo Faroe":"FO","Pháp":"FR","Gabon":"GA","Vương quốc Anh":"GB","Grenada":"GD","Georgia":"GE","Quiana thuộc Pháp":"GF","Guernsey":"GG","Ghana":"GH","Gibraltar":"GI","Băng Đảo":"GL","Gambia":"GM","Guinea":"GN","Guadeloupe":"GP","Guinea Xích Đạo":"GQ","Hy Lạp":"GR","Quần đảo Nam Georgia và Nam Sandwich":"GS","Goa-tê-ma-la":"GT","Guam":"GU","Guinea-Bissau":"GW","Guyana":"GY","Đặc khu hành chính Hồng Kông thuộc CHND Trung Hoa":"HK","Đảo Heard và Quần đảo McDonald":"HM","Hôn-đu-rát":"HN","Croatia":"HR","Haiti":"HT","Hungari":"HU","Quần đảo Canary":"IC","Indonesia":"ID","Ai-len":"IE","Israel":"IL","Đảo Man":"IM","Ấn Độ":"IN","Thuộc địa Anh tại Ấn Độ Dương":"IO","I-rắc":"IQ","I-ran":"IR","Ai-xơ-len":"IS","Ý":"IT","Jersey":"JE","Jamaica":"JM","Jordan":"JO","Nhật Bản":"JP","Kenya":"KE","Kyrgyzstan":"KG","Campuchia":"KH","Kiribati":"KI","Comoros":"KM","Saint Kitts và Nevis":"KN","Bắc Triều Tiên":"KP","Hàn Quốc":"KR","Cô-oét":"KW","Quần Đảo Cayman":"KY","Kazakhstan":"KZ","Lào":"LA","Li-băng":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","LIberia":"LR","Lesotho":"LS","Lithuania":"LT","Luxembourg":"LU","Latvia":"LV","Li-bi":"LY","Ma-rốc":"MA","Monaco":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Madagascar":"MG","Quần đảo Marshall":"MH","Macedonia":"MK","Mali":"ML","Myanmar [Miến Điện]":"MM","Mông Cổ":"MN","Đặc khu hành chính Macao thuộc CHND Trung Hoa":"MO","Quần Đảo Bắc Mariana":"MP","Martinique":"MQ","Mauritania":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldives":"MV","Malawi":"MW","Mê-hi-cô":"MX","Malaysia":"MY","Mozambique":"MZ","Namibia":"NA","New Caledonia":"NC","Niger":"NE","Đảo Norfolk":"NF","Nigeria":"NG","Nicaragua":"NI","Hà Lan":"NL","Na Uy":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","New Zealand":"NZ","Oman":"OM","Pa-na-ma":"PA","Peru":"PE","Polynesia thuộc Pháp":"PF","Papua New Guinea":"PG","Philippin":"PH","Pakistan":"PK","Ba Lan":"PL","Saint Pierre và Miquelon":"PM","Quần đảo Pitcairn":"PN","Puerto Rico":"PR","Lãnh thổ Palestine":"PS","Bồ Đào Nha":"PT","Palau":"PW","Paraguay":"PY","Qatar":"QA","Vùng xa xôi thuộc Châu Đại Dương":"QO","Réunion":"RE","Romania":"RO","Serbia":"RS","Nga":"RU","Rwanda":"RW","A-rập Xê-út":"SA","Quần đảo Solomon":"SB","Seychelles":"SC","Xu-đăng":"SD","Thụy Điển":"SE","Singapore":"SG","Saint Helena":"SH","Slovenia":"SI","Svalbard và Jan Mayen":"SJ","Slovakia":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somali":"SO","Suriname":"SR","Nam Sudan":"SS","São Tomé và Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Syria":"SY","Swaziland":"SZ","Tristan da Cunha":"TA","Quần Đảo Turk và Caicos":"TC","Chad":"TD","Thuộc Địa Nam của Pháp":"TF","Togo":"TG","Thái Lan":"TH","Tajikistan":"TJ","Tokelau":"TK","Đông Ti-mo":"TL","Turkmenistan":"TM","Tuy-ni-di":"TN","Tonga":"TO","Thổ Nhĩ Kỳ":"TR","Trinidad và Tobago":"TT","Tuvalu":"TV","Đài Loan":"TW","Tanzania":"TZ","Ukraina":"UA","Uganda":"UG","Các đảo nhỏ xa trung tâm thuộc Mỹ":"UM","Hoa Kỳ":"US","Uruguay":"UY","Uzbekistan":"UZ","Va-ti-căng":"VA","Saint Vincent và Grenadines":"VC","Venezuela":"VE","Quần đảo Virgin thuộc Anh":"VG","Quần đảo Virgin thuộc Mỹ":"VI","Việt Nam":"VN","Vanuatu":"VU","Wallis và Futuna":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Nam Phi":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Vùng Chưa biết hoặc không Hợp lệ":"ZZ"};
 ilib.data.ctrynames_zh = {"generated":false,"阿富汗":"AF","阿尔巴尼亚":"AL","阿尔及利亚":"DZ","美属萨摩亚":"AS","安道尔":"AD","安哥拉":"AO","安圭拉":"AI","阿根廷":"AR","亚美尼亚":"AM","阿鲁巴":"AW","阿森松":"SH","阿森松岛":"SH","澳大利亚":"AU","奥地利":"AT","阿塞拜疆":"AZ","英属维尔京群岛":"VG","巴哈马":"BS","巴林":"BH","孟加拉国":"BD","巴巴多斯":"BB","白俄罗斯":"BY","比利时":"BE","伯利兹":"BZ","贝宁":"BJ","百慕大":"BM","不丹":"BT","玻利维亚":"BO","博茨瓦纳":"BW","巴西":"BR","英属印度洋领地":"IO","文莱":"BN","文莱达鲁萨兰国":"BN","保加利亚":"BG","布基纳法索":"BF","缅甸":"MM","布隆迪":"BI","柬埔寨":"KH","喀麦隆":"CM","佛得角":"CV","开曼":"KY","中非共和国":"CF","乍得":"TD","智利":"CL","中国":"CN","哥伦比亚":"CO","科摩罗":"KM","库克群岛":"CK","哥斯达黎加":"CR","克罗地亚":"HR","古巴":"CU","塞浦路斯":"CY","捷克共和国":"CZ","科特迪瓦":"CI","多米尼加共和国":"CD","刚果民主共和国":"CD","丹麦":"DK","吉布提":"DJ","多米尼克":"DM","东帝汶":"TL","厄瓜多尔":"EC","埃及":"EG","萨尔瓦多":"SV","赤道几内亚":"GQ","厄立特里亚":"ER","爱沙尼亚":"EE","埃塞俄比亚":"ET","马其顿共和国（前南斯拉夫）":"MK","福克兰群岛":"FK","法罗群岛":"FO","密克罗尼西亚联邦":"FM","斐济":"FJ","芬兰":"FI","法国":"FR","法属圭亚那":"GF","法属波利尼西亚":"PF","加蓬":"GA","冈比亚":"GM","乔治亚州":"GE","德国":"DE","加纳":"GH","直布罗陀":"GI","希腊":"GR","格陵兰":"GL","格林纳达":"GD","瓜德罗普岛":"GP","关岛":"GU","危地马拉":"GT","几内亚":"GN","几内亚比绍":"GW","圭亚那":"GY","海地":"HT","洪都拉斯":"HN","香港":"HK","匈牙利":"HU","冰岛":"IS","印度":"IN","印度尼西亚":"ID","伊朗":"IR","伊拉克":"IQ","爱尔兰":"IE","以色列":"IL","意大利":"IT","牙买加":"JM","日本":"JP","约旦":"JO","肯尼亚":"KE","基里巴斯":"KI","科威特":"KW","吉尔吉斯斯坦":"KG","老挝":"LA","拉脱维亚":"LV","黎巴嫩":"LB","莱索托":"LS","利比里亚":"LR","利比亚":"LY","列支敦士登":"LI","立陶宛":"LT","卢森堡":"LU","澳门":"MO","马达加斯加":"MG","马拉维":"MW","马来西亚":"MY","马尔代夫":"MV","马里":"ML","马耳他":"MT","马绍尔群岛":"MH","马提尼克":"MQ","马提尼克岛":"MQ","毛里塔尼亚":"MR","毛里求斯":"MU","墨西哥":"MX","密克罗尼西亚":"FM","摩尔多瓦":"MD","摩纳哥":"MC","蒙古":"MN","黑山":"ME","摩洛哥":"MA","莫桑比克":"MZ","纳米比亚":"NA","瑙鲁":"NR","尼泊尔":"NP","荷兰":"NL","荷属安的列斯":"AN","新喀里多尼亚":"NC","新西兰":"NZ","尼加拉瓜":"NI","尼日尔":"NE","尼日利亚":"NG","诺福克岛":"NF","朝鲜":"KR","北马里亚纳群岛":"MP","挪威":"NO","阿曼":"OM","巴基斯坦":"PK","帕劳":"PW","巴勒斯坦民族权力机构":"PS","巴拿马":"PA","巴布亚新几内亚":"PG","巴拉圭":"PY","中华人民共和国":"CN","秘鲁":"PE","菲律宾":"PH","皮特凯恩":"PN","波兰":"PL","葡萄牙":"PT","波多黎各":"PR","卡塔尔":"QA","台湾":"TW","爱尔兰共和国":"IE","罗马尼亚":"RO","俄罗斯":"RU","卢旺达":"RW","留尼汪":"RE","圣海伦娜":"SH","圣卢西亚":"LC","圣皮埃尔和密克隆岛":"PM","萨摩亚":"WS","圣马力诺":"SM","沙特阿拉伯":"SA","塞内加尔":"SN","塞尔维亚":"RS","塞舌尔":"SC","塞拉利昂":"SL","新加坡":"SG","斯洛伐克":"SK","斯洛文尼亚":"SI","所罗门群岛":"SB","索马里":"SO","南非":"ZA","韩国":"KR","西班牙":"ES","斯里兰卡":"LK","苏丹":"SD","苏里南":"SR","斯威士兰":"SZ","瑞典":"SE","瑞士":"CH","叙利亚":"SY","塔吉克斯坦":"TJ","坦桑尼亚":"TZ","泰国":"TH","开曼群岛":"KY","美属维尔京群岛":"VI","多哥":"TG","托克劳":"TK","汤加":"TO","突尼斯":"TN","土耳其":"TR","土库曼斯坦":"TM","图瓦卢":"TV","阿联酋":"AE","乌干达":"UG","乌克兰":"UA","阿拉伯联合酋长国":"AE","英国":"GB","乌拉圭":"UY","乌兹别克斯坦":"UZ","瓦努阿图":"VU","梵蒂冈城":"VA","委内瑞拉":"VE","越南":"VN","瓦利斯和富图纳群岛":"WF","也门":"YE","赞比亚":"ZM","津巴布韦":"ZW","奥兰群岛":"AX","安提瓜":"AG","巴布达":"AG","委内瑞拉玻利瓦尔共和国":"VE","多民族玻利维亚国":"BO","波斯尼亚":"BA","布维岛":"BV","汶莱":"BN","凯科斯群岛":"TC","加拿大":"CA","圣诞岛":"CX","茯苓和基林群岛":"CC","茯苓群岛":"CC","刚果":"CD","朝鲜民主人民共和国":"KP","多米尼加":"DM","法罗":"FO","法国南部领土":"TF","富图纳":"WF","格鲁吉亚":"GE","大不列颠":"GB","格林纳丁斯":"VC","根西岛":"GG","赫德岛和麦当劳群岛":"HM","赫德岛":"HM","黑塞哥维那":"BA","教廷":"VA","伊朗共和国":"IR","马恩岛":"IM","象牙海岸":"CI","扬马延":"SJ","哈萨克斯坦":"KZ","大韩民国":"KR","老挝人民民主共和国":"LA","阿拉伯利比亚民众国":"LY","马其顿":"MK","马尔维纳斯":"FK","马里亚纳":"MP","马约特":"YT","麦当劳群岛":"HM","密克隆":"PM","摩尔多瓦共和国":"MD","蒙特内格罗":"ME","蒙特塞拉特":"MS","尼维斯":"KN","北朝鲜":"KP","巴勒斯坦":"PS","巴勒斯坦领土":"PS","被占领的巴勒斯坦领土":"PS","普林西比":"ST","新加坡共和國":"SG","俄罗斯联邦":"RU","圣巴泰勒米":"BL","圣赫勒拿":"SH","圣赫勒拿，阿森松岛和特里斯坦达库尼亚":"SH","圣基茨":"KN","圣马丁":"MF","圣皮埃尔":"PM","圣文森特":"VC","圣多美":"ST","南格鲁吉亚":"GS","南格鲁吉亚和南桑威奇群岛":"GS","南桑威奇群岛":"GS","斯瓦尔巴岛":"SJ","斯瓦尔巴岛和扬马延岛":"SJ","阿拉伯叙利亚共和国":"SY","坦桑尼亚联合共和国":"TZ","多巴哥":"TT","特立尼达":"TT","特里斯坦达库尼亚":"SH","特克斯群岛":"TC","美国":"US","美利坚合众国":"US","梵帝冈":"VA","瓦利斯":"WF","西撒哈拉":"EH","阿拉伯半岛":"SA","佛得角群岛":"CV","科科斯(奇林)群岛":"CC","刚果，民主共和国":"CD","朝鲜民主主义人民共和国":"KP","迪拜":"AE","英格兰":"GB","巴勒斯坦被占领土":"PS","波利尼西亚":"PF","圣巴特岛":"BL","苏格兰":"GB","圣巴尔德勒米":"BL","南德桑威奇群岛":"GS","梵蒂冈城国":"VA","维尔京群岛":"VI","威尔士":"GB"};
-ilib.data.ctrynames_zh_TW = {"generated":false,"阿富汗":"AF","阿爾巴尼亞":"AL","阿爾及利亞":"DZ","美屬薩摩亞":"AS","安道爾":"AD","安哥拉":"AO","安圭拉":"AI","安提瓜和巴佈達":"AG","阿根廷":"AR","亞美尼亞":"AM","阿魯巴":"AW","阿森松":"SH","澳大利亞":"AU","奧地利":"AT","阿塞拜疆":"AZ","英屬維爾京群島":"VG","巴哈馬":"BS","巴林":"BH","孟加拉國":"BD","巴巴多斯":"BB","白俄羅斯":"BY","比利時":"BE","伯利茲":"BZ","貝寧":"BJ","百慕大":"BM","不丹":"BT","玻利維亞":"BO","波斯尼亞和黑塞哥維那":"BA","博茨瓦納":"BW","巴西":"BR","英屬印度洋領地":"IO","汶萊":"BN","汶萊達魯薩蘭國":"BN","保加利亞":"BG","布基納法索":"BF","緬甸":"MM","布隆迪":"BI","柬埔寨":"KH","喀麥隆":"CM","佛得角":"CV","開曼":"KY","中非共和國":"CF","乍得":"TD","智利":"CL","中國":"CN","哥倫比亞":"CO","科摩羅":"KM","庫克群島":"CK","哥斯大黎加":"CR","克羅地亞":"HR","古巴":"CU","塞浦路斯":"CY","捷克共和國":"CZ","科特迪瓦":"CI","多米尼加共和國":"CD","剛果民主共和國":"CD","丹麥":"DK","吉布提":"DJ","多米尼克":"DM","東帝汶":"TL","厄瓜多爾":"EC","埃及":"EG","薩爾瓦多":"SV","赤道幾內亞":"GQ","厄立特里亞":"ER","愛沙尼亞":"EE","衣索比亞":"ET","馬其頓共和國（前南斯拉夫）":"MK","福克蘭群島":"FK","法羅群島":"FO","密克羅尼西亞聯邦":"FM","斐濟":"FJ","芬蘭":"FI","法國":"FR","法屬圭亞那":"GF","法屬波利尼西亞":"PF","加蓬":"GA","岡比亞":"GM","喬治亞州":"GE","德國":"DE","加納":"GH","直布羅陀":"GI","希臘":"GR","格陵蘭":"GL","格林納達":"GD","瓜德羅普島":"GP","關島":"GU","危地馬拉":"GT","畿內亞":"GN","幾內亞比紹":"GW","圭亞那":"GY","海地":"HT","宏都拉斯":"HN","香港":"HK","匈牙利":"HU","冰島":"IS","印度":"IN","印度尼西亞":"ID","伊朗":"IR","伊拉克":"IQ","愛爾蘭":"IE","以色列":"IL","義大利":"IT","牙買加":"JM","日本":"JP","約旦":"JO","肯尼亞":"KE","基裏巴斯":"KI","科威特":"KW","吉爾吉斯斯坦":"KG","老撾":"LA","拉脫維亞":"LV","黎巴嫩":"LB","萊索托":"LS","利比里亞":"LR","利比亞":"LY","列支敦士登":"LI","立陶宛":"LT","盧森堡":"LU","澳門":"MO","馬達加斯加":"MG","馬拉維":"MW","馬來西亞":"MY","馬爾地夫":"MV","馬里":"ML","馬耳他":"MT","馬紹爾群島":"MH","馬提尼克":"MQ","馬提尼克島":"MQ","毛里塔尼亞":"MR","毛里求斯":"MU","墨西哥":"MX","密克羅尼西亞":"FM","摩爾多瓦":"MD","摩納哥":"MC","蒙古":"MN","黑山":"ME","摩洛哥":"MA","莫桑比克":"MZ","納米比亞":"NA","瑙魯":"NR","尼泊爾":"NP","荷蘭":"NL","荷屬安的列斯":"AN","新喀裏多尼亞":"NC","新西蘭":"NZ","尼加拉瓜":"NI","尼日爾":"NE","尼日利亞":"NG","諾福克島":"NF","朝鮮":"KR","北馬里亞納群島":"MP","挪威":"NO","阿曼":"OM","巴基斯坦":"PK","帕勞":"PW","巴勒斯坦民族權力機構":"PS","巴拿馬":"PA","巴布亞新畿內亞":"PG","巴拉圭":"PY","中華人民共和國":"CN","秘魯":"PE","菲律賓":"PH","皮特肯":"PN","波蘭":"PL","葡萄牙":"PT","波多黎各":"PR","卡塔爾":"QA","中華民國":"TW","愛爾蘭共和國":"IE","羅馬尼亞":"RO","俄羅斯":"RU","盧安達":"RW","留尼汪":"RE","聖海倫娜":"SH","聖基茨和尼維斯":"KN","聖盧西亞":"LC","聖皮埃爾和密克隆島":"PM","聖文森特和格林納丁斯":"VC","薩摩亞":"WS","聖馬力諾":"SM","沙烏地阿拉伯":"SA","塞內加爾":"SN","塞爾維亞":"RS","塞舌爾":"SC","塞拉利昂":"SL","新加坡":"SG","斯洛伐克":"SK","斯洛文尼亞":"SI","所羅門群島":"SB","索馬利亞":"SO","南非":"ZA","韓國":"KR","西班牙":"ES","斯里蘭卡":"LK","蘇丹":"SD","蘇里南":"SR","斯威士蘭":"SZ","瑞典":"SE","瑞士":"CH","敍利亞":"SY","聖多美和普林西比":"ST","臺灣":"TW","塔吉克斯坦":"TJ","坦桑尼亞":"TZ","泰國":"TH","開曼群島":"KY","美屬維爾京群島":"VI","多哥":"TG","托克勞":"TK","湯加":"TO","特立尼達和多巴哥":"TT","突尼斯":"TN","土耳其":"TR","土庫曼斯坦":"TM","圖瓦盧":"TV","阿聯酋":"AE","烏干達":"UG","烏克蘭":"UA","阿拉伯聯合酋長國":"AE","英國":"GB","烏拉圭":"UY","烏茲別克斯坦":"UZ","瓦努阿圖":"VU","梵蒂岡城":"VA","委內瑞拉":"VE","越南":"VN","瓦利斯和富圖納群島":"WF","也門":"YE","贊比亞":"ZM","津巴布韋":"ZW","奧蘭群島":"AX","安提瓜":"AG","阿森鬆島":"SH","巴佈達":"AG","委內瑞拉玻利瓦爾共和國":"VE","多民族玻利維亞國":"BO","波斯尼亞":"BA","布維島":"BV","凱科斯群島":"TC","加拿大":"CA","聖誕島":"CX","茯苓和基林群島":"CC","茯苓群島":"CC","剛果":"CD","哥斯達黎加":"CR","朝鮮民主人民共和國":"KP","多米尼加":"DM","埃塞俄比亞":"ET","法羅":"FO","法國南部領土":"TF","富圖納":"WF","格魯吉亞":"GE","大不列顛":"GB","格林納丁斯":"VC","根西島":"GG","幾內亞":"GN","赫德島和麥當勞群島":"HM","赫德島":"HM","黑塞哥維那":"BA","教廷":"VA","洪都拉斯":"HN","伊朗共和國":"IR","馬恩島":"IM","意大利":"IT","象牙海岸":"CI","揚馬延":"SJ","哈薩克斯坦":"KZ","基里巴斯":"KI","大韓民國":"KR","老撾人民民主共和國":"LA","阿拉伯利比亞民眾國":"LY","馬其頓":"MK","馬爾代夫":"MV","馬爾維納斯":"FK","馬里亞納":"MP","馬約特":"YT","麥當勞群島":"HM","密克隆":"PM","摩爾多瓦共和國":"MD","蒙特內格羅":"ME","蒙特塞拉特":"MS","尼維斯":"KN","新喀里多尼亞":"NC","北朝鮮":"KP","巴勒斯坦":"PS","巴勒斯坦領土":"PS","被佔領的巴勒斯坦領土":"PS","巴布亞新幾內亞":"PG","皮特凱恩":"PN","普林西比":"ST","新加坡共和國":"SG","俄羅斯聯邦":"RU","盧旺達":"RW","聖巴泰勒米":"BL","聖赫勒拿":"SH","聖赫勒拿，阿森鬆島和特里斯坦達庫尼亞":"SH","聖基茨":"KN","聖馬丁":"MF","聖皮埃爾":"PM","聖文森特":"VC","聖多美":"ST","沙特阿拉伯":"SA","索馬里":"SO","南格魯吉亞":"GS","南格魯吉亞和南桑威奇群島":"GS","南桑威奇群島":"GS","斯瓦爾巴島":"SJ","斯瓦爾巴島和揚馬延島":"SJ","敘利亞":"SY","阿拉伯敘利亞共和國":"SY","台灣":"TW","坦桑尼亞聯合共和國":"TZ","多巴哥":"TT","特立尼達":"TT","特里斯坦達庫尼亞":"SH","特克斯和凱科斯群島":"TC","特克斯群島":"TC","美國":"US","梵帝岡":"VA","瓦利斯":"WF","西撒哈拉":"EH"};
-ilib.data.ctrynames_zh_HK = {"generated":false,"阿富汗":"AF","阿爾巴尼亞":"AL","阿爾及利亞":"DZ","美屬薩摩亞":"AS","安道爾":"AD","安哥拉":"AO","安圭拉":"AI","安提瓜和巴佈達":"AG","阿根廷":"AR","亞美尼亞":"AM","阿魯巴":"AW","阿森松":"SH","澳大利亞":"AU","奧地利":"AT","阿塞拜疆":"AZ","英屬維爾京群島":"VG","巴哈馬":"BS","巴林":"BH","孟加拉國":"BD","巴巴多斯":"BB","白俄羅斯":"BY","比利時":"BE","伯利茲":"BZ","貝寧":"BJ","百慕大":"BM","不丹":"BT","玻利維亞":"BO","波斯尼亞和黑塞哥維那":"BA","博茨瓦納":"BW","巴西":"BR","英屬印度洋領地":"IO","汶萊":"BN","汶萊達魯薩蘭國":"BN","保加利亞":"BG","布基納法索":"BF","緬甸":"MM","布隆迪":"BI","柬埔寨":"KH","喀麥隆":"CM","佛得角":"CV","開曼":"KY","中非共和國":"CF","乍得":"TD","智利":"CL","中國":"CN","哥倫比亞":"CO","科摩羅":"KM","庫克群島":"CK","哥斯大黎加":"CR","克羅地亞":"HR","古巴":"CU","塞浦路斯":"CY","捷克共和國":"CZ","科特迪瓦":"CI","多米尼加共和國":"CD","剛果民主共和國":"CD","丹麥":"DK","吉布提":"DJ","多米尼克":"DM","東帝汶":"TL","厄瓜多爾":"EC","埃及":"EG","薩爾瓦多":"SV","赤道幾內亞":"GQ","厄立特里亞":"ER","愛沙尼亞":"EE","衣索比亞":"ET","馬其頓共和國（前南斯拉夫）":"MK","福克蘭群島":"FK","法羅群島":"FO","密克羅尼西亞聯邦":"FM","斐濟":"FJ","芬蘭":"FI","法國":"FR","法屬圭亞那":"GF","法屬波利尼西亞":"PF","加蓬":"GA","岡比亞":"GM","喬治亞州":"GE","德國":"DE","加納":"GH","直布羅陀":"GI","希臘":"GR","格陵蘭":"GL","格林納達":"GD","瓜德羅普島":"GP","關島":"GU","危地馬拉":"GT","畿內亞":"GN","幾內亞比紹":"GW","圭亞那":"GY","海地":"HT","宏都拉斯":"HN","香港":"HK","匈牙利":"HU","冰島":"IS","印度":"IN","印度尼西亞":"ID","伊朗":"IR","伊拉克":"IQ","愛爾蘭":"IE","以色列":"IL","義大利":"IT","牙買加":"JM","日本":"JP","約旦":"JO","肯尼亞":"KE","基裏巴斯":"KI","科威特":"KW","吉爾吉斯斯坦":"KG","老撾":"LA","拉脫維亞":"LV","黎巴嫩":"LB","萊索托":"LS","利比里亞":"LR","利比亞":"LY","列支敦士登":"LI","立陶宛":"LT","盧森堡":"LU","澳門":"MO","馬達加斯加":"MG","馬拉維":"MW","馬來西亞":"MY","馬爾地夫":"MV","馬里":"ML","馬耳他":"MT","馬紹爾群島":"MH","馬提尼克":"MQ","馬提尼克島":"MQ","毛里塔尼亞":"MR","毛里求斯":"MU","墨西哥":"MX","密克羅尼西亞":"FM","摩爾多瓦":"MD","摩納哥":"MC","蒙古":"MN","黑山":"ME","摩洛哥":"MA","莫桑比克":"MZ","納米比亞":"NA","瑙魯":"NR","尼泊爾":"NP","荷蘭":"NL","荷屬安的列斯":"AN","新喀裏多尼亞":"NC","新西蘭":"NZ","尼加拉瓜":"NI","尼日爾":"NE","尼日利亞":"NG","諾福克島":"NF","朝鮮":"KR","北馬里亞納群島":"MP","挪威":"NO","阿曼":"OM","巴基斯坦":"PK","帕勞":"PW","巴勒斯坦民族權力機構":"PS","巴拿馬":"PA","巴布亞新畿內亞":"PG","巴拉圭":"PY","中華人民共和國":"CN","秘魯":"PE","菲律賓":"PH","皮特肯":"PN","波蘭":"PL","葡萄牙":"PT","波多黎各":"PR","卡塔爾":"QA","中華民國":"TW","愛爾蘭共和國":"IE","羅馬尼亞":"RO","俄羅斯":"RU","盧安達":"RW","留尼汪":"RE","聖海倫娜":"SH","聖基茨和尼維斯":"KN","聖盧西亞":"LC","聖皮埃爾和密克隆島":"PM","聖文森特和格林納丁斯":"VC","薩摩亞":"WS","聖馬力諾":"SM","沙烏地阿拉伯":"SA","塞內加爾":"SN","塞爾維亞":"RS","塞舌爾":"SC","塞拉利昂":"SL","新加坡":"SG","斯洛伐克":"SK","斯洛文尼亞":"SI","所羅門群島":"SB","索馬利亞":"SO","南非":"ZA","韓國":"KR","西班牙":"ES","斯里蘭卡":"LK","蘇丹":"SD","蘇里南":"SR","斯威士蘭":"SZ","瑞典":"SE","瑞士":"CH","敍利亞":"SY","聖多美和普林西比":"ST","臺灣":"TW","塔吉克斯坦":"TJ","坦桑尼亞":"TZ","泰國":"TH","開曼群島":"KY","美屬維爾京群島":"VI","多哥":"TG","托克勞":"TK","湯加":"TO","特立尼達和多巴哥":"TT","突尼斯":"TN","土耳其":"TR","土庫曼斯坦":"TM","圖瓦盧":"TV","阿聯酋":"AE","烏干達":"UG","烏克蘭":"UA","阿拉伯聯合酋長國":"AE","英國":"GB","烏拉圭":"UY","烏茲別克斯坦":"UZ","瓦努阿圖":"VU","梵蒂岡城":"VA","委內瑞拉":"VE","越南":"VN","瓦利斯和富圖納群島":"WF","也門":"YE","贊比亞":"ZM","津巴布韋":"ZW","奧蘭群島":"AX","安提瓜":"AG","阿森鬆島":"SH","巴佈達":"AG","委內瑞拉玻利瓦爾共和國":"VE","多民族玻利維亞國":"BO","波斯尼亞":"BA","布維島":"BV","凱科斯群島":"TC","加拿大":"CA","聖誕島":"CX","茯苓和基林群島":"CC","茯苓群島":"CC","剛果":"CD","哥斯達黎加":"CR","朝鮮民主人民共和國":"KP","多米尼加":"DM","埃塞俄比亞":"ET","法羅":"FO","法國南部領土":"TF","富圖納":"WF","格魯吉亞":"GE","大不列顛":"GB","格林納丁斯":"VC","根西島":"GG","幾內亞":"GN","赫德島和麥當勞群島":"HM","赫德島":"HM","黑塞哥維那":"BA","教廷":"VA","洪都拉斯":"HN","伊朗共和國":"IR","馬恩島":"IM","意大利":"IT","象牙海岸":"CI","揚馬延":"SJ","哈薩克斯坦":"KZ","基里巴斯":"KI","大韓民國":"KR","老撾人民民主共和國":"LA","阿拉伯利比亞民眾國":"LY","馬其頓":"MK","馬爾代夫":"MV","馬爾維納斯":"FK","馬里亞納":"MP","馬約特":"YT","麥當勞群島":"HM","密克隆":"PM","摩爾多瓦共和國":"MD","蒙特內格羅":"ME","蒙特塞拉特":"MS","尼維斯":"KN","新喀里多尼亞":"NC","北朝鮮":"KP","巴勒斯坦":"PS","巴勒斯坦領土":"PS","被佔領的巴勒斯坦領土":"PS","巴布亞新幾內亞":"PG","皮特凱恩":"PN","普林西比":"ST","新加坡共和國":"SG","俄羅斯聯邦":"RU","盧旺達":"RW","聖巴泰勒米":"BL","聖赫勒拿":"SH","聖赫勒拿，阿森鬆島和特里斯坦達庫尼亞":"SH","聖基茨":"KN","聖馬丁":"MF","聖皮埃爾":"PM","聖文森特":"VC","聖多美":"ST","沙特阿拉伯":"SA","索馬里":"SO","南格魯吉亞":"GS","南格魯吉亞和南桑威奇群島":"GS","南桑威奇群島":"GS","斯瓦爾巴島":"SJ","斯瓦爾巴島和揚馬延島":"SJ","敘利亞":"SY","阿拉伯敘利亞共和國":"SY","台灣":"TW","坦桑尼亞聯合共和國":"TZ","多巴哥":"TT","特立尼達":"TT","特里斯坦達庫尼亞":"SH","特克斯和凱科斯群島":"TC","特克斯群島":"TC","美國":"US","梵帝岡":"VA","瓦利斯":"WF","西撒哈拉":"EH"};
+ilib.data.ctrynames_zh_Hant = {"generated":false,"阿富汗":"AF","阿爾巴尼亞":"AL","阿爾及利亞":"DZ","美屬薩摩亞":"AS","安道爾":"AD","安哥拉":"AO","安圭拉":"AI","安提瓜和巴佈達":"AG","阿根廷":"AR","亞美尼亞":"AM","阿魯巴":"AW","阿森松":"SH","澳大利亞":"AU","奧地利":"AT","阿塞拜疆":"AZ","英屬維爾京群島":"VG","巴哈馬":"BS","巴林":"BH","孟加拉國":"BD","巴巴多斯":"BB","白俄羅斯":"BY","比利時":"BE","伯利茲":"BZ","貝寧":"BJ","百慕大":"BM","不丹":"BT","玻利維亞":"BO","波斯尼亞和黑塞哥維那":"BA","博茨瓦納":"BW","巴西":"BR","英屬印度洋領地":"IO","汶萊":"BN","汶萊達魯薩蘭國":"BN","保加利亞":"BG","布基納法索":"BF","緬甸":"MM","布隆迪":"BI","柬埔寨":"KH","喀麥隆":"CM","佛得角":"CV","開曼":"KY","中非共和國":"CF","乍得":"TD","智利":"CL","中國":"CN","哥倫比亞":"CO","科摩羅":"KM","庫克群島":"CK","哥斯大黎加":"CR","克羅地亞":"HR","古巴":"CU","塞浦路斯":"CY","捷克共和國":"CZ","科特迪瓦":"CI","多米尼加共和國":"CD","剛果民主共和國":"CD","丹麥":"DK","吉布提":"DJ","多米尼克":"DM","東帝汶":"TL","厄瓜多爾":"EC","埃及":"EG","薩爾瓦多":"SV","赤道幾內亞":"GQ","厄立特里亞":"ER","愛沙尼亞":"EE","衣索比亞":"ET","馬其頓共和國（前南斯拉夫）":"MK","福克蘭群島":"FK","法羅群島":"FO","密克羅尼西亞聯邦":"FM","斐濟":"FJ","芬蘭":"FI","法國":"FR","法屬圭亞那":"GF","法屬波利尼西亞":"PF","加蓬":"GA","岡比亞":"GM","喬治亞州":"GE","德國":"DE","加納":"GH","直布羅陀":"GI","希臘":"GR","格陵蘭":"GL","格林納達":"GD","瓜德羅普島":"GP","關島":"GU","危地馬拉":"GT","畿內亞":"GN","幾內亞比紹":"GW","圭亞那":"GY","海地":"HT","宏都拉斯":"HN","香港":"HK","匈牙利":"HU","冰島":"IS","印度":"IN","印度尼西亞":"ID","伊朗":"IR","伊拉克":"IQ","愛爾蘭":"IE","以色列":"IL","義大利":"IT","牙買加":"JM","日本":"JP","約旦":"JO","肯尼亞":"KE","基裏巴斯":"KI","科威特":"KW","吉爾吉斯斯坦":"KG","老撾":"LA","拉脫維亞":"LV","黎巴嫩":"LB","萊索托":"LS","利比里亞":"LR","利比亞":"LY","列支敦士登":"LI","立陶宛":"LT","盧森堡":"LU","澳門":"MO","馬達加斯加":"MG","馬拉維":"MW","馬來西亞":"MY","馬爾地夫":"MV","馬里":"ML","馬耳他":"MT","馬紹爾群島":"MH","馬提尼克":"MQ","馬提尼克島":"MQ","毛里塔尼亞":"MR","毛里求斯":"MU","墨西哥":"MX","密克羅尼西亞":"FM","摩爾多瓦":"MD","摩納哥":"MC","蒙古":"MN","黑山":"ME","摩洛哥":"MA","莫桑比克":"MZ","納米比亞":"NA","瑙魯":"NR","尼泊爾":"NP","荷蘭":"NL","荷屬安的列斯":"AN","新喀裏多尼亞":"NC","新西蘭":"NZ","尼加拉瓜":"NI","尼日爾":"NE","尼日利亞":"NG","諾福克島":"NF","朝鮮":"KR","北馬里亞納群島":"MP","挪威":"NO","阿曼":"OM","巴基斯坦":"PK","帕勞":"PW","巴勒斯坦民族權力機構":"PS","巴拿馬":"PA","巴布亞新畿內亞":"PG","巴拉圭":"PY","中華人民共和國":"CN","秘魯":"PE","菲律賓":"PH","皮特肯":"PN","波蘭":"PL","葡萄牙":"PT","波多黎各":"PR","卡塔爾":"QA","中華民國":"TW","愛爾蘭共和國":"IE","羅馬尼亞":"RO","俄羅斯":"RU","盧安達":"RW","留尼汪":"RE","聖海倫娜":"SH","聖基茨和尼維斯":"KN","聖盧西亞":"LC","聖皮埃爾和密克隆島":"PM","聖文森特和格林納丁斯":"VC","薩摩亞":"WS","聖馬力諾":"SM","沙烏地阿拉伯":"SA","塞內加爾":"SN","塞爾維亞":"RS","塞舌爾":"SC","塞拉利昂":"SL","新加坡":"SG","斯洛伐克":"SK","斯洛文尼亞":"SI","所羅門群島":"SB","索馬利亞":"SO","南非":"ZA","韓國":"KR","西班牙":"ES","斯里蘭卡":"LK","蘇丹":"SD","蘇里南":"SR","斯威士蘭":"SZ","瑞典":"SE","瑞士":"CH","敍利亞":"SY","聖多美和普林西比":"ST","臺灣":"TW","塔吉克斯坦":"TJ","坦桑尼亞":"TZ","泰國":"TH","開曼群島":"KY","美屬維爾京群島":"VI","多哥":"TG","托克勞":"TK","湯加":"TO","特立尼達和多巴哥":"TT","突尼斯":"TN","土耳其":"TR","土庫曼斯坦":"TM","圖瓦盧":"TV","阿聯酋":"AE","烏干達":"UG","烏克蘭":"UA","阿拉伯聯合酋長國":"AE","英國":"GB","烏拉圭":"UY","烏茲別克斯坦":"UZ","瓦努阿圖":"VU","梵蒂岡城":"VA","委內瑞拉":"VE","越南":"VN","瓦利斯和富圖納群島":"WF","也門":"YE","贊比亞":"ZM","津巴布韋":"ZW","奧蘭群島":"AX","安提瓜":"AG","阿森鬆島":"SH","巴佈達":"AG","委內瑞拉玻利瓦爾共和國":"VE","多民族玻利維亞國":"BO","波斯尼亞":"BA","布維島":"BV","凱科斯群島":"TC","加拿大":"CA","聖誕島":"CX","茯苓和基林群島":"CC","茯苓群島":"CC","剛果":"CD","哥斯達黎加":"CR","朝鮮民主人民共和國":"KP","多米尼加":"DM","埃塞俄比亞":"ET","法羅":"FO","法國南部領土":"TF","富圖納":"WF","格魯吉亞":"GE","大不列顛":"GB","格林納丁斯":"VC","根西島":"GG","幾內亞":"GN","赫德島和麥當勞群島":"HM","赫德島":"HM","黑塞哥維那":"BA","教廷":"VA","洪都拉斯":"HN","伊朗共和國":"IR","馬恩島":"IM","意大利":"IT","象牙海岸":"CI","揚馬延":"SJ","哈薩克斯坦":"KZ","基里巴斯":"KI","大韓民國":"KR","老撾人民民主共和國":"LA","阿拉伯利比亞民眾國":"LY","馬其頓":"MK","馬爾代夫":"MV","馬爾維納斯":"FK","馬里亞納":"MP","馬約特":"YT","麥當勞群島":"HM","密克隆":"PM","摩爾多瓦共和國":"MD","蒙特內格羅":"ME","蒙特塞拉特":"MS","尼維斯":"KN","新喀里多尼亞":"NC","北朝鮮":"KP","巴勒斯坦":"PS","巴勒斯坦領土":"PS","被佔領的巴勒斯坦領土":"PS","巴布亞新幾內亞":"PG","皮特凱恩":"PN","普林西比":"ST","新加坡共和國":"SG","俄羅斯聯邦":"RU","盧旺達":"RW","聖巴泰勒米":"BL","聖赫勒拿":"SH","聖赫勒拿，阿森鬆島和特里斯坦達庫尼亞":"SH","聖基茨":"KN","聖馬丁":"MF","聖皮埃爾":"PM","聖文森特":"VC","聖多美":"ST","沙特阿拉伯":"SA","索馬里":"SO","南格魯吉亞":"GS","南格魯吉亞和南桑威奇群島":"GS","南桑威奇群島":"GS","斯瓦爾巴島":"SJ","斯瓦爾巴島和揚馬延島":"SJ","敘利亞":"SY","阿拉伯敘利亞共和國":"SY","台灣":"TW","坦桑尼亞聯合共和國":"TZ","多巴哥":"TT","特立尼達":"TT","特里斯坦達庫尼亞":"SH","特克斯和凱科斯群島":"TC","特克斯群島":"TC","美國":"US","梵帝岡":"VA","瓦利斯":"WF","西撒哈拉":"EH"};
+ilib.data.ctrynames_zu = {"i-Ascension Island":"AC","i-Andorra":"AD","i-United Arab Emirates":"AE","i-Afghanistan":"AF","i-Antigua and Barbuda":"AG","i-Anguilla":"AI","i-Albania":"AL","i-Armenia":"AM","i-Netherlands Antilles":"AN","i-Angola":"AO","i-Antarctica":"AQ","i-Argentina":"AR","i-American Samoa":"AS","i-Austria":"AT","i-Australia":"AU","i-Aruba":"AW","i-Åland Islands":"AX","i-Azerbaijan":"AZ","i-Bosnia ne-Herzegovina":"BA","i-Barbados":"BB","i-Bangladesh":"BD","i-Belgium":"BE","i-Burkina Faso":"BF","i-Bulgaria":"BG","i-Bahrain":"BH","i-Burundi":"BI","i-Benin":"BJ","i-Saint Barthélemy":"BL","i-Bermuda":"BM","i-Brunei":"BN","i-Bolivia":"BO","I-Caribbean Netherlands":"BQ","i-Brazil":"BR","i-Bahamas":"BS","i-Bhutan":"BT","i-Bouvet Island":"BV","i-Botswana":"BW","i-Belarus":"BY","i-Belize":"BZ","i-Canada":"CA","i-Cocos (Keeling) Islands":"CC","e-Congo - Kinshasa":"CD","i-Central African Republic":"CF","e-Congo - Brazzaville":"CG","i-Switzerland":"CH","i-Côte d’Ivoire":"CI","i-Cook Islands":"CK","i-Chile":"CL","i-Cameroon":"CM","i-China":"CN","i-Colombia":"CO","i-Clipperton Island":"CP","i-Costa Rica":"CR","i-Cuba":"CU","i-Cape Verde":"CV","I-Curaçao":"CW","i-Christmas Island":"CX","i-Cyprus":"CY","i-Czech Republic":"CZ","i-Germany":"DE","e-Diego Garcia":"DG","i-Djibouti":"DJ","i-Denmark":"DK","i-Dominica":"DM","i-Dominican Republic":"DO","i-Algeria":"DZ","i-Cueta ne-Melilla":"EA","i-Ecuador":"EC","i-Estonia":"EE","i-Egypt":"EG","i-Western Sahara":"EH","i-Eritrea":"ER","i-Spain":"ES","i-Ethiopia":"ET","i-European Union":"EU","i-Finland":"FI","i-Fiji":"FJ","i-Falkland Islands":"FK","i-Micronesia":"FM","i-Faroe Islands":"FO","i-France":"FR","i-Gabon":"GA","i-United Kingdom":"GB","i-Grenada":"GD","i-Georgia":"GE","isi-French Guiana":"GF","I-Guernsey":"GG","i-Ghana":"GH","i-Gibraltar":"GI","i-Greenland":"GL","i-Gambia":"GM","i-Guinea":"GN","i-Guadeloupe":"GP","i-Equatorial Guinea":"GQ","i-Greece":"GR","i-South Georgia ne-South Sandwich Islands":"GS","i-Guatemala":"GT","i-Guam":"GU","i-Guinea-Bissau":"GW","i-Guyana":"GY","e-Hong Kong SAR China":"HK","i-Heard Island ne-McDonald Islands":"HM","i-Honduras":"HN","i-Croatia":"HR","i-Haiti":"HT","i-Hungary":"HU","i-Canary Islands":"IC","i-Indonesia":"ID","i-Ireland":"IE","i-Israel":"IL","i-Isle of Man":"IM","i-India":"IN","i-British Indian Ocean Territory":"IO","i-Iraq":"IQ","i-Iran":"IR","i-Iceland":"IS","i-Italy":"IT","isi-Jersey":"JE","i-Jamaica":"JM","i-Jordan":"JO","i-Japan":"JP","i-Kenya":"KE","i-Kyrgyzstan":"KG","i-Cambodia":"KH","i-Kiribati":"KI","i-Comoros":"KM","i-Saint Kitts ne-Nevis":"KN","i-North Korea":"KP","i-South Korea":"KR","i-Kuwait":"KW","i-Cayman Islands":"KY","i-Kazakhstan":"KZ","i-Laos":"LA","i-Lebanon":"LB","i-Saint Lucia":"LC","i-Liechtenstein":"LI","i-Sri Lanka":"LK","i-Liberia":"LR","i-Lesotho":"LS","i-Lithuania":"LT","i-Luxembourg":"LU","i-Latvia":"LV","i-Libya":"LY","i-Morocco":"MA","i-Monaco":"MC","i-Moldova":"MD","i-Montenegro":"ME","i-Saint Martin":"MF","i-Madagascar":"MG","i-Marshall Islands":"MH","I-Macedonia":"MK","i-Mali":"ML","e-Myanmar [Burma]":"MM","i-Mongolia":"MN","i-Macau SAR China":"MO","i-Northern Mariana Islands":"MP","i-Martinique":"MQ","i-Mauritania":"MR","i-Montserrat":"MS","i-Malta":"MT","i-Mauritius":"MU","i-Maldives":"MV","i-Malawi":"MW","i-Mexico":"MX","i-Malaysia":"MY","i-Mozambique":"MZ","i-Namibia":"NA","i-New Caledonia":"NC","i-Niger":"NE","i-Norfolk Island":"NF","i-Nigeria":"NG","i-Nicaragua":"NI","i-Netherlands":"NL","i-Norway":"NO","i-Nepal":"NP","i-Nauru":"NR","i-Niue":"NU","i-New Zealand":"NZ","i-Oman":"OM","i-Panama":"PA","i-Peru":"PE","i-French Polynesia":"PF","i-Papua New Guinea":"PG","i-Philippines":"PH","i-Pakistan":"PK","i-Poland":"PL","i-Saint Pierre kanye ne-Miquelon":"PM","i-Pitcairn Islands":"PN","i-Puerto Rico":"PR","i-Palestinian Territories":"PS","i-Portugal":"PT","i-Palau":"PW","i-Paraguay":"PY","i-Qatar":"QA","i-Outlying Oceania":"QO","i-Réunion":"RE","i-Romania":"RO","i-Serbia":"RS","i-Russia":"RU","i-Rwanda":"RW","i-Saudi Arabia":"SA","i-Solomon Islands":"SB","i-Seychelles":"SC","i-Sudan":"SD","i-Sweden":"SE","i-Singapore":"SG","i-Saint Helena":"SH","i-Slovenia":"SI","I-Svalbard ne-Jan Mayen":"SJ","i-Slovakia":"SK","i-Sierra Leone":"SL","i-San Marino":"SM","i-Senegal":"SN","i-Somalia":"SO","i-Suriname":"SR","Iningizimu Sudan":"SS","i-São Tomé kanye ne-Príncipe":"ST","i-El Salvador":"SV","I-Sint Maarten":"SX","i-Syria":"SY","i-Swaziland":"SZ","i-Tristan da Cunha":"TA","i-Turks and Caicos Islands":"TC","i-Chad":"TD","e-French Southern Territories":"TF","i-Togo":"TG","i-Thailand":"TH","i-Tajikistan":"TJ","i-Tokelau":"TK","i-Timor-Leste":"TL","i-Turkmenistan":"TM","i-Tunisia":"TN","i-Tonga":"TO","i-Turkey":"TR","i-Trinidad ne-Tobago":"TT","i-Tuvalu":"TV","i-Taiwan":"TW","i-Tanzania":"TZ","i-Ukraine":"UA","i-Uganda":"UG","e-U.S. Minor Outlying Islands":"UM","i-United States":"US","i-Uruguay":"UY","i-Uzbekistan":"UZ","i-Vatican City":"VA","i-Saint Vincent ne-Grenadines":"VC","i-Venezuela":"VE","i-British Virgin Islands":"VG","i-U.S. Virgin Islands":"VI","i-Vietnam":"VN","i-Vanuatu":"VU","i-Wallis ne-Futuna":"WF","i-Samoa":"WS","i-Yemen":"YE","i-Mayotte":"YT","iNingizimu Afrika":"ZA","i-Zambia":"ZM","i-Zimbabwe":"ZW","Isifunda esingaziwa":"ZZ"};
 /**
  * addressprs.js - Represent a mailing address
  * 
@@ -28583,12 +28865,16 @@ ilib.Address = function (freeformAddress, options) {
 	if (typeof(ilib.Address.ctry) === 'undefined') {
 		ilib.Address.ctry = {}; // make sure not to conflict with the address info
 	}
-	ilib.loadData(ilib.Address.ctry, this.locale, "ctrynames", this.sync, this.loadParams, 
-		/** @type function(Object=):undefined */
-		ilib.bind(this, /** @type function() */ function(ctrynames) {
+	ilib.loadData({
+		name: "ctrynames.json", 
+		object: ilib.Address.ctry, 
+		locale: this.locale, 
+		sync: this.sync, 
+		loadParams: this.loadParams, 
+		callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(ctrynames) {
 			this._determineDest(ctrynames, options.onLoad);
-		}
-	));
+		})
+	});
 };
 
 /** @protected */
@@ -28664,26 +28950,38 @@ ilib.Address.prototype = {
 	 * @param {function(ilib.Address):undefined} callback
 	 */
 	_init: function(callback) {
-		ilib.loadData(ilib.Address, new ilib.Locale(this.countryCode), "address", this.sync, this.loadParams, 
-				/** @type function(Object=):undefined */ ilib.bind(this, function(info) {
-			if (!info || ilib.isEmpty(info)) {
-				// load the "unknown" locale instead
-				ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, this.loadParams, 
-						/** @type function(Object=):undefined */ ilib.bind(this, function(info) {
+		ilib.loadData({
+			object: ilib.Address, 
+			locale: new ilib.Locale(this.countryCode), 
+			name: "address.json", 
+			sync: this.sync, 
+			loadParams: this.loadParams,
+			callback: /** @type function(Object=):undefined */ ilib.bind(this, function(info) {
+				if (!info || ilib.isEmpty(info)) {
+					// load the "unknown" locale instead
+					ilib.loadData({
+						object: ilib.Address, 
+						locale: new ilib.Locale("XX"), 
+						name: "address.json", 
+						sync: this.sync, 
+						loadParams: this.loadParams,
+						callback: /** @type function(Object=):undefined */ ilib.bind(this, function(info) {
+							this.info = info;
+							this._parseAddress();
+							if (typeof(callback) === 'function') {
+								callback(this);
+							}	
+						})
+					});
+				} else {
 					this.info = info;
 					this._parseAddress();
 					if (typeof(callback) === 'function') {
 						callback(this);
-					}	
-				}));
-			} else {
-				this.info = info;
-				this._parseAddress();
-				if (typeof(callback) === 'function') {
-					callback(this);
+					}
 				}
-			}
-		}));
+			})
+		});
 	},
 
 	/**
@@ -29022,24 +29320,38 @@ ilib.AddressFmt = function(options) {
 	}
 
 	// console.log("Creating formatter for region: " + this.locale.region);
-	ilib.loadData(ilib.Address, this.locale, "address", this.sync, this.loadParams, /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
-		if (!info || ilib.isEmpty(info)) {
-			// load the "unknown" locale instead
-			ilib.loadData(ilib.Address, new ilib.Locale("XX"), "address", this.sync, this.loadParams, /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
+	ilib.loadData({
+		name: "address.json",
+		object: ilib.Address, 
+		locale: this.locale,
+		sync: this.sync, 
+		loadParams: this.loadParams, 
+		callback: /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
+			if (!info || ilib.isEmpty(info)) {
+				// load the "unknown" locale instead
+				ilib.loadData({
+					name: "address.json",
+					object: ilib.Address, 
+					locale: new ilib.Locale("XX"),
+					sync: this.sync, 
+					loadParams: this.loadParams, 
+					callback: /** @type function(Object?):undefined */ ilib.bind(this, function(info) {
+						this.info = info;
+						this._init();
+						if (typeof(options.onLoad) === 'function') {
+							options.onLoad(this);
+						}
+					})
+				});
+			} else {
 				this.info = info;
 				this._init();
 				if (typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
-				}	
-			}));
-		} else {
-			this.info = info;
-			this._init();
-			if (typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
+				}
 			}
-		}
-	}));
+		})
+	});
 };
 
 /**

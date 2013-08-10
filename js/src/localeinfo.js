@@ -150,7 +150,25 @@ ilib.LocaleInfo = function(locale, options) {
 };
 
 ilib.LocaleInfo.prototype = {
-	/**
+    /**
+     * Return the name of the locale's language in English.
+     * @returns {string} the name of the locale's language in English
+     */
+    getLanguageName: function () {
+    	return this.info["language.name"];	
+    },
+    
+    /**
+     * Return the name of the locale's region in English. If the locale
+     * has no region, this returns undefined.
+     * 
+     * @returns {string|undefined} the name of the locale's region in English
+     */
+    getRegionName: function () {
+    	return this.info["region.name"];	
+    },
+
+    /**
 	 * Return whether this locale commonly uses the 12- or the 24-hour clock.
 	 *  
 	 * @returns {string} "12" if the locale commonly uses a 12-hour clock, or "24"

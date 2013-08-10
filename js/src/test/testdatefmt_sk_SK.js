@@ -1,5 +1,5 @@
 /*
- * testdatefmt_de_DE.js - test the date formatter object in German
+ * testdatefmt_sk_SK.js - test the date formatter object in Slovakia
  * 
  * Copyright © 2012-2013, JEDLSoft
  *
@@ -37,7 +37,7 @@ function testDateFmtSimpleShort_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.2011", fmt.format(date));
+    assertEquals("29.9.11", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_sk_SK() {
@@ -165,7 +165,7 @@ function testDateFmtDateTimeSimpleShort_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.2011 13:45", fmt.format(date));
+    assertEquals("13:45 29.9.11", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_sk_SK() {
@@ -181,7 +181,7 @@ function testDateFmtDateTimeSimpleMedium_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.2011 13:45", fmt.format(date));
+    assertEquals("13:45 29.9.2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_sk_SK() {
@@ -197,7 +197,7 @@ function testDateFmtDateTimeSimpleLong_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.2011 13:45", fmt.format(date));
+    assertEquals("13:45 29.9.2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_sk_SK() {
@@ -213,7 +213,7 @@ function testDateFmtDateTimeSimpleFull_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. september 2011 13:45", fmt.format(date));
+    assertEquals("13:45 29. september 2011", fmt.format(date));
 }
 
 
@@ -375,7 +375,7 @@ function testDateFmtTypeDate_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.2011", fmt.format(date));
+    assertEquals("29.9.11", fmt.format(date));
 }
 
 function testDateFmtTypeTime_sk_SK() {
@@ -407,7 +407,7 @@ function testDateFmtTypeDateTime_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.2011 13:45", fmt.format(date));
+    assertEquals("13:45 29.9.11", fmt.format(date));
 }
 
 
@@ -472,7 +472,7 @@ function testDateFmtShortDateComponentsD_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.", fmt.format(date));
+    assertEquals("29", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDM_sk_SK() {
@@ -504,7 +504,7 @@ function testDateFmtShortDateComponentsMY_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9.2011", fmt.format(date));
+    assertEquals("9.11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_sk_SK() {
@@ -520,7 +520,7 @@ function testDateFmtShortDateComponentsDMY_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.2011", fmt.format(date));
+    assertEquals("29.9.11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_sk_SK() {
@@ -552,7 +552,7 @@ function testDateFmtShortDateComponentsWDMY_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Š 29. 9. 2011", fmt.format(date));
+    assertEquals("Š 29. 9. 11", fmt.format(date));
 }
 
 
@@ -601,7 +601,7 @@ function testDateFmtFullDateComponentsD_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.", fmt.format(date));
+    assertEquals("29", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDM_sk_SK() {
@@ -801,8 +801,7 @@ function testDateFmtShortTimeComponentsHMZ_sk_SK() {
     var fmt = new ilib.DateFmt({
         locale: "sk-SK", 
         type: "time", 
-        time: "hmz", 
-        timezone: "Europe/Berlin"
+        time: "hmz"
     });
     assertNotNull(fmt);
     
@@ -815,15 +814,14 @@ function testDateFmtShortTimeComponentsHMZ_sk_SK() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 CEST", fmt.format(date));
+    assertEquals("13:45 UTC", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_sk_SK() {
     var fmt = new ilib.DateFmt({
         locale: "sk-SK", 
         type: "time", 
-        time: "hmaz", 
-        timezone: "Europe/Berlin"
+        time: "hmaz"
     });
     assertNotNull(fmt);
     
@@ -836,7 +834,7 @@ function testDateFmtShortTimeComponentsHMAZ_sk_SK() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 CEST", fmt.format(date));
+    assertEquals("13:45 UTC", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_sk_SK() {
@@ -859,8 +857,7 @@ function testDateFmtShortTimeComponentsHMSZ_sk_SK() {
     var fmt = new ilib.DateFmt({
         locale: "sk-SK", 
         type: "time", 
-        time: "hmsz", 
-        timezone: "Europe/Berlin"
+        time: "hmsz"
     });
     assertNotNull(fmt);
     
@@ -873,15 +870,14 @@ function testDateFmtShortTimeComponentsHMSZ_sk_SK() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 CEST", fmt.format(date));
+    assertEquals("13:45:37 UTC", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_sk_SK() {
     var fmt = new ilib.DateFmt({
         locale: "sk-SK", 
         type: "time", 
-        time: "hmsaz", 
-        timezone: "Europe/Berlin"
+        time: "hmsaz"
     });
     assertNotNull(fmt);
     
@@ -894,7 +890,7 @@ function testDateFmtShortTimeComponentsHMSAZ_sk_SK() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 CEST", fmt.format(date));
+    assertEquals("13:45:37 UTC", fmt.format(date));
 }
 
 
@@ -1015,8 +1011,7 @@ function testDateFmtFullTimeComponentsHMZ_sk_SK() {
         locale: "sk-SK", 
         type: "time", 
         length: "full", 
-        time: "hmz", 
-        timezone: "Europe/Berlin"
+        time: "hmz"
     });
     assertNotNull(fmt);
     
@@ -1029,7 +1024,7 @@ function testDateFmtFullTimeComponentsHMZ_sk_SK() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 CEST", fmt.format(date));
+    assertEquals("13:45 UTC", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_sk_SK() {
@@ -1037,8 +1032,7 @@ function testDateFmtFullTimeComponentsHMAZ_sk_SK() {
         locale: "sk-SK", 
         type: "time", 
         length: "full", 
-        time: "hmaz", 
-        timezone: "Europe/Berlin"
+        time: "hmaz"
     });
     assertNotNull(fmt);
     
@@ -1051,7 +1045,7 @@ function testDateFmtFullTimeComponentsHMAZ_sk_SK() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 CEST", fmt.format(date));
+    assertEquals("13:45 UTC", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_sk_SK() {
@@ -1075,8 +1069,7 @@ function testDateFmtFullTimeComponentsHMSZ_sk_SK() {
         locale: "sk-SK", 
         type: "time", 
         length: "full", 
-        time: "hmsz", 
-        timezone: "Europe/Berlin"
+        time: "hmsz"
     });
     assertNotNull(fmt);
     
@@ -1089,7 +1082,7 @@ function testDateFmtFullTimeComponentsHMSZ_sk_SK() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 CEST", fmt.format(date));
+    assertEquals("13:45:37 UTC", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_sk_SK() {
@@ -1097,8 +1090,7 @@ function testDateFmtFullTimeComponentsHMSAZ_sk_SK() {
         locale: "sk-SK", 
         type: "time", 
         length: "full", 
-        time: "hmsaz", 
-        timezone: "Europe/Berlin"
+        time: "hmsaz"
     });
     assertNotNull(fmt);
     
@@ -1111,7 +1103,7 @@ function testDateFmtFullTimeComponentsHMSAZ_sk_SK() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 CEST", fmt.format(date));
+    assertEquals("13:45:37 UTC", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_sk_SK() {
@@ -1119,8 +1111,7 @@ function testDateFmtWithTimeZoneAndNoDST_sk_SK() {
         locale: "sk-SK", 
         type: "time", 
         length: "full", 
-        time: "hmsz", 
-        timezone: "Europe/Berlin"
+        time: "hmsz"
     });
     assertNotNull(fmt);
     
@@ -1133,7 +1124,7 @@ function testDateFmtWithTimeZoneAndNoDST_sk_SK() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 CET", fmt.format(date));
+    assertEquals("13:45:37 UTC", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_sk_SK() {

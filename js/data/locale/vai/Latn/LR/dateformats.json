@@ -1,1 +1,20 @@
-{"gregorian":{"date":{"dmy":{"s":"M/d/y","l":"MMM d y"},"my":{"s":"M/y","l":"MMM y"},"dmwy":{"s":"E, M/d/y","m":"EE, M/d/y","l":"EEE, MMM d, y","f":"EEEE, MMM d, y"}},"range":{"c00":{"s":"{st}–{et}{sm}/{sd}/{sy}","l":"{st}–{et}{sm} {sd} {sy}"}}},"generated":true}
+{
+    "gregorian": {
+        "date": {
+            "dmy": {
+                "s": "M/d/yy",
+                "l": "MMM d yyyy"
+            },
+            "dmwy": {
+                "m": "EE, M/d/yy"
+            }
+        },
+        "range": {
+            "c00": {
+                "s": "{st} – {et} {sm}/{sd}/{sy}",
+                "l": "{st} – {et} {sm} {sd} {sy}"
+            }
+        }
+    },
+    "generated": true
+}
