@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,26 @@
  */
 
 /*
- * ilib-mini-inc.js - metafile that includes a minimal set of other js files for the minimal build
+ * ilib-medium.js - metafile that includes a reasonable set of other js files
  */
 
 /* !depends
+ilibglobal.js
+daterangefmt.js
+date.js
+calendar/gregorian.js
+calendar/gregoriandate.js
+numprs.js
+numfmt.js
+julianday.js
+datefmt.js
+calendar.js
+util/utils.js
+locale.js
 strings.js
+durfmt.js
 resources.js
+localeinfo.js
+daterangefmt.js
+collate.js
 */

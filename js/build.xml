@@ -101,13 +101,11 @@ limitations under the License.
 	<target name="clean" description="Remove all generated files to start from scratch">
 		<delete dir="${build.classes}"/>
 		<delete dir="${build.output}"/>
-		<delete file="${build.src}/iliball.js"/>
 		<delete>
 			<fileset dir="${build.src}">
 			    <include name="ilib-*.js"/>
 				<include name="*-compiled.js"/>
-				<exclude name="ilib-ut-inc.js"/>
-				<exclude name="ilib-mini-inc.js"/>
+				<exclude name="ilib-*-inc.js"/>
 			</fileset>
 			<fileset dir="${build.locale}">
 			    <include name="**/localeinfo.json"/>
@@ -126,13 +124,6 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
 	<!-- =================================================================== -->
-	<target name="testiliball" description="test whether or not the iliball single file needs to be rebuilt">
-		<uptodate property="core.iliball.not.needed" targetfile="${build.src}/iliball-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-ut.js,ilib-ut-compiled.js,iliball.js,iliball-compiled.js,ilib-dyn.js,ilib-dyn-compiled.js,**/test/**,testcli/**" />
-			<srcfiles dir="${build.localetemp}" includes="**/*.json" excludes="iliball.js" />
-		</uptodate>
-	</target>
-
 	<macrodef name="runassemble">
         <attribute name="tgtfilename"/>
         <attribute name="srcfilename"/>
@@ -152,28 +143,90 @@ limitations under the License.
 		</sequential>
 	</macrodef>
 	
-	<target name="assemble" depends="prepare,compress.locale.json,testiliball" unless="core.iliball.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+	<target name="testilib.mini" description="test whether or not the ilib-mini single file needs to be rebuilt">
+		<uptodate property="core.ilib.mini.not.needed" targetfile="${build.src}/ilib-mini-compiled.js">
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
+			<srcfiles dir="${build.src}" includes="ilib-mini-inc.js"/>
+			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
+		</uptodate>
+	</target>
+
+	<target name="assemble.mini" depends="prepare,compress.locale.json,testilib.mini" unless="core.ilib.mini.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
-			tgtfilename="iliball.js" 
-			srcfilename="ilib.js" 
+			tgtfilename="ilib-mini.js" 
+			srcfilename="ilib-mini-inc.js" 
 			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-CN,zh-HK,zh-TW,zh-SG"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
-			output="${build.src}/iliball-compiled.js"
+			output="${build.src}/ilib-mini-compiled.js"
 			description="Use the google closure compiler to compress code">
 			<externs dir="${build.src}">
 				<file name="externs.js"/>
 			</externs>
 			<sources dir="${build.src}">
-				<file name="iliball.js"/>
+				<file name="ilib-mini.js"/>
+			</sources>
+		</jscomp>
+	</target>
+
+	<target name="testilib.medium" description="test whether or not the ilib-medium single file needs to be rebuilt">
+		<uptodate property="core.ilib.medium.not.needed" targetfile="${build.src}/ilib-medium-compiled.js">
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
+			<srcfiles dir="${build.src}" includes="ilib-medium-inc.js"/>
+			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
+		</uptodate>
+	</target>
+
+	<target name="assemble.medium" depends="prepare,compress.locale.json,testilib.medium" unless="core.ilib.medium.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+		<runassemble 
+			tgtfilename="ilib-medium.js" 
+			srcfilename="ilib-medium-inc.js" 
+			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-CN,zh-HK,zh-TW,zh-SG"/>
+		<jscomp compilationlevel="simple" 
+			warning="verbose" 
+			debug="true"
+			output="${build.src}/ilib-medium-compiled.js"
+			description="Use the google closure compiler to compress code">
+			<externs dir="${build.src}">
+				<file name="externs.js"/>
+			</externs>
+			<sources dir="${build.src}">
+				<file name="ilib-medium.js"/>
+			</sources>
+		</jscomp>
+	</target>
+
+	<target name="testilib.full" description="test whether or not the ilib-full single file needs to be rebuilt">
+		<uptodate property="core.ilib.full.not.needed" targetfile="${build.src}/ilib-full-compiled.js">
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
+			<srcfiles dir="${build.src}" includes="ilib-full-inc.js"/>
+			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
+		</uptodate>
+	</target>
+
+	<target name="assemble.full" depends="prepare,compress.locale.json,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+		<runassemble 
+			tgtfilename="ilib-full.js" 
+			srcfilename="ilib-full-inc.js" 
+			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-CN,zh-HK,zh-TW,zh-SG"/>
+		<jscomp compilationlevel="simple" 
+			warning="verbose" 
+			debug="true"
+			output="${build.src}/ilib-full-compiled.js"
+			description="Use the google closure compiler to compress code">
+			<externs dir="${build.src}">
+				<file name="externs.js"/>
+			</externs>
+			<sources dir="${build.src}">
+				<file name="ilib-full.js"/>
 			</sources>
 		</jscomp>
 	</target>
 
 	<target name="testilibut" description="test whether or not the ilib-ut single file needs to be rebuilt">
 		<uptodate property="ilib-ut.not.needed" targetfile="${build.src}/ilib-ut-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
 			<srcfiles dir="${build.src}" includes="ilib-ut-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
@@ -200,15 +253,16 @@ limitations under the License.
 	
 	<target name="testilibdemo" description="test whether or not the ilib-demo file needs to be rebuilt">
 		<uptodate property="ilib-demo.not.needed" targetfile="${build.src}/ilib-demo-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
+			<srcfiles dir="${build.src}" includes="**/ilib-full-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
-	<target name="assemble.demo" depends="prepare,compress.locale.json,testiliball" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
+	<target name="assemble.demo" depends="prepare,compress.locale.json,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
 		<runassemble 
 			tgtfilename="ilib-demo.js" 
-			srcfilename="ilib-ut-inc.js" 
+			srcfilename="ilib-full-inc.js" 
 			locales="af-ZA,da-DK,de-AT,de-CH,de-DE,en-AU,en-CA,en-GB,en-IE,en-IN,en-NG,en-NZ,en-PH,en-PK,en-US,en-ZA,es-AR,es-ES,es-MX,fr-BE,fr-CA,fr-CH,fr-FR,he-IL,id-ID,it-CH,it-IT,ja-JP,ko-KR,nl-BE,nl-NL,no-NO,pt-BR,pt-PT,ru-RU,sv-SE,tr-TR,vi-VN,zxx-XX,zxx-Hans-XX,zxx-Cyrl-XX,zxx-Hebr-XX,zh-CN,zh-TW,zh-HK,zh-SG,zh-MO"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
@@ -224,70 +278,99 @@ limitations under the License.
 		</jscomp>
 	</target>
 
-	<target name="testilibdyn" description="test whether or not the ilib-dyn file needs to be rebuilt">
-		<uptodate property="ilib-dyn.not.needed" targetfile="${build.src}/ilib-dyn-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
+	<target name="testilib.dyn.medium" description="test whether or not the medium-sized ilib file needs to be rebuilt">
+		<uptodate property="ilib.dyn.medium.not.needed" targetfile="${build.src}/ilib-dyn-medium-compiled.js">
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
+			<srcfiles dir="${build.src}" includes="ilib-medium-inc.js"/>
+			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
+		</uptodate>
+	</target>
+
+	<target name="assemble.dyn.medium" depends="prepare,compress.locale.json,testilib.dyn.medium" unless="ilib.dyn.medium.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
+		<runassemble 
+			tgtfilename="ilib-dyn-medium.js" 
+			srcfilename="ilib-medium-inc.js" 
+			locales=""/>
+		<jscomp compilationlevel="simple" 
+			warning="verbose" 
+			debug="true"
+			output="${build.src}/ilib-dyn-medium-compiled.js"
+			description="Use the google closure compiler to compress code">
+			<externs dir="${build.src}">
+				<file name="externs.js"/>
+			</externs>
+			<sources dir="${build.src}">
+				<file name="ilib-dyn-medium.js"/>
+			</sources>
+		</jscomp>
+	</target>
+
+	<target name="testilib.dyn.mini" description="test whether or not the ilib-mini file needs to be rebuilt">
+		<uptodate property="ilib.dyn.mini.not.needed" targetfile="${build.src}/ilib-dyn-mini-compiled.js">
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
 			<srcfiles dir="${build.src}" includes="ilib-mini-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn" depends="prepare,compress.locale.json,testilibdyn" unless="ilib-dyn.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
+	<target name="assemble.dyn.mini" depends="prepare,compress.locale.json,testilib.dyn.mini" unless="ilib.dyn.mini.not.needed" description="assembles a minimal set of the js files into a single file">
 		<runassemble 
-			tgtfilename="ilib-dyn.js" 
-			srcfilename="ilib.js" 
-			locales=""/>
-		<jscomp compilationlevel="simple" 
-			warning="verbose" 
-			debug="true"
-			output="${build.src}/ilib-dyn-compiled.js"
-			description="Use the google closure compiler to compress code">
-			<externs dir="${build.src}">
-				<file name="externs.js"/>
-			</externs>
-			<sources dir="${build.src}">
-				<file name="ilib-dyn.js"/>
-			</sources>
-		</jscomp>
-	</target>
-
-	<target name="testilibmini" description="test whether or not the ilib-mini file needs to be rebuilt">
-		<uptodate property="ilib-mini.not.needed" targetfile="${build.src}/ilib-mini-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
-			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
-		</uptodate>
-	</target>
-
-	<target name="assemble.mini" depends="prepare,compress.locale.json,testilibmini" unless="ilib-mini.not.needed" description="assembles a minimal set of the js files into a single file">
-		<runassemble 
-			tgtfilename="ilib-mini.js" 
+			tgtfilename="ilib-dyn-mini.js" 
 			srcfilename="ilib-mini-inc.js" 
 			locales=""/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
-			output="${build.src}/ilib-mini-compiled.js"
+			output="${build.src}/ilib-dyn-mini-compiled.js"
 			description="Use the google closure compiler to compress code">
 			<externs dir="${build.src}">
 				<file name="externs.js"/>
 			</externs>
 			<sources dir="${build.src}">
-				<file name="ilib-mini.js"/>
+				<file name="ilib-dyn-mini.js"/>
 			</sources>
 		</jscomp>
 	</target>
 
-	<target name="testiliblg" description="test whether or not the ilib-lg file needs to be rebuilt">
-		<uptodate property="ilib-lg.not.needed" targetfile="${build.src}/ilib-lg-compiled.js">
-			<srcfiles dir="${build.src}" includes="**/*.js" excludes="iliball.js,ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
+	<target name="testilib.dyn.full" description="test whether or not the ilib-full file needs to be rebuilt">
+		<uptodate property="ilib.dyn.full.not.needed" targetfile="${build.src}/ilib-dyn-full-compiled.js">
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
+			<srcfiles dir="${build.src}" includes="ilib-full-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
-	<target name="assemble.lg" depends="prepare,compress.locale.json,testiliblg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
+	<target name="assemble.dyn.full" depends="prepare,compress.locale.json,testilib.dyn.full" unless="ilib.dyn.full.not.needed" description="assembles the full set of the js files into a single file">
+		<runassemble 
+			tgtfilename="ilib-dyn-full.js" 
+			srcfilename="ilib-full-inc.js" 
+			locales=""/>
+		<jscomp compilationlevel="simple" 
+			warning="verbose" 
+			debug="true"
+			output="${build.src}/ilib-dyn-full-compiled.js"
+			description="Use the google closure compiler to compress code">
+			<externs dir="${build.src}">
+				<file name="externs.js"/>
+			</externs>
+			<sources dir="${build.src}">
+				<file name="ilib-dyn-full.js"/>
+			</sources>
+		</jscomp>
+	</target>
+
+	<target name="testilib.lg" description="test whether or not the ilib-lg file needs to be rebuilt">
+		<uptodate property="ilib-lg.not.needed" targetfile="${build.src}/ilib-lg-compiled.js">
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
+			<srcfiles dir="${build.src}" includes="ilib-medium-inc.js"/>
+			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
+		</uptodate>
+	</target>
+
+	<target name="assemble.lg" depends="prepare,compress.locale.json,testilib.lg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
 		<runassemble 
 			tgtfilename="ilib-lg.js" 
-			srcfilename="ilib.js" 
+			srcfilename="ilib-medium-inc.js"
 			locales="ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,bg-BG,bs-Latn-BA,bs-Latn-ME,cz-CZ,da-DK,de-AT,de-CH,de-DE,de-LU,ee-EE,el-CY,el-GR,en-AM,en-AU,en-AZ,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MM,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PH,es-PR,es-PY,es-SV,es-US,es-UY,es-VE,fa-AF,fa-IR,fi-FI,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-CQ,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-ML,fr-RW,fr-SN,fr-TG,ga-IE,he-IL,hi-IN,hi-SG,hr-HR,hr-ME,hu-HU,id-ID,it-CH,it-IT,ja-JP,kk-Cyrl-KZ,ko-KR,ku-Arab-IQ,lt-LT,lv-LV,mk-MK,mn-Cyrl-MN,ms-MY,ms-SG,nb-NO,nl-BE,nl-NL,pl-PL,pt-AO,pt-BR,pt-CQ,pt-CV,pt-PT,ro-RO,ru-BY,ru-GE,ru-KG,ru-KZ,ru-RU,ru-UA,sk-SK,sl-SI,sq-AL,sq-ME,sr-Latn-ME,sr-Latn-RS,sv-FI,sv-SE,th-TH,tr-AM,tr-AZ,tr-CY,tr-TR,uk-UA,uz-Cyrl-UZ,uz-Latn-UZ,vi-VN,zh-Hans-CN,zh-Hans-SG,zh-Hant-HK,zh-Hant-MY,zh-Hant-TW"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
@@ -303,14 +386,14 @@ limitations under the License.
 		</jscomp>
 	</target>
 
-	<target name="export" depends="assemble,assemble.dyn,doc" description="Create all objects and export them to the top level dir for packaging">
+	<target name="export" depends="assemble.mini,assemble.medium,assemble.full,assemble.dyn.mini,assemble.dyn.medium,assemble.dyn.full,doc" description="Create all objects and export them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js"/>
 		<copy todir="${build.export}/js">
 			<fileset dir="${build.src}">
-				<include name="iliball.js"/>
-				<include name="iliball-compiled.js"/>
-				<include name="ilib-dyn.js"/>
-				<include name="ilib-dyn-compiled.js"/>
+				<include name="ilib-medium.js"/>
+				<include name="ilib-medium-compiled.js"/>
+				<include name="ilib-dyn-medium.js"/>
+				<include name="ilib-dyn-medium-compiled.js"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/doc/jsdoc"/>
@@ -330,7 +413,7 @@ limitations under the License.
 				<include name="lib/google-closure*/**"/>
 				<exclude name="**/test/**"/>
 				<exclude name="**/*.html"/>
-				<exclude name="src/iliball*"/>
+				<exclude name="src/ilib-*-inc.js"/>
 				<exclude name="userSettings.js"/>
 			</fileset>
 		</copy>
@@ -360,10 +443,10 @@ limitations under the License.
 		</tar>
 	</target>
 	
-	<target name="dist" depends="assemble,assemble.dyn,doc" description="Distribute all built objects in preparation for running">
+	<target name="dist" depends="export,doc" description="Distribute all built objects in preparation for running">
 		<zip destfile="${build.dist}/ilib-${version}.zip"
 			basedir="${build.src}"
-			includes="iliball.js,iliball-compiled.js"/>
+			includes="ilib-medium.js,ilib-medium-compiled.js"/>
 		<zip destfile="${build.dist}/ilib-${version}-doc.zip"
 			basedir="${build.jsdoc}"/>
 		<zip destfile="${build.dist}/ilib-${version}-src.zip">
@@ -371,7 +454,11 @@ limitations under the License.
 				dir="${build.base}" 
 				prefix="js"
 				includes="src/**,data/locale/**/*.json,build.xml,bin/**"
-				excludes="**/test/**,**/externs.js,**/*.html,src/iliball*"/>
+				excludes="**/test/**,**/externs.js,**/*.html,src/ilib-*"/>
+			<zipfileset 
+				dir="${build.base}" 
+				prefix="js"
+				includes="src/ilib-*-inc.js"/>
 			<zipfileset 
 				dir="../tools" 
 				prefix="tools"
@@ -379,7 +466,7 @@ limitations under the License.
 		</zip>
 		<tar destfile="${build.dist}/ilib-${version}.tgz"
 			basedir="${build.src}"
-			includes="iliball.js,iliball-compiled.js"
+			includes="ilib-medium.js,ilib-medium-compiled.js"
 			compression="gzip"/>
 		<tar destfile="${build.dist}/ilib-${version}-doc.tgz"
 			basedir="${build.jsdoc}"
@@ -387,8 +474,22 @@ limitations under the License.
 		<tar destfile="${build.dist}/ilib-${version}-src.tgz"
 			basedir="${build.base}"
 			includes="src/**,data/locale/**/*.json,build.xml,${build.dist}/jsdoc*/**,bin/**"
-			excludes="**/test/**,**/externs.js,**/*.html,src/iliball*"
-			compression="gzip"/>	
+			excludes="**/test/**,**/externs.js,**/*.html,src/ilib-*"
+			compression="gzip">
+			<tarfileset
+				dir="${build.base}" 
+				prefix="js"
+				includes="src/**,data/locale/**/*.json,build.xml,bin/**"
+				excludes="**/test/**,**/externs.js,**/*.html,src/ilib-*"/>
+			<tarfileset 
+				dir="${build.base}" 
+				prefix="js"
+				includes="src/ilib-*-inc.js"/>
+			<tarfileset 
+				dir="../tools" 
+				prefix="tools"
+				includes="jsdoc*/**"/>
+		</tar>
 		<checksum>
 			<fileset dir="${build.dist}">
 				<include name="*.tgz"/>
@@ -424,7 +525,7 @@ limitations under the License.
 	</target>
 
 	<target name="doc"
-            depends="assemble,testjsdoc"
+            depends="assemble.dyn.full,testjsdoc"
             description="creates jsdoc for all local java files in this project"
             unless="core.jsdoc.not.needed">
 		<delete dir="${build.jsdoc}"/>
@@ -439,7 +540,7 @@ limitations under the License.
 			<arg value="--directory=${build.jsdoc}"/>
 			<arg value="--recurse=100"/>
 			<arg value="--encoding=utf-8"/>
-			<arg value="iliball.js"/>
+			<arg value="ilib-dyn-full.js"/>
 		</java>
 	</target>
 	
