@@ -19,7 +19,7 @@
 
 // !depends ilibglobal.js locale.js
 
-// !data localeinfo likelylocales
+// !data localeinfo
 
 /**
  * @class
@@ -426,27 +426,5 @@ ilib.LocaleInfo.prototype = {
 	 */
 	getAllScripts: function() {
 		return this.info.scripts || ["Latn"];
-	},
-	
-	/**
-	 * Return an ilib.Locale instance that is fully specified based on partial information
-	 * given to the constructor of this locale info instance. For example, if the locale
-	 * spec given to this locale info instance is simply "ru" (for the Russian language), 
-	 * then it will fill in the missing region and script tags and return a locale with 
-	 * the specifier "ru-RU-Cyrl". (ie. Russian language, Russian Federation, Cyrillic).
-	 * Any one or two of the language, script, or region parts may be left unspecified,
-	 * and the other one or two parts will be filled in automatically. If this
-	 * class has no information about the given locale, then the locale of this
-	 * locale info instance is returned unchanged.
-	 * 
-	 * @returns {ilib.Locale} the most likely completion of the partial locale given
-	 * to the constructor of this locale info instance
-	 */
-	getLikelyLocale: function () {
-		if (typeof(ilib.data.likelylocales[this.locale.getSpec()]) === 'undefined') {
-			return this.locale;
-		}
-		
-		return new ilib.Locale(ilib.data.likelylocales[this.locale.getSpec()]);
 	}
 };
