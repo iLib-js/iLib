@@ -28,6 +28,7 @@ calendar.js
 localeinfo.js
 timezone.js
 localeinfo.js
+calendar/gregorian.js
 */
 
 // !data dateformats sysres
@@ -370,14 +371,11 @@ ilib.DateFmt = function(options) {
 			// get the default calendar name from the locale, and if the locale doesn't define
 			// one, use the hard-coded gregorian as the last resort
 			this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
-			switch (this.calName) {
-				case 'julian':
-					this.cal = new ilib.Cal.Julian();
-					break;
-				default:
-					// just use the default Gregorian instead
-					this.cal = new ilib.Cal.Gregorian();
-					break;
+			this.cal = ilib.Cal.newInstance({
+				type: this.calName
+			});
+			if (!this.cal) {
+				this.cal = new ilib.Cal.Gregorian();
 			}
 
 			/*
