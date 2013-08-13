@@ -1,5 +1,5 @@
 {
-    "format": "{prefix} {givenName} {middleName} {familyName}{suffix}",
+    "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
     "sortByHeadWord": false,
     "nameStyle": "western",
     "conjunctions": {

@@ -1,7 +1,6 @@
 {
-    "format": "{prefix} {givenName} {middleName} {suffix}",
+    "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
     "sortByHeadWord": false,
-    "nameStyle": "asian",
     "conjunctions": {
         "and1": "dan",
         "and2": "dan",
@@ -9,17 +8,17 @@
         "or2": "atau"
     },
     "prefixes": [
-        "Encik",
-        "Cik",
-        "Puan",
-        "Presiden",
+        "encik",
+        "cik",
+        "puan",
+        "presiden",
         "naib presiden",
-        "Perdana Menteri",
-        "Datuk Bandar",
-        "Gabenor",
+        "perdana Menteri",
+        "datuk Bandar",
+        "gabenor",
         "pengerusi",
         "pengerusi",
-        "Menteri",
+        "menteri",
         "jurulatih",
         "profesor",
         "raja",
@@ -27,7 +26,7 @@
         "puteri",
         "umum",
         "laksamana",
-        "Pesuruhjaya",
+        "pesuruhjaya",
         "penguasa",
         "inspektor",
         "detektif",
@@ -48,7 +47,6 @@
         "sepupu"
     ],
     "suffixes": [
-        "kanan",
         "bersara"
     ]
 }

@@ -9,9 +9,9 @@
         "or2": "ose"
     },
     "prefixes": [
-        "Zoti",
-        "Znj",
-        "Zonja",
+        "zoti",
+        "znj",
+        "zonja",
         "president",
         "zëvendëspresident",
         "Kryeministri",
@@ -53,7 +53,6 @@
     ],
     "suffixes": [
         "i ri",
-        "lartë",
         "njom",
         "pension"
     ]

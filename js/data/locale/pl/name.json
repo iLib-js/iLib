@@ -9,9 +9,9 @@
         "or2": "lub"
     },
     "prefixes": [
-        "Pan",
-        "Panna",
-        "Pani",
+        "pan",
+        "panna",
+        "pani",
         "prezydent",
         "wiceprezes",
         "premier",
@@ -52,7 +52,6 @@
         "kuzyn"
     ],
     "suffixes": [
-        "gnić",
         "emeryturę"
     ]
 }

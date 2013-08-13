@@ -1,107 +1,104 @@
 {
 	"format": "{prefix} {givenName} {middleName} {suffix}",
 	"sortByHeadWord": false,
-	"nameStyle": "asian",
 	"conjunctions": {
-		"and1": "dan",
-		"and2": "dan",
-		"or1": "atau",
-		"or2": "atau"
+"and1": "dan",
+"and2": "dan",
+"or1": "atau",
+"or2": "atau"
 	},
 	
 	"prefixes": [
 
-	  	"Bapak",
+"bapak",
 
-		"Ibu",
+"ibu",
 
-		"Ibu",
+"presiden",
 
-		"presiden",
+"wakil presiden",
 
-		"wakil presiden",
+"perdana menteri",
 
-		"perdana menteri",
+"walikota",
 
-		"walikota",
+"gubernur",
 
-		"gubernur",
+"ketua",
 
-		"ketua",
+"ketua",
 
-		"ketua",
+"melayani",
 
-		"melayani",
+"pendeta Yahudi",
 
-		"pendeta Yahudi",
+"mu",
 
-		"mu",
+"pendeta",
 
-		"pendeta",
+"koki",
 
-		"koki",
+"melatih",
 
-		"melatih",
+"profesor",
 
-		"profesor",
+"raja",
 
-		"raja",
+"ratu",
 
-		"ratu",
+"pangeran",
 
-		"pangeran",
+"puteri",
 
-		"puteri",
+"umum",
 
-		"umum",
+"laksamana",
 
-		"laksamana",
+"komisaris",
 
-		"komisaris",
+"pengawas",
 
-		"pengawas",
+"kepala polisi daerah",
 
-		"kepala polisi daerah",
+"inspektur",
 
-		"inspektur",
+"detektif",
 
-		"detektif",
+"petugas",
 
-		"petugas",
+"tuan",
 
-		"tuan",
+"wanita",
 
-		"wanita",
+"raja",
 
-		"raja",
+"nyonya",
 
-		"nyonya",
+"ayah",
 
-		"ayah",
+"ibu",
 
-		"ibu",
+"saudara",
 
-		"saudara",
+"saudara",
 
-		"saudara",
+"pendeta",
 
-		"pendeta",
+"bibi",
 
-		"bibi",
+"paman",
 
-		"paman",
+"nenek",
 
-		"nenek",
+"nenek",
 
-		"nenek",
+"kakek",
 
-		"kakek",
+"kakek",
 
-		"kakek",
+"granma",
 
-		"granma",
-
-		"sepupu"
+"sepupu"
 
      ],
 

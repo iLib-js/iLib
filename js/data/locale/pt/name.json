@@ -1,6 +1,5 @@
 {
-    "format": "{prefix}{familyName}{middleName}{givenName}{suffix}",
-    "nameStyle": "asian",
+    "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
     "conjunctions": {
         "and1": "e",
         "and2": "e",
@@ -8,6 +7,8 @@
         "or2": "ou"
     },
     "prefixes": [
+	"Senhor",
+	"Senhora",
         "presidente",
         "vice-presidente",
         "primeiro ministro",

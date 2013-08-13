@@ -1,6 +1,6 @@
 {
     "format": "{prefix}{familyName}{middleName}{givenName}{suffix}",
-    "nameStyle": "asian",
+     "sortByHeadWord": false,
     "conjunctions": {
         "and1": "그리고",
         "and2": "그리고",

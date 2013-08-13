@@ -1,7 +1,6 @@
 {
 	"format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
 	"sortByHeadWord": false,
-	"nameStyle": "asian",
 	"conjunctions": {
 		"and1": "और ",
 		"and2": "और ",
