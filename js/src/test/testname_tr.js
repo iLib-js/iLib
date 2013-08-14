@@ -29,10 +29,6 @@ function testParseSimpleName_tr_TR() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
-
-
 function testParseTitle_tr_TR() {
 	var parsed = new ilib.Name("Kemal Sunal kıdemli", {locale: 'tr-TR'});
 	assertNotUndefined(parsed);
@@ -45,8 +41,6 @@ function testParseTitle_tr_TR() {
 	
 	assertObjectContains(expected, parsed);
 };
-
-
 
 function testParseTitleWithFamilyOnly_tr_TR() {
 	var parsed = new ilib.Name("Bay. Sunal", {locale: 'tr-TR'});
