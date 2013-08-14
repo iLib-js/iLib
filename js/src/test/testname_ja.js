@@ -32,7 +32,7 @@ function testParseSimpleName_ja_JP() {
 
 
 function testParseSimpleName_ja_JP() {
-	var parsed = new ilib.Name("高橋 拓海", {locale: 'ja-JP'});
+	var parsed = new ilib.Name("高橋拓海", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -47,11 +47,11 @@ function testParseSimpleName_ja_JP() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_ja_JP() {
-	var parsed = new ilib.Name("さん 拓海 総裁", {locale: 'ja-JP'});
+	var parsed = new ilib.Name("拓海総裁さん", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		 suffix : "さん",
+		suffix : "さん",
 		givenName: "拓海",
 		familyName: "高橋"
 	};
@@ -61,7 +61,7 @@ function testParseSingleNameWithPrefixAndAdjunct_ja_JP() {
 
 
 function testParseTitle_ja_JP1() {
-	var parsed = new ilib.Name("高橋 拓海 知事", {locale: 'ja-JP'});
+	var parsed = new ilib.Name("高橋拓海知事", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -76,7 +76,7 @@ function testParseTitle_ja_JP1() {
 
 
 function testParseTitleWithFamilyOnlyAndAdjunct_ja_JP() {
-	var parsed = new ilib.Name("高橋 拓海 教授", {locale: 'ja-JP'});
+	var parsed = new ilib.Name("高橋拓海教授", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -92,7 +92,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_ja_JP() {
 
 
 function testParseCompoundHonorific_ja_JP() {
-	var parsed = new ilib.Name("高橋 教授", {locale: 'ja-JP'});
+	var parsed = new ilib.Name("高橋教授", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -104,7 +104,7 @@ function testParseCompoundHonorific_ja_JP() {
 };
 
 function testParseCompoundHonorific_ja_JP1() {
-	var parsed = new ilib.Name("高橋 総裁.", {locale: 'ja-JP'});
+	var parsed = new ilib.Name("高橋総裁.", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -157,7 +157,7 @@ function testFormatSimpleNameFull_ja_JP() {
 		
 		givenName: "拓海",
 		familyName: "高橋",
-		suffix: "副大統領 ご"
+		suffix: "副大統領ご"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full", 
@@ -166,7 +166,7 @@ function testFormatSimpleNameFull_ja_JP() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "高橋拓海副大統領 ご";
+	var expected = "高橋拓海副大統領ご";
 	
 	assertEquals(expected, formatted);
 };
