@@ -210,7 +210,7 @@ function testFormatAsianNameMedium_id_ID() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "獸 地";
+	var expected = "獸地";
 	
 	assertEquals(expected, formatted);
 };
@@ -229,7 +229,7 @@ function testFormatAsianNameLong_id_ID() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "小 獸 地 太太";
+	var expected = "小獸地太太";
 	
 	assertEquals(expected, formatted);
 };
