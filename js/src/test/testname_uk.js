@@ -29,10 +29,6 @@ function testParseSimpleName_uk_UA() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
-
-
 function testParseTitle_uk_UA() {
 	var parsed = new ilib.Name("Міла Куніс відставку", {locale: 'uk-UA'});
 	assertNotUndefined(parsed);
@@ -45,8 +41,6 @@ function testParseTitle_uk_UA() {
 	
 	assertObjectContains(expected, parsed);
 };
-
-
 
 function testParseTitleWithFamilyOnly_uk_UA() {
 	var parsed = new ilib.Name("Mістер. Куніс", {locale: 'uk-UA'});
