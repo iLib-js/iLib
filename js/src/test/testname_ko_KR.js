@@ -18,7 +18,7 @@
  */
 
 function testParseSimpleName_ko_KR() {
-	var parsed = new ilib.Name("김 경", {locale: 'ko-KR'},{order:"fg"});
+	var parsed = new ilib.Name("김경", {locale: 'ko-KR'},{order:"fg"});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -30,7 +30,7 @@ function testParseSimpleName_ko_KR() {
 };
 
 function testParseTripleName_ko_KR() {
-	var parsed = new ilib.Name("경 동 김", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("경동김", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -43,7 +43,7 @@ function testParseTripleName_ko_KR() {
 };
 
 function testParseHypenatedName_ko_KR() {
-	var parsed = new ilib.Name("김 동 경", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("김동경", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -56,7 +56,7 @@ function testParseHypenatedName_ko_KR() {
 };
 
 function testParseQuadrupleName_ko_KR() {
-	var parsed = new ilib.Name("경 동 김", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("경동김", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -70,7 +70,7 @@ function testParseQuadrupleName_ko_KR() {
 
 
 function testParseQuadrupleName_ko_KR1() {
-	var parsed = new ilib.Name("시장 경 동 김", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("시장경동김", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -84,7 +84,7 @@ function testParseQuadrupleName_ko_KR1() {
 };
 
 function testParseTitle_ko_KR() {
-	var parsed = new ilib.Name("장관 김 경", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("장관김경", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -97,7 +97,7 @@ function testParseTitle_ko_KR() {
 };
 
 function testParseHonorific_ko_KR() {
-	var parsed = new ilib.Name("여왕 김 경", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("여왕김경", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -110,7 +110,7 @@ function testParseHonorific_ko_KR() {
 };
 
 function testParseSuffix_ko_KR() {
-	var parsed = new ilib.Name("김 경 주니어.", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("김경주니어.", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -124,7 +124,7 @@ function testParseSuffix_ko_KR() {
 
 // for DFISH-25146
 function testParseSuffixWithComma_ko_KR() {
-	var parsed = new ilib.Name("김 경, 박사", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("김경, 박사", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -162,12 +162,12 @@ function testLastNames_ko_KR() {
 };
 
 function testCompoundNames_ko_KR() {
-	var parsed = new ilib.Name("장관 김", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("장관김", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
 		prefix: "장관",
-		familyName: " 김"
+		familyName: "김"
 	};
 	
 	assertObjectContains(expected, parsed);
