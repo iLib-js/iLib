@@ -18,7 +18,7 @@
  */
 
 function testParseSimpleName_hu_HU() {
-	var parsed = new ilib.Name("Dorottya Halász", {locale: 'hu-HU'});
+	var parsed = new ilib.Name("Halász Dorottya", {locale: 'hu-HU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -32,11 +32,11 @@ function testParseSimpleName_hu_HU() {
 
 
 function testParseSimpleName_hu_HU1() {
-	var parsed = new ilib.Name("Úr. Dorottya Halász", {locale: 'hu-HU'});
+	var parsed = new ilib.Name("úr. Halász Dorottya", {locale: 'hu-HU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix : "Úr.",
+		prefix : "úr.",
 		givenName: "Dorottya",
 		familyName: "Halász"
                
@@ -47,7 +47,7 @@ function testParseSimpleName_hu_HU1() {
 
 
 function testParseSimpleNameWom_hu_HU() {
-	var parsed = new ilib.Name("Kisasszony. Lajos Kovács", {locale: 'hu-HU'});
+	var parsed = new ilib.Name("Kisasszony. Kovács Lajos", {locale: 'hu-HU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -63,7 +63,7 @@ function testParseSimpleNameWom_hu_HU() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_hu_HU() {
-	var parsed = new ilib.Name("Dorottya Halász jr.", {locale: 'hu-HU'});
+	var parsed = new ilib.Name("Halász Dorottya jr.", {locale: 'hu-HU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -77,7 +77,7 @@ function testParseSingleNameWithPrefixAndAdjunct_hu_HU() {
 
 
 function testParseTitle_hu_HU1() {
-	var parsed = new ilib.Name("alelnöke Dorottya Halász", {locale: 'hu-HU'});
+	var parsed = new ilib.Name("alelnöke Halász Dorottya", {locale: 'hu-HU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
