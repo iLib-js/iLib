@@ -1,5 +1,8 @@
 {
+     "order": "fmg", 
+     "useSpaces": false,
     "format": "{prefix}{familyName}{middleName}{givenName}{suffix}",
+    "nameStyle": "asian",
      "sortByHeadWord": false,
     "conjunctions": {
         "and1": "그리고",
