@@ -57,11 +57,11 @@ function testParseTitleWithFamilyOnly_uk_UA() {
 
 
 function testParseEverything_uk_UA() {
-	var parsed = new ilib.Name("Mістер. i Mіс. Куніс", {locale: 'uk-UA'});
+	var parsed = new ilib.Name("Mістер. і Mіс. Куніс", {locale: 'uk-UA'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Mістер. i Mіс.",
+		prefix: "Mістер. і Mіс.",
 		familyName: "Куніс"
 	};
 	
