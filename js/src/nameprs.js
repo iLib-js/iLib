@@ -298,7 +298,8 @@ ilib.Name.prototype = {
     				//console.log("prefixLower" + prefixLower);
 				//console.log(info.prefixes);
 				//console.log(info.prefixes.indexOf(prefixLower));
-    				if (info.prefixes && info.prefixes.indexOf(prefixLower) > -1) {
+    				if (info.prefixes && 
+    						(info.prefixes.indexOf(prefixLower) > -1 || this._isConjunction(prefixLower))) {
     					if (this.prefix) {
     						if (!asianName) {
 							console.log("name" + this.prefix);
@@ -438,6 +439,21 @@ ilib.Name.prototype = {
 
 	/**
 	 * @protected
+	 * Tell whether or not the given word is a conjunction in this language.
+	 * @param {string} word the word to test
+	 * @return {boolean} true if the word is a conjunction
+	 */
+	_isConjunction: function _isConjunction(word) {
+		return (this.info.conjunctions.and1 === word || 
+				this.info.conjunctions.and2 === word || 
+				this.info.conjunctions.or1 === word ||
+				this.info.conjunctions.or2 === word || 
+				("&" === word) || 
+				("+" === word));
+	},
+	
+	/**
+	 * @protected
 	 * Find the last instance of 'and' in the name
 	 * @param {Array.<string>} parts
 	 * @return {number}
@@ -453,12 +469,7 @@ ilib.Name.prototype = {
 				if ("and" === part || "or" === part || "&" === part || "+" === part) {
 					conjunctionIndex = index;
 				}
-				if (this.info.conjunctions.and1 === part || 
-					this.info.conjunctions.and2 === part || 
-					this.info.conjunctions.or1 === part ||
-					this.info.conjunctions.or2 === part || 
-					("&" === part) || 
-					("+" === part)) {
+				if (this._isConjunction(part)) {
 					conjunctionIndex = index;
 				}
 			}
