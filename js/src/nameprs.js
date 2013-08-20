@@ -130,6 +130,7 @@ ilib.Name = function(name, options) {
 		this.locale = name.locale;
 		this.style = name.style;
 		this.order = name.order;
+		this.useSpaces = name.useSpaces;
 		return;
 	}
 
@@ -144,7 +145,7 @@ ilib.Name = function(name, options) {
 			this.style = options.style;
 		}
 		
-		if (options.order && (options.order === "gf" || options.order === "fg")) {
+		if (options.order && (options.order === "gmf" || options.order === "fmg")) {
 			this.order = options.order;
 		}
 		
@@ -200,7 +201,10 @@ ilib.Name._isAsianName = function (name) {
 				latin++;
 			} else if (ilib.CType.isIdeo(name.charAt(i))) {
 				asian++;
+			} else if (ilib.CType.withinRange(name.charAt(i), "hangul") ) {
+				asian++;
 			}
+			
 		}
 		
 		return latin < asian;
@@ -223,7 +227,7 @@ ilib.Name._isEuroName = function(name) {
 	while (it.hasNext()) {
 		c = it.next();
 		
-		if (!ilib.CType.isIdeo(c) && 
+		if (!ilib.CType.isIdeo(c) &&  (!ilib.CType.withinRange(c,"hangul")) &&
 			 !ilib.CType.isPunct(c) &&
 			 !ilib.CType.isSpace(c)) {
 			return true;
@@ -258,7 +262,7 @@ ilib.Name.prototype = {
     			}
     		}
     		
-    		if (this.info.nameStyle === "asian") {
+    		if (this.info.nameStyle === "asian" || this.info.order === "fmg" || this.info.order === "fgm") {
     			asianName = !ilib.Name._isEuroName(name);
     			info = asianName ? this.info : ilib.data.name;
     		} else {
@@ -268,25 +272,36 @@ ilib.Name.prototype = {
     		
     		if (asianName) {
     			// all-asian names
+			if(this.useSpaces == false) {
     			name = name.replace(/\s+/g, '');	// eliminate all whitespaces
-    			parts = name.trim().split('');
-    		} else {
+    		}
+			parts = name.trim().split(''); 
+			console.log("Asian_________________________________________" + parts);
+		}
+    		//} 
+		else {
     			name = name.replace(/, /g, ' , ');
     			name = name.replace(/\s+/g, ' ');	// compress multiple whitespaces
     			parts = name.trim().split(' ');
+			console.log("western!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + parts);
     		}
-    		
+    			////console.log(asianName);
     		// check for prefixes
     		if (parts.length > 1) {
     			for (i = parts.length; i > 0; i--) {
+				//console.log("parts for prefixing" + parts);
     				prefixArray = parts.slice(0, i);
     				prefix = prefixArray.join(asianName ? '' : ' ');
+				//console.log("prefix is" + prefix);
     				prefixLower = prefix.toLowerCase();
     				prefixLower = prefixLower.replace(/[,\.]/g, '');  // ignore commas and periods
-    			
+    				//console.log("prefixLower" + prefixLower);
+				//console.log(info.prefixes);
+				//console.log(info.prefixes.indexOf(prefixLower));
     				if (info.prefixes && info.prefixes.indexOf(prefixLower) > -1) {
     					if (this.prefix) {
     						if (!asianName) {
+							console.log("name" + this.prefix);
     							this.prefix += ' ';
     						} 
     						this.prefix += prefix;
@@ -298,7 +313,7 @@ ilib.Name.prototype = {
     				}
     			}
     		}
-    		
+    		console.log(parts);
     		// check for suffixes
     		if (parts.length > 1) {
     			for (i = parts.length; i > 0; i--) {
@@ -529,8 +544,10 @@ ilib.Name.prototype = {
 				}
 				ret += segment;
 			});
+			//console.log(ret);
 			return ret;
 		}
+		//console.log(part);
 		return part;
 	},
 	
@@ -540,7 +557,9 @@ ilib.Name.prototype = {
 	_joinNameArrays: function _joinNameArrays() {
 		var prop;
 		for (prop in this) {
+			////console.log("SSSSSSSSSSSSSSSSSSSSSSSS" + JSON.stringify(this));
 			if (this[prop] !== undefined && typeof(this[prop]) === 'object' && this[prop] instanceof Array) {
+				//console.log("SSSSSSSSSSSSSSSSSSSSSSSS" + JSON.stringify(this[prop]));
 				this[prop] = this._joinArrayOrString(this[prop]);
 			}
 		}
@@ -551,14 +570,18 @@ ilib.Name.prototype = {
 	 */
 	_parseAsianName: function (parts) {
 		var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true);
-		
+		//console.log(familyNameArray);
 		if (familyNameArray && familyNameArray.length > 0) {
 			this.familyName = familyNameArray.join('');
+			//console.log("Family name" + this.familyName);
 			this.givenName = parts.slice(this.familyName.length).join('');
+			//console.log("given name" + this.givenName);
 		} else if (this.suffix || this.prefix) {
 			this.familyName = parts.join('');
+			//console.log("Family name" + this.familyName);
 		} else {
 			this.givenName = parts.join('');
+			//console.log("given name" + this.givenName);
 		}
 	},
 	
@@ -592,6 +615,7 @@ ilib.Name.prototype = {
 			//there are at least 4 parts to this name
 			
 			conjunctionIndex = this._findLastConjunction(parts);
+			console.log("@@@@@@@@@@@@@@@@"+conjunctionIndex)
 			if (conjunctionIndex > 0) {
 				// if there's a conjunction that's not the first token, put everything up to and 
 				// including the token after it into the first name, the last 2 tokens into
@@ -628,6 +652,7 @@ ilib.Name.prototype = {
 	 * @protected
 	 */
 	_parseWesternName: function (parts) {
+		//console.log("PARTS" + parts);
 		if (this.locale.getLanguage() === "es") {
 			// in spain and mexico, we parse names differently than in the rest of the world 
 			// because of the double family names
@@ -654,6 +679,7 @@ ilib.Name.prototype = {
 			
 			if (parts.length === 1) {
 				if (this.prefix || typeof(parts[0]) === 'object') {
+					console.log("parts length" + parts.length ) ;
 					// already has a prefix, so assume it goes with the family name like "Dr. Roberts" or
 					// it is a name with auxillaries, which is almost always a family name
 					this.familyName = parts[0];
@@ -662,12 +688,18 @@ ilib.Name.prototype = {
 				}
 			} else if (parts.length === 2) {
 				// we do G F
+				console.log("parts length" + parts.length ) ;
+				if(this.order == "fgm") {
+				this.givenName = parts[1];
+				this.familyName = parts[0];
+				} else {
 				this.givenName = parts[0];
 				this.familyName = parts[1];
+				}
 			} else if (parts.length >= 3) {
 				//find the first instance of 'and' in the name
 				conjunctionIndex = this._findLastConjunction(parts);
-		
+				console.log("@@@@@@@@@@@@@@@@"+conjunctionIndex);
 				if (conjunctionIndex > 0) {
 					// if there's a conjunction that's not the first token, put everything up to and 
 					// including the token after it into the first name, the last token into
@@ -677,17 +709,33 @@ ilib.Name.prototype = {
 					// G G A G M F
 					// G G G A G F
 					// G G G G A G
+				//if(this.order == "gmf") {
 					this.givenName = parts.slice(0,conjunctionIndex+2);
+					console.log("Conjunction present");
+					console.log(this.givenName);
+					if (conjunctionIndex + 1 < parts.length - 1) {
+						this.familyName = parts.splice(parts.length-1, 1);
+						console.log(this.familyName);
+						if (conjunctionIndex + 2 < parts.length - 1) {
+							this.middleName = parts.slice(conjunctionIndex + 2, parts.length - conjunctionIndex - 3);
+							console.log(this.middleName);
+						}
+					}
+				//} else if (this.order == "fgm") {
+					/*this.givenName = parts.slice(0,conjunctionIndex+2);
 					if (conjunctionIndex + 1 < parts.length - 1) {
 						this.familyName = parts.splice(parts.length-1, 1);
 						if (conjunctionIndex + 2 < parts.length - 1) {
 							this.middleName = parts.slice(conjunctionIndex + 2, parts.length - conjunctionIndex - 3);
 						}
-					}
-				} else {
+					}*/
+			}else {
 					this.givenName = parts[0];
+					//console.log("Given name " + this.givenName);
 					this.middleName = parts.slice(1, parts.length-1);
+					//console.log("Middlename" + this.middleName);
 					this.familyName = parts[parts.length-1];
+					//console.log("familyname" + this.familyName);
 				}
 			}
 		}
