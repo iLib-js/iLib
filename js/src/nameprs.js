@@ -664,7 +664,6 @@ ilib.Name.prototype = {
             //there are at least 3 parts to this name
 
             conjunctionIndex = this._findLastConjunction(parts);
-            ////console.log("@@@@@@@@@@@@@@@@"+conjunctionIndex)
             if (conjunctionIndex > 0) {
                 // if there's a conjunction that's not the first token, put everything up to and 
                 // including the token after it into the first name, the last 2 tokens into
@@ -701,8 +700,8 @@ ilib.Name.prototype = {
      */
     _parseWesternName: function (parts) {
 
-        if (this.locale.getLanguage() === "es") {
-            // in spain and mexico, we parse names differently than in the rest of the world 
+        if (this.locale.getLanguage() === "es" || this.locale.getLanguage() === "pt") {
+            // in spain and mexico and portugal, we parse names differently than in the rest of the world 
             // because of the double family names
             this._parseSpanishName(parts);
         } else if (this.locale.getLanguage() === "ru") {
