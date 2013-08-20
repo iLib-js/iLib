@@ -74,11 +74,11 @@ function testParseTitleWithFamilyOnly_mk_MK() {
 
 
 function testParseEverything_mk_MK() {
-	var parsed = new ilib.Name("г-дunн и г-ѓа Самарџunќ", {locale: 'mk-MK'});
+	var parsed = new ilib.Name("г-дин и г-ѓа Самарџunќ", {locale: 'mk-MK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "г-дunн и г-ѓа",
+		prefix: "г-дин и г-ѓа",
 		familyName: "Самарџunќ"
 	};
 	
