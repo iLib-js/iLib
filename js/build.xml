@@ -151,7 +151,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.mini" depends="prepare,compress.locale.json,testilib.mini" unless="core.ilib.mini.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+	<target name="assemble.mini" depends="prepare,gen.manifest,testilib.mini" unless="core.ilib.mini.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
 			tgtfilename="ilib-mini.js" 
 			srcfilename="ilib-mini-inc.js" 
@@ -178,7 +178,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.medium" depends="prepare,compress.locale.json,testilib.medium" unless="core.ilib.medium.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+	<target name="assemble.medium" depends="prepare,gen.manifest,testilib.medium" unless="core.ilib.medium.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
 			tgtfilename="ilib-medium.js" 
 			srcfilename="ilib-medium-inc.js" 
@@ -205,7 +205,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.full" depends="prepare,compress.locale.json,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+	<target name="assemble.full" depends="prepare,gen.manifest,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
 			tgtfilename="ilib-full.js" 
 			srcfilename="ilib-full-inc.js" 
@@ -232,7 +232,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 	
-	<target name="assemble.unittest" depends="prepare,compress.locale.json,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.unittest" depends="prepare,gen.manifest,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble 
 			tgtfilename="ilib-ut.js" 
 			srcfilename="ilib-ut-inc.js" 
@@ -259,7 +259,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.demo" depends="prepare,compress.locale.json,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
+	<target name="assemble.demo" depends="prepare,gen.manifest,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
 		<runassemble 
 			tgtfilename="ilib-demo.js" 
 			srcfilename="ilib-full-inc.js" 
@@ -286,7 +286,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn.medium" depends="prepare,compress.locale.json,testilib.dyn.medium" unless="ilib.dyn.medium.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
+	<target name="assemble.dyn.medium" depends="prepare,gen.manifest,testilib.dyn.medium" unless="ilib.dyn.medium.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
 		<runassemble 
 			tgtfilename="ilib-dyn-medium.js" 
 			srcfilename="ilib-medium-inc.js" 
@@ -313,7 +313,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn.mini" depends="prepare,compress.locale.json,testilib.dyn.mini" unless="ilib.dyn.mini.not.needed" description="assembles a minimal set of the js files into a single file">
+	<target name="assemble.dyn.mini" depends="prepare,gen.manifest,testilib.dyn.mini" unless="ilib.dyn.mini.not.needed" description="assembles a minimal set of the js files into a single file">
 		<runassemble 
 			tgtfilename="ilib-dyn-mini.js" 
 			srcfilename="ilib-mini-inc.js" 
@@ -340,7 +340,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn.full" depends="prepare,compress.locale.json,testilib.dyn.full" unless="ilib.dyn.full.not.needed" description="assembles the full set of the js files into a single file">
+	<target name="assemble.dyn.full" depends="prepare,gen.manifest,testilib.dyn.full" unless="ilib.dyn.full.not.needed" description="assembles the full set of the js files into a single file">
 		<runassemble 
 			tgtfilename="ilib-dyn-full.js" 
 			srcfilename="ilib-full-inc.js" 
@@ -367,7 +367,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.lg" depends="prepare,compress.locale.json,testilib.lg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
+	<target name="assemble.lg" depends="prepare,gen.manifest,testilib.lg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
 		<runassemble 
 			tgtfilename="ilib-lg.js" 
 			srcfilename="ilib-medium-inc.js"
@@ -584,6 +584,24 @@ limitations under the License.
 			<arg value="${build.localetemp}"/>
 		</exec>
 		<touch file="${build.locale}/jsoncompress.stamp"/>
+	</target>
+
+	<target name="test.manifest" description="test whether or not the manifest needs to be regenerated">
+		<uptodate property="manifest.not.needed" targetFile="${build.localetemp}/ilibmanifest.json">
+			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
+		</uptodate>
+	</target>
+
+	<target name="gen.manifest"
+			depends="compress.locale.json,test.manifest"
+			description="produces the ilibmanifest.json file"
+			unless="manifest.not.needed">
+		<exec os="Linux" executable="node" dir="${build.localetemp}">
+			<arg value="${build.tools}/build/mkmf.js"/>
+		</exec>
+		<exec os="Windows XP" executable="node.exe" dir="${build.localetemp}">
+			<arg value="${build.tools}/build/mkmf.js"/>
+		</exec>
 	</target>
 
 </project>
