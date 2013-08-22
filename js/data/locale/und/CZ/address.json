@@ -1,0 +1,51 @@
+{
+    "formats": {
+        "default": "{streetAddress}\n{region}\n{postalCode}\n{country}",
+        "nocountry": "{streetAddress}\n{locality}-{region}\n{postalCode}"
+    },
+    "startAt": "end",
+    "fields": [
+        {
+            "name": "postalCode",
+            "line": "startAtLast",
+            "pattern": "^[0-9]{5}-[0-9]{3}$"
+        },
+        {
+            "name": "region",
+            "line": "last",
+            "pattern": [
+"Prague",
+"Brno",
+"Ostrava",
+"Plzeň",
+"Liberec",
+"Olomouc",
+"Ústí nad Labem",
+"České Budějovice",
+"Hradec Králové",
+"Pardubice",
+"Havířov",
+"Zlín",
+"Kladno",
+"Most",
+"Karviná",
+"Opava",
+"Frýdek-Místek",
+"Jihlava",
+"Karlovy Vary",
+"Teplice",
+"Děčín",
+"Chomutov",
+"Jablonec nad Nisou",
+"Prostějov",
+"Mladá Boleslav"
+            ]
+        },
+        {
+            "name": "locality",
+            "line": "last",
+            "pattern": "([A-za-zÃÉZÁÇÊJXÍÓKÚWYÕÀÂÔãézáçêjxíókúwyõàâô0-9\\s.'\"]+) ?- ?",
+            "matchGroup": 0
+        }
+    ]
+}

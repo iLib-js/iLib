@@ -1,0 +1,66 @@
+{
+    "formats": {
+        "default": "{streetAddress}\n{postalCode} {region}\n{country}",
+        "nocountry": "{streetAddress}\n{postalCode} {region}"
+    },
+    "startAt": "end",
+    "fields": [
+        {
+            "name": "region",
+            "line": "startAtLast",
+            "pattern": [
+                "Copenhagena",
+                "Aarhus",
+                "Odense",
+                "Aalborgb",
+                "Frederiksberga",
+                "Esbjerg",
+                "Gentoftea",
+                "Gladsaxea",
+                "Randers",
+                "Kolding",
+                "Horsens",
+                "Lyngby-Taarbæka",
+                "Vejle",
+                "Hvidovrea",
+                "Roskilde",
+                "Helsingør",
+                "Herning",
+                "Silkeborg",
+                "Næstved",
+                "Greve Stranda",
+                "Tårnbya",
+                "Fredericia",
+                "Ballerupa",
+                "Rødovrea",
+                "Viborg",
+                "Køge",
+                "Holstebro",
+                "Brøndbya",
+                "Taastrupa",
+                "Slagelse",
+                "Hillerød",
+                "Albertslunda",
+                "Sønderborg",
+                "Svendborg",
+                "Herleva",
+                "Holbæk",
+                "Hjørring",
+                "Hørsholm3",
+                "Frederikshavn",
+                "Glostrupa",
+                "Haderslev",
+                "Nørresundbyb",
+                "Ringsted",
+                "Ølstykke-Stenløse2",
+                "Skive",
+		"København"
+            ]
+        },
+        {
+            "name": "postalCode",
+            "line": "last",
+            "pattern": "DK-[0-9]{4} | [0-9]{4}"
+        }
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "formats": {
+        "default": "{streetAddress}\n{locality}\n{postalCode} {region}\n{country}",
+        "nocountry": "{streetAddress}\n{locality}\n{postalCode} {region}"
+    },
+    "startAt": "end",
+    "fields": [
+        {
+            "name": "region",
+            "line": "startAtLast",
+            "pattern": [
+                "Ciudad Autónoma de Buenos Aires",
+                "Buenos Aires",
+                "Catamarca",
+                "Chaco",
+                "Chubut",
+                "Córdoba",
+                "Corrientes",
+                "Entre Ríos",
+                "Formosa",
+		"Capital Federa",
+		"San Sebastian",
+                "Jujuy",
+                "La Pampa",
+                "La Rioja",
+                "Mendoza",
+                "Misiones",
+                "Neuquén",
+                "Río Negro",
+                "Salta",
+                "San Juan",
+                "San Luis",
+                "Santa Cruz",
+                "Santa Fe",
+                "Santiago del Estero",
+                "Tierra del Fuego, Antártida e Islas del Atlántico Sur",
+                "Tucumán"
+            ]
+        },
+        {
+            "name": "postalCode",
+            "line": "last",
+            "pattern": "[A-Za-z0-9]{8}$"
+        },
+        {
+            "name": "locality",
+            "line": "last",
+            "pattern": "[A-Za-z0-9]+$",
+            "matchGroup": 0
+        }
+    ]
+}
