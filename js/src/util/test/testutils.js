@@ -467,6 +467,31 @@ function testMergeLocData() {
 	assertEquals("i", m.g);
 }
 
+function testMergeLocDataNoLocale() {
+	ilib.data.foobar = {
+		a: "b",
+		c: "d"
+	};
+	ilib.data.foobar_de = {
+		a: "e"
+	};
+	ilib.data.foobar_de_DE = {
+   		c: "f"
+   	};
+	ilib.data.foobar_de_Latn_DE = {
+		g: "h"
+	};
+	ilib.data.foobar_de_Latn_DE_SAP = {
+   		g: "i"
+   	};
+
+	var locale = new ilib.Locale("-");
+	var m = ilib.mergeLocData("foobar", locale);
+	assertEquals("b", m.a);
+	assertEquals("d", m.c);
+	assertUndefined(m.g);
+}
+
 function testMergeLocDataNonLeafLocale() {
 	ilib.data.foobar = {
 		a: "b",
@@ -776,6 +801,17 @@ function testGetLocFilesAll() {
 		"en/Latn/US/localeinfo.json",
 		"en/US/govt/localeinfo.json",
 		"en/Latn/US/govt/localeinfo.json"
+	];
+	
+	assertEquals(expected.length, f.length);
+	assertArrayEquals(expected, f);
+}
+
+function testGetLocFilesNoLocale() {
+	var locale = new ilib.Locale("-");
+	var f = ilib.getLocFiles(locale, "localeinfo.json");
+	var expected = [
+		"localeinfo.json"
 	];
 	
 	assertEquals(expected.length, f.length);

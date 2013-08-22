@@ -641,7 +641,7 @@ ilib.loadData = function(params) {
 		object.cache = {};
 	}
 
-	var spec = locale.getSpec().replace(/-/g, '_');
+	var spec = locale.getSpec().replace(/-/g, '_') || "root";
 	if (!object || typeof(object.cache[spec]) === 'undefined') {
 		var basename = name.substring(0,name.lastIndexOf("."));
 		var data = ilib.mergeLocData(basename, locale);

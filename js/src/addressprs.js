@@ -182,23 +182,66 @@ ilib.Address = function (freeformAddress, options) {
 	this.lines = address.split(/[,，\n]/g);
 	this.removeEmptyLines(this.lines);
 	
+	ilib.Address.shared = ilib.Address.shared || {}; 
 	if (typeof(ilib.Address.ctry) === 'undefined') {
 		ilib.Address.ctry = {}; // make sure not to conflict with the address info
 	}
-	ilib.loadData({
-		name: "ctrynames.json", 
-		object: ilib.Address.ctry, 
-		locale: this.locale, 
-		sync: this.sync, 
-		loadParams: this.loadParams, 
-		callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(ctrynames) {
-			this._determineDest(ctrynames, options.onLoad);
-		})
-	});
+	if (typeof(ilib.data.nativecountries) === 'undefined') {
+		ilib.loadData({
+			name: "nativecountries.json", // countries in their own language 
+			object: ilib.Address.shared, 
+			locale: "-", // only need to load the root file 
+			sync: this.sync, 
+			loadParams: this.loadParams, 
+			callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(nativecountries) {
+				ilib.data.nativecountries = nativecountries;
+				this._loadCountries(options && options.onLoad);
+			})
+		});
+	} else {
+		this._loadCountries(options && options.onLoad);
+	}
 };
 
 /** @protected */
 ilib.Address.prototype = {
+	/**
+	 * @private
+	 */
+	_loadCountries: function(onLoad) {
+		if (typeof(ilib.data.countries) === 'undefined') {
+			ilib.loadData({
+				name: "countries.json", // countries in English
+				object: ilib.Address.shared, 
+				locale: "-", // only need to load the root file
+				sync: this.sync, 
+				loadParams: this.loadParams, 
+				callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(countries) {
+					ilib.data.countries = countries;
+					this._loadCtrynames(onLoad);
+				})
+			});
+		} else {
+			this._loadCtrynames(onLoad);
+		}
+	},
+
+	/**
+	 * @private
+	 */
+	_loadCtrynames: function(onLoad) {
+		ilib.loadData({
+			name: "ctrynames.json", 
+			object: ilib.Address.ctry, 
+			locale: this.locale, 
+			sync: this.sync, 
+			loadParams: this.loadParams, 
+			callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(ctrynames) {
+				this._determineDest(ctrynames, onLoad);
+			})
+		});
+	},
+	
 	/**
 	 * @private
 	 * @param {Object?} ctrynames
