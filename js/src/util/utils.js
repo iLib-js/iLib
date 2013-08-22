@@ -714,3 +714,29 @@ ilib.mapString = function (str, map) {
 	}
 	return mapped;
 };
+
+/**
+ * @static
+ * 
+ * Check if an object is a memory of the given array. This works in older
+ * browsers as well.
+ * 
+ * @param {Array.<Object>} array array to search
+ * @param {Object} obj object to search for
+ * @return {number} index of the object in the array, or -1 if it is not in the array
+ */
+ilib.indexOf = function(array, obj) {
+	if (!array || !obj) {
+		return -1;
+	}
+	if (typeof(array.indexOf) === 'function') {
+		return array.indexOf(obj);
+	} else {
+		for (var i = 0; i < array.length; i++) {
+	        if (array[i] === obj) {
+	            return i;
+	        }
+	    }
+	    return -1;
+	}
+};

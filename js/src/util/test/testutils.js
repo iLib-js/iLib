@@ -1163,3 +1163,42 @@ function testMapStringHashMulti() {
 	
 	assertEquals("xmynzoxmynzo", ilib.mapString("abcabc", map));
 }
+
+function testIndexOf() {
+	var arr = ["a", "b", "c"];
+	assertEquals(1, ilib.indexOf(arr, "b"));
+}
+
+function testIndexOfNeg() {
+	var arr = ["a", "b", "c"];
+	assertEquals(-1, ilib.indexOf(arr, "d"));
+}
+
+function testIndexOfBeginning() {
+	var arr = ["a", "b", "c"];
+	assertEquals(0, ilib.indexOf(arr, "a"));
+}
+
+function testIndexOfEnd() {
+	var arr = ["a", "b", "c"];
+	assertEquals(2, ilib.indexOf(arr, "c"));
+}
+
+function testIndexOfCaseSensitive() {
+	var arr = ["a", "b", "c"];
+	assertEquals(-1, ilib.indexOf(arr, "C"));
+}
+
+function testIndexOfWrongObjectType() {
+	var arr = ["a", "b", "c"];
+	assertEquals(-1, ilib.indexOf(arr, 2));
+}
+
+function testIndexOfUndefinedSearchTerm() {
+	var arr = ["a", "b", "c"];
+	assertEquals(-1, ilib.indexOf(arr, undefined));
+}
+
+function testIndexOfUndefinedArray() {
+	assertEquals(-1, ilib.indexOf(undefined, "a"));
+}
