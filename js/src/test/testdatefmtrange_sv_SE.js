@@ -17,7 +17,7 @@
  * limsvations under the License.
  */
 
-function tsvtDateRngFmtSERangeinDayShort() {
+function testDateRngFmtSERangeinDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "short"});
     assertNotNull(fmt);
     
@@ -41,7 +41,7 @@ function tsvtDateRngFmtSERangeinDayShort() {
 	});
     assertEquals("13:45 - 14:30 31/12/11", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeinDayMedium() {
+function testDateRngFmtSERangeinDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "medium"});
     assertNotNull(fmt);
     
@@ -65,7 +65,7 @@ function tsvtDateRngFmtSERangeinDayMedium() {
 	});
     assertEquals("13:45 - 14:30, 31/12/11", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeinDayLong() {
+function testDateRngFmtSERangeinDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "long"});
     assertNotNull(fmt);
     
@@ -89,7 +89,7 @@ function tsvtDateRngFmtSERangeinDayLong() {
 	});
     assertEquals("13:45 - 14:30, 31 dic 2011", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeinDayFull() {
+function testDateRngFmtSERangeinDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "full"});
     assertNotNull(fmt);
     
@@ -114,7 +114,7 @@ function tsvtDateRngFmtSERangeinDayFull() {
     assertEquals("13:45 - 14:30, 31 diciembre 2011 d.C.", fmt.format(start, end));
 }
 
-function tsvtDateRngFmtSERangeNextDayShort() {
+function testDateRngFmtSERangeNextDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "short"});
     assertNotNull(fmt);
     
@@ -138,7 +138,7 @@ function tsvtDateRngFmtSERangeNextDayShort() {
 	});
     assertEquals("30/12/11 13:45 - 31/12/11 14:30", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeNextDayMedium() {
+function testDateRngFmtSERangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "medium"});
     assertNotNull(fmt);
     
@@ -162,7 +162,7 @@ function tsvtDateRngFmtSERangeNextDayMedium() {
 	});
     assertEquals("30/12 13:45 - 31/12 14:30, 11", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeNextDayLong() {
+function testDateRngFmtSERangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "long"});
     assertNotNull(fmt);
     
@@ -186,7 +186,7 @@ function tsvtDateRngFmtSERangeNextDayLong() {
 	});
     assertEquals("30 13:45 - 31 14:30, dic 2011", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeNextDayFull() {
+function testDateRngFmtSERangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "full"});
     assertNotNull(fmt);
     
@@ -211,7 +211,7 @@ function tsvtDateRngFmtSERangeNextDayFull() {
     assertEquals("30 13:45 - 31 14:30, diciembre 2011 d.C.", fmt.format(start, end));
 }
 
-function tsvtDateRngFmtSERangeMultiDayShort() {
+function testDateRngFmtSERangeMultiDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "short"});
     assertNotNull(fmt);
     
@@ -235,7 +235,7 @@ function tsvtDateRngFmtSERangeMultiDayShort() {
 	});
     assertEquals("20-31/12/11", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeMultiDayMedium() {
+function testDateRngFmtSERangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "medium"});
     assertNotNull(fmt);
     
@@ -259,7 +259,7 @@ function tsvtDateRngFmtSERangeMultiDayMedium() {
 	});
     assertEquals("20-31/12/11", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeMultiDayLong() {
+function testDateRngFmtSERangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "long"});
     assertNotNull(fmt);
     
@@ -283,7 +283,7 @@ function tsvtDateRngFmtSERangeMultiDayLong() {
 	});
     assertEquals("20-31 dic 2011", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeMultiDayFull() {
+function testDateRngFmtSERangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "full"});
     assertNotNull(fmt);
     
@@ -308,7 +308,7 @@ function tsvtDateRngFmtSERangeMultiDayFull() {
     assertEquals("20-31 diciembre 2011 d.C.", fmt.format(start, end));
 }
 
-function tsvtDateRngFmtSERangeNextMonthShort() {
+function testDateRngFmtSERangeNextMonthShort() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "short"});
     assertNotNull(fmt);
     
@@ -332,7 +332,7 @@ function tsvtDateRngFmtSERangeNextMonthShort() {
 	});
     assertEquals("20/11-31/12 11", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeNextMonthMedium() {
+function testDateRngFmtSERangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "medium"});
     assertNotNull(fmt);
     
@@ -356,7 +356,7 @@ function tsvtDateRngFmtSERangeNextMonthMedium() {
 	});
     assertEquals("20/11 - 31/12 11", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeNextMonthLong() {
+function testDateRngFmtSERangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "long"});
     assertNotNull(fmt);
     
@@ -380,7 +380,7 @@ function tsvtDateRngFmtSERangeNextMonthLong() {
 	});
     assertEquals("20 nov - 31 dic 2011", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeNextMonthFull() {
+function testDateRngFmtSERangeNextMonthFull() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "full"});
     assertNotNull(fmt);
     
@@ -405,7 +405,7 @@ function tsvtDateRngFmtSERangeNextMonthFull() {
     assertEquals("20 noviembre - 31 diciembre 2011 d.C.", fmt.format(start, end));
 }
 
-function tsvtDateRngFmtSERangeNextYearShort() {
+function testDateRngFmtSERangeNextYearShort() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "short"});
     assertNotNull(fmt);
     
@@ -429,7 +429,7 @@ function tsvtDateRngFmtSERangeNextYearShort() {
 	});
     assertEquals("20/11/11-31/1/12", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeNextYearMedium() {
+function testDateRngFmtSERangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "medium"});
     assertNotNull(fmt);
     
@@ -453,7 +453,7 @@ function tsvtDateRngFmtSERangeNextYearMedium() {
 	});
     assertEquals("20/11/11 - 31/01/12", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeNextYearLong() {
+function testDateRngFmtSERangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "long"});
     assertNotNull(fmt);
     
@@ -477,7 +477,7 @@ function tsvtDateRngFmtSERangeNextYearLong() {
 	});
     assertEquals("20 nov 2011 - 31 ene 2012", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeNextYearFull() {
+function testDateRngFmtSERangeNextYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "full"});
     assertNotNull(fmt);
     
@@ -502,7 +502,7 @@ function tsvtDateRngFmtSERangeNextYearFull() {
     assertEquals("20 noviembre 2011 d.C. - 31 enero 2012 d.C.", fmt.format(start, end));
 }
 
-function tsvtDateRngFmtSERangeMultiYearShort() {
+function testDateRngFmtSERangeMultiYearShort() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "short"});
     assertNotNull(fmt);
     
@@ -526,7 +526,7 @@ function tsvtDateRngFmtSERangeMultiYearShort() {
 	});
     assertEquals("11/11-1/14", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeMultiYearMedium() {
+function testDateRngFmtSERangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "medium"});
     assertNotNull(fmt);
     
@@ -550,7 +550,7 @@ function tsvtDateRngFmtSERangeMultiYearMedium() {
 	});
     assertEquals("11/11 - 01/14", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeMultiYearLong() {
+function testDateRngFmtSERangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "long"});
     assertNotNull(fmt);
     
@@ -574,7 +574,7 @@ function tsvtDateRngFmtSERangeMultiYearLong() {
 	});
     assertEquals("nov 2011 - ene 2014", fmt.format(start, end));
 }
-function tsvtDateRngFmtSERangeMultiYearFull() {
+function testDateRngFmtSERangeMultiYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "full"});
     assertNotNull(fmt);
     
@@ -598,7 +598,7 @@ function tsvtDateRngFmtSERangeMultiYearFull() {
 	});
     assertEquals("noviembre 2011 d.C. - enero 2014 d.C.", fmt.format(start, end));
 }
-function tsvtDateRngFmtSEManyYearsFull() {
+function testDateRngFmtSEManyYearsFull() {
     var fmt = new ilib.DateRngFmt({locale: "sv-SE", length: "full"});
     assertNotNull(fmt);
     
