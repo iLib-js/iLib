@@ -1453,7 +1453,7 @@ function getDateFormats(language, script, region, data) {
     }
     if (available_formats["hm"]) {
         //time_12["ahmz"] = "XXXXX" + available_formats["hm"] + " " + "z";
-        time_12["ahmz"] = time_12["ahmsz"].replace(/[s]+/g, "");
+        time_12["ahmz"] = time_12["ahmsz"].replace(":ss", "");
         time_12["ahm"] = available_formats["hm"];
         time_12["hm"] = available_formats["hm"];
     }
