@@ -5814,14 +5814,14 @@ function testLocaleInfoRoundingMode_ta_SG() {
 function testLocaleInfoGetDecimalSeparatorfor_th() {
 	var info = new ilib.LocaleInfo("th-TH");
 	assertNotNull(info);
-	assertEquals(",", info.getDecimalSeparator());
+	assertEquals(".", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_th() {
 	var info = new ilib.LocaleInfo("th-TH");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(",", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_th() {

@@ -53,7 +53,7 @@ function testDateFmtSimpleMedium_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09.2011", fmt.format(date));
+    assertEquals("29.09.11", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_bg_BG() {
@@ -69,7 +69,7 @@ function testDateFmtSimpleLong_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. Sep. 2011", fmt.format(date));
+    assertEquals("29 септ. 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_bg_BG() {
@@ -85,7 +85,7 @@ function testDateFmtSimpleFull_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. September 2011", fmt.format(date));
+    assertEquals("29 септември 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeShort_bg_BG() {
@@ -181,7 +181,7 @@ function testDateFmtDateTimeSimpleMedium_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.09.2011", fmt.format(date));
+    assertEquals("13:45 29.09.11", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_bg_BG() {
@@ -197,7 +197,7 @@ function testDateFmtDateTimeSimpleLong_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29. Sep. 2011", fmt.format(date));
+    assertEquals("13:45 29 септ. 2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_bg_BG() {
@@ -213,7 +213,7 @@ function testDateFmtDateTimeSimpleFull_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29. September 2011", fmt.format(date));
+    assertEquals("13:45 29 септември 2011", fmt.format(date));
 }
 
 
@@ -233,27 +233,6 @@ function testDateFmtTemplateCalendar_bg_BG() {
     assertEquals("2011-09-29", fmt.format(date));
 }
 
-function testDateFmtTemplateCalendarIncompatibleDateType_bg_BG() {
-    var fmt = new ilib.DateFmt({locale: "bg-BG", calendar: "julian", template: "yyyy-MM-dd"});
-    assertNotNull(fmt);
-    
-    var date = new ilib.Date.GregDate({
-		year: 2011,
-		month: 9,
-		day: 29,
-		hour: 13,
-		minute: 45,
-		second: 0,
-		millisecond: 0
-	});
-    try {
-        fmt.format(date);
-        fail_bg_BG();
-    } catch (str) {
-        // success
-        assertEquals("Wrong date type passed to ilib.DateFmt.format_bg_BG()", str);
-    }
-}
 
 function testDateFmtTemplateClock12SwitchHH_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", clock: "12", template: "HH:mm"});
@@ -494,7 +473,7 @@ function testDateFmtShortDateComponentsD_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.", fmt.format(date));
+    assertEquals("29", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDM_bg_BG() {
@@ -510,10 +489,10 @@ function testDateFmtShortDateComponentsDM_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.09", fmt.format(date));
+    assertEquals("29.9", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsMY_bg_BG() {
+/*function testDateFmtShortDateComponentsMY_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", date: "my"});
     assertNotNull(fmt);
     
@@ -526,8 +505,8 @@ function testDateFmtShortDateComponentsMY_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09.11", fmt.format(date));
-}
+    assertEquals("9.11 г.", fmt.format(date));
+}*/
 
 function testDateFmtShortDateComponentsDMY_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", date: "dmy"});
@@ -558,10 +537,10 @@ function testDateFmtShortDateComponentsWDM_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Do 29.09", fmt.format(date));
+    assertEquals("ч, 29.09", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsWDMY_bg_BG() {
+/*function testDateFmtShortDateComponentsWDMY_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", date: "wdmy"});
     assertNotNull(fmt);
     
@@ -574,9 +553,9 @@ function testDateFmtShortDateComponentsWDMY_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Do 29.09.11", fmt.format(date));
+    assertEquals("ч, 29.09.11 г.", fmt.format(date));
 }
-
+*/
 
 function testDateFmtFullDateComponentsY_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", length: "full", date: "y"});
@@ -607,7 +586,7 @@ function testDateFmtFullDateComponentsM_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("September", fmt.format(date));
+    assertEquals("септември", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_bg_BG() {
@@ -623,7 +602,7 @@ function testDateFmtFullDateComponentsD_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.", fmt.format(date));
+    assertEquals("29", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDM_bg_BG() {
@@ -639,7 +618,7 @@ function testDateFmtFullDateComponentsDM_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. September", fmt.format(date));
+    assertEquals("29 септември", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsMY_bg_BG() {
@@ -655,7 +634,7 @@ function testDateFmtFullDateComponentsMY_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("September 2011", fmt.format(date));
+    assertEquals("септември 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_bg_BG() {
@@ -671,7 +650,7 @@ function testDateFmtFullDateComponentsDMY_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29. September 2011", fmt.format(date));
+    assertEquals("29 септември 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDM_bg_BG() {
@@ -687,10 +666,10 @@ function testDateFmtFullDateComponentsWDM_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Donnerstag 29. September", fmt.format(date));
+    assertEquals("29 септ., четвъртък", fmt.format(date));
 }
 
-function testDateFmtFullDateComponentsWDMY_bg_BG() {
+/*function testDateFmtFullDateComponentsWDMY_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", length: "full", date: "wdmy"});
     assertNotNull(fmt);
     
@@ -703,9 +682,10 @@ function testDateFmtFullDateComponentsWDMY_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Donnerstag 29. September 2011", fmt.format(date));
+    assertEquals("четвъртък, 29 септ. 2011 г.", fmt.format(date));
 }
 
+*/
 
 function testDateFmtShortTimeComponentsS_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", type: "time", time: "s"});
@@ -1204,7 +1184,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_bg_BG() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("vor 30 Sekunden", fmt.formatRelative(reference, date));
+    assertEquals("преди 30 секунди", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", length: "full"});
@@ -1252,7 +1232,7 @@ function testDateFmtFormatRelativeWithinHourBefore_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("vor 10 Minuten", fmt.formatRelative(reference, date));
+    assertEquals("преди 10 минути", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", length: "full"});
@@ -1300,7 +1280,7 @@ function testDateFmtFormatRelativeWithinDayBefore_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("vor 4 Stunden", fmt.formatRelative(reference, date));
+    assertEquals("преди 4 часа", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_bg_BG() {
@@ -1349,7 +1329,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("vor 4 Tage", fmt.formatRelative(reference, date));
+    assertEquals("преди 4 дена", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_bg_BG() {
@@ -1398,7 +1378,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("vor 9 Wochen", fmt.formatRelative(reference, date));
+    assertEquals("преди 9 седмици", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_bg_BG() {
@@ -1447,7 +1427,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("vor 14 Monate", fmt.formatRelative(reference, date));
+    assertEquals("преди 14 месеца", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_bg_BG() {
@@ -1496,6 +1476,6 @@ function testDateFmtFormatRelativeYearsBefore_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("vor 21 Jahre", fmt.formatRelative(reference, date));
+    assertEquals("преди 21 години", fmt.formatRelative(reference, date));
 }
 

@@ -1,5 +1,5 @@
 /*
- * testdatefmt_th_TH.js - test the date formatter object in ThaiLand
+ * testdatefmt_th_TH.js - test the date formatter object in พฤaiLand
  * 
  * Copyright © 2012-2013, JEDLSoft
  *
@@ -69,7 +69,7 @@ function testDateFmtSimpleLong_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sep 2011", fmt.format(date));
+    assertEquals("29 ก.ย. 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_th_TH() {
@@ -85,7 +85,7 @@ function testDateFmtSimpleFull_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September 2011", fmt.format(date));
+    assertEquals("29 กันยายน 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeShort_th_TH() {
@@ -197,7 +197,7 @@ function testDateFmtDateTimeSimpleLong_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sep 2011 13:45", fmt.format(date));
+    assertEquals("29 ก.ย. 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_th_TH() {
@@ -213,7 +213,7 @@ function testDateFmtDateTimeSimpleFull_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September 2011 13:45", fmt.format(date));
+    assertEquals("29 กันยายน 2011 13:45", fmt.format(date));
 }
 
 
@@ -538,7 +538,7 @@ function testDateFmtShortDateComponentsWDM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th 29/9", fmt.format(date));
+    assertEquals("พฤ 29/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_th_TH() {
@@ -554,7 +554,7 @@ function testDateFmtShortDateComponentsWDMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th 29/9/11", fmt.format(date));
+    assertEquals("พฤ 29/9/11", fmt.format(date));
 }
 
 
@@ -587,7 +587,7 @@ function testDateFmtFullDateComponentsM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("September", fmt.format(date));
+    assertEquals("กันยายน", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_th_TH() {
@@ -619,7 +619,7 @@ function testDateFmtFullDateComponentsDM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September", fmt.format(date));
+    assertEquals("29 กันยายน", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsMY_th_TH() {
@@ -635,7 +635,7 @@ function testDateFmtFullDateComponentsMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("September 2011", fmt.format(date));
+    assertEquals("กันยายน 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_th_TH() {
@@ -651,7 +651,7 @@ function testDateFmtFullDateComponentsDMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September 2011", fmt.format(date));
+    assertEquals("29 กันยายน 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDM_th_TH() {
@@ -667,7 +667,7 @@ function testDateFmtFullDateComponentsWDM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Thursday 29 September", fmt.format(date));
+    assertEquals("วันพฤหัสบดี 29 กันยายน", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_th_TH() {
@@ -683,7 +683,7 @@ function testDateFmtFullDateComponentsWDMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Thursday 29 September 2011", fmt.format(date));
+    assertEquals("วันพฤหัสบดี 29 กันยายน 2011", fmt.format(date));
 }
 
 
@@ -816,7 +816,7 @@ function testDateFmtShortTimeComponentsHMZ_th_TH() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 ICT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_th_TH() {
@@ -836,7 +836,7 @@ function testDateFmtShortTimeComponentsHMAZ_th_TH() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 ICT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_th_TH() {
@@ -872,7 +872,7 @@ function testDateFmtShortTimeComponentsHMSZ_th_TH() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 ICT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_th_TH() {
@@ -892,7 +892,7 @@ function testDateFmtShortTimeComponentsHMSAZ_th_TH() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 ICT", fmt.format(date));
 }
 
 
@@ -1026,7 +1026,7 @@ function testDateFmtFullTimeComponentsHMZ_th_TH() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 ICT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_th_TH() {
@@ -1047,7 +1047,7 @@ function testDateFmtFullTimeComponentsHMAZ_th_TH() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 ICT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_th_TH() {
@@ -1084,7 +1084,7 @@ function testDateFmtFullTimeComponentsHMSZ_th_TH() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 ICT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_th_TH() {
@@ -1105,7 +1105,7 @@ function testDateFmtFullTimeComponentsHMSAZ_th_TH() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 ICT", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_th_TH() {
@@ -1126,7 +1126,7 @@ function testDateFmtWithTimeZoneAndNoDST_th_TH() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 ICT", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_th_TH() {
@@ -1151,7 +1151,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_th_TH() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("in 30 seconds", fmt.formatRelative(reference, date));
+    assertEquals("ในอีก 30 วินาที", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
@@ -1175,7 +1175,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_th_TH() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 seconds ago", fmt.formatRelative(reference, date));
+    assertEquals("30 วินาที ที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
@@ -1199,7 +1199,7 @@ function testDateFmtFormatRelativeWithinHourAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 10 minutes", fmt.formatRelative(reference, date));
+    assertEquals("ในอีก 10 นาที", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
@@ -1223,7 +1223,7 @@ function testDateFmtFormatRelativeWithinHourBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 minutes ago", fmt.formatRelative(reference, date));
+    assertEquals("10 นาที ที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
@@ -1247,7 +1247,7 @@ function testDateFmtFormatRelativeWithinDayAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 4 hours", fmt.formatRelative(reference, date));
+    assertEquals("ในอีก 4 ชั่วโมง", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
@@ -1271,7 +1271,7 @@ function testDateFmtFormatRelativeWithinDayBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 hours ago", fmt.formatRelative(reference, date));
+    assertEquals("4 ชั่วโมง ที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_th_TH() {
@@ -1296,7 +1296,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 4 days", fmt.formatRelative(reference, date));
+    assertEquals("ในอีก 4 วัน", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
@@ -1320,7 +1320,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 days ago", fmt.formatRelative(reference, date));
+    assertEquals("4 วัน ที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_th_TH() {
@@ -1345,7 +1345,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 9 weeks", fmt.formatRelative(reference, date));
+    assertEquals("ในอีก 9 สัปดาห์", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
@@ -1369,7 +1369,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 weeks ago", fmt.formatRelative(reference, date));
+    assertEquals("9 สัปดาห์ ที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_th_TH() {
@@ -1394,7 +1394,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 16 months", fmt.formatRelative(reference, date));
+    assertEquals("ในอีก 16 เดือน", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
@@ -1418,7 +1418,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 months ago", fmt.formatRelative(reference, date));
+    assertEquals("14 เดือน ที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_th_TH() {
@@ -1443,7 +1443,7 @@ function testDateFmtFormatRelativeYearsAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 14 years", fmt.formatRelative(reference, date));
+    assertEquals("ในอีก 14 ปี", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
@@ -1467,6 +1467,6 @@ function testDateFmtFormatRelativeYearsBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("21 years ago", fmt.formatRelative(reference, date));
+    assertEquals("21 ปี ที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 

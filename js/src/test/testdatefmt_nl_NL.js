@@ -37,7 +37,7 @@ function testDateFmtSimpleShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("29-9-11", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium() {
@@ -53,7 +53,7 @@ function testDateFmtSimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011", fmt.format(date));
+    assertEquals("29-9-2011", fmt.format(date));
 }
 
 function testDateFmtSimpleLong() {
@@ -69,7 +69,7 @@ function testDateFmtSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 set 2011", fmt.format(date));
+    assertEquals("29 sep. 11", fmt.format(date));
 }
 
 function testDateFmtSimpleFull() {
@@ -85,7 +85,7 @@ function testDateFmtSimpleFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 settembre 2011", fmt.format(date));
+    assertEquals("29 september 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeShort() {
@@ -101,7 +101,7 @@ function testDateFmtSimpleTimeShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeMedium() {
@@ -117,7 +117,7 @@ function testDateFmtSimpleTimeMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeLong() {
@@ -133,7 +133,7 @@ function testDateFmtSimpleTimeLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeFull() {
@@ -149,7 +149,7 @@ function testDateFmtSimpleTimeFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleShort() {
@@ -165,7 +165,7 @@ function testDateFmtDateTimeSimpleShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11 13.45", fmt.format(date));
+    assertEquals("29-9-11 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium() {
@@ -181,7 +181,7 @@ function testDateFmtDateTimeSimpleMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011 13.45", fmt.format(date));
+    assertEquals("29-9-2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong() {
@@ -197,7 +197,7 @@ function testDateFmtDateTimeSimpleLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 set 2011 13.45", fmt.format(date));
+    assertEquals("29 sep. 11 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull() {
@@ -213,7 +213,7 @@ function testDateFmtDateTimeSimpleFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 settembre 2011 13.45", fmt.format(date));
+    assertEquals("29 september 2011 13:45", fmt.format(date));
 }
 
 
@@ -397,7 +397,7 @@ function testDateFmtTypeDate() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("29-9-11", fmt.format(date));
 }
 
 function testDateFmtTypeTime() {
@@ -413,7 +413,7 @@ function testDateFmtTypeTime() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13.45", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtTypeDateTime() {
@@ -429,7 +429,7 @@ function testDateFmtTypeDateTime() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11 13.45", fmt.format(date));
+    assertEquals("29-9-11 13:45", fmt.format(date));
 }
 
 
@@ -510,7 +510,7 @@ function testDateFmtShortDateComponentsDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09", fmt.format(date));
+    assertEquals("29-9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY() {
@@ -526,7 +526,7 @@ function testDateFmtShortDateComponentsMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("09/11", fmt.format(date));
+    assertEquals("9-11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY() {
@@ -542,7 +542,7 @@ function testDateFmtShortDateComponentsDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/11", fmt.format(date));
+    assertEquals("29-9-11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM() {
@@ -558,7 +558,7 @@ function testDateFmtShortDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("gi 29/09", fmt.format(date));
+    assertEquals("D 29-9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY() {
@@ -574,7 +574,7 @@ function testDateFmtShortDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("gi 29/09/11", fmt.format(date));
+    assertEquals("D 29-9-11", fmt.format(date));
 }
 
 
@@ -591,7 +591,7 @@ function testDateFmtFullDateComponentsY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 dC", fmt.format(date));
+    assertEquals("2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsM() {
@@ -607,7 +607,7 @@ function testDateFmtFullDateComponentsM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("settembre", fmt.format(date));
+    assertEquals("september", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD() {
@@ -639,7 +639,7 @@ function testDateFmtFullDateComponentsDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 settembre", fmt.format(date));
+    assertEquals("29 september", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsMY() {
@@ -655,7 +655,7 @@ function testDateFmtFullDateComponentsMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("settembre 2011", fmt.format(date));
+    assertEquals("september 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY() {
@@ -671,7 +671,7 @@ function testDateFmtFullDateComponentsDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 settembre 2011", fmt.format(date));
+    assertEquals("29 september 2011", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDM() {
@@ -687,7 +687,7 @@ function testDateFmtFullDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("giovedì 29 settembre", fmt.format(date));
+    assertEquals("donderdag 29 september", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY() {
@@ -703,7 +703,7 @@ function testDateFmtFullDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("giovedì 29 settembre 2011", fmt.format(date));
+    assertEquals("donderdag 29 september 2011", fmt.format(date));
 }
 
 
@@ -768,7 +768,7 @@ function testDateFmtShortTimeComponentsMS() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("45.37", fmt.format(date));
+    assertEquals("45:37", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHM() {
@@ -784,7 +784,7 @@ function testDateFmtShortTimeComponentsHM() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMS() {
@@ -800,7 +800,7 @@ function testDateFmtShortTimeComponentsHMS() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37", fmt.format(date));
+    assertEquals("13:45:37", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMA() {
@@ -816,7 +816,7 @@ function testDateFmtShortTimeComponentsHMA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMZ() {
@@ -837,7 +837,7 @@ function testDateFmtShortTimeComponentsHMZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45 CEST", fmt.format(date));
+    assertEquals("13:45 CEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ() {
@@ -858,7 +858,7 @@ function testDateFmtShortTimeComponentsHMAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45 CEST", fmt.format(date));
+    assertEquals("13:45 CEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA() {
@@ -874,7 +874,7 @@ function testDateFmtShortTimeComponentsHMSA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37", fmt.format(date));
+    assertEquals("13:45:37", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSZ() {
@@ -895,7 +895,7 @@ function testDateFmtShortTimeComponentsHMSZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37 CEST", fmt.format(date));
+    assertEquals("13:45:37 CEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ() {
@@ -916,7 +916,7 @@ function testDateFmtShortTimeComponentsHMSAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37 CEST", fmt.format(date));
+    assertEquals("13:45:37 CEST", fmt.format(date));
 }
 
 
@@ -981,7 +981,7 @@ function testDateFmtFullTimeComponentsMS() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("45.37", fmt.format(date));
+    assertEquals("45:37", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHM() {
@@ -997,7 +997,7 @@ function testDateFmtFullTimeComponentsHM() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMS() {
@@ -1013,7 +1013,7 @@ function testDateFmtFullTimeComponentsHMS() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37", fmt.format(date));
+    assertEquals("13:45:37", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMA() {
@@ -1029,7 +1029,7 @@ function testDateFmtFullTimeComponentsHMA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45", fmt.format(date));
+    assertEquals("13:45", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMZ() {
@@ -1051,7 +1051,7 @@ function testDateFmtFullTimeComponentsHMZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45 CEST", fmt.format(date));
+    assertEquals("13:45 CEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ() {
@@ -1073,7 +1073,7 @@ function testDateFmtFullTimeComponentsHMAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45 CEST", fmt.format(date));
+    assertEquals("13:45 CEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA() {
@@ -1089,7 +1089,7 @@ function testDateFmtFullTimeComponentsHMSA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37", fmt.format(date));
+    assertEquals("13:45:37", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSZ() {
@@ -1111,7 +1111,7 @@ function testDateFmtFullTimeComponentsHMSZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37 CEST", fmt.format(date));
+    assertEquals("13:45:37 CEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ() {
@@ -1133,7 +1133,7 @@ function testDateFmtFullTimeComponentsHMSAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37 CEST", fmt.format(date));
+    assertEquals("13:45:37 CEST", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST() {
@@ -1155,6 +1155,348 @@ function testDateFmtWithTimeZoneAndNoDST() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37 CET", fmt.format(date));
+    assertEquals("13:45:37 CET", fmt.format(date));
 }
+
+function testDateFmtFormatRelativeWithinMinuteAfter_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 30,
+		millisecond: 0
+	});
+    assertEquals("over 30 seconden", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinMinuteBefore_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 44,
+		second: 30,
+		millisecond: 0
+	});
+    assertEquals("30 seconden geleden", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinHourAfter_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("over 10 minuten", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinHourBefore_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("10 minuten geleden", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinDayAfter_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 17,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("over 4 uur", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinDayBefore_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("4 uur geleden", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinFortnightAfter_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("over 4 dagen", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinFortnightBefore_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 16,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("4 dagen geleden", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinQuarterAfter_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("over 9 weken", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinQuarterBefore_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("9 weken geleden", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinTwoYearsAfter_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2013,
+		month: 1,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("over 16 maanden", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinTwoYearsBefore_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2010,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("14 maanden geleden", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeYearsAfter_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2025,
+		month: 10,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("over 14 jaar", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeYearsBefore_nl_NL() {
+    var fmt = new ilib.DateFmt({locale: "nl-NL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 1990,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("21 jaar geleden", fmt.formatRelative(reference, date));
+}
+
 
