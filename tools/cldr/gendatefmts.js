@@ -299,6 +299,7 @@ function leaveSame(str) {
 
 function getSystemResources(language, script, region, data) {
     // if it is already there and non-generated, return it
+    //util.print("language is " + language + "\n");
     var sysres = loadFileNonGenerated(language, script, region, "sysres.json");
     if (sysres && !sysres.generated) {
         util.print("\nLoaded existing resources from " + calcLocalePath(language, script, region, "sysres.json") + "\n");
@@ -660,54 +661,73 @@ function getSystemResources(language, script, region, data) {
     }
     unit = table;
     str = "";
-    if (typeof (unit["day-past"]["unitPattern-count-one"]) !== 'undefined') {
-        var day = table["day"]["unitPattern-count-one"];
-        var dayPast = table["day-past"]["unitPattern-count-one"];
-	if (dayPast.indexOf(day) != -1) {
-        sysres["{duration} ago"] = dayPast.replace(day, "{duration}").toLowerCase();
-	}
-	else {
-	var dayPast_few = table["day-past"]["unitPattern-count-few"] || table["day-past"]["unitPattern-count-other"] ;
-	dayPast_few = dayPast_few.replace("{0}", "");
-	dayPast = dayPast.replace("{0}", "");
-	arr_dayPast_few = dayPast_few.split(" ") ;
-	arr_dayPast = dayPast.split(" ") ;
-	var mismatch ;
-	for ( var i = 0 ; i < arr_dayPast.length ; i++) {
-		if (arr_dayPast_few[i] != arr_dayPast[i]) {
-		mismatch = arr_dayPast[i] ;
-				}
-			}
-        sysres["{duration} ago"] = dayPast.replace(mismatch, "{duration}").toLowerCase();
-	sysres["{duration} ago"] = sysres["{duration} ago"].replace("  "," ");
-    		}
-	}
+    if (typeof (unit["day-past"]["unitPattern-count-one"]) !== 'undefined' || typeof (unit["day-past"]["unitPattern-count-other"]) !== 'undefined') {
+        var day = table["day"]["unitPattern-count-one"] || table["day"]["unitPattern-count-other"];
+        var dayPast = table["day-past"]["unitPattern-count-one"] || table["day-past"]["unitPattern-count-other"];
+        //util.print("day"+ dayPast + "\n");
+        //util.print("dayPast"+ dayPast + "\n");
+        if (dayPast.indexOf(day) != -1) {
+            sysres["{duration} ago"] = dayPast.replace(day, "{duration}").toLowerCase();
+        } else {
+            var dayPast_few = table["day-past"]["unitPattern-count-few"] || table["day-past"]["unitPattern-count-other"];
+            if (dayPast_few != dayPast) {
+                dayPast_few = dayPast_few.replace("{0}", "");
+                dayPast = dayPast.replace("{0}", "");
+                arr_dayPast_few = dayPast_few.split(" ");
+                arr_dayPast = dayPast.split(" ");
+                var mismatch;
+                for (var i = 0; i < arr_dayPast.length; i++) {
+                    if (arr_dayPast_few[i] != arr_dayPast[i]) {
+                        mismatch = arr_dayPast[i];
+                    }
+                }
+                //if(language === "th"){
+                //util.print("dayPast"+ dayPast + "\n");
+                //util.print("dayPast_few"+ dayPast_few + "\n");
+                //util.print("mismatch"+ mismatch + "\n");
+                //}
+                sysres["{duration} ago"] = dayPast.replace(mismatch, "{duration}").toLowerCase();
+                sysres["{duration} ago"] = sysres["{duration} ago"].replace("  ", " ");
+                if (sysres["{duration} ago"].indexOf("{duration}") === -1) {
+                    sysres["{duration} ago"] = "XXXXX";
+                }
+            } else {
+                sysres["{duration} ago"] = "XXXXX";
+            }
+        }
+    }
 
 
     unit = table;
     str = "";
-    if (typeof (table["day-future"]["unitPattern-count-one"]) !== 'undefined') {
-        var day = table["day"]["unitPattern-count-one"];
-        var dayFuture = table["day-future"]["unitPattern-count-one"];
-	if (dayFuture.indexOf(day) != -1) {
-        sysres["in {duration}"] = dayFuture.replace(day, "{duration}").toLowerCase();
+    if (typeof (table["day-future"]["unitPattern-count-one"]) !== 'undefined' || typeof (table["day-future"]["unitPattern-count-other"]) !== 'undefined') {
+        var day = table["day"]["unitPattern-count-one"] || table["day"]["unitPattern-count-other"];
+        var dayFuture = table["day-future"]["unitPattern-count-one"] || table["day-future"]["unitPattern-count-other"];
+        if (dayFuture.indexOf(day) != -1) {
+            sysres["in {duration}"] = dayFuture.replace(day, "{duration}").toLowerCase();
+        } else {
+            var dayFuture_few = table["day-future"]["unitPattern-count-few"] || table["day-future"]["unitPattern-count-other"];
+            if (dayFuture_few != dayFuture) {
+                dayFuture_few = dayFuture_few.replace("{0}", "");
+                dayFuture = dayFuture.replace("{0}", "");
+                arr_dayFuture_few = dayFuture_few.split(" ");
+                arr_dayFuture = dayFuture.split(" ");
+                var mismatch;
+                for (var i = 0; i < arr_dayFuture.length; i++) {
+                    if (arr_dayFuture_few[i] != arr_dayFuture[i]) {
+                        mismatch = arr_dayFuture[i];
+                    }
+                }
+                sysres["in {duration}"] = dayFuture.replace(mismatch, "{duration}").toLowerCase();
+                sysres["in {duration}"] = sysres["in {duration}"].replace("  ", " ");
+                if (sysres["in {duration}"].indexOf("{duration}") === -1) {
+                    sysres["in {duration}"] = "XXXXX";
+                }
+            } else {
+                sysres["in {duration}"] = "XXXXX";
+            }
+        }
     }
-    else {
-	var dayFuture_few = table["day-future"]["unitPattern-count-few"] || table["day-future"]["unitPattern-count-other"] ;
-	dayFuture_few = dayFuture_few.replace("{0}", "");
-	dayFuture = dayFuture.replace("{0}", "");
-	arr_dayFuture_few = dayFuture_few.split(" ") ;
-	arr_dayFuture = dayFuture.split(" ") ;
-	var mismatch ;
-	for ( var i = 0 ; i < arr_dayFuture.length ; i++) {
-		if (arr_dayFuture_few[i] != arr_dayFuture[i]) {
-		mismatch = arr_dayFuture[i] ;
-				}
-			}
-        sysres["in {duration}"] = dayFuture.replace(mismatch, "{duration}").toLowerCase();
-	sysres["in {duration}"] = sysres["in {duration}"].replace("  "," ");
-    		}
-	}
     var listProperties = {
         "separatorFull": "middle",
         "finalSeparatorFull": "end"
@@ -873,7 +893,7 @@ function getDateFormats(language, script, region, data) {
     var default_calendar = data.dates.calendars["default"];
     //util.print("default calendar is :" + default_calendar + "\n");
     var gregorian_order = data.dates.calendars[default_calendar]["dateTimeFormats"]["full"]["dateTimeFormat"]["pattern"];
-     //util.print("default format is :" + JSON.stringify(gregorian_order_formats) + "\n");
+    //util.print("default format is :" + JSON.stringify(gregorian_order_formats) + "\n");
     //var gregorian_order_full = gregorian_order_formats[full] ;//full"]["dateTimeFormat"]["pattern"];
     //var gregorian_order = gregorian_order_full["dateTimeFormat"]["pattern"];
     //util.print("default calendar format pattern is " + gregorian_order + "\n");
@@ -889,7 +909,7 @@ function getDateFormats(language, script, region, data) {
     //util.print("gregorian calendar order is :" + gregorian["order"] + "\n");
     var date_formats = data.dates.calendars[default_calendar]["dateFormats"];
     var available_formats = data.dates.calendars[default_calendar]["dateTimeFormats"]["availableFormats"];
-   // util.print("available formats are :" + JSON.stringify(available_formats) + "+++++++++++++++++++++" + "\n");
+    // util.print("available formats are :" + JSON.stringify(available_formats) + "+++++++++++++++++++++" + "\n");
     available_formats = JSON.parse(JSON.stringify(available_formats).replace(/L/g, "M"));
     available_formats = JSON.parse(JSON.stringify(available_formats).replace(/G/g, ""));
     //available_formats = JSON.parse(JSON.stringify(available_formats).replace(/'[^']+'/g, ""));
@@ -1072,7 +1092,7 @@ function getDateFormats(language, script, region, data) {
     }
     //end of my combination
     if (available_formats["yyyyMd"] || available_formats["yMd"]) {
-        dmy["s"] = available_formats["yyyyMd"] || available_formats["yMd"] ;
+        dmy["s"] = available_formats["yyyyMd"] || available_formats["yMd"];
     } else if (available_formats["yyyyMd"] === undefined) {
         var flag = false;
         for (var j = 0; j < arr_values.length; j++) {
@@ -1098,7 +1118,7 @@ function getDateFormats(language, script, region, data) {
         }
     }
     if (available_formats["yyMMdd"]) {
-        dmy["m"] = available_formats["yyMMdd"] ;
+        dmy["m"] = available_formats["yyMMdd"];
     } else if (available_formats["yyMMdd"] === undefined) {
         var flag = false;
         for (var j = 0; j < arr_values.length; j++) {
@@ -1441,7 +1461,7 @@ function getDateFormats(language, script, region, data) {
         //time_12["ahmsz"] = "XXXXX" + available_formats["hms"] + " " + "z";
         if (timeformat["long"]["timeFormat"]["pattern"].indexOf("HH:mm:ss") != -1) {
             time_12["ahmsz"] = timeformat["long"]["timeFormat"]["pattern"].replace("HH:mm:ss", available_formats["hms"]);
-           // util.print("HHMMSS" + time_12["ahmsz"] + "\n");
+            // util.print("HHMMSS" + time_12["ahmsz"] + "\n");
         } else {
             time_12["ahmsz"] = timeformat["long"]["timeFormat"]["pattern"].replace("H:mm:ss", available_formats["hms"]);
             //util.print("HMMSS" + time_12["ahmsz"] + "\n");
@@ -1522,7 +1542,7 @@ function getDateFormats(language, script, region, data) {
             //var count = 0;
 
             for (; k < arr.length; k = k + 2) {
-               // count++;
+                // count++;
 
                 arr[k] = arr[k].replace(/[d]+/g, "{sd}");
                 arr[k] = arr[k].replace(/[M]+/g, "{sm}");
@@ -1678,7 +1698,7 @@ function getDateFormats(language, script, region, data) {
             //var count = 0;
 
             for (; k < arr.length; k = k + 2) {
-               // count++;
+                // count++;
 
                 arr[k] = arr[k].replace(/[^Mdy–.\/\s]/g, "");
                 arr[k] = arr[k].replace(/[d]+/g, "{sd}");
@@ -1872,15 +1892,14 @@ function writeDateFormats(language, script, region, data) {
     var path = calcLocalePath(language, script, region, "");
     if (data.generated) {
         if (anyProperties(data)) {
-	   if (data.gregorian) {
-		def_calendar = "gregorian" ;
-		}
-		else {
-		def_calendar = "buddhist" ;
-		}
-	   //util.print("date formats are :"+JSON.stringify(data)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");  
-	  // util.print("default calendar is :"+def_calendar+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");  
-	    
+            if (data.gregorian) {
+                def_calendar = "gregorian";
+            } else {
+                def_calendar = "buddhist";
+            }
+            //util.print("date formats are :"+JSON.stringify(data)+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");  
+            // util.print("default calendar is :"+def_calendar+"++++++++++++++++++++++++++++++++++++++++++++"+"\n");  
+
             var empty_data = data[def_calendar]["date"];
             //var empty_data_time = data["gregorian"]["time"];
             var dateFormat = {};
