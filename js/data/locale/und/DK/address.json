@@ -1,12 +1,12 @@
 {
     "formats": {
-        "default": "{streetAddress}\n{postalCode} {region}\n{country}",
-        "nocountry": "{streetAddress}\n{postalCode} {region}"
+        "default": "{streetAddress}\n{postalCode} {locality}\n{country}",
+        "nocountry": "{streetAddress}\n{postalCode} {locality}"
     },
     "startAt": "end",
     "fields": [
         {
-            "name": "region",
+            "name": "locality",
             "line": "startAtLast",
             "pattern": [
                 "Copenhagena",
@@ -54,13 +54,14 @@
                 "Ringsted",
                 "Ølstykke-Stenløse2",
                 "Skive",
+		"SKANDERBORG",
 		"København"
             ]
         },
         {
             "name": "postalCode",
             "line": "last",
-            "pattern": "DK-[0-9]{4} | [0-9]{4}"
+            "pattern": "(DK-)?[0-9]{4}"
         }
     ]
 }
