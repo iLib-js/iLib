@@ -1429,6 +1429,7 @@ function getDateFormats(language, script, region, data) {
         time_24["ahmsz"] = time_24["ahmsz"].replace(/h/g, "H");
         time_24["ahms"] = available_formats["Hms"];
         //}
+	time_24["hmsz"] = time_24["ahmsz"];
         time_24["hms"] = available_formats["Hms"];
         //time_24["ms"] = available_formats["Hms"].substring(available_formats["Hms"].indexOf("m"), 1 + available_formats["Hms"].lastIndexOf("s"));
         time_24["ms"] = available_formats["Hms"].substring(available_formats["Hms"].indexOf("m"), available_formats["Hms"].length);
@@ -1472,6 +1473,7 @@ function getDateFormats(language, script, region, data) {
             time_12["ahmsz"] = timeformat["long"]["timeFormat"]["pattern"].replace("H:mm:ss", available_formats["hms"]);
             //util.print("HMMSS" + time_12["ahmsz"] + "\n");
         }
+	time_12["hmsz"] = time_12["ahmsz"];
         time_12["ahms"] = available_formats["hms"];
         time_12["hms"] = available_formats["hms"];
         //time_12["ms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("m"), available_formats["hms"].lastIndexOf("s"));
