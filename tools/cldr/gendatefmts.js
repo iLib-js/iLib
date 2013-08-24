@@ -1452,7 +1452,9 @@ function getDateFormats(language, script, region, data) {
             time_24["ahmz"] = time_24["ahmsz"].replace(".ss", "");
         }
         time_24["ahm"] = available_formats["Hm"];
-        time_24["ah"] = "H";
+	time_24["hmz"] = time_24["ahmz"];
+        time_24["ah"] = available_formats["H"];
+	time_24["h"] = available_formats["H"];
         //}
         time_24["hm"] = available_formats["Hm"];
     }
@@ -1485,6 +1487,12 @@ function getDateFormats(language, script, region, data) {
         time_12["ahm"] = available_formats["hm"];
         time_12["hm"] = available_formats["hm"];
     }
+    time_12["hmz"] = time_12["ahmz"];
+    time_12["ah"] = available_formats["h"];
+    time_12["h"] = available_formats["H"].replace(/H/g,"h");
+        //}
+    time_12["m"] = "mm";
+    time_12["s"] = "ss";
     time_fmt["12"] = time_12;
     time_fmt = JSON.parse(JSON.stringify(time_fmt).replace(/  /g, " "));
     gregorian["time"] = time_fmt;
