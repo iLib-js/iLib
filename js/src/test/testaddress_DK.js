@@ -20,24 +20,24 @@
 
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Hr. Niels Henriksen,Kastanievej 15\nDK-8660 SKANDERBORG,DENMARK", {locale: 'da-DK'});
+	var parsedAddress = new ilib.Address("Hr. Niels Henriksen, Kastanievej 15, DK-8660 SKANDERBORG,DENMARK", {locale: 'da-DK'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Hr. Niels Henriksen,Kastanievej 15", parsedAddress.streetAddress);
-	assertUndefined(parsedAddress.locality);
-	assertEquals("SKANDERBORG",parsedAddress.region);
+	assertEquals("Hr. Niels Henriksen, Kastanievej 15", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("SKANDERBORG",parsedAddress.locality);
 	assertEquals("DK-8660", parsedAddress.postalCode);
 	assertEquals("DENMARK", parsedAddress.country);
 	assertEquals("DK", parsedAddress.countryCode);
 };
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("Hr. Niels Henriksen,Kastanievej 15,DK-8660 SKANDERBORG, DENMARK", {locale: 'da-DK'});
+	var parsedAddress = new ilib.Address("Hr. Niels Henriksen,Kastanievej 15, SKANDERBORG, DENMARK", {locale: 'da-DK'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Hr. Niels Henriksen,Kastanievej 15", parsedAddress.streetAddress);
-	assertUndefined(parsedAddress.locality);
-	assertEquals("SKANDERBORG",parsedAddress.region);
+	assertEquals("Hr. Niels Henriksen, Kastanievej 15", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("SKANDERBORG",parsedAddress.locality);
 	assertEquals("DENMARK", parsedAddress.country);
 	assertEquals("DK", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
@@ -47,9 +47,9 @@ function testParseAddressManyLines() {
 	var parsedAddress = new ilib.Address("Hr. Niels Henriksen\nKastanievej 15\nDK-8660 SKANDERBORG\nDENMARK", {locale: 'da-DK'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Hr. Niels Henriksen,Kastanievej 15", parsedAddress.streetAddress);
-	assertUndefined(parsedAddress.locality);
-	assertEquals("SKANDERBORG",parsedAddress.region);
+	assertEquals("Hr. Niels Henriksen, Kastanievej 15", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("SKANDERBORG",parsedAddress.locality);
 	assertEquals("DK-8660", parsedAddress.postalCode);
 	assertEquals("DENMARK", parsedAddress.country);
 	assertEquals("DK", parsedAddress.countryCode);
@@ -59,21 +59,21 @@ function testParseAddressOneLine() {
 	var parsedAddress = new ilib.Address("Hr. Niels Henriksen,Kastanievej 15,DK-8660 SKANDERBORG DENMARK", {locale: 'da-DK'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Botanisk Centralbibliotek Sølvgade 83 opg. S", parsedAddress.streetAddress);
-	assertUndefined(parsedAddress.locality);
-	assertEquals("SKANDERBORG",parsedAddress.region);
-	assertEquals("DK-1307",parsedAddress.postalCode);
+	assertEquals("Hr. Niels Henriksen, Kastanievej 15", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("SKANDERBORG",parsedAddress.locality);
+	assertEquals("DK-8660",parsedAddress.postalCode);
 	assertEquals("DENMARK", parsedAddress.country);
 	assertEquals("DK", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhiteSKANDERBORGace() {
+function testParseAddressSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Hr. Niels Henriksen,Kastanievej 15   \n\t\n DK-8660 SKANDERBORG\t\n\n DENMARK  \n  \t\t\t", {locale: 'da-DK'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Hr. Niels Henriksen,Kastanievej 15", parsedAddress.streetAddress);
-	assertUndefined(parsedAddress.locality);
-	assertEquals("SKANDERBORG",parsedAddress.region);
+	assertEquals("Hr. Niels Henriksen, Kastanievej 15", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("SKANDERBORG",parsedAddress.locality);
 	assertEquals("DK-8660", parsedAddress.postalCode);
 	assertEquals("DENMARK", parsedAddress.country);
 	assertEquals("DK", parsedAddress.countryCode);
@@ -84,20 +84,20 @@ function testParseAddressNoDelimiters() {
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Hr. Niels Henriksen Kastanievej 15", parsedAddress.streetAddress);
-	assertUndefined(parsedAddress.locality);
-	assertEquals("SKANDERBORG",parsedAddress.region);
+	assertUndefined(parsedAddress.region);
+	assertEquals("SKANDERBORG",parsedAddress.locality);
 	assertEquals("DK-8660", parsedAddress.postalCode);
 	assertEquals("DENMARK", parsedAddress.country);
 	assertEquals("DK", parsedAddress.countryCode);
 };
 
-function testParseAddressSKANDERBORGecialChars() {
+function testParseAddressSpecialChars() {
 	var parsedAddress = new ilib.Address("Botanisk Centralbibliotek,Sølvgade 83, opg. S,DK-1307 København K.,DENMARK", {locale: 'da-DK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Botanisk Centralbibliotek,Sølvgade 83, opg. S", parsedAddress.streetAddress);
-	assertUndefined(parsedAddress.locality);
-	assertEquals("København",parsedAddress.region);
+	assertUndefined(parsedAddress.region);
+	assertEquals("København",parsedAddress.locality);
 	assertEquals("DK-1307", parsedAddress.postalCode);
 	assertEquals("DENMARK", parsedAddress.country);
 	assertEquals("DK", parsedAddress.countryCode);
@@ -109,9 +109,9 @@ function testParseAddressFromUS() {
 	// the country name is in English because this address is for a contact in a US database
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Hr. Niels Henriksen,Kastanievej 15", parsedAddress.streetAddress);
-	assertUndefined(parsedAddress.locality);
-	assertEquals("SKANDERBORG",parsedAddress.region);
+	assertEquals("Hr. Niels Henriksen, Kastanievej 15", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("SKANDERBORG",parsedAddress.locality);
 	assertEquals("DK-8660", parsedAddress.postalCode);
 	assertEquals("DENMARK", parsedAddress.country);
 	assertEquals("DK", parsedAddress.countryCode);
@@ -120,7 +120,7 @@ function testParseAddressFromUS() {
 function testFormatAddress() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Hr. Niels Henriksen,Kastanievej 15",
-		region: "SKANDERBORG",
+		locality: "SKANDERBORG",
 		postalCode: "DK-8660",
 		country: "DENMARK",
 		countryCode: "DK"
