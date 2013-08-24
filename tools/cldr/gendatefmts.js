@@ -1446,7 +1446,11 @@ function getDateFormats(language, script, region, data) {
         //time_24["ah"] = "H";
         //} else {
         //time_24["ahmz"] = "XXXXX " + available_formats["Hm"] + " " + "z";
-        time_24["ahmz"] = time_24["ahmsz"].replace(":ss", "");
+        if (time_24["ahmsz"].indexOf(":ss") != -1) {
+            time_24["ahmz"] = time_24["ahmsz"].replace(":ss", "");
+        } else {
+            time_24["ahmz"] = time_24["ahmsz"].replace(".ss", "");
+        }
         time_24["ahm"] = available_formats["Hm"];
         time_24["ah"] = "H";
         //}
@@ -1473,7 +1477,11 @@ function getDateFormats(language, script, region, data) {
     }
     if (available_formats["hm"]) {
         //time_12["ahmz"] = "XXXXX" + available_formats["hm"] + " " + "z";
-        time_12["ahmz"] = time_12["ahmsz"].replace(":ss", "");
+        if (time_12["ahmsz"].indexOf(":ss") != -1) {
+            time_12["ahmz"] = time_12["ahmsz"].replace(":ss", "");
+        } else {
+            time_12["ahmz"] = time_12["ahmsz"].replace(".ss", "");
+        }
         time_12["ahm"] = available_formats["hm"];
         time_12["hm"] = available_formats["hm"];
     }
