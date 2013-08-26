@@ -1068,3 +1068,345 @@ function testDateFmtFullTimeComponentsHMSA_lt_LT() {
 
 }
 
+
+function testDateFmtFormatRelativeWithinMinuteAfter_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 30,
+		millisecond: 0
+	});
+    assertEquals("po 30 sekundės", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinMinuteBefore_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 44,
+		second: 30,
+		millisecond: 0
+	});
+    assertEquals("prieš 30 sekundę", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinHourAfter_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("po 10 minutės", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinHourBefore_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("prieš 10 minutę", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinDayAfter_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 17,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("po 4 valandos", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinDayBefore_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("prieš 4 valandą", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinFortnightAfter_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("po 4 dienos", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinFortnightBefore_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 16,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("prieš 4 dieną", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinQuarterAfter_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("po 9 savaitės", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinQuarterBefore_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("prieš 9 savaitę", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinTwoYearsAfter_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2013,
+		month: 1,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("po 16 mėnesio", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinTwoYearsBefore_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2010,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("prieš 14 mėnesį", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeYearsAfter_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2025,
+		month: 10,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("po 14 metų", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeYearsBefore_lt_LT() {
+    var fmt = new ilib.DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 1990,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("prieš 21 metus", fmt.formatRelative(reference, date));
+}
+

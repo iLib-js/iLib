@@ -1066,3 +1066,347 @@ function testDateFmtFullTimeComponentsHMSA_lv_LV() {
     assertEquals("13:45:37", fmt.format(date));
 
 }
+
+
+function testDateFmtFormatRelativeWithinMinuteAfter_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 30,
+		millisecond: 0
+	});
+    assertEquals("+30 s", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinMinuteBefore_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 44,
+		second: 30,
+		millisecond: 0
+	});
+    assertEquals("-30 s", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinHourAfter_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("+10 min", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinHourBefore_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("-10 min", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinDayAfter_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 17,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("+4 h", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinDayBefore_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("-4 h", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinFortnightAfter_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("+4 d", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinFortnightBefore_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 16,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("-4 d", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinQuarterAfter_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("+9 w", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinQuarterBefore_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("-9 w", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinTwoYearsAfter_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2013,
+		month: 1,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("+16 m", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinTwoYearsBefore_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2010,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("-16 m", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeYearsAfter_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2025,
+		month: 10,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("+14 y", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeYearsBefore_lv_LV() {
+    var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 1990,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("-21 y", fmt.formatRelative(reference, date));
+}
+
+

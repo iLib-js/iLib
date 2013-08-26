@@ -1122,3 +1122,345 @@ function testDateFmtWithTimeZoneAndNoDST_he_IL() {
     assertEquals("13:45:37 IST", fmt.format(date));
 }
 
+function testDateFmtFormatRelativeWithinMinuteAfter_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 30,
+		millisecond: 0
+	});
+    assertEquals("בעוד 30 שניות", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinMinuteBefore_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 44,
+		second: 30,
+		millisecond: 0
+	});
+    assertEquals("לפני 30 שניות", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinHourAfter_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("בעוד 10 דקות", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinHourBefore_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("לפני 10 דקות", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinDayAfter_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 17,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("בעוד 4 שעות", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinDayBefore_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("לפני 4 שעות", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinFortnightAfter_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("בעוד 4 ימים", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinFortnightBefore_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 16,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("לפני 4 ימים", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinQuarterAfter_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("בעוד 9 שבועות", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinQuarterBefore_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("לפני 9 שבועות", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinTwoYearsAfter_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2013,
+		month: 1,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("בעוד 16 חודשים", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinTwoYearsBefore_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2010,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("לפני 14 חודשים", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeYearsAfter_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2025,
+		month: 10,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("בעוד 14 שנים", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeYearsBefore_he_IL() {
+    var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 1990,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("לפני 21 שנים", fmt.formatRelative(reference, date));
+}
+
+

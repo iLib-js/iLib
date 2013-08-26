@@ -1123,3 +1123,348 @@ function testDateFmtWithTimeZoneAndNoDST_fa_IR() {
     assertEquals("۱۳:۴۵:۳۷ (IRST)", fmt.format(date));
 }
 
+function testDateFmtFormatRelativeWithinMinuteAfter_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 30,
+		millisecond: 0
+	});
+    assertEquals("30 ثانیه بعد", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinMinuteBefore_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 44,
+		second: 30,
+		millisecond: 0
+	});
+    assertEquals("30 ثانیه پیش", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinHourAfter_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("10 دقیقه بعد", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinHourBefore_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("10 دقیقه پیش", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinDayAfter_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 17,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("4 ساعت بعد", fmt.formatRelative(reference, date));
+}
+
+
+function testDateFmtFormatRelativeWithinDayBefore_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("4 ساعت پیش", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinFortnightAfter_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("4 روز بعد", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinFortnightBefore_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 16,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("4 روز پیش", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinQuarterAfter_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("9 هفته بعد", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinQuarterBefore_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("9 هفته پیش", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeWithinTwoYearsAfter_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2013,
+		month: 1,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("16 ماه بعد", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeWithinTwoYearsBefore_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2010,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("14 ماه پیش", fmt.formatRelative(reference, date));
+}
+
+function testDateFmtFormatRelativeYearsAfter_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2025,
+		month: 10,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("14 سال بعد", fmt.formatRelative(reference, date));
+}
+function testDateFmtFormatRelativeYearsBefore_fa_IR() {
+    var fmt = new ilib.DateFmt({locale: "fa-IR", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 9,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var date = new ilib.Date.GregDate({
+		year: 1990,
+		month: 7,
+		day: 18,
+		hour: 9,
+		minute: 35,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("21 سال پیش", fmt.formatRelative(reference, date));
+}
+
+
+

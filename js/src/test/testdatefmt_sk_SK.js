@@ -1227,6 +1227,33 @@ function testDateFmtFormatRelativeWithinFortnightAfter_sk_SK() {
     assertEquals("4 dní", fmt.formatRelative(reference, date));
 }
 
+function testDateFmtFormatRelativeWithinFortnightBefore_sk_SK() {
+    var fmt = new ilib.DateFmt({locale: "sk-SK", length: "full"});
+    assertNotNull(fmt);
+    
+    var reference = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 24,
+		hour: 15,
+		minute: 55,
+		second: 0,
+		millisecond: 0
+		
+	});
+    var date = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("Pred 4 dňom", fmt.formatRelative(reference, date));
+}
+
+
 
 function testDateFmtFormatRelativeWithinQuarterAfter_sk_SK() {
     var fmt = new ilib.DateFmt({locale: "sk-SK", length: "full"});
@@ -1303,5 +1330,6 @@ function testDateFmtFormatRelativeYearsAfter_sk_SK() {
 	});
     assertEquals("14 rokov", fmt.formatRelative(reference, date));
 }
+
 
 

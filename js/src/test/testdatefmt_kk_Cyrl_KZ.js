@@ -1032,7 +1032,7 @@ function testDateFmtWithTimeZoneAndNoDST_kk_Cyrl_KZ() {
     assertEquals("13:45:37 ALMT", fmt.format(date));
 }
 
-/*function testDateFmtFormatRelativeWithinMinuteAfter_kk_Cyrl_KZ() {
+function testDateFmtFormatRelativeWithinMinuteAfter_kk_Cyrl_KZ() {
     var fmt = new ilib.DateFmt({locale: "kk-Cyrl-KZ", length: "full"});
     assertNotNull(fmt);
     
@@ -1054,7 +1054,7 @@ function testDateFmtWithTimeZoneAndNoDST_kk_Cyrl_KZ() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("30 күннен кейін", fmt.formatRelative(reference, date));
+    assertEquals("30 секундтан кейін", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_kk_Cyrl_KZ() {
     var fmt = new ilib.DateFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -1102,7 +1102,7 @@ function testDateFmtFormatRelativeWithinHourAfter_kk_Cyrl_KZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("10 күннен кейін", fmt.formatRelative(reference, date));
+    assertEquals("10 минуттан кейін", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_kk_Cyrl_KZ() {
     var fmt = new ilib.DateFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -1150,7 +1150,7 @@ function testDateFmtFormatRelativeWithinDayAfter_kk_Cyrl_KZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 күннен кейін", fmt.formatRelative(reference, date));
+    assertEquals("4 сағаттан кейін", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_kk_Cyrl_KZ() {
     var fmt = new ilib.DateFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -1199,7 +1199,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_kk_Cyrl_KZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 4 d", fmt.formatRelative(reference, date));
+    assertEquals("4 күннен кейін", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_kk_Cyrl_KZ() {
     var fmt = new ilib.DateFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -1223,7 +1223,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_kk_Cyrl_KZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 d ago", fmt.formatRelative(reference, date));
+    assertEquals("4 күн бұрын", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_kk_Cyrl_KZ() {
@@ -1248,7 +1248,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_kk_Cyrl_KZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 9 w", fmt.formatRelative(reference, date));
+    assertEquals("9 аптадан кейін", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_kk_Cyrl_KZ() {
     var fmt = new ilib.DateFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -1272,7 +1272,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_kk_Cyrl_KZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9 w ago", fmt.formatRelative(reference, date));
+    assertEquals("9 апта бұрын", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_kk_Cyrl_KZ() {
@@ -1297,7 +1297,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_kk_Cyrl_KZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 16 m", fmt.formatRelative(reference, date));
+    assertEquals("16 айдан кейін", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_kk_Cyrl_KZ() {
     var fmt = new ilib.DateFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -1321,7 +1321,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_kk_Cyrl_KZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 m ago", fmt.formatRelative(reference, date));
+    assertEquals("14 ай бұрын", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_kk_Cyrl_KZ() {
@@ -1346,7 +1346,7 @@ function testDateFmtFormatRelativeYearsAfter_kk_Cyrl_KZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("14 жыл кейін", fmt.formatRelative(reference, date));
+    assertEquals("14 жылдан кейін", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_kk_Cyrl_KZ() {
     var fmt = new ilib.DateFmt({locale: "kk-Cyrl-KZ", length: "full"});
@@ -1372,5 +1372,5 @@ function testDateFmtFormatRelativeYearsBefore_kk_Cyrl_KZ() {
 	});
     assertEquals("21 жыл бұрын", fmt.formatRelative(reference, date));
 }
-*/
+
 

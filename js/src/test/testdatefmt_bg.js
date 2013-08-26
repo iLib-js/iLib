@@ -1160,7 +1160,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_bg_BG() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("in 30 Sekunden", fmt.formatRelative(reference, date));
+    assertEquals("След 30 секунди", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", length: "full"});
@@ -1208,7 +1208,7 @@ function testDateFmtFormatRelativeWithinHourAfter_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 10 Minuten", fmt.formatRelative(reference, date));
+    assertEquals("След 30 минути", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", length: "full"});
@@ -1256,7 +1256,7 @@ function testDateFmtFormatRelativeWithinDayAfter_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 4 Stunden", fmt.formatRelative(reference, date));
+    assertEquals("След 4 часа", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", length: "full"});
@@ -1305,7 +1305,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 4 Tage", fmt.formatRelative(reference, date));
+    assertEquals("След 4 дни", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", length: "full"});
@@ -1329,7 +1329,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("преди 4 дена", fmt.formatRelative(reference, date));
+    assertEquals("Преди 4 дена", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_bg_BG() {
@@ -1354,7 +1354,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 9 Wochen", fmt.formatRelative(reference, date));
+    assertEquals("След 9 седмица", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", length: "full"});
@@ -1403,7 +1403,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 16 Monate", fmt.formatRelative(reference, date));
+    assertEquals("След 16 месец", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", length: "full"});
@@ -1452,7 +1452,7 @@ function testDateFmtFormatRelativeYearsAfter_bg_BG() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("in 14 Jahre", fmt.formatRelative(reference, date));
+    assertEquals("След 14 година", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_bg_BG() {
     var fmt = new ilib.DateFmt({locale: "bg-BG", length: "full"});

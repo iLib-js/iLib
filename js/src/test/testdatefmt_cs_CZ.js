@@ -1223,7 +1223,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("před 4 dní", fmt.formatRelative(reference, date));
+    assertEquals("před 4 dnem", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_cs_CZ() {
