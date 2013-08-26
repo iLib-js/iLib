@@ -669,7 +669,7 @@ function getSystemResources(language, script, region, data) {
         if (dayPast.indexOf(day) != -1) {
             sysres["{duration} ago"] = dayPast.replace(day, "{duration}").toLowerCase();
         } else {
-            var dayPast_few = table["day-past"]["unitPattern-count-few"] || table["day-past"]["unitPattern-count-other"];
+           /* var dayPast_few = table["day-past"]["unitPattern-count-few"] || table["day-past"]["unitPattern-count-other"];
             if (dayPast_few != dayPast) {
                 dayPast_few = dayPast_few.replace("{0}", "");
                 dayPast = dayPast.replace("{0}", "");
@@ -680,20 +680,20 @@ function getSystemResources(language, script, region, data) {
                     if (arr_dayPast_few[i] != arr_dayPast[i]) {
                         mismatch = arr_dayPast[i];
                     }
-                }
+                }*/
                 //if(language === "th"){
                 //util.print("dayPast"+ dayPast + "\n");
                 //util.print("dayPast_few"+ dayPast_few + "\n");
                 //util.print("mismatch"+ mismatch + "\n");
                 //}
-                sysres["{duration} ago"] = dayPast.replace(mismatch, "{duration}").toLowerCase();
-                sysres["{duration} ago"] = sysres["{duration} ago"].replace("  ", " ");
-                if (sysres["{duration} ago"].indexOf("{duration}") === -1) {
-                    sysres["{duration} ago"] = "XXXXX";
-                }
-            } else {
+                //sysres["{duration} ago"] = dayPast.replace(mismatch, "{duration}").toLowerCase();
+               // sysres["{duration} ago"] = sysres["{duration} ago"].replace("  ", " ");
+                //if (sysres["{duration} ago"].indexOf("{duration}") === -1) {
+                    //sysres["{duration} ago"] = "XXXXX";
+                //}
+            //} else {
                 sysres["{duration} ago"] = "XXXXX";
-            }
+           // }
         }
     }
 
@@ -706,7 +706,7 @@ function getSystemResources(language, script, region, data) {
         if (dayFuture.indexOf(day) != -1) {
             sysres["in {duration}"] = dayFuture.replace(day, "{duration}").toLowerCase();
         } else {
-            var dayFuture_few = table["day-future"]["unitPattern-count-few"] || table["day-future"]["unitPattern-count-other"];
+           /* var dayFuture_few = table["day-future"]["unitPattern-count-few"] || table["day-future"]["unitPattern-count-other"];
             if (dayFuture_few != dayFuture) {
                 dayFuture_few = dayFuture_few.replace("{0}", "");
                 dayFuture = dayFuture.replace("{0}", "");
@@ -722,10 +722,10 @@ function getSystemResources(language, script, region, data) {
                 sysres["in {duration}"] = sysres["in {duration}"].replace("  ", " ");
                 if (sysres["in {duration}"].indexOf("{duration}") === -1) {
                     sysres["in {duration}"] = "XXXXX";
-                }
-            } else {
+                }*/
+           // } else {
                 sysres["in {duration}"] = "XXXXX";
-            }
+            //}
         }
     }
     var listProperties = {
