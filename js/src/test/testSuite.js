@@ -93,7 +93,7 @@ function suite() {
 		"testdatefmt_nl_NL.js",
 		"testdatefmt_pl_PL.js",
 		"testdatefmt_pt_BR.js",
-		/*"testdatefmtrange_ar_SA.js",
+		"testdatefmtrange_ar_SA.js",
 		"testdatefmtrange_bg_BG.js",
 		"testdatefmtrange_bs_Latn_BA.js",
 		"testdatefmtrange_cs_CZ.js",
@@ -149,7 +149,7 @@ function suite() {
 		"testdatefmtrange_vi_VN.js",
 		"testdatefmtrange_zh_Hans_CN.js",
 		"testdatefmtrange_zh_Hant_HK.js",
-		"testdatefmtrange_zh_Hant_TW.js",*/
+		"testdatefmtrange_zh_Hant_TW.js",
 		"testdatefmt_ro_RO.js",
 		"testdatefmt_ru_RU.js",
 		"testdatefmt_sk_SK.js",
