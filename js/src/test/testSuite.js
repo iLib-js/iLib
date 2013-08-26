@@ -108,7 +108,11 @@ function suite() {
 	    "testaddress_TW.js",
 	    "testaddress_AR.js",
 	    "testaddress_BR.js",
-	    "testaddress_DK.js"
+	    "testaddress_DK.js",
+	    "testaddress_SI.js",
+	    "testaddress_SV.js",
+	    "testaddress_TH.js",
+	    "testaddress_ZA.js"
 	];
 
     // uncompiled
