@@ -40,7 +40,7 @@ function testDateRngFmtKRRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 12. 31 오후 1:00에서 오후 2:00까지", fmt.format(start, end));
+    assertEquals("11. 12. 31 오후 1:45에서 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "medium"});
@@ -64,7 +64,7 @@ function testDateRngFmtKRRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. 12. 31 오후 1:00에서 오후 2:00까지", fmt.format(start, end));
+    assertEquals("2011. 12. 31 오후 1:45에서 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "long"});
@@ -88,7 +88,7 @@ function testDateRngFmtKRRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 12월 31일 오후 1:00에서 오후 2:00까지", fmt.format(start, end));
+    assertEquals("2011년 12월 31일 오후 1:45에서 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "full"});
@@ -112,7 +112,7 @@ function testDateRngFmtKRRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 십이월 31일 오후 1:00에서 오후 2:00까지", fmt.format(start, end));
+    assertEquals("2011년 십이월 31일 오후 1:45에서 오후 2:30까지", fmt.format(start, end));
 }
 
 function testDateRngFmtKRRangeNextDayShort() {
@@ -137,7 +137,7 @@ function testDateRngFmtKRRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 12. 30 오후 1:00에서 31 오후 2:00까지", fmt.format(start, end));
+    assertEquals("11. 12. 30 오후 1:45에서 31 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "medium"});
@@ -161,7 +161,7 @@ function testDateRngFmtKRRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. 12. 30 오후 1:00에서 31 오후 2:00까지", fmt.format(start, end));
+    assertEquals("2011. 12. 30 오후 1:45에서 31 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "long"});
@@ -185,7 +185,7 @@ function testDateRngFmtKRRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 12월 30일 오후 1:00에서 31일 오후 2:00까지", fmt.format(start, end));
+    assertEquals("2011년 12월 30일 오후 1:45에서 31일 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "full"});
@@ -209,7 +209,7 @@ function testDateRngFmtKRRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 십이월 30일 오후 1:00에서 31일 오후 2:00까지", fmt.format(start, end));
+    assertEquals("2011년 십이월 30일 오후 1:45에서 31일 오후 2:30까지", fmt.format(start, end));
 }
 
 function testDateRngFmtKRRangeMultiDayShort() {

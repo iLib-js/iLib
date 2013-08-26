@@ -39,7 +39,7 @@ function testDateRngFmtMKRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45–14:30 31.12.2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30 31-12-11", fmt.format(start, end));
 }
 function testDateRngFmtMKRangeinDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "medium"});
@@ -184,7 +184,7 @@ function testDateRngFmtMKRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 - 14:30 31.декем.2011", fmt.format(start, end));
+    assertEquals("13:45 30 - 14:30 31 декем. 2011", fmt.format(start, end));
 }
 function testDateRngFmtMKRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtMKRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 - 14:30 31.декември.2011", fmt.format(start, end));
+    assertEquals("13:45 30 - 14:30 31 декември 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtMKRangeMultiDayShort() {
@@ -596,7 +596,7 @@ function testDateRngFmtMKRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 - јануари – 2014–ноември", fmt.format(start, end));
+    assertEquals("2011–ноември - 2014–јануари", fmt.format(start, end));
 }
 function testDateRngFmtMKManyYearsFull() {
     var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "full"});
