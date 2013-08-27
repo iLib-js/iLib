@@ -20,7 +20,7 @@
 
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'el-GR'});
+	var parsedAddress = new ilib.Address("X", {locale: 'el-GR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("18, Heracleous St., Kifissia", parsedAddress.streetAddress);
@@ -32,7 +32,7 @@ function testParseAddressNormal() {
 };
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("18, Heracleous St.,Kifissia, Athens, GREECE", {locale: 'el-GR'});
+	var parsedAddress = new ilib.Address("X", {locale: 'el-GR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("18, Heracleous St., Kifissia", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressNoZip() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("18, Heracleous St.\nKifissia\n145 64 Athens\nGREECE", {locale: 'el-GR'});
+	var parsedAddress = new ilib.Address("X", {locale: 'el-GR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("18, Heracleous St., Kifissia", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressManyLines() {
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("18, Heracleous St.,Kifissia,145 64 Athens GREECE", {locale: 'el-GR'});
+	var parsedAddress = new ilib.Address("X", {locale: 'el-GR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("18, Heracleous St., Kifissia", parsedAddress.streetAddress);
@@ -68,7 +68,7 @@ function testParseAddressOneLine() {
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("18, Heracleous St.,Kifissia   \n\t\n 145 64 Athens\t\n\n GREECE  \n  \t\t\t", {locale: 'el-GR'});
+	var parsedAddress = new ilib.Address("X", {locale: 'el-GR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("18, Heracleous St., Kifissia", parsedAddress.streetAddress);
@@ -80,7 +80,7 @@ function testParseAddressSuperfluousWhitespace() {
 };
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("18 Heracleous St. Kifissia 145 64 Athens GREECE", {locale: 'el-GR'});
+	var parsedAddress = new ilib.Address("X", {locale: 'el-GR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("18, Heracleous St. Kifissia", parsedAddress.streetAddress);
@@ -92,7 +92,7 @@ function testParseAddressNoDelimiters() {
 };
 
 /*function testParseAddressSpecialChars() {
-	var parsedAddress = new ilib.Address("Botanisk Centralbibliotek,Sølvgade 83, opg. S,GR-1307 København K.,GREECE", {locale: 'el-GR'});
+	var parsedAddress = new ilib.Address("X", {locale: 'el-GR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Botanisk Centralbibliotek,Sølvgade 83, opg. S", parsedAddress.streetAddress);
@@ -104,7 +104,7 @@ function testParseAddressNoDelimiters() {
 };*/
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("18, Heracleous St.,Kifissia,145 64 Athens,GREECE", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("X", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -126,7 +126,7 @@ function testFormatAddress() {
 		countryCode: "GR"
 	}, {locale: 'el-GR'});
 	
-	var expected = "18, Heracleous St.,Kifissia\n145 64 Athens\nGREECE";
+	var expected = "X";
 	var formatter = new ilib.AddressFmt({locale: 'el-GR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -139,7 +139,7 @@ function testFormatAddressFromUS() {
 		countryCode: "GR"
 	}, {locale: 'en-US'});
 	
-	var expected = "18, Heracleous St.,Kifissia\n145 64\nGREECE";
+	var expected = "X";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

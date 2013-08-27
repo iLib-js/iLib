@@ -96,7 +96,6 @@ function suite() {
 	    "testaddress_CN.js",
 	    "testaddress_DE.js",
 	    "testaddress_DK.js",
-	    "testaddress_DK.js",
 	    "testaddress_ES.js",
 	    "testaddress_FI.js",
 	    "testaddress_FR.js",
@@ -114,8 +113,8 @@ function suite() {
 	    "testaddress_NO.js",
 	    "testaddress_NZ.js",
 	    "testaddress_SG.js",
+	    "testaddress_SE.js",
 	    "testaddress_SI.js",
-	    "testaddress_SV.js",
 	    "testaddress_TH.js",
 	    "testaddress_TW.js",
 	    "testaddress_ZA.js"

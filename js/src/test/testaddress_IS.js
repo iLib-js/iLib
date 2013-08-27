@@ -18,7 +18,7 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Gudmundur Jonasson Travel\nBorgartun 34\n105 REYKJAVÍK\nICELAND", {locale: 'en-IS'});
+	var parsedAddress = new ilib.Address("Gudmundur Jonasson Travel\nBorgartun 34\n105 REYKJAVÍK\n", {locale: 'en-IS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gudmundur Jonasson Travel, Borgartun 34", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressNoCountry() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("Elmér Fúdd\nWabbitwatchin Excursions\nPósthólf 1034\n121 REYKJAVÍK\nICELAND", {locale: 'en-IS'});
+	var parsedAddress = new ilib.Address("Elmér Fúdd\nWabbitwatchin Excursions\nPósthólf 1034\n121 REYKJAVÍK\n", {locale: 'en-IS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Elmér Fúdd, Wabbitwatchin Excursions, Pósthólf 1034", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressManyLines() {
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("Elmér Fúdd, Wabbitwatchin Excursions, Pósthólf 1034, 121 REYKJAVÍK, ICELAND", {locale: 'en-IS'});
+	var parsedAddress = new ilib.Address("Elmér Fúdd, Wabbitwatchin Excursions, Pósthólf 1034, 121 REYKJAVÍK, ", {locale: 'en-IS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Elmér Fúdd, Wabbitwatchin Excursions, Pósthólf 1034", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressOneLine() {
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tElmér Fúdd\n\t\t\tWabbitwatchin Excursions, \t\t\t\r\r Pósthólf 1034, \n\t\n121 REYKJAVÍK\t\n\t ICELAND\n\n\n", {locale: 'en-IS'});
+	var parsedAddress = new ilib.Address("\t\t\tElmér Fúdd\n\t\t\tWabbitwatchin Excursions, \t\t\t\r\r Pósthólf 1034, \n\t\n121 REYKJAVÍK\t\n\t \n\n\n", {locale: 'en-IS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Elmér Fúdd, Wabbitwatchin Excursions, Pósthólf 1034", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressSuperfluousWhitespace() {
 };
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Elmér Fúdd Wabbitwatchin Excursions Pósthólf 1034 121 REYKJAVÍK ICELAND", {locale: 'en-IS'});
+	var parsedAddress = new ilib.Address("Elmér Fúdd Wabbitwatchin Excursions Pósthólf 1034 121 REYKJAVÍK ", {locale: 'en-IS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Elmér Fúdd Wabbitwatchin Excursions Pósthólf 1034", parsedAddress.streetAddress);
