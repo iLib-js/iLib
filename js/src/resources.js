@@ -268,13 +268,13 @@ ilib.ResBundle = function (options) {
 			this.map = map;
 			if (this.locale.isPseudo()) {
 				if (!ilib.ResBundle.pseudomap) {
-					ilib.ResBundle.pseudomap = {};
+					ilib.ResBundle.pseudomap = ilib.ResBundle.defaultPseudo;
 				}
 	
 				this._loadPseudo(this.locale, options.onLoad);
 			} else if (this.missing === "pseudo") {
 				if (!ilib.ResBundle.pseudomap) {
-					ilib.ResBundle.pseudomap = {};
+					ilib.ResBundle.pseudomap = ilib.ResBundle.defaultPseudo;
 				}
 	
 				new ilib.LocaleInfo(this.locale, {
@@ -299,6 +299,21 @@ ilib.ResBundle = function (options) {
 	//}
 };
 
+ilib.ResBundle.defaultPseudo = ilib.data.pseudomap || {
+	"a": "à",
+	"e": "ë",
+	"i": "í",
+	"o": "õ",
+	"u": "ü",
+	"y": "ÿ",
+	"A": "Ã",
+	"E": "Ë",
+	"I": "Ï",
+	"O": "Ø",
+	"U": "Ú",
+	"Y": "Ŷ"
+};
+
 ilib.ResBundle.prototype = {
     /**
      * @protected
@@ -312,7 +327,7 @@ ilib.ResBundle.prototype = {
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function (map) {
 				if (!map || ilib.isEmpty(map)) {
-					map = ilib.data.pseudomap;
+					map = ilib.ResBundle.defaultPseudo;
 					var spec = pseudoLocale.getSpec().replace(/-/g, '_');
 					ilib.ResBundle.pseudomap.cache[spec] = map;
 				}

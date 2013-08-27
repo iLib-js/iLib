@@ -387,7 +387,7 @@ ilib.DateFmt = function(options) {
 				this.timeComponents = this.timeComponents.replace("a", "");
 			}
 			*/
-			
+
 			// load the strings used to translate the components
 			new ilib.ResBundle({
 				locale: this.locale,
@@ -405,7 +405,7 @@ ilib.DateFmt = function(options) {
 							loadParams: loadParams, 
 							callback: ilib.bind(this, function (formats) {
 								if (!formats) {
-									formats = ilib.data.dateformats;
+									formats = ilib.DateFmt.defaultFmt;
 									var spec = this.locale.getSpec().replace(/-/g, '_');
 									ilib.DateFmt.cache[spec] = formats;
 								}
@@ -441,6 +441,44 @@ ilib.DateFmt.lenmap = {
 };
 
 ilib.DateFmt.zeros = "0000";
+
+ilib.DateFmt.defaultFmt = ilib.data.dateformats || {
+	"gregorian": {
+		"order": "{date} {time}",
+		"date": {
+			"dmwy": "EEE d/MM/yyyy",
+			"dmy": "d/MM/yyyy",
+			"dmw": "EEE d/MM",
+			"dm": "d/MM",
+			"my": "MM/yyyy",
+			"dw": "EEE d",
+			"d": "dd",
+			"m": "MM",
+			"y": "yyyy",
+			"n": "NN",
+			"w": "EEE"
+		},
+		"time": {
+			"12": "h:mm:ssa",
+			"24": "H:mm:ss"
+		},
+		"range": {
+			"c00": "{st} - {et}, {sd}/{sm}/{sy}",
+			"c01": "{sd}/{sm} {st} - {ed}/{em} {et}, {sy}",
+			"c02": "{sd}/{sm} {st} - {ed}/{em} {et}, {sy}",
+			"c03": "{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}",
+			"c10": "{sd}-{ed}/{sm}/{sy}",
+			"c11": "{sd}/{sm} - {ed}/{em} {sy}",
+			"c12": "{sd}/{sm}/{sy} - {ed}/{em}/{ey}",
+			"c20": "{sm}/{sy} - {em}/{ey}",
+			"c30": "{sy} - {ey}"
+		}
+	},
+	"islamic": "gregorian",
+	"hebrew": "gregorian",
+	"julian": "gregorian",
+	"buddhist": "gregorian"
+};
 
 ilib.DateFmt.prototype = {
 	/**

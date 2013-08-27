@@ -180,7 +180,7 @@ ilib.NameFmt = function(options) {
 		loadParams: this.loadParams, 
 		callback: ilib.bind(this, function (info) {
 			if (!info) {
-				info = ilib.data.name;
+				info = ilib.Name.defaultInfo;
 				var spec = this.locale.getSpec().replace(/-/g, "_");
 				ilib.Name.cache[spec] = info;
 			}

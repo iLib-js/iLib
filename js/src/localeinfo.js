@@ -70,7 +70,7 @@ ilib.LocaleInfo = function(locale, options) {
 	var sync = true;
 	
 	/* these are all the defaults. Essentially, en-US */
-	this.info = ilib.data.localeinfo;
+	this.info = ilib.LocaleInfo.defaultInfo;
 	this.loadParams = {};
 	
 	switch (typeof(locale)) {
@@ -108,7 +108,7 @@ ilib.LocaleInfo = function(locale, options) {
 		loadParams: this.loadParams, 
 		callback: ilib.bind(this, function (info) {
 			if (!info) {
-				info = ilib.data.localeinfo;
+				info = ilib.LocaleInfo.defaultInfo;
 				var spec = this.locale.getSpec().replace(/-/g, "_");
 				ilib.LocaleInfo.cache[spec] = info;
 			}
@@ -147,6 +147,29 @@ ilib.LocaleInfo = function(locale, options) {
 			}
 		})
 	});
+};
+
+ilib.LocaleInfo.defaultInfo = ilib.data.localeinfo ||  {
+    "calendar": "gregorian",
+    "clock": "24",
+    "currency": "USD",
+    "firstDayOfWeek": 1,
+    "numfmt": {
+        "script": "Latn",
+        "decimalChar": ",",
+        "groupChar": ".",
+        "prigroupSize": 3,
+        "pctFmt": "{n}%",
+        "pctChar": "%",
+        "roundingMode": "halfdown",
+        "exponential": "e",
+        "currencyFormats": {
+            "common": "{s}{n}",
+            "commonNegative": "{s}-{n}"
+        }
+    },
+    "timezone": "Etc/UTC",
+    "units": "metric"
 };
 
 ilib.LocaleInfo.prototype = {
