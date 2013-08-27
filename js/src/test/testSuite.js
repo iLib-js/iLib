@@ -22,6 +22,7 @@ var cli = require('../testcli/runner.js');
 function newSuite(path, include) {
 	var suite = new cli.TestSuite("test/" + path);
 	suite.include(include);
+	suite.include("test/normdata.js");
 	suite.include("test/testUtils.js");
 	return suite;
 };
@@ -106,7 +107,8 @@ function suite() {
 	    "testaddress_NZ.js",
 	    "testaddress_SG.js",
 	    "testaddress_TW.js",
-	    "testlocalematch.js"
+	    "testlocalematch.js",
+	    "testnorm.js"
 	];
 
     // uncompiled

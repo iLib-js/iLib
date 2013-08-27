@@ -68,4 +68,5 @@ addressprs.js
 addressfmt.js
 collate.js
 localematch.js
+normstring.js
 */

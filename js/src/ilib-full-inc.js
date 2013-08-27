@@ -67,4 +67,5 @@ addressfmt.js
 collate.js
 nfkc/all.js
 localematch.js
+normstring.js
 */
