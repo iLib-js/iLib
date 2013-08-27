@@ -24,6 +24,7 @@ ilibglobal.js
 locale.js
 localeinfo.js
 util/utils.js
+util/math.js
 currency.js
 strings.js
 */

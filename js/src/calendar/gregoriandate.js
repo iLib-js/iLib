@@ -17,7 +17,14 @@
  * limitations under the License.
  */
 
-/* !depends date.js calendar/gregorian.js util/utils.js localeinfo.js julianday.js */
+/* !depends 
+date.js 
+calendar/gregorian.js 
+util/utils.js
+util/search.js 
+localeinfo.js 
+julianday.js 
+*/
 
 /**
  * @class
