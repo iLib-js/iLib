@@ -27,6 +27,7 @@ util/utils.js
 util/math.js
 currency.js
 strings.js
+util/jsutils.js
 */
 
 // !data localeinfo currency

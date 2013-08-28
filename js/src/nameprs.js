@@ -24,7 +24,8 @@ util/utils.js
 ctype.isalpha.js 
 ctype.isideo.js 
 ctype.ispunct.js 
-ctype.isspace.js 
+ctype.isspace.js
+util/jsutils.js 
 */
 
 // !data name

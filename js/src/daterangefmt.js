@@ -28,6 +28,7 @@ localeinfo.js
 timezone.js
 datefmt.js
 calendar/gregorian.js
+util/jsutils.js
 */
 
 // !data dateformats sysres

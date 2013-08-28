@@ -70,6 +70,30 @@ ilib.LocaleInfo = function(locale, options) {
 	var sync = true;
 	
 	/* these are all the defaults. Essentially, en-US */
+	/** @type {{
+		scripts:Array.<string>,
+		timezone:string,
+		units:string,
+		calendar:string,
+		clock:string,
+		currency:string,
+		firstDayOfWeek:number,
+		numfmt:Object.<{
+			currencyFormats:Object.<{common:string,commonNegative:string,iso:string,isoNegative:string}>,
+			script:string,
+			decimalChar:string,
+			groupChar:string,
+			prigroupSize:number,
+			secgroupSize:number,
+			negativenumFmt:string,
+			pctFmt:string,
+			negativepctFmt:string,
+			pctChar:string,
+			roundingMode:string,
+			exponential:string,
+			digits:string
+		}>
+	}}*/
 	this.info = ilib.LocaleInfo.defaultInfo;
 	this.loadParams = {};
 	
@@ -112,35 +136,6 @@ ilib.LocaleInfo = function(locale, options) {
 				var spec = this.locale.getSpec().replace(/-/g, "_");
 				ilib.LocaleInfo.cache[spec] = info;
 			}
-			/**
-			 * @private
-			 * @type {{
-			 * 	timezone:string,
-			 * 	units:string,
-			 *	calendar:string,
-			 *	clock:string,
-			 *	currency:string,
-			 *	firstDayOfWeek:string,
-			 * 	numfmt:Object.<{
-			 * 		currencyFormats:Object.<{
-			 * 			common:string,
-			 * 			commonNegative:string,
-			 * 			iso:string,
-			 * 			isoNegative:string
-			 * 		}>,
-			 * 		script:string,
-			 * 		decimalChar:string,
-			 * 		groupChar:string,
-			 * 		prigroupSize:number,
-			 * 		secgroupSize:number,
-			 * 		pctFmt:string,
-			 * 		negativepctFmt:string,
-			 * 		pctChar:string,
-			 * 		roundingMode:string,
-			 * 		exponential:string
-			 *	}>
-			 * }}
-			 */
 			this.info = info;
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
@@ -149,27 +144,62 @@ ilib.LocaleInfo = function(locale, options) {
 	});
 };
 
-ilib.LocaleInfo.defaultInfo = ilib.data.localeinfo ||  {
+ilib.LocaleInfo.defaultInfo = /** @type {{
+	scripts:Array.<string>,
+	timezone:string,
+	units:string,
+	calendar:string,
+	clock:string,
+	currency:string,
+	firstDayOfWeek:number,
+	numfmt:Object.<{
+		currencyFormats:Object.<{
+			common:string,
+			commonNegative:string,
+			iso:string,
+			isoNegative:string
+		}>,
+		script:string,
+		decimalChar:string,
+		groupChar:string,
+		prigroupSize:number,
+		secgroupSize:number,
+		negativenumFmt:string,
+		pctFmt:string,
+		negativepctFmt:string,
+		pctChar:string,
+		roundingMode:string,
+		exponential:string,
+		digits:string
+	}>
+}}*/ ilib.data.localeinfo;
+ilib.LocaleInfo.defaultInfo = ilib.LocaleInfo.defaultInfo || {
+	"scripts": ["Latn"],
+    "timezone": "Etc/UTC",
+    "units": "metric",
     "calendar": "gregorian",
     "clock": "24",
     "currency": "USD",
     "firstDayOfWeek": 1,
     "numfmt": {
+        "currencyFormats": {
+            "common": "{s}{n}",
+            "commonNegative": "{s}-{n}",
+            "iso": "{s}{n}",
+            "isoNegative": "{s}-{n}"
+        },
         "script": "Latn",
         "decimalChar": ",",
         "groupChar": ".",
         "prigroupSize": 3,
+        "secgroupSize": 0,
         "pctFmt": "{n}%",
+        "negativepctFmt": "-{n}%",
         "pctChar": "%",
         "roundingMode": "halfdown",
         "exponential": "e",
-        "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "{s}-{n}"
-        }
-    },
-    "timezone": "Etc/UTC",
-    "units": "metric"
+        "digits": ""
+    }
 };
 
 ilib.LocaleInfo.prototype = {
