@@ -114,10 +114,12 @@ function suite() {
 	    "testaddress_NZ.js",
 	    "testaddress_SG.js",
 	    "testaddress_SE.js",
-	    "testaddress_SI.js",
-	    "testaddress_TH.js",
-	    "testaddress_TW.js",
-	    "testaddress_ZA.js"
+	    //"testaddress_SI.js",
+	    //"testaddress_TH.js",
+	    //"testaddress_ZA.js",
+	    "testaddress_IL.js"
+	    //"testaddress_TW.js",
+	    //"testaddress_ZA.js"
 	];
 
     // uncompiled
