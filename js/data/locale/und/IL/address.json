@@ -1,0 +1,20 @@
+{
+    "formats": {
+        "default": "{streetAddress}\n{locality} {postalCode}\n{country}",
+        "nocountry": "{streetAddress}\n{locality} {postalCode}"
+    },
+    "startAt": "end",
+    "fields": [
+	{
+            "name": "postalCode",
+            "line": "startAtLast",
+            "pattern": "(ISL-)?[0-9]{5}"
+        },
+        {
+            "name": "locality",
+            "line": "last",
+            "pattern": "[ABCDEFGHIJKLMNOPQRSTUVXYZa-z0-9בּבגדהוזחטיכּכךלמםנןסעפּפףצץקרשׁשׂתּת\\s-.\"]+"
+        }
+        
+    ]
+}
