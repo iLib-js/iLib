@@ -73,8 +73,7 @@
         {
             "name": "locality",
             "line": "last",
-            "pattern": "([A-za-zÃÉZÁÇÊJXÍÓKÚWYÕÀÂÔãézáçêjxíókúwyõàâô0-9\\s.'\"]+) ?- ?",
-            "matchGroup": 0
+            "pattern": "([A-za-zÃÉZÁÇÊJXÍÓKÚWYÕÀÂÔãézáçêjxíókúwyõàâô0-9\\s.'\"]+) ?- ?"
         }
     ]
 }
