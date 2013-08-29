@@ -20,139 +20,152 @@
 // TODO: put actual Swiss addresses in here
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("X", {locale: 'de-CH'});
+	var parsedAddress = new ilib.Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND", {locale: 'de-CH'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Herrenberger Straße 140", parsedAddress.streetAddress);
-	assertEquals("Böblingen", parsedAddress.locality);
+	assertEquals("Herr Hans Katze Tastentanzenstrasse 5/16", parsedAddress.streetAddress);
+	assertEquals("Zuerich", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("71034", parsedAddress.postalCode);
-	assertEquals("Deutschland", parsedAddress.country);
+	assertEquals("1234", parsedAddress.postalCode);
+	assertEquals("SWITZERLAND", parsedAddress.country);
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("X", {locale: 'de-CH'});
+function testParseAddressNormalforItaly() {
+	var parsedAddress = new ilib.Address("Mr. Hans gatto Tastentanz Via 5/16\n1234 Zurich\nSVIZZERA", {locale: 'it-CH'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Berliner Straße 111", parsedAddress.streetAddress);
-	assertEquals("Ratingen", parsedAddress.locality);
+	assertEquals("Mr. Hans gatto Tastentanz Via 5/16", parsedAddress.streetAddress);
+	assertEquals("Zurich", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("Deutschland", parsedAddress.country);
+	assertEquals("1234", parsedAddress.postalCode);
+	assertEquals("SVIZZERA", parsedAddress.country);
+	assertEquals("CH", parsedAddress.countryCode);
+};
+
+
+function testParseAddressNormalforFrance() {
+	var parsedAddress = new ilib.Address("M. Hans chat Tastentanz rue 5/16\n1234 Zurich\nSUISSE", {locale: 'fr-CH'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("M. Hans chat Tastentanz rue 5/16", parsedAddress.streetAddress);
+	assertEquals("Zurich, parsedAddress.locality");
+	assertUndefined(parsedAddress.region);
+	assertEquals("1234", parsedAddress.postalCode);
+	assertEquals("SUISSE", parsedAddress.country);
+	assertEquals("CH", parsedAddress.countryCode);
+};
+
+
+function testParseAddressNoZip() {
+	var parsedAddress = new ilib.Address("Herr Hans Katze Tastentanzenstrasse 5/16\nZuerich\nSWITZERLAND", {locale: 'de-CH'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Herr Hans Katze Tastentanzenstrasse 5/16", parsedAddress.streetAddress);
+	assertEquals("Zuerich", parsedAddress.locality);
+	assertUndefined(parsedAddress.region);
+	assertEquals("SWITZERLAND", parsedAddress.country);
 	assertEquals("CH", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("X", {locale: 'de-CH'});
+	var parsedAddress = new ilib.Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich", {locale: 'de-CH'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Herrenberger Straße 140", parsedAddress.streetAddress);
-	assertEquals("Böblingen", parsedAddress.locality);
+	assertEquals("Herr Hans Katze Tastentanzenstrasse 5/16", parsedAddress.streetAddress);
+	assertEquals("Zuerich", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("71034", parsedAddress.postalCode);
+	assertEquals("1234", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("X", {locale: 'de-CH'});
+	var parsedAddress = new ilib.Address("Herr Hans Katze\nTastentanzenstrasse\n5/16\n1234\nZuerich\nSWITZERLAND\n\n", {locale: 'de-CH'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Altrottstraße 31, Partner Port SAP", parsedAddress.streetAddress);
-	assertEquals("Walldorf/Baden", parsedAddress.locality);
+	assertEquals("Herr Hans Katze, Tastentanzenstrasse, 5/16", parsedAddress.streetAddress);
+	assertEquals("Zuerich", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("69190", parsedAddress.postalCode);
-	assertEquals("Deutschland", parsedAddress.country);
+	assertEquals("1234", parsedAddress.postalCode);
+	assertEquals("SWITZERLAND", parsedAddress.country);
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("X", {locale: 'de-CH'});
-	
+	var parsedAddress = new ilib.Address("Herr Hans Katze , Tastentanzenstrasse , 5/16 , 1234 , Zuerich , SWITZERLAND", {locale: 'de-CH'});
 	assertNotUndefined(parsedAddress);
-	assertEquals("ABC-Strasse 19", parsedAddress.streetAddress);
-	assertEquals("Hamburg", parsedAddress.locality);
+	assertEquals("Herr Hans Katze, Tastentanzenstrasse, 5/16", parsedAddress.streetAddress);
+	assertEquals("Zuerich", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("20354", parsedAddress.postalCode);
-	assertEquals("Deutschland", parsedAddress.country);
+	assertEquals("1234", parsedAddress.postalCode);
+	assertEquals("SWITZERLAND", parsedAddress.country);
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("X", {locale: 'de-CH'});
+	var parsedAddress = new ilib.Address("\t\t\t\Herr Hans Katze\nTastentanzenstrasse\n5/16\n\t1234\n\t\tZuerich\n\t\tSWITZERLAND\t\t", {locale: 'de-CH'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Altrottstraße 31, Partner Port SAP", parsedAddress.streetAddress);
-	assertEquals("Walldorf/Baden", parsedAddress.locality);
+	assertEquals("Herr Hans Katze, Tastentanzenstrasse, 5/16", parsedAddress.streetAddress);
+	assertEquals("Zuerich", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("69190", parsedAddress.postalCode);
-	assertEquals("Deutschland", parsedAddress.country);
+	assertEquals("1234", parsedAddress.postalCode);
+	assertEquals("SWITZERLAND", parsedAddress.country);
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("X", {locale: 'de-CH'});
+	var parsedAddress = new ilib.Address("Herr Hans Katze Tastentanzenstrasse 5/16 1234 Zuerich SWITZERLAND", {locale: 'de-CH'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ABC-Strasse 19", parsedAddress.streetAddress);
-	assertEquals("Hamburg", parsedAddress.locality);
+	assertEquals("Herr Hans Katze Tastentanzenstrasse 5/16", parsedAddress.streetAddress);
+	assertEquals("Zuerich", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("20354", parsedAddress.postalCode);
-	assertEquals("Deutschland", parsedAddress.country);
-	assertEquals("CH", parsedAddress.countryCode);
-};
-
-function testParseAddressSpecialChars() {
-	var parsedAddress = new ilib.Address("X", {locale: 'de-CH'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("Geschäftsstelle Lützowplatz 15, (Eingang Einemstraße 24)", parsedAddress.streetAddress);
-	assertEquals("Würtzheim", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("10785", parsedAddress.postalCode);
-	assertUndefined(parsedAddress.country);
+	assertEquals("1234", parsedAddress.postalCode);
+	assertEquals("SWITZERLAND", parsedAddress.country);
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("X", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Dienerstrasse 12", parsedAddress.streetAddress);
-	assertEquals("Munich", parsedAddress.locality);
+	assertEquals("Herr Hans Katze Tastentanzenstrasse 5/16", parsedAddress.streetAddress);
+	assertEquals("Zuerich", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("80331", parsedAddress.postalCode);
-	assertEquals("Germany", parsedAddress.country);
+	assertEquals("1234", parsedAddress.postalCode);
+	assertEquals("SWITZERLAND", parsedAddress.country);
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
 function testFormatAddress() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Dienerstrasse 12",
-		locality: "München",
-		postalCode: "80331",
-		country: "Deutschland",
+		streetAddress: "Herr Hans Katze Tastentanzenstrasse 5/16",
+		locality: "Zuerich",
+		postalCode: "1234",
+		country: "SWITZERLAND",
 		countryCode: "CH"
 	}, {locale: 'de-CH'});
 	
-	var expected = "Dienerstrasse 12\n80331 München\nDeutschland";
+	var expected = "Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND";
 	var formatter = new ilib.AddressFmt({locale: 'de-CH'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressFromUS() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Dienerstrasse 12",
-		locality: "Munich",
-		postalCode: "80331",
-		country: "Germany",
+		streetAddress: "Herr Hans Katze Tastentanzenstrasse 5/16",
+		locality: "Zuerich",
+		postalCode: "1234",
+		country: "SWITZERLAND",
 		countryCode: "CH"
 	}, {locale: 'en-US'});
 	
-	var expected = "Dienerstrasse 12\n80331 Munich\nGermany";
+	var expected = "Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
