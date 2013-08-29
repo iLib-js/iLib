@@ -66,6 +66,31 @@ function testParseAddressNoCountry() {
 	assertEquals("TR", parsedAddress.countryCode);
 };
 
+function testParseAddressNoDelimiters() {
+	var parsedAddress = new ilib.Address("Orhaniye Street No 14 Sirkeci Istanbul 34120 Turkey", {locale: 'tr-TR'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Orhaniye Street No 14", parsedAddress.streetAddress);
+	assertEquals("Sirkeci", parsedAddress.locality);
+	assertEquals("Istanbul", parsedAddress.region);
+	assertEquals("34120", parsedAddress.postalCode);
+	assertEquals("Turkey", parsedAddress.country);
+	assertEquals("TR", parsedAddress.countryCode);
+};
+
+
+function testParseAddressOneLine() {
+	var parsedAddress = new ilib.Address("Orhaniye Street , No 14 , Sirkeci , Istanbul , 34120 , Turkey", {locale: 'tr-TR'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Orhaniye Street, No 14", parsedAddress.streetAddress);
+	assertEquals("Sirkeci", parsedAddress.locality);
+	assertEquals("Istanbul", parsedAddress.region);
+	assertEquals("34120", parsedAddress.postalCode);
+	assertEquals("Turkey", parsedAddress.country);
+	assertEquals("TR", parsedAddress.countryCode);
+};
+
 
 function testParseAddressOther() {
 	var parsedAddress = new ilib.Address("Alemdag Cad. Yanyol Sok. No 6-8\nÜSKÜDAR  ISTANBUL 34692\n", {locale: 'tr-TR'});
@@ -78,6 +103,20 @@ function testParseAddressOther() {
 	assertEquals("TURKEY", parsedAddress.country);
 	assertEquals("TR", parsedAddress.countryCode);
 };
+
+
+function testParseAddressManyLines() {
+	var parsedAddress = new ilib.Address("Orhaniye Street\nNo 14\nSirkeci Istanbul 34120\nTurkey", {locale: 'sl-SI'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Orhaniye Street, No 14", parsedAddress.streetAddress);
+	assertEquals("Sirkeci", parsedAddress.locality);
+	assertEquals("Istanbul", parsedAddress.region);
+	assertEquals("34120", parsedAddress.postalCode);
+	assertEquals("Turkey", parsedAddress.country);
+	assertEquals("TR", parsedAddress.countryCode);
+};
+
 
 
 function testFormatAddress() {

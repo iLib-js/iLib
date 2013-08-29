@@ -1,5 +1,5 @@
 /*
- * testaddress.js - test the address parsing and formatting routines
+ * testaddress_MX.js - test the address parsing and formatting routines for Mexico
  * 
  * Copyright © 2013, JEDLSoft
  *
