@@ -18,7 +18,7 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Orhaniye Street No 14\nSirkeci Istanbul 34120\n", {locale: 'tr-TR'});
+	var parsedAddress = new ilib.Address("Orhaniye Street No 14\nSirkeci Istanbul 34120\nTurkey", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Orhaniye Street No 14", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressNormal() {
 };
 
 function testParseAddressNormal1() {
-	var parsedAddress = new ilib.Address("Teyfikhane Sok No 1\nSultanahmet Istanbul 34110\n", {locale: 'it-IT'});
+	var parsedAddress = new ilib.Address("Teyfikhane Sok No 1\nSultanahmet Istanbul 34110Turkey\n", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Teyfikhane Sok No 1", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressNormal1() {
 };
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("Teyfikhane Sok No 1\nSultanahmet Istanbul\n", {locale: 'it-IT'});
+	var parsedAddress = new ilib.Address("Teyfikhane Sok No 1\nSultanahmet Istanbul\nTurkey", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Teyfikhane Sok No 1", parsedAddress.streetAddress);
