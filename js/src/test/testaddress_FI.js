@@ -147,10 +147,9 @@ function testFormatAddressFIswedish() {
 		locality: "Helsinki",
 		country: "Finland",
 		countryCode: "FI",
-		format: "asian"
 	}, {locale: 'fi-FI'});
 	
-	var expected = "Työpajankatu 13, Helsinki,Finland";
+	var expected = "Työpajankatu 13\nHelsinki\nFinland";
 	var formatter = new ilib.AddressFmt({locale: 'fi-FI'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

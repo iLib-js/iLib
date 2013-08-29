@@ -135,11 +135,12 @@ function testFormatAddressFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Hr. Niels Henriksen,Kastanievej 15",
 		postalCode: "DK-8660",
+		locality: "SKANDERBORG",
 		country: "DENMARK",
 		countryCode: "DK"
 	}, {locale: 'en-US'});
 	
-	var expected = "Hr. Niels Henriksen,Kastanievej 15\nDK-8660\nDENMARK";
+	var expected = "Hr. Niels Henriksen,Kastanievej 15\nDK-8660 SKANDERBORG\nDENMARK";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

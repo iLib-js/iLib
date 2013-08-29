@@ -50,7 +50,7 @@ function testParseAddressLatinNoCountry() {
 	assertUndefined(parsedAddress.region);
 	assertEquals("200001", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
-	assertEquals("CN", parsedAddress.countryCode);
+	assertEquals("MO", parsedAddress.countryCode);
 };
 
 function testParseAddressAsianNormal() {
@@ -81,12 +81,12 @@ function testParseAddressAsianNoCountry() {
 	var parsedAddress = new ilib.Address("北京市朝阳区北四环中路 27号盘古大观 A 座 23层200001", {locale: 'zh-MO'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("朝阳区北四环中路 27号盘古大观 A 座 23层", parsedAddress.streetAddress);
+	assertEquals("北京市朝阳区北四环中路 27号盘古大观 A 座 23层", parsedAddress.streetAddress);
 	assertEquals("北京市", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("200001", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
-	assertEquals("CN", parsedAddress.countryCode);
+	assertEquals("MO", parsedAddress.countryCode);
 };
 
 function testParseAddressAsianWithRegion() {

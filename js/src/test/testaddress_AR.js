@@ -17,142 +17,151 @@
  * limitations under the License.
  */
 
-// TODO: put in Argentina addresses here
 
 function testParseAddressNormal() {
 	var parsedAddress = new ilib.Address("Luis Escala Piedras 623\nPiso 2, depto 4\nC1070AAM, Capital Federa\nARGENTINA", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Luis Escala Piedras 623", parsedAddress.streetAddress);
-	assertEquals("Piso 2, depto 4", parsedAddress.locality);
-	assertEquals("Capital Federa" ,parsedAddress.region);
-	assertEquals("C1070AAM ", parsedAddress.postalCode);
+	assertEquals("Luis Escala Piedras 623, Piso 2, depto 4", parsedAddress.streetAddress);
+	assertEquals("Capital Federa", parsedAddress.locality);
+	assertUndefined(parsedAddress.region);
+	assertEquals("C1070AAM", parsedAddress.postalCode);
 	assertEquals("ARGENTINA", parsedAddress.country);
 	assertEquals("AR", parsedAddress.countryCode);
 };
 
+
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("Luis Escala Piedras 623\nPiso 2, depto 4\nCapital Federa", {locale: 'es-AR'});
+	var parsedAddress = new ilib.Address("Luis Escala Piedras 623\nPiso 2, depto 4\nCapital Federa\nARGENTINA", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Berliner Straße 111", parsedAddress.streetAddress);
-	assertEquals("Ratingen", parsedAddress.locality);
-	assertEquals("Capital Federa" ,parsedAddress.region);
+	assertEquals("Luis Escala Piedras 623, Piso 2, depto 4", parsedAddress.streetAddress);
+	assertEquals("Capital Federa", parsedAddress.locality);
+	assertUndefined(parsedAddress.region);
 	assertEquals("ARGENTINA", parsedAddress.country);
 	assertEquals("AR", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address(" At. Sr. Hiro Gordo-Globo Sumo Informática S.A. Calle 39 No 1540\nB1000TBU San Sebastian", {locale: 'es-AR'});
+	var parsedAddress = new ilib.Address("Juana Aguirre, Piedras No 623, Piso2 Dto.4\nC1070AAM Capital Federal", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("At. Sr. Hiro Gordo-Globo Sumo Informática S.A. Calle 39 No 1540", parsedAddress.streetAddress);
-	assertUndefined(parsedAddress.locality);
-	assertEquals("San Sebastian" ,parsedAddress.region);
-	assertEquals("B1000TBU", parsedAddress.postalCode);
+	assertEquals("Juana Aguirre, Piedras No 623, Piso2 Dto.4", parsedAddress.streetAddress);
+	assertEquals("Capital Federal", parsedAddress.locality);
+	assertUndefined(parsedAddress.region);
+	assertEquals("C1070AAM", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	assertEquals("AR", parsedAddress.countryCode);
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("Prof. Carlo Francis Xavier\nEscuela Rural 45 \nX5187XAB San Clemente\nARGENTINA\n\n\n", {locale: 'es-AR'});
+	var parsedAddress = new ilib.Address("Juana Aguirre\nEscuela Rural 45 \nPiedras No 623\nPiso2 Dto.4\nC1070AAM Capital Federal\nARGENTINA\n\n\n", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Prof. Carlo Francis Xavier, Escuela Rural 45", parsedAddress.streetAddress);
-	assertUndefined(parsedAddress.locality);
-	assertEquals("San Clemente", parsedAddress.region);
-	assertEquals("X5187XAB", parsedAddress.postalCode);
+	assertEquals("Juana Aguirre, Piedras No 623, Piso2 Dto.4", parsedAddress.streetAddress);
+	assertEquals("Capital Federa", parsedAddress.locality);
+	assertUndefined(parsedAddress.region);
+	assertEquals("C1070AAM", parsedAddress.postalCode);
 	assertEquals("ARGENTINA", parsedAddress.country);
 	assertEquals("AR", parsedAddress.countryCode);
+	
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("ABC-Strasse 19, X5187XAB San Sebastian, ARGENTINA", {locale: 'es-AR'});
+	var parsedAddress = new ilib.Address("Juana Aguirre, Piedras No 623, Piso2 Dto.4, C1070AAM Capital Federal, ARGENTINA", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ABC-Strasse 19", parsedAddress.streetAddress);
-	assertEquals("San Sebastian", parsedAddress.locality);
+	assertEquals("Juana Aguirre, Piedras No 623, Piso2 Dto.4", parsedAddress.streetAddress);
+	assertEquals("Capital Federa", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("X5187XAB", parsedAddress.postalCode);
+	assertEquals("C1070AAM", parsedAddress.postalCode);
 	assertEquals("ARGENTINA", parsedAddress.country);
 	assertEquals("AR", parsedAddress.countryCode);
+	
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tAltrottstraße 31\n\n\nPartner Port SAP\n   \t\nX5187XAB\n   \r\t\n Walldorf/Baden\n   \t \t \t ARGENTINA\n\n\n", {locale: 'es-AR'});
+	var parsedAddress = new ilib.Address("\t\t\tLuis Escala Piedras 623\n\n\nPiso 2, depto 4\n   \t\nC1070AAM Capital Federa\n   \r\t\t \t \t ARGENTINA\n\n\n", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Altrottstraße 31, Partner Port SAP", parsedAddress.streetAddress);
-	assertEquals("Walldorf/Baden", parsedAddress.locality);
+	assertEquals("Luis Escala Piedras 623, Piso 2, depto 4", parsedAddress.streetAddress);
+	assertEquals("Capital Federa", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("X5187XAB", parsedAddress.postalCode);
+	assertEquals("C1070AAM", parsedAddress.postalCode);
 	assertEquals("ARGENTINA", parsedAddress.country);
 	assertEquals("AR", parsedAddress.countryCode);
+	
 };
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("ABC-Strasse 19 X5187XAB  San Luis ARGENTINA", {locale: 'es-AR'});
+	var parsedAddress = new ilib.Address("Luis Escala Piedras 623 Piso 2, depto 4 C1070AAM  Capital Federa ARGENTINA", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ABC-Strasse 19", parsedAddress.streetAddress);
-	assertEquals("San Luis", parsedAddress.locality);
+	assertEquals("Luis Escala Piedras 623 Piso 2, depto 4", parsedAddress.streetAddress);
+	assertEquals("Capital Federa", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("X5187XAB ", parsedAddress.postalCode);
+	assertEquals("C1070AAM", parsedAddress.postalCode);
 	assertEquals("ARGENTINA", parsedAddress.country);
 	assertEquals("AR", parsedAddress.countryCode);
+	
 };
 
 function testParseAddressSpecialChars() {
-	var parsedAddress = new ilib.Address("Geschäftsstelle Lützowplatz 15\n(Eingang Einemstraße 24)\nX5187XAB Würtzheim", {locale: 'es-AR'});
+	var parsedAddress = new ilib.Address("At. Sr. Hiro Gordo-Globo\nSumo Informática S.A.\nCalle 39 No 1540\nB1000TBU San Sebastian\nARGENTINA", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Geschäftsstelle Lützowplatz 15, (Eingang Einemstraße 24)", parsedAddress.streetAddress);
-	assertEquals("Würtzheim", parsedAddress.locality);
+	assertEquals("At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540", parsedAddress.streetAddress);
+	assertEquals("San Sebastian", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("X5187XAB", parsedAddress.postalCode);
-	assertUndefined(parsedAddress.country);
+	assertEquals("B1000TBU", parsedAddress.postalCode);
+	assertEquals("ARGENTINA", parsedAddress.country);
 	assertEquals("AR", parsedAddress.countryCode);
+	
 };
 
+
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Dienerstrasse 12\nX5187XAB  San Luis\nARGENTINA", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540\nB1000TBU San Sebastian\nArgentina", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Dienerstrasse 12", parsedAddress.streetAddress);
-	assertEquals("San Luis", parsedAddress.locality);
+	assertEquals("At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540", parsedAddress.streetAddress);
+	assertEquals("San Sebastian", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("X5187XAB ", parsedAddress.postalCode);
-	assertEquals("ARGENTINA", parsedAddress.country);
+	assertEquals("B1000TBU", parsedAddress.postalCode);
+	assertEquals("Argentina", parsedAddress.country);
 	assertEquals("AR", parsedAddress.countryCode);
+	
 };
 
 function testFormatAddress() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Dienerstrasse 12",
-		locality: "Entre Ríos",
-		postalCode: "X5187XAB ",
+		streetAddress: "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540",
+		locality: "San Sebastian",
+		postalCode: "B1000TBU",
 		country: "ARGENTINA",
 		countryCode: "AT"
 	}, {locale: 'es-AR'});
 	
-	var expected = "Dienerstrasse 12\nX5187XAB  Entre Ríos\nARGENTINA";
+	var expected = "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540\nB1000TBU  San Sebastian\nARGENTINA";
 	var formatter = new ilib.AddressFmt({locale: 'es-AR'});
 	assertEquals(expected, formatter.format(parsedAddress));
+	
 };
 
 function testFormatAddressFromUS() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Dienerstrasse 12",
-		locality: "San Luis",
-		postalCode: "X5187XAB ",
-		country: "ARGENTINA",
+		streetAddress: "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540",
+		locality: "San Sebastian",
+		postalCode: "B1000TBU",
+		country: "Argentina",
 		countryCode: "AT"
 	}, {locale: 'en-US'});
 	
-	var expected = "Dienerstrasse 12\nX5187XAB  San Luis\nARGENTINA";
+	var expected = "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540\nB1000TBU  San Sebastian\nArgentina";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
+	
 };

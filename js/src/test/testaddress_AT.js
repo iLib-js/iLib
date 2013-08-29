@@ -116,7 +116,7 @@ function testParseAddressSpecialChars() {
 };
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Wolfgang Schüssel, Liebiggasse 5, 1010 WIEN, AUSTRIA", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("Wolfgang Schüssel, Liebiggasse 5, 1010 WIEN, Austria", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
