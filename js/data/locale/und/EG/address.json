@@ -1,0 +1,62 @@
+{
+	"formats": {
+		"default": "{streetAddress}\n{locality} {region} {postalCode} \n{country}",
+		"nocountry": "{streetAddress}\n{postalCode} {locality}"
+	},
+	"startAt": "end",
+	"fields": [
+
+		{
+			"name": "locality",
+			"line": "startAtLast",
+			"pattern": "[A-zجثتبأرذدخحضصشسزفغعظطنملكقيوهـدُدِدَدٌدٍدً\\.\\-\\s']+",
+			"matchGroup": 0
+		},
+
+		{
+			"name": "region",
+			"line": "last",
+			"pattern": [
+		
+				        "Alexandria",
+					"Aswan",
+					"Asyut",
+					"Beheira",
+					"Beni Suef",
+					"Cairo",
+					"Dakahlia",
+					"Damietta",
+					"Faiyum",
+					"Gharbia",
+					"Giza",
+					"Ismailia",
+					"Kafr el-Sheikh",
+					"Matruh",
+					"Minya",
+					"Monufia",
+					"New Valley",
+					"North Sinai",
+					"Port Said",
+					"Qalyubia",
+					"Qena",
+					"Red Sea",
+					"Sharqia",
+					"Sohag",
+					"South Sinai",
+					"Suez",
+					"Luxor",
+					"Helwan",
+                 ]
+		
+                },
+		
+		{
+			"name": "postalCode",
+			"line": "last",
+			"pattern": "^[0-9٠١٢٣٤٥٦٧٨٩۴۵۶]{5}$",
+			"matchGroup": 0
+		}
+
+		
+	]
+}
