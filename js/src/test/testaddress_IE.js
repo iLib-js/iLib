@@ -160,7 +160,7 @@ function testFormatAddressWithCounty() {
 		countryCode: "IE"
 	}, {locale: 'en-IE'});
 	
-	var expected = "Gordon House, Barrow Street\nGalway \nCounty Galway\nIreland";
+	var expected = "Gordon House, Barrow Street\nGalway\nCounty Galway\nIreland";
 	var formatter = new ilib.AddressFmt({locale: 'en-IE'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

@@ -17,7 +17,6 @@
  * limitations under the License.
  */
 
-// TODO: put actual Swiss addresses in here
 
 function testParseAddressNormal() {
 	var parsedAddress = new ilib.Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND", {locale: 'de-CH'});

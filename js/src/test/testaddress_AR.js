@@ -59,8 +59,8 @@ function testParseAddressManyLines() {
 	var parsedAddress = new ilib.Address("Juana Aguirre\nEscuela Rural 45 \nPiedras No 623\nPiso2 Dto.4\nC1070AAM Capital Federal\nARGENTINA\n\n\n", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Juana Aguirre, Piedras No 623, Piso2 Dto.4", parsedAddress.streetAddress);
-	assertEquals("Capital Federa", parsedAddress.locality);
+	assertEquals("Juana Aguirre, Escuela Rural 45, Piedras No 623, Piso2 Dto.4", parsedAddress.streetAddress);
+	assertEquals("Capital Federal", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("C1070AAM", parsedAddress.postalCode);
 	assertEquals("ARGENTINA", parsedAddress.country);
@@ -73,7 +73,7 @@ function testParseAddressOneLine() {
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Juana Aguirre, Piedras No 623, Piso2 Dto.4", parsedAddress.streetAddress);
-	assertEquals("Capital Federa", parsedAddress.locality);
+	assertEquals("Capital Federal", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("C1070AAM", parsedAddress.postalCode);
 	assertEquals("ARGENTINA", parsedAddress.country);
@@ -145,7 +145,7 @@ function testFormatAddress() {
 		countryCode: "AT"
 	}, {locale: 'es-AR'});
 	
-	var expected = "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540\nB1000TBU  San Sebastian\nARGENTINA";
+	var expected = "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540\nB1000TBU San Sebastian\nARGENTINA";
 	var formatter = new ilib.AddressFmt({locale: 'es-AR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 	
@@ -160,7 +160,7 @@ function testFormatAddressFromUS() {
 		countryCode: "AT"
 	}, {locale: 'en-US'});
 	
-	var expected = "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540\nB1000TBU  San Sebastian\nArgentina";
+	var expected = "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540\nB1000TBU San Sebastian\nArgentina";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 	

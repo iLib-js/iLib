@@ -1,6 +1,5 @@
 function testParseAddressNormal() {
-	
-	var parsedAddress = new ilib.Address("Martin Rebas Gyllenkrooksgatan 1\n412 84 GÖTEBORG\nSWEDEN", {locale: 'sv-SE'});
+        var parsedAddress = new ilib.Address("Martin Rebas Gyllenkrooksgatan 1\n412 84 GÖTEBORG\nSWEDEN", {locale: 'sv-SE'});
         assertNotUndefined(parsedAddress);
 	assertEquals("Martin Rebas Gyllenkrooksgatan 1", parsedAddress.streetAddress);
 	assertEquals("GÖTEBORG", parsedAddress.locality);
@@ -23,7 +22,7 @@ function testParseAddressNoZip() {
 };
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Martin Rebas Gyllenkrooksgatan 1 , 412 84 , GÖTEBORG", {locale: 'sv-SE'}
+	var parsedAddress = new ilib.Address("Martin Rebas Gyllenkrooksgatan 1 , 412 84 , GÖTEBORG", {locale: 'sv-SE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Martin Rebas Gyllenkrooksgatan 1", parsedAddress.streetAddress);
@@ -32,7 +31,6 @@ function testParseAddressNoCountry() {
 	assertEquals("412 84", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	assertEquals("SE", parsedAddress.countryCode);
-	console.log("bira");
 };
 
 function testParseAddressManyLines() {
@@ -112,7 +110,7 @@ function testFormatAddressFromUS() {
 		countryCode: "SE"
 	}, {locale: 'en-US'});
 	
-	var expected = "Martin Rebas Gyllenkrooksgatan\nGÖTEBORG 412 84\nSWEDEN";
+	var expected = "Martin Rebas Gyllenkrooksgatan\n412 84 GÖTEBORG\nSWEDEN";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

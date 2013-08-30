@@ -37,7 +37,6 @@ function testParseAddressLatinNoZip() {
 	assertEquals("Beijing", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("People's Republic of China", parsedAddress.country);
-	assertEquals("CN", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
 

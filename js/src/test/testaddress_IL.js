@@ -71,7 +71,7 @@ function testParseAddressNoDelimiters() {
 	var parsedAddress = new ilib.Address("R.O.Y. International PO Box 13056 TEL-AVIV ISL-61130 Israel", {locale: 'he-IL'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("R.O.Y. International, PO Box 13056", parsedAddress.streetAddress);
+	assertEquals("R.O.Y. International PO Box 13056", parsedAddress.streetAddress);
 	assertEquals("TEL-AVIV", parsedAddress.locality);
 	assertEquals(parsedAddress.region);
 	assertEquals("ISL-61130",parsedAddress.postalCode);
@@ -126,7 +126,7 @@ function testFormatAddressFromUS() {
 		countryCode: "IL",
 	}, {locale: 'en-US'});
 	
-	var expected = "R.O.Y. International, PO Box 13056\nTEL-AVIV\nIsrael";
+	var expected = "R.O.Y. International, PO Box 13056, Albertinkatu 36 B\nTEL-AVIV\nIsrael";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

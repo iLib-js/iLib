@@ -148,7 +148,7 @@ function testFormatAddress() {
 		countryCode: "IT"
 	}, {locale: 'it-IT'});
 	
-	var expected = "Corso Europa 2\n20122 Milan \nItalia";
+	var expected = "Corso Europa 2\n20122 Milan\nItalia";
 	var formatter = new ilib.AddressFmt({locale: 'it-IT'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -162,7 +162,7 @@ function testFormatAddressFromUS() {
 		countryCode: "IT"
 	}, {locale: 'en-US'});
 	
-	var expected = "Corso Europa 2\n20122 Milan \nItalia";
+	var expected = "Corso Europa 2\n20122 Milan\nItalia";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

@@ -187,5 +187,7 @@ ilib.AddressFmt.prototype.format = function (address) {
 	template = new ilib.String(format);
 	ret = template.format(params);
 	ret = ret.replace(/[ \t]+/g, ' ');
+	ret = ret.replace("\n ", "\n");
+	ret = ret.replace(" \n", "\n");
 	return ret.replace(/\n+/g, '\n').trim();
 };

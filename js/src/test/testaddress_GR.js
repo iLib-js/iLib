@@ -126,7 +126,7 @@ function testFormatAddress() {
 		countryCode: "GR"
 	}, {locale: 'el-GR'});
 	
-	var expected = "8, Heracleous St.,Kifissia\n145 64 Athens\nGREECE";
+	var expected = "18, Heracleous St.,Kifissia\n145 64 Athens\nGREECE";
 	var formatter = new ilib.AddressFmt({locale: 'el-GR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

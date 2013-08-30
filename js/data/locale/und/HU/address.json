@@ -1,9 +1,9 @@
 {
     "formats": {
-        "default": "{streetAddress}\n{postalCode} {locality}\n{country}",
-        "nocountry": "{streetAddress}\n{postalCode} {locality}"
+        "default": "{locality}\n{streetAddress}\n{postalCode}\n{country}",
+        "nocountry": "{locality}\n{streetAddress}\n{postalCode}"
     },
-    "startAt": "end",
+    "startAt": "beginning",
     "fields": [
 	{
             "name": "postalCode",
@@ -13,7 +13,7 @@
         {
             "name": "locality",
             "line": "startAtFirst",
-            "pattern": "[AÁBCCSDDZDZSEÉFGGYHIÍJKLLYMNNYOÓÖŐPQRSSZTTYUÚÜÛVWXYZZSaábccsddzdzseéfggyhiíjkllymnnyoóöőpqrsszttyuúüûvwxyzzs0-9//.-/s']+"
+            "pattern": "[AÁBCCSDDZDZSEÉFGGYHIÍJKLLYMNNYOÓÖŐPQRSSZTTYUÚÜÛVWXYZZSaábccsddzdzseéfggyhiíjkllymnnyoóöőpqrsszttyuúüûvwxyzzs//.-/s']+"
         }
         
     ]

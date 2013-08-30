@@ -16,7 +16,7 @@
 		{
 			"name": "postalCode",
 			"line": "last",
-			"pattern": "^[\\s]?[0-9]{4}$\\s?"
+			"pattern": "[0-9]{4}"
 		}
 	]
 }

@@ -85,14 +85,14 @@ function suite() {
 	    "testname_es.js",
 	    "testname_nl.js",
 	    "testname_zh_CN.js",*/
-	    "testaddress.js",
+	   /* "testaddress.js",
 	    "testaddress_AR.js",
 	    "testaddress_AT.js",
 	    "testaddress_AU.js",
-	    "testaddress_BE.js",
+	    "testaddress_BE.js",*/
 	    //"testaddress_BR.js",
-	    "testaddress_CA.js",
-	    "testaddress_CH.js",
+	   // "testaddress_CA.js",
+	    //"testaddress_CH.js",
 	    "testaddress_CN.js",
 	    "testaddress_DE.js",
 	    "testaddress_DK.js",
@@ -115,17 +115,16 @@ function suite() {
 	    "testaddress_NO.js",
 	    "testaddress_NZ.js",
 	    "testaddress_SG.js",
-	    "testaddress_KR.js",
+	    /*"testaddress_KR.js",*/
 	    "testaddress_SA.js",
 	    "testaddress_SK.js",
             "testaddress_TR.js",	
-	    //"testaddress_SE.js",
-	    //"testaddress_SI.js",
+	    "testaddress_SE.js",
+	    "testaddress_SI.js",
 	    //"testaddress_TH.js",
-	    //"testaddress_ZA.js",
-	    "testaddress_IL.js"
-	    //"testaddress_TW.js",
-	    //"testaddress_ZA.js"
+	    "testaddress_ZA.js",
+	    "testaddress_IL.js",
+	    "testaddress_TW.js"
 	];
 
     // uncompiled

@@ -24,7 +24,7 @@ function testParseAddressNormal() {
 	assertEquals("Avda.General Avilés, 35-37, Bajo", parsedAddress.streetAddress);
 	assertEquals("Valencia", parsedAddress.region);
 	assertUndefined(parsedAddress.locality);
-	assertEquals("46015 -", parsedAddress.postalCode);
+	assertEquals("46015", parsedAddress.postalCode);
 	assertEquals("España", parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
@@ -48,7 +48,7 @@ function testParseAddressNoCountry() {
 	assertEquals("Isabel de Santo Domingo, 6", parsedAddress.streetAddress);
 	assertEquals("Zaragoza", parsedAddress.region);
 	assertUndefined(parsedAddress.locality);
-	assertEquals("50014 -", parsedAddress.postalCode);
+	assertEquals("50014", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
@@ -72,7 +72,7 @@ function testParseAddressOneLine() {
 	assertEquals("Calle José Echegaray, 8, Parque Empresarial Madrid-Las Rozas", parsedAddress.streetAddress);
 	assertEquals("Las Rozas.", parsedAddress.locality);
 	assertEquals("Madrid", parsedAddress.region);
-	assertEquals("28232 -", parsedAddress.postalCode);
+	assertEquals("28232", parsedAddress.postalCode);
 	assertEquals("España", parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
@@ -84,7 +84,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("Avda.General Avilés, 35-37, Bajo", parsedAddress.streetAddress);
 	assertEquals("Valencia", parsedAddress.region);
 	assertUndefined(parsedAddress.locality);
-	assertEquals("46015 -", parsedAddress.postalCode);
+	assertEquals("46015", parsedAddress.postalCode);
 	assertEquals("España", parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
@@ -96,7 +96,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("Calle José Echegaray, 8 Parque Empresarial Madrid-Las Rozas", parsedAddress.streetAddress);
 	assertEquals("Las Rozas", parsedAddress.locality);
 	assertEquals("Madrid", parsedAddress.region);
-	assertEquals("28232 -", parsedAddress.postalCode);
+	assertEquals("28232", parsedAddress.postalCode);
 	assertEquals("España", parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
@@ -108,7 +108,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("Avda.General Avilés, 35-37, Bajo", parsedAddress.streetAddress);
 	assertEquals("Sedaví", parsedAddress.locality);
 	assertEquals("València", parsedAddress.region);
-	assertEquals("46015 -", parsedAddress.postalCode);
+	assertEquals("46015", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
@@ -122,7 +122,7 @@ function testParseAddressFromUS() {
 	assertEquals("Avda.General Avilés, 35-37, Bajo", parsedAddress.streetAddress);
 	assertEquals("Sedaví", parsedAddress.locality);
 	assertEquals("València", parsedAddress.region);
-	assertEquals("46015 -", parsedAddress.postalCode);
+	assertEquals("46015", parsedAddress.postalCode);
 	assertEquals("Spain", parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
@@ -132,7 +132,7 @@ function testFormatAddress() {
 		streetAddress: "Avda.General Avilés, 35-37, Bajo",
 		locality: "Sedaví",
 		region: "València",
-		postalCode: "46015 -",
+		postalCode: "46015",
 		country: "España",
 		countryCode: "ES"
 	}, {locale: 'es-ES'});
@@ -147,7 +147,7 @@ function testFormatAddressFromUS() {
 		streetAddress: "Avda.General Avilés, 35-37, Bajo",
 		locality: "Sedaví",
 		region: "València",
-		postalCode: "46015 -",
+		postalCode: "46015",
 		country: "Spain",
 		countryCode: "ES"
 	}, {locale: 'en-US'});

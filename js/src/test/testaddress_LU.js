@@ -40,7 +40,7 @@ function testParseAddressotherNormal() {
 	assertEquals("PETANGE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("L-4750", parsedAddress.postalCode);
-	assertEquals("GRAND DUCHY OF LUXEMBOURG", parsedAddress.country);
+	assertEquals("LUXEMBOURG", parsedAddress.country);
 	assertEquals("LU", parsedAddress.countryCode);
 };
 
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("PETANGE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("L-4750", parsedAddress.postalCode);
-	assertEquals("GRAND DUCHY OF LUXEMBOURG", parsedAddress.country);
+	assertEquals("LUXEMBOURG", parsedAddress.country);
 	assertEquals("LU", parsedAddress.countryCode);
 };
 
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("PETANGE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("L-4750", parsedAddress.postalCode);
-	assertEquals("GRAND DUCHY OF LUXEMBOURG", parsedAddress.country);
+	assertEquals("LUXEMBOURG", parsedAddress.country);
 	assertEquals("LU", parsedAddress.countryCode);
 };
 
@@ -85,11 +85,11 @@ function testParseAddressSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("M. Jacques Muller 71\n\troute\n\tde\tLongwy\t\nL-4750\n\tPETANGE\n\tLUXEMBOURG\n\t", {locale: 'fr-LU'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("M. Jacques Muller 71, route, de, Longwy", parsedAddress.streetAddress);
+	assertEquals("M. Jacques Muller 71, route, de Longwy", parsedAddress.streetAddress);
 	assertEquals("PETANGE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("L-4750", parsedAddress.postalCode);
-	assertEquals("GRAND DUCHY OF LUXEMBOURG", parsedAddress.country);
+	assertEquals("LUXEMBOURG", parsedAddress.country);
 	assertEquals("LU", parsedAddress.countryCode);
 };
 
@@ -107,7 +107,7 @@ function testParseAddressNoDelimiters() {
 
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("M. Andrée TROMMER BP 501\nLuxembourg L-1050\nLUXEMBOURG", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("M. Andrée TROMMER BP 501\nL-1050 Luxembourg\nLUXEMBOURG", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -143,7 +143,7 @@ function testFormatAddressFromUS() {
 		countryCode: "LU"
 	}, {locale: 'en-US'});
 	
-	var expected = "M. Andrée TROMMER BP 5019\nLuxembourg L-1050\nLUXEMBOURG";
+	var expected = "M. Andrée TROMMER BP 5019\nL-1050 Luxembourg\nLUXEMBOURG";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

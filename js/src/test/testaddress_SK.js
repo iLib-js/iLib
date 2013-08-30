@@ -93,7 +93,7 @@ function testParseAddressNoDelimiters() {
 
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Pawel Opatovský Gazdova 4\nŽILINA 1 010 01\nSLOVAKIA", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
@@ -131,7 +131,7 @@ function testFormatAddressFromUS() {
 		countryCode: "SK"
 	}, {locale: 'en-US'});
 	
-	var expected = "Pawel Opatovský Gazdova 4\nŽILINA 1 010 01\nSLOVAKIA";
+	var expected = "Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

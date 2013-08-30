@@ -8,7 +8,7 @@
         {
             "name": "postalCode",
             "line": "startAtLast",
-            "pattern": "^[0-9]{5}-[0-9]{3}$"
+            "pattern": "[0-9]{5}-[0-9]{3}"
         },
         {
             "name": "region",

@@ -8,7 +8,7 @@
 	"fields": [
 		{
 			"name": "postalCode",
-			"line": "startAtLast",
+			"line": "last",
 			"pattern": "[0-9]{4}",
 			"matchGroup": 0
 		},
@@ -16,7 +16,7 @@
 		{
 			"name": "locality",
 			"line": "last",
-			"pattern": "[A-z\\.\\-']+(\\s+[A-z\\.\\-']+)?$",
+			"pattern": "[A-za-z]+$",
 			"matchGroup": 0
 		}
 	]

@@ -92,7 +92,7 @@ function testParseAddressNoDelimiters() {
 };
 
 function testParseAddressSpecialChars() {
-	var parsedAddress = new ilib.Address("SOCIEDADE BRASILEIRA DE FÍSICA,Caixa Postal 66328,São Paulo-SP,05315-970,BRAZIL", {locale: 'pt-BR'});
+	var parsedAddress = new ilib.Address("SOCIEDADE BRASILEIRA DE FÍSICA,Caixa Postal 66328,São Paulo - SP,05315-970,BRAZIL", {locale: 'pt-BR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("SOCIEDADE BRASILEIRA DE FÍSICA,Caixa Postal 66328", parsedAddress.streetAddress);

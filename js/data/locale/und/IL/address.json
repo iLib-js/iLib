@@ -7,13 +7,13 @@
     "fields": [
 	{
             "name": "postalCode",
-            "line": "startAtLast",
+            "line": "last",
             "pattern": "(ISL-)?[0-9]{5}"
         },
         {
             "name": "locality",
             "line": "last",
-            "pattern": "[ABCDEFGHIJKLMNOPQRSTUVXYZa-z0-9בּבגדהוזחטיכּכךלמםנןסעפּפףצץקרשׁשׂתּת\\s-.\"]+"
+            "pattern": "[ABCDEFGHIJKLMNOPQRSTUVXYZa-zבּבגדהוזחטיכּכךלמםנןסעפּפףצץקרשׁשׂתּת\\s-.\"]+"
         }
         
     ]
