@@ -18,7 +18,7 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("X", {locale: 'th-Th'});
+	var parsedAddress = new ilib.Address("49 Soi Ruamrudee, Phloenchit Road, Lumpinee\nPathumwan Bangkok 10330\nThailand", {locale: 'th-Th'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("49 Soi Ruamrudee, Phloenchit Road, Lumpinee", parsedAddress.streetAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("X", {locale: 'th-Th'});
+	var parsedAddress = new ilib.Address("49 Soi Ruamrudee, Phloenchit Road, Lumpinee\nPathumwan Bangkok\nThailand", {locale: 'th-Th'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("49 Soi Ruamrudee, Phloenchit Road, Lumpinee", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressNoZip() {
 
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("X", {locale: 'th-TH'});
+	var parsedAddress = new ilib.Address("112/119 Maneeya Perfect Masterpiece Saima\nMuang Nonthaburi 11000", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("112/119 Maneeya Perfect Masterpiece Saima", parsedAddress.streetAddress);
@@ -56,7 +56,7 @@ function testParseAddressNoCountry() {
 };
 
 function testParseAddressNoCountryWithSpace() {
-	var parsedAddress = new ilib.Address("X", {locale: 'th-TH'});
+	var parsedAddress = new ilib.Address("112/119 Maneeya Perfect Masterpiece, Saima\nMuang Nonthaburi 11000", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("112/119 Maneeya Perfect Masterpiece, Saima", parsedAddress.streetAddress);
@@ -70,7 +70,7 @@ function testParseAddressNoCountryWithSpace() {
 
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("X", {locale: 'th-TH'});
+	var parsedAddress = new ilib.Address("112/119\nManeeya Perfect Masterpiece\nSaima\nPathumwan\nBangkok\n11000\nThailand", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("112/119, Maneeya Perfect Masterpiece, Saima", parsedAddress.streetAddress);
@@ -83,10 +83,10 @@ function testParseAddressManyLines() {
 
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("X", {locale: 'th-TH'});
+	var parsedAddress = new ilib.Address("112/119 Maneeya Perfect Masterpiece Saima Muang Nonthaburi 11000 THAILAND", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("112/119, Maneeya Perfect Masterpiece, Saima", parsedAddress.streetAddress);
+	assertEquals("112/119 Maneeya Perfect Masterpiece Saima", parsedAddress.streetAddress);
 	assertEquals("Pathumwan", parsedAddress.locality);
 	assertEquals("Bangkok", parsedAddress.region);
 	assertEquals("11000", parsedAddress.postalCode);
@@ -96,7 +96,7 @@ function testParseAddressOneLine() {
 
 
 function testParseAddressOther() {
-	var parsedAddress = new ilib.Address("X", {locale: 'tr-TR'});
+	var parsedAddress = new ilib.Address("112/119 Maneeya Perfect Masterpiece Saima\nMuang Nonthaburi 11000\nTHAILAND", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("112/119 Maneeya Perfect Masterpiece Saima", parsedAddress.streetAddress);
