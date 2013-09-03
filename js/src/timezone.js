@@ -59,7 +59,7 @@ calendar/gregoriandate.js
  * When the data is loaded, the onLoad function is called with the current 
  * instance as a parameter. 
  * 
- * <li>sync - tell whether to load any missing locale data synchronously or 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while.
