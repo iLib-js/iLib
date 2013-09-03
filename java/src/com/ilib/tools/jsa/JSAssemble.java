@@ -146,7 +146,7 @@ public class JSAssemble
             findAllJS(new File("."), files);
         }
         
-        if (localesString != null) {
+        if (localesString != null && localesString.length() > 0) {
         	String[] locs = localesString.split(",");
         	for ( i = 0; i < locs.length; i++ ) {
         		locales.add(new IlibLocale(locs[i]));
