@@ -34,3 +34,13 @@
 ilib.CType.isDigit = function (ch) {
 	return ilib.CType._inRange(ch, 'digit', ilib.data.ctype);
 };
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isDigit._init = function (sync, loadParams, onLoad) {
+	ilib.CType._init(sync, loadParams, onLoad);
+};

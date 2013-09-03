@@ -42,6 +42,15 @@
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while.
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
  * When searching for a currency by its sign, this class cannot guarantee 
@@ -90,7 +99,7 @@ ilib.Currency = function (options) {
 		if (options.sign) {
 			this.sign = options.sign;
 		}
-		if (options.sync) {
+		if (typeof(options.sync) !== 'undefined') {
 			this.sync = options.sync;
 		}
 		if (options.loadParams) {

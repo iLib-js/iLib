@@ -32,3 +32,13 @@
 ilib.CType.isAscii = function (ch) {
 	return ilib.CType._inRange(ch, 'ascii', ilib.data.ctype);
 };
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isAscii._init = function (sync, loadParams, onLoad) {
+	ilib.CType._init(sync, loadParams, onLoad);
+};

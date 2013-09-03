@@ -36,3 +36,15 @@ ilib.CType.isAlpha = function (ch) {
 		ilib.CType._inRange(ch, 'Lm', ilib.data.ctype_l) ||
 		ilib.CType._inRange(ch, 'Lo', ilib.data.ctype_l);
 };
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isAlpha._init = function (sync, loadParams, onLoad) {
+	ilib.CType._load("ctype_l", sync, loadParams, onLoad);
+};
+
+

@@ -164,25 +164,33 @@ ilib.Name = function(name, options) {
 
 	this.locale = this.locale || new ilib.Locale();
 	
-	ilib.loadData({
-		object: ilib.Name, 
-		locale: this.locale, 
-		name: "name.json", 
-		sync: sync, 
-		loadParams: this.loadParams, 
-		callback: ilib.bind(this, function (info) {
-			if (!info) {
-				info = ilib.Name.defaultInfo;
-				var spec = this.locale.getSpec().replace(/-/g, "_");
-				ilib.Name.cache[spec] = info;
-			}
-			this.info = info;
-			this._init(name);
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		})
-	});
+	ilib.CType.isAlpha._init(sync, this.loadParams, /** @type {function()|undefined} */ ilib.bind(this, function() {
+		ilib.CType.isIdeo._init(sync, this.loadParams, /** @type {function()|undefined} */ ilib.bind(this, function() {
+			ilib.CType.isPunct._init(sync, this.loadParams, /** @type {function()|undefined} */ ilib.bind(this, function() {
+				ilib.CType.isSpace._init(sync, this.loadParams, /** @type {function()|undefined} */ ilib.bind(this, function() {
+					ilib.loadData({
+						object: ilib.Name, 
+						locale: this.locale, 
+						name: "name.json", 
+						sync: sync, 
+						loadParams: this.loadParams, 
+						callback: ilib.bind(this, function (info) {
+							if (!info) {
+								info = ilib.Name.defaultInfo;
+								var spec = this.locale.getSpec().replace(/-/g, "_");
+								ilib.Name.cache[spec] = info;
+							}
+							this.info = info;
+							this._init(name);
+							if (options && typeof(options.onLoad) === 'function') {
+								options.onLoad(this);
+							}
+						})
+					});					
+				}));
+			}));
+		}));
+	}));
 };
 
 ilib.Name.defaultInfo = ilib.data.name ||  {

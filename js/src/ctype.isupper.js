@@ -34,3 +34,13 @@
 ilib.CType.isUpper = function (ch) {
 	return ilib.CType._inRange(ch, 'Lu', ilib.data.ctype_l);
 };
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isUpper._init = function (sync, loadParams, onLoad) {
+	ilib.CType._load("ctype_l", sync, loadParams, onLoad);
+};

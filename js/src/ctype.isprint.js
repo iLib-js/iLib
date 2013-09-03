@@ -31,3 +31,13 @@
 ilib.CType.isPrint = function (ch) {
 	return typeof(ch) !== 'undefined' && ch.length > 0 && !ilib.CType.isCntrl(ch);
 };
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isPrint._init = function (sync, loadParams, onLoad) {
+	ilib.CType.isCntrl._init(sync, loadParams, onLoad);
+};

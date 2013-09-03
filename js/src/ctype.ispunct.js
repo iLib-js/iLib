@@ -38,3 +38,13 @@ ilib.CType.isPunct = function (ch) {
 		ilib.CType._inRange(ch, 'Pi', ilib.data.ctype_p) ||
 		ilib.CType._inRange(ch, 'Pf', ilib.data.ctype_p);
 };
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isPunct._init = function (sync, loadParams, onLoad) {
+	ilib.CType._load("ctype_p", sync, loadParams, onLoad);
+};

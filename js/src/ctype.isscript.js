@@ -36,3 +36,14 @@
 ilib.CType.isScript = function (ch, script) {
 	return ilib.CType._inRange(ch, script, ilib.data.scriptToRange);
 };
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isScript._init = function (sync, loadParams, onLoad) {
+	ilib.CType._load("scriptToRange", sync, loadParams, onLoad);
+};
+

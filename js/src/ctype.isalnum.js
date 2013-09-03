@@ -30,3 +30,15 @@
 ilib.CType.isAlnum = function isAlnum(ch) {
 	return ilib.CType.isAlpha(ch) || ilib.CType.isDigit(ch);
 };
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isAlnum._init = function (sync, loadParams, onLoad) {
+	ilib.CType.isAlpha._init(sync, loadParams, function () {
+		ilib.CType.isDigit._init(sync, loadParams, onLoad);
+	});
+};

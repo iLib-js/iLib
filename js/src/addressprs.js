@@ -186,21 +186,27 @@ ilib.Address = function (freeformAddress, options) {
 	if (typeof(ilib.Address.ctry) === 'undefined') {
 		ilib.Address.ctry = {}; // make sure not to conflict with the address info
 	}
-	if (typeof(ilib.data.nativecountries) === 'undefined') {
-		ilib.loadData({
-			name: "nativecountries.json", // countries in their own language 
-			object: ilib.Address.shared, 
-			locale: "-", // only need to load the root file 
-			sync: this.sync, 
-			loadParams: this.loadParams, 
-			callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(nativecountries) {
-				ilib.data.nativecountries = nativecountries;
-				this._loadCountries(options && options.onLoad);
-			})
-		});
-	} else {
-		this._loadCountries(options && options.onLoad);
-	}
+	ilib.CType.isAscii._init(this.sync, this.loadParams, /** @type {function(*)|undefined} */ ilib.bind(this, function() {
+		ilib.CType.isIdeo._init(this.sync, this.loadParams, /** @type {function(*)|undefined} */ ilib.bind(this, function() {
+			ilib.CType.isDigit._init(this.sync, this.loadParams, /** @type {function(*)|undefined} */ ilib.bind(this, function() {
+				if (typeof(ilib.data.nativecountries) === 'undefined') {
+					ilib.loadData({
+						name: "nativecountries.json", // countries in their own language 
+						object: ilib.Address.shared, 
+						locale: "-", // only need to load the root file 
+						sync: this.sync, 
+						loadParams: this.loadParams, 
+						callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(nativecountries) {
+							ilib.data.nativecountries = nativecountries;
+							this._loadCountries(options && options.onLoad);
+						})
+					});
+				} else {
+					this._loadCountries(options && options.onLoad);
+				}
+			}));
+		}));
+	}));
 };
 
 /** @protected */

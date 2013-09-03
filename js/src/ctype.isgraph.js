@@ -32,3 +32,15 @@
 ilib.CType.isGraph = function (ch) {
 	return typeof(ch) !== 'undefined' && ch.length > 0 && !ilib.CType.isSpace(ch) && !ilib.CType.isCntrl(ch);
 };
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isGraph._init = function (sync, loadParams, onLoad) {
+	ilib.CType.isSpace._init(sync, loadParams, function () {
+		ilib.CType.isCntrl._init(sync, loadParams, onLoad);
+	});
+};

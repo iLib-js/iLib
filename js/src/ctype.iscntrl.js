@@ -32,3 +32,13 @@
 ilib.CType.isCntrl = function (ch) {
 	return ilib.CType._inRange(ch, 'Cc', ilib.data.ctype_c);
 };
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isCntrl._init = function (sync, loadParams, onLoad) {
+	ilib.CType._load("ctype_c", sync, loadParams, onLoad);
+};

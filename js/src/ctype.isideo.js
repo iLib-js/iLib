@@ -37,3 +37,13 @@ ilib.CType.isIdeo = function (ch) {
 		ilib.CType._inRange(ch, 'cjkcompatibility', ilib.data.ctype);
 	
 };
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isIdeo._init = function (sync, loadParams, onLoad) {
+	ilib.CType._init(sync, loadParams, onLoad);
+};
