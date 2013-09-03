@@ -77,10 +77,10 @@ function testParseAddressNoCountry() {
 	assertUndefined(parsedAddress.postalCode);
 	assertEquals("21454", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
-	assertEquals("AU", parsedAddress.countryCode);
+	assertEquals("KW", parsedAddress.countryCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressNoCountrynative() {
 	var parsedAddress = new ilib.Address("السيد عبد الله ناصر\nمكة المكرمة ۲۱۴۵۴", {locale: 'ar-SA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressNoCountry() {
 	assertUndefined(parsedAddress.postalCode);
 	assertEquals("۲۱۴۵۴", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
-	assertEquals("AU", parsedAddress.countryCode);
+	assertEquals("SA", parsedAddress.countryCode);
 };
 
 function testParseAddressManyLines() {
