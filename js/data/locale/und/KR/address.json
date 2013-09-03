@@ -19,7 +19,7 @@
 			{
 				"name": "postalCode",
 				"line": "startAtLast",
-				"pattern": "[0-9]{6}$"
+				"pattern": "[0-9]{6}"
 			},
 			{
 				"name": "region",
@@ -53,7 +53,7 @@
 			{
 				"name": "postalCode",
 				"line": "startAtLast",
-				"pattern": "^([0-9]{3}-[0-9]{3}])$"
+				"pattern": "([0-9]{3})-([0-9]{3}])"
 			},
 			{
 				"name": "region",
