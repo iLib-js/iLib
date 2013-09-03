@@ -38,5 +38,4 @@ durfmt.js
 resources.js
 localeinfo.js
 daterangefmt.js
-collate.js
 */
