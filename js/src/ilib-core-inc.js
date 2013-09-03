@@ -17,7 +17,7 @@
  */
 
 /*
- * ilib-mini-inc.js - metafile that includes a minimal set of other js files for the minimal build
+ * ilib-core-inc.js - metafile that includes a minimal set of other js files for the minimal build
  */
 
 /* !depends

@@ -17,7 +17,7 @@
  */
 
 /*
- * ilib-medium.js - metafile that includes a reasonable set of other js files
+ * ilib-standard-inc.js - metafile that includes a reasonable set of other js files
  */
 
 /* !depends

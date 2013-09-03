@@ -1,7 +1,7 @@
 /*
  * ctype.ispunct.js - Character type is punctuation
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,5 +46,5 @@ ilib.CType.isPunct = function (ch) {
  * @param {function(*)|undefined} onLoad
  */
 ilib.CType.isPunct._init = function (sync, loadParams, onLoad) {
-	ilib.CType._load("ctype_p", sync, loadParams, onLoad);
+	ilib.CType._loa("ctype_p", sync, loadParams, onLoad);
 };

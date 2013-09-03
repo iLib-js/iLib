@@ -17,7 +17,7 @@
  */
 
 /*
- * ilib-full.js - metafile that includes all other js files
+ * ilib-full-inc.js - metafile that includes all other js files
  */
 
 /* !depends
