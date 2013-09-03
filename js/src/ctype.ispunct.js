@@ -46,5 +46,5 @@ ilib.CType.isPunct = function (ch) {
  * @param {function(*)|undefined} onLoad
  */
 ilib.CType.isPunct._init = function (sync, loadParams, onLoad) {
-	ilib.CType._loa("ctype_p", sync, loadParams, onLoad);
+	ilib.CType._load("ctype_p", sync, loadParams, onLoad);
 };
