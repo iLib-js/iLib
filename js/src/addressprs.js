@@ -510,7 +510,7 @@ ilib.Address.prototype = {
 			matchGroup = matchGroup || 0;
 			if (match[matchGroup] !== undefined) {
 				ret.match = match[matchGroup].trim();
-				ret.match = ret.match.replace(/\-+$/, '');
+				ret.match = ret.match.replace(/^\-|\-+$/, '');
 				ret.match = ret.match.replace(/\s+$/, '');
 				last = (startAt === 'end') ? line.lastIndexOf(match[matchGroup]) : line.indexOf(match[matchGroup]); 
 				//console.log("last is " + last);
