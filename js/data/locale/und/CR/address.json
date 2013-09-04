@@ -1,0 +1,34 @@
+{
+    "formats": {
+        "default": "{streetAddress}\n{region},{locality}\n{postalCode}\n{country}",
+        "nocountry": "{streetAddress}\n{locality},{region}\n{postalCode}"
+    },
+    "startAt": "end",
+    "fields": [
+        {
+            "name": "postalCode",
+            "line": "last",
+            "pattern": "([0-9]{5})",
+            "matchGroup": 0
+        },
+        {
+            "name": "region",
+            "line": "startAtFirst",
+            "pattern": [
+                "Alajuela",
+                "Cartago",
+                "Guanacaste",
+                "Heredia",
+                "Limón",
+                "Puntarenas",
+                "San José"
+            ]
+        },
+        {
+            "name": "locality",
+            "line": "startAtLast",
+            "pattern": "([A-Za-zÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû\.,\s\-' ]+)",
+            "matchGroup": 0
+        }
+    ]
+}

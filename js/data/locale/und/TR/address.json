@@ -104,7 +104,7 @@
 		{
 			"name": "locality",
 			"line": "last",
-			"pattern": "[ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz]+",
+			"pattern": "[ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz\\s.-']+",
 			"matchGroup": 0
 		}
 

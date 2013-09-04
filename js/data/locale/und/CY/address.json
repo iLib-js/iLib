@@ -8,12 +8,12 @@
 	{
             "name": "locality",
             "line": "startAtLast",
-            "pattern": "[A-zÁÉÍÓÚáéíóú\\.\\-\\s']+"
+            "pattern": "([ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyzΓΔΘΛΞΟΠΣΣΤΦΧΨΩαβγδεζηθικλμνξοπρςστυφχψω\\s.-']+)"
         },
 	{
             "name": "postalCode",
             "line": "last",
-            "pattern": "[A-Z][0-9][0-9][0-9][0-9][A-Z][A-Z][A-Z]"
+            "pattern": "([0-9]{4})"
         }
 	 
     ]
