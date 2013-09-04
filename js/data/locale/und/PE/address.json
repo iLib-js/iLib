@@ -6,13 +6,14 @@
 	
 	"startAt": "end",
 	"fields": [
-	
+
+		
 		{
 			"name": "locality",
 			"line": "last",
-			"pattern": "(([A-z\\.\\-']+)? [A-z\\.\\-']+)$",
-	    		"matchGroup": 1
+			"pattern": "[A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-\\s'0-9]+"
 		}
-
-	  ]	
+		
+		
+	]	
 }

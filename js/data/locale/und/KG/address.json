@@ -1,0 +1,28 @@
+{
+	"formats": {
+		"default": "{postalCode}\n{streetAddress}\n{locality}\n{country}",
+		"nocountry": "{postalCode}\n{streetAddress}\n{locality}"
+	},
+	
+	"startAt": "end",
+	"fields": [
+
+
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "[АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїњЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя\\.\\-\\s']+"
+		},
+
+		{
+			"name": "postalCode",
+			"line": "last",
+			"pattern": "[0-9]{4}"
+		}
+		
+		
+		
+		
+		
+	]	
+}
