@@ -60,7 +60,11 @@ TestSuite.prototype = {
 	include: function (path) {
 		this.includes.push(path);
 	},
-	
+
+	applyIncludes: function (includes) {
+		this.includes = this.includes.concat(includes);
+	},
+
 	addSuite: function (suite) {
 		this.subSuites.push(suite);
 	},
@@ -154,8 +158,9 @@ TestSuite.prototype = {
 			}
 		}
 		this.subSuites.forEach(function (suite) {
+			suite.applyIncludes(this.includes);
 			suite.runTests(results, root);
-		});
+		}.bind(this));
 	}
 };
 

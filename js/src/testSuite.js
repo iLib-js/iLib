@@ -21,8 +21,26 @@ var JsUnit = require("./testcli/runner.js");
 
 var runner = new JsUnit.TestRunner("../..");
 
-runner.addSuite(new JsUnit.TestSuite("util/test/testSuite.js"));
-runner.addSuite(new JsUnit.TestSuite("test/testSuite.js"));
-runner.addSuite(new JsUnit.TestSuite("calendar/test/testSuite.js"));
+var suites = [
+	"util/test/testSuite.js",
+	"test/testSuite.js",
+	"calendar/test/testSuite.js"
+];
+
+// uncompiled
+var ts;
+for (suite in suites) {
+	ts = new JsUnit.TestSuite(suites[suite]);
+	ts.include("ilib-ut.js");
+	runner.addSuite(ts);
+}
+
+// compiled
+var ts;
+for (suite in suites) {
+	ts = new JsUnit.TestSuite(suites[suite]);
+	ts.include("ilib-ut-compiled.js");
+	runner.addSuite(ts);
+}
 
 runner.runTests();
