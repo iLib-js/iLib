@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("AM", parsedAddress.countryCode);
 };
 
-function testParseAddressSpeciAMChars() {
+function testParseAddressSpecialChars() {
 	var parsedAddress = new ilib.Address("03 BP 1000, COTONOU, BENIN", {locale: 'fr-BJ'});
 	
 	assertNotUndefined(parsedAddress);

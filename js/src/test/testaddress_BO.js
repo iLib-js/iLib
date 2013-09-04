@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("BO", parsedAddress.countryCode);
 };
 
-function testParseAddressSpeciAMChars() {
+function testParseAddressSpecialChars() {
 	var parsedAddress = new ilib.Address("SEÑOR, FEDERICO TERRAZAS ARIAS, CALLE ADELA ZAMUDIO 1716, PO BOX 580, COCHABAMBA, BOLIVIA", {locale: 'es-BO'});
 	
 	assertNotUndefined(parsedAddress);
