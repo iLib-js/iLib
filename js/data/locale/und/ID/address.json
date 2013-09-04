@@ -26,7 +26,7 @@
                 "Bangka Belitung",
                 "Bengkulu",
                 "South Sumatra",
-                "Jambi0.719 ",
+                "Jambi",
                 "Central Java",
                 "West Java",
                 "Bali",
@@ -52,8 +52,8 @@
         {
             "name": "locality",
             "line": "last",
-            "pattern": "[A-za-z\\s.'\"]+",
-            "matchGroup": 0
+            "pattern": "(([A-Za-z]+)? [A-Za-z]+)$",
+            "matchGroup": 1
         }
     ]
 }

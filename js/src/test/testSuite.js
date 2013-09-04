@@ -70,8 +70,8 @@ function suite() {
 	    "testdatefmtrange_en_US.js",
 	    "testdatefmtrange_de_DE.js",
 	    "testdatefmtrange_ja_JP.js",
-	    "testdatefmtrange_fr_FR.js",
-	    "testname.js",
+	    "testdatefmtrange_fr_FR.js",*/
+	    /*"testname.js",
 	    "testnamefmt.js",
 	    "testctype.js",
 	    "testdurfmt.js",
@@ -145,7 +145,24 @@ function suite() {
             "testaddress_RS.js",
 	    "testaddress_UA.js",
 	    "testaddress_MM.js",
-	    "testaddress_NG.js"
+	    "testaddress_NG.js",
+	    "testaddress_AL.js",
+	     "testaddress_AO.js",
+	     "testaddress_AM.js",
+	     "testaddress_AZ.js",
+	     "testaddress_BJ.js",
+	     "testaddress_BO.js",
+	     "testaddress_BA.js",
+	     "testaddress_BG.js",
+	     "testaddress_BF.js",
+	     "testaddress_CM.js",
+	     "testaddress_CV.js",
+	     "testaddress_CF.js",
+	     "testaddress_CL.js",
+	     "testaddress_CO.js",
+	     "testaddress_CR.js",
+	     "testaddress_HR.js",
+	     "testaddress_CD.js"
 	];
 
     // uncompiled

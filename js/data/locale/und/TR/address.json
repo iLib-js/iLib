@@ -9,7 +9,7 @@
 		{
 			"name": "postalCode",
 			"line": "startAtLast",
-			"pattern": "[0-9]{5}",
+			"pattern": "([0-9]{5})$",
 			"matchGroup": 0
 		},
 		
@@ -104,7 +104,7 @@
 		{
 			"name": "locality",
 			"line": "last",
-			"pattern": "[ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz\\s.-']+",
+			"pattern": "(([ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz-]+)?[ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz-]+)$",
 			"matchGroup": 0
 		}
 

@@ -19,7 +19,7 @@
 
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Luis Escala Piedras 623\nPiso 2, depto 4\nC1070AAM, Capital Federa\nARGENTINA", {locale: 'es-AR'});
+	var parsedAddress = new ilib.Address("Luis Escala Piedras 623\nPiso 2, depto 4\nC1070AAM Capital Federa\nARGENTINA", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Luis Escala Piedras 623, Piso 2, depto 4", parsedAddress.streetAddress);

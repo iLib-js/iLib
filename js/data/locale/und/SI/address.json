@@ -14,7 +14,7 @@
         {
             "name": "postalCode",
             "line": "last",
-            "pattern": "\\d{4}"
+            "pattern": "(\\d{4})$"
         }
     ]
 }
