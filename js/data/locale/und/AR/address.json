@@ -8,7 +8,8 @@
 	{
             "name": "locality",
             "line": "startAtLast",
-            "pattern": "[A-zÁÉÍÓÚáéíóú\\.\\-\\s']+"
+            "pattern": "(([A-zÁÉÍÓÚáéíóú\\.\\-']+)? [A-zÁÉÍÓÚáéíóú\\.\\-']+)$",
+	    "matchGroup": 1
         },
 	{
             "name": "postalCode",
