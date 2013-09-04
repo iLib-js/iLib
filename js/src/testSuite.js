@@ -43,4 +43,20 @@ for (suite in suites) {
 	runner.addSuite(ts);
 }
 
+// dynamic uncompiled
+var ts;
+for (suite in suites) {
+	ts = new JsUnit.TestSuite(suites[suite]);
+	ts.include("ilib-dyn-ut.js");
+	runner.addSuite(ts);
+}
+
+// dynamic compiled
+var ts;
+for (suite in suites) {
+	ts = new JsUnit.TestSuite(suites[suite]);
+	ts.include("ilib-dyn-ut-compiled.js");
+	runner.addSuite(ts);
+}
+
 runner.runTests();

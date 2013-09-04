@@ -250,7 +250,34 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
+
+	<target name="testilib.dyn.ut" description="test whether or not the ilib-dyn-ut single file needs to be rebuilt">
+		<uptodate property="ilib-dyn-ut.not.needed" targetfile="${build.src}/ilib-dyn-ut.js">
+			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
+			<srcfiles dir="${build.src}" includes="ilib-ut-inc.js"/>
+			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
+		</uptodate>
+	</target>
 	
+	<target name="assemble.dyn.unittest" depends="prepare,gen.manifest,testilibut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
+		<runassemble 
+			tgtfilename="ilib-dyn-ut.js" 
+			srcfilename="ilib-ut-inc.js" 
+			locales=""/>
+		<jscomp compilationlevel="simple" 
+			warning="verbose" 
+			debug="true"
+			output="${build.src}/ilib-dyn-ut-compiled.js"
+			description="Use the google closure compiler to compress code">
+			<externs dir="${build.src}">
+				<file name="externs.js"/>
+			</externs>
+			<sources dir="${build.src}">
+				<file name="ilib-dyn-ut.js"/>
+			</sources>
+		</jscomp>
+	</target>
+
 	<target name="testilibdemo" description="test whether or not the ilib-demo file needs to be rebuilt">
 		<uptodate property="ilib-demo.not.needed" targetfile="${build.src}/ilib-demo-compiled.js">
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
@@ -499,7 +526,7 @@ limitations under the License.
 		</checksum>
 	</target>
 
-	<target name="test.core" depends="assemble.unittest" description="run the tests">
+	<target name="test.core" depends="assemble.unittest,assemble.dyn.unittest" description="run the tests">
 		<echo>Testing the core classes</echo>
 		<exec executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
 			<arg line="testSuite.js"/>
