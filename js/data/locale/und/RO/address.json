@@ -5,15 +5,19 @@
     },
     "startAt": "end",
     "fields": [
-	 {
+
+         {
             "name": "locality",
             "line": "last",
-            "pattern": "[A-za-zÃÉZÁÇÊJXÍÓKÚWYÕÀÂÔãézáçêjxíókúwyõàâô\\s.'\"]+"
-        },
-        {
+            "pattern": "[A-zĂăÂâÎîȘșŞşȚțŢţ\\.\\-\\s' ']+"
+         },
+
+	 {
             "name": "postalCode",
-            "line": "startAtLast",
-            "pattern": "([0-9]{4}-[0-9]{3})"
-        }
+            "line": "last",
+            "pattern": "[0-9]{6}"
+         }
+	 
+       
     ]
 }

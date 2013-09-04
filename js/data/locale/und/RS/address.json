@@ -1,0 +1,39 @@
+{
+	"formats": {
+		"default": "{streetAddress}\n{locality} {postalCode} {region}\n{country}",
+		"nocountry": "{streetAddress}\n{locality} {postalCode} {region}"
+	},
+	
+	"startAt": "end",
+	"fields": [
+
+		{
+			"name": "region",
+			"line": "last",
+			"pattern": [
+				"Војводина",
+				"Косово",
+				"Централна Србија",
+			         "Vojvodina",
+				"Kosovo",
+				"Central Serbia"
+			]
+		},
+
+		{
+			"name": "postalCode",
+			"line": "last",
+			"pattern": "[0-9]{5}"
+		},
+
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "[АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя\\.\\-'\\s]+"
+		}
+		
+		
+		
+		
+	]	
+}
