@@ -32,7 +32,6 @@ process.env.TZ = "";
 process.env.LANG = "";
 process.env.LC_ALL = "";
 
-/*
 //dynamic uncompiled
 var ts;
 for (suite in suites) {
@@ -50,7 +49,6 @@ for (suite in suites) {
 	ts.include("testglue.js");
 	runner.addSuite(ts);
 }
-*/
 
 // uncompiled
 var ts;
