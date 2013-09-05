@@ -55,13 +55,13 @@
 		{
 			"name": "postalCode",
 			"line": "last",
-			"pattern": "[0-9]{6}"
+			"pattern": "([0-9]{6})$"
 		},
 
 		{
 			"name": "locality",
 			"line": "last",
-			"pattern": "[A-z\\.\\-'\\s]+"
+			"pattern": "([A-z\\.\\-']+)$"
 		}
 		
 		

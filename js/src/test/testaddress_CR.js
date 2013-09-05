@@ -126,7 +126,7 @@ function testFormatAddress() {
 		countryCode: "CO"
 	}, {locale: 'es-CO'});
 	
-	var expected = "Señor Carlos Torres, Ca 15 Av 37 # 55\nHeredia, San Rafael, San Rafael\n40501, COSTA RICA";
+	var expected = "Señor Carlos Torres, Ca 15 Av 37 # 55\nHeredia, San Rafael, San Rafael\nCOSTA RICAA";
 	var formatter = new ilib.AddressFmt({locale: 'es-CO'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -140,7 +140,7 @@ function testFormatAddressFromUS() {
 		countryCode: "CO"
 	}, {locale: 'en-US'});
 	
-	var expected = "Señor Carlos Torres, Ca 15 Av 37 # 55\nHeredia, San Rafael, San Rafael\n40501, COSTA RICA";
+	var expected = "Señor Carlos Torres, Ca 15 Av 37 # 55\nHeredia, San Rafael, San Rafael\nCOSTA RICA";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

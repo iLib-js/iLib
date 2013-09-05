@@ -31,13 +31,13 @@ function testParseAddressNormal() {
 
 
 function testParseAddressNormalNative() {
-	var parsedAddress = new ilib.Address("112/119 มณียาเพอร์เฟคมาสเตอร์พีซไทรม้า \n อำเภอเมือง นนทบุรี 11000 \n ประเทศไทย", {locale: 'th-TH'});
+	var parsedAddress = new ilib.Address("112/119 มณียาเพอร์เฟคมาสเตอร์พีซไทรม้า \nอำเภอเมือง นนทบุรี 11000 \nประเทศไทย", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("112/119 มณียาเพอร์เฟคมาสเตอร์พีซไทรม้า", parsedAddress.streetAddress);
 	assertEquals("อำเภอเมือง", parsedAddress.locality);
 	assertEquals("นนทบุรี", parsedAddress.region);
-	assertEquals("10330", parsedAddress.postalCode);
+	assertEquals("11000", parsedAddress.postalCode);
 	assertEquals("ประเทศไทย", parsedAddress.country);
 	assertEquals("TH", parsedAddress.countryCode);
 };

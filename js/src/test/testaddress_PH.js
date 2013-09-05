@@ -90,10 +90,10 @@ function testParseAddressSuperfluousWhitespace() {
 };
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan Laoag City 2900 Ilocos Norte Philippines", {locale: 'es-PH'});
+	var parsedAddress = new ilib.Address("Juan dela Cruz Rm 107 1901 Airport Road Cabungaan Laoag City 2900 Ilocos Norte Philippines", {locale: 'es-PH'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan", parsedAddress.streetAddress);
+	assertEquals("Juan dela Cruz Rm 107 1901 Airport Road Cabungaan", parsedAddress.streetAddress);
 	assertEquals("Laoag City", parsedAddress.locality);
 	assertEquals("Ilocos Norte", parsedAddress.region);
 	assertEquals("2900", parsedAddress.postalCode);

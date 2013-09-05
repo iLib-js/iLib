@@ -1,19 +1,25 @@
 {
     "formats": {
         "default": "{streetAddress}\n{region},{locality}\n{postalCode}\n{country}",
-        "nocountry": "{streetAddress}\n{locality},{region}\n{postalCode}"
+        "nocountry": "{streetAddress}\n{region},{locality}\n{postalCode}"
     },
     "startAt": "end",
     "fields": [
         {
             "name": "postalCode",
             "line": "last",
-            "pattern": "([0-9]{5})",
+            "pattern": "([0-9]{5})$",
             "matchGroup": 0
+        },
+	{
+            "name": "locality",
+            "line": "startAtLast",
+            "pattern": "(([A-Za-zÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû']+)? ?[A-Za-zÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû']+)$",
+            "matchGroup": 1
         },
         {
             "name": "region",
-            "line": "startAtFirst",
+            "line": "startAtLast",
             "pattern": [
                 "Alajuela",
                 "Cartago",
@@ -23,12 +29,7 @@
                 "Puntarenas",
                 "San José"
             ]
-        },
-        {
-            "name": "locality",
-            "line": "startAtLast",
-            "pattern": "([A-Za-zÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû\.,\s\-' ]+)",
-            "matchGroup": 0
         }
+        
     ]
 }
