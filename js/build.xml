@@ -418,10 +418,18 @@ limitations under the License.
 		<mkdir dir="${build.export}/js"/>
 		<copy todir="${build.export}/js">
 			<fileset dir="${build.src}">
+				<include name="ilib-core.js"/>
+				<include name="ilib-core-compiled.js"/>
 				<include name="ilib-standard.js"/>
 				<include name="ilib-standard-compiled.js"/>
+				<include name="ilib-full.js"/>
+				<include name="ilib-full-compiled.js"/>
+				<include name="ilib-dyn-core.js"/>
+				<include name="ilib-dyn-core-compiled.js"/>
 				<include name="ilib-dyn-standard.js"/>
 				<include name="ilib-dyn-standard-compiled.js"/>
+				<include name="ilib-dyn-full.js"/>
+				<include name="ilib-dyn-full-compiled.js"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/doc/jsdoc"/>
@@ -473,8 +481,8 @@ limitations under the License.
 	
 	<target name="dist" depends="export,doc" description="Distribute all built objects in preparation for running">
 		<zip destfile="${build.dist}/ilib-${version}.zip"
-			basedir="${build.src}"
-			includes="ilib-standard.js,ilib-standard-compiled.js"/>
+			basedir="${build.export}/js"
+			includes="ilib-*.js"/>
 		<zip destfile="${build.dist}/ilib-${version}-doc.zip"
 			basedir="${build.jsdoc}"/>
 		<zip destfile="${build.dist}/ilib-${version}-src.zip">
@@ -493,8 +501,8 @@ limitations under the License.
 				includes="jsdoc*/**"/>
 		</zip>
 		<tar destfile="${build.dist}/ilib-${version}.tgz"
-			basedir="${build.src}"
-			includes="ilib-standard.js,ilib-standard-compiled.js"
+			basedir="${build.export}/js"
+			includes="ilib-*.js"
 			compression="gzip"/>
 		<tar destfile="${build.dist}/ilib-${version}-doc.tgz"
 			basedir="${build.jsdoc}"
