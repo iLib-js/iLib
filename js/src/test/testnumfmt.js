@@ -1703,9 +1703,9 @@ function testNumFmtPercentageFormatRegular_svSE() {
     assertEquals("57 %", fmt.format(57.0));
 }
 //test cases for fi-FI
-/*function testNumFmt_fiFI() {
+function testNumFmt_fiFI() {
     var fmt = new ilib.NumFmt({
-        locale: " fi-FI",
+        locale: "fi-FI",
         maxFractionDigits: 2
     });
     
@@ -1717,8 +1717,8 @@ function testNumFmtPercentageFormatRegular_svSE() {
 function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fiFI() {
     var fmt = new ilib.NumFmt({
         type: "currency",
-        locale: " fi-FI",
-	currency: "EUR"
+        locale: "fi-FI",
+        currency: "EUR"
     });
     
     assertNotNull(fmt);
@@ -1727,14 +1727,14 @@ function testNumFmtCurrencyFormatCorrectCurrencyForLocale_fiFI() {
 }
 function testNumFmtPercentageFormatRegular_fiFI() {
     var fmt = new ilib.NumFmt({
-	locale: " fi-FI",
+    	locale: "fi-FI",
         type: "percentage"
     });
     
     assertNotNull(fmt);
     
     assertEquals("57 %", fmt.format(57.0));
-}*/
+}
 //test cases for cs-CZ
 function testNumFmt_csCZ() {
     var fmt = new ilib.NumFmt({
