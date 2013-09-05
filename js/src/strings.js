@@ -98,12 +98,18 @@ ilib.String.fromCodePoint = function (codepoint) {
 
 /**
  * Load the plural the definitions of plurals for the locale.
+ * @param {ilib.Locale|string} locale
  * @param {boolean} sync
  * @param {Object} loadParams
  * @param {function(*)|undefined} onLoad
  */
-ilib.String.loadPlurals = function (sync, loadParams, onLoad) {
-	var loc = new ilib.Locale(ilib.getLocale());
+ilib.String.loadPlurals = function (sync, locale, loadParams, onLoad) {
+	var loc;
+	if (locale) {
+		loc = (typeof(locale) === 'string') ? new ilib.Locale(locale) : locale;
+	} else {
+		loc = new ilib.Locale(ilib.getLocale());
+	}
 	var spec = loc.getLanguage();
 	if (!ilib.data["plurals_" + spec]) {
 		ilib.loadData({

@@ -89,6 +89,8 @@
  * known currencies. xxx is replaced with the requested code.
  */
 ilib.Currency = function (options) {
+	this.sync = true;
+	
 	if (options) {
 		if (options.code) {
 			this.code = options.code;

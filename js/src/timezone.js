@@ -122,7 +122,7 @@ calendar/gregoriandate.js
  * @param {Object} options Options guiding the construction of this time zone instance
  */
 ilib.TimeZone = function(options) {
-	var sync = true;
+	this.sync = true;
 	this.locale = new ilib.Locale();
 	this.isLocal = false;
 	
@@ -157,7 +157,7 @@ ilib.TimeZone = function(options) {
 		}
 		
 		if (typeof(options.sync) !== 'undefined') {
-			this.sync = (options.sync == true);
+			this.sync = options.sync;
 		}
 		
 		this.loadParams = options.loadParams;
@@ -168,7 +168,7 @@ ilib.TimeZone = function(options) {
 	
 	if (!this.id) {
 		new ilib.LocaleInfo(this.locale, {
-			sync: sync,
+			sync: this.sync,
 			onLoad: ilib.bind(this, function (li) {
 				this.id = li.getTimeZone() || "Etc/UTC";
 				this._loadtzdata();
@@ -191,7 +191,7 @@ ilib.TimeZone.prototype._loadtzdata = function () {
 		ilib.loadData({
 			object: ilib.TimeZone, 
 			locale: "-",	// locale independent 
-			name: "timezone.json", 
+			name: "timezones.json", 
 			sync: this.sync, 
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function (tzdata) {

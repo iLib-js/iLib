@@ -32,7 +32,9 @@ function newSandbox() {
 			userAgent : "Nodejs"
 		},
 		console : console,
-		require : require
+		require : require,
+		global: global,
+		process: process
 	};
 };
 
@@ -139,6 +141,8 @@ TestSuite.prototype = {
 				console: console,
 				require: require,
 				results: results,
+				process: process,
+				global: global,
 				path: this.path
 			});
 			if (this.setupCode) {

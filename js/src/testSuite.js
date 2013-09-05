@@ -27,6 +27,31 @@ var suites = [
 	"calendar/test/testSuite.js"
 ];
 
+// override the possible node environment to make the tests uniform
+process.env.TZ = "";
+process.env.LANG = "";
+process.env.LC_ALL = "";
+
+/*
+//dynamic uncompiled
+var ts;
+for (suite in suites) {
+	ts = new JsUnit.TestSuite(suites[suite]);
+	ts.include("ilib-dyn-ut.js");
+	ts.include("testglue.js");
+	runner.addSuite(ts);
+}
+
+// dynamic compiled
+var ts;
+for (suite in suites) {
+	ts = new JsUnit.TestSuite(suites[suite]);
+	ts.include("ilib-dyn-ut-compiled.js");
+	ts.include("testglue.js");
+	runner.addSuite(ts);
+}
+*/
+
 // uncompiled
 var ts;
 for (suite in suites) {
@@ -40,22 +65,6 @@ var ts;
 for (suite in suites) {
 	ts = new JsUnit.TestSuite(suites[suite]);
 	ts.include("ilib-ut-compiled.js");
-	runner.addSuite(ts);
-}
-
-// dynamic uncompiled
-var ts;
-for (suite in suites) {
-	ts = new JsUnit.TestSuite(suites[suite]);
-	ts.include("ilib-dyn-ut.js");
-	runner.addSuite(ts);
-}
-
-// dynamic compiled
-var ts;
-for (suite in suites) {
-	ts = new JsUnit.TestSuite(suites[suite]);
-	ts.include("ilib-dyn-ut-compiled.js");
 	runner.addSuite(ts);
 }
 
