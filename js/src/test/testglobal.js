@@ -127,7 +127,7 @@ function testGetLocaleNodejs1() {
 			env: {}
 		};
 	}
-	process.env.LANG = "Th-TH";
+	process.env.LANG = "th-TH";
 	
 	assertEquals("th-TH", ilib.getLocale());
 	
@@ -149,7 +149,7 @@ function testGetLocaleNodejs2() {
 			env: {}
 		};
 	}
-	process.env.LC_ALL = "Th-TH";
+	process.env.LC_ALL = "th-TH";
 	
 	assertEquals("th-TH", ilib.getLocale());
 	
