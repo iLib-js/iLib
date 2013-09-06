@@ -236,7 +236,7 @@ limitations under the License.
 		<runassemble 
 			tgtfilename="ilib-ut.js" 
 			srcfilename="ilib-ut-inc.js" 
-			locales="aa-DJ,af-NA,ak-GH,am-ET,agq-CM,asa-TZ,bas-CM,bem-ZM,ar-AE,ar-DZ,ar-EG,ar-TN,asa-TZ,as-IN,az-AZ,be-BY,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-Cyrl-BA,bs-ME,ca-FR,cs-CZ,da-DK,de-AT,de-DE,et-EE,mk-MK,el-GR,en-AU,en-CA,en-CA-Latn,en-GB,en-IE,en-IN,en-NG,en-PH,en-US,en-ZA,es-AR,es-CO,es-ES,es-MX,es-DO,es-SV,es-CR,es-GQ,es-GT,es-HN,fi-FI,fr-CA,fr-FR,he-IL,hi-IN,hu-HU,id-ID,it-IT,ja-JP,ko-KR,mm-MM,nl-NL,no-NO,pa-Arab,pl-PL,pt-BR,pt-PT,qq-QQ,ro-RO,ru-KG,ru-RU,sl-SL,sv-SE,tr-TR,uz-AF,uz-Cyrl-UZ,uz-UZ,lv-LV,lt-LT,vi-VN,zh-CN,zh-CN-Hans,zh-HK,zh-HK-Hans,zh-SG,zh-TW,zh-TW-Hant,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX,zz-ZZ,fa-AF,ff-SN,fj-FJ,fr-AD,fr-BE,fr-CH,fr-DZ,fr-LU,fr-MG,fr-SN,fr-YT,ga-IE,gl-ES,ha-NG-Latn,hi-IN,hr,hr-HR,hy-AZ,id-MY,it-CH,it-SM,ka-IR,kk-KZ-Cyrl,ko-KR,ks-IN-Arab,ku-IR,lg-UG,ln-CF,mi-CK,mn-CN,ms-MY,ms-BN,ne-IN,nl,nl-BE,nl-CW,nl-GF,nl-SR,no-BV,no-SJ,om-ET,or,os,os-RU,pa-PK-Arab,pt-AO,pt-CV,pt-GW,nb-NO,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RS,ru-KZ,ru-TM,sk-SK,so-ET,so-SO,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-ME-Latn,sr-RS-Latn,sr-RS,ss-ZA,st,st-LS,sv-FI,sw,sw-UG,ta-LK,ta-MY,ta-SG,uk-UA,ur-IN,ur-PK,uz-AF-Arab,uz-UZ-Latn,vai-LR-Latn,zh-SG-Hans,zh-MO-Hant,zh-US-Hant,zh-MY,zu,sq-AL,sq-ME,ar-DZ,ar-BH,ar-DJ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MR,ar-MA,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-AE,ar-YE,zh-SG-Hans,hr-ME,nl-BE,nl-NL,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IN,en-IE,en-KE,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SG,en-SL,en-ZA,en-LK,en-TZ,en-UG,en-US,en-ZM,fa-IR,fr,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CG,fr-CH,fr-CF,fr-CI,fr-CM,fr-DZ,fr-DJ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,es-EC,fr-RW,fr-SN,fr-TG,fr-YT,si-LK"/>
+			locales="aa-DJ,af-NA,ak-GH,am-ET,agq-CM,asa-TZ,bas-CM,bem-ZM,ar-AE,ar-DZ,ar-EG,ar-TN,asa-TZ,as-IN,az-AZ,be-BY,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-Cyrl-BA,bs-ME,ca-FR,cs-CZ,da-DK,de-AT,de-DE,et-EE,mk-MK,el-GR,en-AU,en-CA,en-CA-Latn,en-GB,en-IE,en-IN,en-NG,en-PH,en-US,en-ZA,es-AR,es-CO,es-ES,es-MX,es-DO,es-SV,es-CR,es-GQ,es-GT,es-HN,fi-FI,fr-CA,fr-FR,he-IL,hi-IN,hu-HU,id-ID,it-IT,ja-JP,ko-KR,mm-MM,nl-NL,no-NO,pa-Arab,pl-PL,pt-BR,pt-PT,qq-QQ,ro-RO,ru-KG,ru-RU,sl-SL,sv-SE,tr-TR,uz-AF,uz-Cyrl-UZ,uz-UZ,lv-LV,lt-LT,vi-VN,zh-CN,zh-CN-Hans,zh-HK,zh-HK-Hans,zh-SG,zh-TW,zh-TW-Hant,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX,zz-ZZ,fa-AF,ff-SN,fj-FJ,fr-AD,fr-BE,fr-CH,fr-DZ,fr-LU,fr-MG,fr-SN,fr-YT,ga-IE,gl-ES,ha-NG-Latn,hi-IN,hr,hr-HR,hy-AZ,id-MY,it-CH,it-SM,ka-IR,kk-KZ-Cyrl,ko-KR,ks-IN-Arab,ku-IR,lg-UG,ln-CF,mi-CK,mn-CN,ms-MY,ms-BN,ne-IN,nl,nl-BE,nl-CW,nl-GF,nl-SR,no-BV,no-SJ,om-ET,or,os,os-RU,pa-PK-Arab,pt-AO,pt-CV,pt-GW,nb-NO,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RS,ru-KZ,ru-TM,sk-SK,so-ET,so-SO,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-ME-Latn,sr-RS-Latn,sr-RS,ss-ZA,st,st-LS,sv-FI,sw,sw-UG,ta-LK,ta-MY,ta-SG,uk-UA,ur-IN,ur-PK,uz-AF-Arab,uz-UZ-Latn,vai-LR-Latn,zh-SG-Hans,zh-MO-Hant,zh-US-Hant,zh-MY,zu,sq-AL,sq-ME,ar-DZ,ar-BH,ar-DJ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MR,ar-MA,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-AE,ar-YE,zh-SG-Hans,hr-ME,nl-BE,nl-NL,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IN,en-IE,en-KE,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SG,en-SL,en-ZA,en-LK,en-TZ,en-UG,en-US,en-ZM,fa-IR,fr,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CG,fr-CH,fr-CF,fr-CI,fr-CM,fr-DZ,fr-DJ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,es-EC,fr-RW,fr-SN,fr-TG,fr-YT,si-LK,fo-FO,shi-MA-Tfng"/>
 		<!-- locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-Arab-EG,ar-DZ,ar-EG,ar-SA,ar-TN,asa-TZ,as-IN,az-AZ,be-BY,bg-BG,bm-ML,bn-IN,br-FR,bs-BA-Cyrl,bs-BA-Latn,bs-BS,bs-ME,ca-FR,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AU,en-GB,en-IN,en-Latn-CA,en-Latn-US,en-LK,en-MM,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-XX,en-ZA,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-CA,fr-CH,fr-DZ,fr-Latn-FR,fr-Latn-MA,fr-LU,fr-MG,fr-SN,fr-YT,ga-IE,gl-ES,ha-NG-Latn,he-IL,hi-IN,hr-HR,hu-HU,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-KZ-Cyrl,ko-KR,ks-IN-Arab,ku-IQ,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,mi-CK,mk-MK,mn-CN,ms-BN,ms-MY,nb-NO,ne-IN,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,os-RU,pa-Arab-PK,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KZ,ru-RU,ru-TM,shi-MA-Tfng,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-ME-Latn,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-LK,ta-MY,ta-SG,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,vai-LR-Latn,vi-VN,zh-CN-Hans,zh-HK-Hans,zh-MO-Hant,zh-MY,zh-SG-Hans,zh-TW-Hant,zh-US-Hant,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX" -->
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
@@ -535,11 +535,40 @@ limitations under the License.
 		</checksum>
 	</target>
 
-	<target name="test.core" depends="assemble.unittest,assemble.dyn.unittest" description="run the tests">
-		<echo>Testing the core classes</echo>
+	<target depends="assemble.unittest" name="test.assembled.compiled">
+		<echo>Testing the core classes in the assembled and compiled version of ilib</echo>
 		<exec executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
 			<arg line="testSuite.js"/>
+			<arg line="assembled_compiled"/>
 		</exec>
+	</target>
+
+	<target depends="assemble.unittest" name="test.assembled.uncompiled">
+		<echo>Testing the core classes in the assembled and uncompiled version of ilib</echo>
+		<exec executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+			<arg line="testSuite.js"/>
+			<arg line="assembled_uncompiled"/>
+		</exec>
+	</target>
+
+	<target depends="assemble.dyn.unittest" name="test.dynamic.compiled">
+		<echo>Testing the core classes in the dynamic and compiled version of ilib</echo>
+		<exec executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+			<arg line="testSuite.js"/>
+			<arg line="dynamic_compiled"/>
+		</exec>
+	</target>
+
+	<target depends="assemble.dyn.unittest" name="test.dynamic.uncompiled">
+		<echo>Testing the core classes in the dynamic and uncompiled version of ilib</echo>
+		<exec executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+			<arg line="testSuite.js"/>
+			<arg line="dynamic_uncompiled"/>
+		</exec>
+	</target>
+
+	<target name="test.core" depends="test.assembled.compiled,test.assembled.uncompiled,test.dynamic.compiled,test.dynamic.uncompiled" 
+			description="run the tests">
 	</target>
 
 	<target name="core.junit.report" description="Generate a report on the junit tests">

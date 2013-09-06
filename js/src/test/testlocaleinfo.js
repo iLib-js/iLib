@@ -2141,7 +2141,7 @@ function testLocaleInfoGetPercentageFormat_fo() {
 	var info = new ilib.LocaleInfo("fo");
 	assertNotNull(info);
 
-	assertEquals("{n}%", info.getPercentageFormat());
+	assertEquals("{n} %", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_fo() {
@@ -4865,7 +4865,7 @@ function testLocaleInfoGetGroupingSeparatorfor_shi_MA_Tfng() {
 	var info = new ilib.LocaleInfo("shi-MA-Tfng");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(" ", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_shi_MA_Tfng() {
@@ -4879,7 +4879,7 @@ function testLocaleInfoGetCurrencyFormat_shi_MA_Tfng() {
 	var info = new ilib.LocaleInfo("shi-MA-Tfng");
 	assertNotNull(info);
 
-	assertEquals("{s}{n}", info.getCurrencyFormats().common);
+	assertEquals("{n}{s}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_shi_MA_Tfng() {
