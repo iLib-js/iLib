@@ -32,12 +32,75 @@
  */
 ilib.NormString = function (str) {
 	ilib.NormString.baseConstructor.call(this, str);
+	
 };
 ilib.NormString.prototype = new ilib.String();
 ilib.NormString.prototype.constructor = ilib.NormString;
 ilib.NormString.baseConstructor = ilib.String;
 ilib.NormString.superClass = ilib.String.prototype;
 
+
+/**
+ * Initialize the normalized string routines statically. This
+ * is intended to be called in a dynamic-load version of ilib
+ * to load the data need to normalize strings before any instances
+ * of ilib.NormString are created.<p>
+ * 
+ * The options parameter may contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>form</i> - {string} the normalization form to load
+ * <li><i>script</i> - {string} load the normalization for this script. If the 
+ * script is given as "all" then the normalization data for all scripts
+ * is loaded at the same time
+ * <li><i>sync</i> - {boolean} whether to load the files synchronously or not
+ * <li><i>loadParams</i> - {Object} parameters to the loader function
+ * <li><i>onLoad</i> - {function()} a function to call when the 
+ * files are done being loaded
+ * </ul>
+ * 
+ * @param {Object} options an object containing properties that govern 
+ * how to initialize the data
+ */
+ilib.NormString.init = function(options) {
+	if (!ilib._load || typeof(ilib._load) !== 'function') {
+		// can't do anything
+		return;
+	}
+	var form = "nkfc";
+	var script = "all";
+	var sync = true;
+	var onLoad = undefined;
+	if (options) {
+		form = options.form || "nkfc";
+		script = options.script || "all";
+		sync = typeof(options.sync) !== 'undefined' ? options.sync : true;
+		onLoad = typeof(options.onLoad) === 'function' ? options.onLoad : undefined;
+	}
+	var formDependencies = {
+		"nfd": ["nfd"],
+		"nfc": ["nfc", "nfd"],
+		"nfkd": ["nfkd", "nfd"],
+		"nfkc": ["nfkd", "nfd", "nfc"]
+	};
+	var files = ["norm.ccc.json"];
+	for (var f in formDependencies[form]) {
+		files.push(f + "/" + script + ".json");
+	}
+	
+	ilib._load(files, sync, options.loadParams, function(arr) {
+		ilib.data.norm.ccc = arr[0];
+		for (var i = 0; i < arr.length; i++) {
+			if (typeof(arr[i]) !== 'undefined') {
+				ilib.data.norm[formDependencies[form][i-1]] = arr[i];
+			}
+		}
+		
+		if (onLoad) {
+			onLoad(arr);
+		}
+	});
+};
 
 /**
  * @private
