@@ -1,5 +1,5 @@
 /*
- * testaddress_VE.js - test the address parsing and formatting routines
+ * testaddress_RS.js - test the address parsing and formatting routines
  * 
  * Copyright © 2013, JEDLSoft
  *
@@ -18,7 +18,7 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевића 56 Нови Београд\nБеоград 11070 Централна Србија\nСрбија", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевића 56 Нови Београд\n11070 Београд\nЦентрална Србија\nСрбија", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Булевар Арсенија Чарнојевића 56 Нови Београд", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressNormal() {
 };
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевића 56 Нови Београд\nБеоград Централна Србија\nСрбија", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевића 56 Нови Београд\nБеоград\nЦентрална Србија\nСрбија", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Булевар Арсенија Чарнојевића 56 Нови Београд", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressNoZip() {
 };
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевића 56 Нови Београд\nБеоград 11070 Централна Србија", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевића 56 Нови Београд\n11070 Београд\nЦентрална Србија", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Булевар Арсенија Чарнојевића 56 Нови Београд", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressNoCountry() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевића\n56 Нови Београд\nБеоград 11070 Централна Србија\nСрбија", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевића\n56 Нови Београд\n11070 Београд\nЦентрална Србија\nСрбија", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Булевар Арсенија Чарнојевића, 56 Нови Београд", parsedAddress.streetAddress);
@@ -66,7 +66,7 @@ function testParseAddressManyLines() {
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевића , 56 Нови Београд , Београд , 11070 , Централна Србија , Србија", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевића , 56 Нови Београд , 11070 , Београд , Централна Србија , Србија", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Булевар Арсенија Чарнојевића, 56 Нови Београд", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressOneLine() {
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевић\n\n\t56 Нови Београд\n\n\nБеоград\t\t\r11070\r\r\rЦентрална Србија\t\t\rСрбија", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевић\n\n\t56 Нови Београд\n\n\r11070\r\r\nБеоград\t\t\rЦентрална Србија\t\t\rСрбија", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Булевар Арсенија Чарнојевић, 56 Нови Београд", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressSuperfluousWhitespace() {
 };
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевића 56 Нови Београд Београд 11070 Централна Србија Србија", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Булевар Арсенија Чарнојевића 56 Нови Београд 11070 Београд Централна Србија Србија", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Булевар Арсенија Чарнојевића 56 Нови Београд", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressNoDelimiters() {
 };
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Bulevar Arsenija Carnojevica 56 New Belgrade\nBelgrade 11070 Central Serbia\nSerbia", {locale: 'sr-Latn-RS'});
+	var parsedAddress = new ilib.Address("Bulevar Arsenija Carnojevica 56 New Belgrade\n11070 Belgrade\nCentral Serbia\nSerbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Bulevar Arsenija Carnojevica 56 New Belgrade", parsedAddress.streetAddress);
@@ -123,7 +123,7 @@ function testFormatAddress() {
 		countryCode: "RS"
 	}, {locale: 'sr-Latn-RS'});
 	
-	var expected = "Булевар Арсенија Чарнојевића 56 Нови Београд\nБеоград 11070 Централна Србија\nСрбија";
+	var expected = "Булевар Арсенија Чарнојевића 56 Нови Београд\n11070 Београд\nЦентрална Србија\nСрбија";
 	var formatter = new ilib.AddressFmt({locale: 'sr-Latn-RS'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -138,7 +138,7 @@ function testFormatAddressFromUS() {
 		countryCode: "RS"
 	}, {locale: 'en-US'});
 	
-	var expected = "Булевар Арсенија Чарнојевића 56 Нови Београд\nБеоград 11070 Централна Србија\nСрбија";
+	var expected = "Булевар Арсенија Чарнојевића 56 Нови Београд\n11070 Београд\nЦентрална Србија\nСрбија";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

@@ -1,5 +1,5 @@
 /*
- * testaddress_ZM.js - test the address parsing and formatting routines
+ * testaddress_PT.js - test the address parsing and formatting routines
  * 
  * Copyright © 2013, JEDLSoft
  *

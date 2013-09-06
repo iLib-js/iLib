@@ -1,5 +1,5 @@
 /*
- * testaddress_PY.js - test the address parsing and formatting routines
+ * testaddress_UA.js - test the address parsing and formatting routines
  * 
  * Copyright © 2013, JEDLSoft
  *
@@ -18,7 +18,7 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ 03127\nУКРАЇНА", {locale: 'uk-UA'});
+	var parsedAddress = new ilib.Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\n03127\nУКРАЇНА", {locale: 'uk-UA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressNoZip() {
 };
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ 03127", {locale: 'uk-UA'});
+	var parsedAddress = new ilib.Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\n03127", {locale: 'uk-UA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 };
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ 03127\nУКРАЇНА", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\n03127\nУКРАЇНА", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -123,7 +123,7 @@ function testFormatAddress() {
 		countryCode: "UA"
 	}, {locale: 'uk-UA'});
 	
-	var expected = "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ 03127\nУКРАЇНА";
+	var expected = "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\n03127\nУКРАЇНА";
 	var formatter = new ilib.AddressFmt({locale: 'uk-UA'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -137,7 +137,7 @@ function testFormatAddressFromUS() {
 		countryCode: "UA"
 	}, {locale: 'en-US'});
 	
-	var expected = "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ 03127\nУКРАЇНА";
+	var expected = "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\n03127\nУКРАЇНА";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

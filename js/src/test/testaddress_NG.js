@@ -18,7 +18,7 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283 PLATEAU\nNIGERIA", {locale: 'en-NG'});
+	var parsedAddress = new ilib.Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU\nNIGERIA", {locale: 'en-NG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ben Tal 1234 Bauchu Road, Yelwa", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressNoZip() {
 };
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283 PLATEAU", {locale: 'en-NG'});
+	var parsedAddress = new ilib.Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU", {locale: 'en-NG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ben Tal 1234 Bauchu Road, Yelwa", parsedAddress.streetAddress);
@@ -54,7 +54,7 @@ function testParseAddressNoCountry() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("Mr. Ben Tal\n1234 Bauchu Road\nYelwa\nJOS 930283 PLATEAU\nNIGERIA", {locale: 'en-NG'});
+	var parsedAddress = new ilib.Address("Mr. Ben Tal\n1234 Bauchu Road\nYelwa\nJOS 930283\nPLATEAU\nNIGERIA", {locale: 'en-NG'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. Ben Tal, 1234 Bauchu Road, Yelwa", parsedAddress.streetAddress);
@@ -78,7 +78,7 @@ function testParseAddressOneLine() {
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Mr. Ben Tal\n\n\t1234 Bauchu RoadS\n\n\nYelwa\n\t\nJOS\t\t\r930283\r\r\rPLATEAU\t\t\rNIGERIA", {locale: 'en-NG'});
+	var parsedAddress = new ilib.Address("Mr. Ben Tal\n\n\t1234 Bauchu RoadS\n\n\nYelwa\n\t\nJOS\t\t\r930283\r\r\n\rPLATEAU\t\t\rNIGERIA", {locale: 'en-NG'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Mr. Ben Tal, 1234 Bauchu RoadS, Yelwa", parsedAddress.streetAddress);
@@ -90,7 +90,7 @@ function testParseAddressSuperfluousWhitespace() {
 };
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa JOS 930283 PLATEAU NIGERIA", {locale: 'en-NG'});
+	var parsedAddress = new ilib.Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa JOS 930283\nPLATEAU NIGERIA", {locale: 'en-NG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ben Tal 1234 Bauchu Road, Yelwa", parsedAddress.streetAddress);
@@ -102,7 +102,7 @@ function testParseAddressNoDelimiters() {
 };
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283 PLATEAU\nNIGERIA", {locale: 'en-NG'});
+	var parsedAddress = new ilib.Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU\nNIGERIA", {locale: 'en-NG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Ben Tal 1234 Bauchu Road, Yelwa", parsedAddress.streetAddress);
@@ -123,7 +123,7 @@ function testFormatAddress() {
 		countryCode: "NG"
 	}, {locale: 'en-NG'});
 	
-	var expected = "Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283 PLATEAU\nNIGERIA";
+	var expected = "Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU\nNIGERIA";
 	var formatter = new ilib.AddressFmt({locale: 'en-NG'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -138,7 +138,7 @@ function testFormatAddressFromUS() {
 		countryCode: "NG"
 	}, {locale: 'en-US'});
 	
-	var expected = "Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283 PLATEAU\nNIGERIA";
+	var expected = "Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU\nNIGERIA";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

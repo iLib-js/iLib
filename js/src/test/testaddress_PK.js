@@ -42,7 +42,7 @@ function testParseAddressNoZip() {
 };
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Mr. Nasratullah Khan House No 17-B Street No 30 Sector F-7/1\n44000 ISLAMABAD", {locale: 'en-PK'});
+	var parsedAddress = new ilib.Address("Mr. Nasratullah Khan House No 17-B Street No 30 Sector F-7/1\nISLAMABAD 44000", {locale: 'en-PK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Nasratullah Khan House No 17-B Street No 30 Sector F-7/1", parsedAddress.streetAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tMr. Nasratullah Khan\t\t\rHouse No 17-B\t\t\rStreet No 30\n\nSector F-7/1\n\n\n44000\n\nISLAMABAD\n\t PAKISTAN\n\n\n", {locale: 'en-PK'});
+	var parsedAddress = new ilib.Address("\t\t\tMr. Nasratullah Khan\t\t\rHouse No 17-B\t\t\rStreet No 30\n\nSector F-7/1\n\n\nISLAMABAD\n\t\n44000\n\n\tPAKISTAN\n\n\n", {locale: 'en-PK'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Nasratullah Khan House No 17-B Street No 30, Sector F-7/1", parsedAddress.streetAddress);

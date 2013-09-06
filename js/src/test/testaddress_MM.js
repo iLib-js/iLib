@@ -18,7 +18,7 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON 11181\n\nMyanmar", {locale: 'en-MM'});
+	var parsedAddress = new ilib.Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\n\nMyanmar", {locale: 'en-MM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Posts and Telecommunications No 43 Bo Aung Gyaw Street", parsedAddress.streetAddress);
@@ -42,7 +42,7 @@ function testParseAddressNoZip() {
 };
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON 11181", {locale: 'en-MM'});
+	var parsedAddress = new ilib.Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181", {locale: 'en-MM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Posts and Telecommunications No 43 Bo Aung Gyaw Street", parsedAddress.streetAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 };
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street YANGON 11181 Myanmar", {locale: 'en-MM'});
+	var parsedAddress = new ilib.Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street YANGON, 11181 Myanmar", {locale: 'en-MM'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Posts and Telecommunications No 43 Bo Aung Gyaw Street", parsedAddress.streetAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 };
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON 11181\nMyanmar", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\nMyanmar", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -123,7 +123,7 @@ function testFormatAddress() {
 		countryCode: "MM"
 	}, {locale: 'en-MM'});
 	
-	var expected = "Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON 11181\nMyanmar";
+	var expected = "Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\nMyanmar";
 	var formatter = new ilib.AddressFmt({locale: 'en-MM'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -137,7 +137,7 @@ function testFormatAddressFromUS() {
 		countryCode: "MM"
 	}, {locale: 'en-US'});
 	
-	var expected = "Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON 11181\nMyanmar";
+	var expected = "Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\nMyanmar";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
