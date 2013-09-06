@@ -8,8 +8,10 @@
 	 {
             "name": "locality",
             "line": "last",
-            "pattern": "[A-za-zÃÉZÁÇÊJXÍÓKÚWYÕÀÂÔãézáçêjxíókúwyõàâô\\s.'\"]+"
+	    "pattern": "(([A-za-zÃÉZÁÇÊJXÍÓKÚWYÕÀÂÔãézáçêjxíókúwyõàâô\\.\\-']+)? ?[A-za-zÃÉZÁÇÊJXÍÓKÚWYÕÀÂÔãézáçêjxíókúwyõàâô\\.\\-']+)$",
+	    		"matchGroup": 1
         },
+	
         {
             "name": "postalCode",
             "line": "startAtLast",

@@ -1,6 +1,6 @@
 {
 	"formats": {
-		"default": "{streetAddress}\n{locality} {region}\n{country}",
+		"default": "{streetAddress}\n{locality}\n{region}\n{country}",
 		"nocountry": "{streetAddress}\n{locality} {region}"
 	},
 	

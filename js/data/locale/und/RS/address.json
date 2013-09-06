@@ -1,7 +1,7 @@
 {
 	"formats": {
-		"default": "{streetAddress}\n{locality} {postalCode} {region}\n{country}",
-		"nocountry": "{streetAddress}\n{locality} {postalCode} {region}"
+		"default": "{streetAddress}\n{postalCode} {locality}\n{region}\n{country}",
+		"nocountry": "{streetAddress}\n{postalCode} {locality}\n{region}"
 	},
 	
 	"startAt": "end",
@@ -19,18 +19,20 @@
 				"Central Serbia"
 			]
 		},
+		
+		{
+			"name": "locality",
+			"line": "last",
+			"pattern": "[АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя\\.\\-'\\s]+"
+		},
 
 		{
 			"name": "postalCode",
 			"line": "last",
 			"pattern": "[0-9]{5}"
-		},
-
-		{
-			"name": "locality",
-			"line": "last",
-			"pattern": "[АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя\\.\\-'\\s]+"
 		}
+
+		
 		
 		
 		

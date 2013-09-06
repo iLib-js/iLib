@@ -1,7 +1,7 @@
 {
 	"formats": {
 		"default": "{streetAddress}\n{postalCode} {locality}\n{country}",
-		"nocountry": "{streetAddress}\n {postalCode} {locality}"
+		"nocountry": "{streetAddress}\n{postalCode} {locality}"
 	},
 	
 	"startAt": "end",
@@ -10,7 +10,7 @@
 		{
 			"name": "locality",
 			"line": "last",
-			"pattern": "(([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-']+)? [A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-']+)$",
+			"pattern": "(([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-']+)? ?[A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-']+)$",
 	    		"matchGroup": 1
 		},
 		

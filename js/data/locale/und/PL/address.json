@@ -8,8 +8,9 @@
 	"fields": [
 		{ 
 			"name": "locality",
-			"pattern": "[AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻaąbcćdeęfghijklłmnńoóprsśtuwyzźż\\.\\-']+",
-			"line": "last"
+			"line": "last",
+                        "pattern": "(([AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻaąbcćdeęfghijklłmnńoóprsśtuwyzźż\\.\\-']+)? ?[AĄBCĆDEĘFGHIJKLŁMNŃOÓPRSŚTUWYZŹŻaąbcćdeęfghijklłmnńoóprsśtuwyzźż\\.\\-']+)$",
+	    		"matchGroup": 1
 		},
 		{
 			"name": "postalCode",

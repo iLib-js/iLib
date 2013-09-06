@@ -8,7 +8,7 @@
 	"fields": [
 		{ 
 			"name": "locality",
-			 "pattern": "(([A-z\\.\\-']+)? [A-z\\.\\-']+)$",
+			 "pattern": "(([A-z\\.\\-']+)? ?[A-z\\.\\-']+)$",
 	                 "matchGroup": 1
 		},
 		{

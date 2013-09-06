@@ -1,7 +1,7 @@
 {
 	"formats": {
-		"default": "{streetAddress}\n{locality} {postalCode} {region}\n{country}",
-		"nocountry": "{streetAddress}\n{locality} {postalCode} {region}"
+		"default": "{streetAddress}\n{locality} {postalCode}\n{region}\n{country}",
+		"nocountry": "{streetAddress}\n{locality} {postalCode}\n{region}"
 	},
 	
 	"startAt": "end",

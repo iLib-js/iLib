@@ -1,7 +1,7 @@
 {
 	"formats": {
-		"default": "{streetAddress}\n{locality} {postalCode} {region}\n{country}",
-		"nocountry": "{streetAddress}\n{locality} {postalCode} {region}"
+		"default": "{streetAddress}\n{postalCode} {locality} {region}\n{country}",
+		"nocountry": "{streetAddress}\n{postalCode} {locality} {region}"
 	},
 	
 	"startAt": "end",
@@ -93,12 +93,6 @@
 					"Metro Manila"
 			]
 		},
-		
-		{
-			"name": "postalCode",
-			"line": "last",
-			"pattern": "([0-9]{4})$"
-		},
 
 
 		{
@@ -106,7 +100,16 @@
 			"line": "last",
 			"pattern": "(([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\-]+)? ?[A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\-]+)$",
 			"matchGroup": 1
+		},
+		
+		{
+			"name": "postalCode",
+			"line": "last",
+			"pattern": "([0-9]{4})$"
 		}
+
+
+		
 
 		
 	]

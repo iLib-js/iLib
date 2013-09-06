@@ -1,28 +1,22 @@
 {
 	"formats": {
-		"default": "{postalCode}\n{streetAddress}\n{locality}\n{country}",
-		"nocountry": "{postalCode}\n{streetAddress}\n{locality}"
+		"default": "{postalCode} {locality}\n{streetAddress}\n{country}",
+		"nocountry": "{postalCode} {locality}\n{streetAddress}"
 	},
 	
 	"startAt": "end",
 	"fields": [
-
-
-		{
-			"name": "locality",
-			"line": "last",
-			"pattern": "[АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїњЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя\\.\\-\\s']+"
+                  {
+			"name": "postalCode",
+			"line": "startAtFirst",
+			"pattern": "[0-9]{6}"
 		},
 
 		{
-			"name": "postalCode",
-			"line": "last",
-			"pattern": "[0-9]{4}"
-		}
-		
-		
-		
-		
+			"name": "locality",
+			"line": "first",
+			"pattern": "[АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїњЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя\\.\\-\\s']+"
+		}	
 		
 	]	
 }
