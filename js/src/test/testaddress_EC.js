@@ -1,0 +1,146 @@
+/*
+ * testaddress.js - test the address parsing and formatting routines
+ * 
+ * Copyright © 2013, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the SKANDERBORGecific language governing permissions and
+ * limitations under the License.
+ */
+
+
+
+function testParseAddressNormal() {
+	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("QUITO", parsedAddress.locality);
+	assertEquals("P0133V", parsedAddress.postalCode);
+	assertEquals("Ecuador", parsedAddress.country);
+	assertEquals("EC", parsedAddress.countryCode);
+};
+
+function testParseAddressNoZip() {
+	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, QUITO, Ecuador", {locale: 'es-EC'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("QUITO", parsedAddress.locality);
+	assertEquals("Ecuador", parsedAddress.country);
+	assertEquals("EC", parsedAddress.countryCode);
+	assertUndefined(parsedAddress.postalCode);
+};
+
+function testParseAddressManyLines() {
+	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito\nP0133V, QUITO\nEcuador", {locale: 'es-EC'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("QUITO", parsedAddress.locality);
+	assertEquals("P0133V", parsedAddress.postalCode);
+	assertEquals("Ecuador", parsedAddress.country);
+	assertEquals("EC", parsedAddress.countryCode);
+};
+
+function testParseAddressOneLine() {
+	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("QUITO", parsedAddress.locality);
+	assertEquals("P0133V", parsedAddress.postalCode);
+	assertEquals("Ecuador", parsedAddress.country);
+	assertEquals("EC", parsedAddress.countryCode);
+};
+
+function testParseAddressSuperfluousWhitespace() {
+	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito  \n\t\n P0133V, QUITO\t\n\n Ecuador  \n  \t\t\t", {locale: 'es-EC'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("QUITO", parsedAddress.locality);
+	assertEquals("P0133V", parsedAddress.postalCode);
+	assertEquals("Ecuador", parsedAddress.country);
+	assertEquals("EC", parsedAddress.countryCode);
+};
+
+function testParseAddressNoDelimiters() {
+	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín Empresa Nacional de Correos Succursal No 21– Quito  P0133V QUITO Ecuador", {locale: 'es-EC'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("QUITO", parsedAddress.locality);
+	assertEquals("P0133V", parsedAddress.postalCode);
+	assertEquals("Ecuador", parsedAddress.country);
+	assertEquals("EC", parsedAddress.countryCode);
+};
+
+function testParseAddressSpecialChars() {
+	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("QUITO", parsedAddress.locality);
+	assertEquals("P0133V", parsedAddress.postalCode);
+	assertEquals("Ecuador", parsedAddress.country);
+	assertEquals("EC", parsedAddress.countryCode);
+};
+
+function testParseAddressFromUS() {
+	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'en-US'});
+	
+	// the country name is in English because this address is for a contact in a US database
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.region);
+	assertEquals("QUITO", parsedAddress.locality);
+	assertEquals("P0133V", parsedAddress.postalCode);
+	assertEquals("Ecuador", parsedAddress.country);
+	assertEquals("EC", parsedAddress.countryCode);
+};
+
+function testFormatAddress() {
+	var parsedAddress = new ilib.Address({
+		streetAddress: "Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito",
+		locality: "QUITO",
+		postalCode: "P0133V",
+		country: "Ecuador",
+		countryCode: "EC"
+	}, {locale: 'es-EC'});
+	
+	var expected = "Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito\nP0133V\nQUITO\nEcuador";
+	var formatter = new ilib.AddressFmt({locale: 'es-EC'});
+	assertEquals(expected, formatter.format(parsedAddress));
+};
+
+function testFormatAddressFromUS() {
+	var parsedAddress = new ilib.Address({
+		streetAddress: "Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito",
+		locality: "QUITO",
+		postalCode: "P0133V",
+		country: "Ecuador",
+		countryCode: "EC"
+	}, {locale: 'es-EC'});
+	
+	var expected = "Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito\nP0133V\nQUITO\nEcuador";
+	var formatter = new ilib.AddressFmt({locale: 'es-EC'});
+	assertEquals(expected, formatter.format(parsedAddress));
+};

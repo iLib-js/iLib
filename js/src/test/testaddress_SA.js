@@ -17,18 +17,6 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Mr. Abdullah Nassir P.O. Box 15501\nMAKKAH 21454\nSAUDI ARABIA", {locale: 'ar-SA'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("Mr. Abdullah Nassir P.O. Box 15501", parsedAddress.streetAddress);
-	assertEquals("MAKKAH", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("21454", parsedAddress.postalCode);
-	assertEquals("SAUDI ARABIA", parsedAddress.country);
-	assertEquals("SA", parsedAddress.countryCode);
-};
-
 
 function testParseAddressNormalNative() {
 	var parsedAddress = new ilib.Address("السيد عبد الله ناصر\nمكة المكرمة ۲۱۴۵۴\nالمملكة العربية السعودية", {locale: 'ar-SA'});
@@ -44,18 +32,6 @@ function testParseAddressNormalNative() {
 
 
 
-function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("Mr. Abdullah Nassir P.O. Box 15501\nMAKKAH\nSAUDI ARABIA", {locale: 'ar-SA'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("Mr. Abdullah Nassir P.O. Box 15501", parsedAddress.streetAddress);
-	assertEquals("MAKKAH", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("SAUDI ARABIA", parsedAddress.country);
-	assertEquals("SA", parsedAddress.countryCode);
-	assertUndefined(parsedAddress.postalCode);
-};
-
 function testParseAddressNoZipNative() {
 	var parsedAddress = new ilib.Address("السيد عبد الله ناصر\nمكة المكرمة\nالمملكة العربية السعودية", {locale: 'ar-SA'});
 	
@@ -68,17 +44,6 @@ function testParseAddressNoZipNative() {
 	assertEquals("SA", parsedAddress.countryCode);
 };
 
-function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Mr. Abdullah Nassir P.O. Box 15501\nMAKKAH 21454", {locale: 'ar-SA'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("Mr. Abdullah Nassir P.O. Box 15501", parsedAddress.streetAddress);
-	assertEquals("MAKKAH", parsedAddress.locality);
-	assertUndefined(parsedAddress.postalCode);
-	assertEquals("21454", parsedAddress.postalCode);
-	assertUndefined(parsedAddress.country);
-	assertEquals("KW", parsedAddress.countryCode);
-};
 
 function testParseAddressNoCountrynative() {
 	var parsedAddress = new ilib.Address("السيد عبد الله ناصر\nمكة المكرمة ۲۱۴۵۴", {locale: 'ar-SA'});
@@ -93,26 +58,26 @@ function testParseAddressNoCountrynative() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("Mr. Abdullah Nassir\nP.O. Box\n15501\nMAKKAH\n21454\nSAUDI ARABIA\n\n", {locale: 'ar-SA'});
+	var parsedAddress = new ilib.Address("السيد عبد الله ناصر\nمكة المكرمة ۲۱۴۵۴\nالمملكة العربية السعودية", {locale: 'ar-SA'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Mr. Abdullah Nassir, P.O. Box, 15501", parsedAddress.streetAddress);
-	assertEquals("MAKKAH", parsedAddress.locality);
+	assertEquals("السيد عبد الله ناصر", parsedAddress.streetAddress);
+	assertEquals("مكة المكرمة", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("21454", parsedAddress.postalCode);
-	assertEquals("SAUDI ARABIA", parsedAddress.country);
+	assertEquals("۲۱۴۵۴", parsedAddress.postalCode);
+	assertEquals("المملكة العربية السعودية", parsedAddress.country);
 	assertEquals("SA", parsedAddress.countryCode);
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("Mr. Abdullah Nassir, P.O. Box, 15501, MAKKAH, 21454, SAUDI ARABIA", {locale: 'ar-SA'});
+	var parsedAddress = new ilib.Address("السيد عبد الله ناصر,مكة المكرمة ۲۱۴۵۴,المملكة العربية السعودية", {locale: 'ar-SA'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Mr. Abdullah Nassir, P.O. Box, 15501", parsedAddress.streetAddress);
-	assertEquals("MAKKAH", parsedAddress.locality);
+	assertEquals("السيد عبد الله ناصر", parsedAddress.streetAddress);
+	assertEquals("مكة المكرمة", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("21454", parsedAddress.postalCode);
-	assertEquals("SAUDI ARABIA", parsedAddress.country);
+	assertEquals("۲۱۴۵۴", parsedAddress.postalCode);
+	assertEquals("المملكة العربية السعودية", parsedAddress.country);
 	assertEquals("SA", parsedAddress.countryCode);
 };
 

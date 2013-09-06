@@ -25,7 +25,7 @@ function testParseAddressNormal() {
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx", parsedAddress.streetAddress);
 	assertEquals("Jakarta",parsedAddress.region);
-	assertEquals("Jakarta Selatan",parsedAddress.locality);
+	assertEquals("Jakarta Selatan", parsedAddress.locality);
 	assertEquals("10110", parsedAddress.postalCode);
 	assertEquals("INDONESIA", parsedAddress.country);
 	assertEquals("ID", parsedAddress.countryCode);
@@ -37,7 +37,7 @@ function testParseAddressNoZip() {
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
-	assertEquals("Jakarta Selatan",parsedAddress.locality);
+	assertEquals("Jakarta Selatan", parsedAddress.locality);
 	assertEquals("INDONESIA", parsedAddress.country);
 	assertEquals("ID", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
@@ -49,7 +49,7 @@ function testParseAddressManyLines() {
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
-	assertEquals("Jakarta Selatan",parsedAddress.locality);
+	assertEquals("Jakarta Selatan", parsedAddress.locality);
 	assertEquals("10110", parsedAddress.postalCode);
 	assertEquals("INDONESIA", parsedAddress.country);
 	assertEquals("ID", parsedAddress.countryCode);
@@ -61,7 +61,7 @@ function testParseAddressOneLine() {
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
-	assertEquals("Jakarta Selatan",parsedAddress.locality);
+	assertEquals("Jakarta Selatan", parsedAddress.locality);
 	assertEquals("10110",parsedAddress.postalCode);
 	assertEquals("INDONESIA", parsedAddress.country);
 	assertEquals("ID", parsedAddress.countryCode);
@@ -73,7 +73,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
-	assertEquals("Jakarta Selatan",parsedAddress.locality);
+	assertEquals("Jakarta Selatan", parsedAddress.locality);
 	assertEquals("10110", parsedAddress.postalCode);
 	assertEquals("INDONESIA", parsedAddress.country);
 	assertEquals("ID", parsedAddress.countryCode);
@@ -85,7 +85,7 @@ function testParseAddressNoDelimiters() {
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gedung Balaikota DKI Jakarta Jalan Medan Merdeka Selatan No. xx", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
-	assertEquals("Jakarta Selatan",parsedAddress.locality);
+	assertEquals("Jakarta Selatan", parsedAddress.locality);
 	assertEquals("10110", parsedAddress.postalCode);
 	assertEquals("INDONESIA", parsedAddress.country);
 	assertEquals("ID", parsedAddress.countryCode);
@@ -111,7 +111,7 @@ function testParseAddressFromUS() {
 	assertNotUndefined(parsedAddress);
 	assertEquals("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
-	assertEquals("Jakarta Selatan",parsedAddress.locality);
+	assertEquals("Jakarta Selatan", parsedAddress.locality);
 	assertEquals("10110", parsedAddress.postalCode);
 	assertEquals("INDONESIA", parsedAddress.country);
 	assertEquals("ID", parsedAddress.countryCode);
