@@ -5814,14 +5814,14 @@ function testLocaleInfoRoundingMode_ta_SG() {
 function testLocaleInfoGetDecimalSeparatorfor_th() {
 	var info = new ilib.LocaleInfo("th-TH");
 	assertNotNull(info);
-	assertEquals(",", info.getDecimalSeparator());
+	assertEquals(".", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_th() {
 	var info = new ilib.LocaleInfo("th-TH");
 	assertNotNull(info);
 
-	assertEquals(".", info.getGroupingSeparator());
+	assertEquals(",", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_th() {
@@ -6538,29 +6538,81 @@ function testLocaleInfoGetPercentageSymbol2() {
 
 function mockLoader(paths, sync, params, callback) {
 	var data = [];
-	data.push(ilib.data.localeinfo); // for the generic, shared stuff
+	// for the generic, shared stuff
+	data.push(ilib.data.localeinfo || {
+	    "calendar": "gregorian",
+	    "clock": "24",
+	    "currency": "USD",
+	    "firstDayOfWeek": 1,
+	    "numfmt": {
+	        "script": "Latn",
+	        "decimalChar": ",",
+	        "groupChar": ".",
+	        "prigroupSize": 3,
+	        "pctFmt": "{n}%",
+	        "pctChar": "%",
+	        "roundingMode": "halfdown",
+	        "exponential": "e",
+	        "currencyFormats": {
+	            "common": "{s}{n}",
+	            "commonNegative": "{s}-{n}"
+	        }
+	    },
+	    "timezone": "Etc/UTC",
+	    "units": "metric"
+	});
 	paths.shift();
 	paths.forEach(function (path) {
-		data.push((path.indexOf('zzz') === -1) ? undefined : {
-			"clock": "24",
-			"units": "metric",
-			"calendar": "hebrew",
-			"firstDayOfWeek": 4,
-			"currency": "JPY",
-			"timezone": "Asia/Tokyo",
-			"numfmt": {
-				"decimalChar": ".",
-				"groupChar": ",",
-				"groupSize": 4,
-				"pctFmt": "{n} %",
-				"pctChar": "%",
-				"currencyFormats": {
-					"common": "common {s} {n}",
-					"iso": "iso {s} {n}"
-				}
-			},
-			"locale": "zzz-ZZ"
-		});
+		if (path.search("fr/localeinfo.json$") !== -1) {
+			data.push({
+			    "language.name": "French",
+			    "numfmt": {
+			        "groupChar": " ",
+			        "currencyFormats": {
+			            "common": "{n} {s}",
+			            "commonNegative": "({n} {s})"
+			        },
+			        "pctFmt": "{n} %"
+			    },
+			    "paperSizes": {
+			        "regular": "A4",
+			        "photo": "4x6"
+			    },
+			    "scripts": [
+			        "Latn"
+			    ],
+			    "locale": "fr"
+			});
+		} else if (path.search("FR/localeinfo.json$") !== -1) {
+			data.push({
+			    "currency": "EUR",
+			    "firstDayOfWeek": 1,
+			    "region.name": "France",
+			    "timezone": "Europe/Paris",
+			    "locale": "FR"
+			});
+		} else {
+			data.push((path.indexOf('zzz') === -1) ? undefined : {
+				"clock": "24",
+				"units": "metric",
+				"calendar": "hebrew",
+				"firstDayOfWeek": 4,
+				"currency": "JPY",
+				"timezone": "Asia/Tokyo",
+				"numfmt": {
+					"decimalChar": ".",
+					"groupChar": ",",
+					"groupSize": 4,
+					"pctFmt": "{n} %",
+					"pctChar": "%",
+					"currencyFormats": {
+						"common": "common {s} {n}",
+						"iso": "iso {s} {n}"
+					}
+				},
+				"locale": "zzz-ZZ"
+			});
+		}
 	});
 	if (typeof (callback) !== 'undefined') {
 		callback.call(this, data);
@@ -6569,6 +6621,11 @@ function mockLoader(paths, sync, params, callback) {
 };
 
 function testLocaleInfoLoadMissingDataAsynch() {
+	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var callbackCalled = false;
 	ilib.setLoaderCallback(mockLoader);
 	ilib.LocaleInfo.cache = {}; // empty the cache
@@ -6585,9 +6642,15 @@ function testLocaleInfoLoadMissingDataAsynch() {
 	});
 	assertNotNull(info);
 	assertTrue(callbackCalled);
+	ilib.setLoaderCallback(undefined);
 }
 
 function testLocaleInfoLoadMissingDataSync() {
+	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.LocaleInfo.cache = {}; // empty the cache
 	ilib.setLoaderCallback(mockLoader);
 	var info = new ilib.LocaleInfo("zzz-ZX", {
@@ -6600,9 +6663,15 @@ function testLocaleInfoLoadMissingDataSync() {
 	assertEquals("iso {s} {n}", info.getCurrencyFormats().iso);
 	assertEquals(4, info.getFirstDayOfWeek());
 	assertEquals("%", info.getPercentageSymbol());
+	ilib.setLoaderCallback(undefined);
 }
 
 function testLocaleInfoLoadMissingDataAsynchNoData() {
+	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var callbackCalled = false;
 	ilib.LocaleInfo.cache = {}; // empty the cache
 	ilib.setLoaderCallback(mockLoader);
@@ -6619,9 +6688,15 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
 	});
 	assertNotNull(info);
 	assertTrue(callbackCalled);
+	ilib.setLoaderCallback(undefined);
 }
 
 function testLocaleInfoLoadMissingDataSyncNoData() {
+	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.LocaleInfo.cache = {}; // empty the cache
 	ilib.setLoaderCallback(mockLoader);
 	var li = new ilib.LocaleInfo("qq-QQ", {
@@ -6633,9 +6708,15 @@ function testLocaleInfoLoadMissingDataSyncNoData() {
 	assertEquals("{s}{n}", li.getCurrencyFormats().common);
 	assertEquals(1, li.getFirstDayOfWeek());
 	assertEquals("%", li.getPercentageSymbol());
+	ilib.setLoaderCallback(undefined);
 }
 
 function testLocaleInfoLoadPreassembledDataAsynch() {
+	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var callbackCalled = false;
 	ilib.LocaleInfo.cache = {}; // empty the cache
 	ilib.setLoaderCallback(mockLoader);
@@ -6653,6 +6734,7 @@ function testLocaleInfoLoadPreassembledDataAsynch() {
 	});
 	assertNotNull(info);
 	assertTrue(callbackCalled);
+	ilib.setLoaderCallback(undefined);
 }
 
 // locale with no script

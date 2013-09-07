@@ -1092,6 +1092,11 @@ function mockLoader (paths, sync, params, callback) {
 }
 
 function testTZGetTimeZoneForLocaleUnknownWithLoader() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.setLoaderCallback(mockLoader);
 	ilib.LocaleInfo.cache = {}; // clear the locale info cache
 	ilib.TimeZone.cache = {}; // clear the cache
@@ -1102,6 +1107,11 @@ function testTZGetTimeZoneForLocaleUnknownWithLoader() {
 }
 
 function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.setLoaderCallback(mockLoader);
 	ilib.LocaleInfo.cache = {}; // clear the locale info cache
 	ilib.TimeZone.cache = {}; // clear the cache
@@ -1117,6 +1127,11 @@ function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
 }
 
 function testTZGetTimeZoneForLocaleWithLoaderNoData() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.setLoaderCallback(mockLoader);
 	ilib.LocaleInfo.cache = {}; // clear the locale info cache
     var tz = new ilib.TimeZone({locale: "ww-WW"});
@@ -1126,6 +1141,11 @@ function testTZGetTimeZoneForLocaleWithLoaderNoData() {
 }
 
 function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.setLoaderCallback(mockLoader);
 	ilib.LocaleInfo.cache = {}; // clear the locale info cache
     new ilib.TimeZone({

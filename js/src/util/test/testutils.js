@@ -894,6 +894,11 @@ function mockLoader(paths, sync, params, callback) {
 }
 
 function testLoadDataCorrectType() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var obj = {};
 	
 	ilib.setLoaderCallback(mockLoader);
@@ -910,9 +915,15 @@ function testLoadDataCorrectType() {
 		}
 	});
 	ilib._load = undefined;
+    ilib.setLoaderCallback(undefined);
 }
 
 function testLoadDataCorrectItems() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var obj = {};
 	
 	ilib.setLoaderCallback(mockLoader);
@@ -936,6 +947,11 @@ function testLoadDataCorrectItems() {
 }
 
 function testLoadDataWithLocale() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var obj = {};
 	
 	ilib.setLoaderCallback(mockLoader);
@@ -959,6 +975,11 @@ function testLoadDataWithLocale() {
 }
 
 function testLoadDataWithLocaleMissingParts() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var obj = {};
 	
 	ilib.setLoaderCallback(mockLoader);
@@ -982,6 +1003,11 @@ function testLoadDataWithLocaleMissingParts() {
 }
 
 function testLoadDataDefaultLocale() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var obj = {};
 	
 	ilib.setLoaderCallback(mockLoader);
@@ -1005,6 +1031,11 @@ function testLoadDataDefaultLocale() {
 
 
 function testLoadDataNonJson() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var obj = {};
 	
 	ilib.setLoaderCallback(mockLoader);
@@ -1026,6 +1057,11 @@ function testLoadDataNonJson() {
 }
 
 function testLoadDataCached() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var obj = {};
 	
 	ilib.setLoaderCallback(mockLoader);
@@ -1049,6 +1085,11 @@ function testLoadDataCached() {
 }
 
 function testLoadDataNoCache() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.setLoaderCallback(mockLoader);
 
 	ilib.loadData({
@@ -1070,6 +1111,11 @@ function testLoadDataNoCache() {
 }
 
 function testLoadDataAsynch() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var obj = {};
 	
 	ilib.setLoaderCallback(mockLoader);
@@ -1093,6 +1139,11 @@ function testLoadDataAsynch() {
 }
 
 function testLoadDataDefaults() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.setLoaderCallback(mockLoader);
 
 	ilib.loadData({
