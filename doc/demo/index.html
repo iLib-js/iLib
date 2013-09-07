@@ -58,15 +58,17 @@ $(function() {
     });
 
     $.each(locales, function(i,locale) {
-    	var name = res.getString(locale);
-    	console.log("locale is " + locale + " and name is " + name);
-    	if (name.toString() === locale) {
-    		var li = new ilib.LocaleInfo(locale);
-    		name = li.getLanguageName();
-    		if (li.getRegionName()) {
-    			name += " (" + li.getRegionName() + ")"; 
-    		}
-    	}
+    	var li = new ilib.LocaleInfo(locale);
+		name = li.getLanguageName();
+        var script = li.getLocale().getScript();
+        if (script) {
+            var si = new ilib.ScriptInfo(script);
+            name += " - " + si.getName(); 
+        }
+		if (li.getRegionName()) {
+			name += " - " + li.getRegionName(); 
+		}
+        console.log("locale is " + locale + " and name is " + name);
         localeMap.push({id: locale, name: name});
     });
     

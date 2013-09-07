@@ -330,7 +330,7 @@ ilib.data.ilibTutorial = {
 	"pt-TL": "Portuguese (Timor-Leste)",
 	"rm-CH": "Romance (Switzerland)",
 	"ro-MD": "Romanian (Moldova)",
-	"ro-RO": "Romanian (Romanian)",
+	"ro-RO": "Romanian (Romania)",
 	"ro-RS": "Romanian (Serbia)",
 	"ru-BY": "Russian (Belarus)",
 	"ru-KG": "Russian (Kyrgyzstan)",
