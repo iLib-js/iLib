@@ -1,7 +1,7 @@
 /*
  * ctype.isgraph.js - Character type is graph char
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,4 +31,16 @@
  */
 ilib.CType.isGraph = function (ch) {
 	return typeof(ch) !== 'undefined' && ch.length > 0 && !ilib.CType.isSpace(ch) && !ilib.CType.isCntrl(ch);
+};
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isGraph._init = function (sync, loadParams, onLoad) {
+	ilib.CType.isSpace._init(sync, loadParams, function () {
+		ilib.CType.isCntrl._init(sync, loadParams, onLoad);
+	});
 };

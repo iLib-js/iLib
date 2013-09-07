@@ -35,26 +35,26 @@ function toHexString(string) {
 
 function testNFD() {
     normtests.forEach(function (val, index, array) {
-    	var source = new ilib.String(val[0]);
+    	var source = new ilib.NormString(val[0]);
     	//console.log(index + ": Testing NFD normalization for " + source + " (" + toHexString(source) + ")");
     	
     	var nfd = source.normalize("nfd");
-    	assertEquals("Test NFD for " + source + " (" + toHexString(source) + ")", toHexString(new ilib.String(val[2])), toHexString(nfd));
+    	assertEquals("Test NFD for " + source + " (" + toHexString(source) + ")", toHexString(new ilib.NormString(val[2])), toHexString(nfd));
     });
 }
 
 function testNFKD() {
     normtests.forEach(function (val, index, array) {
-    	var source = new ilib.String(val[0]);
+    	var source = new ilib.NormString(val[0]);
     	//console.log(index + ": Testing NFKD normalization for " + source + " (" + toHexString(source) + ")");
     	
-    	assertEquals("Test NFKD for " + source + " (" + toHexString(source) + ")", toHexString(new ilib.String(val[4])), toHexString(source.normalize("nfkd")));
+    	assertEquals("Test NFKD for " + source + " (" + toHexString(source) + ")", toHexString(new ilib.NormString(val[4])), toHexString(source.normalize("nfkd")));
     });
 }
 
 function testNFC() {
     normtests.forEach(function (val, index, array) {
-    	var source = new ilib.String(val[0]);
+    	var source = new ilib.NormString(val[0]);
     	// console.log(index + ": Testing NFC normalization for " + source + " (" + toHexString(source) + ")");
     	
     	assertEquals("Test NFC for " + source + " ("+ toHexString(source) + ")", toHexString(val[1]), toHexString(source.normalize("nfc")));
@@ -63,7 +63,7 @@ function testNFC() {
 
 function testNFKC() {
     normtests.forEach(function (val, index, array) {
-    	var source = new ilib.String(val[0]);
+    	var source = new ilib.NormString(val[0]);
     	// console.log(index + ": Testing NFKC normalization for " + source + " (" + toHexString(source) + ")");
     	
     	assertEquals("Test NFKC for " + source + " ("+ toHexString(source) + ")", toHexString(val[3]), toHexString(source.normalize("nfkc")));

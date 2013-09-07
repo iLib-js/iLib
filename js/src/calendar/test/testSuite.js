@@ -21,7 +21,6 @@ var cli = require('../testcli/runner.js');
 
 function newSuite(path, include) {
 	var suite = new cli.TestSuite("calendar/test/" + path);
-	suite.include(include);
 	return suite;
 }
 
@@ -39,14 +38,8 @@ function suite() {
 	    "testhebrewdate.js"
     ];
     
-    // uncompiled
     suites.forEach(function (path) {
-    	s.addSuite(newSuite(path, "ilib-ut.js"));
-    });
-    
-    // compiled
-    suites.forEach(function (path) {
-    	s.addSuite(newSuite(path, "ilib-ut-compiled.js"));
+    	s.addSuite(newSuite(path));
     });
     
     return s;

@@ -633,7 +633,7 @@ exports.makeDirs = function makeDirs(path) {
 	
 	for (var i = 1; i <= parts.length; i++) {
 		var p = parts.slice(0, i).join("/");
-		if (!fs.existsSync(p)) {
+		if (p && p.length > 0 && !fs.existsSync(p)) {
 			fs.mkdirSync(p);
 		}
 	}

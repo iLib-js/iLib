@@ -977,6 +977,11 @@ function mockLoader(paths, sync, params, callback) {
 };
 
 function testResBundleConstructAsynchDynamic() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var onloadcalled = false;
 	ilib.ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
@@ -997,9 +1002,15 @@ function testResBundleConstructAsynchDynamic() {
     
     assertNotUndefined(rb);
     assertTrue(onloadcalled);
+    ilib.setLoaderCallback(undefined);
 }
 
 function testResBundleConstructSynchDynamic() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ilib.ResBundle({
@@ -1012,9 +1023,15 @@ function testResBundleConstructSynchDynamic() {
     assertEquals("erste String", rb.getString("first string").toString());
     assertEquals("zweite String", rb.getString("second string").toString());
     assertEquals("dritte String", rb.getString("third string").toString());
+    ilib.setLoaderCallback(undefined);
 }
 
 function testResBundleConstructAsynchDynamicDefaultName() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var onloadcalled = false;
 	ilib.ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
@@ -1034,9 +1051,15 @@ function testResBundleConstructAsynchDynamicDefaultName() {
     
     assertNotUndefined(rb);
     assertTrue(onloadcalled);
+    ilib.setLoaderCallback(undefined);
 }
 
 function testResBundleConstructSynchDynamicDefaultName() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ilib.ResBundle({
@@ -1048,9 +1071,15 @@ function testResBundleConstructSynchDynamicDefaultName() {
     assertEquals("première corde", rb.getString("first string").toString());
     assertEquals("deuxième collier", rb.getString("second string").toString());
     assertEquals("troisième corde", rb.getString("third string").toString());
+    ilib.setLoaderCallback(undefined);
 }
 
 function testResBundleConstructAsynchDynamicNoStrings() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	var onloadcalled = false;
 	ilib.ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
@@ -1071,9 +1100,15 @@ function testResBundleConstructAsynchDynamicNoStrings() {
     
     assertNotUndefined(rb);
     assertTrue(onloadcalled);
+    ilib.setLoaderCallback(undefined);
 }
 
 function testResBundleConstructSynchDynamicNoStrings() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.ResBundle.cache = {};
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ilib.ResBundle({
@@ -1086,6 +1121,7 @@ function testResBundleConstructSynchDynamicNoStrings() {
     assertEquals("first string", rb.getString("first string").toString());
     assertEquals("second string", rb.getString("second string").toString());
     assertEquals("third string", rb.getString("third string").toString());
+    ilib.setLoaderCallback(undefined);
 }
 
 

@@ -81,7 +81,7 @@ function testGetTimeZoneNodejs() {
 	
 	assertEquals("America/Phoenix", ilib.getTimeZone());
 	
-	process.env.TZ = undefined;
+	process.env.TZ = "";
 }
 
 function testGetTimeZoneRhino() {
@@ -127,11 +127,11 @@ function testGetLocaleNodejs1() {
 			env: {}
 		};
 	}
-	process.env.LANG = "Th-TH";
+	process.env.LANG = "th-TH";
 	
 	assertEquals("th-TH", ilib.getLocale());
 	
-	process.env.LANG = undefined;
+	process.env.LANG = "";
 }
 
 function testGetLocaleNodejs2() {
@@ -149,11 +149,11 @@ function testGetLocaleNodejs2() {
 			env: {}
 		};
 	}
-	process.env.LC_ALL = "Th-TH";
+	process.env.LC_ALL = "th-TH";
 	
 	assertEquals("th-TH", ilib.getLocale());
 	
-	process.env.LC_ALL = undefined;
+	process.env.LC_ALL = "";
 }
 
 function testGetLocaleRhino() {

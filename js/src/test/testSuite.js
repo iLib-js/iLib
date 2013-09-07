@@ -21,7 +21,7 @@ var cli = require('../testcli/runner.js');
 
 function newSuite(path, include) {
 	var suite = new cli.TestSuite("test/" + path);
-	suite.include(include);
+	suite.include("test/normdata.js");
 	suite.include("test/testUtils.js");
 	return suite;
 };
@@ -177,17 +177,13 @@ function suite() {
 	    "testaddress_NL.js",
 	    "testaddress_NZ.js",
 	    "testaddress_SG.js",
-	    //"testaddress_TW.js"
+	    "testaddress_TW.js",
+	    "testlocalematch.js",
+	    "testnorm.js"
 	];
 
-    // uncompiled
     suites.forEach(function (path) {
-    	s.addSuite(newSuite(path, "ilib-ut.js"));
-    });
-    
-    // compiled
-    suites.forEach(function (path) {
-    	s.addSuite(newSuite(path, "ilib-ut-compiled.js"));
+    	s.addSuite(newSuite(path));
     });
     
     return s;

@@ -24,7 +24,8 @@ util/utils.js
 ctype.isalpha.js 
 ctype.isideo.js 
 ctype.ispunct.js 
-ctype.isspace.js 
+ctype.isspace.js
+util/jsutils.js 
 */
 
 // !data name
@@ -163,25 +164,119 @@ ilib.Name = function(name, options) {
 
 	this.locale = this.locale || new ilib.Locale();
 	
-	ilib.loadData({
-		object: ilib.Name, 
-		locale: this.locale, 
-		name: "name.json", 
-		sync: sync, 
-		loadParams: this.loadParams, 
-		callback: ilib.bind(this, function (info) {
-			if (!info) {
-				info = ilib.data.name;
-				var spec = this.locale.getSpec().replace(/-/g, "_");
-				ilib.Name.cache[spec] = info;
-			}
-			this.info = info;
-			this._init(name);
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		})
-	});
+	ilib.CType.isAlpha._init(sync, this.loadParams, /** @type {function()|undefined} */ ilib.bind(this, function() {
+		ilib.CType.isIdeo._init(sync, this.loadParams, /** @type {function()|undefined} */ ilib.bind(this, function() {
+			ilib.CType.isPunct._init(sync, this.loadParams, /** @type {function()|undefined} */ ilib.bind(this, function() {
+				ilib.CType.isSpace._init(sync, this.loadParams, /** @type {function()|undefined} */ ilib.bind(this, function() {
+					ilib.loadData({
+						object: ilib.Name, 
+						locale: this.locale, 
+						name: "name.json", 
+						sync: sync, 
+						loadParams: this.loadParams, 
+						callback: ilib.bind(this, function (info) {
+							if (!info) {
+								info = ilib.Name.defaultInfo;
+								var spec = this.locale.getSpec().replace(/-/g, "_");
+								ilib.Name.cache[spec] = info;
+							}
+							this.info = info;
+							this._init(name);
+							if (options && typeof(options.onLoad) === 'function') {
+								options.onLoad(this);
+							}
+						})
+					});					
+				}));
+			}));
+		}));
+	}));
+};
+
+ilib.Name.defaultInfo = ilib.data.name ||  {
+	"components": {
+		"short": {
+			"g": 1,
+			"f": 1
+		},
+		"medium": {
+			"g": 1,
+			"m": 1,
+			"f": 1
+		},
+		"long": {
+			"p": 1,
+			"g": 1,
+			"m": 1,
+			"f": 1
+		},
+		"full": {
+			"p": 1,
+			"g": 1,
+			"m": 1,
+			"f": 1,
+			"s": 1
+		}
+	},
+	"format": "{prefix} {givenName} {middleName} {familyName}{suffix}",
+	"sortByHeadWord": false,
+	"nameStyle": "western",
+	"conjunctions": {
+		"and1": "and",
+		"and2": "and",
+		"or1": "or",
+		"or2": "or"
+	},
+	"auxillaries": {
+		"von": 1,
+		"von der": 1,
+		"von den": 1,
+		"van": 1,
+		"van der": 1,
+        "van de": 1,
+        "van den": 1,
+        "de": 1,
+        "di": 1,
+	    "de": 1,
+		"la": 1,
+		"lo": 1,
+        "des": 1,
+        "le": 1,
+        "les": 1,
+		"du": 1,
+        "de la": 1,
+        "del": 1,
+        "de los": 1,
+        "de las": 1
+	},
+	"prefixes": [
+		"doctor",
+		"dr",
+		"mr",
+		"mrs",
+		"ms",
+		"mister",
+		"madame",
+		"madamoiselle",
+		"miss",
+		"monsieur",
+		"señor",
+        "señora",
+        "señorita"
+	],
+	"suffixes": [
+		",",
+		"junior",
+		"jr",
+		"senior",
+		"sr",
+		"i",
+		"ii",
+		"iii",
+		"esq",
+		"phd",
+		"md"
+	]
 };
 
 /**
@@ -260,10 +355,10 @@ ilib.Name.prototype = {
     		
     		if (this.info.nameStyle === "asian") {
     			asianName = !ilib.Name._isEuroName(name);
-    			info = asianName ? this.info : ilib.data.name;
+    			info = asianName ? this.info : ilib.Name.defaultInfo;
     		} else {
     			asianName = ilib.Name._isAsianName(name);
-	    		info = asianName ? ilib.data.name : this.info;
+	    		info = asianName ? ilib.Name.defaultInfo : this.info;
     		}
     		
     		if (asianName) {

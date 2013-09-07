@@ -1,7 +1,7 @@
 /*
  * ctype.iscntrl.js - Character type is control character
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,4 +31,14 @@
  */
 ilib.CType.isCntrl = function (ch) {
 	return ilib.CType._inRange(ch, 'Cc', ilib.data.ctype_c);
+};
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isCntrl._init = function (sync, loadParams, onLoad) {
+	ilib.CType._load("ctype_c", sync, loadParams, onLoad);
 };

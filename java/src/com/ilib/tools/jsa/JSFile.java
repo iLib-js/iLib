@@ -238,10 +238,10 @@ public class JSFile
     protected void findAll(ArrayList<File> includePath, ArrayList<IlibLocale> locales, String baseName, HashMap<String, AssemblyFile> allFiles)
     		throws Exception
     {
-    	locate(includePath, baseName, baseName + ".json", allFiles);
-		
-		if ( locales != null ) {
-        	for ( int i = 0; i < locales.size(); i++ ) {
+    	if ( locales != null && locales.size() > 0 ) {
+    	    locate(includePath, baseName, baseName + ".json", allFiles);
+            
+            for ( int i = 0; i < locales.size(); i++ ) {
         		findAllForLocale(includePath, baseName, locales.get(i), allFiles);
         	}
         }

@@ -17,19 +17,13 @@
  */
 
 /*
- * ilib.js - metafile that includes all other js files
+ * ilib-standard-inc.js - metafile that includes a reasonable set of other js files
  */
 
 /* !depends
 ilibglobal.js
 daterangefmt.js
 date.js
-calendar/hebrewdate.js
-calendar/hebrew.js
-calendar/islamic.js
-calendar/islamicdate.js
-calendar/julian.js
-calendar/juliandate.js
 calendar/gregorian.js
 calendar/gregoriandate.js
 numprs.js
@@ -42,27 +36,6 @@ locale.js
 strings.js
 durfmt.js
 resources.js
-ctype.js
 localeinfo.js
 daterangefmt.js
-ctype.isalnum.js
-ctype.isalpha.js
-ctype.isascii.js
-ctype.isblank.js
-ctype.iscntrl.js
-ctype.isdigit.js
-ctype.isgraph.js
-ctype.isideo.js
-ctype.islower.js
-ctype.isprint.js
-ctype.ispunct.js
-ctype.isspace.js
-ctype.isupper.js
-ctype.isxdigit.js
-scriptinfo.js
-nameprs.js
-namefmt.js
-addressprs.js
-addressfmt.js
-collate.js
 */

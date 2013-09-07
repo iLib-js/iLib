@@ -1,7 +1,7 @@
 /*
- * util/utils.js - Misc utility routines
+ * util/utils.js - Core utility routines
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -61,73 +61,6 @@ ilib.bind = function(scope, method/*, bound arguments*/){
 		return func;
 	}
 	return undefined;
-};
-
-/**
- * Binary search a sorted array for a particular target value.
- * If the exact value is not found, it returns the index of the smallest 
- * entry that is greater than the given target value.<p> 
- * 
- * The comparator
- * parameter is a function that knows how to compare elements of the 
- * array and the target. The function should return a value greater than 0
- * if the array element is greater than the target, a value less than 0 if
- * the array element is less than the target, and 0 if the array element 
- * and the target are equivalent.<p>
- * 
- * If the comparator function is not specified, this function assumes
- * the array and the target are numeric values and should be compared 
- * as such.<p>
- * 
- * Depends directive: !depends utils.js
- * 
- * 
- * @param {*} target element being sought 
- * @param {Array} arr the array being searched
- * @param {?function(*,*)=} comparator a comparator that is appropriate for comparing two entries
- * in the array  
- * @return the index of the array into which the value would fit if 
- * inserted, or -1 if given array is not an array or the target is not 
- * a number
- */
-ilib.bsearch = function(target, arr, comparator) {
-	if (typeof(arr) === 'undefined' || !arr || typeof(target) === 'undefined') {
-		return -1;
-	}
-	
-	var high = arr.length - 1,
-		low = 0,
-		mid = 0,
-		value,
-		cmp = comparator || ilib.bsearch.numbers;
-	
-	while (low <= high) {
-		mid = Math.floor((high+low)/2);
-		value = cmp(arr[mid], target);
-		if (value > 0) {
-			high = mid - 1;
-		} else if (value < 0) {
-			low = mid + 1;
-		} else {
-			return mid;
-		}
-	}
-	
-	return low;
-};
-
-/**
- * @private
- * Returns whether or not the given element is greater than, less than,
- * or equal to the given target.<p>
- * 
- * Depends directive: !depends utils.js
- * 
- * @param {number} element the element being tested
- * @param {number} target the target being sought
- */
-ilib.bsearch.numbers = function(element, target) {
-	return element - target;
 };
 
 /**
@@ -463,123 +396,6 @@ ilib.isEmpty = function (obj) {
 	return true;
 };
 
-
-/**
- * Perform a shallow copy of the source object to the target object. This only 
- * copies the assignments of the source properties to the target properties, 
- * but not recursively from there.<p>
- * 
- * Depends directive: !depends utils.js
- * 
- * @param {Object} source the source object to copy properties from
- * @param {Object} target the target object to copy properties into
- */
-ilib.shallowCopy = function (source, target) {
-	var prop = undefined;
-	if (source && target) {
-		for (prop in source) {
-			if (prop !== undefined && source[prop]) {
-				target[prop] = source[prop];
-			}
-		}
-	}
-};
-
-/**
- * Return the sign of the given number. If the sign is negative, this function
- * returns -1. If the sign is positive or zero, this function returns 1.
- * @param {number} num the number to test
- * @return {number} -1 if the number is negative, and 1 otherwise
- */
-ilib.signum = function (num) {
-	var n = num;
-	if (typeof(num) === 'string') {
-		n = parseInt(num, 10);
-	} else if (typeof(num) !== 'number') {
-		return 1;
-	}
-	return (n < 0) ? -1 : 1;
-};
-
-
-/**
- * @private
- */
-ilib._roundFnc = {
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	floor: function (num) {
-		return Math.floor(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	ceiling: function (num) {
-		return Math.ceil(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	down: function (num) {
-		return (num < 0) ? Math.ceil(num) : Math.floor(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	up: function (num) {
-		return (num < 0) ? Math.floor(num) : Math.ceil(num);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	halfup: function (num) {
-		return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	halfdown: function (num) {
-		return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	halfeven: function (num) {
-		return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	},
-	
-	/**
-	 * @private
-	 * @param {number} num number to round
-	 * @return {number} rounded number
-	 */
-	halfodd: function (num) {
-		return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
-	}
-};
-
-
 /**
  * Find locale data or load it in. If the data with the given name is preassembled, it will
  * find the data in ilib.data. If the data is not preassembled but there is a loader function,
@@ -641,7 +457,7 @@ ilib.loadData = function(params) {
 		object.cache = {};
 	}
 
-	var spec = locale.getSpec().replace(/-/g, '_');
+	var spec = locale.getSpec().replace(/-/g, '_') || "root";
 	if (!object || typeof(object.cache[spec]) === 'undefined') {
 		var basename = name.substring(0,name.lastIndexOf("."));
 		var data = ilib.mergeLocData(basename, locale);
@@ -660,7 +476,7 @@ ilib.loadData = function(params) {
 			
 			ilib._load(files, sync, loadParams, ilib.bind(this, function(arr) {
 				if (type === "json") {
-					data = {};
+					data = ilib.data[basename] || {};
 					for (var i = 0; i < arr.length; i++) {
 						if (typeof(arr[i]) !== 'undefined') {
 							data = ilib.merge(data, arr[i]);
@@ -689,28 +505,4 @@ ilib.loadData = function(params) {
 	} else {
 		callback(object.cache[spec]);
 	}
-};
-
-/**
- * @static
- * 
- * Map a string to the given set of alternate characters. If the target set
- * does not contain a particular character in the input string, then that
- * character will be copied to the output unmapped.
- * 
- * @param {string} str a string to map to an alternate set of characters
- * @param {Array.<string>|Object} map a mapping to alternate characters
- * @return {string} the source string where each character is mapped to alternate characters
- */
-ilib.mapString = function (str, map) {
-	var mapped = "";
-	if (map && str) {
-		for (var i = 0; i < str.length; i++) {
-			var c = str.charAt(i); // TODO use a char iterator?
-			mapped += map[c] || c; 
-		}
-	} else {
-		mapped = str;
-	}
-	return mapped;
 };

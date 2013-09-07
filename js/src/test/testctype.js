@@ -17,6 +17,23 @@
  * limitations under the License.
  */
 
+function setUp() {
+	ilib.CType.isAlnum._init(true);	
+	ilib.CType.isAlpha._init(true);
+	ilib.CType.isAscii._init(true);
+	ilib.CType.isBlank._init(true);
+	ilib.CType.isCntrl._init(true);
+	ilib.CType.isDigit._init(true);
+	ilib.CType.isGraph._init(true);
+	ilib.CType.isIdeo._init(true);
+	ilib.CType.isLower._init(true);
+	ilib.CType.isPunct._init(true);
+	ilib.CType.isScript._init(true);
+	ilib.CType.isSpace._init(true);
+	ilib.CType.isUpper._init(true);
+	ilib.CType.isXdigit._init(true);
+}
+
 function testIsAlnumTrue() {
     assertTrue(ilib.CType.isAlnum('a'));
     assertTrue(ilib.CType.isAlnum('m'));

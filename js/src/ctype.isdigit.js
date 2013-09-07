@@ -1,7 +1,7 @@
 /*
  * ctype.isdigit.js - Character type is digit
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,4 +33,14 @@
  */
 ilib.CType.isDigit = function (ch) {
 	return ilib.CType._inRange(ch, 'digit', ilib.data.ctype);
+};
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isDigit._init = function (sync, loadParams, onLoad) {
+	ilib.CType._init(sync, loadParams, onLoad);
 };

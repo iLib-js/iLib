@@ -20,9 +20,7 @@
 var cli = require('../testcli/runner.js');
 
 function newSuite(path, include) {
-	var suite = new cli.TestSuite("util/test/" + path);
-	suite.include(include);
-	return suite;
+	return new cli.TestSuite("util/test/" + path);
 };
 
 function suite() {
@@ -32,14 +30,8 @@ function suite() {
 	    "testutils.js"
 	];
 
-    // uncompiled
     suites.forEach(function (path) {
-    	s.addSuite(newSuite(path, "ilib-ut.js"));
-    });
-    
-    // compiled
-    suites.forEach(function (path) {
-    	s.addSuite(newSuite(path, "ilib-ut-compiled.js"));
+    	s.addSuite(newSuite(path));
     });
     
     return s;

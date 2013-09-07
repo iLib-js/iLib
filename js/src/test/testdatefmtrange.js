@@ -218,6 +218,11 @@ function mockLoader(paths, sync, params, callback) {
 }
 
 function testDateRngFmtDynamicLoadSync() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.DateFmt.cache = {};
 	ilib.LocaleInfo.cache = {};
 	ilib.setLoaderCallback(mockLoader);
@@ -249,6 +254,11 @@ function testDateRngFmtDynamicLoadSync() {
 }
 
 function testDateRngFmtDynamicLoadSyncCached() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.setLoaderCallback(mockLoader);
 	
     var fmt = new ilib.DateRngFmt({
@@ -278,6 +288,11 @@ function testDateRngFmtDynamicLoadSyncCached() {
 }
 
 function testDateRngFmtDynamicLoadAsync() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.DateFmt.cache = {};
 	ilib.LocaleInfo.cache = {};
 	ilib.setLoaderCallback(mockLoader);
@@ -311,6 +326,11 @@ function testDateRngFmtDynamicLoadAsync() {
 }
 
 function testDateRngFmtDynamicLoadAsyncCached() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.setLoaderCallback(mockLoader);
 
 	var start = new ilib.Date.GregDate({

@@ -17,12 +17,73 @@
  * limitations under the License.
  */
 
+var util = require("util");
+
 var JsUnit = require("./testcli/runner.js");
 
 var runner = new JsUnit.TestRunner("../..");
 
-runner.addSuite(new JsUnit.TestSuite("util/test/testSuite.js"));
-runner.addSuite(new JsUnit.TestSuite("test/testSuite.js"));
-runner.addSuite(new JsUnit.TestSuite("calendar/test/testSuite.js"));
+var suites = [
+	"util/test/testSuite.js",
+	"test/testSuite.js",
+	"calendar/test/testSuite.js"
+];
+
+// override the possible node environment to make the tests uniform
+process.env.TZ = "";
+process.env.LANG = "";
+process.env.LC_ALL = "";
+
+var functions = {
+	dynamic_uncompiled: function dynamic_uncompiled() {
+		var ts;
+		for (suite in suites) {
+			ts = new JsUnit.TestSuite(suites[suite]);
+			ts.include("ilib-dyn-ut.js");
+			ts.include("testglue.js");
+			runner.addSuite(ts);
+		}
+	},
+	
+	dynamic_compiled: function dynamic_compiled() {
+		var ts;
+		for (suite in suites) {
+			ts = new JsUnit.TestSuite(suites[suite]);
+			ts.include("ilib-dyn-ut-compiled.js");
+			ts.include("testglue.js");
+			runner.addSuite(ts);
+		}
+	},
+	
+	assembled_uncompiled: function assembled_uncompiled() {
+		var ts;
+		for (suite in suites) {
+			ts = new JsUnit.TestSuite(suites[suite]);
+			ts.include("ilib-ut.js");
+			runner.addSuite(ts);
+		}
+	},
+	
+	assembled_compiled: function assembled_compiled() {
+		var ts;
+		for (suite in suites) {
+			ts = new JsUnit.TestSuite(suites[suite]);
+			ts.include("ilib-ut-compiled.js");
+			runner.addSuite(ts);
+		}
+	}
+};
+
+if (process.argv.length > 2) {
+	util.print("Only running test " + process.argv[2] + "\n");
+	functions[process.argv[2]]();
+} else {
+	// do all of them
+	util.print("Running all tests\n");
+	functions.assembled_compiled();
+	functions.assembled_uncompiled();
+	functions.dynamic_compiled();
+	functions.dynamic_uncompiled();
+}
 
 runner.runTests();

@@ -392,3 +392,15 @@ function testLocaleM49RegionCodeGetSpec() {
     
     assertEquals("en-001", loc.getSpec());
 }
+
+function testLocaleNoLocale() {
+    var loc = new ilib.Locale("-");
+    
+    assertNotNull(loc);
+    
+    assertEquals("", loc.getSpec());
+    assertUndefined(loc.getLanguage());
+    assertUndefined(loc.getRegion());
+    assertUndefined(loc.getScript());
+    assertUndefined(loc.getVariant());
+}

@@ -17,7 +17,14 @@
  * limitations under the License.
  */
 
-/* !depends date.js calendar/islamic.js util/utils.js */
+/* !depends 
+date.js 
+calendar/islamic.js 
+util/utils.js 
+util/search.js
+localeinfo.js
+julianday.js
+*/
 
 /**
  * @class

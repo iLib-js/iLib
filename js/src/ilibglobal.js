@@ -32,8 +32,9 @@ ilib.getVersion = function () {
     return "2.0";
 };
 
-/*
+/**
  * Place where resources and such are eventually assigned.
+ * @dict
  */
 ilib.data = {
     norm: {
@@ -118,24 +119,33 @@ ilib.getLocale = function () {
 						(typeof(navigator.systemLanguage) !== 'undefined' ?
 							navigator.systemLanguage :
 							undefined));
-				if (lang) {
+				if (typeof(lang) !== 'undefined' && lang) {
 					// for some reason, MS uses lower case region tags
 					ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
 				}
 			}
 		} else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.locales) !== 'undefined') {
 			// webOS
-			ilib.locale = PalmSystem.locales.UI;
+			if (typeof(PalmSystem.locales.UI) != 'undefined' && PalmSystem.locales.UI.length > 0) {
+				ilib.locale = PalmSystem.locales.UI;
+			}
 		} else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
 			// running under rhino
-			ilib.locale = environment.user.language + '-' + environment.user.country;
+			if (typeof(environment.user.language) === 'string' && environment.user.language.length > 0) {
+				ilib.locale = environment.user.language;
+				if (typeof(environment.user.country) === 'string' && environment.user.country.length > 0) {
+					ilib.locale += '-' + environment.user.country;
+				}
+			}
 		} else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
 			// running under nodejs
 			var lang = process.env.LANG || process.env.LC_ALL;
 			// the LANG variable on unix is in the form "lang_REGION.CHARSET"
 			// where language and region are the correct ISO codes separated by
 			// an underscore. This translate it back to the BCP-47 form.
-			ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
+			if (lang && lang !== 'undefined') {
+				ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
+			}
 		}
 			 
 		ilib.locale = ilib.locale || 'en-US';
@@ -176,16 +186,24 @@ ilib.getTimeZone = function() {
 	if (typeof(ilib.tz) === 'undefined') {
 		if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
 			// running in a browser
-			ilib.tz = navigator.timezone;
-		} else	if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
+			if (navigator.timezone.length > 0) {
+				ilib.tz = navigator.timezone;
+			}
+		} else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
 			// running in webkit on webOS
-			ilib.tz = PalmSystem.timezone;
+			if (PalmSystem.timezone.length > 0) {
+				ilib.tz = PalmSystem.timezone;
+			}
 		} else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
 			// running under rhino
-			ilib.tz = environment.user.timezone;
+			if (typeof(environment.user.timezone) !== 'undefined' && environment.user.timezone.length > 0) {
+				ilib.tz = environment.user.timezone;
+			}
 		} else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
 			// running in nodejs
-			ilib.tz = process.env.TZ;
+			if (process.env.TZ && process.env.TZ !== "undefined") {
+				ilib.tz = process.env.TZ;
+			}
 		}
 		
 		ilib.tz = ilib.tz || "Etc/UTC"; 
@@ -283,9 +301,10 @@ ilib.getTimeZone = function() {
  */
 ilib.setLoaderCallback = function(loader) {
     // only a basic check
-    if (typeof(loader) !== 'function') {
-        return false;
+    if (typeof(loader) === 'function' || typeof(loader) === 'undefined') {
+    	// console.log("setting callback loader to " + (loader ? loader.name : "undefined"));
+        ilib._load = loader;
+        return true;
     }
-    ilib._load = loader;
-    return true;
+    return false;
 };

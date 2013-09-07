@@ -1991,6 +1991,11 @@ function mockLoader(paths, sync, params, callback) {
 }
 
 function testDateFmtLoadLocaleDataSynch() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.DateFmt.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
@@ -2000,9 +2005,15 @@ function testDateFmtLoadLocaleDataSynch() {
     assertEquals("zz-ZZ", fmt.getLocale().toString());
     assertEquals("gregorian", fmt.getCalendar());
     assertEquals("dd.MM.yy", fmt.getTemplate());
+    ilib.setLoaderCallback(undefined);
 };
 
 function testDateFmtLoadLocaleDataSynchCached() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.setLoaderCallback(mockLoader);
 
 	var fmt = new ilib.DateFmt({locale: "zz-ZZ"});
@@ -2011,9 +2022,15 @@ function testDateFmtLoadLocaleDataSynchCached() {
     assertEquals("zz-ZZ", fmt.getLocale().toString());
     assertEquals("gregorian", fmt.getCalendar());
     assertEquals("dd.MM.yy", fmt.getTemplate());
+    ilib.setLoaderCallback(undefined);
 };
 
 function testDateFmtLoadLocaleDataAsynch() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.DateFmt.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 	var callbackCalled = false;
@@ -2033,9 +2050,15 @@ function testDateFmtLoadLocaleDataAsynch() {
 	});
 	
 	assertTrue(callbackCalled);
+    ilib.setLoaderCallback(undefined);
 };
 
 function testDateFmtLoadLocaleDataAsynchCached() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
 	ilib.setLoaderCallback(mockLoader);
 	var callbackCalled = false;
 	
@@ -2054,4 +2077,5 @@ function testDateFmtLoadLocaleDataAsynchCached() {
 	});
 	
 	assertTrue(callbackCalled);
+    ilib.setLoaderCallback(undefined);
 };

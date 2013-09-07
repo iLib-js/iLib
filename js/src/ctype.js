@@ -1,7 +1,7 @@
 /*
  * ctype.js - Character type definitions
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -258,5 +258,44 @@ ilib.CType = {
 			return false;
 		}
 		return ilib.CType._inRange(ch, rangeName.toLowerCase(), ilib.data.ctype);
+	},
+	
+	/**
+	 * @protected
+	 * @param {boolean} sync
+	 * @param {Object} loadParams
+	 * @param {function(*)|undefined} onLoad
+	 */
+	_init: function(sync, loadParams, onLoad) {
+		ilib.CType._load("ctype", sync, loadParams, onLoad);
+	},
+	
+	/**
+	 * @protected
+	 * @param {string} name
+	 * @param {boolean} sync
+	 * @param {Object} loadParams
+	 * @param {function(*)|undefined} onLoad
+	 */
+	_load: function (name, sync, loadParams, onLoad) {
+		if (!ilib.data[name]) {
+			var loadName = name ? name + ".json" : "ctype.json";
+			ilib.loadData({
+				name: loadName,
+				locale: "-",
+				sync: sync,
+				loadParams: loadParams, 
+				callback: /** @type function(Object=):undefined */ ilib.bind(this, /** @type function() */ function(ct) {
+					ilib.data[name] = ct;
+					if (onLoad && typeof(onLoad) === 'function') {
+						onLoad(ilib.data[name]);
+					}
+				})
+			});
+		} else {
+			if (onLoad && typeof(onLoad) === 'function') {
+				onLoad(ilib.data[name]);
+			}
+		}
 	}
 };

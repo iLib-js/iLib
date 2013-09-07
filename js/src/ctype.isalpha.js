@@ -1,7 +1,7 @@
 /*
  * ctype.islpha.js - Character type is alphabetic
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,3 +36,15 @@ ilib.CType.isAlpha = function (ch) {
 		ilib.CType._inRange(ch, 'Lm', ilib.data.ctype_l) ||
 		ilib.CType._inRange(ch, 'Lo', ilib.data.ctype_l);
 };
+
+/**
+ * @protected
+ * @param {boolean} sync
+ * @param {Object} loadParams
+ * @param {function(*)|undefined} onLoad
+ */
+ilib.CType.isAlpha._init = function (sync, loadParams, onLoad) {
+	ilib.CType._load("ctype_l", sync, loadParams, onLoad);
+};
+
+

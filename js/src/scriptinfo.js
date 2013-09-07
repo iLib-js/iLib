@@ -26,14 +26,78 @@
  * Create a new script info instance. This class encodes information about
  * scripts, which are sets of characters used in a writing system.<p>
  * 
+ * The options object may contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>onLoad</i> - a callback function to call when the script info object is fully 
+ * loaded. When the onLoad option is given, the script info object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ * 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
+ * </ul>
+ * 
  * Depends directive: !depends scriptinfo.js
  * 
  * @constructor
  * @param {string} script The ISO 15924 4-letter identifier for the script
+ * @param {Object} options parameters to initialize this matcher 
  */
-ilib.ScriptInfo = function(script) {
+ilib.ScriptInfo = function(script, options) {
+	var sync = true,
+	    loadParams = undefined;
+	
 	this.script = script;
-	this.info = ilib.data.scripts && ilib.data.scripts[script];
+	
+	if (options) {
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
+		
+		if (typeof(options.loadParams) !== 'undefined') {
+			loadParams = options.loadParams;
+		}
+	}
+
+	if (!ilib.ScriptInfo.cache) {
+		ilib.ScriptInfo.cache = {};
+	}
+
+	if (!ilib.data.scripts) {
+		ilib.loadData({
+			object: ilib.ScriptInfo, 
+			locale: "-", 
+			name: "scripts.json", 
+			sync: sync, 
+			loadParams: loadParams, 
+			callback: ilib.bind(this, function (info) {
+				if (!info) {
+					info = {"Latn":{"nb":215,"nm":"Latin","lid":"Latin","rtl":false,"ime":false,"casing":true}};
+					var spec = this.locale.getSpec().replace(/-/g, "_");
+					ilib.ScriptInfo.cache[spec] = info;
+				}
+				ilib.data.scripts = info;
+				this.info = script && ilib.data.scripts[script];
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
+			})
+		});
+	} else {
+		this.info = ilib.data.scripts[script];
+	}
+
 };
 
 /**
@@ -104,7 +168,7 @@ ilib.ScriptInfo.prototype = {
 	 * written in
 	 */
 	getScriptDirection: function() {
-		return (typeof(this.info.rtl) !== 'undefined' && this.info.rtl) ? "rtl" : "ltr";
+		return (this.info && typeof(this.info.rtl) !== 'undefined' && this.info.rtl) ? "rtl" : "ltr";
 	},
 	
 	/**
@@ -114,7 +178,7 @@ ilib.ScriptInfo.prototype = {
 	 * @return {boolean} true if this script typically requires an IME
 	 */
 	getNeedsIME: function () {
-		return this.info.ime ? true : false; // converts undefined to false
+		return this.info && this.info.ime ? true : false; // converts undefined to false
 	},
 	
 	/**
@@ -123,6 +187,6 @@ ilib.ScriptInfo.prototype = {
 	 * @return {boolean} true if this script uses letter case
 	 */
 	getCasing: function () {
-		return this.info.casing ? true : false; // converts undefined to false
+		return this.info && this.info.casing ? true : false; // converts undefined to false
 	}
 };

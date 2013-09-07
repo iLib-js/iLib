@@ -1744,8 +1744,13 @@ function testRuleComplex4() {
 	assertFalse(ilib.String._fncs.getValue(rule, 123.5));
 }
 
+function setUp() {
+	ilib.String.loadPlurals(true, "sl-SL");
+	ilib.String.loadPlurals(true, "pl-PL");
+}
+
 function testStringFormatChoiceCharClasses1() {
-    var str = new ilib.String("0#There are no items.|one#There items end in one.|two#The items end in two|few#The items is few|#Default items");
+    var str = new ilib.String("0#There are no items.|one#The items end in one.|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1754,16 +1759,16 @@ function testStringFormatChoiceCharClasses1() {
 }
 
 function testStringFormatChoiceCharClasses2() {
-    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
     
-    assertEquals("There items end in one", str.formatChoice(1));
+    assertEquals("The items end in one", str.formatChoice(1));
 }
 
 function testStringFormatChoiceCharClasses3() {
-    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1772,16 +1777,16 @@ function testStringFormatChoiceCharClasses3() {
 }
 
 function testStringFormatChoiceCharClasses4() {
-    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
     
-    assertEquals("There items end in one", str.formatChoice(101));
+    assertEquals("The items end in one", str.formatChoice(101));
 }
 
 function testStringFormatChoiceCharClasses5() {
-    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1790,7 +1795,7 @@ function testStringFormatChoiceCharClasses5() {
 }
 
 function testStringFormatChoiceCharClasses6() {
-    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1799,7 +1804,7 @@ function testStringFormatChoiceCharClasses6() {
 }
 
 function testStringFormatChoiceCharClasses7() {
-    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1808,7 +1813,7 @@ function testStringFormatChoiceCharClasses7() {
 }
 
 function testStringFormatChoiceCharClasses8() {
-    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1817,7 +1822,7 @@ function testStringFormatChoiceCharClasses8() {
 }
 
 function testStringFormatChoiceCharClasses9() {
-    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1826,7 +1831,7 @@ function testStringFormatChoiceCharClasses9() {
 }
 
 function testStringFormatChoiceCharClasses10() {
-    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1835,7 +1840,7 @@ function testStringFormatChoiceCharClasses10() {
 }
 
 function testStringFormatChoiceCharClasses11() {
-    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);
@@ -1844,7 +1849,7 @@ function testStringFormatChoiceCharClasses11() {
 }
 
 function testStringFormatChoiceCharClasses12() {
-    var str = new ilib.String("0#There are no items.|one#There items end in one|two#The items end in two|few#The items is few|#Default items");
+    var str = new ilib.String("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");
     
     assertNotNull(str);

@@ -23,6 +23,7 @@ ilibglobal.js
 locale.js
 localeinfo.js
 util/utils.js
+util/math.js
 calendar/gregoriandate.js
 */
 
@@ -58,10 +59,16 @@ calendar/gregoriandate.js
  * When the data is loaded, the onLoad function is called with the current 
  * instance as a parameter. 
  * 
- * <li>sync - tell whether to load any missing locale data synchronously or 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
- * not be usable for a while. 
+ * not be usable for a while.
+ *  
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
  * There is currently no way in the ECMAscript
@@ -115,7 +122,7 @@ calendar/gregoriandate.js
  * @param {Object} options Options guiding the construction of this time zone instance
  */
 ilib.TimeZone = function(options) {
-	var sync = true;
+	this.sync = true;
 	this.locale = new ilib.Locale();
 	this.isLocal = false;
 	
@@ -150,36 +157,54 @@ ilib.TimeZone = function(options) {
 		}
 		
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			this.sync = options.sync;
 		}
+		
+		this.loadParams = options.loadParams;
+		this.onLoad = options.onLoad;
 	}
 
 	//console.log("timezone: locale is " + this.locale);
 	
 	if (!this.id) {
-		var li = new ilib.LocaleInfo(this.locale, {
-			sync: sync,
+		new ilib.LocaleInfo(this.locale, {
+			sync: this.sync,
 			onLoad: ilib.bind(this, function (li) {
 				this.id = li.getTimeZone() || "Etc/UTC";
-				this._inittz();
-				
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}
+				this._loadtzdata();
 			})
 		});
 	} else {
-		this._inittz();
-		if (options && typeof(options.onLoad) === 'function') {
-			options.onLoad(this);
-		}
+		this._loadtzdata();
 	}
 
 	//console.log("localeinfo is: " + JSON.stringify(this.locinfo));
 	//console.log("id is: " + JSON.stringify(this.id));
 };
 
-ilib.TimeZone.prototype._inittz = function () {
+ilib.data.defaultZones = {
+	"Etc/UTC":{"o":"0:0","f":"UTC"}
+};
+
+ilib.TimeZone.prototype._loadtzdata = function () {
+	if (!ilib.data.timezones) {
+		ilib.loadData({
+			object: ilib.TimeZone, 
+			locale: "-",	// locale independent 
+			name: "timezones.json", 
+			sync: this.sync, 
+			loadParams: this.loadParams, 
+			callback: ilib.bind(this, function (tzdata) {
+				ilib.data.timezones = tzdata || ilib.data.defaultZones;
+				this._initZone();
+			})
+		});
+	} else {
+		this._initZone();
+	}
+};
+
+ilib.TimeZone.prototype._initZone = function() {
 	/** 
 	 * @private
 	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>,c:string,n:string}} 
@@ -188,6 +213,10 @@ ilib.TimeZone.prototype._inittz = function () {
 	if (!this.zone && !this.offset) {
 		this.id = "Etc/UTC";
 		this.zone = ilib.data.timezones[this.id];
+	}
+	
+	if (this.onLoad && typeof(this.onLoad) === 'function') {
+		this.onLoad(this);
 	}
 };
 

@@ -19,7 +19,7 @@
 
 // !depends ilibglobal.js locale.js
 
-// !data localeinfo likelylocales
+// !data localeinfo
 
 /**
  * @class
@@ -32,14 +32,14 @@
  * current list of supported options are:
  * 
  * <ul>
- * <li>onLoad - a callback function to call when the locale info object is fully 
+ * <li><i>onLoad</i> - a callback function to call when the locale info object is fully 
  * loaded. When the onLoad option is given, the localeinfo object will attempt to
  * load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two.
  * 
- * <li>sync - tell whether to load any missing locale data synchronously or 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 
@@ -67,11 +67,35 @@
  * the current locale
  */
 ilib.LocaleInfo = function(locale, options) {
-	var sync = true;
+	var sync = true,
+	    loadParams = undefined;
 	
 	/* these are all the defaults. Essentially, en-US */
-	this.info = ilib.data.localeinfo;
-	this.loadParams = {};
+	/** @type {{
+		scripts:Array.<string>,
+		timezone:string,
+		units:string,
+		calendar:string,
+		clock:string,
+		currency:string,
+		firstDayOfWeek:number,
+		numfmt:Object.<{
+			currencyFormats:Object.<{common:string,commonNegative:string,iso:string,isoNegative:string}>,
+			script:string,
+			decimalChar:string,
+			groupChar:string,
+			prigroupSize:number,
+			secgroupSize:number,
+			negativenumFmt:string,
+			pctFmt:string,
+			negativepctFmt:string,
+			pctChar:string,
+			roundingMode:string,
+			exponential:string,
+			digits:string
+		}>
+	}}*/
+	this.info = ilib.LocaleInfo.defaultInfo;
 	
 	switch (typeof(locale)) {
 		case "string":
@@ -92,7 +116,7 @@ ilib.LocaleInfo = function(locale, options) {
 		}
 		
 		if (typeof(options.loadParams) !== 'undefined') {
-			this.loadParams = options.loadParams;
+			loadParams = options.loadParams;
 		}
 	}
 
@@ -105,48 +129,77 @@ ilib.LocaleInfo = function(locale, options) {
 		locale: this.locale, 
 		name: "localeinfo.json", 
 		sync: sync, 
-		loadParams: this.loadParams, 
+		loadParams: loadParams, 
 		callback: ilib.bind(this, function (info) {
 			if (!info) {
-				info = ilib.data.localeinfo;
+				info = ilib.LocaleInfo.defaultInfo;
 				var spec = this.locale.getSpec().replace(/-/g, "_");
 				ilib.LocaleInfo.cache[spec] = info;
 			}
-			/**
-			 * @private
-			 * @type {{
-			 * 	timezone:string,
-			 * 	units:string,
-			 *	calendar:string,
-			 *	clock:string,
-			 *	currency:string,
-			 *	firstDayOfWeek:string,
-			 * 	numfmt:Object.<{
-			 * 		currencyFormats:Object.<{
-			 * 			common:string,
-			 * 			commonNegative:string,
-			 * 			iso:string,
-			 * 			isoNegative:string
-			 * 		}>,
-			 * 		script:string,
-			 * 		decimalChar:string,
-			 * 		groupChar:string,
-			 * 		prigroupSize:number,
-			 * 		secgroupSize:number,
-			 * 		pctFmt:string,
-			 * 		negativepctFmt:string,
-			 * 		pctChar:string,
-			 * 		roundingMode:string,
-			 * 		exponential:string
-			 *	}>
-			 * }}
-			 */
 			this.info = info;
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
 		})
 	});
+};
+
+ilib.LocaleInfo.defaultInfo = /** @type {{
+	scripts:Array.<string>,
+	timezone:string,
+	units:string,
+	calendar:string,
+	clock:string,
+	currency:string,
+	firstDayOfWeek:number,
+	numfmt:Object.<{
+		currencyFormats:Object.<{
+			common:string,
+			commonNegative:string,
+			iso:string,
+			isoNegative:string
+		}>,
+		script:string,
+		decimalChar:string,
+		groupChar:string,
+		prigroupSize:number,
+		secgroupSize:number,
+		negativenumFmt:string,
+		pctFmt:string,
+		negativepctFmt:string,
+		pctChar:string,
+		roundingMode:string,
+		exponential:string,
+		digits:string
+	}>
+}}*/ ilib.data.localeinfo;
+ilib.LocaleInfo.defaultInfo = ilib.LocaleInfo.defaultInfo || {
+	"scripts": ["Latn"],
+    "timezone": "Etc/UTC",
+    "units": "metric",
+    "calendar": "gregorian",
+    "clock": "24",
+    "currency": "USD",
+    "firstDayOfWeek": 1,
+    "numfmt": {
+        "currencyFormats": {
+            "common": "{s}{n}",
+            "commonNegative": "{s}-{n}",
+            "iso": "{s}{n}",
+            "isoNegative": "{s}-{n}"
+        },
+        "script": "Latn",
+        "decimalChar": ",",
+        "groupChar": ".",
+        "prigroupSize": 3,
+        "secgroupSize": 0,
+        "pctFmt": "{n}%",
+        "negativepctFmt": "-{n}%",
+        "pctChar": "%",
+        "roundingMode": "halfdown",
+        "exponential": "e",
+        "digits": ""
+    }
 };
 
 ilib.LocaleInfo.prototype = {
@@ -444,27 +497,5 @@ ilib.LocaleInfo.prototype = {
 	 */
 	getAllScripts: function() {
 		return this.info.scripts || ["Latn"];
-	},
-	
-	/**
-	 * Return an ilib.Locale instance that is fully specified based on partial information
-	 * given to the constructor of this locale info instance. For example, if the locale
-	 * spec given to this locale info instance is simply "ru" (for the Russian language), 
-	 * then it will fill in the missing region and script tags and return a locale with 
-	 * the specifier "ru-RU-Cyrl". (ie. Russian language, Russian Federation, Cyrillic).
-	 * Any one or two of the language, script, or region parts may be left unspecified,
-	 * and the other one or two parts will be filled in automatically. If this
-	 * class has no information about the given locale, then the locale of this
-	 * locale info instance is returned unchanged.
-	 * 
-	 * @returns {ilib.Locale} the most likely completion of the partial locale given
-	 * to the constructor of this locale info instance
-	 */
-	getLikelyLocale: function () {
-		if (typeof(ilib.data.likelylocales[this.locale.getSpec()]) === 'undefined') {
-			return this.locale;
-		}
-		
-		return new ilib.Locale(ilib.data.likelylocales[this.locale.getSpec()]);
 	}
 };
