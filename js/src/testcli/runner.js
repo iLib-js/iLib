@@ -117,7 +117,7 @@ TestSuite.prototype = {
 						msg += t + ": " + e.stackTrace;
 					}
 				} else {
-					msg = e.toString();
+					msg += e.toString();
 				}
 				console.log(msg);
 				results.fail++;
