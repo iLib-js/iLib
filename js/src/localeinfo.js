@@ -67,7 +67,8 @@
  * the current locale
  */
 ilib.LocaleInfo = function(locale, options) {
-	var sync = true;
+	var sync = true,
+	    loadParams = undefined;
 	
 	/* these are all the defaults. Essentially, en-US */
 	/** @type {{
@@ -95,7 +96,6 @@ ilib.LocaleInfo = function(locale, options) {
 		}>
 	}}*/
 	this.info = ilib.LocaleInfo.defaultInfo;
-	this.loadParams = {};
 	
 	switch (typeof(locale)) {
 		case "string":
@@ -116,7 +116,7 @@ ilib.LocaleInfo = function(locale, options) {
 		}
 		
 		if (typeof(options.loadParams) !== 'undefined') {
-			this.loadParams = options.loadParams;
+			loadParams = options.loadParams;
 		}
 	}
 
@@ -129,7 +129,7 @@ ilib.LocaleInfo = function(locale, options) {
 		locale: this.locale, 
 		name: "localeinfo.json", 
 		sync: sync, 
-		loadParams: this.loadParams, 
+		loadParams: loadParams, 
 		callback: ilib.bind(this, function (info) {
 			if (!info) {
 				info = ilib.LocaleInfo.defaultInfo;

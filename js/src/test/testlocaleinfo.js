@@ -6745,6 +6745,10 @@ ilib.data.localeinfo_fr_FR_overseas = {
 };
 
 function testLocaleInfoLoadMissingLocaleParts() {
+	if (typeof(ilib.data.localeinfo) === 'undefined' && typeof(ilib._load) === 'function') {
+		// should not test mixed loading on the dynamic load version because it was not designed for it
+		return;
+	}
 	ilib.LocaleInfo.cache = {}; // empty the cache
 	var li = new ilib.LocaleInfo("fr-FR-overseas");
 	assertNotUndefined(li);
