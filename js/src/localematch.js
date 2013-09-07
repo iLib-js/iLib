@@ -22,15 +22,78 @@
 
 /**
  * @class
- * Create a new locale matcher instance.  
-
+ * Create a new locale matcher instance. This is used
+ * to see which locales can be matched with each other in
+ * various ways.<p>
+ * 
+ * The options object may contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>locale</i> - the locale to match
+ * 
+ * <li><i>onLoad</i> - a callback function to call when the locale matcher object is fully 
+ * loaded. When the onLoad option is given, the locale matcher object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ * 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
+ * </ul>
  * Depends directive: !depends locale.js
  * 
  * @constructor
- * @param {string|ilib.Locale} locale the locale to match
+ * @param {Object} options parameters to initialize this matcher 
  */
-ilib.LocaleMatcher = function(locale) {
-	this.locale = (typeof(locale) === 'string') ? new ilib.Locale(locale) : locale;
+ilib.LocaleMatcher = function(options) {
+	var sync = true,
+	    loadParams = undefined;
+	
+	if (options) {
+		if (typeof(options.locale) !== 'undefined') {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
+		
+		if (typeof(options.loadParams) !== 'undefined') {
+			loadParams = options.loadParams;
+		}
+	}
+
+	if (!ilib.LocaleMatcher.cache) {
+		ilib.LocaleMatcher.cache = {};
+	}
+
+	ilib.loadData({
+		object: ilib.LocaleMatcher, 
+		locale: "-", 
+		name: "likelylocales.json", 
+		sync: sync, 
+		loadParams: loadParams, 
+		callback: ilib.bind(this, function (info) {
+			if (!info) {
+				info = {};
+				var spec = this.locale.getSpec().replace(/-/g, "_");
+				ilib.LocaleMatcher.cache[spec] = info;
+			}
+			this.info = info;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		})
+	});
 };
 
 
@@ -58,11 +121,11 @@ ilib.LocaleMatcher.prototype = {
 	 * to the constructor of this locale matcher instance
 	 */
 	getLikelyLocale: function () {
-		if (typeof(ilib.data.likelylocales[this.locale.getSpec()]) === 'undefined') {
+		if (typeof(this.info[this.locale.getSpec()]) === 'undefined') {
 			return this.locale;
 		}
 		
-		return new ilib.Locale(ilib.data.likelylocales[this.locale.getSpec()]);
+		return new ilib.Locale(this.info[this.locale.getSpec()]);
 	}
 };
 

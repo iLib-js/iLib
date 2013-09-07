@@ -24,7 +24,9 @@ function testLocaleMatcherConstructor() {
 }
 
 function testLocaleMatcherGetLikelyLocaleByLanguage() {
-	var lm = new ilib.LocaleMatcher("uz");
+	var lm = new ilib.LocaleMatcher({
+		locale: "uz"
+	});
 	assertNotUndefined(lm);
 	var locale = lm.getLikelyLocale();
 	assertNotUndefined(locale);
@@ -32,7 +34,9 @@ function testLocaleMatcherGetLikelyLocaleByLanguage() {
 }
 
 function testLocaleMatcherGetLikelyLocaleByRegion() {
-	var lm = new ilib.LocaleMatcher("UZ");
+	var lm = new ilib.LocaleMatcher({
+		locale: "UZ"
+	});
 	assertNotUndefined(lm);
 	var locale = lm.getLikelyLocale();
 	assertNotUndefined(locale);
@@ -40,7 +44,9 @@ function testLocaleMatcherGetLikelyLocaleByRegion() {
 }
 
 function testLocaleMatcherGetLikelyLocaleByScript() {
-	var lm = new ilib.LocaleMatcher("Arab");
+	var lm = new ilib.LocaleMatcher({
+		locale: "Arab"
+	});
 	assertNotUndefined(lm);
 	var locale = lm.getLikelyLocale();
 	assertNotUndefined(locale);
@@ -48,7 +54,9 @@ function testLocaleMatcherGetLikelyLocaleByScript() {
 }
 
 function testLocaleMatcherGetLikelyLocaleByLanguageAndScript() {
-	var lm = new ilib.LocaleMatcher("pa-Arab");
+	var lm = new ilib.LocaleMatcher({
+		locale: "pa-Arab"
+	});
 	assertNotUndefined(lm);
 	var locale = lm.getLikelyLocale();
 	assertNotUndefined(locale);
@@ -56,7 +64,9 @@ function testLocaleMatcherGetLikelyLocaleByLanguageAndScript() {
 }
 
 function testLocaleMatcherGetLikelyLocaleByLanguageAndRegion() {
-	var lm = new ilib.LocaleMatcher("uz-AF");
+	var lm = new ilib.LocaleMatcher({
+		locale: "uz-AF"
+	});
 	assertNotUndefined(lm);
 	var locale = lm.getLikelyLocale();
 	assertNotUndefined(locale);
@@ -64,7 +74,9 @@ function testLocaleMatcherGetLikelyLocaleByLanguageAndRegion() {
 }
 
 function testLocaleMatcherGetLikelyLocaleByRegionAndScript() {
-	var lm = new ilib.LocaleMatcher("MA-Latn");
+	var lm = new ilib.LocaleMatcher({
+		locale: "MA-Latn"
+	});
 	assertNotUndefined(lm);
 	var locale = lm.getLikelyLocale();
 	assertNotUndefined(locale);
@@ -72,7 +84,9 @@ function testLocaleMatcherGetLikelyLocaleByRegionAndScript() {
 }
 
 function testLocaleMatcherGetLikelyLocaleAlreadySpecified() {
-	var lm = new ilib.LocaleMatcher("en-CA-Latn");
+	var lm = new ilib.LocaleMatcher({
+		locale: "en-CA-Latn"
+	});
 	assertNotUndefined(lm);
 	var locale = lm.getLikelyLocale();
 	assertNotUndefined(locale);
@@ -80,7 +94,9 @@ function testLocaleMatcherGetLikelyLocaleAlreadySpecified() {
 }
 
 function testLocaleMatcherGetLikelyLocaleByLanguageMissing() {
-	var lm = new ilib.LocaleMatcher("zxx");
+	var lm = new ilib.LocaleMatcher({
+		locale: "zxx"
+	});
 	assertNotUndefined(lm);
 	var locale = lm.getLikelyLocale();
 	assertNotUndefined(locale);
@@ -88,7 +104,9 @@ function testLocaleMatcherGetLikelyLocaleByLanguageMissing() {
 }
 
 function testLocaleMatcherGetLikelyLocaleByLanguageAndRegionMissing() {
-	var lm = new ilib.LocaleMatcher("en-GB");
+	var lm = new ilib.LocaleMatcher({
+		locale: "en-GB"
+	});
 	assertNotUndefined(lm);
 	var locale = lm.getLikelyLocale();
 	assertNotUndefined(locale);
