@@ -32,14 +32,14 @@
  * current list of supported options are:
  * 
  * <ul>
- * <li>onLoad - a callback function to call when the locale info object is fully 
+ * <li><i>onLoad</i> - a callback function to call when the locale info object is fully 
  * loaded. When the onLoad option is given, the localeinfo object will attempt to
  * load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two.
  * 
- * <li>sync - tell whether to load any missing locale data synchronously or 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while. 

@@ -67,15 +67,19 @@ ilib.NormString.init = function(options) {
 		// can't do anything
 		return;
 	}
-	var form = "nkfc";
+	var form = "nfkc";
 	var script = "all";
 	var sync = true;
 	var onLoad = undefined;
+	var loadParams = undefined;
 	if (options) {
-		form = options.form || "nkfc";
+		form = options.form || "nfkc";
 		script = options.script || "all";
 		sync = typeof(options.sync) !== 'undefined' ? options.sync : true;
 		onLoad = typeof(options.onLoad) === 'function' ? options.onLoad : undefined;
+		if (options.loadParams) {
+			loadParams = options.loadParams;
+		}
 	}
 	var formDependencies = {
 		"nfd": ["nfd"],
@@ -84,15 +88,16 @@ ilib.NormString.init = function(options) {
 		"nfkc": ["nfkd", "nfd", "nfc"]
 	};
 	var files = ["norm.ccc.json"];
-	for (var f in formDependencies[form]) {
-		files.push(f + "/" + script + ".json");
+	var forms = formDependencies[form];
+	for (var f in forms) {
+		files.push(forms[f] + "/" + script + ".json");
 	}
 	
-	ilib._load(files, sync, options.loadParams, function(arr) {
+	ilib._load(files, sync, loadParams, function(arr) {
 		ilib.data.norm.ccc = arr[0];
-		for (var i = 0; i < arr.length; i++) {
+		for (var i = 1; i < arr.length; i++) {
 			if (typeof(arr[i]) !== 'undefined') {
-				ilib.data.norm[formDependencies[form][i-1]] = arr[i];
+				ilib.data.norm[forms[i-1]] = arr[i];
 			}
 		}
 		

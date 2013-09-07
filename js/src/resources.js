@@ -268,13 +268,13 @@ ilib.ResBundle = function (options) {
 			this.map = map;
 			if (this.locale.isPseudo()) {
 				if (!ilib.ResBundle.pseudomap) {
-					ilib.ResBundle.pseudomap = ilib.ResBundle.defaultPseudo;
+					ilib.ResBundle.pseudomap = {};
 				}
 	
 				this._loadPseudo(this.locale, options.onLoad);
 			} else if (this.missing === "pseudo") {
 				if (!ilib.ResBundle.pseudomap) {
-					ilib.ResBundle.pseudomap = ilib.ResBundle.defaultPseudo;
+					ilib.ResBundle.pseudomap = {};
 				}
 	
 				new ilib.LocaleInfo(this.locale, {

@@ -301,9 +301,10 @@ ilib.getTimeZone = function() {
  */
 ilib.setLoaderCallback = function(loader) {
     // only a basic check
-    if (typeof(loader) !== 'function') {
-        return false;
+    if (typeof(loader) === 'function' || typeof(loader) === 'undefined') {
+    	// console.log("setting callback loader to " + (loader ? loader.name : "undefined"));
+        ilib._load = loader;
+        return true;
     }
-    ilib._load = loader;
-    return true;
+    return false;
 };

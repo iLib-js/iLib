@@ -476,7 +476,7 @@ ilib.loadData = function(params) {
 			
 			ilib._load(files, sync, loadParams, ilib.bind(this, function(arr) {
 				if (type === "json") {
-					data = {};
+					data = ilib.data[basename] || {};
 					for (var i = 0; i < arr.length; i++) {
 						if (typeof(arr[i]) !== 'undefined') {
 							data = ilib.merge(data, arr[i]);

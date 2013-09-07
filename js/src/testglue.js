@@ -86,5 +86,9 @@ var nodeLoader = (function () {
 })();
 
 ilib.setLoaderCallback(nodeLoader);
+
+//initialize some things statically because the constructors do not load 
+// the locale-independent data
 ilib.CType._init(true);
 ilib.String.loadPlurals(true);
+ilib.NormString.init();
