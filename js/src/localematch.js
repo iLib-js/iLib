@@ -58,6 +58,8 @@ ilib.LocaleMatcher = function(options) {
 	var sync = true,
 	    loadParams = undefined;
 	
+	this.locale = new ilib.Locale();
+	
 	if (options) {
 		if (typeof(options.locale) !== 'undefined') {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
@@ -76,24 +78,28 @@ ilib.LocaleMatcher = function(options) {
 		ilib.LocaleMatcher.cache = {};
 	}
 
-	ilib.loadData({
-		object: ilib.LocaleMatcher, 
-		locale: "-", 
-		name: "likelylocales.json", 
-		sync: sync, 
-		loadParams: loadParams, 
-		callback: ilib.bind(this, function (info) {
-			if (!info) {
-				info = {};
-				var spec = this.locale.getSpec().replace(/-/g, "_");
-				ilib.LocaleMatcher.cache[spec] = info;
-			}
-			this.info = info;
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		})
-	});
+	if (!ilib.data.likelylocales) {
+		ilib.loadData({
+			object: ilib.LocaleMatcher, 
+			locale: "-", 
+			name: "likelylocales.json", 
+			sync: sync, 
+			loadParams: loadParams, 
+			callback: ilib.bind(this, function (info) {
+				if (!info) {
+					info = {};
+					var spec = this.locale.getSpec().replace(/-/g, "_");
+					ilib.LocaleMatcher.cache[spec] = info;
+				}
+				this.info = info;
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
+			})
+		});
+	} else {
+		this.info = ilib.data.likelylocales;
+	}
 };
 
 
