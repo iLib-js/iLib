@@ -282,7 +282,6 @@ ilib.CType = {
 			var loadName = name ? name + ".json" : "ctype.json";
 			ilib.loadData({
 				name: loadName,
-				object: {}, 
 				locale: "-",
 				sync: sync,
 				loadParams: loadParams, 
