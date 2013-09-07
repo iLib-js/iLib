@@ -49,7 +49,8 @@
  * may contain any property/value pairs as long as the calling code is in
  * agreement with the loader callback function as to what those parameters mean.
  * </ul>
- * Depends directive: !depends locale.js
+ * 
+ * Depends directive: !depends localematch.js
  * 
  * @constructor
  * @param {Object} options parameters to initialize this matcher 
