@@ -141,7 +141,7 @@ function testFormatAddressFRFromUS() {
 		countryCode: "DZ"
 	}, {locale: 'en-US'});
 	
-	var expected = "M. Said Mohamed,2, rue de l'Indépendance\n16027 ALGIERS\nAlgeria";
+	var expected = "M. Said Mohamed,2, rue de l'Indépendance\n10110 ALGIERS\nAlgeria";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

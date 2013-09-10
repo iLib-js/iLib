@@ -66,7 +66,7 @@ function testParseAddressManyLines() {
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("Juan dela Cruz Rm 107 , 1901 Airport Road , Cabungaan , 2900 , Laoag City , 2900 , Ilocos Norte , Philippines", {locale: 'es-PH'});
+	var parsedAddress = new ilib.Address("Juan dela Cruz Rm 107 , 1901 Airport Road , Cabungaan , 2900 , Laoag City , Ilocos Norte , Philippines", {locale: 'es-PH'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Juan dela Cruz Rm 107, 1901 Airport Road, Cabungaan", parsedAddress.streetAddress);

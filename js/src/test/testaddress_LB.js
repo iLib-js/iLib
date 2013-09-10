@@ -69,7 +69,7 @@ function testParseAddressFROneLine() {
 };
 
 function testParseAddressFRSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Banque du Liban \n P.O. Box 11–5544   \n\t\n RIAD EL SOLH BEIRUT 1107 2810\t\n\n  RIAD EL SOLH BEIRUT 1107 2810  \n  \t\t\t", {locale: 'fr-LB'});
+	var parsedAddress = new ilib.Address("Banque du Liban \n P.O. Box 11–5544\t\n\n  RIAD EL SOLH BEIRUT 1107 2810  \nLiban  \t\t\t", {locale: 'fr-LB'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Banque du Liban, P.O. Box 11–5544", parsedAddress.streetAddress);
@@ -126,7 +126,7 @@ function testFormatAddressFR() {
 		countryCode: "LB"
 	}, {locale: 'fr-LB'});
 	
-	var expected = "Banque du Liban\nP.O. Box 11–5544\nRIAD EL SOLH BEIRUT 1107 2810\nLiban";
+	var expected = "Banque du Liban\nP.O. Box 11–5544\nRIAD EL SOLH BEIRUT\nLiban";
 	var formatter = new ilib.AddressFmt({locale: 'fr-LB'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -139,7 +139,7 @@ function testFormatAddressFRFromUS() {
 		countryCode: "LB"
 	}, {locale: 'en-US'});
 	
-	var expected = "Banque du Liban\nP.O. Box 11–5544\nRIAD EL SOLH BEIRUT 1107 2810\nLebanon";
+	var expected = "Banque du Liban\nP.O. Box 11–5544\nRIAD EL SOLH BEIRUT\nLebanon";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -152,13 +152,13 @@ function testParseAddressARNormal() {
 	assertEquals("مركز الفرز بيروت, مطار بيروت الدولي", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("بيروت", parsedAddress.locality);
-	assertEquals("1107 2810", parsedAddress.postalCode);
+	assertEquals("١٠٠٠", parsedAddress.postalCode);
 	assertEquals("لبنان", parsedAddress.country);
 	assertEquals("LB", parsedAddress.countryCode);
 };
 
 function testParseAddressARNoZip() {
-	var parsedAddress = new ilib.Address("مركز الفرز بيروت, مطار بيروت الدولي, بيروت ١٠٠٠, لبنان", {locale: 'ar-LB'});
+	var parsedAddress = new ilib.Address("مركز الفرز بيروت, مطار بيروت الدولي, بيروت , لبنان", {locale: 'ar-LB'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("مركز الفرز بيروت, مطار بيروت الدولي", parsedAddress.streetAddress);
@@ -166,7 +166,7 @@ function testParseAddressARNoZip() {
 	assertEquals("بيروت", parsedAddress.locality);
 	assertEquals("لبنان", parsedAddress.country);
 	assertEquals("LB", parsedAddress.countryCode);
-	assertEquals("1107 2810", parsedAddress.postalCode);
+	assertUndefined(parsedAddress.postalCode);
 };
 
 function testParseAddressARManyLines() {
@@ -176,7 +176,7 @@ function testParseAddressARManyLines() {
 	assertEquals("مركز الفرز بيروت, مطار بيروت الدولي", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("بيروت", parsedAddress.locality);
-	assertEquals("1107 2810", parsedAddress.postalCode);
+	assertEquals("١٠٠٠", parsedAddress.postalCode);
 	assertEquals("لبنان", parsedAddress.country);
 	assertEquals("LB", parsedAddress.countryCode);
 };
@@ -188,31 +188,31 @@ function testParseAddressAROneLine() {
 	assertEquals("مركز الفرز بيروت, مطار بيروت الدولي", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("بيروت", parsedAddress.locality);
-	assertEquals("1107 2810", parsedAddress.postalCode);
+	assertEquals("١٠٠٠", parsedAddress.postalCode);
 	assertEquals("لبنان", parsedAddress.country);
 	assertEquals("LB", parsedAddress.countryCode);
 };
 
 function testParseAddressARSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("مركز الفرز بيروت, مطار بيروت الدولي   \n\t\n بيروت ١٠٠٠\t\n\n  بيروت ١٠٠٠  \n  \t\t\t", {locale: 'ar-LB'});
+	var parsedAddress = new ilib.Address("مركز الفرز بيروت, مطار بيروت الدولي   \n\t\n   بيروت ١٠٠٠  \n  \t\t\t", {locale: 'ar-LB'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("مركز الفرز بيروت, مطار بيروت الدولي", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("بيروت", parsedAddress.locality);
-	assertEquals("1107 2810", parsedAddress.postalCode);
+	assertEquals("١٠٠٠", parsedAddress.postalCode);
 	assertEquals("لبنان", parsedAddress.country);
 	assertEquals("LB", parsedAddress.countryCode);
 };
 
 function testParseAddressARNoDelimiters() {
-	var parsedAddress = new ilib.Address("مركز الفرز بيروت, مطار بيروت الدولي  ٢ شارع الاستقلال بيروت ١٠٠٠  لبنان", {locale: 'ar-LB'});
+	var parsedAddress = new ilib.Address("مركز الفرز بيروت, مطار بيروت الدولي  ٢ شارع الاستقلال  بيروت ١٠٠٠  لبنان", {locale: 'ar-LB'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("مركز الفرز بيروت, مطار بيروت الدولي ٢ شارع الاستقلال", parsedAddress.streetAddress);
+	assertEquals("مركز الفرز بيروت, مطار بيروت الدولي ٢ شارع الاستقلا", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("بيروت", parsedAddress.locality);
-	assertEquals("1107 2810", parsedAddress.postalCode);
+	assertEquals("١٠٠٠", parsedAddress.postalCode);
 	assertEquals("لبنان", parsedAddress.country);
 	assertEquals("LB", parsedAddress.countryCode);
 };
@@ -223,8 +223,8 @@ function testParseAddressARSpecialChars() {
 	assertNotUndefined(parsedAddress);
 	assertEquals("مركز الفرز بيروت, مطار بيروت الدولي", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
-	assertEquals("لبنان",parsedAddress.locality);
-	assertEquals("1107 2810", parsedAddress.postalCode);
+	assertEquals("بيروت",parsedAddress.locality);
+	assertEquals("١٠٠٠", parsedAddress.postalCode);
 	assertEquals("لبنان", parsedAddress.country);
 	assertEquals("LB", parsedAddress.countryCode);
 };
@@ -238,7 +238,7 @@ function testParseAddressARFromUS() {
 	assertEquals("مركز الفرز بيروت, مطار بيروت الدولي", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("بيروت", parsedAddress.locality);
-	assertEquals("1107 2810", parsedAddress.postalCode);
+	assertEquals("١٠٠٠", parsedAddress.postalCode);
 	assertEquals("Liban", parsedAddress.country);
 	assertEquals("LB", parsedAddress.countryCode);
 };
@@ -251,7 +251,7 @@ function testFormatARAddress() {
 		countryCode: "LB"
 	}, {locale: 'ar-LB'});
 	
-	var expected = "مركز الفرز بيروت, مطار بيروت الدولي\nبيروت ١٠٠٠\nلبنان";
+	var expected = "مركز الفرز بيروت, مطار بيروت الدولي\nلبنان\nلبنان";
 	var formatter = new ilib.AddressFmt({locale: 'ar-LB'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -264,7 +264,7 @@ function testFormatAddressARFromUS() {
 		countryCode: "LB"
 	}, {locale: 'en-US'});
 	
-	var expected = "مركز الفرز بيروت, مطار بيروت الدولي\nبيروت ١٠٠٠\nLiban";
+	var expected = "مركز الفرز بيروت, مطار بيروت الدولي\nبيروت\nLiban";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
