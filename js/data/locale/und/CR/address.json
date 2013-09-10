@@ -1,7 +1,7 @@
 {
     "formats": {
-        "default": "{streetAddress}\n{region},{locality}\n{postalCode}\n{country}",
-        "nocountry": "{streetAddress}\n{region},{locality}\n{postalCode}"
+        "default": "{streetAddress}\n{region}, {locality}\n{postalCode}\n{country}",
+        "nocountry": "{streetAddress}\n{region}, {locality}\n{postalCode}"
     },
     "startAt": "end",
     "fields": [
@@ -27,7 +27,8 @@
                 "Heredia",
                 "Limón",
                 "Puntarenas",
-                "San José"
+                "San José",
+		"San Rafael"
             ]
         }
         

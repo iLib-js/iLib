@@ -7,16 +7,14 @@
 	"fields": [
 		{
 			"name": "postalCode",
-			"line": "startAtLast",
-			"pattern": "([0-9٠١٢٣٤٥٦٧٨٩۴۵۶]{5})$",
-			"matchGroup": 0
+			"line": "last",
+			"pattern": "([0-9٠١٢٣٤٥٦٧٨٩۴۵۶]{5})$"
 		},
 
 		{
 			"name": "locality",
 			"line": "startAtLast",
-			"pattern": "([A-zجثتبأرذدخحضصشسزفغعظطنملكقيوهـدُدِدَدٌدٍدً]+)$",
-			"matchGroup": 0
+			"pattern": "([A-zنجثتبأرذدخحضصشسزفغعظطنملكقيوهـدُدِدَدٌدٍدً]+)$"
 		}
 	]
 }
