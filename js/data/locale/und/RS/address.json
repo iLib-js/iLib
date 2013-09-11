@@ -11,19 +11,18 @@
 			"name": "region",
 			"line": "last",
 			"pattern": [
-				"Војводина",
-				"Косово",
-				"Централна Србија",
-			         "Vojvodina",
-				"Kosovo",
-				"Central Serbia"
+					"Vojvodina",
+					"Kosovo",
+					"Central Serbia",
+					"Vojvodina",
+					"Kosovo"
 			]
 		},
 		
 		{
 			"name": "locality",
 			"line": "last",
-			"pattern": "([АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя\\.\\-']+)$"
+			"pattern": "[A-z\\.\\-'\\s]+"
 		},
 
 		{
