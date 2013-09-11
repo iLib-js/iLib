@@ -18,10 +18,10 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091 ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n0100 ﺪﻤﺸﻗ\nﺱﻭﺮﻳﺍ", {locale: 'ar-SY'});
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n0100 ﺪﻤﺸﻗ\nﺱﻭﺮﻳﺍ", {locale: 'ar-SY'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091 ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ", parsedAddress.streetAddress);
+	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ", parsedAddress.streetAddress);
 	assertEquals("ﺪﻤﺸﻗ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("٠١٠٠", parsedAddress.postalCode);
@@ -30,10 +30,10 @@ function testParseAddressNormal() {
 };
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091 ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\nﺪﻤﺸﻗ\nﺱﻭﺮﻳﺍ", {locale: 'ar-SY'});
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\nﺪﻤﺸﻗ\nﺱﻭﺮﻳﺍ", {locale: 'ar-SY'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091 ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ", parsedAddress.streetAddress);
+	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ", parsedAddress.streetAddress);
 	assertEquals("ﺪﻤﺸﻗ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("ﺱﻭﺮﻳﺍ", parsedAddress.country);
@@ -42,10 +42,10 @@ function testParseAddressNoZip() {
 };
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091 ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠\nﺪﻤﺸﻗ", {locale: 'ar-SY'});
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠\nﺪﻤﺸﻗ", {locale: 'ar-SY'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091 ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ", parsedAddress.streetAddress);
+	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ", parsedAddress.streetAddress);
 	assertEquals("ﺪﻤﺸﻗ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("٠١٠٠", parsedAddress.postalCode);
@@ -54,9 +54,9 @@ function testParseAddressNoCountry() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\nﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091\n٠١٠٠\nﺪﻤﺸﻗ\n\nﺱﻭﺮﻳﺍ\n\n\n", {locale: 'ar-SY'});
+	var parsedAddress = new ilib.Address("ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\nﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١\n٠١٠٠\nﺪﻤﺸﻗ\n\nﺱﻭﺮﻳﺍ\n\n\n", {locale: 'ar-SY'});
 	assertNotUndefined(parsedAddress);
-	assertEquals("ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ, ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091", parsedAddress.streetAddress);
+	assertEquals("ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ, ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١", parsedAddress.streetAddress);
 	assertEquals("ﺪﻤﺸﻗ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("٠١٠٠", parsedAddress.postalCode);
@@ -66,10 +66,10 @@ function testParseAddressManyLines() {
 
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n\n\tﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091\n\n\t٠١٠٠\n\n\tﺪﻤﺸﻗ\n\n\tﺱﻭﺮﻳﺍ\n\n\n", {locale: 'ar-SY'});
+	var parsedAddress = new ilib.Address("\t\t\tﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n\n\tﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١\n\n\t٠١٠٠\n\n\tﺪﻤﺸﻗ\n\n\tﺱﻭﺮﻳﺍ\n\n\n", {locale: 'ar-SY'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ, ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091", parsedAddress.streetAddress);
+	assertEquals("ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ, ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١", parsedAddress.streetAddress);
 	assertEquals("ﺪﻤﺸﻗ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("٠١٠٠", parsedAddress.postalCode);
@@ -79,12 +79,12 @@ function testParseAddressSuperfluousWhitespace() {
 
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091 ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠\nﺪﻤﺸﻗ\nﺱﻭﺮﻳﺍ", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠\nﺪﻤﺸﻗ\nﺱﻭﺮﻳﺍ", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091 ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ", parsedAddress.streetAddress);
+	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ", parsedAddress.streetAddress);
 	assertEquals("ﺪﻤﺸﻗ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("٠١٠٠", parsedAddress.postalCode);
@@ -94,28 +94,28 @@ function testParseAddressFromUS() {
 
 function testFormatAddress() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091 ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ",
+		streetAddress: "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ",
 		locality: "ﺪﻤﺸﻗ",
 		postalCode: "٠١٠٠",
 		country: "ﺱﻭﺮﻳﺍ",
 		countryCode: "SY"
 	}, {locale: 'ar-SY'});
 	
-	var expected = "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091 ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠\nﺪﻤﺸﻗ\nﺱﻭﺮﻳﺍ";
+	var expected = "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠\nﺪﻤﺸﻗ\nﺱﻭﺮﻳﺍ";
 	var formatter = new ilib.AddressFmt({locale: 'ar-SY'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressFromUS() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091 ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ",
+		streetAddress: "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ",
 		locality: "ﺪﻤﺸﻗ",
 		postalCode: "٠١٠٠",
 		country: "ﺱﻭﺮﻳﺍ",
 		countryCode: "SY"
 	}, {locale: 'en-US'});
 	
-	var expected = "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 02/0091 ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ 25 06  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫ\nﺱﻭﺮﻳﺍ";
+	var expected = "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﻊﻠﻳ 01 ٠٢/٠٠٩١ ﺵﺍﺮﻋ ﻱﻮﺴﻓ ﻻ ٢٥٠٦  ﺎﻟﺰﻳ ﺎﻠﻣﺩﺮﺴﻳ\n٠١٠٠\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫ\nﺱﻭﺮﻳﺍ";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

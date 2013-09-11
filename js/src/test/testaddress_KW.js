@@ -18,14 +18,14 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Hamad Abdallah Hassan Al-Sabbahiya 48001\n54551 KUWAIT\nKUWAIT", {locale: 'ar-KW'});
+	var parsedAddress = new ilib.Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\nالكويت ١٥٥٤٥\nالكويت", {locale: 'ar-KW'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Hamad Abdallah Hassan Al-Sabbahiya 48001", parsedAddress.streetAddress);
-	assertEquals("KUWAIT", parsedAddress.locality);
+	assertEquals("حمد عبد الله حسن آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
+	assertEquals("الكويت", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("54551", parsedAddress.postalCode);
-	assertEquals("KUWAIT", parsedAddress.country);
+	assertEquals("١٥٥٤٥", parsedAddress.postalCode);
+	assertEquals("الكويت", parsedAddress.country);
 	assertEquals("KW", parsedAddress.countryCode);
 };
 
@@ -45,148 +45,92 @@ function testParseAddressNormalNative() {
 
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("Hamad Abdallah Hassan Al-Sabbahiya 48001\nKUWAIT\nKUWAIT", {locale: 'ar-KW'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("Hamad Abdallah Hassan Al-Sabbahiya 48001", parsedAddress.streetAddress);
-	assertEquals("KUWAIT", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("KUWAIT", parsedAddress.country);
-	assertEquals("KW", parsedAddress.countryCode);
-	assertUndefined(parsedAddress.postalCode);
-};
-
-function testParseAddressNoZipNative() {
 	var parsedAddress = new ilib.Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\nالكويت\nالكويت", {locale: 'ar-KW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("حمد عبد الله حسن آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
 	assertEquals("الكويت", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertUndefined(parsedAddress.postalCode);
 	assertEquals("الكويت", parsedAddress.country);
 	assertEquals("KW", parsedAddress.countryCode);
+	assertUndefined(parsedAddress.postalCode);
 };
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Hamad Abdallah Hassan Al-Sabbahiya 48001\n54551 KUWAIT", {locale: 'ar-KW'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("Hamad Abdallah Hassan Al-Sabbahiya 48001", parsedAddress.streetAddress);
-	assertEquals("KUWAIT", parsedAddress.locality);
-	assertUndefined(parsedAddress.postalCode);
-	assertEquals("54551", parsedAddress.postalCode);
-	assertUndefined(parsedAddress.country);
-	assertEquals("KW", parsedAddress.countryCode);
-};
-
-function testParseAddressNoCountryNative() {
-	var parsedAddress = new ilib.Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\nالكويت ١٥٥٤٥", {locale: 'ar-KW'});
+	var parsedAddress = new ilib.Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥ الكويت", {locale: 'ar-KW'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("حمد عبد الله حسن آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
 	assertEquals("الكويت", parsedAddress.locality);
-	assertUndefined(parsedAddress.postalCode);
-	assertEquals("۲١٥٥٤٥", parsedAddress.postalCode);
+	assertUndefined(parsedAddress.region);
+	assertEquals("١٥٥٤٥", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	assertEquals("KW", parsedAddress.countryCode);
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("Hamad Abdallah Hassan\nAl-Sabbahiya\n48001\n54551\nKUWAIT\nKUWAIT\n\n", {locale: 'ar-KW'});
-	
+	var parsedAddress = new ilib.Address("حمد عبد الله حسن\n آل الصباح ١٠٠٨٤\n١٥٥٤٥\nالكويت\n\nالكويت\n\n\n", {locale: 'ar-KW'});
 	assertNotUndefined(parsedAddress);
-	assertEquals("Hamad Abdallah Hassan, Al-Sabbahiya, 48001", parsedAddress.streetAddress);
-	assertEquals("KUWAIT", parsedAddress.locality);
+	assertEquals("حمد عبد الله حسن,  آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
+	assertEquals("الكويت", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("54551", parsedAddress.postalCode);
-	assertEquals("KUWAIT", parsedAddress.country);
-	assertEquals("KW", parsedAddress.countryCode);
-};
-
-function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("Hamad Abdallah Hassan , Al-Sabbahiya , 48001 , 54551 , KUWAIT , KUWAIT\n\n", {locale: 'ar-KW'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("Hamad Abdallah Hassan, Al-Sabbahiya, 48001", parsedAddress.streetAddress);
-	assertEquals("KUWAIT", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("54551", parsedAddress.postalCode);
-	assertEquals("KUWAIT", parsedAddress.country);
+	assertEquals("١٥٥٤٥", parsedAddress.postalCode);
+	assertEquals("الكويت", parsedAddress.country);
 	assertEquals("KW", parsedAddress.countryCode);
 };
 
 
-function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Hamad Abdallah Hassan , Al-Sabbahiya , 48001 , 54551 , KUWAIT , KUWAIT", {locale: 'ar-KW'});
+function testParseAddressSuperfluousWhitespace() {
+	var parsedAddress = new ilib.Address("\t\t\tحمد عبد الله حسن\n\n\t آل الصباح ١٠٠٨٤\n\n\t١٥٥٤٥\n\n\tالكويت\n\n\tالكويت\n\n\n", {locale: 'ar-KW'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Hamad Abdallah Hassan, Al-Sabbahiya, 48001", parsedAddress.streetAddress);
-	assertEquals("KUWAIT", parsedAddress.locality);
+	assertEquals("حمد عبد الله حسن,  آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
+	assertEquals("الكويت", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("54551", parsedAddress.postalCode);
-	assertEquals("KUWAIT", parsedAddress.country);
+	assertEquals("١٥٥٤٥", parsedAddress.postalCode);
+	assertEquals("الكويت", parsedAddress.country);
 	assertEquals("KW", parsedAddress.countryCode);
 };
+
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Hamad Abdallah Hassan Al-Sabbahiya 48001\n54551 KUWAIT\nKUWAIT", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥\nالكويت\nKuwait", {locale: 'en-US'});
 	
-	// the country name is in English because this address is for a contact in a US database
 	
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Hamad Abdallah Hassan, Al-Sabbahiya, 48001", parsedAddress.streetAddress);
-	assertEquals("KUWAIT", parsedAddress.locality);
+	assertEquals("حمد عبد الله حسن آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
+	assertEquals("الكويت", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("54551", parsedAddress.postalCode);
-	assertEquals("KUWAIT", parsedAddress.country);
+	assertEquals("١٥٥٤٥", parsedAddress.postalCode);
+	assertEquals("Kuwait", parsedAddress.country);
 	assertEquals("KW", parsedAddress.countryCode);
 };
 
-
-function testFormatAddressSA() {
-	var parsedAddress = new ilib.Address({
-		streetAddress: "Hamad Abdallah Hassan Al-Sabbahiya 48001",
-		locality: "KUWAIT",
-		region: null,
-		postalCode: "54551",
-		country: "KUWAIT",
-		countryCode: "KW"
-	}, {locale: 'ar-KW'});
-	
-	var expected = "Hamad Abdallah Hassan Al-Sabbahiya 48001\n54551 KUWAIT\nKUWAIT";
-	var formatter = new ilib.AddressFmt({locale: 'ar-KW'});
-	assertEquals(expected, formatter.format(parsedAddress));
-};
-
-
-function testFormatAddressSANative() {
+function testFormatAddress() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "حمد عبد الله حسن آل الصباح ١٠٠٨٤",
 		locality: "الكويت",
-		region: null,
 		postalCode: "١٥٥٤٥",
 		country: "الكويت",
 		countryCode: "KW"
 	}, {locale: 'ar-KW'});
 	
-	var expected = "حمد عبد الله حسن آل الصباح ١٠٠٨٤\nالكويت ١٥٥٤٥\nالكويت";
+	var expected = "حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥\nالكويت\nالكويت";
 	var formatter = new ilib.AddressFmt({locale: 'ar-KW'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressFromUS() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Hamad Abdallah Hassan Al-Sabbahiya 48001",
-		locality: "KUWAIT",
-		region: null,
-		postalCode: "54551",
-		country: "KUWAIT",
+		streetAddress: "حمد عبد الله حسن آل الصباح ١٠٠٨٤",
+		locality: "الكويت",
+		postalCode: "١٥٥٤٥",
+		country: "Kuwait",
 		countryCode: "KW"
 	}, {locale: 'en-US'});
 	
-	var expected = "Hamad Abdallah Hassan Al-Sabbahiya 48001\n54551 KUWAIT\nKUWAIT";
+	var expected = "حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫ\nKuwait";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
