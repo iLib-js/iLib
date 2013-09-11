@@ -41,6 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
+
 function testParseAddressNoCountry() {
 	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral Serbia", {locale: 'sr-Latn-RS'});
 	

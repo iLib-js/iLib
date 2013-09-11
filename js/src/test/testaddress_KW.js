@@ -7,7 +7,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *   http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -18,31 +18,16 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\nالكويت ١٥٥٤٥\nالكويت", {locale: 'ar-KW'});
+	var parsedAddress = new ilib.Address("حمد عبد الله حسن\n آل الصباح ١٠٠٨٤\n١٥٥٤٥ الكويت\n\nالكويت\n\n\n", {locale: 'ar-KW'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("حمد عبد الله حسن آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
+	assertEquals("حمد عبد الله حسن, آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
 	assertEquals("الكويت", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("١٥٥٤٥", parsedAddress.postalCode);
 	assertEquals("الكويت", parsedAddress.country);
 	assertEquals("KW", parsedAddress.countryCode);
 };
-
-
-function testParseAddressNormalNative() {
-	var parsedAddress = new ilib.Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\nالكويت ١٥٥٤٥\nالكويت", {locale: 'ar-KW'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("حمد عبد الله حسن آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
-	assertEquals("الكويت", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("١٥٥٤٥", parsedAddress.postalCode);
-	assertEquals("الكويت", parsedAddress.country);
-	assertEquals("KW", parsedAddress.countryCode);
-};
-
-
 
 function testParseAddressNoZip() {
 	var parsedAddress = new ilib.Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\nالكويت\nالكويت", {locale: 'ar-KW'});
@@ -71,7 +56,7 @@ function testParseAddressNoCountry() {
 function testParseAddressManyLines() {
 	var parsedAddress = new ilib.Address("حمد عبد الله حسن\n آل الصباح ١٠٠٨٤\n١٥٥٤٥\nالكويت\n\nالكويت\n\n\n", {locale: 'ar-KW'});
 	assertNotUndefined(parsedAddress);
-	assertEquals("حمد عبد الله حسن,  آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
+	assertEquals("حمد عبد الله حسن, آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
 	assertEquals("الكويت", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("١٥٥٤٥", parsedAddress.postalCode);
@@ -84,7 +69,7 @@ function testParseAddressSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tحمد عبد الله حسن\n\n\t آل الصباح ١٠٠٨٤\n\n\t١٥٥٤٥\n\n\tالكويت\n\n\tالكويت\n\n\n", {locale: 'ar-KW'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("حمد عبد الله حسن,  آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
+	assertEquals("حمد عبد الله حسن, آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
 	assertEquals("الكويت", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("١٥٥٤٥", parsedAddress.postalCode);
@@ -116,7 +101,7 @@ function testFormatAddress() {
 		countryCode: "KW"
 	}, {locale: 'ar-KW'});
 	
-	var expected = "حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥\nالكويت\nالكويت";
+	var expected = "حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥ الكويت\nالكويت";
 	var formatter = new ilib.AddressFmt({locale: 'ar-KW'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -130,7 +115,7 @@ function testFormatAddressFromUS() {
 		countryCode: "KW"
 	}, {locale: 'en-US'});
 	
-	var expected = "حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫ\nKuwait";
+	var expected = "حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥ الكويت\nKuwait";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

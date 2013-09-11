@@ -7,13 +7,13 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *   http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
- * See the License for the SKANDERBORGecific language governing permissions and
+ * See the License for the Specific language governing permissions and
  * limitations under the License.
  */
 
@@ -32,7 +32,7 @@ function testParseAddressNormal() {
 };
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("السيد عبد الله احمد, عمارة ٢٢٢, المنامة, الجزائر", {locale: 'ar-BH'});
+	var parsedAddress = new ilib.Address("السيد عبد الله احمد, عمارة ٢٢٢, المنامة, البحرين", {locale: 'ar-BH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد عبد الله احمد, عمارة ٢٢٢", parsedAddress.streetAddress);
@@ -44,7 +44,7 @@ function testParseAddressNoZip() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("السيد عبد الله احمد\nعمارة ٢٢٢\nالمنامة ٣١٦\n الجزائر", {locale: 'ar-BH'});
+	var parsedAddress = new ilib.Address("السيد عبد الله احمد\nعمارة ٢٢٢\nالمنامة ٣١٦\n البحرين", {locale: 'ar-BH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد عبد الله احمد, عمارة ٢٢٢", parsedAddress.streetAddress);
@@ -56,19 +56,19 @@ function testParseAddressManyLines() {
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("السيد عبد الله احمد, عمارة ٢٢٢,المنامة ٣١٦, الجزائر", {locale: 'ar-BH'});
+	var parsedAddress = new ilib.Address("السيد عبد الله احمد, عمارة ٢٢٢,المنامة ٣١٦, البحرين", {locale: 'ar-BH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد عبد الله احمد, عمارة ٢٢٢", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("المنامة", parsedAddress.locality);
-	assertEquals("10110",parsedAddress.postalCode);
+	assertEquals("٣١٦",parsedAddress.postalCode);
 	assertEquals("البحرين", parsedAddress.country);
 	assertEquals("BH", parsedAddress.countryCode);
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("السيد عبد الله احمد, عمارة ٢٢٢   \n\t\n المنامة ٣١٦\t\n\n  الجزائر  \n  \t\t\t", {locale: 'ar-BH'});
+	var parsedAddress = new ilib.Address("السيد عبد الله احمد, عمارة ٢٢٢  \n\t\n المنامة ٣١٦\t\n\n البحرين \n \t\t\t", {locale: 'ar-BH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد عبد الله احمد, عمارة ٢٢٢", parsedAddress.streetAddress);
@@ -80,10 +80,10 @@ function testParseAddressSuperfluousWhitespace() {
 };
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("السيد عبد الله احمد  عمارة ٢٢٢ المنامة ٣١٦  الجزائر", {locale: 'ar-BH'});
+	var parsedAddress = new ilib.Address("السيد عبد الله احمد عمارة ٢٢٢ المنامة ٣١٦  البحرين", {locale: 'ar-BH'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("السيد عبد الله احمد   عمارة ٢٢٢", parsedAddress.streetAddress);
+	assertEquals("السيد عبد الله احمد عمارة ٢٢٢", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("المنامة", parsedAddress.locality);
 	assertEquals("٣١٦", parsedAddress.postalCode);
@@ -92,12 +92,12 @@ function testParseAddressNoDelimiters() {
 };
 
 function testParseAddressSpecialChars() {
-	var parsedAddress = new ilib.Address("السيد عبد الله احمد, عمارة ٢٢٢,المنامة ٣١٦, الجزائر", {locale: 'ar-BH'});
+	var parsedAddress = new ilib.Address("السيد عبد الله احمد, عمارة ٢٢٢,المنامة ٣١٦,  البحرين", {locale: 'ar-BH'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد عبد الله احمد, عمارة ٢٢٢", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
-	assertEquals("الجزائر",parsedAddress.locality);
+	assertEquals("المنامة",parsedAddress.locality);
 	assertEquals("٣١٦", parsedAddress.postalCode);
 	assertEquals("البحرين", parsedAddress.country);
 	assertEquals("BH", parsedAddress.countryCode);
@@ -120,13 +120,13 @@ function testParseAddressFromUS() {
 function testFormatAddress() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد عبد الله احمد, عمارة ٢٢٢",
-		locality: "الجزائر",
-		postalCode: "١٦٠٢٦",
-		country: " الجزائر",
+		locality: " المنامة",
+		postalCode: "٣١٦",
+		country: "  البحرين",
 		countryCode: "BH"
 	}, {locale: 'ar-BH'});
 	
-	var expected = "السيد عبد الله احمد, عمارة ٢٢٢\nالمنامة ٣١٦\nالجزائر";
+	var expected = "السيد عبد الله احمد, عمارة ٢٢٢\nالمنامة ٣١٦\n البحرين";
 	var formatter = new ilib.AddressFmt({locale: 'ar-BH'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -134,9 +134,9 @@ function testFormatAddress() {
 function testFormatAddressFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد عبد الله احمد, عمارة ٢٢٢",
-		postalCode: "10110",
-		locality: "الجزائر",
-		country: " Bahrain",
+		postalCode: "٣١٦",
+		locality: " المنامة",
+		country: "Bahrain",
 		countryCode: "BH"
 	}, {locale: 'en-US'});
 	

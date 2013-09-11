@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 };
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
+	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str.,GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ILHAZ SHAHRIAR, 45 Hatai Str.", parsedAddress.streetAddress);

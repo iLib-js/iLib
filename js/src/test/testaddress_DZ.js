@@ -151,6 +151,7 @@ function testParseAddressARNormal() {
 	var parsedAddress = new ilib.Address("محمد سعيد, ٢ شارع الاستقلال, ١٦٠٢٦ الجزائر, الجزائر", {locale: 'ar-DZ'});
 	
 	assertNotUndefined(parsedAddress);
+	assertEquals("الجزائر", parsedAddress.country);
 	assertEquals("محمد سعيد, ٢ شارع الاستقلال", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("الجزائر", parsedAddress.locality);
@@ -190,7 +191,7 @@ function testParseAddressAROneLine() {
 	assertEquals("محمد سعيد, ٢ شارع الاستقلال", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("الجزائر", parsedAddress.locality);
-	assertEquals("10110",parsedAddress.postalCode);
+	assertEquals("١٦٠٢٦",parsedAddress.postalCode);
 	assertEquals("الجزائر", parsedAddress.country);
 	assertEquals("DZ", parsedAddress.countryCode);
 };
@@ -211,7 +212,7 @@ function testParseAddressARNoDelimiters() {
 	var parsedAddress = new ilib.Address("محمد سعيد  ٢ شارع الاستقلال ١٦٠٢٦ الجزائر  الجزائر", {locale: 'ar-DZ'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("محمد سعيد 2  ٢ شارع الاستقلال", parsedAddress.streetAddress);
+	assertEquals("محمد سعيد ٢ شارع الاستقلال", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("الجزائر", parsedAddress.locality);
 	assertEquals("١٦٠٢٦", parsedAddress.postalCode);
@@ -262,7 +263,7 @@ function testFormatARAddress() {
 function testFormatAddressARFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "محمد سعيد, ٢ شارع الاستقلال",
-		postalCode: "10110",
+		postalCode: "١٦٠٢٦",
 		locality: "الجزائر",
 		country: "Algeria",
 		countryCode: "DZ"

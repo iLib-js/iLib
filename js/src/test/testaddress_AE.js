@@ -29,50 +29,11 @@ function testParseAddressNormal() {
 	assertEquals("AE", parsedAddress.countryCode);
 };
 
-
-function testParseAddressNormalNative() {
-	var parsedAddress = new ilib.Address("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي\nالإمارات العربية المتحدة", {locale: 'ar-AE'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١", parsedAddress.streetAddress);
-	assertEquals("دبي", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertUndefined(parsedAddress.postalCode);
-	assertEquals("المملكة العربية السعودية", parsedAddress.country);
-	assertEquals("AE", parsedAddress.countryCode);
-};
-
-
-
-function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١\nدبي", {locale: 'ar-AE'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١", parsedAddress.streetAddress);
-	assertEquals("دبي", parsedAddress.locality);
-	assertUndefined(parsedAddress.postalCode);
-	assertUndefined(parsedAddress.postalCode);
-	assertUndefined(parsedAddress.country);
-	assertEquals("KW", parsedAddress.countryCode);
-};
-
-function testParseAddressNoCountrynative() {
-
-	var parsedAddress = new ilib.Address("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي", {locale: 'ar-AE'});
-	assertNotUndefined(parsedAddress);
-	assertEquals("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١", parsedAddress.streetAddress);
-	assertEquals("دبي", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertUndefined(parsedAddress.postalCode);
-	assertUndefined(parsedAddress.country);
-	assertEquals("AE", parsedAddress.countryCode);
-};
-
 function testParseAddressManyLines() {
 	var parsedAddress = new ilib.Address("تاج قصر الفندق\nصندوق البريد بالبوسطة\n٤٢٢١١\nدبي\nالإمارات العربية المتحدة\n\n", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١", parsedAddress.streetAddress);
+	assertEquals("تاج قصر الفندق, صندوق البريد بالبوسطة, ٤٢٢١١", parsedAddress.streetAddress);
 	assertEquals("دبي", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
@@ -105,22 +66,8 @@ function testParseAddressNoDelimiters() {
 	assertEquals("AE", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'en-US'});
-	
-	// the country name is in English because this address is for a contact in a US database
-	
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١", parsedAddress.streetAddress);
-	assertEquals("دبي", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertUndefined(parsedAddress.postalCode);
-	assertEquals("الإمارات العربية المتحدة", parsedAddress.country);
-	assertEquals("AE", parsedAddress.countryCode);
-};
 
-function testParseAddressFromUSNative() {
+function testParseAddressFromUS() {
 	var parsedAddress = new ilib.Address("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي\nUnited Arab Emirates", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database

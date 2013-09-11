@@ -18,25 +18,25 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCONGO", {locale: 'fr-CG'});
+	var parsedAddress = new ilib.Address("M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCongo-Brazzaville", {locale: 'fr-CG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Joseph Mbemba 12, rue Kakamoueka", parsedAddress.streetAddress);
 	assertEquals("BRAZZAVILLE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("CONGO", parsedAddress.country);
+	assertEquals("Congo-Brazzaville", parsedAddress.country);
 	assertEquals("CG", parsedAddress.countryCode);
 };
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCONGO", {locale: 'fr-CG'});
+	var parsedAddress = new ilib.Address("M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCongo-Brazzaville", {locale: 'fr-CG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Joseph Mbemba 12, rue Kakamoueka", parsedAddress.streetAddress);
 	assertEquals("BRAZZAVILLE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("CONGO", parsedAddress.country);
+	assertEquals("Congo-Brazzaville", parsedAddress.country);
 	assertEquals("CG", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
@@ -54,61 +54,61 @@ function testParseAddressNoCountry() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("M. Joseph Mbemba 12\nrue Kakamoueka\nBRAZZAVILLE\nCONGO\n\n\n", {locale: 'fr-CG'});
+	var parsedAddress = new ilib.Address("M. Joseph Mbemba 12\nrue Kakamoueka\nBRAZZAVILLE\nCongo-Brazzaville\n\n\n", {locale: 'fr-CG'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Joseph Mbemba 12, rue Kakamoueka", parsedAddress.streetAddress);
 	assertEquals("BRAZZAVILLE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("CONGO", parsedAddress.country);
+	assertEquals("Congo-Brazzaville", parsedAddress.country);
 	assertEquals("CG", parsedAddress.countryCode);
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("M. Joseph Mbemba 12 , rue Kakamoueka , BRAZZAVILLE , CONGO", {locale: 'fr-CG'});
+	var parsedAddress = new ilib.Address("M. Joseph Mbemba 12 , rue Kakamoueka , BRAZZAVILLE , Congo-Brazzaville", {locale: 'fr-CG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Joseph Mbemba 12, rue Kakamoueka", parsedAddress.streetAddress);
 	assertEquals("BRAZZAVILLE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("CONGO", parsedAddress.country);
+	assertEquals("Congo-Brazzaville", parsedAddress.country);
 	assertEquals("CG", parsedAddress.countryCode);
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\t\tM. Joseph Mbemba 12\t\t\true Kakamouekat\n\t\nBRAZZAVILLE\n\tCONGO\n\n\n", {locale: 'fr-CG'});
+	var parsedAddress = new ilib.Address("\t\t\t\tM. Joseph Mbemba 12\t\t\true Kakamoueka\n\t\nBRAZZAVILLE\n\tCongo-Brazzaville\n\n\n", {locale: 'fr-CG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Joseph Mbemba 12 rue Kakamoueka", parsedAddress.streetAddress);
 	assertEquals("BRAZZAVILLE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("CONGO", parsedAddress.country);
+	assertEquals("Congo-Brazzaville", parsedAddress.country);
 	assertEquals("CG", parsedAddress.countryCode);
 };
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("M. Joseph Mbemba 12, rue Kakamoueka BRAZZAVILLE CONGO", {locale: 'fr-CG'});
+	var parsedAddress = new ilib.Address("M. Joseph Mbemba 12 rue Kakamoueka BRAZZAVILLE Congo-Brazzaville", {locale: 'fr-CG'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("M. Joseph Mbemba 12, rue Kakamoueka", parsedAddress.streetAddress);
+	assertEquals("M. Joseph Mbemba 12 rue Kakamoueka", parsedAddress.streetAddress);
 	assertEquals("BRAZZAVILLE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("CONGO", parsedAddress.country);
+	assertEquals("Congo-Brazzaville", parsedAddress.country);
 	assertEquals("CG", parsedAddress.countryCode);
 };
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCONGO", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCongo - Brazzaville", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Joseph Mbemba 12, rue Kakamoueka", parsedAddress.streetAddress);
 	assertEquals("BRAZZAVILLE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("CONGO", parsedAddress.country);
+	assertEquals("Congo - Brazzaville", parsedAddress.country);
 	assertEquals("CG", parsedAddress.countryCode);
 };
 
@@ -116,11 +116,11 @@ function testFormatAddress() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "M. Joseph Mbemba 12, rue Kakamoueka",
 		locality: "BRAZZAVILLE",
-		country: "CONGO",
+		country: "Congo-Brazzaville",
 		countryCode: "CG"
 	}, {locale: 'fr-CG'});
 	
-	var expected = "M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCONGO";
+	var expected = "M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCongo-Brazzaville";
 	var formatter = new ilib.AddressFmt({locale: 'fr-CG'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -129,11 +129,11 @@ function testFormatAddressFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "M. Joseph Mbemba 12, rue Kakamoueka",
 		locality: "BRAZZAVILLE",
-		country: "CONGO",
+		country: "Congo - Brazzaville",
 		countryCode: "CG"
 	}, {locale: 'en-US'});
 	
-	var expected = "M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCONGO";
+	var expected = "M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCongo - Brazzaville";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
