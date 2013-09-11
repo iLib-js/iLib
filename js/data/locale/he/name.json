@@ -1,5 +1,4 @@
 {
-    "sortByHeadWord": true,
     "conjunctions": {
         "and1": "ו -",
         "and2": "ו -",
@@ -57,23 +56,11 @@
         "בן דוד של"
     ],
     "suffixes": [
-        "junior",
-        "jr",
-        "senior",
-        "sr",
-        "i",
-        "iii",
-        "iii",
-        "iv",
-        "v",
-        "vi",
-        "vii",
-        "viii",
-        "ix",
-        "x",
-        "phd",
-        "md",
-        "ret",
-        "retired"
+       "זוטר",
+         "ג'וניור",
+         "בכיר",
+         "דוקטור",
+         "להשרות",
+         "לשעבר"
     ]
 }
