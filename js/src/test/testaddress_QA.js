@@ -18,34 +18,34 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ P.O. ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\nﺎﻟﺩﻮﺣﺓ\nﻖﻃﺭ", {locale: 'ar-QA'});
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\nﺎﻟﺩﻮﺣﺓ\nقطر", {locale: 'ar-QA'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ P.O. ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣", parsedAddress.streetAddress);
+	assertEquals("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣", parsedAddress.streetAddress);
 	assertEquals("ﺎﻟﺩﻮﺣﺓ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("ﻖﻃﺭ", parsedAddress.country);
+	assertEquals("قطر", parsedAddress.country);
 	assertEquals("QA", parsedAddress.countryCode);
 };
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ P.O. ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\nﺎﻟﺩﻮﺣﺓ\nﻖﻃﺭ", {locale: 'ar-QA'});
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\nﺎﻟﺩﻮﺣﺓ\nقطر", {locale: 'ar-QA'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ P.O. ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣", parsedAddress.streetAddress);
+	assertEquals("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣", parsedAddress.streetAddress);
 	assertEquals("ﺎﻟﺩﻮﺣﺓ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("ﻖﻃﺭ", parsedAddress.country);
+	assertEquals("قطر", parsedAddress.country);
 	assertEquals("QA", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ P.O. ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\n\nﺎﻟﺩﻮﺣﺓ", {locale: 'ar-QA'});
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\n\nﺎﻟﺩﻮﺣﺓ", {locale: 'ar-QA'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ P.O. ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣", parsedAddress.streetAddress);
+	assertEquals("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣", parsedAddress.streetAddress);
 	assertEquals("ﺎﻟﺩﻮﺣﺓ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
@@ -54,79 +54,77 @@ function testParseAddressNoCountry() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ\nP.O. ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣\n\nﺎﻟﺩﻮﺣﺓ\n\nﻖﻃﺭ\n\n\n", {locale: 'ar-QA'});
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ\nمكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣\n\nﺎﻟﺩﻮﺣﺓ\n\nقطر\n\n\n", {locale: 'ar-QA'});
 	assertNotUndefined(parsedAddress);
-	assertEquals("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ, P.O. ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣", parsedAddress.streetAddress);
+	assertEquals("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ, مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣", parsedAddress.streetAddress);
 	assertEquals("ﺎﻟﺩﻮﺣﺓ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("ﻖﻃﺭ", parsedAddress.country);
+	assertEquals("قطر", parsedAddress.country);
 	assertEquals("QA", parsedAddress.countryCode);
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ , ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣ , ﺎﻟﺩﻮﺣﺓ , ﻖﻃﺭ", {locale: 'ar-QA'});
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ , ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣ , ﺎﻟﺩﻮﺣﺓ , قطر", {locale: 'ar-QA'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ, ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣", parsedAddress.streetAddress);
 	assertEquals("ﺎﻟﺩﻮﺣﺓ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("ﻖﻃﺭ", parsedAddress.country);
+	assertEquals("قطر", parsedAddress.country);
 	assertEquals("QA", parsedAddress.countryCode);
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ\n\n\tP.O. ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣\n\n\t\n\n\tﺎﻟﺩﻮﺣﺓ\n\n\tﻖﻃﺭ\n\n\n", {locale: 'ar-QA'});
+	var parsedAddress = new ilib.Address("\t\t\tﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ\n\n\tمكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣\n\n\t\n\n\tﺎﻟﺩﻮﺣﺓ\n\n\tقطر\n\n\n", {locale: 'ar-QA'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ, P.O. ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣", parsedAddress.streetAddress);
+	assertEquals("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ, مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ٣٢٦٣", parsedAddress.streetAddress);
 	assertEquals("ﺎﻟﺩﻮﺣﺓ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("ﻖﻃﺭ", parsedAddress.country);
+	assertEquals("قطر", parsedAddress.country);
 	assertEquals("QA", parsedAddress.countryCode);
 };
 
 
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ P.O. ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\n\nﺎﻟﺩﻮﺣﺓ\nﻖﻃﺭ", {locale: 'en-US'});
-	
-	// the country name is in German because this address is for a contact in a German database
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\n\nﺎﻟﺩﻮﺣﺓ\nQatar", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ P.O. ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣", parsedAddress.streetAddress);
+	assertEquals("ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣", parsedAddress.streetAddress);
 	assertEquals("ﺎﻟﺩﻮﺣﺓ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("ﻖﻃﺭ", parsedAddress.country);
+	assertEquals("Qatar", parsedAddress.country);
 	assertEquals("QA", parsedAddress.countryCode);
 };
 
 function testFormatAddress() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ P.O. ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣",
+		streetAddress: "ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣",
 		locality: "ﺎﻟﺩﻮﺣﺓ",
 		
-		country: "ﻖﻃﺭ",
+		country: "قطر",
 		countryCode: "QA"
 	}, {locale: 'ar-QA'});
 	
-	var expected = "ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ P.O. ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\n\nﺎﻟﺩﻮﺣﺓ\nﻖﻃﺭ";
+	var expected = "ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\n\nﺎﻟﺩﻮﺣﺓ\nقطر";
 	var formatter = new ilib.AddressFmt({locale: 'ar-QA'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressFromUS() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ P.O. ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣",
+		streetAddress: "ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣",
 		locality: "ﺎﻟﺩﻮﺣﺓ",
-		country: "ﻖﻃﺭ",
+		country: "Qatar",
 		countryCode: "QA"
 	}, {locale: 'en-US'});
 	
-	var expected = "ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ P.O. ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\n\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫ\nﻖﻃﺭ";
+	var expected = "ﺎﻠﺴﻳﺩ ﻊﺑﺩ ﺎﻠﻠﻫ ﺎﻠﻣﺮﻴﺨﻳ مكتب بريد ﻡﺮﺒﻋ ﺮﻘﻣ ٣٢٦٣\n\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫ\nQatar";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
