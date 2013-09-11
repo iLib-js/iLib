@@ -1,5 +1,5 @@
 /*
- * testaddress_SA.js - test the address parsing and formatting routines
+ * testaddress_EG.js - test the address parsing and formatting routines
  * 
  * Copyright © 2013, JEDLSoft
  *
@@ -18,111 +18,111 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi\nAl-Mohandessine GIZA 12411\nEGYPT", {locale: 'ar-EG'});
+	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين الجيزة ١٢٤١١\nمصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi", parsedAddress.streetAddress);
-	assertEquals("Al-Mohandessine", parsedAddress.locality);
-	assertEquals("GIZA", parsedAddress.region);
-	assertEquals("12411", parsedAddress.postalCode);
-	assertEquals("EGYPT", parsedAddress.country);
+	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
+	assertEquals("آل المهندسين", parsedAddress.locality);
+	assertEquals("الجيزة", parsedAddress.region);
+	assertEquals("١٢٤١١", parsedAddress.postalCode);
+	assertEquals("مصر", parsedAddress.country);
 	assertEquals("EG", parsedAddress.countryCode);
 };
 
 
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi\nAl-Mohandessine GIZA\nEGYPT", {locale: 'ar-EG'});
+	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين الجيزة\nمصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Abdullah Nassir P.O. Box 15501", parsedAddress.streetAddress);
-	assertEquals("Al-Mohandessine", parsedAddress.locality);
-	assertEquals("GIZA", parsedAddress.region);
-	assertEquals("EGYPT", parsedAddress.country);
+	assertEquals("آل المهندسين", parsedAddress.locality);
+	assertEquals("الجيزة", parsedAddress.region);
+	assertEquals("مصر", parsedAddress.country);
 	assertEquals("EG", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
 
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi\nAl-Mohandessine GIZA 12411", {locale: 'ar-EG'});
+	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين الجيزة ١٢٤١١", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi", parsedAddress.streetAddress);
-	assertEquals("Al-Mohandessine", parsedAddress.locality);
-	assertEquals("GIZA", parsedAddress.region);
+	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
+	assertEquals("آل المهندسين", parsedAddress.locality);
+	assertEquals("الجيزة", parsedAddress.region);
 	assertEquals("EG", parsedAddress.countryCode);
-	assertEquals("12411", parsedAddress.postalCode);
+	assertEquals("١٢٤١١", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	
 };
 
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("Mr. Mohamed Ahmed Mahmoud 30\nRue Ahmed Orabi\nAl-Mohandessine\nGIZA\n12411\nEGYPT\n\n", {locale: 'ar-EG'});
+	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠\nشارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nمصر\n\n", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi", parsedAddress.streetAddress);
-	assertEquals("Al-Mohandessine", parsedAddress.locality);
-	assertEquals("GIZA", parsedAddress.region);
+	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
+	assertEquals("آل المهندسين", parsedAddress.locality);
+	assertEquals("الجيزة", parsedAddress.region);
 	assertEquals("EG", parsedAddress.countryCode);
-	assertEquals("12411", parsedAddress.postalCode);
-	assertEquals("EGYPT", parsedAddress.country);
+	assertEquals("١٢٤١١", parsedAddress.postalCode);
+	assertEquals("مصر", parsedAddress.country);
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("Mr. Mohamed Ahmed Mahmoud 30 , Rue Ahmed Orabi , Al-Mohandessine , GIZA , 12411 , EGYPT", {locale: 'ar-EG'});
+	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠ , شارع احمد عرابى , آل المهندسين , الجيزة , ١٢٤١١ , مصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi", parsedAddress.streetAddress);
-	assertEquals("Al-Mohandessine", parsedAddress.locality);
-	assertEquals("GIZA", parsedAddress.region);
+	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
+	assertEquals("آل المهندسين", parsedAddress.locality);
+	assertEquals("الجيزة", parsedAddress.region);
 	assertEquals("EG", parsedAddress.countryCode);
-	assertEquals("12411", parsedAddress.postalCode);
-	assertEquals("EGYPT", parsedAddress.country);
+	assertEquals("١٢٤١١", parsedAddress.postalCode);
+	assertEquals("مصر", parsedAddress.country);
 };
 
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi Al-Mohandessine GIZA 12411 EGYPT", {locale: 'ar-EG'});
+	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى آل المهندسين الجيزة ١٢٤١١ مصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi", parsedAddress.streetAddress);
-	assertEquals("Al-Mohandessine", parsedAddress.locality);
-	assertEquals("GIZA", parsedAddress.region);
+	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
+	assertEquals("آل المهندسين", parsedAddress.locality);
+	assertEquals("الجيزة", parsedAddress.region);
 	assertEquals("EG", parsedAddress.countryCode);
-	assertEquals("12411", parsedAddress.postalCode);
-	assertEquals("EGYPT", parsedAddress.country);
+	assertEquals("١٢٤١١", parsedAddress.postalCode);
+	assertEquals("مصر", parsedAddress.country);
 };
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi\nAl-Mohandessine GIZA 12411\nEGYPT", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين الجيزة ١٢٤١١\nEgypt", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
 	
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi", parsedAddress.streetAddress);
-	assertEquals("Al-Mohandessine", parsedAddress.locality);
-	assertEquals("GIZA", parsedAddress.region);
+	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
+	assertEquals("آل المهندسين", parsedAddress.locality);
+	assertEquals("الجيزة", parsedAddress.region);
 	assertEquals("EG", parsedAddress.countryCode);
-	assertEquals("12411", parsedAddress.postalCode);
-	assertEquals("EGYPT", parsedAddress.country);
+	assertEquals("١٢٤١١", parsedAddress.postalCode);
+	assertEquals("Egypt", parsedAddress.country);
 };
 
 
 function testFormatAddressEG() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi",
-		locality: "Al-Mohandessine",
+		streetAddress: "السيد محمد احمد محمود ٣٠, شارع احمد عرابى",
+		locality: "آل المهندسين",
 		region: null,
-		postalCode: "12411",
-		country: "EGYPT",
+		postalCode: "١٢٤١١",
+		country: "مصر",
 		countryCode: "EG"
 	}, {locale: 'ar-EG'});
 	
-	var expected = "Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi\nAl-Mohandessine GIZA 12411\nEGYPT";
+	var expected = "السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين الجيزة ١٢٤١١\nمصر";
 	var formatter = new ilib.AddressFmt({locale: 'ar-EG'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -130,15 +130,15 @@ function testFormatAddressEG() {
 
 function testFormatAddressFromUS() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi",
-		locality: "Al-Mohandessine",
+		streetAddress: "السيد محمد احمد محمود ٣٠, شارع احمد عرابى",
+		locality: "آل المهندسين",
 		region: null,
-		postalCode: "12411",
-		country: "EGYPT",
+		postalCode: "١٢٤١١",
+		country: "Egypt",
 		countryCode: "EG"
 	}, {locale: 'en-US'});
 	
-	var expected = "Mr. Mohamed Ahmed Mahmoud 30, Rue Ahmed Orabi\nAl-Mohandessine GIZA 12411\nEGYPT";
+	var expected = "السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين الجيزة ١٢٤١١\nEgypt";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
