@@ -18,26 +18,26 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nﺎﻠﺳﻭﺩﺎﻧ", {locale: 'ar-SD'});
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nالسودان", {locale: 'ar-SD'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١", parsedAddress.streetAddress);
 	assertEquals("ﺎﻠﺧﺮﻃﻮﻣ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("١١١١١", parsedAddress.postalCode);
-	assertEquals("ﺎﻠﺳﻭﺩﺎﻧ", parsedAddress.country);
-	assertEquals("OM", parsedAddress.countryCode);
+	assertEquals("السودان", parsedAddress.country);
+	assertEquals("SD", parsedAddress.countryCode);
 };
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\nﺎﻠﺧﺮﻃﻮﻣ\nﺎﻠﺳﻭﺩﺎﻧ", {locale: 'ar-SD'});
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\nﺎﻠﺧﺮﻃﻮﻣ\nالسودان", {locale: 'ar-SD'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١", parsedAddress.streetAddress);
 	assertEquals("ﺎﻠﺧﺮﻃﻮﻣ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("ﺎﻠﺳﻭﺩﺎﻧ", parsedAddress.country);
-	assertEquals("OM", parsedAddress.countryCode);
+	assertEquals("السودان", parsedAddress.country);
+	assertEquals("SD", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
 
@@ -50,57 +50,57 @@ function testParseAddressNoCountry() {
 	assertUndefined(parsedAddress.region);
 	assertEquals("١١١١١", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
-	assertEquals("OM", parsedAddress.countryCode);
+	assertEquals("SD", parsedAddress.countryCode);
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\nﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\n\nﺎﻠﺳﻭﺩﺎﻧ\n\n\n", {locale: 'ar-OM'});
+	var parsedAddress = new ilib.Address("ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\nﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\n\nالسودان\n\n\n", {locale: 'ar-OM'});
 	assertEquals("ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١, ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ", parsedAddress.streetAddress);
 	assertEquals("ﺎﻠﺧﺮﻃﻮﻣ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("١١١١١", parsedAddress.postalCode);
-	assertEquals("ﺎﻠﺳﻭﺩﺎﻧ", parsedAddress.country);
-	assertEquals("OM", parsedAddress.countryCode);
+	assertEquals("السودان", parsedAddress.country);
+	assertEquals("SD", parsedAddress.countryCode);
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١ ,  ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ , ١١١١١ , ﺎﻠﺧﺮﻃﻮﻣ , ﺎﻠﺳﻭﺩﺎﻧ", {locale: 'ar-SD'});
+	var parsedAddress = new ilib.Address("ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١ ,  ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ , ١١١١١ , ﺎﻠﺧﺮﻃﻮﻣ , السودان", {locale: 'ar-SD'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١, ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ", parsedAddress.streetAddress);
 	assertEquals("ﺎﻠﺧﺮﻃﻮﻣ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("١١١١١", parsedAddress.postalCode);
-	assertEquals("ﺎﻠﺳﻭﺩﺎﻧ", parsedAddress.country);
-	assertEquals("OM", parsedAddress.countryCode);
+	assertEquals("السودان", parsedAddress.country);
+	assertEquals("SD", parsedAddress.countryCode);
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n\n\tﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ\n\n\t١١١١١\n\n\tﺎﻠﺧﺮﻃﻮﻣ\n\n\tﺎﻠﺳﻭﺩﺎﻧ\n\n\n", {locale: 'ar-SD'});
+	var parsedAddress = new ilib.Address("\t\t\tﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n\n\tﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ\n\n\t١١١١١\n\n\tﺎﻠﺧﺮﻃﻮﻣ\n\n\tالسودان\n\n\n", {locale: 'ar-SD'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١, ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ", parsedAddress.streetAddress);
 	assertEquals("ﺎﻠﺧﺮﻃﻮﻣ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("١١١١١", parsedAddress.postalCode);
-	assertEquals("ﺎﻠﺳﻭﺩﺎﻧ", parsedAddress.country);
-	assertEquals("OM", parsedAddress.countryCode);
+	assertEquals("السودان", parsedAddress.country);
+	assertEquals("SD", parsedAddress.countryCode);
 };
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١ ١١١١١  ﺎﻠﺧﺮﻃﻮﻣ ﺎﻠﺳﻭﺩﺎﻧ", {locale: 'ar-SD'});
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١ ١١١١١  ﺎﻠﺧﺮﻃﻮﻣ السودان", {locale: 'ar-SD'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١", parsedAddress.streetAddress);
 	assertEquals("ﺎﻠﺧﺮﻃﻮﻣ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("١١١١١", parsedAddress.postalCode);
-	assertEquals("ﺎﻠﺳﻭﺩﺎﻧ", parsedAddress.country);
-	assertEquals("OM", parsedAddress.countryCode);
+	assertEquals("السودان", parsedAddress.country);
+	assertEquals("SD", parsedAddress.countryCode);
 };
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nﺎﻠﺳﻭﺩﺎﻧ", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nSudan", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
 	
@@ -109,8 +109,8 @@ function testParseAddressFromUS() {
 	assertEquals("ﺎﻠﺧﺮﻃﻮﻣ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("١١١١١", parsedAddress.postalCode);
-	assertEquals("ﺎﻠﺳﻭﺩﺎﻧ", parsedAddress.country);
-	assertEquals("OM", parsedAddress.countryCode);
+	assertEquals("Sudan", parsedAddress.country);
+	assertEquals("SD", parsedAddress.countryCode);
 };
 
 function testFormatAddress() {
@@ -118,11 +118,11 @@ function testFormatAddress() {
 		streetAddress: "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١",
 		locality: "ﺎﻠﺧﺮﻃﻮﻣ",
 		postalCode: "١١١١١",
-		country: "ﺎﻠﺳﻭﺩﺎﻧ",
-		countryCode: "OM"
+		country: "السودان",
+		countryCode: "SD"
 	}, {locale: 'ar-SD'});
 	
-	var expected = "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nﺎﻠﺳﻭﺩﺎﻧ";
+	var expected = "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nالسودان";
 	var formatter = new ilib.AddressFmt({locale: 'ar-SD'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -132,11 +132,11 @@ function testFormatAddressFromUS() {
 		streetAddress: "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١",
 		locality: "ﺎﻠﺧﺮﻃﻮﻣ",
 		postalCode: "١١١١١",
-		country: "ﺎﻠﺳﻭﺩﺎﻧ",
-		countryCode: "OM"
+		country: "Sudan",
+		countryCode: "SD"
 	}, {locale: 'en-US'});
 	
-	var expected = "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nﺎﻠﺳﻭﺩﺎﻧ";
+	var expected = "ﺎﻠﺴﻳﺩ ﻢﺤﻣﺩ ﺄﺤﻣﺩ ﻊﻠﻴﻌﻣﺍﺭﺓ ﺪﻳ ﻻ ﺍﻺﺧﺍﺀﺵﺍﺮﻋ ﺂﻟ ﻮﺴﻄﻤﻜﺘﺑ ﺏﺮﻳﺩ ٢١١\n١١١١١\nﺎﻠﺧﺮﻃﻮﻣ\nSudan";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
