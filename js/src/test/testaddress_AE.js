@@ -1,5 +1,5 @@
 /*
- * testaddress_SA.js - test the address parsing and formatting routines
+ * testaddress_AE.js - test the address parsing and formatting routines
  * 
  * Copyright © 2013, JEDLSoft
  *
@@ -18,23 +18,23 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Taj Palace Hotel P O Box 42211\nDubai\nUnited Arab Emirates", {locale: 'ar-AE'});
+	var parsedAddress = new ilib.Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١\nدبي\nالإمارات العربية المتحدة", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Taj Palace Hotel P O Box 42211", parsedAddress.streetAddress);
-	assertEquals("Dubai", parsedAddress.locality);
+	assertEquals("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١", parsedAddress.streetAddress);
+	assertEquals("دبي", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("United Arab Emirates", parsedAddress.country);
+	assertEquals("الإمارات العربية المتحدة", parsedAddress.country);
 	assertEquals("AE", parsedAddress.countryCode);
 };
 
 
 function testParseAddressNormalNative() {
-	var parsedAddress = new ilib.Address("فندق تاج بالاس P O صندوق 42211\nدبي\nالإمارات العربية المتحدة", {locale: 'ar-AE'});
+	var parsedAddress = new ilib.Address("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي\nالإمارات العربية المتحدة", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("فندق تاج بالاس P O صندوق 42211", parsedAddress.streetAddress);
+	assertEquals("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١", parsedAddress.streetAddress);
 	assertEquals("دبي", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
@@ -45,11 +45,11 @@ function testParseAddressNormalNative() {
 
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Taj Palace Hotel P O Box 42211\nDubai", {locale: 'ar-AE'});
+	var parsedAddress = new ilib.Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١\nدبي", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Taj Palace Hotel P O Box 42211", parsedAddress.streetAddress);
-	assertEquals("Dubai", parsedAddress.locality);
+	assertEquals("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١", parsedAddress.streetAddress);
+	assertEquals("دبي", parsedAddress.locality);
 	assertUndefined(parsedAddress.postalCode);
 	assertUndefined(parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
@@ -58,9 +58,9 @@ function testParseAddressNoCountry() {
 
 function testParseAddressNoCountrynative() {
 
-	var parsedAddress = new ilib.Address("فندق تاج بالاس P O صندوق 42211\nدبي", {locale: 'ar-AE'});
+	var parsedAddress = new ilib.Address("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي", {locale: 'ar-AE'});
 	assertNotUndefined(parsedAddress);
-	assertEquals("فندق تاج بالاس P O صندوق 42211", parsedAddress.streetAddress);
+	assertEquals("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١", parsedAddress.streetAddress);
 	assertEquals("دبي", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
@@ -69,69 +69,69 @@ function testParseAddressNoCountrynative() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("Taj Palace Hotel\nP O Box\n42211\nDubai\nUnited Arab Emirates\n\n", {locale: 'ar-AE'});
+	var parsedAddress = new ilib.Address("تاج قصر الفندق\nصندوق البريد بالبوسطة\n٤٢٢١١\nدبي\nالإمارات العربية المتحدة\n\n", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Taj Palace Hotel P O Box 42211", parsedAddress.streetAddress);
-	assertEquals("Dubai", parsedAddress.locality);
+	assertEquals("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١", parsedAddress.streetAddress);
+	assertEquals("دبي", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("United Arab Emirates", parsedAddress.country);
+	assertEquals("الإمارات العربية المتحدة", parsedAddress.country);
 	assertEquals("AE", parsedAddress.countryCode);
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("Taj Palace Hotel P O Box 42211 Dubai United Arab Emirates", {locale: 'ar-AE'});
+	var parsedAddress = new ilib.Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Taj Palace Hotel P O Box 42211", parsedAddress.streetAddress);
-	assertEquals("Dubai", parsedAddress.locality);
+	assertEquals("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١", parsedAddress.streetAddress);
+	assertEquals("دبي", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("United Arab Emirates", parsedAddress.country);
+	assertEquals("الإمارات العربية المتحدة", parsedAddress.country);
 	assertEquals("AE", parsedAddress.countryCode);
 };
 
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Taj Palace Hotel P O Box 42211 Dubai United Arab Emirates", {locale: 'ar-AE'});
+	var parsedAddress = new ilib.Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Taj Palace Hotel P O Box 42211", parsedAddress.streetAddress);
-	assertEquals("Dubai", parsedAddress.locality);
+	assertEquals("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١", parsedAddress.streetAddress);
+	assertEquals("دبي", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("United Arab Emirates", parsedAddress.country);
+	assertEquals("الإمارات العربية المتحدة", parsedAddress.country);
 	assertEquals("AE", parsedAddress.countryCode);
 };
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Taj Palace Hotel P O Box 42211 Dubai United Arab Emirates", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Taj Palace Hotel P O Box 42211", parsedAddress.streetAddress);
-	assertEquals("Dubai", parsedAddress.locality);
+	assertEquals("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١", parsedAddress.streetAddress);
+	assertEquals("دبي", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("United Arab Emirates", parsedAddress.country);
+	assertEquals("الإمارات العربية المتحدة", parsedAddress.country);
 	assertEquals("AE", parsedAddress.countryCode);
 };
 
 function testParseAddressFromUSNative() {
-	var parsedAddress = new ilib.Address("فندق تاج بالاس P O صندوق 42211\nدبي\nالإمارات العربية المتحدة", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي\nUnited Arab Emirates", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("فندق تاج بالاس P O صندوق 42211", parsedAddress.streetAddress);
+	assertEquals("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١", parsedAddress.streetAddress);
 	assertEquals("دبي", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
-	assertEquals("المملكة العربية السعودية", parsedAddress.country);
+	assertEquals("United Arab Emirates", parsedAddress.country);
 	assertEquals("AE", parsedAddress.countryCode);
 };
 
@@ -139,7 +139,7 @@ function testParseAddressFromUSNative() {
 
 function testFormatAddressSANative() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "فندق تاج بالاس P O صندوق 42211",
+		streetAddress: "فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١",
 		locality: "دبي",
 		region: null,
 		postalCode: null,
@@ -147,22 +147,22 @@ function testFormatAddressSANative() {
 		countryCode: "AE"
 	}, {locale: 'ar-AE'});
 	
-	var expected = "فندق تاج بالاس P O صندوق 42211\nدبي\nالإمارات العربية المتحدة";
+	var expected = "فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي\nالإمارات العربية المتحدة";
 	var formatter = new ilib.AddressFmt({locale: 'ar-AE'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressFromUS() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Taj Palace Hotel P O Box 42211",
-		locality: "Dubai",
+		streetAddress: "تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١",
+		locality: "دبي",
 		region: null,
 		postalCode: null,
 		country: "United Arab Emirates",
 		countryCode: "AE"
 	}, {locale: 'en-US'});
 	
-	var expected = "Taj Palace Hotel P O Box 42211\nDubai\nUnited Arab Emirates";
+	var expected = "تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١\nدبي\nUnited Arab Emirates";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
