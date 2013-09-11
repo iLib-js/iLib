@@ -18,25 +18,25 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ\nﺕﻮﻨﺳ", {locale: 'ar-TN'});
+	var parsedAddress = new ilib.Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس", {locale: 'ar-TN'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢", parsedAddress.streetAddress);
 	assertEquals("ﻊﻴﻧ ﺩﺭﺎﻬﻣ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("٨١٢٩", parsedAddress.postalCode);
-	assertEquals("ﺕﻮﻨﺳ", parsedAddress.country);
+	assertEquals("تونس", parsedAddress.country);
 	assertEquals("TN", parsedAddress.countryCode);
 };
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nﺕﻮﻨﺳ", {locale: 'ar-TN'});
+	var parsedAddress = new ilib.Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس", {locale: 'ar-TN'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢", parsedAddress.streetAddress);
 	assertEquals("ﻊﻴﻧ ﺩﺭﺎﻬﻣ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("ﺕﻮﻨﺳ", parsedAddress.country);
+	assertEquals("تونس", parsedAddress.country);
 	assertEquals("TN", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
@@ -54,41 +54,40 @@ function testParseAddressNoCountry() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\nﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\n\nﺕﻮﻨﺳ\n\n\n", {locale: 'ar-TN'});
+	var parsedAddress = new ilib.Address("ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\nﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\n\nتونس\n\n\n", {locale: 'ar-TN'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢, ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ", parsedAddress.streetAddress);
 	assertEquals("ﻊﻴﻧ ﺩﺭﺎﻬﻣ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("٨١٢٩", parsedAddress.postalCode);
-	assertEquals("ﺕﻮﻨﺳ", parsedAddress.country);
+	assertEquals("تونس", parsedAddress.country);
 	assertEquals("TN", parsedAddress.countryCode);
 };
 
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n\n\tﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ\n\n\t٨١٢٩\n\n\tﻊﻴﻧ ﺩﺭﺎﻬﻣ\n\n\tﺕﻮﻨﺳ\n\n\n", {locale: 'ar-TN'});
+	var parsedAddress = new ilib.Address("\t\t\tﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n\n\tﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ\n\n\t٨١٢٩\n\n\tﻊﻴﻧ ﺩﺭﺎﻬﻣ\n\n\tتونس\n\n\n", {locale: 'ar-TN'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢, ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ", parsedAddress.streetAddress);
 	assertEquals("ﻊﻴﻧ ﺩﺭﺎﻬﻣ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("٨١٢٩", parsedAddress.postalCode);
-	assertEquals("ﺕﻮﻨﺳ", parsedAddress.country);
+	assertEquals("تونس", parsedAddress.country);
 	assertEquals("TN", parsedAddress.countryCode);
 };
 
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nﺕﻮﻨﺳ", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nTunisia", {locale: 'en-US'});
 	
-	// the country name is in German because this address is for a contact in a German database
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢", parsedAddress.streetAddress);
 	assertEquals("ﻊﻴﻧ ﺩﺭﺎﻬﻣ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("٨١٢٩", parsedAddress.postalCode);
-	assertEquals("ﺕﻮﻨﺳ", parsedAddress.country);
+	assertEquals("Tunisia", parsedAddress.country);
 	assertEquals("TN", parsedAddress.countryCode);
 };
 
@@ -97,11 +96,11 @@ function testFormatAddress() {
 		streetAddress: "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢",
 		locality: "ﻊﻴﻧ ﺩﺭﺎﻬﻣ",
 		postalCode: "٨١٢٩",
-		country: "ﺕﻮﻨﺳ",
+		country: "تونس",
 		countryCode: "TN"
 	}, {locale: 'ar-TN'});
 	
-	var expected = "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nﺕﻮﻨﺳ";
+	var expected = "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس";
 	var formatter = new ilib.AddressFmt({locale: 'ar-TN'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -111,11 +110,11 @@ function testFormatAddressFromUS() {
 		streetAddress: "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢",
 		locality: "ﻊﻴﻧ ﺩﺭﺎﻬﻣ",
 		postalCode: "٨١٢٩",
-		country: "ﺕﻮﻨﺳ",
+		country: "Tunisia",
 		countryCode: "TN"
 	}, {locale: 'en-US'});
 	
-	var expected = "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫ\nﺕﻮﻨﺳ";
+	var expected = "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩\nﺎﻠﻤﺴﻛﺎﺗ ﻊﻨﺑ ﻂﻴﺑ ﺎﻠﺷﺫ\nTunisia";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
