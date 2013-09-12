@@ -211,7 +211,9 @@ function suite() {
 	    "testaddress_SY.js",
 	    "testaddress_RU.js",
 	    "testaddress_ME.js",
-	    "testaddress_JP.js"
+	    "testaddress_JP.js",
+	    "testaddress_IN.js",
+	    "testaddress_IQ.js"
 	];
 
     // uncompiled
