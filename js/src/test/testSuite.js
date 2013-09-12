@@ -206,7 +206,8 @@ function suite() {
 	    "testaddress_OM.js",
 	    "testaddress_YE.js",
 	    "testaddress_QA.js",
-	    //"testaddress_TN.js",
+	    "testaddress_TN.js",
+	    "testaddress_EG.js",
 	    "testaddress_SY.js"
 	];
 

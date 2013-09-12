@@ -21,6 +21,7 @@ function testParseAddressNormal() {
 	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nمصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
+	assertEquals("مصر", parsedAddress.country);
 	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
 	assertEquals("آل المهندسين", parsedAddress.locality);
 	assertEquals("الجيزة", parsedAddress.region);
@@ -35,7 +36,7 @@ function testParseAddressNoZip() {
 	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\nمصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Mr. Abdullah Nassir P.O. Box 15501", parsedAddress.streetAddress);
+	assertEquals("السيد محمد احمد محمود ٣٠, شارع احمد عرابى", parsedAddress.streetAddress);
 	assertEquals("آل المهندسين", parsedAddress.locality);
 	assertEquals("الجيزة", parsedAddress.region);
 	assertEquals("مصر", parsedAddress.country);
@@ -112,13 +113,13 @@ function testFormatAddressEG() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد محمد احمد محمود ٣٠, شارع احمد عرابى",
 		locality: "آل المهندسين",
-		region: null,
+		region: "الجيزة",
 		postalCode: "١٢٤١١",
 		country: "مصر",
 		countryCode: "EG"
 	}, {locale: 'ar-EG'});
 	
-	var expected = "السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\n الجيزة\n ١٢٤١١\nمصر";
+	var expected = "السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nمصر";
 	var formatter = new ilib.AddressFmt({locale: 'ar-EG'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -128,13 +129,13 @@ function testFormatAddressFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد محمد احمد محمود ٣٠, شارع احمد عرابى",
 		locality: "آل المهندسين",
-		region: null,
+		region: "الجيزة",
 		postalCode: "١٢٤١١",
 		country: "Egypt",
 		countryCode: "EG"
 	}, {locale: 'en-US'});
 	
-	var expected = "السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\n الجيزة\n ١٢٤١١\nEgypt";
+	var expected = "السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nEgypt";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
