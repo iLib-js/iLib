@@ -25,7 +25,7 @@
  * @namespace
  * Provides a set of static routines that return information about characters.
  * These routines emulate the C-library ctype functions. The characters must be 
- * encoded in utf-8, as no other charsets are currently supported. Only the first
+ * encoded in utf-16, as no other charsets are currently supported. Only the first
  * character of the given string is tested.
  */
 ilib.CType = {
