@@ -78,7 +78,7 @@ function testParseAddressOneLine() {
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Петров Иван Сергеевич ул\t\t\rЛесная D. 5 поз\t\t\rЛесной\t\t\rАЛЕКСЕЕВСКИЙ R-N\n\t\trВоронежская область\n\t\r247112\n\t\rРоссия", {locale: 'ru-RU'});
+	var parsedAddress = new ilib.Address("Петров Иван Сергеевич ул\t\t\rЛесная D. 5 поз\t\t\rЛесной\n\tАЛЕКСЕЕВСКИЙ R-N\n\t\tВоронежская область\n\t\r247112\n\t\rРоссия", {locale: 'ru-RU'});
 	
 	assertNotUndefined(parsedAddress);
       assertEquals("Петров Иван Сергеевич ул Лесная D. 5 поз Лесной", parsedAddress.streetAddress);
@@ -109,7 +109,7 @@ function testParseAddressFromUS() {
 	assertEquals("АЛЕКСЕЕВСКИЙ R-N", parsedAddress.locality);
 	assertEquals("Воронежская область", parsedAddress.region);
 	assertEquals("247112", parsedAddress.postalCode);
-	assertEquals("Россия", parsedAddress.country);
+	assertEquals("Russia", parsedAddress.country);
 	assertEquals("RU", parsedAddress.countryCode);
 };
 

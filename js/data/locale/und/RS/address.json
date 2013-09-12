@@ -29,12 +29,6 @@
 			"name": "postalCode",
 			"line": "last",
 			"pattern": "[0-9]{5}"
-		}
-
-		
-		
-		
-		
-		
+		}		
 	]	
 }

@@ -93,9 +93,9 @@ function testParseAddressNoCountry() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("G. Petar Petrović Ul.\nSlobode br. 1\n\n81000\nPodgorica\n\nCrna Gora\n\n\n", {locale: 'hr-ME'});
+	var parsedAddress = new ilib.Address("G. Petar Petrović Ul.\nSlobode br. 1\n\n81000 Podgorica\n\nCrna Gora\n\n\n", {locale: 'hr-ME'});
 	assertNotUndefined(parsedAddress);
-	assertEquals("G. Petar Petrović Ul., Slobode br. 1, Street No 30, Sector F-7/1", parsedAddress.streetAddress);
+	assertEquals("G. Petar Petrović Ul., Slobode br. 1", parsedAddress.streetAddress);
 	assertEquals("Podgorica", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("81000", parsedAddress.postalCode);

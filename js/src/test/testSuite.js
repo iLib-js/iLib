@@ -200,15 +200,18 @@ function suite() {
 	    "testaddress_BY.js",
 	    "testaddress_KW.js",
 	    "testaddress_AE.js",
-	   // "testaddress_KG.js",
-           // "testaddress_VN.js",
+	    "testaddress_KG.js",
+            "testaddress_VN.js",
 	    "testaddress_SD.js",
 	    "testaddress_OM.js",
 	    "testaddress_YE.js",
 	    "testaddress_QA.js",
 	    "testaddress_TN.js",
 	    "testaddress_EG.js",
-	    "testaddress_SY.js"
+	    "testaddress_SY.js",
+	    "testaddress_RU.js",
+	    "testaddress_ME.js",
+	    "testaddress_JP.js"
 	];
 
     // uncompiled
