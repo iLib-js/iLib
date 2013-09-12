@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("MIGUEL ÁNGEL MENCHÚ , AVENIDA PETAPA 37 , Z. 12 , GUATEMALA , 01012 , GUATEMALA", {locale: 'es-GT'});
+	var parsedAddress = new ilib.Address("MIGUEL ÁNGEL MENCHÚ , AVENIDA PETAPA 37 , Z. 12 ,01012 GUATEMALA , GUATEMALA", {locale: 'es-GT'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("MIGUEL ÁNGEL MENCHÚ, AVENIDA PETAPA 37, Z. 12", parsedAddress.streetAddress);

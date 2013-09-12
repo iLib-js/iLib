@@ -78,7 +78,7 @@ function testParseAddressOneLine() {
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Sr. Juan C. Martel\n\n\n\rCM1102\r\nLAS LAJAS\t\t\rCM1102\r\r\rComayagua\t\t\rHONDURAS", {locale: 'es-HN'});
+	var parsedAddress = new ilib.Address("Sr. Juan C. Martel\n\n\n\rCM1102\r\nLAS LAJAS\r\r\rComayagua\t\t\rHONDURAS", {locale: 'es-HN'});
 	
 	assertNotUndefined(parsedAddress);
         assertEquals("Sr. Juan C. Martel", parsedAddress.streetAddress);

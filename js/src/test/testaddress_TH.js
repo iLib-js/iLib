@@ -56,20 +56,6 @@ function testParseAddressNoCountry() {
 	assertEquals("TH", parsedAddress.countryCode);
 };
 
-function testParseAddressNoCountryWithSpace() {
-	var parsedAddress = new ilib.Address("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก, ไทรม้า\nอำเภอเมือง นนทบุรี 11000", {locale: 'th-TH'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก, ไทรม้า", parsedAddress.streetAddress);
-	assertEquals("อำเภอเมือง", parsedAddress.locality);
-	assertEquals("นนทบุรี", parsedAddress.region);
-	assertEquals("11000", parsedAddress.postalCode);
-	assertUndefined(parsedAddress.country);
-	assertEquals("TH", parsedAddress.countryCode);
-};
-
-
-
 function testParseAddressManyLines() {
 	var parsedAddress = new ilib.Address("112/119\nมณียา สมบูรณ์ ผลงานชิ้นเอก\nไทรม้า\nเขตปทุมวัน\nกรุงเทพฯ\n11000\nประเทศไทย", {locale: 'th-TH'});
 	
@@ -84,10 +70,10 @@ function testParseAddressManyLines() {
 
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า อำเภอเมือง นนทบุรี 11000 ประเทศไทย", {locale: 'th-TH'});
+	var parsedAddress = new ilib.Address("112/119,มณียา สมบูรณ์ ผลงานชิ้นเอก,ไทรม้า\nเขตปทุมวัน,กรุงเทพฯ,11000,ประเทศไทย", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า", parsedAddress.streetAddress);
+	assertEquals("112/119, มณียา สมบูรณ์ ผลงานชิ้นเอก, ไทรม้า", parsedAddress.streetAddress);
 	assertEquals("เขตปทุมวัน", parsedAddress.locality);
 	assertEquals("กรุงเทพฯ", parsedAddress.region);
 	assertEquals("11000", parsedAddress.postalCode);
@@ -130,7 +116,7 @@ function testFormatAddressFromUS() {
 		locality: "อำเภอเมือง",
 		region: "นนทบุรี",
 		postalCode: "11000",
-		country: "ประเทศไทย",
+		country: "Thailand",
 		countryCode: "TH"
 	}, {locale: 'en-US'});
 	var expected = "112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า\nอำเภอเมือง นนทบุรี 11000\nThailand";

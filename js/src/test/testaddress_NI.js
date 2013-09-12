@@ -42,12 +42,13 @@ function testParseAddressNoZip() {
 };
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel\n050-008-4\nGRANADA, GRANADA", {locale: 'es-NI'});
+	var parsedAddress = new ilib.Address("Sr. Juan Manuel Nurinda\nDel Hotel Granada 1c.\narriba 75\nvrs. alsur. Reparto\nSanta Isabel\n050-008-4\nGranada, Granada", {locale: 'es-NI'});
 	
 	assertNotUndefined(parsedAddress);
+	assertEquals("Granada", parsedAddress.region);
 	assertEquals("Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel", parsedAddress.streetAddress);
-	assertEquals("GRANADA", parsedAddress.locality);
-	assertEquals("GRANADA", parsedAddress.region);
+	assertEquals("Granada", parsedAddress.locality);
+	//assertEquals("Granada", parsedAddress.region);
 	assertEquals("050-008-4", parsedAddress.postalCode);	
 	assertUndefined(parsedAddress.country);
 	assertEquals("NI", parsedAddress.countryCode);

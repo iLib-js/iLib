@@ -122,7 +122,7 @@ function testFormatAddress() {
 		countryCode: "CI"
 	}, {locale: 'fr-CI'});
 	
-	var expected = "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37\nABIDJAN 06\ncôte d’ivoire";
+	var expected = "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37 ABIDJAN 06\ncôte d’ivoire";
 	var formatter = new ilib.AddressFmt({locale: 'fr-CI'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -136,7 +136,7 @@ function testFormatAddressFromUS() {
 		countryCode: "CI"
 	}, {locale: 'en-US'});
 	
-	var expected = "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37\nABIDJAN 06\ncôte d’ivoire";
+	var expected = "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37 ABIDJAN 06\ncôte d’ivoire";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

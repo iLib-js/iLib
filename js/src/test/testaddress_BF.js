@@ -83,7 +83,7 @@ function testParseAddressNoDelimiters() {
 	var parsedAddress = new ilib.Address("01 BP 621 BOBO-DIOULASSO 01 BURKINA FASO", {locale: 'fr-BF'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Armen Simonyan P. 15 Sh. 1", parsedAddress.streetAddress);
+	assertEquals("BP 621", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("BOBO-DIOULASSO 01",parsedAddress.locality);
 	assertEquals("01", parsedAddress.postalCode);
@@ -95,7 +95,7 @@ function testParseAddressSpecialChars() {
 	var parsedAddress = new ilib.Address("Société nationale des postes ,01 BP 6000, BOBO-DIOULASSO 01, BURKINA FASO", {locale: 'fr-BF'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("BP 600", parsedAddress.streetAddress);
+	assertEquals("Société nationale des postes, BP 6000", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("BOBO-DIOULASSO 01",parsedAddress.locality);
 	assertEquals("01", parsedAddress.postalCode);
@@ -123,7 +123,7 @@ function testFormatAddress() {
 		locality: "BOBO-DIOULASSO 01",
 		postalCode: "01",
 		country: "BURKINA FASO",
-		countryCode: "AM"
+		countryCode: "BF"
 	}, {locale: 'fr-BF'});
 	
 	var expected = "01 BP 621\nBOBO-DIOULASSO 01\nBURKINA FASO";
@@ -137,7 +137,7 @@ function testFormatAddressFromUS() {
 		postalCode: "01",
 		country: "BURKINA FASO",
 		locality: "BOBO-DIOULASSO 01",
-		countryCode: "AM"
+		countryCode: "BF"
 	}, {locale: 'en-US'});
 	
 	var expected = "01 BP 621\nBOBO-DIOULASSO 01\nBURKINA FASO";

@@ -13,7 +13,7 @@
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
- * See the License for the SKANDERBORGecific language governing permissions and
+ * See the License for the Specific language governing permissions and
  * limitations under the License.
  */
 
@@ -28,7 +28,7 @@ function testParseAddressNormal() {
 	assertEquals("COTONOU",parsedAddress.locality);
 	assertEquals("03", parsedAddress.postalCode);
 	assertEquals("BENIN", parsedAddress.country);
-	assertEquals("AM", parsedAddress.countryCode);
+	assertEquals("BJ", parsedAddress.countryCode);
 };
 
 function testParseAddressNoZip() {
@@ -39,7 +39,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.region);
 	assertEquals("COTONOU",parsedAddress.locality);
 	assertEquals("BENIN", parsedAddress.country);
-	assertEquals("AM", parsedAddress.countryCode);
+	assertEquals("BJ", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
 
@@ -52,7 +52,7 @@ function testParseAddressManyLines() {
 	assertEquals("COTONOU",parsedAddress.locality);
 	assertEquals("03",parsedAddress.postalCode);
 	assertEquals("BENIN", parsedAddress.country);
-	assertEquals("AM", parsedAddress.countryCode);
+	assertEquals("BJ", parsedAddress.countryCode);
 };
 
 function testParseAddressOneLine() {
@@ -64,7 +64,7 @@ function testParseAddressOneLine() {
 	assertEquals("COTONOU",parsedAddress.locality);
 	assertEquals("03",parsedAddress.postalCode);
 	assertEquals("BENIN", parsedAddress.country);
-	assertEquals("AM", parsedAddress.countryCode);
+	assertEquals("BJ", parsedAddress.countryCode);
 };
 
 function testParseAddressSuperfluousWhitespace() {
@@ -76,7 +76,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("COTONOU",parsedAddress.locality);
 	assertEquals("03",parsedAddress.postalCode);
 	assertEquals("BENIN", parsedAddress.country);
-	assertEquals("AM", parsedAddress.countryCode);
+	assertEquals("BJ", parsedAddress.countryCode);
 };
 
 function testParseAddressNoDelimiters() {
@@ -88,7 +88,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("COTONOU",parsedAddress.locality);
 	assertEquals("03",parsedAddress.postalCode);
 	assertEquals("BENIN", parsedAddress.country);
-	assertEquals("AM", parsedAddress.countryCode);
+	assertEquals("BJ", parsedAddress.countryCode);
 };
 
 function testParseAddressSpecialChars() {
@@ -100,7 +100,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("COTONOU",parsedAddress.locality);
 	assertEquals("03",parsedAddress.postalCode);
 	assertEquals("BENIN", parsedAddress.country);
-	assertEquals("AM", parsedAddress.countryCode);
+	assertEquals("BJ", parsedAddress.countryCode);
 };
 
 function testParseAddressFromUS() {
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("COTONOU",parsedAddress.locality);
 	assertEquals("03",parsedAddress.postalCode);
 	assertEquals("BENIN", parsedAddress.country);
-	assertEquals("AM", parsedAddress.countryCode);
+	assertEquals("BJ", parsedAddress.countryCode);
 };
 
 function testFormatAddress() {
@@ -123,7 +123,7 @@ function testFormatAddress() {
 		locality: "COTONOU",
 		postalCode: "03",
 		country: "BENIN",
-		countryCode: "AM"
+		countryCode: "BJ"
 	}, {locale: 'fr-BJ'});
 	
 	var expected = "03 BP 1000\nCOTONOU\nBENIN";
@@ -137,7 +137,7 @@ function testFormatAddressFromUS() {
 		postalCode: "03",
 		country: "BENIN",
 		locality: "COTONOU",
-		countryCode: "AM"
+		countryCode: "BJ"
 	}, {locale: 'en-US'});
 	
 	var expected = "03 BP 1000\nCOTONOU\nBENIN";

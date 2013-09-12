@@ -18,7 +18,7 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Г-н Лали Хай Улица Казбеги 19\n0100 ТБИЛИСИ\nГРУЗИЯ", {locale: 'ru-GE'});
+	var parsedAddress = new ilib.Address("Г-н Лали Хай Улица Казбеги 19\nТБИЛИСИ 0100\nГРУЗИЯ", {locale: 'ru-GE'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Г-н Лали Хай Улица Казбеги 19", parsedAddress.streetAddress);
@@ -101,14 +101,14 @@ function testParseAddressNoDelimiters() {
 };
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Г-н Лали Хай Улица Казбеги 19\n0100 ТБИЛИСИ\nГРУЗИЯ", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("Г-н Лали Хай Улица Казбеги 19\nТБИЛИСИ 0100\nGeorgia", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Г-н Лали Хай Улица Казбеги 19", parsedAddress.streetAddress);
 	assertEquals("ТБИЛИСИ", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("0100", parsedAddress.postalCode);
-	assertEquals("ГРУЗИЯ", parsedAddress.country);
+	assertEquals("Georgia", parsedAddress.country);
 	assertEquals("GE", parsedAddress.countryCode);
 };
 
@@ -131,11 +131,11 @@ function testFormatAddressFromUS() {
 		streetAddress: "Г-н Лали Хай Улица Казбеги 19",
 		locality: "ТБИЛИСИ",
 		postalCode: "0100",
-		country: "ГРУЗИЯ",
+		country: "Georgia",
 		countryCode: "GE"
 	}, {locale: 'en-US'});
 	
-	var expected = "Г-н Лали Хай Улица Казбеги 19\nТБИЛИСИ 0100\nГРУЗИЯ";
+	var expected = "Г-н Лали Хай Улица Казбеги 19\nТБИЛИСИ 0100\nGeorgia";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

@@ -123,7 +123,7 @@ function testFormatAddress() {
 		countryCode: "BY"
 	}, {locale: 'ru-BY'});
 	
-	var expected = "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\nОрша\n211388\nBelarus";
+	var expected = "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\n211388, Орша\nBelarus";
 	var formatter = new ilib.AddressFmt({locale: 'ru-BY'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -137,7 +137,7 @@ function testFormatAddressFromUS() {
 		countryCode: "BY"
 	}, {locale: 'en-US'});
 	
-	var expected = "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\nОрша\n211388\nBelarus";
+	var expected = "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\n211388, Орша\nBelarus";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
