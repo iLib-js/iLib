@@ -18,35 +18,35 @@
  */
 
 function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nКЫРГЫЗСТАН", {locale: 'ru-KG'});
+	var parsedAddress = new ilib.Address("720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nКиргизия", {locale: 'ru-KG'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Marvan Sangakkara 25/1, Cyril Jansz Mawatha", parsedAddress.streetAddress);
-	assertEquals("PANADURA", parsedAddress.locality);
+	assertEquals("Проспект Чуй, 193, кв. 28 Колупаева Анара", parsedAddress.streetAddress);
+	assertEquals("БИШКЕК", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("720001", parsedAddress.postalCode);
-	assertEquals("Sri Lanka", parsedAddress.country);
+	assertEquals("Киргизия", parsedAddress.country);
 	assertEquals("KG", parsedAddress.countryCode);
 };
 
 function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA\nSri Lanka", {locale: 'ru-KG'});
+	var parsedAddress = new ilib.Address("БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nКиргизия", {locale: 'ru-KG'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Marvan Sangakkara 25/1, Cyril Jansz Mawatha", parsedAddress.streetAddress);
-	assertEquals("PANADURA", parsedAddress.locality);
+	assertEquals("Проспект Чуй, 193, кв. 28 Колупаева Анара", parsedAddress.streetAddress);
+	assertEquals("БИШКЕК", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("Sri Lanka", parsedAddress.country);
+	assertEquals("Киргизия", parsedAddress.country);
 	assertEquals("KG", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
 
 function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 720001", {locale: 'ru-KG'});
+	var parsedAddress = new ilib.Address("720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nБИШКЕК 720001", {locale: 'ru-KG'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Marvan Sangakkara 25/1, Cyril Jansz Mawatha", parsedAddress.streetAddress);
-	assertEquals("PANADURA", parsedAddress.locality);
+	assertEquals("Проспект Чуй, 193, кв. 28 Колупаева Анара", parsedAddress.streetAddress);
+	assertEquals("БИШКЕК", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("720001", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
@@ -54,90 +54,90 @@ function testParseAddressNoCountry() {
 };
 
 function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara\n25/1\nCyril Jansz\nMawatha\nPANADURA\n720001\nSri Lanka\n\n\n", {locale: 'ru-KG'});
+	var parsedAddress = new ilib.Address("720001\nБИШКЕК\nПроспект Чуй\n193\nкв. 28 Колупаева\nАнара\nКиргизия\n\n\n", {locale: 'ru-KG'});
 	assertNotUndefined(parsedAddress);
-	assertEquals("Marvan Sangakkara, 25/1, Cyril Jansz, Mawatha", parsedAddress.streetAddress);
-	assertEquals("PANADURA", parsedAddress.locality);
+	assertEquals("Проспект Чуй, 193, кв. 28 Колупаева, Анара", parsedAddress.streetAddress);
+	assertEquals("БИШКЕК", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("720001", parsedAddress.postalCode);
-	assertEquals("Sri Lanka", parsedAddress.country);
+	assertEquals("Киргизия", parsedAddress.country);
 	assertEquals("KG", parsedAddress.countryCode);
 };
 
 function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara , 25/1 , Cyril Jansz , Mawatha ,  PANADURA , 720001 , Sri Lanka", {locale: 'ru-KG'});
+	var parsedAddress = new ilib.Address("720001 , БИШКЕК , Проспект Чуй , 193 , кв. 28 Колупаева , Анара , Киргизия", {locale: 'ru-KG'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Marvan Sangakkara, 25/1, Cyril Jansz, Mawatha", parsedAddress.streetAddress);
-	assertEquals("PANADURA", parsedAddress.locality);
+	assertEquals("Проспект Чуй, 193, кв. 28 Колупаева, Анара", parsedAddress.streetAddress);
+	assertEquals("БИШКЕК", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("720001", parsedAddress.postalCode);
-	assertEquals("Sri Lanka", parsedAddress.country);
+	assertEquals("Киргизия", parsedAddress.country);
 	assertEquals("KG", parsedAddress.countryCode);
 };
 
 function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tMarvan Sangakkara\n\t\t\t25/1,\t\t\t\r\r Cyril Jansz \n \r \tMawatha \n\t\nPANADURA\n\t 720001\t\nSri Lanka\n\n\n", {locale: 'ru-KG'});
+	var parsedAddress = new ilib.Address("\t\t\t720001\t\t\nБИШКЕК\t\t\nПроспект Чуй\t\t193\t\tкв. 28 Колупаева\t\tАнара\t\nКиргизия\n\n\n", {locale: 'ru-KG'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Marvan Sangakkara, 25/1, Cyril Jansz, Mawatha", parsedAddress.streetAddress);
-	assertEquals("PANADURA", parsedAddress.locality);
+	assertEquals("Проспект Чуй 193 кв. 28 Колупаева Анара", parsedAddress.streetAddress);
+	assertEquals("БИШКЕК", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("720001", parsedAddress.postalCode);
-	assertEquals("Sri Lanka", parsedAddress.country);
+	assertEquals("Киргизия", parsedAddress.country);
 	assertEquals("KG", parsedAddress.countryCode);
 };
 
 function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara 25/1 Cyril Jansz Mawatha PANADURA 720001 Sri Lanka", {locale: 'ru-KG'});
+	var parsedAddress = new ilib.Address("720001 БИШКЕК Проспект Чуй 193 кв. 28 Колупаева Анара Киргизия", {locale: 'ru-KG'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Marvan Sangakkara 25/1 Cyril Jansz Mawatha", parsedAddress.streetAddress);
-	assertEquals("PANADURA", parsedAddress.locality);
+	assertEquals("БИШКЕК", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("720001", parsedAddress.postalCode);
-	assertEquals("Sri Lanka", parsedAddress.country);
+	assertEquals("Киргизия", parsedAddress.country);
 	assertEquals("KG", parsedAddress.countryCode);
 };
 
 function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 56001\nSri Lanka", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nKyrgyzstan", {locale: 'en-US'});
 	
 	
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Marvan Sangakkara 25/1, Cyril Jansz Mawatha", parsedAddress.streetAddress);
-	assertEquals("PANADURA", parsedAddress.locality);
+	assertEquals("Проспект Чуй, 193, кв. 28 Колупаева Анара", parsedAddress.streetAddress);
+	assertEquals("БИШКЕК", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("56001", parsedAddress.postalCode);
-	assertEquals("Sri Lanka", parsedAddress.country);
+	assertEquals("720001", parsedAddress.postalCode);
+	assertEquals("Kyrgyzstan", parsedAddress.country);
 	assertEquals("KG", parsedAddress.countryCode);
 };
 
 function testFormatAddress() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Marvan Sangakkara 25/1, Cyril Jansz Mawatha",
-		locality: "PANADURA",
-		postalCode: "56001",
-		country: "Sri Lanka",
+		streetAddress: "Проспект Чуй, 193, кв. 28 Колупаева Анара",
+		locality: "БИШКЕК",
+		postalCode: "720001",
+		country: "Киргизия",
 		countryCode: "KG"
 	}, {locale: 'ru-KG'});
 	
-	var expected = "Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 56001\nSri Lanka";
+	var expected = "720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nКиргизия";
 	var formatter = new ilib.AddressFmt({locale: 'ru-KG'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressFromUS() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Marvan Sangakkara 25/1, Cyril Jansz Mawatha",
-		locality: "PANADURA",
-		postalCode: "56001",
-		country: "Sri Lanka",
+		streetAddress: "Проспект Чуй, 193, кв. 28 Колупаева Анара",
+		locality: "БИШКЕК",
+		postalCode: "720001",
+		country: "Kyrgyzstan",
 		countryCode: "KG"
 	}, {locale: 'en-US'});
 	
-	var expected = "Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 56001\nSri Lanka";
+	var expected = "720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nKyrgyzstan";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
