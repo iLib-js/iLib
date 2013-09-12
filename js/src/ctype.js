@@ -104,8 +104,8 @@ ilib.CType = {
 	/**
 	 * Return whether or not the first character is within the named range
 	 * of Unicode characters. The valid list of range names are taken from 
-	 * the Unicode 6.0 spec. Only those ranges which have characters in the 
-	 * Basic Multilingual Plane (BMP) are supported. Currently, this method 
+	 * the Unicode 6.0 spec. Characters in all ranges of Unicode are supported,
+	 * including those supported in Javascript via UTF-16. Currently, this method 
 	 * supports the following range names:
 	 * 
 	 * <ul>
