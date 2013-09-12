@@ -1,5 +1,5 @@
 /*
- * testaddress.js - test the address parsing and formatting routines
+ * testaddress_IR.js - test the address parsing and formatting routines
  * 
  * Copyright © 2013, JEDLSoft
  *
