@@ -18,12 +18,12 @@
  */
 
 function testParseSimpleName_he() {
-	var parsed = new ilib.Name("Y", {locale: 'he-IL'});
+	var parsed = new ilib.Name("נטלי פורטמן", {locale: 'he-IL'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		givenName: "",
-		familyName: ""
+		givenName: "נטלי",
+		familyName: "פורטמן"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -31,12 +31,12 @@ function testParseSimpleName_he() {
 
 
 function testParseAdjunctNames_he() {
-	var parsed = new ilib.Name("Y", {locale: 'he-IL'});
+	var parsed = new ilib.Name("נטלי פורטמן", {locale: 'he-IL'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
-		givenName: "",
-		familyName: ""
+		givenName: "נטלי",
+		familyName: "פורטמן"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -45,12 +45,12 @@ function testParseAdjunctNames_he() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_he() {
-	var parsed = new ilib.Name("Y", {locale: 'he-IL'});
+	var parsed = new ilib.Name("מר ו - גברת פורטמן", {locale: 'he-IL'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "",
-		familyName: ""
+		prefix: "מר ו - גברת",
+		familyName: "פורטמן"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -58,13 +58,13 @@ function testParseSingleNameWithPrefixAndAdjunct_he() {
 
 
 function testParseTitle_he() {
-	var parsed = new ilib.Name("Y", {locale: 'he-IL'});
+	var parsed = new ilib.Name("נטלי פורטמן דוקטור", {locale: 'he-IL'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		suffix: "",
-		givenName: "",
-		familyName: ""
+		suffix: "דוקטור",
+		givenName: "נטלי",
+		familyName: "פורטמן"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -73,12 +73,12 @@ function testParseTitle_he() {
 
 
 function testParseTitleWithFamilyOnly_he() {
-	var parsed = new ilib.Name("Y", {locale: 'he-IL'});
+	var parsed = new ilib.Name("גברת פורטמן", {locale: 'he-IL'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "",
-		familyName: ""
+		prefix: "גברת",
+		familyName: "פורטמן"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -87,13 +87,13 @@ function testParseTitleWithFamilyOnly_he() {
 
 
 function testParseEverything_he() {
-	var parsed = new ilib.Name("Y", {locale: 'he-IL'});
+	var parsed = new ilib.Name("גברת נטלי פורטמן", {locale: 'he-IL'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "גברת",
+		givenName: "נטלי",
+		familyName: "פורטמן"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -106,8 +106,8 @@ function testParseEverything_he() {
 
 function testFormatSimpleNameShort_he() {
 	var name = new ilib.Name({
-		givenName: "",
-		familyName: ""
+		givenName: "נטלי",
+		familyName: "פורטמן"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
@@ -116,15 +116,15 @@ function testFormatSimpleNameShort_he() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "נטלי פורטמן";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameMedium_he() {
 	var name = new ilib.Name({
-		givenName: "",
-		familyName: ""
+		givenName: "נטלי",
+		familyName: "פורטמן"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
@@ -133,17 +133,16 @@ function testFormatSimpleNameMedium_he() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "נטלי פורטמן";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameLong_he() {
 	var name = new ilib.Name({
-		givenName: "",
-		
-		familyName: "",
-		suffix: ""
+		givenName: "נטלי",
+		familyName: "פורטמן",
+		suffix: "דוקטור"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "long", 
@@ -152,17 +151,18 @@ function testFormatSimpleNameLong_he() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "נטלי פורטמן";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameFull_he() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: "",
-		suffix: ""
+		prefix: "ראש הממשלה",
+		givenName: "נטלי",
+		
+		familyName: "פורטמן",
+		suffix: "לשעבר"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full", 
@@ -171,16 +171,17 @@ function testFormatSimpleNameFull_he() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "ראש הממשלה נטלי פורטמן לשעבר";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameShort_he() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "ראש הממשלה",
+		givenName: "נטלי",
+		
+		familyName: "פורטמן",
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
@@ -189,16 +190,17 @@ function testFormatComplexNameShort_he() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "נטלי פורטמן";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameMedium_he() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "ראש הממשלה",
+		givenName: "נטלי",
+		
+		familyName: "פורטמן",
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
@@ -207,16 +209,17 @@ function testFormatComplexNameMedium_he() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "נטלי פורטמן";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameLong_he() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "ראש הממשלה",
+		givenName: "נטלי",
+		
+		familyName: "פורטמן",
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full",
@@ -225,7 +228,7 @@ function testFormatComplexNameLong_he() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "ראש הממשלה נטלי פורטמן";
 	
 	assertEquals(expected, formatted);
 };
@@ -243,7 +246,7 @@ function testFormatAsianNameShort_he() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "地獸";
 	
 	assertEquals(expected, formatted);
 };
@@ -261,7 +264,7 @@ function testFormatAsianNameMedium_he() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "地獸";
 	
 	assertEquals(expected, formatted);
 };
@@ -279,7 +282,7 @@ function testFormatAsianNameLong_he() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "小地獸";
 	
 	assertEquals(expected, formatted);
 };

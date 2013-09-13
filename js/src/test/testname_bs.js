@@ -1,5 +1,5 @@
 /*
- * testname_bg.js - test the name object in Bulgarian
+ * testname_bs.js - test the name object in Bulgarian
  * 
  * Copyright © 2013, JEDLSoft
  *
@@ -18,12 +18,12 @@
  */
 
 function testParseSimpleName_bs() {
-	var parsed = new ilib.Name("Y", {locale: 'bs-BA'});
+	var parsed = new ilib.Name("Derviš Sušić", {locale: 'bs-BA'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		givenName: "",
-		familyName: ""
+		givenName: "Derviš",
+		familyName: "Sušić"  
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -31,12 +31,12 @@ function testParseSimpleName_bs() {
 
 
 function testParseAdjunctNames_bs() {
-	var parsed = new ilib.Name("Y", {locale: 'bs-BA'});
+	var parsed = new ilib.Name("Derviš Sušić", {locale: 'bs-BA'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
-		givenName: "",
-		familyName: ""
+		givenName: "Derviš",
+		familyName: "Sušić"  
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -45,12 +45,12 @@ function testParseAdjunctNames_bs() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_bs() {
-	var parsed = new ilib.Name("Y", {locale: 'bs-BA'});
+	var parsed = new ilib.Name("Gospodin и Gospođica Sušić", {locale: 'bs-BA'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "",
-		familyName: ""
+		prefix: "Gospodin и Gospođica",
+		familyName: "Sušić"  
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -58,13 +58,13 @@ function testParseSingleNameWithPrefixAndAdjunct_bs() {
 
 
 function testParseTitle_bs() {
-	var parsed = new ilib.Name("Y", {locale: 'bs-BA'});
+	var parsed = new ilib.Name("Derviš Sušić viši", {locale: 'bs-BA'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		suffix: "",
-		givenName: "",
-		familyName: ""
+		suffix: "viši",
+		givenName: "Derviš",
+		familyName: "Sušić"  
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -73,12 +73,12 @@ function testParseTitle_bs() {
 
 
 function testParseTitleWithFamilyOnly_bs() {
-	var parsed = new ilib.Name("Y", {locale: 'bs-BA'});
+	var parsed = new ilib.Name("predsjednik Sušić", {locale: 'bs-BA'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "",
-		familyName: ""
+		prefix: "predsjednik",
+		familyName: "Sušić"  
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -87,13 +87,13 @@ function testParseTitleWithFamilyOnly_bs() {
 
 
 function testParseEverything_bs() {
-	var parsed = new ilib.Name("Y", {locale: 'bs-BA'});
+	var parsed = new ilib.Name("predsjednik Derviš Sušić", {locale: 'bs-BA'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "predsjednik",
+		givenName: "Derviš",
+		familyName: "Sušić"  
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -106,8 +106,8 @@ function testParseEverything_bs() {
 
 function testFormatSimpleNameShort_bs() {
 	var name = new ilib.Name({
-		givenName: "",
-		familyName: ""
+		givenName: "Derviš",
+		familyName: "Sušić"  
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
@@ -116,15 +116,15 @@ function testFormatSimpleNameShort_bs() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Derviš Sušić";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameMedium_bs() {
 	var name = new ilib.Name({
-		givenName: "",
-		familyName: ""
+		givenName: "Derviš",
+		familyName: "Sušić"  
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
@@ -133,17 +133,17 @@ function testFormatSimpleNameMedium_bs() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Derviš Sušić";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameLong_bs() {
 	var name = new ilib.Name({
-		givenName: "",
+		givenName: "Derviš",
 		
-		familyName: "",
-		suffix: ""
+		familyName: "Sušić"  ,
+		suffix: "viši"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "long", 
@@ -152,17 +152,17 @@ function testFormatSimpleNameLong_bs() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Derviš Sušić";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameFull_bs() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: "",
-		suffix: ""
+		prefix: "Gospodin",
+		givenName: "Derviš",
+		familyName: "Sušić"  ,
+		suffix: "viši"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full", 
@@ -171,16 +171,16 @@ function testFormatSimpleNameFull_bs() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Gospodin Derviš Sušić viši";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameShort_bs() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "Gospodin",
+		givenName: "Derviš",
+		familyName: "Sušić"  
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
@@ -189,16 +189,16 @@ function testFormatComplexNameShort_bs() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Derviš Sušić";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameMedium_bs() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "Gospodin",
+		givenName: "Derviš",
+		familyName: "Sušić"  
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
@@ -207,16 +207,16 @@ function testFormatComplexNameMedium_bs() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Derviš Sušić";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameLong_bs() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "Gospodin",
+		givenName: "Derviš",
+		familyName: "Sušić"  
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full",
@@ -225,7 +225,7 @@ function testFormatComplexNameLong_bs() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Gospodin Derviš Sušić";
 	
 	assertEquals(expected, formatted);
 };
@@ -243,7 +243,7 @@ function testFormatAsianNameShort_bs() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "地獸";
 	
 	assertEquals(expected, formatted);
 };
@@ -261,7 +261,7 @@ function testFormatAsianNameMedium_bs() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "地獸";
 	
 	assertEquals(expected, formatted);
 };
@@ -279,7 +279,7 @@ function testFormatAsianNameLong_bs() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "小地獸";
 	
 	assertEquals(expected, formatted);
 };

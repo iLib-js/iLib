@@ -18,12 +18,13 @@
  */
 
 function testParseSimpleName_vi() {
-	var parsed = new ilib.Name("Y", {locale: 'vi-VN'});
+	var parsed = new ilib.Name("Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		givenName: "",
-		familyName: ""
+		givenName: "Chau-Giang",
+		middleName: "Thi",
+		familyName: "Nguyen"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -31,12 +32,13 @@ function testParseSimpleName_vi() {
 
 
 function testParseAdjunctNames_vi() {
-	var parsed = new ilib.Name("Y", {locale: 'vi-VN'});
+	var parsed = new ilib.Name("Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
-		givenName: "",
-		familyName: ""
+		givenName: "Chau-Giang",
+		middleName: "Thi",
+		familyName: "Nguyen"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -45,12 +47,12 @@ function testParseAdjunctNames_vi() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_vi() {
-	var parsed = new ilib.Name("Y", {locale: 'vi-VN'});
+	var parsed = new ilib.Name("Ông và Bà Nguyen", {locale: 'vi-VN'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "",
-		familyName: ""
+		prefix: "Ông và Bà",
+		familyName: "Nguyen"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -58,13 +60,13 @@ function testParseSingleNameWithPrefixAndAdjunct_vi() {
 
 
 function testParseTitle_vi() {
-	var parsed = new ilib.Name("Y", {locale: 'vi-VN'});
+	var parsed = new ilib.Name("Chau-Giang Nguyen Cao cấp", {locale: 'vi-VN'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		suffix: "",
-		givenName: "",
-		familyName: ""
+		suffix: "Cao cấp",
+		givenName: "Chau-Giang",
+		familyName: "Nguyen"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -73,12 +75,12 @@ function testParseTitle_vi() {
 
 
 function testParseTitleWithFamilyOnly_vi() {
-	var parsed = new ilib.Name("Y", {locale: 'vi-VN'});
+	var parsed = new ilib.Name("Thị trưởng Nguyen", {locale: 'vi-VN'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "",
-		familyName: ""
+		prefix: "Thị trưởng",
+		familyName: "Nguyen"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -87,13 +89,14 @@ function testParseTitleWithFamilyOnly_vi() {
 
 
 function testParseEverything_vi() {
-	var parsed = new ilib.Name("Y", {locale: 'vi-VN'});
+	var parsed = new ilib.Name("Ông Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "Ông",
+		givenName: "Chau-Giang",
+		middleName: "Thi",
+		familyName: "Nguyen"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -106,8 +109,9 @@ function testParseEverything_vi() {
 
 function testFormatSimpleNameShort_vi() {
 	var name = new ilib.Name({
-		givenName: "",
-		familyName: ""
+		givenName: "Chau-Giang",
+		middleName: "Thi",
+		familyName: "Nguyen"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
@@ -116,15 +120,16 @@ function testFormatSimpleNameShort_vi() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Chau-Giang Nguyen";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameMedium_vi() {
 	var name = new ilib.Name({
-		givenName: "",
-		familyName: ""
+		givenName: "Chau-Giang",
+		middleName: "Thi",
+		familyName: "Nguyen"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
@@ -133,17 +138,17 @@ function testFormatSimpleNameMedium_vi() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Chau-Giang Thi Nguyen";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameLong_vi() {
 	var name = new ilib.Name({
-		givenName: "",
-		
-		familyName: "",
-		suffix: ""
+		givenName: "Chau-Giang",
+		middleName: "Thi",
+		familyName: "Nguyen",
+		suffix: "Cao cấp"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "long", 
@@ -152,17 +157,18 @@ function testFormatSimpleNameLong_vi() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Chau-Giang Thi Nguyen";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameFull_vi() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: "",
-		suffix: ""
+		prefix: "Ông",
+		givenName: "Chau-Giang",
+		middleName: "Thi",
+		familyName: "Nguyen",
+		suffix: "Cao cấp"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full", 
@@ -171,16 +177,17 @@ function testFormatSimpleNameFull_vi() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Ông Chau-Giang Thi Nguyen Cao cấp";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameShort_vi() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "Ông",
+		givenName: "Chau-Giang",
+		middleName: "Thi",
+		familyName: "Nguyen"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
@@ -189,16 +196,17 @@ function testFormatComplexNameShort_vi() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Chau-Giang Nguyen";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameMedium_vi() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "Ông",
+		givenName: "Chau-Giang",
+		middleName: "Thi",
+		familyName: "Nguyen"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
@@ -207,16 +215,17 @@ function testFormatComplexNameMedium_vi() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Chau-Giang Thi Nguyen";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameLong_vi() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "Ông",
+		givenName: "Chau-Giang",
+		middleName: "Thi",
+		familyName: "Nguyen"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full",
@@ -225,7 +234,7 @@ function testFormatComplexNameLong_vi() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Ông Chau-Giang Thi Nguyen";
 	
 	assertEquals(expected, formatted);
 };
@@ -243,7 +252,7 @@ function testFormatAsianNameShort_vi() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "地獸";
 	
 	assertEquals(expected, formatted);
 };
@@ -261,7 +270,7 @@ function testFormatAsianNameMedium_vi() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "地獸";
 	
 	assertEquals(expected, formatted);
 };
@@ -279,7 +288,7 @@ function testFormatAsianNameLong_vi() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "小地獸";
 	
 	assertEquals(expected, formatted);
 };

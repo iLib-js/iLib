@@ -189,7 +189,7 @@ function testRUFormatSimpleNameFull() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Andrei Michael Nikolaevich";
+	var expected = "Andrei Nikolaevich";
 	
 	assertEquals(expected, formatted);
 };

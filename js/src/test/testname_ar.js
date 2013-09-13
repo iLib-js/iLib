@@ -18,12 +18,12 @@
  */
 
 function testParseSimpleName_ar() {
-	var parsed = new ilib.Name("Y", {locale: 'ar-SA'});
+	var parsed = new ilib.Name("ابن سعود", {locale: 'ar-SA'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		givenName: "",
-		familyName: ""
+		givenName: "ابن",
+		familyName: "سعود"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -31,12 +31,12 @@ function testParseSimpleName_ar() {
 
 
 function testParseAdjunctNames_ar() {
-	var parsed = new ilib.Name("Y", {locale: 'ar-SA'});
+	var parsed = new ilib.Name("ابن سعود", {locale: 'ar-SA'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
-		givenName: "",
-		familyName: ""
+		givenName: "ابن",
+		familyName: "سعود"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -45,12 +45,12 @@ function testParseAdjunctNames_ar() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_ar() {
-	var parsed = new ilib.Name("Y", {locale: 'ar-SA'});
+	var parsed = new ilib.Name("السيد و السيدة سعود", {locale: 'ar-SA'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "",
-		familyName: ""
+		prefix: "السيد و السيدة",
+		familyName: "سعود"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -58,13 +58,13 @@ function testParseSingleNameWithPrefixAndAdjunct_ar() {
 
 
 function testParseTitle_ar() {
-	var parsed = new ilib.Name("Y", {locale: 'ar-SA'});
+	var parsed = new ilib.Name("ابن سعود كبار", {locale: 'ar-SA'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		suffix: "",
-		givenName: "",
-		familyName: ""
+		suffix: "كبار",
+		givenName: "ابن",
+		familyName: "سعود"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -73,12 +73,12 @@ function testParseTitle_ar() {
 
 
 function testParseTitleWithFamilyOnly_ar() {
-	var parsed = new ilib.Name("Y", {locale: 'ar-SA'});
+	var parsed = new ilib.Name("الملك سعود", {locale: 'ar-SA'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "",
-		familyName: ""
+		prefix: "الملك",
+		familyName: "سعود"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -87,13 +87,13 @@ function testParseTitleWithFamilyOnly_ar() {
 
 
 function testParseEverything_ar() {
-	var parsed = new ilib.Name("Y", {locale: 'ar-SA'});
+	var parsed = new ilib.Name("الملك ابن سعود", {locale: 'ar-SA'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "الملك",
+		givenName: "ابن",
+		familyName: "سعود"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -106,8 +106,8 @@ function testParseEverything_ar() {
 
 function testFormatSimpleNameShort_ar() {
 	var name = new ilib.Name({
-		givenName: "",
-		familyName: ""
+		givenName: "ابن",
+		familyName: "سعود"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
@@ -116,15 +116,15 @@ function testFormatSimpleNameShort_ar() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "ابن سعود";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameMedium_ar() {
 	var name = new ilib.Name({
-		givenName: "",
-		familyName: ""
+		givenName: "ابن",
+		familyName: "سعود"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
@@ -133,17 +133,17 @@ function testFormatSimpleNameMedium_ar() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "ابن سعود";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameLong_ar() {
 	var name = new ilib.Name({
-		givenName: "",
+		givenName: "ابن",
 		
-		familyName: "",
-		suffix: ""
+		familyName: "سعود",
+		suffix: "كبار"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "long", 
@@ -152,17 +152,17 @@ function testFormatSimpleNameLong_ar() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "ابن سعود";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameFull_ar() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: "",
-		suffix: ""
+		prefix: "الملك",
+		givenName: "ابن",
+		familyName: "سعود",
+		suffix: "كبار"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full", 
@@ -171,16 +171,16 @@ function testFormatSimpleNameFull_ar() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "الملك ابن سعود كبار";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameShort_ar() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "الملك",
+		givenName: "ابن",
+		familyName: "سعود"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
@@ -189,16 +189,16 @@ function testFormatComplexNameShort_ar() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "ابن سعود";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameMedium_ar() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "الملك",
+		givenName: "ابن",
+		familyName: "سعود"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
@@ -207,16 +207,16 @@ function testFormatComplexNameMedium_ar() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "ابن سعود";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameLong_ar() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "الملك",
+		givenName: "ابن",
+		familyName: "سعود"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full",
@@ -225,7 +225,7 @@ function testFormatComplexNameLong_ar() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "الملك ابن سعود";
 	
 	assertEquals(expected, formatted);
 };
@@ -243,7 +243,7 @@ function testFormatAsianNameShort_ar() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "地獸";
 	
 	assertEquals(expected, formatted);
 };
@@ -261,7 +261,7 @@ function testFormatAsianNameMedium_ar() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "地獸";
 	
 	assertEquals(expected, formatted);
 };
@@ -279,7 +279,7 @@ function testFormatAsianNameLong_ar() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "小地獸";
 	
 	assertEquals(expected, formatted);
 };
