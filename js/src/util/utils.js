@@ -389,7 +389,7 @@ ilib.isEmpty = function (obj) {
 	}
 	
 	for (prop in obj) {
-		if (prop && obj[prop]) {
+		if (prop && typeof(obj[prop]) !== 'undefined') {
 			return false;
 		}
 	}

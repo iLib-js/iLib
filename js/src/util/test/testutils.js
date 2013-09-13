@@ -320,6 +320,11 @@ function testIsEmptyUndefinedProperties() {
     assertTrue(ilib.isEmpty(object));
 }
 
+function testIsEmptyFalsyValues() {
+    var object = {"a": false, "b": 0};
+    
+    assertFalse(ilib.isEmpty(object));
+}
 
 function testShallowCopy() {
     var src = {"a": "b"};
