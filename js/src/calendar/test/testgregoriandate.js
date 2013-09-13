@@ -533,7 +533,7 @@ function testGregDateConstructorUnixTime() {
 function testGregDateGetJulianDay() {
     var gd;
     
-    for (i = 0; i < testDates.length; i++) {
+    for (var i = 0; i < testDates.length; i++) {
         gd = new ilib.Date.GregDate({
             year: testDates[i][1], 
             month: testDates[i][2], 
