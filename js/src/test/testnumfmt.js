@@ -1189,6 +1189,134 @@ function testNumFmtCurrencyFormatNativeCurrencyForLocale_hi_IN1() {
     
     assertEquals("₹ १,००,११०.५७", fmt.format(100110.57));
 }
+
+//test cases for bn-IN
+
+function testNumFmtbn_IN() {
+    var fmt = new ilib.NumFmt({
+        locale: "bn-IN",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-১,১২,৩৪,৫৬,১৩,২৩২.৭৮", fmt.format(-112345613232.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_bn_IN() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "bn-IN",
+	currency: "INR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₹ ১,০০,১১০.৫৭", fmt.format(100110.57));
+}
+
+function testNumFmtCurrencyFormatNativeCurrencyForLocale_bn_IN() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "bn-IN",
+	currency: "INR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₹ ১,০০,১১০.৫৭", fmt.format(100110.57));
+}
+
+
+function testNumFmtPercentageFormatRegular_bn_IN() {
+    var fmt = new ilib.NumFmt({
+	locale: "bn-IN",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("৫৭.৮%", fmt.format(57.8));
+}
+
+//test cases for mr-IN
+
+function testNumFmt_mr_IN() {
+    var fmt = new ilib.NumFmt({
+        locale: "mr-IN",
+        maxFractionDigits: 2
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("-12,34,568.78", fmt.format(-1234568.78));
+}
+
+function testNumFmtCurrencyFormatNativeCurrencyForLocale_mr_IN1() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "hi-IN",
+	useNative: true,
+	currency: "INR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₹ १,००,११०.५७", fmt.format(100110.57));
+}
+
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_mr_IN() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "mr-IN",
+	currency: "INR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₹ 1,00,110.57", fmt.format(100110.57));
+}
+
+function testNumFmtCurrencyFormatNativeCurrencyForLocale_mr_IN() {
+    var fmt = new ilib.NumFmt({
+        type: "currency",
+        locale: "mr-IN",
+	useNative: true,
+	currency: "INR"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("₹ १,००,११०.५७", fmt.format(100110.57));
+}
+
+
+function testNumFmtPercentageFormatRegular_mr_IN() {
+    var fmt = new ilib.NumFmt({
+	locale: "mr-IN",
+	useNative: true,
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("५७.८%", fmt.format(57.8));
+}
+
+
+function testNumFmtPercentageNativeFormatRegular_mr_IN() {
+    var fmt = new ilib.NumFmt({
+	locale: "mr-IN",
+        type: "percentage"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("57.8%", fmt.format(57.8));
+}
+
+
 //test cases for en-US
 function testNumFmt_en_US() {
     var fmt = new ilib.NumFmt({
