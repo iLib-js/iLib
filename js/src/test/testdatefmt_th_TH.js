@@ -28,7 +28,7 @@ function testDateFmtSimpleShort_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "short"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -44,7 +44,7 @@ function testDateFmtSimpleMedium_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "medium"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -60,7 +60,7 @@ function testDateFmtSimpleLong_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "long"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -76,7 +76,7 @@ function testDateFmtSimpleFull_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -92,7 +92,7 @@ function testDateFmtSimpleTimeShort_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "short", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -108,7 +108,7 @@ function testDateFmtSimpleTimeMedium_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "medium", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -124,7 +124,7 @@ function testDateFmtSimpleTimeLong_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", timelength: "long", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -140,7 +140,7 @@ function testDateFmtSimpleTimeFull_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -156,7 +156,7 @@ function testDateFmtDateTimeSimpleShort_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "short", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -172,7 +172,7 @@ function testDateFmtDateTimeSimpleMedium_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "medium", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -188,7 +188,7 @@ function testDateFmtDateTimeSimpleLong_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "long", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -204,7 +204,7 @@ function testDateFmtDateTimeSimpleFull_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -239,7 +239,7 @@ function testDateFmtTemplateClock12SwitchHH_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", clock: "12", template: "HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -255,7 +255,7 @@ function testDateFmtTemplateClock12Switchkk_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", clock: "12", template: "kk:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -271,7 +271,7 @@ function testDateFmtTemplateClock24Switchhh_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", clock: "24", template: "hh:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -287,7 +287,7 @@ function testDateFmtTemplateClock24SwitchKK_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", clock: "24", template: "KK:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -303,7 +303,7 @@ function testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", template: "hh:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -319,7 +319,7 @@ function testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", template: "KK:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -335,7 +335,7 @@ function testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", template: "HH:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -351,7 +351,7 @@ function testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", template: "kk:mm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -368,7 +368,7 @@ function testDateFmtTypeDate_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "date"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -384,7 +384,7 @@ function testDateFmtTypeTime_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -400,7 +400,7 @@ function testDateFmtTypeDateTime_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "datetime"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -417,7 +417,7 @@ function testDateFmtShortDateComponentsY_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", date: "y"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -433,7 +433,7 @@ function testDateFmtShortDateComponentsM_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", date: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -449,7 +449,7 @@ function testDateFmtShortDateComponentsN_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", date: "n"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -465,7 +465,7 @@ function testDateFmtShortDateComponentsD_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", date: "d"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -481,7 +481,7 @@ function testDateFmtShortDateComponentsDM_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", date: "dm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -497,7 +497,7 @@ function testDateFmtShortDateComponentsMY_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", date: "my"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -513,7 +513,7 @@ function testDateFmtShortDateComponentsDMY_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", date: "dmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -529,7 +529,7 @@ function testDateFmtShortDateComponentsWDM_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", date: "wdm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -545,7 +545,7 @@ function testDateFmtShortDateComponentsWDMY_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", date: "wdmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -562,7 +562,7 @@ function testDateFmtFullDateComponentsY_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full", date: "y"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -578,7 +578,7 @@ function testDateFmtFullDateComponentsM_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full", date: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -594,7 +594,7 @@ function testDateFmtFullDateComponentsD_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full", date: "d"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -610,7 +610,7 @@ function testDateFmtFullDateComponentsDM_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full", date: "dm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -626,7 +626,7 @@ function testDateFmtFullDateComponentsMY_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full", date: "my"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -642,7 +642,7 @@ function testDateFmtFullDateComponentsDMY_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full", date: "dmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -658,7 +658,7 @@ function testDateFmtFullDateComponentsWDM_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full", date: "wdm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -674,7 +674,7 @@ function testDateFmtFullDateComponentsWDMY_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full", date: "wdmy"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -691,7 +691,7 @@ function testDateFmtShortTimeComponentsS_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", time: "s"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -707,7 +707,7 @@ function testDateFmtShortTimeComponentsM_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", time: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -723,7 +723,7 @@ function testDateFmtShortTimeComponentsH_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", time: "h"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -739,7 +739,7 @@ function testDateFmtShortTimeComponentsMS_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", time: "ms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -755,7 +755,7 @@ function testDateFmtShortTimeComponentsHM_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", time: "hm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -771,7 +771,7 @@ function testDateFmtShortTimeComponentsHMS_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", time: "hms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -787,7 +787,7 @@ function testDateFmtShortTimeComponentsHMA_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", time: "hma"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -807,7 +807,7 @@ function testDateFmtShortTimeComponentsHMZ_th_TH() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -827,7 +827,7 @@ function testDateFmtShortTimeComponentsHMAZ_th_TH() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -843,7 +843,7 @@ function testDateFmtShortTimeComponentsHMSA_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", time: "hmsa"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -863,7 +863,7 @@ function testDateFmtShortTimeComponentsHMSZ_th_TH() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -883,7 +883,7 @@ function testDateFmtShortTimeComponentsHMSAZ_th_TH() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -900,7 +900,7 @@ function testDateFmtFullTimeComponentsS_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", length: "full", time: "s"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -916,7 +916,7 @@ function testDateFmtFullTimeComponentsM_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", length: "full", time: "m"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -932,7 +932,7 @@ function testDateFmtFullTimeComponentsH_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", length: "full", time: "h"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -948,7 +948,7 @@ function testDateFmtFullTimeComponentsMS_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", length: "full", time: "ms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -964,7 +964,7 @@ function testDateFmtFullTimeComponentsHM_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", length: "full", time: "hm"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -980,7 +980,7 @@ function testDateFmtFullTimeComponentsHMS_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", length: "full", time: "hms"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -996,7 +996,7 @@ function testDateFmtFullTimeComponentsHMA_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", length: "full", time: "hma"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1017,7 +1017,7 @@ function testDateFmtFullTimeComponentsHMZ_th_TH() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1038,7 +1038,7 @@ function testDateFmtFullTimeComponentsHMAZ_th_TH() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1054,7 +1054,7 @@ function testDateFmtFullTimeComponentsHMSA_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", type: "time", length: "full", time: "hmsa"});
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1075,7 +1075,7 @@ function testDateFmtFullTimeComponentsHMSZ_th_TH() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1096,7 +1096,7 @@ function testDateFmtFullTimeComponentsHMSAZ_th_TH() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1117,7 +1117,7 @@ function testDateFmtWithTimeZoneAndNoDST_th_TH() {
     });
     assertNotNull(fmt);
     
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		day: 29,
@@ -1133,7 +1133,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1142,7 +1142,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1157,7 +1157,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1166,7 +1166,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1181,7 +1181,7 @@ function testDateFmtFormatRelativeWithinHourAfter_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1190,7 +1190,7 @@ function testDateFmtFormatRelativeWithinHourAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1205,7 +1205,7 @@ function testDateFmtFormatRelativeWithinHourBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1214,7 +1214,7 @@ function testDateFmtFormatRelativeWithinHourBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1229,7 +1229,7 @@ function testDateFmtFormatRelativeWithinDayAfter_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1238,7 +1238,7 @@ function testDateFmtFormatRelativeWithinDayAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1253,7 +1253,7 @@ function testDateFmtFormatRelativeWithinDayBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1262,7 +1262,7 @@ function testDateFmtFormatRelativeWithinDayBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1278,7 +1278,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1287,7 +1287,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1302,7 +1302,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1311,7 +1311,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 16,
@@ -1327,7 +1327,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1336,7 +1336,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1351,7 +1351,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1360,7 +1360,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 7,
 		day: 18,
@@ -1376,7 +1376,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1385,7 +1385,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2013,
 		month: 1,
 		day: 24,
@@ -1400,7 +1400,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1409,7 +1409,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2010,
 		month: 7,
 		day: 18,
@@ -1425,7 +1425,7 @@ function testDateFmtFormatRelativeYearsAfter_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1434,7 +1434,7 @@ function testDateFmtFormatRelativeYearsAfter_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 2025,
 		month: 10,
 		day: 24,
@@ -1449,7 +1449,7 @@ function testDateFmtFormatRelativeYearsBefore_th_TH() {
     var fmt = new ilib.DateFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var reference = new ilib.Date.GregDate({
+    var reference = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1458,7 +1458,7 @@ function testDateFmtFormatRelativeYearsBefore_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    var date = new ilib.Date.GregDate({
+    var date = new ilib.Date.ThaiSolarDate({
 		year: 1990,
 		month: 7,
 		day: 18,

@@ -246,15 +246,11 @@ ilib.Date.GregDate.prototype.calcComponents = function (rd) {
 		days100,
 		days4,
 		days1,
-		day,
 		years400,
 		years100,
 		years4,
 		years1,
-		year,
-		month,
 		remainder,
-		jdstart,
 		cumulative,
 		ret = {};
 	
@@ -471,10 +467,10 @@ ilib.Date.GregDate.prototype.firstSunday = function (year) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week before the current date that is being sought
- * @return {ilib.Date.GregDate} the date being sought
+ * @return {ilib.Date} the date being sought
  */
 ilib.Date.GregDate.prototype.before = function (dow) {
-	return new ilib.Date.GregDate({rd: this.beforeRd(this.getRataDie(), dow)});
+	return this.cal.newDateInstance({rd: this.beforeRd(this.getRataDie(), dow)});
 };
 
 /**
@@ -483,10 +479,10 @@ ilib.Date.GregDate.prototype.before = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week after the current date that is being sought
- * @return {ilib.Date.GregDate} the date being sought
+ * @return {ilib.Date} the date being sought
  */
 ilib.Date.GregDate.prototype.after = function (dow) {
-	return new ilib.Date.GregDate({rd: this.afterRd(this.getRataDie(), dow)});
+	return this.cal.newDateInstance({rd: this.afterRd(this.getRataDie(), dow)});
 };
 
 /**

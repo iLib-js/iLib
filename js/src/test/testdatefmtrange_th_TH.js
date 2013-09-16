@@ -21,7 +21,7 @@ function testDateRngFmtTHRangeInDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -30,7 +30,7 @@ function testDateRngFmtTHRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -45,7 +45,7 @@ function testDateRngFmtTHRangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -54,7 +54,7 @@ function testDateRngFmtTHRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -69,7 +69,7 @@ function testDateRngFmtTHRangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -78,7 +78,7 @@ function testDateRngFmtTHRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -93,7 +93,7 @@ function testDateRngFmtTHRangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -102,7 +102,7 @@ function testDateRngFmtTHRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -118,7 +118,7 @@ function testDateRngFmtTHRangeNextDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 30,
@@ -127,7 +127,7 @@ function testDateRngFmtTHRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -142,7 +142,7 @@ function testDateRngFmtTHRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 30,
@@ -151,7 +151,7 @@ function testDateRngFmtTHRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -166,7 +166,7 @@ function testDateRngFmtTHRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 30,
@@ -175,7 +175,7 @@ function testDateRngFmtTHRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -190,7 +190,7 @@ function testDateRngFmtTHRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 30,
@@ -199,7 +199,7 @@ function testDateRngFmtTHRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -215,7 +215,7 @@ function testDateRngFmtTHRangeMultiDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 20,
@@ -224,7 +224,7 @@ function testDateRngFmtTHRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -239,7 +239,7 @@ function testDateRngFmtTHRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 20,
@@ -248,7 +248,7 @@ function testDateRngFmtTHRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -263,7 +263,7 @@ function testDateRngFmtTHRangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 20,
@@ -272,7 +272,7 @@ function testDateRngFmtTHRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -287,7 +287,7 @@ function testDateRngFmtTHRangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 20,
@@ -296,7 +296,7 @@ function testDateRngFmtTHRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -312,7 +312,7 @@ function testDateRngFmtTHRangeNextMonthShort() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		thy: 20,
@@ -321,7 +321,7 @@ function testDateRngFmtTHRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -336,7 +336,7 @@ function testDateRngFmtTHRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		thy: 20,
@@ -345,7 +345,7 @@ function testDateRngFmtTHRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -360,7 +360,7 @@ function testDateRngFmtTHRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		thy: 20,
@@ -369,7 +369,7 @@ function testDateRngFmtTHRangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -384,7 +384,7 @@ function testDateRngFmtTHRangeNextMonthFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		thy: 20,
@@ -393,7 +393,7 @@ function testDateRngFmtTHRangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
 		thy: 31,
@@ -409,7 +409,7 @@ function testDateRngFmtTHRangeNextYearShort() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		thy: 20,
@@ -418,7 +418,7 @@ function testDateRngFmtTHRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2012,
 		month: 1,
 		thy: 31,
@@ -433,7 +433,7 @@ function testDateRngFmtTHRangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		thy: 20,
@@ -442,7 +442,7 @@ function testDateRngFmtTHRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2012,
 		month: 1,
 		thy: 31,
@@ -457,7 +457,7 @@ function testDateRngFmtTHRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		thy: 20,
@@ -466,7 +466,7 @@ function testDateRngFmtTHRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2012,
 		month: 1,
 		thy: 31,
@@ -481,7 +481,7 @@ function testDateRngFmtTHRangeNextYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		thy: 20,
@@ -490,7 +490,7 @@ function testDateRngFmtTHRangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2012,
 		month: 1,
 		thy: 31,
@@ -506,7 +506,7 @@ function testDateRngFmtTHRangeMultiYearShort() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "short"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		thy: 20,
@@ -515,7 +515,7 @@ function testDateRngFmtTHRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2014,
 		month: 1,
 		thy: 31,
@@ -530,7 +530,7 @@ function testDateRngFmtTHRangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "medium"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		thy: 20,
@@ -539,7 +539,7 @@ function testDateRngFmtTHRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2014,
 		month: 1,
 		thy: 31,
@@ -554,7 +554,7 @@ function testDateRngFmtTHRangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "long"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		thy: 20,
@@ -563,7 +563,7 @@ function testDateRngFmtTHRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2014,
 		month: 1,
 		thy: 31,
@@ -578,7 +578,7 @@ function testDateRngFmtTHRangeMultiYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		thy: 20,
@@ -587,7 +587,7 @@ function testDateRngFmtTHRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2014,
 		month: 1,
 		thy: 31,
@@ -602,7 +602,7 @@ function testDateRngFmtTHManyYearsFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", length: "full"});
     assertNotNull(fmt);
     
-    var start = new ilib.Date.GregDate({
+    var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
 		thy: 20,
@@ -611,7 +611,7 @@ function testDateRngFmtTHManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    var end = new ilib.Date.GregDate({
+    var end = new ilib.Date.ThaiSolarDate({
 		year: 2064,
 		month: 1,
 		thy: 31,
