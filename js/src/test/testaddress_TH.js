@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressTHNormal() {
 	var parsedAddress = new ilib.Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ 10330\nประเทศไทย", {locale: 'th-Th'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 
 
 
-function testParseAddressNoZip() {
+function testParseAddressTHNoZip() {
 	var parsedAddress = new ilib.Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ\nประเทศไทย", {locale: 'th-Th'});
 	
 	assertNotUndefined(parsedAddress);
@@ -44,7 +44,7 @@ function testParseAddressNoZip() {
 };
 
 
-function testParseAddressNoCountry() {
+function testParseAddressTHNoCountry() {
 	var parsedAddress = new ilib.Address("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า\nอำเภอเมือง นนทบุรี 11000", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -56,7 +56,7 @@ function testParseAddressNoCountry() {
 	assertEquals("TH", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressTHManyLines() {
 	var parsedAddress = new ilib.Address("112/119\nมณียา สมบูรณ์ ผลงานชิ้นเอก\nไทรม้า\nเขตปทุมวัน\nกรุงเทพฯ\n11000\nประเทศไทย", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -69,7 +69,7 @@ function testParseAddressManyLines() {
 };
 
 
-function testParseAddressOneLine() {
+function testParseAddressTHOneLine() {
 	var parsedAddress = new ilib.Address("112/119,มณียา สมบูรณ์ ผลงานชิ้นเอก,ไทรม้า\nเขตปทุมวัน,กรุงเทพฯ,11000,ประเทศไทย", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -82,7 +82,7 @@ function testParseAddressOneLine() {
 };
 
 
-function testParseAddressOther() {
+function testParseAddressTHOther() {
 	var parsedAddress = new ilib.Address("112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า\nอำเภอเมือง นนทบุรี 11000\nประเทศไทย", {locale: 'th-TH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -95,7 +95,7 @@ function testParseAddressOther() {
 };
 
 
-function testFormatAddress() {
+function testFormatAddressTH() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี",
 		locality: "เขตปทุมวัน",
@@ -110,7 +110,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressTHFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "112/119 มณียา สมบูรณ์ ผลงานชิ้นเอก ไทรม้า",
 		locality: "อำเภอเมือง",

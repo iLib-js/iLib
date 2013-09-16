@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressILNormal() {
 	var parsedAddress = new ilib.Address("Yisrael Yisraeli\nHaDoar 1\nJerusalem 12345\nIsrael", {locale: 'he-IL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("IL", parsedAddress.countryCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressILNoCountry() {
 	var parsedAddress = new ilib.Address("Yisrael Yisraeli, HaDoar 1\nJerusalem 12345", {locale: 'he-IL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoCountry() {
 
 
 
-function testParseAddressOneLine() {
+function testParseAddressILOneLine() {
 	var parsedAddress = new ilib.Address("R.O.Y. International , PO Box 13056, TEL-AVIV ISL-61130, Israel", {locale: 'he-IL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressOneLine() {
 	assertEquals("IL", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressILSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tR.O.Y. International\n\t\nPO Box 13056\n \r\n\r\rTEL-AVIV	ISL-61130\r\r\n	Israel\t\n\n\n", {locale: 'he-IL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("IL", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressILNoDelimiters() {
 	var parsedAddress = new ilib.Address("R.O.Y. International PO Box 13056 TEL-AVIV ISL-61130 Israel", {locale: 'he-IL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("IL", parsedAddress.countryCode);
 };
 
-/*function testParseAddressSpecialChars() {
+/*function testParseAddressILSpecialChars() {
 	var parsedAddress = new ilib.Address("Työpajankatu 13,IL-00580 Helsinki, Israel", {locale: 'he-IL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("IL", parsedAddress.countryCode);
 };*/
 
-function testParseAddressFromUS() {
+function testParseAddressILFromUS() {
 	var parsedAddress = new ilib.Address("R.O.Y. International\nPO Box 13056\nTEL-AVIV, Israel", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressFromUS() {
 	assertEquals("IL", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressIL() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "R.O.Y. International, PO Box 13056",
 		locality: "TEL-AVIV",
@@ -118,7 +118,7 @@ function testFormatAddress() {
 
 
 
-function testFormatAddressFromUS() {
+function testFormatAddressILFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "R.O.Y. International, PO Box 13056, Albertinkatu 36 B",
 		locality: "TEL-AVIV",

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressHKLatinNormal() {
+function testParseAddressHKHKLatinNormal() {
 	var parsedAddress = new ilib.Address("Tower 1, Times Square\n1 Matheson Street\nRoom 1706\nCauseway Bay, Hong Kong", {locale: 'en-HK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressHKLatinNormal() {
 	assertEquals("HK", parsedAddress.countryCode);
 };
 
-function testParseAddressHKLatinNoCountry() {
+function testParseAddressHKHKLatinNoCountry() {
 	var parsedAddress = new ilib.Address("Tower 1, Times Square\n1 Matheson Street\nRoom 1706\nCauseway Bay", {locale: 'en-HK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressHKLatinNoCountry() {
 	assertEquals("HK", parsedAddress.countryCode);
 };
 
-function testParseAddressHKLatinDouble() {
+function testParseAddressHKHKLatinDouble() {
 	var parsedAddress = new ilib.Address("Room 1301-1302, 13/F, Block A, Sea View Estate,\n2 Watson Road, Hong Kong\nHong Kong", {locale: 'en-HK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressHKLatinDouble() {
 	assertEquals("HK", parsedAddress.countryCode);
 };
 
-function testParseAddressHKAsianNormal() {
+function testParseAddressHKHKAsianNormal() {
 	var parsedAddress = new ilib.Address("香港太古城英皇道1111號太古城中心1期19字樓", {locale: 'zh-HK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressHKAsianNormal() {
 	assertEquals("HK", parsedAddress.countryCode);
 };
 
-function testParseAddressHKAsianNoCountry() {
+function testParseAddressHKHKAsianNoCountry() {
 	var parsedAddress = new ilib.Address("太古城英皇道1111號太古城中心1期19字樓", {locale: 'zh-HK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressHKAsianNoCountry() {
 
 /*
 // for DFISH-20855
-function testParseAddressHKMixed() {
+function testParseAddressHKHKMixed() {
 	// in Hong Kong, it is more likely to be mixed like this
 	var parsedAddress = new ilib.Address("Hong Kong太古城英皇道1111號太古城中心1期19字樓", {locale: 'zh-HK'});
 	
@@ -93,7 +93,7 @@ function testParseAddressHKMixed() {
 };
 */
 
-function testParseAddressHKOneLine() {
+function testParseAddressHKHKOneLine() {
 	var parsedAddress = new ilib.Address("Room 1403-5, 14/F, Chinachem Exchange Square, 1 Hoi Wan Street, Quarry Bay, Hong Kong", {locale: 'en-HK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -105,7 +105,7 @@ function testParseAddressHKOneLine() {
 	assertEquals("HK", parsedAddress.countryCode);
 };
 
-function testParseAddressHKSuperfluousWhitespace() {
+function testParseAddressHKHKSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\t10/F PCCW Tower\n\t\nTaikoo Place\n \r\n\r\r979 King's Road\n	Quarry Bay\r\r\n	Hong Kong\t\n\n\n", {locale: 'en-HK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -117,7 +117,7 @@ function testParseAddressHKSuperfluousWhitespace() {
 	assertEquals("HK", parsedAddress.countryCode);
 };
 
-function testParseAddressHKNoDelimiters() {
+function testParseAddressHKHKNoDelimiters() {
 	var parsedAddress = new ilib.Address("Tower 1 Times Square 1 Matheson Street Room 1706 Causeway Bay Hong Kong", {locale: 'en-HK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -129,7 +129,7 @@ function testParseAddressHKNoDelimiters() {
 	assertEquals("HK", parsedAddress.countryCode);
 };
 
-function testParseAddressHKSpecialChars() {
+function testParseAddressHKHKSpecialChars() {
 	var parsedAddress = new ilib.Address("Suite 19, 1st Floor, Tǎi Gù Chung Zhong Shìn, Hăo 1111, In Huang Street, Dàpǔ Xīn Shìzhèn, Hong Kong", {locale: 'en-HK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -141,7 +141,7 @@ function testParseAddressHKSpecialChars() {
 	assertEquals("HK", parsedAddress.countryCode);
 };
 
-function testParseAddressHKFromUS() {
+function testParseAddressHKHKFromUS() {
 	var parsedAddress = new ilib.Address("Tower 1, Times Square\n1 Matheson Street\nRoom 1706\nCauseway Bay, Hong Kong", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
@@ -153,7 +153,7 @@ function testParseAddressHKFromUS() {
 	assertEquals("HK", parsedAddress.countryCode);
 };
 
-function testFormatAddressHKLatin() {
+function testFormatAddressHKHKLatin() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Tower 1, Times Square, 1 Matheson Street, Room 1706",
 		locality: "Causeway Bay",
@@ -167,7 +167,7 @@ function testFormatAddressHKLatin() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressHKAsian() {
+function testFormatAddressHKHKAsian() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "英皇道1111號太古城中心1期19字樓",
 		locality: "太古城",
@@ -181,7 +181,7 @@ function testFormatAddressHKAsian() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressHKFromUS() {
+function testFormatAddressHKHKFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Tower 1, Times Square, 1 Matheson Street, Room 1706",
 		locality: "Causeway Bay",

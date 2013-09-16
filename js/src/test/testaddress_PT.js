@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressPTNormal() {
 	var parsedAddress = new ilib.Address("Augusto Rodrigues Avenida António Arroio 5\n2775-153 Parede\nPortugal", {locale: 'pt-PT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("PT", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressPTNoZip() {
 	var parsedAddress = new ilib.Address("Augusto Rodrigues Avenida António Arroio 5\nParede\nPortugal", {locale: 'pt-PT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressPTNoCountry() {
 	var parsedAddress = new ilib.Address("Augusto Rodrigues Avenida António Arroio 5\n2775-153 Parede", {locale: 'pt-PT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("PT", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressPTManyLines() {
 	var parsedAddress = new ilib.Address("Augusto Rodrigues\nAvenida António Arroio 5\n\n2775-153\nParede\nPortugal\n\n\n", {locale: 'pt-PT'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Augusto Rodrigues, Avenida António Arroio 5", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("PT", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressPTOneLine() {
 	var parsedAddress = new ilib.Address("Augusto Rodrigues , Avenida António Arroio 5 , 2775-153 , Parede , Portugal", {locale: 'pt-PT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("PT", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressPTSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tAugusto Rodrigues\n\t\t\tAvenida António Arroio 5\n\t\n2775-153\t\nParede\n\t Portugal\n\n\n", {locale: 'pt-PT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("PT", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressPTNoDelimiters() {
 	var parsedAddress = new ilib.Address("Augusto Rodrigues Avenida António Arroio 5 2775-153 Parede Portugal", {locale: 'pt-PT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("PT", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressPTFromUS() {
 	var parsedAddress = new ilib.Address("Augusto Rodrigues Avenida António Arroio 5\n2775-153 Parede\nPortugal", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("PT", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressPT() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Augusto Rodrigues Avenida António Arroio 5",
 		locality: "Parede",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressPTFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Augusto Rodrigues Avenida António Arroio 5",
 		locality: "Parede",

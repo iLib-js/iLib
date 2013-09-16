@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressPHNormal() {
 	var parsedAddress = new ilib.Address("Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan\n2900 Laoag City Ilocos Norte\nPhilippines", {locale: 'es-PH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("PH", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressPHNoZip() {
 	var parsedAddress = new ilib.Address("Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan\nLaoag City Ilocos Norte\nPhilippines", {locale: 'es-PH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressPHNoCountry() {
 	var parsedAddress = new ilib.Address("Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan\n2900 Laoag City Ilocos Norte", {locale: 'es-PH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("PH", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressPHManyLines() {
 	var parsedAddress = new ilib.Address("Juan dela Cruz Rm 107\n1901 Airport Road\nCabungaan\n2900 Laoag City Ilocos Norte\nPhilippines", {locale: 'es-PH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("PH", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressPHOneLine() {
 	var parsedAddress = new ilib.Address("Juan dela Cruz Rm 107 , 1901 Airport Road , Cabungaan , 2900 , Laoag City , Ilocos Norte , Philippines", {locale: 'es-PH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("PH", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressPHSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Juan dela Cruz Rm 107\n\n\t\r1901 Airport Road\t\t\rCabungaan\n\n\t\r2900\r\n\nLaoag City\t\rIlocos Norte\t\t\rPhilippines", {locale: 'es-PH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("PH", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressPHNoDelimiters() {
 	var parsedAddress = new ilib.Address("Juan dela Cruz Rm 107 1901 Airport Road Cabungaan 2900 Laoag City Ilocos Norte Philippines", {locale: 'es-PH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("PH", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressPHFromUS() {
 	var parsedAddress = new ilib.Address("Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan\n2900 Laoag City Ilocos Norte\nPhilippines", {locale: 'es-PH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressFromUS() {
 	assertEquals("PH", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressPH() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan",
 		locality: "Laoag City",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressPHFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan",
 		locality: "Laoag City",

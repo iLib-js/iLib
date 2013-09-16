@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressVNNormal() {
 	var parsedAddress = new ilib.Address("No.123/45, đường Nguyễn Thị Minh Khai, Phường 5, Quận 3, Ho Chi Minh City, 705612\nViệt Nam", {locale: 'vi-VN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("VN", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressVNNoZip() {
 	var parsedAddress = new ilib.Address("No.123/45, đường Nguyễn Thị Minh Khai, Phường 5, Quận 3 Ho Chi Minh City\nViệt Nam", {locale: 'vi-VN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressVNNoCountry() {
 	var parsedAddress = new ilib.Address("No.123/45, đường Nguyễn Thị Minh Khai, Phường 5, Quận 3, Ho Chi Minh City, 705612", {locale: 'vi-VN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("VN", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressVNManyLines() {
 	var parsedAddress = new ilib.Address("No.123/45\nđường Nguyễn Thị Minh Khai\nPhường 5\nQuận 3\nHo Chi Minh City\n705612\nViệt Nam", {locale: 'vi-VN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("VN", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressVNOneLine() {
 	var parsedAddress = new ilib.Address("No.123/45, đường Nguyễn Thị Minh Khai, Phường 5, Quận 3, Ho Chi Minh City, 705612, Việt Nam", {locale: 'vi-VN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("VN", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressVNSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("No.123/45\n\nđường Nguyễn\t\tThị Minh Khai\n\n\tPhường 5\n\t\t\rQuận 3\r\r\n\tHo Chi Minh City\n\n\t705612\n\n\t\rViệt Nam", {locale: 'vi-VN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("VN", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressVNNoDelimiters() {
 	var parsedAddress = new ilib.Address("No.123/45, đường Nguyễn Thị Minh Khai, Phường 5, Quận 3, Ho Chi Minh City, 705612, Việt Nam", {locale: 'vi-VN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("VN", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressVNFromUS() {
 	var parsedAddress = new ilib.Address("No.123/45, đường Nguyễn Thị Minh Khai, Phường 5, Quận 3, Ho Chi Minh City, 705612\nViệt Nam", {locale: 'vi-VN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressFromUS() {
 	assertEquals("VN", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressVN() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "No.123/45, đường Nguyễn Thị Minh Khai, Phường 5",
 		locality: "Quận 3",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressVNFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "No.123/45, đường Nguyễn Thị Minh Khai, Phường 5",
 		locality: "Quận 3",

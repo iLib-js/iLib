@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAddressCZNormal() {
 	var parsedAddress = new ilib.Address("Carlos Rossi,Avenida João Jorge, 112, ap. 31 Vila Industrial,Campinas - SP,13035-680,Czech Republic", {locale: 'cz-CZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("BR", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressCZNoZip() {
 	var parsedAddress = new ilib.Address("Avenida João Jorge, 112, ap. 31 Vila Industrial,Campinas - SP, Czech Republic", {locale: 'cz-CZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressCZManyLines() {
 	var parsedAddress = new ilib.Address("Carlos Rossi\nAvenida João Jorge, 112, ap. 31\nVila Industrial\nCampinas - SP\n13035-680\nCzech Republic", {locale: 'cz-CZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("BR", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressCZOneLine() {
 	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro 1238, Sao Paulo - SP,Czech Republic", {locale: 'cz-CZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("BR", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressCZSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro 1238   \n\t\n Sao Paulo - SP \t\n 04642-000,\n\n\n Czech Republic  \n  \t\t\t", {locale: 'cz-CZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("BR", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressCZNoDelimiters() {
 	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro Sao Paulo - SP 04642-000 Czech Republic", {locale: 'cz-CZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("BR", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressCZSpecialChars() {
 	var parsedAddress = new ilib.Address("SOCIEDADE BRASILEIRA DE FÍSICA,Caixa Postal 66328,São Paulo-SP,05315-970,Czech Republic", {locale: 'cz-CZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("BR", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressCZFromUS() {
 	var parsedAddress = new ilib.Address("Rua Visconde de Porto Seguro,Sao Paulo-SP,04642-000,Czech Republic", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("BR", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressCZ() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Rua Visconde de Porto Seguro",
 		locality: "Sao Paulo",
@@ -132,7 +132,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressCZFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Rua Visconde de Porto Seguro",
 		locality: "Sao Paulo",

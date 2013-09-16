@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressHNNormal() {
 	var parsedAddress = new ilib.Address("Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua\nHONDURAS", {locale: 'es-HN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("HN", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressHNNoZip() {
 	var parsedAddress = new ilib.Address("Sr. Juan C. Martel\nLAS LAJAS, Comayagua\nHONDURAS", {locale: 'es-HN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressHNNoCountry() {
 	var parsedAddress = new ilib.Address("Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua", {locale: 'es-HN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("HN", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressHNManyLines() {
 	var parsedAddress = new ilib.Address("Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua\nHONDURAS", {locale: 'es-HN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("HN", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressHNOneLine() {
 	var parsedAddress = new ilib.Address("Sr. Juan C. Martel , CM1102 , LAS LAJAS , Comayagua , HONDURAS", {locale: 'es-HN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("HN", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressHNSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Sr. Juan C. Martel\n\n\n\rCM1102\r\nLAS LAJAS\r\r\rComayagua\t\t\rHONDURAS", {locale: 'es-HN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("HN", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressHNNoDelimiters() {
 	var parsedAddress = new ilib.Address("Sr. Juan C. Martel CM1102 LAS LAJAS Comayagua HONDURAS", {locale: 'es-HN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("HN", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressHNFromUS() {
 	var parsedAddress = new ilib.Address("Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua\nHONDURAS", {locale: 'es-HN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressFromUS() {
 	assertEquals("HN", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressHN() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Sr. Juan C. Martel",
 		locality: "LAS LAJAS",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressHNFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Sr. Juan C. Martel",
 		locality: "LAS LAJAS",

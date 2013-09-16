@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressLatinNormal() {
+function testParseAddressJPLatinNormal() {
 	var parsedAddress = new ilib.Address("Tokyo Central Post Office\n208 5-3, Yaesu 1-Chome\nChuo-ku, Tokyo 100-8994\nJapan", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressLatinNormal() {
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
-function testParseAddressLatinNoZip() {
+function testParseAddressJPLatinNoZip() {
 	var parsedAddress = new ilib.Address("Tokyo Central Post Office\n208 5-3, Yaesu 1-Chome\nChuo-ku, Tokyo\nJapan", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressLatinNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressLatinNoCountry() {
+function testParseAddressJPLatinNoCountry() {
 	var parsedAddress = new ilib.Address("Tokyo Central Post Office\n208 5-3, Yaesu 1-Chome\nChuo-ku, Tokyo 100-8994", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressLatinNoCountry() {
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
-function testParseAddressAsianNormal() {
+function testParseAddressJPAsianNormal() {
 	var parsedAddress = new ilib.Address("東京中央郵便局、2085-3、八重洲1丁目\n中央区, 東京 100-8994\n日本", {locale: 'ja-JP'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressAsianNormal() {
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
-function testParseAddressAsianNoZip() {
+function testParseAddressJPAsianNoZip() {
 	var parsedAddress = new ilib.Address("東京中央郵便局、2085-3、八重洲1丁目\n中央区, 東京\n日本", {locale: 'ja-JP'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressAsianNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressAsianNoCountry() {
+function testParseAddressJPAsianNoCountry() {
 	var parsedAddress = new ilib.Address("東京中央郵便局、2085-3、八重洲1丁目\n中央区, 東京 100-8994", {locale: 'ja-JP'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressAsianNoCountry() {
 
 
 
-function testParseAddressManyLines() {
+function testParseAddressJPManyLines() {
 	var parsedAddress = new ilib.Address("Tokyo Central Post Office\n208 5-3\nYaesu 1-Chome\nChuo-ku\nTokyo\n100-8994\nJapan\n\n\n", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressManyLines() {
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressJPOneLine() {
 	var parsedAddress = new ilib.Address("6-11 SHIMOHONDA, KOYASU-CHO, HACHIOJI-SHI, TOKYO-TO 192-0993, JAPAN", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);
@@ -115,7 +115,7 @@ function testParseAddressOneLine() {
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressJPSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\t6-11 SHIMOHONDA \r\t   \tKOYASU-CHO\t\t\n\t, HACHIOJI-SHI \r\tTOKYO-TO 192-0993\t\n\n\nJAPAN", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);
@@ -127,7 +127,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressJPNoDelimiters() {
 	var parsedAddress = new ilib.Address("6-11 SHIMOHONDA KOYASU-CHO HACHIOJI-SHI TOKYO-TO 192-0993 JAPAN", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);
@@ -139,7 +139,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressJPSpecialChars() {
 	var parsedAddress = new ilib.Address("208 Tianhe Road, Tianhe District,\nGuǎngjaōu, Guǎngdōng 510620\nJapan", {locale: 'en-JP'});
 	
 	assertNotUndefined(parsedAddress);
@@ -151,7 +151,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressJPFromUS() {
 	var parsedAddress = new ilib.Address("208 Tianhe Road, Tianhe District,\nGuǎngjaōu, Guǎngdōng 510620\nJapan", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -165,7 +165,7 @@ function testParseAddressFromUS() {
 	assertEquals("JP", parsedAddress.countryCode);
 };
 
-function testFormatAddressLatin() {
+function testFormatAddressJPLatin() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "208 Tianhe Road, Tianhe District",
 		locality: "Guǎngjaōu",
@@ -181,7 +181,7 @@ function testFormatAddressLatin() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressJPFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "208 Tianhe Road, Tianhe District",
 		locality: "Guǎngjaōu",

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressRONormal() {
 	var parsedAddress = new ilib.Address("Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI\nRomania", {locale: 'ro-RO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("RO", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressRONoZip() {
 	var parsedAddress = new ilib.Address("Călina Enescu Stradă Măguricea 1, ap. 1\nBUCUREŞTI\nRomania", {locale: 'ro-RO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressRONoCountry() {
 	var parsedAddress = new ilib.Address("Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI", {locale: 'ro-RO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("RO", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressROManyLines() {
 	var parsedAddress = new ilib.Address("Călina Enescu Stradă\nMăguricea 1\nap. 1\n\n014231\nBUCUREŞTI\n\nRomania\n\n\n", {locale: 'ro-RO'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Călina Enescu Stradă, Măguricea 1, ap. 1", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("RO", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressROOneLine() {
 	var parsedAddress = new ilib.Address("Călina Enescu Stradă , Măguricea 1 , ap. 1 , 014231 , BUCUREŞTI , Romania", {locale: 'ro-RO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("RO", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressROSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tCălina Enescu Stradă\t\t\rMăguricea 1\t\t\rap. 1\n\n014231\t\n\nBUCUREŞTI\n\t\nRomania\n\n\n", {locale: 'ro-RO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("RO", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressRONoDelimiters() {
 	var parsedAddress = new ilib.Address("Călina Enescu Stradă Măguricea 1, ap. 1 014231 BUCUREŞTI Romania", {locale: 'ro-RO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("RO", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressROFromUS() {
 	var parsedAddress = new ilib.Address("Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI\nRomania", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("RO", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressRO() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Călina Enescu Stradă Măguricea 1, ap. 1",
 		locality: "BUCUREŞTI",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressROFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Călina Enescu Stradă Măguricea 1, ap. 1",
 		locality: "BUCUREŞTI",

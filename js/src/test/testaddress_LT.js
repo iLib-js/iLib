@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressLTNormal() {
 	var parsedAddress = new ilib.Address("Adelei Mickienei Plento g. 17-2 Ariogala\n60249 Raseiniu r.sav\nLITHUANIA", {locale: 'lt-LT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("LT", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressLTNoZip() {
 	var parsedAddress = new ilib.Address("Adelei Mickienei Plento g. 17-2 Ariogala\nRaseiniu r.sav\nLITHUANIA", {locale: 'lt-LT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressLTNoCountry() {
 	var parsedAddress = new ilib.Address("Adelei Mickienei Plento g. 17-2 Ariogala\n60249 Raseiniu r.sav", {locale: 'lt-LT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("LT", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressLTManyLines() {
 	var parsedAddress = new ilib.Address("Adelei Mickienei\nPlento g.\n17-2 Ariogala\n\n60249\n\nRaseiniu r.sav\n\n\nLITHUANIA\n\n\n", {locale: 'lt-LT'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Adelei Mickienei, Plento g., 17-2 Ariogala", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("LT", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressLTOneLine() {
 	var parsedAddress = new ilib.Address("Adelei Mickienei , Plento g. , 17-2 Ariogala , 60249 , Raseiniu r.sav , LITHUANIA", {locale: 'lt-LT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("LT", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressLTSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tAdelei Mickienei\t\t\rPlento g.\t\t\r17-2 Ariogala\n\n60249\n\nRaseiniu r.sav\n\t LITHUANIA\n\n\n", {locale: 'lt-LT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("LT", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressLTNoDelimiters() {
 	var parsedAddress = new ilib.Address("Adelei Mickienei Plento g. 17-2 Ariogala 60249 Raseiniu r.sav LITHUANIA", {locale: 'lt-LT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("LT", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressLTFromUS() {
 	var parsedAddress = new ilib.Address("Adelei Mickienei Plento g. 17-2 Ariogala\n60249 Raseiniu r.sav\nLITHUANIA", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("LT", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressLT() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Adelei Mickienei Plento g. 17-2 Ariogala",
 		locality: "Raseiniu r.sav",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressLTFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Adelei Mickienei Plento g. 17-2 Ariogala",
 		locality: "Raseiniu r.sav",

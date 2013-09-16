@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAddressBANormal() {
 	var parsedAddress = new ilib.Address("Nedim Marevac, ul. Skenderija 60, 71000 SARAJEVO, BOSNIA", {locale: 'bs-Latn-BA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("BA", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressBANoZip() {
 	var parsedAddress = new ilib.Address("Nedim Marevac, ul. Skenderija 60, SARAJEVO, BOSNIA", {locale: 'bs-Latn-BA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressBAManyLines() {
 	var parsedAddress = new ilib.Address("Nedim Marevac\nul. Skenderija 60\n71000 SARAJEVO\nBOSNIA", {locale: 'bs-Latn-BA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("BA", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressBAOneLine() {
 	var parsedAddress = new ilib.Address("Nedim Marevac, ul. Skenderija 60, 71000 SARAJEVO, BOSNIA", {locale: 'bs-Latn-BA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("BA", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressBASuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Nedim Marevac, ul. Skenderija 60  \n\t\n 71000 SARAJEVO\t\n\n BOSNIA  \n  \t\t\t", {locale: 'bs-Latn-BA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("BA", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressBANoDelimiters() {
 	var parsedAddress = new ilib.Address("Nedim Marevac FEDERICO TERRAZAS ARIAS CALLE ADELA ZAMUDIO 1716 PO BAX 580 71000 SARAJEVO BOSNIA", {locale: 'bs-Latn-BA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("BA", parsedAddress.countryCode);
 };
 
-function testParseAddressSpeciAMChars() {
+function testParseAddressBASpeciAMChars() {
 	var parsedAddress = new ilib.Address("Nedim Marevac, ul. Skenderija 60, 71000 SARAJEVO, BOSNIA", {locale: 'bs-Latn-BA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressSpeciAMChars() {
 	assertEquals("BA", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressBAFromUS() {
 	var parsedAddress = new ilib.Address("Nedim Marevac, ul. Skenderija 60, 71000 SARAJEVO, BOSNIA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("BA", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressBA() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Nedim Marevac, ul. Skenderija 60",
 		locality: "71000 SARAJEVO",
@@ -130,7 +130,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressBAFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Nedim Marevac, ul. Skenderija 60",
 		country: "BOSNIA",

@@ -18,7 +18,7 @@
  */
 
 
-function testParseAddressNormal() {
+function testParseAddressMANormal() {
 	var parsedAddress = new ilib.Address("السيد. محمد إبراهيم, بلدية خريبكة,٢٥٠٠٥ خريبكة , المغرب", {locale: 'ar-MA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -30,7 +30,7 @@ function testParseAddressNormal() {
 	assertEquals("MA", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressMANoZip() {
 	var parsedAddress = new ilib.Address("السيد. محمد إبراهيم, بلدية خريبكة,خريبكة , المغرب", {locale: 'ar-MA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -42,7 +42,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressMAManyLines() {
 	var parsedAddress = new ilib.Address("السيد. محمد إبراهيم, بلدية خريبكة\n٢٥٠٠٥ خريبكة \n المغرب", {locale: 'ar-MA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -54,7 +54,7 @@ function testParseAddressManyLines() {
 	assertEquals("MA", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressMAOneLine() {
 	var parsedAddress = new ilib.Address("السيد. محمد إبراهيم, بلدية خريبكة,٢٥٠٠٥ خريبكة , المغرب", {locale: 'ar-MA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -66,7 +66,7 @@ function testParseAddressOneLine() {
 	assertEquals("MA", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressMASuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("السيد. محمد إبراهيم, بلدية خريبكة   \n\t\n٢٥٠٠٥ خريبكة \t\n\n  المغرب  \n  \t\t\t", {locale: 'ar-MA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -78,7 +78,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("MA", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressMANoDelimiters() {
 	var parsedAddress = new ilib.Address("السيد. محمد إبراهيم بلدية خريبكة  ٢ شارع الاستقلال٢٥٠٠٥  خريبكة   المغرب", {locale: 'ar-MA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -90,7 +90,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("MA", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressMASpecialChars() {
 	var parsedAddress = new ilib.Address("السيد. محمد إبراهيم, بلدية خريبكة,٢٥٠٠٥ خريبكة , المغرب", {locale: 'ar-MA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -102,7 +102,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("MA", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressMAFromUS() {
 	var parsedAddress = new ilib.Address("السيد. محمد إبراهيم, بلدية خريبكة,٢٥٠٠٥ خريبكة , Morocco", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -116,7 +116,7 @@ function testParseAddressFromUS() {
 	assertEquals("MA", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressMA() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد. محمد إبراهيم, بلدية خريبكة",
 		locality: "طرابلس",
@@ -129,7 +129,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressARFromUS() {
+function testFormatAddressMAARFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد. محمد إبراهيم, بلدية خريبكة",
 		locality: "طرابلس",

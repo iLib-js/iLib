@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressPANormal() {
 	var parsedAddress = new ilib.Address("Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City\nPanama", {locale: 'es-PA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("PA", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressPANoZip() {
 	var parsedAddress = new ilib.Address("Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City\nPanama", {locale: 'es-PA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressPANoCountry() {
 	var parsedAddress = new ilib.Address("Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City", {locale: 'es-PA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("PA", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressPAManyLines() {
 	var parsedAddress = new ilib.Address("Calle 52 y\nRicardo Arias.\nArea Bancaria\nPanama City\nPanama", {locale: 'es-PA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("PA", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressPAOneLine() {
 	var parsedAddress = new ilib.Address("Calle 52 y , Ricardo Arias. , Area Bancaria , Panama City , Panama", {locale: 'es-PA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("PA", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressPASuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Calle 52 y\n\n\t\r\t\t\rRicardo Arias.\r\r\r\t\t\r\n\n\nArea Bancaria\t\r\r\rPanama City\t\t\rPanama", {locale: 'es-PA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("PA", parsedAddress.countryCode);
 };
 //needs a better regular expression to handle localities with spaces and with no spaces
-/*function testParseAddressNoDelimiters() {
+/*function testParseAddressPANoDelimiters() {
 	var parsedAddress = new ilib.Address("Calle 52 y Ricardo Arias. Area Bancaria Panama City Panama", {locale: 'es-PA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("PA", parsedAddress.countryCode);
 };*/
 
-function testParseAddressFromUS() {
+function testParseAddressPAFromUS() {
 	var parsedAddress = new ilib.Address("Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City\nPanama", {locale: 'es-PA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressFromUS() {
 	assertEquals("PA", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressPA() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Calle 52 y Ricardo Arias.",
 		locality: "Area Bancaria",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressPAFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Calle 52 y Ricardo Arias.",
 		locality: "Area Bancaria",

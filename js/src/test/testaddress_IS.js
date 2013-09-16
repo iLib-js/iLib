@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressISNormal() {
 	var parsedAddress = new ilib.Address("Gudmundur Jonasson Travel\nBorgartun 34\n105 REYKJAVÍK\nICELAND", {locale: 'en-IS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("IS", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressISNoZip() {
 	var parsedAddress = new ilib.Address("Gudmundur Jonasson Travel\nBorgartun 34\nREYKJAVÍK", {locale: 'en-IS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressISNoCountry() {
 	var parsedAddress = new ilib.Address("Wabbitwatchin Excursions\n121 REYKJAVÍK", {locale: 'en-IS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("IS", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressISManyLines() {
 	var parsedAddress = new ilib.Address("Elmér Fúdd\nWabbitwatchin Excursions\nPósthólf 1034\n121 REYKJAVÍK\nICELAND", {locale: 'en-IS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("IS", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressISOneLine() {
 	var parsedAddress = new ilib.Address("Elmér Fúdd, Wabbitwatchin Excursions, Pósthólf 1034, 121 REYKJAVÍK, ICELAND", {locale: 'en-IS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("IS", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressISSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tElmér Fúdd\n\t\t\tWabbitwatchin Excursions, \t\t\t\r\r Pósthólf 1034, \n\t\n121 REYKJAVÍK\t\n\t \nICELAND\n\n", {locale: 'en-IS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("IS", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressISNoDelimiters() {
 	var parsedAddress = new ilib.Address("Elmér Fúdd Wabbitwatchin Excursions Pósthólf 1034 121 REYKJAVÍK ICELAND", {locale: 'en-IS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("IS", parsedAddress.countryCode);
 };
 
-function testParseAddressFromDE() {
+function testParseAddressISFromDE() {
 	var parsedAddress = new ilib.Address("Gudmundur Jonasson Travel\nBorgartun 34\n105 REYKJAVÍK\nisland", {locale: 'de-DE'});
 	
 	// the country name is in German because this address is for a contact in a German database
@@ -115,7 +115,7 @@ function testParseAddressFromDE() {
 	assertEquals("IS", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressIS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Gudmundur Jonasson Travel, Borgartun 34",
 		locality: "REYKJAVÍK",
@@ -129,7 +129,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromDE() {
+function testFormatAddressISFromDE() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Gudmundur Jonasson Travel, Borgartun 34",
 		locality: "REYKJAVÍK",

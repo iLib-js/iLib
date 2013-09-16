@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressPLNormal() {
 	var parsedAddress = new ilib.Address("Adrian Kieślowski ul. Łączności 1\n82-300 ELBLAG\nPoland", {locale: 'pl-PL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("PL", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressPLNoZip() {
 	var parsedAddress = new ilib.Address("Adrian Kieślowski ul. Łączności 1\nELBLAG\nPoland", {locale: 'pl-PL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressPLNoCountry() {
 	var parsedAddress = new ilib.Address("Adrian Kieślowski ul. Łączności 1\n82-300 ELBLAG", {locale: 'pl-PL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("PL", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressPLManyLines() {
 	var parsedAddress = new ilib.Address("Adrian Kieślowski\nul. Łączności 1\n\n82-300\nELBLAG\nPoland\n\n\n", {locale: 'pl-PL'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Adrian Kieślowski, ul. Łączności 1", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("PL", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressPLOneLine() {
 	var parsedAddress = new ilib.Address("Adrian Kieślowski , ul. Łączności 1 , 82-300 , ELBLAG , Poland", {locale: 'pl-PL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("PL", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressPLSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tAdrian Kieślowski\n\t\t\tul. Łączności 1\n\t\n82-300\t\nELBLAG\n\t Poland\n\n\n", {locale: 'pl-PL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("PL", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressPLNoDelimiters() {
 	var parsedAddress = new ilib.Address("Adrian Kieślowski ul. Łączności 1 82-300 ELBLAG Poland", {locale: 'pl-PL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("PL", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressPLFromUS() {
 	var parsedAddress = new ilib.Address("Adrian Kieślowski ul. Łączności 1\n82-300 ELBLAG\nPoland", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("PL", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressPL() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Adrian Kieślowski ul. Łączności 1",
 		locality: "ELBLAG",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressPLFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Adrian Kieślowski ul. Łączności 1",
 		locality: "ELBLAG",

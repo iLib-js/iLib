@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressNLNormal() {
 	var parsedAddress = new ilib.Address("Achterberglaan 23, 2345 GD Uithoorn, Nederland", {locale: 'nl-NL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("NL", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressNLNoZip() {
 	var parsedAddress = new ilib.Address("Achterberglaan 23, Uithoorn, Nederland", {locale: 'nl-NL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressNLManyLines() {
 	var parsedAddress = new ilib.Address("Claude Debussylaan 34\nVinoly Mahler 4\nToren B\n15th Floor\n1082 MD\nAmsterdam\nNederland", {locale: 'nl-NL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressManyLines() {
 	assertEquals("NL", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressNLOneLine() {
 	var parsedAddress = new ilib.Address("Startbaan 16, 1187 XR Amstelveen, Nederland", {locale: 'nl-NL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressOneLine() {
 	assertEquals("NL", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressNLSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Startbaan 16,   \n\t\n 1187 XR \t\t Amstelveen,\n\n\n Nederland  \n  \t\t\t", {locale: 'nl-NL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("NL", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressNLNoDelimiters() {
 	var parsedAddress = new ilib.Address("Startbaan 16 1187 XR Amstelveen Nederland", {locale: 'nl-NL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("NL", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressNLSpecialChars() {
 	var parsedAddress = new ilib.Address("Óók 16, 1187 XR s'Hertogen-bósch, Nederland", {locale: 'nl-NL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("NL", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressNLFromUS() {
 	var parsedAddress = new ilib.Address("Achterberglaan 23, 2345 GD Uithoorn, The Netherlands", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -115,7 +115,7 @@ function testParseAddressFromUS() {
 	assertEquals("NL", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressNL() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Achterberglaan 23",
 		locality: "Uithoorn",
@@ -129,7 +129,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressNLFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Achterberglaan 23",
 		locality: "Uithoorn",

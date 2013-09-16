@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAddressDONormal() {
 	var parsedAddress = new ilib.Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("DO", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressDONoZip() {
 	var parsedAddress = new ilib.Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertEquals("11903", parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressDOManyLines() {
 	var parsedAddress = new ilib.Address("Dominica L. Hernandez\nC/45 # 33\nKatanga, Los Minas\n11903 SANTO DOMINGO\nRepública Dominicana", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("DO", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressDOOneLine() {
 	var parsedAddress = new ilib.Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("DO", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressDOSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas  \n\t\n 11903 SANTO DOMINGO\t\n\n República Dominicana  \n  \t\t\t", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("DO", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressDONoDelimiters() {
 	var parsedAddress = new ilib.Address("Dominica L. Hernandez C/45 # 33 Katanga Los Minas 11903 SANTO DOMINGO República Dominicana", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("DO", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressDOSpecialChars() {
 	var parsedAddress = new ilib.Address("Instituto Postal Dominicano, C/Héroes de Luperón esq. Rafael Damirón, Centro de los Héroes, 10101 SANTO DOMINGO, República Dominicana", {locale: 'es-DO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("DO", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressDOFromUS() {
 	var parsedAddress = new ilib.Address("Dominica L. Hernandez, C/45 # 33, Katanga, Los Minas, 11903 SANTO DOMINGO, Dominican Republic", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("DO", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressDO() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Dominica L. Hernandez, C/45 # 33",
 		region: "SANTO DOMINGO",
@@ -132,7 +132,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressDOFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Dominica L. Hernandez, C/45 # 33",
 		region: "SANTO DOMINGO",

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressZANormal() {
 	var parsedAddress = new ilib.Address("Customer Services 497 Jacob Mare Street\nPretoria 0001\nSouth Africa", {locale: 'en-ZA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("ZA", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressZANoZip() {
 	var parsedAddress = new ilib.Address("Mr. J. Public 1234 Church Street Colloyn\nPRETORIA\nSOUTH AFRICA", {locale: 'en-ZA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressZANoCountry() {
 	var parsedAddress = new ilib.Address("Customer Services 497 Jacob Mare Street\nPretoria 0001", {locale: 'en-ZA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("ZA", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressZAManyLines() {
 	var parsedAddress = new ilib.Address("Customer Services 497\nJacob Mare Street\nPretoria 0001\nSOUTH AFRICA\n\n\n", {locale: 'en-ZA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("ZA", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressZAOneLine() {
 	var parsedAddress = new ilib.Address("Customer Services 497 ,Jacob Mare Street , Pretoria 0001 , SOUTH AFRICA", {locale: 'en-ZA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -78,7 +78,7 @@ function testParseAddressOneLine() {
 };
 
 
-function testParseAddressNoDelimiters() {
+function testParseAddressZANoDelimiters() {
 	var parsedAddress = new ilib.Address("Customer Services 497 Jacob Mare Street Pretoria 0001 SOUTH AFRICA", {locale: 'en-ZA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -90,7 +90,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("ZA", parsedAddress.countryCode);
 };
 
-function testFormatAddressZA() {
+function testFormatAddressZAZA() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Customer Services 497 Jacob Mare Street",
 		locality: "Pretoria",

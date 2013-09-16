@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressHINormal() {
+function testParseAddressINHINormal() {
    var parsedAddress = new ilib.Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\n७०००१७\nभारत", {locale: 'hi-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressHINormal() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testParseAddressHINoZip() {
+function testParseAddressINHINoZip() {
 	var parsedAddress = new ilib.Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\nभारत", {locale: 'hi-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressHINoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressHINoCountry() {
+function testParseAddressINHINoCountry() {
 	var parsedAddress = new ilib.Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\n७०००१७", {locale: 'hi-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressHINoCountry() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testParseAddressHIManyLines() {
+function testParseAddressINHIManyLines() {
 	var parsedAddress = new ilib.Address("१२५/१, एजी टावर्स\n३ तल, पार्क स्ट्रीट\nसर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\n७०००१७\nभारत", {locale: 'hi-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressHIManyLines() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testParseAddressHIOneLine() {
+function testParseAddressINHIOneLine() {
 	var parsedAddress = new ilib.Address("१२५/१, एजी टावर्स , ३ तल, पार्क स्ट्रीट , सर्कस एवेन्यू , कोलकाता , पश्चिम बंगाल , ७०००१७ , भारत", {locale: 'hi-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressHIOneLine() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testParseAddressHISuperfluousWhitespace() {
+function testParseAddressINHISuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("१२५/१, एजी टावर्स\t\t\r३ तल, पार्क स्ट्रीट\t\t\rसर्कस एवेन्यू\t\t\r\nकोलकाता\n\t\tपश्चिम बंगाल\n\t\r७०००१७\n\t\rभारत", {locale: 'hi-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressHISuperfluousWhitespace() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testParseAddressHINoDelimiters() {
+function testParseAddressINHINoDelimiters() {
 	var parsedAddress = new ilib.Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू कोलकाता पश्चिम बंगाल ७०००१७ भारत", {locale: 'hi-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressHINoDelimiters() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testParseAddressHIFromUS() {
+function testParseAddressINHIFromUS() {
 	var parsedAddress = new ilib.Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\n७०००१७\nIndia", {locale: 'hi-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressHIFromUS() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testFormatAddressHI() {
+function testFormatAddressINHI() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू",
 		locality: "कोलकाता",
@@ -128,7 +128,7 @@ function testFormatAddressHI() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressHIFromUS() {
+function testFormatAddressINHIFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू",
 		locality: "कोलकाता",
@@ -144,7 +144,7 @@ function testFormatAddressHIFromUS() {
 };
 
 
-function testParseAddressNormal() {
+function testParseAddressINNormal() {
    var parsedAddress = new ilib.Address("125/1, A G Towers. 3rd Floor, Park Street. Circus Avenue\nKolkata\nWest Bengal\n700017\nIndia", {locale: 'en-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -156,7 +156,7 @@ function testParseAddressNormal() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressINNoZip() {
 	var parsedAddress = new ilib.Address("125/1, A G Towers. 3rd Floor, Park Street. Circus Avenue\nKolkata\nWest Bengal\nIndia", {locale: 'en-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -168,7 +168,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressINNoCountry() {
 	var parsedAddress = new ilib.Address("125/1, A G Towers. 3rd Floor, Park Street. Circus Avenue\nKolkata\nWest Bengal\n700017", {locale: 'en-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -180,7 +180,7 @@ function testParseAddressNoCountry() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressINManyLines() {
 	var parsedAddress = new ilib.Address("125/1, A G Towers\n3rd Floor, Park Street\nCircus Avenue\nKolkata\nWest Bengal\n700017\nIndia", {locale: 'en-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -192,7 +192,7 @@ function testParseAddressManyLines() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressINOneLine() {
 	var parsedAddress = new ilib.Address("125/1, A G Towers , 3rd Floor, Park Street , Circus Avenue , Kolkata , West Bengal , 700017 , India", {locale: 'en-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -204,7 +204,7 @@ function testParseAddressOneLine() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressINSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("125/1, A G Towers\t\t\r3rd Floor, Park Street\t\t\rCircus Avenue\t\t\r\nKolkata\n\t\tWest Bengal\n\t\r700017\n\t\rIndia", {locale: 'en-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -216,7 +216,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressINNoDelimiters() {
 	var parsedAddress = new ilib.Address("125/1, A G Towers. 3rd Floor, Park Street. Circus Avenue Kolkata West Bengal 700017 India", {locale: 'en-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -228,7 +228,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressINFromUS() {
 	var parsedAddress = new ilib.Address("125/1, A G Towers. 3rd Floor, Park Street. Circus Avenue\nKolkata\nWest Bengal\n700017\nIndia", {locale: 'en-IN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -240,7 +240,7 @@ function testParseAddressFromUS() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressIN() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "125/1, A G Towers. 3rd Floor, Park Street. Circus Avenue",
 		locality: "Kolkata",
@@ -255,7 +255,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressINFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "125/1, A G Towers. 3rd Floor, Park Street. Circus Avenue",
 		locality: "Kolkata",

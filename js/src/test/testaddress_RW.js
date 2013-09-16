@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressRWNormal() {
 	var parsedAddress = new ilib.Address("M. Pierre Simon B.P. 3425\nKIGALI\nRwanda", {locale: 'fr-RW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("RW", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressRWNoZip() {
 	var parsedAddress = new ilib.Address("M. Pierre Simon B.P. 3425\nKIGALI\nRwanda", {locale: 'fr-RW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressRWNoCountry() {
 	var parsedAddress = new ilib.Address("M. Pierre Simon B.P. 3425\nKIGALI", {locale: 'fr-RW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("RW", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressRWManyLines() {
 	var parsedAddress = new ilib.Address("M. Pierre Simon\nB.P. 3425\nKIGALI\nRwanda\n\n\n", {locale: 'fr-RW'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Pierre Simon, B.P. 3425", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("RW", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressRWOneLine() {
 	var parsedAddress = new ilib.Address("M. Pierre Simon , B.P. 3425 , KIGALI , Rwanda", {locale: 'fr-RW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("RW", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressRWSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\t\tM. Pierre Simon\t\t\tB.P. 3425\n\t\nKIGALI\n\tRwanda\n\n\n", {locale: 'fr-RW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("RW", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressRWNoDelimiters() {
 	var parsedAddress = new ilib.Address("M. Pierre Simon B.P. 3425 KIGALI Rwanda", {locale: 'fr-RW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("RW", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressRWFromUS() {
 	var parsedAddress = new ilib.Address("M. Pierre Simon B.P. 3425\nKIGALI\nRwanda", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
@@ -112,7 +112,7 @@ function testParseAddressFromUS() {
 	assertEquals("RW", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressRW() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "M. Pierre Simon B.P. 3425",
 		locality: "KIGALI",
@@ -125,7 +125,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressRWFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "M. Pierre Simon B.P. 3425",
 		locality: "KIGALI",

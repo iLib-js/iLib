@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressUGNormal() {
 	var parsedAddress = new ilib.Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda", {locale: 'en-UG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("UG", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressUGNoZip() {
 	var parsedAddress = new ilib.Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda", {locale: 'en-UG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressUGNoCountry() {
 	var parsedAddress = new ilib.Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA", {locale: 'en-UG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("UG", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressUGManyLines() {
 	var parsedAddress = new ilib.Address("Ms. Olive Takubua\nP.O. Box 21310\nKAMPALA\nUganda\n\n\n", {locale: 'en-UG'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Ms. Olive Takubua, P.O. Box 21310", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("UG", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressUGOneLine() {
 	var parsedAddress = new ilib.Address("Ms. Olive Takubua , P.O. Box 21310 , KAMPALA , Uganda", {locale: 'en-UG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("UG", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressUGSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\t\tMs. Olive Takubua\t\t\tP.O. Box\t\r\r21310\t\nKAMPALA\n\t Uganda\n\n\n", {locale: 'en-UG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("UG", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressUGNoDelimiters() {
 	var parsedAddress = new ilib.Address("Ms. Olive Takubua P.O. Box 21310 KAMPALA Uganda", {locale: 'en-UG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("UG", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressUGFromUS() {
 	var parsedAddress = new ilib.Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("UG", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressUG() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Ms. Olive Takubua P.O. Box 21310",
 		locality: "KAMPALA",
@@ -127,7 +127,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressUGFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Ms. Olive Takubua P.O. Box 21310",
 		locality: "KAMPALA",

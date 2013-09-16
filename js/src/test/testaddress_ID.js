@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAddressIDNormal() {
 	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta, Jalan Medan Merdeka Selatan No. xx, Jakarta Selatan 10110,Jakarta,INDONESIA", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("ID", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressIDNoZip() {
 	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx, Jakarta Selatan, INDONESIA", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressIDManyLines() {
 	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta\nJalan Medan Merdeka Selatan No. xx\nJakarta Selatan 10110\nINDONESIA", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("ID", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressIDOneLine() {
 	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx,Jakarta Selatan 10110 INDONESIA", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("ID", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressIDSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx   \n\t\n Jakarta Selatan 10110\t\n\n INDONESIA  \n  \t\t\t", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("ID", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressIDNoDelimiters() {
 	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta Jalan Medan Merdeka Selatan No. xx Jakarta Selatan 10110 INDONESIA", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("ID", parsedAddress.countryCode);
 };
 
-/*function testParseAddressSpecialChars() {
+/*function testParseAddressIDSpecialChars() {
 	var parsedAddress = new ilib.Address("Botanisk Centralbibliotek,Sølvgade 83, opg. S,ID-1307 København K.,INDONESIA", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("ID", parsedAddress.countryCode);
 };*/
 
-function testParseAddressFromUS() {
+function testParseAddressIDFromUS() {
 	var parsedAddress = new ilib.Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx,Jakarta Selatan 10110,INDONESIA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("ID", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressID() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx",
 		locality: "Jakarta Selatan",
@@ -131,7 +131,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressIDFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx",
 		postalCode: "10110",

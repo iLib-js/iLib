@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressFRNormal() {
 	var parsedAddress = new ilib.Address("38 avenue de l‘Opéra\n75002 Paris\nFrance", {locale: 'fr-FR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("FR", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressFRNoZip() {
 	var parsedAddress = new ilib.Address("80 rue Camille Desmoulins\nIssy-les-Moulineaux\nFrance", {locale: 'fr-FR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressFRNoCountry() {
 	var parsedAddress = new ilib.Address("38 avenue de l‘Opéra\n75002 Paris", {locale: 'fr-FR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("FR", parsedAddress.countryCode);
 };
 
-function testParseAddressCedex() {
+function testParseAddressFRCedex() {
 	var parsedAddress = new ilib.Address("38 avenue de l‘Opéra\n75002 Paris cedex 9\nFrance", {locale: 'fr-FR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressCedex() {
 	assertEquals("FR", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressFRManyLines() {
 	var parsedAddress = new ilib.Address("Technoparc de l'Aubinière\n3, avenie des Améthystes\n44300\nNantes\nFrance", {locale: 'fr-FR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressManyLines() {
 	assertEquals("FR", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressFROneLine() {
 	var parsedAddress = new ilib.Address("4, Avenue Pablo Picasso, 92024 Nanterre, France", {locale: 'fr-FR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressOneLine() {
 	assertEquals("FR", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressFRSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tTechnoparc de l'Aubinière\n  \t \t \t  3, avenie des Améthystes\n\n\t \t \n44300 \t\r \n       Nantes\t\nFrance \r\r\t \t \n\n\n", {locale: 'fr-FR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("FR", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressFRNoDelimiters() {
 	var parsedAddress = new ilib.Address("4 Avenue Pablo Picasso 92024 Nanterre France", {locale: 'fr-FR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("FR", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressFRFromUS() {
 	var parsedAddress = new ilib.Address("Z.I. de Courtaboeuf\n1, avenue du Canada\n91947 Les Ulis\nFrance", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -127,7 +127,7 @@ function testParseAddressFromUS() {
 	assertEquals("FR", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressFR() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "38 avenue de l‘Opéra",
 		locality: "Paris",
@@ -141,7 +141,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressFRFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "38 avenue de l‘Opéra",
 		locality: "Paris",

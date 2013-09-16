@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressUANormal() {
 	var parsedAddress = new ilib.Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\n03127\nУКРАЇНА", {locale: 'uk-UA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("UA", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressUANoZip() {
 	var parsedAddress = new ilib.Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\nУКРАЇНА", {locale: 'uk-UA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressUANoCountry() {
 	var parsedAddress = new ilib.Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\n03127", {locale: 'uk-UA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("UA", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressUAManyLines() {
 	var parsedAddress = new ilib.Address("Володимир Свідерський\nВУЛ ДУБІНІНА Володя 5\n\nКИЇВ\n\n03127\nУКРАЇНА\n\n\n", {locale: 'uk-UA'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Володимир Свідерський, ВУЛ ДУБІНІНА Володя 5", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("UA", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressUAOneLine() {
 	var parsedAddress = new ilib.Address("Володимир Свідерський , ВУЛ ДУБІНІНА Володя 5 , КИЇВ , 03127 , УКРАЇНА", {locale: 'uk-UA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("UA", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressUASuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tВолодимир Свідерський\n\t\t\rВУЛ ДУБІНІНА\t\t\rВолодя\t\t5\n\n\nКИЇВ\n\n03127\n\t УКРАЇНА\n\n\n", {locale: 'uk-UA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("UA", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressUANoDelimiters() {
 	var parsedAddress = new ilib.Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5 КИЇВ 03127 УКРАЇНА", {locale: 'uk-UA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("UA", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressUAFromUS() {
 	var parsedAddress = new ilib.Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\n03127\nУКРАЇНА", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("UA", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressUA() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5",
 		locality: "КИЇВ",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressUAFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5",
 		locality: "КИЇВ",

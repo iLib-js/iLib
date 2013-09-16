@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressFIfinnishNormal() {
+function testParseAddressFIFIfinnishNormal() {
 	var parsedAddress = new ilib.Address("Eduskunta\nMatti Mallikainen\nMannerheimintie 30 as 5\nFI-00102 Eduskunta\nFinland", {locale: 'fi-FI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressFIfinnishNormal() {
 	assertEquals("FI", parsedAddress.countryCode);
 };
 
-function testParseAddressFIfinnishNoCountry() {
+function testParseAddressFIFIfinnishNoCountry() {
 	var parsedAddress = new ilib.Address("Eduskunta, Matti Mallikainen\nMannerheimintie 30 as 5\nFI-00102 Eduskunta", {locale: 'fi-FI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -42,7 +42,7 @@ function testParseAddressFIfinnishNoCountry() {
 };
 
 
-function testParseAddressFIswedishNormal() {
+function testParseAddressFIFIswedishNormal() {
 	var parsedAddress = new ilib.Address("Kalevankatu 12, 1st floor, FI-60100 Seinäjoki,Finland", {locale: 'sv-FI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -54,7 +54,7 @@ function testParseAddressFIswedishNormal() {
 	assertEquals("FI", parsedAddress.countryCode);
 };
 
-function testParseAddressFIswedishNoCountry() {
+function testParseAddressFIFIswedishNoCountry() {
 	var parsedAddress = new ilib.Address("Kalevankatu 12, 1st floor, FI-60100 Seinäjoki", {locale: 'sv-FI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -68,7 +68,7 @@ function testParseAddressFIswedishNoCountry() {
 
 
 
-function testParseAddressFIOneLine() {
+function testParseAddressFIFIOneLine() {
 	var parsedAddress = new ilib.Address("Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B, 00180 HELSINKI, Finland", {locale: 'fi-FI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -80,7 +80,7 @@ function testParseAddressFIOneLine() {
 	assertEquals("FI", parsedAddress.countryCode);
 };
 
-function testParseAddressFISuperfluousWhitespace() {
+function testParseAddressFIFISuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tMs. Aulikki Laasko\n\t\nVesakkotic 1399\n \r\n\r\rFI-00630	HELSINKI\r\r\n	Finland\t\n\n\n", {locale: 'fi-FI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -92,7 +92,7 @@ function testParseAddressFISuperfluousWhitespace() {
 	assertEquals("FI", parsedAddress.countryCode);
 };
 
-function testParseAddressFINoDelimiters() {
+function testParseAddressFIFINoDelimiters() {
 	var parsedAddress = new ilib.Address("Ms. Aulikki Laasko Vesakkotic 1399 HELSINKI Finland", {locale: 'fi-FI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -104,7 +104,7 @@ function testParseAddressFINoDelimiters() {
 	assertEquals("FI", parsedAddress.countryCode);
 };
 
-function testParseAddressFISpecialChars() {
+function testParseAddressFIFISpecialChars() {
 	var parsedAddress = new ilib.Address("Työpajankatu 13,FI-00580 Helsinki, Finland", {locale: 'fi-FI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -116,7 +116,7 @@ function testParseAddressFISpecialChars() {
 	assertEquals("FI", parsedAddress.countryCode);
 };
 
-function testParseAddressFIFromUS() {
+function testParseAddressFIFIFromUS() {
 	var parsedAddress = new ilib.Address("Saga Matkat OY\nSaga Tours Ltd\nAlbertinkatu 36 B\nHELSINKI, Finland", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
@@ -128,7 +128,7 @@ function testParseAddressFIFromUS() {
 	assertEquals("FI", parsedAddress.countryCode);
 };
 
-function testFormatAddressFIfinnish() {
+function testFormatAddressFIFIfinnish() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B",
 		locality: "HELSINKI",
@@ -141,7 +141,7 @@ function testFormatAddressFIfinnish() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFIswedish() {
+function testFormatAddressFIFIswedish() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Työpajankatu 13",
 		locality: "Helsinki",
@@ -154,7 +154,7 @@ function testFormatAddressFIswedish() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFIFromUS() {
+function testFormatAddressFIFIFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B",
 		locality: "HELSINKI",

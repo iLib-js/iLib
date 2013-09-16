@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressMYLatinNormal() {
+function testParseAddressMYMYLatinNormal() {
 	var parsedAddress = new ilib.Address("11 Jalan Budi 1\nTaman Budiman\n42700 BANTING\nSELANGOR\nMalaysia", {locale: 'en-MY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressMYLatinNormal() {
 	assertEquals("MY", parsedAddress.countryCode);
 };
 
-function testParseAddressMYLatinNoZip() {
+function testParseAddressMYMYLatinNoZip() {
 	var parsedAddress = new ilib.Address("Capital Shipping Bhd, Lot 323, 1st Floor, Bintang Commercial Centre,29 Jalan Sekilau\nJOHOR BAHRU\nJohor\nMalaysia", {locale: 'en-MY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressMYLatinNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressMYLatinNoCountry() {
+function testParseAddressMYMYLatinNoCountry() {
 	var parsedAddress = new ilib.Address("11 Jalan Budi 1\nTaman Budiman\n42700 BANTING\nSELANGOR", {locale: 'en-MY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressMYLatinNoCountry() {
 	assertEquals("MY", parsedAddress.countryCode);
 };
 
-/*function testParseAddressMYAsianNormal() {
+/*function testParseAddressMYMYAsianNormal() {
 	var parsedAddress = new ilib.Address("新加坡共和國159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-MY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressMYLatinNoCountry() {
 	assertEquals("MY", parsedAddress.countryCode);
 };
 
-function testParseAddressMYAsianNoZip() {
+function testParseAddressMYMYAsianNoZip() {
 	var parsedAddress = new ilib.Address("新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-MY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressMYAsianNoZip() {
 	assertEquals("MY", parsedAddress.countryCode);
 };
 
-function testParseAddressMYAsianNoCountry() {
+function testParseAddressMYMYAsianNoCountry() {
 	var parsedAddress = new ilib.Address("159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-MY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressMYAsianNoCountry() {
 	assertEquals("MY", parsedAddress.countryCode);
 };*/
 
-function testParseAddressMYManyLines() {
+function testParseAddressMYMYManyLines() {
 	var parsedAddress = new ilib.Address("11 Jalan Budi 1\nTaman Budiman\n42700 BANTING\nSELANGOR\nMalaysia", {locale: 'en-MY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressMYManyLines() {
 	assertEquals("MY", parsedAddress.countryCode);
 };
 
-function testParseAddressMYOneLine() {
+function testParseAddressMYMYOneLine() {
 	var parsedAddress = new ilib.Address("Capital Shipping Bhd, Lot 323, 1st Floor, Bintang Commercial Centre,29 Jalan Sekilau,JOHOR BAHRU,Johor,Malaysia", {locale: 'en-MY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressMYOneLine() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressMYSuperfluousWhitespace() {
+function testParseAddressMYMYSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\t11 Jalan Budi 1\t\t\r\n\t42700 BANTING\r\t SELANGOR\t\nMalaysia\r\t\n", {locale: 'en-MY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -125,7 +125,7 @@ function testParseAddressMYSuperfluousWhitespace() {
 	assertEquals("MY", parsedAddress.countryCode);
 };
 
-function testParseAddressMYNoDelimiters() {
+function testParseAddressMYMYNoDelimiters() {
 	var parsedAddress = new ilib.Address("11 Jalan Budi 1 Taman Budiman 42700 BANTING SELANGOR Malaysia", {locale: 'en-MY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -137,7 +137,7 @@ function testParseAddressMYNoDelimiters() {
 	assertEquals("MY", parsedAddress.countryCode);
 };
 
-/*function testParseAddressMYSpecialChars() {
+/*function testParseAddressMYMYSpecialChars() {
 	var parsedAddress = new ilib.Address("Lín Jì Lù 4\n# 06-07/08 Xì Tǒng Kējì Dàshà\nMalaysia 159088\n", {locale: 'en-MY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -149,7 +149,7 @@ function testParseAddressMYNoDelimiters() {
 	assertEquals("MY", parsedAddress.countryCode);
 };*/
 
-function testParseAddressMYFromUS() {
+function testParseAddressMYMYFromUS() {
 	var parsedAddress = new ilib.Address("11 Jalan Budi 1\nTaman Budiman\n42700 BANTING\nMalaysia", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -163,7 +163,7 @@ function testParseAddressMYFromUS() {
 	assertEquals("MY", parsedAddress.countryCode);
 };
 
-function testFormatAddressLatin() {
+function testFormatAddressMYLatin() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "11 Jalan Budi 1, Taman Budiman",
 		locality: "BANTING",
@@ -178,7 +178,7 @@ function testFormatAddressLatin() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-/*function testFormatAddressAsian() {
+/*function testFormatAddressMYAsian() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "麟記路4＃06-07/08矽統科技大廈",
 		locality: "新加坡",
@@ -193,7 +193,7 @@ function testFormatAddressLatin() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };*/
 
-function testFormatAddressFromUS() {
+function testFormatAddressMYFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "11 Jalan Budi 1, Taman Budiman",
 		locality: "BANTING",

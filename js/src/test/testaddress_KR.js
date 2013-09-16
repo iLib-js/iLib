@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressKRNormal() {
 	var parsedAddress = new ilib.Address("Mr. Minho PARK Hana Apartments, 9th floor, Apt. 912\nYeosu, Seoul 100-813\nSOUTH KOREA", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -30,7 +30,7 @@ function testParseAddressNormal() {
 };
 
 
-function testParseAddressNormalNative() {
+function testParseAddressKRNormalNative() {
 	var parsedAddress = new ilib.Address("대한민국100-813\n서울 특별시여수시하나 아파트 9층 912호 박민호 선생님", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -42,7 +42,7 @@ function testParseAddressNormalNative() {
 	assertEquals("KR", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressKRNoZip() {
 	var parsedAddress = new ilib.Address("Mr. Minho PARK Hana Apartments, 9th floor, Apt. 912\nYeosu, Seoul\nSOUTH KOREA", {locale: 'ko-KR'});
 
 			assertNotUndefined(parsedAddress);
@@ -56,7 +56,7 @@ function testParseAddressNoZip() {
 };
 
 
-function testParseAddressNoZipNative() {
+function testParseAddressKRNoZipNative() {
 	var parsedAddress = new ilib.Address("대한민국\n서울 특별시여수시하나 아파트 9층 912호 박민호 선생님", {locale: 'ko-KR'});
 
 			assertNotUndefined(parsedAddress);
@@ -72,7 +72,7 @@ function testParseAddressNoZipNative() {
 
 
 
-function testParseAddressNoCountry() {
+function testParseAddressKRNoCountry() {
 	var parsedAddress = new ilib.Address("Mr. Minho PARK Hana Apartments, 9th floor, Apt. 912\nYeosu, Seoul 100-813", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -85,7 +85,7 @@ function testParseAddressNoCountry() {
 	
 };
 
-function testParseAddressNoCountryNative() {
+function testParseAddressKRNoCountryNative() {
 	var parsedAddress = new ilib.Address("100-813\n서울 특별시여수시하나 아파트 9층 912호 박민호 선생님", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoCountryNative() {
 };
 
 
-function testParseAddressManyLines() {
+function testParseAddressKRManyLines() {
 	var parsedAddress = new ilib.Address("Mr. Minho PARK\nHana Apartments\n9th floor\nApt.\n912\nYeosu\nSeoul\n100-813\nSOUTH KOREA", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -115,7 +115,7 @@ function testParseAddressManyLines() {
 };
 
 
-function testParseAddressManyLinesNative() {
+function testParseAddressKRManyLinesNative() {
 	var parsedAddress = new ilib.Address("대한민국\n100-813\n서울 특별시\n여수시\n하나\n아파트\n9층\n912호\n박민호 선생님", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -127,7 +127,7 @@ function testParseAddressManyLinesNative() {
 	assertEquals("KR", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressKROneLine() {
 	var parsedAddress = new ilib.Address("Mr. Minho PARK Hana Apartments, 9th floor, Apt. 912 Yeosu, Seoul 100-813 SOUTH KOREA", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -141,7 +141,7 @@ function testParseAddressOneLine() {
 
 
 
-function testParseAddressFromUS() {
+function testParseAddressKRFromUS() {
 	
 	var parsedAddress = new ilib.Address("Mr. Minho PARK Hana Apartments, 9th floor Apt. 912\nYeosu, Seoul 100-813\nSOUTH KOREA", {locale: 'ko-KR'});
 	
@@ -155,7 +155,7 @@ function testParseAddressFromUS() {
 
 };
 
-function testFormatAddressAU() {
+function testFormatAddressKRAU() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. Minho PARK Hana Apartments, 9th floor Apt. 912",
 		locality: "Yeosu,",
@@ -170,7 +170,7 @@ function testFormatAddressAU() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressKRFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. Minho PARK Hana Apartments, 9th floor Apt. 912",
 		locality: "Yeosu,",

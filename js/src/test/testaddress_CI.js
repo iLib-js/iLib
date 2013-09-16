@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressCINormal() {
 	var parsedAddress = new ilib.Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37 ABIDJAN 06\ncôte d’ivoire", {locale: 'fr-CI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("CI", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressCINoZip() {
 	var parsedAddress = new ilib.Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37 ABIDJAN 06\ncôte d’ivoire", {locale: 'fr-CI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressCINoCountry() {
 	var parsedAddress = new ilib.Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37\nABIDJAN 06", {locale: 'fr-CI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("CI", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressCIManyLines() {
 	var parsedAddress = new ilib.Address("Madame KOUAME AKISSI\nCOMMERCANTE 06 B.P. 37\nABIDJAN 06\ncôte d’ivoire", {locale: 'fr-CI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("CI", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressCIOneLine() {
 	var parsedAddress = new ilib.Address("Madame KOUAME AKISSI , COMMERCANTE 06 B.P. 37 , ABIDJAN 06 , côte d’ivoire", {locale: 'fr-CI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("CI", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressCISuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Madame KOUAME AKISSI\n\n\t\r\t\t\rCOMMERCANTE 06 B.P. 37\r\r\n\nABIDJAN 06\t\r\n\t\rcôte d’ivoire", {locale: 'fr-CI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("CI", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressCINoDelimiters() {
 	var parsedAddress = new ilib.Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37 ABIDJAN 06 côte d’ivoire", {locale: 'fr-CI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("CI", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressCIFromUS() {
 	var parsedAddress = new ilib.Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37\nABIDJAN 06\ncôte d’ivoire", {locale: 'fr-CI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressFromUS() {
 	assertEquals("CI", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressCI() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37",
 		locality: "ABIDJAN 06",
@@ -127,7 +127,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressCIFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37",
 		locality: "ABIDJAN 06",

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressZMNormal() {
 	var parsedAddress = new ilib.Address("Mr. Richard Chanda 10 Nyimba Road\n50100 NDOLA\nZAMBIA", {locale: 'en-ZM'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("ZM", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressZMNoZip() {
 	var parsedAddress = new ilib.Address("Mr. Richard Chanda 10 Nyimba Road\nNDOLA\nZAMBIA", {locale: 'en-ZM'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressZMNoCountry() {
 	var parsedAddress = new ilib.Address("Mr. Richard Chanda 10 Nyimba Road\n50100 NDOLA", {locale: 'en-ZM'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("ZM", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressZMManyLines() {
 	var parsedAddress = new ilib.Address("Mr. Richard Chanda\n10\nNyimba\nRoad\n50100\nNDOLA\nZAMBIA\n\n\n", {locale: 'en-ZM'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Richard Chanda, 10, Nyimba, Road", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("ZM", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressZMOneLine() {
 	var parsedAddress = new ilib.Address("Mr. Richard Chanda , 10 , Nyimba , Road , 50100 , NDOLA , ZAMBIA", {locale: 'en-ZM'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("ZM", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressZMSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tMr. Richard Chanda\n\t\t\t10 \t\t\t\r\r Nyimba \n \r \tRoad \n\t\n50100\t\nNDOLA\n\t ZAMBIA\n\n\n", {locale: 'en-ZM'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("ZM", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressZMNoDelimiters() {
 	var parsedAddress = new ilib.Address("Mr. Richard Chanda 10 Nyimba Road 50100 NDOLA ZAMBIA", {locale: 'en-ZM'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("ZM", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressZMFromUS() {
 	var parsedAddress = new ilib.Address("Mr. Richard Chanda 10 Nyimba Road\n56001 NDOLA\nZAMBIA", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("ZM", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressZM() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. Richard Chanda 10 Nyimba Road",
 		locality: "NDOLA",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressZMFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. Richard Chanda 10 Nyimba Road",
 		locality: "NDOLA",

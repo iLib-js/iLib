@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressKWNormal() {
 	var parsedAddress = new ilib.Address("حمد عبد الله حسن\n آل الصباح ١٠٠٨٤\n١٥٥٤٥ الكويت\n\nالكويت\n\n\n", {locale: 'ar-KW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("KW", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressKWNoZip() {
 	var parsedAddress = new ilib.Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\nالكويت\nالكويت", {locale: 'ar-KW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressKWNoCountry() {
 	var parsedAddress = new ilib.Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥ الكويت", {locale: 'ar-KW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("KW", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressKWManyLines() {
 	var parsedAddress = new ilib.Address("حمد عبد الله حسن\n آل الصباح ١٠٠٨٤\n١٥٥٤٥\nالكويت\n\nالكويت\n\n\n", {locale: 'ar-KW'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("حمد عبد الله حسن, آل الصباح ١٠٠٨٤", parsedAddress.streetAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 };
 
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressKWSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tحمد عبد الله حسن\n\n\t آل الصباح ١٠٠٨٤\n\n\t١٥٥٤٥\n\n\tالكويت\n\n\tالكويت\n\n\n", {locale: 'ar-KW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -78,7 +78,7 @@ function testParseAddressSuperfluousWhitespace() {
 };
 
 
-function testParseAddressFromUS() {
+function testParseAddressKWFromUS() {
 	var parsedAddress = new ilib.Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥\nالكويت\nKuwait", {locale: 'en-US'});
 	
 	
@@ -92,7 +92,7 @@ function testParseAddressFromUS() {
 	assertEquals("KW", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressKW() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "حمد عبد الله حسن آل الصباح ١٠٠٨٤",
 		locality: "الكويت",
@@ -106,7 +106,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressKWFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "حمد عبد الله حسن آل الصباح ١٠٠٨٤",
 		locality: "الكويت",

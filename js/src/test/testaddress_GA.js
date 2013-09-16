@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressGANormal() {
 	var parsedAddress = new ilib.Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("GA", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressGANoZip() {
 	var parsedAddress = new ilib.Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressGANoCountry() {
 	var parsedAddress = new ilib.Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("GA", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressGAManyLines() {
 	var parsedAddress = new ilib.Address("Direction de la Poste Service\nde l'organisation et\nde l'exploitation du réseau postal\nBP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("GA", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressGAOneLine() {
 	var parsedAddress = new ilib.Address("Direction de la Poste Service , de l'organisation et , de l'exploitation du réseau postal , BP 20000 , LIBREVILLE , GABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("GA", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressGASuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Direction de la Poste Service\r\r\tde l'organisation et\t\t\tde l'exploitation du réseau postal\t\t\rBP 20000\r\r\n\nLIBREVILLE\t\r\n\t\rGABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("GA", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressGANoDelimiters() {
 	var parsedAddress = new ilib.Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000 LIBREVILLE GABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("GA", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressGAFromUS() {
 	var parsedAddress = new ilib.Address("Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000\nLIBREVILLE\nGABON", {locale: 'fr-GA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressFromUS() {
 	assertEquals("GA", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressGA() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000",
 		locality: "LIBREVILLE",
@@ -127,7 +127,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressGAFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Direction de la Poste Service de l'organisation et de l'exploitation du réseau postal BP 20000",
 		locality: "LIBREVILLE",

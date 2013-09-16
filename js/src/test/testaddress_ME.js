@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressMENormal() {
 	var parsedAddress = new ilib.Address("G. Petar Petrović Ul. Slobode br. 1\n81000 Podgorica\nCrna Gora", {locale: 'hr-ME'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("ME", parsedAddress.countryCode);
 };
 
-function testParseAddressSRNormal() {
+function testParseAddressMESRNormal() {
 	var parsedAddress = new ilib.Address("Петар Петровић Ул. Слобода бр. 1\n81000 Подгорица\nЦрна Гора", {locale: 'sr-ME'});
 	
 	assertNotUndefined(parsedAddress);
@@ -42,7 +42,7 @@ function testParseAddressSRNormal() {
 };
 
 
-function testParseAddressSQNormal() {
+function testParseAddressMESQNormal() {
 	var parsedAddress = new ilib.Address("Z. Petar Petroviq Ul. Ka liri. 1\n81000 Podgorica\nMontenegro", {locale: 'sq-ME'});
 	
 	assertNotUndefined(parsedAddress);
@@ -54,7 +54,7 @@ function testParseAddressSQNormal() {
 	assertEquals("ME", parsedAddress.countryCode);
 };
 
-function testParseAddressBSNormal() {
+function testParseAddressMEBSNormal() {
 	var parsedAddress = new ilib.Address("Petar Petrović Ul. Sloboda ne. 1\n81000 Podgorica\nCrna Gora", {locale: 'sq-ME'});
 	
 	assertNotUndefined(parsedAddress);
@@ -68,7 +68,7 @@ function testParseAddressBSNormal() {
 
 
 
-function testParseAddressNoZip() {
+function testParseAddressMENoZip() {
 	var parsedAddress = new ilib.Address("G. Petar Petrović Ul. Slobode br. 1\nPodgorica\nCrna Gora", {locale: 'hr-ME'});
 	
 	assertNotUndefined(parsedAddress);
@@ -80,7 +80,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressMENoCountry() {
 	var parsedAddress = new ilib.Address("G. Petar Petrović Ul. Slobode br. 1\n81000 Podgorica", {locale: 'hr-ME'});
 	
 	assertNotUndefined(parsedAddress);
@@ -92,7 +92,7 @@ function testParseAddressNoCountry() {
 	assertEquals("ME", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressMEManyLines() {
 	var parsedAddress = new ilib.Address("G. Petar Petrović Ul.\nSlobode br. 1\n\n81000 Podgorica\n\nCrna Gora\n\n\n", {locale: 'hr-ME'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("G. Petar Petrović Ul., Slobode br. 1", parsedAddress.streetAddress);
@@ -103,7 +103,7 @@ function testParseAddressManyLines() {
 	assertEquals("ME", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressMEOneLine() {
 	var parsedAddress = new ilib.Address("G. Petar Petrović Ul. , Slobode br. 1 , Podgorica , 81000 , Crna Gora", {locale: 'hr-ME'});
 	
 	assertNotUndefined(parsedAddress);
@@ -115,7 +115,7 @@ function testParseAddressOneLine() {
 	assertEquals("ME", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressMESuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tG. Petar Petrović Ul.\t\t\rSlobode br. 1\t\n\n\nPodgorica\n\t\n81000\n\n\tCrna Gora\n\n\n", {locale: 'hr-ME'});
 	
 	assertNotUndefined(parsedAddress);
@@ -127,7 +127,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("ME", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressMENoDelimiters() {
 	var parsedAddress = new ilib.Address("G. Petar Petrović Ul. Slobode br. 1 81000 Podgorica Crna Gora", {locale: 'hr-ME'});
 	
 	assertNotUndefined(parsedAddress);
@@ -139,7 +139,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("ME", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressMEFromUS() {
 	var parsedAddress = new ilib.Address("G. Petar Petrović Ul. Slobode br. 1\n81000 Podgorica\nMontenegro", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
@@ -153,7 +153,7 @@ function testParseAddressFromUS() {
 	assertEquals("ME", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressME() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "G. Petar Petrović Ul. Slobode br. 1",
 		locality: "Podgorica",
@@ -167,7 +167,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressMEFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "G. Petar Petrović Ul. Slobode br. 1",
 		locality: "Podgorica",

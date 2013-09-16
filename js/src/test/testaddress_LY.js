@@ -18,7 +18,7 @@
  */
 
 
-function testParseAddressARNormal() {
+function testParseAddressLYARNormal() {
 	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢, طرابلس, ليبيا", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -30,7 +30,7 @@ function testParseAddressARNormal() {
 	assertEquals("LY", parsedAddress.countryCode);
 };
 
-function testParseAddressARNoZip() {
+function testParseAddressLYARNoZip() {
 	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢, طرابلس, ليبيا", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -42,7 +42,7 @@ function testParseAddressARNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressARManyLines() {
+function testParseAddressLYARManyLines() {
 	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢\nطرابلس\n ليبيا", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -54,7 +54,7 @@ function testParseAddressARManyLines() {
 	assertEquals("LY", parsedAddress.countryCode);
 };
 
-function testParseAddressAROneLine() {
+function testParseAddressLYAROneLine() {
 	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢,طرابلس, ليبيا", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -66,7 +66,7 @@ function testParseAddressAROneLine() {
 	assertEquals("LY", parsedAddress.countryCode);
 };
 
-function testParseAddressARSuperfluousWhitespace() {
+function testParseAddressLYARSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢   \n\t\n طرابلس\t\n\n  ليبيا  \n  \t\t\t", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -78,7 +78,7 @@ function testParseAddressARSuperfluousWhitespace() {
 	assertEquals("LY", parsedAddress.countryCode);
 };
 //needs a precise regular expression to handle locality with and without spaces in no delimiter case
-/*function testParseAddressARNoDelimiters() {
+/*function testParseAddressLYARNoDelimiters() {
 	var parsedAddress = new ilib.Address("السيد محمد علي خليفة الغزالي ١٢  ٢ شارع الاستقلال طرابلس  ليبيا", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressARSuperfluousWhitespace() {
 };*/
 
 
-function testParseAddressARSpecialChars() {
+function testParseAddressLYARSpecialChars() {
 	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢,طرابلس, ليبيا", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressARSpecialChars() {
 	assertEquals("LY", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressLYFromUS() {
 	var parsedAddress = new ilib.Address("السيد محمد علي خليفة, الغزالي ١٢,طرابلس, Libya", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("LY", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressLY() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد محمد علي خليفة, الغزالي ١٢",
 		locality: "طرابلس",
@@ -130,7 +130,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressARFromUS() {
+function testFormatAddressLYARFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد محمد علي خليفة, الغزالي ١٢",
 		locality: "طرابلس",

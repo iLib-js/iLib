@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAddressETNormal() {
 	var parsedAddress = new ilib.Address("Mr. Abebe Bekele, P.O. Box 1519, 1000 ADDIS ABABA, ETHIOPIA", {locale: 'en-ET'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("ET", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressETNoZip() {
 	var parsedAddress = new ilib.Address("Mr. Abebe Bekele, P.O. Box 1519, ADDIS ABABA, ETHIOPIA", {locale: 'en-ET'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressETManyLines() {
 	var parsedAddress = new ilib.Address("Mr. Abebe Bekele\nP.O. Box 1519\n1000 ADDIS ABABA\nETHIOPIA", {locale: 'en-ET'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("ET", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressETOneLine() {
 	var parsedAddress = new ilib.Address("Mr. Abebe Bekele, P.O. Box 1519, 1000 ADDIS ABABA, ETHIOPIA", {locale: 'en-ET'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("ET", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressETSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Mr. Abebe Bekele\n\tP.O. Box 1519  \n\t\n 1000 ADDIS ABABA\t\n\n ETHIOPIA  \n  \t\t\t", {locale: 'en-ET'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("ET", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressETNoDelimiters() {
 	var parsedAddress = new ilib.Address("Mr. Abebe Bekele P.O. Box 1519 1000 ADDIS ABABA ETHIOPIA", {locale: 'en-ET'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("ET", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressETSpecialChars() {
 	var parsedAddress = new ilib.Address("Post Office Headquarters, P.O. Box 5555, 1000 ADDIS ABABA, ETHIOPIA", {locale: 'en-ET'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("ET", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressETFromUS() {
 	var parsedAddress = new ilib.Address("Mr. Abebe Bekele, P.O. Box 1519, 1000 ADDIS ABABA, ETHIOPIA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("ET", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressET() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. Abebe Bekele\nP.O. Box 1519",
 		locality: "ADDIS ABABA",
@@ -131,7 +131,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressETFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. Abebe Bekele\nP.O. Box 1519",
 		locality: "ADDIS ABABA",

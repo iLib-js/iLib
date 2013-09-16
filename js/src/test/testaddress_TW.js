@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressTWLatinNormal() {
+function testParseAddressTWTWLatinNormal() {
 	var parsedAddress = new ilib.Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTaipei, 110\nTaiwan", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressTWLatinNormal() {
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
-function testParseAddressTWLatinNoZip() {
+function testParseAddressTWTWLatinNoZip() {
 	var parsedAddress = new ilib.Address("3F-499, Jung-Ming S. Road, West District, Taichung, Taiwan, R.O.C.", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressTWLatinNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressTWLatinNoCountry() {
+function testParseAddressTWTWLatinNoCountry() {
 	var parsedAddress = new ilib.Address("3F, No.7\nShong-Ren Rd.\nTaipei City 11045", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressTWLatinNoCountry() {
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
-function testParseAddressTWAsianNormal() {
+function testParseAddressTWTWAsianNormal() {
 	var parsedAddress = new ilib.Address("中華民國高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-TW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressTWAsianNormal() {
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
-function testParseAddressTWAsianNoZip() {
+function testParseAddressTWTWAsianNoZip() {
 	var parsedAddress = new ilib.Address("中華民國台灣省台北市南港區經貿二路66號10樓", {locale: 'zh-TW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressTWAsianNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressTWAsianNoCountry() {
+function testParseAddressTWTWAsianNoCountry() {
 	var parsedAddress = new ilib.Address("高雄市苓雅區 802 四維三路 6 號 26 樓", {locale: 'zh-TW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressTWAsianNoCountry() {
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
-function testParseAddressTWAsianWithRegion() {
+function testParseAddressTWTWAsianWithRegion() {
 	var parsedAddress = new ilib.Address("中華民國台灣省台高雄市苓雅區802四維三路6號18樓A", {locale: 'zh-TW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressTWAsianWithRegion() {
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
-function testParseAddressTWAsianZipAtEnd() {
+function testParseAddressTWTWAsianZipAtEnd() {
 	var parsedAddress = new ilib.Address("中華民國\n台灣省台高雄市苓雅區四維三路6號18樓A 80245", {locale: 'zh-TW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressTWAsianZipAtEnd() {
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
-function testParseAddressTWManyLines() {
+function testParseAddressTWTWManyLines() {
 	var parsedAddress = new ilib.Address("Level 73\nTaipei 101 Tower\n7 Xinyi Road\nSec. 5\nTaipei\n110\nTaiwan\n\n\n", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -125,7 +125,7 @@ function testParseAddressTWManyLines() {
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
-function testParseAddressTWOneLine() {
+function testParseAddressTWTWOneLine() {
 	var parsedAddress = new ilib.Address("3F, 499, Jung-Ming S. Road, West District, Taichung, 403, Taiwan, R.O.C.", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -137,7 +137,7 @@ function testParseAddressTWOneLine() {
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
-function testParseAddressTWSuperfluousWhitespace() {
+function testParseAddressTWTWSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\t3F, \t\rNo.7\n  \rShong-Ren Rd.\t\t   \n\r \t Taipei \t\tCity\r  \r \n  \tTaiwan  \t \t 110\t \n\t \r \t Republic of China\n\n\n", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -149,7 +149,7 @@ function testParseAddressTWSuperfluousWhitespace() {
 	assertEquals("3F, No.7, Shong-Ren Rd.", parsedAddress.streetAddress);
 };
 
-function testParseAddressTWNoDelimiters() {
+function testParseAddressTWTWNoDelimiters() {
 	var parsedAddress = new ilib.Address("3F 499 Jung-Ming S. Road West District Taichung 403 Taiwan R.O.C.", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -161,7 +161,7 @@ function testParseAddressTWNoDelimiters() {
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
-function testParseAddressTWSpecialChars() {
+function testParseAddressTWTWSpecialChars() {
 	var parsedAddress = new ilib.Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTáiběi, 110\nTáiwān\nROC", {locale: 'en-TW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -173,7 +173,7 @@ function testParseAddressTWSpecialChars() {
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
-function testParseAddressTWFromUS() {
+function testParseAddressTWTWFromUS() {
 	var parsedAddress = new ilib.Address("Level 73, Taipei 101 Tower\n7 Xinyi Road, Sec. 5\nTaipei, 110\nTaiwan\nRepublic of China", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -187,7 +187,7 @@ function testParseAddressTWFromUS() {
 	assertEquals("TW", parsedAddress.countryCode);
 };
 
-function testFormatAddressTWLatin() {
+function testFormatAddressTWTWLatin() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Level 73, Taipei 101 Tower, 7 Xinyi Road, Sec. 5",
 		locality: "Taipei",
@@ -203,7 +203,7 @@ function testFormatAddressTWLatin() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressTWAsian() {
+function testFormatAddressTWTWAsian() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "苓雅區四維三路6號18樓A",
 		locality: "高雄市",
@@ -219,7 +219,7 @@ function testFormatAddressTWAsian() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressTWFromUS() {
+function testFormatAddressTWTWFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Level 73, Taipei 101 Tower, 7 Xinyi Road, Sec. 5",
 		locality: "Taipei",

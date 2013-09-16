@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressGNNormal() {
 	var parsedAddress = new ilib.Address("Office de la poste guinéenne Direction générale 001 BP 2984 CONAKRY\nguinée", {locale: 'fr-GN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("GN", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressGNNoZip() {
 	var parsedAddress = new ilib.Address("Office de la poste guinéenne Direction générale 001 BP 2984\nCONAKRY\nguinée", {locale: 'fr-GN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressGNNoCountry() {
 	var parsedAddress = new ilib.Address("Office de la poste guinéenne Direction générale 001 BP 2984\nCONAKRY", {locale: 'fr-GN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("GN", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressGNManyLines() {
 	var parsedAddress = new ilib.Address("Office de la poste guinéenne\nDirection générale\n001 BP 2984\nCONAKRY\nguinée", {locale: 'fr-GN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("GN", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressGNOneLine() {
 	var parsedAddress = new ilib.Address("Office de la poste guinéenne , Direction générale , 001 BP 2984 , CONAKRY , guinée", {locale: 'fr-GN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("GN", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressGNSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Office de la poste guinéenne\n\n\t\r\t\t\rDirection générale\r\r\t001 BP 2984\r\r\n\nCONAKRY\t\r\n\t\rguinée", {locale: 'fr-GN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("GN", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressGNNoDelimiters() {
 	var parsedAddress = new ilib.Address("Office de la poste guinéenne Direction générale 001 BP 2984 CONAKRY guinée", {locale: 'fr-GN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("GN", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressGNFromUS() {
 	var parsedAddress = new ilib.Address("Office de la poste guinéenne Direction générale 001 BP 2984\nCONAKRY\nguinée", {locale: 'fr-GN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressFromUS() {
 	assertEquals("GN", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressGN() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Office de la poste guinéenne Direction générale 001 BP 2984",
 		region: "CONAKRY",
@@ -127,7 +127,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressGNFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Office de la poste guinéenne Direction générale 001 BP 2984",
 		region: "CONAKRY",

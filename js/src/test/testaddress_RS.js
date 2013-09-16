@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressRSNormal() {
 	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral Serbia\nSerbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("RS", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressRSNoZip() {
 	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum\nBelgradum\nCentral Serbia\nSerbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -42,7 +42,7 @@ function testParseAddressNoZip() {
 };
 
 
-function testParseAddressNoCountry() {
+function testParseAddressRSNoCountry() {
 	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral Serbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -54,7 +54,7 @@ function testParseAddressNoCountry() {
 	assertEquals("RS", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressRSManyLines() {
 	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica\n56 Novi Belgradum\n11070 Belgradum\nCentral Serbia\nSerbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -66,7 +66,7 @@ function testParseAddressManyLines() {
 	assertEquals("RS", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressRSOneLine() {
 	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica , 56 Novi Belgradum , 11070 , Belgradum , Central Serbia , Serbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -78,7 +78,7 @@ function testParseAddressOneLine() {
 	assertEquals("RS", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressRSSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Boulevard arsenicum Чарнојевић\n\n\t56 Novi Belgradum\n\n\r11070\r\r\nBelgradum\t\t\rCentral Serbia\t\t\rSerbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -90,7 +90,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("RS", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressRSNoDelimiters() {
 	var parsedAddress = new ilib.Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum 11070 Belgradum Central Serbia Serbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -102,7 +102,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("RS", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressRSFromUS() {
 	var parsedAddress = new ilib.Address("Bulevar Arsenija Carnojevica 56 New Belgrade\n11070 Belgrade\nCentral Serbia\nSerbia", {locale: 'sr-Latn-RS'});
 	
 	assertNotUndefined(parsedAddress);
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("RS", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressRS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Boulevard arsenicum Carnojevica 56 Novi Belgradum",
 		locality: "Belgradum",
@@ -129,7 +129,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressRSFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Boulevard arsenicum Carnojevica 56 Novi Belgradum",
 		locality: "Belgradum",

@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAddressBFNormal() {
 	var parsedAddress = new ilib.Address("01 BP 621, BOBO-DIOULASSO 01, BURKINA FASO", {locale: 'fr-BF'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("BF", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressBFNoZip() {
 	var parsedAddress = new ilib.Address("BP 621, BOBO-DIOULASS0, BURKINA FASO", {locale: 'fr-BF'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressBFManyLines() {
 	var parsedAddress = new ilib.Address("01 BP 621\nBOBO-DIOULASSO 01\nBURKINA FASO", {locale: 'fr-BF'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("BF", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressBFOneLine() {
 	var parsedAddress = new ilib.Address("01 BP 621, BOBO-DIOULASSO 01, BURKINA FASO", {locale: 'fr-BF'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("BF", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressBFSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("01 BP 621  \n\t\n BOBO-DIOULASSO 01\t\n\n BURKINA FASO  \n  \t\t\t", {locale: 'fr-BF'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("BF", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressBFNoDelimiters() {
 	var parsedAddress = new ilib.Address("01 BP 621 BOBO-DIOULASSO 01 BURKINA FASO", {locale: 'fr-BF'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("BF", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressBFSpecialChars() {
 	var parsedAddress = new ilib.Address("Société nationale des postes ,01 BP 6000, BOBO-DIOULASSO 01, BURKINA FASO", {locale: 'fr-BF'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("BF", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressBFFromUS() {
 	var parsedAddress = new ilib.Address("01 BP 621, BOBO-DIOULASSO 01, BURKINA FASO", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("BF", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressBF() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "BP 621",
 		locality: "BOBO-DIOULASSO 01",
@@ -131,7 +131,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressBFFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "BP 621",
 		postalCode: "01",

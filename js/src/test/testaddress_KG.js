@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressKGNormal() {
 	var parsedAddress = new ilib.Address("720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nКиргизия", {locale: 'ru-KG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("KG", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressKGNoZip() {
 	var parsedAddress = new ilib.Address("БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nКиргизия", {locale: 'ru-KG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressKGNoCountry() {
 	var parsedAddress = new ilib.Address("720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара", {locale: 'ru-KG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("KG", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressKGManyLines() {
 	var parsedAddress = new ilib.Address("720001\nБИШКЕК\nПроспект Чуй\n193\nкв. 28 Колупаева\nАнара\nКиргизия\n\n\n", {locale: 'ru-KG'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Проспект Чуй, 193, кв. 28 Колупаева, Анара", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("KG", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressKGOneLine() {
 	var parsedAddress = new ilib.Address("720001 , БИШКЕК , Проспект Чуй , 193 , кв. 28 Колупаева , Анара , Киргизия", {locale: 'ru-KG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("KG", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressKGSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\t720001\t\t\nБИШКЕК\t\t\nПроспект Чуй\t\t193\t\tкв. 28 Колупаева\t\tАнара\t\nКиргизия\n\n\n", {locale: 'ru-KG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("KG", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressKGNoDelimiters() {
 	var parsedAddress = new ilib.Address("720001 БИШКЕК Проспект Чуй 193 кв. 28 Колупаева Анара Киргизия", {locale: 'ru-KG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("KG", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressKGFromUS() {
 	var parsedAddress = new ilib.Address("720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nKyrgyzstan", {locale: 'en-US'});
 	
 	
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("KG", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressKG() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Проспект Чуй, 193, кв. 28 Колупаева Анара",
 		locality: "БИШКЕК",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressKGFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Проспект Чуй, 193, кв. 28 Колупаева Анара",
 		locality: "БИШКЕК",

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressIENormal() {
 	var parsedAddress = new ilib.Address("Gordon House\nBarrow Street\nDublin 4\nIreland", {locale: 'en-IE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("IE", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressIENoZip() {
 	var parsedAddress = new ilib.Address("Metro Park\nCloughfern Avenue\nNewtownabbey\nCo. Antrim\nIreland", {locale: 'en-IE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertEquals("IE", parsedAddress.countryCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressIENoCountry() {
 	var parsedAddress = new ilib.Address("Liffey Park Technology Campus\nBarnhall Road\nLeixlip\nCo Kildare", {locale: 'en-IE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("IE", parsedAddress.countryCode);
 };
 
-function testParseAddressDublinPostalCode() {
+function testParseAddressIEDublinPostalCode() {
 	var parsedAddress = new ilib.Address("Gordon House\nBarrow Street\nDublin D6W\nIreland", {locale: 'en-IE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressDublinPostalCode() {
 	assertEquals("IE", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressIEManyLines() {
 	var parsedAddress = new ilib.Address("Belfield Office Park\nBeaver Row\nClonskeagh\nDublin 4\nIreland\n\n", {locale: 'en-IE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressManyLines() {
 	assertEquals("IE", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressIEOneLine() {
 	var parsedAddress = new ilib.Address("Swords Business Campus, Balheary Road, Swords, County: Dublin, Ireland", {locale: 'en-IE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressOneLine() {
 	assertEquals("IE", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressIESuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tSwords Business Campus\n\t\r Balheary Road\n\t\n\tSwords\   \t \t \t   County:    Dublin   \n\n\t Ireland  \n\n\n", {locale: 'en-IE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("IE", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressIENoDelimiters() {
 	var parsedAddress = new ilib.Address("Swords Business Campus Balheary Road Swords County: Dublin Ireland", {locale: 'en-IE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("IE", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressIESpecialChars() {
 	var parsedAddress = new ilib.Address("Teach Ceilteach, Sráid Doire, Cill Iníon Léinín, Tamhlacht, Contae Átha Cliath, Éire", {locale: 'en-IE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -125,7 +125,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("IE", parsedAddress.countryCode);
 };
 
-function testParseAddressFromDE() {
+function testParseAddressIEFromDE() {
 	var parsedAddress = new ilib.Address("Metro Park\nCloughfern Avenue\nNewtownabbey\nCo. Antrim\nIrland", {locale: 'de-DE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -137,7 +137,7 @@ function testParseAddressFromDE() {
 	assertEquals("IE", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressIE() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Gordon House, Barrow Street",
 		locality: "Dublin",
@@ -151,7 +151,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressWithCounty() {
+function testFormatAddressIEWithCounty() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Gordon House, Barrow Street",
 		locality: "Galway",
@@ -165,7 +165,7 @@ function testFormatAddressWithCounty() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromFR() {
+function testFormatAddressIEFromFR() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Gordon House, Barrow Street",
 		locality: "Dublin",

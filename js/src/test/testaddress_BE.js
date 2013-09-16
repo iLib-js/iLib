@@ -20,7 +20,7 @@
 
 // TODO: fill in Belgian addresses here
 
-function testParseAddressNormal() {
+function testParseAddressBENormal() {
 	var parsedAddress = new ilib.Address("31, Place de Brouckere\n1000 Brussels\nBelgium", {locale: 'nl-BE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -32,7 +32,7 @@ function testParseAddressNormal() {
 	assertEquals("BE", parsedAddress.countryCode);
 };
 
-function testParseAddressOtherNormal() {
+function testParseAddressBEOtherNormal() {
 	var parsedAddress = new ilib.Address("31, Place de Brouckère\n1000 Bruxelles\nBelgium", {locale: 'fr-BE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -45,7 +45,7 @@ function testParseAddressOtherNormal() {
 	
 };
 
-function testParseAddressNoZip() {
+function testParseAddressBENoZip() {
 	var parsedAddress = new ilib.Address("31, Place de Brouckère\nBruxelles\nBelgium", {locale: 'fr-BE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -58,7 +58,7 @@ function testParseAddressNoZip() {
 };
 
 
-function testParseAddressManyLines() {
+function testParseAddressBEManyLines() {
 	var parsedAddress = new ilib.Address("31\nPlace\nde Brouckere\n1000\nBrussels\nBelgium", {locale: 'nl-BE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -70,7 +70,7 @@ function testParseAddressManyLines() {
 	assertEquals("BE", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressBEOneLine() {
 	var parsedAddress = new ilib.Address("31, Place de Brouckere , 1000 Brussels , Belgium", {locale: 'nl-BE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -84,7 +84,7 @@ function testParseAddressOneLine() {
 
 
 
-function testParseAddressNoDelimiters() {
+function testParseAddressBENoDelimiters() {
 	var parsedAddress = new ilib.Address("31 Place de Brouckere 1000 Brussels Belgium", {locale: 'nl-BE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -98,7 +98,7 @@ function testParseAddressNoDelimiters() {
 
 
 
-function testParseAddressFromUS() {
+function testParseAddressBEFromUS() {
 	var parsedAddress = new ilib.Address("31, Place de Brouckere , 1000 Brussels , Belgium", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -112,7 +112,7 @@ function testParseAddressFromUS() {
 	assertEquals("BE", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressBE() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "31, Place de Brouckere",
 		locality: "Brussels",
@@ -126,7 +126,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressBEFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "31, Place de Brouckere",
 		locality: "Brussels",

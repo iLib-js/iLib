@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAddressBGNormal() {
 	var parsedAddress = new ilib.Address("Georg Popandov, Kukush Str. 2, fl.6, 1309 SOFIA, BULGARIA", {locale: 'bg-BG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("BG", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressBGNoZip() {
 	var parsedAddress = new ilib.Address("Georg Popandov, Kukush Str. 2, fl.6, 1309 SOFIA, BULGARIA", {locale: 'bg-BG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertEquals("1309", parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressBGManyLines() {
 	var parsedAddress = new ilib.Address("Georg Popandov\nKukush Str. 2, fl.6\n1309 SOFIA\nBULGARIA", {locale: 'bg-BG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("BG", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressBGOneLine() {
 	var parsedAddress = new ilib.Address("Georg Popandov, Kukush Str. 2, fl.6, 1309 SOFIA, BULGARIA", {locale: 'bg-BG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("BG", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressBGSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Georg Popandov, Kukush Str. 2, fl.6  \n\t\n 1309 SOFIA\t\n\n BULGARIA  \n  \t\t\t", {locale: 'bg-BG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("BG", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressBGNoDelimiters() {
 	var parsedAddress = new ilib.Address("Georg Popandov Kukush Str. 2 fl.6 1309 SOFIA BULGARIA", {locale: 'bg-BG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("BG", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressBGSpecialChars() {
 	var parsedAddress = new ilib.Address("Джордж Попандов, Ул. Кукуш. 2, ет.6, 1309 СОФИЯ, БЪЛГАРИЯ", {locale: 'bg-BG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("BG", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressBGFromUS() {
 	var parsedAddress = new ilib.Address("Georg Popandov, Kukush Str. 2, fl.6, 1309 SOFIA, BULGARIA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("BG", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressBG() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Georg Popandov, Kukush Str. 2, fl.6",
 		locality: "1309 SOFIA",
@@ -130,7 +130,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressBGFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Georg Popandov, Kukush Str. 2, fl.6",
 		country: "BULGARIA",

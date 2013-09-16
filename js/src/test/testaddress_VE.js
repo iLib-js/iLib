@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressVENormal() {
 	var parsedAddress = new ilib.Address("SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20\nCARACAS 1010, D.F.\nVenezuela", {locale: 'es-VE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("VE", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressVENoZip() {
 	var parsedAddress = new ilib.Address("SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20\nCARACAS D.F.\nVenezuela", {locale: 'es-VE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressVENoCountry() {
 	var parsedAddress = new ilib.Address("SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20\nCARACAS 1010, D.F.", {locale: 'es-VE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("VE", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressVEManyLines() {
 	var parsedAddress = new ilib.Address("SEÑOR JOSE PEREZ AV.\nFUERZAS ARMADAS TORRE\nSAN JOSE\nENTRADA B PISO 5\nAPARTAMENTO 20\nCARACAS 1010, D.F.\nVenezuela", {locale: 'es-VE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("VE", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressVEOneLine() {
 	var parsedAddress = new ilib.Address("SEÑOR JOSE PEREZ AV. , FUERZAS ARMADAS TORRE , SAN JOSE , ENTRADA B PISO 5 , APARTAMENTO 20 , CARACAS , 1010 , D.F. , Venezuela", {locale: 'es-VE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("VE", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressVESuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("SEÑOR JOSE PEREZ AV.\n\n\t\rFUERZAS ARMADAS TORRE\t\t\rSAN JOSE\r\r\rENTRADA B PISO 5\t\t\rAPARTAMENTO 20\n\n\nCARACAS\t\t\r1010\r\r\rD.F.\t\t\rVenezuela", {locale: 'es-VE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("VE", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressVENoDelimiters() {
 	var parsedAddress = new ilib.Address("SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20 CARACAS 1010 D.F., Venezuela", {locale: 'es-VE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("VE", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressVEFromUS() {
 	var parsedAddress = new ilib.Address("Mr. JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20\nCARACAS 1010, D.F.\nVenezuela", {locale: 'es-VE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressFromUS() {
 	assertEquals("VE", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressVE() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "SEÑOR JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20",
 		locality: "CARACAS",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressVEFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. JOSE PEREZ AV. FUERZAS ARMADAS TORRE SAN JOSE, ENTRADA B PISO 5 APARTAMENTO 20",
 		locality: "CARACAS",

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressRUNormal() {
    var parsedAddress = new ilib.Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\n247112\nРоссия", {locale: 'ru-RU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("RU", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressRUNoZip() {
 	var parsedAddress = new ilib.Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\nРоссия", {locale: 'ru-RU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressRUNoCountry() {
 	var parsedAddress = new ilib.Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\n247112", {locale: 'ru-RU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("RU", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressRUManyLines() {
 	var parsedAddress = new ilib.Address("Петров Иван Сергеевич ул\nЛесная D. 5 поз\nЛесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\n247112\nРоссия", {locale: 'ru-RU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("RU", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressRUOneLine() {
 	var parsedAddress = new ilib.Address("Петров Иван Сергеевич ул , Лесная D. 5 поз , Лесной , АЛЕКСЕЕВСКИЙ R-N , Воронежская область , 247112 , Россия", {locale: 'ru-RU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("RU", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressRUSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Петров Иван Сергеевич ул\t\t\rЛесная D. 5 поз\t\t\rЛесной\n\tАЛЕКСЕЕВСКИЙ R-N\n\t\tВоронежская область\n\t\r247112\n\t\rРоссия", {locale: 'ru-RU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("RU", parsedAddress.countryCode);
 };
 
-/*function testParseAddressNoDelimiters() {
+/*function testParseAddressRUNoDelimiters() {
 	var parsedAddress = new ilib.Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной АЛЕКСЕЕВСКИЙ R-N Воронежская область 247112 Россия", {locale: 'ru-RU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("RU", parsedAddress.countryCode);
 };*/
 
-function testParseAddressFromUS() {
+function testParseAddressRUFromUS() {
 	var parsedAddress = new ilib.Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\n247112\nRussia", {locale: 'ru-RU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressFromUS() {
 	assertEquals("RU", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressRU() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной",
 		locality: "АЛЕКСЕЕВСКИЙ R-N",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressRUFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной",
 		locality: "АЛЕКСЕЕВСКИЙ R-N",

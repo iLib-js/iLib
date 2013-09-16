@@ -20,7 +20,7 @@
 
 
 
-function testParseAddressFRNormal() {
+function testParseAddressDJFRNormal() {
 	var parsedAddress = new ilib.Address("Mr. Farah Ismaël, BP 32, DJIBOUTI, DJIBOUTI", {locale: 'fr-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -32,7 +32,7 @@ function testParseAddressFRNormal() {
 	assertEquals("DJ", parsedAddress.countryCode);
 };
 
-function testParseAddressFRNoZip() {
+function testParseAddressDJFRNoZip() {
 	var parsedAddress = new ilib.Address("Mr. Farah Ismaël, BP 32, DJIBOUTI, DJIBOUTI", {locale: 'fr-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -44,7 +44,7 @@ function testParseAddressFRNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressFRManyLines() {
+function testParseAddressDJFRManyLines() {
 	var parsedAddress = new ilib.Address("Mr. Farah Ismaël\nBP 32\nDJIBOUTI\n DJIBOUTI", {locale: 'fr-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -56,7 +56,7 @@ function testParseAddressFRManyLines() {
 	assertEquals("DJ", parsedAddress.countryCode);
 };
 
-function testParseAddressFROneLine() {
+function testParseAddressDJFROneLine() {
 	var parsedAddress = new ilib.Address("Mr. Farah Ismaël, BP 32,DJIBOUTI, DJIBOUTI", {locale: 'fr-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -68,7 +68,7 @@ function testParseAddressFROneLine() {
 	assertEquals("DJ", parsedAddress.countryCode);
 };
 
-function testParseAddressFRSuperfluousWhitespace() {
+function testParseAddressDJFRSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Mr. Farah Ismaël \n BP 32   \n\t\n DJIBOUTI\t\n\n  DJIBOUTI  \n  \t\t\t", {locale: 'fr-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -80,7 +80,7 @@ function testParseAddressFRSuperfluousWhitespace() {
 	assertEquals("DJ", parsedAddress.countryCode);
 };
 
-function testParseAddressFRNoDelimiters() {
+function testParseAddressDJFRNoDelimiters() {
 	var parsedAddress = new ilib.Address("Mr. Farah Ismaël 2  BP 32 DJIBOUTI  DJIBOUTI", {locale: 'fr-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -92,7 +92,7 @@ function testParseAddressFRNoDelimiters() {
 	assertEquals("DJ", parsedAddress.countryCode);
 };
 
-function testParseAddressFRSpecialChars() {
+function testParseAddressDJFRSpecialChars() {
 	var parsedAddress = new ilib.Address("Mr. Farah Ismaël,BP 32,DJIBOUTI, DJIBOUTI", {locale: 'fr-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -104,7 +104,7 @@ function testParseAddressFRSpecialChars() {
 	assertEquals("DJ", parsedAddress.countryCode);
 };
 
-function testParseAddressFRFromUS() {
+function testParseAddressDJFRFromUS() {
 	var parsedAddress = new ilib.Address("Mr. Farah Ismaël,BP 32,DJIBOUTI, DJIBOUTI", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -118,7 +118,7 @@ function testParseAddressFRFromUS() {
 	assertEquals("DJ", parsedAddress.countryCode);
 };
 
-function testFormatAddressFR() {
+function testFormatAddressDJFR() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. Farah Ismaël\nBP 32",
 		locality: "DJIBOUTI",
@@ -131,7 +131,7 @@ function testFormatAddressFR() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFRFromUS() {
+function testFormatAddressDJFRFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. Farah Ismaël\nBP 32",
 		locality: "DJIBOUTI",
@@ -145,7 +145,7 @@ function testFormatAddressFRFromUS() {
 };
 
 
-function testParseAddressARNormal() {
+function testParseAddressDJARNormal() {
 	var parsedAddress = new ilib.Address("السيد فرح إسماعيل, جيبوتي, جيبوتي", {locale: 'ar-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -157,7 +157,7 @@ function testParseAddressARNormal() {
 	assertEquals("DJ", parsedAddress.countryCode);
 };
 
-function testParseAddressARNoZip() {
+function testParseAddressDJARNoZip() {
 	var parsedAddress = new ilib.Address("السيد فرح إسماعيل, جيبوتي, جيبوتي", {locale: 'ar-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -169,7 +169,7 @@ function testParseAddressARNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressARManyLines() {
+function testParseAddressDJARManyLines() {
 	var parsedAddress = new ilib.Address("السيد فرح إسماعيل\nجيبوتي\n جيبوتي", {locale: 'ar-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -181,7 +181,7 @@ function testParseAddressARManyLines() {
 	assertEquals("DJ", parsedAddress.countryCode);
 };
 
-function testParseAddressAROneLine() {
+function testParseAddressDJAROneLine() {
 	var parsedAddress = new ilib.Address("السيد فرح إسماعيل,جيبوتي, جيبوتي", {locale: 'ar-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -193,7 +193,7 @@ function testParseAddressAROneLine() {
 	assertEquals("DJ", parsedAddress.countryCode);
 };
 
-function testParseAddressARSuperfluousWhitespace() {
+function testParseAddressDJARSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("السيد فرح إسماعيل   \n\t\n جيبوتي\t\n\n  جيبوتي  \n  \t\t\t", {locale: 'ar-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -205,7 +205,7 @@ function testParseAddressARSuperfluousWhitespace() {
 	assertEquals("DJ", parsedAddress.countryCode);
 };
 
-function testParseAddressARNoDelimiters() {
+function testParseAddressDJARNoDelimiters() {
 	var parsedAddress = new ilib.Address("السيد فرح إسماعيل  ٢ شارع الاستقلال جيبوتي  جيبوتي", {locale: 'ar-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -217,7 +217,7 @@ function testParseAddressARNoDelimiters() {
 	assertEquals("DJ", parsedAddress.countryCode);
 };
 
-function testParseAddressARSpecialChars() {
+function testParseAddressDJARSpecialChars() {
 	var parsedAddress = new ilib.Address("السيد فرح إسماعيل,جيبوتي, جيبوتي", {locale: 'ar-DJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -229,7 +229,7 @@ function testParseAddressARSpecialChars() {
 	assertEquals("DJ", parsedAddress.countryCode);
 };
 
-function testParseAddressARFromUS() {
+function testParseAddressDJARFromUS() {
 	var parsedAddress = new ilib.Address("السيد فرح إسماعيل,جيبوتي, DJIBOUTI", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -256,7 +256,7 @@ function testFormatARAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressARFromUS() {
+function testFormatAddressDJARFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد فرح إسماعيل",
 		locality: "جيبوتي",

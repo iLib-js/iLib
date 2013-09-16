@@ -18,7 +18,7 @@
  */
 
 
-function testParseAddressNormalNative() {
+function testParseAddressSANormalNative() {
 	var parsedAddress = new ilib.Address("السيد عبد الله ناصر\nمكة المكرمة ٢١۴۵۴\nالمملكة العربية السعودية", {locale: 'ar-SA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -32,7 +32,7 @@ function testParseAddressNormalNative() {
 
 
 
-function testParseAddressNoZipNative() {
+function testParseAddressSANoZipNative() {
 	var parsedAddress = new ilib.Address("السيد عبد الله ناصر\nمكة المكرمة\nالمملكة العربية السعودية", {locale: 'ar-SA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -45,7 +45,7 @@ function testParseAddressNoZipNative() {
 };
 
 
-function testParseAddressNoCountrynative() {
+function testParseAddressSANoCountrynative() {
 	var parsedAddress = new ilib.Address("السيد عبد الله ناصر\nمكة المكرمة ٢١۴۵۴", {locale: 'ar-SA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -57,7 +57,7 @@ function testParseAddressNoCountrynative() {
 	assertEquals("SA", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressSAManyLines() {
 	var parsedAddress = new ilib.Address("السيد عبد الله ناصر\nمكة المكرمة ٢١۴۵۴\nالمملكة العربية السعودية", {locale: 'ar-SA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -69,7 +69,7 @@ function testParseAddressManyLines() {
 	assertEquals("SA", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressSAOneLine() {
 	var parsedAddress = new ilib.Address("السيد عبد الله ناصر,مكة المكرمة ٢١۴۵۴,المملكة العربية السعودية", {locale: 'ar-SA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -82,7 +82,7 @@ function testParseAddressOneLine() {
 };
 
 
-function testParseAddressNoDelimiters() {
+function testParseAddressSANoDelimiters() {
 	assertNotUndefined(parsedAddress);
 	assertEquals("السيد عبد الله ناصر", parsedAddress.streetAddress);
 	assertEquals("مكة المكرمة", parsedAddress.locality);
@@ -93,7 +93,7 @@ function testParseAddressNoDelimiters() {
 };
 
 
-function testParseAddressFromUSNative() {
+function testParseAddressSAFromUSNative() {
 	var parsedAddress = new ilib.Address("السيد عبد الله ناصر\nمكة المكرمة ٢١۴۵۴\nSAUDI ARABIA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -110,7 +110,7 @@ function testParseAddressFromUSNative() {
 
 
 
-function testFormatAddressSANative() {
+function testFormatAddressSASANative() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد عبد الله ناصر",
 		locality: "مكة المكرمة",
@@ -125,7 +125,7 @@ function testFormatAddressSANative() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressSAFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد عبد الله ناصر",
 		locality: "مكة المكرمة",

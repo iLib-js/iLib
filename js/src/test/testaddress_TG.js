@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressTGNormal() {
 	var parsedAddress = new ilib.Address("M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo", {locale: 'fr-TG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -30,7 +30,7 @@ function testParseAddressNormal() {
 };
 
 
-function testParseAddressNoCountry() {
+function testParseAddressTGNoCountry() {
 	var parsedAddress = new ilib.Address("M. Nicolas Ayi Patatu B.P. 526\nLome", {locale: 'fr-TG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -42,7 +42,7 @@ function testParseAddressNoCountry() {
 	assertEquals("TG", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressTGManyLines() {
 	var parsedAddress = new ilib.Address("M. Nicolas Ayi Patatu\nB.P. 526\nLome\nTogo\n\n\n", {locale: 'fr-TG'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Nicolas Ayi Patatu, B.P. 526", parsedAddress.streetAddress);
@@ -53,7 +53,7 @@ function testParseAddressManyLines() {
 	assertEquals("TG", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressTGOneLine() {
 	var parsedAddress = new ilib.Address("M. Nicolas Ayi Patatu , B.P. 526 , Lome , Togo", {locale: 'fr-TG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressOneLine() {
 	assertEquals("TG", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressTGSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\t\tM. Nicolas Ayi Patatu\t\t\tB.P.\t\r\r526\t\nLome\n\tTogo\n\n\n", {locale: 'fr-TG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("TG", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressTGNoDelimiters() {
 	var parsedAddress = new ilib.Address("M. Nicolas Ayi Patatu B.P. 526 Lome Togo", {locale: 'fr-TG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("TG", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressTGFromUS() {
 	var parsedAddress = new ilib.Address("M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressFromUS() {
 	assertEquals("TG", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressTG() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "M. Nicolas Ayi Patatu B.P. 526",
 		locality: "Lome",
@@ -114,7 +114,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressTGFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "M. Nicolas Ayi Patatu B.P. 526",
 		locality: "Lome",

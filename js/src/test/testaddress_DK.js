@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAddressDKNormal() {
 	var parsedAddress = new ilib.Address("Hr. Niels Henriksen, Kastanievej 15, DK-8660 SKANDERBORG,DENMARK", {locale: 'da-DK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("DK", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressDKNoZip() {
 	var parsedAddress = new ilib.Address("Hr. Niels Henriksen,Kastanievej 15, SKANDERBORG, DENMARK", {locale: 'da-DK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressDKManyLines() {
 	var parsedAddress = new ilib.Address("Hr. Niels Henriksen\nKastanievej 15\nDK-8660 SKANDERBORG\nDENMARK", {locale: 'da-DK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("DK", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressDKOneLine() {
 	var parsedAddress = new ilib.Address("Hr. Niels Henriksen,Kastanievej 15,DK-8660 SKANDERBORG DENMARK", {locale: 'da-DK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("DK", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressDKSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Hr. Niels Henriksen,Kastanievej 15   \n\t\n DK-8660 SKANDERBORG\t\n\n DENMARK  \n  \t\t\t", {locale: 'da-DK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("DK", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressDKNoDelimiters() {
 	var parsedAddress = new ilib.Address("Hr. Niels Henriksen Kastanievej 15 DK-8660 SKANDERBORG DENMARK", {locale: 'da-DK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("DK", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressDKSpecialChars() {
 	var parsedAddress = new ilib.Address("Botanisk Centralbibliotek,Sølvgade 83, opg. S,DK-1307 København K.,DENMARK", {locale: 'da-DK'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("DK", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressDKFromUS() {
 	var parsedAddress = new ilib.Address("Hr. Niels Henriksen,Kastanievej 15,DK-8660 SKANDERBORG,DENMARK", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("DK", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressDK() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Hr. Niels Henriksen,Kastanievej 15",
 		locality: "SKANDERBORG",
@@ -131,7 +131,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressDKFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Hr. Niels Henriksen,Kastanievej 15",
 		postalCode: "DK-8660",

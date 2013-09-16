@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressTRNormal() {
 	var parsedAddress = new ilib.Address("Orhaniye Street No 14\nSirkeci Istanbul 34120\nTurkey", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("TR", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressTRNoZip() {
 	var parsedAddress = new ilib.Address("Teyfikhane Sok No 1\nSultanahmet Istanbul\nTurkey", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -42,7 +42,7 @@ function testParseAddressNoZip() {
 };
 
 
-function testParseAddressNoCountry() {
+function testParseAddressTRNoCountry() {
 	var parsedAddress = new ilib.Address("Orhaniye Street No 14\nSirkeci Istanbul 34120", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -54,7 +54,7 @@ function testParseAddressNoCountry() {
 	assertEquals("TR", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressTRNoDelimiters() {
 	var parsedAddress = new ilib.Address("Orhaniye Street No 14 Sirkeci Istanbul 34120 Turkey", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressNoDelimiters() {
 };
 
 
-function testParseAddressOneLine() {
+function testParseAddressTROneLine() {
 	var parsedAddress = new ilib.Address("Orhaniye Street , No 14 , Sirkeci , Istanbul , 34120 , Turkey", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -80,7 +80,7 @@ function testParseAddressOneLine() {
 };
 
 
-function testParseAddressOther() {
+function testParseAddressTROther() {
 	var parsedAddress = new ilib.Address("Alemdag Cad. Yanyol Sok. No 6-8\nÜSKÜDAR  ISTANBUL 34692\nTURKEY", {locale: 'tr-TR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -93,7 +93,7 @@ function testParseAddressOther() {
 };
 
 
-function testParseAddressManyLines() {
+function testParseAddressTRManyLines() {
 	var parsedAddress = new ilib.Address("Orhaniye Street\nNo 14\nSirkeci Istanbul 34120\nTurkey", {locale: 'sl-SI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -107,7 +107,7 @@ function testParseAddressManyLines() {
 
 
 
-function testFormatAddress() {
+function testFormatAddressTR() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Alemdag Cad. Yanyol Sok. No 6-8",
 		locality: "ÜSKÜDAR",
@@ -122,7 +122,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressTRFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Orhaniye Street No 14",
 		locality: "Sirkeci",

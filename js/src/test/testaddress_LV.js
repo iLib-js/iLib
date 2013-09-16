@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressLVNormal() {
 	var parsedAddress = new ilib.Address("Igors Biedriņš Aglonas iela 43, Apt 1\nDAUGAVPILS, LV-5417\nLATVIA", {locale: 'lv-LV'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("LV", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressLVNoZip() {
 	var parsedAddress = new ilib.Address("Igors Biedriņš Aglonas iela 43, Apt 1\nDAUGAVPILS\nLATVIA", {locale: 'lv-LV'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressLVNoCountry() {
 	var parsedAddress = new ilib.Address("Igors Biedriņš Aglonas iela 43, Apt 1\nDAUGAVPILS, LV-5417", {locale: 'lv-LV'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("LV", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressLVManyLines() {
 	var parsedAddress = new ilib.Address("Igors Biedriņš Aglonas\niela 43\nApt 1\n\nDAUGAVPILS\n\nLV-5417\nLATVIA\n\n\n", {locale: 'lv-LV'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Igors Biedriņš Aglonas, iela 43, Apt 1", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("LV", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressLVOneLine() {
 	var parsedAddress = new ilib.Address("Igors Biedriņš Aglonas , iela 43 , Apt 1 , DAUGAVPILS , LV-5417 , LATVIA", {locale: 'lv-LV'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("LV", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressLVSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tIgors Biedriņš Aglonas\t\t\riela 43\t\t\rApt 1\n\tDAUGAVPILS\n\tLV-5417\n\tLATVIA\n\n\n", {locale: 'lv-LV'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("LV", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressLVNoDelimiters() {
 	var parsedAddress = new ilib.Address("Igors Biedriņš Aglonas iela 43, Apt 1 DAUGAVPILS, LV-5417 LATVIA", {locale: 'lv-LV'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("LV", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressLVFromUS() {
 	var parsedAddress = new ilib.Address("Igors Biedriņš Aglonas iela 43, Apt 1\nDAUGAVPILS, LV-5417\nLATVIA", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("LV", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressLV() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Igors Biedriņš Aglonas iela 43, Apt 1",
 		locality: "DAUGAVPILS",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressLVFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Igors Biedriņš Aglonas iela 43, Apt 1",
 		locality: "DAUGAVPILS",

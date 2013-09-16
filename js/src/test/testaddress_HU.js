@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAddressHUNormal() {
 	var parsedAddress = new ilib.Address("Budapest, Fiktív utca 82., IV. em./28. - or - Pf. 184, 2806, HUNGARY", {locale: 'hu-HU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("HU", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressHUNoZip() {
 	var parsedAddress = new ilib.Address("Budapest, Fiktív utca 82., IV. em./28. - or - Pf. 184, HUNGARY", {locale: 'hu-HU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressHUManyLines() {
 	var parsedAddress = new ilib.Address("Budapest\nHonvéd utca 13-15\n1055\nHUNGARY", {locale: 'hu-HU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("HU", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressHUOneLine() {
 	var parsedAddress = new ilib.Address("Budapest, Honvéd utca 13-15, 1055, HUNGARY", {locale: 'hu-HU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("HU", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressHUSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Budapest   \n\t\n Honvéd utca 13-15\t\n\n 1055\n\nHUNGARY  \n  \t\t\t", {locale: 'hu-HU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("HU", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressHUNoDelimiters() {
 	var parsedAddress = new ilib.Address("Budapest Honvéd utca 13-15 1055 HUNGARY", {locale: 'hu-HU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("HU", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressHUSpecialChars() {
 	var parsedAddress = new ilib.Address("Győr, Arató utca 7 fsz. 2, 9028, HUNGARY", {locale: 'hu-HU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -102,7 +102,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("HUNGARY", parsedAddress.country);
 	assertEquals("HU", parsedAddress.countryCode);
 };
-function testParseAddressFromUS() {
+function testParseAddressHUFromUS() {
 	var parsedAddress = new ilib.Address("Győr, Arató utca 7 fsz. 2, 9028, Hungary", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -116,7 +116,7 @@ function testParseAddressFromUS() {
 	assertEquals("HU", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressHU() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Fiktív utca 82., IV. em./28. - or - Pf. 184.",
 		locality: "Budapest",
@@ -130,7 +130,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressHUFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Fiktív utca 82., IV. em./28. - or - Pf. 184.",
 		locality: "Budapest",

@@ -20,7 +20,7 @@
 
 
 
-function testParseAddressFRNormal() {
+function testParseAddressDZFRNormal() {
 	var parsedAddress = new ilib.Address("M. Said Mohamed, 2, rue de l'Indépendance, 16027 ALGIERS, Algérie", {locale: 'fr-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -32,7 +32,7 @@ function testParseAddressFRNormal() {
 	assertEquals("DZ", parsedAddress.countryCode);
 };
 
-function testParseAddressFRNoZip() {
+function testParseAddressDZFRNoZip() {
 	var parsedAddress = new ilib.Address("M. Said Mohamed,2, rue de l'Indépendance, ALGIERS, Algérie", {locale: 'fr-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -44,7 +44,7 @@ function testParseAddressFRNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressFRManyLines() {
+function testParseAddressDZFRManyLines() {
 	var parsedAddress = new ilib.Address("M. Said Mohamed\n2, rue de l'Indépendance\n16027 ALGIERS\n Algérie", {locale: 'fr-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -56,7 +56,7 @@ function testParseAddressFRManyLines() {
 	assertEquals("DZ", parsedAddress.countryCode);
 };
 
-function testParseAddressFROneLine() {
+function testParseAddressDZFROneLine() {
 	var parsedAddress = new ilib.Address("M. Said Mohamed,2, rue de l'Indépendance,16027 ALGIERS, Algérie", {locale: 'fr-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -68,7 +68,7 @@ function testParseAddressFROneLine() {
 	assertEquals("DZ", parsedAddress.countryCode);
 };
 
-function testParseAddressFRSuperfluousWhitespace() {
+function testParseAddressDZFRSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("M. Said Mohamed,2, rue de l'Indépendance   \n\t\n 16027 ALGIERS\t\n\n  Algérie  \n  \t\t\t", {locale: 'fr-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -80,7 +80,7 @@ function testParseAddressFRSuperfluousWhitespace() {
 	assertEquals("DZ", parsedAddress.countryCode);
 };
 
-function testParseAddressFRNoDelimiters() {
+function testParseAddressDZFRNoDelimiters() {
 	var parsedAddress = new ilib.Address("M. Said Mohamed 2  rue de l'Indépendance 16027 ALGIERS  Algérie", {locale: 'fr-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -92,7 +92,7 @@ function testParseAddressFRNoDelimiters() {
 	assertEquals("DZ", parsedAddress.countryCode);
 };
 
-function testParseAddressFRSpecialChars() {
+function testParseAddressDZFRSpecialChars() {
 	var parsedAddress = new ilib.Address("M. Said Mohamed,2, rue de l'Indépendance,16027 ALGIERS, Algérie", {locale: 'fr-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -104,7 +104,7 @@ function testParseAddressFRSpecialChars() {
 	assertEquals("DZ", parsedAddress.countryCode);
 };
 
-function testParseAddressFRFromUS() {
+function testParseAddressDZFRFromUS() {
 	var parsedAddress = new ilib.Address("M. Said Mohamed,2, rue de l'Indépendance,16027 ALGIERS, Algeria", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -118,7 +118,7 @@ function testParseAddressFRFromUS() {
 	assertEquals("DZ", parsedAddress.countryCode);
 };
 
-function testFormatAddressFR() {
+function testFormatAddressDZFR() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "M. Said Mohamed,2, rue de l'Indépendance",
 		locality: "ALGIERS",
@@ -132,7 +132,7 @@ function testFormatAddressFR() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFRFromUS() {
+function testFormatAddressDZFRFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "M. Said Mohamed,2, rue de l'Indépendance",
 		postalCode: "10110",
@@ -147,7 +147,7 @@ function testFormatAddressFRFromUS() {
 };
 
 
-function testParseAddressARNormal() {
+function testParseAddressDZARNormal() {
 	var parsedAddress = new ilib.Address("محمد سعيد, ٢ شارع الاستقلال, ١٦٠٢٦ الجزائر, الجزائر", {locale: 'ar-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -160,7 +160,7 @@ function testParseAddressARNormal() {
 	assertEquals("DZ", parsedAddress.countryCode);
 };
 
-function testParseAddressARNoZip() {
+function testParseAddressDZARNoZip() {
 	var parsedAddress = new ilib.Address("محمد سعيد, ٢ شارع الاستقلال, الجزائر, الجزائر", {locale: 'ar-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -172,7 +172,7 @@ function testParseAddressARNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressARManyLines() {
+function testParseAddressDZARManyLines() {
 	var parsedAddress = new ilib.Address("محمد سعيد\n٢ شارع الاستقلال\n١٦٠٢٦ الجزائر\n الجزائر", {locale: 'ar-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -184,7 +184,7 @@ function testParseAddressARManyLines() {
 	assertEquals("DZ", parsedAddress.countryCode);
 };
 
-function testParseAddressAROneLine() {
+function testParseAddressDZAROneLine() {
 	var parsedAddress = new ilib.Address("محمد سعيد, ٢ شارع الاستقلال,١٦٠٢٦ الجزائر, الجزائر", {locale: 'ar-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -196,7 +196,7 @@ function testParseAddressAROneLine() {
 	assertEquals("DZ", parsedAddress.countryCode);
 };
 
-function testParseAddressARSuperfluousWhitespace() {
+function testParseAddressDZARSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("محمد سعيد, ٢ شارع الاستقلال   \n\t\n ١٦٠٢٦ الجزائر\t\n\n  الجزائر  \n  \t\t\t", {locale: 'ar-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -208,7 +208,7 @@ function testParseAddressARSuperfluousWhitespace() {
 	assertEquals("DZ", parsedAddress.countryCode);
 };
 
-function testParseAddressARNoDelimiters() {
+function testParseAddressDZARNoDelimiters() {
 	var parsedAddress = new ilib.Address("محمد سعيد  ٢ شارع الاستقلال ١٦٠٢٦ الجزائر  الجزائر", {locale: 'ar-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -220,7 +220,7 @@ function testParseAddressARNoDelimiters() {
 	assertEquals("DZ", parsedAddress.countryCode);
 };
 
-function testParseAddressARSpecialChars() {
+function testParseAddressDZARSpecialChars() {
 	var parsedAddress = new ilib.Address("محمد سعيد, ٢ شارع الاستقلال,١٦٠٢٦ الجزائر, الجزائر", {locale: 'ar-DZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -232,7 +232,7 @@ function testParseAddressARSpecialChars() {
 	assertEquals("DZ", parsedAddress.countryCode);
 };
 
-function testParseAddressARFromUS() {
+function testParseAddressDZARFromUS() {
 	var parsedAddress = new ilib.Address("محمد سعيد, ٢ شارع الاستقلال,١٦٠٢٦ الجزائر, Algeria", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -260,7 +260,7 @@ function testFormatARAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressARFromUS() {
+function testFormatAddressDZARFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "محمد سعيد, ٢ شارع الاستقلال",
 		postalCode: "١٦٠٢٦",

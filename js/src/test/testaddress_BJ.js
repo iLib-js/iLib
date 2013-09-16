@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAddressBJNormal() {
 	var parsedAddress = new ilib.Address("03 BP 1000, COTONOU, BENIN", {locale: 'fr-BJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("BJ", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressBJNoZip() {
 	var parsedAddress = new ilib.Address("BP 1000, COTONOU, BENIN", {locale: 'fr-BJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressBJManyLines() {
 	var parsedAddress = new ilib.Address("03 BP 1000\nCOTONOU\nBENIN", {locale: 'fr-BJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("BJ", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressBJOneLine() {
 	var parsedAddress = new ilib.Address("03 BP 1000, COTONOU, BENIN", {locale: 'fr-BJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("BJ", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressBJSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("03 BP 1000  \n\t\n COTONOU\t\n\n BENIN  \n  \t\t\t", {locale: 'fr-BJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("BJ", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressBJNoDelimiters() {
 	var parsedAddress = new ilib.Address("03 BP 1000, COTONOU, BENIN", {locale: 'fr-BJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("BJ", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressBJSpecialChars() {
 	var parsedAddress = new ilib.Address("03 BP 1000, COTONOU, BENIN", {locale: 'fr-BJ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("BJ", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressBJFromUS() {
 	var parsedAddress = new ilib.Address("03 BP 1000, COTONOU, BENIN", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("BJ", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressBJ() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "BP 1000",
 		locality: "COTONOU",
@@ -131,7 +131,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressBJFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "BP 1000",
 		postalCode: "03",

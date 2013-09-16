@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressMWNormal() {
 	var parsedAddress = new ilib.Address("Mr. W.M. Lundu P.O. Box 30500\nLILONGWE 3\nMALAWI", {locale: 'en-MW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("MW", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressMWNoZip() {
 	var parsedAddress = new ilib.Address("Mr. W.M. Lundu P.O. Box 30500\nLILONGWE 3\nMALAWI", {locale: 'en-MW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressMWNoCountry() {
 	var parsedAddress = new ilib.Address("Mr. W.M. Lundu P.O. Box 30500\nLILONGWE 3", {locale: 'en-MW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("MW", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressMWManyLines() {
 	var parsedAddress = new ilib.Address("Mr. W.M. Lundu\nP.O. Box 30500\n\n\n\n\nLILONGWE 3\n\n\nMALAWI\n\n\n", {locale: 'en-MW'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. W.M. Lundu, P.O. Box 30500", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("MW", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressMWOneLine() {
 	var parsedAddress = new ilib.Address("Mr. W.M. Lundu , P.O. Box 30500 , LILONGWE 3 , MALAWI", {locale: 'en-MW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("MW", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressMWSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tMr. W.M. Lundu\t\t\rP.O. Box 30500\t\t\r\n\n\n\nLILONGWE 3\n\t MALAWI\n\n\n", {locale: 'en-MW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("MW", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressMWNoDelimiters() {
 	var parsedAddress = new ilib.Address("Mr. W.M. Lundu P.O. Box 30500  LILONGWE 3 MALAWI", {locale: 'en-MW'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("MW", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressMWFromUS() {
 	var parsedAddress = new ilib.Address("Mr. W.M. Lundu P.O. Box 30500\n LILONGWE 3\nMALAWI", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("MW", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressMW() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. W.M. Lundu P.O. Box 30500",
 		locality: "LILONGWE 3",
@@ -127,7 +127,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressMWFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. W.M. Lundu P.O. Box 30500",
 		locality: "LILONGWE 3",

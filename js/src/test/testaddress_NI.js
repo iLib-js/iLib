@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressNINormal() {
 	var parsedAddress = new ilib.Address("Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel\n050-008-4\nGRANADA, GRANADA\nNICARAGUA", {locale: 'es-NI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ assertEquals("Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur
 	assertEquals("NI", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressNINoZip() {
 	var parsedAddress = new ilib.Address("Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel\nGRANADA, GRANADA\nNICARAGUA", {locale: 'es-NI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressNINoCountry() {
 	var parsedAddress = new ilib.Address("Sr. Juan Manuel Nurinda\nDel Hotel Granada 1c.\narriba 75\nvrs. alsur. Reparto\nSanta Isabel\n050-008-4\nGranada, Granada", {locale: 'es-NI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -54,7 +54,7 @@ function testParseAddressNoCountry() {
 	assertEquals("NI", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressNIManyLines() {
 	var parsedAddress = new ilib.Address("Sr. Juan Manuel Nurinda\nDel Hotel Granada 1c.\narriba 75\nvrs. alsur. Reparto\nSanta Isabel\n050-008-4\nGRANADA, GRANADA\nNICARAGUA", {locale: 'es-NI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -66,7 +66,7 @@ function testParseAddressManyLines() {
 	assertEquals("NI", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressNIOneLine() {
 	var parsedAddress = new ilib.Address("Sr. Juan Manuel Nurinda , Del Hotel Granada 1c. , arriba 75 , vrs. alsur. Reparto , Santa Isabel , 050-008-4 , GRANADA , GRANADA , NICARAGUA", {locale: 'es-NI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -78,7 +78,7 @@ function testParseAddressOneLine() {
 	assertEquals("NI", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressNISuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Sr. Juan Manuel Nurinda\n\n\t\rDel Hotel Granada 1c.\t\t\rarriba 75\r\r\rvrs. alsur. Reparto\t\t\rSanta Isabel\n\n\n050-008-4\t\t\rGRANADA\r\r\rGRANADA\t\t\rNICARAGUA", {locale: 'es-NI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -90,7 +90,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("NI", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressNINoDelimiters() {
 	var parsedAddress = new ilib.Address("Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel 050-008-4\nGRANADA, GRANADA NICARAGUA", {locale: 'es-NI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -102,7 +102,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("NI", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressNIFromUS() {
 	var parsedAddress = new ilib.Address("Mr. JOSE PEREZ AV. Del Hotel Granada 1c. arriba 75, vrs. alsur. Reparto Santa Isabel\n050-008-4\nGRANADA, GRANADA\nNICARAGUA", {locale: 'es-NI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("NI", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressNI() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel",
 		locality: "GRANADA",
@@ -129,7 +129,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressNIFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. JOSE PEREZ AV. Del Hotel Granada 1c. arriba 75, vrs. alsur. Reparto Santa Isabel",
 		locality: "GRANADA",

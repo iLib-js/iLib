@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressLatinNormal() {
+function testParseAddressCNLatinNormal() {
 	var parsedAddress = new ilib.Address("L30, Unit 3007, Teemtower, Teemmall,\n208 Tianhe Road, Tianhe District,\nGuangzhou, Guangdong 510620\nChina", {locale: 'en-CN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressLatinNormal() {
 	assertEquals("CN", parsedAddress.countryCode);
 };
 
-function testParseAddressLatinNoZip() {
+function testParseAddressCNLatinNoZip() {
 	var parsedAddress = new ilib.Address("No. 1 Zhongguancun East Road\nHaidian District\nBeijing, People's Republic of China", {locale: 'en-CN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressLatinNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressLatinNoCountry() {
+function testParseAddressCNLatinNoCountry() {
 	var parsedAddress = new ilib.Address("No.268 Xizang Zhong Road, Huangpu District\nShanghai, 200001", {locale: 'en-CN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressLatinNoCountry() {
 	assertEquals("CN", parsedAddress.countryCode);
 };
 
-function testParseAddressAsianNormal() {
+function testParseAddressCNAsianNormal() {
 	var parsedAddress = new ilib.Address("中国北京市朝阳区建国路112号 中国惠普大厦100022", {locale: 'zh-CN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressAsianNormal() {
 	assertEquals("CN", parsedAddress.countryCode);
 };
 
-function testParseAddressAsianNoZip() {
+function testParseAddressCNAsianNoZip() {
 	var parsedAddress = new ilib.Address("中国武汉市汉口建设大道568号新世界国贸大厦I座9楼910室", {locale: 'zh-CN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressAsianNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressAsianNoCountry() {
+function testParseAddressCNAsianNoCountry() {
 	var parsedAddress = new ilib.Address("北京市朝阳区北四环中路 27号盘古大观 A 座 23层200001", {locale: 'zh-CN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressAsianNoCountry() {
 	assertEquals("CN", parsedAddress.countryCode);
 };
 
-function testParseAddressAsianWithRegion() {
+function testParseAddressCNAsianWithRegion() {
 	var parsedAddress = new ilib.Address("中国湖北省武汉市汉口建设大道568号新世界国贸大厦I座9楼910室430000", {locale: 'zh-CN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressAsianWithRegion() {
 	assertEquals("430000", parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressCNManyLines() {
 	var parsedAddress = new ilib.Address("Tsinghua Science Park Bldg 6\nNo. 1 Zhongguancun East Road\nHaidian District\nBeijing 100084\nPRC\n\n", {locale: 'en-CN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressManyLines() {
 	assertEquals("CN", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressCNOneLine() {
 	var parsedAddress = new ilib.Address("No. 27, Central North Fourth Ring Road, Chaoyang District, Beijing 100101, PRC", {locale: 'en-CN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -125,7 +125,7 @@ function testParseAddressOneLine() {
 	assertEquals("CN", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressCNSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tNo. 27, Central North Fourth \r\t   \tRing Road\t\t\n\t, Chaoyang \r\tDistrict\n\t\rBeijing\t\r\n100101\n\t\t\r\rPRC\t\n\n\n", {locale: 'en-CN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -137,7 +137,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("CN", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressCNNoDelimiters() {
 	var parsedAddress = new ilib.Address("No. 27 Central North Fourth Ring Road Chaoyang District Beijing 100101 PRC", {locale: 'en-CN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -149,7 +149,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("CN", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressCNSpecialChars() {
 	var parsedAddress = new ilib.Address("208 Tianhe Road, Tianhe District,\nGuǎngzhōu, Guǎngdōng 510620\nChina", {locale: 'en-CN'});
 	
 	assertNotUndefined(parsedAddress);
@@ -161,7 +161,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("CN", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressCNFromUS() {
 	var parsedAddress = new ilib.Address("208 Tianhe Road, Tianhe District,\nGuǎngzhōu, Guǎngdōng 510620\nChina", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -175,7 +175,7 @@ function testParseAddressFromUS() {
 	assertEquals("CN", parsedAddress.countryCode);
 };
 
-function testFormatAddressLatin() {
+function testFormatAddressCNLatin() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "208 Tianhe Road, Tianhe District",
 		locality: "Guǎngzhōu",
@@ -191,7 +191,7 @@ function testFormatAddressLatin() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressCNFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "208 Tianhe Road, Tianhe District",
 		locality: "Guǎngzhōu",

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressTZNormal() {
 	var parsedAddress = new ilib.Address("Mr. Abel H.H. Bilia P.O. Box 10084\nDAR ES SALAAM\nTanzania", {locale: 'en-TZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("TZ", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressTZNoZip() {
 	var parsedAddress = new ilib.Address("Mr. Abel H.H. Bilia P.O. Box 10084\nDAR ES SALAAM\nTanzania", {locale: 'en-TZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressTZNoCountry() {
 	var parsedAddress = new ilib.Address("Mr. Abel H.H. Bilia P.O. Box 10084\nDAR ES SALAAM", {locale: 'en-TZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("TZ", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressTZManyLines() {
 	var parsedAddress = new ilib.Address("Mr. Abel H.H. Bilia\nP.O. Box 10084\nDAR ES SALAAM\nTanzania\n\n\n", {locale: 'en-TZ'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. Abel H.H. Bilia, P.O. Box 10084", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("TZ", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressTZOneLine() {
 	var parsedAddress = new ilib.Address("Mr. Abel H.H. Bilia , P.O. Box 10084 , DAR ES SALAAM , Tanzania", {locale: 'en-TZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("TZ", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressTZSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\t\tMr. Abel H.H. Bilia\t\t\tP.O. Box\t\r\r10084\t\nDAR ES SALAAM\n\t Tanzania\n\n\n", {locale: 'en-TZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("TZ", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressTZNoDelimiters() {
 	var parsedAddress = new ilib.Address("Mr. Abel H.H. Bilia P.O. Box 10084 DAR ES SALAAM Tanzania", {locale: 'en-TZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("TZ", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressTZFromUS() {
 	var parsedAddress = new ilib.Address("Mr. Abel H.H. Bilia P.O. Box 10084\nDAR ES SALAAM\nTanzania", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
@@ -112,7 +112,7 @@ function testParseAddressFromUS() {
 	assertEquals("TZ", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressTZ() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. Abel H.H. Bilia P.O. Box 10084",
 		locality: "DAR ES SALAAM",
@@ -125,7 +125,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressTZFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. Abel H.H. Bilia P.O. Box 10084",
 		locality: "DAR ES SALAAM",

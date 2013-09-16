@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressEGNormal() {
 	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nمصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -32,7 +32,7 @@ function testParseAddressNormal() {
 
 
 
-function testParseAddressNoZip() {
+function testParseAddressEGNoZip() {
 	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\nمصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -45,7 +45,7 @@ function testParseAddressNoZip() {
 };
 
 
-function testParseAddressNoCountry() {
+function testParseAddressEGNoCountry() {
 	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n ١٢٤١١", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -59,7 +59,7 @@ function testParseAddressNoCountry() {
 };
 
 
-function testParseAddressManyLines() {
+function testParseAddressEGManyLines() {
 	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠\nشارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nمصر\n\n", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -71,7 +71,7 @@ function testParseAddressManyLines() {
 	assertEquals("مصر", parsedAddress.country);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressEGOneLine() {
 	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠ , شارع احمد عرابى , آل المهندسين , الجيزة , ١٢٤١١ , مصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -84,7 +84,7 @@ function testParseAddressOneLine() {
 };
 
 //needs a more precise regular expression to handle spaces within localities
-/*function testParseAddressNoDelimiters() {
+/*function testParseAddressEGNoDelimiters() {
 	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى آل المهندسين\n الجيزة\n ١٢٤١١ مصر", {locale: 'ar-EG'});
 	
 	assertNotUndefined(parsedAddress);
@@ -96,7 +96,7 @@ function testParseAddressOneLine() {
 	assertEquals("مصر", parsedAddress.country);
 };*/
 
-function testParseAddressFromUS() {
+function testParseAddressEGFromUS() {
 	var parsedAddress = new ilib.Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\n الجيزة\n ١٢٤١١\nEgypt", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
@@ -109,7 +109,7 @@ function testParseAddressFromUS() {
 };
 
 
-function testFormatAddressEG() {
+function testFormatAddressEGEG() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد محمد احمد محمود ٣٠, شارع احمد عرابى",
 		locality: "آل المهندسين",
@@ -125,7 +125,7 @@ function testFormatAddressEG() {
 };
 
 
-function testFormatAddressFromUS() {
+function testFormatAddressEGFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد محمد احمد محمود ٣٠, شارع احمد عرابى",
 		locality: "آل المهندسين",

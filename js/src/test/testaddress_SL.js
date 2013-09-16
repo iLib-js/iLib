@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressSLNormal() {
 	var parsedAddress = new ilib.Address("Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone", {locale: 'en-SL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("SL", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressSLNoZip() {
 	var parsedAddress = new ilib.Address("Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone", {locale: 'en-SL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressSLNoCountry() {
 	var parsedAddress = new ilib.Address("Mr. John Kamara 7A Ross Road Cline\nFreetown", {locale: 'en-SL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("SL", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressSLManyLines() {
 	var parsedAddress = new ilib.Address("Mr. John Kamara\n7A Ross Road Cline\nFreetown\nSierra Leone\n\n\n", {locale: 'en-SL'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Mr. John Kamara, 7A Ross Road Cline", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("SL", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressSLOneLine() {
 	var parsedAddress = new ilib.Address("Mr. John Kamara , 7A Ross Road Cline , Freetown , Sierra Leone", {locale: 'en-SL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("SL", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressSLSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\t\tMr. John Kamara\t\t\t7A Ross Road Cline\t\nFreetown\n\t Sierra Leone\n\n\n", {locale: 'en-SL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("SL", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressSLNoDelimiters() {
 	var parsedAddress = new ilib.Address("Mr. John Kamara 7A Ross Road Cline Freetown Sierra Leone", {locale: 'en-SL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("SL", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressSLFromUS() {
 	var parsedAddress = new ilib.Address("Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
@@ -112,7 +112,7 @@ function testParseAddressFromUS() {
 	assertEquals("SL", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressSL() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. John Kamara 7A Ross Road Cline",
 		locality: "Freetown",
@@ -125,7 +125,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressSLFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. John Kamara 7A Ross Road Cline",
 		locality: "Freetown",

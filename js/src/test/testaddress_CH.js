@@ -18,7 +18,7 @@
  */
 
 
-function testParseAddressNormal() {
+function testParseAddressCHNormal() {
 	var parsedAddress = new ilib.Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND", {locale: 'de-CH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -30,7 +30,7 @@ function testParseAddressNormal() {
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
-function testParseAddressNormalforItaly() {
+function testParseAddressCHNormalforItaly() {
 	var parsedAddress = new ilib.Address("Mr. Hans gatto Tastentanz Via 5/16\n1234 Zurich\nSVIZZERA", {locale: 'it-CH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNormalforItaly() {
 };
 
 
-function testParseAddressNormalforFrance() {
+function testParseAddressCHNormalforFrance() {
 	var parsedAddress = new ilib.Address("M. Hans chat Tastentanz rue 5/16\n1234 Zurich\nSUISSE", {locale: 'fr-CH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -56,7 +56,7 @@ function testParseAddressNormalforFrance() {
 };
 
 
-function testParseAddressNoZip() {
+function testParseAddressCHNoZip() {
 	var parsedAddress = new ilib.Address("Herr Hans Katze Tastentanzenstrasse 5/16\nZuerich\nSWITZERLAND", {locale: 'de-CH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -68,7 +68,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressCHNoCountry() {
 	var parsedAddress = new ilib.Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich", {locale: 'de-CH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -80,7 +80,7 @@ function testParseAddressNoCountry() {
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressCHManyLines() {
 	var parsedAddress = new ilib.Address("Herr Hans Katze\nTastentanzenstrasse\n5/16\n1234\nZuerich\nSWITZERLAND\n\n", {locale: 'de-CH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -92,7 +92,7 @@ function testParseAddressManyLines() {
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressCHOneLine() {
 	var parsedAddress = new ilib.Address("Herr Hans Katze , Tastentanzenstrasse , 5/16 , 1234 , Zuerich , SWITZERLAND", {locale: 'de-CH'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Herr Hans Katze, Tastentanzenstrasse, 5/16", parsedAddress.streetAddress);
@@ -103,7 +103,7 @@ function testParseAddressOneLine() {
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressCHSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\t\Herr Hans Katze\nTastentanzenstrasse\n5/16\n\t1234\n\t\tZuerich\n\t\tSWITZERLAND\t\t", {locale: 'de-CH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -115,7 +115,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressCHNoDelimiters() {
 	var parsedAddress = new ilib.Address("Herr Hans Katze Tastentanzenstrasse 5/16 1234 Zuerich SWITZERLAND", {locale: 'de-CH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -127,7 +127,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressCHFromUS() {
 	var parsedAddress = new ilib.Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -141,7 +141,7 @@ function testParseAddressFromUS() {
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressCH() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Herr Hans Katze Tastentanzenstrasse 5/16",
 		locality: "Zuerich",
@@ -155,7 +155,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressCHFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Herr Hans Katze Tastentanzenstrasse 5/16",
 		locality: "Zuerich",

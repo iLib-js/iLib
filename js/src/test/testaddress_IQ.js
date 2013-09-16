@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressIQNormal() {
 	var parsedAddress = new ilib.Address("السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي , البصرة\n٦١٠٠٢\nالعراق", {locale: 'ar-IQ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 
 
 
-function testParseAddressNoZip() {
+function testParseAddressIQNoZip() {
 	var parsedAddress = new ilib.Address("السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي , البصرة\nالعراق", {locale: 'ar-IQ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -44,7 +44,7 @@ function testParseAddressNoZip() {
 };
 
 
-function testParseAddressNoCountry() {
+function testParseAddressIQNoCountry() {
 	var parsedAddress = new ilib.Address("السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي , البصرة\n ٦١٠٠٢", {locale: 'ar-IQ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -58,7 +58,7 @@ function testParseAddressNoCountry() {
 };
 
 
-function testParseAddressManyLines() {
+function testParseAddressIQManyLines() {
 	var parsedAddress = new ilib.Address("السيد احمد طارق\n١٠ قهوة الشريعة\nالاصمعي\nالبصرة\n٦١٠٠٢\nالعراق\n\n", {locale: 'ar-IQ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -70,7 +70,7 @@ function testParseAddressManyLines() {
 	assertEquals("العراق", parsedAddress.country);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressIQOneLine() {
 	var parsedAddress = new ilib.Address("السيد احمد طارق , ١٠ قهوة الشريعة , الاصمعي , البصرة , ٦١٠٠٢ , العراق", {locale: 'ar-IQ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -83,7 +83,7 @@ function testParseAddressOneLine() {
 };
 
 
-function testParseAddressNoDelimiters() {
+function testParseAddressIQNoDelimiters() {
 	var parsedAddress = new ilib.Address("السيد احمد طارق, ١٠ قهوة الشريعة الاصمعي  البصرة  ٦١٠٠٢ العراق", {locale: 'ar-IQ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -95,7 +95,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("العراق", parsedAddress.country);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressIQFromUS() {
 	var parsedAddress = new ilib.Address("السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي , البصرة\n ٦١٠٠٢\nIraq", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
@@ -108,7 +108,7 @@ function testParseAddressFromUS() {
 };
 
 
-function testFormatAddress() {
+function testFormatAddressIQ() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد احمد طارق, ١٠ قهوة الشريعة",
 		locality: "الاصمعي",
@@ -124,7 +124,7 @@ function testFormatAddress() {
 };
 
 
-function testFormatAddressFromUS() {
+function testFormatAddressIQFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "السيد احمد طارق, ١٠ قهوة الشريعة",
 		locality: "الاصمعي",

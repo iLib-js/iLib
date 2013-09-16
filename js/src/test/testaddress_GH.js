@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressGHNormal() {
 	var parsedAddress = new ilib.Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("GH", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressGHNoZip() {
 	var parsedAddress = new ilib.Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressGHNoCountry() {
 	var parsedAddress = new ilib.Address("Mr. John Mensah P.O. Box 1234\nACCRA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("GH", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressGHManyLines() {
 	var parsedAddress = new ilib.Address("Mr. John Mensah\nP.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("GH", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressGHOneLine() {
 	var parsedAddress = new ilib.Address("Mr. John Mensah , P.O. Box 1234 , ACCRA , GHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("GH", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressGHSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Mr. John Mensah\n\n\t\r\t\t\rP.O. Box 1234\r\r\n\nACCRA\t\r\n\t\rGHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("GH", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressGHNoDelimiters() {
 	var parsedAddress = new ilib.Address("Mr. John Mensah P.O. Box 1234 ACCRA GHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("GH", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressGHFromUS() {
 	var parsedAddress = new ilib.Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressFromUS() {
 	assertEquals("GH", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressGH() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. John Mensah P.O. Box 1234",
 		locality: "ACCRA",
@@ -127,7 +127,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressGHFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Mr. John Mensah P.O. Box 1234",
 		locality: "ACCRA",

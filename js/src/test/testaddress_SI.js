@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressSINormal() {
 	var parsedAddress = new ilib.Address("Marija Borisek Prvomajska ulica 20\n1270 LITIJA\nSLOVENIA", {locale: 'sl-SI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("SI", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressSINoZip() {
 	var parsedAddress = new ilib.Address("Prešernova 31\n1000 Ljubljana\nSlovenia", {locale: 'sl-SI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertEquals("SI", parsedAddress.countryCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressSINoCountry() {
 	var parsedAddress = new ilib.Address("Marija Borisek , Prvomajska , ulica 20 , 1270 LITIJA", {locale: 'sl-SI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("SI", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressSIManyLines() {
 	var parsedAddress = new ilib.Address("Marija Borisek\nPrvomajska ulica 20\n1270 LITIJA\nSLOVENIA", {locale: 'sl-SI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("SI", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressSIOneLine() {
 	var parsedAddress = new ilib.Address("Marija Borisek , Prvomajska ulica 20 , 1270 , LITIJA , SLOVENIA", {locale: 'sl-SI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressOneLine() {
 
 
 
-function testParseAddressNoDelimiters() {
+function testParseAddressSINoDelimiters() {
 	var parsedAddress = new ilib.Address("Marija Borisek Prvomajska ulica 20 1270 LITIJA SLOVENIA", {locale: 'sl-SI'});
 	
 	assertNotUndefined(parsedAddress);
@@ -92,7 +92,7 @@ function testParseAddressNoDelimiters() {
 };
 
 
-function testParseAddressFromUS() {
+function testParseAddressSIFromUS() {
 	var parsedAddress = new ilib.Address("Marija Borisek Prvomajska ulica 20\nLITIJA 1270\nSLOVENIA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -106,7 +106,7 @@ function testParseAddressFromUS() {
 	assertEquals("SI", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressSI() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Marija Borisek Prvomajska ulica 20",
 		locality: "LITIJA",
@@ -121,7 +121,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressSIFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Marija Borisek Prvomajska ulica 20",
 		locality: "LITIJA",

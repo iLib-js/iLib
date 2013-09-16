@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAddressCLNormal() {
 	var parsedAddress = new ilib.Address("Av. Bellavista N° 185, Dep. 609, 84205077, Recoleta, Chile", {locale: 'es-CL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("CL", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressCLNoZip() {
 	var parsedAddress = new ilib.Address("Av. Bellavista N° 185, Dep. 609, 84205077, Recoleta, Chile", {locale: 'es-CL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertEquals("84205077",parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressCLManyLines() {
 	var parsedAddress = new ilib.Address("Av. Bellavista N° 185\nDep. 609\n84205077\nRecoleta\nChile", {locale: 'es-CL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("CL", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressCLOneLine() {
 	var parsedAddress = new ilib.Address("Av. Bellavista N° 185, Dep. 609, 84205077, Recoleta, Chile", {locale: 'es-CL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("CL", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressCLSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Av. Bellavista N° 185, Dep. 609 \n\t\n 84205077\nRecoleta\t\n\n Chile  \n  \t\t\t", {locale: 'es-CL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("CL", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressCLNoDelimiters() {
 	var parsedAddress = new ilib.Address("Av. Bellavista N° 185 Dep. 609 84205077 Recoleta Chile", {locale: 'es-CL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("CL", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressCLSpecialChars() {
 	var parsedAddress = new ilib.Address("Av. Bellavista N° 185, Dep. 609, 84205077, Recoleta, Chile", {locale: 'es-CL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("CL", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressCLFromUS() {
 	var parsedAddress = new ilib.Address("Av. Bellavista N° 185, Dep. 609, 84205077, Recoleta, Chile", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("CL", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressCL() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Av. Bellavista N° 185, Dep. 609",
 		locality: "Recoleta",
@@ -131,7 +131,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressCLFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Av. Bellavista N° 185, Dep. 609",
 		locality: "Recoleta",

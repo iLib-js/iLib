@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressNONormal() {
 	var parsedAddress = new ilib.Address("Norwegian Post and Telecommunications Authority\nPostboks 447 Sentrum\n0104 Trondheim\nNORWAY", {locale: 'nb-NO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("NO", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressNONoZip() {
 	var parsedAddress = new ilib.Address("Norwegian Post and Telecommunications Authority\nBorgartun 34\nTrondheim", {locale: 'nb-NO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressNONoCountry() {
 	var parsedAddress = new ilib.Address("Storgata 6\nNO-7321 Trondheim", {locale: 'nb-NO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("NO", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressNOManyLines() {
 	var parsedAddress = new ilib.Address("Stine Hansendd\nLeilighet 425\nStorgata 6\nNO-7321 Trondheim\nNORWAY", {locale: 'nb-NO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("NO", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressNOOneLine() {
 	var parsedAddress = new ilib.Address("Stine Hansendd, Leilighet 425, Storgata 634, NO-7321 Trondheim,NORWAY", {locale: 'nb-NO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("NO", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressNOSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tStine Hansendd\n\t\t\tLeilighet 425, \t\t\t\r\r Storgata 634, \n\t\nNO-7321 Trondheim\t\n\t \n\nNORWAY\n", {locale: 'nb-NO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("NO", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressNONoDelimiters() {
 	var parsedAddress = new ilib.Address("Stine Hansendd Leilighet 425 Storgata 634 NO-7321 Trondheim NORWAY", {locale: 'nb-NO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("NO", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressNOFromUS() {
 	var parsedAddress = new ilib.Address("Norwegian Post and Telecommunications Authority\nBorgartun 34\n0104 Trondheim\nNorway", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a English database
@@ -115,7 +115,7 @@ function testParseAddressFromUS() {
 	assertEquals("NO", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressNO() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Norwegian Post and Telecommunications Authority, Borgartun 34",
 		locality: "Trondheim",
@@ -129,7 +129,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressNOFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Norwegian Post and Telecommunications Authority, Borgartun 34",
 		locality: "Trondheim",

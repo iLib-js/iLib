@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAddressSVNormal() {
 	var parsedAddress = new ilib.Address("Señora Rina Isabel Peña Borja, Colonia Universitaria Norte #2, Calle Alcaine #29, CP 1120 - MEJICANOS, SAN SALVADOR, EL SALVADOR", {locale: 'es-SV'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("SV", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressSVNoZip() {
 	var parsedAddress = new ilib.Address("Señora Rina Isabel Peña Borja, Colonia Universitaria Norte #2, Calle Alcaine #29, MEJICANOS, SAN SALVADOR, EL SALVADOR", {locale: 'es-SV'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressSVManyLines() {
 	var parsedAddress = new ilib.Address("Señora Rina Isabel Peña Borja\nColonia Universitaria Norte #2\nCalle Alcaine #29\nCP 1120 - MEJICANOS\nSAN SALVADOR\nEL SALVADOR", {locale: 'es-SV'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("SV", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressSVOneLine() {
 	var parsedAddress = new ilib.Address("Señora Rina Isabel Peña Borja, Colonia Universitaria Norte #2, Calle Alcaine #29, CP 1120 - MEJICANOS, SAN SALVADOR, EL SALVADOR", {locale: 'es-SV'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("SV", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressSVSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Señora Rina Isabel Peña Borja, Colonia Universitaria Norte #2, Calle Alcaine #29  \n\t\n CP 1120 - MEJICANOS, SAN SALVADOR\t\n\n EL SALVADOR  \n  \t\t\t", {locale: 'es-SV'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("SV", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressSVNoDelimiters() {
 	var parsedAddress = new ilib.Address("Señora Rina Isabel Peña Borja Colonia Universitaria Norte #2 Calle Alcaine #29 CP 1120 - MEJICANOS SAN SALVADOR EL SALVADOR", {locale: 'es-SV'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("SV", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressSVSpecialChars() {
 	var parsedAddress = new ilib.Address("Señora Rina Isabel Peña Borja, Colonia Universitaria Norte #2, Calle Alcaine #29, CP 1120 - MEJICANOS, SAN SALVADOR, EL SALVADOR", {locale: 'es-SV'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("SV", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressSVFromUS() {
 	var parsedAddress = new ilib.Address("Señora Rina Isabel Peña Borja, Colonia Universitaria Norte #2, Calle Alcaine #29, CP 1120 - MEJICANOS, SAN SALVADOR, EL SALVADOR", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("SV", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressSV() {
 		var parsedAddress = new ilib.Address({
 		streetAddress: "Señora Rina Isabel Peña Borja\nColonia Universitaria Norte #2\nCalle Alcaine #29",
 		region: "SAN SALVADOR",
@@ -132,7 +132,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressSVFromUS() {
 		var parsedAddress = new ilib.Address({
 		streetAddress: "Señora Rina Isabel Peña Borja\nColonia Universitaria Norte #2\nCalle Alcaine #29",
 		region: "SAN SALVADOR",

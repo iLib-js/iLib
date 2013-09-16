@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAddressECNormal() {
 	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("EC", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressECNoZip() {
 	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, QUITO, Ecuador", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressECManyLines() {
 	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito\nP0133V, QUITO\nEcuador", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("EC", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressECOneLine() {
 	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("EC", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressECSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito  \n\t\n P0133V, QUITO\t\n\n Ecuador  \n  \t\t\t", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("EC", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressECNoDelimiters() {
 	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín Empresa Nacional de Correos Succursal No 21– Quito  P0133V QUITO Ecuador", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("EC", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressECSpecialChars() {
 	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("EC", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressECFromUS() {
 	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito, P0133V, QUITO, Ecuador", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("EC", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressEC() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito",
 		locality: "QUITO",
@@ -131,7 +131,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressECFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Señor Ing. Gonzalo Vargas San Martín\nEmpresa Nacional de Correos\nSuccursal No 21– Quito",
 		locality: "QUITO",

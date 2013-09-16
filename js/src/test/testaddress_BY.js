@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressBYNormal() {
 	var parsedAddress = new ilib.Address("Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\n211388, Орша\nBelarus", {locale: 'ru-BY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("BY", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressBYNoZip() {
 	var parsedAddress = new ilib.Address("Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\nОрша\nBelarus", {locale: 'ru-BY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressBYNoCountry() {
 	var parsedAddress = new ilib.Address("Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\nОрша\n211388", {locale: 'ru-BY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("BY", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressBYManyLines() {
 	var parsedAddress = new ilib.Address("Адамович 4-й пер.\nЧЕРНЫШЕВСКОГО 8\n\n\n\n\nОрша\n\n211388\n\nBelarus\n\n\n", {locale: 'ru-BY'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("Адамович 4-й пер., ЧЕРНЫШЕВСКОГО 8", parsedAddress.streetAddress);
@@ -64,7 +64,7 @@ function testParseAddressManyLines() {
 	assertEquals("BY", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressBYOneLine() {
 	var parsedAddress = new ilib.Address("Адамович 4-й пер. , ЧЕРНЫШЕВСКОГО 8 , Орша , 211388 , Belarus", {locale: 'ru-BY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -76,7 +76,7 @@ function testParseAddressOneLine() {
 	assertEquals("BY", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressBYSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tАдамович 4-й пер.\t\t\rЧЕРНЫШЕВСКОГО 8\t\t\r\n\n\n\nОрша\n\t211388\n\nBelarus\n\n\n", {locale: 'ru-BY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -88,7 +88,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("BY", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressBYNoDelimiters() {
 	var parsedAddress = new ilib.Address("Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8 Орша\n211388 Belarus", {locale: 'ru-BY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -100,7 +100,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("BY", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressBYFromUS() {
 	var parsedAddress = new ilib.Address("Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\nОрша\n211388\nBelarus", {locale: 'en-US'});
 	
 	// the country name is in German because this address is for a contact in a German database
@@ -114,7 +114,7 @@ function testParseAddressFromUS() {
 	assertEquals("BY", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressBY() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8",
 		locality: "Орша",
@@ -128,7 +128,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressBYFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8",
 		locality: "Орша",
