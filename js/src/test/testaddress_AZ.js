@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAZAddressNormal() {
 	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
 	assertNotUndefined(parsedAddress);
 	assertEquals("ILHAZ SHAHRIAR, 45 Hatai Str.", parsedAddress.streetAddress);
@@ -30,7 +30,7 @@ function testParseAddressNormal() {
 	assertEquals("AZ", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAZAddressNoZip() {
 	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str.,GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -42,7 +42,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAZAddressManyLines() {
 	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR\n45 Hatai Str.\n2012 GÄNCÄ\nAZERBAIJAN", {locale: 'en-AZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -54,7 +54,7 @@ function testParseAddressManyLines() {
 	assertEquals("AZ", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAZAddressOneLine() {
 	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -66,7 +66,7 @@ function testParseAddressOneLine() {
 	assertEquals("AZ", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAZAddressSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str.  \n\t\n 2012 GÄNCÄ\t\n\n AZERBAIJAN  \n  \t\t\t", {locale: 'en-AZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -78,7 +78,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("AZ", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAZAddressNoDelimiters() {
 	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR 45 Hatai Str. 2012 GÄNCÄ AZERBAIJAN", {locale: 'en-AZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -90,7 +90,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("AZ", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAZAddressSpecialChars() {
 	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -102,7 +102,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("AZ", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAZAddressFromUS() {
 	var parsedAddress = new ilib.Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-US'});
 	
 	// the country nAZe is in English because this address is for a contact in a US database
@@ -116,7 +116,7 @@ function testParseAddressFromUS() {
 	assertEquals("AZ", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressAZ() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "ILHAZ SHAHRIAR, 45 Hatai Str.",
 		locality: "GÄNCÄ",
@@ -130,7 +130,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressAZFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "ILHAZ SHAHRIAR, 45 Hatai Str.",
 		postalCode: "2012",

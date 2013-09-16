@@ -18,7 +18,7 @@
  */
 
 
-function testParseAddressNormal() {
+function testParseARAddressNormal() {
 	var parsedAddress = new ilib.Address("Luis Escala Piedras 623\nPiso 2, depto 4\nC1070AAM Capital Federa\nARGENTINA", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 };
 
 
-function testParseAddressNoZip() {
+function testParseARAddressNoZip() {
 	var parsedAddress = new ilib.Address("Luis Escala Piedras 623\nPiso 2, depto 4\nCapital Federa\nARGENTINA", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseARAddressNoCountry() {
 	var parsedAddress = new ilib.Address("Juana Aguirre, Piedras No 623, Piso2 Dto.4\nC1070AAM Capital Federal", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressNoCountry() {
 	assertEquals("AR", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseARAddressManyLines() {
 	var parsedAddress = new ilib.Address("Juana Aguirre\nEscuela Rural 45 \nPiedras No 623\nPiso2 Dto.4\nC1070AAM Capital Federal\nARGENTINA\n\n\n", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -68,7 +68,7 @@ function testParseAddressManyLines() {
 	
 };
 
-function testParseAddressOneLine() {
+function testParseARAddressOneLine() {
 	var parsedAddress = new ilib.Address("Juana Aguirre, Piedras No 623, Piso2 Dto.4, C1070AAM Capital Federal, ARGENTINA", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -81,7 +81,7 @@ function testParseAddressOneLine() {
 	
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseARAddressSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tLuis Escala Piedras 623\n\n\nPiso 2, depto 4\n   \t\nC1070AAM Capital Federa\n   \r\t\t \t \t ARGENTINA\n\n\n", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -94,7 +94,7 @@ function testParseAddressSuperfluousWhitespace() {
 	
 };
 
-function testParseAddressNoDelimiters() {
+function testParseARAddressNoDelimiters() {
 	var parsedAddress = new ilib.Address("Luis Escala Piedras 623 Piso 2, depto 4 C1070AAM  Capital Federa ARGENTINA", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -107,7 +107,7 @@ function testParseAddressNoDelimiters() {
 	
 };
 
-function testParseAddressSpecialChars() {
+function testParseARAddressSpecialChars() {
 	var parsedAddress = new ilib.Address("At. Sr. Hiro Gordo-Globo\nSumo Informática S.A.\nCalle 39 No 1540\nB1000TBU San Sebastian\nARGENTINA", {locale: 'es-AR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -121,7 +121,7 @@ function testParseAddressSpecialChars() {
 };
 
 
-function testParseAddressFromUS() {
+function testParseARAddressFromUS() {
 	var parsedAddress = new ilib.Address("At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540\nB1000TBU San Sebastian\nArgentina", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -136,7 +136,7 @@ function testParseAddressFromUS() {
 	
 };
 
-function testFormatAddress() {
+function testFormatAddressAR() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540",
 		locality: "San Sebastian",
@@ -151,7 +151,7 @@ function testFormatAddress() {
 	
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressARFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540",
 		locality: "San Sebastian",

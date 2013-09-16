@@ -19,7 +19,7 @@
 
 // TODO: put in Austrian addresses here
 
-function testParseAddressNormal() {
+function testParseATAddressNormal() {
 	var parsedAddress = new ilib.Address("R. Fellner, Pazmaniteng 24-9, A-1020 Vienna, AUSTRIA", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseATAddressNoZip() {
 	var parsedAddress = new ilib.Address("R. Fellner, Pazmaniteng 24-9, Vienna, AUSTRIA", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseATAddressNoCountry() {
 	var parsedAddress = new ilib.Address("R. Fellner, Pazmaniteng 24-9, A-1020 Vienna", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressNoCountry() {
 	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseATAddressManyLines() {
 	var parsedAddress = new ilib.Address("Wolfgang Schüssel\nLiebiggasse 5\n1010 WIEN\nAUSTRIA\n\n\n", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressManyLines() {
 	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseATAddressOneLine() {
 	var parsedAddress = new ilib.Address("R. Fellner, Pazmaniteng 24-9, A-1020 Vienna, AUSTRIA", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressOneLine() {
 	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseATAddressSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Wolfgang Schüssel, Liebiggasse 5, 1010 WIEN, AUSTRIA", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseATAddressNoDelimiters() {
 	var parsedAddress = new ilib.Address("Wolfgang Schüssel Liebiggasse 5 1010 WIEN AUSTRIA", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseATAddressSpecialChars() {
 	var parsedAddress = new ilib.Address("Wolfgang Schüssel, Liebiggasse 5, 1010 WIEN, AUSTRIA", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
@@ -115,7 +115,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseATAddressFromUS() {
 	var parsedAddress = new ilib.Address("Wolfgang Schüssel, Liebiggasse 5, 1010 WIEN, Austria", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -129,7 +129,7 @@ function testParseAddressFromUS() {
 	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressAT() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Wolfgang Schüssel, Liebiggasse 5",
 		locality: "WIEN",
@@ -143,7 +143,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressATFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Wolfgang Schüssel, Liebiggasse 5",
 		locality: "WIEN",

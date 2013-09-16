@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAEAddressNormal() {
 	var parsedAddress = new ilib.Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١\nدبي\nالإمارات العربية المتحدة", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("AE", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAEAddressManyLines() {
 	var parsedAddress = new ilib.Address("تاج قصر الفندق\nصندوق البريد بالبوسطة\n٤٢٢١١\nدبي\nالإمارات العربية المتحدة\n\n", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressManyLines() {
 	assertEquals("AE", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAEAddressOneLine() {
 	var parsedAddress = new ilib.Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -54,7 +54,7 @@ function testParseAddressOneLine() {
 };
 
 
-function testParseAddressNoDelimiters() {
+function testParseAEAddressNoDelimiters() {
 	var parsedAddress = new ilib.Address("تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١ دبي الإمارات العربية المتحدة", {locale: 'ar-AE'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressNoDelimiters() {
 };
 
 
-function testParseAddressFromUS() {
+function testParseAEAddressFromUS() {
 	var parsedAddress = new ilib.Address("فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١\nدبي\nUnited Arab Emirates", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -84,7 +84,7 @@ function testParseAddressFromUS() {
 
 
 
-function testFormatAddressSANative() {
+function testFormatAddressAESANative() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "فندق تاج بالاس مكتب بريد صندوق ٤٢٢١١",
 		locality: "دبي",
@@ -99,7 +99,7 @@ function testFormatAddressSANative() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressAEFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "تاج قصر الفندق صندوق البريد بالبوسطة ٤٢٢١١",
 		locality: "دبي",

@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAOAddressNormal() {
 	var parsedAddress = new ilib.Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'pt-AO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("AO", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAOAddressNoZip() {
 	var parsedAddress = new ilib.Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'pt-AO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAOAddressManyLines() {
 	var parsedAddress = new ilib.Address("Sr. Jõao Pembele\nRua Frederik Engels 92 – 7 o\nLUANDA\nANGOLA", {locale: 'pt-AO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("AO", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAOAddressOneLine() {
 	var parsedAddress = new ilib.Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'pt-AO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("AO", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAOAddressSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o  \n\t\n LUANDA\t\n\n ANGOLA  \n  \t\t\t", {locale: 'pt-AO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("AO", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAOAddressNoDelimiters() {
 	var parsedAddress = new ilib.Address("Sr. Jõao Pembele P. 15 Sh. 1 LUANDA ANGOLA", {locale: 'pt-AO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +91,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("AO", parsedAddress.countryCode);
 };
 
-function testParseAddressSpeciAOChars() {
+function testParseAOAddressSpeciAOChars() {
 	var parsedAddress = new ilib.Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'pt-AO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +103,7 @@ function testParseAddressSpeciAOChars() {
 	assertEquals("AO", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAOAddressFromUS() {
 	var parsedAddress = new ilib.Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -117,7 +117,7 @@ function testParseAddressFromUS() {
 	assertEquals("AO", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressAO() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o",
 		locality: "LUANDA",
@@ -130,7 +130,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressAOFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o",
 		locality: "LUANDA",

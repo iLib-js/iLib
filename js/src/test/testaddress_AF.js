@@ -19,7 +19,7 @@
 
 
 
-function testParseAddressNormal() {
+function testParseAFAddressNormal() {
 	var parsedAddress = new ilib.Address("آقای احمد توحید, خیابان، خانه شماره ۰۴۲, کابل, ۱۰۰۱, افغانستان", {locale: 'fa-AF'});
 	
 	assertNotUndefined(parsedAddress);
@@ -31,7 +31,7 @@ function testParseAddressNormal() {
 	assertEquals("AF", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAFAddressNoZip() {
 	var parsedAddress = new ilib.Address("آقای احمد توحید,خیابان، خانه شماره ۰۴۲, کابل, افغانستان", {locale: 'fa-AF'});
 	
 	assertNotUndefined(parsedAddress);
@@ -43,7 +43,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAFAddressManyLines() {
 	var parsedAddress = new ilib.Address("آقای احمد توحید\nخیابان، خانه شماره ۰۴۲\nکابل ۱۰۰۱\nافغانستان", {locale: 'fa-AF'});
 	
 	assertNotUndefined(parsedAddress);
@@ -55,7 +55,7 @@ function testParseAddressManyLines() {
 	assertEquals("AF", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAFAddressOneLine() {
 	var parsedAddress = new ilib.Address("آقای احمد توحید,خیابان، خانه شماره ۰۴۲,کابل ۱۰۰۱ افغانستان", {locale: 'fa-AF'});
 	
 	assertNotUndefined(parsedAddress);
@@ -67,7 +67,7 @@ function testParseAddressOneLine() {
 	assertEquals("AF", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAFAddressSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("آقای احمد توحید,خیابان، خانه شماره ۰۴۲   \n\t\n کابل ۱۰۰۱\t\n\n افغانستان  \n  \t\t\t", {locale: 'fa-AF'});
 	
 	assertNotUndefined(parsedAddress);
@@ -79,7 +79,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("AF", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAFAddressNoDelimiters() {
 	var parsedAddress = new ilib.Address("آقای احمد توحید خیابان، خانه شماره ۰۴۲ کابل ۱۰۰۱ افغانستان", {locale: 'fa-AF'});
 	
 	assertNotUndefined(parsedAddress);
@@ -93,7 +93,7 @@ function testParseAddressNoDelimiters() {
 
 
 
-function testParseAddressFromUS() {
+function testParseAFAddressFromUS() {
 	var parsedAddress = new ilib.Address("آقای احمد توحید,خیابان، خانه شماره ۰۴۲,کابل ۱۰۰۱,Afghanistan", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -107,7 +107,7 @@ function testParseAddressFromUS() {
 	assertEquals("AF", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressAF() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "آقای احمد توحید,خیابان، خانه شماره ۰۴۲",
 		region: "کابل",
@@ -121,7 +121,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressAFFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "آقای احمد توحید,خیابان، خانه شماره ۰۴۲",
 		postalCode: "۱۰۰۱",
