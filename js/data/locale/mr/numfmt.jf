@@ -1,15 +1,14 @@
 {
-    "generated": true,
     "native_numfmt": {
         "script": "Deva",
         "decimalChar": ".",
         "groupChar": ",",
         "pctChar": "%",
-        "exponential": "E",
-        "prigroupSize": 3,
+        "exponential": "e",
+        "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "({s}{n})"
+            "common": "{s} {n}",
+            "commonNegative": "{s} {n}"
         },
         "pctFmt": "{n}%",
         "roundingMode": "halfdown",
@@ -18,9 +17,11 @@
     "numfmt": {
         "decimalChar": ".",
         "groupChar": ",",
-        "exponential": "E",
+        "exponential": "e",
+	 "secgroupSize": 2,
         "currencyFormats": {
-            "commonNegative": "({s}{n})"
+            "common": "{s} {n}",
+            "commonNegative": "- {s} {n})"
         }
     }
 }
