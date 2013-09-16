@@ -692,7 +692,7 @@ function getSystemResources(language, script, region, data) {
                     //sysres["{duration} ago"] = "XXXXX";
                 //}
             //} else {
-                sysres["{duration} ago"] = "XXXXX";
+                sysres["{duration} ago"] = "-{duration}";
            // }
         }
     }
@@ -724,7 +724,7 @@ function getSystemResources(language, script, region, data) {
                     sysres["in {duration}"] = "XXXXX";
                 }*/
            // } else {
-                sysres["in {duration}"] = "XXXXX";
+                sysres["in {duration}"] = "+{duration}";
             //}
         }
     }

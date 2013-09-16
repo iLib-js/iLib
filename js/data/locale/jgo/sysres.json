@@ -86,8 +86,8 @@
     "#{num}y": "#ŋ{num}",
     "1#1 yr|#{num} yrs": "#ŋguꞋ {num}",
     "1#1 year|#{num} years": "#ŋguꞋ {num}",
-    "{duration} ago": "ɛ́ gɛ́ mɔ́ lɛ́ꞌ ",
-    "in {duration}": "nǔu lɛ́ꞌ ",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "separatorFull": ", ŋ́ɡɛ ",
     "finalSeparatorFull": ", ḿbɛn ŋ́ɡɛ ",
     "separatorLong": " "

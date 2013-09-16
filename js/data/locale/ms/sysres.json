@@ -75,6 +75,8 @@
     "durationMediumYears": "#{num} thn",
     "1#1 yr|#{num} yrs": "#{num} tah",
     "1#1 year|#{num} years": "#{num} tahun",
+    "{duration} ago": "{duration} lalu",
+    "in {duration}": "dalam {duration}",
     "finalSeparatorFull": ", dan ",
     "separatorLong": " "
 }

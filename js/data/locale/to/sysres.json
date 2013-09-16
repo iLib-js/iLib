@@ -77,6 +77,8 @@
     "#{num}y": "#{num}t",
     "1#1 yr|#{num} yrs": "#{num} t",
     "1#1 year|#{num} years": "#{num} t",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": ", ",
     "separatorLong": " "
 }

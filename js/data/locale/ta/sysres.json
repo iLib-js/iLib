@@ -94,8 +94,8 @@
     "durationMediumYears": "#{num} வர",
     "1#1 yr|#{num} yrs": "#{num} வரு",
     "1#1 year|#{num} years": "one#{num} வருடம்|#{num} வருடங்கள்",
-    "{duration} ago": " {duration} முன்",
-    "in {duration}": " {duration}",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": " மற்றும் ",
     "separatorLong": " "
 }

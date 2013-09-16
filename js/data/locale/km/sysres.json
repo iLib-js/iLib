@@ -89,6 +89,8 @@
     "#{num}y": "#{num}ឆ",
     "1#1 yr|#{num} yrs": "#{num} ឆ្ន",
     "1#1 year|#{num} years": "#{num} ឆ្នាំ",
+    "{duration} ago": "{duration}​មុន",
+    "in {duration}": "ក្នុង​រយៈ​ពេល {duration}",
     "finalSeparatorFull": ", ",
     "separatorLong": " "
 }

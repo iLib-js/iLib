@@ -87,6 +87,8 @@
     "#{num}y": "#{num}წ",
     "1#1 yr|#{num} yrs": "#{num} წელი",
     "1#1 year|#{num} years": "#{num} წელი",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": " და ",
     "separatorLong": " "
 }

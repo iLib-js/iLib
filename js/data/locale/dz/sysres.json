@@ -87,6 +87,8 @@
     "#{num}y": "#ལ{num}",
     "1#1 yr|#{num} yrs": "#ལོ་འཁོར་ {num}",
     "1#1 year|#{num} years": "#ལོ་འཁོར་ {num}",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "separatorFull": " དང་ ",
     "finalSeparatorFull": " དང་ ",
     "separatorLong": " "

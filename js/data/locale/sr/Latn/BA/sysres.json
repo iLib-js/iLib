@@ -89,5 +89,7 @@
     "#{num}y": "#{num}g",
     "1#1 yr|#{num} yrs": "#{num} god",
     "1#1 year|#{num} years": "few#{num} godine|#{num} godina",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": " i "
 }

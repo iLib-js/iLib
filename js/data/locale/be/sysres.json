@@ -89,6 +89,8 @@
     "#{num}y": "#{num}г",
     "1#1 yr|#{num} yrs": "one#{num} год|few#{num} гады|many#{num} гад|#{num} году",
     "1#1 year|#{num} years": "one#{num} год|few#{num} гады|many#{num} гадоў|#{num} году",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": ", ",
     "separatorLong": " "
 }

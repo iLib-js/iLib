@@ -76,6 +76,8 @@
     "#{num}y": "#{num}a",
     "1#1 yr|#{num} yrs": "#{num} anu",
     "1#1 year|#{num} years": "#{num} anu",
+    "{duration} ago": "a ten {duration}",
+    "in {duration}": "di li {duration}",
     "finalSeparatorFull": " y ",
     "separatorLong": " "
 }

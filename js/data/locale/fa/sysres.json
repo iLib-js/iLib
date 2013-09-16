@@ -96,6 +96,8 @@
     "durationMediumYears": "#{num} سال",
     "1#1 yr|#{num} yrs": "#{num} سال",
     "1#1 year|#{num} years": "#{num} سال",
+    "{duration} ago": "{duration} پیش",
+    "in {duration}": "{duration} بعد",
     "separatorFull": "،‏ ",
     "finalSeparatorFull": "، و ",
     "separatorLong": " "

@@ -94,6 +94,8 @@
     "durationMediumYears": "#{num} ವರ",
     "1#1 yr|#{num} yrs": "#{num} ವರ್",
     "1#1 year|#{num} years": "#{num} ವರ್ಷಗಳು",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": ", ಮತ್ತು ",
     "separatorLong": " "
 }
