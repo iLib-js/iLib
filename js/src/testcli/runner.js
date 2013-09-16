@@ -32,7 +32,9 @@ function newSandbox() {
 			userAgent : "Nodejs"
 		},
 		console : console,
-		require : require
+		require : require,
+		global: global,
+		process: process
 	};
 };
 
@@ -60,7 +62,11 @@ TestSuite.prototype = {
 	include: function (path) {
 		this.includes.push(path);
 	},
-	
+
+	applyIncludes: function (includes) {
+		this.includes = this.includes.concat(includes);
+	},
+
 	addSuite: function (suite) {
 		this.subSuites.push(suite);
 	},
@@ -111,7 +117,7 @@ TestSuite.prototype = {
 						msg += t + ": " + e.stackTrace;
 					}
 				} else {
-					msg = e.toString();
+					msg += e.toString();
 				}
 				console.log(msg);
 				results.fail++;
@@ -135,6 +141,8 @@ TestSuite.prototype = {
 				console: console,
 				require: require,
 				results: results,
+				process: process,
+				global: global,
 				path: this.path
 			});
 			if (this.setupCode) {
@@ -154,8 +162,9 @@ TestSuite.prototype = {
 			}
 		}
 		this.subSuites.forEach(function (suite) {
+			suite.applyIncludes(this.includes);
 			suite.runTests(results, root);
-		});
+		}.bind(this));
 	}
 };
 
