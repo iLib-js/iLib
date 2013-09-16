@@ -1,26 +1,24 @@
 {
-    "generated": true,
     "native_numfmt": {
         "script": "Knda",
         "decimalChar": ".",
         "groupChar": ",",
-        "pctChar": "%",
         "exponential": "ಈ",
-        "prigroupSize": 3,
+        "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{s}{n}",
-            "commonNegative": "({s}{n})"
+            "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
         },
-        "pctFmt": "{n}%",
-        "roundingMode": "halfdown",
         "digits": "೦೧೨೩೪೫೬೭೮೯"
     },
     "numfmt": {
         "decimalChar": ".",
         "groupChar": ",",
         "exponential": "ಈ",
+	"secgroupSize": 2,
         "currencyFormats": {
-            "commonNegative": "({s}{n})"
+	    "common": "{s} {n}",
+            "commonNegative": "-{s} {n}"
         }
     }
 }

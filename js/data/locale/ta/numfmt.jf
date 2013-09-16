@@ -1,27 +1,23 @@
 {
-    "generated": true,
+ 
     "native_numfmt": {
         "script": "tamldec",
         "decimalChar": ".",
         "groupChar": ",",
-        "pctChar": "%",
-        "exponential": "E",
-        "prigroupSize": 3,
         "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{s} {n}"
+            "common": "{s} {n}",
+	    "commonNegative": "-{s} {n}"
         },
-        "pctFmt": "{n}%",
-        "roundingMode": "halfdown",
         "digits": "௦௧௨௩௪௫௬௭௮௯"
     },
     "numfmt": {
         "decimalChar": ".",
         "groupChar": ",",
-        "exponential": "E",
         "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{s} {n}"
+            "common": "{s} {n}",
+	     "commonNegative": "-{s} {n}"
         }
     }
 }

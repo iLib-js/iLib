@@ -3,7 +3,6 @@
         "script": "Beng",
         "decimalChar": ".",
         "groupChar": ",",
-        "exponential": "e",
         "secgroupSize": 2,
         "currencyFormats": {
             "common": "{s} {n}",
