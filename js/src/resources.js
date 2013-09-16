@@ -525,7 +525,13 @@ ilib.ResBundle.prototype = {
 				trans = trans.replace(/'/g, "\\\'").replace(/"/g, "\\\"");
 			}
 		}
-		return trans === undefined ? undefined : new ilib.String(trans);
+		if (trans === undefined) {
+			return undefined;
+		} else {
+			var ret = new ilib.String(trans);
+			ret.setLocale(this.locale.getSpec());
+			return ret;
+		}
 	},
 	
 	/**

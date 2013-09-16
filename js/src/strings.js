@@ -1362,7 +1362,20 @@ ilib.String.prototype = {
 			this.localeSpec = locale;
 		}
 	},
-	
+
+	/**
+	 * Return the locale to use when processing choice formats. The locale
+	 * affects how number classes are interpretted. In some cultures,
+	 * the limit "few" maps to "any integer that ends in the digits 2 to 9" and
+	 * in yet others, "few" maps to "any integer that ends in the digits
+	 * 3 or 4".
+	 * @return {string} localespec to use when processing choice
+	 * formats with this string
+	 */
+	getLocale: function () {
+		return (this.locale ? this.locale.getSpec() : this.localeSpec) || ilib.getLocale();
+	},
+
 	/**
 	 * Return the number of code points in this string. This may be different
 	 * than the number of characters, as the UTF-16 encoding that Javascript

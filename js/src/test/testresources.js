@@ -610,6 +610,18 @@ function testResBundleGetStringWithKeyNameUnknown() {
     assertEquals("Hello from {user}.", rb.getString("Hello from {user}.", "key3").toString());
 }
 
+function testResBundleGetStringRightLocale() {
+    var rb = new ilib.ResBundle({
+        locale: "de-DE"
+    });
+    
+    assertNotNull(rb);
+    
+    var str = rb.getString("first string");
+    assertEquals("erste String", str.toString());
+    assertEquals("de-DE", str.getLocale());
+}
+
 function testResBundleGetResObj() {
     var rb = new ilib.ResBundle({locale: "fr"});
     
