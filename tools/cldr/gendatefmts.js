@@ -1622,7 +1622,7 @@ function getDateFormats(language, script, region, data) {
 
             array_interval_dmy[i] = arr.join("");
         } else {
-            array_interval_dmy[i] = array_interval_dmy[i].replace(/[^Mdy–.\/\s]/g, "");
+            array_interval_dmy[i] = array_interval_dmy[i].replace(/[^Mdy–.,\/\s]/g, "");
             array_interval_dmy[i] = array_interval_dmy[i].replace(/[d]+/g, "{sd}");
             array_interval_dmy[i] = array_interval_dmy[i].replace(/[M]+/g, "{sm}");
             array_interval_dmy[i] = array_interval_dmy[i].replace(/[y]+/g, "{sy}");
