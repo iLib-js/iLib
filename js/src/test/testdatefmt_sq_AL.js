@@ -973,7 +973,7 @@ function testDateFmtINWithTimeZoneAndNoDST_sq_AL() {
 
 }
 
-function testDateFmtFormatRelativeWithinMinuteAfter_sq_AL() {
+/*function testDateFmtFormatRelativeWithinMinuteAfter_sq_AL() {
     var fmt = new ilib.DateFmt({locale: "sq-AL", length: "full"});
     assertNotNull(fmt);
     
@@ -1313,5 +1313,5 @@ function testDateFmtFormatRelativeYearsBefore_sq_AL() {
 	});
     assertEquals("Pirms 21 gada", fmt.formatRelative(reference, date));
 }
-
+*/
 

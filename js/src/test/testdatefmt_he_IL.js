@@ -1122,7 +1122,7 @@ function testDateFmtWithTimeZoneAndNoDST_he_IL() {
     assertEquals("13:45:37 IST", fmt.format(date));
 }
 
-function testDateFmtFormatRelativeWithinMinuteAfter_he_IL() {
+/*function testDateFmtFormatRelativeWithinMinuteAfter_he_IL() {
     var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
     assertNotNull(fmt);
     
@@ -1461,6 +1461,6 @@ function testDateFmtFormatRelativeYearsBefore_he_IL() {
 		millisecond: 0
 	});
     assertEquals("לפני 21 שנים", fmt.formatRelative(reference, date));
-}
+}*/
 
 

@@ -1068,7 +1068,7 @@ function testDateFmtFullTimeComponentsHMSA_lv_LV() {
 }
 
 
-function testDateFmtFormatRelativeWithinMinuteAfter_lv_LV() {
+/*function testDateFmtFormatRelativeWithinMinuteAfter_lv_LV() {
     var fmt = new ilib.DateFmt({locale: "lv-LV", length: "full"});
     assertNotNull(fmt);
     
@@ -1408,5 +1408,5 @@ function testDateFmtFormatRelativeYearsBefore_lv_LV() {
 	});
     assertEquals("-21 y", fmt.formatRelative(reference, date));
 }
-
+*/
 
