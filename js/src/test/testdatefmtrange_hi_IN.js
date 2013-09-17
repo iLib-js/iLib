@@ -1,5 +1,5 @@
 /*
- * testdatefmtrange_hi_in.js - test the date range formatter object in Hindi/india
+ * testdatefmtrange_hi_in.js - test the date range formatter object in Hindi/India
  * 
  * 
  * Copyright © 2012-2013, JEDLSoft
