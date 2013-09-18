@@ -247,7 +247,7 @@ function testDurFmtFormatFullSingle() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1 year, 1 month, 1 week, 1 day, 1 hour, 1 minute, 1 second and 1 millisecond", duration.toString());
+    assertEquals("1 year, 1 month, 1 week, 1 day, 1 hour, 1 minute, 1 second, and 1 millisecond", duration.toString());
 };
 
 function testDurFmtFormatFullSingleNotAllFields() {
@@ -262,7 +262,7 @@ function testDurFmtFormatFullSingleNotAllFields() {
     	day: 1,
     	minute: 1
     });
-    assertEquals("1 year, 1 week, 1 day and 1 minute", duration.toString());
+    assertEquals("1 year, 1 week, 1 day, and 1 minute", duration.toString());
 };
 
 function testDurFmtFormatFullSingle() {
@@ -281,7 +281,7 @@ function testDurFmtFormatFullSingle() {
     	second: 1,
     	millisecond: 1
     });
-    assertEquals("1 year, 1 month, 1 week, 1 day, 1 hour, 1 minute, 1 second and 1 millisecond", duration.toString());
+    assertEquals("1 year, 1 month, 1 week, 1 day, 1 hour, 1 minute, 1 second, and 1 millisecond", duration.toString());
 };
 
 function testDurFmtFormatLongPlural() {
@@ -319,7 +319,7 @@ function testDurFmtFormatFullPlural() {
     	second: 2,
     	millisecond: 2
     });
-    assertEquals("2 years, 2 months, 2 weeks, 2 days, 2 hours, 2 minutes, 2 seconds and 2 milliseconds", duration.toString());
+    assertEquals("2 years, 2 months, 2 weeks, 2 days, 2 hours, 2 minutes, 2 seconds, and 2 milliseconds", duration.toString());
 };
 
 function testDurFmtFormatShortDEDefaultStyle() {
@@ -747,7 +747,7 @@ function testDurFmtAsync() {
     	    	second: 2,
     	    	millisecond: 2
     	    });
-    	    assertEquals("2 years, 2 months, 2 weeks, 2 days, 2 hours, 2 minutes, 2 seconds and 2 milliseconds", duration.toString());
+    	    assertEquals("2 years, 2 months, 2 weeks, 2 days, 2 hours, 2 minutes, 2 seconds, and 2 milliseconds", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -946,7 +946,7 @@ function testDurFmtARAsync() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 سنة، 2 شهر، 2 أسبوع، 2 يوم، 2 ساعة، 2 دقيقة، و 2 ثانية", duration.toString());
+    	    assertEquals("سنتان، شهران، أسبوعان، يومان، ساعتان، دقيقتان، و ثانيتان", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -972,7 +972,7 @@ function testDurFmtARAsyncWithLocale() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 سنة، 2 شهر، 2 أسبوع، 2 يوم، 2 ساعة، 2 دقيقة، و 2 ثانية", duration.toString());
+    	    assertEquals("سنتان، شهران، أسبوعان، يومان، ساعتان، دقيقتان، و ثانيتان", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -1315,7 +1315,7 @@ function testDurFmtBSLatnAsyncWithLocale() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 godina, 2 meseci, 2 nedelja, 2 dana, 2 sati, 2 minuta i 2 sekundi", duration.toString());
+    	    assertEquals("2 godine, 2 meseca, 2 nedelje, 2 dana, 2 sata, 2 minute i 2 sekunde", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -1460,7 +1460,7 @@ function testDurFmtCSAsyncWithLocale() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 let, 2 měsíců, 2 týdnů, 2 dní, 2 hodin, 2 minut a 2 sekund", duration.toString());
+    	    assertEquals("2 roky, 2 měsíce, 2 týdny, 2 dny, 2 hodiny, 2 minuty a 2 sekundy", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -3203,7 +3203,7 @@ function testDurFmtHRAsyncWithLocale() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 godina, 2 mjesec, 2 tjedan, 2 dan, 2 sata, 2 minuta i 2 sekunda", duration.toString());
+    	    assertEquals("2 godine, 2 mjeseca, 2 tjedna, 2 dana, 2 sata, 2 minute i 2 sekunde", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -3997,24 +3997,6 @@ function testDurFmtKKFormatShortClock() {
     assertEquals("1ж 1а 1а 1т 1:01:01", duration.toString());
 };
 
-function testDurFmtKKFormatMedium() {
-    var fmt = new ilib.DurFmt({
-    	locale: "kk-Cyrl-KZ",
-    	length: "medium"
-    });
-    assertNotNull(fmt);
-    
-    var duration = fmt.format({
-    	year: 1,
-    	month: 1,
-    	week: 1,
-    	day: 1,
-    	hour: 1,
-    	minute: 1,
-    	second: 1
-    });
-    assertEquals("1 жы 1 ай 1 ап 1 тә 1 са 1 ми 1 се", duration.toString());
-};
 
 function testDurFmtKKFormatLong() {
     var fmt = new ilib.DurFmt({
@@ -4597,7 +4579,7 @@ function testDurFmtLTAsyncWithLocale() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 metų, 2 mėnesių, 2 savaičių, 2 dienų, 2 valandų, 2 minučių ir 2 sekundžių", duration.toString());
+    	    assertEquals("2 metai, 2 mėnesiai, 2 savaitės, 2 dienos, 2 valandos, 2 minutės ir 2 sekundės", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -6116,7 +6098,7 @@ function testDurFmtROAsyncWithLocale() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 de ani, 2 de luni, 2 de săptămâni, 2 de zile, 2 de ore, 2 de minute şi 2 de secunde", duration.toString());
+    	    assertEquals("2 ani, 2 luni, 2 săptămâni, 2 zile, 2 ore, 2 minute şi 2 secunde", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -6458,7 +6440,7 @@ function testDurFmtSKAsyncWithLocale() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 rokov, 2 mesiacov, 2 týždňov, 2 dní, 2 hodín, 2 minút a 2 sekúnd", duration.toString());
+    	    assertEquals("2 roky, 2 mesiace, 2 týždne, 2 dni, 2 hodiny, 2 minúty a 2 sekundy", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -6783,7 +6765,7 @@ function testDurFmtSRAsyncWithLocale() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 godina, 2 meseci, 2 nedelja, 2 dana, 2 sati, 2 minuta i 2 sekundi", duration.toString());
+    	    assertEquals("2 godine, 2 meseca, 2 nedelje, 2 dana, 2 sata, 2 minute i 2 sekunde", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -7128,7 +7110,7 @@ function testDurFmtUKUAAsyncWithLocale() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 року, 2 місяця, 2 тижня, 2 дня, 2 години, 2 хвилини та 2 секунди", duration.toString());
+    	    assertEquals("2 роки, 2 місяці, 2 тижні, 2 дні, 2 години, 2 хвилини та 2 секунди", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -8505,7 +8487,7 @@ function testDurFmtSLAsyncWithLocale() {
     	    	minute: 2,
     	    	second: 2
     	    });
-    	    assertEquals("2 let, 2 mesecev, 2 tednov, 2 dni, 2 ur, 2 minut in 2 sekund", duration.toString());
+    	    assertEquals("2 leti, 2 meseca, 2 tedna, 2 dni, 2 uri, 2 minuti in 2 sekundi", duration.toString());
     	    callbackCalled = true;
     	}
     });
