@@ -1150,7 +1150,7 @@ function testDateFmtFormatRelativeWithinDayAfter_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("za 4 hodin", fmt.formatRelative(reference, date));
+    assertEquals("za 4 hodiny", fmt.formatRelative(reference, date));
 }
 /*function testDateFmtFormatRelativeWithinDayBefore_cs_CZ() {
     var fmt = new ilib.DateFmt({locale: "cs-CZ", length: "full"});
@@ -1199,7 +1199,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_cs_CZ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("za 4 dní", fmt.formatRelative(reference, date));
+    assertEquals("za 4 dny", fmt.formatRelative(reference, date));
 }
 /*function testDateFmtFormatRelativeWithinFortnightBefore_cs_CZ() {
     var fmt = new ilib.DateFmt({locale: "cs-CZ", length: "full"});

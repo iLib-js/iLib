@@ -1251,7 +1251,7 @@ function testDateFmtFormatRelativeWithinDayAfter_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 hodín", fmt.formatRelative(reference, date));
+    assertEquals("4 hodiny", fmt.formatRelative(reference, date));
 }
 
 
@@ -1302,7 +1302,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_sk_SK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("4 dní", fmt.formatRelative(reference, date));
+    assertEquals("4 dni", fmt.formatRelative(reference, date));
 }
 
 
