@@ -438,21 +438,6 @@ function testDateFmtShortDateComponentsM_fa_IR() {
     assertEquals("۹", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsN_fa_IR() {
-    var fmt = new ilib.DateFmt({locale: "fa-IR", date: "n"});
-    assertNotNull(fmt);
-    
-    var date = new ilib.Date.GregDate({
-		year: 2011,
-		month: 9,
-		day: 29,
-		hour: 13,
-		minute:45,
-		second: 0,
-		millisecond: 0
-	});
-    assertEquals("س", fmt.format(date));
-}
 
 function testDateFmtShortDateComponentsD_fa_IR() {
     var fmt = new ilib.DateFmt({locale: "fa-IR", date: "d"});
