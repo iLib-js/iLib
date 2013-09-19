@@ -45,11 +45,11 @@ function testParseAdjunctNames_uz_Latn() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_uz_Latn() {
-	var parsed = new ilib.Name("Mr. and Mrs. Gimazetdinova", {locale: 'uz-Latn-UZ'});
+	var parsed = new ilib.Name("Y Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "Mr. and Mrs.",
+		prefix: "X",
 		familyName: "Gimazetdinova"
 	};
 	
@@ -58,11 +58,11 @@ function testParseSingleNameWithPrefixAndAdjunct_uz_Latn() {
 
 
 function testParseTitle_uz_Latn() {
-	var parsed = new ilib.Name("Anastasia Gimazetdinova senior", {locale: 'uz-Latn-UZ'});
+	var parsed = new ilib.Name("Anastasia Gimazetdinova Y", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		suffix: "senior",
+		suffix: "X",
 		givenName: "Anastasia",
 		familyName: "Gimazetdinova"
 	};
@@ -73,11 +73,11 @@ function testParseTitle_uz_Latn() {
 
 
 function testParseTitleWithFamilyOnly_uz_Latn() {
-	var parsed = new ilib.Name("Lord Gimazetdinova", {locale: 'uz-Latn-UZ'});
+	var parsed = new ilib.Name("YSS Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "Lord",
+		prefix: "X",
 		familyName: "Gimazetdinova"
 	};
 	
@@ -87,11 +87,11 @@ function testParseTitleWithFamilyOnly_uz_Latn() {
 
 
 function testParseEverything_uz_Latn() {
-	var parsed = new ilib.Name("President Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
+	var parsed = new ilib.Name("X Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		prefix: "President",
+		prefix: "Y",
 		givenName: "Anastasia",
 		familyName: "Gimazetdinova"
 	};
@@ -143,7 +143,7 @@ function testFormatSimpleNameLong_uz_Latn() {
 		givenName: "Anastasia",
 		
 		familyName: "Gimazetdinova",
-		suffix: "senior"
+		suffix: "X"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "long", 
@@ -159,10 +159,10 @@ function testFormatSimpleNameLong_uz_Latn() {
 
 function testFormatSimpleNameFull_uz_Latn() {
 	var name = new ilib.Name({
-		prefix: "Lord",
+		prefix: "Y",
 		givenName: "Anastasia",
 		familyName: "Gimazetdinova",
-		suffix: "iv"
+		suffix: "XX"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full", 
@@ -171,14 +171,14 @@ function testFormatSimpleNameFull_uz_Latn() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Lord Anastasia Gimazetdinova iv";
+	var expected = "Y Anastasia Gimazetdinova iv";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameShort_uz_Latn() {
 	var name = new ilib.Name({
-		prefix: "Prince",
+		prefix: "X",
 		givenName: "Anastasia",
 		familyName: "Gimazetdinova"
 	});
@@ -214,7 +214,7 @@ function testFormatComplexNameMedium_uz_Latn() {
 
 function testFormatComplexNameLong_uz_Latn() {
 	var name = new ilib.Name({
-		prefix: "Prince",
+		prefix: "X",
 		givenName: "Anastasia",
 		familyName: "Gimazetdinova"
 	});
@@ -225,7 +225,7 @@ function testFormatComplexNameLong_uz_Latn() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Prince Anastasia Gimazetdinova";
+	var expected = "Y Anastasia Gimazetdinova";
 	
 	assertEquals(expected, formatted);
 };
