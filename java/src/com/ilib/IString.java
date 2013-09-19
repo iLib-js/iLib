@@ -50,6 +50,7 @@ public class IString
     protected ArrayList<String> strings = null;
     protected String defaultChoice = null;
     protected ArrayList<Pattern> patterns = null;
+    protected IlibLocale locale = null;
     
     /**
      * Construct a new IString instance with the given text.
@@ -60,7 +61,19 @@ public class IString
     {
         this.text = text;
     }
-    
+
+    /**
+     * Construct a new IString instance with the given text and IlibLocale instance.
+     * 
+     * @param text the text to wrap
+     * @param locale current locale
+     */
+    public IString(String text, IlibLocale locale)
+    {
+        this.text = text;
+        this.locale = locale;
+    }
+
     /**
      * Format a string with the given named values.
      * 
@@ -564,7 +577,23 @@ public class IString
     {
         return text.length();
     }
-    
+    /**
+     * Return locale associated with current IString instance.
+     * @return current locale
+     */
+    public IlibLocale getLocale()
+    {
+        return locale;
+    }
+    /**
+     * Return locale of current IString instance.
+     * @param locale locale to be used for plurals translation
+     */
+    public void setLocale(IlibLocale locale)
+    {
+        this.locale = locale;
+    }
+
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
