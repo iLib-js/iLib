@@ -42,11 +42,11 @@ function testParseOnePlusTwo_zh_Hant() {
 };
 
 function testParseTwoPlusOne_zh_Hant() {
-	var parsed = new ilib.Name("褚师楊", {locale: 'zh-Hant-TW'});
+	var parsed = new ilib.Name("褚师迪", {locale: 'zh-Hant-TW'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "楊",
+		givenName: "迪",
 		familyName: "褚师"
 	};
 	
@@ -78,12 +78,12 @@ function testParseMaidenPlusMarriedName_zh_Hant() {
 };
 
 function testParseTitle_zh_Hant() {
-	var parsed = new ilib.Name("老錢安迪", {locale: 'zh-Hant-TW'});
+	var parsed = new ilib.Name("老錢慧君", {locale: 'zh-Hant-TW'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
 		prefix: "老",
-		givenName: "安迪",
+		givenName: "慧君",
 		familyName: "錢"
 	};
 	

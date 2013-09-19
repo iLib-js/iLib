@@ -45,11 +45,11 @@ function testParseAdjunctNames_fa() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_fa() {
-	var parsed = new ilib.Name("آآقای ﻭ خانم میلانی", {locale: 'fa-IR'});
+	var parsed = new ilib.Name("آقای ﻭ خانم میلانی", {locale: 'fa-IR'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "آآقای ﻭ خانم",
+		prefix: "آقای ﻭ خانم",
 		familyName: "میلانی"
 	};
 	
