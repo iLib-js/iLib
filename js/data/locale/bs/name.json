@@ -1,7 +1,6 @@
 {
     "format": "{prefix} {givenName} {middleName} {familyName}{suffix}",
     "sortByHeadWord": false,
-    "nameStyle": "asian",
     "conjunctions": {
         "and1": "и",
         "and2": "и",
@@ -9,8 +8,9 @@
         "or2": "или"
     },
     "prefixes": [
-        "Gospođica",
-        "Gospođa",
+	"gospodin",
+        "gospođica",
+        "gospođa",
         "predsjednik",
         "podpredsjednik",
         "premijer",

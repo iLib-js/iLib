@@ -1,6 +1,6 @@
 {
     "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
-    "sortByHeadWord": false,
+    "sortbyHeadWord": false,
     "nameStyle": "western",
     "conjunctions": {
         "and1": "và",
@@ -9,17 +9,17 @@
         "or2": "hoặc"
     },
     "prefixes": [
-        "Ông",
-        "Bà",
-        "Bà",
-        "Chủ tịch",
+        "ông",
+        "bà",
+        "bà",
+        "chủ tịch",
         "phó chủ tịch",
         "thủ tướng",
         "thị trưởng",
         "Thống đốc",
-        "Chủ tịch",
+        "chủ tịch",
         "chủ tịch đàn bà",
-        "bộ trưởng",
+        "bộ trưởng",
         "pháp sư",
         "mulah",
         "Mục sư",

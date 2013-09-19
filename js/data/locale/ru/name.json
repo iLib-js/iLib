@@ -1,7 +1,6 @@
 {
     "format": "{prefix} {givenName} {middleName} {familyName}{suffix}",
     "sortByHeadWord": false,
-    "nameStyle": "asian",
     "conjunctions": {
         "and1": "и",
         "and2": "и",
@@ -9,11 +8,11 @@
         "or2": "или"
     },
     "prefixes": [
-        "Мистер",
-        "Миссисипи",
+        "мистер",
+        "миссисипи",
         "Миссис",
         "президент",
-        "Вице-президент",
+        "Bице-президент",
         "премьер-министр",
         "мэр",
         "губернатор",
