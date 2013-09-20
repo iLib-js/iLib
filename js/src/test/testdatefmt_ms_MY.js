@@ -19,7 +19,7 @@
 
 
 function testDateFmtSimpleShort_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "short"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "short"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -35,7 +35,7 @@ function testDateFmtSimpleShort_ms_MY() {
 }
 
 function testDateFmtSimpleMedium_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "medium"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "medium"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -51,7 +51,7 @@ function testDateFmtSimpleMedium_ms_MY() {
 }
 
 function testDateFmtSimpleLong_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "long"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "long"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -67,7 +67,7 @@ function testDateFmtSimpleLong_ms_MY() {
 }
 
 function testDateFmtSimpleFull_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -83,7 +83,7 @@ function testDateFmtSimpleFull_ms_MY() {
 }
 
 function testDateFmtSimpleTimeShort_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "short", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "short", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -95,11 +95,11 @@ function testDateFmtSimpleTimeShort_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("1:45 PTG", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeMedium_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "medium", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "medium", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -111,11 +111,11 @@ function testDateFmtSimpleTimeMedium_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("1:45 PTG", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeLong_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", timelength: "long", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", timelength: "long", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -127,11 +127,11 @@ function testDateFmtSimpleTimeLong_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("1:45 PTG", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeFull_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "full", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "full", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -143,11 +143,11 @@ function testDateFmtSimpleTimeFull_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("1:45 PTG", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleShort_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "short", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "short", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -159,11 +159,11 @@ function testDateFmtDateTimeSimpleShort_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 13:45", fmt.format(date));
+    assertEquals("1:45 PTG 29/9/11", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "medium", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "medium", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -175,11 +175,11 @@ function testDateFmtDateTimeSimpleMedium_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011 13:45", fmt.format(date));
+    assertEquals("1:45 PTG 29/09/2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "long", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "long", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -191,11 +191,11 @@ function testDateFmtDateTimeSimpleLong_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sep 2011 13:45", fmt.format(date));
+    assertEquals("1:45 PTG 29 Sep 2011", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "full", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "full", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -207,12 +207,12 @@ function testDateFmtDateTimeSimpleFull_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September 2011 13:45", fmt.format(date));
+    assertEquals("1:45 PTG 29 September 2011", fmt.format(date));
 }
 
 
 function testDateFmtTemplateCalendar_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", calendar: "julian", template: "yyyy-MM-dd"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
@@ -229,7 +229,7 @@ function testDateFmtTemplateCalendar_ms_MY() {
 
 
 function testDateFmtTemplateClock12SwitchHH_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", clock: "12", template: "HH:mm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", clock: "12", template: "HH:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -245,7 +245,7 @@ function testDateFmtTemplateClock12SwitchHH_ms_MY() {
 }
 
 function testDateFmtTemplateClock12Switchkk_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", clock: "12", template: "kk:mm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", clock: "12", template: "kk:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -261,7 +261,7 @@ function testDateFmtTemplateClock12Switchkk_ms_MY() {
 }
 
 function testDateFmtTemplateClock24Switchhh_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", clock: "24", template: "hh:mm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", clock: "24", template: "hh:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -277,7 +277,7 @@ function testDateFmtTemplateClock24Switchhh_ms_MY() {
 }
 
 function testDateFmtTemplateClock24SwitchKK_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", clock: "24", template: "KK:mm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", clock: "24", template: "KK:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -293,7 +293,7 @@ function testDateFmtTemplateClock24SwitchKK_ms_MY() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", locale: "en-GB", template: "hh:mm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", locale: "ms-MY", template: "hh:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -309,7 +309,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ms_MY() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", locale: "en-GB", template: "KK:mm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", locale: "ms-MY", template: "KK:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -325,7 +325,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_ms_MY() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", locale: "en-GB", template: "HH:mm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", locale: "ms-MY", template: "HH:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -341,7 +341,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ms_MY() {
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", locale: "en-GB", template: "kk:mm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", locale: "ms-MY", template: "kk:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -358,7 +358,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ms_MY() {
 
 
 function testDateFmtTypeDate_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "date"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "date"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -374,7 +374,7 @@ function testDateFmtTypeDate_ms_MY() {
 }
 
 function testDateFmtTypeTime_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -386,11 +386,11 @@ function testDateFmtTypeTime_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("1:45 PTG", fmt.format(date));
 }
 
 function testDateFmtTypeDateTime_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -402,12 +402,12 @@ function testDateFmtTypeDateTime_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 13:45", fmt.format(date));
+    assertEquals("1:45 PTG 29/9/11", fmt.format(date));
 }
 
 
 function testDateFmtShortDateComponentsY_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", date: "y"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", date: "y"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -423,7 +423,7 @@ function testDateFmtShortDateComponentsY_ms_MY() {
 }
 
 function testDateFmtShortDateComponentsM_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", date: "m"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", date: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -435,11 +435,11 @@ function testDateFmtShortDateComponentsM_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", date: "n"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", date: "n"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -455,7 +455,7 @@ function testDateFmtShortDateComponentsN_ms_MY() {
 }
 
 function testDateFmtShortDateComponentsD_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", date: "d"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", date: "d"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -471,7 +471,7 @@ function testDateFmtShortDateComponentsD_ms_MY() {
 }
 
 function testDateFmtShortDateComponentsDM_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", date: "dm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", date: "dm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -483,11 +483,11 @@ function testDateFmtShortDateComponentsDM_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9", fmt.format(date));
+    assertEquals("29-9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", date: "my"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", date: "my"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -499,11 +499,11 @@ function testDateFmtShortDateComponentsMY_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/11", fmt.format(date));
+    assertEquals("9-11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", date: "dmy"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", date: "dmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -519,7 +519,7 @@ function testDateFmtShortDateComponentsDMY_ms_MY() {
 }
 
 function testDateFmtShortDateComponentsWDM_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", date: "wdm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", date: "wdm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -531,11 +531,11 @@ function testDateFmtShortDateComponentsWDM_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th 29/9", fmt.format(date));
+    assertEquals("K, 29-9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", date: "wdmy"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", date: "wdmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -547,12 +547,12 @@ function testDateFmtShortDateComponentsWDMY_ms_MY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th 29/9/11", fmt.format(date));
+    assertEquals("K, 29/9/11", fmt.format(date));
 }
 
 
 function testDateFmtFullDateComponentsY_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "full", date: "y"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "full", date: "y"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -568,7 +568,7 @@ function testDateFmtFullDateComponentsY_ms_MY() {
 }
 
 function testDateFmtFullDateComponentsM_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "full", date: "m"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "full", date: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -584,7 +584,7 @@ function testDateFmtFullDateComponentsM_ms_MY() {
 }
 
 function testDateFmtFullDateComponentsD_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "full", date: "d"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "full", date: "d"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -600,7 +600,7 @@ function testDateFmtFullDateComponentsD_ms_MY() {
 }
 
 function testDateFmtFullDateComponentsDM_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "full", date: "dm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "full", date: "dm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -616,7 +616,7 @@ function testDateFmtFullDateComponentsDM_ms_MY() {
 }
 
 function testDateFmtFullDateComponentsMY_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "full", date: "my"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "full", date: "my"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -632,7 +632,7 @@ function testDateFmtFullDateComponentsMY_ms_MY() {
 }
 
 function testDateFmtFullDateComponentsDMY_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "full", date: "dmy"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "full", date: "dmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -648,40 +648,40 @@ function testDateFmtFullDateComponentsDMY_ms_MY() {
 }
 
 function testDateFmtFullDateComponentsWDM_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "full", date: "wdm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "full", date: "wdm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
-		month: 9,
+		month: 8,
 		day: 29,
 		hour: 13,
 		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Thursday 29 September", fmt.format(date));
+    assertEquals("Isnin, 29 Ogos", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", length: "full", date: "wdmy"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", length: "full", date: "wdmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
 		year: 2011,
-		month: 9,
+		month: 8,
 		day: 29,
 		hour: 13,
 		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Thursday 29 September 2011", fmt.format(date));
+    assertEquals("Isnin, 29 Ogos 2011", fmt.format(date));
 }
 
 
 function testDateFmtShortTimeComponentsS_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", time: "s"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", time: "s"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -697,7 +697,7 @@ function testDateFmtShortTimeComponentsS_ms_MY() {
 }
 
 function testDateFmtShortTimeComponentsM_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", time: "m"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", time: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -713,7 +713,7 @@ function testDateFmtShortTimeComponentsM_ms_MY() {
 }
 
 function testDateFmtShortTimeComponentsH_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", time: "h"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", time: "h"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -725,11 +725,11 @@ function testDateFmtShortTimeComponentsH_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13", fmt.format(date));
+    assertEquals("1", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsMS_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", time: "ms"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", time: "ms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -745,7 +745,7 @@ function testDateFmtShortTimeComponentsMS_ms_MY() {
 }
 
 function testDateFmtShortTimeComponentsHM_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", time: "hm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", time: "hm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -757,11 +757,11 @@ function testDateFmtShortTimeComponentsHM_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("1:45 PTG", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMS_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", time: "hms"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", time: "hms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -773,11 +773,11 @@ function testDateFmtShortTimeComponentsHMS_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37", fmt.format(date));
+    assertEquals("1:45:37 PTG", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMA_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", time: "hma"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", time: "hma"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -789,12 +789,12 @@ function testDateFmtShortTimeComponentsHMA_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("1:45 PTG", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMZ_ms_MY() {
     var fmt = new ilib.DateFmt({
-		locale: "en-GB", 
+		locale: "ms-MY", 
         type: "time", 
         time: "hmz", 
         timezone: "Europe/London"
@@ -810,12 +810,12 @@ function testDateFmtShortTimeComponentsHMZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 GMT/BST", fmt.format(date));
+    assertEquals("1:45 PTG GMT/BST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_ms_MY() {
     var fmt = new ilib.DateFmt({
-		locale: "en-GB", 
+		locale: "ms-MY", 
         type: "time", 
         time: "hmaz", 
         timezone: "Europe/London"
@@ -831,11 +831,11 @@ function testDateFmtShortTimeComponentsHMAZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 GMT/BST", fmt.format(date));
+    assertEquals("1:45 PTG GMT/BST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", time: "hmsa"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", time: "hmsa"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -847,12 +847,12 @@ function testDateFmtShortTimeComponentsHMSA_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37", fmt.format(date));
+    assertEquals("1:45:37 PTG", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSZ_ms_MY() {
     var fmt = new ilib.DateFmt({
-		locale: "en-GB", 
+		locale: "ms-MY", 
         type: "time", 
         time: "hmsz", 
         timezone: "Europe/London"
@@ -868,12 +868,12 @@ function testDateFmtShortTimeComponentsHMSZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 GMT/BST", fmt.format(date));
+    assertEquals("1:45:37 PTG GMT/BST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_ms_MY() {
     var fmt = new ilib.DateFmt({
-		locale: "en-GB", 
+		locale: "ms-MY", 
         type: "time", 
         time: "hmsaz", 
         timezone: "Europe/London"
@@ -889,12 +889,12 @@ function testDateFmtShortTimeComponentsHMSAZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 GMT/BST", fmt.format(date));
+    assertEquals("1:45:37 PTG GMT/BST", fmt.format(date));
 }
 
 
 function testDateFmtFullTimeComponentsS_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", length: "full", time: "s"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", length: "full", time: "s"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -910,7 +910,7 @@ function testDateFmtFullTimeComponentsS_ms_MY() {
 }
 
 function testDateFmtFullTimeComponentsM_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", length: "full", time: "m"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", length: "full", time: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -926,7 +926,7 @@ function testDateFmtFullTimeComponentsM_ms_MY() {
 }
 
 function testDateFmtFullTimeComponentsH_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", length: "full", time: "h"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", length: "full", time: "h"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -938,11 +938,11 @@ function testDateFmtFullTimeComponentsH_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13", fmt.format(date));
+    assertEquals("1", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsMS_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", length: "full", time: "ms"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", length: "full", time: "ms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -958,7 +958,7 @@ function testDateFmtFullTimeComponentsMS_ms_MY() {
 }
 
 function testDateFmtFullTimeComponentsHM_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", length: "full", time: "hm"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", length: "full", time: "hm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -970,11 +970,11 @@ function testDateFmtFullTimeComponentsHM_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("1:45 PTG", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMS_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", length: "full", time: "hms"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", length: "full", time: "hms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -986,11 +986,11 @@ function testDateFmtFullTimeComponentsHMS_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37", fmt.format(date));
+    assertEquals("1:45:37 PTG", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMA_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", length: "full", time: "hma"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", length: "full", time: "hma"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1002,12 +1002,12 @@ function testDateFmtFullTimeComponentsHMA_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("1:45 PTG", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMZ_ms_MY() {
     var fmt = new ilib.DateFmt({
-		locale: "en-GB", 
+		locale: "ms-MY", 
         type: "time", 
         length: "full", 
         time: "hmz", 
@@ -1024,12 +1024,12 @@ function testDateFmtFullTimeComponentsHMZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 GMT/BST", fmt.format(date));
+    assertEquals("1:45 PTG GMT/BST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_ms_MY() {
     var fmt = new ilib.DateFmt({
-		locale: "en-GB", 
+		locale: "ms-MY", 
         type: "time", 
         length: "full", 
         time: "hmaz", 
@@ -1046,11 +1046,11 @@ function testDateFmtFullTimeComponentsHMAZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 GMT/BST", fmt.format(date));
+    assertEquals("1:45 PTG GMT/BST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_ms_MY() {
-    var fmt = new ilib.DateFmt({locale: "en-GB", type: "time", length: "full", time: "hmsa"});
+    var fmt = new ilib.DateFmt({locale: "ms-MY", type: "time", length: "full", time: "hmsa"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -1062,12 +1062,12 @@ function testDateFmtFullTimeComponentsHMSA_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37", fmt.format(date));
+    assertEquals("1:45:37 PTG", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSZ_ms_MY() {
     var fmt = new ilib.DateFmt({
-		locale: "en-GB", 
+		locale: "ms-MY", 
         type: "time", 
         length: "full", 
         time: "hmsz", 
@@ -1084,12 +1084,12 @@ function testDateFmtFullTimeComponentsHMSZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 GMT/BST", fmt.format(date));
+    assertEquals("1:45:37 PTG GMT/BST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_ms_MY() {
     var fmt = new ilib.DateFmt({
-		locale: "en-GB", 
+		locale: "ms-MY", 
         type: "time", 
         length: "full", 
         time: "hmsaz", 
@@ -1106,12 +1106,12 @@ function testDateFmtFullTimeComponentsHMSAZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 GMT/BST", fmt.format(date));
+    assertEquals("1:45:37 PTG GMT/BST", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_ms_MY() {
     var fmt = new ilib.DateFmt({
-		locale: "en-GB", 
+		locale: "ms-MY", 
         type: "time", 
         length: "full", 
         time: "hmsz", 
@@ -1128,6 +1128,6 @@ function testDateFmtWithTimeZoneAndNoDST_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 GMT/BST", fmt.format(date));
+    assertEquals("1:45:37 PTG GMT/BST", fmt.format(date));
 }
 

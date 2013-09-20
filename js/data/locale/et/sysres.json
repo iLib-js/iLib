@@ -92,8 +92,8 @@
     "durationMediumYears": "#{num} aa",
     "1#1 yr|#{num} yrs": "#{num} aas",
     "1#1 year|#{num} years": "one#{num} aasta|#{num} aastat",
-    "{duration} ago": " päeva eest",
-    "in {duration}": " päeva pärast",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": " ja ",
     "separatorLong": " "
 }

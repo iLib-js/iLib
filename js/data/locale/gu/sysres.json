@@ -1,5 +1,4 @@
 {
-    "generated": true,
     "NN1": "જા",
     "NN2": "ફે",
     "NN3": "મા",
@@ -64,6 +63,8 @@
     "EEEE4": "ગુરુવાર",
     "EEEE5": "શુક્રવાર",
     "EEEE6": "શનિવાર",
+    "a0": "બપોર પહેલાંનો સમય",
+    "a1": "બપોર પછી",
     "G-1": "ઈલુના જન્મ પહેસાં",
     "G1": "ઇસવીસન",
     "#{num}s": "#{num}સ",
@@ -95,7 +96,7 @@
     "1#1 yr|#{num} yrs": "#{num} વર્ષ",
     "1#1 year|#{num} years": "#{num} વર્ષ",
     "{duration} ago": "{duration} પહેલા",
-    "in {duration}": "{duration}માં",
+    "in {duration}": "{duration} માં",
     "finalSeparatorFull": " અને ",
     "separatorLong": " "
 }

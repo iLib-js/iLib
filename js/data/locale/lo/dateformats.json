@@ -47,15 +47,20 @@
         "time": {
             "12": {
                 "ahmsz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
+                "hmsz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
                 "ahms": "h:mm:ss a",
                 "hms": "h:mm:ss a",
-                "ahmz": "H ໂມງ m ນາທີ ວິນາທີ z",
+                "ahmz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
                 "ahm": "h:mm a",
-                "hm": "h:mm a"
+                "hm": "h:mm a",
+                "hmz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
+                "ah": "h ໂມງa"
             },
             "24": {
                 "ahmsz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
-                "ahmz": "H ໂມງ m ນາທີ ss ວິນາທີ z"
+                "hmsz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
+                "ahmz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
+                "hmz": "H ໂມງ m ນາທີ ss ວິນາທີ z"
             }
         },
         "range": {

@@ -1370,7 +1370,7 @@ function testDateFmtFormatRelativeYearsBefore_mk_MK() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("пред 21 години", fmt.formatRelative(reference, date));
+    assertEquals("пред 21 година", fmt.formatRelative(reference, date));
 }
 
 

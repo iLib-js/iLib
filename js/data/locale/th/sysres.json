@@ -1,5 +1,5 @@
 {
-    "generated": true,
+    "generated": false,
     "NN1": "ม.",
     "NN2": "ก.",
     "NN3": "มี",
@@ -96,6 +96,8 @@
     "durationMediumYears": "#{num} ปี",
     "1#1 yr|#{num} yrs": "#{num} ปี",
     "1#1 year|#{num} years": "#{num} ปี",
+    "{duration} ago": "{duration} ที่ผ่านมา",
+    "in {duration}": "ในอีก {duration}",
     "separatorFull": " ",
     "finalSeparatorFull": " และ",
     "separatorLong": " "

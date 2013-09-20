@@ -84,6 +84,8 @@
     "#{num}y": "#{num}a",
     "1#1 yr|#{num} yrs": "one#{num} an|#{num} agns",
     "1#1 year|#{num} years": "one#{num} an|#{num} agns",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": ", ",
     "separatorLong": " "
 }

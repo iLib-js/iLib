@@ -79,8 +79,8 @@
     "durationMediumYears": "one#unyaka ongu-{num}|#{num} im",
     "1#1 yr|#{num} yrs": "one#unyaka ongu-{num}|#{num} imi",
     "1#1 year|#{num} years": "one#unyaka ongu-{num}|#{num} iminyaka",
-    "{duration} ago": "osukwini olungu- {duration}",
-    "in {duration}": "osukwini {duration}",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": ", no-",
     "separatorLong": " "
 }

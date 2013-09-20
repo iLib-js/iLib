@@ -1603,7 +1603,7 @@ function testLocaleInfoGetCurrencyFormat_bn_IN() {
 	var info = new ilib.LocaleInfo("bn-IN");
 	assertNotNull(info);
 
-	assertEquals("{n}{s}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_bn_IN() {
@@ -5300,51 +5300,51 @@ function testLocaleInfoRoundingMode_sr_BA_Latn() {
 	assertEquals("halfdown", info.getRoundingMode());
 }
 
-//test cases for sr-Me-Latn
+//test cases for sr-ME-Latn
 
 function testLocaleInfoGetDecimalSeparatorfor_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-Me-Latn");
+	var info = new ilib.LocaleInfo("sr-ME-Latn");
 	assertNotNull(info);
 	assertEquals(",", info.getDecimalSeparator());
 }
 
 function testLocaleInfoGetGroupingSeparatorfor_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-Me-Latn");
+	var info = new ilib.LocaleInfo("sr-ME-Latn");
 	assertNotNull(info);
 
 	assertEquals(".", info.getGroupingSeparator());
 }
 
 function testLocaleInfoGetPercentageFormat_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-Me-Latn");
+	var info = new ilib.LocaleInfo("sr-ME-Latn");
 	assertNotNull(info);
 
 	assertEquals("{n}%", info.getPercentageFormat());
 }
 
 function testLocaleInfoGetCurrencyFormat_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-Me-Latn");
+	var info = new ilib.LocaleInfo("sr-ME-Latn");
 	assertNotNull(info);
 
-	assertEquals("{n} {s}", info.getCurrencyFormats().common);
+	assertEquals("{s} {n}", info.getCurrencyFormats().common);
 }
 
 function testLocaleInfoGetPrimaryGroupingDigits_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-Me-Latn");
+	var info = new ilib.LocaleInfo("sr-ME-Latn");
 	assertNotNull(info);
 
 	assertEquals(3, info.getPrimaryGroupingDigits());
 }
 
 function testLocaleInfoGetSecondaryGroupingDigits_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-Me-Latn");
+	var info = new ilib.LocaleInfo("sr-ME-Latn");
 	assertNotNull(info);
 
 	assertEquals(0, info.getSecondaryGroupingDigits());
 }
 
 function testLocaleInfoRoundingMode_sr_ME_Latn() {
-	var info = new ilib.LocaleInfo("sr-Me-Latn");
+	var info = new ilib.LocaleInfo("sr-ME-Latn");
 	assertNotNull(info);
 
 	assertEquals("halfdown", info.getRoundingMode());

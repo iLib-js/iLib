@@ -1,24 +1,25 @@
 /*
- * testdatefmtrange_mk_MK.js - test the date range formatter object in Macedonian/Macedonia
+ * testdatefmtrange_ur_in.js - test the date range formatter object in Urdu/India
+ * 
  * 
  * Copyright © 2012-2013, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance wmkh the License.
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licensmk/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unlmks required by applicable law or agreed to in wrmking, software
+ * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WMKHOUT WARRANTIMK OR CONDMKIONS OF ANY KIND, emkher exprmks or implied.
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KinD, either express or implied.
  *
  * See the License for the specific language governing permissions and
- * limmkations under the License.
+ * limitations under the License.
  */
 
-function testDateRngFmtMKRangeinDayShort() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "short"});
+function testDateRngFmtinRangeinDayShort() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "short"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -39,10 +40,10 @@ function testDateRngFmtMKRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45–14:30 31.12.2011", fmt.format(start, end));
+    assertEquals("۱:۴۵ رات – ۲:۳۰ رات ۳۱/۱۲/۱۱", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeinDayMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "medium"});
+function testDateRngFmtinRangeinDayMedium() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "medium"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -63,10 +64,10 @@ function testDateRngFmtMKRangeinDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 31.12.11", fmt.format(start, end));
+    assertEquals("۱:۴۵ رات – ۲:۳۰ رات ۳۱ ۱۲، ۲۰۱۱", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeinDayLong() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "long"});
+function testDateRngFmtinRangeinDayLong() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "long"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -87,10 +88,10 @@ function testDateRngFmtMKRangeinDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 2011 декем. 31", fmt.format(start, end));
+    assertEquals("۱:۴۵ رات – ۲:۳۰ رات ۳۱ دسمبر، ۲۰۱۱", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeinDayFull() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "full"});
+function testDateRngFmtinRangeinDayFull() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "full"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -111,11 +112,11 @@ function testDateRngFmtMKRangeinDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 31 декември 2011", fmt.format(start, end));
+    assertEquals("۱:۴۵ رات – ۲:۳۰ رات ۳۱ دسمبر، ۲۰۱۱", fmt.format(start, end));
 }
 
-function testDateRngFmtMKRangeNextDayShort() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "short"});
+function testDateRngFmtinRangeNextDayShort() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "short"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -136,10 +137,10 @@ function testDateRngFmtMKRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30.12.11 - 14:30 31.12.11", fmt.format(start, end));
+    assertEquals("۱:۴۵ رات ۳۰/۱۲/۱۱ – ۲:۳۰ رات ۳۱/۱۲/۱۱", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeNextDayMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "medium"});
+function testDateRngFmtinRangeNextDayMedium() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "medium"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -160,10 +161,10 @@ function testDateRngFmtMKRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30.12.11 - 14:30 31.12.11", fmt.format(start, end));
+    assertEquals("۱:۴۵ رات ۳۰/۱۲/۲۰۱۱ – ۲:۳۰ رات ۳۱/۱۲/۲۰۱۱", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeNextDayLong() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "long"});
+function testDateRngFmtinRangeNextDayLong() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "long"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -184,10 +185,10 @@ function testDateRngFmtMKRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 - 14:30 31.декем.2011", fmt.format(start, end));
+    assertEquals("۱:۴۵ رات ۳۰ – ۲:۳۰ رات ۳۱ دسمبر ۲۰۱۱", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeNextDayFull() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "full"});
+function testDateRngFmtinRangeNextDayFull() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "full"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -208,11 +209,11 @@ function testDateRngFmtMKRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 30 - 14:30 31.декември.2011", fmt.format(start, end));
+    assertEquals("۱:۴۵ رات ۳۰ – ۲:۳۰ رات ۳۱ دسمبر ۲۰۱۱", fmt.format(start, end));
 }
 
-function testDateRngFmtMKRangeMultiDayShort() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "short"});
+function testDateRngFmtinRangeMultiDayShort() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "short"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -233,10 +234,10 @@ function testDateRngFmtMKRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.12.11 - 31.12.11", fmt.format(start, end));
+    assertEquals("۲۰/۱۲/۱۱ – ۳۱/۱۲/۱۱", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeMultiDayMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "medium"});
+function testDateRngFmtinRangeMultiDayMedium() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "medium"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -257,10 +258,10 @@ function testDateRngFmtMKRangeMultiDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.12.11 - 31.12.11", fmt.format(start, end));
+    assertEquals("۲۰/۱۲/۲۰۱۱ – ۳۱/۱۲/۲۰۱۱", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeMultiDayLong() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "long"});
+function testDateRngFmtinRangeMultiDayLong() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "long"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -281,10 +282,10 @@ function testDateRngFmtMKRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 - 31 декем. 2011", fmt.format(start, end));
+    assertEquals("۲۰ – ۳۱ دسمبر ۲۰۱۱", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeMultiDayFull() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "full"});
+function testDateRngFmtinRangeMultiDayFull() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "full"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -305,108 +306,108 @@ function testDateRngFmtMKRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 - 31 декември 2011", fmt.format(start, end));
-}
-
-function testDateRngFmtMKRangeNextMonthShort() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "short"});
-    assertNotNull(fmt);
-    
-    var start = new ilib.Date.GregDate({
-		year: 2011,
-		month: 11,
-		day: 20,
-		hour: 13,
-		minute: 45,
-		second: 0,
-		millisecond: 0
-	});
-    var end = new ilib.Date.GregDate({
-		year: 2011,
-		month: 12,
-		day: 31,
-		hour: 14,
-		minute: 30,
-		second: 0,
-		millisecond: 0
-	});
-    assertEquals("20.11.11 - 31.12.11", fmt.format(start, end));
-}
-function testDateRngFmtMKRangeNextMonthMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "medium"});
-    assertNotNull(fmt);
-    
-    var start = new ilib.Date.GregDate({
-		year: 2011,
-		month: 11,
-		day: 20,
-		hour: 13,
-		minute: 45,
-		second: 0,
-		millisecond: 0
-	});
-    var end = new ilib.Date.GregDate({
-		year: 2011,
-		month: 12,
-		day: 31,
-		hour: 14,
-		minute: 30,
-		second: 0,
-		millisecond: 0
-	});
-    assertEquals("20.11.11 - 31.12.11", fmt.format(start, end));
-}
-function testDateRngFmtMKRangeNextMonthLong() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "long"});
-    assertNotNull(fmt);
-    
-    var start = new ilib.Date.GregDate({
-		year: 2011,
-		month: 11,
-		day: 20,
-		hour: 13,
-		minute: 45,
-		second: 0,
-		millisecond: 0
-	});
-    var end = new ilib.Date.GregDate({
-		year: 2011,
-		month: 12,
-		day: 31,
-		hour: 14,
-		minute: 30,
-		second: 0,
-		millisecond: 0
-	});
-    assertEquals("20 ноем. - 31 декем. 2011", fmt.format(start, end));
-}
-function testDateRngFmtMKRangeNextMonthFull() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "full"});
-    assertNotNull(fmt);
-    
-    var start = new ilib.Date.GregDate({
-		year: 2011,
-		month: 11,
-		day: 20,
-		hour: 13,
-		minute: 45,
-		second: 0,
-		millisecond: 0
-	});
-    var end = new ilib.Date.GregDate({
-		year: 2011,
-		month: 12,
-		day: 31,
-		hour: 14,
-		minute: 30,
-		second: 0,
-		millisecond: 0
-	});
-    assertEquals("20 ноември - 31 декември 2011", fmt.format(start, end));
+    assertEquals("۲۰ – ۳۱ دسمبر ۲۰۱۱", fmt.format(start, end));
 }
 
-function testDateRngFmtMKRangeNextYearShort() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "short"});
+function testDateRngFmtinRangeNextMonthShort() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "short"});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.GregDate({
+		year: 2011,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("۲۰/۱۱/۱۱ – ۳۱/۱۲/۱۱", fmt.format(start, end));
+}
+function testDateRngFmtinRangeNextMonthMedium() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "medium"});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.GregDate({
+		year: 2011,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("۲۰/۱۱/۲۰۱۱ – ۳۱/۱۲/۲۰۱۱", fmt.format(start, end));
+}
+function testDateRngFmtinRangeNextMonthLong() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "long"});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.GregDate({
+		year: 2011,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("۲۰ نومبر – ۳۱ دسمبر ۲۰۱۱", fmt.format(start, end));
+}
+function testDateRngFmtinRangeNextMonthFull() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "full"});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.GregDate({
+		year: 2011,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.GregDate({
+		year: 2011,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("۲۰ نومبر – ۳۱ دسمبر ۲۰۱۱", fmt.format(start, end));
+}
+
+function testDateRngFmtinRangeNextYearShort() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "short"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -427,10 +428,10 @@ function testDateRngFmtMKRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.11 - 31.1.12", fmt.format(start, end));
+    assertEquals("۲۰/۱۱/۱۱ – ۳۱/۱/۱۲", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeNextYearMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "medium"});
+function testDateRngFmtinRangeNextYearMedium() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "medium"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -451,10 +452,10 @@ function testDateRngFmtMKRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20.11.11 - 31.01.12", fmt.format(start, end));
+    assertEquals("۲۰/۱۱/۲۰۱۱ – ۳۱/۰۱/۲۰۱۲", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeNextYearLong() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "long"});
+function testDateRngFmtinRangeNextYearLong() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "long"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -475,10 +476,10 @@ function testDateRngFmtMKRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 ноем. 2011 - 31 јан. 2012", fmt.format(start, end));
+    assertEquals("۲۰ نومبر ۲۰۱۱ – ۳۱ جنوری ۲۰۱۲", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeNextYearFull() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "full"});
+function testDateRngFmtinRangeNextYearFull() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "full"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -499,11 +500,11 @@ function testDateRngFmtMKRangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("20 ноември 2011 - 31 јануари 2012", fmt.format(start, end));
+    assertEquals("۲۰ نومبر ۲۰۱۱ – ۳۱ جنوری ۲۰۱۲", fmt.format(start, end));
 }
 
-function testDateRngFmtMKRangeMultiYearShort() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "short"});
+function testDateRngFmtinRangeMultiYearShort() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "short"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -524,10 +525,10 @@ function testDateRngFmtMKRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11.11 - 1.14", fmt.format(start, end));
+    assertEquals("۱۱/۱۱ – ۱/۱۴", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeMultiYearMedium() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "medium"});
+function testDateRngFmtinRangeMultiYearMedium() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "medium"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -548,10 +549,10 @@ function testDateRngFmtMKRangeMultiYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11.11 - 01.14", fmt.format(start, end));
+    assertEquals("۱۱/۲۰۱۱ – ۰۱/۲۰۱۴", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeMultiYearLong() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "long"});
+function testDateRngFmtinRangeMultiYearLong() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "long"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -572,10 +573,10 @@ function testDateRngFmtMKRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ноем. 2011 - јан. 2014", fmt.format(start, end));
+    assertEquals("نومبر ۲۰۱۱ – جنوری ۲۰۱۴", fmt.format(start, end));
 }
-function testDateRngFmtMKRangeMultiYearFull() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "full"});
+function testDateRngFmtinRangeMultiYearFull() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "full"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -596,10 +597,10 @@ function testDateRngFmtMKRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 - јануари – 2014–ноември", fmt.format(start, end));
+    assertEquals("نومبر ۲۰۱۱ – جنوری ۲۰۱۴", fmt.format(start, end));
 }
-function testDateRngFmtMKManyYearsFull() {
-    var fmt = new ilib.DateRngFmt({locale: "mk-MK", length: "full"});
+function testDateRngFmtinManyYearsFull() {
+    var fmt = new ilib.DateRngFmt({locale: "ur-IN", length: "full"});
     assertNotNull(fmt);
     
     var start = new ilib.Date.GregDate({
@@ -620,5 +621,5 @@ function testDateRngFmtMKManyYearsFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011 - 2064", fmt.format(start, end));
+    assertEquals("۲۰۱۱ – ۲۰۶۴", fmt.format(start, end));
 }

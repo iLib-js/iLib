@@ -83,6 +83,8 @@
     "1#1 month|#{num} months": "#{num} m",
     "1#1 yr|#{num} yrs": "#{num} y",
     "1#1 year|#{num} years": "#{num} y",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": ", ",
     "separatorLong": " "
 }

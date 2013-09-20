@@ -40,15 +40,20 @@
         "time": {
             "12": {
                 "ahmsz": "hh:mm:ss a z",
+                "hmsz": "hh:mm:ss a z",
                 "ahms": "h:mm:ss a",
                 "hms": "h:mm:ss a",
-                "ahmz": "hh:mm: a z",
+                "ahmz": "hh:mm a z",
                 "ahm": "h:mm a",
-                "hm": "h:mm a"
+                "hm": "h:mm a",
+                "hmz": "hh:mm a z",
+                "ah": "h a"
             },
             "24": {
                 "ahmsz": "HH:mm:ss z",
-                "ahmz": "HH:mm z"
+                "hmsz": "HH:mm:ss z",
+                "ahmz": "HH:mm z",
+                "hmz": "HH:mm z"
             }
         },
         "range": {
@@ -60,9 +65,9 @@
             },
             "c01": {
                 "s": "{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}",
-                "l": "{st} {sd} {sm} – {et} ed} {ey}",
+                "l": "{st} {sd} {sm} – {et} {ed} {ey}",
                 "m": "{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}",
-                "f": "{st} {sd} {sm} – {et} ed} {ey}"
+                "f": "{st} {sd} {sm} – {et} {ed} {ey}"
             },
             "c02": {
                 "s": "{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}",
@@ -72,8 +77,8 @@
             },
             "c10": {
                 "s": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}",
-                "l": "{sd} {sm} – ed} {ey}",
-                "f": "{sd} {sm} – ed} {ey}",
+                "l": "{sd} {sm} – {ed} {ey}",
+                "f": "{sd} {sm} – {ed} {ey}",
                 "m": "{sd}/{sm}/{sy} – {ed}/{em}/{ey}"
             },
             "c11": {
@@ -96,6 +101,5 @@
             },
             "c30": "{sy} – {ey}"
         }
-    },
-    "generated": true
+    }
 }

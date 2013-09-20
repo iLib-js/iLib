@@ -30,7 +30,7 @@ function testDateFmtSimpleShort_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_ku_Arab_IQ() {
@@ -46,7 +46,7 @@ function testDateFmtSimpleMedium_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_ku_Arab_IQ() {
@@ -62,7 +62,7 @@ function testDateFmtSimpleLong_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sep 2011", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_ku_Arab_IQ() {
@@ -78,7 +78,7 @@ function testDateFmtSimpleFull_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September 2011", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeShort_ku_Arab_IQ() {
@@ -94,7 +94,7 @@ function testDateFmtSimpleTimeShort_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeMedium_ku_Arab_IQ() {
@@ -110,7 +110,7 @@ function testDateFmtSimpleTimeMedium_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeLong_ku_Arab_IQ() {
@@ -126,7 +126,7 @@ function testDateFmtSimpleTimeLong_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtSimpleTimeFull_ku_Arab_IQ() {
@@ -142,7 +142,7 @@ function testDateFmtSimpleTimeFull_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleShort_ku_Arab_IQ() {
@@ -158,7 +158,7 @@ function testDateFmtDateTimeSimpleShort_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_ku_Arab_IQ() {
@@ -174,7 +174,7 @@ function testDateFmtDateTimeSimpleMedium_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/09/2011 13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_ku_Arab_IQ() {
@@ -190,7 +190,7 @@ function testDateFmtDateTimeSimpleLong_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 Sep 2011 13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_ku_Arab_IQ() {
@@ -206,7 +206,7 @@ function testDateFmtDateTimeSimpleFull_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September 2011 13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 
@@ -223,7 +223,7 @@ function testDateFmtTemplateCalendar_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011-09-29", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 
@@ -241,7 +241,7 @@ function testDateFmtTemplateClock12SwitchHH_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtTemplateClock12Switchkk_ku_Arab_IQ() {
@@ -257,7 +257,7 @@ function testDateFmtTemplateClock12Switchkk_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtTemplateClock24Switchhh_ku_Arab_IQ() {
@@ -273,7 +273,7 @@ function testDateFmtTemplateClock24Switchhh_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtTemplateClock24SwitchKK_ku_Arab_IQ() {
@@ -289,7 +289,7 @@ function testDateFmtTemplateClock24SwitchKK_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ku_Arab_IQ() {
@@ -305,7 +305,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_ku_Arab_IQ() {
@@ -321,7 +321,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ku_Arab_IQ() {
@@ -337,7 +337,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ku_Arab_IQ() {
@@ -353,7 +353,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 
@@ -370,7 +370,7 @@ function testDateFmtTypeDate_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtTypeTime_ku_Arab_IQ() {
@@ -386,7 +386,7 @@ function testDateFmtTypeTime_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtTypeDateTime_ku_Arab_IQ() {
@@ -402,7 +402,7 @@ function testDateFmtTypeDateTime_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11 13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 
@@ -419,7 +419,7 @@ function testDateFmtShortDateComponentsY_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsM_ku_Arab_IQ() {
@@ -435,7 +435,7 @@ function testDateFmtShortDateComponentsM_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsN_ku_Arab_IQ() {
@@ -451,7 +451,7 @@ function testDateFmtShortDateComponentsN_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_ku_Arab_IQ() {
@@ -467,7 +467,7 @@ function testDateFmtShortDateComponentsD_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDM_ku_Arab_IQ() {
@@ -483,7 +483,7 @@ function testDateFmtShortDateComponentsDM_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_ku_Arab_IQ() {
@@ -499,7 +499,7 @@ function testDateFmtShortDateComponentsMY_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9/11", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_ku_Arab_IQ() {
@@ -515,7 +515,7 @@ function testDateFmtShortDateComponentsDMY_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9/11", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_ku_Arab_IQ() {
@@ -531,7 +531,7 @@ function testDateFmtShortDateComponentsWDM_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th 29/9", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_ku_Arab_IQ() {
@@ -547,7 +547,7 @@ function testDateFmtShortDateComponentsWDMY_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Th 29/9/11", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 
@@ -564,7 +564,7 @@ function testDateFmtFullDateComponentsY_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsM_ku_Arab_IQ() {
@@ -580,7 +580,7 @@ function testDateFmtFullDateComponentsM_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("September", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsD_ku_Arab_IQ() {
@@ -596,7 +596,7 @@ function testDateFmtFullDateComponentsD_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDM_ku_Arab_IQ() {
@@ -612,7 +612,7 @@ function testDateFmtFullDateComponentsDM_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsMY_ku_Arab_IQ() {
@@ -628,7 +628,7 @@ function testDateFmtFullDateComponentsMY_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("September 2011", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsDMY_ku_Arab_IQ() {
@@ -644,7 +644,7 @@ function testDateFmtFullDateComponentsDMY_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 September 2011", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDM_ku_Arab_IQ() {
@@ -660,7 +660,7 @@ function testDateFmtFullDateComponentsWDM_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Thursday 29 September", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_ku_Arab_IQ() {
@@ -676,7 +676,7 @@ function testDateFmtFullDateComponentsWDMY_ku_Arab_IQ() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Thursday 29 September 2011", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 
@@ -693,7 +693,7 @@ function testDateFmtShortTimeComponentsS_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("37", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsM_ku_Arab_IQ() {
@@ -709,7 +709,7 @@ function testDateFmtShortTimeComponentsM_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsH_ku_Arab_IQ() {
@@ -725,7 +725,7 @@ function testDateFmtShortTimeComponentsH_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsMS_ku_Arab_IQ() {
@@ -741,7 +741,7 @@ function testDateFmtShortTimeComponentsMS_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("45:37", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHM_ku_Arab_IQ() {
@@ -757,7 +757,7 @@ function testDateFmtShortTimeComponentsHM_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMS_ku_Arab_IQ() {
@@ -773,7 +773,7 @@ function testDateFmtShortTimeComponentsHMS_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMA_ku_Arab_IQ() {
@@ -789,7 +789,7 @@ function testDateFmtShortTimeComponentsHMA_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMZ_ku_Arab_IQ() {
@@ -809,7 +809,7 @@ function testDateFmtShortTimeComponentsHMZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 ADT", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_ku_Arab_IQ() {
@@ -829,7 +829,7 @@ function testDateFmtShortTimeComponentsHMAZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 ADT", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_ku_Arab_IQ() {
@@ -845,7 +845,7 @@ function testDateFmtShortTimeComponentsHMSA_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSZ_ku_Arab_IQ() {
@@ -865,7 +865,7 @@ function testDateFmtShortTimeComponentsHMSZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ADT", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_ku_Arab_IQ() {
@@ -885,7 +885,7 @@ function testDateFmtShortTimeComponentsHMSAZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ADT", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 
@@ -902,7 +902,7 @@ function testDateFmtFullTimeComponentsS_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("37", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsM_ku_Arab_IQ() {
@@ -918,7 +918,7 @@ function testDateFmtFullTimeComponentsM_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsH_ku_Arab_IQ() {
@@ -934,7 +934,7 @@ function testDateFmtFullTimeComponentsH_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsMS_ku_Arab_IQ() {
@@ -950,7 +950,7 @@ function testDateFmtFullTimeComponentsMS_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("45:37", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHM_ku_Arab_IQ() {
@@ -966,7 +966,7 @@ function testDateFmtFullTimeComponentsHM_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMS_ku_Arab_IQ() {
@@ -982,7 +982,7 @@ function testDateFmtFullTimeComponentsHMS_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMA_ku_Arab_IQ() {
@@ -998,7 +998,7 @@ function testDateFmtFullTimeComponentsHMA_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMZ_ku_Arab_IQ() {
@@ -1019,7 +1019,7 @@ function testDateFmtFullTimeComponentsHMZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 ADT", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_ku_Arab_IQ() {
@@ -1040,7 +1040,7 @@ function testDateFmtFullTimeComponentsHMAZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 ADT", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_ku_Arab_IQ() {
@@ -1056,7 +1056,7 @@ function testDateFmtFullTimeComponentsHMSA_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSZ_ku_Arab_IQ() {
@@ -1077,7 +1077,7 @@ function testDateFmtFullTimeComponentsHMSZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ADT", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_ku_Arab_IQ() {
@@ -1098,7 +1098,7 @@ function testDateFmtFullTimeComponentsHMSAZ_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ADT", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_ku_Arab_IQ() {
@@ -1119,6 +1119,6 @@ function testDateFmtWithTimeZoneAndNoDST_ku_Arab_IQ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 AST", fmt.format(date));
+    assertEquals("", fmt.format(date));
 }
 

@@ -97,7 +97,7 @@
     "1#1 yr|#{num} yrs": "#{num} год",
     "1#1 year|#{num} years": "one#{num} година|#{num} години",
     "{duration} ago": "преди {duration}",
-    "in {duration}": "след дни",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": " и ",
     "separatorLong": " "
 }

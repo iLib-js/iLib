@@ -88,6 +88,8 @@
     "#{num}y": "#{num}ປ",
     "1#1 yr|#{num} yrs": "#{num} ປີ",
     "1#1 year|#{num} years": "#{num} ປີ",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": ", ",
     "separatorLong": " "
 }

@@ -17,6 +17,7 @@
  * limitations under the License.
  */
 
+
 function testDateRngFmtInDayShort() {
     var fmt = new ilib.DateRngFmt({length: "short"});
     assertNotNull(fmt);

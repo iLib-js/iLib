@@ -50,20 +50,25 @@
         "time": {
             "12": {
                 "ahmsz": "HH.mm.ss z",
+                "hmsz": "HH.mm.ss z",
                 "ahms": "hh.mm.ss a",
                 "hms": "hh.mm.ss a",
                 "ms": "mm.s",
-                "ahmz": "HH.mm. z",
+                "ahmz": "HH.mm z",
                 "ahm": "hh.mm a",
-                "hm": "hh.mm a"
+                "hm": "hh.mm a",
+                "hmz": "HH.mm z",
+                "ah": "hh a"
             },
             "24": {
                 "ahmsz": "HH.mm.ss z",
                 "ahms": "H.mm.ss",
+                "hmsz": "HH.mm.ss z",
                 "hms": "H.mm.ss",
                 "ms": "mm.ss",
-                "ahmz": "HH.mm.ss z",
+                "ahmz": "HH.mm z",
                 "ahm": "H.mm",
+                "hmz": "HH.mm z",
                 "hm": "H.mm"
             }
         },

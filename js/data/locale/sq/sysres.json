@@ -81,6 +81,8 @@
     "#{num}y": "#{num}v",
     "1#1 yr|#{num} yrs": "one#{num} vit|#{num} vjet",
     "1#1 year|#{num} years": "one#{num} vit|#{num} vjet",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": ", ",
     "separatorLong": " "
 }

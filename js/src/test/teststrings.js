@@ -1759,6 +1759,41 @@ function setUp() {
 	ilib.String.loadPlurals(true, "pl-PL");
 }
 
+function testStringGetLocaleDefault() {
+	var str = new ilib.String("foo");
+    
+	assertNotNull(str);
+    
+	assertEquals("en-US", str.getLocale());
+}
+
+function testStringGetLocaleWithLocaleObj() {
+	var str = new ilib.String("foo");
+	str.setLocale(new ilib.Locale("ja-JP"));
+    
+	assertNotNull(str);
+    
+	assertEquals("ja-JP", str.getLocale());
+}
+
+function testStringGetLocaleWithLocaleSpec() {
+	var str = new ilib.String("foo");
+	str.setLocale("ja-JP");
+    
+	assertNotNull(str);
+    
+	assertEquals("ja-JP", str.getLocale());
+}
+
+function testStringSetLocaleUndefined() {
+	var str = new ilib.String("foo");
+	str.setLocale(undefined);
+    
+	assertNotNull(str);
+    
+	assertEquals("en-US", str.getLocale());
+}
+
 function testStringFormatChoiceCharClasses1() {
     var str = new ilib.String("0#There are no items.|one#The items end in one.|two#The items end in two|few#The items is few|#Default items");
     str.setLocale("sl-SL");

@@ -1,5 +1,10 @@
 {
     "gregorian": {
+        "time": {
+            "12": {
+                "ah": "hh a"
+            }
+        },
         "range": {
             "c00": {
                 "s": "{st} - {et} {sd}.{sm}.{sy}.",

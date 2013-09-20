@@ -41,16 +41,21 @@
         "time": {
             "12": {
                 "ahmsz": "a 'ga' h:mm:ss z",
+                "hmsz": "a 'ga' h:mm:ss z",
                 "ahms": "a 'ga' h:mm:ss",
                 "hms": "a 'ga' h:mm:ss",
                 "ms": "h:",
-                "ahmz": "a 'ga' h:mm: z",
+                "ahmz": "a 'ga' h:mm z",
                 "ahm": "a 'ga' h:mm",
-                "hm": "a 'ga' h:mm"
+                "hm": "a 'ga' h:mm",
+                "hmz": "a 'ga' h:mm z",
+                "ah": "a 'ga' h"
             },
             "24": {
                 "ahmsz": " 'g' H:mm:ss z",
-                "ahmz": " 'g' H:mm z"
+                "hmsz": " 'g' H:mm:ss z",
+                "ahmz": " 'g' H:mm z",
+                "hmz": " 'g' H:mm z"
             }
         },
         "range": {

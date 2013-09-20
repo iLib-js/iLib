@@ -27,7 +27,7 @@ function testDateRngFmtKRRangeInDayShort() {
 		month: 12,
 		day: 31,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -36,11 +36,11 @@ function testDateRngFmtKRRangeInDayShort() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 12. 31 오후 1:00에서 오후 2:00까지", fmt.format(start, end));
+    assertEquals("11. 12. 31 오후 1:45에서 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "medium"});
@@ -51,7 +51,7 @@ function testDateRngFmtKRRangeInDayMedium() {
 		month: 12,
 		day: 31,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -60,11 +60,11 @@ function testDateRngFmtKRRangeInDayMedium() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. 12. 31 오후 1:00에서 오후 2:00까지", fmt.format(start, end));
+    assertEquals("2011. 12. 31 오후 1:45에서 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "long"});
@@ -75,7 +75,7 @@ function testDateRngFmtKRRangeInDayLong() {
 		month: 12,
 		day: 31,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -84,11 +84,11 @@ function testDateRngFmtKRRangeInDayLong() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 12월 31일 오후 1:00에서 오후 2:00까지", fmt.format(start, end));
+    assertEquals("2011년 12월 31일 오후 1:45에서 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "full"});
@@ -99,7 +99,7 @@ function testDateRngFmtKRRangeInDayFull() {
 		month: 12,
 		day: 31,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -108,11 +108,11 @@ function testDateRngFmtKRRangeInDayFull() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 십이월 31일 오후 1:00에서 오후 2:00까지", fmt.format(start, end));
+    assertEquals("2011년 십이월 31일 오후 1:45에서 오후 2:30까지", fmt.format(start, end));
 }
 
 function testDateRngFmtKRRangeNextDayShort() {
@@ -124,7 +124,7 @@ function testDateRngFmtKRRangeNextDayShort() {
 		month: 12,
 		day: 30,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -133,11 +133,11 @@ function testDateRngFmtKRRangeNextDayShort() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11. 12. 30 오후 1:00에서 31 오후 2:00까지", fmt.format(start, end));
+    assertEquals("11. 12. 30 오후 1:45에서 31 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "medium"});
@@ -148,7 +148,7 @@ function testDateRngFmtKRRangeNextDayMedium() {
 		month: 12,
 		day: 30,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -157,11 +157,11 @@ function testDateRngFmtKRRangeNextDayMedium() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011. 12. 30 오후 1:00에서 31 오후 2:00까지", fmt.format(start, end));
+    assertEquals("2011. 12. 30 오후 1:45에서 31 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "long"});
@@ -172,7 +172,7 @@ function testDateRngFmtKRRangeNextDayLong() {
 		month: 12,
 		day: 30,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -181,11 +181,11 @@ function testDateRngFmtKRRangeNextDayLong() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 12월 30일 오후 1:00에서 31일 오후 2:00까지", fmt.format(start, end));
+    assertEquals("2011년 12월 30일 오후 1:45에서 31일 오후 2:30까지", fmt.format(start, end));
 }
 function testDateRngFmtKRRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "ko-KR", length: "full"});
@@ -196,7 +196,7 @@ function testDateRngFmtKRRangeNextDayFull() {
 		month: 12,
 		day: 30,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -205,11 +205,11 @@ function testDateRngFmtKRRangeNextDayFull() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011년 십이월 30일 오후 1:00에서 31일 오후 2:00까지", fmt.format(start, end));
+    assertEquals("2011년 십이월 30일 오후 1:45에서 31일 오후 2:30까지", fmt.format(start, end));
 }
 
 function testDateRngFmtKRRangeMultiDayShort() {
@@ -221,7 +221,7 @@ function testDateRngFmtKRRangeMultiDayShort() {
 		month: 12,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -230,7 +230,7 @@ function testDateRngFmtKRRangeMultiDayShort() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -245,7 +245,7 @@ function testDateRngFmtKRRangeMultiDayMedium() {
 		month: 12,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -254,7 +254,7 @@ function testDateRngFmtKRRangeMultiDayMedium() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -269,7 +269,7 @@ function testDateRngFmtKRRangeMultiDayLong() {
 		month: 12,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -278,7 +278,7 @@ function testDateRngFmtKRRangeMultiDayLong() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -293,7 +293,7 @@ function testDateRngFmtKRRangeMultiDayFull() {
 		month: 12,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -302,7 +302,7 @@ function testDateRngFmtKRRangeMultiDayFull() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -318,7 +318,7 @@ function testDateRngFmtKRRangeNextMonthShort() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -327,7 +327,7 @@ function testDateRngFmtKRRangeNextMonthShort() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -342,7 +342,7 @@ function testDateRngFmtKRRangeNextMonthMedium() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -351,7 +351,7 @@ function testDateRngFmtKRRangeNextMonthMedium() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -366,7 +366,7 @@ function testDateRngFmtKRRangeNextMonthLong() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -375,7 +375,7 @@ function testDateRngFmtKRRangeNextMonthLong() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -390,7 +390,7 @@ function testDateRngFmtKRRangeNextMonthFull() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -399,7 +399,7 @@ function testDateRngFmtKRRangeNextMonthFull() {
 		month: 12,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -415,7 +415,7 @@ function testDateRngFmtKRRangeNextYearShort() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -424,7 +424,7 @@ function testDateRngFmtKRRangeNextYearShort() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -439,7 +439,7 @@ function testDateRngFmtKRRangeNextYearMedium() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -448,7 +448,7 @@ function testDateRngFmtKRRangeNextYearMedium() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -463,7 +463,7 @@ function testDateRngFmtKRRangeNextYearLong() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -472,7 +472,7 @@ function testDateRngFmtKRRangeNextYearLong() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -487,7 +487,7 @@ function testDateRngFmtKRRangeNextYearFull() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -496,7 +496,7 @@ function testDateRngFmtKRRangeNextYearFull() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -512,7 +512,7 @@ function testDateRngFmtKRRangeMultiYearShort() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -521,7 +521,7 @@ function testDateRngFmtKRRangeMultiYearShort() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -536,7 +536,7 @@ function testDateRngFmtKRRangeMultiYearMedium() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -545,7 +545,7 @@ function testDateRngFmtKRRangeMultiYearMedium() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -560,7 +560,7 @@ function testDateRngFmtKRRangeMultiYearLong() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -569,7 +569,7 @@ function testDateRngFmtKRRangeMultiYearLong() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -584,7 +584,7 @@ function testDateRngFmtKRRangeMultiYearFull() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -593,7 +593,7 @@ function testDateRngFmtKRRangeMultiYearFull() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
@@ -608,7 +608,7 @@ function testDateRngFmtKRManyYearsFull() {
 		month: 11,
 		day: 20,
 		hour: 13,
-		mKRute: 45,
+		minute: 45,
 		second: 0,
 		millisecond: 0
 	});
@@ -617,7 +617,7 @@ function testDateRngFmtKRManyYearsFull() {
 		month: 1,
 		day: 31,
 		hour: 14,
-		mKRute: 30,
+		minute: 30,
 		second: 0,
 		millisecond: 0
 	});

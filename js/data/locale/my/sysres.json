@@ -89,6 +89,8 @@
     "#{num}y": "#{num}န",
     "1#1 yr|#{num} yrs": "#{num} နှစ်",
     "1#1 year|#{num} years": "#{num} နှစ်",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": ", ",
     "separatorLong": " "
 }

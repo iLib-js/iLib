@@ -94,7 +94,7 @@
     "durationMediumYears": "one#{num} le|two#{num} le|few#{num} le|#{num} let",
     "1#1 yr|#{num} yrs": "one#{num} leto|two#{num} leti|few#{num} leta|#{num} let",
     "1#1 year|#{num} years": "one#{num} leto|two#{num} leti|few#{num} leta|#{num} let",
-    "{duration} ago": "pred {duration}",
+    "{duration} ago": "-{duration}",
     "in {duration}": "čez {duration}",
     "finalSeparatorFull": " in ",
     "separatorLong": " "

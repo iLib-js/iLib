@@ -754,7 +754,7 @@ function testDateFmtShortTimeComponentsHMZ_el_GR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 EEST", fmt.format(date));
+    assertEquals("1:45 μ.μ. EEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_el_GR() {
@@ -810,7 +810,7 @@ function testDateFmtShortTimeComponentsHMSZ_el_GR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 EEST", fmt.format(date));
+    assertEquals("1:45:37 μ.μ. EEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_el_GR() {
@@ -949,7 +949,7 @@ function testDateFmtFullTimeComponentsHMZ_el_GR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 EEST", fmt.format(date));
+    assertEquals("1:45 μ.μ. EEST", fmt.format(date));
 }
 
 
@@ -987,7 +987,7 @@ function testDateFmtFullTimeComponentsHMSZ_el_GR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 EEST", fmt.format(date));
+    assertEquals("1:45:37 μ.μ. EEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_el_GR() {
@@ -1029,7 +1029,7 @@ function testDateFmtWithTimeZoneAndNoDST_el_GR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 EET", fmt.format(date));
+    assertEquals("1:45:37 μ.μ. EET", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_el_GR() {

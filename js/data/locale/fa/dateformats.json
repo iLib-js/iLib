@@ -38,15 +38,20 @@
         "time": {
             "12": {
                 "ahmsz": "h:mm:ss a (z)",
+                "hmsz": "h:mm:ss a (z)",
                 "ahms": "h:mm:ss a",
                 "hms": "h:mm:ss a",
-                "ahmz": "h:mm: a (z)",
+                "ahmz": "h:mm a (z)",
                 "ahm": "h:mm a",
-                "hm": "h:mm a"
+                "hm": "h:mm a",
+                "hmz": "h:mm a (z)",
+                "ah": "h a"
             },
             "24": {
                 "ahmsz": "H:mm:ss (z)",
-                "ahmz": "H:mm (z)"
+                "hmsz": "H:mm:ss (z)",
+                "ahmz": "H:mm (z)",
+                "hmz": "H:mm (z)"
             }
         },
         "range": {

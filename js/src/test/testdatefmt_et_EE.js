@@ -810,7 +810,7 @@ function testDateFmtShortTimeComponentsHMSZ_et_EE() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 EEST", fmt.format(date));
+    assertEquals("13:45.37 EEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_et_EE() {
@@ -987,7 +987,7 @@ function testDateFmtFullTimeComponentsHMSZ_et_EE() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 EEST", fmt.format(date));
+    assertEquals("13:45.37 EEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_et_EE() {
@@ -1029,7 +1029,7 @@ function testDateFmtWithTimeZoneAndNoDST_et_EE() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 EET", fmt.format(date));
+    assertEquals("13:45.37 EET", fmt.format(date));
 }
 
 /*function testDateFmtFormatRelativeWithinMinuteAfter_et_EE() {
@@ -1054,7 +1054,7 @@ function testDateFmtWithTimeZoneAndNoDST_et_EE() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("za 30 sekund", fmt.formatRelative(reference, date));
+    assertEquals("y", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_et_EE() {
     var fmt = new ilib.DateFmt({locale: "et-EE", length: "full"});
@@ -1078,7 +1078,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_et_EE() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("πριν από 30 δευτερόλεπτα", fmt.formatRelative(reference, date));
+    assertEquals("y", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_et_EE() {
     var fmt = new ilib.DateFmt({locale: "et-EE", length: "full"});
@@ -1102,7 +1102,7 @@ function testDateFmtFormatRelativeWithinHourAfter_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("za 10 minut", fmt.formatRelative(reference, date));
+    assertEquals("y", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_et_EE() {
     var fmt = new ilib.DateFmt({locale: "et-EE", length: "full"});
@@ -1126,7 +1126,7 @@ function testDateFmtFormatRelativeWithinHourBefore_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("πριν από 10 λεπτά", fmt.formatRelative(reference, date));
+    assertEquals("y", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_et_EE() {
     var fmt = new ilib.DateFmt({locale: "et-EE", length: "full"});
@@ -1150,7 +1150,7 @@ function testDateFmtFormatRelativeWithinDayAfter_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("za 4 hodin", fmt.formatRelative(reference, date));
+    assertEquals("y", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_et_EE() {
     var fmt = new ilib.DateFmt({locale: "et-EE", length: "full"});
@@ -1174,7 +1174,7 @@ function testDateFmtFormatRelativeWithinDayBefore_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("πριν από 4 ώρες", fmt.formatRelative(reference, date));
+    assertEquals("y", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_et_EE() {
@@ -1199,7 +1199,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("za 4 dní", fmt.formatRelative(reference, date));
+    assertEquals("y", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_et_EE() {
     var fmt = new ilib.DateFmt({locale: "et-EE", length: "full"});
@@ -1223,7 +1223,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("πριν από 4 ημέρες", fmt.formatRelative(reference, date));
+    assertEquals("y", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_et_EE() {
@@ -1248,7 +1248,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("za 9 týdnů", fmt.formatRelative(reference, date));
+    assertEquals("y", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_et_EE() {
     var fmt = new ilib.DateFmt({locale: "et-EE", length: "full"});
@@ -1272,7 +1272,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("πριν από 9 εβδομάδες", fmt.formatRelative(reference, date));
+    assertEquals("y", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_et_EE() {
@@ -1297,7 +1297,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("za 16 měsíců", fmt.formatRelative(reference, date));
+    assertEquals("y", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_et_EE() {
     var fmt = new ilib.DateFmt({locale: "et-EE", length: "full"});
@@ -1321,7 +1321,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("πριν από 14 μήνες", fmt.formatRelative(reference, date));
+    assertEquals("y", fmt.formatRelative(reference, date));
 }
 
 function testDateFmtFormatRelativeYearsAfter_et_EE() {
@@ -1346,7 +1346,7 @@ function testDateFmtFormatRelativeYearsAfter_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("za 14 let", fmt.formatRelative(reference, date));
+    assertEquals("y", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_et_EE() {
     var fmt = new ilib.DateFmt({locale: "et-EE", length: "full"});
@@ -1370,7 +1370,5 @@ function testDateFmtFormatRelativeYearsBefore_et_EE() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("πριν από 21 έτη", fmt.formatRelative(reference, date));
-}
-
-*/
+    assertEquals("y", fmt.formatRelative(reference, date));
+}*/

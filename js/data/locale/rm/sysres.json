@@ -93,6 +93,8 @@
     "durationMediumYears": "one#{num} onn|#{num} on",
     "1#1 yr|#{num} yrs": "one#{num} onn|#{num} onns",
     "1#1 year|#{num} years": "one#{num} onn|#{num} onns",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": ", ",
     "separatorLong": " "
 }

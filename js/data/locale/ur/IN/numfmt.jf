@@ -1,5 +1,4 @@
 {
-    "generated": true,
     "numfmt": {
         "script": "arabext",
         "decimalChar": "٫",
@@ -8,7 +7,8 @@
         "exponential": "×۱۰^",
         "secgroupSize": 2,
         "currencyFormats": {
-            "common": "{s} {n}"
+             "common": "{s} {n}",
+	     "commonNegative": "-{s} {n}"
         },
         "digits": "۰۱۲۳۴۵۶۷۸۹"
     }

@@ -92,8 +92,8 @@
     "durationMediumYears": "#{num} g.",
     "1#1 yr|#{num} yrs": "one#{num} gads|#{num} gadi",
     "1#1 year|#{num} years": "one#{num} gads|#{num} gadi",
-    "{duration} ago": "pirms {duration}",
-    "in {duration}": "pēc {duration}",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": " un ",
     "separatorLong": " "
 }

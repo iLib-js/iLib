@@ -89,6 +89,8 @@
     "#{num}y": "#වසර {num}ක්",
     "1#1 yr|#{num} yrs": "#වසර {num}ක්",
     "1#1 year|#{num} years": "#වසර {num}ක්",
+    "{duration} ago": "-{duration}",
+    "in {duration}": "+{duration}",
     "finalSeparatorFull": ", ",
     "separatorLong": " "
 }
