@@ -84,6 +84,16 @@ function testStringFormatWithMultipleArgs() {
     }));
 }
 
+function testStringFormatWithSameArgMultipleTimes() {
+    var str = new ilib.String("Format {size} when {size} is at least {size} big.");
+    
+    assertNotNull(str);
+    
+    assertEquals("Format medium when medium is at least medium big.", str.format({
+        size: "medium"
+    }));
+}
+
 function testStringFormatWithMissingArgs() {
     var str = new ilib.String("Format {size} {object}.");
     

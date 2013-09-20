@@ -381,9 +381,11 @@ ilib.String.prototype = {
 	format: function (params) {
 		var formatted = this.str;
 		if (params) {
+			var regex;
 			for (var p in params) {
 				if (typeof(params[p]) !== 'undefined') {
-					formatted = formatted.replace("\{"+p+"\}", params[p]);
+					regex = new RegExp("\{"+p+"\}", "g");
+					formatted = formatted.replace(regex, params[p]);
 				}
 			}
 		}
