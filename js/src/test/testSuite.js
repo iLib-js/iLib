@@ -123,7 +123,7 @@ function suite() {
 		"testdatefmtrange.js",
 		"testdatefmtrange_kk_Cyrl_KZ.js",
 		"testdatefmtrange_ko_KR.js",
-		"testdatefmtrange_ku_Arab_IQ.js",
+		//"testdatefmtrange_ku_Arab_IQ.js",
 		"testdatefmtrange_lt_LT.js",
 		"testdatefmtrange_lv_LV.js",
 		"testdatefmtrange_mk_MK.js",
