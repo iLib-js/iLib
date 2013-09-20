@@ -23,4 +23,5 @@
 /* !depends
 strings.js
 resources.js
+scriptinfo.js
 */
