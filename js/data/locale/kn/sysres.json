@@ -1,5 +1,4 @@
 {
-    "generated": true,
     "NN1": "ಜನ",
     "NN2": "ಫೆ",
     "NN3": "ಮಾ",
@@ -24,8 +23,8 @@
     "MMM10": "ಅಕ್ಟೋಬರ್",
     "MMM11": "ನವೆಂಬರ್",
     "MMM12": "ಡಿಸೆಂಬರ್",
-    "MMMM1": "ಜನವರೀ",
-    "MMMM2": "ಫೆಬ್ರವರೀ",
+    "MMMM1": "ಜನವರಿ",
+    "MMMM2": "ಫೆಬ್ರುವರಿ",
     "MMMM3": "ಮಾರ್ಚ್",
     "MMMM4": "ಎಪ್ರಿಲ್",
     "MMMM5": "ಮೆ",
@@ -64,6 +63,8 @@
     "EEEE4": "ಗುರುವಾರ",
     "EEEE5": "ಶುಕ್ರವಾರ",
     "EEEE6": "ಶನಿವಾರ",
+    "a0": "ಪೂರ್ವಾಹ್ನ",
+    "a1": "ಮಧ್ಯಾಹ್ನ",
     "G-1": "ಕ್ರಿ.ಪೂ",
     "G1": "ಜಾಹೀ",
     "#{num}s": "#{num}ಸ",
@@ -94,8 +95,8 @@
     "durationMediumYears": "#{num} ವರ",
     "1#1 yr|#{num} yrs": "#{num} ವರ್",
     "1#1 year|#{num} years": "#{num} ವರ್ಷಗಳು",
-    "{duration} ago": "-{duration}",
-    "in {duration}": "+{duration}",
+    "{duration} ago": "{duration} ಹಿಂದೆ",
+    "in {duration}": "{duration} ನಂತರ",
     "finalSeparatorFull": ", ಮತ್ತು ",
     "separatorLong": " "
 }
