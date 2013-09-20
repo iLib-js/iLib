@@ -3065,6 +3065,1754 @@ function testDurFmtHIFormatShortClockAsync() {
     assertTrue(callbackCalled);
 };
 
+//test cases for marathi mr-IN
+
+function testDurFmtMRFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "mr-IN",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1व 1म 1आ 1द 1त 1म 1स", duration.toString());
+};
+
+function testDurFmtMRFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "mr-IN",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1व 1म 1आ 1द 1त 1म 1स", duration.toString());
+};
+
+//need to translate a.m & p.m
+/*function testDurFmtMRFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "mr-IN",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1व 1म 1आ 1द 1:01:01 पूर्वाह्न", duration.toString());
+};*/
+
+function testDurFmtMRFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "mr-IN",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 वर 1 मह 1 आठ 1 दि 1 तास 1 मि 1 से", duration.toString());
+};
+
+function testDurFmtMRFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "mr-IN",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 वर्ष 1 महि 1 आठव 1 दिवस 1 तास 1 मिन 1 सेक", duration.toString());
+};
+
+function testDurFmtMRFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "mr-IN",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 वर्ष, 1 महिना, 1 आठवडा, 1 दिवस, 1 तास, 1 मिनिट आणि 1 सेकंद", duration.toString());
+};
+
+
+function testDurFmtMRAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "mr-IN",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("2 वर्षे, 2 महिने, 2 आठवडे, 2 दिवस, 2 तास, 2 मिनिटे आणि 2 सेकंद", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+
+//Need translation for a.m. & p.m.
+/*function testDurFmtMRFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "mr-IN",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("1व 1म 1आ 1द 1:01:01 पूर्वाह्न", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};
+*/
+
+//testa cases for Tamli (te-IN)
+
+function testDurFmtTEFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "te-IN",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1స 1న 1వ 1ర 1గ 1న 1స", duration.toString());
+};
+
+function testDurFmtTEFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "te-IN",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1స 1న 1వ 1ర 1గ 1న 1స", duration.toString());
+};
+
+//Need translation for a.m & p.m
+/*function testDurFmtTEFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "te-IN",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1స 1న 1వ 1ర 1:01:01 पूर्वाह्न", duration.toString());
+};*/
+
+
+function testDurFmtTEFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "te-IN",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 సం 1 నెల 1 వా 1 రో 1 గంట 1 ని 1 సె", duration.toString());
+};
+
+function testDurFmtTEFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "te-IN",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 సంవ 1 నెల 1 వారం 1 రోజు 1 గంట 1 నిమ 1 సెక", duration.toString());
+};
+
+function testDurFmtTEFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "te-IN",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 సంవత్సరం, 1 నెల, 1 వారం, 1 రోజు, 1 గంట, 1 నిమిషం మరియు 1 సెకను", duration.toString());
+};
+
+
+function testDurFmtTEAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "te-IN",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("2 సంవత్సరాలు, 2 నెలలు, 2 వారాలు, 2 రోజులు, 2 గంటలు, 2 నిమిషాలు మరియు 2 సెకన్లు", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+//Need Translation for a.m & p.m
+/*function testDurFmtTEFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "te-IN",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("1స 1న 1వ 1ర 1:01:01 पूर्वाह्न", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};*/
+
+
+//test cases for kannada(kn-IN)
+
+function testDurFmtKNFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "kn-IN",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1ವ 1ತ 1ವ 1ದ 1ಗ 1ನ 1ಸ", duration.toString());
+};
+
+function testDurFmtKNFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "kn-IN",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1ವ 1ತ 1ವ 1ದ 1ಗ 1ನ 1ಸ", duration.toString());
+};
+
+//Need to translate am & pm
+/*function testDurFmtKNFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "kn-IN",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1ವ 1ತ 1ವ 1ದ 1:01:01 पूर्वाह्न", duration.toString());
+};*/
+
+function testDurFmtKNFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "kn-IN",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 ವರ 1 ತಿ 1 ವಾ 1 ದಿನ 1 ಗಂ. 1 ನಿ 1 ಸೆ", duration.toString());
+};
+
+function testDurFmtKNFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "kn-IN",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 ವರ್ 1 ತಿಂ 1 ವಾರ 1 ದಿನ 1 ಗಂಟ 1 ನಿಮ 1 ಸೆಕ", duration.toString());
+};
+
+function testDurFmtKNFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "kn-IN",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 ವರ್ಷಗಳು, 1 ತಿಂಗಳುಗಳು, 1 ವಾರಗಳು, 1 ದಿನಗಳು, 1 ಗಂಟೆಗಳು, 1 ನಿಮಿಷಗಳು, ಮತ್ತು 1 ಸೆಕೆಂಡುಗಳು", duration.toString());
+};
+
+
+function testDurFmtKNAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "kn-IN",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("2 ವರ್ಷಗಳು, 2 ತಿಂಗಳುಗಳು, 2 ವಾರಗಳು, 2 ದಿನಗಳು, 2 ಗಂಟೆಗಳು, 2 ನಿಮಿಷಗಳು, ಮತ್ತು 2 ಸೆಕೆಂಡುಗಳು", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+//Need to translate am & pm
+/*
+function testDurFmtKNFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "kn-IN",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("1ವ 1ತ 1ವ 1ದ 1:01:01 पूर्वाह्न", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};*/
+
+
+//test cases for tamil(ta-IN)
+
+function testDurFmtTAFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ta-IN",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1வ 1ம 1வ 1ந 1ம 1ந 1வ", duration.toString());
+};
+
+function testDurFmtTAFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ta-IN",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1வ 1ம 1வ 1ந 1ம 1ந 1வ", duration.toString());
+};
+
+//Need translation for a.m & p.m
+/*function testDurFmtTAFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ta-IN",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1வ 1ம 1வ 1ந 1:01:01 पूर्वाह्न", duration.toString());
+};
+*/
+function testDurFmtTAFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ta-IN",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 வர 1 மா 1 வா 1 நா 1 மண 1 நி 1 வி", duration.toString());
+};
+
+function testDurFmtTAFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ta-IN",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 வரு 1 மாத 1 வார 1 நாள் 1 மணி 1 நிம 1 வின", duration.toString());
+};
+
+function testDurFmtTAFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ta-IN",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 வருடம், 1 மாதம், 1 வாரம், 1 நாள், 1 மணிநேரம், 1 நிமிடம் மற்றும் 1 வினாடி", duration.toString());
+};
+
+
+function testDurFmtTAAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "ta-IN",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("2 வருடங்கள், 2 மாதங்கள், 2 வாரங்கள், 2 நாட்கள், 2 மணிநேரம், 2 நிமிடங்கள் மற்றும் 2 வினாடிகள்", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+//Need translation for a.m & p.m
+/*function testDurFmtTAFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "ta-IN",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("1வ 1ம 1வ 1ந 1:01:01 पूर्वाह्न", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};
+*/
+
+//test cases for Malaylam(ml-IN)
+
+function testDurFmtMLFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ml-IN",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1വ 1മ 1ആ 1ദ 1മ 1മ 1സ", duration.toString());
+};
+
+function testDurFmtMLFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ml-IN",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1വ 1മ 1ആ 1ദ 1മ 1മ 1സ", duration.toString());
+};
+
+//Need translation for a.m & p.m
+/*function testDurFmtMLFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ml-IN",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1ദ 1മ 1മ 1സ 1:01:01 पूर्वाह्न", duration.toString());
+};
+*/
+function testDurFmtMLFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ml-IN",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 വർ 1 മാ 1 ആഴ 1 ദി 1 മണ 1 മി 1 സെ", duration.toString());
+};
+
+function testDurFmtMLFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ml-IN",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 വർഷം 1 മാസം 1 ആഴ്ച 1 ദിവ 1 മണി 1 മിന 1 സെക", duration.toString());
+};
+
+function testDurFmtMLFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ml-IN",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 വർഷം, 1 മാസം, 1 ആഴ്ച, 1 ദിവസം, 1 മണിക്കൂർ, 1 മിനിട്ട്,  എന്നിവ1 സെക്കന്റ്", duration.toString());
+};
+
+
+function testDurFmtMLAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "ml-IN",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("2 വർഷം, 2 മാസം, 2 ആഴ്ച, 2 ദിവസം, 2 മണിക്കൂർ, 2 മിനിട്ട്,  എന്നിവ2 സെക്കന്റ്", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+//Need translation for a.m & p.m
+/*function testDurFmtMLFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "ml-IN",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("1வ 1ம 1வ 1ந 1:01:01 पूर्वाह्न", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};
+*/
+
+
+//test cases for Gujrati(gu-IN)
+
+function testDurFmtGUFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "gu-IN",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1વ 1મ 1અ 1દ 1ક 1મ 1સ", duration.toString());
+};
+
+function testDurFmtGUFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "gu-IN",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1વ 1મ 1અ 1દ 1ક 1મ 1સ", duration.toString());
+};
+
+//Need translation for a.m & p.m
+/*function testDurFmtGUFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "gu-IN",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1வ 1ம 1வ 1ந 1:01:01 पूर्वाह्न", duration.toString());
+};
+*/
+function testDurFmtGUFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "gu-IN",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 વર 1 મહ 1 અઠ. 1 દિ 1 કલ 1 મિ 1 સે", duration.toString());
+};
+
+function testDurFmtGUFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "gu-IN",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 વર્ષ 1 મહિ 1 અઠવ 1 દિવસ 1 કલાક 1 મિન 1 સેક", duration.toString());
+};
+
+function testDurFmtGUFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "gu-IN",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 વર્ષ, 1 મહિનો, 1 અઠવાડિયું, 1 દિવસ, 1 કલાક, 1 મિનિટ અને 1 સેકંડ", duration.toString());
+};
+
+
+function testDurFmtGUAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "gu-IN",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("2 વર્ષ, 2 મહિનો, 2 અઠવાડિયા, 2 દિવસ, 2 કલાક, 2 મિનિટ અને 2 સેકંડ", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+//Need translation for a.m & p.m
+/*function testDurFmtGUFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "gu-IN",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("1வ 1ம 1வ 1ந 1:01:01 पूर्वाह्न", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};
+*/
+
+
+//test cases for Bengali(bn-IN)
+
+function testDurFmtBNFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "bn-IN",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1ব 1ম 1স 1দ 1ঘ 1ম 1স", duration.toString());
+};
+
+function testDurFmtBNFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "bn-IN",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1ব 1ম 1স 1দ 1ঘ 1ম 1স", duration.toString());
+};
+
+//Need translation for a.m & p.m
+/*function testDurFmtBNFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "bn-IN",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1வ 1ம 1வ 1ந 1:01:01 पूर्वाह्न", duration.toString());
+};
+*/
+function testDurFmtBNFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "bn-IN",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 বছর 1 মাস 1 সপ 1 দিন 1 ঘন 1 মি 1 সে", duration.toString());
+};
+
+function testDurFmtBNFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "bn-IN",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 বছর 1 মাস 1 সপ্ 1 দিন 1 ঘন্ 1 মিন 1 সেক", duration.toString());
+};
+
+function testDurFmtBNFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "bn-IN",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 বছর, 1 মাস, 1 সপ্তাহ, 1 দিন, 1 ঘন্টা, 1 মিনিট, এবং 1 সেকেন্ড", duration.toString());
+};
+
+
+function testDurFmtBNAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "bn-IN",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("2 বছর, 2 মাস, 2 সপ্তাহ, 2 দিন, 2 ঘন্টা, 2 মিনিট, এবং 2 সেকেন্ড", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+//Need translation for a.m & p.m
+/*function testDurFmtBNFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "bn-IN",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("1வ 1ம 1வ 1ந 1:01:01 पूर्वाह्न", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};
+*/
+
+
+//test cases for Assamese(as-IN)
+
+/*function testDurFmtASFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "as-IN",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("y", duration.toString());
+};
+
+function testDurFmtASFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "as-IN",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("y", duration.toString());
+};*/
+
+//Need translation for a.m & p.m
+/*function testDurFmtASFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "as-IN",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1வ 1ம 1வ 1ந 1:01:01 पूर्वाह्न", duration.toString());
+};
+*/
+/*function testDurFmtASFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "as-IN",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("y", duration.toString());
+};
+
+function testDurFmtASFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "as-IN",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("y", duration.toString());
+};
+
+function testDurFmtASFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "as-IN",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("y", duration.toString());
+};
+
+
+function testDurFmtASAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "as-IN",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("y", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};*/
+
+//Need translation for a.m & p.m
+/*function testDurFmtASFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "as-IN",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("y", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};
+*/
+
+//test cases for Punjabi(pa-IN)
+
+/*function testDurFmtPAFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "pa-IN",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("y", duration.toString());
+};
+
+function testDurFmtPAFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "pa-IN",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("y", duration.toString());
+};
+*/
+//Need translation for a.m & p.m
+/*function testDurFmtPAFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "pa-IN",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("y", duration.toString());
+};*/
+
+
+
+/*function testDurFmtPAFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "pa-IN",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("y", duration.toString());
+};
+
+function testDurFmtPAFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "pa-IN",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("y", duration.toString());
+};
+
+function testDurFmtPAFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "pa-IN",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("y", duration.toString());
+};
+
+
+function testDurFmtPAAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "pa-IN",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("y", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+//Need translation for a.m & p.m
+/*function testDurFmtPAFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "pa-IN",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("y", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};
+*/
+
+
+//test cases for Urdu(ur-IN)
+
+function testDurFmtURFormatShortDefaultStyle() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ur-IN",
+    	length: "short"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1س 1م 1ہ 1د 1گ 1م 1س", duration.toString());
+};
+
+function testDurFmtURFormatShortText() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ur-IN",
+    	length: "short",
+    	style: "text"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1س 1م 1ہ 1د 1گ 1م 1س", duration.toString());
+};
+
+//Need translation for a.m & p.m
+/*function testDurFmtURFormatShortClock() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ur-IN",
+    	length: "short",
+    	style: "clock"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("y", duration.toString());
+};
+*/
+function testDurFmtURFormatMedium() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ur-IN",
+    	length: "medium"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 سال 1 مہ 1 ہف 1 دن 1 گھ 1 منٹ 1 سی", duration.toString());
+};
+
+function testDurFmtURFormatLong() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ur-IN",
+    	length: "long"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 سال 1 مہی 1 ہفتہ 1 دن 1 گھن 1 منٹ 1 سیک", duration.toString());
+};
+
+function testDurFmtURFormatFull() {
+    var fmt = new ilib.DurFmt({
+    	locale: "ur-IN",
+    	length: "full"
+    });
+    assertNotNull(fmt);
+    
+    var duration = fmt.format({
+    	year: 1,
+    	month: 1,
+    	week: 1,
+    	day: 1,
+    	hour: 1,
+    	minute: 1,
+    	second: 1
+    });
+    assertEquals("1 سال، 1 مہینہ، 1 ہفتہ، 1 دن، 1 گھنٹہ، 1 منٹ، اور 1 سیکنڈ", duration.toString());
+};
+
+
+function testDurFmtURAsyncWithLocale() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "ur-IN",
+    	length: "full",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 2,
+    	    	month: 2,
+    	    	week: 2,
+    	    	day: 2,
+    	    	hour: 2,
+    	    	minute: 2,
+    	    	second: 2
+    	    });
+    	    assertEquals("2 سال، 2 مہینے، 2 ہفتے، 2 دن، 2 گھنٹے، 2 منٹ، اور 2 سیکنڈ", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    
+    assertTrue(callbackCalled);
+};
+
+//Need translation for a.m & p.m
+/*function testDurFmtURFormatShortClockAsync() {
+	var callbackCalled = false;
+    new ilib.DurFmt({
+    	locale: "ur-IN",
+    	length: "short",
+    	style: "clock",
+    	sync: false,
+    	onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	    
+    	    var duration = fmt.format({
+    	    	year: 1,
+    	    	month: 1,
+    	    	week: 1,
+    	    	day: 1,
+    	    	hour: 1,
+    	    	minute: 1,
+    	    	second: 1
+    	    });
+    	    assertEquals("y", duration.toString());
+    	    callbackCalled = true;
+    	}
+    });
+    assertTrue(callbackCalled);
+};
+*/
 
 //test cases for croation
 
