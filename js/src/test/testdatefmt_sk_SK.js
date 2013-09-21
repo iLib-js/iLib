@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+ilib.String.loadPlurals(true, "sk-SK");
+
 function testDateFmtConstructorEmpty_sk_SK() {
     var fmt = new ilib.DateFmt({locale: "sk-SK"});
     

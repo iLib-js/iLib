@@ -1,5 +1,5 @@
 /*
- * testdatefmt_sl_SI.js - test the date formatter object in č,aiLand
+ * testdatefmt_sl_SI.js - test the date formatter object in Slovenian/Slovenia
  * 
  * Copyright © 2012-2013, JEDLSoft
  *
@@ -16,6 +16,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+ilib.String.loadPlurals(true, "sl-SI");
 
 function testDateFmtConstructorEmpty_sl_SI() {
     var fmt = new ilib.DateFmt({locale: "sl-SI"});

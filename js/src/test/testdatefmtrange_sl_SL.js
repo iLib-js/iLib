@@ -36,6 +36,8 @@
  * limitations unslr the License.
  */
 
+ilib.String.loadPlurals(true, "sl-SL");
+
 function testDateRngFmtSLRangeInDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "sl-SL", length: "short"});
     assertNotNull(fmt);

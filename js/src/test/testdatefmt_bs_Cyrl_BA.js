@@ -1,5 +1,5 @@
 /*
- * testdatefmt_bs_Cyrl_BA.js - test the date formatter object in Cyrlic Bosnian
+ * testdatefmt_bs_Cyrl_BA.js - test the date formatter object in Cyrillic Bosnian
  * 
  * Copyright © 2012-2013, JEDLSoft
  *
@@ -16,6 +16,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+ilib.String.loadPlurals(true, "bs-BA");
 
 function testDateFmtConstructorEmpty_bs_Cyrl_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Cyrl-BA"});

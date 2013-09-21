@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+ilib.String.loadPlurals(true, "cs-CZ");
+
 function testDateFmtConstructorEmpty_cs_CZ() {
     var fmt = new ilib.DateFmt({locale: "cs-CZ"});
     

@@ -17,6 +17,8 @@
  * limcsations under the License.
  */
 
+ilib.String.loadPlurals(true, "cs-CZ");
+
 function testDateRngFmtCZRangeinDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "cs-CZ", length: "short"});
     assertNotNull(fmt);

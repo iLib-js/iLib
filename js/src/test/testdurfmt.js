@@ -17,6 +17,33 @@
  * limitations under the License.
  */
 
+ilib.String.loadPlurals(true, "sl-SI");
+ilib.String.loadPlurals(true, "uk-UA");
+ilib.String.loadPlurals(true, "sr-RS");
+ilib.String.loadPlurals(true, "sk-SK");
+ilib.String.loadPlurals(true, "ru-RU");
+ilib.String.loadPlurals(true, "ro-RO");
+ilib.String.loadPlurals(true, "pl-PL");
+ilib.String.loadPlurals(true, "nb-NO");
+ilib.String.loadPlurals(true, "mk-MK");
+ilib.String.loadPlurals(true, "lv-LV");
+ilib.String.loadPlurals(true, "lt-LT");
+ilib.String.loadPlurals(true, "hr-HR");
+ilib.String.loadPlurals(true, "ur-IN");
+ilib.String.loadPlurals(true, "gu-IN");
+ilib.String.loadPlurals(true, "ta-IN");
+ilib.String.loadPlurals(true, "te-IN");
+ilib.String.loadPlurals(true, "mr-IN");
+ilib.String.loadPlurals(true, "hi-IN");
+ilib.String.loadPlurals(true, "he-IL");
+ilib.String.loadPlurals(true, "el-GR");
+ilib.String.loadPlurals(true, "cs-CZ");
+ilib.String.loadPlurals(true, "bs-BA");
+ilib.String.loadPlurals(true, "bg-BG");
+ilib.String.loadPlurals(true, "ar-SA");
+ilib.String.loadPlurals(true, "sq-AL");
+ilib.String.loadPlurals(true, "et-EE");
+
 function testDurFmtConstructorEmpty() {
 	var fmt = new ilib.DurFmt();
     

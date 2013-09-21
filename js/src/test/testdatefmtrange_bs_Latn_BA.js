@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+ilib.String.loadPlurals(true, "bs-BA");
+
 function testDateRngFmtBARangeInDayShort() {
     var fmt = new ilib.DateRngFmt({locale: "bs-Latn-BA", length: "short"});
     assertNotNull(fmt);
