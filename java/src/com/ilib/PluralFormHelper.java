@@ -3,6 +3,7 @@ package com.ilib;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
@@ -78,8 +79,12 @@ public class PluralFormHelper {
 			while ( (currentLine = reader.readLine()) != null ) {
 				builder.append(currentLine);
 			}
+		} catch (FileNotFoundException e) {
+			System.err.println("File not found: " + file.getPath());
+			return null;
 		} catch (IOException e) {
 			e.printStackTrace();
+			return null;
 		}
 
 		Map<String, String> pluralForms = new HashMap<>();

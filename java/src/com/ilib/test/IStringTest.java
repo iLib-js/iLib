@@ -1108,4 +1108,580 @@ public class IStringTest
         }
     }
 
+    public void testStringFormatChoiceArabishPluralsZero() {
+        IString str = new IString("zero#There are no strings.|one#There is 1 string.|two#There are 2 strings." +
+        		"|few#There are just {num} strings.|many#There are {num} strings.", "ar");
+        
+        assertNotNull(str);
+
+        int num = 0;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+
+        try {
+            assertEquals("There are no strings.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceArabishPluralsOne() {
+        IString str = new IString("zero#There are no strings.|one#There is 1 string.|two#There are 2 strings." +
+        		"|few#There are just {num} strings.|many#There are {num} strings.", "ar");
+        
+        assertNotNull(str);
+
+        int num = 1;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+
+        try {
+            assertEquals("There is 1 string.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceArabishPluralsTwo() {
+        IString str = new IString("zero#There are no strings.|one#There is 1 string.|two#There are 2 strings." +
+        		"|few#There are just {num} strings.|many#There are {num} strings.", "ar");
+        
+        assertNotNull(str);
+
+        int num = 2;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+
+        try {
+            assertEquals("There are 2 strings.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceArabishPluralsFew() {
+        IString str = new IString("zero#There are no strings.|one#There is 1 string.|two#There are 2 strings." +
+        		"|few#There are just {num} strings.|many#There are {num} strings.", "ar");
+        
+        assertNotNull(str);
+
+        int num = 7;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+
+        try {
+            assertEquals("There are just 7 strings.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceArabishPluralsMany() {
+        IString str = new IString("zero#There are no strings.|one#There is 1 string.|two#There are 2 strings." +
+        		"|few#There are just {num} strings.|many#There are {num} strings.", "ar");
+        
+        assertNotNull(str);
+
+        int num = 875;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+
+        try {
+            assertEquals("There are 875 strings.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+    
+    public void testStringFormatChoiceHebrewPluralsOne() {
+    	IString str = new IString("one#There is only 1 string.|many#There are {num} strings.|other#There are {num} particular strings.", "he");
+        
+        assertNotNull(str);
+
+        int num = 1;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+
+        try {
+            assertEquals("There is only 1 string.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceHebrewPluralsMany() {
+    	IString str = new IString("one#There is only 1 string.|many#There are {num} strings.|other#There are {num} particular strings.", "he");
+        
+        assertNotNull(str);
+
+        int num = 50;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+
+        try {
+            assertEquals("There are 50 strings.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceHebrewPluralsDefault() {
+        IString str = new IString("one#There is only 1 string.|many#There are {num} strings.|other#There are {num} particular strings.", "he");
+        
+        assertNotNull(str);
+
+        int num = 5502;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+
+        try {
+            assertEquals("There are 5502 particular strings.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+    
+    public void testStringFormatChoiceRussianPluralsOne() {
+    	IString str = new IString("one#{Player} забил {num} гол за сезон.|few#{Player} забил {num} гола за сезон.|many#{Player} забил {num} голов за сезон.", "ru");
+        
+        assertNotNull(str);
+
+        int num = 31;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+        values.put("Player", "Bale");
+
+        try {
+            assertEquals("Bale забил 31 гол за сезон.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceRussianPluralsFew() {
+    	IString str = new IString("one#{Player} забил {num} гол за сезон.|few#{Player} забил {num} гола за сезон.|many#{Player} забил {num} голов за сезон.", "ru");
+        
+        assertNotNull(str);
+
+        int num = 24;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+        values.put("Player", "Benzema");
+
+        try {
+            assertEquals("Benzema забил 24 гола за сезон.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceRussianPluralsMany() {
+    	IString str = new IString("one#{Player} забил {num} гол за сезон.|few#{Player} забил {num} гола за сезон.|many#{Player} забил {num} голов за сезон.", "ru");
+        
+        assertNotNull(str);
+
+        int num = 56;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+        values.put("Player", "Ronaldo");
+
+        try {
+            assertEquals("Ronaldo забил 56 голов за сезон.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+    
+    public void testStringFormatChoiceMaltesePluralsOneJSON() {
+        IString str = new IString("one#There is 1 item.|few#There are only {num} strings.|many#There is amount of {num} strings." +
+        		"|other#There are {num} strings by default.", "mt");
+        
+        assertNotNull(str);
+
+        int num = 1;
+        JSONObject json = null;
+        try {
+            json = new JSONObject("{ num : 1 }");
+        } catch ( JSONException e ) {
+            e.printStackTrace();
+            fail();
+        }
+
+        try {
+            assertEquals("There is 1 item.", str.formatChoice(num, json));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceMaltesePluralsFewJSON() {
+    	IString str = new IString("one#There is 1 item.|few#There are only {num} strings.|many#There is amount of {num} strings." +
+        		"|other#There are {num} strings by default.", "mt");
+        
+        assertNotNull(str);
+
+        int num = 0;
+        JSONObject json = null;
+        try {
+            json = new JSONObject("{ num : 0 }");
+        } catch ( JSONException e ) {
+            e.printStackTrace();
+            fail();
+        }
+
+        try {
+            assertEquals("There are only 0 strings.", str.formatChoice(num, json));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceMaltesePluralsManyJSON() {
+    	IString str = new IString("one#There is 1 item.|few#There are only {num} strings.|many#There is amount of {num} strings." +
+        		"|other#There are {num} strings by default.", "mt");
+        
+        assertNotNull(str);
+
+        int num = 215;
+        JSONObject json = null;
+        try {
+            json = new JSONObject("{ num : 215 }");
+        } catch ( JSONException e ) {
+            e.printStackTrace();
+            fail();
+        }
+
+        try {
+            assertEquals("There is amount of 215 strings.", str.formatChoice(num, json));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceMaltesePluralsOtherJSON() {
+    	IString str = new IString("one#There is 1 item.|few#There are only {num} strings.|many#There is amount of {num} strings." +
+        		"|other#There are {num} strings by default.", "mt");
+        
+        assertNotNull(str);
+
+        int num = 700;
+        JSONObject json = null;
+        try {
+            json = new JSONObject("{ num : 700 }");
+        } catch ( JSONException e ) {
+            e.printStackTrace();
+            fail();
+        }
+
+        try {
+            assertEquals("There are 700 strings by default.", str.formatChoice(num, json));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+    
+    public void testStringFormatChoiceSlovenianPluralsOneJSON() {
+    	IString str = new IString("one#There is {num} item.|two#There are only {num} strings.|few#There is amount of {num} strings.", "sl");
+        
+        assertNotNull(str);
+
+        int num = 101;
+        JSONObject json = null;
+        try {
+            json = new JSONObject("{ num : 101 }");
+        } catch ( JSONException e ) {
+            e.printStackTrace();
+            fail();
+        }
+
+        try {
+            assertEquals("There is 101 item.", str.formatChoice(num, json));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceSlovenianPluralsTwoJSON() {
+    	IString str = new IString("one#There is {num} item.|two#There are only {num} strings.|few#There is amount of {num} strings.", "sl");
+        
+        assertNotNull(str);
+
+        int num = 4802;
+        JSONObject json = null;
+        try {
+            json = new JSONObject("{ num : 4802 }");
+        } catch ( JSONException e ) {
+            e.printStackTrace();
+            fail();
+        }
+
+        try {
+            assertEquals("There are only 4802 strings.", str.formatChoice(num, json));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceSlovenianPluralsFewJSON() {
+    	IString str = new IString("one#There is {num} item.|two#There are only {num} strings.|few#There is amount of {num} strings.", "sl");
+        
+        assertNotNull(str);
+
+        int num = 404;
+        JSONObject json = null;
+        try {
+            json = new JSONObject("{ num : 404 }");
+        } catch ( JSONException e ) {
+            e.printStackTrace();
+            fail();
+        }
+
+        try {
+            assertEquals("There is amount of 404 strings.", str.formatChoice(num, json));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+    
+    public void testStringFormatChoiceSlovenianPluralsOtherJSON() {
+    	IString str = new IString("one#There is {num} item.|two#There are only {num} strings.|few#There is amount of {num} strings.", "sl");
+        
+        assertNotNull(str);
+
+        int num = 125;
+        JSONObject json = null;
+        try {
+            json = new JSONObject("{ num : 125 }");
+        } catch ( JSONException e ) {
+            e.printStackTrace();
+            fail();
+        }
+
+        try {
+            assertEquals("", str.formatChoice(num, json));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceRussianPluralsManyJSON() {
+    	IString str = new IString("one#{Player} забил {num} гол за сезон.|few#{Player} забил {num} гола за сезон.|many#{Player} забил {num} голов за сезон.", "ru");
+        
+        assertNotNull(str);
+        
+        int num = 56;
+        JSONObject json = null;
+        try {
+            json = new JSONObject("{\"Player\":\"Ronaldo\", num:56}");
+        } catch ( JSONException e ) {
+            e.printStackTrace();
+            fail();
+        }
+        
+        try {
+            assertEquals("Ronaldo забил 56 голов за сезон.", str.formatChoice(num, json));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+    
+    public void testStringFormatChoiceLatvianPluralsOneJSON() {
+    	IString str = new IString("one#There is {num} item.|zero#There are only {num} strings.|other#There is amount of {num} strings.", "lv");
+        
+        assertNotNull(str);
+
+        int num = 41;
+        JSONObject json = null;
+        try {
+            json = new JSONObject("{ num : 41 }");
+        } catch ( JSONException e ) {
+            e.printStackTrace();
+            fail();
+        }
+
+        try {
+            assertEquals("There is 41 item.", str.formatChoice(num, json));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceLatvianPluralsOtherJSON() {
+    	IString str = new IString("one#There is {num} item.|two#There are only {num} strings.|other#There is amount of {num} strings.", "lv");
+        
+        assertNotNull(str);
+
+        int num = 65;
+        JSONObject json = null;
+        try {
+            json = new JSONObject("{ num : 65 }");
+        } catch ( JSONException e ) {
+            e.printStackTrace();
+            fail();
+        }
+
+        try {
+            assertEquals("There is amount of 65 strings.", str.formatChoice(num, json));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+    
+    public void testStringFormatChoiceKazakhPluralsOneJSON() {
+    	IString str = new IString("one#There is {num} item.|two#There are only {num} strings.|few#There is amount of {num} strings.", "kz");
+        
+        assertNotNull(str);
+
+        int num = 125;
+        JSONObject json = null;
+        try {
+            json = new JSONObject("{ num : 125 }");
+        } catch ( JSONException e ) {
+            e.printStackTrace();
+            fail();
+        }
+
+        try {
+            assertEquals("", str.formatChoice(num, json));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceDefaultPluralsManyJSON() {
+    	IString str = new IString("one#There is 1 bottle.|other#There are {count} bottles.");
+        
+        assertNotNull(str);
+        
+        int num = 33;
+        JSONObject json = null;
+        try {
+            json = new JSONObject("{ count:33}");
+        } catch ( JSONException e ) {
+            e.printStackTrace();
+            fail();
+        }
+        
+        try {
+            assertEquals("There are 33 bottles.", str.formatChoice(num, json));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+    
+    public void testStringFormatChoiceWelshPluralsZero() {
+        IString str = new IString("zero#There are no strings.|one#There is 1 strings.|two#There are 2 strings." +
+        		"|few#There are only {num} strings.|many#There are {num} particular strings.|other#There is exact count of {num} strings.", "cy");
+        
+        assertNotNull(str);
+
+        int num = 0;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+
+        try {
+            assertEquals("There are no strings.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+    
+    public void testStringFormatChoiceWelshPluralsFew() {
+        IString str = new IString("zero#There are no strings.|one#There is 1 strings.|two#There are 2 strings." +
+        		"|few#There are only {num} strings.|many#There are {num} particular strings.|other#There is exact count of {num} strings.", "cy");
+        assertNotNull(str);
+
+        int num = 3;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+
+        try {
+            assertEquals("There are only 3 strings.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceWelshPluralsDefault() {
+        IString str = new IString("zero#There are no strings.|one#There is 1 strings.|two#There are 2 strings." +
+        		"|few#There are only {num} strings.|many#There are {num} particular strings.|other#There is exact count of {num} strings.", "cy");
+        assertNotNull(str);
+
+        int num = 24;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+
+        try {
+            assertEquals("There is exact count of 24 strings.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceDefaultPluralsOther() {
+    	IString str = new IString("one#{when} {user} has 1 book {where}.|other#{when} {user} has {num} books {where}.");
+        
+        assertNotNull(str);
+
+        int num = 25;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+        values.put("when", "Currently");
+        values.put("user", "Alex");
+        values.put("where", "at home");
+
+        try {
+            assertEquals("Currently Alex has 25 books at home.", str.formatChoice(num, values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceDefaultPluralsStringKey() {
+    	IString str = new IString("one#{when} {user} has 1 book {where}.|other#{when} {user} has {num} books {where}.");
+        
+        assertNotNull(str);
+
+        int num = 25;
+        HashMap<String,String> values = new HashMap<String,String>();
+        values.put("num", Integer.toString(num));
+        values.put("when", "Currently");
+        values.put("user", "Alex");
+        values.put("where", "at home");
+
+        try {
+            assertEquals("Currently Alex has 1 book at home.", str.formatChoice("one", values));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
 }

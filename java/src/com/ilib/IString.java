@@ -20,6 +20,7 @@
  */
 package com.ilib;
 
+import java.io.File;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,7 +51,10 @@ public class IString
     protected ArrayList<String> strings = null;
     protected String defaultChoice = null;
     protected ArrayList<Pattern> patterns = null;
-    
+
+    protected String locale = null;
+    protected Map<String, String> plurals = null;
+
     /**
      * Construct a new IString instance with the given text.
      * 
@@ -59,6 +63,19 @@ public class IString
     public IString(String text)
     {
         this.text = text;
+        locale = "";
+    }
+
+    /**
+     * Construct a new IString instance with the given text and locale info.
+     * 
+     * @param text the text to wrap
+     * @param locale the locale used for IString
+     */
+    public IString(String text, String locale)
+    {
+        this.text = text;
+        this.locale = locale;
     }
     
     /**
@@ -171,7 +188,7 @@ public class IString
         for ( i = 0; i < choices.length; i++ ) {    
             parts = choices[i].split("#");
             if ( parts.length > 2 ) {
-                str = choices[i].substring(choices[i].indexOf('#')+1);
+                str = choices[i].substring(choices[i].indexOf('#') + 1);
             } else if ( parts.length == 2 ) {
                 str = parts[1];
             } else {
@@ -298,8 +315,16 @@ public class IString
             parseChoices();
         }
 
+        if ( plurals == null ) {
+            File pluralJSON = new File(PluralFormHelper.root, 
+            		(locale.isEmpty() ? "" : locale + File.separator) + PluralFormHelper.pluralsJSON);
+            plurals = PluralFormHelper.getPluralForms(pluralJSON);
+            if (plurals == null) plurals = new HashMap<>(0);
+        }
+
         for (i = 0; i < selectors.size(); i++) {
             sel = selectors.get(i);
+
             if ( sel.length() > 2 && sel.substring(0,2).equals("<=") ) {                 
                 selector = Double.parseDouble(sel.substring(2));
                 if (reference <= selector) {
@@ -325,25 +350,35 @@ public class IString
                     i = selectors.size();
                 }
             } else if ( sel.length() > 0 ) {
-                int value, dash = sel.indexOf("-");
-                if ( dash != -1 ) {                     
-                    // range
-                    String start = sel.substring(0, dash);
-                    String end = sel.substring(dash+1);                   
-                    if (reference >= Long.parseLong(start, 10) && reference <= Long.parseLong(end, 10)) {                       
-                        result = new IString(strings.get(i));
-                        i = selectors.size();
-                    }
-                } else if ( (value = getBooleanSelector(sel)) > -1 ) {
-                    if ( value == reference ) {
-                        result = new IString(strings.get(i));
-                        i = selectors.size();
-                    }
-                } else if ( reference == Long.parseLong(sel, 10) ) {                     
-                    // exact amount
-                    result = new IString(strings.get(i));
+
+            	if ( PluralFormHelper.getPluralKey((int)reference, plurals).equals(sel) ) {
+                	result = new IString(strings.get(i));
                     i = selectors.size();
+                } else {
+                    int value, dash = sel.indexOf("-");
+                    if ( dash != -1 ) {                     
+                        // range
+                        String start = sel.substring(0, dash);
+                        String end = sel.substring(dash+1);                   
+                        if (reference >= Long.parseLong(start, 10) && reference <= Long.parseLong(end, 10)) {                       
+                            result = new IString(strings.get(i));
+                            i = selectors.size();
+                        }
+                    } else if ( (value = getBooleanSelector(sel)) > -1 ) {
+                        if ( value == reference ) {
+                            result = new IString(strings.get(i));
+                            i = selectors.size();
+                        }
+                    } else if (isNumeric(sel)) {
+
+                		if ( reference == Long.parseLong(sel, 10) ) {                     
+                            result = new IString(strings.get(i));
+                            i = selectors.size();
+                        }
+                    }
+
                 }
+
             }
         }
 
@@ -354,6 +389,11 @@ public class IString
         return result;
     }
     
+    public static boolean isNumeric(String str)
+    {
+    	return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+    }
+
     /**
      * Format a string as one of a choice of strings dependent on the value of
      * a particular reference argument.<p>
