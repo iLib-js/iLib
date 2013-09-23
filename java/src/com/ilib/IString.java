@@ -33,19 +33,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
+ * IString
+ * 
  * Represents an international string. This type of string allows for a 
  * formatting syntax very similar to the javascript ilib syntax, so that
  * strings can be shared between code in java or javascript.
  * 
  * @author edwin
  */
-/**
- * IString
- * 
- * @author edwin
- */
 public class IString
 {
+	protected final static String EMPTY_ITEM = "";
+	protected final static String OPENED_BRACE = "\\{";
+	protected final static String CLOSED_BRACE = "}";
+	protected final static String NUMBER_SIGN = "#";
+
     protected String text;
     protected ArrayList<String> selectors = null;
     protected ArrayList<String> strings = null;
@@ -63,7 +65,7 @@ public class IString
     public IString(String text)
     {
         this.text = text;
-        locale = "";
+        this.locale = EMPTY_ITEM;
     }
 
     /**
@@ -138,10 +140,11 @@ public class IString
      */
     public String format(Map<String,String> values)
     {
-        String formatted = this.text;
+        String formatted = text;
         if ( values != null ) {
             for ( String p: values.keySet() ) {
-                formatted = formatted.replaceAll("\\{"+p+"}",  java.util.regex.Matcher.quoteReplacement(values.get(p)));                
+                formatted = formatted.replaceAll(OPENED_BRACE + p + CLOSED_BRACE,
+                		java.util.regex.Matcher.quoteReplacement(values.get(p)));                
             }
         }
         return formatted.toString();
@@ -157,14 +160,15 @@ public class IString
      */
     public String format(JSONObject values)
     {
-        String formatted = this.text;
+        String formatted = text;
         if ( values != null ) {
             Iterator<String> it = values.keys();
             String p;
             while ( it.hasNext() ) {
                 p = it.next();
                 try {
-                    formatted = formatted.replaceAll("\\{"+p+"}",  java.util.regex.Matcher.quoteReplacement(values.getString(p)));
+                    formatted = formatted.replaceAll(OPENED_BRACE + p + CLOSED_BRACE,
+                    		java.util.regex.Matcher.quoteReplacement(values.getString(p)));
                 } catch ( JSONException e ) {
                     // ignore
                 }                
@@ -183,17 +187,16 @@ public class IString
         
         strings = new ArrayList<String>();
         selectors = new ArrayList<String>();
-        defaultChoice = "";
+        defaultChoice = EMPTY_ITEM;
         
         for ( i = 0; i < choices.length; i++ ) {    
-            parts = choices[i].split("#");
+            parts = choices[i].split(NUMBER_SIGN);
             if ( parts.length > 2 ) {
                 str = choices[i].substring(choices[i].indexOf('#') + 1);
             } else if ( parts.length == 2 ) {
                 str = parts[1];
             } else {
-                // syntax error
-                throw new ParseException("syntax error in choice format pattern: " + choices[i], i);
+                throw new ParseException("syntax error in choice format pattern: " + choices[i], i); // syntax error
             }     
 
             selectors.add(parts[0]);
@@ -317,7 +320,7 @@ public class IString
 
         if ( plurals == null ) {
             File pluralJSON = new File(PluralFormHelper.root, 
-            		(locale.isEmpty() ? "" : locale + File.separator) + PluralFormHelper.pluralsJSON);
+            		(locale.isEmpty() ? EMPTY_ITEM : locale + File.separator) + PluralFormHelper.pluralsJSON);
             plurals = PluralFormHelper.getPluralForms(pluralJSON);
             if (plurals == null) plurals = new HashMap<>(0);
         }
@@ -387,7 +390,7 @@ public class IString
 
         return result;
     }
-    
+
     public static boolean isNumeric(String str)
     {
     	return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
@@ -480,7 +483,7 @@ public class IString
     {
         IString result = getChoice(reference);
         if ( result == null ) {
-            return "";
+            return EMPTY_ITEM;
         }
         return values != null ? result.format(values) : result.toString();
     }
@@ -500,7 +503,7 @@ public class IString
     {
         IString result = getChoice(reference);
         if ( result == null ) {
-            return "";
+            return EMPTY_ITEM;
         }
         return values != null ? result.format(values) : result.toString();
     }
@@ -524,7 +527,7 @@ public class IString
     {
         IString result = getChoice(reference);
         if ( result == null ) {
-            return "";
+            return EMPTY_ITEM;
         }
         return values != null ? result.format(values) : result.toString();
     }
@@ -544,7 +547,7 @@ public class IString
     {
         IString result = getChoice(reference);
         if ( result == null ) {
-            return "";
+            return EMPTY_ITEM;
         }
         return values != null ? result.format(values) : result.toString();
     }
@@ -570,7 +573,7 @@ public class IString
     {
         IString result = getChoice(reference);
         if ( result == null ) {
-            return "";
+            return EMPTY_ITEM;
         }
         return values != null ? result.format(values) : result.toString();
     }
@@ -590,7 +593,7 @@ public class IString
     {
         IString result = getChoice(reference);
         if ( result == null ) {
-            return "";
+            return EMPTY_ITEM;
         }
         return values != null ? result.format(values) : result.toString();
     }
@@ -627,7 +630,7 @@ public class IString
     public static String formatChoice(String message, long reference, HashMap<String,String> parameters)
        throws ParseException
     {
-       return (new IString(message)).formatChoice(new Double(reference), parameters);
+       return (new IString(message)).formatChoice((double)reference, parameters);
     }
     
     /**

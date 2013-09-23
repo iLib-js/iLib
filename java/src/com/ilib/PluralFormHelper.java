@@ -29,8 +29,8 @@ public class PluralFormHelper {
 	private static final String EMPTY = "";
 
 	public static final class FunctionCallItem {
-		static final String OPENED_BRACE = "(";
-		static final String CLOSED_BRACE = ")";
+		static final String OPENED_BRACKET = "(";
+		static final String CLOSED_BRACKET = ")";
 
 		String functionName = null;
 		FunctionCallItem[] inheritors;
@@ -58,12 +58,12 @@ public class PluralFormHelper {
 			builder.append(functionName);
 
 			if (hasAncestors()) {
-				if (!functionName.isEmpty()) builder.append(OPENED_BRACE);
+				if (!functionName.isEmpty()) builder.append(OPENED_BRACKET);
 				for (int i = 0; i < inheritors.length; i++) {
 					builder.append(inheritors[i].toString());
 					if (i < inheritors.length - 1) builder.append(COMMA);
 				}
-				if (!functionName.isEmpty()) builder.append(CLOSED_BRACE);
+				if (!functionName.isEmpty()) builder.append(CLOSED_BRACKET);
 			}
 
 			return builder.toString();
