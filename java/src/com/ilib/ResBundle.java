@@ -298,7 +298,7 @@ public class ResBundle
 		
 		String keyName = (key != null && key.length() > 0) ? key : makeKey(source);
 		String trans = (map != null && map.containsKey(keyName)) ? map.getString(keyName) : source;
-		return new IString((type.equals("xml") || type.equals("html")) ? escape(trans) : trans);
+		return new IString((type.equals("xml") || type.equals("html")) ? escape(trans) : trans, locale.getLanguage());
 	}
     
     /**

@@ -370,7 +370,6 @@ public class IString
                             i = selectors.size();
                         }
                     } else if (isNumeric(sel)) {
-
                 		if ( reference == Long.parseLong(sel, 10) ) {                     
                             result = new IString(strings.get(i));
                             i = selectors.size();

@@ -283,7 +283,7 @@ public class IlibLocaleTest extends TestCase
 		IlibLocale loc = new IlibLocale("en", "US", "Latn", "govt");
 		assertNotNull(loc);
 
-		assertEquals("en-US-Latn-govt", loc.getSpec());
+		assertEquals("en-Latn-US-govt", loc.getSpec());
 	}
 
 	public void testGetSpecPartsMissing()
@@ -299,7 +299,7 @@ public class IlibLocaleTest extends TestCase
 		IlibLocale loc = new IlibLocale("en", "US", "Latn", null);
 		assertNotNull(loc);
 
-		assertEquals("en-US-Latn", loc.getSpec());
+		assertEquals("en-Latn-US", loc.getSpec());
 	}
 
 	public void testGetSpecRearrange()
@@ -307,7 +307,7 @@ public class IlibLocaleTest extends TestCase
 		IlibLocale loc = new IlibLocale("US-en-GOVT-Latn");
 		assertNotNull(loc);
 
-		assertEquals("en-US-Latn-GOVT", loc.getSpec());
+		assertEquals("en-Latn-US-GOVT", loc.getSpec());
 	}
 
 	public void testEquals()
