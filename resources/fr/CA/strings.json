@@ -1,0 +1,14 @@
+{
+	"A verification email was sent to {email}.": "Un courriel de vérification a été envoyé à {email}.",
+	"Check your email for a message from mypalmaccounts@palm.com. Follow the link in that email to reset your password. <br/><br/>If you need more help, please visit www.palm.com.": "Vérifiez si vous avez reçu un courriel de mypalmaccounts@palm.com. Cliquez sur le lien inclus dans ce courriel pour réinitialiser votre mot de passe. <br/><br/>Si vous avez besoin d’aide, allez à www.palm.com.",
+	"Email Sent": "Courriel envoyé",
+	"Invalid email address": "Adresse de courriel non valide",
+	"Please respond to the verification email sent to #{email} from Palm_Inc@email.palmnewsletters.com. The new email address will not be updated until it has been verified.": "Veuillez répondre au courriel de vérification envoyé à #{email} depuis Palm_Inc@email.palmnewsletters.com. La nouvelle adresse de courriel ne sera pas mise à jour avant d’avoir été vérifiée.",
+	"Sending password reset email": "Envoi du courriel de réinitialisation du mot de passe",
+	"To recover your password, you must reset your password at the link emailed to #{email}.": "Pour récupérer votre mot de passe, vous devez le réinitialiser en utilisant le lien envoyé par courriel à #{email}.",
+	"Turn Backup off?": "Désactiver la sauvegarde?",
+	"Verify new email": "Vérifier la nouvelle adresse de courriel",
+	"We could not send an email to reset your password. Visit palm.com/support for more help.": "Impossible d’envoyer un courriel pour réinitialiser votre mot de passe. Visitez palm.com/support pour obtenir de l’aide.",
+	"We will send your confirmation email as soon as you have an internet connection.": "Nous vous enverrons un courriel de confirmation dès que vous aurez une connexion Internet.",
+	"You must use a valid email address format.": "Vous devez utiliser un format d’adresse de courriel valide."
+}

@@ -19,12 +19,21 @@
  */
 package com.ilib;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.util.MissingResourceException;
-import java.util.Properties;
-import java.util.ResourceBundle;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * ResBundle
@@ -33,28 +42,15 @@ import java.util.ResourceBundle;
  */
 public class ResBundle
 {
+	protected static final File pseudoRoot = new File("js/data/locale");
+
     protected IlibLocale locale;
     protected String name;
     protected String type;
-    //protected Map<String,String> map;
-    protected ResourceBundle map;
+    protected Map<String, String> translations;
 	protected boolean lengthen;
-    
-	static Properties pseudoMap;
-	static {
-		pseudoMap = new Properties();
-		ClassLoader cl = ResBundle.class.getClassLoader();
-		try {
-		    // TODO: switch this to use json syntax instead so it can read the ilib pseudomap.json files
-			pseudoMap.load(new InputStreamReader(cl.getResourceAsStream("pseudo.properties"), "utf-8"));
-		} catch (UnsupportedEncodingException e) {
-			// should never happen because utf-8 is built-in
-			e.printStackTrace();
-		} catch (IOException e) {
-			// also should never happen because if you can load this class, you can load the properties
-			e.printStackTrace();
-		}
-	}
+	protected String resourceFilename = "strings.json";
+	protected Map<String, String> pseudoMap = null;
 
     /**
      * 
@@ -88,16 +84,164 @@ public class ResBundle
      */
     public ResBundle(String name, IlibLocale locale, String type)
     {
-    	this.locale = (locale != null) ? locale : new IlibLocale("en-US");
+    	this.locale = (locale != null && !locale.toString().isEmpty()) ? locale : new IlibLocale("en-US");
     	this.name = (name != null) ? name : "resources";
 		this.type = (type != null) ? type : "text";
 		lengthen = true;
-		// if the resources aren't there, just ignore it
+
+		initResources();
+    }
+
+    protected void initResources()
+    {
+    	initPseudoMap();
+		loadAllTranslations(resourceFilename);
+    }
+
+    protected void loadAllTranslations(String filename) throws IllegalArgumentException
+    {
+    	if (!filename.endsWith(".json"))
+    		throw new IllegalArgumentException("File " + filename + " has another extension instead of plain JSON extension.");
+
+    	Set<String> resourceFiles = new LinkedHashSet<>();
+    	String language = locale.getLanguage(),
+    		   region	= locale.getRegion(),
+    		   script	= locale.getScript(),
+    		   variant	= locale.getVariant();
+    	
+    	String separator = File.separator;
+    	String resources_path = name;
+    	StringBuilder tmp_path = new StringBuilder();
+		resourceFiles.add(resources_path + separator + filename);
+
+		if (!language.isEmpty()) {
+			tmp_path.append(resources_path).append(separator).append(language).append(separator).append(filename);
+			resourceFiles.add(tmp_path.toString());
+			tmp_path.setLength(0);
+		}
+		if (!region.isEmpty()) {
+			tmp_path.append(resources_path).append(separator).append("und").append(separator).append(region).append(separator).append(filename);
+			resourceFiles.add(tmp_path.toString());
+			tmp_path.setLength(0);
+		}
+		if (!language.isEmpty()) {
+			if (!script.isEmpty()) {
+				tmp_path.append(resources_path).append(separator).append(language).append(separator).append(script).append(separator).append(filename);
+				resourceFiles.add(tmp_path.toString());
+				tmp_path.setLength(0);
+			}
+			if (!region.isEmpty()) {
+				tmp_path.append(resources_path).append(separator).append(language).append(separator).append(region).append(separator).append(filename);
+				resourceFiles.add(tmp_path.toString());
+				tmp_path.setLength(0);
+			}
+		}
+		if (!region.isEmpty() && !variant.isEmpty()) {
+			tmp_path.append(resources_path).append(separator).append("und").append(separator).append(region).append(separator)
+				.append(variant).append(separator).append(filename);
+			resourceFiles.add(tmp_path.toString());
+			tmp_path.setLength(0);
+		}
+		if (!language.isEmpty() && !script.isEmpty() && !region.isEmpty()) {
+			tmp_path.append(resources_path).append(separator).append(language).append(separator).append(script).append(separator)
+				.append(region).append(separator).append(filename);
+			resourceFiles.add(tmp_path.toString());
+			tmp_path.setLength(0);
+		}
+		if (!language.isEmpty() && !region.isEmpty() && !variant.isEmpty()) {
+			tmp_path.append(resources_path).append(separator).append(language).append(separator).append(region).append(separator)
+				.append(variant).append(separator).append(filename);
+			resourceFiles.add(tmp_path.toString());
+			tmp_path.setLength(0);
+		}
+		if (!language.isEmpty() && !script.isEmpty() && !region.isEmpty()) {
+			tmp_path.append(resources_path).append(separator).append(language).append(separator).append(script).append(separator)
+				.append(region).append(separator).append(variant).append(separator).append(filename);
+			resourceFiles.add(tmp_path.toString());
+			tmp_path.setLength(0);
+		}
+
+		translations = new LinkedHashMap<>();
+		for (String resfile : resourceFiles)
+			loadTranslationsFromFile(resfile);
+		resourceFiles.clear();
+    }
+
+    protected void loadTranslationsFromFile(String filename)
+    {
+    	File inputFile = new File(filename);
+    	if (!inputFile.exists()) return;
+    	
+
+    	StringBuilder builder = new StringBuilder();
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), "utf-8")); ) {
+			String currentLine = null;
+			while ( (currentLine = reader.readLine()) != null ) {
+				builder.append(currentLine);
+			}
+		} catch (FileNotFoundException ex) {
+			System.err.println("Exception in file: " + filename + ", file is missing or not existed.");
+			return;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		try {
-		    // TODO: switch this to loading in a json file resource
-	        java.util.Locale jl = new java.util.Locale(this.locale.getLanguage(), this.locale.getRegion());
-			map = ResourceBundle.getBundle(name, jl);
-		} catch ( MissingResourceException e ) {}
+			JSONObject pseudoJSON = new JSONObject(builder.toString());
+
+			if ( pseudoJSON != null ) {
+	            Iterator<String> it = pseudoJSON.keys();
+	            String p;
+
+	            while ( it.hasNext() ) {
+	                p = it.next();
+	                translations.put(p, pseudoJSON.getString(p));
+	                //System.out.println(p);
+	            }
+	        }
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+    }
+
+    protected void initPseudoMap()
+    {
+    	pseudoMap = new LinkedHashMap<>();
+
+    	String result = null;
+		try {
+			Scanner scanner = new Scanner(new FileInputStream(new File(pseudoRoot, "pseudomap.json")), "utf-8");
+			result = scanner.useDelimiter("\\A").next();
+	        scanner.close();
+		} catch (FileNotFoundException e1) {
+			
+		}
+
+		try {
+			JSONObject pseudoJSON = new JSONObject(result);
+
+			if ( pseudoJSON != null ) {
+	            Iterator<String> it = pseudoJSON.keys();
+	            String p;
+
+	            while ( it.hasNext() ) {
+	                p = it.next();
+	                pseudoMap.put(p, pseudoJSON.getString(p));
+	            }
+	        }
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+    }
+
+    /**
+     * 
+     * @param filename
+     */
+    public void setResourceFileName(String filename)
+    {
+    	resourceFilename = filename;
     }
 
     /**
@@ -108,18 +252,15 @@ public class ResBundle
         return locale;
     }
 
-	/**
-	 * @param locale
-	 */
-	public void setLocale(IlibLocale locale) 
-	{
-		this.locale = locale;
-		// if the resources aren't there, just ignore it
-		try {
-		    // TODO: switch this to loading in a json file resource
-	        map = ResourceBundle.getBundle(name, new java.util.Locale(locale.getLanguage(), locale.getRegion()));
-		} catch ( MissingResourceException e ) {}
-	}
+    /**
+     * 
+     * @param source
+     * @return
+     */
+    public boolean containsSource(String source)
+    {
+    	return translations.containsKey(source);
+    }
 
 	/**
      * @return the name
@@ -136,7 +277,7 @@ public class ResBundle
     {
         return type;
     }
-    
+
 	/**
 	 * @param type
 	 */
@@ -203,12 +344,12 @@ public class ResBundle
 						}
 					} else {
 						String c = source.substring(i, i+1);
-						ret.append(pseudoMap.getProperty(c, c));
+						ret.append(pseudoMap.get(c));
 					}
 				}
 			} else {
 				String c = source.substring(i, i+1);
-				ret.append(pseudoMap.getProperty(c, c));				
+				ret.append(pseudoMap.get(c));				
 			}
 		}
 		if (this.lengthen) {
@@ -226,7 +367,7 @@ public class ResBundle
 		}
 		return ret.toString();
     }
-    
+
     /**
      * @param str
      * @return
@@ -258,7 +399,7 @@ public class ResBundle
 		ret = ret.replaceAll("&gt;", ">");
 		return ret;
     }
-    
+
     /**
      * @param source
      * @return
@@ -289,15 +430,14 @@ public class ResBundle
     public IString getString(String source, String key)
     {
 		if (source == null && key == null) return null;
-		
+
 		if (locale.isPseudo()) {
-			String str = (source != null) ? source : (map != null ? map.getString(key) : key),
-				ret = pseudo(str);
-			return new IString(ret);
+			String str = (source != null) ? source : (translations != null ? translations.get(key) : key);
+			return new IString(pseudo(str));
 		}
 		
 		String keyName = (key != null && key.length() > 0) ? key : makeKey(source);
-		String trans = (map != null && map.containsKey(keyName)) ? map.getString(keyName) : source;
+		String trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) : source;
 		return new IString((type.equals("xml") || type.equals("html")) ? escape(trans) : trans, locale.getLanguage());
 	}
     
@@ -307,6 +447,6 @@ public class ResBundle
      */
     public IString getString(String source)
     {
-        return this.getString(source, null);
+        return getString(source, null);
     }
 }
