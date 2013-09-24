@@ -212,5 +212,31 @@ public class ResBundleTest extends TestCase
 		
 		assertEquals(locale.toString(), resBundle.getLocale().toString());
 	}
+	
+	public void testGetStringDefaultPseudo()
+	{
+		final IlibLocale locale = new IlibLocale("zxx");
+		ResBundle resBundle = new ResBundle("resources", locale);
+		assertNotNull(resBundle);
 
+		assertEquals("Ïñvàľíð Ňëţŵõŕķ Ňàmë9876543210", resBundle.getString("Invalid Network Name").toString());
+	}
+
+	public void testGetStringCyrlPseudo()
+	{
+		final IlibLocale locale = new IlibLocale("zxx-Cyrl-RU");
+		ResBundle resBundle = new ResBundle("resources", locale);
+		assertNotNull(resBundle);
+		
+		assertEquals("Инвалид Нэтwорк Намэ9876543210", resBundle.getString("Invalid Network Name").toString());
+	}
+
+	public void testGetStringPseudo()
+	{
+		final IlibLocale locale = new IlibLocale("de-DE");
+		ResBundle resBundle = new ResBundle("resources", locale);
+		assertNotNull(resBundle);
+
+		assertEquals("àçţüàľ šţàţë fõŕ Ŵífí: 6543210", resBundle.getStringPseudo("actual state for Wifi: ", null).toString());
+	}
 }

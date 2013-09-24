@@ -208,9 +208,25 @@ public class ResBundle
     {
     	pseudoMap = new LinkedHashMap<>();
 
+    	StringBuilder script = new StringBuilder();
+    	switch(locale.getScript()) {
+    		case "Cyrl":
+    			script = script.append("zxx").append(File.separator).append("Cyrl").append(File.separator);
+    			break;
+    		case "Hans":
+    			script = script.append("zxx").append(File.separator).append("Hans").append(File.separator);
+    			break;
+    		case "Hebr":
+    			script = script.append("zxx").append(File.separator).append("Hebr").append(File.separator);
+    			break;
+    		default:
+    			break;
+    	}
+
     	String result = null;
+    	File pseudoMapFile = new File(pseudoRoot, script.toString() + "pseudomap.json");
 		try {
-			Scanner scanner = new Scanner(new FileInputStream(new File(pseudoRoot, "pseudomap.json")), "utf-8");
+			Scanner scanner = new Scanner(new FileInputStream(pseudoMapFile), "utf-8");
 			result = scanner.useDelimiter("\\A").next();
 	        scanner.close();
 		} catch (FileNotFoundException e1) {
@@ -344,12 +360,12 @@ public class ResBundle
 						}
 					} else {
 						String c = source.substring(i, i+1);
-						ret.append(pseudoMap.get(c));
+						ret.append( getPseudoCharacter(c) );
 					}
 				}
 			} else {
 				String c = source.substring(i, i+1);
-				ret.append(pseudoMap.get(c));				
+				ret.append( getPseudoCharacter(c) );				
 			}
 		}
 		if (this.lengthen) {
@@ -366,6 +382,11 @@ public class ResBundle
 			}
 		}
 		return ret.toString();
+    }
+
+    protected String getPseudoCharacter(String character)
+    {
+    	return pseudoMap.containsKey(character) ? pseudoMap.get(character) : character;
     }
 
     /**
@@ -433,13 +454,23 @@ public class ResBundle
 
 		if (locale.isPseudo()) {
 			String str = (source != null) ? source : (translations != null ? translations.get(key) : key);
-			return new IString(pseudo(str));
+			return new IString(pseudo(str), locale.getLanguage());
 		}
-		
+
 		String keyName = (key != null && key.length() > 0) ? key : makeKey(source);
 		String trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) : source;
 		return new IString((type.equals("xml") || type.equals("html")) ? escape(trans) : trans, locale.getLanguage());
 	}
+
+    /**
+     * 
+     */
+    public IString getStringPseudo(String source, String key) {
+    	if (source == null && key == null) return null;
+
+		String str = (source != null) ? source : (translations != null ? translations.get(key) : key);
+		return new IString(pseudo(str), locale.getLanguage());
+    }
     
     /**
      * @param source
