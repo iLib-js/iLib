@@ -541,15 +541,30 @@ public class ResBundle
 
     protected String getTranslation(String source, String key)
     {
-    	String keyName = (key != null && key.length() > 0) ? key : makeKey(source);
+    	String keyName = null;
+    	if (key != null && key.length() > 0) {
+    		keyName = key;
+    	} else {
+    		if (source != null)
+    			keyName = makeKey(source);
+    		else {
+    			System.err.println("Incorrect translation parameters: either key or source are both null!");
+    			return IString.EMPTY_ITEM;
+    		}
+    	}
+
     	String trans = null;
     	switch(missing) {
 			case SOURCE:
-				trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) : source;
+				trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) :
+					( sourceResources.get(keyName) != null ? sourceResources.get(keyName) : keyName );
 				break;
 			case PSEUDO:
-				String str = (source != null) ? source : (translations != null ? translations.get(key) : key);
-				trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) : pseudo(str);
+				String pseudoItem = (source != null) ? pseudo(source) :
+					( (translations != null && translations.get(keyName) != null) ? pseudo(translations.get(keyName)) :
+						(sourceResources.get(keyName) != null ? pseudo(sourceResources.get(keyName)) :
+							key) );
+				trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) : pseudoItem;
 				break;
 			case EMPTY:
 				trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) : IString.EMPTY_ITEM;
