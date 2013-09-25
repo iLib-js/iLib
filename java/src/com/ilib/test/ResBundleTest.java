@@ -26,6 +26,7 @@ import junit.framework.TestCase;
 import com.ilib.IString;
 import com.ilib.IlibLocale;
 import com.ilib.ResBundle;
+import com.ilib.ResBundle.MissingType;
 
 
 /**
@@ -238,5 +239,38 @@ public class ResBundleTest extends TestCase
 		assertNotNull(resBundle);
 
 		assertEquals("àçţüàľ šţàţë fõŕ Ŵífí: 6543210", resBundle.getStringPseudo("actual state for Wifi: ", null).toString());
+	}
+
+	public void testGetStringPseudoMissing()
+	{
+		final IlibLocale locale = new IlibLocale("de-DE");
+		ResBundle resBundle = new ResBundle("resources", locale);
+		resBundle.setMissingType(MissingType.PSEUDO);
+		assertNotNull(resBundle);
+
+		assertEquals("Nicht aktualisieren", resBundle.getString("Don't Update").toString());
+		assertEquals("Ðõñ'ţ Úþðàţë àñ ëmàíľ6543210", resBundle.getString("Don't Update an email").toString());
+
+	}
+
+	public void testGetStringPseudoMissingLengthenFalse()
+	{
+		final IlibLocale locale = new IlibLocale("de-DE");
+		ResBundle resBundle = new ResBundle("resources", locale);
+		resBundle.setMissingType(MissingType.PSEUDO);
+		resBundle.setLengthen(false);
+		assertNotNull(resBundle);
+
+		assertEquals("Ðõñ'ţ Úþðàţë àñ ëmàíľ", resBundle.getString("Don't Update an email").toString());
+	}
+
+	public void testGetStringEmptyMissing()
+	{
+		final IlibLocale locale = new IlibLocale("de-DE");
+		ResBundle resBundle = new ResBundle("resources", locale);
+		resBundle.setMissingType(MissingType.EMPTY);
+		assertNotNull(resBundle);
+
+		assertEquals("", resBundle.getString("Don't Update an email").toString());
 	}
 }

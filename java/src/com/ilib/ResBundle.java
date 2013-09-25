@@ -49,8 +49,15 @@ public class ResBundle
     protected String type;
     protected Map<String, String> translations;
 	protected boolean lengthen;
-	protected String resourceFilename = "strings.json";
+	protected MissingType missing = MissingType.SOURCE;
+	protected String resourceFilename;
 	protected Map<String, String> pseudoMap = null;
+	
+	public enum MissingType {
+		SOURCE,
+		PSEUDO,
+		EMPTY
+	};
 
     /**
      * 
@@ -65,7 +72,7 @@ public class ResBundle
      */
     public ResBundle(String name)
     {
-		this(name, null, null);
+		this(name, null, null, null);
     }
     
     /**
@@ -74,7 +81,7 @@ public class ResBundle
      */
     public ResBundle(String name, IlibLocale locale)
     {
-		this(name, locale, null);
+		this(name, locale, null, null);
     }
     
     /**
@@ -84,9 +91,22 @@ public class ResBundle
      */
     public ResBundle(String name, IlibLocale locale, String type)
     {
+		this(name, locale, type, null);
+    }
+    
+    /**
+     * 
+     * @param name
+     * @param locale
+     * @param type
+     * @param resFileName
+     */
+    public ResBundle(String name, IlibLocale locale, String type, String resFileName)
+    {
     	this.locale = (locale != null && !locale.toString().isEmpty()) ? locale : new IlibLocale("en-US");
     	this.name = (name != null) ? name : "resources";
 		this.type = (type != null) ? type : "text";
+		this.resourceFilename = (resFileName != null) ? resFileName : "strings.json";
 		lengthen = true;
 
 		initResources();
@@ -314,6 +334,22 @@ public class ResBundle
 	public void setLengthen(boolean lengthen) {
 		this.lengthen = lengthen;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public MissingType getMissing() {
+		return missing;
+	}
+
+	/**
+	 * 
+	 * @param type
+	 */
+	public void setMissingType(MissingType type) {
+		this.missing = type;
+	}
 
 	/**
      * @param source
@@ -368,7 +404,7 @@ public class ResBundle
 				ret.append( getPseudoCharacter(c) );				
 			}
 		}
-		if (this.lengthen) {
+		if (lengthen) {
 			int add;
 			if (ret.length() <= 20) {
 				add = Math.round(ret.length() / 2);
@@ -381,6 +417,7 @@ public class ResBundle
 				ret.append("" + (i % 10));
 			}
 		}
+
 		return ret.toString();
     }
 
@@ -457,10 +494,43 @@ public class ResBundle
 			return new IString(pseudo(str), locale.getLanguage());
 		}
 
-		String keyName = (key != null && key.length() > 0) ? key : makeKey(source);
-		String trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) : source;
-		return new IString((type.equals("xml") || type.equals("html")) ? escape(trans) : trans, locale.getLanguage());
+		String trans = getTranslation(source, key);
+		return new IString(trans, locale.getLanguage());
 	}
+
+    protected String getTranslation(String source, String key)
+    {
+    	String keyName = (key != null && key.length() > 0) ? key : makeKey(source);
+    	String trans = null;
+    	switch(missing) {
+			case SOURCE:
+				trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) : source;
+				break;
+			case PSEUDO:
+				String str = (source != null) ? source : (translations != null ? translations.get(key) : key);
+				trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) : pseudo(str);
+				break;
+			case EMPTY:
+				trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) : IString.EMPTY_ITEM;
+				break;
+			default:
+				trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) : source;
+				break;
+		}
+	
+		if (type.equals("xml") || type.equals("html")) trans = escape(trans);
+
+    	return trans;
+    }
+
+    /**
+     * @param source
+     * @return
+     */
+    public IString getString(String source)
+    {
+        return getString(source, null);
+    }
 
     /**
      * 
@@ -470,14 +540,5 @@ public class ResBundle
 
 		String str = (source != null) ? source : (translations != null ? translations.get(key) : key);
 		return new IString(pseudo(str), locale.getLanguage());
-    }
-    
-    /**
-     * @param source
-     * @return
-     */
-    public IString getString(String source)
-    {
-        return getString(source, null);
     }
 }
