@@ -25,6 +25,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -42,17 +43,60 @@ import org.json.JSONObject;
  */
 public class ResBundle
 {
-	protected static final File pseudoRoot = new File("js/data/locale");
+	protected static final File pseudoRoot 		= new File("js/data/locale");
+	protected static final String htmlType 		= "html";
+	protected static final String xmlType 		= "xml";
+	protected static final String rawType 		= "raw";
+	protected static final String pseudoJSON	= "pseudomap.json";
+	protected static final String resourcesJSON	= "resources.json";
+	protected static Map<String, String> sourceResources = null;
+
+	private static void initResourcesMap(String resourcesDir)
+	{
+		if (sourceResources != null) return;
+
+		sourceResources = new HashMap<>();
+		File inputFile = new File(resourcesDir + File.separator + resourcesJSON);
+    	if (!inputFile.exists()) return;
+
+		StringBuilder builder = new StringBuilder();
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), "utf-8")); ) {
+			String currentLine = null;
+			while ( (currentLine = reader.readLine()) != null ) {
+				builder.append(currentLine);
+			}
+		} catch (FileNotFoundException ex) {
+			System.err.println("Exception in file: " + inputFile.getPath() + ", file is missing or not existed.");
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
+
+		try {
+			JSONObject pseudoJSON = new JSONObject(builder.toString());
+			if ( pseudoJSON != null ) {
+	            Iterator<String> it = pseudoJSON.keys();
+	            String p;
+
+	            while ( it.hasNext() ) {
+	                p = it.next();
+	                sourceResources.put(p, pseudoJSON.getString(p));
+	            }
+	        }
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
 
     protected IlibLocale locale;
     protected String name;
     protected String type;
-    protected Map<String, String> translations;
+    protected Map<String, String> translations = null;
+    protected Map<String, String> pseudoCharacters = null;
 	protected boolean lengthen;
 	protected MissingType missing = MissingType.SOURCE;
 	protected String resourceFilename;
-	protected Map<String, String> pseudoMap = null;
-	
+
 	public enum MissingType {
 		SOURCE,
 		PSEUDO,
@@ -93,7 +137,7 @@ public class ResBundle
     {
 		this(name, locale, type, null);
     }
-    
+
     /**
      * 
      * @param name
@@ -114,6 +158,7 @@ public class ResBundle
 
     protected void initResources()
     {
+    	initResourcesMap(name);
     	initPseudoMap();
 		loadAllTranslations(resourceFilename);
     }
@@ -132,53 +177,54 @@ public class ResBundle
     	String separator = File.separator;
     	String resources_path = name;
     	StringBuilder tmp_path = new StringBuilder();
-		resourceFiles.add(resources_path + separator + filename);
+    	tmp_path.append(resources_path).append(separator).append(filename);
+		resourceFiles.add(tmp_path.toString());
 
 		if (!language.isEmpty()) {
+			tmp_path.setLength(0);
 			tmp_path.append(resources_path).append(separator).append(language).append(separator).append(filename);
 			resourceFiles.add(tmp_path.toString());
-			tmp_path.setLength(0);
 		}
 		if (!region.isEmpty()) {
+			tmp_path.setLength(0);
 			tmp_path.append(resources_path).append(separator).append("und").append(separator).append(region).append(separator).append(filename);
 			resourceFiles.add(tmp_path.toString());
-			tmp_path.setLength(0);
 		}
 		if (!language.isEmpty()) {
 			if (!script.isEmpty()) {
+				tmp_path.setLength(0);
 				tmp_path.append(resources_path).append(separator).append(language).append(separator).append(script).append(separator).append(filename);
 				resourceFiles.add(tmp_path.toString());
-				tmp_path.setLength(0);
 			}
 			if (!region.isEmpty()) {
+				tmp_path.setLength(0);
 				tmp_path.append(resources_path).append(separator).append(language).append(separator).append(region).append(separator).append(filename);
 				resourceFiles.add(tmp_path.toString());
-				tmp_path.setLength(0);
 			}
 		}
 		if (!region.isEmpty() && !variant.isEmpty()) {
+			tmp_path.setLength(0);
 			tmp_path.append(resources_path).append(separator).append("und").append(separator).append(region).append(separator)
 				.append(variant).append(separator).append(filename);
 			resourceFiles.add(tmp_path.toString());
-			tmp_path.setLength(0);
 		}
 		if (!language.isEmpty() && !script.isEmpty() && !region.isEmpty()) {
+			tmp_path.setLength(0);
 			tmp_path.append(resources_path).append(separator).append(language).append(separator).append(script).append(separator)
 				.append(region).append(separator).append(filename);
 			resourceFiles.add(tmp_path.toString());
-			tmp_path.setLength(0);
 		}
 		if (!language.isEmpty() && !region.isEmpty() && !variant.isEmpty()) {
+			tmp_path.setLength(0);
 			tmp_path.append(resources_path).append(separator).append(language).append(separator).append(region).append(separator)
 				.append(variant).append(separator).append(filename);
 			resourceFiles.add(tmp_path.toString());
-			tmp_path.setLength(0);
 		}
 		if (!language.isEmpty() && !script.isEmpty() && !region.isEmpty()) {
+			tmp_path.setLength(0);
 			tmp_path.append(resources_path).append(separator).append(language).append(separator).append(script).append(separator)
 				.append(region).append(separator).append(variant).append(separator).append(filename);
 			resourceFiles.add(tmp_path.toString());
-			tmp_path.setLength(0);
 		}
 
 		translations = new LinkedHashMap<>();
@@ -208,7 +254,6 @@ public class ResBundle
 
 		try {
 			JSONObject pseudoJSON = new JSONObject(builder.toString());
-
 			if ( pseudoJSON != null ) {
 	            Iterator<String> it = pseudoJSON.keys();
 	            String p;
@@ -216,7 +261,6 @@ public class ResBundle
 	            while ( it.hasNext() ) {
 	                p = it.next();
 	                translations.put(p, pseudoJSON.getString(p));
-	                //System.out.println(p);
 	            }
 	        }
 		} catch (JSONException e) {
@@ -226,7 +270,7 @@ public class ResBundle
 
     protected void initPseudoMap()
     {
-    	pseudoMap = new LinkedHashMap<>();
+    	pseudoCharacters = new LinkedHashMap<>();
 
     	StringBuilder script = new StringBuilder();
     	switch(locale.getScript()) {
@@ -244,7 +288,7 @@ public class ResBundle
     	}
 
     	String result = null;
-    	File pseudoMapFile = new File(pseudoRoot, script.toString() + "pseudomap.json");
+    	File pseudoMapFile = new File(pseudoRoot, script.toString() + pseudoJSON);
 		try {
 			Scanner scanner = new Scanner(new FileInputStream(pseudoMapFile), "utf-8");
 			result = scanner.useDelimiter("\\A").next();
@@ -255,14 +299,12 @@ public class ResBundle
 
 		try {
 			JSONObject pseudoJSON = new JSONObject(result);
-
 			if ( pseudoJSON != null ) {
 	            Iterator<String> it = pseudoJSON.keys();
 	            String p;
-
 	            while ( it.hasNext() ) {
 	                p = it.next();
-	                pseudoMap.put(p, pseudoJSON.getString(p));
+	                pseudoCharacters.put(p, pseudoJSON.getString(p));
 	            }
 	        }
 		} catch (JSONException e) {
@@ -365,8 +407,8 @@ public class ResBundle
 		int i;
 		
 		for ( i = 0; i < source.length(); i++ ) {
-			if ( !type.equals("raw") ) {
-				if ( type.equals("html") || type.equals("xml") ) {
+			if ( !type.equals(rawType) ) {
+				if ( isHTML_XML_Type() ) {
 					if (source.charAt(i) == '<') {
 						ret.append(source.charAt(i++));
 						while (i < source.length() && source.charAt(i) != '>') {
@@ -423,7 +465,7 @@ public class ResBundle
 
     protected String getPseudoCharacter(String character)
     {
-    	return pseudoMap.containsKey(character) ? pseudoMap.get(character) : character;
+    	return pseudoCharacters.containsKey(character) ? pseudoCharacters.get(character) : character;
     }
 
     /**
@@ -464,20 +506,19 @@ public class ResBundle
      */
     protected String makeKey(String source)
     {
-		String ret;
-
 		if ( source == null ) {
 			return null;
 		}
-		
+
+		String ret;
 		// compress all whitespace so that they don't matter to the key
 		ret = source.replaceAll("\\s+", "\\ ");
 		
 		// need to escape these chars because they are special for properties files
 		ret = source.replaceAll("=", "\\=");
 		ret = source.replaceAll(":", "\\:");
-		
-		return (type.equals("xml") || type.equals("html")) ? unescape(ret) : ret;
+
+		return isHTML_XML_Type() ? unescape(ret) : ret;
     }
     
     /**
@@ -518,9 +559,13 @@ public class ResBundle
 				break;
 		}
 	
-		if (type.equals("xml") || type.equals("html")) trans = escape(trans);
-
+		if (isHTML_XML_Type()) trans = escape(trans);
     	return trans;
+    }
+
+    protected boolean isHTML_XML_Type()
+    {
+    	return (type.equals(xmlType) || type.equals(htmlType));
     }
 
     /**

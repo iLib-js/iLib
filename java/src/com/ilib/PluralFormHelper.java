@@ -28,25 +28,25 @@ public class PluralFormHelper {
 	private static final String ENCODING = "utf-8";
 	private static final String EMPTY = "";
 
-	public static final class FunctionCallItem {
+	public static final class PluralRule {
 		static final String OPENED_BRACKET = "(";
 		static final String CLOSED_BRACKET = ")";
 
 		String functionName = null;
-		FunctionCallItem[] inheritors;
+		PluralRule[] inheritors;
 
-		public FunctionCallItem() {
+		public PluralRule() {
 			functionName = EMPTY;
 		}
 
-		public FunctionCallItem(String name) {
+		public PluralRule(String name) {
 			this.functionName = name;
 		}
 
 		public void addAncestors(int number) {
-			inheritors = new FunctionCallItem[number];
+			inheritors = new PluralRule[number];
 			for (int i = 0; i < inheritors.length; ++i)
-				inheritors[i] = new FunctionCallItem();
+				inheritors[i] = new PluralRule();
 		}
 
 		public boolean hasAncestors() {
@@ -70,6 +70,11 @@ public class PluralFormHelper {
 		}
 	}
 
+	/**
+	 * 
+	 * @param file
+	 * @return
+	 */
 	public static Map<String, String> getPluralForms(File file) {
 		StringBuilder builder = new StringBuilder();
 
@@ -97,7 +102,7 @@ public class PluralFormHelper {
 
 	            while ( it.hasNext() ) {
 	            	key = it.next();
-					FunctionCallItem call = new FunctionCallItem();
+					PluralRule call = new PluralRule();
 					scanJsonParts(jsonObject.get(key), call);
 					pluralForms.put(key, call.toString());
 	            }
@@ -109,6 +114,12 @@ public class PluralFormHelper {
 		return pluralForms;
 	}
 
+	/**
+	 * 
+	 * @param value
+	 * @param plurals
+	 * @return
+	 */
 	public static <K> String getPluralKey(int value, Map<String, K> plurals) {
 		String resultPlural = OTHER_PLURAL;
 		StringBuilder builder = new StringBuilder();
@@ -128,7 +139,7 @@ public class PluralFormHelper {
 		return resultPlural;
 	}
 
-	protected static void scanJsonParts(Object jsonPart, FunctionCallItem call) throws JSONException {
+	protected static void scanJsonParts(Object jsonPart, PluralRule call) throws JSONException {
 		if (jsonPart != null && !jsonPart.toString().isEmpty()) {
 			
 			if (jsonPart instanceof JSONObject) {
