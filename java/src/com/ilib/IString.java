@@ -43,7 +43,7 @@ import org.json.JSONObject;
  */
 public class IString
 {
-	protected final static String EMPTY_ITEM = "";
+	public final static String EMPTY_ITEM = "";
 	protected final static String OPENED_BRACE = "\\{";
 	protected final static String CLOSED_BRACE = "}";
 	protected final static String NUMBER_SIGN = "#";

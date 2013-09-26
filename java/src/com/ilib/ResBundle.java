@@ -43,52 +43,19 @@ import org.json.JSONObject;
  */
 public class ResBundle
 {
-	protected static final File pseudoRoot 		= new File("js/data/locale");
-	protected static final String htmlType 		= "html";
-	protected static final String xmlType 		= "xml";
-	protected static final String rawType 		= "raw";
-	protected static final String pseudoJSON	= "pseudomap.json";
-	protected static final String resourcesJSON	= "resources.json";
-	protected static Map<String, String> sourceResources = null;
+	protected static final File PSEUDOROOT 					= new File("js/data/locale");
+	protected static final String HTML_TYPE 				= "html";
+	protected static final String XML_TYPE 					= "xml";
+	protected static final String RAW_TYPE 					= "raw";
+	protected static final String DEFAULT_RESOURCES			= "resources";
+	protected static final String DEFAULT_TEXT_TYPE			= "text";
+	protected static final String DEFAULT_RES_FILE			= "strings.json";
+	protected static final String PSEUDO_JSON				= "pseudomap.json";
+	protected static final String RESOURCES_JSON			= "resources.json";
+	protected static Map<String, String> sourceResources 	= null;
+	protected static volatile IlibLocale sourceLocale		= new IlibLocale("en-US");
 
-	private static void initResourcesMap(String resourcesDir)
-	{
-		if (sourceResources != null) return;
-
-		sourceResources = new HashMap<>();
-		File inputFile = new File(resourcesDir + File.separator + resourcesJSON);
-    	if (!inputFile.exists()) return;
-
-		StringBuilder builder = new StringBuilder();
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), "utf-8")); ) {
-			String currentLine = null;
-			while ( (currentLine = reader.readLine()) != null ) {
-				builder.append(currentLine);
-			}
-		} catch (FileNotFoundException ex) {
-			System.err.println("Exception in file: " + inputFile.getPath() + ", file is missing or not existed.");
-		} catch (IOException e) {
-			e.printStackTrace();
-			return;
-		}
-
-		try {
-			JSONObject pseudoJSON = new JSONObject(builder.toString());
-			if ( pseudoJSON != null ) {
-	            Iterator<String> it = pseudoJSON.keys();
-	            String p;
-
-	            while ( it.hasNext() ) {
-	                p = it.next();
-	                sourceResources.put(p, pseudoJSON.getString(p));
-	            }
-	        }
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-	}
-
-    protected IlibLocale locale;
+    protected IlibLocale targetLocale;
     protected String name;
     protected String type;
     protected Map<String, String> translations = null;
@@ -147,10 +114,10 @@ public class ResBundle
      */
     public ResBundle(String name, IlibLocale locale, String type, String resFileName)
     {
-    	this.locale = (locale != null && !locale.toString().isEmpty()) ? locale : new IlibLocale("en-US");
-    	this.name = (name != null) ? name : "resources";
-		this.type = (type != null) ? type : "text";
-		this.resourceFilename = (resFileName != null) ? resFileName : "strings.json";
+    	this.targetLocale = (locale != null && !locale.toString().isEmpty()) ? locale : new IlibLocale("en-US");
+		this.name = (name != null) ? name : DEFAULT_RESOURCES;
+		this.type = (type != null) ? type : DEFAULT_TEXT_TYPE;
+		this.resourceFilename = (resFileName != null) ? resFileName : DEFAULT_RES_FILE;
 		lengthen = true;
 
 		initResources();
@@ -163,16 +130,53 @@ public class ResBundle
 		loadAllTranslations(resourceFilename);
     }
 
+    private static void initResourcesMap(String resourcesDir)
+	{
+		if (sourceResources != null) return;
+
+		sourceResources = new HashMap<>();
+		File inputFile = new File(resourcesDir + File.separator + RESOURCES_JSON);
+    	if (!inputFile.exists()) return;
+
+		StringBuilder builder = new StringBuilder();
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(inputFile), "utf-8")); ) {
+			String currentLine = null;
+			while ( (currentLine = reader.readLine()) != null ) {
+				builder.append(currentLine);
+			}
+		} catch (FileNotFoundException ex) {
+			System.err.println("Exception in file: " + inputFile.getPath() + ", file is missing or not existed.");
+		} catch (IOException e) {
+			e.printStackTrace();
+			return;
+		}
+
+		try {
+			JSONObject pseudoJSON = new JSONObject(builder.toString());
+			if ( pseudoJSON != null ) {
+	            Iterator<String> it = pseudoJSON.keys();
+	            String p;
+
+	            while ( it.hasNext() ) {
+	                p = it.next();
+	                sourceResources.put(p, pseudoJSON.getString(p));
+	            }
+	        }
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
     protected void loadAllTranslations(String filename) throws IllegalArgumentException
     {
     	if (!filename.endsWith(".json"))
     		throw new IllegalArgumentException("File " + filename + " has another extension instead of plain JSON extension.");
 
     	Set<String> resourceFiles = new LinkedHashSet<>();
-    	String language = locale.getLanguage(),
-    		   region	= locale.getRegion(),
-    		   script	= locale.getScript(),
-    		   variant	= locale.getVariant();
+    	String language = targetLocale.getLanguage(),
+    		   region	= targetLocale.getRegion(),
+    		   script	= targetLocale.getScript(),
+    		   variant	= targetLocale.getVariant();
     	
     	String separator = File.separator;
     	String resources_path = name;
@@ -273,7 +277,8 @@ public class ResBundle
     	pseudoCharacters = new LinkedHashMap<>();
 
     	StringBuilder script = new StringBuilder();
-    	switch(locale.getScript()) {
+    	//switch(targetLocale.getScript()) {
+    	switch( ScriptInfo.getScriptByLocale(targetLocale) ) {
     		case "Cyrl":
     			script = script.append("zxx").append(File.separator).append("Cyrl").append(File.separator);
     			break;
@@ -288,7 +293,7 @@ public class ResBundle
     	}
 
     	String result = null;
-    	File pseudoMapFile = new File(pseudoRoot, script.toString() + pseudoJSON);
+    	File pseudoMapFile = new File(PSEUDOROOT, script.toString() + PSEUDO_JSON);
 		try {
 			Scanner scanner = new Scanner(new FileInputStream(pseudoMapFile), "utf-8");
 			result = scanner.useDelimiter("\\A").next();
@@ -314,8 +319,26 @@ public class ResBundle
     }
 
     /**
-     * 
-     * @param filename
+     * Specifies source locale for all threads in current process
+     * @param locale source locale
+     */
+    public static void setSourceLocale(IlibLocale locale)
+    {
+    	sourceLocale = locale;
+    }
+
+    /**
+     * Returns source locale for all threads in current process
+     * @return source locale
+     */
+    public static IlibLocale getSourceLocale()
+    {
+    	return sourceLocale;
+    }
+
+    /**
+     * Specifies resources filename; default file is strings.json
+     * @param filename resource filename of JSON file to look up for translations
      */
     public void setResourceFileName(String filename)
     {
@@ -323,17 +346,19 @@ public class ResBundle
     }
 
     /**
-     * @return the locale
+     * Returns target locale object in BCP47 format
+     * @return target locale instance
      */
     public IlibLocale getLocale()
     {
-        return locale;
+        return targetLocale;
     }
 
     /**
+     * Examines if source string has already been translated or not
      * 
-     * @param source
-     * @return
+     * @param source source string to be examined
+     * @return true if source string is found in translations, otherwise - false
      */
     public boolean containsSource(String source)
     {
@@ -341,15 +366,17 @@ public class ResBundle
     }
 
 	/**
-     * @return the name
-     */
+	 * Returns given name for resources location which are seeking for for translations
+	 * @return given name for resources with translations
+	 */
     public String getName()
     {
         return name;
     }
 
     /**
-     * @return the type
+     * Returns type of text information which ResBundle is being operating with (default type: raw)
+     * @return input text type: html, xml, raw
      */
     public String getType()
     {
@@ -357,36 +384,58 @@ public class ResBundle
     }
 
 	/**
-	 * @param type
+	 * Specifies type of text information which ResBundle is being operating with
+	 * @param type input text specified type (default type: raw).
 	 */
 	public void setType(String type) {
 		this.type = type.toLowerCase();
 	}
 
 	/**
-	 * @return
+	 * Returns lengthen option that allows to lengthen potential length for translated string (for UI/UX issues)
+	 * using pseudo-localization.
+	 * @return true if lengthen option is specified, false otherwise
 	 */
 	public boolean isLengthen() {
 		return lengthen;
 	}
 
 	/**
-	 * @param lengthen
+	 * Specifies lengthen option to lengthen potential length for translated string (for UI/UX issues)
+	 * using pseudo-localization.
+	 * @param lengthen option allows to lengthen potential translated string length using pseudo string
+	 * as returned instead.
 	 */
 	public void setLengthen(boolean lengthen) {
 		this.lengthen = lengthen;
 	}
 	
 	/**
+	 * Returns missing option - that option specifies behavior in case when translation is not found
+	 * by given key or value.
 	 * 
-	 * @return
+	 * <info>
+	 * Possible values:
+	 * 		SOURCE - return source string if translation is not found;
+	 * 		PSEUDO - return pseudo localized string from source string if translation is not found;
+	 * 		EMPTY  - return empty string if translation is not found.
+	 * </info>
+	 * @return missing option value
 	 */
 	public MissingType getMissing() {
 		return missing;
 	}
 
 	/**
+	 * Specifies missing option - option, that specifies behavior in case when translation is not found
+	 * by given key or value.
 	 * 
+	 * <info>
+	 * Possible values:
+	 * 		SOURCE - return source string if translation is not found;
+	 * 		PSEUDO - return pseudo localized string from source string if translation is not found;
+	 * 		EMPTY  - return empty string if translation is not found.
+	 * </info>
 	 * @param type
 	 */
 	public void setMissingType(MissingType type) {
@@ -394,8 +443,9 @@ public class ResBundle
 	}
 
 	/**
-     * @param source
-     * @return
+	 * Returns pseudo string from input one using appropriate pseudomap
+     * @param source input string needed to be pseudo localized
+     * @return pseudo localized string
      */
     protected String pseudo(String source)
     {
@@ -407,7 +457,7 @@ public class ResBundle
 		int i;
 		
 		for ( i = 0; i < source.length(); i++ ) {
-			if ( !type.equals(rawType) ) {
+			if ( !type.equals(RAW_TYPE) ) {
 				if ( isHTML_XML_Type() ) {
 					if (source.charAt(i) == '<') {
 						ret.append(source.charAt(i++));
@@ -463,21 +513,28 @@ public class ResBundle
 		return ret.toString();
     }
 
+    /**
+     * Returns string with pseudo character that corresponds to the input one
+     * @param character input character string
+     * @return string with pseudo character if input character is found in appropriate pseudoMap,
+     * 		otherwise - input character
+     */
     protected String getPseudoCharacter(String character)
     {
     	return pseudoCharacters.containsKey(character) ? pseudoCharacters.get(character) : character;
     }
 
     /**
-     * @param str
-     * @return
+     * Replaces all xml and html tags occurences with corresponding replacements
+     * @param str input string
+     * @return string with no html- and xml-style tags
      */
     protected String escape(String str)
     {
-		String ret;
-		if ( str == null ) {
+    	if ( str == null )
 			return null;
-		}
+
+		String ret;
 		ret = str.replaceAll("&", "&amp;");
 		ret = ret.replaceAll("<", "&lt;");
 		ret = ret.replaceAll(">", "&gt;");
@@ -485,15 +542,18 @@ public class ResBundle
     }
 
     /**
-     * @param str
-     * @return
+     * Invokes retroaction for escape(String) 
+     * 
+     * @see String escape(String str);
+     * @param str input string
+     * @return string with html- and xml-style tags
      */
     protected String unescape(String str)
     {
-		String ret;
-		if ( str == null ) {
+    	if ( str == null )
 			return null;
-		}
+
+		String ret;
 		ret = str.replaceAll("&amp;", "&");
 		ret = ret.replaceAll("&lt;", "<");
 		ret = ret.replaceAll("&gt;", ">");
@@ -501,19 +561,19 @@ public class ResBundle
     }
 
     /**
-     * @param source
-     * @return
+     * Creates a unique key from given source string
+     * @param source input source string
+     * @return unique key that contains no spaces, and modified equals and colon signs
      */
     protected String makeKey(String source)
     {
-		if ( source == null ) {
+		if ( source == null )
 			return null;
-		}
 
 		String ret;
 		// compress all whitespace so that they don't matter to the key
 		ret = source.replaceAll("\\s+", "\\ ");
-		
+
 		// need to escape these chars because they are special for properties files
 		ret = source.replaceAll("=", "\\=");
 		ret = source.replaceAll(":", "\\:");
@@ -522,23 +582,32 @@ public class ResBundle
     }
     
     /**
-     * @param source
-     * @param key
-     * @return
+     * Returns translation for given source and key strings in IString format
+     * @param source source string
+     * @param key key item, if null - then unique key will be generated
+     * @see makeKey(String source);
+     * @return translation for target locale if it is existed, otherwise - 
+     * @see MissingType
      */
     public IString getString(String source, String key)
     {
 		if (source == null && key == null) return null;
 
-		if (locale.isPseudo()) {
+		if (targetLocale.isPseudo()) {
 			String str = (source != null) ? source : (translations != null ? translations.get(key) : key);
-			return new IString(pseudo(str), locale.getLanguage());
+			return new IString(pseudo(str), targetLocale.getLanguage());
 		}
 
 		String trans = getTranslation(source, key);
-		return new IString(trans, locale.getLanguage());
+		return new IString(trans, targetLocale.getLanguage());
 	}
 
+    /**
+     * 
+     * @param source
+     * @param key
+     * @return
+     */
     protected String getTranslation(String source, String key)
     {
     	String keyName = null;
@@ -553,6 +622,12 @@ public class ResBundle
     		}
     	}
 
+    	if ( sourceLocale.equals(targetLocale.toString() )) {
+    		String trans = (source != null) ? source : keyName;
+    		if (isHTML_XML_Type()) trans = escape(trans);
+        	return trans;
+    	}
+
     	String trans = null;
     	switch(missing) {
 			case SOURCE:
@@ -562,8 +637,8 @@ public class ResBundle
 			case PSEUDO:
 				String pseudoItem = (source != null) ? pseudo(source) :
 					( (translations != null && translations.get(keyName) != null) ? pseudo(translations.get(keyName)) :
-						(sourceResources.get(keyName) != null ? pseudo(sourceResources.get(keyName)) :
-							key) );
+						(sourceResources.get(keyName) != null ?
+								pseudo(sourceResources.get(keyName)) : key) );
 				trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) : pseudoItem;
 				break;
 			case EMPTY:
@@ -573,14 +648,14 @@ public class ResBundle
 				trans = ( translations != null && translations.containsKey(keyName) ) ? translations.get(keyName) : source;
 				break;
 		}
-	
+
 		if (isHTML_XML_Type()) trans = escape(trans);
     	return trans;
     }
 
     protected boolean isHTML_XML_Type()
     {
-    	return (type.equals(xmlType) || type.equals(htmlType));
+    	return (type.equals(XML_TYPE) || type.equals(HTML_TYPE));
     }
 
     /**
@@ -594,11 +669,12 @@ public class ResBundle
 
     /**
      * 
+     * @param source
+     * @return
      */
-    public IString getStringPseudo(String source, String key) {
-    	if (source == null && key == null) return null;
+    public IString getStringPseudo(String source) {
+    	if (source == null) return null;
 
-		String str = (source != null) ? source : (translations != null ? translations.get(key) : key);
-		return new IString(pseudo(str), locale.getLanguage());
+		return new IString(pseudo(source), targetLocale.getLanguage());
     }
 }

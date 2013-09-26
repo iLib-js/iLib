@@ -211,7 +211,7 @@ public class ResBundleTest extends TestCase
 		final IlibLocale locale = new IlibLocale("nl-NL");
 		ResBundle resBundle = new ResBundle("resources", locale);
 		assertNotNull(resBundle);
-		
+
 		assertEquals(locale.toString(), resBundle.getLocale().toString());
 	}
 	
@@ -229,7 +229,7 @@ public class ResBundleTest extends TestCase
 		final IlibLocale locale = new IlibLocale("zxx-Cyrl-RU");
 		ResBundle resBundle = new ResBundle("resources", locale);
 		assertNotNull(resBundle);
-		
+
 		assertEquals("Инвалид Нэтwорк Намэ9876543210", resBundle.getString("Invalid Network Name").toString());
 	}
 
@@ -239,7 +239,7 @@ public class ResBundleTest extends TestCase
 		ResBundle resBundle = new ResBundle("resources", locale);
 		assertNotNull(resBundle);
 
-		assertEquals("àçţüàľ šţàţë fõŕ Ŵífí: 6543210", resBundle.getStringPseudo("actual state for Wifi: ", null).toString());
+		assertEquals("àçţüàľ šţàţë fõŕ Ŵífí: 6543210", resBundle.getStringPseudo("actual state for Wifi: ").toString());
 	}
 
 	public void testGetStringPseudoMissing()
@@ -263,6 +263,16 @@ public class ResBundleTest extends TestCase
 		assertNotNull(resBundle);
 
 		assertEquals("Ðõñ'ţ Úþðàţë àñ ëmàíľ", resBundle.getString("Don't Update an email").toString());
+		assertNotSame("Ðõñ'ţ Úþðàţë àñ ëmàíľ6543210", resBundle.getString("Don't Update an email").toString());
+	}
+	
+	public void testGetStringKeyValueNull()
+	{
+		final IlibLocale locale = new IlibLocale("de-DE");
+		ResBundle resBundle = new ResBundle("resources", locale);
+		assertNotNull(resBundle);
+
+		assertNull(resBundle.getString(null));
 	}
 
 	public void testGetStringEmptyMissing()
@@ -273,5 +283,70 @@ public class ResBundleTest extends TestCase
 		assertNotNull(resBundle);
 
 		assertEquals("", resBundle.getString("Don't Update an email").toString());
+	}
+
+	public void testGetStringSameTargetAndSourceLocalesKeySource()
+	{
+		final IlibLocale locale = new IlibLocale("uk-UA");
+		ResBundle.setSourceLocale(locale);
+		ResBundle resBundle = new ResBundle("resources", locale);
+		resBundle.setMissingType(MissingType.EMPTY);
+		assertNotNull(resBundle);
+
+		assertEquals("Здоровенькі були!", resBundle.getString("Здоровенькі були!", "Cheers!").toString());
+		ResBundle.setSourceLocale(new IlibLocale("en-US"));
+	}
+	
+	public void testGetStringSameTargetAndSourceLocalesSource()
+	{
+		final IlibLocale locale = new IlibLocale("uk-UA");
+		ResBundle.setSourceLocale(locale);
+		ResBundle resBundle = new ResBundle("resources", locale);
+		resBundle.setMissingType(MissingType.EMPTY);
+		assertNotNull(resBundle);
+
+		assertEquals("Здоровенькі були!", resBundle.getString("Здоровенькі були!").toString());
+		ResBundle.setSourceLocale(new IlibLocale("en-US"));
+	}
+	
+	public void testGetPseudoStringLatnScript()
+	{
+		final IlibLocale locale = new IlibLocale("en-GB");
+		ResBundle resBundle = new ResBundle("resources", locale);
+		resBundle.setMissingType(MissingType.PSEUDO);
+		assertNotNull(resBundle);
+
+		assertEquals("Ëñğàğëmëñţ þõíñţ!76543210", resBundle.getString("Engagement point!").toString());
+	}
+
+	public void testGetPseudoStringCyrlScript()
+	{
+		final IlibLocale locale = new IlibLocale("uk-UA");
+		ResBundle resBundle = new ResBundle("resources", locale);
+		resBundle.setMissingType(MissingType.PSEUDO);
+		assertNotNull(resBundle);
+
+		assertEquals("Энгагэмэнт поинт!76543210", resBundle.getString("Engagement point!").toString());
+	}
+
+	public void testGetPseudoStringHebrScript()
+	{
+		final IlibLocale locale = new IlibLocale("he-IL");
+		ResBundle resBundle = new ResBundle("resources", locale);
+		resBundle.setMissingType(MissingType.PSEUDO);
+		assertNotNull(resBundle);
+
+		assertEquals("ֶנגַגֶמֶנט פִֹנט!76543210", resBundle.getString("Engagement point!").toString());
+	}
+	
+	public void testGetPseudoStringHansScript()
+	{
+		final IlibLocale locale = new IlibLocale("zh-HK");
+		ResBundle resBundle = new ResBundle("resources", locale);
+		resBundle.setMissingType(MissingType.PSEUDO);
+		resBundle.setLengthen(false);
+		assertNotNull(resBundle);
+
+		assertEquals("俄尼个阿个俄们俄尼推 琶夥意尼推!",resBundle.getString("Engagement point!").toString());
 	}
 }
