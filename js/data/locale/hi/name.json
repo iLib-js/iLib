@@ -2,8 +2,8 @@
 	"format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
 	"sortByHeadWord": false,
 	"conjunctions": {
-		"and1": "और ",
-		"and2": "और ",
+		"and1": "और",
+		"and2": "और",
 		"or1": "या",
 		"or2": "या"
 	},
@@ -95,10 +95,6 @@
            "दादा",
 
            "चचेरा भाई",
-	  
-	   "और",
-          
-	   "या"
 
      ],
 
