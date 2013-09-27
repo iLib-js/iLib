@@ -29,6 +29,103 @@ function testParseAddressINHINormal() {
 	assertEquals("IN", parsedAddress.countryCode);
 };
 
+
+function testParseAddressINGUNoZip() {
+	var parsedAddress = new ilib.Address("125/1, એજી ટાવર્સ. 3 જો માળ, પાર્ક સ્ટ્રીટ. સર્કસ એવન્યુ\nકોલકાતા\nપશ્ચિમ બંગાળ\nભારત", {locale: 'gu-IN'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("125/1, એજી ટાવર્સ. 3 જો માળ, પાર્ક સ્ટ્રીટ. સર્કસ એવન્યુ", parsedAddress.streetAddress);
+	assertEquals("કોલકાતા", parsedAddress.locality);
+	assertEquals("પશ્ચિમ બંગાળ", parsedAddress.region);
+	assertEquals("ભારત", parsedAddress.country);
+	assertEquals("IN", parsedAddress.countryCode);
+	assertUndefined(parsedAddress.postalCode);
+};
+
+function testParseAddressINKNNoZip() {
+	var parsedAddress = new ilib.Address("125/1, ಎಜಿ ಟವರ್ಸ್. 3 ನೇ ಮಹಡಿ, ಪಾರ್ಕ್ ಸ್ಟ್ರೀಟ್. ಸರ್ಕಸ್ ಅವೆನ್ಯೂ\nಕಲ್ಕತ್ತಾ\nಪಶ್ಚಿಮ ಬಂಗಾಳ\nಭಾರತ", {locale: 'kn-IN'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("125/1, ಎಜಿ ಟವರ್ಸ್. 3 ನೇ ಮಹಡಿ, ಪಾರ್ಕ್ ಸ್ಟ್ರೀಟ್. ಸರ್ಕಸ್ ಅವೆನ್ಯೂ", parsedAddress.streetAddress);
+	assertEquals("ಕಲ್ಕತ್ತಾ", parsedAddress.locality);
+	assertEquals("ಪಶ್ಚಿಮ ಬಂಗಾಳ", parsedAddress.region);
+	assertEquals("ಭಾರತ", parsedAddress.country);
+	assertEquals("IN", parsedAddress.countryCode);
+	assertUndefined(parsedAddress.postalCode);
+};
+
+function testParseAddressINKNNoZip() {
+	var parsedAddress = new ilib.Address("125/1, ಎಜಿ ಟವರ್ಸ್. 3 ನೇ ಮಹಡಿ, ಪಾರ್ಕ್ ಸ್ಟ್ರೀಟ್. ಸರ್ಕಸ್ ಅವೆನ್ಯೂ\nಕಲ್ಕತ್ತಾ\nಪಶ್ಚಿಮ ಬಂಗಾಳ\nಭಾರತ", {locale: 'kn-IN'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("125/1, ಎಜಿ ಟವರ್ಸ್. 3 ನೇ ಮಹಡಿ, ಪಾರ್ಕ್ ಸ್ಟ್ರೀಟ್. ಸರ್ಕಸ್ ಅವೆನ್ಯೂ", parsedAddress.streetAddress);
+	assertEquals("ಕಲ್ಕತ್ತಾ", parsedAddress.locality);
+	assertEquals("ಪಶ್ಚಿಮ ಬಂಗಾಳ", parsedAddress.region);
+	assertEquals("ಭಾರತ", parsedAddress.country);
+	assertEquals("IN", parsedAddress.countryCode);
+	assertUndefined(parsedAddress.postalCode);
+};
+
+function testParseAddressINMRNoZip() {
+	var parsedAddress = new ilib.Address("125/1, एजी टॉवर्स. 3 रा मजला, पार्क स्ट्रीट. सर्कस ऍव्हेन्यू\nकलकत्ता\nपश्चिम बंगाल\nभारत", {locale: 'mr-IN'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("125/1, एजी टॉवर्स. 3 रा मजला, पार्क स्ट्रीट. सर्कस ऍव्हेन्यू", parsedAddress.streetAddress);
+	assertEquals("कलकत्ता", parsedAddress.locality);
+	assertEquals("पश्चिम बंगाल", parsedAddress.region);
+	assertEquals("भारत", parsedAddress.country);
+	assertEquals("IN", parsedAddress.countryCode);
+	assertUndefined(parsedAddress.postalCode);
+};
+
+function testParseAddressINTENoZip() {
+	var parsedAddress = new ilib.Address("125/1, AG టవర్స్. 3 వ అంతస్తు, పార్క్ స్ట్రీట్. సర్కస్ ఎవెన్యూ \nకలకత్తా \nవెస్ట్ బెంగాల్\nభారత దేశం", {locale: 'te-IN'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("125/1, AG టవర్స్. 3 వ అంతస్తు, పార్క్ స్ట్రీట్. సర్కస్ ఎవెన్యూ", parsedAddress.streetAddress);
+	assertEquals("కలకత్తా", parsedAddress.locality);
+	assertEquals("వెస్ట్ బెంగాల్", parsedAddress.region);
+	assertEquals("భారత దేశం", parsedAddress.country);
+	assertEquals("IN", parsedAddress.countryCode);
+	assertUndefined(parsedAddress.postalCode);
+};
+
+function testParseAddressINTANoZip() {
+	var parsedAddress = new ilib.Address("125/1, ஏஜி டவர்ஸ். 3 வது மாடி, பார்க் தெரு. சர்க்கஸ் அவென்யூ\nகல்கத்தா\nமேற்கு வங்காளம்\nஇந்தியா", {locale: 'ta-IN'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("125/1, ஏஜி டவர்ஸ். 3 வது மாடி, பார்க் தெரு. சர்க்கஸ் அவென்யூ", parsedAddress.streetAddress);
+	assertEquals("கல்கத்தா", parsedAddress.locality);
+	assertEquals("மேற்கு வங்காளம்", parsedAddress.region);
+	assertEquals("இந்தியா", parsedAddress.country);
+	assertEquals("IN", parsedAddress.countryCode);
+	assertUndefined(parsedAddress.postalCode);
+};
+
+function testParseAddressINBNMRNoZip() {
+	var parsedAddress = new ilib.Address("125/1, এজি টাওয়ার্স. 3 য় তল, পার্ক স্ট্রীট. সার্কাস অ্যাভিনিউ\nকলকাতা\nপশ্চিম বঙ্গ\nভারত", {locale: 'bn-IN'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("125/1, এজি টাওয়ার্স. 3 য় তল, পার্ক স্ট্রীট. সার্কাস অ্যাভিনিউ", parsedAddress.streetAddress);
+	assertEquals("কলকাতা", parsedAddress.locality);
+	assertEquals("পশ্চিম বঙ্গ", parsedAddress.region);
+	assertEquals("ভারত", parsedAddress.country);
+	assertEquals("IN", parsedAddress.countryCode);
+	assertUndefined(parsedAddress.postalCode);
+};
+
+function testParseAddressINHINoZip() {
+	var parsedAddress = new ilib.Address("125/1، اےجي ٹاورز. 3 فلور، پارک سٹریٹ. سرکس ایونی\nn کولکتہ\nمغربی بنگال\nبھارت", {locale: 'hi-IN'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("125/1، اےجي ٹاورز. 3 فلور، پارک سٹریٹ. سرکس ایونی", parsedAddress.streetAddress);
+	assertEquals("n کولکتہ", parsedAddress.locality);
+	assertEquals("مغربی بنگال", parsedAddress.region);
+	assertEquals("بھارت", parsedAddress.country);
+	assertEquals("IN", parsedAddress.countryCode);
+	assertUndefined(parsedAddress.postalCode);
+};
+
 function testParseAddressINHINoZip() {
 	var parsedAddress = new ilib.Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\nभारत", {locale: 'hi-IN'});
 	
