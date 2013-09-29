@@ -509,6 +509,16 @@ public class IString
     }
 
     /**
+     * This is the same as {@link IString#formatChoice(double, Map)} but with null map.
+     * 
+     * @see com.jedlsoft.utils.IString#formatChoice(double, Map)
+     * @param reference The reference value used to select the choice to use in the choice array
+     * @return the formatted string
+     */
+    public String formatChoice(double reference) throws ParseException {
+    	return formatChoice(reference, (Map<String, String>)null);
+    }
+    /**
      * This is the same as {@link com.jedlsoft.utils.IString#formatChoice(double, Map)}
      * except that the type of the reference argument is boolean. In this case, the
      * strings "true", "on", "yes", "1", or "false", "off", "no", or "0" (without the 

@@ -292,6 +292,32 @@ public class IStringTest
         }
     }
 
+    public void testStringFormatChoiceDouble1() {
+        IString str = new IString("1#first string|2#second string");
+        
+        assertNotNull(str);
+        
+        try {
+            assertEquals("first string", str.formatChoice(1));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceDouble2() {
+        IString str = new IString("1#first string|2#second string");
+        
+        assertNotNull(str);
+        
+        try {
+            assertEquals("second string", str.formatChoice(2));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
     public void testStringFormatChoiceOnlyOneChoicePositive() {
         IString str = new IString("1#first string");
         
@@ -299,6 +325,32 @@ public class IStringTest
         
         try {
             assertEquals("first string", str.formatChoice(1, (Map<String,String>)null));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceOnlyOneChoiceDoubleNegative() {
+        IString str = new IString("1#first string");
+        
+        assertNotNull(str);
+        
+        try {
+            assertEquals("", str.formatChoice(2));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+    
+    public void testStringFormatChoiceOnlyOneChoiceDoublePositive() {
+        IString str = new IString("1#first string");
+        
+        assertNotNull(str);
+        
+        try {
+            assertEquals("first string", str.formatChoice(1));
         } catch ( ParseException e ) {
             e.printStackTrace();
             fail();
@@ -344,6 +396,32 @@ public class IStringTest
         }
     }
 
+    public void testStringFormatChoiceDoubleNoString() {
+        IString str = new IString("");
+        
+        assertNotNull(str);
+        
+        try {
+            assertEquals("", str.formatChoice(2));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceDoubleNoMatch() {
+        IString str = new IString("1#first string|2#second string");
+        
+        assertNotNull(str);
+        
+        try {
+            assertEquals("", str.formatChoice(3));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
     public void testStringFormatChoiceSimpleDefault() {
         IString str = new IString("1#first string|2#second string|#other string");
         
@@ -377,6 +455,45 @@ public class IStringTest
         
         try {
             assertEquals("first string", str.formatChoice(2, (Map<String,String>)null));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+    
+    public void testStringFormatChoiceDoubleDefault() {
+        IString str = new IString("1#first string|2#second string|#other string");
+        
+        assertNotNull(str);
+        
+        try {
+            assertEquals("other string", str.formatChoice(3));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testStringFormatChoiceLessThanOrEqualDoublePositive() {
+        IString str = new IString("<=2#first string|3#second string|#other string");
+        
+        assertNotNull(str);
+        
+        try {
+            assertEquals("first string", str.formatChoice(1));
+        } catch ( ParseException e ) {
+            e.printStackTrace();
+            fail();
+        }
+   }
+
+    public void testStringFormatChoiceDoubleLessThanOrEqualEqual() {
+        IString str = new IString("<=2#first string|3#second string|#other string");
+        
+        assertNotNull(str);
+        
+        try {
+            assertEquals("first string", str.formatChoice(2));
         } catch ( ParseException e ) {
             e.printStackTrace();
             fail();
