@@ -45,11 +45,11 @@ function testParseAdjunctNames_uz_Latn() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_uz_Latn() {
-	var parsed = new ilib.Name("Y Gimazetdinova", {locale: 'uz-Latn-UZ'});
+	var parsed = new ilib.Name("Janob va xonim Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "X",
+		prefix: "Janob va xonim",
 		familyName: "Gimazetdinova"
 	};
 	
@@ -58,11 +58,11 @@ function testParseSingleNameWithPrefixAndAdjunct_uz_Latn() {
 
 
 function testParseTitle_uz_Latn() {
-	var parsed = new ilib.Name("Anastasia Gimazetdinova Y", {locale: 'uz-Latn-UZ'});
+	var parsed = new ilib.Name("Anastasia Gimazetdinova katta", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		suffix: "X",
+		suffix: "katta",
 		givenName: "Anastasia",
 		familyName: "Gimazetdinova"
 	};
@@ -73,11 +73,11 @@ function testParseTitle_uz_Latn() {
 
 
 function testParseTitleWithFamilyOnly_uz_Latn() {
-	var parsed = new ilib.Name("YSS Gimazetdinova", {locale: 'uz-Latn-UZ'});
+	var parsed = new ilib.Name("janob Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "X",
+		prefix: "janob",
 		familyName: "Gimazetdinova"
 	};
 	
@@ -87,11 +87,11 @@ function testParseTitleWithFamilyOnly_uz_Latn() {
 
 
 function testParseEverything_uz_Latn() {
-	var parsed = new ilib.Name("X Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
+	var parsed = new ilib.Name("janob Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		prefix: "Y",
+		prefix: "janob",
 		givenName: "Anastasia",
 		familyName: "Gimazetdinova"
 	};
@@ -143,7 +143,7 @@ function testFormatSimpleNameLong_uz_Latn() {
 		givenName: "Anastasia",
 		
 		familyName: "Gimazetdinova",
-		suffix: "X"
+		suffix: "kichik"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "long", 
@@ -159,10 +159,10 @@ function testFormatSimpleNameLong_uz_Latn() {
 
 function testFormatSimpleNameFull_uz_Latn() {
 	var name = new ilib.Name({
-		prefix: "Y",
+		prefix: "xonim",
 		givenName: "Anastasia",
 		familyName: "Gimazetdinova",
-		suffix: "XX"
+		suffix: "kichik"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full", 
@@ -171,120 +171,9 @@ function testFormatSimpleNameFull_uz_Latn() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Y Anastasia Gimazetdinova iv";
+	var expected = "xonim Anastasia Gimazetdinova kichik";
 	
 	assertEquals(expected, formatted);
 };
-
-function testFormatComplexNameShort_uz_Latn() {
-	var name = new ilib.Name({
-		prefix: "X",
-		givenName: "Anastasia",
-		familyName: "Gimazetdinova"
-	});
-	var fmt = new ilib.NameFmt({
-		style: "short", 
-		locale: 'uz-Latn-UZ'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "Anastasia Gimazetdinova";
-	
-	assertEquals(expected, formatted);
-};
-
-function testFormatComplexNameMedium_uz_Latn() {
-	var name = new ilib.Name({
-		prefix: "Prince",
-		givenName: "Anastasia",
-		familyName: "Gimazetdinova"
-	});
-	var fmt = new ilib.NameFmt({
-		style: "medium", 
-		locale: 'uz-Latn-UZ'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "Anastasia Gimazetdinova";
-	
-	assertEquals(expected, formatted);
-};
-
-function testFormatComplexNameLong_uz_Latn() {
-	var name = new ilib.Name({
-		prefix: "X",
-		givenName: "Anastasia",
-		familyName: "Gimazetdinova"
-	});
-	var fmt = new ilib.NameFmt({
-		style: "full",
-		locale: 'uz-Latn-UZ'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "Y Anastasia Gimazetdinova";
-	
-	assertEquals(expected, formatted);
-};
-
-function testFormatAsianNameShort_uz_Latn() {
-	var name = new ilib.Name({
-		prefix: "小",
-		givenName: "獸",
-		familyName: "地"
-	});
-	var fmt = new ilib.NameFmt({
-		style: "short", 
-		locale: 'uz-Latn-UZ'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "地獸";
-	
-	assertEquals(expected, formatted);
-};
-
-function testFormatAsianNameMedium_uz_Latn() {
-	var name = new ilib.Name({
-		prefix: "小",
-		givenName: "獸",
-		familyName: "地"
-	});
-	var fmt = new ilib.NameFmt({
-		style: "medium", 
-		locale: 'uz-Latn-UZ'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "地獸";
-	
-	assertEquals(expected, formatted);
-};
-
-function testFormatAsianNameLong_uz_Latn() {
-	var name = new ilib.Name({
-		prefix: "小",
-		givenName: "獸",
-		familyName: "地"
-	});
-	var fmt = new ilib.NameFmt({
-		style: "full", 
-		locale: 'uz-Latn-UZ'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "小地獸";
-	
-	assertEquals(expected, formatted);
-};
-
-
-
 
 

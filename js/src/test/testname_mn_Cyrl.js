@@ -18,12 +18,12 @@
  */
 
 function testParseSimpleName_mn_Cyrl() {
-	var parsed = new ilib.Name("Y", {locale: 'mn-Cyrl-MN'});
+	var parsed = new ilib.Name("Tsakhiagiin Elbegdorj", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		givenName: "",
-		familyName: ""
+		givenName: "Tsakhiagiin",
+		familyName: "Elbegdorj"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -31,12 +31,12 @@ function testParseSimpleName_mn_Cyrl() {
 
 
 function testParseAdjunctNames_mn_Cyrl() {
-	var parsed = new ilib.Name("Y", {locale: 'mn-Cyrl-MN'});
+	var parsed = new ilib.Name("Ноён ба Хатагтай Elbegdorj", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
-		givenName: "",
-		familyName: ""
+		givenName: "Ноён ба Хатагтай",
+		familyName: "Elbegdorj"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -45,12 +45,12 @@ function testParseAdjunctNames_mn_Cyrl() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_mn_Cyrl() {
-	var parsed = new ilib.Name("Y", {locale: 'mn-Cyrl-MN'});
+	var parsed = new ilib.Name("xатагтай Elbegdorj", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "",
-		familyName: ""
+		prefix: "xатагтай",
+		familyName: "Elbegdorj"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -58,27 +58,13 @@ function testParseSingleNameWithPrefixAndAdjunct_mn_Cyrl() {
 
 
 function testParseTitle_mn_Cyrl() {
-	var parsed = new ilib.Name("Y", {locale: 'mn-Cyrl-MN'});
+	var parsed = new ilib.Name("Tsakhiagiin Elbegdorj 9-р", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		suffix: "",
-		givenName: "",
-		familyName: ""
-	};
-	
-	assertObjectContains(expected, parsed);
-};
-
-
-
-function testParseTitleWithFamilyOnly_mn_Cyrl() {
-	var parsed = new ilib.Name("Y", {locale: 'mn-Cyrl-MN'});
-	assertNotUndefined(parsed);
-	
-	var expected =   {
-		prefix: "",
-		familyName: ""
+		suffix: "9-р",
+		givenName: "Tsakhiagiin",
+		familyName: "Elbegdorj"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -87,13 +73,13 @@ function testParseTitleWithFamilyOnly_mn_Cyrl() {
 
 
 function testParseEverything_mn_Cyrl() {
-	var parsed = new ilib.Name("Y", {locale: 'mn-Cyrl-MN'});
+	var parsed = new ilib.Name("mонгол yлсын eрөнхийлөгч Tsakhiagiin Elbegdorj", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "mонгол yлсын eрөнхийлөгч",
+		givenName: "Tsakhiagiin",
+		familyName: "Elbegdorj"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -104,65 +90,13 @@ function testParseEverything_mn_Cyrl() {
  * Format Tests
  */
 
-function testFormatSimpleNameShort_mn_Cyrl() {
-	var name = new ilib.Name({
-		givenName: "",
-		familyName: ""
-	});
-	var fmt = new ilib.NameFmt({
-		style: "short", 
-		locale: 'mn-Cyrl-MN'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "X";
-	
-	assertEquals(expected, formatted);
-};
-
-function testFormatSimpleNameMedium_mn_Cyrl() {
-	var name = new ilib.Name({
-		givenName: "",
-		familyName: ""
-	});
-	var fmt = new ilib.NameFmt({
-		style: "medium", 
-		locale: 'mn-Cyrl-MN'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "X";
-	
-	assertEquals(expected, formatted);
-};
-
-function testFormatSimpleNameLong_mn_Cyrl() {
-	var name = new ilib.Name({
-		givenName: "",
-		
-		familyName: "",
-		suffix: ""
-	});
-	var fmt = new ilib.NameFmt({
-		style: "long", 
-		locale: 'mn-Cyrl-MN'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "X";
-	
-	assertEquals(expected, formatted);
-};
 
 function testFormatSimpleNameFull_mn_Cyrl() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: "",
-		suffix: ""
+		prefix: "mонгол Улсын Ерөнхийлөгч",
+		givenName: "Tsakhiagiin",
+		familyName: "Elbegdorj",
+		suffix: "9-р"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full", 
@@ -171,16 +105,16 @@ function testFormatSimpleNameFull_mn_Cyrl() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "mонгол Улсын Ерөнхийлөгч Tsakhiagiin Elbegdorj 9-р";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameShort_mn_Cyrl() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "mонгол Улсын Ерөнхийлөгч",
+		givenName: "Tsakhiagiin",
+		familyName: "Elbegdorj"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
@@ -189,16 +123,16 @@ function testFormatComplexNameShort_mn_Cyrl() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Tsakhiagiin Elbegdorj";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameMedium_mn_Cyrl() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "mонгол Улсын Ерөнхийлөгч",
+		givenName: "Tsakhiagiin",
+		familyName: "Elbegdorj"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
@@ -207,16 +141,16 @@ function testFormatComplexNameMedium_mn_Cyrl() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Tsakhiagiin Elbegdorj";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameLong_mn_Cyrl() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "mонгол Улсын Ерөнхийлөгч",
+		givenName: "Tsakhiagiin",
+		familyName: "Elbegdorj"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full",
@@ -225,7 +159,7 @@ function testFormatComplexNameLong_mn_Cyrl() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "mонгол Улсын Ерөнхийлөгч Tsakhiagiin Elbegdorj";
 	
 	assertEquals(expected, formatted);
 };
@@ -243,7 +177,7 @@ function testFormatAsianNameShort_mn_Cyrl() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "地獸";
 	
 	assertEquals(expected, formatted);
 };
@@ -261,7 +195,7 @@ function testFormatAsianNameMedium_mn_Cyrl() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "地獸";
 	
 	assertEquals(expected, formatted);
 };
@@ -279,7 +213,7 @@ function testFormatAsianNameLong_mn_Cyrl() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "小地獸";
 	
 	assertEquals(expected, formatted);
 };

@@ -18,39 +18,25 @@
  */
 
 function testParseSimpleName_kk() {
-	var parsed = new ilib.Name("Y", {locale: 'kk-KZ'});
+	var parsed = new ilib.Name("Джордж Буш", {locale: 'kk-KZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		givenName: "",
-		familyName: ""
+		givenName: "Джордж",
+		familyName: "Буш"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
-
-
-function testParseAdjunctNames_kk() {
-	var parsed = new ilib.Name("Y", {locale: 'kk-KZ'});
-	assertNotUndefined(parsed);
-	
-	var expected =  {
-		givenName: "",
-		familyName: ""
-	};
-	
-	assertObjectContains(expected, parsed);
-};
-
 
 
 function testParseSingleNameWithPrefixAndAdjunct_kk() {
-	var parsed = new ilib.Name("Y", {locale: 'kk-KZ'});
+	var parsed = new ilib.Name("үлкен Буш", {locale: 'kk-KZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "",
-		familyName: ""
+		prefix: "үлкен",
+		familyName: "Буш"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -58,42 +44,31 @@ function testParseSingleNameWithPrefixAndAdjunct_kk() {
 
 
 function testParseTitle_kk() {
-	var parsed = new ilib.Name("Y", {locale: 'kk-KZ'});
+	var parsed = new ilib.Name("Джордж Буш 2-ші", {locale: 'kk-KZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		suffix: "",
-		givenName: "",
-		familyName: ""
+		suffix: "2-ші",
+		givenName: "Джордж",
+		familyName: "Буш"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
 
-
-function testParseTitleWithFamilyOnly_kk() {
-	var parsed = new ilib.Name("Y", {locale: 'kk-KZ'});
-	assertNotUndefined(parsed);
-	
-	var expected =   {
-		prefix: "",
-		familyName: ""
-	};
-	
-	assertObjectContains(expected, parsed);
-};
 
 
 
 function testParseEverything_kk() {
-	var parsed = new ilib.Name("Y", {locale: 'kk-KZ'});
+	var parsed = new ilib.Name("үлкен Джордж Буш 2-ші", {locale: 'kk-KZ'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
-		prefix: "",
-		givenName: "",
-		familyName: ""
+		prefix: "үлкен",
+		givenName: "Джордж",
+		familyName: "Буш",
+                suffix: "2-ші"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -106,8 +81,8 @@ function testParseEverything_kk() {
 
 function testFormatSimpleNameShort_kk() {
 	var name = new ilib.Name({
-		givenName: "",
-		familyName: ""
+		givenName: "Джордж",
+		familyName: "Буш"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
@@ -116,15 +91,15 @@ function testFormatSimpleNameShort_kk() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Джордж Буш";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameMedium_kk() {
 	var name = new ilib.Name({
-		givenName: "",
-		familyName: ""
+		givenName: "Джордж",
+		familyName: "Буш"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
@@ -133,17 +108,17 @@ function testFormatSimpleNameMedium_kk() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Джордж Буш";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameLong_kk() {
 	var name = new ilib.Name({
-		givenName: "",
+		givenName: "Джордж",
 		
-		familyName: "",
-		suffix: ""
+		familyName: "Буш",
+		suffix: "2-ші"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "long", 
@@ -152,17 +127,17 @@ function testFormatSimpleNameLong_kk() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "Джордж Буш";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameFull_kk() {
 	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: "",
-		suffix: ""
+		prefix: "үлкен",
+		givenName: "Джордж",
+		familyName: "Буш",
+		suffix: "2-ші"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full", 
@@ -171,120 +146,9 @@ function testFormatSimpleNameFull_kk() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "X";
+	var expected = "үлкен Джордж Буш 2-ші";
 	
 	assertEquals(expected, formatted);
 };
-
-function testFormatComplexNameShort_kk() {
-	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
-	});
-	var fmt = new ilib.NameFmt({
-		style: "short", 
-		locale: 'kk-KZ'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "X";
-	
-	assertEquals(expected, formatted);
-};
-
-function testFormatComplexNameMedium_kk() {
-	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
-	});
-	var fmt = new ilib.NameFmt({
-		style: "medium", 
-		locale: 'kk-KZ'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "X";
-	
-	assertEquals(expected, formatted);
-};
-
-function testFormatComplexNameLong_kk() {
-	var name = new ilib.Name({
-		prefix: "",
-		givenName: "",
-		familyName: ""
-	});
-	var fmt = new ilib.NameFmt({
-		style: "full",
-		locale: 'kk-KZ'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "X";
-	
-	assertEquals(expected, formatted);
-};
-
-function testFormatAsianNameShort_kk() {
-	var name = new ilib.Name({
-		prefix: "小",
-		givenName: "獸",
-		familyName: "地"
-	});
-	var fmt = new ilib.NameFmt({
-		style: "short", 
-		locale: 'kk-KZ'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "X";
-	
-	assertEquals(expected, formatted);
-};
-
-function testFormatAsianNameMedium_kk() {
-	var name = new ilib.Name({
-		prefix: "小",
-		givenName: "獸",
-		familyName: "地"
-	});
-	var fmt = new ilib.NameFmt({
-		style: "medium", 
-		locale: 'kk-KZ'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "X";
-	
-	assertEquals(expected, formatted);
-};
-
-function testFormatAsianNameLong_kk() {
-	var name = new ilib.Name({
-		prefix: "小",
-		givenName: "獸",
-		familyName: "地"
-	});
-	var fmt = new ilib.NameFmt({
-		style: "full", 
-		locale: 'kk-KZ'
-	});
-	var formatted = fmt.format(name);
-	assertNotUndefined(formatted);
-	
-	var expected = "X";
-	
-	assertEquals(expected, formatted);
-};
-
-
-
 
 
