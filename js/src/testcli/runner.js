@@ -190,11 +190,16 @@ function TestRunner(root) {
 
 TestRunner.prototype = {
 	runTests: function() {
+		var start = new Date();
+		
 		this.subSuites.forEach(function (suite) {
 			suite.runTests(this.results, this.root);
 		}.bind(this));
 		
-		console.log("Summary - " + this.results.runs + " tests run, " + this.results.pass + " pass, " + this.results.fail + " fail.");
+		var end = new Date();
+		var duration = (end.getTime() - start.getTime()) / 1000;
+		
+		console.log("Summary - " + this.results.runs + " tests run, " + this.results.pass + " pass, " + this.results.fail + " fail, " + duration + " seconds.");
 		process.exit(this.results.fail);
 	},
 	
