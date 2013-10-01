@@ -58,22 +58,43 @@ if (typeof(exports) !== 'undefined') {
  * @private
  * @static
  * Return the name of the platform
+ * @return {string} string naming the platform
  */
 ilib._getPlatform = function () {
 	if (!ilib._platform) {
-		if (typeof(window) !== 'undefined' && typeof(PalmSystem) === 'undefined') {
-			ilib._platform = "browser";
-		} else if (typeof(PalmSystem) !== 'undefined') {
-			ilib._platform = "webos";
-		} else if (typeof(environment) !== 'undefined') {
+		if (typeof(environment) !== 'undefined') {
 			ilib._platform = "rhino";
-		} else if (typeof(process) !== 'undefined') {
+		} else if (typeof(process) !== 'undefined' || typeof(require) !== 'undefined') {
 			ilib._platform = "nodejs";
+		} else if (typeof(window) !== 'undefined') {
+			ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
 		} else {
 			ilib._platform = "unknown";
 		}
 	}	
 	return ilib._platform;
+};
+
+/**
+ * @private
+ * @static
+ * Return true if the global variable is defined on this platform.
+ * @return {boolean} true if the global variable is defined on this platform, false otherwise
+ */
+ilib._isGlobal = function(name) {
+	switch (ilib._getPlatform()) {
+		case "rhino":
+			var top = (function() {
+			  return (typeof global === 'object') ? global : this;
+			})();
+			return typeof(top[name]) !== undefined;
+		case "nodejs":
+			var root = typeof(global) !== 'undefined' ? global : this;
+			return root && typeof(root[name]) !== undefined;
+			
+		default:
+			return typeof(window[name]) !== undefined;
+	}
 };
 
 /**

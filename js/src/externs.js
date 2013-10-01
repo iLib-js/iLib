@@ -20,4 +20,4 @@
 function console(str){};
 function JSON(str){};
 console.log = function (str){};
-var PalmSystem, process, environment, exports;
+var PalmSystem, process, require, module, environment, exports, global, Intl;

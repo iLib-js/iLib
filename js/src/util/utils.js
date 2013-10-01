@@ -25,8 +25,8 @@
  * bind() doesn't exist in many older browsers.
  * 
  * @param {Object} scope object that the method should operate on
- * @param {function(?)} method method to call
- * @return {function(?)|undefined} function that calls the given method 
+ * @param {function(...)} method method to call
+ * @return {function(...)|undefined} function that calls the given method 
  * in the given scope with all of its arguments properly attached, or
  * undefined if there was a problem with the arguments
  */

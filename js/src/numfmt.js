@@ -126,6 +126,7 @@ util/jsutils.js
 ilib.NumFmt = function (options) {
 	var sync = true;
 	this.locale = new ilib.Locale();
+	/** @type {string} */
 	this.type = "number";
 	this.useNative = false;
 
@@ -143,31 +144,41 @@ ilib.NumFmt = function (options) {
 		}
 
 		if (options.currency) {
+			/** @type {string} */
 			this.currency = options.currency;
 		}
 
 		if (typeof (options.maxFractionDigits) === 'number') {
+			/** @type {number|undefined} */
 			this.maxFractionDigits = this._toPrimitive(options.maxFractionDigits);
 		}
 		if (typeof (options.minFractionDigits) === 'number') {
+			/** @type {number|undefined} */
 			this.minFractionDigits = this._toPrimitive(options.minFractionDigits);
 		}
 		if (options.style) {
+			/** @type {string} */
 			this.style = options.style;
 		}
 		if (options.useNative) {
 			this.useNative = options.useNative;
 		}
+		/** @type {string} */
 		this.roundingMode = options.roundingMode;
 
 		if (typeof (options.sync) !== 'undefined') {
+			/** @type {boolean} */
 			sync = (options.sync == true);
 		}
 	}
 
+	/** @type {ilib.LocaleInfo|undefined} */
+	this.localeInfo = undefined;
+	
 	new ilib.LocaleInfo(this.locale, {
 		sync: sync,
 		onLoad: ilib.bind(this, function (li) {
+			/** @type {ilib.LocaleInfo|undefined} */
 			this.localeInfo = li;
 
 			if (this.type === "number") {
@@ -188,8 +199,8 @@ ilib.NumFmt = function (options) {
 						if (this.style !== "common" && this.style !== "iso") {
 							this.style = "common";
 						}
-
-						if (typeof (this.maxFractionDigits) !== 'number' && typeof (this.minFractionDigits) !== 'number') {
+						
+						if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.minFractionDigits) !== 'number') {
 							this.minFractionDigits = this.maxFractionDigits = this.currencyInfo.getFractionDigits();
 						}
 
@@ -363,8 +374,8 @@ ilib.NumFmt.prototype = {
 	_formatStandard: function (num) {
 		var i;
 		var k;
-
-		if (typeof (this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
+		
+		if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
 			var factor = Math.pow(10, this.maxFractionDigits);
 			num = this.round(num * factor) / factor;
 		}

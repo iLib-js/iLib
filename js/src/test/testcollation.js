@@ -20,13 +20,13 @@
 function testCollatorConstructor() {
     var col = new ilib.Collator();
     
-    assertNotNull(col);
+    assertNotUndefined(col);
 }
 
 function testCollatorDefault() {
     var col = new ilib.Collator();
     
-    assertNotNull(col);
+    assertNotUndefined(col);
 
     // should compare in English
     assertEquals("equality", 0, col.compare("string", "string"));
@@ -38,32 +38,32 @@ function testCollatorDefault() {
 function testCollatorDefaultCase() {
     var col = new ilib.Collator();
     
-    assertNotNull(col);
+    assertNotUndefined(col);
 
     // should compare upper-case first
     assertEquals("A < a", -1, col.compare("A", "a"));
     assertEquals("B < b", -1, col.compare("B", "b"));
-    assertEquals("B < a", -1, col.compare("B", "a"));
+    assertEquals("Z < a", 1, col.compare("a", "Z"));
 }
 
 function testCollatorGetComparator() {
     var col = new ilib.Collator();
     
-    assertNotNull(col);
+    assertNotUndefined(col);
 
     // should compare in English
     var func = col.getComparator();
-    assertNotNull(func);
+    assertNotUndefined(func);
     assertEquals("function", typeof(func));
 }
 
 function testCollatorGetComparatorWorks() {
     var col = new ilib.Collator();
     
-    assertNotNull(col);
+    assertNotUndefined(col);
     
     var func = col.getComparator();
-    assertNotNull(func);
+    assertNotUndefined(func);
     
     // should compare in English
     assertEquals("equality", 0, func("string", "string"));
@@ -75,21 +75,21 @@ function testCollatorGetComparatorWorks() {
 function testCollatorGetComparatorWorksWithCase() {
     var col = new ilib.Collator();
     
-    assertNotNull(col);
+    assertNotUndefined(col);
     
     var func = col.getComparator();
-    assertNotNull(func);
+    assertNotUndefined(func);
     
     // should compare upper-case first
     assertEquals("A < a", -1, func("A", "a"));
     assertEquals("B < b", -1, func("B", "b"));
-    assertEquals("B < a", -1, func("B", "a"));
+    assertEquals("Z < a", -1, func("Z", "a"));
 }
 
 function testCollatorGetSortKey() {
     var col = new ilib.Collator();
     
-    assertNotNull(col);
+    assertNotUndefined(col);
 
     assertEquals("string", typeof(col.sortKey("string")));
 }
@@ -97,7 +97,7 @@ function testCollatorGetSortKey() {
 function testCollatorGetSortKeyWorks() {
     var col = new ilib.Collator();
     
-    assertNotNull(col);
+    assertNotUndefined(col);
 
     // should compare in English
     assertTrue("string", col.sortKey("string") === col.sortKey("string"));
@@ -108,7 +108,7 @@ function testCollatorGetSortKeyWorks() {
 
 function testCollatorWithSort() {
     var col = new ilib.Collator();
-    assertNotNull(col);
+    assertNotUndefined(col);
     
     var input = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
     
@@ -120,14 +120,16 @@ function testCollatorWithSort() {
 }
 
 function testCollatorWithSortUpperFirst() {
-    var col = new ilib.Collator();
-    assertNotNull(col);
+    var col = new ilib.Collator({
+    	upperFirst: true
+    });
+    assertNotUndefined(col);
     
-    var input = ["q", "W", "e", "r", "T", "Y", "U", "i", "o", "p"];
+    var input = ["q", "I", "e", "r", "T", "U", "i", "E", "o", "p"];
     
     input.sort(col.getComparator());
     
-    var expected = ["T", "U", "W", "Y", "e", "i", "o", "p", "q", "r"];
+    var expected = ["E", "I", "T", "U", "e", "i", "o", "p", "q", "r"];
     
     assertArrayEquals(expected, input);
 }
@@ -140,14 +142,330 @@ function testCollatorGetAvailableStyles() {
     assertArrayEquals(["standard"], ilib.Collator.getAvailableStyles());
 }
 
-/*
 function testCollatorDefaultExtendedChars() {
-    var col = new ilib.Collator();
-    
-    assertNotNull(col);
-
-    // should compare in English
-    assertEquals("e = ë", 0, col.compare("e", "ë"));
-    assertEquals("o = ø", 0, col.compare("o","ø"));
+	// only test on platforms that support the new Intl class natively
+	if (typeof(Intl) !== 'undefined') {
+	    var col = new ilib.Collator();
+	    
+	    assertNotUndefined(col);
+	
+	    // should compare in English
+	    assertEquals("e = ë", 0, col.compare("e", "ë"));
+	    assertEquals("o = ø", 0, col.compare("o","ø"));
+	}
 }
-*/
+
+function testCollatorNativeIsNative() {
+	// only test on platforms that support the new Intl class natively
+	if (typeof(Intl) !== 'undefined') {
+		var col = new ilib.Collator();
+		assertNotUndefined(col);
+	    assertNotUndefined(col.collator);
+	}
+}
+
+function testCollatorNativefrFRCase() {
+	// only test on platforms that support the new Intl class natively
+	if (typeof(Intl) !== 'undefined') {
+		var col = new ilib.Collator({
+			locale: "fr-FR",
+			sensitivity: "case"
+		});
+	    assertNotUndefined(col);
+	    
+	    var input = [
+	        "déjà",
+			"Meme",
+			"deja",
+			"même",
+			"dejà",
+			"bpef",
+			"bœg",
+			"Boef",
+			"Mémé",
+			"boef",
+			"bnef",
+			"pêche",
+			"pèché",
+			"pêché",
+			"pêche",
+			"pêché"
+		];
+	    
+	    input.sort(col.getComparator());
+	    
+	    var expected = [
+			"bnef",
+			"Boef",
+			"boef",
+			"bœg",
+			"bpef",
+			"deja",
+			"dejà",
+			"déjà",
+			"Meme",
+			"même",
+			"Mémé",
+			"pêche",
+			"pêche",
+			"pèché",
+			"pêché",
+			"pêché"
+		];
+	    
+	    assertArrayEquals(expected, input);
+	}
+}
+
+function testCollatorNativefrFRVariant() {
+	// only test on platforms that support the new Intl class natively
+	if (typeof(Intl) !== 'undefined') {
+		var col = new ilib.Collator({
+			locale: "fr-FR",
+			sensitivity: "variant"
+		});
+	    assertNotUndefined(col);
+	    
+	    var input = [
+	        "déjà",
+			"Meme",
+			"deja",
+			"même",
+			"dejà",
+			"bpef",
+			"bœg",
+			"Boef",
+			"Mémé",
+			"bœf",
+			"boef",
+			"bnef",
+			"pêche",
+			"pèché",
+			"pêché",
+			"pêche",
+			"pêché"
+		];
+	    
+	    input.sort(col.getComparator());
+	    
+	    var expected = [
+			"bnef",
+			"Boef",
+			"boef",
+			"bœf",
+			"bœg",
+			"bpef",
+			"deja",
+			"dejà",
+			"déjà",
+			"Meme",
+			"même",
+			"Mémé",
+			"pêche",
+			"pêche",
+			"pèché",
+			"pêché",
+			"pêché"
+		];
+	    
+	    assertArrayEquals(expected, input);
+	}
+}
+
+function testCollatorNativefrCACase() {
+	// only test on platforms that support the new Intl class natively
+	if (typeof(Intl) !== 'undefined') {
+		var col = new ilib.Collator({
+			locale: "fr-CA",
+			sensitivity: "case"
+		});
+	    assertNotUndefined(col);
+	    
+	    var input = [
+	        "déjà",
+			"Meme",
+			"deja",
+			"même",
+			"dejà",
+			"bpef",
+			"bœg",
+			"Boef",
+			"Mémé",
+			"boef",
+			"bnef",
+			"pêche",
+			"pèché",
+			"pêché",
+			"pêche",
+			"pêché"
+		];
+	    
+	    input.sort(col.getComparator());
+	    
+	    var expected = [
+			"bnef",
+			"Boef",
+			"boef",
+			"bœg",
+			"bpef",
+			"deja",
+			"dejà",
+			"déjà",
+			"Meme",
+			"même",
+			"Mémé",
+			"pêche",
+			"pêche",
+			"pèché",
+			"pêché",
+			"pêché"
+		];
+	    
+	    assertArrayEquals(expected, input);
+	}
+}
+
+function testCollatorNativefrCAVariant() {
+	// only test on platforms that support the new Intl class natively
+	if (typeof(Intl) !== 'undefined') {
+		var col = new ilib.Collator({
+			locale: "fr-CA",
+			sensitivity: "variant"
+		});
+	    assertNotUndefined(col);
+	    
+	    var input = [
+	        "déjà",
+			"Meme",
+			"deja",
+			"même",
+			"dejà",
+			"bpef",
+			"bœg",
+			"Boef",
+			"Mémé",
+			"bœf",
+			"boef",
+			"bnef",
+			"pêche",
+			"pèché",
+			"pêché",
+			"pêche",
+			"pêché"
+		];
+	    
+	    input.sort(col.getComparator());
+	    
+	    var expected = [
+			"bnef",
+			"Boef",
+			"boef",
+			"bœf",
+			"bœg",
+			"bpef",
+			"deja",
+			"dejà",
+			"déjà",
+			"Meme",
+			"même",
+			"Mémé",
+			"pêche",
+			"pêche",
+			"pèché",
+			"pêché",
+			"pêché"
+		];
+	    
+	    assertArrayEquals(expected, input);
+	}
+}
+
+function testCollatorNativedeDECase() {
+	// only test on platforms that support the new Intl class natively
+	if (typeof(Intl) !== 'undefined') {
+		var col = new ilib.Collator({
+			locale: "de-DE",
+			sensitivity: "case"
+		});
+	    assertNotUndefined(col);
+	    
+	    var input = [
+  			"Sonntag",
+  			"Flüsse",
+ 			"Montag",
+ 			"Dienstag",
+ 			"Januar",
+ 			"Februar",
+ 			"März",
+ 			"Fuße",
+ 			"Flusse",
+ 			"flusse",
+ 			"flüsse"
+ 		];
+	    
+	    input.sort(col.getComparator());
+	    
+	    var expected = [
+			"Dienstag",
+			"Februar",
+			"Flusse",
+			"flusse",
+			"Flüsse",
+			"flüsse",
+			"Fuße",
+			"Januar",
+			"März",
+			"Montag",
+			"Sonntag"	                    
+		];
+	    
+	    assertArrayEquals(expected, input);
+	}
+}
+
+function testCollatorNativedeDEVariant() {
+	// only test on platforms that support the new Intl class natively
+	if (typeof(Intl) !== 'undefined') {
+		var col = new ilib.Collator({
+			locale: "de-DE",
+			sensitivity: "variant"
+		});
+	    assertNotUndefined(col);
+	    
+	    var input = [
+  			"Sonntag",
+ 			"Montag",
+ 			"Dienstag",
+ 			"Januar",
+ 			"Februar",
+ 			"März",
+ 			"Fuße",
+ 			"Fluße",
+ 			"Flusse",
+ 			"flusse",
+ 			"fluße",
+ 			"flüße",
+ 			"flüsse"
+ 		];
+	    
+	    input.sort(col.getComparator());
+	    
+	    var expected = [
+			"Dienstag",
+			"Februar",
+			"Flusse",
+			"flusse",
+			"Fluße",
+			"fluße",
+			"flüsse",
+			"flüße",
+			"Fuße",
+			"Januar",
+			"März",
+			"Montag",
+			"Sonntag"	                    
+		];
+	    
+	    assertArrayEquals(expected, input);
+	}
+}
