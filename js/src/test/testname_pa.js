@@ -1,5 +1,5 @@
 /*
- * testname_mr_IN.js - test the name object in Hindi
+ * testname_pa_IN.js - test the name object in Hindi
  * 
  * Copyright © 2013, JEDLSoft
  *
@@ -17,13 +17,13 @@
  * limitations under the License.
  */
 
-function testParseSimpleName_mr_IN() {
-	var parsed = new ilib.Name("सचिन तेंडुलकर", {locale: 'mr-IN'});
+function testParseSimpleName_pa_IN() {
+	var parsed = new ilib.Name("ਹਰਭਜਨ ਸਿੰਘ", {locale: 'pa-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "सचिन",
-		familyName: "तेंडुलकर"
+		givenName: "ਹਰਭਜਨ",
+		familyName: "ਸਿੰਘ"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -31,14 +31,14 @@ function testParseSimpleName_mr_IN() {
 
 
 
-function testParseTitle_mr_IN() {
-	var parsed = new ilib.Name("सचिन तेंडुलकर ज्येष्ठ", {locale: 'mr-IN'});
+function testParseTitle_pa_IN() {
+	var parsed = new ilib.Name("ਹਰਭਜਨ ਸਿੰਘ ਸੇਨਿਓਰ", {locale: 'pa-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		suffix: "ज्येष्ठ",
-		givenName: "सचिन",
-		familyName: "तेंडुलकर"
+		suffix: "ਸੇਨਿਓਰ",
+		givenName: "ਹਰਭਜਨ",
+		familyName: "ਸਿੰਘ"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -46,13 +46,13 @@ function testParseTitle_mr_IN() {
 
 
 
-function testParseTitleWithFamilyOnly_mr_IN() {
-	var parsed = new ilib.Name("श्रीयुत तेंडुलकर", {locale: 'mr-IN'});
+function testParseTitleWithFamilyOnly_pa_IN() {
+	var parsed = new ilib.Name("ਦਰ ਸਿੰਘ", {locale: 'pa-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "श्रीयुत",
-		familyName: "तेंडुलकर"
+		prefix: "ਦਰ",
+		familyName: "ਸਿੰਘ"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -60,26 +60,26 @@ function testParseTitleWithFamilyOnly_mr_IN() {
 
 
 
-function testParseEverything_mr_IN() {
-	var parsed = new ilib.Name("श्रीयुत आणि मिसेस तेंडुलकर", {locale: 'mr-IN'});
+function testParseEverything_pa_IN() {
+	var parsed = new ilib.Name("ਦਰ ਏੰਡ ਮਰ ਸਿੰਘ", {locale: 'pa-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "श्रीयुत आणि मिसेस",
-		familyName: "तेंडुलकर"
+		prefix: "ਦਰ ਏੰਡ ਮਰ",
+		familyName: "ਸਿੰਘ"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseprefix_mr_IN() {
-	var parsed = new ilib.Name("श्रीयुत सचिन तेंडुलकर", {locale: 'mr-IN'});
+function testParseprefix_pa_IN() {
+	var parsed = new ilib.Name("ਦਰ ਹਰਭਜਨ ਸਿੰਘ", {locale: 'pa-IN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "श्रीयुत",
-		givenName: "सचिन",
-		familyName: "तेंडुलकर"
+		prefix: "ਦਰ",
+		givenName: "ਹਰਭਜਨ",
+		familyName: "ਸਿੰਘ"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -88,147 +88,147 @@ function testParseprefix_mr_IN() {
  * Format Tests
  */
 
-function testFormatSimpleNameShort_mr_IN() {
+function testFormatSimpleNameShort_pa_IN() {
 	var name = new ilib.Name({
-		givenName: "सचिन",
-		familyName: "तेंडुलकर"
+		givenName: "ਹਰਭਜਨ",
+		familyName: "ਸਿੰਘ"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
-		locale: 'mr-IN'
+		locale: 'pa-IN'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "सचिन तेंडुलकर";
+	var expected = "ਹਰਭਜਨ ਸਿੰਘ";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatSimpleNameMedium_mr_IN() {
+function testFormatSimpleNameMedium_pa_IN() {
 	var name = new ilib.Name({
-		givenName: "सचिन",
+		givenName: "ਹਰਭਜਨ",
 		
-		familyName: "तेंडुलकर"
+		familyName: "ਸਿੰਘ"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
-		locale: 'mr-IN'
+		locale: 'pa-IN'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "सचिन तेंडुलकर";
+	var expected = "ਹਰਭਜਨ ਸਿੰਘ";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatSimpleNameLong_mr_IN() {
+function testFormatSimpleNameLong_pa_IN() {
 	var name = new ilib.Name({
-		givenName: "सचिन",
+		givenName: "ਹਰਭਜਨ",
 		
-		familyName: "तेंडुलकर"
+		familyName: "ਸਿੰਘ"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "long", 
-		locale: 'mr-IN'
+		locale: 'pa-IN'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "सचिन तेंडुलकर";
+	var expected = "ਹਰਭਜਨ ਸਿੰਘ";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatSurname_mr_IN() {
+function testFormatSurname_pa_IN() {
 	var name = new ilib.Name({
-		prefix: "श्रीयुत आणि मिसेस",
+		prefix: "ਦਰ ਏੰਡ ਮਰ",
 		
-		familyName: "तेंडुलकर"
+		familyName: "ਸਿੰਘ"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "long", 
-		locale: 'mr-IN'
+		locale: 'pa-IN'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "श्रीयुत आणि मिसेस तेंडुलकर";
+	var expected = "ਦਰ ਏੰਡ ਮਰ ਸਿੰਘ";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatSimpleNameFull_mr_IN() {
+function testFormatSimpleNameFull_pa_IN() {
 	var name = new ilib.Name({
-		prefix: "डॉक्टर",
-		givenName: "सचिन",
+		prefix: "ਡਾਕ੍ਟਰ",
+		givenName: "ਹਰਭਜਨ",
 		
-		familyName: "तेंडुलकर",
-		suffix: "वरिष्ठ"
+		familyName: "ਸਿੰਘ",
+		suffix: "ਸੇਨਿਓਰ"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full", 
-		locale: 'mr-IN'
+		locale: 'pa-IN'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "डॉक्टर सचिन तेंडुलकर वरिष्ठ";
+	var expected = "ਡਾਕ੍ਟਰ ਹਰਭਜਨ ਸਿੰਘ ਸੇਨਿਓਰ";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatComplexNameShort_mr_IN() {
+function testFormatComplexNameShort_pa_IN() {
 	var name = new ilib.Name({
-		prefix: "डॉक्टर",
-		givenName: "सचिन",
-		familyName: "तेंडुलकर"
+		prefix: "ਡਾਕ੍ਟਰ",
+		givenName: "ਹਰਭਜਨ",
+		familyName: "ਸਿੰਘ"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
-		locale: 'mr-IN'
+		locale: 'pa-IN'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "सचिन तेंडुलकर";
+	var expected = "ਹਰਭਜਨ ਸਿੰਘ";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatComplexNameMedium_mr_IN() {
+function testFormatComplexNameMedium_pa_IN() {
 	var name = new ilib.Name({
-		prefix: "डॉक्टर",
-		givenName: "सचिन",
-		familyName: "तेंडुलकर"
+		prefix: "ਡਾਕ੍ਟਰ",
+		givenName: "ਹਰਭਜਨ",
+		familyName: "ਸਿੰਘ"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
-		locale: 'mr-IN'
+		locale: 'pa-IN'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "सचिन तेंडुलकर";
+	var expected = "ਹਰਭਜਨ ਸਿੰਘ";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatComplexNameLong_mr_IN() {
+function testFormatComplexNameLong_pa_IN() {
 	var name = new ilib.Name({
-		prefix: "डॉक्टर",
-		givenName: "सचिन",
-		familyName: "तेंडुलकर"
+		prefix: "ਡਾਕ੍ਟਰ",
+		givenName: "ਹਰਭਜਨ",
+		familyName: "ਸਿੰਘ"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full",
-		locale: 'mr-IN'
+		locale: 'pa-IN'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "डॉक्टर सचिन तेंडुलकर";
+	var expected = "ਡਾਕ੍ਟਰ ਹਰਭਜਨ ਸਿੰਘ";
 	
 	assertEquals(expected, formatted);
 };
