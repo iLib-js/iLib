@@ -175,10 +175,7 @@ public class PluralFormHelper {
 	            		try {
 							Object item = ((JSONArray)jsonPart).get(i);
 							
-							if (item instanceof JSONObject) {
-								scanJsonParts(item, call.inheritors[i]);
-							}
-							else if (item instanceof JSONArray) {
+							if (item instanceof JSONObject || item instanceof JSONArray) {
 								scanJsonParts(item, call.inheritors[i]);
 							}
 							else {
