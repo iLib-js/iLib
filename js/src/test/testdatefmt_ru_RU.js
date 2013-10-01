@@ -17,8 +17,6 @@
  * limitations under the License.
  */
 
-ilib.String.loadPlurals(true, "ru-RU");
-
 function testDateFmtConstructorEmpty_ru_RU() {
     var fmt = new ilib.DateFmt({locale: "ru-RU"});
     

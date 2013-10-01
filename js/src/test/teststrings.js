@@ -1754,11 +1754,6 @@ function testRuleComplex4() {
 	assertFalse(ilib.String._fncs.getValue(rule, 123.5));
 }
 
-function setUp() {
-	ilib.String.loadPlurals(true, "sl-SL");
-	ilib.String.loadPlurals(true, "pl-PL");
-}
-
 function testStringGetLocaleDefault() {
 	var str = new ilib.String("foo");
     

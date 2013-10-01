@@ -949,14 +949,20 @@ ilib.String.prototype = {
 	 * 3 or 4".
 	 * @param {ilib.Locale|string} locale locale to use when processing choice
 	 * formats with this string
+	 * @param {boolean} sync [optional] whether to load the locale data synchronously 
+	 * or not
+	 * @param {Object} loadParams [optional] parameters to pass to the loader function
+	 * @param {function(*)=} onLoad [optional] function to call when the loading is done
 	 */
-	setLocale: function (locale) {
+	setLocale: function (locale, sync, loadParams, onLoad) {
 		if (typeof(locale) === 'object') {
 			this.locale = locale;
 		} else {
 			this.localeSpec = locale;
 			this.locale = new ilib.Locale(locale);
 		}
+		
+		ilib.String.loadPlurals(typeof(sync) !== 'undefined' ? sync : true, this.locale, loadParams, onLoad);
 	},
 
 	/**

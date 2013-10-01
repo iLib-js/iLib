@@ -17,8 +17,6 @@
  * limitations under the License.
  */
 
-ilib.String.loadPlurals(true, "bs-BA");
-
 function testDateFmtConstructorEmpty_bs_Cyrl_BA() {
     var fmt = new ilib.DateFmt({locale: "bs-Cyrl-BA"});
     

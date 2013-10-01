@@ -17,8 +17,6 @@
  * limitations under the License.
  */
 
-ilib.String.loadPlurals(true, "sl-SI");
-
 function testDateFmtConstructorEmpty_sl_SI() {
     var fmt = new ilib.DateFmt({locale: "sl-SI"});
     

@@ -544,7 +544,7 @@ ilib.ResBundle.prototype = {
 			return undefined;
 		} else {
 			var ret = new ilib.String(trans);
-			ret.setLocale(this.locale.getSpec());
+			ret.setLocale(this.locale.getSpec(), true, this.loadParams); // no callback
 			return ret;
 		}
 	},

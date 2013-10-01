@@ -17,8 +17,6 @@
  * limitations under the License.
  */
 
-ilib.String.loadPlurals(true, "mk-MK");
-
 function testDateFmtConstructorEmpty_mk_MK() {
     var fmt = new ilib.DateFmt({locale: "mk-MK"});
     

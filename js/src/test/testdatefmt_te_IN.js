@@ -16,8 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-ilib.String.loadPlurals(true, "te-IN");
-
 function testDateFmtINConstructorEmpty_te_IN() {
     var fmt = new ilib.DateFmt({locale: "te-IN"});
     

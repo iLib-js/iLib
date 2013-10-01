@@ -17,8 +17,6 @@
  * limitations under the License.
  */
 
-ilib.String.loadPlurals(true, "hr-HR");
-
 function testDateFmtConstructorEmpty_hr_HR() {
     var fmt = new ilib.DateFmt({locale: "hr-HR"});
     
