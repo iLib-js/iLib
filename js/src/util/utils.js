@@ -407,9 +407,9 @@ ilib.isEmpty = function (obj) {
  * The parameters can specify any of the following properties:<p>
  * 
  * <ul>
- * <li><i>name</i> - String. The name of the file being loaded.
+ * <li><i>name</i> - String. The name of the file being loaded. Default: resources.json
  * <li><i>object</i> - Object. The class attempting to load data. The cache is stored inside of here.
- * <li><i>locale</i> - ilib.Locale. The name of the locale data to load. Default is the current locale.
+ * <li><i>locale</i> - ilib.Locale. The locale for which data is loaded. Default is the current locale.
  * <li><i>type</i> - String. Type of file to load. This can be "json" or "other" type. Default: "json" 
  * <li><i>loadParams</i> - Object. An object with parameters to pass to the loader function
  * <li><i>sync</i> - boolean. Whether or not to load the data synchronously
@@ -424,7 +424,7 @@ ilib.loadData = function(params) {
 		object = undefined, 
 		locale = new ilib.Locale(ilib.getLocale()), 
 		sync = false, 
-		type = "json",
+		type,
 		loadParams = {},
 		callback = undefined;
 	
@@ -456,22 +456,33 @@ ilib.loadData = function(params) {
 	if (object && !object.cache) {
 		object.cache = {};
 	}
+	
+	if (!type) {
+		var dot = name.lastIndexOf(".");
+		type = (dot !== -1) ? name.substring(dot+1) : "text";
+	}
 
 	var spec = locale.getSpec().replace(/-/g, '_') || "root";
 	if (!object || typeof(object.cache[spec]) === 'undefined') {
-		var basename = name.substring(0,name.lastIndexOf("."));
-		var data = ilib.mergeLocData(basename, locale);
-		if (data) {
-			if (object) {
-				object.cache[spec] = data;
+		var data;
+		
+		if (type === "json") {
+			var basename = name.substring(0, name.lastIndexOf("."));
+			data = ilib.mergeLocData(basename, locale);
+			if (data) {
+				if (object) {
+					object.cache[spec] = data;
+				}
+				callback(data);
+				return;
 			}
-			callback(data);
-		} else if (typeof(ilib._load) === 'function') {
+		}
+		
+		if (typeof(ilib._load) === 'function') {
 			// the data is not preassembled, so attempt to load it dynamically
 			var files = ilib.getLocFiles(locale, name);
 			if (type !== "json") {
 				loadParams.returnOne = true;
-				loadParams.nonLocale = true;
 			}
 			
 			ilib._load(files, sync, loadParams, ilib.bind(this, function(arr) {
@@ -488,16 +499,23 @@ ilib.loadData = function(params) {
 					}
 					callback(data);
 				} else {
-					// only returns the most locale-specific file in 0th element
-					if (object) {
-						object.cache[spec] = arr[arr.length-1];
+					var i = arr.length-1; 
+					while (i > -1 && !arr[i]) {
+						i--;
 					}
-					callback(arr[arr.length-1]);
+					if (i > -1) {
+						if (object) {
+							object.cache[spec] = arr[i];
+						}
+						callback(arr[i]);
+					} else {
+						callback(undefined);
+					}
 				}
 			}));
 		} else {
 			// no data other than the generic shared data
-			if (object) {
+			if (object && data) {
 				object.cache[spec] = data;
 			}
 			callback(data);

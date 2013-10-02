@@ -6657,7 +6657,6 @@ function testLocaleInfoLoadMissingDataSync() {
 		sync: true
 	});
 
-	ilib.setLoaderCallback(undefined);
 	assertNotNull(info);
 
 	assertEquals("iso {s} {n}", info.getCurrencyFormats().iso);
@@ -6702,7 +6701,7 @@ function testLocaleInfoLoadMissingDataSyncNoData() {
 	var li = new ilib.LocaleInfo("qq-QQ", {
 		sync: true
 	});
-	ilib.setLoaderCallback(undefined);
+	
 	assertNotUndefined(li);
 	// should return the shared data only
 	assertEquals("{s}{n}", li.getCurrencyFormats().common);

@@ -251,6 +251,7 @@ function testDateRngFmtDynamicLoadSync() {
     });
     
     assertEquals("12:20PM - 4:35PM 2/20/13", fmt.format(start, end));
+    ilib.setLoaderCallback(undefined);
 }
 
 function testDateRngFmtDynamicLoadSyncCached() {
@@ -285,6 +286,7 @@ function testDateRngFmtDynamicLoadSyncCached() {
     });
     
     assertEquals("12:20PM - 4:35PM 2/20/13", fmt.format(start, end));
+    ilib.setLoaderCallback(undefined);
 }
 
 function testDateRngFmtDynamicLoadAsync() {
@@ -323,6 +325,7 @@ function testDateRngFmtDynamicLoadAsync() {
     	    assertEquals("12:20PM - 4:35PM 2/20/13", fmt.format(start, end));
     	}
     });
+    ilib.setLoaderCallback(undefined);
 }
 
 function testDateRngFmtDynamicLoadAsyncCached() {
@@ -359,4 +362,5 @@ function testDateRngFmtDynamicLoadAsyncCached() {
     	    assertEquals("12:20PM - 4:35PM 2/20/13", fmt.format(start, end));
     	}
     });
+    ilib.setLoaderCallback(undefined);
 }

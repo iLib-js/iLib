@@ -1104,6 +1104,7 @@ function testTZGetTimeZoneForLocaleUnknownWithLoader() {
     assertNotNull(tz);
     ilib.setLoaderCallback(undefined);
     assertEquals("Asia/Tokyo", tz.getId());
+    ilib._load = undefined;
 }
 
 function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
@@ -1124,6 +1125,7 @@ function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
     	    ilib.setLoaderCallback(undefined);
     	}
     });
+    ilib._load = undefined;
 }
 
 function testTZGetTimeZoneForLocaleWithLoaderNoData() {
@@ -1138,6 +1140,7 @@ function testTZGetTimeZoneForLocaleWithLoaderNoData() {
     assertNotNull(tz);
     ilib.setLoaderCallback(undefined);
     assertEquals("Etc/UTC", tz.getId());
+    ilib._load = undefined;
 }
 
 function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
@@ -1157,6 +1160,7 @@ function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
     	    ilib.setLoaderCallback(undefined);
     	}
     });
+    ilib._load = undefined;
 }
 
 function testTZGetCountry1() {

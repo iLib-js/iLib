@@ -884,7 +884,12 @@ function mockLoader(paths, sync, params, callback) {
 		},
 		"fr/foo.json": {
 			"c": "fr1"
-		}
+		},
+		"foo.html": "<html><body>This is the generic, shared foo.</body></html>",
+		"de/foo.html": "<html><body>Diese ist Foo auf Deutsch.</body></html>",
+		"de/DE/foo.html": "<html><body>Diese ist Foo auf Deutsch fuer Deutschland.</body></html>",
+		"und/DE/foo.html": "<html><body>Diese ist Foo fuer Deutschland.</body></html>",
+		"fr/foo.html": "<html><body>Ceci est foo en francais.</body></html>"
 	};
 	
 	for (var i = 0; i < paths.length; i++) {
@@ -919,8 +924,7 @@ function testLoadDataCorrectType() {
 			assertTrue(typeof(results) === 'object');
 		}
 	});
-	ilib._load = undefined;
-    ilib.setLoaderCallback(undefined);
+	ilib.setLoaderCallback(undefined);
 }
 
 function testLoadDataCorrectItems() {
@@ -948,7 +952,7 @@ function testLoadDataCorrectItems() {
 			}, results);
 		}
 	});
-	ilib._load = undefined;
+	ilib.setLoaderCallback(undefined);
 }
 
 function testLoadDataWithLocale() {
@@ -976,7 +980,7 @@ function testLoadDataWithLocale() {
 			}, results);
 		}
 	});
-	ilib._load = undefined;
+	ilib.setLoaderCallback(undefined);
 }
 
 function testLoadDataWithLocaleMissingParts() {
@@ -1004,7 +1008,7 @@ function testLoadDataWithLocaleMissingParts() {
 			}, results);
 		}
 	});
-	ilib._load = undefined;
+	ilib.setLoaderCallback(undefined);
 }
 
 function testLoadDataDefaultLocale() {
@@ -1031,7 +1035,7 @@ function testLoadDataDefaultLocale() {
 			}, results);
 		}
 	});
-	ilib._load = undefined;
+	ilib.setLoaderCallback(undefined);
 }
 
 
@@ -1058,7 +1062,7 @@ function testLoadDataNonJson() {
 			}, results);
 		}
 	});
-	ilib._load = undefined;
+	ilib.setLoaderCallback(undefined);
 }
 
 function testLoadDataCached() {
@@ -1086,7 +1090,7 @@ function testLoadDataCached() {
 			}, obj.cache["en_US"]);
 		}
 	});
-	ilib._load = undefined;
+	ilib.setLoaderCallback(undefined);
 }
 
 function testLoadDataNoCache() {
@@ -1112,7 +1116,7 @@ function testLoadDataNoCache() {
 			}, results);
 		}
 	});
-	ilib._load = undefined;
+	ilib.setLoaderCallback(undefined);
 }
 
 function testLoadDataAsynch() {
@@ -1140,7 +1144,7 @@ function testLoadDataAsynch() {
 			}, results);
 		}
 	});
-	ilib._load = undefined;
+	ilib.setLoaderCallback(undefined);
 }
 
 function testLoadDataDefaults() {
@@ -1161,7 +1165,168 @@ function testLoadDataDefaults() {
 			}, results);
 		}
 	});
-	ilib._load = undefined;
+	ilib.setLoaderCallback(undefined);
+}
+
+function testLoadDataNonJson_en_US() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.html",
+		type: "html",
+		callback: function (results) {
+			assertObjectEquals("<html><body>This is the generic, shared foo.</body></html>", results);
+		}
+	});
+	
+	ilib.setLoaderCallback(undefined);
+}
+
+function testLoadDataNonJson_de() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.html",
+		type: "html",
+		locale: "de",
+		callback: function (results) {
+			assertObjectEquals("<html><body>Diese ist Foo auf Deutsch.</body></html>", results);
+		}
+	});
+	
+	ilib.setLoaderCallback(undefined);
+}
+
+function testLoadDataNonJson_de_DE() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.html",
+		type: "html",
+		locale: "de-DE",
+		callback: function (results) {
+			assertObjectEquals("<html><body>Diese ist Foo auf Deutsch fuer Deutschland.</body></html>", results);
+		}
+	});
+	
+	ilib.setLoaderCallback(undefined);
+}
+
+function testLoadDataNonJson_DE() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.html",
+		type: "html",
+		locale: "DE",
+		callback: function (results) {
+			assertObjectEquals("<html><body>Diese ist Foo fuer Deutschland.</body></html>", results);
+		}
+	});
+	
+	ilib.setLoaderCallback(undefined);
+}
+
+function testLoadDataNonJsonWithFallbackToLanguage() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.html",
+		type: "html",
+		locale: "fr-FR",
+		callback: function (results) {
+			assertObjectEquals("<html><body>Ceci est foo en francais.</body></html>", results);
+		}
+	});
+	
+	ilib.setLoaderCallback(undefined);
+}
+
+function testLoadDataNonJsonWithFallbackToRoot() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.html",
+		type: "html",
+		locale: "es-ES",
+		callback: function (results) {
+			assertObjectEquals("<html><body>This is the generic, shared foo.</body></html>", results);
+		}
+	});
+	
+	ilib.setLoaderCallback(undefined);
+}
+
+function testLoadDataNonJsonInferFileTypeFromExtension() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+	ilib.setLoaderCallback(mockLoader);
+
+	ilib.loadData({
+		name: "foo.html",
+		locale: "de",
+		callback: function (results) {
+			assertObjectEquals("<html><body>Diese ist Foo auf Deutsch.</body></html>", results);
+		}
+	});
+	
+	ilib.setLoaderCallback(undefined);
+}
+
+function testLoadDataJsonInferFileTypeFromExtension() {
+	if (typeof(ilib._load) === 'function') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+	ilib.setLoaderCallback(mockLoader);
+	
+	ilib.loadData({
+		name: "foo.json",
+		locale: "de-DE",
+		callback: function (results) {
+			assertObjectEquals({
+				"a": "a1",
+				"c": "de2",
+				"e": "f"
+			}, results);
+		}
+	});
+	
+	ilib.setLoaderCallback(undefined);
 }
 
 function testMapStringDigits() {
