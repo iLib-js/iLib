@@ -19,7 +19,7 @@
 
 // !depends locale.js ilibglobal.js
 
-// !data collation
+// !data col.default
 
 /**
  * @class
@@ -89,6 +89,17 @@
  * currently knows about for any given locale. If the value of the style option is 
  * not recognized for a locale, it will be ignored. Default style is "standard".<p>
  * 
+ * <li><i>usage</i> - Whether this collator will be used for searching or sorting.
+ * Valid values are simply the strings "sort" or "search". When used for sorting,
+ * it is good idea if a collator produces a stable sort. That is, the order of the 
+ * sorted array of strings should not depend on the order of the strings in the
+ * input array. As such, when a collator is supposed to act case insensitively, 
+ * it nonetheless still distinguishes between case after all other criteria
+ * are satisfied so that strings that are distinguished only by case do not sort
+ * randomly. For searching, we would like to match two strings that different only 
+ * by case, so the collator must return equals in that situation instead of 
+ * further distinguishing by case. Default is "sort".
+ * 
  * <li><i>numeric</i> - Treat the left and right strings as if they started with
  * numbers and sort them numerically rather than lexically.
  * 
@@ -112,6 +123,12 @@
  * interpretted or modified in any way. They are simply passed along. The object 
  * may contain any property/value pairs as long as the calling code is in
  * agreement with the loader callback function as to what those parameters mean.
+ * 
+ * <li><i>useNative</i> - when this option is true, use the native Intl object
+ * provided by the Javascript engine, if it exists, to implement this class. If
+ * set to false, this class uses a pure Javascript implementation, which is
+ * slower and uses a lot more memory, but works everywhere that ilib works.
+ * Default is "true".
  * </ul>
  * 
  * <h2>Operation</h2>
@@ -250,13 +267,15 @@
  */
 ilib.Collator = function(options) {
 	var sync = true,
-		loadParams = undefined;
+		loadParams = undefined,
+		useNative = true;
 
 	// defaults
 	/** @type ilib.Locale */
 	this.locale = new ilib.Locale(ilib.getLocale());
 	this.caseFirst = "upper";
 	this.sensitivity = "case";
+	this.usage = "sort";
 	
 	if (options) {
 		if (options.locale) {
@@ -296,9 +315,16 @@ ilib.Collator = function(options) {
 		}
 		
 		loadParams = options.loadParams;
+		if (typeof(options.useNative) !== 'undefined') {
+			useNative = options.useNative;
+		}
+		
+		if (options.usage === "sort" || options.usage === "search") {
+			this.usage = options.usage;
+		}
 	}
 
-	if (typeof(Intl) !== 'undefined' && Intl) {
+	if (useNative && typeof(Intl) !== 'undefined' && Intl) {
 		// this engine is modern and supports the new Intl object!
 		//console.log("implemented natively");
 		/** @type {{compare:function(string,string)}} */
@@ -317,7 +343,7 @@ ilib.Collator = function(options) {
 		ilib.loadData({
 			object: ilib.Collator, 
 			locale: this.locale, 
-			name: "collrules.json", 
+			name: "col.default.json", 
 			sync: sync, 
 			loadParams: loadParams, 
 			callback: ilib.bind(this, function (collation) {
@@ -343,7 +369,7 @@ ilib.Collator.prototype = {
     /**
      * @private
      */
-    init: function(rules) {
+    _init: function(rules) {
     	
     },
     
