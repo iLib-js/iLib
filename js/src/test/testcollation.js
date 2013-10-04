@@ -91,7 +91,23 @@ function testCollatorGetSortKey() {
     
     assertNotUndefined(col);
 
-    assertEquals("string", typeof(col.sortKey("string")));
+    assertEquals("string!111111!000000!000000", col.sortKey("string"));
+}
+
+function testCollatorGetSortKeyEmpty() {
+    var col = new ilib.Collator();
+    
+    assertNotUndefined(col);
+
+    assertEquals("", col.sortKey(""));
+}
+
+function testCollatorGetSortKeyUndefined() {
+    var col = new ilib.Collator();
+    
+    assertNotUndefined(col);
+
+    assertEquals("", col.sortKey(undefined));
 }
 
 function testCollatorGetSortKeyWorks() {
@@ -617,7 +633,7 @@ function testJSCollatorGetSortKeyPrimary() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!111111!      !      ", typeof(col.sortKey("string")));
+    assertEquals("string!111111!000000!000000", col.sortKey("string"));
 }
 
 function testJSCollatorGetSortKeyPrimaryWithAccentsAndCase() {
@@ -628,7 +644,7 @@ function testJSCollatorGetSortKeyPrimaryWithAccentsAndCase() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!011111!   3  !   3  ", typeof(col.sortKey("Strïng")));
+    assertEquals("string!011111!000400!000400", col.sortKey("Strïng"));
 }
 
 function testJSCollatorGetSortKeyPrimaryWorks() {
@@ -800,7 +816,7 @@ function testJSCollatorGetSortKeySecondary() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!111111!      !      ", typeof(col.sortKey("string")));
+    assertEquals("string!111111!000000!000000", col.sortKey("string"));
 }
 
 function testJSCollatorGetSortKeySecondaryWithAccentsAndCase() {
@@ -811,7 +827,7 @@ function testJSCollatorGetSortKeySecondaryWithAccentsAndCase() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!011111!   3  !   3  ", typeof(col.sortKey("Strïng")));
+    assertEquals("string!011111!000400!000400", col.sortKey("Strïng"));
 }
 
 function testJSCollatorGetSortKeySecondaryWorks() {
@@ -982,7 +998,7 @@ function testJSCollatorGetSortKeyTertiary() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!111111!      !      ", typeof(col.sortKey("string")));
+    assertEquals("string!111111!000000!000000", col.sortKey("string"));
 }
 
 function testJSCollatorGetSortKeyTertiaryWithAccentsAndCase() {
@@ -993,7 +1009,7 @@ function testJSCollatorGetSortKeyTertiaryWithAccentsAndCase() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!011111!   3  !   3  ", typeof(col.sortKey("Strïng")));
+    assertEquals("string!011111!000400!000400", col.sortKey("Strïng"));
 }
 
 function testJSCollatorGetSortKeyTertiaryWorks() {
@@ -1175,7 +1191,7 @@ function testJSCollatorSearchGetSortKeyPrimary() {
     
     assertNotUndefined(col);
 
-    assertEquals("string", typeof(col.sortKey("string")));
+    assertEquals("string", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeyPrimaryWithAccentsAndCase() {
@@ -1187,7 +1203,7 @@ function testJSCollatorSearchGetSortKeyPrimaryWithAccentsAndCase() {
     
     assertNotUndefined(col);
 
-    assertEquals("string", typeof(col.sortKey("Strïng")));
+    assertEquals("string", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeyPrimaryWorks() {
@@ -1371,7 +1387,7 @@ function testJSCollatorSearchGetSortKeySecondary() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!111111", typeof(col.sortKey("string")));
+    assertEquals("string!111111", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeySecondaryWithAccentsAndCase() {
@@ -1383,7 +1399,7 @@ function testJSCollatorSearchGetSortKeySecondaryWithAccentsAndCase() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!011111", typeof(col.sortKey("Strïng")));
+    assertEquals("string!011111", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeySecondaryWorks() {
@@ -1567,7 +1583,7 @@ function testJSCollatorSearchGetSortKeyTertiary() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!111111!      ", typeof(col.sortKey("string")));
+    assertEquals("string!111111!      ", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeyTertiaryWithAccentsAndCase() {
@@ -1579,7 +1595,7 @@ function testJSCollatorSearchGetSortKeyTertiaryWithAccentsAndCase() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!011111!   3  ", typeof(col.sortKey("Strïng")));
+    assertEquals("string!011111!   3  ", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeyTertiaryWorks() {
@@ -1763,7 +1779,7 @@ function testJSCollatorSearchGetSortKeyQuaternary() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!111111!      !      ", typeof(col.sortKey("string")));
+    assertEquals("string!111111!000000!000000", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeyQuaternaryWithAccentsAndCase() {
@@ -1775,7 +1791,7 @@ function testJSCollatorSearchGetSortKeyQuaternaryWithAccentsAndCase() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!011111!   3  !   3  ", typeof(col.sortKey("Strïng")));
+    assertEquals("string!011111!000400!000400", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeyQuaternaryWorks() {

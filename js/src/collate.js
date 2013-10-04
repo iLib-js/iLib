@@ -275,7 +275,9 @@ ilib.Collator = function(options) {
 	this.locale = new ilib.Locale(ilib.getLocale());
 	this.caseFirst = "upper";
 	this.sensitivity = "case";
+	this.level = 2;
 	this.usage = "sort";
+	this.reverse = false;
 	
 	if (options) {
 		if (options.locale) {
@@ -286,18 +288,22 @@ ilib.Collator = function(options) {
 				case 'primary':
 				case 'base':
 					this.sensitivity = "base";
+					this.level = 0;
 					break;
 				case 'secondary':
 				case 'accent':
 					this.sensitivity = "accent";
+					this.level = 1;
 					break;
 				case 'tertiary':
 				case 'case':
 					this.sensitivity = "case";
+					this.level = 2;
 					break;
 				case 'quaternary':
 				case 'variant':
 					this.sensitivity = "variant";
+					this.level = 3;
 					break;
 			}
 		}
@@ -347,17 +353,30 @@ ilib.Collator = function(options) {
 			sync: sync, 
 			loadParams: loadParams, 
 			callback: ilib.bind(this, function (collation) {
-				/*
 				if (!collation) {
-					collation = ilib.data.ducet;
+					collation = ilib.data.col_default;
 					var spec = this.locale.getSpec().replace(/-/g, '_');
 					ilib.Collator.cache[spec] = collation;
 				}
-				*/
 				this._init(collation);
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}
+				new ilib.LocaleInfo(this.locale, {
+					sync: sync,
+					loadParams: loadParams,
+					onLoad: ilib.bind(this, function(li) {
+						this.li = li;
+				    	ilib.NormString.init({
+				    		form: "nfc",
+				    		script: li.getScript(),
+				    		sync: sync,
+				    		loadParams: loadParams,
+				    		onLoad: ilib.bind(this, function() {
+								if (options && typeof(options.onLoad) === 'function') {
+									options.onLoad(this);
+								}
+				    		})
+				    	});
+		    		})
+				});
 			})
 		});
 	}
@@ -380,6 +399,7 @@ ilib.Collator.prototype = {
     			}
     		}
     	}
+    	
     },
     
     /**
@@ -388,33 +408,46 @@ ilib.Collator.prototype = {
     _basicCompare: function(left, right) {
 		var lit = new ilib.NormString(left).charIterator(),
 			rit = new ilib.NormString(right).charIterator(),
+			lchar,
+			normlchar,
+			rchar,
+			normrchar,
 			lattributes,
 			rattributes,
-			ret = 0;
+			ret;
 		
 		while (lit.hasNext() && rit.hasNext()) {
-			lattributes = this.map[lit.next()];
-			rattributes = this.map[rit.next()];
+			lchar = lit.next();
+			rchar = rit.next();
+			normlchar = (new ilib.NormString(lchar)).normalize("nfc").toString();
+			normrchar = (new ilib.NormString(rchar)).normalize("nfc").toString();
+			lattributes = this.map[normlchar] || [normlchar, 0, 0, 0];
+			rattributes = this.map[normrchar] || [normrchar, 0, 0, 0];
 			
 			ret = (lattributes[0] < rattributes[0] ? -1 : (lattributes[0] > rattributes[0] ? 1 : 0));
 			if (ret) {
 				return ret;
 			}
-			ret = ilib.signum(lattributes[1] - rattributes[1]);
-			if (ret) {
-				return ret;
-			}
-			ret = ilib.signum(lattributes[2] - rattributes[2]);
-			if (ret) {
-				return ret;
-			}
-			ret = ilib.signum(lattributes[3] - rattributes[3]);
-			if (ret) {
-				return ret;
+			if (this.usage === "sort" || this.level > 0) {
+				ret = lattributes[1] - rattributes[1];
+				if (ret !== 0) {
+					return ret < 0 ? -1 : 1;
+				}
+				if (this.usage === "sort" || this.level > 1) {
+					ret = lattributes[2] - rattributes[2];
+					if (ret !== 0) {
+						return ret < 0 ? -1 : 1;
+					}
+					if (this.usage === "sort" || this.level > 2) {
+						if ((normlchar !== lchar || normrchar !== rchar) && lchar !== rchar) {
+							return (lchar < rchar) ? -1 : 1; 
+						} 
+					}
+				}
 			}
 		}
 		if (!lit.hasNext() && !rit.hasNext()) {
-			return ret;
+			return 0;
 		} else if (lit.hasNext()) {
 			return 1;
 		} else {
@@ -500,8 +533,61 @@ ilib.Collator.prototype = {
 	 * @return {string} a sort key string for the given string
 	 */
 	sortKey: function (str) {
-		// TODO: fill in the full sort key algorithm here
-		return str;
+		if (!str) {
+			return "";
+		}
+		
+		if (this.collator) {
+			// native, no sort keys available
+			return str;
+		}
+		
+		var n = new ilib.NormString(str),
+			it = n.charIterator(),
+			ch,
+			attributes,
+			primary = "",
+			secondary = "",
+			tertiary = "",
+			quaternary = "",
+			ret,
+			normChar;
+		
+		while (it.hasNext()) {
+			ch = it.next();
+			if (this.usage === "sort" || this.level > 2) {
+				var nstr = new ilib.NormString(ch);
+				normChar = nstr.normalize("nfc").toString();
+			} else {
+				normChar = ch;
+			}
+			attributes = this.map[normChar] || [normChar, 0, 0, 0];
+
+			// primary += ilib.toHexString(attributes[0], 2);
+			primary += attributes[0];
+			if (this.usage === "sort" || this.level > 0) {
+				secondary += attributes[1].toString(16);
+				if (this.usage === "sort" || this.level > 1) {
+					tertiary += attributes[2].toString(16);
+					if (this.usage === "sort" || this.level > 2) {
+						quaternary += (ch !== normChar) ? ch.length : "0";
+					}
+				}
+			}
+		}
+
+		ret = primary;
+		if (this.usage === "sort" || this.level > 0) {
+			ret += "!" + secondary;
+			if (this.usage === "sort" || this.level > 1) {
+				ret += "!" + tertiary;
+				if (this.usage === "sort" || this.level > 2) {
+					ret += "!" + quaternary;
+				}
+			}
+		}
+		
+		return ret;
 	}
 };
 
