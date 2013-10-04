@@ -37,8 +37,7 @@ ilib.NormString = function (str) {
 ilib.NormString.prototype = new ilib.String();
 ilib.NormString.prototype.constructor = ilib.NormString;
 ilib.NormString.baseConstructor = ilib.String;
-ilib.NormString.superClass = ilib.String.prototype;
-
+ilib.NormString.prototype.parent = ilib.String.prototype;
 
 /**
  * Initialize the normalized string routines statically. This
@@ -279,7 +278,7 @@ ilib.NormString._compose = function (lead, trail) {
 	return (ilib.data.norm.nfc && ilib.data.norm.nfc[c]);
 };
 
-	
+
 /**
  * Perform the Unicode Normalization Algorithm upon the string and return 
  * the resulting new string. The current string is not modified.
@@ -454,13 +453,13 @@ ilib.NormString.prototype.normalize = function (form) {
 	var decomp = "";
 	
 	if (nfkd) {
-		var ch, it = this.charIterator();
+		var ch, it = this.parent.charIterator.call(this);
 		while (it.hasNext()) {
 			ch = it.next();
 			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd, ilib.data.norm.nfkd);
 		}
 	} else {
-		var ch, it = this.charIterator();
+		var ch, it = this.parent.charIterator.call(this);
 		while (it.hasNext()) {
 			ch = it.next();
 			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd);
@@ -488,12 +487,12 @@ ilib.NormString.prototype.normalize = function (form) {
 	
 	i = 0;
 	while (i < cpArray.length) {
-		if (typeof(ilib.data.norm.ccc[cpArray[i]]) !== 'undefined' && ilib.data.norm.ccc[cpArray[i]] !== 0) {
+		if (typeof(ilib.data.norm.ccc[cpArray[i]]) !== 'undefined' && ccc(cpArray[i]) !== 0) {
 			// found a non-starter... rearrange all the non-starters until the next starter
 			var end = i+1;
 			while (end < cpArray.length &&
 					typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
-					ilib.data.norm.ccc[cpArray[end]] !== 0) {
+					ccc(cpArray[end]) !== 0) {
 				end++;
 			}
 			
@@ -557,3 +556,89 @@ ilib.NormString.prototype.normalize = function (form) {
 	return new ilib.String(cpArray.length > 0 ? cpArray.join("") : "");
 };
 	
+/**
+ * @override
+ * Return an iterator that will step through all of the characters
+ * in the string one at a time, taking care to step through decomposed 
+ * characters and through surrogate pairs in UTF-16 encoding 
+ * properly. <p>
+ * 
+ * The NormString class will return decomposed Unicode characters
+ * as a single unit that a user might see on the screen. If the 
+ * next character in the iteration is a base character and it is 
+ * followed by combining characters, the base and all its following 
+ * combining characters are returned as a single unit.<p>
+ * 
+ * The standard Javascript String's charAt() method only
+ * returns information about a particular 16-bit character in the 
+ * UTF-16 encoding scheme.
+ * If the index is pointing to a low- or high-surrogate character,
+ * it will return that surrogate character rather 
+ * than the surrogate pair which represents a character 
+ * in the supplementary planes.<p>
+ * 
+ * The iterator instance returned has two methods, hasNext() which
+ * returns true if the iterator has more characters to iterate through,
+ * and next() which returns the next character.<p>
+ * 
+ * @return {Object} an iterator 
+ * that iterates through all the characters in the string
+ */
+ilib.NormString.prototype.charIterator = function() {
+	var it = this.parent.charIterator.call(this);
+	
+	/**
+	 * @constructor
+	 */
+	function _chiterator (istring) {
+		/**
+		 * @private
+		 */
+		var ccc = function(c) {
+			return ilib.data.norm.ccc[c] || 0;
+		};
+
+		this.index = 0;
+		this.hasNext = function () {
+			return !!this.nextChar || it.hasNext();
+		};
+		this.next = function () {
+			var ch = this.nextChar || it.next(),
+				prevCcc = ccc(ch),
+				nextCcc,
+				composed = ch;
+			
+			this.nextChar = undefined;
+			
+			if (ilib.data.norm.ccc && 
+					(typeof(ilib.data.norm.ccc[ch]) === 'undefined' || ccc(ch) === 0)) {
+				// found a starter... find all the non-starters until the next starter. Must include
+				// the next starter because under some odd circumstances, two starters sometimes recompose 
+				// together to form another character
+				var notdone = true;
+				while (it.hasNext() && notdone) {
+					this.nextChar = it.next();
+					nextCcc = ccc(this.nextChar);
+					if (typeof(ilib.data.norm.ccc[this.nextChar]) !== 'undefined' && nextCcc !== 0) {
+						ch += this.nextChar;
+					} else {
+						// found the next starter. See if this can be composed with the previous starter
+						var testChar = ilib.NormString._compose(composed, this.nextChar);
+						if (prevCcc === 0 && typeof(testChar) !== 'undefined') { 
+							// not blocked and there is a mapping 
+							composed = testChar;
+							ch += this.nextChar;
+						} else {
+							// finished iterating, leave this.nextChar for the next next() call 
+							notdone = false;
+						}
+					}
+					prevCcc = nextCcc;
+				}
+			}
+			return ch;
+		};
+	};
+	return new _chiterator(this);
+};
+
