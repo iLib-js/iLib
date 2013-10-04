@@ -1258,3 +1258,23 @@ function testIndexOfUndefinedSearchTerm() {
 function testIndexOfUndefinedArray() {
 	assertEquals(-1, ilib.indexOf(undefined, "a"));
 }
+
+function testToHexStringSimple() {
+	assertEquals("0061", ilib.toHexString("a"));
+}
+
+function testToHexStringWithLengthLimit2() {
+	assertEquals("61", ilib.toHexString("a", 2));
+}
+
+function testToHexStringWithLengthLimit8() {
+	assertEquals("00000061", ilib.toHexString("a", 8));
+}
+
+function testToHexStringChinese() {
+	assertEquals("35C0", ilib.toHexString("㗀"));
+}
+
+function testToHexStringComplex() {
+	assertEquals("006135C00E080C13", ilib.toHexString("a㗀จఓ"));
+}
