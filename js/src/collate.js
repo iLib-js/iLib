@@ -19,7 +19,7 @@
 
 // !depends locale.js ilibglobal.js
 
-// !data col.default
+// !data col_default
 
 /**
  * @class
@@ -343,23 +343,21 @@ ilib.Collator = function(options) {
 		ilib.loadData({
 			object: ilib.Collator, 
 			locale: this.locale, 
-			name: "col.default.json", 
+			name: "col_default.json", 
 			sync: sync, 
 			loadParams: loadParams, 
 			callback: ilib.bind(this, function (collation) {
 				/*
-				// TODO: fill in the collator constructor function
 				if (!collation) {
 					collation = ilib.data.ducet;
 					var spec = this.locale.getSpec().replace(/-/g, '_');
 					ilib.Collator.cache[spec] = collation;
 				}
-				console.log("this is " + JSON.stringify(this));
+				*/
 				this._init(collation);
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
 				}
-				*/
 			})
 		});
 	}
@@ -370,7 +368,58 @@ ilib.Collator.prototype = {
      * @private
      */
     _init: function(rules) {
-    	
+    	this.map = {};
+    	for (var r in rules) {
+    		if (r) {
+    			this.map[r] = [];
+    			for (var i = 0; i < rules[r].length; i++) {
+    				this.map[r].push(rules[r][i]);
+    			}
+    			for (var i = rules[r].length; i < 4; i++) {
+    				this.map[r].push(0);
+    			}
+    		}
+    	}
+    },
+    
+    /**
+     * @private
+     */
+    _basicCompare: function(left, right) {
+		var lit = new ilib.NormString(left).charIterator(),
+			rit = new ilib.NormString(right).charIterator(),
+			lattributes,
+			rattributes,
+			ret = 0;
+		
+		while (lit.hasNext() && rit.hasNext()) {
+			lattributes = this.map[lit.next()];
+			rattributes = this.map[rit.next()];
+			
+			ret = (lattributes[0] < rattributes[0] ? -1 : (lattributes[0] > rattributes[0] ? 1 : 0));
+			if (ret) {
+				return ret;
+			}
+			ret = ilib.signum(lattributes[1] - rattributes[1]);
+			if (ret) {
+				return ret;
+			}
+			ret = ilib.signum(lattributes[2] - rattributes[2]);
+			if (ret) {
+				return ret;
+			}
+			ret = ilib.signum(lattributes[3] - rattributes[3]);
+			if (ret) {
+				return ret;
+			}
+		}
+		if (!lit.hasNext() && !rit.hasNext()) {
+			return ret;
+		} else if (lit.hasNext()) {
+			return 1;
+		} else {
+			return -1;
+		}
     },
     
 	/**
@@ -387,14 +436,14 @@ ilib.Collator.prototype = {
 	 * right are equivalent according to this collator
 	 */
 	compare: function (left, right) {
-		// TODO: fill in the full comparison algorithm here
 		// last resort: use the "C" locale
 		if (this.collator) {
 			// implemented by the core engine
 			return this.collator.compare(left, right);
 		}
-		
-		return (left < right) ? -1 : ((left > right) ? 1 : 0);
+
+		var ret = this._basicCompare(left, right);
+		return this.reverse ? -ret : ret;
 	},
 	
 	/**
