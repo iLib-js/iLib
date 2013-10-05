@@ -153,3 +153,13 @@ function testCharIteratorMultipleDecomposed() {
 	assertFalse(it.hasNext());
 	assertEquals(undefined, it.next());
 }
+
+function testCharIteratorAgrave() {
+	var s = new ilib.NormString("À"); // the accented A is a decomposed char
+	var it = s.charIterator();
+	
+	assertTrue(it.hasNext());
+	assertEquals("À", it.next());
+	assertFalse(it.hasNext());
+	assertEquals(undefined, it.next());
+}

@@ -621,6 +621,7 @@ ilib.NormString.prototype.charIterator = function() {
 					nextCcc = ccc(this.nextChar);
 					if (typeof(ilib.data.norm.ccc[this.nextChar]) !== 'undefined' && nextCcc !== 0) {
 						ch += this.nextChar;
+						this.nextChar = undefined;
 					} else {
 						// found the next starter. See if this can be composed with the previous starter
 						var testChar = ilib.NormString._compose(composed, this.nextChar);
@@ -628,6 +629,7 @@ ilib.NormString.prototype.charIterator = function() {
 							// not blocked and there is a mapping 
 							composed = testChar;
 							ch += this.nextChar;
+							this.nextChar = undefined;
 						} else {
 							// finished iterating, leave this.nextChar for the next next() call 
 							notdone = false;
