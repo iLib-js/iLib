@@ -40,10 +40,11 @@ function testCollatorDefaultCase() {
     
     assertNotUndefined(col);
 
-    // should compare upper-case first
+    // should compare upper-case first within a base character
     assertEquals("A < a", -1, col.compare("A", "a"));
     assertEquals("B < b", -1, col.compare("B", "b"));
-    assertEquals("Z < a", 1, col.compare("a", "Z"));
+    assertEquals("a < Z", -1, col.compare("a", "Z"));
+    assertEquals("Á < a", -1, col.compare("A", "a"));
 }
 
 function testCollatorGetComparator() {
@@ -83,7 +84,8 @@ function testCollatorGetComparatorWorksWithCase() {
     // should compare upper-case first
     assertEquals("A < a", -1, func("A", "a"));
     assertEquals("B < b", -1, func("B", "b"));
-    assertEquals("Z < a", -1, func("Z", "a"));
+    assertEquals("a < Z", -1, func("a", "Z"));
+    assertEquals("Á < a", -1, func("A", "a"));
 }
 
 function testCollatorGetSortKey() {
@@ -91,7 +93,12 @@ function testCollatorGetSortKey() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!111111!000000!000000", col.sortKey("string"));
+    // no sort key available when using native...
+    if (typeof(Intl) !== 'undefined' && Intl) {
+    	assertEquals("string", col.sortKey("string"));
+    } else {
+    	assertEquals("s100t100r100i100n100g100", col.sortKey("string"));
+    }
 }
 
 function testCollatorGetSortKeyEmpty() {
@@ -145,7 +152,22 @@ function testCollatorWithSortUpperFirst() {
     
     input.sort(col.getComparator());
     
-    var expected = ["E", "I", "T", "U", "e", "i", "o", "p", "q", "r"];
+    var expected = ["E", "e", "I", "i", "o", "p", "q", "r", "T", "U"];
+    
+    assertArrayEquals(expected, input);
+}
+
+function testCollatorWithSortUpperNotFirst() {
+    var col = new ilib.Collator({
+    	upperFirst: false
+    });
+    assertNotUndefined(col);
+    
+    var input = ["q", "I", "e", "r", "T", "U", "i", "E", "o", "p"];
+    
+    input.sort(col.getComparator());
+    
+    var expected = ["e", "E", "i", "I", "o", "p", "q", "r", "T", "U"];
     
     assertArrayEquals(expected, input);
 }
@@ -166,8 +188,24 @@ function testCollatorDefaultExtendedChars() {
 	    assertNotUndefined(col);
 	
 	    // should compare in English
+	    assertEquals("e < ë", -1, col.compare("e", "ë"));
+	    assertEquals("o < ø", -1, col.compare("o", "ø"));
+	}
+}
+
+function testCollatorPrimaryExtendedChars() {
+	// only test on platforms that support the new Intl class natively
+	if (typeof(Intl) !== 'undefined') {
+	    var col = new ilib.Collator({
+	    	sensitivity: "primary",
+	    	usage: "search"
+	    });
+	    
+	    assertNotUndefined(col);
+	
+	    // should compare in English
 	    assertEquals("e = ë", 0, col.compare("e", "ë"));
-	    assertEquals("o = ø", 0, col.compare("o","ø"));
+	    assertEquals("o = ø", 0, col.compare("o", "ø"));
 	}
 }
 
@@ -216,16 +254,16 @@ function testCollatorNativefrFRCase() {
 			"boef",
 			"bœg",
 			"bpef",
+			"déjà",
 			"deja",
 			"dejà",
-			"déjà",
 			"Meme",
-			"même",
 			"Mémé",
-			"pêche",
+			"même",
 			"pêche",
 			"pèché",
 			"pêché",
+			"pêche",
 			"pêché"
 		];
 	    
@@ -238,32 +276,34 @@ function testCollatorNativefrFRVariant() {
 	if (typeof(Intl) !== 'undefined') {
 		var col = new ilib.Collator({
 			locale: "fr-FR",
-			sensitivity: "variant"
+			sensitivity: "variant",
+			frenchAccents: true
 		});
 	    assertNotUndefined(col);
 	    
 	    var input = [
 	        "déjà",
 			"Meme",
+			"pèche",
 			"deja",
 			"même",
 			"dejà",
+			"pêche",
 			"bpef",
 			"bœg",
+			"pèché",
 			"Boef",
 			"Mémé",
 			"bœf",
+			"pêchê",
 			"boef",
 			"bnef",
-			"pêche",
-			"pèché",
-			"pêché",
-			"pêche",
 			"pêché"
 		];
 	    
 	    input.sort(col.getComparator());
 	    
+	    // does not deal with french accents properly yet
 	    var expected = [
 			"bnef",
 			"Boef",
@@ -275,13 +315,13 @@ function testCollatorNativefrFRVariant() {
 			"dejà",
 			"déjà",
 			"Meme",
-			"même",
 			"Mémé",
-			"pêche",
-			"pêche",
+			"même",
+			"pèche",
 			"pèché",
+			"pêche",
 			"pêché",
-			"pêché"
+			"pêchê"
 		];
 	    
 	    assertArrayEquals(expected, input);
@@ -324,16 +364,16 @@ function testCollatorNativefrCACase() {
 			"boef",
 			"bœg",
 			"bpef",
+			"déjà",
 			"deja",
 			"dejà",
-			"déjà",
 			"Meme",
-			"même",
 			"Mémé",
-			"pêche",
+			"même",
 			"pêche",
 			"pèché",
 			"pêché",
+			"pêche",
 			"pêché"
 		];
 	    
@@ -406,8 +446,10 @@ function testCollatorNativedeDECase() {
 	    assertNotUndefined(col);
 	    
 	    var input = [
+	        "Montags",
   			"Sonntag",
   			"Flüsse",
+  			"fuße",
  			"Montag",
  			"Dienstag",
  			"Januar",
@@ -424,14 +466,16 @@ function testCollatorNativedeDECase() {
 	    var expected = [
 			"Dienstag",
 			"Februar",
+			"Flüsse",
 			"Flusse",
 			"flusse",
-			"Flüsse",
 			"flüsse",
 			"Fuße",
+			"fuße",
 			"Januar",
 			"März",
 			"Montag",
+			"Montags",
 			"Sonntag"	                    
 		];
 	    
@@ -444,13 +488,14 @@ function testCollatorNativedeDEVariant() {
 	if (typeof(Intl) !== 'undefined') {
 		var col = new ilib.Collator({
 			locale: "de-DE",
-			sensitivity: "variant"
+			sensitivity: "variant",
+			upperFirst: true
 		});
 	    assertNotUndefined(col);
 	    
 	    var input = [
   			"Sonntag",
- 			"Montag",
+ 			"Montags",
  			"Dienstag",
  			"Januar",
  			"Februar",
@@ -459,6 +504,7 @@ function testCollatorNativedeDEVariant() {
  			"Fluße",
  			"Flusse",
  			"flusse",
+ 			"Montag",
  			"fluße",
  			"flüße",
  			"flüsse"
@@ -470,8 +516,8 @@ function testCollatorNativedeDEVariant() {
 			"Dienstag",
 			"Februar",
 			"Flusse",
-			"flusse",
 			"Fluße",
+			"flusse",
 			"fluße",
 			"flüsse",
 			"flüße",
@@ -479,6 +525,7 @@ function testCollatorNativedeDEVariant() {
 			"Januar",
 			"März",
 			"Montag",
+ 			"Montags",
 			"Sonntag"	                    
 		];
 	    
@@ -558,19 +605,19 @@ function testJSCollatorPrimaryCase() {
     assertNotUndefined(col);
 
     // should compare base, then accent, then case, then variant
-    // A a À à À à Å å O o Õ õ
+    // A À À Å a à à å O Õ o õ
     // (second set of "a" with grave is two characters: "a" character with a combining grave character)
-    assertEquals("A < a", -1, col.compare("A", "a"));
-    assertEquals("a < À", -1, col.compare("a", "À"));
-    assertEquals("À < à", -1, col.compare("À", "à"));
-    assertEquals("à < À (combining)", -1, col.compare("à", "À"));
-    assertEquals("À (combining) < à (combining)", -1, col.compare("À", "à"));
-    assertEquals("à (combining) < Å", -1, col.compare("à", "Å"));
-    assertEquals("Å < å", -1, col.compare("Å", "å"));
-    assertEquals("ã < O", -1, col.compare("ã", "O"));
-    assertEquals("O < o", -1, col.compare("O", "o"));
-    assertEquals("o < Õ", -1, col.compare("o", "Õ"));
-    assertEquals("Õ < õ", -1, col.compare("Õ", "õ"));
+    assertEquals("A < À", -1, col.compare("A", "À"));
+    assertEquals("À < À (combining)", -1, col.compare("À", "À"));
+    assertEquals("À (combining) < Å", -1, col.compare("À", "Å"));
+    assertEquals("Å < a", -1, col.compare("Å", "a"));
+    assertEquals("a < à", -1, col.compare("a", "à"));
+    assertEquals("à < à (combining)", -1, col.compare("à", "à"));
+    assertEquals("à (combining) < å", -1, col.compare("à", "å"));
+    assertEquals("å < O", -1, col.compare("å", "O"));
+    assertEquals("O < Õ", -1, col.compare("O", "Õ"));
+    assertEquals("Õ < o", -1, col.compare("Õ", "o"));
+    assertEquals("o < õ", -1, col.compare("o", "õ"));
 }
 
 function testJSCollatorGetComparatorPrimary() {
@@ -610,19 +657,19 @@ function testJSCollatorGetComparatorPrimaryWorksWithCase() {
     var func = col.getComparator();
     assertNotUndefined(func);
     
-    // A a À à À à Å å O o Õ õ
+    // A À À Å a à à å O Õ o õ
     // (second set of "a" with grave is two characters: "a" character with a combining grave character)
-    assertEquals("A < a", -1, func("A", "a"));
-    assertEquals("a < À", -1, func("a", "À"));
-    assertEquals("À < à", -1, func("À", "à"));
-    assertEquals("à < À (combining)", -1, func("à", "À"));
-    assertEquals("À (combining) < à (combining)", -1, func("À", "à"));
-    assertEquals("à (combining) < Å", -1, func("à", "Å"));
-    assertEquals("Å < å", -1, func("Å", "å"));
-    assertEquals("ã < O", -1, func("ã", "O"));
-    assertEquals("O < o", -1, func("O", "o"));
-    assertEquals("o < Õ", -1, func("o", "Õ"));
-    assertEquals("Õ < õ", -1, func("Õ", "õ"));
+    assertEquals("A < À", -1, func("A", "À"));
+    assertEquals("À < À (combining)", -1, func("À", "À"));
+    assertEquals("À (combining) < Å", -1, func("À", "Å"));
+    assertEquals("Å < a", -1, func("Å", "a"));
+    assertEquals("a < à", -1, func("a", "à"));
+    assertEquals("à < à (combining)", -1, func("à", "à"));
+    assertEquals("à (combining) < å", -1, func("à", "å"));
+    assertEquals("å < O", -1, func("å", "O"));
+    assertEquals("O < Õ", -1, func("O", "Õ"));
+    assertEquals("Õ < o", -1, func("Õ", "o"));
+    assertEquals("o < õ", -1, func("o", "õ"));
 }
 
 function testJSCollatorGetSortKeyPrimary() {
@@ -633,7 +680,7 @@ function testJSCollatorGetSortKeyPrimary() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!111111!000000!000000", col.sortKey("string"));
+    assertEquals("s100t100r100i100n100g100", col.sortKey("string"));
 }
 
 function testJSCollatorGetSortKeyPrimaryWithAccentsAndCase() {
@@ -644,7 +691,7 @@ function testJSCollatorGetSortKeyPrimaryWithAccentsAndCase() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!011111!000400!000400", col.sortKey("Strïng"));
+    assertEquals("s000t100r100i141n100g100", col.sortKey("Strïng"));
 }
 
 function testJSCollatorGetSortKeyPrimaryWorks() {
@@ -656,18 +703,18 @@ function testJSCollatorGetSortKeyPrimaryWorks() {
     assertNotUndefined(col);
 
     assertEquals("string", col.sortKey("string"), col.sortKey("string"));
-    // A a À à À à Å å O o Õ õ
-    assertTrue("A < a", col.sortKey("A") < col.sortKey("a"));
-    assertTrue("a < À", col.sortKey("a") < col.sortKey("À"));
-    assertTrue("À < à", col.sortKey("À") < col.sortKey("à"));
-    assertTrue("à < À (combining)", col.sortKey("à") < col.sortKey("À"));
-    assertTrue("À (combining) < à (combining)", col.sortKey("À") < col.sortKey("à"));
-    assertTrue("à (combining) < Å", col.sortKey("à") < col.sortKey("Å"));
-    assertTrue("Å < å", col.sortKey("Å") < col.sortKey("å"));
-    assertTrue("ã < O", col.sortKey("ã") < col.sortKey("O"));
-    assertTrue("O < o", col.sortKey("O") < col.sortKey("o"));
-    assertTrue("o < Õ", col.sortKey("o") < col.sortKey("Õ"));
-    assertTrue("Õ < õ", col.sortKey("Õ") < col.sortKey("õ"));
+    // A À À Å a à à å O Õ o õ
+    assertTrue("A < À", col.sortKey("A") < col.sortKey("À"));
+    assertTrue("À < À (combining)", col.sortKey("À") < col.sortKey("À"));
+    assertTrue("À (combining) < Å", col.sortKey("À") < col.sortKey("Å"));
+    assertTrue("A < a", col.sortKey("Å") < col.sortKey("a"));
+    assertTrue("a < à", col.sortKey("a") < col.sortKey("à"));
+    assertTrue("à < à (combining)", col.sortKey("à") < col.sortKey("à"));
+    assertTrue("à (combining) < å", col.sortKey("à") < col.sortKey("å"));
+    assertTrue("å < O", col.sortKey("å") < col.sortKey("O"));
+    assertTrue("O < Õ", col.sortKey("O") < col.sortKey("Õ"));
+    assertTrue("Õ < o", col.sortKey("Õ") < col.sortKey("o"));
+    assertTrue("o < õ", col.sortKey("o") < col.sortKey("õ"));
 }
 
 
@@ -816,7 +863,7 @@ function testJSCollatorGetSortKeySecondary() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!111111!000000!000000", col.sortKey("string"));
+    assertEquals("s100t100r100i100n100g100", col.sortKey("string"));
 }
 
 function testJSCollatorGetSortKeySecondaryWithAccentsAndCase() {
@@ -827,7 +874,7 @@ function testJSCollatorGetSortKeySecondaryWithAccentsAndCase() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!011111!000400!000400", col.sortKey("Strïng"));
+    assertEquals("s000t100r100i141n100g100", col.sortKey("Strïng"));
 }
 
 function testJSCollatorGetSortKeySecondaryWorks() {
@@ -998,7 +1045,7 @@ function testJSCollatorGetSortKeyTertiary() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!111111!000000!000000", col.sortKey("string"));
+    assertEquals("s100t100r100i100n100g100", col.sortKey("string"));
 }
 
 function testJSCollatorGetSortKeyTertiaryWithAccentsAndCase() {
@@ -1009,7 +1056,7 @@ function testJSCollatorGetSortKeyTertiaryWithAccentsAndCase() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!011111!000400!000400", col.sortKey("Strïng"));
+    assertEquals("s000t100r100i141n100g100", col.sortKey("Strïng"));
 }
 
 function testJSCollatorGetSortKeyTertiaryWorks() {
@@ -1387,7 +1434,7 @@ function testJSCollatorSearchGetSortKeySecondary() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!111111", col.sortKey("string"));
+    assertEquals("s1t1r1i1n1g1", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeySecondaryWithAccentsAndCase() {
@@ -1399,7 +1446,7 @@ function testJSCollatorSearchGetSortKeySecondaryWithAccentsAndCase() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!011111", col.sortKey("Strïng"));
+    assertEquals("s0t1r1i1n1g1", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeySecondaryWorks() {
@@ -1422,7 +1469,7 @@ function testJSCollatorSearchGetSortKeySecondaryWorks() {
     assertTrue("à (combining) = å", col.sortKey("à") === col.sortKey("å"));
     assertTrue("å < O", col.sortKey("å") < col.sortKey("O"));
     assertTrue("O = Õ", col.sortKey("O") === col.sortKey("Õ"));
-    assertTrue("Õ < o", col.sortKey("Õ") === col.sortKey("o"));
+    assertTrue("Õ < o", col.sortKey("Õ") < col.sortKey("o"));
     assertTrue("o = õ", col.sortKey("o") === col.sortKey("õ"));
 }
 
@@ -1583,7 +1630,7 @@ function testJSCollatorSearchGetSortKeyTertiary() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!111111!      ", col.sortKey("string"));
+    assertEquals("s10t10r10i10n10g10", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeyTertiaryWithAccentsAndCase() {
@@ -1595,7 +1642,7 @@ function testJSCollatorSearchGetSortKeyTertiaryWithAccentsAndCase() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!011111!   3  ", col.sortKey("Strïng"));
+    assertEquals("s00t10r10i14n10g10", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeyTertiaryWorks() {
@@ -1779,7 +1826,7 @@ function testJSCollatorSearchGetSortKeyQuaternary() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!111111!000000!000000", col.sortKey("string"));
+    assertEquals("s100t100r100i100n100g100", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeyQuaternaryWithAccentsAndCase() {
@@ -1791,7 +1838,7 @@ function testJSCollatorSearchGetSortKeyQuaternaryWithAccentsAndCase() {
     
     assertNotUndefined(col);
 
-    assertEquals("string!011111!000400!000400", col.sortKey("Strïng"));
+    assertEquals("s000t100r100i141n100g100", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeyQuaternaryWorks() {
@@ -1819,8 +1866,9 @@ function testJSCollatorSearchGetSortKeyQuaternaryWorks() {
 }
 
 
-function testCollatorWithSortPrimary() {
+function testCollatorJSWithSortPrimary() {
     var col = new ilib.Collator({
+    	useNative: false,
     	sensitivity: "primary"
     });
     assertNotUndefined(col);
@@ -1829,13 +1877,14 @@ function testCollatorWithSortPrimary() {
     
     input.sort(col.getComparator());
     
-    var expected = ["StrinG", "String", "Strïng", "Strïng", "str", "string", "strïnG", "strïng", "strïng"];
+    var expected = ["StrinG", "String", "Strïng", "Strïng", "str", "string", "strïnG", "strïng", "strïng"];
     
     assertArrayEquals(expected, input);
 }
 
-function testCollatorWithSortPrimaryStable() {
+function testCollatorJSWithSortPrimaryStable() {
     var col = new ilib.Collator({
+    	useNative: false,
     	sensitivity: "primary"
     });
     assertNotUndefined(col);
@@ -1845,13 +1894,14 @@ function testCollatorWithSortPrimaryStable() {
     
     input.sort(col.getComparator());
     
-    var expected = ["StrinG", "String", "Strïng", "Strïng", "str", "string", "strïnG", "strïng", "strïng"];
+    var expected = ["StrinG", "String", "Strïng", "Strïng", "str", "string", "strïnG", "strïng", "strïng"];
     
     assertArrayEquals(expected, input);
 }
 
-function testCollatorWithSortPrimaryLowerFirst() {
+function testCollatorJSWithSortPrimaryLowerFirst() {
     var col = new ilib.Collator({
+    	useNative: false,
     	sensitivity: "primary",
     	upperFirst: false
     });
@@ -1861,13 +1911,14 @@ function testCollatorWithSortPrimaryLowerFirst() {
     
     input.sort(col.getComparator());
     
-    var expected = ["str", "string", "strïnG", "strïng", "strïng", "StrinG", "String", "Strïng", "Strïng"];
+    var expected = ["str", "string", "strïng", "strïnG", "strïng", "String", "StrinG", "Strïng", "Strïng"];
     
     assertArrayEquals(expected, input);
 }
 
-function testCollatorWithSortPrimaryReverse() {
+function testCollatorJSWithSortPrimaryReverse() {
     var col = new ilib.Collator({
+    	useNative: false,
     	sensitivity: "primary",
     	reverse: true
     });
@@ -1877,13 +1928,14 @@ function testCollatorWithSortPrimaryReverse() {
     
     input.sort(col.getComparator());
     
-    var expected = ["strïng", "strïng", "strïnG", "string", "str", "Strïng", "Strïng", "String", "StrinG"];
+    var expected = ["strïng", "strïng", "strïnG", "string", "str", "Strïng", "Strïng", "String", "StrinG"];
     
     assertArrayEquals(expected, input);
 }
 
-function testCollatorWithSortPrimaryReverseLowerFirst() {
+function testCollatorJSWithSortPrimaryReverseLowerFirst() {
     var col = new ilib.Collator({
+    	useNative: false,
     	sensitivity: "primary",
     	reverse: true,
     	upperFirst: false
@@ -1894,13 +1946,14 @@ function testCollatorWithSortPrimaryReverseLowerFirst() {
     
     input.sort(col.getComparator());
     
-    var expected = ["Strïng", "Strïng", "String", "StrinG", "strïng", "strïng", "strïnG", "string", "str"];
+    var expected = ["Strïng", "Strïng", "StrinG", "String", "strïng", "strïnG", "strïng", "string", "str"];
     
     assertArrayEquals(expected, input);
 }
 
-function testCollatorWithSortSecondary() {
+function testCollatorJSWithSortSecondary() {
     var col = new ilib.Collator({
+    	useNative: false,
     	sensitivity: "secondary"
     });
     assertNotUndefined(col);
@@ -1910,13 +1963,14 @@ function testCollatorWithSortSecondary() {
     input.sort(col.getComparator());
     
     // no change from primary
-    var expected = ["StrinG", "String", "Strïng", "Strïng", "str", "string", "strïnG", "strïng", "strïng"];
+    var expected = ["StrinG", "String", "Strïng", "Strïng", "str", "string", "strïnG", "strïng", "strïng"];
     
     assertArrayEquals(expected, input);
 }
 
-function testCollatorWithSortTertiary() {
+function testCollatorJSWithSortTertiary() {
     var col = new ilib.Collator({
+    	useNative: false,
     	sensitivity: "tertiary"
     });
     assertNotUndefined(col);
@@ -1926,14 +1980,15 @@ function testCollatorWithSortTertiary() {
     input.sort(col.getComparator());
     
     // no change from primary
-    var expected = ["StrinG", "String", "Strïng", "Strïng", "str", "string", "strïnG", "strïng", "strïng"];
+    var expected = ["StrinG", "String", "Strïng", "Strïng", "str", "string", "strïnG", "strïng", "strïng"];
     
     assertArrayEquals(expected, input);
 }
 
 
-function testCollatorWithSortWithSortKeys() {
+function testCollatorJSWithSortWithSortKeys() {
     var col = new ilib.Collator({
+    	useNative: false,
     	sensitivity: "primary"
     });
     assertNotUndefined(col);
@@ -1953,16 +2008,48 @@ function testCollatorWithSortWithSortKeys() {
     input.sort();  // use generic non-locale-sensitive sort!
     
     var expected = [
-        col.sortKey("StrinG"), 
-        col.sortKey("String"), 
-        col.sortKey("Strïng"), 
-        col.sortKey("Strïng"), 
-        col.sortKey("str"), 
-        col.sortKey("string"), 
-        col.sortKey("strïnG"), 
-        col.sortKey("strïng"), 
-        col.sortKey("strïng")
-    ];
+        col.sortKey("StrinG"),
+		col.sortKey("String"),
+		col.sortKey("Strïng"),
+		col.sortKey("Strïng"),
+		col.sortKey("str"),
+		col.sortKey("string"),
+		col.sortKey("strïnG"),
+		col.sortKey("strïng"),
+		col.sortKey("strïng")
+	];
+    
+    assertArrayEquals(expected, input);
+}
+
+function testCollatorJSWithSortUpperFirst() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	upperFirst: true
+    });
+    assertNotUndefined(col);
+    
+    var input = ["q", "I", "e", "r", "T", "U", "i", "E", "o", "p"];
+    
+    input.sort(col.getComparator());
+    
+    var expected = ["E", "e", "I", "i", "o", "p", "q", "r", "T", "U"];
+    
+    assertArrayEquals(expected, input);
+}
+
+function testCollatorJSWithSortUpperNotFirst() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	upperFirst: false
+    });
+    assertNotUndefined(col);
+    
+    var input = ["q", "I", "e", "r", "T", "U", "i", "E", "o", "p"];
+    
+    input.sort(col.getComparator());
+    
+    var expected = ["e", "E", "i", "I", "o", "p", "q", "r", "T", "U"];
     
     assertArrayEquals(expected, input);
 }

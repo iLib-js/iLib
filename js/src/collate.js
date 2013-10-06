@@ -53,10 +53,10 @@
  *   <li>base or primary - Only the primary distinctions between characters are significant.
  *   Another way of saying that is that the collator will be case-, accent-, and 
  *   variation-insensitive, and only distinguish between the base characters
- *   <li>accent or secondary - Both the primary and secondary distinctions between characters
+ *   <li>case or secondary - Both the primary and secondary distinctions between characters
  *   are significant. That is, the collator will be accent- and variation-insensitive
  *   and will distinguish between base characters and character case.
- *   <li>case or tertiary - The primary, secondary, and tertiary distinctions between
+ *   <li>accent or tertiary - The primary, secondary, and tertiary distinctions between
  *   characters are all significant. That is, the collator will be 
  *   variation-insensitive, but accent-, case-, and base-character-sensitive. 
  *   <li>variant or quaternary - All distinctions between characters are significant. That is,
@@ -274,8 +274,8 @@ ilib.Collator = function(options) {
 	/** @type ilib.Locale */
 	this.locale = new ilib.Locale(ilib.getLocale());
 	this.caseFirst = "upper";
-	this.sensitivity = "case";
-	this.level = 2;
+	this.sensitivity = "variant";
+	this.level = 4;
 	this.usage = "sort";
 	this.reverse = false;
 	
@@ -291,13 +291,13 @@ ilib.Collator = function(options) {
 					this.level = 0;
 					break;
 				case 'secondary':
-				case 'accent':
-					this.sensitivity = "accent";
+				case 'case':
+					this.sensitivity = "case";
 					this.level = 1;
 					break;
 				case 'tertiary':
-				case 'case':
-					this.sensitivity = "case";
+				case 'accent':
+					this.sensitivity = "accent";
 					this.level = 2;
 					break;
 				case 'quaternary':
@@ -328,6 +328,15 @@ ilib.Collator = function(options) {
 		if (options.usage === "sort" || options.usage === "search") {
 			this.usage = options.usage;
 		}
+		
+		if (typeof(options.reverse) === 'boolean') {
+			this.reverse = options.reverse;
+		}
+	}
+
+	if (this.usage === "sort") {
+		// produces a stable sort
+		this.level = 4;
 	}
 
 	if (useNative && typeof(Intl) !== 'undefined' && Intl) {
@@ -409,9 +418,7 @@ ilib.Collator.prototype = {
 		var lit = new ilib.NormString(left).charIterator(),
 			rit = new ilib.NormString(right).charIterator(),
 			lchar,
-			normlchar,
 			rchar,
-			normrchar,
 			lattributes,
 			rattributes,
 			ret;
@@ -419,29 +426,28 @@ ilib.Collator.prototype = {
 		while (lit.hasNext() && rit.hasNext()) {
 			lchar = lit.next();
 			rchar = rit.next();
-			normlchar = (new ilib.NormString(lchar)).normalize("nfc").toString();
-			normrchar = (new ilib.NormString(rchar)).normalize("nfc").toString();
-			lattributes = this.map[normlchar] || [normlchar, 0, 0, 0];
-			rattributes = this.map[normrchar] || [normrchar, 0, 0, 0];
+			lattributes = this.map[lchar] || [lchar, 0, 0, 0];
+			rattributes = this.map[rchar] || [rchar, 0, 0, 0];
 			
 			ret = (lattributes[0] < rattributes[0] ? -1 : (lattributes[0] > rattributes[0] ? 1 : 0));
 			if (ret) {
 				return ret;
 			}
-			if (this.usage === "sort" || this.level > 0) {
+			if (this.level > 0) {
 				ret = lattributes[1] - rattributes[1];
 				if (ret !== 0) {
-					return ret < 0 ? -1 : 1;
+					return (this.caseFirst === "upper") ? ret : -ret;
 				}
-				if (this.usage === "sort" || this.level > 1) {
+				if (this.level > 1) {
 					ret = lattributes[2] - rattributes[2];
 					if (ret !== 0) {
 						return ret < 0 ? -1 : 1;
 					}
-					if (this.usage === "sort" || this.level > 2) {
-						if ((normlchar !== lchar || normrchar !== rchar) && lchar !== rchar) {
-							return (lchar < rchar) ? -1 : 1; 
-						} 
+					if (this.level > 2) {
+						ret = lattributes[3] - rattributes[3];
+						if (ret !== 0) {
+							return ret < 0 ? -1 : 1;
+						}
 					}
 				}
 			}
@@ -546,47 +552,26 @@ ilib.Collator.prototype = {
 			it = n.charIterator(),
 			ch,
 			attributes,
-			primary = "",
-			secondary = "",
-			tertiary = "",
-			quaternary = "",
-			ret,
-			normChar;
+			ret = "";
 		
 		while (it.hasNext()) {
 			ch = it.next();
-			if (this.usage === "sort" || this.level > 2) {
-				var nstr = new ilib.NormString(ch);
-				normChar = nstr.normalize("nfc").toString();
-			} else {
-				normChar = ch;
-			}
-			attributes = this.map[normChar] || [normChar, 0, 0, 0];
+			attributes = this.map[ch] || [ch, 0, 0, 0];
 
 			// primary += ilib.toHexString(attributes[0], 2);
-			primary += attributes[0];
-			if (this.usage === "sort" || this.level > 0) {
-				secondary += attributes[1].toString(16);
-				if (this.usage === "sort" || this.level > 1) {
-					tertiary += attributes[2].toString(16);
-					if (this.usage === "sort" || this.level > 2) {
-						quaternary += (ch !== normChar) ? ch.length : "0";
+			ret += attributes[0];
+			if (this.level > 0) {
+				var c = (this.caseFirst === "upper") ? attributes[1] : 1 - attributes[1];
+				ret += c.toString(16);
+				if (this.level > 1) {
+					ret += attributes[2].toString(16);
+					if (this.level > 2) {
+						ret += attributes[3].toString(16);
 					}
 				}
 			}
 		}
 
-		ret = primary;
-		if (this.usage === "sort" || this.level > 0) {
-			ret += "!" + secondary;
-			if (this.usage === "sort" || this.level > 1) {
-				ret += "!" + tertiary;
-				if (this.usage === "sort" || this.level > 2) {
-					ret += "!" + quaternary;
-				}
-			}
-		}
-		
 		return ret;
 	}
 };
