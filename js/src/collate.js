@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends locale.js ilibglobal.js
+// !depends locale.js ilibglobal.js numprs.js ctype.ispunct.js
 
 // !data col_default
 
@@ -278,6 +278,7 @@ ilib.Collator = function(options) {
 	this.level = 4;
 	this.usage = "sort";
 	this.reverse = false;
+	this.numeric = false;
 	
 	if (options) {
 		if (options.locale) {
@@ -332,6 +333,10 @@ ilib.Collator = function(options) {
 		if (typeof(options.reverse) === 'boolean') {
 			this.reverse = options.reverse;
 		}
+
+		if (typeof(options.numeric) === 'boolean') {
+			this.numeric = options.numeric;
+		}
 	}
 
 	if (this.usage === "sort") {
@@ -379,9 +384,17 @@ ilib.Collator = function(options) {
 				    		sync: sync,
 				    		loadParams: loadParams,
 				    		onLoad: ilib.bind(this, function() {
-								if (options && typeof(options.onLoad) === 'function') {
-									options.onLoad(this);
-								}
+				    			if (this.ignorePunctuation) {
+					    			ilib.CType.isPunct._init(sync, loadParams, ilib.bind(this, function() {
+										if (options && typeof(options.onLoad) === 'function') {
+											options.onLoad(this);
+										}
+					    			}));
+				    			} else {
+									if (options && typeof(options.onLoad) === 'function') {
+										options.onLoad(this);
+									}
+				    			}
 				    		})
 				    	});
 		    		})
@@ -396,68 +409,93 @@ ilib.Collator.prototype = {
      * @private
      */
     _init: function(rules) {
+    	/** @type {{scripts:Array.<string>,maxes:Array.<number>,map:Object.<string,Array.<number>>}} */
+    	this.collation = rules;
     	this.map = {};
-    	for (var r in rules) {
+    	for (var r in rules.map) {
     		if (r) {
     			this.map[r] = [];
-    			for (var i = 0; i < rules[r].length; i++) {
-    				this.map[r].push(rules[r][i]);
+    			for (var i = 0; i < rules.map[r].length; i++) {
+    				this.map[r].push(rules.map[r][i]);
     			}
-    			for (var i = rules[r].length; i < 4; i++) {
+    			for (var i = rules.map[r].length; i < 4; i++) {
     				this.map[r].push(0);
     			}
     		}
     	}
-    	
     },
     
     /**
      * @private
      */
     _basicCompare: function(left, right) {
-		var lit = new ilib.NormString(left).charIterator(),
-			rit = new ilib.NormString(right).charIterator(),
-			lchar,
-			rchar,
-			lattributes,
-			rattributes,
-			ret;
-		
-		while (lit.hasNext() && rit.hasNext()) {
-			lchar = lit.next();
-			rchar = rit.next();
-			lattributes = this.map[lchar] || [lchar, 0, 0, 0];
-			rattributes = this.map[rchar] || [rchar, 0, 0, 0];
-			
-			ret = (lattributes[0] < rattributes[0] ? -1 : (lattributes[0] > rattributes[0] ? 1 : 0));
-			if (ret) {
-				return ret;
-			}
-			if (this.level > 0) {
-				ret = lattributes[1] - rattributes[1];
-				if (ret !== 0) {
-					return (this.caseFirst === "upper") ? ret : -ret;
+		if (this.numeric) {
+			var lvalue = new ilib.Number(left, {locale: this.locale});
+			var rvalue = new ilib.Number(right, {locale: this.locale});
+			if (isNaN(lvalue.valueOf())) {
+				if (isNaN(rvalue.valueOf())) {
+					return 0;
 				}
-				if (this.level > 1) {
-					ret = lattributes[2] - rattributes[2];
+				return 1;
+			} else if (isNaN(rvalue.valueOf())) {
+				return -1;
+			}
+			return lvalue.valueOf() - rvalue.valueOf();
+		} else {
+			var ret,
+				lit = new ilib.NormString(left).charIterator(),
+				rit = new ilib.NormString(right).charIterator(),
+				lchar,
+				rchar,
+				lattributes,
+				rattributes;
+			
+			while (lit.hasNext() && rit.hasNext()) {
+				lchar = lit.next();
+				rchar = rit.next();
+
+				if (this.ignorePunctuation) {
+					while (ilib.CType.isPunct(lchar) && lit.hasNext()) {
+						lchar = lit.next();
+					} 
+					while (ilib.CType.isPunct(rchar) && rit.hasNext()) {
+						rchar = rit.next();
+					} 
+				}
+				
+				lattributes = this.map[lchar] || [lchar, 0, 0, 0];
+				rattributes = this.map[rchar] || [rchar, 0, 0, 0];
+				
+				ret = (lattributes[0] < rattributes[0] ? -1 : (lattributes[0] > rattributes[0] ? 1 : 0));
+				if (ret) {
+					return ret;
+				}
+				if (this.level > 0) {
+					ret = lattributes[1] - rattributes[1];
 					if (ret !== 0) {
-						return ret < 0 ? -1 : 1;
+						return (this.caseFirst === "upper") ? ret : -ret;
 					}
-					if (this.level > 2) {
-						ret = lattributes[3] - rattributes[3];
+					if (this.level > 1) {
+						ret = lattributes[2] - rattributes[2];
 						if (ret !== 0) {
-							return ret < 0 ? -1 : 1;
+							return ret;
+						}
+						if (this.level > 2) {
+							ret = lattributes[3] - rattributes[3];
+							if (ret !== 0) {
+								return ret;
+							}
 						}
 					}
 				}
 			}
-		}
-		if (!lit.hasNext() && !rit.hasNext()) {
-			return 0;
-		} else if (lit.hasNext()) {
-			return 1;
-		} else {
-			return -1;
+			if (!lit.hasNext() && !rit.hasNext()) {
+				return 0;
+			} else if (lit.hasNext()) {
+				return 1;
+			} else {
+				return -1;
+			}
 		}
     },
     
@@ -548,30 +586,46 @@ ilib.Collator.prototype = {
 			return str;
 		}
 		
-		var n = new ilib.NormString(str),
-			it = n.charIterator(),
-			ch,
-			attributes,
-			ret = "";
+		function pad(str, limit) {
+			return "0000000000000000".substring(0, limit - str.length) + str;
+		}
 		
-		while (it.hasNext()) {
-			ch = it.next();
-			attributes = this.map[ch] || [ch, 0, 0, 0];
-
-			// primary += ilib.toHexString(attributes[0], 2);
-			ret += attributes[0];
-			if (this.level > 0) {
-				var c = (this.caseFirst === "upper") ? attributes[1] : 1 - attributes[1];
-				ret += c.toString(16);
-				if (this.level > 1) {
-					ret += attributes[2].toString(16);
-					if (this.level > 2) {
-						ret += attributes[3].toString(16);
+		if (this.numeric) {
+			var v = new ilib.Number(str, {locale: this.locale});
+			var s = isNaN(v.valueOf()) ? "" : v.valueOf().toString(16);
+			return pad(s, 16);	
+		} else {
+			var n = new ilib.NormString(str),
+				it = n.charIterator(),
+				ch,
+				attributes,
+				ret = "";
+			
+			while (it.hasNext()) {
+				ch = it.next();
+				if (!this.ignorePunctuation || !ilib.CType.isPunct(ch)) {
+					attributes = this.map[ch] || [ch, 0, 0, 0];
+		
+					// primary += ilib.toHexString(attributes[0], 2);
+					if (this.reverse) {
+						var v = this.collation.maxes[0] - attributes[0].charCodeAt(0);
+						ret += pad(v.toString(16), 4);
+					} else {
+						ret += attributes[0];
+					}
+					if (this.level > 0) {
+						var c = (this.caseFirst === "upper" && !this.reverse) ? attributes[1] : 1 - attributes[1];
+						ret += c.toString(16);
+						if (this.level > 1) {
+							ret += (this.reverse ? this.collation.maxes[2] - attributes[2] : attributes[2]).toString(16);
+							if (this.level > 2) {
+								ret += (this.reverse ? this.collation.maxes[3] - attributes[3] : attributes[3]).toString(16);
+							}
+						}
 					}
 				}
 			}
 		}
-
 		return ret;
 	}
 };

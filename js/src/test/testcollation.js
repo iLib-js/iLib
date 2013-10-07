@@ -30,9 +30,9 @@ function testCollatorDefault() {
 
     // should compare in English
     assertEquals("equality", 0, col.compare("string", "string"));
-    assertEquals("a < b", -1, col.compare("a", "b"));
-    assertEquals("b < c", -1, col.compare("b", "c"));
-    assertEquals("c < z", -1, col.compare("c", "z"));
+    assertTrue("a < b", col.compare("a", "b") < 0);
+    assertTrue("b < c", col.compare("b", "c") < 0);
+    assertTrue("c < z", col.compare("c", "z") < 0);
 }
 
 function testCollatorDefaultCase() {
@@ -41,10 +41,10 @@ function testCollatorDefaultCase() {
     assertNotUndefined(col);
 
     // should compare upper-case first within a base character
-    assertEquals("A < a", -1, col.compare("A", "a"));
-    assertEquals("B < b", -1, col.compare("B", "b"));
-    assertEquals("a < Z", -1, col.compare("a", "Z"));
-    assertEquals("Á < a", -1, col.compare("A", "a"));
+    assertTrue("A < a", col.compare("A", "a") < 0);
+    assertTrue("B < b", col.compare("B", "b") < 0);
+    assertTrue("a < Z", col.compare("a", "Z") < 0);
+    assertTrue("Á < a", col.compare("A", "a") < 0);
 }
 
 function testCollatorGetComparator() {
@@ -68,9 +68,9 @@ function testCollatorGetComparatorWorks() {
     
     // should compare in English
     assertEquals("equality", 0, func("string", "string"));
-    assertEquals("a < b", -1, func("a", "b"));
-    assertEquals("b < c", -1, func("b", "c"));
-    assertEquals("c < z", -1, func("c", "z"));
+    assertTrue("a < b", func("a", "b") < 0);
+    assertTrue("b < c", func("b", "c") < 0);
+    assertTrue("c < z", func("c", "z") < 0);
 }
 
 function testCollatorGetComparatorWorksWithCase() {
@@ -82,10 +82,10 @@ function testCollatorGetComparatorWorksWithCase() {
     assertNotUndefined(func);
     
     // should compare upper-case first
-    assertEquals("A < a", -1, func("A", "a"));
-    assertEquals("B < b", -1, func("B", "b"));
-    assertEquals("a < Z", -1, func("a", "Z"));
-    assertEquals("Á < a", -1, func("A", "a"));
+    assertTrue("A < a", func("A", "a") < 0);
+    assertTrue("B < b", func("B", "b") < 0);
+    assertTrue("a < Z", func("a", "Z") < 0);
+    assertTrue("Á < a", func("A", "a") < 0);
 }
 
 function testCollatorGetSortKey() {
@@ -188,8 +188,8 @@ function testCollatorDefaultExtendedChars() {
 	    assertNotUndefined(col);
 	
 	    // should compare in English
-	    assertEquals("e < ë", -1, col.compare("e", "ë"));
-	    assertEquals("o < ø", -1, col.compare("o", "ø"));
+	    assertTrue("e < ë", col.compare("e", "ë") < 0);
+	    assertTrue("o < ø", col.compare("o", "ø") < 0);
 	}
 }
 
@@ -559,25 +559,25 @@ function testJSCollatorPrimaryBase() {
 
     // should compare base first
     // A a Ã ã O o Õ õ
-    assertEquals("a < o", -1, col.compare("a", "o"));
-    assertEquals("A < o", -1, col.compare("A", "o"));
-    assertEquals("ã < o", -1, col.compare("ã", "o"));
-    assertEquals("Ã < o", -1, col.compare("Ã", "o"));
+    assertTrue("a < o", col.compare("a", "o") < 0);
+    assertTrue("A < o", col.compare("A", "o") < 0);
+    assertTrue("ã < o", col.compare("ã", "o") < 0);
+    assertTrue("Ã < o", col.compare("Ã", "o") < 0);
 
-    assertEquals("a < õ", -1, col.compare("a", "õ"));
-    assertEquals("A < õ", -1, col.compare("A", "õ"));
-    assertEquals("ã < õ", -1, col.compare("ã", "õ"));
-    assertEquals("Ã < õ", -1, col.compare("Ã", "õ"));
+    assertTrue("a < õ", col.compare("a", "õ") < 0);
+    assertTrue("A < õ", col.compare("A", "õ") < 0);
+    assertTrue("ã < õ", col.compare("ã", "õ") < 0);
+    assertTrue("Ã < õ", col.compare("Ã", "õ") < 0);
 
-    assertEquals("a < O", -1, col.compare("a", "O"));
-    assertEquals("A < O", -1, col.compare("A", "O"));
-    assertEquals("ã < O", -1, col.compare("ã", "O"));
-    assertEquals("Ã < O", -1, col.compare("Ã", "O"));
+    assertTrue("a < O", col.compare("a", "O") < 0);
+    assertTrue("A < O", col.compare("A", "O") < 0);
+    assertTrue("ã < O", col.compare("ã", "O") < 0);
+    assertTrue("Ã < O", col.compare("Ã", "O") < 0);
 
-    assertEquals("a < Õ", -1, col.compare("a", "Õ"));
-    assertEquals("A < Õ", -1, col.compare("A", "Õ"));
-    assertEquals("ã < Õ", -1, col.compare("ã", "Õ"));
-    assertEquals("Ã < Õ", -1, col.compare("Ã", "Õ"));
+    assertTrue("a < Õ", col.compare("a", "Õ") < 0);
+    assertTrue("A < Õ", col.compare("A", "Õ") < 0);
+    assertTrue("ã < Õ", col.compare("ã", "Õ") < 0);
+    assertTrue("Ã < Õ", col.compare("Ã", "Õ") < 0);
 }
 
 function testJSCollatorPrimaryAccent() {
@@ -591,9 +591,9 @@ function testJSCollatorPrimaryAccent() {
     // should compare base, then accent, then case, then variant
     // a à à å
     // (second "a" with grave is two characters: "a" character with a combining grave character)
-    assertEquals("a < à", -1, col.compare("a", "à"));
-    assertEquals("à < à (combining)", -1, col.compare("à", "à"));
-    assertEquals("à (combining) < å", -1, col.compare("à", "å"));
+    assertTrue("a < à", col.compare("a", "à") < 0);
+    assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+    assertTrue("à (combining) < å", col.compare("à", "å") < 0);
 }
 
 function testJSCollatorPrimaryCase() {
@@ -607,17 +607,17 @@ function testJSCollatorPrimaryCase() {
     // should compare base, then accent, then case, then variant
     // A À À Å a à à å O Õ o õ
     // (second set of "a" with grave is two characters: "a" character with a combining grave character)
-    assertEquals("A < À", -1, col.compare("A", "À"));
-    assertEquals("À < À (combining)", -1, col.compare("À", "À"));
-    assertEquals("À (combining) < Å", -1, col.compare("À", "Å"));
-    assertEquals("Å < a", -1, col.compare("Å", "a"));
-    assertEquals("a < à", -1, col.compare("a", "à"));
-    assertEquals("à < à (combining)", -1, col.compare("à", "à"));
-    assertEquals("à (combining) < å", -1, col.compare("à", "å"));
-    assertEquals("å < O", -1, col.compare("å", "O"));
-    assertEquals("O < Õ", -1, col.compare("O", "Õ"));
-    assertEquals("Õ < o", -1, col.compare("Õ", "o"));
-    assertEquals("o < õ", -1, col.compare("o", "õ"));
+    assertTrue("A < À", col.compare("A", "À") < 0);
+    assertTrue("À < À (combining)", col.compare("À", "À") < 0);
+    assertTrue("À (combining) < Å", col.compare("À", "Å") < 0);
+    assertTrue("Å < a", col.compare("Å", "a") < 0);
+    assertTrue("a < à", col.compare("a", "à") < 0);
+    assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+    assertTrue("à (combining) < å", col.compare("à", "å") < 0);
+    assertTrue("å < O", col.compare("å", "O") < 0);
+    assertTrue("O < Õ", col.compare("O", "Õ") < 0);
+    assertTrue("Õ < o", col.compare("Õ", "o") < 0);
+    assertTrue("o < õ", col.compare("o", "õ") < 0);
 }
 
 function testJSCollatorGetComparatorPrimary() {
@@ -659,17 +659,17 @@ function testJSCollatorGetComparatorPrimaryWorksWithCase() {
     
     // A À À Å a à à å O Õ o õ
     // (second set of "a" with grave is two characters: "a" character with a combining grave character)
-    assertEquals("A < À", -1, func("A", "À"));
-    assertEquals("À < À (combining)", -1, func("À", "À"));
-    assertEquals("À (combining) < Å", -1, func("À", "Å"));
-    assertEquals("Å < a", -1, func("Å", "a"));
-    assertEquals("a < à", -1, func("a", "à"));
-    assertEquals("à < à (combining)", -1, func("à", "à"));
-    assertEquals("à (combining) < å", -1, func("à", "å"));
-    assertEquals("å < O", -1, func("å", "O"));
-    assertEquals("O < Õ", -1, func("O", "Õ"));
-    assertEquals("Õ < o", -1, func("Õ", "o"));
-    assertEquals("o < õ", -1, func("o", "õ"));
+    assertTrue("A < À", func("A", "À") < 0);
+    assertTrue("À < À (combining)", func("À", "À") < 0);
+    assertTrue("À (combining) < Å", func("À", "Å") < 0);
+    assertTrue("Å < a", func("Å", "a") < 0);
+    assertTrue("a < à", func("a", "à") < 0);
+    assertTrue("à < à (combining)", func("à", "à") < 0);
+    assertTrue("à (combining) < å", func("à", "å") < 0);
+    assertTrue("å < O", func("å", "O") < 0);
+    assertTrue("O < Õ", func("O", "Õ") < 0);
+    assertTrue("Õ < o", func("Õ", "o") < 0);
+    assertTrue("o < õ", func("o", "õ") < 0);
 }
 
 function testJSCollatorGetSortKeyPrimary() {
@@ -744,25 +744,25 @@ function testJSCollatorSecondaryBase() {
 
     // should compare base first
     // A Ã a ã O Õ o õ
-    assertEquals("a < o", -1, col.compare("a", "o"));
-    assertEquals("A < o", -1, col.compare("A", "o"));
-    assertEquals("ã < o", -1, col.compare("ã", "o"));
-    assertEquals("Ã < o", -1, col.compare("Ã", "o"));
+    assertTrue("a < o", col.compare("a", "o") < 0);
+    assertTrue("A < o", col.compare("A", "o") < 0);
+    assertTrue("ã < o", col.compare("ã", "o") < 0);
+    assertTrue("Ã < o", col.compare("Ã", "o") < 0);
 
-    assertEquals("a < õ", -1, col.compare("a", "õ"));
-    assertEquals("A < õ", -1, col.compare("A", "õ"));
-    assertEquals("ã < õ", -1, col.compare("ã", "õ"));
-    assertEquals("Ã < õ", -1, col.compare("Ã", "õ"));
+    assertTrue("a < õ", col.compare("a", "õ") < 0);
+    assertTrue("A < õ", col.compare("A", "õ") < 0);
+    assertTrue("ã < õ", col.compare("ã", "õ") < 0);
+    assertTrue("Ã < õ", col.compare("Ã", "õ") < 0);
 
-    assertEquals("a < O", -1, col.compare("a", "O"));
-    assertEquals("A < O", -1, col.compare("A", "O"));
-    assertEquals("ã < O", -1, col.compare("ã", "O"));
-    assertEquals("Ã < O", -1, col.compare("Ã", "O"));
+    assertTrue("a < O", col.compare("a", "O") < 0);
+    assertTrue("A < O", col.compare("A", "O") < 0);
+    assertTrue("ã < O", col.compare("ã", "O") < 0);
+    assertTrue("Ã < O", col.compare("Ã", "O") < 0);
 
-    assertEquals("a < Õ", -1, col.compare("a", "Õ"));
-    assertEquals("A < Õ", -1, col.compare("A", "Õ"));
-    assertEquals("ã < Õ", -1, col.compare("ã", "Õ"));
-    assertEquals("Ã < Õ", -1, col.compare("Ã", "Õ"));
+    assertTrue("a < Õ", col.compare("a", "Õ") < 0);
+    assertTrue("A < Õ", col.compare("A", "Õ") < 0);
+    assertTrue("ã < Õ", col.compare("ã", "Õ") < 0);
+    assertTrue("Ã < Õ", col.compare("Ã", "Õ") < 0);
 }
 
 function testJSCollatorSecondaryAccent() {
@@ -776,9 +776,9 @@ function testJSCollatorSecondaryAccent() {
     // should compare base, then accent, then case, then variant
     // a à à å
     // (second "a" with grave is two characters: "a" character with a combining grave character)
-    assertEquals("a < à", -1, col.compare("a", "à"));
-    assertEquals("à < à (combining)", -1, col.compare("à", "à"));
-    assertEquals("à (combining) < å", -1, col.compare("à", "å"));
+    assertTrue("a < à", col.compare("a", "à") < 0);
+    assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+    assertTrue("à (combining) < å", col.compare("à", "å") < 0);
 }
 
 function testJSCollatorSecondaryCase() {
@@ -791,17 +791,17 @@ function testJSCollatorSecondaryCase() {
 
     // should compare base, then case, then accent, then variant
     // A À À Å a à à å O Õ o õ
-    assertEquals("A < À", -1, col.compare("A", "À"));
-    assertEquals("À < À (combining)", -1, col.compare("À", "À"));
-    assertEquals("À (combining) < Å", -1, col.compare("À", "Å"));
-    assertEquals("Å < a", -1, col.compare("Å", "a"));
-    assertEquals("a < à", -1, col.compare("a", "à"));
-    assertEquals("à < à (combining)", -1, col.compare("à", "à"));
-    assertEquals("à (combining) < å", -1, col.compare("à", "å"));
-    assertEquals("å < O", -1, col.compare("å", "O"));
-    assertEquals("O < Õ", -1, col.compare("O", "Õ"));
-    assertEquals("Õ < o", -1, col.compare("Õ", "o"));
-    assertEquals("o < õ", -1, col.compare("o", "õ"));
+    assertTrue("A < À", col.compare("A", "À") < 0);
+    assertTrue("À < À (combining)", col.compare("À", "À") < 0);
+    assertTrue("À (combining) < Å", col.compare("À", "Å") < 0);
+    assertTrue("Å < a", col.compare("Å", "a") < 0);
+    assertTrue("a < à", col.compare("a", "à") < 0);
+    assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+    assertTrue("à (combining) < å", col.compare("à", "å") < 0);
+    assertTrue("å < O", col.compare("å", "O") < 0);
+    assertTrue("O < Õ", col.compare("O", "Õ") < 0);
+    assertTrue("Õ < o", col.compare("Õ", "o") < 0);
+    assertTrue("o < õ", col.compare("o", "õ") < 0);
 }
 
 function testJSCollatorGetComparatorSecondary() {
@@ -842,17 +842,17 @@ function testJSCollatorGetComparatorSecondaryWorksWithCase() {
     assertNotUndefined(func);
     
     // A À À Å a à à å O Õ o õ
-    assertEquals("A < À", -1, func("A", "À"));
-    assertEquals("À < À (combining)", -1, func("À", "À"));
-    assertEquals("À (combining) < Å", -1, func("À", "Å"));
-    assertEquals("Å < a", -1, func("Å", "a"));
-    assertEquals("a < à", -1, func("a", "à"));
-    assertEquals("à < à (combining)", -1, func("à", "à"));
-    assertEquals("à (combining) < å", -1, func("à", "å"));
-    assertEquals("å < O", -1, func("å", "O"));
-    assertEquals("O < Õ", -1, func("O", "Õ"));
-    assertEquals("Õ < o", -1, func("Õ", "o"));
-    assertEquals("o < õ", -1, func("o", "õ"));
+    assertTrue("A < À", func("A", "À") < 0);
+    assertTrue("À < À (combining)", func("À", "À") < 0);
+    assertTrue("À (combining) < Å", func("À", "Å") < 0);
+    assertTrue("Å < a", func("Å", "a") < 0);
+    assertTrue("a < à", func("a", "à") < 0);
+    assertTrue("à < à (combining)", func("à", "à") < 0);
+    assertTrue("à (combining) < å", func("à", "å") < 0);
+    assertTrue("å < O", func("å", "O") < 0);
+    assertTrue("O < Õ", func("O", "Õ") < 0);
+    assertTrue("Õ < o", func("Õ", "o") < 0);
+    assertTrue("o < õ", func("o", "õ") < 0);
 }
 
 function testJSCollatorGetSortKeySecondary() {
@@ -927,25 +927,25 @@ function testJSCollatorTertiaryBase() {
 
     // should compare base first
     // A Ã a ã O Õ o õ
-    assertEquals("a < o", -1, col.compare("a", "o"));
-    assertEquals("A < o", -1, col.compare("A", "o"));
-    assertEquals("ã < o", -1, col.compare("ã", "o"));
-    assertEquals("Ã < o", -1, col.compare("Ã", "o"));
+    assertTrue("a < o", col.compare("a", "o") < 0);
+    assertTrue("A < o", col.compare("A", "o") < 0);
+    assertTrue("ã < o", col.compare("ã", "o") < 0);
+    assertTrue("Ã < o", col.compare("Ã", "o") < 0);
 
-    assertEquals("a < õ", -1, col.compare("a", "õ"));
-    assertEquals("A < õ", -1, col.compare("A", "õ"));
-    assertEquals("ã < õ", -1, col.compare("ã", "õ"));
-    assertEquals("Ã < õ", -1, col.compare("Ã", "õ"));
+    assertTrue("a < õ", col.compare("a", "õ") < 0);
+    assertTrue("A < õ", col.compare("A", "õ") < 0);
+    assertTrue("ã < õ", col.compare("ã", "õ") < 0);
+    assertTrue("Ã < õ", col.compare("Ã", "õ") < 0);
 
-    assertEquals("a < O", -1, col.compare("a", "O"));
-    assertEquals("A < O", -1, col.compare("A", "O"));
-    assertEquals("ã < O", -1, col.compare("ã", "O"));
-    assertEquals("Ã < O", -1, col.compare("Ã", "O"));
+    assertTrue("a < O", col.compare("a", "O") < 0);
+    assertTrue("A < O", col.compare("A", "O") < 0);
+    assertTrue("ã < O", col.compare("ã", "O") < 0);
+    assertTrue("Ã < O", col.compare("Ã", "O") < 0);
 
-    assertEquals("a < Õ", -1, col.compare("a", "Õ"));
-    assertEquals("A < Õ", -1, col.compare("A", "Õ"));
-    assertEquals("ã < Õ", -1, col.compare("ã", "Õ"));
-    assertEquals("Ã < Õ", -1, col.compare("Ã", "Õ"));
+    assertTrue("a < Õ", col.compare("a", "Õ") < 0);
+    assertTrue("A < Õ", col.compare("A", "Õ") < 0);
+    assertTrue("ã < Õ", col.compare("ã", "Õ") < 0);
+    assertTrue("Ã < Õ", col.compare("Ã", "Õ") < 0);
 }
 
 function testJSCollatorTertiaryAccent() {
@@ -958,9 +958,9 @@ function testJSCollatorTertiaryAccent() {
 
     // should compare base, then accent
     // (second "a" with grave is two characters: "a" character with a combining grave character)
-    assertEquals("a < à", -1, col.compare("a", "à"));
-    assertEquals("à < à (combining)", -1, col.compare("à", "à"));
-    assertEquals("à (combining) < å", -1, col.compare("à", "å"));
+    assertTrue("a < à", col.compare("a", "à") < 0);
+    assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+    assertTrue("à (combining) < å", col.compare("à", "å") < 0);
 }
 
 function testJSCollatorTertiaryCase() {
@@ -973,17 +973,17 @@ function testJSCollatorTertiaryCase() {
 
     // should compare base, then case, then accent, then variant
     // A À À Å a à à å O Õ o õ
-    assertEquals("A < À", -1, col.compare("A", "À"));
-    assertEquals("À < À (combining)", -1, col.compare("À", "À"));
-    assertEquals("À (combining) < Å", -1, col.compare("À", "Å"));
-    assertEquals("Å < a", -1, col.compare("Å", "a"));
-    assertEquals("a < à", -1, col.compare("a", "à"));
-    assertEquals("à < à (combining)", -1, col.compare("à", "à"));
-    assertEquals("à (combining) < å", -1, col.compare("à", "å"));
-    assertEquals("å < O", -1, col.compare("å", "O"));
-    assertEquals("O < Õ", -1, col.compare("O", "Õ"));
-    assertEquals("Õ < o", -1, col.compare("Õ", "o"));
-    assertEquals("o < õ", -1, col.compare("o", "õ"));
+    assertTrue("A < À", col.compare("A", "À") < 0);
+    assertTrue("À < À (combining)", col.compare("À", "À") < 0);
+    assertTrue("À (combining) < Å", col.compare("À", "Å") < 0);
+    assertTrue("Å < a", col.compare("Å", "a") < 0);
+    assertTrue("a < à", col.compare("a", "à") < 0);
+    assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+    assertTrue("à (combining) < å", col.compare("à", "å") < 0);
+    assertTrue("å < O", col.compare("å", "O") < 0);
+    assertTrue("O < Õ", col.compare("O", "Õ") < 0);
+    assertTrue("Õ < o", col.compare("Õ", "o") < 0);
+    assertTrue("o < õ", col.compare("o", "õ") < 0);
 }
 
 function testJSCollatorGetComparatorTertiary() {
@@ -1024,17 +1024,17 @@ function testJSCollatorGetComparatorTertiaryWorksWithCase() {
     assertNotUndefined(func);
     
     // A À À Å a à à å O Õ o õ
-    assertEquals("A < À", -1, func("A", "À"));
-    assertEquals("À < À (combining)", -1, func("À", "À"));
-    assertEquals("À (combining) < Å", -1, func("À", "Å"));
-    assertEquals("Å < a", -1, func("Å", "a"));
-    assertEquals("a < à", -1, func("a", "à"));
-    assertEquals("à < à (combining)", -1, func("à", "à"));
-    assertEquals("à (combining) < å", -1, func("à", "å"));
-    assertEquals("å < O", -1, func("å", "O"));
-    assertEquals("O < Õ", -1, func("O", "Õ"));
-    assertEquals("Õ < o", -1, func("Õ", "o"));
-    assertEquals("o < õ", -1, func("o", "õ"));
+    assertTrue("A < À", func("A", "À") < 0);
+    assertTrue("À < À (combining)", func("À", "À") < 0);
+    assertTrue("À (combining) < Å", func("À", "Å") < 0);
+    assertTrue("Å < a", func("Å", "a") < 0);
+    assertTrue("a < à", func("a", "à") < 0);
+    assertTrue("à < à (combining)", func("à", "à") < 0);
+    assertTrue("à (combining) < å", func("à", "å") < 0);
+    assertTrue("å < O", func("å", "O") < 0);
+    assertTrue("O < Õ", func("O", "Õ") < 0);
+    assertTrue("Õ < o", func("Õ", "o") < 0);
+    assertTrue("o < õ", func("o", "õ") < 0);
 }
 
 function testJSCollatorGetSortKeyTertiary() {
@@ -1111,25 +1111,25 @@ function testJSCollatorSearchPrimaryBase() {
 
     // should compare base first
     // A a Ã ã O o Õ õ
-    assertEquals("a < o", -1, col.compare("a", "o"));
-    assertEquals("A < o", -1, col.compare("A", "o"));
-    assertEquals("ã < o", -1, col.compare("ã", "o"));
-    assertEquals("Ã < o", -1, col.compare("Ã", "o"));
+    assertTrue("a < o", col.compare("a", "o") < 0);
+    assertTrue("A < o", col.compare("A", "o") < 0);
+    assertTrue("ã < o", col.compare("ã", "o") < 0);
+    assertTrue("Ã < o", col.compare("Ã", "o") < 0);
 
-    assertEquals("a < õ", -1, col.compare("a", "õ"));
-    assertEquals("A < õ", -1, col.compare("A", "õ"));
-    assertEquals("ã < õ", -1, col.compare("ã", "õ"));
-    assertEquals("Ã < õ", -1, col.compare("Ã", "õ"));
+    assertTrue("a < õ", col.compare("a", "õ") < 0);
+    assertTrue("A < õ", col.compare("A", "õ") < 0);
+    assertTrue("ã < õ", col.compare("ã", "õ") < 0);
+    assertTrue("Ã < õ", col.compare("Ã", "õ") < 0);
 
-    assertEquals("a < O", -1, col.compare("a", "O"));
-    assertEquals("A < O", -1, col.compare("A", "O"));
-    assertEquals("ã < O", -1, col.compare("ã", "O"));
-    assertEquals("Ã < O", -1, col.compare("Ã", "O"));
+    assertTrue("a < O", col.compare("a", "O") < 0);
+    assertTrue("A < O", col.compare("A", "O") < 0);
+    assertTrue("ã < O", col.compare("ã", "O") < 0);
+    assertTrue("Ã < O", col.compare("Ã", "O") < 0);
 
-    assertEquals("a < Õ", -1, col.compare("a", "Õ"));
-    assertEquals("A < Õ", -1, col.compare("A", "Õ"));
-    assertEquals("ã < Õ", -1, col.compare("ã", "Õ"));
-    assertEquals("Ã < Õ", -1, col.compare("Ã", "Õ"));
+    assertTrue("a < Õ", col.compare("a", "Õ") < 0);
+    assertTrue("A < Õ", col.compare("A", "Õ") < 0);
+    assertTrue("ã < Õ", col.compare("ã", "Õ") < 0);
+    assertTrue("Ã < Õ", col.compare("Ã", "Õ") < 0);
 }
 
 function testJSCollatorSearchPrimaryAccent() {
@@ -1168,7 +1168,7 @@ function testJSCollatorSearchPrimaryCase() {
     assertEquals("À (combining) = à (combining)", 0, col.compare("À", "à"));
     assertEquals("à (combining) = Å", 0, col.compare("à", "Å"));
     assertEquals("Å = å", 0, col.compare("Å", "å"));
-    assertEquals("ã < O", -1, col.compare("ã", "O"));
+    assertTrue("ã < O", col.compare("ã", "O") < 0);
     assertEquals("O = o", 0, col.compare("O", "o"));
     assertEquals("o = Õ", 0, col.compare("o", "Õ"));
     assertEquals("Õ = õ", 0, col.compare("Õ", "õ"));
@@ -1223,7 +1223,7 @@ function testJSCollatorSearchGetComparatorPrimaryWorksWithCase() {
     assertEquals("À (combining) = à (combining)", 0, func("À", "à"));
     assertEquals("à (combining) = Å", 0, func("à", "Å"));
     assertEquals("Å = å", 0, func("Å", "å"));
-    assertEquals("ã < O", -1, func("ã", "O"));
+    assertTrue("ã < O", func("ã", "O") < 0);
     assertEquals("O = o", 0, func("O", "o"));
     assertEquals("o = Õ", 0, func("o", "Õ"));
     assertEquals("Õ = õ", 0, func("Õ", "õ"));
@@ -1306,25 +1306,25 @@ function testJSCollatorSearchSecondaryBase() {
 
     // should compare base first, then case
     // A Ã a ã O Õ o õ
-    assertEquals("a < o", -1, col.compare("a", "o"));
-    assertEquals("A < o", -1, col.compare("A", "o"));
-    assertEquals("ã < o", -1, col.compare("ã", "o"));
-    assertEquals("Ã < o", -1, col.compare("Ã", "o"));
+    assertTrue("a < o", col.compare("a", "o") < 0);
+    assertTrue("A < o", col.compare("A", "o") < 0);
+    assertTrue("ã < o", col.compare("ã", "o") < 0);
+    assertTrue("Ã < o", col.compare("Ã", "o") < 0);
 
-    assertEquals("a < õ", -1, col.compare("a", "õ"));
-    assertEquals("A < õ", -1, col.compare("A", "õ"));
-    assertEquals("ã < õ", -1, col.compare("ã", "õ"));
-    assertEquals("Ã < õ", -1, col.compare("Ã", "õ"));
+    assertTrue("a < õ", col.compare("a", "õ") < 0);
+    assertTrue("A < õ", col.compare("A", "õ") < 0);
+    assertTrue("ã < õ", col.compare("ã", "õ") < 0);
+    assertTrue("Ã < õ", col.compare("Ã", "õ") < 0);
 
-    assertEquals("a < O", -1, col.compare("a", "O"));
-    assertEquals("A < O", -1, col.compare("A", "O"));
-    assertEquals("ã < O", -1, col.compare("ã", "O"));
-    assertEquals("Ã < O", -1, col.compare("Ã", "O"));
+    assertTrue("a < O", col.compare("a", "O") < 0);
+    assertTrue("A < O", col.compare("A", "O") < 0);
+    assertTrue("ã < O", col.compare("ã", "O") < 0);
+    assertTrue("Ã < O", col.compare("Ã", "O") < 0);
 
-    assertEquals("a < Õ", -1, col.compare("a", "Õ"));
-    assertEquals("A < Õ", -1, col.compare("A", "Õ"));
-    assertEquals("ã < Õ", -1, col.compare("ã", "Õ"));
-    assertEquals("Ã < Õ", -1, col.compare("Ã", "Õ"));
+    assertTrue("a < Õ", col.compare("a", "Õ") < 0);
+    assertTrue("A < Õ", col.compare("A", "Õ") < 0);
+    assertTrue("ã < Õ", col.compare("ã", "Õ") < 0);
+    assertTrue("Ã < Õ", col.compare("Ã", "Õ") < 0);
 }
 
 function testJSCollatorSearchSecondaryAccent() {
@@ -1359,13 +1359,13 @@ function testJSCollatorSearchSecondaryCase() {
     assertEquals("A = À",  0, col.compare("A", "À"));
     assertEquals("À = À (combining)",  0, col.compare("À", "À"));
     assertEquals("À (combining) = Å",  0, col.compare("À", "Å"));
-    assertEquals("Å < a", -1, col.compare("Å", "a"));
+    assertTrue("Å < a", col.compare("Å", "a") < 0);
     assertEquals("a = à",  0, col.compare("a", "à"));
     assertEquals("à = à (combining)",  0, col.compare("à", "à"));
     assertEquals("à (combining) = å",  0, col.compare("à", "å"));
-    assertEquals("å < O", -1, col.compare("å", "O"));
+    assertTrue("å < O", col.compare("å", "O") < 0);
     assertEquals("O = Õ",  0, col.compare("O", "Õ"));
-    assertEquals("Õ < o", -1, col.compare("Õ", "o"));
+    assertTrue("Õ < o", col.compare("Õ", "o") < 0);
     assertEquals("o = õ",  0, col.compare("o", "õ"));
 }
 
@@ -1415,13 +1415,13 @@ function testJSCollatorSearchGetComparatorSecondaryWorksWithCase() {
     assertEquals("A = À",  0, func("A", "À"));
     assertEquals("À = À (combining)",  0, func("À", "À"));
     assertEquals("À (combining) = Å",  0, func("À", "Å"));
-    assertEquals("Å < a", -1, func("Å", "a"));
+    assertTrue("Å < a", func("Å", "a") < 0);
     assertEquals("a = à",  0, func("a", "à"));
     assertEquals("à = à (combining)",  0, func("à", "à"));
     assertEquals("à (combining) = å",  0, func("à", "å"));
-    assertEquals("å < O", -1, func("å", "O"));
+    assertTrue("å < O", func("å", "O") < 0);
     assertEquals("O = Õ",  0, func("O", "Õ"));
-    assertEquals("Õ < o", -1, func("Õ", "o"));
+    assertTrue("Õ < o", func("Õ", "o") < 0);
     assertEquals("o = õ",  0, func("o", "õ"));
 }
 
@@ -1502,25 +1502,25 @@ function testJSCollatorSearchTertiaryBase() {
 
     // should compare base first
     // A Ã a ã O Õ o õ
-    assertEquals("a < o", -1, col.compare("a", "o"));
-    assertEquals("A < o", -1, col.compare("A", "o"));
-    assertEquals("ã < o", -1, col.compare("ã", "o"));
-    assertEquals("Ã < o", -1, col.compare("Ã", "o"));
+    assertTrue("a < o", col.compare("a", "o") < 0);
+    assertTrue("A < o", col.compare("A", "o") < 0);
+    assertTrue("ã < o", col.compare("ã", "o") < 0);
+    assertTrue("Ã < o", col.compare("Ã", "o") < 0);
 
-    assertEquals("a < õ", -1, col.compare("a", "õ"));
-    assertEquals("A < õ", -1, col.compare("A", "õ"));
-    assertEquals("ã < õ", -1, col.compare("ã", "õ"));
-    assertEquals("Ã < õ", -1, col.compare("Ã", "õ"));
+    assertTrue("a < õ", col.compare("a", "õ") < 0);
+    assertTrue("A < õ", col.compare("A", "õ") < 0);
+    assertTrue("ã < õ", col.compare("ã", "õ") < 0);
+    assertTrue("Ã < õ", col.compare("Ã", "õ") < 0);
 
-    assertEquals("a < O", -1, col.compare("a", "O"));
-    assertEquals("A < O", -1, col.compare("A", "O"));
-    assertEquals("ã < O", -1, col.compare("ã", "O"));
-    assertEquals("Ã < O", -1, col.compare("Ã", "O"));
+    assertTrue("a < O", col.compare("a", "O") < 0);
+    assertTrue("A < O", col.compare("A", "O") < 0);
+    assertTrue("ã < O", col.compare("ã", "O") < 0);
+    assertTrue("Ã < O", col.compare("Ã", "O") < 0);
 
-    assertEquals("a < Õ", -1, col.compare("a", "Õ"));
-    assertEquals("A < Õ", -1, col.compare("A", "Õ"));
-    assertEquals("ã < Õ", -1, col.compare("ã", "Õ"));
-    assertEquals("Ã < Õ", -1, col.compare("Ã", "Õ"));
+    assertTrue("a < Õ", col.compare("a", "Õ") < 0);
+    assertTrue("A < Õ", col.compare("A", "Õ") < 0);
+    assertTrue("ã < Õ", col.compare("ã", "Õ") < 0);
+    assertTrue("Ã < Õ", col.compare("Ã", "Õ") < 0);
 }
 
 function testJSCollatorSearchTertiaryAccent() {
@@ -1535,9 +1535,9 @@ function testJSCollatorSearchTertiaryAccent() {
     // should compare base, then accent
     // a à à å
     // (second "a" with grave is two characters: "a" character with a combining grave character)
-    assertEquals("a < à", -1, col.compare("a", "à"));
+    assertTrue("a < à", col.compare("a", "à") < 0);
     assertEquals("à = à (combining)", 0, col.compare("à", "à"));
-    assertEquals("à (combining) < å", -1, col.compare("à", "å"));
+    assertTrue("à (combining) < å", col.compare("à", "å") < 0);
 }
 
 function testJSCollatorSearchTertiaryCase() {
@@ -1552,17 +1552,17 @@ function testJSCollatorSearchTertiaryCase() {
     // should compare base, then case, then accent
     // A À À Å a à à å O Õ o õ
     // (second set of "a" with grave is two characters: "a" character with a combining grave character)
-    assertEquals("A < À", -1, col.compare("A", "À"));
+    assertTrue("A < À", col.compare("A", "À") < 0);
     assertEquals("À = À (combining)",  0, col.compare("À", "À"));
-    assertEquals("À (combining) < Å", -1, col.compare("À", "Å"));
-    assertEquals("Å < a", -1, col.compare("Å", "a"));
-    assertEquals("a < à", -1, col.compare("a", "à"));
+    assertTrue("À (combining) < Å", col.compare("À", "Å") < 0);
+    assertTrue("Å < a", col.compare("Å", "a") < 0);
+    assertTrue("a < à", col.compare("a", "à") < 0);
     assertEquals("à = à (combining)",  0, col.compare("à", "à"));
-    assertEquals("à (combining) < å", -1, col.compare("à", "å"));
-    assertEquals("å < O", -1, col.compare("å", "O"));
-    assertEquals("O < Õ", -1, col.compare("O", "Õ"));
-    assertEquals("Õ < o", -1, col.compare("Õ", "o"));
-    assertEquals("o < õ", -1, col.compare("o", "õ"));
+    assertTrue("à (combining) < å", col.compare("à", "å") < 0);
+    assertTrue("å < O", col.compare("å", "O") < 0);
+    assertTrue("O < Õ", col.compare("O", "Õ") < 0);
+    assertTrue("Õ < o", col.compare("Õ", "o") < 0);
+    assertTrue("o < õ", col.compare("o", "õ") < 0);
 }
 
 function testJSCollatorSearchGetComparatorTertiary() {
@@ -1608,17 +1608,17 @@ function testJSCollatorSearchGetComparatorTertiaryWorksWithCase() {
     // should compare base, then case, then accent
     // A À À Å a à à å O Õ o õ
     // (second set of "a" with grave is two characters: "a" character with a combining grave character)
-    assertEquals("A < À", -1, func("A", "À"));
+    assertTrue("A < À", func("A", "À") < 0);
     assertEquals("À = À (combining)",  0, func("À", "À"));
-    assertEquals("À (combining) < Å", -1, func("À", "Å"));
-    assertEquals("Å < a", -1, func("Å", "a"));
-    assertEquals("a < à", -1, func("a", "à"));
+    assertTrue("À (combining) < Å", func("À", "Å") < 0);
+    assertTrue("Å < a", func("Å", "a") < 0);
+    assertTrue("a < à", func("a", "à") < 0);
     assertEquals("à = à (combining)",  0, func("à", "à"));
-    assertEquals("à (combining) < å", -1, func("à", "å"));
-    assertEquals("å < O", -1, func("å", "O"));
-    assertEquals("O < Õ", -1, func("O", "Õ"));
-    assertEquals("Õ < o", -1, func("Õ", "o"));
-    assertEquals("o < õ", -1, func("o", "õ"));
+    assertTrue("à (combining) < å", func("à", "å") < 0);
+    assertTrue("å < O", func("å", "O") < 0);
+    assertTrue("O < Õ", func("O", "Õ") < 0);
+    assertTrue("Õ < o", func("Õ", "o") < 0);
+    assertTrue("o < õ", func("o", "õ") < 0);
 }
 
 function testJSCollatorSearchGetSortKeyTertiary() {
@@ -1698,25 +1698,25 @@ function testJSCollatorSearchQuaternaryBase() {
 
     // should compare base first
     // A Ã a ã O Õ o õ
-    assertEquals("a < o", -1, col.compare("a", "o"));
-    assertEquals("A < o", -1, col.compare("A", "o"));
-    assertEquals("ã < o", -1, col.compare("ã", "o"));
-    assertEquals("Ã < o", -1, col.compare("Ã", "o"));
+    assertTrue("a < o", col.compare("a", "o") < 0);
+    assertTrue("A < o", col.compare("A", "o") < 0);
+    assertTrue("ã < o", col.compare("ã", "o") < 0);
+    assertTrue("Ã < o", col.compare("Ã", "o") < 0);
 
-    assertEquals("a < õ", -1, col.compare("a", "õ"));
-    assertEquals("A < õ", -1, col.compare("A", "õ"));
-    assertEquals("ã < õ", -1, col.compare("ã", "õ"));
-    assertEquals("Ã < õ", -1, col.compare("Ã", "õ"));
+    assertTrue("a < õ", col.compare("a", "õ") < 0);
+    assertTrue("A < õ", col.compare("A", "õ") < 0);
+    assertTrue("ã < õ", col.compare("ã", "õ") < 0);
+    assertTrue("Ã < õ", col.compare("Ã", "õ") < 0);
 
-    assertEquals("a < O", -1, col.compare("a", "O"));
-    assertEquals("A < O", -1, col.compare("A", "O"));
-    assertEquals("ã < O", -1, col.compare("ã", "O"));
-    assertEquals("Ã < O", -1, col.compare("Ã", "O"));
+    assertTrue("a < O", col.compare("a", "O") < 0);
+    assertTrue("A < O", col.compare("A", "O") < 0);
+    assertTrue("ã < O", col.compare("ã", "O") < 0);
+    assertTrue("Ã < O", col.compare("Ã", "O") < 0);
 
-    assertEquals("a < Õ", -1, col.compare("a", "Õ"));
-    assertEquals("A < Õ", -1, col.compare("A", "Õ"));
-    assertEquals("ã < Õ", -1, col.compare("ã", "Õ"));
-    assertEquals("Ã < Õ", -1, col.compare("Ã", "Õ"));
+    assertTrue("a < Õ", col.compare("a", "Õ") < 0);
+    assertTrue("A < Õ", col.compare("A", "Õ") < 0);
+    assertTrue("ã < Õ", col.compare("ã", "Õ") < 0);
+    assertTrue("Ã < Õ", col.compare("Ã", "Õ") < 0);
 }
 
 function testJSCollatorSearchQuaternaryAccent() {
@@ -1731,9 +1731,9 @@ function testJSCollatorSearchQuaternaryAccent() {
     // should compare base, then accent
     // a à à å
     // (second "a" with grave is two characters: "a" character with a combining grave character)
-    assertEquals("a < à", -1, col.compare("a", "à"));
-    assertEquals("à < à (combining)", -1, col.compare("à", "à"));
-    assertEquals("à (combining) < å", -1, col.compare("à", "å"));
+    assertTrue("a < à", col.compare("a", "à") < 0);
+    assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+    assertTrue("à (combining) < å", col.compare("à", "å") < 0);
 }
 
 function testJSCollatorSearchQuaternaryCase() {
@@ -1748,17 +1748,17 @@ function testJSCollatorSearchQuaternaryCase() {
     // should compare base, then case, then accent
     // A À À Å a à à å O Õ o õ
     // (second set of "a" with grave is two characters: "a" character with a combining grave character)
-    assertEquals("A < À", -1, col.compare("A", "À"));
-    assertEquals("À < À (combining)", -1, col.compare("À", "À"));
-    assertEquals("À (combining) < Å", -1, col.compare("À", "Å"));
-    assertEquals("Å < a", -1, col.compare("Å", "a"));
-    assertEquals("a < à", -1, col.compare("a", "à"));
-    assertEquals("à < à (combining)", -1, col.compare("à", "à"));
-    assertEquals("à (combining) < å", -1, col.compare("à", "å"));
-    assertEquals("å < O", -1, col.compare("å", "O"));
-    assertEquals("O < Õ", -1, col.compare("O", "Õ"));
-    assertEquals("Õ < o", -1, col.compare("Õ", "o"));
-    assertEquals("o < õ", -1, col.compare("o", "õ"));
+    assertTrue("A < À", col.compare("A", "À") < 0);
+    assertTrue("À < À (combining)", col.compare("À", "À") < 0);
+    assertTrue("À (combining) < Å", col.compare("À", "Å") < 0);
+    assertTrue("Å < a", col.compare("Å", "a") < 0);
+    assertTrue("a < à", col.compare("a", "à") < 0);
+    assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+    assertTrue("à (combining) < å", col.compare("à", "å") < 0);
+    assertTrue("å < O", col.compare("å", "O") < 0);
+    assertTrue("O < Õ", col.compare("O", "Õ") < 0);
+    assertTrue("Õ < o", col.compare("Õ", "o") < 0);
+    assertTrue("o < õ", col.compare("o", "õ") < 0);
 }
 
 function testJSCollatorSearchGetComparatorQuaternary() {
@@ -1804,17 +1804,17 @@ function testJSCollatorSearchGetComparatorQuaternaryWorksWithCase() {
     // should compare base, then case, then accent
     // A À À Å a à à å O Õ o õ
     // (second set of "a" with grave is two characters: "a" character with a combining grave character)
-    assertEquals("A < À", -1, func("A", "À"));
-    assertEquals("À < À (combining)", -1, func("À", "À"));
-    assertEquals("À (combining) < Å", -1, func("À", "Å"));
-    assertEquals("Å < a", -1, func("Å", "a"));
-    assertEquals("a < à", -1, func("a", "à"));
-    assertEquals("à < à (combining)", -1, func("à", "à"));
-    assertEquals("à (combining) < å", -1, func("à", "å"));
-    assertEquals("å < O", -1, func("å", "O"));
-    assertEquals("O < Õ", -1, func("O", "Õ"));
-    assertEquals("Õ < o", -1, func("Õ", "o"));
-    assertEquals("o < õ", -1, func("o", "õ"));
+    assertTrue("A < À", func("A", "À") < 0);
+    assertTrue("À < À (combining)", func("À", "À") < 0);
+    assertTrue("À (combining) < Å", func("À", "Å") < 0);
+    assertTrue("Å < a", func("Å", "a") < 0);
+    assertTrue("a < à", func("a", "à") < 0);
+    assertTrue("à < à (combining)", func("à", "à") < 0);
+    assertTrue("à (combining) < å", func("à", "å") < 0);
+    assertTrue("å < O", func("å", "O") < 0);
+    assertTrue("O < Õ", func("O", "Õ") < 0);
+    assertTrue("Õ < o", func("Õ", "o") < 0);
+    assertTrue("o < õ", func("o", "õ") < 0);
 }
 
 function testJSCollatorSearchGetSortKeyQuaternary() {
@@ -2052,4 +2052,283 @@ function testCollatorJSWithSortUpperNotFirst() {
     var expected = ["e", "E", "i", "I", "o", "p", "q", "r", "T", "U"];
     
     assertArrayEquals(expected, input);
+}
+
+function testJSCollatorSortGetSortKeyReverse() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	usage: "sort",
+    	reverse: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertEquals("0007071000607100080710011071000c0710013071", col.sortKey("string"));
+}
+
+function testCollatorJSWithSortWithSortKeysReverse() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "primary",
+    	reverse: true
+    });
+    assertNotUndefined(col);
+    
+    var input = [
+        col.sortKey("Strïng"), 
+        col.sortKey("strïng"), 
+        col.sortKey("String"), 
+        col.sortKey("StrinG"), 
+        col.sortKey("Strïng"), 
+        col.sortKey("string"), 
+        col.sortKey("str"), 
+        col.sortKey("strïng"), 
+        col.sortKey("strïnG")
+    ];
+    
+    input.sort();  // use generic non-locale-sensitive sort!
+    
+    var expected = [
+        col.sortKey("str"),
+        col.sortKey("strïng"),
+        col.sortKey("strïng"),
+        col.sortKey("strïnG"),
+        col.sortKey("string"),
+        col.sortKey("Strïng"),
+        col.sortKey("Strïng"),
+        col.sortKey("String"),
+        col.sortKey("StrinG")	
+	];
+    
+    assertArrayEquals(expected, input);
+}
+
+
+function testJSCollatorIgnorePunctuation() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	ignorePunctuation: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertEquals(0, col.compare("string", "'st,ri-ng"));
+}
+
+function testJSCollatorIgnorePunctuationNoPunct() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	ignorePunctuation: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertEquals(0, col.compare("string", "string"));
+}
+
+function testJSCollatorIgnorePunctuationSortKey() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	ignorePunctuation: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertEquals("s100t100r100i100n100g100", col.sortKey("-@#%st-ring-#@%"));
+}
+
+function testJSCollatorNumeric() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertEquals(0, col.compare("00123.4", "123.4"));
+}
+
+function testJSCollatorNumericNoNumbers() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertEquals(0, col.compare("asdf", "fooo"));
+}
+
+function testJSCollatorNumericLeftNumber() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertTrue(col.compare("1", "fooo") < 0);
+}
+
+function testJSCollatorNumericRightNumber() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertTrue(col.compare("asdf", "231234") > 0);
+}
+
+function testJSCollatorWithThousandsSeparator() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertEquals(0, col.compare("12,454,454.4", "0,012,454,454.4"));
+}
+
+function testJSCollatorWithThousandsSeparatorDE() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	locale: "de-DE",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertEquals(0, col.compare("12.454.454,4", "0.012.454.454,4"));
+}
+
+function testJSCollatorNumeric1() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertTrue(col.compare("10", "1") > 0);
+}
+
+function testJSCollatorNumeric2() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertTrue(col.compare("100", "10") > 0);
+}
+
+function testJSCollatorNumeric3() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertTrue(col.compare("100", "99") > 0);
+}
+
+function testJSCollatorNumeric4() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertTrue(col.compare("100", "99.9") > 0);
+}
+
+function testJSCollatorNumericWithText() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertTrue(col.compare("1 box", "2 boxes") < 0);
+}
+
+function testJSCollatorNumericWithText() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertTrue(col.compare("20 boxes", "2 boxes") > 0);
+}
+
+function testJSCollatorNumericWithText2() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertTrue(col.compare("20.1 boxes", "201 boxes") < 0);
+}
+
+function testJSCollatorNumericSortKey1() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertEquals("0000000000000001", col.sortKey("1"));
+}
+
+function testJSCollatorNumericSortKey255() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertEquals("00000000000000ff", col.sortKey("255"));
+}
+
+function testJSCollatorNumericSortKeyBig() {
+    var col = new ilib.Collator({
+    	useNative: false,
+    	sensitivity: "case",
+    	numeric: true
+    });
+    
+    assertNotUndefined(col);
+
+    assertEquals("00000fadaa62dfa1", col.sortKey("17238562365345"));
 }
