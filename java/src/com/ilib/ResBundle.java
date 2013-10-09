@@ -145,7 +145,7 @@ public class ResBundle
 				builder.append(currentLine);
 			}
 		} catch (FileNotFoundException ex) {
-			System.err.println("Exception in file: " + inputFile.getPath() + ", file is missing or not existed.");
+			System.err.println("Exception in file: " + inputFile.getPath() + ", file is missing or does not exist.");
 		} catch (IOException e) {
 			e.printStackTrace();
 			return;
@@ -250,7 +250,7 @@ public class ResBundle
 				builder.append(currentLine);
 			}
 		} catch (FileNotFoundException ex) {
-			System.err.println("Exception in file: " + filename + ", file is missing or not existed.");
+			System.err.println("Exception in file: " + filename + ", file is missing or does not exist.");
 			return;
 		} catch (IOException e) {
 			e.printStackTrace();
