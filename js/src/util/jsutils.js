@@ -89,3 +89,21 @@ ilib.indexOf = function(array, obj) {
 	    return -1;
 	}
 };
+
+/**
+ * @static
+ * 
+ * Convert JavaScript Date objects into native ilib Dates. This accepts any
+ * string or number that can be translated by the JavaScript Date class,
+ * any JavaScript Date classed object, any ilib Date object, or null (will 
+ * return null if input is null). Normal output is a standard native ilib Date object.
+ * 
+ * @param  {Date|String|Number=} inDate The input date object, string or Number.
+ * @return {ilib.Date}
+ */
+ilib.dateToIlib = function(inDate) {
+	if (typeof(inDate) === 'undefined' || inDate === null) return inDate;
+	if (inDate instanceof ilib.Date) return inDate;
+	if (!(inDate instanceof Date)) inDate = new Date(inDate);
+	return ilib.Date.newInstance({unixtime: inDate.getTime()});
+};

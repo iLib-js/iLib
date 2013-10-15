@@ -975,6 +975,8 @@ ilib.DateFmt.prototype = {
 	 * @return {string} the formatted version of the given date instance
 	 */
 	format: function (date) {
+		date = ilib.dateToIlib(date);
+		
 		if (!date.getCalendar || date.getCalendar() !== this.calName) {
 			throw "Wrong date type passed to ilib.DateFmt.format()";
 		}
@@ -1038,6 +1040,9 @@ ilib.DateFmt.prototype = {
 	 * @return {string} the formatted relative date
 	 */
 	formatRelative: function(reference, date) {
+		reference = ilib.dateToIlib(reference);
+		date = ilib.dateToIlib(date);
+		
 		var referenceRd, dateRd, fmt, time, diff, num;
 		
 		if (typeof(reference) !== 'object' || !reference.getCalendar || reference.getCalendar() !== this.calName ||

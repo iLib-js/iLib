@@ -569,6 +569,28 @@ function testDateFmtTokenizeWithEscapes() {
     assertArrayEquals(expected, fmt._tokenize("'El' d 'de' MMMM, yyyy"));
 };
 
+function testDateFmtAlternateInputs1() {
+    var fmt = new ilib.DateFmt({template: "EEE, d MMM yyyy kk:mm:ss z"});
+    assertNotNull(fmt);
+    
+    var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700 (PDT)");
+    var ildMyBday = ilib.Date.newInstance({
+        year: 1982,
+        month: 8,
+        day: 13,
+        hour: 13,
+        minute: 31,
+        second: 35
+    });
+    var strFormattedDate1 = datMyBday.toUTCString();
+    var strFormattedDate2 = fmt.format(ildMyBday);
+    console.log('strFormattedDate1',strFormattedDate1,'strFormattedDate2',strFormattedDate2,ildMyBday, fmt);
+    strFormattedDate1 = strFormattedDate1.replace(/ \w{3}$/, '');
+    strFormattedDate2 = strFormattedDate2.replace(/ \w{3}$/, '');
+
+    assertEquals(strFormattedDate1, strFormattedDate2);
+};
+
 function testDateFmtWeekYear1() {
     var fmt = new ilib.DateFmt({template: "w"});
     assertNotNull(fmt);
