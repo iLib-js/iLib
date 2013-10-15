@@ -1461,7 +1461,7 @@ function testDateToIlibIlibDate() {
     assertObjectEquals(ildMyBday, ilib.dateToIlib(ildMyBday));
 }
 function testDateToIlibNull() {
-    assertNull(ilib.dateToIlib(null));
+    assertUndefined(ilib.dateToIlib(null));
     assertUndefined(ilib.dateToIlib(undefined));
     assertUndefined(ilib.dateToIlib());
 }

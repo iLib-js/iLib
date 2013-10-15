@@ -481,6 +481,28 @@ ilib.DateFmt.defaultFmt = ilib.data.dateformats || {
 	"buddhist": "gregorian"
 };
 
+/**
+* @static
+* @private
+*/
+ilib.DateFmt.monthNameLenMap = {
+   "short" : "N",
+   "medium": "NN",
+   "long": "MMM",
+   "full": "MMMM"
+};
+
+/**
+* @static
+* @private
+*/
+ilib.DateFmt.weekDayLenMap = {
+   "short" : "E",
+   "medium": "EE",
+   "long": "EEE",
+   "full": "EEEE"
+};
+
 ilib.DateFmt.prototype = {
 	/**
 	 * @protected
@@ -751,7 +773,6 @@ ilib.DateFmt.prototype = {
 		}
 		return this.tz;
 	},
-	
 	/**
 	 * Return the clock option set in the constructor. If the clock option was
 	 * not given, the default from the locale is returned instead.
@@ -761,6 +782,43 @@ ilib.DateFmt.prototype = {
 	getClock: function () {
 		return this.clock || this.locinfo.getClock();
 	},
+	
+	/**
+	 * Returns an array of the months of the year, formatted to the optional length specified.
+	 * i.e. ...getMonthsOfYear() OR ...getMonthsOfYear({length: "short"})
+	 * @param  {Object=} options an object-literal that contains one key 
+	 *                   "length" with the standard length strings
+	 * @return {Array} an array of all of the months of the year for the current calendar
+	 */
+	getMonthsOfYear: function(options) {
+		var length = (options && options.length) || this.getLength();
+		var template = ilib.DateFmt.monthNameLenMap[length];
+		var months = [];
+		var monthCount = this.cal.getNumMonths();
+		for (var i = 0; i < monthCount; i++) {
+			console.log('template',(template + (i+1)), length, this.sysres);
+			months[i] = this.sysres.getString(template + (i+1)).toString();
+		}
+		return months;
+	},
+
+	/**
+	 * Returns an array of the days of the week, formatted to the optional length specified.
+	 * i.e. ...getDaysOfWeek() OR ...getDaysOfWeek({length: "short"})
+	 * @param  {Object=} options an object-literal that contains one key 
+	 *                   "length" with the standard length strings
+	 * @return {Array} an array of all of the months of the year for the current calendar
+	 */
+	getDaysOfWeek: function(options) {
+		var length = (options && options.length) || this.getLength();
+		var template = ilib.DateFmt.weekDayLenMap[length];
+		var days = [];
+		for (var i = 0; i < 7; i++) {
+			days[i] = this.sysres.getString(template + i).toString();
+		}
+		return days;
+	},
+
 	
 	/**
 	 * Convert this formatter to a string representation by returning the

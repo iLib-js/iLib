@@ -591,6 +591,38 @@ function testDateFmtAlternateInputs1() {
     assertEquals(strFormattedDate1, strFormattedDate2);
 };
 
+function testDateFmtGetMonthsOfYear1() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+    
+    var arrMonths = fmt.getMonthsOfYear();
+    assertArrayEquals(["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"], arrMonths);
+}
+
+function testDateFmtGetMonthsOfYear2() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+    
+    var arrMonths = fmt.getMonthsOfYear({length: 'long'});
+    assertArrayEquals(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], arrMonths);
+}
+
+function testDateFmtGetDaysOfWeek1() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+    
+    var arrDays = fmt.getDaysOfWeek();
+    assertArrayEquals(["S", "M", "T", "W", "T", "F", "S"], arrDays);
+}
+
+function testDateFmtGetDaysOfWeek2() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+    
+    var arrDays = fmt.getDaysOfWeek({length: 'long'});
+    assertArrayEquals(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], arrDays);
+}
+
 function testDateFmtWeekYear1() {
     var fmt = new ilib.DateFmt({template: "w"});
     assertNotNull(fmt);
