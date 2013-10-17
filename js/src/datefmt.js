@@ -58,7 +58,15 @@ util/jsutils.js
  * be called with a GregDate instance.)
  *  
  * <li><i>timezone</i> - time zone to use when formatting times. This may be a time zone
- * instance or a time zone specifier string in RFC 822 format. If not specified, the
+ * instance or a time zone specifier from the IANA list of time zone database names 
+ * (eg. "America/Los_Angeles"), 
+ * the string "local", or a string specifying the offset in RFC 822 format. The IANA
+ * list of time zone names can be viewed at 
+ * <a href="http://en.wikipedia.org/wiki/List_of_tz_database_time_zones">this page</a>.
+ * If the time zone is given as "local", the offset from UTC as given by
+ * the Javascript system is used. If the offset is given as an RFC 822 style offset
+ * specifier, it will parse that string and use the resulting offset. If the time zone
+ * is not specified, the
  * default time zone for the locale is used. If both the date object and this formatter
  * instance contain time zones and those time zones are different from each other, the 
  * formatter will calculate the offset between the time zones and subtract it from the 
