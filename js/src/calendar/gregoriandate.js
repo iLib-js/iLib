@@ -191,7 +191,7 @@ ilib.Date.GregDate.cumMonthLengthsLeap = [
  * @private
  * @const
  * @type number
- * the difference between a zero Julian day and the first Gregorian date. 
+ * the difference between a zero Julian day and the zero Gregorian date. 
  */
 ilib.Date.GregDate.epoch = 1721424.5;
 
@@ -207,9 +207,11 @@ ilib.Date.GregDate.prototype.calcRataDie = function(date) {
 		Math.floor((date.year-1)/4) -
 		Math.floor((date.year-1)/100) +
 		Math.floor((date.year-1)/400);
+	// explicitly call the gregorian leap year calculator so that it doesn't conflict
+	// with the calculator of possible subclasses 
 	var dayInYear = (date.month > 1 ? ilib.Date.GregDate.cumMonthLengths[date.month-1] : 0) +
 		date.day +
-		(this.cal.isLeapYear(date.year) && date.month > 2 ? 1 : 0);
+		(ilib.Cal.Gregorian.prototype.isLeapYear.call(this.cal, date.year) && date.month > 2 ? 1 : 0);
 	var rdtime = (date.hour * 3600000 +
 		date.minute * 60000 +
 		date.second * 1000 +
@@ -286,9 +288,11 @@ ilib.Date.GregDate.prototype.calcComponents = function (rd) {
 	ret.second = 0;
 	ret.millisecond = 0;
 	
-	remainder = rd - this.calcRataDie(ret) + 1;
+	// explicitly call the gregorian rd calculator instead of any 
+	// possible overloaded ones from subclasses
+	remainder = rd - ilib.Date.GregDate.prototype.calcRataDie.call(this, ret) + 1;
 	
-	cumulative = this.cal.isLeapYear(ret.year) ? 
+	cumulative = ilib.Cal.Gregorian.prototype.isLeapYear.call(this.cal, ret.year) ? 
 		ilib.Date.GregDate.cumMonthLengthsLeap : 
 		ilib.Date.GregDate.cumMonthLengths; 
 	
@@ -491,10 +495,10 @@ ilib.Date.GregDate.prototype.after = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week on or before the current date that is being sought
- * @return {ilib.Date.GregDate} the date being sought
+ * @return {ilib.Date} the date being sought
  */
 ilib.Date.GregDate.prototype.onOrBefore = function (dow) {
-	return new ilib.Date.GregDate({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
+	return this.cal.newDateInstance({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
 };
 
 /**
@@ -503,10 +507,10 @@ ilib.Date.GregDate.prototype.onOrBefore = function (dow) {
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week on or after the current date that is being sought
- * @return {ilib.Date.GregDate} the date being sought
+ * @return {ilib.Date} the date being sought
  */
 ilib.Date.GregDate.prototype.onOrAfter = function (dow) {
-	return new ilib.Date.GregDate({rd: this.onOrAfterRd(this.getRataDie(), dow)});
+	return this.cal.newDateInstance({rd: this.onOrAfterRd(this.getRataDie(), dow)});
 };
 
 /**

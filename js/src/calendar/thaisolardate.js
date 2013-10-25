@@ -88,11 +88,11 @@ julianday.js
  * Depends directive: !depends thaisolardate.js
  * 
  * @constructor
- * @extends ilib.Date
+ * @extends ilib.Date.GregDate
  * @param {Object=} params parameters that govern the settings and behaviour of this Thai solar date
  */
 ilib.Date.ThaiSolarDate = function(params) {
-	ilib.Date.GregDate.call(/** @type {ilib.Date.GregDate|null|undefined} */ this, params);
+	ilib.Date.GregDate.call(this, params);
 	this.cal = new ilib.Cal.ThaiSolar();
 };
 
@@ -104,7 +104,7 @@ ilib.Date.ThaiSolarDate.prototype.constructor = ilib.Date.ThaiSolarDate;
  * @private
  * @const
  * @type number
- * the difference between a zero Julian day and the first Thai Solar date.
+ * the difference between a zero Julian day and the zero Thai Solar date.
  * This is some 543 years before the start of the Gregorian epoch. 
  */
 ilib.Date.ThaiSolarDate.epoch = 1523097.5;
@@ -139,66 +139,10 @@ ilib.Date.ThaiSolarDate.prototype.calcRataDie = function(parts) {
 ilib.Date.ThaiSolarDate.prototype.calcComponents = function (rd) {
 	// there is 198327 days difference between the Thai solar and 
 	// Gregorian epochs which is equivalent to 543 years
-	var days400,
-		days100,
-		days4,
-		days1,
-		years400,
-		years100,
-		years4,
-		years1,
-		remainder,
-		cumulative,
-		ret = {};
+	var gregorianComponents = this.parent.calcComponents.call(this, rd - 198327);
 	
-	years400 = Math.floor((rd - 198328) / 146097);
-	days400 = ilib.mod((rd - 198328), 146097);
-	years100 = Math.floor(days400 / 36524);
-	days100 = ilib.mod(days400, 36524);
-	years4 = Math.floor(days100 / 1461);
-	days4 = ilib.mod(days100, 1461);
-	years1 = Math.floor(days4 / 365);
-	days1 = ilib.mod(days4, 365) + 1;
-	
-	ret.year = 400 * years400 + 100 * years100 + 4 * years4 + years1;
-	if (years100 !== 4 && years1 !== 4) {
-		ret.year++;
-	}
-	ret.month = 1;
-	ret.day = 1;
-	ret.hour = 0;
-	ret.minute = 0;
-	ret.second = 0;
-	ret.millisecond = 0;
-	
-	
-	remainder = rd - this.parent.calcRataDie.call(this, ret) - 198326;
-	
-	cumulative = this.cal.isLeapYear(ret.year) ? 
-		ilib.Date.GregDate.cumMonthLengthsLeap : 
-		ilib.Date.GregDate.cumMonthLengths; 
-	
-	ret.month = ilib.bsearch(Math.floor(remainder), cumulative);
-	remainder = remainder - cumulative[ret.month-1];
-	
-	ret.day = Math.floor(remainder);
-	remainder -= ret.day;
-	// now convert to milliseconds for the rest of the calculation
-	remainder = Math.round(remainder * 86400000);
-	
-	ret.hour = Math.floor(remainder/3600000);
-	remainder -= ret.hour * 3600000;
-	
-	ret.minute = Math.floor(remainder/60000);
-	remainder -= ret.minute * 60000;
-	
-	ret.second = Math.floor(remainder/1000);
-	remainder -= ret.second * 1000;
-	
-	ret.millisecond = remainder;
-
-	ret.year += 543;
-	return ret;
+	gregorianComponents.year += 543;
+	return gregorianComponents;
 };
 
 /**
@@ -220,8 +164,8 @@ ilib.Date.ThaiSolarDate.prototype.setJulianDay = function (date) {
  * @return {number} the day of the week
  */
 ilib.Date.ThaiSolarDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.getRataDie());
-	return ilib.mod(rd + 4, 7);
+	var rd = Math.floor(this.getRataDie() - 198327);
+	return ilib.mod(rd, 7);
 };
 
 /**
@@ -234,7 +178,7 @@ ilib.Date.ThaiSolarDate.prototype.getDayOfWeek = function() {
  * @return {number} the day of the week
  */
 ilib.Date.ThaiSolarDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
-	return rd - ilib.mod(Math.floor(rd) - dayOfWeek + 4, 7);
+	return rd - ilib.mod(Math.floor(rd - 198327) - dayOfWeek, 7);
 };
 
 /**
