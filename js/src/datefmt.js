@@ -782,7 +782,11 @@ ilib.DateFmt.prototype = {
 		if (typeof(str) !== 'string') {
 			str = "" + str;
 		}
-		return (str.length >= length) ? str : ilib.DateFmt.zeros.substring(0,length-str.length) + str;
+		var start = 0;
+		if (str.charAt(0) === '-') {
+			start++;
+		}
+		return (str.length >= length+start) ? str : str.substring(0, start) + ilib.DateFmt.zeros.substring(0,length-str.length+start) + str.substring(start);
 	},
 	
 	/*
@@ -800,20 +804,20 @@ ilib.DateFmt.prototype = {
 					str += (date.day || 1);
 					break;
 				case 'dd':
-					str += this._pad(date.day || 1, 2);
+					str += this._pad(date.day || "1", 2);
 					break;
 				case 'yy':
-					temp = "" + (date.year || 1);
-					str += this._pad(temp.substring(2,4), 2);
+					temp = "" + ((date.year || 0) % 100);
+					str += this._pad(temp, 2);
 					break;
 				case 'yyyy':
-					str += this._pad(date.year || 1, 4);
+					str += this._pad(date.year || "0", 4);
 					break;
 				case 'M':
 					str += (date.month || 1);
 					break;
 				case 'MM':
-					str += this._pad(date.month || 1, 2);
+					str += this._pad(date.month || "1", 2);
 					break;
 
 				case 'h':
@@ -840,10 +844,10 @@ ilib.DateFmt.prototype = {
 					break;
 
 				case 'H':
-					str += (date.hour || 0);
+					str += (date.hour || "0");
 					break;
 				case 'HH':
-					str += this._pad(date.hour || 0, 2);
+					str += this._pad(date.hour || "0", 2);
 					break;
 				case 'k':
 					str += (date.hour == 0 ? "24" : date.hour);
@@ -854,22 +858,22 @@ ilib.DateFmt.prototype = {
 					break;
 
 				case 'm':
-					str += (date.minute || 0);
+					str += (date.minute || "0");
 					break;
 				case 'mm':
-					str += this._pad(date.minute || 0, 2);
+					str += this._pad(date.minute || "0", 2);
 					break;
 				case 's':
-					str += (date.minute || 0);
+					str += (date.minute || "0");
 					break;
 				case 'ss':
-					str += this._pad(date.second || 0, 2);
+					str += this._pad(date.second || "0", 2);
 					break;
 				case 'S':
-					str += (date.millisecond || 0);
+					str += (date.millisecond || "0");
 					break;
 				case 'SSS':
-					str += this._pad(date.millisecond || 0, 3);
+					str += this._pad(date.millisecond || "0", 3);
 					break;
 
 				case 'N':

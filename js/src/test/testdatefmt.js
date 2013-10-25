@@ -425,11 +425,25 @@ function testDateFmtPad2lt10() {
     assertEquals("01", fmt._pad(1, 2));
 };
 
+function testDateFmtPad2lt0() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+    
+    assertEquals("-01", fmt._pad(-1, 2));
+};
+
 function testDateFmtPad2gt10() {
     var fmt = new ilib.DateFmt();
     assertNotNull(fmt);
     
     assertEquals("11", fmt._pad(11, 2));
+};
+
+function testDateFmtPad2ltMinus10() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+    
+    assertEquals("-11", fmt._pad(-11, 2));
 };
 
 function testDateFmtPad2gt100() {
@@ -439,12 +453,27 @@ function testDateFmtPad2gt100() {
     assertEquals("111", fmt._pad(111, 2));
 };
 
+function testDateFmtPad2ltMinus100() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+    
+    assertEquals("-111", fmt._pad(-111, 2));
+};
+
 function testDateFmtPad0() {
     var fmt = new ilib.DateFmt();
     assertNotNull(fmt);
     
     assertEquals("1", fmt._pad(1, 0));
     assertEquals("10", fmt._pad(10, 0));
+};
+
+function testDateFmtPad0Neg() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+    
+    assertEquals("-1", fmt._pad(-1, 0));
+    assertEquals("-10", fmt._pad(-10, 0));
 };
 
 function testDateFmtPad4_1() {
@@ -480,6 +509,41 @@ function testDateFmtPad4_5() {
     assertNotNull(fmt);
     
     assertEquals("67925", fmt._pad(67925, 4));
+};
+
+function testDateFmtPad4_6() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+    
+    assertEquals("-0001", fmt._pad(-1, 4));
+};
+
+function testDateFmtPad4_7() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+    
+    assertEquals("-0010", fmt._pad(-10, 4));
+};
+
+function testDateFmtPad4_8() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+    
+    assertEquals("-0112", fmt._pad(-112, 4));
+};
+
+function testDateFmtPad4_9() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+    
+    assertEquals("-1123", fmt._pad(-1123, 4));
+};
+
+function testDateFmtPad4_10() {
+    var fmt = new ilib.DateFmt();
+    assertNotNull(fmt);
+    
+    assertEquals("-11233", fmt._pad(-11233, 4));
 };
 
 function testDateFmtPad2lt10String() {
@@ -1015,6 +1079,102 @@ function testDateFmtWeekOfMonthDERegular() {
 		millisecond: 0
 	});
     assertEquals("3", fmt.format(date));
+};
+
+function testDateFmtYear0YY() {
+    var fmt = new ilib.DateFmt({template: "yy"});
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 0,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("00", fmt.format(date));
+};
+
+function testDateFmtYear0YYYY() {
+    var fmt = new ilib.DateFmt({template: "yyyy"});
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 0,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("0000", fmt.format(date));
+};
+
+function testDateFmtYear1YY() {
+    var fmt = new ilib.DateFmt({template: "yy"});
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 1,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("01", fmt.format(date));
+};
+
+function testDateFmtYear1YYYY() {
+    var fmt = new ilib.DateFmt({template: "yyyy"});
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: 1,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("0001", fmt.format(date));
+};
+
+function testDateFmtYearMinus1YY() {
+    var fmt = new ilib.DateFmt({template: "yy"});
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: -1,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("-01", fmt.format(date));
+};
+
+function testDateFmtYearMinus1YYYY() {
+    var fmt = new ilib.DateFmt({template: "yyyy"});
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		year: -1,
+		month: 12,
+		day: 31,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("-0001", fmt.format(date));
 };
 
 function testDateFmtOrdinalUS1() {
