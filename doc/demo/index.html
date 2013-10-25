@@ -273,14 +273,18 @@ $(function() {
                 calendarList,
                 fmt,
                 output;
+                
+            cal = ilib.Cal.newInstance({
+                locale: localeName,
+                type: (calendar === "julianday") ? "gregorian" : calendar
+            });
             
             if (calendar === 'julianday') {
-                jd = parseInt($('#julianday').val());
-            } else {
-                cal = ilib.Cal.newInstance({
-                    locale: localeName,
-                    type: calendar
+                jd = $('#julianday').val();
+                date = cal.newDateInstance({
+                    julianday: jd
                 });
+            } else {
                 date = cal.newDateInstance({
                     year: $('#year').val(),
                     month: $('#month').val(),
