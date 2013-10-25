@@ -310,6 +310,19 @@ function testGregDateBeginningOfYearAfterLeapYear() {
     assertEquals(0, gd.getMilliseconds());
 }
 
+function testGregDateEndOfYear0RJd() {
+    var gd = new ilib.Date.GregDate({julianday: 1721424.5});
+    
+    assertEquals('object', typeof(gd));
+    assertEquals(0, gd.getYears());
+    assertEquals(12, gd.getMonths());
+    assertEquals(31, gd.getDays());
+    assertEquals(0, gd.getHours());
+    assertEquals(0, gd.getMinutes());
+    assertEquals(0, gd.getSeconds());
+    assertEquals(0, gd.getMilliseconds());
+}
+
 function testGregDateEndOfYear0Rd() {
     var gd = new ilib.Date.GregDate({rd: 0});
     
@@ -533,7 +546,7 @@ function testGregDateConstructorUnixTime() {
 function testGregDateGetJulianDay() {
     var gd;
     
-    for (i = 0; i < testDates.length; i++) {
+    for (var i = 0; i < testDates.length; i++) {
         gd = new ilib.Date.GregDate({
             year: testDates[i][1], 
             month: testDates[i][2], 
