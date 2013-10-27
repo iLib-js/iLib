@@ -41,17 +41,19 @@ public class JSAssemble
     public static Logger logger = null;
     public static FilenameFilter filter = new JsFilenameFilter();
     protected static ArrayList<File> ipath;
+    public static String version = "1.0";
      
     public static void usage()
     {
         System.out.println("jsa: process includes to assemble a single js file");
-        System.out.println("Usage: jsa [-i include_dir] [-o outfile] [-l locale_list] [js_file_name ...]");
+        System.out.println("Usage: jsa [-i include_dir] [-o outfile] [-l locale_list] [-v version] [js_file_name ...]");
         
         System.out.println("-i include_dir      - add an include directory to the path to find other\n" +
         		           "                      js files.");
         System.out.println("-o outfile          - specify the resulting assembled output file. Default is\n" +
         		           "                      to send the output to stdout.");
         System.out.println("-l locale_list      - specify a comma-separated list of locales to use when including data files.");
+        System.out.println("-v version          - specify the version number of the files being assembled");
         System.out.println("js_file_name        - name of a Javascript file to process. If none given, the \n" +
         	               "                      current directory is recursively searched for all\n" +
         	               "                      Javascript files.");
@@ -122,6 +124,15 @@ public class JSAssemble
                     logger.debug("Only reading data for locales " + localesString);
                 } else {
                     System.err.println("Error: missing parameter to -l argument");
+                    System.exit(2);
+                }
+            } else if ( lower.equalsIgnoreCase("-v") || lower.equalsIgnoreCase("--version") ) {
+                if ( i + 1 < args.length ) {
+                    JSAssemble.version = args[i+1];
+                    i++;
+                    logger.debug("Version number: " + JSAssemble.version);
+                } else {
+                    System.err.println("Error: missing parameter to -v argument");
                     System.exit(2);
                 }
             } else if ( lower.charAt(0) != '-' ) {

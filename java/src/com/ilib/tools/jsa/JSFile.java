@@ -447,6 +447,13 @@ public class JSFile
                                 }
                                 str = str.replace(matcher.start(), matcher.end(), sb.toString());
                                 matcher.reset();
+                            } else if ( macroName.equalsIgnoreCase("ilibVersion") ) {
+                                StringBuffer sb = new StringBuffer();
+                                sb.append('"');
+                                sb.append(JSAssemble.version);
+                                sb.append('"');
+                                str = str.replace(matcher.start(), matcher.end(), sb.toString());
+                                matcher.reset();
                             }
                         }
                     }

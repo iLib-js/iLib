@@ -27,6 +27,7 @@ limitations under the License.
 
 	<!-- Give user a chance to override properties without editing this file -->
 	<!-- (and without typing -D each time it compiles it)                    -->
+	<property file="../build.properties"/>
 	<property file="build.properties"/>
 	
 	<!-- Properties that can be overridden -->

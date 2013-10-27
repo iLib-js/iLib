@@ -29,7 +29,8 @@ var ilib = ilib || {};
  */
 ilib.getVersion = function () {
     // increment this for each release
-    return "4.0";
+    return // !macro ilibVersion
+    ;
 };
 
 /**
