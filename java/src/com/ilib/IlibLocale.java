@@ -28,7 +28,7 @@ public class IlibLocale
     protected String region = "";
     protected String script = "";
     protected String variant = "";
-    
+
     protected boolean isLanguageCode(String str)
     {
     	if ( str.length() < 2 || str.length() > 3 ) {
@@ -212,6 +212,6 @@ public class IlibLocale
      */
     public boolean isPseudo()
     {
-        return language.equals("xx") && region.equals("XX");
+        return language.equals("zxx");
     }
 }

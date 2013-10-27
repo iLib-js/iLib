@@ -264,7 +264,7 @@ public class IlibLocaleTest extends TestCase
 
 	public void testIsPseudoTrue()
 	{
-		IlibLocale loc = new IlibLocale("xx-XX");
+		IlibLocale loc = new IlibLocale("zxx-XX");
 		assertNotNull(loc);
 
 		assertTrue(loc.isPseudo());

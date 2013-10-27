@@ -20,6 +20,7 @@
  */
 package com.ilib;
 
+import java.io.File;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,19 +33,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
+ * IString
+ * 
  * Represents an international string. This type of string allows for a 
  * formatting syntax very similar to the javascript ilib syntax, so that
  * strings can be shared between code in java or javascript.
  * 
  * @author edwin
  */
-/**
- * IString
- * 
- * @author edwin
- */
 public class IString
 {
+	public final static String EMPTY_ITEM = "";
+	protected final static String OPENED_BRACE = "\\{";
+	protected final static String CLOSED_BRACE = "}";
+	protected final static String NUMBER_SIGN = "#";
+
     protected String text;
     protected ArrayList<String> selectors = null;
     protected ArrayList<String> strings = null;
@@ -52,6 +55,8 @@ public class IString
     protected ArrayList<Pattern> patterns = null;
     protected IlibLocale locale = null;
     
+    protected Map<String, String> plurals = null;
+
     /**
      * Construct a new IString instance with the given text.
      * 
@@ -60,6 +65,18 @@ public class IString
     public IString(String text)
     {
         this.text = text;
+        this.locale = new IlibLocale("en-US");
+    }
+
+    /**
+     * Construct a new IString instance with the given text and IlibLocale instance.
+     * 
+     * @param text the text to wrap
+     * @param locale current locale
+     */
+    public IString(String text, String locale)
+    {
+        this(text, new IlibLocale(locale));
     }
 
     /**
@@ -134,10 +151,11 @@ public class IString
      */
     public String format(Map<String,String> values)
     {
-        String formatted = this.text;
+        String formatted = text;
         if ( values != null ) {
             for ( String p: values.keySet() ) {
-                formatted = formatted.replaceAll("\\{"+p+"}",  java.util.regex.Matcher.quoteReplacement(values.get(p)));                
+                formatted = formatted.replaceAll(OPENED_BRACE + p + CLOSED_BRACE,
+                		java.util.regex.Matcher.quoteReplacement(values.get(p)));                
             }
         }
         return formatted.toString();
@@ -153,14 +171,15 @@ public class IString
      */
     public String format(JSONObject values)
     {
-        String formatted = this.text;
+        String formatted = text;
         if ( values != null ) {
             Iterator<String> it = values.keys();
             String p;
             while ( it.hasNext() ) {
                 p = it.next();
                 try {
-                    formatted = formatted.replaceAll("\\{"+p+"}",  java.util.regex.Matcher.quoteReplacement(values.getString(p)));
+                    formatted = formatted.replaceAll(OPENED_BRACE + p + CLOSED_BRACE,
+                    		java.util.regex.Matcher.quoteReplacement(values.getString(p)));
                 } catch ( JSONException e ) {
                     // ignore
                 }                
@@ -179,17 +198,16 @@ public class IString
         
         strings = new ArrayList<String>();
         selectors = new ArrayList<String>();
-        defaultChoice = "";
+        defaultChoice = EMPTY_ITEM;
         
         for ( i = 0; i < choices.length; i++ ) {    
-            parts = choices[i].split("#");
+            parts = choices[i].split(NUMBER_SIGN);
             if ( parts.length > 2 ) {
                 str = choices[i].substring(choices[i].indexOf('#')+1);
             } else if ( parts.length == 2 ) {
                 str = parts[1];
             } else {
-                // syntax error
-                throw new ParseException("syntax error in choice format pattern: " + choices[i], i);
+                throw new ParseException("syntax error in choice format pattern: " + choices[i], i); // syntax error
             }     
 
             selectors.add(parts[0]);
@@ -311,6 +329,13 @@ public class IString
             parseChoices();
         }
 
+        if ( plurals == null ) {
+            File pluralJSON = new File(PluralFormHelper.root, 
+            		locale.getSpec().replace('-', File.separatorChar) + File.separator + PluralFormHelper.pluralsJSON);
+            plurals = PluralFormHelper.getPluralForms(pluralJSON);
+            if (plurals == null) plurals = new HashMap<>(0);
+        }
+
         for (i = 0; i < selectors.size(); i++) {
             sel = selectors.get(i);
             if ( sel.length() > 2 && sel.substring(0,2).equals("<=") ) {                 
@@ -338,6 +363,11 @@ public class IString
                     i = selectors.size();
                 }
             } else if ( sel.length() > 0 ) {
+
+            	if ( PluralFormHelper.getPluralKey((int)reference, plurals).equals(sel) ) {
+                	result = new IString(strings.get(i));
+                    i = selectors.size();
+                } else {
                 int value, dash = sel.indexOf("-");
                 if ( dash != -1 ) {                     
                     // range
@@ -352,11 +382,14 @@ public class IString
                         result = new IString(strings.get(i));
                         i = selectors.size();
                     }
-                } else if ( reference == Long.parseLong(sel, 10) ) {                     
-                    // exact amount
+                    } else if (isNumeric(sel)) {
+                		if ( reference == Long.parseLong(sel, 10) ) {                     
                     result = new IString(strings.get(i));
                     i = selectors.size();
                 }
+            }
+        }
+
             }
         }
 
@@ -367,6 +400,11 @@ public class IString
         return result;
     }
     
+    public static boolean isNumeric(String str)
+    {
+    	return str.matches("-?\\d+(\\.\\d+)?");  //match a number with optional '-' and decimal.
+    }
+
     /**
      * Format a string as one of a choice of strings dependent on the value of
      * a particular reference argument.<p>
@@ -454,7 +492,7 @@ public class IString
     {
         IString result = getChoice(reference);
         if ( result == null ) {
-            return "";
+            return EMPTY_ITEM;
         }
         return values != null ? result.format(values) : result.toString();
     }
@@ -474,11 +512,21 @@ public class IString
     {
         IString result = getChoice(reference);
         if ( result == null ) {
-            return "";
+            return EMPTY_ITEM;
         }
         return values != null ? result.format(values) : result.toString();
     }
 
+    /**
+     * This is the same as {@link IString#formatChoice(double, Map)} but with null map.
+     * 
+     * @see com.jedlsoft.utils.IString#formatChoice(double, Map)
+     * @param reference The reference value used to select the choice to use in the choice array
+     * @return the formatted string
+     */
+    public String formatChoice(double reference) throws ParseException {
+    	return formatChoice(reference, (Map<String, String>)null);
+    }
     /**
      * This is the same as {@link com.jedlsoft.utils.IString#formatChoice(double, Map)}
      * except that the type of the reference argument is boolean. In this case, the
@@ -498,7 +546,7 @@ public class IString
     {
         IString result = getChoice(reference);
         if ( result == null ) {
-            return "";
+            return EMPTY_ITEM;
         }
         return values != null ? result.format(values) : result.toString();
     }
@@ -518,7 +566,7 @@ public class IString
     {
         IString result = getChoice(reference);
         if ( result == null ) {
-            return "";
+            return EMPTY_ITEM;
         }
         return values != null ? result.format(values) : result.toString();
     }
@@ -544,7 +592,7 @@ public class IString
     {
         IString result = getChoice(reference);
         if ( result == null ) {
-            return "";
+            return EMPTY_ITEM;
         }
         return values != null ? result.format(values) : result.toString();
     }
@@ -564,7 +612,7 @@ public class IString
     {
         IString result = getChoice(reference);
         if ( result == null ) {
-            return "";
+            return EMPTY_ITEM;
         }
         return values != null ? result.format(values) : result.toString();
     }
@@ -617,7 +665,7 @@ public class IString
     public static String formatChoice(String message, long reference, HashMap<String,String> parameters)
        throws ParseException
     {
-       return (new IString(message)).formatChoice(new Double(reference), parameters);
+       return (new IString(message)).formatChoice((double)reference, parameters);
     }
     
     /**

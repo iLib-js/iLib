@@ -415,14 +415,13 @@ public class JSFile
         logger.debug("Now writing out file " + getPath());
         
         try {
-            int start, groupEnd, nameStart;
+            int groupEnd, nameStart;
             String macroName;
             
         	str = readFile();
         	
             for ( int p = 0; p < macroPatterns.size(); p++ ) {
                 Matcher matcher = macroPatterns.get(p).matcher(str);
-                start = 0;
                 while ( matcher.find() ) {
                     i = matcher.start(1);
                     groupEnd = matcher.end(1);
