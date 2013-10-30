@@ -404,3 +404,124 @@ function testLocaleNoLocale() {
     assertUndefined(loc.getScript());
     assertUndefined(loc.getVariant());
 }
+
+
+function testLocaleRegionMap1() {
+    assertEquals("SGP", ilib.Locale.regionAlpha2ToAlpha3("SG"));
+}
+
+function testLocaleRegionMap2() {
+    assertEquals("VNM", ilib.Locale.regionAlpha2ToAlpha3("VN"));
+}
+
+function testLocaleRegionMap3() {
+    assertEquals("KOR", ilib.Locale.regionAlpha2ToAlpha3("KR"));
+}
+
+function testLocaleRegionMapEmpty() {
+    assertEquals("", ilib.Locale.regionAlpha2ToAlpha3(""));
+}
+
+function testLocaleRegionMapUnknown() {
+    assertEquals("QQ", ilib.Locale.regionAlpha2ToAlpha3("QQ"));
+}
+
+function testLocaleRegionMapWrongCase() {
+    assertEquals("sg", ilib.Locale.regionAlpha2ToAlpha3("sg"));
+}
+
+function testLocaleRegionMapUndefined() {
+    assertUndefined(ilib.Locale.regionAlpha2ToAlpha3(undefined));
+}
+
+function testLocaleLanguageMap1() {
+    assertEquals("kor", ilib.Locale.languageAlpha1ToAlpha3("ko"));
+}
+
+function testLocaleLanguageMap2() {
+    assertEquals("tha", ilib.Locale.languageAlpha1ToAlpha3("th"));
+}
+
+function testLocaleLanguageMap3() {
+    assertEquals("hrv", ilib.Locale.languageAlpha1ToAlpha3("hr"));
+}
+
+function testLocaleLanguageMapEmpty() {
+    assertEquals("", ilib.Locale.languageAlpha1ToAlpha3(""));
+}
+
+function testLocaleLanguageMapUnknown() {
+    assertEquals("qq", ilib.Locale.languageAlpha1ToAlpha3("qq"));
+}
+
+function testLocaleLanguageMapWrongCase() {
+    assertEquals("EN", ilib.Locale.languageAlpha1ToAlpha3("EN"));
+}
+
+function testLocaleLanguageMapUndefined() {
+    assertUndefined(ilib.Locale.languageAlpha1ToAlpha3(undefined));
+}
+
+function testLocaleGetLanguageAlpha3_1() {
+    var loc = new ilib.Locale("en-US");
+    
+    assertNotNull(loc);
+    
+    assertEquals("eng", loc.getLanguageAlpha3());
+}
+
+function testLocaleGetLanguageAlpha3_2() {
+    var loc = new ilib.Locale("ru-RU");
+    
+    assertNotNull(loc);
+    
+    assertEquals("rus", loc.getLanguageAlpha3());
+}
+
+function testLocaleGetLanguageAlpha3_3() {
+    var loc = new ilib.Locale("gv-GB");
+    
+    assertNotNull(loc);
+    
+    assertEquals("glv", loc.getLanguageAlpha3());
+}
+
+function testLocaleGetLanguageAlpha3NoLanguage() {
+    var loc = new ilib.Locale("GB");
+    
+    assertNotNull(loc);
+    
+    assertUndefined(loc.getLanguageAlpha3());
+}
+
+function testLocaleGetRegionAlpha3_1() {
+    var loc = new ilib.Locale("en-US");
+    
+    assertNotNull(loc);
+    
+    assertEquals("USA", loc.getRegionAlpha3());
+}
+
+function testLocaleGetRegionAlpha3_2() {
+    var loc = new ilib.Locale("ru-RU");
+    
+    assertNotNull(loc);
+    
+    assertEquals("RUS", loc.getRegionAlpha3());
+}
+
+function testLocaleGetRegionAlpha3_3() {
+    var loc = new ilib.Locale("gv-GB");
+    
+    assertNotNull(loc);
+    
+    assertEquals("GBR", loc.getRegionAlpha3());
+}
+
+function testLocaleGetRegionAlpha3NoRegion() {
+    var loc = new ilib.Locale("en");
+    
+    assertNotNull(loc);
+    
+    assertUndefined(loc.getRegionAlpha3());
+}
