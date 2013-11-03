@@ -530,7 +530,7 @@ function testDateFmtShortDateComponentsWDM_th_TH() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
-		year: 2011,
+		year: 2554,
 		month: 9,
 		day: 29,
 		hour: 13,
@@ -546,7 +546,7 @@ function testDateFmtShortDateComponentsWDMY_th_TH() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
-		year: 2011,
+		year: 2554,
 		month: 9,
 		day: 29,
 		hour: 13,
@@ -554,7 +554,7 @@ function testDateFmtShortDateComponentsWDMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("พฤ 29/9/11", fmt.format(date));
+    assertEquals("พฤ 29/9/54", fmt.format(date));
 }
 
 
@@ -659,7 +659,7 @@ function testDateFmtFullDateComponentsWDM_th_TH() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
-		year: 2011,
+		year: 2554,
 		month: 9,
 		day: 29,
 		hour: 13,
@@ -675,7 +675,7 @@ function testDateFmtFullDateComponentsWDMY_th_TH() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
-		year: 2011,
+		year: 2554,
 		month: 9,
 		day: 29,
 		hour: 13,
@@ -683,7 +683,7 @@ function testDateFmtFullDateComponentsWDMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("วันพฤหัสบดี 29 กันยายน 2011", fmt.format(date));
+    assertEquals("วันพฤหัสบดี 29 กันยายน 2554", fmt.format(date));
 }
 
 

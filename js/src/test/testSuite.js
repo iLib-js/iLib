@@ -176,7 +176,7 @@ function suite() {
 		"testdatefmt_sv_SE.js",
 		"testdatefmt_ta_IN.js",
 		"testdatefmt_te_IN.js",
-		// "testdatefmt_th_TH.js",  uncomment when the Thai solar calendar is implemented
+		"testdatefmt_th_TH.js",
 		"testdatefmt_tr_TR.js",
 		"testdatefmt_uk_UA.js",
 		"testdatefmt_ur_IN.js",
