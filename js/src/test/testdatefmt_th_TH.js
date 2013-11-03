@@ -25,7 +25,7 @@ function testDateFmtConstructorEmpty_th_TH() {
 
 
 function testDateFmtSimpleShort_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "short"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -41,7 +41,7 @@ function testDateFmtSimpleShort_th_TH() {
 }
 
 function testDateFmtSimpleMedium_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "medium"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -57,7 +57,7 @@ function testDateFmtSimpleMedium_th_TH() {
 }
 
 function testDateFmtSimpleLong_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "long"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -73,7 +73,7 @@ function testDateFmtSimpleLong_th_TH() {
 }
 
 function testDateFmtSimpleFull_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -89,7 +89,7 @@ function testDateFmtSimpleFull_th_TH() {
 }
 
 function testDateFmtSimpleTimeShort_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "short", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -105,7 +105,7 @@ function testDateFmtSimpleTimeShort_th_TH() {
 }
 
 function testDateFmtSimpleTimeMedium_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "medium", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -121,7 +121,7 @@ function testDateFmtSimpleTimeMedium_th_TH() {
 }
 
 function testDateFmtSimpleTimeLong_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", timelength: "long", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", timelength: "long", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -137,7 +137,7 @@ function testDateFmtSimpleTimeLong_th_TH() {
 }
 
 function testDateFmtSimpleTimeFull_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -153,7 +153,7 @@ function testDateFmtSimpleTimeFull_th_TH() {
 }
 
 function testDateFmtDateTimeSimpleShort_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "short", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -169,7 +169,7 @@ function testDateFmtDateTimeSimpleShort_th_TH() {
 }
 
 function testDateFmtDateTimeSimpleMedium_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "medium", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -185,7 +185,7 @@ function testDateFmtDateTimeSimpleMedium_th_TH() {
 }
 
 function testDateFmtDateTimeSimpleLong_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "long", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -201,7 +201,7 @@ function testDateFmtDateTimeSimpleLong_th_TH() {
 }
 
 function testDateFmtDateTimeSimpleFull_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -218,7 +218,7 @@ function testDateFmtDateTimeSimpleFull_th_TH() {
 
 
 function testDateFmtTemplateCalendar_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", calendar: "julian", template: "yyyy-MM-dd"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
@@ -236,7 +236,7 @@ function testDateFmtTemplateCalendar_th_TH() {
 
 
 function testDateFmtTemplateClock12SwitchHH_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", clock: "12", template: "HH:mm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", clock: "12", template: "HH:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -252,7 +252,7 @@ function testDateFmtTemplateClock12SwitchHH_th_TH() {
 }
 
 function testDateFmtTemplateClock12Switchkk_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", clock: "12", template: "kk:mm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", clock: "12", template: "kk:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -268,7 +268,7 @@ function testDateFmtTemplateClock12Switchkk_th_TH() {
 }
 
 function testDateFmtTemplateClock24Switchhh_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", clock: "24", template: "hh:mm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", clock: "24", template: "hh:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -284,7 +284,7 @@ function testDateFmtTemplateClock24Switchhh_th_TH() {
 }
 
 function testDateFmtTemplateClock24SwitchKK_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", clock: "24", template: "KK:mm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", clock: "24", template: "KK:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -300,7 +300,7 @@ function testDateFmtTemplateClock24SwitchKK_th_TH() {
 }
 
 function testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", template: "hh:mm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", template: "hh:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -316,7 +316,7 @@ function testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_th_TH() {
 }
 
 function testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", template: "KK:mm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", template: "KK:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -332,7 +332,7 @@ function testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_th_TH() {
 }
 
 function testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", template: "HH:mm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", template: "HH:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -348,7 +348,7 @@ function testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_th_TH() {
 }
 
 function testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", template: "kk:mm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", template: "kk:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -365,7 +365,7 @@ function testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_th_TH() {
 
 
 function testDateFmtTypeDate_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "date"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "date"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -381,7 +381,7 @@ function testDateFmtTypeDate_th_TH() {
 }
 
 function testDateFmtTypeTime_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -397,7 +397,7 @@ function testDateFmtTypeTime_th_TH() {
 }
 
 function testDateFmtTypeDateTime_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "datetime"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "datetime"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -414,7 +414,7 @@ function testDateFmtTypeDateTime_th_TH() {
 
 
 function testDateFmtShortDateComponentsY_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", date: "y"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", date: "y"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -430,7 +430,7 @@ function testDateFmtShortDateComponentsY_th_TH() {
 }
 
 function testDateFmtShortDateComponentsM_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", date: "m"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", date: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -446,7 +446,7 @@ function testDateFmtShortDateComponentsM_th_TH() {
 }
 
 function testDateFmtShortDateComponentsN_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", date: "n"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", date: "n"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -462,7 +462,7 @@ function testDateFmtShortDateComponentsN_th_TH() {
 }
 
 function testDateFmtShortDateComponentsD_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", date: "d"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", date: "d"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -478,7 +478,7 @@ function testDateFmtShortDateComponentsD_th_TH() {
 }
 
 function testDateFmtShortDateComponentsDM_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", date: "dm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", date: "dm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -494,7 +494,7 @@ function testDateFmtShortDateComponentsDM_th_TH() {
 }
 
 function testDateFmtShortDateComponentsMY_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", date: "my"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", date: "my"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -510,7 +510,7 @@ function testDateFmtShortDateComponentsMY_th_TH() {
 }
 
 function testDateFmtShortDateComponentsDMY_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", date: "dmy"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", date: "dmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -526,7 +526,7 @@ function testDateFmtShortDateComponentsDMY_th_TH() {
 }
 
 function testDateFmtShortDateComponentsWDM_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", date: "wdm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", date: "wdm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -542,7 +542,7 @@ function testDateFmtShortDateComponentsWDM_th_TH() {
 }
 
 function testDateFmtShortDateComponentsWDMY_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", date: "wdmy"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", date: "wdmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -559,7 +559,7 @@ function testDateFmtShortDateComponentsWDMY_th_TH() {
 
 
 function testDateFmtFullDateComponentsY_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full", date: "y"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "y"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -575,7 +575,7 @@ function testDateFmtFullDateComponentsY_th_TH() {
 }
 
 function testDateFmtFullDateComponentsM_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full", date: "m"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -591,7 +591,7 @@ function testDateFmtFullDateComponentsM_th_TH() {
 }
 
 function testDateFmtFullDateComponentsD_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full", date: "d"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "d"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -607,7 +607,7 @@ function testDateFmtFullDateComponentsD_th_TH() {
 }
 
 function testDateFmtFullDateComponentsDM_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full", date: "dm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -623,7 +623,7 @@ function testDateFmtFullDateComponentsDM_th_TH() {
 }
 
 function testDateFmtFullDateComponentsMY_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full", date: "my"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "my"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -639,7 +639,7 @@ function testDateFmtFullDateComponentsMY_th_TH() {
 }
 
 function testDateFmtFullDateComponentsDMY_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full", date: "dmy"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -655,7 +655,7 @@ function testDateFmtFullDateComponentsDMY_th_TH() {
 }
 
 function testDateFmtFullDateComponentsWDM_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full", date: "wdm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "wdm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -671,7 +671,7 @@ function testDateFmtFullDateComponentsWDM_th_TH() {
 }
 
 function testDateFmtFullDateComponentsWDMY_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full", date: "wdmy"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "wdmy"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -688,7 +688,7 @@ function testDateFmtFullDateComponentsWDMY_th_TH() {
 
 
 function testDateFmtShortTimeComponentsS_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", time: "s"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "s"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -704,7 +704,7 @@ function testDateFmtShortTimeComponentsS_th_TH() {
 }
 
 function testDateFmtShortTimeComponentsM_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", time: "m"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -720,7 +720,7 @@ function testDateFmtShortTimeComponentsM_th_TH() {
 }
 
 function testDateFmtShortTimeComponentsH_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", time: "h"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "h"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -736,7 +736,7 @@ function testDateFmtShortTimeComponentsH_th_TH() {
 }
 
 function testDateFmtShortTimeComponentsMS_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", time: "ms"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "ms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -752,7 +752,7 @@ function testDateFmtShortTimeComponentsMS_th_TH() {
 }
 
 function testDateFmtShortTimeComponentsHM_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", time: "hm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "hm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -768,7 +768,7 @@ function testDateFmtShortTimeComponentsHM_th_TH() {
 }
 
 function testDateFmtShortTimeComponentsHMS_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", time: "hms"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "hms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -784,7 +784,7 @@ function testDateFmtShortTimeComponentsHMS_th_TH() {
 }
 
 function testDateFmtShortTimeComponentsHMA_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", time: "hma"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "hma"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -801,7 +801,7 @@ function testDateFmtShortTimeComponentsHMA_th_TH() {
 
 function testDateFmtShortTimeComponentsHMZ_th_TH() {
     var fmt = new ilib.DateFmt({
-        locale: "th-TH", calendar: "gregorian", 
+        locale: "th-TH", calendar: "thaisolar", 
         type: "time", 
         time: "hmz"
     });
@@ -821,7 +821,7 @@ function testDateFmtShortTimeComponentsHMZ_th_TH() {
 
 function testDateFmtShortTimeComponentsHMAZ_th_TH() {
     var fmt = new ilib.DateFmt({
-        locale: "th-TH", calendar: "gregorian", 
+        locale: "th-TH", calendar: "thaisolar", 
         type: "time", 
         time: "hmaz"
     });
@@ -840,7 +840,7 @@ function testDateFmtShortTimeComponentsHMAZ_th_TH() {
 }
 
 function testDateFmtShortTimeComponentsHMSA_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", time: "hmsa"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "hmsa"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -857,7 +857,7 @@ function testDateFmtShortTimeComponentsHMSA_th_TH() {
 
 function testDateFmtShortTimeComponentsHMSZ_th_TH() {
     var fmt = new ilib.DateFmt({
-        locale: "th-TH", calendar: "gregorian", 
+        locale: "th-TH", calendar: "thaisolar", 
         type: "time", 
         time: "hmsz"
     });
@@ -877,7 +877,7 @@ function testDateFmtShortTimeComponentsHMSZ_th_TH() {
 
 function testDateFmtShortTimeComponentsHMSAZ_th_TH() {
     var fmt = new ilib.DateFmt({
-        locale: "th-TH", calendar: "gregorian", 
+        locale: "th-TH", calendar: "thaisolar", 
         type: "time", 
         time: "hmsaz"
     });
@@ -897,7 +897,7 @@ function testDateFmtShortTimeComponentsHMSAZ_th_TH() {
 
 
 function testDateFmtFullTimeComponentsS_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", length: "full", time: "s"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "s"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -913,7 +913,7 @@ function testDateFmtFullTimeComponentsS_th_TH() {
 }
 
 function testDateFmtFullTimeComponentsM_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", length: "full", time: "m"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "m"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -929,7 +929,7 @@ function testDateFmtFullTimeComponentsM_th_TH() {
 }
 
 function testDateFmtFullTimeComponentsH_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", length: "full", time: "h"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "h"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -945,7 +945,7 @@ function testDateFmtFullTimeComponentsH_th_TH() {
 }
 
 function testDateFmtFullTimeComponentsMS_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", length: "full", time: "ms"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "ms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -961,7 +961,7 @@ function testDateFmtFullTimeComponentsMS_th_TH() {
 }
 
 function testDateFmtFullTimeComponentsHM_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", length: "full", time: "hm"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "hm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -977,7 +977,7 @@ function testDateFmtFullTimeComponentsHM_th_TH() {
 }
 
 function testDateFmtFullTimeComponentsHMS_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", length: "full", time: "hms"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "hms"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -993,7 +993,7 @@ function testDateFmtFullTimeComponentsHMS_th_TH() {
 }
 
 function testDateFmtFullTimeComponentsHMA_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", length: "full", time: "hma"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "hma"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -1010,7 +1010,7 @@ function testDateFmtFullTimeComponentsHMA_th_TH() {
 
 function testDateFmtFullTimeComponentsHMZ_th_TH() {
     var fmt = new ilib.DateFmt({
-        locale: "th-TH", calendar: "gregorian", 
+        locale: "th-TH", calendar: "thaisolar", 
         type: "time", 
         length: "full", 
         time: "hmz"
@@ -1031,7 +1031,7 @@ function testDateFmtFullTimeComponentsHMZ_th_TH() {
 
 function testDateFmtFullTimeComponentsHMAZ_th_TH() {
     var fmt = new ilib.DateFmt({
-        locale: "th-TH", calendar: "gregorian", 
+        locale: "th-TH", calendar: "thaisolar", 
         type: "time", 
         length: "full", 
         time: "hmaz"
@@ -1051,7 +1051,7 @@ function testDateFmtFullTimeComponentsHMAZ_th_TH() {
 }
 
 function testDateFmtFullTimeComponentsHMSA_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", type: "time", length: "full", time: "hmsa"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "hmsa"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.ThaiSolarDate({
@@ -1068,7 +1068,7 @@ function testDateFmtFullTimeComponentsHMSA_th_TH() {
 
 function testDateFmtFullTimeComponentsHMSZ_th_TH() {
     var fmt = new ilib.DateFmt({
-        locale: "th-TH", calendar: "gregorian", 
+        locale: "th-TH", calendar: "thaisolar", 
         type: "time", 
         length: "full", 
         time: "hmsz"
@@ -1089,7 +1089,7 @@ function testDateFmtFullTimeComponentsHMSZ_th_TH() {
 
 function testDateFmtFullTimeComponentsHMSAZ_th_TH() {
     var fmt = new ilib.DateFmt({
-        locale: "th-TH", calendar: "gregorian", 
+        locale: "th-TH", calendar: "thaisolar", 
         type: "time", 
         length: "full", 
         time: "hmsaz"
@@ -1110,7 +1110,7 @@ function testDateFmtFullTimeComponentsHMSAZ_th_TH() {
 
 function testDateFmtWithTimeZoneAndNoDST_th_TH() {
     var fmt = new ilib.DateFmt({
-        locale: "th-TH", calendar: "gregorian", 
+        locale: "th-TH", calendar: "thaisolar", 
         type: "time", 
         length: "full", 
         time: "hmsz"
@@ -1130,7 +1130,7 @@ function testDateFmtWithTimeZoneAndNoDST_th_TH() {
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
@@ -1154,7 +1154,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_th_TH() {
     assertEquals("ในอีก 30 วินาที", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
@@ -1178,7 +1178,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_th_TH() {
     assertEquals("30 วินาที ที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourAfter_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
@@ -1202,7 +1202,7 @@ function testDateFmtFormatRelativeWithinHourAfter_th_TH() {
     assertEquals("ในอีก 10 นาที", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
@@ -1226,7 +1226,7 @@ function testDateFmtFormatRelativeWithinHourBefore_th_TH() {
     assertEquals("10 นาที ที่ผ่านมา", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayAfter_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
@@ -1250,7 +1250,7 @@ function testDateFmtFormatRelativeWithinDayAfter_th_TH() {
     assertEquals("ในอีก 4 ชั่วโมง", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
@@ -1275,7 +1275,7 @@ function testDateFmtFormatRelativeWithinDayBefore_th_TH() {
 }
 
 function testDateFmtFormatRelativeWithinFortnightAfter_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
@@ -1299,7 +1299,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_th_TH() {
     assertEquals("ในอีก 4 วัน", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
@@ -1324,7 +1324,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_th_TH() {
 }
 
 function testDateFmtFormatRelativeWithinQuarterAfter_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
@@ -1348,7 +1348,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_th_TH() {
     assertEquals("ในอีก 9 สัปดาห์", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
@@ -1373,7 +1373,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_th_TH() {
 }
 
 function testDateFmtFormatRelativeWithinTwoYearsAfter_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
@@ -1397,7 +1397,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_th_TH() {
     assertEquals("ในอีก 16 เดือน", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
@@ -1422,7 +1422,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_th_TH() {
 }
 
 function testDateFmtFormatRelativeYearsAfter_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
@@ -1446,7 +1446,7 @@ function testDateFmtFormatRelativeYearsAfter_th_TH() {
     assertEquals("ในอีก 14 ปี", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_th_TH() {
-    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "gregorian", length: "full"});
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
     assertNotNull(fmt);
     
     var reference = new ilib.Date.ThaiSolarDate({
