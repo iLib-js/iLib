@@ -1925,7 +1925,7 @@ function testThaiSolarDateGetTimeZoneDefault() {
     });
     assertNotNull(td);
     
-    assertUndefined(td.getTimeZone());
+    assertEquals("local", td.getTimeZone());
 }
 
 function testThaiSolarDateGetTimeZoneByLocale() {
@@ -2008,7 +2008,7 @@ function testThaiSolarDateSetTimeZoneUndefined() {
     // clears it out
     td.setTimeZone(undefined);
     
-    assertUndefined(td.getTimeZone());
+    assertEquals("local", td.getTimeZone());
 }
 
 function testThaiSolarDateSetTimeZoneEmpty() {
@@ -2025,7 +2025,7 @@ function testThaiSolarDateSetTimeZoneEmpty() {
     // clears it out
     td.setTimeZone("");
     
-    assertUndefined(td.getTimeZone());
+    assertEquals("local", td.getTimeZone());
 }
 
 function testThaiSolarDateInitWithUnixTimeRightTimeZone() {
@@ -2034,7 +2034,7 @@ function testThaiSolarDateInitWithUnixTimeRightTimeZone() {
     });
     assertNotNull(td);
     
-    assertEquals("Etc/UTC", td.getTimeZone());
+    assertEquals("local", td.getTimeZone());
 }
 
 function testThaiSolarDateInitWithJDRightTimeZone() {
@@ -2052,5 +2052,5 @@ function testThaiSolarDateInitWithRDRightTimeZone() {
     });
     assertNotNull(td);
     
-    assertEquals("Etc/UTC", td.getTimeZone());
+    assertEquals("local", td.getTimeZone());
 }

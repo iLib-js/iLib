@@ -324,6 +324,7 @@ function testDateFmtUSTemplateNoClockDoNotFollowLocaleDefault12hh() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-US",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -340,6 +341,7 @@ function testDateFmtUSTemplateNoClockDoNotFollowLocaleDefault12KK() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-US",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -356,6 +358,7 @@ function testDateFmtUSTemplateNoClockDoNotFollowLocaleDefault24HH() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-US",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -372,6 +375,7 @@ function testDateFmtUSTemplateNoClockDoNotFollowLocaleDefault24kk() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-US",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -834,7 +838,8 @@ function testDateFmtUSShortTimeComponentsHMZ() {
 		hour: 13,
 		minute: 45,
 		second: 37,
-		millisecond: 0
+		millisecond: 0, 
+        timezone: "America/Los_Angeles"
 	});
     assertEquals("1:45 PDT", fmt.format(date));
 }
@@ -854,7 +859,8 @@ function testDateFmtUSShortTimeComponentsHMAZ() {
 		hour: 13,
 		minute: 45,
 		second: 37,
-		millisecond: 0
+		millisecond: 0, 
+        timezone: "America/Los_Angeles"
 	});
     assertEquals("1:45pm PDT", fmt.format(date));
 }
@@ -890,7 +896,8 @@ function testDateFmtUSShortTimeComponentsHMSZ() {
 		hour: 13,
 		minute: 45,
 		second: 37,
-		millisecond: 0
+		millisecond: 0, 
+        timezone: "America/Los_Angeles"
 	});
     assertEquals("1:45:37 PDT", fmt.format(date));
 }
@@ -910,7 +917,8 @@ function testDateFmtUSShortTimeComponentsHMSAZ() {
 		hour: 13,
 		minute: 45,
 		second: 37,
-		millisecond: 0
+		millisecond: 0, 
+        timezone: "America/Los_Angeles"
 	});
     assertEquals("1:45:37pm PDT", fmt.format(date));
 }
@@ -1044,7 +1052,8 @@ function testDateFmtUSFullTimeComponentsHMZ() {
 		hour: 13,
 		minute: 45,
 		second: 37,
-		millisecond: 0
+		millisecond: 0, 
+        timezone: "America/Los_Angeles"
 	});
     assertEquals("1:45 PDT", fmt.format(date));
 }
@@ -1065,7 +1074,8 @@ function testDateFmtUSFullTimeComponentsHMAZ() {
 		hour: 13,
 		minute: 45,
 		second: 37,
-		millisecond: 0
+		millisecond: 0, 
+        timezone: "America/Los_Angeles"
 	});
     assertEquals("1:45pm PDT", fmt.format(date));
 }
@@ -1102,7 +1112,8 @@ function testDateFmtUSFullTimeComponentsHMSZ() {
 		hour: 13,
 		minute: 45,
 		second: 37,
-		millisecond: 0
+		millisecond: 0, 
+        timezone: "America/Los_Angeles"
 	});
     assertEquals("1:45:37 PDT", fmt.format(date));
 }
@@ -1123,7 +1134,8 @@ function testDateFmtUSFullTimeComponentsHMSAZ() {
 		hour: 13,
 		minute: 45,
 		second: 37,
-		millisecond: 0
+		millisecond: 0, 
+        timezone: "America/Los_Angeles"
 	});
     assertEquals("1:45:37pm PDT", fmt.format(date));
 }
@@ -1138,6 +1150,7 @@ function testDateFmtUSWithTimeZoneAndNoDST() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+    	timezone: "America/Los_Angeles",
 		year: 2011,
 		month: 12,
 		day: 29,

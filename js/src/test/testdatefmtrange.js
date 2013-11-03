@@ -146,11 +146,12 @@ function testDateRngFmtGetClockBogus() {
 }
 
 function testDateRngFmtGetTimeZoneDefault() {
+	ilib.tz = undefined;	// just in case
     var fmt = new ilib.DateRngFmt();
     assertNotNull(fmt);
     
     var tz = fmt.getTimeZone();
-    assertEquals("America/New_York", tz.getId());
+    assertEquals("local", tz.getId());
 }
 
 function testDateRngFmtGetTimeZone() {

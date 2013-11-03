@@ -29,6 +29,7 @@ function testDateFmtINSimpleShort_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -44,6 +45,7 @@ function testDateFmtINSimpleMedium_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -60,6 +62,7 @@ function testDateFmtINSimpleLong_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -76,6 +79,7 @@ function testDateFmtINSimpleFull_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -92,6 +96,7 @@ function testDateFmtINSimpleTimeShort_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -108,6 +113,7 @@ function testDateFmtINSimpleTimeShort_sq_AL1() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -124,6 +130,7 @@ function testDateFmtINSimpleTimeMedium_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -140,6 +147,7 @@ function testDateFmtINSimpleTimeLong_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -156,6 +164,7 @@ function testDateFmtINSimpleTimeFull_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -172,6 +181,7 @@ function testDateFmtINDateTimeSimpleShort_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -188,6 +198,7 @@ function testDateFmtINDateTimeSimpleMedium_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -204,6 +215,7 @@ function testDateFmtINDateTimeSimpleLong_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -220,6 +232,7 @@ function testDateFmtINDateTimeSimpleFull_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -255,6 +268,7 @@ function testDateFmtINTemplateClock12SwitchHH_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -271,6 +285,7 @@ function testDateFmtINTemplateClock12Switchkk_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -287,6 +302,7 @@ function testDateFmtINTemplateClock24Switchhh_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -303,6 +319,7 @@ function testDateFmtINTemplateClock24SwitchKK_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -319,6 +336,7 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12hh_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -335,6 +353,7 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12KK_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -351,6 +370,7 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24HH_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -367,6 +387,7 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24kk_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -384,6 +405,7 @@ function testDateFmtINTypeDate_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -400,6 +422,7 @@ function testDateFmtINTypeTime_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -416,6 +439,7 @@ function testDateFmtINTypeDateTime_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -433,6 +457,7 @@ function testDateFmtINShortDateComponentsY_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -449,6 +474,7 @@ function testDateFmtINShortDateComponentsM_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -465,6 +491,7 @@ function testDateFmtINShortDateComponentsN_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -481,6 +508,7 @@ function testDateFmtINShortDateComponentsD_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -497,6 +525,7 @@ function testDateFmtINShortDateComponentsDM_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -513,6 +542,7 @@ function testDateFmtINShortDateComponentsMY_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -529,6 +559,7 @@ function testDateFmtINShortDateComponentsDMY_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -545,6 +576,7 @@ function testDateFmtINShortDateComponentsWDM_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -561,6 +593,7 @@ function testDateFmtINShortDateComponentsWDMY_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -578,6 +611,7 @@ function testDateFmtINFullDateComponentsY_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -594,6 +628,7 @@ function testDateFmtINFullDateComponentsM_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -610,6 +645,7 @@ function testDateFmtINFullDateComponentsD_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -626,6 +662,7 @@ function testDateFmtINFullDateComponentsDM_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -642,6 +679,7 @@ function testDateFmtINFullDateComponentsMY_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -658,6 +696,7 @@ function testDateFmtINFullDateComponentsDMY_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -674,6 +713,7 @@ function testDateFmtINFullDateComponentsWDM_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -690,6 +730,7 @@ function testDateFmtINFullDateComponentsWDMY_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -707,6 +748,7 @@ function testDateFmtINShortTimeComponentsS_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -723,6 +765,7 @@ function testDateFmtINShortTimeComponentsM_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -739,6 +782,7 @@ function testDateFmtINShortTimeComponentsH_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -756,6 +800,7 @@ function testDateFmtINShortTimeComponentsHM_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -772,6 +817,7 @@ function testDateFmtINShortTimeComponentsHMS_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -788,6 +834,7 @@ function testDateFmtINShortTimeComponentsHMA_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -808,6 +855,7 @@ function testDateFmtINShortTimeComponentsHMZ_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -827,6 +875,7 @@ function testDateFmtINFullTimeComponentsHM_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -843,6 +892,7 @@ function testDateFmtINFullTimeComponentsHMS_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -859,6 +909,7 @@ function testDateFmtINFullTimeComponentsHMA_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -882,6 +933,7 @@ function testDateFmtINFullTimeComponentsHMAZ_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -898,6 +950,7 @@ function testDateFmtINFullTimeComponentsHMSA_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -919,6 +972,7 @@ function testDateFmtINFullTimeComponentsHMSZ_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -940,6 +994,7 @@ function testDateFmtINFullTimeComponentsHMSAZ_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -961,6 +1016,7 @@ function testDateFmtINWithTimeZoneAndNoDST_sq_AL() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 12,
 		day: 29,
@@ -978,6 +1034,7 @@ function testDateFmtINWithTimeZoneAndNoDST_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -987,6 +1044,7 @@ function testDateFmtINWithTimeZoneAndNoDST_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1002,6 +1060,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1011,6 +1070,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1026,6 +1086,7 @@ function testDateFmtFormatRelativeWithinHourAfter_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1035,6 +1096,7 @@ function testDateFmtFormatRelativeWithinHourAfter_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1050,6 +1112,7 @@ function testDateFmtFormatRelativeWithinHourBefore_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1059,6 +1122,7 @@ function testDateFmtFormatRelativeWithinHourBefore_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1074,6 +1138,7 @@ function testDateFmtFormatRelativeWithinDayAfter_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1083,6 +1148,7 @@ function testDateFmtFormatRelativeWithinDayAfter_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1098,6 +1164,7 @@ function testDateFmtFormatRelativeWithinDayBefore_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1107,6 +1174,7 @@ function testDateFmtFormatRelativeWithinDayBefore_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1123,6 +1191,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1132,6 +1201,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1147,6 +1217,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1156,6 +1227,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 16,
@@ -1172,6 +1244,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1181,6 +1254,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1196,6 +1270,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1205,6 +1280,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 7,
 		day: 18,
@@ -1221,6 +1297,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1230,6 +1307,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2013,
 		month: 1,
 		day: 24,
@@ -1245,6 +1323,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1254,6 +1333,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2010,
 		month: 7,
 		day: 18,
@@ -1270,6 +1350,7 @@ function testDateFmtFormatRelativeYearsAfter_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1279,6 +1360,7 @@ function testDateFmtFormatRelativeYearsAfter_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2025,
 		month: 10,
 		day: 24,
@@ -1294,6 +1376,7 @@ function testDateFmtFormatRelativeYearsBefore_sq_AL() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1303,6 +1386,7 @@ function testDateFmtFormatRelativeYearsBefore_sq_AL() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "sq-AL",
 		year: 1990,
 		month: 7,
 		day: 18,

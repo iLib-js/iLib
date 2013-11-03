@@ -22,6 +22,7 @@ function testDateFmtSimpleShort_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -38,6 +39,7 @@ function testDateFmtSimpleMedium_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -54,6 +56,7 @@ function testDateFmtSimpleLong_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -70,6 +73,7 @@ function testDateFmtSimpleFull_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -86,6 +90,7 @@ function testDateFmtSimpleTimeShort_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -102,6 +107,7 @@ function testDateFmtSimpleTimeMedium_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -118,6 +124,7 @@ function testDateFmtSimpleTimeLong_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -134,6 +141,7 @@ function testDateFmtSimpleTimeFull_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -150,6 +158,7 @@ function testDateFmtDateTimeSimpleShort_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -166,6 +175,7 @@ function testDateFmtDateTimeSimpleMedium_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -182,6 +192,7 @@ function testDateFmtDateTimeSimpleLong_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -198,6 +209,7 @@ function testDateFmtDateTimeSimpleFull_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -233,6 +245,7 @@ function testDateFmtTemplateClock12SwitchHH_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -249,6 +262,7 @@ function testDateFmtTemplateClock12Switchkk_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -265,6 +279,7 @@ function testDateFmtTemplateClock24Switchhh_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -281,6 +296,7 @@ function testDateFmtTemplateClock24SwitchKK_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -297,6 +313,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -313,6 +330,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -329,6 +347,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -345,6 +364,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -362,6 +382,7 @@ function testDateFmtTypeDate_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -378,6 +399,7 @@ function testDateFmtTypeTime_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -394,6 +416,7 @@ function testDateFmtTypeDateTime_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -411,6 +434,7 @@ function testDateFmtShortDateComponentsY_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -427,6 +451,7 @@ function testDateFmtShortDateComponentsM_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -443,6 +468,7 @@ function testDateFmtShortDateComponentsN_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -459,6 +485,7 @@ function testDateFmtShortDateComponentsD_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -475,6 +502,7 @@ function testDateFmtShortDateComponentsDM_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -491,6 +519,7 @@ function testDateFmtShortDateComponentsMY_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -507,6 +536,7 @@ function testDateFmtShortDateComponentsDMY_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -523,6 +553,7 @@ function testDateFmtShortDateComponentsWDM_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -539,6 +570,7 @@ function testDateFmtShortDateComponentsWDMY_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -556,6 +588,7 @@ function testDateFmtFullDateComponentsY_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -572,6 +605,7 @@ function testDateFmtFullDateComponentsM_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -588,6 +622,7 @@ function testDateFmtFullDateComponentsD_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -604,6 +639,7 @@ function testDateFmtFullDateComponentsDM_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -620,6 +656,7 @@ function testDateFmtFullDateComponentsMY_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -636,6 +673,7 @@ function testDateFmtFullDateComponentsDMY_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -652,6 +690,7 @@ function testDateFmtFullDateComponentsWDM_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -668,6 +707,7 @@ function testDateFmtFullDateComponentsWDMY_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -685,6 +725,7 @@ function testDateFmtShortTimeComponentsS_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -701,6 +742,7 @@ function testDateFmtShortTimeComponentsM_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -717,6 +759,7 @@ function testDateFmtShortTimeComponentsH_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -733,6 +776,7 @@ function testDateFmtShortTimeComponentsMS_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -749,6 +793,7 @@ function testDateFmtShortTimeComponentsHM_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -765,6 +810,7 @@ function testDateFmtShortTimeComponentsHMS_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -781,6 +827,7 @@ function testDateFmtShortTimeComponentsHMA_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -801,6 +848,7 @@ function testDateFmtShortTimeComponentsHMZ_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -821,6 +869,7 @@ function testDateFmtShortTimeComponentsHMAZ_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -837,6 +886,7 @@ function testDateFmtShortTimeComponentsHMSA_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -857,6 +907,7 @@ function testDateFmtShortTimeComponentsHMSZ_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -877,6 +928,7 @@ function testDateFmtShortTimeComponentsHMSAZ_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -894,6 +946,7 @@ function testDateFmtFullTimeComponentsS_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -910,6 +963,7 @@ function testDateFmtFullTimeComponentsM_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -926,6 +980,7 @@ function testDateFmtFullTimeComponentsH_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -942,6 +997,7 @@ function testDateFmtFullTimeComponentsMS_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -958,6 +1014,7 @@ function testDateFmtFullTimeComponentsHM_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -974,6 +1031,7 @@ function testDateFmtFullTimeComponentsHMS_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -990,6 +1048,7 @@ function testDateFmtFullTimeComponentsHMA_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1011,6 +1070,7 @@ function testDateFmtFullTimeComponentsHMZ_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1032,6 +1092,7 @@ function testDateFmtFullTimeComponentsHMAZ_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1048,6 +1109,7 @@ function testDateFmtFullTimeComponentsHMSA_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1069,6 +1131,7 @@ function testDateFmtFullTimeComponentsHMSZ_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1090,6 +1153,7 @@ function testDateFmtFullTimeComponentsHMSAZ_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1111,6 +1175,7 @@ function testDateFmtWithTimeZoneAndNoDST_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 12,
 		day: 29,

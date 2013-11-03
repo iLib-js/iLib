@@ -28,6 +28,7 @@ function testDateFmtPLSimpleShort_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -44,6 +45,7 @@ function testDateFmtPLSimpleMedium_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -60,6 +62,7 @@ function testDateFmtPLSimpleLong_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -76,6 +79,7 @@ function testDateFmtPLSimpleFull_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -92,6 +96,7 @@ function testDateFmtPLSimpleTimeShort_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -108,6 +113,7 @@ function testDateFmtPLSimpleTimeMedium_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -124,6 +130,7 @@ function testDateFmtPLSimpleTimeLong_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -140,6 +147,7 @@ function testDateFmtPLSimpleTimeFull_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -156,6 +164,7 @@ function testDateFmtPLDateTimeSimpleShort_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -172,6 +181,7 @@ function testDateFmtPLDateTimeSimpleMedium_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -188,6 +198,7 @@ function testDateFmtPLDateTimeSimpleLong_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -204,6 +215,7 @@ function testDateFmtPLDateTimeSimpleFull_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -237,6 +249,7 @@ function testDateFmtPLTemplateClock12SwitchHH_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -253,6 +266,7 @@ function testDateFmtPLTemplateClock12Switchkk_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -269,6 +283,7 @@ function testDateFmtPLTemplateClock24Switchhh_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -285,6 +300,7 @@ function testDateFmtPLTemplateClock24SwitchKK_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -301,6 +317,7 @@ function testDateFmtPLTemplateNoClockDoNotFollowLocaleDefault12hh_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -317,6 +334,7 @@ function testDateFmtPLTemplateNoClockDoNotFollowLocaleDefault12KK_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -333,6 +351,7 @@ function testDateFmtPLTemplateNoClockDoNotFollowLocaleDefault24HH_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -349,6 +368,7 @@ function testDateFmtPLTemplateNoClockDoNotFollowLocaleDefault24kk_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -366,6 +386,7 @@ function testDateFmtPLTypeDate_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -382,6 +403,7 @@ function testDateFmtPLTypeTime_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -398,6 +420,7 @@ function testDateFmtPLTypeDateTime_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -415,6 +438,7 @@ function testDateFmtPLShortDateComponentsY_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -431,6 +455,7 @@ function testDateFmtPLShortDateComponentsM_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -447,6 +472,7 @@ function testDateFmtPLShortDateComponentsN_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -463,6 +489,7 @@ function testDateFmtPLShortDateComponentsD_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -479,6 +506,7 @@ function testDateFmtPLShortDateComponentsDM_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -495,6 +523,7 @@ function testDateFmtPLShortDateComponentsMY_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -511,6 +540,7 @@ function testDateFmtPLShortDateComponentsDMY_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -527,6 +557,7 @@ function testDateFmtPLShortDateComponentsWDM_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -543,6 +574,7 @@ function testDateFmtPLShortDateComponentsWDMY_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -560,6 +592,7 @@ function testDateFmtPLFullDateComponentsY_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -576,6 +609,7 @@ function testDateFmtPLFullDateComponentsM_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -592,6 +626,7 @@ function testDateFmtPLFullDateComponentsD_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -608,6 +643,7 @@ function testDateFmtPLFullDateComponentsDM_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -624,6 +660,7 @@ function testDateFmtPLFullDateComponentsMY_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -640,6 +677,7 @@ function testDateFmtPLFullDateComponentsDMY_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -656,6 +694,7 @@ function testDateFmtPLFullDateComponentsWDM_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -672,6 +711,7 @@ function testDateFmtPLFullDateComponentsWDMY_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -689,6 +729,7 @@ function testDateFmtPLShortTimeComponentsS_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -705,6 +746,7 @@ function testDateFmtPLShortTimeComponentsM_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -721,6 +763,7 @@ function testDateFmtPLShortTimeComponentsH_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -737,6 +780,7 @@ function testDateFmtPLShortTimeComponentsMS_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -753,6 +797,7 @@ function testDateFmtPLShortTimeComponentsHM_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -769,6 +814,7 @@ function testDateFmtPLShortTimeComponentsHMS_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -785,6 +831,7 @@ function testDateFmtPLShortTimeComponentsHMA_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -805,6 +852,7 @@ function testDateFmtPLShortTimeComponentsHMZ_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -825,6 +873,7 @@ function testDateFmtPLShortTimeComponentsHMAZ_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -841,6 +890,7 @@ function testDateFmtPLShortTimeComponentsHMSA_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -861,6 +911,7 @@ function testDateFmtPLShortTimeComponentsHMSZ_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -881,6 +932,7 @@ function testDateFmtPLShortTimeComponentsHMSAZ_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -898,6 +950,7 @@ function testDateFmtPLFullTimeComponentsS_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -914,6 +967,7 @@ function testDateFmtPLFullTimeComponentsM_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -930,6 +984,7 @@ function testDateFmtPLFullTimeComponentsH_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -946,6 +1001,7 @@ function testDateFmtPLFullTimeComponentsMS_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -962,6 +1018,7 @@ function testDateFmtPLFullTimeComponentsHM_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -978,6 +1035,7 @@ function testDateFmtPLFullTimeComponentsHMS_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -994,6 +1052,7 @@ function testDateFmtPLFullTimeComponentsHMA_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1015,6 +1074,7 @@ function testDateFmtPLFullTimeComponentsHMZ_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1036,6 +1096,7 @@ function testDateFmtPLFullTimeComponentsHMAZ_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1052,6 +1113,7 @@ function testDateFmtPLFullTimeComponentsHMSA_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1073,6 +1135,7 @@ function testDateFmtPLFullTimeComponentsHMSZ_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1094,6 +1157,7 @@ function testDateFmtPLFullTimeComponentsHMSAZ_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1115,6 +1179,7 @@ function testDateFmtPLWithTimeZoneAndNoDST_pl_PL() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "pl-PL",
 		year: 2011,
 		month: 12,
 		day: 29,

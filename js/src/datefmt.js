@@ -357,7 +357,13 @@ ilib.DateFmt = function(options) {
 				locale: this.locale, 
 				id: options.timezone
 			});
-		}
+		} else if (options.locale) {
+			// if an explicit locale was given, then get the time zone for that locale
+			this.tz = new ilib.TimeZone({
+				locale: this.locale
+			});
+		} // else just assume time zone "local"
+		
 		if (typeof(options.useNative) !== 'undefined') {
 			this.useNative = options.useNative;
 		}
@@ -755,7 +761,7 @@ ilib.DateFmt.prototype = {
 		// time zone in their format, we never have to load up a TimeZone
 		// instance into this formatter.
 		if (!this.tz) {
-			this.tz = new ilib.TimeZone({locale: this.locale});
+			this.tz = new ilib.TimeZone({id: ilib.getTimeZone()});
 		}
 		return this.tz;
 	},
@@ -991,17 +997,24 @@ ilib.DateFmt.prototype = {
 			throw "Wrong date type passed to ilib.DateFmt.format()";
 		}
 		
+		var thisZoneName = this.tz && this.tz.getId() || "local";
+		var dateZoneName = date.timezone || "local";
+		
 		// convert to the time zone of this formatter before formatting
-		if (date.timezone && this.tz) {
-			// console.log("Differing time zones " + date.timezone + " and " + this.tz.getId() + ". Converting...");
+		if (dateZoneName !== thisZoneName) {
+			// console.log("Differing time zones date: " + dateZoneName + " and fmt: " + thisZoneName + ". Converting...");
 			
 			var datetz = new ilib.TimeZone({
 				locale: date.locale,
-				id: date.timezone
+				id: dateZoneName
+			});
+			var thistz = this.tz || new ilib.TimeZone({
+				locale: date.locale,
+				id: thisZoneName
 			});
 			
 			var dateOffset = datetz.getOffset(date),
-				fmtOffset = this.tz.getOffset(date),
+				fmtOffset = thistz.getOffset(date),
 				// relative offset in seconds
 				offset = (dateOffset.h || 0)*60*60 + (dateOffset.m || 0)*60 + (dateOffset.s || 0) -
 					((fmtOffset.h || 0)*60*60 + (fmtOffset.m || 0)*60 + (fmtOffset.s || 0));

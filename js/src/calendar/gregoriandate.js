@@ -106,8 +106,6 @@ ilib.Date.GregDate = function(params) {
 		}
 		
 		if (typeof(params.unixtime) != 'undefined') {
-			// unix time is defined to be UTC
-			this.timezone = "Etc/UTC";
 			this.setTime(parseInt(params.unixtime, 10));
 		} else if (typeof(params.julianday) != 'undefined') {
 			// JD time is defined to be UTC
@@ -125,17 +123,14 @@ ilib.Date.GregDate = function(params) {
 		} else if (typeof(params.rd) != 'undefined') {
 			// private parameter. Do not document this!
 			// RD time is defined to be UTC
-			this.timezone = "Etc/UTC";
 			this.setRd(params.rd);
 		} else {
-			// Date.getTime() gets unix time in UTC
 			var now = new Date();
-			this.setTime(now.getTime() - now.getTimezoneOffset()*60000);
+			this.setTime(now.getTime());
 		}
 	} else {
-		// Date.getTime() gets unix time in UTC
 		var now = new Date();
-		this.setTime(now.getTime() - now.getTimezoneOffset()*60000);
+		this.setTime(now.getTime());
 	}
 };
 
@@ -690,7 +685,7 @@ ilib.Date.GregDate.prototype.getCalendar = function() {
  * @return {string|undefined} the name of the time zone for this date instance
  */
 ilib.Date.GregDate.prototype.getTimeZone = function() {
-	return this.timezone;
+	return this.timezone || "local";
 };
 
 /**

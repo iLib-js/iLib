@@ -671,7 +671,7 @@ function testJulDateGetTimeZoneDefault() {
     });
     assertNotNull(jul);
     
-    assertUndefined(jul.getTimeZone());
+    assertEquals("local", jul.getTimeZone());
 }
 
 function testJulDateGetTimeZoneByLocaleDE() {
@@ -766,7 +766,7 @@ function testJulDateSetTimeZoneUndefined() {
     // clears it out
     gd.setTimeZone(undefined);
     
-    assertUndefined(gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testJulDateSetTimeZoneEmpty() {
@@ -783,7 +783,7 @@ function testJulDateSetTimeZoneEmpty() {
     // clears it out
     gd.setTimeZone("");
     
-    assertUndefined(gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testJulDateInitWithUnixTimeRightTimeZone() {
@@ -792,7 +792,7 @@ function testJulDateInitWithUnixTimeRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testJulDateInitWithJDRightTimeZone() {
@@ -810,5 +810,5 @@ function testJulDateInitWithRDRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }

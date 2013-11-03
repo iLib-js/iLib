@@ -29,6 +29,7 @@ function testDateFmtINSimpleShort_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -44,6 +45,7 @@ function testDateFmtINSimpleMedium_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -60,6 +62,7 @@ function testDateFmtINSimpleLong_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -76,6 +79,7 @@ function testDateFmtINSimpleFull_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -92,6 +96,7 @@ function testDateFmtINSimpleTimeShort_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -108,6 +113,7 @@ function testDateFmtINSimpleTimeShort_bn_IN1() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -124,6 +130,7 @@ function testDateFmtINSimpleTimeMedium_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -140,6 +147,7 @@ function testDateFmtINSimpleTimeLong_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -156,6 +164,7 @@ function testDateFmtINSimpleTimeFull_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -172,6 +181,7 @@ function testDateFmtINDateTimeSimpleShort_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -188,6 +198,7 @@ function testDateFmtINDateTimeSimpleMedium_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -204,6 +215,7 @@ function testDateFmtINDateTimeSimpleLong_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -220,6 +232,7 @@ function testDateFmtINDateTimeSimpleFull_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -255,6 +268,7 @@ function testDateFmtINTemplateClock12SwitchHH_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -271,6 +285,7 @@ function testDateFmtINTemplateClock12Switchkk_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -287,6 +302,7 @@ function testDateFmtINTemplateClock24Switchhh_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -303,6 +319,7 @@ function testDateFmtINTemplateClock24SwitchKK_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -319,6 +336,7 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12hh_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -335,6 +353,7 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12KK_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -351,6 +370,7 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24HH_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -367,6 +387,7 @@ function testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24kk_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -384,6 +405,7 @@ function testDateFmtINTypeDate_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -400,6 +422,7 @@ function testDateFmtINTypeTime_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -416,6 +439,7 @@ function testDateFmtINTypeDateTime_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -433,6 +457,7 @@ function testDateFmtINShortDateComponentsY_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -449,6 +474,7 @@ function testDateFmtINShortDateComponentsM_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -465,6 +491,7 @@ function testDateFmtINShortDateComponentsN_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -481,6 +508,7 @@ function testDateFmtINShortDateComponentsD_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -497,6 +525,7 @@ function testDateFmtINShortDateComponentsDM_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -513,6 +542,7 @@ function testDateFmtINShortDateComponentsMY_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -529,6 +559,7 @@ function testDateFmtINShortDateComponentsDMY_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -545,6 +576,7 @@ function testDateFmtINShortDateComponentsWDM_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -561,6 +593,7 @@ function testDateFmtINShortDateComponentsWDMY_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -578,6 +611,7 @@ function testDateFmtINFullDateComponentsY_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -594,6 +628,7 @@ function testDateFmtINFullDateComponentsM_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -610,6 +645,7 @@ function testDateFmtINFullDateComponentsD_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -626,6 +662,7 @@ function testDateFmtINFullDateComponentsDM_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -642,6 +679,7 @@ function testDateFmtINFullDateComponentsMY_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -658,6 +696,7 @@ function testDateFmtINFullDateComponentsDMY_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -674,6 +713,7 @@ function testDateFmtINFullDateComponentsWDM_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -690,6 +730,7 @@ function testDateFmtINFullDateComponentsWDMY_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -707,6 +748,7 @@ function testDateFmtINShortTimeComponentsS_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -723,6 +765,7 @@ function testDateFmtINShortTimeComponentsM_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -739,6 +782,7 @@ function testDateFmtINShortTimeComponentsH_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -756,6 +800,7 @@ function testDateFmtINShortTimeComponentsHM_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -772,6 +817,7 @@ function testDateFmtINShortTimeComponentsHMS_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -788,6 +834,7 @@ function testDateFmtINShortTimeComponentsHMA_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -808,6 +855,7 @@ function testDateFmtINShortTimeComponentsHMZ_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -829,6 +877,7 @@ function testDateFmtINShortTimeComponentsHMAZ_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -845,6 +894,7 @@ function testDateFmtINShortTimeComponentsHMSA_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -866,6 +916,7 @@ function testDateFmtINShortTimeComponentsHMSZ_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -887,6 +938,7 @@ function testDateFmtINShortTimeComponentsHMSAZ_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -904,6 +956,7 @@ function testDateFmtINFullTimeComponentsS_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -920,6 +973,7 @@ function testDateFmtINFullTimeComponentsM_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -936,6 +990,7 @@ function testDateFmtINFullTimeComponentsH_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -954,6 +1009,7 @@ function testDateFmtINFullTimeComponentsHM_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -970,6 +1026,7 @@ function testDateFmtINFullTimeComponentsHMS_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -986,6 +1043,7 @@ function testDateFmtINFullTimeComponentsHMA_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1010,6 +1068,7 @@ function testDateFmtINFullTimeComponentsHMAZ_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1026,6 +1085,7 @@ function testDateFmtINFullTimeComponentsHMSA_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1048,6 +1108,7 @@ function testDateFmtINFullTimeComponentsHMSZ_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1070,6 +1131,7 @@ function testDateFmtINFullTimeComponentsHMSAZ_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1092,6 +1154,7 @@ function testDateFmtINWithTimeZoneAndNoDST_bn_IN() {
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 12,
 		day: 29,
@@ -1108,6 +1171,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1117,6 +1181,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1132,6 +1197,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1141,6 +1207,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1156,6 +1223,7 @@ function testDateFmtFormatRelativeWithinHourAfter_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1165,6 +1233,7 @@ function testDateFmtFormatRelativeWithinHourAfter_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1180,6 +1249,7 @@ function testDateFmtFormatRelativeWithinHourBefore_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1189,6 +1259,7 @@ function testDateFmtFormatRelativeWithinHourBefore_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1204,6 +1275,7 @@ function testDateFmtFormatRelativeWithinDayAfter_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1213,6 +1285,7 @@ function testDateFmtFormatRelativeWithinDayAfter_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1228,6 +1301,7 @@ function testDateFmtFormatRelativeWithinDayBefore_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1237,6 +1311,7 @@ function testDateFmtFormatRelativeWithinDayBefore_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1253,6 +1328,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1262,6 +1338,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1277,6 +1354,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1286,6 +1364,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 16,
@@ -1302,6 +1381,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1311,6 +1391,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1326,6 +1407,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1335,6 +1417,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 7,
 		day: 18,
@@ -1351,6 +1434,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1360,6 +1444,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2013,
 		month: 1,
 		day: 24,
@@ -1375,6 +1460,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1384,6 +1470,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2010,
 		month: 7,
 		day: 18,
@@ -1400,6 +1487,7 @@ function testDateFmtFormatRelativeYearsAfter_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1409,6 +1497,7 @@ function testDateFmtFormatRelativeYearsAfter_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2025,
 		month: 10,
 		day: 24,
@@ -1424,6 +1513,7 @@ function testDateFmtFormatRelativeYearsBefore_bn_IN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1433,6 +1523,7 @@ function testDateFmtFormatRelativeYearsBefore_bn_IN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
 		year: 1990,
 		month: 7,
 		day: 18,

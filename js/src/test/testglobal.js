@@ -45,13 +45,13 @@ function testGetVersion() {
 function testGetTimeZoneDefault() {
 	ilib._platform = undefined;
 	ilib.tz = undefined;
-	assertEquals("Etc/UTC", ilib.getTimeZone());
+	assertEquals("local", ilib.getTimeZone());
 }
 
 function testSetTimeZone() {
 	ilib._platform = undefined;
 	ilib.tz = undefined;
-	assertEquals("Etc/UTC", ilib.getTimeZone());
+	assertEquals("local", ilib.getTimeZone());
     
     ilib.setTimeZone("America/Los_Angeles");
     
@@ -62,11 +62,11 @@ function testSetTimeZone() {
 function testSetTimeZoneEmpty() {
 	ilib._platform = undefined;
 	ilib.tz = undefined;
-	assertEquals("Etc/UTC", ilib.getTimeZone());
+	assertEquals("local", ilib.getTimeZone());
     
     ilib.setTimeZone();
     
-    assertEquals("Etc/UTC", ilib.getTimeZone());
+    assertEquals("local", ilib.getTimeZone());
 }
 
 function testGetTimeZoneNodejs() {

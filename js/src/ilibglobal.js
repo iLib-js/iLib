@@ -198,7 +198,7 @@ ilib.setTimeZone = function (tz) {
  * class. If the default time zone
  * is not set, ilib will attempt to use the locale of the
  * environment it is running in, if it can find that. If not, it will
- * default to the the UTC zone "Etc/UTC".<p>
+ * default to the the zone "local".<p>
  * 
  * Depends directive: !depends ilibglobal.js
  * 
@@ -228,7 +228,7 @@ ilib.getTimeZone = function() {
 			}
 		}
 		
-		ilib.tz = ilib.tz || "Etc/UTC"; 
+		ilib.tz = ilib.tz || "local"; 
 	}
 
     return ilib.tz;

@@ -147,10 +147,8 @@ ilib.TimeZone = function(options) {
 				// the offset of the standard time for the time zone is always the one that is largest of 
 				// the two, no matter whether you are in the northern or southern hemisphere
 				this.offset = Math.max(this.offsetJan1, this.offsetJun1);
-				this.id = this.getDisplayName(undefined, undefined);
-			} else {
-				this.id = options.id;
 			}
+			this.id = options.id;
 		} else if (options.offset) {
 			this.offset = (typeof(options.offset) === 'string') ? parseInt(options.offset, 10) : options.offset;
 			this.id = this.getDisplayName(undefined, undefined);
@@ -210,7 +208,7 @@ ilib.TimeZone.prototype._initZone = function() {
 	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>,c:string,n:string}} 
 	 */
 	this.zone = ilib.data.timezones[this.id];
-	if (!this.zone && !this.offset) {
+	if (!this.zone && typeof(this.offset) === 'undefined') {
 		this.id = "Etc/UTC";
 		this.zone = ilib.data.timezones[this.id];
 	}

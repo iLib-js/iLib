@@ -1228,7 +1228,7 @@ function testHebrewDateSetTimeZoneUndefined() {
     // clears it out
     gd.setTimeZone(undefined);
     
-    assertUndefined(gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testHebrewDateSetTimeZoneEmpty() {
@@ -1245,7 +1245,7 @@ function testHebrewDateSetTimeZoneEmpty() {
     // clears it out
     gd.setTimeZone("");
     
-    assertUndefined(gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testHebrewDateInitWithUnixTimeRightTimeZone() {
@@ -1254,7 +1254,7 @@ function testHebrewDateInitWithUnixTimeRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testHebrewDateInitWithJDRightTimeZone() {
@@ -1272,5 +1272,5 @@ function testHebrewDateInitWithRDRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }

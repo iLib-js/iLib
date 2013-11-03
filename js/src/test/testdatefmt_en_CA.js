@@ -29,6 +29,7 @@ function testDateFmtCASimpleShort() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -45,6 +46,7 @@ function testDateFmtCASimpleMedium() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -61,6 +63,7 @@ function testDateFmtCASimpleLong() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -77,6 +80,7 @@ function testDateFmtCASimpleFull() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -93,6 +97,7 @@ function testDateFmtCASimpleTimeShort() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -109,6 +114,7 @@ function testDateFmtCASimpleTimeMedium() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -125,6 +131,7 @@ function testDateFmtCASimpleTimeLong() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -141,6 +148,7 @@ function testDateFmtCASimpleTimeFull() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -157,6 +165,7 @@ function testDateFmtCADateTimeSimpleShort() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -173,6 +182,7 @@ function testDateFmtCADateTimeSimpleMedium() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -189,6 +199,7 @@ function testDateFmtCADateTimeSimpleLong() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -205,6 +216,7 @@ function testDateFmtCADateTimeSimpleFull() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -238,6 +250,7 @@ function testDateFmtCATemplateCalendarIncompatibleDateType() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -260,6 +273,7 @@ function testDateFmtCATemplateClock12SwitchHH() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -276,6 +290,7 @@ function testDateFmtCATemplateClock12Switchkk() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -292,6 +307,7 @@ function testDateFmtCATemplateClock24Switchhh() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -308,6 +324,7 @@ function testDateFmtCATemplateClock24SwitchKK() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -324,6 +341,7 @@ function testDateFmtCATemplateNoClockDoNotFollowLocaleDefault12hh() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -340,6 +358,7 @@ function testDateFmtCATemplateNoClockDoNotFollowLocaleDefault12KK() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -356,6 +375,7 @@ function testDateFmtCATemplateNoClockDoNotFollowLocaleDefault24HH() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -372,6 +392,7 @@ function testDateFmtCATemplateNoClockDoNotFollowLocaleDefault24kk() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -389,6 +410,7 @@ function testDateFmtCATypeDate() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -405,6 +427,7 @@ function testDateFmtCATypeTime() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -421,6 +444,7 @@ function testDateFmtCATypeDateTime() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -438,6 +462,7 @@ function testDateFmtCAShortDateComponentsY() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -454,6 +479,7 @@ function testDateFmtCAShortDateComponentsM() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -470,6 +496,7 @@ function testDateFmtCAShortDateComponentsN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -486,6 +513,7 @@ function testDateFmtCAShortDateComponentsD() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -502,6 +530,7 @@ function testDateFmtCAShortDateComponentsDM() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -518,6 +547,7 @@ function testDateFmtCAShortDateComponentsMY() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -534,6 +564,7 @@ function testDateFmtCAShortDateComponentsDMY() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -550,6 +581,7 @@ function testDateFmtCAShortDateComponentsWDM() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -566,6 +598,7 @@ function testDateFmtCAShortDateComponentsWDMY() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -583,6 +616,7 @@ function testDateFmtCAFullDateComponentsY() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -599,6 +633,7 @@ function testDateFmtCAFullDateComponentsM() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -615,6 +650,7 @@ function testDateFmtCAFullDateComponentsD() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -631,6 +667,7 @@ function testDateFmtCAFullDateComponentsDM() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -647,6 +684,7 @@ function testDateFmtCAFullDateComponentsMY() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -663,6 +701,7 @@ function testDateFmtCAFullDateComponentsDMY() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -679,6 +718,7 @@ function testDateFmtCAFullDateComponentsWDM() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -695,6 +735,7 @@ function testDateFmtCAFullDateComponentsWDMY() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -712,6 +753,7 @@ function testDateFmtCAShortTimeComponentsS() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -728,6 +770,7 @@ function testDateFmtCAShortTimeComponentsM() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -744,6 +787,7 @@ function testDateFmtCAShortTimeComponentsH() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -760,6 +804,7 @@ function testDateFmtCAShortTimeComponentsMS() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -776,6 +821,7 @@ function testDateFmtCAShortTimeComponentsHM() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -792,6 +838,7 @@ function testDateFmtCAShortTimeComponentsHMS() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -808,6 +855,7 @@ function testDateFmtCAShortTimeComponentsHMA() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -824,11 +872,12 @@ function testDateFmtCAShortTimeComponentsHMZ() {
 		locale: "en-CA", 
         type: "time", 
         time: "hmz", 
-        timezone: "America/Vancouver"
+        timezone: "America/Toronto"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -837,7 +886,7 @@ function testDateFmtCAShortTimeComponentsHMZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 PDT", fmt.format(date));
+    assertEquals("1:45 EDT", fmt.format(date));
 }
 
 function testDateFmtCAShortTimeComponentsHMAZ() {
@@ -845,11 +894,12 @@ function testDateFmtCAShortTimeComponentsHMAZ() {
 		locale: "en-CA", 
         type: "time", 
         time: "hmaz", 
-        timezone: "America/Vancouver"
+        timezone: "America/Toronto"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -858,7 +908,7 @@ function testDateFmtCAShortTimeComponentsHMAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45PM PDT", fmt.format(date));
+    assertEquals("1:45PM EDT", fmt.format(date));
 }
 
 function testDateFmtCAShortTimeComponentsHMSA() {
@@ -866,6 +916,7 @@ function testDateFmtCAShortTimeComponentsHMSA() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -882,11 +933,12 @@ function testDateFmtCAShortTimeComponentsHMSZ() {
 		locale: "en-CA", 
         type: "time", 
         time: "hmsz", 
-        timezone: "America/Vancouver"
+        timezone: "America/Toronto"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -895,7 +947,7 @@ function testDateFmtCAShortTimeComponentsHMSZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 PDT", fmt.format(date));
+    assertEquals("1:45:37 EDT", fmt.format(date));
 }
 
 function testDateFmtCAShortTimeComponentsHMSAZ() {
@@ -903,11 +955,12 @@ function testDateFmtCAShortTimeComponentsHMSAZ() {
 		locale: "en-CA", 
         type: "time", 
         time: "hmsaz", 
-        timezone: "America/Vancouver"
+        timezone: "America/Toronto"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -916,7 +969,7 @@ function testDateFmtCAShortTimeComponentsHMSAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37PM PDT", fmt.format(date));
+    assertEquals("1:45:37PM EDT", fmt.format(date));
 }
 
 
@@ -925,6 +978,7 @@ function testDateFmtCAFullTimeComponentsS() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -941,6 +995,7 @@ function testDateFmtCAFullTimeComponentsM() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -957,6 +1012,7 @@ function testDateFmtCAFullTimeComponentsH() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -973,6 +1029,7 @@ function testDateFmtCAFullTimeComponentsMS() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -989,6 +1046,7 @@ function testDateFmtCAFullTimeComponentsHM() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1005,6 +1063,7 @@ function testDateFmtCAFullTimeComponentsHMS() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1021,6 +1080,7 @@ function testDateFmtCAFullTimeComponentsHMA() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1038,11 +1098,12 @@ function testDateFmtCAFullTimeComponentsHMZ() {
         type: "time", 
         length: "full", 
         time: "hmz", 
-        timezone: "America/Vancouver"
+        timezone: "America/Toronto"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1051,7 +1112,7 @@ function testDateFmtCAFullTimeComponentsHMZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 PDT", fmt.format(date));
+    assertEquals("1:45 EDT", fmt.format(date));
 }
 
 function testDateFmtCAFullTimeComponentsHMAZ() {
@@ -1060,11 +1121,12 @@ function testDateFmtCAFullTimeComponentsHMAZ() {
         type: "time", 
         length: "full", 
         time: "hmaz", 
-        timezone: "America/Vancouver"
+        timezone: "America/Toronto"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1073,7 +1135,7 @@ function testDateFmtCAFullTimeComponentsHMAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45PM PDT", fmt.format(date));
+    assertEquals("1:45PM EDT", fmt.format(date));
 }
 
 function testDateFmtCAFullTimeComponentsHMSA() {
@@ -1081,6 +1143,7 @@ function testDateFmtCAFullTimeComponentsHMSA() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1098,11 +1161,12 @@ function testDateFmtCAFullTimeComponentsHMSZ() {
         type: "time", 
         length: "full", 
         time: "hmsz", 
-        timezone: "America/Vancouver"
+        timezone: "America/Toronto"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1111,7 +1175,7 @@ function testDateFmtCAFullTimeComponentsHMSZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 PDT", fmt.format(date));
+    assertEquals("1:45:37 EDT", fmt.format(date));
 }
 
 function testDateFmtCAFullTimeComponentsHMSAZ() {
@@ -1120,11 +1184,12 @@ function testDateFmtCAFullTimeComponentsHMSAZ() {
         type: "time", 
         length: "full", 
         time: "hmsaz", 
-        timezone: "America/Vancouver"
+        timezone: "America/Toronto"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1133,7 +1198,7 @@ function testDateFmtCAFullTimeComponentsHMSAZ() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37PM PDT", fmt.format(date));
+    assertEquals("1:45:37PM EDT", fmt.format(date));
 }
 
 function testDateFmtCAWithTimeZoneAndNoDST() {
@@ -1142,11 +1207,12 @@ function testDateFmtCAWithTimeZoneAndNoDST() {
         type: "time", 
         length: "full", 
         time: "hmsz", 
-        timezone: "America/Vancouver"
+        timezone: "America/Toronto"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "en-CA",
 		year: 2011,
 		month: 12,
 		day: 29,
@@ -1155,6 +1221,6 @@ function testDateFmtCAWithTimeZoneAndNoDST() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 PST", fmt.format(date));
+    assertEquals("1:45:37 EST", fmt.format(date));
 }
 

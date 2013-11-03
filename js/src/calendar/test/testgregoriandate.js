@@ -1780,7 +1780,7 @@ function testGregDateGetTimeZoneDefault() {
     });
     assertNotNull(gd);
     
-    assertUndefined(gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testGregDateGetTimeZoneByLocale() {
@@ -1863,7 +1863,7 @@ function testGregDateSetTimeZoneUndefined() {
     // clears it out
     gd.setTimeZone(undefined);
     
-    assertUndefined(gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testGregDateSetTimeZoneEmpty() {
@@ -1880,7 +1880,7 @@ function testGregDateSetTimeZoneEmpty() {
     // clears it out
     gd.setTimeZone("");
     
-    assertUndefined(gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testGregDateInitWithUnixTimeRightTimeZone() {
@@ -1889,7 +1889,7 @@ function testGregDateInitWithUnixTimeRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testGregDateInitWithJDRightTimeZone() {
@@ -1907,6 +1907,42 @@ function testGregDateInitWithRDRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
+// for GF-33596
+function testGregDateGetTimeWithUnixTime() {
+	var d = new Date(2011, 2, 8, 0, 0, 0, 0);
+    var gd = new ilib.Date.GregDate({
+    	year: 2011,
+    	month: 3, 
+    	day: 8,
+    	hour: 0,
+    	minute: 0,
+    	second: 0,
+    	millisecond: 0
+    });
+    assertNotNull(gd);
+    
+    assertEquals(d.getTime(), gd.getTime());
+}
+
+function testGregDateGetTimeWithUTC() {
+	var utc = Date.UTC(2013, 10, 1);
+	var d = new Date(utc);
+    var gd = new ilib.Date.GregDate({
+    	unixtime: utc
+    });
+    assertNotNull(gd);
+    
+    assertEquals(d.getTime(), gd.getTime());
+}
+
+function testGregDateGetTimeWithDefaultTime() {
+	var d = new Date();
+    var gd = new ilib.Date.GregDate();
+    
+    assertNotNull(gd);
+    
+    assertRoughlyEquals(d.getTime(), gd.getTime(), 100);
+}

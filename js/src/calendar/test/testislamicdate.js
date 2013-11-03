@@ -1153,7 +1153,7 @@ function testIslamicDateSetTimeZoneUndefined() {
     // clears it out
     gd.setTimeZone(undefined);
     
-    assertUndefined(gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testIslamicDateSetTimeZoneEmpty() {
@@ -1170,7 +1170,7 @@ function testIslamicDateSetTimeZoneEmpty() {
     // clears it out
     gd.setTimeZone("");
     
-    assertUndefined(gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testIslamicDateInitWithUnixTimeRightTimeZone() {
@@ -1179,7 +1179,7 @@ function testIslamicDateInitWithUnixTimeRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testIslamicDateInitWithJDRightTimeZone() {
@@ -1197,5 +1197,5 @@ function testIslamicDateInitWithRDRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }

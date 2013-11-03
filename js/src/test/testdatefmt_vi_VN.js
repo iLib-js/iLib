@@ -29,6 +29,7 @@ function testDateFmtSimpleShort_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -45,6 +46,7 @@ function testDateFmtSimpleMedium_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -61,6 +63,7 @@ function testDateFmtSimpleLong_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -77,6 +80,7 @@ function testDateFmtSimpleFull_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -93,6 +97,7 @@ function testDateFmtSimpleTimeShort_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -109,6 +114,7 @@ function testDateFmtSimpleTimeMedium_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -125,6 +131,7 @@ function testDateFmtSimpleTimeLong_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -141,6 +148,7 @@ function testDateFmtSimpleTimeFull_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -157,6 +165,7 @@ function testDateFmtDateTimeSimpleShort_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -173,6 +182,7 @@ function testDateFmtDateTimeSimpleMedium_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -189,6 +199,7 @@ function testDateFmtDateTimeSimpleLong_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -205,6 +216,7 @@ function testDateFmtDateTimeSimpleFull_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -238,6 +250,7 @@ function testDateFmtTemplateClock12SwitchHH_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -254,6 +267,7 @@ function testDateFmtTemplateClock12Switchkk_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -270,6 +284,7 @@ function testDateFmtTemplateClock24Switchhh_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -286,6 +301,7 @@ function testDateFmtTemplateClock24SwitchKK_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -302,6 +318,7 @@ function testDateFmtTemplateNoClockŠNotFollowLocaleDefault12hh_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -318,6 +335,7 @@ function testDateFmtTemplateNoClockŠNotFollowLocaleDefault12KK_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -334,6 +352,7 @@ function testDateFmtTemplateNoClockŠNotFollowLocaleDefault24HH_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -350,6 +369,7 @@ function testDateFmtTemplateNoClockŠNotFollowLocaleDefault24kk_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -367,6 +387,7 @@ function testDateFmtTypeDate_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -383,6 +404,7 @@ function testDateFmtTypeTime_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -399,6 +421,7 @@ function testDateFmtTypeDateTime_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -416,6 +439,7 @@ function testDateFmtShortDateComponentsY_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -432,6 +456,7 @@ function testDateFmtShortDateComponentsM_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -448,6 +473,7 @@ function testDateFmtShortDateComponentsN_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -464,6 +490,7 @@ function testDateFmtShortDateComponentsD_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -480,6 +507,7 @@ function testDateFmtShortDateComponentsDM_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -496,6 +524,7 @@ function testDateFmtShortDateComponentsMY_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -512,6 +541,7 @@ function testDateFmtShortDateComponentsDMY_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -528,6 +558,7 @@ function testDateFmtShortDateComponentsWDM_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -544,6 +575,7 @@ function testDateFmtShortDateComponentsWDMY_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -561,6 +593,7 @@ function testDateFmtFullDateComponentsY_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -577,6 +610,7 @@ function testDateFmtFullDateComponentsM_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -593,6 +627,7 @@ function testDateFmtFullDateComponentsD_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -609,6 +644,7 @@ function testDateFmtFullDateComponentsDM_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -625,6 +661,7 @@ function testDateFmtFullDateComponentsMY_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -641,6 +678,7 @@ function testDateFmtFullDateComponentsDMY_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -657,6 +695,7 @@ function testDateFmtFullDateComponentsWDM_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -673,6 +712,7 @@ function testDateFmtFullDateComponentsWDMY_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -690,6 +730,7 @@ function testDateFmtShortTimeComponentsS_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -706,6 +747,7 @@ function testDateFmtShortTimeComponentsM_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -722,6 +764,7 @@ function testDateFmtShortTimeComponentsH_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -738,6 +781,7 @@ function testDateFmtShortTimeComponentsMS_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -754,6 +798,7 @@ function testDateFmtShortTimeComponentsHM_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -770,6 +815,7 @@ function testDateFmtShortTimeComponentsHMS_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -786,6 +832,7 @@ function testDateFmtShortTimeComponentsHMA_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -806,6 +853,7 @@ function testDateFmtShortTimeComponentsHMZ_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -826,6 +874,7 @@ function testDateFmtShortTimeComponentsHMAZ_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -842,6 +891,7 @@ function testDateFmtShortTimeComponentsHMSA_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -862,6 +912,7 @@ function testDateFmtShortTimeComponentsHMSZ_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -882,6 +933,7 @@ function testDateFmtShortTimeComponentsHMSAZ_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -899,6 +951,7 @@ function testDateFmtFullTimeComponentsS_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -915,6 +968,7 @@ function testDateFmtFullTimeComponentsM_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -931,6 +985,7 @@ function testDateFmtFullTimeComponentsH_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -947,6 +1002,7 @@ function testDateFmtFullTimeComponentsMS_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -963,6 +1019,7 @@ function testDateFmtFullTimeComponentsHM_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -979,6 +1036,7 @@ function testDateFmtFullTimeComponentsHMS_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -995,6 +1053,7 @@ function testDateFmtFullTimeComponentsHMA_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1016,6 +1075,7 @@ function testDateFmtFullTimeComponentsHMZ_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1037,6 +1097,7 @@ function testDateFmtFullTimeComponentsHMAZ_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1053,6 +1114,7 @@ function testDateFmtFullTimeComponentsHMSA_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1074,6 +1136,7 @@ function testDateFmtFullTimeComponentsHMSZ_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1095,6 +1158,7 @@ function testDateFmtFullTimeComponentsHMSAZ_vi_VN() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1111,11 +1175,13 @@ function testDateFmtWithTimeZoneAndNoDST_vi_VN() {
         locale: "vi-VN", 
         type: "time", 
         length: "full", 
-        time: "hmsz"
+        time: "hmsz",
+        timezone: "Asia/Ho_Chi_Minh"
     });
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 12,
 		day: 29,
@@ -1132,6 +1198,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_vi_VN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1141,6 +1208,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_vi_VN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1157,6 +1225,7 @@ function testDateFmtFormatRelativeWithinHourAfter_vi_VN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1166,6 +1235,7 @@ function testDateFmtFormatRelativeWithinHourAfter_vi_VN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1182,6 +1252,7 @@ function testDateFmtFormatRelativeWithinDayAfter_vi_VN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1191,6 +1262,7 @@ function testDateFmtFormatRelativeWithinDayAfter_vi_VN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1207,6 +1279,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_vi_VN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1216,6 +1289,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_vi_VN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1233,6 +1307,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_vi_VN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1242,6 +1317,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_vi_VN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1259,6 +1335,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_vi_VN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1268,6 +1345,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_vi_VN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2013,
 		month: 1,
 		day: 24,
@@ -1284,6 +1362,7 @@ function testDateFmtFormatRelativeYearsAfter_vi_VN() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1293,6 +1372,7 @@ function testDateFmtFormatRelativeYearsAfter_vi_VN() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "vi-VN",
 		year: 2025,
 		month: 10,
 		day: 24,

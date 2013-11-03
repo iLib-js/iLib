@@ -29,6 +29,7 @@ function testDateFmtSimpleShort_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -45,6 +46,7 @@ function testDateFmtSimpleMedium_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -61,6 +63,7 @@ function testDateFmtSimpleLong_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -77,6 +80,7 @@ function testDateFmtSimpleFull_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -93,6 +97,7 @@ function testDateFmtSimpleTimeShort_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -109,6 +114,7 @@ function testDateFmtSimpleTimeMedium_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -125,6 +131,7 @@ function testDateFmtSimpleTimeLong_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -141,6 +148,7 @@ function testDateFmtSimpleTimeFull_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -157,6 +165,7 @@ function testDateFmtDateTimeSimpleShort_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -173,6 +182,7 @@ function testDateFmtDateTimeSimpleMedium_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -189,6 +199,7 @@ function testDateFmtDateTimeSimpleLong_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -205,6 +216,7 @@ function testDateFmtDateTimeSimpleFull_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -239,6 +251,7 @@ function testDateFmtTemplateClock12SwitchHH_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -255,6 +268,7 @@ function testDateFmtTemplateClock12Switchkk_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -271,6 +285,7 @@ function testDateFmtTemplateClock24Switchhh_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -287,6 +302,7 @@ function testDateFmtTemplateClock24SwitchKK_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -303,6 +319,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -319,6 +336,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -335,6 +353,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -351,6 +370,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -368,6 +388,7 @@ function testDateFmtTypeDate_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -384,6 +405,7 @@ function testDateFmtTypeTime_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -400,6 +422,7 @@ function testDateFmtTypeDateTime_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -417,6 +440,7 @@ function testDateFmtShortDateComponentsY_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -433,6 +457,7 @@ function testDateFmtShortDateComponentsM_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -449,6 +474,7 @@ function testDateFmtShortDateComponentsN_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -465,6 +491,7 @@ function testDateFmtShortDateComponentsD_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -481,6 +508,7 @@ function testDateFmtShortDateComponentsDM_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -497,6 +525,7 @@ function testDateFmtShortDateComponentsMY_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -513,6 +542,7 @@ function testDateFmtShortDateComponentsDMY_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -529,6 +559,7 @@ function testDateFmtShortDateComponentsWDM_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -545,6 +576,7 @@ function testDateFmtShortDateComponentsWDMY_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -562,6 +594,7 @@ function testDateFmtFullDateComponentsY_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -578,6 +611,7 @@ function testDateFmtFullDateComponentsM_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -594,6 +628,7 @@ function testDateFmtFullDateComponentsD_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -610,6 +645,7 @@ function testDateFmtFullDateComponentsDM_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -626,6 +662,7 @@ function testDateFmtFullDateComponentsMY_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -642,6 +679,7 @@ function testDateFmtFullDateComponentsDMY_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -658,6 +696,7 @@ function testDateFmtFullDateComponentsWDM_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -674,6 +713,7 @@ function testDateFmtFullDateComponentsWDMY_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -691,6 +731,7 @@ function testDateFmtShortTimeComponentsS_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -707,6 +748,7 @@ function testDateFmtShortTimeComponentsM_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -723,6 +765,7 @@ function testDateFmtShortTimeComponentsH_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -739,6 +782,7 @@ function testDateFmtShortTimeComponentsMS_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -755,6 +799,7 @@ function testDateFmtShortTimeComponentsHM_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -771,6 +816,7 @@ function testDateFmtShortTimeComponentsHMS_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -787,6 +833,7 @@ function testDateFmtShortTimeComponentsHMA_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -807,6 +854,7 @@ function testDateFmtShortTimeComponentsHMZ_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -827,6 +875,7 @@ function testDateFmtShortTimeComponentsHMAZ_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -843,6 +892,7 @@ function testDateFmtShortTimeComponentsHMSA_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -863,6 +913,7 @@ function testDateFmtShortTimeComponentsHMSZ_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -883,6 +934,7 @@ function testDateFmtShortTimeComponentsHMSAZ_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -900,6 +952,7 @@ function testDateFmtFullTimeComponentsS_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -916,6 +969,7 @@ function testDateFmtFullTimeComponentsM_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -932,6 +986,7 @@ function testDateFmtFullTimeComponentsH_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -948,6 +1003,7 @@ function testDateFmtFullTimeComponentsMS_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -964,6 +1020,7 @@ function testDateFmtFullTimeComponentsHM_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -980,6 +1037,7 @@ function testDateFmtFullTimeComponentsHMS_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -996,6 +1054,7 @@ function testDateFmtFullTimeComponentsHMA_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1017,6 +1076,7 @@ function testDateFmtFullTimeComponentsHMZ_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1038,6 +1098,7 @@ function testDateFmtFullTimeComponentsHMAZ_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1054,6 +1115,7 @@ function testDateFmtFullTimeComponentsHMSA_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1075,6 +1137,7 @@ function testDateFmtFullTimeComponentsHMSZ_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1096,6 +1159,7 @@ function testDateFmtFullTimeComponentsHMSAZ_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 29,
@@ -1117,6 +1181,7 @@ function testDateFmtWithTimeZoneAndNoDST_fi_FI() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 12,
 		day: 29,
@@ -1133,6 +1198,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1142,6 +1208,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1157,6 +1224,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1166,6 +1234,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1181,6 +1250,7 @@ function testDateFmtFormatRelativeWithinHourAfter_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1190,6 +1260,7 @@ function testDateFmtFormatRelativeWithinHourAfter_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1205,6 +1276,7 @@ function testDateFmtFormatRelativeWithinHourBefore_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1214,6 +1286,7 @@ function testDateFmtFormatRelativeWithinHourBefore_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1229,6 +1302,7 @@ function testDateFmtFormatRelativeWithinDayAfter_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1238,6 +1312,7 @@ function testDateFmtFormatRelativeWithinDayAfter_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1253,6 +1328,7 @@ function testDateFmtFormatRelativeWithinDayBefore_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1262,6 +1338,7 @@ function testDateFmtFormatRelativeWithinDayBefore_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1278,6 +1355,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1287,6 +1365,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1302,6 +1381,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 20,
@@ -1311,6 +1391,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 16,
@@ -1327,6 +1408,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1336,6 +1418,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 11,
 		day: 24,
@@ -1351,6 +1434,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1360,6 +1444,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 7,
 		day: 18,
@@ -1376,6 +1461,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1385,6 +1471,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2013,
 		month: 1,
 		day: 24,
@@ -1400,6 +1487,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1409,6 +1497,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2010,
 		month: 7,
 		day: 18,
@@ -1425,6 +1514,7 @@ function testDateFmtFormatRelativeYearsAfter_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1434,6 +1524,7 @@ function testDateFmtFormatRelativeYearsAfter_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2025,
 		month: 10,
 		day: 24,
@@ -1449,6 +1540,7 @@ function testDateFmtFormatRelativeYearsBefore_fi_FI() {
     assertNotNull(fmt);
     
     var reference = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 2011,
 		month: 9,
 		day: 20,
@@ -1458,6 +1550,7 @@ function testDateFmtFormatRelativeYearsBefore_fi_FI() {
 		millisecond: 0
 	});
     var date = new ilib.Date.GregDate({
+		locale: "fi-FI",
 		year: 1990,
 		month: 7,
 		day: 18,
