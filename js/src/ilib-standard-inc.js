@@ -26,6 +26,8 @@ daterangefmt.js
 date.js
 calendar/gregorian.js
 calendar/gregoriandate.js
+calendar/thaisolar.js
+calendar/thaisolardate.js
 numprs.js
 numfmt.js
 julianday.js
