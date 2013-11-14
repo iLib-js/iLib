@@ -283,7 +283,7 @@ ilib.DateRngFmt.prototype = {
 		// c01 - difference is less than 3 days. Year and month are same but date and time are different
 		// c02 - difference is less than 3 days. Year is same but month, date, and time are different. (ie. it straddles a month boundary)
 		// c03 - difference is less than 3 days. Year, month, date, and time are all different. (ie. it straddles a year boundary)
-		// c10 - difference is less than 2 years. Year and month are the same, but date and time are different.
+		// c10 - difference is less than 2 years. Year and month are the same, but date is different.
 		// c11 - difference is less than 2 years. Year is the same, but month, date, and time are different.
 		// c12 - difference is less than 2 years. All fields are different. (ie. straddles a year boundary)
 		// c20 - difference is less than 10 years. All fields are different.
