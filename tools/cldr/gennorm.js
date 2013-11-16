@@ -229,7 +229,7 @@ function findScript(str) {
 	if (i !== -1) {
 		return rangeToScript[i][2];
 	}
-	return "Zyyy"; // default is "common" script which shared by all scripts
+	return "Zyyy"; // default is "common" script which is shared by all scripts
 }
 
 function genCode(script, form) {
