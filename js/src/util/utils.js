@@ -396,6 +396,60 @@ ilib.isEmpty = function (obj) {
 	return true;
 };
 
+
+ilib.hashCode = function(obj) {
+	var hash = 0;
+	
+	function addHash(hash, newValue) {
+		// co-prime numbers creates a nicely distributed hash
+		hash *= 65543;
+		hash += newValue;
+		hash %= 2147483647; 
+		return hash;
+	}
+	
+	function stringHash(str) {
+		var hash = 0;
+		for (var i = 0; i < str.length; i++) {
+			hash = addHash(hash, str.charCodeAt(i));
+		}
+		return hash;
+	}
+	
+	switch (typeof(obj)) {
+		case 'undefined':
+			hash = 0;
+			break;
+		case 'string':
+			hash = stringHash(obj);
+			break;
+		case 'function':
+		case 'number':
+		case 'xml':
+			hash = stringHash(String(obj));
+			break;
+		case 'boolean':
+			hash = obj ? 1 : 0;
+			break;
+		case 'object':
+			var props = [];
+			for (var p in obj) {
+				if (obj.hasOwnProperty(p)) {
+					props.push(p);
+				}
+			}
+			// make sure the order of the properties doesn't matter
+			props.sort();
+			for (var i = 0; i < props.length; i++) {
+				hash = addHash(hash, stringHash(props[i]));
+				hash = addHash(hash, ilib.hashCode(obj[props[i]]));
+			}
+			break;
+	}
+	
+	return hash;
+};
+
 /**
  * Find locale data or load it in. If the data with the given name is preassembled, it will
  * find the data in ilib.data. If the data is not preassembled but there is a loader function,
@@ -462,7 +516,7 @@ ilib.loadData = function(params) {
 		type = (dot !== -1) ? name.substring(dot+1) : "text";
 	}
 
-	var spec = locale.getSpec().replace(/-/g, '_') || "root";
+	var spec = (locale.getSpec().replace(/-/g, '_') || "root") + "," + name + "," + String(ilib.hashCode(loadParams));
 	if (!object || typeof(object.cache[spec]) === 'undefined') {
 		var data;
 		
