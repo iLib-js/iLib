@@ -179,33 +179,100 @@ rangeToScript = ranges;
 // util.print("Sorted and coelesced ranges are:\n");
 // util.print(JSON.stringify(rangeToScript));
 
-function parseWeight(weight) {
-	var ch = weight.trim();
-	if (ch.length > 0) {
-		if (ch.charAt(0) === '.' || ch.charAt(0) === '*') {
+/**
+ * Create a new weight vector instance.
+ * 
+ * @param {Array.<number>|string|number?} primary
+ * @param {string|number?} secondary
+ * @param {string|number?} tertiary
+ * @param {string|number?} quaternary
+ */
+var WeightVector = function(primary, secondary, tertiary, quaternary) {
+	this.weights = [0, 0, 0, 0];
+	
+	if (typeof(primary) === 'object') {
+		this.weights = primary.concat(this.weights.slice(primary.length));
+	} else if (typeof(primary) === 'string') {
+		var str = primary.replace(/\]/g, '');
+		str = str.replace(/\[/g, '').trim();
+		
+		if (str.charAt(0) === '.' || str.charAt(0) === '*') {
 			// alternate char... what to do about these?
-			ch = ch.substring(1);
+			str = str.substring(1);
+			this.alt = true; // what does this mean?
 		}
-		var weights = ch.split(/\./g);
-		var weightVector = [];
+		
+		var weights = str.split(/\./g);
 		for (var i = 0; i < weights.length; i++) {
-			weightVector.push((weights[i] && weights[i].length > 0) ? parseInt(weights[i], 16) : 0);
+			this.weights[i] = (weights[i] && weights[i].length > 0) ? parseInt(weights[i], 16) : 0;
 		}
-		return weightVector;
+	} else if (typeof(primary) !== 'undefined') {
+		this.weights[0] = primary;
+		this.weights[1] = secondary;
+		this.weights[2] = tertiary;
+		this.weights[3] = quaternary;
 	}
-	return undefined;
-}
+};
+
+WeightVector.prototype = {
+	set: function(position, amount) {
+		this.weights[position] = amount;
+	},
+	
+	add: function(position, amount) {
+		this.weights[position] += amount;
+		for (var i = position + 1; i < 4; i++) {
+			this.weights[i] = 0;
+		}
+	},
+	
+	increment: function(position) {
+		this.add(position, 1);
+	},
+	
+	addPrimary: function(amount) {
+		this.add(0, amount);
+	},
+
+	addSecondary: function(amount) {
+		this.add(1, amount);
+	},
+
+	addTertiary: function(amount) {
+		this.add(2, amount);
+	},
+
+	addQuaternary: function(amount) {
+		this.add(3, amount);
+	},
+	
+	compare: function(otherVector) {
+		for (var i = 0; i < 4; i++) {
+			if (this.weights[i] !== otherVector.weights[i]) {
+				return i;
+			}
+		}
+		return -1;
+	},
+	
+	clone: function() {
+		return new WeightVector(this.weights);
+	},
+	
+	toString: function() {
+		return JSON.stringify(this.weights);
+	}
+};
 
 function parseWeightLine(weightLine) {
 	//util.print("parsing weight line: " + weightLine + "\n");
-	weightLine = weightLine.replace(/\]/g, '');
-	var chars = weightLine.split(/\[/g);
+	var chars = weightLine.trim().split(/\]\[/g);
 	var weights = [];
 	//util.print("chars is: " + JSON.stringify(chars) + "\n");
 	for (var j = 0; j < chars.length; j++) {
-		var weightVector = parseWeight(chars[j]);
-		if (weightVector) {
-			weights.push(weightVector);
+		var str = chars[j].trim();
+		if (str.length > 0) {
+			weights.push(new WeightVector(str));
 		}
 	}
 	//util.print("weights: " + JSON.stringify(weights) + "\n");
@@ -269,35 +336,21 @@ for (ch in ducet) {
 }
 */
 
-function completeWeight(vector) {
-	var ret = [0, 0, 0, 0];
-	if (vector.length < ret.length) {
-		vector = vector.concat(ret.slice(ret.length));
-	}
-	return vector;
-}
-function compareWeights(left, right) {
+
+function compareWeightArray(left, right) {
 	var i = 0; 
 	while (i < left.length && i < right.length) {
-		var leftWeight = completeWeight(left[i]);
-		var rightWeight = completeWeight(right[i]);
-		
-		if (leftWeight[0] < rightWeight[0]) {
-			return "<";
-		} else if (leftWeight[1] < rightWeight[1]) {
-			return "<<";
-		} else if (leftWeight[2] < rightWeight[2]) {
-			return "<<<";
-		} else if (leftWeight[3] < rightWeight[3]) {
-			return "<<<<";
+		var diff = left[i].compare(right[i]);
+		if (diff !== -1) {
+			return diff;
 		}
 		i++;
 	}
 	
-	return "=";
+	return 0;
 }
 
-// util.print("Ducet table for Hani is: " + JSON.stringify(elementsByScript["Hani"]) + "\n");
+/* util.print("Ducet table for Hani is: " + JSON.stringify(elementsByScript["Hani"]) + "\n");
 var hani = elementsByScript["Hani"];
 var previousRow;
 for (var i = 0; i < hani.length; i++) {
@@ -305,9 +358,118 @@ for (var i = 0; i < hani.length; i++) {
 	if (ch && ch.length > 0) {
 		var row = ducet[ch];
 		if (previousRow) {
-			util.print(compareWeights(previousRow.weights, row.weights));
+			var diff = compareWeightArray(previousRow.weights, row.weights);
 		}
-		util.print(ch + "\n");
 		previousRow = row;
 	}
 }
+*/
+
+// first get ducet data
+
+//util.print("Ducet table for Hani is: " + JSON.stringify(elementsByScript["Hani"]) + "\n");
+var collPinyin = [];
+var hani = elementsByScript["Hani"];
+var previousRow;
+var thisElement = new WeightVector(), lastElement;
+
+for (var i = 0; i < hani.length; i++) {
+	var ch = hani[i];
+	if (ch && ch.length > 0) {
+		var row = ducet[ch];
+		if (previousRow) {
+			var position = compareWeightArray(previousRow.weights, row.weights);
+			thisElement = lastElement.clone();
+			if (position !== -1) {
+				// leave 2 bytes worth of space between each ducet char for tailoring
+				// so that all of UCS-2 could be tailored between any two chars
+				thisElement.add(position, 65536); 
+			}
+			collPinyin.push({
+				char: ch,
+				weights: thisElement
+			});
+			
+			util.print("DUCET char " + ch + " has " + thisElement + "\n");
+		}
+		lastElement = thisElement;
+		previousRow = row;
+	}
+}
+
+
+// now parse the data
+function isWhite(ch) {
+	switch (ch) {
+		case ' ':
+		case '\t':
+		case '\r':
+		case '\n':
+			return true;
+		default:
+			return false;
+	}
+}
+
+var collationsDir = "../../js/data/collation/";
+var collPinyinName = collationsDir + "zh/coll.pinyin.txt";
+
+fs.exists(collPinyinName, function (exists) {
+	if (!exists) {
+		util.error("Could not access file " + collPinyinName);
+		usage();
+	}
+});
+
+var data = fs.readFileSync(collPinyinName, "utf-8");
+
+var i = 0, ch, op;
+
+while (isWhite(data.charAt(i))) {
+	i++;
+}
+
+ch = data.charAt(i++);
+
+if (ch === '<') {
+	op = "1";
+	ch = (i < data.length) ? data.charAt(i) : "";
+	if (ch === '<') {
+		op = "2";
+		i++;
+		ch = (i < data.length) ? data.charAt(i) : "";
+		if (ch === '<') {
+			op = "3";
+			i++;
+			ch = (i < data.length) ? data.charAt(i) : "";
+			if (ch === '<') {
+				op = "4";
+			}
+		}
+	}
+} else if (ch === '&') {
+	op = "&";
+} else {
+	
+}
+
+/*
+ å         [1,0,0]
+   <<<Å    [1,0,1]
+<ä         [2,0,0]
+    <<<Ä   [2,0,1]
+  <<æ      [2,1,0]
+    <<<Æ   [2,1,1]
+  <<ę      [2,2,0]
+    <<<Ę   [2,2,1]
+<ö         [3,0,0]
+    <<<Ö   [3,0,1]
+  <<ø      [3,1,0]
+    <<<Ø   [3,1,1]
+  <<ő      [3,2,0]
+    <<<Ő   [3,2,1]
+  <<œ      [3,3,0]
+    <<<Œ   [3,3,1]
+  <<ô      [3,4,0]
+    <<<Ô   [3,4,1]
+*/
