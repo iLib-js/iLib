@@ -387,10 +387,11 @@ for (var i = 0; i < hani.length; i++) {
 			}
 			collPinyin.push({
 				char: ch,
-				weights: thisElement
+				weights: thisElement,
+				follows: []
 			});
 			
-			util.print("DUCET char " + ch + " has " + thisElement + "\n");
+			// util.print("DUCET char " + ch + " has " + thisElement + "\n");
 		}
 		lastElement = thisElement;
 		previousRow = row;
@@ -423,36 +424,99 @@ fs.exists(collPinyinName, function (exists) {
 
 var data = fs.readFileSync(collPinyinName, "utf-8");
 
-var i = 0, ch, op;
+var i = 0, ch, op = 0, current = 0, vector, element;
+var collation = [];
+//var collationHash = {};
+var mode = "accumulate";
 
-while (isWhite(data.charAt(i))) {
-	i++;
+function skipWhite() {
+	while (isWhite(data.charAt(i))) {
+		i++;
+	}
 }
 
-ch = data.charAt(i++);
-
-if (ch === '<') {
-	op = "1";
-	ch = (i < data.length) ? data.charAt(i) : "";
+while (i < data.length) {
+	skipWhite();
+	ch = data.charAt(i++);
+	
 	if (ch === '<') {
-		op = "2";
-		i++;
+		op = 0;
+		mode = "accumulate";
 		ch = (i < data.length) ? data.charAt(i) : "";
 		if (ch === '<') {
-			op = "3";
+			op = 1;
 			i++;
 			ch = (i < data.length) ? data.charAt(i) : "";
 			if (ch === '<') {
-				op = "4";
+				op = 2;
+				i++;
+				ch = (i < data.length) ? data.charAt(i) : "";
+				if (ch === '<') {
+					op = 3;
+				}
 			}
 		}
-	}
-} else if (ch === '&') {
-	op = "&";
-} else {
+		if (ch === '*') {
+			mode = "separate";
+			i++;
+		}
+		util.print("found op level " + op + "\n");
+	} else if (ch === '#') {
+		// skip comments
+		while (i < data.length && data.charAt(i) !== '\n') {
+			i++;
+		}
+	} else if (ch === '&') {
+		var value = "";
+		
+		skipWhite();
+		ch = data.charAt(i);
+		while (ch !== '&' && ch !== '<' && ch !== '#' && !isWhite(ch)) {
+			if (ch !== "'") {
+				value += ch;
+			}
+			ch = data.charAt(++i);
+		}
+		util.print("Searching for string " + value + "\n");
+		for (var j = 0; j < collPinyin.length; j++) {
+			if (collPinyin[j].char === value.charAt(0)) {
+				current = j;
+				util.print("Found reference to string " + value + " at position " + j + "\n");
+			}
+		}
+	} else {
+		var f = collPinyin[current].follows;
+		
+		if (f.length > 0) {
+			util.print("Adding collation element " + ch + " at position " + current + "[" + (f.length-1) + "] level " + op + "\n");
+			vector = f[f.length-1].weights.clone();
+		} else {
+			util.print("Adding collation element " + ch + " at position " + (current+1) + " level " + op + "\n");
+			vector = collPinyin[current].weights.clone();
+		}
+		
+		vector.increment(op);
 	
+		element = {
+			char: ch,
+			weights: vector,
+			follows: []
+		};
+		f.push(element);
+		//collationHash[ch] = element;
+	}
 }
 
+util.print("Pinyin collation is: \n");
+
+for (i = 0; i < collPinyin.length; i++) {
+	element = collPinyin[i];
+	util.print('"' + element.char + '": ' + element.weights.toString() + "\n");
+	var follows = element.follows;
+	for (var j = 0; j < follows.length; j++) {
+		util.print('  "' + follows[j].char + '": ' + follows[j].weights.toString() + "\n");
+	}
+}
 /*
  å         [1,0,0]
    <<<Å    [1,0,1]
