@@ -590,7 +590,7 @@ function testDateFmtShortDateComponentsWDM() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("목 09. 29", fmt.format(date));
+    assertEquals("목, 09. 29", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY() {
@@ -607,7 +607,24 @@ function testDateFmtShortDateComponentsWDMY() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("목 11. 09. 29", fmt.format(date));
+    assertEquals("목, 11. 09. 29", fmt.format(date));
+}
+
+function testDateFmtLongDateComponentsWDM() {
+    var fmt = new ilib.DateFmt({locale: "ko-KR", date: "wdm", length: "long"});
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "ko-KR",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("목요일, 9월 29일", fmt.format(date));
 }
 
 

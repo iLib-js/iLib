@@ -3,9 +3,9 @@
 		"order": "{date} {time}",
 		"date": {
 			"dmwy": {
-				"s": "E yy. MM. dd",
-				"m": "EE yyyy. MM. dd",
-				"l": "EEE yyyy년 MMM월 d일",
+				"s": "E, yy. MM. dd",
+				"m": "EE, yyyy. MM. dd",
+				"l": "EEE, yyyy년 MMM월 d일",
 				"f": "yyyy년 MMM월 d일 (EEEE)"
 			},
 			"dmy": {
@@ -15,9 +15,9 @@
 				"f": "yyyy년 MMM월 d일"
 			},
 			"dmw": {
-				"s": "E MM. dd",
-				"m": "EE MM. dd",
-				"l": "EEE MMM월 d일",
+				"s": "E, MM. dd",
+				"m": "EE, MM. dd",
+				"l": "EEE, MMM월 d일",
 				"f": "MMM월 d일 (EEEE)"
 			},
 			"dm": {
@@ -33,9 +33,9 @@
 				"f": "yyyy년 MMM월"
 			},
 			"dw": {
-				"s": "EE dd",
-				"m": "EE dd",
-				"l": "EEE d일",
+				"s": "EE, dd",
+				"m": "EE, dd",
+				"l": "EEE, d일",
 				"f": "d일(EEEE)"
 			},
 			"d": "dd",
