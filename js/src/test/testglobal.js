@@ -30,6 +30,15 @@ function testSetLocale() {
     delete ilib.locale; // clean up
 }
 
+function testSetLocaleObject() {
+    assertEquals("en-US", ilib.getLocale());
+    
+    ilib.setLocale(new ilib.Locale("it-IT"));
+
+    // do not change the locale if the arg is not a string
+    assertEquals("en-US", ilib.getLocale());
+}
+
 function testSetLocaleEmpty() {
     assertEquals("en-US", ilib.getLocale());
     
@@ -199,6 +208,15 @@ function testGetLocaleWebOS() {
 	assertEquals("ru-RU", ilib.getLocale());
 	
 	PalmSystem = undefined;
+}
+
+function testGetLocaleNotString() {
+	ilib._platform = undefined;
+	PalmSystem = undefined;
+	ilib.locale = new ilib.Locale("it-IT");
+	
+	// should remove the locale object and make it into a string
+	assertEquals("en-US", ilib.getLocale());
 }
 
 function testGetTimeZoneBrowser() {

@@ -111,7 +111,11 @@ ilib._isGlobal = function(name) {
  * @param {string} spec the locale specifier for the default locale
  */
 ilib.setLocale = function (spec) {
-    ilib.locale = spec || ilib.locale;
+	if (typeof(spec) === 'string') {
+		ilib.locale = spec;
+	}
+    // else ignore other data types, as we don't have the dependencies
+	// to look into them to find a locale
 };
 
 /**
@@ -128,7 +132,7 @@ ilib.setLocale = function (spec) {
  * @return {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
-	if (typeof(ilib.locale) === 'undefined') {
+	if (typeof(ilib.locale) !== 'string') {
 		if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
 			// running in a browser
 			ilib.locale = navigator.language;  // FF/Opera/Chrome/Webkit
@@ -170,7 +174,7 @@ ilib.getLocale = function () {
 			}
 		}
 			 
-		ilib.locale = ilib.locale || 'en-US';
+		ilib.locale = typeof(ilib.locale) === 'string' ? ilib.locale : 'en-US';
 	}
     return ilib.locale;
 };
