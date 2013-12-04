@@ -47,6 +47,17 @@ function testLocaleConstructorDefault() {
     delete ilib.locale;
 }
 
+function testLocaleCopyConstructor() {
+    var loc2 = new ilib.Locale("de", "DE");
+    var loc = new ilib.Locale(loc2);
+    
+    assertNotNull(loc);
+    
+    assertEquals("de", loc.getLanguage());
+    assertEquals("DE", loc.getRegion());
+    assertUndefined(loc.getVariant());
+}
+
 function testLocaleConstructorFull() {
     var loc = new ilib.Locale("en", "US", "Midwest");
     

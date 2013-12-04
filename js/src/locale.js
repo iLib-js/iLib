@@ -60,8 +60,8 @@
  * Depends directive: !depends locale.js
  * 
  * @constructor
- * @param {?string=} language the ISO 639 2-letter code for the language, or a full 
- * locale spec in BCP-47 format
+ * @param {?string|ilib.Locale=} language the ISO 639 2-letter code for the language, or a full 
+ * locale spec in BCP-47 format, or another ilib.Locale instance to copy from
  * @param {string=} region the ISO 3166 2-letter code for the region
  * @param {string=} variant the name of the variant of this locale, if any
  * @param {string=} script the ISO 15924 code of the script for this locale, if any
@@ -69,38 +69,45 @@
 ilib.Locale = function(language, region, variant, script) {
 	if (typeof(region) === 'undefined') {
 		var spec = language || ilib.getLocale();
-		var parts = spec.split('-');
-        for ( var i = 0; i < parts.length; i++ ) {
-        	if (ilib.Locale._isLanguageCode(parts[i])) {
-    			/** 
-    			 * @private
-    			 * @type {string|undefined}
-    			 */
-        		this.language = parts[i];
-        	} else if (ilib.Locale._isRegionCode(parts[i])) {
-    			/** 
-    			 * @private
-    			 * @type {string|undefined}
-    			 */
-        		this.region = parts[i];
-        	} else if (ilib.Locale._isScriptCode(parts[i])) {
-    			/** 
-    			 * @private
-    			 * @type {string|undefined}
-    			 */
-        		this.script = parts[i];
-        	} else {
-    			/** 
-    			 * @private
-    			 * @type {string|undefined}
-    			 */
-        		this.variant = parts[i];
-        	}
-        }
-        this.language = this.language || undefined;
-        this.region = this.region || undefined;
-        this.script = this.script || undefined;
-        this.variant = this.variant || undefined;
+		if (typeof(spec) === 'string') {
+			var parts = spec.split('-');
+	        for ( var i = 0; i < parts.length; i++ ) {
+	        	if (ilib.Locale._isLanguageCode(parts[i])) {
+	    			/** 
+	    			 * @private
+	    			 * @type {string|undefined}
+	    			 */
+	        		this.language = parts[i];
+	        	} else if (ilib.Locale._isRegionCode(parts[i])) {
+	    			/** 
+	    			 * @private
+	    			 * @type {string|undefined}
+	    			 */
+	        		this.region = parts[i];
+	        	} else if (ilib.Locale._isScriptCode(parts[i])) {
+	    			/** 
+	    			 * @private
+	    			 * @type {string|undefined}
+	    			 */
+	        		this.script = parts[i];
+	        	} else {
+	    			/** 
+	    			 * @private
+	    			 * @type {string|undefined}
+	    			 */
+	        		this.variant = parts[i];
+	        	}
+	        }
+	        this.language = this.language || undefined;
+	        this.region = this.region || undefined;
+	        this.script = this.script || undefined;
+	        this.variant = this.variant || undefined;
+		} else if (typeof(spec) === 'object') {
+	        this.language = spec.language || undefined;
+	        this.region = spec.region || undefined;
+	        this.script = spec.script || undefined;
+	        this.variant = spec.variant || undefined;
+		}
 	} else {
 		if (language) {
 			language = language.trim();
