@@ -111,7 +111,11 @@ ilib._isGlobal = function(name) {
  * @param {string} spec the locale specifier for the default locale
  */
 ilib.setLocale = function (spec) {
-    ilib.locale = spec || ilib.locale;
+	if (typeof(spec) === 'string') {
+		ilib.locale = spec;
+	}
+    // else ignore other data types, as we don't have the dependencies
+	// to look into them to find a locale
 };
 
 /**
@@ -128,7 +132,7 @@ ilib.setLocale = function (spec) {
  * @return {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
-	if (typeof(ilib.locale) === 'undefined') {
+	if (typeof(ilib.locale) !== 'string') {
 		if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
 			// running in a browser
 			ilib.locale = navigator.language;  // FF/Opera/Chrome/Webkit
@@ -170,7 +174,7 @@ ilib.getLocale = function () {
 			}
 		}
 			 
-		ilib.locale = ilib.locale || 'en-US';
+		ilib.locale = typeof(ilib.locale) === 'string' ? ilib.locale : 'en-US';
 	}
     return ilib.locale;
 };
@@ -198,7 +202,7 @@ ilib.setTimeZone = function (tz) {
  * class. If the default time zone
  * is not set, ilib will attempt to use the locale of the
  * environment it is running in, if it can find that. If not, it will
- * default to the the UTC zone "Etc/UTC".<p>
+ * default to the the zone "local".<p>
  * 
  * Depends directive: !depends ilibglobal.js
  * 
@@ -228,7 +232,7 @@ ilib.getTimeZone = function() {
 			}
 		}
 		
-		ilib.tz = ilib.tz || "Etc/UTC"; 
+		ilib.tz = ilib.tz || "local"; 
 	}
 
     return ilib.tz;
@@ -393,8 +397,8 @@ ilib.setLoaderCallback = function(loader) {
  * Depends directive: !depends locale.js
  * 
  * @constructor
- * @param {?string=} language the ISO 639 2-letter code for the language, or a full 
- * locale spec in BCP-47 format
+ * @param {?string|ilib.Locale=} language the ISO 639 2-letter code for the language, or a full 
+ * locale spec in BCP-47 format, or another ilib.Locale instance to copy from
  * @param {string=} region the ISO 3166 2-letter code for the region
  * @param {string=} variant the name of the variant of this locale, if any
  * @param {string=} script the ISO 15924 code of the script for this locale, if any
@@ -402,38 +406,45 @@ ilib.setLoaderCallback = function(loader) {
 ilib.Locale = function(language, region, variant, script) {
 	if (typeof(region) === 'undefined') {
 		var spec = language || ilib.getLocale();
-		var parts = spec.split('-');
-        for ( var i = 0; i < parts.length; i++ ) {
-        	if (ilib.Locale._isLanguageCode(parts[i])) {
-    			/** 
-    			 * @private
-    			 * @type {string|undefined}
-    			 */
-        		this.language = parts[i];
-        	} else if (ilib.Locale._isRegionCode(parts[i])) {
-    			/** 
-    			 * @private
-    			 * @type {string|undefined}
-    			 */
-        		this.region = parts[i];
-        	} else if (ilib.Locale._isScriptCode(parts[i])) {
-    			/** 
-    			 * @private
-    			 * @type {string|undefined}
-    			 */
-        		this.script = parts[i];
-        	} else {
-    			/** 
-    			 * @private
-    			 * @type {string|undefined}
-    			 */
-        		this.variant = parts[i];
-        	}
-        }
-        this.language = this.language || undefined;
-        this.region = this.region || undefined;
-        this.script = this.script || undefined;
-        this.variant = this.variant || undefined;
+		if (typeof(spec) === 'string') {
+			var parts = spec.split('-');
+	        for ( var i = 0; i < parts.length; i++ ) {
+	        	if (ilib.Locale._isLanguageCode(parts[i])) {
+	    			/** 
+	    			 * @private
+	    			 * @type {string|undefined}
+	    			 */
+	        		this.language = parts[i];
+	        	} else if (ilib.Locale._isRegionCode(parts[i])) {
+	    			/** 
+	    			 * @private
+	    			 * @type {string|undefined}
+	    			 */
+	        		this.region = parts[i];
+	        	} else if (ilib.Locale._isScriptCode(parts[i])) {
+	    			/** 
+	    			 * @private
+	    			 * @type {string|undefined}
+	    			 */
+	        		this.script = parts[i];
+	        	} else {
+	    			/** 
+	    			 * @private
+	    			 * @type {string|undefined}
+	    			 */
+	        		this.variant = parts[i];
+	        	}
+	        }
+	        this.language = this.language || undefined;
+	        this.region = this.region || undefined;
+	        this.script = this.script || undefined;
+	        this.variant = this.variant || undefined;
+		} else if (typeof(spec) === 'object') {
+	        this.language = spec.language || undefined;
+	        this.region = spec.region || undefined;
+	        this.script = spec.script || undefined;
+	        this.variant = spec.variant || undefined;
+		}
 	} else {
 		if (language) {
 			language = language.trim();
@@ -482,6 +493,448 @@ ilib.Locale = function(language, region, variant, script) {
 		}
 		this.spec += this.variant;
 	}
+};
+
+// from http://en.wikipedia.org/wiki/ISO_3166-1
+ilib.Locale.a2toa3regmap = {
+	"AF": "AFG",
+	"AX": "ALA",
+	"AL": "ALB",
+	"DZ": "DZA",
+	"AS": "ASM",
+	"AD": "AND",
+	"AO": "AGO",
+	"AI": "AIA",
+	"AQ": "ATA",
+	"AG": "ATG",
+	"AR": "ARG",
+	"AM": "ARM",
+	"AW": "ABW",
+	"AU": "AUS",
+	"AT": "AUT",
+	"AZ": "AZE",
+	"BS": "BHS",
+	"BH": "BHR",
+	"BD": "BGD",
+	"BB": "BRB",
+	"BY": "BLR",
+	"BE": "BEL",
+	"BZ": "BLZ",
+	"BJ": "BEN",
+	"BM": "BMU",
+	"BT": "BTN",
+	"BO": "BOL",
+	"BQ": "BES",
+	"BA": "BIH",
+	"BW": "BWA",
+	"BV": "BVT",
+	"BR": "BRA",
+	"IO": "IOT",
+	"BN": "BRN",
+	"BG": "BGR",
+	"BF": "BFA",
+	"BI": "BDI",
+	"KH": "KHM",
+	"CM": "CMR",
+	"CA": "CAN",
+	"CV": "CPV",
+	"KY": "CYM",
+	"CF": "CAF",
+	"TD": "TCD",
+	"CL": "CHL",
+	"CN": "CHN",
+	"CX": "CXR",
+	"CC": "CCK",
+	"CO": "COL",
+	"KM": "COM",
+	"CG": "COG",
+	"CD": "COD",
+	"CK": "COK",
+	"CR": "CRI",
+	"CI": "CIV",
+	"HR": "HRV",
+	"CU": "CUB",
+	"CW": "CUW",
+	"CY": "CYP",
+	"CZ": "CZE",
+	"DK": "DNK",
+	"DJ": "DJI",
+	"DM": "DMA",
+	"DO": "DOM",
+	"EC": "ECU",
+	"EG": "EGY",
+	"SV": "SLV",
+	"GQ": "GNQ",
+	"ER": "ERI",
+	"EE": "EST",
+	"ET": "ETH",
+	"FK": "FLK",
+	"FO": "FRO",
+	"FJ": "FJI",
+	"FI": "FIN",
+	"FR": "FRA",
+	"GF": "GUF",
+	"PF": "PYF",
+	"TF": "ATF",
+	"GA": "GAB",
+	"GM": "GMB",
+	"GE": "GEO",
+	"DE": "DEU",
+	"GH": "GHA",
+	"GI": "GIB",
+	"GR": "GRC",
+	"GL": "GRL",
+	"GD": "GRD",
+	"GP": "GLP",
+	"GU": "GUM",
+	"GT": "GTM",
+	"GG": "GGY",
+	"GN": "GIN",
+	"GW": "GNB",
+	"GY": "GUY",
+	"HT": "HTI",
+	"HM": "HMD",
+	"VA": "VAT",
+	"HN": "HND",
+	"HK": "HKG",
+	"HU": "HUN",
+	"IS": "ISL",
+	"IN": "IND",
+	"ID": "IDN",
+	"IR": "IRN",
+	"IQ": "IRQ",
+	"IE": "IRL",
+	"IM": "IMN",
+	"IL": "ISR",
+	"IT": "ITA",
+	"JM": "JAM",
+	"JP": "JPN",
+	"JE": "JEY",
+	"JO": "JOR",
+	"KZ": "KAZ",
+	"KE": "KEN",
+	"KI": "KIR",
+	"KP": "PRK",
+	"KR": "KOR",
+	"KW": "KWT",
+	"KG": "KGZ",
+	"LA": "LAO",
+	"LV": "LVA",
+	"LB": "LBN",
+	"LS": "LSO",
+	"LR": "LBR",
+	"LY": "LBY",
+	"LI": "LIE",
+	"LT": "LTU",
+	"LU": "LUX",
+	"MO": "MAC",
+	"MK": "MKD",
+	"MG": "MDG",
+	"MW": "MWI",
+	"MY": "MYS",
+	"MV": "MDV",
+	"ML": "MLI",
+	"MT": "MLT",
+	"MH": "MHL",
+	"MQ": "MTQ",
+	"MR": "MRT",
+	"MU": "MUS",
+	"YT": "MYT",
+	"MX": "MEX",
+	"FM": "FSM",
+	"MD": "MDA",
+	"MC": "MCO",
+	"MN": "MNG",
+	"ME": "MNE",
+	"MS": "MSR",
+	"MA": "MAR",
+	"MZ": "MOZ",
+	"MM": "MMR",
+	"NA": "NAM",
+	"NR": "NRU",
+	"NP": "NPL",
+	"NL": "NLD",
+	"NC": "NCL",
+	"NZ": "NZL",
+	"NI": "NIC",
+	"NE": "NER",
+	"NG": "NGA",
+	"NU": "NIU",
+	"NF": "NFK",
+	"MP": "MNP",
+	"NO": "NOR",
+	"OM": "OMN",
+	"PK": "PAK",
+	"PW": "PLW",
+	"PS": "PSE",
+	"PA": "PAN",
+	"PG": "PNG",
+	"PY": "PRY",
+	"PE": "PER",
+	"PH": "PHL",
+	"PN": "PCN",
+	"PL": "POL",
+	"PT": "PRT",
+	"PR": "PRI",
+	"QA": "QAT",
+	"RE": "REU",
+	"RO": "ROU",
+	"RU": "RUS",
+	"RW": "RWA",
+	"BL": "BLM",
+	"SH": "SHN",
+	"KN": "KNA",
+	"LC": "LCA",
+	"MF": "MAF",
+	"PM": "SPM",
+	"VC": "VCT",
+	"WS": "WSM",
+	"SM": "SMR",
+	"ST": "STP",
+	"SA": "SAU",
+	"SN": "SEN",
+	"RS": "SRB",
+	"SC": "SYC",
+	"SL": "SLE",
+	"SG": "SGP",
+	"SX": "SXM",
+	"SK": "SVK",
+	"SI": "SVN",
+	"SB": "SLB",
+	"SO": "SOM",
+	"ZA": "ZAF",
+	"GS": "SGS",
+	"SS": "SSD",
+	"ES": "ESP",
+	"LK": "LKA",
+	"SD": "SDN",
+	"SR": "SUR",
+	"SJ": "SJM",
+	"SZ": "SWZ",
+	"SE": "SWE",
+	"CH": "CHE",
+	"SY": "SYR",
+	"TW": "TWN",
+	"TJ": "TJK",
+	"TZ": "TZA",
+	"TH": "THA",
+	"TL": "TLS",
+	"TG": "TGO",
+	"TK": "TKL",
+	"TO": "TON",
+	"TT": "TTO",
+	"TN": "TUN",
+	"TR": "TUR",
+	"TM": "TKM",
+	"TC": "TCA",
+	"TV": "TUV",
+	"UG": "UGA",
+	"UA": "UKR",
+	"AE": "ARE",
+	"GB": "GBR",
+	"US": "USA",
+	"UM": "UMI",
+	"UY": "URY",
+	"UZ": "UZB",
+	"VU": "VUT",
+	"VE": "VEN",
+	"VN": "VNM",
+	"VG": "VGB",
+	"VI": "VIR",
+	"WF": "WLF",
+	"EH": "ESH",
+	"YE": "YEM",
+	"ZM": "ZMB",
+	"ZW": "ZWE"
+};
+
+
+ilib.Locale.a1toa3langmap = {
+	"ab": "abk",
+	"aa": "aar",
+	"af": "afr",
+	"ak": "aka",
+	"sq": "sqi",
+	"am": "amh",
+	"ar": "ara",
+	"an": "arg",
+	"hy": "hye",
+	"as": "asm",
+	"av": "ava",
+	"ae": "ave",
+	"ay": "aym",
+	"az": "aze",
+	"bm": "bam",
+	"ba": "bak",
+	"eu": "eus",
+	"be": "bel",
+	"bn": "ben",
+	"bh": "bih",
+	"bi": "bis",
+	"bs": "bos",
+	"br": "bre",
+	"bg": "bul",
+	"my": "mya",
+	"ca": "cat",
+	"ch": "cha",
+	"ce": "che",
+	"ny": "nya",
+	"zh": "zho",
+	"cv": "chv",
+	"kw": "cor",
+	"co": "cos",
+	"cr": "cre",
+	"hr": "hrv",
+	"cs": "ces",
+	"da": "dan",
+	"dv": "div",
+	"nl": "nld",
+	"dz": "dzo",
+	"en": "eng",
+	"eo": "epo",
+	"et": "est",
+	"ee": "ewe",
+	"fo": "fao",
+	"fj": "fij",
+	"fi": "fin",
+	"fr": "fra",
+	"ff": "ful",
+	"gl": "glg",
+	"ka": "kat",
+	"de": "deu",
+	"el": "ell",
+	"gn": "grn",
+	"gu": "guj",
+	"ht": "hat",
+	"ha": "hau",
+	"he": "heb",
+	"hz": "her",
+	"hi": "hin",
+	"ho": "hmo",
+	"hu": "hun",
+	"ia": "ina",
+	"id": "ind",
+	"ie": "ile",
+	"ga": "gle",
+	"ig": "ibo",
+	"ik": "ipk",
+	"io": "ido",
+	"is": "isl",
+	"it": "ita",
+	"iu": "iku",
+	"ja": "jpn",
+	"jv": "jav",
+	"kl": "kal",
+	"kn": "kan",
+	"kr": "kau",
+	"ks": "kas",
+	"kk": "kaz",
+	"km": "khm",
+	"ki": "kik",
+	"rw": "kin",
+	"ky": "kir",
+	"kv": "kom",
+	"kg": "kon",
+	"ko": "kor",
+	"ku": "kur",
+	"kj": "kua",
+	"la": "lat",
+	"lb": "ltz",
+	"lg": "lug",
+	"li": "lim",
+	"ln": "lin",
+	"lo": "lao",
+	"lt": "lit",
+	"lu": "lub",
+	"lv": "lav",
+	"gv": "glv",
+	"mk": "mkd",
+	"mg": "mlg",
+	"ms": "msa",
+	"ml": "mal",
+	"mt": "mlt",
+	"mi": "mri",
+	"mr": "mar",
+	"mh": "mah",
+	"mn": "mon",
+	"na": "nau",
+	"nv": "nav",
+	"nb": "nob",
+	"nd": "nde",
+	"ne": "nep",
+	"ng": "ndo",
+	"nn": "nno",
+	"no": "nor",
+	"ii": "iii",
+	"nr": "nbl",
+	"oc": "oci",
+	"oj": "oji",
+	"cu": "chu",
+	"om": "orm",
+	"or": "ori",
+	"os": "oss",
+	"pa": "pan",
+	"pi": "pli",
+	"fa": "fas",
+	"pl": "pol",
+	"ps": "pus",
+	"pt": "por",
+	"qu": "que",
+	"rm": "roh",
+	"rn": "run",
+	"ro": "ron",
+	"ru": "rus",
+	"sa": "san",
+	"sc": "srd",
+	"sd": "snd",
+	"se": "sme",
+	"sm": "smo",
+	"sg": "sag",
+	"sr": "srp",
+	"gd": "gla",
+	"sn": "sna",
+	"si": "sin",
+	"sk": "slk",
+	"sl": "slv",
+	"so": "som",
+	"st": "sot",
+	"az": "azb",
+	"es": "spa",
+	"su": "sun",
+	"sw": "swa",
+	"ss": "ssw",
+	"sv": "swe",
+	"ta": "tam",
+	"te": "tel",
+	"tg": "tgk",
+	"th": "tha",
+	"ti": "tir",
+	"bo": "bod",
+	"tk": "tuk",
+	"tl": "tgl",
+	"tn": "tsn",
+	"to": "ton",
+	"tr": "tur",
+	"ts": "tso",
+	"tt": "tat",
+	"tw": "twi",
+	"ty": "tah",
+	"ug": "uig",
+	"uk": "ukr",
+	"ur": "urd",
+	"uz": "uzb",
+	"ve": "ven",
+	"vi": "vie",
+	"vo": "vol",
+	"wa": "wln",
+	"cy": "cym",
+	"wo": "wol",
+	"fy": "fry",
+	"xh": "xho",
+	"yi": "yid",
+	"yo": "yor",
+	"za": "zha",
+	"zu": "zul"
 };
 
 /**
@@ -595,6 +1048,32 @@ ilib.Locale._isScriptCode = function(str)
 	return true;
 };
 
+/**
+ * @static
+ * Return the ISO-3166 alpha3 equivalent region code for the given ISO 3166 alpha2
+ * region code. If the given alpha2 code is not found, this function returns its
+ * argument unchanged.
+ * @param {string|undefined} alpha2 the alpha2 code to map
+ * @return {string|undefined} the alpha3 equivalent of the given alpha2 code, or the alpha2
+ * parameter if the alpha2 value is not found
+ */
+ilib.Locale.regionAlpha2ToAlpha3 = function(alpha2) {
+	return ilib.Locale.a2toa3regmap[alpha2] || alpha2;
+};
+
+/**
+ * @static
+ * Return the ISO-639 alpha3 equivalent language code for the given ISO 639 alpha1
+ * language code. If the given alpha1 code is not found, this function returns its
+ * argument unchanged.
+ * @param {string|undefined} alpha1 the alpha1 code to map
+ * @return {string|undefined} the alpha3 equivalent of the given alpha1 code, or the alpha1
+ * parameter if the alpha1 value is not found
+ */
+ilib.Locale.languageAlpha1ToAlpha3 = function(alpha1) {
+	return ilib.Locale.a1toa3langmap[alpha1] || alpha1;
+};
+
 ilib.Locale.prototype = {
 	/**
 	 * Return the ISO 639 language code for this locale. 
@@ -605,11 +1084,27 @@ ilib.Locale.prototype = {
 	},
 	
 	/**
+	 * Return the language of this locale as an ISO-639-alpha3 language code
+	 * @return {string|undefined} the alpha3 language code of this locale
+	 */
+	getLanguageAlpha3: function() {
+		return ilib.Locale.languageAlpha1ToAlpha3(this.language);
+	},
+	
+	/**
 	 * Return the ISO 3166 region code for this locale.
 	 * @return {string|undefined} the region code of this locale
 	 */
 	getRegion: function() {
 		return this.region;
+	},
+	
+	/**
+	 * Return the region of this locale as an ISO-3166-alpha3 region code
+	 * @return {string|undefined} the alpha3 region code of this locale
+	 */
+	getRegionAlpha3: function() {
+		return ilib.Locale.regionAlpha2ToAlpha3(this.region);
 	},
 	
 	/**
@@ -2012,6 +2507,60 @@ ilib.isEmpty = function (obj) {
 	return true;
 };
 
+
+ilib.hashCode = function(obj) {
+	var hash = 0;
+	
+	function addHash(hash, newValue) {
+		// co-prime numbers creates a nicely distributed hash
+		hash *= 65543;
+		hash += newValue;
+		hash %= 2147483647; 
+		return hash;
+	}
+	
+	function stringHash(str) {
+		var hash = 0;
+		for (var i = 0; i < str.length; i++) {
+			hash = addHash(hash, str.charCodeAt(i));
+		}
+		return hash;
+	}
+	
+	switch (typeof(obj)) {
+		case 'undefined':
+			hash = 0;
+			break;
+		case 'string':
+			hash = stringHash(obj);
+			break;
+		case 'function':
+		case 'number':
+		case 'xml':
+			hash = stringHash(String(obj));
+			break;
+		case 'boolean':
+			hash = obj ? 1 : 0;
+			break;
+		case 'object':
+			var props = [];
+			for (var p in obj) {
+				if (obj.hasOwnProperty(p)) {
+					props.push(p);
+				}
+			}
+			// make sure the order of the properties doesn't matter
+			props.sort();
+			for (var i = 0; i < props.length; i++) {
+				hash = addHash(hash, stringHash(props[i]));
+				hash = addHash(hash, ilib.hashCode(obj[props[i]]));
+			}
+			break;
+	}
+	
+	return hash;
+};
+
 /**
  * Find locale data or load it in. If the data with the given name is preassembled, it will
  * find the data in ilib.data. If the data is not preassembled but there is a loader function,
@@ -2078,7 +2627,7 @@ ilib.loadData = function(params) {
 		type = (dot !== -1) ? name.substring(dot+1) : "text";
 	}
 
-	var spec = locale.getSpec().replace(/-/g, '_') || "root";
+	var spec = (locale.getSpec().replace(/-/g, '_') || "root") + "," + name + "," + String(ilib.hashCode(loadParams));
 	if (!object || typeof(object.cache[spec]) === 'undefined') {
 		var data;
 		
@@ -3918,8 +4467,6 @@ ilib.Date.GregDate = function(params) {
 		}
 		
 		if (typeof(params.unixtime) != 'undefined') {
-			// unix time is defined to be UTC
-			this.timezone = "Etc/UTC";
 			this.setTime(parseInt(params.unixtime, 10));
 		} else if (typeof(params.julianday) != 'undefined') {
 			// JD time is defined to be UTC
@@ -3937,17 +4484,14 @@ ilib.Date.GregDate = function(params) {
 		} else if (typeof(params.rd) != 'undefined') {
 			// private parameter. Do not document this!
 			// RD time is defined to be UTC
-			this.timezone = "Etc/UTC";
 			this.setRd(params.rd);
 		} else {
-			// Date.getTime() gets unix time in UTC
 			var now = new Date();
-			this.setTime(now.getTime() - now.getTimezoneOffset()*60000);
+			this.setTime(now.getTime());
 		}
 	} else {
-		// Date.getTime() gets unix time in UTC
 		var now = new Date();
-		this.setTime(now.getTime() - now.getTimezoneOffset()*60000);
+		this.setTime(now.getTime());
 	}
 };
 
@@ -4502,7 +5046,7 @@ ilib.Date.GregDate.prototype.getCalendar = function() {
  * @return {string|undefined} the name of the time zone for this date instance
  */
 ilib.Date.GregDate.prototype.getTimeZone = function() {
-	return this.timezone;
+	return this.timezone || "local";
 };
 
 /**
@@ -4671,10 +5215,8 @@ ilib.TimeZone = function(options) {
 				// the offset of the standard time for the time zone is always the one that is largest of 
 				// the two, no matter whether you are in the northern or southern hemisphere
 				this.offset = Math.max(this.offsetJan1, this.offsetJun1);
-				this.id = this.getDisplayName(undefined, undefined);
-			} else {
-				this.id = options.id;
 			}
+			this.id = options.id;
 		} else if (options.offset) {
 			this.offset = (typeof(options.offset) === 'string') ? parseInt(options.offset, 10) : options.offset;
 			this.id = this.getDisplayName(undefined, undefined);
@@ -4734,7 +5276,7 @@ ilib.TimeZone.prototype._initZone = function() {
 	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>,c:string,n:string}} 
 	 */
 	this.zone = ilib.data.timezones[this.id];
-	if (!this.zone && !this.offset) {
+	if (!this.zone && typeof(this.offset) === 'undefined') {
 		this.id = "Etc/UTC";
 		this.zone = ilib.data.timezones[this.id];
 	}
@@ -5999,7 +6541,7 @@ ilib.data.dateformats_ja = {"gregorian":{"order":"{date}、{time}","date":{"dmwy
 ilib.data.dateformats_ka = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d.M.","m":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"M.yy","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, d.M.yy","m":"EE, d.M.yy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm a","hmz":"h:mm a z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sy} {sm} {sd}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sm}.{sy} – {em}.{ey}","m":"{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm}.{sy} – {em}.{ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_kk = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"dd.MM","l":"MMM d"},"dmy":{"s":"yy-M-d","m":"dd.MM.yyyy","l":"yyyy MMM d"},"my":{"s":"yy-M","m":"MM.yyyy","l":"yyyy MMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm a","hmz":"h:mm a z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} - {et} {sy}-{sm}-{sd}","m":"{st} - {et} {sd}.{sm}.{sy}","l":"{st} - {et} {sy} {sm} {sd}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} - {et} {ed} {em} {ey} ж.","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","f":"{st} {sd} - {et} {ed} {em} {ey} ж."},"c02":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} {sm} - {et} {ed} {em} {ey} ж.","f":"{st} {sd} {sm} - {et} {ed} {em} {ey} ж.","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} - {ed} {em} {ey} ж.","f":"{sd} - {ed} {em} {ey} ж.","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} {sm} - {ed} {em} {ey} ж.","f":"{sd} {sm} - {ed} {em} {ey} ж."},"c12":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} {sm} {sy} ж. - {ed} {em} {ey} ж.","f":"{sd} {sm} {sy} ж. - {ed} {em} {ey} ж."},"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}","l":"{sm} {sy} ж. - {em} {ey} ж.","f":"{sy}–{sm} - {ey}–{em}"}}},"generated":true};
 ilib.data.dateformats_kn = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"d MMM yy","l":"d, MMM, yyyy"},"my":{"m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"hh:mm:ss a z","hmsz":"hh:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ahmz":"hh:mm a z","ahm":"h:mm a","hm":"h:mm a","hmz":"hh:mm a z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd}, {sm}, {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} {sm} – {et} {ed} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {ey}","f":"{sd} {sm} – {ed} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}}};
-ilib.data.dateformats_ko = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E yy. MM. dd","m":"EE yyyy. MM. dd","l":"EEE yyyy년 MMM월 d일","f":"yyyy년 MMM월 d일 (EEEE)"},"dmy":{"s":"yy. MM. dd","m":"yyyy. MM. dd","l":"yyyy년 MMM월 d일","f":"yyyy년 MMM월 d일"},"dmw":{"s":"E MM. dd","m":"EE MM. dd","l":"EEE MMM월 d일","f":"MMM월 d일 (EEEE)"},"dm":{"s":"MM. dd","m":"MM. dd","l":"MMM월 d일","f":"MMM월 d일"},"my":{"s":"yy. MM.","m":"yyyy. MM.","l":"yyyy년 MMM월","f":"yyyy년 MMM월"},"dw":{"s":"EE dd","m":"EE dd","l":"EEE d일","f":"d일(EEEE)"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"a h:mm:ss z","ahms":"a h:mm:ss","ahmz":"a h:mm z","ahm":"a h:mm","ah":"a h"}},"range":{"c00":{"s":"{sy}. {sm}. {sd} {st}에서 {et}까지","m":"{sy}. {sm}. {sd} {st}에서 {et}까지","l":"{sy}년 {sm}월 {sd}일 {st}에서 {et}까지","f":"{sy}년 {sm}월 {sd}일 {st}에서 {et}까지"},"c01":{"s":"{sy}. {sm}. {sd} {st}에서 {ed} {et}까지","m":"{sy}. {sm}. {sd} {st}에서 {ed} {et}까지","l":"{sy}년 {sm}월 {sd}일 {st}에서 {ed}일 {et}까지","f":"{sy}년 {sm}월 {sd}일 {st}에서 {ed}일 {et}까지"},"c02":{"s":"{sy}. {sm}. {sd} {st}에서 {em}. {ed} {et}까지","m":"{sy}. {sm}. {sd} {st}에서 {em}. {ed} {et}까지","l":"{sy}년 {sm}월 {sd}일 {st}에서 {em}월 {ed}일 {et}까지","f":"{sy}년 {sm}월 {sd}일 {st}에서 {em}월 {ed}일 {et}까지"},"c03":{"s":"{sy}. {sm}. {sd} {st}에서 {ey}. {em}. {ed} {et}까지","m":"{sy}. {sm}. {sd} {st}에서 {ey}. {em}. {ed} {et}까지","l":"{sy}년 {sm}월 {sd}일 {st}에서 {ey}년 {em}월 {ed}일 {et}까지","f":"{sy}년 {sm}월 {sd}일 {st}에서 {ey}년 {em}월 {ed}일 {et}까지"},"c10":{"s":"{sy}. {sm}. {sd}에서 {ed}까지","m":"{sy}. {sm}. {sd}에서 {ed}까지","l":"{sy}년 {sm}월 {sd}일에서 {ed}일까지","f":"{sy}년 {sm}월 {sd}일에서 {ed}일까지"},"c11":{"s":"{sy}. {sm}. {sd}에서 {em}. {ed}까지","m":"{sy}. {sm}. {sd}에서 {em}. {ed}까지","l":"{sy}년 {sm}월 {sd}일에서 {em}월 {ed}일까지","f":"{sy}년 {sm}월 {sd}일에서 {em}월 {ed}일까지"},"c12":{"s":"{sy}. {sm}. {sd}에서 {ey}. {em}. {ed}까지","m":"{sy}. {sm}. {sd}에서 {ey}. {em}. {ed}까지","l":"{sy}년 {sm}월 {sd}일에서 {ey}년 {em}월 {ed}일까지","f":"{sy}년 {sm}월 {sd}일에서 {ey}년 {em}월 {ed}일까지"},"c20":{"s":"{sy}. {sm}.에서 {ey}. {em}.까지","m":"{sy}. {sm}.에서 {ey}. {em}.까지","l":"{sy}년 {sm}월에서 {ey}년 {em}월까지","f":"{sy}년 {sm}월에서 {ey}년 {em}월까지"},"c30":"{sy}년에서 {ey}년까지"}}};
+ilib.data.dateformats_ko = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E, yy. MM. dd","m":"EE, yyyy. MM. dd","l":"EEE, yyyy년 MMM월 d일","f":"yyyy년 MMM월 d일 (EEEE)"},"dmy":{"s":"yy. MM. dd","m":"yyyy. MM. dd","l":"yyyy년 MMM월 d일","f":"yyyy년 MMM월 d일"},"dmw":{"s":"E, MM. dd","m":"EE, MM. dd","l":"EEE, MMM월 d일","f":"MMM월 d일 (EEEE)"},"dm":{"s":"MM. dd","m":"MM. dd","l":"MMM월 d일","f":"MMM월 d일"},"my":{"s":"yy. MM.","m":"yyyy. MM.","l":"yyyy년 MMM월","f":"yyyy년 MMM월"},"dw":{"s":"EE, dd","m":"EE, dd","l":"EEE, d일","f":"d일(EEEE)"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"a h:mm:ss z","ahms":"a h:mm:ss","ahmz":"a h:mm z","ahm":"a h:mm","ah":"a h"}},"range":{"c00":{"s":"{sy}. {sm}. {sd} {st}에서 {et}까지","m":"{sy}. {sm}. {sd} {st}에서 {et}까지","l":"{sy}년 {sm}월 {sd}일 {st}에서 {et}까지","f":"{sy}년 {sm}월 {sd}일 {st}에서 {et}까지"},"c01":{"s":"{sy}. {sm}. {sd} {st}에서 {ed} {et}까지","m":"{sy}. {sm}. {sd} {st}에서 {ed} {et}까지","l":"{sy}년 {sm}월 {sd}일 {st}에서 {ed}일 {et}까지","f":"{sy}년 {sm}월 {sd}일 {st}에서 {ed}일 {et}까지"},"c02":{"s":"{sy}. {sm}. {sd} {st}에서 {em}. {ed} {et}까지","m":"{sy}. {sm}. {sd} {st}에서 {em}. {ed} {et}까지","l":"{sy}년 {sm}월 {sd}일 {st}에서 {em}월 {ed}일 {et}까지","f":"{sy}년 {sm}월 {sd}일 {st}에서 {em}월 {ed}일 {et}까지"},"c03":{"s":"{sy}. {sm}. {sd} {st}에서 {ey}. {em}. {ed} {et}까지","m":"{sy}. {sm}. {sd} {st}에서 {ey}. {em}. {ed} {et}까지","l":"{sy}년 {sm}월 {sd}일 {st}에서 {ey}년 {em}월 {ed}일 {et}까지","f":"{sy}년 {sm}월 {sd}일 {st}에서 {ey}년 {em}월 {ed}일 {et}까지"},"c10":{"s":"{sy}. {sm}. {sd}에서 {ed}까지","m":"{sy}. {sm}. {sd}에서 {ed}까지","l":"{sy}년 {sm}월 {sd}일에서 {ed}일까지","f":"{sy}년 {sm}월 {sd}일에서 {ed}일까지"},"c11":{"s":"{sy}. {sm}. {sd}에서 {em}. {ed}까지","m":"{sy}. {sm}. {sd}에서 {em}. {ed}까지","l":"{sy}년 {sm}월 {sd}일에서 {em}월 {ed}일까지","f":"{sy}년 {sm}월 {sd}일에서 {em}월 {ed}일까지"},"c12":{"s":"{sy}. {sm}. {sd}에서 {ey}. {em}. {ed}까지","m":"{sy}. {sm}. {sd}에서 {ey}. {em}. {ed}까지","l":"{sy}년 {sm}월 {sd}일에서 {ey}년 {em}월 {ed}일까지","f":"{sy}년 {sm}월 {sd}일에서 {ey}년 {em}월 {ed}일까지"},"c20":{"s":"{sy}. {sm}.에서 {ey}. {em}.까지","m":"{sy}. {sm}.에서 {ey}. {em}.까지","l":"{sy}년 {sm}월에서 {ey}년 {em}월까지","f":"{sy}년 {sm}월에서 {ey}년 {em}월까지"},"c30":"{sy}년에서 {ey}년까지"}}};
 ilib.data.dateformats_ks = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"MMM d","l":"d-MMM","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"MMM d, yyyy","l":"yyyy MMM d","f":"dd MMMM yyyy"},"my":{"m":"MMM d, yyyy"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"EEE, M/d/yy","m":"EE, M/d/yyyy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm a","hmz":"h:mm a z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sm} {sd}, {sy}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_ku = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"EE, dd/MM/yyyy","m":"EEE, dd/MM/yyyy","l":"EEE, dd/MMMM/yyyy","f":"EEEE, dd/MMMM/yyyy"},"dmy":{"s":"dd/MM/yyyy","m":"dd/MM/yyyy","l":"dd/MMMM/yyyy","f":"dd/MMMM/yyyy"},"dmw":{"s":"EE, dd/MM","m":"EEE, dd/MM","l":"EEE, dd/MMMM","f":"EEEE, dd/MMMM"},"dm":{"s":"dd/MM","m":"dd/MM","l":"dd/MMMM","f":"dd/MMMM"},"my":{"s":"MM/yyyy","m":"MM/yyyy","l":"MM/yyyy","f":"MM/yyyy"},"dw":{"s":"EE, dd","m":"EEE, dd","l":"EEE, dd","f":"EEEE, dd"},"d":"dd","m":{"s":"MM","m":"MM","l":"MMMM","f":"MMMM"},"y":{"s":"yyyy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"},"w":{"s":"EE","m":"EEE","l":"EEE","f":"EEEE"}},"time":{"12":{"ahmsz":"hh:mm:ss z","ahms":"hh:mm:ss","hmsz":"hh:mm:ss z","hms":"hh:mm:ss","ahmz":"hh:mm z","ahm":"hh:mm","hmz":"hh:mm z","ah":"hh","hm":"hh:mm","ms":"mm:ss","hh":"hh","m":"mm","s":"ss"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","ms":"mm:ss","hh":"HH","m":"mm","s":"ss"}},"range":{"c00":{"s":"{sd}/{sm}/{sy} {st} - {et}","m":"{sd}/{sm}/{sy} {st} - {et}","l":"{sd} {sm} {sy} {st} - {et}","f":"{sd} {sm} {sy} {st} - {et}"},"c01":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c02":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c03":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","f":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}"},"c10":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} -  {ed}/{em}/{ey}","l":"{sd} - {ed} {sm} {sy}","f":"{sd} - {ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c30":"{sy} - {ey}"}},"islamic":"gregorian","hebrew":"gregorian","julian":"gregorian","buddhist":"gregorian"};
 ilib.data.dateformats_lg = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"d MMM yy","l":"yyyy MMM d"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm a","hmz":"h:mm a z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
@@ -6008,6 +6550,7 @@ ilib.data.dateformats_lt = {"gregorian":{"order":"{time} {date}","date":{"dm":{"
 ilib.data.dateformats_lv = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"dd.MM.","m":"dd.M","l":"d. MMM","f":"d. MMMM"},"dmy":{"s":"d.M.yy.","m":"yy. 'gada' d. MMM","l":"yyyy. 'g'. d. MMM","f":"yyyy. 'gada' d. MMMM"},"my":{"s":"MM.yy.","m":"MM.yyyy","l":"yyyy. 'g'. MMM","f":"yyyy. 'g'. MMMM"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, d.M.yy.","m":"EE, d.M.yy.","l":"EEE, yyyy. 'g'. d. MMM","f":"EEEE, yyyy. 'g'. d. MMM"},"dmw":{"s":"E, dd.MM.","m":"EE, dd.MM.","l":"EEEE, d. MMM","f":"EEEE, d. MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm a","hmz":"h:mm a z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} - {et} {sd}.{sm}.{sy}.","m":"{st} - {et} {sy}. gada {sd}. {sm}","l":"{st} - {et} {sy}. g. {sd}. {sm}","f":"{st} - {et} {sy}. gada {sd}. {sm}"},"c01":{"s":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","l":"{st} {sy}. gada {sd}. - {et} {ed}. {em}","m":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","f":"{st} {sy}. gada {sd}. - {et} {ed}. {em}"},"c02":{"s":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","l":"{st} {sy}. gada {sd}. {sm} - {et} {ed}. {em}","f":"{st} {sy}. gada {sd}. {sm} - {et} {ed}. {em}","m":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}."},"c10":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sy}. gada {sd}. - {ed}. {em}","f":"{sy}. gada {sd}. - {ed}. {em}","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}."},"c11":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sy}. gada {sd}. {sm} - {ed}. {em}","f":"{sy}. gada {sd}. {sm} - {ed}. {em}"},"c12":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sy}. gada {sd}. {sm} - {ey}. gada {ed}. {em}","f":"{sy}. gada {sd}. {sm} - {ey}. gada {ed}. {em}"},"c20":{"s":"{sm}.{sy}. - {em}.{ey}.","m":"{sm}.{sy}. - {em}.{ey}.","l":"{sy}. gada {sm} - {ey}. gada {em}","f":"{sm}.{sy}. - {em}.{ey}."}}},"generated":true};
 ilib.data.dateformats_mk = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"dd.M","l":"MMM d","f":"MMMM d"},"dmy":{"s":"d-M-yy","m":"dd.M.yyyy","l":"yyyy MMM d","f":"dd MMMM yyyy"},"my":{"s":"yy-M","m":"M.yyyy","l":"yyyy MMM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm a","hmz":"h:mm a z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} - {et} {sd}-{sm}-{sy}","m":"{st} - {et} {sd}.{sm}.{sy}","l":"{st} - {et} {sy} {sm} {sd}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} - {et} {ed} {em} {ey}","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","f":"{st} {sd} - {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} {sm} - {et} {ed} {em} {ey}","f":"{st} {sd} {sm} - {et} {ed} {em} {ey}","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} - {ed} {em} {ey}","f":"{sd} - {ed} {em} {ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} {sm} - {ed} {em} {ey}","f":"{sd} {sm} - {ed} {em} {ey}"},"c12":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}"},"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}","f":"{sy}–{sm} - {ey}–{em}"}}},"generated":true};
 ilib.data.dateformats_ml = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM","l":"MMM d","f":"MMMM d"},"dmy":{"m":"yy, MMM d","l":"yyyy MMM d","f":"yyyy, MMMM d"},"my":{"s":"M-yy","m":"MM-yyyy","l":"yyyy MMM"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"d-M-yy, E","m":"d-M-yyyy, EE","l":"yyyy MMM d, EEE","f":"yyyy MMM d, EEEE"},"dmw":{"s":"M/d, E","m":"M/d, EE","l":"MMM d, EEEE","f":"MMM d, EEEE"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm a","hmz":"h:mm a z","ah":"h a"}},"range":{"c00":{"m":"{st} - {et} {sy}, {sm} {sd}","l":"{st} - {et} {sy} {sm} {sd}","f":"{st} - {et} {sy}, {sm} {sd}"},"c01":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sy} {sm} {sd} - {et} {ed}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","f":"{st} {sy} {sm} {sd} - {et} {ed}"},"c02":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sy} {sm} {sd} - {et} {em} {ed}","f":"{st} {sy} {sm} {sd} - {et} {em} {ed}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sy} {sm} {sd} - {ed}","f":"{sy} {sm} {sd} - {ed}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sy} {sm} {sd} - {em} {ed}","f":"{sy} {sm} {sd} - {em} {ed}"},"c12":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sy} {sm} {sd} - {ey} {em} {ed}","f":"{sy} {sm} {sd} - {ey} {em} {ed}"},"c20":{"s":"{sm}/{sy} - {em}/{ey}","l":"{sy} {sm} - {ey} {em}","f":"{sy}–{sm} - {ey}–{em}"}}},"generated":true};
+ilib.data.dateformats_mn = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E M.d.yyyy","m":"EE MM.dd.yyyy","l":"EEE, yyyy 'оны' MM'-р сар' dd","f":"EEEE, yyyy 'оны' MM 'дугаар сарын' dd"},"dmy":{"s":"M.d.yyyy","m":"MM.dd.yyyy","l":"yyyy 'оны' MM'-р сар' dd","f":"yyyy 'оны' MM 'дугаар сарын' dd"},"dmw":{"s":"E M.d","m":"EE MM.dd","l":"EEE, MM'-р сар' dd","f":"EEEE, MM 'дугаар сарын' dd"},"dm":{"s":"M.d","m":"MM.dd","l":"MM'-р сар' dd","f":"MM 'дугаар сарын' dd"},"my":{"s":"M.yyyy","m":"MM.yyyy","l":"yyyy 'оны' MM'-р сар'","f":"yyyy 'оны' MM 'дугаар сарын'"},"dw":{"s":"E dd","m":"EE dd","l":"EEE, dd","f":"EEEE, dd"},"d":"dd","m":{"s":"M","m":"MM","l":"MM","f":"MM"},"y":{"s":"yyyy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"hh:mm:ss a z","ahms":"hh:mm:ss a","hmsz":"hh:mm:ss z","hms":"hh:mm:ss","ahmz":"hh:mm a z","ahm":"hh:mm a","hmz":"hh:mm z","ah":"hh a","hm":"hh:mm","h":"hh"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","h":"HH"}},"range":{"c00":{"s":"{sm}.{sd}.{sy} {st}-{et}","m":"{sm}.{sd}.{sy} {st} - {et}","l":"{sy} оны {sm}-р сар {sd} {st} - {et}","f":"{sy} оны {sm} дугаар сарын {sd} {st} - {et}"},"c01":{"s":"{sm}.{sd}.{sy} {st} - {em}.{ed}.{ey} {et}","m":"{sm}.{sd}.{sy} {st} - {em}.{ed}.{ey} {et}","l":"{sy} оны {sm}-р сар {sd} {st} - {ed} {et}","f":"{sy} оны {sm} дугаар сарын {sd} {st} - {ed} {et}"},"c02":{"s":"{sm}.{sd}.{sy} {st} - {em}.{ed}.{ey} {et}","m":"{sm}.{sd}.{sy} {st} - {em}.{ed}.{ey} {et}","l":"{sy} оны {sm}-р сар {sd} {st} - {em}-р сар {ed} {et}","f":"{sy} оны {sm} дугаар сарын {sd} {st} - {em} дугаар сарын {ed} {et}"},"c03":{"s":"{sm}.{sd}.{sy} {st} - {em}.{ed}.{ey} {et}","m":"{sm}.{sd}.{sy} {st} - {em}.{ed}.{ey} {et}","l":"{sy} оны {sm}-р сар {sd} {st} - {ey} оны {em}-р сар {ed} {et}","f":"{sy} оны {sm} дугаар сарын {sd} {st} - {ey} оны {em} дугаар сарын {ed} {et}"},"c10":{"s":"{sm}.{sd} - {em}.{ed}.{ey}","m":"{sm}.{sd} - {em}.{ed}.{ey}","l":"{sy} оны {sm}-р сар {sd} - {ed}","f":"{sy} оны {sm} дугаар сарын {sd} - {ed}"},"c11":{"s":"{sm}.{sd} - {em}.{ed}.{ey}","m":"{sm}.{sd} - {em}.{ed}.{ey}","l":"{sy} оны {sm}-р сар {sd} - {em}-р сар {ed}","f":"{sy} оны {sm} дугаар сарын {sd} - {em} дугаар сарын {ed}"},"c12":{"s":"{sm}.{sd}.{sy} - {em}.{ed}.{ey}","m":"{sm}.{sd}.{sy} - {em}.{ed}.{ey}","l":"{sy} оны {sm}-р сар {sd} - {ey} оны {em}-р сар {ed}","f":"{sy} оны {sm} дугаар сарын {sd} - {ey} оны {em} дугаар сарын {ed}"},"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}","l":"{sy} оны {sm}-р сар - {ey} оны {em}-р сар","f":"{sy} оны {sm} дугаар сарын - {ey} оны {em} дугаар сарын"},"c30":"{sy} - {ey}"}}};
 ilib.data.dateformats_mr = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"d MMM yy"},"my":{"m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h-mm-ss a z","hmsz":"h-mm-ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ahmz":"h-mm-ss a z","ahm":"h:mm a","hm":"h:mm a","hmz":"h-mm-ss a z","ah":"h a"},"24":{"ahmsz":"H-mm-ss z","ahms":"H-mm-ss","hmsz":"H-mm-ss z","hms":"H-mm-ss","ms":"mm-ss","ahmz":"H-mm-ss z","ahm":"H-mm","hmz":"H-mm-ss z","hm":"H-mm"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_ms = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d-M","m":"dd/MM"},"dmy":{"m":"dd/MM/yyyy"},"my":{"s":"M-yy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, d-M","m":"EE, d-M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss a","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm a","hmz":"h:mm a z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd}/{sm}/{sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em}, {ey}","f":"{st} {sd} {sm} – {et} {ed} {em}, {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em}, {ey}","f":"{sd} {sm} – {ed} {em}, {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_ms_BN = {"gregorian":{"date":{"dmy":{"f":"dd MMMM yyyy"}}},"generated":true};
@@ -6202,7 +6745,7 @@ ilib.data.sysres_lt = {"generated":true,"NN1":"sa","NN2":"va","NN3":"ko","NN4":"
 ilib.data.sysres_lv = {"generated":true,"NN1":"ja","NN2":"fe","NN3":"ma","NN4":"ap","NN5":"ma","NN6":"jū","NN7":"jū","NN8":"au","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"janv.","MMM2":"febr.","MMM3":"marts","MMM4":"apr.","MMM5":"maijs","MMM6":"jūn.","MMM7":"jūl.","MMM8":"aug.","MMM9":"sept.","MMM10":"okt.","MMM11":"nov.","MMM12":"dec.","MMMM1":"janvāris","MMMM2":"februāris","MMMM3":"marts","MMMM4":"aprīlis","MMMM5":"maijs","MMMM6":"jūnijs","MMMM7":"jūlijs","MMMM8":"augusts","MMMM9":"septembris","MMMM10":"oktobris","MMMM11":"novembris","MMMM12":"decembris","E1":"P","E2":"O","E3":"T","E4":"C","E5":"P","EE0":"sv","EE1":"pr","EE2":"ot","EE3":"tr","EE4":"ce","EE5":"pk","EE6":"se","EEE0":"sv","EEE1":"pr","EEE2":"ot","EEE3":"tr","EEE4":"ce","EEE5":"pk","EEE6":"se","EEEE0":"svētdiena","EEEE1":"pirmdiena","EEEE2":"otrdiena","EEEE3":"trešdiena","EEEE4":"ceturtdiena","EEEE5":"piektdiena","EEEE6":"sestdiena","a0":"priekšpusdienā","a1":"pēcpusdienā","G-1":"p.m.ē.","G1":"m.ē.","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekunde|#{num} sekundes","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} min","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minūte|#{num} minūtes","#{num}h":"#{num}s","durationMediumHours":"#{num} st","1#1 hr|#{num} hrs":"#{num} stu","1#1 hour|#{num} hours":"one#{num} stunda|#{num} stundas","1#1 dy|#{num} dys":"#{num} di","durationLongDays":"#{num} die","1#1 day|#{num} days":"one#{num} diennakts|#{num} diennaktis","#{num}w":"#{num}n","durationMediumWeeks":"#{num} ne","1#1 wk|#{num} wks":"#{num} ned","1#1 week|#{num} weeks":"one#{num} nedēļa|#{num} nedēļas","durationShortMonths":"#{num}m","1#1 mo|#{num} mos":"#{num} mē","1#1 mon|#{num} mons":"#{num} mēn","1#1 month|#{num} months":"one#{num} mēnesis|#{num} mēneši","#{num}y":"#{num}g","durationMediumYears":"#{num} g.","1#1 yr|#{num} yrs":"one#{num} gads|#{num} gadi","1#1 year|#{num} years":"one#{num} gads|#{num} gadi","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":" un ","separatorLong":" "};
 ilib.data.sysres_mk = {"generated":true,"NN1":"ја","NN2":"фе","NN3":"ма","NN4":"ап","NN5":"ма","NN6":"ју","NN7":"ју","NN8":"ав","NN9":"се","NN10":"ок","NN11":"но","NN12":"де","MMM1":"јан.","MMM2":"фев.","MMM3":"мар.","MMM4":"апр.","MMM5":"мај","MMM6":"јун.","MMM7":"јул.","MMM8":"авг.","MMM9":"септ.","MMM10":"окт.","MMM11":"ноем.","MMM12":"декем.","MMMM1":"јануари","MMMM2":"февруари","MMMM3":"март","MMMM4":"април","MMMM5":"мај","MMMM6":"јуни","MMMM7":"јули","MMMM8":"август","MMMM9":"септември","MMMM10":"октомври","MMMM11":"ноември","MMMM12":"декември","E0":"н","E1":"п","E2":"в","E3":"с","E4":"ч","E5":"п","E6":"с","EE0":"не","EE1":"по","EE2":"3","EE3":"ср","EE4":"че","EE5":"пе","EE6":"7","EEE0":"нед.","EEE1":"пон.","EEE2":"вт.","EEE3":"сре.","EEE4":"чет.","EEE5":"пет.","EEE6":"саб.","EEEE0":"недела","EEEE1":"понеделник","EEEE2":"вторник","EEEE3":"среда","EEEE4":"четврток","EEEE5":"петок","EEEE6":"сабота","a0":"претпладне","a1":"попладне","G-1":"пр.н.е.","G1":"ае.","#{num}s":"#{num}с","1#1 se|#{num} sec":"one#{num} сек|#{num} се","1#1 sec|#{num} sec":"#{num} сек","1#1 second|#{num} seconds":"one#{num} секунда|#{num} секунди","durationShortMinutes":"#{num}м","1#1 mi|#{num} min":"one#{num} мин|#{num} ми","1#1 min|#{num} min":"#{num} мин","1#1 minute|#{num} minutes":"one#{num} минута|#{num} минути","#{num}h":"#{num}ч","durationMediumHours":"one#{num} час|#{num} ча","1#1 hr|#{num} hrs":"#{num} час","1#1 hour|#{num} hours":"one#{num} час|#{num} часови","#{num}d":"#{num}д","1#1 dy|#{num} dys":"one#{num} ден|#{num} де","durationLongDays":"#{num} ден","1#1 day|#{num} days":"one#{num} ден|#{num} денови","#{num}w":"#{num}н","durationMediumWeeks":"one#{num} нед|#{num} не","1#1 wk|#{num} wks":"#{num} нед","1#1 week|#{num} weeks":"one#{num} недела|#{num} недели","durationShortMonths":"#{num}м","1#1 mo|#{num} mos":"one#{num} мсц|#{num} мс","1#1 mon|#{num} mons":"#{num} мес","1#1 month|#{num} months":"one#{num} месец|#{num} месеци","#{num}y":"#{num}г","durationMediumYears":"one#{num} год|#{num} го","1#1 yr|#{num} yrs":"#{num} год","1#1 year|#{num} years":"one#{num} година|#{num} години","{duration} ago":"пред {duration}","in {duration}":"за {duration}","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_ml = {"generated":true,"NN1":"ജന","NN2":"ഫെ","NN3":"മാ","NN4":"ഏപ","NN5":"മേ","NN6":"ജൂ","NN7":"ജൂ","NN8":"ഓഗ","NN9":"സെ","NN10":"ഒക","NN11":"നവ","NN12":"ഡി","MMM1":"ജനു","MMM2":"ഫെബ്രു","MMM3":"മാർ","MMM4":"ഏപ്രി","MMM5":"മേയ്","MMM6":"ജൂൺ","MMM7":"ജൂലൈ","MMM8":"ഓഗ","MMM9":"സെപ്റ്റം","MMM10":"ഒക്ടോ","MMM11":"നവം","MMM12":"ഡിസം","MMMM1":"ജനുവരി","MMMM2":"ഫെബ്രുവരി","MMMM3":"മാർച്ച്","MMMM4":"ഏപ്രിൽ","MMMM5":"മേയ്","MMMM6":"ജൂൺ","MMMM7":"ജൂലൈ","MMMM8":"ആഗസ്റ്റ്","MMMM9":"സെപ്റ്റംബർ","MMMM10":"ഒക്ടോബർ","MMMM11":"നവംബർ","MMMM12":"ഡിസംബർ","E0":"ഞാ","E1":"തി","E2":"ചൊ","E3":"ബു","E4":"വ്യാ","E5":"വെ","E6":"ശ","EE0":"ഞാ","EE1":"തി","EE2":"ചൊ","EE3":"ബു","EE4":"വ്","EE5":"വെ","EE6":"ശ","EEE0":"ഞായർ","EEE1":"തിങ്കൾ","EEE2":"ചൊവ്വ","EEE3":"ബുധൻ","EEE4":"വ്യാഴം","EEE5":"വെള്ളി","EEE6":"ശനി","EEEE0":"ഞായറാഴ്ച","EEEE1":"തിങ്കളാഴ്ച","EEEE2":"ചൊവ്വാഴ്ച","EEEE3":"ബുധനാഴ്ച","EEEE4":"വ്യാഴാഴ്ച","EEEE5":"വെള്ളിയാഴ്ച","EEEE6":"ശനിയാഴ്ച","G-1":"ക്രി.മൂ","G1":"ക്രി.പി.","#{num}s":"#{num}സ","1#1 se|#{num} sec":"#{num} സെ","1#1 sec|#{num} sec":"#{num} സെക","1#1 second|#{num} seconds":"#{num} സെക്കന്റ്","durationShortMinutes":"#{num}മ","1#1 mi|#{num} min":"#{num} മി","1#1 min|#{num} min":"#{num} മിന","1#1 minute|#{num} minutes":"#{num} മിനിട്ട്","#{num}h":"#{num}മ","durationMediumHours":"#{num} മണ","1#1 hr|#{num} hrs":"#{num} മണി","1#1 hour|#{num} hours":"#{num} മണിക്കൂർ","#{num}d":"#{num}ദ","1#1 dy|#{num} dys":"#{num} ദി","durationLongDays":"#{num} ദിവ","1#1 day|#{num} days":"#{num} ദിവസം","#{num}w":"#{num}ആ","durationMediumWeeks":"#{num} ആഴ","1#1 wk|#{num} wks":"#{num} ആഴ്ച","1#1 week|#{num} weeks":"#{num} ആഴ്ച","durationShortMonths":"#{num}മ","1#1 mo|#{num} mos":"#{num} മാ","1#1 mon|#{num} mons":"#{num} മാസം","1#1 month|#{num} months":"#{num} മാസം","#{num}y":"#{num}വ","durationMediumYears":"#{num} വർ","1#1 yr|#{num} yrs":"#{num} വർഷം","1#1 year|#{num} years":"#{num} വർഷം","{duration} ago":"{duration} മുമ്പ്","in {duration}":"+{duration}","finalSeparatorFull":",  എന്നിവ","separatorLong":" "};
-ilib.data.sysres_mn = {"N1":"1","N2":"2","N3":"3","N4":"4","N5":"5","N6":"6","N7":"7","N8":"8","N9":"9","N10":"10","N11":"11","N12":"12","NN1":"1","NN2":"2","NN3":"3","NN4":"4","NN5":"5","NN6":"6","NN7":"7","NN8":"8","NN9":"9","NN10":"10","NN11":"11","NN12":"12","MMM1":"1 сар","MMM2":"2 сар","MMM3":"3 сар","MMM4":"4 сар","MMM5":"5 сар","MMM6":"6 сар","MMM7":"7 сар","MMM8":"8 сар","MMM9":"9 сар","MMM10":"10 сар","MMM11":"11 сар","MMM12":"12 сар","MMMM1":"1 сар","MMMM2":"2 сар","MMMM3":"3 сар","MMMM4":"4 сар","MMMM5":"5 сар","MMMM6":"6 сар","MMMM7":"7 сар","MMMM8":"8 сар","MMMM9":"9 сар","MMMM10":"10 сар","MMMM11":"11 сар","MMMM12":"12 сар","E0":"Да","E1":"Мя","E2":"Лх","E3":"Пү","E4":"Ба","E5":"Бя","E6":"Ня","EE0":"Да","EE1":"Мя","EE2":"Лх","EE3":"Пү","EE4":"Ба","EE5":"Бя","EE6":"Ня","EEE0":"Даваа","EEE1":"Мягмар","EEE2":"Лхагва","EEE3":"Пүрэв","EEE4":"Баасан","EEE5":"Бямба","EEE6":"Ням","EEEE0":"Даваа","EEEE1":"Мягмар","EEEE2":"Лхагва","EEEE3":"Пүрэв","EEEE4":"Баасан","EEEE5":"Бямба","EEEE6":"Ням","G-1":"МЭӨ","G1":"МЭ","#{num}s":"#{num}с","1#1 se|#{num} sec":"#{num} се","1#1 sec|#{num} sec":"#{num} сек","1#1 second|#{num} seconds":"#{num} секунд","durationShortMinutes":"#{num}м","1#1 mi|#{num} min":"#{num} ми","1#1 min|#{num} min":"#{num} мин","1#1 minute|#{num} minutes":"#{num} минут","#{num}h":"#{num}ц","durationMediumHours":"one#{num} घं.|#{num} ца","1#1 hr|#{num} hrs":"one#{num} घंटा|#{num} цаг","1#1 hour|#{num} hours":"one#{num} घंटा|#{num} цаг","#{num}d":"#{num}х","1#1 dy|#{num} dys":"#{num} хо","durationLongDays":"#{num} хон","1#1 day|#{num} days":"#{num} хоног","#{num}w":"#{num}w","durationMediumWeeks":"#{num} we","1#1 wk|#{num} wks":"#{num} wee","1#1 week|#{num} weeks":"#{num} weeks","durationShortMonths":"#{num}с","1#1 mo|#{num} mos":"#{num} са","1#1 mon|#{num} mons":"#{num} сар","1#1 month|#{num} months":"one#{num} महीना|#{num} сар","#{num}y":"#{num}л","durationMediumYears":"#{num} ил","1#1 yr|#{num} yrs":"#{num} жил","1#1 year|#{num} years":"#{num} жил","{duration} ago":"{duration}ийн өмнө","in {duration}":"{duration}д","finalSeparatorFull":",  ","separatorLong":" "};
+ilib.data.sysres_mn = {"N1":"1","N2":"2","N3":"3","N4":"4","N5":"5","N6":"6","N7":"7","N8":"8","N9":"9","N10":"10","N11":"11","N12":"12","NN1":"1","NN2":"2","NN3":"3","NN4":"4","NN5":"5","NN6":"6","NN7":"7","NN8":"8","NN9":"9","NN10":"10","NN11":"11","NN12":"12","MMM1":"1 сар","MMM2":"2 сар","MMM3":"3 сар","MMM4":"4 сар","MMM5":"5 сар","MMM6":"6 сар","MMM7":"7 сар","MMM8":"8 сар","MMM9":"9 сар","MMM10":"10 сар","MMM11":"11 сар","MMM12":"12 сар","MMMM1":"1 сар","MMMM2":"2 сар","MMMM3":"3 сар","MMMM4":"4 сар","MMMM5":"5 сар","MMMM6":"6 сар","MMMM7":"7 сар","MMMM8":"8 сар","MMMM9":"9 сар","MMMM10":"10 сар","MMMM11":"11 сар","MMMM12":"12 сар","E0":"Д","E1":"М","E2":"Л","E3":"П","E4":"Б","E5":"Б","E6":"Н","EE0":"Да","EE1":"Мя","EE2":"Лх","EE3":"Пү","EE4":"Ба","EE5":"Бя","EE6":"Ня","EEE0":"Даваа","EEE1":"Мягмар","EEE2":"Лхагва","EEE3":"Пүрэв","EEE4":"Баасан","EEE5":"Бямба","EEE6":"Ням","EEEE0":"Даваа","EEEE1":"Мягмар","EEEE2":"Лхагва","EEEE3":"Пүрэв","EEEE4":"Баасан","EEEE5":"Бямба","EEEE6":"Ням","G-1":"МЭӨ","G1":"МЭ","durationShortMillis":"#{num}мс","#{num} ms":"#{num} мс","1#1 millisecond|#{num} milliseconds":"#{num} миллисекунд","#{num}s":"#{num}с","1#1 se|#{num} sec":"#{num} се","1#1 sec|#{num} sec":"#{num} сек","1#1 second|#{num} seconds":"#{num} секунд","durationShortMinutes":"#{num}м","1#1 mi|#{num} min":"#{num} ми","1#1 min|#{num} min":"#{num} мин","1#1 minute|#{num} minutes":"#{num} минут","#{num}h":"#{num}ц","durationMediumHours":"#{num} ца","1#1 hr|#{num} hrs":"#{num} цаг","1#1 hour|#{num} hours":"#{num} цаг","#{num}d":"#{num}х","1#1 dy|#{num} dys":"#{num} хо","durationLongDays":"#{num} хон","1#1 day|#{num} days":"#{num} хоног","#{num}w":"#{num}w","durationMediumWeeks":"#{num} до","1#1 wk|#{num} wks":"#{num} дол","1#1 week|#{num} weeks":"#{num} долоо хоног","durationShortMonths":"#{num}с","1#1 mo|#{num} mos":"#{num} са","1#1 mon|#{num} mons":"#{num} сар","1#1 month|#{num} months":"#{num} сар","#{num}y":"#{num}ж","durationMediumYears":"#{num} жи","1#1 yr|#{num} yrs":"#{num} жил","1#1 year|#{num} years":"#{num} жил","{duration} ago":"{duration}ийн өмнө","in {duration}":"{duration}д","finalSeparatorFull":",  ","separatorLong":" "};
 ilib.data.sysres_mr = {"generated":true,"NN1":"जा","NN2":"फे","NN3":"मा","NN4":"एप","NN5":"मे","NN6":"जू","NN7":"जु","NN8":"ऑग","NN9":"से","NN10":"ऑक","NN11":"नो","NN12":"डि","MMM1":"जाने","MMM2":"फेब्रु","MMM3":"मार्च","MMM4":"एप्रि","MMM5":"मे","MMM6":"जून","MMM7":"जुलै","MMM8":"ऑग","MMM9":"सेप्टें","MMM10":"ऑक्ट","MMM11":"नोव्हें","MMM12":"डिसें","MMMM1":"जानेवारी","MMMM2":"फेब्रुवारी","MMMM3":"मार्च","MMMM4":"एप्रिल","MMMM5":"मे","MMMM6":"जून","MMMM7":"जुलै","MMMM8":"ऑगस्ट","MMMM9":"सप्टेंबर","MMMM10":"ऑक्टोबर","MMMM11":"नोव्हेंबर","MMMM12":"डिसेंबर","E0":"र","E1":"सो","E2":"मं","E3":"बु","E4":"गु","E5":"शु","E6":"श","EE0":"र","EE1":"सो","EE2":"मं","EE3":"बु","EE4":"गु","EE5":"शु","EE6":"श","EEE0":"रवि","EEE1":"सोम","EEE2":"मंगळ","EEE3":"बुध","EEE4":"गुरु","EEE5":"शुक्र","EEE6":"शनि","EEEE0":"रविवार","EEEE1":"सोमवार","EEEE2":"मंगळवार","EEEE3":"बुधवार","EEEE4":"गुरुवार","EEEE5":"शुक्रवार","EEEE6":"शनिवार","G-1":"ईसापूर्व","G1":"सन","#{num}s":"#{num}स","1#1 se|#{num} sec":"#{num} से","1#1 sec|#{num} sec":"#{num} सेक","1#1 second|#{num} seconds":"#{num} सेकंद","durationShortMinutes":"#{num}म","1#1 mi|#{num} min":"#{num} मि","1#1 min|#{num} min":"#{num} मिन","1#1 minute|#{num} minutes":"one#{num} मिनिट|#{num} मिनिटे","#{num}h":"#{num}त","durationMediumHours":"#{num} तास","1#1 hr|#{num} hrs":"#{num} तास","1#1 hour|#{num} hours":"#{num} तास","#{num}d":"#{num}द","1#1 dy|#{num} dys":"#{num} दि","durationLongDays":"#{num} दिवस","1#1 day|#{num} days":"#{num} दिवस","#{num}w":"#{num}आ","durationMediumWeeks":"#{num} आठ","1#1 wk|#{num} wks":"#{num} आठव","1#1 week|#{num} weeks":"one#{num} आठवडा|#{num} आठवडे","durationShortMonths":"#{num}म","1#1 mo|#{num} mos":"#{num} मह","1#1 mon|#{num} mons":"#{num} महि","1#1 month|#{num} months":"one#{num} महिना|#{num} महिने","#{num}y":"#{num}व","durationMediumYears":"#{num} वर","1#1 yr|#{num} yrs":"one#{num} वर्ष|#{num} वर्","1#1 year|#{num} years":"one#{num} वर्ष|#{num} वर्षे","{duration} ago":"{duration}ापूर्वी","in {duration}":"{duration}ात","finalSeparatorFull":" आणि ","separatorLong":" "};
 ilib.data.sysres_ms = {"generated":true,"NN5":"Me","NN8":"Og","NN10":"Ok","NN12":"Di","MMM3":"Mac","MMM5":"Mei","MMM8":"Ogos","MMM10":"Okt","MMM12":"Dis","MMMM1":"Januari","MMMM2":"Februari","MMMM3":"Mac","MMMM5":"Mei","MMMM6":"Jun","MMMM7":"Julai","MMMM8":"Ogos","MMMM10":"Oktober","MMMM12":"Disember","E0":"A","E1":"I","E2":"S","E3":"R","E4":"K","E5":"J","EE0":"Ah","EE1":"Is","EE2":"Se","EE3":"Ra","EE4":"Kh","EE5":"Ju","EEE0":"Ahd","EEE1":"Isn","EEE2":"Sel","EEE3":"Rab","EEE4":"Kha","EEE5":"Jum","EEE6":"Sab","EEEE0":"Ahad","EEEE1":"Isnin","EEEE2":"Selasa","EEEE3":"Rabu","EEEE4":"Khamis","EEEE5":"Jumaat","EEEE6":"Sabtu","a0":"PG","a1":"PTG","G-1":"S.M.","G1":"TM","1#1 se|#{num} sec":"#{num} sa","1#1 sec|#{num} sec":"#{num} saat","1#1 second|#{num} seconds":"#{num} saat","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} min","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} minit","#{num}h":"#{num}j","durationMediumHours":"#{num} jam","1#1 hr|#{num} hrs":"#{num} jam","1#1 hour|#{num} hours":"#{num} jam","#{num}d":"#{num}h","1#1 dy|#{num} dys":"#{num} ha","durationLongDays":"#{num} hari","1#1 day|#{num} days":"#{num} hari","#{num}w":"#{num}m","durationMediumWeeks":"#{num} mi","1#1 wk|#{num} wks":"#{num} min","1#1 week|#{num} weeks":"#{num} minggu","durationShortMonths":"#{num}b","1#1 mo|#{num} mos":"#{num} bu","1#1 mon|#{num} mons":"#{num} bul","1#1 month|#{num} months":"#{num} bulan","#{num}y":"#{num}t","durationMediumYears":"#{num} thn","1#1 yr|#{num} yrs":"#{num} tah","1#1 year|#{num} years":"#{num} tahun","{duration} ago":"{duration} lalu","in {duration}":"dalam {duration}","finalSeparatorFull":", dan ","separatorLong":" "};
 ilib.data.sysres_nb = {"generated":true,"NN1":"ja","NN2":"fe","NN3":"ma","NN4":"ap","NN5":"ma","NN6":"ju","NN7":"ju","NN8":"au","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"jan.","MMM2":"feb.","MMM3":"mars","MMM4":"apr.","MMM5":"mai","MMM6":"juni","MMM7":"juli","MMM8":"aug.","MMM9":"sep.","MMM10":"okt.","MMM11":"nov.","MMM12":"des.","MMMM1":"januar","MMMM2":"februar","MMMM3":"mars","MMMM4":"april","MMMM5":"mai","MMMM6":"juni","MMMM7":"juli","MMMM8":"august","MMMM9":"september","MMMM10":"oktober","MMMM11":"november","MMMM12":"desember","E3":"O","E6":"L","EE0":"sø","EE1":"ma","EE2":"ti","EE3":"on","EE4":"to","EE5":"fr","EE6":"lø","EEE0":"søn.","EEE1":"man.","EEE2":"tir.","EEE3":"ons.","EEE4":"tor.","EEE5":"fre.","EEE6":"lør.","EEEE0":"søndag","EEEE1":"mandag","EEEE2":"tirsdag","EEEE3":"onsdag","EEEE4":"torsdag","EEEE5":"fredag","EEEE6":"lørdag","G-1":"f.Kr.","G1":"e.Kr.","1#1 se|#{num} sec":"#{num} sek","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekund|#{num} sekunder","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} min","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minutt|#{num} minutter","#{num}h":"#{num}t","durationMediumHours":"#{num} ti","1#1 hr|#{num} hrs":"one#{num} time|#{num} tim","1#1 hour|#{num} hours":"one#{num} time|#{num} timer","1#1 dy|#{num} dys":"one#{num} dag|#{num} da","durationLongDays":"#{num} dag","1#1 day|#{num} days":"one#{num} dag|#{num} dager","#{num}w":"#{num}u","durationMediumWeeks":"one#{num} uke|#{num} uk","1#1 wk|#{num} wks":"one#{num} uke|#{num} uker","1#1 week|#{num} weeks":"one#{num} uke|#{num} uker","durationShortMonths":"#{num}m","1#1 mo|#{num} mos":"#{num} md.","1#1 mon|#{num} mons":"#{num} mån","1#1 month|#{num} months":"one#{num} måned|#{num} måneder","#{num}y":"#{num}å","durationMediumYears":"#{num} år","1#1 yr|#{num} yrs":"#{num} år","1#1 year|#{num} years":"#{num} år","{duration} ago":"for {duration} siden","in {duration}":"om {duration}","finalSeparatorFull":" og ","separatorLong":" "};
@@ -6635,7 +7178,13 @@ ilib.DateFmt = function(options) {
 				locale: this.locale, 
 				id: options.timezone
 			});
-		}
+		} else if (options.locale) {
+			// if an explicit locale was given, then get the time zone for that locale
+			this.tz = new ilib.TimeZone({
+				locale: this.locale
+			});
+		} // else just assume time zone "local"
+		
 		if (typeof(options.useNative) !== 'undefined') {
 			this.useNative = options.useNative;
 		}
@@ -7033,7 +7582,7 @@ ilib.DateFmt.prototype = {
 		// time zone in their format, we never have to load up a TimeZone
 		// instance into this formatter.
 		if (!this.tz) {
-			this.tz = new ilib.TimeZone({locale: this.locale});
+			this.tz = new ilib.TimeZone({id: ilib.getTimeZone()});
 		}
 		return this.tz;
 	},
@@ -7269,17 +7818,24 @@ ilib.DateFmt.prototype = {
 			throw "Wrong date type passed to ilib.DateFmt.format()";
 		}
 		
+		var thisZoneName = this.tz && this.tz.getId() || "local";
+		var dateZoneName = date.timezone || "local";
+		
 		// convert to the time zone of this formatter before formatting
-		if (date.timezone && this.tz) {
-			// console.log("Differing time zones " + date.timezone + " and " + this.tz.getId() + ". Converting...");
+		if (dateZoneName !== thisZoneName) {
+			// console.log("Differing time zones date: " + dateZoneName + " and fmt: " + thisZoneName + ". Converting...");
 			
 			var datetz = new ilib.TimeZone({
 				locale: date.locale,
-				id: date.timezone
+				id: dateZoneName
+			});
+			var thistz = this.tz || new ilib.TimeZone({
+				locale: date.locale,
+				id: thisZoneName
 			});
 			
 			var dateOffset = datetz.getOffset(date),
-				fmtOffset = this.tz.getOffset(date),
+				fmtOffset = thistz.getOffset(date),
 				// relative offset in seconds
 				offset = (dateOffset.h || 0)*60*60 + (dateOffset.m || 0)*60 + (dateOffset.s || 0) -
 					((fmtOffset.h || 0)*60*60 + (fmtOffset.m || 0)*60 + (fmtOffset.s || 0));
@@ -7755,7 +8311,7 @@ ilib.DateRngFmt.prototype = {
 		// c01 - difference is less than 3 days. Year and month are same but date and time are different
 		// c02 - difference is less than 3 days. Year is same but month, date, and time are different. (ie. it straddles a month boundary)
 		// c03 - difference is less than 3 days. Year, month, date, and time are all different. (ie. it straddles a year boundary)
-		// c10 - difference is less than 2 years. Year and month are the same, but date and time are different.
+		// c10 - difference is less than 2 years. Year and month are the same, but date is different.
 		// c11 - difference is less than 2 years. Year is the same, but month, date, and time are different.
 		// c12 - difference is less than 2 years. All fields are different. (ie. straddles a year boundary)
 		// c20 - difference is less than 10 years. All fields are different.
@@ -8135,8 +8691,6 @@ ilib.Date.HebrewDate = function(params) {
 		}
 
 		if (typeof(params.unixtime) != 'undefined') {
-			// unix time is defined to be UTC
-			this.timezone = "Etc/UTC";
 			this.setTime(parseInt(params.unixtime, 10));
 		} else if (typeof(params.julianday) != 'undefined') {
 			// JD time is defined to be UTC
@@ -8209,18 +8763,14 @@ ilib.Date.HebrewDate = function(params) {
 			this.dayOfYear = parseInt(params.dayOfYear, 10);
 		} else if (typeof(params.rd) != 'undefined') {
 			// private parameter. Do not document this!
-			// RD time is defined to be UTC
-			this.timezone = "Etc/UTC";
 			this.setRd(params.rd);
 		} else {
-			// Date.getTime() gets unix time in UTC
 			var now = new Date();
-			this.setTime(now.getTime() - now.getTimezoneOffset()*60000);
+			this.setTime(now.getTime());
 		}
 	} else {
-		// Date.getTime() gets unix time in UTC
 		var now = new Date();
-		this.setTime(now.getTime() - now.getTimezoneOffset()*60000);
+		this.setTime(now.getTime());
 	}
 };
 
@@ -8859,7 +9409,7 @@ ilib.Date.HebrewDate.prototype.getCalendar = function() {
  * @return {string|undefined} the name of the time zone for this date instance
  */
 ilib.Date.HebrewDate.prototype.getTimeZone = function() {
-	return this.timezone;
+	return this.timezone || "local";
 };
 
 
@@ -9098,8 +9648,6 @@ ilib.Date.IslamicDate = function(params) {
 		}
 
 		if (typeof(params.unixtime) != 'undefined') {
-			// unix time is defined to be UTC
-			this.timezone = "Etc/UTC";
 			this.setTime(parseInt(params.unixtime, 10));
 		} else if (typeof(params.julianday) != 'undefined') {
 			// JD time is defined to be UTC
@@ -9157,18 +9705,14 @@ ilib.Date.IslamicDate = function(params) {
 			this.dayOfYear = parseInt(params.dayOfYear, 10);
 		} else if (typeof(params.rd) != 'undefined') {
 			// private parameter. Do not document this!
-			// RD time is defined to be UTC
-			this.timezone = "Etc/UTC";
 			this.setRd(params.rd);
 		} else {
-			// Date.getTime() gets unix time in UTC
 			var now = new Date();
-			this.setTime(now.getTime() - now.getTimezoneOffset()*60000);
+			this.setTime(now.getTime());
 		}
 	} else {
-		// Date.getTime() gets unix time in UTC
 		var now = new Date();
-		this.setTime(now.getTime() - now.getTimezoneOffset()*60000);
+		this.setTime(now.getTime());
 	}
 };
 
@@ -9656,7 +10200,7 @@ ilib.Date.IslamicDate.prototype.getCalendar = function() {
  * @return {string|undefined} the name of the time zone for this date instance
  */
 ilib.Date.IslamicDate.prototype.getTimeZone = function() {
-	return this.timezone;
+	return this.timezone || "local";
 };
 
 
@@ -9893,8 +10437,6 @@ ilib.Date.JulDate = function(params) {
 		}
 
 		if (typeof(params.unixtime) != 'undefined') {
-			// unix time is defined to be UTC
-			this.timezone = "Etc/UTC";
 			this.setTime(parseInt(params.unixtime, 10));
 		} else if (typeof(params.julianday) != 'undefined') {
 			// JD time is defined to be UTC
@@ -9940,18 +10482,14 @@ ilib.Date.JulDate = function(params) {
 			this.millisecond = parseInt(params.millisecond, 10) || 0;
 		} else if (typeof(params.rd) != 'undefined') {
 			// private parameter. Do not document this!
-			// RD time is defined to be UTC
-			this.timezone = "Etc/UTC";
 			this.setRd(params.rd);
 		} else {
-			// Date.getTime() gets unix time in UTC
 			var now = new Date();
-			this.setTime(now.getTime() - now.getTimezoneOffset()*60000);
+			this.setTime(now.getTime());
 		}
 	} else {
-		// Date.getTime() gets unix time in UTC
 		var now = new Date();
-		this.setTime(now.getTime() - now.getTimezoneOffset()*60000);
+		this.setTime(now.getTime());
 	}
 };
 
@@ -10350,7 +10888,7 @@ ilib.Date.JulDate.prototype.getCalendar = function() {
  * @return {string|undefined} the name of the time zone for this date instance
  */
 ilib.Date.JulDate.prototype.getTimeZone = function() {
-	return this.timezone;
+	return this.timezone || "local";
 };
 
 /**
