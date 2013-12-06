@@ -77,6 +77,18 @@ ilib.data.tester_zh = {
     "comma": ","
 };
 
+ilib.data.tester2 = {
+	" This is a test. ": "test1",
+	"This is a test. ": "test2",
+	" This is a test.": "test3"
+};
+
+ilib.data.tester2_de = {
+	" This is a test. ": "detest1",
+	"This is a test. ": "detest2",
+	" This is a test.": "detest3"
+};
+
 ilib.data.mock_foobar = ilib.data.strings;
 ilib.data.mock_foobar_de = ilib.data.strings_de;
 
@@ -1395,4 +1407,54 @@ function testResBundleGetStringHansMissingPsuedo() {
     assertEquals("和俄了了夥凡熱夥们{country}", rb.getString("Hello from {country}").toString());
     assertEquals("和俄了了夥凡熱夥们{city}", rb.getString("Hello from {city}").toString());
     assertEquals("个熱俄俄推意尼个思凡熱夥们{city}意尼{country}", rb.getString("Greetings from {city} in {country}").toString());
+}
+
+function testResBundleGetStringWithSpaces() {
+    var rb = new ilib.ResBundle({
+        name: "tester2"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("test1", rb.getString(" This is a test. ").toString());
+}
+
+function testResBundleGetStringCompressSpaces() {
+    var rb = new ilib.ResBundle({
+        name: "tester2"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("test1", rb.getString("    This    is     a     test.     ").toString());
+}
+
+function testResBundleGetStringConvertAllWhiteToSpaces() {
+    var rb = new ilib.ResBundle({
+        name: "tester2"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("test1", rb.getString(" \t\r   This \n\n   is \n\t    a    \t test.  \n   ").toString());
+}
+
+function testResBundleGetStringCompressSpacesEnd() {
+    var rb = new ilib.ResBundle({
+        name: "tester2"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("test2", rb.getString("This    is     a     test.     ").toString());
+}
+
+function testResBundleGetStringCompressSpacesBeginning() {
+    var rb = new ilib.ResBundle({
+        name: "tester2"
+    });
+    
+    assertNotNull(rb);
+    
+    assertEquals("test3", rb.getString("     This    is     a     test.").toString());
 }
