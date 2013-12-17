@@ -1,5 +1,4 @@
 {
-    "generated": true,
     "NN1": "ינ",
     "NN2": "פב",
     "NN3": "מר",
@@ -71,7 +70,7 @@
     "#{num}s": "#{num}ש",
     "1#1 se|#{num} sec": "one#{num} שנ׳|two#{num} שנ׳|many#{num} שנ׳|#{num} שנ",
     "1#1 sec|#{num} sec": "one#{num} שניה|many#‏{num} שני|#{num} שני",
-    "1#1 second|#{num} seconds": "one#{num} שניה|many#‏{num} שניות|#{num} שניות",
+    "1#1 second|#{num} seconds": "one#{num} שניה|many#{num} שניות|#{num} שניות",
     "durationShortMinutes": "#{num}ד",
     "1#1 mi|#{num} min": "#{num} דק׳",
     "1#1 min|#{num} min": "one#{num} דקה|#{num} דקות",
@@ -96,8 +95,8 @@
     "durationMediumYears": "one#{num} שנה|#{num} שנ",
     "1#1 yr|#{num} yrs": "one#{num} שנה|#{num} שנים",
     "1#1 year|#{num} years": "one#{num} שנה|#{num} שנים",
-    "{duration} ago": "-{duration}",
-    "in {duration}": "+{duration}",
+    "{duration} ago": "לפני {duration}",
+    "in {duration}": "ב{duration}",
     "finalSeparatorFull": " ו",
     "separatorLong": " "
 }

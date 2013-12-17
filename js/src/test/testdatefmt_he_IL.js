@@ -31,7 +31,7 @@ function testDateFmtSimpleShort_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.11", fmt.format(date));
+    assertEquals("29.09.11", fmt.format(date));
 }
 
 function testDateFmtSimpleMedium_he_IL() {
@@ -48,7 +48,7 @@ function testDateFmtSimpleMedium_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 בספט 2011", fmt.format(date));
+    assertEquals("29.09.2011", fmt.format(date));
 }
 
 function testDateFmtSimpleLong_he_IL() {
@@ -65,7 +65,7 @@ function testDateFmtSimpleLong_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29 בספט 2011", fmt.format(date));
+    assertEquals("29 ספט 2011", fmt.format(date));
 }
 
 function testDateFmtSimpleFull_he_IL() {
@@ -167,7 +167,7 @@ function testDateFmtDateTimeSimpleShort_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.9.11", fmt.format(date));
+    assertEquals("29.09.11 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_he_IL() {
@@ -184,7 +184,7 @@ function testDateFmtDateTimeSimpleMedium_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 בספט 2011", fmt.format(date));
+    assertEquals("29.09.2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_he_IL() {
@@ -201,7 +201,7 @@ function testDateFmtDateTimeSimpleLong_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 בספט 2011", fmt.format(date));
+    assertEquals("29 ספט 2011 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_he_IL() {
@@ -218,7 +218,7 @@ function testDateFmtDateTimeSimpleFull_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29 בספטמבר 2011", fmt.format(date));
+    assertEquals("29 בספטמבר 2011 13:45", fmt.format(date));
 }
 
 
@@ -391,7 +391,7 @@ function testDateFmtTypeDate_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.11", fmt.format(date));
+    assertEquals("29.09.11", fmt.format(date));
 }
 
 function testDateFmtTypeTime_he_IL() {
@@ -425,7 +425,7 @@ function testDateFmtTypeDateTime_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 29.9.11", fmt.format(date));
+    assertEquals("29.09.11 13:45", fmt.format(date));
 }
 
 
@@ -511,7 +511,7 @@ function testDateFmtShortDateComponentsDM_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29/9", fmt.format(date));
+    assertEquals("29.09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsMY_he_IL() {
@@ -528,7 +528,7 @@ function testDateFmtShortDateComponentsMY_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("9.11", fmt.format(date));
+    assertEquals("09.11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsDMY_he_IL() {
@@ -545,7 +545,7 @@ function testDateFmtShortDateComponentsDMY_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("29.9.11", fmt.format(date));
+    assertEquals("29.09.11", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDM_he_IL() {
@@ -562,7 +562,7 @@ function testDateFmtShortDateComponentsWDM_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ה', 29/9", fmt.format(date));
+    assertEquals("ה', 29.09", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_he_IL() {
@@ -579,7 +579,7 @@ function testDateFmtShortDateComponentsWDMY_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("ה', 29/9/11", fmt.format(date));
+    assertEquals("ה', 29.09.11", fmt.format(date));
 }
 
 
@@ -699,7 +699,7 @@ function testDateFmtFullDateComponentsWDM_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("יום חמישי, 29 בספט", fmt.format(date));
+    assertEquals("יום חמישי, 29 בספטמבר", fmt.format(date));
 }
 
 function testDateFmtFullDateComponentsWDMY_he_IL() {
@@ -716,7 +716,7 @@ function testDateFmtFullDateComponentsWDMY_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("יום חמישי, 29 בספט 2011", fmt.format(date));
+    assertEquals("יום חמישי, 29 בספטמבר 2011", fmt.format(date));
 }
 
 
@@ -1187,7 +1187,7 @@ function testDateFmtWithTimeZoneAndNoDST_he_IL() {
     assertEquals("13:45:37 IST", fmt.format(date));
 }
 
-/*function testDateFmtFormatRelativeWithinMinuteAfter_he_IL() {
+function testDateFmtFormatRelativeWithinMinuteAfter_he_IL() {
     var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
     assertNotNull(fmt);
     
@@ -1211,7 +1211,7 @@ function testDateFmtWithTimeZoneAndNoDST_he_IL() {
 		second: 30,
 		millisecond: 0
 	});
-    assertEquals("בעוד 30 שניות", fmt.formatRelative(reference, date));
+    assertEquals("ב30 שניות", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinMinuteBefore_he_IL() {
     var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
@@ -1263,7 +1263,7 @@ function testDateFmtFormatRelativeWithinHourAfter_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("בעוד 10 דקות", fmt.formatRelative(reference, date));
+    assertEquals("ב10 דקות", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinHourBefore_he_IL() {
     var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
@@ -1315,7 +1315,7 @@ function testDateFmtFormatRelativeWithinDayAfter_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("בעוד 4 שעות", fmt.formatRelative(reference, date));
+    assertEquals("ב4 שעות", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinDayBefore_he_IL() {
     var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
@@ -1368,7 +1368,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("בעוד 4 ימים", fmt.formatRelative(reference, date));
+    assertEquals("ב4 ימים", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinFortnightBefore_he_IL() {
     var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
@@ -1421,7 +1421,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("בעוד 9 שבועות", fmt.formatRelative(reference, date));
+    assertEquals("ב9 שבועות", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinQuarterBefore_he_IL() {
     var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
@@ -1474,7 +1474,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("בעוד 16 חודשים", fmt.formatRelative(reference, date));
+    assertEquals("ב16 חודשים", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeWithinTwoYearsBefore_he_IL() {
     var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
@@ -1527,7 +1527,7 @@ function testDateFmtFormatRelativeYearsAfter_he_IL() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("בעוד 14 שנים", fmt.formatRelative(reference, date));
+    assertEquals("ב14 שנים", fmt.formatRelative(reference, date));
 }
 function testDateFmtFormatRelativeYearsBefore_he_IL() {
     var fmt = new ilib.DateFmt({locale: "he-IL", length: "full"});
@@ -1554,6 +1554,6 @@ function testDateFmtFormatRelativeYearsBefore_he_IL() {
 		millisecond: 0
 	});
     assertEquals("לפני 21 שנים", fmt.formatRelative(reference, date));
-}*/
+}
 
 

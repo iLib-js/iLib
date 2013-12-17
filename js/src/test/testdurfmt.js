@@ -2855,7 +2855,7 @@ function testDurFmtHEFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("1ש 1ח 1ש ‏1 יום 1:01:01", duration.toString());
+    assertEquals("1ש 1ח 1ש ‏1 יום 01:01:01", duration.toString());
 };
 
 function testDurFmtHEFormatMedium() {
@@ -2963,7 +2963,7 @@ function testDurFmtHEFormatShortClockAsync() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("1ש 1ח 1ש ‏1 יום 1:01:01", duration.toString());
+    	    assertEquals("1ש 1ח 1ש ‏1 יום 01:01:01", duration.toString());
     	    callbackCalled = true;
     	}
     });
