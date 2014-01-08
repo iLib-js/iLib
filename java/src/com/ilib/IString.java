@@ -330,8 +330,8 @@ public class IString
         }
 
         if ( plurals == null ) {
-            File pluralJSON = new File(PluralFormHelper.root, 
-            		locale.getSpec().replace('-', File.separatorChar) + File.separator + PluralFormHelper.pluralsJSON);
+            File pluralJSON = new File(PluralFormHelper.root,
+            		(locale.getSpec().isEmpty() ? EMPTY_ITEM : locale.getLanguage() + File.separator) + PluralFormHelper.pluralsJSON);
             plurals = PluralFormHelper.getPluralForms(pluralJSON);
             if (plurals == null) plurals = new HashMap<>(0);
         }
@@ -344,7 +344,7 @@ public class IString
                     result = new IString(strings.get(i));
                     i = selectors.size();
                 }
-            } else if ( sel.length() > 2 && sel.substring(0,2).equals(">=") ) {                
+            } else if ( sel.length() > 2 && sel.substring(0,2).equals(">=") ) {
                 selector = Double.parseDouble(sel.substring(2));
                 if (reference >= selector) {
                     result = new IString(strings.get(i));
@@ -365,7 +365,7 @@ public class IString
             } else if ( sel.length() > 0 ) {
 
             	if ( PluralFormHelper.getPluralKey((int)reference, plurals).equals(sel) ) {
-                	result = new IString(strings.get(i));
+                	result = new IString(strings.get(i), locale);
                     i = selectors.size();
                 } else {
                 int value, dash = sel.indexOf("-");

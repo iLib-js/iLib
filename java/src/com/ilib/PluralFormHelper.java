@@ -200,20 +200,17 @@ public class PluralFormHelper {
 
 	protected static void matchPluralForm(StringBuilder builder) {
 		String command = builder.toString();
-
 		Matcher matcher = commandParser.matcher(command);
-		boolean matchesFound = false;
 
 		while (matcher.find()) {
 			final String replacement = matcher.group(0);
 			String result = invokeFunction(matcher.group(1), matcher.group(3).split(COMMA));
 			command = command.replace(replacement, result);
-			matchesFound = true;
+			matcher = commandParser.matcher(command);
 		}
 
 		builder.setLength(0);
 		builder.append(command);
-		if (matchesFound) matchPluralForm(builder);
 	}
 
 	protected static String invokeFunction(String methodName, String[] params) {
