@@ -70,4 +70,6 @@ collate.js
 nfkc/all.js
 localematch.js
 normstring.js
+maps/toupper.js
+maps/tolower.js
 */
