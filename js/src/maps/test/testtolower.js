@@ -169,7 +169,7 @@ function testToLowerUpperPalochka_ru_RU() {
     assertEquals("Ӏ", mapper.map("Ӏ"));
 }
 
-/* Russian tests */
+/* Greek tests */
 function testToLower_el_GR() {
 	var mapper = new ilib.StringMapper({
 		locale: "el-GR",

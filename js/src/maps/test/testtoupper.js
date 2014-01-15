@@ -160,13 +160,21 @@ function testToUpperUpperPalochka_ru_RU() {
     assertEquals("Ӏ", mapper.map("Ӏ"));
 }
 
-/* Russian tests */
+/* Greek tests */
 function testToUpper_el_GR() {
 	var mapper = new ilib.StringMapper({
 		locale: "el-GR",
 		name: "toupper"
 	});
     assertEquals("ΙΑΣΑΣ", mapper.map("ιασας"));
+}
+
+function testToUpperAccents_el_GR() {
+	var mapper = new ilib.StringMapper({
+		locale: "el-GR",
+		name: "toupper"
+	});
+    assertEquals("ΑΕΗΙΥΙΥΟΥΩΙ", mapper.map("άέήίΰϊϋόύώΐ"));
 }
 
 /* French tests */
