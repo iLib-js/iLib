@@ -72,6 +72,5 @@ collate.js
 localematch.js
 normstring.js
 mapper.js
-maps/toupper.js
-maps/tolower.js
+maps/casemapper.js
 */

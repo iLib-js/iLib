@@ -18,68 +18,89 @@
  */
 
 function testToUpperFromLower_default() {
-	var mapper = new ilib.ToUpperMapper();
+	var mapper = new ilib.CaseMapper();
     assertEquals("THIS IS A STRING", mapper.map("this is a string"));
 }
 
 function testToUpperFromUpper_default() {
-	var mapper = new ilib.ToUpperMapper();
+	var mapper = new ilib.CaseMapper();
     assertEquals("THIS IS A STRING", mapper.map("THIS IS A STRING"));
 }
 
 function testToUpperFromMixed_default() {
-	var mapper = new ilib.ToUpperMapper();
+	var mapper = new ilib.CaseMapper();
+    assertEquals("THIS IS A STRING", mapper.map("This is a String"));
+}
+
+function testToUpperFromLowerExplicitDirection_default() {
+	var mapper = new ilib.CaseMapper({
+		direction: "toupper"
+	});
+    assertEquals("THIS IS A STRING", mapper.map("this is a string"));
+}
+
+function testToUpperFromUpperExplicitDirection_default() {
+	var mapper = new ilib.CaseMapper({
+		direction: "toupper"
+	});
+    assertEquals("THIS IS A STRING", mapper.map("THIS IS A STRING"));
+}
+
+function testToUpperFromMixedExplicitDirection_default() {
+	var mapper = new ilib.CaseMapper({
+		direction: "toupper"
+	});
     assertEquals("THIS IS A STRING", mapper.map("This is a String"));
 }
 
 function testToUpperFromPunctuationUnchanged_default() {
-	var mapper = new ilib.ToUpperMapper();
+	var mapper = new ilib.CaseMapper();
     assertEquals("!@#$%^&*()", mapper.map("!@#$%^&*()"));
 }
 
 function testToUpperFromNonLatinUnchanged_default() {
-	var mapper = new ilib.ToUpperMapper();
+	var mapper = new ilib.CaseMapper();
     assertEquals("演蟻人 道格拉斯最老英雄", mapper.map("演蟻人 道格拉斯最老英雄"));
 }
 
 function testToUpperFromExtendedLatin_default() {
-	var mapper = new ilib.ToUpperMapper();
+	var mapper = new ilib.CaseMapper();
     assertEquals("ÃÉÌÔÜ", mapper.map("ãéìôü"));
 }
 
 function testToUpperCyrillic_default() {
-	var mapper = new ilib.ToUpperMapper();
+	var mapper = new ilib.CaseMapper();
     assertEquals("ПРАЗЛ", mapper.map("празл"));
 }
 
 function testToUpperGreek_default() {
-	var mapper = new ilib.ToUpperMapper();
+	var mapper = new ilib.CaseMapper();
     assertEquals("ΑΒΓΔΕΖΗΘ", mapper.map("αβγδεζηθ"));
 }
 
 function testToUpperGreekSigma_default() {
-	var mapper = new ilib.ToUpperMapper();
+	var mapper = new ilib.CaseMapper();
 	assertEquals("ΙΑΣΑΣ ΙΑΣΑΣ", mapper.map("ιασας ιασας"));
 }
 
 function testToUpperCoptic_default() {
-	var mapper = new ilib.ToUpperMapper();
+	var mapper = new ilib.CaseMapper();
     assertEquals("ⲀⲂⲄⲆⲈⲊⲌⲎⲐⲒⲔⲖ", mapper.map("ⲁⲃⲅⲇⲉⲋⲍⲏⲑⲓⲕⲗ"));
 }
 
 function testToUpperArmenian_default() {
-	var mapper = new ilib.ToUpperMapper();
+	var mapper = new ilib.CaseMapper();
     assertEquals("ԱԲԳԴԵԶԷԸԹ", mapper.map("աբգդեզէըթ"));
 }
 
 function testToUpperGeorgian_default() {
-	var mapper = new ilib.ToUpperMapper();
+	var mapper = new ilib.CaseMapper();
     assertEquals("ႠႡႢႣႤႥႦႧႨႩ", mapper.map("ⴀⴁⴂⴃⴄⴅⴆⴇⴈⴉ"));
 }
 
 /* Azeri tests */
 function testToUpper_az_AZ() {
-	var mapper = new ilib.ToUpperMapper({
+	var mapper = new ilib.CaseMapper({
 		locale: "az-AZ"
 	});
     assertEquals("Iİ", mapper.map("ıi"));
@@ -87,7 +108,7 @@ function testToUpper_az_AZ() {
 
 /* Turkish tests */
 function testToUpper_tr_TR() {
-	var mapper = new ilib.ToUpperMapper({
+	var mapper = new ilib.CaseMapper({
 		locale: "tr-TR"
 	});
     assertEquals("Iİ", mapper.map("ıi"));
@@ -95,7 +116,7 @@ function testToUpper_tr_TR() {
 
 /* Crimean Tatar tests */
 function testToUpper_crh_Latn_UK() {
-	var mapper = new ilib.ToUpperMapper({
+	var mapper = new ilib.CaseMapper({
 		locale: "crh-Latn-UK"
 	});
     assertEquals("Iİ", mapper.map("ıi"));
@@ -103,7 +124,7 @@ function testToUpper_crh_Latn_UK() {
 
 /* Kazakh tests */
 function testToUpper_kk_Latn_KK() {
-	var mapper = new ilib.ToUpperMapper({
+	var mapper = new ilib.CaseMapper({
 		locale: "kk-Latn-KK"
 	});
     assertEquals("Iİ", mapper.map("ıi"));
@@ -111,7 +132,7 @@ function testToUpper_kk_Latn_KK() {
 
 /* Tatar tests */
 function testToUpper_tt_Latn_RU() {
-	var mapper = new ilib.ToUpperMapper({
+	var mapper = new ilib.CaseMapper({
 		locale: "tt-Latn-RU"
 	});
     assertEquals("Iİ", mapper.map("ıi"));
@@ -119,7 +140,7 @@ function testToUpper_tt_Latn_RU() {
 
 /* Karachay-Balkar tests */
 function testToUpper_krc_Latn_RU() {
-	var mapper = new ilib.ToUpperMapper({
+	var mapper = new ilib.CaseMapper({
 		locale: "krc-Latn-RU"
 	});
     assertEquals("Iİ", mapper.map("ıi"));
@@ -127,7 +148,7 @@ function testToUpper_krc_Latn_RU() {
 
 /* German tests */
 function testToUpper_de_DE() {
-	var mapper = new ilib.ToUpperMapper({
+	var mapper = new ilib.CaseMapper({
 		locale: "de-DE"
 	});
     assertEquals("GROSS", mapper.map("groß"));
@@ -135,14 +156,14 @@ function testToUpper_de_DE() {
 
 /* Russian tests */
 function testToUpperLowerPalochka_ru_RU() {
-	var mapper = new ilib.ToUpperMapper({
+	var mapper = new ilib.CaseMapper({
 		locale: "ru-RU"
 	});
     assertEquals("Ӏ", mapper.map("ӏ"));
 }
 
 function testToUpperUpperPalochka_ru_RU() {
-	var mapper = new ilib.ToUpperMapper({
+	var mapper = new ilib.CaseMapper({
 		locale: "ru-RU"
 	});
     assertEquals("Ӏ", mapper.map("Ӏ"));
@@ -150,14 +171,14 @@ function testToUpperUpperPalochka_ru_RU() {
 
 /* Greek tests */
 function testToUpper_el_GR() {
-	var mapper = new ilib.ToUpperMapper({
+	var mapper = new ilib.CaseMapper({
 		locale: "el-GR"
 	});
     assertEquals("ΙΑΣΑΣ ΙΑΣΑΣ", mapper.map("ιασας ιασας"));
 }
 
 function testToUpperAccents_el_GR() {
-	var mapper = new ilib.ToUpperMapper({
+	var mapper = new ilib.CaseMapper({
 		locale: "el-GR"
 	});
     assertEquals("ΑΕΗΙΥΙΥΟΥΩΙ", mapper.map("άέήίΰϊϋόύώΐ"));
@@ -165,7 +186,7 @@ function testToUpperAccents_el_GR() {
 
 /* French tests */
 function testToUpper_fr_FR() {
-	var mapper = new ilib.ToUpperMapper({
+	var mapper = new ilib.CaseMapper({
 		locale: "fr-FR"
 	});
     assertEquals("TETE-A-TETE", mapper.map("Tête-à-tête"));
@@ -173,7 +194,7 @@ function testToUpper_fr_FR() {
 
 /* French Canadian tests */
 function testToUpper_fr_CA() {
-	var mapper = new ilib.ToUpperMapper({
+	var mapper = new ilib.CaseMapper({
 		locale: "fr-CA"
 	});
     assertEquals("TÊTE-À-TÊTE", mapper.map("Tête-à-tête"));
