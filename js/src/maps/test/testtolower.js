@@ -18,135 +18,124 @@
  */
 
 function testToLowerFromLower_default() {
-	var mapper = new ilib.StringMapper({
-		name: "tolower"
-	});
+	var mapper = new ilib.ToLowerMapper();
     assertEquals("this is a string", mapper.map("this is a string"));
 }
 
 function testToLowerFromUpper_default() {
-	var mapper = new ilib.StringMapper({
-		name: "tolower"
-	});
+	var mapper = new ilib.ToLowerMapper();
     assertEquals("this is a string", mapper.map("THIS IS A STRING"));
 }
 
 function testToLowerFromMixed_default() {
-	var mapper = new ilib.StringMapper({
-		name: "tolower"
-	});
+	var mapper = new ilib.ToLowerMapper();
     assertEquals("this is a string", mapper.map("This is a String"));
 }
 
 function testToLowerFromPunctuationUnchanged_default() {
-	var mapper = new ilib.StringMapper({
-		name: "tolower"
-	});
+	var mapper = new ilib.ToLowerMapper();
     assertEquals("!@#$%^&*()", mapper.map("!@#$%^&*()"));
 }
 
 function testToLowerFromNonLatinUnchanged_default() {
-	var mapper = new ilib.StringMapper({
-		name: "tolower"
-	});
+	var mapper = new ilib.ToLowerMapper();
     assertEquals("演蟻人 道格拉斯最老英雄", mapper.map("演蟻人 道格拉斯最老英雄"));
 }
 
 function testToLowerFromExtendedLatin_default() {
-	var mapper = new ilib.StringMapper({
-		name: "tolower"
-	});
+	var mapper = new ilib.ToLowerMapper();
     assertEquals("ãéìôü", mapper.map("ÃÉÌÔÜ"));
 }
 
 function testToLowerCyrillic_default() {
-	var mapper = new ilib.StringMapper({
-		name: "tolower"
-	});
+	var mapper = new ilib.ToLowerMapper();
     assertEquals("празл", mapper.map("ПРАЗЛ"));
 }
 
 function testToLowerGreek_default() {
-	var mapper = new ilib.StringMapper({
-		name: "tolower"
-	});
+	var mapper = new ilib.ToLowerMapper();
     assertEquals("αβγδεζηθ", mapper.map("ΑΒΓΔΕΖΗΘ"));
 }
 
+function testToLowerGreekSigma_default() {
+	var mapper = new ilib.ToLowerMapper();
+	assertEquals("ιασας ιασας", mapper.map("ΙΑΣΑΣ ΙΑΣΑΣ"));
+}
+
+function testToLowerCoptic_default() {
+	var mapper = new ilib.ToLowerMapper();
+    assertEquals("ⲁⲃⲅⲇⲉⲋⲍⲏⲑⲓⲕⲗ", mapper.map("ⲀⲂⲄⲆⲈⲊⲌⲎⲐⲒⲔⲖ"));
+}
+
 function testToLowerArmenian_default() {
-	var mapper = new ilib.StringMapper({
-		name: "tolower"
-	});
-    assertEquals("աբգդեզէըթ", mapper.map("ԱԲԳԴԵԶԷԹ"));
+	var mapper = new ilib.ToLowerMapper();
+    assertEquals("աբգդեզէըթ", mapper.map("ԱԲԳԴԵԶԷԸԹ"));
+}
+
+function testToLowerGeorgian_default() {
+	var mapper = new ilib.ToLowerMapper();
+    assertEquals("ⴀⴁⴂⴃⴄⴅⴆⴇⴈⴉ", mapper.map("ႠႡႢႣႤႥႦႧႨႩ"));
 }
 
 /* Azeri tests */
 function testToLower_az_AZ() {
-	var mapper = new ilib.StringMapper({
-		locale: "az-AZ",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "az-AZ"
 	});
     assertEquals("ıi", mapper.map("Iİ"));
 }
 
 /* Turkish tests */
 function testToLower_tr_TR() {
-	var mapper = new ilib.StringMapper({
-		locale: "tr-TR",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "tr-TR"
 	});
     assertEquals("ıi", mapper.map("Iİ"));
 }
 
 /* Crimean Tatar tests */
 function testToLower_crh_Latn_UK() {
-	var mapper = new ilib.StringMapper({
-		locale: "crh-Latn-UK",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "crh-Latn-UK"
 	});
     assertEquals("ıi", mapper.map("Iİ"));
 }
 
 /* Kazakh tests */
 function testToLower_kk_Latn_KK() {
-	var mapper = new ilib.StringMapper({
-		locale: "kk-Latn-KK",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "kk-Latn-KK"
 	});
     assertEquals("ıi", mapper.map("Iİ"));
 }
 
 /* Tatar tests */
 function testToLower_tt_Latn_RU() {
-	var mapper = new ilib.StringMapper({
-		locale: "tt-Latn-RU",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "tt-Latn-RU"
 	});
     assertEquals("ıi", mapper.map("Iİ"));
 }
 
 /* Karachay-Balkar tests */
 function testToLower_krc_Latn_RU() {
-	var mapper = new ilib.StringMapper({
-		locale: "krc-Latn-RU",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "krc-Latn-RU"
 	});
     assertEquals("ıi", mapper.map("Iİ"));
 }
 
 /* German tests */
 function testToLowerDoubleS_de_DE() {
-	var mapper = new ilib.StringMapper({
-		locale: "de-DE",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "de-DE"
 	});
     assertEquals("gross", mapper.map("GROSS"));
 }
 
 function testToLowerWithSZ_de_DE() {
-	var mapper = new ilib.StringMapper({
-		locale: "de-DE",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "de-DE"
 	});
     assertEquals("groß", mapper.map("GROß"));
 }
@@ -154,58 +143,51 @@ function testToLowerWithSZ_de_DE() {
 
 /* Russian tests */
 function testToLowerLowerPalochka_ru_RU() {
-	var mapper = new ilib.StringMapper({
-		locale: "ru-RU",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "ru-RU"
 	});
     assertEquals("ӏ", mapper.map("ӏ"));
 }
 
 function testToLowerUpperPalochka_ru_RU() {
-	var mapper = new ilib.StringMapper({
-		locale: "ru-RU",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "ru-RU"
 	});
     assertEquals("Ӏ", mapper.map("Ӏ"));
 }
 
 /* Greek tests */
 function testToLower_el_GR() {
-	var mapper = new ilib.StringMapper({
-		locale: "el-GR",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "el-GR"
 	});
-    assertEquals("ιασασ", mapper.map("ΙΑΣΑΣ"));
+    assertEquals("ιασας ιασας", mapper.map("ΙΑΣΑΣ ΙΑΣΑΣ"));
 }
 
 /* French tests */
 function testToLowerNoAccents_fr_FR() {
-	var mapper = new ilib.StringMapper({
-		locale: "fr-FR",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "fr-FR"
 	});
     assertEquals("tete-a-tete", mapper.map("TETE-A-TETE"));
 }
 function testToLowerWithAccents_fr_FR() {
-	var mapper = new ilib.StringMapper({
-		locale: "fr-FR",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "fr-FR"
 	});
     assertEquals("tête-à-tête", mapper.map("TÊTE-À-TÊTE"));
 }
 function testToLowerMixedWithAccents_fr_FR() {
-	var mapper = new ilib.StringMapper({
-		locale: "fr-FR",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "fr-FR"
 	});
     assertEquals("tête-à-tête", mapper.map("Tête-à-Tête"));
 }
 
 /* French Canadian tests */
 function testToLower_fr_CA() {
-	var mapper = new ilib.StringMapper({
-		locale: "fr-CA",
-		name: "tolower"
+	var mapper = new ilib.ToLowerMapper({
+		locale: "fr-CA"
 	});
     assertEquals("tête-à-tête", mapper.map("TÊTE-À-TÊTE"));
 }
