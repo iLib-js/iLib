@@ -1,5 +1,5 @@
 /*
- * testname_zh_CN.js - test the name object in Chinese
+ * testname_zh_Hans.js - test the name object in simplified Chinese
  * 
  * Copyright © 2013, JEDLSoft
  *
@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-function testParseSimpleName() {
-	var parsed = new ilib.Name("蔡良", {locale: 'zh-CN'});
+function testParseSimpleName_zh_Hans() {
+	var parsed = new ilib.Name("蔡良", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -29,8 +29,8 @@ function testParseSimpleName() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseOnePlusTwo() {
-	var parsed = new ilib.Name("王良会", {locale: 'zh-CN'});
+function testParseOnePlusTwo_zh_Hans() {
+	var parsed = new ilib.Name("王良会", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -41,8 +41,8 @@ function testParseOnePlusTwo() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseTwoPlusOne() {
-	var parsed = new ilib.Name("歐陽良", {locale: 'zh-CN'});
+function testParseTwoPlusOne_zh_Hans() {
+	var parsed = new ilib.Name("歐陽良", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -53,8 +53,8 @@ function testParseTwoPlusOne() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseTwoPlusTwo() {
-	var parsed = new ilib.Name("司徒良会", {locale: 'zh-CN'});
+function testParseTwoPlusTwo_zh_Hans() {
+	var parsed = new ilib.Name("司徒良会", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -65,8 +65,8 @@ function testParseTwoPlusTwo() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseMaidenPlusMarriedName() {
-	var parsed = new ilib.Name("錢林慧君", {locale: 'zh-CN'});
+function testParseMaidenPlusMarriedName_zh_Hans() {
+	var parsed = new ilib.Name("錢林慧君", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -77,8 +77,8 @@ function testParseMaidenPlusMarriedName() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseTitle() {
-	var parsed = new ilib.Name("老錢慧君", {locale: 'zh-CN'});
+function testParseTitle_zh_Hans() {
+	var parsed = new ilib.Name("老錢慧君", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -90,8 +90,8 @@ function testParseTitle() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseMultipleTitles() {
-	var parsed = new ilib.Name("錢總理先生", {locale: 'zh-CN'});
+function testParseMultipleTitles_zh_Hans() {
+	var parsed = new ilib.Name("錢總理先生", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -102,8 +102,8 @@ function testParseMultipleTitles() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseEuroName() {
-	var parsed = new ilib.Name("Johan Schmidt", {locale: 'zh-CN'});
+function testParseEuroName_zh_Hans() {
+	var parsed = new ilib.Name("Johan Schmidt", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -114,8 +114,8 @@ function testParseEuroName() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseSuffix() {
-	var parsed = new ilib.Name("王媽媽", {locale: 'zh-CN'});
+function testParseSuffix_zh_Hans() {
+	var parsed = new ilib.Name("王媽媽", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -126,8 +126,8 @@ function testParseSuffix() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseTitleSuffix() {
-	var parsed = new ilib.Name("李老師", {locale: 'zh-CN'});
+function testParseTitleSuffix_zh_Hans() {
+	var parsed = new ilib.Name("李老師", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -138,8 +138,8 @@ function testParseTitleSuffix() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseEverything() {
-	var parsed = new ilib.Name("老錢林慧君外公", {locale: 'zh-CN'});
+function testParseEverything_zh_Hans() {
+	var parsed = new ilib.Name("老錢林慧君外公", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -156,14 +156,14 @@ function testParseEverything() {
  * Format Tests
  */
 
-function testFormatNameShort() {
+function testFormatNameShort_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "short", locale: 'zh-CN'});
+	var fmt = new ilib.NameFmt({style: "short", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -172,14 +172,14 @@ function testFormatNameShort() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatNameMedium() {
+function testFormatNameMedium_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "medium", locale: 'zh-CN'});
+	var fmt = new ilib.NameFmt({style: "medium", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -188,14 +188,14 @@ function testFormatNameMedium() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatNameLong() {
+function testFormatNameLong_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "long", locale: 'zh-CN'});
+	var fmt = new ilib.NameFmt({style: "long", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -204,14 +204,14 @@ function testFormatNameLong() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatNameFull() {
+function testFormatNameFull_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
 		familyName: "地",
 		suffix: "太太"
 	});
-	var fmt = new ilib.NameFmt({style: "full", locale: 'zh-CN'});
+	var fmt = new ilib.NameFmt({style: "full", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -220,15 +220,15 @@ function testFormatNameFull() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatEuroNameShort() {
+function testFormatEuroNameShort_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: "Dr.",
 		givenName: "John",
 		middleName: "Robert",
 		familyName: "Goffin",
 		suffix: "Jr."
-	}, {locale: 'zh-CN'});
-	var fmt = new ilib.NameFmt({style: "short", locale: 'zh-CN'});
+	}, {locale: 'zh-Hans-CN'});
+	var fmt = new ilib.NameFmt({style: "short", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -237,9 +237,9 @@ function testFormatEuroNameShort() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatEuroNameWithStringShort() {
-	var name = new ilib.Name("Dr. John Robert Goffin Jr.", {locale: 'zh-CN'});
-	var fmt = new ilib.NameFmt({style: "short", locale: 'zh-CN'});
+function testFormatEuroNameWithStringShort_zh_Hans() {
+	var name = new ilib.Name("Dr. John Robert Goffin Jr.", {locale: 'zh-Hans-CN'});
+	var fmt = new ilib.NameFmt({style: "short", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -248,15 +248,15 @@ function testFormatEuroNameWithStringShort() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatEuroNameMedium() {
+function testFormatEuroNameMedium_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: "Dr.",
 		givenName: "John",
 		middleName: "Robert",
 		familyName: "Goffin",
 		suffix: "Jr."
-	}, {locale: 'zh-CN'});
-	var fmt = new ilib.NameFmt({style: "medium", locale: 'zh-CN'});
+	}, {locale: 'zh-Hans-CN'});
+	var fmt = new ilib.NameFmt({style: "medium", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -265,9 +265,9 @@ function testFormatEuroNameMedium() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatEuroNameWithStringMedium() {
-	var name = new ilib.Name("Dr. John Robert Goffin Jr.", {locale: 'zh-CN'});
-	var fmt = new ilib.NameFmt({style: "medium", locale: 'zh-CN'});
+function testFormatEuroNameWithStringMedium_zh_Hans() {
+	var name = new ilib.Name("Dr. John Robert Goffin Jr.", {locale: 'zh-Hans-CN'});
+	var fmt = new ilib.NameFmt({style: "medium", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -276,15 +276,15 @@ function testFormatEuroNameWithStringMedium() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatEuroNameLong() {
+function testFormatEuroNameLong_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: "Dr.",
 		givenName: "John",
 		middleName: "Robert",
 		familyName: "Goffin",
 		suffix: "Jr."
-	}, {locale: 'zh-CN'});
-	var fmt = new ilib.NameFmt({style: "long", locale: 'zh-CN'});
+	}, {locale: 'zh-Hans-CN'});
+	var fmt = new ilib.NameFmt({style: "long", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -293,15 +293,15 @@ function testFormatEuroNameLong() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatEuroNameFull() {
+function testFormatEuroNameFull_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: "Dr.",
 		givenName: "John",
 		middleName: "Robert",
 		familyName: "Goffin",
 		suffix: "Jr."
-	}, {locale: 'zh-CN'});
-	var fmt = new ilib.NameFmt({style: "full", locale: 'zh-CN'});
+	}, {locale: 'zh-Hans-CN'});
+	var fmt = new ilib.NameFmt({style: "full", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -310,9 +310,9 @@ function testFormatEuroNameFull() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatEuroNameWithStringLong() {
-	var name = new ilib.Name("Dr. John Robert Goffin Jr.", {locale: 'zh-CN'});
-	var fmt = new ilib.NameFmt({style: "long", locale: 'zh-CN'});
+function testFormatEuroNameWithStringLong_zh_Hans() {
+	var name = new ilib.Name("Dr. John Robert Goffin Jr.", {locale: 'zh-Hans-CN'});
+	var fmt = new ilib.NameFmt({style: "long", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -321,9 +321,9 @@ function testFormatEuroNameWithStringLong() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatEuroNameWithStringFull() {
-	var name = new ilib.Name("Dr. John Robert Goffin Jr.", {locale: 'zh-CN'});
-	var fmt = new ilib.NameFmt({style: "full", locale: 'zh-CN'});
+function testFormatEuroNameWithStringFull_zh_Hans() {
+	var name = new ilib.Name("Dr. John Robert Goffin Jr.", {locale: 'zh-Hans-CN'});
+	var fmt = new ilib.NameFmt({style: "full", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -332,8 +332,8 @@ function testFormatEuroNameWithStringFull() {
 	assertEquals(expected, formatted);
 };
 
-function testParseParenSuffixName() {
-	var parsed = new ilib.Name("王永慶(Division A)", {locale: 'zh-CN'});
+function testParseParenSuffixName_zh_Hans() {
+	var parsed = new ilib.Name("王永慶(Division A)", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -344,8 +344,8 @@ function testParseParenSuffixName() {
 	
 	assertObjectContains(expected, parsed);
 };
-function testParseParenSuffixName2() {
-	var parsed = new ilib.Name("王永慶 (Division A)", {locale: 'zh-CN'});
+function testParseParenSuffixName2_zh_Hans() {
+	var parsed = new ilib.Name("王永慶 (Division A)", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -357,8 +357,8 @@ function testParseParenSuffixName2() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseParenSuffixNameWithOtherSuffix() {
-	var parsed = new ilib.Name("王永慶外公(Division A)", {locale: 'zh-CN'});
+function testParseParenSuffixNameWithOtherSuffix_zh_Hans() {
+	var parsed = new ilib.Name("王永慶外公(Division A)", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -369,8 +369,8 @@ function testParseParenSuffixNameWithOtherSuffix() {
 	
 	assertObjectContains(expected, parsed);
 };
-function testParseParenSuffixNameWithOtherSuffix2() {
-	var parsed = new ilib.Name("王永慶外公 (Division A)", {locale: 'zh-CN'});
+function testParseParenSuffixNameWithOtherSuffix2_zh_Hans() {
+	var parsed = new ilib.Name("王永慶外公 (Division A)", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -381,7 +381,7 @@ function testParseParenSuffixNameWithOtherSuffix2() {
 	
 	assertObjectContains(expected, parsed);
 };
-function testFormatParenSuffixNameShort() {
+function testFormatParenSuffixNameShort_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: null,
 		givenName: "永慶",
@@ -390,7 +390,7 @@ function testFormatParenSuffixNameShort() {
 		suffix: "(Division A)"
 	});
 	
-	var fmt = new ilib.NameFmt({style: "short", locale: 'zh-CN'});
+	var fmt = new ilib.NameFmt({style: "short", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -398,7 +398,7 @@ function testFormatParenSuffixNameShort() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatParenSuffixNameLong() {
+function testFormatParenSuffixNameLong_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: null,
 		givenName: "永慶",
@@ -407,7 +407,7 @@ function testFormatParenSuffixNameLong() {
 		suffix: "(Division A)"
 	});
 	
-	var fmt = new ilib.NameFmt({style: "long", locale: 'zh-CN'});
+	var fmt = new ilib.NameFmt({style: "long", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -416,7 +416,7 @@ function testFormatParenSuffixNameLong() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatParenSuffixNameFull() {
+function testFormatParenSuffixNameFull_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: null,
 		givenName: "永慶",
@@ -425,7 +425,7 @@ function testFormatParenSuffixNameFull() {
 		suffix: "(Division A)"
 	});
 	
-	var fmt = new ilib.NameFmt({style: "full", locale: 'zh-CN'});
+	var fmt = new ilib.NameFmt({style: "full", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -434,7 +434,7 @@ function testFormatParenSuffixNameFull() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatParenSuffixNameLong2() {
+function testFormatParenSuffixNameLong2_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: null,
 		givenName: "永慶",
@@ -443,7 +443,7 @@ function testFormatParenSuffixNameLong2() {
 		suffix: " (Division A)"
 	});
 	
-	var fmt = new ilib.NameFmt({style: "long", locale: 'zh-CN'});
+	var fmt = new ilib.NameFmt({style: "long", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -452,7 +452,7 @@ function testFormatParenSuffixNameLong2() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatParenSuffixNameFull2() {
+function testFormatParenSuffixNameFull2_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: null,
 		givenName: "永慶",
@@ -461,7 +461,7 @@ function testFormatParenSuffixNameFull2() {
 		suffix: " (Division A)"
 	});
 	
-	var fmt = new ilib.NameFmt({style: "full", locale: 'zh-CN'});
+	var fmt = new ilib.NameFmt({style: "full", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -470,7 +470,7 @@ function testFormatParenSuffixNameFull2() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatParenSuffixNameShortMultiple() {
+function testFormatParenSuffixNameShortMultiple_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: null,
 		givenName: "永慶",
@@ -479,7 +479,7 @@ function testFormatParenSuffixNameShortMultiple() {
 		suffix: "外公(Division A)"
 	});
 	
-	var fmt = new ilib.NameFmt({style: "short", locale: 'zh-CN'});
+	var fmt = new ilib.NameFmt({style: "short", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -487,7 +487,7 @@ function testFormatParenSuffixNameShortMultiple() {
 	
 	assertEquals(expected, formatted);
 };
-function testFormatParenSuffixNameLongMultiple() {
+function testFormatParenSuffixNameLongMultiple_zh_Hans() {
 	var name = new ilib.Name({
 		prefix: null,
 		givenName: "永慶",
@@ -496,7 +496,7 @@ function testFormatParenSuffixNameLongMultiple() {
 		suffix: "外公(Division A)"
 	});
 	
-	var fmt = new ilib.NameFmt({style: "full", locale: 'zh-CN'});
+	var fmt = new ilib.NameFmt({style: "full", locale: 'zh-Hans-CN'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
@@ -505,8 +505,8 @@ function testFormatParenSuffixNameLongMultiple() {
 	assertEquals(expected, formatted);
 };
 
-function testParseParenSuffixNameWithSpace() {
-	var parsed = new ilib.Name("徐小凤 (Division A)", {locale: 'zh-CN'});
+function testParseParenSuffixNameWithSpace_zh_Hans() {
+	var parsed = new ilib.Name("徐小凤 (Division A)", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -518,8 +518,8 @@ function testParseParenSuffixNameWithSpace() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseCompoundFamilyName3() {
-	var parsed = new ilib.Name("司马小凤", {locale: 'zh-CN'});
+function testParseCompoundFamilyName3_zh_Hans() {
+	var parsed = new ilib.Name("司马小凤", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -529,8 +529,8 @@ function testParseCompoundFamilyName3() {
 	
 	assertObjectContains(expected, parsed);
 };
-function testParseCompoundFamilyName4() {
-	var parsed = new ilib.Name("段干小凤", {locale: 'zh-CN'});
+function testParseCompoundFamilyName4_zh_Hans() {
+	var parsed = new ilib.Name("段干小凤", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -542,8 +542,8 @@ function testParseCompoundFamilyName4() {
 };
 
 
-function testParseAmbiguousLengthFamilyName1() {
-	var parsed = new ilib.Name("鍾小凤", {locale: 'zh-CN'});
+function testParseAmbiguousLengthFamilyName1_zh_Hans() {
+	var parsed = new ilib.Name("鍾小凤", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -554,8 +554,8 @@ function testParseAmbiguousLengthFamilyName1() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseAmbiguousLengthFamilyName2() {
-	var parsed = new ilib.Name("鐘離小凤", {locale: 'zh-CN'});
+function testParseAmbiguousLengthFamilyName2_zh_Hans() {
+	var parsed = new ilib.Name("鐘離小凤", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -566,8 +566,8 @@ function testParseAmbiguousLengthFamilyName2() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseMissingNames1() {
-	var parsed = new ilib.Name("曲小凤", {locale: 'zh-CN'});
+function testParseMissingNames1_zh_Hans() {
+	var parsed = new ilib.Name("曲小凤", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -577,8 +577,8 @@ function testParseMissingNames1() {
 	
 	assertObjectContains(expected, parsed);
 };
-function testParseMissingNames2() {
-	var parsed = new ilib.Name("揭小凤", {locale: 'zh-CN'});
+function testParseMissingNames2_zh_Hans() {
+	var parsed = new ilib.Name("揭小凤", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -588,8 +588,8 @@ function testParseMissingNames2() {
 	
 	assertObjectContains(expected, parsed);
 };
-function testParseMissingNames3() {
-	var parsed = new ilib.Name("关小凤", {locale: 'zh-CN'});
+function testParseMissingNames3_zh_Hans() {
+	var parsed = new ilib.Name("关小凤", {locale: 'zh-Hans-CN'});
 	assertNotUndefined(parsed);
 	
 	var expected = {

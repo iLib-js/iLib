@@ -1,73 +1,73 @@
 /*
- * testname_de.js - test the name object in German
+ * testname_fr.js - test the name object in French
  * 
  * Copyright © 2013, JEDLSoft
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed unfrr the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed unfrr the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
  * See the License for the specific language governing permissions and
- * limitations under the License.
+ * limitations unfrr the License.
  */
 
-function testParseSimpleName_de_DE() {
-	var parsed = new ilib.Name("Johan Schmidt", {locale: 'de-DE'});
+function testFRParseSimpleName() {
+	var parsed = new ilib.Name("Isabelle Antena", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "Johan",
-		familyName: "Schmidt"
+		givenName: "Isabelle",
+		familyName: "Antena"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseTripleName_de_DE() {
-	var parsed = new ilib.Name("Johan Michael Schmidt", {locale: 'de-DE'});
+function testFRParseTripleName() {
+	var parsed = new ilib.Name("Jean-Louis Aubert", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "Johan",
-		middleName: "Michael",
-		familyName: "Schmidt"
+		givenName: "Jean-Louis",
+		////middleName: "Michael",
+		familyName: "Aubert"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseAdjunctNames_de_DE() {
-	var parsed = new ilib.Name("Ludwig Klaus von Beethoven", {locale: 'de-DE'});
+function testFRParseAdjunctNames() {
+	var parsed = new ilib.Name("Jean-Marie Le Pen", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "Ludwig",
-		middleName: "Klaus",
-		familyName: "von Beethoven"
+		givenName: "Jean-Marie",
+		////middleName: "Klaus",
+		familyName: "Le Pen"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseSingleName_de_DE() {
-	var parsed = new ilib.Name("Ludwig", {locale: 'de-DE'});
+function testFRParseSingleName() {
+	var parsed = new ilib.Name("Jean-Louis", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "Ludwig",
+		givenName: "Jean-Louis",
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseSingleNameWithAdjunct_de_DE() {
-	var parsed = new ilib.Name("von Beethoven", {locale: 'de-DE'});
+/*function testFRParseSingleNameWithAdjunct() {
+	var parsed = new ilib.Name("von Beethoven", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -78,139 +78,139 @@ function testParseSingleNameWithAdjunct_de_DE() {
 	assertObjectContains(expected, parsed);
 };
 
-function testParseSingleNameWithPrefixAndAdjunct_de_DE() {
-	var parsed = new ilib.Name("Herr von Beethoven", {locale: 'de-DE'});
+function testFRParseSingleNameWithPrefixAndAdjunct() {
+	var parsed = new ilib.Name("Monsieur von Beethoven", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Herr",
+		prefix: "Monsieur",
 		familyName: "von Beethoven"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseMultiAdjunctNames_de_DE() {
-	var parsed = new ilib.Name("Ludwig von den Wiesthal", {locale: 'de-DE'});
+function testFRParseMultiAdjunctNames() {
+	var parsed = new ilib.Name("Ludwig von frn Wiesthal", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
 		givenName: "Ludwig",
-		familyName: "von den Wiesthal"
+		familyName: "von frn Wiesthal"
+	};
+	
+	assertObjectContains(expected, parsed);
+};*/
+
+function testFRParseHypenatedName() {
+	var parsed = new ilib.Name("Jean-Marie Le Pen", {locale: 'fr-FR'});
+	assertNotUndefined(parsed);
+	
+	var expected = {
+		givenName: "Jean-Marie",
+		//middleName: "Michael",
+		familyName: "Le Pen"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseHypenatedName_de_DE() {
-	var parsed = new ilib.Name("Johan Michael Bergische-Schmidt", {locale: 'de-DE'});
+function testFRParseQuadrupleName() {
+	var parsed = new ilib.Name("Emil Michael David Vallefois", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "Johan",
-		middleName: "Michael",
-		familyName: "Bergische-Schmidt"
+		givenName: "Emil",
+		middleName: "Michael David",
+		familyName: "Vallefois"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseQuadrupleName_de_DE() {
-	var parsed = new ilib.Name("Johan Michael Jürgen Schmidt", {locale: 'de-DE'});
+function testFRParseTitle() {
+	var parsed = new ilib.Name("Monsieur Dr. Jean-Louis Aubert", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "Johan",
-		middleName: "Michael Jürgen",
-		familyName: "Schmidt"
+		prefix: "Monsieur Dr.",
+		givenName: "Jean-Louis",
+		familyName: "Aubert"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseTitle_de_DE() {
-	var parsed = new ilib.Name("Herr Dr. Johan Schmidt", {locale: 'de-DE'});
+function testFRParseTitleWithFamilyOnly() {
+	var parsed = new ilib.Name("Monsieur Jean-Louis", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Herr Dr.",
-		givenName: "Johan",
-		familyName: "Schmidt"
+		prefix: "Monsieur",
+		familyName: "Jean-Louis"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseTitleWithFamilyOnly_de_DE() {
-	var parsed = new ilib.Name("Herr Schmidt", {locale: 'de-DE'});
+function testFRParseTitleWithFamilyOnlyAndAdjunct() {
+	var parsed = new ilib.Name("Monsieur Aubert", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Herr",
-		familyName: "Schmidt"
+		prefix: "Monsieur",
+		familyName: "Aubert"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseTitleWithFamilyOnlyAndAdjunct_de_DE() {
-	var parsed = new ilib.Name("Herr von Schmidt", {locale: 'de-DE'});
+function testFRParseHonorific() {
+	var parsed = new ilib.Name("Madame Isabelle Antena", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Herr",
-		familyName: "von Schmidt"
+		prefix: "Madame",
+		givenName: "Isabelle",
+		familyName: "Antena"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseHonorific_de_DE() {
-	var parsed = new ilib.Name("Fr. Julia Maier", {locale: 'de-DE'});
+function testFRParseEverything() {
+	var parsed = new ilib.Name("Monsieur Président Jean-Louis Aubert", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Fr.",
-		givenName: "Julia",
-		familyName: "Maier"
+		prefix: "Monsieur Président",
+		givenName: "Jean-Louis",
+		//middleName: "Michael Jürgen",
+		familyName: "Aubert",
+		//suffix: "III"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseEverything_de_DE() {
-	var parsed = new ilib.Name("Herr Präsident Johan Michael Jürgen Schmidt III", {locale: 'de-DE'});
+function testFRParseFamilyWithAuxillary() {
+	var parsed = new ilib.Name("George Le Pen", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Herr Präsident",
-		givenName: "Johan",
-		middleName: "Michael Jürgen",
-		familyName: "Schmidt",
-		suffix: "III"
+		givenName: "George",
+		familyName: "Le Pen"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseFamily_de_DE() {
-	var parsed = new ilib.Name("Die Maiers", {locale: 'de-DE'});
+function testFRParseCompoundHonorific() {
+	var parsed = new ilib.Name("Monsieur et Madame Maier", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Die",
-		familyName: "Maiers"
-	};
-	
-	assertObjectContains(expected, parsed);
-};
-
-function testParseCompoundHonorific_de_DE() {
-	var parsed = new ilib.Name("Herr und Frau Maier", {locale: 'de-DE'});
-	assertNotUndefined(parsed);
-	
-	var expected = {
-		prefix: "Herr und Frau",
+		prefix: "Monsieur et Madame",
 		familyName: "Maier"
 	};
 	
@@ -221,142 +221,142 @@ function testParseCompoundHonorific_de_DE() {
  * Format Tests
  */
 
-function testFormatSimpleNameShort_de_DE() {
+function testFRFormatSimpleNameShort() {
 	var name = new ilib.Name({
-		givenName: "Johan",
-		middleName: "Michael",
+		givenName: "Emil",
+		//middleName: "Michael",
 		familyName: "Schmidt"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
-		locale: 'de-DE'
+		locale: 'fr-FR'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Johan Schmidt";
+	var expected = "Emil Schmidt";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatSimpleNameMedium_de_DE() {
+function testFRFormatSimpleNameMedium() {
 	var name = new ilib.Name({
-		givenName: "Johan",
+		givenName: "Emil",
 		middleName: "Michael",
 		familyName: "Schmidt"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
-		locale: 'de-DE'
+		locale: 'fr-FR'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Johan Michael Schmidt";
+	var expected = "Emil Michael Schmidt";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatSimpleNameLong_de_DE() {
+function testFRFormatSimpleNameLong() {
 	var name = new ilib.Name({
-		givenName: "Johan",
+		givenName: "Emil",
 		middleName: "Michael",
 		familyName: "Schmidt",
 		suffix: "asdf"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "long", 
-		locale: 'de-DE'
+		locale: 'fr-FR'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Johan Michael Schmidt";
+	var expected = "Emil Michael Schmidt";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatSimpleNameFull_de_DE() {
+function testFRFormatSimpleNameFull() {
 	var name = new ilib.Name({
-		prefix: "Herr Doktor",
-		givenName: "Johan",
+		prefix: "Monsieur Docteur",
+		givenName: "Emil",
 		middleName: "Michael",
 		familyName: "Schmidt",
-		suffix: " MdB"
+		suffix: " dem"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full", 
-		locale: 'de-DE'
+		locale: 'fr-FR'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Herr Doktor Johan Michael Schmidt MdB";
+	var expected = "Monsieur Docteur Emil Michael Schmidt dem";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatComplexNameShort_de_DE() {
+function testFRFormatComplexNameShort() {
 	var name = new ilib.Name({
-		prefix: "Herr Doktor",
-		givenName: "Johan",
-		middleName: "Michael Uwe",
-		familyName: "von Schmidt",
+		prefix: "Monsieur Docteur",
+		givenName: "Emil",
+		middleName: "Michael Francois",
+		familyName: "de Rigeur",
 		suffix: "III"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
-		locale: 'de-DE'
+		locale: 'fr-FR'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Johan von Schmidt";
+	var expected = "Emil de Rigeur";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatComplexNameMedium_de_DE() {
+function testFRFormatComplexNameMedium() {
 	var name = new ilib.Name({
-		prefix: "Herr Doktor",
-		givenName: "Johan",
-		middleName: "Michael Uwe",
-		familyName: "von Schmidt",
+		prefix: "Monsieur Docteur",
+		givenName: "Emil",
+		middleName: "Michael Francois",
+		familyName: "de Rigeur",
 		suffix: "III"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
-		locale: 'de-DE'
+		locale: 'fr-FR'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Johan Michael Uwe von Schmidt";
+	var expected = "Emil Michael Francois de Rigeur";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatComplexNameLong_de_DE() {
+function testFRFormatComplexNameLong() {
 	var name = new ilib.Name({
-		prefix: "Herr Doktor",
-		givenName: "Johan",
-		middleName: "Michael Uwe",
-		familyName: "von Schmidt",
+		prefix: "Monsieur Docteur",
+		givenName: "Emil",
+		middleName: "Michael Francois",
+		familyName: "de Rigeur",
 		suffix: "III"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full",
-		locale: 'de-DE'
+		locale: 'fr-FR'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Herr Doktor Johan Michael Uwe von Schmidt III";
+	var expected = "Monsieur Docteur Emil Michael Francois de Rigeur III";
 	
 	assertEquals(expected, formatted);
 };
 
-function testFormatAsianNameShort_de_DE() {
+function testFRFormatAsianNameShort() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
@@ -365,7 +365,7 @@ function testFormatAsianNameShort_de_DE() {
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
-		locale: 'de-DE'
+		locale: 'fr-FR'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
@@ -375,7 +375,7 @@ function testFormatAsianNameShort_de_DE() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatAsianNameMedium_de_DE() {
+function testFRFormatAsianNameMedium() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
@@ -384,7 +384,7 @@ function testFormatAsianNameMedium_de_DE() {
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
-		locale: 'de-DE'
+		locale: 'fr-FR'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
@@ -394,7 +394,7 @@ function testFormatAsianNameMedium_de_DE() {
 	assertEquals(expected, formatted);
 };
 
-function testFormatAsianNameLong_de_DE() {
+function testFRFormatAsianNameLong() {
 	var name = new ilib.Name({
 		prefix: "小",
 		givenName: "獸",
@@ -403,7 +403,7 @@ function testFormatAsianNameLong_de_DE() {
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full", 
-		locale: 'de-DE'
+		locale: 'fr-FR'
 	});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);

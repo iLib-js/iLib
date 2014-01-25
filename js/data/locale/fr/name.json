@@ -75,9 +75,6 @@
         "vizir",
 
         "et",
-        "la",
-        "le",
-        "les",
         "m",
         "maîtres",
         "maître",
@@ -101,6 +98,14 @@
         "sérénissime",
         "éminence",
         "excellence"
+    ],
+    "auxillaries": [
+        "la",
+        "le",
+        "les",
+        "des",
+        "du",
+        "de"
     ],
     "suffixes": [
         "docteur en philosophie",

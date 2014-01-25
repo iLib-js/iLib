@@ -48,7 +48,7 @@ function testSetLocaleEmpty() {
 }
 
 function testGetVersion() {
-    assertEquals("4.0", ilib.getVersion());
+    assertEquals("5.0", ilib.getVersion());
 }
 
 function testGetTimeZoneDefault() {
