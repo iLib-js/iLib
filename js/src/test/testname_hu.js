@@ -146,7 +146,6 @@ function testParseCompoundHonorific_hu_HU() {
 function testFormatSimpleNameShort_hu_HU() {
 	var name = new ilib.Name({
 		givenName: "Dorottya",
-	
 		familyName: "Halász"
 	});
 	var fmt = new ilib.NameFmt({
@@ -164,7 +163,6 @@ function testFormatSimpleNameShort_hu_HU() {
 function testFormatSimpleNameMedium_hu_HU() {
 	var name = new ilib.Name({
 		givenName: "Dorottya",
-	
 		familyName: "Halász"
 	});
 	var fmt = new ilib.NameFmt({
@@ -181,9 +179,7 @@ function testFormatSimpleNameMedium_hu_HU() {
 
 function testFormatSimpleNameFull_hu_HU() {
 	var name = new ilib.Name({
-		
 		givenName: "Dorottya",
-	
 		familyName: "Halász",
 		suffix: "idősebb"
 	});
@@ -203,7 +199,6 @@ function testFormatComplexNameShort_hu_HU() {
 	var name = new ilib.Name({
 		suffix: "idősebb",
 		givenName: "Dorottya",
-	
 		familyName: "Halász"
 	});
 	var fmt = new ilib.NameFmt({

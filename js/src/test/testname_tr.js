@@ -43,11 +43,11 @@ function testParseTitle_tr_TR() {
 };
 
 function testParseTitleWithFamilyOnly_tr_TR() {
-	var parsed = new ilib.Name("Bay. Sunal", {locale: 'tr-TR'});
+	var parsed = new ilib.Name("Bay Sunal", {locale: 'tr-TR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Bay.",
+		prefix: "Bay",
 		familyName: "Sunal"
 	};
 	
@@ -57,11 +57,11 @@ function testParseTitleWithFamilyOnly_tr_TR() {
 
 
 function testParseEverything_tr_TR() {
-	var parsed = new ilib.Name("Bay. ve Bayan. Sunal", {locale: 'tr-TR'});
+	var parsed = new ilib.Name("Bay ve Bayan Sunal", {locale: 'tr-TR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Bay. ve Bayan.",
+		prefix: "Bay ve Bayan",
 		familyName: "Sunal"
 	};
 	
@@ -69,11 +69,11 @@ function testParseEverything_tr_TR() {
 };
 
 function testParseprefix_tr_TR() {
-	var parsed = new ilib.Name("Bay. Kemal Sunal", {locale: 'tr-TR'});
+	var parsed = new ilib.Name("Bay Kemal Sunal", {locale: 'tr-TR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Bay.",
+		prefix: "Bay",
 		givenName: "Kemal",
 		familyName: "Sunal"
 	};
@@ -118,7 +118,6 @@ function testFormatSimpleNameShort_tr_TR() {
 function testFormatSimpleNameMedium_tr_TR() {
 	var name = new ilib.Name({
 		givenName: "Kemal",
-		
 		familyName: "Sunal"
 	});
 	var fmt = new ilib.NameFmt({
@@ -136,7 +135,6 @@ function testFormatSimpleNameMedium_tr_TR() {
 function testFormatSimpleNameLong_tr_TR() {
 	var name = new ilib.Name({
 		givenName: "Kemal",
-		
 		familyName: "Sunal",
 		suffix: "asdf"
 	});
@@ -152,12 +150,9 @@ function testFormatSimpleNameLong_tr_TR() {
 	assertEquals(expected, formatted);
 };
 
-
-
 function testFormatSurname_tr_TR() {
 	var name = new ilib.Name({
-		prefix: "Bay. ve Bayan.",
-		
+		prefix: "Bay ve Bayan",
 		familyName: "Sunal"
 	});
 	var fmt = new ilib.NameFmt({
@@ -167,7 +162,7 @@ function testFormatSurname_tr_TR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Bay. ve Bayan. Sunal";
+	var expected = "Bay ve Bayan Sunal";
 	
 	assertEquals(expected, formatted);
 };
@@ -176,7 +171,6 @@ function testFormatSimpleNameFull_tr_TR() {
 	var name = new ilib.Name({
 		prefix: "Bakan",
 		givenName: "Kemal",
-		
 		familyName: "Sunal",
 		suffix: "kıdemli"
 	});

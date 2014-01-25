@@ -29,10 +29,6 @@ function testParseSimpleName_sr_Cyrl_RS() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
-
-
 function testParseTitle_sr_Cyrl_RS() {
 	var parsed = new ilib.Name("Александар Дероко млађи", {locale: 'sr-Cyrl-RS'});
 	assertNotUndefined(parsed);
@@ -46,8 +42,6 @@ function testParseTitle_sr_Cyrl_RS() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseTitleWithFamilyOnly_sr_Cyrl_RS() {
 	var parsed = new ilib.Name("господин. Дероко", {locale: 'sr-Cyrl-RS'});
 	assertNotUndefined(parsed);
@@ -59,8 +53,6 @@ function testParseTitleWithFamilyOnly_sr_Cyrl_RS() {
 	
 	assertObjectContains(expected, parsed);
 };
-
-
 
 function testParseEverything_sr_Cyrl_RS() {
 	var parsed = new ilib.Name("господин. и госпођа. Дероко", {locale: 'sr-Cyrl-RS'});
@@ -124,7 +116,6 @@ function testFormatSimpleNameShort_sr_Cyrl_RS() {
 function testFormatSimpleNameMedium_sr_Cyrl_RS() {
 	var name = new ilib.Name({
 		givenName: "Александар",
-		
 		familyName: "Дероко"
 	});
 	var fmt = new ilib.NameFmt({
@@ -142,7 +133,6 @@ function testFormatSimpleNameMedium_sr_Cyrl_RS() {
 function testFormatSimpleNameLong_sr_Cyrl_RS() {
 	var name = new ilib.Name({
 		givenName: "Александар",
-		
 		familyName: "Дероко",
 		suffix: "asdf"
 	});
@@ -163,7 +153,6 @@ function testFormatSimpleNameLong_sr_Cyrl_RS() {
 function testFormatSurname_sr_Cyrl_RS() {
 	var name = new ilib.Name({
 		prefix: "господин. и госпођа.",
-		
 		familyName: "Дероко"
 	});
 	var fmt = new ilib.NameFmt({
@@ -182,7 +171,6 @@ function testFormatSimpleNameFull_sr_Cyrl_RS() {
 	var name = new ilib.Name({
 		prefix: "председавајућа",
 		givenName: "Александар",
-		
 		familyName: "Дероко",
 		suffix: "млађи"
 	});

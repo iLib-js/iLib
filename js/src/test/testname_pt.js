@@ -59,11 +59,11 @@ function testParseTitle_pt_PT() {
 
 
 function testParseTitleWithFamilyOnly_pt_PT() {
-	var parsed = new ilib.Name("Senhor. Ronaldo", {locale: 'pt-PT'});
+	var parsed = new ilib.Name("Senhor Ronaldo", {locale: 'pt-PT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Senhor.",
+		prefix: "Senhor",
 		familyName: "Ronaldo"
 	};
 	
@@ -73,11 +73,11 @@ function testParseTitleWithFamilyOnly_pt_PT() {
 
 
 function testParseEverything_pt_PT() {
-	var parsed = new ilib.Name("Senhor. e Senhora. Ronaldo", {locale: 'pt-PT'});
+	var parsed = new ilib.Name("Senhor e Senhora Ronaldo", {locale: 'pt-PT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Senhor. e Senhora.",
+		prefix: "Senhor e Senhora",
 		familyName: "Ronaldo"
 	};
 	
@@ -85,11 +85,11 @@ function testParseEverything_pt_PT() {
 };
 
 function testParseprefix_pt_PT() {
-	var parsed = new ilib.Name("Senhor. Cristiano Ronaldo", {locale: 'pt-PT'});
+	var parsed = new ilib.Name("Senhor Cristiano Ronaldo", {locale: 'pt-PT'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Senhor.",
+		prefix: "Senhor",
 		givenName: "Cristiano",
 		familyName: "Ronaldo"
 	};
@@ -120,7 +120,6 @@ function testFormatSimpleNameShort_pt_PT() {
 function testFormatSimpleNameMedium_pt_PT() {
 	var name = new ilib.Name({
 		givenName: "Cristiano",
-		
 		familyName: "Ronaldo"
 	});
 	var fmt = new ilib.NameFmt({
@@ -138,7 +137,6 @@ function testFormatSimpleNameMedium_pt_PT() {
 function testFormatSimpleNameLong_pt_PT() {
 	var name = new ilib.Name({
 		givenName: "Cristiano",
-		
 		familyName: "Ronaldo",
 		suffix: "asdf"
 	});
@@ -158,8 +156,7 @@ function testFormatSimpleNameLong_pt_PT() {
 
 function testFormatSurname_pt_PT() {
 	var name = new ilib.Name({
-		prefix: "Senhor. e Senhori.",
-		
+		prefix: "Senhor e Senhori",
 		familyName: "Ronaldo"
 	});
 	var fmt = new ilib.NameFmt({
@@ -169,7 +166,7 @@ function testFormatSurname_pt_PT() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Senhor. e Senhori. Ronaldo";
+	var expected = "Senhor e Senhori Ronaldo";
 	
 	assertEquals(expected, formatted);
 };
@@ -178,7 +175,6 @@ function testFormatSimpleNameFull_pt_PT() {
 	var name = new ilib.Name({
 		prefix: "presidente",
 		givenName: "Cristiano",
-		
 		familyName: "Ronaldo",
 		suffix: "aposentados"
 	});

@@ -109,7 +109,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_hr_HR() {
 	var name = new ilib.Name({
 		prefix: "predsjednik",
 		givenName: "Antonio",
-	middleName : "Vesna",
+		middleName : "Vesna",
 		familyName: "Pavlović",
 		suffix: "mirovini"
 	});
@@ -147,7 +147,7 @@ function testParseCompoundHonorific_hr_HR() {
 function testFormatSimpleNameShort_hr_HR() {
 	var name = new ilib.Name({
 		givenName: "Antonio",
-	middleName : "Vesna",
+		middleName : "Vesna",
 		familyName: "Pavlović"
 	});
 	var fmt = new ilib.NameFmt({
@@ -165,7 +165,7 @@ function testFormatSimpleNameShort_hr_HR() {
 function testFormatSimpleNameMedium_hr_HR() {
 	var name = new ilib.Name({
 		givenName: "Antonio",
-	middleName : "Vesna",
+		middleName : "Vesna",
 		familyName: "Pavlović"
 	});
 	var fmt = new ilib.NameFmt({
@@ -184,7 +184,7 @@ function testFormatSimpleNameFull_hr_HR() {
 	var name = new ilib.Name({
 		
 		givenName: "Antonio",
-	middleName : "Vesna",
+		middleName : "Vesna",
 		familyName: "Pavlović",
 		suffix: "mirovini"
 	});
@@ -204,7 +204,7 @@ function testFormatComplexNameShort_hr_HR() {
 	var name = new ilib.Name({
 		suffix: "mirovini",
 		givenName: "Antonio",
-	middleName : "Vesna",
+		middleName : "Vesna",
 		familyName: "Pavlović"
 	});
 	var fmt = new ilib.NameFmt({

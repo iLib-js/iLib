@@ -29,10 +29,6 @@ function testParseSimpleName_sv_SE() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
-
-
 function testParseTitle_sv_SE() {
 	var parsed = new ilib.Name("Maud Adams pension", {locale: 'sv-SE'});
 	assertNotUndefined(parsed);
@@ -46,28 +42,24 @@ function testParseTitle_sv_SE() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseTitleWithFamilyOnly_sv_SE() {
-	var parsed = new ilib.Name("herr. Adams", {locale: 'sv-SE'});
+	var parsed = new ilib.Name("herr Adams", {locale: 'sv-SE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "herr.",
+		prefix: "herr",
 		familyName: "Adams"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseEverything_sv_SE() {
-	var parsed = new ilib.Name("herr. и fru. Adams", {locale: 'sv-SE'});
+	var parsed = new ilib.Name("herr och fru Adams", {locale: 'sv-SE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "herr. и fru.",
+		prefix: "herr och fru",
 		familyName: "Adams"
 	};
 	
@@ -75,11 +67,11 @@ function testParseEverything_sv_SE() {
 };
 
 function testParseprefix_sv_SE() {
-	var parsed = new ilib.Name("herr. Maud Adams", {locale: 'sv-SE'});
+	var parsed = new ilib.Name("herr Maud Adams", {locale: 'sv-SE'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "herr.",
+		prefix: "herr",
 		givenName: "Maud",
 		familyName: "Adams"
 	};
@@ -100,6 +92,7 @@ function testParseprefixAndSuffix_sv_SE() {
 	
 	assertObjectContains(expected, parsed);
 };
+
 /*
  * Format Tests
  */
@@ -124,7 +117,6 @@ function testFormatSimpleNameShort_sv_SE() {
 function testFormatSimpleNameMedium_sv_SE() {
 	var name = new ilib.Name({
 		givenName: "Maud",
-		
 		familyName: "Adams"
 	});
 	var fmt = new ilib.NameFmt({
@@ -142,7 +134,6 @@ function testFormatSimpleNameMedium_sv_SE() {
 function testFormatSimpleNameLong_sv_SE() {
 	var name = new ilib.Name({
 		givenName: "Maud",
-		
 		familyName: "Adams",
 		suffix: "asdf"
 	});
@@ -158,12 +149,9 @@ function testFormatSimpleNameLong_sv_SE() {
 	assertEquals(expected, formatted);
 };
 
-
-
 function testFormatSurname_sv_SE() {
 	var name = new ilib.Name({
-		prefix: "herr. и fru.",
-		
+		prefix: "herr och fru",
 		familyName: "Adams"
 	});
 	var fmt = new ilib.NameFmt({
@@ -173,7 +161,7 @@ function testFormatSurname_sv_SE() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "herr. и fru. Adams";
+	var expected = "herr och fru Adams";
 	
 	assertEquals(expected, formatted);
 };
@@ -182,7 +170,6 @@ function testFormatSimpleNameFull_sv_SE() {
 	var name = new ilib.Name({
 		prefix: "guvernör",
 		givenName: "Maud",
-		
 		familyName: "Adams",
 		suffix: "pension"
 	});

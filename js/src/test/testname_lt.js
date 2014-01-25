@@ -108,7 +108,6 @@ function testFormatSimpleNameShort_lt_LT() {
 function testFormatSimpleNameMedium_lt_LT() {
 	var name = new ilib.Name({
 		givenName: "Gediminas",
-		
 		familyName: "Baravykas"
 	});
 	var fmt = new ilib.NameFmt({
@@ -126,7 +125,6 @@ function testFormatSimpleNameMedium_lt_LT() {
 function testFormatSimpleNameLong_lt_LT() {
 	var name = new ilib.Name({
 		givenName: "Gediminas",
-		
 		familyName: "Baravykas",
 		suffix: "asdf"
 	});
@@ -145,7 +143,6 @@ function testFormatSimpleNameLong_lt_LT() {
 function testFormatSurname_lt_LT() {
 	var name = new ilib.Name({
 		prefix: "ponas ir ponia",
-		
 		familyName: "Baravykas"
 	});
 	var fmt = new ilib.NameFmt({
@@ -164,7 +161,6 @@ function testFormatSimpleNameFull_lt_LT() {
 	var name = new ilib.Name({
 		prefix: "profesorius",
 		givenName: "Gediminas",
-		
 		familyName: "Baravykas",
 		suffix: "daktaro"
 	});

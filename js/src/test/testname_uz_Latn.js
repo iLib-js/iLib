@@ -29,7 +29,6 @@ function testParseSimpleName_uz_Latn() {
 	assertObjectContains(expected, parsed);
 };
 
-
 function testParseAdjunctNames_uz_Latn() {
 	var parsed = new ilib.Name("Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
@@ -42,8 +41,6 @@ function testParseAdjunctNames_uz_Latn() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseSingleNameWithPrefixAndAdjunct_uz_Latn() {
 	var parsed = new ilib.Name("Janob va xonim Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
@@ -55,7 +52,6 @@ function testParseSingleNameWithPrefixAndAdjunct_uz_Latn() {
 	
 	assertObjectContains(expected, parsed);
 };
-
 
 function testParseTitle_uz_Latn() {
 	var parsed = new ilib.Name("Anastasia Gimazetdinova katta", {locale: 'uz-Latn-UZ'});
@@ -70,8 +66,6 @@ function testParseTitle_uz_Latn() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseTitleWithFamilyOnly_uz_Latn() {
 	var parsed = new ilib.Name("janob Gimazetdinova", {locale: 'uz-Latn-UZ'});
 	assertNotUndefined(parsed);
@@ -83,8 +77,6 @@ function testParseTitleWithFamilyOnly_uz_Latn() {
 	
 	assertObjectContains(expected, parsed);
 };
-
-
 
 function testParseEverything_uz_Latn() {
 	var parsed = new ilib.Name("janob Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
@@ -98,7 +90,6 @@ function testParseEverything_uz_Latn() {
 	
 	assertObjectContains(expected, parsed);
 };
-
 
 /*
  * Format Tests
@@ -141,7 +132,6 @@ function testFormatSimpleNameMedium_uz_Latn() {
 function testFormatSimpleNameLong_uz_Latn() {
 	var name = new ilib.Name({
 		givenName: "Anastasia",
-		
 		familyName: "Gimazetdinova",
 		suffix: "kichik"
 	});

@@ -124,7 +124,6 @@ function testFormatSimpleNameShort_bg_BG() {
 function testFormatSimpleNameMedium_bg_BG() {
 	var name = new ilib.Name({
 		givenName: "Мария",
-		
 		familyName: "Георгиева"
 	});
 	var fmt = new ilib.NameFmt({

@@ -23,7 +23,7 @@ function testParseSimpleName_fi_FI() {
 	
 	var expected = {
 		givenName: "Pihla",
-	middleName : "Viitala",
+		middleName : "Viitala",
 		familyName: "Mikkeli"
 	};
 	
@@ -39,8 +39,7 @@ function testParseSimpleName_fi_FI() {
 	var expected = {
 		prefix : "Herra",
 		givenName: "Kertu",
-		familyName: "Mikkeli"
-               
+		familyName: "Mikkeli"               
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -53,9 +52,9 @@ function testParseSingleNameWithPrefixAndAdjunct_fi_FI() {
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		 suffix : "nuorempi",
+		suffix : "nuorempi",
 		givenName: "Pihla",
-	middleName : "Viitala",
+		middleName : "Viitala",
 		familyName: "Mikkeli"
 	};
 	
@@ -70,7 +69,7 @@ function testParseTitle_fi_FI1() {
 	var expected = {
 		prefix : "presidentti",
 		givenName: "Pihla",
-	middleName : "Viitala",
+		middleName : "Viitala",
 		familyName: "Mikkeli"
 	};
 	
@@ -96,7 +95,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_fi_FI() {
 	var name = new ilib.Name({
 		prefix: "presidentti",
 		givenName: "Pihla",
-	middleName : "Viitala",
+		middleName : "Viitala",
 		familyName: "Mikkeli",
 		suffix: "vanhempi"
 	});
@@ -134,7 +133,7 @@ function testParseCompoundHonorific_fi_FI() {
 function testFormatSimpleNameShort_fi_FI() {
 	var name = new ilib.Name({
 		givenName: "Pihla",
-	middleName : "Viitala",
+		middleName : "Viitala",
 		familyName: "Mikkeli"
 	});
 	var fmt = new ilib.NameFmt({
@@ -152,7 +151,7 @@ function testFormatSimpleNameShort_fi_FI() {
 function testFormatSimpleNameMedium_fi_FI() {
 	var name = new ilib.Name({
 		givenName: "Pihla",
-	middleName : "Viitala",
+		middleName : "Viitala",
 		familyName: "Mikkeli"
 	});
 	var fmt = new ilib.NameFmt({
@@ -171,7 +170,7 @@ function testFormatSimpleNameFull_fi_FI() {
 	var name = new ilib.Name({
 		
 		givenName: "Pihla",
-	middleName : "Viitala",
+		middleName : "Viitala",
 		familyName: "Mikkeli",
 		suffix: "vanhempi"
 	});
@@ -191,7 +190,7 @@ function testFormatComplexNameShort_fi_FI() {
 	var name = new ilib.Name({
 		suffix: "vanhempi",
 		givenName: "Pihla",
-	middleName : "Viitala",
+		middleName : "Viitala",
 		familyName: "Mikkeli"
 	});
 	var fmt = new ilib.NameFmt({

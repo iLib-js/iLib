@@ -108,7 +108,6 @@ function testFormatSimpleNameShort_pa_IN() {
 function testFormatSimpleNameMedium_pa_IN() {
 	var name = new ilib.Name({
 		givenName: "ਹਰਭਜਨ",
-		
 		familyName: "ਸਿੰਘ"
 	});
 	var fmt = new ilib.NameFmt({
@@ -126,7 +125,6 @@ function testFormatSimpleNameMedium_pa_IN() {
 function testFormatSimpleNameLong_pa_IN() {
 	var name = new ilib.Name({
 		givenName: "ਹਰਭਜਨ",
-		
 		familyName: "ਸਿੰਘ"
 	});
 	var fmt = new ilib.NameFmt({
@@ -144,7 +142,6 @@ function testFormatSimpleNameLong_pa_IN() {
 function testFormatSurname_pa_IN() {
 	var name = new ilib.Name({
 		prefix: "ਦਰ ਏੰਡ ਮਰ",
-		
 		familyName: "ਸਿੰਘ"
 	});
 	var fmt = new ilib.NameFmt({
@@ -163,7 +160,6 @@ function testFormatSimpleNameFull_pa_IN() {
 	var name = new ilib.Name({
 		prefix: "ਡਾਕ੍ਟਰ",
 		givenName: "ਹਰਭਜਨ",
-		
 		familyName: "ਸਿੰਘ",
 		suffix: "ਸੇਨਿਓਰ"
 	});

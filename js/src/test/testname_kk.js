@@ -56,10 +56,6 @@ function testParseTitle_kk() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
-
-
 function testParseEverything_kk() {
 	var parsed = new ilib.Name("үлкен Джордж Буш 2-ші", {locale: 'kk-KZ'});
 	assertNotUndefined(parsed);
@@ -68,7 +64,7 @@ function testParseEverything_kk() {
 		prefix: "үлкен",
 		givenName: "Джордж",
 		familyName: "Буш",
-                suffix: "2-ші"
+        suffix: "2-ші"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -116,7 +112,6 @@ function testFormatSimpleNameMedium_kk() {
 function testFormatSimpleNameLong_kk() {
 	var name = new ilib.Name({
 		givenName: "Джордж",
-		
 		familyName: "Буш",
 		suffix: "2-ші"
 	});

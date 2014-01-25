@@ -18,11 +18,11 @@
  */
 
 function testParseSimpleName_el_GR() {
-	var parsed = new ilib.Name("Dimitri Αλεξόπουλος", {locale: 'el-GR'});
+	var parsed = new ilib.Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "Dimitri",
+		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος"
 	};
 	
@@ -32,11 +32,11 @@ function testParseSimpleName_el_GR() {
 
 
 function testParseSimpleName_el_GR() {
-	var parsed = new ilib.Name("Dimitri Αλεξόπουλος", {locale: 'el-GR'});
+	var parsed = new ilib.Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "Dimitri",
+		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος"
                
 	};
@@ -47,12 +47,12 @@ function testParseSimpleName_el_GR() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_el_GR() {
-	var parsed = new ilib.Name("Dimitri Αλεξόπουλος κατώτερος", {locale: 'el-GR'});
+	var parsed = new ilib.Name("Νικόλαος Αλεξόπουλος κατώτερος", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
 		 suffix : "κατώτερος",
-		givenName: "Dimitri",
+		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος"
 	};
 	
@@ -61,12 +61,12 @@ function testParseSingleNameWithPrefixAndAdjunct_el_GR() {
 
 
 function testParseTitle_el_GR1() {
-	var parsed = new ilib.Name("Ο κ. Dimitri Αλεξόπουλος", {locale: 'el-GR'});
+	var parsed = new ilib.Name("Ο κ. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
 		prefix : "Ο κ.",
-		givenName: "Dimitri",
+		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος"
 	};
 	
@@ -75,12 +75,12 @@ function testParseTitle_el_GR1() {
 
 
 function testParseTitle_el_GR_second() {
-	var parsed = new ilib.Name("Κυρία. Dimitri Αλεξόπουλος", {locale: 'el-GR'});
+	var parsed = new ilib.Name("Κυρία. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
 		prefix : "Κυρία.",
-		givenName: "Dimitri",
+		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος"
 	};
 	
@@ -92,7 +92,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_el_GR() {
 
 	var name = new ilib.Name({
 		prefix: "Ο κ.",
-		givenName: "Dimitri",
+		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος",
 		suffix: "μουσκεύω"
 	});
@@ -103,7 +103,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_el_GR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Ο κ. Dimitri Αλεξόπουλος μουσκεύω";
+	var expected = "Ο κ. Νικόλαος Αλεξόπουλος μουσκεύω";
 	
 	assertEquals(expected, formatted);
 
@@ -111,12 +111,12 @@ function testParseTitleWithFamilyOnlyAndAdjunct_el_GR() {
 
 
 function testParseTitleWithFamilyOnlyAndAdjunctex_el_GR() {
-	var parsed = new ilib.Name("αντιπρόεδρος Dimitri Αλεξόπουλος μουσκεύω", {locale: 'el-GR'});
+	var parsed = new ilib.Name("αντιπρόεδρος Νικόλαος Αλεξόπουλος μουσκεύω", {locale: 'el-GR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
 		prefix: "αντιπρόεδρος",
-		givenName: "Dimitri",
+		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος",
 		suffix : "μουσκεύω"
 	};
@@ -143,7 +143,7 @@ function testParseCompoundHonorific_el_GR() {
 
 function testFormatSimpleNameShort_el_GR() {
 	var name = new ilib.Name({
-		givenName: "Dimitri",
+		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος"
 	});
 	var fmt = new ilib.NameFmt({
@@ -153,14 +153,14 @@ function testFormatSimpleNameShort_el_GR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Dimitri Αλεξόπουλος";
+	var expected = "Νικόλαος Αλεξόπουλος";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameMedium_el_GR() {
 	var name = new ilib.Name({
-		givenName: "Dimitri",
+		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος"
 	});
 	var fmt = new ilib.NameFmt({
@@ -170,7 +170,7 @@ function testFormatSimpleNameMedium_el_GR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Dimitri Αλεξόπουλος";
+	var expected = "Νικόλαος Αλεξόπουλος";
 	
 	assertEquals(expected, formatted);
 };
@@ -178,7 +178,7 @@ function testFormatSimpleNameMedium_el_GR() {
 function testFormatSimpleNameFull_el_GR() {
 	var name = new ilib.Name({
 		
-		givenName: "Dimitri",
+		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος",
 		suffix: "μουσκεύω"
 	});
@@ -189,7 +189,7 @@ function testFormatSimpleNameFull_el_GR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Dimitri Αλεξόπουλος μουσκεύω";
+	var expected = "Νικόλαος Αλεξόπουλος μουσκεύω";
 	
 	assertEquals(expected, formatted);
 };
@@ -197,7 +197,7 @@ function testFormatSimpleNameFull_el_GR() {
 function testFormatComplexNameShort_el_GR() {
 	var name = new ilib.Name({
 		suffix: "μουσκεύω",
-		givenName: "Dimitri",
+		givenName: "Νικόλαος",
 		familyName: "Αλεξόπουλος"
 	});
 	var fmt = new ilib.NameFmt({
@@ -207,7 +207,7 @@ function testFormatComplexNameShort_el_GR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Dimitri Αλεξόπουλος";
+	var expected = "Νικόλαος Αλεξόπουλος";
 	
 	assertEquals(expected, formatted);
 };

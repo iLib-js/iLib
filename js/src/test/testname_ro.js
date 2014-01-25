@@ -42,9 +42,6 @@ function testParseSimpleNameWithMiddleName_ro_RO() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
-
 function testParseTitle_ro_RO() {
 	var parsed = new ilib.Name("Sebastian Stan doctorand", {locale: 'ro-RO'});
 	assertNotUndefined(parsed);
@@ -57,8 +54,6 @@ function testParseTitle_ro_RO() {
 	
 	assertObjectContains(expected, parsed);
 };
-
-
 
 function testParseTitleWithFamilyOnly_ro_RO() {
 	var parsed = new ilib.Name("Dl. Stan", {locale: 'ro-RO'});

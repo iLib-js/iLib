@@ -1,8 +1,8 @@
 {
     "format": "{prefix} {givenName} {middleName} {familyName} {suffix}",
     "conjunctions": {
-        "and1": "এবং ",
-        "and2": "এবং ",
+        "and1": "এবং",
+        "and2": "এবং",
         "or1": "বা",
         "or2": "বা"
     },

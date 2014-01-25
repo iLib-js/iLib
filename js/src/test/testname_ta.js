@@ -29,8 +29,6 @@ function testParseSimpleName_ta_IN() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseTitle_ta_IN() {
 	var parsed = new ilib.Name("மஹிலா ஜெயவர்த்தனே மூத்த", {locale: 'ta-IN'});
 	assertNotUndefined(parsed);
@@ -44,8 +42,6 @@ function testParseTitle_ta_IN() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseTitleWithFamilyOnly_ta_IN() {
 	var parsed = new ilib.Name("திரு ஜெயவர்த்தனே", {locale: 'ta-IN'});
 	assertNotUndefined(parsed);
@@ -57,8 +53,6 @@ function testParseTitleWithFamilyOnly_ta_IN() {
 	
 	assertObjectContains(expected, parsed);
 };
-
-
 
 function testParseEverything_ta_IN() {
 	var parsed = new ilib.Name("திரு மற்றும் திருமதி ஜெயவர்த்தனே", {locale: 'ta-IN'});
@@ -108,7 +102,6 @@ function testFormatSimpleNameShort_ta_IN() {
 function testFormatSimpleNameMedium_ta_IN() {
 	var name = new ilib.Name({
 		givenName: "மஹிலா",
-		
 		familyName: "ஜெயவர்த்தனே"
 	});
 	var fmt = new ilib.NameFmt({
@@ -126,7 +119,6 @@ function testFormatSimpleNameMedium_ta_IN() {
 function testFormatSimpleNameLong_ta_IN() {
 	var name = new ilib.Name({
 		givenName: "மஹிலா",
-		
 		familyName: "ஜெயவர்த்தனே"
 	});
 	var fmt = new ilib.NameFmt({
@@ -144,7 +136,6 @@ function testFormatSimpleNameLong_ta_IN() {
 function testFormatSurname_ta_IN() {
 	var name = new ilib.Name({
 		prefix: "திரு மற்றும் திருமதி",
-		
 		familyName: "ஜெயவர்த்தனே"
 	});
 	var fmt = new ilib.NameFmt({
@@ -163,7 +154,6 @@ function testFormatSimpleNameFull_ta_IN() {
 	var name = new ilib.Name({
 		prefix: "வைத்தியர்",
 		givenName: "மஹிலா",
-		
 		familyName: "ஜெயவர்த்தனே",
 		suffix: "மிஸ்"
 	});

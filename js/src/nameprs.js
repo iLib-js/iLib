@@ -26,11 +26,13 @@ ctype.ispunct.js
 ctype.isspace.js 
 */
 // !data name
+
 // notes:
 // icelandic given names: http://en.wiktionary.org/wiki/Appendix:Icelandic_given_names
 // danish approved given names: http://www.familiestyrelsen.dk/samliv/navne/
 // http://www.mentalfloss.com/blogs/archives/59277
 // other countries with first name restrictions: Norway, China, New Zealand, Japan, Sweden, Germany, Hungary
+
 /**
  * @class
  * A class to parse names of people. Different locales have different conventions when it
@@ -185,6 +187,20 @@ ilib.Name = function (name, options) {
 /**
  * @static
  * @protected
+ * Return true if the given character is in the range of the Han, Hangul, or kana
+ * scripts.
+ */
+ilib.Name._isAsianChar = function(c) {
+	return ilib.CType.isIdeo(c) ||
+		ilib.CType.withinRange(c, "hangul") ||
+		ilib.CType.withinRange(c, "hiragana") ||
+		ilib.CType.withinRange(c, "katakana");
+};
+
+
+/**
+ * @static
+ * @protected
  */
 ilib.Name._isAsianName = function (name) {
     // the idea is to count the number of asian chars and the number
@@ -196,14 +212,13 @@ ilib.Name._isAsianName = function (name) {
 
     if (name && name.length > 0) {
         for (i = 0; i < name.length; i++) {
-            if (ilib.CType.isAlpha(name.charAt(i))) {
+        	var c = name.charAt(i);
+             
+            if (ilib.Name._isAsianChar(c)) {
+                asian++;
+            } else if (ilib.CType.isAlpha(c)) {
                 latin++;
-            } else if (ilib.CType.isIdeo(name.charAt(i))) {
-                asian++;
-            } else if (ilib.CType.withinRange(name.charAt(i), "hangul")) {
-                asian++;
             }
-
         }
 
         return latin < asian;
@@ -226,7 +241,7 @@ ilib.Name._isEuroName = function (name) {
     while (it.hasNext()) {
         c = it.next();
 
-        if (!ilib.CType.isIdeo(c) && (!ilib.CType.withinRange(c, "hangul")) && !ilib.CType.isPunct(c) && !ilib.CType.isSpace(c)) {
+        if (!ilib.Name._isAsianChar(c) && !ilib.CType.isPunct(c) && !ilib.CType.isSpace(c)) {
             return true;
         }
     }
@@ -695,6 +710,78 @@ ilib.Name.prototype = {
             }
         }
     },
+    
+    _parseGenericWesternName: function (parts) {
+        /* Western names are parsed as follows, and rules are applied in this 
+         * order:
+         *
+         * G
+         * G F
+         * G M F
+         * G M M F
+         * P F
+         * P G F
+         */
+        var conjunctionIndex;
+
+        if (parts.length === 1) {
+            if (this.prefix || typeof (parts[0]) === 'object') {
+                // already has a prefix, so assume it goes with the family name like "Dr. Roberts" or
+                // it is a name with auxillaries, which is almost always a family name
+                this.familyName = parts[0];
+            } else {
+                this.givenName = parts[0];
+            }
+        } else if (parts.length === 2) {
+            // we do G F
+            if (this.info.order == 'fgm') {
+                this.givenName = parts[1];
+                this.familyName = parts[0];
+            } else if (this.info.order == "gmf" || typeof (this.info.order) == 'undefined') {
+                this.givenName = parts[0];
+                this.familyName = parts[1];
+            }
+        } else if (parts.length >= 3) {
+            //find the first instance of 'and' in the name
+            conjunctionIndex = this._findLastConjunction(parts);
+
+            if (conjunctionIndex > 0) {
+                // if there's a conjunction that's not the first token, put everything up to and 
+                // including the token after it into the first name, the last token into
+                // the family name (if it exists) and everything else in to the middle name
+                // 0 1 2 3 4 5
+                // G A G M M F
+                // G G A G M F
+                // G G G A G F
+                // G G G G A G
+                //if(this.order == "gmf") {
+                this.givenName = parts.slice(0, conjunctionIndex + 2);
+
+                if (conjunctionIndex + 1 < parts.length - 1) {
+                    this.familyName = parts.splice(parts.length - 1, 1);
+                    ////console.log(this.familyName);
+                    if (conjunctionIndex + 2 < parts.length - 1) {
+                        this.middleName = parts.slice(conjunctionIndex + 2, parts.length - conjunctionIndex - 3);
+                    }
+                } else if (this.order == "fgm") {
+                    this.familyName = parts.slice(0, conjunctionIndex + 2);
+                    if (conjunctionIndex + 1 < parts.length - 1) {
+                        this.middleName = parts.splice(parts.length - 1, 1);
+                        if (conjunctionIndex + 2 < parts.length - 1) {
+                            this.givenName = parts.slice(conjunctionIndex + 2, parts.length - conjunctionIndex - 3);
+                        }
+                    }
+                }
+            } else {
+                this.givenName = parts[0];
+
+                this.middleName = parts.slice(1, parts.length - 1);
+
+                this.familyName = parts[parts.length - 1];
+            }
+        }
+    },
+    
     /**
      * @protected
      */
@@ -711,85 +798,13 @@ ilib.Name.prototype = {
              * constructor options to give the default when the order is ambiguous.
              */
             // TODO: this._parseRussianName(parts);
+        	this._parseGenericWesternName(parts); // for now, just do western names
         } else if (this.locale.getLanguage() === "id") {
             // in indonesia, we parse names differently than in the rest of the world 
             // because names don't have family names usually.
             this._parseIndonesianName(parts);
         } else {
-            /* Western names are parsed as follows, and rules are applied in this 
-             * order:
-             *
-             * G
-             * G F
-             * G M F
-             * G M M F
-             * P F
-             * P G F
-             */
-            var conjunctionIndex;
-
-            if (parts.length === 1) {
-                if (this.prefix || typeof (parts[0]) === 'object') {
-
-                    // already has a prefix, so assume it goes with the family name like "Dr. Roberts" or
-                    // it is a name with auxillaries, which is almost always a family name
-                    this.familyName = parts[0];
-                } else {
-                    this.givenName = parts[0];
-                }
-            } else if (parts.length === 2) {
-                // we do G F
-
-                if (this.info.order == 'fgm') {
-
-                    this.givenName = parts[1];
-                    this.familyName = parts[0];
-                } else if (this.info.order == "gmf" || typeof (this.info.order) == 'undefined') {
-                    this.givenName = parts[0];
-                    this.familyName = parts[1];
-                }
-            } else if (parts.length >= 3) {
-                //find the first instance of 'and' in the name
-                conjunctionIndex = this._findLastConjunction(parts);
-
-                if (conjunctionIndex > 0) {
-                    // if there's a conjunction that's not the first token, put everything up to and 
-                    // including the token after it into the first name, the last token into
-                    // the family name (if it exists) and everything else in to the middle name
-                    // 0 1 2 3 4 5
-                    // G A G M M F
-                    // G G A G M F
-                    // G G G A G F
-                    // G G G G A G
-                    //if(this.order == "gmf") {
-                    this.givenName = parts.slice(0, conjunctionIndex + 2);
-
-                    if (conjunctionIndex + 1 < parts.length - 1) {
-                        this.familyName = parts.splice(parts.length - 1, 1);
-                        ////console.log(this.familyName);
-                        if (conjunctionIndex + 2 < parts.length - 1) {
-                            this.middleName = parts.slice(conjunctionIndex + 2, parts.length - conjunctionIndex - 3);
-
-                        }
-
-                    } else if (this.order == "fgm") {
-                        this.familyName = parts.slice(0, conjunctionIndex + 2);
-                        if (conjunctionIndex + 1 < parts.length - 1) {
-                            this.middleName = parts.splice(parts.length - 1, 1);
-                            if (conjunctionIndex + 2 < parts.length - 1) {
-                                this.givenName = parts.slice(conjunctionIndex + 2, parts.length - conjunctionIndex - 3);
-                            }
-                        }
-                    }
-                } else {
-                    this.givenName = parts[0];
-
-                    this.middleName = parts.slice(1, parts.length - 1);
-
-                    this.familyName = parts[parts.length - 1];
-
-                }
-            }
+        	this._parseGenericWesternName(parts);
         }
     },
 

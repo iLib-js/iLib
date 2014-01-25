@@ -29,8 +29,6 @@ function testParseSimpleName_te_IN() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseTitle_te_IN() {
 	var parsed = new ilib.Name("రామ్ తేజ సీనియర్", {locale: 'te-IN'});
 	assertNotUndefined(parsed);
@@ -44,8 +42,6 @@ function testParseTitle_te_IN() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseTitleWithFamilyOnly_te_IN() {
 	var parsed = new ilib.Name("మిస్టర్ తేజ", {locale: 'te-IN'});
 	assertNotUndefined(parsed);
@@ -57,8 +53,6 @@ function testParseTitleWithFamilyOnly_te_IN() {
 	
 	assertObjectContains(expected, parsed);
 };
-
-
 
 function testParseEverything_te_IN() {
 	var parsed = new ilib.Name("మిస్టర్ మరియు మిస్ తేజ", {locale: 'te-IN'});
@@ -108,7 +102,6 @@ function testFormatSimpleNameShort_te_IN() {
 function testFormatSimpleNameMedium_te_IN() {
 	var name = new ilib.Name({
 		givenName: "రామ్",
-		
 		familyName: "తేజ"
 	});
 	var fmt = new ilib.NameFmt({
@@ -126,7 +119,6 @@ function testFormatSimpleNameMedium_te_IN() {
 function testFormatSimpleNameLong_te_IN() {
 	var name = new ilib.Name({
 		givenName: "రామ్",
-		
 		familyName: "తేజ"
 	});
 	var fmt = new ilib.NameFmt({
@@ -144,7 +136,6 @@ function testFormatSimpleNameLong_te_IN() {
 function testFormatSurname_te_IN() {
 	var name = new ilib.Name({
 		prefix: "మిస్టర్ మరియు మిస్",
-		
 		familyName: "తేజ"
 	});
 	var fmt = new ilib.NameFmt({
@@ -163,7 +154,6 @@ function testFormatSimpleNameFull_te_IN() {
 	var name = new ilib.Name({
 		prefix: "డాక్టర్",
 		givenName: "రామ్",
-		
 		familyName: "తేజ",
 		suffix: "జూనియర్"
 	});

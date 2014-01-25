@@ -18,12 +18,12 @@
  */
 
 function testParseSimpleName_mn_Cyrl() {
-	var parsed = new ilib.Name("Tsakhiagiin Elbegdorj", {locale: 'mn-Cyrl-MN'});
+	var parsed = new ilib.Name("Цахиагийн Элбэгдорж", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		givenName: "Tsakhiagiin",
-		familyName: "Elbegdorj"
+		givenName: "Цахиагийн",
+		familyName: "Элбэгдорж"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -31,71 +31,65 @@ function testParseSimpleName_mn_Cyrl() {
 
 
 function testParseAdjunctNames_mn_Cyrl() {
-	var parsed = new ilib.Name("Ноён ба Хатагтай Elbegdorj", {locale: 'mn-Cyrl-MN'});
+	var parsed = new ilib.Name("Ноён ба Хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected =  {
-		givenName: "Ноён ба Хатагтай",
-		familyName: "Elbegdorj"
+		prefix: "Ноён ба Хатагтай",
+		familyName: "Элбэгдорж"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseSingleNameWithPrefixAndAdjunct_mn_Cyrl() {
-	var parsed = new ilib.Name("xатагтай Elbegdorj", {locale: 'mn-Cyrl-MN'});
+	var parsed = new ilib.Name("хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		prefix: "xатагтай",
-		familyName: "Elbegdorj"
+		prefix: "хатагтай",
+		familyName: "Элбэгдорж"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-
 function testParseTitle_mn_Cyrl() {
-	var parsed = new ilib.Name("Tsakhiagiin Elbegdorj 9-р", {locale: 'mn-Cyrl-MN'});
+	var parsed = new ilib.Name("Цахиагийн Элбэгдорж 9-р", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
 	var expected =    {
 		suffix: "9-р",
-		givenName: "Tsakhiagiin",
-		familyName: "Elbegdorj"
+		givenName: "Цахиагийн",
+		familyName: "Элбэгдорж"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
-
-
 
 function testParseEverything_mn_Cyrl() {
-	var parsed = new ilib.Name("mонгол yлсын eрөнхийлөгч Tsakhiagiin Elbegdorj", {locale: 'mn-Cyrl-MN'});
+	var parsed = new ilib.Name("ц.э Цахиагийн Элбэгдорж ерөнхийлөгч", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);
 	
-	var expected =    {
-		prefix: "mонгол yлсын eрөнхийлөгч",
-		givenName: "Tsakhiagiin",
-		familyName: "Elbegdorj"
+	var expected = {
+		prefix: "ц.э",
+		suffix: "ерөнхийлөгч",
+		givenName: "Цахиагийн",
+		familyName: "Элбэгдорж"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
-
 
 /*
  * Format Tests
  */
 
-
 function testFormatSimpleNameFull_mn_Cyrl() {
 	var name = new ilib.Name({
 		prefix: "mонгол Улсын Ерөнхийлөгч",
-		givenName: "Tsakhiagiin",
-		familyName: "Elbegdorj",
+		givenName: "Цахиагийн",
+		familyName: "Элбэгдорж",
 		suffix: "9-р"
 	});
 	var fmt = new ilib.NameFmt({
@@ -105,7 +99,7 @@ function testFormatSimpleNameFull_mn_Cyrl() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "mонгол Улсын Ерөнхийлөгч Tsakhiagiin Elbegdorj 9-р";
+	var expected = "mонгол Улсын Ерөнхийлөгч Цахиагийн Элбэгдорж 9-р";
 	
 	assertEquals(expected, formatted);
 };
@@ -113,8 +107,8 @@ function testFormatSimpleNameFull_mn_Cyrl() {
 function testFormatComplexNameShort_mn_Cyrl() {
 	var name = new ilib.Name({
 		prefix: "mонгол Улсын Ерөнхийлөгч",
-		givenName: "Tsakhiagiin",
-		familyName: "Elbegdorj"
+		givenName: "Цахиагийн",
+		familyName: "Элбэгдорж"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
@@ -123,7 +117,7 @@ function testFormatComplexNameShort_mn_Cyrl() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Tsakhiagiin Elbegdorj";
+	var expected = "Цахиагийн Элбэгдорж";
 	
 	assertEquals(expected, formatted);
 };
@@ -131,8 +125,8 @@ function testFormatComplexNameShort_mn_Cyrl() {
 function testFormatComplexNameMedium_mn_Cyrl() {
 	var name = new ilib.Name({
 		prefix: "mонгол Улсын Ерөнхийлөгч",
-		givenName: "Tsakhiagiin",
-		familyName: "Elbegdorj"
+		givenName: "Цахиагийн",
+		familyName: "Элбэгдорж"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
@@ -141,7 +135,7 @@ function testFormatComplexNameMedium_mn_Cyrl() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Tsakhiagiin Elbegdorj";
+	var expected = "Цахиагийн Элбэгдорж";
 	
 	assertEquals(expected, formatted);
 };
@@ -149,8 +143,8 @@ function testFormatComplexNameMedium_mn_Cyrl() {
 function testFormatComplexNameLong_mn_Cyrl() {
 	var name = new ilib.Name({
 		prefix: "mонгол Улсын Ерөнхийлөгч",
-		givenName: "Tsakhiagiin",
-		familyName: "Elbegdorj"
+		givenName: "Цахиагийн",
+		familyName: "Элбэгдорж"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "full",
@@ -159,7 +153,7 @@ function testFormatComplexNameLong_mn_Cyrl() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "mонгол Улсын Ерөнхийлөгч Tsakhiagiin Elbegdorj";
+	var expected = "mонгол Улсын Ерөнхийлөгч Цахиагийн Элбэгдорж";
 	
 	assertEquals(expected, formatted);
 };

@@ -29,10 +29,6 @@ function testParseSimpleName_sl_SI() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
-
-
 function testParseTitle_sl_SI() {
 	var parsed = new ilib.Name("Melania Trump upokojil", {locale: 'sl-SI'});
 	assertNotUndefined(parsed);
@@ -46,8 +42,6 @@ function testParseTitle_sl_SI() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseTitleWithFamilyOnly_sl_SI() {
 	var parsed = new ilib.Name("G. Trump", {locale: 'sl-SI'});
 	assertNotUndefined(parsed);
@@ -59,8 +53,6 @@ function testParseTitleWithFamilyOnly_sl_SI() {
 	
 	assertObjectContains(expected, parsed);
 };
-
-
 
 function testParseEverything_sl_SI() {
 	var parsed = new ilib.Name("G. in Ga. Trump", {locale: 'sl-SI'});
@@ -124,7 +116,6 @@ function testFormatSimpleNameShort_sl_SI() {
 function testFormatSimpleNameMedium_sl_SI() {
 	var name = new ilib.Name({
 		givenName: "Melania",
-		
 		familyName: "Trump"
 	});
 	var fmt = new ilib.NameFmt({
@@ -142,7 +133,6 @@ function testFormatSimpleNameMedium_sl_SI() {
 function testFormatSimpleNameLong_sl_SI() {
 	var name = new ilib.Name({
 		givenName: "Melania",
-		
 		familyName: "Trump",
 		suffix: "asdf"
 	});
@@ -163,7 +153,6 @@ function testFormatSimpleNameLong_sl_SI() {
 function testFormatSurname_sl_SI() {
 	var name = new ilib.Name({
 		prefix: "G. in Ga.",
-		
 		familyName: "Trump"
 	});
 	var fmt = new ilib.NameFmt({
@@ -182,7 +171,6 @@ function testFormatSimpleNameFull_sl_SI() {
 	var name = new ilib.Name({
 		prefix: "Princeska",
 		givenName: "Melania",
-		
 		familyName: "Trump",
 		suffix: "upokojil"
 	});

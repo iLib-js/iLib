@@ -3,14 +3,15 @@
     "sortByHeadWord": false,
     "nameStyle": "western",
     "conjunctions": {
-        "and1": "и",
-        "and2": "и",
-        "or1": "или",
-        "or2": "или"
+        "and1": "och",
+        "and2": "och",
+        "or1": "eller",
+        "or2": "eller"
     },
     "prefixes": [
         "herr",
         "fru",
+        "fröken",
         "president",
         "vice president",
         "premiärminister",
@@ -46,9 +47,7 @@
         "mormor",
         "morfar",
         "morfar",
-        "kusin",
-	"и",
-        "или"
+        "kusin"
     ],
     "suffixes": [
         "pension"

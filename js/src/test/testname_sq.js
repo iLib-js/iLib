@@ -124,7 +124,6 @@ function testFormatSimpleNameShort_sq_Al() {
 function testFormatSimpleNameMedium_sq_Al() {
 	var name = new ilib.Name({
 		givenName: "James",
-		
 		familyName: "Belushi"
 	});
 	var fmt = new ilib.NameFmt({
@@ -142,7 +141,6 @@ function testFormatSimpleNameMedium_sq_Al() {
 function testFormatSimpleNameLong_sq_Al() {
 	var name = new ilib.Name({
 		givenName: "James",
-		
 		familyName: "Belushi",
 		suffix: "asdf"
 	});
@@ -163,7 +161,6 @@ function testFormatSimpleNameLong_sq_Al() {
 function testFormatSurname_sq_Al() {
 	var name = new ilib.Name({
 		prefix: "Zoti. dhe Zonja.",
-		
 		familyName: "Belushi"
 	});
 	var fmt = new ilib.NameFmt({
@@ -182,7 +179,6 @@ function testFormatSimpleNameFull_sq_Al() {
 	var name = new ilib.Name({
 		prefix: "Guvernator",
 		givenName: "James",
-		
 		familyName: "Belushi",
 		suffix: "njom"
 	});

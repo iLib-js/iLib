@@ -22,15 +22,12 @@ function testParseSimpleName_uz_Cyrl() {
 	assertNotUndefined(parsed);
 	
 	var expected =   {
-		
 		givenName:"Бобур",
 		familyName: "Мирзаев"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
-
-
 
 function testParseSingleNameWithPrefixAndAdjunct_uz_Cyrl() {
 	var parsed = new ilib.Name("жаноб ва хоним Мирзаев", {locale: 'uz-Cyrl-UZ'});
@@ -43,7 +40,6 @@ function testParseSingleNameWithPrefixAndAdjunct_uz_Cyrl() {
 	
 	assertObjectContains(expected, parsed);
 };
-
 
 function testParseTitle_uz_Cyrl() {
 	var parsed = new ilib.Name("Бобур Мирзаев кичик", {locale: 'uz-Cyrl-UZ'});
@@ -58,8 +54,6 @@ function testParseTitle_uz_Cyrl() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
 function testParseTitleWithFamilyOnly_uz_Cyrl() {
 	var parsed = new ilib.Name("доктор Мирзаев", {locale: 'uz-Cyrl-UZ'});
 	assertNotUndefined(parsed);
@@ -71,8 +65,6 @@ function testParseTitleWithFamilyOnly_uz_Cyrl() {
 	
 	assertObjectContains(expected, parsed);
 };
-
-
 
 function testParseEverything_uz_Cyrl() {
 	var parsed = new ilib.Name("доктор Бобур Мирзаев", {locale: 'uz-Cyrl-UZ'});
@@ -86,7 +78,6 @@ function testParseEverything_uz_Cyrl() {
 	
 	assertObjectContains(expected, parsed);
 };
-
 
 /*
  * Format Tests

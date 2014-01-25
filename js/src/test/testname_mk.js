@@ -35,7 +35,6 @@ function testParseSimpleWithHiphen_mk_MK() {
 	
 	var expected = {
 		givenName: "Nikola-Kole",
-		
 		familyName: "Angelovski"
 	};
 	
@@ -121,7 +120,6 @@ function testFormatSimpleNameShort_mk_MK() {
 function testFormatSimpleNameMedium_mk_MK() {
 	var name = new ilib.Name({
 		givenName: "Љубunша",
-		
 		familyName: "Самарџunќ"
 	});
 	var fmt = new ilib.NameFmt({
@@ -139,7 +137,6 @@ function testFormatSimpleNameMedium_mk_MK() {
 function testFormatSimpleNameLong_mk_MK() {
 	var name = new ilib.Name({
 		givenName: "Љубunша",
-		
 		familyName: "Самарџunќ",
 		suffix: "asdf"
 	});
@@ -160,7 +157,6 @@ function testFormatSimpleNameLong_mk_MK() {
 function testFormatSurname_mk_MK() {
 	var name = new ilib.Name({
 		prefix: "г-дunн и kundze",
-		
 		familyName: "Самарџunќ"
 	});
 	var fmt = new ilib.NameFmt({
@@ -179,7 +175,6 @@ function testFormatSimpleNameFull_mk_MK() {
 	var name = new ilib.Name({
 		prefix: "претседател",
 		givenName: "Љубunша",
-		
 		familyName: "Самарџunќ",
 		suffix: "помладun"
 	});

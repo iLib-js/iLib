@@ -18,116 +18,78 @@
  */
 
 function testRUParseSimpleName() {
-	var parsed = new ilib.Name("Andrei Nikolaevich", {locale: 'ru-RU'});
+	var parsed = new ilib.Name("Андрей Николаевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "Andrei",
-		familyName: "Nikolaevich"
+		givenName: "Андрей",
+		familyName: "Николаевич"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-/*function testRUParseTripleName() {
-	var parsed = new ilib.Name("Andrei Michael Nikolaevich", {locale: 'ru-RU'});
+function testRUParseTripleName() {
+	var parsed = new ilib.Name("Андрей Микаэль Николаевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "Andrei",
-		middleName: "Michael",
-		familyName: "Nikolaevich"
-	};
-	
-	assertObjectContains(expected, parsed);
-};*/
-
-/*function testRUParseAdjunctNames() {
-	var parsed = new ilib.Name("Ludwig Klaus von Beethoven", {locale: 'ru-RU'});
-	assertNotUndefined(parsed);
-	
-	var expected = {
-		givenName: "Ludwig",
-		middleName: "Klaus",
-		familyName: "von Beethoven"
-	};
-	
-	assertObjectContains(expected, parsed);
-};
-
-function testRUParseMultiAdjunctNames() {
-	var parsed = new ilib.Name("Geertje van den Bosch", {locale: 'ru-RU'});
-	assertNotUndefined(parsed);
-	
-	var expected = {
-		givenName: "Geertje",
-		familyName: "van den Bosch"
-	};
-	
-	assertObjectContains(expected, parsed);
-};
-
-function testRUParseHypenatedName() {
-	var parsed = new ilib.Name("Andrei Michael Bergische-Nikolaevich", {locale: 'ru-RU'});
-	assertNotUndefined(parsed);
-	
-	var expected = {
-		givenName: "Andrei",
-		middleName: "Michael",
-		familyName: "Bergische-Nikolaevich"
+		givenName: "Андрей",
+		middleName: "Микаэль",
+		familyName: "Николаевич"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
 function testRUParseQuadrupleName() {
-	var parsed = new ilib.Name("Andrei Michael Jürgen Nikolaevich", {locale: 'ru-RU'});
+	var parsed = new ilib.Name("Андрей Микаэль Григорий Николаевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "Andrei",
-		middleName: "Michael Jürgen",
-		familyName: "Nikolaevich"
+		givenName: "Андрей",
+		middleName: "Микаэль Григорий",
+		familyName: "Николаевич"
 	};
 	
 	assertObjectContains(expected, parsed);
-};*/
+};
 
 function testRUParseTitle() {
-	var parsed = new ilib.Name("Dr. Andrei Nikolaevich", {locale: 'ru-RU'});
+	var parsed = new ilib.Name("Доктор Андрей Николаевич", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Dr.",
-		givenName: "Andrei",
-		familyName: "Nikolaevich"
+		prefix: "Доктор",
+		givenName: "Андрей",
+		familyName: "Николаевич"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
 function testRUParseHonorific() {
-	var parsed = new ilib.Name("Mvw. Tatyana  Ivanovna ", {locale: 'ru-RU'});
+	var parsed = new ilib.Name("Г-жа Татьяна Ивановна", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Mvw.",
-		givenName: "Tatyana ",
-		familyName: "Ivanovna "
+		prefix: "Г-жа",
+		givenName: "Татьяна",
+		familyName: "Ивановна"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
 function testRUParseEverything() {
-	var parsed = new ilib.Name("President Andrei ", {locale: 'ru-RU'});
+	var parsed = new ilib.Name("Президент Владимир Путин младший", {locale: 'ru-RU'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "President",
-		givenName: "Andrei",
-		familyName: "Nikolaevich",
-		//suffix: "Jr."
+		prefix: "Президент",
+		givenName: "Владимир",
+		familyName: "Путин",
+		suffix: "младший"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -139,125 +101,117 @@ function testRUParseEverything() {
 
 function testRUFormatSimpleNameShort() {
 	var name = new ilib.Name({
-		givenName: "Andrei",
-		familyName: "Nikolaevich"
+		givenName: "Андрей",
+		familyName: "Николаевич"
 	});
 	var fmt = new ilib.NameFmt({style: "short", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Andrei Nikolaevich";
+	var expected = "Андрей Николаевич";
 	
 	assertEquals(expected, formatted);
 };
 
 function testRUFormatSimpleNameMedium() {
 	var name = new ilib.Name({
-		givenName: "Andrei",
-		familyName: "Nikolaevich"
+		givenName: "Андрей",
+		familyName: "Николаевич"
 	});
 	var fmt = new ilib.NameFmt({style: "medium", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Andrei Nikolaevich";
+	var expected = "Андрей Николаевич";
 	
 	assertEquals(expected, formatted);
 };
 
 function testRUFormatSimpleNameLong() {
 	var name = new ilib.Name({
-		givenName: "Andrei",
-		familyName: "Nikolaevich"
+		givenName: "Андрей",
+		familyName: "Николаевич"
 	});
 	var fmt = new ilib.NameFmt({style: "long", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Andrei Nikolaevich";
+	var expected = "Андрей Николаевич";
 	
 	assertEquals(expected, formatted);
 };
 
 function testRUFormatSimpleNameFull() {
 	var name = new ilib.Name({
-		givenName: "Andrei",
-		//middleName: "Michael",
-		familyName: "Nikolaevich"
+		givenName: "Андрей",
+		//middleName: "Микаэль",
+		familyName: "Николаевич"
 	});
 	var fmt = new ilib.NameFmt({style: "full", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Andrei Nikolaevich";
+	var expected = "Андрей Николаевич";
 	
 	assertEquals(expected, formatted);
 };
 
 function testRUFormatComplexNameShort() {
 	var name = new ilib.Name({
-		prefix: "Dr.",
-		givenName: "Andrei",
-		//middleName: "Michael Pieter",
-		familyName: "Nikolaevich",
-		//suffix: "III"
+		prefix: "Доктор",
+		givenName: "Андрей",
+		familyName: "Николаевич",
 	});
 	var fmt = new ilib.NameFmt({style: "short", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Andrei Nikolaevich";
+	var expected = "Андрей Николаевич";
 	
 	assertEquals(expected, formatted);
 };
 
 function testRUFormatComplexNameMedium() {
 	var name = new ilib.Name({
-		prefix: "Dr.",
-		givenName: "Andrei",
-		//middleName: "Michael Pieter",
-		familyName: "Nikolaevich",
-		//suffix: "III"
+		prefix: "Доктор",
+		givenName: "Андрей",
+		familyName: "Николаевич"
 	});
 	var fmt = new ilib.NameFmt({style: "medium", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Andrei Nikolaevich";
+	var expected = "Андрей Николаевич";
 	
 	assertEquals(expected, formatted);
 };
 
 function testRUFormatComplexNameLong() {
 	var name = new ilib.Name({
-		prefix: "Dr.",
-		givenName: "Andrei",
-		//middleName: "Michael Pieter",
-		familyName: "Nikolaevich",
-		//suffix: "III"
+		prefix: "Доктор",
+		givenName: "Андрей",
+		familyName: "Николаевич"
 	});
 	var fmt = new ilib.NameFmt({style: "long", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Dr. Andrei Nikolaevich";
+	var expected = "Доктор Андрей Николаевич";
 	
 	assertEquals(expected, formatted);
 };
 
 function testRUFormatComplexNameFull() {
 	var name = new ilib.Name({
-		prefix: "Dr.",
-		givenName: "Andrei",
-		//middleName: "Michael Pieter",
-		familyName: "Nikolaevich",
-		//suffix: "III"
+		prefix: "Доктор",
+		givenName: "Андрей",
+		familyName: "Николаевич"
 	});
 	var fmt = new ilib.NameFmt({style: "full", locale: 'ru-RU'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Dr. Andrei Nikolaevich";
+	var expected = "Доктор Андрей Николаевич";
 	
 	assertEquals(expected, formatted);
 };

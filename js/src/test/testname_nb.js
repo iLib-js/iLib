@@ -107,7 +107,6 @@ function testFormatSimpleNameShort_nb_NO() {
 function testFormatSimpleNameMedium_nb_NO() {
 	var name = new ilib.Name({
 		givenName: "Maria",
-		
 		familyName: "Bonnevie"
 	});
 	var fmt = new ilib.NameFmt({
@@ -125,7 +124,6 @@ function testFormatSimpleNameMedium_nb_NO() {
 function testFormatSimpleNameLong_nb_NO() {
 	var name = new ilib.Name({
 		givenName: "Maria",
-		
 		familyName: "Bonnevie",
 		suffix: "asdf"
 	});
@@ -146,7 +144,6 @@ function testFormatSimpleNameLong_nb_NO() {
 function testFormatSurname_nb_NO() {
 	var name = new ilib.Name({
 		prefix: "Mr. og Mrs.",
-		
 		familyName: "Bonnevie"
 	});
 	var fmt = new ilib.NameFmt({
@@ -165,7 +162,6 @@ function testFormatSimpleNameFull_nb_NO() {
 	var name = new ilib.Name({
 		prefix: "vice president",
 		givenName: "Maria",
-		
 		familyName: "Bonnevie",
 		suffix: "pensjonert"
 	});

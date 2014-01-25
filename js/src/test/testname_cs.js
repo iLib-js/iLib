@@ -170,7 +170,7 @@ function testParseCompoundHonorific_cs_CZZ() {
 	
 	var expected = {
 		prefix: "Paní",
-                givenName: "Yana",
+        givenName: "Yana",
 		familyName: "Synkova"
 	};
 	

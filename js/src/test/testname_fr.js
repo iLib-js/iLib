@@ -193,11 +193,12 @@ function testFRParseEverything() {
 	assertObjectContains(expected, parsed);
 };
 
-function testFRParseFamily() {
-	var parsed = new ilib.Name("Le Pen", {locale: 'fr-FR'});
+function testFRParseFamilyWithAuxillary() {
+	var parsed = new ilib.Name("George Le Pen", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
+		givenName: "George",
 		familyName: "Le Pen"
 	};
 	

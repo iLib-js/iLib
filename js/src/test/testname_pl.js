@@ -109,7 +109,6 @@ function testFormatSimpleNameShort_pl_PL() {
 function testFormatSimpleNameMedium_pl_PL() {
 	var name = new ilib.Name({
 		givenName: "Szymon",
-		
 		familyName: "Askenazy"
 	});
 	var fmt = new ilib.NameFmt({
@@ -127,7 +126,6 @@ function testFormatSimpleNameMedium_pl_PL() {
 function testFormatSimpleNameLong_pl_PL() {
 	var name = new ilib.Name({
 		givenName: "Szymon",
-		
 		familyName: "Askenazy",
 		suffix: "asdf"
 	});
@@ -148,7 +146,6 @@ function testFormatSimpleNameLong_pl_PL() {
 function testFormatSurname_pl_PL() {
 	var name = new ilib.Name({
 		prefix: "Pan. i Pani.",
-		
 		familyName: "Askenazy"
 	});
 	var fmt = new ilib.NameFmt({
@@ -167,7 +164,6 @@ function testFormatSimpleNameFull_pl_PL() {
 	var name = new ilib.Name({
 		prefix: "prezydent",
 		givenName: "Szymon",
-		
 		familyName: "Askenazy",
 		suffix: "emeryturę"
 	});

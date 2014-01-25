@@ -107,11 +107,11 @@ function testDKParseTitle() {
 };
 
 function testDKParseHonorific() {
-	var parsed = new ilib.Name("Mvw. Julia Jensdatter", {locale: 'da-DK'});
+	var parsed = new ilib.Name("Fru Julia Jensdatter", {locale: 'da-DK'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Mvw.",
+		prefix: "Fru",
 		givenName: "Julia",
 		familyName: "Jensdatter"
 	};

@@ -43,11 +43,11 @@ function testParseTitle_uk_UA() {
 };
 
 function testParseTitleWithFamilyOnly_uk_UA() {
-	var parsed = new ilib.Name("Mістер. Куніс", {locale: 'uk-UA'});
+	var parsed = new ilib.Name("г-н Куніс", {locale: 'uk-UA'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Mістер.",
+		prefix: "г-н",
 		familyName: "Куніс"
 	};
 	
@@ -57,11 +57,11 @@ function testParseTitleWithFamilyOnly_uk_UA() {
 
 
 function testParseEverything_uk_UA() {
-	var parsed = new ilib.Name("Mістер. і Mіс. Куніс", {locale: 'uk-UA'});
+	var parsed = new ilib.Name("г-н і г-жа Куніс", {locale: 'uk-UA'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Mістер. і Mіс.",
+		prefix: "г-н і г-жа",
 		familyName: "Куніс"
 	};
 	
@@ -69,11 +69,11 @@ function testParseEverything_uk_UA() {
 };
 
 function testParseprefix_uk_UA() {
-	var parsed = new ilib.Name("Mістер. Міла Куніс", {locale: 'uk-UA'});
+	var parsed = new ilib.Name("г-н Міла Куніс", {locale: 'uk-UA'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "Mістер.",
+		prefix: "г-н",
 		givenName: "Міла",
 		familyName: "Куніс"
 	};
@@ -118,7 +118,6 @@ function testFormatSimpleNameShort_uk_UA() {
 function testFormatSimpleNameMedium_uk_UA() {
 	var name = new ilib.Name({
 		givenName: "Міла",
-		
 		familyName: "Куніс"
 	});
 	var fmt = new ilib.NameFmt({
@@ -136,7 +135,6 @@ function testFormatSimpleNameMedium_uk_UA() {
 function testFormatSimpleNameLong_uk_UA() {
 	var name = new ilib.Name({
 		givenName: "Міла",
-		
 		familyName: "Куніс",
 		suffix: "asdf"
 	});
@@ -156,8 +154,7 @@ function testFormatSimpleNameLong_uk_UA() {
 
 function testFormatSurname_uk_UA() {
 	var name = new ilib.Name({
-		prefix: "Mістер. i Mіс.",
-		
+		prefix: "г-н i г-жа",
 		familyName: "Куніс"
 	});
 	var fmt = new ilib.NameFmt({
@@ -167,7 +164,7 @@ function testFormatSurname_uk_UA() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Mістер. i Mіс. Куніс";
+	var expected = "г-н i г-жа Куніс";
 	
 	assertEquals(expected, formatted);
 };
@@ -176,7 +173,6 @@ function testFormatSimpleNameFull_uk_UA() {
 	var name = new ilib.Name({
 		prefix: "шеф-кухар",
 		givenName: "Міла",
-		
 		familyName: "Куніс",
 		suffix: "відставку"
 	});

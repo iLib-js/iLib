@@ -8,6 +8,9 @@
         "or2": "eller"
     },
     "prefixes": [
+    	"herr",
+    	"fru",
+    	"frøken",
         "præsident",
         "vice president",
         "premierminister",
@@ -42,8 +45,6 @@
         "tante",
         "onkel",
         "bedstemor",
-        "bedstemor",
-        "bedstefar",
         "bedstefar",
         "fætter"
     ],

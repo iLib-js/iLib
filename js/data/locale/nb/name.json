@@ -9,6 +9,9 @@
         "or2": "eller"
     },
     "prefixes": [
+    	"fru",
+    	"herr",
+    	"frøken",
         "president",
         "vice president",
         "statsminister",
@@ -42,7 +45,7 @@
         "bestemor",
         "bestefar",
         "fetter",
-	"og",
+		"og",
         "eller"
     ],
     "suffixes": [

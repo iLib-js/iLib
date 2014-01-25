@@ -2,10 +2,10 @@
     "format": "{prefix} {givenName} {middleName} {familyName}{suffix}",
     "sortByHeadWord": false,
     "conjunctions": {
-        "and1": "и",
-        "and2": "и",
-        "or1": "или",
-        "or2": "или"
+        "and1": "i",
+        "and2": "a",
+        "or1": "ili",
+        "or2": "ili"
     },
     "prefixes": [
 	"gospodin",

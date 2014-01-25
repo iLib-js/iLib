@@ -108,7 +108,6 @@ function testFormatSimpleNameShort_ml_IN() {
 function testFormatSimpleNameMedium_ml_IN() {
 	var name = new ilib.Name({
 		givenName: "മോഹന",
-		
 		familyName: "ലള"
 	});
 	var fmt = new ilib.NameFmt({
@@ -126,7 +125,6 @@ function testFormatSimpleNameMedium_ml_IN() {
 function testFormatSimpleNameLong_ml_IN() {
 	var name = new ilib.Name({
 		givenName: "മോഹന",
-		
 		familyName: "ലള"
 	});
 	var fmt = new ilib.NameFmt({
@@ -144,7 +142,6 @@ function testFormatSimpleNameLong_ml_IN() {
 function testFormatSurname_ml_IN() {
 	var name = new ilib.Name({
 		prefix: "മിസ്റ്റര്‍ ആന്‍ഡ് മാഡം",
-		
 		familyName: "ലള"
 	});
 	var fmt = new ilib.NameFmt({
@@ -163,7 +160,6 @@ function testFormatSimpleNameFull_ml_IN() {
 	var name = new ilib.Name({
 		prefix: "ഡോക്ടര്‍",
 		givenName: "മോഹന",
-		
 		familyName: "ലള",
 		suffix: "ജൂനിയര്‍"
 	});

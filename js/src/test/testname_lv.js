@@ -121,7 +121,6 @@ function testFormatSimpleNameShort_lv_LV() {
 function testFormatSimpleNameMedium_lv_LV() {
 	var name = new ilib.Name({
 		givenName: "Mikhail",
-		
 		familyName: "Baryshnikov"
 	});
 	var fmt = new ilib.NameFmt({
@@ -139,7 +138,6 @@ function testFormatSimpleNameMedium_lv_LV() {
 function testFormatSimpleNameLong_lv_LV() {
 	var name = new ilib.Name({
 		givenName: "Mikhail",
-		
 		familyName: "Baryshnikov",
 		suffix: "asdf"
 	});
@@ -177,7 +175,6 @@ function testFormatSimpleNameWithMiddleNameFull_lv_LV() {
 function testFormatSurname_lv_LV() {
 	var name = new ilib.Name({
 		prefix: "kungs un kundze",
-		
 		familyName: "Baryshnikov"
 	});
 	var fmt = new ilib.NameFmt({
@@ -196,7 +193,6 @@ function testFormatSimpleNameFull_lv_LV() {
 	var name = new ilib.Name({
 		prefix: "priekšsēdētājs",
 		givenName: "Mikhail",
-		
 		familyName: "Baryshnikov",
 		suffix: "jaunākais"
 	});

@@ -109,7 +109,6 @@ function testFormatSimpleNameShort_ms_MY() {
 function testFormatSimpleNameMedium_ms_MY() {
 	var name = new ilib.Name({
 		givenName: "Carmen",
-		
 		familyName: "Soo"
 	});
 	var fmt = new ilib.NameFmt({
@@ -127,7 +126,6 @@ function testFormatSimpleNameMedium_ms_MY() {
 function testFormatSimpleNameLong_ms_MY() {
 	var name = new ilib.Name({
 		givenName: "Carmen",
-		
 		familyName: "Soo",
 		suffix: "asdf"
 	});
@@ -148,7 +146,6 @@ function testFormatSimpleNameLong_ms_MY() {
 function testFormatSurname_ms_MY() {
 	var name = new ilib.Name({
 		prefix: "encik dan cik",
-		
 		familyName: "Soo"
 	});
 	var fmt = new ilib.NameFmt({
@@ -167,7 +164,6 @@ function testFormatSimpleNameFull_ms_MY() {
 	var name = new ilib.Name({
 		prefix: "pesuruhjaya",
 		givenName: "Carmen",
-		
 		familyName: "Soo",
 		suffix: "bersara"
 	});

@@ -39,8 +39,7 @@ function testParseSimpleName_id_ID1() {
 		prefix : "Bapak.",
 		givenName: "Abdul",
 		middleName: "Panggabean"
-               
-	};
+    };
 	
 	assertObjectContains(expected, parsed);
 };
@@ -54,8 +53,7 @@ function testParseSimpleName_id_ID2() {
 		prefix : "Ibu.",
 		givenName: "Mahyadi",
 		middleName: "Panggabean"
-               
-	};
+    };
 	
 	assertObjectContains(expected, parsed);
 };
@@ -63,13 +61,13 @@ function testParseSimpleName_id_ID2() {
 
 
 function testParseSingleNameWithPrefixAndAdjunct_id_ID() {
-	var parsed = new ilib.Name("Mahyadi Vesna muda", {locale: 'id-ID'});
+	var parsed = new ilib.Name("Mahyadi Krupuk muda", {locale: 'id-ID'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
 		suffix : "muda",
 		givenName: "Mahyadi",
-	        middleName : "Vesna"
+	    middleName : "Krupuk"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -77,13 +75,13 @@ function testParseSingleNameWithPrefixAndAdjunct_id_ID() {
 
 
 function testParseTitle_id_ID1() {
-	var parsed = new ilib.Name("perdana menteri Mahyadi Vesna", {locale: 'id-ID'});
+	var parsed = new ilib.Name("perdana menteri Mahyadi Krupuk", {locale: 'id-ID'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
 		prefix : "perdana menteri",
 		givenName: "Mahyadi",
-	        middleName : "Vesna"
+	    middleName : "Krupuk"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -108,7 +106,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_id_ID() {
 	var name = new ilib.Name({
 		prefix: "presiden",
 		givenName: "Mahyadi",
-	middleName : "Vesna",
+		middleName : "Krupuk",
 		suffix: "mundur"
 	});
 	var fmt = new ilib.NameFmt({
@@ -118,7 +116,7 @@ function testParseTitleWithFamilyOnlyAndAdjunct_id_ID() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "presiden Mahyadi Vesna mundur";
+	var expected = "presiden Mahyadi Krupuk mundur";
 	
 	assertEquals(expected, formatted);
 
@@ -145,7 +143,7 @@ function testParseCompoundHonorific_id_ID() {
 function testFormatSimpleNameShort_id_ID() {
 	var name = new ilib.Name({
 		givenName: "Mahyadi",
-	middleName : "Vesna"
+		middleName : "Krupuk"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "short", 
@@ -162,7 +160,7 @@ function testFormatSimpleNameShort_id_ID() {
 function testFormatSimpleNameMedium_id_ID() {
 	var name = new ilib.Name({
 		givenName: "Mahyadi",
-	middleName : "Vesna"
+		middleName : "Krupuk"
 	});
 	var fmt = new ilib.NameFmt({
 		style: "medium", 
@@ -171,7 +169,7 @@ function testFormatSimpleNameMedium_id_ID() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "Mahyadi Vesna";
+	var expected = "Mahyadi Krupuk";
 	
 	assertEquals(expected, formatted);
 };

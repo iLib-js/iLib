@@ -29,10 +29,6 @@ function testParseSimpleName_sk_SK() {
 	assertObjectContains(expected, parsed);
 };
 
-
-
-
-
 function testParseTitle_sk_SK() {
 	var parsed = new ilib.Name("Iveta Stan dôchodku", {locale: 'sk-SK'});
 	assertNotUndefined(parsed);
@@ -47,7 +43,6 @@ function testParseTitle_sk_SK() {
 };
 
 
-
 function testParseTitleWithFamilyOnly_sk_SK() {
 	var parsed = new ilib.Name("Pán. Stan", {locale: 'sk-SK'});
 	assertNotUndefined(parsed);
@@ -59,8 +54,6 @@ function testParseTitleWithFamilyOnly_sk_SK() {
 	
 	assertObjectContains(expected, parsed);
 };
-
-
 
 function testParseEverything_sk_SK() {
 	var parsed = new ilib.Name("Pán. a pani. Stan", {locale: 'sk-SK'});
@@ -124,7 +117,6 @@ function testFormatSimpleNameShort_sk_SK() {
 function testFormatSimpleNameMedium_sk_SK() {
 	var name = new ilib.Name({
 		givenName: "Iveta",
-		
 		familyName: "Stan"
 	});
 	var fmt = new ilib.NameFmt({
@@ -142,7 +134,6 @@ function testFormatSimpleNameMedium_sk_SK() {
 function testFormatSimpleNameLong_sk_SK() {
 	var name = new ilib.Name({
 		givenName: "Iveta",
-		
 		familyName: "Stan",
 		suffix: "asdf"
 	});
@@ -163,7 +154,6 @@ function testFormatSimpleNameLong_sk_SK() {
 function testFormatSurname_sk_SK() {
 	var name = new ilib.Name({
 		prefix: "Pán. a pani.",
-		
 		familyName: "Stan"
 	});
 	var fmt = new ilib.NameFmt({
@@ -182,7 +172,6 @@ function testFormatSimpleNameFull_sk_SK() {
 	var name = new ilib.Name({
 		prefix: "princezná",
 		givenName: "Iveta",
-		
 		familyName: "Stan",
 		suffix: "dôchodku"
 	});
