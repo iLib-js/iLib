@@ -41,4 +41,5 @@ resources.js
 localeinfo.js
 daterangefmt.js
 scriptinfo.js
+maps/casemapper.js
 */
