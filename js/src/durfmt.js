@@ -68,6 +68,9 @@ localeinfo.js
  * values for this property are "text" or "clock". Default if this property is not specified
  * is "text".
  * 
+ *<li><i>useNative</i> - the flag used to determaine whether to use the native script settings 
+ * for formatting the numbers .
+ * 
  * <li><i>onLoad</i> - a callback function to call when the format data is fully 
  * loaded. When the onLoad option is given, this class will attempt to
  * load any missing locale data using the ilib loader callback.
@@ -78,7 +81,13 @@ localeinfo.js
  * <li>sync - tell whether to load any missing locale data synchronously or 
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
- * not be usable for a while. 
+ * not be usable for a while.
+ *  
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * <p>
  * 
@@ -89,6 +98,7 @@ localeinfo.js
  */
 ilib.DurFmt = function(options) {
 	var sync = true;
+	var loadParams = undefined;
 	
 	this.locale = new ilib.Locale();
 	this.length = "short";
@@ -117,12 +127,15 @@ ilib.DurFmt = function(options) {
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync == true);
 		}
+		
+		loadParams = options.loadParams;
 	}
 	
 	new ilib.ResBundle({
 		locale: this.locale,
 		name: "sysres",
 		sync: sync,
+		loadParams: loadParams,
 		onLoad: ilib.bind(this, function (sysres) {
 			switch (this.length) {
 				case 'short':
@@ -192,6 +205,7 @@ ilib.DurFmt = function(options) {
 					type: "time",
 					time: "ms",
 					sync: sync,
+					loadParams: loadParams,
 					onLoad: ilib.bind(this, function (fmtMS) {
 						this.timeFmtMS = fmtMS;
 						new ilib.DateFmt({
@@ -199,6 +213,7 @@ ilib.DurFmt = function(options) {
 							type: "time",
 							time: "hm",
 							sync: sync,
+							loadParams: loadParams,
 							onLoad: ilib.bind(this, function (fmtHM) {
 								this.timeFmtHM = fmtHM;		
 								new ilib.DateFmt({
@@ -206,6 +221,7 @@ ilib.DurFmt = function(options) {
 									type: "time",
 									time: "hms",
 									sync: sync,
+									loadParams: loadParams,
 									onLoad: ilib.bind(this, function (fmtHMS) {
 										this.timeFmtHMS = fmtHMS;		
 
