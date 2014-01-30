@@ -100,7 +100,13 @@ util/jsutils.js
  * <li>sync - tell whether to load any missing locale data synchronously or 
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
- * not be usable for a while. 
+ * not be usable for a while.
+ *  
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * <p>
  * 
@@ -111,6 +117,7 @@ util/jsutils.js
  */
 ilib.DateRngFmt = function(options) {
 	var sync = true;
+	var loadParams = undefined;
 	this.locale = new ilib.Locale();
 	this.length = "s";
 	
@@ -131,11 +138,15 @@ ilib.DateRngFmt = function(options) {
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync == true);
 		}
+		
+		loadParams = options.loadParams;
 	}
 	
 	var opts = {};
 	ilib.shallowCopy(options, opts);
 	opts.sync = sync;
+	opts.loadParams = loadParams;
+	
 	/**
 	 * @private
 	 */
