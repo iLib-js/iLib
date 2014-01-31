@@ -25,6 +25,7 @@ date.js
 strings.js 
 resources.js 
 localeinfo.js
+util/jsutils.js
 */
 
 // !data dateformats sysres
@@ -128,6 +129,10 @@ ilib.DurFmt = function(options) {
 			sync = (options.sync == true);
 		}
 		
+		if (typeof(options.useNative) === 'boolean') {
+			this.useNative = true;
+		}
+		
 		loadParams = options.loadParams;
 	}
 	
@@ -206,6 +211,7 @@ ilib.DurFmt = function(options) {
 					time: "ms",
 					sync: sync,
 					loadParams: loadParams,
+					useNative: this.useNative,
 					onLoad: ilib.bind(this, function (fmtMS) {
 						this.timeFmtMS = fmtMS;
 						new ilib.DateFmt({
@@ -214,6 +220,7 @@ ilib.DurFmt = function(options) {
 							time: "hm",
 							sync: sync,
 							loadParams: loadParams,
+							useNative: this.useNative,
 							onLoad: ilib.bind(this, function (fmtHM) {
 								this.timeFmtHM = fmtHM;		
 								new ilib.DateFmt({
@@ -222,6 +229,7 @@ ilib.DurFmt = function(options) {
 									time: "hms",
 									sync: sync,
 									loadParams: loadParams,
+									useNative: this.useNative,
 									onLoad: ilib.bind(this, function (fmtHMS) {
 										this.timeFmtHMS = fmtHMS;		
 
@@ -231,9 +239,7 @@ ilib.DurFmt = function(options) {
 										this.timeFmtHMS.template = this.timeFmtHMS.template.replace(/hh?/, 'H');
 										this.timeFmtHMS.templateArr = this.timeFmtHMS._tokenize(this.timeFmtHMS.template);
 										
-										if (options && typeof(options.onLoad) === 'function') {
-											options.onLoad(this);
-										}
+										this._init(this.timeFmtHM.locinfo, options && options.onLoad);
 									})
 								});
 							})
@@ -242,10 +248,14 @@ ilib.DurFmt = function(options) {
 				});
 				return;
 			}
-			
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
+
+			new ilib.LocaleInfo(this.locale, {
+				sync: sync,
+				loadParams: loadParams,
+				onLoad: ilib.bind(this, function (li) {
+					this._init(li, options && options.onLoad);
+				})
+			});
 		})
 	});
 };
@@ -257,6 +267,45 @@ ilib.DurFmt = function(options) {
 ilib.DurFmt.complist = {
 	"text": ["year", "month", "week", "day", "hour", "minute", "second", "millisecond"],
 	"clock": ["year", "month", "week", "day"]
+};
+
+/**
+ * @private
+ */
+ilib.DurFmt.prototype._mapDigits = function(str) {
+	if (this.useNative && this.digits) {
+		return ilib.mapString(str, this.digits);
+	}
+	return str;
+};
+
+/**
+ * @private
+ * @param {ilib.LocaleInfo} locinfo
+ * @param {Function|undefined} onLoad
+ */
+ilib.DurFmt.prototype._init = function(locinfo, onLoad) {
+	var digits;
+	if (typeof(this.useNative) === 'boolean') {
+		// if the caller explicitly said to use native or not, honour that despite what the locale data says...
+		if (this.useNative) {
+			digits = locinfo.getNativeDigits();
+			if (digits) {
+				this.digits = digits;
+			}
+		}
+	} else if (locinfo.numFmt && typeof(locinfo.numFmt.useNative) !== 'undefined' && locinfo.numFmt.useNative) {
+		// else if the locale usually uses native digits, then use them 
+		digits = locinfo.getNativeDigits();
+		if (digits) {
+			this.useNative = true;
+			this.digits = digits;
+		}
+	} // else use western digits always
+
+	if (typeof(onLoad) === 'function') {
+		onLoad(this);
+	}
 };
 
 /**
@@ -301,7 +350,7 @@ ilib.DurFmt.prototype.format = function (components) {
 				str = ((this.length === 'full' && secondlast) ? this.components.finalSeparator : this.components.separator) + str;
 				secondlast = false;
 			}
-			str = this.components[list[i]].formatChoice(components[list[i]], {num: components[list[i]]}) + str;
+			str = this.components[list[i]].formatChoice(components[list[i]], {num: this._mapDigits(components[list[i]])}) + str;
 		}
 	}
 
