@@ -8,12 +8,14 @@
             "common": "{s} {n}",
             "commonNegative": "-{s} {n}"
         },
+		"useNative": true,
         "digits": "०१२३४५६७८९"
     },
     "numfmt": {
         "decimalChar": ".",
         "groupChar": ",",
-	 "secgroupSize": 2,
+		"secgroupSize": 2,
+        "useNative": false,
         "currencyFormats": {
             "common": "{s} {n}",
             "commonNegative": "-{s} {n})"

@@ -7,6 +7,7 @@
         "exponential": "E",
         "secgroupSize": 2,
         "pctFmt": "{n} %",
+        "useNative": true,
         "digits": "༠༡༢༣༤༥༦༧༨༩"
     }
 }

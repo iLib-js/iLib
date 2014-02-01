@@ -13,10 +13,12 @@
         },
         "pctFmt": "{n}%",
         "roundingMode": "halfdown",
+        "useNative": true,
         "digits": "០១២៣៤៥៦៧៨៩"
     },
     "numfmt": {
         "exponential": "E",
+        "useNative": false,
         "currencyFormats": {
             "commonNegative": "({s}{n})"
         }

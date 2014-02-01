@@ -8,6 +8,7 @@
         "currencyFormats": {
             "common": "{s} {n}"
         },
+        "useNative": true,
         "digits": "၀၁၂၃၄၅၆၇၈၉"
     }
 }

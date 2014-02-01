@@ -1,23 +1,25 @@
 {
  
     "native_numfmt": {
-        "script": "tamldec",
+        "script": "Taml",
         "decimalChar": ".",
         "groupChar": ",",
         "secgroupSize": 2,
         "currencyFormats": {
             "common": "{s} {n}",
-	    "commonNegative": "-{s} {n}"
+	    	"commonNegative": "-{s} {n}"
         },
+        "useNative": true,
         "digits": "௦௧௨௩௪௫௬௭௮௯"
     },
     "numfmt": {
         "decimalChar": ".",
         "groupChar": ",",
         "secgroupSize": 2,
+        "useNative": false,
         "currencyFormats": {
             "common": "{s} {n}",
-	     "commonNegative": "-{s} {n}"
+	    	"commonNegative": "-{s} {n}"
         }
     }
 }

@@ -13,9 +13,11 @@
         },
         "pctFmt": "{n}%",
         "roundingMode": "halfdown",
+		"useNative": true,
         "digits": "໐໑໒໓໔໕໖໗໘໙"
     },
     "numfmt": {
+        "useNative": false,
         "exponential": "E"
     }
 }

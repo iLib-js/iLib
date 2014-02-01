@@ -1,7 +1,7 @@
 {
     "generated": true,
     "native_numfmt": {
-        "script": "hanidec",
+        "script": "Hani",
         "decimalChar": ".",
         "groupChar": ",",
         "pctChar": "%",
@@ -13,12 +13,14 @@
         },
         "pctFmt": "{n}%",
         "roundingMode": "halfdown",
+        "useNative": true,
         "digits": "〇一二三四五六七八九"
     },
     "numfmt": {
         "decimalChar": ".",
         "groupChar": ",",
         "exponential": "E",
+        "useNative": false,
         "currencyFormats": {
             "commonNegative": "({s}{n})"
         }

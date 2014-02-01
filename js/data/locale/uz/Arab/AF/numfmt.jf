@@ -1,11 +1,12 @@
 {
     "generated": true,
     "numfmt": {
-        "script": "arabext",
+        "script": "Arab",
         "decimalChar": "٫",
         "groupChar": "٬",
         "pctChar": "٪",
         "exponential": "×۱۰^",
+		"useNative": true,
         "digits": "۰۱۲۳۴۵۶۷۸۹"
     }
 }

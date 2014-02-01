@@ -1,6 +1,6 @@
 {
     "native_numfmt": {
-        "script": "arabext",
+        "script": "Arab",
         "decimalChar": "٫",
         "groupChar": "٬",
         "pctChar": "٪",
@@ -9,10 +9,12 @@
             "common": "{s}{n}"
         },
         "pctFmt": "{n}٪",
+        "useNative": true,
         "digits": "۰۱۲۳۴۵۶۷۸۹"
     },
     "numfmt": {
         "decimalChar": ".",
+        "useNative": false,
         "groupChar": ","
     }
 }

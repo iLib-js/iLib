@@ -14,6 +14,7 @@
         "negativenumFmt": "{n}-",
         "pctFmt": "{n}%",
         "roundingMode": "halfdown",
+		"useNative": true,
         "digits": "٠١٢٣٤٥٦٧٨٩"
     },
     "numfmt": {
@@ -21,6 +22,7 @@
         "decimalChar": ",",
         "groupChar": ".",
         "pctChar": "%",
+        "useNative": false,
         "exponential": "E"
     }
 }

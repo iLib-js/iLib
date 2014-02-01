@@ -1,7 +1,7 @@
 {
     "generated": true,
     "numfmt": {
-        "script": "arabext",
+        "script": "Arab",
         "decimalChar": "٫",
         "groupChar": "٬",
         "pctChar": "٪",
@@ -9,6 +9,7 @@
         "currencyFormats": {
             "common": "{n} {s}"
         },
+        "useNative": true,
         "digits": "۰۱۲۳۴۵۶۷۸۹"
     }
 }

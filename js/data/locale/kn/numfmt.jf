@@ -9,13 +9,15 @@
             "common": "{s} {n}",
             "commonNegative": "-{s} {n}"
         },
+		"useNative": true,
         "digits": "೦೧೨೩೪೫೬೭೮೯"
     },
     "numfmt": {
         "decimalChar": ".",
         "groupChar": ",",
         "exponential": "ಈ",
-	"secgroupSize": 2,
+		"secgroupSize": 2,
+        "useNative": false,
         "currencyFormats": {
 	    "common": "{s} {n}",
             "commonNegative": "-{s} {n}"

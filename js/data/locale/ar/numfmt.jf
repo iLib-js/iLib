@@ -11,6 +11,7 @@
             "commonNegative": "{s} {n}-"
         },
         "negativenumFmt": "{n}-",
+		"useNative": true,
         "digits": "٠١٢٣٤٥٦٧٨٩"
     }
 }

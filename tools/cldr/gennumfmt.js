@@ -507,6 +507,9 @@ function getNumberFormats_num_system(def_num_system, data) {
 
 	if (native_digits != standard_digits) {
 		symbol_format_data["digits"] = native_digits;
+		symbol_format_data["useNative"] = true;
+	} else {
+		symbol_format_data["useNative"] = false;
 	}
 	//numbers["numfmt"] = symbol_format_data;
 

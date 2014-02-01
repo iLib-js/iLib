@@ -8,6 +8,7 @@
             "common": "{s} {n}",
             "commonNegative": "-{s} {n}"
         },
+		"useNative": true,
         "digits": "০১২৩৪৫৬৭৮৯"
     }
 }
