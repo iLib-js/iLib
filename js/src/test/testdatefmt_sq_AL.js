@@ -809,7 +809,7 @@ function testDateFmtINShortTimeComponentsHM_sq_AL() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1.45.MD", fmt.format(date));
+    assertEquals("1.45.", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMS_sq_AL() {
@@ -826,7 +826,7 @@ function testDateFmtINShortTimeComponentsHMS_sq_AL() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1.45.37.MD", fmt.format(date));
+    assertEquals("1.45.37.", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMA_sq_AL() {

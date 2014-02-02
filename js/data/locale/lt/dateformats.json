@@ -53,11 +53,11 @@
             "12": {
                 "ahmsz": "hh:mm:ss a z",
                 "ahms": "hh:mm:ss a",
-                "hms": "hh:mm:ss a",
+                "hms": "hh:mm:ss",
                 "ms": "mm:s",
                 "ahmz": "hh:mm: a z",
                 "ahm": "hh:mm a",
-                "hm": "hh:mm a"
+                "hm": "hh:mm"
             },
             "24": {
                 "ahmsz": "HH:mm:ss z",

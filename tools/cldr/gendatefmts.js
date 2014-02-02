@@ -1453,9 +1453,9 @@ function getDateFormats(language, script, region, data) {
             time_24["ahmz"] = time_24["ahmsz"].replace(".ss", "");
         }
         time_24["ahm"] = available_formats["Hm"];
-	time_24["hmz"] = time_24["ahmz"];
+        time_24["hmz"] = time_24["ahmz"];
         time_24["ah"] = available_formats["H"];
-	time_24["h"] = available_formats["H"];
+        time_24["h"] = available_formats["H"];
         //}
         time_24["hm"] = available_formats["Hm"];
     }
@@ -1473,11 +1473,12 @@ function getDateFormats(language, script, region, data) {
             time_12["ahmsz"] = timeformat["long"]["timeFormat"]["pattern"].replace("H:mm:ss", available_formats["hms"]);
             //util.print("HMMSS" + time_12["ahmsz"] + "\n");
         }
-	time_12["hmsz"] = time_12["ahmsz"];
-        time_12["ahms"] = available_formats["hms"];
-        time_12["hms"] = available_formats["hms"];
+        time_12["ahmsz"] = time_12["ahmsz"].replace(/H/g, "h");
+        time_12["hmsz"] = time_12["ahmsz"].replace("\\s?a", "");
+        time_12["ahms"] = available_formats["hms"].replace(/H/g, "h");;
+        time_12["hms"] = available_formats["hms"].replace("\\s?a", "").replace(/H/g, "h");
         //time_12["ms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("m"), available_formats["hms"].lastIndexOf("s"));
-        time_12["ms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("m"), 1 + available_formats["Hms"].lastIndexOf("s"));
+        time_12["ms"] = available_formats["hms"].substring(available_formats["hms"].indexOf("m"), 1 + available_formats["Hms"].lastIndexOf("s")).replace(/H/g, "h");
     }
     if (available_formats["hm"]) {
         //time_12["ahmz"] = "XXXXX" + available_formats["hm"] + " " + "z";
@@ -1486,10 +1487,10 @@ function getDateFormats(language, script, region, data) {
         } else {
             time_12["ahmz"] = time_12["ahmsz"].replace(".ss", "");
         }
-        time_12["ahm"] = available_formats["hm"];
-        time_12["hm"] = available_formats["hm"];
+        time_12["ahm"] = available_formats["hm"].replace(/H/g, "h");
+        time_12["hm"] = available_formats["hm"].replace("\\s?a", "").replace(/H/g, "h");
     }
-    time_12["hmz"] = time_12["ahmz"];
+    time_12["hmz"] = time_12["ahmz"].replace("\\s?a", "");
     time_12["ah"] = available_formats["h"];
     time_12["h"] = available_formats["H"].replace(/H/g,"h");
         //}

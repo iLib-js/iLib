@@ -77,7 +77,7 @@
     "1#1 hr|#{num} hrs": "#{num} tun",
     "1#1 hour|#{num} hours": "#{num} tundi",
     "#{num}d": "#{num}ö",
-    "1#1 dy|#{num} dys": "#{num} pä",
+    "1#1 dy|#{num} dys": "#{num} öö",
     "durationLongDays": "#{num} ööp",
     "1#1 day|#{num} days": "one#{num} ööpäev|#{num} ööpäeva",
     "#{num}w": "#{num}n",

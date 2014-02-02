@@ -809,7 +809,7 @@ function testDateFmtINShortTimeComponentsHM_pa_IN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 ਬਾਅਦ ਦੁਪਹਿਰ", fmt.format(date));
+    assertEquals("1:45", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMS_pa_IN() {
@@ -826,7 +826,7 @@ function testDateFmtINShortTimeComponentsHMS_pa_IN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 ਬਾਅਦ ਦੁਪਹਿਰ", fmt.format(date));
+    assertEquals("1:45:37", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMA_pa_IN() {

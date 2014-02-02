@@ -423,6 +423,29 @@ ilib.LocaleInfo.prototype = {
 	},
 	
 	/**
+	 * Return a string that describes the style of digits used by this locale.
+	 * Possible return values are:
+	 * <ul>
+	 * <li><i>western</i> - uses the regular western 10-based digits 0 through 9
+	 * <li><i>optional</i> - native 10-based digits exist, but in modern usage,
+	 * this locale most often uses western digits
+	 * <li><i>native</i> - native 10-based native digits exist and are used
+	 * regularly by this locale
+	 * <li><i>custom</i> - uses native digits by default that are not 10-based
+	 * </ul>
+	 * @returns {string} string that describes the style of digits used in this locale
+	 */
+	getDigitsStyle: function () {
+		if (this.info.numfmt.useNative) {
+			return "native";
+		}
+		if (typeof(this.info.native_numfmt) !== 'undefined') {
+			return "optional";
+		}
+		return "western";
+	},
+	
+	/**
 	 * Return the digits of the default script if they are defined.
 	 * If not defined, the default should be the regular "Arabic numerals"
 	 * used in the Latin script. (0-9)
@@ -437,7 +460,7 @@ ilib.LocaleInfo.prototype = {
 	 * @returns {string|undefined} the digits used in the default script 
 	 */
 	getNativeDigits: function () {
-		return this.info.native_numfmt && this.info.native_numfmt.digits;
+		return (this.info.numfmt.useNative && this.info.numfmt.digits) || (this.info.native_numfmt && this.info.native_numfmt.digits);
 	},
 	
 	/**

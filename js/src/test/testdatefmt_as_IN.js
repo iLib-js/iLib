@@ -809,7 +809,7 @@ function testDateFmtINShortTimeComponentsHM_as_IN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫ অপৰাহ্ণ", fmt.format(date));
+    assertEquals("১:৪৫", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMS_as_IN() {
@@ -826,7 +826,7 @@ function testDateFmtINShortTimeComponentsHMS_as_IN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("১:৪৫:৩৭ অপৰাহ্ণ", fmt.format(date));
+    assertEquals("১:৪৫:৩৭", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMA_as_IN() {
@@ -1165,8 +1165,8 @@ function testDateFmtINWithTimeZoneAndNoDST_as_IN() {
 	});
     assertEquals("১:৪৫:৩৭ অপৰাহ্ণ IST", fmt.format(date));
 }
-//needs to have translations for hours,minutes,seconds etc.
-/*function testDateFmtFormatRelativeWithinMinuteAfter_as_IN() {
+/*
+function testDateFmtFormatRelativeWithinMinuteAfter_as_IN() {
     var fmt = new ilib.DateFmt({locale: "as-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -1533,6 +1533,6 @@ function testDateFmtFormatRelativeYearsBefore_as_IN() {
 		millisecond: 0
 	});
     assertEquals("21 साल पहले", fmt.formatRelative(reference, date));
-}*/
-
+}
+*/
 

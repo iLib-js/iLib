@@ -6840,3 +6840,57 @@ function testLocaleInfoGetRegionName3() {
 	assertNotUndefined(li);
 	assertEquals("Tanzania", li.getRegionName());
 }
+
+function testGetDigitsWestern() {
+	var li = new ilib.LocaleInfo("en-US");
+	assertNotUndefined(li);
+	assertUndefined(li.getDigits());
+}
+
+function testGetDigitsWesternNative() {
+	var li = new ilib.LocaleInfo("en-US");
+	assertNotUndefined(li);
+	assertUndefined(li.getDigits());
+}
+
+function testGetDigitsNonWesternOptional() {
+	var li = new ilib.LocaleInfo("hi-IN");
+	assertNotUndefined(li);
+	assertUndefined(li.getDigits());
+}
+
+function testGetDigitsNonWesternNative() {
+	var li = new ilib.LocaleInfo("hi-IN");
+	assertNotUndefined(li);
+	assertEquals("०१२३४५६७८९", li.getNativeDigits());
+}
+
+function testGetDigitsNonWesternUsual() {
+	var li = new ilib.LocaleInfo("bn-IN");
+	assertNotUndefined(li);
+	assertEquals("০১২৩৪৫৬৭৮৯", li.getDigits());
+}
+
+function testGetDigitsNonWesternUsualNative() {
+	var li = new ilib.LocaleInfo("bn-IN");
+	assertNotUndefined(li);
+	assertEquals("০১২৩৪৫৬৭৮৯", li.getNativeDigits());
+}
+
+function testGetDigitsStyleWestern() {
+	var li = new ilib.LocaleInfo("en-US");
+	assertNotUndefined(li);
+	assertEquals("western", li.getDigitsStyle());
+}
+
+function testGetDigitsStyleOptional() {
+	var li = new ilib.LocaleInfo("hi-IN");
+	assertNotUndefined(li);
+	assertEquals("optional", li.getDigitsStyle());
+}
+
+function testGetDigitsStyleNative() {
+	var li = new ilib.LocaleInfo("bn-IN");
+	assertNotUndefined(li);
+	assertEquals("native", li.getDigitsStyle());
+}

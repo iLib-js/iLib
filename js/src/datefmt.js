@@ -282,7 +282,6 @@ ilib.DateFmt = function(options) {
 	this.length = "s";
 	this.dateComponents = "dmy";
 	this.timeComponents = "ahm";
-	this.useNative = false;
 	if (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
@@ -369,7 +368,7 @@ ilib.DateFmt = function(options) {
 			});
 		} // else just assume time zone "local"
 		
-		if (typeof(options.useNative) !== 'undefined') {
+		if (typeof(options.useNative) === 'boolean') {
 			this.useNative = options.useNative;
 		}
 		if (typeof(options.sync) !== 'undefined') {
@@ -592,14 +591,19 @@ ilib.DateFmt.prototype = {
 		// tokenize it now for easy formatting
 		this.templateArr = this._tokenize(this.template);
 
+		var digits;
 		// set up the mapping to native or alternate digits if necessary
-		var digits = this.locinfo.getDigits();
-		if (digits && digits != "0123456789") {
-			this.digits = digits;
-		}
-		if (this.useNative) {
+		if (typeof(this.useNative) === "boolean") {
+			if (this.useNative) {
+				digits = this.locinfo.getNativeDigits();
+				if (digits) {
+					this.digits = digits;
+				}
+			}
+		} else if (this.locinfo.getDigitsStyle() === "native") {
 			digits = this.locinfo.getNativeDigits();
 			if (digits) {
+				this.useNative = true;
 				this.digits = digits;
 			}
 		}

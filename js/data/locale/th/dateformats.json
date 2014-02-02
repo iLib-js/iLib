@@ -57,34 +57,10 @@
         },
         "time": {
             "12": {
-                "ahmsz": "H นาฬิกา mm นาที ss วินาที z",
-                "hmsz": "H นาฬิกา mm นาที ss วินาที z",
+                "ahmsz": "h:mm:ss a z",
                 "ahms": "h:mm:ss a",
-                "hms": "h:mm:ss a",
-                "ms": "mm:ss",
-                "ahmz": "H นาฬิกา mm นาที ss วินาที z",
                 "ahm": "h:mm a",
-                "hm": "h:mm a",
-                "hmz": "H นาฬิกา mm นาที ss วินาที z",
                 "ah": "h a",
-                "h": "h",
-                "m": "mm",
-                "s": "ss"
-            },
-            "24": {
-                "ahmsz": "H นาฬิกา mm นาที ss วินาที z",
-                "ahms": "H:mm:ss",
-                "hmsz": "H นาฬิกา mm นาที ss วินาที z",
-                "hms": "H:mm:ss",
-                "ms": "mm:ss",
-                "ahmz": "H นาฬิกา mm นาที ss วินาที z",
-                "ahm": "H:mm",
-                "hmz": "H นาฬิกา mm นาที ss วินาที z",
-                "ah": "H",
-                "h": "H",
-                "hm": "H:mm",
-                "m": "mm",
-                "s": "ss"
             }
         },
         "range": {

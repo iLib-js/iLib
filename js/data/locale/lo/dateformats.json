@@ -49,10 +49,10 @@
                 "ahmsz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
                 "hmsz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
                 "ahms": "h:mm:ss a",
-                "hms": "h:mm:ss a",
+                "hms": "h:mm:ss",
                 "ahmz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
                 "ahm": "h:mm a",
-                "hm": "h:mm a",
+                "hm": "h:mm",
                 "hmz": "H ໂມງ m ນາທີ ss ວິນາທີ z",
                 "ah": "h ໂມງa"
             },

@@ -130,7 +130,7 @@ ilib.DurFmt = function(options) {
 		}
 		
 		if (typeof(options.useNative) === 'boolean') {
-			this.useNative = true;
+			this.useNative = options.useNative;
 		}
 		
 		loadParams = options.loadParams;
@@ -274,7 +274,7 @@ ilib.DurFmt.complist = {
  */
 ilib.DurFmt.prototype._mapDigits = function(str) {
 	if (this.useNative && this.digits) {
-		return ilib.mapString(str, this.digits);
+		return ilib.mapString(str.toString(), this.digits);
 	}
 	return str;
 };
@@ -294,7 +294,7 @@ ilib.DurFmt.prototype._init = function(locinfo, onLoad) {
 				this.digits = digits;
 			}
 		}
-	} else if (locinfo.numFmt && typeof(locinfo.numFmt.useNative) !== 'undefined' && locinfo.numFmt.useNative) {
+	} else if (locinfo.getDigitsStyle() === "native") {
 		// else if the locale usually uses native digits, then use them 
 		digits = locinfo.getNativeDigits();
 		if (digits) {

@@ -41,14 +41,14 @@
         "time": {
             "12": {
                 "ahmsz": "hh:mm:ss a z",
-                "hmsz": "hh:mm:ss a z",
+                "hmsz": "hh:mm:ss z",
                 "ahms": "hh:mm:ss a",
-                "hms": "hh:mm:ss a",
+                "hms": "hh:mm:ss",
                 "ms": "mm:s",
                 "ahmz": "hh:mm a z",
                 "ahm": "hh:mm a",
-                "hm": "hh:mm a",
-                "hmz": "hh:mm a z",
+                "hm": "hh:mm",
+                "hmz": "hh:mm z",
                 "ah": "h a"
             },
             "24": {

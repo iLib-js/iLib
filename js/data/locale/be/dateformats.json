@@ -44,27 +44,27 @@
         },
         "time": {
             "12": {
-                "ahmsz": "HH.mm.ss z",
-                "hmsz": "HH.mm.ss z",
-                "ahms": "h.mm.ss a",
-                "hms": "h.mm.ss a",
+                "ahmsz": "hh.mm.ss a z",
+                "hmsz": "hh.mm.ss z",
+                "ahms": "hh.mm.ss a",
+                "hms": "hh.mm.ss",
                 "ms": "mm.ss",
-                "ahmz": "HH.mm z",
-                "ahm": "h.mm a",
-                "hm": "h.mm a",
-                "hmz": "HH.mm z",
+                "ahmz": "hh.mm a z",
+                "ahm": "hh.mm a",
+                "hm": "hh.mm",
+                "hmz": "hh.mm z",
                 "ah": "h a"
             },
             "24": {
                 "ahmsz": "HH.mm.ss z",
-                "ahms": "H.mm.ss",
+                "ahms": "HH.mm.ss",
                 "hmsz": "HH.mm.ss z",
-                "hms": "H.mm.ss",
+                "hms": "HH.mm.ss",
                 "ms": "mm.ss",
                 "ahmz": "HH.mm z",
-                "ahm": "H.mm",
+                "ahm": "HH.mm",
                 "hmz": "HH.mm z",
-                "hm": "H.mm"
+                "hm": "HH.mm"
             }
         },
         "range": {

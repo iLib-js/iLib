@@ -809,7 +809,7 @@ function testDateFmtINShortTimeComponentsHM_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 ಮಧ್ಯಾಹ್ನ", fmt.format(date));
+    assertEquals("1:45", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMS_kn_IN() {
@@ -826,7 +826,7 @@ function testDateFmtINShortTimeComponentsHMS_kn_IN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 ಮಧ್ಯಾಹ್ನ", fmt.format(date));
+    assertEquals("1:45:37", fmt.format(date));
 }
 
 function testDateFmtINShortTimeComponentsHMA_kn_IN() {

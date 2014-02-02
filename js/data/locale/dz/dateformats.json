@@ -49,13 +49,13 @@
         "time": {
             "12": {
                 "ahmsz": "ཆུ་ཚོད་ h སྐར་མ་ mm:ss a z",
-                "hmsz": "ཆུ་ཚོད་ h སྐར་མ་ mm:ss a z",
-                "ahms": "h:mm:ss a",
-                "hms": "h:mm:ss a",
+                "hmsz": "ཆུ་ཚོད་ h སྐར་མ་ mm:ss z",
+                "ahms": "h སྐར་མ་ mm:ss a",
+                "hms": "h སྐར་མ་ mm:ss",
                 "ahmz": "ཆུ་ཚོད་ h སྐར་མ་ mm a z",
-                "ahm": "h:mm a",
-                "hm": "h:mm a",
-                "hmz": "ཆུ་ཚོད་ h སྐར་མ་ mm a z",
+                "ahm": "h སྐར་མ་ mm a",
+                "hm": "h སྐར་མ་ mm",
+                "hmz": "ཆུ་ཚོད་ h སྐར་མ་ mm z",
                 "ah": "ཆུ་ཚོད་h a",
                 "h": "ཆུ་ཚོད་h"
             },

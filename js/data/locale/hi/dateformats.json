@@ -46,10 +46,10 @@
             "12": {
                 "ahmsz": "h:mm:ss a z",
                 "ahms": "h:mm:ss a",
-                "hms": "h:mm:ss a",
+                "hms": "h:mm:ss",
                 "ahmz": "h:mm: a z",
                 "ahm": "h:mm a",
-                "hm": "h:mm a"
+                "hm": "h:mm"
             }
         },
         "range": {

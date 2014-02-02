@@ -1004,7 +1004,7 @@ function testDateFmtINFullTimeComponentsH_bn_IN() {
 
 
 
-function testDateFmtINFullTimeComponentsHM_bn_IN() {
+function testDateFmtINFullTimeComponentsHMA_bn_IN() {
     var fmt = new ilib.DateFmt({locale: "bn-IN", type: "time", length: "full", time: "hma"});
     assertNotUndefined(fmt);
     
@@ -1021,7 +1021,7 @@ function testDateFmtINFullTimeComponentsHM_bn_IN() {
     assertEquals("১:৪৫ অপরাহ্ণ", fmt.format(date));
 }
 
-function testDateFmtINFullTimeComponentsHMS_bn_IN() {
+function testDateFmtINFullTimeComponentsHMSA_bn_IN() {
     var fmt = new ilib.DateFmt({locale: "bn-IN", type: "time", length: "full", time: "hmsa"});
     assertNotUndefined(fmt);
     
@@ -1036,6 +1036,29 @@ function testDateFmtINFullTimeComponentsHMS_bn_IN() {
 		millisecond: 0
 	});
     assertEquals("১:৪৫:৩৭ অপরাহ্ণ", fmt.format(date));
+}
+
+function testDateFmtINFullTimeComponentsHMSAWestern_bn_IN() {
+    var fmt = new ilib.DateFmt({
+    	locale: "bn-IN", 
+    	type: "time", 
+    	length: "full", 
+    	time: "hmsa",
+    	useNative: false
+    });
+    assertNotUndefined(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "bn-IN",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 13,
+		minute: 45,
+		second: 37,
+		millisecond: 0
+	});
+    assertEquals("1:45:37 অপরাহ্ণ", fmt.format(date));
 }
 
 function testDateFmtINFullTimeComponentsHMA_bn_IN() {

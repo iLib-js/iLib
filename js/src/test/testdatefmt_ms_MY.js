@@ -802,7 +802,7 @@ function testDateFmtShortTimeComponentsHM_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 PTG", fmt.format(date));
+    assertEquals("1:45", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMS_ms_MY() {
@@ -819,7 +819,7 @@ function testDateFmtShortTimeComponentsHMS_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 PTG", fmt.format(date));
+    assertEquals("1:45:37", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMA_ms_MY() {
@@ -858,7 +858,7 @@ function testDateFmtShortTimeComponentsHMZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 PTG MYT", fmt.format(date));
+    assertEquals("1:45 MYT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_ms_MY() {
@@ -919,7 +919,7 @@ function testDateFmtShortTimeComponentsHMSZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 PTG MYT", fmt.format(date));
+    assertEquals("1:45:37 MYT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_ms_MY() {
@@ -1027,7 +1027,7 @@ function testDateFmtFullTimeComponentsHM_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 PTG", fmt.format(date));
+    assertEquals("1:45", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMS_ms_MY() {
@@ -1044,7 +1044,7 @@ function testDateFmtFullTimeComponentsHMS_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 PTG", fmt.format(date));
+    assertEquals("1:45:37", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMA_ms_MY() {
@@ -1084,7 +1084,7 @@ function testDateFmtFullTimeComponentsHMZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45 PTG MYT", fmt.format(date));
+    assertEquals("1:45 MYT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_ms_MY() {
@@ -1147,7 +1147,7 @@ function testDateFmtFullTimeComponentsHMSZ_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 PTG MYT", fmt.format(date));
+    assertEquals("1:45:37 MYT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_ms_MY() {
@@ -1193,6 +1193,6 @@ function testDateFmtWithTimeZoneAndNoDST_ms_MY() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("1:45:37 PTG MYT", fmt.format(date));
+    assertEquals("1:45:37 MYT", fmt.format(date));
 }
 
