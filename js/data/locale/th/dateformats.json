@@ -60,7 +60,7 @@
                 "ahmsz": "h:mm:ss a z",
                 "ahms": "h:mm:ss a",
                 "ahm": "h:mm a",
-                "ah": "h a",
+                "ah": "h a"
             }
         },
         "range": {

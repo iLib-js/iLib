@@ -639,12 +639,12 @@ limitations under the License.
 			depends="geninfo,testlocalejson"
 			description="compresses the json files"
 			unless="json.compress.not.needed">
-		<exec os="Linux" executable="node" dir="${build.locale}">
+		<exec os="Linux" executable="node" dir="${build.locale}" failifexecutionfails="true" failonerror="true">
 			<arg value="${build.tools}/build/jsoncompress.js"/>
 			<arg value="."/>
 			<arg value="${build.localetemp}"/>
 		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.locale}">
+		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true" failonerror="true">
 			<arg value="${build.tools}/build/jsoncompress.js"/>
 			<arg value="."/>
 			<arg value="${build.localetemp}"/>

@@ -101,6 +101,7 @@ function walk(root, dir) {
 				} catch (err) {
 					util.print("File " + sourcePath + " is not readable or does not contain valid JSON.\n");
 					util.print(err + "\n");
+					process.exit(2);
 				}
 			}
 		}
