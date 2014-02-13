@@ -585,8 +585,8 @@ public class ResBundle
      * Returns translation for given source and key strings in IString format
      * @param source source string
      * @param key key item, if null - then unique key will be generated
-     * @see makeKey(String source);
-     * @return translation for target locale if it is existed, otherwise - 
+     * @see #makeKey(String)
+     * @return translation for target locale if it is exists, otherwise the source string 
      * @see MissingType
      */
     public IString getString(String source, String key)
@@ -606,7 +606,7 @@ public class ResBundle
      * 
      * @param source
      * @param key
-     * @return
+     * @return the translation for the given source string/key combination
      */
     protected String getTranslation(String source, String key)
     {
@@ -660,7 +660,7 @@ public class ResBundle
 
     /**
      * @param source
-     * @return
+     * @return the translation for the given source string
      */
     public IString getString(String source)
     {
@@ -670,7 +670,7 @@ public class ResBundle
     /**
      * 
      * @param source
-     * @return
+     * @return the pseudo-translated version of the source string
      */
     public IString getStringPseudo(String source) {
     	if (source == null) return null;

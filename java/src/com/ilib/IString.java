@@ -501,7 +501,7 @@ public class IString
      * This is the same as {@link IString#formatChoice(double, Map)} except that the
      * named replacement values come from a JSON object instead of a map.
      *  
-     * @see com.jedlsoft.utils.IString#formatChoice(double, Map)
+     * @see com.ilib.IString#formatChoice(double, Map)
      * @param reference The reference value used to select the choice to use in the choice array
      * @param values The JSON object containing parameter values that replace the 
      * replacement variables in the string
@@ -520,7 +520,7 @@ public class IString
     /**
      * This is the same as {@link IString#formatChoice(double, Map)} but with null map.
      * 
-     * @see com.jedlsoft.utils.IString#formatChoice(double, Map)
+     * @see com.ilib.IString#formatChoice(double, Map)
      * @param reference The reference value used to select the choice to use in the choice array
      * @return the formatted string
      */
@@ -528,14 +528,14 @@ public class IString
     	return formatChoice(reference, (Map<String, String>)null);
     }
     /**
-     * This is the same as {@link com.jedlsoft.utils.IString#formatChoice(double, Map)}
+     * This is the same as {@link com.ilib.IString#formatChoice(double, Map)}
      * except that the type of the reference argument is boolean. In this case, the
      * strings "true", "on", "yes", "1", or "false", "off", "no", or "0" (without the 
      * quotes) may appear as the selectors. If a choice string with boolean selectors is 
      * formatted with a numeric argument index instead, then the value of "false" is 
      * taken to be 0, and the value of true is taken to be 1.
      * 
-     * @see com.jedlsoft.utils.IString#formatChoice(double, Map)
+     * @see com.ilib.IString#formatChoice(double, Map)
      * @param reference The reference value used to select the choice to use in the choice array
      * @param values The map of parameter values that replace the replacement 
      * variables in the string
@@ -555,7 +555,7 @@ public class IString
      * This is the same as {@link IString#formatChoice(boolean, Map)} except that the
      * named replacement values come from a JSON object instead of a map.
      *  
-     * @see com.jedlsoft.utils.IString#formatChoice(double, Map)
+     * @see com.ilib.IString#formatChoice(double, Map)
      * @param reference The reference value used to select the choice to use in the choice array
      * @param values The JSON object containing parameter values that replace the 
      * replacement variables in the string
@@ -572,7 +572,7 @@ public class IString
     }
 
     /**
-     * This is the same as {@link com.jedlsoft.utils.IString#formatChoice(double, Map)}
+     * This is the same as {@link com.ilib.IString#formatChoice(double, Map)}
      * except that the type of the reference argument is a string which is matched
      * against the regular expressions selectors in the choice string.
      * A choice is selected if the regular expression
@@ -581,7 +581,7 @@ public class IString
      * any "#" or "|" characters in the regular expression so that they do not
      * conflict with the syntax of the choice format string.
      * 
-     * @see com.jedlsoft.utils.IString#formatChoice(double, Map)
+     * @see com.ilib.IString#formatChoice(double, Map)
      * @param reference The reference value used to select the choice to use in the choice array
      * @param values The map of parameter values that replace the replacement 
      * variables in the string
@@ -601,7 +601,7 @@ public class IString
      * This is the same as {@link IString#formatChoice(String, Map)} except that the
      * named replacement values come from a JSON object instead of a map.
      *  
-     * @see com.jedlsoft.utils.IString#formatChoice(double, Map)
+     * @see com.ilib.IString#formatChoice(double, Map)
      * @param reference The reference value used to select the choice to use in the choice array
      * @param values The JSON object containing parameter values that replace the 
      * replacement variables in the string

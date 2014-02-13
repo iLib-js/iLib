@@ -73,7 +73,7 @@ public class PluralFormHelper {
 	/**
 	 * 
 	 * @param file
-	 * @return
+	 * @return a map containing the plural forms encoded in the file
 	 */
 	public static Map<String, String> getPluralForms(File file) {
 		StringBuilder builder = new StringBuilder();
@@ -118,7 +118,7 @@ public class PluralFormHelper {
 	 * 
 	 * @param value
 	 * @param plurals
-	 * @return
+	 * @return the key for a value in the plurals map
 	 */
 	public static <K> String getPluralKey(int value, Map<String, K> plurals) {
 		String resultPlural = OTHER_PLURAL;
