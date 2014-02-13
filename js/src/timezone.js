@@ -180,6 +180,33 @@ ilib.TimeZone = function(options) {
 	//console.log("id is: " + JSON.stringify(this.id));
 };
 
+/*
+ * Explanation of the compressed time zone info properties.
+ * {
+ *     "o": "8:0",      // Offset from UTC
+ *     "f": "W{c}T",      // 
+ *     "e": {           // info about the end of DST
+ *         "m": 3,      // month that it ends
+ *         "r": "l0",   // rule for the day it ends "l" = "last", numbers are Sun=0 through Sat=6. Other syntax is "0>7". 
+ *                      // This means the 0-day (Sun) after the 7th of the month. Other possible operators are <, >, <=, >=
+ *         "t": "2:0",  // time of day that the DST turns off, hours:minutes
+ *         "z": "s",    // ???
+ *         "c": "S"     // character to replace into the abbreviation for standard time 
+ *     },
+ *     "s": {           // info about the start of DST
+ *         "m": 10,     // month that it starts
+ *         "r": "l0",   // rule for the day it starts "l" = "last", numbers are Sun=0 through Sat=6. Other syntax is "0>7".
+ *                      // This means the 0-day (Sun) after the 7th of the month. Other possible operators are <, >, <=, >=
+ *         "t": "2:0",  // time of day that the DST turns on, hours:minutes
+ *         "z": "s",    // ???
+ *         "v": "1:0",  // amount of time saved in hours:minutes
+ *         "c": "D"     // character to replace into the abbreviation for daylight time
+ *     },
+ *     "c": "AU",       // ISO code for the country that contains this time zone
+ *     "n": "W. Australia {c} Time"
+ *                      // long English name of the zone. The {c} replacement is for the word "Standard" or "Daylight" as appropriate
+ * }
+ */
 ilib.data.defaultZones = {
 	"Etc/UTC":{"o":"0:0","f":"UTC"}
 };
