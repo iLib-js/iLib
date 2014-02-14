@@ -578,13 +578,12 @@ function testDateFmtAlternateInputs1() {
         year: 1982,
         month: 8,
         day: 13,
-        hour: 13,
-        minute: 31,
+        hour: 20,
+        minute: 37,
         second: 35
     });
     var strFormattedDate1 = datMyBday.toUTCString();
     var strFormattedDate2 = fmt.format(ildMyBday);
-    console.log('strFormattedDate1',strFormattedDate1,'strFormattedDate2',strFormattedDate2,ildMyBday, fmt);
     strFormattedDate1 = strFormattedDate1.replace(/ \w{3}$/, '');
     strFormattedDate2 = strFormattedDate2.replace(/ \w{3}$/, '');
 
@@ -592,23 +591,23 @@ function testDateFmtAlternateInputs1() {
 };
 
 function testDateFmtGetMonthsOfYear1() {
-    var fmt = new ilib.DateFmt();
+    var fmt = new ilib.DateFmt({locale: "en-US"});
     assertNotNull(fmt);
     
     var arrMonths = fmt.getMonthsOfYear();
-    assertArrayEquals(["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"], arrMonths);
+    assertArrayEquals([undefined, "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"], arrMonths);
 }
 
 function testDateFmtGetMonthsOfYear2() {
-    var fmt = new ilib.DateFmt();
+    var fmt = new ilib.DateFmt({locale: "en-US"});
     assertNotNull(fmt);
     
-    var arrMonths = fmt.getMonthsOfYear({length: 'long'});
-    assertArrayEquals(["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], arrMonths);
+    var arrMonths = fmt.getMonthsOfYear({length: "long"});
+    assertArrayEquals([undefined, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], arrMonths);
 }
 
 function testDateFmtGetDaysOfWeek1() {
-    var fmt = new ilib.DateFmt();
+    var fmt = new ilib.DateFmt({locale: "en-US"});
     assertNotNull(fmt);
     
     var arrDays = fmt.getDaysOfWeek();
@@ -616,7 +615,7 @@ function testDateFmtGetDaysOfWeek1() {
 }
 
 function testDateFmtGetDaysOfWeek2() {
-    var fmt = new ilib.DateFmt();
+    var fmt = new ilib.DateFmt({locale: "en-US"});
     assertNotNull(fmt);
     
     var arrDays = fmt.getDaysOfWeek({length: 'long'});

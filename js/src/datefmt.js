@@ -345,16 +345,21 @@ ilib.DateFmt = function(options) {
 		}
 		
 		if (options.timezone) {
-			this.tz = new ilib.TimeZone({
-				locale: this.locale, 
-				id: options.timezone
-			});
+			if (options.timezone instanceof ilib.TimeZone) {
+				this.tz = options.timezone;
+			}
+			else {
+				this.tz = new ilib.TimeZone({
+					locale: this.locale, 
+					id: options.timezone
+				});
+			}
 		}
 		if (typeof(options.useNative) !== 'undefined') {
 			this.useNative = options.useNative;
 		}
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			sync = (options.sync === true);
 		}
 		
 		loadParams = options.loadParams;
@@ -486,10 +491,10 @@ ilib.DateFmt.defaultFmt = ilib.data.dateformats || {
 * @private
 */
 ilib.DateFmt.monthNameLenMap = {
-   "short" : "N",
-   "medium": "NN",
-   "long": "MMM",
-   "full": "MMMM"
+	"short" : "N",
+	"medium": "NN",
+	"long": "MMM",
+	"full": "MMMM"
 };
 
 /**
@@ -497,10 +502,10 @@ ilib.DateFmt.monthNameLenMap = {
 * @private
 */
 ilib.DateFmt.weekDayLenMap = {
-   "short" : "E",
-   "medium": "EE",
-   "long": "EEE",
-   "full": "EEEE"
+	"short" : "E",
+	"medium": "EE",
+	"long": "EEE",
+	"full": "EEEE"
 };
 
 ilib.DateFmt.prototype = {
@@ -791,13 +796,13 @@ ilib.DateFmt.prototype = {
 	 * @return {Array} an array of all of the months of the year for the current calendar
 	 */
 	getMonthsOfYear: function(options) {
-		var length = (options && options.length) || this.getLength();
-		var template = ilib.DateFmt.monthNameLenMap[length];
-		var months = [];
-		var monthCount = this.cal.getNumMonths();
-		for (var i = 0; i < monthCount; i++) {
-			console.log('template',(template + (i+1)), length, this.sysres);
-			months[i] = this.sysres.getString(template + (i+1)).toString();
+		var length = (options && options.length) || this.getLength(),
+			date = (options && options.date) ? ilib.Date._dateToIlib(options.date) : ilib.Date.newInstance(),
+			template = ilib.DateFmt.monthNameLenMap[length],
+			months = [undefined],
+			monthCount = date.cal.getNumMonths( date.getYears() );
+		for (var i = 1; i <= monthCount; i++) {
+			months[i] = this.sysres.getString(template + (i)).toString();
 		}
 		return months;
 	},
@@ -810,9 +815,9 @@ ilib.DateFmt.prototype = {
 	 * @return {Array} an array of all of the months of the year for the current calendar
 	 */
 	getDaysOfWeek: function(options) {
-		var length = (options && options.length) || this.getLength();
-		var template = ilib.DateFmt.weekDayLenMap[length];
-		var days = [];
+		var length = (options && options.length) || this.getLength(),
+			template = ilib.DateFmt.weekDayLenMap[length],
+			days = [];
 		for (var i = 0; i < 7; i++) {
 			days[i] = this.sysres.getString(template + i).toString();
 		}
@@ -876,14 +881,14 @@ ilib.DateFmt.prototype = {
 
 				case 'h':
 					temp = (date.hour || 0) % 12;
-					if (temp == 0) {
+					if (temp === 0) {
 						temp = "12";
 					}
 					str += temp; 
 					break;
 				case 'hh':
 					temp = (date.hour || 0) % 12;
-					if (temp == 0) {
+					if (temp === 0) {
 						temp = "12";
 					}
 					str += this._pad(temp, 2);
@@ -904,10 +909,10 @@ ilib.DateFmt.prototype = {
 					str += this._pad(date.hour || 0, 2);
 					break;
 				case 'k':
-					str += (date.hour == 0 ? "24" : date.hour);
+					str += (date.hour === 0 ? "24" : date.hour);
 					break;
 				case 'kk':
-					temp = (date.hour == 0 ? "24" : date.hour);
+					temp = (date.hour === 0 ? "24" : date.hour);
 					str += this._pad(temp, 2);
 					break;
 
@@ -1033,7 +1038,7 @@ ilib.DateFmt.prototype = {
 	 * @return {string} the formatted version of the given date instance
 	 */
 	format: function (date) {
-		date = ilib.dateToIlib(date);
+		date = ilib.Date._dateToIlib(date);
 		
 		if (!date.getCalendar || date.getCalendar() !== this.calName) {
 			throw "Wrong date type passed to ilib.DateFmt.format()";
@@ -1098,8 +1103,8 @@ ilib.DateFmt.prototype = {
 	 * @return {string} the formatted relative date
 	 */
 	formatRelative: function(reference, date) {
-		reference = ilib.dateToIlib(reference);
-		date = ilib.dateToIlib(date);
+		reference = ilib.Date._dateToIlib(reference);
+		date = ilib.Date._dateToIlib(date);
 		
 		var referenceRd, dateRd, fmt, time, diff, num;
 		

@@ -624,6 +624,9 @@ limitations under the License.
 		<exec os="Windows XP" executable="node.exe" dir="${build.locale}">
 			<arg value="${build.tools}/build/mkli.js"/>
 		</exec>
+		<exec os="Mac OS X" executable="node" dir="${build.locale}">
+			<arg value="${build.tools}/build/mkli.js"/>
+		</exec>
 		<touch file="${build.locale}/localeinfo.stamp"/>
 	</target>
 	
@@ -638,6 +641,11 @@ limitations under the License.
 			description="compresses the json files"
 			unless="json.compress.not.needed">
 		<exec os="Linux" executable="node" dir="${build.locale}">
+			<arg value="${build.tools}/build/jsoncompress.js"/>
+			<arg value="."/>
+			<arg value="${build.localetemp}"/>
+		</exec>
+		<exec os="Mac OS X" executable="node" dir="${build.locale}">
 			<arg value="${build.tools}/build/jsoncompress.js"/>
 			<arg value="."/>
 			<arg value="${build.localetemp}"/>
@@ -661,6 +669,9 @@ limitations under the License.
 			description="produces the ilibmanifest.json file"
 			unless="manifest.not.needed">
 		<exec os="Linux" executable="node" dir="${build.localetemp}">
+			<arg value="${build.tools}/build/mkmf.js"/>
+		</exec>
+		<exec os="Mac OS X" executable="node" dir="${build.localetemp}">
 			<arg value="${build.tools}/build/mkmf.js"/>
 		</exec>
 		<exec os="Windows XP" executable="node.exe" dir="${build.localetemp}">

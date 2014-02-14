@@ -85,6 +85,32 @@ ilib.Date.newInstance = function(options) {
 	return cons && new cons(options);
 };
 
+/**
+ * @static
+ * 
+ * Convert JavaScript Date objects into native ilib Dates. This accepts any
+ * string or number that can be translated by the JavaScript Date class,
+ * (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
+ * any JavaScript Date classed object, any ilib Date object, or null (will 
+ * return null or undefined if input is null or undefined). Normal output is 
+ * a standard native ilib Date object.
+ * 
+ * @param  {ilib.Date|ilib.JulianDay|Date|String|Number=} inDate The input date object, string or Number.
+ * @return {ilib.Date|null|undefined}
+ */
+ilib.Date._dateToIlib = function(inDate) {
+	if (typeof(inDate) === 'undefined' || inDate === null) {
+		return inDate;
+	}
+	if (inDate instanceof ilib.Date || inDate instanceof ilib.JulianDay) {
+		return inDate;
+	}
+	if (!(inDate instanceof Date)) {
+		inDate = new Date(inDate);
+	}
+	return ilib.Date.newInstance({unixtime: inDate.getTime()});
+};
+
 /* place for the subclasses to put their constructors so that the factory method
  * can find them. Do this to add your date after it's defined: 
  * ilib.Date._constructors["mytype"] = ilib.Date.MyTypeConstructor;

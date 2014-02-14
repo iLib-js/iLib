@@ -1431,11 +1431,11 @@ function testDateToIlibDate() {
         month: 8,
         day: 13,
         hour: 13,
-        minute: 31,
+        minute: 37,
         second: 35
     });
     var fmt = new ilib.DateFmt({length: "full"});
-    assertEquals(fmt.format(ildMyBday), fmt.format(ilib.dateToIlib(datMyBday)));
+    assertEquals(fmt.format(ildMyBday), fmt.format(ilib.Date._dateToIlib(datMyBday)));
 }
 function testDateToIlibString() {
     var strMyBday = "Fri Aug 13 1982 13:37:35 GMT-0700 (PDT)";
@@ -1444,24 +1444,24 @@ function testDateToIlibString() {
         month: 8,
         day: 13,
         hour: 13,
-        minute: 31,
+        minute: 37,
         second: 35
     });
     var fmt = new ilib.DateFmt({length: "full"});
-    assertEquals(fmt.format(ildMyBday), fmt.format(ilib.dateToIlib(strMyBday)));
+    assertEquals(fmt.format(ildMyBday), fmt.format(ilib.Date._dateToIlib(strMyBday)));
 }
 function testDateToIlibInteger() {
     var intMyBday = 1234657890000;
     var ildMyBday = new ilib.Date.newInstance({unixtime: 1234657890000});
     var fmt = new ilib.DateFmt({length: "full"});
-    assertEquals(fmt.format(ildMyBday), fmt.format(ilib.dateToIlib(intMyBday)));
+    assertEquals(fmt.format(ildMyBday), fmt.format(ilib.Date._dateToIlib(intMyBday)));
 }
 function testDateToIlibIlibDate() {
     var ildMyBday = new ilib.Date.newInstance({unixtime: 1234657890000});
-    assertObjectEquals(ildMyBday, ilib.dateToIlib(ildMyBday));
+    assertObjectEquals(ildMyBday, ilib.Date._dateToIlib(ildMyBday));
 }
 function testDateToIlibNull() {
-    assertUndefined(ilib.dateToIlib(null));
-    assertUndefined(ilib.dateToIlib(undefined));
-    assertUndefined(ilib.dateToIlib());
+    assertNull(ilib.Date._dateToIlib(null));
+    assertUndefined(ilib.Date._dateToIlib(undefined));
+    assertUndefined(ilib.Date._dateToIlib());
 }
