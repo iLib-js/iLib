@@ -623,6 +623,167 @@ function testNumFmtNumberStyleIlibNumberObjectArgument() {
     assertEquals("2,345,678,901,234,567", fmt.format(new ilib.Number(2345678901234567.0)));
 }
 
+function testNumFmtGetUseNativeDefaultFalse() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-US"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertFalse(fmt.getUseNative());
+}
+
+function testNumFmtGetUseNativeDefaultTrue() {
+    var fmt = new ilib.NumFmt({
+        locale: "bn-IN"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertTrue(fmt.getUseNative());
+}
+
+function testNumFmtGetUseNativeHasNativeButFalse() {
+    var fmt = new ilib.NumFmt({
+        locale: "ta-IN"
+    });
+    
+    assertNotNull(fmt);
+    
+    // Tamil does have native digits, but they are not frequently used
+    assertFalse(fmt.getUseNative());
+}
+
+function testNumFmtGetUseNativeOverrideTrue() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-US",
+        useNative: true
+    });
+    
+    assertNotNull(fmt);
+    
+    assertTrue(fmt.getUseNative());
+}
+
+function testNumFmtGetUseNativeExplicitTrue() {
+    var fmt = new ilib.NumFmt({
+        locale: "bn-IN",
+        useNative: true
+    });
+    
+    assertNotNull(fmt);
+    
+    assertTrue(fmt.getUseNative());
+}
+
+function testNumFmtGetUseNativeExplicitFalse() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-US",
+        useNative: false
+    });
+    
+    assertNotNull(fmt);
+    
+    assertFalse(fmt.getUseNative());
+}
+
+function testNumFmtGetUseNativeOverrideFalse() {
+    var fmt = new ilib.NumFmt({
+        locale: "bn-IN",
+        useNative: false
+    });
+    
+    assertNotNull(fmt);
+    
+    assertFalse(fmt.getUseNative());
+}
+
+function testNumFmtFormatWesternDefault() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-US"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("123.456", fmt.format(123.456));
+}
+
+function testNumFmtFormatWesternOverrideNative() {
+    var fmt = new ilib.NumFmt({
+        locale: "en-US",
+        useNative: true
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("123.456", fmt.format(123.456));
+}
+
+function testNumFmtFormatNativeDefaultTrue() {
+    var fmt = new ilib.NumFmt({
+        locale: "bn-IN"
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("১২৩.৪৫৬", fmt.format(123.456));
+}
+
+function testNumFmtFormatNativeDefaultFalse() {
+    var fmt = new ilib.NumFmt({
+        locale: "ta-IN"
+    });
+    
+    assertNotNull(fmt);
+    
+    // Tamil has native digits, but they are not used by default
+    assertEquals("123.456", fmt.format(123.456));
+}
+
+function testNumFmtFormatNativeExplicitTrue() {
+    var fmt = new ilib.NumFmt({
+        locale: "bn-IN",
+        useNative: true
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("১২৩.৪৫৬", fmt.format(123.456));
+}
+
+function testNumFmtFormatNativeExplicitFalse() {
+    var fmt = new ilib.NumFmt({
+        locale: "bn-IN",
+        useNative: false
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("123.456", fmt.format(123.456));
+}
+
+function testNumFmtFormatNativeExplicitTrue2() {
+    var fmt = new ilib.NumFmt({
+        locale: "ta-IN",
+        useNative: true
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("௧௨௩.௪௫௬", fmt.format(123.456));
+}
+
+function testNumFmtFormatNativeExplicitFalse2() {
+    var fmt = new ilib.NumFmt({
+        locale: "ta-IN",
+        useNative: false
+    });
+    
+    assertNotNull(fmt);
+    
+    assertEquals("123.456", fmt.format(123.456));
+}
+
 function testNumFmtNumberFormatDESimple() {
     var fmt = new ilib.NumFmt({
         locale: "de-DE"

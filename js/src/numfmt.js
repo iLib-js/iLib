@@ -128,7 +128,6 @@ ilib.NumFmt = function (options) {
 	this.locale = new ilib.Locale();
 	/** @type {string} */
 	this.type = "number";
-	this.useNative = false;
 
 	if (options) {
 		if (options.locale) {
@@ -160,7 +159,7 @@ ilib.NumFmt = function (options) {
 			/** @type {string} */
 			this.style = options.style;
 		}
-		if (options.useNative) {
+		if (typeof(options.useNative) === 'boolean') {
 			this.useNative = options.useNative;
 		}
 		/** @type {string} */
@@ -253,6 +252,21 @@ ilib.NumFmt.zeros = "00000000000000000000000000000000000000000000000000000000000
 
 ilib.NumFmt.prototype = {
 	/**
+	 * Return true if this formatter uses native digits to format the number. If the useNative
+	 * option is given to the constructor, then this flag will be honoured. If the useNative
+	 * option is not given to the constructor, this this formatter will use native digits if
+	 * the locale typically uses native digits.
+	 * 
+	 *  @return {boolean} true if this formatter will format with native digits, false otherwise
+	 */
+	getUseNative: function() {
+		if (typeof(this.useNative) === "boolean") {
+			return this.useNative;
+		} 
+		return (this.localeInfo.getDigitsStyle() === "native");
+	},
+	
+	/**
 	 * @private
 	 */
 	_init: function () {
@@ -278,18 +292,13 @@ ilib.NumFmt.prototype = {
 		
 		this.prigroupSize = this.localeInfo.getPrimaryGroupingDigits(),
 		this.secgroupSize = this.localeInfo.getSecondaryGroupingDigits(),
-		this.groupingSeparator = this.useNative ? this.localeInfo.getNativeGroupingSeparator() : this.localeInfo.getGroupingSeparator();
-		this.decimalSeparator = this.useNative ? this.localeInfo.getNativeDecimalSeparator() : this.localeInfo.getDecimalSeparator();
+		this.groupingSeparator = this.getUseNative() ? this.localeInfo.getNativeGroupingSeparator() : this.localeInfo.getGroupingSeparator();
+		this.decimalSeparator = this.getUseNative() ? this.localeInfo.getNativeDecimalSeparator() : this.localeInfo.getDecimalSeparator();
 		
-		if (this.useNative) {
+		if (this.getUseNative()) {
 			var nd = this.localeInfo.getNativeDigits() || this.localeInfo.getDigits();
 			if (nd) {
 				this.digits = nd.split("");
-			}
-		} else {
-			var digitsStr = this.localeInfo.getDigits();
-			if (digitsStr && digitsStr !== "0123456789") {
-				this.digits = digitsStr.split("");
 			}
 		}
 		
