@@ -923,14 +923,14 @@ ilib.DateFmt.prototype = {
 
 				case 'h':
 					temp = (date.hour || 0) % 12;
-					if (temp === 0) {
+					if (temp == 0) {
 						temp = "12";
 					}
 					str += temp; 
 					break;
 				case 'hh':
 					temp = (date.hour || 0) % 12;
-					if (temp === 0) {
+					if (temp == 0) {
 						temp = "12";
 					}
 					str += this._pad(temp, 2);
@@ -951,10 +951,10 @@ ilib.DateFmt.prototype = {
 					str += this._pad(date.hour || 0, 2);
 					break;
 				case 'k':
-					str += (date.hour === 0 ? "24" : date.hour);
+					str += (date.hour == 0 ? "24" : date.hour);
 					break;
 				case 'kk':
-					temp = (date.hour === 0 ? "24" : date.hour);
+					temp = (date.hour == 0 ? "24" : date.hour);
 					str += this._pad(temp, 2);
 					break;
 
