@@ -606,6 +606,26 @@ function testDateFmtGetMonthsOfYear2() {
     assertArrayEquals([undefined, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], arrMonths);
 }
 
+function testDateFmtGetMonthsOfYearLeapYear() {
+	var d = ilib.Date.newInstance({type: "hebrew", locale: "en-US", year: 5774, month: 1, day: 1});
+    var fmt = new ilib.DateFmt({date: "en-US", calendar: "hebrew"});
+    assertNotNull(fmt);
+    
+    var arrMonths = fmt.getMonthsOfYear({length: "long", date: d});
+
+    assertArrayEquals([undefined, "Nis", "Iyy", "Siv", "Tam", "Av", "Elu", "Tis", "Ḥes", "Kis", "Tev", "She", "Ada", "Ad2"], arrMonths);
+}
+
+function testDateFmtGetMonthsOfYearNonLeapYear() {
+	var d = ilib.Date.newInstance({type: "hebrew", locale: "en-US", year: 5775, month: 1, day: 1});
+    var fmt = new ilib.DateFmt({date: "en-US", calendar: "hebrew"});
+    assertNotNull(fmt);
+    
+    var arrMonths = fmt.getMonthsOfYear({length: "long", date: d});
+
+    assertArrayEquals([undefined, "Nis", "Iyy", "Siv", "Tam", "Av", "Elu", "Tis", "Ḥes", "Kis", "Tev", "She", "Ada"], arrMonths);
+}
+
 function testDateFmtGetDaysOfWeek1() {
     var fmt = new ilib.DateFmt({locale: "en-US"});
     assertNotNull(fmt);
@@ -620,6 +640,15 @@ function testDateFmtGetDaysOfWeek2() {
     
     var arrDays = fmt.getDaysOfWeek({length: 'long'});
     assertArrayEquals(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], arrDays);
+}
+
+function testDateFmtGetDaysOfWeekOtherCalendar() {
+    var fmt = new ilib.DateFmt({locale: "en-US", calendar: "hebrew"});
+    assertNotNull(fmt);
+    
+    var arrDays = fmt.getDaysOfWeek({length: 'long'});
+
+    assertArrayEquals(["ris", "she", "shl", "rvi", "ḥam", "shi", "sha"], arrDays);
 }
 
 function testDateFmtWeekYear1() {

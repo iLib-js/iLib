@@ -88,12 +88,13 @@ ilib.Date.newInstance = function(options) {
 /**
  * @static
  * 
- * Convert JavaScript Date objects into native ilib Dates. This accepts any
+ * Convert JavaScript Date objects and other types into native ilib Dates. This accepts any
  * string or number that can be translated by the JavaScript Date class,
  * (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
- * any JavaScript Date classed object, any ilib Date object, or null (will 
+ * any JavaScript Date classed object, any ilib.Date subclass, an ilib.JulianDay object, an object
+ * containing the normal options to initialize an ilib.Date instance, or null (will 
  * return null or undefined if input is null or undefined). Normal output is 
- * a standard native ilib Date object.
+ * a standard native subclass of the ilib Date object as appropriate for the locale.
  * 
  * @param  {ilib.Date|ilib.JulianDay|Date|String|Number=} inDate The input date object, string or Number.
  * @return {ilib.Date|null|undefined}

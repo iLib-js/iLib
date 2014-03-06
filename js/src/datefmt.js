@@ -347,8 +347,7 @@ ilib.DateFmt = function(options) {
 		if (options.timezone) {
 			if (options.timezone instanceof ilib.TimeZone) {
 				this.tz = options.timezone;
-			}
-			else {
+			} else {
 				this.tz = new ilib.TimeZone({
 					locale: this.locale, 
 					id: options.timezone
@@ -493,8 +492,8 @@ ilib.DateFmt.defaultFmt = ilib.data.dateformats || {
 ilib.DateFmt.monthNameLenMap = {
 	"short" : "N",
 	"medium": "NN",
-	"long": "MMM",
-	"full": "MMMM"
+	"long":   "MMM",
+	"full":   "MMMM"
 };
 
 /**
@@ -504,8 +503,8 @@ ilib.DateFmt.monthNameLenMap = {
 ilib.DateFmt.weekDayLenMap = {
 	"short" : "E",
 	"medium": "EE",
-	"long": "EEE",
-	"full": "EEEE"
+	"long":   "EEE",
+	"full":   "EEEE"
 };
 
 ilib.DateFmt.prototype = {
@@ -789,20 +788,56 @@ ilib.DateFmt.prototype = {
 	},
 	
 	/**
+	 * @private
+	 */
+	_getTemplate: function (prefix, calendar) {
+		if (calendar !== "gregorian") {
+			return prefix + "-" + calendar;
+		}
+		return prefix;
+	},
+
+	/**
 	 * Returns an array of the months of the year, formatted to the optional length specified.
 	 * i.e. ...getMonthsOfYear() OR ...getMonthsOfYear({length: "short"})
-	 * @param  {Object=} options an object-literal that contains one key 
-	 *                   "length" with the standard length strings
-	 * @return {Array} an array of all of the months of the year for the current calendar
+	 * <p>
+	 * The options parameter may contain any of the following properties:
+	 * 
+	 * <ul>
+	 * <li><i>length</i> - length of the names of the months being sought. This may be one of
+	 * "short", "medium", "long", or "full"
+	 * <li><i>date</i> - retrieve the names of the months in the date of the given date
+	 * <li><i>year</i> - retrieve the names of the months in the given year. In some calendars,
+	 * the months have different names depending if that year is a leap year or not.
+	 * </ul>
+	 * 
+	 * @param  {Object=} options an object-literal that contains any of the above properties
+	 * @return {Array} an array of the names of all of the months of the year in the current calendar
 	 */
 	getMonthsOfYear: function(options) {
 		var length = (options && options.length) || this.getLength(),
-			date = (options && options.date) ? ilib.Date._dateToIlib(options.date) : ilib.Date.newInstance(),
 			template = ilib.DateFmt.monthNameLenMap[length],
 			months = [undefined],
-			monthCount = date.cal.getNumMonths( date.getYears() );
+			date,
+			monthCount;
+		
+		if (options) {
+			if (options.date) {
+				date = ilib.Date._dateToIlib(options.date); 	
+			}
+			
+			if (options.year) {
+				date = ilib.Date.newInstance({year: options.year, month: 1, day: 1, type: this.cal.getType()});
+			}
+		}
+		
+		if (!date) {
+			date = ilib.Date.newInstance({type: this.cal.getType()});
+		}
+
+		monthCount = this.cal.getNumMonths( date.getYears() );
 		for (var i = 1; i <= monthCount; i++) {
-			months[i] = this.sysres.getString(template + (i)).toString();
+			months[i] = this.sysres.getString(this._getTemplate(template + i, this.cal.getType())).toString();
 		}
 		return months;
 	},
@@ -810,6 +845,13 @@ ilib.DateFmt.prototype = {
 	/**
 	 * Returns an array of the days of the week, formatted to the optional length specified.
 	 * i.e. ...getDaysOfWeek() OR ...getDaysOfWeek({length: "short"})
+	 * <p>
+	 * The options parameter may contain any of the following properties:
+	 * 
+	 * <ul>
+	 * <li><i>length</i> - length of the names of the months being sought. This may be one of
+	 * "short", "medium", "long", or "full"
+	 * </ul>
 	 * @param  {Object=} options an object-literal that contains one key 
 	 *                   "length" with the standard length strings
 	 * @return {Array} an array of all of the months of the year for the current calendar
@@ -819,7 +861,7 @@ ilib.DateFmt.prototype = {
 			template = ilib.DateFmt.weekDayLenMap[length],
 			days = [];
 		for (var i = 0; i < 7; i++) {
-			days[i] = this.sysres.getString(template + i).toString();
+			days[i] = this.sysres.getString(this._getTemplate(template + i, this.cal.getType())).toString();
 		}
 		return days;
 	},
