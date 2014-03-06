@@ -63,7 +63,9 @@ julianday.js
  * <li><i>locale</i> - locale for this gregorian date. If the time zone is not 
  * given, it can be inferred from this locale. For locales that span multiple
  * time zones, the one with the largest population is chosen as the one that 
- * represents the locale. 
+ * represents the locale.
+ * 
+ * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
  * </ul>
  *
  * If the constructor is called with another Gregorian date instance instead of
@@ -105,7 +107,7 @@ ilib.Date.GregDate = function(params) {
 			}
 		}
 		
-		if (typeof(params.date) != 'undefined') {
+		if (typeof(params.date) !== 'undefined') {
 			// accept JS Date classes or strings
 			var date = params.date;
 			if (!(date instanceof Date)) {

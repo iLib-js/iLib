@@ -102,10 +102,22 @@ ilib.Date._dateToIlib = function(inDate) {
 	if (typeof(inDate) === 'undefined' || inDate === null) {
 		return inDate;
 	}
-	if (inDate instanceof ilib.Date || inDate instanceof ilib.JulianDay) {
+	if (inDate instanceof ilib.Date) {
 		return inDate;
 	}
-	if (!(inDate instanceof Date)) {
+	if (inDate instanceof Date) {
+		return ilib.Date.newInstance({unixtime: inDate.getTime()});
+	}
+	if (inDate instanceof ilib.JulianDay) {
+		return ilib.Date.newInstance({jd: inDate});
+	}
+	if (typeof(inDate) === 'number') {
+		return ilib.Date.newInstance({unixtime: inDate});
+	}
+	if (typeof(inDate) === 'object') {
+		return ilib.Date.newInstance(inDate);
+	}
+	if (typeof(inDate) === 'string') {
 		inDate = new Date(inDate);
 	}
 	return ilib.Date.newInstance({unixtime: inDate.getTime()});

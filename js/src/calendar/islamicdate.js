@@ -51,6 +51,8 @@ julianday.js
  * given, it can be inferred from this locale. For locales that span multiple
  * time zones, the one with the largest population is chosen as the one that 
  * represents the locale. 
+ * 
+ * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
  * </ul>
  * 
  * If called with another Islamic date argument, the date components of the given
@@ -87,7 +89,15 @@ ilib.Date.IslamicDate = function(params) {
 			}
 		}
 
-		if (typeof(params.unixtime) != 'undefined') {
+		if (typeof(params.date) !== 'undefined') {
+			// accept JS Date classes or strings
+			var date = params.date;
+			if (!(date instanceof Date)) {
+				date = new Date(date);
+			}
+			this.timezone = "Etc/UTC";
+			this.setTime(date.getTime());
+		} else if (typeof(params.unixtime) != 'undefined') {
 			// unix time is defined to be UTC
 			this.timezone = "Etc/UTC";
 			this.setTime(parseInt(params.unixtime, 10));

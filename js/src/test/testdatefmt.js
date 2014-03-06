@@ -1326,6 +1326,12 @@ function testDateFmtEraBCEBoundary() {
     assertEquals("BCE", fmt.format(date));
 };
 
+/*
+exception does not happen any more because we always convert
+the argument to the format method to an ilib.Date first now.
+By default if a bogus argument is passed, this is treated as
+an empty/undefined parameter, which means the current date/time
+
 function testDateFmtNonDateObject() {
     var fmt = new ilib.DateFmt({
     	locale: "en-US", 
@@ -1347,6 +1353,7 @@ function testDateFmtNonDateObject() {
     	assertEquals("Wrong date type passed to ilib.DateFmt.format()", e);
     }
 };
+*/
 
 function testDateFmtFormatRelativeWithinMinuteAfter() {
     var fmt = new ilib.DateFmt({length: "full"});

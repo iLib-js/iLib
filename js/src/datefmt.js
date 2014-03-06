@@ -1034,11 +1034,11 @@ ilib.DateFmt.prototype = {
 	 * constructed. If the types are not compatible, this formatter will
 	 * produce bogus results.
 	 * 
-	 * @param {ilib.Date} date a date to format
+	 * @param {Date|Number|String|ilib.Date|ilib.JulianDay|null|undefined} dateLike a date-like object to format
 	 * @return {string} the formatted version of the given date instance
 	 */
-	format: function (date) {
-		date = ilib.Date._dateToIlib(date);
+	format: function (dateLike) {
+		var date = ilib.Date._dateToIlib(dateLike);
 		
 		if (!date.getCalendar || date.getCalendar() !== this.calName) {
 			throw "Wrong date type passed to ilib.DateFmt.format()";
@@ -1096,8 +1096,8 @@ ilib.DateFmt.prototype = {
 	 * <li>longer than 2 years: "X years ago" or "in X years"
 	 * </ul>
 	 * 
-	 * @param {ilib.Date} reference a date that the date parameter should be relative to
-	 * @param {ilib.Date} date a date being formatted
+	 * @param {Date|Number|String|ilib.Date|ilib.JulianDay|null|undefined} reference a date that the date parameter should be relative to
+	 * @param {Date|Number|String|ilib.Date|ilib.JulianDay|null|undefined} date a date being formatted
 	 * @throws "Wrong calendar type" when the start or end dates are not the same
 	 * calendar type as the formatter itself
 	 * @return {string} the formatted relative date
