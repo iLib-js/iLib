@@ -61,6 +61,7 @@ ctype.ispunct.js
 ctype.isspace.js
 ctype.isupper.js
 ctype.isxdigit.js
+ctype.isscript.js
 scriptinfo.js
 nameprs.js
 namefmt.js
