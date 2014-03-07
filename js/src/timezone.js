@@ -324,15 +324,17 @@ ilib.TimeZone.prototype.getDisplayName = function (date, style) {
 				hour = offset.h || 0,
 				minute = offset.m || 0;
 			
-			ret += (hour > 0) ? "+" : "-";
-			if (Math.abs(hour) < 10) {
-				ret += "0";
+			if (hour !== 0) {
+				ret += (hour > 0) ? "+" : "-";
+				if (Math.abs(hour) < 10) {
+					ret += "0";
+				}
+				ret += (hour < 0) ? -hour : hour;
+				if (minute < 10) {
+					ret += "0";
+				}
+				ret += minute;
 			}
-			ret += (hour < 0) ? -hour : hour;
-			if (minute < 10) {
-				ret += "0";
-			}
-			ret += minute;
 			return ret; 
 		case 'long':
 			if (this.zone.n) {
