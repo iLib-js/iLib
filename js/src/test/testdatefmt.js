@@ -635,6 +635,88 @@ function testDateFmtTokenizeWithEscapes() {
     assertArrayEquals(expected, fmt._tokenize("'El' d 'de' MMMM, yyyy"));
 };
 
+function testDateFmtAlternateInputs1() {
+    var fmt = new ilib.DateFmt({template: "EEE, d MMM yyyy kk:mm:ss z"});
+    assertNotNull(fmt);
+    
+    var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700 (PDT)");
+    var ildMyBday = ilib.Date.newInstance({
+        year: 1982,
+        month: 8,
+        day: 13,
+        hour: 20,
+        minute: 37,
+        second: 35
+    });
+    var strFormattedDate1 = datMyBday.toUTCString();
+    var strFormattedDate2 = fmt.format(ildMyBday);
+    strFormattedDate1 = strFormattedDate1.replace(/ \w{3}$/, '');
+    strFormattedDate2 = strFormattedDate2.replace(/ \w{3}$/, '');
+
+    assertEquals(strFormattedDate1, strFormattedDate2);
+};
+
+function testDateFmtGetMonthsOfYear1() {
+    var fmt = new ilib.DateFmt({locale: "en-US"});
+    assertNotNull(fmt);
+    
+    var arrMonths = fmt.getMonthsOfYear();
+    assertArrayEquals([undefined, "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"], arrMonths);
+}
+
+function testDateFmtGetMonthsOfYear2() {
+    var fmt = new ilib.DateFmt({locale: "en-US"});
+    assertNotNull(fmt);
+    
+    var arrMonths = fmt.getMonthsOfYear({length: "long"});
+    assertArrayEquals([undefined, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], arrMonths);
+}
+
+function testDateFmtGetMonthsOfYearLeapYear() {
+	var d = ilib.Date.newInstance({type: "hebrew", locale: "en-US", year: 5774, month: 1, day: 1});
+    var fmt = new ilib.DateFmt({date: "en-US", calendar: "hebrew"});
+    assertNotNull(fmt);
+    
+    var arrMonths = fmt.getMonthsOfYear({length: "long", date: d});
+
+    assertArrayEquals([undefined, "Nis", "Iyy", "Siv", "Tam", "Av", "Elu", "Tis", "Ḥes", "Kis", "Tev", "She", "Ada", "Ad2"], arrMonths);
+}
+
+function testDateFmtGetMonthsOfYearNonLeapYear() {
+	var d = ilib.Date.newInstance({type: "hebrew", locale: "en-US", year: 5775, month: 1, day: 1});
+    var fmt = new ilib.DateFmt({date: "en-US", calendar: "hebrew"});
+    assertNotNull(fmt);
+    
+    var arrMonths = fmt.getMonthsOfYear({length: "long", date: d});
+
+    assertArrayEquals([undefined, "Nis", "Iyy", "Siv", "Tam", "Av", "Elu", "Tis", "Ḥes", "Kis", "Tev", "She", "Ada"], arrMonths);
+}
+
+function testDateFmtGetDaysOfWeek1() {
+    var fmt = new ilib.DateFmt({locale: "en-US"});
+    assertNotNull(fmt);
+    
+    var arrDays = fmt.getDaysOfWeek();
+    assertArrayEquals(["S", "M", "T", "W", "T", "F", "S"], arrDays);
+}
+
+function testDateFmtGetDaysOfWeek2() {
+    var fmt = new ilib.DateFmt({locale: "en-US"});
+    assertNotNull(fmt);
+    
+    var arrDays = fmt.getDaysOfWeek({length: 'long'});
+    assertArrayEquals(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], arrDays);
+}
+
+function testDateFmtGetDaysOfWeekOtherCalendar() {
+    var fmt = new ilib.DateFmt({locale: "en-US", calendar: "hebrew"});
+    assertNotNull(fmt);
+    
+    var arrDays = fmt.getDaysOfWeek({length: 'long'});
+
+    assertArrayEquals(["ris", "she", "shl", "rvi", "ḥam", "shi", "sha"], arrDays);
+}
+
 function testDateFmtWeekYear1() {
     var fmt = new ilib.DateFmt({template: "w"});
     assertNotNull(fmt);
@@ -1459,6 +1541,12 @@ function testDateFmtEraBCEBoundary() {
     assertEquals("BCE", fmt.format(date));
 };
 
+/*
+exception does not happen any more because we always convert
+the argument to the format method to an ilib.Date first now.
+By default if a bogus argument is passed, this is treated as
+an empty/undefined parameter, which means the current date/time
+
 function testDateFmtNonDateObject() {
     var fmt = new ilib.DateFmt({
     	locale: "en-US", 
@@ -1481,6 +1569,7 @@ function testDateFmtNonDateObject() {
     	assertEquals("Wrong date type passed to ilib.DateFmt.format()", e);
     }
 };
+*/
 
 function testDateFmtFormatRelativeWithinMinuteAfter() {
     var fmt = new ilib.DateFmt({length: "full"});
