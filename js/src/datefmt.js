@@ -1129,11 +1129,10 @@ ilib.DateFmt.prototype = {
 				id: thisZoneName
 			});
 			
-			var dateOffset = datetz.getOffset(date),
-				fmtOffset = thistz.getOffset(date),
+			var dateOffset = datetz.getOffsetMillis(date)/1000,
+				fmtOffset = thistz.getOffsetMillis(date)/1000,
 				// relative offset in seconds
-				offset = (dateOffset.h || 0)*60*60 + (dateOffset.m || 0)*60 + (dateOffset.s || 0) -
-					((fmtOffset.h || 0)*60*60 + (fmtOffset.m || 0)*60 + (fmtOffset.s || 0));
+				offset = dateOffset - fmtOffset;
 			
 			//console.log("Date offset is " + JSON.stringify(dateOffset));
 			//console.log("Formatter offset is " + JSON.stringify(fmtOffset));

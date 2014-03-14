@@ -1962,6 +1962,88 @@ function testDateFmtConvertToOtherTimeZone() {
     assertEquals("21/9/11 6:45AM EST", fmt.format(date));
 };
 
+function testDateFmtForTZWithNonWholeOffset1() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "time",
+    	locale: "en-CA",
+    	timezone: "America/St_Johns"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+    	unixtime: 1394834293627,
+    	timezone: "Etc/UTC"
+	});
+    
+    assertEquals("7:28PM", fmt.format(date));
+};
+
+function testDateFmtForTZWithNonWholeOffset2() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "time",
+    	locale: "en-CA",
+    	timezone: "America/St_Johns"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "Etc/UTC",
+		year: 2014,
+		month: 3,
+		day: 14,
+		hour: 21,
+		minute: 58,
+		second: 13,
+		millisecond: 627
+	});
+    
+    // St. John's is -3:30 from UTC, plus 1 hour DST
+    assertEquals("7:28PM", fmt.format(date));
+};
+
+function testDateFmtForTZWithNonWholeOffsetQuarterHour() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "time",
+    	locale: "en-CA",
+    	timezone: "Asia/Kathmandu"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+    	unixtime: 1394834293627,
+    	timezone: "Etc/UTC"
+	});
+
+    // Kathmandu is 5:45 ahead of UTC, no DST
+    assertEquals("3:43AM", fmt.format(date));
+};
+
+function testDateFmtForTZWithNonWholeOffsetQuarterHour2() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "time",
+    	locale: "en-CA",
+    	timezone: "Asia/Kathmandu"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "Etc/UTC",
+		year: 2014,
+		month: 3,
+		day: 14,
+		hour: 21,
+		minute: 58,
+		second: 13,
+		millisecond: 627
+	});
+    
+    // Kathmandu is 5:45 ahead of UTC, no DST
+    assertEquals("3:43AM", fmt.format(date));
+};
 
 // test locales that are tier 2 and below by doing a single test to see that it basically works
 function testDateFmtenNG() {
@@ -2367,3 +2449,4 @@ function testDateFmtLoadLocaleDataAsynchCached() {
 	assertTrue(callbackCalled);
     ilib.setLoaderCallback(undefined);
 };
+
