@@ -306,7 +306,7 @@ ilib.TimeZone.prototype.getDisplayName = function (date, style) {
 			if (this.zone.f && this.zone.f !== "zzz") {
 				if (this.zone.f.indexOf("{c}") !== -1) {
 					var letter = "";
-					letter = this.inDaylightTime(date) ? this.zone.s.c : this.zone.e.c; 
+					letter = this.inDaylightTime(date) ? this.zone.s && this.zone.s.c : this.zone.e && this.zone.e.c; 
 					var temp = new ilib.String(this.zone.f);
 					return temp.format({c: letter || ""});
 				}

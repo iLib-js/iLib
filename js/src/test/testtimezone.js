@@ -414,13 +414,13 @@ function testTZGetDSTSavingsDSTZoneStr() {
 }
 
 function testTZGetDSTSavingsDSTZoneOdd() {
-    var tz = new ilib.TimeZone({id: "Pacific/Rarotonga"});
+    var tz = new ilib.TimeZone({id: "Australia/Lord_Howe"});
     assertNotNull(tz);
     
     assertObjectEquals({h:0,m:30}, tz.getDSTSavings());
 }
 function testTZGetDSTSavingsDSTZoneOddStr() {
-    var tz = new ilib.TimeZone({id: "Pacific/Rarotonga"});
+    var tz = new ilib.TimeZone({id: "Australia/Lord_Howe"});
     assertNotNull(tz);
     
     assertEquals("0:30", tz.getDSTSavingsStr());
@@ -759,7 +759,7 @@ function testTZDisplayNameStandardID() {
 		minute: 45,
 		second: 37
 	});
-    assertEquals("WIT", tz.getDisplayName(gd, 'standard'));
+    assertEquals("WIB", tz.getDisplayName(gd, 'standard'));
 }
 
 function testTZDisplayNameLongID() {

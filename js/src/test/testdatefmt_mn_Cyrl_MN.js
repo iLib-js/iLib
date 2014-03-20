@@ -17,14 +17,14 @@
  * limitations under the License.
  */
 
-function testDateFmtConstructorEmpty() {
+function testDateFmtConstructorEmpty_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN"});
     
     assertNotNull(fmt);
 }
 
 
-function testDateFmtSimpleShort() {
+function testDateFmtSimpleShort_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "short"});
     assertNotNull(fmt);
     
@@ -41,7 +41,7 @@ function testDateFmtSimpleShort() {
     assertEquals("9.29.2011", fmt.format(date));
 }
 
-function testDateFmtSimpleMedium() {
+function testDateFmtSimpleMedium_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "medium"});
     assertNotNull(fmt);
     
@@ -58,7 +58,7 @@ function testDateFmtSimpleMedium() {
     assertEquals("09.29.2011", fmt.format(date));
 }
 
-function testDateFmtSimpleLong() {
+function testDateFmtSimpleLong_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "long"});
     assertNotNull(fmt);
     
@@ -75,7 +75,7 @@ function testDateFmtSimpleLong() {
     assertEquals("2011 оны 09-р сар 29", fmt.format(date));
 }
 
-function testDateFmtSimpleFull() {
+function testDateFmtSimpleFull_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -92,7 +92,7 @@ function testDateFmtSimpleFull() {
     assertEquals("2011 оны 09 дугаар сарын 29", fmt.format(date));
 }
 
-function testDateFmtSimpleTimeShort() {
+function testDateFmtSimpleTimeShort_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "short", type: "time"});
     assertNotNull(fmt);
     
@@ -109,7 +109,7 @@ function testDateFmtSimpleTimeShort() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtSimpleTimeMedium() {
+function testDateFmtSimpleTimeMedium_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "medium", type: "time"});
     assertNotNull(fmt);
     
@@ -126,7 +126,7 @@ function testDateFmtSimpleTimeMedium() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtSimpleTimeLong() {
+function testDateFmtSimpleTimeLong_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", timelength: "long", type: "time"});
     assertNotNull(fmt);
     
@@ -143,7 +143,7 @@ function testDateFmtSimpleTimeLong() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtSimpleTimeFull() {
+function testDateFmtSimpleTimeFull_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full", type: "time"});
     assertNotNull(fmt);
     
@@ -160,7 +160,7 @@ function testDateFmtSimpleTimeFull() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtDateTimeSimpleShort() {
+function testDateFmtDateTimeSimpleShort_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "short", type: "datetime"});
     assertNotNull(fmt);
     
@@ -177,7 +177,7 @@ function testDateFmtDateTimeSimpleShort() {
     assertEquals("9.29.2011 13:45", fmt.format(date));
 }
 
-function testDateFmtDateTimeSimpleMedium() {
+function testDateFmtDateTimeSimpleMedium_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "medium", type: "datetime"});
     assertNotNull(fmt);
     
@@ -194,7 +194,7 @@ function testDateFmtDateTimeSimpleMedium() {
     assertEquals("09.29.2011 13:45", fmt.format(date));
 }
 
-function testDateFmtDateTimeSimpleLong() {
+function testDateFmtDateTimeSimpleLong_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "long", type: "datetime"});
     assertNotNull(fmt);
     
@@ -211,7 +211,7 @@ function testDateFmtDateTimeSimpleLong() {
     assertEquals("2011 оны 09-р сар 29 13:45", fmt.format(date));
 }
 
-function testDateFmtDateTimeSimpleFull() {
+function testDateFmtDateTimeSimpleFull_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full", type: "datetime"});
     assertNotNull(fmt);
     
@@ -229,7 +229,7 @@ function testDateFmtDateTimeSimpleFull() {
 }
 
 
-function testDateFmtTemplateCalendar() {
+function testDateFmtTemplateCalendar_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
@@ -245,7 +245,7 @@ function testDateFmtTemplateCalendar() {
     assertEquals("2011-09-29", fmt.format(date));
 }
 
-function testDateFmtTemplateCalendarIncompatibleDateType() {
+function testDateFmtTemplateCalendarIncompatibleDateType_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
@@ -268,7 +268,7 @@ function testDateFmtTemplateCalendarIncompatibleDateType() {
     }
 }
 
-function testDateFmtTemplateClock12SwitchHH() {
+function testDateFmtTemplateClock12SwitchHH_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", clock: "12", template: "HH:mm"});
     assertNotNull(fmt);
     
@@ -285,7 +285,7 @@ function testDateFmtTemplateClock12SwitchHH() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function testDateFmtTemplateClock12Switchkk() {
+function testDateFmtTemplateClock12Switchkk_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", clock: "12", template: "kk:mm"});
     assertNotNull(fmt);
     
@@ -302,7 +302,7 @@ function testDateFmtTemplateClock12Switchkk() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function testDateFmtTemplateClock24Switchhh() {
+function testDateFmtTemplateClock24Switchhh_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", clock: "24", template: "hh:mm"});
     assertNotNull(fmt);
     
@@ -319,7 +319,7 @@ function testDateFmtTemplateClock24Switchhh() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtTemplateClock24SwitchKK() {
+function testDateFmtTemplateClock24SwitchKK_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", clock: "24", template: "KK:mm"});
     assertNotNull(fmt);
     
@@ -336,7 +336,7 @@ function testDateFmtTemplateClock24SwitchKK() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh() {
+function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", template: "hh:mm"});
     assertNotNull(fmt);
     
@@ -353,7 +353,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK() {
+function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", template: "KK:mm"});
     assertNotNull(fmt);
     
@@ -370,7 +370,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH() {
+function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", template: "HH:mm"});
     assertNotNull(fmt);
     
@@ -387,7 +387,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk() {
+function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", template: "kk:mm"});
     assertNotNull(fmt);
     
@@ -405,7 +405,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk() {
 }
 
 
-function testDateFmtTypeDate() {
+function testDateFmtTypeDate_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", type: "date"});
     assertNotNull(fmt);
     
@@ -422,7 +422,7 @@ function testDateFmtTypeDate() {
     assertEquals("9.29.2011", fmt.format(date));
 }
 
-function testDateFmtTypeTime() {
+function testDateFmtTypeTime_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", type: "time"});
     assertNotNull(fmt);
     
@@ -439,7 +439,7 @@ function testDateFmtTypeTime() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtTypeDateTime() {
+function testDateFmtTypeDateTime_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", type: "datetime"});
     assertNotNull(fmt);
     
@@ -457,7 +457,7 @@ function testDateFmtTypeDateTime() {
 }
 
 
-function testDateFmtShortDateComponentsY() {
+function testDateFmtShortDateComponentsY_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", date: "y"});
     assertNotNull(fmt);
     
@@ -474,7 +474,7 @@ function testDateFmtShortDateComponentsY() {
     assertEquals("2011", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsM() {
+function testDateFmtShortDateComponentsM_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", date: "m"});
     assertNotNull(fmt);
     
@@ -491,7 +491,7 @@ function testDateFmtShortDateComponentsM() {
     assertEquals("9", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsN() {
+function testDateFmtShortDateComponentsN_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", date: "n"});
     assertNotNull(fmt);
     
@@ -508,7 +508,7 @@ function testDateFmtShortDateComponentsN() {
     assertEquals("9", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsD() {
+function testDateFmtShortDateComponentsD_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", date: "d"});
     assertNotNull(fmt);
     
@@ -525,7 +525,7 @@ function testDateFmtShortDateComponentsD() {
     assertEquals("29", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsDM() {
+function testDateFmtShortDateComponentsDM_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", date: "dm"});
     assertNotNull(fmt);
     
@@ -576,7 +576,7 @@ function testDateFmtShortDateComponentsDMY() {
     assertEquals("9.29.2011", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsWDM() {
+function testDateFmtShortDateComponentsWDM_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", date: "wdm"});
     assertNotNull(fmt);
     
@@ -611,7 +611,7 @@ function testDateFmtShortDateComponentsWDMY() {
 }
 
 
-function testDateFmtFullDateComponentsY() {
+function testDateFmtFullDateComponentsY_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full", date: "y"});
     assertNotNull(fmt);
     
@@ -628,7 +628,7 @@ function testDateFmtFullDateComponentsY() {
     assertEquals("2011", fmt.format(date));
 }
 
-function testDateFmtFullDateComponentsM() {
+function testDateFmtFullDateComponentsM_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full", date: "m"});
     assertNotNull(fmt);
     
@@ -645,7 +645,7 @@ function testDateFmtFullDateComponentsM() {
     assertEquals("09", fmt.format(date));
 }
 
-function testDateFmtFullDateComponentsD() {
+function testDateFmtFullDateComponentsD_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full", date: "d"});
     assertNotNull(fmt);
     
@@ -662,7 +662,7 @@ function testDateFmtFullDateComponentsD() {
     assertEquals("29", fmt.format(date));
 }
 
-function testDateFmtFullDateComponentsDM() {
+function testDateFmtFullDateComponentsDM_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full", date: "dm"});
     assertNotNull(fmt);
     
@@ -713,7 +713,7 @@ function testDateFmtFullDateComponentsDMY() {
     assertEquals("2011 оны 09 дугаар сарын 29", fmt.format(date));
 }
 
-function testDateFmtFullDateComponentsWDM() {
+function testDateFmtFullDateComponentsWDM_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full", date: "wdm"});
     assertNotNull(fmt);
     
@@ -748,7 +748,7 @@ function testDateFmtFullDateComponentsWDMY() {
 }
 
 
-function testDateFmtShortTimeComponentsS() {
+function testDateFmtShortTimeComponentsS_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", type: "time", time: "s"});
     assertNotNull(fmt);
     
@@ -765,7 +765,7 @@ function testDateFmtShortTimeComponentsS() {
     assertEquals("37", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsM() {
+function testDateFmtShortTimeComponentsM_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", type: "time", time: "m"});
     assertNotNull(fmt);
     
@@ -782,7 +782,7 @@ function testDateFmtShortTimeComponentsM() {
     assertEquals("45", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsH() {
+function testDateFmtShortTimeComponentsH_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", type: "time", time: "h"});
     assertNotNull(fmt);
     
@@ -816,7 +816,7 @@ function testDateFmtShortTimeComponentsMS() {
     assertEquals("45:37", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHM() {
+function testDateFmtShortTimeComponentsHM_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", type: "time", time: "hm"});
     assertNotNull(fmt);
     
@@ -867,7 +867,7 @@ function testDateFmtShortTimeComponentsHMA() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHMZ() {
+function testDateFmtShortTimeComponentsHMZ_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({
         locale: "mn-Cyrl-MN", 
         type: "time", 
@@ -889,7 +889,7 @@ function testDateFmtShortTimeComponentsHMZ() {
     assertEquals("13:45 ULAST", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHMAZ() {
+function testDateFmtShortTimeComponentsHMAZ_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({
         locale: "mn-Cyrl-MN", 
         type: "time", 
@@ -911,7 +911,7 @@ function testDateFmtShortTimeComponentsHMAZ() {
     assertEquals("13:45 ULAST", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHMSA() {
+function testDateFmtShortTimeComponentsHMSA_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", type: "time", time: "hmsa"});
     assertNotNull(fmt);
     
@@ -928,7 +928,7 @@ function testDateFmtShortTimeComponentsHMSA() {
     assertEquals("13:45:37", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHMSZ() {
+function testDateFmtShortTimeComponentsHMSZ_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({
         locale: "mn-Cyrl-MN", 
         type: "time", 
@@ -950,7 +950,7 @@ function testDateFmtShortTimeComponentsHMSZ() {
     assertEquals("13:45:37 ULAST", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHMSAZ() {
+function testDateFmtShortTimeComponentsHMSAZ_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({
         locale: "mn-Cyrl-MN", 
         type: "time", 
@@ -973,7 +973,7 @@ function testDateFmtShortTimeComponentsHMSAZ() {
 }
 
 
-function testDateFmtFullTimeComponentsS() {
+function testDateFmtFullTimeComponentsS_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", type: "time", length: "full", time: "s"});
     assertNotNull(fmt);
     
@@ -990,7 +990,7 @@ function testDateFmtFullTimeComponentsS() {
     assertEquals("37", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsM() {
+function testDateFmtFullTimeComponentsM_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", type: "time", length: "full", time: "m"});
     assertNotNull(fmt);
     
@@ -1007,7 +1007,7 @@ function testDateFmtFullTimeComponentsM() {
     assertEquals("45", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsH() {
+function testDateFmtFullTimeComponentsH_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", type: "time", length: "full", time: "h"});
     assertNotNull(fmt);
     
@@ -1041,7 +1041,7 @@ function testDateFmtFullTimeComponentsMS() {
     assertEquals("45:37", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHM() {
+function testDateFmtFullTimeComponentsHM_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", type: "time", length: "full", time: "hm"});
     assertNotNull(fmt);
     
@@ -1092,7 +1092,7 @@ function testDateFmtFullTimeComponentsHMA() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHMZ() {
+function testDateFmtFullTimeComponentsHMZ_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({
         locale: "mn-Cyrl-MN", 
         type: "time", 
@@ -1115,7 +1115,7 @@ function testDateFmtFullTimeComponentsHMZ() {
     assertEquals("13:45 ULAST", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHMAZ() {
+function testDateFmtFullTimeComponentsHMAZ_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({
         locale: "mn-Cyrl-MN", 
         type: "time", 
@@ -1138,7 +1138,7 @@ function testDateFmtFullTimeComponentsHMAZ() {
     assertEquals("13:45 ULAST", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHMSA() {
+function testDateFmtFullTimeComponentsHMSA_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", type: "time", length: "full", time: "hmsa"});
     assertNotNull(fmt);
     
@@ -1155,7 +1155,7 @@ function testDateFmtFullTimeComponentsHMSA() {
     assertEquals("13:45:37", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHMSZ() {
+function testDateFmtFullTimeComponentsHMSZ_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({
         locale: "mn-Cyrl-MN", 
         type: "time", 
@@ -1178,7 +1178,7 @@ function testDateFmtFullTimeComponentsHMSZ() {
     assertEquals("13:45:37 ULAST", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHMSAZ() {
+function testDateFmtFullTimeComponentsHMSAZ_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({
         locale: "mn-Cyrl-MN", 
         type: "time", 
@@ -1221,10 +1221,10 @@ function testDateFmtWithTimeZoneAndNoDST_mn_Cyrl_MN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 ULAT", fmt.format(date));
+    assertEquals("13:45:37 ULAST", fmt.format(date));
 }
 
-function testDateFmtFormatRelativeWithinMinuteAfter() {
+function testDateFmtFormatRelativeWithinMinuteAfter_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -1250,7 +1250,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter() {
 	});
     assertEquals("30 секундд", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinMinuteBefore() {
+function testDateFmtFormatRelativeWithinMinuteBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -1276,7 +1276,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore() {
 	});
     assertEquals("30 секундийн өмнө", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinHourAfter() {
+function testDateFmtFormatRelativeWithinHourAfter_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -1302,7 +1302,7 @@ function testDateFmtFormatRelativeWithinHourAfter() {
 	});
     assertEquals("10 минутд", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinHourBefore() {
+function testDateFmtFormatRelativeWithinHourBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -1328,7 +1328,7 @@ function testDateFmtFormatRelativeWithinHourBefore() {
 	});
     assertEquals("10 минутийн өмнө", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinDayAfter() {
+function testDateFmtFormatRelativeWithinDayAfter_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -1354,7 +1354,7 @@ function testDateFmtFormatRelativeWithinDayAfter() {
 	});
     assertEquals("4 цагд", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinDayBefore() {
+function testDateFmtFormatRelativeWithinDayBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -1381,7 +1381,7 @@ function testDateFmtFormatRelativeWithinDayBefore() {
     assertEquals("4 цагийн өмнө", fmt.formatRelative(reference, date));
 }
 
-function testDateFmtFormatRelativeWithinFortnightAfter() {
+function testDateFmtFormatRelativeWithinFortnightAfter_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -1407,7 +1407,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter() {
 	});
     assertEquals("4 хоногд", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinFortnightBefore() {
+function testDateFmtFormatRelativeWithinFortnightBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -1434,7 +1434,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore() {
     assertEquals("4 хоногийн өмнө", fmt.formatRelative(reference, date));
 }
 
-function testDateFmtFormatRelativeWithinQuarterAfter() {
+function testDateFmtFormatRelativeWithinQuarterAfter_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -1460,7 +1460,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter() {
 	});
     assertEquals("9 долоо хоногд", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinQuarterBefore() {
+function testDateFmtFormatRelativeWithinQuarterBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -1487,7 +1487,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore() {
     assertEquals("9 долоо хоногийн өмнө", fmt.formatRelative(reference, date));
 }
 
-function testDateFmtFormatRelativeWithinTwoYearsAfter() {
+function testDateFmtFormatRelativeWithinTwoYearsAfter_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -1513,7 +1513,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter() {
 	});
     assertEquals("16 сард", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinTwoYearsBefore() {
+function testDateFmtFormatRelativeWithinTwoYearsBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -1540,7 +1540,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore() {
     assertEquals("14 сарийн өмнө", fmt.formatRelative(reference, date));
 }
 
-function testDateFmtFormatRelativeYearsAfter() {
+function testDateFmtFormatRelativeYearsAfter_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     
@@ -1566,7 +1566,7 @@ function testDateFmtFormatRelativeYearsAfter() {
 	});
     assertEquals("14 жилд", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeYearsBefore() {
+function testDateFmtFormatRelativeYearsBefore_mn_Cyrl_MN() {
     var fmt = new ilib.DateFmt({locale: "mn-Cyrl-MN", length: "full"});
     assertNotNull(fmt);
     

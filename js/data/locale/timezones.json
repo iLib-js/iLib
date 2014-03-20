@@ -2,65 +2,77 @@
     "Africa/Abidjan": {
         "f": "GMT",
         "o": "0:0",
-        "c": "CI"
+        "c": "CI",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Accra": {
-        "f": "{c}",
+        "f": "S",
         "o": "0:0",
-        "c": "GH"
+        "c": "GH",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Addis_Ababa": {
         "f": "EAT",
         "o": "3:0",
-        "c": "ET"
+        "c": "ET",
+        "n": "E. Africa {c} Time"
     },
     "Africa/Algiers": {
         "f": "CET",
         "o": "1:0",
-        "c": "DZ"
+        "c": "DZ",
+        "n": "W. Central Africa {c} Time"
     },
     "Africa/Asmara": {
         "f": "EAT",
         "o": "3:0",
-        "c": "ER"
+        "c": "ER",
+        "n": "E. Africa {c} Time"
     },
     "Africa/Bamako": {
         "f": "GMT",
         "o": "0:0",
-        "c": "ML"
+        "c": "ML",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Bangui": {
         "f": "WAT",
         "o": "1:0",
-        "c": "CF"
+        "c": "CF",
+        "n": "W. Central Africa {c} Time"
     },
     "Africa/Banjul": {
         "f": "GMT",
         "o": "0:0",
-        "c": "GM"
+        "c": "GM",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Bissau": {
         "f": "GMT",
         "o": "0:0",
-        "c": "GW"
+        "c": "GW",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Blantyre": {
         "f": "CAT",
         "o": "2:0",
-        "c": "MW"
+        "c": "MW",
+        "n": "South Africa {c} Time"
     },
     "Africa/Brazzaville": {
         "f": "WAT",
         "o": "1:0",
-        "c": "CG"
+        "c": "CG",
+        "n": "W. Central Africa {c} Time"
     },
     "Africa/Bujumbura": {
         "f": "CAT",
         "o": "2:0",
-        "c": "BI"
+        "c": "BI",
+        "n": "South Africa {c} Time"
     },
     "Africa/Cairo": {
-        "f": "EE{c}T",
+        "f": "EEST",
         "o": "2:0",
         "c": "EG",
         "n": "Egypt {c} Time"
@@ -100,32 +112,38 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "ES"
+        "c": "ES",
+        "n": "Romance {c} Time"
     },
     "Africa/Conakry": {
         "f": "GMT",
         "o": "0:0",
-        "c": "GN"
+        "c": "GN",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Dakar": {
         "f": "GMT",
         "o": "0:0",
-        "c": "SN"
+        "c": "SN",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Dar_es_Salaam": {
         "f": "EAT",
         "o": "3:0",
-        "c": "TZ"
+        "c": "TZ",
+        "n": "E. Africa {c} Time"
     },
     "Africa/Djibouti": {
         "f": "EAT",
         "o": "3:0",
-        "c": "DJ"
+        "c": "DJ",
+        "n": "E. Africa {c} Time"
     },
     "Africa/Douala": {
         "f": "WAT",
         "o": "1:0",
-        "c": "CM"
+        "c": "CM",
+        "n": "W. Central Africa {c} Time"
     },
     "Africa/El_Aaiun": {
         "e": {
@@ -142,22 +160,26 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "EH"
+        "c": "EH",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Freetown": {
-        "f": "{c}",
+        "f": "S",
         "o": "0:0",
-        "c": "SL"
+        "c": "SL",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Gaborone": {
         "f": "CAT",
         "o": "2:0",
-        "c": "BW"
+        "c": "BW",
+        "n": "South Africa {c} Time"
     },
     "Africa/Harare": {
         "f": "CAT",
         "o": "2:0",
-        "c": "ZW"
+        "c": "ZW",
+        "n": "South Africa {c} Time"
     },
     "Africa/Johannesburg": {
         "f": "SAST",
@@ -168,22 +190,26 @@
     "Africa/Kampala": {
         "f": "EAT",
         "o": "3:0",
-        "c": "UG"
+        "c": "UG",
+        "n": "E. Africa {c} Time"
     },
     "Africa/Khartoum": {
         "f": "EAT",
         "o": "3:0",
-        "c": "SD"
+        "c": "SD",
+        "n": "E. Africa {c} Time"
     },
     "Africa/Kigali": {
         "f": "CAT",
         "o": "2:0",
-        "c": "RW"
+        "c": "RW",
+        "n": "South Africa {c} Time"
     },
     "Africa/Kinshasa": {
         "f": "WAT",
         "o": "1:0",
-        "c": "CD"
+        "c": "CD",
+        "n": "W. Central Africa {c} Time"
     },
     "Africa/Lagos": {
         "f": "WAT",
@@ -194,57 +220,68 @@
     "Africa/Libreville": {
         "f": "WAT",
         "o": "1:0",
-        "c": "GA"
+        "c": "GA",
+        "n": "W. Central Africa {c} Time"
     },
     "Africa/Lome": {
         "f": "GMT",
         "o": "0:0",
-        "c": "TG"
+        "c": "TG",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Luanda": {
         "f": "WAT",
         "o": "1:0",
-        "c": "AO"
+        "c": "AO",
+        "n": "W. Central Africa {c} Time"
     },
     "Africa/Lubumbashi": {
         "f": "CAT",
         "o": "2:0",
-        "c": "CD"
+        "c": "CD",
+        "n": "South Africa {c} Time"
     },
     "Africa/Lusaka": {
         "f": "CAT",
         "o": "2:0",
-        "c": "ZM"
+        "c": "ZM",
+        "n": "South Africa {c} Time"
     },
     "Africa/Malabo": {
         "f": "WAT",
         "o": "1:0",
-        "c": "GQ"
+        "c": "GQ",
+        "n": "W. Central Africa {c} Time"
     },
     "Africa/Maputo": {
         "f": "CAT",
         "o": "2:0",
-        "c": "MZ"
+        "c": "MZ",
+        "n": "South Africa {c} Time"
     },
     "Africa/Maseru": {
         "f": "SAST",
         "o": "2:0",
-        "c": "LS"
+        "c": "LS",
+        "n": "South Africa {c} Time"
     },
     "Africa/Mbabane": {
         "f": "SAST",
         "o": "2:0",
-        "c": "SZ"
+        "c": "SZ",
+        "n": "South Africa {c} Time"
     },
     "Africa/Mogadishu": {
         "f": "EAT",
         "o": "3:0",
-        "c": "SO"
+        "c": "SO",
+        "n": "E. Africa {c} Time"
     },
     "Africa/Monrovia": {
         "f": "GMT",
         "o": "0:0",
-        "c": "LR"
+        "c": "LR",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Nairobi": {
         "f": "EAT",
@@ -255,42 +292,50 @@
     "Africa/Ndjamena": {
         "f": "WAT",
         "o": "1:0",
-        "c": "TD"
+        "c": "TD",
+        "n": "W. Central Africa {c} Time"
     },
     "Africa/Niamey": {
         "f": "WAT",
         "o": "1:0",
-        "c": "NE"
+        "c": "NE",
+        "n": "W. Central Africa {c} Time"
     },
     "Africa/Nouakchott": {
         "f": "GMT",
         "o": "0:0",
-        "c": "MR"
+        "c": "MR",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Ouagadougou": {
         "f": "GMT",
         "o": "0:0",
-        "c": "BF"
+        "c": "BF",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Porto-Novo": {
         "f": "WAT",
         "o": "1:0",
-        "c": "BJ"
+        "c": "BJ",
+        "n": "W. Central Africa {c} Time"
     },
     "Africa/Sao_Tome": {
         "f": "GMT",
         "o": "0:0",
-        "c": "ST"
+        "c": "ST",
+        "n": "Greenwich {c} Time"
     },
     "Africa/Tripoli": {
         "f": "EET",
         "o": "2:0",
-        "c": "LY"
+        "c": "LY",
+        "n": "South Africa {c} Time"
     },
     "Africa/Tunis": {
-        "f": "CE{c}T",
+        "f": "CEST",
         "o": "1:0",
-        "c": "TN"
+        "c": "TN",
+        "n": "W. Central Africa {c} Time"
     },
     "Africa/Windhoek": {
         "e": {
@@ -350,15 +395,17 @@
     "America/Antigua": {
         "f": "AST",
         "o": "-4:0",
-        "c": "AG"
+        "c": "AG",
+        "n": "SA Western {c} Time"
     },
     "America/Araguaina": {
         "f": "BRT",
         "o": "-3:0",
-        "c": "BR"
+        "c": "BR",
+        "n": "SA Eastern {c} Time"
     },
     "America/Argentina/Buenos_Aires": {
-        "f": "AR{c}T",
+        "f": "ARST",
         "o": "-3:0",
         "c": "AR",
         "n": "Argentina {c} Time"
@@ -366,57 +413,68 @@
     "America/Argentina/Catamarca": {
         "f": "ART",
         "o": "-3:0",
-        "c": "AR"
+        "c": "AR",
+        "n": "Argentina {c} Time"
     },
     "America/Argentina/Cordoba": {
-        "f": "AR{c}T",
+        "f": "ARST",
         "o": "-3:0",
-        "c": "AR"
+        "c": "AR",
+        "n": "Argentina {c} Time"
     },
     "America/Argentina/Jujuy": {
         "f": "ART",
         "o": "-3:0",
-        "c": "AR"
+        "c": "AR",
+        "n": "Argentina {c} Time"
     },
     "America/Argentina/La_Rioja": {
         "f": "ART",
         "o": "-3:0",
-        "c": "AR"
+        "c": "AR",
+        "n": "Argentina {c} Time"
     },
     "America/Argentina/Mendoza": {
         "f": "ART",
         "o": "-3:0",
-        "c": "AR"
+        "c": "AR",
+        "n": "Argentina {c} Time"
     },
     "America/Argentina/Rio_Gallegos": {
         "f": "ART",
         "o": "-3:0",
-        "c": "AR"
+        "c": "AR",
+        "n": "Argentina {c} Time"
     },
     "America/Argentina/Salta": {
         "f": "ART",
         "o": "-3:0",
-        "c": "AR"
+        "c": "AR",
+        "n": "Argentina {c} Time"
     },
     "America/Argentina/San_Juan": {
         "f": "ART",
         "o": "-3:0",
-        "c": "AR"
+        "c": "AR",
+        "n": "Argentina {c} Time"
     },
     "America/Argentina/San_Luis": {
         "f": "ART",
         "o": "-3:0",
-        "c": "AR"
+        "c": "AR",
+        "n": "Argentina {c} Time"
     },
     "America/Argentina/Tucuman": {
-        "f": "AR{c}T",
+        "f": "ARST",
         "o": "-3:0",
-        "c": "AR"
+        "c": "AR",
+        "n": "Argentina {c} Time"
     },
     "America/Argentina/Ushuaia": {
         "f": "ART",
         "o": "-3:0",
-        "c": "AR"
+        "c": "AR",
+        "n": "Argentina {c} Time"
     },
     "America/Asuncion": {
         "e": {
@@ -439,12 +497,14 @@
     "America/Atikokan": {
         "f": "EST",
         "o": "-5:0",
-        "c": "CA"
+        "c": "CA",
+        "n": "SA Pacific {c} Time"
     },
     "America/Bahia": {
         "f": "BRT",
         "o": "-3:0",
-        "c": "BR"
+        "c": "BR",
+        "n": "Bahia {c} Time"
     },
     "America/Bahia_Banderas": {
         "e": {
@@ -462,35 +522,41 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "MX"
+        "c": "MX",
+        "n": "Central {c} Time (Mexico)"
     },
     "America/Barbados": {
-        "f": "A{c}T",
+        "f": "AST",
         "o": "-4:0",
-        "c": "BB"
+        "c": "BB",
+        "n": "SA Western {c} Time"
     },
     "America/Belem": {
         "f": "BRT",
         "o": "-3:0",
-        "c": "BR"
+        "c": "BR",
+        "n": "SA Eastern {c} Time"
     },
     "America/Belize": {
-        "f": "C{c}T",
+        "f": "CST",
         "o": "-6:0",
-        "c": "BZ"
+        "c": "BZ",
+        "n": "Central America {c} Time"
     },
     "America/Blanc-Sablon": {
         "f": "AST",
         "o": "-4:0",
-        "c": "CA"
+        "c": "CA",
+        "n": "SA Western {c} Time"
     },
     "America/Boa_Vista": {
         "f": "AMT",
         "o": "-4:0",
-        "c": "BR"
+        "c": "BR",
+        "n": "SA Western {c} Time"
     },
     "America/Bogota": {
-        "f": "CO{c}T",
+        "f": "COST",
         "o": "-5:0",
         "c": "CO",
         "n": "SA Pacific {c} Time"
@@ -511,7 +577,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Mountain {c} Time"
     },
     "America/Cambridge_Bay": {
         "e": {
@@ -529,7 +596,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Mountain {c} Time"
     },
     "America/Campo_Grande": {
         "e": {
@@ -546,7 +614,8 @@
             "t": "0:0",
             "v": "1:0"
         },
-        "c": "BR"
+        "c": "BR",
+        "n": "Central Brazilian {c} Time"
     },
     "America/Cancun": {
         "e": {
@@ -564,7 +633,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "MX"
+        "c": "MX",
+        "n": "Central {c} Time (Mexico)"
     },
     "America/Caracas": {
         "f": "VET",
@@ -581,7 +651,8 @@
     "America/Cayman": {
         "f": "EST",
         "o": "-5:0",
-        "c": "KY"
+        "c": "KY",
+        "n": "SA Pacific {c} Time"
     },
     "America/Chicago": {
         "e": {
@@ -622,14 +693,16 @@
         "n": "Mountain {c} Time (Mexico)"
     },
     "America/Costa_Rica": {
-        "f": "C{c}T",
+        "f": "CST",
         "o": "-6:0",
-        "c": "CR"
+        "c": "CR",
+        "n": "Central America {c} Time"
     },
     "America/Creston": {
         "f": "MST",
         "o": "-7:0",
-        "c": "CA"
+        "c": "CA",
+        "n": "US Mountain {c} Time"
     },
     "America/Cuiaba": {
         "e": {
@@ -652,12 +725,14 @@
     "America/Curacao": {
         "f": "AST",
         "o": "-4:0",
-        "c": "CW"
+        "c": "CW",
+        "n": "SA Western {c} Time"
     },
     "America/Danmarkshavn": {
         "f": "GMT",
         "o": "0:0",
-        "c": "GL"
+        "c": "GL",
+        "n": "UTC"
     },
     "America/Dawson": {
         "e": {
@@ -675,12 +750,14 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Pacific {c} Time"
     },
     "America/Dawson_Creek": {
         "f": "MST",
         "o": "-7:0",
-        "c": "CA"
+        "c": "CA",
+        "n": "US Mountain {c} Time"
     },
     "America/Denver": {
         "e": {
@@ -717,7 +794,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Eastern {c} Time"
     },
     "America/Edmonton": {
         "e": {
@@ -735,22 +813,26 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Mountain {c} Time"
     },
     "America/Eirunepe": {
         "f": "ACT",
         "o": "-5:0",
-        "c": "BR"
+        "c": "BR",
+        "n": "SA Western {c} Time"
     },
     "America/El_Salvador": {
-        "f": "C{c}T",
+        "f": "CST",
         "o": "-6:0",
-        "c": "SV"
+        "c": "SV",
+        "n": "Central America {c} Time"
     },
     "America/Fortaleza": {
         "f": "BRT",
         "o": "-3:0",
-        "c": "BR"
+        "c": "BR",
+        "n": "SA Eastern {c} Time"
     },
     "America/Glace_Bay": {
         "e": {
@@ -768,7 +850,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Atlantic {c} Time"
     },
     "America/Godthab": {
         "e": {
@@ -806,7 +889,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Atlantic {c} Time"
     },
     "America/Grand_Turk": {
         "e": {
@@ -824,10 +908,11 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "TC"
+        "c": "TC",
+        "n": "Eastern {c} Time"
     },
     "America/Guatemala": {
-        "f": "C{c}T",
+        "f": "CST",
         "o": "-6:0",
         "c": "GT",
         "n": "Central America {c} Time"
@@ -835,12 +920,14 @@
     "America/Guayaquil": {
         "f": "ECT",
         "o": "-5:0",
-        "c": "EC"
+        "c": "EC",
+        "n": "SA Pacific {c} Time"
     },
     "America/Guyana": {
         "f": "GYT",
         "o": "-4:0",
-        "c": "GY"
+        "c": "GY",
+        "n": "SA Western {c} Time"
     },
     "America/Halifax": {
         "e": {
@@ -884,7 +971,8 @@
     "America/Hermosillo": {
         "f": "MST",
         "o": "-7:0",
-        "c": "MX"
+        "c": "MX",
+        "n": "US Mountain {c} Time"
     },
     "America/Indiana/Indianapolis": {
         "e": {
@@ -921,7 +1009,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Central {c} Time"
     },
     "America/Indiana/Marengo": {
         "e": {
@@ -939,7 +1028,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "US Eastern {c} Time"
     },
     "America/Indiana/Petersburg": {
         "e": {
@@ -957,7 +1047,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Eastern {c} Time"
     },
     "America/Indiana/Tell_City": {
         "e": {
@@ -975,7 +1066,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Central {c} Time"
     },
     "America/Indiana/Vevay": {
         "e": {
@@ -993,7 +1085,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "US Eastern {c} Time"
     },
     "America/Indiana/Vincennes": {
         "e": {
@@ -1011,7 +1104,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Eastern {c} Time"
     },
     "America/Indiana/Winamac": {
         "e": {
@@ -1029,7 +1123,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Eastern {c} Time"
     },
     "America/Inuvik": {
         "e": {
@@ -1047,7 +1142,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Mountain {c} Time"
     },
     "America/Iqaluit": {
         "e": {
@@ -1065,12 +1161,14 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Eastern {c} Time"
     },
     "America/Jamaica": {
         "f": "EST",
         "o": "-5:0",
-        "c": "JM"
+        "c": "JM",
+        "n": "SA Pacific {c} Time"
     },
     "America/Juneau": {
         "e": {
@@ -1088,7 +1186,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Alaskan {c} Time"
     },
     "America/Kentucky/Louisville": {
         "e": {
@@ -1106,7 +1205,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Eastern {c} Time"
     },
     "America/Kentucky/Monticello": {
         "e": {
@@ -1124,7 +1224,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Eastern {c} Time"
     },
     "America/La_Paz": {
         "f": "BOT",
@@ -1133,9 +1234,10 @@
         "n": "SA Western {c} Time"
     },
     "America/Lima": {
-        "f": "PE{c}T",
+        "f": "PEST",
         "o": "-5:0",
-        "c": "PE"
+        "c": "PE",
+        "n": "SA Pacific {c} Time"
     },
     "America/Los_Angeles": {
         "e": {
@@ -1159,22 +1261,26 @@
     "America/Maceio": {
         "f": "BRT",
         "o": "-3:0",
-        "c": "BR"
+        "c": "BR",
+        "n": "SA Eastern {c} Time"
     },
     "America/Managua": {
-        "f": "C{c}T",
+        "f": "CST",
         "o": "-6:0",
-        "c": "NI"
+        "c": "NI",
+        "n": "Central America {c} Time"
     },
     "America/Manaus": {
         "f": "AMT",
         "o": "-4:0",
-        "c": "BR"
+        "c": "BR",
+        "n": "SA Western {c} Time"
     },
     "America/Martinique": {
         "f": "AST",
         "o": "-4:0",
-        "c": "MQ"
+        "c": "MQ",
+        "n": "SA Western {c} Time"
     },
     "America/Matamoros": {
         "e": {
@@ -1192,7 +1298,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "MX"
+        "c": "MX",
+        "n": "Central {c} Time"
     },
     "America/Mazatlan": {
         "e": {
@@ -1210,7 +1317,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "MX"
+        "c": "MX",
+        "n": "Mountain {c} Time (Mexico)"
     },
     "America/Menominee": {
         "e": {
@@ -1228,7 +1336,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Central {c} Time"
     },
     "America/Merida": {
         "e": {
@@ -1246,7 +1355,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "MX"
+        "c": "MX",
+        "n": "Central {c} Time (Mexico)"
     },
     "America/Metlakatla": {
         "f": "MeST",
@@ -1270,7 +1380,7 @@
             "v": "1:0"
         },
         "c": "MX",
-        "n": "Mexico {c} Time"
+        "n": "Central {c} Time (Mexico)"
     },
     "America/Miquelon": {
         "e": {
@@ -1306,7 +1416,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Atlantic {c} Time"
     },
     "America/Monterrey": {
         "e": {
@@ -1324,7 +1435,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "MX"
+        "c": "MX",
+        "n": "Central {c} Time (Mexico)"
     },
     "America/Montevideo": {
         "e": {
@@ -1359,7 +1471,8 @@
             "r": "0>8",
             "t": "2:0",
             "v": "1:0"
-        }
+        },
+        "n": "Eastern {c} Time"
     },
     "America/Nassau": {
         "e": {
@@ -1377,7 +1490,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "BS"
+        "c": "BS",
+        "n": "Eastern {c} Time"
     },
     "America/New_York": {
         "e": {
@@ -1414,7 +1528,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Eastern {c} Time"
     },
     "America/Nome": {
         "e": {
@@ -1432,12 +1547,14 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Alaskan {c} Time"
     },
     "America/Noronha": {
         "f": "FNT",
         "o": "-2:0",
-        "c": "BR"
+        "c": "BR",
+        "n": "UTC-02"
     },
     "America/North_Dakota/Beulah": {
         "e": {
@@ -1455,7 +1572,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Central {c} Time"
     },
     "America/North_Dakota/Center": {
         "e": {
@@ -1473,7 +1591,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Central {c} Time"
     },
     "America/North_Dakota/New_Salem": {
         "e": {
@@ -1491,7 +1610,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Central {c} Time"
     },
     "America/Ojinaga": {
         "e": {
@@ -1509,12 +1629,14 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "MX"
+        "c": "MX",
+        "n": "Mountain {c} Time"
     },
     "America/Panama": {
         "f": "EST",
         "o": "-5:0",
-        "c": "PA"
+        "c": "PA",
+        "n": "SA Pacific {c} Time"
     },
     "America/Pangnirtung": {
         "e": {
@@ -1532,12 +1654,14 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Eastern {c} Time"
     },
     "America/Paramaribo": {
         "f": "SRT",
         "o": "-3:0",
-        "c": "SR"
+        "c": "SR",
+        "n": "SA Eastern {c} Time"
     },
     "America/Phoenix": {
         "f": "MST",
@@ -1561,22 +1685,26 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "HT"
+        "c": "HT",
+        "n": "SA Pacific {c} Time"
     },
     "America/Port_of_Spain": {
         "f": "AST",
         "o": "-4:0",
-        "c": "TT"
+        "c": "TT",
+        "n": "SA Western {c} Time"
     },
     "America/Porto_Velho": {
         "f": "AMT",
         "o": "-4:0",
-        "c": "BR"
+        "c": "BR",
+        "n": "SA Western {c} Time"
     },
     "America/Puerto_Rico": {
         "f": "AST",
         "o": "-4:0",
-        "c": "PR"
+        "c": "PR",
+        "n": "SA Western {c} Time"
     },
     "America/Rainy_River": {
         "e": {
@@ -1594,7 +1722,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Central {c} Time"
     },
     "America/Rankin_Inlet": {
         "e": {
@@ -1612,12 +1741,14 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Central {c} Time"
     },
     "America/Recife": {
         "f": "BRT",
         "o": "-3:0",
-        "c": "BR"
+        "c": "BR",
+        "n": "SA Eastern {c} Time"
     },
     "America/Regina": {
         "f": "CST",
@@ -1641,12 +1772,14 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Central {c} Time"
     },
     "America/Rio_Branco": {
         "f": "ACT",
         "o": "-5:0",
-        "c": "BR"
+        "c": "BR",
+        "n": "SA Western {c} Time"
     },
     "America/Santa_Isabel": {
         "e": {
@@ -1670,7 +1803,8 @@
     "America/Santarem": {
         "f": "BRT",
         "o": "-3:0",
-        "c": "BR"
+        "c": "BR",
+        "n": "SA Eastern {c} Time"
     },
     "America/Santiago": {
         "e": {
@@ -1695,7 +1829,8 @@
     "America/Santo_Domingo": {
         "f": "AST",
         "o": "-4:0",
-        "c": "DO"
+        "c": "DO",
+        "n": "SA Western {c} Time"
     },
     "America/Sao_Paulo": {
         "e": {
@@ -1732,7 +1867,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "GL"
+        "c": "GL",
+        "n": "Azores {c} Time"
     },
     "America/Sitka": {
         "e": {
@@ -1750,7 +1886,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Alaskan {c} Time"
     },
     "America/St_Johns": {
         "e": {
@@ -1774,12 +1911,14 @@
     "America/Swift_Current": {
         "f": "CST",
         "o": "-6:0",
-        "c": "CA"
+        "c": "CA",
+        "n": "Canada Central {c} Time"
     },
     "America/Tegucigalpa": {
-        "f": "C{c}T",
+        "f": "CST",
         "o": "-6:0",
-        "c": "HN"
+        "c": "HN",
+        "n": "Central America {c} Time"
     },
     "America/Thule": {
         "e": {
@@ -1797,7 +1936,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "GL"
+        "c": "GL",
+        "n": "Atlantic {c} Time"
     },
     "America/Thunder_Bay": {
         "e": {
@@ -1815,7 +1955,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Eastern {c} Time"
     },
     "America/Tijuana": {
         "e": {
@@ -1833,7 +1974,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "MX"
+        "c": "MX",
+        "n": "Pacific {c} Time"
     },
     "America/Toronto": {
         "e": {
@@ -1851,7 +1993,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Eastern {c} Time"
     },
     "America/Vancouver": {
         "e": {
@@ -1869,7 +2012,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Pacific {c} Time"
     },
     "America/Whitehorse": {
         "e": {
@@ -1887,7 +2031,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Pacific {c} Time"
     },
     "America/Winnipeg": {
         "e": {
@@ -1905,7 +2050,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Central {c} Time"
     },
     "America/Yakutat": {
         "e": {
@@ -1923,7 +2069,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "US"
+        "c": "US",
+        "n": "Alaskan {c} Time"
     },
     "America/Yellowknife": {
         "e": {
@@ -1941,32 +2088,38 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "CA"
+        "c": "CA",
+        "n": "Mountain {c} Time"
     },
     "Antarctica/Casey": {
         "f": "WST",
         "o": "8:0",
-        "c": "AQ"
+        "c": "AQ",
+        "n": "W. Australia {c} Time"
     },
     "Antarctica/Davis": {
         "f": "DAVT",
         "o": "7:0",
-        "c": "AQ"
+        "c": "AQ",
+        "n": "SE Asia {c} Time"
     },
     "Antarctica/DumontDUrville": {
         "f": "DDUT",
         "o": "10:0",
-        "c": "AQ"
+        "c": "AQ",
+        "n": "West Pacific {c} Time"
     },
     "Antarctica/Macquarie": {
         "f": "MIST",
         "o": "11:0",
-        "c": "AU"
+        "c": "AU",
+        "n": "Central Pacific {c} Time"
     },
     "Antarctica/Mawson": {
         "f": "MAWT",
         "o": "5:0",
-        "c": "AQ"
+        "c": "AQ",
+        "n": "West Asia {c} Time"
     },
     "Antarctica/Palmer": {
         "e": {
@@ -1985,27 +2138,32 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "AQ"
+        "c": "AQ",
+        "n": "Pacific SA {c} Time"
     },
     "Antarctica/Rothera": {
         "f": "ROTT",
         "o": "-3:0",
-        "c": "AQ"
+        "c": "AQ",
+        "n": "SA Eastern {c} Time"
     },
     "Antarctica/Syowa": {
         "f": "SYOT",
         "o": "3:0",
-        "c": "AQ"
+        "c": "AQ",
+        "n": "E. Africa {c} Time"
     },
     "Antarctica/Vostok": {
         "f": "VOST",
         "o": "6:0",
-        "c": "AQ"
+        "c": "AQ",
+        "n": "Central Asia {c} Time"
     },
     "Asia/Aden": {
         "f": "AST",
         "o": "3:0",
-        "c": "YE"
+        "c": "YE",
+        "n": "Arab {c} Time"
     },
     "Asia/Almaty": {
         "f": "ALMT",
@@ -2035,25 +2193,29 @@
     "Asia/Anadyr": {
         "f": "ANAT",
         "o": "12:0",
-        "c": "RU"
+        "c": "RU",
+        "n": "Magadan {c} Time"
     },
     "Asia/Aqtau": {
         "f": "AQTT",
         "o": "5:0",
-        "c": "KZ"
+        "c": "KZ",
+        "n": "West Asia {c} Time"
     },
     "Asia/Aqtobe": {
         "f": "AQTT",
         "o": "5:0",
-        "c": "KZ"
+        "c": "KZ",
+        "n": "West Asia {c} Time"
     },
     "Asia/Ashgabat": {
         "f": "TMT",
         "o": "5:0",
-        "c": "TM"
+        "c": "TM",
+        "n": "West Asia {c} Time"
     },
     "Asia/Baghdad": {
-        "f": "A{c}T",
+        "f": "AST",
         "o": "3:0",
         "c": "IQ",
         "n": "Arabic {c} Time"
@@ -2061,7 +2223,8 @@
     "Asia/Bahrain": {
         "f": "AST",
         "o": "3:0",
-        "c": "BH"
+        "c": "BH",
+        "n": "Arab {c} Time"
     },
     "Asia/Baku": {
         "e": {
@@ -2108,22 +2271,26 @@
     "Asia/Bishkek": {
         "f": "KGT",
         "o": "6:0",
-        "c": "KG"
+        "c": "KG",
+        "n": "Central Asia {c} Time"
     },
     "Asia/Brunei": {
         "f": "BNT",
         "o": "8:0",
-        "c": "BN"
+        "c": "BN",
+        "n": "Singapore {c} Time"
     },
     "Asia/Choibalsan": {
-        "f": "CHO{c}T",
+        "f": "CHOST",
         "o": "8:0",
-        "c": "MN"
+        "c": "MN",
+        "n": "Ulaanbaatar {c} Time"
     },
     "Asia/Chongqing": {
-        "f": "C{c}T",
+        "f": "CST",
         "o": "8:0",
-        "c": "CN"
+        "c": "CN",
+        "n": "China {c} Time"
     },
     "Asia/Colombo": {
         "f": "IST",
@@ -2150,7 +2317,7 @@
         "n": "Syria {c} Time"
     },
     "Asia/Dhaka": {
-        "f": "BD{c}T",
+        "f": "BDST",
         "o": "6:0",
         "c": "BD",
         "n": "Bangladesh {c} Time"
@@ -2158,7 +2325,8 @@
     "Asia/Dili": {
         "f": "TLT",
         "o": "9:0",
-        "c": "TL"
+        "c": "TL",
+        "n": "Tokyo {c} Time"
     },
     "Asia/Dubai": {
         "f": "GST",
@@ -2169,7 +2337,8 @@
     "Asia/Dushanbe": {
         "f": "TJT",
         "o": "5:0",
-        "c": "TJ"
+        "c": "TJ",
+        "n": "West Asia {c} Time"
     },
     "Asia/Gaza": {
         "e": {
@@ -2186,12 +2355,14 @@
             "t": "24:0",
             "v": "1:0"
         },
-        "c": "PS"
+        "c": "PS",
+        "n": "Egypt {c} Time"
     },
     "Asia/Harbin": {
-        "f": "C{c}T",
+        "f": "CST",
         "o": "8:0",
-        "c": "CN"
+        "c": "CN",
+        "n": "China {c} Time"
     },
     "Asia/Hebron": {
         "e": {
@@ -2208,22 +2379,26 @@
             "t": "24:0",
             "v": "1:0"
         },
-        "c": "PS"
+        "c": "PS",
+        "n": "Egypt {c} Time"
     },
     "Asia/Ho_Chi_Minh": {
         "f": "ICT",
         "o": "7:0",
-        "c": "VN"
+        "c": "VN",
+        "n": "SE Asia {c} Time"
     },
     "Asia/Hong_Kong": {
-        "f": "HK{c}T",
+        "f": "HKST",
         "o": "8:0",
-        "c": "HK"
+        "c": "HK",
+        "n": "China {c} Time"
     },
     "Asia/Hovd": {
-        "f": "HOV{c}T",
+        "f": "HOVST",
         "o": "7:0",
-        "c": "MN"
+        "c": "MN",
+        "n": "SE Asia {c} Time"
     },
     "Asia/Irkutsk": {
         "f": "IRKT",
@@ -2234,12 +2409,14 @@
     "Asia/Jakarta": {
         "f": "WIB",
         "o": "7:0",
-        "c": "ID"
+        "c": "ID",
+        "n": "SE Asia {c} Time"
     },
     "Asia/Jayapura": {
         "f": "WIT",
         "o": "9:0",
-        "c": "ID"
+        "c": "ID",
+        "n": "Tokyo {c} Time"
     },
     "Asia/Jerusalem": {
         "e": {
@@ -2270,18 +2447,19 @@
         "f": "PETT",
         "o": "12:0",
         "c": "RU",
-        "n": "Kamchatka {c} Time"
+        "n": "Magadan {c} Time"
     },
     "Asia/Karachi": {
-        "f": "PK{c}T",
+        "f": "PKST",
         "o": "5:0",
         "c": "PK",
         "n": "Pakistan {c} Time"
     },
     "Asia/Kashgar": {
-        "f": "C{c}T",
+        "f": "CST",
         "o": "8:0",
-        "c": "CN"
+        "c": "CN",
+        "n": "China {c} Time"
     },
     "Asia/Kathmandu": {
         "f": "NPT",
@@ -2309,22 +2487,26 @@
     "Asia/Kuala_Lumpur": {
         "f": "MYT",
         "o": "8:0",
-        "c": "MY"
+        "c": "MY",
+        "n": "Singapore {c} Time"
     },
     "Asia/Kuching": {
         "f": "MYT",
         "o": "8:0",
-        "c": "MY"
+        "c": "MY",
+        "n": "Singapore {c} Time"
     },
     "Asia/Kuwait": {
         "f": "AST",
         "o": "3:0",
-        "c": "KW"
+        "c": "KW",
+        "n": "Arab {c} Time"
     },
     "Asia/Macau": {
-        "f": "C{c}T",
+        "f": "CST",
         "o": "8:0",
-        "c": "MO"
+        "c": "MO",
+        "n": "China {c} Time"
     },
     "Asia/Magadan": {
         "f": "MAGT",
@@ -2335,17 +2517,20 @@
     "Asia/Makassar": {
         "f": "WITA",
         "o": "8:0",
-        "c": "ID"
+        "c": "ID",
+        "n": "Singapore {c} Time"
     },
     "Asia/Manila": {
-        "f": "PH{c}T",
+        "f": "PHST",
         "o": "8:0",
-        "c": "PH"
+        "c": "PH",
+        "n": "Singapore {c} Time"
     },
     "Asia/Muscat": {
         "f": "GST",
         "o": "4:0",
-        "c": "OM"
+        "c": "OM",
+        "n": "Arabian {c} Time"
     },
     "Asia/Nicosia": {
         "e": {
@@ -2364,12 +2549,14 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "CY"
+        "c": "CY",
+        "n": "E. Europe {c} Time"
     },
     "Asia/Novokuznetsk": {
         "f": "NOVT",
         "o": "7:0",
-        "c": "RU"
+        "c": "RU",
+        "n": "N. Central Asia {c} Time"
     },
     "Asia/Novosibirsk": {
         "f": "NOVT",
@@ -2380,37 +2567,44 @@
     "Asia/Omsk": {
         "f": "OMST",
         "o": "7:0",
-        "c": "RU"
+        "c": "RU",
+        "n": "N. Central Asia {c} Time"
     },
     "Asia/Oral": {
         "f": "ORAT",
         "o": "5:0",
-        "c": "KZ"
+        "c": "KZ",
+        "n": "West Asia {c} Time"
     },
     "Asia/Phnom_Penh": {
         "f": "ICT",
         "o": "7:0",
-        "c": "KH"
+        "c": "KH",
+        "n": "SE Asia {c} Time"
     },
     "Asia/Pontianak": {
         "f": "WIB",
         "o": "7:0",
-        "c": "ID"
+        "c": "ID",
+        "n": "SE Asia {c} Time"
     },
     "Asia/Pyongyang": {
         "f": "KST",
         "o": "9:0",
-        "c": "KP"
+        "c": "KP",
+        "n": "Korea {c} Time"
     },
     "Asia/Qatar": {
         "f": "AST",
         "o": "3:0",
-        "c": "QA"
+        "c": "QA",
+        "n": "Arab {c} Time"
     },
     "Asia/Qyzylorda": {
         "f": "QYZT",
         "o": "6:0",
-        "c": "KZ"
+        "c": "KZ",
+        "n": "Central Asia {c} Time"
     },
     "Asia/Rangoon": {
         "f": "MMT",
@@ -2427,21 +2621,23 @@
     "Asia/Sakhalin": {
         "f": "SAKT",
         "o": "11:0",
-        "c": "RU"
+        "c": "RU",
+        "n": "Vladivostok {c} Time"
     },
     "Asia/Samarkand": {
         "f": "UZT",
         "o": "5:0",
-        "c": "UZ"
+        "c": "UZ",
+        "n": "West Asia {c} Time"
     },
     "Asia/Seoul": {
-        "f": "K{c}T",
+        "f": "KST",
         "o": "9:0",
         "c": "KR",
         "n": "Korea {c} Time"
     },
     "Asia/Shanghai": {
-        "f": "C{c}T",
+        "f": "CST",
         "o": "8:0",
         "c": "CN",
         "n": "China {c} Time"
@@ -2453,7 +2649,7 @@
         "n": "Singapore {c} Time"
     },
     "Asia/Taipei": {
-        "f": "C{c}T",
+        "f": "CST",
         "o": "8:0",
         "c": "TW",
         "n": "Taipei {c} Time"
@@ -2492,24 +2688,26 @@
     "Asia/Thimphu": {
         "f": "BTT",
         "o": "6:0",
-        "c": "BT"
+        "c": "BT",
+        "n": "Bangladesh {c} Time"
     },
     "Asia/Tokyo": {
-        "f": "J{c}T",
+        "f": "JST",
         "o": "9:0",
         "c": "JP",
         "n": "Tokyo {c} Time"
     },
     "Asia/Ulaanbaatar": {
-        "f": "ULA{c}T",
+        "f": "ULAST",
         "o": "8:0",
         "c": "MN",
         "n": "Ulaanbaatar {c} Time"
     },
     "Asia/Urumqi": {
-        "f": "C{c}T",
+        "f": "CST",
         "o": "8:0",
-        "c": "CN"
+        "c": "CN",
+        "n": "China {c} Time"
     },
     "Asia/Ust-Nera": {
         "f": "VLAT",
@@ -2519,7 +2717,8 @@
     "Asia/Vientiane": {
         "f": "ICT",
         "o": "7:0",
-        "c": "LA"
+        "c": "LA",
+        "n": "SE Asia {c} Time"
     },
     "Asia/Vladivostok": {
         "f": "VLAT",
@@ -2581,7 +2780,8 @@
             "t": "2:0",
             "v": "1:0"
         },
-        "c": "BM"
+        "c": "BM",
+        "n": "Atlantic {c} Time"
     },
     "Atlantic/Canary": {
         "e": {
@@ -2600,7 +2800,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "ES"
+        "c": "ES",
+        "n": "GMT {c} Time"
     },
     "Atlantic/Cape_Verde": {
         "f": "CVT",
@@ -2625,7 +2826,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "FO"
+        "c": "FO",
+        "n": "GMT {c} Time"
     },
     "Atlantic/Madeira": {
         "e": {
@@ -2644,7 +2846,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "PT"
+        "c": "PT",
+        "n": "GMT {c} Time"
     },
     "Atlantic/Reykjavik": {
         "f": "GMT",
@@ -2655,17 +2858,20 @@
     "Atlantic/South_Georgia": {
         "f": "GST",
         "o": "-2:0",
-        "c": "GS"
+        "c": "GS",
+        "n": "UTC-02"
     },
     "Atlantic/St_Helena": {
         "f": "GMT",
         "o": "0:0",
-        "c": "SH"
+        "c": "SH",
+        "n": "Greenwich {c} Time"
     },
     "Atlantic/Stanley": {
         "f": "FKST",
         "o": "-3:0",
-        "c": "FK"
+        "c": "FK",
+        "n": "SA Eastern {c} Time"
     },
     "Australia/Adelaide": {
         "e": {
@@ -2708,7 +2914,8 @@
             "v": "1:0",
             "z": "s"
         },
-        "c": "AU"
+        "c": "AU",
+        "n": "Cen. Australia {c} Time"
     },
     "Australia/Currie": {
         "e": {
@@ -2726,7 +2933,8 @@
             "v": "1:0",
             "z": "s"
         },
-        "c": "AU"
+        "c": "AU",
+        "n": "Tasmania {c} Time"
     },
     "Australia/Darwin": {
         "f": "CST",
@@ -2761,7 +2969,8 @@
     "Australia/Lindeman": {
         "f": "EST",
         "o": "10:0",
-        "c": "AU"
+        "c": "AU",
+        "n": "E. Australia {c} Time"
     },
     "Australia/Lord_Howe": {
         "e": {
@@ -2795,7 +3004,8 @@
             "v": "1:0",
             "z": "s"
         },
-        "c": "AU"
+        "c": "AU",
+        "n": "AUS Eastern {c} Time"
     },
     "Australia/Perth": {
         "f": "WST",
@@ -2855,7 +3065,8 @@
             "r": "0>8",
             "t": "2:0",
             "v": "1:0"
-        }
+        },
+        "n": "Central {c} Time"
     },
     "EET": {
         "e": {
@@ -2894,7 +3105,8 @@
             "r": "0>8",
             "t": "2:0",
             "v": "1:0"
-        }
+        },
+        "n": "Eastern {c} Time"
     },
     "Etc/GMT": {
         "f": "GMT",
@@ -2903,11 +3115,13 @@
     },
     "Etc/GMT+1": {
         "f": "GMT+1",
-        "o": "-1:0"
+        "o": "-1:0",
+        "n": "Cape Verde {c} Time"
     },
     "Etc/GMT+10": {
         "f": "GMT+10",
-        "o": "-10:0"
+        "o": "-10:0",
+        "n": "Hawaiian {c} Time"
     },
     "Etc/GMT+11": {
         "f": "GMT+11",
@@ -2926,23 +3140,28 @@
     },
     "Etc/GMT+3": {
         "f": "GMT+3",
-        "o": "-3:0"
+        "o": "-3:0",
+        "n": "SA Eastern {c} Time"
     },
     "Etc/GMT+4": {
         "f": "GMT+4",
-        "o": "-4:0"
+        "o": "-4:0",
+        "n": "SA Western {c} Time"
     },
     "Etc/GMT+5": {
         "f": "GMT+5",
-        "o": "-5:0"
+        "o": "-5:0",
+        "n": "SA Pacific {c} Time"
     },
     "Etc/GMT+6": {
         "f": "GMT+6",
-        "o": "-6:0"
+        "o": "-6:0",
+        "n": "Central America {c} Time"
     },
     "Etc/GMT+7": {
         "f": "GMT+7",
-        "o": "-7:0"
+        "o": "-7:0",
+        "n": "US Mountain {c} Time"
     },
     "Etc/GMT+8": {
         "f": "GMT+8",
@@ -2954,15 +3173,18 @@
     },
     "Etc/GMT-1": {
         "f": "GMT-1",
-        "o": "1:0"
+        "o": "1:0",
+        "n": "W. Central Africa {c} Time"
     },
     "Etc/GMT-10": {
         "f": "GMT-10",
-        "o": "10:0"
+        "o": "10:0",
+        "n": "West Pacific {c} Time"
     },
     "Etc/GMT-11": {
         "f": "GMT-11",
-        "o": "11:0"
+        "o": "11:0",
+        "n": "Central Pacific {c} Time"
     },
     "Etc/GMT-12": {
         "f": "GMT-12",
@@ -2971,7 +3193,8 @@
     },
     "Etc/GMT-13": {
         "f": "GMT-13",
-        "o": "13:0"
+        "o": "13:0",
+        "n": "Tonga {c} Time"
     },
     "Etc/GMT-14": {
         "f": "GMT-14",
@@ -2979,35 +3202,43 @@
     },
     "Etc/GMT-2": {
         "f": "GMT-2",
-        "o": "2:0"
+        "o": "2:0",
+        "n": "South Africa {c} Time"
     },
     "Etc/GMT-3": {
         "f": "GMT-3",
-        "o": "3:0"
+        "o": "3:0",
+        "n": "E. Africa {c} Time"
     },
     "Etc/GMT-4": {
         "f": "GMT-4",
-        "o": "4:0"
+        "o": "4:0",
+        "n": "Arabian {c} Time"
     },
     "Etc/GMT-5": {
         "f": "GMT-5",
-        "o": "5:0"
+        "o": "5:0",
+        "n": "West Asia {c} Time"
     },
     "Etc/GMT-6": {
         "f": "GMT-6",
-        "o": "6:0"
+        "o": "6:0",
+        "n": "Central Asia {c} Time"
     },
     "Etc/GMT-7": {
         "f": "GMT-7",
-        "o": "7:0"
+        "o": "7:0",
+        "n": "SE Asia {c} Time"
     },
     "Etc/GMT-8": {
         "f": "GMT-8",
-        "o": "8:0"
+        "o": "8:0",
+        "n": "Singapore {c} Time"
     },
     "Etc/GMT-9": {
         "f": "GMT-9",
-        "o": "9:0"
+        "o": "9:0",
+        "n": "Tokyo {c} Time"
     },
     "Etc/UCT": {
         "f": "UCT",
@@ -3034,7 +3265,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "NL"
+        "c": "NL",
+        "n": "W. Europe {c} Time"
     },
     "Europe/Andorra": {
         "e": {
@@ -3053,7 +3285,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "AD"
+        "c": "AD",
+        "n": "W. Europe {c} Time"
     },
     "Europe/Athens": {
         "e": {
@@ -3072,7 +3305,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "GR"
+        "c": "GR",
+        "n": "GTB {c} Time"
     },
     "Europe/Belgrade": {
         "e": {
@@ -3091,7 +3325,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "RS"
+        "c": "RS",
+        "n": "Central Europe {c} Time"
     },
     "Europe/Berlin": {
         "e": {
@@ -3130,7 +3365,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "BE"
+        "c": "BE",
+        "n": "Romance {c} Time"
     },
     "Europe/Bucharest": {
         "e": {
@@ -3149,7 +3385,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "RO"
+        "c": "RO",
+        "n": "GTB {c} Time"
     },
     "Europe/Budapest": {
         "e": {
@@ -3188,7 +3425,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "MD"
+        "c": "MD",
+        "n": "GTB {c} Time"
     },
     "Europe/Copenhagen": {
         "e": {
@@ -3207,7 +3445,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "DK"
+        "c": "DK",
+        "n": "Romance {c} Time"
     },
     "Europe/Dublin": {
         "e": {
@@ -3226,7 +3465,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "IE"
+        "c": "IE",
+        "n": "GMT {c} Time"
     },
     "Europe/Gibraltar": {
         "e": {
@@ -3245,7 +3485,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "GI"
+        "c": "GI",
+        "n": "W. Europe {c} Time"
     },
     "Europe/Helsinki": {
         "e": {
@@ -3264,7 +3505,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "FI"
+        "c": "FI",
+        "n": "FLE {c} Time"
     },
     "Europe/Istanbul": {
         "e": {
@@ -3284,12 +3526,13 @@
             "z": "u"
         },
         "c": "TR",
-        "n": "GTB {c} Time"
+        "n": "Turkey {c} Time"
     },
     "Europe/Kaliningrad": {
         "f": "FET",
         "o": "3:0",
-        "c": "RU"
+        "c": "RU",
+        "n": "Kaliningrad {c} Time"
     },
     "Europe/Kiev": {
         "e": {
@@ -3328,7 +3571,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "PT"
+        "c": "PT",
+        "n": "GMT {c} Time"
     },
     "Europe/London": {
         "e": {
@@ -3367,7 +3611,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "LU"
+        "c": "LU",
+        "n": "W. Europe {c} Time"
     },
     "Europe/Madrid": {
         "e": {
@@ -3386,7 +3631,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "ES"
+        "c": "ES",
+        "n": "Romance {c} Time"
     },
     "Europe/Malta": {
         "e": {
@@ -3405,13 +3651,14 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "MT"
+        "c": "MT",
+        "n": "W. Europe {c} Time"
     },
     "Europe/Minsk": {
         "f": "FET",
         "o": "3:0",
         "c": "BY",
-        "n": "E. Europe {c} Time"
+        "n": "Kaliningrad {c} Time"
     },
     "Europe/Monaco": {
         "e": {
@@ -3430,7 +3677,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "MC"
+        "c": "MC",
+        "n": "W. Europe {c} Time"
     },
     "Europe/Moscow": {
         "f": "MSK",
@@ -3455,7 +3703,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "NO"
+        "c": "NO",
+        "n": "W. Europe {c} Time"
     },
     "Europe/Paris": {
         "e": {
@@ -3494,7 +3743,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "CZ"
+        "c": "CZ",
+        "n": "Central Europe {c} Time"
     },
     "Europe/Riga": {
         "e": {
@@ -3513,7 +3763,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "LV"
+        "c": "LV",
+        "n": "FLE {c} Time"
     },
     "Europe/Rome": {
         "e": {
@@ -3532,12 +3783,14 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "IT"
+        "c": "IT",
+        "n": "W. Europe {c} Time"
     },
     "Europe/Samara": {
         "f": "SAMT",
         "o": "4:0",
-        "c": "RU"
+        "c": "RU",
+        "n": "Russian {c} Time"
     },
     "Europe/Simferopol": {
         "e": {
@@ -3556,7 +3809,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "UA"
+        "c": "UA",
+        "n": "FLE {c} Time"
     },
     "Europe/Sofia": {
         "e": {
@@ -3575,7 +3829,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "BG"
+        "c": "BG",
+        "n": "FLE {c} Time"
     },
     "Europe/Stockholm": {
         "e": {
@@ -3594,7 +3849,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "SE"
+        "c": "SE",
+        "n": "W. Europe {c} Time"
     },
     "Europe/Tallinn": {
         "e": {
@@ -3613,7 +3869,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "EE"
+        "c": "EE",
+        "n": "FLE {c} Time"
     },
     "Europe/Tirane": {
         "e": {
@@ -3632,7 +3889,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "AL"
+        "c": "AL",
+        "n": "Central Europe {c} Time"
     },
     "Europe/Uzhgorod": {
         "e": {
@@ -3651,7 +3909,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "UA"
+        "c": "UA",
+        "n": "FLE {c} Time"
     },
     "Europe/Vienna": {
         "e": {
@@ -3670,7 +3929,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "AT"
+        "c": "AT",
+        "n": "W. Europe {c} Time"
     },
     "Europe/Vilnius": {
         "e": {
@@ -3689,12 +3949,14 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "LT"
+        "c": "LT",
+        "n": "FLE {c} Time"
     },
     "Europe/Volgograd": {
         "f": "VOLT",
         "o": "4:0",
-        "c": "RU"
+        "c": "RU",
+        "n": "Russian {c} Time"
     },
     "Europe/Warsaw": {
         "e": {
@@ -3733,7 +3995,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "UA"
+        "c": "UA",
+        "n": "FLE {c} Time"
     },
     "Europe/Zurich": {
         "e": {
@@ -3752,7 +4015,8 @@
             "v": "1:0",
             "z": "u"
         },
-        "c": "CH"
+        "c": "CH",
+        "n": "W. Europe {c} Time"
     },
     "Factory": {
         "f": "\"Local",
@@ -3765,45 +4029,53 @@
     "Indian/Antananarivo": {
         "f": "EAT",
         "o": "3:0",
-        "c": "MG"
+        "c": "MG",
+        "n": "E. Africa {c} Time"
     },
     "Indian/Chagos": {
         "f": "IOT",
         "o": "6:0",
-        "c": "IO"
+        "c": "IO",
+        "n": "Central Asia {c} Time"
     },
     "Indian/Christmas": {
         "f": "CXT",
         "o": "7:0",
-        "c": "CX"
+        "c": "CX",
+        "n": "SE Asia {c} Time"
     },
     "Indian/Cocos": {
         "f": "CCT",
         "o": "6:30",
-        "c": "CC"
+        "c": "CC",
+        "n": "Myanmar {c} Time"
     },
     "Indian/Comoro": {
         "f": "EAT",
         "o": "3:0",
-        "c": "KM"
+        "c": "KM",
+        "n": "E. Africa {c} Time"
     },
     "Indian/Kerguelen": {
         "f": "TFT",
         "o": "5:0",
-        "c": "TF"
+        "c": "TF",
+        "n": "West Asia {c} Time"
     },
     "Indian/Mahe": {
         "f": "SCT",
         "o": "4:0",
-        "c": "SC"
+        "c": "SC",
+        "n": "Mauritius {c} Time"
     },
     "Indian/Maldives": {
         "f": "MVT",
         "o": "5:0",
-        "c": "MV"
+        "c": "MV",
+        "n": "West Asia {c} Time"
     },
     "Indian/Mauritius": {
-        "f": "MU{c}T",
+        "f": "MUST",
         "o": "4:0",
         "c": "MU",
         "n": "Mauritius {c} Time"
@@ -3811,12 +4083,14 @@
     "Indian/Mayotte": {
         "f": "EAT",
         "o": "3:0",
-        "c": "YT"
+        "c": "YT",
+        "n": "E. Africa {c} Time"
     },
     "Indian/Reunion": {
         "f": "RET",
         "o": "4:0",
-        "c": "RE"
+        "c": "RE",
+        "n": "Mauritius {c} Time"
     },
     "MET": {
         "e": {
@@ -3855,7 +4129,8 @@
             "r": "0>8",
             "t": "2:0",
             "v": "1:0"
-        }
+        },
+        "n": "Mountain {c} Time"
     },
     "PST8PDT": {
         "e": {
@@ -3872,7 +4147,8 @@
             "r": "0>8",
             "t": "2:0",
             "v": "1:0"
-        }
+        },
+        "n": "Pacific {c} Time"
     },
     "Pacific/Apia": {
         "e": {
@@ -3936,7 +4212,8 @@
     "Pacific/Chuuk": {
         "f": "CHUT",
         "o": "10:0",
-        "c": "FM"
+        "c": "FM",
+        "n": "West Pacific {c} Time"
     },
     "Pacific/Easter": {
         "e": {
@@ -3958,19 +4235,22 @@
         "c": "CL"
     },
     "Pacific/Efate": {
-        "f": "VU{c}T",
+        "f": "VUST",
         "o": "11:0",
-        "c": "VU"
+        "c": "VU",
+        "n": "Central Pacific {c} Time"
     },
     "Pacific/Enderbury": {
         "f": "PHOT",
         "o": "13:0",
-        "c": "KI"
+        "c": "KI",
+        "n": "Tonga {c} Time"
     },
     "Pacific/Fakaofo": {
         "f": "TKT",
         "o": "13:0",
-        "c": "TK"
+        "c": "TK",
+        "n": "Tonga {c} Time"
     },
     "Pacific/Fiji": {
         "e": {
@@ -3993,12 +4273,14 @@
     "Pacific/Funafuti": {
         "f": "TVT",
         "o": "12:0",
-        "c": "TV"
+        "c": "TV",
+        "n": "UTC+12"
     },
     "Pacific/Galapagos": {
         "f": "GALT",
         "o": "-6:0",
-        "c": "EC"
+        "c": "EC",
+        "n": "Central America {c} Time"
     },
     "Pacific/Gambier": {
         "f": "GAMT",
@@ -4014,7 +4296,8 @@
     "Pacific/Guam": {
         "f": "ChST",
         "o": "10:0",
-        "c": "GU"
+        "c": "GU",
+        "n": "West Pacific {c} Time"
     },
     "Pacific/Honolulu": {
         "f": "HST",
@@ -4030,17 +4313,20 @@
     "Pacific/Kosrae": {
         "f": "KOST",
         "o": "11:0",
-        "c": "FM"
+        "c": "FM",
+        "n": "Central Pacific {c} Time"
     },
     "Pacific/Kwajalein": {
         "f": "MHT",
         "o": "12:0",
-        "c": "MH"
+        "c": "MH",
+        "n": "UTC+12"
     },
     "Pacific/Majuro": {
         "f": "MHT",
         "o": "12:0",
-        "c": "MH"
+        "c": "MH",
+        "n": "UTC+12"
     },
     "Pacific/Marquesas": {
         "f": "MART",
@@ -4050,17 +4336,20 @@
     "Pacific/Midway": {
         "f": "SST",
         "o": "-11:0",
-        "c": "UM"
+        "c": "UM",
+        "n": "UTC-11"
     },
     "Pacific/Nauru": {
         "f": "NRT",
         "o": "12:0",
-        "c": "NR"
+        "c": "NR",
+        "n": "UTC+12"
     },
     "Pacific/Niue": {
         "f": "NUT",
         "o": "-11:0",
-        "c": "NU"
+        "c": "NU",
+        "n": "UTC-11"
     },
     "Pacific/Norfolk": {
         "f": "NFT",
@@ -4068,19 +4357,22 @@
         "c": "NF"
     },
     "Pacific/Noumea": {
-        "f": "NC{c}T",
+        "f": "NCST",
         "o": "11:0",
-        "c": "NC"
+        "c": "NC",
+        "n": "Central Pacific {c} Time"
     },
     "Pacific/Pago_Pago": {
         "f": "SST",
         "o": "-11:0",
-        "c": "AS"
+        "c": "AS",
+        "n": "UTC-11"
     },
     "Pacific/Palau": {
         "f": "PWT",
         "o": "9:0",
-        "c": "PW"
+        "c": "PW",
+        "n": "Tokyo {c} Time"
     },
     "Pacific/Pitcairn": {
         "f": "PST",
@@ -4090,7 +4382,8 @@
     "Pacific/Pohnpei": {
         "f": "PONT",
         "o": "11:0",
-        "c": "FM"
+        "c": "FM",
+        "n": "Central Pacific {c} Time"
     },
     "Pacific/Port_Moresby": {
         "f": "PGT",
@@ -4099,27 +4392,31 @@
         "n": "West Pacific {c} Time"
     },
     "Pacific/Rarotonga": {
-        "f": "CK{c}T",
+        "f": "CKST",
         "o": "-10:0",
-        "c": "CK"
+        "c": "CK",
+        "n": "Hawaiian {c} Time"
     },
     "Pacific/Saipan": {
         "f": "ChST",
         "o": "10:0",
-        "c": "MP"
+        "c": "MP",
+        "n": "West Pacific {c} Time"
     },
     "Pacific/Tahiti": {
         "f": "TAHT",
         "o": "-10:0",
-        "c": "PF"
+        "c": "PF",
+        "n": "Hawaiian {c} Time"
     },
     "Pacific/Tarawa": {
         "f": "GILT",
         "o": "12:0",
-        "c": "KI"
+        "c": "KI",
+        "n": "UTC+12"
     },
     "Pacific/Tongatapu": {
-        "f": "TO{c}T",
+        "f": "TOST",
         "o": "13:0",
         "c": "TO",
         "n": "Tonga {c} Time"
@@ -4127,12 +4424,14 @@
     "Pacific/Wake": {
         "f": "WAKT",
         "o": "12:0",
-        "c": "UM"
+        "c": "UM",
+        "n": "UTC+12"
     },
     "Pacific/Wallis": {
         "f": "WFT",
         "o": "12:0",
-        "c": "WF"
+        "c": "WF",
+        "n": "UTC+12"
     },
     "WET": {
         "e": {

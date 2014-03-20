@@ -237,8 +237,7 @@ public class Offset
         Rule rule;
         ArrayList<Rule> rulesList;
         int i;
-        String letter;
-
+        
         json.put("o", offsetHours+":"+offsetMinutes);   // o for offset
         json.put("f", format.replace("%s", "{c}"));  // f for format
 
@@ -268,6 +267,11 @@ public class Offset
             if ( endRule != null ) {
                 // if saving 0:00:00, then this is the end of daylight savings, so use "e" for end, and "s" for start
                 json.put("e", endRule.getJson(currentOnly));
+            }
+            
+            if ( startRule == null && endRule == null ) {
+                // no DST in this time zone, so fix up bogus abbreviations that include the %s when it shouldn't
+                json.put("f", format.replace("%s", "S"));
             }
         }
         

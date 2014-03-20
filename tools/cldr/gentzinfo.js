@@ -94,7 +94,7 @@ if (!fs.existsSync(toDir)) {
 	usage();
 }
 
-var windowsZonesFile = cldrDir + "aux/supplemental/windowsZones.json";
+var windowsZonesFile = cldrDir + "/supplemental/windowsZones.json";
 if (!fs.existsSync(windowsZonesFile)) {
 	util.error("Could not access file " + windowsZonesFile);
 	usage();

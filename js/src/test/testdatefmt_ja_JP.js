@@ -17,14 +17,14 @@
  * limitations under the License.
  */
 
-function testDateFmtConstructorEmpty() {
+function testDateFmtConstructorEmpty_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP"});
     
     assertNotNull(fmt);
 }
 
 
-function testDateFmtSimpleShort() {
+function testDateFmtSimpleShort_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "short"});
     assertNotNull(fmt);
     
@@ -41,7 +41,7 @@ function testDateFmtSimpleShort() {
     assertEquals("11/09/29", fmt.format(date));
 }
 
-function testDateFmtSimpleMedium() {
+function testDateFmtSimpleMedium_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "medium"});
     assertNotNull(fmt);
     
@@ -58,7 +58,7 @@ function testDateFmtSimpleMedium() {
     assertEquals("2011/09/29", fmt.format(date));
 }
 
-function testDateFmtSimpleLong() {
+function testDateFmtSimpleLong_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "long"});
     assertNotNull(fmt);
     
@@ -75,7 +75,7 @@ function testDateFmtSimpleLong() {
     assertEquals("2011年9月29日", fmt.format(date));
 }
 
-function testDateFmtSimpleFull() {
+function testDateFmtSimpleFull_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -92,7 +92,7 @@ function testDateFmtSimpleFull() {
     assertEquals("2011年9月29日", fmt.format(date));
 }
 
-function testDateFmtSimpleTimeShort() {
+function testDateFmtSimpleTimeShort_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "short", type: "time"});
     assertNotNull(fmt);
     
@@ -109,7 +109,7 @@ function testDateFmtSimpleTimeShort() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtSimpleTimeMedium() {
+function testDateFmtSimpleTimeMedium_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "medium", type: "time"});
     assertNotNull(fmt);
     
@@ -126,7 +126,7 @@ function testDateFmtSimpleTimeMedium() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtSimpleTimeLong() {
+function testDateFmtSimpleTimeLong_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", timelength: "long", type: "time"});
     assertNotNull(fmt);
     
@@ -143,7 +143,7 @@ function testDateFmtSimpleTimeLong() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtSimpleTimeFull() {
+function testDateFmtSimpleTimeFull_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full", type: "time"});
     assertNotNull(fmt);
     
@@ -160,7 +160,7 @@ function testDateFmtSimpleTimeFull() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtDateTimeSimpleShort() {
+function testDateFmtDateTimeSimpleShort_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "short", type: "datetime"});
     assertNotNull(fmt);
     
@@ -177,7 +177,7 @@ function testDateFmtDateTimeSimpleShort() {
     assertEquals("11/09/29、13:45", fmt.format(date));
 }
 
-function testDateFmtDateTimeSimpleMedium() {
+function testDateFmtDateTimeSimpleMedium_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "medium", type: "datetime"});
     assertNotNull(fmt);
     
@@ -194,7 +194,7 @@ function testDateFmtDateTimeSimpleMedium() {
     assertEquals("2011/09/29、13:45", fmt.format(date));
 }
 
-function testDateFmtDateTimeSimpleLong() {
+function testDateFmtDateTimeSimpleLong_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "long", type: "datetime"});
     assertNotNull(fmt);
     
@@ -211,7 +211,7 @@ function testDateFmtDateTimeSimpleLong() {
     assertEquals("2011年9月29日、13:45", fmt.format(date));
 }
 
-function testDateFmtDateTimeSimpleFull() {
+function testDateFmtDateTimeSimpleFull_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full", type: "datetime"});
     assertNotNull(fmt);
     
@@ -229,7 +229,7 @@ function testDateFmtDateTimeSimpleFull() {
 }
 
 
-function testDateFmtTemplateCalendar() {
+function testDateFmtTemplateCalendar_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
@@ -245,7 +245,7 @@ function testDateFmtTemplateCalendar() {
     assertEquals("2011-09-29", fmt.format(date));
 }
 
-function testDateFmtTemplateCalendarIncompatibleDateType() {
+function testDateFmtTemplateCalendarIncompatibleDateType_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", calendar: "julian", template: "yyyy-MM-dd"});
     assertNotNull(fmt);
     
@@ -268,7 +268,7 @@ function testDateFmtTemplateCalendarIncompatibleDateType() {
     }
 }
 
-function testDateFmtTemplateClock12SwitchHH() {
+function testDateFmtTemplateClock12SwitchHH_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", clock: "12", template: "HH:mm"});
     assertNotNull(fmt);
     
@@ -285,7 +285,7 @@ function testDateFmtTemplateClock12SwitchHH() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function testDateFmtTemplateClock12Switchkk() {
+function testDateFmtTemplateClock12Switchkk_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", clock: "12", template: "kk:mm"});
     assertNotNull(fmt);
     
@@ -302,7 +302,7 @@ function testDateFmtTemplateClock12Switchkk() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function testDateFmtTemplateClock24Switchhh() {
+function testDateFmtTemplateClock24Switchhh_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", clock: "24", template: "hh:mm"});
     assertNotNull(fmt);
     
@@ -319,7 +319,7 @@ function testDateFmtTemplateClock24Switchhh() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtTemplateClock24SwitchKK() {
+function testDateFmtTemplateClock24SwitchKK_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", clock: "24", template: "KK:mm"});
     assertNotNull(fmt);
     
@@ -336,7 +336,7 @@ function testDateFmtTemplateClock24SwitchKK() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh() {
+function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", template: "hh:mm"});
     assertNotNull(fmt);
     
@@ -353,7 +353,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK() {
+function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", template: "KK:mm"});
     assertNotNull(fmt);
     
@@ -370,7 +370,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH() {
+function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", template: "HH:mm"});
     assertNotNull(fmt);
     
@@ -387,7 +387,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk() {
+function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", template: "kk:mm"});
     assertNotNull(fmt);
     
@@ -405,7 +405,7 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk() {
 }
 
 
-function testDateFmtTypeDate() {
+function testDateFmtTypeDate_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "date"});
     assertNotNull(fmt);
     
@@ -422,7 +422,7 @@ function testDateFmtTypeDate() {
     assertEquals("11/09/29", fmt.format(date));
 }
 
-function testDateFmtTypeTime() {
+function testDateFmtTypeTime_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time"});
     assertNotNull(fmt);
     
@@ -439,7 +439,7 @@ function testDateFmtTypeTime() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtTypeDateTime() {
+function testDateFmtTypeDateTime_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "datetime"});
     assertNotNull(fmt);
     
@@ -457,7 +457,7 @@ function testDateFmtTypeDateTime() {
 }
 
 
-function testDateFmtShortDateComponentsY() {
+function testDateFmtShortDateComponentsY_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", date: "y"});
     assertNotNull(fmt);
     
@@ -474,7 +474,7 @@ function testDateFmtShortDateComponentsY() {
     assertEquals("11", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsM() {
+function testDateFmtShortDateComponentsM_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", date: "m"});
     assertNotNull(fmt);
     
@@ -491,7 +491,7 @@ function testDateFmtShortDateComponentsM() {
     assertEquals("9", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsN() {
+function testDateFmtShortDateComponentsN_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", date: "n"});
     assertNotNull(fmt);
     
@@ -508,7 +508,7 @@ function testDateFmtShortDateComponentsN() {
     assertEquals("九", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsD() {
+function testDateFmtShortDateComponentsD_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", date: "d"});
     assertNotNull(fmt);
     
@@ -525,7 +525,7 @@ function testDateFmtShortDateComponentsD() {
     assertEquals("29", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsDM() {
+function testDateFmtShortDateComponentsDM_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", date: "dm"});
     assertNotNull(fmt);
     
@@ -542,7 +542,7 @@ function testDateFmtShortDateComponentsDM() {
     assertEquals("09/29", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsMY() {
+function testDateFmtShortDateComponentsMY_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", date: "my"});
     assertNotNull(fmt);
     
@@ -559,7 +559,7 @@ function testDateFmtShortDateComponentsMY() {
     assertEquals("11/09", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsDMY() {
+function testDateFmtShortDateComponentsDMY_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", date: "dmy"});
     assertNotNull(fmt);
     
@@ -576,7 +576,7 @@ function testDateFmtShortDateComponentsDMY() {
     assertEquals("11/09/29", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsWDM() {
+function testDateFmtShortDateComponentsWDM_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", date: "wdm"});
     assertNotNull(fmt);
     
@@ -593,7 +593,7 @@ function testDateFmtShortDateComponentsWDM() {
     assertEquals("木09/29", fmt.format(date));
 }
 
-function testDateFmtShortDateComponentsWDMY() {
+function testDateFmtShortDateComponentsWDMY_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", date: "wdmy"});
     assertNotNull(fmt);
     
@@ -611,7 +611,7 @@ function testDateFmtShortDateComponentsWDMY() {
 }
 
 
-function testDateFmtFullDateComponentsY() {
+function testDateFmtFullDateComponentsY_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full", date: "y"});
     assertNotNull(fmt);
     
@@ -628,7 +628,7 @@ function testDateFmtFullDateComponentsY() {
     assertEquals("2011", fmt.format(date));
 }
 
-function testDateFmtFullDateComponentsM() {
+function testDateFmtFullDateComponentsM_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full", date: "m"});
     assertNotNull(fmt);
     
@@ -645,7 +645,7 @@ function testDateFmtFullDateComponentsM() {
     assertEquals("9", fmt.format(date));
 }
 
-function testDateFmtFullDateComponentsD() {
+function testDateFmtFullDateComponentsD_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full", date: "d"});
     assertNotNull(fmt);
     
@@ -662,7 +662,7 @@ function testDateFmtFullDateComponentsD() {
     assertEquals("29", fmt.format(date));
 }
 
-function testDateFmtFullDateComponentsDM() {
+function testDateFmtFullDateComponentsDM_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full", date: "dm"});
     assertNotNull(fmt);
     
@@ -679,7 +679,7 @@ function testDateFmtFullDateComponentsDM() {
     assertEquals("9月29日", fmt.format(date));
 }
 
-function testDateFmtFullDateComponentsMY() {
+function testDateFmtFullDateComponentsMY_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full", date: "my"});
     assertNotNull(fmt);
     
@@ -696,7 +696,7 @@ function testDateFmtFullDateComponentsMY() {
     assertEquals("2011年9月", fmt.format(date));
 }
 
-function testDateFmtFullDateComponentsDMY() {
+function testDateFmtFullDateComponentsDMY_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full", date: "dmy"});
     assertNotNull(fmt);
     
@@ -713,7 +713,7 @@ function testDateFmtFullDateComponentsDMY() {
     assertEquals("2011年9月29日", fmt.format(date));
 }
 
-function testDateFmtFullDateComponentsWDM() {
+function testDateFmtFullDateComponentsWDM_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full", date: "wdm"});
     assertNotNull(fmt);
     
@@ -730,7 +730,7 @@ function testDateFmtFullDateComponentsWDM() {
     assertEquals("9月29日（木曜日）", fmt.format(date));
 }
 
-function testDateFmtFullDateComponentsWDMY() {
+function testDateFmtFullDateComponentsWDMY_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full", date: "wdmy"});
     assertNotNull(fmt);
     
@@ -748,7 +748,7 @@ function testDateFmtFullDateComponentsWDMY() {
 }
 
 
-function testDateFmtShortTimeComponentsS() {
+function testDateFmtShortTimeComponentsS_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", time: "s"});
     assertNotNull(fmt);
     
@@ -765,7 +765,7 @@ function testDateFmtShortTimeComponentsS() {
     assertEquals("37", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsM() {
+function testDateFmtShortTimeComponentsM_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", time: "m"});
     assertNotNull(fmt);
     
@@ -782,7 +782,7 @@ function testDateFmtShortTimeComponentsM() {
     assertEquals("45", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsH() {
+function testDateFmtShortTimeComponentsH_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", time: "h"});
     assertNotNull(fmt);
     
@@ -799,7 +799,7 @@ function testDateFmtShortTimeComponentsH() {
     assertEquals("13", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsMS() {
+function testDateFmtShortTimeComponentsMS_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", time: "ms"});
     assertNotNull(fmt);
     
@@ -816,7 +816,7 @@ function testDateFmtShortTimeComponentsMS() {
     assertEquals("45:37", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHM() {
+function testDateFmtShortTimeComponentsHM_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", time: "hm"});
     assertNotNull(fmt);
     
@@ -833,7 +833,7 @@ function testDateFmtShortTimeComponentsHM() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHMS() {
+function testDateFmtShortTimeComponentsHMS_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", time: "hms"});
     assertNotNull(fmt);
     
@@ -850,7 +850,7 @@ function testDateFmtShortTimeComponentsHMS() {
     assertEquals("13:45:37", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHMA() {
+function testDateFmtShortTimeComponentsHMA_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", time: "hma"});
     assertNotNull(fmt);
     
@@ -867,7 +867,7 @@ function testDateFmtShortTimeComponentsHMA() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHMZ() {
+function testDateFmtShortTimeComponentsHMZ_ja_JP() {
     var fmt = new ilib.DateFmt({
         locale: "ja-JP", 
         type: "time", 
@@ -889,7 +889,7 @@ function testDateFmtShortTimeComponentsHMZ() {
     assertEquals("13:45 JST", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHMAZ() {
+function testDateFmtShortTimeComponentsHMAZ_ja_JP() {
     var fmt = new ilib.DateFmt({
         locale: "ja-JP", 
         type: "time", 
@@ -911,7 +911,7 @@ function testDateFmtShortTimeComponentsHMAZ() {
     assertEquals("13:45 JST", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHMSA() {
+function testDateFmtShortTimeComponentsHMSA_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", time: "hmsa"});
     assertNotNull(fmt);
     
@@ -928,7 +928,7 @@ function testDateFmtShortTimeComponentsHMSA() {
     assertEquals("13:45:37", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHMSZ() {
+function testDateFmtShortTimeComponentsHMSZ_ja_JP() {
     var fmt = new ilib.DateFmt({
         locale: "ja-JP", 
         type: "time", 
@@ -950,7 +950,7 @@ function testDateFmtShortTimeComponentsHMSZ() {
     assertEquals("13:45:37 JST", fmt.format(date));
 }
 
-function testDateFmtShortTimeComponentsHMSAZ() {
+function testDateFmtShortTimeComponentsHMSAZ_ja_JP() {
     var fmt = new ilib.DateFmt({
         locale: "ja-JP", 
         type: "time", 
@@ -973,7 +973,7 @@ function testDateFmtShortTimeComponentsHMSAZ() {
 }
 
 
-function testDateFmtFullTimeComponentsS() {
+function testDateFmtFullTimeComponentsS_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", length: "full", time: "s"});
     assertNotNull(fmt);
     
@@ -990,7 +990,7 @@ function testDateFmtFullTimeComponentsS() {
     assertEquals("37", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsM() {
+function testDateFmtFullTimeComponentsM_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", length: "full", time: "m"});
     assertNotNull(fmt);
     
@@ -1007,7 +1007,7 @@ function testDateFmtFullTimeComponentsM() {
     assertEquals("45", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsH() {
+function testDateFmtFullTimeComponentsH_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", length: "full", time: "h"});
     assertNotNull(fmt);
     
@@ -1024,7 +1024,7 @@ function testDateFmtFullTimeComponentsH() {
     assertEquals("13", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsMS() {
+function testDateFmtFullTimeComponentsMS_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", length: "full", time: "ms"});
     assertNotNull(fmt);
     
@@ -1041,7 +1041,7 @@ function testDateFmtFullTimeComponentsMS() {
     assertEquals("45:37", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHM() {
+function testDateFmtFullTimeComponentsHM_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", length: "full", time: "hm"});
     assertNotNull(fmt);
     
@@ -1058,7 +1058,7 @@ function testDateFmtFullTimeComponentsHM() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHMS() {
+function testDateFmtFullTimeComponentsHMS_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", length: "full", time: "hms"});
     assertNotNull(fmt);
     
@@ -1075,7 +1075,7 @@ function testDateFmtFullTimeComponentsHMS() {
     assertEquals("13:45:37", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHMA() {
+function testDateFmtFullTimeComponentsHMA_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", length: "full", time: "hma"});
     assertNotNull(fmt);
     
@@ -1092,7 +1092,7 @@ function testDateFmtFullTimeComponentsHMA() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHMZ() {
+function testDateFmtFullTimeComponentsHMZ_ja_JP() {
     var fmt = new ilib.DateFmt({
         locale: "ja-JP", 
         type: "time", 
@@ -1115,7 +1115,7 @@ function testDateFmtFullTimeComponentsHMZ() {
     assertEquals("13:45 JST", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHMAZ() {
+function testDateFmtFullTimeComponentsHMAZ_ja_JP() {
     var fmt = new ilib.DateFmt({
         locale: "ja-JP", 
         type: "time", 
@@ -1138,7 +1138,7 @@ function testDateFmtFullTimeComponentsHMAZ() {
     assertEquals("13:45 JST", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHMSA() {
+function testDateFmtFullTimeComponentsHMSA_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", type: "time", length: "full", time: "hmsa"});
     assertNotNull(fmt);
     
@@ -1155,7 +1155,7 @@ function testDateFmtFullTimeComponentsHMSA() {
     assertEquals("13:45:37", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHMSZ() {
+function testDateFmtFullTimeComponentsHMSZ_ja_JP() {
     var fmt = new ilib.DateFmt({
         locale: "ja-JP", 
         type: "time", 
@@ -1178,7 +1178,7 @@ function testDateFmtFullTimeComponentsHMSZ() {
     assertEquals("13:45:37 JST", fmt.format(date));
 }
 
-function testDateFmtFullTimeComponentsHMSAZ() {
+function testDateFmtFullTimeComponentsHMSAZ_ja_JP() {
     var fmt = new ilib.DateFmt({
         locale: "ja-JP", 
         type: "time", 
@@ -1224,7 +1224,7 @@ function testDateFmtWithTimeZoneAndNoDST_ja_JP() {
     assertEquals("13:45:37 JST", fmt.format(date));
 }
 
-function testDateFmtFormatRelativeWithinMinuteAfter() {
+function testDateFmtFormatRelativeWithinMinuteAfter_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -1250,7 +1250,7 @@ function testDateFmtFormatRelativeWithinMinuteAfter() {
 	});
     assertEquals("30秒で", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinMinuteBefore() {
+function testDateFmtFormatRelativeWithinMinuteBefore_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -1276,7 +1276,7 @@ function testDateFmtFormatRelativeWithinMinuteBefore() {
 	});
     assertEquals("30秒前", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinHourAfter() {
+function testDateFmtFormatRelativeWithinHourAfter_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -1302,7 +1302,7 @@ function testDateFmtFormatRelativeWithinHourAfter() {
 	});
     assertEquals("10分で", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinHourBefore() {
+function testDateFmtFormatRelativeWithinHourBefore_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -1328,7 +1328,7 @@ function testDateFmtFormatRelativeWithinHourBefore() {
 	});
     assertEquals("10分前", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinDayAfter() {
+function testDateFmtFormatRelativeWithinDayAfter_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -1354,7 +1354,7 @@ function testDateFmtFormatRelativeWithinDayAfter() {
 	});
     assertEquals("4時間で", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinDayBefore() {
+function testDateFmtFormatRelativeWithinDayBefore_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -1381,7 +1381,7 @@ function testDateFmtFormatRelativeWithinDayBefore() {
     assertEquals("4時間前", fmt.formatRelative(reference, date));
 }
 
-function testDateFmtFormatRelativeWithinFortnightAfter() {
+function testDateFmtFormatRelativeWithinFortnightAfter_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -1407,7 +1407,7 @@ function testDateFmtFormatRelativeWithinFortnightAfter() {
 	});
     assertEquals("4日で", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinFortnightBefore() {
+function testDateFmtFormatRelativeWithinFortnightBefore_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -1434,7 +1434,7 @@ function testDateFmtFormatRelativeWithinFortnightBefore() {
     assertEquals("4日前", fmt.formatRelative(reference, date));
 }
 
-function testDateFmtFormatRelativeWithinQuarterAfter() {
+function testDateFmtFormatRelativeWithinQuarterAfter_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -1460,7 +1460,7 @@ function testDateFmtFormatRelativeWithinQuarterAfter() {
 	});
     assertEquals("9週間で", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinQuarterBefore() {
+function testDateFmtFormatRelativeWithinQuarterBefore_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -1487,7 +1487,7 @@ function testDateFmtFormatRelativeWithinQuarterBefore() {
     assertEquals("9週間前", fmt.formatRelative(reference, date));
 }
 
-function testDateFmtFormatRelativeWithinTwoYearsAfter() {
+function testDateFmtFormatRelativeWithinTwoYearsAfter_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -1513,7 +1513,7 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter() {
 	});
     assertEquals("16ヶ月で", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeWithinTwoYearsBefore() {
+function testDateFmtFormatRelativeWithinTwoYearsBefore_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -1540,7 +1540,7 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore() {
     assertEquals("14ヶ月前", fmt.formatRelative(reference, date));
 }
 
-function testDateFmtFormatRelativeYearsAfter() {
+function testDateFmtFormatRelativeYearsAfter_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
@@ -1566,7 +1566,7 @@ function testDateFmtFormatRelativeYearsAfter() {
 	});
     assertEquals("14年で", fmt.formatRelative(reference, date));
 }
-function testDateFmtFormatRelativeYearsBefore() {
+function testDateFmtFormatRelativeYearsBefore_ja_JP() {
     var fmt = new ilib.DateFmt({locale: "ja-JP", length: "full"});
     assertNotNull(fmt);
     
