@@ -180,6 +180,16 @@ public class Rule
     }
 
     /**
+     * Return true if the current rule has savings time in it.
+     * 
+     * @return true if the current rule has savings time in it, or false otherwise
+     */
+    public boolean hasSavings()
+    {
+    	return saveHours > 0 || saveMinutes > 0 || saveSeconds > 0;
+    }
+    
+    /**
      * @return the saveHours
      */
     public int getSaveHours()

@@ -68,7 +68,7 @@ public class JsonZoneWriter
             }
             
             writer = new OutputStreamWriter(new FileOutputStream(file), "utf-8");
-            writer.write(json.toString());
+            writer.write(json.toString(4));
             writer.close();
         } catch (Exception e) {
             e.printStackTrace();

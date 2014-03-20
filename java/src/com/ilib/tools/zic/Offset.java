@@ -19,6 +19,8 @@
 package com.ilib.tools.zic;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import org.apache.log4j.Logger;
@@ -240,19 +242,35 @@ public class Offset
         json.put("o", offsetHours+":"+offsetMinutes);   // o for offset
         json.put("f", format.replace("%s", "{c}"));  // f for format
 
-        if ( currentOnly ) {
-            if ( rules != null ) {
-                rules.sortRules();
-                rulesList = rules.getRules();
-                i = rulesList.size() - 1;
-                rule = rulesList.get(i);
+        if ( currentOnly && rules != null ) {
+        	Calendar cal = Calendar.getInstance();
+        	int year = cal.get(Calendar.YEAR);
+        	rulesList = rules.getRules();
+            Rule startRule = null, endRule = null;
+            for ( i = 0; i < rulesList.size(); i++ ) {
+            	rule = rulesList.get(i);
+            	if ( rule.getStartYear() <= year && year <= rule.getEndYear() ) {
+            		// found an applicable rule
+            		if ( rule.hasSavings() ) {
+            			startRule = rule;
+            		} else {
+            			endRule = rule;
+            		}
+            	}
+            }
+            
+            // If there is an end year, then that means the rule is a past rule and DST no longer applies to 
+            // this zone. So, we don't need to output the start and end rule.
+            if ( startRule != null ) {
                 // if saving 0:00:00, then this is the end of daylight savings, so use "e" for end, and "s" for start
-                letter = (rule.getSaveHours() < 1 && rule.getSaveMinutes() < 1 && rule.getSaveSeconds() < 1) ? "e" : "s";
-                json.put(letter, rule.getJson(currentOnly));
-                rule = rulesList.get(i-1);
-                json.put(letter.equals("e") ? "s" : "e", rule.getJson(currentOnly));
+                json.put("s", startRule.getJson(currentOnly));
+            }
+            if ( endRule != null ) {
+                // if saving 0:00:00, then this is the end of daylight savings, so use "e" for end, and "s" for start
+                json.put("e", endRule.getJson(currentOnly));
             }
         }
+        
         return json;
     }
 }

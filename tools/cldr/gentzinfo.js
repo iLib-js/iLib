@@ -79,34 +79,26 @@ util.print("gentzinfo - generate time zone info data.\n" +
 util.print("CLDR dir: " + cldrDir + "\n");
 util.print("To dir: " + toDir + "\n");
 
-fs.exists(cldrDir, function (exists) {
-	if (!exists) {
-		util.error("Could not access CLDR directory " + cldrDir);
-		usage();
-	}
-});
+if (!fs.existsSync(cldrDir)) {
+	util.error("Could not access CLDR directory " + cldrDir);
+	usage();
+}
 
-fs.exists(tzDataDir, function (exists) {
-	if (!exists) {
-		util.error("Could not access tzdata directory " + tzDataDir);
-		usage();
-	}
-});
+if (!fs.existsSync(tzDataDir)) {
+	util.error("Could not access tzdata directory " + tzDataDir);
+	usage();
+}
 
-fs.exists(toDir, function (exists) {
-	if (!exists) {
-		util.error("Could not access target directory " + toDir);
-		usage();
-	}
-});
+if (!fs.existsSync(toDir)) {
+	util.error("Could not access target directory " + toDir);
+	usage();
+}
 
 var windowsZonesFile = cldrDir + "aux/supplemental/windowsZones.json";
-fs.exists(windowsZonesFile, function (exists) {
-	if (!exists) {
-		util.error("Could not access file " + windowsZonesFile);
-		usage();
-	}
-});
+if (!fs.existsSync(windowsZonesFile)) {
+	util.error("Could not access file " + windowsZonesFile);
+	usage();
+}
 var windowsZones = loadFile(windowsZonesFile);
 
 var zoneTabFile = tzDataDir + "/zone.tab";
