@@ -49,3 +49,80 @@ function assertObjectContains(expected, actual, comment) {
 		}
 	}
 }
+
+/**
+ * @constructor
+ * @class
+ * 
+ * Create a new timed test.
+ *
+ * The options object may contain the following properties:
+ *
+ * <ul>
+ * <li><i>fn</i> - the function to test. If the function is synchronous, then
+ * the args will be passed and the entire function can be measured directly.
+ * If the function is asynchronous, then 
+ * 
+ * <li><i>args</i> - arguments to pass to the test function on each iteration
+ * 
+ * <li><i>name</i> - the name of this test. This will be used later during 
+ * the results calculation and in the reporting.
+ * 
+ * <li><i>iterations</i> - How many times to run this test.
+ * 
+ * <li><i>whole</i> - time the whole test function. If whole is false, then
+ * the test function should call this.start() and this.stop() to start and
+ * stop the timer at the right time.
+ * </ul>
+ * 
+ * @param {Object} options options that configure how this timed test should 
+ * work. Returns a timed test object.
+ */
+var TimedTest = function (options) {
+	if (typeof(options) === 'object') {
+		this.iterations = typeof(options.iterations) === 'number' && options.iterations > 0 ? options.iterations : 1;
+		this.fn = typeof(options.fn) === 'function' ? options.fn : function () {};
+		this.name = options.name || "test";
+		this.whole = typeof(options.whole) === 'boolean' ? options.whole : true;
+		this.args = options.args;
+	}
+	this.iterations = this.iterations || 1;
+	this.fn = this.fn || function () {};
+	this.name = this.name || "test";
+	this.whole = typeof(this.whole) === 'undefined' ? true : this.whole;
+	
+	this.millis = 0;
+	this.startTime = new Date().getTime();
+	this.started = false;
+};
+
+TimedTest.prototype = {
+	run: function(results) {
+		for (var i = 0; i < this.iterations; i++) {
+			this.millis = 0;
+			if (this.whole) this.start();
+			this.fn(this.args);
+			if (this.whole) this.stop();
+
+			// record the results
+			if (typeof(results[this.name]) === 'undefined') {
+				results[this.name] = [this.millis];
+			} else {
+				results[this.name].push(this.millis);
+			}
+		}
+	},
+	
+	start: function () {
+		this.startTime = new Date().getTime();
+		this.started = true;
+	},
+	
+	stop: function() {
+		if (this.started) {
+			var t = new Date().getTime();
+			this.millis += (t - this.startTime);
+			this.started = false;
+		}
+	}
+};

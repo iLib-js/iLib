@@ -568,6 +568,14 @@ limitations under the License.
 		</exec>
 	</target>
 
+	<target name="bench.core" depends="assemble.unittest,assemble.dyn.unittest"
+			description="run the benchmarking tests">
+		<echo>Benchmarking the code</echo>
+		<exec executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+			<arg line="benchSuite.js"/>
+		</exec>
+	</target>
+
 	<target name="test.core" depends="test.assembled.compiled,test.assembled.uncompiled,test.dynamic.compiled,test.dynamic.uncompiled" 
 			description="run the tests">
 	</target>
@@ -581,6 +589,7 @@ limitations under the License.
 	<target name="reports.only" depends="core.junit.report" description="Generate reports on previously run tests"/>
 	<target name="reports" depends="test.only,reports.only" description="Run all tests, then generate reports on the results"/>
 	<target name="test" depends="reports" description="Run all tests and build all reports"/>
+	<target name="bench" depends="bench.core" description="Run all benchmark tests and build all benchmark reports"/>
 
 	<target name="testjsdoc" description="test whether or not the jsdocs need to be rebuilt">
 		<uptodate
