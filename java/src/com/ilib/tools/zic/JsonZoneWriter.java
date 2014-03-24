@@ -62,9 +62,11 @@ public class JsonZoneWriter
             json = new JSONObject();
             while ( it.hasNext() ) {
                 zoneName = it.next();
-                logger.debug("Processing zone " + zoneName);
-                zone = zones.get(zoneName);
-                json.put(zoneName, zone.getJson(currentOnly));
+                if (zoneName != null && zoneName.length() > 0) {
+                    logger.debug("Processing zone " + zoneName);
+                    zone = zones.get(zoneName);
+                    json.put(zoneName, zone.getJson(currentOnly));
+                }
             }
             
             writer = new OutputStreamWriter(new FileOutputStream(file), "utf-8");
