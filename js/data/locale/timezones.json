@@ -187,6 +187,12 @@
         "c": "ZA",
         "n": "South Africa {c} Time"
     },
+    "Africa/Juba": {
+        "f": "EAT",
+        "o": "3:0",
+        "c": "SS",
+        "n": "E. Africa {c} Time"
+    },
     "Africa/Kampala": {
         "f": "EAT",
         "o": "3:0",
@@ -391,6 +397,12 @@
         },
         "c": "US",
         "n": "Alaskan {c} Time"
+    },
+    "America/Anguilla": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "AI",
+        "n": "SA Western {c} Time"
     },
     "America/Antigua": {
         "f": "AST",
@@ -797,6 +809,12 @@
         "c": "US",
         "n": "Eastern {c} Time"
     },
+    "America/Dominica": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "DM",
+        "n": "SA Western {c} Time"
+    },
     "America/Edmonton": {
         "e": {
             "c": "S",
@@ -910,6 +928,18 @@
         },
         "c": "TC",
         "n": "Eastern {c} Time"
+    },
+    "America/Grenada": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "GD",
+        "n": "SA Western {c} Time"
+    },
+    "America/Guadeloupe": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "GP",
+        "n": "SA Western {c} Time"
     },
     "America/Guatemala": {
         "f": "CST",
@@ -1227,6 +1257,12 @@
         "c": "US",
         "n": "Eastern {c} Time"
     },
+    "America/Kralendijk": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "BQ",
+        "n": "SA Western {c} Time"
+    },
     "America/La_Paz": {
         "f": "BOT",
         "o": "-4:0",
@@ -1258,6 +1294,12 @@
         "c": "US",
         "n": "Pacific {c} Time"
     },
+    "America/Lower_Princes": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "SX",
+        "n": "SA Western {c} Time"
+    },
     "America/Maceio": {
         "f": "BRT",
         "o": "-3:0",
@@ -1274,6 +1316,12 @@
         "f": "AMT",
         "o": "-4:0",
         "c": "BR",
+        "n": "SA Western {c} Time"
+    },
+    "America/Marigot": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "MF",
         "n": "SA Western {c} Time"
     },
     "America/Martinique": {
@@ -1473,6 +1521,12 @@
             "v": "1:0"
         },
         "n": "Eastern {c} Time"
+    },
+    "America/Montserrat": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "MS",
+        "n": "SA Western {c} Time"
     },
     "America/Nassau": {
         "e": {
@@ -1889,6 +1943,12 @@
         "c": "US",
         "n": "Alaskan {c} Time"
     },
+    "America/St_Barthelemy": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "BL",
+        "n": "SA Western {c} Time"
+    },
     "America/St_Johns": {
         "e": {
             "c": "S",
@@ -1907,6 +1967,30 @@
         },
         "c": "CA",
         "n": "Newfoundland {c} Time"
+    },
+    "America/St_Kitts": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "KN",
+        "n": "SA Western {c} Time"
+    },
+    "America/St_Lucia": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "LC",
+        "n": "SA Western {c} Time"
+    },
+    "America/St_Thomas": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "VI",
+        "n": "SA Western {c} Time"
+    },
+    "America/St_Vincent": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "VC",
+        "n": "SA Western {c} Time"
     },
     "America/Swift_Current": {
         "f": "CST",
@@ -1995,6 +2079,12 @@
         },
         "c": "CA",
         "n": "Eastern {c} Time"
+    },
+    "America/Tortola": {
+        "f": "AST",
+        "o": "-4:0",
+        "c": "VG",
+        "n": "SA Western {c} Time"
     },
     "America/Vancouver": {
         "e": {
@@ -2121,6 +2211,27 @@
         "c": "AQ",
         "n": "West Asia {c} Time"
     },
+    "Antarctica/McMurdo": {
+        "e": {
+            "c": "S",
+            "m": 4,
+            "r": "0>1",
+            "t": "2:0",
+            "z": "s"
+        },
+        "f": "NZ{c}T",
+        "o": "12:0",
+        "s": {
+            "c": "D",
+            "m": 9,
+            "r": "l0",
+            "t": "2:0",
+            "v": "1:0",
+            "z": "s"
+        },
+        "c": "AQ",
+        "n": "New Zealand {c} Time"
+    },
     "Antarctica/Palmer": {
         "e": {
             "m": 4,
@@ -2158,6 +2269,26 @@
         "o": "6:0",
         "c": "AQ",
         "n": "Central Asia {c} Time"
+    },
+    "Arctic/Longyearbyen": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "CE{c}T",
+        "o": "1:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        },
+        "c": "SJ",
+        "n": "W. Europe {c} Time"
     },
     "Asia/Aden": {
         "f": "AST",
@@ -2405,6 +2536,24 @@
         "o": "9:0",
         "c": "RU",
         "n": "North Asia East {c} Time"
+    },
+    "Asia/Istanbul": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "EE{c}T",
+        "o": "2:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        }
     },
     "Asia/Jakarta": {
         "f": "WIB",
@@ -3348,6 +3497,26 @@
         "c": "DE",
         "n": "W. Europe {c} Time"
     },
+    "Europe/Bratislava": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "CE{c}T",
+        "o": "1:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        },
+        "c": "SK",
+        "n": "Central Europe {c} Time"
+    },
     "Europe/Brussels": {
         "e": {
             "m": 10,
@@ -3488,6 +3657,26 @@
         "c": "GI",
         "n": "W. Europe {c} Time"
     },
+    "Europe/Guernsey": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "GMT/BST",
+        "o": "0:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        },
+        "c": "GG",
+        "n": "GMT {c} Time"
+    },
     "Europe/Helsinki": {
         "e": {
             "m": 10,
@@ -3508,6 +3697,26 @@
         "c": "FI",
         "n": "FLE {c} Time"
     },
+    "Europe/Isle_of_Man": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "GMT/BST",
+        "o": "0:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        },
+        "c": "IM",
+        "n": "GMT {c} Time"
+    },
     "Europe/Istanbul": {
         "e": {
             "m": 10,
@@ -3527,6 +3736,26 @@
         },
         "c": "TR",
         "n": "Turkey {c} Time"
+    },
+    "Europe/Jersey": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "GMT/BST",
+        "o": "0:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        },
+        "c": "JE",
+        "n": "GMT {c} Time"
     },
     "Europe/Kaliningrad": {
         "f": "FET",
@@ -3573,6 +3802,26 @@
         },
         "c": "PT",
         "n": "GMT {c} Time"
+    },
+    "Europe/Ljubljana": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "CE{c}T",
+        "o": "1:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        },
+        "c": "SI",
+        "n": "Central Europe {c} Time"
     },
     "Europe/London": {
         "e": {
@@ -3654,6 +3903,26 @@
         "c": "MT",
         "n": "W. Europe {c} Time"
     },
+    "Europe/Mariehamn": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "EE{c}T",
+        "o": "2:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        },
+        "c": "AX",
+        "n": "FLE {c} Time"
+    },
     "Europe/Minsk": {
         "f": "FET",
         "o": "3:0",
@@ -3685,6 +3954,24 @@
         "o": "4:0",
         "c": "RU",
         "n": "Russian {c} Time"
+    },
+    "Europe/Nicosia": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "EE{c}T",
+        "o": "2:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        }
     },
     "Europe/Oslo": {
         "e": {
@@ -3725,6 +4012,26 @@
         },
         "c": "FR",
         "n": "Romance {c} Time"
+    },
+    "Europe/Podgorica": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "CE{c}T",
+        "o": "1:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        },
+        "c": "ME",
+        "n": "Central Europe {c} Time"
     },
     "Europe/Prague": {
         "e": {
@@ -3792,6 +4099,46 @@
         "c": "RU",
         "n": "Russian {c} Time"
     },
+    "Europe/San_Marino": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "CE{c}T",
+        "o": "1:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        },
+        "c": "SM",
+        "n": "W. Europe {c} Time"
+    },
+    "Europe/Sarajevo": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "CE{c}T",
+        "o": "1:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        },
+        "c": "BA",
+        "n": "Central European {c} Time"
+    },
     "Europe/Simferopol": {
         "e": {
             "m": 10,
@@ -3811,6 +4158,26 @@
         },
         "c": "UA",
         "n": "FLE {c} Time"
+    },
+    "Europe/Skopje": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "CE{c}T",
+        "o": "1:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        },
+        "c": "MK",
+        "n": "Central European {c} Time"
     },
     "Europe/Sofia": {
         "e": {
@@ -3912,6 +4279,26 @@
         "c": "UA",
         "n": "FLE {c} Time"
     },
+    "Europe/Vatican": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "CE{c}T",
+        "o": "1:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        },
+        "c": "VA",
+        "n": "W. Europe {c} Time"
+    },
     "Europe/Vienna": {
         "e": {
             "m": 10,
@@ -3976,6 +4363,26 @@
             "z": "u"
         },
         "c": "PL",
+        "n": "Central European {c} Time"
+    },
+    "Europe/Zagreb": {
+        "e": {
+            "m": 10,
+            "r": "l0",
+            "t": "1:0",
+            "z": "u"
+        },
+        "f": "CE{c}T",
+        "o": "1:0",
+        "s": {
+            "c": "S",
+            "m": 3,
+            "r": "l0",
+            "t": "1:0",
+            "v": "1:0",
+            "z": "u"
+        },
+        "c": "HR",
         "n": "Central European {c} Time"
     },
     "Europe/Zaporozhye": {
@@ -4303,6 +4710,12 @@
         "f": "HST",
         "o": "-10:0",
         "c": "US",
+        "n": "Hawaiian {c} Time"
+    },
+    "Pacific/Johnston": {
+        "f": "HST",
+        "o": "-10:0",
+        "c": "UM",
         "n": "Hawaiian {c} Time"
     },
     "Pacific/Kiritimati": {
