@@ -174,7 +174,7 @@ function testDateFmtDateTimeSimpleShort_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/09/29、13:45", fmt.format(date));
+    assertEquals("11/09/29 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleMedium_ja_JP() {
@@ -191,7 +191,7 @@ function testDateFmtDateTimeSimpleMedium_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011/09/29、13:45", fmt.format(date));
+    assertEquals("2011/09/29 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleLong_ja_JP() {
@@ -208,7 +208,7 @@ function testDateFmtDateTimeSimpleLong_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年9月29日、13:45", fmt.format(date));
+    assertEquals("2011年9月29日 13:45", fmt.format(date));
 }
 
 function testDateFmtDateTimeSimpleFull_ja_JP() {
@@ -225,7 +225,7 @@ function testDateFmtDateTimeSimpleFull_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011年9月29日、13:45", fmt.format(date));
+    assertEquals("2011年9月29日 13:45", fmt.format(date));
 }
 
 
@@ -453,7 +453,7 @@ function testDateFmtTypeDateTime_ja_JP() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/09/29、13:45", fmt.format(date));
+    assertEquals("11/09/29 13:45", fmt.format(date));
 }
 
 
