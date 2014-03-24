@@ -1183,3 +1183,57 @@ function testTZGetCountry3() {
     
     assertEquals("UA", tz.getCountry());
 }
+
+function testTZLinkedZonesUseDST() {
+    var tz = new ilib.TimeZone({id: "Europe/Zagreb"});
+    assertNotNull(tz);
+
+    assertTrue(tz.useDaylightTime());
+}
+
+function testTZLinkedZonesInDST() {
+    var tz = new ilib.TimeZone({id: "Europe/Zagreb"});
+    assertNotNull(tz);
+
+    var jan1 = ilib.Date.newInstance({year: 2014, month: 1, day: 1, timezone: "Etc/UTC"});
+    var jul1 = ilib.Date.newInstance({year: 2014, month: 7, day: 1, timezone: "Etc/UTC"});
+    assertFalse(tz.inDaylightTime(jan1));
+    assertTrue(tz.inDaylightTime(jul1));
+}
+
+function testTZLinkedZonesRightOffset() {
+    var tz = new ilib.TimeZone({id: "Europe/Zagreb"});
+    assertNotNull(tz);
+
+    var jan1 = ilib.Date.newInstance({year: 2014, month: 1, day: 1, timezone: "Etc/UTC"});
+    var jul1 = ilib.Date.newInstance({year: 2014, month: 7, day: 1, timezone: "Etc/UTC"});
+    assertObjectEquals({h:1}, tz.getOffset(jan1));
+    assertObjectEquals({h:2}, tz.getOffset(jul1));
+}
+
+function testTZLinkedZonesUseDST2() {
+    var tz = new ilib.TimeZone({id: "Europe/Bratislava"});
+    assertNotNull(tz);
+
+    assertTrue(tz.useDaylightTime());
+}
+
+function testTZLinkedZonesInDST2() {
+    var tz = new ilib.TimeZone({id: "Europe/Bratislava"});
+    assertNotNull(tz);
+
+    var jan1 = ilib.Date.newInstance({year: 2014, month: 1, day: 1, timezone: "Etc/UTC"});
+    var jul1 = ilib.Date.newInstance({year: 2014, month: 7, day: 1, timezone: "Etc/UTC"});
+    assertFalse(tz.inDaylightTime(jan1));
+    assertTrue(tz.inDaylightTime(jul1));
+}
+
+function testTZLinkedZonesRightOffset2() {
+    var tz = new ilib.TimeZone({id: "Europe/Bratislava"});
+    assertNotNull(tz);
+
+    var jan1 = ilib.Date.newInstance({year: 2014, month: 1, day: 1, timezone: "Etc/UTC"});
+    var jul1 = ilib.Date.newInstance({year: 2014, month: 7, day: 1, timezone: "Etc/UTC"});
+    assertObjectEquals({h:1}, tz.getOffset(jan1));
+    assertObjectEquals({h:2}, tz.getOffset(jul1));
+}
