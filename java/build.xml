@@ -133,7 +133,8 @@ limitations under the License.
                 destdir="${classesDir}"
                 failonerror="true"
                 debug="${debugFlag}"
-                includeAntRuntime="no"
+				encoding="utf-8"
+			    includeAntRuntime="no"
                 optimize="${optimizeFlag}">
 			<classpath refid="${classPathRef}"/>
 			<exclude name="**/.svn/**"/>
