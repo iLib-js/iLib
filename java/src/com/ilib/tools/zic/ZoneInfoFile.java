@@ -106,7 +106,7 @@ public class ZoneInfoFile
                     rules.add(rule);
                     line = getLine();
                 } else if ( line.startsWith("Link") ) {
-                    tokens = line.split(" \t");
+                    tokens = line.split("[ \t]");
                     if ( tokens.length > 2 ) {
                         zone = zones.get(tokens[1]);
                         if ( zone != null ) {
