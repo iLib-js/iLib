@@ -641,6 +641,7 @@ function testDateFmtAlternateInputs1() {
     
     var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700 (PDT)");
     var ildMyBday = ilib.Date.newInstance({
+    	timezone: "Etc/UTC",
         year: 1982,
         month: 8,
         day: 13,

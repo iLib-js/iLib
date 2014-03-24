@@ -246,11 +246,11 @@ function testDateFmtINDateTimeSimpleFull_hi_IN() {
 
 
 function testDateFmtINTemplateCalendar_hi_IN() {
-    var fmt = new ilib.DateFmt({locale: "hi-IN", calendar: "julian", template: "yyyy-MM-dd"});
+    var fmt = new ilib.DateFmt({locale: "hi-IN", calendar: "julian", template: "yyyy-MM-dd", timezone: "local"});
     assertNotUndefined(fmt);
     
     var date = new ilib.Date.JulDate({
-		year: 2011,
+    	year: 2011,
 		month: 9,
 		day: 29,
 		hour: 13,

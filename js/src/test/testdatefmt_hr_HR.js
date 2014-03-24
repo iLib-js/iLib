@@ -798,7 +798,7 @@ function testDateFmtShortTimeComponentsHMZ_hr_HR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 CEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_hr_HR() {
@@ -819,7 +819,7 @@ function testDateFmtShortTimeComponentsHMAZ_hr_HR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 CEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_hr_HR() {
@@ -857,7 +857,7 @@ function testDateFmtShortTimeComponentsHMSZ_hr_HR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 CEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_hr_HR() {
@@ -878,7 +878,7 @@ function testDateFmtShortTimeComponentsHMSAZ_hr_HR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 CEST", fmt.format(date));
 }
 
 
@@ -1004,7 +1004,7 @@ function testDateFmtFullTimeComponentsHMZ_hr_HR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 CEST", fmt.format(date));
 }
 
 
@@ -1044,7 +1044,7 @@ function testDateFmtFullTimeComponentsHMSZ_hr_HR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 CEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_hr_HR() {
@@ -1066,7 +1066,7 @@ function testDateFmtFullTimeComponentsHMSAZ_hr_HR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 CEST", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_hr_HR() {
@@ -1088,7 +1088,7 @@ function testDateFmtWithTimeZoneAndNoDST_hr_HR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 CET", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_hr_HR() {

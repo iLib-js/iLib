@@ -864,7 +864,7 @@ function testDateFmtShortTimeComponentsHMZ_bs_Latn_BA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 CEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_bs_Latn_BA() {
@@ -885,7 +885,7 @@ function testDateFmtShortTimeComponentsHMAZ_bs_Latn_BA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 CEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_bs_Latn_BA() {
@@ -923,7 +923,7 @@ function testDateFmtShortTimeComponentsHMSZ_bs_Latn_BA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 CEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_bs_Latn_BA() {
@@ -944,7 +944,7 @@ function testDateFmtShortTimeComponentsHMSAZ_bs_Latn_BA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 CEST", fmt.format(date));
 }
 
 
@@ -1086,7 +1086,7 @@ function testDateFmtFullTimeComponentsHMZ_bs_Latn_BA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 CEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_bs_Latn_BA() {
@@ -1108,7 +1108,7 @@ function testDateFmtFullTimeComponentsHMAZ_bs_Latn_BA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 UTC", fmt.format(date));
+    assertEquals("13:45 CEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_bs_Latn_BA() {
@@ -1147,7 +1147,7 @@ function testDateFmtFullTimeComponentsHMSZ_bs_Latn_BA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 CEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_bs_Latn_BA() {
@@ -1169,7 +1169,7 @@ function testDateFmtFullTimeComponentsHMSAZ_bs_Latn_BA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 CEST", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_bs_Latn_BA() {
@@ -1191,7 +1191,7 @@ function testDateFmtWithTimeZoneAndNoDST_bs_Latn_BA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 UTC", fmt.format(date));
+    assertEquals("13:45:37 CET", fmt.format(date));
 }
 
 /*function testDateFmtFormatRelativeWithinMinuteAfter_bs_Latn_BA() {
