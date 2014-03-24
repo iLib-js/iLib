@@ -1,6 +1,6 @@
 {
 	"gregorian": {
-		"order": "{date}、{time}",
+		"order": "{date} {time}",
 		"date": {
 			"dmwy": {
 				"s": "Eyy/MM/d",
@@ -86,26 +86,26 @@
 		},
 		"range": {
 			"c00": {
-				"s": "{sy}/{sm}/{sd}、{st}-{et}",
-				"m": "{sy}/{sm}/{sd}、{st}-{et}",
+				"s": "{sy}/{sm}/{sd} {st}-{et}",
+				"m": "{sy}/{sm}/{sd} {st}-{et}",
 				"l": "{sy}年{sm}月{sd}日{st}-{et}",
 				"f": "{sy}年{sm}月{sd}日{st}-{et}"
 			},
 			"c01": {
-				"s": "{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}",
-				"m": "{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}",
+				"s": "{sy}/{sm}/{sd} {st}-{ey}/{em}/{ed} {et}",
+				"m": "{sy}/{sm}/{sd} {st}-{ey}/{em}/{ed} {et}",
 				"l": "{sy}年{sm}月{sd}日{st}-{ed}日{et}",
 				"f": "{sy}年{sm}月{sd}日{st}-{ed}日{et}"
 			},
 			"c02": {
-				"s": "{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}",
-				"m": "{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}",
+				"s": "{sy}/{sm}/{sd} {st}-{ey}/{em}/{ed} {et}",
+				"m": "{sy}/{sm}/{sd} {st}-{ey}/{em}/{ed} {et}",
 				"l": "{sy}年{sm}月{sd}日{st}-{em}月{ed}日{et}",
 				"f": "{sy}年{sm}月{sd}日{st}-{em}月{ed}日{et}"
 			},
 			"c03": {
-				"s": "{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}",
-				"m": "{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}",
+				"s": "{sy}/{sm}/{sd} {st}-{ey}/{em}/{ed} {et}",
+				"m": "{sy}/{sm}/{sd} {st}-{ey}/{em}/{ed} {et}",
 				"l": "{sy}年{sm}月{sd}日{st}-{ey}年{em}月{ed}日{et}",
 				"f": "{sy}年{sm}月{sd}日{st}-{ey}年{em}月{ed}日{et}"
 			},
