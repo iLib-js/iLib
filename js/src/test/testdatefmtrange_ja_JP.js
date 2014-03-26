@@ -39,7 +39,7 @@ function testDateRngFmtJPRangeInDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/12/31、13:45-14:30", fmt.format(start, end));
+    assertEquals("11/12/31 13:45-14:30", fmt.format(start, end));
 }
 function testDateRngFmtJPRangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ja-JP", length: "medium"});
@@ -63,7 +63,7 @@ function testDateRngFmtJPRangeInDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011/12/31、13:45-14:30", fmt.format(start, end));
+    assertEquals("2011/12/31 13:45-14:30", fmt.format(start, end));
 }
 function testDateRngFmtJPRangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ja-JP", length: "long"});
@@ -136,7 +136,7 @@ function testDateRngFmtJPRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/12/30、13:45-11/12/31、14:30", fmt.format(start, end));
+    assertEquals("11/12/30 13:45-11/12/31 14:30", fmt.format(start, end));
 }
 function testDateRngFmtJPRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "ja-JP", length: "medium"});
@@ -160,7 +160,7 @@ function testDateRngFmtJPRangeNextDayMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("2011/12/30、13:45-2011/12/31、14:30", fmt.format(start, end));
+    assertEquals("2011/12/30 13:45-2011/12/31 14:30", fmt.format(start, end));
 }
 function testDateRngFmtJPRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "ja-JP", length: "long"});

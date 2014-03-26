@@ -1,6 +1,6 @@
 {
 	"gregorian": {
-		"order": "{date}、{time}",
+		"order": "{date} {time}",
 		"date": {
 			"dmwy": {
 				"s": "Eyy/MM/d",
