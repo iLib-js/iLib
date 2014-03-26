@@ -863,7 +863,7 @@ function testDateFmtShortTimeComponentsHMZ_fi_FI() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45 UTC+0300", fmt.format(date));
+    assertEquals("13.45 EEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_fi_FI() {
@@ -884,7 +884,7 @@ function testDateFmtShortTimeComponentsHMAZ_fi_FI() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45 UTC+0300", fmt.format(date));
+    assertEquals("13.45 EEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_fi_FI() {
@@ -922,7 +922,7 @@ function testDateFmtShortTimeComponentsHMSZ_fi_FI() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37 UTC+0300", fmt.format(date));
+    assertEquals("13.45.37 EEST", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_fi_FI() {
@@ -943,7 +943,7 @@ function testDateFmtShortTimeComponentsHMSAZ_fi_FI() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37 UTC+0300", fmt.format(date));
+    assertEquals("13.45.37 EEST", fmt.format(date));
 }
 
 
@@ -1085,7 +1085,7 @@ function testDateFmtFullTimeComponentsHMZ_fi_FI() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45 UTC+0300", fmt.format(date));
+    assertEquals("13.45 EEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_fi_FI() {
@@ -1107,7 +1107,7 @@ function testDateFmtFullTimeComponentsHMAZ_fi_FI() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45 UTC+0300", fmt.format(date));
+    assertEquals("13.45 EEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_fi_FI() {
@@ -1146,7 +1146,7 @@ function testDateFmtFullTimeComponentsHMSZ_fi_FI() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37 UTC+0300", fmt.format(date));
+    assertEquals("13.45.37 EEST", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_fi_FI() {
@@ -1168,7 +1168,7 @@ function testDateFmtFullTimeComponentsHMSAZ_fi_FI() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37 UTC+0300", fmt.format(date));
+    assertEquals("13.45.37 EEST", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_fi_FI() {
@@ -1190,7 +1190,7 @@ function testDateFmtWithTimeZoneAndNoDST_fi_FI() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13.45.37 UTC+0200", fmt.format(date));
+    assertEquals("13.45.37 EET", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_fi_FI() {
