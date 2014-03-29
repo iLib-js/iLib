@@ -30,13 +30,17 @@ function suite() {
     var s = new cli.TestSuite();
     
     var suites = [
-		"benaresbundle.js"
+        {file: "beniaresbundle.js", iterations: 100},
+		{file: "benaresbundle.js", iterations: 1},
+        {file: "beniresbundle.js", iterations: 100},
+		{file: "benresbundle.js", iterations: 1},
+        {file: "beniadatefmt.js", iterations: 100}
 	];
 
     suites.forEach(function (path) {
-    	var ns = newSuite(path);
+    	var ns = newSuite(path.file);
     	ns.include("ilib-ut-compiled.js");
-    	s.addSuite(ns);
+    	s.addSuite(ns, path.iterations);
     });
     
     return s;

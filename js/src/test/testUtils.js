@@ -91,37 +91,39 @@ var TimedTest = function (options) {
 	this.name = this.name || "test";
 	this.whole = typeof(this.whole) === 'undefined' ? true : this.whole;
 	
-	this.millis = 0;
-	this.startTime = new Date().getTime();
+	this.micros = 0;
+	this.startTime = process.hrtime();
 	this.started = false;
 };
 
 TimedTest.prototype = {
 	run: function(results) {
 		for (var i = 0; i < this.iterations; i++) {
-			this.millis = 0;
+			this.micros = 0;
 			if (this.whole) this.start();
 			this.fn(this.args);
 			if (this.whole) this.stop();
 
 			// record the results
 			if (typeof(results[this.name]) === 'undefined') {
-				results[this.name] = [this.millis];
+				results[this.name] = [this.micros];
 			} else {
-				results[this.name].push(this.millis);
+				results[this.name].push(this.micros);
 			}
 		}
 	},
 	
 	start: function () {
-		this.startTime = new Date().getTime();
-		this.started = true;
+		if (!this.started) {
+			this.startTime = process.hrtime();
+			this.started = true;
+		}
 	},
 	
 	stop: function() {
 		if (this.started) {
-			var t = new Date().getTime();
-			this.millis += (t - this.startTime);
+			var t = process.hrtime(this.startTime);
+			this.micros += Math.floor((t[0] * 1e9 + t[1])/1000);
 			this.started = false;
 		}
 	}

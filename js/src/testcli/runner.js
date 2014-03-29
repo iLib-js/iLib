@@ -278,28 +278,40 @@ TestRunner.prototype = {
 		var bucketSize = max/10;
 		var buckets = [];
 		var start, j = 0;
+		var bucketBottom, bucketTop, bucket;
+		
 		function formatnum(num) {
 			return num.toPrecision((num < 1 && num != 0) ? 4 : 5);
 		}
-		for (var i = 0; i < 10; i++) {
-			var bucketBottom = i * bucketSize;
-			var bucketTop = ((i+1) * bucketSize);
-			var bucket = { range: "[" + formatnum(bucketBottom) + ", " + formatnum(bucketTop) + ")"};
+		for (var i = 0; i < 9; i++) {
+			bucketBottom = i * bucketSize;
+			bucketTop = ((i+1) * bucketSize);
+			bucket = { range: "[" + formatnum(bucketBottom) + ", " + formatnum(bucketTop) + ")"};
 			start = j;
-			while (j < measurements.length && measurements[j] < bucketTop ) j++;
+			while (j < measurements.length && measurements[j] < bucketTop) j++;
 			bucket.count = j - start;
 			buckets.push(bucket);
 		}
+		bucketBottom = 9 * bucketSize;
+		bucketTop = 10 * bucketSize;
+		bucket = { 
+			range: "[" + formatnum(bucketBottom) + ", " + formatnum(bucketTop) + "]",
+			count: measurements.length - j 
+		};
+		buckets.push(bucket);
 		return buckets;
 	},
 	
 	report: function() {
 		if (!this._isEmpty(this.results.timings)) {
+			var plusses = "+++++++++++++++++++++++++++++++++++++++";
+			
 			// bench mark tests were included
 			// console.log("timings are:\n" + JSON.stringify(this.results.timings));
 			for (var category in this.results.timings) {
 				var m = this.results.timings[category];
 				m.sort();
+				console.log("--------------------------------------------------------------------");
 				console.log("Category " + category);
 				console.log("Iter. : " + m.length);
 				console.log("Mean  : " + this.mean(m));
@@ -310,7 +322,7 @@ TestRunner.prototype = {
 				console.log("Histogram: ");
 				var hist = this.histogram(m);
 				for (var i = 0; i < hist.length; i++) {
-					console.log(hist[i].range + ": " + hist[i].count);
+					console.log(hist[i].range + ": " + hist[i].count + " " + plusses.substring(0,Math.floor(40*hist[i].count/m.length+0.5)));
 				}
 			}
 		}
