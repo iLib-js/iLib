@@ -94,7 +94,7 @@ ilib.data.mock_foobar_de = ilib.data.strings_de;
 
 function testResBundleConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-empty-initial",
+		name: "ResBundle-assembled-empty-initial",
 		fn: function () {
 			var rb = new ilib.ResBundle();		
 		    assertNotNull(rb);
@@ -106,7 +106,7 @@ function testResBundleConstructorEmptyInitial(results) {
 
 function testResBundleConstructorRealInitial(results) {
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-normal-initial",
+		name: "ResBundle-assembled-normal-initial",
 		fn: function () {
 			var rb = new ilib.ResBundle({
 				locale: "de-DE"
@@ -120,7 +120,7 @@ function testResBundleConstructorRealInitial(results) {
 
 function testResBundleConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-nonexistent-initial",
+		name: "ResBundle-assembled-nonexistent-initial",
 		fn: function () {
 			var rb = new ilib.ResBundle({
 				locale: "ja-JP"
@@ -134,7 +134,7 @@ function testResBundleConstructorNonexistentInitial(results) {
 
 function testResBundleConstructorOtherFileInitial(results) {
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-otherfile-initial",
+		name: "ResBundle-assembled-otherfile-initial",
 		fn: function () {
 			var rb = new ilib.ResBundle({
 				name: "tester"
@@ -148,7 +148,7 @@ function testResBundleConstructorOtherFileInitial(results) {
 
 function testResBundleConstructorOtherComplexInitial(results) {
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-otherfile-complex-initial",
+		name: "ResBundle-assembled-otherfile-complex-initial",
 		fn: function () {
 			var rb = new ilib.ResBundle({
 				name: "tester",

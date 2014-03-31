@@ -95,7 +95,7 @@ ilib.data.mock_foobar_de = ilib.data.strings_de;
 function testResBundleConstructorEmptySubsequent(results) {
 	new ilib.ResBundle(); // burn the initial iteration
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-empty-subsequent",
+		name: "ResBundle-assembled-empty-subsequent",
 		iterations: 1000,
 		fn: function () {
 			var rb = new ilib.ResBundle();		
@@ -112,7 +112,7 @@ function testResBundleConstructorRealSubsequent(results) {
 		locale: "de-DE"
 	}); 
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-normal-subsequent",
+		name: "ResBundle-assembled-normal-subsequent",
 		iterations: 1000,
 		fn: function () {
 			var rb = new ilib.ResBundle({
@@ -131,7 +131,7 @@ function testResBundleConstructorNonexistentSubsequent(results) {
 		locale: "ja-JP"
 	}); 
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-nonexistent-subsequent",
+		name: "ResBundle-assembled-nonexistent-subsequent",
 		iterations: 1000,
 		fn: function () {
 			var rb = new ilib.ResBundle({
@@ -150,7 +150,7 @@ function testResBundleConstructorOtherFileSubsequent(results) {
 		name: "tester"
 	}); 
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-otherfile-subsequent",
+		name: "ResBundle-assembled-otherfile-subsequent",
 		iterations: 1000,
 		fn: function () {
 			var rb = new ilib.ResBundle({
@@ -170,7 +170,7 @@ function testResBundleConstructorOtherComplexSubsequent(results) {
 		locale: "es-MX-slang"
 	}); 
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-otherfile-complex-subsequent",
+		name: "ResBundle-assembled-otherfile-complex-subsequent",
 		iterations: 1000,
 		fn: function () {
 			var rb = new ilib.ResBundle({
@@ -193,7 +193,7 @@ function testResBundleGetstringDefault(results) {
     rb.getString("first string");
     
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-getString-default",
+		name: "ResBundle-assembled-getString-default",
 		iterations: 1000,
 		fn: function () {
 			assertEquals("first", rb.getString("first string").toString());
@@ -212,7 +212,7 @@ function testResBundleGetstringNormal(results) {
     rb.getString("first string");
     
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-getString-normal",
+		name: "ResBundle-assembled-getString-normal",
 		iterations: 1000,
 		fn: function () {
 			assertEquals("erste String", rb.getString("first string").toString());
@@ -232,7 +232,7 @@ function testResBundleGetstringComplex(results) {
     rb.getString("Hello from {city}");
     
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-getString-complex",
+		name: "ResBundle-assembled-getString-complex",
 		iterations: 1000,
 		fn: function () {
 			assertEquals("Que tal de {city}", rb.getString("Hello from {city}").toString());
@@ -251,7 +251,7 @@ function testResBundleGetstringPseudo(results) {
     rb.getString("Hello from {city}");
     
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-getString-pseudo-default",
+		name: "ResBundle-assembled-getString-pseudo-default",
 		iterations: 1000,
 		fn: function () {
 			assertEquals("Ħëľľõ fŕõm {city}", rb.getString("Hello from {city}").toString());
@@ -271,7 +271,7 @@ function testResBundleGetStringOtherBundlePsuedoRaw(results) {
     assertNotNull(rb);
     
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-getString-pseudo-raw",
+		name: "ResBundle-assembled-getString-pseudo-raw",
 		iterations: 1000,
 		fn: function () {
 		    // should not pseudo-ize the replacement parameter names
@@ -292,7 +292,7 @@ function testResBundleGetStringOtherBundlePsuedoText(results) {
     assertNotNull(rb);
     
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-getString-pseudo-text",
+		name: "ResBundle-assembled-getString-pseudo-text",
 		iterations: 1000,
 		fn: function () {
 			// should not pseudo-ize the replacement parameter names
@@ -313,7 +313,7 @@ function testResBundleGetStringOtherBundlePsuedoHtml(results) {
     assertNotNull(rb);
     
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-getString-pseudo-html",
+		name: "ResBundle-assembled-getString-pseudo-html",
 		iterations: 1000,
 		fn: function () {
 		    // should not pseudo-ize the replacement parameter names
@@ -335,7 +335,7 @@ function testResBundleGetStringOtherBundlePsuedoXml(results) {
     
     // should not pseudo-ize the replacement parameter names
 	var tt = new TimedTest({
-		name: "assembled-ResBundle-getString-pseudo-xml",
+		name: "ResBundle-assembled-getString-pseudo-xml",
 		iterations: 1000,
 		fn: function () {
 	        assertEquals("Ħëľľõ fŕõm {country}", rb.getString("Hello from {country}").toString());
