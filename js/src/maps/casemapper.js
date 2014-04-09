@@ -161,9 +161,6 @@ ilib.CaseMapper = function (options) {
 				this.mapper = this.charMapper;
 			}
 			break;
-		case "lt":
-			this.mapper = this.charMapper;
-			break;
 	}
 	
 	if (!this.mapper) {

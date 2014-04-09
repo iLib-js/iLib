@@ -199,3 +199,11 @@ function testToUpper_fr_CA() {
 	});
     assertEquals("TÊTE-À-TÊTE", mapper.map("Tête-à-tête"));
 }
+
+// make sure it is not broken in Lithuanian
+function testToUpper_lt() {
+	var mapper = new ilib.CaseMapper({
+		locale: "lt-LT"
+	});
+    assertEquals("AĄBCČDEĘĖFGHIĮYJKLMNOPRSŠTUŲŪVZŽ", mapper.map("aąbcčdeęėfghiįyjklmnoprsštuųūvzž"));
+}

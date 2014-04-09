@@ -230,3 +230,12 @@ function testToLower_fr_CA() {
 	});
     assertEquals("tête-à-tête", mapper.map("TÊTE-À-TÊTE"));
 }
+
+//make sure it is not broken in Lithuanian
+function testToLower_lt() {
+	var mapper = new ilib.CaseMapper({
+		direction: "tolower",
+		locale: "lt-LT"
+	});
+    assertEquals("aąbcčdeęėfghiįyjklmnoprsštuųūvzž", mapper.map("AĄBCČDEĘĖFGHIĮYJKLMNOPRSŠTUŲŪVZŽ"));
+}
