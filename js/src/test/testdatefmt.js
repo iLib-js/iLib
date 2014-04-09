@@ -657,6 +657,46 @@ function testDateFmtAlternateInputs1() {
     assertEquals(strFormattedDate1, strFormattedDate2);
 };
 
+function testDateFmtFormatJSDate1() {
+    var fmt = new ilib.DateFmt({
+    	type: "time",
+    	length: "short",
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(fmt);
+    
+    // test formatting a javascript date. It should be converted to 
+    // an ilib date object automatically and then formatted
+    var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700 (PDT)");
+    assertEquals("1:37pm", fmt.format(datMyBday));
+};
+
+function testDateFmtFormatJSDate2() {
+    var fmt = new ilib.DateFmt({
+    	type: "time",
+    	length: "short",
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(fmt);
+    
+    // test formatting a javascript date. It should be converted to 
+    // an ilib date object automatically and then formatted
+    assertEquals("1:37pm", fmt.format(398119055000));
+};
+
+function testDateFmtFormatJSDate3() {
+    var fmt = new ilib.DateFmt({
+    	type: "time",
+    	length: "short",
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(fmt);
+    
+    // test formatting a javascript date. It should be converted to 
+    // an ilib date object automatically and then formatted
+    assertEquals("1:37pm", fmt.format("Fri Aug 13 1982 13:37:35 GMT-0700 (PDT)"));
+};
+
 function testDateFmtGetMonthsOfYear1() {
     var fmt = new ilib.DateFmt({locale: "en-US"});
     assertNotNull(fmt);

@@ -107,13 +107,19 @@ ilib.Date._dateToIlib = function(inDate) {
 		return inDate;
 	}
 	if (inDate instanceof Date) {
-		return ilib.Date.newInstance({unixtime: inDate.getTime()});
+		return ilib.Date.newInstance({
+			unixtime: inDate.getTime(),
+			timezone: "Etc/UTC"
+		});
 	}
 	if (inDate instanceof ilib.JulianDay) {
 		return ilib.Date.newInstance({jd: inDate});
 	}
 	if (typeof(inDate) === 'number') {
-		return ilib.Date.newInstance({unixtime: inDate});
+		return ilib.Date.newInstance({
+			unixtime: inDate,
+			timezone: "Etc/UTC"
+		});
 	}
 	if (typeof(inDate) === 'object') {
 		return ilib.Date.newInstance(inDate);
@@ -121,7 +127,10 @@ ilib.Date._dateToIlib = function(inDate) {
 	if (typeof(inDate) === 'string') {
 		inDate = new Date(inDate);
 	}
-	return ilib.Date.newInstance({unixtime: inDate.getTime()});
+	return ilib.Date.newInstance({
+		unixtime: inDate.getTime(),
+		timezone: "Etc/UTC"
+	});
 };
 
 /* place for the subclasses to put their constructors so that the factory method
