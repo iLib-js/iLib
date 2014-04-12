@@ -28,6 +28,7 @@ function suite() {
     var s = new cli.TestSuite();
     
     var suites = [
+        "testgregratadie.js",
 	    "testgregoriandate.js",
 	    "testgregorian.js",
 	    "testjuliandate.js",

@@ -1140,6 +1140,7 @@ ilib.DateFmt.prototype = {
 			
 			var newDate = ilib.Date.newInstance({
 				type: this.calName,
+				timezone: thisZoneName,
 				rd: date.getRataDie() - (offset / 86400) // 86400 seconds in a day
 			});
 			

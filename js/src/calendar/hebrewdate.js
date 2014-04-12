@@ -744,8 +744,11 @@ ilib.Date.HebrewDate.prototype.getEra = function() {
  * valid unix time range
  */
 ilib.Date.HebrewDate.prototype.getTime = function() {
+	if (typeof(this.unixtime) === 'number') {
+		return this.unixtime;
+	}
+	// not stored, so calculate it
 	var jd = this.getJulianDay();
-	var unix;
 
 	// not earlier than Jan 1, 1970 (Gregorian)
 	// or later than Jan 19, 2038 at 3:14:07am (Gregorian)
@@ -759,9 +762,9 @@ ilib.Date.HebrewDate.prototype.getTime = function() {
 		this.hour * 3600 + 
 		this.minute * 60 +
 		this.second;
-	var millis = seconds * 1000 + this.millisecond;
+	this.unixtime = seconds * 1000 + this.millisecond;
 	
-	return millis;
+	return this.unixtime;
 };
 
 /**
@@ -772,6 +775,7 @@ ilib.Date.HebrewDate.prototype.getTime = function() {
  */
 ilib.Date.HebrewDate.prototype.setTime = function(millis) {
 	var jd = 2440587.5 + millis / 86400000;
+	this.unixtime = millis;
 	this.setJulianDay(jd);
 };
 

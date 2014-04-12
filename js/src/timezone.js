@@ -24,13 +24,13 @@ locale.js
 localeinfo.js
 util/utils.js
 util/math.js
-calendar/gregoriandate.js
+calendar/gregratadie.js
 */
 
 // !data localeinfo timezones
 
 /**
- * @class Create a time zone information instance. 
+ * @class Create a time zone instance. 
  * 
  * This class reports and transforms
  * information about particular time zones.<p>
@@ -573,7 +573,6 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 		day, 
 		refDay, 
 		cal, 
-		rd, 
 		hour = 0, 
 		minute = 0, 
 		second = 0,
@@ -619,7 +618,7 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 		}
 	}
 	//console.log("calculating rd of " + year + "/" + rule.m + "/" + day);
-	refDay = new ilib.Date.GregDate({
+	refDay = new ilib.Date.GregRataDie({
 		year: year, 
 		month: rule.m, 
 		day: day, 
@@ -627,22 +626,21 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 		minute: minute, 
 		second: second
 	});
-	rd = refDay.getRataDie();
-	//console.log("rd is " + rd);
+	//console.log("refDay is " + JSON.stringify(refDay));
 	
 	switch (type) {
 		case 'l':
 		case '<':
 			//console.log("returning " + refDay.onOrBeforeRd(rd, weekday));
-			return refDay.onOrBeforeRd(rd, weekday);		
+			refDay = refDay.onOrBefore(weekday); 
+			break;
 		case 'f':
 		case '>':
 			//console.log("returning " + refDay.onOrAfterRd(rd, weekday));
-			return refDay.onOrAfterRd(rd, weekday);		
-		default:
-			//console.log("returning rd unchanged");
-			return rd;
+			refDay = refDay.onOrAfter(weekday); 
+			break;
 	}
+	return refDay.getRataDie();
 };
 
 /**
@@ -709,6 +707,29 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 	rd = date.getRataDie();
 	startRd = this._calcRuleStart(this.zone.s, date.year);
 	endRd = this._calcRuleStart(this.zone.e, date.year);
+
+	if (date.getTimeZone() !== this.id) {
+		// if the date has a different time zone than the current time 
+		// zones, convert both to UTC before comparing 
+		// The following should get its data 
+		// from the cache, so it is okay to load this zone synchronously
+		var datetz = new ilib.TimeZone({id: date.getTimeZone()});
+		
+		// this should not get into a recursive loop because the datetz and date
+		// are in the same time zone
+		rd -= datetz.getOffsetMillis(date)/86400000;
+	
+		if (typeof(this.dstSavings) === 'undefined') {
+			this._calcDSTSavings();
+		}
+		
+		if (typeof(this.offset) === 'undefined') {
+			this._calcOffset();
+		}
+		
+		startRd -= this.offset/1440;
+		endRd -= (this.offset + this.dstSavings)/1440;
+	}
 	
 	// In the northern hemisphere, the start comes first some time in spring (Feb-Apr), 
 	// then the end some time in the fall (Sept-Nov). In the southern
@@ -717,6 +738,10 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 	// savings time usually starts Aug-Oct of one year and runs through Mar-May of the 
 	// next year.
 	
+	if (rd < endRd && endRd - rd <= this.dstSavings/1440 && typeof(date.dst) === 'boolean') {
+		// take care of the magic overlap time at the end of DST
+		return date.dst;
+	}
 	if (startRd < endRd) {
 		// northern hemisphere
 		return (rd >= startRd && rd < endRd) ? true : false;

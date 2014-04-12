@@ -575,6 +575,10 @@ ilib.Date.IslamicDate.prototype.getEra = function() {
  * valid unix time range
  */
 ilib.Date.IslamicDate.prototype.getTime = function() {
+	if (typeof(this.unixtime) === 'number') {
+		return this.unixtime;
+	}
+	// not stored, so calculate it
 	var rd = this.calcRataDie({
 		year: this.year,
 		month: this.month,
@@ -584,7 +588,6 @@ ilib.Date.IslamicDate.prototype.getTime = function() {
 		second: this.second,
 		millisecond: 0
 	});
-	var unix;
 
 	// earlier than Jan 1, 1970
 	// or later than Jan 19, 2038 at 3:14:07am
@@ -598,9 +601,9 @@ ilib.Date.IslamicDate.prototype.getTime = function() {
 		this.hour * 3600 +
 		this.minute * 60 +
 		this.second;
-	var millis = seconds * 1000 + this.millisecond;
+	this.unixtime = seconds * 1000 + this.millisecond;
 	
-	return millis;
+	return this.unixtime;
 };
 
 /**

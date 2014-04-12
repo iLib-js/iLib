@@ -192,6 +192,10 @@ ilib.Date.ThaiSolarDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
  * valid unix time range
  */
 ilib.Date.ThaiSolarDate.prototype.getTime = function() {
+	if (typeof(this.unixtime) === 'number') {
+		return this.unixtime;
+	}
+	// not stored, so calculate it
 	var rd = this.calcRataDie({
 		year: this.year,
 		month: this.month,
@@ -214,9 +218,9 @@ ilib.Date.ThaiSolarDate.prototype.getTime = function() {
 		this.hour * 3600 +
 		this.minute * 60 +
 		this.second;
-	var millis = seconds * 1000 + this.millisecond;
+	this.unixtime = seconds * 1000 + this.millisecond;
 	
-	return millis;
+	return this.unixtime;
 };
 
 /**

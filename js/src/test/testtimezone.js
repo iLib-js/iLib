@@ -101,7 +101,7 @@ function testTZGetUnknownStr() {
     assertEquals("0:0", tz.getDSTSavingsStr());
 }
 
-function testTZDisplayNameDST() {
+function testTZDisplayNameDSTStandardStyle() {
     var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
     assertNotNull(tz);
     
@@ -137,7 +137,7 @@ function testTZDisplayNameDSTStyleRFC() {
     assertEquals("UTC-0700", tz.getDisplayName(gd, 'rfc822'));
 }
 
-function testTZDisplayNameDST() {
+function testTZDisplayNameDSTDaylightStandardStyle() {
     var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
     assertNotNull(tz);
     
@@ -149,7 +149,7 @@ function testTZDisplayNameDST() {
     assertEquals("PDT", tz.getDisplayName(gd, 'standard'));
 }
 
-function testTZDisplayNameDST() {
+function testTZDisplayNameDSTDaylightLongStyle() {
     var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
     assertNotNull(tz);
     
@@ -171,6 +171,38 @@ function testTZDisplayNameStandardTime() {
 		day: 1
 	});
     assertEquals("PST", tz.getDisplayName(gd, 'standard'));
+}
+
+function testTZDisplayNameStandardTimeAmbiguous() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+    
+    // this is in the magic overlap hour at the end of DST
+    var gd = new ilib.Date.GregDate({
+		year: 2014,
+		month: 11,
+		day: 2,
+		hour: 1,
+		minute: 30,
+		dst: false
+	});
+    assertEquals("PST", tz.getDisplayName(gd, 'standard'));
+}
+
+function testTZDisplayNameDaylightTimeAmbiguous() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+    
+    // this is in the magic overlap hour at the end of DST
+    var gd = new ilib.Date.GregDate({
+		year: 2014,
+		month: 11,
+		day: 2,
+		hour: 1,
+		minute: 30,
+		dst: true
+	});
+    assertEquals("PDT", tz.getDisplayName(gd, 'standard'));
 }
 
 function testTZDisplayNameStandardTimeRFC() {
@@ -289,6 +321,70 @@ function testTZGetOffsetDST() {
 		year: 2011,
 		month: 8,
 		day: 1
+	});
+    assertObjectEquals({h:-7}, tz.getOffset(gd));
+}
+
+function testTZGetOffsetRightBeforeDSTStart() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+
+    var date = new ilib.Date.GregDate({
+		timezone: "Etc/UTC",
+		unixtime: 1394359140000 // this is 3/9/2014 at 1:59am
+	});
+    
+    assertObjectEquals({h:-8}, tz.getOffset(date));
+}
+
+function testTZGetOffsetRightAfterDSTStart() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+
+    var date = new ilib.Date.GregDate({
+    	timezone: "Etc/UTC",
+		unixtime: 1394359260000
+	});
+    
+    // 2 minutes later
+    assertObjectEquals({h:-7}, tz.getOffset(date));
+}
+
+function testTZGetOffsetRightBeforeDSTEnd() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+
+    var date = new ilib.Date.GregDate({
+    	timezone: "Etc/UTC",
+		unixtime: 1414918740000 // this is 11/2/2014 at 1:59am
+	});
+    
+    assertObjectEquals({h:-7}, tz.getOffset(date));
+}
+
+function testTZGetOffsetRightAfterDSTEnd() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+
+    var date = new ilib.Date.GregDate({
+    	timezone: "Etc/UTC",
+		unixtime: 1414918860000
+	});
+    
+    // 2 minutes later
+    assertObjectEquals({h:-8}, tz.getOffset(date));
+}
+
+function testTZGetOffsetRightAfterDST() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+    
+    var gd = new ilib.Date.GregDate({
+		year: 2014,
+		month: 3,
+		day: 9,
+		hour: 2,
+		minute: 1
 	});
     assertObjectEquals({h:-7}, tz.getOffset(gd));
 }
@@ -459,6 +555,7 @@ function testTZInDaylightTimeTrue() {
     assertNotNull(tz);
     
     var gd = new ilib.Date.GregDate({
+    	timezone: "America/Los_Angeles",
 		year: 2011,
 		month: 7,
 		day: 1
@@ -470,6 +567,7 @@ function testTZInDaylightTimeFalse() {
     assertNotNull(tz);
     
     var gd = new ilib.Date.GregDate({
+    	timezone: "America/Los_Angeles",
 		year: 2011,
 		month: 12,
 		day: 1
@@ -481,6 +579,7 @@ function testTZInDaylightTimeNonDSTZone() {
     assertNotNull(tz);
     
     var gd = new ilib.Date.GregDate({
+    	timezone: "Australia/Phoenix",
 		year: 2011,
 		month: 7,
 		day: 1
@@ -505,6 +604,7 @@ function testTZInDaylightTimeJustBeforeStart() {
     assertNotNull(tz);
     
     var gd = new ilib.Date.GregDate({
+    	timezone: "America/Los_Angeles",
 		year: 2011,
 		month: 3,
 		day: 13,
@@ -519,6 +619,7 @@ function testTZInDaylightTimeJustAfterStart() {
     assertNotNull(tz);
     
     var gd = new ilib.Date.GregDate({
+    	timezone: "America/Los_Angeles",
 		year: 2011,
 		month: 3,
 		day: 13,
@@ -531,9 +632,10 @@ function testTZInDaylightTimeJustBeforeEnd() {
     assertNotNull(tz);
     
     var gd = new ilib.Date.GregDate({
-		year: 2011,
+    	timezone: "America/Los_Angeles",
+		year: 2014,
 		month: 11,
-		day: 6,
+		day: 2,
 		hour: 1,
 		minute: 59,
 		second: 59
@@ -545,9 +647,10 @@ function testTZInDaylightTimeJustAfterEnd() {
     assertNotNull(tz);
     
     var gd = new ilib.Date.GregDate({
-		year: 2011,
+    	timezone: "America/Los_Angeles",
+		year: 2014,
 		month: 11,
-		day: 6,
+		day: 2,
 		hour: 2
 	});
     assertFalse(tz.inDaylightTime(gd));
@@ -558,23 +661,26 @@ function testTZInDaylightTimeJustBeforeStartDownUnder() {
     assertNotNull(tz);
     
     var gd = new ilib.Date.GregDate({
-		year: 2011,
+    	timezone: "Australia/Sydney",
+		year: 2014,
 		month: 10,
-		day: 2,
+		day: 5,
 		hour: 1,
 		minute: 59,
 		second: 59
 	});
     assertFalse(tz.inDaylightTime(gd));
 }
+
 function testTZInDaylightTimeJustAfterStartDownUnder() {
     var tz = new ilib.TimeZone({id: "Australia/Sydney"});
     assertNotNull(tz);
     
     var gd = new ilib.Date.GregDate({
-		year: 2011,
+    	timezone: "Australia/Sydney",
+		year: 2014,
 		month: 10,
-		day: 2,
+		day: 5,
 		hour: 2
 	});
     assertTrue(tz.inDaylightTime(gd));
@@ -584,6 +690,7 @@ function testTZInDaylightTimeJustBeforeEndDownUnder() {
     assertNotNull(tz);
     
     var gd = new ilib.Date.GregDate({
+    	timezone: "Australia/Sydney",
 		year: 2011,
 		month: 4,
 		day: 3,
@@ -598,6 +705,7 @@ function testTZInDaylightTimeJustAfterEndDownUnder() {
     assertNotNull(tz);
     
     var gd = new ilib.Date.GregDate({
+    	timezone: "Australia/Sydney",
 		year: 2011,
 		month: 4,
 		day: 3,
@@ -1020,6 +1128,56 @@ function testTZGetOffsetMillisNonDSTZone2() {
 		day: 1
 	});
     assertEquals(-25200000, tz.getOffsetMillis(gd));
+}
+
+function testTZGetOffsetMillisRightBeforeDSTStart() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+
+    var date = new ilib.Date.GregDate({
+		timezone: "Etc/UTC",
+		unixtime: 1394359140000 // this is 3/9/2014 at 1:59am
+	});
+    
+    assertEquals(-28800000, tz.getOffsetMillis(date));
+}
+
+function testTZGetOffsetMillisRightAfterDSTStart() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+
+    var date = new ilib.Date.GregDate({
+    	timezone: "Etc/UTC",
+		unixtime: 1394359260000
+	});
+    
+    // 2 minutes later
+    assertEquals(-25200000, tz.getOffsetMillis(date));
+}
+
+function testTZGetOffsetMillisRightBeforeDSTEnd() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+
+    var date = new ilib.Date.GregDate({
+    	timezone: "Etc/UTC",
+		unixtime: 1414918740000 // this is 11/2/2014 at 1:59am
+	});
+    
+    assertEquals(-25200000, tz.getOffsetMillis(date));
+}
+
+function testTZGetOffsetMillisRightAfterDSTEnd() {
+    var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+
+    var date = new ilib.Date.GregDate({
+    	timezone: "Etc/UTC",
+		unixtime: 1414918860000
+	});
+    
+    // 2 minutes later
+    assertEquals(-28800000, tz.getOffsetMillis(date));
 }
 
 function testTZGetRawOffsetMillisDST() {
