@@ -799,7 +799,7 @@ function testGregDateOnOrBeforeSun() {
     var rd = gd.getRataDie();
     
     // Sunday on or before is 5 days before 
-    assertEquals(rd-5, gd.onOrBeforeRd(rd, 0));
+    assertEquals(rd-5, gd.onOrBefore(0).getRataDie());
 }
 
 function testGregDateOnOrBeforeMon() {
@@ -813,7 +813,7 @@ function testGregDateOnOrBeforeMon() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-4, gd.onOrBeforeRd(rd, 1));
+    assertEquals(rd-4, gd.onOrBefore(1).getRataDie());
 }
 
 function testGregDateOnOrBeforeTue() {
@@ -827,7 +827,7 @@ function testGregDateOnOrBeforeTue() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-3, gd.onOrBeforeRd(rd, 2));
+    assertEquals(rd-3, gd.onOrBefore(2).getRataDie());
 }
 
 function testGregDateOnOrBeforeWed() {
@@ -841,7 +841,7 @@ function testGregDateOnOrBeforeWed() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-2, gd.onOrBeforeRd(rd, 3));
+    assertEquals(rd-2, gd.onOrBefore(3).getRataDie());
 }
 
 function testGregDateOnOrBeforeThu() {
@@ -855,7 +855,7 @@ function testGregDateOnOrBeforeThu() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-1, gd.onOrBeforeRd(rd, 4));
+    assertEquals(rd-1, gd.onOrBefore(4).getRataDie());
 }
 
 function testGregDateOnOrBeforeFri() {
@@ -869,7 +869,7 @@ function testGregDateOnOrBeforeFri() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd, gd.onOrBeforeRd(rd, 5));
+    assertEquals(rd, gd.onOrBefore(5).getRataDie());
 }
 
 function testGregDateOnOrBeforeSat() {
@@ -883,7 +883,7 @@ function testGregDateOnOrBeforeSat() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-6, gd.onOrBeforeRd(rd, 6));
+    assertEquals(rd-6, gd.onOrBefore(6).getRataDie());
 }
 
 function testGregDateOnOrBeforeSunWithTime() {
@@ -900,7 +900,7 @@ function testGregDateOnOrBeforeSunWithTime() {
     
     // Sunday on or before is 5 days before 
     // Should give an rd result that also contains the fractional time 
-    assertEquals(rd-5, gd.onOrBeforeRd(rd, 0));
+    assertEquals(rd-5, gd.onOrBefore(0).getRataDie());
 }
 
 function testGregDateOnOrAfterSun() {
@@ -915,7 +915,7 @@ function testGregDateOnOrAfterSun() {
     var rd = gd.getRataDie();
     
     // Sunday on or before is 5 days before 
-    assertEquals(rd+2, gd.onOrAfterRd(rd, 0));
+    assertEquals(rd+2, gd.onOrAfter(0).getRataDie());
 }
 
 function testGregDateOnOrAfterSunDate() {
@@ -946,7 +946,7 @@ function testGregDateOnOrAfterMon() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+3, gd.onOrAfterRd(rd, 1));
+    assertEquals(rd+3, gd.onOrAfter(1).getRataDie());
 }
 
 function testGregDateOnOrAfterMonDate() {
@@ -976,7 +976,7 @@ function testGregDateOnOrAfterTue() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+4, gd.onOrAfterRd(rd, 2));
+    assertEquals(rd+4, gd.onOrAfter(2).getRataDie());
 }
 
 function testGregDateOnOrAfterWed() {
@@ -990,7 +990,7 @@ function testGregDateOnOrAfterWed() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+5, gd.onOrAfterRd(rd, 3));
+    assertEquals(rd+5, gd.onOrAfter(3).getRataDie());
 }
 
 function testGregDateOnOrAfterThu() {
@@ -1004,7 +1004,7 @@ function testGregDateOnOrAfterThu() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+6, gd.onOrAfterRd(rd, 4));
+    assertEquals(rd+6, gd.onOrAfter(4).getRataDie());
 }
 
 function testGregDateOnOrAfterThuDate() {
@@ -1034,7 +1034,7 @@ function testGregDateOnOrAfterFri() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd, gd.onOrAfterRd(rd, 5));
+    assertEquals(rd, gd.onOrAfter(5).getRataDie());
 }
 
 function testGregDateOnOrAfterFriDate() {
@@ -1064,7 +1064,7 @@ function testGregDateOnOrAfterSat() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+1, gd.onOrAfterRd(rd, 6));
+    assertEquals(rd+1, gd.onOrAfter(6).getRataDie());
 }
 
 function testGregDateBeforeSun() {
@@ -1079,7 +1079,7 @@ function testGregDateBeforeSun() {
     var rd = gd.getRataDie();
     
     // Sunday before is 5 days before 
-    assertEquals(rd-5, gd.beforeRd(rd, 0));
+    assertEquals(rd-5, gd.before(0).getRataDie());
 }
 
 function testGregDateBeforeSunDate() {
@@ -1110,7 +1110,7 @@ function testGregDateBeforeMon() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-4, gd.beforeRd(rd, 1));
+    assertEquals(rd-4, gd.before(1).getRataDie());
 }
 
 function testGregDateBeforeTue() {
@@ -1124,7 +1124,7 @@ function testGregDateBeforeTue() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-3, gd.beforeRd(rd, 2));
+    assertEquals(rd-3, gd.before(2).getRataDie());
 }
 
 function testGregDateBeforeWed() {
@@ -1138,7 +1138,7 @@ function testGregDateBeforeWed() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-2, gd.beforeRd(rd, 3));
+    assertEquals(rd-2, gd.before(3).getRataDie());
 }
 
 function testGregDateBeforeThu() {
@@ -1152,7 +1152,7 @@ function testGregDateBeforeThu() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-1, gd.beforeRd(rd, 4));
+    assertEquals(rd-1, gd.before(4).getRataDie());
 }
 
 function testGregDateBeforeThuDate() {
@@ -1183,7 +1183,7 @@ function testGregDateBeforeFri() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-7, gd.beforeRd(rd, 5));
+    assertEquals(rd-7, gd.before(5).getRataDie());
 }
 
 function testGregDateBeforeFriDate() {
@@ -1214,7 +1214,7 @@ function testGregDateBeforeSat() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-6, gd.beforeRd(rd, 6));
+    assertEquals(rd-6, gd.before(6).getRataDie());
 }
 
 function testGregDateAfterSun() {
@@ -1229,7 +1229,7 @@ function testGregDateAfterSun() {
     var rd = gd.getRataDie();
     
     // Sunday after is 2 days after 
-    assertEquals(rd+2, gd.afterRd(rd, 0));
+    assertEquals(rd+2, gd.after(0).getRataDie());
 }
 
 function testGregDateAfterSunDate() {
@@ -1260,7 +1260,7 @@ function testGregDateAfterMon() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+3, gd.afterRd(rd, 1));
+    assertEquals(rd+3, gd.after(1).getRataDie());
 }
 
 function testGregDateAfterTue() {
@@ -1274,7 +1274,7 @@ function testGregDateAfterTue() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+4, gd.afterRd(rd, 2));
+    assertEquals(rd+4, gd.after(2).getRataDie());
 }
 
 function testGregDateAfterWed() {
@@ -1288,7 +1288,7 @@ function testGregDateAfterWed() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+5, gd.afterRd(rd, 3));
+    assertEquals(rd+5, gd.after(3).getRataDie());
 }
 
 function testGregDateAfterThu() {
@@ -1302,7 +1302,7 @@ function testGregDateAfterThu() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+6, gd.afterRd(rd, 4));
+    assertEquals(rd+6, gd.after(4).getRataDie());
 }
 
 function testGregDateAfterFri() {
@@ -1316,7 +1316,7 @@ function testGregDateAfterFri() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+7, gd.afterRd(rd, 5));
+    assertEquals(rd+7, gd.after(5).getRataDie());
 }
 
 function testGregDateAfterFriDate() {
@@ -1347,7 +1347,7 @@ function testGregDateAfterSat() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+1, gd.afterRd(rd, 6));
+    assertEquals(rd+1, gd.after(6).getRataDie());
 }
 
 function testGregDateAfterSatDate() {

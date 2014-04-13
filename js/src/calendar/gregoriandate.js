@@ -111,19 +111,17 @@ timezone.js
 ilib.Date.GregDate = function(params) {
 	this.cal = new ilib.Cal.Gregorian();
 	this.timezone = "local";
-	this.tz = new ilib.TimeZone({id: this.timezone});
 
 	if (params) {
-		if (params.timezone) {
-			this.timezone = params.timezone;
-			this.tz = new ilib.TimeZone({id: this.timezone});
-		}
 		if (params.locale) {
 			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
 			if (!this.timezone) {
 				var li = new ilib.LocaleInfo(this.locale);
 				this.timezone = li.getTimeZone(); 
 			}
+		}
+		if (params.timezone) {
+			this.timezone = params.timezone;
 		}
 		
 		if (typeof(params.date) !== 'undefined') {
@@ -159,6 +157,8 @@ ilib.Date.GregDate = function(params) {
 			this.setRd(params.rd);
 		}
 	} 
+
+	this.tz = new ilib.TimeZone({id: this.timezone});
 	
 	if (!this.rd) {
 		var now = new Date();
@@ -195,7 +195,7 @@ ilib.Date.GregDate.prototype.setRd = function (rd) {
  * Calculate the date components for the current time zone
  */
 ilib.Date.GregDate.prototype.calcDateComponents = function () {
-	if (typeof(this.timezone) === 'undefined' || this.timezone === "local") {
+	if ( this.timezone === "local" && (this.rd.getRataDie() >= 719163 || this.rd.getRataDie() <= 744018.134803241)) {
 		// use the intrinsic JS Date object to do the tz conversion for us, which 
 		// guarantees that it follows the system tz database settings 
 		var d = new Date(this.rd.getTime());
@@ -249,11 +249,10 @@ ilib.Date.GregDate.prototype.calcDateComponents = function () {
 
 /**
  * Set the date of this instance using a Julian Day.
- * @param {number} date the Julian Day to use to set this date
+ * @param {number|ilib.JulianDay} date the Julian Day to use to set this date
  */
 ilib.Date.GregDate.prototype.setJulianDay = function (date) {
-	var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date;
-	this.rd = new ilib.Date.GregRataDie({jd : jd});
+	this.rd = new ilib.Date.GregRataDie({julianday: (typeof(date) === 'object') ? date.getDate() : date});
 	this.calcDateComponents();
 };
 
