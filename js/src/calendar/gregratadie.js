@@ -1,5 +1,5 @@
 /*
- * gregratadie.js - Represent the RD date in the Gregorian calendar
+ * gregratadie.js - Represent the RD date number in the Gregorian calendar
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -22,14 +22,13 @@ date.js
 calendar/gregorian.js 
 util/utils.js
 util/search.js 
-localeinfo.js 
 julianday.js 
 */
 
 /**
  * @class
  * 
- * Construct a new Gregorian RD date object. The constructor parameters can 
+ * Construct a new Gregorian RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
  * <ul>
@@ -94,9 +93,7 @@ ilib.Date.GregRataDie = function(params) {
 				params.minute || params.second || params.millisecond ) {
 			this._setDateComponents(params);
 		} else if (typeof(params.rd) !== 'undefined') {
-			// private parameter. Do not document this!
-			// RD time is defined to be UTC
-			this.rd = (params.rd instanceof ilib.DateFmt.GregRataDie) ? params.rd.rd : params.rd;
+			this.rd = (typeof(params.rd) === 'object' && params.rd instanceof ilib.DateFmt.GregRataDie) ? params.rd.rd : params.rd;
 		}
 	}
 	
@@ -232,62 +229,69 @@ ilib.Date.GregRataDie.prototype.getDayOfWeek = function() {
 
 /**
  * @private
- * Return the rd of the particular day of the week on or before the current rd.
- * eg. The Sunday on or before the given rd.
+ * Return the rd number of the particular day of the week on or before the 
+ * given rd. eg. The Sunday on or before the given rd.
+ * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the current date
  * @return {number} the rd of the day of the week
  */
-ilib.Date.GregRataDie.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
+ilib.Date.GregRataDie.prototype._onOrBeforeRd = function(rd, dayOfWeek) {
 	return rd - ilib.mod(Math.floor(rd) - dayOfWeek, 7);
 };
 
 /**
- * @private
- * Return the rd of the particular day of the week on or before the current rd.
- * eg. The Sunday on or before the given rd.
+ * Return the rd number of the particular day of the week on or before the current rd.
+ * eg. The Sunday on or before the current rd.
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the current date
+ * @return {number} the rd of the day of the week
+ */
+ilib.Date.GregRataDie.prototype.onOrBeforeRd = function(dayOfWeek) {
+	return this._onOrBeforeRd(this.rd, dayOfWeek);
+};
+
+/**
+ * Return the rd number of the particular day of the week on or before the current rd.
+ * eg. The Sunday on or before the current rd.
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
  * @return {number} the day of the week
  */
-ilib.Date.GregRataDie.prototype.onOrAfterRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd+6, dayOfWeek);
+ilib.Date.GregRataDie.prototype.onOrAfterRd = function(dayOfWeek) {
+	return this._onOrBeforeRd(this.rd+6, dayOfWeek);
 };
 
 /**
- * @private
- * Return the rd of the particular day of the week before the given rd.
- * eg. The Sunday before the given rd.
- * @param {number} rd the rata die date of the reference date
+ * Return the rd number of the particular day of the week before the current rd.
+ * eg. The Sunday before the current rd.
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
  * @return {number} the day of the week
  */
-ilib.Date.GregRataDie.prototype.beforeRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd-1, dayOfWeek);
+ilib.Date.GregRataDie.prototype.beforeRd = function(dayOfWeek) {
+	return this._onOrBeforeRd(this.rd-1, dayOfWeek);
 };
 
 /**
- * @private
- * Return the rd of the particular day of the week after the given rd.
- * eg. The Sunday after the given rd.
- * @param {number} rd the rata die date of the reference date
+ * Return the rd number of the particular day of the week after the current rd.
+ * eg. The Sunday after the current rd.
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the reference date
  * @return {number} the day of the week
  */
-ilib.Date.GregRataDie.prototype.afterRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd+7, dayOfWeek);
+ilib.Date.GregRataDie.prototype.afterRd = function(dayOfWeek) {
+	return this._onOrBeforeRd(this.rd+7, dayOfWeek);
 };
 
-/**
+/*
  * Return a new Gregorian date instance that represents the first instance of the 
  * given day of the week before the current date. The day of the week is encoded
  * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
  * @param {number} dow the day of the week before the current date that is being sought
  * @return {ilib.Date.GregRataDie} the date being sought
- */
+ *
 ilib.Date.GregRataDie.prototype.before = function (dow) {
 	return new ilib.Date.GregRataDie({rd: this.beforeRd(this.rd, dow)});
 };
@@ -299,7 +303,7 @@ ilib.Date.GregRataDie.prototype.before = function (dow) {
  * 
  * @param {number} dow the day of the week after the current date that is being sought
  * @return {ilib.Date.GregRataDie} the date being sought
- */
+ *
 ilib.Date.GregRataDie.prototype.after = function (dow) {
 	return new ilib.Date.GregRataDie({rd: this.afterRd(this.rd, dow)});
 };
@@ -311,9 +315,9 @@ ilib.Date.GregRataDie.prototype.after = function (dow) {
  * 
  * @param {number} dow the day of the week on or before the current date that is being sought
  * @return {ilib.Date.GregRataDie} the date being sought
- */
+ *
 ilib.Date.GregRataDie.prototype.onOrBefore = function (dow) {
-	return new ilib.Date.GregRataDie({rd: this.onOrBeforeRd(this.rd, dow)});
+	return new ilib.Date.GregRataDie({rd: this._onOrBeforeRd(this.rd, dow)});
 };
 
 /**
@@ -323,10 +327,11 @@ ilib.Date.GregRataDie.prototype.onOrBefore = function (dow) {
  * 
  * @param {number} dow the day of the week on or after the current date that is being sought
  * @return {ilib.Date.GregRataDie} the date being sought
- */
+ *
 ilib.Date.GregRataDie.prototype.onOrAfter = function (dow) {
 	return new ilib.Date.GregRataDie({rd: this.onOrAfterRd(this.rd, dow)});
 };
+*/
 
 /**
  * Return the unix time equivalent to this Gregorian date instance. Unix time is

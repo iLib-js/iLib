@@ -270,7 +270,7 @@ ilib.Date.GregDate.prototype.getDayOfWeek = function() {
 
 /**
  * @private
- * Return the rd of the first Sunday of the given ISO year.
+ * Return the rd number of the first Sunday of the given ISO year.
  * @param {number} year the year for which the first Sunday is being sought
  * @return {number} the rd of the first Sunday of the ISO year
  */
@@ -284,8 +284,8 @@ ilib.Date.GregDate.prototype.firstSunday = function (year) {
 		second: 0,
 		millisecond: 0
 	});
-	var firstThu = jan1.onOrAfter(4);
-	return firstThu.beforeRd(0).getRataDie();
+	var firstThu = new ilib.Date.GregRataDie({rd: jan1.onOrAfterRd(4)});
+	return firstThu.beforeRd(0);
 };
 
 /**
@@ -297,7 +297,7 @@ ilib.Date.GregDate.prototype.firstSunday = function (year) {
  * @return {ilib.Date} the date being sought
  */
 ilib.Date.GregDate.prototype.before = function (dow) {
-	return this.cal.newDateInstance({rd: this.rd.before(dow)});
+	return this.cal.newDateInstance({rd: this.rd.beforeRd(dow)});
 };
 
 /**
@@ -309,7 +309,7 @@ ilib.Date.GregDate.prototype.before = function (dow) {
  * @return {ilib.Date} the date being sought
  */
 ilib.Date.GregDate.prototype.after = function (dow) {
-	return this.cal.newDateInstance({rd: this.rd.after(dow)});
+	return this.cal.newDateInstance({rd: this.rd.afterRd(dow)});
 };
 
 /**
@@ -321,7 +321,7 @@ ilib.Date.GregDate.prototype.after = function (dow) {
  * @return {ilib.Date} the date being sought
  */
 ilib.Date.GregDate.prototype.onOrBefore = function (dow) {
-	return this.cal.newDateInstance({rd: this.rd.onOrBefore(dow)});
+	return this.cal.newDateInstance({rd: this.rd.onOrBeforeRd(dow)});
 };
 
 /**
@@ -333,7 +333,7 @@ ilib.Date.GregDate.prototype.onOrBefore = function (dow) {
  * @return {ilib.Date} the date being sought
  */
 ilib.Date.GregDate.prototype.onOrAfter = function (dow) {
-	return this.cal.newDateInstance({rd: this.rd.onOrAfter(dow)});
+	return this.cal.newDateInstance({rd: this.rd.onOrAfterRd(dow)});
 };
 
 /**
@@ -401,7 +401,7 @@ ilib.Date.GregDate.prototype.getWeekOfMonth = function(locale) {
 			second: 0,
 			millisecond: 0
 		}),
-		weekStart = first.onOrAfter(li.getFirstDayOfWeek()).getRataDie();
+		weekStart = first.onOrAfterRd(li.getFirstDayOfWeek());
 	if (weekStart - first.getRataDie() > 3) {
 		// if the first week has 4 or more days in it of the current month, then consider
 		// that week 1. Otherwise, it is week 0. To make it week 1, move the week start
