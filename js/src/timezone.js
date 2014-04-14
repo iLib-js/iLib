@@ -627,20 +627,21 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 		second: second
 	});
 	//console.log("refDay is " + JSON.stringify(refDay));
+	var d = refDay.getRataDie();
 	
 	switch (type) {
 		case 'l':
 		case '<':
 			//console.log("returning " + refDay.onOrBeforeRd(rd, weekday));
-			refDay = refDay.onOrBefore(weekday); 
+			d = refDay.onOrBeforeRd(weekday); 
 			break;
 		case 'f':
 		case '>':
 			//console.log("returning " + refDay.onOrAfterRd(rd, weekday));
-			refDay = refDay.onOrAfter(weekday); 
+			d = refDay.onOrAfterRd(weekday); 
 			break;
 	}
-	return refDay.getRataDie();
+	return d;
 };
 
 /**
@@ -668,6 +669,14 @@ ilib.TimeZone.prototype._calcOffset = function () {
 		 */
 		this.offset = (Math.abs(offsetParts.h || 0) * 60 + (offsetParts.m || 0)) * ilib.signum(offsetParts.h || 0);
 	}
+};
+
+/**
+ * @private
+ */
+ilib.TimeZone.prototype._getDSTRule = function (year) {
+	// TODO: update this when historic/future zones are supported
+	return this.zone;
 };
 
 /**
@@ -705,8 +714,9 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 	}
 	
 	rd = date.getRataDie();
-	startRd = this._calcRuleStart(this.zone.s, date.year);
-	endRd = this._calcRuleStart(this.zone.e, date.year);
+	var rule = this._getDSTRule(date.year);
+	startRd = this._calcRuleStart(rule.s, date.year);
+	endRd = this._calcRuleStart(rule.e, date.year);
 
 	if (date.getTimeZone() !== this.id) {
 		// if the date has a different time zone than the current time 

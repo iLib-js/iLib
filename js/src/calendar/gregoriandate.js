@@ -115,10 +115,8 @@ ilib.Date.GregDate = function(params) {
 	if (params) {
 		if (params.locale) {
 			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
-			if (!this.timezone) {
-				var li = new ilib.LocaleInfo(this.locale);
-				this.timezone = li.getTimeZone(); 
-			}
+			var li = new ilib.LocaleInfo(this.locale);
+			this.timezone = li.getTimeZone(); 
 		}
 		if (params.timezone) {
 			this.timezone = params.timezone;
@@ -132,6 +130,8 @@ ilib.Date.GregDate = function(params) {
 			}
 			this.setTime(date.getTime());
 		} else if (typeof(params.unixtime) !== 'undefined') {
+			// unix time is defined to be UTC
+			this.timezone = "Etc/UTC";
 			this.setTime(parseInt(params.unixtime, 10));
 		} else if (typeof(params.julianday) !== 'undefined') {
 			// JD time is defined to be UTC
@@ -150,15 +150,37 @@ ilib.Date.GregDate = function(params) {
 				this.dst = params.dst;
 			}
 			this.rd = new ilib.Date.GregRataDie(params);
-			// TODO: offset the rd by the time zone
+			
+			// add the time zone offset to the rd to convert to UTC
+			var offset = 0;
+			if (this.timezone === "local") {
+				var d = new Date(this.year, this.month-1, this.day, this.hour, this.minute, this.second, this.millisecond);
+				offset = d.getTimezoneOffset() / 1440;
+			} else {
+				if (!this.tz) {
+					this.tz = new ilib.TimeZone({id: this.timezone});
+				}
+				// getOffsetMillis requires that this.year, this.rd, and this.dst 
+				// are set in order to figure out which time zone rules apply and 
+				// what the offset is at that point in the year
+				offset = -this.tz.getOffsetMillis(this) / 86400000;
+			}
+			if (offset !== 0) {
+				this.rd = new ilib.Date.GregRataDie({
+					rd: this.rd.getRataDie() + offset
+				});
+			}
 		} else if (typeof(params.rd) !== 'undefined') {
 			// private parameter. Do not document this!
 			// RD time is defined to be UTC
+			this.timezone = "Etc/UTC";
 			this.setRd(params.rd);
 		}
 	} 
 
-	this.tz = new ilib.TimeZone({id: this.timezone});
+	if (!this.tz) {
+		this.tz = new ilib.TimeZone({id: this.timezone});
+	}
 	
 	if (!this.rd) {
 		var now = new Date();
@@ -195,7 +217,7 @@ ilib.Date.GregDate.prototype.setRd = function (rd) {
  * Calculate the date components for the current time zone
  */
 ilib.Date.GregDate.prototype.calcDateComponents = function () {
-	if ( this.timezone === "local" && (this.rd.getRataDie() >= 719163 || this.rd.getRataDie() <= 744018.134803241)) {
+	if (this.timezone === "local" && (this.rd.getRataDie() >= 719163 || this.rd.getRataDie() <= 744018.134803241)) {
 		// use the intrinsic JS Date object to do the tz conversion for us, which 
 		// guarantees that it follows the system tz database settings 
 		var d = new Date(this.rd.getTime());
@@ -243,7 +265,76 @@ ilib.Date.GregDate.prototype.calcDateComponents = function () {
 		 */
 		this.millisecond = d.getMilliseconds();
 	} else {
-		// TODO: convert tz here
+		function calcYear(rd) {
+			var days400,
+				days100,
+				days4,
+				years400,
+				years100,
+				years4,
+				years1,
+				year;
+
+			years400 = Math.floor((rd - 1) / 146097);
+			days400 = ilib.mod((rd - 1), 146097);
+			years100 = Math.floor(days400 / 36524);
+			days100 = ilib.mod(days400, 36524);
+			years4 = Math.floor(days100 / 1461);
+			days4 = ilib.mod(days100, 1461);
+			years1 = Math.floor(days4 / 365);
+			
+			year = 400 * years400 + 100 * years100 + 4 * years4 + years1;
+			if (years100 !== 4 && years1 !== 4) {
+				year++;
+			}
+			return year;
+		}
+			
+		this.year = calcYear(this.rd.getRataDie());
+		
+		// now offset the RD by the time zone, then recalculate in case we were 
+		// near the year boundary
+		if (!this.tz) {
+			this.tz = new ilib.TimeZone({id: this.timezone});
+		}
+		var offset = this.tz.getOffsetMillis(this) / 86400000;
+		var rd = this.rd.getRataDie();
+		if (offset !== 0) {
+			rd += offset;
+			this.year = calcYear(rd);
+		}
+		
+		var yearStartRd = new ilib.Date.GregRataDie({
+			year: this.year,
+			month: 1,
+			day: 1
+		});
+		
+		// remainder is days into the year
+		var remainder = rd - yearStartRd.getRataDie() + 1;
+		
+		var cumulative = ilib.Cal.Gregorian.prototype.isLeapYear.call(this.cal, this.year) ? 
+			ilib.Date.GregRataDie.cumMonthLengthsLeap : 
+			ilib.Date.GregRataDie.cumMonthLengths; 
+		
+		this.month = ilib.bsearch(Math.floor(remainder), cumulative);
+		remainder = remainder - cumulative[this.month-1];
+		
+		this.day = Math.floor(remainder);
+		remainder -= this.day;
+		// now convert to milliseconds for the rest of the calculation
+		remainder = Math.round(remainder * 86400000);
+		
+		this.hour = Math.floor(remainder/3600000);
+		remainder -= this.hour * 3600000;
+		
+		this.minute = Math.floor(remainder/60000);
+		remainder -= this.minute * 60000;
+		
+		this.second = Math.floor(remainder/1000);
+		remainder -= this.second * 1000;
+		
+		this.millisecond = Math.floor(remainder);
 	}
 };
 
@@ -407,7 +498,7 @@ ilib.Date.GregDate.prototype.getWeekOfMonth = function(locale) {
 		// one week earlier.
 		weekStart -= 7;
 	}
-	return Math.floor((first.getRataDie() - weekStart) / 7) + 1;
+	return Math.floor((this.rd.getRataDie() - weekStart) / 7) + 1;
 };
 
 /**
@@ -499,8 +590,10 @@ ilib.Date.GregDate.prototype.setTimeZone = function (tzName) {
 	if (!tzName || tzName === "") {
 		// same as undefining it
 		this.timezone = undefined;
+		this.tz = undefined;
 	} else if (typeof(tzName) === 'string') {
 		this.timezone = tzName;
+		this.tz = undefined;
 		// assuming the same UTC time, but a new time zone, now we have to 
 		// recalculate what the date components are
 		this.calcDateComponents();

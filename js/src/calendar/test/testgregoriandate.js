@@ -519,13 +519,13 @@ function testGregDateConstructorEmpty() {
     var now = new Date(gd.getTime()); // compare against the JS date
     assertNotNull(gd);
     
-    assertEquals("year", now.getUTCFullYear(), gd.getYears());
-    assertEquals("month", now.getUTCMonth()+1, gd.getMonths()); // js date months are 0-11 instead of 1-12 like gregorian dates
-    assertEquals("day", now.getUTCDate(), gd.getDays());
-    assertEquals("hour", now.getUTCHours(), gd.getHours());
-    assertEquals("minute", now.getUTCMinutes(), gd.getMinutes());
-    assertEquals("second", now.getUTCSeconds(), gd.getSeconds());
-    assertEquals("millisecond", now.getUTCMilliseconds(), gd.getMilliseconds());
+    assertEquals("year", now.getFullYear(), gd.getYears());
+    assertEquals("month", now.getMonth()+1, gd.getMonths()); // js date months are 0-11 instead of 1-12 like gregorian dates
+    assertEquals("day", now.getDate(), gd.getDays());
+    assertEquals("hour", now.getHours(), gd.getHours());
+    assertEquals("minute", now.getMinutes(), gd.getMinutes());
+    assertEquals("second", now.getSeconds(), gd.getSeconds());
+    assertEquals("millisecond", now.getMilliseconds(), gd.getMilliseconds());
 }
 
 function testGregDateConstructorUnixTime() {
@@ -554,7 +554,8 @@ function testGregDateGetJulianDay() {
             hour: testDates[i][4],
             minute: testDates[i][5],
             second: testDates[i][6],
-            millisecond: testDates[i][7]
+            millisecond: testDates[i][7],
+            timezone: "Etc/UTC"
         });
     
         info("testing jd=" + testDates[i][0]);
@@ -702,11 +703,24 @@ function testGregDateTestGetTimeZero() {
     var gd = new ilib.Date.GregDate({
     	year: 1970, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
     assertEquals(0, gd.getTime());
+}
+
+function testGregDateTestGetTimeCalifornia() {
+    var gd = new ilib.Date.GregDate({
+    	year: 1970, 
+    	month: 1, 
+    	day: 1,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals(28800000, gd.getTime());
 }
 
 function testGregDateTestGetTime() {
@@ -715,7 +729,8 @@ function testGregDateTestGetTime() {
     	month: 1, 
     	day: 3,
 	   	hour: 8,
-	   	minute: 30
+	   	minute: 30,
+	   	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -726,7 +741,8 @@ function testGregDateTestGetTimeTooEarly() {
     var gd = new ilib.Date.GregDate({
     	year: 1969, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -737,7 +753,8 @@ function testGregDateTestGetTimeTooLate() {
     var gd = new ilib.Date.GregDate({
     	year: 2038, 
     	month: 1, 
-    	day: 20
+    	day: 20,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -748,7 +765,8 @@ function testGregDateTestSetTime1() {
     var gd = new ilib.Date.GregDate({
     	year: 1970, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     assertEquals(0, gd.getTime());
@@ -772,7 +790,8 @@ function testGregDateTestSetTimeZero() {
 	   	hour: 1,
 	   	minute: 1,
 	   	second: 1,
-	   	millisecond: 1
+	   	millisecond: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1753,7 +1772,8 @@ function testGregDateGetRataDie() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 3, 
-    	day: 8
+    	day: 8,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1814,7 +1834,7 @@ function testGregDateCurrentTimeWithTimeZone() {
     var d = new Date();
     assertNotNull(gd);
     
-    assertRoughlyEquals(d.getTime()-d.getTimezoneOffset()*60000, gd.getTime(), 30);
+    assertRoughlyEquals(d.getTime(), gd.getTime(), 30);
 }
 
 function testGregDateSetTimeZone() {
@@ -1889,7 +1909,7 @@ function testGregDateInitWithUnixTimeRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("local", gd.getTimeZone());
+    assertEquals("Etc/UTC", gd.getTimeZone());
 }
 
 function testGregDateInitWithJDRightTimeZone() {
@@ -1907,7 +1927,7 @@ function testGregDateInitWithRDRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("local", gd.getTimeZone());
+    assertEquals("Etc/UTC", gd.getTimeZone());
 }
 
 // for GF-33596
