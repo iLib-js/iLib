@@ -18,13 +18,9 @@
  */
 
 /* !depends 
-date.js
-calendar/gregoriandate.js
-calendar/thaisolar.js
-util/utils.js
-util/search.js 
-localeinfo.js 
-julianday.js 
+date.js 
+calendar/gregorian.js 
+util/jsutils.js
 */
 
 /**
@@ -92,7 +88,16 @@ julianday.js
  * @param {Object=} params parameters that govern the settings and behaviour of this Thai solar date
  */
 ilib.Date.ThaiSolarDate = function(params) {
-	ilib.Date.GregDate.call(this, params);
+	var p = params;
+	if (params) {
+		// there is 198327 days difference between the Thai solar and 
+		// Gregorian epochs which is equivalent to 543 years
+		ilib.shallowCopy(params, p);
+		if (typeof(p.year) !== 'undefined') {
+			p.year -= 543;	
+		}
+	}
+	ilib.Date.GregDate.call(this, p);
 	this.cal = new ilib.Cal.ThaiSolar();
 };
 
@@ -111,136 +116,13 @@ ilib.Date.ThaiSolarDate.epoch = 1523097.5;
 
 /**
  * @private
- * Return the Rata Die (fixed day) number for the given date.
- * @param {Object} parts the parts to calculate with
- * @return {number} the rd date as a number
+ * Calculate the date components for the current time zone
  */
-ilib.Date.ThaiSolarDate.prototype.calcRataDie = function(parts) {
-	var gregorianRd = this.parent.calcRataDie.call(this, {
-		year: parts.year - 543,
-		month: parts.month,
-		day: parts.day,
-		hour: parts.hour,
-		minute: parts.minute,
-		second: parts.second,
-		millisecond: parts.millisecond
-	});
+ilib.Date.ThaiSolarDate.prototype.calcDateComponents = function () {
 	// there is 198327 days difference between the Thai solar and 
 	// Gregorian epochs which is equivalent to 543 years
-	return gregorianRd + 198327;
-};
-
-/**
- * @private
- * Calculate date components for the given RD date.
- * @param {number} rd the RD date to calculate components for
- * @return {Object} object containing the component fields
- */
-ilib.Date.ThaiSolarDate.prototype.calcComponents = function (rd) {
-	// there is 198327 days difference between the Thai solar and 
-	// Gregorian epochs which is equivalent to 543 years
-	var gregorianComponents = this.parent.calcComponents.call(this, rd - 198327);
-	
-	gregorianComponents.year += 543;
-	return gregorianComponents;
-};
-
-/**
- * Set the date of this instance using a Julian Day.
- * @param {number} date the Julian Day to use to set this date
- */
-ilib.Date.ThaiSolarDate.prototype.setJulianDay = function (date) {
-	var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date,
-		rd;	// rata die -- # of days since the beginning of the calendar
-	
-	rd = jd.getDate() - ilib.Date.ThaiSolarDate.epoch; 	// Julian Days start at noon
-	this.setRd(rd);
-};
-
-/**
- * Return the day of the week of this date. The day of the week is encoded
- * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
- * 
- * @return {number} the day of the week
- */
-ilib.Date.ThaiSolarDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.getRataDie() - 198327);
-	return ilib.mod(rd, 7);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week on or before the given rd.
- * eg. The Sunday on or before the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- * @return {number} the day of the week
- */
-ilib.Date.ThaiSolarDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
-	return rd - ilib.mod(Math.floor(rd - 198327) - dayOfWeek, 7);
-};
-
-/**
- * Return the unix time equivalent to this ThaiSolar date instance. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970. This method only
- * returns a valid number for dates between midnight, Jan 1, 1970 and  
- * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
- * encodes a date outside of that range, this method will return -1.
- * 
- * @return {number} a number giving the unix time, or -1 if the date is outside the
- * valid unix time range
- */
-ilib.Date.ThaiSolarDate.prototype.getTime = function() {
-	if (typeof(this.unixtime) === 'number') {
-		return this.unixtime;
-	}
-	// not stored, so calculate it
-	var rd = this.calcRataDie({
-		year: this.year,
-		month: this.month,
-		day: this.day,
-		hour: this.hour,
-		minute: this.minute,
-		second: this.second,
-		millisecond: 0
-	});
-	
-	// earlier than Jan 1, 1970
-	// or later than Jan 19, 2038 at 3:14:07am
-	if (rd < 917490 || rd > 942345.134803241) { 
-		return -1;
-	}
-
-	// avoid the rounding errors in the floating point math by only using
-	// the whole days from the rd, and then calculating the milliseconds directly
-	var seconds = Math.floor(rd - 917490) * 86400 + 
-		this.hour * 3600 +
-		this.minute * 60 +
-		this.second;
-	this.unixtime = seconds * 1000 + this.millisecond;
-	
-	return this.unixtime;
-};
-
-/**
- * Set the time of this instance according to the given unix time. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970.
- * 
- * @param {number} millis the unix time to set this date to in milliseconds 
- */
-ilib.Date.ThaiSolarDate.prototype.setTime = function(millis) {
-	var rd = 917490 + millis / 86400000;
-	this.setRd(rd);
-};
-
-/**
- * Return the Julian Day equivalent to this calendar date as a number.
- * 
- * @return {number} the julian date equivalent of this date
- */
-ilib.Date.ThaiSolarDate.prototype.getJulianDay = function() {
-	return this.getRataDie() + ilib.Date.ThaiSolarDate.epoch;
+	this.parent.calcDateComponents.call(this);
+	this.year += 543;
 };
 
 /**

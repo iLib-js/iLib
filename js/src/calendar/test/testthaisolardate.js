@@ -944,7 +944,7 @@ function testThaiSolarDateOnOrBeforeSun() {
     var rd = td.getRataDie();
     
     // Sunday on or before is 5 days before 
-    assertEquals(rd-5, td.onOrBeforeRd(rd, 0));
+    assertEquals(rd-5, td.onOrBefore(0).getRataDie());
 }
 
 function testThaiSolarDateOnOrBeforeMon() {
@@ -958,7 +958,7 @@ function testThaiSolarDateOnOrBeforeMon() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd-4, td.onOrBeforeRd(rd, 1));
+    assertEquals(rd-4, td.onOrBefore(1).getRataDie());
 }
 
 function testThaiSolarDateOnOrBeforeTue() {
@@ -972,7 +972,7 @@ function testThaiSolarDateOnOrBeforeTue() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd-3, td.onOrBeforeRd(rd, 2));
+    assertEquals(rd-3, td.onOrBefore(2).getRataDie());
 }
 
 function testThaiSolarDateOnOrBeforeWed() {
@@ -986,7 +986,7 @@ function testThaiSolarDateOnOrBeforeWed() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd-2, td.onOrBeforeRd(rd, 3));
+    assertEquals(rd-2, td.onOrBefore(3).getRataDie());
 }
 
 function testThaiSolarDateOnOrBeforeThu() {
@@ -1000,7 +1000,7 @@ function testThaiSolarDateOnOrBeforeThu() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd-1, td.onOrBeforeRd(rd, 4));
+    assertEquals(rd-1, td.onOrBefore(4).getRataDie());
 }
 
 function testThaiSolarDateOnOrBeforeFri() {
@@ -1014,7 +1014,7 @@ function testThaiSolarDateOnOrBeforeFri() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd, td.onOrBeforeRd(rd, 5));
+    assertEquals(rd, td.onOrBefore(5).getRataDie());
 }
 
 function testThaiSolarDateOnOrBeforeSat() {
@@ -1028,7 +1028,7 @@ function testThaiSolarDateOnOrBeforeSat() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd-6, td.onOrBeforeRd(rd, 6));
+    assertEquals(rd-6, td.onOrBefore(6).getRataDie());
 }
 
 function testThaiSolarDateOnOrBeforeSunWithTime() {
@@ -1045,7 +1045,7 @@ function testThaiSolarDateOnOrBeforeSunWithTime() {
     
     // Sunday on or before is 5 days before 
     // Should give an rd result that also contains the fractional time 
-    assertEquals(rd-5, td.onOrBeforeRd(rd, 0));
+    assertEquals(rd-5, td.onOrBefore(0).getRataDie());
 }
 
 function testThaiSolarDateOnOrAfterSun() {
@@ -1060,7 +1060,7 @@ function testThaiSolarDateOnOrAfterSun() {
     var rd = td.getRataDie();
     
     // Sunday on or before is 5 days before 
-    assertEquals(rd+2, td.onOrAfterRd(rd, 0));
+    assertEquals(rd+2, td.onOrAfter(0).getRataDie());
 }
 
 function testThaiSolarDateOnOrAfterSunDate() {
@@ -1091,7 +1091,7 @@ function testThaiSolarDateOnOrAfterMon() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd+3, td.onOrAfterRd(rd, 1));
+    assertEquals(rd+3, td.onOrAfter(1).getRataDie());
 }
 
 function testThaiSolarDateOnOrAfterMonDate() {
@@ -1121,7 +1121,7 @@ function testThaiSolarDateOnOrAfterTue() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd+4, td.onOrAfterRd(rd, 2));
+    assertEquals(rd+4, td.onOrAfter(2).getRataDie());
 }
 
 function testThaiSolarDateOnOrAfterWed() {
@@ -1135,7 +1135,7 @@ function testThaiSolarDateOnOrAfterWed() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd+5, td.onOrAfterRd(rd, 3));
+    assertEquals(rd+5, td.onOrAfter(3).getRataDie());
 }
 
 function testThaiSolarDateOnOrAfterThu() {
@@ -1149,7 +1149,7 @@ function testThaiSolarDateOnOrAfterThu() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd+6, td.onOrAfterRd(rd, 4));
+    assertEquals(rd+6, td.onOrAfter(4).getRataDie());
 }
 
 function testThaiSolarDateOnOrAfterThuDate() {
@@ -1179,7 +1179,7 @@ function testThaiSolarDateOnOrAfterFri() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd, td.onOrAfterRd(rd, 5));
+    assertEquals(rd, td.onOrAfter(5).getRataDie());
 }
 
 function testThaiSolarDateOnOrAfterFriDate() {
@@ -1209,7 +1209,7 @@ function testThaiSolarDateOnOrAfterSat() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd+1, td.onOrAfterRd(rd, 6));
+    assertEquals(rd+1, td.onOrAfter(6).getRataDie());
 }
 
 function testThaiSolarDateBeforeSun() {
@@ -1224,7 +1224,7 @@ function testThaiSolarDateBeforeSun() {
     var rd = td.getRataDie();
     
     // Sunday before is 5 days before 
-    assertEquals(rd-5, td.beforeRd(rd, 0));
+    assertEquals(rd-5, td.before(0).getRataDie());
 }
 
 function testThaiSolarDateBeforeSunDate() {
@@ -1255,7 +1255,7 @@ function testThaiSolarDateBeforeMon() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd-4, td.beforeRd(rd, 1));
+    assertEquals(rd-4, td.before(1).getRataDie());
 }
 
 function testThaiSolarDateBeforeTue() {
@@ -1269,7 +1269,7 @@ function testThaiSolarDateBeforeTue() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd-3, td.beforeRd(rd, 2));
+    assertEquals(rd-3, td.before(2).getRataDie());
 }
 
 function testThaiSolarDateBeforeWed() {
@@ -1283,7 +1283,7 @@ function testThaiSolarDateBeforeWed() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd-2, td.beforeRd(rd, 3));
+    assertEquals(rd-2, td.before(3).getRataDie());
 }
 
 function testThaiSolarDateBeforeThu() {
@@ -1297,7 +1297,7 @@ function testThaiSolarDateBeforeThu() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd-1, td.beforeRd(rd, 4));
+    assertEquals(rd-1, td.before(4).getRataDie());
 }
 
 function testThaiSolarDateBeforeThuDate() {
@@ -1328,7 +1328,7 @@ function testThaiSolarDateBeforeFri() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd-7, td.beforeRd(rd, 5));
+    assertEquals(rd-7, td.before(5).getRataDie());
 }
 
 function testThaiSolarDateBeforeFriDate() {
@@ -1359,7 +1359,7 @@ function testThaiSolarDateBeforeSat() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd-6, td.beforeRd(rd, 6));
+    assertEquals(rd-6, td.before(6).getRataDie());
 }
 
 function testThaiSolarDateAfterSun() {
@@ -1374,7 +1374,7 @@ function testThaiSolarDateAfterSun() {
     var rd = td.getRataDie();
     
     // Sunday after is 2 days after 
-    assertEquals(rd+2, td.afterRd(rd, 0));
+    assertEquals(rd+2, td.after(0).getRataDie());
 }
 
 function testThaiSolarDateAfterSunDate() {
@@ -1405,7 +1405,7 @@ function testThaiSolarDateAfterMon() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd+3, td.afterRd(rd, 1));
+    assertEquals(rd+3, td.after(1).getRataDie());
 }
 
 function testThaiSolarDateAfterTue() {
@@ -1419,7 +1419,7 @@ function testThaiSolarDateAfterTue() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd+4, td.afterRd(rd, 2));
+    assertEquals(rd+4, td.after(2).getRataDie());
 }
 
 function testThaiSolarDateAfterWed() {
@@ -1433,7 +1433,7 @@ function testThaiSolarDateAfterWed() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd+5, td.afterRd(rd, 3));
+    assertEquals(rd+5, td.after(3).getRataDie());
 }
 
 function testThaiSolarDateAfterThu() {
@@ -1447,7 +1447,7 @@ function testThaiSolarDateAfterThu() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd+6, td.afterRd(rd, 4));
+    assertEquals(rd+6, td.after(4).getRataDie());
 }
 
 function testThaiSolarDateAfterFri() {
@@ -1461,7 +1461,7 @@ function testThaiSolarDateAfterFri() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd+7, td.afterRd(rd, 5));
+    assertEquals(rd+7, td.after(5).getRataDie());
 }
 
 function testThaiSolarDateAfterFriDate() {
@@ -1492,7 +1492,7 @@ function testThaiSolarDateAfterSat() {
     assertEquals(5, td.getDayOfWeek()); // Friday
     var rd = td.getRataDie();
     
-    assertEquals(rd+1, td.afterRd(rd, 6));
+    assertEquals(rd+1, td.after(6).getRataDie());
 }
 
 function testThaiSolarDateAfterSatDate() {

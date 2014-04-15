@@ -130,12 +130,8 @@ ilib.Date.GregDate = function(params) {
 			}
 			this.setTime(date.getTime());
 		} else if (typeof(params.unixtime) !== 'undefined') {
-			// unix time is defined to be UTC
-			this.timezone = "Etc/UTC";
 			this.setTime(parseInt(params.unixtime, 10));
 		} else if (typeof(params.julianday) !== 'undefined') {
-			// JD time is defined to be UTC
-			this.timezone = "Etc/UTC";
 			this.setJulianDay(parseFloat(params.julianday));
 		} else if (params.year || params.month || params.day || params.hour ||
 				params.minute || params.second || params.millisecond ) {
@@ -172,16 +168,10 @@ ilib.Date.GregDate = function(params) {
 			}
 		} else if (typeof(params.rd) !== 'undefined') {
 			// private parameter. Do not document this!
-			// RD time is defined to be UTC
-			this.timezone = "Etc/UTC";
 			this.setRd(params.rd);
 		}
 	} 
 
-	if (!this.tz) {
-		this.tz = new ilib.TimeZone({id: this.timezone});
-	}
-	
 	if (!this.rd) {
 		var now = new Date();
 		this.setTime(now.getTime());

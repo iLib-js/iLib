@@ -284,55 +284,6 @@ ilib.Date.GregRataDie.prototype.afterRd = function(dayOfWeek) {
 	return this._onOrBeforeRd(this.rd+7, dayOfWeek);
 };
 
-/*
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week before the current date that is being sought
- * @return {ilib.Date.GregRataDie} the date being sought
- *
-ilib.Date.GregRataDie.prototype.before = function (dow) {
-	return new ilib.Date.GregRataDie({rd: this.beforeRd(this.rd, dow)});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week after the current date that is being sought
- * @return {ilib.Date.GregRataDie} the date being sought
- *
-ilib.Date.GregRataDie.prototype.after = function (dow) {
-	return new ilib.Date.GregRataDie({rd: this.afterRd(this.rd, dow)});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week on or before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or before the current date that is being sought
- * @return {ilib.Date.GregRataDie} the date being sought
- *
-ilib.Date.GregRataDie.prototype.onOrBefore = function (dow) {
-	return new ilib.Date.GregRataDie({rd: this._onOrBeforeRd(this.rd, dow)});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week on or after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or after the current date that is being sought
- * @return {ilib.Date.GregRataDie} the date being sought
- *
-ilib.Date.GregRataDie.prototype.onOrAfter = function (dow) {
-	return new ilib.Date.GregRataDie({rd: this.onOrAfterRd(this.rd, dow)});
-};
-*/
-
 /**
  * Return the unix time equivalent to this Gregorian date instance. Unix time is
  * the number of milliseconds since midnight on Jan 1, 1970. This method only

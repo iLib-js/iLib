@@ -855,10 +855,10 @@ ilib.DateFmt.prototype = {
 		}
 		
 		if (!date) {
-			date = ilib.Date.newInstance({type: this.cal.getType()});
+			date = this.cal.newDateInstance();
 		}
 
-		monthCount = this.cal.getNumMonths( date.getYears() );
+		monthCount = this.cal.getNumMonths(date.getYears());
 		for (var i = 1; i <= monthCount; i++) {
 			months[i] = this.sysres.getString(this._getTemplate(template + i, this.cal.getType())).toString();
 		}
@@ -1119,29 +1119,11 @@ ilib.DateFmt.prototype = {
 		// convert to the time zone of this formatter before formatting
 		if (dateZoneName !== thisZoneName) {
 			// console.log("Differing time zones date: " + dateZoneName + " and fmt: " + thisZoneName + ". Converting...");
-			
-			var datetz = new ilib.TimeZone({
-				locale: date.locale,
-				id: dateZoneName
-			});
-			var thistz = this.tz || new ilib.TimeZone({
-				locale: date.locale,
-				id: thisZoneName
-			});
-			
-			var dateOffset = datetz.getOffsetMillis(date)/1000,
-				fmtOffset = thistz.getOffsetMillis(date)/1000,
-				// relative offset in seconds
-				offset = dateOffset - fmtOffset;
-			
-			//console.log("Date offset is " + JSON.stringify(dateOffset));
-			//console.log("Formatter offset is " + JSON.stringify(fmtOffset));
-			//console.log("Relative offset is " + offset + " seconds.");
-			
+			// this will recalculate the date components based on the new time zone
 			var newDate = ilib.Date.newInstance({
 				type: this.calName,
 				timezone: thisZoneName,
-				rd: date.getRataDie() - (offset / 86400) // 86400 seconds in a day
+				rd: date.getRataDie()
 			});
 			
 			date = newDate;
