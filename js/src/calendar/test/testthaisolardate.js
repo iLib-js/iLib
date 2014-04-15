@@ -79,9 +79,9 @@ function testThaiSolarDateConstructorFromRdComplex2() {
     assertEquals(1721424.5, td.getJulianDay());
 }
 
-function testThaiSolarDateConstructorFromRdComplex2() {
+function testThaiSolarDateConstructorFromRdComplex3() {
 	// start of the gregorian calendar
-    var td = new ilib.Date.ThaiSolarDate({rd: 198327}); 
+    var td = new ilib.Date.ThaiSolarDate({rd: 198327, timezone: "Etc/UTC"}); 
     
     assertEquals(543, td.getYears());
     assertEquals(12, td.getMonths());
@@ -101,7 +101,7 @@ function testThaiSolarDateConstructorFromJDRightRd() {
 
 /* julian date is rd 366 + epoch */
 function testThaiSolarDateConstructorFromJDYear2() {
-    var td = new ilib.Date.ThaiSolarDate({julianday: 1721790.75});
+    var td = new ilib.Date.ThaiSolarDate({julianday: 1721790.75, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(td));
     assertEquals(545, td.getYears());
@@ -114,7 +114,7 @@ function testThaiSolarDateConstructorFromJDYear2() {
 }
 
 function testThaiSolarDateAfterLeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({julianday: 1723071.9});  // jul 5, 05, 9:36am
+    var td = new ilib.Date.ThaiSolarDate({julianday: 1723071.9, timezone: "Etc/UTC"});  // jul 5, 05, 9:36am
     
     assertEquals('object', typeof(td));
     assertEquals(548, td.getYears());
@@ -127,7 +127,7 @@ function testThaiSolarDateAfterLeapYear() {
 }
 
 function testThaiSolarDateJan31Midnight() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 932860});  // Jan 31, 2555 12:00am
+    var td = new ilib.Date.ThaiSolarDate({rd: 932860, timezone: "Etc/UTC"});  // Jan 31, 2555 12:00am
     
     assertEquals('object', typeof(td));
     assertEquals(2555, td.getYears());
@@ -140,7 +140,7 @@ function testThaiSolarDateJan31Midnight() {
 }
 
 function testThaiSolarDateJan31Noon() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 932860.5});  // Jan 31, 2555 12:00pm
+    var td = new ilib.Date.ThaiSolarDate({rd: 932860.5, timezone: "Etc/UTC"});  // Jan 31, 2555 12:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(2555, td.getYears());
@@ -153,7 +153,7 @@ function testThaiSolarDateJan31Noon() {
 }
 
 function testThaiSolarDateFeb1() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 932861.5});  // Feb 1, 2555 12:00pm
+    var td = new ilib.Date.ThaiSolarDate({rd: 932861.5, timezone: "Etc/UTC"});  // Feb 1, 2555 12:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(2555, td.getYears());
@@ -166,7 +166,7 @@ function testThaiSolarDateFeb1() {
 }
 
 function testThaiSolarDateFeb28LeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 932888.5});  // Feb 28, 2555 12:00pm
+    var td = new ilib.Date.ThaiSolarDate({rd: 932888.5, timezone: "Etc/UTC"});  // Feb 28, 2555 12:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(2555, td.getYears());
@@ -179,7 +179,7 @@ function testThaiSolarDateFeb28LeapYear() {
 }
 
 function testThaiSolarDateFeb29LeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 932889.5});  // Feb 29, 2555 12:00pm
+    var td = new ilib.Date.ThaiSolarDate({rd: 932889.5, timezone: "Etc/UTC"});  // Feb 29, 2555 12:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(2555, td.getYears());
@@ -192,7 +192,7 @@ function testThaiSolarDateFeb29LeapYear() {
 }
 
 function testThaiSolarDateMar1LeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 932890.5});  // Mar 1, 2555 12:00pm
+    var td = new ilib.Date.ThaiSolarDate({rd: 932890.5, timezone: "Etc/UTC"});  // Mar 1, 2555 12:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(2555, td.getYears());
@@ -205,7 +205,7 @@ function testThaiSolarDateMar1LeapYear() {
 }
 
 function testThaiSolarDateMar31LeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 932920.5});  // Mar 31, 2555 12:00pm
+    var td = new ilib.Date.ThaiSolarDate({rd: 932920.5, timezone: "Etc/UTC"});  // Mar 31, 2555 12:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(2555, td.getYears());
@@ -218,7 +218,7 @@ function testThaiSolarDateMar31LeapYear() {
 }
 
 function testThaiSolarDateApr1LeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 932921.5});  // Apr 1, 2555 12:00pm
+    var td = new ilib.Date.ThaiSolarDate({rd: 932921.5, timezone: "Etc/UTC"});  // Apr 1, 2555 12:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(2555, td.getYears());
@@ -231,7 +231,7 @@ function testThaiSolarDateApr1LeapYear() {
 }
 
 function testThaiSolarDateDec31LeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 933195.5});  // Dec 31, 2555 12:00pm
+    var td = new ilib.Date.ThaiSolarDate({rd: 933195.5, timezone: "Etc/UTC"});  // Dec 31, 2555 12:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(2555, td.getYears());
@@ -244,7 +244,7 @@ function testThaiSolarDateDec31LeapYear() {
 }
 
 function testThaiSolarDateJan1NonLeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 933196.5});  // Jan 1, 2556 12:00pm
+    var td = new ilib.Date.ThaiSolarDate({rd: 933196.5, timezone: "Etc/UTC"});  // Jan 1, 2556 12:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(2556, td.getYears());
@@ -257,7 +257,7 @@ function testThaiSolarDateJan1NonLeapYear() {
 }
 
 function testThaiSolarDateFeb28NonLeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 933254.5});  // Feb 28, 2556 12:00pm
+    var td = new ilib.Date.ThaiSolarDate({rd: 933254.5, timezone: "Etc/UTC"});  // Feb 28, 2556 12:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(2556, td.getYears());
@@ -270,7 +270,7 @@ function testThaiSolarDateFeb28NonLeapYear() {
 }
 
 function testThaiSolarDateMar1NonLeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 933255.5});  // Mar 1, 2556 12:00pm
+    var td = new ilib.Date.ThaiSolarDate({rd: 933255.5, timezone: "Etc/UTC"});  // Mar 1, 2556 12:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(2556, td.getYears());
@@ -283,7 +283,7 @@ function testThaiSolarDateMar1NonLeapYear() {
 }
 
 function testThaiSolarDateMar31NonLeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 933285.5});  // Mar 31, 2556 12:00pm
+    var td = new ilib.Date.ThaiSolarDate({rd: 933285.5, timezone: "Etc/UTC"});  // Mar 31, 2556 12:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(2556, td.getYears());
@@ -296,7 +296,7 @@ function testThaiSolarDateMar31NonLeapYear() {
 }
 
 function testThaiSolarDateApr1NonLeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 933286.5});  // Apr 1, 2556 12:00pm
+    var td = new ilib.Date.ThaiSolarDate({rd: 933286.5, timezone: "Etc/UTC"});  // Apr 1, 2556 12:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(2556, td.getYears());
@@ -309,7 +309,7 @@ function testThaiSolarDateApr1NonLeapYear() {
 }
 
 function testThaiSolarDateAfterCentury() {
-    var td = new ilib.Date.ThaiSolarDate({julianday: 1758231.8}); // Oct 10, 101, 7:12am
+    var td = new ilib.Date.ThaiSolarDate({julianday: 1758231.8, timezone: "Etc/UTC"}); // Oct 10, 101, 7:12am
     
     assertEquals('object', typeof(td));
     assertEquals(644, td.getYears());
@@ -322,7 +322,7 @@ function testThaiSolarDateAfterCentury() {
 }
 
 function testThaiSolarDateAfterQuadCentury() {
-    var td = new ilib.Date.ThaiSolarDate({julianday: 1867706.833333333333}); // Jul 4, 401, 8:00pm
+    var td = new ilib.Date.ThaiSolarDate({julianday: 1867706.833333333333, timezone: "Etc/UTC"}); // Jul 4, 401, 8:00pm
     
     assertEquals('object', typeof(td));
     assertEquals(944, td.getYears());
@@ -335,7 +335,7 @@ function testThaiSolarDateAfterQuadCentury() {
 }
 
 function testThaiSolarDateEndOfYear() {
-    var td = new ilib.Date.ThaiSolarDate({julianday: 2455196.5});
+    var td = new ilib.Date.ThaiSolarDate({julianday: 2455196.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(td));
     assertEquals(2552, td.getYears());
@@ -348,7 +348,7 @@ function testThaiSolarDateEndOfYear() {
 }
 
 function testThaiSolarDateBeginningOfYear() {
-    var td = new ilib.Date.ThaiSolarDate({julianday: 2455197.5});
+    var td = new ilib.Date.ThaiSolarDate({julianday: 2455197.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(td));
     assertEquals(2553, td.getYears());
@@ -361,7 +361,7 @@ function testThaiSolarDateBeginningOfYear() {
 }
 
 function testThaiSolarDateEndOfYearLeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({julianday: 2454831.5});
+    var td = new ilib.Date.ThaiSolarDate({julianday: 2454831.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(td));
     assertEquals(2551, td.getYears());
@@ -374,7 +374,7 @@ function testThaiSolarDateEndOfYearLeapYear() {
 }
 
 function testThaiSolarDateBeginningOfYearAfterLeapYear() {
-    var td = new ilib.Date.ThaiSolarDate({julianday: 2454832.5});
+    var td = new ilib.Date.ThaiSolarDate({julianday: 2454832.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(td));
     assertEquals(2552, td.getYears());
@@ -387,7 +387,7 @@ function testThaiSolarDateBeginningOfYearAfterLeapYear() {
 }
 
 function testThaiSolarDateEndOfYear0Rd() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 0});
+    var td = new ilib.Date.ThaiSolarDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(td));
     assertEquals(0, td.getYears());
@@ -400,7 +400,7 @@ function testThaiSolarDateEndOfYear0Rd() {
 }
 
 function testThaiSolarDateBeginningOfYearRd() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 1});
+    var td = new ilib.Date.ThaiSolarDate({rd: 1, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(td));
     assertEquals(1, td.getYears());
@@ -413,7 +413,7 @@ function testThaiSolarDateBeginningOfYearRd() {
 }
 
 function testThaiSolarDateAlmostEndOfYearRd() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 364});
+    var td = new ilib.Date.ThaiSolarDate({rd: 364, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(td));
     assertEquals(1, td.getYears());
@@ -426,7 +426,7 @@ function testThaiSolarDateAlmostEndOfYearRd() {
 }
 
 function testThaiSolarDateEndOfYearRd() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 365});
+    var td = new ilib.Date.ThaiSolarDate({rd: 365, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(td));
     assertEquals(1, td.getYears());
@@ -439,7 +439,7 @@ function testThaiSolarDateEndOfYearRd() {
 }
 
 function testThaiSolarDateBeginningOfYear2Rd() {
-    var td = new ilib.Date.ThaiSolarDate({rd: 366});
+    var td = new ilib.Date.ThaiSolarDate({rd: 366, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(td));
     assertEquals(2, td.getYears());
@@ -492,7 +492,7 @@ function testThaiSolarDateConvert() {
     var td;
     
     for (var i = 0; i < testDates.length; i++) {
-        td = new ilib.Date.ThaiSolarDate({julianday: testDates[i][0]});
+        td = new ilib.Date.ThaiSolarDate({julianday: testDates[i][0], timezone: "Etc/UTC"});
     
         info("testing jd=" + testDates[i][0]);
         
@@ -582,18 +582,19 @@ function testThaiSolarDateConstructorEmpty() {
     var now = new Date(td.getTime()); // compare against the JS date
     assertNotNull(td);
     
-    assertEquals("year", now.getUTCFullYear()+543, td.getYears());
-    assertEquals("month", now.getUTCMonth()+1, td.getMonths()); // js date months are 0-11 instead of 1-12 like gregorian dates
-    assertEquals("day", now.getUTCDate(), td.getDays());
-    assertEquals("hour", now.getUTCHours(), td.getHours());
-    assertEquals("minute", now.getUTCMinutes(), td.getMinutes());
-    assertEquals("second", now.getUTCSeconds(), td.getSeconds());
-    assertEquals("millisecond", now.getUTCMilliseconds(), td.getMilliseconds());
+    assertEquals("year", now.getFullYear()+543, td.getYears());
+    assertEquals("month", now.getMonth()+1, td.getMonths()); // js date months are 0-11 instead of 1-12 like gregorian dates
+    assertEquals("day", now.getDate(), td.getDays());
+    assertEquals("hour", now.getHours(), td.getHours());
+    assertEquals("minute", now.getMinutes(), td.getMinutes());
+    assertEquals("second", now.getSeconds(), td.getSeconds());
+    assertEquals("millisecond", now.getMilliseconds(), td.getMilliseconds());
 }
 
 function testThaiSolarDateConstructorUnixTime() {
     var td = new ilib.Date.ThaiSolarDate({
-    	unixtime: 61000
+    	unixtime: 61000, 
+		timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -617,7 +618,8 @@ function testThaiSolarDateGetJulianDay() {
             hour: testDates[i][4],
             minute: testDates[i][5],
             second: testDates[i][6],
-            millisecond: testDates[i][7]
+            millisecond: testDates[i][7],
+            timezone: "Etc/UTC"
         });
     
         info("testing jd=" + testDates[i][0]);
@@ -847,7 +849,8 @@ function testThaiSolarDateTestGetTimeZero() {
     var td = new ilib.Date.ThaiSolarDate({
     	year: 2513, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -860,7 +863,8 @@ function testThaiSolarDateTestGetTime() {
     	month: 1, 
     	day: 3,
 	   	hour: 8,
-	   	minute: 30
+	   	minute: 30,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -871,7 +875,8 @@ function testThaiSolarDateTestGetTimeTooEarly() {
     var td = new ilib.Date.ThaiSolarDate({
     	year: 2512, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -882,7 +887,8 @@ function testThaiSolarDateTestGetTimeTooLate() {
     var td = new ilib.Date.ThaiSolarDate({
     	year: 2581, 
     	month: 1, 
-    	day: 20
+    	day: 20,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -893,7 +899,8 @@ function testThaiSolarDateTestSetTime1() {
     var td = new ilib.Date.ThaiSolarDate({
     	year: 2513, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     assertEquals(0, td.getTime());
@@ -917,7 +924,8 @@ function testThaiSolarDateTestSetTimeZero() {
 	   	hour: 1,
 	   	minute: 1,
 	   	second: 1,
-	   	millisecond: 1
+	   	millisecond: 1,
+	   	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1882,7 +1890,10 @@ function testThaiSolarDateGetEraCEYear0() {
 }
 
 function testThaiSolarDateJan1Midnight() {
-    var td = new ilib.Date.ThaiSolarDate({julianday: 2455197.5});
+    var td = new ilib.Date.ThaiSolarDate({
+    	julianday: 2455197.5,
+	   	timezone: "Etc/UTC"
+	});
     assertNotNull(td);
     
     assertEquals(2553, td.year);
@@ -1898,7 +1909,8 @@ function testThaiSolarDateGetRataDie() {
     var td = new ilib.Date.ThaiSolarDate({
     	year: 2554, 
     	month: 3, 
-    	day: 8
+    	day: 8,
+	   	timezone: "Etc/UTC"
     });
     assertNotNull(td);
     
@@ -1959,7 +1971,7 @@ function testThaiSolarDateCurrentTimeWithTimeZone() {
     var d = new Date();
     assertNotNull(td);
     
-    assertRoughlyEquals(d.getTime()-d.getTimezoneOffset()*60000, td.getTime(), 30);
+    assertRoughlyEquals(d.getTime(), td.getTime(), 30);
 }
 
 function testThaiSolarDateSetTimeZone() {
@@ -2043,7 +2055,7 @@ function testThaiSolarDateInitWithJDRightTimeZone() {
     });
     assertNotNull(td);
     
-    assertEquals("Etc/UTC", td.getTimeZone());
+    assertEquals("local", td.getTimeZone());
 }
 
 function testThaiSolarDateInitWithRDRightTimeZone() {

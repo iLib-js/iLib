@@ -204,10 +204,39 @@ ilib.Date.GregDate.prototype.setRd = function (rd) {
 
 /**
  * @private
+ * Calculates the Gregorian year for a given rd number.
+ */
+ilib.Date.GregDate.prototype._calcYear = function(rd) {
+	var days400,
+		days100,
+		days4,
+		years400,
+		years100,
+		years4,
+		years1,
+		year;
+
+	years400 = Math.floor((rd - 1) / 146097);
+	days400 = ilib.mod((rd - 1), 146097);
+	years100 = Math.floor(days400 / 36524);
+	days100 = ilib.mod(days400, 36524);
+	years4 = Math.floor(days100 / 1461);
+	days4 = ilib.mod(days100, 1461);
+	years1 = Math.floor(days4 / 365);
+	
+	year = 400 * years400 + 100 * years100 + 4 * years4 + years1;
+	if (years100 !== 4 && years1 !== 4) {
+		year++;
+	}
+	return year;
+};
+
+/**
+ * @private
  * Calculate the date components for the current time zone
  */
 ilib.Date.GregDate.prototype.calcDateComponents = function () {
-	if (this.timezone === "local" && (this.rd.getRataDie() >= 719163 || this.rd.getRataDie() <= 744018.134803241)) {
+	if (this.timezone === "local" && this.rd.getRataDie() >= 719163 && this.rd.getRataDie() <= 744018.134803241) {
 		// use the intrinsic JS Date object to do the tz conversion for us, which 
 		// guarantees that it follows the system tz database settings 
 		var d = new Date(this.rd.getTime());
@@ -255,32 +284,7 @@ ilib.Date.GregDate.prototype.calcDateComponents = function () {
 		 */
 		this.millisecond = d.getMilliseconds();
 	} else {
-		function calcYear(rd) {
-			var days400,
-				days100,
-				days4,
-				years400,
-				years100,
-				years4,
-				years1,
-				year;
-
-			years400 = Math.floor((rd - 1) / 146097);
-			days400 = ilib.mod((rd - 1), 146097);
-			years100 = Math.floor(days400 / 36524);
-			days100 = ilib.mod(days400, 36524);
-			years4 = Math.floor(days100 / 1461);
-			days4 = ilib.mod(days100, 1461);
-			years1 = Math.floor(days4 / 365);
-			
-			year = 400 * years400 + 100 * years100 + 4 * years4 + years1;
-			if (years100 !== 4 && years1 !== 4) {
-				year++;
-			}
-			return year;
-		}
-			
-		this.year = calcYear(this.rd.getRataDie());
+		this.year = this._calcYear(this.rd.getRataDie());
 		
 		// now offset the RD by the time zone, then recalculate in case we were 
 		// near the year boundary
@@ -291,7 +295,7 @@ ilib.Date.GregDate.prototype.calcDateComponents = function () {
 		var rd = this.rd.getRataDie();
 		if (offset !== 0) {
 			rd += offset;
-			this.year = calcYear(rd);
+			this.year = this._calcYear(rd);
 		}
 		
 		var yearStartRd = new ilib.Date.GregRataDie({
@@ -425,15 +429,16 @@ ilib.Date.GregDate.prototype.onOrAfter = function (dow) {
  */
 ilib.Date.GregDate.prototype.getWeekOfYear = function() {
 	var rd = Math.floor(this.rd.getRataDie()),
-		yearStart = this.firstSunday(this.year),
+		gregorianYear = this._calcYear(rd),
+		yearStart = this.firstSunday(gregorianYear),
 		nextYear;
 	
 	// if we have a January date, it may be in this ISO year or the previous year
 	if (rd < yearStart) {
-		yearStart = this.firstSunday(this.year-1);
+		yearStart = this.firstSunday(gregorianYear-1);
 	} else if (this.month == 12 && this.day > 25) {
 		// if we have a late December date, it may be in this ISO year, or the next year
-		nextYear = this.firstSunday(this.year+1);
+		nextYear = this.firstSunday(gregorianYear+1);
 		if (rd >= nextYear) {
 			yearStart = nextYear;
 		}
@@ -473,7 +478,7 @@ ilib.Date.GregDate.prototype.getDayOfYear = function() {
 ilib.Date.GregDate.prototype.getWeekOfMonth = function(locale) {
 	var li = new ilib.LocaleInfo(locale),
 		first = new ilib.Date.GregRataDie({
-			year: this.year,
+			year: this._calcYear(this.rd.getRataDie()),
 			month: this.month,
 			day: 1,
 			hour: 0,

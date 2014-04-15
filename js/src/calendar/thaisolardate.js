@@ -92,13 +92,20 @@ ilib.Date.ThaiSolarDate = function(params) {
 	if (params) {
 		// there is 198327 days difference between the Thai solar and 
 		// Gregorian epochs which is equivalent to 543 years
+		p = {};
 		ilib.shallowCopy(params, p);
 		if (typeof(p.year) !== 'undefined') {
 			p.year -= 543;	
 		}
+		if (typeof(p.rd) !== 'undefined') {
+			p.rd -= 198327;
+		}
 	}
+	this.rd = undefined; // clear this out so that the GregDate constructor can set it
 	ilib.Date.GregDate.call(this, p);
 	this.cal = new ilib.Cal.ThaiSolar();
+	// make sure the year is set correctly
+	this.calcDateComponents();
 };
 
 ilib.Date.ThaiSolarDate.prototype = new ilib.Date.GregDate();
@@ -123,6 +130,66 @@ ilib.Date.ThaiSolarDate.prototype.calcDateComponents = function () {
 	// Gregorian epochs which is equivalent to 543 years
 	this.parent.calcDateComponents.call(this);
 	this.year += 543;
+};
+
+/**
+ * @private
+ * Return the Rata Die (fixed day) number of this date.
+ * 
+ * @return {number} the rd date as a number
+ */
+ilib.Date.ThaiSolarDate.prototype.getRataDie = function() {
+	// there is 198327 days difference between the Thai solar and 
+	// Gregorian epochs which is equivalent to 543 years
+	return this.rd.getRataDie() + 198327;
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week before the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week before the current date that is being sought
+ * @return {ilib.Date} the date being sought
+ */
+ilib.Date.ThaiSolarDate.prototype.before = function (dow) {
+	return this.cal.newDateInstance({rd: this.rd.beforeRd(dow) + 198327});
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week after the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week after the current date that is being sought
+ * @return {ilib.Date} the date being sought
+ */
+ilib.Date.ThaiSolarDate.prototype.after = function (dow) {
+	return this.cal.newDateInstance({rd: this.rd.afterRd(dow) + 198327});
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week on or before the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week on or before the current date that is being sought
+ * @return {ilib.Date} the date being sought
+ */
+ilib.Date.ThaiSolarDate.prototype.onOrBefore = function (dow) {
+	return this.cal.newDateInstance({rd: this.rd.onOrBeforeRd(dow) + 198327});
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week on or after the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week on or after the current date that is being sought
+ * @return {ilib.Date} the date being sought
+ */
+ilib.Date.ThaiSolarDate.prototype.onOrAfter = function (dow) {
+	return this.cal.newDateInstance({rd: this.rd.onOrAfterRd(dow) + 198327});
 };
 
 /**
