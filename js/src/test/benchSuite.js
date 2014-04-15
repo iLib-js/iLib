@@ -30,11 +30,15 @@ function suite() {
     var s = new cli.TestSuite();
     
     var suites = [
-        {file: "beniaresbundle.js", iterations: 100},
-		{file: "benaresbundle.js", iterations: 1},
-        {file: "beniresbundle.js", iterations: 100},
-		{file: "benresbundle.js", iterations: 1},
-        {file: "beniadatefmt.js", iterations: 100}
+        {file: "benresbundle_initial_assembled.js", iterations: 100},
+        {file: "benresbundle_initial_dynamic.js", iterations: 100},
+		{file: "benresbundle_subsequent_assembled.js", iterations: 1},
+		{file: "benresbundle_subsequent_dynamic.js", iterations: 1},
+		
+        {file: "bendatefmt_initial_assembled.js", iterations: 100},
+		{file: "bendatefmt_initial_dynamic.js", iterations: 100},
+        {file: "bendatefmt_subsequent_assembled.js", iterations: 1},
+		{file: "bendatefmt_subsequent_dynamic.js", iterations: 1}
 	];
 
     suites.forEach(function (path) {

@@ -310,7 +310,9 @@ TestRunner.prototype = {
 			// console.log("timings are:\n" + JSON.stringify(this.results.timings));
 			for (var category in this.results.timings) {
 				var m = this.results.timings[category];
-				m.sort();
+				m.sort(function(left,right) {
+					return left-right;
+				});
 				console.log("--------------------------------------------------------------------");
 				console.log("Category " + category);
 				console.log("Iter. : " + m.length);

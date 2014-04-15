@@ -1,5 +1,5 @@
 /*
- * beniadatefmt.js - benchmark the DateFmt object with initial assembled formats
+ * benidatefmt.js - benchmark the DateFmt object with initial dynamic formats
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -32,72 +32,74 @@ function testDateFmtConstructorDefaultLocale() {
     assertEquals("en-US", fmt.getLocale().toString());
 };
 
-function testResBundleConstructorEmptyInitial(results) {
+function testDateFmtConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
-		name: "ResBundle-assembled-empty-initial",
+		name: "DateFmt-dynamic-empty-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle();		
-		    assertNotNull(rb);
+		    var fmt = new ilib.DateFmt();	    
+		    assertNotNull(fmt);
 		}
 	});
 	
 	tt.run(results);
 }
 
-function testResBundleConstructorRealInitial(results) {
+function testDateFmtConstructorRealInitial(results) {
 	var tt = new TimedTest({
-		name: "ResBundle-assembled-normal-initial",
+		name: "DateFmt-dynamic-normal-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle({
+			var fmt = new ilib.DateFmt({
 				locale: "de-DE"
 			});		
-		    assertNotNull(rb);
+		    assertNotNull(fmt);
 		}
 	});
 	
 	tt.run(results);
 }
 
-function testResBundleConstructorNonexistentInitial(results) {
+function testDateFmtConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
-		name: "ResBundle-assembled-nonexistent-initial",
+		name: "DateFmt-dynamic-nonexistent-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle({
-				locale: "ja-JP"
+			var fmt = new ilib.DateFmt({
+				locale: "xx-YY"
 			});		
-		    assertNotNull(rb);
+		    assertNotNull(fmt);
 		}
 	});
 	
 	tt.run(results);
 }
 
-function testResBundleConstructorOtherFileInitial(results) {
+function testDateFmtConstructorOtherComplexInitial(results) {
 	var tt = new TimedTest({
-		name: "ResBundle-assembled-otherfile-initial",
+		name: "DateFmt-dynamic-otherfile-complex-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle({
-				name: "tester"
+			var fmt = new ilib.DateFmt({
+				locale: "zh-Hant-TW"
 			});		
-		    assertNotNull(rb);
+		    assertNotNull(fmt);
 		}
 	});
 	
 	tt.run(results);
 }
 
-function testResBundleConstructorOtherComplexInitial(results) {
+function testDateFmtConstructorWithOptionsInitial(results) {
 	var tt = new TimedTest({
-		name: "ResBundle-assembled-otherfile-complex-initial",
+		name: "DateFmt-dynamic-otherfile-options-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle({
-				name: "tester",
-				locale: "es-MX-slang"
+			var fmt = new ilib.DateFmt({
+				locale: "fr-FR",
+				type: "datetime",
+				date: "dmywg",
+				time: "hmsaz",
+				length: "full"
 			});		
-		    assertNotNull(rb);
+		    assertNotNull(fmt);
 		}
 	});
 	
 	tt.run(results);
 }
-

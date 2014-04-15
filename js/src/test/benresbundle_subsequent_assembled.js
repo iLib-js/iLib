@@ -92,6 +92,12 @@ ilib.data.tester2_de = {
 ilib.data.mock_foobar = ilib.data.strings;
 ilib.data.mock_foobar_de = ilib.data.strings_de;
 
+ilib.data.plurals_en={one:{is:["n",1]}};
+ilib.data.plurals_de={one:{is:["n",1]}};
+ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};
+
+ilib.data.pseudomap = {"a":"à","c":"ç","d":"ð","e":"ë","g":"ğ","h":"ĥ","i":"í","j":"ĵ","k":"ķ","l":"ľ","n":"ñ","o":"õ","p":"þ","r":"ŕ","s":"š","t":"ţ","u":"ü","w":"ŵ","y":"ÿ","z":"ž","A":"Ã","B":"ß","C":"Ç","D":"Ð","E":"Ë","G":"Ĝ","H":"Ħ","I":"Ï","J":"Ĵ","K":"ĸ","L":"Ľ","N":"Ň","O":"Ø","R":"Ŗ","S":"Š","T":"Ť","U":"Ú","W":"Ŵ","Y":"Ŷ","Z":"Ż"};
+
 function testResBundleConstructorEmptySubsequent(results) {
 	new ilib.ResBundle(); // burn the initial iteration
 	var tt = new TimedTest({
@@ -180,7 +186,12 @@ function testResBundleConstructorOtherComplexSubsequent(results) {
 		    assertNotNull(rb);
 		}
 	});
-	
+	ilib.data.plurals_en={one:{is:["n",1]}};
+	ilib.data.plurals_de={one:{is:["n",1]}};
+	ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};
+
+	ilib.data.pseudomap = {"a":"à","c":"ç","d":"ð","e":"ë","g":"ğ","h":"ĥ","i":"í","j":"ĵ","k":"ķ","l":"ľ","n":"ñ","o":"õ","p":"þ","r":"ŕ","s":"š","t":"ţ","u":"ü","w":"ŵ","y":"ÿ","z":"ž","A":"Ã","B":"ß","C":"Ç","D":"Ð","E":"Ë","G":"Ĝ","H":"Ħ","I":"Ï","J":"Ĵ","K":"ĸ","L":"Ľ","N":"Ň","O":"Ø","R":"Ŗ","S":"Š","T":"Ť","U":"Ú","W":"Ŵ","Y":"Ŷ","Z":"Ż"};
+
 	tt.run(results);
 }
 
