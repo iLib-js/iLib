@@ -674,9 +674,17 @@ ilib.TimeZone.prototype._calcOffset = function () {
 /**
  * @private
  */
-ilib.TimeZone.prototype._getDSTRule = function (year) {
+ilib.TimeZone.prototype._getDSTStartRule = function (year) {
 	// TODO: update this when historic/future zones are supported
-	return this.zone;
+	return this.zone.s;
+};
+
+/**
+ * @private
+ */
+ilib.TimeZone.prototype._getDSTEndRule = function (year) {
+	// TODO: update this when historic/future zones are supported
+	return this.zone.e;
 };
 
 /**
@@ -695,12 +703,6 @@ ilib.TimeZone.prototype._getDSTRule = function (year) {
 ilib.TimeZone.prototype.inDaylightTime = function (date) {
 	var rd, startRd, endRd;
 	
-	// if we aren't using daylight time in this zone, then where are never in daylight
-	// time, no matter what the date is
-	if (!this.useDaylightTime()) {
-		return false;
-	}
-	
 	if (this.isLocal) {
 		var d = new Date(date ? date.getTime() : undefined);
 		// the DST offset is always the one that is closest to negative infinity, no matter 
@@ -710,13 +712,28 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 	}
 	
 	if (!date) {
-		date = ilib.Date.newInstance(); // right now
+		date = new ilib.Date.GregDate(); // right now
+	} else if (!(date instanceof ilib.Date.GregDate)) {
+		// convert to Gregorian so that we can tell if it is in DST or not
+		date = new ilib.Date.GregDate({
+			julianday: date.getJulianDay(),
+			timezone: date.getTimeZone()
+		});
 	}
 	
+	// if we aren't using daylight time in this zone, then where are never in daylight
+	// time, no matter what the date is
+	if (!this.useDaylightTime(date.year)) {
+		return false;
+	}
+	
+	// this should be a Gregorian RD number now
 	rd = date.getRataDie();
-	var rule = this._getDSTRule(date.year);
-	startRd = this._calcRuleStart(rule.s, date.year);
-	endRd = this._calcRuleStart(rule.e, date.year);
+	var startrule = this._getDSTStartRule(date.year);
+	var endrule = this._getDSTEndRule(date.year);
+	
+	startRd = this._calcRuleStart(startrule, date.year);
+	endRd = this._calcRuleStart(endrule, date.year);
 
 	if (date.getTimeZone() !== this.id) {
 		// if the date has a different time zone than the current time 
@@ -763,9 +780,12 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 /**
  * Returns true if this time zone switches to daylight savings time at some point
  * in the year, and false otherwise.
+ * @param {number} year Whether or not the time zone uses daylight time in the given year. If
+ * this parameter is not given, the current year is assumed.
  * @return {boolean} true if the time zone uses daylight savings time
  */
-ilib.TimeZone.prototype.useDaylightTime = function () {
+ilib.TimeZone.prototype.useDaylightTime = function (year) {
+	
 	// this zone uses daylight savings time iff there is a rule defining when to start
 	// and when to stop the DST
 	return (this.isLocal && this.offsetJan1 !== this.offsetJun1) ||
