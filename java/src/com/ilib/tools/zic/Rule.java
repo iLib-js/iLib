@@ -312,4 +312,22 @@ public class Rule
         }
         return json;
     }
+    
+    /* (non-Javadoc)
+     * @see java.lang.Object#clone()
+     */
+    public Rule clone()
+    {
+        Rule ret = new Rule();
+        ret.character = character;
+        ret.endYear = endYear;
+        ret.ruleSetName = ruleSetName;
+        ret.saveHours = saveHours;
+        ret.saveMinutes = saveMinutes;
+        ret.saveSeconds = saveSeconds;
+        ret.startYear = startYear;
+        ret.transitionTime = transitionTime.clone();
+        ret.type = type;
+        return ret;
+    }
 }
