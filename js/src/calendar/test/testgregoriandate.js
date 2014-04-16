@@ -1909,7 +1909,7 @@ function testGregDateInitWithUnixTimeRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testGregDateInitWithJDRightTimeZone() {
@@ -1918,7 +1918,7 @@ function testGregDateInitWithJDRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testGregDateInitWithRDRightTimeZone() {
@@ -1927,7 +1927,7 @@ function testGregDateInitWithRDRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 // for GF-33596
