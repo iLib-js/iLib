@@ -179,6 +179,7 @@ function testTZDisplayNameStandardTimeAmbiguous() {
     
     // this is in the magic overlap hour at the end of DST
     var gd = new ilib.Date.GregDate({
+    	timezone: "America/Los_Angeles",
 		year: 2014,
 		month: 11,
 		day: 2,
@@ -195,6 +196,7 @@ function testTZDisplayNameDaylightTimeAmbiguous() {
     
     // this is in the magic overlap hour at the end of DST
     var gd = new ilib.Date.GregDate({
+    	timezone: "America/Los_Angeles",
 		year: 2014,
 		month: 11,
 		day: 2,
@@ -380,10 +382,11 @@ function testTZGetOffsetRightAfterDST() {
     assertNotNull(tz);
     
     var gd = new ilib.Date.GregDate({
+    	timezone: "America/Los_Angeles",
 		year: 2014,
 		month: 3,
 		day: 9,
-		hour: 2,
+		hour: 3,
 		minute: 1
 	});
     assertObjectEquals({h:-7}, tz.getOffset(gd));
@@ -694,7 +697,7 @@ function testTZInDaylightTimeJustBeforeEndDownUnder() {
 		year: 2011,
 		month: 4,
 		day: 3,
-		hour: 1,
+		hour: 2,
 		minute: 59,
 		second: 59
 	});
@@ -709,7 +712,7 @@ function testTZInDaylightTimeJustAfterEndDownUnder() {
 		year: 2011,
 		month: 4,
 		day: 3,
-		hour: 2
+		hour: 3
 	});
     assertFalse(tz.inDaylightTime(gd));
 }

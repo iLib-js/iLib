@@ -149,7 +149,10 @@ ilib.Date.GregDate = function(params) {
 			
 			// add the time zone offset to the rd to convert to UTC
 			var offset = 0;
-			if (this.timezone === "local") {
+			if (this.timezone === "local" && typeof(params.dst) === 'undefined') {
+				// if dst is defined, the intrinsic Date object has no way of specifying which version of a time you mean
+				// in the overlap time at the end of DST. Do you mean the daylight 1:30am or the standard 1:30am? In this
+				// case, use the ilib calculations below, which can distinguish between the two properly
 				var d = new Date(this.year, this.month-1, this.day, this.hour, this.minute, this.second, this.millisecond);
 				offset = d.getTimezoneOffset() / 1440;
 			} else {
@@ -159,7 +162,7 @@ ilib.Date.GregDate = function(params) {
 				// getOffsetMillis requires that this.year, this.rd, and this.dst 
 				// are set in order to figure out which time zone rules apply and 
 				// what the offset is at that point in the year
-				offset = -this.tz.getOffsetMillis(this) / 86400000;
+				offset = -this.tz._getOffsetMillisWallTime(this) / 86400000;
 			}
 			if (offset !== 0) {
 				this.rd = new ilib.Date.GregRataDie({

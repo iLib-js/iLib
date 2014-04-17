@@ -240,6 +240,17 @@ ilib.TimeZone.prototype._initZone = function() {
 		this.zone = ilib.data.timezones[this.id];
 	}
 	
+	this._calcDSTSavings();
+	
+	if (typeof(this.offset) === 'undefined' && this.zone.o) {
+		var offsetParts = this._offsetStringToObj(this.zone.o);
+		/**
+		 * @private
+		 * @type {number} raw offset from UTC without DST, in minutes
+		 */
+		this.offset = (Math.abs(offsetParts.h || 0) * 60 + (offsetParts.m || 0)) * ilib.signum(offsetParts.h || 0);
+	}
+	
 	if (this.onLoad && typeof(this.onLoad) === 'function') {
 		this.onLoad(this);
 	}
@@ -424,18 +435,12 @@ ilib.TimeZone.prototype.getOffset = function (date) {
 ilib.TimeZone.prototype.getOffsetMillis = function (date) {
 	var ret;
 	
-	if (this.isLocal) {
+	// check if the dst property is defined -- the intrinsic JS Date object doesn't work so
+	// well if we are in the overlap time at the end of DST
+	if (this.isLocal && typeof(date.dst) === 'undefined') {
 		var d = (!date) ? new Date() : new Date(date.getTime());
-		return -d.getTimezoneOffset() * 60 * 1000;
+		return -d.getTimezoneOffset() * 60000;
 	} 
-	
-	if (typeof(this.dstSavings) === 'undefined') {
-		this._calcDSTSavings();
-	}
-	
-	if (typeof(this.offset) === 'undefined') {
-		this._calcOffset();
-	}
 	
 	ret = this.offset;
 	
@@ -443,7 +448,26 @@ ilib.TimeZone.prototype.getOffsetMillis = function (date) {
 		ret += this.dstSavings;
 	}
 	
-	return ret * 60 * 1000;
+	return ret * 60000;
+};
+
+/**
+ * @private
+ * Return the offset in milliseconds when the date has an RD number in wall
+ * time rather than in UTC time.
+ * @param date the date to check in wall time
+ * @returns {number} the number of milliseconds of offset from UTC that the given date is
+ */
+ilib.TimeZone.prototype._getOffsetMillisWallTime = function (date) {
+	var ret;
+	
+	ret = this.offset;
+	
+	if (date && this.inDaylightTime(date, true)) {
+		ret += this.dstSavings;
+	}
+	
+	return ret * 60000;
 };
 
 /**
@@ -477,10 +501,8 @@ ilib.TimeZone.prototype.getOffsetStr = function (date) {
  * UTC for this time zone, in hours, minutes, and seconds 
  */
 ilib.TimeZone.prototype.getRawOffset = function () {
-	var offset = this.getRawOffsetMillis()/60000;
-
-	var hours = ilib._roundFnc.down(offset/60),
-		minutes = Math.abs(offset) - Math.abs(hours)*60;
+	var hours = ilib._roundFnc.down(this.offset/60),
+		minutes = Math.abs(this.offset) - Math.abs(hours)*60;
 	
 	var ret = {
 		h: hours
@@ -499,26 +521,16 @@ ilib.TimeZone.prototype.getRawOffset = function () {
  * UTC for this time zone in milliseconds 
  */
 ilib.TimeZone.prototype.getRawOffsetMillis = function () {
-	if (typeof(this.offset) === 'undefined') {
-		this._calcOffset();
-	}
-	return this.offset * 60 * 1000;
+	return this.offset * 60000;
 };
 
 /**
- * Gets the offset from UTC for this time zone.
+ * Gets the offset from UTC for this time zone without DST savings.
  * @return {string} the offset from UTC for this time zone, in the format "h:m:s" 
  */
 ilib.TimeZone.prototype.getRawOffsetStr = function () {
-	if (this.isLocal) {
-		var off = this.getRawOffset();
-		return off.h + ":" + off.m;
-	} else if (typeof(this.offset) !== 'undefined') { 
-		// have to check against undefined instead of just "if (this.offset)" because the 
-		// offset could legally be equal to zero
-		return this.getOffsetStr(undefined);
-	}
-	return this.zone && this.zone.o || "0:0";
+	var off = this.getRawOffset();
+	return off.h + ":" + (off.m || "0");
 };
 
 /**
@@ -554,7 +566,7 @@ ilib.TimeZone.prototype.getDSTSavingsStr = function () {
 	if (this.isLocal) {
 		var savings = this.getDSTSavings();
 		return savings.h + ":" + savings.m;
-	} else if (typeof(this.offset) === 'undefined' && this.zone && this.zone.s) {
+	} else if (typeof(this.offset) !== 'undefined' && this.zone && this.zone.s) {
 		return this.zone.s.v;	// this.zone.start.savings
 	}
 	return "0:0";
@@ -660,20 +672,6 @@ ilib.TimeZone.prototype._calcDSTSavings = function () {
 /**
  * @private
  */
-ilib.TimeZone.prototype._calcOffset = function () {
-	if (this.zone.o) {
-		var offsetParts = this._offsetStringToObj(this.zone.o);
-		/**
-		 * @private
-		 * @type {number} raw offset from UTC without DST, in minutes
-		 */
-		this.offset = (Math.abs(offsetParts.h || 0) * 60 + (offsetParts.m || 0)) * ilib.signum(offsetParts.h || 0);
-	}
-};
-
-/**
- * @private
- */
 ilib.TimeZone.prototype._getDSTStartRule = function (year) {
 	// TODO: update this when historic/future zones are supported
 	return this.zone.s;
@@ -697,14 +695,24 @@ ilib.TimeZone.prototype._getDSTEndRule = function (year) {
  * 
  * @param {ilib.Date=} date a date for which the info about daylight time is being sought,
  * or undefined to tell whether we are currently in daylight savings time
+ * @param {boolean=} wallTime if true, then the given date is in wall time. If false or
+ * undefined, it is in the usual UTC time.
  * @return {boolean} true if the given date is in DST for the current zone, and false
  * otherwise.
  */
-ilib.TimeZone.prototype.inDaylightTime = function (date) {
+ilib.TimeZone.prototype.inDaylightTime = function (date, wallTime) {
 	var rd, startRd, endRd;
-	
+
 	if (this.isLocal) {
-		var d = new Date(date ? date.getTime() : undefined);
+		// check if the dst property is defined -- the intrinsic JS Date object doesn't work so
+		// well if we are in the overlap time at the end of DST, so we have to work around that
+		// problem by adding in the savings ourselves
+		var offset = 0;
+		if (typeof(date.dst) !== 'undefined' && !date.dst) {
+			offset = this.dstSavings * 60000;
+		}
+		
+		var d = new Date(date ? date.getTime() + offset: undefined);
 		// the DST offset is always the one that is closest to negative infinity, no matter 
 		// if you are in the northern or southern hemisphere
 		var dst = Math.min(this.offsetJan1, this.offsetJun1);
@@ -736,24 +744,23 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 	startRd = this._calcRuleStart(startrule, date.year);
 	endRd = this._calcRuleStart(endrule, date.year);
 	
-	// convert the start/end to UTC time so that they can be compared
-	// directly to the UTC rd number of the date
-	if (typeof(this.dstSavings) === 'undefined') {
-		this._calcDSTSavings();
+	if (wallTime) {
+		// rd is in wall time, so we have to make sure to skip the missing time
+		// at the start of DST when standard time ends and daylight time begins
+		startRd += this.dstSavings/1440;
+	} else {
+		// rd is in UTC, so we have to convert the start/end to UTC time so 
+		// that they can be compared directly to the UTC rd number of the date
+		
+		// when DST starts, time is standard time already, so we only have
+		// to subtract the offset to get to UTC and not worry about the DST savings
+		startRd -= this.offset/1440;  
+		
+		// when DST ends, time is in daylight time already, so we have to
+		// subtract the DST savings to get back to standard time, then the
+		// offset to get to UTC
+		endRd -= (this.offset + this.dstSavings)/1440;
 	}
-	
-	if (typeof(this.offset) === 'undefined') {
-		this._calcOffset();
-	}
-	
-	// when DST starts, time is standard time already, so we only have
-	// to subtract the offset from UTC
-	startRd -= this.offset/1440;  
-	
-	// when DST ends, time is in daylight time already, so we have to
-	// subtract the DST savings to get back to standard time, then the
-	// offset to get to UTC
-	endRd -= (this.offset + this.dstSavings)/1440;
 	
 	// In the northern hemisphere, the start comes first some time in spring (Feb-Apr), 
 	// then the end some time in the fall (Sept-Nov). In the southern
