@@ -727,36 +727,33 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 		return false;
 	}
 	
-	// this should be a Gregorian RD number now
+	// this should be a Gregorian RD number now, in UTC
 	rd = date.getRataDie();
+	
+	// these calculate the start/end in local wall time
 	var startrule = this._getDSTStartRule(date.year);
 	var endrule = this._getDSTEndRule(date.year);
-	
 	startRd = this._calcRuleStart(startrule, date.year);
 	endRd = this._calcRuleStart(endrule, date.year);
-
-	if (date.getTimeZone() !== this.id) {
-		// if the date has a different time zone than the current time 
-		// zones, convert both to UTC before comparing 
-		// The following should get its data 
-		// from the cache, so it is okay to load this zone synchronously
-		var datetz = new ilib.TimeZone({id: date.getTimeZone()});
-		
-		// this should not get into a recursive loop because the datetz and date
-		// are in the same time zone
-		rd -= datetz.getOffsetMillis(date)/86400000;
 	
-		if (typeof(this.dstSavings) === 'undefined') {
-			this._calcDSTSavings();
-		}
-		
-		if (typeof(this.offset) === 'undefined') {
-			this._calcOffset();
-		}
-		
-		startRd -= this.offset/1440;
-		endRd -= (this.offset + this.dstSavings)/1440;
+	// convert the start/end to UTC time so that they can be compared
+	// directly to the UTC rd number of the date
+	if (typeof(this.dstSavings) === 'undefined') {
+		this._calcDSTSavings();
 	}
+	
+	if (typeof(this.offset) === 'undefined') {
+		this._calcOffset();
+	}
+	
+	// when DST starts, time is standard time already, so we only have
+	// to subtract the offset from UTC
+	startRd -= this.offset/1440;  
+	
+	// when DST ends, time is in daylight time already, so we have to
+	// subtract the DST savings to get back to standard time, then the
+	// offset to get to UTC
+	endRd -= (this.offset + this.dstSavings)/1440;
 	
 	// In the northern hemisphere, the start comes first some time in spring (Feb-Apr), 
 	// then the end some time in the fall (Sept-Nov). In the southern
@@ -764,7 +761,6 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 	// time is still in the winter, but the winter months are May-Aug, and daylight 
 	// savings time usually starts Aug-Oct of one year and runs through Mar-May of the 
 	// next year.
-	
 	if (rd < endRd && endRd - rd <= this.dstSavings/1440 && typeof(date.dst) === 'boolean') {
 		// take care of the magic overlap time at the end of DST
 		return date.dst;
