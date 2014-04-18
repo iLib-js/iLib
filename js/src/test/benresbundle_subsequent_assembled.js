@@ -1,6 +1,6 @@
 /*
- * benchrbassembled.js - benchmark the ResBundle object with assembled resources
- * 
+ * benresbundle_subsequent_assembled.js - benchmark the ResBundle object with assembled resources
+ *
  * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,12 +37,12 @@ ilib.data.strings_fr = {
 
 // yes, we know these are not accurate translations -- they are just for testing!
 ilib.data.strings_fr_CA = {
-    "first string": "première collier", 
+    "first string": "première collier",
     "second string": "deuxième collier"
 };
 
 ilib.data.strings_fr_CA_govt = {
-    "first string": "première corde", 
+    "first string": "première corde",
     "third string": "troisième corde"
 };
 
@@ -104,11 +104,11 @@ function testResBundleConstructorEmptySubsequent(results) {
 		name: "ResBundle-assembled-empty-subsequent",
 		iterations: 1000,
 		fn: function () {
-			var rb = new ilib.ResBundle();		
+			var rb = new ilib.ResBundle();
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -116,18 +116,18 @@ function testResBundleConstructorRealSubsequent(results) {
 	// burn the initial iteration
 	new ilib.ResBundle({
 		locale: "de-DE"
-	}); 
+	});
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-normal-subsequent",
 		iterations: 1000,
 		fn: function () {
 			var rb = new ilib.ResBundle({
 				locale: "de-DE"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -135,18 +135,18 @@ function testResBundleConstructorNonexistentSubsequent(results) {
 	// burn the initial iteration
 	new ilib.ResBundle({
 		locale: "ja-JP"
-	}); 
+	});
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-nonexistent-subsequent",
 		iterations: 1000,
 		fn: function () {
 			var rb = new ilib.ResBundle({
 				locale: "ja-JP"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -154,18 +154,18 @@ function testResBundleConstructorOtherFileSubsequent(results) {
 	// burn the initial iteration
 	new ilib.ResBundle({
 		name: "tester"
-	}); 
+	});
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-otherfile-subsequent",
 		iterations: 1000,
 		fn: function () {
 			var rb = new ilib.ResBundle({
 				name: "tester"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -174,7 +174,7 @@ function testResBundleConstructorOtherComplexSubsequent(results) {
 	new ilib.ResBundle({
 		name: "tester",
 		locale: "es-MX-slang"
-	}); 
+	});
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-otherfile-complex-subsequent",
 		iterations: 1000,
@@ -182,7 +182,7 @@ function testResBundleConstructorOtherComplexSubsequent(results) {
 			var rb = new ilib.ResBundle({
 				name: "tester",
 				locale: "es-MX-slang"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
@@ -199,10 +199,10 @@ function testResBundleConstructorOtherComplexSubsequent(results) {
 function testResBundleGetstringDefault(results) {
 	var rb = new ilib.ResBundle();
     assertNotNull(rb);
-    
+
 	// burn the initial iteration
     rb.getString("first string");
-    
+
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-getString-default",
 		iterations: 1000,
@@ -210,7 +210,7 @@ function testResBundleGetstringDefault(results) {
 			assertEquals("first", rb.getString("first string").toString());
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -221,7 +221,7 @@ function testResBundleGetstringNormal(results) {
     assertNotNull(rb);
 	// burn the initial iteration
     rb.getString("first string");
-    
+
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-getString-normal",
 		iterations: 1000,
@@ -229,7 +229,7 @@ function testResBundleGetstringNormal(results) {
 			assertEquals("erste String", rb.getString("first string").toString());
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -241,7 +241,7 @@ function testResBundleGetstringComplex(results) {
     assertNotNull(rb);
 	// burn the initial iteration
     rb.getString("Hello from {city}");
-    
+
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-getString-complex",
 		iterations: 1000,
@@ -249,7 +249,7 @@ function testResBundleGetstringComplex(results) {
 			assertEquals("Que tal de {city}", rb.getString("Hello from {city}").toString());
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -260,7 +260,7 @@ function testResBundleGetstringPseudo(results) {
     assertNotNull(rb);
 	// burn the initial iteration
     rb.getString("Hello from {city}");
-    
+
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-getString-pseudo-default",
 		iterations: 1000,
@@ -268,7 +268,7 @@ function testResBundleGetstringPseudo(results) {
 			assertEquals("Ħëľľõ fŕõm {city}", rb.getString("Hello from {city}").toString());
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -278,9 +278,9 @@ function testResBundleGetStringOtherBundlePsuedoRaw(results) {
         locale: "zxx-XX",
         type: "raw"
     });
-    
+
     assertNotNull(rb);
-    
+
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-getString-pseudo-raw",
 		iterations: 1000,
@@ -289,7 +289,7 @@ function testResBundleGetStringOtherBundlePsuedoRaw(results) {
 		    assertEquals("Ħëľľõ fŕõm {çõüñţŕÿ}", rb.getString("Hello from {country}").toString());
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -299,9 +299,9 @@ function testResBundleGetStringOtherBundlePsuedoText(results) {
         locale: "zxx-XX",
         type: "text"
     });
-    
+
     assertNotNull(rb);
-    
+
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-getString-pseudo-text",
 		iterations: 1000,
@@ -310,7 +310,7 @@ function testResBundleGetStringOtherBundlePsuedoText(results) {
 			assertEquals("Ħëľľõ fŕõm {country}", rb.getString("Hello from {country}").toString());
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -320,9 +320,9 @@ function testResBundleGetStringOtherBundlePsuedoHtml(results) {
         locale: "zxx-XX",
         type: "html"
     });
-    
+
     assertNotNull(rb);
-    
+
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-getString-pseudo-html",
 		iterations: 1000,
@@ -331,7 +331,7 @@ function testResBundleGetStringOtherBundlePsuedoHtml(results) {
 			assertEquals("Ħëľľõ fŕõm {country}", rb.getString("Hello from {country}").toString());
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -341,9 +341,9 @@ function testResBundleGetStringOtherBundlePsuedoXml(results) {
         locale: "zxx-XX",
         type: "xml"
     });
-    
+
     assertNotNull(rb);
-    
+
     // should not pseudo-ize the replacement parameter names
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-getString-pseudo-xml",
@@ -352,6 +352,6 @@ function testResBundleGetStringOtherBundlePsuedoXml(results) {
 	        assertEquals("Ħëľľõ fŕõm {country}", rb.getString("Hello from {country}").toString());
 		}
 	});
-	
+
 	tt.run(results);
 }

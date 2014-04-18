@@ -38,7 +38,12 @@ function suite() {
         {file: "bendatefmt_initial_assembled.js", iterations: 100},
 		{file: "bendatefmt_initial_dynamic.js", iterations: 100},
         {file: "bendatefmt_subsequent_assembled.js", iterations: 1},
-		{file: "bendatefmt_subsequent_dynamic.js", iterations: 1}
+		{file: "bendatefmt_subsequent_dynamic.js", iterations: 1},
+		
+        {file: "benlocinfo_initial_assembled.js", iterations: 100},
+		{file: "benlocinfo_initial_dynamic.js", iterations: 100},
+        {file: "benlocinfo_subsequent_assembled.js", iterations: 1},
+		{file: "benlocinfo_subsequent_dynamic.js", iterations: 1}
 	];
 
     suites.forEach(function (path) {

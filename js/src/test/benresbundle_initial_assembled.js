@@ -1,6 +1,6 @@
 /*
- * beniaresbundle.js - benchmark the initial ResBundle object with assembled resources
- * 
+ * benresbundle_initial_assembled.js - benchmark the initial ResBundle object with assembled resources
+ *
  * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,12 +37,12 @@ ilib.data.strings_fr = {
 
 // yes, we know these are not accurate translations -- they are just for testing!
 ilib.data.strings_fr_CA = {
-    "first string": "première collier", 
+    "first string": "première collier",
     "second string": "deuxième collier"
 };
 
 ilib.data.strings_fr_CA_govt = {
-    "first string": "première corde", 
+    "first string": "première corde",
     "third string": "troisième corde"
 };
 
@@ -102,11 +102,11 @@ function testResBundleConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "ResBundle-assembled-empty-initial",
 		fn: function () {
-			var rb = new ilib.ResBundle();		
+			var rb = new ilib.ResBundle();
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -116,11 +116,11 @@ function testResBundleConstructorRealInitial(results) {
 		fn: function () {
 			var rb = new ilib.ResBundle({
 				locale: "de-DE"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -130,11 +130,11 @@ function testResBundleConstructorNonexistentInitial(results) {
 		fn: function () {
 			var rb = new ilib.ResBundle({
 				locale: "ja-JP"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -144,11 +144,11 @@ function testResBundleConstructorOtherFileInitial(results) {
 		fn: function () {
 			var rb = new ilib.ResBundle({
 				name: "tester"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -159,11 +159,11 @@ function testResBundleConstructorOtherComplexInitial(results) {
 			var rb = new ilib.ResBundle({
 				name: "tester",
 				locale: "es-MX-slang"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 

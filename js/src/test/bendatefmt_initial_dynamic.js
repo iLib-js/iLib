@@ -1,6 +1,6 @@
 /*
- * benidatefmt.js - benchmark the DateFmt object with initial dynamic formats
- * 
+ * bendatefmt_initial_dynamic.js - benchmark the DateFmt object with initial dynamic formats
+ *
  * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,18 +17,17 @@
  * limitations under the License.
  */
 
-
 function testDateFmtConstructorEmpty() {
 	var fmt = new ilib.DateFmt();
-    
+
     assertNotNull(fmt);
 };
 
 function testDateFmtConstructorDefaultLocale() {
     var fmt = new ilib.DateFmt();
-    
+
     assertNotNull(fmt);
-    
+
     assertEquals("en-US", fmt.getLocale().toString());
 };
 
@@ -36,11 +35,11 @@ function testDateFmtConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-dynamic-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.DateFmt();	    
+		    var fmt = new ilib.DateFmt();
 		    assertNotNull(fmt);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -50,11 +49,11 @@ function testDateFmtConstructorRealInitial(results) {
 		fn: function () {
 			var fmt = new ilib.DateFmt({
 				locale: "de-DE"
-			});		
+			});
 		    assertNotNull(fmt);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -64,11 +63,11 @@ function testDateFmtConstructorNonexistentInitial(results) {
 		fn: function () {
 			var fmt = new ilib.DateFmt({
 				locale: "xx-YY"
-			});		
+			});
 		    assertNotNull(fmt);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -78,11 +77,11 @@ function testDateFmtConstructorOtherComplexInitial(results) {
 		fn: function () {
 			var fmt = new ilib.DateFmt({
 				locale: "zh-Hant-TW"
-			});		
+			});
 		    assertNotNull(fmt);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -96,10 +95,10 @@ function testDateFmtConstructorWithOptionsInitial(results) {
 				date: "dmywg",
 				time: "hmsaz",
 				length: "full"
-			});		
+			});
 		    assertNotNull(fmt);
 		}
 	});
-	
+
 	tt.run(results);
 }

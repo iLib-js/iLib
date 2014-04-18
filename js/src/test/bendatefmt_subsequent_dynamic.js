@@ -1,6 +1,6 @@
 /*
- * bendatefmt.js - benchmark the DateFmt object with subsequent dynamic formats
- * 
+ * bendatefmt_subsequent_dynamic.js - benchmark the DateFmt object with subsequent dynamic formats
+ *
  * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,17 +18,17 @@
  */
 
 function testDateFmtConstructorEmptySubsequent(results) {
-    new ilib.DateFmt();	    
+    new ilib.DateFmt();
 
     var tt = new TimedTest({
 		name: "DateFmt-dynamic-empty-subsequent",
 		iterations: 1000,
 		fn: function () {
-		    var fmt = new ilib.DateFmt();	    
+		    var fmt = new ilib.DateFmt();
 		    assertNotNull(fmt);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -36,18 +36,18 @@ function testDateFmtConstructorRealSubsequent(results) {
 	new ilib.DateFmt({
 		locale: "de-DE"
 	});
-	
+
 	var tt = new TimedTest({
 		name: "DateFmt-dynamic-normal-subsequent",
 		iterations: 1000,
 		fn: function () {
 			var fmt = new ilib.DateFmt({
 				locale: "de-DE"
-			});		
+			});
 		    assertNotNull(fmt);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -55,18 +55,18 @@ function testDateFmtConstructorNonexistentSubsequent(results) {
 	new ilib.DateFmt({
 		locale: "xx-YY"
 	});
-	
+
 	var tt = new TimedTest({
 		name: "DateFmt-dynamic-nonexistent-subsequent",
 		iterations: 1000,
 		fn: function () {
 			var fmt = new ilib.DateFmt({
 				locale: "xx-YY"
-			});		
+			});
 		    assertNotNull(fmt);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -74,18 +74,18 @@ function testDateFmtConstructorOtherComplexSubsequent(results) {
 	new ilib.DateFmt({
 		locale: "zh-Hant-TW"
 	});
-	
+
 	var tt = new TimedTest({
 		name: "DateFmt-dynamic-otherfile-complex-subsequent",
 		iterations: 1000,
 		fn: function () {
 			var fmt = new ilib.DateFmt({
 				locale: "zh-Hant-TW"
-			});		
+			});
 		    assertNotNull(fmt);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -96,8 +96,8 @@ function testDateFmtConstructorWithOptionsSubsequent(results) {
 		date: "dmywg",
 		time: "hmsaz",
 		length: "full"
-	});	
-	
+	});
+
 	var tt = new TimedTest({
 		name: "DateFmt-dynamic-otherfile-options-subsequent",
 		iterations: 1000,
@@ -108,10 +108,10 @@ function testDateFmtConstructorWithOptionsSubsequent(results) {
 				date: "dmywg",
 				time: "hmsaz",
 				length: "full"
-			});		
+			});
 		    assertNotNull(fmt);
 		}
 	});
-	
+
 	tt.run(results);
 }

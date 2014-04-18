@@ -1,6 +1,6 @@
 /*
- * beniresbundle.js - benchmark the initial load of a ResBundle object with dynamic resources
- * 
+ * benresbundle_initial_dynamic.js - benchmark the initial load of a ResBundle object with dynamic resources
+ *
  * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,11 +23,11 @@ function testResBundleConstructorRootInitial(results) {
 		fn: function () {
 			var rb = new ilib.ResBundle({
 				name: "sysres"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -38,11 +38,11 @@ function testResBundleConstructorComplexInitial(results) {
 			var rb = new ilib.ResBundle({
 				name: "sysres",
 				locale: "zh-Hant-TW"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -53,11 +53,11 @@ function testResBundleConstructorNonexistentInitial(results) {
 			var rb = new ilib.ResBundle({
 				name: "sysres",
 				locale: "foo-XY"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -71,10 +71,10 @@ function testResBundleConstructorPsuedoInitial(results) {
 		        locale: "zxx-XX",
 		        type: "html"
 		    });
-		    
+
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }

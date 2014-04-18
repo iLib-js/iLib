@@ -1,6 +1,6 @@
 /*
- * benresbundle.js - benchmark the ResBundle object with dynamic resources
- * 
+ * benresbundle_subsequent_assembled.js - benchmark the ResBundle object with dynamic resources
+ *
  * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,18 +21,18 @@ function testResBundleConstructorRootSubsequent(results) {
 	new ilib.ResBundle({
 		name: "sysres"
 	}); // burn the initial iteration
-	
+
 	var tt = new TimedTest({
 		name: "ResBundle-dynamic-root-subsequent",
 		iterations: 1000,
 		fn: function () {
 			var rb = new ilib.ResBundle({
 				name: "sysres"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -41,7 +41,7 @@ function testResBundleConstructorComplexSubsequent(results) {
 	new ilib.ResBundle({
 		name: "sysres",
 		locale: "zh-Hant-TW"
-	}); 
+	});
 	var tt = new TimedTest({
 		name: "ResBundle-dynamic-complex-subsequent",
 		iterations: 1000,
@@ -49,11 +49,11 @@ function testResBundleConstructorComplexSubsequent(results) {
 			var rb = new ilib.ResBundle({
 				name: "sysres",
 				locale: "zh-Hant-TW"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -62,7 +62,7 @@ function testResBundleConstructorNonexistentSubsequent(results) {
 	new ilib.ResBundle({
 		name: "sysres",
 		locale: "foo-XY"
-	}); 
+	});
 	var tt = new TimedTest({
 		name: "ResBundle-dynamic-nonexistent-subsequent",
 		iterations: 1000,
@@ -70,11 +70,11 @@ function testResBundleConstructorNonexistentSubsequent(results) {
 			var rb = new ilib.ResBundle({
 				name: "sysres",
 				locale: "foo-XY"
-			});		
+			});
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }
 
@@ -84,9 +84,9 @@ function testResBundleConstructorPsuedoSubsequent(results) {
         locale: "zxx-XX",
         type: "html"
     });
-    
+
     assertNotNull(rb);
-    
+
     // should not pseudo-ize the replacement parameter names
 	var tt = new TimedTest({
 		name: "ResBundle-dynamic-pseudo-subsequent",
@@ -97,10 +97,10 @@ function testResBundleConstructorPsuedoSubsequent(results) {
 		        locale: "zxx-XX",
 		        type: "html"
 		    });
-		    
+
 		    assertNotNull(rb);
 		}
 	});
-	
+
 	tt.run(results);
 }

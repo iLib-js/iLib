@@ -1,5 +1,5 @@
 /*
- * beniadatefmt.js - benchmark the DateFmt object with initial assembled formats
+ * bendatefmt_initial_assembled.js - benchmark the DateFmt object with initial assembled formats
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -137,7 +137,7 @@ function testDateFmtConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-assembled-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.DateFmt();	    
+		    var fmt = new ilib.DateFmt();
 		    assertNotNull(fmt);
 		}
 	});
@@ -151,7 +151,7 @@ function testDateFmtConstructorRealInitial(results) {
 		fn: function () {
 			var fmt = new ilib.DateFmt({
 				locale: "de-DE"
-			});		
+			});
 		    assertNotNull(fmt);
 		}
 	});
@@ -165,7 +165,7 @@ function testDateFmtConstructorNonexistentInitial(results) {
 		fn: function () {
 			var fmt = new ilib.DateFmt({
 				locale: "xx-YY"
-			});		
+			});
 		    assertNotNull(fmt);
 		}
 	});
@@ -179,7 +179,7 @@ function testDateFmtConstructorOtherComplexInitial(results) {
 		fn: function () {
 			var fmt = new ilib.DateFmt({
 				locale: "zh-Hant-TW"
-			});		
+			});
 		    assertNotNull(fmt);
 		}
 	});
@@ -197,7 +197,7 @@ function testDateFmtConstructorWithOptionsInitial(results) {
 				date: "dmywg",
 				time: "hmsaz",
 				length: "full"
-			});		
+			});
 		    assertNotNull(fmt);
 		}
 	});
