@@ -27,6 +27,7 @@ limitations under the License.
 function suite() {
     var calSuite = new JsUnitTestSuite();
     
+    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregRataDie.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregorianDate.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregorian.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testJulianDate.html");
@@ -38,6 +39,7 @@ function suite() {
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testThaiSolar.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testThaiSolarDate.html");
 
+    calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregRataDieCompiled.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregorianDateCompiled.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testGregorianCompiled.html");
     calSuite.addTestPage("file://" + ilibDir + "/js/src/calendar/test/testJulianDateCompiled.html");

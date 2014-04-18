@@ -382,4 +382,94 @@ public class RuleTest
         }
     }
 
+    public void testClone()
+    {
+        try {
+            Rule rule = new Rule("Rule  Chicago 1922    1966    -   Apr lastSun 2:00    1:00    D");
+            assertNotNull(rule);
+            
+            assertEquals("Chicago", rule.getRuleSetName());
+            assertEquals("D", rule.getCharacter());
+            assertEquals(1922, rule.getStartYear());
+            assertEquals(1966, rule.getEndYear());
+            assertEquals(1, rule.getSaveHours());
+            assertEquals(0, rule.getSaveMinutes());
+            assertEquals(-1, rule.getSaveSeconds());
+
+            Rule other = rule.clone();
+
+            assertEquals("Chicago", other.getRuleSetName());
+            assertEquals("D", other.getCharacter());
+            assertEquals(1922, other.getStartYear());
+            assertEquals(1966, other.getEndYear());
+            assertEquals(1, other.getSaveHours());
+            assertEquals(0, other.getSaveMinutes());
+            assertEquals(-1, other.getSaveSeconds());
+        } catch (ParseException e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+    
+    public void testCloneTransitionRule()
+    {
+        try {
+            Rule rule = new Rule("Rule  Chicago 1922    1966    -   Apr lastSun 2:00    1:00    D");
+            assertNotNull(rule);
+            
+            RelativeDate rd = rule.getTransitionTime();
+            assertNotNull(rd);
+            
+            assertEquals(-1, rd.getYear());
+            assertEquals(3, rd.getMonth());
+            assertEquals(-1, rd.getDayOfMonth());
+            assertEquals(0, rd.getDayOfWeek());
+            assertEquals(2, rd.getHour());
+            assertEquals(0, rd.getMinute());
+            assertEquals(-1, rd.getSecond());
+            assertEquals('w', rd.getZoneChar());
+            assertEquals(StartRule.LAST, rd.getRule());
+            
+            Rule other = rule.clone();
+
+            RelativeDate otherrd = other.getTransitionTime();
+            assertNotNull(otherrd);
+            
+            assertEquals(-1, otherrd.getYear());
+            assertEquals(3, otherrd.getMonth());
+            assertEquals(-1, otherrd.getDayOfMonth());
+            assertEquals(0, otherrd.getDayOfWeek());
+            assertEquals(2, otherrd.getHour());
+            assertEquals(0, otherrd.getMinute());
+            assertEquals(-1, otherrd.getSecond());
+            assertEquals('w', otherrd.getZoneChar());
+            assertEquals(StartRule.LAST, otherrd.getRule());
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
+    public void testCloneTransitionRuleIsClonedToo()
+    {
+        try {
+            Rule rule = new Rule("Rule  Chicago 1922    1966    -   Apr lastSun 2:00    1:00    D");
+            assertNotNull(rule);
+            
+            RelativeDate rd = rule.getTransitionTime();
+            assertNotNull(rd);
+            
+            Rule other = rule.clone();
+
+            RelativeDate otherrd = other.getTransitionTime();
+            assertNotNull(otherrd);
+            
+            assertTrue(rd != otherrd);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            fail();
+        }
+    }
+
 }

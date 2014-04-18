@@ -486,6 +486,10 @@ ilib.Date.JulDate.prototype.onOrAfter = function (dow) {
  * valid unix time range
  */
 ilib.Date.JulDate.prototype.getTime = function() {
+	if (typeof(this.unixtime) === 'number') {
+		return this.unixtime;
+	}
+	// not stored, so calculate it
 	var rd = this.calcRataDie({
 		year: this.year,
 		month: this.month,
@@ -495,8 +499,7 @@ ilib.Date.JulDate.prototype.getTime = function() {
 		second: this.second,
 		millisecond: 0
 	});
-	var unix;
-
+	
 	// earlier than Jan 1, 1970
 	// or later than Jan 19, 2038 at 3:14:07am
 	if (rd < 719165 || rd > 744020.134803241) { 
@@ -509,9 +512,9 @@ ilib.Date.JulDate.prototype.getTime = function() {
 		this.hour * 3600 +
 		this.minute * 60 +
 		this.second;
-	var millis = seconds * 1000 + this.millisecond;
+	this.unixtime = seconds * 1000 + this.millisecond;
 	
-	return millis;
+	return this.unixtime;
 };
 
 /**

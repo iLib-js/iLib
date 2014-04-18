@@ -519,13 +519,13 @@ function testGregDateConstructorEmpty() {
     var now = new Date(gd.getTime()); // compare against the JS date
     assertNotNull(gd);
     
-    assertEquals("year", now.getUTCFullYear(), gd.getYears());
-    assertEquals("month", now.getUTCMonth()+1, gd.getMonths()); // js date months are 0-11 instead of 1-12 like gregorian dates
-    assertEquals("day", now.getUTCDate(), gd.getDays());
-    assertEquals("hour", now.getUTCHours(), gd.getHours());
-    assertEquals("minute", now.getUTCMinutes(), gd.getMinutes());
-    assertEquals("second", now.getUTCSeconds(), gd.getSeconds());
-    assertEquals("millisecond", now.getUTCMilliseconds(), gd.getMilliseconds());
+    assertEquals("year", now.getFullYear(), gd.getYears());
+    assertEquals("month", now.getMonth()+1, gd.getMonths()); // js date months are 0-11 instead of 1-12 like gregorian dates
+    assertEquals("day", now.getDate(), gd.getDays());
+    assertEquals("hour", now.getHours(), gd.getHours());
+    assertEquals("minute", now.getMinutes(), gd.getMinutes());
+    assertEquals("second", now.getSeconds(), gd.getSeconds());
+    assertEquals("millisecond", now.getMilliseconds(), gd.getMilliseconds());
 }
 
 function testGregDateConstructorUnixTime() {
@@ -554,7 +554,8 @@ function testGregDateGetJulianDay() {
             hour: testDates[i][4],
             minute: testDates[i][5],
             second: testDates[i][6],
-            millisecond: testDates[i][7]
+            millisecond: testDates[i][7],
+            timezone: "Etc/UTC"
         });
     
         info("testing jd=" + testDates[i][0]);
@@ -702,11 +703,24 @@ function testGregDateTestGetTimeZero() {
     var gd = new ilib.Date.GregDate({
     	year: 1970, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
     assertEquals(0, gd.getTime());
+}
+
+function testGregDateTestGetTimeCalifornia() {
+    var gd = new ilib.Date.GregDate({
+    	year: 1970, 
+    	month: 1, 
+    	day: 1,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    
+    assertEquals(28800000, gd.getTime());
 }
 
 function testGregDateTestGetTime() {
@@ -715,7 +729,8 @@ function testGregDateTestGetTime() {
     	month: 1, 
     	day: 3,
 	   	hour: 8,
-	   	minute: 30
+	   	minute: 30,
+	   	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -726,7 +741,8 @@ function testGregDateTestGetTimeTooEarly() {
     var gd = new ilib.Date.GregDate({
     	year: 1969, 
     	month: 12, 
-    	day: 31
+    	day: 31,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -737,7 +753,8 @@ function testGregDateTestGetTimeTooLate() {
     var gd = new ilib.Date.GregDate({
     	year: 2038, 
     	month: 1, 
-    	day: 20
+    	day: 20,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -748,7 +765,8 @@ function testGregDateTestSetTime1() {
     var gd = new ilib.Date.GregDate({
     	year: 1970, 
     	month: 1, 
-    	day: 1
+    	day: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     assertEquals(0, gd.getTime());
@@ -772,7 +790,8 @@ function testGregDateTestSetTimeZero() {
 	   	hour: 1,
 	   	minute: 1,
 	   	second: 1,
-	   	millisecond: 1
+	   	millisecond: 1,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -799,7 +818,7 @@ function testGregDateOnOrBeforeSun() {
     var rd = gd.getRataDie();
     
     // Sunday on or before is 5 days before 
-    assertEquals(rd-5, gd.onOrBeforeRd(rd, 0));
+    assertEquals(rd-5, gd.onOrBefore(0).getRataDie());
 }
 
 function testGregDateOnOrBeforeMon() {
@@ -813,7 +832,7 @@ function testGregDateOnOrBeforeMon() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-4, gd.onOrBeforeRd(rd, 1));
+    assertEquals(rd-4, gd.onOrBefore(1).getRataDie());
 }
 
 function testGregDateOnOrBeforeTue() {
@@ -827,7 +846,7 @@ function testGregDateOnOrBeforeTue() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-3, gd.onOrBeforeRd(rd, 2));
+    assertEquals(rd-3, gd.onOrBefore(2).getRataDie());
 }
 
 function testGregDateOnOrBeforeWed() {
@@ -841,7 +860,7 @@ function testGregDateOnOrBeforeWed() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-2, gd.onOrBeforeRd(rd, 3));
+    assertEquals(rd-2, gd.onOrBefore(3).getRataDie());
 }
 
 function testGregDateOnOrBeforeThu() {
@@ -855,7 +874,7 @@ function testGregDateOnOrBeforeThu() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-1, gd.onOrBeforeRd(rd, 4));
+    assertEquals(rd-1, gd.onOrBefore(4).getRataDie());
 }
 
 function testGregDateOnOrBeforeFri() {
@@ -869,7 +888,7 @@ function testGregDateOnOrBeforeFri() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd, gd.onOrBeforeRd(rd, 5));
+    assertEquals(rd, gd.onOrBefore(5).getRataDie());
 }
 
 function testGregDateOnOrBeforeSat() {
@@ -883,7 +902,7 @@ function testGregDateOnOrBeforeSat() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-6, gd.onOrBeforeRd(rd, 6));
+    assertEquals(rd-6, gd.onOrBefore(6).getRataDie());
 }
 
 function testGregDateOnOrBeforeSunWithTime() {
@@ -900,7 +919,7 @@ function testGregDateOnOrBeforeSunWithTime() {
     
     // Sunday on or before is 5 days before 
     // Should give an rd result that also contains the fractional time 
-    assertEquals(rd-5, gd.onOrBeforeRd(rd, 0));
+    assertEquals(rd-5, gd.onOrBefore(0).getRataDie());
 }
 
 function testGregDateOnOrAfterSun() {
@@ -915,7 +934,7 @@ function testGregDateOnOrAfterSun() {
     var rd = gd.getRataDie();
     
     // Sunday on or before is 5 days before 
-    assertEquals(rd+2, gd.onOrAfterRd(rd, 0));
+    assertEquals(rd+2, gd.onOrAfter(0).getRataDie());
 }
 
 function testGregDateOnOrAfterSunDate() {
@@ -946,7 +965,7 @@ function testGregDateOnOrAfterMon() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+3, gd.onOrAfterRd(rd, 1));
+    assertEquals(rd+3, gd.onOrAfter(1).getRataDie());
 }
 
 function testGregDateOnOrAfterMonDate() {
@@ -976,7 +995,7 @@ function testGregDateOnOrAfterTue() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+4, gd.onOrAfterRd(rd, 2));
+    assertEquals(rd+4, gd.onOrAfter(2).getRataDie());
 }
 
 function testGregDateOnOrAfterWed() {
@@ -990,7 +1009,7 @@ function testGregDateOnOrAfterWed() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+5, gd.onOrAfterRd(rd, 3));
+    assertEquals(rd+5, gd.onOrAfter(3).getRataDie());
 }
 
 function testGregDateOnOrAfterThu() {
@@ -1004,7 +1023,7 @@ function testGregDateOnOrAfterThu() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+6, gd.onOrAfterRd(rd, 4));
+    assertEquals(rd+6, gd.onOrAfter(4).getRataDie());
 }
 
 function testGregDateOnOrAfterThuDate() {
@@ -1034,7 +1053,7 @@ function testGregDateOnOrAfterFri() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd, gd.onOrAfterRd(rd, 5));
+    assertEquals(rd, gd.onOrAfter(5).getRataDie());
 }
 
 function testGregDateOnOrAfterFriDate() {
@@ -1064,7 +1083,7 @@ function testGregDateOnOrAfterSat() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+1, gd.onOrAfterRd(rd, 6));
+    assertEquals(rd+1, gd.onOrAfter(6).getRataDie());
 }
 
 function testGregDateBeforeSun() {
@@ -1079,7 +1098,7 @@ function testGregDateBeforeSun() {
     var rd = gd.getRataDie();
     
     // Sunday before is 5 days before 
-    assertEquals(rd-5, gd.beforeRd(rd, 0));
+    assertEquals(rd-5, gd.before(0).getRataDie());
 }
 
 function testGregDateBeforeSunDate() {
@@ -1110,7 +1129,7 @@ function testGregDateBeforeMon() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-4, gd.beforeRd(rd, 1));
+    assertEquals(rd-4, gd.before(1).getRataDie());
 }
 
 function testGregDateBeforeTue() {
@@ -1124,7 +1143,7 @@ function testGregDateBeforeTue() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-3, gd.beforeRd(rd, 2));
+    assertEquals(rd-3, gd.before(2).getRataDie());
 }
 
 function testGregDateBeforeWed() {
@@ -1138,7 +1157,7 @@ function testGregDateBeforeWed() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-2, gd.beforeRd(rd, 3));
+    assertEquals(rd-2, gd.before(3).getRataDie());
 }
 
 function testGregDateBeforeThu() {
@@ -1152,7 +1171,7 @@ function testGregDateBeforeThu() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-1, gd.beforeRd(rd, 4));
+    assertEquals(rd-1, gd.before(4).getRataDie());
 }
 
 function testGregDateBeforeThuDate() {
@@ -1183,7 +1202,7 @@ function testGregDateBeforeFri() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-7, gd.beforeRd(rd, 5));
+    assertEquals(rd-7, gd.before(5).getRataDie());
 }
 
 function testGregDateBeforeFriDate() {
@@ -1214,7 +1233,7 @@ function testGregDateBeforeSat() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd-6, gd.beforeRd(rd, 6));
+    assertEquals(rd-6, gd.before(6).getRataDie());
 }
 
 function testGregDateAfterSun() {
@@ -1229,7 +1248,7 @@ function testGregDateAfterSun() {
     var rd = gd.getRataDie();
     
     // Sunday after is 2 days after 
-    assertEquals(rd+2, gd.afterRd(rd, 0));
+    assertEquals(rd+2, gd.after(0).getRataDie());
 }
 
 function testGregDateAfterSunDate() {
@@ -1260,7 +1279,7 @@ function testGregDateAfterMon() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+3, gd.afterRd(rd, 1));
+    assertEquals(rd+3, gd.after(1).getRataDie());
 }
 
 function testGregDateAfterTue() {
@@ -1274,7 +1293,7 @@ function testGregDateAfterTue() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+4, gd.afterRd(rd, 2));
+    assertEquals(rd+4, gd.after(2).getRataDie());
 }
 
 function testGregDateAfterWed() {
@@ -1288,7 +1307,7 @@ function testGregDateAfterWed() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+5, gd.afterRd(rd, 3));
+    assertEquals(rd+5, gd.after(3).getRataDie());
 }
 
 function testGregDateAfterThu() {
@@ -1302,7 +1321,7 @@ function testGregDateAfterThu() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+6, gd.afterRd(rd, 4));
+    assertEquals(rd+6, gd.after(4).getRataDie());
 }
 
 function testGregDateAfterFri() {
@@ -1316,7 +1335,7 @@ function testGregDateAfterFri() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+7, gd.afterRd(rd, 5));
+    assertEquals(rd+7, gd.after(5).getRataDie());
 }
 
 function testGregDateAfterFriDate() {
@@ -1347,7 +1366,7 @@ function testGregDateAfterSat() {
     assertEquals(5, gd.getDayOfWeek()); // Friday
     var rd = gd.getRataDie();
     
-    assertEquals(rd+1, gd.afterRd(rd, 6));
+    assertEquals(rd+1, gd.after(6).getRataDie());
 }
 
 function testGregDateAfterSatDate() {
@@ -1753,7 +1772,8 @@ function testGregDateGetRataDie() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 3, 
-    	day: 8
+    	day: 8,
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -1814,7 +1834,7 @@ function testGregDateCurrentTimeWithTimeZone() {
     var d = new Date();
     assertNotNull(gd);
     
-    assertRoughlyEquals(d.getTime()-d.getTimezoneOffset()*60000, gd.getTime(), 30);
+    assertRoughlyEquals(d.getTime(), gd.getTime(), 30);
 }
 
 function testGregDateSetTimeZone() {
@@ -1898,7 +1918,7 @@ function testGregDateInitWithJDRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testGregDateInitWithRDRightTimeZone() {
