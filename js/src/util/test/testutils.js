@@ -398,6 +398,23 @@ function testShallowCopyEmpty() {
     assertTrue(ilib.isEmpty(tgt));
 }
 
+function testShallowCopyEmptyValues() {
+    var src = {
+    	"a": 0, 
+    	"b": "",
+    	"c": null,
+    	"d": undefined
+    };
+    var tgt = {};
+    
+    ilib.shallowCopy(src, tgt);
+    
+    assertEquals(0, tgt.a);
+    assertEquals("", tgt.b);
+    assertEquals(null, tgt.c);
+    assertEquals(undefined, tgt.d);
+}
+
 function testSignumPositive() {
     assertEquals(1, ilib.signum(1));
 }

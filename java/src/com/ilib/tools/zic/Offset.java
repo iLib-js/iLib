@@ -261,12 +261,16 @@ public class Offset
             // If there is an end year, then that means the rule is a past rule and DST no longer applies to 
             // this zone. So, we don't need to output the start and end rule.
             if ( startRule != null ) {
-                // if saving 0:00:00, then this is the end of daylight savings, so use "e" for end, and "s" for start
-                json.put("s", startRule.getJson(currentOnly));
+                Rule wallTime = startRule.clone();
+                RelativeDate rd = wallTime.getTransitionTime();
+                rd.offsetToWallTime(offsetHours, offsetMinutes, 0, 0);
+                json.put("s", wallTime.getJson(currentOnly));
             }
             if ( endRule != null ) {
-                // if saving 0:00:00, then this is the end of daylight savings, so use "e" for end, and "s" for start
-                json.put("e", endRule.getJson(currentOnly));
+                Rule wallTime = endRule.clone();
+                RelativeDate rd = wallTime.getTransitionTime();
+                rd.offsetToWallTime(offsetHours, offsetMinutes, startRule.getSaveHours(), startRule.getSaveMinutes());
+                json.put("e", wallTime.getJson(currentOnly));
             }
             
             if ( startRule == null && endRule == null ) {

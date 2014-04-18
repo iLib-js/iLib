@@ -18,7 +18,11 @@
  */
 package com.ilib.tools.zic;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.TimeZone;
 
 import org.apache.log4j.Logger;
 import org.json.JSONException;
@@ -185,6 +189,70 @@ public class RelativeDate
         }
     }
     
+    /**
+     * If the current relative date has a zone char and that zone char is not "w", then the
+     * transition time was given as a standard time or as a UTC time instead of wall time. 
+     * Either way, ilib needs to have the wall time in order to do the correct rule start 
+     * calculations. This method converts non-wall-time relative dates to a wall time.
+     *  
+     * @param offset the offset from UTC for this rule in hours
+     * @param savings the DST savings for this rule in hours
+     */
+    public void offsetToWallTime(int offsetHour, int offsetMinute, int savingsHour, int savingsMinute) 
+    {
+        Calendar c = new GregorianCalendar(TimeZone.getTimeZone("Etc/UTC")); 
+        c.set(year == -1 ? 1970 : year, 
+            month == -1 ? 0 : month, 
+            dayOfMonth == -1 ? 1 : dayOfMonth, 
+            hour == -1 ? 0 : hour, 
+            minute == -1 ? 0 : minute, 
+            0);
+        
+        switch (zoneChar) {
+            case 'u':
+                c.add(Calendar.HOUR_OF_DAY, offsetHour);
+                c.add(Calendar.MINUTE, offsetMinute);
+                c.add(Calendar.HOUR_OF_DAY, savingsHour);
+                c.add(Calendar.MINUTE, savingsMinute);
+                break;
+                
+            case 's':
+                c.add(Calendar.HOUR_OF_DAY, savingsHour);
+                c.add(Calendar.MINUTE, savingsMinute);
+                break;
+        }
+        
+        if ( year != -1 ) {
+            year = c.get(Calendar.YEAR);
+        }
+        if ( month != -1 && rule != StartRule.FIRST && rule != StartRule.LAST ) {
+            month = c.get(Calendar.MONTH);
+        }
+        if ( dayOfWeek != -1 &&
+            (rule == StartRule.FIRST || rule == StartRule.LAST) && 
+            1 != c.get(Calendar.DAY_OF_MONTH) &&
+            hour != -1 ) {
+            // if the offset put us on the next or previous day, then we have to adjust the first/last
+            // rules to check for the next or previous day of the week instead
+            dayOfWeek += ((offsetHour + savingsHour) * 60 + offsetMinute + savingsMinute) > 0 ? 1 : -1;
+            dayOfWeek %= 7;
+            if ( dayOfWeek < 0 ) {
+                dayOfWeek += 7;
+            }
+        }
+        if ( dayOfMonth != -1 ) {
+            dayOfMonth = c.get(Calendar.DAY_OF_MONTH);
+        }
+        if ( hour != -1 ) {
+            hour = c.get(Calendar.HOUR_OF_DAY);
+        }
+        if ( minute != -1 ) {
+            minute = c.get(Calendar.MINUTE);
+        }
+        
+        zoneChar = 'w';
+    }
+    
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
@@ -238,9 +306,6 @@ public class RelativeDate
                 }
             } else {
                 sb.append(":00");
-            }
-            if ( zoneChar != 'w' ) {
-                sb.append(zoneChar);
             }
         }
         return sb.toString();
@@ -483,4 +548,21 @@ public class RelativeDate
         return json;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#clone()
+     */
+    public RelativeDate clone()
+    {
+        RelativeDate ret = new RelativeDate();
+        ret.dayOfMonth = dayOfMonth;
+        ret.dayOfWeek = dayOfWeek;
+        ret.hour = hour;
+        ret.minute = minute;
+        ret.month = month;
+        ret.rule = rule;
+        ret.second = second;
+        ret.year = year;
+        ret.zoneChar = zoneChar;
+        return ret;
+    }
 }

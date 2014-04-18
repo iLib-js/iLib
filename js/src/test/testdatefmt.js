@@ -636,7 +636,10 @@ function testDateFmtTokenizeWithEscapes() {
 };
 
 function testDateFmtAlternateInputs1() {
-    var fmt = new ilib.DateFmt({template: "EEE, d MMM yyyy kk:mm:ss z"});
+    var fmt = new ilib.DateFmt({
+    	timezone: "Etc/UTC", 
+    	template: "EEE, d MMM yyyy kk:mm:ss z"
+    });
     assertNotNull(fmt);
     
     var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700 (PDT)");
@@ -2491,3 +2494,107 @@ function testDateFmtLoadLocaleDataAsynchCached() {
     ilib.setLoaderCallback(undefined);
 };
 
+
+function testDateFmtTransitionToDSTRightBefore() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "time",
+    	time: "hmaz",
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		timezone: "Etc/UTC",
+		unixtime: 1394359140000 // this is 3/9/2014 at 1:59am
+	});
+    
+    assertEquals("1:59am PST", fmt.format(date));
+};
+
+function testDateFmtTransitionToDSTRightAfter() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "time",
+    	time: "hmaz",
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+    	timezone: "Etc/UTC",
+		unixtime: 1394359260000
+	});
+    
+    // 2 minutes later
+    assertEquals("3:01am PDT", fmt.format(date));
+};
+
+function testDateFmtTransitionFromDSTDayBefore() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "time",
+    	time: "hmaz",
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+    	timezone: "Etc/UTC",
+		unixtime: 1414828740000 // this is 11/1/2014 at 0:59am
+	});
+    
+    assertEquals("12:59am PDT", fmt.format(date));
+};
+
+function testDateFmtTransitionFromDSTWellBefore() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "time",
+    	time: "hmaz",
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+    	timezone: "Etc/UTC",
+		unixtime: 1414915140000 // this is 11/2/2014 at 0:59am
+	});
+    
+    assertEquals("12:59am PDT", fmt.format(date));
+};
+
+function testDateFmtTransitionFromDSTRightBefore() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "time",
+    	time: "hmaz",
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+    	timezone: "Etc/UTC",
+		unixtime: 1414918740000 // this is 11/2/2014 at 1:59am
+	});
+    
+    assertEquals("1:59am PDT", fmt.format(date));
+};
+
+function testDateFmtTransitionFromDSTRightAfter() {
+    var fmt = new ilib.DateFmt({
+    	length: "full",
+    	type: "time",
+    	time: "hmaz",
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+    	timezone: "Etc/UTC",
+		unixtime: 1414918860000
+	});
+    
+    // 2 minutes later
+    assertEquals("1:01am PST", fmt.format(date));
+};

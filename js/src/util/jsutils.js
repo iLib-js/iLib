@@ -33,7 +33,7 @@ ilib.shallowCopy = function (source, target) {
 	var prop = undefined;
 	if (source && target) {
 		for (prop in source) {
-			if (prop !== undefined && source[prop]) {
+			if (prop !== undefined && typeof(source[prop]) !== 'undefined') {
 				target[prop] = source[prop];
 			}
 		}

@@ -486,6 +486,7 @@ public class RelativeDateTest
         rd2.setYear(1968);
         rd2.setMonth(8);
         rd2.setDayOfMonth(23);
+
         rd2.setHour(8);
         rd2.setMinute(30);
         rd2.setSecond(10);
@@ -553,7 +554,7 @@ public class RelativeDateTest
         rd1.setDayOfMonth(23);
         rd1.setHour(8);
         rd1.setMinute(30);
-        rd1.setSecond(10);
+        rd1.setSecond(10);    
         
         rd2.setYear(1968);
         rd2.setMonth(7);
@@ -753,6 +754,622 @@ public class RelativeDateTest
         
         assertEquals(0, rd2.compareTo(rd1));
         assertEquals(0, rd1.compareTo(rd2));
+    }
+
+    public void testClone()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "1920",
+            "Feb",
+            "20",
+            "2:00:23u"
+        };
+        
+        rd.parse(fields, 0);
+        
+        RelativeDate newrd = rd.clone();
+        
+        assertEquals(1920, newrd.getYear());
+        assertEquals(1, newrd.getMonth());
+        assertEquals(20, newrd.getDayOfMonth());
+        assertEquals(-1, newrd.getDayOfWeek());
+        assertEquals(2, newrd.getHour());
+        assertEquals(0, newrd.getMinute());
+        assertEquals(23, newrd.getSecond());
+        assertEquals('u', newrd.getZoneChar());
+        assertEquals(StartRule.EQUAL, newrd.getRule());
+    }
+
+    public void testCloneWithRule()
+    {
+        RelativeDate oldrd = new RelativeDate();
+        assertNotNull(oldrd);
+        
+        String[] fields = {
+            "1920",
+            "Feb",
+            "Thu<=8"
+        };
+        
+        oldrd.parse(fields, 0);
+        
+        RelativeDate rd = oldrd.clone();
+        
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(8, rd.getDayOfMonth());
+        assertEquals(4, rd.getDayOfWeek());
+        assertEquals(-1, rd.getHour());
+        assertEquals(-1, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.LESS, rd.getRule());
+    }
+    
+    public void testOffsetToWallTimeHoursOnly()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "1920",
+            "Feb",
+            "20",
+            "20:00:23u"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(20, rd.getDayOfMonth());
+        assertEquals(-1, rd.getDayOfWeek());
+        assertEquals(20, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(23, rd.getSecond());
+        assertEquals('u', rd.getZoneChar());
+        assertEquals(StartRule.EQUAL, rd.getRule());
+        
+        rd.offsetToWallTime(2, 0, 0, 0);
+
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(20, rd.getDayOfMonth());
+        assertEquals(-1, rd.getDayOfWeek());
+        assertEquals(22, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(23, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.EQUAL, rd.getRule());
+    }
+    
+    public void testOffsetToWallTimeHoursAndMinutes()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "1920",
+            "Feb",
+            "20",
+            "20:00:00u"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(20, rd.getDayOfMonth());
+        assertEquals(-1, rd.getDayOfWeek());
+        assertEquals(20, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(0, rd.getSecond());
+        assertEquals('u', rd.getZoneChar());
+        assertEquals(StartRule.EQUAL, rd.getRule());
+        
+        rd.offsetToWallTime(2, 15, 0, 0);
+
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(20, rd.getDayOfMonth());
+        assertEquals(-1, rd.getDayOfWeek());
+        assertEquals(22, rd.getHour());
+        assertEquals(15, rd.getMinute());
+        assertEquals(0, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.EQUAL, rd.getRule());
+    }
+    
+    public void testOffsetToWallTimeNextDay()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "1920",
+            "Feb",
+            "20",
+            "20:00:00u"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(20, rd.getDayOfMonth());
+        assertEquals(-1, rd.getDayOfWeek());
+        assertEquals(20, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(0, rd.getSecond());
+        assertEquals('u', rd.getZoneChar());
+        assertEquals(StartRule.EQUAL, rd.getRule());
+        
+        rd.offsetToWallTime(8, 0, 0, 0);
+
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(21, rd.getDayOfMonth());
+        assertEquals(-1, rd.getDayOfWeek());
+        assertEquals(4, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(0, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.EQUAL, rd.getRule());
+    }
+
+    public void testOffsetToWallTimeNextMonth()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "1921",
+            "Feb",
+            "28",
+            "20:00:00u"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(1921, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(28, rd.getDayOfMonth());
+        assertEquals(-1, rd.getDayOfWeek());
+        assertEquals(20, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(0, rd.getSecond());
+        assertEquals('u', rd.getZoneChar());
+        assertEquals(StartRule.EQUAL, rd.getRule());
+        
+        rd.offsetToWallTime(8, 0, 0, 0);
+
+        assertEquals(1921, rd.getYear());
+        assertEquals(2, rd.getMonth());
+        assertEquals(1, rd.getDayOfMonth());
+        assertEquals(-1, rd.getDayOfWeek());
+        assertEquals(4, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(0, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.EQUAL, rd.getRule());
+    }
+
+    public void testOffsetToWallTimeNextYear()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "1921",
+            "Dec",
+            "31",
+            "20:00:00u"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(1921, rd.getYear());
+        assertEquals(11, rd.getMonth());
+        assertEquals(31, rd.getDayOfMonth());
+        assertEquals(-1, rd.getDayOfWeek());
+        assertEquals(20, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(0, rd.getSecond());
+        assertEquals('u', rd.getZoneChar());
+        assertEquals(StartRule.EQUAL, rd.getRule());
+        
+        rd.offsetToWallTime(8, 0, 0, 0);
+
+        assertEquals(1922, rd.getYear());
+        assertEquals(0, rd.getMonth());
+        assertEquals(1, rd.getDayOfMonth());
+        assertEquals(-1, rd.getDayOfWeek());
+        assertEquals(4, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(0, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.EQUAL, rd.getRule());
+    }
+
+    public void testOffsetToWallTimeLastRule()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "1920",
+            "Feb",
+            "lastWed"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(-1, rd.getDayOfMonth());
+        assertEquals(3, rd.getDayOfWeek());
+        assertEquals(-1, rd.getHour());
+        assertEquals(-1, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.LAST, rd.getRule());
+        
+        rd.offsetToWallTime(8, 0, 0, 0);
+
+        // should be no change
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(-1, rd.getDayOfMonth());
+        assertEquals(3, rd.getDayOfWeek());
+        assertEquals(-1, rd.getHour());
+        assertEquals(-1, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.LAST, rd.getRule());
+    }
+
+    public void testOffsetToWallTimeLastRuleWithBogusZonechar()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "1920",
+            "Feb",
+            "lastWed"
+        };
+        
+        rd.parse(fields, 0);
+        
+        rd.setZoneChar('u');
+        
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(-1, rd.getDayOfMonth());
+        assertEquals(3, rd.getDayOfWeek());
+        assertEquals(-1, rd.getHour());
+        assertEquals(-1, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('u', rd.getZoneChar());
+        assertEquals(StartRule.LAST, rd.getRule());
+        
+        rd.offsetToWallTime(8, 0, 0, 0);
+
+        // should be no change in the values, but the zone 
+        // char should be set back again
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(-1, rd.getDayOfMonth());
+        assertEquals(3, rd.getDayOfWeek());
+        assertEquals(-1, rd.getHour());
+        assertEquals(-1, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.LAST, rd.getRule());
+    }
+
+    public void testOffsetToWallTimeLastRuleWithUTCZonechar()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "1920",
+            "Feb",
+            "lastWed",
+            "2:00u"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(-1, rd.getDayOfMonth());
+        assertEquals(3, rd.getDayOfWeek());
+        assertEquals(2, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('u', rd.getZoneChar());
+        assertEquals(StartRule.LAST, rd.getRule());
+        
+        rd.offsetToWallTime(1, 0, 0, 0);
+
+        // should be no change in the values, but the zone 
+        // char should be set back again
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(-1, rd.getDayOfMonth());
+        assertEquals(3, rd.getDayOfWeek());
+        assertEquals(3, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.LAST, rd.getRule());
+    }
+
+    public void testOffsetToWallTimeLastRuleWithUTCZonecharPrevDay()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "1920",
+            "Feb",
+            "lastWed",
+            "2:00u"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(-1, rd.getDayOfMonth());
+        assertEquals(3, rd.getDayOfWeek());
+        assertEquals(2, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('u', rd.getZoneChar());
+        assertEquals(StartRule.LAST, rd.getRule());
+        
+        rd.offsetToWallTime(-4, 0, 0, 0);
+
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(-1, rd.getDayOfMonth());
+        assertEquals(2, rd.getDayOfWeek());
+        assertEquals(22, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.LAST, rd.getRule());
+    }
+
+    public void testOffsetToWallTimeLastRuleWithUTCZonecharPrevDayWrapDown()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "1920",
+            "Feb",
+            "lastSun",
+            "2:00u"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(-1, rd.getDayOfMonth());
+        assertEquals(0, rd.getDayOfWeek());
+        assertEquals(2, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('u', rd.getZoneChar());
+        assertEquals(StartRule.LAST, rd.getRule());
+        
+        rd.offsetToWallTime(-4, 0, 0, 0);
+
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(-1, rd.getDayOfMonth());
+        assertEquals(6, rd.getDayOfWeek());
+        assertEquals(22, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.LAST, rd.getRule());
+    }
+
+    public void testOffsetToWallTimeLastRuleWithUTCZonecharPrevDayWrapUp()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "1920",
+            "Feb",
+            "lastSat",
+            "22:00u"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(-1, rd.getDayOfMonth());
+        assertEquals(6, rd.getDayOfWeek());
+        assertEquals(22, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('u', rd.getZoneChar());
+        assertEquals(StartRule.LAST, rd.getRule());
+        
+        rd.offsetToWallTime(4, 0, 0, 0);
+
+        assertEquals(1920, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(-1, rd.getDayOfMonth());
+        assertEquals(0, rd.getDayOfWeek());
+        assertEquals(2, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.LAST, rd.getRule());
+    }
+
+    public void testOffsetToWallTimeRelativeRule()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "",
+            "Feb",
+            "Thu>=8"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(-1, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(8, rd.getDayOfMonth());
+        assertEquals(4, rd.getDayOfWeek());
+        assertEquals(-1, rd.getHour());
+        assertEquals(-1, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.GREATER, rd.getRule());
+        
+        rd.offsetToWallTime(8, 0, 0, 0);
+
+        // should be no change because the transition time 
+        // is not given
+        assertEquals(-1, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(8, rd.getDayOfMonth());
+        assertEquals(4, rd.getDayOfWeek());
+        assertEquals(-1, rd.getHour());
+        assertEquals(-1, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.GREATER, rd.getRule());
+    }
+    
+    public void testOffsetToWallTimeRelativeRuleWithStandardZoneChar()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "",
+            "Feb",
+            "Thu>=8",
+            "1:00s"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(-1, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(8, rd.getDayOfMonth());
+        assertEquals(4, rd.getDayOfWeek());
+        assertEquals(1, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('s', rd.getZoneChar());
+        assertEquals(StartRule.GREATER, rd.getRule());
+        
+        rd.offsetToWallTime(8, 0, 1, 0);
+
+        // only change the transition time
+        assertEquals(-1, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(8, rd.getDayOfMonth());
+        assertEquals(4, rd.getDayOfWeek());
+        assertEquals(2, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.GREATER, rd.getRule());
+    }
+
+    public void testOffsetToWallTimeRelativeRuleWithUTCZoneChar()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "",
+            "Feb",
+            "Thu>=8",
+            "1:00u"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(-1, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(8, rd.getDayOfMonth());
+        assertEquals(4, rd.getDayOfWeek());
+        assertEquals(1, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('u', rd.getZoneChar());
+        assertEquals(StartRule.GREATER, rd.getRule());
+        
+        rd.offsetToWallTime(1, 0, 0, 0);
+
+        // only change the transition time
+        assertEquals(-1, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(8, rd.getDayOfMonth());
+        assertEquals(4, rd.getDayOfWeek());
+        assertEquals(2, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.GREATER, rd.getRule());
+    }
+
+    public void testOffsetToWallTimeRelativeRuleWithUTCZoneCharPrevDay()
+    {
+        RelativeDate rd = new RelativeDate();
+        assertNotNull(rd);
+        
+        String[] fields = {
+            "",
+            "Feb",
+            "Thu>=8",
+            "2:00u"
+        };
+        
+        rd.parse(fields, 0);
+        
+        assertEquals(-1, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(8, rd.getDayOfMonth());
+        assertEquals(4, rd.getDayOfWeek());
+        assertEquals(2, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('u', rd.getZoneChar());
+        assertEquals(StartRule.GREATER, rd.getRule());
+        
+        rd.offsetToWallTime(-8, 0, 0, 0);
+
+        assertEquals(-1, rd.getYear());
+        assertEquals(1, rd.getMonth());
+        assertEquals(7, rd.getDayOfMonth());
+        assertEquals(4, rd.getDayOfWeek());
+        assertEquals(18, rd.getHour());
+        assertEquals(0, rd.getMinute());
+        assertEquals(-1, rd.getSecond());
+        assertEquals('w', rd.getZoneChar());
+        assertEquals(StartRule.GREATER, rd.getRule());
     }
 
 }
