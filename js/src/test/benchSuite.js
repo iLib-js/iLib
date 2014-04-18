@@ -43,8 +43,13 @@ function suite() {
         {file: "benlocinfo_initial_assembled.js", iterations: 100},
 		{file: "benlocinfo_initial_dynamic.js", iterations: 100},
         {file: "benlocinfo_subsequent_assembled.js", iterations: 1},
-		{file: "benlocinfo_subsequent_dynamic.js", iterations: 1}
-	];
+		{file: "benlocinfo_subsequent_dynamic.js", iterations: 1},
+
+        {file: "bentimezone_initial_assembled.js", iterations: 100},
+		{file: "bentimezone_initial_dynamic.js", iterations: 100},
+        {file: "bentimezone_subsequent_assembled.js", iterations: 1},
+		{file: "bentimezone_subsequent_dynamic.js", iterations: 1}
+    ];
 
     suites.forEach(function (path) {
     	var ns = newSuite(path.file);

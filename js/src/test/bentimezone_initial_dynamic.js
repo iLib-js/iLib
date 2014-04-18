@@ -1,5 +1,5 @@
 /*
- * bendatefmt_initial_dynamic.js - benchmark the DateFmt object with initial dynamic formats
+ * bentimezone_initial_dynamic.js - benchmark the TimeZone object with initial dynamic formats
  *
  * Copyright © 2014, JEDLSoft
  *
@@ -17,11 +17,11 @@
  * limitations under the License.
  */
 
-function testDateFmtConstructorEmptyInitial(results) {
+function testTimeZoneConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
-		name: "DateFmt-dynamic-empty-initial",
+		name: "TimeZone-dynamic-empty-initial",
 		fn: function () {
-		    var fmt = new ilib.DateFmt();
+		    var fmt = new ilib.TimeZone();
 		    assertNotNull(fmt);
 		}
 	});
@@ -29,11 +29,11 @@ function testDateFmtConstructorEmptyInitial(results) {
 	tt.run(results);
 }
 
-function testDateFmtConstructorRealInitial(results) {
+function testTimeZoneConstructorRealInitialLocale(results) {
 	var tt = new TimedTest({
-		name: "DateFmt-dynamic-normal-initial",
+		name: "TimeZone-dynamic-normal-initial",
 		fn: function () {
-			var fmt = new ilib.DateFmt({
+			var fmt = new ilib.TimeZone({
 				locale: "de-DE"
 			});
 		    assertNotNull(fmt);
@@ -43,12 +43,12 @@ function testDateFmtConstructorRealInitial(results) {
 	tt.run(results);
 }
 
-function testDateFmtConstructorNonexistentInitial(results) {
+function testTimeZoneConstructorRealInitialId(results) {
 	var tt = new TimedTest({
-		name: "DateFmt-dynamic-nonexistent-initial",
+		name: "TimeZone-dynamic-normal-initial",
 		fn: function () {
-			var fmt = new ilib.DateFmt({
-				locale: "xx-YY"
+			var fmt = new ilib.TimeZone({
+				id: "Europe/Berlin"
 			});
 		    assertNotNull(fmt);
 		}
@@ -57,12 +57,12 @@ function testDateFmtConstructorNonexistentInitial(results) {
 	tt.run(results);
 }
 
-function testDateFmtConstructorOtherComplexInitial(results) {
+function testTimeZoneConstructorNonexistentInitial(results) {
 	var tt = new TimedTest({
-		name: "DateFmt-dynamic-otherfile-complex-initial",
+		name: "TimeZone-dynamic-nonexistent-initial",
 		fn: function () {
-			var fmt = new ilib.DateFmt({
-				locale: "zh-Hant-TW"
+			var fmt = new ilib.TimeZone({
+				id: "xx-YY"
 			});
 		    assertNotNull(fmt);
 		}
@@ -71,20 +71,3 @@ function testDateFmtConstructorOtherComplexInitial(results) {
 	tt.run(results);
 }
 
-function testDateFmtConstructorWithOptionsInitial(results) {
-	var tt = new TimedTest({
-		name: "DateFmt-dynamic-otherfile-options-initial",
-		fn: function () {
-			var fmt = new ilib.DateFmt({
-				locale: "fr-FR",
-				type: "datetime",
-				date: "dmywg",
-				time: "hmsaz",
-				length: "full"
-			});
-		    assertNotNull(fmt);
-		}
-	});
-
-	tt.run(results);
-}
