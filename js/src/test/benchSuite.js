@@ -58,8 +58,16 @@ function suite() {
         {file: "bencurinfo_initial_assembled.js", iterations: 100},
 		{file: "bencurinfo_initial_dynamic.js", iterations: 100},
         {file: "bencurinfo_subsequent_assembled.js", iterations: 1},
-		{file: "bencurinfo_subsequent_dynamic.js", iterations: 1}
-    ];
+		{file: "bencurinfo_subsequent_dynamic.js", iterations: 1},
+
+        {file: "bennumfmt_initial_assembled.js", iterations: 100},
+		{file: "bennumfmt_initial_dynamic.js", iterations: 100},
+        {file: "bennumfmt_subsequent_assembled.js", iterations: 1},
+		{file: "bennumfmt_subsequent_dynamic.js", iterations: 1},
+
+        {file: "benwholefile_assembled.js", iterations: 100},
+		{file: "benwholefile_dynamic.js", iterations: 100}
+	];
 
     suites.forEach(function (path) {
     	var ns = newSuite(path.file);
