@@ -204,3 +204,25 @@ function testDateFmtConstructorWithOptionsInitial(results) {
 	
 	tt.run(results);
 }
+
+function testDateFmtFormatInitial(results) {
+	var fmt = new ilib.DateFmt({
+		locale: "fr-FR",
+		type: "datetime",
+		date: "dmywg",
+		time: "hmsaz",
+		length: "full"
+	});
+
+	assertNotNull(fmt);
+
+	var tt = new TimedTest({
+		name: "DateFmt-assembled-format-full-initial",
+		fn: function () {
+			d = ilib.Date.newInstance();
+			assertNotUndefined(fmt.format(d));
+		}
+	});
+
+	tt.run(results);
+}
