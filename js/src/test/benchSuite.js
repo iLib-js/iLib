@@ -48,7 +48,17 @@ function suite() {
         {file: "bentimezone_initial_assembled.js", iterations: 100},
 		{file: "bentimezone_initial_dynamic.js", iterations: 100},
         {file: "bentimezone_subsequent_assembled.js", iterations: 1},
-		{file: "bentimezone_subsequent_dynamic.js", iterations: 1}
+		{file: "bentimezone_subsequent_dynamic.js", iterations: 1},
+
+        {file: "benscriptinfo_initial_assembled.js", iterations: 100},
+		{file: "benscriptinfo_initial_dynamic.js", iterations: 100},
+        {file: "benscriptinfo_subsequent_assembled.js", iterations: 1},
+		{file: "benscriptinfo_subsequent_dynamic.js", iterations: 1},
+
+        {file: "bencurinfo_initial_assembled.js", iterations: 100},
+		{file: "bencurinfo_initial_dynamic.js", iterations: 100},
+        {file: "bencurinfo_subsequent_assembled.js", iterations: 1},
+		{file: "bencurinfo_subsequent_dynamic.js", iterations: 1}
     ];
 
     suites.forEach(function (path) {
