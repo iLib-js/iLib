@@ -113,7 +113,7 @@ TestSuite.prototype = {
 				if (typeof(this.tearDown) === 'function') {
 					tearDown(); 
 				}
-				// console.log("PASS: " + t);
+				// util.print("PASS: " + t);
 				results.pass++;		
 			} catch ( e ) {
 				var msg = "FAIL: " + path + ":" + t + "()\n\t";
@@ -130,7 +130,7 @@ TestSuite.prototype = {
 				} else {
 					msg += e.toString();
 				}
-				console.log(msg);
+				util.print(msg);
 				results.fail++;
 				results.failures.push(msg);
 			}
@@ -139,7 +139,7 @@ TestSuite.prototype = {
 	},
 	
 	runTests: function(results, root) {
-		// console.log("runTests for suite " + this.path);
+		// util.print("runTests for suite " + this.path);
 		if (this.path) {
 			this.context = vm.createContext({
 				top: {},
@@ -176,7 +176,7 @@ TestSuite.prototype = {
 			}
 		}
 		this.subSuites.forEach(function (suite) {
-			// console.log("Running tests for subsuite " + JSON.stringify(suite));
+			// util.print("Running tests for subsuite " + JSON.stringify(suite));
 			suite.tests.applyIncludes(this.includes);
 			for (var i = 0; i < suite.iterations; i++) {
 				suite.tests.runTests(results, root);
@@ -307,28 +307,28 @@ TestRunner.prototype = {
 			var plusses = "+++++++++++++++++++++++++++++++++++++++";
 			
 			// bench mark tests were included
-			// console.log("timings are:\n" + JSON.stringify(this.results.timings));
+			// util.print("timings are:\n" + JSON.stringify(this.results.timings));
 			for (var category in this.results.timings) {
 				var m = this.results.timings[category];
 				m.sort(function(left,right) {
 					return left-right;
 				});
-				console.log("--------------------------------------------------------------------");
-				console.log("Category " + category);
-				console.log("Iter. : " + m.length);
-				console.log("Mean  : " + this.mean(m));
-				console.log("Median: " + this.median(m));
-				console.log("Max   : " + this.max(m));
-				console.log("Min   : " + this.min(m));
-				console.log("Stddev: " + this.standardDeviation(m));
-				console.log("Histogram: ");
+				util.print("--------------------------------------------------------------------\n");
+				util.print("Category " + category + "\n");
+				util.print("Iter. : " + m.length + "\n");
+				util.print("Mean  : " + this.mean(m) + "\n");
+				util.print("Median: " + this.median(m) + "\n");
+				util.print("Max   : " + this.max(m) + "\n");
+				util.print("Min   : " + this.min(m) + "\n");
+				util.print("Stddev: " + this.standardDeviation(m) + "\n");
+				util.print("Histogram:\n");
 				var hist = this.histogram(m);
 				for (var i = 0; i < hist.length; i++) {
-					console.log(hist[i].range + ": " + hist[i].count + " " + plusses.substring(0,Math.floor(40*hist[i].count/m.length+0.5)));
+					util.print(hist[i].range + ": " + hist[i].count + " " + plusses.substring(0,Math.floor(40*hist[i].count/m.length+0.5)) + "\n");
 				}
 			}
 		}
-		console.log("Summary - " + this.results.runs + " tests run, " + this.results.pass + " pass, " + this.results.fail + " fail, " + this.duration + " seconds.");		
+		util.print("Summary - " + this.results.runs + " tests run, " + this.results.pass + " pass, " + this.results.fail + " fail, " + this.duration + " seconds.\n");		
 	}
 };
 
