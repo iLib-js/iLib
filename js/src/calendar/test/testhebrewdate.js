@@ -18,80 +18,80 @@
  */
 
 function testHebrewDateConstructor() {
-	var id = new ilib.Date.HebrewDate();
+	var hd = new ilib.Date.HebrewDate();
     
-    assertNotNull(id);
+    assertNotNull(hd);
 }
 
 function testHebrewDateConstructorFromRD() {
-	var id = new ilib.Date.HebrewDate({rd: 357.25});
+	var hd = new ilib.Date.HebrewDate({rd: 357.25});
     
-    assertEquals('object', typeof(id));
-    assertEquals(357.25, id.getRataDie());
-    assertEquals(2, id.getYears());
-    assertEquals(7, id.getMonths());
-    assertEquals(3, id.getDays());
-    assertEquals(0, id.getHours());
-    assertEquals(0, id.getMinutes());
-    assertEquals(0, id.getSeconds());
-    assertEquals(0, id.getMilliseconds());
+    assertEquals('object', typeof(hd));
+    assertEquals(357.25, hd.getRataDie());
+    assertEquals(2, hd.getYears());
+    assertEquals(7, hd.getMonths());
+    assertEquals(3, hd.getDays());
+    assertEquals(0, hd.getHours());
+    assertEquals(0, hd.getMinutes());
+    assertEquals(0, hd.getSeconds());
+    assertEquals(0, hd.getMilliseconds());
 }
 
-/* julian date id rd 357 + epoch */
+/* julian date is rd 357 + epoch */
 function testHebrewDateConstructorFromJD() {
-	var id = new ilib.Date.HebrewDate({julianday: 348354.5});
+	var hd = new ilib.Date.HebrewDate({julianday: 348354.5});
     
-    assertEquals('object', typeof(id));
-    assertEquals(357.25, id.getRataDie());
-    assertEquals(2, id.getYears());
-    assertEquals(7, id.getMonths());
-    assertEquals(3, id.getDays());
-    assertEquals(0, id.getHours());
-    assertEquals(0, id.getMinutes());
-    assertEquals(0, id.getSeconds());
-    assertEquals(0, id.getMilliseconds());
+    assertEquals('object', typeof(hd));
+    assertEquals(357.25, hd.getRataDie());
+    assertEquals(2, hd.getYears());
+    assertEquals(7, hd.getMonths());
+    assertEquals(3, hd.getDays());
+    assertEquals(0, hd.getHours());
+    assertEquals(0, hd.getMinutes());
+    assertEquals(0, hd.getSeconds());
+    assertEquals(0, hd.getMilliseconds());
 }
 
 function testHebrewDateConstructorFromRDCusp() {
-	var id = new ilib.Date.HebrewDate({rd: 355.25});
+	var hd = new ilib.Date.HebrewDate({rd: 355.25});
     
-    assertEquals('object', typeof(id));
-    assertEquals(355.25, id.getRataDie());
-    assertEquals(2, id.getYears());
-    assertEquals(7, id.getMonths());
-    assertEquals(1, id.getDays());
-    assertEquals(0, id.getHours());
-    assertEquals(0, id.getMinutes());
-    assertEquals(0, id.getSeconds());
-    assertEquals(0, id.getMilliseconds());
+    assertEquals('object', typeof(hd));
+    assertEquals(355.25, hd.getRataDie());
+    assertEquals(2, hd.getYears());
+    assertEquals(7, hd.getMonths());
+    assertEquals(1, hd.getDays());
+    assertEquals(0, hd.getHours());
+    assertEquals(0, hd.getMinutes());
+    assertEquals(0, hd.getSeconds());
+    assertEquals(0, hd.getMilliseconds());
 }
 
 function testHebrewDateAfterLeapYear() {
-	var id = new ilib.Date.HebrewDate({julianday: 349326.9});  // Siv 1, 0004, 9:36am
+	var hd = new ilib.Date.HebrewDate({julianday: 349326.9});  // Siv 1, 0004, 9:36am
     
-    assertEquals('object', typeof(id));
-    assertRoughlyEquals(1329.65, id.getRataDie(), 0.001);
-    assertEquals(4, id.getYears());
-    assertEquals(3, id.getMonths());
-    assertEquals(1, id.getDays());
-    assertEquals(9, id.getHours());
-    assertEquals(36, id.getMinutes());
-    assertEquals(0, id.getSeconds());
-    assertEquals(0, id.getMilliseconds());
+    assertEquals('object', typeof(hd));
+    assertRoughlyEquals(1329.65, hd.getRataDie(), 0.001);
+    assertEquals(4, hd.getYears());
+    assertEquals(3, hd.getMonths());
+    assertEquals(1, hd.getDays());
+    assertEquals(9, hd.getHours());
+    assertEquals(36, hd.getMinutes());
+    assertEquals(0, hd.getSeconds());
+    assertEquals(0, hd.getMilliseconds());
 }
 
 function testHebrewDateAfterNoon() {
-	var id = new ilib.Date.HebrewDate({julianday: 349327.1});  // Siv 1, 0004, 2:24pm
+	var hd = new ilib.Date.HebrewDate({julianday: 349327.1});  // Siv 1, 0004, 2:24pm
     
-    assertEquals('object', typeof(id));
-    assertRoughlyEquals(1329.85, id.getRataDie(), 0.001);
-    assertEquals(4, id.getYears());
-    assertEquals(3, id.getMonths());
-    assertEquals(1, id.getDays());
-    assertEquals(14, id.getHours());
-    assertEquals(24, id.getMinutes());
-    assertEquals(0, id.getSeconds());
-    assertEquals(0, id.getMilliseconds());
+    assertEquals('object', typeof(hd));
+    assertRoughlyEquals(1329.85, hd.getRataDie(), 0.001);
+    assertEquals(4, hd.getYears());
+    assertEquals(3, hd.getMonths());
+    assertEquals(1, hd.getDays());
+    assertEquals(14, hd.getHours());
+    assertEquals(24, hd.getMinutes());
+    assertEquals(0, hd.getSeconds());
+    assertEquals(0, hd.getMilliseconds());
 }
 
 var testDates = [
@@ -132,27 +132,27 @@ var testDates = [
 ];
 
 function testHebrewDateConvert() {
-    var gd;
-    for (i = 0; i < testDates.length; i++) {
-        id = new ilib.Date.HebrewDate({julianday: testDates[i][0]});
+    var hd;
+    for (var i = 0; i < testDates.length; i++) {
+        hd = new ilib.Date.HebrewDate({julianday: testDates[i][0]});
     
         info("testing jd=" + testDates[i][0]);
         
-        assertEquals('object', typeof(id));
-        assertEquals("testing rd for " + testDates[i][0], (testDates[i][0] - 347997.25), id.getRataDie());
-        assertEquals("testing year for " + testDates[i][0], testDates[i][1], id.getYears());
-        assertEquals("testing month for " + testDates[i][0], testDates[i][2], id.getMonths());
-        assertEquals("testing day for " + testDates[i][0], testDates[i][3], id.getDays());
-        assertEquals("testing hour for " + testDates[i][0], testDates[i][4], id.getHours());
-        assertEquals("testing minute for " + testDates[i][0], testDates[i][5], id.getMinutes());
-        assertEquals("testing second for " + testDates[i][0], testDates[i][6], id.getSeconds());
-        assertEquals("testing millisecond for " + testDates[i][0], testDates[i][7], id.getMilliseconds());
-        assertEquals("testing day of week for " + testDates[i][0], testDates[i][8], id.getDayOfWeek());
+        assertEquals('object', typeof(hd));
+        assertEquals("testing rd for " + testDates[i][0], (testDates[i][0] - 347997.25), hd.getRataDie());
+        assertEquals("testing year for " + testDates[i][0], testDates[i][1], hd.getYears());
+        assertEquals("testing month for " + testDates[i][0], testDates[i][2], hd.getMonths());
+        assertEquals("testing day for " + testDates[i][0], testDates[i][3], hd.getDays());
+        assertEquals("testing hour for " + testDates[i][0], testDates[i][4], hd.getHours());
+        assertEquals("testing minute for " + testDates[i][0], testDates[i][5], hd.getMinutes());
+        assertEquals("testing second for " + testDates[i][0], testDates[i][6], hd.getSeconds());
+        assertEquals("testing millisecond for " + testDates[i][0], testDates[i][7], hd.getMilliseconds());
+        assertEquals("testing day of week for " + testDates[i][0], testDates[i][8], hd.getDayOfWeek());
     }
 }
 
 function testHebrewDateConstructorFull() {
-	var id = new ilib.Date.HebrewDate({
+	var hd = new ilib.Date.HebrewDate({
 		year: 2011,
 		month: 9,
 		day: 23,
@@ -162,19 +162,19 @@ function testHebrewDateConstructorFull() {
 		millisecond: 123
 	});
     
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(2011, id.getYears());
-    assertEquals(9, id.getMonths());
-    assertEquals(23, id.getDays());
-    assertEquals(16, id.getHours());
-    assertEquals(7, id.getMinutes());
-    assertEquals(12, id.getSeconds());
-    assertEquals(123, id.getMilliseconds());
+    assertEquals(2011, hd.getYears());
+    assertEquals(9, hd.getMonths());
+    assertEquals(23, hd.getDays());
+    assertEquals(16, hd.getHours());
+    assertEquals(7, hd.getMinutes());
+    assertEquals(12, hd.getSeconds());
+    assertEquals(123, hd.getMilliseconds());
 }
 
 function testHebrewDateConstructorFullWithStrings() {
-	var id = new ilib.Date.HebrewDate({
+	var hd = new ilib.Date.HebrewDate({
 		year: "2011", 
 		month: "9",
 		day: "23", 
@@ -184,19 +184,19 @@ function testHebrewDateConstructorFullWithStrings() {
 		millisecond: "123"
 	});
     
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(2011, id.getYears());
-    assertEquals(9, id.getMonths());
-    assertEquals(23, id.getDays());
-    assertEquals(16, id.getHours());
-    assertEquals(7, id.getMinutes());
-    assertEquals(12, id.getSeconds());
-    assertEquals(123, id.getMilliseconds());
+    assertEquals(2011, hd.getYears());
+    assertEquals(9, hd.getMonths());
+    assertEquals(23, hd.getDays());
+    assertEquals(16, hd.getHours());
+    assertEquals(7, hd.getMinutes());
+    assertEquals(12, hd.getSeconds());
+    assertEquals(123, hd.getMilliseconds());
 }
 
 function testHebrewDateConstructorCopy() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
         year: 2011, 
         month: 9, 
         day: 23, 
@@ -206,22 +206,22 @@ function testHebrewDateConstructorCopy() {
         millisecond: 123
     });
     
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(2011, id.getYears());
-    assertEquals(9, id.getMonths());
-    assertEquals(23, id.getDays());
-    assertEquals(16, id.getHours());
-    assertEquals(7, id.getMinutes());
-    assertEquals(12, id.getSeconds());
-    assertEquals(123, id.getMilliseconds());
+    assertEquals(2011, hd.getYears());
+    assertEquals(9, hd.getMonths());
+    assertEquals(23, hd.getDays());
+    assertEquals(16, hd.getHours());
+    assertEquals(7, hd.getMinutes());
+    assertEquals(12, hd.getSeconds());
+    assertEquals(123, hd.getMilliseconds());
 }
 
 function testHebrewDateGetJulianDay() {
-    var gd;
+    var hd;
     
-    for (i = 0; i < testDates.length; i++) {
-        id = new ilib.Date.HebrewDate({
+    for (var i = 0; i < testDates.length; i++) {
+        hd = new ilib.Date.HebrewDate({
             year: testDates[i][1], 
             month: testDates[i][2], 
             day: testDates[i][3],
@@ -233,96 +233,96 @@ function testHebrewDateGetJulianDay() {
     
         info("testing jd=" + testDates[i][0]);
         
-        assertEquals('object', typeof(id));
-        assertEquals(testDates[i][0], id.getJulianDay());
-        assertEquals(testDates[i][8], id.getDayOfWeek());
+        assertEquals('object', typeof(hd));
+        assertEquals(testDates[i][0], hd.getJulianDay());
+        assertEquals(testDates[i][8], hd.getDayOfWeek());
     }
 }
 
 function testHebrewDateSetYears() {
-    var id = new ilib.Date.HebrewDate();
+    var hd = new ilib.Date.HebrewDate();
     
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    id.setYears(123);
+    hd.setYears(123);
     
-    assertEquals(123, id.getYears());
+    assertEquals(123, hd.getYears());
 }
 
 function testHebrewDateSetMonths() {
-    var id = new ilib.Date.HebrewDate();
+    var hd = new ilib.Date.HebrewDate();
     
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    id.setMonths(7);
+    hd.setMonths(7);
     
-    assertEquals(7, id.getMonths());
+    assertEquals(7, hd.getMonths());
 }
 
 function testHebrewDateSetDays() {
-    var id = new ilib.Date.HebrewDate();
+    var hd = new ilib.Date.HebrewDate();
     
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    id.setDays(12);
+    hd.setDays(12);
     
-    assertEquals(12, id.getDays());
+    assertEquals(12, hd.getDays());
 }
 
 function testHebrewDateSetHours() {
-    var id = new ilib.Date.HebrewDate();
+    var hd = new ilib.Date.HebrewDate();
     
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    id.setHours(12);
+    hd.setHours(12);
     
-    assertEquals(12, id.getHours());
+    assertEquals(12, hd.getHours());
 }
 
 function testHebrewDateSetMinutes() {
-    var id = new ilib.Date.HebrewDate();
+    var hd = new ilib.Date.HebrewDate();
     
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    id.setMinutes(13);
+    hd.setMinutes(13);
     
-    assertEquals(13, id.getMinutes());
+    assertEquals(13, hd.getMinutes());
 }
 
 function testHebrewDateSetSeconds() {
-    var id = new ilib.Date.HebrewDate();
+    var hd = new ilib.Date.HebrewDate();
     
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    id.setSeconds(23);
+    hd.setSeconds(23);
     
-    assertEquals(23, id.getSeconds());
+    assertEquals(23, hd.getSeconds());
 }
 
 function testHebrewDateSetMilliseconds() {
-    var id = new ilib.Date.HebrewDate();
+    var hd = new ilib.Date.HebrewDate();
     
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    id.setMilliseconds(123);
+    hd.setMilliseconds(123);
     
-    assertEquals(123, id.getMilliseconds());
+    assertEquals(123, hd.getMilliseconds());
 }
 
 function testGetDayOfWeek1() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 7,
 		day: 2
 	});
     
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek());
+    assertEquals(5, hd.getDayOfWeek());
 }
 
 function testGetDayOfWeekWithTime() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 7,
 		day: 2,
@@ -331,508 +331,508 @@ function testGetDayOfWeekWithTime() {
 		second: 34
 	});
     
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek());
+    assertEquals(5, hd.getDayOfWeek());
 }
 
 function testHebrewDateTestGetTimeZero() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5730,
 		month: 10,
 		day: 23
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(0, id.getTime());
+    assertEquals(0, hd.getTime());
 }
 
 function testHebrewDateTestGetTimeZeroJD() {
-    var id = new ilib.Date.HebrewDate({julianday: 2440587.5});
-    assertNotNull(id);
+    var hd = new ilib.Date.HebrewDate({julianday: 2440587.5});
+    assertNotNull(hd);
     
-    assertEquals(0, id.getTime());
+    assertEquals(0, hd.getTime());
 }
 
 function testHebrewDateTestGetTime() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5730,
 		month: 10,
 		day: 24,
 		hour: 8,
 		minute: 30
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(117000000, id.getTime());
+    assertEquals(117000000, hd.getTime());
 }
 
 function testHebrewDateTestGetTimeTooEarly() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5730,
 		month: 10,
 		day: 22
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(-1, id.getTime());
+    assertEquals(-1, hd.getTime());
 }
 
 function testHebrewDateTestGetTimeTooLate() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5798,
 		month: 11,
 		day: 14
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(-1, id.getTime());
+    assertEquals(-1, hd.getTime());
 }
 
 // test some of the helper functions to make sure they are producing the right thing
 function testHebrewDateOnOrBeforeSun() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    // Sunday on or before id 5 days before 
-    assertEquals(rd-5, id.onOrBeforeRd(rd, 0));
+    // Sunday on or before is 5 days before 
+    assertEquals(rd-5, hd.onOrBefore(0).getRataDie());
 }
 
 function testHebrewDateOnOrBeforeMon() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd-4, id.onOrBeforeRd(rd, 1));
+    assertEquals(rd-4, hd.onOrBefore(1).getRataDie());
 }
 
 function testHebrewDateOnOrBeforeTue() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd-3, id.onOrBeforeRd(rd, 2));
+    assertEquals(rd-3, hd.onOrBefore(2).getRataDie());
 }
 
 function testHebrewDateOnOrBeforeWed() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd-2, id.onOrBeforeRd(rd, 3));
+    assertEquals(rd-2, hd.onOrBefore(3).getRataDie());
 }
 
 function testHebrewDateOnOrBeforeThu() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd-1, id.onOrBeforeRd(rd, 4));
+    assertEquals(rd-1, hd.onOrBefore(4).getRataDie());
 }
 
 function testHebrewDateOnOrBeforeFri() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd, id.onOrBeforeRd(rd, 5));
+    assertEquals(rd, hd.onOrBefore(5).getRataDie());
 }
 
 function testHebrewDateOnOrBeforeSat() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd-6, id.onOrBeforeRd(rd, 6));
+    assertEquals(rd-6, hd.onOrBefore(6).getRataDie());
 }
 
 function testHebrewDateOnOrAfterSun() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    // Sunday on or before id 5 days before 
-    assertEquals(rd+2, id.onOrAfterRd(rd, 0));
+    // Sunday on or before is 5 days before 
+    assertEquals(rd+2, hd.onOrAfter(0).getRataDie());
 }
 
 function testHebrewDateOnOrAfterMon() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd+3, id.onOrAfterRd(rd, 1));
+    assertEquals(rd+3, hd.onOrAfter(1).getRataDie());
 }
 
 function testHebrewDateOnOrAfterTue() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd+4, id.onOrAfterRd(rd, 2));
+    assertEquals(rd+4, hd.onOrAfter(2).getRataDie());
 }
 
 function testHebrewDateOnOrAfterWed() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd+5, id.onOrAfterRd(rd, 3));
+    assertEquals(rd+5, hd.onOrAfter(3).getRataDie());
 }
 
 function testHebrewDateOnOrAfterThu() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd+6, id.onOrAfterRd(rd, 4));
+    assertEquals(rd+6, hd.onOrAfter(4).getRataDie());
 }
 
 function testHebrewDateOnOrAfterFri() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd, id.onOrAfterRd(rd, 5));
+    assertEquals(rd, hd.onOrAfter(5).getRataDie());
 }
 
 function testHebrewDateOnOrAfterSat() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd+1, id.onOrAfterRd(rd, 6));
+    assertEquals(rd+1, hd.onOrAfter(6).getRataDie());
 }
 
 function testHebrewDateBeforeSun() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    // Sunday before id 5 days before 
-    assertEquals(rd-5, id.beforeRd(rd, 0));
+    // Sunday before hd 5 days before 
+    assertEquals(rd-5, hd.before(0).getRataDie());
 }
 
 function testHebrewDateBeforeMon() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd-4, id.beforeRd(rd, 1));
+    assertEquals(rd-4, hd.before(1).getRataDie());
 }
 
 function testHebrewDateBeforeTue() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd-3, id.beforeRd(rd, 2));
+    assertEquals(rd-3, hd.before(2).getRataDie());
 }
 
 function testHebrewDateBeforeWed() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd-2, id.beforeRd(rd, 3));
+    assertEquals(rd-2, hd.before(3).getRataDie());
 }
 
 function testHebrewDateBeforeThu() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd-1, id.beforeRd(rd, 4));
+    assertEquals(rd-1, hd.before(4).getRataDie());
 }
 
 function testHebrewDateBeforeFri() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd-7, id.beforeRd(rd, 5));
+    assertEquals(rd-7, hd.before(5).getRataDie());
 }
 
 function testHebrewDateBeforeSat() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd-6, id.beforeRd(rd, 6));
+    assertEquals(rd-6, hd.before(6).getRataDie());
 }
 
 function testHebrewDateAfterSun() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    // Sunday on or before id 5 days before 
-    assertEquals(rd+2, id.afterRd(rd, 0));
+    // Sunday on or before hd 5 days before 
+    assertEquals(rd+2, hd.after(0).getRataDie());
 }
 
 function testHebrewDateAfterMon() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd+3, id.afterRd(rd, 1));
+    assertEquals(rd+3, hd.after(1).getRataDie());
 }
 
 function testHebrewDateAfterTue() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd+4, id.afterRd(rd, 2));
+    assertEquals(rd+4, hd.after(2).getRataDie());
 }
 
 function testHebrewDateAfterWed() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd+5, id.afterRd(rd, 3));
+    assertEquals(rd+5, hd.after(3).getRataDie());
 }
 
 function testHebrewDateAfterThu() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd+6, id.afterRd(rd, 4));
+    assertEquals(rd+6, hd.after(4).getRataDie());
 }
 
 function testHebrewDateAfterFri() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd+7, id.afterRd(rd, 5));
+    assertEquals(rd+7, hd.after(5).getRataDie());
 }
 
 function testHebrewDateAfterSat() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 9,
 		day: 12
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getDayOfWeek()); // Friday
-    var rd = id.getRataDie();
+    assertEquals(5, hd.getDayOfWeek()); // Friday
+    var rd = hd.getRataDie();
     
-    assertEquals(rd+1, id.afterRd(rd, 6));
+    assertEquals(rd+1, hd.after(6).getRataDie());
 }
 
 function testHebrewDateTestGetWeekOfYearThisYear() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 8,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getWeekOfYear());
+    assertEquals(5, hd.getWeekOfYear());
 }
 
 function testHebrewDateTestGetWeekOfYearThisYear2() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 9,
 		day: 19
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(12, id.getWeekOfYear());
+    assertEquals(12, hd.getWeekOfYear());
 }
 
 function testHebrewDateTestGetWeekOfYearThisYearRegular() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 1,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(26, id.getWeekOfYear());
+    assertEquals(26, hd.getWeekOfYear());
 }
 
 function testHebrewDateTestGetWeekOfYearThisYearLeap() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 1,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
     // the extra month pushes the week number later in leap years
-    assertEquals(31, id.getWeekOfYear());
+    assertEquals(31, hd.getWeekOfYear());
 }
 
 function testHebrewDateTestGetWeekOfYearThisYearWithTime() {
-	var id = new ilib.Date.HebrewDate({
+	var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 6,
 		day: 29,
@@ -841,312 +841,312 @@ function testHebrewDateTestGetWeekOfYearThisYearWithTime() {
 		second: 12,
 		millisecond: 232
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(1, id.getWeekOfYear());
+    assertEquals(1, hd.getWeekOfYear());
 }
 
 function testHebrewDateTestGetWeekOfYearPreviousYear() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5781,
 		month: 7,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(51, id.getWeekOfYear());
+    assertEquals(51, hd.getWeekOfYear());
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekLeap() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5784,
 		month: 6,
 		day: 29
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(1, id.getWeekOfYear());
+    assertEquals(1, hd.getWeekOfYear());
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekRegular1() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5781,
 		month: 6,
 		day: 29
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(1, id.getWeekOfYear());
+    assertEquals(1, hd.getWeekOfYear());
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekRegular2() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5782,
 		month: 6,
 		day: 29
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(1, id.getWeekOfYear());
+    assertEquals(1, hd.getWeekOfYear());
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekRegular3() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5783,
 		month: 6,
 		day: 29
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(51, id.getWeekOfYear());
+    assertEquals(51, hd.getWeekOfYear());
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekRegular4() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5785,
 		month: 6,
 		day: 29
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(1, id.getWeekOfYear());
+    assertEquals(1, hd.getWeekOfYear());
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekRegular5() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5786,
 		month: 6,
 		day: 29
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(51, id.getWeekOfYear());
+    assertEquals(51, hd.getWeekOfYear());
 }
 
 function testHebrewDateTestGetWeekOfYearLastWeekRegular6() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5787,
 		month: 6,
 		day: 29
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(55, id.getWeekOfYear());
+    assertEquals(55, hd.getWeekOfYear());
 }
 
 function testHebrewDateGetDayOfYearFirstDay() {
-	var id = new ilib.Date.HebrewDate({
+	var hd = new ilib.Date.HebrewDate({
 		year: 5771,
 		month: 7,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(1, id.getDayOfYear());
+    assertEquals(1, hd.getDayOfYear());
 }
 
 function testHebrewDateGetDayOfYearMidYear() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 1,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(178, id.getDayOfYear());
+    assertEquals(178, hd.getDayOfYear());
 }
 
 function testHebrewDateGetDayOfYearMidYearLeap() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5774,
 		month: 1,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(209, id.getDayOfYear());
+    assertEquals(209, hd.getDayOfYear());
 }
 
 function testHebrewDateGetDayOfYearLastDay() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 6,
 		day: 29
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(354, id.getDayOfYear());
+    assertEquals(354, hd.getDayOfYear());
 }
 
 function testHebrewDateGetDayOfYearLastDayLeapYear() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5774,
 		month: 6,
 		day: 29
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(385, id.getDayOfYear());
+    assertEquals(385, hd.getDayOfYear());
 }
 
 function testHebrewDateGetWeekOfMonth0() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 9,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(1, id.getWeekOfMonth("he-IL"));
+    assertEquals(1, hd.getWeekOfMonth("he-IL"));
 }
 
 function testHebrewDateGetWeekOfMonth1() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 9,
 		day: 2
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(1, id.getWeekOfMonth("he-IL"));
+    assertEquals(1, hd.getWeekOfMonth("he-IL"));
 }
 
 function testHebrewDateGetWeekOfMonth2() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 9,
 		day: 11
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(2, id.getWeekOfMonth("he-IL"));
+    assertEquals(2, hd.getWeekOfMonth("he-IL"));
 }
 
 function testHebrewDateGetWeekOfMonth3() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 9,
 		day: 20
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(3, id.getWeekOfMonth("he-IL"));
+    assertEquals(3, hd.getWeekOfMonth("he-IL"));
 }
 
 function testHebrewDateGetWeekOfMonth4() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 9,
 		day: 29
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getWeekOfMonth("he-IL"));
+    assertEquals(5, hd.getWeekOfMonth("he-IL"));
 }
 
 function testHebrewDateGetWeekOfMonth5() {
-	var id = new ilib.Date.HebrewDate({
+	var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 1,
 		day: 30
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(5, id.getWeekOfMonth("he-IL"));
+    assertEquals(5, hd.getWeekOfMonth("he-IL"));
 }
 
 function testHebrewDateGetWeekOfMonth6() {
-	var id = new ilib.Date.HebrewDate({
+	var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 4,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(0, id.getWeekOfMonth("he-IL"));
+    assertEquals(0, hd.getWeekOfMonth("he-IL"));
 }
 
 function testHebrewDateGetWeekOfMonth7() {
-	var id = new ilib.Date.HebrewDate({
+	var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 5,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(0, id.getWeekOfMonth("he-IL"));
+    assertEquals(0, hd.getWeekOfMonth("he-IL"));
 }
 
 function testHebrewDateGetWeekOfMonth8() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 6,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(1, id.getWeekOfMonth("he-IL"));
+    assertEquals(1, hd.getWeekOfMonth("he-IL"));
 }
 
 function testHebrewDateGetWeekOfMonth9() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 7,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(0, id.getWeekOfMonth("he-IL"));
+    assertEquals(0, hd.getWeekOfMonth("he-IL"));
 }
 
 function testHebrewDateGetWeekOfMonth10() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 8,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(0, id.getWeekOfMonth("he-IL"));
+    assertEquals(0, hd.getWeekOfMonth("he-IL"));
 }
 
 function testHebrewDateGetWeekOfMonthUS() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 8,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(0, id.getWeekOfMonth("en-US"));
+    assertEquals(0, hd.getWeekOfMonth("en-US"));
 }
 
 function testHebrewDateGetWeekOfMonthDE() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 8,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
     // weeks in Germany start on Monday, and 8/1 is a Saturday, so it is at the 
     // end of the preceding week.
-    assertEquals(0, id.getWeekOfMonth("de-DE"));
+    assertEquals(0, hd.getWeekOfMonth("de-DE"));
 }
 
 function testHebrewDateGetEraAM() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 5772,
 		month: 5,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(1, id.getEra());
+    assertEquals(1, hd.getEra());
 }
 
 function testHebrewDateGetEraBAM() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: -46,
 		month: 5,
 		day: 1,
@@ -1155,31 +1155,31 @@ function testHebrewDateGetEraBAM() {
 		second: 0
 		
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(-1, id.getEra());
+    assertEquals(-1, hd.getEra());
 }
 
 function testHebrewDateGetEraAMYear1() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 1,
 		month: 1,
 		day: 1
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(1, id.getEra());
+    assertEquals(1, hd.getEra());
 }
 
 function testHebrewDateGetEraBAMYear0() {
-    var id = new ilib.Date.HebrewDate({
+    var hd = new ilib.Date.HebrewDate({
 		year: 0,
 		month: 12,
 		day: 29
 	});
-    assertNotNull(id);
+    assertNotNull(hd);
     
-    assertEquals(-1, id.getEra());
+    assertEquals(-1, hd.getEra());
 }
 
 function testHebrewDateSetTimeZone() {
