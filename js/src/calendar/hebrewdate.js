@@ -386,21 +386,7 @@ ilib.Date.HebrewDate = function(params) {
 			}
 		}
 
-		if (typeof(params.date) !== 'undefined') {
-			// accept JS Date classes or strings
-			var date = params.date;
-			if (!(date instanceof Date)) {
-				date = new Date(date);
-			}
-			this.timezone = "Etc/UTC";
-			this.setTime(date.getTime());
-		} else if (typeof(params.unixtime) != 'undefined') {
-			this.setTime(parseInt(params.unixtime, 10));
-		} else if (typeof(params.julianday) != 'undefined') {
-			// JD time is defined to be UTC
-			this.timezone = "Etc/UTC";
-			this.setJulianDay(parseFloat(params.julianday));
-		} else if (params.year || params.month || params.day || params.hour ||
+		if (params.year || params.month || params.day || params.hour ||
 				params.minute || params.second || params.millisecond || params.parts ) {
 			/**
 			 * Year in the Hebrew calendar.
@@ -487,14 +473,12 @@ ilib.Date.HebrewDate = function(params) {
 				});
 			}
 			*/
-		} else if (typeof(params.rd) != 'undefined') {
-			// private parameter. Do not document this!
-			this.setRd(params.rd);
 		}
 	} 
 	
 	if (!this.rd) {
 		this.rd = new ilib.Date.HebrewRataDie(params);
+		this.calcDateComponents();
 	}
 };
 

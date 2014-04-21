@@ -1263,7 +1263,7 @@ function testHebrewDateInitWithJDRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testHebrewDateInitWithRDRightTimeZone() {
