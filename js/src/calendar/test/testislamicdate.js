@@ -177,9 +177,9 @@ function testIslamicDateConstructorCopy() {
 }
 
 function testIslamicDateGetJulianDay() {
-    var gd;
-    
-    for (i = 0; i < testDates.length; i++) {
+	var id;
+	
+    for (var i = 0; i < testDates.length; i++) {
         id = new ilib.Date.IslamicDate({
             year: testDates[i][1], 
             month: testDates[i][2], 
@@ -187,13 +187,13 @@ function testIslamicDateGetJulianDay() {
             hour: testDates[i][4],
             minute: testDates[i][5],
             second: testDates[i][6],
-            millsecond: testDates[i][7]
+            millisecond: testDates[i][7]
     	});
     
         info("testing jd=" + testDates[i][0]);
         
         assertEquals('object', typeof(id));
-        assertEquals(testDates[i][0], id.getJulianDay());
+        assertEquals("testing row " + testDates[i][0], testDates[i][0], id.getJulianDay());
         assertEquals(testDates[i][8], id.getDayOfWeek());
     }
 }
@@ -361,7 +361,7 @@ function testIslamicDateOnOrBeforeSun() {
     var rd = id.getRataDie();
     
     // Sunday on or before id 5 days before 
-    assertEquals(rd-5, id.onOrBeforeRd(rd, 0));
+    assertEquals(rd-5, id.onOrBefore(0).getRataDie());
 }
 
 function testIslamicDateOnOrBeforeMon() {
@@ -375,7 +375,7 @@ function testIslamicDateOnOrBeforeMon() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd-4, id.onOrBeforeRd(rd, 1));
+    assertEquals(rd-4, id.onOrBefore(1).getRataDie());
 }
 
 function testIslamicDateOnOrBeforeTue() {
@@ -389,7 +389,7 @@ function testIslamicDateOnOrBeforeTue() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd-3, id.onOrBeforeRd(rd, 2));
+    assertEquals(rd-3, id.onOrBefore(2).getRataDie());
 }
 
 function testIslamicDateOnOrBeforeWed() {
@@ -403,7 +403,7 @@ function testIslamicDateOnOrBeforeWed() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd-2, id.onOrBeforeRd(rd, 3));
+    assertEquals(rd-2, id.onOrBefore(3).getRataDie());
 }
 
 function testIslamicDateOnOrBeforeThu() {
@@ -417,7 +417,7 @@ function testIslamicDateOnOrBeforeThu() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd-1, id.onOrBeforeRd(rd, 4));
+    assertEquals(rd-1, id.onOrBefore(4).getRataDie());
 }
 
 function testIslamicDateOnOrBeforeFri() {
@@ -431,7 +431,7 @@ function testIslamicDateOnOrBeforeFri() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd, id.onOrBeforeRd(rd, 5));
+    assertEquals(rd, id.onOrBefore(5).getRataDie());
 }
 
 function testIslamicDateOnOrBeforeSat() {
@@ -445,7 +445,7 @@ function testIslamicDateOnOrBeforeSat() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd-6, id.onOrBeforeRd(rd, 6));
+    assertEquals(rd-6, id.onOrBefore(6).getRataDie());
 }
 
 function testIslamicDateOnOrAfterSun() {
@@ -460,7 +460,7 @@ function testIslamicDateOnOrAfterSun() {
     var rd = id.getRataDie();
     
     // Sunday on or before id 5 days before 
-    assertEquals(rd+2, id.onOrAfterRd(rd, 0));
+    assertEquals(rd+2, id.onOrAfter(0).getRataDie());
 }
 
 function testIslamicDateOnOrAfterMon() {
@@ -474,7 +474,7 @@ function testIslamicDateOnOrAfterMon() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd+3, id.onOrAfterRd(rd, 1));
+    assertEquals(rd+3, id.onOrAfter(1).getRataDie());
 }
 
 function testIslamicDateOnOrAfterTue() {
@@ -488,7 +488,7 @@ function testIslamicDateOnOrAfterTue() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd+4, id.onOrAfterRd(rd, 2));
+    assertEquals(rd+4, id.onOrAfter(2).getRataDie());
 }
 
 function testIslamicDateOnOrAfterWed() {
@@ -502,7 +502,7 @@ function testIslamicDateOnOrAfterWed() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd+5, id.onOrAfterRd(rd, 3));
+    assertEquals(rd+5, id.onOrAfter(3).getRataDie());
 }
 
 function testIslamicDateOnOrAfterThu() {
@@ -516,7 +516,7 @@ function testIslamicDateOnOrAfterThu() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd+6, id.onOrAfterRd(rd, 4));
+    assertEquals(rd+6, id.onOrAfter(4).getRataDie());
 }
 
 function testIslamicDateOnOrAfterFri() {
@@ -530,7 +530,7 @@ function testIslamicDateOnOrAfterFri() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd, id.onOrAfterRd(rd, 5));
+    assertEquals(rd, id.onOrAfter(5).getRataDie());
 }
 
 function testIslamicDateOnOrAfterSat() {
@@ -544,7 +544,7 @@ function testIslamicDateOnOrAfterSat() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd+1, id.onOrAfterRd(rd, 6));
+    assertEquals(rd+1, id.onOrAfter(6).getRataDie());
 }
 
 function testIslamicDateBeforeSun() {
@@ -559,7 +559,7 @@ function testIslamicDateBeforeSun() {
     var rd = id.getRataDie();
     
     // Sunday before id 5 days before 
-    assertEquals(rd-5, id.beforeRd(rd, 0));
+    assertEquals(rd-5, id.before(0).getRataDie());
 }
 
 function testIslamicDateBeforeMon() {
@@ -573,7 +573,7 @@ function testIslamicDateBeforeMon() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd-4, id.beforeRd(rd, 1));
+    assertEquals(rd-4, id.before(1).getRataDie());
 }
 
 function testIslamicDateBeforeTue() {
@@ -587,7 +587,7 @@ function testIslamicDateBeforeTue() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd-3, id.beforeRd(rd, 2));
+    assertEquals(rd-3, id.before(2).getRataDie());
 }
 
 function testIslamicDateBeforeWed() {
@@ -601,7 +601,7 @@ function testIslamicDateBeforeWed() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd-2, id.beforeRd(rd, 3));
+    assertEquals(rd-2, id.before(3).getRataDie());
 }
 
 function testIslamicDateBeforeThu() {
@@ -615,7 +615,7 @@ function testIslamicDateBeforeThu() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd-1, id.beforeRd(rd, 4));
+    assertEquals(rd-1, id.before(4).getRataDie());
 }
 
 function testIslamicDateBeforeFri() {
@@ -629,7 +629,7 @@ function testIslamicDateBeforeFri() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd-7, id.beforeRd(rd, 5));
+    assertEquals(rd-7, id.before(5).getRataDie());
 }
 
 function testIslamicDateBeforeSat() {
@@ -643,7 +643,7 @@ function testIslamicDateBeforeSat() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd-6, id.beforeRd(rd, 6));
+    assertEquals(rd-6, id.before(6).getRataDie());
 }
 
 function testIslamicDateAfterSun() {
@@ -658,7 +658,7 @@ function testIslamicDateAfterSun() {
     var rd = id.getRataDie();
     
     // Sunday on or before id 5 days before 
-    assertEquals(rd+2, id.afterRd(rd, 0));
+    assertEquals(rd+2, id.after(0).getRataDie());
 }
 
 function testIslamicDateAfterMon() {
@@ -672,7 +672,7 @@ function testIslamicDateAfterMon() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd+3, id.afterRd(rd, 1));
+    assertEquals(rd+3, id.after(1).getRataDie());
 }
 
 function testIslamicDateAfterTue() {
@@ -686,7 +686,7 @@ function testIslamicDateAfterTue() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd+4, id.afterRd(rd, 2));
+    assertEquals(rd+4, id.after(2).getRataDie());
 }
 
 function testIslamicDateAfterWed() {
@@ -700,7 +700,7 @@ function testIslamicDateAfterWed() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd+5, id.afterRd(rd, 3));
+    assertEquals(rd+5, id.after(3).getRataDie());
 }
 
 function testIslamicDateAfterThu() {
@@ -714,7 +714,7 @@ function testIslamicDateAfterThu() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd+6, id.afterRd(rd, 4));
+    assertEquals(rd+6, id.after(4).getRataDie());
 }
 
 function testIslamicDateAfterFri() {
@@ -728,7 +728,7 @@ function testIslamicDateAfterFri() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd+7, id.afterRd(rd, 5));
+    assertEquals(rd+7, id.after(5).getRataDie());
 }
 
 function testIslamicDateAfterSat() {
@@ -742,7 +742,7 @@ function testIslamicDateAfterSat() {
     assertEquals(5, id.getDayOfWeek()); // Friday
     var rd = id.getRataDie();
     
-    assertEquals(rd+1, id.afterRd(rd, 6));
+    assertEquals(rd+1, id.after(6).getRataDie());
 }
 
 function testIslamicDateTestGetWeekOfYearThisYear() {
@@ -1188,7 +1188,7 @@ function testIslamicDateInitWithJDRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testIslamicDateInitWithRDRightTimeZone() {
