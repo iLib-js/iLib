@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-/* !depends date.js calendar/hebrew.js util/utils.js */
+/* !depends date.js calendar/hebrew.js util/utils.js util/math.js localeinfo.js julianday.js */
 
 /**
  * @class
@@ -128,7 +128,7 @@ ilib.Date.HebrewRataDie.prototype = {
 	_setJulianDay: function (date) {
 		var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date;
 		
-		this.rd = jd.getDate() - ilib.Date.HebrewRataDie.epoch; 	// Julian Days start at noon
+		this.rd = ilib._roundFnc.halfdown((jd.getDate() - ilib.Date.HebrewRataDie.epoch) * 100000000) / 100000000;
 	},
 	
 	
@@ -412,8 +412,6 @@ ilib.Date.HebrewDate = function(params) {
 			 */
 			this.hour = parseInt(params.hour, 10) || 0;
 
-			this.parts = -1;
-			
 			if (typeof(params.parts) !== 'undefined') {
 				/**
 				 * The parts (halaqim) of the hour. This can be a number from 0 to 1079.
@@ -455,7 +453,7 @@ ilib.Date.HebrewDate = function(params) {
 				this.dst = params.dst;
 			}
 			
-			this.rd = new ilib.Date.HebrewRataDie(params);
+			this.rd = new ilib.Date.HebrewRataDie(this);
 			
 			/*
 			// add the time zone offset to the rd to convert to UTC
@@ -600,7 +598,6 @@ ilib.Date.HebrewDate.prototype.getRataDie = function() {
 /**
  * @private
  * Calculate date components for the given RD date.
- * @return {Object.<{year:number,month:number,day:number,hour:number,minute:number,second:number,millisecond:number}>} object containing the fields
  */
 ilib.Date.HebrewDate.prototype.calcDateComponents = function () {
 	var remainder,
@@ -886,7 +883,7 @@ ilib.Date.HebrewDate.prototype.getWeekOfMonth = function(locale) {
 		rd = this.rd.getRataDie(),
 		weekStart = first.onOrAfter(li.getFirstDayOfWeek());
 	
-	if (weekStart - first > 3) {
+	if (weekStart - first.getRataDie() > 3) {
 		// if the first week has 4 or more days in it of the current month, then consider
 		// that week 1. Otherwise, it is week 0. To make it week 1, move the week start
 		// one week earlier.
