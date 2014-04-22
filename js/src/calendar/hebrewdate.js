@@ -80,7 +80,6 @@ ilib.Date.HebrewRataDie = function(params) {
 			if (!(date instanceof Date)) {
 				date = new Date(date);
 			}
-			this.timezone = "Etc/UTC";
 			this._setTime(date.getTime());
 		} else if (typeof(params.unixtime) != 'undefined') {
 			this._setTime(parseInt(params.unixtime, 10));
