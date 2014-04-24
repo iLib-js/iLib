@@ -386,7 +386,7 @@ var testDates = [
 function testJulDateConvert() {
     var jul;
     
-    for (i = 0; i < testDates.length; i++) {
+    for (var i = 0; i < testDates.length; i++) {
         info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(jul));
         
         jul = new ilib.Date.JulDate({
@@ -474,7 +474,7 @@ function testJulDateConstructorCopy() {
 function testJulDateGetJulianDay() {
     var jul;
     
-    for (i = 0; i < testDates.length; i++) {
+    for (var i = 0; i < testDates.length; i++) {
         info("testing jd=" + testDates[i][0] + " and date " + JSON.stringify(jul));
         
         jul = new ilib.Date.JulDate({
@@ -717,7 +717,7 @@ function testJulDateCurrentTimeWithTimeZone() {
     var d = new Date();
     assertNotNull(jul);
     
-    assertRoughlyEquals(d.getTime()-d.getTimezoneOffset()*60000, jul.getTime(), 30);
+    assertRoughlyEquals(d.getTime(), jul.getTime(), 30);
 }
 
 function testJulDateSetTimeZone() {
@@ -801,7 +801,7 @@ function testJulDateInitWithJDRightTimeZone() {
     });
     assertNotNull(gd);
     
-    assertEquals("Etc/UTC", gd.getTimeZone());
+    assertEquals("local", gd.getTimeZone());
 }
 
 function testJulDateInitWithRDRightTimeZone() {
