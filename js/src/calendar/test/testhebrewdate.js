@@ -222,13 +222,14 @@ function testHebrewDateGetJulianDay() {
     
     for (var i = 0; i < testDates.length; i++) {
         hd = new ilib.Date.HebrewDate({
-            year: testDates[i][1], 
+        	year: testDates[i][1], 
             month: testDates[i][2], 
             day: testDates[i][3],
             hour: testDates[i][4],
             minute: testDates[i][5],
             second: testDates[i][6],
-            millisecond: testDates[i][7]
+            millisecond: testDates[i][7],
+            timezone: "Etc/UTC"            
     	});
     
         info("testing jd=" + testDates[i][0]);
@@ -338,6 +339,7 @@ function testGetDayOfWeekWithTime() {
 
 function testHebrewDateTestGetTimeZero() {
     var hd = new ilib.Date.HebrewDate({
+    	timezone: "Etc/UTC",
 		year: 5730,
 		month: 10,
 		day: 23
@@ -360,7 +362,8 @@ function testHebrewDateTestGetTime() {
 		month: 10,
 		day: 24,
 		hour: 8,
-		minute: 30
+		minute: 30,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(hd);
     

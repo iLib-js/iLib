@@ -729,8 +729,8 @@ ilib.TimeZone.prototype.inDaylightTime = function (date, wallTime) {
 		});
 	}
 	
-	// if we aren't using daylight time in this zone, then where are never in daylight
-	// time, no matter what the date is
+	// if we aren't using daylight time in this zone for the given year, then we are 
+	// not in daylight time
 	if (!this.useDaylightTime(date.year)) {
 		return false;
 	}

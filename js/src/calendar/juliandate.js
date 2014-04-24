@@ -401,7 +401,6 @@ ilib.Date.JulDate = function(params) {
 			
 			this.rd = new ilib.Date.JulianRataDie(this);
 			
-			/*
 			// add the time zone offset to the rd to convert to UTC
 			if (!this.tz) {
 				this.tz = new ilib.TimeZone({id: this.timezone});
@@ -415,7 +414,6 @@ ilib.Date.JulDate = function(params) {
 					rd: this.rd.getRataDie() + offset
 				});
 			}
-			*/
 		}
 	}
 	

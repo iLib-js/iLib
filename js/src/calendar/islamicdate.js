@@ -391,7 +391,6 @@ ilib.Date.IslamicDate = function(params) {
 			
 			this.rd = new ilib.Date.IslamicRataDie(this);
 			
-			/*
 			// add the time zone offset to the rd to convert to UTC
 			if (!this.tz) {
 				this.tz = new ilib.TimeZone({id: this.timezone});
@@ -401,11 +400,10 @@ ilib.Date.IslamicDate = function(params) {
 			// what the offset is at that point in the year
 			var offset = -this.tz._getOffsetMillisWallTime(this) / 86400000;
 			if (offset !== 0) {
-				this.rd = new ilib.Date.GregRataDie({
+				this.rd = new ilib.Date.IslamicRataDie({
 					rd: this.rd.getRataDie() + offset
 				});
 			}
-			*/
 		}
 	}
 

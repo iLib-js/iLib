@@ -92,7 +92,7 @@ var testDates = [
 function testIslamicDateConvert() {
     var gd;
     
-    for (i = 0; i < testDates.length; i++) {
+    for (var i = 0; i < testDates.length; i++) {
         id = new ilib.Date.IslamicDate({julianday: testDates[i][0]});
     
         info("testing jd=" + testDates[i][0]);
@@ -187,7 +187,8 @@ function testIslamicDateGetJulianDay() {
             hour: testDates[i][4],
             minute: testDates[i][5],
             second: testDates[i][6],
-            millisecond: testDates[i][7]
+            millisecond: testDates[i][7],
+            timezone: "Etc/UTC"
     	});
     
         info("testing jd=" + testDates[i][0]);
@@ -299,7 +300,8 @@ function testIslamicDateTestGetTimeZero() {
     var id = new ilib.Date.IslamicDate({
 		year: 1389,
 		month: 10,
-		day: 22
+		day: 22,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     
@@ -319,7 +321,8 @@ function testIslamicDateTestGetTime() {
 		month: 10,
 		day: 24,
 		hour: 8,
-		minute: 30
+		minute: 30,
+		timezone: "Etc/UTC"
 	});
     assertNotNull(id);
     

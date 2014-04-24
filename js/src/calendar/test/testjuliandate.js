@@ -484,7 +484,8 @@ function testJulDateGetJulianDay() {
             hour: testDates[i][4],
             minute: testDates[i][5],
             second: testDates[i][6],
-            millisecond: testDates[i][7]
+            millisecond: testDates[i][7],
+            timezone: "Etc/UTC"
         });
     
         assertEquals('object', typeof(jul));
@@ -568,7 +569,8 @@ function testJulDateTestGetTimeZero() {
     var jul = new ilib.Date.JulDate({
 		year: 1969,
 		month: 12,
-		day: 19
+		day: 19,
+        timezone: "Etc/UTC"
 	});
     assertNotNull(jul);
     
@@ -581,7 +583,8 @@ function testJulDateTestGetTime() {
 		month: 12,
 		day: 21,
 		hour: 8,
-		minute: 30
+		minute: 30,
+        timezone: "Etc/UTC"
 	});
     assertNotNull(jul);
     
@@ -614,7 +617,8 @@ function testJulDateTestSetTime1() {
     var jul = new ilib.Date.JulDate({
     	year: 1969, 
     	month: 12, 
-    	day: 19
+    	day: 19,
+        timezone: "Etc/UTC"
     });
     assertNotNull(jul);
     assertEquals(0, jul.getTime());
