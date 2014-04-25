@@ -130,6 +130,7 @@ TestSuite.prototype = {
 				} else {
 					msg += e.toString();
 				}
+				msg += '\n';
 				util.print(msg);
 				results.fail++;
 				results.failures.push(msg);
@@ -153,6 +154,7 @@ TestSuite.prototype = {
 				require: require,
 				results: results,
 				process: process,
+				util: util,
 				global: global,
 				path: this.path
 			});

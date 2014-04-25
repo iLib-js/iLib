@@ -65,6 +65,11 @@ function suite() {
         {file: "bennumfmt_subsequent_assembled.js", iterations: 1},
 		{file: "bennumfmt_subsequent_dynamic.js", iterations: 1},
 
+        {file: "benctype_initial_assembled.js", iterations: 100},
+		{file: "benctype_initial_dynamic.js", iterations: 100},
+        {file: "benctype_subsequent_assembled.js", iterations: 1},
+		{file: "benctype_subsequent_dynamic.js", iterations: 1},
+
         {file: "benwholefile_assembled.js", iterations: 100},
 		{file: "benwholefile_dynamic.js", iterations: 100}
 	];
