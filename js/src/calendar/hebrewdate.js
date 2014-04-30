@@ -317,7 +317,7 @@ ilib.Date.HebrewDate = function(params) {
 				this.dst = params.dst;
 			}
 			
-			this.rd = new ilib.Date.HebrewRataDie(this);
+			this.rd = this.newRd(this);
 			
 			// add the time zone offset to the rd to convert to UTC
 			if (!this.tz) {
@@ -328,7 +328,7 @@ ilib.Date.HebrewDate = function(params) {
 			// what the offset is at that point in the year
 			this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
 			if (this.offset !== 0) {
-				this.rd = new ilib.Date.HebrewRataDie({
+				this.rd = this.newRd({
 					rd: this.rd.getRataDie() - this.offset
 				});
 			}
@@ -336,7 +336,7 @@ ilib.Date.HebrewDate = function(params) {
 	} 
 	
 	if (!this.rd) {
-		this.rd = new ilib.Date.HebrewRataDie(params);
+		this.rd = this.newRd(params);
 		this._calcDateComponents();
 	}
 };
@@ -449,12 +449,12 @@ ilib.Date.HebrewDate.GregorianDiff = 1373060.25;
 
 /**
  * @private
- * Return the Rata Die (fixed day) number of this date.
- * 
- * @return {number} the rd date as a number
+ * Return a new RD for this date type using the given params.
+ * @param {Object=} params the parameters used to create this rata die instance
+ * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
-ilib.Date.HebrewDate.prototype.getRataDie = function() {
-	return this.rd.getRataDie();
+ilib.Date.HebrewDate.prototype.newRd = function (params) {
+	return new ilib.Date.HebrewRataDie(params);
 };
 
 /**
@@ -576,27 +576,6 @@ ilib.Date.HebrewDate.prototype._calcDateComponents = function () {
 };
 
 /**
- * @private
- * Set the date components of this instance based on the given rd.
- * @param {number} rd the rata die date to set
- */
-ilib.Date.HebrewDate.prototype.setRd = function (rd) {
-	this.rd = new ilib.Date.HebrewRataDie({rd: rd});
-	this._calcDateComponents();
-};
-
-/**
- * Set the date of this instance using a Julian Day.
- * @param {number} date the Julian Day to use to set this date
- */
-ilib.Date.HebrewDate.prototype.setJulianDay = function (date) {
-	this.rd = new ilib.Date.HebrewRataDie({
-		julianday: date
-	});
-	this._calcDateComponents();
-};
-
-/**
  * Return the day of the week of this date. The day of the week is encoded
  * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
  * 
@@ -629,104 +608,21 @@ ilib.Date.HebrewDate.prototype.getHalaqim = function() {
  * @return the rd of the first Sunday of the ISO year
  */
 ilib.Date.HebrewDate.prototype.firstSunday = function (year) {
-	var tishri1 = new ilib.Date.HebrewRataDie({
+	var tishri1 = this.newRd({
 		year: year,
 		month: 7,
 		day: 1,
 		hour: 18,
 		minute: 0,
 		second: 0,
-		millisecond: 0
+		millisecond: 0,
+		cal: this.cal
 	});
-	var firstThu = new ilib.Date.HebrewRataDie({rd: tishri1.onOrAfter(4)});
+	var firstThu = this.newRd({
+		rd: tishri1.onOrAfter(4),
+		cal: this.cal
+	});
 	return firstThu.before(0);
-};
-
-/**
- * Return a new Hebrew date instance that represents the first instance of the 
- * given day of the week before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week before the current date that is being sought
- * @returns {ilib.Date.HebrewDate} the date being sought
- */
-ilib.Date.HebrewDate.prototype.before = function (dow) {
-	return new ilib.Date.HebrewDate({
-		rd: this.rd.before(dow, this.offset),
-		timezone: this.timezone
-	});
-};
-
-/**
- * Return a new Hebrew date instance that represents the first instance of the 
- * given day of the week after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week after the current date that is being sought
- * @returns {ilib.Date.HebrewDate} the date being sought
- */
-ilib.Date.HebrewDate.prototype.after = function (dow) {
-	return new ilib.Date.HebrewDate({
-		rd: this.rd.after(dow, this.offset),
-		timezone: this.timezone
-	});
-};
-
-/**
- * Return a new Hebrew date instance that represents the first instance of the 
- * given day of the week on or before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or before the current date that is being sought
- * @returns {ilib.Date.HebrewDate} the date being sought
- */
-ilib.Date.HebrewDate.prototype.onOrBefore = function (dow) {
-	return new ilib.Date.HebrewDate({
-		rd: this.rd.onOrBefore(dow, this.offset),
-		timezone: this.timezone
-	});
-};
-
-/**
- * Return a new Hebrew date instance that represents the first instance of the 
- * given day of the week on or after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or after the current date that is being sought
- * @returns {ilib.Date.HebrewDate} the date being sought
- */
-ilib.Date.HebrewDate.prototype.onOrAfter = function (dow) {
-	return new ilib.Date.HebrewDate({
-		rd: this.rd.onOrAfter(dow, this.offset),
-		timezone: this.timezone
-	});
-};
-
-/**
- * Return the week number in the current year for the current date. This is calculated
- * in a similar way to the ISO 8601 week for a Gregorian calendar, but is technically
- * not an actual ISO week number. That means in some years, the week starts in the
- * previous calendar year. The week number ranges from 1 to 55.
- * 
- * @return {number} the week number for the current date
- */
-ilib.Date.HebrewDate.prototype.getWeekOfYear = function() {
-	var yearStart = this.firstSunday(this.year),
-		nextYear,
-		rd = this.rd.getRataDie();
-	
-	// if we have a Tishri date, it may be in this year or the previous year
-	if (rd < yearStart) {
-		yearStart = this.firstSunday(this.year-1);
-	} else if (this.month == 6 && this.day > 23) {
-		// if we have a late Elul date, it may be in this year, or the next year
-		nextYear = this.firstSunday(this.year+1);
-		if (rd >= nextYear) {
-			yearStart = nextYear;
-		}
-	}
-	
-	return Math.floor((rd-yearStart)/7) + 1;
 };
 
 /**
@@ -766,7 +662,7 @@ ilib.Date.HebrewDate.prototype.getDayOfYear = function() {
  */
 ilib.Date.HebrewDate.prototype.getWeekOfMonth = function(locale) {
 	var li = new ilib.LocaleInfo(locale),
-		first = new ilib.Date.HebrewRataDie({
+		first = this.newRd({
 			year: this.year,
 			month: this.month,
 			day: 1,
@@ -801,73 +697,12 @@ ilib.Date.HebrewDate.prototype.getEra = function() {
 };
 
 /**
- * Set the time of this instance according to the given unix time. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970.
- * 
- * @param {number} millis the unix time to set this date to in milliseconds 
- */
-ilib.Date.HebrewDate.prototype.setTime = function(millis) {
-	this.rd = new ilib.Date.HebrewRataDie({unixtime: millis});
-	this._calcDateComponents();
-};
-
-/**
- * Return a Javascript Date object that is equivalent to this Hebrew date
- * object.
- * 
- * @return {Date|undefined} a javascript Date object
- */
-ilib.Date.HebrewDate.prototype.getJSDate = function() {
-	var unix = this.rd.getTime();
-	return (unix === -1) ? undefined : new Date(unix); 
-};
-
-/**
- * Return the Julian Day equivalent to this calendar date as a number.
- * 
- * @return {number} the julian date equivalent of this date
- */
-ilib.Date.HebrewDate.prototype.getJulianDay = function() {
-	return this.rd.getJulianDay();
-};
-
-/**
  * Return the name of the calendar that governs this date.
  * 
  * @return {string} a string giving the name of the calendar
  */
 ilib.Date.HebrewDate.prototype.getCalendar = function() {
 	return "hebrew";
-};
-
-/**
- * Return the time zone associated with this Hebrew date, or 
- * undefined if none was specified in the constructor.
- * 
- * @return {string|undefined} the name of the time zone for this date instance
- */
-ilib.Date.HebrewDate.prototype.getTimeZone = function() {
-	return this.timezone || "local";
-};
-
-
-/**
- * Set the time zone associated with this Hebrew date.
- * @param {string} tzName the name of the time zone to set into this date instance,
- * or "undefined" to unset the time zone 
- */
-ilib.Date.HebrewDate.prototype.setTimeZone = function (tzName) {
-	if (!tzName || tzName === "") {
-		// same as undefining it
-		this.timezone = undefined;
-		this.tz = undefined;
-	} else if (typeof(tzName) === 'string') {
-		this.timezone = tzName;
-		this.tz = undefined;
-		// assuming the same UTC time, but a new time zone, now we have to 
-		// recalculate what the date components are
-		this._calcDateComponents();
-	}
 };
 
 // register with the factory method

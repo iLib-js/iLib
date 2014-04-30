@@ -246,7 +246,7 @@ ilib.Date.JulDate = function(params) {
 				this.dst = params.dst;
 			}
 			
-			this.rd = new ilib.Date.JulianRataDie(this);
+			this.rd = this.newRd(this);
 			
 			// add the time zone offset to the rd to convert to UTC
 			if (!this.tz) {
@@ -257,7 +257,7 @@ ilib.Date.JulDate = function(params) {
 			// what the offset is at that point in the year
 			this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
 			if (this.offset !== 0) {
-				this.rd = new ilib.Date.JulianRataDie({
+				this.rd = this.newRd({
 					rd: this.rd.getRataDie() - this.offset
 				});
 			}
@@ -265,7 +265,7 @@ ilib.Date.JulDate = function(params) {
 	}
 	
 	if (!this.rd) {
-		this.rd = new ilib.Date.JulianRataDie(params);
+		this.rd = this.newRd(params);
 		this._calcDateComponents();
 	}
 };
@@ -327,12 +327,12 @@ ilib.Date.JulDate.epoch = 1721422.5;
 
 /**
  * @private
- * Return the Rata Die (fixed day) number of this date.
- * 
- * @return {number} the rd date as a number
+ * Return a new RD for this date type using the given params.
+ * @param {Object=} params the parameters used to create this rata die instance
+ * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
-ilib.Date.JulDate.prototype.getRataDie = function() {
-	return this.rd.getRataDie();
+ilib.Date.JulDate.prototype.newRd = function (params) {
+	return new ilib.Date.JulianRataDie(params);
 };
 
 /**
@@ -374,7 +374,7 @@ ilib.Date.JulDate.prototype._calcDateComponents = function () {
 		this.year = this._calcYear(rd);
 	}
 	
-	var jan1 = new ilib.Date.JulianRataDie({
+	var jan1 = this.newRd({
 		year: this.year,
 		month: 1,
 		day: 1,
@@ -410,25 +410,6 @@ ilib.Date.JulDate.prototype._calcDateComponents = function () {
 };
 
 /**
- * @private
- * Set the date components of this instance based on the given rd.
- * @param {number} rd the rata die date to set
- */
-ilib.Date.JulDate.prototype.setRd = function (rd) {
-	this.rd = new ilib.Date.JulianRataDie({rd: rd});
-	this._calcDateComponents();
-};
-
-/**
- * Set the date of this instance using a Julian Day.
- * @param {number} date the Julian Day to use to set this date
- */
-ilib.Date.JulDate.prototype.setJulianDay = function (date) {
-	this.rd = new ilib.Date.JulianRataDie({julianday: date});
-	this._calcDateComponents();
-};
-
-/**
  * Return the day of the week of this date. The day of the week is encoded
  * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
  * 
@@ -440,153 +421,12 @@ ilib.Date.JulDate.prototype.getDayOfWeek = function() {
 };
 
 /**
- * @private
- * Return the rd of the first Sunday of the given ISO year.
- * @param {number} year the year for which the first Sunday is being sought
- * @return the rd of the first Sunday of the ISO year
- */
-ilib.Date.JulDate.prototype.firstSunday = function (year) {
-	var jan1 = new ilib.Date.JulianRataDie({
-		year: year,
-		month: 1,
-		day: 1,
-		hour: 0,
-		minute: 0,
-		second: 0,
-		millisecond: 0
-	});
-	var firstThu = new ilib.Date.JulianRataDie({rd: jan1.onOrAfter(4, this.offset)});
-	return firstThu.before(0, this.offset);
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week before the current date that is being sought
- * @return {ilib.Date.JulDate} the date being sought
- */
-ilib.Date.JulDate.prototype.before = function (dow) {
-	return new ilib.Date.JulDate({
-		rd: this.rd.before(dow, this.offset),
-		timezone: this.timezone
-	});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week after the current date that is being sought
- * @return {ilib.Date.JulDate} the date being sought
- */
-ilib.Date.JulDate.prototype.after = function (dow) {
-	return new ilib.Date.JulDate({
-		rd: this.rd.after(dow, this.offset),
-		timezone: this.timezone
-	});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week on or before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or before the current date that is being sought
- * @return {ilib.Date.JulDate} the date being sought
- */
-ilib.Date.JulDate.prototype.onOrBefore = function (dow) {
-	return new ilib.Date.JulDate({
-		rd: this.rd.onOrBefore(dow, this.offset),
-		timezone: this.timezone
-	});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week on or after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or after the current date that is being sought
- * @return {ilib.Date.JulDate} the date being sought
- */
-ilib.Date.JulDate.prototype.onOrAfter = function (dow) {
-	return new ilib.Date.JulDate({
-		rd: this.rd.onOrAfter(dow, this.offset),
-		timezone: this.timezone
-	});
-};
-
-/**
- * Set the time of this instance according to the given unix time. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970.
- * 
- * @param {number} millis the unix time to set this date to in milliseconds 
- */
-ilib.Date.JulDate.prototype.setTime = function(millis) {
-	this.rd = new ilib.Date.JulDate({unixtime: millis});
-	this._calcDateComponents();
-};
-
-/**
- * Return a Javascript Date object that is equivalent to this Julian date
- * object. If the julian date object represents a date that cannot be represented
- * by a Javascript Date object, the value undefined is returned
- * 
- * @return {Date|undefined} a javascript Date object, or undefined if the date is out of range
- */
-ilib.Date.JulDate.prototype.getJSDate = function() {
-	var unix = this.rd.getTime();
-	return (unix === -1) ? undefined : new Date(unix); 
-};
-
-/**
- * Return the Julian Day equivalent to this calendar date as a number.
- * 
- * @return {number} the julian date equivalent of this date
- */
-ilib.Date.JulDate.prototype.getJulianDay = function() {
-	return this.rd.getJulianDay();
-};
-
-/**
  * Return the name of the calendar that governs this date.
  * 
  * @return {string} a string giving the name of the calendar
  */
 ilib.Date.JulDate.prototype.getCalendar = function() {
 	return "julian";
-};
-
-/**
- * Return the time zone associated with this Julian date, or 
- * undefined if none was specified in the constructor.
- * 
- * @return {string|undefined} the name of the time zone for this date instance
- */
-ilib.Date.JulDate.prototype.getTimeZone = function() {
-	return this.timezone || "local";
-};
-
-/**
- * Set the time zone associated with this Julian date.
- * @param {string} tzName the name of the time zone to set into this date instance,
- * or "undefined" to unset the time zone 
- */
-ilib.Date.JulDate.prototype.setTimeZone = function (tzName) {
-	if (!tzName || tzName === "") {
-		// same as undefining it
-		this.timezone = undefined;
-		this.tz = undefined;
-	} else if (typeof(tzName) === 'string') {
-		this.timezone = tzName;
-		this.tz = undefined;
-		// assuming the same UTC time, but a new time zone, now we have to 
-		// recalculate what the date components are
-		this._calcDateComponents();
-	}
 };
 
 //register with the factory method

@@ -146,6 +146,20 @@ ilib.Date.prototype = {
 		return this.rd.getTime(); 
 	},
 	
+	/**
+	 * Set the time of this instance according to the given unix time. Unix time is
+	 * the number of milliseconds since midnight on Jan 1, 1970.
+	 * 
+	 * @param {number} millis the unix time to set this date to in milliseconds 
+	 */
+	setTime: function(millis) {
+		this.rd = this.newRd({
+			unixtime: millis,
+			cal: this.cal
+		});
+		this._calcDateComponents();
+	},
+	
 	getDays: function() {
 		return this.day;
 	},
@@ -190,5 +204,238 @@ ilib.Date.prototype = {
 	},
 	setMilliseconds: function(milli) {
 		this.millisecond = milli;
+	},
+	
+	/**
+	 * Return a new date instance in the current calendar that represents the first instance 
+	 * of the given day of the week before the current date. The day of the week is encoded
+	 * as a number where 0 = Sunday, 1 = Monday, etc.
+	 * 
+	 * @param {number} dow the day of the week before the current date that is being sought
+	 * @return {ilib.Date} the date being sought
+	 */
+	before: function (dow) {
+		return this.cal.newDateInstance({
+			rd: this.rd.before(dow, this.offset),
+			timezone: this.timezone
+		});
+	},
+	
+	/**
+	 * Return a new date instance in the current calendar that represents the first instance 
+	 * of the given day of the week after the current date. The day of the week is encoded
+	 * as a number where 0 = Sunday, 1 = Monday, etc.
+	 * 
+	 * @param {number} dow the day of the week after the current date that is being sought
+	 * @return {ilib.Date} the date being sought
+	 */
+	after: function (dow) {
+		return this.cal.newDateInstance({
+			rd: this.rd.after(dow, this.offset),
+			timezone: this.timezone
+		});
+	},
+
+	/**
+	 * Return a new Gregorian date instance that represents the first instance of the 
+	 * given day of the week on or before the current date. The day of the week is encoded
+	 * as a number where 0 = Sunday, 1 = Monday, etc.
+	 * 
+	 * @param {number} dow the day of the week on or before the current date that is being sought
+	 * @return {ilib.Date} the date being sought
+	 */
+	onOrBefore: function (dow) {
+		return this.cal.newDateInstance({
+			rd: this.rd.onOrBefore(dow, this.offset),
+			timezone: this.timezone
+		});
+	},
+
+	/**
+	 * Return a new Gregorian date instance that represents the first instance of the 
+	 * given day of the week on or after the current date. The day of the week is encoded
+	 * as a number where 0 = Sunday, 1 = Monday, etc.
+	 * 
+	 * @param {number} dow the day of the week on or after the current date that is being sought
+	 * @return {ilib.Date} the date being sought
+	 */
+	onOrAfter: function (dow) {
+		return this.cal.newDateInstance({
+			rd: this.rd.onOrAfter(dow, this.offset),
+			timezone: this.timezone
+		});
+	},
+	
+	/**
+	 * Return a Javascript Date object that is equivalent to this date
+	 * object.
+	 * 
+	 * @return {Date|undefined} a javascript Date object
+	 */
+	getJSDate: function() {
+		var unix = this.rd.getTime();
+		return (unix === -1) ? undefined : new Date(unix); 
+	},
+	
+	/**
+	 * @private
+	 * Return the Rata Die (fixed day) number of this date.
+	 * 
+	 * @return {number} the rd date as a number
+	 */
+	getRataDie: function() {
+		return this.rd.getRataDie();
+	},
+	
+	/**
+	 * @private
+	 * Set the date components of this instance based on the given rd.
+	 * @param {number} rd the rata die date to set
+	 */
+	setRd: function (rd) {
+		this.rd = this.newRd({
+			rd: rd,
+			cal: this.cal
+		});
+		this._calcDateComponents();
+	},
+	
+	/**
+	 * Return the Julian Day equivalent to this calendar date as a number.
+	 * 
+	 * @return {number} the julian date equivalent of this date
+	 */
+	getJulianDay: function() {
+		return this.rd.getJulianDay();
+	},
+	
+	/**
+	 * Set the date of this instance using a Julian Day.
+	 * @param {number|ilib.JulianDay} date the Julian Day to use to set this date
+	 */
+	setJulianDay: function (date) {
+		this.rd = this.newRd({
+			julianday: (typeof(date) === 'object') ? date.getDate() : date,
+			cal: this.cal
+		});
+		this._calcDateComponents();
+	},
+
+	/**
+	 * Return the time zone associated with this date, or 
+	 * undefined if none was specified in the constructor.
+	 * 
+	 * @return {string|undefined} the name of the time zone for this date instance
+	 */
+	getTimeZone: function() {
+		return this.timezone || "local";
+	},
+	
+	/**
+	 * Set the time zone associated with this date.
+	 * @param {string=} tzName the name of the time zone to set into this date instance,
+	 * or "undefined" to unset the time zone 
+	 */
+	setTimeZone: function (tzName) {
+		if (!tzName || tzName === "") {
+			// same as undefining it
+			this.timezone = undefined;
+			this.tz = undefined;
+		} else if (typeof(tzName) === 'string') {
+			this.timezone = tzName;
+			this.tz = undefined;
+			// assuming the same UTC time, but a new time zone, now we have to 
+			// recalculate what the date components are
+			this._calcDateComponents();
+		}
+	},
+	
+	/**
+	 * @private
+	 * Return the rd number of the first Sunday of the given ISO year.
+	 * @param {number} year the year for which the first Sunday is being sought
+	 * @return {number} the rd of the first Sunday of the ISO year
+	 */
+	firstSunday: function (year) {
+		var firstDay = this.newRd({
+			year: year,
+			month: 1,
+			day: 1,
+			hour: 0,
+			minute: 0,
+			second: 0,
+			millisecond: 0,
+			cal: this.cal
+		});
+		var firstThu = this.newRd({
+			rd: firstDay.onOrAfter(4),
+			cal: this.cal
+		});
+		return firstThu.before(0);
+	},
+	
+	/**
+	 * Return the ISO 8601 week number in the current year for the current date. The week
+	 * number ranges from 0 to 55, as some years have 55 weeks assigned to them in some
+	 * calendars.
+	 * 
+	 * @return {number} the week number for the current date
+	 */
+	getWeekOfYear: function() {
+		var rd = Math.floor(this.rd.getRataDie());
+		var year = this._calcYear(rd + this.offset);
+		var yearStart = this.firstSunday(year);
+		var nextYear;
+		
+		// if we have a January date, it may be in this ISO year or the previous year
+		if (rd < yearStart) {
+			yearStart = this.firstSunday(year-1);
+		} else {
+			// if we have a late December date, it may be in this ISO year, or the next year
+			nextYear = this.firstSunday(year+1);
+			if (rd >= nextYear) {
+				yearStart = nextYear;
+			}
+		}
+		
+		return Math.floor((rd-yearStart)/7) + 1;
+	},
+	
+	/**
+	 * Return the ordinal number of the week within the month. The first week of a month is
+	 * the first one that contains 4 or more days in that month. If any days precede this
+	 * first week, they are marked as being in week 0. This function returns values from 0
+	 * through 6.<p>
+	 * 
+	 * The locale is a required parameter because different locales that use the same 
+	 * Gregorian calendar consider different days of the week to be the beginning of
+	 * the week. This can affect the week of the month in which some days are located.
+	 * 
+	 * @param {ilib.Locale|string} locale the locale or locale spec to use when figuring out 
+	 * the first day of the week
+	 * @return {number} the ordinal number of the week within the current month
+	 */
+	getWeekOfMonth: function(locale) {
+		var li = new ilib.LocaleInfo(locale);
+		
+		var first = this.newRd({
+			year: this._calcYear(this.rd.getRataDie()+this.offset),
+			month: this.month,
+			day: 1,
+			hour: 0,
+			minute: 0,
+			second: 0,
+			millisecond: 0,
+			cal: this.cal
+		});
+		var weekStart = first.onOrAfter(li.getFirstDayOfWeek());
+		
+		if (weekStart - first.getRataDie() > 3) {
+			// if the first week has 4 or more days in it of the current month, then consider
+			// that week 1. Otherwise, it is week 0. To make it week 1, move the week start
+			// one week earlier.
+			weekStart -= 7;
+		}
+		return Math.floor((this.rd.getRataDie() - weekStart) / 7) + 1;
 	}
 };

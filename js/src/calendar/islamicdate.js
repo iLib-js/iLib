@@ -236,7 +236,7 @@ ilib.Date.IslamicDate = function(params) {
 				this.dst = params.dst;
 			}
 			
-			this.rd = new ilib.Date.IslamicRataDie(this);
+			this.rd = this.newRd(this);
 			
 			// add the time zone offset to the rd to convert to UTC
 			if (!this.tz) {
@@ -247,7 +247,7 @@ ilib.Date.IslamicDate = function(params) {
 			// what the offset is at that point in the year
 			this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
 			if (this.offset !== 0) {
-				this.rd = new ilib.Date.IslamicRataDie({
+				this.rd = this.newRd({
 					rd: this.rd.getRataDie() - this.offset
 				});
 			}
@@ -255,7 +255,7 @@ ilib.Date.IslamicDate = function(params) {
 	}
 
 	if (!this.rd) {
-		this.rd = new ilib.Date.IslamicRataDie(params);
+		this.rd = this.newRd(params);
 		this._calcDateComponents();
 	}
 };
@@ -306,12 +306,12 @@ ilib.Date.IslamicDate.epoch = 1948439.5;
 
 /**
  * @private
- * Return the Rata Die (fixed day) number of this date.
- * 
- * @return {number} the rd date as a number
+ * Return a new RD for this date type using the given params.
+ * @param {Object=} params the parameters used to create this rata die instance
+ * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
-ilib.Date.IslamicDate.prototype.getRataDie = function() {
-	return this.rd.getRataDie();
+ilib.Date.IslamicDate.prototype.newRd = function (params) {
+	return new ilib.Date.IslamicRataDie(params);
 };
 
 /**
@@ -352,7 +352,7 @@ ilib.Date.IslamicDate.prototype._calcDateComponents = function () {
 
 	//console.log("IslamicDate.calcComponent: calculating for rd " + rd);
 	//console.log("IslamicDate.calcComponent: year is " + ret.year);
-	var yearStart = new ilib.Date.IslamicRataDie({
+	var yearStart = this.newRd({
 		year: this.year,
 		month: 1,
 		day: 1,
@@ -393,25 +393,6 @@ ilib.Date.IslamicDate.prototype._calcDateComponents = function () {
 };
 
 /**
- * @private
- * Set the date components of this instance based on the given rd.
- * @param {number} rd the rata die date to set
- */
-ilib.Date.IslamicDate.prototype.setRd = function (rd) {
-	this.rd = new ilib.Date.IslamicRataDie({rd: rd});
-	this._calcDateComponents();
-};
-
-/**
- * Set the date of this instance using a Julian Day.
- * @param {number} date the Julian Day to use to set this date
- */
-ilib.Date.IslamicDate.prototype.setJulianDay = function (date) {
-	this.rd = new ilib.Date.IslamicRataDie({julianday: date});
-	this._calcDateComponents();
-};
-
-/**
  * Return the day of the week of this date. The day of the week is encoded
  * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
  * 
@@ -423,112 +404,6 @@ ilib.Date.IslamicDate.prototype.getDayOfWeek = function() {
 };
 
 /**
- * @private
- * Return the rd of the first Sunday of the given ISO year.
- * @return the rd of the first Sunday of the ISO year
- */
-ilib.Date.IslamicDate.prototype.firstSunday = function (year) {
-	var firstDay = new ilib.Date.IslamicRataDie({
-		year: year,
-		month: 1,
-		day: 1,
-		hour: 0,
-		minute: 0,
-		second: 0,
-		millisecond: 0,
-		cal: this.cal
-	});
-	var firstThu = new ilib.Date.IslamicRataDie({rd: firstDay.onOrAfter(4)});
-	return firstThu.before(0);
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week before the current date that is being sought
- * @returns {ilib.Date.IslamicDate} the date being sought
- */
-ilib.Date.IslamicDate.prototype.before = function (dow) {
-	return new ilib.Date.IslamicDate({
-		rd: this.rd.before(dow, this.offset),
-		timezone: this.timezone
-	});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week after the current date that is being sought
- * @returns {ilib.Date.IslamicDate} the date being sought
- */
-ilib.Date.IslamicDate.prototype.after = function (dow) {
-	return new ilib.Date.IslamicDate({
-		rd: this.rd.after(dow, this.offset),
-		timezone: this.timezone
-	});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week on or before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or before the current date that is being sought
- * @returns {ilib.Date.IslamicDate} the date being sought
- */
-ilib.Date.IslamicDate.prototype.onOrBefore = function (dow) {
-	return new ilib.Date.IslamicDate({
-		rd: this.rd.onOrBefore(dow, this.offset),
-		timezone: this.timezone
-	});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week on or after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or after the current date that is being sought
- * @returns {ilib.Date.IslamicDate} the date being sought
- */
-ilib.Date.IslamicDate.prototype.onOrAfter = function (dow) {
-	return new ilib.Date.IslamicDate({
-		rd: this.rd.onOrAfter(dow, this.offset),
-		timezone: this.timezone
-	});
-};
-
-/**
- * Return the week number in the current year for the current date. This is calculated
- * similar to the ISO 8601 for a Gregorian calendar, but is not an ISO week number. 
- * The week number ranges from 1 to 51.
- * 
- * @return {number} the week number for the current date
- */
-ilib.Date.IslamicDate.prototype.getWeekOfYear = function() {
-	var rd = Math.floor(this.rd.getRataDie()),
-		yearStart = this.firstSunday(this.year),
-		nextYear;
-	
-	// if we have a Muh date, it may be in this year or the previous year
-	if (rd < yearStart) {
-		yearStart = this.firstSunday(this.year-1);
-	} else if (this.month == 12 && this.day > 25) {
-		// if we have a late Dhu al'Hijja date, it may be in this year, or the next year
-		nextYear = this.firstSunday(this.year+1);
-		if (rd >= nextYear) {
-			yearStart = nextYear;
-		}
-	}
-	
-	return Math.floor((rd-yearStart)/7) + 1;
-};
-
-/**
  * Return the ordinal day of the year. Days are counted from 1 and proceed linearly up to 
  * 354 or 355, regardless of months or weeks, etc. That is, Muharran 1st is day 1, and 
  * Dhu al-Hijja 29 is 354.
@@ -536,42 +411,6 @@ ilib.Date.IslamicDate.prototype.getWeekOfYear = function() {
  */
 ilib.Date.IslamicDate.prototype.getDayOfYear = function() {
 	return ilib.Date.IslamicDate.cumMonthLengths[this.month-1] + this.day;
-};
-
-/**
- * Return the ordinal number of the week within the month. The first week of a month is
- * the first one that contains 4 or more days in that month. If any days precede this
- * first week, they are marked as being in week 0. This function returns values from 0
- * through 6.<p>
- * 
- * The locale is a required parameter because different locales that use the same 
- * Islamic calendar consider different days of the week to be the beginning of
- * the week. This can affect the week of the month in which some days are located.
- * 
- * @param {ilib.Locale|string} locale the locale or locale spec to use when figuring out 
- * the first day of the week
- * @return {number} the ordinal number of the week within the current month
- */
-ilib.Date.IslamicDate.prototype.getWeekOfMonth = function(locale) {
-	var li = new ilib.LocaleInfo(locale),
-		first = new ilib.Date.IslamicRataDie({
-			year: this.year,
-			month: this.month,
-			day: 1,
-			hour: 0,
-			minute: 0,
-			second: 0,
-			millisecond: 0
-		}),
-		rd = this.rd.getRataDie(),
-		weekStart = first.onOrAfter(li.getFirstDayOfWeek());
-	if (weekStart - first.getRataDie() > 3) {
-		// if the first week has 4 or more days in it of the current month, then consider
-		// that week 1. Otherwise, it is week 0. To make it week 1, move the week start
-		// one week earlier.
-		weekStart -= 7;
-	}
-	return Math.floor((rd - weekStart) / 7) + 1;
 };
 
 /**
@@ -588,73 +427,12 @@ ilib.Date.IslamicDate.prototype.getEra = function() {
 };
 
 /**
- * Set the time of this instance according to the given unix time. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970.
- * 
- * @param {number} millis the unix time to set this date to in milliseconds 
- */
-ilib.Date.IslamicDate.prototype.setTime = function(millis) {
-	this.rd = new ilib.Date.IslamicRataDie({unixtime: millis});
-	this._calcDateComponents();
-};
-
-/**
- * Return a Javascript Date object that is equivalent to this Islamic date
- * object.
- * 
- * @return {Date|undefined} a javascript Date object
- */
-ilib.Date.IslamicDate.prototype.getJSDate = function() {
-	var unix = this.rd.getTime();
-	return (unix === -1) ? undefined : new Date(unix); 
-};
-
-/**
- * Return the Julian Day equivalent to this calendar date as a number.
- * 
- * @return {number} the julian date equivalent of this date
- */
-ilib.Date.IslamicDate.prototype.getJulianDay = function() {
-	return this.rd.getJulianDay();
-};
-
-/**
  * Return the name of the calendar that governs this date.
  * 
  * @return {string} a string giving the name of the calendar
  */
 ilib.Date.IslamicDate.prototype.getCalendar = function() {
 	return "islamic";
-};
-
-/**
- * Return the time zone associated with this Islamic date, or 
- * undefined if none was specified in the constructor.
- * 
- * @return {string|undefined} the name of the time zone for this date instance
- */
-ilib.Date.IslamicDate.prototype.getTimeZone = function() {
-	return this.timezone || "local";
-};
-
-
-/**
- * Set the time zone associated with this Islamic date.
- * @param {string} tzName the name of the time zone to set into this date instance,
- * or "undefined" to unset the time zone 
- */
-ilib.Date.IslamicDate.prototype.setTimeZone = function (tzName) {
-	if (!tzName || tzName === "") {
-		// same as undefining it
-		this.timezone = undefined;
-		this.tz = undefined;
-	} else if (typeof(tzName) === 'string') {
-		this.timezone = tzName;
-		this.tz = undefined;
-		// assuming the same UTC time, but a new time zone, now we have to 
-		// recalculate what the date components are
-		this._calcDateComponents();
-	}
 };
 
 //register with the factory method
