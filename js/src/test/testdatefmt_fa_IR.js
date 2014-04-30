@@ -228,6 +228,7 @@ function testDateFmtTemplateCalendar_fa_IR() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
+    	locale: "fa-IR",
 		year: 2011,
 		month: 9,
 		day: 29,

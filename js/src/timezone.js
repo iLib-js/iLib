@@ -644,13 +644,13 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 	switch (type) {
 		case 'l':
 		case '<':
-			//console.log("returning " + refDay.onOrBeforeRd(rd, weekday));
-			d = refDay.onOrBeforeRd(weekday); 
+			//console.log("returning " + refDay.onOrBefore(rd, weekday));
+			d = refDay.onOrBefore(weekday); 
 			break;
 		case 'f':
 		case '>':
 			//console.log("returning " + refDay.onOrAfterRd(rd, weekday));
-			d = refDay.onOrAfterRd(weekday); 
+			d = refDay.onOrAfter(weekday); 
 			break;
 	}
 	return d;

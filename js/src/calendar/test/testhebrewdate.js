@@ -24,7 +24,7 @@ function testHebrewDateConstructor() {
 }
 
 function testHebrewDateConstructorFromRD() {
-	var hd = new ilib.Date.HebrewDate({rd: 357.25});
+	var hd = new ilib.Date.HebrewDate({rd: 357.25, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(hd));
     assertEquals(357.25, hd.getRataDie());
@@ -39,7 +39,7 @@ function testHebrewDateConstructorFromRD() {
 
 /* julian date is rd 357 + epoch */
 function testHebrewDateConstructorFromJD() {
-	var hd = new ilib.Date.HebrewDate({julianday: 348354.5});
+	var hd = new ilib.Date.HebrewDate({julianday: 348354.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(hd));
     assertEquals(357.25, hd.getRataDie());
@@ -53,7 +53,7 @@ function testHebrewDateConstructorFromJD() {
 }
 
 function testHebrewDateConstructorFromRDCusp() {
-	var hd = new ilib.Date.HebrewDate({rd: 355.25});
+	var hd = new ilib.Date.HebrewDate({rd: 355.25, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(hd));
     assertEquals(355.25, hd.getRataDie());
@@ -67,7 +67,7 @@ function testHebrewDateConstructorFromRDCusp() {
 }
 
 function testHebrewDateAfterLeapYear() {
-	var hd = new ilib.Date.HebrewDate({julianday: 349326.9});  // Siv 1, 0004, 9:36am
+	var hd = new ilib.Date.HebrewDate({julianday: 349326.9, timezone: "Etc/UTC"});  // Siv 1, 0004, 9:36am
     
     assertEquals('object', typeof(hd));
     assertRoughlyEquals(1329.65, hd.getRataDie(), 0.001);
@@ -81,7 +81,7 @@ function testHebrewDateAfterLeapYear() {
 }
 
 function testHebrewDateAfterNoon() {
-	var hd = new ilib.Date.HebrewDate({julianday: 349327.1});  // Siv 1, 0004, 2:24pm
+	var hd = new ilib.Date.HebrewDate({julianday: 349327.1, timezone: "Etc/UTC"});  // Siv 1, 0004, 2:24pm
     
     assertEquals('object', typeof(hd));
     assertRoughlyEquals(1329.85, hd.getRataDie(), 0.001);
@@ -134,7 +134,7 @@ var testDates = [
 function testHebrewDateConvert() {
     var hd;
     for (var i = 0; i < testDates.length; i++) {
-        hd = new ilib.Date.HebrewDate({julianday: testDates[i][0]});
+        hd = new ilib.Date.HebrewDate({julianday: testDates[i][0], timezone: "Etc/UTC"});
     
         info("testing jd=" + testDates[i][0]);
         
@@ -350,7 +350,7 @@ function testHebrewDateTestGetTimeZero() {
 }
 
 function testHebrewDateTestGetTimeZeroJD() {
-    var hd = new ilib.Date.HebrewDate({julianday: 2440587.5});
+    var hd = new ilib.Date.HebrewDate({julianday: 2440587.5, timezone: "Etc/UTC"});
     assertNotNull(hd);
     
     assertEquals(0, hd.getTime());

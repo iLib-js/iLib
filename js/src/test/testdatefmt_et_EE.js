@@ -234,6 +234,7 @@ function testDateFmtTemplateCalendar_et_EE() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
+    	locale: "et-EE",
 		year: 2011,
 		month: 9,
 		day: 29,

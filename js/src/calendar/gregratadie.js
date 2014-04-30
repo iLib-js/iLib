@@ -18,10 +18,10 @@
  */
 
 /* !depends 
-date.js 
-calendar/gregorian.js 
+date.js
+calendar/gregorian.js
+calendar/ratadie.js
 util/utils.js
-util/search.js 
 julianday.js 
 */
 
@@ -74,34 +74,14 @@ julianday.js
  * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian RD date
  */
 ilib.Date.GregRataDie = function(params) {
-	this.cal = new ilib.Cal.Gregorian();
-
-	if (params) {
-		if (typeof(params.date) !== 'undefined') {
-			// accept JS Date classes or strings
-			var date = params.date;
-			if (!(date instanceof Date)) {
-				date = new Date(date); // maybe a string initializer?
-			}
-			this._setTime(date.getTime());
-		} else if (typeof(params.unixtime) !== 'undefined') {
-			this._setTime(parseInt(params.unixtime, 10));
-		} else if (typeof(params.julianday) !== 'undefined') {
-			// JD time is defined to be UTC
-			this._setJulianDay(parseFloat(params.julianday));
-		} else if (params.year || params.month || params.day || params.hour ||
-				params.minute || params.second || params.millisecond ) {
-			this._setDateComponents(params);
-		} else if (typeof(params.rd) !== 'undefined') {
-			this.rd = (typeof(params.rd) === 'object' && params.rd instanceof ilib.DateFmt.GregRataDie) ? params.rd.rd : params.rd;
-		}
-	}
-	
-	if (typeof(this.rd) === 'undefined') {
-		var now = new Date();
-		this._setTime(now.getTime());
-	}
+	this.cal = params && params.cal || new ilib.Cal.Gregorian();
+	this.rd = undefined;
+	ilib.Date.RataDie.call(this, params);
 };
+
+ilib.Date.GregRataDie.prototype = new ilib.Date.RataDie();
+ilib.Date.GregRataDie.prototype.parent = ilib.Date.RataDie;
+ilib.Date.GregRataDie.prototype.constructor = ilib.Date.GregRataDie;
 
 /**
  * @private
@@ -149,37 +129,6 @@ ilib.Date.GregRataDie.cumMonthLengthsLeap = [
 
 /**
  * @private
- * @const
- * @type number
- * the difference between a zero Julian day and the zero Gregorian date. 
- */
-ilib.Date.GregRataDie.epoch = 1721424.5;
-
-/**
- * @private
- * Set the RD of this instance according to the given unix time. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970.
- * 
- * @param {number} millis the unix time to set this date to in milliseconds 
- */
-ilib.Date.GregRataDie.prototype._setTime = function(millis) {
-	this.rd = 719163 + millis / 86400000;
-};
-
-/**
- * @private
- * Set the date of this instance using a Julian Day.
- * @param {number} date the Julian Day to use to set this date
- */
-ilib.Date.GregRataDie.prototype._setJulianDay = function (date) {
-	var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date;
-	
-	this.rd = jd.getDate() - ilib.Date.GregRataDie.epoch; 	// Julian Days start at noon
-};
-
-
-/**
- * @private
  * Calculate the Rata Die (fixed day) number of the given date.
  * 
  * @param {Object} date the date components to calculate the RD from
@@ -200,7 +149,7 @@ ilib.Date.GregRataDie.prototype._setDateComponents = function(date) {
 	
 	var dayInYear = (month > 1 ? ilib.Date.GregRataDie.cumMonthLengths[month-1] : 0) +
 		day +
-		(this.cal.isLeapYear(year) && month > 2 ? 1 : 0);
+		(ilib.Cal.Gregorian.prototype.isLeapYear.call(this.cal, year) && month > 2 ? 1 : 0);
 	var rdtime = (hour * 3600000 +
 		minute * 60000 +
 		second * 1000 +
@@ -213,18 +162,11 @@ ilib.Date.GregRataDie.prototype._setDateComponents = function(date) {
 	debug("getRataDie: rdtime is " +  rdtime);
 	debug("getRataDie: rd is " +  (years + dayInYear + rdtime));
 	*/
+	
+	/**
+	 * @type {number} the RD number of this Gregorian date
+	 */
 	this.rd = years + dayInYear + rdtime;
-};
-
-/**
- * Return the day of the week of this date. The day of the week is encoded
- * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
- * 
- * @return {number} the day of the week
- */
-ilib.Date.GregRataDie.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.rd);
-	return ilib.mod(rd, 7);
 };
 
 /**
@@ -236,92 +178,6 @@ ilib.Date.GregRataDie.prototype.getDayOfWeek = function() {
  * to the current date
  * @return {number} the rd of the day of the week
  */
-ilib.Date.GregRataDie.prototype._onOrBeforeRd = function(rd, dayOfWeek) {
+ilib.Date.GregRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 	return rd - ilib.mod(Math.floor(rd) - dayOfWeek, 7);
-};
-
-/**
- * Return the rd number of the particular day of the week on or before the current rd.
- * eg. The Sunday on or before the current rd.
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the current date
- * @return {number} the rd of the day of the week
- */
-ilib.Date.GregRataDie.prototype.onOrBeforeRd = function(dayOfWeek) {
-	return this._onOrBeforeRd(this.rd, dayOfWeek);
-};
-
-/**
- * Return the rd number of the particular day of the week on or before the current rd.
- * eg. The Sunday on or before the current rd.
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- * @return {number} the day of the week
- */
-ilib.Date.GregRataDie.prototype.onOrAfterRd = function(dayOfWeek) {
-	return this._onOrBeforeRd(this.rd+6, dayOfWeek);
-};
-
-/**
- * Return the rd number of the particular day of the week before the current rd.
- * eg. The Sunday before the current rd.
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- * @return {number} the day of the week
- */
-ilib.Date.GregRataDie.prototype.beforeRd = function(dayOfWeek) {
-	return this._onOrBeforeRd(this.rd-1, dayOfWeek);
-};
-
-/**
- * Return the rd number of the particular day of the week after the current rd.
- * eg. The Sunday after the current rd.
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- * @return {number} the day of the week
- */
-ilib.Date.GregRataDie.prototype.afterRd = function(dayOfWeek) {
-	return this._onOrBeforeRd(this.rd+7, dayOfWeek);
-};
-
-/**
- * Return the unix time equivalent to this Gregorian date instance. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970. This method only
- * returns a valid number for dates between midnight, Jan 1, 1970 and  
- * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
- * encodes a date outside of that range, this method will return -1. This method
- * returns the time in the local time zone, not in UTC.
- * 
- * @return {number} a number giving the unix time, or -1 if the date is outside the
- * valid unix time range
- */
-ilib.Date.GregRataDie.prototype.getTime = function() {
-	// earlier than Jan 1, 1970
-	// or later than Jan 19, 2038 at 3:14:07am
-	if (this.rd < 719163 || this.rd > 744018.134803241) { 
-		return -1;
-	}
-
-	// avoid the rounding errors in the floating point math by only using
-	// the whole days from the rd, and then calculating the milliseconds directly
-	return Math.round((this.rd - 719163) * 86400000);
-};
-
-/**
- * Return the Julian Day equivalent to this calendar date as a number.
- * This returns the julian day in the local time zone.
- * 
- * @return {number} the julian date equivalent of this date
- */
-ilib.Date.GregRataDie.prototype.getJulianDay = function() {
-	return this.rd + ilib.Date.GregRataDie.epoch;
-};
-
-/**
- * Return the Rata Die (fixed day) number of this RD date.
- * 
- * @return {number} the rd date as a number
- */
-ilib.Date.GregRataDie.prototype.getRataDie = function() {
-	return this.rd;
 };

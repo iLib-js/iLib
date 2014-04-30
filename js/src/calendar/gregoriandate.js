@@ -122,18 +122,7 @@ ilib.Date.GregDate = function(params) {
 			this.timezone = params.timezone;
 		}
 		
-		if (typeof(params.date) !== 'undefined') {
-			// accept JS Date classes or strings
-			var date = params.date;
-			if (!(date instanceof Date)) {
-				date = new Date(date);
-			}
-			this.setTime(date.getTime());
-		} else if (typeof(params.unixtime) !== 'undefined') {
-			this.setTime(parseInt(params.unixtime, 10));
-		} else if (typeof(params.julianday) !== 'undefined') {
-			this.setJulianDay(parseFloat(params.julianday));
-		} else if (params.year || params.month || params.day || params.hour ||
+		if (params.year || params.month || params.day || params.hour ||
 				params.minute || params.second || params.millisecond ) {
 			this.year = parseInt(params.year, 10) || 0;
 			this.month = parseInt(params.month, 10) || 1;
@@ -148,13 +137,13 @@ ilib.Date.GregDate = function(params) {
 			this.rd = new ilib.Date.GregRataDie(params);
 			
 			// add the time zone offset to the rd to convert to UTC
-			var offset = 0;
+			this.offset = 0;
 			if (this.timezone === "local" && typeof(params.dst) === 'undefined') {
 				// if dst is defined, the intrinsic Date object has no way of specifying which version of a time you mean
 				// in the overlap time at the end of DST. Do you mean the daylight 1:30am or the standard 1:30am? In this
 				// case, use the ilib calculations below, which can distinguish between the two properly
 				var d = new Date(this.year, this.month-1, this.day, this.hour, this.minute, this.second, this.millisecond);
-				offset = d.getTimezoneOffset() / 1440;
+				this.offset = -d.getTimezoneOffset() / 1440;
 			} else {
 				if (!this.tz) {
 					this.tz = new ilib.TimeZone({id: this.timezone});
@@ -162,22 +151,19 @@ ilib.Date.GregDate = function(params) {
 				// getOffsetMillis requires that this.year, this.rd, and this.dst 
 				// are set in order to figure out which time zone rules apply and 
 				// what the offset is at that point in the year
-				offset = -this.tz._getOffsetMillisWallTime(this) / 86400000;
+				this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
 			}
-			if (offset !== 0) {
+			if (this.offset !== 0) {
 				this.rd = new ilib.Date.GregRataDie({
-					rd: this.rd.getRataDie() + offset
+					rd: this.rd.getRataDie() - this.offset
 				});
 			}
-		} else if (typeof(params.rd) !== 'undefined') {
-			// private parameter. Do not document this!
-			this.setRd(params.rd);
 		}
 	} 
 
 	if (!this.rd) {
-		var now = new Date();
-		this.setTime(now.getTime());
+		this.rd = new ilib.Date.GregRataDie(params);
+		this._calcDateComponents();
 	}
 };
 
@@ -201,8 +187,11 @@ ilib.Date.GregDate.prototype.getRataDie = function() {
  * @param {number} rd the rata die date to set
  */
 ilib.Date.GregDate.prototype.setRd = function (rd) {
-	this.rd = new ilib.Date.GregRataDie({rd: rd});
-	this.calcDateComponents();
+	this.rd = new ilib.Date.GregRataDie({
+		rd: rd,
+		cal: this.cal
+	});
+	this._calcDateComponents();
 };
 
 /**
@@ -238,7 +227,7 @@ ilib.Date.GregDate.prototype._calcYear = function(rd) {
  * @private
  * Calculate the date components for the current time zone
  */
-ilib.Date.GregDate.prototype.calcDateComponents = function () {
+ilib.Date.GregDate.prototype._calcDateComponents = function () {
 	if (this.timezone === "local" && this.rd.getRataDie() >= 719163 && this.rd.getRataDie() <= 744018.134803241) {
 		// use the intrinsic JS Date object to do the tz conversion for us, which 
 		// guarantees that it follows the system tz database settings 
@@ -287,24 +276,27 @@ ilib.Date.GregDate.prototype.calcDateComponents = function () {
 		 */
 		this.millisecond = d.getMilliseconds();
 	} else {
-		this.year = this._calcYear(this.rd.getRataDie());
-		
-		// now offset the RD by the time zone, then recalculate in case we were 
-		// near the year boundary
-		if (!this.tz) {
-			this.tz = new ilib.TimeZone({id: this.timezone});
+		if (typeof(this.offset) === "undefined") {
+			this.year = this._calcYear(this.rd.getRataDie());
+			
+			// now offset the RD by the time zone, then recalculate in case we were 
+			// near the year boundary
+			if (!this.tz) {
+				this.tz = new ilib.TimeZone({id: this.timezone});
+			}
+			this.offset = this.tz.getOffsetMillis(this) / 86400000;
 		}
-		var offset = this.tz.getOffsetMillis(this) / 86400000;
 		var rd = this.rd.getRataDie();
-		if (offset !== 0) {
-			rd += offset;
-			this.year = this._calcYear(rd);
+		if (this.offset !== 0) {
+			rd += this.offset;
 		}
+		this.year = this._calcYear(rd);
 		
 		var yearStartRd = new ilib.Date.GregRataDie({
 			year: this.year,
 			month: 1,
-			day: 1
+			day: 1,
+			cal: this.cal
 		});
 		
 		// remainder is days into the year
@@ -340,8 +332,11 @@ ilib.Date.GregDate.prototype.calcDateComponents = function () {
  * @param {number|ilib.JulianDay} date the Julian Day to use to set this date
  */
 ilib.Date.GregDate.prototype.setJulianDay = function (date) {
-	this.rd = new ilib.Date.GregRataDie({julianday: (typeof(date) === 'object') ? date.getDate() : date});
-	this.calcDateComponents();
+	this.rd = new ilib.Date.GregRataDie({
+		julianday: (typeof(date) === 'object') ? date.getDate() : date,
+		cal: this.cal
+	});
+	this._calcDateComponents();
 };
 
 /**
@@ -351,7 +346,7 @@ ilib.Date.GregDate.prototype.setJulianDay = function (date) {
  * @return {number} the day of the week
  */
 ilib.Date.GregDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.rd.getRataDie());
+	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
 	return ilib.mod(rd, 7);
 };
 
@@ -369,10 +364,14 @@ ilib.Date.GregDate.prototype.firstSunday = function (year) {
 		hour: 0,
 		minute: 0,
 		second: 0,
-		millisecond: 0
+		millisecond: 0,
+		cal: this.cal
 	});
-	var firstThu = new ilib.Date.GregRataDie({rd: jan1.onOrAfterRd(4)});
-	return firstThu.beforeRd(0);
+	var firstThu = new ilib.Date.GregRataDie({
+		rd: jan1.onOrAfter(4),
+		cal: this.cal
+	});
+	return firstThu.before(0);
 };
 
 /**
@@ -384,7 +383,10 @@ ilib.Date.GregDate.prototype.firstSunday = function (year) {
  * @return {ilib.Date} the date being sought
  */
 ilib.Date.GregDate.prototype.before = function (dow) {
-	return this.cal.newDateInstance({rd: this.rd.beforeRd(dow)});
+	return this.cal.newDateInstance({
+		rd: this.rd.before(dow, this.offset),
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -396,7 +398,10 @@ ilib.Date.GregDate.prototype.before = function (dow) {
  * @return {ilib.Date} the date being sought
  */
 ilib.Date.GregDate.prototype.after = function (dow) {
-	return this.cal.newDateInstance({rd: this.rd.afterRd(dow)});
+	return this.cal.newDateInstance({
+		rd: this.rd.after(dow, this.offset),
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -408,7 +413,10 @@ ilib.Date.GregDate.prototype.after = function (dow) {
  * @return {ilib.Date} the date being sought
  */
 ilib.Date.GregDate.prototype.onOrBefore = function (dow) {
-	return this.cal.newDateInstance({rd: this.rd.onOrBeforeRd(dow)});
+	return this.cal.newDateInstance({
+		rd: this.rd.onOrBefore(dow, this.offset),
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -420,7 +428,10 @@ ilib.Date.GregDate.prototype.onOrBefore = function (dow) {
  * @return {ilib.Date} the date being sought
  */
 ilib.Date.GregDate.prototype.onOrAfter = function (dow) {
-	return this.cal.newDateInstance({rd: this.rd.onOrAfterRd(dow)});
+	return this.cal.newDateInstance({
+		rd: this.rd.onOrAfter(dow, this.offset),
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -431,10 +442,10 @@ ilib.Date.GregDate.prototype.onOrAfter = function (dow) {
  * @return {number} the week number for the current date
  */
 ilib.Date.GregDate.prototype.getWeekOfYear = function() {
-	var rd = Math.floor(this.rd.getRataDie()),
-		gregorianYear = this._calcYear(rd),
-		yearStart = this.firstSunday(gregorianYear),
-		nextYear;
+	var rd = Math.floor(this.rd.getRataDie());
+	var gregorianYear = this._calcYear(rd+this.offset);
+	var yearStart = this.firstSunday(gregorianYear);
+	var nextYear;
 	
 	// if we have a January date, it may be in this ISO year or the previous year
 	if (rd < yearStart) {
@@ -479,17 +490,20 @@ ilib.Date.GregDate.prototype.getDayOfYear = function() {
  * @return {number} the ordinal number of the week within the current month
  */
 ilib.Date.GregDate.prototype.getWeekOfMonth = function(locale) {
-	var li = new ilib.LocaleInfo(locale),
-		first = new ilib.Date.GregRataDie({
-			year: this._calcYear(this.rd.getRataDie()),
-			month: this.month,
-			day: 1,
-			hour: 0,
-			minute: 0,
-			second: 0,
-			millisecond: 0
-		}),
-		weekStart = first.onOrAfterRd(li.getFirstDayOfWeek());
+	var li = new ilib.LocaleInfo(locale);
+	
+	var first = new ilib.Date.GregRataDie({
+		year: this._calcYear(this.rd.getRataDie()+this.offset),
+		month: this.month,
+		day: 1,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0,
+		cal: this.cal
+	});
+	var weekStart = first.onOrAfter(li.getFirstDayOfWeek());
+	
 	if (weekStart - first.getRataDie() > 3) {
 		// if the first week has 4 or more days in it of the current month, then consider
 		// that week 1. Otherwise, it is week 0. To make it week 1, move the week start
@@ -514,29 +528,17 @@ ilib.Date.GregDate.prototype.getEra = function() {
 };
 
 /**
- * Return the unix time equivalent to this Gregorian date instance. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970. This method only
- * returns a valid number for dates between midnight, Jan 1, 1970 and  
- * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
- * encodes a date outside of that range, this method will return -1. This method
- * returns the time in the local time zone, not in UTC.
- * 
- * @return {number} a number giving the unix time, or -1 if the date is outside the
- * valid unix time range
- */
-ilib.Date.GregDate.prototype.getTime = function() {
-	return this.rd.getTime(); 
-};
-
-/**
  * Set the time of this instance according to the given unix time. Unix time is
  * the number of milliseconds since midnight on Jan 1, 1970.
  * 
  * @param {number} millis the unix time to set this date to in milliseconds 
  */
 ilib.Date.GregDate.prototype.setTime = function(millis) {
-	this.rd = new ilib.Date.GregRataDie({unixtime: millis});
-	this.calcDateComponents();
+	this.rd = new ilib.Date.GregRataDie({
+		unixtime: millis,
+		cal: this.cal
+	});
+	this._calcDateComponents();
 };
 
 /**
@@ -594,7 +596,7 @@ ilib.Date.GregDate.prototype.setTimeZone = function (tzName) {
 		this.tz = undefined;
 		// assuming the same UTC time, but a new time zone, now we have to 
 		// recalculate what the date components are
-		this.calcDateComponents();
+		this._calcDateComponents();
 	}
 };
 

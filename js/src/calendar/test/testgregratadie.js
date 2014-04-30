@@ -101,7 +101,7 @@ function testGregRataDieConvert() {
     
         info("testing jd=" + testDates[i][0]);
         
-        assertEquals(testDates[i][0] - ilib.Date.GregRataDie.epoch, rd.getRataDie());
+        assertEquals(testDates[i][0] - rd.epoch, rd.getRataDie());
     }
 }
 
@@ -162,7 +162,20 @@ function testGregRataDieConstructorUnixTime() {
     });
     assertNotNull(rd);
     
-    assertEquals(719163.0007060185, rd.getRataDie());
+    // rounded to 8 decimal points
+    assertEquals(719163.00070602, rd.getRataDie());
+}
+
+function testGregRataDieConstructorUnixTimeTestRounding() {
+    var rd = new ilib.Date.GregRataDie({
+    	unixtime: 61000
+    });
+    assertNotNull(rd);
+    
+    // rounded to 8 decimal points
+    assertEquals(719163.00070602, rd.getRataDie());
+    
+    assertEquals(61000, rd.getTime());
 }
 
 function testGregRataDieGetJulianDay() {
@@ -244,7 +257,7 @@ function testGregRataDieOnOrBeforeSun() {
     var rdn = rd.getRataDie();
     
     // Sunday on or before is 5 days before 
-    assertEquals(rdn-5, rd.onOrBeforeRd(0));
+    assertEquals(rdn-5, rd.onOrBefore(0));
 }
 
 function testGregRataDieOnOrBeforeMon() {
@@ -257,7 +270,7 @@ function testGregRataDieOnOrBeforeMon() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn-4, rd.onOrBeforeRd(1));
+    assertEquals(rdn-4, rd.onOrBefore(1));
 }
 
 function testGregRataDieOnOrBeforeTue() {
@@ -270,7 +283,7 @@ function testGregRataDieOnOrBeforeTue() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn-3, rd.onOrBeforeRd(2));
+    assertEquals(rdn-3, rd.onOrBefore(2));
 }
 
 function testGregRataDieOnOrBeforeWed() {
@@ -283,7 +296,7 @@ function testGregRataDieOnOrBeforeWed() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn-2, rd.onOrBeforeRd(3));
+    assertEquals(rdn-2, rd.onOrBefore(3));
 }
 
 function testGregRataDieOnOrBeforeThu() {
@@ -296,7 +309,7 @@ function testGregRataDieOnOrBeforeThu() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn-1, rd.onOrBeforeRd(4));
+    assertEquals(rdn-1, rd.onOrBefore(4));
 }
 
 function testGregRataDieOnOrBeforeFri() {
@@ -309,7 +322,7 @@ function testGregRataDieOnOrBeforeFri() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn, rd.onOrBeforeRd(5));
+    assertEquals(rdn, rd.onOrBefore(5));
 }
 
 function testGregRataDieOnOrBeforeSat() {
@@ -322,7 +335,7 @@ function testGregRataDieOnOrBeforeSat() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn-6, rd.onOrBeforeRd(6));
+    assertEquals(rdn-6, rd.onOrBefore(6));
 }
 
 function testGregRataDieOnOrBeforeSunWithTime() {
@@ -338,7 +351,7 @@ function testGregRataDieOnOrBeforeSunWithTime() {
     
     // Sunday on or before is 5 days before 
     // Should give an rd result that also contains the fractional time 
-    assertEquals(rdn-5, rd.onOrBeforeRd(0));
+    assertEquals(rdn-5, rd.onOrBefore(0));
 }
 
 function testGregRataDieOnOrAfterSun() {
@@ -352,7 +365,7 @@ function testGregRataDieOnOrAfterSun() {
     var rdn = rd.getRataDie();
     
     // Sunday on or before is 5 days before 
-    assertEquals(rdn+2, rd.onOrAfterRd(0));
+    assertEquals(rdn+2, rd.onOrAfter(0));
 }
 
 function testGregRataDieOnOrAfterMon() {
@@ -365,7 +378,7 @@ function testGregRataDieOnOrAfterMon() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn+3, rd.onOrAfterRd(1));
+    assertEquals(rdn+3, rd.onOrAfter(1));
 }
 
 function testGregRataDieOnOrAfterTue() {
@@ -378,7 +391,7 @@ function testGregRataDieOnOrAfterTue() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn+4, rd.onOrAfterRd(2));
+    assertEquals(rdn+4, rd.onOrAfter(2));
 }
 
 function testGregRataDieOnOrAfterWed() {
@@ -391,7 +404,7 @@ function testGregRataDieOnOrAfterWed() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn+5, rd.onOrAfterRd(3));
+    assertEquals(rdn+5, rd.onOrAfter(3));
 }
 
 function testGregRataDieOnOrAfterThu() {
@@ -404,7 +417,7 @@ function testGregRataDieOnOrAfterThu() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn+6, rd.onOrAfterRd(4));
+    assertEquals(rdn+6, rd.onOrAfter(4));
 }
 
 function testGregRataDieOnOrAfterFri() {
@@ -417,7 +430,7 @@ function testGregRataDieOnOrAfterFri() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn, rd.onOrAfterRd(5));
+    assertEquals(rdn, rd.onOrAfter(5));
 }
 
 function testGregRataDieOnOrAfterSat() {
@@ -430,7 +443,7 @@ function testGregRataDieOnOrAfterSat() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn+1, rd.onOrAfterRd(6));
+    assertEquals(rdn+1, rd.onOrAfter(6));
 }
 
 function testGregRataDieBeforeSun() {
@@ -444,7 +457,7 @@ function testGregRataDieBeforeSun() {
     var rdn = rd.getRataDie();
     
     // Sunday before is 5 days before 
-    assertEquals(rdn-5, rd.beforeRd(0));
+    assertEquals(rdn-5, rd.before(0));
 }
 
 function testGregRataDieBeforeMon() {
@@ -457,7 +470,7 @@ function testGregRataDieBeforeMon() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn-4, rd.beforeRd(1));
+    assertEquals(rdn-4, rd.before(1));
 }
 
 function testGregRataDieBeforeTue() {
@@ -470,7 +483,7 @@ function testGregRataDieBeforeTue() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn-3, rd.beforeRd(2));
+    assertEquals(rdn-3, rd.before(2));
 }
 
 function testGregRataDieBeforeWed() {
@@ -483,7 +496,7 @@ function testGregRataDieBeforeWed() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn-2, rd.beforeRd(3));
+    assertEquals(rdn-2, rd.before(3));
 }
 
 function testGregRataDieBeforeThu() {
@@ -496,7 +509,7 @@ function testGregRataDieBeforeThu() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn-1, rd.beforeRd(4));
+    assertEquals(rdn-1, rd.before(4));
 }
 
 function testGregRataDieBeforeFri() {
@@ -509,7 +522,7 @@ function testGregRataDieBeforeFri() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn-7, rd.beforeRd(5));
+    assertEquals(rdn-7, rd.before(5));
 }
 
 function testGregRataDieBeforeSat() {
@@ -522,7 +535,7 @@ function testGregRataDieBeforeSat() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn-6, rd.beforeRd(6));
+    assertEquals(rdn-6, rd.before(6));
 }
 
 function testGregRataDieAfterSun() {
@@ -536,7 +549,7 @@ function testGregRataDieAfterSun() {
     var rdn = rd.getRataDie();
     
     // Sunday after is 2 days after 
-    assertEquals(rdn+2, rd.afterRd(0));
+    assertEquals(rdn+2, rd.after(0));
 }
 
 function testGregRataDieAfterMon() {
@@ -549,7 +562,7 @@ function testGregRataDieAfterMon() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn+3, rd.afterRd(1));
+    assertEquals(rdn+3, rd.after(1));
 }
 
 function testGregRataDieAfterTue() {
@@ -562,7 +575,7 @@ function testGregRataDieAfterTue() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn+4, rd.afterRd(2));
+    assertEquals(rdn+4, rd.after(2));
 }
 
 function testGregRataDieAfterWed() {
@@ -575,7 +588,7 @@ function testGregRataDieAfterWed() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn+5, rd.afterRd(3));
+    assertEquals(rdn+5, rd.after(3));
 }
 
 function testGregRataDieAfterThu() {
@@ -588,7 +601,7 @@ function testGregRataDieAfterThu() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn+6, rd.afterRd(4));
+    assertEquals(rdn+6, rd.after(4));
 }
 
 function testGregRataDieAfterFri() {
@@ -601,7 +614,7 @@ function testGregRataDieAfterFri() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn+7, rd.afterRd(5));
+    assertEquals(rdn+7, rd.after(5));
 }
 
 function testGregRataDieAfterSat() {
@@ -614,7 +627,7 @@ function testGregRataDieAfterSat() {
     
     var rdn = rd.getRataDie();
     
-    assertEquals(rdn+1, rd.afterRd(6));
+    assertEquals(rdn+1, rd.after(6));
 }
 
 function testGregRataDieJan1Midnight() {
@@ -671,4 +684,116 @@ function testGregRataDieGetTimeWithDefaultTime() {
     assertNotNull(rd);
     
     assertRoughlyEquals(d.getTime(), rd.getTime(), 100);
+}
+
+function testGregRataDieOnOrBeforeWithOffset1() {
+    var rd = new ilib.Date.GregRataDie({
+    	year: 2014,
+    	month: 4,
+    	day: 26,
+    	hour: 23
+    }); // this is a Saturday in California, but Sunday in UTC
+    
+    assertNotNull(rd);
+    
+    // the Sunday before should be the previous Sunday, not today
+    assertEquals(rd.getRataDie()-6, rd.onOrBefore(0, -0.33333333333));
+}
+
+function testGregRataDieOnOrBeforeWithOffset2() {
+    var rd = new ilib.Date.GregRataDie({
+    	year: 2014,
+    	month: 4,
+    	day: 27,
+    	hour: 8
+    }); // this is a Sunday in California and Sunday in UTC
+    
+    assertNotNull(rd);
+    
+    // the Sunday before should be today, not a week ago
+    assertEquals(rd.getRataDie(), rd.onOrBefore(0, -0.33333333333));
+}
+
+function testGregRataDieOnOrAfterWithOffset1() {
+    var rd = new ilib.Date.GregRataDie({
+    	year: 2014,
+    	month: 4,
+    	day: 26,
+    	hour: 23
+    }); // this is a Saturday in California, but Sunday in UTC
+    
+    assertNotNull(rd);
+    
+    // the Sunday before should be the next day
+    assertEquals(rd.getRataDie()+1, rd.onOrAfter(0, -0.33333333333));
+}
+
+function testGregRataDieOnOrAfterWithOffset2() {
+    var rd = new ilib.Date.GregRataDie({
+    	year: 2014,
+    	month: 4,
+    	day: 27,
+    	hour: 8
+    }); // this is a Sunday in California and Sunday in UTC
+    
+    assertNotNull(rd);
+    
+    // the Sunday before should be today
+    assertEquals(rd.getRataDie(), rd.onOrAfter(0, -0.33333333333));
+}
+
+function testGregRataDieBeforeWithOffset1() {
+    var rd = new ilib.Date.GregRataDie({
+    	year: 2014,
+    	month: 4,
+    	day: 27,
+    	hour: 23
+    }); // this is a Sunday in California, but Monday in UTC
+    
+    assertNotNull(rd);
+    
+    // the Sunday before should be the previous week, not today
+    assertEquals(rd.getRataDie()-7, rd.before(0, -0.33333333333));
+}
+
+function testGregRataDieBeforeWithOffset2() {
+    var rd = new ilib.Date.GregRataDie({
+    	year: 2014,
+    	month: 4,
+    	day: 28,
+    	hour: 8
+    }); // this is a Monday in California and in UTC
+    
+    assertNotNull(rd);
+    
+    // the Sunday before should be the previous day
+    assertEquals(rd.getRataDie()-1, rd.before(0, -0.33333333333));
+}
+
+function testGregRataDieAfterWithOffset1() {
+    var rd = new ilib.Date.GregRataDie({
+    	year: 2014,
+    	month: 4,
+    	day: 26,
+    	hour: 23
+    }); // this is a Saturday in California, but Sunday in UTC
+    
+    assertNotNull(rd);
+    
+    // the Sunday after should be the next day, not in a week
+    assertEquals(rd.getRataDie()+1, rd.after(0, -0.33333333333));
+}
+
+function testGregRataDieAfterWithOffset2() {
+    var rd = new ilib.Date.GregRataDie({
+    	year: 2014,
+    	month: 4,
+    	day: 27,
+    	hour: 8
+    }); // this is a Sunday in California and Sunday in UTC
+    
+    assertNotNull(rd);
+    
+    // the Sunday after should be in one week, not today
+    assertEquals(rd.getRataDie()+7, rd.after(0, -0.33333333333));
 }

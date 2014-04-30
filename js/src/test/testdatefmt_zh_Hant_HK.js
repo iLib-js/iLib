@@ -233,6 +233,7 @@ function testDateFmtTemplateCalendar_zh_Hant_HK() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
+    	locale: "zh-Hant-HK",
 		year: 2011,
 		month: 9,
 		day: 29,

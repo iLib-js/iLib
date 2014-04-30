@@ -234,6 +234,7 @@ function testDateFmtTemplateCalendar_it_IT() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
+    	locale: "it-IT",
 		year: 2011,
 		month: 9,
 		day: 29,

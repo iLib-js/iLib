@@ -26,7 +26,8 @@ function testJulDateConstructor() {
 /* julian date is rd 366 + epoch */
 function testJulDateConstructorFromJD() {
     var jul = new ilib.Date.JulDate({
-		julianday: 1721790.75
+		julianday: 1721790.75,
+		timezone: "Etc/UTC"
 	});
     
     assertEquals('object', typeof(jul));
@@ -41,7 +42,8 @@ function testJulDateConstructorFromJD() {
 
 function testJulDateConstructorUnixTime() {
     var gd = new ilib.Date.JulDate({
-    	unixtime: 61000
+    	unixtime: 61000,
+		timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -56,7 +58,8 @@ function testJulDateConstructorUnixTime() {
 
 function testJulDateAfterLeapYear() {
     var jul = new ilib.Date.JulDate({
-		julianday: 1723071.9
+		julianday: 1723071.9,
+		timezone: "Etc/UTC"
 	});
     
     assertEquals('object', typeof(jul));
@@ -70,7 +73,7 @@ function testJulDateAfterLeapYear() {
 }
 
 function testJulDateJan31Midnight() {
-    var gd = new ilib.Date.JulDate({rd: 734548});  // Jan 31, 2012 12:00am
+    var gd = new ilib.Date.JulDate({rd: 734548,	timezone: "Etc/UTC"});  // Jan 31, 2012 12:00am
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -83,7 +86,7 @@ function testJulDateJan31Midnight() {
 }
 
 function testJulDateJan31Noon() {
-    var gd = new ilib.Date.JulDate({rd: 734548.5});  // Jan 31, 2012 12:00pm
+    var gd = new ilib.Date.JulDate({rd: 734548.5, timezone: "Etc/UTC"});  // Jan 31, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -96,7 +99,7 @@ function testJulDateJan31Noon() {
 }
 
 function testJulDateFeb1() {
-    var gd = new ilib.Date.JulDate({rd: 734549.5});  // Feb 1, 2012 12:00pm
+    var gd = new ilib.Date.JulDate({rd: 734549.5, timezone: "Etc/UTC"});  // Feb 1, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -109,7 +112,7 @@ function testJulDateFeb1() {
 }
 
 function testJulDateFeb28LeapYear() {
-    var gd = new ilib.Date.JulDate({rd: 734576.5});  // Feb 28, 2012 12:00pm
+    var gd = new ilib.Date.JulDate({rd: 734576.5, timezone: "Etc/UTC"});  // Feb 28, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -122,7 +125,7 @@ function testJulDateFeb28LeapYear() {
 }
 
 function testJulDateFeb29LeapYear() {
-    var gd = new ilib.Date.JulDate({rd: 734577.5});  // Feb 29, 2012 12:00pm
+    var gd = new ilib.Date.JulDate({rd: 734577.5, timezone: "Etc/UTC"});  // Feb 29, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -135,7 +138,7 @@ function testJulDateFeb29LeapYear() {
 }
 
 function testJulDateMar1LeapYear() {
-    var gd = new ilib.Date.JulDate({rd: 734578.5});  // Mar 1, 2012 12:00pm
+    var gd = new ilib.Date.JulDate({rd: 734578.5, timezone: "Etc/UTC"});  // Mar 1, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -148,7 +151,7 @@ function testJulDateMar1LeapYear() {
 }
 
 function testJulDateMar31LeapYear() {
-    var gd = new ilib.Date.JulDate({rd: 734608.5});  // Mar 31, 2012 12:00pm
+    var gd = new ilib.Date.JulDate({rd: 734608.5, timezone: "Etc/UTC"});  // Mar 31, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -161,7 +164,7 @@ function testJulDateMar31LeapYear() {
 }
 
 function testJulDateApr1LeapYear() {
-    var gd = new ilib.Date.JulDate({rd: 734609.5});  // Apr 1, 2012 12:00pm
+    var gd = new ilib.Date.JulDate({rd: 734609.5, timezone: "Etc/UTC"});  // Apr 1, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -174,7 +177,7 @@ function testJulDateApr1LeapYear() {
 }
 
 function testJulDateDec31LeapYear() {
-    var gd = new ilib.Date.JulDate({rd: 734883.5});  // Dec 31, 2012 12:00pm
+    var gd = new ilib.Date.JulDate({rd: 734883.5, timezone: "Etc/UTC"});  // Dec 31, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -187,7 +190,7 @@ function testJulDateDec31LeapYear() {
 }
 
 function testJulDateJan1NonLeapYear() {
-    var gd = new ilib.Date.JulDate({rd: 734884.5});  // Jan 1, 2013 12:00pm
+    var gd = new ilib.Date.JulDate({rd: 734884.5, timezone: "Etc/UTC"});  // Jan 1, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -200,7 +203,7 @@ function testJulDateJan1NonLeapYear() {
 }
 
 function testJulDateFeb28NonLeapYear() {
-    var gd = new ilib.Date.JulDate({rd: 734942.5});  // Feb 28, 2013 12:00pm
+    var gd = new ilib.Date.JulDate({rd: 734942.5, timezone: "Etc/UTC"});  // Feb 28, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -213,7 +216,7 @@ function testJulDateFeb28NonLeapYear() {
 }
 
 function testJulDateMar1NonLeapYear() {
-    var gd = new ilib.Date.JulDate({rd: 734943.5});  // Mar 1, 2013 12:00pm
+    var gd = new ilib.Date.JulDate({rd: 734943.5, timezone: "Etc/UTC"});  // Mar 1, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -226,7 +229,7 @@ function testJulDateMar1NonLeapYear() {
 }
 
 function testJulDateMar31NonLeapYear() {
-    var gd = new ilib.Date.JulDate({rd: 734973.5});  // Mar 31, 2013 12:00pm
+    var gd = new ilib.Date.JulDate({rd: 734973.5, timezone: "Etc/UTC"});  // Mar 31, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -239,7 +242,7 @@ function testJulDateMar31NonLeapYear() {
 }
 
 function testJulDateApr1NonLeapYear() {
-    var gd = new ilib.Date.JulDate({rd: 734974.5});  // Apr 1, 2013 12:00pm
+    var gd = new ilib.Date.JulDate({rd: 734974.5, timezone: "Etc/UTC"});  // Apr 1, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -253,7 +256,8 @@ function testJulDateApr1NonLeapYear() {
 
 function testJulDateAfterCentury() {
     var jul = new ilib.Date.JulDate({
-		julianday: 1758231.8
+		julianday: 1758231.8, 
+		timezone: "Etc/UTC"
 	});
     
     assertEquals('object', typeof(jul));
@@ -268,7 +272,8 @@ function testJulDateAfterCentury() {
 
 function testJulDateAfterQuadCentury() {
     var jul = new ilib.Date.JulDate({
-		julianday: 1867706.833333333333
+		julianday: 1867706.833333333333, 
+		timezone: "Etc/UTC"
 	});
     
     assertEquals('object', typeof(jul));
@@ -282,7 +287,7 @@ function testJulDateAfterQuadCentury() {
 }
 
 function testJulDateEndOfYearMinus1Rd() {
-    var gd = new ilib.Date.JulDate({rd: 0});
+    var gd = new ilib.Date.JulDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(-1, gd.getYears());
@@ -295,7 +300,7 @@ function testJulDateEndOfYearMinus1Rd() {
 }
 
 function testJulDateBeginningOfYearRd() {
-    var gd = new ilib.Date.JulDate({rd: 1});
+    var gd = new ilib.Date.JulDate({rd: 1, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(1, gd.getYears());
@@ -308,7 +313,7 @@ function testJulDateBeginningOfYearRd() {
 }
 
 function testJulDateAlmostEndOfYearRd() {
-    var gd = new ilib.Date.JulDate({rd: 364});
+    var gd = new ilib.Date.JulDate({rd: 364, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(1, gd.getYears());
@@ -321,7 +326,7 @@ function testJulDateAlmostEndOfYearRd() {
 }
 
 function testJulDateEndOfYearRd() {
-    var gd = new ilib.Date.JulDate({rd: 365});
+    var gd = new ilib.Date.JulDate({rd: 365, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(1, gd.getYears());
@@ -334,7 +339,7 @@ function testJulDateEndOfYearRd() {
 }
 
 function testJulDateBeginningOfYear2Rd() {
-    var gd = new ilib.Date.JulDate({rd: 366});
+    var gd = new ilib.Date.JulDate({rd: 366, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(2, gd.getYears());
@@ -390,7 +395,8 @@ function testJulDateConvert() {
         info("testing jd=" + testDates[i][0] + " and date of " + JSON.stringify(jul));
         
         jul = new ilib.Date.JulDate({
-        	julianday: testDates[i][0]
+        	julianday: testDates[i][0], 
+        	timezone: "Etc/UTC"
         });
     
         assertEquals('object', typeof(jul));
@@ -635,6 +641,7 @@ function testJulDateTestSetTime1() {
 
 function testJulDateTestSetTimeZero() {
     var jul = new ilib.Date.JulDate({
+    	timezone: "Etc/UTC",
     	year: -1, 
     	month: 1, 
     	day: 1,

@@ -235,6 +235,7 @@ function testDateFmtTemplateCalendar_uk_UA() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
+    	locale: "uk-UA",
 		year: 2011,
 		month: 9,
 		day: 29,

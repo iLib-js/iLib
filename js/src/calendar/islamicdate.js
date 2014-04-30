@@ -76,33 +76,14 @@ julianday.js
  * @param {Object=} params parameters that govern the settings and behaviour of this Islamic RD date
  */
 ilib.Date.IslamicRataDie = function(params) {
-	this.cal = new ilib.Cal.Islamic();
-
-	if (params) {
-		if (typeof(params.date) !== 'undefined') {
-			// accept JS Date classes or strings
-			var date = params.date;
-			if (!(date instanceof Date)) {
-				date = new Date(date);
-			}
-			this._setTime(date.getTime());
-		} else if (typeof(params.unixtime) != 'undefined') {
-			this._setTime(parseInt(params.unixtime, 10));
-		} else if (typeof(params.julianday) != 'undefined') {
-			this._setJulianDay(parseFloat(params.julianday));
-		} else if (params.year || params.month || params.day || params.hour ||
-				params.minute || params.second || params.millisecond || params.parts ) {
-			this._setDateComponents(params);
-		} else if (typeof(params.rd) != 'undefined') {
-			this.rd = (typeof(params.rd) === 'object' && params.rd instanceof ilib.DateFmt.IslamicRataDie) ? params.rd.rd : params.rd;
-		}
-	}
-	
-	if (typeof(this.rd) === 'undefined') {
-		var now = new Date();
-		this._setTime(now.getTime());
-	}
+	this.cal = params && params.cal || new ilib.Cal.Islamic();
+	this.rd = undefined;
+	ilib.Date.RataDie.call(this, params);
 };
+
+ilib.Date.IslamicRataDie.prototype = new ilib.Date.RataDie();
+ilib.Date.IslamicRataDie.prototype.parent = ilib.Date.RataDie;
+ilib.Date.IslamicRataDie.prototype.constructor = ilib.Date.IslamicRataDie;
 
 /**
  * @private
@@ -111,168 +92,34 @@ ilib.Date.IslamicRataDie = function(params) {
  * The difference between a zero Julian day and the first Islamic date
  * of Friday, July 16, 622 CE Julian. 
  */
-ilib.Date.IslamicRataDie.epoch = 1948439.5;
+ilib.Date.IslamicRataDie.prototype.epoch = 1948439.5;
 
-ilib.Date.IslamicRataDie.prototype = {
-	/**
-	 * @private
-	 * Set the RD of this instance according to the given unix time. Unix time is
-	 * the number of milliseconds since midnight on Jan 1, 1970.
-	 * 
-	 * @param {number} millis the unix time to set this date to in milliseconds 
-	 */
-	_setTime: function(millis) {
-		this.rd = 492148 + millis / 86400000;
-	},
+/**
+ * @private
+ * Calculate the Rata Die (fixed day) number of the given date from the
+ * date components.
+ * 
+ * @param {Object} date the date components to calculate the RD from
+ */
+ilib.Date.IslamicRataDie.prototype._setDateComponents = function(date) {
+	var days = (date.year - 1) * 354 +
+		Math.ceil(29.5 * (date.month - 1)) +
+		date.day +
+		Math.floor((3 + 11 * date.year) / 30) - 1;
+	var time = (date.hour * 3600000 +
+		date.minute * 60000 +
+		date.second * 1000 +
+		date.millisecond) / 
+		86400000; 
 	
-	/**
-	 * @private
-	 * Set the date of this instance using a Julian Day.
-	 * @param {number} date the Julian Day to use to set this date
-	 */
-	_setJulianDay: function (date) {
-		var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date;
-		this.rd = ilib._roundFnc.halfdown((jd.getDate() - ilib.Date.IslamicRataDie.epoch) * 100000000) / 100000000;
-	},
-	
-	/**
-	 * @private
-	 * Calculate the Rata Die (fixed day) number of the given date from the
-	 * date components.
-	 * 
-	 * @param {Object} date the date components to calculate the RD from
-	 */
-	_setDateComponents: function(date) {
-		var days = (date.year - 1) * 354 +
-			Math.ceil(29.5 * (date.month - 1)) +
-			date.day +
-			Math.floor((3 + 11 * date.year) / 30) - 1;
-		var time = (date.hour * 3600000 +
-			date.minute * 60000 +
-			date.second * 1000 +
-			date.millisecond) / 
-			86400000; 
-		
-		//console.log("getRataDie: converting " +  JSON.stringify(date));
-		//console.log("getRataDie: days is " +  days);
-		//console.log("getRataDie: time is " +  time);
-		//console.log("getRataDie: rd is " +  (days + time));
+	//console.log("getRataDie: converting " +  JSON.stringify(date));
+	//console.log("getRataDie: days is " +  days);
+	//console.log("getRataDie: time is " +  time);
+	//console.log("getRataDie: rd is " +  (days + time));
 
-		this.rd = days + time;
-	},
-	
-	/**
-	 * Return the day of the week of this date. The day of the week is encoded
-	 * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
-	 * 
-	 * @return {number} the day of the week
-	 */
-	getDayOfWeek: function() {
-		var rd = Math.floor(this.rd);
-		return ilib.mod(rd-2, 7);
-	},
-	
-	/**
-	 * @private
-	 * Return the rd number of the particular day of the week on or before the 
-	 * given rd. eg. The Sunday on or before the given rd.
-	 * @param {number} rd the rata die date of the reference date
-	 * @param {number} dayOfWeek the day of the week that is being sought relative 
-	 * to the current date
-	 * @return {number} the rd of the day of the week
-	 */
-	_onOrBeforeRd: function(rd, dayOfWeek) {
-		return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 2, 7);
-	},
-	
-	/**
-	 * Return the rd number of the particular day of the week on or before the current rd.
-	 * eg. The Sunday on or before the current rd.
-	 * @param {number} dayOfWeek the day of the week that is being sought relative 
-	 * to the current date
-	 * @return {number} the rd of the day of the week
-	 */
-	onOrBefore: function(dayOfWeek) {
-		return this._onOrBeforeRd(this.rd, dayOfWeek);
-	},
-	
-	/**
-	 * @private
-	 * Return the rd of the particular day of the week on or before the given rd.
-	 * eg. The Sunday on or before the given rd.
-	 * @param {number} dayOfWeek the day of the week that is being sought relative 
-	 * to the reference date
-	 */
-	onOrAfter: function(dayOfWeek) {
-		return this._onOrBeforeRd(this.rd+6, dayOfWeek);
-	},
-
-	/**
-	 * @private
-	 * Return the rd of the particular day of the week before the given rd.
-	 * eg. The Sunday before the given rd.
-	 * @param {number} dayOfWeek the day of the week that is being sought relative 
-	 * to the reference date
-	 */
-	before: function(dayOfWeek) {
-		return this._onOrBeforeRd(this.rd-1, dayOfWeek);
-	},
-
-	/**
-	 * @private
-	 * Return the rd of the particular day of the week after the given rd.
-	 * eg. The Sunday after the given rd.
-	 * @param {number} dayOfWeek the day of the week that is being sought relative 
-	 * to the reference date
-	 */
-	after: function(dayOfWeek) {
-		return this._onOrBeforeRd(this.rd+7, dayOfWeek);
-	},
-	
-	/**
-	 * Return the unix time equivalent to this Islamic date instance. Unix time is
-	 * the number of milliseconds since midnight on Jan 1, 1970. This method only
-	 * returns a valid number for dates between midnight, Jan 1, 1970 and  
-	 * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
-	 * encodes a date outside of that range, this method will return -1. This method
-	 * returns the time in the local time zone, not in UTC.
-	 * 
-	 * @return {number} a number giving the unix time, or -1 if the date is outside the
-	 * valid unix time range
-	 */
-	getTime: function() {
-		// earlier than Jan 1, 1970
-		// or later than Jan 19, 2038 at 3:14:07am
-		if (this.rd < 492148 || this.rd > 517003.134803241) { 
-			return -1;
-		}
-	
-		// avoid the rounding errors in the floating point math by only using
-		// the whole days from the rd, and then calculating the milliseconds directly
-		return Math.round((this.rd - 492148) * 86400000);
-	
-	},
-	
-	/**
-	 * Return the Julian Day equivalent to this calendar date as a number.
-	 * This returns the julian day in the local time zone.
-	 * 
-	 * @return {number} the julian date equivalent of this date
-	 */
-	getJulianDay: function() {
-		return this.rd + ilib.Date.IslamicRataDie.epoch;
-	},
-	
-	/**
-	 * Return the Rata Die (fixed day) number of this RD date.
-	 * 
-	 * @return {number} the rd date as a number
-	 */
-	getRataDie: function() {
-		return this.rd;
-	}
+	this.rd = days + time;
 };
-
+	
 /**
  * @class
  * 
@@ -398,10 +245,10 @@ ilib.Date.IslamicDate = function(params) {
 			// getOffsetMillis requires that this.year, this.rd, and this.dst 
 			// are set in order to figure out which time zone rules apply and 
 			// what the offset is at that point in the year
-			var offset = -this.tz._getOffsetMillisWallTime(this) / 86400000;
-			if (offset !== 0) {
+			this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
+			if (this.offset !== 0) {
 				this.rd = new ilib.Date.IslamicRataDie({
-					rd: this.rd.getRataDie() + offset
+					rd: this.rd.getRataDie() - this.offset
 				});
 			}
 		}
@@ -409,7 +256,7 @@ ilib.Date.IslamicDate = function(params) {
 
 	if (!this.rd) {
 		this.rd = new ilib.Date.IslamicRataDie(params);
-		this.calcDateComponents();
+		this._calcDateComponents();
 	}
 };
 
@@ -469,14 +316,40 @@ ilib.Date.IslamicDate.prototype.getRataDie = function() {
 
 /**
  * @private
+ * Return the year for the given RD
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the year for the RD
+ */
+ilib.Date.IslamicDate.prototype._calcYear = function(rd) {
+	return Math.floor((30 * rd + 10646) / 10631);
+};
+
+/**
+ * @private
  * Calculate date components for the given RD date.
  */
-ilib.Date.IslamicDate.prototype.calcDateComponents = function () {
+ilib.Date.IslamicDate.prototype._calcDateComponents = function () {
 	var remainder,
 		rd = this.rd.getRataDie();
 	
-	this.year = Math.floor((30 * rd + 10646) / 10631);
-	
+	this.year = this._calcYear(rd);
+
+	if (typeof(this.offset) === "undefined") {
+		this.year = this._calcYear(rd);
+		
+		// now offset the RD by the time zone, then recalculate in case we were 
+		// near the year boundary
+		if (!this.tz) {
+			this.tz = new ilib.TimeZone({id: this.timezone});
+		}
+		this.offset = this.tz.getOffsetMillis(this) / 86400000;
+	}
+
+	if (this.offset !== 0) {
+		rd += this.offset;
+		this.year = this._calcYear(rd);
+	}
+
 	//console.log("IslamicDate.calcComponent: calculating for rd " + rd);
 	//console.log("IslamicDate.calcComponent: year is " + ret.year);
 	var yearStart = new ilib.Date.IslamicRataDie({
@@ -526,7 +399,7 @@ ilib.Date.IslamicDate.prototype.calcDateComponents = function () {
  */
 ilib.Date.IslamicDate.prototype.setRd = function (rd) {
 	this.rd = new ilib.Date.IslamicRataDie({rd: rd});
-	this.calcDateComponents();
+	this._calcDateComponents();
 };
 
 /**
@@ -535,7 +408,7 @@ ilib.Date.IslamicDate.prototype.setRd = function (rd) {
  */
 ilib.Date.IslamicDate.prototype.setJulianDay = function (date) {
 	this.rd = new ilib.Date.IslamicRataDie({julianday: date});
-	this.calcDateComponents();
+	this._calcDateComponents();
 };
 
 /**
@@ -545,7 +418,8 @@ ilib.Date.IslamicDate.prototype.setJulianDay = function (date) {
  * @return {number} the day of the week
  */
 ilib.Date.IslamicDate.prototype.getDayOfWeek = function() {
-	return this.rd.getDayOfWeek();
+	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
+	return ilib.mod(rd-2, 7);
 };
 
 /**
@@ -561,7 +435,8 @@ ilib.Date.IslamicDate.prototype.firstSunday = function (year) {
 		hour: 0,
 		minute: 0,
 		second: 0,
-		millisecond: 0
+		millisecond: 0,
+		cal: this.cal
 	});
 	var firstThu = new ilib.Date.IslamicRataDie({rd: firstDay.onOrAfter(4)});
 	return firstThu.before(0);
@@ -576,7 +451,10 @@ ilib.Date.IslamicDate.prototype.firstSunday = function (year) {
  * @returns {ilib.Date.IslamicDate} the date being sought
  */
 ilib.Date.IslamicDate.prototype.before = function (dow) {
-	return new ilib.Date.IslamicDate({rd: this.rd.before(dow)});
+	return new ilib.Date.IslamicDate({
+		rd: this.rd.before(dow, this.offset),
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -588,7 +466,10 @@ ilib.Date.IslamicDate.prototype.before = function (dow) {
  * @returns {ilib.Date.IslamicDate} the date being sought
  */
 ilib.Date.IslamicDate.prototype.after = function (dow) {
-	return new ilib.Date.IslamicDate({rd: this.rd.after(dow)});
+	return new ilib.Date.IslamicDate({
+		rd: this.rd.after(dow, this.offset),
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -600,7 +481,10 @@ ilib.Date.IslamicDate.prototype.after = function (dow) {
  * @returns {ilib.Date.IslamicDate} the date being sought
  */
 ilib.Date.IslamicDate.prototype.onOrBefore = function (dow) {
-	return new ilib.Date.IslamicDate({rd: this.rd.onOrBefore(dow)});
+	return new ilib.Date.IslamicDate({
+		rd: this.rd.onOrBefore(dow, this.offset),
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -612,7 +496,10 @@ ilib.Date.IslamicDate.prototype.onOrBefore = function (dow) {
  * @returns {ilib.Date.IslamicDate} the date being sought
  */
 ilib.Date.IslamicDate.prototype.onOrAfter = function (dow) {
-	return new ilib.Date.IslamicDate({rd: this.rd.onOrAfter(dow)});
+	return new ilib.Date.IslamicDate({
+		rd: this.rd.onOrAfter(dow, this.offset),
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -701,20 +588,6 @@ ilib.Date.IslamicDate.prototype.getEra = function() {
 };
 
 /**
- * Return the unix time equivalent to this Islamic date instance. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970 Gregorian. This method only
- * returns a valid number for dates between midnight, Jan 1, 1970 and  
- * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
- * encodes a date outside of that range, this method will return -1.
- * 
- * @return {number} a number giving the unix time, or -1 if the date is outside the
- * valid unix time range
- */
-ilib.Date.IslamicDate.prototype.getTime = function() {
-	return this.rd.getTime();
-};
-
-/**
  * Set the time of this instance according to the given unix time. Unix time is
  * the number of milliseconds since midnight on Jan 1, 1970.
  * 
@@ -722,7 +595,7 @@ ilib.Date.IslamicDate.prototype.getTime = function() {
  */
 ilib.Date.IslamicDate.prototype.setTime = function(millis) {
 	this.rd = new ilib.Date.IslamicRataDie({unixtime: millis});
-	this.calcDateComponents();
+	this._calcDateComponents();
 };
 
 /**
@@ -780,7 +653,7 @@ ilib.Date.IslamicDate.prototype.setTimeZone = function (tzName) {
 		this.tz = undefined;
 		// assuming the same UTC time, but a new time zone, now we have to 
 		// recalculate what the date components are
-		this.calcDateComponents();
+		this._calcDateComponents();
 	}
 };
 

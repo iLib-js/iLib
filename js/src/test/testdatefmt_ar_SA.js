@@ -228,7 +228,8 @@ function testDateFmtTemplateCalendar_ar_SA() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
-		year: 2011,
+    	locale: "ar-SA",
+    	year: 2011,
 		month: 9,
 		day: 29,
 		hour: 13,

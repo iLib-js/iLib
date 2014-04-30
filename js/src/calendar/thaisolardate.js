@@ -105,7 +105,7 @@ ilib.Date.ThaiSolarDate = function(params) {
 	ilib.Date.GregDate.call(this, p);
 	this.cal = new ilib.Cal.ThaiSolar();
 	// make sure the year is set correctly
-	this.calcDateComponents();
+	this._calcDateComponents();
 };
 
 ilib.Date.ThaiSolarDate.prototype = new ilib.Date.GregDate();
@@ -125,10 +125,10 @@ ilib.Date.ThaiSolarDate.epoch = 1523097.5;
  * @private
  * Calculate the date components for the current time zone
  */
-ilib.Date.ThaiSolarDate.prototype.calcDateComponents = function () {
+ilib.Date.ThaiSolarDate.prototype._calcDateComponents = function () {
 	// there is 198327 days difference between the Thai solar and 
 	// Gregorian epochs which is equivalent to 543 years
-	this.parent.calcDateComponents.call(this);
+	this.parent._calcDateComponents.call(this);
 	this.year += 543;
 };
 
@@ -153,7 +153,10 @@ ilib.Date.ThaiSolarDate.prototype.getRataDie = function() {
  * @return {ilib.Date} the date being sought
  */
 ilib.Date.ThaiSolarDate.prototype.before = function (dow) {
-	return this.cal.newDateInstance({rd: this.rd.beforeRd(dow) + 198327});
+	return this.cal.newDateInstance({
+		rd: this.rd.before(dow, this.offset) + 198327,
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -165,7 +168,10 @@ ilib.Date.ThaiSolarDate.prototype.before = function (dow) {
  * @return {ilib.Date} the date being sought
  */
 ilib.Date.ThaiSolarDate.prototype.after = function (dow) {
-	return this.cal.newDateInstance({rd: this.rd.afterRd(dow) + 198327});
+	return this.cal.newDateInstance({
+		rd: this.rd.after(dow, this.offset) + 198327,
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -177,7 +183,10 @@ ilib.Date.ThaiSolarDate.prototype.after = function (dow) {
  * @return {ilib.Date} the date being sought
  */
 ilib.Date.ThaiSolarDate.prototype.onOrBefore = function (dow) {
-	return this.cal.newDateInstance({rd: this.rd.onOrBeforeRd(dow) + 198327});
+	return this.cal.newDateInstance({
+		rd: this.rd.onOrBefore(dow, this.offset) + 198327,
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -189,7 +198,10 @@ ilib.Date.ThaiSolarDate.prototype.onOrBefore = function (dow) {
  * @return {ilib.Date} the date being sought
  */
 ilib.Date.ThaiSolarDate.prototype.onOrAfter = function (dow) {
-	return this.cal.newDateInstance({rd: this.rd.onOrAfterRd(dow) + 198327});
+	return this.cal.newDateInstance({
+		rd: this.rd.onOrAfter(dow, this.offset) + 198327,
+		timezone: this.timezone
+	});
 };
 
 /**

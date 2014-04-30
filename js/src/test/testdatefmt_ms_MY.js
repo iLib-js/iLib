@@ -228,6 +228,7 @@ function testDateFmtTemplateCalendar_ms_MY() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
+    	locale: "ms-MY",
 		year: 2011,
 		month: 9,
 		day: 29,

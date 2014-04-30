@@ -25,7 +25,10 @@ function testGregDateConstructor() {
 
 /* julian date is rd 366 + epoch */
 function testGregDateConstructorFromJD() {
-    var gd = new ilib.Date.GregDate({julianday: 1721790.75});
+    var gd = new ilib.Date.GregDate({
+    	julianday: 1721790.75,
+    	timezone: "Etc/UTC"
+    });
     
     assertEquals('object', typeof(gd));
     assertEquals(2, gd.getYears());
@@ -38,7 +41,7 @@ function testGregDateConstructorFromJD() {
 }
 
 function testGregDateAfterLeapYear() {
-    var gd = new ilib.Date.GregDate({julianday: 1723071.9});  // jul 5, 05, 9:36am
+    var gd = new ilib.Date.GregDate({julianday: 1723071.9, timezone: "Etc/UTC"});  // jul 5, 05, 9:36am
     
     assertEquals('object', typeof(gd));
     assertEquals(5, gd.getYears());
@@ -51,7 +54,7 @@ function testGregDateAfterLeapYear() {
 }
 
 function testGregDateJan31Midnight() {
-    var gd = new ilib.Date.GregDate({rd: 734533});  // Jan 31, 2012 12:00am
+    var gd = new ilib.Date.GregDate({rd: 734533, timezone: "Etc/UTC"});  // Jan 31, 2012 12:00am
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -64,7 +67,7 @@ function testGregDateJan31Midnight() {
 }
 
 function testGregDateJan31Noon() {
-    var gd = new ilib.Date.GregDate({rd: 734533.5});  // Jan 31, 2012 12:00pm
+    var gd = new ilib.Date.GregDate({rd: 734533.5, timezone: "Etc/UTC"});  // Jan 31, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -77,7 +80,7 @@ function testGregDateJan31Noon() {
 }
 
 function testGregDateFeb1() {
-    var gd = new ilib.Date.GregDate({rd: 734534.5});  // Feb 1, 2012 12:00pm
+    var gd = new ilib.Date.GregDate({rd: 734534.5, timezone: "Etc/UTC"});  // Feb 1, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -90,7 +93,7 @@ function testGregDateFeb1() {
 }
 
 function testGregDateFeb28LeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734561.5});  // Feb 28, 2012 12:00pm
+    var gd = new ilib.Date.GregDate({rd: 734561.5, timezone: "Etc/UTC"});  // Feb 28, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -103,7 +106,7 @@ function testGregDateFeb28LeapYear() {
 }
 
 function testGregDateFeb29LeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734562.5});  // Feb 29, 2012 12:00pm
+    var gd = new ilib.Date.GregDate({rd: 734562.5, timezone: "Etc/UTC"});  // Feb 29, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -116,7 +119,7 @@ function testGregDateFeb29LeapYear() {
 }
 
 function testGregDateMar1LeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734563.5});  // Mar 1, 2012 12:00pm
+    var gd = new ilib.Date.GregDate({rd: 734563.5, timezone: "Etc/UTC"});  // Mar 1, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -129,7 +132,7 @@ function testGregDateMar1LeapYear() {
 }
 
 function testGregDateMar31LeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734593.5});  // Mar 31, 2012 12:00pm
+    var gd = new ilib.Date.GregDate({rd: 734593.5, timezone: "Etc/UTC"});  // Mar 31, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -142,7 +145,7 @@ function testGregDateMar31LeapYear() {
 }
 
 function testGregDateApr1LeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734594.5});  // Apr 1, 2012 12:00pm
+    var gd = new ilib.Date.GregDate({rd: 734594.5, timezone: "Etc/UTC"});  // Apr 1, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -155,7 +158,7 @@ function testGregDateApr1LeapYear() {
 }
 
 function testGregDateDec31LeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734868.5});  // Dec 31, 2012 12:00pm
+    var gd = new ilib.Date.GregDate({rd: 734868.5, timezone: "Etc/UTC"});  // Dec 31, 2012 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2012, gd.getYears());
@@ -168,7 +171,7 @@ function testGregDateDec31LeapYear() {
 }
 
 function testGregDateJan1NonLeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734869.5});  // Jan 1, 2013 12:00pm
+    var gd = new ilib.Date.GregDate({rd: 734869.5, timezone: "Etc/UTC"});  // Jan 1, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -181,7 +184,7 @@ function testGregDateJan1NonLeapYear() {
 }
 
 function testGregDateFeb28NonLeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734927.5});  // Feb 28, 2013 12:00pm
+    var gd = new ilib.Date.GregDate({rd: 734927.5, timezone: "Etc/UTC"});  // Feb 28, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -194,7 +197,7 @@ function testGregDateFeb28NonLeapYear() {
 }
 
 function testGregDateMar1NonLeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734928.5});  // Mar 1, 2013 12:00pm
+    var gd = new ilib.Date.GregDate({rd: 734928.5, timezone: "Etc/UTC"});  // Mar 1, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -207,7 +210,7 @@ function testGregDateMar1NonLeapYear() {
 }
 
 function testGregDateMar31NonLeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734958.5});  // Mar 31, 2013 12:00pm
+    var gd = new ilib.Date.GregDate({rd: 734958.5, timezone: "Etc/UTC"});  // Mar 31, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -220,7 +223,7 @@ function testGregDateMar31NonLeapYear() {
 }
 
 function testGregDateApr1NonLeapYear() {
-    var gd = new ilib.Date.GregDate({rd: 734959.5});  // Apr 1, 2013 12:00pm
+    var gd = new ilib.Date.GregDate({rd: 734959.5, timezone: "Etc/UTC"});  // Apr 1, 2013 12:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(2013, gd.getYears());
@@ -233,7 +236,7 @@ function testGregDateApr1NonLeapYear() {
 }
 
 function testGregDateAfterCentury() {
-    var gd = new ilib.Date.GregDate({julianday: 1758231.8}); // Oct 10, 101, 7:12am
+    var gd = new ilib.Date.GregDate({julianday: 1758231.8, timezone: "Etc/UTC"}); // Oct 10, 101, 7:12am
     
     assertEquals('object', typeof(gd));
     assertEquals(101, gd.getYears());
@@ -246,7 +249,7 @@ function testGregDateAfterCentury() {
 }
 
 function testGregDateAfterQuadCentury() {
-    var gd = new ilib.Date.GregDate({julianday: 1867706.833333333333}); // Jul 4, 401, 8:00pm
+    var gd = new ilib.Date.GregDate({julianday: 1867706.833333333333, timezone: "Etc/UTC"}); // Jul 4, 401, 8:00pm
     
     assertEquals('object', typeof(gd));
     assertEquals(401, gd.getYears());
@@ -259,7 +262,7 @@ function testGregDateAfterQuadCentury() {
 }
 
 function testGregDateEndOfYear() {
-    var gd = new ilib.Date.GregDate({julianday: 2455196.5});
+    var gd = new ilib.Date.GregDate({julianday: 2455196.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(2009, gd.getYears());
@@ -272,7 +275,7 @@ function testGregDateEndOfYear() {
 }
 
 function testGregDateBeginningOfYear() {
-    var gd = new ilib.Date.GregDate({julianday: 2455197.5});
+    var gd = new ilib.Date.GregDate({julianday: 2455197.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(2010, gd.getYears());
@@ -285,7 +288,7 @@ function testGregDateBeginningOfYear() {
 }
 
 function testGregDateEndOfYearLeapYear() {
-    var gd = new ilib.Date.GregDate({julianday: 2454831.5});
+    var gd = new ilib.Date.GregDate({julianday: 2454831.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(2008, gd.getYears());
@@ -298,7 +301,7 @@ function testGregDateEndOfYearLeapYear() {
 }
 
 function testGregDateBeginningOfYearAfterLeapYear() {
-    var gd = new ilib.Date.GregDate({julianday: 2454832.5});
+    var gd = new ilib.Date.GregDate({julianday: 2454832.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(2009, gd.getYears());
@@ -311,7 +314,7 @@ function testGregDateBeginningOfYearAfterLeapYear() {
 }
 
 function testGregDateEndOfYear0RJd() {
-    var gd = new ilib.Date.GregDate({julianday: 1721424.5});
+    var gd = new ilib.Date.GregDate({julianday: 1721424.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(0, gd.getYears());
@@ -324,7 +327,7 @@ function testGregDateEndOfYear0RJd() {
 }
 
 function testGregDateEndOfYear0Rd() {
-    var gd = new ilib.Date.GregDate({rd: 0});
+    var gd = new ilib.Date.GregDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(0, gd.getYears());
@@ -337,7 +340,7 @@ function testGregDateEndOfYear0Rd() {
 }
 
 function testGregDateBeginningOfYearRd() {
-    var gd = new ilib.Date.GregDate({rd: 1});
+    var gd = new ilib.Date.GregDate({rd: 1, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(1, gd.getYears());
@@ -350,7 +353,7 @@ function testGregDateBeginningOfYearRd() {
 }
 
 function testGregDateAlmostEndOfYearRd() {
-    var gd = new ilib.Date.GregDate({rd: 364});
+    var gd = new ilib.Date.GregDate({rd: 364, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(1, gd.getYears());
@@ -363,7 +366,7 @@ function testGregDateAlmostEndOfYearRd() {
 }
 
 function testGregDateEndOfYearRd() {
-    var gd = new ilib.Date.GregDate({rd: 365});
+    var gd = new ilib.Date.GregDate({rd: 365, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(1, gd.getYears());
@@ -376,7 +379,7 @@ function testGregDateEndOfYearRd() {
 }
 
 function testGregDateBeginningOfYear2Rd() {
-    var gd = new ilib.Date.GregDate({rd: 366});
+    var gd = new ilib.Date.GregDate({rd: 366, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(gd));
     assertEquals(2, gd.getYears());
@@ -429,7 +432,7 @@ function testGregDateConvert() {
     var gd;
     
     for (var i = 0; i < testDates.length; i++) {
-        gd = new ilib.Date.GregDate({julianday: testDates[i][0]});
+        gd = new ilib.Date.GregDate({julianday: testDates[i][0], timezone: "Etc/UTC"});
     
         info("testing jd=" + testDates[i][0]);
         
@@ -530,7 +533,8 @@ function testGregDateConstructorEmpty() {
 
 function testGregDateConstructorUnixTime() {
     var gd = new ilib.Date.GregDate({
-    	unixtime: 61000
+    	unixtime: 61000, 
+    	timezone: "Etc/UTC"
     });
     assertNotNull(gd);
     
@@ -640,7 +644,8 @@ function testGetDayOfWeek1() {
     var gd = new ilib.Date.GregDate({
     	year: 2011, 
     	month: 9, 
-    	day: 30
+    	day: 30,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(gd);
@@ -655,7 +660,8 @@ function testGetDayOfWeekWithTime() {
     	day: 30, 
     	hour: 8, 
     	minute: 39, 
-    	second: 34
+    	second: 34,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(gd);
@@ -667,7 +673,8 @@ function testGetDayOfWeek2() {
     var gd = new ilib.Date.GregDate({
     	year: 1648, 
     	month: 6, 
-    	day: 10
+    	day: 10,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(gd);
@@ -679,7 +686,8 @@ function testGetDayOfWeek3() {
     var gd = new ilib.Date.GregDate({
     	year: 1190, 
     	month: 3, 
-    	day: 23
+    	day: 23,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(gd);
@@ -691,12 +699,41 @@ function testGetDayOfWeek4() {
     var gd = new ilib.Date.GregDate({
     	year: -586, 
     	month: 7, 
-    	day: 24
+    	day: 24,
+    	timezone: "Etc/UTC"
     });
     
     assertNotNull(gd);
     
     assertEquals(0, gd.getDayOfWeek());
+}
+
+function testGetDayOfWeekWithTimezoneWestern() {
+    var gd = new ilib.Date.GregDate({
+    	year: 2014, 
+    	month: 4,
+    	day: 25,
+    	hour: 23,
+    	minute: 59,
+    	timezone: "America/Los_Angeles"
+    });
+    
+    assertNotNull(gd);
+    
+    assertEquals(5, gd.getDayOfWeek());
+}
+
+function testGetDayOfWeekWithTimezoneEastern() {
+    var gd = new ilib.Date.GregDate({
+    	year: 2014, 
+    	month: 4,
+    	day: 25,
+    	timezone: "Asia/Seoul"
+    });
+    
+    assertNotNull(gd);
+    
+    assertEquals(5, gd.getDayOfWeek());
 }
 
 function testGregDateTestGetTimeZero() {
@@ -785,7 +822,7 @@ function testGregDateTestSetTime1() {
 function testGregDateTestSetTimeZero() {
     var gd = new ilib.Date.GregDate({
     	year: -1, 
-    	month: 1, 
+    	month: 1,
     	day: 1,
 	   	hour: 1,
 	   	minute: 1,
@@ -920,6 +957,82 @@ function testGregDateOnOrBeforeSunWithTime() {
     // Sunday on or before is 5 days before 
     // Should give an rd result that also contains the fractional time 
     assertEquals(rd-5, gd.onOrBefore(0).getRataDie());
+}
+
+function testGregDateOnOrBeforeSunWithTimeZoneWestern1() {
+    var gd = new ilib.Date.GregDate({
+    	year: 2014, 
+    	month: 4,
+    	day: 26,
+	   	hour: 23,
+	   	minute: 59,
+	   	timezone: "America/Los_Angeles"
+    }); // this is Saturday in Los Angeles, but Sunday in UTC 
+    assertNotNull(gd);
+    
+    assertEquals(6, gd.getDayOfWeek()); // Saturday
+    var rd = gd.getRataDie(); // contains fractional time for the 8:00am part
+    
+    // Sunday on or before is 6 days before 
+    // Should give an rd result that also contains the fractional time 
+    assertEquals(rd-6, gd.onOrBefore(0).getRataDie());
+}
+
+function testGregDateOnOrBeforeSunWithTimeZoneWestern2() {
+    var gd = new ilib.Date.GregDate({
+    	year: 2014, 
+    	month: 4, 
+    	day: 27,
+	   	hour: 0,
+	   	minute: 0,
+	   	timezone: "America/Los_Angeles"
+    }); // this is Sunday in Los Angeles and in UTC 
+    assertNotNull(gd);
+    
+    assertEquals(0, gd.getDayOfWeek()); // Friday
+    var rd = gd.getRataDie(); // contains fractional time for the 8:00am part
+    
+    // Sunday on or before is 5 days before 
+    // Should give an rd result that also contains the fractional time 
+    assertEquals(rd, gd.onOrBefore(0).getRataDie());
+}
+
+function testGregDateOnOrBeforeSunWithTimeZoneEastern1() {
+    var gd = new ilib.Date.GregDate({
+    	year: 2014, 
+    	month: 4,
+    	day: 27,
+	   	hour: 0,
+	   	minute: 0,
+	   	timezone: "Asia/Seoul"
+    }); // this is Saturday in UTC, but Sunday in Seoul
+    assertNotNull(gd);
+    
+    assertEquals(0, gd.getDayOfWeek()); // Sunday
+    var rd = gd.getRataDie(); // contains fractional time for the 8:00am part
+    
+    // Sunday on or before is today 
+    // Should give an rd result that also contains the fractional time 
+    assertEquals(rd, gd.onOrBefore(0).getRataDie());
+}
+
+function testGregDateOnOrBeforeSunWithTimeZoneEastern2() {
+    var gd = new ilib.Date.GregDate({
+    	year: 2014, 
+    	month: 4, 
+    	day: 26,
+	   	hour: 23,
+	   	minute: 59,
+	   	timezone: "Asia/Seoul"
+    }); // this is Saturday in Seoul and in UTC 
+    assertNotNull(gd);
+    
+    assertEquals(6, gd.getDayOfWeek()); // Saturday
+    var rd = gd.getRataDie(); // contains fractional time for the 8:00am part
+    
+    // Sunday on or before is 6 days before 
+    // Should give an rd result that also contains the fractional time 
+    assertEquals(rd-6, gd.onOrBefore(0).getRataDie());
 }
 
 function testGregDateOnOrAfterSun() {
@@ -1756,7 +1869,10 @@ function testGregDateGetEraCEYear0() {
 }
 
 function testGregDateJan1Midnight() {
-    var gd = new ilib.Date.GregDate({julianday: 2455197.5});
+    var gd = new ilib.Date.GregDate({
+    	julianday: 2455197.5,
+    	timezone: "Etc/UTC"
+    });
     assertNotNull(gd);
     
     assertEquals(2010, gd.year);

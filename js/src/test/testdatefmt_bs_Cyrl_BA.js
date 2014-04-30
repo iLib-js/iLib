@@ -234,6 +234,7 @@ function testDateFmtTemplateCalendar_bs_Cyrl_BA() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
+    	locale: "bs-Cyrl-BA",
 		year: 2011,
 		month: 9,
 		day: 29,

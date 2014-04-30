@@ -227,6 +227,7 @@ function testDateFmtTemplateCalendar_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new ilib.Date.JulDate({
+    	locale: "ku-Arab-IQ",
 		year: 2011,
 		month: 9,
 		day: 29,

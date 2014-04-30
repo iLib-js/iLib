@@ -25,7 +25,7 @@ function testIslamicDateConstructor() {
 
 /* julian date id rd 355 + epoch */
 function testIslamicDateConstructorFromJD() {
-    var id = new ilib.Date.IslamicDate({julianday: 1948793.5});
+    var id = new ilib.Date.IslamicDate({julianday: 1948793.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(id));
     assertEquals(354, id.getRataDie());
@@ -39,7 +39,7 @@ function testIslamicDateConstructorFromJD() {
 }
 
 function testIslamicDateAfterLeapYear() {
-    var id = new ilib.Date.IslamicDate({julianday: 1949148.9});  // Muh 1, 0003 AH, 9:36am
+    var id = new ilib.Date.IslamicDate({julianday: 1949148.9, timezone: "Etc/UTC"});  // Muh 1, 0003 AH, 9:36am
     
     assertEquals('object', typeof(id));
     assertEquals(709.4, id.getRataDie());
@@ -93,7 +93,7 @@ function testIslamicDateConvert() {
     var gd;
     
     for (var i = 0; i < testDates.length; i++) {
-        id = new ilib.Date.IslamicDate({julianday: testDates[i][0]});
+        id = new ilib.Date.IslamicDate({julianday: testDates[i][0], timezone: "Etc/UTC"});
     
         info("testing jd=" + testDates[i][0]);
         

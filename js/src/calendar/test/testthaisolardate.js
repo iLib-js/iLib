@@ -700,8 +700,28 @@ function testThaiSolarDateSetMilliseconds() {
 	assertEquals(123, td.getMilliseconds());
 }
 
+function testThaiSolarDateGetDayOfWeekWithTZ() {
+	// often you get strings from a UI element instead of numbers... 
+	// this constructor should work with numbers or strings
+	var td = new ilib.Date.ThaiSolarDate({
+		year: "2557", 
+		month: "4",
+		day: "24", 
+		hour: "20", 
+		minute: "52", 
+		second: "12", 
+		millisecond: "123",
+		timezone: "America/Los_Angeles"
+	});
+	
+	assertNotNull(td);
+	
+	assertEquals(4, td.getDayOfWeek());
+}
+
 function testGetDayOfWeekSimple1() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 1, 
     	month: 1, 
     	day: 1
@@ -714,6 +734,7 @@ function testGetDayOfWeekSimple1() {
 
 function testGetDayOfWeekGregorianDay1() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 544,
     	month: 1, 
     	day: 1
@@ -726,6 +747,7 @@ function testGetDayOfWeekGregorianDay1() {
 
 function testGetDayOfWeekGregorianDay1ByJD() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	julianday: 1721424.5
     });
     
@@ -736,6 +758,7 @@ function testGetDayOfWeekGregorianDay1ByJD() {
 
 function testGetDayOfWeekSimple2() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 0,
     	month: 12, 
     	day: 31
@@ -748,6 +771,7 @@ function testGetDayOfWeekSimple2() {
 
 function testGetDayOfWeekSimple3() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 1,
     	month: 1,
     	day: 2
@@ -760,6 +784,7 @@ function testGetDayOfWeekSimple3() {
 
 function testGetDayOfWeekSimple4() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 1,
     	month: 1,
     	day: 3
@@ -772,6 +797,7 @@ function testGetDayOfWeekSimple4() {
 
 function testGetDayOfWeekSimple5() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 1,
     	month: 1,
     	day: 4
@@ -784,6 +810,7 @@ function testGetDayOfWeekSimple5() {
 
 function testGetDayOfWeek1() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 9, 
     	day: 30
@@ -796,6 +823,7 @@ function testGetDayOfWeek1() {
 
 function testGetDayOfWeekWithTime() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 9, 
     	day: 30, 
@@ -811,6 +839,7 @@ function testGetDayOfWeekWithTime() {
 
 function testGetDayOfWeek2() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2191, 
     	month: 6, 
     	day: 10
@@ -823,6 +852,7 @@ function testGetDayOfWeek2() {
 
 function testGetDayOfWeek3() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 1733, 
     	month: 3, 
     	day: 23
@@ -835,6 +865,7 @@ function testGetDayOfWeek3() {
 
 function testGetDayOfWeek4() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: -43, 
     	month: 7, 
     	day: 24
@@ -942,6 +973,7 @@ function testThaiSolarDateTestSetTimeZero() {
 // test some of the helper functions to make sure they are producing the right thing
 function testThaiSolarDateOnOrBeforeSun() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -957,6 +989,7 @@ function testThaiSolarDateOnOrBeforeSun() {
 
 function testThaiSolarDateOnOrBeforeMon() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -971,6 +1004,7 @@ function testThaiSolarDateOnOrBeforeMon() {
 
 function testThaiSolarDateOnOrBeforeTue() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -985,6 +1019,7 @@ function testThaiSolarDateOnOrBeforeTue() {
 
 function testThaiSolarDateOnOrBeforeWed() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -999,6 +1034,7 @@ function testThaiSolarDateOnOrBeforeWed() {
 
 function testThaiSolarDateOnOrBeforeThu() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1013,6 +1049,7 @@ function testThaiSolarDateOnOrBeforeThu() {
 
 function testThaiSolarDateOnOrBeforeFri() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1027,6 +1064,7 @@ function testThaiSolarDateOnOrBeforeFri() {
 
 function testThaiSolarDateOnOrBeforeSat() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1041,6 +1079,7 @@ function testThaiSolarDateOnOrBeforeSat() {
 
 function testThaiSolarDateOnOrBeforeSunWithTime() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1,
@@ -1058,6 +1097,7 @@ function testThaiSolarDateOnOrBeforeSunWithTime() {
 
 function testThaiSolarDateOnOrAfterSun() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1073,6 +1113,7 @@ function testThaiSolarDateOnOrAfterSun() {
 
 function testThaiSolarDateOnOrAfterSunDate() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1090,6 +1131,7 @@ function testThaiSolarDateOnOrAfterSunDate() {
 
 function testThaiSolarDateOnOrAfterMon() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1104,6 +1146,7 @@ function testThaiSolarDateOnOrAfterMon() {
 
 function testThaiSolarDateOnOrAfterMonDate() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553,
     	month: 1,
     	day: 1
@@ -1120,6 +1163,7 @@ function testThaiSolarDateOnOrAfterMonDate() {
 
 function testThaiSolarDateOnOrAfterTue() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1134,6 +1178,7 @@ function testThaiSolarDateOnOrAfterTue() {
 
 function testThaiSolarDateOnOrAfterWed() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1148,6 +1193,7 @@ function testThaiSolarDateOnOrAfterWed() {
 
 function testThaiSolarDateOnOrAfterThu() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1162,6 +1208,7 @@ function testThaiSolarDateOnOrAfterThu() {
 
 function testThaiSolarDateOnOrAfterThuDate() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1178,6 +1225,7 @@ function testThaiSolarDateOnOrAfterThuDate() {
 
 function testThaiSolarDateOnOrAfterFri() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1192,6 +1240,7 @@ function testThaiSolarDateOnOrAfterFri() {
 
 function testThaiSolarDateOnOrAfterFriDate() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1208,6 +1257,7 @@ function testThaiSolarDateOnOrAfterFriDate() {
 
 function testThaiSolarDateOnOrAfterSat() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1222,6 +1272,7 @@ function testThaiSolarDateOnOrAfterSat() {
 
 function testThaiSolarDateBeforeSun() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1237,6 +1288,7 @@ function testThaiSolarDateBeforeSun() {
 
 function testThaiSolarDateBeforeSunDate() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1254,6 +1306,7 @@ function testThaiSolarDateBeforeSunDate() {
 
 function testThaiSolarDateBeforeMon() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1268,6 +1321,7 @@ function testThaiSolarDateBeforeMon() {
 
 function testThaiSolarDateBeforeTue() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1282,6 +1336,7 @@ function testThaiSolarDateBeforeTue() {
 
 function testThaiSolarDateBeforeWed() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1296,6 +1351,7 @@ function testThaiSolarDateBeforeWed() {
 
 function testThaiSolarDateBeforeThu() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1310,6 +1366,7 @@ function testThaiSolarDateBeforeThu() {
 
 function testThaiSolarDateBeforeThuDate() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1327,6 +1384,7 @@ function testThaiSolarDateBeforeThuDate() {
 
 function testThaiSolarDateBeforeFri() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1341,6 +1399,7 @@ function testThaiSolarDateBeforeFri() {
 
 function testThaiSolarDateBeforeFriDate() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1358,6 +1417,7 @@ function testThaiSolarDateBeforeFriDate() {
 
 function testThaiSolarDateBeforeSat() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1372,6 +1432,7 @@ function testThaiSolarDateBeforeSat() {
 
 function testThaiSolarDateAfterSun() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1387,6 +1448,7 @@ function testThaiSolarDateAfterSun() {
 
 function testThaiSolarDateAfterSunDate() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1404,6 +1466,7 @@ function testThaiSolarDateAfterSunDate() {
 
 function testThaiSolarDateAfterMon() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1418,10 +1481,11 @@ function testThaiSolarDateAfterMon() {
 
 function testThaiSolarDateAfterTue() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
-    });
+     });
     assertNotNull(td);
     
     assertEquals(5, td.getDayOfWeek()); // Friday
@@ -1432,6 +1496,7 @@ function testThaiSolarDateAfterTue() {
 
 function testThaiSolarDateAfterWed() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1446,6 +1511,7 @@ function testThaiSolarDateAfterWed() {
 
 function testThaiSolarDateAfterThu() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1460,6 +1526,7 @@ function testThaiSolarDateAfterThu() {
 
 function testThaiSolarDateAfterFri() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1474,6 +1541,7 @@ function testThaiSolarDateAfterFri() {
 
 function testThaiSolarDateAfterFriDate() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1491,6 +1559,7 @@ function testThaiSolarDateAfterFriDate() {
 
 function testThaiSolarDateAfterSat() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1505,6 +1574,7 @@ function testThaiSolarDateAfterSat() {
 
 function testThaiSolarDateAfterSatDate() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 1
@@ -1522,6 +1592,7 @@ function testThaiSolarDateAfterSatDate() {
 
 function testThaiSolarDateTestGetWeekOfYearThisYear() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 7
@@ -1533,6 +1604,7 @@ function testThaiSolarDateTestGetWeekOfYearThisYear() {
 
 function testThaiSolarDateTestGetWeekOfYearThisYear2() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 1, 
     	day: 25
@@ -1544,6 +1616,7 @@ function testThaiSolarDateTestGetWeekOfYearThisYear2() {
 
 function testThaiSolarDateTestGetWeekOfYearThisYear3() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 10, 
     	day: 19
@@ -1555,6 +1628,7 @@ function testThaiSolarDateTestGetWeekOfYearThisYear3() {
 
 function testThaiSolarDateTestGetWeekOfYearThisYearWithTime() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: -1468, 
     	month: 10, 
     	day: 19,
@@ -1570,6 +1644,7 @@ function testThaiSolarDateTestGetWeekOfYearThisYearWithTime() {
 
 function testThaiSolarDateTestGetWeekOfYearPreviousYear() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 1, 
     	day: 1
@@ -1581,6 +1656,7 @@ function testThaiSolarDateTestGetWeekOfYearPreviousYear() {
 
 function testThaiSolarDateTestGetWeekOfYearLastWeekLeap() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2552, 
     	month: 12, 
     	day: 31
@@ -1592,6 +1668,7 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekLeap() {
 
 function testThaiSolarDateTestGetWeekOfYearLastWeekRegular1() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2553, 
     	month: 12, 
     	day: 31
@@ -1603,6 +1680,7 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekRegular1() {
 
 function testThaiSolarDateTestGetWeekOfYearLastWeekRegular2() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2551, 
     	month: 12, 
     	day: 31
@@ -1614,6 +1692,7 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekRegular2() {
 
 function testThaiSolarDateTestGetWeekOfYearLastWeekRegular3() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2550, 
     	month: 12, 
     	day: 31
@@ -1625,6 +1704,7 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekRegular3() {
 
 function testThaiSolarDateTestGetWeekOfYearLastWeekRegular4() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2549, 
     	month: 12, 
     	day: 31
@@ -1636,6 +1716,7 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekRegular4() {
 
 function testThaiSolarDateTestGetWeekOfYearLastWeekRegular5() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2548, 
     	month: 12, 
     	day: 31
@@ -1647,6 +1728,7 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekRegular5() {
 
 function testThaiSolarDateTestGetWeekOfYearLastWeekRegular6() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 12, 
     	day: 31
@@ -1658,6 +1740,7 @@ function testThaiSolarDateTestGetWeekOfYearLastWeekRegular6() {
 
 function testThaiSolarDateGetDayOfYearFirstDay() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 1, 
     	day: 1
@@ -1669,6 +1752,7 @@ function testThaiSolarDateGetDayOfYearFirstDay() {
 
 function testThaiSolarDateGetDayOfYearPaddysDay() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 3, 
     	day: 17
@@ -1680,6 +1764,7 @@ function testThaiSolarDateGetDayOfYearPaddysDay() {
 
 function testThaiSolarDateGetDayOfYearPaddysDayLeapYear() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2551, 
     	month: 3, 
     	day: 17
@@ -1691,6 +1776,7 @@ function testThaiSolarDateGetDayOfYearPaddysDayLeapYear() {
 
 function testThaiSolarDateGetDayOfYearLastDay() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 12, 
     	day: 31
@@ -1702,6 +1788,7 @@ function testThaiSolarDateGetDayOfYearLastDay() {
 
 function testThaiSolarDateGetDayOfYearLastDayLeapYear() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2551, 
     	month: 12, 
     	day: 31
@@ -1713,6 +1800,7 @@ function testThaiSolarDateGetDayOfYearLastDayLeapYear() {
 
 function testThaiSolarDateGetWeekOfMonth0() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 10, 
     	day: 1
@@ -1724,6 +1812,7 @@ function testThaiSolarDateGetWeekOfMonth0() {
 
 function testThaiSolarDateGetWeekOfMonth1() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 10, 
     	day: 2
@@ -1735,6 +1824,7 @@ function testThaiSolarDateGetWeekOfMonth1() {
 
 function testThaiSolarDateGetWeekOfMonth2() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 10, 
     	day: 11
@@ -1746,6 +1836,7 @@ function testThaiSolarDateGetWeekOfMonth2() {
 
 function testThaiSolarDateGetWeekOfMonth3() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 10, 
     	day: 20
@@ -1757,6 +1848,7 @@ function testThaiSolarDateGetWeekOfMonth3() {
 
 function testThaiSolarDateGetWeekOfMonth4() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 10, 
     	day: 29
@@ -1768,6 +1860,7 @@ function testThaiSolarDateGetWeekOfMonth4() {
 
 function testThaiSolarDateGetWeekOfMonth5() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 10, 
     	day: 30
@@ -1779,6 +1872,7 @@ function testThaiSolarDateGetWeekOfMonth5() {
 
 function testThaiSolarDateGetWeekOfMonth6() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 9, 
     	day: 1
@@ -1790,6 +1884,7 @@ function testThaiSolarDateGetWeekOfMonth6() {
 
 function testThaiSolarDateGetWeekOfMonth7() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 8, 
     	day: 1
@@ -1801,6 +1896,7 @@ function testThaiSolarDateGetWeekOfMonth7() {
 
 function testThaiSolarDateGetWeekOfMonth8() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 7, 
     	day: 1
@@ -1812,6 +1908,7 @@ function testThaiSolarDateGetWeekOfMonth8() {
 
 function testThaiSolarDateGetWeekOfMonth9() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 6, 
     	day: 1
@@ -1823,6 +1920,7 @@ function testThaiSolarDateGetWeekOfMonth9() {
 
 function testThaiSolarDateGetWeekOfMonthUS() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 5, 
     	day: 1
@@ -1834,6 +1932,7 @@ function testThaiSolarDateGetWeekOfMonthUS() {
 
 function testThaiSolarDateGetWeekOfMonthDE() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 5, 
     	day: 1
@@ -1847,6 +1946,7 @@ function testThaiSolarDateGetWeekOfMonthDE() {
 
 function testThaiSolarDateGetEraCE() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 2554, 
     	month: 5, 
     	day: 1
@@ -1858,6 +1958,7 @@ function testThaiSolarDateGetEraCE() {
 
 function testThaiSolarDateGetEraBCE() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: -46, 
     	month: 5, 
     	day: 1
@@ -1869,6 +1970,7 @@ function testThaiSolarDateGetEraBCE() {
 
 function testThaiSolarDateGetEraCEYear1() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 1, 
     	month: 1, 
     	day: 1
@@ -1880,6 +1982,7 @@ function testThaiSolarDateGetEraCEYear1() {
 
 function testThaiSolarDateGetEraCEYear0() {
     var td = new ilib.Date.ThaiSolarDate({
+    	timezone: "Etc/UTC",
     	year: 0, 
     	month: 12, 
     	day: 31

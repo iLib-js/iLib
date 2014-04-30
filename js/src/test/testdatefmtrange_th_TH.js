@@ -1,5 +1,5 @@
 /*
- * testthtefmtrange_th_TH.js - test the the range formatter object in Thai
+ * testdatefmtrange_th_TH.js - test the the range formatter object in Thai
  * 
  * Copyright © 2012-2013, JEDLSoft
  *
@@ -87,7 +87,7 @@ function testDateRngFmtTHRangeInDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01 Dec 2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30, 01 ธ.ค. 2011", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -111,7 +111,7 @@ function testDateRngFmtTHRangeInDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01 December 2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30, 01 ธันวาคม 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtTHRangeNextDayShort() {
@@ -184,7 +184,7 @@ function testDateRngFmtTHRangeNextDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01 Dec 2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30, 01 ธ.ค. 2011", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -208,7 +208,7 @@ function testDateRngFmtTHRangeNextDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01 December 2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30, 01 ธันวาคม 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtTHRangeMultiDayShort() {
@@ -281,7 +281,7 @@ function testDateRngFmtTHRangeMultiDayLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01 Dec 2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30, 01 ธ.ค. 2011", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -305,7 +305,7 @@ function testDateRngFmtTHRangeMultiDayFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01 December 2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30, 01 ธันวาคม 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtTHRangeNextMonthShort() {
@@ -378,7 +378,7 @@ function testDateRngFmtTHRangeNextMonthLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01 Nov - 01 Dec 2011", fmt.format(start, end));
+    assertEquals("01 พ.ย. - 01 ธ.ค. 2011", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextMonthFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -402,7 +402,7 @@ function testDateRngFmtTHRangeNextMonthFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01 November - 01 December 2011", fmt.format(start, end));
+    assertEquals("01 พฤศจิกายน - 01 ธันวาคม 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtTHRangeNextYearShort() {
@@ -475,7 +475,7 @@ function testDateRngFmtTHRangeNextYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01 Nov 2011 - 01 Jan 2012", fmt.format(start, end));
+    assertEquals("01 พ.ย. 2011 - 01 ม.ค. 2012", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -499,7 +499,7 @@ function testDateRngFmtTHRangeNextYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01 November 2011 - 01 January 2012", fmt.format(start, end));
+    assertEquals("01 พฤศจิกายน 2011 - 01 มกราคม 2012", fmt.format(start, end));
 }
 
 function testDateRngFmtTHRangeMultiYearShort() {
@@ -572,7 +572,7 @@ function testDateRngFmtTHRangeMultiYearLong() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("Nov 2011 - Jan 2014", fmt.format(start, end));
+    assertEquals("พ.ย. 2011 - ม.ค. 2014", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeMultiYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -596,7 +596,7 @@ function testDateRngFmtTHRangeMultiYearFull() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("November 2011 - January 2014", fmt.format(start, end));
+    assertEquals("พฤศจิกายน 2011 - มกราคม 2014", fmt.format(start, end));
 }
 function testDateRngFmtTHManyYearsFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});

@@ -17,7 +17,13 @@
  * limitations under the License.
  */
 
-/* !depends date.js calendar/hebrew.js util/utils.js util/math.js localeinfo.js julianday.js */
+/* !depends 
+date.js 
+calendar/hebrew.js
+calendar/ratadie.js
+util/utils.js
+julianday.js 
+*/
 
 /**
  * @class
@@ -71,33 +77,14 @@
  * @param {Object=} params parameters that govern the settings and behaviour of this Hebrew RD date
  */
 ilib.Date.HebrewRataDie = function(params) {
-	this.cal = new ilib.Cal.Hebrew();
-
-	if (params) {
-		if (typeof(params.date) !== 'undefined') {
-			// accept JS Date classes or strings
-			var date = params.date;
-			if (!(date instanceof Date)) {
-				date = new Date(date);
-			}
-			this._setTime(date.getTime());
-		} else if (typeof(params.unixtime) != 'undefined') {
-			this._setTime(parseInt(params.unixtime, 10));
-		} else if (typeof(params.julianday) != 'undefined') {
-			this._setJulianDay(parseFloat(params.julianday));
-		} else if (params.year || params.month || params.day || params.hour ||
-				params.minute || params.second || params.millisecond || params.parts ) {
-			this._setDateComponents(params);
-		} else if (typeof(params.rd) != 'undefined') {
-			this.rd = (typeof(params.rd) === 'object' && params.rd instanceof ilib.DateFmt.HebrewRataDie) ? params.rd.rd : params.rd;
-		}
-	}
-	
-	if (typeof(this.rd) === 'undefined') {
-		var now = new Date();
-		this._setTime(now.getTime());
-	}
+	this.cal = params && params.cal || new ilib.Cal.Hebrew();
+	this.rd = undefined;
+	ilib.Date.RataDie.call(this, params);
 };
+
+ilib.Date.HebrewRataDie.prototype = new ilib.Date.RataDie();
+ilib.Date.HebrewRataDie.prototype.parent = ilib.Date.RataDie;
+ilib.Date.HebrewRataDie.prototype.constructor = ilib.Date.HebrewRataDie;
 
 /**
  * @private
@@ -106,218 +93,95 @@ ilib.Date.HebrewRataDie = function(params) {
  * The difference between a zero Julian day and the first day of the Hebrew 
  * calendar: sunset on Monday, Tishri 1, 1 = September 7, 3760 BC Gregorian = JD 347997.25
  */
-ilib.Date.HebrewRataDie.epoch = 347997.25;
+ilib.Date.HebrewRataDie.prototype.epoch = 347997.25;
 
-ilib.Date.HebrewRataDie.prototype = {
-	/**
-	 * @private
-	 * Set the RD of this instance according to the given unix time. Unix time is
-	 * the number of milliseconds since midnight on Jan 1, 1970.
-	 * 
-	 * @param {number} millis the unix time to set this date to in milliseconds 
-	 */
-	_setTime: function(millis) {
-		this.rd = 2092590.25 + millis / 86400000;
-	},
+/**
+ * @private
+ * Calculate the Rata Die (fixed day) number of the given date from the
+ * date components.
+ * 
+ * @param {Object} date the date components to calculate the RD from
+ */
+ilib.Date.HebrewRataDie.prototype._setDateComponents = function(date) {
+	var elapsed = ilib.Cal.Hebrew.elapsedDays(date.year);
+	var days = elapsed +
+		ilib.Cal.Hebrew.newYearsCorrection(date.year, elapsed) +
+		date.day - 1;
+	var sum = 0, table;
 	
-	/**
-	 * @private
-	 * Set the date of this instance using a Julian Day.
-	 * @param {number} date the Julian Day to use to set this date
-	 */
-	_setJulianDay: function (date) {
-		var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date;
-		
-		this.rd = ilib._roundFnc.halfdown((jd.getDate() - ilib.Date.HebrewRataDie.epoch) * 100000000) / 100000000;
-	},
+	//console.log("getRataDie: converting " +  JSON.stringify(date));
+	//console.log("getRataDie: days is " +  days);
+	//console.log("getRataDie: new years correction is " +  ilib.Cal.Hebrew.newYearsCorrection(date.year, elapsed));
 	
+	table = this.cal.isLeapYear(date.year) ? 
+				ilib.Date.HebrewDate.cumMonthLengthsLeap :
+				ilib.Date.HebrewDate.cumMonthLengths;
+	sum = table[date.month-1];
 	
-	/**
-	 * @private
-	 * Calculate the Rata Die (fixed day) number of the given date from the
-	 * date components.
-	 * 
-	 * @param {Object} date the date components to calculate the RD from
-	 */
-	_setDateComponents: function(date) {
-		var elapsed = ilib.Cal.Hebrew.elapsedDays(date.year);
-		var days = elapsed +
-			ilib.Cal.Hebrew.newYearsCorrection(date.year, elapsed) +
-			date.day - 1;
-		var sum = 0, table;
+	// gets cumulative without correction, so now add in the correction
+	if ((date.month < 7 || date.month > 8) && ilib.Cal.Hebrew.longHeshvan(date.year)) {
+		sum++;
+	}
+	if ((date.month < 7 || date.month > 9) && ilib.Cal.Hebrew.longKislev(date.year)) {
+		sum++;
+	}
+	// console.log("getRataDie: cum days is now " +  sum);
+	
+	days += sum;
+	
+	// the date starts at sunset, which we take as 18:00, so the hours from
+	// midnight to 18:00 are on the current Gregorian day, and the hours from
+	// 18:00 to midnight are on the previous Gregorian day. So to calculate the 
+	// number of hours into the current day that this time represents, we have
+	// to count from 18:00 to midnight first, and add in 6 hours if the time is
+	// less than 18:00
+	var minute, second, millisecond;
+	
+	if (typeof(date.parts) !== 'undefined') {
+		// The parts (halaqim) of the hour. This can be a number from 0 to 1079.
+		var parts = parseInt(date.parts, 10);
+		var seconds = parseInt(parts, 10) * 3.333333333333;
+		minute = Math.floor(seconds / 60);
+		seconds -= minute * 60;
+		second = Math.floor(seconds);
+		millisecond = (seconds - second);	
+	} else {
+		minute = parseInt(date.minute, 10) || 0;
+		second = parseInt(date.second, 10) || 0;
+		millisecond = parseInt(date.millisecond, 10) || 0;
+	}
 		
-		//console.log("getRataDie: converting " +  JSON.stringify(date));
-		//console.log("getRataDie: days is " +  days);
-		//console.log("getRataDie: new years correction is " +  ilib.Cal.Hebrew.newYearsCorrection(date.year, elapsed));
-		
-		table = this.cal.isLeapYear(date.year) ? 
-					ilib.Date.HebrewDate.cumMonthLengthsLeap :
-					ilib.Date.HebrewDate.cumMonthLengths;
-		sum = table[date.month-1];
-		
-		// gets cumulative without correction, so now add in the correction
-		if ((date.month < 7 || date.month > 8) && ilib.Cal.Hebrew.longHeshvan(date.year)) {
-			sum++;
-		}
-		if ((date.month < 7 || date.month > 9) && ilib.Cal.Hebrew.longKislev(date.year)) {
-			sum++;
-		}
-		// console.log("getRataDie: cum days is now " +  sum);
-		
-		days += sum;
-		
-		// the date starts at sunset, which we take as 18:00, so the hours from
-		// midnight to 18:00 are on the current Gregorian day, and the hours from
-		// 18:00 to midnight are on the previous Gregorian day. So to calculate the 
-		// number of hours into the current day that this time represents, we have
-		// to count from 18:00 to midnight first, and add in 6 hours if the time is
-		// less than 18:00
-		var minute, second, millisecond;
-		
-		if (typeof(date.parts) !== 'undefined') {
-			// The parts (halaqim) of the hour. This can be a number from 0 to 1079.
-			var parts = parseInt(date.parts, 10);
-			var seconds = parseInt(parts, 10) * 3.333333333333;
-			minute = Math.floor(seconds / 60);
-			seconds -= minute * 60;
-			second = Math.floor(seconds);
-			millisecond = (seconds - second);	
-		} else {
-			minute = parseInt(date.minute, 10) || 0;
-			second = parseInt(date.second, 10) || 0;
-			millisecond = parseInt(date.millisecond, 10) || 0;
-		}
-			
-		var time;
-		if (date.hour >= 18) {
-			time = ((date.hour - 18 || 0) * 3600000 +
+	var time;
+	if (date.hour >= 18) {
+		time = ((date.hour - 18 || 0) * 3600000 +
+			(minute || 0) * 60000 +
+			(second || 0) * 1000 +
+			(millisecond || 0)) / 
+			86400000;
+	} else {
+		time = 0.25 +	// 6 hours from 18:00 to midnight on the previous gregorian day
+				((date.hour || 0) * 3600000 +
 				(minute || 0) * 60000 +
 				(second || 0) * 1000 +
 				(millisecond || 0)) / 
 				86400000;
-		} else {
-			time = 0.25 +	// 6 hours from 18:00 to midnight on the previous gregorian day
-					((date.hour || 0) * 3600000 +
-					(minute || 0) * 60000 +
-					(second || 0) * 1000 +
-					(millisecond || 0)) / 
-					86400000;
-		}
-		
-		//console.log("getRataDie: rd is " +  (days + time));
-		this.rd = days + time;
-	},
-	
-	/**
-	 * Return the day of the week of this date. The day of the week is encoded
-	 * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
-	 * 
-	 * @return {number} the day of the week
-	 */
-	getDayOfWeek: function() {
-		var rd = Math.floor(this.rd);
-		return ilib.mod(rd+1, 7);
-	},
-	
-	/**
-	 * @private
-	 * Return the rd number of the particular day of the week on or before the 
-	 * given rd. eg. The Sunday on or before the given rd.
-	 * @param {number} rd the rata die date of the reference date
-	 * @param {number} dayOfWeek the day of the week that is being sought relative 
-	 * to the current date
-	 * @return {number} the rd of the day of the week
-	 */
-	_onOrBeforeRd: function(rd, dayOfWeek) {
-		return rd - ilib.mod(Math.floor(rd) - dayOfWeek + 1, 7);
-	},
-	
-	/**
-	 * Return the rd number of the particular day of the week on or before the current rd.
-	 * eg. The Sunday on or before the current rd.
-	 * @param {number} dayOfWeek the day of the week that is being sought relative 
-	 * to the current date
-	 * @return {number} the rd of the day of the week
-	 */
-	onOrBefore: function(dayOfWeek) {
-		return this._onOrBeforeRd(this.rd, dayOfWeek);
-	},
-	
-	/**
-	 * Return the rd number of the particular day of the week on or before the current rd.
-	 * eg. The Sunday on or before the current rd.
-	 * @param {number} dayOfWeek the day of the week that is being sought relative 
-	 * to the reference date
-	 * @return {number} the day of the week
-	 */
-	onOrAfter: function(dayOfWeek) {
-		return this._onOrBeforeRd(this.rd+6, dayOfWeek);
-	},
-	
-	/**
-	 * Return the rd number of the particular day of the week before the current rd.
-	 * eg. The Sunday before the current rd.
-	 * @param {number} dayOfWeek the day of the week that is being sought relative 
-	 * to the reference date
-	 * @return {number} the day of the week
-	 */
-	before: function(dayOfWeek) {
-		return this._onOrBeforeRd(this.rd-1, dayOfWeek);
-	},
-	
-	/**
-	 * Return the rd number of the particular day of the week after the current rd.
-	 * eg. The Sunday after the current rd.
-	 * @param {number} dayOfWeek the day of the week that is being sought relative 
-	 * to the reference date
-	 * @return {number} the day of the week
-	 */
-	after: function(dayOfWeek) {
-		return this._onOrBeforeRd(this.rd+7, dayOfWeek);
-	},
-	
-	/**
-	 * Return the unix time equivalent to this Hebrew date instance. Unix time is
-	 * the number of milliseconds since midnight on Jan 1, 1970. This method only
-	 * returns a valid number for dates between midnight, Jan 1, 1970 and  
-	 * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
-	 * encodes a date outside of that range, this method will return -1. This method
-	 * returns the time in the local time zone, not in UTC.
-	 * 
-	 * @return {number} a number giving the unix time, or -1 if the date is outside the
-	 * valid unix time range
-	 */
-	getTime: function() {
-		// earlier than Jan 1, 1970
-		// or later than Jan 19, 2038 at 3:14:07am
-		if (this.rd < 2092590.25 || this.rd > 2117445.384803241) { 
-			return -1;
-		}
-	
-		// avoid the rounding errors in the floating point math by only using
-		// the whole days from the rd, and then calculating the milliseconds directly
-		return Math.round((this.rd - 2092590.25) * 86400000);
-	
-	},
-	
-	/**
-	 * Return the Julian Day equivalent to this calendar date as a number.
-	 * This returns the julian day in the local time zone.
-	 * 
-	 * @return {number} the julian date equivalent of this date
-	 */
-	getJulianDay: function() {
-		return this.rd + ilib.Date.HebrewRataDie.epoch;
-	},
-	
-	/**
-	 * Return the Rata Die (fixed day) number of this RD date.
-	 * 
-	 * @return {number} the rd date as a number
-	 */
-	getRataDie: function() {
-		return this.rd;
 	}
+	
+	//console.log("getRataDie: rd is " +  (days + time));
+	this.rd = days + time;
+};
+	
+/**
+ * @private
+ * Return the rd number of the particular day of the week on or before the 
+ * given rd. eg. The Sunday on or before the given rd.
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the current date
+ * @return {number} the rd of the day of the week
+ */
+ilib.Date.HebrewRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
+	return rd - ilib.mod(Math.floor(rd) - dayOfWeek + 1, 7);
 };
 
 /**
@@ -462,10 +326,10 @@ ilib.Date.HebrewDate = function(params) {
 			// getOffsetMillis requires that this.year, this.rd, and this.dst 
 			// are set in order to figure out which time zone rules apply and 
 			// what the offset is at that point in the year
-			var offset = -this.tz._getOffsetMillisWallTime(this) / 86400000;
-			if (offset !== 0) {
+			this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
+			if (this.offset !== 0) {
 				this.rd = new ilib.Date.HebrewRataDie({
-					rd: this.rd.getRataDie() + offset
+					rd: this.rd.getRataDie() - this.offset
 				});
 			}
 		}
@@ -473,7 +337,7 @@ ilib.Date.HebrewDate = function(params) {
 	
 	if (!this.rd) {
 		this.rd = new ilib.Date.HebrewRataDie(params);
-		this.calcDateComponents();
+		this._calcDateComponents();
 	}
 };
 
@@ -595,41 +459,61 @@ ilib.Date.HebrewDate.prototype.getRataDie = function() {
 
 /**
  * @private
- * Calculate date components for the given RD date.
+ * Return the year for the given RD
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the year for the RD
  */
-ilib.Date.HebrewDate.prototype.calcDateComponents = function () {
-	var remainder,
-		approximation,
-		year,
-		i,
-		table,
-		target,
-		thisNewYear = 0,
-		nextNewYear,
-		rd = this.rd.getRataDie();
-	
-	// console.log("HebrewDate.calcComponents: calculating for rd " + rd);
+ilib.Date.HebrewDate.prototype._calcYear = function(rd) {
+	var year, approximation, nextNewYear;
 	
 	// divide by the average number of days per year in the Hebrew calendar
 	// to approximate the year, then tweak it to get the real year
 	approximation = Math.floor(rd / 365.246822206) + 1;
 	
-	// console.log("HebrewDate.calcComponents: approx is " + approximation);
+	// console.log("HebrewDate._calcYear: approx is " + approximation);
 	
 	// search forward from approximation-1 for the year that actually contains this rd
 	year = approximation;
-	thisNewYear = ilib.Cal.Hebrew.newYear(year-1);
 	nextNewYear = ilib.Cal.Hebrew.newYear(year);
 	while (rd >= nextNewYear) {
 		year++;
-		thisNewYear = nextNewYear;
 		nextNewYear = ilib.Cal.Hebrew.newYear(year);
 	}
-	this.year = year-1;
+	return year - 1;
+};
+
+/**
+ * @private
+ * Calculate date components for the given RD date.
+ */
+ilib.Date.HebrewDate.prototype._calcDateComponents = function () {
+	var remainder,
+		i,
+		table,
+		target,
+		rd = this.rd.getRataDie();
+	
+	// console.log("HebrewDate.calcComponents: calculating for rd " + rd);
+
+	if (typeof(this.offset) === "undefined") {
+		this.year = this._calcYear(rd);
+		
+		// now offset the RD by the time zone, then recalculate in case we were 
+		// near the year boundary
+		if (!this.tz) {
+			this.tz = new ilib.TimeZone({id: this.timezone});
+		}
+		this.offset = this.tz.getOffsetMillis(this) / 86400000;
+	}
+
+	if (this.offset !== 0) {
+		rd += this.offset;
+		this.year = this._calcYear(rd);
+	}
 	
 	// console.log("HebrewDate.calcComponents: year is " + this.year + " with starting rd " + thisNewYear);
 	
-	remainder = rd - thisNewYear;
+	remainder = rd - ilib.Cal.Hebrew.newYear(this.year);
 	// console.log("HebrewDate.calcComponents: remainder is " + remainder);
 
 	// take out new years corrections so we get the right month when we look it up in the table
@@ -698,7 +582,7 @@ ilib.Date.HebrewDate.prototype.calcDateComponents = function () {
  */
 ilib.Date.HebrewDate.prototype.setRd = function (rd) {
 	this.rd = new ilib.Date.HebrewRataDie({rd: rd});
-	this.calcDateComponents();
+	this._calcDateComponents();
 };
 
 /**
@@ -709,7 +593,7 @@ ilib.Date.HebrewDate.prototype.setJulianDay = function (date) {
 	this.rd = new ilib.Date.HebrewRataDie({
 		julianday: date
 	});
-	this.calcDateComponents();
+	this._calcDateComponents();
 };
 
 /**
@@ -719,7 +603,8 @@ ilib.Date.HebrewDate.prototype.setJulianDay = function (date) {
  * @return {number} the day of the week
  */
 ilib.Date.HebrewDate.prototype.getDayOfWeek = function() {
-	return this.rd.getDayOfWeek();
+	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
+	return ilib.mod(rd+1, 7);
 };
 
 /**
@@ -766,7 +651,10 @@ ilib.Date.HebrewDate.prototype.firstSunday = function (year) {
  * @returns {ilib.Date.HebrewDate} the date being sought
  */
 ilib.Date.HebrewDate.prototype.before = function (dow) {
-	return new ilib.Date.HebrewDate({rd: this.rd.before(dow)});
+	return new ilib.Date.HebrewDate({
+		rd: this.rd.before(dow, this.offset),
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -778,7 +666,10 @@ ilib.Date.HebrewDate.prototype.before = function (dow) {
  * @returns {ilib.Date.HebrewDate} the date being sought
  */
 ilib.Date.HebrewDate.prototype.after = function (dow) {
-	return new ilib.Date.HebrewDate({rd: this.rd.after(dow)});
+	return new ilib.Date.HebrewDate({
+		rd: this.rd.after(dow, this.offset),
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -790,7 +681,10 @@ ilib.Date.HebrewDate.prototype.after = function (dow) {
  * @returns {ilib.Date.HebrewDate} the date being sought
  */
 ilib.Date.HebrewDate.prototype.onOrBefore = function (dow) {
-	return new ilib.Date.HebrewDate({rd: this.rd.onOrBefore(dow)});
+	return new ilib.Date.HebrewDate({
+		rd: this.rd.onOrBefore(dow, this.offset),
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -802,7 +696,10 @@ ilib.Date.HebrewDate.prototype.onOrBefore = function (dow) {
  * @returns {ilib.Date.HebrewDate} the date being sought
  */
 ilib.Date.HebrewDate.prototype.onOrAfter = function (dow) {
-	return new ilib.Date.HebrewDate({rd: this.rd.onOrAfter(dow)});
+	return new ilib.Date.HebrewDate({
+		rd: this.rd.onOrAfter(dow, this.offset),
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -904,20 +801,6 @@ ilib.Date.HebrewDate.prototype.getEra = function() {
 };
 
 /**
- * Return the unix time equivalent to this Hebrew date instance. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970 (Gregorian). This method only
- * returns a valid number for dates between midnight, Jan 1, 1970 (Gregorian) and  
- * Jan 19, 2038 at 3:14:07am (Gregorian), when the unix time runs out. If this instance 
- * encodes a date outside of that range, this method will return -1.
- * 
- * @return {number} a number giving the unix time, or -1 if the date is outside the
- * valid unix time range
- */
-ilib.Date.HebrewDate.prototype.getTime = function() {
-	return this.rd.getTime();
-};
-
-/**
  * Set the time of this instance according to the given unix time. Unix time is
  * the number of milliseconds since midnight on Jan 1, 1970.
  * 
@@ -925,7 +808,7 @@ ilib.Date.HebrewDate.prototype.getTime = function() {
  */
 ilib.Date.HebrewDate.prototype.setTime = function(millis) {
 	this.rd = new ilib.Date.HebrewRataDie({unixtime: millis});
-	this.calcDateComponents();
+	this._calcDateComponents();
 };
 
 /**
@@ -983,7 +866,7 @@ ilib.Date.HebrewDate.prototype.setTimeZone = function (tzName) {
 		this.tz = undefined;
 		// assuming the same UTC time, but a new time zone, now we have to 
 		// recalculate what the date components are
-		this.calcDateComponents();
+		this._calcDateComponents();
 	}
 };
 

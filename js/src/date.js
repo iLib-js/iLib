@@ -32,13 +32,7 @@
  * @param {Object=} options The date components to initialize this date with
  */
 ilib.Date = function(options) {
-	this.year = options && options.year || 0;
-	this.month = options && options.month || 1;
-	this.day = options && options.day || 1;
-	this.hour = options && options.hour || 0;
-	this.minute = options && options.minute || 0;
-	this.second = options && options.second || 0;
-	this.millisecond = options && options.millisecond || 0;
+	return ilib.Date.newInstance(options);
 };
 
 /**
@@ -133,6 +127,23 @@ ilib.Date._constructors = {};
 ilib.Date.prototype = {
 	getType: function() {
 		return "ilib.Date";
+	},
+	
+	/**
+	 * Return the unix time equivalent to this date instance. Unix time is
+	 * the number of milliseconds since midnight on Jan 1, 1970 UTC (Gregorian). This 
+	 * method only returns a valid number for dates between midnight, 
+	 * Jan 1, 1970 UTC (Gregorian) and Jan 19, 2038 at 3:14:07am UTC (Gregorian) when 
+	 * the unix time runs out. If this instance encodes a date outside of that range, 
+	 * this method will return -1. For date types that are not Gregorian, the point 
+	 * in time represented by this date object will only give a return value if it
+	 * is in the correct range in the Gregorian calendar as given previously.
+	 * 
+	 * @return {number} a number giving the unix time, or -1 if the date is outside the
+	 * valid unix time range
+	 */
+	getTime: function() {
+		return this.rd.getTime(); 
 	},
 	
 	getDays: function() {
