@@ -37,7 +37,7 @@ public class ZoneInfoCompiler
         System.out.println("Usage: zic [-c] [-f format] [-o file] [zoneinfodir]");
         System.out.println("-c          - Only write out the current rules, not historical.");
         System.out.println("-f format   - The file type for the output file. Currently supported: json");
-        System.out.println("-o file     - Name the output file. Default: timezones.json");
+        System.out.println("-o dir      - Name the output directory. Default: zoneinfo");
         System.out.println("zoneinfodir - Directory containing the downloaded zone info files. Default is '.'");
         System.exit(1);
     }
@@ -52,10 +52,9 @@ public class ZoneInfoCompiler
         logger = Logger.getLogger(ZoneInfoCompiler.class);
         HashMap<String,Zone> zones = new HashMap<String,Zone>();
         HashMap<String,RuleSet> ruleSets = new HashMap<String,RuleSet>();
-        boolean currentOnly = false;
+        boolean currentOnly = true;
         String format = "json";
-        String outputFileName = "timezones.json";
-        File outputFile;
+        String outputDirName = "zoneinfo";
         
         while ( i < args.length && args[i].charAt(0) == '-' ) {
             if ( args[i].equalsIgnoreCase("-h") || 
@@ -77,7 +76,7 @@ public class ZoneInfoCompiler
             } else if ( args[i].equalsIgnoreCase("-o") || 
                 args[i].equalsIgnoreCase("--output") ) {
                 if ( i+1 < args.length ) {
-                    outputFileName = args[i+1];
+                    outputDirName = args[i+1];
                     i++;
                 }
             }
@@ -88,18 +87,27 @@ public class ZoneInfoCompiler
             infoDirName = args[i];
         }
         
-        outputFile = new File(outputFileName);
-        
         logger.info("Reading zone info directory: " + infoDirName);
         logger.info("Only output current rules:" + (currentOnly ? "true" : "false"));
         logger.info("File type is: " + format);
-        logger.info("Output file name: " + outputFileName);        
+        logger.info("Output dir name: " + outputDirName);        
         
         File infoDir = new File(infoDirName);
-        if ( !infoDir.isDirectory() ) {
-            logger.error(infoDirName + " is not a directory");
+        if ( !infoDir.exists() || !infoDir.isDirectory() ) {
+            logger.fatal(infoDirName + " is not a directory.");
+            System.exit(2);
         }
-        
+
+        File outputDir = new File(outputDirName);
+        if ( outputDir.exists() ) {
+        	if ( !outputDir.isDirectory() ) {
+	            logger.fatal(outputDirName + " exists, but is not a directory.");
+	            System.exit(3);
+        	}
+        } else {
+        	outputDir.mkdirs();
+        }
+
         // read all the files into one big clump in memory
         
         File[] infoFiles = infoDir.listFiles();
@@ -118,7 +126,11 @@ public class ZoneInfoCompiler
         }
         
         // do something with the results
-        ZoneWriter zw = ZoneWriter.getInstance(format, outputFile);
-        zw.writeZones(zones, currentOnly);
+        try {
+	        ZoneWriter zw = ZoneWriter.getInstance(format, outputDir);
+	        zw.writeZones(zones, currentOnly);
+        } catch (Exception e) {
+        	logger.fatal(e.getMessage());
+        }
     }
 }

@@ -36,5 +36,6 @@ public abstract class ZoneWriter
         return null;
     }
     
-    public abstract void writeZones(HashMap<String,Zone> zones, boolean currentOnly);
+    public abstract void writeZones(HashMap<String,Zone> zones, boolean currentOnly)
+    	throws Exception;
 }

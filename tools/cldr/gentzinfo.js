@@ -23,6 +23,7 @@
 
 var fs = require('fs');
 var util = require('util');
+var path = require('path');
 var unifile = require('./unifile.js');
 var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
@@ -38,15 +39,15 @@ function usage() {
 			"tzdata-dir\n" +
 			"  path to the tzdata dir downloaded from the IANA site\n" +
 			"toDir\n" +
-			"  directory to output the normalization json files. Default: current dir.\n");
+			"  directory to output the normalized json files. Default: current dir.\n");
 	process.exit(1);
 }
 
-function loadFile(path) {
+function loadFile(filepath) {
 	var ret = undefined;
 	
-	if (fs.existsSync(path)) {
-		json = fs.readFileSync(path, "utf-8");
+	if (fs.existsSync(filepath)) {
+		json = fs.readFileSync(filepath, "utf-8");
 		ret = JSON.parse(json);
 	}
 	
@@ -120,8 +121,39 @@ for (var i = 0; i < backwardsFile.length(); i++) {
 	util.print("mapped old id " + row[2] + " to modern " + row[1] + "\n");
 }
 
-var timezonesFile = toDir + "/timezones.json";
-var timezones = loadFile(timezonesFile) || {};
+function isDirectory(dir) {
+	var stats = fs.statSync(dir);
+	return stats.isDirectory();
+}
+
+function scanDir(rootDir, dirName, zones) {
+	var dirpath, filepath, files;
+	
+	dirpath = path.join(rootDir, dirName);
+	files = fs.readdirSync(dirpath);
+
+	util.print("Scanning dir " + dirpath + "\n");
+
+	for (var i = 0; i < files.length; i++) {
+		file = files[i];
+		filepath = path.join(dirName, file);
+		if (isDirectory(path.join(rootDir, filepath))) {
+			scanDir(rootDir, filepath, zones);
+		} else {
+			var ext = filepath.search(".json");
+		
+			if (ext !== -1) {
+				zones[filepath.substring(0, ext)] = loadFile(path.join(rootDir, filepath)) || {};
+			}
+		}
+	}
+}
+
+util.print("\n");
+
+var timezones = {};
+scanDir(toDir, "", timezones);
+
 var countries = {};
 
 for (var i = 0; i < zoneTab.length(); i++) {
@@ -159,10 +191,14 @@ for (var zone = 0; zone < windowsZones.windowsZones.mapTimezones.length; zone++)
 	}
 }
 
-fs.writeFile(timezonesFile, JSON.stringify(timezones, true, 4), function (err) {
-	if (err) {
-		throw err;
-	}
-});
+for (var zone in timezones) {
+	var filepath = path.join(toDir, zone + ".json");
+	util.print("Writing out zone info file " + filepath + "\n");
+	fs.writeFile(filepath, JSON.stringify(timezones[zone], true, 4), function (err) {
+		if (err) {
+			throw err;
+		}
+	});
+}
 
 util.print("Done\n");

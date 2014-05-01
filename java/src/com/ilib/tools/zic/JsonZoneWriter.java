@@ -38,46 +38,62 @@ import org.json.JSONObject;
 public class JsonZoneWriter
     extends ZoneWriter
 {
-    protected File file;
+    protected File outputDir;
     protected Logger logger = Logger.getLogger(this.getClass());
     
     public JsonZoneWriter(File file)
     {
-        this.file = file;
+        this.outputDir = file;
     }
     
-    /* (non-Javadoc)
-     * @see com.ilib.tools.zic.ZoneWriter#writeZones(java.util.HashMap, boolean)
-     */
-    public void writeZones(HashMap<String,Zone> zones, boolean currentOnly)
+    public void writeZone(String zoneName, JSONObject json)
+    	throws Exception
     {
-        JSONObject json;
-        String zoneName;
-        Zone zone;
-        Set<String> zoneNames = zones.keySet();
-        Iterator<String> it = zoneNames.iterator();
+    	if ( json == null ) {
+    		logger.warn("Zone " + zoneName + " has no json.");
+    		return;
+    	}
         Writer writer = null;
-        
+        String[] parts = zoneName.split("/");
+        File dir = parts.length > 1 ? new File(outputDir, parts[0]) : outputDir;
+        File file = new File(dir, (parts.length > 1 ? parts[1] : zoneName) + ".json");
         try {
-            json = new JSONObject();
-            while ( it.hasNext() ) {
-                zoneName = it.next();
-                if (zoneName != null && zoneName.length() > 0) {
-                    logger.debug("Processing zone " + zoneName);
-                    zone = zones.get(zoneName);
-                    json.put(zoneName, zone.getJson(currentOnly));
-                }
-            }
-            
-            writer = new OutputStreamWriter(new FileOutputStream(file), "utf-8");
-            writer.write(json.toString(4));
-            writer.close();
+        	if ( !dir.exists() ) {
+        		logger.trace("Making new dir " + dir.getPath());
+        		dir.mkdirs();
+        	}
+        	logger.info("Writing output file " + file.getPath());
+        	writer = new OutputStreamWriter(new FileOutputStream(file), "utf-8");
+	        writer.write(json.toString(4));
+	        writer.close();
         } catch (Exception e) {
             e.printStackTrace();
             if ( writer != null ) {
                 try {
                     writer.close();
                 } catch ( IOException e2 ) {}
+            }
+            throw e;
+        }
+    }
+    
+    /* (non-Javadoc)
+     * @see com.ilib.tools.zic.ZoneWriter#writeZones(java.util.HashMap, boolean)
+     */
+    public void writeZones(HashMap<String,Zone> zones, boolean currentOnly)
+    	throws Exception
+    {
+        String zoneName;
+        Zone zone;
+        Set<String> zoneNames = zones.keySet();
+        Iterator<String> it = zoneNames.iterator();
+        
+        while ( it.hasNext() ) {
+            zoneName = it.next();
+            if (zoneName != null && zoneName.length() > 0) {
+                logger.debug("Processing zone " + zoneName);
+                zone = zones.get(zoneName);
+                writeZone(zoneName, zone.getJson(currentOnly));
             }
         }
     }
