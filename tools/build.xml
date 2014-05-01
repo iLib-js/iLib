@@ -106,6 +106,7 @@ limitations under the License.
 		<copy todir="${build.export}/tools">
 			<fileset dir="${build.base}">
 				<include name="jsdoc_toolkit*/**"/>
+				<include name="build/**"/>
 			</fileset>
 		</copy>
 	</target>
