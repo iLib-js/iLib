@@ -33,6 +33,24 @@ ilib.data.localeinfo_FR = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Fr
 ilib.data.localeinfo_zh = {"clock":"12","language.name":"Chinese","native_numfmt":{"script":"Hani","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"({s}{n})"},"pctFmt":"{n}%","roundingMode":"halfdown","useNative":true,"digits":"〇一二三四五六七八九"},"numfmt":{"decimalChar":".","groupChar":",","exponential":"E","useNative":false,"currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Hans","Hant","Bopo","Phag"],"locale":"zh"};
 ilib.data.localeinfo_TW = {"currency":"TWD","firstDayOfWeek":0,"region.name":"Taiwan","timezone":"Asia/Taipei","locale":"TW"};
 
+ilib.data.currency = {
+    "USD": {
+            "name": "US Dollar",
+            "decimals": 2,
+            "sign": "$"
+    },
+    "EUR": {
+        "name": "Euro",
+        "decimals": 2,
+        "sign": "€"
+    },
+    "CNY": {
+        "name": "Yuan Renminbi",
+        "decimals": 2,
+        "sign": "元"
+    }
+};
+
 function testNumFmtConstructorEmptySubsequent(results) {
 	new ilib.NumFmt();
 
@@ -86,3 +104,91 @@ function testNumFmtConstructorNonexistentSubsequent(results) {
 	tt.run(results);
 }
 
+function testNumFmtConstructorCurrencySubsequent(results) {
+	new ilib.NumFmt({
+		type: "currency",
+		currency: "USD"
+	});
+
+	var tt = new TimedTest({
+		name: "NumFmt-assembled-currency-subsequent",
+		iterations: 100,
+		fn: function () {
+			var fmt = new ilib.NumFmt({
+				type: "currency",
+				currency: "USD"
+			});
+
+		    assertNotNull(fmt);
+		}
+	});
+
+	tt.run(results);
+}
+
+function testNumFmtFormatDefault(results) {
+	var fmt = new ilib.NumFmt();
+
+	var tt = new TimedTest({
+		name: "NumFmt-assembled-format-default",
+		iterations: 100,
+		fn: function () {
+			var random = Math.random();
+			assertNotNull(fmt.format(Math.random()*10000000-5000000));
+		}
+	});
+
+	tt.run(results);
+}
+
+function testNumFmtFormatGerman(results) {
+	var fmt = new ilib.NumFmt({
+		locale: "de-DE"
+	});
+
+	var tt = new TimedTest({
+		name: "NumFmt-assembled-format-german",
+		iterations: 100,
+		fn: function () {
+			var random = Math.random();
+			assertNotNull(fmt.format(Math.random()*10000000-5000000));
+		}
+	});
+
+	tt.run(results);
+}
+
+function testNumFmtFormatPercentage(results) {
+	var fmt = new ilib.NumFmt({
+		type: "percentage"
+	});
+
+	var tt = new TimedTest({
+		name: "NumFmt-assembled-format-percentage",
+		iterations: 100,
+		fn: function () {
+			var random = Math.random();
+			assertNotNull(fmt.format(Math.random()));
+		}
+	});
+
+	tt.run(results);
+}
+
+function testNumFmtFormatPercentage(results) {
+	var fmt = new ilib.NumFmt({
+		type: "currency",
+		currency: "USD"
+	});
+
+	var tt = new TimedTest({
+		name: "NumFmt-assembled-format-currency",
+		iterations: 100,
+		fn: function () {
+			var random = Math.random();
+			assertNotNull(fmt.format(Math.random()*10000000-5000000));
+		}
+	});
+
+	tt.run(results);
+}
