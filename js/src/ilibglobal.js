@@ -240,29 +240,30 @@ ilib.getTimeZone = function() {
 
 /**
  * @interface
- * Defines the interface for the loader class for ilib.<p> 
+ * Defines the interface for the loader class for ilib. The main method of the
+ * loader object is loadFiles(), which loads a set of requested locale data files
+ * from where-ever it is stored. 
+ */
+ilib.Loader = function() {};
+
+/**
+ * Load a set of files from where-ever it is stored.<p>
  * 
- * The main function define a callback function for loading missing locale data or 
- * resources.
+ * This is the main function define a callback function for loading missing locale 
+ * data or resources.
  * If this copy of ilib is assembled without including the required locale data
  * or resources, then that data can be lazy loaded dynamically when it is 
- * needed by calling this callback function. Each ilib class will first
+ * needed by calling this method. Each ilib class will first
  * check for the existence of data under ilib.data, and if it is not there, 
- * it will attempt to load it by calling this loader function, and then place
+ * it will attempt to load it by calling this method of the laoder, and then place
  * it there.<p>
  * 
- * Suggested implementations of the callback function might be to load files 
+ * Suggested implementations of this method might load files 
  * directly from disk under nodejs or rhino, or within web pages, to load 
  * files from the server with XHR calls.<p>
  * 
- * The expected API for the call back is:
- * 
- * <pre>
- * function(paths, sync, params, callback) {}
- * </pre>
- * 
- * The first parameter to the callback
- * function, paths, is an array of relative paths within the ilib dir structure for the 
+ * The first parameter to this method, paths, is an array of relative paths within 
+ * the ilib dir structure for the 
  * requested data. These paths will already have the locale spec integrated 
  * into them, so no further tweaking needs to happen to load the data. Simply
  * load the named files. The second
@@ -293,7 +294,10 @@ ilib.getTimeZone = function() {
  * <pre>
  * var fs = require("fs");
  * 
- * var myLoader = function(paths, sync, params, callback) {
+ * var myLoader = function() {};
+ * myLoader.prototype = new ilib.Loader();
+ * myLoader.prototype.constructor = myLoader;
+ * myLoader.prototype.loadFiles = function(paths, sync, params, callback) {
  *    if (sync) {
  *        var ret = [];
  *        // synchronous load -- just return the result
@@ -308,13 +312,9 @@ ilib.getTimeZone = function() {
  *
  *    // asynchronous
  *    this.results = [];
- *    this.loadFiles(paths);
+ *    this._loadFilesAsync(paths);
  * }
- * 
- * myLoader.prototype = new ilib.Loader();
- * myLoader.prototype.constructor = myLoader;
- * 
- * myLoader.prototype.loadFiles = function (paths) {
+ * myLoader.prototype._loadFilesAsync = function (paths) {
  *    if (paths.length > 0) {
  *        var file = paths.shift();
  *        fs.readFile(file, "utf-8", function(err, json) {
@@ -322,7 +322,7 @@ ilib.getTimeZone = function() {
  *            // call self recursively so that the callback is only called at the end
  *            // when all the files are loaded sequentially
  *            if (paths.length > 0) {
- *                this.loadFiles(paths);
+ *                this._loadFilesAsync(paths);
  *            } else {
  *                this.callback(this.results);
  *            }
@@ -343,7 +343,7 @@ ilib.getTimeZone = function() {
  * @param {function(Object)} callback function to call when the files are all loaded. The 
  * parameter of the callback function is the contents of the files.
  */
-ilib.Loader = function (paths, sync, params, callback) {};
+ilib.Loader.prototype.loadFiles = function (paths, sync, params, callback) {};
 
 /**
  * Return all files available for loading using this loader instance.
