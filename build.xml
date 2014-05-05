@@ -63,7 +63,7 @@ limitations under the License.
 		<iterate target="export"/>
 		<zip destfile="${build.dist}/ilib-${version}.zip"
 			basedir="${build.export}"
-			includes="js/**,java/**,locale/**,zoneinfo/**"/>
+			includes="js/**,java/**,locale/**"/>
 		<zip destfile="${build.dist}/ilib-${version}-doc.zip"
 			basedir="${build.export}/doc"/>
 		<zip destfile="${build.dist}/ilib-${version}-src.zip">

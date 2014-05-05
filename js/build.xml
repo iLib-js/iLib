@@ -47,9 +47,7 @@ limitations under the License.
 	<property name="build.jsdoc"					value="${build.output}/jsdoc"/>
 	<property name="build.data"						value="${build.base}/data"/>
 	<property name="build.locale"					value="${build.data}/locale"/>
-	<property name="build.zoneinfo"					value="${build.data}/zoneinfo"/>
 	<property name="build.localetemp"				value="${build.data}/localetemp"/>
-	<property name="build.zoneinfotemp"				value="${build.data}/zoneinfotemp"/>
 	<property name="build.config"					value="config"/>
 	<property name="log4j.config.file"				value="${build.config}/log4j.properties"/>
 
@@ -117,8 +115,6 @@ limitations under the License.
 		<delete file="${build.locale}/jsoncompress.stamp"/>
 		<delete file="${build.demo}/demo.tgz"/>
 		<delete dir="${build.localetemp}"/>
-		<delete file="${build.zoneinfo}/jsoncompress.stamp"/>
-		<delete dir="${build.zoneinfotemp}"/>
 	</target>
 
 	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
@@ -137,8 +133,6 @@ limitations under the License.
 				<arg value="-I"/>
 				<arg value="${build.localetemp}"/>
 				<arg value="-I"/>
-				<arg value="${build.zoneinfotemp}"/>
-				<arg value="-I"/>
 				<arg value="${build.src}"/>
 				<arg value="-o"/>
 				<arg value="${build.src}/@{tgtfilename}"/>
@@ -156,11 +150,10 @@ limitations under the License.
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
 			<srcfiles dir="${build.src}" includes="ilib-core-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
-			<srcfiles dir="${build.zoneinfotemp}" includes="**/*.json" />
 		</uptodate>
 	</target>
 
-	<target name="assemble.core" depends="prepare,gen.manifest.locale,gen.manifest.zoneinfo,testilib.core" unless="core.ilib.core.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+	<target name="assemble.core" depends="prepare,gen.manifest.locale,testilib.core" unless="core.ilib.core.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
 			tgtfilename="ilib-core.js" 
 			srcfilename="ilib-core-inc.js" 
@@ -184,11 +177,10 @@ limitations under the License.
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
 			<srcfiles dir="${build.src}" includes="ilib-standard-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
-			<srcfiles dir="${build.zoneinfotemp}" includes="**/*.json" />
 		</uptodate>
 	</target>
 
-	<target name="assemble.standard" depends="prepare,gen.manifest.locale,gen.manifest.zoneinfo,testilib.standard" unless="core.ilib.standard.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+	<target name="assemble.standard" depends="prepare,gen.manifest.locale,testilib.standard" unless="core.ilib.standard.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
 			tgtfilename="ilib-standard.js" 
 			srcfilename="ilib-standard-inc.js" 
@@ -212,11 +204,10 @@ limitations under the License.
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**" />
 			<srcfiles dir="${build.src}" includes="ilib-full-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json" />
-			<srcfiles dir="${build.zoneinfotemp}" includes="**/*.json" />
 		</uptodate>
 	</target>
 
-	<target name="assemble.full" depends="prepare,gen.manifest.locale,gen.manifest.zoneinfo,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+	<target name="assemble.full" depends="prepare,gen.manifest.locale,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
 			tgtfilename="ilib-full.js" 
 			srcfilename="ilib-full-inc.js" 
@@ -240,11 +231,10 @@ limitations under the License.
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**,testglue.js"/>
 			<srcfiles dir="${build.src}" includes="ilib-ut-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
-			<srcfiles dir="${build.zoneinfotemp}" includes="**/*.json" />
 		</uptodate>
 	</target>
 	
-	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,gen.manifest.zoneinfo,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble 
 			tgtfilename="ilib-ut.js" 
 			srcfilename="ilib-ut-inc.js" 
@@ -268,11 +258,10 @@ limitations under the License.
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**,testglue.js"/>
 			<srcfiles dir="${build.src}" includes="ilib-ut-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
-			<srcfiles dir="${build.zoneinfotemp}" includes="**/*.json" />
 		</uptodate>
 	</target>
 	
-	<target name="assemble.dyn.unittest" depends="prepare,gen.manifest.locale,gen.manifest.zoneinfo,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.dyn.unittest" depends="prepare,gen.manifest.locale,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble 
 			tgtfilename="ilib-dyn-ut.js" 
 			srcfilename="ilib-ut-inc.js" 
@@ -296,11 +285,10 @@ limitations under the License.
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
 			<srcfiles dir="${build.src}" includes="**/ilib-full-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
-			<srcfiles dir="${build.zoneinfotemp}" includes="**/*.json" />
 		</uptodate>
 	</target>
 
-	<target name="assemble.demo" depends="prepare,gen.manifest.locale,gen.manifest.zoneinfo,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
+	<target name="assemble.demo" depends="prepare,gen.manifest.locale,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
 		<runassemble 
 			tgtfilename="ilib-demo.js" 
 			srcfilename="ilib-full-inc.js" 
@@ -324,11 +312,10 @@ limitations under the License.
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
 			<srcfiles dir="${build.src}" includes="ilib-standard-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
-			<srcfiles dir="${build.zoneinfotemp}" includes="**/*.json" />
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn.standard" depends="prepare,gen.manifest.locale,gen.manifest.zoneinfo,testilib.dyn.standard" unless="ilib.dyn.standard.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
+	<target name="assemble.dyn.standard" depends="prepare,gen.manifest.locale,testilib.dyn.standard" unless="ilib.dyn.standard.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
 		<runassemble 
 			tgtfilename="ilib-dyn-standard.js" 
 			srcfilename="ilib-standard-inc.js" 
@@ -352,11 +339,10 @@ limitations under the License.
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
 			<srcfiles dir="${build.src}" includes="ilib-core-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
-			<srcfiles dir="${build.zoneinfotemp}" includes="**/*.json" />
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn.core" depends="prepare,gen.manifest.locale,gen.manifest.zoneinfo,testilib.dyn.core" unless="ilib.dyn.core.not.needed" description="assembles the core set of the js files into a single file">
+	<target name="assemble.dyn.core" depends="prepare,gen.manifest.locale,testilib.dyn.core" unless="ilib.dyn.core.not.needed" description="assembles the core set of the js files into a single file">
 		<runassemble 
 			tgtfilename="ilib-dyn-core.js" 
 			srcfilename="ilib-core-inc.js" 
@@ -380,11 +366,10 @@ limitations under the License.
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,**/test/**,testcli/**"/>
 			<srcfiles dir="${build.src}" includes="ilib-full-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
-			<srcfiles dir="${build.zoneinfotemp}" includes="**/*.json" />
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn.full" depends="prepare,gen.manifest.locale,gen.manifest.zoneinfo,testilib.dyn.full" unless="ilib.dyn.full.not.needed" description="assembles the full set of the js files into a single file">
+	<target name="assemble.dyn.full" depends="prepare,gen.manifest.locale,testilib.dyn.full" unless="ilib.dyn.full.not.needed" description="assembles the full set of the js files into a single file">
 		<runassemble 
 			tgtfilename="ilib-dyn-full.js" 
 			srcfilename="ilib-full-inc.js" 
@@ -408,11 +393,10 @@ limitations under the License.
 			<srcfiles dir="${build.src}" includes="**/*.js" excludes="ilib-*.js,*-compiled.js,**/test/**,testcli/**"/>
 			<srcfiles dir="${build.src}" includes="ilib-standard-inc.js"/>
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
-			<srcfiles dir="${build.zoneinfotemp}" includes="**/*.json" />
 		</uptodate>
 	</target>
 
-	<target name="assemble.lg" depends="prepare,gen.manifest.locale,gen.manifest.zoneinfo,testilib.lg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
+	<target name="assemble.lg" depends="prepare,gen.manifest.locale,testilib.lg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
 		<runassemble 
 			tgtfilename="ilib-lg.js" 
 			srcfilename="ilib-standard-inc.js"
@@ -462,7 +446,6 @@ limitations under the License.
 				<include name="build.xml"/>
 				<include name="build.properties"/>
 				<include name="data/locale/**/*.json"/>
-				<include name="data/zoneinfo/**/*.json"/>
 				<include name="bin/**"/>
 				<include name="lib/google-closure*/**"/>
 				<exclude name="**/test/**"/>
@@ -474,12 +457,6 @@ limitations under the License.
 		<mkdir dir="${build.export}/locale"/>
 		<copy todir="${build.export}/locale">
 			<fileset dir="${build.localetemp}">
-				<include name="**/*.json"/>
-			</fileset>
-		</copy>
-		<mkdir dir="${build.export}/zoneinfo"/>
-		<copy todir="${build.export}/zoneinfo">
-			<fileset dir="${build.zoneinfotemp}">
 				<include name="**/*.json"/>
 			</fileset>
 		</copy>
@@ -533,13 +510,13 @@ limitations under the License.
 			compression="gzip"/>
 		<tar destfile="${build.dist}/ilib-${version}-src.tgz"
 			basedir="${build.base}"
-			includes="src/**,data/locale/**/*.json,data/zoneinfo/**/*.json,build.xml,${build.dist}/jsdoc*/**,bin/**"
+			includes="src/**,data/locale/**/*.json,build.xml,${build.dist}/jsdoc*/**,bin/**"
 			excludes="**/test/**,**/externs.js,**/*.html,src/ilib-*"
 			compression="gzip">
 			<tarfileset
 				dir="${build.base}" 
 				prefix="js"
-				includes="src/**,data/locale/**/*.json,data/zoneinfo/**/*.json,build.xml,bin/**"
+				includes="src/**,data/locale/**/*.json,build.xml,bin/**"
 				excludes="**/test/**,**/externs.js,**/*.html,src/ilib-*"/>
 			<tarfileset 
 				dir="${build.base}" 
@@ -696,34 +673,6 @@ limitations under the License.
 		<touch file="${build.locale}/jsoncompress.stamp"/>
 	</target>
 
-	<target name="testzoneinfojson" description="test whether or not the zoneinfo json files need to compressed">
-		<uptodate property="zoneinfo.compress.not.needed" targetFile="${build.zoneinfo}/jsoncompress.stamp">
-			<srcfiles dir="${build.zoneinfo}" includes="**/*.json"/>
-		</uptodate>
-	</target>
-
-	<target name="compress.zoneinfo.json"
-			depends="geninfo,testzoneinfojson"
-			description="compresses the json files"
-			unless="zoneinfo.compress.not.needed">
-		<exec os="Linux" executable="node" dir="${build.zoneinfo}" failifexecutionfails="true" failonerror="true">
-			<arg value="${build.tools}/build/jsoncompress.js"/>
-			<arg value="."/>
-			<arg value="${build.zoneinfotemp}"/>
-		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.zoneinfo}">
-			<arg value="${build.tools}/build/jsoncompress.js"/>
-			<arg value="."/>
-			<arg value="${build.zoneinfotemp}"/>
-		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.zoneinfo}" failifexecutionfails="true" failonerror="true">
-			<arg value="${build.tools}/build/jsoncompress.js"/>
-			<arg value="."/>
-			<arg value="${build.zoneinfotemp}"/>
-		</exec>
-		<touch file="${build.zoneinfo}/jsoncompress.stamp"/>
-	</target>
-
 	<target name="test.locale.manifest" description="test whether or not the locale manifest needs to be regenerated">
 		<uptodate property="locale.manifest.not.needed" targetFile="${build.localetemp}/ilibmanifest.json">
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
@@ -744,26 +693,4 @@ limitations under the License.
 			<arg value="${build.tools}/build/mkmf.js"/>
 		</exec>
 	</target>
-
-	<target name="test.zoneinfo.manifest" description="test whether or not the zoneinfo manifest needs to be regenerated">
-		<uptodate property="zoneinfo.manifest.not.needed" targetFile="${build.zoneinfotemp}/ilibmanifest.json">
-			<srcfiles dir="${build.zoneinfo}" includes="**/*.json"/>
-		</uptodate>
-	</target>
-
-	<target name="gen.manifest.zoneinfo"
-			depends="compress.zoneinfo.json,test.zoneinfo.manifest"
-			description="produces the ilibmanifest.json file"
-			unless="zoneinfo.manifest.not.needed">
-		<exec os="Linux" executable="node" dir="${build.zoneinfotemp}">
-			<arg value="${build.tools}/build/mkmf.js"/>
-		</exec>
-		<exec os="Mac OS X" executable="node" dir="${build.zoneinfotemp}">
-			<arg value="${build.tools}/build/mkmf.js"/>
-		</exec>
-		<exec os="Windows XP" executable="node.exe" dir="${build.zoneinfotemp}">
-			<arg value="${build.tools}/build/mkmf.js"/>
-		</exec>
-	</target>
-
 </project>

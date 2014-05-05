@@ -478,7 +478,7 @@ ilib.loadData = function(params) {
 		object = undefined, 
 		locale = new ilib.Locale(ilib.getLocale()), 
 		sync = false, 
-		type,
+		type = undefined,
 		loadParams = {},
 		callback = undefined;
 	

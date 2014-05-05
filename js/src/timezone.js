@@ -183,14 +183,14 @@ ilib.TimeZone = function(options) {
 /*
  * Explanation of the compressed time zone info properties.
  * {
- *     "o": "8:0",      // Offset from UTC
- *     "f": "W{c}T",      // 
+ *     "o": "8:0",      // offset from UTC
+ *     "f": "W{c}T",    // standard abbreviation. For time zones that observe DST, the {c} replacement is replaced with the 
+ *                      // letter in the e.c or s.c properties below 
  *     "e": {           // info about the end of DST
  *         "m": 3,      // month that it ends
  *         "r": "l0",   // rule for the day it ends "l" = "last", numbers are Sun=0 through Sat=6. Other syntax is "0>7". 
  *                      // This means the 0-day (Sun) after the 7th of the month. Other possible operators are <, >, <=, >=
  *         "t": "2:0",  // time of day that the DST turns off, hours:minutes
- *         "z": "s",    // ???
  *         "c": "S"     // character to replace into the abbreviation for standard time 
  *     },
  *     "s": {           // info about the start of DST
@@ -198,7 +198,6 @@ ilib.TimeZone = function(options) {
  *         "r": "l0",   // rule for the day it starts "l" = "last", numbers are Sun=0 through Sat=6. Other syntax is "0>7".
  *                      // This means the 0-day (Sun) after the 7th of the month. Other possible operators are <, >, <=, >=
  *         "t": "2:0",  // time of day that the DST turns on, hours:minutes
- *         "z": "s",    // ???
  *         "v": "1:0",  // amount of time saved in hours:minutes
  *         "c": "D"     // character to replace into the abbreviation for daylight time
  *     },
@@ -207,20 +206,22 @@ ilib.TimeZone = function(options) {
  *                      // long English name of the zone. The {c} replacement is for the word "Standard" or "Daylight" as appropriate
  * }
  */
-ilib.data.defaultZones = {
-	"Etc/UTC":{"o":"0:0","f":"UTC"}
-};
-
 ilib.TimeZone.prototype._loadtzdata = function () {
 	if (!ilib.data.timezones) {
+		ilib.data.timezones = {
+			"Etc/UTC":{"o":"0:0","f":"UTC"},
+			"local":{"f":"local"}
+		};
+	}
+	if (ilib.data.timezones[this.id]) {
 		ilib.loadData({
 			object: ilib.TimeZone, 
 			locale: "-",	// locale independent 
-			name: "timezones.json", 
+			name: "zoneinfo/" + this.id + ".json", 
 			sync: this.sync, 
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function (tzdata) {
-				ilib.data.timezones = tzdata || ilib.data.defaultZones;
+				ilib.data.timezones[this.id] = tzdata;
 				this._initZone();
 			})
 		});
@@ -268,12 +269,26 @@ ilib.TimeZone.prototype._initZone = function() {
 ilib.TimeZone.getAvailableIds = function (country) {
 	var tz, ids = [];
 	
+	if (!ilib.data.timezones.list) {
+		ilib.data.timezones.list = [];
+		if (ilib._load instanceof ilib.Loader) {
+			var hash = ilib._load.listAvailableFiles();
+			for (var dir in hash) {
+				hash[dir].forEach(function (filename) {
+					if (filename.match(/^zoneinfo/)) {
+						ilib.data.timezones.list.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
+					}
+				});
+			}
+		}
+	}
+	
 	if (!country) {
 		// special zone meaning "the local time zone according to the JS engine we are running upon"
 		ids.push("local");
 	}
 	
-	for (tz in ilib.data.timezones) {
+	for (tz in ilib.data.timezones.list) {
 		if (tz && (!country || ilib.data.timezones[tz].c === country)) {
 			ids.push(tz);
 		}

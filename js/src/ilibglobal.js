@@ -1,7 +1,7 @@
 /*
  * ilibglobal.js - define the ilib name space
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -239,8 +239,11 @@ ilib.getTimeZone = function() {
 };
 
 /**
- * @static
- * Define a callback function for loading missing locale data or resources.
+ * @interface
+ * Defines the interface for the loader class for ilib.<p> 
+ * 
+ * The main function define a callback function for loading missing locale data or 
+ * resources.
  * If this copy of ilib is assembled without including the required locale data
  * or resources, then that data can be lazy loaded dynamically when it is 
  * needed by calling this callback function. Each ilib class will first
@@ -288,24 +291,12 @@ ilib.getTimeZone = function() {
  * An example implementation for nodejs might be:
  * 
  * <pre>
- * function loadFiles(context, paths, results, callback) {
- *    if (paths.length > 0) {
- *        var file = paths.shift();
- *        fs.readFile(file, "utf-8", function(err, json) {
- *            results.push(err ? undefined : JSON.parse(json));
- *            if (paths.length > 0) {
- *                loadFiles(context, paths, results, callback);
- *            } else {
- *                callback.call(context, results);
- *            }
- *        });
- *     }
- * }
- * // bind to "this" so that "this" is relative to your own instance
- * ilib.setLoaderCallback(ilib.bind(this, function(paths, sync, params, callback) {
+ * var fs = require("fs");
+ * 
+ * var myLoader = function(paths, sync, params, callback) {
  *    if (sync) {
  *        var ret = [];
- *        // synchronous
+ *        // synchronous load -- just return the result
  *        paths.forEach(function (path) {
  *            var json = fs.readFileSync(path, "utf-8");
  *            ret.push(json ? JSON.parse(json) : undefined);
@@ -313,21 +304,98 @@ ilib.getTimeZone = function() {
  *        
  *        return ret;
  *    }
+ *    this.callback = callback;
  *
  *    // asynchronous
- *    var results = [];
- *    loadFiles(this, paths, results, callback);
- * }));
- * </pre>
+ *    this.results = [];
+ *    this.loadFiles(paths);
+ * }
  * 
- * @param {function(Array.<string>,Boolean,Object,function(Object))} loader function to call to 
- * load the requested data.
+ * myLoader.prototype = new ilib.Loader();
+ * myLoader.prototype.constructor = myLoader;
+ * 
+ * myLoader.prototype.loadFiles = function (paths) {
+ *    if (paths.length > 0) {
+ *        var file = paths.shift();
+ *        fs.readFile(file, "utf-8", function(err, json) {
+ *            this.results.push(err ? undefined : JSON.parse(json));
+ *            // call self recursively so that the callback is only called at the end
+ *            // when all the files are loaded sequentially
+ *            if (paths.length > 0) {
+ *                this.loadFiles(paths);
+ *            } else {
+ *                this.callback(this.results);
+ *            }
+ *        });
+ *     }
+ * }
+ * 
+ * // bind to "this" so that "this" is relative to your own instance
+ * ilib.setLoaderCallback(new myLoader());
+ * </pre>
+
+ * @param {Array.<string>} paths An array of paths to load from wherever the files are stored 
+ * @param {Boolean} sync if true, load the files synchronously, and false means asynchronously
+ * @param {Object} params an object with any extra parameters for the loader. These can be 
+ * anything. The caller of the ilib class passes these parameters in. Presumably, the code that
+ * calls ilib and the code that provides the loader are together and can have a private 
+ * agreement between them about what the parameters should contain.
+ * @param {function(Object)} callback function to call when the files are all loaded. The 
+ * parameter of the callback function is the contents of the files.
+ */
+ilib.Loader = function (paths, sync, params, callback) {};
+
+/**
+ * Return all files available for loading using this loader instance.
+ * This method returns an object where the properties are the paths to
+ * directories where files are loaded from and the values are an array
+ * of strings containing the relative paths under the directory of each
+ * file that can be loaded.<p>
+ * 
+ * Example:
+ *  <pre>
+ *  {
+ *  	"/usr/share/javascript/ilib/locale": [
+ *  		"dateformats.json",
+ *  		"aa/dateformats.json",
+ *			"af/dateformats.json",
+ *			"agq/dateformats.json",
+ *			"ak/dateformats.json",
+ *			...
+ *  		"zxx/dateformats.json"
+ *  	]
+ *  }
+ *  </pre>
+ * @returns {Object} a hash containing directory names and
+ * paths to file that can be loaded by this loader 
+ */
+ilib.Loader.prototype.listAvailableFiles = function() {};
+
+/**
+ * Return true if the file in the named path is available for loading using
+ * this loader. The path may be given as an absolute path, in which case
+ * only that file is checked, or as a relative path, in which case, the
+ * relative path may appear underneath any of the directories that the loader
+ * knows about.
+ * @returns {boolean} true if the file in the named path is available for loading, and
+ * false otherwise
+ */
+ilib.Loader.prototype.isAvailable = function(path) {};
+
+/**
+ * @static
+ * Set the custom loader used to load ilib's locale data in your environment. 
+ * The instance passed in must implement the ilib.Loader interface. See the
+ * ilib.Loader class documentation for more information about loaders. 
+ * 
+ * @param {ilib.Loader} loader class to call to access the requested data.
  * @return {boolean} true if the loader was installed correctly, or false
  * if not
  */
 ilib.setLoaderCallback = function(loader) {
     // only a basic check
-    if (typeof(loader) === 'function' || typeof(loader) === 'undefined') {
+    if ((typeof(loader) === 'object' && loader instanceof ilib.Loader) || 
+    		typeof(loader) === 'function' || typeof(loader) === 'undefined') {
     	// console.log("setting callback loader to " + (loader ? loader.name : "undefined"));
         ilib._load = loader;
         return true;
