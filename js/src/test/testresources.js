@@ -1001,7 +1001,7 @@ function mockLoader(paths, sync, params, callback) {
 };
 
 function testResBundleConstructAsynchDynamic() {
-	if (typeof(ilib._load) === 'function') {
+	if (typeof(ilib._load) !== 'undefined') {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1030,7 +1030,7 @@ function testResBundleConstructAsynchDynamic() {
 }
 
 function testResBundleConstructSynchDynamic() {
-	if (typeof(ilib._load) === 'function') {
+	if (typeof(ilib._load) !== 'undefined') {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1051,7 +1051,7 @@ function testResBundleConstructSynchDynamic() {
 }
 
 function testResBundleConstructAsynchDynamicDefaultName() {
-	if (typeof(ilib._load) === 'function') {
+	if (typeof(ilib._load) !== 'undefined') {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1079,7 +1079,7 @@ function testResBundleConstructAsynchDynamicDefaultName() {
 }
 
 function testResBundleConstructSynchDynamicDefaultName() {
-	if (typeof(ilib._load) === 'function') {
+	if (typeof(ilib._load) !== 'undefined') {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1099,7 +1099,7 @@ function testResBundleConstructSynchDynamicDefaultName() {
 }
 
 function testResBundleConstructAsynchDynamicNoStrings() {
-	if (typeof(ilib._load) === 'function') {
+	if (typeof(ilib._load) !== 'undefined') {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
@@ -1128,7 +1128,7 @@ function testResBundleConstructAsynchDynamicNoStrings() {
 }
 
 function testResBundleConstructSynchDynamicNoStrings() {
-	if (typeof(ilib._load) === 'function') {
+	if (typeof(ilib._load) !== 'undefined') {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;

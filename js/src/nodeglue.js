@@ -8,7 +8,7 @@ var path = require("path"),
 	util = require("util");
 
 var nodeLoader = function () {
-	util.print("new nodeLoader instance\n");
+	// util.print("new nodeLoader instance\n");
 
 	// for use from within a check-out of ilib
 	this.base = path.normalize(process.cwd() + "/../data");  
@@ -18,7 +18,7 @@ var nodeLoader = function () {
 		this.base = "/usr/share/javascript/ilib";
 	}
 	
-	util.print("base is defined as " + this.base + "\n");
+	// util.print("base is defined as " + this.base + "\n");
 };
 
 // make this a subclass of loader
@@ -28,20 +28,20 @@ nodeLoader.prototype.constructor = nodeLoader;
 nodeLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 	var root = (params && params.base) ? path.normalize(params.base) : this.base;
 
-	util.print("nodeLoader loadFiles called\n");
+	// util.print("nodeLoader loadFiles called\n");
 	// make sure we know what we can load
 	this._loadManifests();
 	
 	if (!paths) {
 		// nothing to load
-		util.print("nothing to load\n");
+		// util.print("nothing to load\n");
 		return;
 	}
 	
 	var resources = path.normalize(path.join(root, "resources"));
 	var resExists = fs.existsSync(resources);
 
-	util.print("node loader: attempting to load paths " + JSON.stringify(paths) + "\n");
+	// util.print("node loader: attempting to load paths " + JSON.stringify(paths) + "\n");
 	if (sync) {
 		var ret = [];
 		
@@ -50,22 +50,24 @@ nodeLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 			var json;
 
 			var filepath = path.join(root, "locale", p);
-			util.print("node loader: attempting sync load " + filepath + "\n");
+			// util.print("node loader: attempting sync load " + filepath + "\n");
 			if (fs.existsSync(filepath)) {
 				json = fs.readFileSync(filepath, "utf-8");
+				// util.print("node loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
 				ret.push(json ? JSON.parse(json) : undefined);
 				return;
 			} 
 			
 			if (resExists) {
 				filepath = path.join(resources, p);
-				util.print("node loader: attempting sync load resources " + filepath + "\n");
+				// util.print("node loader: attempting sync load resources " + filepath + "\n");
 				if (fs.existsSync(filepath)) {
 					json = fs.readFileSync(filepath, "utf-8");
+					// util.print("node loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
 					ret.push(json ? JSON.parse(json) : undefined);
 				} 
 			}
-			util.print("node loader:  sync load failed\n");
+			// util.print("node loader:  sync load failed\n");
 		});
 
 		// only call the callback at the end of the chain of files
@@ -86,11 +88,11 @@ nodeLoader.prototype._loadFilesAsync = function (root, paths) {
 	if (paths.length > 0) {
 		var filename = paths.shift();
 		var filepath = path.join(root, "locale", filename);
-		util.print("node loader: attempting async load " + filepath + "\n");
+		// util.print("node loader: attempting async load " + filepath + "\n");
 		fs.readFile(filepath, "utf-8", function(err, json) {
 			if (err) {
 				filepath = path.join("resources", filename);
-				util.print("node loader: attempting async load " + filepath + "\n");
+				// util.print("node loader: attempting async load " + filepath + "\n");
 				fs.readFile(filepath, "utf-8", function(err, json) {
 					this._nextFile(root, paths, err ? undefined : json);
 				});
@@ -101,7 +103,7 @@ nodeLoader.prototype._loadFilesAsync = function (root, paths) {
 	}
 };
 nodeLoader.prototype._nextFile = function (root, paths, json) {
-	util.print("node loader:  async load " + (json ? "succeeded" : "failed") + "\n");
+	// util.print("node loader:  async load " + (json ? "succeeded" : "failed") + "\n");
 	this.results.push(json ? JSON.parse(json) : undefined);
 	if (paths.length > 0) {
 		this._loadFilesAsync(root, paths);
@@ -113,7 +115,7 @@ nodeLoader.prototype._nextFile = function (root, paths, json) {
 	}
 };
 nodeLoader.prototype._loadManifests = function() {
-	util.print("node loader: load manifests\n");
+	// util.print("node loader: load manifests\n");
 	if (!this.manifest) {
 		var root = this.base;
 		var manifest = {};
@@ -123,7 +125,7 @@ nodeLoader.prototype._loadManifests = function() {
 			var dirpath = path.join(root, subpath);
 			var filepath = path.join(dirpath, "ilibmanifest.json");
 			if (fs.existsSync(filepath)) {
-				util.print("node loader: loading manifest " + filepath + "\n");
+				// util.print("node loader: loading manifest " + filepath + "\n");
 				json = fs.readFileSync(filepath, "utf-8");
 				if (json) {
 					manifest[dirpath] = JSON.parse(json).files;
@@ -141,22 +143,22 @@ nodeLoader.prototype._loadManifests = function() {
 	}
 };
 nodeLoader.prototype.listAvailableFiles = function() {
-	util.print("node loader: list available files called\n");
+	// util.print("node loader: list available files called\n");
 	this._loadManifests();
 	return this.manifest;
 };
 nodeLoader.prototype.isAvailable = function(path) {
 	this._loadManifests();
 	
-	util.print("node loader: isAvailable " + path + "? ");
+	// util.print("node loader: isAvailable " + path + "? ");
 	for (var dir in this.manifest) {
 		if (ilib.indexOf(this.manifest[dir], path) !== -1) {
-			util.print("true\n");
+			// util.print("true\n");
 			return true;
 		}
 	}
 	
-	util.print("false\n");
+	// util.print("false\n");
 	return false;
 };
 

@@ -456,16 +456,16 @@ ilib.hashCode = function(obj) {
  * Load data using the new loader object or via the old function callback.
  */
 ilib._callLoadData = function (files, sync, params, callback) {
-	console.log("ilib._callLoadData called");
+	// console.log("ilib._callLoadData called");
 	if (typeof(ilib._load) === 'function') {
-		console.log("ilib._callLoadData: calling as a regular function");
+		// console.log("ilib._callLoadData: calling as a regular function");
 		return ilib._load(files, sync, params, callback);
 	} else if (typeof(ilib._load) === 'object' && ilib._load instanceof ilib.Loader) {
-		console.log("ilib._callLoadData: calling as an object");
+		// console.log("ilib._callLoadData: calling as an object");
 		return ilib._load.loadFiles(files, sync, params, callback);
 	}
 	
-	console.log("ilib._callLoadData: not calling. Type is " + typeof(ilib._load) + " and instanceof says " + (ilib._load instanceof ilib.Loader));
+	// console.log("ilib._callLoadData: not calling. Type is " + typeof(ilib._load) + " and instanceof says " + (ilib._load instanceof ilib.Loader));
 	return undefined;
 };
 
@@ -540,11 +540,11 @@ ilib.loadData = function(params) {
 		var data;
 		
 		if (type === "json") {
-			console.log("type is json");
+			// console.log("type is json");
 			var basename = name.substring(0, name.lastIndexOf("."));
 			data = ilib.mergeLocData(basename, locale);
 			if (data) {
-				console.log("found assembled data");
+				// console.log("found assembled data");
 				if (object) {
 					object.cache[spec] = data;
 				}
@@ -553,7 +553,7 @@ ilib.loadData = function(params) {
 			}
 		}
 		
-		console.log("ilib._load is " + typeof(ilib._load));
+		// console.log("ilib._load is " + typeof(ilib._load));
 		if (typeof(ilib._load) !== 'undefined') {
 			// the data is not preassembled, so attempt to load it dynamically
 			var files = ilib.getLocFiles(locale, name);

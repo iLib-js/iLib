@@ -1,7 +1,7 @@
 /*
  * timezone.js - Definition of a time zone class
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -180,6 +180,19 @@ ilib.TimeZone = function(options) {
 	//console.log("id is: " + JSON.stringify(this.id));
 };
 
+/**
+ * @private
+ * Initialize with the basic static TZ info.
+ */
+ilib.TimeZone._initData = function() {
+	if (!ilib.data.timezones) {
+		ilib.data.timezones = {
+			"Etc/UTC":{"o":"0:0","f":"UTC"},
+			"local":{"f":"local"}
+		};
+	}
+};
+
 /*
  * Explanation of the compressed time zone info properties.
  * {
@@ -207,13 +220,11 @@ ilib.TimeZone = function(options) {
  * }
  */
 ilib.TimeZone.prototype._loadtzdata = function () {
-	if (!ilib.data.timezones) {
-		ilib.data.timezones = {
-			"Etc/UTC":{"o":"0:0","f":"UTC"},
-			"local":{"f":"local"}
-		};
-	}
-	if (ilib.data.timezones[this.id]) {
+	ilib.TimeZone._initData();
+	
+	// console.log("id is: " + JSON.stringify(this.id));
+	// console.log("zoneinfo is: " + JSON.stringify(ilib.data.timezones[this.id]));
+	if (!ilib.data.timezones[this.id] && typeof(this.offset) === 'undefined') {
 		ilib.loadData({
 			object: ilib.TimeZone, 
 			locale: "-",	// locale independent 
@@ -221,7 +232,9 @@ ilib.TimeZone.prototype._loadtzdata = function () {
 			sync: this.sync, 
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function (tzdata) {
-				ilib.data.timezones[this.id] = tzdata;
+				if (tzdata && !ilib.isEmpty(tzdata)) {
+					ilib.data.timezones[this.id] = tzdata;
+				}
 				this._initZone();
 			})
 		});
@@ -269,13 +282,16 @@ ilib.TimeZone.prototype._initZone = function() {
 ilib.TimeZone.getAvailableIds = function (country) {
 	var tz, ids = [];
 	
+	ilib.TimeZone._initData();
+	
 	if (!ilib.data.timezones.list) {
 		ilib.data.timezones.list = [];
 		if (ilib._load instanceof ilib.Loader) {
 			var hash = ilib._load.listAvailableFiles();
 			for (var dir in hash) {
-				hash[dir].forEach(function (filename) {
-					if (filename.match(/^zoneinfo/)) {
+				var files = hash[dir];
+				files.forEach(function (filename) {
+					if (filename && filename.match(/^zoneinfo/)) {
 						ilib.data.timezones.list.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
 					}
 				});
@@ -286,12 +302,24 @@ ilib.TimeZone.getAvailableIds = function (country) {
 	if (!country) {
 		// special zone meaning "the local time zone according to the JS engine we are running upon"
 		ids.push("local");
-	}
-	
-	for (tz in ilib.data.timezones.list) {
-		if (tz && (!country || ilib.data.timezones[tz].c === country)) {
-			ids.push(tz);
+		for (tz in ilib.data.timezones.list) {
+			if (ilib.data.timezones.list[tz]) {
+				ids.push(ilib.data.timezones.list[tz]);
+			}
 		}
+	} else {
+		if (!ilib.data.timezones.countryToZones) {
+			ilib.loadData({
+				object: ilib.TimeZone, 
+				locale: "-",	// locale independent 
+				name: "zoneinfo/zonetab.json", 
+				sync: true, 
+				callback: ilib.bind(this, function (tzdata) {
+					ilib.data.timezones.countryToZones = tzdata;
+				})
+			});
+		}
+		ids = ilib.data.timezones.countryToZones[country];
 	}
 	
 	return ids;
@@ -422,6 +450,9 @@ ilib.TimeZone.prototype._offsetStringToObj = function (str) {
  * the given date/time, in hours, minutes, and seconds  
  */
 ilib.TimeZone.prototype.getOffset = function (date) {
+	if (!date) {
+		return this.getRawOffset();
+	}
 	var offset = this.getOffsetMillis(date)/60000;
 	
 	var hours = ilib._roundFnc.down(offset/60),

@@ -101,6 +101,9 @@ if (!fs.existsSync(windowsZonesFile)) {
 	usage();
 }
 var windowsZones = loadFile(windowsZonesFile);
+if (typeof(windowsZones.supplemental) !== 'undefined') {
+	windowsZones = windowsZones.supplemental;
+}
 
 var zoneTabFile = tzDataDir + "/zone.tab";
 var zoneTab = new UnicodeFile({
@@ -143,7 +146,7 @@ function scanDir(rootDir, dirName, zones) {
 			var ext = filepath.search(".json");
 		
 			if (ext !== -1) {
-				zones[filepath.substring(0, ext)] = loadFile(path.join(rootDir, filepath)) || {};
+				zones[filepath.substring(0, ext).replace(/^zoneinfo\//, "")] = loadFile(path.join(rootDir, filepath)) || {};
 			}
 		}
 	}
@@ -155,11 +158,16 @@ var timezones = {};
 scanDir(toDir, "", timezones);
 
 var countries = {};
+var countryToZones = {};
 
 for (var i = 0; i < zoneTab.length(); i++) {
 	var row = zoneTab.get(i);
 	util.print("map " + row[2] + " to " + row[0] + "\n");
 	countries[row[2]] = row[0];
+	if (!countryToZones[row[0]]) {
+		countryToZones[row[0]] = [];
+	}
+	countryToZones[row[0]].push(row[2]);
 }
 
 for (var zone in timezones) {
@@ -179,11 +187,13 @@ var tz;
 
 for (var zone = 0; zone < windowsZones.windowsZones.mapTimezones.length; zone++) {
 	var mapZone = windowsZones.windowsZones.mapTimezones[zone].mapZone;
-	var zones = mapZone["@type"].split(/ /g);
+	var type = mapZone["@type"] || mapZone["_type"];
+	var zones = type.split(/ /g);
 	for (var i = 0; i < zones.length; i++) {
 		var name = backwardsMap[zones[i]] || zones[i];
 		if (timezones[name]) {
-			timezones[name].n = mapZone["@other"].replace(/[Ss]tandard/, "{c}");
+			var other = mapZone["@other"] || mapZone["_other"];
+			timezones[name].n = other.replace(/[Ss]tandard/, "{c}");
 			util.print("zone " + name + " long name is " + timezones[name].n + "\n");
 		} else {
 			util.print("zone " + name + " long name is missing\n");
@@ -192,7 +202,7 @@ for (var zone = 0; zone < windowsZones.windowsZones.mapTimezones.length; zone++)
 }
 
 for (var zone in timezones) {
-	var filepath = path.join(toDir, zone + ".json");
+	var filepath = path.join(toDir, "zoneinfo", zone + ".json");
 	util.print("Writing out zone info file " + filepath + "\n");
 	fs.writeFile(filepath, JSON.stringify(timezones[zone], true, 4), function (err) {
 		if (err) {
@@ -200,5 +210,13 @@ for (var zone in timezones) {
 		}
 	});
 }
+
+var filepath = path.join(toDir, "zoneinfo/zonetab.json");
+util.print("Writing out zone tab file " + filepath + "\n");
+fs.writeFile(filepath, JSON.stringify(countryToZones, true, 4), function (err) {
+	if (err) {
+		throw err;
+	}
+});
 
 util.print("Done\n");
