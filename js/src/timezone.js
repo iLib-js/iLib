@@ -27,7 +27,7 @@ util/math.js
 calendar/gregratadie.js
 */
 
-// !data localeinfo timezones
+// !data localeinfo zoneinfo
 
 /**
  * @class Create a time zone instance. 
@@ -180,19 +180,6 @@ ilib.TimeZone = function(options) {
 	//console.log("id is: " + JSON.stringify(this.id));
 };
 
-/**
- * @private
- * Initialize with the basic static TZ info.
- */
-ilib.TimeZone._initData = function() {
-	if (!ilib.data.timezones) {
-		ilib.data.timezones = {
-			"Etc/UTC":{"o":"0:0","f":"UTC"},
-			"local":{"f":"local"}
-		};
-	}
-};
-
 /*
  * Explanation of the compressed time zone info properties.
  * {
@@ -220,8 +207,6 @@ ilib.TimeZone._initData = function() {
  * }
  */
 ilib.TimeZone.prototype._loadtzdata = function () {
-	ilib.TimeZone._initData();
-	
 	// console.log("id is: " + JSON.stringify(this.id));
 	// console.log("zoneinfo is: " + JSON.stringify(ilib.data.timezones[this.id]));
 	if (!ilib.data.timezones[this.id] && typeof(this.offset) === 'undefined') {
@@ -281,8 +266,6 @@ ilib.TimeZone.prototype._initZone = function() {
  */
 ilib.TimeZone.getAvailableIds = function (country) {
 	var tz, ids = [];
-	
-	ilib.TimeZone._initData();
 	
 	if (!ilib.data.timezones.list) {
 		ilib.data.timezones.list = [];

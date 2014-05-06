@@ -19,7 +19,10 @@
 package com.ilib.tools.jsa;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +30,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import com.ilib.IlibLocale;
 
@@ -42,6 +48,7 @@ public class JSFile
     protected ArrayList<Pattern> dependsPatterns = new ArrayList<Pattern>();
     protected ArrayList<Pattern> dataPatterns = new ArrayList<Pattern>();
     protected ArrayList<Pattern> macroPatterns = new ArrayList<Pattern>();
+    protected JSONObject zonetab = null;
     
     public JSFile(File file)
     {
@@ -247,6 +254,52 @@ public class JSFile
         }
     }
 
+    /**
+     * Load in the zoneinfo files that are relevant to all the given locales. Basically, this looks up each
+     * locale's country in the zonetab.json file, and adds all time zones it finds there.
+     * 
+     * @param includePath
+     * @param locales
+     * @param allFiles
+     * @throws Exception if something went wrong or if the zonetab.json file could not be found
+     */
+    protected void findZones(ArrayList<File> includePath, ArrayList<IlibLocale> locales, HashMap<String, AssemblyFile> allFiles)
+    	throws Exception
+    {
+    	logger.debug("Creating dependencies on zoneinfo files");
+    	
+    	if ( zonetab == null ) {
+    		JSONTokener tokenizer;
+    		for ( int i = 0; i < includePath.size(); i++ ) {
+    			File f = new File(includePath.get(i) + "/zoneinfo/zonetab.json");
+    			if ( f.exists() ) {
+    				JSONObject json;
+    				try (Reader rdr = new InputStreamReader(new FileInputStream(f), "utf-8")) {
+    					tokenizer = new JSONTokener(rdr);
+    					zonetab = new JSONObject(tokenizer);
+    					logger.debug("Successfully read in the zonetab.json file");
+    					break;
+    				}
+    			}
+    		}
+    	}
+    	
+    	for (IlibLocale loc: locales) {
+    		logger.debug("Creating for region " + loc.getRegion());
+    		JSONArray zones = zonetab.optJSONArray(loc.getRegion());
+    		if ( zones != null ) {
+    			for ( int i = 0; i < zones.length(); i++ ) {
+    				String zone = zones.getString(i);
+    				File z = new File(zone + ".json");
+    				logger.debug("Creating dependency on zoneinfo " + zone);
+    				locate(includePath, "timezones[\"" + zone.replaceAll("/", "\\/") + "\"]", "zoneinfo/" + zone + ".json", allFiles);
+    			}
+    		}
+    	}
+    	
+    	locate(includePath, "zonetab", "zoneinfo\\/zonetab.json", allFiles);
+    }
+
     /* (non-Javadoc)
      * @see com.ilib.tools.jsa.AssemblyFile#process(java.util.ArrayList, java.util.ArrayList, java.util.HashMap)
      */
@@ -319,7 +372,11 @@ public class JSFile
                         
                         if ( fileName.length() > 0 ) {
                             logger.debug("Found data dependency: " + file.getPath() + " -> " + fileName);
-                        	this.findAll(includePath, locales, fileName, allFiles);
+                            if ( fileName.equalsIgnoreCase("zoneinfo") ) {
+                            	findZones(includePath, locales, allFiles);
+                            } else {
+                            	findAll(includePath, locales, fileName, allFiles);
+                            }
                         }
                             
                         while ( i < groupEnd && Character.isWhitespace(str.charAt(i)) ) {

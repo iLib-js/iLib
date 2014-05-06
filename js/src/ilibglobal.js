@@ -43,16 +43,20 @@ ilib.data = {
         nfd: {},
         nfkd: {},
         ccc: {}
+    },
+    timezones: {
+        "Etc/UTC":{"o":"0:0","f":"UTC"},
+        "local":{"f":"local"}
     }
 };
 
 if (typeof(window) !== 'undefined') {
-	window["ilib"] = ilib;
+    window["ilib"] = ilib;
 }
 
 // export ilib for use as a module in nodejs
 if (typeof(exports) !== 'undefined') {
-	exports.ilib = ilib;
+    exports.ilib = ilib;
 }
 
 /**
@@ -62,18 +66,18 @@ if (typeof(exports) !== 'undefined') {
  * @return {string} string naming the platform
  */
 ilib._getPlatform = function () {
-	if (!ilib._platform) {
-		if (typeof(environment) !== 'undefined') {
-			ilib._platform = "rhino";
-		} else if (typeof(process) !== 'undefined' || typeof(require) !== 'undefined') {
-			ilib._platform = "nodejs";
-		} else if (typeof(window) !== 'undefined') {
-			ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
-		} else {
-			ilib._platform = "unknown";
-		}
-	}	
-	return ilib._platform;
+    if (!ilib._platform) {
+        if (typeof(environment) !== 'undefined') {
+            ilib._platform = "rhino";
+        } else if (typeof(process) !== 'undefined' || typeof(require) !== 'undefined') {
+            ilib._platform = "nodejs";
+        } else if (typeof(window) !== 'undefined') {
+            ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
+        } else {
+            ilib._platform = "unknown";
+        }
+    }    
+    return ilib._platform;
 };
 
 /**
@@ -83,19 +87,19 @@ ilib._getPlatform = function () {
  * @return {boolean} true if the global variable is defined on this platform, false otherwise
  */
 ilib._isGlobal = function(name) {
-	switch (ilib._getPlatform()) {
-		case "rhino":
-			var top = (function() {
-			  return (typeof global === 'object') ? global : this;
-			})();
-			return typeof(top[name]) !== undefined;
-		case "nodejs":
-			var root = typeof(global) !== 'undefined' ? global : this;
-			return root && typeof(root[name]) !== undefined;
-			
-		default:
-			return typeof(window[name]) !== undefined;
-	}
+    switch (ilib._getPlatform()) {
+        case "rhino":
+            var top = (function() {
+              return (typeof global === 'object') ? global : this;
+            })();
+            return typeof(top[name]) !== undefined;
+        case "nodejs":
+            var root = typeof(global) !== 'undefined' ? global : this;
+            return root && typeof(root[name]) !== undefined;
+            
+        default:
+            return typeof(window[name]) !== undefined;
+    }
 };
 
 /**
@@ -111,11 +115,11 @@ ilib._isGlobal = function(name) {
  * @param {string} spec the locale specifier for the default locale
  */
 ilib.setLocale = function (spec) {
-	if (typeof(spec) === 'string') {
-		ilib.locale = spec;
-	}
+    if (typeof(spec) === 'string') {
+        ilib.locale = spec;
+    }
     // else ignore other data types, as we don't have the dependencies
-	// to look into them to find a locale
+    // to look into them to find a locale
 };
 
 /**
@@ -132,50 +136,50 @@ ilib.setLocale = function (spec) {
  * @return {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
-	if (typeof(ilib.locale) !== 'string') {
-		if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
-			// running in a browser
-			ilib.locale = navigator.language;  // FF/Opera/Chrome/Webkit
-			if (!ilib.locale) {
-				// IE on Windows
-				var lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
-					navigator.browserLanguage : 
-					(typeof(navigator.userLanguage) !== 'undefined' ? 
-						navigator.userLanguage : 
-						(typeof(navigator.systemLanguage) !== 'undefined' ?
-							navigator.systemLanguage :
-							undefined));
-				if (typeof(lang) !== 'undefined' && lang) {
-					// for some reason, MS uses lower case region tags
-					ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
-				}
-			}
-		} else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.locales) !== 'undefined') {
-			// webOS
-			if (typeof(PalmSystem.locales.UI) != 'undefined' && PalmSystem.locales.UI.length > 0) {
-				ilib.locale = PalmSystem.locales.UI;
-			}
-		} else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
-			// running under rhino
-			if (typeof(environment.user.language) === 'string' && environment.user.language.length > 0) {
-				ilib.locale = environment.user.language;
-				if (typeof(environment.user.country) === 'string' && environment.user.country.length > 0) {
-					ilib.locale += '-' + environment.user.country;
-				}
-			}
-		} else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
-			// running under nodejs
-			var lang = process.env.LANG || process.env.LC_ALL;
-			// the LANG variable on unix is in the form "lang_REGION.CHARSET"
-			// where language and region are the correct ISO codes separated by
-			// an underscore. This translate it back to the BCP-47 form.
-			if (lang && lang !== 'undefined') {
-				ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
-			}
-		}
-			 
-		ilib.locale = typeof(ilib.locale) === 'string' ? ilib.locale : 'en-US';
-	}
+    if (typeof(ilib.locale) !== 'string') {
+        if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
+            // running in a browser
+            ilib.locale = navigator.language;  // FF/Opera/Chrome/Webkit
+            if (!ilib.locale) {
+                // IE on Windows
+                var lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
+                    navigator.browserLanguage : 
+                    (typeof(navigator.userLanguage) !== 'undefined' ? 
+                        navigator.userLanguage : 
+                        (typeof(navigator.systemLanguage) !== 'undefined' ?
+                            navigator.systemLanguage :
+                            undefined));
+                if (typeof(lang) !== 'undefined' && lang) {
+                    // for some reason, MS uses lower case region tags
+                    ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
+                }
+            }
+        } else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.locales) !== 'undefined') {
+            // webOS
+            if (typeof(PalmSystem.locales.UI) != 'undefined' && PalmSystem.locales.UI.length > 0) {
+                ilib.locale = PalmSystem.locales.UI;
+            }
+        } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
+            // running under rhino
+            if (typeof(environment.user.language) === 'string' && environment.user.language.length > 0) {
+                ilib.locale = environment.user.language;
+                if (typeof(environment.user.country) === 'string' && environment.user.country.length > 0) {
+                    ilib.locale += '-' + environment.user.country;
+                }
+            }
+        } else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
+            // running under nodejs
+            var lang = process.env.LANG || process.env.LC_ALL;
+            // the LANG variable on unix is in the form "lang_REGION.CHARSET"
+            // where language and region are the correct ISO codes separated by
+            // an underscore. This translate it back to the BCP-47 form.
+            if (lang && lang !== 'undefined') {
+                ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
+            }
+        }
+             
+        ilib.locale = typeof(ilib.locale) === 'string' ? ilib.locale : 'en-US';
+    }
     return ilib.locale;
 };
 
@@ -209,31 +213,31 @@ ilib.setTimeZone = function (tz) {
  * @return {string} the default time zone for ilib
  */
 ilib.getTimeZone = function() {
-	if (typeof(ilib.tz) === 'undefined') {
-		if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
-			// running in a browser
-			if (navigator.timezone.length > 0) {
-				ilib.tz = navigator.timezone;
-			}
-		} else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
-			// running in webkit on webOS
-			if (PalmSystem.timezone.length > 0) {
-				ilib.tz = PalmSystem.timezone;
-			}
-		} else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
-			// running under rhino
-			if (typeof(environment.user.timezone) !== 'undefined' && environment.user.timezone.length > 0) {
-				ilib.tz = environment.user.timezone;
-			}
-		} else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
-			// running in nodejs
-			if (process.env.TZ && process.env.TZ !== "undefined") {
-				ilib.tz = process.env.TZ;
-			}
-		}
-		
-		ilib.tz = ilib.tz || "local"; 
-	}
+    if (typeof(ilib.tz) === 'undefined') {
+        if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
+            // running in a browser
+            if (navigator.timezone.length > 0) {
+                ilib.tz = navigator.timezone;
+            }
+        } else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
+            // running in webkit on webOS
+            if (PalmSystem.timezone.length > 0) {
+                ilib.tz = PalmSystem.timezone;
+            }
+        } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
+            // running under rhino
+            if (typeof(environment.user.timezone) !== 'undefined' && environment.user.timezone.length > 0) {
+                ilib.tz = environment.user.timezone;
+            }
+        } else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
+            // running in nodejs
+            if (process.env.TZ && process.env.TZ !== "undefined") {
+                ilib.tz = process.env.TZ;
+            }
+        }
+        
+        ilib.tz = ilib.tz || "local"; 
+    }
 
     return ilib.tz;
 };
@@ -355,15 +359,15 @@ ilib.Loader.prototype.loadFiles = function (paths, sync, params, callback) {};
  * Example:
  *  <pre>
  *  {
- *  	"/usr/share/javascript/ilib/locale": [
- *  		"dateformats.json",
- *  		"aa/dateformats.json",
- *			"af/dateformats.json",
- *			"agq/dateformats.json",
- *			"ak/dateformats.json",
- *			...
- *  		"zxx/dateformats.json"
- *  	]
+ *      "/usr/share/javascript/ilib/locale": [
+ *          "dateformats.json",
+ *          "aa/dateformats.json",
+ *            "af/dateformats.json",
+ *            "agq/dateformats.json",
+ *            "ak/dateformats.json",
+ *            ...
+ *          "zxx/dateformats.json"
+ *      ]
  *  }
  *  </pre>
  * @returns {Object} a hash containing directory names and
@@ -395,8 +399,8 @@ ilib.Loader.prototype.isAvailable = function(path) {};
 ilib.setLoaderCallback = function(loader) {
     // only a basic check
     if ((typeof(loader) === 'object' && loader instanceof ilib.Loader) || 
-    		typeof(loader) === 'function' || typeof(loader) === 'undefined') {
-    	// console.log("setting callback loader to " + (loader ? loader.name : "undefined"));
+            typeof(loader) === 'function' || typeof(loader) === 'undefined') {
+        // console.log("setting callback loader to " + (loader ? loader.name : "undefined"));
         ilib._load = loader;
         return true;
     }

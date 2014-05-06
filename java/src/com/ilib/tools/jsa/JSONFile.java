@@ -39,7 +39,7 @@ public class JSONFile
 	public JSONFile(File file, String baseName)
 	{
 		super(file);
-		this.baseName = baseName.replaceAll("\\/", "_");
+		this.baseName = baseName.replaceAll("([^\\\\])\\/", "$1_");
 	}
 	
 	@Override
