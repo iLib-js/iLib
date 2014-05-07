@@ -181,7 +181,8 @@
         "America/Dawson_Creek",
         "America/Vancouver",
         "America/Whitehorse",
-        "America/Dawson"
+        "America/Dawson",
+        "America/Montreal"
     ],
     "CC": [
         "Indian/Cocos"

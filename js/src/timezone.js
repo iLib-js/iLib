@@ -208,17 +208,17 @@ ilib.TimeZone = function(options) {
  */
 ilib.TimeZone.prototype._loadtzdata = function () {
 	// console.log("id is: " + JSON.stringify(this.id));
-	// console.log("zoneinfo is: " + JSON.stringify(ilib.data.timezones[this.id]));
-	if (!ilib.data.timezones[this.id] && typeof(this.offset) === 'undefined') {
+	// console.log("zoneinfo is: " + JSON.stringify(ilib.data.zoneinfo[this.id]));
+	if (!ilib.data.zoneinfo[this.id] && typeof(this.offset) === 'undefined') {
 		ilib.loadData({
 			object: ilib.TimeZone, 
-			locale: "-",	// locale independent 
+			nonlocale: true,	// locale independent 
 			name: "zoneinfo/" + this.id + ".json", 
 			sync: this.sync, 
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function (tzdata) {
 				if (tzdata && !ilib.isEmpty(tzdata)) {
-					ilib.data.timezones[this.id] = tzdata;
+					ilib.data.zoneinfo[this.id] = tzdata;
 				}
 				this._initZone();
 			})
@@ -233,10 +233,10 @@ ilib.TimeZone.prototype._initZone = function() {
 	 * @private
 	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>,c:string,n:string}} 
 	 */
-	this.zone = ilib.data.timezones[this.id];
+	this.zone = ilib.data.zoneinfo[this.id];
 	if (!this.zone && typeof(this.offset) === 'undefined') {
 		this.id = "Etc/UTC";
-		this.zone = ilib.data.timezones[this.id];
+		this.zone = ilib.data.zoneinfo[this.id];
 	}
 	
 	this._calcDSTSavings();
@@ -255,6 +255,8 @@ ilib.TimeZone.prototype._initZone = function() {
 	}
 };
 
+ilib.data.timezone = {};
+
 /**
  * Return an array of available zone ids that the constructor knows about.
  * The country parameter is optional. If it is not given, all time zones will
@@ -267,17 +269,23 @@ ilib.TimeZone.prototype._initZone = function() {
 ilib.TimeZone.getAvailableIds = function (country) {
 	var tz, ids = [];
 	
-	if (!ilib.data.timezones.list) {
-		ilib.data.timezones.list = [];
+	if (!ilib.data.timezone.list) {
+		ilib.data.timezone.list = [];
 		if (ilib._load instanceof ilib.Loader) {
 			var hash = ilib._load.listAvailableFiles();
 			for (var dir in hash) {
 				var files = hash[dir];
 				files.forEach(function (filename) {
 					if (filename && filename.match(/^zoneinfo/)) {
-						ilib.data.timezones.list.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
+						ilib.data.timezone.list.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
 					}
 				});
+			}
+		} else {
+			for (tz in ilib.data.zoneinfo) {
+				if (ilib.data.zoneinfo[tz]) {
+					ilib.data.timezone.list.push(tz);
+				}
 			}
 		}
 	}
@@ -285,24 +293,26 @@ ilib.TimeZone.getAvailableIds = function (country) {
 	if (!country) {
 		// special zone meaning "the local time zone according to the JS engine we are running upon"
 		ids.push("local");
-		for (tz in ilib.data.timezones.list) {
-			if (ilib.data.timezones.list[tz]) {
-				ids.push(ilib.data.timezones.list[tz]);
+		for (tz in ilib.data.timezone.list) {
+			if (ilib.data.timezone.list[tz]) {
+				ids.push(ilib.data.timezone.list[tz]);
 			}
 		}
 	} else {
-		if (!ilib.data.timezones.countryToZones) {
+		if (!ilib.data.zoneinfo.zonetab) {
 			ilib.loadData({
 				object: ilib.TimeZone, 
-				locale: "-",	// locale independent 
+				nonlocale: true,	// locale independent 
 				name: "zoneinfo/zonetab.json", 
 				sync: true, 
 				callback: ilib.bind(this, function (tzdata) {
-					ilib.data.timezones.countryToZones = tzdata;
+					if (tzdata) {
+						ilib.data.zoneinfo.zonetab = tzdata;
+					}
 				})
 			});
 		}
-		ids = ilib.data.timezones.countryToZones[country];
+		ids = ilib.data.zoneinfo.zonetab[country];
 	}
 	
 	return ids;

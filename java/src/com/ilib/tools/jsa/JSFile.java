@@ -145,44 +145,45 @@ public class JSFile
         throws Exception
     {
     	String baseFileName = baseName + ".json";
+    	String massagedBaseName = baseName.replaceAll("/", "_");
     	StringBuilder localeDir = new StringBuilder();
     	String fileName;
 		
 		if ( locale.getLanguage() != null && locale.getLanguage().length() > 0 ) {
 			localeDir.append(locale.getLanguage());
 			fileName = localeDir + "/" + baseFileName;
-			locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+			locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 
 			if ( locale.getScript() != null && locale.getScript().length() > 0) {
 				localeDir.append("/");
 				localeDir.append(locale.getScript());
 				fileName = localeDir + "/" + baseFileName;
-				locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+				locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 
 				if ( locale.getRegion() != null && locale.getRegion().length() > 0) {
 					localeDir.append("/");
 					localeDir.append(locale.getRegion());
 					fileName = localeDir + "/" + baseFileName;
-					locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+					locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 
 					if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
 						localeDir.append("/");
 						localeDir.append(locale.getVariant());
 				        fileName = localeDir + "/" + baseFileName;
-				        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+				        locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 					}
 				}
 			} else if ( locale.getRegion() != null && locale.getRegion().length() > 0) {
 				localeDir.append("/");
 				localeDir.append(locale.getRegion());
 				fileName = localeDir + "/" + baseFileName;
-				locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+				locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 
 				if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
 					localeDir.append("/");
 					localeDir.append(locale.getVariant());
 			        fileName = localeDir + "/" + baseFileName;
-			        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+			        locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 				}
 			}
 		}
@@ -191,19 +192,19 @@ public class JSFile
 		if ( locale.getScript() != null && locale.getScript().length() > 0) {
 			localeDir.append(locale.getScript());
 			fileName = localeDir + "/" + baseFileName;
-			locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+			locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 
 			if ( locale.getRegion() != null && locale.getRegion().length() > 0) {
 				localeDir.append("/");
 				localeDir.append(locale.getRegion());
 				fileName = localeDir + "/" + baseFileName;
-				locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+				locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 
 				if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
 					localeDir.append("/");
 					localeDir.append(locale.getVariant());
 			        fileName = localeDir + "/" + baseFileName;
-			        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+			        locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 				}
 			}
 		}
@@ -212,13 +213,13 @@ public class JSFile
 		if ( locale.getRegion() != null && locale.getRegion().length() > 0) {
 			localeDir.append(locale.getRegion());
 			fileName = "und/" + localeDir + "/" + baseFileName;
-			locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+			locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 
 			if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
 				localeDir.append("/");
 				localeDir.append(locale.getVariant());
 		        fileName = "und/" + localeDir + "/" + baseFileName;
-		        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+		        locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 			}
 		}
 		
@@ -226,7 +227,7 @@ public class JSFile
 		if ( locale.getVariant() != null && locale.getVariant().length() > 0) {
 			localeDir.append(locale.getVariant());
 	        fileName = localeDir + "/" + baseFileName;
-	        locate(includePath, baseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
+	        locate(includePath, massagedBaseName+"_"+localeDir.toString().replace('/', '_'), fileName, allFiles);
 		}
     }
     
@@ -246,7 +247,7 @@ public class JSFile
     		throws Exception
     {
     	if ( locales != null && locales.size() > 0 ) {
-    	    locate(includePath, baseName, baseName + ".json", allFiles);
+    	    locate(includePath, baseName.replaceAll("/", "_"), baseName + ".json", allFiles);
             
             for ( int i = 0; i < locales.size(); i++ ) {
         		findAllForLocale(includePath, baseName, locales.get(i), allFiles);
@@ -266,23 +267,27 @@ public class JSFile
     protected void findZones(ArrayList<File> includePath, ArrayList<IlibLocale> locales, HashMap<String, AssemblyFile> allFiles)
     	throws Exception
     {
+    	File dir = null;
+    	
     	logger.debug("Creating dependencies on zoneinfo files");
     	
-    	if ( zonetab == null ) {
-    		JSONTokener tokenizer;
-    		for ( int i = 0; i < includePath.size(); i++ ) {
-    			File f = new File(includePath.get(i) + "/zoneinfo/zonetab.json");
-    			if ( f.exists() ) {
-    				JSONObject json;
-    				try (Reader rdr = new InputStreamReader(new FileInputStream(f), "utf-8")) {
-    					tokenizer = new JSONTokener(rdr);
-    					zonetab = new JSONObject(tokenizer);
-    					logger.debug("Successfully read in the zonetab.json file");
-    					break;
-    				}
-    			}
-    		}
-    	}
+		JSONTokener tokenizer;
+		for ( int i = 0; i < includePath.size(); i++ ) {
+			dir = new File(includePath.get(i), "zoneinfo");
+			File f = new File(dir, "zonetab.json");
+			if ( f.exists() ) {
+				try (Reader rdr = new InputStreamReader(new FileInputStream(f), "utf-8")) {
+					tokenizer = new JSONTokener(rdr);
+					zonetab = new JSONObject(tokenizer);
+					logger.debug("Successfully read in the zonetab.json file");
+					break;
+				}
+			}
+		}
+		
+		if ( dir == null ) {
+			throw new Exception("Could not find zoneinfo files in any of the include directories.");
+		}
     	
     	for (IlibLocale loc: locales) {
     		logger.debug("Creating for region " + loc.getRegion());
@@ -290,14 +295,60 @@ public class JSFile
     		if ( zones != null ) {
     			for ( int i = 0; i < zones.length(); i++ ) {
     				String zone = zones.getString(i);
-    				File z = new File(zone + ".json");
     				logger.debug("Creating dependency on zoneinfo " + zone);
-    				locate(includePath, "timezones[\"" + zone.replaceAll("/", "\\/") + "\"]", "zoneinfo/" + zone + ".json", allFiles);
+    				locate(includePath, 
+    						"zoneinfo[\"" + zone + "\"]", 
+    						"zoneinfo/" + zone + ".json", 
+    						allFiles);
     			}
     		}
     	}
     	
-    	locate(includePath, "zonetab", "zoneinfo\\/zonetab.json", allFiles);
+    	// add in all generic zones no matter what the locales are
+    	if ( locales != null && locales.size() > 0 ) {
+	    	logger.debug("Searching directory for generic files: " + dir.toString());
+	        File[] files = dir.listFiles();
+	        if ( files != null ) {
+	            for ( int i = 0; i < files.length; i++ ) {
+	                if (files[i].isFile() && files[i].getName().endsWith(".json")) {
+	                   	logger.debug("Adding generic tz file " + files[i].getPath());
+	                   	
+	                   	JSONFile json;
+	                	if ( allFiles.containsKey(files[i].getPath()) ) {
+	                    	json = (JSONFile) allFiles.get(files[i].getPath());
+	                    } else {
+	                    	json = new JSONFile(files[i], "zoneinfo[\"" + files[i].getName().replaceAll("\\.json$", "") + "\"]");
+	                    	allFiles.put(files[i].getPath(), json);
+	                    }
+	                	dependencies.add(json);
+	                    json.addParent(this);
+	                }
+	            }
+	        }
+	        
+	        File etcDir = new File(dir, "Etc");
+	        files = etcDir.listFiles();
+	        if ( files != null ) {
+	            for ( int i = 0; i < files.length; i++ ) {
+	                if (files[i].isFile() && files[i].getName().endsWith(".json")) {
+	                   	logger.debug("Adding generic tz file " + files[i].getPath());
+	                   	
+	                   	JSONFile json;
+	                	if ( allFiles.containsKey(files[i].getPath()) ) {
+	                    	json = (JSONFile) allFiles.get(files[i].getPath());
+	                    } else {
+	                    	json = new JSONFile(files[i], 
+	                    		"zoneinfo[\"Etc/" + files[i].getName().replaceAll("\\.json$", "") + "\"]");
+	                    	allFiles.put(files[i].getPath(), json);
+	                    }
+	                	dependencies.add(json);
+	                    json.addParent(this);
+	                }
+	            }
+	        }
+	        
+	    	locate(includePath, "timezone.zonetab", "zoneinfo\\/zonetab.json", allFiles);
+    	}
     }
 
     /* (non-Javadoc)

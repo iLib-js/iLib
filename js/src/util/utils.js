@@ -483,6 +483,7 @@ ilib._callLoadData = function (files, sync, params, callback) {
  * <li><i>name</i> - String. The name of the file being loaded. Default: resources.json
  * <li><i>object</i> - Object. The class attempting to load data. The cache is stored inside of here.
  * <li><i>locale</i> - ilib.Locale. The locale for which data is loaded. Default is the current locale.
+ * <li><i>nonlocale</i> - boolean. If true, the data being loaded is not locale-specific.
  * <li><i>type</i> - String. Type of file to load. This can be "json" or "other" type. Default: "json" 
  * <li><i>loadParams</i> - Object. An object with parameters to pass to the loader function
  * <li><i>sync</i> - boolean. Whether or not to load the data synchronously
@@ -499,7 +500,8 @@ ilib.loadData = function(params) {
 		sync = false, 
 		type = undefined,
 		loadParams = {},
-		callback = undefined;
+		callback = undefined,
+		nonlocale = false;
 	
 	if (!params || typeof(params.callback) !== 'function') {
 		return;
@@ -523,6 +525,9 @@ ilib.loadData = function(params) {
 	if (params.sync) {
 		sync = params.sync;
 	}
+	if (params.nonlocale) {
+		nonlocale = !!params.nonlocale;
+	}
 	
 	callback = params.callback;
 	
@@ -535,14 +540,19 @@ ilib.loadData = function(params) {
 		type = (dot !== -1) ? name.substring(dot+1) : "text";
 	}
 
-	var spec = (locale.getSpec().replace(/-/g, '_') || "root") + "," + name + "," + String(ilib.hashCode(loadParams));
+	var spec = ((!nonlocale && locale.getSpec().replace(/-/g, '_')) || "root") + "," + name + "," + String(ilib.hashCode(loadParams));
 	if (!object || typeof(object.cache[spec]) === 'undefined') {
 		var data;
 		
 		if (type === "json") {
 			// console.log("type is json");
 			var basename = name.substring(0, name.lastIndexOf("."));
-			data = ilib.mergeLocData(basename, locale);
+			if (nonlocale) {
+				basename = name.replace(/\//g, '.').replace(/[\\\+\-]/g, "_");
+				data = ilib.data[basename];
+			} else {
+				data = ilib.mergeLocData(basename, locale);
+			}
 			if (data) {
 				// console.log("found assembled data");
 				if (object) {

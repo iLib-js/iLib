@@ -44,7 +44,7 @@ ilib.data = {
         nfkd: {},
         ccc: {}
     },
-    timezones: {
+    zoneinfo: {
         "Etc/UTC":{"o":"0:0","f":"UTC"},
         "local":{"f":"local"}
     }
