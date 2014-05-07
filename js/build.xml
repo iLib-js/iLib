@@ -47,7 +47,7 @@ limitations under the License.
 	<property name="build.jsdoc"					value="${build.output}/jsdoc"/>
 	<property name="build.data"						value="${build.base}/data"/>
 	<property name="build.locale"					value="${build.data}/locale"/>
-	<property name="build.localetemp"				value="${build.data}/temp"/>
+	<property name="build.localetemp"				value="${build.data}/localetemp"/>
 	<property name="build.config"					value="config"/>
 	<property name="log4j.config.file"				value="${build.config}/log4j.properties"/>
 
@@ -96,7 +96,7 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<!-- Implement the standard targets                                      -->
 	<!-- =================================================================== -->
-	<target name="all" depends="dist" description="Build everything. This is the target that the build should run."/>
+	<target name="all" depends="export,doc" description="Build everything. This is the target that the build should run."/>
 
 	<target name="clean" description="Remove all generated files to start from scratch">
 		<delete dir="${build.classes}"/>
@@ -153,7 +153,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.core" depends="prepare,gen.manifest,testilib.core" unless="core.ilib.core.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+	<target name="assemble.core" depends="prepare,gen.manifest.locale,testilib.core" unless="core.ilib.core.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
 			tgtfilename="ilib-core.js" 
 			srcfilename="ilib-core-inc.js" 
@@ -180,7 +180,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.standard" depends="prepare,gen.manifest,testilib.standard" unless="core.ilib.standard.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+	<target name="assemble.standard" depends="prepare,gen.manifest.locale,testilib.standard" unless="core.ilib.standard.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
 			tgtfilename="ilib-standard.js" 
 			srcfilename="ilib-standard-inc.js" 
@@ -207,7 +207,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.full" depends="prepare,gen.manifest,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
+	<target name="assemble.full" depends="prepare,gen.manifest.locale,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
 		<runassemble 
 			tgtfilename="ilib-full.js" 
 			srcfilename="ilib-full-inc.js" 
@@ -234,11 +234,11 @@ limitations under the License.
 		</uptodate>
 	</target>
 	
-	<target name="assemble.unittest" depends="prepare,gen.manifest,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble 
 			tgtfilename="ilib-ut.js" 
 			srcfilename="ilib-ut-inc.js" 
-			locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-NG-Latn,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,kk-KZ-Cyrl,kn-IN,ko-KR,ks-IN-Arab,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,MA-Latn,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,nb-NO,ne-IN,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-PK-Arab,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,shi-MA-Tfng,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-Latn-RS,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,uz-UZ-Latn,vai-LR-Latn,vi-VN,zh-CN,zh-CN-Hans,zh-Hant-HK,zh-Hant-MY,zh-Hant-TW,zh-HK,zh-HK-Hans,zh-MO-Hant,zh-MY,zh-SG,zh-SG-Hans,zh-TW,zh-TW-Hant,zh-US-Hant,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
+			locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-NG-Latn,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,kk-KZ-Cyrl,kn-IN,ko-KR,ks-IN-Arab,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,MA-Latn,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,nb-NO,ne-NP,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-PK-Arab,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,shi-MA-Tfng,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-Latn-RS,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,uz-UZ-Latn,vai-LR-Latn,vi-VN,zh-CN,zh-CN-Hans,zh-Hant-HK,zh-Hant-MY,zh-Hant-TW,zh-HK,zh-HK-Hans,zh-MO-Hant,zh-MY,zh-SG,zh-SG-Hans,zh-TW,zh-TW-Hant,zh-US-Hant,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 		<jscomp compilationlevel="simple" 
 			warning="verbose" 
 			debug="true"
@@ -261,7 +261,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 	
-	<target name="assemble.dyn.unittest" depends="prepare,gen.manifest,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.dyn.unittest" depends="prepare,gen.manifest.locale,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble 
 			tgtfilename="ilib-dyn-ut.js" 
 			srcfilename="ilib-ut-inc.js" 
@@ -288,7 +288,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.demo" depends="prepare,gen.manifest,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
+	<target name="assemble.demo" depends="prepare,gen.manifest.locale,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
 		<runassemble 
 			tgtfilename="ilib-demo.js" 
 			srcfilename="ilib-full-inc.js" 
@@ -315,7 +315,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn.standard" depends="prepare,gen.manifest,testilib.dyn.standard" unless="ilib.dyn.standard.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
+	<target name="assemble.dyn.standard" depends="prepare,gen.manifest.locale,testilib.dyn.standard" unless="ilib.dyn.standard.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
 		<runassemble 
 			tgtfilename="ilib-dyn-standard.js" 
 			srcfilename="ilib-standard-inc.js" 
@@ -342,7 +342,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn.core" depends="prepare,gen.manifest,testilib.dyn.core" unless="ilib.dyn.core.not.needed" description="assembles the core set of the js files into a single file">
+	<target name="assemble.dyn.core" depends="prepare,gen.manifest.locale,testilib.dyn.core" unless="ilib.dyn.core.not.needed" description="assembles the core set of the js files into a single file">
 		<runassemble 
 			tgtfilename="ilib-dyn-core.js" 
 			srcfilename="ilib-core-inc.js" 
@@ -369,7 +369,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.dyn.full" depends="prepare,gen.manifest,testilib.dyn.full" unless="ilib.dyn.full.not.needed" description="assembles the full set of the js files into a single file">
+	<target name="assemble.dyn.full" depends="prepare,gen.manifest.locale,testilib.dyn.full" unless="ilib.dyn.full.not.needed" description="assembles the full set of the js files into a single file">
 		<runassemble 
 			tgtfilename="ilib-dyn-full.js" 
 			srcfilename="ilib-full-inc.js" 
@@ -396,7 +396,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 
-	<target name="assemble.lg" depends="prepare,gen.manifest,testilib.lg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
+	<target name="assemble.lg" depends="prepare,gen.manifest.locale,testilib.lg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
 		<runassemble 
 			tgtfilename="ilib-lg.js" 
 			srcfilename="ilib-standard-inc.js"
@@ -480,7 +480,7 @@ limitations under the License.
 		</tar>
 	</target>
 	
-	<target name="dist" depends="export,doc" description="Distribute all built objects in preparation for running">
+	<!-- target name="dist" depends="export,doc" description="Distribute all built objects in preparation for running">
 		<zip destfile="${build.dist}/ilib-${version}.zip"
 			basedir="${build.export}/js"
 			includes="ilib-*.js"/>
@@ -499,7 +499,7 @@ limitations under the License.
 			<zipfileset 
 				dir="../tools" 
 				prefix="tools"
-				includes="jsdoc*/**"/>
+				includes="jsdoc*/**,build/**"/>
 		</zip>
 		<tar destfile="${build.dist}/ilib-${version}.tgz"
 			basedir="${build.export}/js"
@@ -526,6 +526,10 @@ limitations under the License.
 				dir="../tools" 
 				prefix="tools"
 				includes="jsdoc*/**"/>
+			<tarfileset 
+				dir="../tools"
+				prefix="tools"
+				includes="build/**"/>
 		</tar>
 		<checksum>
 			<fileset dir="${build.dist}">
@@ -534,7 +538,7 @@ limitations under the License.
 				<include name="*.jar"/>
 			</fileset>
 		</checksum>
-	</target>
+	</target -->
 
 	<target depends="assemble.unittest" name="test.assembled.compiled">
 		<echo>Testing the core classes in the assembled and compiled version of ilib</echo>
@@ -669,16 +673,16 @@ limitations under the License.
 		<touch file="${build.locale}/jsoncompress.stamp"/>
 	</target>
 
-	<target name="test.manifest" description="test whether or not the manifest needs to be regenerated">
-		<uptodate property="manifest.not.needed" targetFile="${build.localetemp}/ilibmanifest.json">
+	<target name="test.locale.manifest" description="test whether or not the locale manifest needs to be regenerated">
+		<uptodate property="locale.manifest.not.needed" targetFile="${build.localetemp}/ilibmanifest.json">
 			<srcfiles dir="${build.localetemp}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 
-	<target name="gen.manifest"
-			depends="compress.locale.json,test.manifest"
+	<target name="gen.manifest.locale"
+			depends="compress.locale.json,test.locale.manifest"
 			description="produces the ilibmanifest.json file"
-			unless="manifest.not.needed">
+			unless="locale.manifest.not.needed">
 		<exec os="Linux" executable="node" dir="${build.localetemp}">
 			<arg value="${build.tools}/build/mkmf.js"/>
 		</exec>
@@ -689,5 +693,4 @@ limitations under the License.
 			<arg value="${build.tools}/build/mkmf.js"/>
 		</exec>
 	</target>
-
 </project>

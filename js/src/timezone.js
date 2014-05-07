@@ -1,7 +1,7 @@
 /*
  * timezone.js - Definition of a time zone class
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ util/math.js
 calendar/gregratadie.js
 */
 
-// !data localeinfo timezones
+// !data localeinfo zoneinfo
 
 /**
  * @class Create a time zone instance. 
@@ -183,14 +183,14 @@ ilib.TimeZone = function(options) {
 /*
  * Explanation of the compressed time zone info properties.
  * {
- *     "o": "8:0",      // Offset from UTC
- *     "f": "W{c}T",      // 
+ *     "o": "8:0",      // offset from UTC
+ *     "f": "W{c}T",    // standard abbreviation. For time zones that observe DST, the {c} replacement is replaced with the 
+ *                      // letter in the e.c or s.c properties below 
  *     "e": {           // info about the end of DST
  *         "m": 3,      // month that it ends
  *         "r": "l0",   // rule for the day it ends "l" = "last", numbers are Sun=0 through Sat=6. Other syntax is "0>7". 
  *                      // This means the 0-day (Sun) after the 7th of the month. Other possible operators are <, >, <=, >=
  *         "t": "2:0",  // time of day that the DST turns off, hours:minutes
- *         "z": "s",    // ???
  *         "c": "S"     // character to replace into the abbreviation for standard time 
  *     },
  *     "s": {           // info about the start of DST
@@ -198,7 +198,6 @@ ilib.TimeZone = function(options) {
  *         "r": "l0",   // rule for the day it starts "l" = "last", numbers are Sun=0 through Sat=6. Other syntax is "0>7".
  *                      // This means the 0-day (Sun) after the 7th of the month. Other possible operators are <, >, <=, >=
  *         "t": "2:0",  // time of day that the DST turns on, hours:minutes
- *         "z": "s",    // ???
  *         "v": "1:0",  // amount of time saved in hours:minutes
  *         "c": "D"     // character to replace into the abbreviation for daylight time
  *     },
@@ -207,20 +206,20 @@ ilib.TimeZone = function(options) {
  *                      // long English name of the zone. The {c} replacement is for the word "Standard" or "Daylight" as appropriate
  * }
  */
-ilib.data.defaultZones = {
-	"Etc/UTC":{"o":"0:0","f":"UTC"}
-};
-
 ilib.TimeZone.prototype._loadtzdata = function () {
-	if (!ilib.data.timezones) {
+	// console.log("id is: " + JSON.stringify(this.id));
+	// console.log("zoneinfo is: " + JSON.stringify(ilib.data.zoneinfo[this.id]));
+	if (!ilib.data.zoneinfo[this.id] && typeof(this.offset) === 'undefined') {
 		ilib.loadData({
 			object: ilib.TimeZone, 
-			locale: "-",	// locale independent 
-			name: "timezones.json", 
+			nonlocale: true,	// locale independent 
+			name: "zoneinfo/" + this.id + ".json", 
 			sync: this.sync, 
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function (tzdata) {
-				ilib.data.timezones = tzdata || ilib.data.defaultZones;
+				if (tzdata && !ilib.isEmpty(tzdata)) {
+					ilib.data.zoneinfo[this.id] = tzdata;
+				}
 				this._initZone();
 			})
 		});
@@ -234,10 +233,10 @@ ilib.TimeZone.prototype._initZone = function() {
 	 * @private
 	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>,c:string,n:string}} 
 	 */
-	this.zone = ilib.data.timezones[this.id];
+	this.zone = ilib.data.zoneinfo[this.id];
 	if (!this.zone && typeof(this.offset) === 'undefined') {
 		this.id = "Etc/UTC";
-		this.zone = ilib.data.timezones[this.id];
+		this.zone = ilib.data.zoneinfo[this.id];
 	}
 	
 	this._calcDSTSavings();
@@ -256,6 +255,8 @@ ilib.TimeZone.prototype._initZone = function() {
 	}
 };
 
+ilib.data.timezone = {};
+
 /**
  * Return an array of available zone ids that the constructor knows about.
  * The country parameter is optional. If it is not given, all time zones will
@@ -268,15 +269,50 @@ ilib.TimeZone.prototype._initZone = function() {
 ilib.TimeZone.getAvailableIds = function (country) {
 	var tz, ids = [];
 	
+	if (!ilib.data.timezone.list) {
+		ilib.data.timezone.list = [];
+		if (ilib._load instanceof ilib.Loader) {
+			var hash = ilib._load.listAvailableFiles();
+			for (var dir in hash) {
+				var files = hash[dir];
+				files.forEach(function (filename) {
+					if (filename && filename.match(/^zoneinfo/)) {
+						ilib.data.timezone.list.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
+					}
+				});
+			}
+		} else {
+			for (tz in ilib.data.zoneinfo) {
+				if (ilib.data.zoneinfo[tz]) {
+					ilib.data.timezone.list.push(tz);
+				}
+			}
+		}
+	}
+	
 	if (!country) {
 		// special zone meaning "the local time zone according to the JS engine we are running upon"
 		ids.push("local");
-	}
-	
-	for (tz in ilib.data.timezones) {
-		if (tz && (!country || ilib.data.timezones[tz].c === country)) {
-			ids.push(tz);
+		for (tz in ilib.data.timezone.list) {
+			if (ilib.data.timezone.list[tz]) {
+				ids.push(ilib.data.timezone.list[tz]);
+			}
 		}
+	} else {
+		if (!ilib.data.zoneinfo.zonetab) {
+			ilib.loadData({
+				object: ilib.TimeZone, 
+				nonlocale: true,	// locale independent 
+				name: "zoneinfo/zonetab.json", 
+				sync: true, 
+				callback: ilib.bind(this, function (tzdata) {
+					if (tzdata) {
+						ilib.data.zoneinfo.zonetab = tzdata;
+					}
+				})
+			});
+		}
+		ids = ilib.data.zoneinfo.zonetab[country];
 	}
 	
 	return ids;
@@ -407,6 +443,9 @@ ilib.TimeZone.prototype._offsetStringToObj = function (str) {
  * the given date/time, in hours, minutes, and seconds  
  */
 ilib.TimeZone.prototype.getOffset = function (date) {
+	if (!date) {
+		return this.getRawOffset();
+	}
 	var offset = this.getOffsetMillis(date)/60000;
 	
 	var hours = ilib._roundFnc.down(offset/60),

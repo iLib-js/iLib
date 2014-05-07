@@ -869,7 +869,7 @@ function testDateFmtfrCAShortTimeComponentsHMA() {
 
 function testDateFmtfrCAShortTimeComponentsHMZ() {
     var fmt = new ilib.DateFmt({
-        locale: "fr-CA", 
+        locale: "fr-CA",
         type: "time", 
         time: "hmz", 
         timezone: "America/Montreal"

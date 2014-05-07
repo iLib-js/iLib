@@ -450,6 +450,25 @@ ilib.hashCode = function(obj) {
 	return hash;
 };
 
+
+/**
+ * @private
+ * Load data using the new loader object or via the old function callback.
+ */
+ilib._callLoadData = function (files, sync, params, callback) {
+	// console.log("ilib._callLoadData called");
+	if (typeof(ilib._load) === 'function') {
+		// console.log("ilib._callLoadData: calling as a regular function");
+		return ilib._load(files, sync, params, callback);
+	} else if (typeof(ilib._load) === 'object' && ilib._load instanceof ilib.Loader) {
+		// console.log("ilib._callLoadData: calling as an object");
+		return ilib._load.loadFiles(files, sync, params, callback);
+	}
+	
+	// console.log("ilib._callLoadData: not calling. Type is " + typeof(ilib._load) + " and instanceof says " + (ilib._load instanceof ilib.Loader));
+	return undefined;
+};
+
 /**
  * Find locale data or load it in. If the data with the given name is preassembled, it will
  * find the data in ilib.data. If the data is not preassembled but there is a loader function,
@@ -464,6 +483,7 @@ ilib.hashCode = function(obj) {
  * <li><i>name</i> - String. The name of the file being loaded. Default: resources.json
  * <li><i>object</i> - Object. The class attempting to load data. The cache is stored inside of here.
  * <li><i>locale</i> - ilib.Locale. The locale for which data is loaded. Default is the current locale.
+ * <li><i>nonlocale</i> - boolean. If true, the data being loaded is not locale-specific.
  * <li><i>type</i> - String. Type of file to load. This can be "json" or "other" type. Default: "json" 
  * <li><i>loadParams</i> - Object. An object with parameters to pass to the loader function
  * <li><i>sync</i> - boolean. Whether or not to load the data synchronously
@@ -478,9 +498,10 @@ ilib.loadData = function(params) {
 		object = undefined, 
 		locale = new ilib.Locale(ilib.getLocale()), 
 		sync = false, 
-		type,
+		type = undefined,
 		loadParams = {},
-		callback = undefined;
+		callback = undefined,
+		nonlocale = false;
 	
 	if (!params || typeof(params.callback) !== 'function') {
 		return;
@@ -504,6 +525,9 @@ ilib.loadData = function(params) {
 	if (params.sync) {
 		sync = params.sync;
 	}
+	if (params.nonlocale) {
+		nonlocale = !!params.nonlocale;
+	}
 	
 	callback = params.callback;
 	
@@ -516,14 +540,21 @@ ilib.loadData = function(params) {
 		type = (dot !== -1) ? name.substring(dot+1) : "text";
 	}
 
-	var spec = (locale.getSpec().replace(/-/g, '_') || "root") + "," + name + "," + String(ilib.hashCode(loadParams));
+	var spec = ((!nonlocale && locale.getSpec().replace(/-/g, '_')) || "root") + "," + name + "," + String(ilib.hashCode(loadParams));
 	if (!object || typeof(object.cache[spec]) === 'undefined') {
 		var data;
 		
 		if (type === "json") {
+			// console.log("type is json");
 			var basename = name.substring(0, name.lastIndexOf("."));
-			data = ilib.mergeLocData(basename, locale);
+			if (nonlocale) {
+				basename = name.replace(/\//g, '.').replace(/[\\\+\-]/g, "_");
+				data = ilib.data[basename];
+			} else {
+				data = ilib.mergeLocData(basename, locale);
+			}
 			if (data) {
+				// console.log("found assembled data");
 				if (object) {
 					object.cache[spec] = data;
 				}
@@ -532,14 +563,15 @@ ilib.loadData = function(params) {
 			}
 		}
 		
-		if (typeof(ilib._load) === 'function') {
+		// console.log("ilib._load is " + typeof(ilib._load));
+		if (typeof(ilib._load) !== 'undefined') {
 			// the data is not preassembled, so attempt to load it dynamically
 			var files = ilib.getLocFiles(locale, name);
 			if (type !== "json") {
 				loadParams.returnOne = true;
 			}
 			
-			ilib._load(files, sync, loadParams, ilib.bind(this, function(arr) {
+			ilib._callLoadData(files, sync, loadParams, ilib.bind(this, function(arr) {
 				if (type === "json") {
 					data = ilib.data[basename] || {};
 					for (var i = 0; i < arr.length; i++) {
