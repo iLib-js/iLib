@@ -27,8 +27,28 @@ function testTZConstructor() {
     assertNotNull(tz);
 }
 
+function testTZConstructorWithIlibString() {
+    var tz = new ilib.TimeZone({id: new ilib.String("America/Los_Angeles")});
+    assertNotNull(tz);
+}
+
+function testTZConstructorLocalWithIlibString() {
+    var tz = new ilib.TimeZone({id: new ilib.String("local")});
+    assertNotNull(tz);
+    
+    assertTrue(tz.isLocal);
+}
+
 function testTZGet() {
     var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
+    assertNotNull(tz);
+    
+    assertObjectEquals({h: -8}, tz.getRawOffset());
+    assertObjectEquals({h: 1}, tz.getDSTSavings());
+}
+
+function testTZGetWithIlibString() {
+    var tz = new ilib.TimeZone({id: new ilib.String("America/Los_Angeles")});
     assertNotNull(tz);
     
     assertObjectEquals({h: -8}, tz.getRawOffset());

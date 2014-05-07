@@ -132,7 +132,8 @@ ilib.TimeZone = function(options) {
 		}
 		
 		if (options.id) {
-			if (options.id === 'local') {
+			var id = options.id.toString();
+			if (id === 'local') {
 				this.isLocal = true;
 				
 				// use standard Javascript Date to figure out the time zone offsets
@@ -148,14 +149,14 @@ ilib.TimeZone = function(options) {
 				// the two, no matter whether you are in the northern or southern hemisphere
 				this.offset = Math.max(this.offsetJan1, this.offsetJun1);
 			}
-			this.id = options.id;
+			this.id = id;
 		} else if (options.offset) {
 			this.offset = (typeof(options.offset) === 'string') ? parseInt(options.offset, 10) : options.offset;
 			this.id = this.getDisplayName(undefined, undefined);
 		}
 		
 		if (typeof(options.sync) !== 'undefined') {
-			this.sync = options.sync;
+			this.sync = !!options.sync;
 		}
 		
 		this.loadParams = options.loadParams;
@@ -323,7 +324,7 @@ ilib.TimeZone.getAvailableIds = function (country) {
  * @return {string} a unique id for this time zone
  */
 ilib.TimeZone.prototype.getId = function () {
-	return this.id;
+	return this.id.toString();
 };
 
 /**

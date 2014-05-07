@@ -566,7 +566,7 @@ ilib.loadData = function(params) {
 		// console.log("ilib._load is " + typeof(ilib._load));
 		if (typeof(ilib._load) !== 'undefined') {
 			// the data is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles(locale, name);
+			var files = nonlocale ? [ name || "resources.json" ] : ilib.getLocFiles(locale, name);
 			if (type !== "json") {
 				loadParams.returnOne = true;
 			}
