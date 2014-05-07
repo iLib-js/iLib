@@ -1,7 +1,7 @@
 /*
  * ilibglobal.js - define the ilib name space
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ var ilib = ilib || {};
  */
 ilib.getVersion = function () {
     // increment this for each release
-    return "5.0"
+    return "6.0"
     ;
 };
 
@@ -43,16 +43,20 @@ ilib.data = {
         nfd: {},
         nfkd: {},
         ccc: {}
+    },
+    zoneinfo: {
+        "Etc/UTC":{"o":"0:0","f":"UTC"},
+        "local":{"f":"local"}
     }
 };
 
 if (typeof(window) !== 'undefined') {
-	window["ilib"] = ilib;
+    window["ilib"] = ilib;
 }
 
 // export ilib for use as a module in nodejs
 if (typeof(exports) !== 'undefined') {
-	exports.ilib = ilib;
+    exports.ilib = ilib;
 }
 
 /**
@@ -62,18 +66,18 @@ if (typeof(exports) !== 'undefined') {
  * @return {string} string naming the platform
  */
 ilib._getPlatform = function () {
-	if (!ilib._platform) {
-		if (typeof(environment) !== 'undefined') {
-			ilib._platform = "rhino";
-		} else if (typeof(process) !== 'undefined' || typeof(require) !== 'undefined') {
-			ilib._platform = "nodejs";
-		} else if (typeof(window) !== 'undefined') {
-			ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
-		} else {
-			ilib._platform = "unknown";
-		}
-	}	
-	return ilib._platform;
+    if (!ilib._platform) {
+        if (typeof(environment) !== 'undefined') {
+            ilib._platform = "rhino";
+        } else if (typeof(process) !== 'undefined' || typeof(require) !== 'undefined') {
+            ilib._platform = "nodejs";
+        } else if (typeof(window) !== 'undefined') {
+            ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
+        } else {
+            ilib._platform = "unknown";
+        }
+    }    
+    return ilib._platform;
 };
 
 /**
@@ -83,19 +87,19 @@ ilib._getPlatform = function () {
  * @return {boolean} true if the global variable is defined on this platform, false otherwise
  */
 ilib._isGlobal = function(name) {
-	switch (ilib._getPlatform()) {
-		case "rhino":
-			var top = (function() {
-			  return (typeof global === 'object') ? global : this;
-			})();
-			return typeof(top[name]) !== undefined;
-		case "nodejs":
-			var root = typeof(global) !== 'undefined' ? global : this;
-			return root && typeof(root[name]) !== undefined;
-			
-		default:
-			return typeof(window[name]) !== undefined;
-	}
+    switch (ilib._getPlatform()) {
+        case "rhino":
+            var top = (function() {
+              return (typeof global === 'object') ? global : this;
+            })();
+            return typeof(top[name]) !== undefined;
+        case "nodejs":
+            var root = typeof(global) !== 'undefined' ? global : this;
+            return root && typeof(root[name]) !== undefined;
+            
+        default:
+            return typeof(window[name]) !== undefined;
+    }
 };
 
 /**
@@ -111,11 +115,11 @@ ilib._isGlobal = function(name) {
  * @param {string} spec the locale specifier for the default locale
  */
 ilib.setLocale = function (spec) {
-	if (typeof(spec) === 'string') {
-		ilib.locale = spec;
-	}
+    if (typeof(spec) === 'string') {
+        ilib.locale = spec;
+    }
     // else ignore other data types, as we don't have the dependencies
-	// to look into them to find a locale
+    // to look into them to find a locale
 };
 
 /**
@@ -132,50 +136,50 @@ ilib.setLocale = function (spec) {
  * @return {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
-	if (typeof(ilib.locale) !== 'string') {
-		if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
-			// running in a browser
-			ilib.locale = navigator.language;  // FF/Opera/Chrome/Webkit
-			if (!ilib.locale) {
-				// IE on Windows
-				var lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
-					navigator.browserLanguage : 
-					(typeof(navigator.userLanguage) !== 'undefined' ? 
-						navigator.userLanguage : 
-						(typeof(navigator.systemLanguage) !== 'undefined' ?
-							navigator.systemLanguage :
-							undefined));
-				if (typeof(lang) !== 'undefined' && lang) {
-					// for some reason, MS uses lower case region tags
-					ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
-				}
-			}
-		} else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.locales) !== 'undefined') {
-			// webOS
-			if (typeof(PalmSystem.locales.UI) != 'undefined' && PalmSystem.locales.UI.length > 0) {
-				ilib.locale = PalmSystem.locales.UI;
-			}
-		} else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
-			// running under rhino
-			if (typeof(environment.user.language) === 'string' && environment.user.language.length > 0) {
-				ilib.locale = environment.user.language;
-				if (typeof(environment.user.country) === 'string' && environment.user.country.length > 0) {
-					ilib.locale += '-' + environment.user.country;
-				}
-			}
-		} else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
-			// running under nodejs
-			var lang = process.env.LANG || process.env.LC_ALL;
-			// the LANG variable on unix is in the form "lang_REGION.CHARSET"
-			// where language and region are the correct ISO codes separated by
-			// an underscore. This translate it back to the BCP-47 form.
-			if (lang && lang !== 'undefined') {
-				ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
-			}
-		}
-			 
-		ilib.locale = typeof(ilib.locale) === 'string' ? ilib.locale : 'en-US';
-	}
+    if (typeof(ilib.locale) !== 'string') {
+        if (typeof(navigator) !== 'undefined' && typeof(navigator.language) !== 'undefined') {
+            // running in a browser
+            ilib.locale = navigator.language;  // FF/Opera/Chrome/Webkit
+            if (!ilib.locale) {
+                // IE on Windows
+                var lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
+                    navigator.browserLanguage : 
+                    (typeof(navigator.userLanguage) !== 'undefined' ? 
+                        navigator.userLanguage : 
+                        (typeof(navigator.systemLanguage) !== 'undefined' ?
+                            navigator.systemLanguage :
+                            undefined));
+                if (typeof(lang) !== 'undefined' && lang) {
+                    // for some reason, MS uses lower case region tags
+                    ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
+                }
+            }
+        } else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.locales) !== 'undefined') {
+            // webOS
+            if (typeof(PalmSystem.locales.UI) != 'undefined' && PalmSystem.locales.UI.length > 0) {
+                ilib.locale = PalmSystem.locales.UI;
+            }
+        } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
+            // running under rhino
+            if (typeof(environment.user.language) === 'string' && environment.user.language.length > 0) {
+                ilib.locale = environment.user.language;
+                if (typeof(environment.user.country) === 'string' && environment.user.country.length > 0) {
+                    ilib.locale += '-' + environment.user.country;
+                }
+            }
+        } else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
+            // running under nodejs
+            var lang = process.env.LANG || process.env.LC_ALL;
+            // the LANG variable on unix is in the form "lang_REGION.CHARSET"
+            // where language and region are the correct ISO codes separated by
+            // an underscore. This translate it back to the BCP-47 form.
+            if (lang && lang !== 'undefined') {
+                ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
+            }
+        }
+             
+        ilib.locale = typeof(ilib.locale) === 'string' ? ilib.locale : 'en-US';
+    }
     return ilib.locale;
 };
 
@@ -209,57 +213,61 @@ ilib.setTimeZone = function (tz) {
  * @return {string} the default time zone for ilib
  */
 ilib.getTimeZone = function() {
-	if (typeof(ilib.tz) === 'undefined') {
-		if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
-			// running in a browser
-			if (navigator.timezone.length > 0) {
-				ilib.tz = navigator.timezone;
-			}
-		} else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
-			// running in webkit on webOS
-			if (PalmSystem.timezone.length > 0) {
-				ilib.tz = PalmSystem.timezone;
-			}
-		} else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
-			// running under rhino
-			if (typeof(environment.user.timezone) !== 'undefined' && environment.user.timezone.length > 0) {
-				ilib.tz = environment.user.timezone;
-			}
-		} else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
-			// running in nodejs
-			if (process.env.TZ && process.env.TZ !== "undefined") {
-				ilib.tz = process.env.TZ;
-			}
-		}
-		
-		ilib.tz = ilib.tz || "local"; 
-	}
+    if (typeof(ilib.tz) === 'undefined') {
+        if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
+            // running in a browser
+            if (navigator.timezone.length > 0) {
+                ilib.tz = navigator.timezone;
+            }
+        } else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
+            // running in webkit on webOS
+            if (PalmSystem.timezone.length > 0) {
+                ilib.tz = PalmSystem.timezone;
+            }
+        } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
+            // running under rhino
+            if (typeof(environment.user.timezone) !== 'undefined' && environment.user.timezone.length > 0) {
+                ilib.tz = environment.user.timezone;
+            }
+        } else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
+            // running in nodejs
+            if (process.env.TZ && process.env.TZ !== "undefined") {
+                ilib.tz = process.env.TZ;
+            }
+        }
+        
+        ilib.tz = ilib.tz || "local"; 
+    }
 
     return ilib.tz;
 };
 
 /**
- * @static
- * Define a callback function for loading missing locale data or resources.
+ * @interface
+ * Defines the interface for the loader class for ilib. The main method of the
+ * loader object is loadFiles(), which loads a set of requested locale data files
+ * from where-ever it is stored. 
+ */
+ilib.Loader = function() {};
+
+/**
+ * Load a set of files from where-ever it is stored.<p>
+ * 
+ * This is the main function define a callback function for loading missing locale 
+ * data or resources.
  * If this copy of ilib is assembled without including the required locale data
  * or resources, then that data can be lazy loaded dynamically when it is 
- * needed by calling this callback function. Each ilib class will first
+ * needed by calling this method. Each ilib class will first
  * check for the existence of data under ilib.data, and if it is not there, 
- * it will attempt to load it by calling this loader function, and then place
+ * it will attempt to load it by calling this method of the laoder, and then place
  * it there.<p>
  * 
- * Suggested implementations of the callback function might be to load files 
+ * Suggested implementations of this method might load files 
  * directly from disk under nodejs or rhino, or within web pages, to load 
  * files from the server with XHR calls.<p>
  * 
- * The expected API for the call back is:
- * 
- * <pre>
- * function(paths, sync, params, callback) {}
- * </pre>
- * 
- * The first parameter to the callback
- * function, paths, is an array of relative paths within the ilib dir structure for the 
+ * The first parameter to this method, paths, is an array of relative paths within 
+ * the ilib dir structure for the 
  * requested data. These paths will already have the locale spec integrated 
  * into them, so no further tweaking needs to happen to load the data. Simply
  * load the named files. The second
@@ -288,24 +296,15 @@ ilib.getTimeZone = function() {
  * An example implementation for nodejs might be:
  * 
  * <pre>
- * function loadFiles(context, paths, results, callback) {
- *    if (paths.length > 0) {
- *        var file = paths.shift();
- *        fs.readFile(file, "utf-8", function(err, json) {
- *            results.push(err ? undefined : JSON.parse(json));
- *            if (paths.length > 0) {
- *                loadFiles(context, paths, results, callback);
- *            } else {
- *                callback.call(context, results);
- *            }
- *        });
- *     }
- * }
- * // bind to "this" so that "this" is relative to your own instance
- * ilib.setLoaderCallback(ilib.bind(this, function(paths, sync, params, callback) {
+ * var fs = require("fs");
+ * 
+ * var myLoader = function() {};
+ * myLoader.prototype = new ilib.Loader();
+ * myLoader.prototype.constructor = myLoader;
+ * myLoader.prototype.loadFiles = function(paths, sync, params, callback) {
  *    if (sync) {
  *        var ret = [];
- *        // synchronous
+ *        // synchronous load -- just return the result
  *        paths.forEach(function (path) {
  *            var json = fs.readFileSync(path, "utf-8");
  *            ret.push(json ? JSON.parse(json) : undefined);
@@ -313,22 +312,95 @@ ilib.getTimeZone = function() {
  *        
  *        return ret;
  *    }
+ *    this.callback = callback;
  *
  *    // asynchronous
- *    var results = [];
- *    loadFiles(this, paths, results, callback);
- * }));
- * </pre>
+ *    this.results = [];
+ *    this._loadFilesAsync(paths);
+ * }
+ * myLoader.prototype._loadFilesAsync = function (paths) {
+ *    if (paths.length > 0) {
+ *        var file = paths.shift();
+ *        fs.readFile(file, "utf-8", function(err, json) {
+ *            this.results.push(err ? undefined : JSON.parse(json));
+ *            // call self recursively so that the callback is only called at the end
+ *            // when all the files are loaded sequentially
+ *            if (paths.length > 0) {
+ *                this._loadFilesAsync(paths);
+ *            } else {
+ *                this.callback(this.results);
+ *            }
+ *        });
+ *     }
+ * }
  * 
- * @param {function(Array.<string>,Boolean,Object,function(Object))} loader function to call to 
- * load the requested data.
+ * // bind to "this" so that "this" is relative to your own instance
+ * ilib.setLoaderCallback(new myLoader());
+ * </pre>
+
+ * @param {Array.<string>} paths An array of paths to load from wherever the files are stored 
+ * @param {Boolean} sync if true, load the files synchronously, and false means asynchronously
+ * @param {Object} params an object with any extra parameters for the loader. These can be 
+ * anything. The caller of the ilib class passes these parameters in. Presumably, the code that
+ * calls ilib and the code that provides the loader are together and can have a private 
+ * agreement between them about what the parameters should contain.
+ * @param {function(Object)} callback function to call when the files are all loaded. The 
+ * parameter of the callback function is the contents of the files.
+ */
+ilib.Loader.prototype.loadFiles = function (paths, sync, params, callback) {};
+
+/**
+ * Return all files available for loading using this loader instance.
+ * This method returns an object where the properties are the paths to
+ * directories where files are loaded from and the values are an array
+ * of strings containing the relative paths under the directory of each
+ * file that can be loaded.<p>
+ * 
+ * Example:
+ *  <pre>
+ *  {
+ *      "/usr/share/javascript/ilib/locale": [
+ *          "dateformats.json",
+ *          "aa/dateformats.json",
+ *            "af/dateformats.json",
+ *            "agq/dateformats.json",
+ *            "ak/dateformats.json",
+ *            ...
+ *          "zxx/dateformats.json"
+ *      ]
+ *  }
+ *  </pre>
+ * @returns {Object} a hash containing directory names and
+ * paths to file that can be loaded by this loader 
+ */
+ilib.Loader.prototype.listAvailableFiles = function() {};
+
+/**
+ * Return true if the file in the named path is available for loading using
+ * this loader. The path may be given as an absolute path, in which case
+ * only that file is checked, or as a relative path, in which case, the
+ * relative path may appear underneath any of the directories that the loader
+ * knows about.
+ * @returns {boolean} true if the file in the named path is available for loading, and
+ * false otherwise
+ */
+ilib.Loader.prototype.isAvailable = function(path) {};
+
+/**
+ * @static
+ * Set the custom loader used to load ilib's locale data in your environment. 
+ * The instance passed in must implement the ilib.Loader interface. See the
+ * ilib.Loader class documentation for more information about loaders. 
+ * 
+ * @param {ilib.Loader} loader class to call to access the requested data.
  * @return {boolean} true if the loader was installed correctly, or false
  * if not
  */
 ilib.setLoaderCallback = function(loader) {
     // only a basic check
-    if (typeof(loader) === 'function' || typeof(loader) === 'undefined') {
-    	// console.log("setting callback loader to " + (loader ? loader.name : "undefined"));
+    if ((typeof(loader) === 'object' && loader instanceof ilib.Loader) || 
+            typeof(loader) === 'function' || typeof(loader) === 'undefined') {
+        // console.log("setting callback loader to " + (loader ? loader.name : "undefined"));
         ilib._load = loader;
         return true;
     }
@@ -2021,13 +2093,7 @@ ilib.LocaleInfo.prototype = {
  * @param {Object=} options The date components to initialize this date with
  */
 ilib.Date = function(options) {
-	this.year = options && options.year || 0;
-	this.month = options && options.month || 1;
-	this.day = options && options.day || 1;
-	this.hour = options && options.hour || 0;
-	this.minute = options && options.minute || 0;
-	this.second = options && options.second || 0;
-	this.millisecond = options && options.millisecond || 0;
+	return ilib.Date.newInstance(options);
 };
 
 /**
@@ -2124,6 +2190,37 @@ ilib.Date.prototype = {
 		return "ilib.Date";
 	},
 	
+	/**
+	 * Return the unix time equivalent to this date instance. Unix time is
+	 * the number of milliseconds since midnight on Jan 1, 1970 UTC (Gregorian). This 
+	 * method only returns a valid number for dates between midnight, 
+	 * Jan 1, 1970 UTC (Gregorian) and Jan 19, 2038 at 3:14:07am UTC (Gregorian) when 
+	 * the unix time runs out. If this instance encodes a date outside of that range, 
+	 * this method will return -1. For date types that are not Gregorian, the point 
+	 * in time represented by this date object will only give a return value if it
+	 * is in the correct range in the Gregorian calendar as given previously.
+	 * 
+	 * @return {number} a number giving the unix time, or -1 if the date is outside the
+	 * valid unix time range
+	 */
+	getTime: function() {
+		return this.rd.getTime(); 
+	},
+	
+	/**
+	 * Set the time of this instance according to the given unix time. Unix time is
+	 * the number of milliseconds since midnight on Jan 1, 1970.
+	 * 
+	 * @param {number} millis the unix time to set this date to in milliseconds 
+	 */
+	setTime: function(millis) {
+		this.rd = this.newRd({
+			unixtime: millis,
+			cal: this.cal
+		});
+		this._calcDateComponents();
+	},
+	
 	getDays: function() {
 		return this.day;
 	},
@@ -2168,6 +2265,239 @@ ilib.Date.prototype = {
 	},
 	setMilliseconds: function(milli) {
 		this.millisecond = milli;
+	},
+	
+	/**
+	 * Return a new date instance in the current calendar that represents the first instance 
+	 * of the given day of the week before the current date. The day of the week is encoded
+	 * as a number where 0 = Sunday, 1 = Monday, etc.
+	 * 
+	 * @param {number} dow the day of the week before the current date that is being sought
+	 * @return {ilib.Date} the date being sought
+	 */
+	before: function (dow) {
+		return this.cal.newDateInstance({
+			rd: this.rd.before(dow, this.offset),
+			timezone: this.timezone
+		});
+	},
+	
+	/**
+	 * Return a new date instance in the current calendar that represents the first instance 
+	 * of the given day of the week after the current date. The day of the week is encoded
+	 * as a number where 0 = Sunday, 1 = Monday, etc.
+	 * 
+	 * @param {number} dow the day of the week after the current date that is being sought
+	 * @return {ilib.Date} the date being sought
+	 */
+	after: function (dow) {
+		return this.cal.newDateInstance({
+			rd: this.rd.after(dow, this.offset),
+			timezone: this.timezone
+		});
+	},
+
+	/**
+	 * Return a new Gregorian date instance that represents the first instance of the 
+	 * given day of the week on or before the current date. The day of the week is encoded
+	 * as a number where 0 = Sunday, 1 = Monday, etc.
+	 * 
+	 * @param {number} dow the day of the week on or before the current date that is being sought
+	 * @return {ilib.Date} the date being sought
+	 */
+	onOrBefore: function (dow) {
+		return this.cal.newDateInstance({
+			rd: this.rd.onOrBefore(dow, this.offset),
+			timezone: this.timezone
+		});
+	},
+
+	/**
+	 * Return a new Gregorian date instance that represents the first instance of the 
+	 * given day of the week on or after the current date. The day of the week is encoded
+	 * as a number where 0 = Sunday, 1 = Monday, etc.
+	 * 
+	 * @param {number} dow the day of the week on or after the current date that is being sought
+	 * @return {ilib.Date} the date being sought
+	 */
+	onOrAfter: function (dow) {
+		return this.cal.newDateInstance({
+			rd: this.rd.onOrAfter(dow, this.offset),
+			timezone: this.timezone
+		});
+	},
+	
+	/**
+	 * Return a Javascript Date object that is equivalent to this date
+	 * object.
+	 * 
+	 * @return {Date|undefined} a javascript Date object
+	 */
+	getJSDate: function() {
+		var unix = this.rd.getTime();
+		return (unix === -1) ? undefined : new Date(unix); 
+	},
+	
+	/**
+	 * @private
+	 * Return the Rata Die (fixed day) number of this date.
+	 * 
+	 * @return {number} the rd date as a number
+	 */
+	getRataDie: function() {
+		return this.rd.getRataDie();
+	},
+	
+	/**
+	 * @private
+	 * Set the date components of this instance based on the given rd.
+	 * @param {number} rd the rata die date to set
+	 */
+	setRd: function (rd) {
+		this.rd = this.newRd({
+			rd: rd,
+			cal: this.cal
+		});
+		this._calcDateComponents();
+	},
+	
+	/**
+	 * Return the Julian Day equivalent to this calendar date as a number.
+	 * 
+	 * @return {number} the julian date equivalent of this date
+	 */
+	getJulianDay: function() {
+		return this.rd.getJulianDay();
+	},
+	
+	/**
+	 * Set the date of this instance using a Julian Day.
+	 * @param {number|ilib.JulianDay} date the Julian Day to use to set this date
+	 */
+	setJulianDay: function (date) {
+		this.rd = this.newRd({
+			julianday: (typeof(date) === 'object') ? date.getDate() : date,
+			cal: this.cal
+		});
+		this._calcDateComponents();
+	},
+
+	/**
+	 * Return the time zone associated with this date, or 
+	 * undefined if none was specified in the constructor.
+	 * 
+	 * @return {string|undefined} the name of the time zone for this date instance
+	 */
+	getTimeZone: function() {
+		return this.timezone || "local";
+	},
+	
+	/**
+	 * Set the time zone associated with this date.
+	 * @param {string=} tzName the name of the time zone to set into this date instance,
+	 * or "undefined" to unset the time zone 
+	 */
+	setTimeZone: function (tzName) {
+		if (!tzName || tzName === "") {
+			// same as undefining it
+			this.timezone = undefined;
+			this.tz = undefined;
+		} else if (typeof(tzName) === 'string') {
+			this.timezone = tzName;
+			this.tz = undefined;
+			// assuming the same UTC time, but a new time zone, now we have to 
+			// recalculate what the date components are
+			this._calcDateComponents();
+		}
+	},
+	
+	/**
+	 * @private
+	 * Return the rd number of the first Sunday of the given ISO year.
+	 * @param {number} year the year for which the first Sunday is being sought
+	 * @return {number} the rd of the first Sunday of the ISO year
+	 */
+	firstSunday: function (year) {
+		var firstDay = this.newRd({
+			year: year,
+			month: 1,
+			day: 1,
+			hour: 0,
+			minute: 0,
+			second: 0,
+			millisecond: 0,
+			cal: this.cal
+		});
+		var firstThu = this.newRd({
+			rd: firstDay.onOrAfter(4),
+			cal: this.cal
+		});
+		return firstThu.before(0);
+	},
+	
+	/**
+	 * Return the ISO 8601 week number in the current year for the current date. The week
+	 * number ranges from 0 to 55, as some years have 55 weeks assigned to them in some
+	 * calendars.
+	 * 
+	 * @return {number} the week number for the current date
+	 */
+	getWeekOfYear: function() {
+		var rd = Math.floor(this.rd.getRataDie());
+		var year = this._calcYear(rd + this.offset);
+		var yearStart = this.firstSunday(year);
+		var nextYear;
+		
+		// if we have a January date, it may be in this ISO year or the previous year
+		if (rd < yearStart) {
+			yearStart = this.firstSunday(year-1);
+		} else {
+			// if we have a late December date, it may be in this ISO year, or the next year
+			nextYear = this.firstSunday(year+1);
+			if (rd >= nextYear) {
+				yearStart = nextYear;
+			}
+		}
+		
+		return Math.floor((rd-yearStart)/7) + 1;
+	},
+	
+	/**
+	 * Return the ordinal number of the week within the month. The first week of a month is
+	 * the first one that contains 4 or more days in that month. If any days precede this
+	 * first week, they are marked as being in week 0. This function returns values from 0
+	 * through 6.<p>
+	 * 
+	 * The locale is a required parameter because different locales that use the same 
+	 * Gregorian calendar consider different days of the week to be the beginning of
+	 * the week. This can affect the week of the month in which some days are located.
+	 * 
+	 * @param {ilib.Locale|string} locale the locale or locale spec to use when figuring out 
+	 * the first day of the week
+	 * @return {number} the ordinal number of the week within the current month
+	 */
+	getWeekOfMonth: function(locale) {
+		var li = new ilib.LocaleInfo(locale);
+		
+		var first = this.newRd({
+			year: this._calcYear(this.rd.getRataDie()+this.offset),
+			month: this.month,
+			day: 1,
+			hour: 0,
+			minute: 0,
+			second: 0,
+			millisecond: 0,
+			cal: this.cal
+		});
+		var weekStart = first.onOrAfter(li.getFirstDayOfWeek());
+		
+		if (weekStart - first.getRataDie() > 3) {
+			// if the first week has 4 or more days in it of the current month, then consider
+			// that week 1. Otherwise, it is week 0. To make it week 1, move the week start
+			// one week earlier.
+			weekStart -= 7;
+		}
+		return Math.floor((this.rd.getRataDie() - weekStart) / 7) + 1;
 	}
 };
 
@@ -2623,6 +2953,25 @@ ilib.hashCode = function(obj) {
 	return hash;
 };
 
+
+/**
+ * @private
+ * Load data using the new loader object or via the old function callback.
+ */
+ilib._callLoadData = function (files, sync, params, callback) {
+	// console.log("ilib._callLoadData called");
+	if (typeof(ilib._load) === 'function') {
+		// console.log("ilib._callLoadData: calling as a regular function");
+		return ilib._load(files, sync, params, callback);
+	} else if (typeof(ilib._load) === 'object' && ilib._load instanceof ilib.Loader) {
+		// console.log("ilib._callLoadData: calling as an object");
+		return ilib._load.loadFiles(files, sync, params, callback);
+	}
+	
+	// console.log("ilib._callLoadData: not calling. Type is " + typeof(ilib._load) + " and instanceof says " + (ilib._load instanceof ilib.Loader));
+	return undefined;
+};
+
 /**
  * Find locale data or load it in. If the data with the given name is preassembled, it will
  * find the data in ilib.data. If the data is not preassembled but there is a loader function,
@@ -2637,6 +2986,7 @@ ilib.hashCode = function(obj) {
  * <li><i>name</i> - String. The name of the file being loaded. Default: resources.json
  * <li><i>object</i> - Object. The class attempting to load data. The cache is stored inside of here.
  * <li><i>locale</i> - ilib.Locale. The locale for which data is loaded. Default is the current locale.
+ * <li><i>nonlocale</i> - boolean. If true, the data being loaded is not locale-specific.
  * <li><i>type</i> - String. Type of file to load. This can be "json" or "other" type. Default: "json" 
  * <li><i>loadParams</i> - Object. An object with parameters to pass to the loader function
  * <li><i>sync</i> - boolean. Whether or not to load the data synchronously
@@ -2651,9 +3001,10 @@ ilib.loadData = function(params) {
 		object = undefined, 
 		locale = new ilib.Locale(ilib.getLocale()), 
 		sync = false, 
-		type,
+		type = undefined,
 		loadParams = {},
-		callback = undefined;
+		callback = undefined,
+		nonlocale = false;
 	
 	if (!params || typeof(params.callback) !== 'function') {
 		return;
@@ -2677,6 +3028,9 @@ ilib.loadData = function(params) {
 	if (params.sync) {
 		sync = params.sync;
 	}
+	if (params.nonlocale) {
+		nonlocale = !!params.nonlocale;
+	}
 	
 	callback = params.callback;
 	
@@ -2689,14 +3043,21 @@ ilib.loadData = function(params) {
 		type = (dot !== -1) ? name.substring(dot+1) : "text";
 	}
 
-	var spec = (locale.getSpec().replace(/-/g, '_') || "root") + "," + name + "," + String(ilib.hashCode(loadParams));
+	var spec = ((!nonlocale && locale.getSpec().replace(/-/g, '_')) || "root") + "," + name + "," + String(ilib.hashCode(loadParams));
 	if (!object || typeof(object.cache[spec]) === 'undefined') {
 		var data;
 		
 		if (type === "json") {
+			// console.log("type is json");
 			var basename = name.substring(0, name.lastIndexOf("."));
-			data = ilib.mergeLocData(basename, locale);
+			if (nonlocale) {
+				basename = name.replace(/\//g, '.').replace(/[\\\+\-]/g, "_");
+				data = ilib.data[basename];
+			} else {
+				data = ilib.mergeLocData(basename, locale);
+			}
 			if (data) {
+				// console.log("found assembled data");
 				if (object) {
 					object.cache[spec] = data;
 				}
@@ -2705,14 +3066,15 @@ ilib.loadData = function(params) {
 			}
 		}
 		
-		if (typeof(ilib._load) === 'function') {
+		// console.log("ilib._load is " + typeof(ilib._load));
+		if (typeof(ilib._load) !== 'undefined') {
 			// the data is not preassembled, so attempt to load it dynamically
 			var files = ilib.getLocFiles(locale, name);
 			if (type !== "json") {
 				loadParams.returnOne = true;
 			}
 			
-			ilib._load(files, sync, loadParams, ilib.bind(this, function(arr) {
+			ilib._callLoadData(files, sync, loadParams, ilib.bind(this, function(arr) {
 				if (type === "json") {
 					data = ilib.data[basename] || {};
 					for (var i = 0; i < arr.length; i++) {
@@ -4334,97 +4696,9 @@ ilib.Cal.Gregorian.prototype.newDateInstance = function (options) {
 ilib.Cal._constructors["gregorian"] = ilib.Cal.Gregorian;
 
 /*
- * util/search.js - Misc search utility routines
+ * ratadie.js - Represent the RD date number in the calendar
  * 
- * Copyright © 2013, JEDLSoft
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// !depends ilibglobal.js
-
-/**
- * Binary search a sorted array for a particular target value.
- * If the exact value is not found, it returns the index of the smallest 
- * entry that is greater than the given target value.<p> 
- * 
- * The comparator
- * parameter is a function that knows how to compare elements of the 
- * array and the target. The function should return a value greater than 0
- * if the array element is greater than the target, a value less than 0 if
- * the array element is less than the target, and 0 if the array element 
- * and the target are equivalent.<p>
- * 
- * If the comparator function is not specified, this function assumes
- * the array and the target are numeric values and should be compared 
- * as such.<p>
- * 
- * Depends directive: !depends utils.js
- * 
- * 
- * @param {*} target element being sought 
- * @param {Array} arr the array being searched
- * @param {?function(*,*)=} comparator a comparator that is appropriate for comparing two entries
- * in the array  
- * @return the index of the array into which the value would fit if 
- * inserted, or -1 if given array is not an array or the target is not 
- * a number
- */
-ilib.bsearch = function(target, arr, comparator) {
-	if (typeof(arr) === 'undefined' || !arr || typeof(target) === 'undefined') {
-		return -1;
-	}
-	
-	var high = arr.length - 1,
-		low = 0,
-		mid = 0,
-		value,
-		cmp = comparator || ilib.bsearch.numbers;
-	
-	while (low <= high) {
-		mid = Math.floor((high+low)/2);
-		value = cmp(arr[mid], target);
-		if (value > 0) {
-			high = mid - 1;
-		} else if (value < 0) {
-			low = mid + 1;
-		} else {
-			return mid;
-		}
-	}
-	
-	return low;
-};
-
-/**
- * @private
- * Returns whether or not the given element is greater than, less than,
- * or equal to the given target.<p>
- * 
- * Depends directive: !depends utils.js
- * 
- * @param {number} element the element being tested
- * @param {number} target the target being sought
- */
-ilib.bsearch.numbers = function(element, target) {
-	return element - target;
-};
-
-/*
- * gregoriandate.js - Represent a date in the Gregorian calendar
- * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4441,18 +4715,14 @@ ilib.bsearch.numbers = function(element, target) {
  */
 
 /* !depends 
-date.js 
-calendar/gregorian.js 
 util/utils.js
-util/search.js 
-localeinfo.js 
 julianday.js 
 */
 
 /**
  * @class
  * 
- * Construct a new Gregorian date object. The constructor parameters can 
+ * Construct a new RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
  * <ul>
@@ -4477,16 +4747,276 @@ julianday.js
  * 
  * <li><i>millisecond</i> - 0 to 999
  * 
- * <li><i>timezone</i> - the ilib.TimeZone instance or time zone name as a string 
- * of this gregorian date. The date/time is kept in the local time. The time zone
- * is used later if this date is formatted according to a different time zone and
- * the difference has to be calculated, or when the date format has a time zone
- * component in it.
+ * <li><i>parts</i> - 0 to 1079. Specify the halaqim parts of an hour. Either specify 
+ * the parts or specify the minutes, seconds, and milliseconds, but not both. This is only used
+ * in the Hebrew calendar. 
  * 
- * <li><i>locale</i> - locale for this gregorian date. If the time zone is not 
- * given, it can be inferred from this locale. For locales that span multiple
- * time zones, the one with the largest population is chosen as the one that 
- * represents the locale.
+ * <li><i>minute</i> - 0 to 59
+ * 
+ * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
+ * </ul>
+ *
+ * If the constructor is called with another date instance instead of
+ * a parameter block, the other instance acts as a parameter block and its
+ * settings are copied into the current instance.<p>
+ * 
+ * If the constructor is called with no arguments at all or if none of the 
+ * properties listed above are present, then the RD is calculate based on 
+ * the current date at the time of instantiation. <p>
+ * 
+ * If any of the properties from <i>year</i> through <i>millisecond</i> are not
+ * specified in the params, it is assumed that they have the smallest possible
+ * value in the range for the property (zero or one).<p>
+ * 
+ * Depends directive: !depends ratadie.js
+ * 
+ * @constructor
+ * @param {Object=} params parameters that govern the settings and behaviour of this RD date
+ */
+ilib.Date.RataDie = function(params) {
+	if (params) {
+		if (typeof(params.date) !== 'undefined') {
+			// accept JS Date classes or strings
+			var date = params.date;
+			if (!(date instanceof Date)) {
+				date = new Date(date); // maybe a string initializer?
+			}
+			this._setTime(date.getTime());
+		} else if (typeof(params.unixtime) !== 'undefined') {
+			this._setTime(parseInt(params.unixtime, 10));
+		} else if (typeof(params.julianday) !== 'undefined') {
+			// JD time is defined to be UTC
+			this._setJulianDay(parseFloat(params.julianday));
+		} else if (params.year || params.month || params.day || params.hour ||
+				params.minute || params.second || params.millisecond || params.parts) {
+			this._setDateComponents(params);
+		} else if (typeof(params.rd) !== 'undefined') {
+			this.rd = (typeof(params.rd) === 'object' && params.rd instanceof ilib.Date.RataDie) ? params.rd.rd : params.rd;
+		}
+	}
+	
+	/**
+	 * @type {number} the Rata Die number of this date for this calendar type
+	 */
+	if (typeof(this.rd) === 'undefined') {
+		var now = new Date();
+		this._setTime(now.getTime());
+	}
+};
+
+ilib.Date.RataDie.prototype = {
+	/**
+	 * @private
+	 * @const
+	 * @type number
+	 * the difference between a zero Julian day and the zero Gregorian date. 
+	 */
+	epoch: 1721424.5,
+	
+	/**
+	 * @private
+	 * Set the RD of this instance according to the given unix time. Unix time is
+	 * the number of milliseconds since midnight on Jan 1, 1970.
+	 * 
+	 * @param {number} millis the unix time to set this date to in milliseconds 
+	 */
+	_setTime: function(millis) {
+		// 2440587.5 is the julian day of midnight Jan 1, 1970, UTC (Gregorian)
+		this._setJulianDay(2440587.5 + millis / 86400000);
+	},
+
+	/**
+	 * @private
+	 * Set the date of this instance using a Julian Day.
+	 * @param {number} date the Julian Day to use to set this date
+	 */
+	_setJulianDay: function (date) {
+		var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date;
+		this.rd = ilib._roundFnc.halfup((jd.getDate() - this.epoch) * 100000000) / 100000000;
+	},
+
+	/**
+	 * @private
+	 * Return the rd number of the particular day of the week on or before the 
+	 * given rd. eg. The Sunday on or before the given rd.
+	 * @param {number} rd the rata die date of the reference date
+	 * @param {number} dayOfWeek the day of the week that is being sought relative 
+	 * to the current date
+	 * @return {number} the rd of the day of the week
+	 */
+	_onOrBefore: function(rd, dayOfWeek) {
+		return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 2, 7);
+	},
+	
+	/**
+	 * Return the rd number of the particular day of the week on or before the current rd.
+	 * eg. The Sunday on or before the current rd. If the offset is given, the calculation
+	 * happens in wall time instead of UTC. UTC time may be a day before or day behind 
+	 * wall time, so it it would give the wrong day of the week if this calculation was
+	 * done in UTC time when the caller really wanted wall time. Even though the calculation
+	 * may be done in wall time, the return value is nonetheless always given in UTC.
+	 * @param {number} dayOfWeek the day of the week that is being sought relative 
+	 * to the current date
+	 * @param {number=} offset RD offset for the time zone. Zero is assumed if this param is
+	 * not given
+	 * @return {number} the rd of the day of the week
+	 */
+	onOrBefore: function(dayOfWeek, offset) {
+		offset = offset || 0;
+		return this._onOrBefore(this.rd + offset, dayOfWeek) - offset;
+	},
+	
+	/**
+	 * Return the rd number of the particular day of the week on or before the current rd.
+	 * eg. The Sunday on or before the current rd. If the offset is given, the calculation
+	 * happens in wall time instead of UTC. UTC time may be a day before or day behind 
+	 * wall time, so it it would give the wrong day of the week if this calculation was
+	 * done in UTC time when the caller really wanted wall time. Even though the calculation
+	 * may be done in wall time, the return value is nonetheless always given in UTC.
+	 * @param {number} dayOfWeek the day of the week that is being sought relative 
+	 * to the reference date
+	 * @param {number=} offset RD offset for the time zone. Zero is assumed if this param is
+	 * not given
+	 * @return {number} the day of the week
+	 */
+	onOrAfter: function(dayOfWeek, offset) {
+		offset = offset || 0;
+		return this._onOrBefore(this.rd+6+offset, dayOfWeek) - offset;
+	},
+	
+	/**
+	 * Return the rd number of the particular day of the week before the current rd.
+	 * eg. The Sunday before the current rd. If the offset is given, the calculation
+	 * happens in wall time instead of UTC. UTC time may be a day before or day behind 
+	 * wall time, so it it would give the wrong day of the week if this calculation was
+	 * done in UTC time when the caller really wanted wall time. Even though the calculation
+	 * may be done in wall time, the return value is nonetheless always given in UTC.
+	 * @param {number} dayOfWeek the day of the week that is being sought relative 
+	 * to the reference date
+	 * @param {number=} offset RD offset for the time zone. Zero is assumed if this param is
+	 * not given
+	 * @return {number} the day of the week
+	 */
+	before: function(dayOfWeek, offset) {
+		offset = offset || 0;
+		return this._onOrBefore(this.rd-1+offset, dayOfWeek) - offset;
+	},
+	
+	/**
+	 * Return the rd number of the particular day of the week after the current rd.
+	 * eg. The Sunday after the current rd. If the offset is given, the calculation
+	 * happens in wall time instead of UTC. UTC time may be a day before or day behind 
+	 * wall time, so it it would give the wrong day of the week if this calculation was
+	 * done in UTC time when the caller really wanted wall time. Even though the calculation
+	 * may be done in wall time, the return value is nonetheless always given in UTC.
+	 * @param {number} dayOfWeek the day of the week that is being sought relative 
+	 * to the reference date
+	 * @param {number=} offset RD offset for the time zone. Zero is assumed if this param is
+	 * not given
+	 * @return {number} the day of the week
+	 */
+	after: function(dayOfWeek, offset) {
+		offset = offset || 0;
+		return this._onOrBefore(this.rd+7+offset, dayOfWeek) - offset;
+	},
+
+	/**
+	 * Return the unix time equivalent to this Gregorian date instance. Unix time is
+	 * the number of milliseconds since midnight on Jan 1, 1970 UTC. This method only
+	 * returns a valid number for dates between midnight, Jan 1, 1970 and  
+	 * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
+	 * encodes a date outside of that range, this method will return -1.
+	 * 
+	 * @return {number} a number giving the unix time, or -1 if the date is outside the
+	 * valid unix time range
+	 */
+	getTime: function() {
+		// earlier than Jan 1, 1970
+		// or later than Jan 19, 2038 at 3:14:07am
+		var jd = this.getJulianDay();
+		if (jd < 2440587.5 || jd > 2465442.634803241) { 
+			return -1;
+		}
+	
+		// avoid the rounding errors in the floating point math by only using
+		// the whole days from the rd, and then calculating the milliseconds directly
+		return Math.round((jd - 2440587.5) * 86400000);
+	},
+
+	/**
+	 * Return the Julian Day equivalent to this calendar date as a number.
+	 * This returns the julian day in UTC.
+	 * 
+	 * @return {number} the julian date equivalent of this date
+	 */
+	getJulianDay: function() {
+		return this.rd + this.epoch;
+	},
+
+	/**
+	 * Return the Rata Die (fixed day) number of this RD date.
+	 * 
+	 * @return {number} the rd date as a number
+	 */
+	getRataDie: function() {
+		return this.rd;
+	}
+};
+
+/*
+ * gregratadie.js - Represent the RD date number in the Gregorian calendar
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* !depends 
+date.js
+calendar/gregorian.js
+calendar/ratadie.js
+util/utils.js
+julianday.js 
+*/
+
+/**
+ * @class
+ * 
+ * Construct a new Gregorian RD date number object. The constructor parameters can 
+ * contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>unixtime<i> - sets the time of this instance according to the given 
+ * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970.
+ * 
+ * <li><i>julianday</i> - sets the time of this instance according to the given
+ * Julian Day instance or the Julian Day given as a float
+ * 
+ * <li><i>year</i> - any integer, including 0
+ * 
+ * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
+ * 
+ * <li><i>day</i> - 1 to 31
+ * 
+ * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
+ * is always done with an unambiguous 24 hour representation
+ * 
+ * <li><i>minute</i> - 0 to 59
+ * 
+ * <li><i>second</i> - 0 to 59
+ * 
+ * <li><i>millisecond</i> - 0 to 999
  * 
  * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
  * </ul>
@@ -4496,80 +5026,27 @@ julianday.js
  * settings are copied into the current instance.<p>
  * 
  * If the constructor is called with no arguments at all or if none of the 
- * properties listed above 
- * from <i>unixtime</i> through <i>millisecond</i> are present, then the date 
- * components are 
- * filled in with the current date at the time of instantiation. Note that if
- * you do not give the time zone when defaulting to the current time and the 
- * time zone for all of ilib was not set with <i>ilib.setTimeZone()</i>, then the
- * time zone will default to UTC ("Universal Time, Coordinated" or "Greenwich 
- * Mean Time").<p>
+ * properties listed above are present, then the RD is calculate based on 
+ * the current date at the time of instantiation. <p>
  * 
  * If any of the properties from <i>year</i> through <i>millisecond</i> are not
  * specified in the params, it is assumed that they have the smallest possible
  * value in the range for the property (zero or one).<p>
  * 
- * Depends directive: !depends gregoriandate.js
+ * Depends directive: !depends gregratadie.js
  * 
  * @constructor
- * @extends ilib.Date
- * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian date
+ * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian RD date
  */
-ilib.Date.GregDate = function(params) {
-	this.cal = new ilib.Cal.Gregorian();
-
-	if (params) {
-		if (params.timezone) {
-			this.timezone = params.timezone;
-		}
-		if (params.locale) {
-			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
-			if (!this.timezone) {
-				var li = new ilib.LocaleInfo(this.locale);
-				this.timezone = li.getTimeZone(); 
-			}
-		}
-		
-		if (typeof(params.date) !== 'undefined') {
-			// accept JS Date classes or strings
-			var date = params.date;
-			if (!(date instanceof Date)) {
-				date = new Date(date);
-			}
-			this.timezone = "Etc/UTC";
-			this.setTime(date.getTime());
-		} else if (typeof(params.unixtime) != 'undefined') {
-			this.setTime(parseInt(params.unixtime, 10));
-		} else if (typeof(params.julianday) != 'undefined') {
-			// JD time is defined to be UTC
-			this.timezone = "Etc/UTC";
-			this.setJulianDay(parseFloat(params.julianday));
-		} else if (params.year || params.month || params.day || params.hour ||
-				params.minute || params.second || params.millisecond ) {
-			this.year = parseInt(params.year, 10) || 0;
-			this.month = parseInt(params.month, 10) || 1;
-			this.day = parseInt(params.day, 10) || 1;
-			this.hour = parseInt(params.hour, 10) || 0;
-			this.minute = parseInt(params.minute, 10) || 0;
-			this.second = parseInt(params.second, 10) || 0;
-			this.millisecond = parseInt(params.millisecond, 10) || 0;
-		} else if (typeof(params.rd) != 'undefined') {
-			// private parameter. Do not document this!
-			// RD time is defined to be UTC
-			this.setRd(params.rd);
-		} else {
-			var now = new Date();
-			this.setTime(now.getTime());
-		}
-	} else {
-		var now = new Date();
-		this.setTime(now.getTime());
-	}
+ilib.Date.GregRataDie = function(params) {
+	this.cal = params && params.cal || new ilib.Cal.Gregorian();
+	this.rd = undefined;
+	ilib.Date.RataDie.call(this, params);
 };
 
-ilib.Date.GregDate.prototype = new ilib.Date();
-ilib.Date.GregDate.prototype.parent = ilib.Date;
-ilib.Date.GregDate.prototype.constructor = ilib.Date.GregDate;
+ilib.Date.GregRataDie.prototype = new ilib.Date.RataDie();
+ilib.Date.GregRataDie.prototype.parent = ilib.Date.RataDie;
+ilib.Date.GregRataDie.prototype.constructor = ilib.Date.GregRataDie;
 
 /**
  * @private
@@ -4577,7 +5054,7 @@ ilib.Date.GregDate.prototype.constructor = ilib.Date.GregDate;
  * @type Array.<number>
  * the cumulative lengths of each month, for a non-leap year 
  */
-ilib.Date.GregDate.cumMonthLengths = [
+ilib.Date.GregRataDie.cumMonthLengths = [
     0,   /* Jan */
 	31,  /* Feb */
 	59,  /* Mar */
@@ -4599,7 +5076,7 @@ ilib.Date.GregDate.cumMonthLengths = [
  * @type Array.<number>
  * the cumulative lengths of each month, for a leap year 
  */
-ilib.Date.GregDate.cumMonthLengthsLeap = [
+ilib.Date.GregRataDie.cumMonthLengthsLeap = [
 	0,   /* Jan */
 	31,  /* Feb */
 	60,  /* Mar */
@@ -4617,33 +5094,31 @@ ilib.Date.GregDate.cumMonthLengthsLeap = [
 
 /**
  * @private
- * @const
- * @type number
- * the difference between a zero Julian day and the zero Gregorian date. 
- */
-ilib.Date.GregDate.epoch = 1721424.5;
-
-/**
- * @private
- * Return the Rata Die (fixed day) number of the given date.
+ * Calculate the Rata Die (fixed day) number of the given date.
  * 
- * @param {Object} date the date components to calculate
- * @return {number} the rd date as a number
+ * @param {Object} date the date components to calculate the RD from
  */
-ilib.Date.GregDate.prototype.calcRataDie = function(date) {
-	var years = 365 * (date.year - 1) +
-		Math.floor((date.year-1)/4) -
-		Math.floor((date.year-1)/100) +
-		Math.floor((date.year-1)/400);
-	// explicitly call the gregorian leap year calculator so that it doesn't conflict
-	// with the calculator of possible subclasses 
-	var dayInYear = (date.month > 1 ? ilib.Date.GregDate.cumMonthLengths[date.month-1] : 0) +
-		date.day +
-		(ilib.Cal.Gregorian.prototype.isLeapYear.call(this.cal, date.year) && date.month > 2 ? 1 : 0);
-	var rdtime = (date.hour * 3600000 +
-		date.minute * 60000 +
-		date.second * 1000 +
-		date.millisecond) / 
+ilib.Date.GregRataDie.prototype._setDateComponents = function(date) {
+	var year = parseInt(date.year, 10) || 0;
+	var month = parseInt(date.month, 10) || 1;
+	var day = parseInt(date.day, 10) || 1;
+	var hour = parseInt(date.hour, 10) || 0;
+	var minute = parseInt(date.minute, 10) || 0;
+	var second = parseInt(date.second, 10) || 0;
+	var millisecond = parseInt(date.millisecond, 10) || 0;
+
+	var years = 365 * (year - 1) +
+		Math.floor((year-1)/4) -
+		Math.floor((year-1)/100) +
+		Math.floor((year-1)/400);
+	
+	var dayInYear = (month > 1 ? ilib.Date.GregRataDie.cumMonthLengths[month-1] : 0) +
+		day +
+		(ilib.Cal.Gregorian.prototype.isLeapYear.call(this.cal, year) && month > 2 ? 1 : 0);
+	var rdtime = (hour * 3600000 +
+		minute * 60000 +
+		second * 1000 +
+		millisecond) / 
 		86400000; 
 	/*
 	debug("getRataDie: converting " +  JSON.stringify(this));
@@ -4652,496 +5127,333 @@ ilib.Date.GregDate.prototype.calcRataDie = function(date) {
 	debug("getRataDie: rdtime is " +  rdtime);
 	debug("getRataDie: rd is " +  (years + dayInYear + rdtime));
 	*/
-	return years + dayInYear + rdtime;
+	
+	/**
+	 * @type {number} the RD number of this Gregorian date
+	 */
+	this.rd = years + dayInYear + rdtime;
 };
 
 /**
  * @private
- * Return the Rata Die (fixed day) number of this date.
- * 
- * @return {number} the rd date as a number
- */
-ilib.Date.GregDate.prototype.getRataDie = function() {
-	return this.calcRataDie(this);
-};
-
-/**
- * @private
- * Calculate date components for the given RD date.
- * @param {number} rd the RD date to calculate components for
- * @return {Object} object containing the component fields
- */
-ilib.Date.GregDate.prototype.calcComponents = function (rd) {
-	var days400,
-		days100,
-		days4,
-		days1,
-		years400,
-		years100,
-		years4,
-		years1,
-		remainder,
-		cumulative,
-		ret = {};
-	
-	years400 = Math.floor((rd - 1) / 146097);
-	days400 = ilib.mod((rd - 1), 146097);
-	years100 = Math.floor(days400 / 36524);
-	days100 = ilib.mod(days400, 36524);
-	years4 = Math.floor(days100 / 1461);
-	days4 = ilib.mod(days100, 1461);
-	years1 = Math.floor(days4 / 365);
-	days1 = ilib.mod(days4, 365) + 1;
-
-	/*
-	console.log("rd starts out " + rd);
-	console.log("years400 is " + years400);
-	console.log("days400 is " + days400);
-	console.log("years100 is " + years100);
-	console.log("days100 is " + days100);
-	console.log("years4 is " + years4);
-	console.log("days4 is " + days4);
-	console.log("years1 is " + years1);
-	console.log("days1 is " + days1);
-	*/
-	
-	ret.year = 400 * years400 + 100 * years100 + 4 * years4 + years1;
-	if (years100 !== 4 && years1 !== 4) {
-		ret.year++;
-	}
-	ret.month = 1;
-	ret.day = 1;
-	ret.hour = 0;
-	ret.minute = 0;
-	ret.second = 0;
-	ret.millisecond = 0;
-	
-	// explicitly call the gregorian rd calculator instead of any 
-	// possible overloaded ones from subclasses
-	remainder = rd - ilib.Date.GregDate.prototype.calcRataDie.call(this, ret) + 1;
-	
-	cumulative = ilib.Cal.Gregorian.prototype.isLeapYear.call(this.cal, ret.year) ? 
-		ilib.Date.GregDate.cumMonthLengthsLeap : 
-		ilib.Date.GregDate.cumMonthLengths; 
-	
-	ret.month = ilib.bsearch(Math.floor(remainder), cumulative);
-	remainder = remainder - cumulative[ret.month-1];
-	
-	ret.day = Math.floor(remainder);
-	remainder -= ret.day;
-	// now convert to milliseconds for the rest of the calculation
-	remainder = Math.round(remainder * 86400000);
-	
-	ret.hour = Math.floor(remainder/3600000);
-	remainder -= ret.hour * 3600000;
-	
-	ret.minute = Math.floor(remainder/60000);
-	remainder -= ret.minute * 60000;
-	
-	ret.second = Math.floor(remainder/1000);
-	remainder -= ret.second * 1000;
-	
-	ret.millisecond = remainder;
-	
-	return ret;
-};
-
-/**
- * @private
- * Set the date components of this instance based on the given rd.
- * @param {number} rd the rata die date to set
- */
-ilib.Date.GregDate.prototype.setRd = function (rd) {
-	var fields = this.calcComponents(rd);
-	
-	/**
-	 * Year in the Gregorian calendar.
-	 * @type number
-	 */
-	this.year = fields.year;
-	
-	/**
-	 * The month number, ranging from 1 (January) to 12 (December).
-	 * @type number
-	 */
-	this.month = fields.month;
-	
-	/**
-	 * The day of the month. This ranges from 1 to 31.
-	 * @type number
-	 */
-	this.day = fields.day;
-	
-	/**
-	 * The hour of the day. This can be a number from 0 to 23, as times are
-	 * stored unambiguously in the 24-hour clock.
-	 * @type number
-	 */
-	this.hour = fields.hour;
-	
-	/**
-	 * The minute of the hours. Ranges from 0 to 59.
-	 * @type number
-	 */
-	this.minute = fields.minute;
-	
-	/**
-	 * The second of the minute. Ranges from 0 to 59.
-	 * @type number
-	 */
-	this.second = fields.second;
-	
-	/**
-	 * The millisecond of the second. Ranges from 0 to 999.
-	 * @type number
-	 */
-	this.millisecond = fields.millisecond;
-};
-
-/**
- * Set the date of this instance using a Julian Day.
- * @param {number} date the Julian Day to use to set this date
- */
-ilib.Date.GregDate.prototype.setJulianDay = function (date) {
-	var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date,
-		rd;	// rata die -- # of days since the beginning of the calendar
-	
-	rd = jd.getDate() - ilib.Date.GregDate.epoch; 	// Julian Days start at noon
-	this.setRd(rd);
-};
-
-/**
- * Return the day of the week of this date. The day of the week is encoded
- * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
- * 
- * @return {number} the day of the week
- */
-ilib.Date.GregDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.getRataDie());
-	return ilib.mod(rd, 7);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week on or before the given rd.
- * eg. The Sunday on or before the given rd.
+ * Return the rd number of the particular day of the week on or before the 
+ * given rd. eg. The Sunday on or before the given rd.
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- * @return {number} the day of the week
+ * to the current date
+ * @return {number} the rd of the day of the week
  */
-ilib.Date.GregDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
+ilib.Date.GregRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 	return rd - ilib.mod(Math.floor(rd) - dayOfWeek, 7);
 };
 
-/**
- * @private
- * Return the rd of the particular day of the week on or before the given rd.
- * eg. The Sunday on or before the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- * @return {number} the day of the week
- */
-ilib.Date.GregDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd+6, dayOfWeek);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week before the given rd.
- * eg. The Sunday before the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- * @return {number} the day of the week
- */
-ilib.Date.GregDate.prototype.beforeRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd-1, dayOfWeek);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week after the given rd.
- * eg. The Sunday after the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- * @return {number} the day of the week
- */
-ilib.Date.GregDate.prototype.afterRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd+7, dayOfWeek);
-};
-
-/**
- * @private
- * Return the rd of the first Sunday of the given ISO year.
- * @param {number} year the year for which the first Sunday is being sought
- * @return the rd of the first Sunday of the ISO year
- */
-ilib.Date.GregDate.prototype.firstSunday = function (year) {
-	var jan1 = this.calcRataDie({
-		year: year,
-		month: 1,
-		day: 1,
-		hour: 0,
-		minute: 0,
-		second: 0,
-		millisecond: 0
-	});
-	var firstThu = this.onOrAfterRd(jan1, 4);
-	return this.beforeRd(firstThu, 0);
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week before the current date that is being sought
- * @return {ilib.Date} the date being sought
- */
-ilib.Date.GregDate.prototype.before = function (dow) {
-	return this.cal.newDateInstance({rd: this.beforeRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week after the current date that is being sought
- * @return {ilib.Date} the date being sought
- */
-ilib.Date.GregDate.prototype.after = function (dow) {
-	return this.cal.newDateInstance({rd: this.afterRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week on or before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or before the current date that is being sought
- * @return {ilib.Date} the date being sought
- */
-ilib.Date.GregDate.prototype.onOrBefore = function (dow) {
-	return this.cal.newDateInstance({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week on or after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or after the current date that is being sought
- * @return {ilib.Date} the date being sought
- */
-ilib.Date.GregDate.prototype.onOrAfter = function (dow) {
-	return this.cal.newDateInstance({rd: this.onOrAfterRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return the ISO 8601 week number in the current year for the current date. The week
- * number ranges from 1 to 53, as some years have 53 weeks assigned to them, and most
- * only 52.
- * 
- * @return {number} the week number for the current date
- */
-ilib.Date.GregDate.prototype.getWeekOfYear = function() {
-	var rd = Math.floor(this.getRataDie()),
-		yearStart = this.firstSunday(this.year),
-		nextYear;
-	
-	// if we have a January date, it may be in this ISO year or the previous year
-	if (rd < yearStart) {
-		yearStart = this.firstSunday(this.year-1);
-	} else if (this.month == 12 && this.day > 25) {
-		// if we have a late December date, it may be in this ISO year, or the next year
-		nextYear = this.firstSunday(this.year+1);
-		if (rd >= nextYear) {
-			yearStart = nextYear;
-		}
-	}
-	
-	return Math.floor((rd-yearStart)/7) + 1;
-};
-
-/**
- * Return the ordinal day of the year. Days are counted from 1 and proceed linearly up to 
- * 365, regardless of months or weeks, etc. That is, January 1st is day 1, and 
- * December 31st is 365 in regular years, or 366 in leap years.
- * @return {number} the ordinal day of the year
- */
-ilib.Date.GregDate.prototype.getDayOfYear = function() {
-	var cumulativeMap = this.cal.isLeapYear(this.year) ? 
-		ilib.Date.GregDate.cumMonthLengthsLeap : 
-		ilib.Date.GregDate.cumMonthLengths; 
-		
-	return cumulativeMap[this.month-1] + this.day;
-};
-
-/**
- * Return the ordinal number of the week within the month. The first week of a month is
- * the first one that contains 4 or more days in that month. If any days precede this
- * first week, they are marked as being in week 0. This function returns values from 0
- * through 6.<p>
- * 
- * The locale is a required parameter because different locales that use the same 
- * Gregorian calendar consider different days of the week to be the beginning of
- * the week. This can affect the week of the month in which some days are located.
- * 
- * @param {ilib.Locale|string} locale the locale or locale spec to use when figuring out 
- * the first day of the week
- * @return {number} the ordinal number of the week within the current month
- */
-ilib.Date.GregDate.prototype.getWeekOfMonth = function(locale) {
-	var li = new ilib.LocaleInfo(locale),
-		first = this.calcRataDie({
-			year: this.year,
-			month: this.month,
-			day: 1,
-			hour: 0,
-			minute: 0,
-			second: 0,
-			millisecond: 0
-		}),
-		rd = this.getRataDie(),
-		weekStart = this.onOrAfterRd(first, li.getFirstDayOfWeek());
-	if (weekStart - first > 3) {
-		// if the first week has 4 or more days in it of the current month, then consider
-		// that week 1. Otherwise, it is week 0. To make it week 1, move the week start
-		// one week earlier.
-		weekStart -= 7;
-	}
-	return Math.floor((rd - weekStart) / 7) + 1;
-};
-
-/**
- * Return the era for this date as a number. The value for the era for Gregorian 
- * calendars is -1 for "before the common era" (BCE) and 1 for "the common era" (CE). 
- * BCE dates are any date before Jan 1, 1 CE. In the proleptic Gregorian calendar, 
- * there is a year 0, so any years that are negative or zero are BCE. In the Julian
- * calendar, there is no year 0. Instead, the calendar goes straight from year -1 to 
- * 1.
- * @return {number} 1 if this date is in the common era, -1 if it is before the 
- * common era 
- */
-ilib.Date.GregDate.prototype.getEra = function() {
-	return (this.year < 1) ? -1 : 1;
-};
-
-/**
- * Return the unix time equivalent to this Gregorian date instance. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970. This method only
- * returns a valid number for dates between midnight, Jan 1, 1970 and  
- * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
- * encodes a date outside of that range, this method will return -1. This method
- * returns the time in the local time zone, not in UTC.
- * 
- * @return {number} a number giving the unix time, or -1 if the date is outside the
- * valid unix time range
- */
-ilib.Date.GregDate.prototype.getTime = function() {
-	var rd = this.calcRataDie({
-		year: this.year,
-		month: this.month,
-		day: this.day,
-		hour: this.hour,
-		minute: this.minute,
-		second: this.second,
-		millisecond: 0
-	});
-
-	// earlier than Jan 1, 1970
-	// or later than Jan 19, 2038 at 3:14:07am
-	if (rd < 719163 || rd > 744018.134803241) { 
-		return -1;
-	}
-
-	// avoid the rounding errors in the floating point math by only using
-	// the whole days from the rd, and then calculating the milliseconds directly
-	var seconds = Math.floor(rd - 719163) * 86400 + 
-		this.hour * 3600 +
-		this.minute * 60 +
-		this.second;
-	var millis = seconds * 1000 + this.millisecond;
-	
-	return millis;
-};
-
-/**
- * Set the time of this instance according to the given unix time. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970.
- * 
- * @param {number} millis the unix time to set this date to in milliseconds 
- */
-ilib.Date.GregDate.prototype.setTime = function(millis) {
-	var rd = 719163 + millis / 86400000;
-	this.setRd(rd);
-};
-
-/**
- * Return a Javascript Date object that is equivalent to this Gregorian date
- * object.
- * 
- * @return {Date|undefined} a javascript Date object
- */
-ilib.Date.GregDate.prototype.getJSDate = function() {
-	var unix = this.getTime();
-	return (unix === -1) ? undefined : new Date(unix); 
-};
-
-/**
- * Return the Julian Day equivalent to this calendar date as a number.
- * This returns the julian day in the local time zone.
- * 
- * @return {number} the julian date equivalent of this date
- */
-ilib.Date.GregDate.prototype.getJulianDay = function() {
-	return this.getRataDie() + ilib.Date.GregDate.epoch;
-};
-
-/**
- * Return the name of the calendar that governs this date.
- * 
- * @return {string} a string giving the name of the calendar
- */
-ilib.Date.GregDate.prototype.getCalendar = function() {
-	return "gregorian";
-};
-
-/**
- * Return the time zone associated with this Gregorian date, or 
- * undefined if none was specified in the constructor.
- * 
- * @return {string|undefined} the name of the time zone for this date instance
- */
-ilib.Date.GregDate.prototype.getTimeZone = function() {
-	return this.timezone || "local";
-};
-
-/**
- * Set the time zone associated with this Gregorian date.
- * @param {string} tzName the name of the time zone to set into this date instance,
- * or "undefined" to unset the time zone 
- */
-ilib.Date.GregDate.prototype.setTimeZone = function (tzName) {
-	if (!tzName || tzName === "") {
-		// same as undefining it
-		this.timezone = undefined;
-	} else if (typeof(tzName) === 'string') {
-		this.timezone = tzName;
-	}
-};
-
-// register with the factory method
-ilib.Date._constructors["gregorian"] = ilib.Date.GregDate;
-ilib.data.timezones = {"Africa/Abidjan":{"f":"GMT","o":"0:0","c":"CI","n":"Greenwich {c} Time"},"Africa/Accra":{"f":"S","o":"0:0","c":"GH","n":"Greenwich {c} Time"},"Africa/Addis_Ababa":{"f":"EAT","o":"3:0","c":"ET","n":"E. Africa {c} Time"},"Africa/Algiers":{"f":"CET","o":"1:0","c":"DZ","n":"W. Central Africa {c} Time"},"Africa/Asmara":{"f":"EAT","o":"3:0","c":"ER","n":"E. Africa {c} Time"},"Africa/Bamako":{"f":"GMT","o":"0:0","c":"ML","n":"Greenwich {c} Time"},"Africa/Bangui":{"f":"WAT","o":"1:0","c":"CF","n":"W. Central Africa {c} Time"},"Africa/Banjul":{"f":"GMT","o":"0:0","c":"GM","n":"Greenwich {c} Time"},"Africa/Bissau":{"f":"GMT","o":"0:0","c":"GW","n":"Greenwich {c} Time"},"Africa/Blantyre":{"f":"CAT","o":"2:0","c":"MW","n":"South Africa {c} Time"},"Africa/Brazzaville":{"f":"WAT","o":"1:0","c":"CG","n":"W. Central Africa {c} Time"},"Africa/Bujumbura":{"f":"CAT","o":"2:0","c":"BI","n":"South Africa {c} Time"},"Africa/Cairo":{"f":"EEST","o":"2:0","c":"EG","n":"Egypt {c} Time"},"Africa/Casablanca":{"e":{"m":6,"r":"29","t":"3:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":7,"r":"29","t":"2:0","v":"1:0"},"c":"MA","n":"Morocco {c} Time"},"Africa/Ceuta":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"ES","n":"Romance {c} Time"},"Africa/Conakry":{"f":"GMT","o":"0:0","c":"GN","n":"Greenwich {c} Time"},"Africa/Dakar":{"f":"GMT","o":"0:0","c":"SN","n":"Greenwich {c} Time"},"Africa/Dar_es_Salaam":{"f":"EAT","o":"3:0","c":"TZ","n":"E. Africa {c} Time"},"Africa/Djibouti":{"f":"EAT","o":"3:0","c":"DJ","n":"E. Africa {c} Time"},"Africa/Douala":{"f":"WAT","o":"1:0","c":"CM","n":"W. Central Africa {c} Time"},"Africa/El_Aaiun":{"e":{"m":6,"r":"29","t":"3:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":7,"r":"29","t":"2:0","v":"1:0"},"c":"EH","n":"Greenwich {c} Time"},"Africa/Freetown":{"f":"S","o":"0:0","c":"SL","n":"Greenwich {c} Time"},"Africa/Gaborone":{"f":"CAT","o":"2:0","c":"BW","n":"South Africa {c} Time"},"Africa/Harare":{"f":"CAT","o":"2:0","c":"ZW","n":"South Africa {c} Time"},"Africa/Johannesburg":{"f":"SAST","o":"2:0","c":"ZA","n":"South Africa {c} Time"},"Africa/Kampala":{"f":"EAT","o":"3:0","c":"UG","n":"E. Africa {c} Time"},"Africa/Khartoum":{"f":"EAT","o":"3:0","c":"SD","n":"E. Africa {c} Time"},"Africa/Kigali":{"f":"CAT","o":"2:0","c":"RW","n":"South Africa {c} Time"},"Africa/Kinshasa":{"f":"WAT","o":"1:0","c":"CD","n":"W. Central Africa {c} Time"},"Africa/Lagos":{"f":"WAT","o":"1:0","c":"NG","n":"W. Central Africa {c} Time"},"Africa/Libreville":{"f":"WAT","o":"1:0","c":"GA","n":"W. Central Africa {c} Time"},"Africa/Lome":{"f":"GMT","o":"0:0","c":"TG","n":"Greenwich {c} Time"},"Africa/Luanda":{"f":"WAT","o":"1:0","c":"AO","n":"W. Central Africa {c} Time"},"Africa/Lubumbashi":{"f":"CAT","o":"2:0","c":"CD","n":"South Africa {c} Time"},"Africa/Lusaka":{"f":"CAT","o":"2:0","c":"ZM","n":"South Africa {c} Time"},"Africa/Malabo":{"f":"WAT","o":"1:0","c":"GQ","n":"W. Central Africa {c} Time"},"Africa/Maputo":{"f":"CAT","o":"2:0","c":"MZ","n":"South Africa {c} Time"},"Africa/Maseru":{"f":"SAST","o":"2:0","c":"LS","n":"South Africa {c} Time"},"Africa/Mbabane":{"f":"SAST","o":"2:0","c":"SZ","n":"South Africa {c} Time"},"Africa/Mogadishu":{"f":"EAT","o":"3:0","c":"SO","n":"E. Africa {c} Time"},"Africa/Monrovia":{"f":"GMT","o":"0:0","c":"LR","n":"Greenwich {c} Time"},"Africa/Nairobi":{"f":"EAT","o":"3:0","c":"KE","n":"E. Africa {c} Time"},"Africa/Ndjamena":{"f":"WAT","o":"1:0","c":"TD","n":"W. Central Africa {c} Time"},"Africa/Niamey":{"f":"WAT","o":"1:0","c":"NE","n":"W. Central Africa {c} Time"},"Africa/Nouakchott":{"f":"GMT","o":"0:0","c":"MR","n":"Greenwich {c} Time"},"Africa/Ouagadougou":{"f":"GMT","o":"0:0","c":"BF","n":"Greenwich {c} Time"},"Africa/Porto-Novo":{"f":"WAT","o":"1:0","c":"BJ","n":"W. Central Africa {c} Time"},"Africa/Sao_Tome":{"f":"GMT","o":"0:0","c":"ST","n":"Greenwich {c} Time"},"Africa/Tripoli":{"f":"EET","o":"2:0","c":"LY","n":"South Africa {c} Time"},"Africa/Tunis":{"f":"CEST","o":"1:0","c":"TN","n":"W. Central Africa {c} Time"},"Africa/Windhoek":{"e":{"m":4,"r":"0>1","t":"2:0"},"f":"WA{c}T","o":"1:0","s":{"c":"S","m":9,"r":"0>1","t":"2:0","v":"1:0"},"c":"NA","n":"Namibia {c} Time"},"America/Adak":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"HA{c}T","o":"-10:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US"},"America/Anchorage":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"},"America/Antigua":{"f":"AST","o":"-4:0","c":"AG","n":"SA Western {c} Time"},"America/Araguaina":{"f":"BRT","o":"-3:0","c":"BR","n":"SA Eastern {c} Time"},"America/Argentina/Buenos_Aires":{"f":"ARST","o":"-3:0","c":"AR","n":"Argentina {c} Time"},"America/Argentina/Catamarca":{"f":"ART","o":"-3:0","c":"AR","n":"Argentina {c} Time"},"America/Argentina/Cordoba":{"f":"ARST","o":"-3:0","c":"AR","n":"Argentina {c} Time"},"America/Argentina/Jujuy":{"f":"ART","o":"-3:0","c":"AR","n":"Argentina {c} Time"},"America/Argentina/La_Rioja":{"f":"ART","o":"-3:0","c":"AR","n":"Argentina {c} Time"},"America/Argentina/Mendoza":{"f":"ART","o":"-3:0","c":"AR","n":"Argentina {c} Time"},"America/Argentina/Rio_Gallegos":{"f":"ART","o":"-3:0","c":"AR","n":"Argentina {c} Time"},"America/Argentina/Salta":{"f":"ART","o":"-3:0","c":"AR","n":"Argentina {c} Time"},"America/Argentina/San_Juan":{"f":"ART","o":"-3:0","c":"AR","n":"Argentina {c} Time"},"America/Argentina/San_Luis":{"f":"ART","o":"-3:0","c":"AR","n":"Argentina {c} Time"},"America/Argentina/Tucuman":{"f":"ARST","o":"-3:0","c":"AR","n":"Argentina {c} Time"},"America/Argentina/Ushuaia":{"f":"ART","o":"-3:0","c":"AR","n":"Argentina {c} Time"},"America/Asuncion":{"e":{"m":3,"r":"0>22","t":"0:0"},"f":"PY{c}T","o":"-4:0","s":{"c":"S","m":10,"r":"0>1","t":"0:0","v":"1:0"},"c":"PY","n":"Paraguay {c} Time"},"America/Atikokan":{"f":"EST","o":"-5:0","c":"CA","n":"SA Pacific {c} Time"},"America/Bahia":{"f":"BRT","o":"-3:0","c":"BR","n":"Bahia {c} Time"},"America/Bahia_Banderas":{"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Central {c} Time (Mexico)"},"America/Barbados":{"f":"AST","o":"-4:0","c":"BB","n":"SA Western {c} Time"},"America/Belem":{"f":"BRT","o":"-3:0","c":"BR","n":"SA Eastern {c} Time"},"America/Belize":{"f":"CST","o":"-6:0","c":"BZ","n":"Central America {c} Time"},"America/Blanc-Sablon":{"f":"AST","o":"-4:0","c":"CA","n":"SA Western {c} Time"},"America/Boa_Vista":{"f":"AMT","o":"-4:0","c":"BR","n":"SA Western {c} Time"},"America/Bogota":{"f":"COST","o":"-5:0","c":"CO","n":"SA Pacific {c} Time"},"America/Boise":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Mountain {c} Time"},"America/Cambridge_Bay":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Mountain {c} Time"},"America/Campo_Grande":{"e":{"m":2,"r":"0>15","t":"0:0"},"f":"AM{c}T","o":"-4:0","s":{"c":"S","m":10,"r":"0>15","t":"0:0","v":"1:0"},"c":"BR","n":"Central Brazilian {c} Time"},"America/Cancun":{"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Central {c} Time (Mexico)"},"America/Caracas":{"f":"VET","o":"-4:30","c":"VE","n":"Venezuela {c} Time"},"America/Cayenne":{"f":"GFT","o":"-3:0","c":"GF","n":"SA Eastern {c} Time"},"America/Cayman":{"f":"EST","o":"-5:0","c":"KY","n":"SA Pacific {c} Time"},"America/Chicago":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Central {c} Time"},"America/Chihuahua":{"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Mountain {c} Time (Mexico)"},"America/Costa_Rica":{"f":"CST","o":"-6:0","c":"CR","n":"Central America {c} Time"},"America/Creston":{"f":"MST","o":"-7:0","c":"CA","n":"US Mountain {c} Time"},"America/Cuiaba":{"e":{"m":2,"r":"0>15","t":"0:0"},"f":"AM{c}T","o":"-4:0","s":{"c":"S","m":10,"r":"0>15","t":"0:0","v":"1:0"},"c":"BR","n":"Central Brazilian {c} Time"},"America/Curacao":{"f":"AST","o":"-4:0","c":"CW","n":"SA Western {c} Time"},"America/Danmarkshavn":{"f":"GMT","o":"0:0","c":"GL","n":"UTC"},"America/Dawson":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Pacific {c} Time"},"America/Dawson_Creek":{"f":"MST","o":"-7:0","c":"CA","n":"US Mountain {c} Time"},"America/Denver":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Mountain {c} Time"},"America/Detroit":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Eastern {c} Time"},"America/Edmonton":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Mountain {c} Time"},"America/Eirunepe":{"f":"ACT","o":"-5:0","c":"BR","n":"SA Western {c} Time"},"America/El_Salvador":{"f":"CST","o":"-6:0","c":"SV","n":"Central America {c} Time"},"America/Fortaleza":{"f":"BRT","o":"-3:0","c":"BR","n":"SA Eastern {c} Time"},"America/Glace_Bay":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"A{c}T","o":"-4:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Atlantic {c} Time"},"America/Godthab":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"WG{c}T","o":"-3:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"GL","n":"Greenland {c} Time"},"America/Goose_Bay":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"A{c}T","o":"-4:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Atlantic {c} Time"},"America/Grand_Turk":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"TC","n":"Eastern {c} Time"},"America/Guatemala":{"f":"CST","o":"-6:0","c":"GT","n":"Central America {c} Time"},"America/Guayaquil":{"f":"ECT","o":"-5:0","c":"EC","n":"SA Pacific {c} Time"},"America/Guyana":{"f":"GYT","o":"-4:0","c":"GY","n":"SA Western {c} Time"},"America/Halifax":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"A{c}T","o":"-4:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Atlantic {c} Time"},"America/Havana":{"e":{"c":"S","m":11,"r":"0>1","t":"0:0","z":"s"},"f":"C{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"0:0","v":"1:0","z":"s"},"c":"CU"},"America/Hermosillo":{"f":"MST","o":"-7:0","c":"MX","n":"US Mountain {c} Time"},"America/Indiana/Indianapolis":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"US Eastern {c} Time"},"America/Indiana/Knox":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Central {c} Time"},"America/Indiana/Marengo":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"US Eastern {c} Time"},"America/Indiana/Petersburg":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Eastern {c} Time"},"America/Indiana/Tell_City":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Central {c} Time"},"America/Indiana/Vevay":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"US Eastern {c} Time"},"America/Indiana/Vincennes":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Eastern {c} Time"},"America/Indiana/Winamac":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Eastern {c} Time"},"America/Inuvik":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Mountain {c} Time"},"America/Iqaluit":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Eastern {c} Time"},"America/Jamaica":{"f":"EST","o":"-5:0","c":"JM","n":"SA Pacific {c} Time"},"America/Juneau":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"},"America/Kentucky/Louisville":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Eastern {c} Time"},"America/Kentucky/Monticello":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Eastern {c} Time"},"America/La_Paz":{"f":"BOT","o":"-4:0","c":"BO","n":"SA Western {c} Time"},"America/Lima":{"f":"PEST","o":"-5:0","c":"PE","n":"SA Pacific {c} Time"},"America/Los_Angeles":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Pacific {c} Time"},"America/Maceio":{"f":"BRT","o":"-3:0","c":"BR","n":"SA Eastern {c} Time"},"America/Managua":{"f":"CST","o":"-6:0","c":"NI","n":"Central America {c} Time"},"America/Manaus":{"f":"AMT","o":"-4:0","c":"BR","n":"SA Western {c} Time"},"America/Martinique":{"f":"AST","o":"-4:0","c":"MQ","n":"SA Western {c} Time"},"America/Matamoros":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"MX","n":"Central {c} Time"},"America/Mazatlan":{"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Mountain {c} Time (Mexico)"},"America/Menominee":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Central {c} Time"},"America/Merida":{"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Central {c} Time (Mexico)"},"America/Metlakatla":{"f":"MeST","o":"-8:0","c":"US"},"America/Mexico_City":{"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Central {c} Time (Mexico)"},"America/Miquelon":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"PM{c}T","o":"-3:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"PM"},"America/Moncton":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"A{c}T","o":"-4:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Atlantic {c} Time"},"America/Monterrey":{"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Central {c} Time (Mexico)"},"America/Montevideo":{"e":{"m":3,"r":"0>8","t":"2:0"},"f":"UY{c}T","o":"-3:0","s":{"c":"S","m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"UY","n":"Montevideo {c} Time"},"America/Montreal":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"},"America/Nassau":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"BS","n":"Eastern {c} Time"},"America/New_York":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Eastern {c} Time"},"America/Nipigon":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Eastern {c} Time"},"America/Nome":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"},"America/Noronha":{"f":"FNT","o":"-2:0","c":"BR","n":"UTC-02"},"America/North_Dakota/Beulah":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Central {c} Time"},"America/North_Dakota/Center":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Central {c} Time"},"America/North_Dakota/New_Salem":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Central {c} Time"},"America/Ojinaga":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"MX","n":"Mountain {c} Time"},"America/Panama":{"f":"EST","o":"-5:0","c":"PA","n":"SA Pacific {c} Time"},"America/Pangnirtung":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Eastern {c} Time"},"America/Paramaribo":{"f":"SRT","o":"-3:0","c":"SR","n":"SA Eastern {c} Time"},"America/Phoenix":{"f":"MST","o":"-7:0","c":"US","n":"US Mountain {c} Time"},"America/Port-au-Prince":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"HT","n":"SA Pacific {c} Time"},"America/Port_of_Spain":{"f":"AST","o":"-4:0","c":"TT","n":"SA Western {c} Time"},"America/Porto_Velho":{"f":"AMT","o":"-4:0","c":"BR","n":"SA Western {c} Time"},"America/Puerto_Rico":{"f":"AST","o":"-4:0","c":"PR","n":"SA Western {c} Time"},"America/Rainy_River":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Central {c} Time"},"America/Rankin_Inlet":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Central {c} Time"},"America/Recife":{"f":"BRT","o":"-3:0","c":"BR","n":"SA Eastern {c} Time"},"America/Regina":{"f":"CST","o":"-6:0","c":"CA","n":"Canada Central {c} Time"},"America/Resolute":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Central {c} Time"},"America/Rio_Branco":{"f":"ACT","o":"-5:0","c":"BR","n":"SA Western {c} Time"},"America/Santa_Isabel":{"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Pacific {c} Time (Mexico)"},"America/Santarem":{"f":"BRT","o":"-3:0","c":"BR","n":"SA Eastern {c} Time"},"America/Santiago":{"e":{"m":4,"r":"0>23","t":"3:0","z":"u"},"f":"CL{c}T","o":"-4:0","s":{"c":"S","m":9,"r":"0>2","t":"4:0","v":"1:0","z":"u"},"c":"CL","n":"Pacific SA {c} Time"},"America/Santo_Domingo":{"f":"AST","o":"-4:0","c":"DO","n":"SA Western {c} Time"},"America/Sao_Paulo":{"e":{"m":2,"r":"0>15","t":"0:0"},"f":"BR{c}T","o":"-3:0","s":{"c":"S","m":10,"r":"0>15","t":"0:0","v":"1:0"},"c":"BR","n":"E. South America {c} Time"},"America/Scoresbysund":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EG{c}T","o":"-1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"GL","n":"Azores {c} Time"},"America/Sitka":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"},"America/St_Johns":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"N{c}T","o":"-3:30","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Newfoundland {c} Time"},"America/Swift_Current":{"f":"CST","o":"-6:0","c":"CA","n":"Canada Central {c} Time"},"America/Tegucigalpa":{"f":"CST","o":"-6:0","c":"HN","n":"Central America {c} Time"},"America/Thule":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"A{c}T","o":"-4:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"GL","n":"Atlantic {c} Time"},"America/Thunder_Bay":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Eastern {c} Time"},"America/Tijuana":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"MX","n":"Pacific {c} Time"},"America/Toronto":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Eastern {c} Time"},"America/Vancouver":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Pacific {c} Time"},"America/Whitehorse":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Pacific {c} Time"},"America/Winnipeg":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Central {c} Time"},"America/Yakutat":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"},"America/Yellowknife":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Mountain {c} Time"},"Antarctica/Casey":{"f":"WST","o":"8:0","c":"AQ","n":"W. Australia {c} Time"},"Antarctica/Davis":{"f":"DAVT","o":"7:0","c":"AQ","n":"SE Asia {c} Time"},"Antarctica/DumontDUrville":{"f":"DDUT","o":"10:0","c":"AQ","n":"West Pacific {c} Time"},"Antarctica/Macquarie":{"f":"MIST","o":"11:0","c":"AU","n":"Central Pacific {c} Time"},"Antarctica/Mawson":{"f":"MAWT","o":"5:0","c":"AQ","n":"West Asia {c} Time"},"Antarctica/Palmer":{"e":{"m":4,"r":"0>23","t":"3:0","z":"u"},"f":"CL{c}T","o":"-4:0","s":{"c":"S","m":9,"r":"0>2","t":"4:0","v":"1:0","z":"u"},"c":"AQ","n":"Pacific SA {c} Time"},"Antarctica/Rothera":{"f":"ROTT","o":"-3:0","c":"AQ","n":"SA Eastern {c} Time"},"Antarctica/Syowa":{"f":"SYOT","o":"3:0","c":"AQ","n":"E. Africa {c} Time"},"Antarctica/Vostok":{"f":"VOST","o":"6:0","c":"AQ","n":"Central Asia {c} Time"},"Asia/Aden":{"f":"AST","o":"3:0","c":"YE","n":"Arab {c} Time"},"Asia/Almaty":{"f":"ALMT","o":"6:0","c":"KZ","n":"Central Asia {c} Time"},"Asia/Amman":{"e":{"m":10,"r":"l5","t":"0:0","z":"s"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l4","t":"24:0","v":"1:0"},"c":"JO","n":"Jordan {c} Time"},"Asia/Anadyr":{"f":"ANAT","o":"12:0","c":"RU","n":"Magadan {c} Time"},"Asia/Aqtau":{"f":"AQTT","o":"5:0","c":"KZ","n":"West Asia {c} Time"},"Asia/Aqtobe":{"f":"AQTT","o":"5:0","c":"KZ","n":"West Asia {c} Time"},"Asia/Ashgabat":{"f":"TMT","o":"5:0","c":"TM","n":"West Asia {c} Time"},"Asia/Baghdad":{"f":"AST","o":"3:0","c":"IQ","n":"Arabic {c} Time"},"Asia/Bahrain":{"f":"AST","o":"3:0","c":"BH","n":"Arab {c} Time"},"Asia/Baku":{"e":{"m":10,"r":"l0","t":"5:0"},"f":"AZ{c}T","o":"4:0","s":{"c":"S","m":3,"r":"l0","t":"4:0","v":"1:0"},"c":"AZ","n":"Azerbaijan {c} Time"},"Asia/Bangkok":{"f":"ICT","o":"7:0","c":"TH","n":"SE Asia {c} Time"},"Asia/Beirut":{"e":{"m":10,"r":"l0","t":"0:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"0:0","v":"1:0"},"c":"LB","n":"Middle East {c} Time"},"Asia/Bishkek":{"f":"KGT","o":"6:0","c":"KG","n":"Central Asia {c} Time"},"Asia/Brunei":{"f":"BNT","o":"8:0","c":"BN","n":"Singapore {c} Time"},"Asia/Choibalsan":{"f":"CHOST","o":"8:0","c":"MN","n":"Ulaanbaatar {c} Time"},"Asia/Chongqing":{"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"},"Asia/Colombo":{"f":"IST","o":"5:30","c":"LK","n":"Sri Lanka {c} Time"},"Asia/Damascus":{"e":{"m":10,"r":"l5","t":"0:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l5","t":"0:0","v":"1:0"},"c":"SY","n":"Syria {c} Time"},"Asia/Dhaka":{"f":"BDST","o":"6:0","c":"BD","n":"Bangladesh {c} Time"},"Asia/Dili":{"f":"TLT","o":"9:0","c":"TL","n":"Tokyo {c} Time"},"Asia/Dubai":{"f":"GST","o":"4:0","c":"AE","n":"Arabian {c} Time"},"Asia/Dushanbe":{"f":"TJT","o":"5:0","c":"TJ","n":"West Asia {c} Time"},"Asia/Gaza":{"e":{"m":9,"r":"5>21","t":"0:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l4","t":"24:0","v":"1:0"},"c":"PS","n":"Egypt {c} Time"},"Asia/Harbin":{"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"},"Asia/Hebron":{"e":{"m":9,"r":"5>21","t":"0:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l4","t":"24:0","v":"1:0"},"c":"PS","n":"Egypt {c} Time"},"Asia/Ho_Chi_Minh":{"f":"ICT","o":"7:0","c":"VN","n":"SE Asia {c} Time"},"Asia/Hong_Kong":{"f":"HKST","o":"8:0","c":"HK","n":"China {c} Time"},"Asia/Hovd":{"f":"HOVST","o":"7:0","c":"MN","n":"SE Asia {c} Time"},"Asia/Irkutsk":{"f":"IRKT","o":"9:0","c":"RU","n":"North Asia East {c} Time"},"Asia/Jakarta":{"f":"WIB","o":"7:0","c":"ID","n":"SE Asia {c} Time"},"Asia/Jayapura":{"f":"WIT","o":"9:0","c":"ID","n":"Tokyo {c} Time"},"Asia/Jerusalem":{"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"I{c}T","o":"2:0","s":{"c":"D","m":3,"r":"5>23","t":"2:0","v":"1:0"},"c":"IL","n":"Israel {c} Time"},"Asia/Kabul":{"f":"AFT","o":"4:30","c":"AF","n":"Afghanistan {c} Time"},"Asia/Kamchatka":{"f":"PETT","o":"12:0","c":"RU","n":"Magadan {c} Time"},"Asia/Karachi":{"f":"PKST","o":"5:0","c":"PK","n":"Pakistan {c} Time"},"Asia/Kashgar":{"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"},"Asia/Kathmandu":{"f":"NPT","o":"5:45","c":"NP","n":"Nepal {c} Time"},"Asia/Khandyga":{"f":"YAKT","o":"10:0","c":"RU"},"Asia/Kolkata":{"f":"IST","o":"5:30","c":"IN","n":"India {c} Time"},"Asia/Krasnoyarsk":{"f":"KRAT","o":"8:0","c":"RU","n":"North Asia {c} Time"},"Asia/Kuala_Lumpur":{"f":"MYT","o":"8:0","c":"MY","n":"Singapore {c} Time"},"Asia/Kuching":{"f":"MYT","o":"8:0","c":"MY","n":"Singapore {c} Time"},"Asia/Kuwait":{"f":"AST","o":"3:0","c":"KW","n":"Arab {c} Time"},"Asia/Macau":{"f":"CST","o":"8:0","c":"MO","n":"China {c} Time"},"Asia/Magadan":{"f":"MAGT","o":"12:0","c":"RU","n":"Magadan {c} Time"},"Asia/Makassar":{"f":"WITA","o":"8:0","c":"ID","n":"Singapore {c} Time"},"Asia/Manila":{"f":"PHST","o":"8:0","c":"PH","n":"Singapore {c} Time"},"Asia/Muscat":{"f":"GST","o":"4:0","c":"OM","n":"Arabian {c} Time"},"Asia/Nicosia":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"CY","n":"E. Europe {c} Time"},"Asia/Novokuznetsk":{"f":"NOVT","o":"7:0","c":"RU","n":"N. Central Asia {c} Time"},"Asia/Novosibirsk":{"f":"NOVT","o":"7:0","c":"RU","n":"N. Central Asia {c} Time"},"Asia/Omsk":{"f":"OMST","o":"7:0","c":"RU","n":"N. Central Asia {c} Time"},"Asia/Oral":{"f":"ORAT","o":"5:0","c":"KZ","n":"West Asia {c} Time"},"Asia/Phnom_Penh":{"f":"ICT","o":"7:0","c":"KH","n":"SE Asia {c} Time"},"Asia/Pontianak":{"f":"WIB","o":"7:0","c":"ID","n":"SE Asia {c} Time"},"Asia/Pyongyang":{"f":"KST","o":"9:0","c":"KP","n":"Korea {c} Time"},"Asia/Qatar":{"f":"AST","o":"3:0","c":"QA","n":"Arab {c} Time"},"Asia/Qyzylorda":{"f":"QYZT","o":"6:0","c":"KZ","n":"Central Asia {c} Time"},"Asia/Rangoon":{"f":"MMT","o":"6:30","c":"MM","n":"Myanmar {c} Time"},"Asia/Riyadh":{"f":"AST","o":"3:0","c":"SA","n":"Arab {c} Time"},"Asia/Sakhalin":{"f":"SAKT","o":"11:0","c":"RU","n":"Vladivostok {c} Time"},"Asia/Samarkand":{"f":"UZT","o":"5:0","c":"UZ","n":"West Asia {c} Time"},"Asia/Seoul":{"f":"KST","o":"9:0","c":"KR","n":"Korea {c} Time"},"Asia/Shanghai":{"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"},"Asia/Singapore":{"f":"SGT","o":"8:0","c":"SG","n":"Singapore {c} Time"},"Asia/Taipei":{"f":"CST","o":"8:0","c":"TW","n":"Taipei {c} Time"},"Asia/Tashkent":{"f":"UZT","o":"5:0","c":"UZ","n":"West Asia {c} Time"},"Asia/Tbilisi":{"f":"GET","o":"4:0","c":"GE","n":"Georgian {c} Time"},"Asia/Tehran":{"e":{"c":"S","m":9,"r":"22","t":"0:0"},"f":"IR{c}T","o":"3:30","s":{"c":"D","m":3,"r":"22","t":"0:0","v":"1:0"},"c":"IR","n":"Iran {c} Time"},"Asia/Thimphu":{"f":"BTT","o":"6:0","c":"BT","n":"Bangladesh {c} Time"},"Asia/Tokyo":{"f":"JST","o":"9:0","c":"JP","n":"Tokyo {c} Time"},"Asia/Ulaanbaatar":{"f":"ULAST","o":"8:0","c":"MN","n":"Ulaanbaatar {c} Time"},"Asia/Urumqi":{"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"},"Asia/Ust-Nera":{"f":"VLAT","o":"11:0","c":"RU"},"Asia/Vientiane":{"f":"ICT","o":"7:0","c":"LA","n":"SE Asia {c} Time"},"Asia/Vladivostok":{"f":"VLAT","o":"11:0","c":"RU","n":"Vladivostok {c} Time"},"Asia/Yakutsk":{"f":"YAKT","o":"10:0","c":"RU","n":"Yakutsk {c} Time"},"Asia/Yekaterinburg":{"f":"YEKT","o":"6:0","c":"RU","n":"Ekaterinburg {c} Time"},"Asia/Yerevan":{"f":"AMT","o":"4:0","c":"AM","n":"Caucasus {c} Time"},"Atlantic/Azores":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"AZO{c}T","o":"-1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"PT","n":"Azores {c} Time"},"Atlantic/Bermuda":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"A{c}T","o":"-4:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"BM","n":"Atlantic {c} Time"},"Atlantic/Canary":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"ES","n":"GMT {c} Time"},"Atlantic/Cape_Verde":{"f":"CVT","o":"-1:0","c":"CV","n":"Cape Verde {c} Time"},"Atlantic/Faroe":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"FO","n":"GMT {c} Time"},"Atlantic/Madeira":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"PT","n":"GMT {c} Time"},"Atlantic/Reykjavik":{"f":"GMT","o":"0:0","c":"IS","n":"Greenwich {c} Time"},"Atlantic/South_Georgia":{"f":"GST","o":"-2:0","c":"GS","n":"UTC-02"},"Atlantic/St_Helena":{"f":"GMT","o":"0:0","c":"SH","n":"Greenwich {c} Time"},"Atlantic/Stanley":{"f":"FKST","o":"-3:0","c":"FK","n":"SA Eastern {c} Time"},"Australia/Adelaide":{"e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"f":"CST","o":"9:30","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0","z":"s"},"c":"AU","n":"Cen. Australia {c} Time"},"Australia/Brisbane":{"f":"EST","o":"10:0","c":"AU","n":"E. Australia {c} Time"},"Australia/Broken_Hill":{"e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"f":"CST","o":"9:30","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0","z":"s"},"c":"AU","n":"Cen. Australia {c} Time"},"Australia/Currie":{"e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"f":"EST","o":"10:0","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0","z":"s"},"c":"AU","n":"Tasmania {c} Time"},"Australia/Darwin":{"f":"CST","o":"9:30","c":"AU","n":"AUS Central {c} Time"},"Australia/Eucla":{"f":"CWST","o":"8:45","c":"AU"},"Australia/Hobart":{"e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"f":"EST","o":"10:0","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0","z":"s"},"c":"AU","n":"Tasmania {c} Time"},"Australia/Lindeman":{"f":"EST","o":"10:0","c":"AU","n":"E. Australia {c} Time"},"Australia/Lord_Howe":{"e":{"m":4,"r":"0>1","t":"2:0"},"f":"LHST","o":"10:30","s":{"m":10,"r":"0>1","t":"2:0","v":"0:30"},"c":"AU"},"Australia/Melbourne":{"e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"f":"EST","o":"10:0","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0","z":"s"},"c":"AU","n":"AUS Eastern {c} Time"},"Australia/Perth":{"f":"WST","o":"8:0","c":"AU","n":"W. Australia {c} Time"},"Australia/Sydney":{"e":{"m":4,"r":"0>1","t":"2:0","z":"s"},"f":"EST","o":"10:0","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0","z":"s"},"c":"AU","n":"AUS Eastern {c} Time"},"CET":{"e":{"m":10,"r":"l0","t":"2:0","z":"s"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0","z":"s"}},"CST6CDT":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Central {c} Time"},"EET":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"}},"EST":{"f":"EST","o":"-5:0"},"EST5EDT":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"},"Etc/GMT":{"f":"GMT","o":"0:0","n":"UTC"},"Etc/GMT+1":{"f":"GMT+1","o":"-1:0","n":"Cape Verde {c} Time"},"Etc/GMT+10":{"f":"GMT+10","o":"-10:0","n":"Hawaiian {c} Time"},"Etc/GMT+11":{"f":"GMT+11","o":"-11:0","n":"UTC-11"},"Etc/GMT+12":{"f":"GMT+12","o":"-12:0","n":"Dateline {c} Time"},"Etc/GMT+2":{"f":"GMT+2","o":"-2:0","n":"UTC-02"},"Etc/GMT+3":{"f":"GMT+3","o":"-3:0","n":"SA Eastern {c} Time"},"Etc/GMT+4":{"f":"GMT+4","o":"-4:0","n":"SA Western {c} Time"},"Etc/GMT+5":{"f":"GMT+5","o":"-5:0","n":"SA Pacific {c} Time"},"Etc/GMT+6":{"f":"GMT+6","o":"-6:0","n":"Central America {c} Time"},"Etc/GMT+7":{"f":"GMT+7","o":"-7:0","n":"US Mountain {c} Time"},"Etc/GMT+8":{"f":"GMT+8","o":"-8:0"},"Etc/GMT+9":{"f":"GMT+9","o":"-9:0"},"Etc/GMT-1":{"f":"GMT-1","o":"1:0","n":"W. Central Africa {c} Time"},"Etc/GMT-10":{"f":"GMT-10","o":"10:0","n":"West Pacific {c} Time"},"Etc/GMT-11":{"f":"GMT-11","o":"11:0","n":"Central Pacific {c} Time"},"Etc/GMT-12":{"f":"GMT-12","o":"12:0","n":"UTC+12"},"Etc/GMT-13":{"f":"GMT-13","o":"13:0","n":"Tonga {c} Time"},"Etc/GMT-14":{"f":"GMT-14","o":"14:0"},"Etc/GMT-2":{"f":"GMT-2","o":"2:0","n":"South Africa {c} Time"},"Etc/GMT-3":{"f":"GMT-3","o":"3:0","n":"E. Africa {c} Time"},"Etc/GMT-4":{"f":"GMT-4","o":"4:0","n":"Arabian {c} Time"},"Etc/GMT-5":{"f":"GMT-5","o":"5:0","n":"West Asia {c} Time"},"Etc/GMT-6":{"f":"GMT-6","o":"6:0","n":"Central Asia {c} Time"},"Etc/GMT-7":{"f":"GMT-7","o":"7:0","n":"SE Asia {c} Time"},"Etc/GMT-8":{"f":"GMT-8","o":"8:0","n":"Singapore {c} Time"},"Etc/GMT-9":{"f":"GMT-9","o":"9:0","n":"Tokyo {c} Time"},"Etc/UCT":{"f":"UCT","o":"0:0"},"Etc/UTC":{"f":"UTC","o":"0:0"},"Europe/Amsterdam":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"NL","n":"W. Europe {c} Time"},"Europe/Andorra":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"AD","n":"W. Europe {c} Time"},"Europe/Athens":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"GR","n":"GTB {c} Time"},"Europe/Belgrade":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"RS","n":"Central Europe {c} Time"},"Europe/Berlin":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"DE","n":"W. Europe {c} Time"},"Europe/Brussels":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"BE","n":"Romance {c} Time"},"Europe/Bucharest":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"RO","n":"GTB {c} Time"},"Europe/Budapest":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"HU","n":"Central Europe {c} Time"},"Europe/Chisinau":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"MD","n":"GTB {c} Time"},"Europe/Copenhagen":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"DK","n":"Romance {c} Time"},"Europe/Dublin":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"GMT/IST","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"IE","n":"GMT {c} Time"},"Europe/Gibraltar":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"GI","n":"W. Europe {c} Time"},"Europe/Helsinki":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"FI","n":"FLE {c} Time"},"Europe/Istanbul":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"TR","n":"Turkey {c} Time"},"Europe/Kaliningrad":{"f":"FET","o":"3:0","c":"RU","n":"Kaliningrad {c} Time"},"Europe/Kiev":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"UA","n":"FLE {c} Time"},"Europe/Lisbon":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"PT","n":"GMT {c} Time"},"Europe/London":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"GMT/BST","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"GB","n":"GMT {c} Time"},"Europe/Luxembourg":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"LU","n":"W. Europe {c} Time"},"Europe/Madrid":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"ES","n":"Romance {c} Time"},"Europe/Malta":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"MT","n":"W. Europe {c} Time"},"Europe/Minsk":{"f":"FET","o":"3:0","c":"BY","n":"Kaliningrad {c} Time"},"Europe/Monaco":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"MC","n":"W. Europe {c} Time"},"Europe/Moscow":{"f":"MSK","o":"4:0","c":"RU","n":"Russian {c} Time"},"Europe/Oslo":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"NO","n":"W. Europe {c} Time"},"Europe/Paris":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"FR","n":"Romance {c} Time"},"Europe/Prague":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"CZ","n":"Central Europe {c} Time"},"Europe/Riga":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"LV","n":"FLE {c} Time"},"Europe/Rome":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"IT","n":"W. Europe {c} Time"},"Europe/Samara":{"f":"SAMT","o":"4:0","c":"RU","n":"Russian {c} Time"},"Europe/Simferopol":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"UA","n":"FLE {c} Time"},"Europe/Sofia":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"BG","n":"FLE {c} Time"},"Europe/Stockholm":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"SE","n":"W. Europe {c} Time"},"Europe/Tallinn":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"EE","n":"FLE {c} Time"},"Europe/Tirane":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"AL","n":"Central Europe {c} Time"},"Europe/Uzhgorod":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"UA","n":"FLE {c} Time"},"Europe/Vienna":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"AT","n":"W. Europe {c} Time"},"Europe/Vilnius":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"LT","n":"FLE {c} Time"},"Europe/Volgograd":{"f":"VOLT","o":"4:0","c":"RU","n":"Russian {c} Time"},"Europe/Warsaw":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"PL","n":"Central European {c} Time"},"Europe/Zaporozhye":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"UA","n":"FLE {c} Time"},"Europe/Zurich":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"},"c":"CH","n":"W. Europe {c} Time"},"Factory":{"f":"\"Local","o":"0:0"},"HST":{"f":"HST","o":"-10:0"},"Indian/Antananarivo":{"f":"EAT","o":"3:0","c":"MG","n":"E. Africa {c} Time"},"Indian/Chagos":{"f":"IOT","o":"6:0","c":"IO","n":"Central Asia {c} Time"},"Indian/Christmas":{"f":"CXT","o":"7:0","c":"CX","n":"SE Asia {c} Time"},"Indian/Cocos":{"f":"CCT","o":"6:30","c":"CC","n":"Myanmar {c} Time"},"Indian/Comoro":{"f":"EAT","o":"3:0","c":"KM","n":"E. Africa {c} Time"},"Indian/Kerguelen":{"f":"TFT","o":"5:0","c":"TF","n":"West Asia {c} Time"},"Indian/Mahe":{"f":"SCT","o":"4:0","c":"SC","n":"Mauritius {c} Time"},"Indian/Maldives":{"f":"MVT","o":"5:0","c":"MV","n":"West Asia {c} Time"},"Indian/Mauritius":{"f":"MUST","o":"4:0","c":"MU","n":"Mauritius {c} Time"},"Indian/Mayotte":{"f":"EAT","o":"3:0","c":"YT","n":"E. Africa {c} Time"},"Indian/Reunion":{"f":"RET","o":"4:0","c":"RE","n":"Mauritius {c} Time"},"MET":{"e":{"m":10,"r":"l0","t":"2:0","z":"s"},"f":"ME{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0","z":"s"}},"MST":{"f":"MST","o":"-7:0"},"MST7MDT":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Mountain {c} Time"},"PST8PDT":{"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Pacific {c} Time"},"Pacific/Apia":{"e":{"m":4,"r":"0>1","t":"4:0"},"f":"WS{c}T","o":"13:0","s":{"c":"D","m":9,"r":"l0","t":"3:0","v":"1:00"},"c":"WS","n":"Samoa {c} Time"},"Pacific/Auckland":{"e":{"c":"S","m":4,"r":"0>1","t":"2:0","z":"s"},"f":"NZ{c}T","o":"12:0","s":{"c":"D","m":9,"r":"l0","t":"2:0","v":"1:0","z":"s"},"c":"NZ","n":"New Zealand {c} Time"},"Pacific/Chatham":{"e":{"c":"S","m":4,"r":"0>1","t":"2:45","z":"s"},"f":"CHA{c}T","o":"12:45","s":{"c":"D","m":9,"r":"l0","t":"2:45","v":"1:0","z":"s"},"c":"NZ"},"Pacific/Chuuk":{"f":"CHUT","o":"10:0","c":"FM","n":"West Pacific {c} Time"},"Pacific/Easter":{"e":{"m":4,"r":"0>23","t":"3:0","z":"u"},"f":"EAS{c}T","o":"-6:0","s":{"c":"S","m":9,"r":"0>2","t":"4:0","v":"1:0","z":"u"},"c":"CL"},"Pacific/Efate":{"f":"VUST","o":"11:0","c":"VU","n":"Central Pacific {c} Time"},"Pacific/Enderbury":{"f":"PHOT","o":"13:0","c":"KI","n":"Tonga {c} Time"},"Pacific/Fakaofo":{"f":"TKT","o":"13:0","c":"TK","n":"Tonga {c} Time"},"Pacific/Fiji":{"e":{"m":1,"r":"0>18","t":"2:0"},"f":"FJ{c}T","o":"12:0","s":{"c":"S","m":10,"r":"0>21","t":"2:0","v":"1:0"},"c":"FJ","n":"Fiji {c} Time"},"Pacific/Funafuti":{"f":"TVT","o":"12:0","c":"TV","n":"UTC+12"},"Pacific/Galapagos":{"f":"GALT","o":"-6:0","c":"EC","n":"Central America {c} Time"},"Pacific/Gambier":{"f":"GAMT","o":"-9:0","c":"PF"},"Pacific/Guadalcanal":{"f":"SBT","o":"11:0","c":"SB","n":"Central Pacific {c} Time"},"Pacific/Guam":{"f":"ChST","o":"10:0","c":"GU","n":"West Pacific {c} Time"},"Pacific/Honolulu":{"f":"HST","o":"-10:0","c":"US","n":"Hawaiian {c} Time"},"Pacific/Kiritimati":{"f":"LINT","o":"14:0","c":"KI"},"Pacific/Kosrae":{"f":"KOST","o":"11:0","c":"FM","n":"Central Pacific {c} Time"},"Pacific/Kwajalein":{"f":"MHT","o":"12:0","c":"MH","n":"UTC+12"},"Pacific/Majuro":{"f":"MHT","o":"12:0","c":"MH","n":"UTC+12"},"Pacific/Marquesas":{"f":"MART","o":"-9:30","c":"PF"},"Pacific/Midway":{"f":"SST","o":"-11:0","c":"UM","n":"UTC-11"},"Pacific/Nauru":{"f":"NRT","o":"12:0","c":"NR","n":"UTC+12"},"Pacific/Niue":{"f":"NUT","o":"-11:0","c":"NU","n":"UTC-11"},"Pacific/Norfolk":{"f":"NFT","o":"11:30","c":"NF"},"Pacific/Noumea":{"f":"NCST","o":"11:0","c":"NC","n":"Central Pacific {c} Time"},"Pacific/Pago_Pago":{"f":"SST","o":"-11:0","c":"AS","n":"UTC-11"},"Pacific/Palau":{"f":"PWT","o":"9:0","c":"PW","n":"Tokyo {c} Time"},"Pacific/Pitcairn":{"f":"PST","o":"-8:0","c":"PN"},"Pacific/Pohnpei":{"f":"PONT","o":"11:0","c":"FM","n":"Central Pacific {c} Time"},"Pacific/Port_Moresby":{"f":"PGT","o":"10:0","c":"PG","n":"West Pacific {c} Time"},"Pacific/Rarotonga":{"f":"CKST","o":"-10:0","c":"CK","n":"Hawaiian {c} Time"},"Pacific/Saipan":{"f":"ChST","o":"10:0","c":"MP","n":"West Pacific {c} Time"},"Pacific/Tahiti":{"f":"TAHT","o":"-10:0","c":"PF","n":"Hawaiian {c} Time"},"Pacific/Tarawa":{"f":"GILT","o":"12:0","c":"KI","n":"UTC+12"},"Pacific/Tongatapu":{"f":"TOST","o":"13:0","c":"TO","n":"Tonga {c} Time"},"Pacific/Wake":{"f":"WAKT","o":"12:0","c":"UM","n":"UTC+12"},"Pacific/Wallis":{"f":"WFT","o":"12:0","c":"WF","n":"UTC+12"},"WET":{"e":{"m":10,"r":"l0","t":"1:0","z":"u"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0","z":"u"}}};
+ilib.data.zoneinfo["Africa/Djibouti"] = {"f":"EAT","o":"3:0","c":"DJ","n":"E. Africa {c} Time"};
+ilib.data.zoneinfo["Africa/Windhoek"] = {"e":{"m":4,"r":"0>1","t":"2:0"},"f":"WA{c}T","o":"1:0","s":{"c":"S","m":9,"r":"0>1","t":"2:0","v":"1:0"},"c":"NA","n":"Namibia {c} Time"};
+ilib.data.zoneinfo["Africa/Johannesburg"] = {"f":"SAST","o":"2:0","c":"ZA","n":"South Africa {c} Time"};
+ilib.data.zoneinfo["Africa/Douala"] = {"f":"WAT","o":"1:0","c":"CM","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["Africa/Accra"] = {"f":"S","o":"0:0","c":"GH","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Africa/Addis_Ababa"] = {"f":"EAT","o":"3:0","c":"ET","n":"E. Africa {c} Time"};
+ilib.data.zoneinfo["Asia/Dubai"] = {"f":"GST","o":"4:0","c":"AE","n":"Arabian {c} Time"};
+ilib.data.zoneinfo["Asia/Bahrain"] = {"f":"AST","o":"3:0","c":"BH","n":"Arab {c} Time"};
+ilib.data.zoneinfo["Africa/Algiers"] = {"f":"CET","o":"1:0","c":"DZ","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["Africa/Cairo"] = {"f":"EEST","o":"2:0","c":"EG","n":"Egypt {c} Time"};
+ilib.data.zoneinfo["Asia/Baghdad"] = {"f":"AST","o":"3:0","c":"IQ","n":"Arabic {c} Time"};
+ilib.data.zoneinfo["Asia/Amman"] = {"e":{"m":10,"r":"l5","t":"1:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l5","t":"0:0","v":"1:0"},"c":"JO","n":"Jordan {c} Time"};
+ilib.data.zoneinfo["Asia/Kuwait"] = {"f":"AST","o":"3:0","c":"KW","n":"Arab {c} Time"};
+ilib.data.zoneinfo["Asia/Beirut"] = {"e":{"m":10,"r":"l0","t":"0:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"0:0","v":"1:0"},"c":"LB","n":"Middle East {c} Time"};
+ilib.data.zoneinfo["Africa/Tripoli"] = {"f":"EET","o":"2:0","c":"LY","n":"Libya {c} Time"};
+ilib.data.zoneinfo["Africa/Casablanca"] = {"e":{"m":6,"r":"29","t":"3:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":7,"r":"29","t":"2:0","v":"1:0"},"c":"MA","n":"Morocco {c} Time"};
+ilib.data.zoneinfo["Africa/Nouakchott"] = {"f":"GMT","o":"0:0","c":"MR","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Asia/Muscat"] = {"f":"GST","o":"4:0","c":"OM","n":"Arabian {c} Time"};
+ilib.data.zoneinfo["Asia/Qatar"] = {"f":"AST","o":"3:0","c":"QA","n":"Arab {c} Time"};
+ilib.data.zoneinfo["Asia/Riyadh"] = {"f":"AST","o":"3:0","c":"SA","n":"Arab {c} Time"};
+ilib.data.zoneinfo["Africa/Khartoum"] = {"f":"EAT","o":"3:0","c":"SD","n":"E. Africa {c} Time"};
+ilib.data.zoneinfo["Asia/Damascus"] = {"e":{"m":10,"r":"l5","t":"0:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l5","t":"0:0","v":"1:0"},"c":"SY","n":"Syria {c} Time"};
+ilib.data.zoneinfo["Africa/Tunis"] = {"f":"CEST","o":"1:0","c":"TN","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["Asia/Aden"] = {"f":"AST","o":"3:0","c":"YE","n":"Arab {c} Time"};
+ilib.data.zoneinfo["Africa/Dar_es_Salaam"] = {"f":"EAT","o":"3:0","c":"TZ","n":"E. Africa {c} Time"};
+ilib.data.zoneinfo["Asia/Kolkata"] = {"f":"IST","o":"5:30","c":"IN","n":"India {c} Time"};
+ilib.data.zoneinfo["Asia/Baku"] = {"e":{"m":10,"r":"l0","t":"5:0"},"f":"AZ{c}T","o":"4:0","s":{"c":"S","m":3,"r":"l0","t":"4:0","v":"1:0"},"c":"AZ","n":"Azerbaijan {c} Time"};
+ilib.data.zoneinfo["Europe/Minsk"] = {"f":"FET","o":"3:0","c":"BY","n":"Kaliningrad {c} Time"};
+ilib.data.zoneinfo["Africa/Lusaka"] = {"f":"CAT","o":"2:0","c":"ZM","n":"South Africa {c} Time"};
+ilib.data.zoneinfo["Europe/Sofia"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"BG","n":"FLE {c} Time"};
+ilib.data.zoneinfo["Africa/Bamako"] = {"f":"GMT","o":"0:0","c":"ML","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Europe/Paris"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"FR","n":"Romance {c} Time"};
+ilib.data.zoneinfo["Europe/Sarajevo"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"BA","n":"Central European {c} Time"};
+ilib.data.zoneinfo["Europe/Podgorica"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"ME","n":"Central Europe {c} Time"};
+ilib.data.zoneinfo["Europe/Prague"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"CZ","n":"Central Europe {c} Time"};
+ilib.data.zoneinfo["Europe/Copenhagen"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"DK","n":"Romance {c} Time"};
+ilib.data.zoneinfo["Europe/Vienna"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"AT","n":"W. Europe {c} Time"};
+ilib.data.zoneinfo["Europe/Zurich"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"CH","n":"W. Europe {c} Time"};
+ilib.data.zoneinfo["Europe/Berlin"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"DE","n":"W. Europe {c} Time"};
+ilib.data.zoneinfo["Europe/Athens"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"GR","n":"GTB {c} Time"};
+ilib.data.zoneinfo["Australia/Lord_Howe"] = {"e":{"m":4,"r":"0>1","t":"2:0"},"f":"LHST","o":"10:30","s":{"m":10,"r":"0>1","t":"2:0","v":"0:30"},"c":"AU"};
+ilib.data.zoneinfo["Antarctica/Macquarie"] = {"f":"MIST","o":"11:0","c":"AU","n":"Central Pacific {c} Time"};
+ilib.data.zoneinfo["Australia/Hobart"] = {"e":{"m":4,"r":"0>1","t":"3:0"},"f":"EST","o":"10:0","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"Tasmania {c} Time"};
+ilib.data.zoneinfo["Australia/Currie"] = {"e":{"m":4,"r":"0>1","t":"3:0"},"f":"EST","o":"10:0","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"Tasmania {c} Time"};
+ilib.data.zoneinfo["Australia/Melbourne"] = {"e":{"m":4,"r":"0>1","t":"3:0"},"f":"EST","o":"10:0","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"AUS Eastern {c} Time"};
+ilib.data.zoneinfo["Australia/Sydney"] = {"e":{"m":4,"r":"0>1","t":"3:0"},"f":"EST","o":"10:0","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"AUS Eastern {c} Time"};
+ilib.data.zoneinfo["Australia/Broken_Hill"] = {"e":{"m":4,"r":"0>1","t":"3:0"},"f":"CST","o":"9:30","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"Cen. Australia {c} Time"};
+ilib.data.zoneinfo["Australia/Brisbane"] = {"f":"EST","o":"10:0","c":"AU","n":"E. Australia {c} Time"};
+ilib.data.zoneinfo["Australia/Lindeman"] = {"f":"EST","o":"10:0","c":"AU","n":"E. Australia {c} Time"};
+ilib.data.zoneinfo["Australia/Adelaide"] = {"e":{"m":4,"r":"0>1","t":"3:0"},"f":"CST","o":"9:30","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"Cen. Australia {c} Time"};
+ilib.data.zoneinfo["Australia/Darwin"] = {"f":"CST","o":"9:30","c":"AU","n":"AUS Central {c} Time"};
+ilib.data.zoneinfo["Australia/Perth"] = {"f":"WST","o":"8:0","c":"AU","n":"W. Australia {c} Time"};
+ilib.data.zoneinfo["Australia/Eucla"] = {"f":"CWST","o":"8:45","c":"AU"};
+ilib.data.zoneinfo["America/St_Johns"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"N{c}T","o":"-3:30","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Newfoundland {c} Time"};
+ilib.data.zoneinfo["America/Halifax"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"A{c}T","o":"-4:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Atlantic {c} Time"};
+ilib.data.zoneinfo["America/Glace_Bay"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"A{c}T","o":"-4:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Atlantic {c} Time"};
+ilib.data.zoneinfo["America/Moncton"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"A{c}T","o":"-4:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Atlantic {c} Time"};
+ilib.data.zoneinfo["America/Goose_Bay"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"A{c}T","o":"-4:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Atlantic {c} Time"};
+ilib.data.zoneinfo["America/Blanc-Sablon"] = {"f":"AST","o":"-4:0","c":"CA","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["America/Toronto"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Eastern {c} Time"};
+ilib.data.zoneinfo["America/Nipigon"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Eastern {c} Time"};
+ilib.data.zoneinfo["America/Thunder_Bay"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Eastern {c} Time"};
+ilib.data.zoneinfo["America/Iqaluit"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Eastern {c} Time"};
+ilib.data.zoneinfo["America/Pangnirtung"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Eastern {c} Time"};
+ilib.data.zoneinfo["America/Resolute"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Central {c} Time"};
+ilib.data.zoneinfo["America/Atikokan"] = {"f":"EST","o":"-5:0","c":"CA","n":"SA Pacific {c} Time"};
+ilib.data.zoneinfo["America/Rankin_Inlet"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Central {c} Time"};
+ilib.data.zoneinfo["America/Winnipeg"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Central {c} Time"};
+ilib.data.zoneinfo["America/Rainy_River"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Central {c} Time"};
+ilib.data.zoneinfo["America/Regina"] = {"f":"CST","o":"-6:0","c":"CA","n":"Canada Central {c} Time"};
+ilib.data.zoneinfo["America/Swift_Current"] = {"f":"CST","o":"-6:0","c":"CA","n":"Canada Central {c} Time"};
+ilib.data.zoneinfo["America/Edmonton"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Mountain {c} Time"};
+ilib.data.zoneinfo["America/Cambridge_Bay"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Mountain {c} Time"};
+ilib.data.zoneinfo["America/Yellowknife"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Mountain {c} Time"};
+ilib.data.zoneinfo["America/Inuvik"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Mountain {c} Time"};
+ilib.data.zoneinfo["America/Creston"] = {"f":"MST","o":"-7:0","c":"CA","n":"US Mountain {c} Time"};
+ilib.data.zoneinfo["America/Dawson_Creek"] = {"f":"MST","o":"-7:0","c":"CA","n":"US Mountain {c} Time"};
+ilib.data.zoneinfo["America/Vancouver"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Pacific {c} Time"};
+ilib.data.zoneinfo["America/Whitehorse"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Pacific {c} Time"};
+ilib.data.zoneinfo["America/Dawson"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Pacific {c} Time"};
+ilib.data.zoneinfo["America/Montreal"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"};
+ilib.data.zoneinfo["Europe/London"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"GMT/BST","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"},"c":"GB","n":"GMT {c} Time"};
+ilib.data.zoneinfo["Africa/Banjul"] = {"f":"GMT","o":"0:0","c":"GM","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Asia/Hong_Kong"] = {"f":"HKST","o":"8:0","c":"HK","n":"China {c} Time"};
+ilib.data.zoneinfo["Europe/Dublin"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"GMT/IST","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"},"c":"IE","n":"GMT {c} Time"};
+ilib.data.zoneinfo["Africa/Nairobi"] = {"f":"EAT","o":"3:0","c":"KE","n":"E. Africa {c} Time"};
+ilib.data.zoneinfo["Asia/Colombo"] = {"f":"IST","o":"5:30","c":"LK","n":"Sri Lanka {c} Time"};
+ilib.data.zoneinfo["Africa/Monrovia"] = {"f":"GMT","o":"0:0","c":"LR","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Africa/Blantyre"] = {"f":"CAT","o":"2:0","c":"MW","n":"South Africa {c} Time"};
+ilib.data.zoneinfo["Asia/Kuala_Lumpur"] = {"f":"MYT","o":"8:0","c":"MY","n":"Singapore {c} Time"};
+ilib.data.zoneinfo["Asia/Kuching"] = {"f":"MYT","o":"8:0","c":"MY","n":"Singapore {c} Time"};
+ilib.data.zoneinfo["Africa/Lagos"] = {"f":"WAT","o":"1:0","c":"NG","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["Pacific/Auckland"] = {"e":{"c":"S","m":4,"r":"0>1","t":"3:0"},"f":"NZ{c}T","o":"12:0","s":{"c":"D","m":9,"r":"l0","t":"2:0","v":"1:0"},"c":"NZ","n":"New Zealand {c} Time"};
+ilib.data.zoneinfo["Pacific/Chatham"] = {"e":{"c":"S","m":4,"r":"0>1","t":"3:45"},"f":"CHA{c}T","o":"12:45","s":{"c":"D","m":9,"r":"l0","t":"2:45","v":"1:0"},"c":"NZ"};
+ilib.data.zoneinfo["Asia/Manila"] = {"f":"PHST","o":"8:0","c":"PH","n":"Singapore {c} Time"};
+ilib.data.zoneinfo["Asia/Karachi"] = {"f":"PKST","o":"5:0","c":"PK","n":"Pakistan {c} Time"};
+ilib.data.zoneinfo["America/Puerto_Rico"] = {"f":"AST","o":"-4:0","c":"PR","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["Africa/Kigali"] = {"f":"CAT","o":"2:0","c":"RW","n":"South Africa {c} Time"};
+ilib.data.zoneinfo["Asia/Singapore"] = {"f":"SGT","o":"8:0","c":"SG","n":"Singapore {c} Time"};
+ilib.data.zoneinfo["Africa/Freetown"] = {"f":"S","o":"0:0","c":"SL","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Africa/Kampala"] = {"f":"EAT","o":"3:0","c":"UG","n":"E. Africa {c} Time"};
+ilib.data.zoneinfo["America/New_York"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Eastern {c} Time"};
+ilib.data.zoneinfo["America/Detroit"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Eastern {c} Time"};
+ilib.data.zoneinfo["America/Chicago"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Central {c} Time"};
+ilib.data.zoneinfo["America/Menominee"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Central {c} Time"};
+ilib.data.zoneinfo["America/Denver"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Mountain {c} Time"};
+ilib.data.zoneinfo["America/Boise"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Mountain {c} Time"};
+ilib.data.zoneinfo["America/Phoenix"] = {"f":"MST","o":"-7:0","c":"US","n":"US Mountain {c} Time"};
+ilib.data.zoneinfo["America/Los_Angeles"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Pacific {c} Time"};
+ilib.data.zoneinfo["America/Anchorage"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"};
+ilib.data.zoneinfo["America/Juneau"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"};
+ilib.data.zoneinfo["America/Sitka"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"};
+ilib.data.zoneinfo["America/Yakutat"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"};
+ilib.data.zoneinfo["America/Nome"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"};
+ilib.data.zoneinfo["America/Adak"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"HA{c}T","o":"-10:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US"};
+ilib.data.zoneinfo["America/Metlakatla"] = {"f":"MeST","o":"-8:0","c":"US"};
+ilib.data.zoneinfo["Pacific/Honolulu"] = {"f":"HST","o":"-10:0","c":"US","n":"Hawaiian {c} Time"};
+ilib.data.zoneinfo["America/Bogota"] = {"f":"COST","o":"-5:0","c":"CO","n":"SA Pacific {c} Time"};
+ilib.data.zoneinfo["America/Costa_Rica"] = {"f":"CST","o":"-6:0","c":"CR","n":"Central America {c} Time"};
+ilib.data.zoneinfo["America/Santo_Domingo"] = {"f":"AST","o":"-4:0","c":"DO","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["America/Guayaquil"] = {"f":"ECT","o":"-5:0","c":"EC","n":"SA Pacific {c} Time"};
+ilib.data.zoneinfo["Pacific/Galapagos"] = {"f":"GALT","o":"-6:0","c":"EC","n":"Central America {c} Time"};
+ilib.data.zoneinfo["Europe/Madrid"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"ES","n":"Romance {c} Time"};
+ilib.data.zoneinfo["Africa/Ceuta"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"ES","n":"Romance {c} Time"};
+ilib.data.zoneinfo["Atlantic/Canary"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"},"c":"ES","n":"GMT {c} Time"};
+ilib.data.zoneinfo["Africa/Malabo"] = {"f":"WAT","o":"1:0","c":"GQ","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["America/Guatemala"] = {"f":"CST","o":"-6:0","c":"GT","n":"Central America {c} Time"};
+ilib.data.zoneinfo["America/Tegucigalpa"] = {"f":"CST","o":"-6:0","c":"HN","n":"Central America {c} Time"};
+ilib.data.zoneinfo["America/Mexico_City"] = {"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Central {c} Time (Mexico)"};
+ilib.data.zoneinfo["America/Cancun"] = {"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Central {c} Time (Mexico)"};
+ilib.data.zoneinfo["America/Merida"] = {"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Central {c} Time (Mexico)"};
+ilib.data.zoneinfo["America/Monterrey"] = {"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Central {c} Time (Mexico)"};
+ilib.data.zoneinfo["America/Matamoros"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"MX","n":"Central {c} Time"};
+ilib.data.zoneinfo["America/Mazatlan"] = {"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Mountain {c} Time (Mexico)"};
+ilib.data.zoneinfo["America/Chihuahua"] = {"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Mountain {c} Time (Mexico)"};
+ilib.data.zoneinfo["America/Ojinaga"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"MX","n":"Mountain {c} Time"};
+ilib.data.zoneinfo["America/Hermosillo"] = {"f":"MST","o":"-7:0","c":"MX","n":"US Mountain {c} Time"};
+ilib.data.zoneinfo["America/Tijuana"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"MX","n":"Pacific {c} Time"};
+ilib.data.zoneinfo["America/Santa_Isabel"] = {"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Pacific {c} Time (Mexico)"};
+ilib.data.zoneinfo["America/Bahia_Banderas"] = {"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":4,"r":"0>1","t":"2:0","v":"1:0"},"c":"MX","n":"Central {c} Time (Mexico)"};
+ilib.data.zoneinfo["America/El_Salvador"] = {"f":"CST","o":"-6:0","c":"SV","n":"Central America {c} Time"};
+ilib.data.zoneinfo["America/Montevideo"] = {"e":{"m":3,"r":"0>8","t":"2:0"},"f":"UY{c}T","o":"-3:0","s":{"c":"S","m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"UY","n":"Montevideo {c} Time"};
+ilib.data.zoneinfo["America/Caracas"] = {"f":"VET","o":"-4:30","c":"VE","n":"Venezuela {c} Time"};
+ilib.data.zoneinfo["Europe/Tallinn"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"EE","n":"FLE {c} Time"};
+ilib.data.zoneinfo["Asia/Kabul"] = {"f":"AFT","o":"4:30","c":"AF","n":"Afghanistan {c} Time"};
+ilib.data.zoneinfo["Asia/Tehran"] = {"e":{"c":"S","m":9,"r":"22","t":"0:0"},"f":"IR{c}T","o":"3:30","s":{"c":"D","m":3,"r":"22","t":"0:0","v":"1:0"},"c":"IR","n":"Iran {c} Time"};
+ilib.data.zoneinfo["Africa/Dakar"] = {"f":"GMT","o":"0:0","c":"SN","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Europe/Helsinki"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"FI","n":"FLE {c} Time"};
+ilib.data.zoneinfo["Pacific/Fiji"] = {"e":{"m":1,"r":"0>18","t":"2:0"},"f":"FJ{c}T","o":"12:0","s":{"c":"S","m":10,"r":"0>21","t":"2:0","v":"1:0"},"c":"FJ","n":"Fiji {c} Time"};
+ilib.data.zoneinfo["Europe/Andorra"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"AD","n":"W. Europe {c} Time"};
+ilib.data.zoneinfo["Europe/Brussels"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"BE","n":"Romance {c} Time"};
+ilib.data.zoneinfo["Africa/Ouagadougou"] = {"f":"GMT","o":"0:0","c":"BF","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Africa/Porto-Novo"] = {"f":"WAT","o":"1:0","c":"BJ","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["Africa/Kinshasa"] = {"f":"WAT","o":"1:0","c":"CD","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["Africa/Lubumbashi"] = {"f":"CAT","o":"2:0","c":"CD","n":"South Africa {c} Time"};
+ilib.data.zoneinfo["Africa/Bangui"] = {"f":"WAT","o":"1:0","c":"CF","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["Africa/Brazzaville"] = {"f":"WAT","o":"1:0","c":"CG","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["Africa/Abidjan"] = {"f":"GMT","o":"0:0","c":"CI","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Africa/Libreville"] = {"f":"WAT","o":"1:0","c":"GA","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["Africa/Conakry"] = {"f":"GMT","o":"0:0","c":"GN","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Europe/Luxembourg"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"LU","n":"W. Europe {c} Time"};
+ilib.data.zoneinfo["Indian/Antananarivo"] = {"f":"EAT","o":"3:0","c":"MG","n":"E. Africa {c} Time"};
+ilib.data.zoneinfo["Africa/Lome"] = {"f":"GMT","o":"0:0","c":"TG","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Indian/Mayotte"] = {"f":"EAT","o":"3:0","c":"YT","n":"E. Africa {c} Time"};
+ilib.data.zoneinfo["Asia/Jerusalem"] = {"e":{"c":"S","m":10,"r":"l0","t":"2:0"},"f":"I{c}T","o":"2:0","s":{"c":"D","m":3,"r":"5>23","t":"2:0","v":"1:0"},"c":"IL","n":"Israel {c} Time"};
+ilib.data.zoneinfo["Europe/Zagreb"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"HR","n":"Central European {c} Time"};
+ilib.data.zoneinfo["Europe/Budapest"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"HU","n":"Central Europe {c} Time"};
+ilib.data.zoneinfo["Asia/Jakarta"] = {"f":"WIB","o":"7:0","c":"ID","n":"SE Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Pontianak"] = {"f":"WIB","o":"7:0","c":"ID","n":"SE Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Makassar"] = {"f":"WITA","o":"8:0","c":"ID","n":"Singapore {c} Time"};
+ilib.data.zoneinfo["Asia/Jayapura"] = {"f":"WIT","o":"9:0","c":"ID","n":"Tokyo {c} Time"};
+ilib.data.zoneinfo["Europe/Rome"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"IT","n":"W. Europe {c} Time"};
+ilib.data.zoneinfo["Europe/San_Marino"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"SM","n":"W. Europe {c} Time"};
+ilib.data.zoneinfo["Asia/Tokyo"] = {"f":"JST","o":"9:0","c":"JP","n":"Tokyo {c} Time"};
+ilib.data.zoneinfo["Asia/Almaty"] = {"f":"ALMT","o":"6:0","c":"KZ","n":"Central Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Qyzylorda"] = {"f":"QYZT","o":"6:0","c":"KZ","n":"Central Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Aqtobe"] = {"f":"AQTT","o":"5:0","c":"KZ","n":"West Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Aqtau"] = {"f":"AQTT","o":"5:0","c":"KZ","n":"West Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Oral"] = {"f":"ORAT","o":"5:0","c":"KZ","n":"West Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Seoul"] = {"f":"KST","o":"9:0","c":"KR","n":"Korea {c} Time"};
+ilib.data.zoneinfo["Europe/Vilnius"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"LT","n":"FLE {c} Time"};
+ilib.data.zoneinfo["Europe/Riga"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"LV","n":"FLE {c} Time"};
+ilib.data.zoneinfo["Pacific/Rarotonga"] = {"f":"CKST","o":"-10:0","c":"CK","n":"Hawaiian {c} Time"};
+ilib.data.zoneinfo["Europe/Skopje"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"MK","n":"Central European {c} Time"};
+ilib.data.zoneinfo["Asia/Shanghai"] = {"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"};
+ilib.data.zoneinfo["Asia/Harbin"] = {"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"};
+ilib.data.zoneinfo["Asia/Chongqing"] = {"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"};
+ilib.data.zoneinfo["Asia/Urumqi"] = {"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"};
+ilib.data.zoneinfo["Asia/Kashgar"] = {"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"};
+ilib.data.zoneinfo["Asia/Brunei"] = {"f":"BNT","o":"8:0","c":"BN","n":"Singapore {c} Time"};
+ilib.data.zoneinfo["Europe/Oslo"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"NO","n":"W. Europe {c} Time"};
+ilib.data.zoneinfo["America/Curacao"] = {"f":"AST","o":"-4:0","c":"CW","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["America/Cayenne"] = {"f":"GFT","o":"-3:0","c":"GF","n":"SA Eastern {c} Time"};
+ilib.data.zoneinfo["Europe/Amsterdam"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"NL","n":"W. Europe {c} Time"};
+ilib.data.zoneinfo["America/Paramaribo"] = {"f":"SRT","o":"-3:0","c":"SR","n":"SA Eastern {c} Time"};
+ilib.data.zoneinfo["Arctic/Longyearbyen"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"SJ","n":"W. Europe {c} Time"};
+ilib.data.zoneinfo["Europe/Kaliningrad"] = {"f":"FET","o":"3:0","c":"RU","n":"Kaliningrad {c} Time"};
+ilib.data.zoneinfo["Europe/Moscow"] = {"f":"MSK","o":"4:0","c":"RU","n":"Russian {c} Time"};
+ilib.data.zoneinfo["Europe/Volgograd"] = {"f":"VOLT","o":"4:0","c":"RU","n":"Russian {c} Time"};
+ilib.data.zoneinfo["Europe/Samara"] = {"f":"SAMT","o":"4:0","c":"RU","n":"Russian {c} Time"};
+ilib.data.zoneinfo["Europe/Simferopol"] = {"f":"MSK","o":"4:0","c":"RU","n":"FLE {c} Time"};
+ilib.data.zoneinfo["Asia/Yekaterinburg"] = {"f":"YEKT","o":"6:0","c":"RU","n":"Ekaterinburg {c} Time"};
+ilib.data.zoneinfo["Asia/Omsk"] = {"f":"OMST","o":"7:0","c":"RU","n":"N. Central Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Novosibirsk"] = {"f":"NOVT","o":"7:0","c":"RU","n":"N. Central Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Novokuznetsk"] = {"f":"NOVT","o":"7:0","c":"RU","n":"N. Central Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Krasnoyarsk"] = {"f":"KRAT","o":"8:0","c":"RU","n":"North Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Irkutsk"] = {"f":"IRKT","o":"9:0","c":"RU","n":"North Asia East {c} Time"};
+ilib.data.zoneinfo["Asia/Yakutsk"] = {"f":"YAKT","o":"10:0","c":"RU","n":"Yakutsk {c} Time"};
+ilib.data.zoneinfo["Asia/Khandyga"] = {"f":"YAKT","o":"10:0","c":"RU","n":"Yakutsk {c} Time"};
+ilib.data.zoneinfo["Asia/Vladivostok"] = {"f":"VLAT","o":"11:0","c":"RU","n":"Vladivostok {c} Time"};
+ilib.data.zoneinfo["Asia/Sakhalin"] = {"f":"SAKT","o":"11:0","c":"RU","n":"Vladivostok {c} Time"};
+ilib.data.zoneinfo["Asia/Ust-Nera"] = {"f":"VLAT","o":"11:0","c":"RU","n":"Vladivostok {c} Time"};
+ilib.data.zoneinfo["Asia/Magadan"] = {"f":"MAGT","o":"12:0","c":"RU","n":"Magadan {c} Time"};
+ilib.data.zoneinfo["Asia/Kamchatka"] = {"f":"PETT","o":"12:0","c":"RU","n":"Magadan {c} Time"};
+ilib.data.zoneinfo["Asia/Anadyr"] = {"f":"ANAT","o":"12:0","c":"RU","n":"Magadan {c} Time"};
+ilib.data.zoneinfo["Europe/Warsaw"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"PL","n":"Central European {c} Time"};
+ilib.data.zoneinfo["Africa/Luanda"] = {"f":"WAT","o":"1:0","c":"AO","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["America/Noronha"] = {"f":"FNT","o":"-2:0","c":"BR","n":"UTC-02"};
+ilib.data.zoneinfo["America/Belem"] = {"f":"BRT","o":"-3:0","c":"BR","n":"SA Eastern {c} Time"};
+ilib.data.zoneinfo["America/Fortaleza"] = {"f":"BRT","o":"-3:0","c":"BR","n":"SA Eastern {c} Time"};
+ilib.data.zoneinfo["America/Recife"] = {"f":"BRT","o":"-3:0","c":"BR","n":"SA Eastern {c} Time"};
+ilib.data.zoneinfo["America/Araguaina"] = {"f":"BRT","o":"-3:0","c":"BR","n":"E. South America {c} Time"};
+ilib.data.zoneinfo["America/Maceio"] = {"f":"BRT","o":"-3:0","c":"BR","n":"SA Eastern {c} Time"};
+ilib.data.zoneinfo["America/Bahia"] = {"f":"BRT","o":"-3:0","c":"BR","n":"Bahia {c} Time"};
+ilib.data.zoneinfo["America/Sao_Paulo"] = {"e":{"m":2,"r":"0>15","t":"0:0"},"f":"BR{c}T","o":"-3:0","s":{"c":"S","m":10,"r":"0>15","t":"0:0","v":"1:0"},"c":"BR","n":"E. South America {c} Time"};
+ilib.data.zoneinfo["America/Campo_Grande"] = {"e":{"m":2,"r":"0>15","t":"0:0"},"f":"AM{c}T","o":"-4:0","s":{"c":"S","m":10,"r":"0>15","t":"0:0","v":"1:0"},"c":"BR","n":"Central Brazilian {c} Time"};
+ilib.data.zoneinfo["America/Cuiaba"] = {"e":{"m":2,"r":"0>15","t":"0:0"},"f":"AM{c}T","o":"-4:0","s":{"c":"S","m":10,"r":"0>15","t":"0:0","v":"1:0"},"c":"BR","n":"Central Brazilian {c} Time"};
+ilib.data.zoneinfo["America/Santarem"] = {"f":"BRT","o":"-3:0","c":"BR","n":"SA Eastern {c} Time"};
+ilib.data.zoneinfo["America/Porto_Velho"] = {"f":"AMT","o":"-4:0","c":"BR","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["America/Boa_Vista"] = {"f":"AMT","o":"-4:0","c":"BR","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["America/Manaus"] = {"f":"AMT","o":"-4:0","c":"BR","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["America/Eirunepe"] = {"f":"ACT","o":"-5:0","c":"BR","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["America/Rio_Branco"] = {"f":"ACT","o":"-5:0","c":"BR","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["Atlantic/Cape_Verde"] = {"f":"CVT","o":"-1:0","c":"CV","n":"Cape Verde {c} Time"};
+ilib.data.zoneinfo["Africa/Bissau"] = {"f":"GMT","o":"0:0","c":"GW","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Asia/Macau"] = {"f":"CST","o":"8:0","c":"MO","n":"China {c} Time"};
+ilib.data.zoneinfo["Africa/Maputo"] = {"f":"CAT","o":"2:0","c":"MZ","n":"South Africa {c} Time"};
+ilib.data.zoneinfo["Europe/Lisbon"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"},"c":"PT","n":"GMT {c} Time"};
+ilib.data.zoneinfo["Atlantic/Madeira"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"},"c":"PT","n":"GMT {c} Time"};
+ilib.data.zoneinfo["Atlantic/Azores"] = {"e":{"m":10,"r":"l0","t":"1:0"},"f":"AZO{c}T","o":"-1:0","s":{"c":"S","m":3,"r":"l0","t":"0:0","v":"1:0"},"c":"PT","n":"Azores {c} Time"};
+ilib.data.zoneinfo["Africa/Sao_Tome"] = {"f":"GMT","o":"0:0","c":"ST","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Asia/Dili"] = {"f":"TLT","o":"9:0","c":"TL","n":"Tokyo {c} Time"};
+ilib.data.zoneinfo["Europe/Bucharest"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"RO","n":"GTB {c} Time"};
+ilib.data.zoneinfo["Europe/Belgrade"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"RS","n":"Central Europe {c} Time"};
+ilib.data.zoneinfo["Asia/Bishkek"] = {"f":"KGT","o":"6:0","c":"KG","n":"Central Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Ashgabat"] = {"f":"TMT","o":"5:0","c":"TM","n":"West Asia {c} Time"};
+ilib.data.zoneinfo["Europe/Bratislava"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"SK","n":"Central Europe {c} Time"};
+ilib.data.zoneinfo["Europe/Ljubljana"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"SI","n":"Central Europe {c} Time"};
+ilib.data.zoneinfo["Africa/Mogadishu"] = {"f":"EAT","o":"3:0","c":"SO","n":"E. Africa {c} Time"};
+ilib.data.zoneinfo["Europe/Tirane"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"AL","n":"Central Europe {c} Time"};
+ilib.data.zoneinfo["Africa/Maseru"] = {"f":"SAST","o":"2:0","c":"LS","n":"South Africa {c} Time"};
+ilib.data.zoneinfo["Europe/Stockholm"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"SE","n":"W. Europe {c} Time"};
+ilib.data.zoneinfo["Europe/Istanbul"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"TR","n":"Turkey {c} Time"};
+ilib.data.zoneinfo["Europe/Kiev"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"UA","n":"FLE {c} Time"};
+ilib.data.zoneinfo["Europe/Uzhgorod"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"UA","n":"FLE {c} Time"};
+ilib.data.zoneinfo["Europe/Zaporozhye"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"UA","n":"FLE {c} Time"};
+ilib.data.zoneinfo["Asia/Samarkand"] = {"f":"UZT","o":"5:0","c":"UZ","n":"West Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Tashkent"] = {"f":"UZT","o":"5:0","c":"UZ","n":"West Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Ho_Chi_Minh"] = {"f":"ICT","o":"7:0","c":"VN","n":"SE Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Taipei"] = {"f":"CST","o":"8:0","c":"TW","n":"Taipei {c} Time"};
+ilib.data.zoneinfo["MET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"ME{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
+ilib.data.zoneinfo["EET"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"}};
+ilib.data.zoneinfo["HST"] = {"f":"HST","o":"-10:0"};
+ilib.data.zoneinfo["MST7MDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Mountain {c} Time"};
+ilib.data.zoneinfo["zonetab"] = {"AD":["Europe/Andorra"],"AE":["Asia/Dubai"],"AF":["Asia/Kabul"],"AG":["America/Antigua"],"AI":["America/Anguilla"],"AL":["Europe/Tirane"],"AM":["Asia/Yerevan"],"AO":["Africa/Luanda"],"AQ":["Antarctica/McMurdo","Antarctica/Rothera","Antarctica/Palmer","Antarctica/Mawson","Antarctica/Davis","Antarctica/Casey","Antarctica/Vostok","Antarctica/DumontDUrville","Antarctica/Syowa","Antarctica/Troll"],"AR":["America/Argentina/Buenos_Aires","America/Argentina/Cordoba","America/Argentina/Salta","America/Argentina/Jujuy","America/Argentina/Tucuman","America/Argentina/Catamarca","America/Argentina/La_Rioja","America/Argentina/San_Juan","America/Argentina/Mendoza","America/Argentina/San_Luis","America/Argentina/Rio_Gallegos","America/Argentina/Ushuaia"],"AS":["Pacific/Pago_Pago"],"AT":["Europe/Vienna"],"AU":["Australia/Lord_Howe","Antarctica/Macquarie","Australia/Hobart","Australia/Currie","Australia/Melbourne","Australia/Sydney","Australia/Broken_Hill","Australia/Brisbane","Australia/Lindeman","Australia/Adelaide","Australia/Darwin","Australia/Perth","Australia/Eucla"],"AW":["America/Aruba"],"AX":["Europe/Mariehamn"],"AZ":["Asia/Baku"],"BA":["Europe/Sarajevo"],"BB":["America/Barbados"],"BD":["Asia/Dhaka"],"BE":["Europe/Brussels"],"BF":["Africa/Ouagadougou"],"BG":["Europe/Sofia"],"BH":["Asia/Bahrain"],"BI":["Africa/Bujumbura"],"BJ":["Africa/Porto-Novo"],"BL":["America/St_Barthelemy"],"BM":["Atlantic/Bermuda"],"BN":["Asia/Brunei"],"BO":["America/La_Paz"],"BQ":["America/Kralendijk"],"BR":["America/Noronha","America/Belem","America/Fortaleza","America/Recife","America/Araguaina","America/Maceio","America/Bahia","America/Sao_Paulo","America/Campo_Grande","America/Cuiaba","America/Santarem","America/Porto_Velho","America/Boa_Vista","America/Manaus","America/Eirunepe","America/Rio_Branco"],"BS":["America/Nassau"],"BT":["Asia/Thimphu"],"BW":["Africa/Gaborone"],"BY":["Europe/Minsk"],"BZ":["America/Belize"],"CA":["America/St_Johns","America/Halifax","America/Glace_Bay","America/Moncton","America/Goose_Bay","America/Blanc-Sablon","America/Toronto","America/Nipigon","America/Thunder_Bay","America/Iqaluit","America/Pangnirtung","America/Resolute","America/Atikokan","America/Rankin_Inlet","America/Winnipeg","America/Rainy_River","America/Regina","America/Swift_Current","America/Edmonton","America/Cambridge_Bay","America/Yellowknife","America/Inuvik","America/Creston","America/Dawson_Creek","America/Vancouver","America/Whitehorse","America/Dawson","America/Montreal"],"CC":["Indian/Cocos"],"CD":["Africa/Kinshasa","Africa/Lubumbashi"],"CF":["Africa/Bangui"],"CG":["Africa/Brazzaville"],"CH":["Europe/Zurich"],"CI":["Africa/Abidjan"],"CK":["Pacific/Rarotonga"],"CL":["America/Santiago","Pacific/Easter"],"CM":["Africa/Douala"],"CN":["Asia/Shanghai","Asia/Harbin","Asia/Chongqing","Asia/Urumqi","Asia/Kashgar"],"CO":["America/Bogota"],"CR":["America/Costa_Rica"],"CU":["America/Havana"],"CV":["Atlantic/Cape_Verde"],"CW":["America/Curacao"],"CX":["Indian/Christmas"],"CY":["Asia/Nicosia"],"CZ":["Europe/Prague"],"DE":["Europe/Berlin","Europe/Busingen"],"DJ":["Africa/Djibouti"],"DK":["Europe/Copenhagen"],"DM":["America/Dominica"],"DO":["America/Santo_Domingo"],"DZ":["Africa/Algiers"],"EC":["America/Guayaquil","Pacific/Galapagos"],"EE":["Europe/Tallinn"],"EG":["Africa/Cairo"],"EH":["Africa/El_Aaiun"],"ER":["Africa/Asmara"],"ES":["Europe/Madrid","Africa/Ceuta","Atlantic/Canary"],"ET":["Africa/Addis_Ababa"],"FI":["Europe/Helsinki"],"FJ":["Pacific/Fiji"],"FK":["Atlantic/Stanley"],"FM":["Pacific/Chuuk","Pacific/Pohnpei","Pacific/Kosrae"],"FO":["Atlantic/Faroe"],"FR":["Europe/Paris"],"GA":["Africa/Libreville"],"GB":["Europe/London"],"GD":["America/Grenada"],"GE":["Asia/Tbilisi"],"GF":["America/Cayenne"],"GG":["Europe/Guernsey"],"GH":["Africa/Accra"],"GI":["Europe/Gibraltar"],"GL":["America/Godthab","America/Danmarkshavn","America/Scoresbysund","America/Thule"],"GM":["Africa/Banjul"],"GN":["Africa/Conakry"],"GP":["America/Guadeloupe"],"GQ":["Africa/Malabo"],"GR":["Europe/Athens"],"GS":["Atlantic/South_Georgia"],"GT":["America/Guatemala"],"GU":["Pacific/Guam"],"GW":["Africa/Bissau"],"GY":["America/Guyana"],"HK":["Asia/Hong_Kong"],"HN":["America/Tegucigalpa"],"HR":["Europe/Zagreb"],"HT":["America/Port-au-Prince"],"HU":["Europe/Budapest"],"ID":["Asia/Jakarta","Asia/Pontianak","Asia/Makassar","Asia/Jayapura"],"IE":["Europe/Dublin"],"IL":["Asia/Jerusalem"],"IM":["Europe/Isle_of_Man"],"IN":["Asia/Kolkata"],"IO":["Indian/Chagos"],"IQ":["Asia/Baghdad"],"IR":["Asia/Tehran"],"IS":["Atlantic/Reykjavik"],"IT":["Europe/Rome"],"JE":["Europe/Jersey"],"JM":["America/Jamaica"],"JO":["Asia/Amman"],"JP":["Asia/Tokyo"],"KE":["Africa/Nairobi"],"KG":["Asia/Bishkek"],"KH":["Asia/Phnom_Penh"],"KI":["Pacific/Tarawa","Pacific/Enderbury","Pacific/Kiritimati"],"KM":["Indian/Comoro"],"KN":["America/St_Kitts"],"KP":["Asia/Pyongyang"],"KR":["Asia/Seoul"],"KW":["Asia/Kuwait"],"KY":["America/Cayman"],"KZ":["Asia/Almaty","Asia/Qyzylorda","Asia/Aqtobe","Asia/Aqtau","Asia/Oral"],"LA":["Asia/Vientiane"],"LB":["Asia/Beirut"],"LC":["America/St_Lucia"],"LI":["Europe/Vaduz"],"LK":["Asia/Colombo"],"LR":["Africa/Monrovia"],"LS":["Africa/Maseru"],"LT":["Europe/Vilnius"],"LU":["Europe/Luxembourg"],"LV":["Europe/Riga"],"LY":["Africa/Tripoli"],"MA":["Africa/Casablanca"],"MC":["Europe/Monaco"],"MD":["Europe/Chisinau"],"ME":["Europe/Podgorica"],"MF":["America/Marigot"],"MG":["Indian/Antananarivo"],"MH":["Pacific/Majuro","Pacific/Kwajalein"],"MK":["Europe/Skopje"],"ML":["Africa/Bamako"],"MM":["Asia/Rangoon"],"MN":["Asia/Ulaanbaatar","Asia/Hovd","Asia/Choibalsan"],"MO":["Asia/Macau"],"MP":["Pacific/Saipan"],"MQ":["America/Martinique"],"MR":["Africa/Nouakchott"],"MS":["America/Montserrat"],"MT":["Europe/Malta"],"MU":["Indian/Mauritius"],"MV":["Indian/Maldives"],"MW":["Africa/Blantyre"],"MX":["America/Mexico_City","America/Cancun","America/Merida","America/Monterrey","America/Matamoros","America/Mazatlan","America/Chihuahua","America/Ojinaga","America/Hermosillo","America/Tijuana","America/Santa_Isabel","America/Bahia_Banderas"],"MY":["Asia/Kuala_Lumpur","Asia/Kuching"],"MZ":["Africa/Maputo"],"NA":["Africa/Windhoek"],"NC":["Pacific/Noumea"],"NE":["Africa/Niamey"],"NF":["Pacific/Norfolk"],"NG":["Africa/Lagos"],"NI":["America/Managua"],"NL":["Europe/Amsterdam"],"NO":["Europe/Oslo"],"NP":["Asia/Kathmandu"],"NR":["Pacific/Nauru"],"NU":["Pacific/Niue"],"NZ":["Pacific/Auckland","Pacific/Chatham"],"OM":["Asia/Muscat"],"PA":["America/Panama"],"PE":["America/Lima"],"PF":["Pacific/Tahiti","Pacific/Marquesas","Pacific/Gambier"],"PG":["Pacific/Port_Moresby"],"PH":["Asia/Manila"],"PK":["Asia/Karachi"],"PL":["Europe/Warsaw"],"PM":["America/Miquelon"],"PN":["Pacific/Pitcairn"],"PR":["America/Puerto_Rico"],"PS":["Asia/Gaza","Asia/Hebron"],"PT":["Europe/Lisbon","Atlantic/Madeira","Atlantic/Azores"],"PW":["Pacific/Palau"],"PY":["America/Asuncion"],"QA":["Asia/Qatar"],"RE":["Indian/Reunion"],"RO":["Europe/Bucharest"],"RS":["Europe/Belgrade"],"RU":["Europe/Kaliningrad","Europe/Moscow","Europe/Volgograd","Europe/Samara","Europe/Simferopol","Asia/Yekaterinburg","Asia/Omsk","Asia/Novosibirsk","Asia/Novokuznetsk","Asia/Krasnoyarsk","Asia/Irkutsk","Asia/Yakutsk","Asia/Khandyga","Asia/Vladivostok","Asia/Sakhalin","Asia/Ust-Nera","Asia/Magadan","Asia/Kamchatka","Asia/Anadyr"],"RW":["Africa/Kigali"],"SA":["Asia/Riyadh"],"SB":["Pacific/Guadalcanal"],"SC":["Indian/Mahe"],"SD":["Africa/Khartoum"],"SE":["Europe/Stockholm"],"SG":["Asia/Singapore"],"SH":["Atlantic/St_Helena"],"SI":["Europe/Ljubljana"],"SJ":["Arctic/Longyearbyen"],"SK":["Europe/Bratislava"],"SL":["Africa/Freetown"],"SM":["Europe/San_Marino"],"SN":["Africa/Dakar"],"SO":["Africa/Mogadishu"],"SR":["America/Paramaribo"],"SS":["Africa/Juba"],"ST":["Africa/Sao_Tome"],"SV":["America/El_Salvador"],"SX":["America/Lower_Princes"],"SY":["Asia/Damascus"],"SZ":["Africa/Mbabane"],"TC":["America/Grand_Turk"],"TD":["Africa/Ndjamena"],"TF":["Indian/Kerguelen"],"TG":["Africa/Lome"],"TH":["Asia/Bangkok"],"TJ":["Asia/Dushanbe"],"TK":["Pacific/Fakaofo"],"TL":["Asia/Dili"],"TM":["Asia/Ashgabat"],"TN":["Africa/Tunis"],"TO":["Pacific/Tongatapu"],"TR":["Europe/Istanbul"],"TT":["America/Port_of_Spain"],"TV":["Pacific/Funafuti"],"TW":["Asia/Taipei"],"TZ":["Africa/Dar_es_Salaam"],"UA":["Europe/Kiev","Europe/Uzhgorod","Europe/Zaporozhye"],"UG":["Africa/Kampala"],"UM":["Pacific/Johnston","Pacific/Midway","Pacific/Wake"],"US":["America/New_York","America/Detroit","America/Kentucky/Louisville","America/Kentucky/Monticello","America/Indiana/Indianapolis","America/Indiana/Vincennes","America/Indiana/Winamac","America/Indiana/Marengo","America/Indiana/Petersburg","America/Indiana/Vevay","America/Chicago","America/Indiana/Tell_City","America/Indiana/Knox","America/Menominee","America/North_Dakota/Center","America/North_Dakota/New_Salem","America/North_Dakota/Beulah","America/Denver","America/Boise","America/Phoenix","America/Los_Angeles","America/Anchorage","America/Juneau","America/Sitka","America/Yakutat","America/Nome","America/Adak","America/Metlakatla","Pacific/Honolulu"],"UY":["America/Montevideo"],"UZ":["Asia/Samarkand","Asia/Tashkent"],"VA":["Europe/Vatican"],"VC":["America/St_Vincent"],"VE":["America/Caracas"],"VG":["America/Tortola"],"VI":["America/St_Thomas"],"VN":["Asia/Ho_Chi_Minh"],"VU":["Pacific/Efate"],"WF":["Pacific/Wallis"],"WS":["Pacific/Apia"],"YE":["Asia/Aden"],"YT":["Indian/Mayotte"],"ZA":["Africa/Johannesburg"],"ZM":["Africa/Lusaka"],"ZW":["Africa/Harare"]};
+ilib.data.zoneinfo["EST"] = {"f":"EST","o":"-5:0"};
+ilib.data.zoneinfo["Factory"] = {"f":"\"Local","o":"0:0"};
+ilib.data.zoneinfo["CST6CDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Central {c} Time"};
+ilib.data.zoneinfo["CET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
+ilib.data.zoneinfo["Iceland"] = {"f":"GMT","o":"0:0","c":"IS"};
+ilib.data.zoneinfo["MST"] = {"f":"MST","o":"-7:0"};
+ilib.data.zoneinfo["EST5EDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"};
+ilib.data.zoneinfo["WET"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"}};
+ilib.data.zoneinfo["PST8PDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-7"] = {"f":"GMT-7","o":"7:0","n":"SE Asia {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-13"] = {"f":"GMT-13","o":"13:0","n":"Tonga {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+5"] = {"f":"GMT+5","o":"-5:0","n":"SA Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+1"] = {"f":"GMT+1","o":"-1:0","n":"Cape Verde {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-8"] = {"f":"GMT-8","o":"8:0","n":"Singapore {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+9"] = {"f":"GMT+9","o":"-9:0"};
+ilib.data.zoneinfo["Etc/GMT+11"] = {"f":"GMT+11","o":"-11:0","n":"UTC-11"};
+ilib.data.zoneinfo["Etc/GMT-11"] = {"f":"GMT-11","o":"11:0","n":"Central Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-2"] = {"f":"GMT-2","o":"2:0","n":"South Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-9"] = {"f":"GMT-9","o":"9:0","n":"Tokyo {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-6"] = {"f":"GMT-6","o":"6:0","n":"Central Asia {c} Time"};
+ilib.data.zoneinfo["Etc/GMT"] = {"f":"GMT","o":"0:0","n":"UTC"};
+ilib.data.zoneinfo["Etc/GMT-12"] = {"f":"GMT-12","o":"12:0","n":"UTC+12"};
+ilib.data.zoneinfo["Etc/GMT+4"] = {"f":"GMT+4","o":"-4:0","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-4"] = {"f":"GMT-4","o":"4:0","n":"Arabian {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+12"] = {"f":"GMT+12","o":"-12:0","n":"Dateline {c} Time"};
+ilib.data.zoneinfo["Etc/UCT"] = {"f":"UCT","o":"0:0"};
+ilib.data.zoneinfo["Etc/GMT+6"] = {"f":"GMT+6","o":"-6:0","n":"Central America {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+8"] = {"f":"GMT+8","o":"-8:0"};
+ilib.data.zoneinfo["Etc/GMT-10"] = {"f":"GMT-10","o":"10:0","n":"West Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+3"] = {"f":"GMT+3","o":"-3:0","n":"SA Eastern {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+2"] = {"f":"GMT+2","o":"-2:0","n":"UTC-02"};
+ilib.data.zoneinfo["Etc/GMT-5"] = {"f":"GMT-5","o":"5:0","n":"West Asia {c} Time"};
+ilib.data.zoneinfo["Etc/UTC"] = {"f":"UTC","o":"0:0"};
+ilib.data.zoneinfo["Etc/GMT-3"] = {"f":"GMT-3","o":"3:0","n":"E. Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-14"] = {"f":"GMT-14","o":"14:0"};
+ilib.data.zoneinfo["Etc/GMT-1"] = {"f":"GMT-1","o":"1:0","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+7"] = {"f":"GMT+7","o":"-7:0","n":"US Mountain {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+10"] = {"f":"GMT+10","o":"-10:0","n":"Hawaiian {c} Time"};
 /*
  * timezone.js - Definition of a time zone class
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5164,13 +5476,13 @@ locale.js
 localeinfo.js
 util/utils.js
 util/math.js
-calendar/gregoriandate.js
+calendar/gregratadie.js
 */
 
-// !data localeinfo timezones
+// !data localeinfo zoneinfo
 
 /**
- * @class Create a time zone information instance. 
+ * @class Create a time zone instance. 
  * 
  * This class reports and transforms
  * information about particular time zones.<p>
@@ -5323,14 +5635,14 @@ ilib.TimeZone = function(options) {
 /*
  * Explanation of the compressed time zone info properties.
  * {
- *     "o": "8:0",      // Offset from UTC
- *     "f": "W{c}T",      // 
+ *     "o": "8:0",      // offset from UTC
+ *     "f": "W{c}T",    // standard abbreviation. For time zones that observe DST, the {c} replacement is replaced with the 
+ *                      // letter in the e.c or s.c properties below 
  *     "e": {           // info about the end of DST
  *         "m": 3,      // month that it ends
  *         "r": "l0",   // rule for the day it ends "l" = "last", numbers are Sun=0 through Sat=6. Other syntax is "0>7". 
  *                      // This means the 0-day (Sun) after the 7th of the month. Other possible operators are <, >, <=, >=
  *         "t": "2:0",  // time of day that the DST turns off, hours:minutes
- *         "z": "s",    // ???
  *         "c": "S"     // character to replace into the abbreviation for standard time 
  *     },
  *     "s": {           // info about the start of DST
@@ -5338,7 +5650,6 @@ ilib.TimeZone = function(options) {
  *         "r": "l0",   // rule for the day it starts "l" = "last", numbers are Sun=0 through Sat=6. Other syntax is "0>7".
  *                      // This means the 0-day (Sun) after the 7th of the month. Other possible operators are <, >, <=, >=
  *         "t": "2:0",  // time of day that the DST turns on, hours:minutes
- *         "z": "s",    // ???
  *         "v": "1:0",  // amount of time saved in hours:minutes
  *         "c": "D"     // character to replace into the abbreviation for daylight time
  *     },
@@ -5347,20 +5658,20 @@ ilib.TimeZone = function(options) {
  *                      // long English name of the zone. The {c} replacement is for the word "Standard" or "Daylight" as appropriate
  * }
  */
-ilib.data.defaultZones = {
-	"Etc/UTC":{"o":"0:0","f":"UTC"}
-};
-
 ilib.TimeZone.prototype._loadtzdata = function () {
-	if (!ilib.data.timezones) {
+	// console.log("id is: " + JSON.stringify(this.id));
+	// console.log("zoneinfo is: " + JSON.stringify(ilib.data.zoneinfo[this.id]));
+	if (!ilib.data.zoneinfo[this.id] && typeof(this.offset) === 'undefined') {
 		ilib.loadData({
 			object: ilib.TimeZone, 
-			locale: "-",	// locale independent 
-			name: "timezones.json", 
+			nonlocale: true,	// locale independent 
+			name: "zoneinfo/" + this.id + ".json", 
 			sync: this.sync, 
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function (tzdata) {
-				ilib.data.timezones = tzdata || ilib.data.defaultZones;
+				if (tzdata && !ilib.isEmpty(tzdata)) {
+					ilib.data.zoneinfo[this.id] = tzdata;
+				}
 				this._initZone();
 			})
 		});
@@ -5374,16 +5685,29 @@ ilib.TimeZone.prototype._initZone = function() {
 	 * @private
 	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>,c:string,n:string}} 
 	 */
-	this.zone = ilib.data.timezones[this.id];
+	this.zone = ilib.data.zoneinfo[this.id];
 	if (!this.zone && typeof(this.offset) === 'undefined') {
 		this.id = "Etc/UTC";
-		this.zone = ilib.data.timezones[this.id];
+		this.zone = ilib.data.zoneinfo[this.id];
+	}
+	
+	this._calcDSTSavings();
+	
+	if (typeof(this.offset) === 'undefined' && this.zone.o) {
+		var offsetParts = this._offsetStringToObj(this.zone.o);
+		/**
+		 * @private
+		 * @type {number} raw offset from UTC without DST, in minutes
+		 */
+		this.offset = (Math.abs(offsetParts.h || 0) * 60 + (offsetParts.m || 0)) * ilib.signum(offsetParts.h || 0);
 	}
 	
 	if (this.onLoad && typeof(this.onLoad) === 'function') {
 		this.onLoad(this);
 	}
 };
+
+ilib.data.timezone = {};
 
 /**
  * Return an array of available zone ids that the constructor knows about.
@@ -5397,15 +5721,50 @@ ilib.TimeZone.prototype._initZone = function() {
 ilib.TimeZone.getAvailableIds = function (country) {
 	var tz, ids = [];
 	
+	if (!ilib.data.timezone.list) {
+		ilib.data.timezone.list = [];
+		if (ilib._load instanceof ilib.Loader) {
+			var hash = ilib._load.listAvailableFiles();
+			for (var dir in hash) {
+				var files = hash[dir];
+				files.forEach(function (filename) {
+					if (filename && filename.match(/^zoneinfo/)) {
+						ilib.data.timezone.list.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
+					}
+				});
+			}
+		} else {
+			for (tz in ilib.data.zoneinfo) {
+				if (ilib.data.zoneinfo[tz]) {
+					ilib.data.timezone.list.push(tz);
+				}
+			}
+		}
+	}
+	
 	if (!country) {
 		// special zone meaning "the local time zone according to the JS engine we are running upon"
 		ids.push("local");
-	}
-	
-	for (tz in ilib.data.timezones) {
-		if (tz && (!country || ilib.data.timezones[tz].c === country)) {
-			ids.push(tz);
+		for (tz in ilib.data.timezone.list) {
+			if (ilib.data.timezone.list[tz]) {
+				ids.push(ilib.data.timezone.list[tz]);
+			}
 		}
+	} else {
+		if (!ilib.data.zoneinfo.zonetab) {
+			ilib.loadData({
+				object: ilib.TimeZone, 
+				nonlocale: true,	// locale independent 
+				name: "zoneinfo/zonetab.json", 
+				sync: true, 
+				callback: ilib.bind(this, function (tzdata) {
+					if (tzdata) {
+						ilib.data.zoneinfo.zonetab = tzdata;
+					}
+				})
+			});
+		}
+		ids = ilib.data.zoneinfo.zonetab[country];
 	}
 	
 	return ids;
@@ -5536,6 +5895,9 @@ ilib.TimeZone.prototype._offsetStringToObj = function (str) {
  * the given date/time, in hours, minutes, and seconds  
  */
 ilib.TimeZone.prototype.getOffset = function (date) {
+	if (!date) {
+		return this.getRawOffset();
+	}
 	var offset = this.getOffsetMillis(date)/60000;
 	
 	var hours = ilib._roundFnc.down(offset/60),
@@ -5564,18 +5926,12 @@ ilib.TimeZone.prototype.getOffset = function (date) {
 ilib.TimeZone.prototype.getOffsetMillis = function (date) {
 	var ret;
 	
-	if (this.isLocal) {
+	// check if the dst property is defined -- the intrinsic JS Date object doesn't work so
+	// well if we are in the overlap time at the end of DST
+	if (this.isLocal && typeof(date.dst) === 'undefined') {
 		var d = (!date) ? new Date() : new Date(date.getTime());
-		return -d.getTimezoneOffset() * 60 * 1000;
+		return -d.getTimezoneOffset() * 60000;
 	} 
-	
-	if (typeof(this.dstSavings) === 'undefined') {
-		this._calcDSTSavings();
-	}
-	
-	if (typeof(this.offset) === 'undefined') {
-		this._calcOffset();
-	}
 	
 	ret = this.offset;
 	
@@ -5583,7 +5939,26 @@ ilib.TimeZone.prototype.getOffsetMillis = function (date) {
 		ret += this.dstSavings;
 	}
 	
-	return ret * 60 * 1000;
+	return ret * 60000;
+};
+
+/**
+ * @private
+ * Return the offset in milliseconds when the date has an RD number in wall
+ * time rather than in UTC time.
+ * @param date the date to check in wall time
+ * @returns {number} the number of milliseconds of offset from UTC that the given date is
+ */
+ilib.TimeZone.prototype._getOffsetMillisWallTime = function (date) {
+	var ret;
+	
+	ret = this.offset;
+	
+	if (date && this.inDaylightTime(date, true)) {
+		ret += this.dstSavings;
+	}
+	
+	return ret * 60000;
 };
 
 /**
@@ -5617,10 +5992,8 @@ ilib.TimeZone.prototype.getOffsetStr = function (date) {
  * UTC for this time zone, in hours, minutes, and seconds 
  */
 ilib.TimeZone.prototype.getRawOffset = function () {
-	var offset = this.getRawOffsetMillis()/60000;
-
-	var hours = ilib._roundFnc.down(offset/60),
-		minutes = Math.abs(offset) - Math.abs(hours)*60;
+	var hours = ilib._roundFnc.down(this.offset/60),
+		minutes = Math.abs(this.offset) - Math.abs(hours)*60;
 	
 	var ret = {
 		h: hours
@@ -5639,26 +6012,16 @@ ilib.TimeZone.prototype.getRawOffset = function () {
  * UTC for this time zone in milliseconds 
  */
 ilib.TimeZone.prototype.getRawOffsetMillis = function () {
-	if (typeof(this.offset) === 'undefined') {
-		this._calcOffset();
-	}
-	return this.offset * 60 * 1000;
+	return this.offset * 60000;
 };
 
 /**
- * Gets the offset from UTC for this time zone.
+ * Gets the offset from UTC for this time zone without DST savings.
  * @return {string} the offset from UTC for this time zone, in the format "h:m:s" 
  */
 ilib.TimeZone.prototype.getRawOffsetStr = function () {
-	if (this.isLocal) {
-		var off = this.getRawOffset();
-		return off.h + ":" + off.m;
-	} else if (typeof(this.offset) !== 'undefined') { 
-		// have to check against undefined instead of just "if (this.offset)" because the 
-		// offset could legally be equal to zero
-		return this.getOffsetStr(undefined);
-	}
-	return this.zone && this.zone.o || "0:0";
+	var off = this.getRawOffset();
+	return off.h + ":" + (off.m || "0");
 };
 
 /**
@@ -5694,7 +6057,7 @@ ilib.TimeZone.prototype.getDSTSavingsStr = function () {
 	if (this.isLocal) {
 		var savings = this.getDSTSavings();
 		return savings.h + ":" + savings.m;
-	} else if (typeof(this.offset) === 'undefined' && this.zone && this.zone.s) {
+	} else if (typeof(this.offset) !== 'undefined' && this.zone && this.zone.s) {
 		return this.zone.s.v;	// this.zone.start.savings
 	}
 	return "0:0";
@@ -5713,7 +6076,6 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 		day, 
 		refDay, 
 		cal, 
-		rd, 
 		hour = 0, 
 		minute = 0, 
 		second = 0,
@@ -5759,7 +6121,7 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 		}
 	}
 	//console.log("calculating rd of " + year + "/" + rule.m + "/" + day);
-	refDay = new ilib.Date.GregDate({
+	refDay = new ilib.Date.GregRataDie({
 		year: year, 
 		month: rule.m, 
 		day: day, 
@@ -5767,22 +6129,22 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 		minute: minute, 
 		second: second
 	});
-	rd = refDay.getRataDie();
-	//console.log("rd is " + rd);
+	//console.log("refDay is " + JSON.stringify(refDay));
+	var d = refDay.getRataDie();
 	
 	switch (type) {
 		case 'l':
 		case '<':
-			//console.log("returning " + refDay.onOrBeforeRd(rd, weekday));
-			return refDay.onOrBeforeRd(rd, weekday);		
+			//console.log("returning " + refDay.onOrBefore(rd, weekday));
+			d = refDay.onOrBefore(weekday); 
+			break;
 		case 'f':
 		case '>':
 			//console.log("returning " + refDay.onOrAfterRd(rd, weekday));
-			return refDay.onOrAfterRd(rd, weekday);		
-		default:
-			//console.log("returning rd unchanged");
-			return rd;
+			d = refDay.onOrAfter(weekday); 
+			break;
 	}
+	return d;
 };
 
 /**
@@ -5801,15 +6163,17 @@ ilib.TimeZone.prototype._calcDSTSavings = function () {
 /**
  * @private
  */
-ilib.TimeZone.prototype._calcOffset = function () {
-	if (this.zone.o) {
-		var offsetParts = this._offsetStringToObj(this.zone.o);
-		/**
-		 * @private
-		 * @type {number} raw offset from UTC without DST, in minutes
-		 */
-		this.offset = (Math.abs(offsetParts.h || 0) * 60 + (offsetParts.m || 0)) * ilib.signum(offsetParts.h || 0);
-	}
+ilib.TimeZone.prototype._getDSTStartRule = function (year) {
+	// TODO: update this when historic/future zones are supported
+	return this.zone.s;
+};
+
+/**
+ * @private
+ */
+ilib.TimeZone.prototype._getDSTEndRule = function (year) {
+	// TODO: update this when historic/future zones are supported
+	return this.zone.e;
 };
 
 /**
@@ -5822,20 +6186,24 @@ ilib.TimeZone.prototype._calcOffset = function () {
  * 
  * @param {ilib.Date=} date a date for which the info about daylight time is being sought,
  * or undefined to tell whether we are currently in daylight savings time
+ * @param {boolean=} wallTime if true, then the given date is in wall time. If false or
+ * undefined, it is in the usual UTC time.
  * @return {boolean} true if the given date is in DST for the current zone, and false
  * otherwise.
  */
-ilib.TimeZone.prototype.inDaylightTime = function (date) {
+ilib.TimeZone.prototype.inDaylightTime = function (date, wallTime) {
 	var rd, startRd, endRd;
-	
-	// if we aren't using daylight time in this zone, then where are never in daylight
-	// time, no matter what the date is
-	if (!this.useDaylightTime()) {
-		return false;
-	}
-	
+
 	if (this.isLocal) {
-		var d = new Date(date ? date.getTime() : undefined);
+		// check if the dst property is defined -- the intrinsic JS Date object doesn't work so
+		// well if we are in the overlap time at the end of DST, so we have to work around that
+		// problem by adding in the savings ourselves
+		var offset = 0;
+		if (typeof(date.dst) !== 'undefined' && !date.dst) {
+			offset = this.dstSavings * 60000;
+		}
+		
+		var d = new Date(date ? date.getTime() + offset: undefined);
 		// the DST offset is always the one that is closest to negative infinity, no matter 
 		// if you are in the northern or southern hemisphere
 		var dst = Math.min(this.offsetJan1, this.offsetJun1);
@@ -5843,12 +6211,47 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 	}
 	
 	if (!date) {
-		date = ilib.Date.newInstance(); // right now
+		date = new ilib.Date.GregDate(); // right now
+	} else if (!(date instanceof ilib.Date.GregDate)) {
+		// convert to Gregorian so that we can tell if it is in DST or not
+		date = new ilib.Date.GregDate({
+			julianday: date.getJulianDay(),
+			timezone: date.getTimeZone()
+		});
 	}
 	
+	// if we aren't using daylight time in this zone for the given year, then we are 
+	// not in daylight time
+	if (!this.useDaylightTime(date.year)) {
+		return false;
+	}
+	
+	// this should be a Gregorian RD number now, in UTC
 	rd = date.getRataDie();
-	startRd = this._calcRuleStart(this.zone.s, date.year);
-	endRd = this._calcRuleStart(this.zone.e, date.year);
+	
+	// these calculate the start/end in local wall time
+	var startrule = this._getDSTStartRule(date.year);
+	var endrule = this._getDSTEndRule(date.year);
+	startRd = this._calcRuleStart(startrule, date.year);
+	endRd = this._calcRuleStart(endrule, date.year);
+	
+	if (wallTime) {
+		// rd is in wall time, so we have to make sure to skip the missing time
+		// at the start of DST when standard time ends and daylight time begins
+		startRd += this.dstSavings/1440;
+	} else {
+		// rd is in UTC, so we have to convert the start/end to UTC time so 
+		// that they can be compared directly to the UTC rd number of the date
+		
+		// when DST starts, time is standard time already, so we only have
+		// to subtract the offset to get to UTC and not worry about the DST savings
+		startRd -= this.offset/1440;  
+		
+		// when DST ends, time is in daylight time already, so we have to
+		// subtract the DST savings to get back to standard time, then the
+		// offset to get to UTC
+		endRd -= (this.offset + this.dstSavings)/1440;
+	}
 	
 	// In the northern hemisphere, the start comes first some time in spring (Feb-Apr), 
 	// then the end some time in the fall (Sept-Nov). In the southern
@@ -5856,7 +6259,10 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 	// time is still in the winter, but the winter months are May-Aug, and daylight 
 	// savings time usually starts Aug-Oct of one year and runs through Mar-May of the 
 	// next year.
-	
+	if (rd < endRd && endRd - rd <= this.dstSavings/1440 && typeof(date.dst) === 'boolean') {
+		// take care of the magic overlap time at the end of DST
+		return date.dst;
+	}
 	if (startRd < endRd) {
 		// northern hemisphere
 		return (rd >= startRd && rd < endRd) ? true : false;
@@ -5868,9 +6274,12 @@ ilib.TimeZone.prototype.inDaylightTime = function (date) {
 /**
  * Returns true if this time zone switches to daylight savings time at some point
  * in the year, and false otherwise.
+ * @param {number} year Whether or not the time zone uses daylight time in the given year. If
+ * this parameter is not given, the current year is assumed.
  * @return {boolean} true if the time zone uses daylight savings time
  */
-ilib.TimeZone.prototype.useDaylightTime = function () {
+ilib.TimeZone.prototype.useDaylightTime = function (year) {
+	
 	// this zone uses daylight savings time iff there is a rule defining when to start
 	// and when to stop the DST
 	return (this.isLocal && this.offsetJan1 !== this.offsetJun1) ||
@@ -6535,7 +6944,7 @@ ilib.shallowCopy = function (source, target) {
 	var prop = undefined;
 	if (source && target) {
 		for (prop in source) {
-			if (prop !== undefined && source[prop]) {
+			if (prop !== undefined && typeof(source[prop]) !== 'undefined') {
 				target[prop] = source[prop];
 			}
 		}
@@ -6615,7 +7024,7 @@ ilib.data.dateformats_bs = {"gregorian":{"order":"{time} {date}","date":{"dm":{"
 ilib.data.dateformats_bs_Cyrl_BA = {"gregorian":{"time":{"12":{"ah":"hh a"}},"range":{"c00":{"s":"{st} - {et} {sd}.{sm}.{sy}.","m":"{st} - {et} {sd}.{sm}.{sy}","l":"{st} - {et} {sd}. {sm} {sy}.","f":"{st} - {et} {sd}. {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","l":"{st} {sd}. - {et} {ed}. {em} {ey}.","m":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","f":"{st} {sd}. - {et} {ed}. {em} {ey}."},"c02":{"s":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","l":"{st} {sd}. {sm} - {et} {ed}. {em} {ey}.","f":"{st} {sd}. {sm} - {et} {ed}. {em} {ey}.","m":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}."},"c10":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. - {ed}. {em} {ey}.","f":"{sd}. - {ed}. {em} {ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}."},"c11":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. {sm} - {ed}. {em} {ey}.","f":"{sd}. {sm} - {ed}. {em} {ey}."},"c12":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. {sm} {sy}. - {ed}. {em} {ey}.","f":"{sd}. {sm} {sy}. - {ed}. {em} {ey}."},"c20":{"s":"{sm}.{sy}. - {em}.{ey}.","m":"{sm}.{sy}. - {em}.{ey}.","l":"{sm} {sy}. - {em} {ey}.","f":"{sm} {sy}. - {em} {ey}."},"c30":"{sy} - {ey}"}},"generated":true};
 ilib.data.dateformats_ca = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd/MM"},"dmy":{"m":"dd/MM/yyyy","f":"MMMM 'de' yyyy"},"my":{"f":"MMMM 'de' yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, d.M.yy","m":"EE, d.M.yy","l":"EEE, d MMM, yyyy","f":"EEEE, d MMM, yyyy"},"dmw":{"s":"E d/M","m":"EE d/M","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h.mm.ss a z","hmsz":"h.mm.ss z","ahms":"h.mm.ss a","hms":"h.mm.ss","ms":"mm.ss","ahmz":"h.mm a z","ahm":"h.mm a","hm":"h.mm","hmz":"h.mm z","ah":"h a"},"24":{"ahmsz":"H.mm.ss z","ahms":"H.mm.ss","hmsz":"H.mm.ss z","hms":"H.mm.ss","ms":"mm.ss","ahmz":"H.mm z","ahm":"H.mm","hmz":"H.mm z","hm":"H.mm"}},"range":{"c00":{"m":"{st} - {et} {sd}/{sm}/{sy}","l":"{st} - {et} {sd} {sm} {sy}","f":"{st} - {et} {sm} de {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sd} - {et} {ed} {em} de {ey}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","f":"{st} {sd} - {et} {ed} {em} de {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} - {et} {ed} {em} de {ey}","f":"{st} {sd} {sm} - {et} {ed} {em} de {ey}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} - {ed} {em} de {ey}","f":"{sd} - {ed} {em} de {ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} - {ed} {em} de {ey}","f":"{sd} {sm} - {ed} {em} de {ey}"},"c12":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} de {sy} - {ed} {em} de {ey}","f":"{sd} {sm} de {sy} - {ed} {em} de {ey}"},"c20":{"s":"{sm}/{sy} - {em}/{ey}","l":"{sm} de {sy} - {em} de {ey}","f":"{sm} de {sy} - {em} de {ey}"}}},"generated":true};
 ilib.data.dateformats_cs = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d. M.","m":"d. M","l":"d. M.","f":"d. MMMM"},"dmy":{"s":"d. M. yy","m":"d. M. yyyy","l":"d. M. yyyy","f":"d. MMMM yyyy"},"my":{"m":"M. yyyy","l":"MMMM yyyy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, d. M. yy","m":"EE, d. M. yy","l":"EEE, d. M. yyyy","f":"EEEE, d. M. yyyy"},"dmw":{"s":"E, d. M.","m":"EE, d. M.","l":"EEEE, d. M.","f":"EEEE, d. M."},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sd}. {sm}. {sy}","m":"{st} – {et} {sd}. {sm}. {sy}","l":"{st} – {et} {sd}. {sm}. {sy}","f":"{st} – {et} {sd}. {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd}. – {et} {ed}. {em}. {ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","f":"{st} {sd}. – {et} {ed}. {em}. {ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd}. {sm}. – {et} {ed}. {em}. {ey}","f":"{st} {sd}. {sm}. – {et} {ed}. {em}. {ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. – {ed}. {em}. {ey}","f":"{sd}. – {ed}. {em}. {ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm}. – {ed}. {em}. {ey}","f":"{sd}. {sm}. – {ed}. {em}. {ey}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm}. {sy} – {ed}. {em}. {ey}","f":"{sd}. {sm}. {sy} – {ed}. {em}. {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
-ilib.data.dateformats_da = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E dd/MM/yy","m":"EE dd/MM/yyyy","l":"EEE d. MMM yyyy","f":"EEEE 'den' d. MMMM yyyy"},"dmy":{"s":"dd/MM/yy","m":"dd/MM/yyyy","l":"d. MMM yyyy","f":"d. MMMM yyyy"},"dmw":{"s":"E dd/MM","m":"EE dd/MM","l":"EEE d. MMM","f":"EEEE 'den' d. MMMM"},"dm":{"s":"dd/MM","m":"dd/MM","l":"d. MMM","f":"d. MMMM"},"my":{"s":"MM/yy","m":"MM/yyyy","l":"MMM yy","f":"MMMM yyyy"},"dw":{"s":"E dd","m":"EE dd","l":"EEE d.","f":"EEEE 'den' d."},"d":{"s":"d","m":"d","l":"d","f":"d"},"m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"h.mm.ss a Z","ahms":"h.mm.ss a","hmsz":"h.mm.ss Z","ahmz":"h.mm a Z","hms":"h.mm.ss","ahm":"h.mm a","hmz":"h.mm Z","ah":"h a","hm":"h.mm","ms":"mm.ss"},"24":{"ahmsz":"H.mm.ss Z","ahms":"H.mm.ss","hmsz":"H.mm.ss Z","ahmz":"H.mm Z","hms":"H.mm.ss","ahm":"H.mm","hmz":"H.mm Z","hm":"H.mm","ms":"mm.ss"}},"range":{"c00":{"s":"{sd}/{sm}/{sy} {st} - {et}","m":"{sd}/{sm}/{sy} {st} - {et}","l":"{sd}/{sm}/{sy} {st} - {et}","f":"{sd} den {sm} {sy} {st} - {et}"},"c01":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} den {sm} {sy} {st} - {ed} den {em} {ey} {et}"},"c02":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} den {ed} {sm} {sy} {st} - {ed} den {em} {ey} {et}"},"c03":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} den {ed} {sm} {sy} {st} - {ed} den {em} {ey} {et}"},"c10":{"s":"{sd} - {ed}/{sm}/{sy}","m":"{sd} - {ed}/{sm}/{sy}","l":"{sd} - {ed} {sm} {sy}","f":"{sd} - {ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm} - {ed}/{em} {ey}","m":"{sd}/{sm} - {ed}/{em} {ey}","l":"{sd} {sm} - {ed} {em} {sy}","f":"{sd} {sm} - {ed} {em} {sy}"},"c12":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} - {em}/{ey}","m":"{sm}/{sy} - {em}/{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}}};
+ilib.data.dateformats_da = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E dd/MM/yy","m":"EE dd/MM/yyyy","l":"EEE d. MMM yyyy","f":"EEEE 'den' d. MMMM yyyy"},"dmy":{"s":"dd/MM/yy","m":"dd/MM/yyyy","l":"d. MMM yyyy","f":"d. MMMM yyyy"},"dmw":{"s":"E dd/MM","m":"EE dd/MM","l":"EEE d. MMM","f":"EEEE 'den' d. MMMM"},"dm":{"s":"dd/MM","m":"dd/MM","l":"d. MMM","f":"d. MMMM"},"my":{"s":"MM/yy","m":"MM/yyyy","l":"MMM yy","f":"MMMM yyyy"},"dw":{"s":"E dd","m":"EE dd","l":"EEE d.","f":"EEEE 'den' d."},"d":{"s":"d","m":"d","l":"d","f":"d"},"m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"h.mm.ss a z","ahms":"h.mm.ss a","hmsz":"h.mm.ss z","ahmz":"h.mm a z","hms":"h.mm.ss","ahm":"h.mm a","hmz":"h.mm z","ah":"h a","hm":"h.mm","ms":"mm.ss"},"24":{"ahmsz":"H.mm.ss z","ahms":"H.mm.ss","hmsz":"H.mm.ss z","ahmz":"H.mm z","hms":"H.mm.ss","ahm":"H.mm","hmz":"H.mm z","hm":"H.mm","ms":"mm.ss"}},"range":{"c00":{"s":"{sd}/{sm}/{sy} {st} - {et}","m":"{sd}/{sm}/{sy} {st} - {et}","l":"{sd}/{sm}/{sy} {st} - {et}","f":"{sd} den {sm} {sy} {st} - {et}"},"c01":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} den {sm} {sy} {st} - {ed} den {em} {ey} {et}"},"c02":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} den {ed} {sm} {sy} {st} - {ed} den {em} {ey} {et}"},"c03":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} den {ed} {sm} {sy} {st} - {ed} den {em} {ey} {et}"},"c10":{"s":"{sd} - {ed}/{sm}/{sy}","m":"{sd} - {ed}/{sm}/{sy}","l":"{sd} - {ed} {sm} {sy}","f":"{sd} - {ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm} - {ed}/{em} {ey}","m":"{sd}/{sm} - {ed}/{em} {ey}","l":"{sd} {sm} - {ed} {em} {sy}","f":"{sd} {sm} - {ed} {em} {sy}"},"c12":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} - {em}/{ey}","m":"{sm}/{sy} - {em}/{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}}};
 ilib.data.dateformats_de = {"gregorian":{"order":"{time} {date}","date":{"dmwy":{"s":"EE dd.MM.yy","m":"EE dd.MM.yyyy","l":"EEE dd. MMM yyyy","f":"EEEE dd. MMMM yyyy"},"dmy":{"s":"dd.MM.yy","m":"dd.MM.yyyy","l":"dd. MMM yyyy","f":"dd. MMMM yyyy"},"dmw":{"s":"EE dd.MM","m":"EE dd.MM","l":"EEE dd. MMM","f":"EEEE dd. MMMM"},"dm":{"s":"dd.MM","m":"dd.MM","l":"dd. MMM","f":"dd. MMMM"},"my":{"s":"MM.yy","m":"MM.yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"dw":{"s":"EE dd","m":"EEE dd","l":"EEE dd","f":"EEEE dd"},"d":"dd.","m":{"s":"MM","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"hh:mm:ss a z","ahms":"hh:mm:ss a","hmsz":"hh:mm:ss z","hms":"hh:mm:ss","ahmz":"hh:mm a z","ahm":"hh:mm a","hmz":"hh:mm z","ah":"hh a","hm":"hh:mm","h":"hh"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","h":"HH"}},"range":{"c00":{"s":"{st} - {et} {sd}{sm}.{sy}","m":"{st} - {et} {sd}{sm}.{sy}","l":"{st} - {et} {sd} {sm} {sy}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}","m":"{st} {sd}{sm} - {et} {ed}{em} {sy}","l":"{st} {sd} {sm} - {et} {ed} {em} {sy}","f":"{st} {sd} {sm} - {et} {ed} {em} {sy}"},"c02":{"s":"{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}","m":"{st} {sd}{sm} - {et} {ed}{em} {sy}","l":"{st} {sd} {sm} - {et} {ed} {em} {sy}","f":"{st} {sd} {sm} - {et} {ed} {em} {sy}"},"c03":{"s":"{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}","m":"{st} {sd}{sm}.{sy} - {et} {ed}{em}.{ey}","l":"{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}","f":"{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}"},"c10":{"s":"{sd}{sm}.{sy} - {ed}{em}.{ey}","m":"{sd}{sm}.{sy} - {ed}{em}.{ey}","l":"{sd}-{ed} {sm} {sy}","f":"{sd}-{ed} {sm} {sy}"},"c11":{"s":"{sd}{sm}.{sy} - {ed}{em}.{ey}","m":"{sd}{sm} - {ed}{em} {sy}","l":"{sd} {sm} - {ed} {em} {sy}","f":"{sd} {sm} - {ed} {em} {sy}"},"c12":{"s":"{sd}{sm}.{sy} - {ed}{em}.{ey}","m":"{sd}{sm}.{sy} - {ed}{em}.{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}}};
 ilib.data.dateformats_el = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd/MM"},"dmy":{"m":"d MMM yy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yyyy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"m":"{st} - {et} {sd} {sm} {sy}","l":"{st} - {et} {sd} {sm} {sy}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sd} - {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","f":"{st} {sd} - {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} - {et} {ed} {em} {ey}","f":"{st} {sd} {sm} - {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} - {ed} {em} {ey}","f":"{sd} - {ed} {em} {ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} - {ed} {em} {ey}","f":"{sd} {sm} - {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}"},"c20":{"s":"{sm}/{sy} - {em}/{ey}"}}},"generated":true};
 ilib.data.dateformats_en_CA = {"gregorian":{"date":{"dmwy":{"l":"EEE d MMM, yyyy","f":"EEEE d MMMM, yyyy"},"dmy":{"l":"d MMM, yyyy","f":"d MMMM, yyyy"}},"range":{"c00":{"l":"{st} - {et}, {sd} {sm}, {sy}","f":"{st} - {et}, {sd} {sm}, {sy}"},"c01":{"l":"{sd} {st} - {ed} {et} {sm}, {sy}","f":"{sd} {st} - {ed} {et} {sm}, {sy}"},"c10":{"l":"{sd}-{ed} {sm}, {sy}","f":"{sd}-{ed} {sm}, {sy}"},"c11":{"l":"{sd} {sm} - {ed} {em}, {sy}","f":"{sd} {sm} - {ed} {em}, {sy}"},"c12":{"l":"{sd} {sm}, {sy} - {ed} {em}, {ey}","f":"{sd} {sm}, {sy} - {ed} {em}, {ey}"},"c20":{"l":"{sm}, {sy} - {em}, {ey}","f":"{sm}, {sy} - {em}, {ey}"}}}};
@@ -6626,7 +7035,7 @@ ilib.data.dateformats_es_AR = {"gregorian":{"time":{"12":{"ahmsz":"hh'h'mm:ss a 
 ilib.data.dateformats_et = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d.M","m":"dd.MM","l":"d. MMM","f":"d. MMMM"},"dmy":{"s":"d.M.yy","m":"dd.MM.yyyy","l":"d. MMM yyyy","f":"d. MMMM yyyy"},"my":{"s":"M.yy","m":"MM.yyyy"},"m":{"s":"MM","l":"MMMM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, d.M yy","m":"EE, d.M yy","l":"EEE, d. MMMM yyyy","f":"EEEE, d. MMMM yyyy"},"dmw":{"s":"E, d.M","m":"EE, d.M","l":"EEEE, d. MMM","f":"EEEE, d. MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm.ss a z","hmsz":"h:mm.ss z","ahms":"h:mm.ss a","hms":"h:mm.ss","ms":"mm.ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"H:mm.ss z","ahms":"H:mm.ss","hmsz":"H:mm.ss z","hms":"H:mm.ss","ms":"mm.ss"}},"range":{"c00":{"s":"{st} – {et} {sd}.{sm}.{sy}","m":"{st} – {et} {sd}.{sm}.{sy}","l":"{st} – {et} {sd}. {sm} {sy}","f":"{st} – {et} {sd}. {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd}. – {et} {ed}. {em} {ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","f":"{st} {sd}. – {et} {ed}. {em} {ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd}. {sm} – {et} {ed}. {em} {ey}","f":"{st} {sd}. {sm} – {et} {ed}. {em} {ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. – {ed}. {em} {ey}","f":"{sd}. – {ed}. {em} {ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm} – {ed}. {em} {ey}","f":"{sd}. {sm} – {ed}. {em} {ey}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm} {sy} – {ed}. {em} {ey}","f":"{sd}. {sm} {sy} – {ed}. {em} {ey}"},"c20":{"s":"{sm}.{sy} – {em}.{ey}","m":"{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_fa = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM"},"dmy":{"s":"yy/M/d","m":"d MMM yy"},"my":{"s":"yy/M","m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E yy/M/d","m":"EE yy/M/d","f":"EEEE d MMM yyyy"},"dmw":{"s":"E M/d","m":"EE M/d","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a (z)","hmsz":"h:mm:ss (z)","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a (z)","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm (z)","ah":"h a"},"24":{"ahmsz":"H:mm:ss (z)","hmsz":"H:mm:ss (z)","ahmz":"H:mm (z)","hmz":"H:mm (z)"}},"range":{"c00":{"s":"{st} ت {et} {sy}/{sm}/{sd}","m":"{st} ت {et} {sd} {sm} {sy}","l":"{st} ت {et} {sd} {sm} {sy}","f":"{st} ت {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","l":"{st} {sd} ت {et} {ed} {em} {ey}","m":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","f":"{st} {sd} ت {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","l":"{st} {sd} {sm} ت {et} {ed} {em} {ey}","f":"{st} {sd} {sm} ت {et} {ed} {em} {ey}","m":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}"},"c10":{"s":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","l":"{sd} ت {ed} {em} {ey}","f":"{sd} ت {ed} {em} {ey}","m":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}"},"c11":{"s":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","m":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","l":"{sd} {sm} ت {ed} {em} {ey}","f":"{sd} {sm} ت {ed} {em} {ey}"},"c12":{"s":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","m":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","l":"{sd} {sm} {sy} ت {ed} {em} {ey}","f":"{sd} {sm} {sy} ت {ed} {em} {ey}"},"c20":{"s":"{sy}/{sm} ت {ey}/{em}","m":"{sy}/{sm} ت {ey}/{em}","l":"{sm} {sy} ت {em} {ey}","f":"{sm} {sy} ت {em} {ey}"},"c30":"{sy} ت {ey}"}},"generated":true};
 ilib.data.dateformats_ff = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd/MM"},"dmy":{"s":"yy-M-d","m":"d MMM, yy","l":"d MMM yy"},"my":{"m":"MM/yy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E d/M/yy","m":"EE d/M/yy","f":"EEEE d MMM yyyy"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sd} {sm}, {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
-ilib.data.dateformats_fi = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E d.M.yy","m":"EE d.M.yyyy","l":"EEE d. MMM yyyy","f":"EEEE d. MMMM yyyy"},"dmy":{"s":"d.M.yy","m":"d.M.yyyy","l":"d. MMM yyyy","f":"d. MMMM yyyy"},"dmw":{"s":"E d.M.","m":"EE d.M.","l":"EEE d. MMM","f":"EEEE d. MMMM"},"dm":{"s":"d.M","m":"d.M","l":"d. MMM","f":"d. MMMM"},"my":{"s":"M.yy","m":"M.yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"d":{"s":"d","m":"d","l":"d","f":"d"},"m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"N","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"h.mm.ss a Z","ahms":"h.mm.ss a","hmsz":"h.mm.ss Z","ahmz":"h.mm a Z","hms":"h.mm.ss","ahm":"h.mm a","hmz":"h.mm Z","ah":"h a","hm":"h.mm","ms":"mm.ss"},"24":{"ahmsz":"H.mm.ss Z","ahms":"H.mm.ss","hmsz":"H.mm.ss Z","ahmz":"H.mm Z","hms":"H.mm.ss","ahm":"H.mm","hmz":"H.mm Z","hm":"H.mm","ms":"mm.ss"}},"range":{"c00":{"s":"{sd}.{sm}.{sy} {st} – {et}","m":"{sd}.{sm}.{sy} {st} – {et}","l":"{sd}. {sm} {sy} {st} – {et}","f":"{sd}. {sm} {sy} {st} – {et} "},"c01":{"s":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","l":"{sd}. {st} – {ed}. {et} {sm} {sy}","f":"{sd}. {st} – {ed}. {et} {sm} {sy}"},"c02":{"s":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","l":"{sd}. {sm} {st} – {ed}. {em} {sy} {et}","f":"{sd}. {sm} {st} – {ed}. {em} {sy} {et}"},"c03":{"s":"{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","l":"{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}","f":"{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}"},"c10":{"s":"{sd}–{ed}.{sm}.{sy}","m":"{sd}–{ed}.{sm}.{sy}","l":"{sd}. – {ed}. {sm} {sy}","f":"{sd}. – {ed}. {sm} {sy}"},"c11":{"s":"{sd}.{sm} – {ed}.{em}.{sy}","m":"{sd}.{sm} – {ed}.{em}.{sy}","l":"{sd}. {sm} – {ed}. {em} {sy}","f":"{sd}. {sm} – {ed}. {em} {sy}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm} {sy} – {ed}. {em} {ey}","f":"{sd}. {sm} {sy} – {ed}. {em} {ey}"},"c20":{"s":"{sm}.{sy} – {em}.{ey}","m":"{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}}};
+ilib.data.dateformats_fi = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E d.M.yy","m":"EE d.M.yyyy","l":"EEE d. MMM yyyy","f":"EEEE d. MMMM yyyy"},"dmy":{"s":"d.M.yy","m":"d.M.yyyy","l":"d. MMM yyyy","f":"d. MMMM yyyy"},"dmw":{"s":"E d.M.","m":"EE d.M.","l":"EEE d. MMM","f":"EEEE d. MMMM"},"dm":{"s":"d.M","m":"d.M","l":"d. MMM","f":"d. MMMM"},"my":{"s":"M.yy","m":"M.yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"d":{"s":"d","m":"d","l":"d","f":"d"},"m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"N","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"h.mm.ss a z","ahms":"h.mm.ss a","hmsz":"h.mm.ss z","ahmz":"h.mm a z","hms":"h.mm.ss","ahm":"h.mm a","hmz":"h.mm z","ah":"h a","hm":"h.mm","ms":"mm.ss"},"24":{"ahmsz":"H.mm.ss z","ahms":"H.mm.ss","hmsz":"H.mm.ss z","ahmz":"H.mm z","hms":"H.mm.ss","ahm":"H.mm","hmz":"H.mm z","hm":"H.mm","ms":"mm.ss"}},"range":{"c00":{"s":"{sd}.{sm}.{sy} {st} – {et}","m":"{sd}.{sm}.{sy} {st} – {et}","l":"{sd}. {sm} {sy} {st} – {et}","f":"{sd}. {sm} {sy} {st} – {et} "},"c01":{"s":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","l":"{sd}. {st} – {ed}. {et} {sm} {sy}","f":"{sd}. {st} – {ed}. {et} {sm} {sy}"},"c02":{"s":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","l":"{sd}. {sm} {st} – {ed}. {em} {sy} {et}","f":"{sd}. {sm} {st} – {ed}. {em} {sy} {et}"},"c03":{"s":"{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","l":"{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}","f":"{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}"},"c10":{"s":"{sd}–{ed}.{sm}.{sy}","m":"{sd}–{ed}.{sm}.{sy}","l":"{sd}. – {ed}. {sm} {sy}","f":"{sd}. – {ed}. {sm} {sy}"},"c11":{"s":"{sd}.{sm} – {ed}.{em}.{sy}","m":"{sd}.{sm} – {ed}.{em}.{sy}","l":"{sd}. {sm} – {ed}. {em} {sy}","f":"{sd}. {sm} – {ed}. {em} {sy}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm} {sy} – {ed}. {em} {ey}","f":"{sd}. {sm} {sy} – {ed}. {em} {ey}"},"c20":{"s":"{sm}.{sy} – {em}.{ey}","m":"{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}}};
 ilib.data.dateformats_fr = {"gregorian":{"order":"{time} {date}","date":{"dmwy":{"s":"EE d/MM/yy","m":"EE d/MM/yyyy","l":"EEE d MMM yyyy","f":"EEEE d MMMM yyyy"},"dmy":{"s":"d/MM/yy","m":"d/MM/yyyy","l":"d MMM yyyy","f":"d MMMM yyyy"},"dmw":{"s":"EE d/MM","m":"EE d/MM","l":"EEE d MMM","f":"EEEE d MMMM"},"dm":{"s":"d/MM","m":"d/MM","l":"d MMM","f":"d MMMM"},"my":{"s":"MM/yy","m":"MM/yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"d":"dd","m":{"s":"MM","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"hh:mm:ss a z","ahms":"hh:mm:ss a","hmsz":"hh:mm:ss z","hms":"hh:mm:ss","ahmz":"hh:mm a z","ahm":"hh:mm a","hmz":"hh:mm z","ah":"hh a","hm":"hh:mm","h":"hh"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","h":"HH"}},"range":{"c00":{"s":"{st} - {et} {sd}/{sm}/{sy}","m":"{st} - {et} {sd}/{sm}/{sy}","l":"{st} - {et} {sd} {sm} {sy}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm} - {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm} - {et} {ed}/{em}/{sy}","l":"{st} {sd} {sm} - {et} {ed} {em} {sy}","f":"{st} {sd} {sm} - {et} {ed} {em} {sy}"},"c02":{"s":"{st} {sd}/{sm} - {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm} - {et} {ed}/{em}/{sy}","l":"{st} {sd} {sm} - {et} {ed} {em} {sy}","f":"{st} {sd} {sm} - {et} {ed} {em} {sy}"},"c03":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}","f":"{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}"},"c10":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd}-{ed} {sm} {sy}","f":"{sd}-{ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm} - {ed}/{em}/{ey}","m":"{sd}/{sm} - {ed}/{em}/{sy}","l":"{sd} {sm} - {ed} {em} {sy}","f":"{sd} {sm} - {ed} {em} {sy}"},"c12":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} - {em}/{ey}","m":"{sm}/{sy} - {em}/{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}}};
 ilib.data.dateformats_ga = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"d MMM","l":"MMM d"},"dmy":{"s":"yy-M-d","m":"d MMM yy","l":"yyyy MMM d"},"my":{"s":"yy-M","m":"MMM yy","l":"yyyy MMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_gl = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d-M","m":"dd/MM"},"dmy":{"m":"d MMM, yy","l":"d MMM, yyyy","f":"dd MMMM yyyy"},"my":{"s":"M-yy","m":"MM/yy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM, yyyy","f":"EEEE, d MMM, yyyy"},"dmw":{"s":"E, d-M","m":"EE, d-M","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm}, {sy}","l":"{st} – {et} {sd} {sm}, {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
@@ -6638,7 +7047,7 @@ ilib.data.dateformats_hu = {"gregorian":{"order":"{time} {date}","date":{"dm":{"
 ilib.data.dateformats_hy = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM dd"},"dmy":{"s":"yy-M-d","m":"MMM d, yy","l":"yyyy MMM d","f":"MMMM d, yyyy"},"my":{"s":"yy-M","m":"MMM d, yy","l":"yyyy MMM","f":"MMMM d, yyyy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sm} {sd}, {sy}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sm} {sd}, {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_id = {"gregorian":{"date":{"dmwy":{"s":"E d/M/yy","m":"EE, d/M/yyyy","l":"EEE, d MMM yyyy","f":"EEEE, d MMMM yyyy"},"dmy":{"s":"d/M/yy","m":"d/M/yyyy","l":"d MMM yyyy","f":"d MMMM yyyy"},"dmw":{"s":"E d/M","m":"EE, d/M","l":"EEE, d MMM","f":"EEEE, d MMMM"},"dm":{"s":"d/M","m":"d/M","l":"d MMM","f":"d MMMM"},"my":{"s":"M/yy","m":"M/yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"dw":{"s":"E d","m":"EE, d","l":"EEE, d","f":"EEEE, d"},"d":{"s":"d","m":"d","l":"d","f":"d"},"m":{"s":"M","m":"M","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"N","l":"MMM","f":"MMMM"}},"range":{"c00":{"s":"{sd}/{sm}/{sy} {st} – {et}","m":"{sd}/{sm}/{sy} {st} – {et}","l":"{sd} {sm} {sy} {st} – {et}","f":"{sd} {sm} {sy} {st} – {et} "},"c01":{"s":"{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} – {ed}/{em} {et}, {sy}","l":"{sd} {st} – {ed} {et}, {sm} {sy}","f":"{sd} {st} – {ed} {et}, {sm} {sy}"},"c02":{"s":"{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} – {ed}/{em} {et}, {sy}","l":"{sd} {sm} {st} – {ed} {em} {et}, {sy}","f":"{sd} {sm} {st} – {ed} {em} {et}, {sy}"},"c03":{"s":"{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}","f":"{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd}–{ed} {sm} {sy}","f":"{sd}–{ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {sy}","f":"{sd} {sm} – {ed} {em} {sy}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy}–{ey}"}}};
 ilib.data.dateformats_it = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"EE dd/MM/yy","m":"EEE dd/MM/yyyy","l":"EEE dd MMM yyyy","f":"EEEE dd MMMM yyyy"},"dmy":{"s":"dd/MM/yy","m":"dd/MM/yyyy","l":"dd MMM yyyy","f":"dd MMMM yyyy"},"dmw":{"s":"EE dd/MM","m":"EE dd/MM","l":"EEE dd MMM","f":"EEEE dd MMMM"},"dm":{"s":"dd/MM","m":"dd/MM","l":"dd MMM","f":"dd MMMM"},"my":{"s":"MM/yy","m":"MM/yyyy","l":"MMM yy","f":"MMMM yyyy"},"dw":{"s":"EE dd","m":"EEE dd","l":"EEE dd","f":"EEEE dd"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yy","l":"yyyy","f":"yyyy G"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"hh.mm.ss a z","ahms":"hh.mm.ss a","hmsz":"hh.mm.ss z","hms":"hh.mm.ss","ahmz":"hh.mm a z","ahm":"hh.mm a","hmz":"hh.mm z","ah":"hh a","hm":"hh.mm","ms":"mm.ss","h":"hh"},"24":{"ahmsz":"HH.mm.ss z","ahms":"HH.mm.ss","hmsz":"HH.mm.ss z","hms":"HH.mm.ss","ahmz":"HH.mm z","ahm":"HH.mm","hmz":"HH.mm z","ah":"HH","hm":"HH.mm","ms":"mm.ss","h":"HH"}},"range":{"c00":{"s":"{st} - {et} {sd}/{sm}/{sy}","m":"{st} - {et} {sd}/{sm}/{sy}","l":"{st} - {et} {sd} {sm} {sy}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} - {ed}/{em} {et} {sy}","l":"{sd} {st} - {ed} {et} {sm} {sy}","f":"{sd} {st} - {ed} {et} {sm} {sy}"},"c02":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} - {ed}/{em} {et} {sy}","l":"{sd} {sm} {st} - {ed} {em} {et} {sy}","f":"{sd} {sm} {st} - {ed} {em} {et} {sy}"},"c03":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c10":{"s":"{sd}-{ed}/{sm}/{sy}","m":"{sd}-{ed}/{sm}/{sy}","l":"{sd}-{ed} {sm} {sy}","f":"{sd}-{ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm}-{ed}/{em} {sy}","m":"{sd}/{sm} - {ed}/{em} {sy}","l":"{sd} {sm} - {ed} {em} {sy}","f":"{sd} {sm} - {ed} {em} {sy}"},"c12":{"s":"{sd}/{sm}/{sy}-{ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy}-{em}/{ey}","m":"{sm}/{sy} - {em}/{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}}};
-ilib.data.dateformats_ja = {"gregorian":{"order":"{date}、{time}","date":{"dmwy":{"s":"Eyy/MM/d","m":"EEyyyy/MM/d","l":"EEEyyyy年MMM月d日","f":"yyyy年MMMM月d日（EEEE）"},"dmy":{"s":"yy/MM/d","m":"yyyy/MM/d","l":"yyyy年MMM月d日","f":"yyyy年MMMM月d日"},"dmw":{"s":"EMM/d","m":"EEMM/d","l":"EEEMMM月d日","f":"MMMM月d日（EEEE）"},"dm":{"s":"MM/d","m":"MM/d","l":"MMM月d日","f":"MMMM月d日"},"my":{"s":"yy/MM","m":"yyyy/MM","l":"yyyy年MMM月","f":"yyyy年MMMM月"},"dw":{"s":"EEd","m":"EEd","l":"EEEd","f":"EEEEd"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"ahh:mm:ss z","ahms":"ahh:mm:ss","hmsz":"hh:mm:ss z","hms":"hh:mm:ss","ahmz":"ahh:mm z","ahm":"ahh:mm","hmz":"hh:mm z","ah":"ahh","hm":"hh:mm","h":"hh"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","h":"HH"}},"range":{"c00":{"s":"{sy}/{sm}/{sd}、{st}-{et}","m":"{sy}/{sm}/{sd}、{st}-{et}","l":"{sy}年{sm}月{sd}日{st}-{et}","f":"{sy}年{sm}月{sd}日{st}-{et}"},"c01":{"s":"{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}","m":"{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}","l":"{sy}年{sm}月{sd}日{st}-{ed}日{et}","f":"{sy}年{sm}月{sd}日{st}-{ed}日{et}"},"c02":{"s":"{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}","m":"{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}","l":"{sy}年{sm}月{sd}日{st}-{em}月{ed}日{et}","f":"{sy}年{sm}月{sd}日{st}-{em}月{ed}日{et}"},"c03":{"s":"{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}","m":"{sy}/{sm}/{sd}、{st}-{ey}/{em}/{ed}、{et}","l":"{sy}年{sm}月{sd}日{st}-{ey}年{em}月{ed}日{et}","f":"{sy}年{sm}月{sd}日{st}-{ey}年{em}月{ed}日{et}"},"c10":{"s":"{sy}/{sm}/{sd}-{ed}","m":"{sy}/{sm}/{sd}-{ed}","l":"{sy}年{sm}月{sd}-{ed}日","f":"{sy}年{sm}月{sd}-{ed}日"},"c11":{"s":"{sy}/{sm}/{sd}-{ey}/{em}/{ed}","m":"{sy}/{sm}/{sd}-{ey}/{em}/{ed}","l":"{sy}年{sm}月{sd}日-{em}月{ed}日","f":"{sy}年{sm}月{sd}日-{em}月{ed}日"},"c12":{"s":"{sy}/{sm}/{sd}-{ey}/{em}/{ed}","m":"{sy}/{sm}/{sd}-{ey}/{em}/{ed}","l":"{sy}年{sm}月{sd}日-{ey}年{em}月{ed}日","f":"{sy}年{sm}月{sd}日-{ey}年{em}月{ed}日"},"c20":{"s":"{sy}/{sm}-{ey}/{em}","m":"{sy}/{sm}-{ey}/{em}","l":"{sy}年{sm}月-{ey}年{em}月","f":"{sy}年{sm}月-{ey}年{em}月"},"c30":"{sy}-{ey}"}}};
+ilib.data.dateformats_ja = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"Eyy/MM/d","m":"EEyyyy/MM/d","l":"EEEyyyy年MMM月d日","f":"yyyy年MMMM月d日（EEEE）"},"dmy":{"s":"yy/MM/d","m":"yyyy/MM/d","l":"yyyy年MMM月d日","f":"yyyy年MMMM月d日"},"dmw":{"s":"EMM/d","m":"EEMM/d","l":"EEEMMM月d日","f":"MMMM月d日（EEEE）"},"dm":{"s":"MM/d","m":"MM/d","l":"MMM月d日","f":"MMMM月d日"},"my":{"s":"yy/MM","m":"yyyy/MM","l":"yyyy年MMM月","f":"yyyy年MMMM月"},"dw":{"s":"EEd","m":"EEd","l":"EEEd","f":"EEEEd"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"ahh:mm:ss z","ahms":"ahh:mm:ss","hmsz":"hh:mm:ss z","hms":"hh:mm:ss","ahmz":"ahh:mm z","ahm":"ahh:mm","hmz":"hh:mm z","ah":"ahh","hm":"hh:mm","h":"hh"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","h":"HH"}},"range":{"c00":{"s":"{sy}/{sm}/{sd} {st}-{et}","m":"{sy}/{sm}/{sd} {st}-{et}","l":"{sy}年{sm}月{sd}日{st}-{et}","f":"{sy}年{sm}月{sd}日{st}-{et}"},"c01":{"s":"{sy}/{sm}/{sd} {st}-{ey}/{em}/{ed} {et}","m":"{sy}/{sm}/{sd} {st}-{ey}/{em}/{ed} {et}","l":"{sy}年{sm}月{sd}日{st}-{ed}日{et}","f":"{sy}年{sm}月{sd}日{st}-{ed}日{et}"},"c02":{"s":"{sy}/{sm}/{sd} {st}-{ey}/{em}/{ed} {et}","m":"{sy}/{sm}/{sd} {st}-{ey}/{em}/{ed} {et}","l":"{sy}年{sm}月{sd}日{st}-{em}月{ed}日{et}","f":"{sy}年{sm}月{sd}日{st}-{em}月{ed}日{et}"},"c03":{"s":"{sy}/{sm}/{sd} {st}-{ey}/{em}/{ed} {et}","m":"{sy}/{sm}/{sd} {st}-{ey}/{em}/{ed} {et}","l":"{sy}年{sm}月{sd}日{st}-{ey}年{em}月{ed}日{et}","f":"{sy}年{sm}月{sd}日{st}-{ey}年{em}月{ed}日{et}"},"c10":{"s":"{sy}/{sm}/{sd}-{ed}","m":"{sy}/{sm}/{sd}-{ed}","l":"{sy}年{sm}月{sd}-{ed}日","f":"{sy}年{sm}月{sd}-{ed}日"},"c11":{"s":"{sy}/{sm}/{sd}-{ey}/{em}/{ed}","m":"{sy}/{sm}/{sd}-{ey}/{em}/{ed}","l":"{sy}年{sm}月{sd}日-{em}月{ed}日","f":"{sy}年{sm}月{sd}日-{em}月{ed}日"},"c12":{"s":"{sy}/{sm}/{sd}-{ey}/{em}/{ed}","m":"{sy}/{sm}/{sd}-{ey}/{em}/{ed}","l":"{sy}年{sm}月{sd}日-{ey}年{em}月{ed}日","f":"{sy}年{sm}月{sd}日-{ey}年{em}月{ed}日"},"c20":{"s":"{sy}/{sm}-{ey}/{em}","m":"{sy}/{sm}-{ey}/{em}","l":"{sy}年{sm}月-{ey}年{em}月","f":"{sy}年{sm}月-{ey}年{em}月"},"c30":"{sy}-{ey}"}}};
 ilib.data.dateformats_ka = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d.M.","m":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"M.yy","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, d.M.yy","m":"EE, d.M.yy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sy} {sm} {sd}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sm}.{sy} – {em}.{ey}","m":"{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm}.{sy} – {em}.{ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_kk = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"dd.MM","l":"MMM d"},"dmy":{"s":"yy-M-d","m":"dd.MM.yyyy","l":"yyyy MMM d"},"my":{"s":"yy-M","m":"MM.yyyy","l":"yyyy MMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} - {et} {sy}-{sm}-{sd}","m":"{st} - {et} {sd}.{sm}.{sy}","l":"{st} - {et} {sy} {sm} {sd}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} - {et} {ed} {em} {ey} ж.","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","f":"{st} {sd} - {et} {ed} {em} {ey} ж."},"c02":{"s":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}","l":"{st} {sd} {sm} - {et} {ed} {em} {ey} ж.","f":"{st} {sd} {sm} - {et} {ed} {em} {ey} ж.","m":"{st} {sd}.{sm}.{sy} - {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} - {ed} {em} {ey} ж.","f":"{sd} - {ed} {em} {ey} ж.","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} {sm} - {ed} {em} {ey} ж.","f":"{sd} {sm} - {ed} {em} {ey} ж."},"c12":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} {sm} {sy} ж. - {ed} {em} {ey} ж.","f":"{sd} {sm} {sy} ж. - {ed} {em} {ey} ж."},"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}","l":"{sm} {sy} ж. - {em} {ey} ж.","f":"{sy}–{sm} - {ey}–{em}"}}},"generated":true};
 ilib.data.dateformats_kn = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"d MMM yy","l":"d, MMM, yyyy"},"my":{"m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"hh:mm:ss a z","hmsz":"hh:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"hh:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"hh:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd}, {sm}, {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} {sm} – {et} {ed} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {ey}","f":"{sd} {sm} – {ed} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}}};
@@ -6678,7 +7087,7 @@ ilib.data.dateformats_sr_Latn_ME = {"gregorian":{"range":{"c20":{"s":"{sm}.{sy} 
 ilib.data.dateformats_sr_Latn_RS = {"gregorian":{"range":{"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}"}}},"generated":true};
 ilib.data.dateformats_ss = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sy} {sm} {sd}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_st = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sy} {sm} {sd}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
-ilib.data.dateformats_sv = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E, yy-MM-dd","m":"EE, yyyy-MM-dd","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMMM d"},"dmy":{"s":"yy-MM-dd","m":"yyyy-MM-dd","l":"yyyy MMM d","f":"yyyy MMMM d"},"dmw":{"s":"E, MM-dd","m":"EE, MM-dd","l":"EEE, MMM d","f":"EEEE, MMMM d"},"dm":{"s":"MM-dd","m":"MM-dd","l":"MMM d","f":"MMMM d"},"my":{"s":"yy-MM","m":"yyyy-MM","l":"yyyy MMM","f":"yyyy MMMM"},"dw":{"s":"E, d","m":"EE, d","l":"EEE, d","f":"EEEE, d"},"d":{"s":"d","m":"d","l":"d","f":"d"},"m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"hh:mm:ss a Z","ahms":"hh:mm:ss a","hmsz":"hh:mm:ss Z","ahmz":"hh:mm a Z","hms":"hh:mm:ss","ahm":"hh:mm a","hmz":"hh:mm Z","ah":"hh a","hm":"hh:mm","ms":"hh:ss","h":"hh"},"24":{"ahmsz":"HH:mm:ss Z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss Z","ahmz":"HH:mm Z","hms":"HH:mm:ss","ahm":"HH:mm","hmz":"HH:mm Z","ah":"HH","hm":"HH:mm","h":"HH"}},"range":{"c00":{"s":"{sy}-{sm}-{sd} {st} – {et}","m":"{sy}-{sm}-{sd} {st} – {et}","l":"{sy} {sm} {sd} {st} – {et}","f":"{sy} {sm} {sd} {st} – {et}"},"c01":{"s":"{sy}-{sm}-{sd} {st} – {ed} {et}","m":"{sy}-{sm}-{sd} {st} – {ed} {et}","l":"{sy} {sm} {sd} {st} – {ed} {et}","f":"{sy} {sm} {sd} {st} – {ed} {et}"},"c02":{"s":"{sy}-{sm}-{sd} {st} – {em}-{ed} {et}","m":"{sy}-{sm}-{sd} {st} – {em}-{ed} {et}","l":"{sy} {sm} {sd} {st} – {em} {ed} {et}","f":"{sy} {sm} {sd} {st} – {em} {ed} {et}"},"c03":{"s":"{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}","m":"{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}","l":"{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}","f":"{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}"},"c10":{"s":"{sy}-{sm}-{sd} – {ed}","m":"{sy}-{sm}-{sd} – {ed}","l":"{sy} {sm} {sd} – {ed}","f":"{sy} {sm} {sd} – {ed}"},"c11":{"s":"{sy}-{sm}-{sd} – {em}-{ed}","m":"{sy}-{sm}-{sd} – {em}-{ed}","l":"{sy} {sm} {sd} – {em} {ed}","f":"{sy} {sm} {sd} – {em} {ed}"},"c12":{"s":"{sy}-{sm}-{sd} – {ey}-{em}-{ed}","m":"{sy}-{sm}-{sd} – {ey}-{em}-{ed}","l":"{sy} {sm} {sd} – {ey} {em} {ed}","f":"{sy} {sm} {sd} – {ey} {em} {ed}"},"c20":{"s":"{sy}-{sm} – {ey}-{em}","m":"{sy}-{sm} – {ey}-{em}","l":"{sy} {sm} – {ey} {em}","f":"{sy} {sm} – {ey} {em}"},"c30":"{sy} – {ey}"}}};
+ilib.data.dateformats_sv = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E, yy-MM-dd","m":"EE, yyyy-MM-dd","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMMM d"},"dmy":{"s":"yy-MM-dd","m":"yyyy-MM-dd","l":"yyyy MMM d","f":"yyyy MMMM d"},"dmw":{"s":"E, MM-dd","m":"EE, MM-dd","l":"EEE, MMM d","f":"EEEE, MMMM d"},"dm":{"s":"MM-dd","m":"MM-dd","l":"MMM d","f":"MMMM d"},"my":{"s":"yy-MM","m":"yyyy-MM","l":"yyyy MMM","f":"yyyy MMMM"},"dw":{"s":"E, d","m":"EE, d","l":"EEE, d","f":"EEEE, d"},"d":{"s":"d","m":"d","l":"d","f":"d"},"m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"hh:mm:ss a z","ahms":"hh:mm:ss a","hmsz":"hh:mm:ss z","ahmz":"hh:mm a z","hms":"hh:mm:ss","ahm":"hh:mm a","hmz":"hh:mm z","ah":"hh a","hm":"hh:mm","ms":"hh:ss","h":"hh"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hms":"HH:mm:ss","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","h":"HH"}},"range":{"c00":{"s":"{sy}-{sm}-{sd} {st} – {et}","m":"{sy}-{sm}-{sd} {st} – {et}","l":"{sy} {sm} {sd} {st} – {et}","f":"{sy} {sm} {sd} {st} – {et}"},"c01":{"s":"{sy}-{sm}-{sd} {st} – {ed} {et}","m":"{sy}-{sm}-{sd} {st} – {ed} {et}","l":"{sy} {sm} {sd} {st} – {ed} {et}","f":"{sy} {sm} {sd} {st} – {ed} {et}"},"c02":{"s":"{sy}-{sm}-{sd} {st} – {em}-{ed} {et}","m":"{sy}-{sm}-{sd} {st} – {em}-{ed} {et}","l":"{sy} {sm} {sd} {st} – {em} {ed} {et}","f":"{sy} {sm} {sd} {st} – {em} {ed} {et}"},"c03":{"s":"{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}","m":"{sy}-{sm}-{sd} {st} – {ey}-{em}-{ed} {et}","l":"{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}","f":"{sy} {sm} {sd} {st} – {ey} {em} {ed} {et}"},"c10":{"s":"{sy}-{sm}-{sd} – {ed}","m":"{sy}-{sm}-{sd} – {ed}","l":"{sy} {sm} {sd} – {ed}","f":"{sy} {sm} {sd} – {ed}"},"c11":{"s":"{sy}-{sm}-{sd} – {em}-{ed}","m":"{sy}-{sm}-{sd} – {em}-{ed}","l":"{sy} {sm} {sd} – {em} {ed}","f":"{sy} {sm} {sd} – {em} {ed}"},"c12":{"s":"{sy}-{sm}-{sd} – {ey}-{em}-{ed}","m":"{sy}-{sm}-{sd} – {ey}-{em}-{ed}","l":"{sy} {sm} {sd} – {ey} {em} {ed}","f":"{sy} {sm} {sd} – {ey} {em} {ed}"},"c20":{"s":"{sy}-{sm} – {ey}-{em}","m":"{sy}-{sm} – {ey}-{em}","l":"{sy} {sm} – {ey} {em}","f":"{sy} {sm} – {ey} {em}"},"c30":"{sy} – {ey}"}}};
 ilib.data.dateformats_sw = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d-M","m":"d MMM"},"dmy":{"m":"d MMM yy"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_ta = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"d MMM, yy","l":"d MMM, yyyy","f":"d MMMM, yyyy"},"my":{"m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM, yyyy","f":"EEEE, d MMM, yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm}, {sy}","l":"{st} – {et} {sd} {sm}, {sy}","f":"{st} – {et} {sd} {sm}, {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed} {em}, {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed} {em}, {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em}, {ey}","f":"{st} {sd} {sm} – {et} {ed} {em}, {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em}, {ey}","f":"{sd} – {ed} {em}, {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em}, {ey}","f":"{sd} {sm} – {ed} {em}, {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm}, {sy} – {ed} {em}, {ey}","f":"{sd} {sm}, {sy} – {ed} {em}, {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_te = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"d MMM yy","l":"d, MMM yyyy"},"my":{"m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d, MMM yyyy","f":"EEEE, d, MMM yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd}, {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
@@ -7777,10 +8186,10 @@ ilib.DateFmt.prototype = {
 		}
 		
 		if (!date) {
-			date = ilib.Date.newInstance({type: this.cal.getType()});
+			date = this.cal.newDateInstance();
 		}
 
-		monthCount = this.cal.getNumMonths( date.getYears() );
+		monthCount = this.cal.getNumMonths(date.getYears());
 		for (var i = 1; i <= monthCount; i++) {
 			months[i] = this.sysres.getString(this._getTemplate(template + i, this.cal.getType())).toString();
 		}
@@ -8041,28 +8450,11 @@ ilib.DateFmt.prototype = {
 		// convert to the time zone of this formatter before formatting
 		if (dateZoneName !== thisZoneName) {
 			// console.log("Differing time zones date: " + dateZoneName + " and fmt: " + thisZoneName + ". Converting...");
-			
-			var datetz = new ilib.TimeZone({
-				locale: date.locale,
-				id: dateZoneName
-			});
-			var thistz = this.tz || new ilib.TimeZone({
-				locale: date.locale,
-				id: thisZoneName
-			});
-			
-			var dateOffset = datetz.getOffsetMillis(date)/1000,
-				fmtOffset = thistz.getOffsetMillis(date)/1000,
-				// relative offset in seconds
-				offset = dateOffset - fmtOffset;
-			
-			//console.log("Date offset is " + JSON.stringify(dateOffset));
-			//console.log("Formatter offset is " + JSON.stringify(fmtOffset));
-			//console.log("Relative offset is " + offset + " seconds.");
-			
+			// this will recalculate the date components based on the new time zone
 			var newDate = ilib.Date.newInstance({
 				type: this.calName,
-				rd: date.getRataDie() - (offset / 86400) // 86400 seconds in a day
+				timezone: thisZoneName,
+				rd: date.getRataDie()
 			});
 			
 			date = newDate;
@@ -8855,7 +9247,172 @@ ilib.Cal._constructors["hebrew"] = ilib.Cal.Hebrew;
  * limitations under the License.
  */
 
-/* !depends date.js calendar/hebrew.js util/utils.js */
+/* !depends 
+date.js 
+calendar/hebrew.js
+calendar/ratadie.js
+util/utils.js
+julianday.js 
+*/
+
+/**
+ * @class
+ * 
+ * Construct a new Hebrew RD date number object. The constructor parameters can 
+ * contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>unixtime<i> - sets the time of this instance according to the given 
+ * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970.
+ * 
+ * <li><i>julianday</i> - sets the time of this instance according to the given
+ * Julian Day instance or the Julian Day given as a float
+ * 
+ * <li><i>year</i> - any integer, including 0
+ * 
+ * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
+ * 
+ * <li><i>day</i> - 1 to 31
+ * 
+ * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
+ * is always done with an unambiguous 24 hour representation
+ * 
+ * <li><i>parts</i> - 0 to 1079. Specify the halaqim parts of an hour. Either specify 
+ * the parts or specify the minutes, seconds, and milliseconds, but not both. 
+ * 
+ * <li><i>minute</i> - 0 to 59
+ * 
+ * <li><i>second</i> - 0 to 59
+ * 
+ * <li><i>millisecond</i> - 0 to 999
+ * 
+ * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
+ * </ul>
+ *
+ * If the constructor is called with another Hebrew date instance instead of
+ * a parameter block, the other instance acts as a parameter block and its
+ * settings are copied into the current instance.<p>
+ * 
+ * If the constructor is called with no arguments at all or if none of the 
+ * properties listed above are present, then the RD is calculate based on 
+ * the current date at the time of instantiation. <p>
+ * 
+ * If any of the properties from <i>year</i> through <i>millisecond</i> are not
+ * specified in the params, it is assumed that they have the smallest possible
+ * value in the range for the property (zero or one).<p>
+ * 
+ * Depends directive: !depends hebrewdate.js
+ * 
+ * @constructor
+ * @param {Object=} params parameters that govern the settings and behaviour of this Hebrew RD date
+ */
+ilib.Date.HebrewRataDie = function(params) {
+	this.cal = params && params.cal || new ilib.Cal.Hebrew();
+	this.rd = undefined;
+	ilib.Date.RataDie.call(this, params);
+};
+
+ilib.Date.HebrewRataDie.prototype = new ilib.Date.RataDie();
+ilib.Date.HebrewRataDie.prototype.parent = ilib.Date.RataDie;
+ilib.Date.HebrewRataDie.prototype.constructor = ilib.Date.HebrewRataDie;
+
+/**
+ * @private
+ * @const
+ * @type number
+ * The difference between a zero Julian day and the first day of the Hebrew 
+ * calendar: sunset on Monday, Tishri 1, 1 = September 7, 3760 BC Gregorian = JD 347997.25
+ */
+ilib.Date.HebrewRataDie.prototype.epoch = 347997.25;
+
+/**
+ * @private
+ * Calculate the Rata Die (fixed day) number of the given date from the
+ * date components.
+ * 
+ * @param {Object} date the date components to calculate the RD from
+ */
+ilib.Date.HebrewRataDie.prototype._setDateComponents = function(date) {
+	var elapsed = ilib.Cal.Hebrew.elapsedDays(date.year);
+	var days = elapsed +
+		ilib.Cal.Hebrew.newYearsCorrection(date.year, elapsed) +
+		date.day - 1;
+	var sum = 0, table;
+	
+	//console.log("getRataDie: converting " +  JSON.stringify(date));
+	//console.log("getRataDie: days is " +  days);
+	//console.log("getRataDie: new years correction is " +  ilib.Cal.Hebrew.newYearsCorrection(date.year, elapsed));
+	
+	table = this.cal.isLeapYear(date.year) ? 
+				ilib.Date.HebrewDate.cumMonthLengthsLeap :
+				ilib.Date.HebrewDate.cumMonthLengths;
+	sum = table[date.month-1];
+	
+	// gets cumulative without correction, so now add in the correction
+	if ((date.month < 7 || date.month > 8) && ilib.Cal.Hebrew.longHeshvan(date.year)) {
+		sum++;
+	}
+	if ((date.month < 7 || date.month > 9) && ilib.Cal.Hebrew.longKislev(date.year)) {
+		sum++;
+	}
+	// console.log("getRataDie: cum days is now " +  sum);
+	
+	days += sum;
+	
+	// the date starts at sunset, which we take as 18:00, so the hours from
+	// midnight to 18:00 are on the current Gregorian day, and the hours from
+	// 18:00 to midnight are on the previous Gregorian day. So to calculate the 
+	// number of hours into the current day that this time represents, we have
+	// to count from 18:00 to midnight first, and add in 6 hours if the time is
+	// less than 18:00
+	var minute, second, millisecond;
+	
+	if (typeof(date.parts) !== 'undefined') {
+		// The parts (halaqim) of the hour. This can be a number from 0 to 1079.
+		var parts = parseInt(date.parts, 10);
+		var seconds = parseInt(parts, 10) * 3.333333333333;
+		minute = Math.floor(seconds / 60);
+		seconds -= minute * 60;
+		second = Math.floor(seconds);
+		millisecond = (seconds - second);	
+	} else {
+		minute = parseInt(date.minute, 10) || 0;
+		second = parseInt(date.second, 10) || 0;
+		millisecond = parseInt(date.millisecond, 10) || 0;
+	}
+		
+	var time;
+	if (date.hour >= 18) {
+		time = ((date.hour - 18 || 0) * 3600000 +
+			(minute || 0) * 60000 +
+			(second || 0) * 1000 +
+			(millisecond || 0)) / 
+			86400000;
+	} else {
+		time = 0.25 +	// 6 hours from 18:00 to midnight on the previous gregorian day
+				((date.hour || 0) * 3600000 +
+				(minute || 0) * 60000 +
+				(second || 0) * 1000 +
+				(millisecond || 0)) / 
+				86400000;
+	}
+	
+	//console.log("getRataDie: rd is " +  (days + time));
+	this.rd = days + time;
+};
+	
+/**
+ * @private
+ * Return the rd number of the particular day of the week on or before the 
+ * given rd. eg. The Sunday on or before the given rd.
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the current date
+ * @return {number} the rd of the day of the week
+ */
+ilib.Date.HebrewRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
+	return rd - ilib.mod(Math.floor(rd) - dayOfWeek + 1, 7);
+};
 
 /**
  * @class
@@ -8922,21 +9479,7 @@ ilib.Date.HebrewDate = function(params) {
 			}
 		}
 
-		if (typeof(params.date) !== 'undefined') {
-			// accept JS Date classes or strings
-			var date = params.date;
-			if (!(date instanceof Date)) {
-				date = new Date(date);
-			}
-			this.timezone = "Etc/UTC";
-			this.setTime(date.getTime());
-		} else if (typeof(params.unixtime) != 'undefined') {
-			this.setTime(parseInt(params.unixtime, 10));
-		} else if (typeof(params.julianday) != 'undefined') {
-			// JD time is defined to be UTC
-			this.timezone = "Etc/UTC";
-			this.setJulianDay(parseFloat(params.julianday));
-		} else if (params.year || params.month || params.day || params.hour ||
+		if (params.year || params.month || params.day || params.hour ||
 				params.minute || params.second || params.millisecond || params.parts ) {
 			/**
 			 * Year in the Hebrew calendar.
@@ -8963,8 +9506,6 @@ ilib.Date.HebrewDate = function(params) {
 			 */
 			this.hour = parseInt(params.hour, 10) || 0;
 
-			this.parts = -1;
-			
 			if (typeof(params.parts) !== 'undefined') {
 				/**
 				 * The parts (halaqim) of the hour. This can be a number from 0 to 1079.
@@ -9001,16 +9542,32 @@ ilib.Date.HebrewDate = function(params) {
 			 * @type number
 			 */
 			this.dayOfYear = parseInt(params.dayOfYear, 10);
-		} else if (typeof(params.rd) != 'undefined') {
-			// private parameter. Do not document this!
-			this.setRd(params.rd);
-		} else {
-			var now = new Date();
-			this.setTime(now.getTime());
+			
+			if (typeof(params.dst) === 'boolean') {
+				this.dst = params.dst;
+			}
+			
+			this.rd = this.newRd(this);
+			
+			// add the time zone offset to the rd to convert to UTC
+			if (!this.tz) {
+				this.tz = new ilib.TimeZone({id: this.timezone});
+			}
+			// getOffsetMillis requires that this.year, this.rd, and this.dst 
+			// are set in order to figure out which time zone rules apply and 
+			// what the offset is at that point in the year
+			this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
+			if (this.offset !== 0) {
+				this.rd = this.newRd({
+					rd: this.rd.getRataDie() - this.offset
+				});
+			}
 		}
-	} else {
-		var now = new Date();
-		this.setTime(now.getTime());
+	} 
+	
+	if (!this.rd) {
+		this.rd = this.newRd(params);
+		this._calcDateComponents();
 	}
 };
 
@@ -9114,7 +9671,7 @@ ilib.Date.HebrewDate.cumMonthLengthsLeapReverse = [
  * @private
  * @const
  * @type number
- * Number of days difference between RD 0 of the Gregorian calendar 
+ * Number of days difference between RD 0 of the Hebrew calendar 
  * (Jan 1, 1 Gregorian = JD 1721057.5) and RD 0 of the Hebrew calendar
  * (September 7, -3760 Gregorian = JD 347997.25)
  */
@@ -9122,139 +9679,88 @@ ilib.Date.HebrewDate.GregorianDiff = 1373060.25;
 
 /**
  * @private
- * @const
- * @type number
- * The difference between a zero Julian day and the first day of the Hebrew 
- * calendar: sunset on Monday, Tishri 1, 1 = September 7, 3760 BC Gregorian = JD 347997.25
+ * Return a new RD for this date type using the given params.
+ * @param {Object=} params the parameters used to create this rata die instance
+ * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
-ilib.Date.HebrewDate.epoch = 347997.25;
-
-/**
- * @private
- * Return the Rata Die (fixed day) number of the given date.
- * 
- * @param {Object} date hebrew date to calculate
- * @return {number} the rd date as a number
- */
-ilib.Date.HebrewDate.prototype.calcRataDie = function(date) {
-	var elapsed = ilib.Cal.Hebrew.elapsedDays(date.year);
-	var days = elapsed +
-		ilib.Cal.Hebrew.newYearsCorrection(date.year, elapsed) +
-		date.day - 1;
-	var i, sum = 0, table;
-	
-	//console.log("getRataDie: converting " +  JSON.stringify(date));
-	//console.log("getRataDie: days is " +  days);
-	//console.log("getRataDie: new years correction is " +  ilib.Cal.Hebrew.newYearsCorrection(date.year, elapsed));
-	
-	table = this.cal.isLeapYear(date.year) ? 
-				ilib.Date.HebrewDate.cumMonthLengthsLeap :
-				ilib.Date.HebrewDate.cumMonthLengths;
-	sum = table[date.month-1];
-	
-	// gets cumulative without correction, so now add in the correction
-	if ((date.month < 7 || date.month > 8) && ilib.Cal.Hebrew.longHeshvan(date.year)) {
-		sum++;
-	}
-	if ((date.month < 7 || date.month > 9) && ilib.Cal.Hebrew.longKislev(date.year)) {
-		sum++;
-	}
-	// console.log("getRataDie: cum days is now " +  sum);
-	
-	days += sum;
-	
-	// the date starts at sunset, which we take as 18:00, so the hours from
-	// midnight to 18:00 are on the current Gregorian day, and the hours from
-	// 18:00 to midnight are on the previous Gregorian day. So to calculate the 
-	// number of hours into the current day that this time represents, we have
-	// to count from 18:00 to midnight first, and add in 6 hours if the time is
-	// less than 18:00
-	var time;
-	if (date.hour >= 18) {
-		time = ((date.hour - 18 || 0) * 3600000 +
-			(date.minute || 0) * 60000 +
-			(date.second || 0) * 1000 +
-			(date.millisecond || 0)) / 
-			86400000;
-	} else {
-		time = 0.25 +	// 6 hours from 18:00 to midnight on the previous gregorian day
-				((date.hour || 0) * 3600000 +
-				(date.minute || 0) * 60000 +
-				(date.second || 0) * 1000 +
-				(date.millisecond || 0)) / 
-				86400000;
-	}
-	
-	//console.log("getRataDie: rd is " +  (days + time));
-	return days + time;
+ilib.Date.HebrewDate.prototype.newRd = function (params) {
+	return new ilib.Date.HebrewRataDie(params);
 };
 
 /**
  * @private
- * Return the Rata Die (fixed day) number of this date.
- * 
- * @return {number} the rd date as a number
+ * Return the year for the given RD
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the year for the RD
  */
-ilib.Date.HebrewDate.prototype.getRataDie = function() {
-	return this.calcRataDie(this);
-};
-
-/**
- * @private
- * Calculate date components for the given RD date.
- * @return {Object.<{year:number,month:number,day:number,hour:number,minute:number,second:number,millisecond:number}>} object containing the fields
- */
-ilib.Date.HebrewDate.prototype.calcComponents = function (rd) {
-	var ret = {},
-		remainder,
-		approximation,
-		year,
-		month,
-		i,
-		table,
-		target,
-		thisNewYear = 0,
-		nextNewYear;
-	
-	// console.log("HebrewDate.calcComponents: calculating for rd " + rd);
+ilib.Date.HebrewDate.prototype._calcYear = function(rd) {
+	var year, approximation, nextNewYear;
 	
 	// divide by the average number of days per year in the Hebrew calendar
 	// to approximate the year, then tweak it to get the real year
 	approximation = Math.floor(rd / 365.246822206) + 1;
 	
-	// console.log("HebrewDate.calcComponents: approx is " + approximation);
+	// console.log("HebrewDate._calcYear: approx is " + approximation);
 	
 	// search forward from approximation-1 for the year that actually contains this rd
 	year = approximation;
-	thisNewYear = ilib.Cal.Hebrew.newYear(year-1);
 	nextNewYear = ilib.Cal.Hebrew.newYear(year);
 	while (rd >= nextNewYear) {
 		year++;
-		thisNewYear = nextNewYear;
 		nextNewYear = ilib.Cal.Hebrew.newYear(year);
 	}
-	ret.year = year-1;
+	return year - 1;
+};
+
+/**
+ * @private
+ * Calculate date components for the given RD date.
+ */
+ilib.Date.HebrewDate.prototype._calcDateComponents = function () {
+	var remainder,
+		i,
+		table,
+		target,
+		rd = this.rd.getRataDie();
 	
-	// console.log("HebrewDate.calcComponents: year is " + ret.year + " with starting rd " + thisNewYear);
+	// console.log("HebrewDate.calcComponents: calculating for rd " + rd);
+
+	if (typeof(this.offset) === "undefined") {
+		this.year = this._calcYear(rd);
+		
+		// now offset the RD by the time zone, then recalculate in case we were 
+		// near the year boundary
+		if (!this.tz) {
+			this.tz = new ilib.TimeZone({id: this.timezone});
+		}
+		this.offset = this.tz.getOffsetMillis(this) / 86400000;
+	}
+
+	if (this.offset !== 0) {
+		rd += this.offset;
+		this.year = this._calcYear(rd);
+	}
 	
-	remainder = rd - thisNewYear;
+	// console.log("HebrewDate.calcComponents: year is " + this.year + " with starting rd " + thisNewYear);
+	
+	remainder = rd - ilib.Cal.Hebrew.newYear(this.year);
 	// console.log("HebrewDate.calcComponents: remainder is " + remainder);
 
 	// take out new years corrections so we get the right month when we look it up in the table
 	if (remainder >= 59) {
 		if (remainder >= 88) {
-			if (ilib.Cal.Hebrew.longKislev(ret.year)) {
+			if (ilib.Cal.Hebrew.longKislev(this.year)) {
 				remainder--;
 			}
 		}
-		if (ilib.Cal.Hebrew.longHeshvan(ret.year)) {
+		if (ilib.Cal.Hebrew.longHeshvan(this.year)) {
 			remainder--;
 		}
 	}
 	
 	// console.log("HebrewDate.calcComponents: after new years corrections, remainder is " + remainder);
 	
-	table = this.cal.isLeapYear(ret.year) ? 
+	table = this.cal.isLeapYear(this.year) ? 
 			ilib.Date.HebrewDate.cumMonthLengthsLeapReverse :
 			ilib.Date.HebrewDate.cumMonthLengthsReverse;
 	
@@ -9264,71 +9770,39 @@ ilib.Date.HebrewDate.prototype.calcComponents = function (rd) {
 		i++;
 	}
 	
-	ret.month = table[i][1];
+	this.month = table[i][1];
 	// console.log("HebrewDate.calcComponents: remainder is " + remainder);
 	remainder -= table[i][0];
 	
-	// console.log("HebrewDate.calcComponents: month is " + ret.month + " and remainder is " + remainder);
+	// console.log("HebrewDate.calcComponents: month is " + this.month + " and remainder is " + remainder);
 	
-	ret.day = Math.floor(remainder);
-	remainder -= ret.day;
-	ret.day++; // days are 1-based
+	this.day = Math.floor(remainder);
+	remainder -= this.day;
+	this.day++; // days are 1-based
 	
-	// console.log("HebrewDate.calcComponents: day is " + ret.day + " and remainder is " + remainder);
+	// console.log("HebrewDate.calcComponents: day is " + this.day + " and remainder is " + remainder);
 
 	// now convert to milliseconds for the rest of the calculation
 	remainder = Math.round(remainder * 86400000);
 	
-	ret.hour = Math.floor(remainder/3600000);
-	remainder -= ret.hour * 3600000;
+	this.hour = Math.floor(remainder/3600000);
+	remainder -= this.hour * 3600000;
 	
 	// the hours from 0 to 6 are actually 18:00 to midnight of the previous
 	// gregorian day, so we have to adjust for that
-	if (ret.hour >= 6) {
-		ret.hour -= 6;
+	if (this.hour >= 6) {
+		this.hour -= 6;
 	} else {
-		ret.hour += 18;
+		this.hour += 18;
 	}
 		
-	ret.minute = Math.floor(remainder/60000);
-	remainder -= ret.minute * 60000;
+	this.minute = Math.floor(remainder/60000);
+	remainder -= this.minute * 60000;
 	
-	ret.second = Math.floor(remainder/1000);
-	remainder -= ret.second * 1000;
+	this.second = Math.floor(remainder/1000);
+	remainder -= this.second * 1000;
 	
-	ret.millisecond = remainder;
-	
-	// console.log("HebrewDate.calcComponent: final result is " + JSON.stringify(ret));
-	return ret;
-};
-
-/**
- * @private
- * Set the date components of this instance based on the given rd.
- * @param {number} rd the rata die date to set
- */
-ilib.Date.HebrewDate.prototype.setRd = function (rd) {
-	var fields = this.calcComponents(rd);
-	
-	this.year = fields.year;
-	this.month = fields.month;
-	this.day = fields.day;
-	this.hour = fields.hour;
-	this.minute = fields.minute;
-	this.second = fields.second;
-	this.millisecond = fields.millisecond;
-};
-
-/**
- * Set the date of this instance using a Julian Day.
- * @param {number} date the Julian Day to use to set this date
- */
-ilib.Date.HebrewDate.prototype.setJulianDay = function (date) {
-	var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date,
-		rd;	// rata die -- # of days since the beginning of the calendar
-	
-	rd = jd.getDate() - ilib.Date.HebrewDate.epoch; 	// Julian Days start at noon
-	this.setRd(rd);
+	this.millisecond = Math.floor(remainder);
 };
 
 /**
@@ -9338,7 +9812,7 @@ ilib.Date.HebrewDate.prototype.setJulianDay = function (date) {
  * @return {number} the day of the week
  */
 ilib.Date.HebrewDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.getRataDie());
+	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
 	return ilib.mod(rd+1, 7);
 };
 
@@ -9360,144 +9834,25 @@ ilib.Date.HebrewDate.prototype.getHalaqim = function() {
 
 /**
  * @private
- * Return the rd of the particular day of the week on or before the given rd.
- * eg. The Sunday on or before the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- */
-ilib.Date.HebrewDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
-	return rd - ilib.mod(Math.floor(rd) - dayOfWeek + 1, 7);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week on or before the given rd.
- * eg. The Sunday on or before the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- */
-ilib.Date.HebrewDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd+6, dayOfWeek);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week before the given rd.
- * eg. The Sunday before the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- */
-ilib.Date.HebrewDate.prototype.beforeRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd-1, dayOfWeek);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week after the given rd.
- * eg. The Sunday after the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- */
-ilib.Date.HebrewDate.prototype.afterRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd+7, dayOfWeek);
-};
-
-/**
- * @private
- * Return the rd of the first Sunday of the given ISO year.
+ * Return the rd number of the first Sunday of the given ISO year.
  * @return the rd of the first Sunday of the ISO year
  */
 ilib.Date.HebrewDate.prototype.firstSunday = function (year) {
-	var tishri1 = this.calcRataDie({
+	var tishri1 = this.newRd({
 		year: year,
 		month: 7,
 		day: 1,
 		hour: 18,
 		minute: 0,
 		second: 0,
-		millisecond: 0
+		millisecond: 0,
+		cal: this.cal
 	});
-	var firstThu = this.onOrAfterRd(tishri1, 4);
-	return this.beforeRd(firstThu, 0);
-};
-
-/**
- * Return a new Hebrew date instance that represents the first instance of the 
- * given day of the week before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week before the current date that is being sought
- * @returns {ilib.Date.HebrewDate} the date being sought
- */
-ilib.Date.HebrewDate.prototype.before = function (dow) {
-	return new ilib.Date.HebrewDate({rd: this.beforeRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return a new Hebrew date instance that represents the first instance of the 
- * given day of the week after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week after the current date that is being sought
- * @returns {ilib.Date.HebrewDate} the date being sought
- */
-ilib.Date.HebrewDate.prototype.after = function (dow) {
-	return new ilib.Date.HebrewDate({rd: this.afterRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return a new Hebrew date instance that represents the first instance of the 
- * given day of the week on or before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or before the current date that is being sought
- * @returns {ilib.Date.HebrewDate} the date being sought
- */
-ilib.Date.HebrewDate.prototype.onOrBefore = function (dow) {
-	return new ilib.Date.HebrewDate({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return a new Hebrew date instance that represents the first instance of the 
- * given day of the week on or after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or after the current date that is being sought
- * @returns {ilib.Date.HebrewDate} the date being sought
- */
-ilib.Date.HebrewDate.prototype.onOrAfter = function (dow) {
-	return new ilib.Date.HebrewDate({rd: this.onOrAfterRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return the week number in the current year for the current date. This is calculated
- * in a similar way to the ISO 8601 week for a Gregorian calendar, but is technically
- * not an actual ISO week number. That means in some years, the week starts in the
- * previous calendar year. The week number ranges from 1 to 55.
- * 
- * @return {number} the week number for the current date
- */
-ilib.Date.HebrewDate.prototype.getWeekOfYear = function() {
-	var rd = this.getRataDie(),
-		yearStart = this.firstSunday(this.year),
-		nextYear;
-	
-	// if we have a Tishri date, it may be in this year or the previous year
-	if (rd < yearStart) {
-		yearStart = this.firstSunday(this.year-1);
-	} else if (this.month == 6 && this.day > 23) {
-		// if we have a late Elul date, it may be in this year, or the next year
-		nextYear = this.firstSunday(this.year+1);
-		if (rd >= nextYear) {
-			yearStart = nextYear;
-		}
-	}
-	
-	return Math.floor((rd-yearStart)/7) + 1;
+	var firstThu = this.newRd({
+		rd: tishri1.onOrAfter(4),
+		cal: this.cal
+	});
+	return firstThu.before(0);
 };
 
 /**
@@ -9537,7 +9892,7 @@ ilib.Date.HebrewDate.prototype.getDayOfYear = function() {
  */
 ilib.Date.HebrewDate.prototype.getWeekOfMonth = function(locale) {
 	var li = new ilib.LocaleInfo(locale),
-		first = this.calcRataDie({
+		first = this.newRd({
 			year: this.year,
 			month: this.month,
 			day: 1,
@@ -9546,10 +9901,10 @@ ilib.Date.HebrewDate.prototype.getWeekOfMonth = function(locale) {
 			second: 0,
 			millisecond: 0
 		}),
-		rd = this.getRataDie(),
-		weekStart = this.onOrAfterRd(first, li.getFirstDayOfWeek());
+		rd = this.rd.getRataDie(),
+		weekStart = first.onOrAfter(li.getFirstDayOfWeek());
 	
-	if (weekStart - first > 3) {
+	if (weekStart - first.getRataDie() > 3) {
 		// if the first week has 4 or more days in it of the current month, then consider
 		// that week 1. Otherwise, it is week 0. To make it week 1, move the week start
 		// one week earlier.
@@ -9572,99 +9927,12 @@ ilib.Date.HebrewDate.prototype.getEra = function() {
 };
 
 /**
- * Return the unix time equivalent to this Hebrew date instance. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970 (Gregorian). This method only
- * returns a valid number for dates between midnight, Jan 1, 1970 (Gregorian) and  
- * Jan 19, 2038 at 3:14:07am (Gregorian), when the unix time runs out. If this instance 
- * encodes a date outside of that range, this method will return -1.
- * 
- * @return {number} a number giving the unix time, or -1 if the date is outside the
- * valid unix time range
- */
-ilib.Date.HebrewDate.prototype.getTime = function() {
-	var jd = this.getJulianDay();
-	var unix;
-
-	// not earlier than Jan 1, 1970 (Gregorian)
-	// or later than Jan 19, 2038 at 3:14:07am (Gregorian)
-	if (jd < 2440587.5 || jd > 2465442.634803241) { 
-		return -1;
-	}
-
-	// avoid the rounding errors in the floating point math by only using
-	// the whole days from the rd, and then calculating the milliseconds directly
-	var seconds = Math.floor(jd - 2440587.5) * 86400 +
-		this.hour * 3600 + 
-		this.minute * 60 +
-		this.second;
-	var millis = seconds * 1000 + this.millisecond;
-	
-	return millis;
-};
-
-/**
- * Set the time of this instance according to the given unix time. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970.
- * 
- * @param {number} millis the unix time to set this date to in milliseconds 
- */
-ilib.Date.HebrewDate.prototype.setTime = function(millis) {
-	var jd = 2440587.5 + millis / 86400000;
-	this.setJulianDay(jd);
-};
-
-/**
- * Return a Javascript Date object that is equivalent to this Hebrew date
- * object.
- * 
- * @return {Date|undefined} a javascript Date object
- */
-ilib.Date.HebrewDate.prototype.getJSDate = function() {
-	var unix = this.getTime();
-	return (unix === -1) ? undefined : new Date(unix); 
-};
-
-/**
- * Return the Julian Day equivalent to this calendar date as a number.
- * 
- * @return {number} the julian date equivalent of this date
- */
-ilib.Date.HebrewDate.prototype.getJulianDay = function() {
-	return this.getRataDie() + ilib.Date.HebrewDate.epoch;
-};
-
-/**
  * Return the name of the calendar that governs this date.
  * 
  * @return {string} a string giving the name of the calendar
  */
 ilib.Date.HebrewDate.prototype.getCalendar = function() {
 	return "hebrew";
-};
-
-/**
- * Return the time zone associated with this Hebrew date, or 
- * undefined if none was specified in the constructor.
- * 
- * @return {string|undefined} the name of the time zone for this date instance
- */
-ilib.Date.HebrewDate.prototype.getTimeZone = function() {
-	return this.timezone || "local";
-};
-
-
-/**
- * Set the time zone associated with this Hebrew date.
- * @param {string} tzName the name of the time zone to set into this date instance,
- * or "undefined" to unset the time zone 
- */
-ilib.Date.HebrewDate.prototype.setTimeZone = function (tzName) {
-	if (!tzName || tzName === "") {
-		// same as undefining it
-		this.timezone = undefined;
-	} else if (typeof(tzName) === 'string') {
-		this.timezone = tzName;
-	}
 };
 
 // register with the factory method
@@ -9799,6 +10067,94 @@ ilib.Cal.Islamic.prototype.newDateInstance = function (options) {
 ilib.Cal._constructors["islamic"] = ilib.Cal.Islamic;
 
 /*
+ * util/search.js - Misc search utility routines
+ * 
+ * Copyright © 2013, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends ilibglobal.js
+
+/**
+ * Binary search a sorted array for a particular target value.
+ * If the exact value is not found, it returns the index of the smallest 
+ * entry that is greater than the given target value.<p> 
+ * 
+ * The comparator
+ * parameter is a function that knows how to compare elements of the 
+ * array and the target. The function should return a value greater than 0
+ * if the array element is greater than the target, a value less than 0 if
+ * the array element is less than the target, and 0 if the array element 
+ * and the target are equivalent.<p>
+ * 
+ * If the comparator function is not specified, this function assumes
+ * the array and the target are numeric values and should be compared 
+ * as such.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
+ * 
+ * @param {*} target element being sought 
+ * @param {Array} arr the array being searched
+ * @param {?function(*,*)=} comparator a comparator that is appropriate for comparing two entries
+ * in the array  
+ * @return the index of the array into which the value would fit if 
+ * inserted, or -1 if given array is not an array or the target is not 
+ * a number
+ */
+ilib.bsearch = function(target, arr, comparator) {
+	if (typeof(arr) === 'undefined' || !arr || typeof(target) === 'undefined') {
+		return -1;
+	}
+	
+	var high = arr.length - 1,
+		low = 0,
+		mid = 0,
+		value,
+		cmp = comparator || ilib.bsearch.numbers;
+	
+	while (low <= high) {
+		mid = Math.floor((high+low)/2);
+		value = cmp(arr[mid], target);
+		if (value > 0) {
+			high = mid - 1;
+		} else if (value < 0) {
+			low = mid + 1;
+		} else {
+			return mid;
+		}
+	}
+	
+	return low;
+};
+
+/**
+ * @private
+ * Returns whether or not the given element is greater than, less than,
+ * or equal to the given target.<p>
+ * 
+ * Depends directive: !depends utils.js
+ * 
+ * @param {number} element the element being tested
+ * @param {number} target the target being sought
+ */
+ilib.bsearch.numbers = function(element, target) {
+	return element - target;
+};
+
+/*
  * islamicdate.js - Represent a date in the Islamic calendar
  * 
  * Copyright © 2012, JEDLSoft
@@ -9822,10 +10178,104 @@ date.js
 calendar/islamic.js 
 util/utils.js 
 util/search.js
+util/math.js
 localeinfo.js
 julianday.js
 */
 
+/**
+ * @class
+ * 
+ * Construct a new Islamic RD date number object. The constructor parameters can 
+ * contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>unixtime<i> - sets the time of this instance according to the given 
+ * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970.
+ * 
+ * <li><i>julianday</i> - sets the time of this instance according to the given
+ * Julian Day instance or the Julian Day given as a float
+ * 
+ * <li><i>year</i> - any integer, including 0
+ * 
+ * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
+ * 
+ * <li><i>day</i> - 1 to 31
+ * 
+ * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
+ * is always done with an unambiguous 24 hour representation
+ * 
+ * <li><i>minute</i> - 0 to 59
+ * 
+ * <li><i>second</i> - 0 to 59
+ * 
+ * <li><i>millisecond</i> - 0 to 999
+ * 
+ * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
+ * </ul>
+ *
+ * If the constructor is called with another Islamic date instance instead of
+ * a parameter block, the other instance acts as a parameter block and its
+ * settings are copied into the current instance.<p>
+ * 
+ * If the constructor is called with no arguments at all or if none of the 
+ * properties listed above are present, then the RD is calculate based on 
+ * the current date at the time of instantiation. <p>
+ * 
+ * If any of the properties from <i>year</i> through <i>millisecond</i> are not
+ * specified in the params, it is assumed that they have the smallest possible
+ * value in the range for the property (zero or one).<p>
+ * 
+ * Depends directive: !depends islamicdate.js
+ * 
+ * @constructor
+ * @param {Object=} params parameters that govern the settings and behaviour of this Islamic RD date
+ */
+ilib.Date.IslamicRataDie = function(params) {
+	this.cal = params && params.cal || new ilib.Cal.Islamic();
+	this.rd = undefined;
+	ilib.Date.RataDie.call(this, params);
+};
+
+ilib.Date.IslamicRataDie.prototype = new ilib.Date.RataDie();
+ilib.Date.IslamicRataDie.prototype.parent = ilib.Date.RataDie;
+ilib.Date.IslamicRataDie.prototype.constructor = ilib.Date.IslamicRataDie;
+
+/**
+ * @private
+ * @const
+ * @type number
+ * The difference between a zero Julian day and the first Islamic date
+ * of Friday, July 16, 622 CE Julian. 
+ */
+ilib.Date.IslamicRataDie.prototype.epoch = 1948439.5;
+
+/**
+ * @private
+ * Calculate the Rata Die (fixed day) number of the given date from the
+ * date components.
+ * 
+ * @param {Object} date the date components to calculate the RD from
+ */
+ilib.Date.IslamicRataDie.prototype._setDateComponents = function(date) {
+	var days = (date.year - 1) * 354 +
+		Math.ceil(29.5 * (date.month - 1)) +
+		date.day +
+		Math.floor((3 + 11 * date.year) / 30) - 1;
+	var time = (date.hour * 3600000 +
+		date.minute * 60000 +
+		date.second * 1000 +
+		date.millisecond) / 
+		86400000; 
+	
+	//console.log("getRataDie: converting " +  JSON.stringify(date));
+	//console.log("getRataDie: days is " +  days);
+	//console.log("getRataDie: time is " +  time);
+	//console.log("getRataDie: rd is " +  (days + time));
+
+	this.rd = days + time;
+};
+	
 /**
  * @class
  * 
@@ -9878,32 +10328,16 @@ ilib.Date.IslamicDate = function(params) {
 	this.cal = new ilib.Cal.Islamic();
 	
 	if (params) {
+		if (params.locale) {
+			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
+			var li = new ilib.LocaleInfo(this.locale);
+			this.timezone = li.getTimeZone(); 
+		}
 		if (params.timezone) {
 			this.timezone = params.timezone;
 		}
-		if (params.locale) {
-			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
-			if (!this.timezone) {
-				var li = new ilib.LocaleInfo(this.locale);
-				this.timezone = li.getTimeZone(); 
-			}
-		}
-
-		if (typeof(params.date) !== 'undefined') {
-			// accept JS Date classes or strings
-			var date = params.date;
-			if (!(date instanceof Date)) {
-				date = new Date(date);
-			}
-			this.timezone = "Etc/UTC";
-			this.setTime(date.getTime());
-		} else if (typeof(params.unixtime) != 'undefined') {
-			this.setTime(parseInt(params.unixtime, 10));
-		} else if (typeof(params.julianday) != 'undefined') {
-			// JD time is defined to be UTC
-			this.timezone = "Etc/UTC";
-			this.setJulianDay(parseFloat(params.julianday));
-		} else if (params.year || params.month || params.day || params.hour ||
+		
+		if (params.year || params.month || params.day || params.hour ||
 				params.minute || params.second || params.millisecond ) {
 			/**
 			 * Year in the Islamic calendar.
@@ -9953,16 +10387,32 @@ ilib.Date.IslamicDate = function(params) {
 			 * @type number
 			 */
 			this.dayOfYear = parseInt(params.dayOfYear, 10);
-		} else if (typeof(params.rd) != 'undefined') {
-			// private parameter. Do not document this!
-			this.setRd(params.rd);
-		} else {
-			var now = new Date();
-			this.setTime(now.getTime());
+
+			if (typeof(params.dst) === 'boolean') {
+				this.dst = params.dst;
+			}
+			
+			this.rd = this.newRd(this);
+			
+			// add the time zone offset to the rd to convert to UTC
+			if (!this.tz) {
+				this.tz = new ilib.TimeZone({id: this.timezone});
+			}
+			// getOffsetMillis requires that this.year, this.rd, and this.dst 
+			// are set in order to figure out which time zone rules apply and 
+			// what the offset is at that point in the year
+			this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
+			if (this.offset !== 0) {
+				this.rd = this.newRd({
+					rd: this.rd.getRataDie() - this.offset
+				});
+			}
 		}
-	} else {
-		var now = new Date();
-		this.setTime(now.getTime());
+	}
+
+	if (!this.rd) {
+		this.rd = this.newRd(params);
+		this._calcDateComponents();
 	}
 };
 
@@ -9995,28 +10445,6 @@ ilib.Date.IslamicDate.cumMonthLengths = [
 /**
  * @private
  * @const
- * @type Array.<number>
- * the cumulative lengths of each month, for a leap year 
- */
-ilib.Date.IslamicDate.cumMonthLengthsLeap = [
-	0,  /* Muharram */
-	30,  /* Saffar */
-	59,  /* Rabi'I */
-	89,  /* Rabi'II */
-	118,  /* Jumada I */
-	148,  /* Jumada II */
-	177,  /* Rajab */
-	207,  /* Sha'ban */
-	236,  /* Ramadan */
-	266,  /* Shawwal */
-	295,  /* Dhu al-Qa'da */
-	325,  /* Dhu al-Hijja */
-	355
-];
-
-/**
- * @private
- * @const
  * @type number
  * Number of days difference between RD 0 of the Gregorian calendar and
  * RD 0 of the Islamic calendar. 
@@ -10034,122 +10462,90 @@ ilib.Date.IslamicDate.epoch = 1948439.5;
 
 /**
  * @private
- * Return the Rata Die (fixed day) number of the given date.
- * 
- * @param {Object} date islamic date to calculate
- * @return {number} the rd date as a number
+ * Return a new RD for this date type using the given params.
+ * @param {Object=} params the parameters used to create this rata die instance
+ * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
-ilib.Date.IslamicDate.prototype.calcRataDie = function(date) {
-	var days = (date.year - 1) * 354 +
-		Math.ceil(29.5 * (date.month - 1)) +
-		date.day +
-		Math.floor((3 + 11 * date.year) / 30) - 1;
-	var time = (date.hour * 3600000 +
-		date.minute * 60000 +
-		date.second * 1000 +
-		date.millisecond) / 
-		86400000; 
-	
-	//console.log("getRataDie: converting " +  JSON.stringify(date));
-	//console.log("getRataDie: days is " +  days);
-	//console.log("getRataDie: time is " +  time);
-	//console.log("getRataDie: rd is " +  (days + time));
-	
-	return days + time;
+ilib.Date.IslamicDate.prototype.newRd = function (params) {
+	return new ilib.Date.IslamicRataDie(params);
 };
 
 /**
  * @private
- * Return the Rata Die (fixed day) number of this date.
- * 
- * @return {number} the rd date as a number
+ * Return the year for the given RD
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the year for the RD
  */
-ilib.Date.IslamicDate.prototype.getRataDie = function() {
-	return this.calcRataDie(this);
+ilib.Date.IslamicDate.prototype._calcYear = function(rd) {
+	return Math.floor((30 * rd + 10646) / 10631);
 };
 
 /**
  * @private
  * Calculate date components for the given RD date.
- * @return {Object.<{year:number,month:number,day:number,hour:number,minute:number,second:number,millisecond:number}>} object containing the fields
  */
-ilib.Date.IslamicDate.prototype.calcComponents = function (rd) {
-	var ret = {},
-		remainder,
-		m;
+ilib.Date.IslamicDate.prototype._calcDateComponents = function () {
+	var remainder,
+		rd = this.rd.getRataDie();
 	
-	ret.year = Math.floor((30 * rd + 10646) / 10631);
-	
+	this.year = this._calcYear(rd);
+
+	if (typeof(this.offset) === "undefined") {
+		this.year = this._calcYear(rd);
+		
+		// now offset the RD by the time zone, then recalculate in case we were 
+		// near the year boundary
+		if (!this.tz) {
+			this.tz = new ilib.TimeZone({id: this.timezone});
+		}
+		this.offset = this.tz.getOffsetMillis(this) / 86400000;
+	}
+
+	if (this.offset !== 0) {
+		rd += this.offset;
+		this.year = this._calcYear(rd);
+	}
+
 	//console.log("IslamicDate.calcComponent: calculating for rd " + rd);
 	//console.log("IslamicDate.calcComponent: year is " + ret.year);
-	remainder = rd - this.calcRataDie({
-		year: ret.year,
+	var yearStart = this.newRd({
+		year: this.year,
 		month: 1,
 		day: 1,
 		hour: 0,
 		minute: 0,
 		second: 0,
 		millisecond: 0
-	}) + 1;
+	});
+	remainder = rd - yearStart.getRataDie() + 1;
 	
-	ret.dayOfYear = remainder;
+	this.dayOfYear = remainder;
 	
 	//console.log("IslamicDate.calcComponent: remainder is " + remainder);
 	
-	ret.month = ilib.bsearch(remainder, ilib.Date.IslamicDate.cumMonthLengths);
-	remainder -= ilib.Date.IslamicDate.cumMonthLengths[ret.month-1];
+	this.month = ilib.bsearch(remainder, ilib.Date.IslamicDate.cumMonthLengths);
+	remainder -= ilib.Date.IslamicDate.cumMonthLengths[this.month-1];
 
-	//console.log("IslamicDate.calcComponent: month is " + ret.month + " and remainder is " + remainder);
+	//console.log("IslamicDate.calcComponent: month is " + this.month + " and remainder is " + remainder);
 	
-	ret.day = Math.floor(remainder);
-	remainder -= ret.day;
+	this.day = Math.floor(remainder);
+	remainder -= this.day;
 
-	//console.log("IslamicDate.calcComponent: day is " + ret.day + " and remainder is " + remainder);
+	//console.log("IslamicDate.calcComponent: day is " + this.day + " and remainder is " + remainder);
 
 	// now convert to milliseconds for the rest of the calculation
 	remainder = Math.round(remainder * 86400000);
 	
-	ret.hour = Math.floor(remainder/3600000);
-	remainder -= ret.hour * 3600000;
+	this.hour = Math.floor(remainder/3600000);
+	remainder -= this.hour * 3600000;
 	
-	ret.minute = Math.floor(remainder/60000);
-	remainder -= ret.minute * 60000;
+	this.minute = Math.floor(remainder/60000);
+	remainder -= this.minute * 60000;
 	
-	ret.second = Math.floor(remainder/1000);
-	remainder -= ret.second * 1000;
+	this.second = Math.floor(remainder/1000);
+	remainder -= this.second * 1000;
 	
-	ret.millisecond = remainder;
-	
-	return ret;
-};
-
-/**
- * @private
- * Set the date components of this instance based on the given rd.
- * @param {number} rd the rata die date to set
- */
-ilib.Date.IslamicDate.prototype.setRd = function (rd) {
-	var fields = this.calcComponents(rd);
-	
-	this.year = fields.year;
-	this.month = fields.month;
-	this.day = fields.day;
-	this.hour = fields.hour;
-	this.minute = fields.minute;
-	this.second = fields.second;
-	this.millisecond = fields.millisecond;
-};
-
-/**
- * Set the date of this instance using a Julian Day.
- * @param {number} date the Julian Day to use to set this date
- */
-ilib.Date.IslamicDate.prototype.setJulianDay = function (date) {
-	var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date,
-		rd;	// rata die -- # of days since the beginning of the calendar
-	
-	rd = jd.getDate() - ilib.Date.IslamicDate.epoch; 	// Julian Days start at noon
-	this.setRd(rd);
+	this.millisecond = remainder;
 };
 
 /**
@@ -10159,150 +10555,8 @@ ilib.Date.IslamicDate.prototype.setJulianDay = function (date) {
  * @return {number} the day of the week
  */
 ilib.Date.IslamicDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.getRataDie());
+	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
 	return ilib.mod(rd-2, 7);
-};
-
-
-/**
- * @private
- * Return the rd of the particular day of the week on or before the given rd.
- * eg. The Sunday on or before the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- */
-ilib.Date.IslamicDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
-	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 2, 7);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week on or before the given rd.
- * eg. The Sunday on or before the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- */
-ilib.Date.IslamicDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd+6, dayOfWeek);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week before the given rd.
- * eg. The Sunday before the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- */
-ilib.Date.IslamicDate.prototype.beforeRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd-1, dayOfWeek);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week after the given rd.
- * eg. The Sunday after the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- */
-ilib.Date.IslamicDate.prototype.afterRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd+7, dayOfWeek);
-};
-
-/**
- * @private
- * Return the rd of the first Sunday of the given ISO year.
- * @return the rd of the first Sunday of the ISO year
- */
-ilib.Date.IslamicDate.prototype.firstSunday = function (year) {
-	var jan1 = this.calcRataDie({
-		year: year,
-		month: 1,
-		day: 1,
-		hour: 0,
-		minute: 0,
-		second: 0,
-		millisecond: 0
-	});
-	var firstThu = this.onOrAfterRd(jan1, 4);
-	return this.beforeRd(firstThu, 0);
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week before the current date that is being sought
- * @returns {ilib.Date.IslamicDate} the date being sought
- */
-ilib.Date.IslamicDate.prototype.before = function (dow) {
-	return new ilib.Date.IslamicDate({rd: this.beforeRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week after the current date that is being sought
- * @returns {ilib.Date.IslamicDate} the date being sought
- */
-ilib.Date.IslamicDate.prototype.after = function (dow) {
-	return new ilib.Date.IslamicDate({rd: this.afterRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week on or before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or before the current date that is being sought
- * @returns {ilib.Date.IslamicDate} the date being sought
- */
-ilib.Date.IslamicDate.prototype.onOrBefore = function (dow) {
-	return new ilib.Date.IslamicDate({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week on or after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or after the current date that is being sought
- * @returns {ilib.Date.IslamicDate} the date being sought
- */
-ilib.Date.IslamicDate.prototype.onOrAfter = function (dow) {
-	return new ilib.Date.IslamicDate({rd: this.onOrAfterRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return the week number in the current year for the current date. This is calculated
- * similar to the ISO 8601 for a Gregorian calendar, but is not an ISO week number. 
- * The week number ranges from 1 to 51.
- * 
- * @return {number} the week number for the current date
- */
-ilib.Date.IslamicDate.prototype.getWeekOfYear = function() {
-	var rd = Math.floor(this.getRataDie()),
-		yearStart = this.firstSunday(this.year),
-		nextYear;
-	
-	// if we have a Muh date, it may be in this year or the previous year
-	if (rd < yearStart) {
-		yearStart = this.firstSunday(this.year-1);
-	} else if (this.month == 12 && this.day > 25) {
-		// if we have a late Dhu al'Hijja date, it may be in this year, or the next year
-		nextYear = this.firstSunday(this.year+1);
-		if (rd >= nextYear) {
-			yearStart = nextYear;
-		}
-	}
-	
-	return Math.floor((rd-yearStart)/7) + 1;
 };
 
 /**
@@ -10313,42 +10567,6 @@ ilib.Date.IslamicDate.prototype.getWeekOfYear = function() {
  */
 ilib.Date.IslamicDate.prototype.getDayOfYear = function() {
 	return ilib.Date.IslamicDate.cumMonthLengths[this.month-1] + this.day;
-};
-
-/**
- * Return the ordinal number of the week within the month. The first week of a month is
- * the first one that contains 4 or more days in that month. If any days precede this
- * first week, they are marked as being in week 0. This function returns values from 0
- * through 6.<p>
- * 
- * The locale is a required parameter because different locales that use the same 
- * Islamic calendar consider different days of the week to be the beginning of
- * the week. This can affect the week of the month in which some days are located.
- * 
- * @param {ilib.Locale|string} locale the locale or locale spec to use when figuring out 
- * the first day of the week
- * @return {number} the ordinal number of the week within the current month
- */
-ilib.Date.IslamicDate.prototype.getWeekOfMonth = function(locale) {
-	var li = new ilib.LocaleInfo(locale),
-		first = this.calcRataDie({
-			year: this.year,
-			month: this.month,
-			day: 1,
-			hour: 0,
-			minute: 0,
-			second: 0,
-			millisecond: 0
-		}),
-		rd = this.getRataDie(),
-		weekStart = this.onOrAfterRd(first, li.getFirstDayOfWeek());
-	if (weekStart - first > 3) {
-		// if the first week has 4 or more days in it of the current month, then consider
-		// that week 1. Otherwise, it is week 0. To make it week 1, move the week start
-		// one week earlier.
-		weekStart -= 7;
-	}
-	return Math.floor((rd - weekStart) / 7) + 1;
 };
 
 /**
@@ -10365,107 +10583,12 @@ ilib.Date.IslamicDate.prototype.getEra = function() {
 };
 
 /**
- * Return the unix time equivalent to this Islamic date instance. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970 Gregorian. This method only
- * returns a valid number for dates between midnight, Jan 1, 1970 and  
- * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
- * encodes a date outside of that range, this method will return -1.
- * 
- * @return {number} a number giving the unix time, or -1 if the date is outside the
- * valid unix time range
- */
-ilib.Date.IslamicDate.prototype.getTime = function() {
-	var rd = this.calcRataDie({
-		year: this.year,
-		month: this.month,
-		day: this.day,
-		hour: this.hour,
-		minute: this.minute,
-		second: this.second,
-		millisecond: 0
-	});
-	var unix;
-
-	// earlier than Jan 1, 1970
-	// or later than Jan 19, 2038 at 3:14:07am
-	if (rd < 492148 || rd > 517003.134803241) { 
-		return -1;
-	}
-
-	// avoid the rounding errors in the floating point math by only using
-	// the whole days from the rd, and then calculating the milliseconds directly
-	var seconds = Math.floor(rd - 492148) * 86400 + 
-		this.hour * 3600 +
-		this.minute * 60 +
-		this.second;
-	var millis = seconds * 1000 + this.millisecond;
-	
-	return millis;
-};
-
-/**
- * Set the time of this instance according to the given unix time. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970.
- * 
- * @param {number} millis the unix time to set this date to in milliseconds 
- */
-ilib.Date.IslamicDate.prototype.setTime = function(millis) {
-	var rd = 492148 + millis / 86400000;
-	this.setRd(rd);
-};
-
-/**
- * Return a Javascript Date object that is equivalent to this Islamic date
- * object.
- * 
- * @return {Date|undefined} a javascript Date object
- */
-ilib.Date.IslamicDate.prototype.getJSDate = function() {
-	var unix = this.getTime();
-	return (unix === -1) ? undefined : new Date(unix); 
-};
-
-/**
- * Return the Julian Day equivalent to this calendar date as a number.
- * 
- * @return {number} the julian date equivalent of this date
- */
-ilib.Date.IslamicDate.prototype.getJulianDay = function() {
-	return this.getRataDie() + ilib.Date.IslamicDate.epoch;
-};
-
-/**
  * Return the name of the calendar that governs this date.
  * 
  * @return {string} a string giving the name of the calendar
  */
 ilib.Date.IslamicDate.prototype.getCalendar = function() {
 	return "islamic";
-};
-
-/**
- * Return the time zone associated with this Islamic date, or 
- * undefined if none was specified in the constructor.
- * 
- * @return {string|undefined} the name of the time zone for this date instance
- */
-ilib.Date.IslamicDate.prototype.getTimeZone = function() {
-	return this.timezone || "local";
-};
-
-
-/**
- * Set the time zone associated with this Islamic date.
- * @param {string} tzName the name of the time zone to set into this date instance,
- * or "undefined" to unset the time zone 
- */
-ilib.Date.IslamicDate.prototype.setTimeZone = function (tzName) {
-	if (!tzName || tzName === "") {
-		// same as undefining it
-		this.timezone = undefined;
-	} else if (typeof(tzName) === 'string') {
-		this.timezone = tzName;
-	}
 };
 
 //register with the factory method
@@ -10615,6 +10738,103 @@ julianday.js
 /**
  * @class
  * 
+ * Construct a new Julian RD date number object. The constructor parameters can 
+ * contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>unixtime<i> - sets the time of this instance according to the given 
+ * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970.
+ * 
+ * <li><i>julianday</i> - sets the time of this instance according to the given
+ * Julian Day instance or the Julian Day given as a float
+ * 
+ * <li><i>year</i> - any integer, including 0
+ * 
+ * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
+ * 
+ * <li><i>day</i> - 1 to 31
+ * 
+ * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
+ * is always done with an unambiguous 24 hour representation
+ * 
+ * <li><i>minute</i> - 0 to 59
+ * 
+ * <li><i>second</i> - 0 to 59
+ * 
+ * <li><i>millisecond</i> - 0 to 999
+ * 
+ * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
+ * </ul>
+ *
+ * If the constructor is called with another Julian date instance instead of
+ * a parameter block, the other instance acts as a parameter block and its
+ * settings are copied into the current instance.<p>
+ * 
+ * If the constructor is called with no arguments at all or if none of the 
+ * properties listed above are present, then the RD is calculate based on 
+ * the current date at the time of instantiation. <p>
+ * 
+ * If any of the properties from <i>year</i> through <i>millisecond</i> are not
+ * specified in the params, it is assumed that they have the smallest possible
+ * value in the range for the property (zero or one).<p>
+ * 
+ * Depends directive: !depends juliandate.js
+ * 
+ * @constructor
+ * @param {Object=} params parameters that govern the settings and behaviour of this Julian RD date
+ */
+ilib.Date.JulianRataDie = function(params) {
+	this.cal = params && params.cal || new ilib.Cal.Julian();
+	this.rd = undefined;
+	ilib.Date.RataDie.call(this, params);
+};
+
+ilib.Date.JulianRataDie.prototype = new ilib.Date.RataDie();
+ilib.Date.JulianRataDie.prototype.parent = ilib.Date.RataDie;
+ilib.Date.JulianRataDie.prototype.constructor = ilib.Date.JulianRataDie;
+
+/**
+ * @private
+ * @const
+ * @type number
+ * The difference between a zero Julian day and the first Julian date
+ * of Friday, July 16, 622 CE Julian. 
+ */
+ilib.Date.JulianRataDie.prototype.epoch = 1721422.5;
+
+/**
+ * @private
+ * Calculate the Rata Die (fixed day) number of the given date from the
+ * date components.
+ * 
+ * @param {Object} date the date components to calculate the RD from
+ */
+ilib.Date.JulianRataDie.prototype._setDateComponents = function(date) {
+	var year = date.year + ((date.year < 0) ? 1 : 0);
+	var years = 365 * (year - 1) + Math.floor((year-1)/4);
+	var dayInYear = (date.month > 1 ? ilib.Date.JulDate.cumMonthLengths[date.month-1] : 0) +
+		date.day +
+		(this.cal.isLeapYear(date.year) && date.month > 2 ? 1 : 0);
+	var rdtime = (date.hour * 3600000 +
+		date.minute * 60000 +
+		date.second * 1000 +
+		date.millisecond) / 
+		86400000;
+	
+	/*
+	console.log("calcRataDie: converting " +  JSON.stringify(parts));
+	console.log("getRataDie: year is " +  years);
+	console.log("getRataDie: day in year is " +  dayInYear);
+	console.log("getRataDie: rdtime is " +  rdtime);
+	console.log("getRataDie: rd is " +  (years + dayInYear + rdtime));
+	*/
+	
+	this.rd = years + dayInYear + rdtime;
+};
+
+/**
+ * @class
+ * 
  * Construct a new date object for the Julian Calendar. The constructor can be called
  * with a parameter object that contains any of the following properties:
  * 
@@ -10677,32 +10897,16 @@ ilib.Date.JulDate = function(params) {
 	this.cal = new ilib.Cal.Julian();
 	
 	if (params) {
+		if (params.locale) {
+			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
+			var li = new ilib.LocaleInfo(this.locale);
+			this.timezone = li.getTimeZone(); 
+		}
 		if (params.timezone) {
 			this.timezone = params.timezone;
 		}
-		if (params.locale) {
-			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
-			if (!this.timezone) {
-				var li = new ilib.LocaleInfo(this.locale);
-				this.timezone = li.getTimeZone(); 
-			}
-		}
-
-		if (typeof(params.date) !== 'undefined') {
-			// accept JS Date classes or strings
-			var date = params.date;
-			if (!(date instanceof Date)) {
-				date = new Date(date);
-			}
-			this.timezone = "Etc/UTC";
-			this.setTime(date.getTime());
-		} else if (typeof(params.unixtime) != 'undefined') {
-			this.setTime(parseInt(params.unixtime, 10));
-		} else if (typeof(params.julianday) != 'undefined') {
-			// JD time is defined to be UTC
-			this.timezone = "Etc/UTC";
-			this.setJulianDay(parseFloat(params.julianday));
-		} else if (params.year || params.month || params.day || params.hour ||
+		
+		if (params.year || params.month || params.day || params.hour ||
 				params.minute || params.second || params.millisecond ) {
 			/**
 			 * Year in the Julian calendar.
@@ -10740,16 +10944,38 @@ ilib.Date.JulDate = function(params) {
 			 * @type number
 			 */
 			this.millisecond = parseInt(params.millisecond, 10) || 0;
-		} else if (typeof(params.rd) != 'undefined') {
-			// private parameter. Do not document this!
-			this.setRd(params.rd);
-		} else {
-			var now = new Date();
-			this.setTime(now.getTime());
+			
+			/**
+			 * The day of the year. Ranges from 1 to 383.
+			 * @type number
+			 */
+			this.dayOfYear = parseInt(params.dayOfYear, 10);
+			
+			if (typeof(params.dst) === 'boolean') {
+				this.dst = params.dst;
+			}
+			
+			this.rd = this.newRd(this);
+			
+			// add the time zone offset to the rd to convert to UTC
+			if (!this.tz) {
+				this.tz = new ilib.TimeZone({id: this.timezone});
+			}
+			// getOffsetMillis requires that this.year, this.rd, and this.dst 
+			// are set in order to figure out which time zone rules apply and 
+			// what the offset is at that point in the year
+			this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
+			if (this.offset !== 0) {
+				this.rd = this.newRd({
+					rd: this.rd.getRataDie() - this.offset
+				});
+			}
 		}
-	} else {
-		var now = new Date();
-		this.setTime(now.getTime());
+	}
+	
+	if (!this.rd) {
+		this.rd = this.newRd(params);
+		this._calcDateComponents();
 	}
 };
 
@@ -10810,63 +11036,55 @@ ilib.Date.JulDate.epoch = 1721422.5;
 
 /**
  * @private
- * Return the Rata Die (fixed day) number for the given date.
- * @param {Object} parts the parts to calculate with
- * @return {number} the rd date as a number
+ * Return a new RD for this date type using the given params.
+ * @param {Object=} params the parameters used to create this rata die instance
+ * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
-ilib.Date.JulDate.prototype.calcRataDie = function(parts) {
-	var year = parts.year + ((parts.year < 0) ? 1 : 0);
-	var years = 365 * (year - 1) + Math.floor((year-1)/4);
-	var dayInYear = (parts.month > 1 ? ilib.Date.JulDate.cumMonthLengths[parts.month-1] : 0) +
-	parts.day +
-		(this.cal.isLeapYear(parts.year) && parts.month > 2 ? 1 : 0);
-	var rdtime = (parts.hour * 3600000 +
-		parts.minute * 60000 +
-		parts.second * 1000 +
-		parts.millisecond) / 
-		86400000;
-	// the arithmetic is not more accurage than this, so just round it to make nice numbers
-	rdtime = Math.round(rdtime*10000000)/10000000; 
-	
-	/*
-	console.log("calcRataDie: converting " +  JSON.stringify(parts));
-	console.log("getRataDie: year is " +  years);
-	console.log("getRataDie: day in year is " +  dayInYear);
-	console.log("getRataDie: rdtime is " +  rdtime);
-	console.log("getRataDie: rd is " +  (years + dayInYear + rdtime));
-	*/
-	
-	return years + dayInYear + rdtime;
+ilib.Date.JulDate.prototype.newRd = function (params) {
+	return new ilib.Date.JulianRataDie(params);
 };
 
 /**
  * @private
- * Return the Rata Die (fixed day) number of this date.
- * 
- * @return {number} the rd date as a number
+ * Return the year for the given RD
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the year for the RD
  */
-ilib.Date.JulDate.prototype.getRataDie = function() {
-	return this.calcRataDie(this);
+ilib.Date.JulDate.prototype._calcYear = function(rd) {
+	var year = Math.floor((4*(Math.floor(rd)-1) + 1464)/1461);
+	
+	return (year <= 0) ? year - 1 : year;
 };
 
 /**
  * @private
  * Calculate date components for the given RD date.
- * @param {number} rd the RD date to calculate components for
- * @return {Object} object containing the component fields
  */
-ilib.Date.JulDate.prototype.calcComponents = function (rd) {
-	var year,
-		remainder,
+ilib.Date.JulDate.prototype._calcDateComponents = function () {
+	var remainder,
 		cumulative,
-		ret = {};
+		rd = this.rd.getRataDie();
 	
-	year = Math.floor((4*(Math.floor(rd)-1) + 1464)/1461);
+	this.year = this._calcYear(rd);
+
+	if (typeof(this.offset) === "undefined") {
+		this.year = this._calcYear(rd);
+		
+		// now offset the RD by the time zone, then recalculate in case we were 
+		// near the year boundary
+		if (!this.tz) {
+			this.tz = new ilib.TimeZone({id: this.timezone});
+		}
+		this.offset = this.tz.getOffsetMillis(this) / 86400000;
+	}
+
+	if (this.offset !== 0) {
+		rd += this.offset;
+		this.year = this._calcYear(rd);
+	}
 	
-	ret.year = (year <= 0) ? year - 1 : year;
-	
-	remainder = rd + 1 - this.calcRataDie({
-		year: ret.year,
+	var jan1 = this.newRd({
+		year: this.year,
 		month: 1,
 		day: 1,
 		hour: 0,
@@ -10874,60 +11092,30 @@ ilib.Date.JulDate.prototype.calcComponents = function (rd) {
 		second: 0,
 		millisecond: 0
 	});
+	remainder = rd + 1 - jan1.getRataDie();
 	
-	cumulative = this.cal.isLeapYear(ret.year) ? 
+	cumulative = this.cal.isLeapYear(this.year) ? 
 		ilib.Date.JulDate.cumMonthLengthsLeap : 
 		ilib.Date.JulDate.cumMonthLengths; 
 	
-	ret.month = ilib.bsearch(Math.floor(remainder), cumulative);
-	remainder = remainder - cumulative[ret.month-1];
+	this.month = ilib.bsearch(Math.floor(remainder), cumulative);
+	remainder = remainder - cumulative[this.month-1];
 	
-	ret.day = Math.floor(remainder);
-	remainder -= ret.day;
+	this.day = Math.floor(remainder);
+	remainder -= this.day;
 	// now convert to milliseconds for the rest of the calculation
 	remainder = Math.round(remainder * 86400000);
 	
-	ret.hour = Math.floor(remainder/3600000);
-	remainder -= ret.hour * 3600000;
+	this.hour = Math.floor(remainder/3600000);
+	remainder -= this.hour * 3600000;
 	
-	ret.minute = Math.floor(remainder/60000);
-	remainder -= ret.minute * 60000;
+	this.minute = Math.floor(remainder/60000);
+	remainder -= this.minute * 60000;
 	
-	ret.second = Math.floor(remainder/1000);
-	remainder -= ret.second * 1000;
+	this.second = Math.floor(remainder/1000);
+	remainder -= this.second * 1000;
 	
-	ret.millisecond = remainder;
-	
-	return ret;
-};
-
-/**
- * @private
- * Set the date components of this instance based on the given rd.
- * @param {number} rd the rata die date to set
- */
-ilib.Date.JulDate.prototype.setRd = function (rd) {
-	var fields = this.calcComponents(rd);
-	
-	this.year = fields.year;
-	this.month = fields.month;
-	this.day = fields.day;
-	this.hour = fields.hour;
-	this.minute = fields.minute;
-	this.second = fields.second;
-	this.millisecond = fields.millisecond;
-};
-
-/**
- * Set the date of this instance using a Julian Day.
- * @param {number} date the Julian Day to use to set this date
- */
-ilib.Date.JulDate.prototype.setJulianDay = function (date) {
-	var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date,
-		rd;	// rata die -- # of days since the beginning of the calendar
-	
-	rd = jd.getDate() - ilib.Date.JulDate.epoch; 	// Julian Days start at noon
-	this.setRd(rd);
+	this.millisecond = remainder;
 };
 
 /**
@@ -10937,199 +11125,8 @@ ilib.Date.JulDate.prototype.setJulianDay = function (date) {
  * @return {number} the day of the week
  */
 ilib.Date.JulDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.getRataDie());
+	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
 	return ilib.mod(rd-2, 7);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week on or before the given rd.
- * eg. The Sunday on or before the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- * @return {number} the day of the week
- */
-ilib.Date.JulDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
-	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 2, 7);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week on or before the given rd.
- * eg. The Sunday on or before the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- * @return {number} the day of the week
- */
-ilib.Date.JulDate.prototype.onOrAfterRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd+6, dayOfWeek);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week before the given rd.
- * eg. The Sunday before the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- * @return {number} the day of the week
- */
-ilib.Date.JulDate.prototype.beforeRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd-1, dayOfWeek);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week after the given rd.
- * eg. The Sunday after the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- * @return {number} the day of the week
- */
-ilib.Date.JulDate.prototype.afterRd = function(rd, dayOfWeek) {
-	return this.onOrBeforeRd(rd+7, dayOfWeek);
-};
-
-/**
- * @private
- * Return the rd of the first Sunday of the given ISO year.
- * @param {number} year the year for which the first Sunday is being sought
- * @return the rd of the first Sunday of the ISO year
- */
-ilib.Date.JulDate.prototype.firstSunday = function (year) {
-	var jan1 = this.calcRataDie({
-		year: year,
-		month: 1,
-		day: 1,
-		hour: 0,
-		minute: 0,
-		second: 0,
-		millisecond: 0
-	});
-	var firstThu = this.onOrAfterRd(jan1, 4);
-	return this.beforeRd(firstThu, 0);
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week before the current date that is being sought
- * @return {ilib.Date.JulDate} the date being sought
- */
-ilib.Date.JulDate.prototype.before = function (dow) {
-	return new ilib.Date.JulDate({rd: this.beforeRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week after the current date that is being sought
- * @return {ilib.Date.JulDate} the date being sought
- */
-ilib.Date.JulDate.prototype.after = function (dow) {
-	return new ilib.Date.JulDate({rd: this.afterRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week on or before the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or before the current date that is being sought
- * @return {ilib.Date.JulDate} the date being sought
- */
-ilib.Date.JulDate.prototype.onOrBefore = function (dow) {
-	return new ilib.Date.JulDate({rd: this.onOrBeforeRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return a new Gregorian date instance that represents the first instance of the 
- * given day of the week on or after the current date. The day of the week is encoded
- * as a number where 0 = Sunday, 1 = Monday, etc.
- * 
- * @param {number} dow the day of the week on or after the current date that is being sought
- * @return {ilib.Date.JulDate} the date being sought
- */
-ilib.Date.JulDate.prototype.onOrAfter = function (dow) {
-	return new ilib.Date.JulDate({rd: this.onOrAfterRd(this.getRataDie(), dow)});
-};
-
-/**
- * Return the unix time equivalent to this Julian date instance. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970. This method only
- * returns a valid number for dates between midnight, Jan 1, 1970 and  
- * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
- * encodes a date outside of that range, this method will return -1.
- * 
- * @return {number} a number giving the unix time, or -1 if the date is outside the
- * valid unix time range
- */
-ilib.Date.JulDate.prototype.getTime = function() {
-	var rd = this.calcRataDie({
-		year: this.year,
-		month: this.month,
-		day: this.day,
-		hour: this.hour,
-		minute: this.minute,
-		second: this.second,
-		millisecond: 0
-	});
-	var unix;
-
-	// earlier than Jan 1, 1970
-	// or later than Jan 19, 2038 at 3:14:07am
-	if (rd < 719165 || rd > 744020.134803241) { 
-		return -1;
-	}
-
-	// avoid the rounding errors in the floating point math by only using
-	// the whole days from the rd, and then calculating the milliseconds directly
-	var seconds = Math.floor(rd - 719165) * 86400 + 
-		this.hour * 3600 +
-		this.minute * 60 +
-		this.second;
-	var millis = seconds * 1000 + this.millisecond;
-	
-	return millis;
-};
-
-/**
- * Set the time of this instance according to the given unix time. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970.
- * 
- * @param {number} millis the unix time to set this date to in milliseconds 
- */
-ilib.Date.JulDate.prototype.setTime = function(millis) {
-	var rd = 719165 + millis / 86400000;
-	this.setRd(rd);
-};
-
-/**
- * Return a Javascript Date object that is equivalent to this Julian date
- * object. If the julian date object represents a date that cannot be represented
- * by a Javascript Date object, the value undefined is returned
- * 
- * @return {Date|undefined} a javascript Date object, or undefined if the date is out of range
- */
-ilib.Date.JulDate.prototype.getJSDate = function() {
-	var unix = this.getTime();
-	return (unix === -1) ? undefined : new Date(unix); 
-};
-
-/**
- * Return the Julian Day equivalent to this calendar date as a number.
- * 
- * @return {number} the julian date equivalent of this date
- */
-ilib.Date.JulDate.prototype.getJulianDay = function() {
-	return this.getRataDie() + ilib.Date.JulDate.epoch;
 };
 
 /**
@@ -11141,32 +11138,374 @@ ilib.Date.JulDate.prototype.getCalendar = function() {
 	return "julian";
 };
 
-/**
- * Return the time zone associated with this Julian date, or 
- * undefined if none was specified in the constructor.
+//register with the factory method
+ilib.Date._constructors["julian"] = ilib.Date.JulDate;
+/*
+ * gregoriandate.js - Represent a date in the Gregorian calendar
  * 
- * @return {string|undefined} the name of the time zone for this date instance
+ * Copyright © 2012-2013, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
-ilib.Date.JulDate.prototype.getTimeZone = function() {
-	return this.timezone || "local";
-};
+
+/* !depends 
+date.js 
+calendar/gregorian.js 
+util/utils.js
+util/search.js 
+localeinfo.js 
+julianday.js
+calendar/gregratadie.js
+timezone.js
+*/
 
 /**
- * Set the time zone associated with this Julian date.
- * @param {string} tzName the name of the time zone to set into this date instance,
- * or "undefined" to unset the time zone 
+ * @class
+ * 
+ * Construct a new Gregorian date object. The constructor parameters can 
+ * contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>unixtime<i> - sets the time of this instance according to the given 
+ * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970.
+ * 
+ * <li><i>julianday</i> - sets the time of this instance according to the given
+ * Julian Day instance or the Julian Day given as a float
+ * 
+ * <li><i>year</i> - any integer, including 0
+ * 
+ * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
+ * 
+ * <li><i>day</i> - 1 to 31
+ * 
+ * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
+ * is always done with an unambiguous 24 hour representation
+ * 
+ * <li><i>minute</i> - 0 to 59
+ * 
+ * <li><i>second</i> - 0 to 59
+ * 
+ * <li><i>millisecond</i> - 0 to 999
+ * 
+ * <li><i>dst</i> - boolean used to specify whether the given time components are
+ * intended to be in daylight time or not. This is only used in the overlap
+ * time when transitioning from DST to standard time, and the time components are 
+ * ambiguous. Otherwise at all other times of the year, this flag is ignored.
+ * If you specify the date using unix time (UTC) or a julian day, then the time is
+ * already unambiguous and this flag does not need to be specified.
+ * <p>
+ * For example, in the US, the transition out of daylight savings time 
+ * in 2014 happens at Nov 2, 2014 2:00am Daylight Time, when the time falls 
+ * back to Nov 2, 2014 1:00am Standard Time. If you give a date/time components as 
+ * "Nov 2, 2014 1:30am", then there are two 1:30am times in that day, and you would 
+ * have to give the standard flag to indicate which of those two you mean. 
+ * (dst=true means daylight time, dst=false means standard time).   
+ * 
+ * <li><i>timezone</i> - the ilib.TimeZone instance or time zone name as a string 
+ * of this gregorian date. The date/time is kept in the local time. The time zone
+ * is used later if this date is formatted according to a different time zone and
+ * the difference has to be calculated, or when the date format has a time zone
+ * component in it.
+ * 
+ * <li><i>locale</i> - locale for this gregorian date. If the time zone is not 
+ * given, it can be inferred from this locale. For locales that span multiple
+ * time zones, the one with the largest population is chosen as the one that 
+ * represents the locale.
+ * 
+ * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
+ * </ul>
+ *
+ * If the constructor is called with another Gregorian date instance instead of
+ * a parameter block, the other instance acts as a parameter block and its
+ * settings are copied into the current instance.<p>
+ * 
+ * If the constructor is called with no arguments at all or if none of the 
+ * properties listed above 
+ * from <i>unixtime</i> through <i>millisecond</i> are present, then the date 
+ * components are 
+ * filled in with the current date at the time of instantiation. Note that if
+ * you do not give the time zone when defaulting to the current time and the 
+ * time zone for all of ilib was not set with <i>ilib.setTimeZone()</i>, then the
+ * time zone will default to UTC ("Universal Time, Coordinated" or "Greenwich 
+ * Mean Time").<p>
+ * 
+ * If any of the properties from <i>year</i> through <i>millisecond</i> are not
+ * specified in the params, it is assumed that they have the smallest possible
+ * value in the range for the property (zero or one).<p>
+ * 
+ * Depends directive: !depends gregoriandate.js
+ * 
+ * @constructor
+ * @extends ilib.Date
+ * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian date
  */
-ilib.Date.JulDate.prototype.setTimeZone = function (tzName) {
-	if (!tzName || tzName === "") {
-		// same as undefining it
-		this.timezone = undefined;
-	} else if (typeof(tzName) === 'string') {
-		this.timezone = tzName;
+ilib.Date.GregDate = function(params) {
+	this.cal = new ilib.Cal.Gregorian();
+	this.timezone = "local";
+
+	if (params) {
+		if (params.locale) {
+			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
+			var li = new ilib.LocaleInfo(this.locale);
+			this.timezone = li.getTimeZone(); 
+		}
+		if (params.timezone) {
+			this.timezone = params.timezone;
+		}
+		
+		if (params.year || params.month || params.day || params.hour ||
+				params.minute || params.second || params.millisecond ) {
+			this.year = parseInt(params.year, 10) || 0;
+			this.month = parseInt(params.month, 10) || 1;
+			this.day = parseInt(params.day, 10) || 1;
+			this.hour = parseInt(params.hour, 10) || 0;
+			this.minute = parseInt(params.minute, 10) || 0;
+			this.second = parseInt(params.second, 10) || 0;
+			this.millisecond = parseInt(params.millisecond, 10) || 0;
+			if (typeof(params.dst) === 'boolean') {
+				this.dst = params.dst;
+			}
+			this.rd = this.newRd(params);
+			
+			// add the time zone offset to the rd to convert to UTC
+			this.offset = 0;
+			if (this.timezone === "local" && typeof(params.dst) === 'undefined') {
+				// if dst is defined, the intrinsic Date object has no way of specifying which version of a time you mean
+				// in the overlap time at the end of DST. Do you mean the daylight 1:30am or the standard 1:30am? In this
+				// case, use the ilib calculations below, which can distinguish between the two properly
+				var d = new Date(this.year, this.month-1, this.day, this.hour, this.minute, this.second, this.millisecond);
+				this.offset = -d.getTimezoneOffset() / 1440;
+			} else {
+				if (!this.tz) {
+					this.tz = new ilib.TimeZone({id: this.timezone});
+				}
+				// getOffsetMillis requires that this.year, this.rd, and this.dst 
+				// are set in order to figure out which time zone rules apply and 
+				// what the offset is at that point in the year
+				this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
+			}
+			if (this.offset !== 0) {
+				this.rd = this.newRd({
+					rd: this.rd.getRataDie() - this.offset
+				});
+			}
+		}
+	} 
+
+	if (!this.rd) {
+		this.rd = this.newRd(params);
+		this._calcDateComponents();
 	}
 };
 
-//register with the factory method
-ilib.Date._constructors["julian"] = ilib.Date.JulDate;
+ilib.Date.GregDate.prototype = new ilib.Date();
+ilib.Date.GregDate.prototype.parent = ilib.Date;
+ilib.Date.GregDate.prototype.constructor = ilib.Date.GregDate;
+
+/**
+ * @private
+ * Return a new RD for this date type using the given params.
+ * @param {Object=} params the parameters used to create this rata die instance
+ * @returns {ilib.Date.RataDie} the new RD instance for the given params
+ */
+ilib.Date.GregDate.prototype.newRd = function (params) {
+	return new ilib.Date.GregRataDie(params);
+};
+
+/**
+ * @private
+ * Calculates the Gregorian year for a given rd number.
+ */
+ilib.Date.GregDate.prototype._calcYear = function(rd) {
+	var days400,
+		days100,
+		days4,
+		years400,
+		years100,
+		years4,
+		years1,
+		year;
+
+	years400 = Math.floor((rd - 1) / 146097);
+	days400 = ilib.mod((rd - 1), 146097);
+	years100 = Math.floor(days400 / 36524);
+	days100 = ilib.mod(days400, 36524);
+	years4 = Math.floor(days100 / 1461);
+	days4 = ilib.mod(days100, 1461);
+	years1 = Math.floor(days4 / 365);
+	
+	year = 400 * years400 + 100 * years100 + 4 * years4 + years1;
+	if (years100 !== 4 && years1 !== 4) {
+		year++;
+	}
+	return year;
+};
+
+/**
+ * @private
+ * Calculate the date components for the current time zone
+ */
+ilib.Date.GregDate.prototype._calcDateComponents = function () {
+	if (this.timezone === "local" && this.rd.getRataDie() >= 719163 && this.rd.getRataDie() <= 744018.134803241) {
+		// use the intrinsic JS Date object to do the tz conversion for us, which 
+		// guarantees that it follows the system tz database settings 
+		var d = new Date(this.rd.getTime());
+	
+		/**
+		 * Year in the Gregorian calendar.
+		 * @type number
+		 */
+		this.year = d.getFullYear();
+		
+		/**
+		 * The month number, ranging from 1 (January) to 12 (December).
+		 * @type number
+		 */
+		this.month = d.getMonth()+1;
+		
+		/**
+		 * The day of the month. This ranges from 1 to 31.
+		 * @type number
+		 */
+		this.day = d.getDate();
+		
+		/**
+		 * The hour of the day. This can be a number from 0 to 23, as times are
+		 * stored unambiguously in the 24-hour clock.
+		 * @type number
+		 */
+		this.hour = d.getHours();
+		
+		/**
+		 * The minute of the hours. Ranges from 0 to 59.
+		 * @type number
+		 */
+		this.minute = d.getMinutes();
+		
+		/**
+		 * The second of the minute. Ranges from 0 to 59.
+		 * @type number
+		 */
+		this.second = d.getSeconds();
+		
+		/**
+		 * The millisecond of the second. Ranges from 0 to 999.
+		 * @type number
+		 */
+		this.millisecond = d.getMilliseconds();
+	} else {
+		if (typeof(this.offset) === "undefined") {
+			this.year = this._calcYear(this.rd.getRataDie());
+			
+			// now offset the RD by the time zone, then recalculate in case we were 
+			// near the year boundary
+			if (!this.tz) {
+				this.tz = new ilib.TimeZone({id: this.timezone});
+			}
+			this.offset = this.tz.getOffsetMillis(this) / 86400000;
+		}
+		var rd = this.rd.getRataDie();
+		if (this.offset !== 0) {
+			rd += this.offset;
+		}
+		this.year = this._calcYear(rd);
+		
+		var yearStartRd = this.newRd({
+			year: this.year,
+			month: 1,
+			day: 1,
+			cal: this.cal
+		});
+		
+		// remainder is days into the year
+		var remainder = rd - yearStartRd.getRataDie() + 1;
+		
+		var cumulative = ilib.Cal.Gregorian.prototype.isLeapYear.call(this.cal, this.year) ? 
+			ilib.Date.GregRataDie.cumMonthLengthsLeap : 
+			ilib.Date.GregRataDie.cumMonthLengths; 
+		
+		this.month = ilib.bsearch(Math.floor(remainder), cumulative);
+		remainder = remainder - cumulative[this.month-1];
+		
+		this.day = Math.floor(remainder);
+		remainder -= this.day;
+		// now convert to milliseconds for the rest of the calculation
+		remainder = Math.round(remainder * 86400000);
+		
+		this.hour = Math.floor(remainder/3600000);
+		remainder -= this.hour * 3600000;
+		
+		this.minute = Math.floor(remainder/60000);
+		remainder -= this.minute * 60000;
+		
+		this.second = Math.floor(remainder/1000);
+		remainder -= this.second * 1000;
+		
+		this.millisecond = Math.floor(remainder);
+	}
+};
+
+/**
+ * Return the day of the week of this date. The day of the week is encoded
+ * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
+ * 
+ * @return {number} the day of the week
+ */
+ilib.Date.GregDate.prototype.getDayOfWeek = function() {
+	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
+	return ilib.mod(rd, 7);
+};
+
+/**
+ * Return the ordinal day of the year. Days are counted from 1 and proceed linearly up to 
+ * 365, regardless of months or weeks, etc. That is, January 1st is day 1, and 
+ * December 31st is 365 in regular years, or 366 in leap years.
+ * @return {number} the ordinal day of the year
+ */
+ilib.Date.GregDate.prototype.getDayOfYear = function() {
+	var cumulativeMap = this.cal.isLeapYear(this.year) ? 
+		ilib.Date.GregRataDie.cumMonthLengthsLeap : 
+		ilib.Date.GregRataDie.cumMonthLengths; 
+		
+	return cumulativeMap[this.month-1] + this.day;
+};
+
+/**
+ * Return the era for this date as a number. The value for the era for Gregorian 
+ * calendars is -1 for "before the common era" (BCE) and 1 for "the common era" (CE). 
+ * BCE dates are any date before Jan 1, 1 CE. In the proleptic Gregorian calendar, 
+ * there is a year 0, so any years that are negative or zero are BCE. In the Julian
+ * calendar, there is no year 0. Instead, the calendar goes straight from year -1 to 
+ * 1.
+ * @return {number} 1 if this date is in the common era, -1 if it is before the 
+ * common era 
+ */
+ilib.Date.GregDate.prototype.getEra = function() {
+	return (this.year < 1) ? -1 : 1;
+};
+
+/**
+ * Return the name of the calendar that governs this date.
+ * 
+ * @return {string} a string giving the name of the calendar
+ */
+ilib.Date.GregDate.prototype.getCalendar = function() {
+	return "gregorian";
+};
+
+// register with the factory method
+ilib.Date._constructors["gregorian"] = ilib.Date.GregDate;
 /*
  * thaisolar.js - Represent a Thai solar calendar object.
  * 
@@ -11253,13 +11592,9 @@ ilib.Cal._constructors["thaisolar"] = ilib.Cal.ThaiSolar;
  */
 
 /* !depends 
-date.js
-calendar/gregoriandate.js
-calendar/thaisolar.js
-util/utils.js
-util/search.js 
-localeinfo.js 
-julianday.js 
+date.js 
+calendar/gregorian.js 
+util/jsutils.js
 */
 
 /**
@@ -11327,8 +11662,24 @@ julianday.js
  * @param {Object=} params parameters that govern the settings and behaviour of this Thai solar date
  */
 ilib.Date.ThaiSolarDate = function(params) {
-	ilib.Date.GregDate.call(this, params);
+	var p = params;
+	if (params) {
+		// there is 198327 days difference between the Thai solar and 
+		// Gregorian epochs which is equivalent to 543 years
+		p = {};
+		ilib.shallowCopy(params, p);
+		if (typeof(p.year) !== 'undefined') {
+			p.year -= 543;	
+		}
+		if (typeof(p.rd) !== 'undefined') {
+			p.rd -= 198327;
+		}
+	}
+	this.rd = undefined; // clear this out so that the GregDate constructor can set it
+	ilib.Date.GregDate.call(this, p);
 	this.cal = new ilib.Cal.ThaiSolar();
+	// make sure the year is set correctly
+	this._calcDateComponents();
 };
 
 ilib.Date.ThaiSolarDate.prototype = new ilib.Date.GregDate();
@@ -11346,132 +11697,85 @@ ilib.Date.ThaiSolarDate.epoch = 1523097.5;
 
 /**
  * @private
- * Return the Rata Die (fixed day) number for the given date.
- * @param {Object} parts the parts to calculate with
+ * Calculate the date components for the current time zone
+ */
+ilib.Date.ThaiSolarDate.prototype._calcDateComponents = function () {
+	// there is 198327 days difference between the Thai solar and 
+	// Gregorian epochs which is equivalent to 543 years
+	this.parent._calcDateComponents.call(this);
+	this.year += 543;
+};
+
+/**
+ * @private
+ * Return the Rata Die (fixed day) number of this date.
+ * 
  * @return {number} the rd date as a number
  */
-ilib.Date.ThaiSolarDate.prototype.calcRataDie = function(parts) {
-	var gregorianRd = this.parent.calcRataDie.call(this, {
-		year: parts.year - 543,
-		month: parts.month,
-		day: parts.day,
-		hour: parts.hour,
-		minute: parts.minute,
-		second: parts.second,
-		millisecond: parts.millisecond
-	});
+ilib.Date.ThaiSolarDate.prototype.getRataDie = function() {
 	// there is 198327 days difference between the Thai solar and 
 	// Gregorian epochs which is equivalent to 543 years
-	return gregorianRd + 198327;
+	return this.rd.getRataDie() + 198327;
 };
 
 /**
- * @private
- * Calculate date components for the given RD date.
- * @param {number} rd the RD date to calculate components for
- * @return {Object} object containing the component fields
- */
-ilib.Date.ThaiSolarDate.prototype.calcComponents = function (rd) {
-	// there is 198327 days difference between the Thai solar and 
-	// Gregorian epochs which is equivalent to 543 years
-	var gregorianComponents = this.parent.calcComponents.call(this, rd - 198327);
-	
-	gregorianComponents.year += 543;
-	return gregorianComponents;
-};
-
-/**
- * Set the date of this instance using a Julian Day.
- * @param {number} date the Julian Day to use to set this date
- */
-ilib.Date.ThaiSolarDate.prototype.setJulianDay = function (date) {
-	var jd = (typeof(date) === 'number') ? new ilib.JulianDay(date) : date,
-		rd;	// rata die -- # of days since the beginning of the calendar
-	
-	rd = jd.getDate() - ilib.Date.ThaiSolarDate.epoch; 	// Julian Days start at noon
-	this.setRd(rd);
-};
-
-/**
- * Return the day of the week of this date. The day of the week is encoded
- * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week before the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
- * @return {number} the day of the week
+ * @param {number} dow the day of the week before the current date that is being sought
+ * @return {ilib.Date} the date being sought
  */
-ilib.Date.ThaiSolarDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.getRataDie() - 198327);
-	return ilib.mod(rd, 7);
-};
-
-/**
- * @private
- * Return the rd of the particular day of the week on or before the given rd.
- * eg. The Sunday on or before the given rd.
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the reference date
- * @return {number} the day of the week
- */
-ilib.Date.ThaiSolarDate.prototype.onOrBeforeRd = function(rd, dayOfWeek) {
-	return rd - ilib.mod(Math.floor(rd - 198327) - dayOfWeek, 7);
-};
-
-/**
- * Return the unix time equivalent to this ThaiSolar date instance. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970. This method only
- * returns a valid number for dates between midnight, Jan 1, 1970 and  
- * Jan 19, 2038 at 3:14:07am when the unix time runs out. If this instance 
- * encodes a date outside of that range, this method will return -1.
- * 
- * @return {number} a number giving the unix time, or -1 if the date is outside the
- * valid unix time range
- */
-ilib.Date.ThaiSolarDate.prototype.getTime = function() {
-	var rd = this.calcRataDie({
-		year: this.year,
-		month: this.month,
-		day: this.day,
-		hour: this.hour,
-		minute: this.minute,
-		second: this.second,
-		millisecond: 0
+ilib.Date.ThaiSolarDate.prototype.before = function (dow) {
+	return this.cal.newDateInstance({
+		rd: this.rd.before(dow, this.offset) + 198327,
+		timezone: this.timezone
 	});
-	
-	// earlier than Jan 1, 1970
-	// or later than Jan 19, 2038 at 3:14:07am
-	if (rd < 917490 || rd > 942345.134803241) { 
-		return -1;
-	}
-
-	// avoid the rounding errors in the floating point math by only using
-	// the whole days from the rd, and then calculating the milliseconds directly
-	var seconds = Math.floor(rd - 917490) * 86400 + 
-		this.hour * 3600 +
-		this.minute * 60 +
-		this.second;
-	var millis = seconds * 1000 + this.millisecond;
-	
-	return millis;
 };
 
 /**
- * Set the time of this instance according to the given unix time. Unix time is
- * the number of milliseconds since midnight on Jan 1, 1970.
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week after the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
- * @param {number} millis the unix time to set this date to in milliseconds 
+ * @param {number} dow the day of the week after the current date that is being sought
+ * @return {ilib.Date} the date being sought
  */
-ilib.Date.ThaiSolarDate.prototype.setTime = function(millis) {
-	var rd = 917490 + millis / 86400000;
-	this.setRd(rd);
+ilib.Date.ThaiSolarDate.prototype.after = function (dow) {
+	return this.cal.newDateInstance({
+		rd: this.rd.after(dow, this.offset) + 198327,
+		timezone: this.timezone
+	});
 };
 
 /**
- * Return the Julian Day equivalent to this calendar date as a number.
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week on or before the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
  * 
- * @return {number} the julian date equivalent of this date
+ * @param {number} dow the day of the week on or before the current date that is being sought
+ * @return {ilib.Date} the date being sought
  */
-ilib.Date.ThaiSolarDate.prototype.getJulianDay = function() {
-	return this.getRataDie() + ilib.Date.ThaiSolarDate.epoch;
+ilib.Date.ThaiSolarDate.prototype.onOrBefore = function (dow) {
+	return this.cal.newDateInstance({
+		rd: this.rd.onOrBefore(dow, this.offset) + 198327,
+		timezone: this.timezone
+	});
+};
+
+/**
+ * Return a new Gregorian date instance that represents the first instance of the 
+ * given day of the week on or after the current date. The day of the week is encoded
+ * as a number where 0 = Sunday, 1 = Monday, etc.
+ * 
+ * @param {number} dow the day of the week on or after the current date that is being sought
+ * @return {ilib.Date} the date being sought
+ */
+ilib.Date.ThaiSolarDate.prototype.onOrAfter = function (dow) {
+	return this.cal.newDateInstance({
+		rd: this.rd.onOrAfter(dow, this.offset) + 198327,
+		timezone: this.timezone
+	});
 };
 
 /**
@@ -17933,9 +18237,6 @@ ilib.CaseMapper = function (options) {
 				};
 				this.mapper = this.charMapper;
 			}
-			break;
-		case "lt":
-			this.mapper = this.charMapper;
 			break;
 	}
 	
