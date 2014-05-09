@@ -194,7 +194,7 @@ $(function() {
     			timeFmt = $('[name="timeFmt"]:checked').val(),
                 clockFmt = $('[name="clockFmt"]:checked').val(),
                 useNative = $('[name="useNative"]:checked').val() === "true" ? true : false,
-                timezone = $('#timezone').val(),
+                timezone = $('#timezone').val() || "local",
                 calendar = $('#calendarName').val();
                         
             var options = {
@@ -203,7 +203,8 @@ $(function() {
                 type : dateType,
                 date : dateFmt,
                 time : timeFmt,
-                useNative : useNative
+                useNative : useNative,
+                timezone: timezone
             };
             
             var date,
@@ -214,23 +215,23 @@ $(function() {
                 
             if (calendar === 'julianday') {
                 date = cal.newDateInstance({
-                    julianday: $('#julianday').val()
+                	julianday: $('#julianday').val(),
+                    timezone: "Etc/UTC"
                 });
             } else {
                 date = cal.newDateInstance({
+                	timezone: timezone,
                     year: $('#year').val(),
                     month: $('#month').val(),
                     day: $('#day').val(),
                     hour: $('#hour').val(),
                     minute: $('#minute').val(),
                     second: $('#second').val(),
-                    millisecond: $('#millisecond').val()
+                    millisecond: $('#millisecond').val(),
+                    timezone: timezone
                 });
             }
             
-            if (timezone !== 'none') {
-                options.timezone = timezone;
-            }
             if (clockFmt !== 'none') {
                 options.clock = clockFmt;
             }
@@ -272,7 +273,8 @@ $(function() {
                 date,
                 calendarList,
                 fmt,
-                output;
+                output,
+                timezone = $('#timezone').val() || "local";
                 
             cal = ilib.Cal.newInstance({
                 locale: localeName,
@@ -282,7 +284,8 @@ $(function() {
             if (calendar === 'julianday') {
                 jd = $('#julianday').val();
                 date = cal.newDateInstance({
-                    julianday: jd
+                    julianday: jd,
+                    timezone: "Etc/UTC"
                 });
             } else {
                 date = cal.newDateInstance({
@@ -292,7 +295,8 @@ $(function() {
                     hour: $('#hour').val(),
                     minute: $('#minute').val(),
                     second: $('#second').val(),
-                    millisecond: $('#millisecond').val()
+                    millisecond: $('#millisecond').val(),
+                    timezone: timezone
                 });
                 
                 jd = date.getJulianDay();
@@ -320,10 +324,12 @@ $(function() {
                     locale: localeName,
                     length: "full",
                     date: "wmdy",
-                    time: "hms"
+                    time: "hms",
+                    timezone: timezone
                 });
                 date = cal.newDateInstance({
-                    julianday: jd
+                    julianday: jd,
+                    timezone: timezone
                 });
                 
                 output += res.getString('Calendar {cal}: {formattedDate} <br/>').format({
@@ -344,14 +350,15 @@ $(function() {
                     locale: localeName,
                     type: calendar
                 }),
-                timezone = $('#timezone').val(),
+                timezone = $('#timezone').val() || "local",
                 date,
                 fmt,
                 output;
             
             if (calendar === 'julianday') {
                 date = cal.newDateInstance({
-                    julianday: $('#julianday').val()
+                    julianday: $('#julianday').val(),
+                    timezone: "Etc/UTC"
                 });
             } else {
                 date = cal.newDateInstance({
@@ -361,7 +368,8 @@ $(function() {
                     hour: $('#hour').val(),
                     minute: $('#minute').val(),
                     second: $('#second').val(),
-                    millisecond: $('#millisecond').val()
+                    millisecond: $('#millisecond').val(),
+                    timezone: timezone
                 });
             }
             
@@ -369,12 +377,9 @@ $(function() {
                 calendar: calendar,
                 //locale: localeName,
                 length: "full",
-                template: "EEEE" 
+                template: "EEEE",
+                timezone: timezone
             };
-            
-            if (timezone !== 'none') {
-                options.timezone = timezone;
-            }
             
             fmt = new ilib.DateFmt(options);
             output = res.getString('The date is a {dayofweek}').format({
@@ -430,7 +435,8 @@ $(function() {
             options = {
                 calendar: calendar,
                 locale: localeName,
-                length: dateLength 
+                length: dateLength,
+                timezone: "local"
             };
             
             fmt = new ilib.DateRngFmt(options);
@@ -486,7 +492,8 @@ $(function() {
             options = {
                 calendar: calendar,
                 locale: localeName,
-                length: "full" 
+                length: "full",
+                timezone: "local"
             };
             
             fmt = new ilib.DateFmt(options);
@@ -505,7 +512,8 @@ $(function() {
                         
             var options = {
                 locale : localeName,
-                length : dateLength
+                length : dateLength,
+                timezone: "Etc/UTC"
             };
             
             var duration;
@@ -650,8 +658,9 @@ $(function() {
                 endDate,
                 fmt = new ilib.DateFmt({
                     locale: localeName,
-                    type: "date",
-                    length: "full"
+                    type: "datetime",
+                    length: "full",
+                    timezone: "Etc/UTC"
                 }),
                 str,
                 output;
@@ -665,10 +674,12 @@ $(function() {
                     minutes: res.getString("1#1 minute|#{m} minutes").formatChoice(offset.m || 0, {m: offset.m || 0})
                 });
                 startDate = new ilib.Date.GregDate({
-                    rd: tz._calcRuleStart(tz.zone.s, today.year)
+                    rd: tz._calcRuleStart(tz.zone.s, today.year),
+                    timezone: "Etc/UTC"
                 })
 				endDate = new ilib.Date.GregDate({
-                	rd: tz._calcRuleStart(tz.zone.e, today.year)
+                	rd: tz._calcRuleStart(tz.zone.e, today.year),
+                    timezone: "Etc/UTC"
                 });
 
 	            output += "</p>";
@@ -676,17 +687,17 @@ $(function() {
     	        str = res.getString('<p>DST starts on {date}:<br>Offset: {offset}<br>RFC 822 Abbreviation: {rfc822}<br>Standard Abbreviation: {standard}</p>');
         	    output += str.format({
             	    date: fmt.format(startDate),
-                	offset: tz.getOffsetStr(startDate),
-	                standard: tz.getDisplayName(startDate, "standard"),
-    	            rfc822: tz.getDisplayName(startDate, "rfc822")
+                	offset: tz.getOffsetStr(endDate),
+	                standard: tz.getDisplayName(endDate, "standard"),
+    	            rfc822: tz.getDisplayName(endDate, "rfc822")
         	    });
         	    
         	    str = res.getString('<p>DST ends on {date}:<br>Offset: {offset}<br>RFC 822 Abbreviation: {rfc822}<br>Standard Abbreviation: {standard}</p>');
             	output += str.format({
                 	date: fmt.format(endDate),
-	                offset: tz.getOffsetStr(endDate),
-    	            standard: tz.getDisplayName(endDate, "standard"),
-        	        rfc822: tz.getDisplayName(endDate, "rfc822")
+	                offset: tz.getOffsetStr(startDate),
+    	            standard: tz.getDisplayName(startDate, "standard"),
+        	        rfc822: tz.getDisplayName(startDate, "rfc822")
             	}); 
             } else {
             	output += "</p>";
@@ -696,7 +707,8 @@ $(function() {
         	    startDate = new ilib.Date.GregDate({
                     year: today.year,
                     month: 1,
-                    day: 1
+                    day: 1,
+                    timezone: "Etc/UTC"
                 }),
                 
                 output += str.format({
@@ -799,13 +811,14 @@ $(function() {
                     locale: localeName,
                     type: calendar
                 }),
-                timezone = $('#timezone').val(),
+                timezone = $('#timezone').val() || "local",
                 date,
                 output;
             
             if (calendar === 'julianday') {
                 date = cal.newDateInstance({
-                    julianday: $('#julianday').val()
+                    julianday: $('#julianday').val(),
+                    timezone: "Etc/UTC"
                 });
             } else {
                 date = cal.newDateInstance({
@@ -815,7 +828,8 @@ $(function() {
                     hour: $('#hour').val(),
                     minute: $('#minute').val(),
                     second: $('#second').val(),
-                    millisecond: $('#millisecond').val()
+                    millisecond: $('#millisecond').val(),
+                    timezone: timezone
                 });
             }
             
@@ -823,12 +837,9 @@ $(function() {
                 calendar: calendar,
                 locale: localeName,
                 length: "full",
-                type: "date" 
+                type: "date",
+                timezone: timezone
             };
-            
-            if (timezone !== 'none') {
-                options.timezone = timezone;
-            }
             
             fmt = new ilib.DateFmt(options);
             output = res.getString('The date {date} is in ISO week {week} of the month').format({
@@ -844,13 +855,14 @@ $(function() {
                     locale: localeName,
                     type: calendar
                 }),
-                timezone = $('#timezone').val(),
+                timezone = $('#timezone').val() || "local",
                 date,
                 output;
             
             if (calendar === 'julianday') {
                 date = cal.newDateInstance({
-                    julianday: $('#julianday').val()
+                    julianday: $('#julianday').val(),
+                    timezone: "Etc/UTC"
                 });
             } else {
                 date = cal.newDateInstance({
@@ -860,7 +872,8 @@ $(function() {
                     hour: $('#hour').val(),
                     minute: $('#minute').val(),
                     second: $('#second').val(),
-                    millisecond: $('#millisecond').val()
+                    millisecond: $('#millisecond').val(),
+                    timezone: timezone
                 });
             }
             
@@ -868,12 +881,9 @@ $(function() {
                 calendar: calendar,
                 locale: localeName,
                 length: "full",
-                type: "date" 
+                type: "date" ,
+                timezone: timezone
             };
-            
-            if (timezone !== 'none') {
-                options.timezone = timezone;
-            }
             
             fmt = new ilib.DateFmt(options);
             output = res.getString('The date {date} is day {day} of the year').format({

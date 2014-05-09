@@ -94,13 +94,20 @@ function setDayValues(element, day, month, year) {
 			calendar: calName,
 			locale: locale,
 			type: "date",
-			date: "d"
+			date: "d",
+			timezone: "Etc/UTC"
 		}),
-		date = cal.newDateInstance();
+		date = cal.newDateInstance({
+			locale: locale,
+			year: year,
+			month: month,
+			day: 1,
+			timezone: "Etc/UTC"
+		});
 	
 	element.empty();
 	for (var i = 1; i <= days; i++) {
-		date.day = i;
+		date.setDays(i);
 		element.append($("<option></option>").attr({
 			"value": i,
 			"selected": (i == day)
@@ -121,13 +128,16 @@ function setHourValues(element, hour) {
 			calendar: calName,
 			locale: locale,
 			type: "time",
-			time: "ah"
+			time: "ah",
+			timezone: "Etc/UTC"
 		}),
-		date = cal.newDateInstance();
+		date = cal.newDateInstance({
+			hour: 0
+		});
 	
 	element.empty();
 	for (i = 0; i < 24; i++) {
-		date.hour = i;
+		date.setHours(i);
 		element.append($("<option></option>").attr({
 			"value": i,
 			"selected": (i == hour)

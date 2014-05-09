@@ -2224,8 +2224,12 @@ ilib.Date.prototype = {
 	getDays: function() {
 		return this.day;
 	},
+	setDays: function(day) {
+	},
 	getMonths: function() {
 		return this.month;
+	},
+	setMonths: function(month) {
 	},
 	getYears: function() {
 		return this.year;
@@ -2245,26 +2249,33 @@ ilib.Date.prototype = {
 	},
 
 	setDays: function(day) {
-		this.day = day;
+		this.day = parseInt(day, 10) || 1;
+		this.rd._setDateComponents(this);
 	},
 	setMonths: function(month) {
-		this.month = month;
+		this.month = parseInt(month, 10) || 1;
+		this.rd._setDateComponents(this);
 	},
 	setYears: function(year) {
-		this.year = year;
+		this.year = parseInt(year, 10) || 0;
+		this.rd._setDateComponents(this);
 	},
 	
 	setHours: function(hour) {
-		this.hour = hour;
+		this.hour = parseInt(hour, 10) || 0;
+		this.rd._setDateComponents(this);
 	},
 	setMinutes: function(minute) {
-		this.minute = minute;
+		this.minute = parseInt(minute, 10) || 0;
+		this.rd._setDateComponents(this);
 	},
 	setSeconds: function(second) {
-		this.second = second;
+		this.second = parseInt(second, 10) || 0;
+		this.rd._setDateComponents(this);
 	},
 	setMilliseconds: function(milli) {
-		this.millisecond = milli;
+		this.millisecond = parseInt(milli, 10) || 0;
+		this.rd._setDateComponents(this);
 	},
 	
 	/**
@@ -3069,7 +3080,7 @@ ilib.loadData = function(params) {
 		// console.log("ilib._load is " + typeof(ilib._load));
 		if (typeof(ilib._load) !== 'undefined') {
 			// the data is not preassembled, so attempt to load it dynamically
-			var files = ilib.getLocFiles(locale, name);
+			var files = nonlocale ? [ name || "resources.json" ] : ilib.getLocFiles(locale, name);
 			if (type !== "json") {
 				loadParams.returnOne = true;
 			}
@@ -5584,7 +5595,8 @@ ilib.TimeZone = function(options) {
 		}
 		
 		if (options.id) {
-			if (options.id === 'local') {
+			var id = options.id.toString();
+			if (id === 'local') {
 				this.isLocal = true;
 				
 				// use standard Javascript Date to figure out the time zone offsets
@@ -5600,14 +5612,14 @@ ilib.TimeZone = function(options) {
 				// the two, no matter whether you are in the northern or southern hemisphere
 				this.offset = Math.max(this.offsetJan1, this.offsetJun1);
 			}
-			this.id = options.id;
+			this.id = id;
 		} else if (options.offset) {
 			this.offset = (typeof(options.offset) === 'string') ? parseInt(options.offset, 10) : options.offset;
 			this.id = this.getDisplayName(undefined, undefined);
 		}
 		
 		if (typeof(options.sync) !== 'undefined') {
-			this.sync = options.sync;
+			this.sync = !!options.sync;
 		}
 		
 		this.loadParams = options.loadParams;
@@ -5775,7 +5787,7 @@ ilib.TimeZone.getAvailableIds = function (country) {
  * @return {string} a unique id for this time zone
  */
 ilib.TimeZone.prototype.getId = function () {
-	return this.id;
+	return this.id.toString();
 };
 
 /**
@@ -8440,7 +8452,7 @@ ilib.DateFmt.prototype = {
 	format: function (dateLike) {
 		var date = ilib.Date._dateToIlib(dateLike);
 		
-		if (!date.getCalendar || date.getCalendar() !== this.calName) {
+		if (!date.getCalendar || !(date instanceof ilib.Date)) {
 			throw "Wrong date type passed to ilib.DateFmt.format()";
 		}
 		
@@ -8448,13 +8460,14 @@ ilib.DateFmt.prototype = {
 		var dateZoneName = date.timezone || "local";
 		
 		// convert to the time zone of this formatter before formatting
-		if (dateZoneName !== thisZoneName) {
+		if (dateZoneName !== thisZoneName || date.getCalendar() !== this.calName) {
 			// console.log("Differing time zones date: " + dateZoneName + " and fmt: " + thisZoneName + ". Converting...");
 			// this will recalculate the date components based on the new time zone
+			// and/or convert a date in another calendar to the current calendar before formatting it
 			var newDate = ilib.Date.newInstance({
 				type: this.calName,
 				timezone: thisZoneName,
-				rd: date.getRataDie()
+				julianday: date.getJulianDay()
 			});
 			
 			date = newDate;
