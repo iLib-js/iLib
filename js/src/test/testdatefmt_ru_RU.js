@@ -247,7 +247,7 @@ function testDateFmtTemplateCalendar_ru_RU() {
 }
 
 function testDateFmtTemplateCalendarIncompatibleDateType_ru_RU() {
-    var fmt = new ilib.DateFmt({locale: "ru-RU", calendar: "julian", template: "yyyy-MM-dd"});
+    var fmt = new ilib.DateFmt({locale: "ru-RU", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
     assertNotNull(fmt);
     
     var date = new ilib.Date.GregDate({
@@ -260,13 +260,8 @@ function testDateFmtTemplateCalendarIncompatibleDateType_ru_RU() {
 		second: 0,
 		millisecond: 0
 	});
-    try {
-        fmt.format(date);
-        fail_ru_RU();
-    } catch (str) {
-        // success
-        assertEquals("Wrong date type passed to ilib.DateFmt.format()", str);
-    }
+    // convert automatically to a Julian calendar date
+    assertEquals("2011-09-16 13:45", fmt.format(date));
 }
 
 function testDateFmtTemplateClock12SwitchHH_ru_RU() {

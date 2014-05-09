@@ -1109,7 +1109,7 @@ ilib.DateFmt.prototype = {
 	format: function (dateLike) {
 		var date = ilib.Date._dateToIlib(dateLike);
 		
-		if (!date.getCalendar || date.getCalendar() !== this.calName) {
+		if (!date.getCalendar || !(date instanceof ilib.Date)) {
 			throw "Wrong date type passed to ilib.DateFmt.format()";
 		}
 		
@@ -1117,13 +1117,14 @@ ilib.DateFmt.prototype = {
 		var dateZoneName = date.timezone || "local";
 		
 		// convert to the time zone of this formatter before formatting
-		if (dateZoneName !== thisZoneName) {
+		if (dateZoneName !== thisZoneName || date.getCalendar() !== this.calName) {
 			// console.log("Differing time zones date: " + dateZoneName + " and fmt: " + thisZoneName + ". Converting...");
 			// this will recalculate the date components based on the new time zone
+			// and/or convert a date in another calendar to the current calendar before formatting it
 			var newDate = ilib.Date.newInstance({
 				type: this.calName,
 				timezone: thisZoneName,
-				rd: date.getRataDie()
+				julianday: date.getJulianDay()
 			});
 			
 			date = newDate;

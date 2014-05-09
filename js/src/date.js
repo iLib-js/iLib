@@ -169,7 +169,6 @@ ilib.Date.prototype = {
 	getYears: function() {
 		return this.year;
 	},
-	
 	getHours: function() {
 		return this.hour;
 	},
@@ -184,26 +183,33 @@ ilib.Date.prototype = {
 	},
 
 	setDays: function(day) {
-		this.day = day;
+		this.day = parseInt(day, 10) || 1;
+		this.rd._setDateComponents(this);
 	},
 	setMonths: function(month) {
-		this.month = month;
+		this.month = parseInt(month, 10) || 1;
+		this.rd._setDateComponents(this);
 	},
 	setYears: function(year) {
-		this.year = year;
+		this.year = parseInt(year, 10) || 0;
+		this.rd._setDateComponents(this);
 	},
 	
 	setHours: function(hour) {
-		this.hour = hour;
+		this.hour = parseInt(hour, 10) || 0;
+		this.rd._setDateComponents(this);
 	},
 	setMinutes: function(minute) {
-		this.minute = minute;
+		this.minute = parseInt(minute, 10) || 0;
+		this.rd._setDateComponents(this);
 	},
 	setSeconds: function(second) {
-		this.second = second;
+		this.second = parseInt(second, 10) || 0;
+		this.rd._setDateComponents(this);
 	},
 	setMilliseconds: function(milli) {
-		this.millisecond = milli;
+		this.millisecond = parseInt(milli, 10) || 0;
+		this.rd._setDateComponents(this);
 	},
 	
 	/**
