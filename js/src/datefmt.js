@@ -1107,13 +1107,14 @@ ilib.DateFmt.prototype = {
 	 * @return {string} the formatted version of the given date instance
 	 */
 	format: function (dateLike) {
-		var date = ilib.Date._dateToIlib(dateLike);
+		var thisZoneName = this.tz && this.tz.getId() || "local";
+
+		var date = ilib.Date._dateToIlib(dateLike, thisZoneName);
 		
 		if (!date.getCalendar || !(date instanceof ilib.Date)) {
 			throw "Wrong date type passed to ilib.DateFmt.format()";
 		}
 		
-		var thisZoneName = this.tz && this.tz.getId() || "local";
 		var dateZoneName = date.timezone || "local";
 		
 		// convert to the time zone of this formatter before formatting

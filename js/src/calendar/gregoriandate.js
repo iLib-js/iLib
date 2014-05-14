@@ -119,7 +119,7 @@ ilib.Date.GregDate = function(params) {
 			this.timezone = li.getTimeZone(); 
 		}
 		if (params.timezone) {
-			this.timezone = params.timezone;
+			this.timezone = params.timezone.toString();
 		}
 		
 		if (params.year || params.month || params.day || params.hour ||
@@ -262,6 +262,8 @@ ilib.Date.GregDate.prototype._calcDateComponents = function () {
 		 * @type number
 		 */
 		this.millisecond = d.getMilliseconds();
+		
+		this.offset = -d.getTimezoneOffset() / 1440;
 	} else {
 		if (typeof(this.offset) === "undefined") {
 			this.year = this._calcYear(this.rd.getRataDie());

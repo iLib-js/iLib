@@ -81,6 +81,7 @@ ilib.Date.newInstance = function(options) {
 
 /**
  * @static
+ * @private
  * 
  * Convert JavaScript Date objects and other types into native ilib Dates. This accepts any
  * string or number that can be translated by the JavaScript Date class,
@@ -90,10 +91,11 @@ ilib.Date.newInstance = function(options) {
  * return null or undefined if input is null or undefined). Normal output is 
  * a standard native subclass of the ilib Date object as appropriate for the locale.
  * 
- * @param  {ilib.Date|ilib.JulianDay|Date|String|Number=} inDate The input date object, string or Number.
- * @return {ilib.Date|null|undefined}
+ * @param  {ilib.Date|Object|ilib.JulianDay|Date|string|number=} inDate The input date object, string or Number.
+ * @param  {ilib.String|string=} timezone timezone to use if a new date object is created
+ * @return {ilib.Date|null|undefined} an ilib.Date subclass equivalent to the given inDate
  */
-ilib.Date._dateToIlib = function(inDate) {
+ilib.Date._dateToIlib = function(inDate, timezone) {
 	if (typeof(inDate) === 'undefined' || inDate === null) {
 		return inDate;
 	}
@@ -101,13 +103,22 @@ ilib.Date._dateToIlib = function(inDate) {
 		return inDate;
 	}
 	if (inDate instanceof Date) {
-		return ilib.Date.newInstance({unixtime: inDate.getTime()});
+		return ilib.Date.newInstance({
+			unixtime: inDate.getTime(),
+			timezone: timezone
+		});
 	}
 	if (inDate instanceof ilib.JulianDay) {
-		return ilib.Date.newInstance({jd: inDate});
+		return ilib.Date.newInstance({
+			jd: inDate,
+			timezone: timezone
+		});
 	}
 	if (typeof(inDate) === 'number') {
-		return ilib.Date.newInstance({unixtime: inDate});
+		return ilib.Date.newInstance({
+			unixtime: inDate,
+			timezone: timezone
+		});
 	}
 	if (typeof(inDate) === 'object') {
 		return ilib.Date.newInstance(inDate);
@@ -115,7 +126,10 @@ ilib.Date._dateToIlib = function(inDate) {
 	if (typeof(inDate) === 'string') {
 		inDate = new Date(inDate);
 	}
-	return ilib.Date.newInstance({unixtime: inDate.getTime()});
+	return ilib.Date.newInstance({
+		unixtime: inDate.getTime(),
+		timezone: timezone
+	});
 };
 
 /* place for the subclasses to put their constructors so that the factory method

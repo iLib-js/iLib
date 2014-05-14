@@ -674,6 +674,70 @@ function testDateFmtFormatJSDate1() {
     assertEquals("1:37pm", fmt.format(datMyBday));
 };
 
+function testDateFmtFormatJSDateRightTimeZone1() {
+    var fmt = new ilib.DateFmt({
+    	type: "date",
+    	length: "full",
+    	date: "w",
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(fmt);
+    
+    // test formatting a javascript date. It should be converted to 
+    // an ilib date object automatically and then formatted
+    var datMyBday = new Date("Wed May 14 2014 23:37:35 GMT-0700 (PDT)");
+    assertEquals("Wednesday", fmt.format(datMyBday));
+};
+
+function testDateFmtFormatJSDateRightTimeZone2() {
+    var fmt = new ilib.DateFmt({
+    	type: "date",
+    	length: "full",
+    	date: "w",
+    	timezone: "America/New_York"
+    });
+    assertNotNull(fmt);
+    
+    // test formatting a javascript date. It should be converted to 
+    // an ilib date object automatically and then formatted
+    var datMyBday = new Date("Wed May 14 2014 23:37:35 GMT-0700 (PDT)");
+    assertEquals("Thursday", fmt.format(datMyBday));
+};
+
+function testDateFmtFormatJSDateRightTimeZone3() {
+    var fmt = new ilib.DateFmt({
+    	type: "date",
+    	length: "full",
+    	date: "w",
+    	timezone: "Australia/Perth"
+    });
+    assertNotNull(fmt);
+    
+    // test formatting a javascript date. It should be converted to 
+    // an ilib date object automatically and then formatted
+    var datMyBday = new Date("Wed May 14 2014 20:37:35 GMT");
+    assertEquals("Thursday", fmt.format(datMyBday));
+};
+
+function testDateFmtFormatJSDateRightTimeZone4() {
+	var d = new Date();
+	// test only works in north america
+	if (d.getTimezoneOffset() > 180) {
+	    var fmt = new ilib.DateFmt({
+	    	type: "date",
+	    	length: "full",
+	    	date: "w",
+	    	timezone: "local"
+	    });
+	    assertNotNull(fmt);
+	    
+	    // test formatting a javascript date. It should be converted to 
+	    // an ilib date object automatically and then formatted
+	    var datMyBday = new Date('2014-05-13T03:17:48.674Z');
+	    assertEquals("Monday", fmt.format(datMyBday));
+	}
+};
+
 function testDateFmtFormatJSDate2() {
     var fmt = new ilib.DateFmt({
     	type: "time",
@@ -687,6 +751,24 @@ function testDateFmtFormatJSDate2() {
     assertEquals("1:37pm", fmt.format(398119055000));
 };
 
+function testDateFmtFormatJSDateRightTimeZone5() {
+	var d = new Date();
+	// test only works in north america
+	if (d.getTimezoneOffset() > 180) {
+	    var fmt = new ilib.DateFmt({
+	    	type: "date",
+	    	length: "full",
+	    	date: "w",
+	    	timezone: "local"
+	    });
+	    assertNotNull(fmt);
+	    
+	    // test formatting a javascript date. It should be converted to 
+	    // an ilib date object automatically and then formatted
+	    assertEquals("Monday", fmt.format(1399951068674));
+	}
+};
+
 function testDateFmtFormatJSDate3() {
     var fmt = new ilib.DateFmt({
     	type: "time",
@@ -698,6 +780,24 @@ function testDateFmtFormatJSDate3() {
     // test formatting a javascript date. It should be converted to 
     // an ilib date object automatically and then formatted
     assertEquals("1:37pm", fmt.format("Fri Aug 13 1982 13:37:35 GMT-0700 (PDT)"));
+};
+
+function testDateFmtFormatJSDateRightTimeZone6() {
+	var d = new Date();
+	// test only works in north america
+	if (d.getTimezoneOffset() > 180) {
+	    var fmt = new ilib.DateFmt({
+	    	type: "date",
+	    	length: "full",
+	    	date: "w",
+	    	timezone: "local"
+	    });
+	    assertNotNull(fmt);
+	    
+	    // test formatting a javascript date. It should be converted to 
+	    // an ilib date object automatically and then formatted
+	    assertEquals("Wednesday", fmt.format("Wed May 14 2014 23:37:35 GMT-0700 (PDT)"));
+	}
 };
 
 function testDateFmtGetMonthsOfYear1() {
