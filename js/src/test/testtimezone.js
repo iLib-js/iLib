@@ -1344,6 +1344,132 @@ function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
     ilib._load = undefined;
 }
 
+function mockLoader2(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push({
+		"o": "-8:0",
+		"f": "{c}",
+		"s": {
+			"c": "PDT",
+			"j": 2456725.91666667,
+			"v": 60
+		},
+		"e": {
+			"c": "PST",
+			"j": 2456963.875
+		}
+	});
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
+function testTZGetTimeZoneWithLoaderAsynch() {
+	var oldloader = ilib._load;
+	ilib.setLoaderCallback(mockLoader2);
+	ilib.TimeZone.cache = {};
+    new ilib.TimeZone({
+    	id: "America/Los_Angeles",
+    	sync: false,
+    	onLoad: function (tz) {
+    		assertNotNull(tz);
+    	    assertObjectEquals("America/Los_Angeles", tz.getId());
+    	    ilib.setLoaderCallback(oldloader);
+    	}
+    });
+    ilib.setLoaderCallback(oldloader);
+}
+
+function testTZGetTimeZoneWithLoaderJulianTransitionBeforeStart() {
+	var oldloader = ilib._load;
+	ilib.setLoaderCallback(mockLoader2);
+	ilib.TimeZone.cache = {};
+    new ilib.TimeZone({
+    	id: "America/Los_Angeles",
+    	sync: false,
+    	onLoad: function (tz) {
+    		assertNotNull(tz);
+    	    assertObjectEquals("America/Los_Angeles", tz.getId());
+    	    ilib.setLoaderCallback(oldloader);
+    	    
+    	    // before start
+    	    var d = new ilib.Date({
+    	    	julianday: 2456725.916666
+    	    });
+    	    assertFalse(tz.inDaylightTime(d));
+    	}
+    });
+    ilib.setLoaderCallback(oldloader);
+}
+
+function testTZGetTimeZoneWithLoaderJulianTransitionAfterStart() {
+	var oldloader = ilib._load;
+	ilib.setLoaderCallback(mockLoader2);
+	ilib.TimeZone.cache = {};
+    new ilib.TimeZone({
+    	id: "America/Los_Angeles",
+    	sync: false,
+    	onLoad: function (tz) {
+    		assertNotNull(tz);
+    	    assertObjectEquals("America/Los_Angeles", tz.getId());
+    	    ilib.setLoaderCallback(oldloader);
+    	    
+    	    // after start
+    	    var d = new ilib.Date({
+    	    	julianday: 2456725.91666669
+    	    });
+    	    assertTrue(tz.inDaylightTime(d));
+    	}
+    });
+    ilib.setLoaderCallback(oldloader);
+}
+
+function testTZGetTimeZoneWithLoaderJulianTransitionBeforeEnd() {
+	var oldloader = ilib._load;
+	ilib.setLoaderCallback(mockLoader2);
+	ilib.TimeZone.cache = {};
+    new ilib.TimeZone({
+    	id: "America/Los_Angeles",
+    	sync: false,
+    	onLoad: function (tz) {
+    		assertNotNull(tz);
+    	    assertObjectEquals("America/Los_Angeles", tz.getId());
+    	    ilib.setLoaderCallback(oldloader);
+    	    
+    	    // before end
+    	    var d = new ilib.Date({
+    	    	julianday: 2456963.8749999
+    	    });
+    	    assertTrue(tz.inDaylightTime(d));
+    	}
+    });
+    ilib.setLoaderCallback(oldloader);
+}
+
+function testTZGetTimeZoneWithLoaderJulianTransitionAfterEnd() {
+	var oldloader = ilib._load;
+	ilib.setLoaderCallback(mockLoader2);
+	ilib.TimeZone.cache = {};
+    new ilib.TimeZone({
+    	id: "America/Los_Angeles",
+    	sync: false,
+    	onLoad: function (tz) {
+    		assertNotNull(tz);
+    	    assertObjectEquals("America/Los_Angeles", tz.getId());
+    	    ilib.setLoaderCallback(oldloader);
+
+    	    // after end
+    	    var d = new ilib.Date({
+    	    	julianday: 2456963.8750001
+    	    });
+    	    assertFalse(tz.inDaylightTime(d));
+    	}
+    });
+    ilib.setLoaderCallback(oldloader);
+}
+
 function testTZGetCountry1() {
     var tz = new ilib.TimeZone({id: "America/Los_Angeles"});
     assertNotNull(tz);

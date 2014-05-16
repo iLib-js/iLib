@@ -188,6 +188,8 @@ ilib.TimeZone = function(options) {
  *     "f": "W{c}T",    // standard abbreviation. For time zones that observe DST, the {c} replacement is replaced with the 
  *                      // letter in the e.c or s.c properties below 
  *     "e": {           // info about the end of DST
+ *         "j": 78322.5 // Julian day when the transition happens. Either specify the "j" property or all of the "m", "r", and 
+ *                      // "t" properties, but not both sets.
  *         "m": 3,      // month that it ends
  *         "r": "l0",   // rule for the day it ends "l" = "last", numbers are Sun=0 through Sat=6. Other syntax is "0>7". 
  *                      // This means the 0-day (Sun) after the 7th of the month. Other possible operators are <, >, <=, >=
@@ -195,6 +197,8 @@ ilib.TimeZone = function(options) {
  *         "c": "S"     // character to replace into the abbreviation for standard time 
  *     },
  *     "s": {           // info about the start of DST
+ *         "j": 78189.5 // Julian day when the transition happens. Either specify the "j" property or all of the "m", "r", and 
+ *                      // "t" properties, but not both sets.
  *         "m": 10,     // month that it starts
  *         "r": "l0",   // rule for the day it starts "l" = "last", numbers are Sun=0 through Sat=6. Other syntax is "0>7".
  *                      // This means the 0-day (Sun) after the 7th of the month. Other possible operators are <, >, <=, >=
@@ -620,7 +624,7 @@ ilib.TimeZone.prototype.getDSTSavingsStr = function () {
  * @return {number} the rd of the start of DST for the year
  */
 ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
-	var type, 
+	var type = "=", 
 		weekday = 0, 
 		day, 
 		refDay, 
@@ -631,53 +635,57 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 		time,
 		i;
 	
-	if (rule.r.charAt(0) == 'l' || rule.r.charAt(0) == 'f') {
-		cal = ilib.Cal.newInstance({type: "gregorian"});
-		type = rule.r.charAt(0);
-		weekday = parseInt(rule.r.substring(1), 10);
-		day = (type === 'l') ? cal.getMonLength(rule.m, year) : 1;
-		//console.log("_calcRuleStart: Calculating the " + 
-		//		(rule.r.charAt(0) == 'f' ? "first " : "last ") + weekday + 
-		//		" of month " + rule.m);
+	if (typeof(rule.j) !== 'undefined') {
+		refDay = new ilib.Date.GregRataDie({
+			julianday: rule.j
+		});
 	} else {
-		type = "=";
-		
-		i = rule.r.indexOf('<');
-		if (i == -1) {
-			i = rule.r.indexOf('>');
-		}
-		
-		if (i != -1) {
-			type = rule.r.charAt(i);
-			weekday = parseInt(rule.r.substring(0, i), 10);
-			day = parseInt(rule.r.substring(i+1), 10); 
-			//console.log("_calcRuleStart: Calculating the " + weekday + 
-			//		type + day + " of month " + rule.m);
+		if (rule.r.charAt(0) == 'l' || rule.r.charAt(0) == 'f') {
+			cal = ilib.Cal.newInstance({type: "gregorian"});
+			type = rule.r.charAt(0);
+			weekday = parseInt(rule.r.substring(1), 10);
+			day = (type === 'l') ? cal.getMonLength(rule.m, year) : 1;
+			//console.log("_calcRuleStart: Calculating the " + 
+			//		(rule.r.charAt(0) == 'f' ? "first " : "last ") + weekday + 
+			//		" of month " + rule.m);
 		} else {
-			day = parseInt(rule.r, 10);
-			//console.log("_calcRuleStart: Calculating the " + day + " of month " + rule.m);
-		}
-	}
-
-	if (rule.t) {
-		time = rule.t.split(":");
-		hour = parseInt(time[0], 10);
-		if (time.length > 1) {
-			minute = parseInt(time[1], 10);
-			if (time.length > 2) {
-				second = parseInt(time[2], 10);
+			i = rule.r.indexOf('<');
+			if (i == -1) {
+				i = rule.r.indexOf('>');
+			}
+			
+			if (i != -1) {
+				type = rule.r.charAt(i);
+				weekday = parseInt(rule.r.substring(0, i), 10);
+				day = parseInt(rule.r.substring(i+1), 10); 
+				//console.log("_calcRuleStart: Calculating the " + weekday + 
+				//		type + day + " of month " + rule.m);
+			} else {
+				day = parseInt(rule.r, 10);
+				//console.log("_calcRuleStart: Calculating the " + day + " of month " + rule.m);
 			}
 		}
+	
+		if (rule.t) {
+			time = rule.t.split(":");
+			hour = parseInt(time[0], 10);
+			if (time.length > 1) {
+				minute = parseInt(time[1], 10);
+				if (time.length > 2) {
+					second = parseInt(time[2], 10);
+				}
+			}
+		}
+		//console.log("calculating rd of " + year + "/" + rule.m + "/" + day);
+		refDay = new ilib.Date.GregRataDie({
+			year: year, 
+			month: rule.m, 
+			day: day, 
+			hour: hour, 
+			minute: minute, 
+			second: second
+		});
 	}
-	//console.log("calculating rd of " + year + "/" + rule.m + "/" + day);
-	refDay = new ilib.Date.GregRataDie({
-		year: year, 
-		month: rule.m, 
-		day: day, 
-		hour: hour, 
-		minute: minute, 
-		second: second
-	});
 	//console.log("refDay is " + JSON.stringify(refDay));
 	var d = refDay.getRataDie();
 	
