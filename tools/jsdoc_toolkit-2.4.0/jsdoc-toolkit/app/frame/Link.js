@@ -44,7 +44,7 @@ function Link() {
 		var thisLink = this;
 
 		if (this.alias) {
-			linkString = this.alias.replace(/(^|[^a-z$0-9_#.:^-])([|a-z$0-9_#.:^-]+)($|[^a-z$0-9_#.:^-])/i,
+			linkString = this.alias.replace(/(^|[^a-z$0-9_#.:^<>-])([|a-z$0-9_#.:^<>-]+)($|[^a-z$0-9_#.:^<>-])/i,
 				function(match, prematch, symbolName, postmatch) {
 					var symbolNames = symbolName.split("|");
 					var links = [];
@@ -115,6 +115,10 @@ Link.getSymbol= function(alias) {
 }
 
 /** Create a link to another symbol. */
+Link.prototype._escapeHTML = function (str) {
+	return str ? str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : "";
+};
+
 Link.prototype._makeSymbolLink = function(alias) {
 	var linkBase = Link.base+publish.conf.symbolsDir;
 	var linkTo = Link.getSymbol(alias);
@@ -123,7 +127,7 @@ Link.prototype._makeSymbolLink = function(alias) {
 
 	// if there is no symbol by that name just return the name unaltered
 	if (!linkTo)
-	    return this.text || alias;
+	    return this._escapeHTML(this.text || alias);
 	
 	// it's a symbol in another file
 	else {
@@ -147,7 +151,7 @@ Link.prototype._makeSymbolLink = function(alias) {
 		JSDOC.PluginManager.run("onSymbolLink", link);
 	}
 	
-	return "<a href=\""+link.linkPath+link.linkInner+"\""+target+">"+link.linkText+"</a>";
+	return "<a href=\""+link.linkPath+link.linkInner+"\""+target+">"+this._escapeHTML(link.linkText)+"</a>";
 }
 
 /** Create a link to a source file. */
@@ -159,7 +163,7 @@ Link.prototype._makeSrcLink = function(srcFilePath) {
 	var outFilePath = Link.base + publish.conf.srcDir + srcFile + publish.conf.ext;
 
 	if (!this.text) this.text = FilePath.fileName(srcFilePath);
-	return "<a href=\""+outFilePath+"\""+target+">"+this.text+"</a>";
+	return "<a href=\""+outFilePath+"\""+target+">"+this._escapeHTML(this.text)+"</a>";
 }
 
 /** Create a link to a source file. */
@@ -169,5 +173,5 @@ Link.prototype._makeFileLink = function(filePath) {
 	var outFilePath =  Link.base + filePath;
 
 	if (!this.text) this.text = filePath;
-	return "<a href=\""+outFilePath+"\""+target+">"+this.text+"</a>";
+	return "<a href=\""+outFilePath+"\""+target+">"+this._escapeHTML(this.text)+"</a>";
 }
