@@ -1,7 +1,7 @@
 /*
  * julian.js - Represent a Julian calendar object.
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,12 +21,12 @@
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
- * @class
  * Construct a new Julian calendar object. This class encodes information about
  * a Julian calendar.<p>
  * 
  * Depends directive: !depends julian.js
  * 
+ * @class
  * @constructor
  * @implements ilib.Cal
  */

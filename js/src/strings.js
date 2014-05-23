@@ -1,7 +1,7 @@
 /*
  * strings.js - ilib string subclass definition
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@
 // !data plurals
 
 /**
- * @class
  * Create a new string instance. This string inherits from the Javascript
  * String class, and adds two more methods, fmt and fmtChoice. It can be
  * used anywhere that a normal Javascript string is used. The formatting
@@ -31,6 +30,7 @@
  * 
  * Depends directive: !depends strings.js
  * 
+ * @class
  * @constructor
  * @param {string|ilib.String=} string initialize this instance with this string 
  */
@@ -48,12 +48,11 @@ ilib.String = function (string) {
 };
 
 /**
- * @private
- * @static
- * 
  * Return true if the given character is a Unicode surrogate character,
  * either high or low.
  * 
+ * @private
+ * @static
  * @param {string} ch character to check
  * @return {boolean} true if the character is a surrogate
  */
@@ -63,7 +62,6 @@ ilib.String._isSurrogate = function (ch) {
 };
 
 /**
- * @static
  * Convert a UCS-4 code point to a Javascript string. The codepoint can be any valid 
  * UCS-4 Unicode character, including supplementary characters. Standard Javascript
  * only supports supplementary characters using the UTF-16 encoding, which has 
@@ -81,6 +79,7 @@ ilib.String._isSurrogate = function (ch) {
  * ilib.String.codePointAt() to access code points in a string, or use 
  * an iterator to walk through the code points in a string. 
  * 
+ * @static
  * @param {number} codepoint UCS-4 code point to convert to a character
  * @return {string} a string containing the character represented by the codepoint
  */
@@ -292,6 +291,7 @@ ilib.String._fncs = {
 	},
 	
 	/**
+	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
 	 * @return {boolean}
@@ -303,7 +303,6 @@ ilib.String._fncs = {
 
 ilib.String.prototype = {
 	/**
-	 * @private
 	 * Return the length of this string in characters. This function defers to the regular
 	 * Javascript string class in order to perform the length function. Please note that this
 	 * method is a real method, whereas the length property of Javascript strings is 
@@ -315,6 +314,7 @@ ilib.String.prototype = {
 	 * var str = new ilib.String("this is a string");
 	 * console.log("String is " + str._length() + " characters long.");
 	 * </pre>
+	 * @private
 	 */
 	_length: function () {
 		return this.str.length;
@@ -801,9 +801,9 @@ ilib.String.prototype = {
 	},
 	
 	/**
-	 * @private
 	 * Convert the character or the surrogate pair at the given
 	 * index into the string to a Unicode UCS-4 code point.
+	 * @protected
 	 * @param {number} index index into the string
 	 * @return {number} code point of the character at the
 	 * given index into the string

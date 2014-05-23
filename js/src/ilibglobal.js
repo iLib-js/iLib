@@ -25,6 +25,7 @@ var ilib = ilib || {};
 /**
  * Return the current version of ilib.
  * 
+ * @static
  * @return {string} a version string for this instance of ilib
  */
 ilib.getVersion = function () {
@@ -60,9 +61,9 @@ if (typeof(exports) !== 'undefined') {
 }
 
 /**
+ * Return the name of the platform
  * @private
  * @static
- * Return the name of the platform
  * @return {string} string naming the platform
  */
 ilib._getPlatform = function () {
@@ -81,9 +82,9 @@ ilib._getPlatform = function () {
 };
 
 /**
+ * Return true if the global variable is defined on this platform.
  * @private
  * @static
- * Return true if the global variable is defined on this platform.
  * @return {boolean} true if the global variable is defined on this platform, false otherwise
  */
 ilib._isGlobal = function(name) {
@@ -103,7 +104,6 @@ ilib._isGlobal = function(name) {
 };
 
 /**
- * @static
  * Sets the default locale for all of ilib. This locale will be used
  * when no explicit locale is passed to any ilib class. If the default
  * locale is not set, ilib will attempt to use the locale of the
@@ -112,6 +112,7 @@ ilib._isGlobal = function(name) {
  * 
  * Depends directive: !depends ilibglobal.js
  * 
+ * @static
  * @param {string} spec the locale specifier for the default locale
  */
 ilib.setLocale = function (spec) {
@@ -123,7 +124,6 @@ ilib.setLocale = function (spec) {
 };
 
 /**
- * @static
  * Return the default locale for all of ilib if one has been set. This 
  * locale will be used when no explicit locale is passed to any ilib 
  * class. If the default
@@ -133,6 +133,7 @@ ilib.setLocale = function (spec) {
  * 
  * Depends directive: !depends ilibglobal.js 
  * 
+ * @static
  * @return {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
@@ -184,7 +185,6 @@ ilib.getLocale = function () {
 };
 
 /**
- * @static
  * Sets the default time zone for all of ilib. This time zone will be used when
  * no explicit time zone is passed to any ilib class. If the default time zone
  * is not set, ilib will attempt to use the time zone of the
@@ -193,6 +193,7 @@ ilib.getLocale = function () {
  * 
  * Depends directive: !depends ilibglobal.js
  * 
+ * @static
  * @param {string} tz the name of the time zone to set as the default time zone
  */
 ilib.setTimeZone = function (tz) {
@@ -200,7 +201,6 @@ ilib.setTimeZone = function (tz) {
 };
 
 /**
- * @static
  * Return the default time zone for all of ilib if one has been set. This 
  * time zone will be used when no explicit time zone is passed to any ilib 
  * class. If the default time zone
@@ -210,6 +210,7 @@ ilib.setTimeZone = function (tz) {
  * 
  * Depends directive: !depends ilibglobal.js
  * 
+ * @static
  * @return {string} the default time zone for ilib
  */
 ilib.getTimeZone = function() {
@@ -243,10 +244,10 @@ ilib.getTimeZone = function() {
 };
 
 /**
- * @interface
  * Defines the interface for the loader class for ilib. The main method of the
  * loader object is loadFiles(), which loads a set of requested locale data files
- * from where-ever it is stored. 
+ * from where-ever it is stored.
+ * @interface
  */
 ilib.Loader = function() {};
 
@@ -387,11 +388,11 @@ ilib.Loader.prototype.listAvailableFiles = function() {};
 ilib.Loader.prototype.isAvailable = function(path) {};
 
 /**
- * @static
  * Set the custom loader used to load ilib's locale data in your environment. 
  * The instance passed in must implement the ilib.Loader interface. See the
  * ilib.Loader class documentation for more information about loaders. 
  * 
+ * @static
  * @param {ilib.Loader} loader class to call to access the requested data.
  * @return {boolean} true if the loader was installed correctly, or false
  * if not

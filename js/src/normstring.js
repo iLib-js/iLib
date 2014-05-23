@@ -1,7 +1,7 @@
 /*
  * normstring.js - ilib normalized string subclass definition
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,13 @@
 // !depends strings.js
 
 /**
- * @class
  * Create a new normalized string instance. This string inherits from 
  * the ilib.String class, and adds the normalize method. It can be
  * used anywhere that a normal Javascript string is used. <p>
  * 
  * Depends directive: !depends normstring.js
  * 
+ * @class
  * @constructor
  * @param {string|ilib.String=} str initialize this instance with this string 
  */
@@ -108,11 +108,10 @@ ilib.NormString.init = function(options) {
 };
 
 /**
- * @private
- * @static
- * 
  * Return true if the given character is a leading Jamo (Choseong) character.
  * 
+ * @private
+ * @static
  * @param {number} n code point to check
  * @return {boolean} true if the character is a leading Jamo character, 
  * false otherwise
@@ -122,11 +121,10 @@ ilib.NormString._isJamoL = function (n) {
 };
 
 /**
- * @private
- * @static
- * 
  * Return true if the given character is a vowel Jamo (Jungseong) character.
  * 
+ * @private
+ * @static
  * @param {number} n code point to check
  * @return {boolean} true if the character is a vowel Jamo character, 
  * false otherwise
@@ -136,11 +134,10 @@ ilib.NormString._isJamoV = function (n) {
 };
 
 /**
- * @private
- * @static
- * 
  * Return true if the given character is a trailing Jamo (Jongseong) character.
  * 
+ * @private
+ * @static
  * @param {number} n code point to check
  * @return {boolean} true if the character is a trailing Jamo character, 
  * false otherwise
@@ -150,11 +147,10 @@ ilib.NormString._isJamoT = function (n) {
 };
 
 /**
- * @private
- * @static
- * 
  * Return true if the given character is a precomposed Hangul character.
  * 
+ * @private
+ * @static
  * @param {number} n code point to check
  * @return {boolean} true if the character is a precomposed Hangul character, 
  * false otherwise
@@ -164,13 +160,12 @@ ilib.NormString._isHangul = function (n) {
 };
 
 /**
- * @private
- * @static
- *
  * Algorithmically decompose a precomposed Korean syllabic Hangul 
  * character into its individual combining Jamo characters. The given 
  * character must be in the range of Hangul characters U+AC00 to U+D7A3.
  * 
+ * @private
+ * @static
  * @param {number} cp code point of a Korean Hangul character to decompose
  * @return {string} the decomposed string of Jamo characters
  */
@@ -186,13 +181,12 @@ ilib.NormString._decomposeHangul = function (cp) {
 };
 
 /**
- * @private
- * @static
- *
  * Algorithmically compose an L and a V combining Jamo characters into
  * a precomposed Korean syllabic Hangul character. Both should already
  * be in the proper ranges for L and V characters. 
  * 
+ * @private
+ * @static
  * @param {number} lead the code point of the lead Jamo character to compose
  * @param {number} trail the code point of the trailing Jamo character to compose
  * @return {string} the composed Hangul character
@@ -204,12 +198,11 @@ ilib.NormString._composeJamoLV = function (lead, trail) {
 };
 
 /**
- * @private
- * @static
- *
  * Algorithmically compose a Hangul LV and a combining Jamo T character 
  * into a precomposed Korean syllabic Hangul character. 
  * 
+ * @private
+ * @static
  * @param {number} lead the code point of the lead Hangul character to compose
  * @param {number} trail the code point of the trailing Jamo T character to compose
  * @return {string} the composed Hangul character
@@ -219,11 +212,11 @@ ilib.NormString._composeJamoLVT = function (lead, trail) {
 };
 
 /**
- * @private
- * @static
- * 
  * Expand one character according to the given canonical and 
  * compatibility mappings.
+ *
+ * @private
+ * @static
  * @param {string} ch character to map
  * @param {Object} canon the canonical mappings to apply
  * @param {Object=} compat the compatibility mappings to apply, or undefined
@@ -253,14 +246,13 @@ ilib.NormString._expand = function (ch, canon, compat) {
 };
 
 /**
- * @private
- * @static
- * 
  * Compose one character out of a leading character and a 
  * trailing character. If the characters are Korean Jamo, they
  * will be composed algorithmically. If they are any other
  * characters, they will be looked up in the nfc tables.
- 
+ * 
+ * @private
+ * @static
  * @param {string} lead leading character to compose
  * @param {string} trail the trailing character to compose
  * @return {string} the fully composed character, or undefined if

@@ -1,7 +1,7 @@
 /*
  * hebrewdate.js - Represent a date in the Hebrew calendar
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,8 +26,6 @@ julianday.js
 */
 
 /**
- * @class
- * 
  * Construct a new Hebrew RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -73,7 +71,10 @@ julianday.js
  * 
  * Depends directive: !depends hebrewdate.js
  * 
+ * @private
+ * @class
  * @constructor
+ * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Hebrew RD date
  */
 ilib.Date.HebrewRataDie = function(params) {
@@ -87,19 +88,19 @@ ilib.Date.HebrewRataDie.prototype.parent = ilib.Date.RataDie;
 ilib.Date.HebrewRataDie.prototype.constructor = ilib.Date.HebrewRataDie;
 
 /**
+ * The difference between a zero Julian day and the first day of the Hebrew 
+ * calendar: sunset on Monday, Tishri 1, 1 = September 7, 3760 BC Gregorian = JD 347997.25
  * @private
  * @const
  * @type number
- * The difference between a zero Julian day and the first day of the Hebrew 
- * calendar: sunset on Monday, Tishri 1, 1 = September 7, 3760 BC Gregorian = JD 347997.25
  */
 ilib.Date.HebrewRataDie.prototype.epoch = 347997.25;
 
 /**
- * @private
  * Calculate the Rata Die (fixed day) number of the given date from the
  * date components.
  * 
+ * @private
  * @param {Object} date the date components to calculate the RD from
  */
 ilib.Date.HebrewRataDie.prototype._setDateComponents = function(date) {
@@ -172,9 +173,9 @@ ilib.Date.HebrewRataDie.prototype._setDateComponents = function(date) {
 };
 	
 /**
- * @private
  * Return the rd number of the particular day of the week on or before the 
  * given rd. eg. The Sunday on or before the given rd.
+ * @private
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the current date
@@ -185,8 +186,6 @@ ilib.Date.HebrewRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 };
 
 /**
- * @class
- * 
  * Construct a new civil Hebrew date object. The constructor can be called
  * with a params object that can contain the following properties:<p>
  * 
@@ -230,6 +229,7 @@ ilib.Date.HebrewRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
  * 
  * Depends directive: !depends hebrewdate.js
  * 
+ * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Hebrew date
@@ -346,10 +346,10 @@ ilib.Date.HebrewDate.prototype.parent = ilib.Date;
 ilib.Date.HebrewDate.prototype.constructor = ilib.Date.HebrewDate;
 
 /**
+ * the cumulative lengths of each month for a non-leap year, without new years corrections
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month for a non-leap year, without new years corrections
  */
 ilib.Date.HebrewDate.cumMonthLengths = [
 	176,  /* Nisan */
@@ -367,11 +367,11 @@ ilib.Date.HebrewDate.cumMonthLengths = [
 ];
 
 /**
+ * the cumulative lengths of each month for a non-leap year, without new years corrections,
+ * that can be used in reverse to map days to months
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month for a non-leap year, without new years corrections,
- * that can be used in reverse to map days to months
  */
 ilib.Date.HebrewDate.cumMonthLengthsReverse = [
 //  [days, monthnumber],                                                
@@ -391,10 +391,10 @@ ilib.Date.HebrewDate.cumMonthLengthsReverse = [
 ];
 
 /**
+ * the cumulative lengths of each month for a leap year, without new years corrections 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month for a leap year, without new years corrections 
  */
 ilib.Date.HebrewDate.cumMonthLengthsLeap = [
 	206,  /* Nisan */
@@ -413,11 +413,12 @@ ilib.Date.HebrewDate.cumMonthLengthsLeap = [
 ];
 
 /**
+ * the cumulative lengths of each month for a leap year, without new years corrections
+ * that can be used in reverse to map days to months 
+ * 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month for a leap year, without new years corrections
- * that can be used in reverse to map days to months 
  */
 ilib.Date.HebrewDate.cumMonthLengthsLeapReverse = [
 //  [days, monthnumber],                                                
@@ -438,18 +439,18 @@ ilib.Date.HebrewDate.cumMonthLengthsLeapReverse = [
 ];
 
 /**
- * @private
- * @const
- * @type number
  * Number of days difference between RD 0 of the Hebrew calendar 
  * (Jan 1, 1 Gregorian = JD 1721057.5) and RD 0 of the Hebrew calendar
  * (September 7, -3760 Gregorian = JD 347997.25)
+ * @private
+ * @const
+ * @type number
  */
 ilib.Date.HebrewDate.GregorianDiff = 1373060.25;
 
 /**
- * @private
  * Return a new RD for this date type using the given params.
+ * @private
  * @param {Object=} params the parameters used to create this rata die instance
  * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
@@ -458,8 +459,8 @@ ilib.Date.HebrewDate.prototype.newRd = function (params) {
 };
 
 /**
- * @private
  * Return the year for the given RD
+ * @protected
  * @param {number} rd RD to calculate from 
  * @returns {number} the year for the RD
  */
@@ -483,8 +484,8 @@ ilib.Date.HebrewDate.prototype._calcYear = function(rd) {
 };
 
 /**
- * @private
  * Calculate date components for the given RD date.
+ * @protected
  */
 ilib.Date.HebrewDate.prototype._calcDateComponents = function () {
 	var remainder,
@@ -603,8 +604,8 @@ ilib.Date.HebrewDate.prototype.getHalaqim = function() {
 };
 
 /**
- * @private
  * Return the rd number of the first Sunday of the given ISO year.
+ * @protected
  * @return the rd of the first Sunday of the ISO year
  */
 ilib.Date.HebrewDate.prototype.firstSunday = function (year) {

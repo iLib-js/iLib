@@ -37,7 +37,7 @@
  * 
  * Depends directive: !depends utils.js
  * 
- * 
+ * @static
  * @param {*} target element being sought 
  * @param {Array} arr the array being searched
  * @param {?function(*,*)=} comparator a comparator that is appropriate for comparing two entries
@@ -73,12 +73,11 @@ ilib.bsearch = function(target, arr, comparator) {
 };
 
 /**
- * @private
  * Returns whether or not the given element is greater than, less than,
  * or equal to the given target.<p>
  * 
- * Depends directive: !depends utils.js
- * 
+ * @private
+ * @static
  * @param {number} element the element being tested
  * @param {number} target the target being sought
  */

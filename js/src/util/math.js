@@ -22,6 +22,7 @@
 /**
  * Return the sign of the given number. If the sign is negative, this function
  * returns -1. If the sign is positive or zero, this function returns 1.
+ * @static
  * @param {number} num the number to test
  * @return {number} -1 if the number is negative, and 1 otherwise
  */
@@ -37,11 +38,12 @@ ilib.signum = function (num) {
 
 
 /**
- * @private
+ * @protected
  */
 ilib._roundFnc = {
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -50,7 +52,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -59,7 +62,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -68,7 +72,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -77,7 +82,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -86,7 +92,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -95,7 +102,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -104,7 +112,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */

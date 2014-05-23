@@ -1,7 +1,7 @@
 /*
  * resources.js - Resource bundle definition
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@
 // !data pseudomap
 
 /**
- * @class
  * Create a new resource bundle instance. The resource bundle loads strings
  * appropriate for a particular locale and provides them via the getString 
  * method.<p>
@@ -204,6 +203,7 @@
  * 
  * Depends directive: !depends resources.js
  * 
+ * @class
  * @constructor
  * @param {?Object} options Options controlling how the bundle is created
  */

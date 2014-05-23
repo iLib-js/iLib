@@ -1,7 +1,7 @@
 /*
  * numfmt.js - Number formatter definition
  *
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,6 @@ util/jsutils.js
 // !data localeinfo currency
 
 /**
- * @class
  * Create a new number formatter instance. Locales differ in the way that digits
  * in a formatted number are grouped, in the way the decimal character is represented,
  * etc. Use this formatter to get it right for any locale.<p>
@@ -120,6 +119,7 @@ util/jsutils.js
  *
  * Depends directive: !depends numfmt.js
  *
+ * @class
  * @constructor
  * @param {Object.<string,*>} options A set of options that govern how the formatter will behave
  */
@@ -235,8 +235,8 @@ ilib.NumFmt = function (options) {
 };
 
 /**
- * @static
  * Return an array of available locales that this formatter can format
+ * @static
  * @return {Array.<ilib.Locale>|undefined} an array of available locales
  */
 ilib.NumFmt.getAvailableLocales = function () {
@@ -342,9 +342,9 @@ ilib.NumFmt.prototype = {
 	},
 
 	/**
-	 * @private
 	 * Format the number using scientific notation as a positive number. Negative
 	 * formatting to be applied later.
+	 * @private
 	 * @param {number} num the number to format
 	 * @return {string} the formatted number
 	 */
@@ -375,8 +375,8 @@ ilib.NumFmt.prototype = {
 	},
 
 	/**
-	 * @private
 	 * Formats the number as a positive number. Negative formatting to be applied later.
+	 * @private
 	 * @param {number} num the number to format
 	 * @return {string} the formatted number
 	 */

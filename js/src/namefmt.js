@@ -1,7 +1,7 @@
 /*
  * namefmt.js - Format person names for display
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,6 @@ ctype.ispunct.js
 // !data name
 
 /**
- * @class
  * Creates a formatter that can format person name instances (ilib.Name) for display to
  * a user. The options may contain the following properties:
  * 
@@ -110,6 +109,7 @@ ctype.ispunct.js
  * 
  * Depends directive: !depends namefmt.js
  * 
+ * @class
  * @constructor
  * @param {Object} options A set of options that govern how the formatter will behave
  */
@@ -223,8 +223,8 @@ ilib.NameFmt.prototype = {
 	},
 
 	/**
-	 * @protected
 	 * adjoin auxillary words to their head words
+	 * @protected
 	 */
 	_adjoinAuxillaries: function (parts, namePrefix) {
 		var start, i, prefixArray, prefix, prefixLower;

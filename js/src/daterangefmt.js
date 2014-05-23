@@ -1,7 +1,7 @@
 /*
  * datefmt.js - Date formatter definition
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,8 +34,6 @@ util/jsutils.js
 // !data dateformats sysres
 
 /**
- * @class
- * 
  * Create a new date range formatter instance. The date range formatter is immutable once
  * it is created, but can format as many different date ranges as needed with the same
  * options. Create different date range formatter instances for different purposes
@@ -112,6 +110,7 @@ util/jsutils.js
  * 
  * Depends directive: !depends daterangefmt.js
  * 
+ * @class
  * @constructor
  * @param {Object} options options governing the way this date range formatter instance works
  */

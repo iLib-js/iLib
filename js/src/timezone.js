@@ -30,7 +30,7 @@ calendar/gregratadie.js
 // !data localeinfo zoneinfo
 
 /**
- * @class Create a time zone instance. 
+ * Create a time zone instance. 
  * 
  * This class reports and transforms
  * information about particular time zones.<p>
@@ -118,6 +118,7 @@ calendar/gregratadie.js
  * 
  * Depends directive: !depends timezone.js
  * 
+ * @class 
  * @constructor
  * @param {Object} options Options guiding the construction of this time zone instance
  */
@@ -407,10 +408,10 @@ ilib.TimeZone.prototype.getDisplayName = function (date, style) {
 };
 
 /**
- * @private
  * Convert the offset string to an object with an h, m, and possibly s property
  * to indicate the hours, minutes, and seconds.
  * 
+ * @private
  * @param {string} str the offset string to convert to an object
  * @return {Object.<{h:number,m:number,s:number}>} an object giving the offset for the zone at 
  * the given date/time, in hours, minutes, and seconds
@@ -496,9 +497,9 @@ ilib.TimeZone.prototype.getOffsetMillis = function (date) {
 };
 
 /**
- * @private
  * Return the offset in milliseconds when the date has an RD number in wall
  * time rather than in UTC time.
+ * @protected
  * @param date the date to check in wall time
  * @returns {number} the number of milliseconds of offset from UTC that the given date is
  */
@@ -617,8 +618,8 @@ ilib.TimeZone.prototype.getDSTSavingsStr = function () {
 };
 
 /**
- * @private
  * return the rd of the start of DST transition for the given year
+ * @protected
  * @param {Object} rule set of rules
  * @param {number} year year to check
  * @return {number} the rd of the start of DST for the year

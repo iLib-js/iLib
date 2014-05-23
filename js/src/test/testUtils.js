@@ -51,9 +51,6 @@ function assertObjectContains(expected, actual, comment) {
 }
 
 /**
- * @constructor
- * @class
- * 
  * Create a new timed test.
  *
  * The options object may contain the following properties:
@@ -75,6 +72,8 @@ function assertObjectContains(expected, actual, comment) {
  * stop the timer at the right time.
  * </ul>
  * 
+ * @constructor
+ * @class
  * @param {Object} options options that configure how this timed test should 
  * work. Returns a timed test object.
  */

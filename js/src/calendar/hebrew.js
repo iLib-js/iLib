@@ -1,7 +1,7 @@
 /*
  * hebrew.js - Represent a Hebrew calendar object.
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
- * @class
  * Construct a new Hebrew calendar object. This class encodes information about
  * the Hebrew (Jewish) calendar. The Hebrew calendar is a tabular hebrew 
  * calendar where the dates are calculated by arithmetic rules. This differs from 
@@ -36,6 +35,7 @@
  * 
  * Depends directive: !depends hebrew.js
  * 
+ * @class
  * @constructor
  * @implements ilib.Cal
  */
@@ -45,9 +45,9 @@ ilib.Cal.Hebrew = function() {
 
 
 /**
- * @private
  * Return the number of days elapsed in the Hebrew calendar before the
  * given year starts.
+ * @private
  * @param {number} year the year for which the number of days is sought
  * @return {number} the number of days elapsed in the Hebrew calendar before the
  * given year starts
@@ -62,7 +62,6 @@ ilib.Cal.Hebrew.elapsedDays = function(year) {
 };
 
 /**
- * @private
  * Return the number of days that the New Year's (Rosh HaShanah) in the Hebrew 
  * calendar will be corrected for the given year. Corrections are caused because New 
  * Year's is not allowed to start on certain days of the week. To deal with 
@@ -70,6 +69,7 @@ ilib.Cal.Hebrew.elapsedDays = function(year) {
  * day to the 8th month (Heshvan) and/or the 9th month (Kislev) in the current
  * year to make them 30 days long instead of 29.
  * 
+ * @private
  * @param {number} year the year for which the correction is sought
  * @param {number} elapsed number of days elapsed up to this year
  * @return {number} the number of days correction in the current year to make sure
@@ -84,8 +84,8 @@ ilib.Cal.Hebrew.newYearsCorrection = function(year, elapsed) {
 };
 
 /**
- * @private
  * Return the rata die date of the new year for the given hebrew year.
+ * @private
  * @param {number} year the year for which the new year is needed
  * @return {number} the rata die date of the new year
  */
@@ -96,7 +96,6 @@ ilib.Cal.Hebrew.newYear = function(year) {
 };
 
 /**
- * @private
  * Return the number of days in the given year. Years contain a variable number of
  * days because the date of Rosh HaShanah (New Year's) changes so that it doesn't
  * fall on particular days of the week. Days are added to the months of Heshvan
@@ -111,10 +110,10 @@ ilib.Cal.Hebrew.daysInYear = function(year) {
 };
 
 /**
- * @private
  * Return true if the given year contains a long month of Heshvan. That is,
  * it is 30 days instead of 29.
  * 
+ * @private
  * @param {number} year the year in which that month is questioned
  * @return {boolean} true if the given year contains a long month of Heshvan
  */
@@ -123,10 +122,10 @@ ilib.Cal.Hebrew.longHeshvan = function(year) {
 };
 
 /**
- * @private
  * Return true if the given year contains a long month of Kislev. That is,
  * it is 30 days instead of 29.
  * 
+ * @private
  * @param {number} year the year in which that month is questioned
  * @return {boolean} true if the given year contains a short month of Kislev
  */
@@ -135,7 +134,6 @@ ilib.Cal.Hebrew.longKislev = function(year) {
 };
 
 /**
- * @private
  * Return the date of the last day of the month for the given year. The date of
  * the last day of the month is variable because a number of months gain an extra 
  * day in leap years, and it is variable which months gain a day for each leap 

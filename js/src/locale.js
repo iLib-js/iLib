@@ -1,7 +1,7 @@
 /*
  * locale.js - Locale specifier definition
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@
 // !depends ilibglobal.js
 
 /**
- * @class
  * Create a new locale instance. Locales are specified either with a specifier string 
  * that follows the BCP-47 convention (roughly: "language-region-script-variant") or 
  * with 4 parameters that specify the language, region, variant, and script individually.<p>
@@ -59,6 +58,7 @@
  * 
  * Depends directive: !depends locale.js
  * 
+ * @class
  * @constructor
  * @param {?string|ilib.Locale=} language the ISO 639 2-letter code for the language, or a full 
  * locale spec in BCP-47 format, or another ilib.Locale instance to copy from
@@ -601,8 +601,8 @@ ilib.Locale.a1toa3langmap = {
 };
 
 /**
- * @private
  * Tell whether or not the str does not start with a lower case ASCII char.
+ * @private
  * @param {string} str the char to check
  * @return {boolean} true if the char is not a lower case ASCII char
  */
@@ -613,8 +613,8 @@ ilib.Locale._notLower = function(str) {
 };
 
 /**
- * @private
  * Tell whether or not the str does not start with an upper case ASCII char.
+ * @private
  * @param {string} str the char to check
  * @return {boolean} true if the char is a not an upper case ASCII char
  */
@@ -625,8 +625,8 @@ ilib.Locale._notUpper = function(str) {
 };
 
 /**
- * @private
  * Tell whether or not the str does not start with a digit char.
+ * @private
  * @param {string} str the char to check
  * @return {boolean} true if the char is a not an upper case ASCII char
  */
@@ -637,10 +637,10 @@ ilib.Locale._notDigit = function(str) {
 };
 
 /**
- * @private
  * Tell whether or not the given string has the correct syntax to be 
  * an ISO 639 language code.
  * 
+ * @private
  * @param {string} str the string to parse
  * @return {boolean} true if the string could syntactically be a language code.
  */
@@ -659,10 +659,10 @@ ilib.Locale._isLanguageCode = function(str) {
 };
 
 /**
- * @private
  * Tell whether or not the given string has the correct syntax to be 
  * an ISO 3166 2-letter region code or M.49 3-digit region code.
  * 
+ * @private
  * @param {string} str the string to parse
  * @return {boolean} true if the string could syntactically be a language code.
  */
@@ -689,10 +689,10 @@ ilib.Locale._isRegionCode = function (str) {
 };
 
 /**
- * @private
  * Tell whether or not the given string has the correct syntax to be 
  * an ISO 639 language code.
  * 
+ * @private
  * @param {string} str the string to parse
  * @return {boolean} true if the string could syntactically be a language code.
  */
@@ -712,10 +712,10 @@ ilib.Locale._isScriptCode = function(str)
 };
 
 /**
- * @static
  * Return the ISO-3166 alpha3 equivalent region code for the given ISO 3166 alpha2
  * region code. If the given alpha2 code is not found, this function returns its
  * argument unchanged.
+ * @static
  * @param {string|undefined} alpha2 the alpha2 code to map
  * @return {string|undefined} the alpha3 equivalent of the given alpha2 code, or the alpha2
  * parameter if the alpha2 value is not found
@@ -725,10 +725,10 @@ ilib.Locale.regionAlpha2ToAlpha3 = function(alpha2) {
 };
 
 /**
- * @static
  * Return the ISO-639 alpha3 equivalent language code for the given ISO 639 alpha1
  * language code. If the given alpha1 code is not found, this function returns its
  * argument unchanged.
+ * @static
  * @param {string|undefined} alpha1 the alpha1 code to map
  * @return {string|undefined} the alpha3 equivalent of the given alpha1 code, or the alpha1
  * parameter if the alpha1 value is not found

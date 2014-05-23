@@ -1,7 +1,7 @@
 /*
  * juliandate.js - Represent a date in the Julian calendar
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,8 +27,6 @@ julianday.js
 */
 
 /**
- * @class
- * 
  * Construct a new Julian RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -71,7 +69,10 @@ julianday.js
  * 
  * Depends directive: !depends juliandate.js
  * 
+ * @private
+ * @class
  * @constructor
+ * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Julian RD date
  */
 ilib.Date.JulianRataDie = function(params) {
@@ -85,19 +86,19 @@ ilib.Date.JulianRataDie.prototype.parent = ilib.Date.RataDie;
 ilib.Date.JulianRataDie.prototype.constructor = ilib.Date.JulianRataDie;
 
 /**
+ * The difference between a zero Julian day and the first Julian date
+ * of Friday, July 16, 622 CE Julian. 
  * @private
  * @const
  * @type number
- * The difference between a zero Julian day and the first Julian date
- * of Friday, July 16, 622 CE Julian. 
  */
 ilib.Date.JulianRataDie.prototype.epoch = 1721422.5;
 
 /**
- * @private
  * Calculate the Rata Die (fixed day) number of the given date from the
  * date components.
  * 
+ * @protected
  * @param {Object} date the date components to calculate the RD from
  */
 ilib.Date.JulianRataDie.prototype._setDateComponents = function(date) {
@@ -124,8 +125,6 @@ ilib.Date.JulianRataDie.prototype._setDateComponents = function(date) {
 };
 
 /**
- * @class
- * 
  * Construct a new date object for the Julian Calendar. The constructor can be called
  * with a parameter object that contains any of the following properties:
  * 
@@ -180,6 +179,7 @@ ilib.Date.JulianRataDie.prototype._setDateComponents = function(date) {
  * 
  * Depends directive: !depends juliandate.js
  * 
+ * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Julian date
@@ -275,10 +275,10 @@ ilib.Date.JulDate.prototype.parent = ilib.Date;
 ilib.Date.JulDate.prototype.constructor = ilib.Date.JulDate;
 
 /**
+ * the cumulative lengths of each month, for a non-leap year 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month, for a non-leap year 
  */
 ilib.Date.JulDate.cumMonthLengths = [
     0,   /* Jan */
@@ -297,10 +297,10 @@ ilib.Date.JulDate.cumMonthLengths = [
 ];
 
 /**
+ * the cumulative lengths of each month, for a leap year 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month, for a leap year 
  */
 ilib.Date.JulDate.cumMonthLengthsLeap = [
 	0,   /* Jan */
@@ -319,15 +319,16 @@ ilib.Date.JulDate.cumMonthLengthsLeap = [
 ];
 
 /**
+ * the difference between a zero Julian day and the first Julian date. 
  * @private
  * @const
  * @type number
- * the difference between a zero Julian day and the first Julian date. */
+ */
 ilib.Date.JulDate.epoch = 1721422.5;
 
 /**
- * @private
  * Return a new RD for this date type using the given params.
+ * @protected
  * @param {Object=} params the parameters used to create this rata die instance
  * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
@@ -336,8 +337,8 @@ ilib.Date.JulDate.prototype.newRd = function (params) {
 };
 
 /**
- * @private
  * Return the year for the given RD
+ * @protected
  * @param {number} rd RD to calculate from 
  * @returns {number} the year for the RD
  */
@@ -348,8 +349,8 @@ ilib.Date.JulDate.prototype._calcYear = function(rd) {
 };
 
 /**
- * @private
  * Calculate date components for the given RD date.
+ * @protected
  */
 ilib.Date.JulDate.prototype._calcDateComponents = function () {
 	var remainder,

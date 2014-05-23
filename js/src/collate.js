@@ -1,7 +1,7 @@
 /*
  * collate.js - Collation routines
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,9 +22,6 @@
 // !data collation
 
 /**
- * @class
- * @constructor
- * 
  * A class that implements a locale-sensitive comparator function 
  * for use with sorting function. The comparator function
  * assumes that the strings it is comparing contain Unicode characters
@@ -245,6 +242,8 @@
  * characters, the Japanese names will sort at the end of the list after all German names,
  * and will sort according to the Unicode values of the characters.
  * 
+ * @class
+ * @constructor
  * @param {Object} options options governing how the resulting comparator 
  * function will operate
  */

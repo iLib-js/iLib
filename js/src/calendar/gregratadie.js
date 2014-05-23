@@ -26,8 +26,6 @@ julianday.js
 */
 
 /**
- * @class
- * 
  * Construct a new Gregorian RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -70,7 +68,10 @@ julianday.js
  * 
  * Depends directive: !depends gregratadie.js
  * 
+ * @protected
+ * @class
  * @constructor
+ * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian RD date
  */
 ilib.Date.GregRataDie = function(params) {
@@ -84,10 +85,10 @@ ilib.Date.GregRataDie.prototype.parent = ilib.Date.RataDie;
 ilib.Date.GregRataDie.prototype.constructor = ilib.Date.GregRataDie;
 
 /**
+ * the cumulative lengths of each month, for a non-leap year 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month, for a non-leap year 
  */
 ilib.Date.GregRataDie.cumMonthLengths = [
     0,   /* Jan */
@@ -106,10 +107,10 @@ ilib.Date.GregRataDie.cumMonthLengths = [
 ];
 
 /**
+ * the cumulative lengths of each month, for a leap year 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month, for a leap year 
  */
 ilib.Date.GregRataDie.cumMonthLengthsLeap = [
 	0,   /* Jan */
@@ -128,9 +129,9 @@ ilib.Date.GregRataDie.cumMonthLengthsLeap = [
 ];
 
 /**
- * @private
  * Calculate the Rata Die (fixed day) number of the given date.
  * 
+ * @private
  * @param {Object} date the date components to calculate the RD from
  */
 ilib.Date.GregRataDie.prototype._setDateComponents = function(date) {
@@ -170,9 +171,9 @@ ilib.Date.GregRataDie.prototype._setDateComponents = function(date) {
 };
 
 /**
- * @private
  * Return the rd number of the particular day of the week on or before the 
  * given rd. eg. The Sunday on or before the given rd.
+ * @private
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the current date

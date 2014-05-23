@@ -1,7 +1,7 @@
 /*
  * currency.js - Currency definition
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@
 // !data currency
 
 /**
- * @class
  * Create a new currency information instance. Instances of this class encode 
  * information about a particular currency.<p>
  * 
@@ -83,6 +82,7 @@
  * 
  * Depends directive: !depends currency.js
  * 
+ * @class
  * @constructor
  * @param options {Object} a set of properties to govern how this instance is constructed.
  * @throws "currency xxx is unknown" when the given currency code is not in the list of 
@@ -128,9 +128,10 @@ ilib.Currency = function (options) {
 };
 
 /**
- * @static
  * Return an array of the ids for all ISO 4217 currencies that
  * this copy of ilib knows about.
+ * 
+ * @static
  * @return {Array.<string>} an array of currency ids that this copy of ilib knows about.
  */
 ilib.Currency.getAvailableCurrencies = function() {

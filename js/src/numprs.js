@@ -1,7 +1,7 @@
 /*
  * numprs.js - Parse a number in any locale
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ ctype.isspace.js
 */
 
 /**
- * @class
  * Parse a string as a number, ignoring all locale-specific formatting.<p>
  * 
  * This class is different from the standard Javascript parseInt() and parseFloat() 
@@ -79,6 +78,7 @@ ctype.isspace.js
  * 
  * Depends directive: !depends numprs.js
  * 
+ * @class
  * @constructor
  * @param {string|number|Number|ilib.Number|undefined} str a string to parse as a number, or a number value
  * @param {Object} options Options controlling how the instance should be created 

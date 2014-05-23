@@ -1,7 +1,7 @@
 /*
  * nameprs.js - Person name parser
  *
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,6 @@ util/jsutils.js
 // other countries with first name restrictions: Norway, China, New Zealand, Japan, Sweden, Germany, Hungary
 
 /**
- * @class
  * A class to parse names of people. Different locales have different conventions when it
  * comes to naming people.<p>
  *
@@ -89,6 +88,7 @@ util/jsutils.js
  *
  * Depends directive: !depends nameprs.js
  *
+ * @class
  * @constructor
  * @dict
  * @param {string|ilib.Name=} name the name to parse
@@ -282,10 +282,10 @@ ilib.Name.defaultInfo = ilib.data.name ||  {
 };
 
 /**
- * @static
- * @protected
  * Return true if the given character is in the range of the Han, Hangul, or kana
  * scripts.
+ * @static
+ * @protected
  */
 ilib.Name._isAsianChar = function(c) {
 	return ilib.CType.isIdeo(c) ||
@@ -325,10 +325,10 @@ ilib.Name._isAsianName = function (name) {
 };
 
 /**
- * @static
- * @protected
  * Return true if any Latin letters are found in the string. Return
  * false if all the characters are non-Latin.
+ * @static
+ * @protected
  */
 ilib.Name._isEuroName = function (name) {
     var c,
@@ -552,8 +552,8 @@ ilib.Name.prototype = {
     },
 
     /**
-     * @protected
      * Find the last instance of 'and' in the name
+     * @protected
      * @param {Array.<string>} parts
      * @return {number}
      */
@@ -610,8 +610,8 @@ ilib.Name.prototype = {
     },
 
     /**
-     * @protected
      * Adjoin auxillary words to their head words.
+     * @protected
      * @param {Array.<string>} parts the current array of name parts
      * @param {boolean} isAsian true if the name is being parsed as an Asian name
      * @return {Array.<string>} the parts after the auxillary words have been plucked onto their head word
@@ -639,8 +639,8 @@ ilib.Name.prototype = {
     },
 
     /**
-     * @protected
      * Recursively join an array or string into a long string.
+     * @protected
      */
     _joinArrayOrString: function _joinArrayOrString(part) {
         var i;

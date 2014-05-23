@@ -1,7 +1,7 @@
 /*
  * thaisolar.js - Represent a Thai solar calendar object.
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,12 +21,12 @@
 /* !depends calendar.js locale.js date.js julianday.js calendar/gregorian.js util/utils.js */
 
 /**
- * @class
  * Construct a new Thai solar calendar object. This class encodes information about
  * a Thai solar calendar.<p>
  * 
  * Depends directive: !depends thaisolar.js
  * 
+ * @class
  * @constructor
  * @implements ilib.Cal
  */

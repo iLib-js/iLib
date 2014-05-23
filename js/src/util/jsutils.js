@@ -1,7 +1,7 @@
 /*
  * util/jsutils.js - Misc utilities to work around Javascript engine differences
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@
  * 
  * Depends directive: !depends utils.js
  * 
+ * @static
  * @param {Object} source the source object to copy properties from
  * @param {Object} target the target object to copy properties into
  */
@@ -41,12 +42,11 @@ ilib.shallowCopy = function (source, target) {
 };
 
 /**
- * @static
- * 
  * Map a string to the given set of alternate characters. If the target set
  * does not contain a particular character in the input string, then that
  * character will be copied to the output unmapped.
  * 
+ * @static
  * @param {string} str a string to map to an alternate set of characters
  * @param {Array.<string>|Object} map a mapping to alternate characters
  * @return {string} the source string where each character is mapped to alternate characters
@@ -65,14 +65,17 @@ ilib.mapString = function (str, map) {
 };
 
 /**
+ * Check if an object is a member of the given array. If this javascript engine
+ * support indexOf, it is used directly. Otherwise, this function implements it
+ * itself. The idea is to make sure that you can use the quick indexOf if it is
+ * available, but use a slower implementation in older engines as well.
+ * 
  * @static
- * 
- * Check if an object is a memory of the given array. This works in older
- * browsers as well.
- * 
  * @param {Array.<Object>} array array to search
- * @param {Object} obj object to search for
- * @return {number} index of the object in the array, or -1 if it is not in the array
+ * @param {Object} obj object being sought. This should be of the same type as the
+ * members of the array being searched. If not, this function will not return
+ * any results.
+ * @return {number} index of the object in the array, or -1 if it is not in the array.
  */
 ilib.indexOf = function(array, obj) {
 	if (!array || !obj) {

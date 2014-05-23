@@ -1,7 +1,7 @@
 /*
  * thaisolardate.js - Represent a date in the ThaiSolar calendar
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,8 +24,6 @@ util/jsutils.js
 */
 
 /**
- * @class
- * 
  * Construct a new Thai solar date object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -83,6 +81,7 @@ util/jsutils.js
  * 
  * Depends directive: !depends thaisolardate.js
  * 
+ * @class
  * @constructor
  * @extends ilib.Date.GregDate
  * @param {Object=} params parameters that govern the settings and behaviour of this Thai solar date
@@ -113,17 +112,17 @@ ilib.Date.ThaiSolarDate.prototype.parent = ilib.Date.GregDate.prototype;
 ilib.Date.ThaiSolarDate.prototype.constructor = ilib.Date.ThaiSolarDate;
 
 /**
+ * the difference between a zero Julian day and the zero Thai Solar date.
+ * This is some 543 years before the start of the Gregorian epoch. 
  * @private
  * @const
  * @type number
- * the difference between a zero Julian day and the zero Thai Solar date.
- * This is some 543 years before the start of the Gregorian epoch. 
  */
 ilib.Date.ThaiSolarDate.epoch = 1523097.5;
 
 /**
- * @private
  * Calculate the date components for the current time zone
+ * @protected
  */
 ilib.Date.ThaiSolarDate.prototype._calcDateComponents = function () {
 	// there is 198327 days difference between the Thai solar and 
@@ -133,9 +132,9 @@ ilib.Date.ThaiSolarDate.prototype._calcDateComponents = function () {
 };
 
 /**
- * @private
  * Return the Rata Die (fixed day) number of this date.
  * 
+ * @protected
  * @return {number} the rd date as a number
  */
 ilib.Date.ThaiSolarDate.prototype.getRataDie = function() {

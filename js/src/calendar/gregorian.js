@@ -1,7 +1,7 @@
 /*
  * gregorian.js - Represent a Gregorian calendar object.
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,12 +21,12 @@
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
- * @class
  * Construct a new Gregorian calendar object. This class encodes information about
  * a Gregorian calendar.<p>
  * 
  * Depends directive: !depends gregorian.js
  * 
+ * @class
  * @constructor
  * @implements ilib.Cal
  */
@@ -35,10 +35,10 @@ ilib.Cal.Gregorian = function() {
 };
 
 /**
+ * the lengths of each month 
  * @private
  * @const
  * @type Array.<number> 
- * the lengths of each month 
  */
 ilib.Cal.Gregorian.monthLengths = [
 	31,  /* Jan */

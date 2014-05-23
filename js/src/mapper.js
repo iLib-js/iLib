@@ -20,7 +20,6 @@
 // !depends strings.js util/utils.js locale.js
 
 /**
- * @class
  * Create a new string mapper instance. <p>
  * 
  * The options may contain any of the following properties:
@@ -63,6 +62,7 @@
  * 
  * Depends directive: !depends mapper.js
  * 
+ * @class
  * @constructor
  * @param {Object=} options options to initialize this string mapper 
  */

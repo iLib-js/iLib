@@ -20,7 +20,6 @@
 // !depends locale.js util/utils.js
 
 /**
- * @class
  * Create a new string mapper instance that maps strings to upper or
  * lower case. This mapping will work for any string as characters 
  * that have no case will be returned unchanged.<p>
@@ -38,6 +37,7 @@
  * 
  * Depends directive: !depends casemapper.js
  * 
+ * @class
  * @constructor
  * @param {Object=} options options to initialize this mapper 
  */

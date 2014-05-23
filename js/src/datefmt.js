@@ -1,7 +1,7 @@
 /*
  * datefmt.js - Date formatter definition
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,8 +34,6 @@ util/jsutils.js
 // !data dateformats sysres
 
 /**
- * @class
- * 
  * Create a new date formatter instance. The date formatter is immutable once
  * it is created, but can format as many different dates as needed with the same
  * options. Create different date formatter instances for different purposes
@@ -269,6 +267,7 @@ util/jsutils.js
  * 
  * Depends directive: !depends datefmt.js
  * 
+ * @class
  * @constructor
  * @param {Object} options options governing the way this date formatter instance works
  */
@@ -636,8 +635,8 @@ ilib.DateFmt.prototype = {
 	},
     
 	/**
-	 * @protected
 	 * Convert the template into an array of date components separated by formatting chars.
+	 * @protected
 	 * @param {string} template Format template to tokenize into components
 	 * @return {Array.<string>} a tokenized array of date format components
 	 */

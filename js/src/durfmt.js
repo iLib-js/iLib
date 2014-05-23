@@ -1,7 +1,7 @@
 /*
  * durfmt.js - Date formatter definition
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,8 +32,6 @@ util/jsutils.js
 // !resbundle sysres
 
 /**
- * @class
- * 
  * Create a new duration formatter instance. The duration formatter is immutable once
  * it is created, but can format as many different durations as needed with the same
  * options. Create different duration formatter instances for different purposes
@@ -94,6 +92,7 @@ util/jsutils.js
  * 
  * Depends directive: !depends durfmt.js
  * 
+ * @class
  * @constructor
  * @param {?Object} options options governing the way this date formatter instance works
  */

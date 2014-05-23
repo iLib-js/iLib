@@ -44,9 +44,9 @@ var load = function(path, context) {
 }.bind(this);
 
 /**
- * @class
  * Create a new test suite instance. 
  * 
+ * @class
  * @constructor
  * @param {string|ilib.String=} string path to a js file that contains a suite of tests 
  */
@@ -188,10 +188,10 @@ TestSuite.prototype = {
 };
 
 /**
- * @class
  * Create a new test runner instance. This class runs the actual tests and
  * collects the results, and summarizes them when it is done. 
  * 
+ * @class
  * @constructor
  * @param {string|ilib.String=} string initialize this instance with this string 
  */

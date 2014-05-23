@@ -1,7 +1,7 @@
 /*
  * islamic.js - Represent a Islamic calendar object.
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
- * @class
  * Construct a new Islamic calendar object. This class encodes information about
  * the civil Islamic calendar. The civil Islamic calendar is a tabular islamic 
  * calendar where the dates are calculated by arithmetic rules. This differs from 
@@ -36,6 +35,7 @@
  * 
  * Depends directive: !depends islamic.js
  * 
+ * @class
  * @constructor
  * @implements ilib.Cal
  */
@@ -44,10 +44,10 @@ ilib.Cal.Islamic = function() {
 };
 
 /**
+ * the lengths of each month 
  * @private
  * @const
  * @type Array.<number>
- * the lengths of each month 
  */
 ilib.Cal.Islamic.monthLengths = [
 	30,  /* Muharram */

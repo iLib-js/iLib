@@ -1,7 +1,7 @@
 /*
  * gregoriandate.js - Represent a date in the Gregorian calendar
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,8 +29,6 @@ timezone.js
 */
 
 /**
- * @class
- * 
  * Construct a new Gregorian date object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -104,6 +102,7 @@ timezone.js
  * 
  * Depends directive: !depends gregoriandate.js
  * 
+ * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian date
@@ -172,8 +171,8 @@ ilib.Date.GregDate.prototype.parent = ilib.Date;
 ilib.Date.GregDate.prototype.constructor = ilib.Date.GregDate;
 
 /**
- * @private
  * Return a new RD for this date type using the given params.
+ * @private
  * @param {Object=} params the parameters used to create this rata die instance
  * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
@@ -182,8 +181,8 @@ ilib.Date.GregDate.prototype.newRd = function (params) {
 };
 
 /**
- * @private
  * Calculates the Gregorian year for a given rd number.
+ * @private
  */
 ilib.Date.GregDate.prototype._calcYear = function(rd) {
 	var days400,
@@ -211,8 +210,8 @@ ilib.Date.GregDate.prototype._calcYear = function(rd) {
 };
 
 /**
- * @private
  * Calculate the date components for the current time zone
+ * @private
  */
 ilib.Date.GregDate.prototype._calcDateComponents = function () {
 	if (this.timezone === "local" && this.rd.getRataDie() >= 719163 && this.rd.getRataDie() <= 744018.134803241) {

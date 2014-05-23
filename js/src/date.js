@@ -1,7 +1,7 @@
 /*
  * date.js - Represent a date in any calendar. This class is subclassed for each calendar.
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,14 +20,17 @@
 /* !depends ilibglobal.js localeinfo.js */
 
 /**
- * @class
  * Construct a new date object. Each parameter is a numeric value, but its 
  * accepted range can vary depending on the subclass of this date. For example,
  * Gregorian months can be from 1 to 12, whereas months in the Hebrew calendar
  * can be from 1 to 13.<p>
  * 
+ * Note that this really calls the newInstance factory method underneath in 
+ * order to instantiate the correct subclass of ilib.Date.
+ * 
  * Depends directive: !depends date.js
  * 
+ * @class
  * @constructor
  * @param {Object=} options The date components to initialize this date with
  */
@@ -42,17 +45,44 @@ ilib.Date = function(options) {
  * properties:
  * 
  * <ul>
- * <li><i>type</i> - specify the type of the date desired. The
+ * <li><i>type</i> - specify the type/calendar of the date desired. The
  * list of valid values changes depending on which calendars are 
  * defined. When assembling your iliball.js, include those date type 
  * you wish to use in your program or web page, and they will register 
  * themselves with this factory method. The "gregorian",
  * and "julian" calendars are all included by default, as they are the
- * standard calendars for much of the world.
+ * standard calendars for much of the world. If not specified, the type
+ * of the date returned is the one that is appropriate for the locale.
  * </ul>
  * 
  * The options object is also passed down to the date constructor, and 
- * thus can contain the same properties as the date object being instantiated.
+ * thus can contain the the properties as the date object being instantiated.
+ * See the documentation for {@link ilib.Date.GregDate}, and other
+ * subclasses for more details on other parameter that may be passed in.<p>
+ * 
+ * Please note that if you do not give the type parameter, this factory
+ * method will create a date object that is appropriate for the calendar
+ * that is most commonly used in the specified or current ilib locale. 
+ * For example, in Thailand, the most common calendar is the Thai solar 
+ * calendar. If the current locale is "th-TH" (Thai for Thailand) and you 
+ * use this factory method to construct a new date without specifying the
+ * type, it will automatically give you back an instance of 
+ * {@link ilib.Date.ThaiSolarDate}. This is convenient because you do not 
+ * need to know which locales use which types of dates. In fact, you 
+ * should always use this factory method to make new date instances unless
+ * you know that you specifically need a date in a particular calendar.<p>
+ * 
+ * Also note that when you pass in the date components such as year, month,
+ * day, etc., these components should be appropriate for the given date
+ * being instantiated. That is, in our Thai example in the previous
+ * paragraph, the year and such should be given as a Thai solar year, not
+ * the Gregorian year that you get from the Javascript Date class. In
+ * order to initialize a date instance when you don't know what subclass
+ * will be instantiated for the locale, use a parameter such as "unixtime" 
+ * or "julianday" which are unambiguous and based on UTC time, instead of
+ * the year/month/date date components. The date components for that UTC 
+ * time will be calculated and the time zone offset will be automatically 
+ * factored in.
  *  
  * @param {Object=} options options controlling the construction of this instance, or
  * undefined to use the default options
@@ -80,9 +110,6 @@ ilib.Date.newInstance = function(options) {
 };
 
 /**
- * @static
- * @private
- * 
  * Convert JavaScript Date objects and other types into native ilib Dates. This accepts any
  * string or number that can be translated by the JavaScript Date class,
  * (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
@@ -91,6 +118,8 @@ ilib.Date.newInstance = function(options) {
  * return null or undefined if input is null or undefined). Normal output is 
  * a standard native subclass of the ilib Date object as appropriate for the locale.
  * 
+ * @static
+ * @private
  * @param  {ilib.Date|Object|ilib.JulianDay|Date|string|number=} inDate The input date object, string or Number.
  * @param  {ilib.String|string=} timezone timezone to use if a new date object is created
  * @return {ilib.Date|null|undefined} an ilib.Date subclass equivalent to the given inDate
@@ -298,9 +327,9 @@ ilib.Date.prototype = {
 	},
 	
 	/**
-	 * @private
 	 * Return the Rata Die (fixed day) number of this date.
 	 * 
+	 * @protected
 	 * @return {number} the rd date as a number
 	 */
 	getRataDie: function() {
@@ -308,8 +337,8 @@ ilib.Date.prototype = {
 	},
 	
 	/**
-	 * @private
 	 * Set the date components of this instance based on the given rd.
+	 * @protected
 	 * @param {number} rd the rata die date to set
 	 */
 	setRd: function (rd) {
@@ -371,8 +400,8 @@ ilib.Date.prototype = {
 	},
 	
 	/**
-	 * @private
 	 * Return the rd number of the first Sunday of the given ISO year.
+	 * @protected
 	 * @param {number} year the year for which the first Sunday is being sought
 	 * @return {number} the rd of the first Sunday of the ISO year
 	 */

@@ -23,8 +23,6 @@ julianday.js
 */
 
 /**
- * @class
- * 
  * Construct a new RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -73,6 +71,8 @@ julianday.js
  * 
  * Depends directive: !depends ratadie.js
  * 
+ * @protected
+ * @class
  * @constructor
  * @param {Object=} params parameters that govern the settings and behaviour of this RD date
  */
@@ -109,7 +109,7 @@ ilib.Date.RataDie = function(params) {
 
 ilib.Date.RataDie.prototype = {
 	/**
-	 * @private
+	 * @protected
 	 * @const
 	 * @type number
 	 * the difference between a zero Julian day and the zero Gregorian date. 
@@ -117,10 +117,10 @@ ilib.Date.RataDie.prototype = {
 	epoch: 1721424.5,
 	
 	/**
-	 * @private
 	 * Set the RD of this instance according to the given unix time. Unix time is
 	 * the number of milliseconds since midnight on Jan 1, 1970.
-	 * 
+	 *
+	 * @protected
 	 * @param {number} millis the unix time to set this date to in milliseconds 
 	 */
 	_setTime: function(millis) {
@@ -129,8 +129,8 @@ ilib.Date.RataDie.prototype = {
 	},
 
 	/**
-	 * @private
 	 * Set the date of this instance using a Julian Day.
+	 * @protected
 	 * @param {number} date the Julian Day to use to set this date
 	 */
 	_setJulianDay: function (date) {
@@ -139,9 +139,9 @@ ilib.Date.RataDie.prototype = {
 	},
 
 	/**
-	 * @private
 	 * Return the rd number of the particular day of the week on or before the 
 	 * given rd. eg. The Sunday on or before the given rd.
+	 * @protected
 	 * @param {number} rd the rata die date of the reference date
 	 * @param {number} dayOfWeek the day of the week that is being sought relative 
 	 * to the current date

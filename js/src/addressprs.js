@@ -1,7 +1,7 @@
 /**
  * addressprs.js - Represent a mailing address
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,9 +30,6 @@ ctype.isdigit.js
 // !data address countries nativecountries ctrynames
 
 /**
- * @constructor
- * @class
- * 
  * Create a new Address instance and parse a physical address.<p>
  * 
  * This function parses a physical address written in a free-form string. 
@@ -93,6 +90,8 @@ ctype.isdigit.js
  * 
  * Depends directive: !depends addressprs.js
  * 
+ * @constructor
+ * @class
  * @dict
  * @param {string|ilib.Address} freeformAddress free-form address to parse, or a
  * javascript object containing the fields

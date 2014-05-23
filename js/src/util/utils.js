@@ -1,7 +1,7 @@
 /*
  * util/utils.js - Core utility routines
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -397,6 +397,9 @@ ilib.isEmpty = function (obj) {
 };
 
 
+/**
+ * @private
+ */
 ilib.hashCode = function(obj) {
 	var hash = 0;
 	
@@ -452,8 +455,8 @@ ilib.hashCode = function(obj) {
 
 
 /**
- * @private
  * Load data using the new loader object or via the old function callback.
+ * @private
  */
 ilib._callLoadData = function (files, sync, params, callback) {
 	// console.log("ilib._callLoadData called");

@@ -1,7 +1,7 @@
 /*
  * islamicdate.js - Represent a date in the Islamic calendar
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,8 +28,6 @@ julianday.js
 */
 
 /**
- * @class
- * 
  * Construct a new Islamic RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -72,7 +70,10 @@ julianday.js
  * 
  * Depends directive: !depends islamicdate.js
  * 
+ * @private
+ * @class
  * @constructor
+ * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Islamic RD date
  */
 ilib.Date.IslamicRataDie = function(params) {
@@ -86,19 +87,19 @@ ilib.Date.IslamicRataDie.prototype.parent = ilib.Date.RataDie;
 ilib.Date.IslamicRataDie.prototype.constructor = ilib.Date.IslamicRataDie;
 
 /**
+ * The difference between a zero Julian day and the first Islamic date
+ * of Friday, July 16, 622 CE Julian. 
  * @private
  * @const
  * @type number
- * The difference between a zero Julian day and the first Islamic date
- * of Friday, July 16, 622 CE Julian. 
  */
 ilib.Date.IslamicRataDie.prototype.epoch = 1948439.5;
 
 /**
- * @private
  * Calculate the Rata Die (fixed day) number of the given date from the
  * date components.
- * 
+ *
+ * @protected
  * @param {Object} date the date components to calculate the RD from
  */
 ilib.Date.IslamicRataDie.prototype._setDateComponents = function(date) {
@@ -121,8 +122,6 @@ ilib.Date.IslamicRataDie.prototype._setDateComponents = function(date) {
 };
 	
 /**
- * @class
- * 
  * Construct a new civil Islamic date object. The constructor can be called
  * with a params object that can contain the following properties:<p>
  * 
@@ -164,6 +163,7 @@ ilib.Date.IslamicRataDie.prototype._setDateComponents = function(date) {
  * 
  * Depends directive: !depends islamicdate.js
  * 
+ * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Islamic date
@@ -265,10 +265,10 @@ ilib.Date.IslamicDate.prototype.parent = ilib.Date;
 ilib.Date.IslamicDate.prototype.constructor = ilib.Date.IslamicDate;
 
 /**
+ * the cumulative lengths of each month, for a non-leap year 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month, for a non-leap year 
  */
 ilib.Date.IslamicDate.cumMonthLengths = [
 	0,  /* Muharram */
@@ -287,26 +287,26 @@ ilib.Date.IslamicDate.cumMonthLengths = [
 ];
 
 /**
+ * Number of days difference between RD 0 of the Gregorian calendar and
+ * RD 0 of the Islamic calendar. 
  * @private
  * @const
  * @type number
- * Number of days difference between RD 0 of the Gregorian calendar and
- * RD 0 of the Islamic calendar. 
  */
 ilib.Date.IslamicDate.GregorianDiff = 227015;
 
 /**
+ * The difference between a zero Julian day and the first Islamic date
+ * of Friday, July 16, 622 CE Julian. 
  * @private
  * @const
  * @type number
- * The difference between a zero Julian day and the first Islamic date
- * of Friday, July 16, 622 CE Julian. 
  */
 ilib.Date.IslamicDate.epoch = 1948439.5;
 
 /**
- * @private
  * Return a new RD for this date type using the given params.
+ * @protected
  * @param {Object=} params the parameters used to create this rata die instance
  * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
@@ -315,8 +315,8 @@ ilib.Date.IslamicDate.prototype.newRd = function (params) {
 };
 
 /**
- * @private
  * Return the year for the given RD
+ * @protected
  * @param {number} rd RD to calculate from 
  * @returns {number} the year for the RD
  */
@@ -325,8 +325,8 @@ ilib.Date.IslamicDate.prototype._calcYear = function(rd) {
 };
 
 /**
- * @private
  * Calculate date components for the given RD date.
+ * @protected
  */
 ilib.Date.IslamicDate.prototype._calcDateComponents = function () {
 	var remainder,

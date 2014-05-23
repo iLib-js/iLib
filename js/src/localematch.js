@@ -1,7 +1,7 @@
 /*
  * localematch.js - Locale matcher definition
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@
 // !data likelylocales
 
 /**
- * @class
  * Create a new locale matcher instance. This is used
  * to see which locales can be matched with each other in
  * various ways.<p>
@@ -52,6 +51,7 @@
  * 
  * Depends directive: !depends localematch.js
  * 
+ * @class
  * @constructor
  * @param {Object} options parameters to initialize this matcher 
  */

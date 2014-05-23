@@ -1,7 +1,7 @@
 /*
  * scriptinfo.js - information about scripts
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@
 // !data scripts
 
 /**
- * @class
  * Create a new script info instance. This class encodes information about
  * scripts, which are sets of characters used in a writing system.<p>
  * 
@@ -50,6 +49,7 @@
  * 
  * Depends directive: !depends scriptinfo.js
  * 
+ * @class
  * @constructor
  * @param {string} script The ISO 15924 4-letter identifier for the script
  * @param {Object} options parameters to initialize this matcher 
@@ -101,9 +101,9 @@ ilib.ScriptInfo = function(script, options) {
 };
 
 /**
- * @static
  * Return an array of all ISO 15924 4-letter identifier script identifiers that
  * this copy of ilib knows about.
+ * @static
  * @return {Array.<string>} an array of all script identifiers that this copy of
  * ilib knows about
  */

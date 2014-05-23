@@ -1,7 +1,7 @@
 /*
  * julianday.js - A Julian date object.
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@
 /* !depends locale.js */
 
 /**
- * @class
  * A Julian Day class. A Julian Day is a date based on the Julian Day count
  * of time invented by Joseph Scaliger in 1583 for use with astronomical calculations. 
  * Do not confuse it with a date in the Julian calendar, which it has very
@@ -28,6 +27,7 @@
  * 
  * Depends directive: !depends julianday.js
  * 
+ * @class
  * @constructor
  * @param {number} num the Julian Day expressed as a floating point number 
  */

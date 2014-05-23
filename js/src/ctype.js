@@ -1,7 +1,7 @@
 /*
  * ctype.js - Character type definitions
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,15 +22,14 @@
 // !data ctype
 
 /**
- * @namespace
  * Provides a set of static routines that return information about characters.
  * These routines emulate the C-library ctype functions. The characters must be 
  * encoded in utf-16, as no other charsets are currently supported. Only the first
  * character of the given string is tested.
+ * @namespace
  */
 ilib.CType = {
 	/**
-	 * @protected
 	 * Actual implementation for withinRange. Searches the given object for ranges.
 	 * The range names are taken from the Unicode range names in 
 	 * http://www.unicode.org/Public/UNIDATA/extracted/DerivedGeneralCategory.txt
@@ -68,6 +67,7 @@ ilib.CType = {
 	 * <li>Pf - Final_Punctuation
 	 * </ul>
 	 * 
+	 * @protected
 	 * @param {string} ch character to examine
 	 * @param {string} rangeName the name of the range to check
 	 * @param {Object} obj object containing the character range data
