@@ -189,6 +189,7 @@ function suite() {
 		"testdatefmt_zh_Hant_TW.js",
 		"testdate.js",
 		"testdurfmt.js",
+		"testdurfmt_ar_SA.js",
 		"testglobal.js",
 		"testjulianday.js",
 		"testlocaleinfo.js",
