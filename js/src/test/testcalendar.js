@@ -68,7 +68,8 @@ function testGetCalendars() {
         "gregorian",
         "islamic",
         "hebrew",
-        "thaisolar"
+        "thaisolar",
+        "persian"
     ];
     
     assertArrayEqualsIgnoringOrder(expected, ilib.Cal.getCalendars());

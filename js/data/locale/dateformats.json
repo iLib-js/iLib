@@ -151,5 +151,7 @@
 	"islamic": "gregorian",
 	"hebrew": "gregorian",
 	"julian": "gregorian",
-	"thaisolar": "gregorian"
+	"thaisolar": "gregorian",
+	"persian": "gregorian",
+	"persian-astro": "gregorian"
 }

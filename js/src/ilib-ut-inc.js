@@ -34,6 +34,8 @@ calendar/gregorian.js
 calendar/gregoriandate.js
 calendar/thaisolar.js
 calendar/thaisolardate.js
+calendar/persian.js
+calendar/persiandate.js
 numprs.js
 numfmt.js
 julianday.js
