@@ -25,6 +25,7 @@ var ilib = ilib || {};
 /**
  * Return the current version of ilib.
  * 
+ * @static
  * @return {string} a version string for this instance of ilib
  */
 ilib.getVersion = function () {
@@ -60,9 +61,9 @@ if (typeof(exports) !== 'undefined') {
 }
 
 /**
+ * Return the name of the platform
  * @private
  * @static
- * Return the name of the platform
  * @return {string} string naming the platform
  */
 ilib._getPlatform = function () {
@@ -81,9 +82,9 @@ ilib._getPlatform = function () {
 };
 
 /**
+ * Return true if the global variable is defined on this platform.
  * @private
  * @static
- * Return true if the global variable is defined on this platform.
  * @return {boolean} true if the global variable is defined on this platform, false otherwise
  */
 ilib._isGlobal = function(name) {
@@ -103,7 +104,6 @@ ilib._isGlobal = function(name) {
 };
 
 /**
- * @static
  * Sets the default locale for all of ilib. This locale will be used
  * when no explicit locale is passed to any ilib class. If the default
  * locale is not set, ilib will attempt to use the locale of the
@@ -112,6 +112,7 @@ ilib._isGlobal = function(name) {
  * 
  * Depends directive: !depends ilibglobal.js
  * 
+ * @static
  * @param {string} spec the locale specifier for the default locale
  */
 ilib.setLocale = function (spec) {
@@ -123,7 +124,6 @@ ilib.setLocale = function (spec) {
 };
 
 /**
- * @static
  * Return the default locale for all of ilib if one has been set. This 
  * locale will be used when no explicit locale is passed to any ilib 
  * class. If the default
@@ -133,6 +133,7 @@ ilib.setLocale = function (spec) {
  * 
  * Depends directive: !depends ilibglobal.js 
  * 
+ * @static
  * @return {string} the locale specifier for the default locale
  */
 ilib.getLocale = function () {
@@ -184,7 +185,6 @@ ilib.getLocale = function () {
 };
 
 /**
- * @static
  * Sets the default time zone for all of ilib. This time zone will be used when
  * no explicit time zone is passed to any ilib class. If the default time zone
  * is not set, ilib will attempt to use the time zone of the
@@ -193,6 +193,7 @@ ilib.getLocale = function () {
  * 
  * Depends directive: !depends ilibglobal.js
  * 
+ * @static
  * @param {string} tz the name of the time zone to set as the default time zone
  */
 ilib.setTimeZone = function (tz) {
@@ -200,7 +201,6 @@ ilib.setTimeZone = function (tz) {
 };
 
 /**
- * @static
  * Return the default time zone for all of ilib if one has been set. This 
  * time zone will be used when no explicit time zone is passed to any ilib 
  * class. If the default time zone
@@ -210,6 +210,7 @@ ilib.setTimeZone = function (tz) {
  * 
  * Depends directive: !depends ilibglobal.js
  * 
+ * @static
  * @return {string} the default time zone for ilib
  */
 ilib.getTimeZone = function() {
@@ -243,10 +244,10 @@ ilib.getTimeZone = function() {
 };
 
 /**
- * @interface
  * Defines the interface for the loader class for ilib. The main method of the
  * loader object is loadFiles(), which loads a set of requested locale data files
- * from where-ever it is stored. 
+ * from where-ever it is stored.
+ * @interface
  */
 ilib.Loader = function() {};
 
@@ -387,11 +388,11 @@ ilib.Loader.prototype.listAvailableFiles = function() {};
 ilib.Loader.prototype.isAvailable = function(path) {};
 
 /**
- * @static
  * Set the custom loader used to load ilib's locale data in your environment. 
  * The instance passed in must implement the ilib.Loader interface. See the
  * ilib.Loader class documentation for more information about loaders. 
  * 
+ * @static
  * @param {ilib.Loader} loader class to call to access the requested data.
  * @return {boolean} true if the loader was installed correctly, or false
  * if not
@@ -410,7 +411,7 @@ ilib.setLoaderCallback = function(loader) {
 /*
  * locale.js - Locale specifier definition
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -429,7 +430,6 @@ ilib.setLoaderCallback = function(loader) {
 // !depends ilibglobal.js
 
 /**
- * @class
  * Create a new locale instance. Locales are specified either with a specifier string 
  * that follows the BCP-47 convention (roughly: "language-region-script-variant") or 
  * with 4 parameters that specify the language, region, variant, and script individually.<p>
@@ -468,6 +468,7 @@ ilib.setLoaderCallback = function(loader) {
  * 
  * Depends directive: !depends locale.js
  * 
+ * @class
  * @constructor
  * @param {?string|ilib.Locale=} language the ISO 639 2-letter code for the language, or a full 
  * locale spec in BCP-47 format, or another ilib.Locale instance to copy from
@@ -1010,8 +1011,8 @@ ilib.Locale.a1toa3langmap = {
 };
 
 /**
- * @private
  * Tell whether or not the str does not start with a lower case ASCII char.
+ * @private
  * @param {string} str the char to check
  * @return {boolean} true if the char is not a lower case ASCII char
  */
@@ -1022,8 +1023,8 @@ ilib.Locale._notLower = function(str) {
 };
 
 /**
- * @private
  * Tell whether or not the str does not start with an upper case ASCII char.
+ * @private
  * @param {string} str the char to check
  * @return {boolean} true if the char is a not an upper case ASCII char
  */
@@ -1034,8 +1035,8 @@ ilib.Locale._notUpper = function(str) {
 };
 
 /**
- * @private
  * Tell whether or not the str does not start with a digit char.
+ * @private
  * @param {string} str the char to check
  * @return {boolean} true if the char is a not an upper case ASCII char
  */
@@ -1046,10 +1047,10 @@ ilib.Locale._notDigit = function(str) {
 };
 
 /**
- * @private
  * Tell whether or not the given string has the correct syntax to be 
  * an ISO 639 language code.
  * 
+ * @private
  * @param {string} str the string to parse
  * @return {boolean} true if the string could syntactically be a language code.
  */
@@ -1068,10 +1069,10 @@ ilib.Locale._isLanguageCode = function(str) {
 };
 
 /**
- * @private
  * Tell whether or not the given string has the correct syntax to be 
  * an ISO 3166 2-letter region code or M.49 3-digit region code.
  * 
+ * @private
  * @param {string} str the string to parse
  * @return {boolean} true if the string could syntactically be a language code.
  */
@@ -1098,10 +1099,10 @@ ilib.Locale._isRegionCode = function (str) {
 };
 
 /**
- * @private
  * Tell whether or not the given string has the correct syntax to be 
  * an ISO 639 language code.
  * 
+ * @private
  * @param {string} str the string to parse
  * @return {boolean} true if the string could syntactically be a language code.
  */
@@ -1121,10 +1122,10 @@ ilib.Locale._isScriptCode = function(str)
 };
 
 /**
- * @static
  * Return the ISO-3166 alpha3 equivalent region code for the given ISO 3166 alpha2
  * region code. If the given alpha2 code is not found, this function returns its
  * argument unchanged.
+ * @static
  * @param {string|undefined} alpha2 the alpha2 code to map
  * @return {string|undefined} the alpha3 equivalent of the given alpha2 code, or the alpha2
  * parameter if the alpha2 value is not found
@@ -1134,10 +1135,10 @@ ilib.Locale.regionAlpha2ToAlpha3 = function(alpha2) {
 };
 
 /**
- * @static
  * Return the ISO-639 alpha3 equivalent language code for the given ISO 639 alpha1
  * language code. If the given alpha1 code is not found, this function returns its
  * argument unchanged.
+ * @static
  * @param {string|undefined} alpha1 the alpha1 code to map
  * @return {string|undefined} the alpha3 equivalent of the given alpha1 code, or the alpha1
  * parameter if the alpha1 value is not found
@@ -1537,7 +1538,7 @@ ilib.data.localeinfo_XX = {"region.name":"Unknown","locale":"XX"};
 /*
  * localeinfo.js - Encode locale-specific defaults
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1558,7 +1559,6 @@ ilib.data.localeinfo_XX = {"region.name":"Unknown","locale":"XX"};
 // !data localeinfo
 
 /**
- * @class
  * Create a new locale info instance. Locale info instances give information about
  * the default settings for a particular locale. These settings may be overridden
  * by various parts of the code, and should be used as a fall-back setting of last
@@ -1595,6 +1595,7 @@ ilib.data.localeinfo_XX = {"region.name":"Unknown","locale":"XX"};
  * 
  * Depends directive: !depends localeinfo.js
  * 
+ * @class
  * @constructor
  * @see {ilib.setLoaderCallback} for information about registering a loader callback
  * function
@@ -2062,7 +2063,7 @@ ilib.LocaleInfo.prototype = {
 /*
  * date.js - Represent a date in any calendar. This class is subclassed for each calendar.
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2081,14 +2082,17 @@ ilib.LocaleInfo.prototype = {
 /* !depends ilibglobal.js localeinfo.js */
 
 /**
- * @class
  * Construct a new date object. Each parameter is a numeric value, but its 
  * accepted range can vary depending on the subclass of this date. For example,
  * Gregorian months can be from 1 to 12, whereas months in the Hebrew calendar
  * can be from 1 to 13.<p>
  * 
+ * Note that this really calls the newInstance factory method underneath in 
+ * order to instantiate the correct subclass of ilib.Date.
+ * 
  * Depends directive: !depends date.js
  * 
+ * @class
  * @constructor
  * @param {Object=} options The date components to initialize this date with
  */
@@ -2103,17 +2107,44 @@ ilib.Date = function(options) {
  * properties:
  * 
  * <ul>
- * <li><i>type</i> - specify the type of the date desired. The
+ * <li><i>type</i> - specify the type/calendar of the date desired. The
  * list of valid values changes depending on which calendars are 
  * defined. When assembling your iliball.js, include those date type 
  * you wish to use in your program or web page, and they will register 
  * themselves with this factory method. The "gregorian",
  * and "julian" calendars are all included by default, as they are the
- * standard calendars for much of the world.
+ * standard calendars for much of the world. If not specified, the type
+ * of the date returned is the one that is appropriate for the locale.
  * </ul>
  * 
  * The options object is also passed down to the date constructor, and 
- * thus can contain the same properties as the date object being instantiated.
+ * thus can contain the the properties as the date object being instantiated.
+ * See the documentation for {@link ilib.Date.GregDate}, and other
+ * subclasses for more details on other parameter that may be passed in.<p>
+ * 
+ * Please note that if you do not give the type parameter, this factory
+ * method will create a date object that is appropriate for the calendar
+ * that is most commonly used in the specified or current ilib locale. 
+ * For example, in Thailand, the most common calendar is the Thai solar 
+ * calendar. If the current locale is "th-TH" (Thai for Thailand) and you 
+ * use this factory method to construct a new date without specifying the
+ * type, it will automatically give you back an instance of 
+ * {@link ilib.Date.ThaiSolarDate}. This is convenient because you do not 
+ * need to know which locales use which types of dates. In fact, you 
+ * should always use this factory method to make new date instances unless
+ * you know that you specifically need a date in a particular calendar.<p>
+ * 
+ * Also note that when you pass in the date components such as year, month,
+ * day, etc., these components should be appropriate for the given date
+ * being instantiated. That is, in our Thai example in the previous
+ * paragraph, the year and such should be given as a Thai solar year, not
+ * the Gregorian year that you get from the Javascript Date class. In
+ * order to initialize a date instance when you don't know what subclass
+ * will be instantiated for the locale, use a parameter such as "unixtime" 
+ * or "julianday" which are unambiguous and based on UTC time, instead of
+ * the year/month/date date components. The date components for that UTC 
+ * time will be calculated and the time zone offset will be automatically 
+ * factored in.
  *  
  * @param {Object=} options options controlling the construction of this instance, or
  * undefined to use the default options
@@ -2141,9 +2172,6 @@ ilib.Date.newInstance = function(options) {
 };
 
 /**
- * @static
- * @private
- * 
  * Convert JavaScript Date objects and other types into native ilib Dates. This accepts any
  * string or number that can be translated by the JavaScript Date class,
  * (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse)
@@ -2152,6 +2180,8 @@ ilib.Date.newInstance = function(options) {
  * return null or undefined if input is null or undefined). Normal output is 
  * a standard native subclass of the ilib Date object as appropriate for the locale.
  * 
+ * @static
+ * @private
  * @param  {ilib.Date|Object|ilib.JulianDay|Date|string|number=} inDate The input date object, string or Number.
  * @param  {ilib.String|string=} timezone timezone to use if a new date object is created
  * @return {ilib.Date|null|undefined} an ilib.Date subclass equivalent to the given inDate
@@ -2359,9 +2389,9 @@ ilib.Date.prototype = {
 	},
 	
 	/**
-	 * @private
 	 * Return the Rata Die (fixed day) number of this date.
 	 * 
+	 * @protected
 	 * @return {number} the rd date as a number
 	 */
 	getRataDie: function() {
@@ -2369,8 +2399,8 @@ ilib.Date.prototype = {
 	},
 	
 	/**
-	 * @private
 	 * Set the date components of this instance based on the given rd.
+	 * @protected
 	 * @param {number} rd the rata die date to set
 	 */
 	setRd: function (rd) {
@@ -2432,8 +2462,8 @@ ilib.Date.prototype = {
 	},
 	
 	/**
-	 * @private
 	 * Return the rd number of the first Sunday of the given ISO year.
+	 * @protected
 	 * @param {number} year the year for which the first Sunday is being sought
 	 * @return {number} the rd of the first Sunday of the ISO year
 	 */
@@ -2524,7 +2554,7 @@ ilib.Date.prototype = {
 /*
  * util/utils.js - Core utility routines
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2920,6 +2950,9 @@ ilib.isEmpty = function (obj) {
 };
 
 
+/**
+ * @private
+ */
 ilib.hashCode = function(obj) {
 	var hash = 0;
 	
@@ -2975,8 +3008,8 @@ ilib.hashCode = function(obj) {
 
 
 /**
- * @private
  * Load data using the new loader object or via the old function callback.
+ * @private
  */
 ilib._callLoadData = function (files, sync, params, callback) {
 	// console.log("ilib._callLoadData called");
@@ -3204,7 +3237,7 @@ ilib.data.plurals_zu = {"one":{"is":["n",1]}};
 /*
  * strings.js - ilib string subclass definition
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3225,7 +3258,6 @@ ilib.data.plurals_zu = {"one":{"is":["n",1]}};
 // !data plurals
 
 /**
- * @class
  * Create a new string instance. This string inherits from the Javascript
  * String class, and adds two more methods, fmt and fmtChoice. It can be
  * used anywhere that a normal Javascript string is used. The formatting
@@ -3234,6 +3266,7 @@ ilib.data.plurals_zu = {"one":{"is":["n",1]}};
  * 
  * Depends directive: !depends strings.js
  * 
+ * @class
  * @constructor
  * @param {string|ilib.String=} string initialize this instance with this string 
  */
@@ -3251,12 +3284,11 @@ ilib.String = function (string) {
 };
 
 /**
- * @private
- * @static
- * 
  * Return true if the given character is a Unicode surrogate character,
  * either high or low.
  * 
+ * @private
+ * @static
  * @param {string} ch character to check
  * @return {boolean} true if the character is a surrogate
  */
@@ -3266,7 +3298,6 @@ ilib.String._isSurrogate = function (ch) {
 };
 
 /**
- * @static
  * Convert a UCS-4 code point to a Javascript string. The codepoint can be any valid 
  * UCS-4 Unicode character, including supplementary characters. Standard Javascript
  * only supports supplementary characters using the UTF-16 encoding, which has 
@@ -3284,6 +3315,7 @@ ilib.String._isSurrogate = function (ch) {
  * ilib.String.codePointAt() to access code points in a string, or use 
  * an iterator to walk through the code points in a string. 
  * 
+ * @static
  * @param {number} codepoint UCS-4 code point to convert to a character
  * @return {string} a string containing the character represented by the codepoint
  */
@@ -3495,6 +3527,7 @@ ilib.String._fncs = {
 	},
 	
 	/**
+	 * @private
 	 * @param {Object} rule
 	 * @param {number} n
 	 * @return {boolean}
@@ -3506,7 +3539,6 @@ ilib.String._fncs = {
 
 ilib.String.prototype = {
 	/**
-	 * @private
 	 * Return the length of this string in characters. This function defers to the regular
 	 * Javascript string class in order to perform the length function. Please note that this
 	 * method is a real method, whereas the length property of Javascript strings is 
@@ -3518,6 +3550,7 @@ ilib.String.prototype = {
 	 * var str = new ilib.String("this is a string");
 	 * console.log("String is " + str._length() + " characters long.");
 	 * </pre>
+	 * @private
 	 */
 	_length: function () {
 		return this.str.length;
@@ -4004,9 +4037,9 @@ ilib.String.prototype = {
 	},
 	
 	/**
-	 * @private
 	 * Convert the character or the surrogate pair at the given
 	 * index into the string to a Unicode UCS-4 code point.
+	 * @protected
 	 * @param {number} index index into the string
 	 * @return {number} code point of the character at the
 	 * given index into the string
@@ -4386,6 +4419,7 @@ ilib.Cal.prototype = {
 /**
  * Return the sign of the given number. If the sign is negative, this function
  * returns -1. If the sign is positive or zero, this function returns 1.
+ * @static
  * @param {number} num the number to test
  * @return {number} -1 if the number is negative, and 1 otherwise
  */
@@ -4401,11 +4435,12 @@ ilib.signum = function (num) {
 
 
 /**
- * @private
+ * @protected
  */
 ilib._roundFnc = {
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -4414,7 +4449,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -4423,7 +4459,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -4432,7 +4469,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -4441,7 +4479,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -4450,7 +4489,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -4459,7 +4499,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -4468,7 +4509,8 @@ ilib._roundFnc = {
 	},
 	
 	/**
-	 * @private
+	 * @static
+	 * @protected
 	 * @param {number} num number to round
 	 * @return {number} rounded number
 	 */
@@ -4481,7 +4523,7 @@ ilib._roundFnc = {
 /*
  * julianday.js - A Julian date object.
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4500,7 +4542,6 @@ ilib._roundFnc = {
 /* !depends locale.js */
 
 /**
- * @class
  * A Julian Day class. A Julian Day is a date based on the Julian Day count
  * of time invented by Joseph Scaliger in 1583 for use with astronomical calculations. 
  * Do not confuse it with a date in the Julian calendar, which it has very
@@ -4508,6 +4549,7 @@ ilib._roundFnc = {
  * 
  * Depends directive: !depends julianday.js
  * 
+ * @class
  * @constructor
  * @param {number} num the Julian Day expressed as a floating point number 
  */
@@ -4596,7 +4638,7 @@ ilib.JulianDay.prototype = {
 /*
  * gregorian.js - Represent a Gregorian calendar object.
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4616,12 +4658,12 @@ ilib.JulianDay.prototype = {
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
- * @class
  * Construct a new Gregorian calendar object. This class encodes information about
  * a Gregorian calendar.<p>
  * 
  * Depends directive: !depends gregorian.js
  * 
+ * @class
  * @constructor
  * @implements ilib.Cal
  */
@@ -4630,10 +4672,10 @@ ilib.Cal.Gregorian = function() {
 };
 
 /**
+ * the lengths of each month 
  * @private
  * @const
  * @type Array.<number> 
- * the lengths of each month 
  */
 ilib.Cal.Gregorian.monthLengths = [
 	31,  /* Jan */
@@ -4740,8 +4782,6 @@ julianday.js
 */
 
 /**
- * @class
- * 
  * Construct a new RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -4790,6 +4830,8 @@ julianday.js
  * 
  * Depends directive: !depends ratadie.js
  * 
+ * @protected
+ * @class
  * @constructor
  * @param {Object=} params parameters that govern the settings and behaviour of this RD date
  */
@@ -4826,7 +4868,7 @@ ilib.Date.RataDie = function(params) {
 
 ilib.Date.RataDie.prototype = {
 	/**
-	 * @private
+	 * @protected
 	 * @const
 	 * @type number
 	 * the difference between a zero Julian day and the zero Gregorian date. 
@@ -4834,10 +4876,10 @@ ilib.Date.RataDie.prototype = {
 	epoch: 1721424.5,
 	
 	/**
-	 * @private
 	 * Set the RD of this instance according to the given unix time. Unix time is
 	 * the number of milliseconds since midnight on Jan 1, 1970.
-	 * 
+	 *
+	 * @protected
 	 * @param {number} millis the unix time to set this date to in milliseconds 
 	 */
 	_setTime: function(millis) {
@@ -4846,8 +4888,8 @@ ilib.Date.RataDie.prototype = {
 	},
 
 	/**
-	 * @private
 	 * Set the date of this instance using a Julian Day.
+	 * @protected
 	 * @param {number} date the Julian Day to use to set this date
 	 */
 	_setJulianDay: function (date) {
@@ -4856,9 +4898,9 @@ ilib.Date.RataDie.prototype = {
 	},
 
 	/**
-	 * @private
 	 * Return the rd number of the particular day of the week on or before the 
 	 * given rd. eg. The Sunday on or before the given rd.
+	 * @protected
 	 * @param {number} rd the rata die date of the reference date
 	 * @param {number} dayOfWeek the day of the week that is being sought relative 
 	 * to the current date
@@ -5011,8 +5053,6 @@ julianday.js
 */
 
 /**
- * @class
- * 
  * Construct a new Gregorian RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -5055,7 +5095,10 @@ julianday.js
  * 
  * Depends directive: !depends gregratadie.js
  * 
+ * @protected
+ * @class
  * @constructor
+ * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian RD date
  */
 ilib.Date.GregRataDie = function(params) {
@@ -5069,10 +5112,10 @@ ilib.Date.GregRataDie.prototype.parent = ilib.Date.RataDie;
 ilib.Date.GregRataDie.prototype.constructor = ilib.Date.GregRataDie;
 
 /**
+ * the cumulative lengths of each month, for a non-leap year 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month, for a non-leap year 
  */
 ilib.Date.GregRataDie.cumMonthLengths = [
     0,   /* Jan */
@@ -5091,10 +5134,10 @@ ilib.Date.GregRataDie.cumMonthLengths = [
 ];
 
 /**
+ * the cumulative lengths of each month, for a leap year 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month, for a leap year 
  */
 ilib.Date.GregRataDie.cumMonthLengthsLeap = [
 	0,   /* Jan */
@@ -5113,9 +5156,9 @@ ilib.Date.GregRataDie.cumMonthLengthsLeap = [
 ];
 
 /**
- * @private
  * Calculate the Rata Die (fixed day) number of the given date.
  * 
+ * @private
  * @param {Object} date the date components to calculate the RD from
  */
 ilib.Date.GregRataDie.prototype._setDateComponents = function(date) {
@@ -5155,9 +5198,9 @@ ilib.Date.GregRataDie.prototype._setDateComponents = function(date) {
 };
 
 /**
- * @private
  * Return the rd number of the particular day of the week on or before the 
  * given rd. eg. The Sunday on or before the given rd.
+ * @private
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the current date
@@ -5502,7 +5545,7 @@ calendar/gregratadie.js
 // !data localeinfo zoneinfo
 
 /**
- * @class Create a time zone instance. 
+ * Create a time zone instance. 
  * 
  * This class reports and transforms
  * information about particular time zones.<p>
@@ -5590,6 +5633,7 @@ calendar/gregratadie.js
  * 
  * Depends directive: !depends timezone.js
  * 
+ * @class 
  * @constructor
  * @param {Object} options Options guiding the construction of this time zone instance
  */
@@ -5660,6 +5704,8 @@ ilib.TimeZone = function(options) {
  *     "f": "W{c}T",    // standard abbreviation. For time zones that observe DST, the {c} replacement is replaced with the 
  *                      // letter in the e.c or s.c properties below 
  *     "e": {           // info about the end of DST
+ *         "j": 78322.5 // Julian day when the transition happens. Either specify the "j" property or all of the "m", "r", and 
+ *                      // "t" properties, but not both sets.
  *         "m": 3,      // month that it ends
  *         "r": "l0",   // rule for the day it ends "l" = "last", numbers are Sun=0 through Sat=6. Other syntax is "0>7". 
  *                      // This means the 0-day (Sun) after the 7th of the month. Other possible operators are <, >, <=, >=
@@ -5667,6 +5713,8 @@ ilib.TimeZone = function(options) {
  *         "c": "S"     // character to replace into the abbreviation for standard time 
  *     },
  *     "s": {           // info about the start of DST
+ *         "j": 78189.5 // Julian day when the transition happens. Either specify the "j" property or all of the "m", "r", and 
+ *                      // "t" properties, but not both sets.
  *         "m": 10,     // month that it starts
  *         "r": "l0",   // rule for the day it starts "l" = "last", numbers are Sun=0 through Sat=6. Other syntax is "0>7".
  *                      // This means the 0-day (Sun) after the 7th of the month. Other possible operators are <, >, <=, >=
@@ -5875,10 +5923,10 @@ ilib.TimeZone.prototype.getDisplayName = function (date, style) {
 };
 
 /**
- * @private
  * Convert the offset string to an object with an h, m, and possibly s property
  * to indicate the hours, minutes, and seconds.
  * 
+ * @private
  * @param {string} str the offset string to convert to an object
  * @return {Object.<{h:number,m:number,s:number}>} an object giving the offset for the zone at 
  * the given date/time, in hours, minutes, and seconds
@@ -5964,9 +6012,9 @@ ilib.TimeZone.prototype.getOffsetMillis = function (date) {
 };
 
 /**
- * @private
  * Return the offset in milliseconds when the date has an RD number in wall
  * time rather than in UTC time.
+ * @protected
  * @param date the date to check in wall time
  * @returns {number} the number of milliseconds of offset from UTC that the given date is
  */
@@ -6085,14 +6133,14 @@ ilib.TimeZone.prototype.getDSTSavingsStr = function () {
 };
 
 /**
- * @private
  * return the rd of the start of DST transition for the given year
+ * @protected
  * @param {Object} rule set of rules
  * @param {number} year year to check
  * @return {number} the rd of the start of DST for the year
  */
 ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
-	var type, 
+	var type = "=", 
 		weekday = 0, 
 		day, 
 		refDay, 
@@ -6103,53 +6151,57 @@ ilib.TimeZone.prototype._calcRuleStart = function (rule, year) {
 		time,
 		i;
 	
-	if (rule.r.charAt(0) == 'l' || rule.r.charAt(0) == 'f') {
-		cal = ilib.Cal.newInstance({type: "gregorian"});
-		type = rule.r.charAt(0);
-		weekday = parseInt(rule.r.substring(1), 10);
-		day = (type === 'l') ? cal.getMonLength(rule.m, year) : 1;
-		//console.log("_calcRuleStart: Calculating the " + 
-		//		(rule.r.charAt(0) == 'f' ? "first " : "last ") + weekday + 
-		//		" of month " + rule.m);
+	if (typeof(rule.j) !== 'undefined') {
+		refDay = new ilib.Date.GregRataDie({
+			julianday: rule.j
+		});
 	} else {
-		type = "=";
-		
-		i = rule.r.indexOf('<');
-		if (i == -1) {
-			i = rule.r.indexOf('>');
-		}
-		
-		if (i != -1) {
-			type = rule.r.charAt(i);
-			weekday = parseInt(rule.r.substring(0, i), 10);
-			day = parseInt(rule.r.substring(i+1), 10); 
-			//console.log("_calcRuleStart: Calculating the " + weekday + 
-			//		type + day + " of month " + rule.m);
+		if (rule.r.charAt(0) == 'l' || rule.r.charAt(0) == 'f') {
+			cal = ilib.Cal.newInstance({type: "gregorian"});
+			type = rule.r.charAt(0);
+			weekday = parseInt(rule.r.substring(1), 10);
+			day = (type === 'l') ? cal.getMonLength(rule.m, year) : 1;
+			//console.log("_calcRuleStart: Calculating the " + 
+			//		(rule.r.charAt(0) == 'f' ? "first " : "last ") + weekday + 
+			//		" of month " + rule.m);
 		} else {
-			day = parseInt(rule.r, 10);
-			//console.log("_calcRuleStart: Calculating the " + day + " of month " + rule.m);
-		}
-	}
-
-	if (rule.t) {
-		time = rule.t.split(":");
-		hour = parseInt(time[0], 10);
-		if (time.length > 1) {
-			minute = parseInt(time[1], 10);
-			if (time.length > 2) {
-				second = parseInt(time[2], 10);
+			i = rule.r.indexOf('<');
+			if (i == -1) {
+				i = rule.r.indexOf('>');
+			}
+			
+			if (i != -1) {
+				type = rule.r.charAt(i);
+				weekday = parseInt(rule.r.substring(0, i), 10);
+				day = parseInt(rule.r.substring(i+1), 10); 
+				//console.log("_calcRuleStart: Calculating the " + weekday + 
+				//		type + day + " of month " + rule.m);
+			} else {
+				day = parseInt(rule.r, 10);
+				//console.log("_calcRuleStart: Calculating the " + day + " of month " + rule.m);
 			}
 		}
+	
+		if (rule.t) {
+			time = rule.t.split(":");
+			hour = parseInt(time[0], 10);
+			if (time.length > 1) {
+				minute = parseInt(time[1], 10);
+				if (time.length > 2) {
+					second = parseInt(time[2], 10);
+				}
+			}
+		}
+		//console.log("calculating rd of " + year + "/" + rule.m + "/" + day);
+		refDay = new ilib.Date.GregRataDie({
+			year: year, 
+			month: rule.m, 
+			day: day, 
+			hour: hour, 
+			minute: minute, 
+			second: second
+		});
 	}
-	//console.log("calculating rd of " + year + "/" + rule.m + "/" + day);
-	refDay = new ilib.Date.GregRataDie({
-		year: year, 
-		month: rule.m, 
-		day: day, 
-		hour: hour, 
-		minute: minute, 
-		second: second
-	});
 	//console.log("refDay is " + JSON.stringify(refDay));
 	var d = refDay.getRataDie();
 	
@@ -6323,7 +6375,7 @@ ilib.data.pseudomap_zxx_Hebr = {"a":"ַ","b":"בּ","c":"ק","d":"ד","e":"ֶ","
 /*
  * resources.js - Resource bundle definition
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6344,7 +6396,6 @@ ilib.data.pseudomap_zxx_Hebr = {"a":"ַ","b":"בּ","c":"ק","d":"ד","e":"ֶ","
 // !data pseudomap
 
 /**
- * @class
  * Create a new resource bundle instance. The resource bundle loads strings
  * appropriate for a particular locale and provides them via the getString 
  * method.<p>
@@ -6526,6 +6577,7 @@ ilib.data.pseudomap_zxx_Hebr = {"a":"ַ","b":"בּ","c":"ק","d":"ד","e":"ֶ","
  * 
  * Depends directive: !depends resources.js
  * 
+ * @class
  * @constructor
  * @param {?Object} options Options controlling how the bundle is created
  */
@@ -6933,7 +6985,7 @@ ilib.ResBundle.prototype = {
 /*
  * util/jsutils.js - Misc utilities to work around Javascript engine differences
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6958,6 +7010,7 @@ ilib.ResBundle.prototype = {
  * 
  * Depends directive: !depends utils.js
  * 
+ * @static
  * @param {Object} source the source object to copy properties from
  * @param {Object} target the target object to copy properties into
  */
@@ -6973,12 +7026,11 @@ ilib.shallowCopy = function (source, target) {
 };
 
 /**
- * @static
- * 
  * Map a string to the given set of alternate characters. If the target set
  * does not contain a particular character in the input string, then that
  * character will be copied to the output unmapped.
  * 
+ * @static
  * @param {string} str a string to map to an alternate set of characters
  * @param {Array.<string>|Object} map a mapping to alternate characters
  * @return {string} the source string where each character is mapped to alternate characters
@@ -6997,14 +7049,17 @@ ilib.mapString = function (str, map) {
 };
 
 /**
+ * Check if an object is a member of the given array. If this javascript engine
+ * support indexOf, it is used directly. Otherwise, this function implements it
+ * itself. The idea is to make sure that you can use the quick indexOf if it is
+ * available, but use a slower implementation in older engines as well.
+ * 
  * @static
- * 
- * Check if an object is a memory of the given array. This works in older
- * browsers as well.
- * 
  * @param {Array.<Object>} array array to search
- * @param {Object} obj object to search for
- * @return {number} index of the object in the array, or -1 if it is not in the array
+ * @param {Object} obj object being sought. This should be of the same type as the
+ * members of the array being searched. If not, this function will not return
+ * any results.
+ * @return {number} index of the object in the array, or -1 if it is not in the array.
  */
 ilib.indexOf = function(array, obj) {
 	if (!array || !obj) {
@@ -7021,13 +7076,13 @@ ilib.indexOf = function(array, obj) {
 	    return -1;
 	}
 };
-ilib.data.dateformats = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"EE d/M/yy","m":"EEE d/MM/yyyy","l":"EEE d MMM yyyy","f":"EEEE d MMMM yyyy"},"dmy":{"s":"d/M/yy","m":"d/MM/yyyy","l":"d MMM yyyy","f":"d MMMM yyyy"},"dmw":{"s":"EE d/M","m":"EE d/MM","l":"EEE d MMM","f":"EEEE d MMMM"},"dm":{"s":"d/M","m":"d/MM","l":"d MMM","f":"d MMMM"},"my":{"s":"M/yy","m":"MM/yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"dw":{"s":"EE d","m":"EE d","l":"EEE d","f":"EEEE d"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"},"w":{"s":"E","m":"EE","l":"EEE","f":"EEEE"}},"time":{"12":{"ahmsz":"h:mm:ssa z","ahms":"h:mm:ssa","hmsz":"h:mm:ss z","hms":"h:mm:ss","ahmz":"h:mma z","ahm":"h:mma","hmz":"h:mm z","ah":"ha","hm":"h:mm","ms":"mm:ss","h":"h","m":"mm","s":"ss"},"24":{"ahmsz":"H:mm:ss z","ahms":"H:mm:ss","hmsz":"H:mm:ss z","hms":"H:mm:ss","ahmz":"H:mm z","ahm":"H:mm","hmz":"H:mm z","ah":"H","hm":"H:mm","ms":"mm:ss","h":"H","m":"mm","s":"ss"}},"range":{"c00":{"s":"{st} - {et} {sd}/{sm}/{sy}","m":"{st} - {et}, {sd}/{sm}/{sy}","l":"{st} - {et}, {sd} {sm} {sy}","f":"{st} - {et}, {sd} {sm} {sy}"},"c01":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} - {ed}/{em} {et}, {sy}","l":"{sd} {st} - {ed} {et}, {sm} {sy}","f":"{sd} {st} - {ed} {et}, {sm} {sy}"},"c02":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} - {ed}/{em} {et}, {sy}","l":"{sd} {sm} {st} - {ed} {em} {et}, {sy}","f":"{sd} {sm} {st} - {ed} {em} {et}, {sy}"},"c03":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c10":{"s":"{sd}-{ed}/{sm}/{sy}","m":"{sd}-{ed}/{sm}/{sy}","l":"{sd}-{ed} {sm} {sy}","f":"{sd}-{ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm}-{ed}/{em} {sy}","m":"{sd}/{sm} - {ed}/{em} {sy}","l":"{sd} {sm} - {ed} {em} {sy}","f":"{sd} {sm} - {ed} {em} {sy}"},"c12":{"s":"{sd}/{sm}/{sy}-{ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy}-{em}/{ey}","m":"{sm}/{sy} - {em}/{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}},"islamic":"gregorian","hebrew":"gregorian","julian":"gregorian","thaisolar":"gregorian"};
+ilib.data.dateformats = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"EE d/M/yy","m":"EEE d/MM/yyyy","l":"EEE d MMM yyyy","f":"EEEE d MMMM yyyy"},"dmy":{"s":"d/M/yy","m":"d/MM/yyyy","l":"d MMM yyyy","f":"d MMMM yyyy"},"dmw":{"s":"EE d/M","m":"EE d/MM","l":"EEE d MMM","f":"EEEE d MMMM"},"dm":{"s":"d/M","m":"d/MM","l":"d MMM","f":"d MMMM"},"my":{"s":"M/yy","m":"MM/yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"dw":{"s":"EE d","m":"EE d","l":"EEE d","f":"EEEE d"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"},"w":{"s":"E","m":"EE","l":"EEE","f":"EEEE"}},"time":{"12":{"ahmsz":"h:mm:ssa z","ahms":"h:mm:ssa","hmsz":"h:mm:ss z","hms":"h:mm:ss","ahmz":"h:mma z","ahm":"h:mma","hmz":"h:mm z","ah":"ha","hm":"h:mm","ms":"mm:ss","h":"h","m":"mm","s":"ss"},"24":{"ahmsz":"H:mm:ss z","ahms":"H:mm:ss","hmsz":"H:mm:ss z","hms":"H:mm:ss","ahmz":"H:mm z","ahm":"H:mm","hmz":"H:mm z","ah":"H","hm":"H:mm","ms":"mm:ss","h":"H","m":"mm","s":"ss"}},"range":{"c00":{"s":"{st} - {et} {sd}/{sm}/{sy}","m":"{st} - {et}, {sd}/{sm}/{sy}","l":"{st} - {et}, {sd} {sm} {sy}","f":"{st} - {et}, {sd} {sm} {sy}"},"c01":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} - {ed}/{em} {et}, {sy}","l":"{sd} {st} - {ed} {et}, {sm} {sy}","f":"{sd} {st} - {ed} {et}, {sm} {sy}"},"c02":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} - {ed}/{em} {et}, {sy}","l":"{sd} {sm} {st} - {ed} {em} {et}, {sy}","f":"{sd} {sm} {st} - {ed} {em} {et}, {sy}"},"c03":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c10":{"s":"{sd}-{ed}/{sm}/{sy}","m":"{sd}-{ed}/{sm}/{sy}","l":"{sd}-{ed} {sm} {sy}","f":"{sd}-{ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm}-{ed}/{em} {sy}","m":"{sd}/{sm} - {ed}/{em} {sy}","l":"{sd} {sm} - {ed} {em} {sy}","f":"{sd} {sm} - {ed} {em} {sy}"},"c12":{"s":"{sd}/{sm}/{sy}-{ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy}-{em}/{ey}","m":"{sm}/{sy} - {em}/{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}},"islamic":"gregorian","hebrew":"gregorian","julian":"gregorian","thaisolar":"gregorian","persian":"gregorian","persian-astro":"gregorian"};
 ilib.data.dateformats_aa = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sy} {sm} {sd}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_af = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"dd MMM","l":"MMM d","f":"MMMM d"},"dmy":{"s":"M/d/yy","m":"dd MMM yy","f":"dd MMMM yyyy"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sm}/{sd}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sm} {sd} – {et} {em} {ed} {ey}","f":"{st} {sm} {sd} – {et} {em} {ed} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}"},"c10":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}"},"c11":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} – {em} {ed} {ey}","f":"{sm} {sd} – {em} {ed} {ey}"},"c12":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_agq = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"d MMM"},"dmy":{"m":"d MMM, yy"},"my":{"m":"MMM, yy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E d/M/yy","m":"EE d/M/yy","f":"EEEE d MMM yyyy"},"dmw":{"s":"E d/M","m":"EE d/M","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm}, {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_ak = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy/M/d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"m":"yy MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yyyy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}/{sm}/{sd}","m":"{st} – {et} {sy} {sm} {sd}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_am = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d","f":"MMMM d"},"dmy":{"m":"d MMM yy"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E፣ d/M/yy","m":"EE፣ d/M/yy","l":"EEE፣ MMM d yyyy","f":"EEEE፣ MMM d yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sm} {sd} – {et} {ed} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sm} {sd} – {et} {ed} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sm} {sd} – {et} {em} {ed} {ey}","f":"{st} {sm} {sd} – {et} {em} {ed} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sm} {sd} – {ed} {ey}","f":"{sm} {sd} – {ed} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sm} {sd} – {em} {ed} {ey}","f":"{sm} {sd} – {em} {ed} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sm} {sd} {sy} – {em} {ed} {ey}","f":"{sm} {sd} {sy} – {em} {ed} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
-ilib.data.dateformats_ar = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d/‏M","m":"dd‏/MM"},"dmy":{"s":"d‏/M‏/yy","m":"dd‏/MM‏/yyyy","l":"d MMM، yyyy","f":"d MMMM، yyyy"},"my":{"s":"M‏/yy","m":"MM‏/yyyy","f":"MMMM، yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E، d/‏M/‏yy","m":"EE، d/‏M/‏yyyy","l":"EEE، d MMM، yyyy","f":"EEEE، d MMM، yyyy"},"dmw":{"s":"E، d/M","m":"EE، d/M","l":"EEEE، d MMM","f":"EEEE، d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sd}‏/{sm}‏/{sy}","m":"{st} – {et} {sd}‏/{sm}‏/{sy}","l":"{st} – {et} {sd} {sm}، {sy}","f":"{st} – {et} {sd} {sm}، {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_ar = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"‏d/M","m":"‏dd/MM","l":"‏d MMM","f":"‏d MMMM"},"dmy":{"s":"‏d/M/yy","m":"‏dd/MM/yyyy","l":"‏d MMM، yyyy","f":"‏d MMMM، yyyy"},"my":{"s":"‏M/yy","m":"‏MM/yyyy","l":"MMM، yyyy","f":"MMMM، yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E، d/M/yy","m":"EE، d/M/yyyy","l":"EEE، d MMM، yyyy","f":"EEEE، d MMMM، yyyy"},"dmw":{"s":"E، d/M","m":"EE، d/M","l":"EEEE، d MMM","f":"EEEE، d MMMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"‏h:mm:ss a z","hmsz":"‏h:mm:ss z","ahms":"‏h:mm:ss a","hms":"‏h:mm:ss","ahmz":"‏h:mm a z","ahm":"‏h:mm a","hm":"‏h:mm","hmz":"‏h:mm z","ms":"‏mm:ss","ah":"‏h a"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd}/{sm}/{sy}","l":"{st} – {et} {sd} {sm}، {sy}","f":"{st} – {et} {sd} {sm}، {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"‏{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"‏{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}"},"c11":{"s":"‏{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"‏{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"‏{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"‏{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"‏{sm}/{sy} – {em}/{ey}","m":"‏{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"‏{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_ar_DZ = {"gregorian":{"date":{"dm":{"s":"M/d","m":"MM/dd"},"dmy":{"m":"yyyy/MM/dd"},"my":{"s":"yy/M","m":"yyyy/MM"}},"range":{"c00":{"m":"{st} – {et} {sy}/{sm}/{sd}"}}},"generated":true};
 ilib.data.dateformats_ar_MA = {"gregorian":{"date":{"dm":{"s":"M/d","m":"MM/dd"},"dmy":{"m":"yyyy/MM/dd"},"my":{"s":"yy/M","m":"yyyy/MM"}},"range":{"c00":{"m":"{st} – {et} {sy}/{sm}/{sd}"}}},"generated":true};
 ilib.data.dateformats_ar_TN = {"gregorian":{"date":{"dm":{"s":"M/d","m":"MM/dd"},"dmy":{"m":"yyyy/MM/dd"},"my":{"s":"yy/M","m":"yyyy/MM"}},"range":{"c00":{"m":"{st} – {et} {sy}/{sm}/{sd}"}}},"generated":true};
@@ -7129,7 +7184,7 @@ ilib.data.dateformats_zh_Hant_TW = {"gregorian":{"date":{"dmwy":{"s":"yyyy-MM-dd
 ilib.data.dateformats_zh_Hant_US = {"gregorian":{"time":{"12":{"ahmsz":"h:mm:ssa z","ahms":"h:mm:ssa","hmsz":"h:mm:ss z","hms":"h:mm:ss","ahmz":"h:mma z","ahm":"h:mma","hmz":"h:mm z","ah":"ha","hm":"h:mm","h":"h"},"24":{"ahmsz":"H:mm:ss z","ahms":"H:mm:ss","hmsz":"H:mm:ss z","hms":"H:mm:ss","ahmz":"H:mm z","ahm":"H:mm","hmz":"H:mm z","hm":"H:mm","h":"H"}}}};
 ilib.data.dateformats_zu = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d"},"dmy":{"s":"M/d/yy","m":"d MMM yy","l":"MMM d, yyyy","f":"dd MMMM yyyy"},"my":{"m":"MMM yy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sm}/{sd}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sm} {sd}, {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sm} {sd} – {et} {ed} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","f":"{st} {sm} {sd} – {et} {ed} {ey}"},"c02":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sm} {sd} – {et} {em} {ed} {ey}","f":"{st} {sm} {sd} – {et} {em} {ed} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}"},"c10":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} – {ed} {ey}","f":"{sm} {sd} – {ed} {ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}"},"c11":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} – {em} {ed} {ey}","f":"{sm} {sd} – {em} {ed} {ey}"},"c12":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} {sy} – {em} {ed} {ey}","f":"{sm} {sd} {sy} – {em} {ed} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_zxx = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"EE d/MM/yy","m":"EEE d/MM/yyyy","l":"EEE d MMM, yyyy","f":"EEEE d MMMM, yyyy"},"dmy":{"s":"d/MM/yy","m":"d/MM/yyyy","l":"d MMM, yyyy","f":"d MMMM, yyyy"},"dmw":{"s":"EE d/M","m":"EE d/MM","l":"EEE d MMM","f":"EEEE d MMMM"},"dm":{"s":"d/M","m":"d/M","l":"d MMM","f":"d MMMM"},"my":{"s":"M/yy","m":"MM/yyyy","l":"MMM yy","f":"MMMM yyyy"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yy","l":"yyyy","f":"yyyy G"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}}},"julian":"gregorian"};
-ilib.data.sysres = {"MMMM1":"January","MMM1":"Jan","NN1":"Ja","N1":"J","MMMM2":"February","MMM2":"Feb","NN2":"Fe","N2":"F","MMMM3":"March","MMM3":"Mar","NN3":"Ma","N3":"M","MMMM4":"April","MMM4":"Apr","NN4":"Ap","N4":"A","MMMM5":"May","MMM5":"May","NN5":"Ma","N5":"M","MMMM6":"June","MMM6":"Jun","NN6":"Ju","N6":"J","MMMM7":"July","MMM7":"Jul","NN7":"Ju","N7":"J","MMMM8":"August","MMM8":"Aug","NN8":"Au","N8":"A","MMMM9":"September","MMM9":"Sep","NN9":"Se","N9":"S","MMMM10":"October","MMM10":"Oct","NN10":"Oc","N10":"O","MMMM11":"November","MMM11":"Nov","NN11":"No","N11":"N","MMMM12":"December","MMM12":"Dec","NN12":"De","N12":"D","EEEE0":"Sunday","EEE0":"Sun","EE0":"Su","E0":"S","EEEE1":"Monday","EEE1":"Mon","EE1":"Mo","E1":"M","EEEE2":"Tuesday","EEE2":"Tue","EE2":"Tu","E2":"T","EEEE3":"Wednesday","EEE3":"Wed","EE3":"We","E3":"W","EEEE4":"Thursday","EEE4":"Thu","EE4":"Th","E4":"T","EEEE5":"Friday","EEE5":"Fri","EE5":"Fr","E5":"F","EEEE6":"Saturday","EEE6":"Sat","EE6":"Sa","E6":"S","ordinalChoice":"1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th","a0":"AM","a1":"PM","G-1":"BCE","G1":"CE","separatorFull":", ","finalSeparatorFull":", and ","separatorShort":" ","separatorMedium":" ","separatorLong":", ","N1-hebrew":"N","N2-hebrew":"I","N3-hebrew":"S","N4-hebrew":"T","N5-hebrew":"A","N6-hebrew":"E","N7-hebrew":"T","N8-hebrew":"Ḥ","N9-hebrew":"K","N10-hebrew":"T","N11-hebrew":"S","N12-hebrew":"A","N13-hebrew":"A","NN1-hebrew":"Ni","NN2-hebrew":"Iy","NN3-hebrew":"Si","NN4-hebrew":"Ta","NN5-hebrew":"Av","NN6-hebrew":"El","NN7-hebrew":"Ti","NN8-hebrew":"Ḥe","NN9-hebrew":"Ki","NN10-hebrew":"Te","NN11-hebrew":"Sh","NN12-hebrew":"Ad","NN13-hebrew":"A2","MMM1-hebrew":"Nis","MMM2-hebrew":"Iyy","MMM3-hebrew":"Siv","MMM4-hebrew":"Tam","MMM5-hebrew":"Av","MMM6-hebrew":"Elu","MMM7-hebrew":"Tis","MMM8-hebrew":"Ḥes","MMM9-hebrew":"Kis","MMM10-hebrew":"Tev","MMM11-hebrew":"She","MMM12-hebrew":"Ada","MMM13-hebrew":"Ad2","MMMM1-hebrew":"Nisan","MMMM2-hebrew":"Iyyar","MMMM3-hebrew":"Sivan","MMMM4-hebrew":"Tammuz","MMMM5-hebrew":"Av","MMMM6-hebrew":"Elul","MMMM7-hebrew":"Tishri","MMMM8-hebrew":"Ḥeshvan","MMMM9-hebrew":"Kislev","MMMM10-hebrew":"Teveth","MMMM11-hebrew":"Shevat","MMMM12-hebrew":"Adar","MMMM13-hebrew":"Adar II","E0-hebrew":"R","E1-hebrew":"S","E2-hebrew":"S","E3-hebrew":"R","E4-hebrew":"Ḥ","E5-hebrew":"S","E6-hebrew":"S","EE0-hebrew":"ri","EE1-hebrew":"se","EE2-hebrew":"sl","EE3-hebrew":"rv","EE4-hebrew":"ḥa","EE5-hebrew":"si","EE6-hebrew":"sa","EEE0-hebrew":"ris","EEE1-hebrew":"she","EEE2-hebrew":"shl","EEE3-hebrew":"rvi","EEE4-hebrew":"ḥam","EEE5-hebrew":"shi","EEE6-hebrew":"sha","EEEE0-hebrew":"yom rishon","EEEE1-hebrew":"yom sheni","EEEE2-hebrew":"yom shlishi","EEEE3-hebrew":"yom r'vi‘i","EEEE4-hebrew":"yom ḥamishi","EEEE5-hebrew":"yom shishi","EEEE6-hebrew":"yom shabbat","N1-islamic":"M","N2-islamic":"Ṣ","N3-islamic":"R","N4-islamic":"R","N5-islamic":"J","N6-islamic":"J","N7-islamic":"R","N8-islamic":"Š","N9-islamic":"R","N10-islamic":"Š","N11-islamic":"Q","N12-islamic":"Ḥ","NN1-islamic":"Mu","NN2-islamic":"Ṣa","NN3-islamic":"Rb","NN4-islamic":"R2","NN5-islamic":"Ju","NN6-islamic":"J2","NN7-islamic":"Ra","NN8-islamic":"Šh","NN9-islamic":"Ra","NN10-islamic":"Ša","NN11-islamic":"Qa","NN12-islamic":"Ḥi","MMM1-islamic":"Muḥ","MMM2-islamic":"Ṣaf","MMM3-islamic":"Rab","MMM4-islamic":"Ra2","MMM5-islamic":"Jum","MMM6-islamic":"Ju2","MMM7-islamic":"Raj","MMM8-islamic":"Šha","MMM9-islamic":"Ram","MMM10-islamic":"Šaw","MMM11-islamic":"Qad","MMM12-islamic":"Ḥij","MMMM1-islamic":"Muḥarram","MMMM2-islamic":"Ṣafar","MMMM3-islamic":"Rabī‘ I","MMMM4-islamic":"Rabī‘ II","MMMM5-islamic":"Jumādā I","MMMM6-islamic":"Jumādā II","MMMM7-islamic":"Rajab","MMMM8-islamic":"Šha'bān","MMMM9-islamic":"Ramaḍān","MMMM10-islamic":"Šawwāl","MMMM11-islamic":"Ḏu al-Qa‘da","MMMM12-islamic":"Ḏu al-Ḥijja","E0-islamic":"A","E1-islamic":"I","E2-islamic":"T","E3-islamic":"A","E4-islamic":"K","E5-islamic":"J","E6-islamic":"S","EE0-islamic":"ah","EE1-islamic":"it","EE2-islamic":"th","EE3-islamic":"ar","EE4-islamic":"kh","EE5-islamic":"ju","EE6-islamic":"sa","EEE0-islamic":"aha","EEE1-islamic":"ith","EEE2-islamic":"tha","EEE3-islamic":"arb","EEE4-islamic":"kha","EEE5-islamic":"jum","EEE6-islamic":"sab","EEEE0-islamic":"yawn al-ahad","EEEE1-islamic":"yawn al-ithnaya","EEEE2-islamic":"yawn uth-thalathaa","EEEE3-islamic":"yawn al-arba‘a","EEEE4-islamic":"yawn al-khamis","EEEE5-islamic":"yawn al-jum‘a","EEEE6-islamic":"yawn as-sabt"};
+ilib.data.sysres = {"MMMM1":"January","MMM1":"Jan","NN1":"Ja","N1":"J","MMMM2":"February","MMM2":"Feb","NN2":"Fe","N2":"F","MMMM3":"March","MMM3":"Mar","NN3":"Ma","N3":"M","MMMM4":"April","MMM4":"Apr","NN4":"Ap","N4":"A","MMMM5":"May","MMM5":"May","NN5":"Ma","N5":"M","MMMM6":"June","MMM6":"Jun","NN6":"Ju","N6":"J","MMMM7":"July","MMM7":"Jul","NN7":"Ju","N7":"J","MMMM8":"August","MMM8":"Aug","NN8":"Au","N8":"A","MMMM9":"September","MMM9":"Sep","NN9":"Se","N9":"S","MMMM10":"October","MMM10":"Oct","NN10":"Oc","N10":"O","MMMM11":"November","MMM11":"Nov","NN11":"No","N11":"N","MMMM12":"December","MMM12":"Dec","NN12":"De","N12":"D","EEEE0":"Sunday","EEE0":"Sun","EE0":"Su","E0":"S","EEEE1":"Monday","EEE1":"Mon","EE1":"Mo","E1":"M","EEEE2":"Tuesday","EEE2":"Tue","EE2":"Tu","E2":"T","EEEE3":"Wednesday","EEE3":"Wed","EE3":"We","E3":"W","EEEE4":"Thursday","EEE4":"Thu","EE4":"Th","E4":"T","EEEE5":"Friday","EEE5":"Fri","EE5":"Fr","E5":"F","EEEE6":"Saturday","EEE6":"Sat","EE6":"Sa","E6":"S","ordinalChoice":"1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th","a0":"AM","a1":"PM","G-1":"BCE","G1":"CE","separatorFull":", ","finalSeparatorFull":", and ","separatorShort":" ","separatorMedium":" ","separatorLong":", ","N1-hebrew":"N","N2-hebrew":"I","N3-hebrew":"S","N4-hebrew":"T","N5-hebrew":"A","N6-hebrew":"E","N7-hebrew":"T","N8-hebrew":"Ḥ","N9-hebrew":"K","N10-hebrew":"T","N11-hebrew":"S","N12-hebrew":"A","N13-hebrew":"A","NN1-hebrew":"Ni","NN2-hebrew":"Iy","NN3-hebrew":"Si","NN4-hebrew":"Ta","NN5-hebrew":"Av","NN6-hebrew":"El","NN7-hebrew":"Ti","NN8-hebrew":"Ḥe","NN9-hebrew":"Ki","NN10-hebrew":"Te","NN11-hebrew":"Sh","NN12-hebrew":"Ad","NN13-hebrew":"A2","MMM1-hebrew":"Nis","MMM2-hebrew":"Iyy","MMM3-hebrew":"Siv","MMM4-hebrew":"Tam","MMM5-hebrew":"Av","MMM6-hebrew":"Elu","MMM7-hebrew":"Tis","MMM8-hebrew":"Ḥes","MMM9-hebrew":"Kis","MMM10-hebrew":"Tev","MMM11-hebrew":"She","MMM12-hebrew":"Ada","MMM13-hebrew":"Ad2","MMMM1-hebrew":"Nisan","MMMM2-hebrew":"Iyyar","MMMM3-hebrew":"Sivan","MMMM4-hebrew":"Tammuz","MMMM5-hebrew":"Av","MMMM6-hebrew":"Elul","MMMM7-hebrew":"Tishri","MMMM8-hebrew":"Ḥeshvan","MMMM9-hebrew":"Kislev","MMMM10-hebrew":"Teveth","MMMM11-hebrew":"Shevat","MMMM12-hebrew":"Adar","MMMM13-hebrew":"Adar II","E0-hebrew":"R","E1-hebrew":"S","E2-hebrew":"S","E3-hebrew":"R","E4-hebrew":"Ḥ","E5-hebrew":"S","E6-hebrew":"S","EE0-hebrew":"ri","EE1-hebrew":"se","EE2-hebrew":"sl","EE3-hebrew":"rv","EE4-hebrew":"ḥa","EE5-hebrew":"si","EE6-hebrew":"sa","EEE0-hebrew":"ris","EEE1-hebrew":"she","EEE2-hebrew":"shl","EEE3-hebrew":"rvi","EEE4-hebrew":"ḥam","EEE5-hebrew":"shi","EEE6-hebrew":"sha","EEEE0-hebrew":"yom rishon","EEEE1-hebrew":"yom sheni","EEEE2-hebrew":"yom shlishi","EEEE3-hebrew":"yom r'vi‘i","EEEE4-hebrew":"yom ḥamishi","EEEE5-hebrew":"yom shishi","EEEE6-hebrew":"yom shabbat","N1-islamic":"M","N2-islamic":"Ṣ","N3-islamic":"R","N4-islamic":"R","N5-islamic":"J","N6-islamic":"J","N7-islamic":"R","N8-islamic":"Š","N9-islamic":"R","N10-islamic":"Š","N11-islamic":"Q","N12-islamic":"Ḥ","NN1-islamic":"Mu","NN2-islamic":"Ṣa","NN3-islamic":"Rb","NN4-islamic":"R2","NN5-islamic":"Ju","NN6-islamic":"J2","NN7-islamic":"Ra","NN8-islamic":"Šh","NN9-islamic":"Ra","NN10-islamic":"Ša","NN11-islamic":"Qa","NN12-islamic":"Ḥi","MMM1-islamic":"Muḥ","MMM2-islamic":"Ṣaf","MMM3-islamic":"Rab","MMM4-islamic":"Ra2","MMM5-islamic":"Jum","MMM6-islamic":"Ju2","MMM7-islamic":"Raj","MMM8-islamic":"Šha","MMM9-islamic":"Ram","MMM10-islamic":"Šaw","MMM11-islamic":"Qad","MMM12-islamic":"Ḥij","MMMM1-islamic":"Muḥarram","MMMM2-islamic":"Ṣafar","MMMM3-islamic":"Rabī‘ I","MMMM4-islamic":"Rabī‘ II","MMMM5-islamic":"Jumādā I","MMMM6-islamic":"Jumādā II","MMMM7-islamic":"Rajab","MMMM8-islamic":"Šha'bān","MMMM9-islamic":"Ramaḍān","MMMM10-islamic":"Šawwāl","MMMM11-islamic":"Ḏu al-Qa‘da","MMMM12-islamic":"Ḏu al-Ḥijja","E0-islamic":"A","E1-islamic":"I","E2-islamic":"T","E3-islamic":"A","E4-islamic":"K","E5-islamic":"J","E6-islamic":"S","EE0-islamic":"ah","EE1-islamic":"it","EE2-islamic":"th","EE3-islamic":"ar","EE4-islamic":"kh","EE5-islamic":"ju","EE6-islamic":"sa","EEE0-islamic":"aha","EEE1-islamic":"ith","EEE2-islamic":"tha","EEE3-islamic":"arb","EEE4-islamic":"kha","EEE5-islamic":"jum","EEE6-islamic":"sab","EEEE0-islamic":"yawn al-ahad","EEEE1-islamic":"yawn al-ithnaya","EEEE2-islamic":"yawn uth-thalathaa","EEEE3-islamic":"yawn al-arba‘a","EEEE4-islamic":"yawn al-khamis","EEEE5-islamic":"yawn al-jum‘a","EEEE6-islamic":"yawn as-sabt","N1-persian":"F","N2-persian":"O","N3-persian":"K","N4-persian":"T","N5-persian":"M","N6-persian":"S","N7-persian":"M","N8-persian":"A","N9-persian":"A","N10-persian":"D","N11-persian":"B","N12-persian":"E","NN1-persian":"Fa","NN2-persian":"Or","NN3-persian":"Kh","NN4-persian":"Ti","NN5-persian":"Mo","NN6-persian":"Sh","NN7-persian":"Me","NN8-persian":"Ab","NN9-persian":"Az","NN10-persian":"De","NN11-persian":"Ba","NN12-persian":"Es","MMM1-persian":"Far","MMM2-persian":"Ord","MMM3-persian":"Kho","MMM4-persian":"Tir","MMM5-persian":"Mor","MMM6-persian":"Sha","MMM7-persian":"Meh","MMM8-persian":"Aba","MMM9-persian":"Aza","MMM10-persian":"Dey","MMM11-persian":"Bah","MMM12-persian":"Esf","MMMM1-persian":"Farvardin","MMMM2-persian":"Ordibehesht","MMMM3-persian":"Khordad","MMMM4-persian":"Tir","MMMM5-persian":"Mordad","MMMM6-persian":"Shahrivar","MMMM7-persian":"Mehr","MMMM8-persian":"Aban","MMMM9-persian":"Azar","MMMM10-persian":"Dey","MMMM11-persian":"Bahman","MMMM12-persian":"Esfand","EE0-persian":"Ye","EE1-persian":"Do","EE2-persian":"Se","EE3-persian":"Ch","EE4-persian":"Pa","EE5-persian":"Jo","EE6-persian":"Sh","EEE0-persian":"Yek","EEE1-persian":"Dos","EEE2-persian":"Ses","EEE3-persian":"Cha","EEE4-persian":"Pan","EEE5-persian":"Jom","EEE6-persian":"Sha","EEEE0-persian":"Yekshanbeh","EEEE1-persian":"Doshanbeh","EEEE2-persian":"Seshhanbeh","EEEE3-persian":"Chaharshanbeh","EEEE4-persian":"Panjshanbeh","EEEE5-persian":"Jomeh","EEEE6-persian":"Shanbeh","N1-persian-astro":"F","N2-persian-astro":"O","N3-persian-astro":"K","N4-persian-astro":"T","N5-persian-astro":"M","N6-persian-astro":"S","N7-persian-astro":"M","N8-persian-astro":"A","N9-persian-astro":"A","N10-persian-astro":"D","N11-persian-astro":"B","N12-persian-astro":"E","NN1-persian-astro":"Fa","NN2-persian-astro":"Or","NN3-persian-astro":"Kh","NN4-persian-astro":"Ti","NN5-persian-astro":"Mo","NN6-persian-astro":"Sh","NN7-persian-astro":"Me","NN8-persian-astro":"Ab","NN9-persian-astro":"Az","NN10-persian-astro":"De","NN11-persian-astro":"Ba","NN12-persian-astro":"Es","MMM1-persian-astro":"Far","MMM2-persian-astro":"Ord","MMM3-persian-astro":"Kho","MMM4-persian-astro":"Tir","MMM5-persian-astro":"Mor","MMM6-persian-astro":"Sha","MMM7-persian-astro":"Meh","MMM8-persian-astro":"Aba","MMM9-persian-astro":"Aza","MMM10-persian-astro":"Dey","MMM11-persian-astro":"Bah","MMM12-persian-astro":"Esf","MMMM1-persian-astro":"Farvardin","MMMM2-persian-astro":"Ordibehesht","MMMM3-persian-astro":"Khordad","MMMM4-persian-astro":"Tir","MMMM5-persian-astro":"Mordad","MMMM6-persian-astro":"Shahrivar","MMMM7-persian-astro":"Mehr","MMMM8-persian-astro":"Aban","MMMM9-persian-astro":"Azar","MMMM10-persian-astro":"Dey","MMMM11-persian-astro":"Bahman","MMMM12-persian-astro":"Esfand","EE0-persian-astro":"Ye","EE1-persian-astro":"Do","EE2-persian-astro":"Se","EE3-persian-astro":"Ch","EE4-persian-astro":"Pa","EE5-persian-astro":"Jo","EE6-persian-astro":"Sh","EEE0-persian-astro":"Yek","EEE1-persian-astro":"Dos","EEE2-persian-astro":"Ses","EEE3-persian-astro":"Cha","EEE4-persian-astro":"Pan","EEE5-persian-astro":"Jom","EEE6-persian-astro":"Sha","EEEE0-persian-astro":"Yekshanbeh","EEEE1-persian-astro":"Doshanbeh","EEEE2-persian-astro":"Seshhanbeh","EEEE3-persian-astro":"Chaharshanbeh","EEEE4-persian-astro":"Panjshanbeh","EEEE5-persian-astro":"Jomeh","EEEE6-persian-astro":"Shanbeh"};
 ilib.data.sysres_aa = {"generated":true,"NN1":"1","NN2":"2","NN3":"3","NN4":"4","NN5":"5","NN6":"6","NN7":"7","NN8":"8","NN9":"9","NN10":"10","NN11":"11","NN12":"12","MMM1":"1","MMM2":"2","MMM3":"3","MMM4":"4","MMM5":"5","MMM6":"6","MMM7":"7","MMM8":"8","MMM9":"9","MMM10":"10","MMM11":"11","MMM12":"12","MMMM1":"1","MMMM2":"2","MMMM3":"3","MMMM4":"4","MMMM5":"5","MMMM6":"6","MMMM7":"7","MMMM8":"8","MMMM9":"9","MMMM10":"10","MMMM11":"11","MMMM12":"12","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"1","EE1":"2","EE2":"3","EE3":"4","EE4":"5","EE5":"6","EE6":"7","EEE0":"1","EEE1":"2","EEE2":"3","EEE3":"4","EEE4":"5","EEE5":"6","EEE6":"7","EEEE0":"1","EEEE1":"2","EEEE2":"3","EEEE3":"4","EEEE4":"5","EEEE5":"6","EEEE6":"7","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_af = {"N1":"J","N2":"F","N3":"M","N4":"A","N5":"M","N6":"J","N7":"J","N8":"A","N9":"S","N10":"O","N11":"N","N12":"D","NN1":"Ja","NN2":"Fe","NN3":"Ma","NN4":"Ap","NN5":"Me","NN6":"Ju","NN7":"Ju","NN8":"Au","NN9":"Se","NN10":"Ok","NN11":"No","NN12":"De","MMM1":"Jan","MMM2":"Feb","MMM3":"Mar","MMM4":"Apr","MMM5":"Mei","MMM6":"Jun","MMM7":"Jul","MMM8":"Aug","MMM9":"Sep","MMM10":"Okt","MMM11":"Nov","MMM12":"Des","MMMM1":"Januarie","MMMM2":"Februarie","MMMM3":"Maart","MMMM4":"April","MMMM5":"Mei","MMMM6":"Junie","MMMM7":"Julie","MMMM8":"Augustus","MMMM9":"September","MMMM10":"Oktober","MMMM11":"November","MMMM12":"Desember","E0":"S","E1":"M","E2":"D","E3":"W","E4":"D","E5":"V","E6":"S","EE0":"So","EE1":"Ma","EE2":"Di","EE3":"Wo","EE4":"Do","EE5":"Vr","EE6":"Sa","EEE0":"So","EEE1":"Ma","EEE2":"Di","EEE3":"Wo","EEE4":"Do","EEE5":"Vr","EEE6":"Sa","EEEE0":"Sondag","EEEE1":"Maandag","EEEE2":"Dinsdag","EEEE3":"Woensdag","EEEE4":"Donderdag","EEEE5":"Vrydag","EEEE6":"Saterdag","a0":"vm.","a1":"nm.","G-1":"v.C.","G1":"n.C.","in {duration}":"in {duration}","{duration} ago":"{duration} gelede","1#1 year|#{num} years":"#{num} jaar","1#1 month|#{num} months":"1#{num} maand|#{num} maande","1#1 week|#{num} weeks":"1#{num} week|#{num} weke","1#1 day|#{num} days":"1#{num} dag|#{num} dae","1#1 hour|#{num} hours":"#{num} uur","1#1 minute|#{num} minutes":"1#{num} minuut|#{num} minute","1#1 second|#{num} seconds":"1#{num} sekonde|#{num} sekondes","1#1 yr|#{num} yrs":"#{num} jr","1#1 mon|#{num} mons":"1#{num} mnd|#{num} mnde","1#1 wk|#{num} wks":"1#{num} week|#{num} weke","durationLongDays":"1#{num} dag|#{num} dae","1#1 hr|#{num} hrs":"#{num} uur","1#1 min|#{num} min":"#{num} min","1#1 sec|#{num} sec":"#{num} sek","durationMediumYears":"#{num} jr","1#1 mo|#{num} mos":"#{num} ma","durationMediumWeeks":"#{num} we","1#1 dy|#{num} dys":"#{num} da","durationMediumHours":"#{num} uu","1#1 mi|#{num} min":"#{num} mi","1#1 se|#{num} sec":"#{num} se","#{num}y":"#{num}j","durationShortMonths":"#{num}m","#{num}w":"#{num}w","#{num}d":"#{num}d","#{num}h":"#{num}u","durationShortMinutes":"#{num}m","#{num}s":"#{num}s","separatorShort":" ","separatorMedium":" ","separatorLong":" ","separatorFull":", ","finalSeparatorFull":" en ","durationShortMillis":"#{num}ms","#{num} ms":"#{num} ms"};
 ilib.data.sysres_af_NA = {};
@@ -7137,26 +7192,14 @@ ilib.data.sysres_af_ZA = {};
 ilib.data.sysres_agq = {"generated":true,"NN1":"nù","NN2":"kɨ","NN3":"tɨ","NN4":"ta","NN5":"se","NN6":"nz","NN7":"du","NN8":"fɔ","NN9":"dz","NN10":"lɔ","NN11":"ka","NN12":"fw","MMM1":"nùm","MMM2":"kɨz","MMM3":"tɨd","MMM4":"taa","MMM5":"see","MMM6":"nzu","MMM7":"dum","MMM8":"fɔe","MMM9":"dzu","MMM10":"lɔm","MMM11":"kaa","MMM12":"fwo","MMMM1":"ndzɔ̀ŋɔ̀nùm","MMMM2":"ndzɔ̀ŋɔ̀kƗ̀zùʔ","MMMM3":"ndzɔ̀ŋɔ̀tƗ̀dʉ̀ghà","MMMM4":"ndzɔ̀ŋɔ̀tǎafʉ̄ghā","MMMM5":"ndzɔ̀ŋèsèe","MMMM6":"ndzɔ̀ŋɔ̀nzùghò","MMMM7":"ndzɔ̀ŋɔ̀dùmlo","MMMM8":"ndzɔ̀ŋɔ̀kwîfɔ̀e","MMMM9":"ndzɔ̀ŋɔ̀tƗ̀fʉ̀ghàdzughù","MMMM10":"ndzɔ̀ŋɔ̀ghǔuwelɔ̀m","MMMM11":"ndzɔ̀ŋɔ̀chwaʔàkaa wo","MMMM12":"ndzɔ̀ŋèfwòo","E0":"n","E1":"k","E2":"g","E3":"t","E4":"u","E5":"g","E6":"d","EE0":"nt","EE1":"kp","EE2":"gh","EE3":"tɔ","EE4":"um","EE5":"gh","EE6":"dz","EEE0":"nts","EEE1":"kpa","EEE2":"ghɔ","EEE3":"tɔm","EEE4":"ume","EEE5":"ghɨ","EEE6":"dzk","EEEE0":"tsuʔntsɨ","EEEE1":"tsuʔukpà","EEEE2":"tsuʔughɔe","EEEE3":"tsuʔutɔ̀mlò","EEEE4":"tsuʔumè","EEEE5":"tsuʔughɨ̂m","EEEE6":"tsuʔndzɨkɔʔɔ","a0":"a.g","a1":"a.k","G-1":"SK","G1":"BK","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_ak = {"generated":true,"NN1":"S-","NN2":"K-","NN3":"E-","NN4":"E-","NN5":"E-","NN6":"O-","NN7":"A-","NN8":"D-","NN9":"F-","NN10":"Ɔ-","NN11":"Ɔ-","NN12":"M-","MMM1":"S-Ɔ","MMM2":"K-Ɔ","MMM3":"E-Ɔ","MMM4":"E-O","MMM5":"E-K","MMM6":"O-A","MMM7":"A-K","MMM8":"D-Ɔ","MMM9":"F-Ɛ","MMM10":"Ɔ-A","MMM11":"Ɔ-O","MMM12":"M-Ɔ","MMMM1":"Sanda-Ɔpɛpɔn","MMMM2":"Kwakwar-Ɔgyefuo","MMMM3":"Ebɔw-Ɔbenem","MMMM4":"Ebɔbira-Oforisuo","MMMM5":"Esusow Aketseaba-Kɔtɔnimba","MMMM6":"Obirade-Ayɛwohomumu","MMMM7":"Ayɛwoho-Kitawonsa","MMMM8":"Difuu-Ɔsandaa","MMMM9":"Fankwa-Ɛbɔ","MMMM10":"Ɔbɛsɛ-Ahinime","MMMM11":"Ɔberɛfɛw-Obubuo","MMMM12":"Mumu-Ɔpɛnimba","E0":"K","E1":"D","E2":"B","E4":"Y","E6":"M","EE0":"Kw","EE1":"Dw","EE2":"Be","EE3":"Wu","EE4":"Ya","EE5":"Fi","EE6":"Me","EEE0":"Kwe","EEE1":"Dwo","EEE2":"Ben","EEE3":"Wuk","EEE4":"Yaw","EEE5":"Fia","EEE6":"Mem","EEEE0":"Kwesida","EEEE1":"Dwowda","EEEE2":"Benada","EEEE3":"Wukuda","EEEE4":"Yawda","EEEE5":"Fida","EEEE6":"Memeneda","a0":"AN","a1":"EW","G-1":"AK","G1":"KE","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_am = {"generated":true,"NN1":"ጃን","NN2":"ፌብ","NN3":"ማር","NN4":"ኤፕ","NN5":"ሜይ","NN6":"ጁን","NN7":"ጁላ","NN8":"ኦገ","NN9":"ሴፕ","NN10":"ኦክ","NN11":"ኖቬ","NN12":"ዲሴ","MMM1":"ጃንዩ","MMM2":"ፌብሩ","MMM3":"ማርች","MMM4":"ኤፕሪ","MMM5":"ሜይ","MMM6":"ጁን","MMM7":"ጁላይ","MMM8":"ኦገስ","MMM9":"ሴፕቴ","MMM10":"ኦክተ","MMM11":"ኖቬም","MMM12":"ዲሴም","MMMM1":"ጃንዩወሪ","MMMM2":"ፌብሩወሪ","MMMM3":"ማርች","MMMM4":"ኤፕሪል","MMMM5":"ሜይ","MMMM6":"ጁን","MMMM7":"ጁላይ","MMMM8":"ኦገስት","MMMM9":"ሴፕቴምበር","MMMM10":"ኦክተውበር","MMMM11":"ኖቬምበር","MMMM12":"ዲሴምበር","E0":"እ","E1":"ሰ","E2":"ማ","E3":"ረ","E4":"ሐ","E5":"ዓ","E6":"ቅ","EE0":"እ","EE1":"ሰ","EE2":"ማ","EE3":"ረ","EE4":"ሐ","EE5":"ዓ","EE6":"ቅ","EEE0":"እሑድ","EEE1":"ሰኞ","EEE2":"ማክሰ","EEE3":"ረቡዕ","EEE4":"ሐሙስ","EEE5":"ዓርብ","EEE6":"ቅዳሜ","EEEE0":"እሑድ","EEEE1":"ሰኞ","EEEE2":"ማክሰኞ","EEEE3":"ረቡዕ","EEEE4":"ሐሙስ","EEEE5":"ዓርብ","EEEE6":"ቅዳሜ","a0":"ጥዋት","a1":"ከሰዓት","G-1":"ዓ/ዓ","G1":"ዓ/ም","#{num}s":"#{num}ሰ","1#1 se|#{num} sec":"#{num} ሰከ","1#1 sec|#{num} sec":"#{num} ሰከን","1#1 second|#{num} seconds":"#{num} ሰከንዶች","durationShortMinutes":"#{num}ደ","1#1 mi|#{num} min":"#{num} ደቂ","1#1 min|#{num} min":"#{num} ደቂቃ","1#1 minute|#{num} minutes":"#{num} ደቂቃዎች","#{num}h":"#{num}ሰ","durationMediumHours":"one#{num} ሰዓት|#{num} ሰዓ","1#1 hr|#{num} hrs":"#{num} ሰዓቶች","1#1 hour|#{num} hours":"#{num} ሰዓቶች","#{num}d":"#{num}ቀ","1#1 dy|#{num} dys":"#{num} ቀናት","durationLongDays":"#{num} ቀናት","1#1 day|#{num} days":"#{num} ቀናት","#{num}w":"#{num}ሳ","durationMediumWeeks":"#{num} ሳም","1#1 wk|#{num} wks":"#{num} ሳምን","1#1 week|#{num} weeks":"#{num} ሳምንታት","durationShortMonths":"#{num}ወ","1#1 mo|#{num} mos":"#{num} ወራት","1#1 mon|#{num} mons":"#{num} ወራት","1#1 month|#{num} months":"#{num} ወራት","#{num}y":"#{num}ዓ","durationMediumYears":"#{num} ዓመ","1#1 yr|#{num} yrs":"#{num} ዓመታት","1#1 year|#{num} years":"#{num} ዓመታት","{duration} ago":"ከ{duration} በፊት","in {duration}":"በ {duration} ውስጥ","separatorFull":"፣ ","finalSeparatorFull":", እና ","separatorLong":" "};
-ilib.data.sysres_ar = {"N1":"ي","N2":"ف","N3":"م","N4":"أ","N5":"و","N6":"ن","N7":"ل","N8":"غ","N9":"س","N10":"ك","N11":"ب","N12":"د","NN1":"ين","NN2":"فب","NN3":"ما","NN4":"أب","NN5":"ما","NN6":"يو","NN7":"يو","NN8":"أغ","NN9":"سب","NN10":"أك","NN11":"نو","NN12":"دي","MMM1":"ينا","MMM2":"فبر","MMM3":"مار","MMM4":"أبر","MMM5":"ماي","MMM6":"يون","MMM7":"يول","MMM8":"أغس","MMM9":"سبت","MMM10":"أكت","MMM11":"نوف","MMM12":"ديس","MMMM1":"يناير","MMMM2":"فبراير","MMMM3":"مارس","MMMM4":"أبريل","MMMM5":"مايو","MMMM6":"يونيو","MMMM7":"يوليو","MMMM8":"أغسطس","MMMM9":"سبتمبر","MMMM10":"أكتوبر","MMMM11":"نوفمبر","MMMM12":"ديسمبر","E0":"ح","E1":"ن","E2":"ث","E3":"ر","E4":"خ","E5":"ج","E6":"س","EE0":"الأحد","EE1":"الاثنين","EE2":"الثلاثاء","EE3":"الأربعاء","EE4":"الخميس","EE5":"الجمعة","EE6":"السبت","EEE0":"الأحد","EEE1":"الاثنين","EEE2":"الثلاثاء","EEE3":"الأربعاء","EEE4":"الخميس","EEE5":"الجمعة","EEE6":"السبت","EEEE0":"الأحد","EEEE1":"الاثنين","EEEE2":"الثلاثاء","EEEE3":"الأربعاء","EEEE4":"الخميس","EEEE5":"الجمعة","EEEE6":"السبت","a0":"ص","a1":"م","G-1":"ق.م","G1":"م","in {duration}":"خلال {0} من الأيام","{duration} ago":"قبل {0} من الأيام","1#1 year|#{num} years":"0#لا سنوات|1#سنة|2#{num} سنوات|3#{num} سنوات|4#{num} سنوات|#{num} سنة","1#1 month|#{num} months":"0#لا أشهر|1#شهر|2#{num} أشهر|3#{num} أشهر|4#{num} أشهر|#{num} شهر","1#1 week|#{num} weeks":"0#لا أسابيع|1#أسبوع|2#{num} أسابيع|3#{num} أسابيع|4#{num} أسابيع|#{num} أسبوع","1#1 day|#{num} days":"0#لا أيام|1#يوم|2#{num} أيام|3#{num} أيام|4#{num} أيام|#{num} يوم","1#1 hour|#{num} hours":"0#لا ساعات|1#ساعة|2#{num} ساعات|3#{num} ساعات|4#{num} ساعات|#{num} ساعة","1#1 minute|#{num} minutes":"0#لا دقائق|1#دقيقة|2#{num} دقائق|3#{num} دقائق|4#{num} دقائق|#{num} دقيقة","1#1 second|#{num} seconds":"0#لا ثوان|1#ثانية|2#{num} ثوان|3#{num} ثوان|4#{num} ثوان|#{num} ثانية","1#1 yr|#{num} yrs":"0#لا سنوات|1#سنة|2#{num} سنوات|3#{num} سنوات|4#{num} سنوات|#{num} سنة","1#1 mon|#{num} mons":"0#لا أشهر|1#شهر|2#{num} أشهر|3#{num} أشهر|4#{num} أشهر|#{num} شهر","1#1 wk|#{num} wks":"0#لا أسابيع|1#أسبوع|2#{num} أسابيع|3#{num} أسابيع|4#{num} أسابيع|#{num} أسبوع","durationLongDays":"0#لا أيام|1#يوم|2#{num} أيام|3#{num} أيام|4#{num} أيام|#{num} يوم","1#1 hr|#{num} hrs":"0#لا ساعات|1#ساعة|2#{num} س|3#{num} س|4#{num} س|#{num} س","1#1 min|#{num} min":"0#لا دقائق|1#دقيقة|2#{num} د|3#{num} د|4#{num} د|#{num} د","1#1 sec|#{num} sec":"0#لا ثوان|1#ثانية|2#{num} ث|3#{num} ث|4#{num} ث|#{num} ث","durationMediumYears":"0#لا سنوات|1#سنة|2#{num} سن|3#{num} سن|4#{num} سن|#{num} سن","1#1 mo|#{num} mos":"0#لا أشهر|1#شهر|2#{num} أش|3#{num} أش|4#{num} أش|#{num} شه","durationMediumWeeks":"0#لا أسابيع|1#أسبوع|2#{num} أس|3#{num} أس|4#{num} أس|#{num} أس","1#1 dy|#{num} dys":"0#لا أيام|1#يوم|2#{num} أي|3#{num} أي|4#{num} أي|#{num} يو","durationMediumHours":"0#لا ساعات|1#ساعة|2#{0} س|3#{0} س|4#{0} س|#{0} س","1#1 mi|#{num} min":"0#لا دقائق|1#دقيقة|2#{0} د|3#{0} د|4#{0} د|#{0} د","1#1 se|#{num} sec":"0#لا ثوان|1#ثانية|2#{0} ث|3#{0} ث|4#{0} ث|#{0} ث","#{num}y":"#لا سنوات","durationShortMonths":"#لا أشهر","#{num}w":"#لا أسابيع","#{num}d":"#لا أيام","#{num}h":"#لا ساعات","durationShortMinutes":"#لا دقائق","#{num}s":"#لا ثوان","separatorShort":" ","separatorMedium":" ","separatorLong":" ","separatorFull":", ","finalSeparatorFull":"، و "};
-ilib.data.sysres_ar_AE = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_BH = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_DJ = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_DZ = {"generated":true,"NN1":"جا","NN2":"في","NN4":"أف","NN6":"جو","NN7":"جو","NN8":"أو","MMM1":"جانفي","MMM2":"فيفري","MMM3":"مارس","MMM4":"أفريل","MMM6":"جوان","MMM7":"جويلية","MMM8":"أوت","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","MMMM1":"جانفي","MMMM2":"فيفري","MMMM4":"أفريل","MMMM5":"ماي","MMMM6":"جوان","MMMM7":"جويلية","MMMM8":"أوت","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_EG = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_IQ = {"generated":true,"NN1":"كا","NN2":"شب","NN3":"آذ","NN4":"ني","NN5":"أي","NN6":"حز","NN7":"تم","NN8":"آب","NN9":"أي","NN10":"تش","NN11":"تش","NN12":"كا","MMM1":"كانون الثاني","MMM2":"شباط","MMM3":"آذار","MMM4":"نيسان","MMM5":"أيار","MMM6":"حزيران","MMM7":"تموز","MMM8":"آب","MMM9":"أيلول","MMM10":"تشرین الأول","MMM11":"تشرين الثاني","MMM12":"كانون الأول","MMMM1":"كانون الثاني","MMMM2":"شباط","MMMM3":"آذار","MMMM4":"نيسان","MMMM5":"أيار","MMMM6":"حزيران","MMMM7":"تموز","MMMM8":"آب","MMMM9":"أيلول","MMMM10":"تشرين الأول","MMMM11":"تشرين الثاني","MMMM12":"كانون الأول","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_JO = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","MMMM1":"كانون الثاني","MMMM2":"شباط","MMMM3":"آذار","MMMM4":"نيسان","MMMM5":"أيار","MMMM6":"حزيران","MMMM7":"تموز","MMMM8":"آب","MMMM9":"أيلول","MMMM10":"تشرين الأول","MMMM11":"تشرين الثاني","MMMM12":"كانون الأول","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_KW = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_LB = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","MMMM1":"كانون الثاني","MMMM2":"شباط","MMMM3":"آذار","MMMM4":"نيسان","MMMM5":"أيار","MMMM6":"حزيران","MMMM7":"تموز","MMMM8":"آب","MMMM9":"أيلول","MMMM10":"تشرين الأول","MMMM11":"تشرين الثاني","MMMM12":"كانون الأول","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_LY = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_MA = {"generated":true,"NN4":"ﺄب","NN8":"غش","MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"ﺄبﺮيﻟ","MMM6":"يونيو","MMM7":"يوليو","MMM8":"غشت","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نونبر","MMM12":"ديسمبر","MMMM4":"إبريل","MMMM5":"ماي","MMMM8":"غشت","MMMM11":"نونبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_MR = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_OM = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_QA = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_SA = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_SD = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_SY = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","MMMM1":"كانون الثاني","MMMM2":"شباط","MMMM3":"آذار","MMMM4":"نيسان","MMMM5":"أيار","MMMM6":"حزيران","MMMM7":"تموز","MMMM8":"آب","MMMM9":"أيلول","MMMM10":"تشرين الأول","MMMM11":"تشرين الثاني","MMMM12":"كانون الأول","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_TN = {"generated":true,"NN1":"جا","NN2":"في","NN4":"أف","NN6":"جو","NN7":"جو","NN8":"أو","MMM1":"جانفي","MMM2":"فيفري","MMM3":"مارس","MMM4":"أفريل","MMM6":"جوان","MMM7":"جويلية","MMM8":"أوت","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","MMMM1":"جانفي","MMMM2":"فيفري","MMMM4":"أفريل","MMMM5":"ماي","MMMM6":"جوان","MMMM7":"جويلية","MMMM8":"أوت","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
-ilib.data.sysres_ar_YE = {"generated":true,"MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","EE0":"ال","EE1":"ال","EE2":"ال","EE3":"ال","EE4":"ال","EE5":"ال","EE6":"ال","#{num}s":"#ث","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثو|#{num} ثا","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثان","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانيةً|#{num} ثانية","durationShortMinutes":"#د","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|#{num} دق","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقا|#{num} دقي","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقةً|#{num} دقيقة","#{num}h":"#س","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|#{num} سا","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساع|many#{num} ساع|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعةً|#{num} ساعة","#{num}d":"#ي","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أي|many#{num} يو|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|many#{num} يوماً|#{num} يوم","#{num}w":"#أ","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|#{num} أس","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسا|#{num} أسب","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعاً|#{num} أسبوع","durationShortMonths":"#ش","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أش|many#{num} شه|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهراً|#{num} شهر","#{num}y":"#س","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سن|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنو|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorFull":"، "};
+ilib.data.sysres_ar = {"N1":"ي","N2":"ف","N3":"م","N4":"أ","N5":"و","N6":"ن","N7":"ل","N8":"غ","N9":"س","N10":"ك","N11":"ب","N12":"د","NN1":"يناير","NN2":"فبراير","NN3":"مارس","NN4":"أبريل","NN5":"مايو","NN6":"يونيو","NN7":"يوليو","NN8":"أغسطس","NN9":"سبتمبر","NN10":"أكتوبر","NN11":"نوفمبر","NN12":"ديسمبر","MMM1":"يناير","MMM2":"فبراير","MMM3":"مارس","MMM4":"أبريل","MMM5":"مايو","MMM6":"يونيو","MMM7":"يوليو","MMM8":"أغسطس","MMM9":"سبتمبر","MMM10":"أكتوبر","MMM11":"نوفمبر","MMM12":"ديسمبر","MMMM1":"يناير","MMMM2":"فبراير","MMMM3":"مارس","MMMM4":"أبريل","MMMM5":"مايو","MMMM6":"يونيو","MMMM7":"يوليو","MMMM8":"أغسطس","MMMM9":"سبتمبر","MMMM10":"أكتوبر","MMMM11":"نوفمبر","MMMM12":"ديسمبر","E0":"ح","E1":"ن","E2":"ث","E3":"ر","E4":"خ","E5":"ج","E6":"س","EE0":"الأحد","EE1":"الاثنين","EE2":"الثلاثاء","EE3":"الأربعاء","EE4":"الخميس","EE5":"الجمعة","EE6":"السبت","EEE0":"الأحد","EEE1":"الاثنين","EEE2":"الثلاثاء","EEE3":"الأربعاء","EEE4":"الخميس","EEE5":"الجمعة","EEE6":"السبت","EEEE0":"الأحد","EEEE1":"الاثنين","EEEE2":"الثلاثاء","EEEE3":"الأربعاء","EEEE4":"الخميس","EEEE5":"الجمعة","EEEE6":"السبت","a0":"ص","a1":"م","G-1":"ق.م","G1":"م","in {duration}":"خلال {0} من الأيام","{duration} ago":"قبل {0} من الأيام","#{num}s":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثانية","1#1 se|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثانية","1#1 sec|#{num} sec":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثانية","1#1 second|#{num} seconds":"zero#لا ثوان|one#ثانية|two#ثانيتان|few#{num} ثوان|#{num} ثانية","durationShortMinutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|#{num} دقيقة","1#1 mi|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|#{num} دقيقة","1#1 min|#{num} min":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|#{num} دقيقة","1#1 minute|#{num} minutes":"zero#لا دقائق|one#دقيقة|two#دقيقتان|few#{num} دقائق|#{num} دقيقة","#{num}h":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|#{num} ساعة","durationMediumHours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|#{num} ساعة","1#1 hr|#{num} hrs":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|#{num} ساعة","1#1 hour|#{num} hours":"zero#لا ساعات|one#ساعة|two#ساعتان|few#{num} ساعات|#{num} ساعة","#{num}d":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 dy|#{num} dys":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","durationLongDays":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","1#1 day|#{num} days":"one#يوم|two#يومان|few#{num} أيام|#{num} يوم","#{num}w":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|#{num} أسبوع","durationMediumWeeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|#{num} أسبوع","1#1 wk|#{num} wks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|#{num} أسبوع","1#1 week|#{num} weeks":"zero#لا أسابيع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|#{num} أسبوع","durationShortMonths":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 mo|#{num} mos":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 mon|#{num} mons":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","1#1 month|#{num} months":"zero#لا أشهر|one#شهر|two#شهران|few#{num} أشهر|#{num} شهر","#{num}y":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","durationMediumYears":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","1#1 yr|#{num} yrs":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","1#1 year|#{num} years":"zero#لا سنوات|one#سنة|two#سنتان|few#{num} سنوات|#{num} سنة","separatorLong":" ","separatorFull":"، ","finalSeparatorFull":"، و "};
+ilib.data.sysres_ar_DZ = {"NN1":"جانفي","NN2":"فيفري","NN4":"أفريل","NN5":"ماي","NN6":"جوان","NN7":"جويلية","NN8":"أوت","MMM1":"جانفي","MMM2":"فيفري","MMM4":"أفريل","MMM5":"ماي","MMM6":"جوان","MMM7":"جويلية","MMM8":"أوت","MMMM1":"جانفي","MMMM2":"فيفري","MMMM4":"أفريل","MMMM5":"ماي","MMMM6":"جوان","MMMM7":"جويلية","MMMM8":"أوت"};
+ilib.data.sysres_ar_IQ = {"NN1":"كانون الثاني","NN2":"شباط","NN3":"آذار","NN4":"نيسان","NN5":"أيار","NN6":"حزيران","NN7":"تموز","NN8":"آب","NN9":"أيلول","NN10":"تشرين الأول","NN11":"تشرين الثاني","NN12":"كانون الأول","MMM1":"كانون الثاني","MMM2":"شباط","MMM3":"آذار","MMM4":"نيسان","MMM5":"أيار","MMM6":"حزيران","MMM7":"تموز","MMM8":"آب","MMM9":"أيلول","MMM10":"تشرين الأول","MMM11":"تشرين الثاني","MMM12":"كانون الأول","MMMM1":"كانون الثاني","MMMM2":"شباط","MMMM3":"آذار","MMMM4":"نيسان","MMMM5":"أيار","MMMM6":"حزيران","MMMM7":"تموز","MMMM8":"آب","MMMM9":"أيلول","MMMM10":"تشرين الأول","MMMM11":"تشرين الثاني","MMMM12":"كانون الأول"};
+ilib.data.sysres_ar_JO = {"NN1":"كانون الثاني","NN2":"شباط","NN3":"آذار","NN4":"نيسان","NN5":"أيار","NN6":"حزيران","NN7":"تموز","NN8":"آب","NN9":"أيلول","NN10":"تشرين الأول","NN11":"تشرين الثاني","NN12":"كانون الأول","MMM1":"كانون الثاني","MMM2":"شباط","MMM3":"آذار","MMM4":"نيسان","MMM5":"أيار","MMM6":"حزيران","MMM7":"تموز","MMM8":"آب","MMM9":"أيلول","MMM10":"تشرين الأول","MMM11":"تشرين الثاني","MMM12":"كانون الأول","MMMM1":"كانون الثاني","MMMM2":"شباط","MMMM3":"آذار","MMMM4":"نيسان","MMMM5":"أيار","MMMM6":"حزيران","MMMM7":"تموز","MMMM8":"آب","MMMM9":"أيلول","MMMM10":"تشرين الأول","MMMM11":"تشرين الثاني","MMMM12":"كانون الأول"};
+ilib.data.sysres_ar_LB = {"NN1":"كانون الثاني","NN2":"شباط","NN3":"آذار","NN4":"نيسان","NN5":"أيار","NN6":"حزيران","NN7":"تموز","NN8":"آب","NN9":"أيلول","NN10":"تشرين الأول","NN11":"تشرين الثاني","NN12":"كانون الأول","MMM1":"كانون الثاني","MMM2":"شباط","MMM3":"آذار","MMM4":"نيسان","MMM5":"أيار","MMM6":"حزيران","MMM7":"تموز","MMM8":"آب","MMM9":"أيلول","MMM10":"تشرين الأول","MMM11":"تشرين الثاني","MMM12":"كانون الأول","MMMM1":"كانون الثاني","MMMM2":"شباط","MMMM3":"آذار","MMMM4":"نيسان","MMMM5":"أيار","MMMM6":"حزيران","MMMM7":"تموز","MMMM8":"آب","MMMM9":"أيلول","MMMM10":"تشرين الأول","MMMM11":"تشرين الثاني","MMMM12":"كانون الأول"};
+ilib.data.sysres_ar_MA = {"NN4":"إبريل","NN5":"ماي","NN8":"غشت","NN11":"نونبر","MMM4":"إبريل","MMM5":"ماي","MMM8":"غشت","MMM11":"نونبر","MMMM4":"إبريل","MMMM5":"ماي","MMMM8":"غشت","MMMM11":"نونبر"};
+ilib.data.sysres_ar_SY = {"NN1":"كانون الثاني","NN2":"شباط","NN3":"آذار","NN4":"نيسان","NN5":"أيار","NN6":"حزيران","NN7":"تموز","NN8":"آب","NN9":"أيلول","NN10":"تشرين الأول","NN11":"تشرين الثاني","NN12":"كانون الأول","MMM1":"كانون الثاني","MMM2":"شباط","MMM3":"آذار","MMM4":"نيسان","MMM5":"أيار","MMM6":"حزيران","MMM7":"تموز","MMM8":"آب","MMM9":"أيلول","MMM10":"تشرين الأول","MMM11":"تشرين الثاني","MMM12":"كانون الأول","MMMM1":"كانون الثاني","MMMM2":"شباط","MMMM3":"آذار","MMMM4":"نيسان","MMMM5":"أيار","MMMM6":"حزيران","MMMM7":"تموز","MMMM8":"آب","MMMM9":"أيلول","MMMM10":"تشرين الأول","MMMM11":"تشرين الثاني","MMMM12":"كانون الأول"};
+ilib.data.sysres_ar_TN = {"NN1":"جانفي","NN2":"فيفري","NN4":"أفريل","NN5":"ماي","NN6":"جوان","NN7":"جويلية","NN8":"أوت","MMM1":"جانفي","MMM2":"فيفري","MMM5":"ماي","MMM4":"أفريل","MMM6":"جوان","MMM7":"جويلية","MMM8":"أوت","MMMM1":"جانفي","MMMM2":"فيفري","MMMM4":"أفريل","MMMM5":"ماي","MMMM6":"جوان","MMMM7":"جويلية","MMMM8":"أوت"};
 ilib.data.sysres_asa = {"generated":true,"NN5":"Me","NN8":"Ag","NN10":"Ok","MMM3":"Mac","MMM5":"Mei","MMM8":"Ago","MMM10":"Okt","MMMM1":"Januari","MMMM2":"Februari","MMMM3":"Machi","MMMM4":"Aprili","MMMM5":"Mei","MMMM6":"Juni","MMMM7":"Julai","MMMM8":"Agosti","MMMM9":"Septemba","MMMM10":"Oktoba","MMMM11":"Novemba","MMMM12":"Desemba","E0":"J","E1":"J","E2":"J","E3":"J","E4":"A","E5":"I","E6":"J","EE0":"Jp","EE1":"Jt","EE2":"Jn","EE3":"Jt","EE4":"Al","EE5":"Ij","EE6":"Jm","EEE0":"Jpi","EEE1":"Jtt","EEE2":"Jnn","EEE3":"Jtn","EEE4":"Alh","EEE5":"Ijm","EEE6":"Jmo","EEEE0":"Jumapili","EEEE1":"Jumatatu","EEEE2":"Jumanne","EEEE3":"Jumatano","EEEE4":"Alhamisi","EEEE5":"Ijumaa","EEEE6":"Jumamosi","a0":"icheheavo","a1":"ichamthi","G-1":"KM","G1":"BM","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_as = {"generated":true,"NN1":"জা","NN2":"ফে","NN3":"মা","NN4":"এপ","NN5":"মে","NN6":"জু","NN7":"জু","NN8":"আগ","NN9":"সে","NN10":"অক","NN11":"নভ","NN12":"ডি","MMM1":"জানু","MMM2":"ফেব্ৰু","MMM3":"মাৰ্চ","MMM4":"এপ্ৰিল","MMM5":"মে","MMM6":"জুন","MMM7":"জুলাই","MMM8":"আগ","MMM9":"সেপ্ট","MMM10":"অক্টো","MMM11":"নভে","MMM12":"ডিসে","MMMM1":"জানুৱাৰী","MMMM2":"ফেব্ৰুৱাৰী","MMMM3":"মাৰ্চ","MMMM4":"এপ্ৰিল","MMMM5":"মে","MMMM6":"জুন","MMMM7":"জুলাই","MMMM8":"আগষ্ট","MMMM9":"ছেপ্তেম্বৰ","MMMM10":"অক্টোবৰ","MMMM11":"নৱেম্বৰ","MMMM12":"ডিচেম্বৰ","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"ৰব","EE1":"সো","EE2":"মঙ","EE3":"বু","EE4":"বৃ","EE5":"শু","EE6":"শন","EEE0":"ৰবি","EEE1":"সোম","EEE2":"মঙ্গল","EEE3":"বুধ","EEE4":"বৃহষ্পতি","EEE5":"শুক্ৰ","EEE6":"শনি","EEEE0":"দেওবাৰ","EEEE1":"সোমবাৰ","EEEE2":"মঙ্গলবাৰ","EEEE3":"বুধবাৰ","EEEE4":"বৃহষ্পতিবাৰ","EEEE5":"শুক্ৰবাৰ","EEEE6":"শনিবাৰ","a0":"পূৰ্বাহ্ণ","a1":"অপৰাহ্ণ","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_az = {"generated":true,"NN1":"ya","NN2":"fe","NN3":"ma","NN4":"ap","NN5":"ma","NN6":"iy","NN7":"iy","NN8":"av","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"yan","MMM2":"fev","MMM3":"mar","MMM4":"apr","MMM5":"may","MMM6":"iyn","MMM7":"iyl","MMM8":"avq","MMM9":"sen","MMM10":"okt","MMM11":"noy","MMM12":"dek","MMMM1":"Yanvar","MMMM2":"Fevral","MMMM3":"Mart","MMMM4":"Aprel","MMMM6":"İyun","MMMM7":"İyul","MMMM8":"Avqust","MMMM9":"Sentyabr","MMMM10":"Oktyabr","MMMM11":"Noyabr","MMMM12":"Dekabr","E0":"7","E1":"1","E2":"2","E3":"3","E4":"4","E5":"5","E6":"6","EE0":"B.","EE1":"B.","EE2":"Ç.","EE3":"Ç.","EE4":"C.","EE5":"C","EE6":"Ş.","EEE0":"B.","EEE1":"B.E.","EEE2":"Ç.A.","EEE3":"Ç.","EEE4":"C.A.","EEE5":"C","EEE6":"Ş.","EEEE0":"bazar","EEEE1":"bazar ertəsi","EEEE2":"çərşənbə axşamı","EEEE3":"çərşənbə","EEEE4":"cümə axşamı","EEEE5":"cümə","EEEE6":"şənbə","G-1":"e.ə.","G1":"b.e.","1#1 sec|#{num} sec":"#{num} san","1#1 second|#{num} seconds":"#{num} saniyə","durationShortMinutes":"#{num}d","1#1 min|#{num} min":"#{num} dəq","1#1 minute|#{num} minutes":"#{num} dəqiqə","#{num}h":"#{num}s","1#1 hr|#{num} hrs":"#{num} saat","1#1 hour|#{num} hours":"#{num} saat","#{num}d":"#{num}g","durationLongDays":"#{num} gün","1#1 day|#{num} days":"#{num} gün","#{num}w":"#{num}h","1#1 wk|#{num} wks":"#{num} həf","1#1 week|#{num} weeks":"#{num} həftə","durationShortMonths":"#{num}a","1#1 mon|#{num} mons":"#{num} ay","1#1 month|#{num} months":"#{num} ay","#{num}y":"#{num}i","1#1 yr|#{num} yrs":"#{num} il","1#1 year|#{num} years":"#{num} il","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
@@ -7353,7 +7396,7 @@ ilib.data.sysres_zu = {"generated":true,"NN5":"Me","NN8":"Ag","NN10":"Ok","NN12"
 /*
  * datefmt.js - Date formatter definition
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7386,8 +7429,6 @@ util/jsutils.js
 // !data dateformats sysres
 
 /**
- * @class
- * 
  * Create a new date formatter instance. The date formatter is immutable once
  * it is created, but can format as many different dates as needed with the same
  * options. Create different date formatter instances for different purposes
@@ -7621,6 +7662,7 @@ util/jsutils.js
  * 
  * Depends directive: !depends datefmt.js
  * 
+ * @class
  * @constructor
  * @param {Object} options options governing the way this date formatter instance works
  */
@@ -7988,8 +8030,8 @@ ilib.DateFmt.prototype = {
 	},
     
 	/**
-	 * @protected
 	 * Convert the template into an array of date components separated by formatting chars.
+	 * @protected
 	 * @param {string} template Format template to tokenize into components
 	 * @return {Array.<string>} a tokenized array of date format components
 	 */
@@ -8663,7 +8705,7 @@ ilib.DateFmt.prototype = {
 /*
  * datefmt.js - Date formatter definition
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -8696,8 +8738,6 @@ util/jsutils.js
 // !data dateformats sysres
 
 /**
- * @class
- * 
  * Create a new date range formatter instance. The date range formatter is immutable once
  * it is created, but can format as many different date ranges as needed with the same
  * options. Create different date range formatter instances for different purposes
@@ -8774,6 +8814,7 @@ util/jsutils.js
  * 
  * Depends directive: !depends daterangefmt.js
  * 
+ * @class
  * @constructor
  * @param {Object} options options governing the way this date range formatter instance works
  */
@@ -9020,7 +9061,7 @@ ilib.DateRngFmt.prototype = {
 /*
  * hebrew.js - Represent a Hebrew calendar object.
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -9040,7 +9081,6 @@ ilib.DateRngFmt.prototype = {
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
- * @class
  * Construct a new Hebrew calendar object. This class encodes information about
  * the Hebrew (Jewish) calendar. The Hebrew calendar is a tabular hebrew 
  * calendar where the dates are calculated by arithmetic rules. This differs from 
@@ -9055,6 +9095,7 @@ ilib.DateRngFmt.prototype = {
  * 
  * Depends directive: !depends hebrew.js
  * 
+ * @class
  * @constructor
  * @implements ilib.Cal
  */
@@ -9064,9 +9105,9 @@ ilib.Cal.Hebrew = function() {
 
 
 /**
- * @private
  * Return the number of days elapsed in the Hebrew calendar before the
  * given year starts.
+ * @private
  * @param {number} year the year for which the number of days is sought
  * @return {number} the number of days elapsed in the Hebrew calendar before the
  * given year starts
@@ -9081,7 +9122,6 @@ ilib.Cal.Hebrew.elapsedDays = function(year) {
 };
 
 /**
- * @private
  * Return the number of days that the New Year's (Rosh HaShanah) in the Hebrew 
  * calendar will be corrected for the given year. Corrections are caused because New 
  * Year's is not allowed to start on certain days of the week. To deal with 
@@ -9089,6 +9129,7 @@ ilib.Cal.Hebrew.elapsedDays = function(year) {
  * day to the 8th month (Heshvan) and/or the 9th month (Kislev) in the current
  * year to make them 30 days long instead of 29.
  * 
+ * @private
  * @param {number} year the year for which the correction is sought
  * @param {number} elapsed number of days elapsed up to this year
  * @return {number} the number of days correction in the current year to make sure
@@ -9103,8 +9144,8 @@ ilib.Cal.Hebrew.newYearsCorrection = function(year, elapsed) {
 };
 
 /**
- * @private
  * Return the rata die date of the new year for the given hebrew year.
+ * @private
  * @param {number} year the year for which the new year is needed
  * @return {number} the rata die date of the new year
  */
@@ -9115,7 +9156,6 @@ ilib.Cal.Hebrew.newYear = function(year) {
 };
 
 /**
- * @private
  * Return the number of days in the given year. Years contain a variable number of
  * days because the date of Rosh HaShanah (New Year's) changes so that it doesn't
  * fall on particular days of the week. Days are added to the months of Heshvan
@@ -9130,10 +9170,10 @@ ilib.Cal.Hebrew.daysInYear = function(year) {
 };
 
 /**
- * @private
  * Return true if the given year contains a long month of Heshvan. That is,
  * it is 30 days instead of 29.
  * 
+ * @private
  * @param {number} year the year in which that month is questioned
  * @return {boolean} true if the given year contains a long month of Heshvan
  */
@@ -9142,10 +9182,10 @@ ilib.Cal.Hebrew.longHeshvan = function(year) {
 };
 
 /**
- * @private
  * Return true if the given year contains a long month of Kislev. That is,
  * it is 30 days instead of 29.
  * 
+ * @private
  * @param {number} year the year in which that month is questioned
  * @return {boolean} true if the given year contains a short month of Kislev
  */
@@ -9154,7 +9194,6 @@ ilib.Cal.Hebrew.longKislev = function(year) {
 };
 
 /**
- * @private
  * Return the date of the last day of the month for the given year. The date of
  * the last day of the month is variable because a number of months gain an extra 
  * day in leap years, and it is variable which months gain a day for each leap 
@@ -9254,7 +9293,7 @@ ilib.Cal._constructors["hebrew"] = ilib.Cal.Hebrew;
 /*
  * hebrewdate.js - Represent a date in the Hebrew calendar
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -9279,8 +9318,6 @@ julianday.js
 */
 
 /**
- * @class
- * 
  * Construct a new Hebrew RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -9326,7 +9363,10 @@ julianday.js
  * 
  * Depends directive: !depends hebrewdate.js
  * 
+ * @private
+ * @class
  * @constructor
+ * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Hebrew RD date
  */
 ilib.Date.HebrewRataDie = function(params) {
@@ -9340,19 +9380,19 @@ ilib.Date.HebrewRataDie.prototype.parent = ilib.Date.RataDie;
 ilib.Date.HebrewRataDie.prototype.constructor = ilib.Date.HebrewRataDie;
 
 /**
+ * The difference between a zero Julian day and the first day of the Hebrew 
+ * calendar: sunset on Monday, Tishri 1, 1 = September 7, 3760 BC Gregorian = JD 347997.25
  * @private
  * @const
  * @type number
- * The difference between a zero Julian day and the first day of the Hebrew 
- * calendar: sunset on Monday, Tishri 1, 1 = September 7, 3760 BC Gregorian = JD 347997.25
  */
 ilib.Date.HebrewRataDie.prototype.epoch = 347997.25;
 
 /**
- * @private
  * Calculate the Rata Die (fixed day) number of the given date from the
  * date components.
  * 
+ * @private
  * @param {Object} date the date components to calculate the RD from
  */
 ilib.Date.HebrewRataDie.prototype._setDateComponents = function(date) {
@@ -9425,9 +9465,9 @@ ilib.Date.HebrewRataDie.prototype._setDateComponents = function(date) {
 };
 	
 /**
- * @private
  * Return the rd number of the particular day of the week on or before the 
  * given rd. eg. The Sunday on or before the given rd.
+ * @private
  * @param {number} rd the rata die date of the reference date
  * @param {number} dayOfWeek the day of the week that is being sought relative 
  * to the current date
@@ -9438,8 +9478,6 @@ ilib.Date.HebrewRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 };
 
 /**
- * @class
- * 
  * Construct a new civil Hebrew date object. The constructor can be called
  * with a params object that can contain the following properties:<p>
  * 
@@ -9483,6 +9521,7 @@ ilib.Date.HebrewRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
  * 
  * Depends directive: !depends hebrewdate.js
  * 
+ * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Hebrew date
@@ -9599,10 +9638,10 @@ ilib.Date.HebrewDate.prototype.parent = ilib.Date;
 ilib.Date.HebrewDate.prototype.constructor = ilib.Date.HebrewDate;
 
 /**
+ * the cumulative lengths of each month for a non-leap year, without new years corrections
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month for a non-leap year, without new years corrections
  */
 ilib.Date.HebrewDate.cumMonthLengths = [
 	176,  /* Nisan */
@@ -9620,11 +9659,11 @@ ilib.Date.HebrewDate.cumMonthLengths = [
 ];
 
 /**
+ * the cumulative lengths of each month for a non-leap year, without new years corrections,
+ * that can be used in reverse to map days to months
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month for a non-leap year, without new years corrections,
- * that can be used in reverse to map days to months
  */
 ilib.Date.HebrewDate.cumMonthLengthsReverse = [
 //  [days, monthnumber],                                                
@@ -9644,10 +9683,10 @@ ilib.Date.HebrewDate.cumMonthLengthsReverse = [
 ];
 
 /**
+ * the cumulative lengths of each month for a leap year, without new years corrections 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month for a leap year, without new years corrections 
  */
 ilib.Date.HebrewDate.cumMonthLengthsLeap = [
 	206,  /* Nisan */
@@ -9666,11 +9705,12 @@ ilib.Date.HebrewDate.cumMonthLengthsLeap = [
 ];
 
 /**
+ * the cumulative lengths of each month for a leap year, without new years corrections
+ * that can be used in reverse to map days to months 
+ * 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month for a leap year, without new years corrections
- * that can be used in reverse to map days to months 
  */
 ilib.Date.HebrewDate.cumMonthLengthsLeapReverse = [
 //  [days, monthnumber],                                                
@@ -9691,18 +9731,18 @@ ilib.Date.HebrewDate.cumMonthLengthsLeapReverse = [
 ];
 
 /**
- * @private
- * @const
- * @type number
  * Number of days difference between RD 0 of the Hebrew calendar 
  * (Jan 1, 1 Gregorian = JD 1721057.5) and RD 0 of the Hebrew calendar
  * (September 7, -3760 Gregorian = JD 347997.25)
+ * @private
+ * @const
+ * @type number
  */
 ilib.Date.HebrewDate.GregorianDiff = 1373060.25;
 
 /**
- * @private
  * Return a new RD for this date type using the given params.
+ * @private
  * @param {Object=} params the parameters used to create this rata die instance
  * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
@@ -9711,8 +9751,8 @@ ilib.Date.HebrewDate.prototype.newRd = function (params) {
 };
 
 /**
- * @private
  * Return the year for the given RD
+ * @protected
  * @param {number} rd RD to calculate from 
  * @returns {number} the year for the RD
  */
@@ -9736,8 +9776,8 @@ ilib.Date.HebrewDate.prototype._calcYear = function(rd) {
 };
 
 /**
- * @private
  * Calculate date components for the given RD date.
+ * @protected
  */
 ilib.Date.HebrewDate.prototype._calcDateComponents = function () {
 	var remainder,
@@ -9856,8 +9896,8 @@ ilib.Date.HebrewDate.prototype.getHalaqim = function() {
 };
 
 /**
- * @private
  * Return the rd number of the first Sunday of the given ISO year.
+ * @protected
  * @return the rd of the first Sunday of the ISO year
  */
 ilib.Date.HebrewDate.prototype.firstSunday = function (year) {
@@ -9963,7 +10003,7 @@ ilib.Date._constructors["hebrew"] = ilib.Date.HebrewDate;
 /*
  * islamic.js - Represent a Islamic calendar object.
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -9983,7 +10023,6 @@ ilib.Date._constructors["hebrew"] = ilib.Date.HebrewDate;
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
- * @class
  * Construct a new Islamic calendar object. This class encodes information about
  * the civil Islamic calendar. The civil Islamic calendar is a tabular islamic 
  * calendar where the dates are calculated by arithmetic rules. This differs from 
@@ -9998,6 +10037,7 @@ ilib.Date._constructors["hebrew"] = ilib.Date.HebrewDate;
  * 
  * Depends directive: !depends islamic.js
  * 
+ * @class
  * @constructor
  * @implements ilib.Cal
  */
@@ -10006,10 +10046,10 @@ ilib.Cal.Islamic = function() {
 };
 
 /**
+ * the lengths of each month 
  * @private
  * @const
  * @type Array.<number>
- * the lengths of each month 
  */
 ilib.Cal.Islamic.monthLengths = [
 	30,  /* Muharram */
@@ -10128,7 +10168,7 @@ ilib.Cal._constructors["islamic"] = ilib.Cal.Islamic;
  * 
  * Depends directive: !depends utils.js
  * 
- * 
+ * @static
  * @param {*} target element being sought 
  * @param {Array} arr the array being searched
  * @param {?function(*,*)=} comparator a comparator that is appropriate for comparing two entries
@@ -10164,12 +10204,11 @@ ilib.bsearch = function(target, arr, comparator) {
 };
 
 /**
- * @private
  * Returns whether or not the given element is greater than, less than,
  * or equal to the given target.<p>
  * 
- * Depends directive: !depends utils.js
- * 
+ * @private
+ * @static
  * @param {number} element the element being tested
  * @param {number} target the target being sought
  */
@@ -10180,7 +10219,7 @@ ilib.bsearch.numbers = function(element, target) {
 /*
  * islamicdate.js - Represent a date in the Islamic calendar
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -10207,8 +10246,6 @@ julianday.js
 */
 
 /**
- * @class
- * 
  * Construct a new Islamic RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -10251,7 +10288,10 @@ julianday.js
  * 
  * Depends directive: !depends islamicdate.js
  * 
+ * @private
+ * @class
  * @constructor
+ * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Islamic RD date
  */
 ilib.Date.IslamicRataDie = function(params) {
@@ -10265,19 +10305,19 @@ ilib.Date.IslamicRataDie.prototype.parent = ilib.Date.RataDie;
 ilib.Date.IslamicRataDie.prototype.constructor = ilib.Date.IslamicRataDie;
 
 /**
+ * The difference between a zero Julian day and the first Islamic date
+ * of Friday, July 16, 622 CE Julian. 
  * @private
  * @const
  * @type number
- * The difference between a zero Julian day and the first Islamic date
- * of Friday, July 16, 622 CE Julian. 
  */
 ilib.Date.IslamicRataDie.prototype.epoch = 1948439.5;
 
 /**
- * @private
  * Calculate the Rata Die (fixed day) number of the given date from the
  * date components.
- * 
+ *
+ * @protected
  * @param {Object} date the date components to calculate the RD from
  */
 ilib.Date.IslamicRataDie.prototype._setDateComponents = function(date) {
@@ -10300,8 +10340,6 @@ ilib.Date.IslamicRataDie.prototype._setDateComponents = function(date) {
 };
 	
 /**
- * @class
- * 
  * Construct a new civil Islamic date object. The constructor can be called
  * with a params object that can contain the following properties:<p>
  * 
@@ -10343,6 +10381,7 @@ ilib.Date.IslamicRataDie.prototype._setDateComponents = function(date) {
  * 
  * Depends directive: !depends islamicdate.js
  * 
+ * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Islamic date
@@ -10444,10 +10483,10 @@ ilib.Date.IslamicDate.prototype.parent = ilib.Date;
 ilib.Date.IslamicDate.prototype.constructor = ilib.Date.IslamicDate;
 
 /**
+ * the cumulative lengths of each month, for a non-leap year 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month, for a non-leap year 
  */
 ilib.Date.IslamicDate.cumMonthLengths = [
 	0,  /* Muharram */
@@ -10466,26 +10505,26 @@ ilib.Date.IslamicDate.cumMonthLengths = [
 ];
 
 /**
+ * Number of days difference between RD 0 of the Gregorian calendar and
+ * RD 0 of the Islamic calendar. 
  * @private
  * @const
  * @type number
- * Number of days difference between RD 0 of the Gregorian calendar and
- * RD 0 of the Islamic calendar. 
  */
 ilib.Date.IslamicDate.GregorianDiff = 227015;
 
 /**
+ * The difference between a zero Julian day and the first Islamic date
+ * of Friday, July 16, 622 CE Julian. 
  * @private
  * @const
  * @type number
- * The difference between a zero Julian day and the first Islamic date
- * of Friday, July 16, 622 CE Julian. 
  */
 ilib.Date.IslamicDate.epoch = 1948439.5;
 
 /**
- * @private
  * Return a new RD for this date type using the given params.
+ * @protected
  * @param {Object=} params the parameters used to create this rata die instance
  * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
@@ -10494,8 +10533,8 @@ ilib.Date.IslamicDate.prototype.newRd = function (params) {
 };
 
 /**
- * @private
  * Return the year for the given RD
+ * @protected
  * @param {number} rd RD to calculate from 
  * @returns {number} the year for the RD
  */
@@ -10504,8 +10543,8 @@ ilib.Date.IslamicDate.prototype._calcYear = function(rd) {
 };
 
 /**
- * @private
  * Calculate date components for the given RD date.
+ * @protected
  */
 ilib.Date.IslamicDate.prototype._calcDateComponents = function () {
 	var remainder,
@@ -10619,7 +10658,7 @@ ilib.Date._constructors["islamic"] = ilib.Date.IslamicDate;
 /*
  * julian.js - Represent a Julian calendar object.
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -10639,12 +10678,12 @@ ilib.Date._constructors["islamic"] = ilib.Date.IslamicDate;
 /* !depends calendar.js locale.js date.js julianday.js util/utils.js */
 
 /**
- * @class
  * Construct a new Julian calendar object. This class encodes information about
  * a Julian calendar.<p>
  * 
  * Depends directive: !depends julian.js
  * 
+ * @class
  * @constructor
  * @implements ilib.Cal
  */
@@ -10733,7 +10772,7 @@ ilib.Cal._constructors["julian"] = ilib.Cal.Julian;
 /*
  * juliandate.js - Represent a date in the Julian calendar
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -10759,8 +10798,6 @@ julianday.js
 */
 
 /**
- * @class
- * 
  * Construct a new Julian RD date number object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -10803,7 +10840,10 @@ julianday.js
  * 
  * Depends directive: !depends juliandate.js
  * 
+ * @private
+ * @class
  * @constructor
+ * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Julian RD date
  */
 ilib.Date.JulianRataDie = function(params) {
@@ -10817,19 +10857,19 @@ ilib.Date.JulianRataDie.prototype.parent = ilib.Date.RataDie;
 ilib.Date.JulianRataDie.prototype.constructor = ilib.Date.JulianRataDie;
 
 /**
+ * The difference between a zero Julian day and the first Julian date
+ * of Friday, July 16, 622 CE Julian. 
  * @private
  * @const
  * @type number
- * The difference between a zero Julian day and the first Julian date
- * of Friday, July 16, 622 CE Julian. 
  */
 ilib.Date.JulianRataDie.prototype.epoch = 1721422.5;
 
 /**
- * @private
  * Calculate the Rata Die (fixed day) number of the given date from the
  * date components.
  * 
+ * @protected
  * @param {Object} date the date components to calculate the RD from
  */
 ilib.Date.JulianRataDie.prototype._setDateComponents = function(date) {
@@ -10856,8 +10896,6 @@ ilib.Date.JulianRataDie.prototype._setDateComponents = function(date) {
 };
 
 /**
- * @class
- * 
  * Construct a new date object for the Julian Calendar. The constructor can be called
  * with a parameter object that contains any of the following properties:
  * 
@@ -10912,6 +10950,7 @@ ilib.Date.JulianRataDie.prototype._setDateComponents = function(date) {
  * 
  * Depends directive: !depends juliandate.js
  * 
+ * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Julian date
@@ -11007,10 +11046,10 @@ ilib.Date.JulDate.prototype.parent = ilib.Date;
 ilib.Date.JulDate.prototype.constructor = ilib.Date.JulDate;
 
 /**
+ * the cumulative lengths of each month, for a non-leap year 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month, for a non-leap year 
  */
 ilib.Date.JulDate.cumMonthLengths = [
     0,   /* Jan */
@@ -11029,10 +11068,10 @@ ilib.Date.JulDate.cumMonthLengths = [
 ];
 
 /**
+ * the cumulative lengths of each month, for a leap year 
  * @private
  * @const
  * @type Array.<number>
- * the cumulative lengths of each month, for a leap year 
  */
 ilib.Date.JulDate.cumMonthLengthsLeap = [
 	0,   /* Jan */
@@ -11051,15 +11090,16 @@ ilib.Date.JulDate.cumMonthLengthsLeap = [
 ];
 
 /**
+ * the difference between a zero Julian day and the first Julian date. 
  * @private
  * @const
  * @type number
- * the difference between a zero Julian day and the first Julian date. */
+ */
 ilib.Date.JulDate.epoch = 1721422.5;
 
 /**
- * @private
  * Return a new RD for this date type using the given params.
+ * @protected
  * @param {Object=} params the parameters used to create this rata die instance
  * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
@@ -11068,8 +11108,8 @@ ilib.Date.JulDate.prototype.newRd = function (params) {
 };
 
 /**
- * @private
  * Return the year for the given RD
+ * @protected
  * @param {number} rd RD to calculate from 
  * @returns {number} the year for the RD
  */
@@ -11080,8 +11120,8 @@ ilib.Date.JulDate.prototype._calcYear = function(rd) {
 };
 
 /**
- * @private
  * Calculate date components for the given RD date.
+ * @protected
  */
 ilib.Date.JulDate.prototype._calcDateComponents = function () {
 	var remainder,
@@ -11166,7 +11206,7 @@ ilib.Date._constructors["julian"] = ilib.Date.JulDate;
 /*
  * gregoriandate.js - Represent a date in the Gregorian calendar
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11194,8 +11234,6 @@ timezone.js
 */
 
 /**
- * @class
- * 
  * Construct a new Gregorian date object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -11269,6 +11307,7 @@ timezone.js
  * 
  * Depends directive: !depends gregoriandate.js
  * 
+ * @class
  * @constructor
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian date
@@ -11337,8 +11376,8 @@ ilib.Date.GregDate.prototype.parent = ilib.Date;
 ilib.Date.GregDate.prototype.constructor = ilib.Date.GregDate;
 
 /**
- * @private
  * Return a new RD for this date type using the given params.
+ * @private
  * @param {Object=} params the parameters used to create this rata die instance
  * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
@@ -11347,8 +11386,8 @@ ilib.Date.GregDate.prototype.newRd = function (params) {
 };
 
 /**
- * @private
  * Calculates the Gregorian year for a given rd number.
+ * @private
  */
 ilib.Date.GregDate.prototype._calcYear = function(rd) {
 	var days400,
@@ -11376,8 +11415,8 @@ ilib.Date.GregDate.prototype._calcYear = function(rd) {
 };
 
 /**
- * @private
  * Calculate the date components for the current time zone
+ * @private
  */
 ilib.Date.GregDate.prototype._calcDateComponents = function () {
 	if (this.timezone === "local" && this.rd.getRataDie() >= 719163 && this.rd.getRataDie() <= 744018.134803241) {
@@ -11534,7 +11573,7 @@ ilib.Date._constructors["gregorian"] = ilib.Date.GregDate;
 /*
  * thaisolar.js - Represent a Thai solar calendar object.
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11554,12 +11593,12 @@ ilib.Date._constructors["gregorian"] = ilib.Date.GregDate;
 /* !depends calendar.js locale.js date.js julianday.js calendar/gregorian.js util/utils.js */
 
 /**
- * @class
  * Construct a new Thai solar calendar object. This class encodes information about
  * a Thai solar calendar.<p>
  * 
  * Depends directive: !depends thaisolar.js
  * 
+ * @class
  * @constructor
  * @implements ilib.Cal
  */
@@ -11600,7 +11639,7 @@ ilib.Cal._constructors["thaisolar"] = ilib.Cal.ThaiSolar;
 /*
  * thaisolardate.js - Represent a date in the ThaiSolar calendar
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11623,8 +11662,6 @@ util/jsutils.js
 */
 
 /**
- * @class
- * 
  * Construct a new Thai solar date object. The constructor parameters can 
  * contain any of the following properties:
  * 
@@ -11682,6 +11719,7 @@ util/jsutils.js
  * 
  * Depends directive: !depends thaisolardate.js
  * 
+ * @class
  * @constructor
  * @extends ilib.Date.GregDate
  * @param {Object=} params parameters that govern the settings and behaviour of this Thai solar date
@@ -11712,17 +11750,17 @@ ilib.Date.ThaiSolarDate.prototype.parent = ilib.Date.GregDate.prototype;
 ilib.Date.ThaiSolarDate.prototype.constructor = ilib.Date.ThaiSolarDate;
 
 /**
+ * the difference between a zero Julian day and the zero Thai Solar date.
+ * This is some 543 years before the start of the Gregorian epoch. 
  * @private
  * @const
  * @type number
- * the difference between a zero Julian day and the zero Thai Solar date.
- * This is some 543 years before the start of the Gregorian epoch. 
  */
 ilib.Date.ThaiSolarDate.epoch = 1523097.5;
 
 /**
- * @private
  * Calculate the date components for the current time zone
+ * @protected
  */
 ilib.Date.ThaiSolarDate.prototype._calcDateComponents = function () {
 	// there is 198327 days difference between the Thai solar and 
@@ -11732,9 +11770,9 @@ ilib.Date.ThaiSolarDate.prototype._calcDateComponents = function () {
 };
 
 /**
- * @private
  * Return the Rata Die (fixed day) number of this date.
  * 
+ * @protected
  * @return {number} the rd date as a number
  */
 ilib.Date.ThaiSolarDate.prototype.getRataDie = function() {
@@ -11820,7 +11858,7 @@ ilib.data.ctype = {"ideograph":[[4352,4607],[12353,12447],[12449,12543],[12549,1
 /*
  * ctype.js - Character type definitions
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11841,15 +11879,14 @@ ilib.data.ctype = {"ideograph":[[4352,4607],[12353,12447],[12449,12543],[12549,1
 // !data ctype
 
 /**
- * @namespace
  * Provides a set of static routines that return information about characters.
  * These routines emulate the C-library ctype functions. The characters must be 
  * encoded in utf-16, as no other charsets are currently supported. Only the first
  * character of the given string is tested.
+ * @namespace
  */
 ilib.CType = {
 	/**
-	 * @protected
 	 * Actual implementation for withinRange. Searches the given object for ranges.
 	 * The range names are taken from the Unicode range names in 
 	 * http://www.unicode.org/Public/UNIDATA/extracted/DerivedGeneralCategory.txt
@@ -11887,6 +11924,7 @@ ilib.CType = {
 	 * <li>Pf - Final_Punctuation
 	 * </ul>
 	 * 
+	 * @protected
 	 * @param {string} ch character to examine
 	 * @param {string} rangeName the name of the range to check
 	 * @param {Object} obj object containing the character range data
@@ -12220,7 +12258,7 @@ ilib.CType.isSpace._init = function (sync, loadParams, onLoad) {
 /*
  * numprs.js - Parse a number in any locale
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12246,7 +12284,6 @@ ctype.isspace.js
 */
 
 /**
- * @class
  * Parse a string as a number, ignoring all locale-specific formatting.<p>
  * 
  * This class is different from the standard Javascript parseInt() and parseFloat() 
@@ -12298,6 +12335,7 @@ ctype.isspace.js
  * 
  * Depends directive: !depends numprs.js
  * 
+ * @class
  * @constructor
  * @param {string|number|Number|ilib.Number|undefined} str a string to parse as a number, or a number value
  * @param {Object} options Options controlling how the instance should be created 
@@ -12484,7 +12522,7 @@ ilib.data.currency = {"USD":{"name":"US Dollar","decimals":2,"sign":"$"},"CHF":{
 /*
  * currency.js - Currency definition
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12505,7 +12543,6 @@ ilib.data.currency = {"USD":{"name":"US Dollar","decimals":2,"sign":"$"},"CHF":{
 // !data currency
 
 /**
- * @class
  * Create a new currency information instance. Instances of this class encode 
  * information about a particular currency.<p>
  * 
@@ -12566,6 +12603,7 @@ ilib.data.currency = {"USD":{"name":"US Dollar","decimals":2,"sign":"$"},"CHF":{
  * 
  * Depends directive: !depends currency.js
  * 
+ * @class
  * @constructor
  * @param options {Object} a set of properties to govern how this instance is constructed.
  * @throws "currency xxx is unknown" when the given currency code is not in the list of 
@@ -12611,9 +12649,10 @@ ilib.Currency = function (options) {
 };
 
 /**
- * @static
  * Return an array of the ids for all ISO 4217 currencies that
  * this copy of ilib knows about.
+ * 
+ * @static
  * @return {Array.<string>} an array of currency ids that this copy of ilib knows about.
  */
 ilib.Currency.getAvailableCurrencies = function() {
@@ -12737,7 +12776,7 @@ ilib.Currency.prototype = {
 /*
  * numfmt.js - Number formatter definition
  *
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12769,7 +12808,6 @@ util/jsutils.js
 // !data localeinfo currency
 
 /**
- * @class
  * Create a new number formatter instance. Locales differ in the way that digits
  * in a formatted number are grouped, in the way the decimal character is represented,
  * etc. Use this formatter to get it right for any locale.<p>
@@ -12856,6 +12894,7 @@ util/jsutils.js
  *
  * Depends directive: !depends numfmt.js
  *
+ * @class
  * @constructor
  * @param {Object.<string,*>} options A set of options that govern how the formatter will behave
  */
@@ -12971,8 +13010,8 @@ ilib.NumFmt = function (options) {
 };
 
 /**
- * @static
  * Return an array of available locales that this formatter can format
+ * @static
  * @return {Array.<ilib.Locale>|undefined} an array of available locales
  */
 ilib.NumFmt.getAvailableLocales = function () {
@@ -13078,9 +13117,9 @@ ilib.NumFmt.prototype = {
 	},
 
 	/**
-	 * @private
 	 * Format the number using scientific notation as a positive number. Negative
 	 * formatting to be applied later.
+	 * @private
 	 * @param {number} num the number to format
 	 * @return {string} the formatted number
 	 */
@@ -13111,8 +13150,8 @@ ilib.NumFmt.prototype = {
 	},
 
 	/**
-	 * @private
 	 * Formats the number as a positive number. Negative formatting to be applied later.
+	 * @private
 	 * @param {number} num the number to format
 	 * @return {string} the formatted number
 	 */
@@ -13315,7 +13354,7 @@ ilib.NumFmt.prototype = {
 /*
  * durfmt.js - Date formatter definition
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13346,8 +13385,6 @@ util/jsutils.js
 // !resbundle sysres
 
 /**
- * @class
- * 
  * Create a new duration formatter instance. The duration formatter is immutable once
  * it is created, but can format as many different durations as needed with the same
  * options. Create different duration formatter instances for different purposes
@@ -13408,6 +13445,7 @@ util/jsutils.js
  * 
  * Depends directive: !depends durfmt.js
  * 
+ * @class
  * @constructor
  * @param {?Object} options options governing the way this date formatter instance works
  */
@@ -14339,7 +14377,7 @@ ilib.data.scripts = {"Afak":{"nb":439,"nm":"Afaka","lid":"Afaka"},"Aghb":{"nb":2
 /*
  * scriptinfo.js - information about scripts
  * 
- * Copyright © 2012-2013, JEDLSoft
+ * Copyright © 2012-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14360,7 +14398,6 @@ ilib.data.scripts = {"Afak":{"nb":439,"nm":"Afaka","lid":"Afaka"},"Aghb":{"nb":2
 // !data scripts
 
 /**
- * @class
  * Create a new script info instance. This class encodes information about
  * scripts, which are sets of characters used in a writing system.<p>
  * 
@@ -14388,6 +14425,7 @@ ilib.data.scripts = {"Afak":{"nb":439,"nm":"Afaka","lid":"Afaka"},"Aghb":{"nb":2
  * 
  * Depends directive: !depends scriptinfo.js
  * 
+ * @class
  * @constructor
  * @param {string} script The ISO 15924 4-letter identifier for the script
  * @param {Object} options parameters to initialize this matcher 
@@ -14439,9 +14477,9 @@ ilib.ScriptInfo = function(script, options) {
 };
 
 /**
- * @static
  * Return an array of all ISO 15924 4-letter identifier script identifiers that
  * this copy of ilib knows about.
+ * @static
  * @return {Array.<string>} an array of all script identifiers that this copy of
  * ilib knows about
  */
@@ -14588,7 +14626,7 @@ ilib.data.name_zxx = {"prefixes":["rep","representative","senator","congressman"
 /*
  * nameprs.js - Person name parser
  *
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14624,7 +14662,6 @@ util/jsutils.js
 // other countries with first name restrictions: Norway, China, New Zealand, Japan, Sweden, Germany, Hungary
 
 /**
- * @class
  * A class to parse names of people. Different locales have different conventions when it
  * comes to naming people.<p>
  *
@@ -14676,6 +14713,7 @@ util/jsutils.js
  *
  * Depends directive: !depends nameprs.js
  *
+ * @class
  * @constructor
  * @dict
  * @param {string|ilib.Name=} name the name to parse
@@ -14869,10 +14907,10 @@ ilib.Name.defaultInfo = ilib.data.name ||  {
 };
 
 /**
- * @static
- * @protected
  * Return true if the given character is in the range of the Han, Hangul, or kana
  * scripts.
+ * @static
+ * @protected
  */
 ilib.Name._isAsianChar = function(c) {
 	return ilib.CType.isIdeo(c) ||
@@ -14912,10 +14950,10 @@ ilib.Name._isAsianName = function (name) {
 };
 
 /**
- * @static
- * @protected
  * Return true if any Latin letters are found in the string. Return
  * false if all the characters are non-Latin.
+ * @static
+ * @protected
  */
 ilib.Name._isEuroName = function (name) {
     var c,
@@ -15139,8 +15177,8 @@ ilib.Name.prototype = {
     },
 
     /**
-     * @protected
      * Find the last instance of 'and' in the name
+     * @protected
      * @param {Array.<string>} parts
      * @return {number}
      */
@@ -15197,8 +15235,8 @@ ilib.Name.prototype = {
     },
 
     /**
-     * @protected
      * Adjoin auxillary words to their head words.
+     * @protected
      * @param {Array.<string>} parts the current array of name parts
      * @param {boolean} isAsian true if the name is being parsed as an Asian name
      * @return {Array.<string>} the parts after the auxillary words have been plucked onto their head word
@@ -15226,8 +15264,8 @@ ilib.Name.prototype = {
     },
 
     /**
-     * @protected
      * Recursively join an array or string into a long string.
+     * @protected
      */
     _joinArrayOrString: function _joinArrayOrString(part) {
         var i;
@@ -15564,7 +15602,7 @@ ilib.Name.prototype = {
 /*
  * namefmt.js - Format person names for display
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15591,7 +15629,6 @@ ctype.ispunct.js
 // !data name
 
 /**
- * @class
  * Creates a formatter that can format person name instances (ilib.Name) for display to
  * a user. The options may contain the following properties:
  * 
@@ -15673,6 +15710,7 @@ ctype.ispunct.js
  * 
  * Depends directive: !depends namefmt.js
  * 
+ * @class
  * @constructor
  * @param {Object} options A set of options that govern how the formatter will behave
  */
@@ -15786,8 +15824,8 @@ ilib.NameFmt.prototype = {
 	},
 
 	/**
-	 * @protected
 	 * adjoin auxillary words to their head words
+	 * @protected
 	 */
 	_adjoinAuxillaries: function (parts, namePrefix) {
 		var start, i, prefixArray, prefix, prefixLower;
@@ -16050,7 +16088,7 @@ ilib.data.ctrynames_zu = {"i-Asia":"142","i-Central Asia":"143","e-Western Asia"
 /**
  * addressprs.js - Represent a mailing address
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16079,9 +16117,6 @@ ctype.isdigit.js
 // !data address countries nativecountries ctrynames
 
 /**
- * @constructor
- * @class
- * 
  * Create a new Address instance and parse a physical address.<p>
  * 
  * This function parses a physical address written in a free-form string. 
@@ -16142,6 +16177,8 @@ ctype.isdigit.js
  * 
  * Depends directive: !depends addressprs.js
  * 
+ * @constructor
+ * @class
  * @dict
  * @param {string|ilib.Address} freeformAddress free-form address to parse, or a
  * javascript object containing the fields
@@ -16649,7 +16686,7 @@ ilib.Address.prototype = {
 /*
  * addressfmt.js - Format an address
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16674,9 +16711,6 @@ addressprs.js
 // !data address
 
 /**
- * @constructor
- * @class
- * 
  * Create a new formatter object to format physical addresses in a particular way.
  *
  * The options object may contain the following properties, both of which are optional:
@@ -16709,6 +16743,8 @@ addressprs.js
  * 
  * Depends directive: !depends addressfmt.js
  * 
+ * @constructor
+ * @class
  * @param {Object} options options that configure how this formatter should work
  * Returns a formatter instance that can format multiple addresses.
  */
@@ -16841,7 +16877,7 @@ ilib.AddressFmt.prototype.format = function (address) {
 /*
  * collate.js - Collation routines
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16862,9 +16898,6 @@ ilib.AddressFmt.prototype.format = function (address) {
 // !data collation
 
 /**
- * @class
- * @constructor
- * 
  * A class that implements a locale-sensitive comparator function 
  * for use with sorting function. The comparator function
  * assumes that the strings it is comparing contain Unicode characters
@@ -17085,6 +17118,8 @@ ilib.AddressFmt.prototype.format = function (address) {
  * characters, the Japanese names will sort at the end of the list after all German names,
  * and will sort according to the Unicode values of the characters.
  * 
+ * @class
+ * @constructor
  * @param {Object} options options governing how the resulting comparator 
  * function will operate
  */
@@ -17404,7 +17439,7 @@ ilib.data.likelylocales = {"aa":"aa-Latn-ET","ab":"ab-Cyrl-GE","ady":"ady-Cyrl-R
 /*
  * localematch.js - Locale matcher definition
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17424,7 +17459,6 @@ ilib.data.likelylocales = {"aa":"aa-Latn-ET","ab":"ab-Cyrl-GE","ady":"ady-Cyrl-R
 // !data likelylocales
 
 /**
- * @class
  * Create a new locale matcher instance. This is used
  * to see which locales can be matched with each other in
  * various ways.<p>
@@ -17455,6 +17489,7 @@ ilib.data.likelylocales = {"aa":"aa-Latn-ET","ab":"ab-Cyrl-GE","ady":"ady-Cyrl-R
  * 
  * Depends directive: !depends localematch.js
  * 
+ * @class
  * @constructor
  * @param {Object} options parameters to initialize this matcher 
  */
@@ -17543,7 +17578,7 @@ ilib.LocaleMatcher.prototype = {
 /*
  * normstring.js - ilib normalized string subclass definition
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17562,13 +17597,13 @@ ilib.LocaleMatcher.prototype = {
 // !depends strings.js
 
 /**
- * @class
  * Create a new normalized string instance. This string inherits from 
  * the ilib.String class, and adds the normalize method. It can be
  * used anywhere that a normal Javascript string is used. <p>
  * 
  * Depends directive: !depends normstring.js
  * 
+ * @class
  * @constructor
  * @param {string|ilib.String=} str initialize this instance with this string 
  */
@@ -17650,11 +17685,10 @@ ilib.NormString.init = function(options) {
 };
 
 /**
- * @private
- * @static
- * 
  * Return true if the given character is a leading Jamo (Choseong) character.
  * 
+ * @private
+ * @static
  * @param {number} n code point to check
  * @return {boolean} true if the character is a leading Jamo character, 
  * false otherwise
@@ -17664,11 +17698,10 @@ ilib.NormString._isJamoL = function (n) {
 };
 
 /**
- * @private
- * @static
- * 
  * Return true if the given character is a vowel Jamo (Jungseong) character.
  * 
+ * @private
+ * @static
  * @param {number} n code point to check
  * @return {boolean} true if the character is a vowel Jamo character, 
  * false otherwise
@@ -17678,11 +17711,10 @@ ilib.NormString._isJamoV = function (n) {
 };
 
 /**
- * @private
- * @static
- * 
  * Return true if the given character is a trailing Jamo (Jongseong) character.
  * 
+ * @private
+ * @static
  * @param {number} n code point to check
  * @return {boolean} true if the character is a trailing Jamo character, 
  * false otherwise
@@ -17692,11 +17724,10 @@ ilib.NormString._isJamoT = function (n) {
 };
 
 /**
- * @private
- * @static
- * 
  * Return true if the given character is a precomposed Hangul character.
  * 
+ * @private
+ * @static
  * @param {number} n code point to check
  * @return {boolean} true if the character is a precomposed Hangul character, 
  * false otherwise
@@ -17706,13 +17737,12 @@ ilib.NormString._isHangul = function (n) {
 };
 
 /**
- * @private
- * @static
- *
  * Algorithmically decompose a precomposed Korean syllabic Hangul 
  * character into its individual combining Jamo characters. The given 
  * character must be in the range of Hangul characters U+AC00 to U+D7A3.
  * 
+ * @private
+ * @static
  * @param {number} cp code point of a Korean Hangul character to decompose
  * @return {string} the decomposed string of Jamo characters
  */
@@ -17728,13 +17758,12 @@ ilib.NormString._decomposeHangul = function (cp) {
 };
 
 /**
- * @private
- * @static
- *
  * Algorithmically compose an L and a V combining Jamo characters into
  * a precomposed Korean syllabic Hangul character. Both should already
  * be in the proper ranges for L and V characters. 
  * 
+ * @private
+ * @static
  * @param {number} lead the code point of the lead Jamo character to compose
  * @param {number} trail the code point of the trailing Jamo character to compose
  * @return {string} the composed Hangul character
@@ -17746,12 +17775,11 @@ ilib.NormString._composeJamoLV = function (lead, trail) {
 };
 
 /**
- * @private
- * @static
- *
  * Algorithmically compose a Hangul LV and a combining Jamo T character 
  * into a precomposed Korean syllabic Hangul character. 
  * 
+ * @private
+ * @static
  * @param {number} lead the code point of the lead Hangul character to compose
  * @param {number} trail the code point of the trailing Jamo T character to compose
  * @return {string} the composed Hangul character
@@ -17761,11 +17789,11 @@ ilib.NormString._composeJamoLVT = function (lead, trail) {
 };
 
 /**
- * @private
- * @static
- * 
  * Expand one character according to the given canonical and 
  * compatibility mappings.
+ *
+ * @private
+ * @static
  * @param {string} ch character to map
  * @param {Object} canon the canonical mappings to apply
  * @param {Object=} compat the compatibility mappings to apply, or undefined
@@ -17795,14 +17823,13 @@ ilib.NormString._expand = function (ch, canon, compat) {
 };
 
 /**
- * @private
- * @static
- * 
  * Compose one character out of a leading character and a 
  * trailing character. If the characters are Korean Jamo, they
  * will be composed algorithmically. If they are any other
  * characters, they will be looked up in the nfc tables.
- 
+ * 
+ * @private
+ * @static
  * @param {string} lead leading character to compose
  * @param {string} trail the trailing character to compose
  * @return {string} the fully composed character, or undefined if
@@ -18122,7 +18149,6 @@ ilib.NormString.prototype.normalize = function (form) {
 // !depends locale.js util/utils.js
 
 /**
- * @class
  * Create a new string mapper instance that maps strings to upper or
  * lower case. This mapping will work for any string as characters 
  * that have no case will be returned unchanged.<p>
@@ -18140,6 +18166,7 @@ ilib.NormString.prototype.normalize = function (form) {
  * 
  * Depends directive: !depends casemapper.js
  * 
+ * @class
  * @constructor
  * @param {Object=} options options to initialize this mapper 
  */

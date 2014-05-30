@@ -96,7 +96,7 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<!-- Implement the standard targets                                      -->
 	<!-- =================================================================== -->
-	<target name="all" depends="export,doc" description="Build everything. This is the target that the build should run."/>
+	<target name="all" depends="export,doc,demo" description="Build everything. This is the target that the build should run."/>
 
 	<target name="clean" description="Remove all generated files to start from scratch">
 		<delete dir="${build.classes}"/>
@@ -415,7 +415,7 @@ limitations under the License.
 		</jscomp>
 	</target>
 
-	<target name="export" depends="assemble.core,assemble.standard,assemble.full,assemble.dyn.core,assemble.dyn.standard,assemble.dyn.full,doc" description="Create all objects and export them to the top level dir for packaging">
+	<target name="export" depends="assemble.core,assemble.standard,assemble.full,assemble.dyn.core,assemble.dyn.standard,assemble.dyn.full,doc,demo" description="Create all objects and export them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js"/>
 		<copy todir="${build.export}/js">
 			<fileset dir="${build.src}">
