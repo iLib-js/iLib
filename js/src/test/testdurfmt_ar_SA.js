@@ -75,7 +75,7 @@ function testDurFmtARFormatShortClock1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("سنة شهر أسبوع يوم ١:٠١:٠١", duration.toString());
+    assertEquals("سنة شهر أسبوع يوم ‏١:٠١:٠١", duration.toString());
 };
 
 function testDurFmtARFormatMedium1() {
@@ -191,7 +191,7 @@ function testDurFmtARFormatShortClock2() {
     	minute: 2,
     	second: 2
     });
-    assertEquals("سنتان شهران أسبوعان يومان ٢:٠٢:٠٢", duration.toString());
+    assertEquals("سنتان شهران أسبوعان يومان ‏٢:٠٢:٠٢", duration.toString());
 };
 
 function testDurFmtARFormatMedium2() {
@@ -307,7 +307,7 @@ function testDurFmtARFormatShortClock3() {
     	minute: 3,
     	second: 3
     });
-    assertEquals("٣ سنوات ٣ أشهر ٣ أسابيع ٣ أيام ٣:٠٣:٠٣", duration.toString());
+    assertEquals("٣ سنوات ٣ أشهر ٣ أسابيع ٣ أيام ‏٣:٠٣:٠٣", duration.toString());
 };
 
 function testDurFmtARFormatMedium3() {
@@ -423,7 +423,7 @@ function testDurFmtARFormatShortClock11() {
     	minute: 11,
     	second: 11
     });
-    assertEquals("١١ سنة ١١ شهر ١١ أسبوع ١١ يوم ١١:١١:١١", duration.toString());
+    assertEquals("١١ سنة ١١ شهر ١١ أسبوع ١١ يوم ‏١١:١١:١١", duration.toString());
 };
 
 function testDurFmtARFormatMedium11() {
@@ -710,7 +710,7 @@ function testDurFmtARFormatShortClockAsync1() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("سنة شهر أسبوع يوم ١:٠١:٠١", duration.toString());
+    	    assertEquals("سنة شهر أسبوع يوم ‏١:٠١:٠١", duration.toString());
     	    callbackCalled = true;
     	}
     });
@@ -778,7 +778,7 @@ function testDurFmtARFormatWesternShortClock1() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("سنة شهر أسبوع يوم 1:01:01", duration.toString());
+    assertEquals("سنة شهر أسبوع يوم ‏1:01:01", duration.toString());
 };
 
 function testDurFmtARFormatWesternMedium1() {
@@ -916,7 +916,7 @@ function testDurFmtARFormatWesternShortClockAsync1() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("سنة شهر أسبوع يوم 1:01:01", duration.toString());
+    	    assertEquals("سنة شهر أسبوع يوم ‏1:01:01", duration.toString());
     	    callbackCalled = true;
     	}
     });
