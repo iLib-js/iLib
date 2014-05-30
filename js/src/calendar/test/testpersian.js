@@ -1,7 +1,7 @@
 /*
  * testpersian.js - test the persian calendar
  * 
- * Copyright © 2012, JEDLSoft
+ * Copyright © 2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,106 +20,106 @@
 function testPersianGetNumMonths() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(12, cal.getNumMonths(2011));
+    assertEquals(12, cal.getNumMonths(1389));
 }
 
-function testPersiangetMonLengthJan() {
+function testPersianGetMonLengthJan() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(31, cal.getMonLength(1, 2011));
+    assertEquals(31, cal.getMonLength(1, 1389));
 }
 
-function testPersiangetMonLengthFeb() {
+function testPersianGetMonLengthFeb() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(28, cal.getMonLength(2, 2011));
+    assertEquals(31, cal.getMonLength(2, 1389));
 }
 
-function testPersiangetMonLengthFebLeapYear() {
+function testPersianGetMonLengthFebLeapYear() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(29, cal.getMonLength(2, 2012));
+    assertEquals(31, cal.getMonLength(2, 1390));
 }
 
-function testPersiangetMonLengthMar() {
+function testPersianGetMonLengthMar() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(31, cal.getMonLength(3, 2011));
+    assertEquals(31, cal.getMonLength(3, 1389));
 }
 
-function testPersiangetMonLengthApr() {
+function testPersianGetMonLengthApr() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(30, cal.getMonLength(4, 2011));
+    assertEquals(31, cal.getMonLength(4, 1389));
 }
 
-function testPersiangetMonLengthMay() {
+function testPersianGetMonLengthMay() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(31, cal.getMonLength(5, 2011));
+    assertEquals(31, cal.getMonLength(5, 1389));
 }
 
-function testPersiangetMonLengthJun() {
+function testPersianGetMonLengthJun() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(30, cal.getMonLength(6, 2011));
+    assertEquals(30, cal.getMonLength(6, 1389));
 }
 
-function testPersiangetMonLengthJul() {
+function testPersianGetMonLengthJul() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(31, cal.getMonLength(7, 2011));
+    assertEquals(30, cal.getMonLength(7, 1389));
 }
 
-function testPersiangetMonLengthAug() {
+function testPersianGetMonLengthAug() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(31, cal.getMonLength(8, 2011));
+    assertEquals(30, cal.getMonLength(8, 1389));
 }
 
-function testPersiangetMonLengthSep() {
+function testPersianGetMonLengthSep() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(30, cal.getMonLength(9, 2011));
+    assertEquals(30, cal.getMonLength(9, 1389));
 }
 
-function testPersiangetMonLengthOct() {
+function testPersianGetMonLengthOct() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(31, cal.getMonLength(10, 2011));
+    assertEquals(30, cal.getMonLength(10, 1389));
 }
 
-function testPersiangetMonLengthNov() {
+function testPersianGetMonLengthNov() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(30, cal.getMonLength(11, 2011));
+    assertEquals(30, cal.getMonLength(11, 1389));
 }
 
-function testPersiangetMonLengthDec() {
+function testPersianGetMonLengthDec() {
     var cal = new ilib.Cal.Persian();
     
-    assertEquals(31, cal.getMonLength(12, 2011));
+    assertEquals(29, cal.getMonLength(12, 1389));
 }
 
 function testPersianIsLeapYear() {
     var cal = new ilib.Cal.Persian();
     
-    assertTrue(cal.isLeapYear(2012));
+    assertTrue(cal.isLeapYear(1390));
 }
 
 function testPersianIsLeapYearNot() {
     var cal = new ilib.Cal.Persian();
     
-    assertFalse(cal.isLeapYear(2011));
+    assertFalse(cal.isLeapYear(1389));
 }
 
-function testPersianIsLeapYearNotOnCentury1() {
+function testPersianIsLeapYear1() {
     var cal = new ilib.Cal.Persian();
     
     assertFalse(cal.isLeapYear(1700));
 }
 
-function testPersianIsLeapYearNotOnCentury2() {
+function testPersianIsLeapYear2() {
     var cal = new ilib.Cal.Persian();
     
     assertFalse(cal.isLeapYear(1800));
@@ -140,7 +140,7 @@ function testPersianIsLeapYearOnQuadCentennial() {
 function testPersianNewDateInstance() {
     var cal = new ilib.Cal.Persian();
     var d = cal.newDateInstance({
-    	year: 2012,
+    	year: 1390,
     	month: 6,
     	day: 1
     });

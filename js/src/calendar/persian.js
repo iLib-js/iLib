@@ -41,18 +41,18 @@ ilib.Cal.Persian = function() {
  * the lengths of each month 
  */
 ilib.Cal.Persian.monthLengths = [
-	31,  /* Jan */
-	28,  /* Feb */
-	31,  /* Mar */
-	30,  /* Apr */
-	31,  /* May */
-	30,  /* Jun */
-	31,  /* Jul */
-	31,  /* Aug */
-	30,  /* Sep */
-	31,  /* Oct */
-	30,  /* Nov */
-	31   /* Dec */
+	31,  // Farvardin
+	31,  // Ordibehesht
+	31,  // Khordad
+	31,  // Tir
+	31,  // Mordad
+	31,  // Shahrivar
+	30,  // Mehr
+	30,  // Aban
+	30,  // Azar
+	30,  // Dey
+	30,  // Bahman
+	29   // Esfand
 ];
 
 /**
@@ -78,21 +78,29 @@ ilib.Cal.Persian.prototype.getNumMonths = function(year) {
  * @return {number} the number of days within the given month in the given year
  */
 ilib.Cal.Persian.prototype.getMonLength = function(month, year) {
-	if (month !== 2 || !this.isLeapYear(year)) {
+	if (month !== 12 || !this.isLeapYear(year)) {
 		return ilib.Cal.Persian.monthLengths[month-1];
 	} else {
-		return 29;
+		return 30;
 	}
 };
 
 /**
  * Return true if the given year is a leap year in the Persian calendar.
  * The year parameter may be given as a number, or as a PersDate object.
- * @param {number|ilib.Date.PersDate} year the year for which the leap year information is being sought
+ * @param {number} year the year for which the leap year information is being sought
  * @return {boolean} true if the given year is a leap year
  */
 ilib.Cal.Persian.prototype.isLeapYear = function(year) {
-	var y = (typeof(year) === 'number' ? year : year.getYears());
+	return (ilib.mod((year + 38) * 682, 2816) < 682);
+};
+
+/**
+ * Return true if the given year is a leap year in the Persian calendar.
+ * The year parameter may be given as a number, or as a PersDate object.
+ * @param {number|ilib.Date.PersDate} year the year for which the leap year information is being sought
+ * @return {boolean} true if the given year is a leap yeartop
+ * r) === 'number' ? year : year.getYears());
 	var centuries = ilib.mod(y, 400);
 	return (ilib.mod(y, 4) === 0 && centuries !== 100 && centuries !== 200 && centuries !== 300);
 };

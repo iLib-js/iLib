@@ -155,18 +155,18 @@ ilib.Date.PersDate.prototype.constructor = ilib.Date.PersDate;
  * the cumulative lengths of each month, for a non-leap year 
  */
 ilib.Date.PersDate.cumMonthLengths = [
-    0,   /* Jan */
-	31,  /* Feb */
-	59,  /* Mar */
-	90,  /* Apr */
-	120, /* May */
-	151, /* Jun */
-	181, /* Jul */
-	212, /* Aug */
-	243, /* Sep */
-	273, /* Oct */
-	304, /* Nov */
-	334, /* Dec */
+    0,    // Farvardin
+	31,   // Ordibehesht
+	62,   // Khordad
+	93,   // Tir
+	124,  // Mordad
+	155,  // Shahrivar
+	186,  // Mehr
+	216,  // Aban
+	246,  // Azar
+	276,  // Dey
+	306,  // Bahman
+	336,  // Esfand
 	365
 ];
 
@@ -177,19 +177,19 @@ ilib.Date.PersDate.cumMonthLengths = [
  * the cumulative lengths of each month, for a leap year 
  */
 ilib.Date.PersDate.cumMonthLengthsLeap = [
-	0,   /* Jan */
-	31,  /* Feb */
-	60,  /* Mar */
-	91,  /* Apr */
-	121, /* May */
-	152, /* Jun */
-	182, /* Jul */
-	213, /* Aug */
-	244, /* Sep */
-	274, /* Oct */
-	305, /* Nov */
-	335, /* Dec */
-	366
+    0,    // Farvardin
+  	31,   // Ordibehesht
+  	62,   // Khordad
+  	93,   // Tir
+  	124,  // Mordad
+  	155,  // Shahrivar
+  	186,  // Mehr
+  	216,  // Aban
+  	246,  // Azar
+  	276,  // Dey
+  	306,  // Bahman
+  	336,  // Esfand
+ 	366
 ];
 
 /**
@@ -198,7 +198,7 @@ ilib.Date.PersDate.cumMonthLengthsLeap = [
  * @type number
  * the difference between a zero Julian day and the zero Persian date. 
  */
-ilib.Date.PersDate.epoch = 1721424.5;
+ilib.Date.PersDate.epoch = 1948318.5;
 
 /**
  * @private
@@ -208,27 +208,24 @@ ilib.Date.PersDate.epoch = 1721424.5;
  * @return {number} the rd date as a number
  */
 ilib.Date.PersDate.prototype.calcRataDie = function(date) {
-	var years = 365 * (date.year - 1) +
-		Math.floor((date.year-1)/4) -
-		Math.floor((date.year-1)/100) +
-		Math.floor((date.year-1)/400);
-	// explicitly call the persian leap year calculator so that it doesn't conflict
-	// with the calculator of possible subclasses 
+	var y = date.year - ((date.year < 0) ? 473 : 474);
+	var year = ilib.mod(y, 2820) + 474;
+	var years = 1029983 * Math.floor(y/2820) + 365 * (year - 1) + Math.floor((682 * year - 110) / 2816);
 	var dayInYear = (date.month > 1 ? ilib.Date.PersDate.cumMonthLengths[date.month-1] : 0) +
 		date.day +
-		(ilib.Cal.Persian.prototype.isLeapYear.call(this.cal, date.year) && date.month > 2 ? 1 : 0);
+		(ilib.Cal.Persian.prototype.isLeapYear.call(this.cal, date.year) && date.month === 12 ? 1 : 0);
 	var rdtime = (date.hour * 3600000 +
 		date.minute * 60000 +
 		date.second * 1000 +
 		date.millisecond) / 
 		86400000; 
-	/*
-	debug("getRataDie: converting " +  JSON.stringify(this));
-	debug("getRataDie: year is " +  years);
-	debug("getRataDie: day in year is " +  dayInYear);
-	debug("getRataDie: rdtime is " +  rdtime);
-	debug("getRataDie: rd is " +  (years + dayInYear + rdtime));
-	*/
+	
+	console.log("getRataDie: converting " +  JSON.stringify(this));
+	console.log("getRataDie: year is " +  years);
+	console.log("getRataDie: day in year is " +  dayInYear);
+	console.log("getRataDie: rdtime is " +  rdtime);
+	console.log("getRataDie: rd is " +  (years + dayInYear + rdtime));
+	
 	return years + dayInYear + rdtime;
 };
 
