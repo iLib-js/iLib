@@ -81,6 +81,7 @@ ilib.Cal.Persian.prototype.getMonLength = function(month, year) {
 	if (month !== 12 || !this.isLeapYear(year)) {
 		return ilib.Cal.Persian.monthLengths[month-1];
 	} else {
+		// Month 12, Esfand, has 30 days instead of 29 in leap years
 		return 30;
 	}
 };
@@ -93,16 +94,6 @@ ilib.Cal.Persian.prototype.getMonLength = function(month, year) {
  */
 ilib.Cal.Persian.prototype.isLeapYear = function(year) {
 	return (ilib.mod((year + 38) * 682, 2816) < 682);
-};
-
-/**
- * Return true if the given year is a leap year in the Persian calendar.
- * The year parameter may be given as a number, or as a PersDate object.
- * @param {number|ilib.Date.PersDate} year the year for which the leap year information is being sought
- * @return {boolean} true if the given year is a leap yeartop
- * r) === 'number' ? year : year.getYears());
-	var centuries = ilib.mod(y, 400);
-	return (ilib.mod(y, 4) === 0 && centuries !== 100 && centuries !== 200 && centuries !== 300);
 };
 
 /**

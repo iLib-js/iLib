@@ -38,9 +38,9 @@ function suite() {
 	    "testhebrew.js",
 	    "testhebrewdate.js",
 	    "testthaisolar.js",
-	    "testthaisolardate.js"
+	    "testthaisolardate.js",
 	    // "testpersiandate.js",
-	    // "testpersian.js",
+	    "testpersian.js"
 	    // "testpersianastrodate.js",
 	    // "testpersianastro.js",
     ];
