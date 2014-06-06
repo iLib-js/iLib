@@ -1106,12 +1106,12 @@ function testPersDateTestGetWeekOfYearPreviousYear() {
 	});
     assertNotNull(pd);
     
-    assertEquals(51, pd.getWeekOfYear());
+    assertEquals(53, pd.getWeekOfYear());
 }
 
 function testPersDateTestGetWeekOfYearLastWeekLeap() {
     var pd = new ilib.Date.PersDate({
-		year: 1429,
+		year: 1383,
 		month: 12,
 		day: 30
 	});
@@ -1122,7 +1122,7 @@ function testPersDateTestGetWeekOfYearLastWeekLeap() {
 
 function testPersDateTestGetWeekOfYearLastWeekRegular1() {
     var pd = new ilib.Date.PersDate({
-		year: 1428,
+		year: 1389,
 		month: 12,
 		day: 29
 	});
@@ -1133,20 +1133,20 @@ function testPersDateTestGetWeekOfYearLastWeekRegular1() {
 
 function testPersDateTestGetWeekOfYearLastWeekRegular2() {
     var pd = new ilib.Date.PersDate({
-		year: 1427,
+		year: 1390,
 		month: 12,
 		day: 29
 	});
     assertNotNull(pd);
     
-    assertEquals(51, pd.getWeekOfYear());
+    assertEquals(1, pd.getWeekOfYear());
 }
 
 function testPersDateTestGetWeekOfYearLastWeekRegular3() {
     var pd = new ilib.Date.PersDate({
-		year: 1426,
+		year: 1391,
 		month: 12,
-		day: 29
+		day: 30
 	});
     assertNotNull(pd);
     
@@ -1155,42 +1155,42 @@ function testPersDateTestGetWeekOfYearLastWeekRegular3() {
 
 function testPersDateTestGetWeekOfYearLastWeekRegular4() {
     var pd = new ilib.Date.PersDate({
-		year: 1425,
+		year: 1392,
 		month: 12,
 		day: 29
 	});
     assertNotNull(pd);
     
-    assertEquals(1, pd.getWeekOfYear());
+    assertEquals(53, pd.getWeekOfYear());
 }
 
 function testPersDateTestGetWeekOfYearLastWeekRegular5() {
     var pd = new ilib.Date.PersDate({
-		year: 1424,
+		year: 1393,
 		month: 12,
 		day: 29
 	});
     assertNotNull(pd);
     
-    assertEquals(51, pd.getWeekOfYear());
+    assertEquals(52, pd.getWeekOfYear());
 }
 
 function testPersDateTestGetWeekOfYearLastWeekRegular6() {
     var pd = new ilib.Date.PersDate({
-		year: 1423,
+		year: 1394,
 		month: 12,
 		day: 29
 	});
     assertNotNull(pd);
     
-    assertEquals(1, pd.getWeekOfYear());
+    assertEquals(52, pd.getWeekOfYear());
 }
 
 function testPersDateGetDayOfYearFirstDay() {
     var pd = new ilib.Date.PersDate({
 		year: 1388,
-		month: 9,
-		day: 27
+		month: 1,
+		day: 1
 	});
     assertNotNull(pd);
     
@@ -1205,34 +1205,34 @@ function testPersDateGetDayOfYearMidYear() {
 	});
     assertNotNull(pd);
     
-    assertEquals(76, pd.getDayOfYear());
+    assertEquals(79, pd.getDayOfYear());
 }
 
 function testPersDateGetDayOfYearLastDay() {
     var pd = new ilib.Date.PersDate({
-		year: 1430,
+		year: 1388,
 		month: 12,
 		day: 29
 	});
     assertNotNull(pd);
     
-    assertEquals(354, pd.getDayOfYear());
+    assertEquals(365, pd.getDayOfYear());
 }
 
 function testPersDateGetDayOfYearLastDayLeapYear() {
     var pd = new ilib.Date.PersDate({
-		year: 1388,
+		year: 1387,
 		month: 12,
 		day: 30
 	});
     assertNotNull(pd);
     
-    assertEquals(355, pd.getDayOfYear());
+    assertEquals(366, pd.getDayOfYear());
 }
 
 function testPersDateGetWeekOfMonth0() {
     var pd = new ilib.Date.PersDate({
-		year: 1432,
+		year: 1388,
 		month: 3,
 		day: 1
 	});
@@ -1243,9 +1243,9 @@ function testPersDateGetWeekOfMonth0() {
 
 function testPersDateGetWeekOfMonth1() {
     var pd = new ilib.Date.PersDate({
-		year: 1432,
+		year: 1388,
 		month: 3,
-		day: 2
+		day: 4
 	});
     assertNotNull(pd);
     
@@ -1254,7 +1254,7 @@ function testPersDateGetWeekOfMonth1() {
 
 function testPersDateGetWeekOfMonth2() {
     var pd = new ilib.Date.PersDate({
-		year: 1432,
+		year: 1388,
 		month: 3,
 		day: 11
 	});
@@ -1265,7 +1265,7 @@ function testPersDateGetWeekOfMonth2() {
 
 function testPersDateGetWeekOfMonth3() {
     var pd = new ilib.Date.PersDate({
-		year: 1432,
+		year: 1388,
 		month: 3,
 		day: 20
 	});
@@ -1276,7 +1276,7 @@ function testPersDateGetWeekOfMonth3() {
 
 function testPersDateGetWeekOfMonth4() {
     var pd = new ilib.Date.PersDate({
-		year: 1432,
+		year: 1388,
 		month: 3,
 		day: 29
 	});
@@ -1287,9 +1287,9 @@ function testPersDateGetWeekOfMonth4() {
 
 function testPersDateGetWeekOfMonth5() {
     var pd = new ilib.Date.PersDate({
-		year: 1432,
+		year: 1388,
 		month: 3,
-		day: 30
+		day: 31
 	});
     assertNotNull(pd);
     
@@ -1298,7 +1298,7 @@ function testPersDateGetWeekOfMonth5() {
 
 function testPersDateGetWeekOfMonth6() {
     var pd = new ilib.Date.PersDate({
-		year: 1432,
+		year: 1388,
 		month: 4,
 		day: 1
 	});
@@ -1309,41 +1309,30 @@ function testPersDateGetWeekOfMonth6() {
 
 function testPersDateGetWeekOfMonth7() {
     var pd = new ilib.Date.PersDate({
-		year: 1432,
+		year: 1388,
 		month: 5,
 		day: 1
 	});
     assertNotNull(pd);
     
-    assertEquals(1, pd.getWeekOfMonth("en-US"));
+    assertEquals(0, pd.getWeekOfMonth("en-US"));
 }
 
 function testPersDateGetWeekOfMonth8() {
     var pd = new ilib.Date.PersDate({
-		year: 1432,
+		year: 1388,
 		month: 6,
 		day: 1
 	});
     assertNotNull(pd);
     
-    assertEquals(0, pd.getWeekOfMonth("en-US"));
+    assertEquals(1, pd.getWeekOfMonth("en-US"));
 }
 
 function testPersDateGetWeekOfMonth9() {
     var pd = new ilib.Date.PersDate({
-		year: 1432,
+		year: 1388,
 		month: 7,
-		day: 1
-	});
-    assertNotNull(pd);
-    
-    assertEquals(0, pd.getWeekOfMonth("en-US"));
-}
-
-function testPersDateGetWeekOfMonthUS() {
-    var pd = new ilib.Date.PersDate({
-		year: 1432,
-		month: 8,
 		day: 1
 	});
     assertNotNull(pd);
@@ -1351,9 +1340,185 @@ function testPersDateGetWeekOfMonthUS() {
     assertEquals(1, pd.getWeekOfMonth("en-US"));
 }
 
+function testPersDateGetWeekOfMonthIR0() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 3,
+		day: 1
+	});
+    assertNotNull(pd);
+    
+    assertEquals(0, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR1() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 3,
+		day: 4
+	});
+    assertNotNull(pd);
+    
+    assertEquals(1, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR2() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 3,
+		day: 11
+	});
+    assertNotNull(pd);
+    
+    assertEquals(2, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR3() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 3,
+		day: 20
+	});
+    assertNotNull(pd);
+    
+    assertEquals(3, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR4() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 3,
+		day: 29
+	});
+    assertNotNull(pd);
+    
+    assertEquals(4, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR5() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 3,
+		day: 31
+	});
+    assertNotNull(pd);
+    
+    assertEquals(5, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR6() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 4,
+		day: 1
+	});
+    assertNotNull(pd);
+    
+    assertEquals(1, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR7() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 5,
+		day: 1
+	});
+    assertNotNull(pd);
+    
+    assertEquals(0, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR8() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 6,
+		day: 1
+	});
+    assertNotNull(pd);
+    
+    assertEquals(1, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR9() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 7,
+		day: 1
+	});
+    assertNotNull(pd);
+    
+    assertEquals(0, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR10() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 8,
+		day: 1
+	});
+    assertNotNull(pd);
+    
+    assertEquals(0, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR11() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 9,
+		day: 1
+	});
+    assertNotNull(pd);
+    
+    assertEquals(1, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR12() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 10,
+		day: 1
+	});
+    assertNotNull(pd);
+    
+    assertEquals(1, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR13() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 11,
+		day: 1
+	});
+    assertNotNull(pd);
+    
+    assertEquals(0, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthIR14() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 12,
+		day: 1
+	});
+    assertNotNull(pd);
+    
+    assertEquals(1, pd.getWeekOfMonth("fa-IR"));
+}
+
+function testPersDateGetWeekOfMonthUS() {
+    var pd = new ilib.Date.PersDate({
+		year: 1388,
+		month: 8,
+		day: 1
+	});
+    assertNotNull(pd);
+    
+    assertEquals(0, pd.getWeekOfMonth("en-US"));
+}
+
 function testPersDateGetWeekOfMonthDE() {
     var pd = new ilib.Date.PersDate({
-		year: 1432,
+		year: 1388,
 		month: 8,
 		day: 1
 	});
@@ -1364,9 +1529,9 @@ function testPersDateGetWeekOfMonthDE() {
     assertEquals(0, pd.getWeekOfMonth("de-DE"));
 }
 
-function testPersDateGetEraAH() {
+function testPersDateGetEraAP() {
     var pd = new ilib.Date.PersDate({
-		year: 2011,
+		year: 1388,
 		month: 5,
 		day: 1
 	});
@@ -1375,7 +1540,7 @@ function testPersDateGetEraAH() {
     assertEquals(1, pd.getEra());
 }
 
-function testPersDateGetEraBAH() {
+function testPersDateGetEraBAP() {
     var pd = new ilib.Date.PersDate({
 		year: -46,
 		month: 5,
@@ -1390,7 +1555,7 @@ function testPersDateGetEraBAH() {
     assertEquals(-1, pd.getEra());
 }
 
-function testPersDateGetEraAHYear1() {
+function testPersDateGetEraAPYear1() {
     var pd = new ilib.Date.PersDate({
 		year: 1,
 		month: 1,
@@ -1401,7 +1566,7 @@ function testPersDateGetEraAHYear1() {
     assertEquals(1, pd.getEra());
 }
 
-function testPersDateGetEraBAHYear0() {
+function testPersDateGetEraBAPYear0() {
     var pd = new ilib.Date.PersDate({
 		year: 0,
 		month: 12,
