@@ -87,13 +87,27 @@ ilib.Cal.Persian.prototype.getMonLength = function(month, year) {
 };
 
 /**
+ * Return the equivalent year in the 2820 year cycle that begins on 
+ * Far 1, 474. This particular cycle obeys the cycle-of-years formula 
+ * whereas the others do not specifically. This cycle can be used as
+ * a proxy for other years outside of the cycle by shifting them into 
+ * the cycle.   
+ * @param {number} year year to find the equivalent cycle year for
+ * @returns {number} the equivalent cycle year
+ */
+ilib.Cal.Persian.prototype.equivalentCycleYear = function(year) {
+	var y = year - (year >= 0 ? 474 : 473);
+	return ilib.mod(y, 2820) + 474;
+};
+
+/**
  * Return true if the given year is a leap year in the Persian calendar.
  * The year parameter may be given as a number, or as a PersDate object.
  * @param {number} year the year for which the leap year information is being sought
  * @return {boolean} true if the given year is a leap year
  */
 ilib.Cal.Persian.prototype.isLeapYear = function(year) {
-	return (ilib.mod((year + 38) * 682, 2816) < 682);
+	return (ilib.mod((this.equivalentCycleYear(year) + 38) * 682, 2816) < 682);
 };
 
 /**

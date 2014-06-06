@@ -32,7 +32,7 @@ julianday.js
  * 
  * <ul>
  * <li><i>unixtime<i> - sets the time of this instance according to the given 
- * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970.
+ * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970, Gregorian
  * 
  * <li><i>julianday</i> - sets the time of this instance according to the given
  * Julian Day instance or the Julian Day given as a float
@@ -91,7 +91,7 @@ ilib.Date.PersRataDie.prototype.constructor = ilib.Date.PersRataDie;
  * @const
  * @type number
  */
-ilib.Date.PersRataDie.prototype.epoch = 1948318.5;
+ilib.Date.PersRataDie.prototype.epoch = 1948319.5;
 
 /**
  * Calculate the Rata Die (fixed day) number of the given date from the
@@ -101,12 +101,10 @@ ilib.Date.PersRataDie.prototype.epoch = 1948318.5;
  * @param {Object} date the date components to calculate the RD from
  */
 ilib.Date.PersRataDie.prototype._setDateComponents = function(date) {
-	var y = date.year - ((date.year < 0) ? 473 : 474);
-	var year = ilib.mod(y, 2820) + 474;
-	var years = 1029983 * Math.floor(y/2820) + 365 * (year - 1) + Math.floor((682 * year - 110) / 2816);
-	var dayInYear = (date.month > 1 ? ilib.Date.PersDate.cumMonthLengths[date.month-1] : 0) +
-		date.day +
-		(ilib.Cal.Persian.prototype.isLeapYear.call(this.cal, date.year) && date.month === 12 ? 1 : 0);
+	var year = this.cal.equivalentCycleYear(date.year);
+	var y = date.year - (date.year >= 0 ? 474 : 473);
+	var rdOfYears = 1029983 * Math.floor(y/2820) + 365 * (year - 1) + Math.floor((682 * year - 110) / 2816);
+	var dayInYear = (date.month > 1 ? ilib.Date.PersDate.cumMonthLengths[date.month-1] : 0) + date.day;
 	var rdtime = (date.hour * 3600000 +
 		date.minute * 60000 +
 		date.second * 1000 +
@@ -116,14 +114,28 @@ ilib.Date.PersRataDie.prototype._setDateComponents = function(date) {
 	/*
 	console.log("getRataDie: converting " +  JSON.stringify(this));
 	console.log("getRataDie: year is " +  year);
-	console.log("getRataDie: rd of years is " +  years);
+	console.log("getRataDie: rd of years is " +  rdOfYears);
 	console.log("getRataDie: day in year is " +  dayInYear);
 	console.log("getRataDie: rdtime is " +  rdtime);
-	console.log("getRataDie: rd is " +  (years + dayInYear + rdtime));
+	console.log("getRataDie: rd is " +  (rdOfYears + dayInYear + rdtime));
 	*/
 	
-	this.rd = years + dayInYear + rdtime;
+	this.rd = rdOfYears + dayInYear + rdtime;
 };
+
+/**
+ * Return the rd number of the particular day of the week on or before the 
+ * given rd. eg. The Sunday on or before the given rd.
+ * @private
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the current date
+ * @return {number} the rd of the day of the week
+ */
+ilib.Date.PersRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
+	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 3, 7);
+};
+
 
 /**
  * @class
@@ -133,14 +145,14 @@ ilib.Date.PersRataDie.prototype._setDateComponents = function(date) {
  * 
  * <ul>
  * <li><i>unixtime<i> - sets the time of this instance according to the given 
- * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970.
+ * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970, Gregorian
  * 
  * <li><i>julianday</i> - sets the time of this instance according to the given
  * Julian Day instance or the Julian Day given as a float
  * 
  * <li><i>year</i> - any integer, including 0
  * 
- * <li><i>month</i> - 1 to 12, where 1 means January, 2 means February, etc.
+ * <li><i>month</i> - 1 to 12, where 1 means Farvardin, 2 means Ordibehesht, etc.
  * 
  * <li><i>day</i> - 1 to 31
  * 
@@ -193,7 +205,8 @@ ilib.Date.PersRataDie.prototype._setDateComponents = function(date) {
  */
 ilib.Date.PersDate = function(params) {
 	this.cal = new ilib.Cal.Persian();
-
+	this.timezone = "local";
+	
 	if (params) {
 		if (params.locale) {
 			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
@@ -283,7 +296,7 @@ ilib.Date.PersDate = function(params) {
 	}
 };
 
-ilib.Date.PersDate.prototype = new ilib.Date();
+ilib.Date.PersDate.prototype = new ilib.Date({noinstance: true});
 ilib.Date.PersDate.prototype.parent = ilib.Date;
 ilib.Date.PersDate.prototype.constructor = ilib.Date.PersDate;
 
@@ -310,36 +323,6 @@ ilib.Date.PersDate.cumMonthLengths = [
 ];
 
 /**
- * @private
- * @const
- * @type Array.<number>
- * the cumulative lengths of each month, for a leap year 
- */
-ilib.Date.PersDate.cumMonthLengthsLeap = [
-    0,    // Farvardin
-  	31,   // Ordibehesht
-  	62,   // Khordad
-  	93,   // Tir
-  	124,  // Mordad
-  	155,  // Shahrivar
-  	186,  // Mehr
-  	216,  // Aban
-  	246,  // Azar
-  	276,  // Dey
-  	306,  // Bahman
-  	336,  // Esfand
- 	366
-];
-
-/**
- * @private
- * @const
- * @type number
- * the difference between a zero Julian day and the zero Persian date. 
- */
-ilib.Date.PersDate.epoch = 1948318.5;
-
-/**
  * Return a new RD for this date type using the given params.
  * @protected
  * @param {Object=} params the parameters used to create this rata die instance
@@ -356,7 +339,12 @@ ilib.Date.PersDate.prototype.newRd = function (params) {
  * @returns {number} the year for the RD
  */
 ilib.Date.PersDate.prototype._calcYear = function(rd) {
-	return Math.floor((30 * rd + 10646) / 10631);
+	var shiftedRd = rd - 173126;
+	var numberOfCycles = Math.floor(shiftedRd / 1029983);
+	var shiftedDayInCycle = ilib.mod(shiftedRd, 1029983);
+	var yearInCycle = (shiftedDayInCycle === 1029982) ? 2820 : Math.floor((2816 * shiftedDayInCycle + 1031337) / 1028522);
+	var year = 474 + 2820 * numberOfCycles + yearInCycle;
+	return (year > 0) ? year : year - 1;
 };
 
 /**
@@ -370,8 +358,6 @@ ilib.Date.PersDate.prototype._calcDateComponents = function () {
 	this.year = this._calcYear(rd);
 	
 	if (typeof(this.offset) === "undefined") {
-		this.year = this._calcYear(rd);
-		
 		// now offset the RD by the time zone, then recalculate in case we were 
 		// near the year boundary
 		if (!this.tz) {
@@ -435,30 +421,25 @@ ilib.Date.PersDate.prototype._calcDateComponents = function () {
  */
 ilib.Date.PersDate.prototype.getDayOfWeek = function() {
 	var rd = Math.floor(this.getRataDie());
-	return ilib.mod(rd, 7);
+	return ilib.mod(rd-3, 7);
 };
 
 /**
  * Return the ordinal day of the year. Days are counted from 1 and proceed linearly up to 
- * 365, regardless of months or weeks, etc. That is, January 1st is day 1, and 
+ * 365, regardless of months or weeks, etc. That is, Farvardin 1st is day 1, and 
  * December 31st is 365 in regular years, or 366 in leap years.
  * @return {number} the ordinal day of the year
  */
 ilib.Date.PersDate.prototype.getDayOfYear = function() {
-	var cumulativeMap = this.cal.isLeapYear(this.year) ? 
-		ilib.Date.PersDate.cumMonthLengthsLeap : 
-		ilib.Date.PersDate.cumMonthLengths; 
-		
-	return cumulativeMap[this.month-1] + this.day;
+	return ilib.Date.PersDate.cumMonthLengths[this.month-1] + this.day;
 };
 
 /**
  * Return the era for this date as a number. The value for the era for Persian 
- * calendars is -1 for "before the common era" (BCE) and 1 for "the common era" (CE). 
- * BCE dates are any date before Jan 1, 1 CE. In the proleptic Persian calendar, 
- * there is a year 0, so any years that are negative or zero are BCE. In the Julian
- * calendar, there is no year 0. Instead, the calendar goes straight from year -1 to 
- * 1.
+ * calendars is -1 for "before the persian era" (BP) and 1 for "the persian era" (anno 
+ * persico or AP). 
+ * BP dates are any date before Farvardin 1, 1 AP. In the proleptic Persian calendar, 
+ * there is a year 0, so any years that are negative or zero are BP.
  * @return {number} 1 if this date is in the common era, -1 if it is before the 
  * common era 
  */

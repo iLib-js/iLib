@@ -35,7 +35,9 @@
  * @param {Object=} options The date components to initialize this date with
  */
 ilib.Date = function(options) {
-	return ilib.Date.newInstance(options);
+	if (!options || typeof(options.noinstance) === 'undefined') {
+		return ilib.Date.newInstance(options);
+	}
 };
 
 /**

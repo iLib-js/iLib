@@ -166,7 +166,7 @@ ilib.Date.GregDate = function(params) {
 	}
 };
 
-ilib.Date.GregDate.prototype = new ilib.Date();
+ilib.Date.GregDate.prototype = new ilib.Date({noinstance: true});
 ilib.Date.GregDate.prototype.parent = ilib.Date;
 ilib.Date.GregDate.prototype.constructor = ilib.Date.GregDate;
 
