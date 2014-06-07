@@ -1991,7 +1991,7 @@ function testDurFmtFAFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱س ۱م ۱ه ۱ر ۱:۰۱:۰۱", duration.toString());
+    assertEquals("۱س ۱م ۱ه ۱ر ‏۱:۰۱:۰۱", duration.toString());
 };
 
 function testDurFmtFAFormatMedium() {
