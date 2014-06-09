@@ -22,6 +22,143 @@
 // !data col_default
 
 /**
+ * Represents a buffered source of code points. The input string is first
+ * normalized so that combining characters come out in a standardized order.
+ * If the "ignorePunctuation" flag is turned on, then punctuation 
+ * characters are skipped.
+ * 
+ * @class
+ * @constructor
+ * @param {string} str a string to get code points from
+ * @param {boolean} ignorePunctuation whether or not to ignore punctuation
+ * characters
+ */
+ilib.CodePointSource = function(str, ignorePunctuation) {
+	this.chars = [];
+	// first convert the string to a normalized sequence of characters
+	this.it = str.normalize("nfkc").charIterator();
+	this.ignorePunctuation = ignorePunctuation;
+};
+
+/**
+ * Return the first num code points in the source without advancing the
+ * source pointer. If there are not enough code points left in the
+ * string to satisfy the request, this method will return undefined. 
+ * 
+ * @param {number} num the number of characters to peek ahead
+ * @return {string} a string formed out of up to num code points from
+ * the start of the string
+ */
+ilib.CodePointSource.prototype.peek = function(num) {
+	if (this.chars.length < num && this.it.hasNext()) {
+		for (var i = 0; this.chars.length < 4 && this.it.hasNext(); i++) {
+			var c = this.it.next();
+			if (!this.ignorePunctuation || !ilib.CType.isPunct(c)) {
+				this.chars.push(c);
+			}
+		}
+	}
+	if (this.chars.length < num) {
+		return undefined;
+	}
+	return this.chars.slice(0, num).join("");
+};
+/**
+ * Advance the source pointer by the given number of code points.
+ * @param {number} num number of code points to advance
+ */
+ilib.CodePointSource.prototype.consume = function(num) {
+	if (num < this.chars.length) {
+		this.chars = this.chars.slice(num);
+	} else {
+		this.chars = [];
+	}
+};
+
+
+/**
+ * An iterator through a sequence of collation elements. This
+ * iterator takes a source of code points, converts them into
+ * collation elements, and allows the caller to get single
+ * elements at a time.
+ * 
+ * @class
+ * @constructor
+ * @param {ilib.CodePointSource} source source of code points to 
+ * convert to collation elements
+ * @param {Object} map mapping from sequences of code points to
+ * collation elements
+ */
+ilib.ElementIterator = function (source, map) {
+	this.elements = [];
+	this.source = source;
+	this.map = map;
+};
+
+/**
+ * @private
+ */
+ilib.ElementIterator.prototyep._fillBuffer = function () {
+	var str = undefined;
+	
+	// peek ahead by up to 4 characters, which may combine
+	// into 1 or more collation elements
+	for (var i = 4; i > 0; i--) {
+		str = this.source.peek(i);
+		if (str && this.map[str]) {
+			this.elements.push(this.map[str]);
+			this.source.consume(i);
+			return;
+		}
+	}
+	
+	if (str) {
+		// no mappings for the first code point, so just use its
+		// Unicode code point as a proxy for its sort order. Shift
+		// it by the key size so that everything unknown sorts
+		// after things that have mappings
+		this.elements.push(str.charCodeAt(0) << this.keysize);
+		this.source.consume(1);
+	} else {
+		// end of the string
+		return undefined;
+	}
+};
+
+/**
+ * Return true if there are more collation elements left to
+ * iterate through.
+ * @returns {boolean} true if there are more elements left to
+ * iterate through, and false otherwise
+ */
+ilib.ElementIterator.prototype.hasNext = function () {
+	if (this.elements.length < 1) {
+		this._fillBuffer();
+	}
+	return !!this.elements.length;
+};
+
+/**
+ * Return the next collation element. If more than one collation 
+ * element is generated from a sequence of code points 
+ * (ie. an "expansion"), then this class will buffer the
+ * other elements and return them on subsequent calls to 
+ * this method.
+ * 
+ * @returns {number|undefined} the next collation element or
+ * undefined for no more collation elements
+ */
+ilib.ElementIterator.prototype.next = function () {
+	if (this.elements.length < 1) {
+		this._fillBuffer();
+	}
+	var ret = this.elements[0];
+	this.elements = this.elements.slice(1);
+	return ret;
+};
+
+
+/**
  * @class
  * @constructor
  * 
@@ -405,22 +542,61 @@ ilib.Collator = function(options) {
 };
 
 ilib.Collator.prototype = {
-    /**
+	/**
+	 * @private
+	 * Bit pack an array of values into a single number
+	 * @param {Array.<number>} arr array of values to bit pack
+	 */
+	_pack: function (arr) {
+		var value = 0;
+		for (var i = 0; i < this.level; i++) {
+			if (i > 0) {
+				value <<= this.collation.bits[i-1];	
+			}
+			if (i === 2 && this.caseFirst === "upper") {
+				// sort the upper case first instead of lower
+				value = value | (1 - arr[i]);
+			} else {
+				value = value | arr[i];
+			}
+		}
+		return value;
+	},
+	
+	/**
+	 * @private
+	 * Return the rule packed into an array of collation elements.
+	 * @param {Array.<number|Array.<number>>} rule
+	 * @returns
+	 */
+	_packRule: function(rule) {
+		if (typeof(rule[0]) === 'array') {
+			var ret = [];
+			for (var i = 0; i < rule.length; i++) {
+				ret.push(this._pack(rule[i]));
+			}
+			return ret;
+		} else {
+			return new Array(this._pack(rule));
+		}
+	},
+    	
+	/**
      * @private
      */
     _init: function(rules) {
-    	/** @type {{scripts:Array.<string>,maxes:Array.<number>,map:Object.<string,Array.<number>>}} */
+    	/** @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number>>}} */
     	this.collation = rules;
     	this.map = {};
+    	this.keysize = 0;
+    	for (var i = 0; i < this.level+1; i++) {
+    		this.keysize += rules.bits[i];
+    	}
+    	this.keysize += (4 - ilib.mod(this.keysize, 4)); // round to the nearest 4 to find how many bits to use in hex
+    	
     	for (var r in rules.map) {
     		if (r) {
-    			this.map[r] = [];
-    			for (var i = 0; i < rules.map[r].length; i++) {
-    				this.map[r].push(rules.map[r][i]);
-    			}
-    			for (var i = rules.map[r].length; i < 4; i++) {
-    				this.map[r].push(0);
-    			}
+    			this.map[r] = this._packRule(rules.map[r]);
     		}
     	}
     },
@@ -442,56 +618,24 @@ ilib.Collator.prototype = {
 			}
 			return lvalue.valueOf() - rvalue.valueOf();
 		} else {
-			var ret,
-				lit = new ilib.NormString(left).charIterator(),
-				rit = new ilib.NormString(right).charIterator(),
-				lchar,
-				rchar,
-				lattributes,
-				rattributes;
+			var l = (left instanceof ilib.NormString) ? left : new ilib.NormString(left),
+				r = (right instanceof ilib.NormString) ? right : new ilib.NormString(right),
+				lelements,
+				relements;
+				
+			// if the reverse sort is on, switch the char sources so that the result comes out swapped
+			lelements = new elementIterator(new ilib.CodePointSource((this.reverse ? r : l), this.ignorePunctuation), this.map);
+			relements = new elementIterator(new ilib.CodePointSource((this.reverse ? l : r), this.ignorePunctuation), this.map);
 			
-			while (lit.hasNext() && rit.hasNext()) {
-				lchar = lit.next();
-				rchar = rit.next();
-
-				if (this.ignorePunctuation) {
-					while (ilib.CType.isPunct(lchar) && lit.hasNext()) {
-						lchar = lit.next();
-					} 
-					while (ilib.CType.isPunct(rchar) && rit.hasNext()) {
-						rchar = rit.next();
-					} 
-				}
-				
-				lattributes = this.map[lchar] || [lchar, 0, 0, 0];
-				rattributes = this.map[rchar] || [rchar, 0, 0, 0];
-				
-				ret = (lattributes[0] < rattributes[0] ? -1 : (lattributes[0] > rattributes[0] ? 1 : 0));
-				if (ret) {
-					return ret;
-				}
-				if (this.level > 0) {
-					ret = lattributes[1] - rattributes[1];
-					if (ret !== 0) {
-						return (this.caseFirst === "upper") ? ret : -ret;
-					}
-					if (this.level > 1) {
-						ret = lattributes[2] - rattributes[2];
-						if (ret !== 0) {
-							return ret;
-						}
-						if (this.level > 2) {
-							ret = lattributes[3] - rattributes[3];
-							if (ret !== 0) {
-								return ret;
-							}
-						}
-					}
+			while (lelements.hasNext() && relements.hasNext()) {
+				var diff = lelements.next() - relements.next();
+				if (diff) {
+					return diff;
 				}
 			}
-			if (!lit.hasNext() && !rit.hasNext()) {
+			if (!lelements.hasNext() && !relements.hasNext()) {
 				return 0;
-			} else if (lit.hasNext()) {
+			} else if (lelements.hasNext()) {
 				return 1;
 			} else {
 				return -1;
@@ -595,15 +739,40 @@ ilib.Collator.prototype = {
 			var s = isNaN(v.valueOf()) ? "" : v.valueOf().toString(16);
 			return pad(s, 16);	
 		} else {
-			var n = new ilib.NormString(str),
-				it = n.charIterator(),
-				ch,
-				attributes,
-				ret = "";
+			var n = (str instanceof ilib.NormString) ? str : new ilib.NormString(str),
+				it,
+				chars = [],
+				//ch,
+				//attributes,
+				ret = "",
+				i = 0;
 			
+			// first convert the string to a normalized array of characters
+			n = n.normalize("nfkc");
+			it = n.charIterator();
 			while (it.hasNext()) {
-				ch = it.next();
-				if (!this.ignorePunctuation || !ilib.CType.isPunct(ch)) {
+				chars.push(it.next());
+			}
+			
+			// now convert character into a sequence of collation elements, taking care
+			// of compressions and expansions
+			while (i < chars.length) {
+				if (!this.ignorePunctuation || !ilib.CType.isPunct(chars[i])) {
+					var j = (i + 4 < chars.length) ? 4 : chars.length - i;
+					var guess = chars.slice(i, i+4).join("");
+					while (j > 0 && typeof(this.map[guess]) === 'undefined') {
+						j--;
+					}
+					
+					// if j = 0, then no mapping is available for this char, so 
+					// just use the unicode value to estimate the sort order
+					element = (j === 0) ? new Array(chars[i]) : this.map[guess];
+					
+					element.forEach(function(e) {
+						ret += pad(e.toString(16), this.keysize);	
+					});
+					
+					/*
 					attributes = this.map[ch] || [ch, 0, 0, 0];
 		
 					// primary += ilib.toHexString(attributes[0], 2);
@@ -623,6 +792,7 @@ ilib.Collator.prototype = {
 							}
 						}
 					}
+					*/
 				}
 			}
 		}
