@@ -4657,7 +4657,7 @@ function testDurFmtURFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱س ۱م ۱ہ ۱د ۱:۰۱:۰۱", duration.toString());
+    assertEquals("۱س ۱م ۱ہ ۱د ‏۱:۰۱:۰۱", duration.toString());
 };
 
 function testDurFmtURFormatMedium() {
@@ -4789,7 +4789,7 @@ function testDurFmtURFormatShortClockAsync() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("۱س ۱م ۱ہ ۱د ۱:۰۱:۰۱", duration.toString());
+    	    assertEquals("۱س ۱م ۱ہ ۱د ‏۱:۰۱:۰۱", duration.toString());
     	    callbackCalled = true;
     	}
     });
