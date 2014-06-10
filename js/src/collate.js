@@ -116,7 +116,7 @@ ilib.ElementIterator.prototype._fillBuffer = function () {
 	for (var i = 4; i > 0; i--) {
 		str = this.source.peek(i);
 		if (str && this.map[str]) {
-			this.elements.concat(this.map[str]);
+			this.elements = this.elements.concat(this.map[str]);
 			this.source.consume(i);
 			return;
 		}

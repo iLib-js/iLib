@@ -287,9 +287,9 @@ function testElementIteratorNextExhaustCodePoints() {
 function testElementIteratorExpansions() {
 	var cps = new ilib.CodePointSource("abc");
 	var map = {
-		"a": [[0],[1]],
+		"a": [0,1],
 		"b": [1],
-		"c": [[2],[1]],
+		"c": [2,1],
 		"d": [3],
 		"e": [4],
 		"f": [5]
