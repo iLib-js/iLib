@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends locale.js ilibglobal.js numprs.js ctype.ispunct.js
+// !depends locale.js ilibglobal.js numprs.js ctype.ispunct.js normstring.js
 
 // !data col_default
 
@@ -29,15 +29,16 @@
  * 
  * @class
  * @constructor
- * @param {string} str a string to get code points from
+ * @param {ilib.NormString|string} str a string to get code points from
  * @param {boolean} ignorePunctuation whether or not to ignore punctuation
  * characters
  */
 ilib.CodePointSource = function(str, ignorePunctuation) {
 	this.chars = [];
 	// first convert the string to a normalized sequence of characters
-	this.it = str.normalize("nfkc").charIterator();
-	this.ignorePunctuation = ignorePunctuation;
+	var s = (typeof(str) === "string") ? new ilib.NormString(str) : str;
+	this.it = s.normalize("nfkc").charIterator();
+	this.ignorePunctuation = typeof(ignorePunctuation) === "boolean" && ignorePunctuation;
 };
 
 /**
@@ -46,14 +47,18 @@ ilib.CodePointSource = function(str, ignorePunctuation) {
  * string to satisfy the request, this method will return undefined. 
  * 
  * @param {number} num the number of characters to peek ahead
- * @return {string} a string formed out of up to num code points from
- * the start of the string
+ * @return {string|undefined} a string formed out of up to num code points from
+ * the start of the string, or undefined if there are not enough character left
+ * in the source to complete the request
  */
 ilib.CodePointSource.prototype.peek = function(num) {
+	if (num < 1) {
+		return undefined;
+	}
 	if (this.chars.length < num && this.it.hasNext()) {
 		for (var i = 0; this.chars.length < 4 && this.it.hasNext(); i++) {
 			var c = this.it.next();
-			if (!this.ignorePunctuation || !ilib.CType.isPunct(c)) {
+			if (c && !this.ignorePunctuation || !ilib.CType.isPunct(c)) {
 				this.chars.push(c);
 			}
 		}
@@ -68,10 +73,13 @@ ilib.CodePointSource.prototype.peek = function(num) {
  * @param {number} num number of code points to advance
  */
 ilib.CodePointSource.prototype.consume = function(num) {
-	if (num < this.chars.length) {
-		this.chars = this.chars.slice(num);
-	} else {
-		this.chars = [];
+	if (num > 0) {
+		this.peek(num); // for the iterator to go forward if needed
+		if (num < this.chars.length) {
+			this.chars = this.chars.slice(num);
+		} else {
+			this.chars = [];
+		}
 	}
 };
 
@@ -88,17 +96,19 @@ ilib.CodePointSource.prototype.consume = function(num) {
  * convert to collation elements
  * @param {Object} map mapping from sequences of code points to
  * collation elements
+ * @param {number} keysize size in bits of the collation elements
  */
-ilib.ElementIterator = function (source, map) {
+ilib.ElementIterator = function (source, map, keysize) {
 	this.elements = [];
 	this.source = source;
 	this.map = map;
+	this.keysize = keysize;
 };
 
 /**
  * @private
  */
-ilib.ElementIterator.prototyep._fillBuffer = function () {
+ilib.ElementIterator.prototype._fillBuffer = function () {
 	var str = undefined;
 	
 	// peek ahead by up to 4 characters, which may combine
@@ -106,7 +116,7 @@ ilib.ElementIterator.prototyep._fillBuffer = function () {
 	for (var i = 4; i > 0; i--) {
 		str = this.source.peek(i);
 		if (str && this.map[str]) {
-			this.elements.push(this.map[str]);
+			this.elements.concat(this.map[str]);
 			this.source.consume(i);
 			return;
 		}
@@ -624,8 +634,8 @@ ilib.Collator.prototype = {
 				relements;
 				
 			// if the reverse sort is on, switch the char sources so that the result comes out swapped
-			lelements = new elementIterator(new ilib.CodePointSource((this.reverse ? r : l), this.ignorePunctuation), this.map);
-			relements = new elementIterator(new ilib.CodePointSource((this.reverse ? l : r), this.ignorePunctuation), this.map);
+			lelements = new ilib.ElementIterator(new ilib.CodePointSource((this.reverse ? r : l), this.ignorePunctuation), this.map, this.keysize);
+			relements = new ilib.ElementIterator(new ilib.CodePointSource((this.reverse ? l : r), this.ignorePunctuation), this.map, this.keysize);
 			
 			while (lelements.hasNext() && relements.hasNext()) {
 				var diff = lelements.next() - relements.next();
@@ -739,13 +749,14 @@ ilib.Collator.prototype = {
 			var s = isNaN(v.valueOf()) ? "" : v.valueOf().toString(16);
 			return pad(s, 16);	
 		} else {
-			var n = (str instanceof ilib.NormString) ? str : new ilib.NormString(str),
+			var n = (typeof(str) === "string") ? new ilib.NormString(str) : str,
 				it,
 				chars = [],
 				//ch,
 				//attributes,
 				ret = "",
-				i = 0;
+				i = 0,
+				element;
 			
 			// first convert the string to a normalized array of characters
 			n = n.normalize("nfkc");
