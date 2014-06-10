@@ -41,6 +41,33 @@ function testStringConstructorFull() {
     assertEquals("test test test", str.toString());
 }
 
+function testStringConstructorWithStringObj() {
+    var str = new ilib.String(new String("test test test"));
+    
+    assertNotNull(str);
+
+    assertEquals(14, str.length);
+    assertEquals("test test test", str.toString());
+}
+
+function testStringConstructorWithIlibStringObj() {
+    var str = new ilib.String(new ilib.String("test test test"));
+    
+    assertNotNull(str);
+
+    assertEquals(14, str.length);
+    assertEquals("test test test", str.toString());
+}
+
+function testStringConstructorWithIlibNormStringObj() {
+    var str = new ilib.String(new ilib.NormString("test test test"));
+    
+    assertNotNull(str);
+
+    assertEquals(14, str.length);
+    assertEquals("test test test", str.toString());
+}
+
 function testStringFormatNoArgs() {
     var str = new ilib.String("Format this string.");
     
