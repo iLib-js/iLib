@@ -325,14 +325,94 @@ function testElementIteratorContractions() {
     assertFalse(ei.hasNext());
     assertUndefined(ei.next());
 }
+function testElementIteratorContractions2() {
+	var cps = new ilib.CodePointSource("aẬbAÂaa");
+	var map = {
+		"a": [0],
+		"A": [4],
+		"Â": [5],
+		"Ậ": [6],  // actually an A with circumflex character plus a combining dot blow character
+		"b": [8],
+		"c": [16],
+		"d": [24],
+		"e": [32],
+		"f": [40]
+	};
+	var ei = new ilib.ElementIterator(cps, map, 6);
+    assertNotUndefined(ei);
+    
+    assertTrue(ei.hasNext());
+    assertEquals(0, ei.next());
+    assertEquals(6, ei.next());
+    assertEquals(8, ei.next());
+    assertEquals(4, ei.next());
+    assertEquals(5, ei.next());
+    assertEquals(0, ei.next());
+    assertEquals(0, ei.next());
+    assertFalse(ei.hasNext());
+    assertUndefined(ei.next());
+}
 
+function testElementIteratorHasNextEmptyString() {
+	var cps = new ilib.CodePointSource("");
+	var map = {
+		"a": [0],
+		"b": [1],
+		"c": [2],
+		"d": [3],
+		"e": [4],
+		"f": [5]
+	};
+    var ei = new ilib.ElementIterator(cps, map, 3);
+    assertNotUndefined(ei);
+    
+    assertFalse(ei.hasNext());
+}
+function testElementIteratorNextEmptyString() {
+	var cps = new ilib.CodePointSource("");
+	var map = {
+		"a": [0],
+		"b": [1],
+		"c": [2],
+		"d": [3],
+		"e": [4],
+		"f": [5]
+	};
+    var ei = new ilib.ElementIterator(cps, map, 3);
+    assertNotUndefined(ei);
+    
+    assertUndefined(ei.next());
+}
+
+function testElementIteratorNonMapCharacter() {
+	var cps = new ilib.CodePointSource("abcq");
+	var map = {
+		"a": [0],
+		"b": [1],
+		"c": [2],
+		"d": [3],
+		"e": [4],
+		"f": [5]
+	};
+    var ei = new ilib.ElementIterator(cps, map, 3);
+    assertNotUndefined(ei);
+    
+    assertTrue(ei.hasNext());
+    assertEquals(0, ei.next());
+    assertEquals(1, ei.next());
+    assertEquals(2, ei.next());
+    assertEquals(904, ei.next());
+    assertFalse(ei.hasNext());
+    assertUndefined(ei.next());
+}
+
+/*
 function testCollatorConstructor() {
     var col = new ilib.Collator();
     
     assertNotUndefined(col);
 }
 
-/*
 function testCollatorDefault() {
     var col = new ilib.Collator();
     
