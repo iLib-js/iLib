@@ -563,12 +563,48 @@ function testCollatorGetSortKeyNative() {
     }
 }
 
-function testCollatorGetSortKey() {
+function testCollatorGetSortKeySimpleUpper() {
     var col = new ilib.Collator({useNative: false});
     
     assertNotUndefined(col);
 
-   	assertEquals("s100t100r100i100n100g100", col.sortKey("string"));
+   	assertEquals("0000200400600800a0", col.sortKey("ABCDEF"));
+}
+function testCollatorGetSortKeySimpleLower() {
+    var col = new ilib.Collator({useNative: false});
+    
+    assertNotUndefined(col);
+
+   	assertEquals("0100300500700900b0", col.sortKey("abcdef"));
+}
+
+function testCollatorGetSortKeyMixed() {
+    var col = new ilib.Collator({useNative: false});
+    
+    assertNotUndefined(col);
+
+   	assertEquals("2402702301101b00d0", col.sortKey("String"));
+}
+
+function testCollatorGetSortKeyWithExpansion() {
+    var col = new ilib.Collator({useNative: false});
+    
+    assertNotUndefined(col);
+
+    // has 2 collation elements for "a" and "e"
+   	assertEquals("01e090", col.sortKey("æ"));
+}
+
+function testCollatorGetSortKeyWithContraction() {
+    var col = new ilib.Collator({useNative: false});
+    
+    assertNotUndefined(col);
+
+    // The à is actually an "a" with a second combining grave 
+    // accent character. Together, they should have only 1 
+    // collation element because they are normalized to an 
+    // a-grave character first.
+   	assertEquals("012", col.sortKey("à"));
 }
 
 function testCollatorGetSortKeyEmpty() {
@@ -587,13 +623,20 @@ function testCollatorGetSortKeyUndefined() {
     assertEquals("", col.sortKey(undefined));
 }
 
+function testCollatorGetSortKeyDeterministic() {
+    var col = new ilib.Collator({useNative: false});
+    
+    assertNotUndefined(col);
+
+    // should be equal always
+    assertTrue(col.sortKey("string") === col.sortKey("string"));
+}
 function testCollatorGetSortKeyWorks() {
     var col = new ilib.Collator({useNative: false});
     
     assertNotUndefined(col);
 
     // should compare in English
-    assertTrue("string", col.sortKey("string") === col.sortKey("string"));
     assertTrue("a < b", col.sortKey("a") < col.sortKey("b"));
     assertTrue("b < c", col.sortKey("b") < col.sortKey("c"));
     assertTrue("c < z", col.sortKey("c") < col.sortKey("z"));

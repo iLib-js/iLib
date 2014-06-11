@@ -563,8 +563,8 @@ ilib.Collator.prototype = {
 			if (i > 0) {
 				value <<= this.collation.bits[i];	
 			}
-			if (i === 1 && this.caseFirst === "upper") {
-				// sort the upper case first instead of lower
+			if (i === 1 && this.caseFirst === "lower") {
+				// sort the lower case first instead of upper
 				value = value | (1 - arr[i]);
 			} else {
 				value = value | arr[i];
@@ -580,7 +580,7 @@ ilib.Collator.prototype = {
 	 * @returns
 	 */
 	_packRule: function(rule) {
-		if (typeof(rule[0]) === 'array') {
+		if (rule[0] instanceof Array) {
 			var ret = [];
 			for (var i = 0; i < rule.length; i++) {
 				ret.push(this._pack(rule[i]));
