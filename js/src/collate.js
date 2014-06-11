@@ -565,7 +565,7 @@ ilib.Collator.prototype = {
 			}
 			if (i === 1 && this.caseFirst === "lower") {
 				// sort the lower case first instead of upper
-				value = value | (1 - arr[i]);
+				value = value | (1 - (typeof(arr[i]) !== "undefined" ? arr[i] : 0));
 			} else {
 				value = value | arr[i];
 			}
