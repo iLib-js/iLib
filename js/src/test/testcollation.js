@@ -406,14 +406,15 @@ function testElementIteratorNonMapCharacter() {
     assertUndefined(ei.next());
 }
 
-/*
-function testCollatorConstructor() {
+
+
+function testCollatorConstructorNative() {
     var col = new ilib.Collator();
     
     assertNotUndefined(col);
 }
 
-function testCollatorDefault() {
+function testCollatorDefaultNative() {
     var col = new ilib.Collator();
     
     assertNotUndefined(col);
@@ -478,21 +479,100 @@ function testCollatorGetComparatorWorksWithCase() {
     assertTrue("Á < a", func("A", "a") < 0);
 }
 
-function testCollatorGetSortKey() {
-    var col = new ilib.Collator();
+
+function testCollatorConstructorJS() {
+    var col = new ilib.Collator({useNative: false});
+    
+    assertNotUndefined(col);
+}
+
+function testCollatorDefaultJS() {
+    var col = new ilib.Collator({useNative: false});
     
     assertNotUndefined(col);
 
-    // no sort key available when using native...
+    // should compare in English
+    assertEquals("equality", 0, col.compare("string", "string"));
+    assertTrue("a < b", col.compare("a", "b") < 0);
+    assertTrue("b < c", col.compare("b", "c") < 0);
+    assertTrue("c < z", col.compare("c", "z") < 0);
+}
+
+function testCollatorDefaultCaseJS() {
+    var col = new ilib.Collator({useNative: false});
+    
+    assertNotUndefined(col);
+
+    // should compare upper-case first within a base character
+    assertTrue("A < a", col.compare("A", "a") < 0);
+    assertTrue("B < b", col.compare("B", "b") < 0);
+    assertTrue("a < Z", col.compare("a", "Z") < 0);
+    assertTrue("Á < a", col.compare("A", "a") < 0);
+}
+
+function testCollatorGetComparatorJS() {
+    var col = new ilib.Collator({useNative: false});
+    
+    assertNotUndefined(col);
+
+    // should compare in English
+    var func = col.getComparator();
+    assertNotUndefined(func);
+    assertEquals("function", typeof(func));
+}
+
+function testCollatorGetComparatorWorksJS() {
+    var col = new ilib.Collator({useNative: false});
+    
+    assertNotUndefined(col);
+    
+    var func = col.getComparator();
+    assertNotUndefined(func);
+    
+    // should compare in English
+    assertEquals("equality", 0, func("string", "string"));
+    assertTrue("a < b", func("a", "b") < 0);
+    assertTrue("b < c", func("b", "c") < 0);
+    assertTrue("c < z", func("c", "z") < 0);
+}
+
+function testCollatorGetComparatorWorksWithCaseJS() {
+    var col = new ilib.Collator({useNative: false});
+    
+    assertNotUndefined(col);
+    
+    var func = col.getComparator();
+    assertNotUndefined(func);
+    
+    // should compare upper-case first
+    assertTrue("A < a", func("A", "a") < 0);
+    assertTrue("B < b", func("B", "b") < 0);
+    assertTrue("a < Z", func("a", "Z") < 0);
+    assertTrue("Á < a", func("A", "a") < 0);
+}
+
+
+function testCollatorGetSortKeyNative() {
     if (typeof(Intl) !== 'undefined' && Intl) {
+	    var col = new ilib.Collator();
+	    
+	    assertNotUndefined(col);
+	
+	    // no sort key available when using native...
     	assertEquals("string", col.sortKey("string"));
-    } else {
-    	assertEquals("s100t100r100i100n100g100", col.sortKey("string"));
     }
 }
 
+function testCollatorGetSortKey() {
+    var col = new ilib.Collator({useNative: false});
+    
+    assertNotUndefined(col);
+
+   	assertEquals("s100t100r100i100n100g100", col.sortKey("string"));
+}
+
 function testCollatorGetSortKeyEmpty() {
-    var col = new ilib.Collator();
+    var col = new ilib.Collator({useNative: false});
     
     assertNotUndefined(col);
 
@@ -500,7 +580,7 @@ function testCollatorGetSortKeyEmpty() {
 }
 
 function testCollatorGetSortKeyUndefined() {
-    var col = new ilib.Collator();
+    var col = new ilib.Collator({useNative: false});
     
     assertNotUndefined(col);
 
@@ -508,7 +588,7 @@ function testCollatorGetSortKeyUndefined() {
 }
 
 function testCollatorGetSortKeyWorks() {
-    var col = new ilib.Collator();
+    var col = new ilib.Collator({useNative: false});
     
     assertNotUndefined(col);
 
@@ -519,6 +599,7 @@ function testCollatorGetSortKeyWorks() {
     assertTrue("c < z", col.sortKey("c") < col.sortKey("z"));
 }
 
+/*
 function testCollatorWithSort() {
     var col = new ilib.Collator();
     assertNotUndefined(col);

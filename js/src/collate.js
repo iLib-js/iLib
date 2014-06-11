@@ -273,9 +273,9 @@ ilib.ElementIterator.prototype.next = function () {
  * 
  * <li><i>useNative</i> - when this option is true, use the native Intl object
  * provided by the Javascript engine, if it exists, to implement this class. If
- * set to false, this class uses a pure Javascript implementation, which is
- * slower and uses a lot more memory, but works everywhere that ilib works.
- * Default is "true".
+ * it doesn't exist, or if this parameter is false, then this class uses a pure 
+ * Javascript implementation, which is slower and uses a lot more memory, but 
+ * works everywhere that ilib works. Default is "true".
  * </ul>
  * 
  * <h2>Operation</h2>
@@ -526,7 +526,7 @@ ilib.Collator = function(options) {
 					onLoad: ilib.bind(this, function(li) {
 						this.li = li;
 				    	ilib.NormString.init({
-				    		form: "nfc",
+				    		form: "nfkc",
 				    		script: li.getScript(),
 				    		sync: sync,
 				    		loadParams: loadParams,
@@ -561,9 +561,9 @@ ilib.Collator.prototype = {
 		var value = 0;
 		for (var i = 0; i < this.level; i++) {
 			if (i > 0) {
-				value <<= this.collation.bits[i-1];	
+				value <<= this.collation.bits[i];	
 			}
-			if (i === 2 && this.caseFirst === "upper") {
+			if (i === 1 && this.caseFirst === "upper") {
 				// sort the upper case first instead of lower
 				value = value | (1 - arr[i]);
 			} else {
@@ -587,7 +587,7 @@ ilib.Collator.prototype = {
 			}
 			return ret;
 		} else {
-			return new Array(this._pack(rule));
+			return [ this._pack(rule) ];
 		}
 	},
     	
@@ -599,7 +599,7 @@ ilib.Collator.prototype = {
     	this.collation = rules;
     	this.map = {};
     	this.keysize = 0;
-    	for (var i = 0; i < this.level+1; i++) {
+    	for (var i = 0; i < this.level; i++) {
     		this.keysize += rules.bits[i];
     	}
     	this.keysize += (4 - ilib.mod(this.keysize, 4)); // round to the nearest 4 to find how many bits to use in hex
@@ -634,8 +634,8 @@ ilib.Collator.prototype = {
 				relements;
 				
 			// if the reverse sort is on, switch the char sources so that the result comes out swapped
-			lelements = new ilib.ElementIterator(new ilib.CodePointSource((this.reverse ? r : l), this.ignorePunctuation), this.map, this.keysize);
-			relements = new ilib.ElementIterator(new ilib.CodePointSource((this.reverse ? l : r), this.ignorePunctuation), this.map, this.keysize);
+			lelements = new ilib.ElementIterator(new ilib.CodePointSource(l, this.ignorePunctuation), this.map, this.keysize);
+			relements = new ilib.ElementIterator(new ilib.CodePointSource(r, this.ignorePunctuation), this.map, this.keysize);
 			
 			while (lelements.hasNext() && relements.hasNext()) {
 				var diff = lelements.next() - relements.next();
@@ -750,61 +750,11 @@ ilib.Collator.prototype = {
 			return pad(s, 16);	
 		} else {
 			var n = (typeof(str) === "string") ? new ilib.NormString(str) : str,
-				it,
-				chars = [],
-				//ch,
-				//attributes,
 				ret = "",
-				i = 0,
-				element;
+				lelements = new ilib.ElementIterator(new ilib.CodePointSource(n, this.ignorePunctuation), this.map, this.keysize);
 			
-			// first convert the string to a normalized array of characters
-			n = n.normalize("nfkc");
-			it = n.charIterator();
-			while (it.hasNext()) {
-				chars.push(it.next());
-			}
-			
-			// now convert character into a sequence of collation elements, taking care
-			// of compressions and expansions
-			while (i < chars.length) {
-				if (!this.ignorePunctuation || !ilib.CType.isPunct(chars[i])) {
-					var j = (i + 4 < chars.length) ? 4 : chars.length - i;
-					var guess = chars.slice(i, i+4).join("");
-					while (j > 0 && typeof(this.map[guess]) === 'undefined') {
-						j--;
-					}
-					
-					// if j = 0, then no mapping is available for this char, so 
-					// just use the unicode value to estimate the sort order
-					element = (j === 0) ? new Array(chars[i]) : this.map[guess];
-					
-					element.forEach(function(e) {
-						ret += pad(e.toString(16), this.keysize);	
-					});
-					
-					/*
-					attributes = this.map[ch] || [ch, 0, 0, 0];
-		
-					// primary += ilib.toHexString(attributes[0], 2);
-					if (this.reverse) {
-						var v = this.collation.maxes[0] - attributes[0].charCodeAt(0);
-						ret += pad(v.toString(16), 4);
-					} else {
-						ret += attributes[0];
-					}
-					if (this.level > 0) {
-						var c = (this.caseFirst === "upper" && !this.reverse) ? attributes[1] : 1 - attributes[1];
-						ret += c.toString(16);
-						if (this.level > 1) {
-							ret += (this.reverse ? this.collation.maxes[2] - attributes[2] : attributes[2]).toString(16);
-							if (this.level > 2) {
-								ret += (this.reverse ? this.collation.maxes[3] - attributes[3] : attributes[3]).toString(16);
-							}
-						}
-					}
-					*/
-				}
+			while (lelements.hasNext()) {
+				ret += pad(lelements.next().toString(16), this.keysize/4);	
 			}
 		}
 		return ret;
