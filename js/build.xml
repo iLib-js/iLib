@@ -536,7 +536,15 @@ limitations under the License.
 
 	<target depends="assemble.unittest" name="test.assembled.compiled">
 		<echo>Testing the core classes in the assembled and compiled version of ilib</echo>
-		<exec executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+		<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+			<arg line="testSuite.js"/>
+			<arg line="assembled_compiled"/>
+		</exec>
+		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
+			<arg line="testSuite.js"/>
+			<arg line="assembled_compiled"/>
+		</exec>
+		<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
 			<arg line="testSuite.js"/>
 			<arg line="assembled_compiled"/>
 		</exec>
@@ -544,7 +552,15 @@ limitations under the License.
 
 	<target depends="assemble.unittest" name="test.assembled.uncompiled">
 		<echo>Testing the core classes in the assembled and uncompiled version of ilib</echo>
-		<exec executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+		<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+			<arg line="testSuite.js"/>
+			<arg line="assembled_uncompiled"/>
+		</exec>
+		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
+			<arg line="testSuite.js"/>
+			<arg line="assembled_uncompiled"/>
+		</exec>
+		<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
 			<arg line="testSuite.js"/>
 			<arg line="assembled_uncompiled"/>
 		</exec>
@@ -552,7 +568,15 @@ limitations under the License.
 
 	<target depends="assemble.dyn.unittest" name="test.dynamic.compiled">
 		<echo>Testing the core classes in the dynamic and compiled version of ilib</echo>
-		<exec executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+		<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+			<arg line="testSuite.js"/>
+			<arg line="dynamic_compiled"/>
+		</exec>
+		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
+			<arg line="testSuite.js"/>
+			<arg line="dynamic_compiled"/>
+		</exec>
+		<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
 			<arg line="testSuite.js"/>
 			<arg line="dynamic_compiled"/>
 		</exec>
@@ -560,7 +584,15 @@ limitations under the License.
 
 	<target depends="assemble.dyn.unittest" name="test.dynamic.uncompiled">
 		<echo>Testing the core classes in the dynamic and uncompiled version of ilib</echo>
-		<exec executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+		<exec os="Linux" executable="node" dir="${build.src}" failifexecutionfails="true" failonerror="true">
+			<arg line="testSuite.js"/>
+			<arg line="dynamic_uncompiled"/>
+		</exec>
+		<exec os="Windows XP" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
+			<arg line="testSuite.js"/>
+			<arg line="dynamic_uncompiled"/>
+		</exec>
+		<exec os="Windows 7" executable="node.exe" dir="${build.locale}" failifexecutionfails="true"  failonerror="true">
 			<arg line="testSuite.js"/>
 			<arg line="dynamic_uncompiled"/>
 		</exec>
@@ -621,7 +653,11 @@ limitations under the License.
 		<exec os="Linux" executable="node" dir="${build.locale}">
 			<arg value="${build.tools}/build/mkli.js"/>
 		</exec>
+		<echo>The OS is ${osgi.os} ${os.name}</echo>
 		<exec os="Windows XP" executable="node.exe" dir="${build.locale}">
+			<arg value="${build.tools}/build/mkli.js"/>
+		</exec>
+		<exec os="Windows 7" executable="node.exe" dir="${build.locale}">
 			<arg value="${build.tools}/build/mkli.js"/>
 		</exec>
 		<touch file="${build.locale}/localeinfo.stamp"/>
@@ -647,6 +683,11 @@ limitations under the License.
 			<arg value="."/>
 			<arg value="${build.localetemp}"/>
 		</exec>
+		<exec os="Windows 7" executable="node.exe" dir="${build.locale}">
+			<arg value="${build.tools}/build/jsoncompress.js"/>
+			<arg value="."/>
+			<arg value="${build.localetemp}"/>
+		</exec>
 		<touch file="${build.locale}/jsoncompress.stamp"/>
 	</target>
 
@@ -664,6 +705,9 @@ limitations under the License.
 			<arg value="${build.tools}/build/mkmf.js"/>
 		</exec>
 		<exec os="Windows XP" executable="node.exe" dir="${build.localetemp}">
+			<arg value="${build.tools}/build/mkmf.js"/>
+		</exec>
+		<exec os="Windows 7" executable="node.exe" dir="${build.localetemp}">
 			<arg value="${build.tools}/build/mkmf.js"/>
 		</exec>
 	</target>
