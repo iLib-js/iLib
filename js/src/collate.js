@@ -37,7 +37,7 @@ ilib.CodePointSource = function(str, ignorePunctuation) {
 	this.chars = [];
 	// first convert the string to a normalized sequence of characters
 	var s = (typeof(str) === "string") ? new ilib.NormString(str) : str;
-	this.it = s.normalize("nfkc").charIterator();
+	this.it = s.charIterator();
 	this.ignorePunctuation = typeof(ignorePunctuation) === "boolean" && ignorePunctuation;
 };
 
@@ -436,22 +436,22 @@ ilib.Collator = function(options) {
 				case 'primary':
 				case 'base':
 					this.sensitivity = "base";
-					this.level = 0;
+					this.level = 1;
 					break;
 				case 'secondary':
 				case 'case':
 					this.sensitivity = "case";
-					this.level = 1;
+					this.level = 2;
 					break;
 				case 'tertiary':
 				case 'accent':
 					this.sensitivity = "accent";
-					this.level = 2;
+					this.level = 3;
 					break;
 				case 'quaternary':
 				case 'variant':
 					this.sensitivity = "variant";
-					this.level = 3;
+					this.level = 4;
 					break;
 			}
 		}
@@ -576,7 +576,7 @@ ilib.Collator.prototype = {
 	/**
 	 * @private
 	 * Return the rule packed into an array of collation elements.
-	 * @param {Array.<number|Array.<number>>} rule
+	 * @param {Array.<number|null|Array.<number>>} rule
 	 * @returns
 	 */
 	_packRule: function(rule) {
@@ -751,10 +751,15 @@ ilib.Collator.prototype = {
 		} else {
 			var n = (typeof(str) === "string") ? new ilib.NormString(str) : str,
 				ret = "",
-				lelements = new ilib.ElementIterator(new ilib.CodePointSource(n, this.ignorePunctuation), this.map, this.keysize);
+				lelements = new ilib.ElementIterator(new ilib.CodePointSource(n, this.ignorePunctuation), this.map, this.keysize),
+				element;
 			
 			while (lelements.hasNext()) {
-				ret += pad(lelements.next().toString(16), this.keysize/4);	
+				element = lelements.next();
+				if (this.reverse) {
+					element = (1 << this.keysize) - element;
+				}
+				ret += pad(element.toString(16), this.keysize/4);	
 			}
 		}
 		return ret;
