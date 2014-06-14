@@ -1,7 +1,7 @@
 /*
  * testcollation.js - test the Collator object
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013-2014, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -575,7 +575,7 @@ function testCollatorGetSortKeySimpleLower() {
 
 	assertNotUndefined(col);
 
-	assertEquals("0100300500700900b0", col.sortKey("abcdef"));
+	assertEquals("0020220420620820a2", col.sortKey("abcdef"));
 }
 
 function testCollatorGetSortKeyMixed() {
@@ -583,7 +583,7 @@ function testCollatorGetSortKeyMixed() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2402702301101b00d0", col.sortKey("String"));
+	assertEquals("2402622221021a20c2", col.sortKey("String"));
 }
 
 function testCollatorGetSortKeyWithExpansion() {
@@ -592,7 +592,7 @@ function testCollatorGetSortKeyWithExpansion() {
 	assertNotUndefined(col);
 
 	// has 2 collation elements for "a" and "e"
-	assertEquals("01e090", col.sortKey("æ"));
+	assertEquals("01e082", col.sortKey("æ"));
 }
 
 function testCollatorGetSortKeyWithContraction() {
@@ -604,7 +604,7 @@ function testCollatorGetSortKeyWithContraction() {
 	// accent character. Together, they should have only 1 
 	// collation element because they are normalized to an 
 	// a-grave character first.
-	assertEquals("013", col.sortKey("à"));
+	assertEquals("007", col.sortKey("à"));
 }
 
 function testCollatorGetSortKeyEmpty() {
@@ -1202,13 +1202,13 @@ function testJSCollatorPrimaryCase() {
 	assertTrue("A < À", col.compare("A", "À") < 0);
 	assertTrue("À < À  (combining)", col.compare("À", "À") < 0);
 	assertTrue("À  (combining) < Å", col.compare("À", "Å") < 0);
-	assertTrue("Å < a", col.compare("Å", "a") < 0);
+	assertTrue("Å > a", col.compare("Å", "a") > 0);
 	assertTrue("a < à", col.compare("a", "à") < 0);
 	assertTrue("à < à  (combining)", col.compare("à", "à") < 0);
 	assertTrue("à  (combining) < å", col.compare("à", "å") < 0);
 	assertTrue("å < O", col.compare("å", "O") < 0);
 	assertTrue("O < Õ", col.compare("O", "Õ") < 0);
-	assertTrue("Õ < o", col.compare("Õ", "o") < 0);
+	assertTrue("Õ > o", col.compare("Õ", "o") > 0);
 	assertTrue("o < õ", col.compare("o", "õ") < 0);
 }
 
@@ -1254,13 +1254,13 @@ function testJSCollatorGetComparatorPrimaryWorksWithCase() {
 	assertTrue("A < À", func("A", "À") < 0);
 	assertTrue("À < À  (combining)", func("À", "À") < 0);
 	assertTrue("À  (combining) < Å", func("À", "Å") < 0);
-	assertTrue("Å < a", func("Å", "a") < 0);
+	assertTrue("Å > a", func("Å", "a") > 0);
 	assertTrue("a < à", func("a", "à") < 0);
 	assertTrue("à < à  (combining)", func("à", "à") < 0);
 	assertTrue("à  (combining) < å", func("à", "å") < 0);
 	assertTrue("å < O", func("å", "O") < 0);
 	assertTrue("O < Õ", func("O", "Õ") < 0);
-	assertTrue("Õ < o", func("Õ", "o") < 0);
+	assertTrue("Õ > o", func("Õ", "o") > 0);
 	assertTrue("o < õ", func("o", "õ") < 0);
 }
 
@@ -1272,7 +1272,7 @@ function testJSCollatorGetSortKeyPrimary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2502702301101b00d0", col.sortKey("string"));
+	assertEquals("2422622221021a20c2", col.sortKey("string"));
 }
 
 function testJSCollatorGetSortKeyPrimaryWithAccentsAndCase() {
@@ -1283,7 +1283,7 @@ function testJSCollatorGetSortKeyPrimaryWithAccentsAndCase() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2402702301191b00d0", col.sortKey("Strïng"));
+	assertEquals("2402622221131a20c2", col.sortKey("Strïng"));
 }
 
 function testJSCollatorGetSortKeyPrimaryWorks() {
@@ -1298,14 +1298,14 @@ function testJSCollatorGetSortKeyPrimaryWorks() {
 	// A À À Å a à à å O Õ o õ
 	assertTrue("A < À", col.sortKey("A") < col.sortKey("À"));
 	assertTrue("À < À  (combining)", col.sortKey("À") < col.sortKey("À"));
-	assertTrue("À   (combining) < Å", col.sortKey("À") < col.sortKey("Å"));
-	assertTrue("A < a", col.sortKey("Å") < col.sortKey("a"));
+	assertTrue("À (combining) < Å", col.sortKey("À") < col.sortKey("Å"));
+	assertTrue("Å > a", col.sortKey("Å") > col.sortKey("a"));
 	assertTrue("a < à", col.sortKey("a") < col.sortKey("à"));
-	assertTrue("à < à   (combining)", col.sortKey("à") < col.sortKey("à"));
-	assertTrue("à   (combining) < å", col.sortKey("à") < col.sortKey("å"));
+	assertTrue("à < à (combining)", col.sortKey("à") < col.sortKey("à"));
+	assertTrue("à (combining) < å", col.sortKey("à") < col.sortKey("å"));
 	assertTrue("å < O", col.sortKey("å") < col.sortKey("O"));
 	assertTrue("O < Õ", col.sortKey("O") < col.sortKey("Õ"));
-	assertTrue("Õ < o", col.sortKey("Õ") < col.sortKey("o"));
+	assertTrue("Õ > o", col.sortKey("Õ") > col.sortKey("o"));
 	assertTrue("o < õ", col.sortKey("o") < col.sortKey("õ"));
 }
 
@@ -1369,8 +1369,8 @@ function testJSCollatorSecondaryAccent() {
 	// a à à å
 	// (second "a" with grave is two characters: "a" character with a combining grave character)
 	assertTrue("a < à", col.compare("a", "à") < 0);
-	assertTrue("à < à   (combining)", col.compare("à", "à") < 0);
-	assertTrue("à   (combining) < å", col.compare("à", "å") < 0);
+	assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+	assertTrue("à (combining) < å", col.compare("à", "å") < 0);
 }
 
 function testJSCollatorSecondaryCase() {
@@ -1384,15 +1384,15 @@ function testJSCollatorSecondaryCase() {
 	// should compare base, then case, then accent, then variant
 	// A À À Å a à à å O Õ o õ
 	assertTrue("A < À", col.compare("A", "À") < 0);
-	assertTrue("À < À   (combining)", col.compare("À", "À") < 0);
-	assertTrue("À   (combining) < Å", col.compare("À", "Å") < 0);
-	assertTrue("Å < a", col.compare("Å", "a") < 0);
+	assertTrue("À < À (combining)", col.compare("À", "À") < 0);
+	assertTrue("À (combining) < Å", col.compare("À", "Å") < 0);
+	assertTrue("Å > a", col.compare("Å", "a") > 0);
 	assertTrue("a < à", col.compare("a", "à") < 0);
-	assertTrue("à < à   (combining)", col.compare("à", "à") < 0);
-	assertTrue("à   (combining) < å", col.compare("à", "å") < 0);
+	assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+	assertTrue("à (combining) < å", col.compare("à", "å") < 0);
 	assertTrue("å < O", col.compare("å", "O") < 0);
 	assertTrue("O < Õ", col.compare("O", "Õ") < 0);
-	assertTrue("Õ < o", col.compare("Õ", "o") < 0);
+	assertTrue("Õ > o", col.compare("Õ", "o") > 0);
 	assertTrue("o < õ", col.compare("o", "õ") < 0);
 }
 
@@ -1435,15 +1435,15 @@ function testJSCollatorGetComparatorSecondaryWorksWithCase() {
 
 	// A À À Å a à à å O Õ o õ
 	assertTrue("A < À", func("A", "À") < 0);
-	assertTrue("À < À   (combining)", func("À", "À") < 0);
-	assertTrue("À   (combining) < Å", func("À", "Å") < 0);
-	assertTrue("Å < a", func("Å", "a") < 0);
+	assertTrue("À < À (combining)", func("À", "À") < 0);
+	assertTrue("À (combining) < Å", func("À", "Å") < 0);
+	assertTrue("Å > a", func("Å", "a") > 0);
 	assertTrue("a < à", func("a", "à") < 0);
-	assertTrue("à < à   (combining)", func("à", "à") < 0);
-	assertTrue("à   (combining) < å", func("à", "å") < 0);
+	assertTrue("à < à (combining)", func("à", "à") < 0);
+	assertTrue("à (combining) < å", func("à", "å") < 0);
 	assertTrue("å < O", func("å", "O") < 0);
 	assertTrue("O < Õ", func("O", "Õ") < 0);
-	assertTrue("Õ < o", func("Õ", "o") < 0);
+	assertTrue("Õ > o", func("Õ", "o") > 0);
 	assertTrue("o < õ", func("o", "õ") < 0);
 }
 
@@ -1455,7 +1455,7 @@ function testJSCollatorGetSortKeySecondary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2502702301101b00d0", col.sortKey("string"));
+	assertEquals("2422622221021a20c2", col.sortKey("string"));
 }
 
 function testJSCollatorGetSortKeySecondaryWithAccentsAndCase() {
@@ -1466,7 +1466,7 @@ function testJSCollatorGetSortKeySecondaryWithAccentsAndCase() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2402702301191b00d0", col.sortKey("Strïng"));
+	assertEquals("2402622221131a20c2", col.sortKey("Strïng"));
 }
 
 function testJSCollatorGetSortKeySecondaryWorks() {
@@ -1480,15 +1480,15 @@ function testJSCollatorGetSortKeySecondaryWorks() {
 	assertEquals("string", col.sortKey("string"), col.sortKey("string"));
 	// A À À Å a à à å O Õ o õ
 	assertTrue("A < À", col.sortKey("A") < col.sortKey("À"));
-	assertTrue("À < À   (combining)", col.sortKey("À") < col.sortKey("À"));
-	assertTrue("À   (combining) < Å", col.sortKey("À") < col.sortKey("Å"));
-	assertTrue("A < a", col.sortKey("Å") < col.sortKey("a"));
+	assertTrue("À < À (combining)", col.sortKey("À") < col.sortKey("À"));
+	assertTrue("À (combining) < Å", col.sortKey("À") < col.sortKey("Å"));
+	assertTrue("Å > a", col.sortKey("Å") > col.sortKey("a"));
 	assertTrue("a < à", col.sortKey("a") < col.sortKey("à"));
-	assertTrue("à < à   (combining)", col.sortKey("à") < col.sortKey("à"));
-	assertTrue("à   (combining) < å", col.sortKey("à") < col.sortKey("å"));
+	assertTrue("à < à (combining)", col.sortKey("à") < col.sortKey("à"));
+	assertTrue("à (combining) < å", col.sortKey("à") < col.sortKey("å"));
 	assertTrue("å < O", col.sortKey("å") < col.sortKey("O"));
 	assertTrue("O < Õ", col.sortKey("O") < col.sortKey("Õ"));
-	assertTrue("Õ < o", col.sortKey("Õ") < col.sortKey("o"));
+	assertTrue("Õ > o", col.sortKey("Õ") > col.sortKey("o"));
 	assertTrue("o < õ", col.sortKey("o") < col.sortKey("õ"));
 }
 
@@ -1551,8 +1551,8 @@ function testJSCollatorTertiaryAccent() {
 	// should compare base, then accent
 	// (second "a" with grave is two characters: "a" character with a combining grave character)
 	assertTrue("a < à", col.compare("a", "à") < 0);
-	assertTrue("à < à   (combining)", col.compare("à", "à") < 0);
-	assertTrue("à   (combining) < å", col.compare("à", "å") < 0);
+	assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+	assertTrue("à (combining) < å", col.compare("à", "å") < 0);
 }
 
 function testJSCollatorTertiaryCase() {
@@ -1566,15 +1566,15 @@ function testJSCollatorTertiaryCase() {
 	// should compare base, then case, then accent, then variant
 	// A À À Å a à à å O Õ o õ
 	assertTrue("A < À", col.compare("A", "À") < 0);
-	assertTrue("À < À   (combining)", col.compare("À", "À") < 0);
-	assertTrue("À   (combining) < Å", col.compare("À", "Å") < 0);
-	assertTrue("Å < a", col.compare("Å", "a") < 0);
+	assertTrue("À < À (combining)", col.compare("À", "À") < 0);
+	assertTrue("À (combining) < Å", col.compare("À", "Å") < 0);
+	assertTrue("Å > a", col.compare("Å", "a") > 0);
 	assertTrue("a < à", col.compare("a", "à") < 0);
-	assertTrue("à < à   (combining)", col.compare("à", "à") < 0);
-	assertTrue("à   (combining) < å", col.compare("à", "å") < 0);
+	assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+	assertTrue("à (combining) < å", col.compare("à", "å") < 0);
 	assertTrue("å < O", col.compare("å", "O") < 0);
 	assertTrue("O < Õ", col.compare("O", "Õ") < 0);
-	assertTrue("Õ < o", col.compare("Õ", "o") < 0);
+	assertTrue("Õ > o", col.compare("Õ", "o") > 0);
 	assertTrue("o < õ", col.compare("o", "õ") < 0);
 }
 
@@ -1617,15 +1617,15 @@ function testJSCollatorGetComparatorTertiaryWorksWithCase() {
 
 	// A À À Å a à à å O Õ o õ
 	assertTrue("A < À", func("A", "À") < 0);
-	assertTrue("À < À   (combining)", func("À", "À") < 0);
-	assertTrue("À   (combining) < Å", func("À", "Å") < 0);
-	assertTrue("Å < a", func("Å", "a") < 0);
+	assertTrue("À < À (combining)", func("À", "À") < 0);
+	assertTrue("À (combining) < Å", func("À", "Å") < 0);
+	assertTrue("Å > a", func("Å", "a") > 0);
 	assertTrue("a < à", func("a", "à") < 0);
-	assertTrue("à < à   (combining)", func("à", "à") < 0);
-	assertTrue("à   (combining) < å", func("à", "å") < 0);
+	assertTrue("à < à (combining)", func("à", "à") < 0);
+	assertTrue("à (combining) < å", func("à", "å") < 0);
 	assertTrue("å < O", func("å", "O") < 0);
 	assertTrue("O < Õ", func("O", "Õ") < 0);
-	assertTrue("Õ < o", func("Õ", "o") < 0);
+	assertTrue("Õ > o", func("Õ", "o") > 0);
 	assertTrue("o < õ", func("o", "õ") < 0);
 }
 
@@ -1637,7 +1637,7 @@ function testJSCollatorGetSortKeyTertiary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2502702301101b00d0", col.sortKey("string"));
+	assertEquals("2422622221021a20c2", col.sortKey("string"));
 }
 
 function testJSCollatorGetSortKeyTertiaryWithAccentsAndCase() {
@@ -1648,7 +1648,7 @@ function testJSCollatorGetSortKeyTertiaryWithAccentsAndCase() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2402702301191b00d0", col.sortKey("Strïng"));
+	assertEquals("2402622221131a20c2", col.sortKey("Strïng"));
 }
 
 function testJSCollatorGetSortKeyTertiaryWorks() {
@@ -1662,15 +1662,15 @@ function testJSCollatorGetSortKeyTertiaryWorks() {
 	assertEquals("string", col.sortKey("string"), col.sortKey("string"));
 	// A À À Å a à à å O Õ o õ
 	assertTrue("A < À", col.sortKey("A") < col.sortKey("À"));
-	assertTrue("À < À   (combining)", col.sortKey("À") < col.sortKey("À"));
-	assertTrue("À   (combining) < Å", col.sortKey("À") < col.sortKey("Å"));
-	assertTrue("A < a", col.sortKey("Å") < col.sortKey("a"));
+	assertTrue("À < À (combining)", col.sortKey("À") < col.sortKey("À"));
+	assertTrue("À (combining) < Å", col.sortKey("À") < col.sortKey("Å"));
+	assertTrue("Å > a", col.sortKey("Å") > col.sortKey("a"));
 	assertTrue("a < à", col.sortKey("a") < col.sortKey("à"));
-	assertTrue("à < à   (combining)", col.sortKey("à") < col.sortKey("à"));
-	assertTrue("à   (combining) < å", col.sortKey("à") < col.sortKey("å"));
+	assertTrue("à < à (combining)", col.sortKey("à") < col.sortKey("à"));
+	assertTrue("à (combining) < å", col.sortKey("à") < col.sortKey("å"));
 	assertTrue("å < O", col.sortKey("å") < col.sortKey("O"));
 	assertTrue("O < Õ", col.sortKey("O") < col.sortKey("Õ"));
-	assertTrue("Õ < o", col.sortKey("Õ") < col.sortKey("o"));
+	assertTrue("Õ > o", col.sortKey("Õ") > col.sortKey("o"));
 	assertTrue("o < õ", col.sortKey("o") < col.sortKey("õ"));
 }
 
@@ -1931,9 +1931,9 @@ function testJSCollatorSearchSecondaryAccent() {
 	// should compare base, then case
 	// a à à å
 	// (second "a" with grave is two characters: "a" character with a combining grave character)
-	assertEquals("a = à", 0, col.compare("a", "à"));
+	assertTrue("a < à", col.compare("a", "à") < 0);
 	assertEquals("à = à (combining)", 0, col.compare("à", "à"));
-	assertEquals("à (combining) = å", 0, col.compare("à", "å"));
+	assertEquals("à (combining) = À", 0, col.compare("à", "À"));
 }
 
 function testJSCollatorSearchSecondaryCase() {
@@ -1948,17 +1948,17 @@ function testJSCollatorSearchSecondaryCase() {
 	// should compare base, then case
 	// A À À Å a à à å O Õ o õ
 	// (second set of "a" with grave is two characters: "a" character with a combining grave character)
-	assertEquals("A = À",  0, col.compare("A", "À"));
+	assertTrue("A < À",  col.compare("A", "À") < 0);
 	assertEquals("À = À (combining)",  0, col.compare("À", "À"));
-	assertEquals("À (combining) = Å",  0, col.compare("À", "Å"));
-	assertTrue("Å < a", col.compare("Å", "a") < 0);
-	assertEquals("a = à",  0, col.compare("a", "à"));
+	assertTrue("À (combining) < Å",  col.compare("À", "Å") < 0);
+	assertTrue("Å > a", col.compare("Å", "a") > 0);
+	assertTrue("a < à",  col.compare("a", "à") < 0);
 	assertEquals("à = à (combining)",  0, col.compare("à", "à"));
-	assertEquals("à (combining) = å",  0, col.compare("à", "å"));
+	assertTrue("à (combining) < å",  col.compare("à", "å") < 0);
 	assertTrue("å < O", col.compare("å", "O") < 0);
-	assertEquals("O = Õ",  0, col.compare("O", "Õ"));
-	assertTrue("Õ < o", col.compare("Õ", "o") < 0);
-	assertEquals("o = õ",  0, col.compare("o", "õ"));
+	assertTrue("O < Õ",  col.compare("O", "Õ") < 0);
+	assertTrue("Õ > o", col.compare("Õ", "o") > 0);
+	assertTrue("o < õ",  col.compare("o", "õ") < 0);
 }
 
 function testJSCollatorSearchGetComparatorSecondary() {
@@ -2004,17 +2004,17 @@ function testJSCollatorSearchGetComparatorSecondaryWorksWithCase() {
 	// should compare base, then case
 	// A À À Å a à à å O Õ o õ
 	// (second set of "a" with grave is two characters: "a" character with a combining grave character)
-	assertEquals("A = À",  0, func("A", "À"));
+	assertTrue("A < À",  func("A", "À") < 0);
 	assertEquals("À = À (combining)",  0, func("À", "À"));
-	assertEquals("À (combining) = Å",  0, func("À", "Å"));
-	assertTrue("Å < a", func("Å", "a") < 0);
-	assertEquals("a = à",  0, func("a", "à"));
+	assertTrue("À (combining) < Å",  func("À", "Å") < 0);
+	assertTrue("Å > a", func("Å", "a") > 0);
+	assertTrue("a < à",  func("a", "à") < 0);
 	assertEquals("à = à (combining)",  0, func("à", "à"));
-	assertEquals("à (combining) = å",  0, func("à", "å"));
+	assertTrue("à (combining) < å",  func("à", "å") < 0);
 	assertTrue("å < O", func("å", "O") < 0);
-	assertEquals("O = Õ",  0, func("O", "Õ"));
-	assertTrue("Õ < o", func("Õ", "o") < 0);
-	assertEquals("o = õ",  0, func("o", "õ"));
+	assertTrue("O < Õ", func("O", "Õ") < 0);
+	assertTrue("Õ > o", func("Õ", "o") > 0);
+	assertTrue("o < õ", func("o", "õ") < 0);
 }
 
 function testJSCollatorSearchGetSortKeySecondary() {
@@ -2026,7 +2026,7 @@ function testJSCollatorSearchGetSortKeySecondary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("252723111b0d", col.sortKey("string"));
+	assertEquals("909888406830", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeySecondaryWithAccentsAndCase() {
@@ -2038,7 +2038,7 @@ function testJSCollatorSearchGetSortKeySecondaryWithAccentsAndCase() {
 
 	assertNotUndefined(col);
 
-	assertEquals("242723111b0d", col.sortKey("Strïng"));
+	assertEquals("909888446830", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeySecondaryWorks() {
@@ -2052,17 +2052,17 @@ function testJSCollatorSearchGetSortKeySecondaryWorks() {
 
 	assertEquals("string", col.sortKey("string"), col.sortKey("string"));
 	// A À À Å a à à å O Õ o õ
-	assertTrue("A = À", col.sortKey("A") === col.sortKey("À"));
-	assertTrue("À = À   (combining)", col.sortKey("À") === col.sortKey("À"));
-	assertTrue("À   (combining) = Å", col.sortKey("À") === col.sortKey("Å"));
-	assertTrue("A < a", col.sortKey("Å") < col.sortKey("a"));
-	assertTrue("a = à", col.sortKey("a") === col.sortKey("à"));
-	assertTrue("à = à   (combining)", col.sortKey("à") === col.sortKey("à"));
-	assertTrue("à   (combining) = å", col.sortKey("à") === col.sortKey("å"));
+	assertTrue("A < À", col.sortKey("A") < col.sortKey("À"));
+	assertTrue("À = À (combining)", col.sortKey("À") === col.sortKey("À"));
+	assertTrue("À (combining) < Å", col.sortKey("À") < col.sortKey("Å"));
+	assertTrue("Å > a", col.sortKey("Å") > col.sortKey("a"));
+	assertTrue("a < à", col.sortKey("a") < col.sortKey("à"));
+	assertTrue("à = à (combining)", col.sortKey("à") === col.sortKey("à"));
+	assertTrue("à (combining) < å", col.sortKey("à") < col.sortKey("å"));
 	assertTrue("å < O", col.sortKey("å") < col.sortKey("O"));
-	assertTrue("O = Õ", col.sortKey("O") === col.sortKey("Õ"));
-	assertTrue("Õ < o", col.sortKey("Õ") < col.sortKey("o"));
-	assertTrue("o = õ", col.sortKey("o") === col.sortKey("õ"));
+	assertTrue("O < Õ", col.sortKey("O") < col.sortKey("Õ"));
+	assertTrue("Õ > o", col.sortKey("Õ") > col.sortKey("o"));
+	assertTrue("o < õ", col.sortKey("o") < col.sortKey("õ"));
 }
 
 
@@ -2129,7 +2129,7 @@ function testJSCollatorSearchTertiaryAccent() {
 	// (second "a" with grave is two characters: "a" character with a combining grave character)
 	assertTrue("a < à", col.compare("a", "à") < 0);
 	assertEquals("à = à (combining)", 0, col.compare("à", "à"));
-	assertTrue("à   (combining) < å", col.compare("à", "å") < 0);
+	assertTrue("à (combining) < å", col.compare("à", "å") < 0);
 }
 
 function testJSCollatorSearchTertiaryCase() {
@@ -2146,14 +2146,14 @@ function testJSCollatorSearchTertiaryCase() {
 	// (second set of "a" with grave is two characters: "a" character with a combining grave character)
 	assertTrue("A < À", col.compare("A", "À") < 0);
 	assertEquals("À = À (combining)",  0, col.compare("À", "À"));
-	assertTrue("À   (combining) < Å", col.compare("À", "Å") < 0);
-	assertTrue("Å < a", col.compare("Å", "a") < 0);
+	assertTrue("À (combining) < Å", col.compare("À", "Å") < 0);
+	assertTrue("Å > a", col.compare("Å", "a") > 0);
 	assertTrue("a < à", col.compare("a", "à") < 0);
 	assertEquals("à = à (combining)",  0, col.compare("à", "à"));
-	assertTrue("à   (combining) < å", col.compare("à", "å") < 0);
+	assertTrue("à (combining) < å", col.compare("à", "å") < 0);
 	assertTrue("å < O", col.compare("å", "O") < 0);
 	assertTrue("O < Õ", col.compare("O", "Õ") < 0);
-	assertTrue("Õ < o", col.compare("Õ", "o") < 0);
+	assertTrue("Õ > o", col.compare("Õ", "o") > 0);
 	assertTrue("o < õ", col.compare("o", "õ") < 0);
 }
 
@@ -2202,14 +2202,14 @@ function testJSCollatorSearchGetComparatorTertiaryWorksWithCase() {
 	// (second set of "a" with grave is two characters: "a" character with a combining grave character)
 	assertTrue("A < À", func("A", "À") < 0);
 	assertEquals("À = À (combining)",  0, func("À", "À"));
-	assertTrue("À   (combining) < Å", func("À", "Å") < 0);
-	assertTrue("Å < a", func("Å", "a") < 0);
+	assertTrue("À (combining) < Å", func("À", "Å") < 0);
+	assertTrue("Å > a", func("Å", "a") > 0);
 	assertTrue("a < à", func("a", "à") < 0);
 	assertEquals("à = à (combining)",  0, func("à", "à"));
-	assertTrue("à   (combining) < å", func("à", "å") < 0);
+	assertTrue("à (combining) < å", func("à", "å") < 0);
 	assertTrue("å < O", func("å", "O") < 0);
 	assertTrue("O < Õ", func("O", "Õ") < 0);
-	assertTrue("Õ < o", func("Õ", "o") < 0);
+	assertTrue("Õ > o", func("Õ", "o") > 0);
 	assertTrue("o < õ", func("o", "õ") < 0);
 }
 
@@ -2222,7 +2222,7 @@ function testJSCollatorSearchGetSortKeyTertiary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("1281381180880d8068", col.sortKey("string"));
+	assertEquals("1211311110810d1061", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeyTertiaryWithAccentsAndCase() {
@@ -2234,7 +2234,7 @@ function testJSCollatorSearchGetSortKeyTertiaryWithAccentsAndCase() {
 
 	assertNotUndefined(col);
 
-	assertEquals("12013811808c0d8068", col.sortKey("Strïng"));
+	assertEquals("1201311110890d1061", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeyTertiaryWorks() {
@@ -2249,15 +2249,15 @@ function testJSCollatorSearchGetSortKeyTertiaryWorks() {
 	assertEquals("string", col.sortKey("string"), col.sortKey("string"));
 	// A À À Å a à à å O Õ o õ
 	assertTrue("A < À", col.sortKey("A") < col.sortKey("À"));
-	assertTrue("À = À   (combining)", col.sortKey("À") === col.sortKey("À"));
-	assertTrue("À   (combining) < Å", col.sortKey("À") < col.sortKey("Å"));
-	assertTrue("A < a", col.sortKey("Å") < col.sortKey("a"));
+	assertTrue("À = À (combining)", col.sortKey("À") === col.sortKey("À"));
+	assertTrue("À (combining) < Å", col.sortKey("À") < col.sortKey("Å"));
+	assertTrue("Å > a", col.sortKey("Å") > col.sortKey("a"));
 	assertTrue("a < à", col.sortKey("a") < col.sortKey("à"));
-	assertTrue("à = à   (combining)", col.sortKey("à") === col.sortKey("à"));
-	assertTrue("à   (combining) < å", col.sortKey("à") < col.sortKey("å"));
+	assertTrue("à = à (combining)", col.sortKey("à") === col.sortKey("à"));
+	assertTrue("à (combining) < å", col.sortKey("à") < col.sortKey("å"));
 	assertTrue("å < O", col.sortKey("å") < col.sortKey("O"));
 	assertTrue("O < Õ", col.sortKey("O") < col.sortKey("Õ"));
-	assertTrue("Õ < o", col.sortKey("Õ") < col.sortKey("o"));
+	assertTrue("Õ > o", col.sortKey("Õ") > col.sortKey("o"));
 	assertTrue("o < õ", col.sortKey("o") < col.sortKey("õ"));
 }
 
@@ -2324,8 +2324,8 @@ function testJSCollatorSearchQuaternaryAccent() {
 	// a à à å
 	// (second "a" with grave is two characters: "a" character with a combining grave character)
 	assertTrue("a < à", col.compare("a", "à") < 0);
-	assertTrue("à < à   (combining)", col.compare("à", "à") < 0);
-	assertTrue("à   (combining) < å", col.compare("à", "å") < 0);
+	assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+	assertTrue("à (combining) < å", col.compare("à", "å") < 0);
 }
 
 function testJSCollatorSearchQuaternaryCase() {
@@ -2341,15 +2341,15 @@ function testJSCollatorSearchQuaternaryCase() {
 	// A À À Å a à à å O Õ o õ
 	// (second set of "a" with grave is two characters: "a" character with a combining grave character)
 	assertTrue("A < À", col.compare("A", "À") < 0);
-	assertTrue("À < À   (combining)", col.compare("À", "À") < 0);
-	assertTrue("À   (combining) < Å", col.compare("À", "Å") < 0);
-	assertTrue("Å < a", col.compare("Å", "a") < 0);
+	assertTrue("À < À (combining)", col.compare("À", "À") < 0);
+	assertTrue("À (combining) < Å", col.compare("À", "Å") < 0);
+	assertTrue("Å > a", col.compare("Å", "a") > 0);
 	assertTrue("a < à", col.compare("a", "à") < 0);
-	assertTrue("à < à   (combining)", col.compare("à", "à") < 0);
-	assertTrue("à   (combining) < å", col.compare("à", "å") < 0);
+	assertTrue("à < à (combining)", col.compare("à", "à") < 0);
+	assertTrue("à (combining) < å", col.compare("à", "å") < 0);
 	assertTrue("å < O", col.compare("å", "O") < 0);
 	assertTrue("O < Õ", col.compare("O", "Õ") < 0);
-	assertTrue("Õ < o", col.compare("Õ", "o") < 0);
+	assertTrue("Õ > o", col.compare("Õ", "o") > 0);
 	assertTrue("o < õ", col.compare("o", "õ") < 0);
 }
 
@@ -2397,15 +2397,15 @@ function testJSCollatorSearchGetComparatorQuaternaryWorksWithCase() {
 	// A À À Å a à à å O Õ o õ
 	// (second set of "a" with grave is two characters: "a" character with a combining grave character)
 	assertTrue("A < À", func("A", "À") < 0);
-	assertTrue("À < À   (combining)", func("À", "À") < 0);
-	assertTrue("À   (combining) < Å", func("À", "Å") < 0);
-	assertTrue("Å < a", func("Å", "a") < 0);
+	assertTrue("À < À (combining)", func("À", "À") < 0);
+	assertTrue("À (combining) < Å", func("À", "Å") < 0);
+	assertTrue("Å > a", func("Å", "a") > 0);
 	assertTrue("a < à", func("a", "à") < 0);
-	assertTrue("à < à   (combining)", func("à", "à") < 0);
-	assertTrue("à   (combining) < å", func("à", "å") < 0);
+	assertTrue("à < à (combining)", func("à", "à") < 0);
+	assertTrue("à (combining) < å", func("à", "å") < 0);
 	assertTrue("å < O", func("å", "O") < 0);
 	assertTrue("O < Õ", func("O", "Õ") < 0);
-	assertTrue("Õ < o", func("Õ", "o") < 0);
+	assertTrue("Õ > o", func("Õ", "o") > 0);
 	assertTrue("o < õ", func("o", "õ") < 0);
 }
 
@@ -2418,7 +2418,7 @@ function testJSCollatorSearchGetSortKeyQuaternary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2502702301101b00d0", col.sortKey("string"));
+	assertEquals("2422622221021a20c2", col.sortKey("string"));
 }
 
 function testJSCollatorSearchGetSortKeyQuaternaryWithAccentsAndCase() {
@@ -2430,7 +2430,7 @@ function testJSCollatorSearchGetSortKeyQuaternaryWithAccentsAndCase() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2402702301191b00d0", col.sortKey("Strïng"));
+	assertEquals("2402622221131a20c2", col.sortKey("Strïng"));
 }
 
 function testJSCollatorSearchGetSortKeyQuaternaryWorks() {
@@ -2445,15 +2445,15 @@ function testJSCollatorSearchGetSortKeyQuaternaryWorks() {
 	assertEquals("string", col.sortKey("string"), col.sortKey("string"));
 	// A À À Å a à à å O Õ o õ
 	assertTrue("A < À", col.sortKey("A") < col.sortKey("À"));
-	assertTrue("À < À   (combining)", col.sortKey("À") < col.sortKey("À"));
-	assertTrue("À   (combining) < Å", col.sortKey("À") < col.sortKey("Å"));
-	assertTrue("A < a", col.sortKey("Å") < col.sortKey("a"));
+	assertTrue("À < À (combining)", col.sortKey("À") < col.sortKey("À"));
+	assertTrue("À (combining) < Å", col.sortKey("À") < col.sortKey("Å"));
+	assertTrue("Å > a", col.sortKey("Å") > col.sortKey("a"));
 	assertTrue("a < à", col.sortKey("a") < col.sortKey("à"));
-	assertTrue("à < à   (combining)", col.sortKey("à") < col.sortKey("à"));
-	assertTrue("à   (combining) < å", col.sortKey("à") < col.sortKey("å"));
+	assertTrue("à < à (combining)", col.sortKey("à") < col.sortKey("à"));
+	assertTrue("à (combining) < å", col.sortKey("à") < col.sortKey("å"));
 	assertTrue("å < O", col.sortKey("å") < col.sortKey("O"));
 	assertTrue("O < Õ", col.sortKey("O") < col.sortKey("Õ"));
-	assertTrue("Õ < o", col.sortKey("Õ") < col.sortKey("o"));
+	assertTrue("Õ > o", col.sortKey("Õ") > col.sortKey("o"));
 	assertTrue("o < õ", col.sortKey("o") < col.sortKey("õ"));
 }
 
@@ -2669,7 +2669,7 @@ function testJSCollatorSortGetSortKeyReverseQuaternary() {
 
 	assertNotUndefined(col);
 
-	assertEquals("db0d90dd0ef0e50f30", col.sortKey("string"));
+	assertEquals("dbed9eddeefee5ef3e", col.sortKey("string"));
 }
 
 function testCollatorJSWithSortWithSortKeysReverse() {
@@ -2743,7 +2743,7 @@ function testJSCollatorIgnorePunctuationSortKey() {
 
 	assertNotUndefined(col);
 
-	assertEquals("2402702301101b00d0", col.sortKey("-@#%St-ring-#@%"));
+	assertEquals("2402622221021a20c2", col.sortKey("-@#%St-ring-#@%"));
 }
 
 function testJSCollatorNumeric() {

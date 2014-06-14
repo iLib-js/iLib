@@ -19,7 +19,7 @@
 
 // !depends locale.js ilibglobal.js numprs.js ctype.ispunct.js normstring.js
 
-// !data col_default
+// !data collation
 
 /**
  * Represents a buffered source of code points. The input string is first
@@ -232,7 +232,7 @@ ilib.ElementIterator.prototype.next = function () {
  * on what kind of strings are being collated or what the preference of the user 
  * is. For example, in German, there is a phonebook order and a dictionary ordering
  * that sort the same array of strings slightly differently.
- * The static method ilib.Collator.getStyles will return a list of styles that ilib
+ * The static method {@link ilib.Collator#getAvailableStyles} will return a list of styles that ilib
  * currently knows about for any given locale. If the value of the style option is 
  * not recognized for a locale, it will be ignored. Default style is "standard".<p>
  * 
@@ -426,6 +426,7 @@ ilib.Collator = function(options) {
 	this.usage = "sort";
 	this.reverse = false;
 	this.numeric = false;
+	this.style = "standard";
 	
 	if (options) {
 		if (options.locale) {
@@ -484,6 +485,10 @@ ilib.Collator = function(options) {
 		if (typeof(options.numeric) === 'boolean') {
 			this.numeric = options.numeric;
 		}
+		
+		if (typeof(options.style) === 'string') {
+			this.style = options.style;
+		}
 	}
 
 	if (this.usage === "sort") {
@@ -510,12 +515,12 @@ ilib.Collator = function(options) {
 		ilib.loadData({
 			object: ilib.Collator, 
 			locale: this.locale, 
-			name: "col_default.json", 
+			name: "collation.json", 
 			sync: sync, 
 			loadParams: loadParams, 
 			callback: ilib.bind(this, function (collation) {
 				if (!collation) {
-					collation = ilib.data.col_default;
+					collation = ilib.data.collation;
 					var spec = this.locale.getSpec().replace(/-/g, '_');
 					ilib.Collator.cache[spec] = collation;
 				}
@@ -525,25 +530,17 @@ ilib.Collator = function(options) {
 					loadParams: loadParams,
 					onLoad: ilib.bind(this, function(li) {
 						this.li = li;
-				    	ilib.NormString.init({
-				    		form: "nfkc",
-				    		script: li.getScript(),
-				    		sync: sync,
-				    		loadParams: loadParams,
-				    		onLoad: ilib.bind(this, function() {
-				    			if (this.ignorePunctuation) {
-					    			ilib.CType.isPunct._init(sync, loadParams, ilib.bind(this, function() {
-										if (options && typeof(options.onLoad) === 'function') {
-											options.onLoad(this);
-										}
-					    			}));
-				    			} else {
-									if (options && typeof(options.onLoad) === 'function') {
-										options.onLoad(this);
-									}
-				    			}
-				    		})
-				    	});
+						if (this.ignorePunctuation) {
+			    			ilib.CType.isPunct._init(sync, loadParams, ilib.bind(this, function() {
+								if (options && typeof(options.onLoad) === 'function') {
+									options.onLoad(this);
+								}
+			    			}));
+		    			} else {
+							if (options && typeof(options.onLoad) === 'function') {
+								options.onLoad(this);
+							}
+		    			}
 		    		})
 				});
 			})
@@ -563,7 +560,7 @@ ilib.Collator.prototype = {
 			if (i > 0) {
 				value <<= this.collation.bits[i];	
 			}
-			if (i === 1 && this.caseFirst === "lower") {
+			if (i === 2 && this.caseFirst === "lower") {
 				// sort the lower case first instead of upper
 				value = value | (1 - (typeof(arr[i]) !== "undefined" ? arr[i] : 0));
 			} else {
@@ -596,17 +593,18 @@ ilib.Collator.prototype = {
      */
     _init: function(rules) {
     	/** @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number>>}} */
-    	this.collation = rules;
+    	this.collation = rules[this.style];
     	this.map = {};
     	this.keysize = 0;
     	for (var i = 0; i < this.level; i++) {
-    		this.keysize += rules.bits[i];
+    		this.keysize += this.collation.bits[i];
     	}
-    	this.keysize += (4 - ilib.mod(this.keysize, 4)); // round to the nearest 4 to find how many bits to use in hex
+    	var remainder = ilib.mod(this.keysize, 4);
+    	this.keysize += (remainder > 0) ? (4 - remainder) : 0; // round to the nearest 4 to find how many bits to use in hex
     	
-    	for (var r in rules.map) {
+    	for (var r in this.collation.map) {
     		if (r) {
-    			this.map[r] = this._packRule(rules.map[r]);
+    			this.map[r] = this._packRule(this.collation.map[r]);
     		}
     	}
     },
