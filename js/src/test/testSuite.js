@@ -53,6 +53,7 @@ function suite() {
 		//"testaddress_TW.js",
 		"testcalendar.js",
 		"testcollation.js",
+		"testcollation_es.js",
 		"testctype.js",
 		"testcurrency.js",
 		"testdatefmt_ar_SA.js",
