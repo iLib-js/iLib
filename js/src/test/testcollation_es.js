@@ -213,7 +213,6 @@ function testCollatorWithVariants_es() {
 
     input.sort(col.getComparator());
 
-    console.log("after sorting, input is now " + JSON.stringify(input));
     var expected = [
 		"baila",
 		"calabria",
