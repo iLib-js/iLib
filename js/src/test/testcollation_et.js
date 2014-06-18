@@ -109,7 +109,98 @@ function testJSCollatorPrimaryOAOU_et() {
 	assertTrue("X < Y",  col.compare("X", "Y") < 0);
 }
 
-/*
+function testJSCollatorQuatLowerS_et() {
+	var col = new ilib.Collator({
+		locale: "et-EE",
+		useNative: false,
+		sensitivity: "quaternary"
+	});
+
+	assertNotUndefined(col);
+
+	// s š z ž t u v w õ ä ö ü x y
+	assertTrue("s < š",  col.compare("s", "š") < 0);
+	assertTrue("š < z",  col.compare("š", "z") < 0);
+}
+
+function testJSCollatorQuatLowerZ_et() {
+	var col = new ilib.Collator({
+		locale: "et-EE",
+		useNative: false,
+		sensitivity: "quaternary"
+	});
+
+	assertNotUndefined(col);
+
+	// s š z ž t u v w õ ä ö ü x y
+	assertTrue("z < ž",  col.compare("z", "ž") < 0);
+	assertTrue("ž < t",  col.compare("ž", "t") < 0);
+}
+
+function testJSCollatorQuatoLowerOAOU_et() {
+	var col = new ilib.Collator({
+		locale: "et-EE",
+		useNative: false,
+		sensitivity: "quaternary"
+	});
+
+	assertNotUndefined(col);
+
+	// s š z ž t u v w õ ä ö ü x y
+	assertTrue("o < õ",  col.compare("o", "õ") < 0);
+	assertTrue("õ < ä",  col.compare("õ", "ä") < 0);
+	assertTrue("ä < ö",  col.compare("ä", "ö") < 0);
+	assertTrue("ö < ü",  col.compare("ö", "ü") < 0);
+	assertTrue("ü < x",  col.compare("ü", "x") < 0);
+	assertTrue("x < y",  col.compare("x", "y") < 0);
+}
+
+function testJSCollatorPrimaryLowerS_et() {
+	var col = new ilib.Collator({
+		locale: "et-EE",
+		useNative: false,
+		sensitivity: "primary"
+	});
+
+	assertNotUndefined(col);
+
+	// s š z ž t u v w õ ä ö ü x y
+	assertTrue("s < š",  col.compare("s", "š") < 0);
+	assertTrue("š < z",  col.compare("š", "z") < 0);
+}
+
+function testJSCollatorPrimaryLowerZ_et() {
+	var col = new ilib.Collator({
+		locale: "et-EE",
+		useNative: false,
+		sensitivity: "primary"
+	});
+
+	assertNotUndefined(col);
+
+	// s š z ž t u v w õ ä ö ü x y
+	assertTrue("z < ž",  col.compare("z", "ž") < 0);
+	assertTrue("ž < t",  col.compare("ž", "t") < 0);
+}
+
+function testJSCollatorPrimaryLowerOAOU_et() {
+	var col = new ilib.Collator({
+		locale: "et-EE",
+		useNative: false,
+		sensitivity: "primary"
+	});
+
+	assertNotUndefined(col);
+
+	// s š z ž t u v w õ ä ö ü x y
+	assertTrue("o < õ",  col.compare("o", "õ") < 0);
+	assertTrue("õ < ä",  col.compare("õ", "ä") < 0);
+	assertTrue("ä < ö",  col.compare("ä", "ö") < 0);
+	assertTrue("ö < ü",  col.compare("ö", "ü") < 0);
+	assertTrue("ü < x",  col.compare("ü", "x") < 0);
+	assertTrue("x < y",  col.compare("x", "y") < 0);
+}
+
 function testCollatorNativeCase_et() {
 	var col = new ilib.Collator({
 		locale: "et-EE",
@@ -120,45 +211,43 @@ function testCollatorNativeCase_et() {
     assertNotUndefined(col);
 
     var input = [
-        "Flüße",
-        "Montags",
-		"Sonntag",
-		"Flüsse",
-		"fuße",
-		"flüße",
-		"Montag",
-		"Dienstag",
-		"Januar",
-		"Februar",
-		"März",
-		"Fuße",
-		"Flusse",
-		"flusse",
-		"flüsse",
-		"Fluße",
-		"Fuß"
+        "zu",
+        "Šu",
+        "aw",
+        "žu",
+        "šu",
+        "aö",
+        "ax",
+        "za",
+        "su",
+        "ža",
+        "Su",
+        "žž",
+        "ao",
+        "zz",
+        "aÖ",
+        "Žo"
 	];
 
     input.sort(col.getComparator());
 
     var expected = [
-		"Dienstag",
-		"Februar",
-		"Flüsse",
-		"Flüße",
-		"Flusse",
-		"Fluße",
-		"Fuß",
-		"Fuße",
-		"flüsse",
-		"flüße",
-		"flusse",
-		"fuße",
-		"Januar",
-		"März",
-		"Montag",
-		"Montags",
-		"Sonntag"	                    
+        "ao",
+        "aw",
+        "aÖ",
+        "aö",
+        "ax",
+        "Su",
+        "su",
+        "Šu",
+        "šu",
+        "za",
+        "zz",
+        "zu",
+        "Žo",
+        "ža",
+        "žž",
+        "žu"
 	];
 
     assertArrayEquals(expected, input);
@@ -175,41 +264,47 @@ function testCollatorNativeVariant_et() {
     assertNotUndefined(col);
 
     var input = [
-		"Sonntag",
-		"Montags",
-		"Dienstag",
-		"Januar",
-		"Februar",
-		"März",
-		"Fuße",
-		"Fluße",
-		"Flusse",
-		"flusse",
-		"Montag",
-		"fluße",
-		"flüße",
-		"flüsse"
+		"zu",
+		"Šu",
+		"aw",
+		"žu",
+		"šu",
+		"aö",
+		"ax",
+		"za",
+		"su",
+		"ža",
+		"Su",
+		"žž",
+		"ao",
+		"zz",
+        "šu",
+		"aÖ",
+		"Žo"
 	];
 
     input.sort(col.getComparator());
 
     var expected = [
-		"Dienstag",
-		"Februar",
-		"Flusse",
-		"Fluße",
-		"Fuße",
-		"flüsse",
-		"flüße",
-		"flusse",
-		"fluße",
-		"Januar",
-		"März",
-		"Montag",
-		"Montags",
-		"Sonntag"	                    
+		"ao",
+		"aw",
+		"aÖ",
+		"aö",
+		"ax",
+		"Su",
+		"su",
+		"Šu",
+        "šu",
+		"šu",
+		"za",
+		"zz",
+		"zu",
+		"Žo",
+		"žž",
+		"ža",
+		"žu"
 	];
 
     assertArrayEquals(expected, input);
 }
-*/
+
