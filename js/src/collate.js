@@ -515,8 +515,9 @@ ilib.Collator = function(options) {
 		ilib.loadData({
 			object: ilib.Collator, 
 			locale: this.locale, 
-			name: "collation.json", 
-			sync: sync, 
+			name: "collation.json",
+			replace: true,
+			sync: sync,
 			loadParams: loadParams, 
 			callback: ilib.bind(this, function (collation) {
 				if (!collation) {

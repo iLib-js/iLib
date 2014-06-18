@@ -54,6 +54,8 @@ function suite() {
 		"testcalendar.js",
 		"testcollation.js",
 		"testcollation_es.js",
+		"testcollation_de.js",
+		"testcollation_et.js",
 		"testctype.js",
 		"testcurrency.js",
 		"testdatefmt_ar_SA.js",
