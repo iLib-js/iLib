@@ -65,25 +65,6 @@ ilib.NumPlan = function (options) {
 	
 };
 
-/*
-{
-"region": "es",
-"skipTrunk": true,
-"trunkCode": "0",
-"iddCode": "00",
-"dialingPlan": "closed",
-"commonFormatChars": " ()-",
-"fieldLengths": {
-	"areaCode": 0,
-	"cic": 4,
-	"mobilePrefix": 3,
-	"serviceCode": 3,
-	"emergency": 0,
-	"minLocalLength": 9,
-	"personal": 3
-}
-*/
-
 ilib.NumPlan.prototype = {
 	/**
 	 * Return the name of this plan. This may be different than the 
