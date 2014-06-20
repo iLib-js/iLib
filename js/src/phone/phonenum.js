@@ -98,7 +98,7 @@ phone/numplan.js
  * Example: parsing the number "+49 02101345345-78" will give the following properties in the
  * resulting phone number instance:
  * 
- * <code>
+ * <pre>
  *      {
  *        iddPrefix: "+",
  *        countryCode: "49",
@@ -106,7 +106,7 @@ phone/numplan.js
  *        subscriberNumber: "345345",
  *        extension: "78"
  *      }
- * </code>
+ * </pre>
  *  
  * Note that in this example, because international direct dialing is explicitly used 
  * in the number, the part of this number after the IDD prefix and country code will be 

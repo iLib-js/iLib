@@ -72,4 +72,8 @@ nfkc/all.js
 localematch.js
 normstring.js
 maps/casemapper.js
+phone/numplan.js
+phone/phonefmt.js
+phone/phonegeo.js
+phone/phonenum.js
 */

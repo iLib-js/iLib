@@ -54,7 +54,7 @@ phone/phonenum.js
  * particular number exceeds that length, then the area code will not be given on the
  * assumption that the number has problems in the first place and we cannot guess
  * correctly.
- * </ul>
+ * </ol>
  * 
  * The returned area property varies in specificity according
  * to the locale. In North America, the area is no finer than large parts of states
@@ -79,6 +79,8 @@ phone/phonenum.js
  * in English, which should always be available.
  * </ul>
  * 
+ * @class
+ * @constructor
  * @param {string|ilib.PhoneNumber} number if this parameter is given as a string, it
  * should be a number to parse. If it is given as a phone number object, then this
  * instance will be initialized from the given phone number
