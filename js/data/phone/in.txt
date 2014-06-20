@@ -1,0 +1,2676 @@
+# mostly taken from http://www.dot.gov.in/numbering_plan/nnp2003.pdf
+# and http://en.wikipedia.org/wiki/Telephone_numbers_in_India
+
+^+	plus
+^00	idd
+^0.	trunk
+
+^9	cell
+
+^1800	service
+
+^100	emergency	police
+^101	emergency	fire
+^102	emergency	medical
+^1298	emergency	medical
+^103	emergency	traffic
+^104	emergency	medical
+^108	emergency	medical
+^112	emergency	local emergency number
+
+^2	local
+^3	local
+^4	local
+^5	local
+^6	local
+^7	none	invalid
+^8	none	invalid
+
+9	cell
+
+10	cic	Carrier Selection
+11	area	New Delhi	New Delhi, New Delhi
+120	area	Ghaziabad+Dadri	Ghaziabad+Dadri, Ghaziabad
+121	area	Meerut	Meerut, Meerut
+122	area	Hapur	Hapur, Ghaziabad
+1232	area	Modinagar	Modinagar, Ghaziabad
+1233	area	Mawana	Mawana, Meerut
+1234	area	Baghpat	Baghpat-II (Baraut), Meerut
+1237	area	Sardhana	Sardhana, Meerut
+124	area	Gurgaon	Gurgaon, Gurgaon
+1250	area	Charkhidadri	Charkhidadri, Rohtak
+1251	area	Jhajjar	Jhajjar, Rohtak
+1252	area	Loharu	Loharu, Rohtak
+1253	area	Tohsham	Tohsham, Rohtak
+1254	area	Bawanikhera	Bawanikhera, Rohtak
+1255	area	Siwani	Siwani, Rohtak
+1257	area	Meham	Meham, Rohtak
+1258	area	Kalanaur	Kalanaur, Rohtak
+1259	area	Kosli	Kosli, Narnaul
+1262	area	Rohtak	Rohtak, Rohtak
+1263	area	Gohana	Gohana, Sonipat
+1267	area	Nuh	Nuh, Gurgaon
+1268	area	Ferojpur	Ferojpur, Gurgaon
+1274	area	Rewari	Rewari, Narnaul
+1275	area	Palwal	Palwal, Gurgaon
+1276	area	Bahadurgarh	Bahadurgarh, Rohtak
+1281	area	Jatusana	Jatusana, Narnaul
+1282	area	Narnaul	Narnaul, Narnaul
+1284	area	Bawal	Bawal, Narnaul
+1285	area	Mohindergarh	Mohindergarh, Narnaul
+129	area	Faridabad	Faridabad, Gurgaon
+130	area	Sonipat	Sonipat, Sonipat
+131	area	Muzaffar Nagar	Muzaffar Nagar, Muzaffarnagar
+132	area	Saharanpur	Saharanpur, Saharanpur
+1331	area	Nakur	Nakur (Gangoh), Saharanpur
+1332	area	Roorkee	Roorkee-I, Saharanpur
+1334	area	Roorkee	Roorkee-II (Hardwar), Saharanpur
+1336	area	Deoband	Deoband, Saharanpur
+1341	area	Najibabad	Najibabad, Bijnore
+1342	area	Bijnore	Bijnore-I, Bijnore
+1343	area	Nagina	Nagina, Bijnore
+1344	area	Dhampur	Dhampur, Bijnore
+1345	area	Bijnore	Bijnore-II (Chandpur), Bijnore
+1346	area	Pauri	Pauri-II (Bubakhal), Kotdwara
+1348	area	Lansdown	Lansdown-III (Syunsi), Kotdwara
+135	area	Dehradun	Dehradun, Dehradun
+1360	area	Chakrata	Chakrata (Dakpather), Dehradun
+1363	area	Karan Prayag	Karan Prayag, Kotdwara
+1364	area	Ukhimath	Ukhimath (Guptkashi), Kotdwara
+1368	area	Pauri	Pauri-I, Kotdwara
+1370	area	Deoprayag	Deoprayag-II (Jakholi), Uttarkashi
+1371	area	Dunda	Dunda, Uttarkashi
+1372	area	Chamoli	Chamoli, Kotdwara
+1373	area	Purola	Purola, Uttarkashi
+1374	area	Bhatwari	Bhatwari-I (Uttarkashi), Uttarkashi
+1375	area	Rajgarhi	Rajgarhi, Uttarkashi
+1376	area	Tehri	Tehri, Uttarkashi
+1377	area	Bhatwari	Bhatwari-I (Gangotri), Uttarkashi
+1378	area	Deoprayag	Deoprayag-I, Uttarkashi
+1379	area	Partapnagar	Partapnagar, Uttarkashi
+1381	area	Joshimath	Joshimath-II (Badrinath), Kotdwara
+1382	area	Lansdown	Lansdown-II (Kotdwara), Kotdwara
+1386	area	Lansdown	Lansdown-I, Kotdwara
+1389	area	Joshimath	Joshimath-I, Kotdwara
+1392	area	Budhana	Budhana, Muzaffarnagar
+1396	area	Jansath	Jansath (Khatauli), Muzaffarnagar
+1398	area	Kairana	Kairana (Shamli), Muzaffarnagar
+141	area	Jaipur	Jaipur, Jaipur
+1420	area	Baswa	Baswa (Bandikui), Jaipur
+1421	area	Kotputli	Kotputli, Jaipur
+1422	area	Viratnagar	Viratnagar (Shahpura), Jaipur
+1423	area	Amber	Amber (Chomu), Jaipur
+1424	area	Phulera (E)	Phulera (E) (Renwal), Jaipur
+1425	area	Phulera (W)	Phulera (W) (Sambhar), Jaipur
+1426	area	Jamwa-Ramgarh	Jamwa-Ramgarh (Achrol), Jaipur
+1427	area	Dausa	Dausa, Jaipur
+1428	area	Dudu	Dudu, Jaipur
+1429	area	Bassi	Bassi, Jaipur
+1430	area	Phagi	Phagi, Jaipur
+1431	area	Lalsot	Lalsot, Jaipur
+1432	area	Tonk (S)	Tonk (S), Tonk
+1433	area	Todaraisingh	Todaraisingh, Tonk
+1434	area	Deoli	Deoli, Tonk
+1435	area	Tonk (N)	Tonk (N) (Piploo), Tonk
+1436	area	Uniayara	Uniayara, Tonk
+1437	area	Malpura	Malpura, Tonk
+1438	area	Newai	Newai, Tonk
+144	area	Alwar	Alwar, Alwar
+145	area	Ajmer	Ajmer, Ajmer
+1460	area	Kishangarhbas	Kishangarhbas (Khairthal), Alwar
+1461	area	Bansur	Bansur, Alwar
+1462	area	Beawar	Beawar, Ajmer
+1463	area	Kishangarh (S)	Kishangarh (S), Ajmer
+1464	area	Rajgarh	Rajgarh, Alwar
+1465	area	Thanaghazi	Thanaghazi, Alwar
+1466	area	Kekri (W)	Kekri (W) (Bhinai), Ajmer
+1467	area	Kekri (E)	Kekri (E), Ajmer
+1468	area	Ramgarh	Ramgarh, Alwar
+1469	area	Tijara (S)	Tijara (S), Alwar
+1470	area	Dungla	Dungla, Chittorgarh
+1471	area	Rashmi	Rashmi, Chittorgarh
+1472	area	Chittorgarh	Chittorgarh, Chittorgarh
+1473	area	Barisadri	Barisadri, Chittorgarh
+1474	area	Begun (N)	Begun (N), Chittorgarh
+1475	area	Begun (S)	Begun (S) (Rawatbhata), Chittorgarh
+1476	area	Kapasan	Kapasan, Chittorgarh
+1477	area	Nimbahera	Nimbahera, Chittorgarh
+1478	area	Pratapgarh (N)	Pratapgarh (N), Chittorgarh
+1479	area	Pratapgarh (S)	Pratapgarh (S) (Arnod), Chittorgarh
+1480	area	Asind	Asind, Bhilwara
+1481	area	Raipur	Raipur, Bhilwara
+1482	area	Bhilwara	Bhilwara, Bhilwara
+1483	area	Hurda	Hurda (Gulabpura), Bhilwara
+1484	area	Shahapura	Shahapura, Bhilwara
+1485	area	Jahazpur	Jahazpur, Bhilwara
+1486	area	Mandal	Mandal, Bhilwara
+1487	area	Banera	Banera, Bhilwara
+1488	area	Kotri	Kotri, Bhilwara
+1489	area	Mandalgarh	Mandalgarh, Bhilwara
+1491	area	Nasirabad	Nasirabad, Ajmer
+1492	area	Laxmangarh	Laxmangarh (Kherli), Alwar
+1493	area	Tijara (N)	Tijara (N) (Bhiwadi), Alwar
+1494	area	Behror	Behror, Alwar
+1495	area	Mandawar	Mandawar, Alwar
+1496	area	Sarwar	Sarwar, Ajmer
+1497	area	Kishangarh (N)	Kishangarh (N) (Roopangarh), Ajmer
+1498	area	Anupgarh (E)	Anupgarh (E), Sriganganagar
+1499	area	Sangaria	Sangaria, Sriganganagar
+1501	area	Srikaranpur	Srikaranpur, Sriganganagar
+1502	area	Nohar (W)	Nohar (W) (Jedasar), Sriganganagar
+1503	area	Sadulshahar	Sadulshahar, Sriganganagar
+1504	area	Bhadra	Bhadra, Sriganganagar
+1505	area	Padampur	Padampur, Sriganganagar
+1506	area	Anupgarh (W)	Anupgarh (W) (Gharsana), Sriganganagar
+1507	area	Raisinghnagar	Raisinghnagar, Sriganganagar
+1508	area	Suratgarh (N)	Suratgarh (N) (Goluwala), Sriganganagar
+1509	area	Suratgarh (S)	Suratgarh (S), Sriganganagar
+151	area	Bikaner (S)	Bikaner (S), Bikaner
+1520	area	Bikaner (N)	Bikaner (N) (Chhatargarh), Bikaner
+1521	area	Bikaner (C)	Bikaner (C) (Jaimalsar), Bikaner
+1522	area	Bikaner (E)	Bikaner(E) (Jamsar), Bikaner
+1523	area	Bikaner (W)	Bikaner (W) (Poogal), Bikaner
+1526	area	Lunkaransar	Lunkaransar-II (Mahajan), Bikaner
+1527	area	Lunkaransar	Lunkaransar-III (Rajasarb), Bikaner
+1528	area	Lunkaransar	Lunkaransar-IV, Bikaner 
+1529	area	Lunkaransar	Lunkaransar-IV and -I (Kanholi), Bikaner
+1531	area	Nokha (E)	Nokha (E), Bikaner
+1532	area	Nokha (W)	Nokha (W) (Nathusar), Bikaner
+1533	area	Kolayat	Kolayat-I (Goddo), Bikaner
+1534	area	Kolayat	Kolayat-II, Bikaner
+1535	area	Kolayat	Kolayat-II and -III (Bajju), Bikaner
+1536	area	Kolayat	Kolayat-IV (Daitra), Bikaner
+1537	area	Nohar (C)	Nohar (C) (Rawatsar), Sriganganagar
+1539	area	Tibbi	Tibbi, Sriganganagar
+154	area	Sriganganagar	Sriganganagar, Sriganganagar
+1552	area	Hanumangarh	Hanumangarh, Sriganganagar
+1555	area	Nohar (E)	Nohar (E), Sriganganagar
+1559	area	Rajgarh	Rajgarh, Churu
+1560	area	Sujangarh (C)	Sujangarh (C) (Bidasar), Churu
+1561	area	Taranagar	Taranagar, Churu
+1562	area	Churu	Churu, Churu
+1563	area	Sardarshahar (N)	Sardarshahar (N)-Jaitsisar, Churu
+1564	area	Sardarshahar (S)	Sardarshahar (S), Churu
+1565	area	Sridungargarh (N)	Sridungargarh (N)-Dungargh, Churu
+1566	area	Sridungargarh (S)	Sridungargarh (S) (Sudsar), Churu
+1567	area	Ratangarh	Ratangarh, Churu
+1568	area	Sujangarh (E)	Sujangarh (E), Churu
+1569	area	Sujangarh (W)	Sujangarh (W) (Lalgarh), Churu
+1570	area	Laxmangarh (W)	Laxmangarh (W) (Nechwa), Sikar
+1571	area	Fatehpur	Fatehpur, Sikar
+1572	area	Sikar	Sikar, Sikar
+1573	area	Laxmangarh (E)	Laxmangarh (E), Sikar
+1574	area	Neem Ka Thana	Neem Ka Thana, Sikar
+1575	area	Srimadhopur	Srimadhopur, Sikar
+1576	area	Dantaramgarh (E)	Dantaramgarh (E) (Shyamji), Sikar
+1577	area	Dantaramgarh (W)	Dantaramgarh (W), Sikar
+1580	area	Deedwana	Deedwana, Nagaur
+1581	area	Ladnun	Ladnun, Nagaur
+1582	area	Nagaur (N)	Nagaur (N), Nagaur
+1583	area	Jayal	Jayal, Nagaur
+1584	area	Nagaur (E)	Nagaur (E) (Mundwa Marwar), Nagaur
+1585	area	Nagaur (W)	Nagaur (W) (Khinwsar), Naguar
+1586	area	Nawa	Nawa (Kuchamancity), Nagaur
+1587	area	Degana	Degana, Nagaur
+1588	area	Parbatsar (N)	Parbatsar (N) (Makrana), Nagaur
+1589	area	Parbatsar (S)	Parbatsar (S), Nagaur
+1590	area	Merta (E)	Merta (E) (Merta-City), Nagaur
+1591	area	Merta (W)	Merta (W) (Gotan), Nagaur
+1592	area	Jhunjhunu (S)	Jhunjhunu (S), Jhunjhunu
+1593	area	Khetri	Khetri, Jhunjhunu
+1594	area	Udaipurwati	Udaipurwati, Jhunjhunu
+1595	area	Jhunjhunu (N)	Jhunjhunu (N) (Bissau), Jhunjhunu
+1596	area	Chirawa	Chirawa, Jhunjhunu
+160	area	Kharar	Kharar, Ropar
+161	area	Ludhiana	Ludhiana, Ludhiana
+1624	area	Jagraon	Jagraon, Ludhiana
+1628	area	Samrala	Samrala, Ludhiana
+1632	area	Ferozepur	Ferozepur, Ferozepur
+1633	area	Muktasar	Muktasar, Ferozepur
+1634	area	Abohar	Abohar, Ferozepur
+1635	area	Kotkapura	Kotkapura, Ferozepur
+1636	area	Moga	Moga, Ferozepur
+1637	area	Malaut	Malaut, Ferozepur
+1638	area	Fazilka	Fazilka, Ferozepur
+1639	area	Faridakot	Faridakot, Ferozepur
+164	area	Bhatinda	Bhatinda, Bhatinda
+1651	area	Phulmandi	Phulmandi, Bhatinda
+1652	area	Mansa	Mansa, Bhatinda
+1655	area	Raman	Raman, Bhatinda
+1659	area	Sardulgarh	Sardulgarh, Bhatinda
+1662	area	Hissar	Hissar, Hissar
+1663	area	Hansi	Hansi, Hissar
+1664	area	Bhiwani	Bhiwani, Rohtak
+1666	area	Sirsa	Sirsa, Hissar
+1667	area	Fatehabad	Fatehabad, Hissar
+1668	area	Dabwali	Dabwali, Hissar
+1669	area	Adampur Mandi	Adampur Mandi, Hissar
+1672	area	Sangrur	Sangrur, Sangrur
+1675	area	Malerkotla	Malerkotla, Sangrur
+1676	area	Sunam	Sunam, Sangrur
+1679	area	Barnala	Barnala, Sangrur
+1681	area	Jind	Jind, Jind
+1682	area	Zira	Zira, Ferozepur
+1683	area	Julana	Julana, Jind
+1684	area	Narwana	Narwana, Jind
+1685	area	Guruharsahai	Guruharsahai, Ferozepur
+1686	area	Safidon	Safidon, Jind
+1692	area	Tohana	Tohana, Hissar
+1693	area	Barwala	Barwala, Hissar
+1696	area	Kalanwali	Kalanwali, Hissar
+1697	area	Ratia	Ratia, Hissar
+1698	area	Ellenabad	Ellenabad, Hissar
+1702	area	Nahan	Nahan, Solan
+1704	area	Paonta	Paonta, Solan
+171	area	Ambala	Ambala, Ambala
+172	area	Chandigarh	Chandigarh, Chandigarh
+1731	area	Barara	Barara, Ambala
+1732	area	Jagadhari	Jagadhari, Ambala
+1733	area	Kalka	Kalka, Ambala
+1734	area	Naraingarh	Naraingarh, Ambala
+1735	area	Chaaharauli	Chaaharauli, Ambala
+1741	area	Pehowa	Pehowa, Karnal
+1743	area	Cheeka	Cheeka, Karnal
+1744	area	Kurukshetra	Kurukshetra, Karnal
+1745	area	Nilokheri	Nilokheri, Karnal
+1746	area	Kaithal	Kaithal, Karnal
+1748	area	Gharaunda	Gharaunda, Karnal
+1749	area	Assandh	Assandh, Karnal
+175	area	Patiala	Patiala, Patiala
+1762	area	Rajpura	Rajpura, Patiala
+1763	area	Sarhind	Sarhind, Patiala
+1764	area	Samana	Samana, Patiala
+1765	area	Nabha	Nabha, Patiala
+177	area	Shimla	Shimla, Shimla
+1781	area	Rohru	Rohru, Shimla
+1782	area	Rampur Bushahar	Rampur Bushahar, Shimla
+1783	area	Theog	Theog, Shimla
+1785	area	Pooh	Pooh, Shimla
+1786	area	Kalpa	Kalpa, Shimla
+1792	area	Solan	Solan, Solan
+1795	area	Nalagarh	Nalagarh, Solan
+1796	area	Arki	Arki, Solan
+1799	area	Rajgarh	Rajgarh, Solan
+180	area	Panipat	Panipat, Karnal
+181	area	Jallandhar	Jallandhar, Jalandhar
+1821	area	Nakodar	Nakodar, Jalandhar
+1822	area	Kapurthala	Kapurthala, Jalandhar
+1823	area	Nawanshahar	Nawanshahar, Jalandhar
+1824	area	Phagwara	Phagwara, Jalandhar
+1826	area	Phillaur	Phillaur, Jalandhar
+1828	area	Sultanpur Lodhi	Sultanpur Lodhi, Jalandhar
+183	area	Amritsar	Amritsar, Amritsar
+184	area	Karnal	Karnal, Karnal
+1851	area	Patti	Patti, Amritsar
+1852	area	Taran Taran	Taran Taran, Amritsar
+1853	area	Rayya	Rayya, Amritsar
+1858	area	Ajnala	Ajnala, Amritsar
+1859	area	Goindwal	Goindwal, Amritsar
+186	area	Pathankot	Pathankot, Pathankot
+1870	area	Jugial	Jugial, Pathankot
+1871	area	Batala	Batala, Pathankot
+1872	area	Quadian	Quadian, Pathankot
+1874	area	Gurdaspur	Gurdaspur, Pathankot
+1875	area	Dinanagar	Dinanagar, Pathankot
+1881	area	Ropar	Ropar, Ropar
+1882	area	Hoshiarpur	Hoshiarpur, Hosiarpur
+1883	area	Dasua	Dasua, Hosiarpur
+1884	area	Garhashanker	Garhashanker, Hosiarpur
+1885	area	Balachaur	Balachaur, Hosiarpur
+1886	area	Tanda Urmar	Tanda Urmar, Hosiarpur
+1887	area	Nangal	Nangal, Ropar
+1892	area	Kangra	Kangra (Dharamsala), Kangra (Dharamsala)
+1893	area	Nurpur	Nurpur, Kangra (Dharamsala)
+1894	area	Palampur	Palampur, Kangra (Dharamsala)
+1895	area	Bharmour	Bharmour, Kangra (Dharamsala)
+1896	area	Churah	Churah (Tissa), Kangra (Dharamsala)
+1897	area	Pangi	Pangi (Killar), Kandra (Dharamsala)
+1899	area	Chamba	Chamba, Kangra (Dharamsala)
+1900	area	Lahul	Lahul (Keylong), Kullu
+1902	area	Kullu	Kullu, Kullu
+1903	area	Banjar	Banjar, Kullu
+1904	area	Nirmand	Nirmand, Kullu
+1905	area	Mandi	Mandi, Mandi
+1906	area	Spiti	Spiti (Kaza), Kullu
+1907	area	Sundernagar	Sundernagar, Mandi
+1908	area	Jogindernagar	Jogindernagar, Mandi
+1909	area	Udaipur	Udaipur, Kullu
+191	area	Jammu	Jammu, Jammu
+1921	area	Basholi	Basholi, Jammu
+1922	area	Kathua	Kathua, Jammu
+1923	area	Samba	Samba, Jammu
+1924	area	Akhnoor	Akhnoor, Jammu
+1931	area	Kulgam	Kulgam, Srinagar
+1932	area	Anantnag	Anantnag, Srinagar
+1933	area	Pulwama	Pulwama, Srinagar
+1936	area	Pahalgam	Pahalgam, Srinagar
+194	area	Srinagar	Srinagar, Srinagar
+1951	area	Badgam	Badgam, Srinagar
+1952	area	Baramulla	Baramulla, Srinagar
+1954	area	Sopore	Sopore, Srinagar
+1955	area	Kupwara	Kupwara, Srinagar
+1956	area	Uri	Uri, Srinagar
+1957	area	Bandipur	Bandipur, Srinagar
+1958	area	Karnah	Karnah, Srinagar
+1960	area	Nowshera	Nowshera, Rajouri
+1962	area	Rajouri	Rajouri, Rajouri
+1964	area	Kalakot	Kalakot, Rajouri
+1965	area	Poonch	Poonch, Rajouri
+1970	area	Dehra Gopipur	Dehra Gopipur, Kangra (Dharamsala)
+1972	area	Hamirpur	Hamirpur, Hamirpur
+1975	area	Una	Una, Hamirpur
+1976	area	Amb	Amb, Hamirpur
+1978	area	Bilaspur	Bilaspur, Hamirpur
+1980	area	Nobra	Nobra, Leh
+1981	area	Nyoma	Nyoma, Leh
+1982	area	Leh	Leh, Leh
+1983	area	Zanaskar	Zanaskar, Leh
+1985	area	Kargil	Kargil, Leh
+1990	area	Ramnagar	Ramnagar, Udhampur
+1991	area	Reasi	Reasi, Udhampur
+1992	area	Udhampur	Udhampur, Udhampur
+1995	area	Kishtwar	Kishtwar, Udhampur
+1996	area	Doda	Doda, Udhampur
+1997	area	Bedarwah	Bedarwah, Udhampur
+1998	area	Ramban	Ramban, Udhampur
+1999	area	Mahore	Mahore, Udhampur
+20	area	Pune	Pune, Pune
+2111	area	Indapur	Indapur, Pune
+2112	area	Baramati	Baramati, Pune
+2113	area	Bhor	Bhor, Pune
+2114	area	Lonavala	Lonavala, Pune
+2115	area	Saswad	Saswad, Pune
+2117	area	Daund	Daund, Pune
+2118	area	Walchandnagar	Walchandnagar, Pune
+2119	area	Kedgaon	Kedgaon, Pune
+212	area	Chinchwad	Chinchwad, Pune
+2130	area	Velhe	Velhe, Pune
+2132	area	Junnar	Junnar, Pune
+2133	area	Manchar	Manchar, Pune
+2135	area	Rajgurunagar	Rajgurunagar, Pune
+2136	area	Urlikanchan	Urlikanchan, Pune
+2137	area	Nahavara	Nahavara, Pune
+2138	area	Shirur	Shirur, Pune
+2139	area	Pirangut	Pirangut, Pune
+2140	area	Mangaon	Mangaon, Pen
+2141	area	Alibagh	Alibagh, Pen
+2142	area	Pali	Pali, Pen
+2143	area	Pen	Pen, Pen
+2144	area	Murud	Murud, Pen
+2145	area	Mahad	Mahad, Pen
+2147	area	Shrivardhan	Shrivardhan, Pen
+2148	area	Karjat	Karjat, Pen
+2149	area	Mahasala	Mahasala, Pen
+215	area	Navi Mumbai	Navi Mumbai (Turbhe), Mumbai
+2160	area	Sakarwadi	Sakarwadi, Satara
+2161	area	Vaduj	Vaduj, Satara
+2162	area	Satara	Satara, Satara
+2163	area	Koregaon	Koregaon, Satara
+2164	area	Karad	Karad, Satara
+2165	area	Dhiwadi	Dhiwadi, Satara
+2166	area	Phaltan	Phaltan, Satara
+2167	area	Wai	Wai, Satara
+2168	area	Mahabaleswar	Mahabaleswar, Satara
+2169	area	Shirwal	Shirwal, Satara
+217	area	Sholapur	Sholapur, Sholapur
+2181	area	Akkalkot	Akkalkot, Sholapur
+2182	area	Karmala	Karmala, Sholapur
+2183	area	Madha	Madha, Sholapur
+2184	area	Barsi	Barsi, Sholapur
+2185	area	Malsuras	Malsuras, Sholapur
+2186	area	Pandharpur	Pandharpur, Sholapur
+2187	area	Sangola	Sangola, Sholapur
+2188	area	Mangalwedha	Mangalwedha, Sholapur
+2189	area	Mohol	Mohol, Sholapur
+2191	area	Poladpur	Poladpur, Pen
+2192	area	Khopoli	Khopoli, Pen
+2194	area	Roha	Roha, Pen
+22	area	Mumbai	Mumbai, Mumbai
+230	area	Khadakwasala	Khadakwasala, Pune
+231	area	Kolhapur	Kolhapur, Kolhapur
+2320	area	Chandgad	Chandgad, Kolhapur
+2321	area	Radhanagar	Radhanagar, Kolhapur
+2322	area	Shirol	Shirol (Jalsingpur), Kolhapur
+2323	area	Ajara	Ajara, Kolhapur
+2324	area	Hatkangale	Hatkangale (Ichalkaranji), Kolhapur
+2325	area	Kagal	Kagal (Murgud), Kolhapur
+2326	area	Gaganbavada	Gaganbavada, Kolhapur
+2327	area	Gadhinglaj	Gadhinglaj, Kolhapur
+2328	area	Panhala	Panhala, Kolhapur
+2329	area	Shahuwadi	Shahuwadi (Malakapur), Kolhapur
+233	area	Sangli	Sangli, Sangli
+2341	area	Kavathemankal	Kavathemankal, Sangli
+2342	area	Islampur	Islampur, Sangli
+2343	area	Atpadi	Atpadi, Sangli
+2344	area	Jath	Jath, Sangli
+2345	area	Shirala	Shirala, Sangli
+2346	area	Tasgaon	Tasgaon, Sangli
+2347	area	Vita	Vita, Sangli
+2350	area	Madangad	Madangad, Ratnagiri
+2351	area	Langa	Langa, Ratnagiri
+2352	area	Ratnagiri	Ratnagiri, Ratnagiri
+2353	area	Rajapur	Rajapur, Ratnagiri
+2354	area	Sanganeshwar	Sanganeshwar (Deorukh), Ratnagiri
+2355	area	Chiplun	Chiplun, Ratnagiri
+2356	area	Khed	Khed, Ratnagiri
+2357	area	Malgund	Malgund, Ratnagiri
+2358	area	Dapoli	Dapoli, Ratnagiri
+2359	area	Guhagar	Guhagar, Ratnagiri
+2362	area	Kudal	Kudal, Kudal
+2363	area	Sawantwadi	Sawantwadi, Kudal
+2364	area	Deogad	Deogad, Kudal
+2365	area	Malwan	Malwan, Kudal
+2366	area	Vengurla	Vengurla, Kudal
+2367	area	Kankavali	Kankavali, Kudal
+2371	area	Wathar	Wathar, Satara
+2372	area	Patan	Patan, Satara
+2373	area	Mahaswad	Mahaswad, Satara
+2375	area	Pusegaon	Pusegaon, Satara
+2378	area	Medha	Medha, Satara
+2381	area	Ahmedpur	Ahmedpur, Latur
+2382	area	Latur	Latur, Latur
+2383	area	Ausa	Ausa, Latur
+2384	area	Nilanga	Nilanga, Latur
+2385	area	Udgir	Udgir, Latur
+241	area	Ahmednagar	Ahmednagar, Ahmednagar
+2421	area	Jamkhed	Jamkhed, Ahmednagar
+2422	area	Shri Rampur	Shri Rampur, Ahmednagar
+2423	area	Koparagon	Koparagon, Ahmednagar
+2424	area	Akole	Akole, Ahmednagar
+2425	area	Sangamner	Sangamner, Ahmednagar
+2426	area	Rahuri	Rahuri, Ahmednagar
+2427	area	Newasa	Newasa, Ahmednagar
+2428	area	Pathardi	Pathardi, Ahmednagar
+2429	area	Shevgaon	Shevgaon, Ahmednagar
+2430	area	Sillod	Sillod, Aurangabad
+2431	area	Paithan	Paithan, Aurangabad
+2432	area	Aurangabad	Aurangabad, Aurangabad
+2433	area	Gangapur	Gangapur, Aurangabad
+2435	area	Kannad	Kannad, Aurangabad
+2436	area	Vijapur	Vijapur, Aurangabad
+2437	area	Khultabad	Khultabad, Aurangabad
+2438	area	Soyegaon	Soyegaon, Aurangabad
+2439	area	Golegaon	Golegaon, Aurangabad
+2441	area	Ashti	Ashti, Bhir
+2442	area	Bhir	Bhir, Bhir
+2443	area	Manjalegaon	Manjalegaon, Bhir
+2444	area	Patoda	Patoda, Bhir
+2445	area	Kaij	Kaij, Bhir
+2446	area	Ambejogai	Ambejogai, Bhir
+2447	area	Gevrai	Gevrai, Bhir
+2451	area	Pathari	Pathari, Parbhani
+2452	area	Parbhani	Parbhani, Parbhani
+2453	area	Gangakhed	Gangakhed, Parbhani
+2454	area	Basmatnagar	Basmatnagar, Parbhani
+2455	area	Kalamnuri	Kalamnuri, Parbhani
+2456	area	Hingoli	Hingoli, Parbhani
+2457	area	Jintdor	Jintdor, Parbhani
+2460	area	Delhi Tanda	Delhi Tanda, Nanded
+2461	area	Mukhed	Mukhed, Nanded
+2462	area	Nanded	Nanded, Nanded
+2463	area	Degloor	Degloor, Nanded
+2465	area	Billoli	Billoli, Nanded
+2466	area	Kandhar	Kandhar, Nanded
+2467	area	Bhokar	Bhokar, Nanded
+2468	area	Hadgaon	Hadgaon, Nanded
+2469	area	Kinwat	Kinwat, Nanded
+2471	area	Tuljapur	Tuljapur, Osmanabad
+2472	area	Osmanabad	Osmanabad, Osmanabad
+2473	area	Kallam	Kallam, Osmanabad
+2475	area	Omerga	Omerga, Osmanabad
+2477	area	Paranda	Paranda, Osmanabad
+2478	area	Bhoom	Bhoom, Osmanabad
+2481	area	Ner	Ner, Jalna
+2482	area	Jalna	Jalna, Jalna
+2483	area	Ambad	Ambad, Jalna
+2484	area	Partur	Partur, Jalna
+2485	area	Bhokardan	Bhokardan, Jalna
+2487	area	Shrigonda	Shrigonda, Ahmednagar
+2488	area	Parner	Parner, Ahmednagar
+2489	area	Karjat	Karjat, Ahmednagar
+250	area	Bassein	Bassein, Kalyan
+251	area	Kalyan	Kalyan, Kalyan
+2520	area	Jawahar	Jawahar, Kalyan
+2521	area	Talasari	Talasari, Kalyan
+2522	area	Bhiwandi	Bhiwandi, Kalyan
+2524	area	Murbad	Murbad, Kalyan
+2525	area	Palghar	Palghar, Kalyan
+2526	area	Wada	Wada, Kalyan
+2527	area	Shahapur	Shahapur, Kalyan
+2528	area	Dahanu	Dahanu, Kalyan
+2529	area	Mokhada	Mokhada, Kalyan
+253	area	Nasikcity	Nasikcity, Nasik
+2550	area	Niphad	Niphad, Nasik
+2551	area	Sinnar	Sinnar, Nasik
+2552	area	Nandgaon	Nandgaon, Nasik
+2553	area	Igatpuri	Igatpuri, Nasik
+2554	area	Malegaon	Malegaon, Nasik
+2555	area	Satana	Satana, Nasik
+2556	area	Chanwad	Chanwad, Nasik
+2557	area	Dindori	Dindori, Nasik
+2558	area	Peint	Peint, Nasik
+2559	area	Yeola	Yeola, Nasik
+2560	area	Kusumba	Kusumba, Dhulia
+2561	area	Pimpalner	Pimpalner, Dhulia
+2562	area	Dhule	Dhule, Dhulia
+2563	area	Shirpur	Shirpur, Dhulia
+2564	area	Nandurbar	Nandurbar, Dhulia
+2565	area	Shahada	Shahada, Dhulia
+2566	area	Sindkheda	Sindkheda, Dhulia
+2567	area	Taloda	Taloda, Dhulia
+2568	area	Sakri	Sakri, Dhulia
+2569	area	Navapur	Navapur, Dhulia
+257	area	Jalgaon	Jalgaon, Jalgaon
+2580	area	Jamner	Jamner, Jalgaon
+2582	area	Bhusawal	Bhusawal, Jalgaon
+2583	area	Edalabad	Edalabad, Jalgaon
+2584	area	Raver	Raver, Jalgaon
+2585	area	Yawal	Yawal, Jalgaon
+2586	area	Chopda	Chopda, Jalgaon
+2587	area	Amalner	Amalner, Jalgaon
+2588	area	Erandul	Erandul, Jalgaon
+2589	area	Chalisgaon	Chalisgaon, Jalgaon
+2591	area	Manmad	Manmad, Nasik
+2592	area	Kalwan	Kalwan, Nasik
+2593	area	Surgena	Surgena, Nasik
+2594	area	Trimbak	Trimbak, Nasik
+2595	area	Dhadgaon	Dhadgaon, Dhulia
+2596	area	Pachora	Pachora, Jalgaon
+2597	area	Parola	Parola, Jalgaon
+2598	area	Umrane	Umrane, Nasik
+2599	area	Bhudargad	Bhudargad (Gargoti), Kolhapur
+260	area	Vapi	Vapi, Valsad
+261	area	Surat	Surat, Surat
+2621	area	Sayan	Sayan, Surat
+2622	area	Bardoli	Bardoli, Surat
+2623	area	Mandvi	Mandvi, Surat
+2624	area	Fortsongadh	Fortsongadh, Surat
+2625	area	Valod	Valod, Surat
+2626	area	Vyara	Vyara, Surat
+2628	area	Nizar	Nizar, Surat
+2629	area	M. M. Mangrol	M. M. Mangrol, Surat
+2630	area	Bansada	Bansada, Valsad
+2631	area	Ahwa	Ahwa, Valsad
+2632	area	Valsad	Valsad, Valsad
+2633	area	Dharampur	Dharampur, Valsad
+2634	area	Billimora	Billimora, Valsad
+2637	area	Navsari	Navsari, Valsad
+2640	area	Rajpipla	Rajpipla, Bharuch
+2641	area	Amod	Amod, Bharuch
+2642	area	Bharuch	Bharuch, Bharuch
+2643	area	Valia	Valia, Bharuch
+2644	area	Jambusar	Jambusar, Bharuch
+2645	area	Jhagadia	Jhagadia, Bharuch
+2646	area	Ankleshwar	Ankleshwar, Bharuch
+2649	area	Dediapada	Dediapada, Bharuch
+265	area	Vadodara	Vadodara, Vadodara
+2661	area	Naswadi	Naswadi, Vadodara
+2662	area	Padra	Padra, Vadodara
+2663	area	Dabhoi	Dabhoi, Vadodara
+2664	area	Pavijetpur	Pavijetpur, Vadodara
+2665	area	Sankheda	Sankheda, Vadodara
+2666	area	Miyagam	Miyagam, Vadodara
+2667	area	Savli	Savli, Vadodara
+2668	area	Waghodia	Waghodia, Vadodara
+2669	area	Chhota Udaipur	Chhota Udaipur, Vadodara
+2670	area	Shehra	Shehra, Godhra
+2672	area	Godhra	Godhra, Godhra
+2673	area	Dahod	Dahod, Godhra
+2674	area	Lunavada	Lunavada, Godhra
+2675	area	Santrampur	Santrampur, Godhra
+2676	area	Halol	Halol, Godhra
+2677	area	Limkheda	Limkheda, Godhra
+2678	area	Devgadhbaria	Devgadhbaria, Godhra
+2679	area	Jhalod	Jhalod, Godhra
+268	area	Nadiad	Nadiad, Nadiad
+2690	area	Balasinor	Balasinor, Nadiad
+2691	area	Kapad Wanj	Kapad Wanj, Nadiad
+2692	area	Anand	Anand, Nadiad
+2694	area	Kheda	Kheda, Nadiad
+2696	area	Borsad	Borsad, Nadiad
+2697	area	Retlad	Retlad, Nadiad
+2698	area	Khambat	Khambat, Nadiad
+2699	area	Thasra	Thasra, Nadiad
+2711	area	Barwala	Barwala, Ahmedabad
+2712	area	Gandhi Nagar	Gandhi Nagar, Ahmedabad
+2713	area	Dhandhuka	Dhandhuka, Ahmedabad
+2714	area	Dholka	Dholka, Ahmedabad
+2715	area	Viramgam	Viramgam, Ahmedabad
+2716	area	Dehgam	Dehgam, Ahmedabad
+2717	area	Sanand	Sanand, Ahmedabad
+2718	area	Bareja	Bareja, Ahmedabad
+2733	area	Harij	Harij, Mehsana
+2734	area	Chanasma	Chanasma, Mehsana
+2735	area	Deodar	Deodar, Palanpur
+2737	area	Tharad	Tharad, Palanpur
+2738	area	Santalpur	Santalpur, Palanpur
+2739	area	Vadgam	Vadgam, Palanpur
+2740	area	Vav	Vav, Palanpur
+2742	area	Palanpur	Palanpur, Palanpur
+2744	area	Deesa	Deesa, Palanpur
+2746	area	Radhanpur	Radhanpur, Palanpur
+2747	area	Thara	Thara, Palanpur
+2748	area	Dhanera	Dhanera, Palanpur
+2749	area	Danta	Danta, Palanpur
+2751	area	Chotila	Chotila, Surendranagar
+2752	area	Surendranagar	Surendranagar, Surendranagar
+2753	area	Limbdi	Limbdi, Surendranagar
+2754	area	Dhrangadhra	Dhrangadhra, Surendranagar
+2755	area	Sayla	Sayla, Surendranagar
+2756	area	Muli	Muli, Surendranagar
+2757	area	Dasada	Dasada, Surendranagar
+2758	area	Halvad	Halvad, Surendranagar
+2759	area	Lakhtar	Lakhtar, Surendranagar
+2761	area	Kheralu	Kheralu, Mehsana
+2762	area	Mehsana	Mehsana, Mehsana
+2763	area	Vijapur	Vijapur, Mehsana
+2764	area	Kalol	Kalol, Mehsana
+2765	area	Visnagar	Visnagar, Mehsana
+2766	area	Patan	Patan, Mehsana
+2767	area	Sidhpur	Sidhpur, Mehsana
+2770	area	Prantij	Prantij, Himatnagar
+2771	area	Bhiloda	Bhiloda, Himatnagar
+2772	area	Himatnagar	Himatnagar, Himatnagar
+2773	area	Malpur	Malpur, Himatnagar
+2774	area	Modasa	Modasa, Himatnagar
+2775	area	Khedbrahma	Khedbrahma, Himatnagar
+2778	area	Idar	Idar, Himatnagar
+2779	area	Bayad	Bayad, Himatnagar
+278	area	Bhavnagar	Bhavnagar, Bhavnagar
+2791	area	Babra	Babra, Amreli
+2792	area	Amreli	Amreli, Amreli
+2793	area	Damnagar	Damnagar, Amreli
+2794	area	Rajula	Rajula, Amreli
+2795	area	Kodinar	Kodinar, Junagarh
+2796	area	Kunkawav	Kunkawav, Amreli
+2797	area	Dhari	Dhari, Amreli
+2801	area	Ranavav	Ranavav, Junagarh
+2803	area	Khavda	Khavda, Bhuj
+2804	area	Kutiyana	Kutiyana, Junagarh
+2806	area	Gogodar	Gogodar, Bhuj
+2808	area	Sumrasar	Sumrasar, Bhuj
+281	area	Rajkot	Rajkot, Rajkot
+2820	area	Paddhari	Paddhari, Rajkot
+2821	area	Jasdan	Jasdan, Rajkot
+2822	area	Morvi	Morvi, Rajkot
+2823	area	Jetpur	Jetpur, Rajkot
+2824	area	Dhoraji	Dhoraji, Rajkot
+2825	area	Gondal	Gondal, Rajkot
+2826	area	Upleta	Upleta, Rajkot
+2827	area	Kotdasanghani	Kotdasanghani, Rajkot
+2828	area	Wankaner	Wankaner, Rajkot
+2829	area	Maliya Miyana	Maliya Miyana, Rajkot
+2830	area	Rahpar	Rahpar, Bhuj
+2831	area	Nalia	Nalia, Bhuj
+2832	area	Bhuj	Bhuj, Bhuj
+2833	area	Khambhalia	Khambhalia, Jamnagar
+2834	area	Kutchmandvi	Kutchmandvi, Bhuj
+2835	area	Nakhatrana	Nakhatrana, Bhuj
+2836	area	Anjar	Anjar (Gandhidham), Bhuj
+2837	area	Bhachav	Bhachav, Bhuj
+2838	area	Mundra	Mundra, Bhuj
+2839	area	Lakhpat	Lakhpat, Bhuj
+2841	area	Vallabhipur	Vallabhipur, Bhavnagar
+2842	area	Talaja	Talaja, Bhavnagar
+2843	area	Gariadhar	Gariadhar, Bhavnagar
+2844	area	Mahuva	Mahuva, Bhavnagar
+2845	area	Savarkundla	Savarkundla, Amreli
+2846	area	Sihor	Sihor, Bhavnagar
+2847	area	Gadhada	Gadhada, Bhavnagar
+2848	area	Palitana	Palitana, Bhavnagar
+2849	area	Botad	Botad, Bhavnagar
+285	area	Junagarh	Junagarh, Junagarh
+286	area	Porbander	Porbander, Junagarh
+2870	area	Malia-Hatina	Malia-Hatina, Junagarh
+2871	area	Keshod	Keshod, Junagarh
+2872	area	Vanthali	Vanthali, Junagarh
+2873	area	Visavadar	Visavadar, Junagarh
+2874	area	Manavadar	Manavadar, Junagarh
+2875	area	Una-Diu	Una-Diu, Junagarh
+2876	area	Veraval	Veraval, Junagarh
+2877	area	Talala	Talala, Junagarh
+2878	area	Mangrol	Mangrol, Junagarh
+288	area	Jamnagar	Jamnagar, Jamnagar
+2891	area	Jamkalyanpur	Jamkalyanpur, Jamnagar
+2892	area	Okha	Okha, Jamnagar
+2893	area	Jodia	Jodia, Jamnagar
+2894	area	Kalawad	Kalawad, Jamnagar
+2895	area	Lalpur	Lalpur, Jamnagar
+2896	area	Bhanvad	Bhanvad, Jamnagar
+2897	area	Dhrol	Dhrol, Jamnagar
+2898	area	Jamjodhpur	Jamjodhpur, Jamnagar
+2900	area	Siwana (E)	Siwana (E) (Samdari), Barmer
+2901	area	Siwana (W)	Siwana (W), Barmer
+2902	area	Barmer (N)	Barmer (N) (Kanot), Barmer
+2903	area	Chohtan (S)	Chohtan (S) (Gangasar), Barmer
+2904	area	Deogarh	Deogarh, Udaipur
+2905	area	Sarada	Sarada (Chawand), Udaipur
+2906	area	Salumber	Salumber, Udaipur
+2907	area	Kherwara	Kherwara, Udaipur
+2908	area	Amet	Amet, Udaipur
+2909	area	Bhim (S)	Bhim (S) (Dawer), Udaipur
+291	area	Jodhpur (E)	Jodhpur (E), Jodhpur
+2920	area	Bilara (N)	Bilara (N) (Bhopalgarh), Jodhpur
+2921	area	Phalodi (N)	Phalodi (N) (Bap), Jodhpur
+2922	area	Osian (N)	Osian (N), Jodhpur
+2923	area	Phalodi (E)	Phalodi (E) (Lohawat), Jodhpur
+2924	area	Phalodi (W)	Phalodi (W) (Baroo), Jodhpur
+2925	area	Phalodi (S)	Phalodi (S), Jodhpur
+2926	area	Osian (S)	Osian (S) (Mathania), Jodhpur
+2927	area	Osian (E)	Osian (E) (Dhanwara), Jodhpur
+2928	area	Shergarh (N)	Shergarh (N) (Deechu), Jodhpur
+2929	area	Shergarh (N)	Shergarh (N) (Balesar), Jodhpur
+2930	area	Bilara (S)	Bilara (S) (Piparcity), Jodhpur
+2931	area	Jodhpur (W)	Jodhpur (W) (Jhanwar), Jodhpur
+2932	area	Pali (S)	Pali (S), Pali (Marwar)
+2933	area	Bali (N)	Bali (N) (Sumerpur), Pali (Marwar)
+2934	area	Desuri	Desuri (Rani), Pali (Marwar)
+2935	area	Marwar-JN	Marwar-JN, Pali (Marwar)
+2936	area	Pali (N)	Pali (N) (Rohat), Pali (Marwar)
+2937	area	Raipur	Raipur, Pali (Marwar)
+2938	area	Bali (S)	Bali (S), Pali (Marwar)
+2939	area	Jaitaran	Jaitaran, Pali (Marwar)
+294	area	Girwa	Girwa (Udaipur), Udaipur
+2950	area	Dhariawad	Dhariawad, Udaipur
+2951	area	Bhim (N)	Bhim (N), Udaipur
+2952	area	Rajsamand	Rajsamand (Kankorli), Udaipur
+2953	area	Nathdwara	Nathdwara, Udaipur
+2954	area	Kumbalgarh	Kumbalgarh (Charbhujaji), Udaipur
+2955	area	Malvi	Malvi (Fatehnagar), Udaipur
+2956	area	Gogunda	Gogunda, Udaipur
+2957	area	Vallabhnagar	Vallabhnagar, Udaipur
+2958	area	Kotra	Kotra, Udaipur
+2959	area	Jhadol	Jhadol, Udaipur
+2960	area	Sojat	Sojat (Sojat-City), Pali (Marwar)
+2961	area	Ghatol	Ghatol, Banswara
+2962	area	Banswara	Banswara, Banswara
+2963	area	Gerhi	Gerhi (Partapur), Banswara
+2964	area	Dungarpur	Dungarpur, Banswara
+2965	area	Kushalgarh	Kushalgarh, Banswara
+2966	area	Sagwara	Sagwara, Banswara
+2967	area	Aspur	Aspur, Banswara
+2968	area	Bagidora	Bagidora, Banswara
+2969	area	Bhinmal (N)	Bhinmal (N), Sirohi (Abu-Road)
+2970	area	Sanchore (W)	Sanchore (W) (Hadecha), Sirohi (Abu-Road)
+2971	area	Pindwara	Pindwara, Sirohi (Abu-Road)
+2972	area	Sirohi	Sirohi, Sirohi (Abu-Road)
+2973	area	Jalore	Jalore, Sirohi (Abu-Road)
+2974	area	Abu Road	Abu Road, Sirohi (Abu-Road)
+2975	area	Reodar	Reodar, Sirohi (Abu-Road)
+2976	area	Sheoganj	Sheoganj (Posaliyan), Sirohi (Abu-Road)
+2977	area	Jalore (W)	Jalore (W) (Sayla), Sirohi (Abu-Road)
+2978	area	Ahore	Ahore, Sirohi (Abu-Road)
+2979	area	Sanchore (E)	Sanchore (E), Sirohi (Abu-Road)
+2980	area	Pachpadra (E)	Pachpadra (E) (Korna), Barmer
+2981	area	Sheo (W)	Sheo (W) (Harsani), Barmer
+2982	area	Barmer (C)	Barmer (C), Barmer
+2983	area	Barmer (E)	Barmer (E) (Gudda), Barmer
+2984	area	Barmer (S)	Barmer (S) Sindari, Barmer
+2985	area	Barmer (W)	Barmer (W) (Ramsar), Barmer
+2986	area	Barmer (SW)	Barmer (SW) (Dhorimanna), Barmer
+2987	area	Sheo (E)	Sheo (E), Barmer
+2988	area	Pachpadra (W)	Pachpadra (W) (Balotra), Barmer
+2989	area	Chohtan (N)	Chohtan (N), Barmer
+2990	area	Bhinmal (S)	Bhinmal (S) (Jasawantpura), Sirohi (Abu-Road)
+2991	area	Jaisalmer	Jaisalmer-1 (Ramgarh), Jaisalmer
+2992	area	Jaisalmer	Jaisalmer-11 (Jaisalmer), Jaisalmer
+2993	area	Jaisalmer	Jaisalmer-12 (Devikot), Jaisalmer
+2994	area	Pokran	Pokran-4 (Pokran), Jaisalmer
+2995	area	Pokran	Pokran-1 (Nachna), Jaisalmer
+2996	area	Pokran	Pokran-3 (Loharki), Jaisalmer
+2997	area	Jaisalmer	Jaisalmer-7 (Mohargarh), Jaisalmer
+2998	area	Jaisalmer	Jaisalmer-5 (Khuiyals), Jaisalmer
+2999	area	Jaisalmer	Jaisalmer-3 (Nehdai), Jaisalmer
+3010	area	Jaisalmer	Jaisalmer-4 (Shahgarh), Jaisalmer
+3011	area	Jaisalmer	Jaisalmer-6 (Pasewar), Jaisalmer
+3012	area	Jaisalmer	Jaisalmer-8 (Mehsana), Jaisalmer
+3013	area	Jaisalmer	Jaisalmer-9 (Dhanaua), Jaisalmer
+3014	area	Jaisalmer	Jaisalmer-10 (Khuri), Jaisalmer
+3015	area	Jaisalmer	Jaisalmer-13 (Myajlar), Jaisalmer
+3016	area	Jaisalmer	Jaisalmer-14 (Jheenjaniyali), Jaisalmer
+3017	area	Pokran	Pokran-2 (Madasar), Jaisalmer
+3018	area	Jaisalmer	Jaisalmer-2 (Sadhna), Jaisalmer
+3019	area	Pokran	Pokran-5 (Phalsoond), Jaisalmer
+3174	area	Diamond Harbour	Diamond Harbour, Kolkata
+3192	area	Andaman Islands	Andaman Islands, Andaman & Nicobar Islands
+3193	area	Nicobar Islands	Nicobar Islands, Andaman & Nicobar Islands
+3210	area	Kakdwip	Kakdwip, Kolkata
+3211	area	Arambag	Arambag, Kolkata
+3212	area	Champadanga	Champadanga, Kolkata
+3213	area	Dhaniakhali	Dhaniakhali, Kolkata
+3214	area	Jagatballavpur	Jagatballavpur, Kolkata
+3215	area	Bongoan	Bongoan, Kolkata
+3216	area	Habra	Habra, Kolkata
+3217	area	Basirhat	Basirhat, Kolkata
+3218	area	Canning	Canning, Kolkata
+3220	area	Contai	Contai, Midnapur (Kharagpur)
+3221	area	Jhargram	Jhargram, Midnapur (Kharagpur)
+3222	area	Kharagpur	Kharagpur, Midnapur (Kharagpur)
+3223	area	Nayagarh	Nayagarh (Kultikri), Midnapur (Kharagpur)
+3224	area	Haldia	Haldia, Midnapur (Kharagpur)
+3225	area	Ghatal	Ghatal, Midnapur (Kharagpur)
+3227	area	Amlagora	Amlagora, Midnapur (Kharagpur)
+3228	area	Tamluk	Tamluk, Midnapur (Kharagpur)
+3229	area	Dantan	Dantan, Midnapur (Kharagpur)
+3241	area	Gangajalghati	Gangajalghati, Bankura
+3242	area	Bankura	Bankura, Bankura
+3243	area	Khatra	Khatra, Bankura
+3244	area	Bishnupur	Bishnupur, Bankura
+3251	area	Adra	Adra, Purulia
+3252	area	Purulia	Purulia, Purulia
+3253	area	Manbazar	Manbazar, Purulia
+3254	area	Jhalda	Jhalda, Purulia
+326	area	Dhanbad	Dhanbad, Dhanbad
+33	area	Kolkata	Kolkata, Kolkata
+341	area	Asansol	Asansol, Asansol
+342	area	Burdwan	Burdwan, Asansol
+343	area	Durgapur	Durgapur, Asansol
+3451	area	Seharabazar	Seharabazar, Asansol
+3452	area	Guskara	Guskara, Asansol
+3453	area	Katwa	Katwa, Asansol
+3454	area	Kalna	Kalna, Asansol
+3461	area	Rampur Hat	Rampur Hat, Suri
+3462	area	Suri	Suri, Suri
+3463	area	Bolpur	Bolpur, Suri
+3465	area	Nalhati	Nalhati, Suri
+3471	area	Karimpur	Karimpur, Krishnanagar
+3472	area	Krishna Nagar	Krishna Nagar, Krishnanagar
+3473	area	Ranaghat	Ranaghat, Krishnanagar
+3474	area	Bethuadahari	Bethuadahari, Krishnanagar
+3481	area	Islampur (M)	Islampur (M), Berhampur
+3482	area	Berhampur	Berhampur, Berhampur
+3483	area	Murshidabad	Murshidabad (Jiaganj), Berhampur
+3484	area	Kandi	Kandi, Berhampur
+3485	area	Dhuliyan	Dhuliyan, Berhampur
+3511	area	Bubulchandi	Bubulchandi, Malda
+3512	area	Malda	Malda, Malda
+3513	area	Harishchandrapur	Harishchandrapur, Malda
+3521	area	Gangarampur	Gangarampur, Balurghat (Raiganj)
+3522	area	Balurghat	Balurghat, Balurghat (Raiganj)
+3523	area	Raiganj	Raiganj, Balurghat (Raiganj)
+3524	area	Harirampur	Harirampur, Balurghat (Raiganj)
+3525	area	Dalkhola	Dalkhola, Balurghat (Raiganj)
+3526	area	Islampur	Islampur (Nd), Balurghat (Raiganj)
+353	area	Siliguri	Siliguri, Darjeeling (Siliguri)
+354	area	Darjeeling	Darjeeling, Darjeeling (Siliguri)
+3552	area	Kalimpong	Kalimpong, Darjeeling (Siliguri)
+3561	area	Jalpaiguri	Jalpaiguri, Jalpaiguri
+3562	area	Mal Bazar	Mal Bazar, Jalpaiguri
+3563	area	Birpara	Birpara, Jalpaiguri
+3564	area	Alipurduar	Alipurduar, Jalpaiguri
+3565	area	Nagarakata	Nagarakata, Jalpaiguri
+3566	area	Kalchini	Kalchini, Jalpaiguri
+3581	area	Dinhata	Dinhata, Coochbehar
+3582	area	Coochbehar	Coochbehar, Coochbehar
+3583	area	Mathabhanga	Mathabhanga, Coochbehar
+3584	area	Mekhliganj	Mekhliganj, Coochbehar
+3592	area	Gangtok	Gangtok, Gangtok
+3595	area	Gauzing	Gauzing (Nayabazar), Gangtok
+360	area	Itanagar	Itanagar, Arunachal-Pradesh (Zero)
+361	area	Guwahati	Guwahati, Guwahati
+3621	area	Boko	Boko, Guwahati
+3623	area	Barama	Barama, Guwahati
+3624	area	Nalbari	Nalbari, Guwahati
+3637	area	Cherrapunjee	Cherrapunjee, Meghalaya (Shillong)
+3638	area	Nongpoh	Nongpoh, Meghalaya (Shillong)
+3639	area	Baghmara	Baghmara, Meghalaya (Shillong)
+364	area	Shillong	Shillong, Meghalaya (Shillong)
+3650	area	Dadengiri	Dadengiri (Phulbari), Meghalaya (Shillong)
+3651	area	Tura	Tura, Meghalaya (Shillong)
+3652	area	Jowai	Jowai, Meghalaya (Shillong)
+3653	area	Amlaren	Amlaren (Dawki), Meghalaya (Shillong)
+3654	area	Nongstoin	Nongstoin, Meghalaya (Shillong)
+3655	area	Khliehriat	Khliehriat, Meghalaya (Shillong)
+3656	area	Mawkyrwat	Mawkyrwat, Meghalaya (Shillong)
+3657	area	Mairang	Mairang, Meghalaya (Shillong)
+3658	area	Williamnagar	Williamnagar, Meghalaya (Shillong)
+3659	area	Resubelpara	Resubelpara (Mendipathar), Meghalaya (Shillong)
+3661	area	Kokrajhar	Kokrajhar, Bongaigaon (Kokrajhar)
+3662	area	Dhubri	Dhubri, Bongaigaon (Kokrajhar)
+3663	area	Goalpara	Goalpara, Bongaigaon (Kokrajhar)
+3664	area	Hajo	Hajo, Guwahati
+3665	area	Tarabarihat	Tarabarihat, Guwahati
+3666	area	Barpeta Road	Barpeta Road, Guwahati
+3667	area	Bilasipara	Bilasipara, Bongaigaon (Kokrajhar)
+3668	area	Bijni	Bijni, Bongaigaon (Kokrajhar)
+3669	area	Abhayapuri	Abhayapuri, Bongaigaon (Kokrajhar)
+3670	area	Maibong	Maibong, Nagaon
+3671	area	Diphu	Diphu, Nagaon
+3672	area	Nagaon	Nagaon, Nagaon
+3673	area	Haflong	Haflong, Nagaon
+3674	area	Hojai	Hojai, Nagaon
+3675	area	Bokajan	Bokajan, Nagaon
+3676	area	Howraghat	Howraghat, Nagaon
+3677	area	Baithalangshu	Baithalangshu, Nagaon
+3678	area	Morigaon	Morigaon, Nagaon
+368	area	Passighat	Passighat, Arunachal-Pradesh (Zero)
+369	area	Mokokchung	Mokokchung, Nagaland (Kohima)
+370	area	Kohima	Kohima, Nagaland (Kohima)
+3711	area	Udalguri	Udalguri, Tezpur
+3712	area	Tezpur	Tezpur, Tezpur
+3713	area	Mangaldoi	Mangaldoi, Tezpur
+3714	area	Rangapara	Rangapara, Tezpur
+3715	area	Gohpur	Gohpur, Tezpur
+372	area	Lungleh	Lungleh, Mizoram (Aizwal)
+373	area	Dibrugarh	Dibrugarh, Tinsukia (Dibrugarh)
+374	area	Tinsukhia	Tinsukhia, Tinsukia (Dibrugarh)
+3751	area	Digboi	Digboi, Tinsukia (Dibrugarh)
+3752	area	North Lakhimpur	North Lakhimpur, Tinsukia (Dibrugarh)
+3753	area	Dhemaji	Dhemaji, Tinsukia (Dibrugarh)
+3754	area	Moranhat	Moranhat, Tinsukia (Dibrugarh)
+3756	area	Sadiya	Sadiya, Tinsukia (Dibrugarh)
+3758	area	Dhakuakhana	Dhakuakhana, Tinsukia (Dibrugarh)
+3759	area	Bihupuria	Bihupuria, Tinsukia (Dibrugarh)
+376	area	Jorhat	Jorhat, Jorhat
+3771	area	Mariani	Mariani, Jorhat
+3772	area	Sibsagar	Sibsagar, Jorhat
+3774	area	Golaghat	Golaghat, Jorhat
+3775	area	Majuli	Majuli, Jorhat
+3776	area	Bokakhat	Bokakhat, Jorhat
+3777	area	Yangkiyang	Yangkiyang, Arunachal-Pradesh (Zero)
+3778	area	Pakkekesang	Pakkekesang, Arunachal-Pradesh (Zero)
+3779	area	Roing	Roing-III (Mariso), Arunachal-Pradesh (Zero)
+3780	area	Dirang	Dirang, Arunachal-Pradesh (Zero)
+3782	area	Kalaktung	Kalaktung (Bomdila), Arunachal-Pradesh (Zero)
+3783	area	Along	Along, Arunachal-Pradesh (Zero)
+3784	area	Nefra	Nefra, Arunachal-Pradesh (Zero)
+3785	area	Bameng	Bameng, Arunachal-Pradesh (Zero)
+3786	area	Khonsa	Khonsa, Arunachal-Pradesh (Zero)
+3787	area	Seppa	Seppa, Arunachal-Pradesh (Zero)
+3788	area	Kolaring	Kolaring, Arunachal-Pradesh (Zero)
+3789	area	Huri	Huri, Arunachal-Pradesh (Zero)
+3790	area	Tali	Tali, Arunachal-Pradesh (Zero)
+3791	area	Taliha	Taliha, Arunachal-Pradesh (Zero)
+3792	area	Daporizo	Daporizo, Arunachal-Pradesh (Zero)
+3793	area	Mechuka	Mechuka, Arunachal-Pradesh (Zero
+3794	area	Tawang	Tawang, Arunachal-Pradesh (Zero)
+3795	area	Basar	Basar, Arunachal-Pradesh (Zero)
+3797	area	Pangin	Pangin, Arunachal-Pradesh (Zero)
+3798	area	Mariyang	Mariyang, Arunachal-Pradesh (Zero)
+3799	area	Tuting	Tuting, Arunachal-Pradesh (Zero)
+3800	area	Jairampur	Jairampur, Arunachal-Pradesh (Zero)
+3801	area	Anini	Anini, Arunachal-Pradesh (Zero)
+3802	area	Roing	Roing-II (Arda), Arunachal-Pradesh (Zero)
+3803	area	Roing	Roing-I, Arunachal-Pradesh (Zero)
+3804	area	Tezu	Tezu, Arunachal-Pradesh (Zero)
+3805	area	Hayuliang	Hayuliang, Arunachal-Pradesh (Zero)
+3806	area	Chowkhem	Chowkhem, Arunachal-Pradesh (Zero)
+3807	area	Miao	Miao, Arunachal-Pradesh (Zero)
+3808	area	Changlang	Changlang, Arunachal-Pradesh (Zero)
+3809	area	Sagalee	Sagalee, Arunachal-Pradesh (Zero)
+381	area	Agartala	Agartala, Tripura (Agartala)
+3821	area	R. K. Pur	R. K. Pur, Tripura (Agartala)
+3822	area	Dharam Nagar	Dharam Nagar, Tripura (Agartala)
+3823	area	Belonia	Belonia, Tripura (Agartala)
+3824	area	Kailsahar	Kailsahar, Tripura (Agartala)
+3825	area	Khowai	Khowai, Tripura (Agartala)
+3826	area	Ambasa	Ambasa, Tripura (Agartala)
+3830	area	Champai	Champai-II (Chiapui), Mizoram (Aizwal)
+3831	area	Champa	Champa-I, Mizoram (Aizwal)
+3834	area	Demagiri	Demagiri, Mizoram (Aizwal)
+3835	area	Saiha	Saiha-I, Mizoram (Aizwal)
+3836	area	Saiha	Saiha-II (Tuipang), Mizoram (Aizwal)
+3837	area	Kolasib	Kolasib, Mizoram (Aizwal)
+3838	area	Aizwal	Aizwal-II (Serchip), Mizoram (Aizwal)
+3839	area	Jalukie	Jalukie, Nagaland (Kohima)
+3841	area	Vdarbondh	Vdarbondh, Silchar
+3842	area	Silchar	Silchar, Silchar
+3843	area	Karimganj	Karimganj, Silchar
+3844	area	Hailakandi	Hailakandi, Silchar
+3845	area	Ukhrul Central	Ukhrul Central, Manipur (Imphal)
+3848	area	Thonbal	Thonbal, Manipur (Imphal)
+385	area	Imphal	Imphal, Manipur (Imphal)
+3860	area	Wokha	Wokha, Nagaland (Kohima)
+3861	area	Tuengsang	Tuengsang, Nagaland (Kohima)
+3862	area	Dimapur	Dimapur, Nagaland (Kohima)
+3863	area	Kiphire	Kiphire, Nagaland (Kohima)
+3865	area	Phek	Phek, Nagaland (Kohima)
+3867	area	Zuenheboto	Zuenheboto, Nagaland (Kohima)
+3869	area	Mon	Mon, Nagaland (Kohima)
+3870	area	Ukhrursouth	Ukhrursouth (Kassemkhulen), Manipur (Imphal)
+3871	area	Mao	Mao (Korang), Manipur (Imphal)
+3872	area	Chandel	Chandel, Manipur (Imphal)
+3873	area	Thinghat	Thinghat, Manipur (Imphal)
+3874	area	Churchandpur	Churchandpur, Manipur (Imphal)
+3876	area	Jiribam	Jiribam, Manipur (Imphal)
+3877	area	Tamenglong	Tamenglong, Manipur (Imphal)
+3878	area	Chakpikarong	Chakpikarong, Manipur (Imphal)
+3879	area	Bishenpur	Bishenpur, Manipur (Imphal)
+3880	area	Sadarhills	Sadarhills (Kangpokai), Manipur (Imphal)
+389	area	Aizawal	Aizawal-I, Mizoram (Aizwal)
+40	area	Hyderabad Loc	Hyderabad Loc, Hyderabad
+4111	area	Sriperumpudur	Sriperumpudur, Chengalpattu (Kancheepuram)
+4112	area	Kancheepuram	Kancheepuram, Chengalpattu (Kancheepuram)
+4114	area	Chengalpattu	Chengalpattu, Chengalpattu (Kancheepuram)
+4115	area	Madurantagam	Madurantagam, Chengalpattu (Kancheepuram)
+4116	area	Tiruvellore	Tiruvellore, Chengalpattu (Kancheepuram)
+4118	area	Tiruttani	Tiruttani, Chengalpattu (Kancheepuram)
+4119	area	Ponneri	Ponneri, Chengalpattu (Kancheepuram)
+413	area	Pondicherry	Pondicherry, Pondichery
+4142	area	Cuddalore	Cuddalore, Cuddalore
+4143	area	Virudhachalam	Virudhachalam, Cuddalore
+4144	area	Chidambaram	Chidambaram, Cuddalore
+4145	area	Gingee	Gingee, Cuddalore
+4146	area	Villupuram	Villupuram, Cuddalore
+4147	area	Tindivanam	Tindivanam, Cuddalore
+4149	area	Ulundurpet	Ulundurpet, Cuddalore
+4151	area	Kallkurichi	Kallkurichi, Cuddalore
+4153	area	Arakandanallur	Arakandanallur, Cuddalore
+416	area	Vellore	Vellore, Vellore
+4171	area	Gudiyatham	Gudiyatham, Vellore
+4172	area	Ranipet	Ranipet, Vellore
+4173	area	Arni	Arni, Vellore
+4174	area	Vaniyambadi	Vaniyambadi, Vellore
+4175	area	Tiruvannamalai	Tiruvannamalai, Vellore
+4177	area	Arkonam	Arkonam, Vellore
+4179	area	Tirupattur	Tirupattur, Vellore
+4181	area	Polur	Polur, Vellore
+4182	area	Tiruvettipuram	Tiruvettipuram, Vellore
+4183	area	Wandiwash	Wandiwash, Vellore
+4188	area	Chengam	Chengam, Vellore
+4202	area	Mulanur	Mulanur, Erode
+4204	area	Kodumudi	Kodumudi, Erode
+421	area	Tirupur	Tirupur, Coimbatore
+422	area	Coimbatore	Coimbatore, Coimbatore
+423	area	Ootacamund	Ootacamund, Ooty
+424	area	Erode	Erode, Erode
+4252	area	Udumalpet	Udumalpet, Coimbatore
+4253	area	Anamalai	Anamalai, Coimbatore
+4254	area	Mettupalayam	Mettupalayam, Coimbatore
+4255	area	Palladum	Palladum, Coimbatore
+4256	area	Bhavani	Bhavani, Erode
+4257	area	Kangayam	Kangayam, Erode
+4258	area	Dharampuram	Dharampuram, Erode
+4259	area	Pollachi	Pollachi, Coimbatore
+4262	area	Gudalur	Gudalur, Ooty
+4266	area	Kotagiri	Kotagiri, Ooty
+4268	area	Velur	Velur, Salem
+427	area	Salem	Salem, Salem
+4281	area	Yercaud	Yercaud, Salem
+4282	area	Attur	Attur, Salem
+4283	area	Sankagiri	Sankagiri, Salem
+4285	area	Gobichettipalayam	Gobichettipalayam, Erode
+4286	area	Namakkal	Namakkal, Salem
+4287	area	Rasipuram	Rasipuram, Salem
+4288	area	Tiruchengode	Tiruchengode, Salem
+4290	area	Omalur	Omalur, Salem
+4292	area	Valapady	Valapady, Salem
+4294	area	Perundurai	Perundurai, Erode
+4295	area	Sathiyamangalam	Sathiyamangalam, Erode
+4296	area	Avanashi	Avanashi, Coimbatore
+4298	area	Metturdam	Metturdam, Salem
+431	area	Trichy	Trichy, Trichy
+4320	area	Aravakurichi	Aravakurichi, Trichy
+4322	area	Pudukkottai	Pudukkottai, Trichy
+4323	area	Kulithalai	Kulithalai, Trichy
+4324	area	Karur	Karur, Trichy
+4326	area	Musiri	Musiri, Trichy
+4327	area	Thuraiyure	Thuraiyure, Trichy
+4328	area	Perambalur	Perambalur, Trichy
+4329	area	Ariyalur	Ariyalur, Trichy
+4331	area	Jayamkondan	Jayamkondan, Trichy
+4332	area	Manaparai	Manaparai, Trichy
+4333	area	Ponnamaravathi	Ponnamaravathi, Trichy
+4339	area	Keeranur	Keeranur, Trichy
+4341	area	Uthangarai	Uthangarai, Dharmapuri
+4342	area	Dharmapuri	Dharmapuri, Dharmapuri
+4343	area	Krishnagiri	Krishnagiri, Dharmapuri
+4344	area	Hosur	Hosur, Dharmapuri
+4346	area	Harur	Harur, Dharmapuri
+4347	area	Denkanikoitah	Denkanikoitah, Dharmapuri
+4348	area	Palacode	Palacode, Dharmapuri
+435	area	Kumbakonam	Kumbakonam, Thanjavur
+4362	area	Thanjavur	Thanjavur, Thanjavur
+4364	area	Mayiladuthurai	Mayiladuthurai, Thanjavur
+4365	area	Nagapattinam	Nagapattinam, Thanjavur
+4366	area	Tiruvarur	Tiruvarur, Thanjavur
+4367	area	Mannargudi	Mannargudi, Thanjavur
+4368	area	Karaikal	Karaikal, Thanjavur
+4369	area	Thiruraipoondi	Thiruraipoondi, Thanjavur
+4371	area	Arantangi	Arantangi, Trichy
+4372	area	Orathanad	Orathanad, Thanjavur
+4373	area	Pattukottai	Pattukottai, Thanjavur
+4374	area	Papanasam	Papanasam, Thanjavur
+44	area	Chennai	Chennai, Chennai
+451	area	Dindigul	Dindigul, Madurai
+452	area	Madurai	Madurai, Madurai
+4542	area	Kodaikanal	Kodaikanal, Madurai
+4543	area	Batlagundu	Batlagundu, Madurai
+4544	area	Natham	Natham, Madurai
+4545	area	Palani	Palani, Madurai
+4546	area	Theni	Theni, Madurai
+4549	area	Thirumanglam	Thirumanglam, Madurai
+4551	area	Vedasandur	Vedasandur, Madurai
+4552	area	Usiliampatti	Usiliampatti, Madurai
+4553	area	Oddanchatram	Oddanchatram, Madurai
+4554	area	Cumbum	Cumbum, Madurai
+4561	area	Devakottai	Devakottai, Karaikudi
+4562	area	Virudhunagar	Virudhunagar, Virudhunagar
+4563	area	Rajapalayam	Rajapalayam, Virudhunagar
+4564	area	Paramakudi	Paramakudi, Karaikudi
+4565	area	Karaikudi	Karaikudi, Karaikudi
+4566	area	Aruppukottai	Aruppukottai, Virudhunagar
+4567	area	Ramanathpuram	Ramanathpuram, Karaikudi
+4573	area	Rameshwaram	Rameshwaram, Karaikudi
+4574	area	Manamadurai	Manamadurai, Karaikudi
+4575	area	Sivaganga	Sivaganga, Karaikudi
+4576	area	Mudukulathur	Mudukulathur, Karaikudi
+4577	area	Tirupathur	Tirupathur, Karaikudi
+461	area	Tuticorin	Tuticorin, Tuticorin
+462	area	Tirunelvelli	Tirunelvelli, Tirunelvelli
+4630	area	Srivaikundam	Srivaikundam, Tuticorin
+4632	area	Kovilpatti	Kovilpatti, Tuticorin
+4633	area	Tenkasi	Tenkasi, Tirunelvelli
+4634	area	Ambasamudram	Ambasamudram, Tirunelvelli
+4635	area	Nanguneri	Nanguneri, Tirunelvelli
+4636	area	Sankaran Koil	Sankaran Koil, Tirunelvelli
+4637	area	Valliyoor	Valliyoor, Tirunelvelli
+4638	area	Vilathikulam	Vilathikulam, Tuticorin
+4639	area	Tiruchendur	Tiruchendur, Tuticorin
+4651	area	Kuzhithurai	Kuzhithurai, Nagarcoil
+4652	area	Nagercoil	Nagercoil, Nagarcoil
+469	area	Tiruvalla	Tiruvalla, Tiruvalla
+470	area	Attingal	Attingal, Thiruvananthapuram
+471	area	Thiruvananthapuram	Thiruvananthapuram, Thiruvananthapuram
+4728	area	Nedumandad	Nedumandad, Thiruvananthapuram
+4733	area	Pathanamthitta	Pathanamthitta, Tiruvalla
+4734	area	Adoor	Adoor, Tiruvalla
+4735	area	Ranni	Ranni, Tiruvalla
+474	area	Quilon	Quilon, Quilon
+475	area	Punalur	Punalur, Quilon
+476	area	Karunagapally	Karunagapally, Quilon
+477	area	Alleppey	Alleppey, Alleppy
+478	area	Shertallai	Shertallai, Alleppy
+479	area	Mavelikkara	Mavelikkara, Alleppy
+480	area	Irinjalakuda	Irinjalakuda, Trichur
+481	area	Kottayam	Kottayam, Kottayam
+4822	area	Palai	Palai, Kottayam
+4828	area	Kanjirapally	Kanjirapally, Kottayam
+4829	area	Vaikom	Vaikom, Kottayam
+483	area	Manjeri	Manjeri, Calicut (Kozhikode)
+484	area	Ernakulam	Ernakulam, Ernakulam
+485	area	Muvattupuzha	Muvattupuzha, Ernakulam
+4862	area	Thodupuzha	Thodupuzha, Ernakulam
+4864	area	Adimaly	Adimaly, Ernakulam
+4865	area	Munnar	Munnar, Ernakulam
+4868	area	Nedumgandam	Nedumgandam, Ernakulam
+4869	area	Peermedu	Peermedu, Ernakulam
+487	area	Trichur	Trichur, Trichur
+4884	area	Vadakkanchery	Vadakkanchery, Trichur
+4885	area	Kunnamkulam	Kunnamkulam, Trichur
+4890	area	Bitra	Bitra, Kavarathy
+4891	area	Amini	Amini, Kavarathy
+4892	area	Minicoy	Minicoy, Kavarathy
+4893	area	Androth	Androth, Kavarathy
+4894	area	Agathy	Agathy, Kavarathy
+4895	area	Kalpeni	Kalpeni, Kavarathy
+4896	area	Kavarathy	Kavarathy, Kavarathy
+4897	area	Kadamath	Kadamath, Kavarathy
+4898	area	Kiltan	Kiltan, Kavarathy
+4899	area	Chetlat	Chetlat, Kavarathy
+490	area	Tellicherry	Tellicherry, Cannanore
+491	area	Palghat	Palghat, Palghat
+4922	area	Alathur	Alathur, Palghat
+4923	area	Koduvayur	Koduvayur, Palghat
+4924	area	Mannarghat	Mannarghat, Palghat
+4926	area	Shoranur	Shoranur, Palghat
+4931	area	Nilambur	Nilambur, Calicut (Kozhikode)
+4933	area	Perinthalmanna	Perinthalmanna, Calicut (Kozhikode)
+4935	area	Mananthody	Mananthody, Calicut (Kozhikode)
+4936	area	Kalpetta	Kalpetta, Calicut (Kozhikode)
+494	area	Tirur	Tirur, Calicut (Kozhikode)
+495	area	Calicut	Calicut, Calicut (Kozhikode)
+496	area	Badagara	Badagara, Calicut (Kozhikode)
+497	area	Cannanore	Cannanore, Cannanore
+4982	area	Taliparamba	Taliparamba, Cannanore
+4985	area	Payyanur	Payyanur, Cannanore
+4994	area	Kasargode	Kasargode, Cannanore
+4997	area	Kanhangad	Kanhangad, Cannanore
+4998	area	Uppala	Uppala, Cannanore
+5111	area	Akbarpur	Akbarpur, Kanpur
+5112	area	Bilhaur	Bilhaur, Kanpur
+5113	area	Bhognipur	Bhognipur (Pakhrayan), Kanpur
+5114	area	Derapur	Derapur (Jhinjak), Kanpur
+5115	area	Ghatampur	Ghatampur, Kanpur
+512	area	Kanpur	Kanpur, Kanpur
+5142	area	Purwa	Purwa (Bighapur), Unnao
+5143	area	Hasanganj	Hasanganj, Unnao
+5144	area	Safipur	Safipur, Unnao
+515	area	Unnao	Unnao, Unnao
+5162	area	Orai	Orai, Orai
+5164	area	Kalpi	Kalpi, Orai
+5165	area	Konch	Konch, Orai
+5168	area	Jalaun	Jalaun, Orai
+5170	area	Chirgaon	Chirgaon (Moth), Jhansi
+5171	area	Garauth	Garauth, Jhansi
+5172	area	Mehraun	Mehraun, Jhansi
+5174	area	Jhansi	Jhansi, Jhansi
+5175	area	Lalitpur	Lalitpur-II (Talbehat), Jhansi
+5176	area	Lalitpur	Lalitpur-I (Lalitpur), Jhansi
+5178	area	Mauranipur	Mauranipur, Jhansi
+5180	area	Fateh-Pur	Fateh-Pur-I (Fatehpur), Fatehpur
+5181	area	Bindki	Bindki, Fatehpur
+5182	area	Khaga	Khaga, Fatehpur
+5183	area	Fatehpur	Fatehpur-II (Gazipur), Fatehpur
+5190	area	Baberu	Baberu, Banda
+5191	area	Naraini	Naraini (Attarra), Banda
+5192	area	Banda	Banda, Banda
+5194	area	Karvi	Karvi-II (Manikpur), Banda
+5195	area	Mau	Mau (Rajapur), Banda
+5198	area	Karvi 	Karvi -I (Karvi), Banda
+5212	area	Malihabad	Malihabad, Lucknow
+522	area	Lucknow	Lucknow, Lucknow
+5240	area	Fatehpur	Fatehpur, Barabanki
+5241	area	Ramsanehi Ghat	Ramsanehi Ghat, Barabanki
+5244	area	Haidergarh	Haidergarh, Barabanki
+5248	area	Barabanki	Barabanki, Barabanki
+5250	area	Bahraich	Bahraich-II (Bhinga), Bahraich
+5251	area	Kaisarganj	Kaisarganj-I (Kaiserganj), Bahraich
+5252	area	Bahraich	Bahraich-I (Bahrailh), Bahraich
+5253	area	Nanpara	Nanpara-I (Nanpara), Bahraich
+5254	area	Nanparah	Nanparah-II (Mihinpurwa), Bahraich
+5255	area	Kaisarganh	Kaisarganh-II (Mahasi), Bahraich
+5260	area	Tarabganj	Tarabganj-I (Terabganj), Gonda
+5261	area	Tarabganj	Tarabganj-II (Colonelganj), Gonda
+5262	area	Gonda	Gonda, Gonda
+5263	area	Balarampur	Balarampur-I (Balrampur), Gonda
+5264	area	Balarampur	Balarampur-II (Tulsipur), Gonda
+5265	area	Utraula	Utraula, Gonda
+5270	area	Bikapur	Bikapur, Faizabad
+5271	area	Akbarpur	Akbarpur-I (Akbarpur), Faizabad
+5273	area	Tandai	Tandai-I (Tanda), Faizabad
+5274	area	Tanda	Tanda-II (Baskhari), Faizabad
+5275	area	Akbarpur	Akbarpur-II (Jalalpur), Faizabad
+5278	area	Faizabad	Faizabad, Faizabad
+5280	area	Rath	Rath, Hamirpur
+5281	area	Mahoba	Mahoba, Hamirpur
+5282	area	Hamirpur	Hamirpur, Hamirpur
+5283	area	Charkhari	Charkhari, Hamirpur
+5284	area	Maudaha	Maudaha, Hamirpur
+5311	area	Salon 	Salon -I (Salon), Raibareilly
+5313	area	Salon	Salon-II (Jais), Raibareilly
+5315	area	Dalmau	Dalmau-II (Lalganj), Raibareilly
+5317	area	Dalmau	Dalmau-I (Dalmau), Raibareilly
+532	area	Allahabad	Allahabad, Allahabad
+5331	area	Bharwari	Bharwari, Allahabad
+5332	area	Phoolpur	Phoolpur, Allahabad
+5333	area	Karchhana	Karchhana (Shankergarh), Allahabad
+5334	area	Meja	Meja (Sirsa), Allahabad
+5335	area	Soraon	Soraon, Allahabad
+5341	area	Kunda	Kunda, Pratapgarh
+5342	area	Pratapgarh	Pratapgarh, Pratapgarh
+5343	area	Patti	Patti, Pratapgarh
+535	area	Raibareli	Raibareli, Raibareilly
+5361	area	Musafirkhana	Musafirkhana, Sultanpur
+5362	area	Sultanpur	Sultanpur, Sultanpur
+5364	area	Kadipur	Kadipur, Sultanpur
+5368	area	Amethi	Amethi, Sultanpur
+5412	area	Chandauli	Chandauli (Mugalsarai), Varansi
+5413	area	Chakia	Chakia, Varansi
+5414	area	Bhadohi	Bhadohi, Varansi
+542	area	Varansi	Varansi, Varansi
+5440	area	Mirzapur	Mirzapur-II (Hallia), Mirzapur
+5442	area	Mirzapur	Mirzapur-I (Mirzapur), Mirzapur
+5443	area	Chunur	Chunur, Mirzapur
+5444	area	Robertsganj	Robertsganj-I, Mirzapur
+5445	area	Robertsganj 	Robertsganj -II (Obra), Mirzapur
+5446	area	Dudhi	Dudhi-II (Pipri), Mirzapur
+5447	area	Dudhi	Dudhi-I (Dudhi), Mirzapur
+5450	area	Kerakat	Kerakat, Jaunpur
+5451	area	Mariyahu	Mariyahu, Jaunpur
+5452	area	Jaunpur	Jaunpur, Jaunpur
+5453	area	Shahganj	Shahganj, Jaunpur
+5454	area	Machlishahar	Machlishahar, Jaunpur
+5460	area	Phulpur	Phulpur-I (Phulpur), Azamgarh
+5461	area	Ghosi	Ghosi, Azamgarh
+5462	area	Azamgarh	Azamgarh, Azamgarh
+5463	area	Lalganj	Lalganj, Azamgarh
+5464	area	Maunathbhanjan	Maunathbhanjan, Azamgarh
+5465	area	Phulpur	Phulpur-II (Atrawlia), Azamgarh
+5466	area	Sagri	Sagri, Azamgarh
+548	area	Ghazipur	Ghazipur, Ghazipur
+5491	area	Rasara	Rasara, Ballia
+5493	area	Mohamdabad	Mohamdabad, Ghazipur
+5494	area	Bansdeeh	Bansdeeh, Ballia
+5495	area	Saidpur	Saidpur, Ghazipur
+5496	area	Ballia	Ballia-II (Raniganj), Ballia
+5497	area	Zamania	Zamania, Ghazipur
+5498	area	Ballia	Ballia-I (Ballia), Ballia
+551	area	Gorakhpur	Gorakhpur, Gorakhpur
+5521	area	Bansgaon	Bansgaon-II (Barhal Ganj), Gorakhpur
+5522	area	Pharenda	Pharenda-I (Compierganj), Gorakhpur
+5523	area	Maharajganj	Maharajganj, Gorakhpur
+5524	area	Pharenda	Pharenda-II (Anand Nagar), Gorakhpur
+5525	area	Bansgaon 	Bansgaon -I (Bansgaon), Gorakhpur
+5541	area	Domariyaganj	Domariyaganj, Basti
+5542	area	Basti	Basti, Basti
+5543	area	Naugarh	Naugarh-II (Barhani), Basti
+5544	area	Naugarh	Naugarh-I (Tetribazar), Basti
+5545	area	Bansi	Bansi, Basti
+5546	area	Harraiya	Harraiya, Basti
+5547	area	Khalilabad 	Khalilabad -I, Basti
+5548	area	Khalilabad	Khalilabad-II (Mehdawal), Basti
+5561	area	Salempur	Salempur-II (Barhaj), Deoria
+5563	area	Captanganj	Captanganj (Khadda), Deoria
+5564	area	Padrauna	Padrauna, Deoria
+5566	area	Salempur	Salempur-I (Salempur), Deoria
+5567	area	Captanganj	Captanganj-I (Captanganj), Deoria
+5568	area	Deoria	Deoria, Deoria
+5612	area	Ferozabad	Ferozabad, Agra
+5613	area	Achhnera	Achhnera, Agra
+5614	area	Jarar	Jarar, Agra
+562	area	Agra	Agra, Agra
+5640	area	Kaman	Kaman, Bharatpur
+5641	area	Deeg	Deeg, Bharatpur
+5642	area	Dholpur	Dholpur, Bharatpur
+5643	area	Nadbai	Nadbai, Bharatpur
+5644	area	Bharatpur	Bharatpur, Bharatpur
+5645	area	Rupbas	Rupbas, Bharatpur
+5646	area	Baseri	Baseri, Bharatpur
+5647	area	Bari	Bari, Bharatpur
+5648	area	Bayana	Bayana, Bharatpur
+565	area	Mathura	Mathura, Mathura
+5661	area	Sadabad	Sadabad, Mathura
+5662	area	Chhata	Chhata (Kosikalan), Mathura
+5664	area	Mant	Mant (Vrindavan), Mathura
+5671	area	Jasrana	Jasrana, Mainpuri
+5672	area	Mainpuri	Mainpuri, Mainpuri
+5673	area	Bhogaon	Bhogaon, Mainpuri
+5676	area	Shikohabad	Shikohabad, Mainpuri
+5677	area	Karhal	Karhal, Mainpuri
+5680	area	Bharthana	Bharthana, Etawah
+5681	area	Bidhuna	Bidhuna, Etawah
+5683	area	Auraiya	Auraiya, Etawah
+5688	area	Etawah	Etawah, Etawah
+5690	area	Kaimganj	Kaimganj, Farrukhabad
+5691	area	Chhibramau	Chhibramau, Farrukhabad
+5692	area	Farrukhabad	Farrukhabad (Fategarh), Farrukhabad
+5694	area	Kannauj	Kannauj, Farrukhabad
+571	area	Aligarh	Aligarh, Aligarh
+5721	area	Sikandra Rao	Sikandra Rao, Aligarh
+5722	area	Hathras	Hathras, Aligarh
+5723	area	Atrauli	Atrauli, Aligarh
+5724	area	Khair	Khair, Aligarh
+5731	area	Garhmukteshwar	Garhmukteshwar, Ghaziabad
+5732	area	Bulandshahr	Bulandshahr, Ghaziabad
+5733	area	Pahasu	Pahasu, Ghaziabad
+5734	area	Debai	Debai, Ghaziabad
+5735	area	Sikandrabad	Sikandrabad, Ghaziabad
+5736	area	Siyana	Siyana, Ghaziabad
+5738	area	Khurja	Khurja, Ghaziabad
+5740	area	Aliganj	Aliganj (Ganjdundwara), Etah
+5742	area	Etah	Etah, Etah
+5744	area	Kasganj	Kasganj, Etah
+5745	area	Jalesar	Jalesar, Etah
+581	area	Bareilly	Bareilly, Bareilly
+5821	area	Pitamberpur	Pitamberpur, Bareilly
+5822	area	Baheri	Baheri, Bareilly
+5823	area	Aonla 	Aonla -I, Bareilly
+5824	area	Aonla	Aonla-II (Ramnagar), Bareilly
+5825	area	Nawabganj	Nawabganj, Bareilly
+5831	area	Dataganj	Dataganj, Badaun
+5832	area	Badaun	Badaun, Badaun
+5833	area	Sahaswan	Sahaswan, Badaun
+5834	area	Bisauli	Bisauli, Badaun
+5836	area	Gunnaur	Gunnaur, Badaun
+5841	area	Tilhar	Tilhar, Sahjahanpur
+5842	area	Shahjahanpur	Shahjahanpur, Sahjahanpur
+5843	area	Jalalabad	Jalalabad, Sahjahanpur
+5844	area	Powayan	Powayan, Sahjahanpur
+5850	area	Hardoi	Hardoi-II (Baghavli), Hardoi
+5851	area	Bilgam	Bilgam-I (Madhoganj), Hardoi
+5852	area	Hardoi	Hardoi-I (Hardoi), Hardoi
+5853	area	Shahabad	Shahabad, Hardoi
+5854	area	Sandila	Sandila, Hardoi
+5855	area	Bilgram	Bilgram-II (Sandi), Hardoi
+5861	area	Misrikh	Misrikh-II (Aurangabad), Sitapur
+5862	area	Sitapur	Sitapur, Sitapur
+5863	area	Biswan	Biswan, Sitapur
+5864	area	Sidhauli	Sidhauli (Mahmodabad), Sitapur
+5865	area	Misrikh 	Misrikh -I (Misrikh), Sitapur
+5870	area	Kheri	Kheri-II (Bhira), Lakhimpur-Kheri
+5871	area	Nighasan	Nighasan-I (Palliakalan), Lakhimpur-Kheri
+5872	area	Kheri	Kheri-I (Kheri), Lakhimpur-Kheri
+5873	area	Nighasan	Nighasan-II (Tikonia), Lakhimpur-Kheri
+5874	area	Nighasan	Nighasan-III (Dhaurahra), Lakhimpur-Kheri
+5875	area	Mohamdi	Mohamdi-II (Maigalganj), Lakhimpur-Kheri
+5876	area	Mohamdi	Mohamdi-I (Mohamdi), Lakhimpur-Kheri
+5880	area	Puranpur	Puranpur, Pilibhit
+5881	area	Bisalpur	Bisalpur, Pilibhit
+5882	area	Pilibhit	Pilibhit, Pilibhit
+591	area	Moradabad	Moradabad, Moradabad
+5921	area	Bilari	Bilari, Moradabad
+5922	area	Amroha	Amroha, Moradabad
+5923	area	Sambhal	Sambhal, Moradabad
+5924	area	Hasanpur	Hasanpur, Moradabad
+5942	area	Nainital	Nainital, Nainital
+5943	area	Khatima	Khatima, Nainital
+5944	area	Kichha	Kichha-I (Rudrapur), Nainital
+5945	area	Haldwani	Haldwani-II (Chorgalian), Nainital
+5946	area	Haldwani	Haldwani-I, Nainital
+5947	area	Kashipur	Kashipur, Nainital
+5948	area	Khatima	Khatima-II (Sitarganj), Nainital
+5949	area	Kichha	Kichha-II (Bazpur), Nainital
+595	area	Rampur	Rampur, Rampur
+5960	area	Shahabad	Shahabad, Rampur
+5961	area	Munsiari	Munsiari, Almora
+5962	area	Almora	Almora, Almora
+5963	area	Bageshwar	Bageshwar, Almora
+5964	area	Pithoragarh	Pithoragarh, Almora
+5965	area	Champawat	Champawat, Almora
+5966	area	Ranikhet	Ranikhet, Almora
+5967	area	Dharchula	Dharchula, Almora
+6111	area	Hilsa	Hilsa, Patna
+6112	area	Biharsharif	Biharsharif, Patna
+6114	area	Jahanabad	Jahanabad, Gaya
+6115	area	Danapur	Danapur, Patna
+612	area	Patna	Patna, Patna
+6132	area	Barh	Barh, Patna
+6135	area	Bikram	Bikram, Patna
+6150	area	Hathua	Hathua, Chapra
+6151	area	Sidhawalia	Sidhawalia, Chapra
+6152	area	Chapra	Chapra, Chapra
+6153	area	Maharajganj	Maharajganj, Chapra
+6154	area	Siwan	Siwan, Chapra
+6155	area	Ekma	Ekma, Chapra
+6156	area	Gopalganj	Gopalganj, Chapra
+6157	area	Mairwa	Mairwa, Chapra
+6158	area	Sonepur	Sonepur, Chapra
+6159	area	Masrakh	Masrakh, Chapra
+6180	area	Adhaura	Adhaura, Sasaram
+6181	area	Piro	Piro, Arrah
+6182	area	Arrah	Arrah, Arrah
+6183	area	Buxar	Buxar, Arrah
+6184	area	Sasaram	Sasaram, Sasaram
+6185	area	Bikramganj	Bikramganj, Sasaram
+6186	area	Aurangabad	Aurangabad, Gaya
+6187	area	Mohania	Mohania, Sasaram
+6188	area	Rohtas	Rohtas, Sasaram
+6189	area	Bhabhua	Bhabhua, Sasaram
+621	area	Muzaffarpur	Muzaffarpur, Muzaffarpur
+6222	area	Sheohar	Sheohar, Muzaffarpur
+6223	area	Motipur	Motipur, Muzaffarpur
+6224	area	Hajipur	Hajipur, Muzaffarpur
+6226	area	Sitamarhi	Sitamarhi, Muzaffarpur
+6227	area	Mahua	Mahua, Muzaffarpur
+6228	area	Pupri	Pupri, Muzaffarpur
+6229	area	Bidupur	Bidupur, Muzaffarpur
+6242	area	Benipur	Benipur, Darbhanga
+6243	area	Begusarai	Begusarai, Darbhanga
+6244	area	Khagaria	Khagaria, Darbhanga
+6245	area	Gogri	Gogri, Darbhanga
+6246	area	Jainagar	Jainagar, Darbhanga
+6247	area	Singhwara	Singhwara, Darbhanga
+6250	area	Dhaka	Dhaka, Motihari
+6251	area	Bagaha	Bagaha, Motihari
+6252	area	Motihari	Motihari, Motihari
+6253	area	Narkatiaganj	Narkatiaganj, Motihari
+6254	area	Bettiah	Bettiah, Motihari
+6255	area	Raxaul	Raxaul, Motihari
+6256	area	Ramnagar	Ramnagar, Motihari
+6257	area	Barachakia	Barachakia, Motihari
+6258	area	Areraj	Areraj, Motihari
+6259	area	Pakridayal	Pakridayal, Motihari
+6271	area	Benipatti	Benipatti, Darbhanga
+6272	area	Darbhanga	Darbhanga, Darbhanga
+6273	area	Jhajharpur	Jhajharpur, Darbhanga
+6274	area	Samastipur	Samastipur, Darbhanga
+6275	area	Rosera	Rosera, Darbhanga
+6276	area	Madhubani	Madhubani, Darbhanga
+6277	area	Phulparas	Phulparas, Darbhanga
+6278	area	Dalsinghsarai	Dalsinghsarai, Darbhanga
+6279	area	Barauni	Barauni, Darbhanga
+631	area	Gaya	Gaya, Gaya
+6322	area	Wazirganj	Wazirganj, Gaya
+6323	area	Dumraon	Dumraon, Arrah
+6324	area	Nawada	Nawada, Gaya
+6325	area	Pakribarwan	Pakribarwan, Gaya
+6326	area	Sherghati	Sherghati, Gaya
+6327	area	Rafiganj	Rafiganj, Gaya
+6328	area	Daudnagar	Daudnagar, Gaya
+6331	area	Imamganj	Imamganj, Gaya
+6332	area	Nabinagar	Nabinagar, Gaya
+6336	area	Rajauli	Rajauli, Gaya
+6337	area	Arwal	Arwal, Gaya
+6341	area	Seikhpura	Seikhpura, Monghyr
+6342	area	H. Kharagpur	H. Kharagpur, Monghyr
+6344	area	Monghyr	Monghyr, Monghyr
+6345	area	Jamui	Jamui, Monghyr
+6346	area	Lakhisarai	Lakhisarai, Monghyr
+6347	area	Chakai	Chakai, Monghyr
+6348	area	Mallehpur	Mallehpur, Monghyr
+6349	area	Jhajha	Jhajha, Monghyr
+641	area	Bhagalpur	Bhagalpur, Bhagalpur
+6420	area	Amarpur	Amarpur, Bhagalpur
+6421	area	Naugachia	Naugachia, Bhagalpur
+6422	area	Godda	Godda, Deoghar (Dumka)
+6423	area	Maheshpur Raj	Maheshpur Raj, Deoghar (Dumka)
+6424	area	Banka	Banka, Bhagalpur
+6425	area	Katoria	Katoria, Bhagalpur
+6426	area	Rajmahal	Rajmahal, Deoghar (Dumka)
+6427	area	Kathikund	Kathikund, Deoghar (Dumka)
+6428	area	Nala	Nala, Deoghar (Dumka)
+6429	area	Kahalgaon	Kahalgaon, Bhagalpur
+6431	area	Jharmundi	Jharmundi, Deoghar (Dumka)
+6432	area	Deoghar	Deoghar, Deoghar (Dumka)
+6433	area	Jamtara	Jamtara, Deoghar (Dumka)
+6434	area	Dumka	Dumka, Deoghar (Dumka)
+6435	area	Pakur	Pakur, Deoghar (Dumka)
+6436	area	Sahibganj	Sahibganj, Deoghar (Dumka)
+6437	area	Mahagama	Mahagama, Deoghar (Dumka)
+6438	area	Madhupur	Madhupur, Deoghar (Dumka)
+6451	area	Barsoi	Barsoi, Katihar
+6452	area	Katihar	Katihar, Katihar
+6453	area	Araria	Araria, Katihar
+6454	area	Purnea	Purnea, Katihar
+6455	area	Forbesganj	Forbesganj, Katihar
+6457	area	Korha	Korha, Katihar
+6459	area	Thakurganj	Thakurganj, Katihar
+6461	area	Raniganj	Raniganj, Katihar
+6462	area	Dhamdaha	Dhamdaha, Katihar
+6466	area	Kishanganj	Kishanganj, Katihar
+6467	area	Banmankhi	Banmankhi, Katihar
+6471	area	Birpur	Birpur, Saharsa
+6473	area	Supaul	Supaul, Saharsa
+6475	area	S. Bakhtiarpur	S. Bakhtiarpur, Saharsa
+6476	area	Madhepura	Madhepura, Saharsa
+6477	area	Triveniganj	Triveniganj, Saharsa
+6478	area	Saharsa	Saharsa, Saharsa
+6479	area	Udakishanganj	Udakishanganj, Saharsa
+651	area	Ranchi	Ranchi, Ranchi
+6522	area	Muri	Muri, Ranchi
+6523	area	Ghaghra	Ghaghra, Ranchi
+6524	area	Gumla	Gumla, Ranchi
+6525	area	Simdega	Simdega, Ranchi
+6526	area	Lohardaga	Lohardaga, Ranchi
+6527	area	Kolebira	Kolebira, Ranchi
+6528	area	Khunti	Khunti, Ranchi
+6529	area	Itki	Itki, Ranchi
+6530	area	Bundu	Bundu, Ranchi
+6531	area	Mandar	Mandar, Ranchi
+6532	area	Giridih	Giridih, Hazaribagh
+6533	area	Basia	Basia, Ranchi
+6534	area	Jhumaritalaiya	Jhumaritalaiya, Hazaribagh
+6535	area	Chainpur	Chainpur, Ranchi
+6536	area	Palkot	Palkot, Ranchi
+6538	area	Torpa	Torpa, Ranchi
+6539	area	Bolwa	Bolwa, Ranchi
+6540	area	Govindpur	Govindpur, Dhanbad
+6541	area	Chatra	Chatra, Hazaribagh
+6542	area	Bokaro	Bokaro, Dhanbad
+6543	area	Barhi	Barhi, Hazaribagh
+6544	area	Gomia	Gomia, Dhanbad
+6545	area	Mandu	Mandu, Hazaribagh
+6546	area	Hazaribagh	Hazaribagh, Hazaribagh
+6547	area	Chavparan	Chavparan, Hazaribagh
+6548	area	Ichak	Ichak, Hazaribagh
+6549	area	Bermo	Bermo, Dhanbad
+6550	area	Hunterganj	Hunterganj, Hazaribagh
+6551	area	Barkagaon	Barkagaon, Hazaribagh
+6553	area	Ramgarh	Ramgarh, Hazaribagh
+6554	area	Rajdhanwar	Rajdhanwar, Hazaribagh
+6556	area	Tisri	Tisri, Hazaribagh
+6557	area	Bagodar	Bagodar, Hazaribagh
+6558	area	Dumri	Dumri (Isribazar), Hazaribagh
+6559	area	Simaria	Simaria, Hazaribagh
+6560	area	Patan	Patan, Daltonganj
+6561	area	Garhwa	Garhwa, Daltonganj
+6562	area	Daltonganj	Daltonganj, Daltonganj
+6563	area	Bhawanathpur	Bhawanathpur, Daltonganj
+6564	area	Nagarutari	Nagarutari, Daltonganj
+6565	area	Latehar	Latehar, Daltonganj
+6566	area	Japla	Japla, Daltonganj
+6567	area	Barwadih	Barwadih, Daltonganj
+6568	area	Balumath	Balumath, Daltonganj
+6569	area	Garu	Garu, Daltonganj
+657	area	Jamshedpur	Jamshedpur, Jamshedpur
+6581	area	Bhandaria	Bhandaria, Daltonganj
+6582	area	Chaibasa	Chaibasa, Jamshedpur
+6583	area	Kharsawa	Kharsawa, Jamshedpur
+6584	area	Bishrampur	Bishrampur, Daltonganj
+6585	area	Ghatsila	Ghatsila, Jamshedpur
+6586	area	Chainpur	Chainpur, Daltonganj
+6587	area	Chakardharpur	Chakardharpur, Jamshedpur
+6588	area	Jagarnathpur	Jagarnathpur, Jamshedpur
+6589	area	Jhinkpani	Jhinkpani, Jamshedpur
+6591	area	Chandil	Chandil, Jamshedpur
+6593	area	Manoharpur	Manoharpur, Jamshedpur
+6594	area	Baharagora	Baharagora, Jamshedpur
+6596	area	Noamundi	Noamundi, Jamshedpur
+6597	area	Saraikela	Saraikela (Adstyapur), Jamshedpur
+661	area	Rourkela	Rourkela, Sundargarh (Rourkela)
+6621	area	Hemgiri	Hemgiri, Sundargarh (Rourkela)
+6622	area	Sundargarh	Sundargarh, Sundargarh (Rourkela)
+6624	area	Rajgangpur	Rajgangpur, Sundargarh (Rourkela)
+6625	area	Lahunipara	Lahunipara, Sundargarh (Rourkela)
+6626	area	Banaigarh	Banaigarh, Sundargarh (Rourkela)
+663	area	Sambalpur	Sambalpur, Sambalpur
+6640	area	Bagdihi	Bagdihi, Sambalpur
+6641	area	Deodgarh	Deodgarh, Sambalpur
+6642	area	Kuchinda	Kuchinda, Sambalpur
+6643	area	Barkot	Barkot, Sambalpur
+6644	area	Rairakhol	Rairakhol, Sambalpur
+6645	area	Jharsuguda	Jharsuguda, Sambalpur
+6646	area	Bargarh	Bargarh, Sambalpur
+6647	area	Naktideul	Naktideul, Sambalpur
+6648	area	Patnagarh	Patnagarh, Balangir
+6649	area	Jamankira	Jamankira, Sambalpur
+6651	area	Birmaharajpur	Birmaharajpur, Balangir
+6652	area	Balangir	Balangir, Balangir
+6653	area	Dunguripali	Dunguripali, Balangir
+6654	area	Sonapur	Sonapur, Balangir
+6655	area	Titlagarh	Titlagarh, Balangir
+6657	area	Kantabhanji	Kantabhanji, Balangir
+6670	area	Bhawanipatna	Bhawanipatna, Bhawanipatna
+6671	area	Rajkhariar	Rajkhariar, Bhawanipatna
+6672	area	Dharamgarh	Dharamgarh, Bhawanipatna
+6673	area	Jayapatna	Jayapatna, Bhawanipatna
+6675	area	T. Rampur	T. Rampur, Bhawanipatna
+6676	area	M. Rampur	M. Rampur, Bhawanipatna
+6677	area	Narlaroad	Narlaroad, Bhawanipatna
+6678	area	Nowparatan	Nowparatan, Bhawanipatna
+6679	area	Komana	Komana, Bhawanipatna
+6681	area	Jujumura	Jujumura, Sambalpur
+6682	area	Attabira	Attabira, Sambalpur
+6683	area	Padmapur	Padmapur, Sambalpur
+6684	area	Paikamal	Paikamal, Sambalpur
+6685	area	Sohela	Sohela, Sambalpur
+671	area	Cuttack	Cuttack, Cuttack
+6721	area	Narsinghpur	Narsinghpur, Cuttack
+6722	area	Pardip	Pardip, Cuttack
+6723	area	Athgarh	Athgarh, Cuttack
+6724	area	Jagatsinghpur	Jagatsinghpur, Cuttack
+6725	area	Dhanmandal	Dhanmandal, Cuttack
+6726	area	Jajapur Road	Jajapur Road, Cuttack
+6727	area	Kendrapara	Kendrapara, Cuttack
+6728	area	Jajapur Town	Jajapur Town, Cuttack
+6729	area	Pattamundai	Pattamundai, Cuttack
+6731	area	Anandapur	Anandapur, Dhenkanal
+6732	area	Hindol	Hindol, Dhenkanal
+6733	area	Ghatgaon	Ghatgaon, Dhenkanal
+6735	area	Telkoi	Telkoi, Dhenkanal
+674	area	Bhubaneshwar	Bhubaneshwar, Bhubaneswar (Puri)
+6752	area	Puri	Puri, Bhubaneswar (Puri)
+6753	area	Nayagarh	Nayagarh, Bhubaneswar (Puri)
+6755	area	Khurda	Khurda, Bhubaneswar (Puri)
+6756	area	Balugaon	Balugaon, Bhubaneswar (Puri)
+6757	area	Daspalla	Daspalla, Bhubaneswar (Puri)
+6758	area	Nimapara	Nimapara, Bhubaneswar (Puri)
+6760	area	Talcher	Talcher, Dhenkanal
+6761	area	Chhendipada	Chhendipada, Dhenkanal
+6762	area	Dhenkanal	Dhenkanal, Dhenkanal
+6763	area	Athmallik	Athmallik, Dhenkanal
+6764	area	Anugul	Anugul, Dhenkanal
+6765	area	Palla Hara	Palla Hara, Dhenkanal
+6766	area	Keonjhar	Keonjhar, Dhenkanal
+6767	area	Barbil	Barbil, Dhenkanal
+6768	area	Parajang	Parajang, Dhenkanal
+6769	area	Kamakhyanagar	Kamakhyanagar, Dhenkanal
+6781	area	Basta	Basta, Balasore
+6782	area	Balasore	Balasore, Balasore
+6784	area	Bhadrak	Bhadrak, Balasore
+6786	area	Chandbali	Chandbali, Balasore
+6788	area	Soro	Soro, Balasore
+6791	area	Bangiriposi	Bangiriposi, Baripada
+6792	area	Baripada	Baripada, Baripada
+6793	area	Betanati	Betanati, Baripada
+6794	area	Rairangpur	Rairangpur, Baripada
+6795	area	Udala	Udala, Baripada
+6796	area	Karanjia	Karanjia, Baripada
+6797	area	Jashipur	Jashipur, Baripada
+680	area	Berhampur	Berhampur, Berhampur
+6810	area	Khalikote	Khalikote, Berhampur
+6811	area	Chhatrapur	Chhatrapur, Berhampur
+6814	area	Digapahandi	Digapahandi, Berhampur
+6815	area	Parlakhemundi	Parlakhemundi, Berhampur
+6816	area	Mohana	Mohana, Berhampur
+6817	area	R. Udayigiri	R. Udayigiri, Berhampur
+6818	area	Buguda	Buguda, Berhampur
+6819	area	Surada	Surada, Berhampur
+6821	area	Bhanjanagar	Bhanjanagar, Berhampur
+6822	area	Aska	Aska, Berhampur
+6840	area	Tumudibandha	Tumudibandha, Phulbani
+6841	area	Boudh	Boudh, Phulbani
+6842	area	Phulbani	Phulbani, Phulbani
+6843	area	Puruna Katak	Puruna Katak, Phulbani
+6844	area	Kantamal	Kantamal, Phulbani
+6845	area	Phiringia	Phiringia, Phulbani
+6846	area	Baliguda	Baliguda, Phulbani
+6847	area	G. Udayagiri	G. Udayagiri, Phulbani
+6848	area	Kotagarh	Kotagarh, Phulbani
+6849	area	Daringbadi	Daringbadi, Phulbani
+6850	area	Kalimela	Kalimela, Koraput
+6852	area	Koraput	Koraput, Koraput
+6853	area	Sunabeda	Sunabeda, Koraput
+6854	area	Jeypore	Jeypore, Koraput
+6855	area	Laxmipur	Laxmipur, Koraput
+6856	area	Rayagada	Rayagada, Koraput
+6857	area	Gunupur	Gunupur, Koraput
+6858	area	Nowrangapur	Nowrangapur, Koraput
+6859	area	Motu	Motu, Koraput
+6860	area	Boriguma	Boriguma, Koraput
+6861	area	Malkangiri	Malkangiri, Koraput
+6862	area	Gudari	Gudari, Koraput
+6863	area	Bisam Cuttack	Bisam Cuttack, Koraput
+6864	area	Mathili	Mathili, Koraput
+6865	area	Kashipur	Kashipur, Koraput
+6866	area	Umerkote	Umerkote, Koraput
+6867	area	Jharigan	Jharigan, Koraput
+6868	area	Nandapur	Nandapur, Koraput
+6869	area	Papadhandi	Papadhandi, Koraput
+7100	area	Kuhi	Kuhi, Nagpur
+7102	area	Parseoni	Parseoni, Nagpur
+7103	area	Butibori	Butibori, Nagpur
+7104	area	Hingua	Hingua, Nagpur
+7105	area	Narkhed	Narkhed, Nagpur
+7106	area	Bhiwapur	Bhiwapur, Nagpur
+7109	area	Kamptee	Kamptee, Nagpur
+7112	area	Katol	Katol, Nagpur
+7113	area	Saoner	Saoner, Nagpur
+7114	area	Ramtek	Ramtek, Nagpur
+7115	area	Mouda	Mouda, Nagpur
+7116	area	Umrer	Umrer, Nagpur
+7118	area	Kalmeshwar	Kalmeshwar, Nagpur
+712	area	Nagpur	Nagpur, Nagpur
+7131	area	Sironcha	Sironcha, Gadchiroli
+7132	area	Gadchiroli	Gadchiroli, Gadchiroli
+7133	area	Aheri	Aheri, Gadchiroli
+7134	area	Bhamregadh	Bhamregadh, Gadchiroli
+7135	area	Chamorshi	Chamorshi, Gadchiroli
+7136	area	Etapalli	Etapalli, Gadchiroli
+7137	area	Desaiganj	Desaiganj, Gadchiroli
+7138	area	Dhanora	Dhanora, Gadchiroli
+7139	area	Kurkheda	Kurkheda, Gadchiroli
+7141	area	Betul	Betul, Betul
+7142	area	Bhimpur	Bhimpur, Betul
+7143	area	Bhainsdehi	Bhainsdehi, Betul
+7144	area	Atner	Atner, Betul
+7145	area	Chicholi	Chicholi, Betul
+7146	area	Ghorandogri	Ghorandogri, Betul
+7147	area	Multai	Multai, Betul
+7148	area	Prabha Pattan	Prabha Pattan, Betul
+7149	area	Tamia	Tamia, Chhindwara
+7151	area	Samudrapur	Samudrapur, Wardha
+7152	area	Wardha	Wardha, Wardha
+7153	area	Hinganghat	Hinganghat, Wardha
+7155	area	Seloo	Seloo, Wardha
+7156	area	Talegaokarangal	Talegaokarangal, Wardha
+7157	area	Arvi	Arvi, Wardha
+7158	area	Deoli	Deoli, Wardha
+7160	area	Jamai	Jamai, Chhindwara
+7161	area	Parasia	Parasia, Chhindwara
+7162	area	Chhindwara	Chhindwara, Chhindwara
+7164	area	Pandhurna	Pandhurna, Chhindwara
+7165	area	Saunsar	Saunsar, Chhindwara
+7166	area	Chaurai	Chaurai, Chhindwara
+7167	area	Amarwada	Amarwada, Chhindwara
+7168	area	Harrai	Harrai, Chhindwara
+7169	area	Batkakhapa	Batkakhapa, Chhindwara
+7170	area	Chumur	Chumur, Chandrapur
+7171	area	Gond Pipri	Gond Pipri, Chandrapur
+7172	area	Chandrapur	Chandrapur, Chandrapur
+7173	area	Rajura	Rajura, Chandrapur
+7174	area	Mul	Mul, Chandrapur
+7175	area	Bhadrawati	Bhadrawati, Chandrapur
+7176	area	Warora	Warora, Chandrapur
+7177	area	Brahmapuri	Brahmapuri, Chandrapur
+7178	area	Sinderwahi	Sinderwahi, Chandrapur
+7179	area	Nagbhir	Nagbhir, Chandrapur
+7180	area	Salekasa	Salekasa, Bhandara
+7181	area	Lakhandur	Lakhandur, Bhandara
+7182	area	Gondia	Gondia, Bhandara
+7183	area	Tumsar	Tumsar, Bhandara
+7184	area	Bhandara	Bhandara, Bhandara
+7185	area	Pauni	Pauni, Bhandara
+7186	area	Sakoli	Sakoli, Bhandara
+7187	area	Goregaon	Goregaon, Bhandara
+7189	area	Amagaon	Amagaon, Bhandara
+7196	area	Arjuni-Merogaon	Arjuni-Merogaon, Bhandara
+7197	area	Mohadi	Mohadi, Bhandara
+7198	area	Tirora	Tirora, Bhandara
+7199	area	Deori	Deori, Bhandara
+7201	area	Kalamb	Kalamb, Yeotmal
+7202	area	Ralegaon	Ralegaon, Yeotmal
+7203	area	Babhulgaon	Babhulgaon, Yeotmal
+721	area	Amravati	Amravati, Amravati
+7220	area	Chhikaldara	Chhikaldara, Amravati
+7221	area	Nandgaon	Nandgaon, Amravati
+7222	area	Chandurrly	Chandurrly, Amravati
+7223	area	Achalpur	Achalpur, Amravati
+7224	area	Daryapur	Daryapur, Amravati
+7225	area	Tiwasa	Tiwasa, Amravati
+7226	area	Dharani	Dharani, Amravati
+7227	area	Chandurbazar	Chandurbazar, Amravati
+7228	area	Morshi	Morshi, Amravati
+7229	area	Warlydwarud	Warlydwarud, Amravati
+7230	area	Ghatanji	Ghatanji, Yeotmal
+7231	area	Umarkhed	Umarkhed, Yeotmal
+7232	area	Yeotmal	Yeotmal, Yeotmal
+7233	area	Pusad	Pusad, Yeotmal
+7234	area	Digras	Digras, Yeotmal
+7235	area	Pandharkawada	Pandharkawada, Yeotmal
+7236	area	Maregaon	Maregaon, Yeotmal
+7237	area	Marigaon	Marigaon, Yeotmal
+7238	area	Darwaha	Darwaha, Yeotmal
+7239	area	Wani	Wani, Yeotmal
+724	area	Akola	Akola, Akola
+7251	area	Risod	Risod, Akola
+7252	area	Washim	Washim, Akola
+7253	area	Mangrulpur	Mangrulpur, Akola
+7254	area	Malgaon	Malgaon, Akola
+7255	area	Barshi Takli	Barshi Takli, Akola
+7256	area	Murtizapur	Murtizapur, Akola
+7257	area	Balapur	Balapur, Akola
+7258	area	Akot	Akot, Akola
+7260	area	Lonar	Lonar, Buldhana
+7261	area	Deolgaonraja	Deolgaonraja, Buldhana
+7262	area	Buldhana	Buldhana, Buldhana
+7263	area	Khamgaon	Khamgaon, Buldhana
+7264	area	Chikhali	Chikhali, Buldhana
+7266	area	Jalgaonjamod	Jalgaonjamod, Buldhana
+7267	area	Malkapur	Malkapur, Buldhana
+7268	area	Mekhar	Mekhar, Buldhana
+7269	area	Sindkhedaraja	Sindkhedaraja, Buldhana
+7270	area	Sonkatch	Sonkatch, Dewas
+7271	area	Bagli	Bagli, Dewas
+7272	area	Dewas	Dewas, Dewas
+7273	area	Kannod	Kannod, Dewas
+7274	area	Khategaon	Khategaon, Dewas
+7279	area	Nandnva	Nandnva, Buldhana
+7280	area	Barwaha	Barwaha, Khargone
+7281	area	Sendhwa	Sendhwa, Khargone
+7282	area	Khargone	Khargone, Khargone
+7283	area	Maheshwar	Maheshwar, Khargone
+7284	area	Rajpur	Rajpur, Khargone
+7285	area	Kasrawad	Kasrawad, Khargone
+7286	area	Khetia	Khetia, Khargone
+7287	area	Gogaon	Gogaon, Khargone
+7288	area	Bhikangaon	Bhikangaon, Khargone
+7289	area	Zhirnia	Zhirnia, Khargone
+7290	area	Badwani	Badwani, Khargone
+7291	area	Manawar	Manawar, Dhar
+7292	area	Dhar	Dhar, Dhar
+7294	area	Dharampuri	Dharampuri, Dhar
+7295	area	Badnawar	Badnawar, Dhar
+7296	area	Sardarpur	Sardarpur, Dhar
+7297	area	Kukshi	Kukshi, Dhar
+731	area	Indore	Indore, Indore
+7320	area	Pandhana	Pandhana, Khandwa
+7321	area	Sanwer	Sanwer, Indore
+7322	area	Depalpur	Depalpur, Indore
+7323	area	Punasa	Punasa, Khandwa
+7324	area	Mhow	Mhow, Indore
+7325	area	Burhanpur	Burhanpur, Khandwa
+7326	area	Baldi	Baldi, Khandwa
+7327	area	Harsud	Harsud, Khandwa
+7328	area	Khalwa	Khalwa, Khandwa
+7329	area	Khakner	Khakner, Khandwa
+733	area	Khandwa	Khandwa, Khandwa
+734	area	Ujjain	Ujjain, Ujjain
+7360	area	Shujalpur	Shujalpur, Shajapur
+7361	area	Susner	Susner, Shajapur
+7362	area	Agar	Agar, Shajapur
+7363	area	Berchha	Berchha, Shajapur
+7364	area	Shajapur	Shajapur, Shajapur
+7365	area	Mahidpurcity	Mahidpurcity, Ujjain
+7366	area	Khachrod	Khachrod, Ujjain
+7367	area	Badnagar	Badnagar, Ujjain
+7368	area	Ghatia	Ghatia, Ujjain
+7369	area	Tarana	Tarana, Ujjain
+7370	area	Khilchipur	Khilchipur, Rajgarh
+7371	area	Sarangpur	Sarangpur, Rajgarh
+7372	area	Rajgarh	Rajgarh, Rajgarh
+7374	area	Biaora	Biaora, Rajgarh
+7375	area	Narsingharh	Narsingharh, Rajgarh
+7390	area	Thandla	Thandla, Jhabua
+7391	area	Petlawad	Petlawad, Jhabua
+7392	area	Jhabua	Jhabua, Jhabua
+7393	area	Jobat	Jobat, Jhabua
+7394	area	Alirajpur	Alirajpur, Jhabua
+7395	area	Sondhwa	Sondhwa, Jhabua
+7410	area	Alot	Alot, Ratlam
+7412	area	Ratlam	Ratlam, Ratlam
+7413	area	Sailana	Sailana, Ratlam
+7414	area	Jaora	Jaora, Ratlam
+7420	area	Jawad	Jawad, Mandsaur
+7421	area	Manasa	Manasa, Mandsaur
+7422	area	Mandsaur	Mandsaur, Mandsaur
+7423	area	Neemuch	Neemuch, Mandsaur
+7424	area	Malhargarh	Malhargarh, Mandsaur
+7425	area	Garoth	Garoth, Mandsaur
+7426	area	Sitamau	Sitamau, Mandsaur
+7427	area	Bhanpura	Bhanpura, Mandsaur
+7430	area	Khanpur	Khanpur, Jhalawar
+7431	area	Aklera	Aklera, Jhalawar
+7432	area	Jhalawar	Jhalawar, Jhalawar
+7433	area	Pachpahar	Pachpahar (Bhawanimandi), Jhalawar
+7434	area	Pirawa	Pirawa (Raipur), Jhalawar
+7435	area	Gangdhar	Gangdhar, Jhalawar
+7436	area	Hindoli	Hindoli, Bundi
+7437	area	Nainwa	Nainwa, Bundi
+7438	area	Keshoraipatan	Keshoraipatan (Patan), Bundi
+744	area	Ladpura	Ladpura (Kota), Kota
+7450	area	Sangod	Sangod, Kota
+7451	area	Atru	Atru, Kota
+7452	area	Chhabra	Chhabra, Kota
+7453	area	Baran	Baran, Kota
+7454	area	Chhipaborad	Chhipaborad, Kota
+7455	area	Digod	Digod (Sultanpur), Kota
+7456	area	Kishanganj	Kishanganj (Bhanwargarh), Kota
+7457	area	Mangrol	Mangrol, Kota
+7458	area	Pipalda	Pipalda (Sumerganj Mandi), Kota
+7459	area	Ramganj Mandi	Ramganj Mandi, Kota
+7460	area	Sahabad	Sahabad, Kota
+7461	area	Mahuwa	Mahuwa, Sawaimadhopur
+7462	area	Sawaimadhopur	Sawaimadhopur, Sawaimadhopur
+7463	area	Gangapur	Gangapur, Sawaimadhopur
+7464	area	Karauli	Karauli, Sawaimadhopur
+7465	area	Sapotra	Sapotra, Sawaimadhopur
+7466	area	Bonli	Bonli, Sawaimadhopur
+7467	area	Bamanwas	Bamanwas, Sawaimadhopur
+7468	area	Khandar	Khandar, Sawaimadhopur
+7469	area	Hindaun	Hindaun, Sawaimadhopur
+747	area	Bundi	Bundi, Bundi
+7480	area	Goharganj	Goharganj, Raisen
+7481	area	Gairatganj	Gairatganj, Raisen
+7482	area	Raisen	Raisen, Raisen
+7484	area	Silwani	Silwani, Raisen
+7485	area	Udaipura	Udaipura, Raisen
+7486	area	Bareli	Bareli, Raisen
+7487	area	Begamganj	Begamganj, Raisen
+7490	area	Pohari	Pohari, Shivpuri
+7491	area	Narwar	Narwar, Shivpuri
+7492	area	Shivpuri	Shivpuri, Shivpuri
+7493	area	Karera	Karera, Shivpuri
+7494	area	Kolaras	Kolaras, Shivpuri
+7495	area	Badarwas	Badarwas, Shivpuri
+7496	area	Pichhore	Pichhore, Shivpuri
+7497	area	Khaniadhana	Khaniadhana, Shivpuri
+751	area	Gwalior	Gwalior, Gwalior
+7521	area	Seondha	Seondha, Gwalior
+7522	area	Datia	Datia, Gwalior
+7523	area	Bhander	Bhander, Gwalior
+7524	area	Dabra	Dabra, Gwalior
+7525	area	Bhitarwar	Bhitarwar, Gwalior
+7526	area	Ghatigaon	Ghatigaon, Gwalior
+7527	area	Mehgaon	Mehgaon, Morena
+7528	area	Bijaypur	Bijaypur, Morena
+7529	area	Laher	Laher, Morena
+7530	area	Sheopurkalan	Sheopurkalan, Morena
+7531	area	Baroda	Baroda, Morena
+7532	area	Morena	Morena, Morena
+7533	area	Karhal	Karhal, Morena
+7534	area	Bhind	Bhind, Morena
+7535	area	Raghunathpur	Raghunathpur, Morena
+7536	area	Sabalgarh	Sabalgarh, Morena
+7537	area	Jora	Jora, Morena
+7538	area	Ambah	Ambah, Morena
+7539	area	Gohad	Gohad, Morena
+7540	area	Bamori	Bamori, Guna
+7541	area	Isagarh	Isagarh, Guna
+7542	area	Guna	Guna, Guna
+7543	area	Ashoknagar	Ashoknagar, Guna
+7544	area	Raghogarh	Raghogarh, Guna
+7545	area	Arone	Arone, Guna
+7546	area	Chachaura	Chachaura, Guna
+7547	area	Chanderi	Chanderi, Guna
+7548	area	Mungaoli	Mungaoli, Guna
+755	area	Bhopal	Bhopal, Bhopal
+7560	area	Ashta	Ashta, Bhopal
+7561	area	Ichhawar	Ichhawar, Bhopal
+7562	area	Sehore	Sehore, Bhopal
+7563	area	Nasrullaganj	Nasrullaganj, Bhopal
+7564	area	Budhni	Budhni, Bhopal
+7565	area	Berasia	Berasia, Bhopal
+7570	area	Seonimalwa	Seonimalwa, Itarsi
+7571	area	Khirkiya	Khirkiya, Itarsi
+7572	area	Itarsi	Itarsi, Itarsi
+7573	area	Timarani	Timarani, Itarsi
+7574	area	Hoshangabad	Hoshangabad, Itarsi
+7575	area	Sohagpur	Sohagpur, Itarsi
+7576	area	Piparia	Piparia, Itarsi
+7577	area	Harda	Harda, Itarsi
+7578	area	Pachmarhi	Pachmarhi, Itarsi
+7580	area	Bina	Bina, Sagar
+7581	area	Khurai	Khurai, Sagar
+7582	area	Sagar	Sagar, Sagar
+7583	area	Banda	Banda, Sagar
+7584	area	Rahatgarh	Rahatgarh, Sagar
+7585	area	Rehli	Rehli, Sagar
+7586	area	Deori	Deori, Sagar
+7590	area	Lateri	Lateri, Vidisha
+7591	area	Sironj	Sironj, Vidisha
+7592	area	Vidisha	Vidisha, Vidisha
+7593	area	Kurwai	Kurwai, Vidisha
+7594	area	Ganjbasoda	Ganjbasoda, Vidisha
+7595	area	Nateran	Nateran, Vidisha
+7596	area	Gyraspur	Gyraspur, Vidisha
+7601	area	Patharia	Patharia, Damoh
+7603	area	Tendukheda	Tendukheda, Damoh
+7604	area	Hatta	Hatta, Damoh
+7605	area	Patera	Patera, Damoh
+7606	area	Jabera	Jabera, Damoh
+7608	area	Bijawar	Bijawar, Chhatarpur
+7609	area	Buxwaha	Buxwaha, Chhatarpur
+761	area	Jabalpur	Jabalpur, Jabalpur
+7621	area	Patan	Patan, Jabalpur
+7622	area	Katni	Katni, Jabalpur
+7623	area	Kundam	Kundam, Jabalpur
+7624	area	Sihora	Sihora, Jabalpur
+7625	area	Umariapan	Umariapan, Jabalpur
+7626	area	Vijayraghogarh	Vijayraghogarh, Jabalpur
+7627	area	Manpur	Manpur, Shahdol
+7628	area	Karpa	Karpa, Shahdol
+7629	area	Pushprajgarh	Pushprajgarh, Shahdol
+7630	area	Katangi	Katangi, Balaghat
+7632	area	Balaghat	Balaghat, Balaghat
+7633	area	Waraseoni	Waraseoni, Balaghat
+7634	area	Lamta	Lamta, Balaghat
+7635	area	Lanji	Lanji, Balaghat
+7636	area	Baihar	Baihar, Balaghat
+7637	area	Birsa	Birsa, Balaghat
+7638	area	Damoh	Damoh, Balaghat
+7640	area	Shahpur	Shahpur, Mandla
+7641	area	Niwas	Niwas, Mandla
+7642	area	Mandla	Mandla, Mandla
+7643	area	Bijadandi	Bijadandi, Mandla
+7644	area	Dindori	Dindori, Mandla
+7645	area	Karanjia	Karanjia, Mandla
+7646	area	Nainpur	Nainpur, Mandla
+7647	area	Ghughari	Ghughari, Mandla
+7648	area	Mawai	Mawai, Mandla
+7649	area	Kakaiya	Kakaiya, Mandla
+7650	area	Beohari	Beohari, Shahdol
+7651	area	Jaisinghnagar	Jaisinghnagar, Shahdol
+7652	area	Shahdol	Shahdol, Shahdol
+7653	area	Bandhavgarh	Bandhavgarh, Shahdol
+7655	area	Birsinghpur	Birsinghpur, Shahdol
+7656	area	Kannodi	Kannodi, Shahdol
+7657	area	Jaitpur	Jaitpur, Shahdol
+7658	area	Kotma	Kotma, Shahdol
+7659	area	Jaithari	Jaithari, Shahdol
+7660	area	Sirmour	Sirmour, Rewa
+7661	area	Teonthar	Teonthar, Rewa
+7662	area	Rewa	Rewa, Rewa
+7663	area	Mauganj	Mauganj, Rewa
+7664	area	Hanumana	Hanumana, Rewa
+7670	area	Majhagwan	Majhagwan, Satna
+7671	area	Jaitwara	Jaitwara, Satna
+7672	area	Satna	Satna, Satna
+7673	area	Nagod	Nagod, Satna
+7674	area	Maihar	Maihar, Satna
+7675	area	Amarpatan	Amarpatan, Satna
+7680	area	Niwari	Niwari, Chhatarpur
+7681	area	Jatara	Jatara, Chhatarpur
+7682	area	Chhatarpur	Chhatarpur, Chhatarpur
+7683	area	Tikamgarh	Tikamgarh, Chhatarpur
+7684	area	Baldeogarh	Baldeogarh, Chhatarpur
+7685	area	Nowgaon	Nowgaon, Chhatarpur
+7686	area	Khajuraho	Khajuraho, Chhatarpur
+7687	area	Laundi	Laundi, Chhatarpur
+7688	area	Gourihar	Gourihar, Chhatarpur
+7689	area	Badamalhera	Badamalhera, Chhatarpur
+7690	area	Lakhnadon	Lakhnadon, Seoni
+7691	area	Chhapara	Chhapara, Seoni
+7692	area	Seoni	Seoni, Seoni
+7693	area	Ghansour	Ghansour, Seoni
+7694	area	Keolari	Keolari, Seoni
+7695	area	Gopalganj	Gopalganj, Seoni
+7700	area	Nagri	Nagri, Raipur
+7701	area	Pingeshwar	Pingeshwar, Raipur
+7703	area	Manpur	Manpur, Raipur
+7704	area	Deobhog	Deobhog, Raipur
+7705	area	Kurud	Kurud, Raipur
+7706	area	Gariaband	Gariaband, Raipur
+7707	area	Bagbahera	Bagbahera, Raipur
+771	area	Raipur	Raipur, Raipur
+7720	area	Arang	Arang, Raipur
+7721	area	Neora	Neora, Raipur
+7722	area	Dhamtari	Dhamtari, Raipur
+7723	area	Mahasamund	Mahasamund, Raipur
+7724	area	Basana	Basana, Raipur
+7725	area	Saraipali	Saraipali, Raipur
+7726	area	Bhatapara	Bhatapara, Raipur
+7727	area	Balodabazar	Balodabazar, Raipur
+7728	area	Kasdol	Kasdol, Raipur
+7729	area	Bhilaigarh	Bhilaigarh, Raipur
+7730	area	Ajaigarh	Ajaigarh, Panna
+7731	area	Gunnore	Gunnore, Panna
+7732	area	Panna	Panna, Panna
+7733	area	Pawai	Pawai, Panna
+7734	area	Shahnagar	Shahnagar, Panna
+7740	area	Bodla	Bodla, Durg
+7741	area	Kawardha	Kawardha, Durg
+7743	area	Chuikhadan	Chuikhadan, Durg
+7744	area	Rajandgaon	Rajandgaon, Durg
+7745	area	Chhuriakala	Chhuriakala, Durg
+7746	area	Manpur	Manpur, Durg
+7747	area	Mohla	Mohla, Durg
+7748	area	Dallirajhara	Dallirajhara, Durg
+7749	area	Balod	Balod, Durg
+7750	area	Marwahi	Marwahi, Bilaspur
+7751	area	Pendra	Pendra, Bilaspur
+7752	area	Bilaspur	Bilaspur, Bilaspur
+7753	area	Kota	Kota, Bilaspur
+7754	area	Pandaria	Pandaria, Bilaspur
+7755	area	Mungeli	Mungeli, Bilaspur
+7756	area	Lormi	Lormi, Bilaspur
+7757	area	Shakti	Shakti, Bilaspur
+7758	area	Dabhara	Dabhara, Bilaspur
+7759	area	Korba	Korba, Bilaspur
+7761	area	Tapkara	Tapkara, Raigarh
+7762	area	Raigarh	Raigarh, Raigarh
+7763	area	Jashpurnagar	Jashpurnagar, Raigarh
+7764	area	Kunkuri	Kunkuri, Raigarh
+7765	area	Pathalgaon	Pathalgaon, Raigarh
+7766	area	Dharamjaigarh	Dharamjaigarh, Raigarh
+7767	area	Gharghoda	Gharghoda, Raigarh
+7768	area	Saranggarh	Saranggarh, Raigarh
+7769	area	Bagicha	Bagicha, Raigarh
+7770	area	Kathdol	Kathdol, Sarguja (Ambikapur)
+7771	area	Manendragarh	Manendragarh, Sarguja (Ambikapur)
+7772	area	Wadrainagar	Wadrainagar, Sarguja (Ambikapur)
+7773	area	Odgi	Odgi, Sarguja (Ambikapur)
+7774	area	Ambikapur	Ambikapur, Sarguja (Ambikapur)
+7775	area	Surajpur	Surajpur, Sarguja (Ambikapur)
+7776	area	Premnagar	Premnagar, Sarguja (Ambikapur)
+7777	area	Pratappur	Pratappur, Sarguja (Ambikapur)
+7778	area	Semaria	Semaria, Sarguja (Ambikapur)
+7779	area	Ramchandrapur	Ramchandrapur, Sarguja (Ambikapur)
+7781	area	Narainpur	Narainpur, Jagdalpur
+7782	area	Jagdalpur	Jagdalpur, Jagdalpur
+7783	area	Padamkot	Padamkot, Jagdalpur
+7784	area	Parasgaon	Parasgaon, Jagdalpur
+7785	area	Makodi	Makodi, Jagdalpur
+7786	area	Kondagaon	Kondagaon, Jagdalpur
+7787	area	Jarwa	Jarwa, Jagdalpur
+7788	area	Luckwada	Luckwada, Jagdalpur
+7789	area	Bhairongarh	Bhairongarh, Jagdalpur
+7790	area	Babaichichli	Babaichichli, Narsinghpur
+7791	area	Gadarwara	Gadarwara, Narsinghpur
+7792	area	Narsinghpur	Narsinghpur, Narsinghpur
+7793	area	Kareli	Kareli, Narsinghpur
+7794	area	Gotegaon	Gotegaon, Narsinghpur
+7801	area	Deosar	Deosar, Sidhi
+7802	area	Churhat	Churhat, Sidhi
+7803	area	Majholi	Majholi, Sidhi
+7804	area	Kusmi	Kusmi, Sidhi
+7805	area	Singrauli	Singrauli, Sidhi
+7806	area	Chitrangi	Chitrangi, Sidhi
+7810	area	Uproda	Uproda, Bilaspur
+7811	area	Pasan	Pasan, Bilaspur
+7812	area	Damoh	Damoh, Damoh
+7813	area	Barpalli	Barpalli, Bilaspur
+7815	area	Kathghora	Kathghora, Bilaspur
+7816	area	Pali	Pali, Bilaspur
+7817	area	Janjgir	Janjgir, Bilaspur
+7818	area	Chandipara	Chandipara, Bilaspur
+7819	area	Pandishankar	Pandishankar, Bilaspur
+7820	area	Khairagarh	Khairagarh, Durg
+7821	area	Dhamda	Dhamda, Durg
+7822	area	Sidhi	Sidhi, Sidhi
+7823	area	Dongargarh	Dongargarh, Durg
+7824	area	Bemetara	Bemetara, Durg
+7825	area	Berla	Berla, Durg
+7826	area	Patan	Patan, Durg
+7831	area	Balrampur	Balrampur, Sarguja (Ambikapur)
+7832	area	Rajpur	Rajpur, Sarguja (Ambikapur)
+7833	area	Udaipur	Udaipur, Sarguja (Ambikapur)
+7834	area	Sitapur	Sitapur, Sarguja (Ambikapur)
+7835	area	Bharathpur	Bharathpur, Sarguja (Ambikapur)
+7836	area	Baikunthpur	Baikunthpur, Sarguja (Ambikapur)
+7840	area	Koyelibeda	Koyelibeda, Jagdalpur
+7841	area	Sarona	Sarona, Jagdalpur
+7843	area	Durgakondal	Durgakondal, Jagdalpur
+7844	area	Pakhanjur	Pakhanjur, Jagdalpur
+7846	area	Garpa	Garpa, Jagdalpur
+7847	area	Antagarh	Antagarh, Jagdalpur
+7848	area	Keskal	Keskal, Jagdalpur
+7849	area	Baderajpur	Baderajpur, Jagdalpur
+7850	area	Bhanupratappur	Bhanupratappur, Jagdalpur
+7851	area	Bhopalpatnam	Bhopalpatnam, Jagdalpur
+7852	area	Toynar	Toynar, Jagdalpur
+7853	area	Bijapur	Bijapur, Jagdalpur
+7854	area	Ilamidi	Ilamidi, Jagdalpur
+7855	area	Chingmut	Chingmut, Jagdalpur
+7856	area	Dantewada	Dantewada, Jagdalpur
+7857	area	Bacheli	Bacheli, Jagdalpur
+7858	area	Kuakunda	Kuakunda, Jagdalpur
+7859	area	Lohadigundah	Lohadigundah, Jagdalpur
+7861	area	Netanar	Netanar, Jagdalpur
+7862	area	Bastanar	Bastanar, Jagdalpur
+7863	area	Chingamut	Chingamut, Jagdalpur
+7864	area	Sukma	Sukma, Jagdalpur
+7865	area	Gogunda	Gogunda, Jagdalpur
+7866	area	Konta	Konta, Jagdalpur
+7867	area	Bokaband	Bokaband, Jagdalpur
+7868	area	Kanker	Kanker, Jagdalpur
+788	area	Durg	Durg, Durg
+79	area	Ahemdabad	Ahemdabad Local, Ahmedabad
+80	area	Bangalore	Bangalore, Bangalore
+8110	area	Anekal	Anekal, Bangalore
+8111	area	Hosakote	Hosakote, Bangalore
+8113	area	Channapatna	Channapatna, Bangalore
+8117	area	Kanakapura	Kanakapura, Bangalore
+8118	area	Nelamangala	Nelamangala, Bangalore
+8119	area	Doddaballapur	Doddaballapur, Bangalore
+8131	area	Gubbi	Gubbi, Tumkur
+8132	area	Kunigal	Kunigal, Tumkur
+8133	area	Chikkanayakanahalli	Chikkanayakanahalli, Tumkur
+8134	area	Tiptur	Tiptur, Tumkur
+8135	area	Sira	Sira, Tumkur
+8136	area	Pavagada	Pavagada, Tumkur
+8137	area	Madugiri	Madugiri, Tumkur
+8138	area	Koratageri	Koratageri, Tumkur
+8139	area	Turuvekere	Turuvekere, Tumkur
+8150	area	Bagepalli	Bagepalli, Kolar
+8151	area	Malur	Malur, Kolar
+8152	area	Kolar	Kolar, Kolar
+8153	area	Bangarpet	Bangarpet, Kolar
+8154	area	Chintamani	Chintamani, Kolar
+8155	area	Gowribidanur	Gowribidanur, Kolar
+8156	area	Chikkaballapur	Chikkaballapur, Kolar
+8157	area	Srinivasapur	Srinivasapur, Kolar
+8158	area	Sidlaghatta	Sidlaghatta, Kolar
+8159	area	Mulbagal	Mulbagal, Kolar
+816	area	Tumkur	Tumkur, Tumkur
+8170	area	Alur	Alur, Hassan
+8172	area	Hassan	Hassan, Hassan
+8173	area	Sakleshpur	Sakleshpur, Hassan
+8174	area	Arsikere	Arsikere, Hassan
+8175	area	Holenarasipur	Holenarasipur, Hassan
+8176	area	Cannarayapatna	Cannarayapatna, Hassan
+8177	area	Belur	Belur, Hassan
+8180	area	Basavapatna	Basavapatna, Shimoga
+8181	area	Thirthahalli	Thirthahalli, Shimoga
+8182	area	Shimoga	Shimoga, Shimoga
+8183	area	Sagar	Sagar, Shimoga
+8184	area	Sorab	Sorab, Shimoga
+8185	area	Hosanagara	Hosanagara, Shimoga
+8186	area	Kargal	Kargal, Shimoga
+8187	area	Shikaripura	Shikaripura, Shimoga
+8188	area	Honnali	Honnali, Shimoga
+8189	area	Channagiri	Channagiri, Shimoga
+8190	area	Tallak	Tallak, Devangere
+8191	area	Holalkere	Holalkere, Devangere
+8192	area	Davangere	Davangere, Devangere
+8193	area	Hiriyur	Hiriyur, Devangere
+8194	area	Chitradurga	Chitradurga, Devangere
+8195	area	Challakere	Challakere, Devangere
+8196	area	Jagalur	Jagalur, Devangere
+8198	area	Molkalmuru	Molkalmuru, Devangere
+8199	area	Hosadurga	Hosadurga, Devangere
+820	area	Udupi	Udupi, Dakshin-Kanada (Mangalore)
+821	area	Mysore	Mysore, Mysore
+8221	area	Nanjangud	Nanjangud, Mysore
+8222	area	Hunsur	Hunsur, Mysore
+8223	area	K. R. Nagar	K. R. Nagar, Mysore
+8224	area	Kollegal	Kollegal, Mysore
+8225	area	Cowdahalli	Cowdahalli, Mysore
+8226	area	Chamrajnagar	Chamrajnagar, Mysore
+8227	area	T. Narsipur	T. Narsipur, Mysore
+8228	area	H. D. Kote	H. D. Kote, Mysore
+8229	area	Gundlupet	Gundlupet, Mysore
+8230	area	Krishnarajapet	Krishnarajapet, Mandya
+8231	area	Malavalli	Malavalli, Mandya
+8232	area	Mandya	Mandya, Mandya
+8234	area	Nagamangala	Nagamangala, Mandya
+8236	area	Pandavpura	Pandavpura, Mandya
+824	area	Mangalore	Mangalore, Dakshin-Kanada (Mangalore)
+8251	area	Puttur	Puttur, Dakshin-Kanada (Mangalore)
+8253	area	Hebri	Hebri, Dakshin-Kanada (Mangalore)
+8254	area	Kundapur	Kundapur, Dakshin-Kanada (Mangalore)
+8255	area	Bantwal	Bantwal, Dakshin-Kanada (Mangalore)
+8256	area	Belthangady	Belthangady, Dakshin-Kanada (Mangalore)
+8257	area	Sullia	Sullia, Dakshin-Kanada (Mangalore)
+8258	area	Karkala	Karkala, Dakshin-Kanada (Mangalore)
+8259	area	Shankarnarayana	Shankarnarayana, Dakshin-Kanada (Mangalore)
+8261	area	Tarikere	Tarikere, Chikmagalur
+8262	area	Chikmagalur	Chikmagalur, Chikmagalur
+8263	area	Mudigere	Mudigere, Chikmagalur
+8265	area	Koppa	Koppa, Chikmagalur
+8266	area	Narsimharajapur	Narsimharajapur, Chikmagalur
+8267	area	Kadur	Kadur, Chikmagalur
+8272	area	Madikeri	Madikeri, Kodagu (Madikera)
+8274	area	Virajpet	Virajpet, Kodagu (Madikera)
+8276	area	Somwarpet	Somwarpet, Kodagu (Madikera)
+8282	area	Bhadravati	Bhadravati, Shimoga
+8283	area	Salkani	Salkani, Uttar-Kanada (Karwar)
+8284	area	Haliyal	Haliyal, Uttar-Kanada (Karwar)
+8288	area	Bailhongal	Bailhongal, Belgaum
+8289	area	Athani	Athani, Belgaum
+8301	area	Mundagod	Mundagod, Uttar-Kanada (Karwar)
+8304	area	Kundgol	Kundgol, Hubli
+831	area	Belgaum	Belgaum, Belgaum
+832	area	Panji	Panji, Panji
+8330	area	Saundatti	Saundatti, Belgaum
+8331	area	Raibag	Raibag (Kudchi), Belgaum
+8332	area	Gokak	Gokak, Belgaum
+8333	area	Hukkeri	Hukkeri (Sankeshwar), Belgaum
+8334	area	Mudalgi	Mudalgi, Belgaum
+8335	area	Ramdurg	Ramdurg, Belgaum
+8336	area	Khanapur	Khanapur, Belgaum
+8337	area	Murugod	Murugod, Belgaum
+8338	area	Chikkodi	Chikkodi, Belgaum
+8339	area	Ainapur	Ainapur, Belgaum
+8342	area	Margao	Margao, Panji
+8343	area	Ponda	Ponda, Panji
+8345	area	Sanguem	Sanguem, Panji
+8346	area	Canacona	Canacona (Quepem), Panji
+8350	area	Mudhol	Mudhol, Bijapur
+8351	area	Hungund	Hungund, Bijapur
+8352	area	Bijapur	Bijapur, Bijapur
+8353	area	Jamkhandi	Jamkhandi, Bijapur
+8354	area	Bagalkot	Bagalkot, Bijapur
+8355	area	Bableshwar	Bableshwar, Bijapur
+8356	area	Muddebihal	Muddebihal, Bijapur
+8357	area	Badami	Badami, Bijapur
+8358	area	Basavanabagewadi	Basavanabagewadi, Bijapur
+8359	area	Indi	Indi, Bijapur
+836	area	Hubli	Hubli, Hubli
+8370	area	Kalghatagi	Kalghatagi, Hubli
+8371	area	Mundargi	Mundargi, Hubli
+8372	area	Gadag	Gadag, Hubli
+8373	area	Ranebennur	Ranebennur, Hubli
+8375	area	Haveri	Haveri, Hubli
+8376	area	Hirekerur	Hirekerur, Hubli
+8377	area	Nargund	Nargund, Hubli
+8378	area	Savanur	Savanur, Hubli
+8379	area	Hangal	Hangal, Hubli
+8380	area	Navalgund	Navalgund, Hubli
+8381	area	Ron	Ron, Hubli
+8382	area	Karwar	Karwar, Uttar-Kanada (Karwar)
+8383	area	Joida	Joida, Uttar-Kanada (Karwar)
+8384	area	Sirsi	Sirsi, Uttar-Kanada (Karwar)
+8385	area	Bhatkal	Bhatkal, Uttar-Kanada (Karwar)
+8386	area	Kumta	Kumta, Uttar-Kanada (Karwar)
+8387	area	Honnavar	Honnavar, Uttar-Kanada (Karwar)
+8388	area	Ankola	Ankola, Uttar-Kanada (Karwar)
+8389	area	Siddapur	Siddapur, Uttar-Kanada (Karwar)
+8391	area	Kudligi	Kudligi, Bellary
+8392	area	Bellary	Bellary, Bellary
+8393	area	Kurugodu	Kurugodu, Bellary
+8394	area	Hospet	Hospet, Bellary
+8395	area	Sandur	Sandur, Bellary
+8396	area	Siruguppa	Siruguppa, Bellary
+8397	area	H. B. Halli	H. B. Halli, Bellary
+8398	area	Harapanahalli	Harapanahalli, Bellary
+8399	area	Huvinahadagali	Huvinahadagali, Bellary
+8402	area	Kanigiri	Kanigiri, Ongole
+8403	area	Yerragondapalem	Yerragondapalem, Ongole
+8404	area	Marturu	Marturu, Ongole
+8405	area	Giddalur	Giddalur, Ongole
+8406	area	Cumbum	Cumbum, Ongole
+8407	area	Darsi	Darsi, Ongole
+8408	area	Donakonda	Donakonda, Ongole
+8411	area	Tanduru	Tanduru, Hyderabad
+8412	area	Pargi	Pargi, Hyderabad
+8413	area	Hyderabad	Hyderabad West (Shamshabad), Hyderabad
+8414	area	Ibrahimpatnam	Ibrahimpatnam, Hyderabad
+8415	area	Hyderabad	Hyderabad East (Ghatkeswar), Hyderabad
+8416	area	Vikrabad	Vikrabad, Hyderabad
+8417	area	Chevella	Chevella, Hyderabad
+8418	area	Medchal	Medchal, Hyderabad
+8419	area	Yellapur	Yellapur, Uttar-Kanada (Karwar)
+8422	area	Chadchan	Chadchan, Bijapur
+8424	area	Devarahippargi	Devarahippargi, Bijapur
+8425	area	Biligi	Biligi, Bijapur
+8426	area	Telgi	Telgi, Bijapur
+8440	area	Nimburga	Nimburga, Gulbarga
+8441	area	Sedam	Sedam, Gulbarga
+8442	area	Jewargi	Jewargi, Gulbarga
+8443	area	Shorapur	Shorapur, Gulbarga
+8444	area	Hunsagi	Hunsagi, Gulbarga
+8450	area	Andole	Andole (Jogipet), Sangareddy
+8451	area	Zahirabad	Zahirabad, Sangareddy
+8452	area	Medak	Medak, Sangareddy
+8454	area	Gajwel	Gajwel, Sangareddy
+8455	area	Sangareddy	Sangareddy, Sangareddy
+8456	area	Narayankhed	Narayankhed, Sangareddy
+8457	area	Siddipet	Siddipet, Sangareddy
+8458	area	Narsapur	Narsapur, Sangareddy
+8461	area	Dichpalli	Dichpalli, Nizamabad
+8462	area	Nizamabad	Nizamabad, Nizamabad
+8463	area	Armoor	Armoor, Nizamabad
+8464	area	Madnur	Madnur, Nizamabad
+8465	area	Yellareddy	Yellareddy, Nizamabad
+8466	area	Banswada	Banswada, Nizamabad
+8467	area	Bodhan	Bodhan, Nizamabad
+8468	area	Kamareddy	Kamareddy, Nizamabad
+8470	area	Afzalpur	Afzalpur, Gulbarga
+8471	area	Mashal	Mashal, Gulbarga
+8472	area	Gulbarga	Gulbarga, Gulbarga
+8473	area	Yadgiri	Yadgiri, Gulbarga
+8474	area	Chittapur	Chittapur, Gulbarga
+8475	area	Chincholi	Chincholi, Gulbarga
+8476	area	Wadi	Wadi, Gulbarga
+8477	area	Aland	Aland, Gulbarga
+8478	area	Kamalapur	Kamalapur, Gulbarga
+8479	area	Shahapur	Shahapur, Gulbarga
+8481	area	Basavakalyan	Basavakalyan, Bidar
+8482	area	Bidar	Bidar, Bidar
+8483	area	Humnabad	Humnabad, Bidar
+8484	area	Bhalki	Bhalki, Bidar
+8485	area	Aurad	Aurad, Bidar
+8487	area	Shirahatti	Shirahatti, Hubli
+8488	area	Sindagi	Sindagi, Bijapur
+8490	area	Pamuru	Pamuru, Ongole
+8491	area	Kanaganapalle	Kanaganapalle, Anantpur (Guntakal)
+8492	area	Kambadur	Kambadur, Anantpur (Guntakal)
+8493	area	Madakasira	Madakasira, Anantpur (Guntakal)
+8494	area	Kadiri	Kadiri, Anantpur (Guntakal)
+8495	area	Rayadurg	Rayadurg, Anantpur (Guntakal)
+8496	area	Uravakonda	Uravakonda, Anantpur (Guntakal)
+8497	area	Kalyandurg	Kalyandurg, Anantpur (Guntakal)
+8498	area	Nallacheruvu	Nallacheruvu (Tanakallu), Anantpur (Guntakal)
+8499	area	Podili	Podili, Ongole
+8501	area	Kollapur	Kollapur, Mahabubnagar
+8502	area	Alampur	Alampur, Mahabubnagar
+8503	area	Makthal	Makthal, Mahabubnagar
+8504	area	Atmakur	Atmakur, Mahabubnagar
+8505	area	Kodangal	Kodangal, Mahabubnagar
+8506	area	Narayanpet	Narayanpet, Mahabubnagar
+8510	area	Koilkuntla	Koilkuntla, Kurnool
+8512	area	Adoni	Adoni, Kurnool
+8513	area	Nandikotkur	Nandikotkur, Kurnool
+8514	area	Nandyal	Nandyal, Kurnool
+8515	area	Banaganapalle	Banaganapalle, Kurnool
+8516	area	Dronachalam	Dronachalam, Kurnool
+8517	area	Atmakur	Atmakur, Kurnool
+8518	area	Kurnool	Kurnool, Kurnool
+8519	area	Allagadda	Allagadda, Kurnool
+8520	area	Pattikonda	Pattikonda, Kurnool
+8522	area	Peapalle	Peapalle, Kurnool
+8523	area	Alur	Alur, Kurnool
+8524	area	Srisailam	Srisailam, Kurnool
+8525	area	Gudur	Gudur (Kodumur), Kurnool
+8531	area	Deodurga	Deodurga, Raichur
+8532	area	Raichur	Raichur, Raichur
+8533	area	Gangavathi	Gangavathi, Raichur
+8534	area	Yelburga	Yelburga, Raichur
+8535	area	Sindhanur	Sindhanur, Raichur
+8536	area	Kustagi	Kustagi, Raichur
+8537	area	Lingsugur	Lingsugur, Raichur
+8538	area	Manvi	Manvi, Raichur
+8539	area	Koppal	Koppal, Raichur
+8540	area	Nagarkurnool	Nagarkurnool, Mahabubnagar
+8541	area	Achampet	Achampet, Mahabubnagar
+8542	area	Mahabubnagar	Mahabubnagar, Mahabubnagar
+8543	area	Wanaparthy	Wanaparthy, Mahabubnagar
+8545	area	Amangallu	Amangallu, Mahabubnagar
+8546	area	Gadwal	Gadwal, Mahabubnagar
+8548	area	Shadnagar	Shadnagar, Mahabubnagar
+8549	area	Kalwakurthy	Kalwakurthy, Mahabubnagar
+8550	area	Yellanuru	Yellanuru, Anantpur (Guntakal)
+8551	area	Garladinne	Garladinne, Anantpur (Guntakal)
+8552	area	Gooty	Gooty (Guntakal), Anantpur (Guntakal)
+8554	area	Anantapur	Anantapur, Anantpur (Guntakal)
+8556	area	Hindupur	Hindupur, Anantpur (Guntakal)
+8557	area	Penukonda	Penukonda, Anantpur (Guntakal)
+8558	area	Tadipatri	Tadipatri, Anantpur (Guntakal)
+8559	area	Dharmavaram	Dharmavaram, Anantpur (Guntakal)
+8560	area	Jammalamadugu	Jammalamadugu, Cuddapah
+8561	area	Rayachoti	Rayachoti, Cuddapah
+8562	area	Cuddapah	Cuddapah, Cuddapah
+8563	area	Kamalapuram	Kamalapuram (Yerraguntala), Cuddapah
+8564	area	Proddatur	Proddatur, Cuddapah
+8565	area	Rajampeta	Rajampeta, Cuddapah
+8566	area	Koduru	Koduru, Cuddapah
+8567	area	Lakkireddipalli	Lakkireddipalli, Cuddapah
+8568	area	Pulivendla	Pulivendla, Cuddapah
+8569	area	Badvel	Badvel, Cuddapah
+8570	area	Kuppam	Kuppam, Chittoor
+8571	area	Madanapalli	Madanapalli, Chittoor
+8572	area	Chittoor	Chittoor, Chittoor
+8573	area	Bangarupalem	Bangarupalem, Chittoor
+8576	area	Satyavedu	Satyavedu, Chittoor
+8577	area	Putturu	Putturu, Chittoor
+8578	area	Srikalahasthi	Srikalahasthi, Chittoor
+8579	area	Palmaneru	Palmaneru, Chittoor
+8581	area	Punganur	Punganur, Chittoor
+8582	area	B. Kothakota	B. Kothakota, Chittoor
+8583	area	Sodam	Sodam, Chittoor
+8584	area	Piler	Piler, Chittoor
+8585	area	Pakala	Pakala, Chittoor
+8586	area	Vayalpad	Vayalpad, Chittoor
+8587	area	Venkatgirikota	Venkatgirikota, Chittoor
+8588	area	Vaimpalli	Vaimpalli, Cuddapah
+8589	area	Siddavattam	Siddavattam, Cuddapah
+8592	area	Ongole	Ongole, Ongole
+8593	area	Medarmetla	Medarmetla, Ongole
+8594	area	Chirala	Chirala, Ongole
+8596	area	Markapur	Markapur, Ongole
+8598	area	Kandukuru	Kandukuru, Ongole
+8599	area	Ulvapadu	Ulvapadu, Ongole
+861	area	Nellore	Nellore, Nellore
+8620	area	Udaygiri	Udaygiri, Nellore
+8621	area	Rapur	Rapur (Podalakur), Nellore
+8622	area	Kovvur	Kovvur, Nellore
+8623	area	Sullurpet	Sullurpet, Nellore
+8624	area	Gudur	Gudur, Nellore
+8625	area	Venkatgiri	Venkatgiri, Nellore
+8626	area	Kavali	Kavali, Nellore
+8627	area	Atmakur	Atmakur, Nellore
+8628	area	Chejerla	Chejerla, Nellore
+8629	area	Vinjamuru	Vinjamuru, Nellore
+863	area	Guntur	Guntur, Guntur
+8640	area	Krosuru	Krosuru, Guntur
+8641	area	Sattenapalli	Sattenapalli, Guntur
+8642	area	Palnad	Palnad (Macherala), Guntur
+8643	area	Bapatla	Bapatla, Guntur
+8644	area	Tenali	Tenali, Guntur
+8645	area	Mangalagiri	Mangalagiri, Guntur
+8646	area	Vinukonda	Vinukonda, Guntur
+8647	area	Narsaraopet	Narsaraopet, Guntur
+8648	area	Repalle	Repalle, Guntur
+8649	area	Piduguralla	Piduguralla, Guntur
+8654	area	Jaggayyapet	Jaggayyapet, Vijayawada
+8656	area	Nuzvidu	Nuzvidu, Vijayawada
+8659	area	Mylavaram	Mylavaram, Vijayawada
+866	area	Vijayawada	Vijayawada, Vijayawada
+8671	area	Divi	Divi (Challapalli), Vijayawada
+8672	area	Bandar	Bandar (Machilipatnam), Vijayawada
+8673	area	Tirivuru	Tirivuru, Vijayawada
+8674	area	Gudivada	Gudivada, Vijayawada
+8676	area	Vuyyuru	Vuyyuru, Vijayawada
+8677	area	Kaikaluru	Kaikaluru, Vijayawada
+8678	area	Nandigama	Nandigama, Vijayawada
+8680	area	Nidamanur	Nidamanur (Hillcolony), Nalgonda
+8681	area	Chandoor	Chandoor, Nalgonda
+8682	area	Nalgonda	Nalgonda, Nalgonda
+8683	area	Hazurnagar	Hazurnagar, Nalgonda
+8684	area	Suryapet	Suryapet, Nalgonda
+8685	area	Bhongir	Bhongir, Nalgonda
+8689	area	Miryalguda	Miryalguda, Nalgonda
+8691	area	Devarakonda	Devarakonda, Nalgonda
+8692	area	Nampalle	Nampalle, Nalgonda
+8693	area	Thungaturthy	Thungaturthy, Nalgonda
+8694	area	Ramannapet	Ramannapet, Nalgonda
+870	area	Warangal	Warangal, Warangal
+8710	area	Cherial	Cherial, Warangal
+8711	area	Wardhannapet	Wardhannapet (Ghanapur), Warangal
+8713	area	Parkal	Parkal, Warangal
+8715	area	Mulug	Mulug, Warangal
+8716	area	Jangaon	Jangaon, Warangal
+8717	area	Eturnagaram	Eturnagaram, Warangal
+8718	area	Narasampet	Narasampet, Warangal
+8719	area	Mahabubbad	Mahabubbad, Warangal
+8720	area	Mahadevapur	Mahadevapur, Karimnagar
+8721	area	Husnabad	Husnabad, Karimnagar
+8723	area	Sircilla	Sircilla, Karimnagar
+8724	area	Jagtial	Jagtial, Karimnagar
+8725	area	Metpalli	Metpalli, Karimnagar
+8727	area	Huzurabad	Huzurabad, Karimnagar
+8728	area	Peddapalli	Peddapalli, Karimnagar
+8729	area	Manthani	Manthani, Karimnagar
+8730	area	Khanapur	Khanapur (Ap), Adilabad
+8731	area	Utnor	Utnor, Adilabad
+8732	area	Adilabad	Adilabad, Adilabad
+8733	area	Asifabad	Asifabad, Adilabad
+8734	area	Nirmal	Nirmal, Adilabad
+8735	area	Bellampalli	Bellampalli, Adilabad
+8736	area	Mancherial	Mancherial, Adilabad
+8737	area	Chinnor	Chinnor, Adilabad
+8738	area	Sirpurkagaznagar	Sirpurkagaznagar, Adilabad
+8739	area	Jannaram	Jannaram (Luxittipet), Adilabad
+8740	area	Aswaraopet	Aswaraopet, Khammam
+8741	area	Sudhimalla	Sudhimalla (Tekulapalli), Khammam
+8742	area	Khammam	Khammam, Khammam
+8743	area	Bhadrachalam	Bhadrachalam, Khammam
+8744	area	Kothagudem	Kothagudem, Khammam
+8745	area	Yellandu	Yellandu, Khammam
+8746	area	Bhooragamphad	Bhooragamphad (Manuguru), Khammam
+8747	area	Nuguru	Nuguru (Cherla), Khammam
+8748	area	V. R. Puram	V. R. Puram, Khammam
+8749	area	Madhira	Madhira, Khammam
+8751	area	Boath	Boath (Echoda), Adilabad
+8752	area	Bhainsa	Bhainsa, Adilabad
+8753	area	Outsarangapalle	Outsarangapalle, Adilabad
+8761	area	Sathupalli	Sathupalli, Khammam
+877	area	Tirupathi	Tirupathi, Chittoor
+878	area	Karimnagar	Karimnagar, Karimnagar
+8811	area	Polavaram	Polavaram, Eluru
+8812	area	Eluru	Eluru, Eluru
+8813	area	Kovvur	Kovvur (Nidadavolu), Eluru
+8814	area	Narsapur	Narsapur (Palakole), Eluru
+8816	area	Bhimavaram	Bhimavaram, Eluru
+8818	area	Tadepalligudem	Tadepalligudem, Eluru
+8819	area	Tanuku	Tanuku, Eluru
+8821	area	Jangareddygudem	Jangareddygudem, Eluru
+8823	area	Chintalapudi	Chintalapudi, Eluru
+8829	area	Bhimadole	Bhimadole, Eluru
+883	area	Rajahmundri	Rajahmundri, Rajahmundri
+884	area	Kakinada	Kakinada, Rajahmundri
+8852	area	Peddapuram	Peddapuram, Rajahmundri
+8854	area	Tuni	Tuni, Rajahmundri
+8855	area	Mandapeta	Mandapeta (Ravulapalem), Rajahmundri
+8856	area	Amalapuram	Amalapuram, Rajahmundri
+8857	area	Ramachandrapuram	Ramachandrapuram, Rajahmundri
+8862	area	Razole	Razole, Rajahmundri
+8863	area	Chavitidibbalu	Chavitidibbalu, Rajahmundri
+8864	area	Rampachodavaram	Rampachodavaram, Rajahmundri
+8865	area	Yelavaram	Yelavaram, Rajahmundri
+8868	area	Yeleswaram	Yeleswaram, Rajahmundri
+8869	area	Pithapuram	Pithapuram, Rajahmundri
+891	area	Visakhapatnam	Visakhapatnam, Visakhapatnam
+8922	area	Vizayanagaram	Vizayanagaram, Vizayanagaram
+8924	area	Anakapalle	Anakapalle, Visakhapatnam
+8931	area	Yelamanchili	Yelamanchili, Visakhapatnam
+8932	area	Narsipatnam	Narsipatnam, Visakhapatnam
+8933	area	Bheemunipatnam	Bheemunipatnam, Visakhapatnam
+8934	area	Chodavaram	Chodavaram, Visakhapatnam
+8935	area	Paderu	Paderu, Visakhapatnam
+8936	area	Araku	Araku, Visakhapatnam
+8937	area	Chintapalle	Chintapalle, Visakhapatnam
+8938	area	Sileru	Sileru, Visakhapatnam
+8941	area	Palakonda	Palakonda (Rajam), Srikakulam
+8942	area	Srikakulam	Srikakulam, Srikakulam
+8944	area	Bobbili	Bobbili, Vizayanagaram
+8945	area	Tekkali	Tekkali (Palasa), Srikakulam
+8946	area	Pathapatnam	Pathapatnam (Hiramandalam), Srikakulam
+8947	area	Sompeta	Sompeta, Srikakulam
+8952	area	Chepurupalli	Chepurupalli (Garividi), Vizayanagaram
+8963	area	Parvathipuram	Parvathipuram, Vizayanagaram
+8964	area	Saluru	Saluru, Vizayanagaram
+8965	area	Gajapathinagaram	Gajapathinagaram, Vizayanagaram
+8966	area	Srungavarapukota	Srungavarapukota (Kothvls), Vizayanagaram

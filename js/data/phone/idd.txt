@@ -1,0 +1,279 @@
+1	country	North America	North America and the Caribbean Islands
+20	country	Egypt	Egypt
+210	country	Unknown Country	Unknown Country
+211	country	Unknown Country	Unknown Country
+212	country	Morocco	Morocco, Western Sahara
+213	country	Algeria	Algeria
+214	country	Unknown Country	Unknown Country
+215	country	Unknown Country	Unknown Country
+216	country	Tunisia	Tunisia
+217	country	Unknown Country	Unknown Country
+218	country	Libya	Libya
+219	country	Unknown Country	Unknown Country
+220	country	Gambia	The Gambia
+221	country	Senegal	Senegal
+222	country	Mauritania	Mauritania
+223	country	Mali	Mali
+224	country	Guinea	Guinea
+225	country	Côte d'Ivoire	Côte d'Ivoire
+226	country	Burkina Faso	Burkina Faso
+227	country	Niger	Niger
+228	country	Togo	Togo
+229	country	Benin	Benin
+230	country	Mauritius	Mauritius
+231	country	Liberia	Liberia
+232	country	Sierra Leone	Sierra Leone
+233	country	Ghana	Ghana
+234	country	Nigeria	Nigeria
+235	country	Chad	Chad
+236	country	Central African Republic	Central African Republic
+237	country	Cameroon	Cameroon
+238	country	Cape Verde	Cape Verde
+239	country	São Tomé and Príncipe	São Tomé and Príncipe
+240	country	Equatorial Guinea	Equatorial Guinea
+241	country	Gabon	Gabon
+242	country	Republic of Congo	Republic of Congo
+243	country	DRC	Democratic Republic of the Congo
+244	country	Angola	Angola
+245	country	Guinea-Bissau	Guinea-Bissau
+246	country	British Indian Ocean	British Indian Ocean Territory
+247	country	Ascension	Ascension Island
+248	country	Seychelles	Seychelles
+249	country	Sudan	Sudan
+250	country	Rwanda	Rwanda
+251	country	Ethiopia	Ethiopia
+252	country	Somalia	Somalia, Somaliland
+253	country	Djibouti	Djibouti
+254	country	Kenya	Kenya
+255	country	Tanzania	Tanzania
+256	country	Uganda	Uganda
+257	country	Burundi	Burundi
+258	country	Mozambique	Mozambique
+259	country	Unknown Country	Unknown Country
+260	country	Zambia	Zambia
+261	country	Madagascar	Madagascar
+262	country	Réunion	Réunion, Mayotte
+263	country	Zimbabwe	Zimbabwe
+264	country	Namibia	Namibia
+265	country	Malawi	Malawi
+266	country	Lesotho	Lesotho
+267	country	Botswana	Botswana
+268	country	Swaziland	Swaziland
+269	country	Comoros	Comoros
+27	country	South Africa	South Africa
+28	country	Unknown Country	Unknown Country
+290	country	Saint Helena	Saint Helena, Tristan da Cunha
+291	country	Eritrea	Eritrea
+292	country	Unknown Country	Unknown Country
+293	country	Unknown Country	Unknown Country
+294	country	Unknown Country	Unknown Country
+295	country	Unknown Country	Unknown Country
+296	country	Unknown Country	Unknown Country
+297	country	Aruba	Aruba
+298	country	Faroe Islands	Faroe Islands
+299	country	Greenland	Greenland
+30	country	Greece	Greece
+31	country	Netherlands	Netherlands
+32	country	Belgium	Belgium
+33	country	France	France
+34	country	Spain	Spain
+350	country	Gibraltar	Gibraltar
+351	country	Portugal	Portugal
+352	country	Luxembourg	Luxembourg
+353	country	Ireland	Republic of Ireland
+354	country	Iceland	Iceland
+355	country	Albania	Albania
+356	country	Malta	Malta
+357	country	Cyprus	Cyprus
+358	country	Finland	Finland, Åland Islands
+359	country	Bulgaria	Bulgaria
+36	country	Hungary	Hungary
+370	country	Lithuania	Lithuania
+371	country	Latvia	Latvia
+372	country	Estonia	Estonia
+373	country	Moldova	Moldova
+374	country	Armenia	Armenia, Nagorno-Karabakh
+375	country	Belarus	Belarus
+376	country	Andorra	Andorra
+377	country	Monaco	Monaco
+378	country	San Marino	San Marino
+379	country	Vatican City	Vatican City
+380	country	Ukraine	Ukraine
+381	country	Serbia	Serbia
+382	country	Montenegro	Montenegro
+383	country	Unknown Country	Unknown Country
+384	country	Unknown Country	Unknown Country
+385	country	Croatia	Croatia
+386	country	Slovenia	Slovenia
+387	country	Bosnia and Herzegovina	Bosnia and Herzegovina
+388	country	European Telephony	European Telephony Numbering Space
+389	country	FYRoM	Former Yugoslav Republic of Macedonia
+39	country	Italy	Italy, Vatican City
+40	country	Romania	Romania
+41	country	Switzerland	Switzerland
+420	country	Czech Republic	Czech Republic
+421	country	Slovakia	Slovakia
+422	country	Unknown Country	Unknown Country
+423	country	Liechtenstein	Liechtenstein
+424	country	Unknown Country	Unknown Country
+425	country	Unknown Country	Unknown Country
+426	country	Unknown Country	Unknown Country
+427	country	Unknown Country	Unknown Country
+428	country	Unknown Country	Unknown Country
+429	country	Unknown Country	Unknown Country
+43	country	Austria	Austria
+44	country	United Kingdom	United Kingdom, Guernsey, Isle of Man, Jersey
+45	country	Denmark	Denmark
+46	country	Sweden	Sweden
+47	country	Norway	Norway, Svalbard and Jan Mayen
+48	country	Poland	Poland
+49	country	Germany	Germany
+500	country	Falklands	Falkland Islands
+501	country	Belize	Belize
+502	country	Guatemala	Guatemala
+503	country	El Salvador	El Salvador
+504	country	Honduras	Honduras
+505	country	Nicaragua	Nicaragua
+506	country	Costa Rica	Costa Rica
+507	country	Panama	Panama
+508	country	St. Pierre and Miquelon	St. Pierre and Miquelon
+509	country	Haiti	Haiti
+51	country	Peru	Peru
+52	country	Mexico	Mexico
+53	country	Cuba	Cuba
+54	country	Argentina	Argentina
+55	country	Brazil	Brazil
+56	country	Chile	Chile
+57	country	Colombia	Colombia
+58	country	Venezuela	Venezuela
+590	country	Guadeloupe	Guadeloupe, Saint Barthélemy, Saint Martin
+591	country	Bolivia	Bolivia
+592	country	Guyana	Guyana
+593	country	Ecuador	Ecuador
+594	country	French Guiana	French Guiana
+595	country	Paraguay	Paraguay
+596	country	Martinique	Martinique
+597	country	Suriname	Suriname
+598	country	Uruguay	Uruguay
+599	country	Netherlands Antilles	Netherlands Antilles
+60	country	Malaysia	Malaysia
+61	country	Australia	Australia, Christmas Island, Cocos Islands
+62	country	Indonesia	Indonesia
+63	country	Philippines	Philippines
+64	country	New Zealand	New Zealand
+65	country	Singapore	Republic of Singapore
+66	country	Thailand	Thailand
+670	country	East Timor	East Timor
+671	country	Unknown Country	Unknown Country
+672	country	Norfolk Island	Norfolk Island, Australian Antarctic Territory
+673	country	Brunei	Brunei Darussalam
+674	country	Nauru	Nauru
+675	country	Papua New Guinea	Papua New Guinea
+676	country	Tonga	Tonga
+677	country	Solomon Islands	Solomon Islands
+678	country	Vanuatu	Vanuatu
+679	country	Fiji	Fiji
+680	country	Palau	Palau
+681	country	Wallis and Futuna	Wallis and Futuna
+682	country	Cook Islands	Cook Islands
+683	country	Niue	Niue
+684	country	Unknown Country	Unknown Country
+685	country	Samoa	Samoa
+686	country	Kiribati	Kiribati
+687	country	New Caledonia	New Caledonia
+688	country	Tuvalu	Tuvalu
+689	country	French Polynesia	French Polynesia
+690	country	Tokelau	Tokelau
+691	country	Micronesia	Federated States of Micronesia
+692	country	Marshall Islands	Marshall Islands
+693	country	Unknown Country	Unknown Country
+694	country	Unknown Country	Unknown Country
+695	country	Unknown Country	Unknown Country
+696	country	Unknown Country	Unknown Country
+697	country	Unknown Country	Unknown Country
+698	country	Unknown Country	Unknown Country
+699	country	Unknown Country	Unknown Country
+7	country	Russia	Russia, Kazakhstan
+800	country	Freephone	Universal international freephone number
+801	country	Unknown Country	Unknown Country
+802	country	Unknown Country	Unknown Country
+803	country	Unknown Country	Unknown Country
+804	country	Unknown Country	Unknown Country
+805	country	Unknown Country	Unknown Country
+806	country	Unknown Country	Unknown Country
+807	country	Unknown Country	Unknown Country
+808	country	Shared Cost	Shared Cost Service
+809	country	Unknown Country	Unknown Country
+81	country	Japan	Japan
+82	country	South Korea	South Korea
+83	country	Unknown Country	Unknown Country
+84	country	Vietnam	Vietnam
+850	country	North Korea	North Korea
+851	country	Unknown Country	Unknown Country
+852	country	Hong Kong	Hong Kong
+853	country	Macau	Macau
+854	country	Unknown Country	Unknown Country
+855	country	Cambodia	Cambodia
+856	country	Laos	Laos
+857	country	Unknown Country	Unknown Country
+858	country	Unknown Country	Unknown Country
+859	country	Unknown Country	Unknown Country
+86	country	China	People's Republic of China
+870	country	Inmarsat	Inmarsat
+871	country	Unknown Country	Unknown Country
+872	country	Pitcairn	Pitcairn
+873	country	Unknown Country	Unknown Country
+874	country	Unknown Country	Unknown Country
+875	country	Unknown Country	Unknown Country
+876	country	Unknown Country	Unknown Country
+877	country	Unknown Country	Unknown Country
+878	country	Universal Personal	Universal Personal Telecommunications
+879	country	Unknown Country	Unknown Country
+880	country	Bangladesh	Bangladesh
+881	country	Global Satellite	Global Mobile Satellite System
+882	country	International Networks	International Networks (country code)
+883	country	National Rate	International National Rate Service
+884	country	Unknown Country	Unknown Country
+885	country	Unknown Country	Unknown Country
+886	country	Taiwan	Republic of China
+887	country	Unknown Country	Unknown Country
+888	country	OCHA	OCHA
+889	country	Unknown Country	Unknown Country
+89	country	Unknown Country	Unknown Country
+90	country	Turkey	Turkey, Turkish Republic of Northern Cyprus
+91	country	India	India
+92	country	Pakistan	Pakistan
+93	country	Afghanistan	Afghanistan
+94	country	Sri Lanka	Sri Lanka
+95	country	Burma	Burma
+960	country	Maldives	Maldives
+961	country	Lebanon	Lebanon
+962	country	Jordan	Jordan
+963	country	Syria	Syria
+964	country	Iraq	Iraq
+965	country	Kuwait	Kuwait
+966	country	Saudi Arabia	Saudi Arabia
+967	country	Yemen	Yemen
+968	country	Oman	Oman
+969	country	Unknown Country	Unknown Country
+970	country	Palestinian Authority	Palestinian Authority
+971	country	UAE	United Arab Emirates
+972	country	Israel	Israel, Palestinian Authority
+973	country	Bahrain	Bahrain
+974	country	Qatar	Qatar
+975	country	Bhutan	Bhutan
+976	country	Mongolia	Mongolia
+977	country	Nepal	Nepal
+978	country	Unknown Country	Unknown Country
+979	country	Premium Rate	International Premium Rate Service
+98	country	Iran	Iran
+990	country	Unknown Country	Unknown Country
+991	country	ITPCS	ITPCS
+992	country	Tajikistan	Tajikistan
+993	country	Turkmenistan	Turkmenistan
+994	country	Azerbaijan	Azerbaijan, Nagorno-Karabakh
+995	country	Georgia	Georgia
+996	country	Kyrgyzstan	Kyrgyzstan
+997	country	Unknown Country	Unknown Country
+998	country	Uzbekistan	Uzbekistan
+999	country	Unknown Country	Unknown Country

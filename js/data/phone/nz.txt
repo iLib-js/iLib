@@ -1,0 +1,51 @@
+^+	plus
+^00	idd
+^0.	trunk
+^111	emergency	Emergency Services (Police, Fire, Ambulance)
+^112	emergency	Emergency Services (Police, Fire, Ambulance)
+^12.	service	network operator services
+^13.	service	network
+^14.	service	network
+
+10	service	National Operator
+170	service	International Operator
+72	service	International Directory Service
+18	service	National Directory Service
+
+20	cell	Orcon 		
+21	cell	Vodafone 	
+22	cell	2degrees
+23	cell	Unused
+24	cell	Unused
+25	cell	Unused
+27	cell	Telecom New Zealand
+280	cell	Compass Communications 		
+28	cell	CallPlus or BLACK + WHITE 		
+283	cell	Teletraders MVNO 		
+2885	cell	M2 MVNO 		
+29	cell	TelstraClear
+
+3	area	South Island	South Island, Chatham Islands
+4	area	Wellington	Wellington Region to Kapiti
+
+508	service	TelstraClear Tollfree
+
+6	area	North Island	Southern and Eastern North Island, Taranaki, Manawatu-Wanganui (excluding Taumarunui), Hawke's Bay, Gisborne, the Wairarapa, and Otaki
+7	area	Waikato	Waikato, The Bay of Plenty, and Taumarunui
+
+800	service	Telecom, TelstraClear and other network operators Tollfree
+8..	service	Various non-geographic services
+
+900	premium	Premium rate services
+9.	area	Auckland	Auckland and Northland
+
+^2	local
+^3	local
+^4	local
+^5	local
+^6	local
+^7	local
+^8	local
+^9	local
+
+^*...	vsc

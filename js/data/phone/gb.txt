@@ -1,0 +1,866 @@
+^+	plus
+^00	idd
+^0.	trunk
+
+0	trunk
+
+^141	vsc
+^1470	vsc
+^1471	vsc
+^1475	vsc
+
+70	personal
+
+75	cell
+76	cell
+77	cell
+78	cell
+79	cell
+
+^112	emergency	// emergency
+^115	emergency	// international directory service
+^116	emergency	// social help lines
+^118	emergency	// domestic directory service
+^999	emergency	// emergency
+
+^2	local
+^3	local
+^4	local
+^5	local
+^6	local
+^7	local
+^8	local
+^9.	local
+
+30.	service
+33.	service
+34.	service
+37.	service
+
+55	service	// for corporate numbering
+56	service	// for corporate numbering
+500	service
+
+800	service
+808	service
+820	service	//Internet for Schools
+845	service
+844	service
+843	service
+842	service
+870	service
+871	service
+872	service
+873	service
+
+//	area codes
+20	area	London	London
+121	area	Birmingham	Birmingham
+23	area	Southampton	Southampton, Portsmouth
+113	area	Leeds	Leeds
+131	area	Edinburgh	Edinburgh
+24	area	Coventry	Coventry
+114	area	Sheffield	Sheffield
+141	area	Glasgow	Glasgow
+115	area	Nottingham	Nottingham
+151	area	Liverpool	Liverpool
+116	area	Leicester	Leicester
+161	area	Manchester	Manchester
+117	area	Bristol	Bristol
+28	area	Northern Ireland	Northern Ireland
+118	area	Reading	Reading
+29	area	Cardiff	Cardiff
+191	area	Tyne	Tyne, Wear, Durham
+1200	area	Clitheroe	Clitheroe
+1202	area	Bournemouth	Bournemouth
+1204	area	Bolton	Bolton
+1205	area	Boston	Boston
+1206	area	Colchester	Colchester
+1207	area	Consett	Consett
+1208	area	Bodmin	Bodmin
+1209	area	Redruth	Redruth, Cornwall
+1223	area	Cambridge	Cambridge
+1224	area	Aberdeen	Aberdeen
+1225	area	Bath	Bath
+1226	area	Barnsley	Barnsley
+1227	area	Canterbury	Canterbury
+1228	area	Carlisle	Carlisle
+1229	area	Barrow-in-Furness	Barrow-in-Furness
+1233	area	Ashford	Ashford
+1234	area	Bedford	Bedford
+1235	area	Abingdon	Abingdon
+1236	area	Coatbridge	Coatbridge
+1237	area	Bideford	Bideford
+1239	area	Cardigan	Cardigan
+1241	area	Arbroath	Arbroath
+1242	area	Cheltenham	Cheltenham
+1243	area	Chichester	Chichester, West Sussex
+1244	area	Chester	Chester
+1245	area	Chelmsford	Chelmsford
+1246	area	Chesterfield	Chesterfield
+1248	area	Bangor	Bangor, Wales
+1249	area	Chippenham	Chippenham
+1250	area	Blairgowrie	Blairgowrie
+1252	area	Aldershot	Aldershot
+1253	area	Blackpool	Blackpool
+1254	area	Blackburn	Blackburn
+1255	area	Clacton on Sea	Clacton on Sea
+1256	area	Basingstoke	Basingstoke
+1257	area	Chorley	Chorley
+1258	area	Blandford	Blandford
+1259	area	Alloa	Alloa
+1260	area	Congleton	Congleton
+1261	area	Banff	Banff
+1262	area	Bridlington	Bridlington
+1263	area	Cromer	Cromer
+1264	area	Andover	Andover
+1267	area	Carmarthen	Carmarthen
+1268	area	Basildon	Basildon
+1269	area	Ammanford	Ammanford
+1270	area	Crewe	Crewe
+1271	area	Barnstaple	Barnstaple
+1273	area	Brighton	Brighton
+1274	area	Bradford	Bradford
+1275	area	Clevedon	Clevedon, Bristol
+1276	area	Camberley	Camberley
+1277	area	Brentwood	Brentwood
+1278	area	Bridgwater	Bridgwater
+1279	area	Bishop's Stortford	Bishop's Stortford
+1280	area	Buckingham	Buckingham
+1282	area	Burnley	Burnley
+1283	area	Burton upon Trent	Burton upon Trent
+1284	area	Bury St Edmunds	Bury St Edmunds
+1285	area	Cirencester	Cirencester
+1286	area	Caernarfon	Caernarfon
+1287	area	Guisborough	Guisborough
+1288	area	Bude	Bude
+1289	area	Berwick-upon-Tweed	Berwick-upon-Tweed
+1290	area	Cumnock	Cumnock, Ayrshire
+1291	area	Chepstow	Chepstow
+1292	area	Ayr	Ayr
+1293	area	Crawley	Crawley
+1294	area	Ardrossan	Ardrossan, Ayrshire
+1295	area	Banbury	Banbury
+1296	area	Aylesbury	Aylesbury
+1297	area	Axminster	Axminster
+1298	area	Buxton	Buxton
+1299	area	Bewdley	Bewdley
+1300	area	Cerne Abbas	Cerne Abbas, Dorset
+1301	area	Arrochar	Arrochar
+1302	area	Doncaster	Doncaster
+1303	area	Folkestone	Folkestone
+1304	area	Dover	Dover
+1305	area	Dorchester	Dorchester
+1306	area	Dorking	Dorking
+1307	area	Forfar	Forfar
+1308	area	Bridport	Bridport, Dorset
+1309	area	Forres	Forres
+1320	area	Fort Augustus	Fort Augustus
+1322	area	Dartford	Dartford
+1323	area	Eastbourne	Eastbourne
+1324	area	Falkirk	Falkirk
+1325	area	Darlington	Darlington
+1326	area	Falmouth	Falmouth
+1327	area	Daventry	Daventry
+1328	area	Fakenham	Fakenham
+1329	area	Fareham	Fareham
+1330	area	Banchory	Banchory, Deeside
+1332	area	Derby	Derby
+1333	area	Peat Inn	Peat Inn, Fife
+1334	area	St Andrews	St Andrews, Fife
+1335	area	Ashbourne	Ashbourne
+1337	area	Ladybank	Ladybank, Fife
+1339	area	Aboyne	Aboyne, Ballater, Deeside
+1340	area	Craigellachie	Craigellachie, Elgin
+1341	area	Barmouth	Barmouth, Dolgellau
+1342	area	East Grinstead	East Grinstead
+1343	area	Elgin	Elgin
+1344	area	Bracknell	Bracknell, Easthampstead
+1346	area	Fraserburgh	Fraserburgh
+1347	area	Easingwold	Easingwold
+1348	area	Fishguard	Fishguard
+1349	area	Dingwall	Dingwall
+1350	area	Dunkeld	Dunkeld
+1352	area	Mold	Mold, Flint
+1353	area	Ely	Ely
+1354	area	March	March, Cambridgeshire, Fenland
+1355	area	East Kilbride	East Kilbride
+1356	area	Brechin	Brechin, Edzell
+1357	area	Strathaven	Strathaven, East Kilbride
+1358	area	Ellon	Ellon
+1359	area	Pakenham	Pakenham, Elmswell
+1360	area	Killearn	Killearn, Drymen
+1361	area	Duns	Duns
+1362	area	Dereham	Dereham
+1363	area	Crediton	Crediton
+1364	area	Ashburton	Ashburton, Devon
+1366	area	Downham Market	Downham Market
+1367	area	Faringdon	Faringdon
+1368	area	Dunbar	Dunbar
+1369	area	Dunoon	Dunoon
+1371	area	Great Dunmow	Great Dunmow, Essex
+1372	area	Epsom	Epsom
+1373	area	Frome	Frome
+1375	area	Grays Thurrock	Grays Thurrock, Essex
+1376	area	Braintree	Braintree, Essex
+1377	area	Driffield	Driffield
+1379	area	Diss	Diss
+1380	area	Devizes	Devizes
+1381	area	Fortrose	Fortrose
+1382	area	Dundee	Dundee
+1383	area	Dunfermline	Dunfermline
+1384	area	Dudley	Dudley
+1386	area	Evesham	Evesham
+13870	special	Dumfries	Dumfries
+13871	special	Dumfries	Dumfries
+13872	special	Dumfries	Dumfries
+13873	area	Langholm	Langholm
+13874	special	Dumfries	Dumfries
+13875	special	Dumfries	Dumfries
+13876	special	Dumfries	Dumfries
+13877	special	Dumfries	Dumfries
+13878	special	Dumfries	Dumfries
+13879	special	Dumfries	Dumfries
+1388	area	Bishop Auckland	Bishop Auckland, Durham
+1389	area	Dumbarton	Dumbarton
+1392	area	Exeter	Exeter
+1394	area	Felixstowe	Felixstowe
+1395	area	Budleigh Salterton	Budleigh Salterton, Exmouth
+1397	area	Fort William	Fort William
+1398	area	Dulverton	Dulverton, Exmoor
+1400	area	Honington	Honington
+1403	area	Horsham	Horsham
+1404	area	Honiton	Honiton
+1405	area	Goole	Goole
+1406	area	Holbeach	Holbeach
+1407	area	Holyhead	Holyhead
+1408	area	Golspie	Golspie
+1409	area	Holsworthy	Holsworthy
+1420	area	Alton	Alton
+1422	area	Halifax	Halifax
+1423	area	Boroughbridge	Boroughbridge, Harrogate
+1424	area	Hastings	Hastings
+1425	area	Ringwood	Ringwood, Highcliffe, New Milton, Ashley
+1427	area	Gainsborough	Gainsborough
+1428	area	Haslemere	Haslemere
+1429	area	Hartlepool	Hartlepool
+1430	area	Market Weighton	Market Weighton, North Cave, Howden
+1431	area	Helmsdale	Helmsdale
+1432	area	Hereford	Hereford
+1433	area	Hathersage	Hathersage
+1434	area	Bellingham	Bellingham, Haltwhistle, Hexham
+1435	area	Heathfield	Heathfield
+1436	area	Helensburgh	Helensburgh
+1437	area	Clynderwen	Clynderwen, Haverfordwest
+1438	area	Stevenage	Stevenage, Hertfordshire
+1439	area	Helmsley	Helmsley
+1440	area	Haverhill	Haverhill
+1442	area	Hemel	Hemel Hempstead
+1443	area	Pontypridd	Pontypridd, Glamorgan
+1444	area	Haywards Heath	Haywards Heath, Burgess Hill
+1445	area	Gairloch	Gairloch
+1446	area	Barry	Barry, Glamorgan
+1449	area	Stowmarket	Stowmarket, Gipping
+1450	area	Hawick	Hawick
+1451	area	Stow-on-the-Wold	Stow-on-the-Wold, Gloucestershire
+1452	area	Gloucester	Gloucester
+1453	area	Dursley	Dursley, Gloucestershire
+1454	area	Chipping Sodbury	Chipping Sodbury, Gloucestershire
+1455	area	Hinckley	Hinckley
+1456	area	Glenurquhart	Glenurquhart
+1457	area	Glossop	Glossop
+1458	area	Glastonbury	Glastonbury
+1460	area	Chard	Chard, Ilminster
+1461	area	Gretna	Gretna
+1462	area	Hitchin	Hitchin
+1463	area	Inverness	Inverness
+1464	area	Insch	Insch
+1465	area	Girvan	Girvan
+1466	area	Huntly	Huntly
+1467	area	Inverurie	Inverurie
+1469	area	Killingholme	Killingholme, Immingham
+1470	area	Edinbane	Edinbane, Isle of Skye
+1471	area	Broadford	Broadford, Isle of Skye
+1472	area	Grimsby	Grimsby
+1473	area	Ipswich	Ipswich
+1474	area	Gravesend	Gravesend
+1475	area	Greenock	Greenock
+1476	area	Grantham	Grantham
+1477	area	Holmes Chapel	Holmes Chapel
+1478	area	Portree	Portree, Isle of Skye
+1479	area	Grantown-on-Spey	Grantown-on-Spey
+1480	area	Huntingdon	Huntingdon
+1481	area	Guernsey	Guernsey
+1482	area	Hull	Hull
+1483	area	Guildford	Guildford
+1484	area	Huddersfield	Huddersfield
+1485	area	Hunstanton	Hunstanton
+1487	area	Warboys	Warboys, Huntingdon
+1488	area	Hungerford	Hungerford
+1489	area	Bishop's Waltham	Bishop's Waltham, Hamble Valley
+1490	area	Corwen	Corwen, Gwynedd
+1491	area	Henley-on-Thames	Henley-on-Thames
+1492	area	Colwyn Bay	Colwyn Bay, Gwynedd
+1493	area	Great Yarmouth	Great Yarmouth
+1494	area	High Wycombe	High Wycombe
+1495	area	Pontypool	Pontypool, Gwent
+1496	area	Port Ellen	Port Ellen, Islay
+1497	area	Hay-on-Wye	Hay-on-Wye
+1499	area	Inveraray	Inveraray
+1501	area	Harthill	Harthill, Lothian
+1502	area	Lowestoft	Lowestoft
+1503	area	Looe	Looe
+1505	area	Johnstone	Johnstone
+1506	area	Bathgate	Bathgate, Lothian
+1507	area	Alford	Alford, Louth and Spilsby
+1508	area	Brooke	Brooke
+1509	area	Loughborough	Loughborough
+1520	area	Lochcarron	Lochcarron
+1522	area	Lincoln	Lincoln
+15240	special	Lancaster	Lancaster
+15241	special	Lancaster	Lancaster
+15242	area	Hornby-with-Farleton	Hornby-with-Farleton
+15243	special	Lancaster	Lancaster
+15244	special	Lancaster	Lancaster
+15245	special	Lancaster	Lancaster
+15246	special	Lancaster	Lancaster
+15247	special	Lancaster	Lancaster
+15248	special	Lancaster	Lancaster
+15249	special	Lancaster	Lancaster
+1525	area	Leighton Buzzard	Leighton Buzzard
+1526	area	Martin	Martin, Lincolnshire
+1527	area	Redditch	Redditch
+1528	area	Laggan	Laggan, Badenoch
+1529	area	Sleaford	Sleaford, Lincolnshire
+1530	area	Coalville	Coalville, Ashby-de-la-Zouch Leicestershire
+1531	area	Ledbury	Ledbury
+1534	area	Jersey	Jersey
+1535	area	Keighley	Keighley
+1536	area	Kettering	Kettering
+1538	area	Ipstones	Ipstones, Leek
+15390	special	Kendal	Kendal
+15391	special	Kendal	Kendal
+15392	special	Kendal	Kendal
+15393	special	Kendal	Kendal
+15394	area	Hawkshead	Hawkshead
+15395	area	Grange-over-Sands	Grange-over-Sands
+15396	area	Sedbergh	Sedbergh
+15397	special	Kendal	Kendal
+15398	special	Kendal	Kendal
+15399	special	Kendal	Kendal
+1540	area	Kingussie	Kingussie
+1542	area	Keith	Keith
+1543	area	Cannock	Cannock, Lichfield
+1544	area	Kington	Kington
+1545	area	Llanarth	Llanarth, Ceredigion
+1546	area	Lochgilphead	Lochgilphead
+1547	area	Knighton	Knighton
+1548	area	Kingsbridge	Kingsbridge
+1549	area	Lairg	Lairg
+1550	area	Llandovery	Llandovery
+1553	area	King's Lynn	King's Lynn
+1554	area	Llanelli	Llanelli
+1555	area	Lanark	Lanark
+1556	area	Castle Douglas	Castle Douglas, Kirkcudbrightshire
+1557	area	Kirkcudbright	Kirkcudbright
+1558	area	Llandeilo	Llandeilo
+1559	area	Llandysul	Llandysul
+1560	area	Moscow	Moscow, Kilmarnock
+1561	area	Laurencekirk	Laurencekirk
+1562	area	Kidderminster	Kidderminster
+1563	area	Kilmarnock	Kilmarnock
+1564	area	Lapworth	Lapworth, Knowle
+1565	area	Knutsford	Knutsford
+1566	area	Launceston	Launceston
+1567	area	Killin	Killin
+1568	area	Leominster	Leominster
+1569	area	Stonehaven	Stonehaven, Laurencekirk
+1570	area	Lampeter	Lampeter
+1571	area	Lochinver	Lochinver
+1572	area	Oakham	Oakham
+1573	area	Kelso	Kelso
+1575	area	Kirriemuir	Kirriemuir
+1576	area	Lockerbie	Lockerbie
+1577	area	Kinross	Kinross
+1578	area	Lauder	Lauder
+1579	area	Liskeard	Liskeard
+1580	area	Cranbrook	Cranbrook, Kent
+1581	area	New Luce	New Luce, Luce
+1582	area	Luton	Luton
+1583	area	Carradale	Carradale, Kintyre
+1584	area	Ludlow	Ludlow
+1585	area	was Kesgrave	was Kesgrave
+1586	area	Campbeltown	Campbeltown, Kintyre
+1588	area	Bishop's Castle	Bishop's Castle, Ludlow
+1590	area	Lymington	Lymington
+1591	area	Llanwrtyd Wells	Llanwrtyd Wells
+1592	area	Kirkcaldy	Kirkcaldy
+1593	area	Lybster	Lybster
+1594	area	Lydney	Lydney
+1595	area	Lerwick	Lerwick, Foula and Fair Isle
+1597	area	Llandrindod Wells	Llandrindod Wells
+1598	area	Lynton	Lynton
+1599	area	Kyle	Kyle
+1600	area	Monmouth	Monmouth
+1603	area	Norwich	Norwich
+1604	area	Northampton	Northampton
+1606	area	Northwich	Northwich
+1608	area	Chipping Norton	Chipping Norton
+1609	area	Northallerton	Northallerton
+1620	area	North Berwick	North Berwick
+1621	area	Maldon	Maldon
+1622	area	Maidstone	Maidstone
+1623	area	Mansfield	Mansfield
+1624	area	Isle of Man	Isle of Man
+1625	area	Macclesfield	Macclesfield
+1626	area	Newton Abbot	Newton Abbot
+1628	area	Maidenhead	Maidenhead
+1629	area	Matlock	Matlock
+1630	area	Market Drayton	Market Drayton
+1631	area	Oban	Oban
+1633	area	Newport	Newport
+1634	area	Medway	Medway
+1635	area	Newbury	Newbury
+1636	area	Newark-on-Trent	Newark-on-Trent
+1637	area	Newquay	Newquay
+1638	area	Newmarket	Newmarket
+1639	area	Neath	Neath
+1641	area	Strathy	Strathy, Melvich
+1642	area	Middlesbrough	Middlesbrough
+1643	area	Minehead	Minehead
+1644	area	New Galloway	New Galloway
+1646	area	Milford Haven	Milford Haven
+1647	area	Moretonhampstead	Moretonhampstead
+1650	area	Cemmaes Road	Cemmaes Road, Machynlleth
+1651	area	Oldmeldrum	Oldmeldrum
+1652	area	Brigg	Brigg, North Kelsey
+1653	area	Malton	Malton
+1654	area	Machynlleth	Machynlleth
+1655	area	Maybole	Maybole
+1656	area	Bridgend	Bridgend
+1659	area	Sanquhar	Sanquhar, Nithsdale
+1661	area	Prudhoe	Prudhoe, Northumberland
+1663	area	New Mills	New Mills
+1664	area	Melton Mowbray	Melton Mowbray
+1665	area	Alnwick	Alnwick, Northumberland
+1666	area	Malmesbury	Malmesbury
+1667	area	Nairn	Nairn
+1668	area	Bamburgh	Bamburgh, Northumberland
+1669	area	Rothbury	Rothbury, Northumberland
+1670	area	Morpeth	Morpeth
+1671	area	Newton Stewart	Newton Stewart
+1672	area	Marlborough	Marlborough
+1673	area	Market Rasen	Market Rasen
+1674	area	Montrose	Montrose
+1675	area	Coleshill	Coleshill, Warwickshire, Meriden
+1676	area	Meriden	Meriden
+1677	area	Bedale	Bedale, North Riding
+1678	area	Bala	Bala, Meirionydd
+1680	area	Craignure	Craignure, Isle of Mull
+1681	area	Fionnphort	Fionnphort, Isle of Mull
+1683	area	Moffat	Moffat
+1684	area	Malvern	Malvern
+1685	area	Merthyr Tydfil	Merthyr Tydfil
+1686	area	Llanidloes and Newtown	Llanidloes and Newtown
+1687	area	Mallaig	Mallaig
+1688	area	Tobermory	Tobermory, Isle of Mull
+1689	area	Orpington	Orpington
+1690	area	Betws-y-Coed	Betws-y-Coed
+1691	area	Oswestry	Oswestry
+1692	area	North Walsham	North Walsham
+1694	area	Church Stretton	Church Stretton
+1695	area	Skelmersdale/Ormskirk	Skelmersdale/Ormskirk
+16970	special	Brampton	Brampton
+16971	special	Brampton	Brampton
+16972	special	Brampton	Brampton
+16973	area	Wigton	Wigton
+16974	area	Raughton Head	Raughton Head
+16975	special	Brampton	Brampton
+16976	special	Brampton	Brampton
+16977	area	Hallbankgate/Brampton	Hallbankgate/Brampton
+16978	special	Brampton	Brampton
+16979	special	Brampton	Brampton
+1698	area	Motherwell	Motherwell
+1700	area	Rothesay	Rothesay
+1702	area	Southend-on-Sea	Southend-on-Sea
+1704	area	Southport	Southport
+1706	area	Rochdale	Rochdale, Rossendale
+1707	area	Welwyn Hatfield and Potters Bar	Welwyn Hatfield and Potters Bar
+1708	area	Romford	Romford
+1709	area	Rotherham	Rotherham
+1720	area	Isles of Scilly	Isles of Scilly
+1721	area	Peebles	Peebles
+1722	area	Salisbury	Salisbury
+1723	area	Scarborough	Scarborough
+1724	area	Scunthorpe	Scunthorpe
+1725	area	Rockbourne	Rockbourne
+1726	area	St Austell	St Austell
+1727	area	St Albans	St Albans
+1728	area	Saxmundham	Saxmundham
+1729	area	Settle	Settle, Ribblesdale
+1730	area	Petersfield	Petersfield
+1732	area	Sevenoaks	Sevenoaks
+1733	area	Peterborough	Peterborough
+1736	area	Penzance	Penzance
+1737	area	Redhill	Redhill
+1738	area	Perth	Perth
+1740	area	Sedgefield	Sedgefield
+1743	area	Shrewsbury	Shrewsbury
+1744	area	St Helens	St Helens
+1745	area	Rhyl	Rhyl
+1746	area	Bridgnorth	Bridgnorth, Shropshire
+1747	area	Shaftesbury	Shaftesbury
+1748	area	Richmond	Richmond
+1749	area	Shepton Mallet	Shepton Mallet
+1750	area	Selkirk	Selkirk
+1751	area	Pickering	Pickering
+1752	area	Plymouth	Plymouth
+1753	area	Slough	Slough
+1754	area	Skegness	Skegness
+1756	area	Skipton	Skipton
+1757	area	Selby	Selby
+1758	area	Pwllheli	Pwllheli
+1759	area	Pocklington	Pocklington
+1760	area	Swaffham	Swaffham
+1761	area	Temple Cloud	Temple Cloud, Somerset
+1763	area	Royston	Royston
+1764	area	Crieff	Crieff, Ruthven
+1765	area	Ripon	Ripon
+1766	area	Porthmadog	Porthmadog
+1767	area	Sandy	Sandy
+17680	special	Penrith	Penrith
+17681  special Penrith
+17682  special Penrith
+17683	area	Appleby	Appleby
+17684	area	Pooley Bridge	Pooley Bridge
+17685  special Penrith
+17686  special Penrith
+17687	area	Keswick	Keswick
+17688  special Penrith
+17689  special Penrith
+1769	area	South Molton	South Molton
+1770	area	Isle of Arran	Isle of Arran
+1771	area	Maud	Maud
+1772	area	Preston	Preston
+1773	area	Ripley	Ripley
+1775	area	Spalding	Spalding
+1776	area	Stranraer	Stranraer
+1777	area	Retford	Retford
+1778	area	Market Deeping/Bourne (Spalding-dependent)	Market Deeping/Bourne (Spalding-dependent)
+1779	area	Peterhead	Peterhead
+1780	area	Stamford	Stamford
+1782	area	Stoke on Trent	Stoke on Trent
+1784	area	Staines	Staines
+1785	area	Stafford	Stafford
+1786	area	Stirling	Stirling
+1787	area	Sudbury	Sudbury
+1788	area	Rugby	Rugby
+1789	area	Stratford-upon-Avon	Stratford-upon-Avon
+1790	area	Spilsby	Spilsby
+1792	area	Swansea	Swansea
+1793	area	Swindon	Swindon
+1794	area	Romsey	Romsey
+1795	area	Sittingbourne	Sittingbourne, Sheppey
+1796	area	Pitlochry	Pitlochry
+1797	area	Rye	Rye
+1798	area	Pulborough	Pulborough, Sussex
+1799	area	Saffron Walden	Saffron Walden
+1803	area	Torquay	Torquay
+1805	area	Torrington	Torrington
+1806	area	Voe	Voe, Shetland
+1807	area	Ballindalloch	Ballindalloch, Tomintoul
+1808	area	Tomatin	Tomatin
+1809	area	Tomdoun	Tomdoun
+1821	area	Kinrossie	Kinrossie, Tayside
+1822	area	Tavistock	Tavistock
+1823	area	Taunton	Taunton
+1824	area	Ruthin	Ruthin, Vale of Clwyd
+1825	area	Uckfield	Uckfield
+1827	area	Tamworth	Tamworth
+1828	area	Coupar Angus	Coupar Angus, Tayside
+1829	area	Tarporley	Tarporley
+1830	area	Kirkwhelpington	Kirkwhelpington
+1832	area	Clopton	Clopton, Oundle
+1833	area	Teesdale	Teesdale
+1834	area	Narberth	Narberth, Tenby
+1835	area	St. Boswells	St. Boswells
+1837	area	Okehampton	Okehampton
+1838	area	Dalmally	Dalmally, Tyndrum
+1840	area	Camelford	Camelford, Tintagel
+1841	area	Newquay	Newquay
+1842	area	Thetford	Thetford
+1843	area	Thanet	Thanet
+1844	area	Thame	Thame
+1845	area	Thirsk	Thirsk
+1847	area	Thurso and Tongue	Thurso and Tongue
+1848	area	Thornhill	Thornhill
+1851	area	Great Bernera and Stornoway	Great Bernera and Stornoway
+1852	area	Kilmelford	Kilmelford
+1854	area	Ullapool	Ullapool
+1855	area	Ballachulish	Ballachulish
+1856	area	Orkney	Orkney
+1857	area	Sanday	Sanday
+1858	area	Market Harborough	Market Harborough
+1859	area	Harris	Harris
+1862	area	Tain	Tain
+1863	area	Ardgay	Ardgay, Tain
+1864	area	Tinto	Tinto, Abington
+1865	area	Oxford	Oxford
+1866	area	Kilchrenan	Kilchrenan
+1869	area	Bicester	Bicester, Oxfordshire
+1870	area	Isle of Benbecula	Isle of Benbecula
+1871	area	Castlebay	Castlebay
+1872	area	Truro	Truro
+1873	area	Abergavenny	Abergavenny, Usk
+1874	area	Brecon	Brecon, Usk
+1875	area	Tranent	Tranent
+1876	area	Lochmaddy	Lochmaddy
+1877	area	Callander	Callander, Trossachs
+1878	area	Lochboisdale	Lochboisdale
+1879	area	Scarinish	Scarinish, Tiree
+1880	area	Tarbert	Tarbert
+1882	area	Kinloch Rannoch	Kinloch Rannoch, Tummel Bridge
+1883	area	Caterham	Caterham
+1884	area	Tiverton	Tiverton
+1885	area	Pencombe	Pencombe
+1886	area	Bromyard	Bromyard, Teme Valley
+1887	area	Aberfeldy	Aberfeldy, Tay Valley
+1888	area	Turriff	Turriff
+1889	area	Uttoxeter	Uttoxeter
+1890	area	Ayton	Ayton, Berwickshire and Coldstream, Tweed
+1892	area	Tunbridge Wells	Tunbridge Wells
+1895	area	Uxbridge	Uxbridge
+1896	area	Galashiels	Galashiels, Tweed
+1899	area	Biggar	Biggar, Tweed
+1900	area	Workington	Workington
+1902	area	Wolverhampton	Wolverhampton
+1903	area	Worthing	Worthing
+1904	area	York	York
+1905	area	Worcester	Worcester
+1908	area	Milton Keynes	Milton Keynes, Wolverton
+1909	area	Worksop	Worksop
+1920	area	Ware	Ware
+1922	area	Walsall	Walsall
+1923	area	Watford	Watford
+1924	area	Wakefield	Wakefield
+1925	area	Warrington	Warrington
+1926	area	Warwick	Warwick
+1928	area	Runcorn	Runcorn, Warrington
+1929	area	Wareham	Wareham
+1931	area	Shap	Shap, Westmorland
+1932	area	Weybridge	Weybridge
+1933	area	Wellingborough	Wellingborough
+1934	area	Weston-super-Mare	Weston-super-Mare
+1935	area	Yeovil	Yeovil
+1937	area	Wetherby	Wetherby
+1938	area	Welshpool	Welshpool
+1939	area	Wem	Wem
+1942	area	Wigan	Wigan
+1943	area	Guiseley	Guiseley, Wharfedale
+1944	area	West Heslerton	West Heslerton
+1945	area	Wisbech	Wisbech
+19461	special	Whitehaven	Whitehaven
+19462	special	Whitehaven	Whitehaven
+19463	special	Whitehaven	Whitehaven
+19464	special	Whitehaven	Whitehaven
+19465	special	Whitehaven	Whitehaven
+19466	special	Whitehaven	Whitehaven
+19467	area	Gosforth	Gosforth
+19468	special	Whitehaven	Whitehaven
+19469	special	Whitehaven	Whitehaven
+1947	area	Whitby	Whitby
+1948	area	Whitchurch	Whitchurch
+1949	area	Whatton	Whatton
+1950	area	Sandwick	Sandwick, Yell
+1951	area	Colonsay	Colonsay
+1952	area	Telford	Telford, Wellington
+1953	area	Wymondham	Wymondham
+1954	area	Madingley	Madingley, Willingham
+1955	area	Wick	Wick
+1957	area	Mid Yell	Mid Yell, Yell
+1959	area	Westerham	Westerham, West Kent
+1962	area	Winchester	Winchester
+1963	area	Wincanton	Wincanton
+1964	area	Hornsea and Patrington	Hornsea and Patrington, Withernsea
+1967	area	Strontian	Strontian
+1968	area	Penicuik	Penicuik, West Linton
+1969	area	Leyburn	Leyburn, Wensleydale
+1970	area	Aberystwyth	Aberystwyth, Ystwyth
+1971	area	Scourie	Scourie, Wrath
+1972	area	Glenborrodale	Glenborrodale
+1974	area	Llanon	Llanon, Ystwyth
+1975	area	Alford	Alford, Aberdeenshire and Strathdon, Water
+1977	area	Pontefract	Pontefract, West Riding
+1978	area	Wrexham	Wrexham
+1980	area	Amesbury	Amesbury, Wiltshire
+1981	area	Wormbridge	Wormbridge
+1982	area	Builth Wells	Builth Wells
+1983	area	Isle of Wight	Isle of Wight
+1984	area	Watchet	Watchet
+1985	area	Warminster	Warminster
+1986	area	Bungay	Bungay, Waveney
+1987	area	Ebbsfleet	Ebbsfleet
+1988	area	Wigtown	Wigtown
+1989	area	Ross on Wye	Ross on Wye, Wye
+1992	area	Lea Valley	Lea Valley, Waltham X
+1993	area	Witney	Witney
+1994	area	St Clears	St Clears, West Wales
+1995	area	Garstang	Garstang, Wyre
+1997	area	Strathpeffer	Strathpeffer, Wyvis
+
+// currently unused locations, but may be used in the future
+1201	area	Unknown Location	Unknown Location
+1203	area	Unknown Location	Unknown Location
+1220	area	Unknown Location	Unknown Location
+1221	area	Unknown Location	Unknown Location
+1222	area	Unknown Location	Unknown Location
+1230	area	Unknown Location	Unknown Location
+1231	area	Unknown Location	Unknown Location
+1232	area	Unknown Location	Unknown Location
+1238	area	Unknown Location	Unknown Location
+1240	area	Unknown Location	Unknown Location
+1247	area	Unknown Location	Unknown Location
+1251	area	Unknown Location	Unknown Location
+1265	area	Unknown Location	Unknown Location
+1266	area	Unknown Location	Unknown Location
+1272	area	Unknown Location	Unknown Location
+1281	area	Unknown Location	Unknown Location
+1321	area	Unknown Location	Unknown Location
+1331	area	Unknown Location	Unknown Location
+1336	area	Unknown Location	Unknown Location
+1338	area	Unknown Location	Unknown Location
+1345	area	Unknown Location	Unknown Location
+1351	area	Unknown Location	Unknown Location
+1365	area	Unknown Location	Unknown Location
+1370	area	Unknown Location	Unknown Location
+1374	area	Unknown Location	Unknown Location
+1378	area	Unknown Location	Unknown Location
+1385	area	Unknown Location	Unknown Location
+1390	area	Unknown Location	Unknown Location
+1391	area	Unknown Location	Unknown Location
+1393	area	Unknown Location	Unknown Location
+1396	area	Unknown Location	Unknown Location
+1399	area	Unknown Location	Unknown Location
+1401	area	Unknown Location	Unknown Location
+1402	area	Unknown Location	Unknown Location
+1421	area	Unknown Location	Unknown Location
+1426	area	Unknown Location	Unknown Location
+1441	area	Unknown Location	Unknown Location
+1447	area	Unknown Location	Unknown Location
+1448	area	Unknown Location	Unknown Location
+1459	area	Unknown Location	Unknown Location
+1468	area	Unknown Location	Unknown Location
+1498	area	Unknown Location	Unknown Location
+1500	area	Unknown Location	Unknown Location
+1504	area	Unknown Location	Unknown Location
+1521	area	Unknown Location	Unknown Location
+1523	area	Unknown Location	Unknown Location
+1532	area	Unknown Location	Unknown Location
+1533	area	Unknown Location	Unknown Location
+1537	area	Unknown Location	Unknown Location
+1541	area	Unknown Location	Unknown Location
+1551	area	Unknown Location	Unknown Location
+1552	area	Unknown Location	Unknown Location
+1574	area	Unknown Location	Unknown Location
+1587	area	Unknown Location	Unknown Location
+1589	area	Unknown Location	Unknown Location
+1596	area	Unknown Location	Unknown Location
+1601	area	Unknown Location	Unknown Location
+1602	area	Unknown Location	Unknown Location
+1605	area	Unknown Location	Unknown Location
+1607	area	Unknown Location	Unknown Location
+1627	area	Unknown Location	Unknown Location
+1632	area	Unknown Location	Unknown Location
+1640	area	Unknown Location	Unknown Location
+1645	area	Unknown Location	Unknown Location
+1648	area	Unknown Location	Unknown Location
+1649	area	Unknown Location	Unknown Location
+1657	area	Unknown Location	Unknown Location
+1658	area	Unknown Location	Unknown Location
+1660	area	Unknown Location	Unknown Location
+1662	area	Unknown Location	Unknown Location
+1679	area	Unknown Location	Unknown Location
+1682	area	Unknown Location	Unknown Location
+1693	area	Unknown Location	Unknown Location
+1696	area	Unknown Location	Unknown Location
+1699	area	Unknown Location	Unknown Location
+1701	area	Unknown Location	Unknown Location
+1703	area	Unknown Location	Unknown Location
+1705	area	Unknown Location	Unknown Location
+1710	area	Unknown Location	Unknown Location
+1711	area	Unknown Location	Unknown Location
+1712	area	Unknown Location	Unknown Location
+1713	area	Unknown Location	Unknown Location
+1714	area	Unknown Location	Unknown Location
+1715	area	Unknown Location	Unknown Location
+1716	area	Unknown Location	Unknown Location
+1717	area	Unknown Location	Unknown Location
+1718	area	Unknown Location	Unknown Location
+1719	area	Unknown Location	Unknown Location
+1731	area	Unknown Location	Unknown Location
+1734	area	Unknown Location	Unknown Location
+1735	area	Unknown Location	Unknown Location
+1739	area	Unknown Location	Unknown Location
+1741	area	Unknown Location	Unknown Location
+1742	area	Unknown Location	Unknown Location
+1755	area	Unknown Location	Unknown Location
+1762	area	Unknown Location	Unknown Location
+1774	area	Unknown Location	Unknown Location
+1781	area	Unknown Location	Unknown Location
+1783	area	Unknown Location	Unknown Location
+1791	area	Unknown Location	Unknown Location
+1800	area	Unknown Location	Unknown Location
+1801	area	Unknown Location	Unknown Location
+1802	area	Unknown Location	Unknown Location
+1804	area	Unknown Location	Unknown Location
+1810	area	Unknown Location	Unknown Location
+1811	area	Unknown Location	Unknown Location
+1812	area	Unknown Location	Unknown Location
+1813	area	Unknown Location	Unknown Location
+1814	area	Unknown Location	Unknown Location
+1815	area	Unknown Location	Unknown Location
+1816	area	Unknown Location	Unknown Location
+1817	area	Unknown Location	Unknown Location
+1818	area	Unknown Location	Unknown Location
+1819	area	Unknown Location	Unknown Location
+1820	area	Unknown Location	Unknown Location
+1831	area	Unknown Location	Unknown Location
+1836	area	Unknown Location	Unknown Location
+1839	area	Unknown Location	Unknown Location
+1846	area	Unknown Location	Unknown Location
+1849	area	Unknown Location	Unknown Location
+1850	area	Unknown Location	Unknown Location
+1853	area	Unknown Location	Unknown Location
+1860	area	Unknown Location	Unknown Location
+1861	area	Unknown Location	Unknown Location
+1867	area	Unknown Location	Unknown Location
+1868	area	Unknown Location	Unknown Location
+1881	area	Unknown Location	Unknown Location
+1891	area	Unknown Location	Unknown Location
+1893	area	Unknown Location	Unknown Location
+1894	area	Unknown Location	Unknown Location
+1897	area	Unknown Location	Unknown Location
+1898	area	Unknown Location	Unknown Location
+1901	area	Unknown Location	Unknown Location
+1906	area	Unknown Location	Unknown Location
+1907	area	Unknown Location	Unknown Location
+1921	area	Unknown Location	Unknown Location
+1927	area	Unknown Location	Unknown Location
+1930	area	Unknown Location	Unknown Location
+1936	area	Unknown Location	Unknown Location
+1940	area	Unknown Location	Unknown Location
+1941	area	Unknown Location	Unknown Location
+1956	area	Unknown Location	Unknown Location
+1958	area	Unknown Location	Unknown Location
+1960	area	Unknown Location	Unknown Location
+1961	area	Unknown Location	Unknown Location
+1965	area	Unknown Location	Unknown Location
+1966	area	Unknown Location	Unknown Location
+1973	area	Unknown Location	Unknown Location
+1976	area	Unknown Location	Unknown Location
+1979	area	Unknown Location	Unknown Location
+1990	area	Unknown Location	Unknown Location
+1991	area	Unknown Location	Unknown Location
+1996	area	Unknown Location	Unknown Location
+1998	area	Unknown Location	Unknown Location
+1999	area	Unknown Location	Unknown Location
