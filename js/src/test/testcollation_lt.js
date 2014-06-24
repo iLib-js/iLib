@@ -129,7 +129,8 @@ function testJSCollatorPrimaryCD_lt() {
 	var col = new ilib.Collator({
 		locale: "lt-LT",
 		useNative: false,
-		sensitivity: "primary"
+		sensitivity: "primary",
+		usage: "search"
 	});
 
 	assertNotUndefined(col);
@@ -146,7 +147,8 @@ function testJSCollatorPrimaryEF_lt() {
 	var col = new ilib.Collator({
 		locale: "lt-LT",
 		useNative: false,
-		sensitivity: "primary"
+		sensitivity: "primary",
+		usage: "search"
 	});
 
 	assertNotUndefined(col);
@@ -165,7 +167,8 @@ function testJSCollatorPrimaryIJ_lt() {
 	var col = new ilib.Collator({
 		locale: "lt-LT",
 		useNative: false,
-		sensitivity: "primary"
+		sensitivity: "primary",
+		usage: "search"
 	});
 
 	assertNotUndefined(col);
@@ -184,7 +187,8 @@ function testJSCollatorPrimaryST_lt() {
 	var col = new ilib.Collator({
 		locale: "lt-LT",
 		useNative: false,
-		sensitivity: "primary"
+		sensitivity: "primary",
+		usage: "search"
 	});
 
 	assertNotUndefined(col);
@@ -201,7 +205,8 @@ function testJSCollatorPrimaryUV_lt() {
 	var col = new ilib.Collator({
 		locale: "lt-LT",
 		useNative: false,
-		sensitivity: "primary"
+		sensitivity: "primary",
+		usage: "search"
 	});
 
 	assertNotUndefined(col);
@@ -220,7 +225,8 @@ function testJSCollatorPrimaryZ_lt() {
 	var col = new ilib.Collator({
 		locale: "lt-LT",
 		useNative: false,
-		sensitivity: "primary"
+		sensitivity: "primary",
+		usage: "search"
 	});
 
 	assertNotUndefined(col);

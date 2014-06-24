@@ -78,7 +78,8 @@ function testJSCollatorTraditionalPrimaryCH_es() {
 		locale: "es-ES",
 		useNative: false,
 		sensitivity: "primary",
-		style: "traditional"
+		style: "traditional",
+		usage: "search"
 	});
 
 	assertNotUndefined(col);
