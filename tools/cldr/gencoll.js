@@ -24,9 +24,17 @@
 
 var fs = require('fs');
 var util = require('util');
+var path = require('path');
 var uniData = require('./uniData.js');
 var unifile = require('./unifile.js');
 var common = require('./common.js');
+
+// this is an odd cldr tool in that it requires ilib in order to operate.
+// It was hard to replicate the functionality of the unicode normalization
+// without this. Make sure that the top level dir of this project is built
+// before trying to run this tool.
+// var ilib = require('../../js/src');
+
 var UnicodeData = uniData.UnicodeData;
 var CharacterInfo = uniData.CharacterInfo;
 var UnicodeFile = unifile.UnicodeFile;
@@ -78,7 +86,7 @@ if (process.argv.length > 5) {
 }
 
 util.print("gencoll - generate collation data.\n" +
-	"Copyright (c) 2013 JEDLSoft\n");
+	"Copyright (c) 2014 JEDLSoft\n");
 
 fs.exists(iso15924FileName, function (exists) {
 	if (!exists) {
@@ -280,7 +288,7 @@ function parseWeightLine(weightLine) {
 	return weights;
 }
 
-util.print("Reading DUCET weights\n");
+util.print("Reading DUCET code points and weights\n");
 
 var ducet = {};
 
@@ -297,13 +305,15 @@ for (var i = 0; i < len; i++ ) {
 	};
 }
 
+util.print("Attaching script codes to DUCET code points\n");
+
 var elementsByScript = {};
 var range;
 
 for (var name in ducet) {
 	if (name && name.length > 0) {
-		// only get the script of the first character -- don't have to worry about expansions or contractions, 
-		// because the first char gives the script anyways
+		// for multi-character codepoints, only get the script of the first character -- don't have to worry 
+		// about expansions or contractions, because the first char gives the script anyways
 		ch = common.UTF16ToCodePoint(name);
 		
 		// util.print("Checking char " + ch + ": ");
@@ -321,7 +331,7 @@ for (var name in ducet) {
 	}
 }
 
-/*
+
 util.print("Ducet table for Latin is: " + JSON.stringify(elementsByScript["Latn"]) + "\n");
 
 util.print("Ducet table is: \n");
@@ -334,8 +344,8 @@ for (ch in ducet) {
 		i++;
 	}
 }
-*/
 
+process.exit(0);
 
 function compareWeightArray(left, right) {
 	var i = 0; 
@@ -509,14 +519,24 @@ while (i < data.length) {
 
 util.print("Pinyin collation is: \n");
 
-for (i = 0; i < collPinyin.length; i++) {
+var collation = {};
+
+for (var i = 0; i < collPinyin.length; i++) {
 	element = collPinyin[i];
 	util.print('"' + element.char + '": ' + element.weights.toString() + "\n");
+	collation[element.char] = element.weights;
 	var follows = element.follows;
 	for (var j = 0; j < follows.length; j++) {
 		util.print('  "' + follows[j].char + '": ' + follows[j].weights.toString() + "\n");
+		collation[follows[j].char] = follows[j].weights;
 	}
 }
+
+var outputFileName = path.join(toDir, "collation.json");
+fs.writeFileSync(outputFileName, JSON.stringify(collation, undefined, 4), "utf-8");
+
+util.print("Output written to " + outputFileName + ".\nDone\n");
+
 /*
  å         [1,0,0]
    <<<Å    [1,0,1]
