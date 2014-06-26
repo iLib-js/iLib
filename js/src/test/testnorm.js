@@ -69,3 +69,97 @@ function testNFKC() {
     	assertEquals("Test NFKC for " + source + " ("+ toHexString(source) + ")", toHexString(val[3]), toHexString(source.normalize("nfkc")));
     });
 }
+
+function testCharIteratorNormal() {
+	var s = new ilib.NormString("aba");
+	var it = s.charIterator();
+	
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertTrue(it.hasNext());
+	assertEquals("b", it.next());
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertFalse(it.hasNext());
+	assertEquals(undefined, it.next());
+}
+
+function testCharIteratorDecomposed() {
+	var s = new ilib.NormString("aÄa"); // the A umlaut is a decomposed char
+	var it = s.charIterator();
+	
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertTrue(it.hasNext());
+	assertEquals("Ä", it.next());
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertFalse(it.hasNext());
+	assertEquals(undefined, it.next());
+}
+
+function testCharIteratorEmpty() {
+	var s = new ilib.NormString(""); // the A umlaut is a decomposed char
+	var it = s.charIterator();
+	
+	assertFalse(it.hasNext());
+	assertEquals(undefined, it.next());
+}
+
+function testCharIteratorWithSurrogates() {
+    var str = new ilib.NormString("a\uD800\uDF02b\uD800\uDC00");
+
+    var it = str.charIterator();
+    assertTrue(it.hasNext());
+    assertEquals("a", it.next());
+    assertTrue(it.hasNext());
+    assertEquals("\uD800\uDF02", it.next());
+    assertTrue(it.hasNext());
+    assertEquals("b", it.next());
+    assertTrue(it.hasNext());
+    assertEquals("\uD800\uDC00", it.next());
+    assertFalse(it.hasNext());
+    assertEquals(undefined, it.next());
+}
+
+function testCharIteratorWithSurrogatesAndDecomposedChars() {
+    var str = new ilib.NormString("a\uD800\uDF02bï\uD800\uDC00"); // the ï is a decomposed i + umlaut
+
+    var it = str.charIterator();
+    assertTrue(it.hasNext());
+    assertEquals("a", it.next());
+    assertTrue(it.hasNext());
+    assertEquals("\uD800\uDF02", it.next());
+    assertTrue(it.hasNext());
+    assertEquals("b", it.next());
+    assertTrue(it.hasNext());
+    assertEquals("ï", it.next());
+    assertTrue(it.hasNext());
+    assertEquals("\uD800\uDC00", it.next());
+    assertFalse(it.hasNext());
+    assertEquals(undefined, it.next());
+}
+
+function testCharIteratorMultipleDecomposed() {
+	var s = new ilib.NormString("aẬa"); // the accented A is a decomposed char with 2 accents
+	var it = s.charIterator();
+	
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertTrue(it.hasNext());
+	assertEquals("Ậ", it.next());
+	assertTrue(it.hasNext());
+	assertEquals("a", it.next());
+	assertFalse(it.hasNext());
+	assertEquals(undefined, it.next());
+}
+
+function testCharIteratorAgrave() {
+	var s = new ilib.NormString("À"); // the accented A is a decomposed char
+	var it = s.charIterator();
+	
+	assertTrue(it.hasNext());
+	assertEquals("À", it.next());
+	assertFalse(it.hasNext());
+	assertEquals(undefined, it.next());
+}

@@ -98,6 +98,26 @@ exports.hexToChar = function hexToChar(hex) {
 };
 
 /**
+ * Return a string created by interpretting the space-separated Unicode characters 
+ * encoded as hex digits. 
+ * 
+ * Example: "0065 0066"  -> "ab"
+ * 
+ * @param {string} hex the string of characters encoded as hex digits
+ * @return {string} the equivalent string as regular UTF-16 Unicode characters 
+ */
+exports.hexStringUTF16String = function (hex) {
+	var chars = hex.split("\s+");
+	var ret = "";
+	
+	for (var i = 0; i < chars.length; i++) {
+		ret += exports.hexToChar(chars[i]);
+	}
+	
+	return ret;
+};
+
+/**
  * Re-encode the characters in a string as a space-separated sequence of 16-bit 
  * hex values.
  * 
@@ -179,10 +199,10 @@ exports.isMember = function isMember(arr, num) {
 /**
  * Coelesce ranges to shorten files and to make searching it more efficient. There are 4 cases:
  * 
- * 1. [A] followed by [A+1]
- * 2. [A] followed by [A+1, B]
- * 3. [A, B] followed by [B+1]
- * 4. [A, B] followed by [B+1, C]
+ * 1. [A] followed by [A+1]       -> [A, A+1]
+ * 2. [A] followed by [A+1, B]    -> [A, B]
+ * 3. [A, B] followed by [B+1]    -> [A, B+1]
+ * 4. [A, B] followed by [B+1, C] -> [A, C]
  * 
  * where A, B, and C represent particular values. Handle each case properly.
  * 

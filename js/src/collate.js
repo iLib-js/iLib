@@ -17,9 +17,156 @@
  * limitations under the License.
  */
 
-// !depends locale.js ilibglobal.js
+// !depends locale.js ilibglobal.js numprs.js ctype.ispunct.js normstring.js
 
 // !data collation
+
+/**
+ * Represents a buffered source of code points. The input string is first
+ * normalized so that combining characters come out in a standardized order.
+ * If the "ignorePunctuation" flag is turned on, then punctuation 
+ * characters are skipped.
+ * 
+ * @class
+ * @constructor
+ * @param {ilib.NormString|string} str a string to get code points from
+ * @param {boolean} ignorePunctuation whether or not to ignore punctuation
+ * characters
+ */
+ilib.CodePointSource = function(str, ignorePunctuation) {
+	this.chars = [];
+	// first convert the string to a normalized sequence of characters
+	var s = (typeof(str) === "string") ? new ilib.NormString(str) : str;
+	this.it = s.charIterator();
+	this.ignorePunctuation = typeof(ignorePunctuation) === "boolean" && ignorePunctuation;
+};
+
+/**
+ * Return the first num code points in the source without advancing the
+ * source pointer. If there are not enough code points left in the
+ * string to satisfy the request, this method will return undefined. 
+ * 
+ * @param {number} num the number of characters to peek ahead
+ * @return {string|undefined} a string formed out of up to num code points from
+ * the start of the string, or undefined if there are not enough character left
+ * in the source to complete the request
+ */
+ilib.CodePointSource.prototype.peek = function(num) {
+	if (num < 1) {
+		return undefined;
+	}
+	if (this.chars.length < num && this.it.hasNext()) {
+		for (var i = 0; this.chars.length < 4 && this.it.hasNext(); i++) {
+			var c = this.it.next();
+			if (c && !this.ignorePunctuation || !ilib.CType.isPunct(c)) {
+				this.chars.push(c);
+			}
+		}
+	}
+	if (this.chars.length < num) {
+		return undefined;
+	}
+	return this.chars.slice(0, num).join("");
+};
+/**
+ * Advance the source pointer by the given number of code points.
+ * @param {number} num number of code points to advance
+ */
+ilib.CodePointSource.prototype.consume = function(num) {
+	if (num > 0) {
+		this.peek(num); // for the iterator to go forward if needed
+		if (num < this.chars.length) {
+			this.chars = this.chars.slice(num);
+		} else {
+			this.chars = [];
+		}
+	}
+};
+
+
+/**
+ * An iterator through a sequence of collation elements. This
+ * iterator takes a source of code points, converts them into
+ * collation elements, and allows the caller to get single
+ * elements at a time.
+ * 
+ * @class
+ * @constructor
+ * @param {ilib.CodePointSource} source source of code points to 
+ * convert to collation elements
+ * @param {Object} map mapping from sequences of code points to
+ * collation elements
+ * @param {number} keysize size in bits of the collation elements
+ */
+ilib.ElementIterator = function (source, map, keysize) {
+	this.elements = [];
+	this.source = source;
+	this.map = map;
+	this.keysize = keysize;
+};
+
+/**
+ * @private
+ */
+ilib.ElementIterator.prototype._fillBuffer = function () {
+	var str = undefined;
+	
+	// peek ahead by up to 4 characters, which may combine
+	// into 1 or more collation elements
+	for (var i = 4; i > 0; i--) {
+		str = this.source.peek(i);
+		if (str && this.map[str]) {
+			this.elements = this.elements.concat(this.map[str]);
+			this.source.consume(i);
+			return;
+		}
+	}
+	
+	if (str) {
+		// no mappings for the first code point, so just use its
+		// Unicode code point as a proxy for its sort order. Shift
+		// it by the key size so that everything unknown sorts
+		// after things that have mappings
+		this.elements.push(str.charCodeAt(0) << this.keysize);
+		this.source.consume(1);
+	} else {
+		// end of the string
+		return undefined;
+	}
+};
+
+/**
+ * Return true if there are more collation elements left to
+ * iterate through.
+ * @returns {boolean} true if there are more elements left to
+ * iterate through, and false otherwise
+ */
+ilib.ElementIterator.prototype.hasNext = function () {
+	if (this.elements.length < 1) {
+		this._fillBuffer();
+	}
+	return !!this.elements.length;
+};
+
+/**
+ * Return the next collation element. If more than one collation 
+ * element is generated from a sequence of code points 
+ * (ie. an "expansion"), then this class will buffer the
+ * other elements and return them on subsequent calls to 
+ * this method.
+ * 
+ * @returns {number|undefined} the next collation element or
+ * undefined for no more collation elements
+ */
+ilib.ElementIterator.prototype.next = function () {
+	if (this.elements.length < 1) {
+		this._fillBuffer();
+	}
+	var ret = this.elements[0];
+	this.elements = this.elements.slice(1);
+	return ret;
+};
+
 
 /**
  * A class that implements a locale-sensitive comparator function 
@@ -50,10 +197,10 @@
  *   <li>base or primary - Only the primary distinctions between characters are significant.
  *   Another way of saying that is that the collator will be case-, accent-, and 
  *   variation-insensitive, and only distinguish between the base characters
- *   <li>accent or secondary - Both the primary and secondary distinctions between characters
+ *   <li>case or secondary - Both the primary and secondary distinctions between characters
  *   are significant. That is, the collator will be accent- and variation-insensitive
  *   and will distinguish between base characters and character case.
- *   <li>case or tertiary - The primary, secondary, and tertiary distinctions between
+ *   <li>accent or tertiary - The primary, secondary, and tertiary distinctions between
  *   characters are all significant. That is, the collator will be 
  *   variation-insensitive, but accent-, case-, and base-character-sensitive. 
  *   <li>variant or quaternary - All distinctions between characters are significant. That is,
@@ -82,9 +229,20 @@
  * on what kind of strings are being collated or what the preference of the user 
  * is. For example, in German, there is a phonebook order and a dictionary ordering
  * that sort the same array of strings slightly differently.
- * The static method ilib.Collator.getStyles will return a list of styles that ilib
+ * The static method {@link ilib.Collator#getAvailableStyles} will return a list of styles that ilib
  * currently knows about for any given locale. If the value of the style option is 
  * not recognized for a locale, it will be ignored. Default style is "standard".<p>
+ * 
+ * <li><i>usage</i> - Whether this collator will be used for searching or sorting.
+ * Valid values are simply the strings "sort" or "search". When used for sorting,
+ * it is good idea if a collator produces a stable sort. That is, the order of the 
+ * sorted array of strings should not depend on the order of the strings in the
+ * input array. As such, when a collator is supposed to act case insensitively, 
+ * it nonetheless still distinguishes between case after all other criteria
+ * are satisfied so that strings that are distinguished only by case do not sort
+ * randomly. For searching, we would like to match two strings that different only 
+ * by case, so the collator must return equals in that situation instead of 
+ * further distinguishing by case. Default is "sort".
  * 
  * <li><i>numeric</i> - Treat the left and right strings as if they started with
  * numbers and sort them numerically rather than lexically.
@@ -109,6 +267,12 @@
  * interpretted or modified in any way. They are simply passed along. The object 
  * may contain any property/value pairs as long as the calling code is in
  * agreement with the loader callback function as to what those parameters mean.
+ * 
+ * <li><i>useNative</i> - when this option is true, use the native Intl object
+ * provided by the Javascript engine, if it exists, to implement this class. If
+ * it doesn't exist, or if this parameter is false, then this class uses a pure 
+ * Javascript implementation, which is slower and uses a lot more memory, but 
+ * works everywhere that ilib works. Default is "true".
  * </ul>
  * 
  * <h2>Operation</h2>
@@ -249,13 +413,19 @@
  */
 ilib.Collator = function(options) {
 	var sync = true,
-		loadParams = undefined;
+		loadParams = undefined,
+		useNative = true;
 
 	// defaults
 	/** @type ilib.Locale */
 	this.locale = new ilib.Locale(ilib.getLocale());
 	this.caseFirst = "upper";
-	this.sensitivity = "case";
+	this.sensitivity = "variant";
+	this.level = 4;
+	this.usage = "sort";
+	this.reverse = false;
+	this.numeric = false;
+	this.style = "standard";
 	
 	if (options) {
 		if (options.locale) {
@@ -266,18 +436,22 @@ ilib.Collator = function(options) {
 				case 'primary':
 				case 'base':
 					this.sensitivity = "base";
+					this.level = 1;
 					break;
 				case 'secondary':
-				case 'accent':
-					this.sensitivity = "accent";
-					break;
-				case 'tertiary':
 				case 'case':
 					this.sensitivity = "case";
+					this.level = 2;
+					break;
+				case 'tertiary':
+				case 'accent':
+					this.sensitivity = "accent";
+					this.level = 3;
 					break;
 				case 'quaternary':
 				case 'variant':
 					this.sensitivity = "variant";
+					this.level = 4;
 					break;
 			}
 		}
@@ -295,9 +469,33 @@ ilib.Collator = function(options) {
 		}
 		
 		loadParams = options.loadParams;
+		if (typeof(options.useNative) !== 'undefined') {
+			useNative = options.useNative;
+		}
+		
+		if (options.usage === "sort" || options.usage === "search") {
+			this.usage = options.usage;
+		}
+		
+		if (typeof(options.reverse) === 'boolean') {
+			this.reverse = options.reverse;
+		}
+
+		if (typeof(options.numeric) === 'boolean') {
+			this.numeric = options.numeric;
+		}
+		
+		if (typeof(options.style) === 'string') {
+			this.style = options.style;
+		}
 	}
 
-	if (typeof(Intl) !== 'undefined' && Intl) {
+	if (this.usage === "sort") {
+		// produces a stable sort
+		this.level = 4;
+	}
+
+	if (useNative && typeof(Intl) !== 'undefined' && Intl) {
 		// this engine is modern and supports the new Intl object!
 		//console.log("implemented natively");
 		/** @type {{compare:function(string,string)}} */
@@ -316,34 +514,141 @@ ilib.Collator = function(options) {
 		ilib.loadData({
 			object: ilib.Collator, 
 			locale: this.locale, 
-			name: "collrules.json", 
-			sync: sync, 
+			name: "collation.json",
+			replace: true,
+			sync: sync,
 			loadParams: loadParams, 
 			callback: ilib.bind(this, function (collation) {
-				/*
-				// TODO: fill in the collator constructor function
 				if (!collation) {
-					collation = ilib.data.ducet;
+					collation = ilib.data.collation;
 					var spec = this.locale.getSpec().replace(/-/g, '_');
 					ilib.Collator.cache[spec] = collation;
 				}
-				console.log("this is " + JSON.stringify(this));
 				this._init(collation);
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}
-				*/
+				new ilib.LocaleInfo(this.locale, {
+					sync: sync,
+					loadParams: loadParams,
+					onLoad: ilib.bind(this, function(li) {
+						this.li = li;
+						if (this.ignorePunctuation) {
+			    			ilib.CType.isPunct._init(sync, loadParams, ilib.bind(this, function() {
+								if (options && typeof(options.onLoad) === 'function') {
+									options.onLoad(this);
+								}
+			    			}));
+		    			} else {
+							if (options && typeof(options.onLoad) === 'function') {
+								options.onLoad(this);
+							}
+		    			}
+		    		})
+				});
 			})
 		});
 	}
 };
 
 ilib.Collator.prototype = {
+	/**
+	 * @private
+	 * Bit pack an array of values into a single number
+	 * @param {Array.<number>} arr array of values to bit pack
+	 */
+	_pack: function (arr) {
+		var value = 0;
+		for (var i = 0; i < this.level; i++) {
+			if (i > 0) {
+				value <<= this.collation.bits[i];	
+			}
+			if (i === 2 && this.caseFirst === "lower") {
+				// sort the lower case first instead of upper
+				value = value | (1 - (typeof(arr[i]) !== "undefined" ? arr[i] : 0));
+			} else {
+				value = value | arr[i];
+			}
+		}
+		return value;
+	},
+	
+	/**
+	 * @private
+	 * Return the rule packed into an array of collation elements.
+	 * @param {Array.<number|null|Array.<number>>} rule
+	 * @returns
+	 */
+	_packRule: function(rule) {
+		if (rule[0] instanceof Array) {
+			var ret = [];
+			for (var i = 0; i < rule.length; i++) {
+				ret.push(this._pack(rule[i]));
+			}
+			return ret;
+		} else {
+			return [ this._pack(rule) ];
+		}
+	},
+    	
+	/**
+     * @private
+     */
+    _init: function(rules) {
+    	/** @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number>>}} */
+    	this.collation = rules[this.style];
+    	this.map = {};
+    	this.keysize = 0;
+    	for (var i = 0; i < this.level; i++) {
+    		this.keysize += this.collation.bits[i];
+    	}
+    	var remainder = ilib.mod(this.keysize, 4);
+    	this.keysize += (remainder > 0) ? (4 - remainder) : 0; // round to the nearest 4 to find how many bits to use in hex
+    	
+    	for (var r in this.collation.map) {
+    		if (r) {
+    			this.map[r] = this._packRule(this.collation.map[r]);
+    		}
+    	}
+    },
+    
     /**
      * @private
      */
-    init: function(rules) {
-    	
+    _basicCompare: function(left, right) {
+		if (this.numeric) {
+			var lvalue = new ilib.Number(left, {locale: this.locale});
+			var rvalue = new ilib.Number(right, {locale: this.locale});
+			if (isNaN(lvalue.valueOf())) {
+				if (isNaN(rvalue.valueOf())) {
+					return 0;
+				}
+				return 1;
+			} else if (isNaN(rvalue.valueOf())) {
+				return -1;
+			}
+			return lvalue.valueOf() - rvalue.valueOf();
+		} else {
+			var l = (left instanceof ilib.NormString) ? left : new ilib.NormString(left),
+				r = (right instanceof ilib.NormString) ? right : new ilib.NormString(right),
+				lelements,
+				relements;
+				
+			// if the reverse sort is on, switch the char sources so that the result comes out swapped
+			lelements = new ilib.ElementIterator(new ilib.CodePointSource(l, this.ignorePunctuation), this.map, this.keysize);
+			relements = new ilib.ElementIterator(new ilib.CodePointSource(r, this.ignorePunctuation), this.map, this.keysize);
+			
+			while (lelements.hasNext() && relements.hasNext()) {
+				var diff = lelements.next() - relements.next();
+				if (diff) {
+					return diff;
+				}
+			}
+			if (!lelements.hasNext() && !relements.hasNext()) {
+				return 0;
+			} else if (lelements.hasNext()) {
+				return 1;
+			} else {
+				return -1;
+			}
+		}
     },
     
 	/**
@@ -360,14 +665,14 @@ ilib.Collator.prototype = {
 	 * right are equivalent according to this collator
 	 */
 	compare: function (left, right) {
-		// TODO: fill in the full comparison algorithm here
 		// last resort: use the "C" locale
 		if (this.collator) {
 			// implemented by the core engine
 			return this.collator.compare(left, right);
 		}
-		
-		return (left < right) ? -1 : ((left > right) ? 1 : 0);
+
+		var ret = this._basicCompare(left, right);
+		return this.reverse ? -ret : ret;
 	},
 	
 	/**
@@ -424,8 +729,38 @@ ilib.Collator.prototype = {
 	 * @return {string} a sort key string for the given string
 	 */
 	sortKey: function (str) {
-		// TODO: fill in the full sort key algorithm here
-		return str;
+		if (!str) {
+			return "";
+		}
+		
+		if (this.collator) {
+			// native, no sort keys available
+			return str;
+		}
+		
+		function pad(str, limit) {
+			return "0000000000000000".substring(0, limit - str.length) + str;
+		}
+		
+		if (this.numeric) {
+			var v = new ilib.Number(str, {locale: this.locale});
+			var s = isNaN(v.valueOf()) ? "" : v.valueOf().toString(16);
+			return pad(s, 16);	
+		} else {
+			var n = (typeof(str) === "string") ? new ilib.NormString(str) : str,
+				ret = "",
+				lelements = new ilib.ElementIterator(new ilib.CodePointSource(n, this.ignorePunctuation), this.map, this.keysize),
+				element;
+			
+			while (lelements.hasNext()) {
+				element = lelements.next();
+				if (this.reverse) {
+					element = (1 << this.keysize) - element;
+				}
+				ret += pad(element.toString(16), this.keysize/4);	
+			}
+		}
+		return ret;
 	}
 };
 

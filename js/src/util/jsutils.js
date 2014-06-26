@@ -92,3 +92,28 @@ ilib.indexOf = function(array, obj) {
 	    return -1;
 	}
 };
+
+/**
+ * @static
+ * Convert a string into the hexadecimal representation
+ * of the Unicode characters in that string.
+ * 
+ * @param {string} string The string to convert
+ * @param {number=} limit the number of digits to use to represent the character (1 to 8)
+ * @return {string} a hexadecimal representation of the
+ * Unicode characters in the input string
+ */
+ilib.toHexString = function(string, limit) {
+	var i, 
+		result = "", 
+		lim = (limit && limit < 9) ? limit : 4;
+	
+	if (!string) {
+		return "";
+	}
+	for (i = 0; i < string.length; i++) {
+		var ch = string.charCodeAt(i).toString(16);
+		result += "00000000".substring(0, lim-ch.length) + ch;
+	}
+	return result.toUpperCase();
+};
