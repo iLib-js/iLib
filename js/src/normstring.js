@@ -62,7 +62,7 @@ ilib.NormString.prototype.parent = ilib.String.prototype;
  * how to initialize the data
  */
 ilib.NormString.init = function(options) {
-	if (!ilib._load || typeof(ilib._load) !== 'function') {
+	if (!ilib._load || (typeof(ilib._load) !== 'function' && !(ilib._load instanceof ilib.Loader))) {
 		// can't do anything
 		return;
 	}
@@ -92,7 +92,7 @@ ilib.NormString.init = function(options) {
 		files.push(forms[f] + "/" + script + ".json");
 	}
 	
-	ilib._load(files, sync, loadParams, function(arr) {
+	ilib._callLoadData(files, sync, loadParams, function(arr) {
 		ilib.data.norm.ccc = arr[0];
 		for (var i = 1; i < arr.length; i++) {
 			if (typeof(arr[i]) !== 'undefined') {

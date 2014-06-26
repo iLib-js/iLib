@@ -570,7 +570,7 @@ ilib.loadData = function(params) {
 				basename = name.replace(/\//g, '.').replace(/[\\\+\-]/g, "_");
 				data = ilib.data[basename];
 			} else {
-				data = ilib.mergeLocData(basename, locale);
+				data = ilib.mergeLocData(basename, locale, replace);
 			}
 			if (data) {
 				// console.log("found assembled data");
