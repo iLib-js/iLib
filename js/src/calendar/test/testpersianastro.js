@@ -1,5 +1,5 @@
 /*
- * testpersianastro.js - test the persian astrological calendar
+ * testpersianastro.js - test the persian astronomical calendar
  * 
  * Copyright © 2014, JEDLSoft
  *
