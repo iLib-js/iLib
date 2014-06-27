@@ -1,5 +1,5 @@
 /*
- * persianastro.js - Represent a Persian astronomical calendar object.
+ * persianastro.js - Represent a Persian astronomical (Hijjri) calendar object.
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -18,11 +18,19 @@
  */
 
 
-/* !depends calendar/astro.js calendar.js locale.js date.js julianday.js util/utils.js */
+/* !depends 
+calendar/astro.js 
+calendar.js 
+locale.js 
+date.js 
+julianday.js 
+util/utils.js
+calendar/persratadie.js 
+*/
 
 /**
  * @class
- * Construct a new Persian astronomical calendar object. This class encodes 
+ * Construct a new Persian astronomical (Hijjri) calendar object. This class encodes 
  * information about a Persian calendar. This class differs from the 
  * Persian calendar in that the leap years are calculated based on the
  * astronomical observations of the sun in Teheran, instead of calculating
@@ -90,27 +98,32 @@ ilib.Cal.PersianAstro.prototype.getMonLength = function(month, year) {
 };
 
 /**
- * Return the equivalent year in the 2820 year cycle that begins on 
- * Far 1, 474. This particular cycle obeys the cycle-of-years formula 
- * whereas the others do not specifically. This cycle can be used as
- * a proxy for other years outside of the cycle by shifting them into 
- * the cycle.   
- * @param {number} year year to find the equivalent cycle year for
- * @returns {number} the equivalent cycle year
- */
-ilib.Cal.PersianAstro.prototype.equivalentCycleYear = function(year) {
-	var y = year - (year >= 0 ? 474 : 473);
-	return ilib.mod(y, 2820) + 474;
-};
-
-/**
- * Return true if the given year is a leap year in the Persian calendar.
- * The year parameter may be given as a number, or as a PersDate object.
+ * Return true if the given year is a leap year in the Persian astronomical calendar.
  * @param {number} year the year for which the leap year information is being sought
  * @return {boolean} true if the given year is a leap year
  */
 ilib.Cal.PersianAstro.prototype.isLeapYear = function(year) {
-	return (ilib.mod((this.equivalentCycleYear(year) + 38) * 682, 2816) < 682);
+	var rdNextYear = new ilib.Date.PersAstroRataDie({
+		cal: this,
+		year: year + 1,
+		month: 1,
+		day: 1,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+	var rdThisYear = new ilib.Date.PersAstroRataDie({
+		cal: this,
+		year: year,
+		month: 1,
+		day: 1,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	}); 
+    return (rdNextYear.getRataDie() - rdThisYear.getRataDie()) > 365;
 };
 
 /**
@@ -130,8 +143,8 @@ ilib.Cal.PersianAstro.prototype.getType = function() {
  * @return {ilib.Date} a date appropriate for this calendar type
  */
 ilib.Cal.PersianAstro.prototype.newDateInstance = function (options) {
-	return new ilib.Date.PersDate(options);
+	return new ilib.Date.PersAstroDate(options);
 };
 
 /* register this calendar for the factory method */
-ilib.Cal._constructors["persianastro"] = ilib.Cal.PersianAstro;
+ilib.Cal._constructors["persian"] = ilib.Cal.PersianAstro;

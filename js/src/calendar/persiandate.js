@@ -1,5 +1,5 @@
 /*
- * persiandate.js - Represent a date in the Persian calendar
+ * persiandate.js - Represent a date in the Persian algorithmic calendar
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -453,8 +453,8 @@ ilib.Date.PersDate.prototype.getEra = function() {
  * @return {string} a string giving the name of the calendar
  */
 ilib.Date.PersDate.prototype.getCalendar = function() {
-	return "persian";
+	return "persian-algo";
 };
 
 // register with the factory method
-ilib.Date._constructors["persian"] = ilib.Date.PersDate;
+ilib.Date._constructors["persian-algo"] = ilib.Date.PersDate;

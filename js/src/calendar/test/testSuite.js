@@ -40,9 +40,9 @@ function suite() {
 	    "testthaisolar.js",
 	    "testthaisolardate.js",
 	    "testpersian.js",
-	    "testpersiandate.js"
-	    // "testpersianastro.js",
-	    // "testpersianastrodate.js"
+	    "testpersiandate.js",
+	    "testpersianastro.js",
+	    "testpersiandateastro.js"
     ];
     
     suites.forEach(function (path) {

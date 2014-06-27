@@ -1,5 +1,5 @@
 /*
- * persian.js - Represent a Persian calendar object.
+ * persian.js - Represent a Persian algorithmic calendar object.
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -31,7 +31,7 @@
  * @implements ilib.Cal
  */
 ilib.Cal.Persian = function() {
-	this.type = "persian";
+	this.type = "persian-algo";
 };
 
 /**
@@ -131,4 +131,4 @@ ilib.Cal.Persian.prototype.newDateInstance = function (options) {
 };
 
 /* register this calendar for the factory method */
-ilib.Cal._constructors["persian"] = ilib.Cal.Persian;
+ilib.Cal._constructors["persian-algo"] = ilib.Cal.Persian;

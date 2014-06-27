@@ -1,5 +1,5 @@
 /*
- * testpersiandate.js - test the persian date object
+ * testpersiandateastro.js - test the persian date object
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -17,102 +17,107 @@
  * limitations under the License.
  */
 
-function testPersDateConstructor() {
+function testPersDateAstroConstructor() {
     var pd = new ilib.Date.PersAstroDate();
     
     assertNotNull(pd);
 }
 
-function testPersDateCalcYearPositive1() {
+function testPersDateAstroCalcYearPositive1() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(1, pd._calcYear(1));
 }
 
-function testPersDateCalcYearPositive2() {
+function testPersDateAstroCalcYearPositive2() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(1, pd._calcYear(365));
 }
 
-function testPersDateCalcYearPositive3() {
+function testPersDateAstroCalcYearPositive3() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(2, pd._calcYear(366));
 }
-function testPersDateCalcYearPositive4() {
+function testPersDateAstroCalcYearPositive4() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(2, pd._calcYear(730));
 }
-function testPersDateCalcYearPositive5() {
+function testPersDateAstroCalcYearPositive5() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(3, pd._calcYear(731));
 }
-function testPersDateCalcYearPositive6() {
+function testPersDateAstroCalcYearPositive6() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(3, pd._calcYear(1095));
 }
-function testPersDateCalcYearPositive7() {
+function testPersDateAstroCalcYearPositive7() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(4, pd._calcYear(1096));
 }
-function testPersDateCalcYearPositive8() {
+function testPersDateAstroCalcYearPositive8() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(4, pd._calcYear(1461));
 }
-function testPersDateCalcYearPositive9() {
+function testPersDateAstroCalcYearPositive9() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(5, pd._calcYear(1462));
 }
-function testPersDateCalcYearPositive10() {
+function testPersDateAstroCalcYearPositive10() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(5, pd._calcYear(1826));
 }
-function testPersDateCalcYearPositive11() {
+function testPersDateAstroCalcYearPositive11() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
     assertEquals(6, pd._calcYear(1827));
 }
 
-function testPersDateCalcYearNegative1() {
+function testPersDateAstroCalcYearNegative0() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
-    assertEquals(-1, pd._calcYear(0));
+    assertEquals(0, pd._calcYear(0));
 }
-function testPersDateCalcYearNegative2() {
+function testPersDateAstroCalcYearNegative1() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
-    assertEquals(-1, pd._calcYear(-365));
+    assertEquals(0, pd._calcYear(-1));
 }
-function testPersDateCalcYearNegative3() {
+function testPersDateAstroCalcYearNegative2() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
-    assertEquals(-2, pd._calcYear(-366));
+    assertEquals(0, pd._calcYear(-365));
 }
-function testPersDateCalcYearNegative4() {
+function testPersDateAstroCalcYearNegative3() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
-    assertEquals(-2, pd._calcYear(-730));
+    assertEquals(-1, pd._calcYear(-366));
 }
-function testPersDateCalcYearNegative5() {
+function testPersDateAstroCalcYearNegative4() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
-    assertEquals(-3, pd._calcYear(-731));
+    assertEquals(-1, pd._calcYear(-730));
 }
-function testPersDateCalcYearNegative6() {
+function testPersDateAstroCalcYearNegative5() {
     var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
     
-    assertEquals(-1208, pd._calcYear(-441089));
+    assertEquals(-2, pd._calcYear(-731));
+}
+function testPersDateAstroCalcYearNegative6() {
+    var pd = new ilib.Date.PersAstroDate({rd: 0, timezone: "Etc/UTC"});
+    
+    assertEquals(-1207, pd._calcYear(-441089));
 }
 
-function testPersRataDieConstructorFromDateComponents1() {
+function testPersRataDieAstroConstructorFromDateComponents1() {
     var prd = new ilib.Date.PersAstroRataDie({
     	year: 1,
     	month: 1,
@@ -126,9 +131,9 @@ function testPersRataDieConstructorFromDateComponents1() {
     assertEquals('object', typeof(prd));
     assertEquals(1, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents2() {
+function testPersRataDieAstroConstructorFromDateComponents2() {
     var prd = new ilib.Date.PersAstroRataDie({
-    	year: -1,
+    	year: 0,
     	month: 12,
     	day: 30,
     	hour: 0,
@@ -140,7 +145,7 @@ function testPersRataDieConstructorFromDateComponents2() {
     assertEquals('object', typeof(prd));
     assertEquals(0, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents3() {
+function testPersRataDieAstroConstructorFromDateComponents3() {
     var prd = new ilib.Date.PersAstroRataDie({
     	year: 1,
     	month: 12,
@@ -154,7 +159,7 @@ function testPersRataDieConstructorFromDateComponents3() {
     assertEquals('object', typeof(prd));
     assertEquals(365, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents4() {
+function testPersRataDieAstroConstructorFromDateComponents4() {
     var prd = new ilib.Date.PersAstroRataDie({
     	year: 2,
     	month: 1,
@@ -168,7 +173,7 @@ function testPersRataDieConstructorFromDateComponents4() {
     assertEquals('object', typeof(prd));
     assertEquals(366, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents5() {
+function testPersRataDieAstroConstructorFromDateComponents5() {
     var prd = new ilib.Date.PersAstroRataDie({
     	year: 1,
     	month: 1,
@@ -182,7 +187,7 @@ function testPersRataDieConstructorFromDateComponents5() {
     assertEquals('object', typeof(prd));
     assertEquals(31, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents6() {
+function testPersRataDieAstroConstructorFromDateComponents6() {
     var prd = new ilib.Date.PersAstroRataDie({
     	year: 1,
     	month: 2,
@@ -196,7 +201,7 @@ function testPersRataDieConstructorFromDateComponents6() {
     assertEquals('object', typeof(prd));
     assertEquals(32, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents7() {
+function testPersRataDieAstroConstructorFromDateComponents7() {
     var prd = new ilib.Date.PersAstroRataDie({
     	year: 2,
     	month: 12,
@@ -210,7 +215,7 @@ function testPersRataDieConstructorFromDateComponents7() {
     assertEquals('object', typeof(prd));
     assertEquals(730, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents8() {
+function testPersRataDieAstroConstructorFromDateComponents8() {
     var prd = new ilib.Date.PersAstroRataDie({
     	year: 3,
     	month: 1,
@@ -224,7 +229,7 @@ function testPersRataDieConstructorFromDateComponents8() {
     assertEquals('object', typeof(prd));
     assertEquals(731, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents9() {
+function testPersRataDieAstroConstructorFromDateComponents9() {
     var prd = new ilib.Date.PersAstroRataDie({
     	year: 3,
     	month: 12,
@@ -238,7 +243,7 @@ function testPersRataDieConstructorFromDateComponents9() {
     assertEquals('object', typeof(prd));
     assertEquals(1095, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents10() {
+function testPersRataDieAstroConstructorFromDateComponents10() {
     var prd = new ilib.Date.PersAstroRataDie({
     	year: 4,
     	month: 1,
@@ -252,7 +257,7 @@ function testPersRataDieConstructorFromDateComponents10() {
     assertEquals('object', typeof(prd));
     assertEquals(1096, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents11() {
+function testPersRataDieAstroConstructorFromDateComponents11() {
     var prd = new ilib.Date.PersAstroRataDie({
     	year: 4,
     	month: 12,
@@ -266,7 +271,7 @@ function testPersRataDieConstructorFromDateComponents11() {
     assertEquals('object', typeof(prd));
     assertEquals(1461, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents12() {
+function testPersRataDieAstroConstructorFromDateComponents12() {
     var prd = new ilib.Date.PersAstroRataDie({
     	year: 5,
     	month: 1,
@@ -280,7 +285,7 @@ function testPersRataDieConstructorFromDateComponents12() {
     assertEquals('object', typeof(prd));
     assertEquals(1462, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents13() {
+function testPersRataDieAstroConstructorFromDateComponents13() {
     var prd = new ilib.Date.PersAstroRataDie({
     	year: 5,
     	month: 12,
@@ -294,7 +299,7 @@ function testPersRataDieConstructorFromDateComponents13() {
     assertEquals('object', typeof(prd));
     assertEquals(1826, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents14() {
+function testPersRataDieAstroConstructorFromDateComponents14() {
     var prd = new ilib.Date.PersAstroRataDie({
     	year: 6,
     	month: 1,
@@ -308,9 +313,9 @@ function testPersRataDieConstructorFromDateComponents14() {
     assertEquals('object', typeof(prd));
     assertEquals(1827, prd.getRataDie());
 }
-function testPersRataDieConstructorFromDateComponents15() {
+function testPersRataDieAstroConstructorFromDateComponents15() {
     var prd = new ilib.Date.PersAstroRataDie({
-    	year: -1208,
+    	year: -1207,
     	month: 5,
     	day: 1,
     	hour: 0,
@@ -324,7 +329,7 @@ function testPersRataDieConstructorFromDateComponents15() {
 }
 
 /* julian date is rd 366 + epoch */
-function testPersDateConstructorFromJD() {
+function testPersDateAstroConstructorFromJD() {
     var pd = new ilib.Date.PersAstroDate({julianday: 1948685.5, timezone: "Etc/UTC"});
     
     assertEquals('object', typeof(pd));
@@ -340,7 +345,7 @@ function testPersDateConstructorFromJD() {
 
 // year 4 was a leap year, so Esfand 0004 contains 30 days instead of 29, and 
 // Farvardin 1 0005 is one day later than expected. RD is 1462
-function testPersDateAfterLeapYear() {
+function testPersDateAstroAfterLeapYear() {
     var pd = new ilib.Date.PersAstroDate({julianday: 1949781.9, timezone: "Etc/UTC"});  // Far 1, 0005, 9:36am
     
     assertEquals('object', typeof(pd));
@@ -354,17 +359,32 @@ function testPersDateAfterLeapYear() {
     assertEquals(0, pd.getMilliseconds());
 }
 
-var testDates = [
+function testPersDateAstroLastDayOfLeapYear() {
+    var pd = new ilib.Date.PersAstroDate({julianday: 1949780.9, timezone: "Etc/UTC"});  // Esf 30, 0004, 9:36am
+    
+    assertEquals('object', typeof(pd));
+    assertEquals(1461.4, pd.getRataDie());
+    assertEquals(4, pd.getYears());
+    assertEquals(12, pd.getMonths());
+    assertEquals(30, pd.getDays());
+    assertEquals(9, pd.getHours());
+    assertEquals(36, pd.getMinutes());
+    assertEquals(0, pd.getSeconds());
+    assertEquals(0, pd.getMilliseconds());
+}
+
+
+var testDatesPersianAstro = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
-    [1507231.5, -1208, 5,     1,   0,    0,      0,      0,           0],
-    [1660037.5, -790,  9,     14,  0,    0,      0,      0,           3],
-    [1746893.5, -552,  7,     2,   0,    0,      0,      0,           3],
-    [1770641.5, -487,  7,     9,   0,    0,      0,      0,           0],
-    [1892731.5, -153,  10,    18,  0,    0,      0,      0,           3],
-    [1931579.5, -46,   2,     30,  0,    0,      0,      0,           1],
+    [1507231.5, -1207, 5,     1,   0,    0,      0,      0,           0],
+    [1660037.5, -789,  9,     14,  0,    0,      0,      0,           3],
+    [1746893.5, -551,  7,     2,   0,    0,      0,      0,           3],
+    [1770641.5, -486,  7,     9,   0,    0,      0,      0,           0],
+    [1892731.5, -152,  10,    19,  0,    0,      0,      0,           3],
+    [1931579.5, -45,   2,     31,  0,    0,      0,      0,           1],
     [1974851.5, 73,    8,     19,  0,    0,      0,      0,           6],
     [2091164.5, 392,   2,     5,   0,    0,      0,      0,           0],
-    [2121509.5, 475,   3,     3,   0,    0,      0,      0,           0],
+    [2121509.5, 475,   3,     4,   0,    0,      0,      0,           0],
     [2155779.5, 569,   1,     3,   0,    0,      0,      0,           5],
     [2174029.5, 618,   12,    20,  0,    0,      0,      0,           6],
     [2191584.5, 667,   1,     14,  0,    0,      0,      0,           5],
@@ -391,51 +411,51 @@ var testDates = [
     [2486076.5, 1473,  4,     28,  0,    0,      0,      0,           0]
 ];
 
-function testPersDateConvert() {
+function testPersDateAstroConvert() {
     var pd;
     
-    for (var i = 0; i < testDates.length; i++) {
-        pd = new ilib.Date.PersAstroDate({julianday: testDates[i][0], timezone: "Etc/UTC"});
+    for (var i = 0; i < testDatesPersianAstro.length; i++) {
+        pd = new ilib.Date.PersAstroDate({julianday: testDatesPersianAstro[i][0], timezone: "Etc/UTC"});
     
-        info("testing jd=" + testDates[i][0]);
+        info("testing jd=" + testDatesPersianAstro[i][0]);
         
         assertEquals('object', typeof(pd));
-        assertEquals("testing rd for " + testDates[i][0], (testDates[i][0] - 1948319.5), pd.getRataDie());
-        assertEquals("testing year for " + testDates[i][0], testDates[i][1], pd.getYears());
-        assertEquals("testing month for " + testDates[i][0], testDates[i][2], pd.getMonths());
-        assertEquals("testing day for " + testDates[i][0], testDates[i][3], pd.getDays());
-        assertEquals("testing hour for " + testDates[i][0], testDates[i][4], pd.getHours());
-        assertEquals("testing minute for " + testDates[i][0], testDates[i][5], pd.getMinutes());
-        assertEquals("testing second for " + testDates[i][0], testDates[i][6], pd.getSeconds());
-        assertEquals("testing millisecond for " + testDates[i][0], testDates[i][7], pd.getMilliseconds());
-        assertEquals("testing day of week for " + testDates[i][0], testDates[i][8], pd.getDayOfWeek());
+        assertEquals("testing rd for " + testDatesPersianAstro[i][0], (testDatesPersianAstro[i][0] - 1948319.5), pd.getRataDie());
+        assertEquals("testing year for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][1], pd.getYears());
+        assertEquals("testing month for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][2], pd.getMonths());
+        assertEquals("testing day for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][3], pd.getDays());
+        assertEquals("testing hour for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][4], pd.getHours());
+        assertEquals("testing minute for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][5], pd.getMinutes());
+        assertEquals("testing second for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][6], pd.getSeconds());
+        assertEquals("testing millisecond for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][7], pd.getMilliseconds());
+        assertEquals("testing day of week for " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][8], pd.getDayOfWeek());
     }
 }
 
-function testPersDateGetJulianDay() {
+function testPersDateAstroGetJulianDay() {
 	var pd;
 	
-    for (var i = 0; i < testDates.length; i++) {
+    for (var i = 0; i < testDatesPersianAstro.length; i++) {
         pd = new ilib.Date.PersAstroDate({
-            year: testDates[i][1], 
-            month: testDates[i][2], 
-            day: testDates[i][3],
-            hour: testDates[i][4],
-            minute: testDates[i][5],
-            second: testDates[i][6],
-            millisecond: testDates[i][7],
+            year: testDatesPersianAstro[i][1], 
+            month: testDatesPersianAstro[i][2], 
+            day: testDatesPersianAstro[i][3],
+            hour: testDatesPersianAstro[i][4],
+            minute: testDatesPersianAstro[i][5],
+            second: testDatesPersianAstro[i][6],
+            millisecond: testDatesPersianAstro[i][7],
             timezone: "Etc/UTC"
     	});
     
-        info("testing jd=" + testDates[i][0]);
+        info("testing jd=" + testDatesPersianAstro[i][0]);
         
         assertEquals('object', typeof(pd));
-        assertEquals("testing row " + testDates[i][0], testDates[i][0], pd.getJulianDay());
-        assertEquals(testDates[i][8], pd.getDayOfWeek());
+        assertEquals("testing row " + testDatesPersianAstro[i][0], testDatesPersianAstro[i][0], pd.getJulianDay());
+        assertEquals(testDatesPersianAstro[i][8], pd.getDayOfWeek());
     }
 }
 
-function testPersDateConstructorFull() {
+function testPersDateAstroConstructorFull() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1392,
 		month: 9,
@@ -457,7 +477,7 @@ function testPersDateConstructorFull() {
     assertEquals(123, pd.getMilliseconds());
 }
 
-function testPersDateConstructorFullWithStrings() {
+function testPersDateAstroConstructorFullWithStrings() {
     var pd = new ilib.Date.PersAstroDate({
 		year: "1392", 
 		month: "9",
@@ -479,7 +499,7 @@ function testPersDateConstructorFullWithStrings() {
     assertEquals(123, pd.getMilliseconds());
 }
 
-function testPersDateConstructorCopy() {
+function testPersDateAstroConstructorCopy() {
     var pd = new ilib.Date.PersAstroDate({
         year: 1392, 
         month: 9, 
@@ -501,7 +521,7 @@ function testPersDateConstructorCopy() {
     assertEquals(123, pd.getMilliseconds());
 }
 
-function testPersDateSetYears() {
+function testPersDateAstroSetYears() {
     var pd = new ilib.Date.PersAstroDate();
     
     assertNotNull(pd);
@@ -511,7 +531,7 @@ function testPersDateSetYears() {
     assertEquals(123, pd.getYears());
 }
 
-function testPersDateSetMonths() {
+function testPersDateAstroSetMonths() {
     var pd = new ilib.Date.PersAstroDate();
     
     assertNotNull(pd);
@@ -521,7 +541,7 @@ function testPersDateSetMonths() {
     assertEquals(7, pd.getMonths());
 }
 
-function testPersDateSetDays() {
+function testPersDateAstroSetDays() {
     var pd = new ilib.Date.PersAstroDate();
     
     assertNotNull(pd);
@@ -531,7 +551,7 @@ function testPersDateSetDays() {
     assertEquals(12, pd.getDays());
 }
 
-function testPersDateSetHours() {
+function testPersDateAstroSetHours() {
     var pd = new ilib.Date.PersAstroDate();
     
     assertNotNull(pd);
@@ -541,7 +561,7 @@ function testPersDateSetHours() {
     assertEquals(12, pd.getHours());
 }
 
-function testPersDateSetMinutes() {
+function testPersDateAstroSetMinutes() {
     var pd = new ilib.Date.PersAstroDate();
     
     assertNotNull(pd);
@@ -551,7 +571,7 @@ function testPersDateSetMinutes() {
     assertEquals(13, pd.getMinutes());
 }
 
-function testPersDateSetSeconds() {
+function testPersDateAstroSetSeconds() {
     var pd = new ilib.Date.PersAstroDate();
     
     assertNotNull(pd);
@@ -561,7 +581,7 @@ function testPersDateSetSeconds() {
     assertEquals(23, pd.getSeconds());
 }
 
-function testPersDateSetMilliseconds() {
+function testPersDateAstroSetMilliseconds() {
     var pd = new ilib.Date.PersAstroDate();
     
     assertNotNull(pd);
@@ -598,7 +618,7 @@ function testGetDayOfWeekWithTime() {
     assertEquals(5, pd.getDayOfWeek());
 }
 
-function testPersDateTestGetTimeZero() {
+function testPersDateAstroTestGetTimeZero() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1348,
 		month: 10,
@@ -610,14 +630,14 @@ function testPersDateTestGetTimeZero() {
     assertEquals(0, pd.getTime());
 }
 
-function testPersDateTestGetTimeZeroJD() {
+function testPersDateAstroTestGetTimeZeroJD() {
     var pd = new ilib.Date.PersAstroDate({julianday: 2440587.5});
     assertNotNull(pd);
     
     assertEquals(0, pd.getTime());
 }
 
-function testPersDateTestGetTime() {
+function testPersDateAstroTestGetTime() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1348,
 		month: 10,
@@ -631,7 +651,7 @@ function testPersDateTestGetTime() {
     assertEquals(30600000, pd.getTime());
 }
 
-function testPersDateTestGetTimeTooEarly() {
+function testPersDateAstroTestGetTimeTooEarly() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1348,
 		month: 10,
@@ -642,7 +662,7 @@ function testPersDateTestGetTimeTooEarly() {
     assertEquals(-1, pd.getTime());
 }
 
-function testPersDateTestGetTimeTooLate() {
+function testPersDateAstroTestGetTimeTooLate() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1416,
 		month: 11,
@@ -654,7 +674,7 @@ function testPersDateTestGetTimeTooLate() {
 }
 
 // test some of the helper functions to make sure they are producing the right thing
-function testPersDateOnOrBeforeSun() {
+function testPersDateAstroOnOrBeforeSun() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -669,7 +689,7 @@ function testPersDateOnOrBeforeSun() {
     assertEquals(rd-5, pd.onOrBefore(0).getRataDie());
 }
 
-function testPersDateOnOrBeforeMon() {
+function testPersDateAstroOnOrBeforeMon() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -683,7 +703,7 @@ function testPersDateOnOrBeforeMon() {
     assertEquals(rd-4, pd.onOrBefore(1).getRataDie());
 }
 
-function testPersDateOnOrBeforeTue() {
+function testPersDateAstroOnOrBeforeTue() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -697,7 +717,7 @@ function testPersDateOnOrBeforeTue() {
     assertEquals(rd-3, pd.onOrBefore(2).getRataDie());
 }
 
-function testPersDateOnOrBeforeWed() {
+function testPersDateAstroOnOrBeforeWed() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -711,7 +731,7 @@ function testPersDateOnOrBeforeWed() {
     assertEquals(rd-2, pd.onOrBefore(3).getRataDie());
 }
 
-function testPersDateOnOrBeforeThu() {
+function testPersDateAstroOnOrBeforeThu() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -725,7 +745,7 @@ function testPersDateOnOrBeforeThu() {
     assertEquals(rd-1, pd.onOrBefore(4).getRataDie());
 }
 
-function testPersDateOnOrBeforeFri() {
+function testPersDateAstroOnOrBeforeFri() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -739,7 +759,7 @@ function testPersDateOnOrBeforeFri() {
     assertEquals(rd, pd.onOrBefore(5).getRataDie());
 }
 
-function testPersDateOnOrBeforeSat() {
+function testPersDateAstroOnOrBeforeSat() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -753,7 +773,7 @@ function testPersDateOnOrBeforeSat() {
     assertEquals(rd-6, pd.onOrBefore(6).getRataDie());
 }
 
-function testPersDateOnOrAfterSun() {
+function testPersDateAstroOnOrAfterSun() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -768,7 +788,7 @@ function testPersDateOnOrAfterSun() {
     assertEquals(rd+2, pd.onOrAfter(0).getRataDie());
 }
 
-function testPersDateOnOrAfterMon() {
+function testPersDateAstroOnOrAfterMon() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -782,7 +802,7 @@ function testPersDateOnOrAfterMon() {
     assertEquals(rd+3, pd.onOrAfter(1).getRataDie());
 }
 
-function testPersDateOnOrAfterTue() {
+function testPersDateAstroOnOrAfterTue() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -796,7 +816,7 @@ function testPersDateOnOrAfterTue() {
     assertEquals(rd+4, pd.onOrAfter(2).getRataDie());
 }
 
-function testPersDateOnOrAfterWed() {
+function testPersDateAstroOnOrAfterWed() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -810,7 +830,7 @@ function testPersDateOnOrAfterWed() {
     assertEquals(rd+5, pd.onOrAfter(3).getRataDie());
 }
 
-function testPersDateOnOrAfterThu() {
+function testPersDateAstroOnOrAfterThu() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -824,7 +844,7 @@ function testPersDateOnOrAfterThu() {
     assertEquals(rd+6, pd.onOrAfter(4).getRataDie());
 }
 
-function testPersDateOnOrAfterFri() {
+function testPersDateAstroOnOrAfterFri() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -838,7 +858,7 @@ function testPersDateOnOrAfterFri() {
     assertEquals(rd, pd.onOrAfter(5).getRataDie());
 }
 
-function testPersDateOnOrAfterSat() {
+function testPersDateAstroOnOrAfterSat() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -852,7 +872,7 @@ function testPersDateOnOrAfterSat() {
     assertEquals(rd+1, pd.onOrAfter(6).getRataDie());
 }
 
-function testPersDateBeforeSun() {
+function testPersDateAstroBeforeSun() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -867,7 +887,7 @@ function testPersDateBeforeSun() {
     assertEquals(rd-5, pd.before(0).getRataDie());
 }
 
-function testPersDateBeforeMon() {
+function testPersDateAstroBeforeMon() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -881,7 +901,7 @@ function testPersDateBeforeMon() {
     assertEquals(rd-4, pd.before(1).getRataDie());
 }
 
-function testPersDateBeforeTue() {
+function testPersDateAstroBeforeTue() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -895,7 +915,7 @@ function testPersDateBeforeTue() {
     assertEquals(rd-3, pd.before(2).getRataDie());
 }
 
-function testPersDateBeforeWed() {
+function testPersDateAstroBeforeWed() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -909,7 +929,7 @@ function testPersDateBeforeWed() {
     assertEquals(rd-2, pd.before(3).getRataDie());
 }
 
-function testPersDateBeforeThu() {
+function testPersDateAstroBeforeThu() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -923,7 +943,7 @@ function testPersDateBeforeThu() {
     assertEquals(rd-1, pd.before(4).getRataDie());
 }
 
-function testPersDateBeforeFri() {
+function testPersDateAstroBeforeFri() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -937,7 +957,7 @@ function testPersDateBeforeFri() {
     assertEquals(rd-7, pd.before(5).getRataDie());
 }
 
-function testPersDateBeforeSat() {
+function testPersDateAstroBeforeSat() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -951,7 +971,7 @@ function testPersDateBeforeSat() {
     assertEquals(rd-6, pd.before(6).getRataDie());
 }
 
-function testPersDateAfterSun() {
+function testPersDateAstroAfterSun() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -966,7 +986,7 @@ function testPersDateAfterSun() {
     assertEquals(rd+2, pd.after(0).getRataDie());
 }
 
-function testPersDateAfterMon() {
+function testPersDateAstroAfterMon() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -980,7 +1000,7 @@ function testPersDateAfterMon() {
     assertEquals(rd+3, pd.after(1).getRataDie());
 }
 
-function testPersDateAfterTue() {
+function testPersDateAstroAfterTue() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -994,7 +1014,7 @@ function testPersDateAfterTue() {
     assertEquals(rd+4, pd.after(2).getRataDie());
 }
 
-function testPersDateAfterWed() {
+function testPersDateAstroAfterWed() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -1008,7 +1028,7 @@ function testPersDateAfterWed() {
     assertEquals(rd+5, pd.after(3).getRataDie());
 }
 
-function testPersDateAfterThu() {
+function testPersDateAstroAfterThu() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -1022,7 +1042,7 @@ function testPersDateAfterThu() {
     assertEquals(rd+6, pd.after(4).getRataDie());
 }
 
-function testPersDateAfterFri() {
+function testPersDateAstroAfterFri() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -1036,7 +1056,7 @@ function testPersDateAfterFri() {
     assertEquals(rd+7, pd.after(5).getRataDie());
 }
 
-function testPersDateAfterSat() {
+function testPersDateAstroAfterSat() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -1050,7 +1070,7 @@ function testPersDateAfterSat() {
     assertEquals(rd+1, pd.after(6).getRataDie());
 }
 
-function testPersDateTestGetWeekOfYearThisYear() {
+function testPersDateAstroTestGetWeekOfYearThisYear() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 2,
@@ -1061,7 +1081,7 @@ function testPersDateTestGetWeekOfYearThisYear() {
     assertEquals(5, pd.getWeekOfYear());
 }
 
-function testPersDateTestGetWeekOfYearThisYear2() {
+function testPersDateAstroTestGetWeekOfYearThisYear2() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1072,7 +1092,7 @@ function testPersDateTestGetWeekOfYearThisYear2() {
     assertEquals(12, pd.getWeekOfYear());
 }
 
-function testPersDateTestGetWeekOfYearThisYear3() {
+function testPersDateAstroTestGetWeekOfYearThisYear3() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 12,
@@ -1083,7 +1103,7 @@ function testPersDateTestGetWeekOfYearThisYear3() {
     assertEquals(52, pd.getWeekOfYear());
 }
 
-function testPersDateTestGetWeekOfYearThisYearWithTime() {
+function testPersDateAstroTestGetWeekOfYearThisYearWithTime() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 12,
@@ -1098,7 +1118,7 @@ function testPersDateTestGetWeekOfYearThisYearWithTime() {
     assertEquals(52, pd.getWeekOfYear());
 }
 
-function testPersDateTestGetWeekOfYearPreviousYear() {
+function testPersDateAstroTestGetWeekOfYearPreviousYear() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 1,
@@ -1109,7 +1129,7 @@ function testPersDateTestGetWeekOfYearPreviousYear() {
     assertEquals(53, pd.getWeekOfYear());
 }
 
-function testPersDateTestGetWeekOfYearLastWeekLeap() {
+function testPersDateAstroTestGetWeekOfYearLastWeekLeap() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1383,
 		month: 12,
@@ -1120,7 +1140,7 @@ function testPersDateTestGetWeekOfYearLastWeekLeap() {
     assertEquals(1, pd.getWeekOfYear());
 }
 
-function testPersDateTestGetWeekOfYearLastWeekRegular1() {
+function testPersDateAstroTestGetWeekOfYearLastWeekRegular1() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1389,
 		month: 12,
@@ -1131,7 +1151,7 @@ function testPersDateTestGetWeekOfYearLastWeekRegular1() {
     assertEquals(1, pd.getWeekOfYear());
 }
 
-function testPersDateTestGetWeekOfYearLastWeekRegular2() {
+function testPersDateAstroTestGetWeekOfYearLastWeekRegular2() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1390,
 		month: 12,
@@ -1142,7 +1162,7 @@ function testPersDateTestGetWeekOfYearLastWeekRegular2() {
     assertEquals(1, pd.getWeekOfYear());
 }
 
-function testPersDateTestGetWeekOfYearLastWeekRegular3() {
+function testPersDateAstroTestGetWeekOfYearLastWeekRegular3() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1391,
 		month: 12,
@@ -1153,7 +1173,7 @@ function testPersDateTestGetWeekOfYearLastWeekRegular3() {
     assertEquals(1, pd.getWeekOfYear());
 }
 
-function testPersDateTestGetWeekOfYearLastWeekRegular4() {
+function testPersDateAstroTestGetWeekOfYearLastWeekRegular4() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1392,
 		month: 12,
@@ -1164,7 +1184,7 @@ function testPersDateTestGetWeekOfYearLastWeekRegular4() {
     assertEquals(53, pd.getWeekOfYear());
 }
 
-function testPersDateTestGetWeekOfYearLastWeekRegular5() {
+function testPersDateAstroTestGetWeekOfYearLastWeekRegular5() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1393,
 		month: 12,
@@ -1175,7 +1195,7 @@ function testPersDateTestGetWeekOfYearLastWeekRegular5() {
     assertEquals(52, pd.getWeekOfYear());
 }
 
-function testPersDateTestGetWeekOfYearLastWeekRegular6() {
+function testPersDateAstroTestGetWeekOfYearLastWeekRegular6() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1394,
 		month: 12,
@@ -1186,7 +1206,7 @@ function testPersDateTestGetWeekOfYearLastWeekRegular6() {
     assertEquals(52, pd.getWeekOfYear());
 }
 
-function testPersDateGetDayOfYearFirstDay() {
+function testPersDateAstroGetDayOfYearFirstDay() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 1,
@@ -1197,7 +1217,7 @@ function testPersDateGetDayOfYearFirstDay() {
     assertEquals(1, pd.getDayOfYear());
 }
 
-function testPersDateGetDayOfYearMidYear() {
+function testPersDateAstroGetDayOfYearMidYear() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1208,7 +1228,7 @@ function testPersDateGetDayOfYearMidYear() {
     assertEquals(79, pd.getDayOfYear());
 }
 
-function testPersDateGetDayOfYearLastDay() {
+function testPersDateAstroGetDayOfYearLastDay() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 12,
@@ -1219,7 +1239,7 @@ function testPersDateGetDayOfYearLastDay() {
     assertEquals(365, pd.getDayOfYear());
 }
 
-function testPersDateGetDayOfYearLastDayLeapYear() {
+function testPersDateAstroGetDayOfYearLastDayLeapYear() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1387,
 		month: 12,
@@ -1230,7 +1250,7 @@ function testPersDateGetDayOfYearLastDayLeapYear() {
     assertEquals(366, pd.getDayOfYear());
 }
 
-function testPersDateGetWeekOfMonth0() {
+function testPersDateAstroGetWeekOfMonth0() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1241,7 +1261,7 @@ function testPersDateGetWeekOfMonth0() {
     assertEquals(0, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateGetWeekOfMonth1() {
+function testPersDateAstroGetWeekOfMonth1() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1252,7 +1272,7 @@ function testPersDateGetWeekOfMonth1() {
     assertEquals(1, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateGetWeekOfMonth2() {
+function testPersDateAstroGetWeekOfMonth2() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1263,7 +1283,7 @@ function testPersDateGetWeekOfMonth2() {
     assertEquals(2, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateGetWeekOfMonth3() {
+function testPersDateAstroGetWeekOfMonth3() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1274,7 +1294,7 @@ function testPersDateGetWeekOfMonth3() {
     assertEquals(3, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateGetWeekOfMonth4() {
+function testPersDateAstroGetWeekOfMonth4() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1285,7 +1305,7 @@ function testPersDateGetWeekOfMonth4() {
     assertEquals(4, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateGetWeekOfMonth5() {
+function testPersDateAstroGetWeekOfMonth5() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1296,7 +1316,7 @@ function testPersDateGetWeekOfMonth5() {
     assertEquals(5, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateGetWeekOfMonth6() {
+function testPersDateAstroGetWeekOfMonth6() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 4,
@@ -1307,7 +1327,7 @@ function testPersDateGetWeekOfMonth6() {
     assertEquals(1, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateGetWeekOfMonth7() {
+function testPersDateAstroGetWeekOfMonth7() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 5,
@@ -1318,7 +1338,7 @@ function testPersDateGetWeekOfMonth7() {
     assertEquals(0, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateGetWeekOfMonth8() {
+function testPersDateAstroGetWeekOfMonth8() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 6,
@@ -1329,7 +1349,7 @@ function testPersDateGetWeekOfMonth8() {
     assertEquals(1, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateGetWeekOfMonth9() {
+function testPersDateAstroGetWeekOfMonth9() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 7,
@@ -1340,7 +1360,7 @@ function testPersDateGetWeekOfMonth9() {
     assertEquals(1, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateGetWeekOfMonthIR0() {
+function testPersDateAstroGetWeekOfMonthIR0() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1351,7 +1371,7 @@ function testPersDateGetWeekOfMonthIR0() {
     assertEquals(0, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR1() {
+function testPersDateAstroGetWeekOfMonthIR1() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1362,7 +1382,7 @@ function testPersDateGetWeekOfMonthIR1() {
     assertEquals(1, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR2() {
+function testPersDateAstroGetWeekOfMonthIR2() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1373,7 +1393,7 @@ function testPersDateGetWeekOfMonthIR2() {
     assertEquals(2, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR3() {
+function testPersDateAstroGetWeekOfMonthIR3() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1384,7 +1404,7 @@ function testPersDateGetWeekOfMonthIR3() {
     assertEquals(3, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR4() {
+function testPersDateAstroGetWeekOfMonthIR4() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1395,7 +1415,7 @@ function testPersDateGetWeekOfMonthIR4() {
     assertEquals(4, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR5() {
+function testPersDateAstroGetWeekOfMonthIR5() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 3,
@@ -1406,7 +1426,7 @@ function testPersDateGetWeekOfMonthIR5() {
     assertEquals(5, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR6() {
+function testPersDateAstroGetWeekOfMonthIR6() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 4,
@@ -1417,7 +1437,7 @@ function testPersDateGetWeekOfMonthIR6() {
     assertEquals(1, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR7() {
+function testPersDateAstroGetWeekOfMonthIR7() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 5,
@@ -1428,7 +1448,7 @@ function testPersDateGetWeekOfMonthIR7() {
     assertEquals(0, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR8() {
+function testPersDateAstroGetWeekOfMonthIR8() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 6,
@@ -1439,7 +1459,7 @@ function testPersDateGetWeekOfMonthIR8() {
     assertEquals(1, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR9() {
+function testPersDateAstroGetWeekOfMonthIR9() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 7,
@@ -1450,7 +1470,7 @@ function testPersDateGetWeekOfMonthIR9() {
     assertEquals(0, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR10() {
+function testPersDateAstroGetWeekOfMonthIR10() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 8,
@@ -1461,7 +1481,7 @@ function testPersDateGetWeekOfMonthIR10() {
     assertEquals(0, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR11() {
+function testPersDateAstroGetWeekOfMonthIR11() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 9,
@@ -1472,7 +1492,7 @@ function testPersDateGetWeekOfMonthIR11() {
     assertEquals(1, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR12() {
+function testPersDateAstroGetWeekOfMonthIR12() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 10,
@@ -1483,7 +1503,7 @@ function testPersDateGetWeekOfMonthIR12() {
     assertEquals(1, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR13() {
+function testPersDateAstroGetWeekOfMonthIR13() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 11,
@@ -1494,7 +1514,7 @@ function testPersDateGetWeekOfMonthIR13() {
     assertEquals(0, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthIR14() {
+function testPersDateAstroGetWeekOfMonthIR14() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 12,
@@ -1505,7 +1525,7 @@ function testPersDateGetWeekOfMonthIR14() {
     assertEquals(1, pd.getWeekOfMonth("fa-IR"));
 }
 
-function testPersDateGetWeekOfMonthUS() {
+function testPersDateAstroGetWeekOfMonthUS() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 8,
@@ -1516,7 +1536,7 @@ function testPersDateGetWeekOfMonthUS() {
     assertEquals(0, pd.getWeekOfMonth("en-US"));
 }
 
-function testPersDateGetWeekOfMonthDE() {
+function testPersDateAstroGetWeekOfMonthDE() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 8,
@@ -1529,7 +1549,7 @@ function testPersDateGetWeekOfMonthDE() {
     assertEquals(0, pd.getWeekOfMonth("de-DE"));
 }
 
-function testPersDateGetEraAP() {
+function testPersDateAstroGetEraAP() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1388,
 		month: 5,
@@ -1540,7 +1560,7 @@ function testPersDateGetEraAP() {
     assertEquals(1, pd.getEra());
 }
 
-function testPersDateGetEraBAP() {
+function testPersDateAstroGetEraBAP() {
     var pd = new ilib.Date.PersAstroDate({
 		year: -46,
 		month: 5,
@@ -1555,7 +1575,7 @@ function testPersDateGetEraBAP() {
     assertEquals(-1, pd.getEra());
 }
 
-function testPersDateGetEraAPYear1() {
+function testPersDateAstroGetEraAPYear1() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 1,
 		month: 1,
@@ -1566,7 +1586,7 @@ function testPersDateGetEraAPYear1() {
     assertEquals(1, pd.getEra());
 }
 
-function testPersDateGetEraBAPYear0() {
+function testPersDateAstroGetEraBAPYear0() {
     var pd = new ilib.Date.PersAstroDate({
 		year: 0,
 		month: 12,
@@ -1577,7 +1597,7 @@ function testPersDateGetEraBAPYear0() {
     assertEquals(-1, pd.getEra());
 }
 
-function testPersDateSetTimeZone() {
+function testPersDateAstroSetTimeZone() {
     var pd = new ilib.Date.PersAstroDate({
     	year: 1433, 
     	month: 3, 
@@ -1593,7 +1613,7 @@ function testPersDateSetTimeZone() {
     assertEquals("Asia/Tokyo", pd.getTimeZone());
 }
 
-function testPersDateSetTimeZoneNotString() {
+function testPersDateAstroSetTimeZoneNotString() {
     var pd = new ilib.Date.PersAstroDate({
     	year: 1433, 
     	month: 3, 
@@ -1609,7 +1629,7 @@ function testPersDateSetTimeZoneNotString() {
     assertEquals("America/Los_Angeles", pd.getTimeZone());
 }
 
-function testPersDateSetTimeZoneUndefined() {
+function testPersDateAstroSetTimeZoneUndefined() {
     var pd = new ilib.Date.PersAstroDate({
     	year: 1433, 
     	month: 3, 
@@ -1626,7 +1646,7 @@ function testPersDateSetTimeZoneUndefined() {
     assertEquals("local", pd.getTimeZone());
 }
 
-function testPersDateSetTimeZoneEmpty() {
+function testPersDateAstroSetTimeZoneEmpty() {
     var pd = new ilib.Date.PersAstroDate({
     	year: 1433, 
     	month: 3, 
@@ -1643,7 +1663,7 @@ function testPersDateSetTimeZoneEmpty() {
     assertEquals("local", pd.getTimeZone());
 }
 
-function testPersDateInitWithUnixTimeRightTimeZone() {
+function testPersDateAstroInitWithUnixTimeRightTimeZone() {
     var pd = new ilib.Date.PersAstroDate({
     	unixtime: 0
     });
@@ -1652,7 +1672,7 @@ function testPersDateInitWithUnixTimeRightTimeZone() {
     assertEquals("local", pd.getTimeZone());
 }
 
-function testPersDateInitWithJDRightTimeZone() {
+function testPersDateAstroInitWithJDRightTimeZone() {
     var pd = new ilib.Date.PersAstroDate({
     	julianday: 0
     });
@@ -1661,7 +1681,7 @@ function testPersDateInitWithJDRightTimeZone() {
     assertEquals("local", pd.getTimeZone());
 }
 
-function testPersDateInitWithRDRightTimeZone() {
+function testPersDateAstroInitWithRDRightTimeZone() {
     var pd = new ilib.Date.PersAstroDate({
     	rd: 0
     });

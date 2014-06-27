@@ -1,5 +1,5 @@
 /*
- * persianastrodate.js - Represent a date in the Persian astronomical calendar
+ * persianastrodate.js - Represent a date in the Persian astronomical (Hijjri) calendar
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -18,7 +18,8 @@
  */
 
 /* !depends 
-date.js 
+date.js
+calendar/persratadie.js
 calendar/persianastro.js 
 util/utils.js
 util/search.js 
@@ -27,120 +28,9 @@ julianday.js
 */
 
 /**
- * Construct a new Persian astronomical RD date number object. The constructor parameters can 
- * contain any of the following properties:
- * 
- * <ul>
- * <li><i>unixtime<i> - sets the time of this instance according to the given 
- * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970, Gregorian
- * 
- * <li><i>julianday</i> - sets the time of this instance according to the given
- * Julian Day instance or the Julian Day given as a float
- * 
- * <li><i>year</i> - any integer, including 0
- * 
- * <li><i>month</i> - 1 to 12, where 1 means Farvardin, 2 means Ordibehesht, etc.
- * 
- * <li><i>day</i> - 1 to 31
- * 
- * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
- * is always done with an unambiguous 24 hour representation
- * 
- * <li><i>minute</i> - 0 to 59
- * 
- * <li><i>second</i> - 0 to 59
- * 
- * <li><i>millisecond</i> - 0 to 999
- * 
- * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
- * </ul>
- *
- * If the constructor is called with another Persian date instance instead of
- * a parameter block, the other instance acts as a parameter block and its
- * settings are copied into the current instance.<p>
- * 
- * If the constructor is called with no arguments at all or if none of the 
- * properties listed above are present, then the RD is calculate based on 
- * the current date at the time of instantiation. <p>
- * 
- * If any of the properties from <i>year</i> through <i>millisecond</i> are not
- * specified in the params, it is assumed that they have the smallest possible
- * value in the range for the property (zero or one).<p>
- * 
- * Depends directive: !depends persiandate.js
- * 
- * @private
- * @class
- * @constructor
- * @extends ilib.Date.RataDie
- * @param {Object=} params parameters that govern the settings and behaviour of this Persian RD date
- */
-ilib.Date.PersAstroRataDie = function(params) {
-	this.cal = params && params.cal || new ilib.Cal.PersianAstro();
-	this.rd = undefined;
-	ilib.Date.RataDie.call(this, params);
-};
-
-ilib.Date.PersAstroRataDie.prototype = new ilib.Date.RataDie();
-ilib.Date.PersAstroRataDie.prototype.parent = ilib.Date.RataDie;
-ilib.Date.PersAstroRataDie.prototype.constructor = ilib.Date.PersAstroRataDie;
-
-/**
- * The difference between a zero Julian day and the first Persian date
- * @private
- * @const
- * @type number
- */
-ilib.Date.PersAstroRataDie.prototype.epoch = 1948319.5;
-
-/**
- * Calculate the Rata Die (fixed day) number of the given date from the
- * date components.
- *
- * @protected
- * @param {Object} date the date components to calculate the RD from
- */
-ilib.Date.PersAstroRataDie.prototype._setDateComponents = function(date) {
-	var year = this.cal.equivalentCycleYear(date.year);
-	var y = date.year - (date.year >= 0 ? 474 : 473);
-	var rdOfYears = 1029983 * Math.floor(y/2820) + 365 * (year - 1) + Math.floor((682 * year - 110) / 2816);
-	var dayInYear = (date.month > 1 ? ilib.Date.PersAstroDate.cumMonthLengths[date.month-1] : 0) + date.day;
-	var rdtime = (date.hour * 3600000 +
-		date.minute * 60000 +
-		date.second * 1000 +
-		date.millisecond) /
-		86400000;
-	
-	/*
-	console.log("getRataDie: converting " +  JSON.stringify(this));
-	console.log("getRataDie: year is " +  year);
-	console.log("getRataDie: rd of years is " +  rdOfYears);
-	console.log("getRataDie: day in year is " +  dayInYear);
-	console.log("getRataDie: rdtime is " +  rdtime);
-	console.log("getRataDie: rd is " +  (rdOfYears + dayInYear + rdtime));
-	*/
-	
-	this.rd = rdOfYears + dayInYear + rdtime;
-};
-
-/**
- * Return the rd number of the particular day of the week on or before the 
- * given rd. eg. The Sunday on or before the given rd.
- * @private
- * @param {number} rd the rata die date of the reference date
- * @param {number} dayOfWeek the day of the week that is being sought relative 
- * to the current date
- * @return {number} the rd of the day of the week
- */
-ilib.Date.PersAstroRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
-	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 3, 7);
-};
-
-
-/**
  * @class
  * 
- * Construct a new Persian date object. The constructor parameters can 
+ * Construct a new Persian astronomical date object. The constructor parameters can 
  * contain any of the following properties:
  * 
  * <ul>
@@ -319,7 +209,7 @@ ilib.Date.PersAstroDate.cumMonthLengths = [
 	276,  // Dey
 	306,  // Bahman
 	336,  // Esfand
-	365
+	366
 ];
 
 /**
@@ -339,12 +229,8 @@ ilib.Date.PersAstroDate.prototype.newRd = function (params) {
  * @returns {number} the year for the RD
  */
 ilib.Date.PersAstroDate.prototype._calcYear = function(rd) {
-	var shiftedRd = rd - 173126;
-	var numberOfCycles = Math.floor(shiftedRd / 1029983);
-	var shiftedDayInCycle = ilib.mod(shiftedRd, 1029983);
-	var yearInCycle = (shiftedDayInCycle === 1029982) ? 2820 : Math.floor((2816 * shiftedDayInCycle + 1031337) / 1028522);
-	var year = 474 + 2820 * numberOfCycles + yearInCycle;
-	return (year > 0) ? year : year - 1;
+	var julianday = rd + this.rd.epoch;
+	return this.rd._getYear(julianday).year;
 };
 
 /**
@@ -388,7 +274,7 @@ ilib.Date.PersAstroDate.prototype._calcDateComponents = function () {
 	
 	//console.log("PersDate.calcComponent: remainder is " + remainder);
 	
-	this.month = ilib.bsearch(remainder, ilib.Date.PersAstroDate.cumMonthLengths);
+	this.month = ilib.bsearch(Math.floor(remainder), ilib.Date.PersAstroDate.cumMonthLengths);
 	remainder -= ilib.Date.PersAstroDate.cumMonthLengths[this.month-1];
 	
 	//console.log("PersDate.calcComponent: month is " + this.month + " and remainder is " + remainder);
@@ -453,8 +339,8 @@ ilib.Date.PersAstroDate.prototype.getEra = function() {
  * @return {string} a string giving the name of the calendar
  */
 ilib.Date.PersAstroDate.prototype.getCalendar = function() {
-	return "persianastro";
+	return "persian";
 };
 
 // register with the factory method
-ilib.Date._constructors["persianastro"] = ilib.Date.PersAstroDate;
+ilib.Date._constructors["persian"] = ilib.Date.PersAstroDate;
