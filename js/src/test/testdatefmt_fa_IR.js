@@ -394,7 +394,6 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_fa_IR() {
     var fmt = new ilib.DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
-		locale: "fa-IR", 
 		template: "hh:mm"
 	});
     assertNotNull(fmt);
@@ -416,7 +415,6 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_fa_IR() {
     var fmt = new ilib.DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
-		locale: "fa-IR", 
 		template: "KK:mm"
 	});
     assertNotNull(fmt);
@@ -438,7 +436,6 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_fa_IR() {
     var fmt = new ilib.DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
-		locale: "fa-IR",
 		template: "HH:mm"
 	});
     assertNotNull(fmt);
@@ -460,7 +457,6 @@ function testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_fa_IR() {
     var fmt = new ilib.DateFmt({
 		locale: "fa-IR",
 		calendar: "gregorian",
-		locale: "fa-IR",
 		template: "kk:mm"
 	});
     assertNotNull(fmt);
@@ -1048,7 +1044,8 @@ function testDateFmtShortTimeComponentsHMA_fa_IR() {
 function testDateFmtShortTimeComponentsHMZ_fa_IR() {
     var fmt = new ilib.DateFmt({
 		locale: "fa-IR", 
-        type: "time", 
+		calendar: "gregorian",
+		type: "time", 
         time: "hmz"
     });
     assertNotNull(fmt);
@@ -1069,7 +1066,8 @@ function testDateFmtShortTimeComponentsHMZ_fa_IR() {
 function testDateFmtShortTimeComponentsHMAZ_fa_IR() {
     var fmt = new ilib.DateFmt({
 		locale: "fa-IR", 
-        type: "time", 
+		calendar: "gregorian",
+		type: "time", 
         time: "hmaz"
     });
     assertNotNull(fmt);
@@ -1112,7 +1110,8 @@ function testDateFmtShortTimeComponentsHMSA_fa_IR() {
 function testDateFmtShortTimeComponentsHMSZ_fa_IR() {
     var fmt = new ilib.DateFmt({
 		locale: "fa-IR", 
-        type: "time", 
+		calendar: "gregorian",
+		type: "time", 
         time: "hmsz"
     });
     assertNotNull(fmt);
@@ -1133,7 +1132,8 @@ function testDateFmtShortTimeComponentsHMSZ_fa_IR() {
 function testDateFmtShortTimeComponentsHMSAZ_fa_IR() {
     var fmt = new ilib.DateFmt({
 		locale: "fa-IR", 
-        type: "time", 
+		calendar: "gregorian",
+		type: "time", 
         time: "hmsaz"
     });
     assertNotNull(fmt);
@@ -1316,7 +1316,8 @@ function testDateFmtFullTimeComponentsHMA_fa_IR() {
 function testDateFmtFullTimeComponentsHMZ_fa_IR() {
     var fmt = new ilib.DateFmt({
 		locale: "fa-IR", 
-        type: "time", 
+		calendar: "gregorian",
+		type: "time", 
         length: "full", 
         time: "hmz"
     });
@@ -1338,7 +1339,8 @@ function testDateFmtFullTimeComponentsHMZ_fa_IR() {
 function testDateFmtFullTimeComponentsHMAZ_fa_IR() {
     var fmt = new ilib.DateFmt({
 		locale: "fa-IR", 
-        type: "time", 
+		calendar: "gregorian",
+		type: "time", 
         length: "full", 
         time: "hmaz"
     });
@@ -1383,7 +1385,8 @@ function testDateFmtFullTimeComponentsHMSA_fa_IR() {
 function testDateFmtFullTimeComponentsHMSZ_fa_IR() {
     var fmt = new ilib.DateFmt({
 		locale: "fa-IR", 
-        type: "time", 
+		calendar: "gregorian",
+		type: "time", 
         length: "full", 
         time: "hmsz"
     });
@@ -1405,7 +1408,8 @@ function testDateFmtFullTimeComponentsHMSZ_fa_IR() {
 function testDateFmtFullTimeComponentsHMSAZ_fa_IR() {
     var fmt = new ilib.DateFmt({
 		locale: "fa-IR", 
-        type: "time", 
+		calendar: "gregorian",
+		type: "time", 
         length: "full", 
         time: "hmsaz"
     });
@@ -1427,7 +1431,8 @@ function testDateFmtFullTimeComponentsHMSAZ_fa_IR() {
 function testDateFmtWithTimeZoneAndNoDST_fa_IR() {
     var fmt = new ilib.DateFmt({
 		locale: "fa-IR", 
-        type: "time", 
+		calendar: "gregorian",
+		type: "time", 
         length: "full", 
         time: "hmsz"
     });

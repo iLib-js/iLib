@@ -93,8 +93,8 @@ julianday.js
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Persian date
  */
-ilib.Date.PersAstroDate = function(params) {
-	this.cal = new ilib.Cal.PersianAstro();
+ilib.Date.PersDate = function(params) {
+	this.cal = new ilib.Cal.Persian();
 	this.timezone = "local";
 	
 	if (params) {
@@ -186,9 +186,9 @@ ilib.Date.PersAstroDate = function(params) {
 	}
 };
 
-ilib.Date.PersAstroDate.prototype = new ilib.Date({noinstance: true});
-ilib.Date.PersAstroDate.prototype.parent = ilib.Date;
-ilib.Date.PersAstroDate.prototype.constructor = ilib.Date.PersAstroDate;
+ilib.Date.PersDate.prototype = new ilib.Date({noinstance: true});
+ilib.Date.PersDate.prototype.parent = ilib.Date;
+ilib.Date.PersDate.prototype.constructor = ilib.Date.PersDate;
 
 /**
  * @private
@@ -196,7 +196,7 @@ ilib.Date.PersAstroDate.prototype.constructor = ilib.Date.PersAstroDate;
  * @type Array.<number>
  * the cumulative lengths of each month, for a non-leap year 
  */
-ilib.Date.PersAstroDate.cumMonthLengths = [
+ilib.Date.PersDate.cumMonthLengths = [
     0,    // Farvardin
 	31,   // Ordibehesht
 	62,   // Khordad
@@ -218,7 +218,7 @@ ilib.Date.PersAstroDate.cumMonthLengths = [
  * @param {Object=} params the parameters used to create this rata die instance
  * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
-ilib.Date.PersAstroDate.prototype.newRd = function (params) {
+ilib.Date.PersDate.prototype.newRd = function (params) {
 	return new ilib.Date.PersAstroRataDie(params);
 };
 
@@ -228,7 +228,7 @@ ilib.Date.PersAstroDate.prototype.newRd = function (params) {
  * @param {number} rd RD to calculate from 
  * @returns {number} the year for the RD
  */
-ilib.Date.PersAstroDate.prototype._calcYear = function(rd) {
+ilib.Date.PersDate.prototype._calcYear = function(rd) {
 	var julianday = rd + this.rd.epoch;
 	return this.rd._getYear(julianday).year;
 };
@@ -237,7 +237,7 @@ ilib.Date.PersAstroDate.prototype._calcYear = function(rd) {
  * @private
  * Calculate date components for the given RD date.
  */
-ilib.Date.PersAstroDate.prototype._calcDateComponents = function () {
+ilib.Date.PersDate.prototype._calcDateComponents = function () {
 	var remainder,
 		rd = this.rd.getRataDie();
 	
@@ -274,8 +274,8 @@ ilib.Date.PersAstroDate.prototype._calcDateComponents = function () {
 	
 	//console.log("PersDate.calcComponent: remainder is " + remainder);
 	
-	this.month = ilib.bsearch(Math.floor(remainder), ilib.Date.PersAstroDate.cumMonthLengths);
-	remainder -= ilib.Date.PersAstroDate.cumMonthLengths[this.month-1];
+	this.month = ilib.bsearch(Math.floor(remainder), ilib.Date.PersDate.cumMonthLengths);
+	remainder -= ilib.Date.PersDate.cumMonthLengths[this.month-1];
 	
 	//console.log("PersDate.calcComponent: month is " + this.month + " and remainder is " + remainder);
 	
@@ -305,7 +305,7 @@ ilib.Date.PersAstroDate.prototype._calcDateComponents = function () {
  * 
  * @return {number} the day of the week
  */
-ilib.Date.PersAstroDate.prototype.getDayOfWeek = function() {
+ilib.Date.PersDate.prototype.getDayOfWeek = function() {
 	var rd = Math.floor(this.getRataDie());
 	return ilib.mod(rd-3, 7);
 };
@@ -316,8 +316,8 @@ ilib.Date.PersAstroDate.prototype.getDayOfWeek = function() {
  * December 31st is 365 in regular years, or 366 in leap years.
  * @return {number} the ordinal day of the year
  */
-ilib.Date.PersAstroDate.prototype.getDayOfYear = function() {
-	return ilib.Date.PersAstroDate.cumMonthLengths[this.month-1] + this.day;
+ilib.Date.PersDate.prototype.getDayOfYear = function() {
+	return ilib.Date.PersDate.cumMonthLengths[this.month-1] + this.day;
 };
 
 /**
@@ -329,7 +329,7 @@ ilib.Date.PersAstroDate.prototype.getDayOfYear = function() {
  * @return {number} 1 if this date is in the common era, -1 if it is before the 
  * common era 
  */
-ilib.Date.PersAstroDate.prototype.getEra = function() {
+ilib.Date.PersDate.prototype.getEra = function() {
 	return (this.year < 1) ? -1 : 1;
 };
 
@@ -338,9 +338,9 @@ ilib.Date.PersAstroDate.prototype.getEra = function() {
  * 
  * @return {string} a string giving the name of the calendar
  */
-ilib.Date.PersAstroDate.prototype.getCalendar = function() {
+ilib.Date.PersDate.prototype.getCalendar = function() {
 	return "persian";
 };
 
 // register with the factory method
-ilib.Date._constructors["persian"] = ilib.Date.PersAstroDate;
+ilib.Date._constructors["persian"] = ilib.Date.PersDate;

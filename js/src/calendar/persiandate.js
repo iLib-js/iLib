@@ -75,15 +75,15 @@ julianday.js
  * @extends ilib.Date.RataDie
  * @param {Object=} params parameters that govern the settings and behaviour of this Persian RD date
  */
-ilib.Date.PersRataDie = function(params) {
-	this.cal = params && params.cal || new ilib.Cal.Persian();
+ilib.Date.PersAlgoRataDie = function(params) {
+	this.cal = params && params.cal || new ilib.Cal.PersianAlgo();
 	this.rd = undefined;
 	ilib.Date.RataDie.call(this, params);
 };
 
-ilib.Date.PersRataDie.prototype = new ilib.Date.RataDie();
-ilib.Date.PersRataDie.prototype.parent = ilib.Date.RataDie;
-ilib.Date.PersRataDie.prototype.constructor = ilib.Date.PersRataDie;
+ilib.Date.PersAlgoRataDie.prototype = new ilib.Date.RataDie();
+ilib.Date.PersAlgoRataDie.prototype.parent = ilib.Date.RataDie;
+ilib.Date.PersAlgoRataDie.prototype.constructor = ilib.Date.PersAlgoRataDie;
 
 /**
  * The difference between a zero Julian day and the first Persian date
@@ -91,7 +91,7 @@ ilib.Date.PersRataDie.prototype.constructor = ilib.Date.PersRataDie;
  * @const
  * @type number
  */
-ilib.Date.PersRataDie.prototype.epoch = 1948319.5;
+ilib.Date.PersAlgoRataDie.prototype.epoch = 1948319.5;
 
 /**
  * Calculate the Rata Die (fixed day) number of the given date from the
@@ -100,11 +100,11 @@ ilib.Date.PersRataDie.prototype.epoch = 1948319.5;
  * @protected
  * @param {Object} date the date components to calculate the RD from
  */
-ilib.Date.PersRataDie.prototype._setDateComponents = function(date) {
+ilib.Date.PersAlgoRataDie.prototype._setDateComponents = function(date) {
 	var year = this.cal.equivalentCycleYear(date.year);
 	var y = date.year - (date.year >= 0 ? 474 : 473);
 	var rdOfYears = 1029983 * Math.floor(y/2820) + 365 * (year - 1) + Math.floor((682 * year - 110) / 2816);
-	var dayInYear = (date.month > 1 ? ilib.Date.PersDate.cumMonthLengths[date.month-1] : 0) + date.day;
+	var dayInYear = (date.month > 1 ? ilib.Date.PersAlgoDate.cumMonthLengths[date.month-1] : 0) + date.day;
 	var rdtime = (date.hour * 3600000 +
 		date.minute * 60000 +
 		date.second * 1000 +
@@ -132,7 +132,7 @@ ilib.Date.PersRataDie.prototype._setDateComponents = function(date) {
  * to the current date
  * @return {number} the rd of the day of the week
  */
-ilib.Date.PersRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
+ilib.Date.PersAlgoRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
 	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 3, 7);
 };
 
@@ -203,8 +203,8 @@ ilib.Date.PersRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
  * @extends ilib.Date
  * @param {Object=} params parameters that govern the settings and behaviour of this Persian date
  */
-ilib.Date.PersDate = function(params) {
-	this.cal = new ilib.Cal.Persian();
+ilib.Date.PersAlgoDate = function(params) {
+	this.cal = new ilib.Cal.PersianAlgo();
 	this.timezone = "local";
 	
 	if (params) {
@@ -296,9 +296,9 @@ ilib.Date.PersDate = function(params) {
 	}
 };
 
-ilib.Date.PersDate.prototype = new ilib.Date({noinstance: true});
-ilib.Date.PersDate.prototype.parent = ilib.Date;
-ilib.Date.PersDate.prototype.constructor = ilib.Date.PersDate;
+ilib.Date.PersAlgoDate.prototype = new ilib.Date({noinstance: true});
+ilib.Date.PersAlgoDate.prototype.parent = ilib.Date;
+ilib.Date.PersAlgoDate.prototype.constructor = ilib.Date.PersAlgoDate;
 
 /**
  * @private
@@ -306,7 +306,7 @@ ilib.Date.PersDate.prototype.constructor = ilib.Date.PersDate;
  * @type Array.<number>
  * the cumulative lengths of each month, for a non-leap year 
  */
-ilib.Date.PersDate.cumMonthLengths = [
+ilib.Date.PersAlgoDate.cumMonthLengths = [
     0,    // Farvardin
 	31,   // Ordibehesht
 	62,   // Khordad
@@ -328,8 +328,8 @@ ilib.Date.PersDate.cumMonthLengths = [
  * @param {Object=} params the parameters used to create this rata die instance
  * @returns {ilib.Date.RataDie} the new RD instance for the given params
  */
-ilib.Date.PersDate.prototype.newRd = function (params) {
-	return new ilib.Date.PersRataDie(params);
+ilib.Date.PersAlgoDate.prototype.newRd = function (params) {
+	return new ilib.Date.PersAlgoRataDie(params);
 };
 
 /**
@@ -338,7 +338,7 @@ ilib.Date.PersDate.prototype.newRd = function (params) {
  * @param {number} rd RD to calculate from 
  * @returns {number} the year for the RD
  */
-ilib.Date.PersDate.prototype._calcYear = function(rd) {
+ilib.Date.PersAlgoDate.prototype._calcYear = function(rd) {
 	var shiftedRd = rd - 173126;
 	var numberOfCycles = Math.floor(shiftedRd / 1029983);
 	var shiftedDayInCycle = ilib.mod(shiftedRd, 1029983);
@@ -351,7 +351,7 @@ ilib.Date.PersDate.prototype._calcYear = function(rd) {
  * @private
  * Calculate date components for the given RD date.
  */
-ilib.Date.PersDate.prototype._calcDateComponents = function () {
+ilib.Date.PersAlgoDate.prototype._calcDateComponents = function () {
 	var remainder,
 		rd = this.rd.getRataDie();
 	
@@ -371,8 +371,8 @@ ilib.Date.PersDate.prototype._calcDateComponents = function () {
 		this.year = this._calcYear(rd);
 	}
 	
-	//console.log("PersDate.calcComponent: calculating for rd " + rd);
-	//console.log("PersDate.calcComponent: year is " + ret.year);
+	//console.log("PersAlgoDate.calcComponent: calculating for rd " + rd);
+	//console.log("PersAlgoDate.calcComponent: year is " + ret.year);
 	var yearStart = this.newRd({
 		year: this.year,
 		month: 1,
@@ -386,17 +386,17 @@ ilib.Date.PersDate.prototype._calcDateComponents = function () {
 	
 	this.dayOfYear = remainder;
 	
-	//console.log("PersDate.calcComponent: remainder is " + remainder);
+	//console.log("PersAlgoDate.calcComponent: remainder is " + remainder);
 	
-	this.month = ilib.bsearch(remainder, ilib.Date.PersDate.cumMonthLengths);
-	remainder -= ilib.Date.PersDate.cumMonthLengths[this.month-1];
+	this.month = ilib.bsearch(remainder, ilib.Date.PersAlgoDate.cumMonthLengths);
+	remainder -= ilib.Date.PersAlgoDate.cumMonthLengths[this.month-1];
 	
-	//console.log("PersDate.calcComponent: month is " + this.month + " and remainder is " + remainder);
+	//console.log("PersAlgoDate.calcComponent: month is " + this.month + " and remainder is " + remainder);
 	
 	this.day = Math.floor(remainder);
 	remainder -= this.day;
 	
-	//console.log("PersDate.calcComponent: day is " + this.day + " and remainder is " + remainder);
+	//console.log("PersAlgoDate.calcComponent: day is " + this.day + " and remainder is " + remainder);
 	
 	// now convert to milliseconds for the rest of the calculation
 	remainder = Math.round(remainder * 86400000);
@@ -419,7 +419,7 @@ ilib.Date.PersDate.prototype._calcDateComponents = function () {
  * 
  * @return {number} the day of the week
  */
-ilib.Date.PersDate.prototype.getDayOfWeek = function() {
+ilib.Date.PersAlgoDate.prototype.getDayOfWeek = function() {
 	var rd = Math.floor(this.getRataDie());
 	return ilib.mod(rd-3, 7);
 };
@@ -430,8 +430,8 @@ ilib.Date.PersDate.prototype.getDayOfWeek = function() {
  * December 31st is 365 in regular years, or 366 in leap years.
  * @return {number} the ordinal day of the year
  */
-ilib.Date.PersDate.prototype.getDayOfYear = function() {
-	return ilib.Date.PersDate.cumMonthLengths[this.month-1] + this.day;
+ilib.Date.PersAlgoDate.prototype.getDayOfYear = function() {
+	return ilib.Date.PersAlgoDate.cumMonthLengths[this.month-1] + this.day;
 };
 
 /**
@@ -443,7 +443,7 @@ ilib.Date.PersDate.prototype.getDayOfYear = function() {
  * @return {number} 1 if this date is in the common era, -1 if it is before the 
  * common era 
  */
-ilib.Date.PersDate.prototype.getEra = function() {
+ilib.Date.PersAlgoDate.prototype.getEra = function() {
 	return (this.year < 1) ? -1 : 1;
 };
 
@@ -452,9 +452,9 @@ ilib.Date.PersDate.prototype.getEra = function() {
  * 
  * @return {string} a string giving the name of the calendar
  */
-ilib.Date.PersDate.prototype.getCalendar = function() {
+ilib.Date.PersAlgoDate.prototype.getCalendar = function() {
 	return "persian-algo";
 };
 
 // register with the factory method
-ilib.Date._constructors["persian-algo"] = ilib.Date.PersDate;
+ilib.Date._constructors["persian-algo"] = ilib.Date.PersAlgoDate;

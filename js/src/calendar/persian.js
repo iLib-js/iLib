@@ -22,15 +22,15 @@
 
 /**
  * @class
- * Construct a new Persian calendar object. This class encodes information about
- * a Persian calendar.<p>
+ * Construct a new Persian algorithmic calendar object. This class encodes information about
+ * a Persian algorithmic calendar.<p>
  * 
  * Depends directive: !depends persian.js
  * 
  * @constructor
  * @implements ilib.Cal
  */
-ilib.Cal.Persian = function() {
+ilib.Cal.PersianAlgo = function() {
 	this.type = "persian-algo";
 };
 
@@ -40,7 +40,7 @@ ilib.Cal.Persian = function() {
  * @type Array.<number> 
  * the lengths of each month 
  */
-ilib.Cal.Persian.monthLengths = [
+ilib.Cal.PersianAlgo.monthLengths = [
 	31,  // Farvardin
 	31,  // Ordibehesht
 	31,  // Khordad
@@ -64,7 +64,7 @@ ilib.Cal.Persian.monthLengths = [
  * @param {number} year a year for which the number of months is sought
  * @return {number} The number of months in the given year
  */
-ilib.Cal.Persian.prototype.getNumMonths = function(year) {
+ilib.Cal.PersianAlgo.prototype.getNumMonths = function(year) {
 	return 12;
 };
 
@@ -77,9 +77,9 @@ ilib.Cal.Persian.prototype.getNumMonths = function(year) {
  * @param {number} year the year within which that month can be found
  * @return {number} the number of days within the given month in the given year
  */
-ilib.Cal.Persian.prototype.getMonLength = function(month, year) {
+ilib.Cal.PersianAlgo.prototype.getMonLength = function(month, year) {
 	if (month !== 12 || !this.isLeapYear(year)) {
-		return ilib.Cal.Persian.monthLengths[month-1];
+		return ilib.Cal.PersianAlgo.monthLengths[month-1];
 	} else {
 		// Month 12, Esfand, has 30 days instead of 29 in leap years
 		return 30;
@@ -95,18 +95,18 @@ ilib.Cal.Persian.prototype.getMonLength = function(month, year) {
  * @param {number} year year to find the equivalent cycle year for
  * @returns {number} the equivalent cycle year
  */
-ilib.Cal.Persian.prototype.equivalentCycleYear = function(year) {
+ilib.Cal.PersianAlgo.prototype.equivalentCycleYear = function(year) {
 	var y = year - (year >= 0 ? 474 : 473);
 	return ilib.mod(y, 2820) + 474;
 };
 
 /**
  * Return true if the given year is a leap year in the Persian calendar.
- * The year parameter may be given as a number, or as a PersDate object.
+ * The year parameter may be given as a number, or as a PersAlgoDate object.
  * @param {number} year the year for which the leap year information is being sought
  * @return {boolean} true if the given year is a leap year
  */
-ilib.Cal.Persian.prototype.isLeapYear = function(year) {
+ilib.Cal.PersianAlgo.prototype.isLeapYear = function(year) {
 	return (ilib.mod((this.equivalentCycleYear(year) + 38) * 682, 2816) < 682);
 };
 
@@ -115,7 +115,7 @@ ilib.Cal.Persian.prototype.isLeapYear = function(year) {
  * 
  * @return {string} the name of the type of this calendar 
  */
-ilib.Cal.Persian.prototype.getType = function() {
+ilib.Cal.PersianAlgo.prototype.getType = function() {
 	return this.type;
 };
 
@@ -126,9 +126,9 @@ ilib.Cal.Persian.prototype.getType = function() {
  * the date instance
  * @return {ilib.Date} a date appropriate for this calendar type
  */
-ilib.Cal.Persian.prototype.newDateInstance = function (options) {
-	return new ilib.Date.PersDate(options);
+ilib.Cal.PersianAlgo.prototype.newDateInstance = function (options) {
+	return new ilib.Date.PersAlgoDate(options);
 };
 
 /* register this calendar for the factory method */
-ilib.Cal._constructors["persian-algo"] = ilib.Cal.Persian;
+ilib.Cal._constructors["persian-algo"] = ilib.Cal.PersianAlgo;

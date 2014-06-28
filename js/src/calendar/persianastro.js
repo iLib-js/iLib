@@ -41,8 +41,8 @@ calendar/persratadie.js
  * @constructor
  * @implements ilib.Cal
  */
-ilib.Cal.PersianAstro = function() {
-	this.type = "persianastro";
+ilib.Cal.Persian = function() {
+	this.type = "persian";
 };
 
 /**
@@ -51,7 +51,7 @@ ilib.Cal.PersianAstro = function() {
  * @type Array.<number> 
  * the lengths of each month 
  */
-ilib.Cal.PersianAstro.monthLengths = [
+ilib.Cal.Persian.monthLengths = [
 	31,  // Farvardin
 	31,  // Ordibehesht
 	31,  // Khordad
@@ -75,7 +75,7 @@ ilib.Cal.PersianAstro.monthLengths = [
  * @param {number} year a year for which the number of months is sought
  * @return {number} The number of months in the given year
  */
-ilib.Cal.PersianAstro.prototype.getNumMonths = function(year) {
+ilib.Cal.Persian.prototype.getNumMonths = function(year) {
 	return 12;
 };
 
@@ -88,9 +88,9 @@ ilib.Cal.PersianAstro.prototype.getNumMonths = function(year) {
  * @param {number} year the year within which that month can be found
  * @return {number} the number of days within the given month in the given year
  */
-ilib.Cal.PersianAstro.prototype.getMonLength = function(month, year) {
+ilib.Cal.Persian.prototype.getMonLength = function(month, year) {
 	if (month !== 12 || !this.isLeapYear(year)) {
-		return ilib.Cal.PersianAstro.monthLengths[month-1];
+		return ilib.Cal.Persian.monthLengths[month-1];
 	} else {
 		// Month 12, Esfand, has 30 days instead of 29 in leap years
 		return 30;
@@ -102,7 +102,7 @@ ilib.Cal.PersianAstro.prototype.getMonLength = function(month, year) {
  * @param {number} year the year for which the leap year information is being sought
  * @return {boolean} true if the given year is a leap year
  */
-ilib.Cal.PersianAstro.prototype.isLeapYear = function(year) {
+ilib.Cal.Persian.prototype.isLeapYear = function(year) {
 	var rdNextYear = new ilib.Date.PersAstroRataDie({
 		cal: this,
 		year: year + 1,
@@ -131,7 +131,7 @@ ilib.Cal.PersianAstro.prototype.isLeapYear = function(year) {
  * 
  * @return {string} the name of the type of this calendar 
  */
-ilib.Cal.PersianAstro.prototype.getType = function() {
+ilib.Cal.Persian.prototype.getType = function() {
 	return this.type;
 };
 
@@ -142,9 +142,9 @@ ilib.Cal.PersianAstro.prototype.getType = function() {
  * the date instance
  * @return {ilib.Date} a date appropriate for this calendar type
  */
-ilib.Cal.PersianAstro.prototype.newDateInstance = function (options) {
-	return new ilib.Date.PersAstroDate(options);
+ilib.Cal.Persian.prototype.newDateInstance = function (options) {
+	return new ilib.Date.PersDate(options);
 };
 
 /* register this calendar for the factory method */
-ilib.Cal._constructors["persian"] = ilib.Cal.PersianAstro;
+ilib.Cal._constructors["persian"] = ilib.Cal.Persian;
