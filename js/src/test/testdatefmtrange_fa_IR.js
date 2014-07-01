@@ -17,6 +17,9 @@
  * limfaations under tfa License.
  */
 
+/* These are the gregorian tests. For Persian calendar tests, see about
+ * half way down the file. */
+
 function testDateRngFmtIRRangeinDayShort() {
     var fmt = new ilib.DateRngFmt({
 		locale: "fa-IR", 
@@ -43,7 +46,7 @@ function testDateRngFmtIRRangeinDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳:۴۵ ت ‏۱۴:۳۰ ۱۱/۱۲/۳۱", fmt.format(start, end));
+    assertEquals("‏۱۳:۴۵ ت ‏۱۴:۳۰ ۹۳/۱۲/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeinDayMedium() {
     var fmt = new ilib.DateRngFmt({
@@ -156,7 +159,7 @@ function testDateRngFmtIRRangeNextDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۳:۴۵ ۱۱/۱۲/۳۰ ت ‏۱۴:۳۰ ۱۱/۱۲/۳۱", fmt.format(start, end));
+    assertEquals("‏۱۳:۴۵ ۹۳/۱۲/۳۰ ت ‏۱۴:۳۰ ۹۳/۱۲/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({
@@ -269,7 +272,7 @@ function testDateRngFmtIRRangeMultiDayShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۱/۱۲/۲۰ ت ۱۱/۱۲/۳۱", fmt.format(start, end));
+    assertEquals("‏۱۱/۱۲/۲۰ ت ۹۳/۱۲/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({
@@ -382,7 +385,7 @@ function testDateRngFmtIRRangeNextMonthShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۱/۱۱/۲۰ ت ۱۱/۱۲/۳۱", fmt.format(start, end));
+    assertEquals("‏۱۱/۱۱/۲۰ ت ۹۳/۱۲/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({
@@ -410,7 +413,7 @@ function testDateRngFmtIRRangeNextMonthMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۰۱۱/۱۱/۲۰ ت ۲۰۱۱/۱۲/۳۱", fmt.format(start, end));
+    assertEquals("‏۲۰۹۳/۱۱/۲۰ ت ۲۰۹۳/۱۲/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({
@@ -495,7 +498,7 @@ function testDateRngFmtIRRangeNextYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۱/۱۱/۲۰ ت ۱۲/۱/۳۱", fmt.format(start, end));
+    assertEquals("‏۹۳/۱۱/۲۰ ت ۱۲/۱/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({
@@ -523,7 +526,7 @@ function testDateRngFmtIRRangeNextYearMedium() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۲۰۱۱/۱۱/۲۰ ت ۲۰۱۲/۰۱/۳۱", fmt.format(start, end));
+    assertEquals("‏۲۰۹۳/۱۱/۲۰ ت ۲۰۱۲/۰۱/۳۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({
@@ -608,7 +611,7 @@ function testDateRngFmtIRRangeMultiYearShort() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("‏۱۱/۱۱ ت ۱۴/۱", fmt.format(start, end));
+    assertEquals("‏۹۳/۱۱ ت ۱۴/۱", fmt.format(start, end));
 }
 function testDateRngFmtIRRangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({
@@ -721,4 +724,712 @@ function testDateRngFmtIRManyYearsFull() {
 		millisecond: 0
 	});
     assertEquals("‏۲۰۱۱ ت ۲۰۶۴", fmt.format(start, end));
+}
+
+/* Now the persian calendar tests. */
+
+function testDateRngFmtPersRangeinDdfayShort_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "short"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۱۳:۴۵ ت ‏۱۴:۳۰ ۹۳/۱۲/۳۱", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeinDayMedium_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "medium"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.D۳ate.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۱۳:۴۵ ت ‏۱۴:۳۰ ۱۳۹۳/۱۲/۳۱", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeinDayLong_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "long"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۱۳:۴۵ ت ‏۱۴:۳۰ ۳۱ دسامبر ۱۳۹۳", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeinDayFull_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۱۳:۴۵ ت ‏۱۴:۳۰ ۳۱ دسامبر ۱۳۹۳", fmt.format(start, end));
+}
+
+function testDateRngFmtPersRangeNextDayShort_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "short"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 30,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۱۳:۴۵ ۹۳/۱۲/۳۰ ت ‏۱۴:۳۰ ۹۳/۱۲/۳۱", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeNextDayMedium_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "medium"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 30,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۱۳:۴۵ ۱۳۹۳/۱۲/۳۰ ت ‏۱۴:۳۰ ۱۳۹۳/۱۲/۳۱", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeNextDayLong_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "long"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 30,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۱۳:۴۵ ۳۰ ت ‏۱۴:۳۰ ۳۱ دسامبر ۱۳۹۳", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeNextDayFull_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 30,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۱۳:۴۵ ۳۰ ت ‏۱۴:۳۰ ۳۱ دسامبر ۱۳۹۳", fmt.format(start, end));
+}
+
+function testDateRngFmtPersRangeMultiDayShort_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "short"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۹۳/۱۲/۲۰ ت ۹۳/۱۲/۳۱", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeMultiDayMedium_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "medium"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۱۳۹۳/۱۲/۲۰ ت ۱۳۹۳/۱۲/۳۱", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeMultiDayLong_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "long"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۲۰ ت ۳۱ دسامبر ۱۳۹۳", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeMultiDayFull_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۲۰ ت ۳۱ دسامبر ۱۳۹۳", fmt.format(start, end));
+}
+
+function testDateRngFmtPersRangeNextMonthShort_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "short"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۹۳/۱۱/۲۰ ت ۹۳/۱۲/۳۱", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeNextMonthMedium_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "medium"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۱۳۹۳/۱۱/۲۰ ت ۱۳۹۳/۱۲/۳۱", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeNextMonthLong_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "long"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۲۰ نوامبر ت ۳۱ دسامبر ۱۳۹۳", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeNextMonthFull_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1393,
+		month: 12,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۲۰ نوامبر ت ۳۱ دسامبر ۱۳۹۳", fmt.format(start, end));
+}
+
+function testDateRngFmtPersRangeNextYearShort_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "short"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1394,
+		month: 1,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۹۳/۱۱/۲۰ ت ۹۴/۱/۳۱", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeNextYearMedium_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "medium"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1394,
+		month: 1,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۱۳۹۳/۱۱/۲۰ ت ۱۳۹۴/۰۱/۳۱", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeNextYearLong_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "long"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1394,
+		month: 1,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۲۰ نوامبر ۱۳۹۳ ت ۳۱ ژانویهٔ ۱۳۹۴", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeNextYearFull_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1394,
+		month: 1,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۲۰ نوامبر ۱۳۹۳ ت ۳۱ ژانویهٔ ۱۳۹۴", fmt.format(start, end));
+}
+
+function testDateRngFmtPersRangeMultiYearShort_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "short"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1396,
+		month: 1,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۹۳/۱۱ ت ۹۶/۱", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeMultiYearMedium_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "medium"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1396,
+		month: 1,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۱۳۹۳/۱۱ ت ۱۳۹۶/۰۱", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeMultiYearLong_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "long"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1396,
+		month: 1,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("نوامبر ۱۳۹۳ ت ژانویهٔ ۱۳۹۶", fmt.format(start, end));
+}
+function testDateRngFmtPersRangeMultiYearFull_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1396,
+		month: 1,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("نوامبر ۱۳۹۳ ت ژانویهٔ ۱۳۹۶", fmt.format(start, end));
+}
+function testDateRngFmtPersManyYearsFull_fa_IR() {
+    var fmt = new ilib.DateRngFmt({
+		locale: "fa-IR", 
+		calendar: "persian",
+		length: "full"
+	});
+    assertNotNull(fmt);
+    
+    var start = new ilib.Date.PersDate({
+		year: 1393,
+		month: 11,
+		day: 20,
+		hour: 13,
+		minute: 45,
+		second: 0,
+		millisecond: 0
+	});
+    var end = new ilib.Date.PersDate({
+		year: 1450,
+		month: 1,
+		day: 31,
+		hour: 14,
+		minute: 30,
+		second: 0,
+		millisecond: 0
+	});
+    assertEquals("‏۱۳۹۳ ت ۱۴۵۰", fmt.format(start, end));
 }
