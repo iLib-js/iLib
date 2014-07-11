@@ -22,6 +22,8 @@ var fs = require('fs');
 var vm = require('vm');
 var util = require("util");
 
+var topDirName = topDirName || __dirname;
+
 function newSandbox() {
 	return {
 		top : {},
@@ -34,7 +36,8 @@ function newSandbox() {
 		console : console,
 		require : require,
 		global: global,
-		process: process
+		process: process,
+		__dirname: topDirName
 	};
 };
 
@@ -156,7 +159,8 @@ TestSuite.prototype = {
 				process: process,
 				util: util,
 				global: global,
-				path: this.path
+				path: this.path,
+				__dirname: topDirName
 			});
 			if (this.setupCode) {
 				// allow arbitrary set up before the includes and running the tests

@@ -6,10 +6,11 @@ var nodeLoader = function () {
 	// util.print("new nodeLoader instance\n");
 
 	// for use from within a check-out of ilib
-	this.base = path.normalize(process.cwd() + "/../data");  
+	this.base = path.normalize(path.join(__dirname, "../../data"));  
 	
 	// for use on-device
-	if (!fs.existsSync(path.join(this.base, "locale/localeinfo.json"))) {
+	// util.print("testing " + path.join(this.base, "localetemp/localeinfo.json") + "\n");
+	if (!fs.existsSync(path.join(this.base, "localetemp/localeinfo.json"))) {
 		this.base = "/usr/share/javascript/ilib";
 	}
 	
@@ -44,7 +45,7 @@ nodeLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 		paths.forEach(function (p) {
 			var json;
 
-			var filepath = path.join(root, "locale", p);
+			var filepath = path.join(root, "localetemp", p);
 			// util.print("node loader: attempting sync load " + filepath + "\n");
 			if (fs.existsSync(filepath)) {
 				json = fs.readFileSync(filepath, "utf-8");
@@ -82,7 +83,7 @@ nodeLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 nodeLoader.prototype._loadFilesAsync = function (root, paths) {
 	if (paths.length > 0) {
 		var filename = paths.shift();
-		var filepath = path.join(root, "locale", filename);
+		var filepath = path.join(root, "localetemp", filename);
 		// util.print("node loader: attempting async load " + filepath + "\n");
 		fs.readFile(filepath, "utf-8", function(err, json) {
 			if (err) {

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ilibglobal.js util/utils.js locale.js
+// !depends ilibglobal.js util/utils.js locale.js iterator.js
 
 // !data plurals
 
@@ -851,12 +851,13 @@ ilib.String.prototype = {
 	 * returns true if the iterator has more code points to iterate through,
 	 * and next() which returns the next code point as a number.<p>
 	 * 
-	 * @return {Object} an iterator 
+	 * @return {ilib.Iterator} an iterator 
 	 * that iterates through all the code points in the string
 	 */
 	iterator: function() {
 		/**
 		 * @constructor
+		 * @implements ilib.Iterator
 		 */
 		function _iterator (istring) {
 			this.index = 0;
@@ -894,12 +895,13 @@ ilib.String.prototype = {
 	 * returns true if the iterator has more characters to iterate through,
 	 * and next() which returns the next character.<p>
 	 * 
-	 * @return {Object} an iterator 
+	 * @return {ilib.Iterator} an iterator 
 	 * that iterates through all the characters in the string
 	 */
 	charIterator: function() {
 		/**
 		 * @constructor
+		 * @implements ilib.Iterator
 		 */
 		function _chiterator (istring) {
 			this.index = 0;

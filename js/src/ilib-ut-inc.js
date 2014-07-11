@@ -42,6 +42,7 @@ julianday.js
 datefmt.js
 calendar.js
 util/utils.js
+util/list.js
 locale.js
 nfkc/all.js
 strings.js

@@ -11,10 +11,11 @@ var nodeLoader = function () {
 	// util.print("new nodeLoader instance\n");
 
 	// for use from within a check-out of ilib
-	this.base = path.normalize(process.cwd() + "/../data");  
+	this.base = path.normalize(path.join(__dirname, "../data"));  
 	
 	// for use on-device
 	if (!fs.existsSync(path.join(this.base, "locale/localeinfo.json"))) {
+		// util.print("Could not find files in base " + path.join(this.base, "locale/localeinfo.json") + "\n");
 		this.base = "/usr/share/javascript/ilib";
 	}
 	
@@ -65,9 +66,10 @@ nodeLoader.prototype.loadFiles = function(paths, sync, params, callback) {
 					json = fs.readFileSync(filepath, "utf-8");
 					// util.print("node loader: load " + filepath + (json ? " succeeded\n" : " failed\n"));
 					ret.push(json ? JSON.parse(json) : undefined);
+					return;
 				} 
 			}
-			// util.print("node loader:  sync load failed\n");
+			// util.print("node loader: sync load failed for " + p + "\n");
 		});
 
 		// only call the callback at the end of the chain of files

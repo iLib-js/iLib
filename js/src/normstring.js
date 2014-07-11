@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends strings.js
+// !depends strings.js iterator.js
 
 /**
  * Create a new normalized string instance. This string inherits from 
@@ -64,6 +64,7 @@ ilib.NormString.prototype.parent = ilib.String.prototype;
 ilib.NormString.init = function(options) {
 	if (!ilib._load || (typeof(ilib._load) !== 'function' && !(ilib._load instanceof ilib.Loader))) {
 		// can't do anything
+		// console.log("cannot load any normalization data");
 		return;
 	}
 	var form = "nfkc";
@@ -92,6 +93,7 @@ ilib.NormString.init = function(options) {
 		files.push(forms[f] + "/" + script + ".json");
 	}
 	
+	// console.log("trying to load " + JSON.stringify(files));
 	ilib._callLoadData(files, sync, loadParams, function(arr) {
 		ilib.data.norm.ccc = arr[0];
 		for (var i = 1; i < arr.length; i++) {
@@ -573,7 +575,7 @@ ilib.NormString.prototype.normalize = function (form) {
  * returns true if the iterator has more characters to iterate through,
  * and next() which returns the next character.<p>
  * 
- * @return {Object} an iterator 
+ * @return {ilib.Iterator} an iterator 
  * that iterates through all the characters in the string
  */
 ilib.NormString.prototype.charIterator = function() {
@@ -581,6 +583,7 @@ ilib.NormString.prototype.charIterator = function() {
 	
 	/**
 	 * @constructor
+	 * @implements ilib.Iterator
 	 */
 	function _chiterator (istring) {
 		/**

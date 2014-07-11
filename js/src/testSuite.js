@@ -87,4 +87,5 @@ if (process.argv.length > 2) {
 	functions.dynamic_uncompiled();
 }
 
+var topDirName = __dirname;
 runner.runTests();
