@@ -55,6 +55,7 @@ ilib.Date = function(options) {
  * and "julian" calendars are all included by default, as they are the
  * standard calendars for much of the world. If not specified, the type
  * of the date returned is the one that is appropriate for the locale.
+ * This property may also be given as "calendar" instead of "type".
  * </ul>
  * 
  * The options object is also passed down to the date constructor, and 
@@ -92,7 +93,7 @@ ilib.Date = function(options) {
  */
 ilib.Date.newInstance = function(options) {
 	var locale = options && options.locale,
-		type = options && options.type,
+		type = options && (options.type || options.calendar),
 		cons;
 
 	if (!locale) {

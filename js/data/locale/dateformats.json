@@ -153,5 +153,5 @@
 	"julian": "gregorian",
 	"thaisolar": "gregorian",
 	"persian": "gregorian",
-	"persian-astro": "gregorian"
+	"persian-algo": "gregorian"
 }
