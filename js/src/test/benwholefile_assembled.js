@@ -52,3 +52,39 @@ function testLoadWholeFileAssembledFull(results) {
 
 	tt.run(results);
 }
+
+function testLoadWholeFileAssembledCoreCompiled(results) {
+	var tt = new TimedTest({
+		name: "WholeFile-assembled-core-compiled",
+		fn: function () {
+		    var ilib = require("../ilib-core-compiled.js");
+		    assertNotUndefined(ilib);
+		}
+	});
+
+	tt.run(results);
+}
+
+function testLoadWholeFileAssembledStandardCompiled(results) {
+	var tt = new TimedTest({
+		name: "WholeFile-assembled-standard-compiled",
+		fn: function () {
+		    var ilib = require("../ilib-standard-compiled.js");
+		    assertNotUndefined(ilib);
+		}
+	});
+
+	tt.run(results);
+}
+
+function testLoadWholeFileAssembledFullCompiled(results) {
+	var tt = new TimedTest({
+		name: "WholeFile-assembled-full-compiled",
+		fn: function () {
+		    var ilib = require("../ilib-full-compiled.js");
+		    assertNotUndefined(ilib);
+		}
+	});
+
+	tt.run(results);
+}
