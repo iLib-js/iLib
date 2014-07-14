@@ -227,8 +227,7 @@ $(function() {
                     hour: $('#hour').val(),
                     minute: $('#minute').val(),
                     second: $('#second').val(),
-                    millisecond: $('#millisecond').val(),
-                    timezone: timezone
+                    millisecond: $('#millisecond').val()
                 });
             }
             
@@ -285,7 +284,7 @@ $(function() {
                 jd = $('#julianday').val();
                 date = cal.newDateInstance({
                     julianday: jd,
-                    timezone: "Etc/UTC"
+                    timezone: timezone
                 });
             } else {
                 date = cal.newDateInstance({
