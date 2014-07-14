@@ -165,7 +165,7 @@ ilib.Date.GregRataDie.prototype._setDateComponents = function(date) {
 	*/
 	
 	/**
-	 * @type {number} the RD number of this Gregorian date
+	 * @type {number|undefined} the RD number of this Gregorian date
 	 */
 	this.rd = years + dayInYear + rdtime;
 };
