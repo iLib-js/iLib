@@ -1,79 +1,69 @@
-PhoneLocaleTests.prototype.testGetByMCCUS = function() {
-	var loc = new enyo.g11n.PhoneLoc({mcc: "310"});
-	UnitTest.requireDefined(loc);
-	UnitTest.requireEqual("us", loc.region);
+function testGetByMCCUS() {
+	var loc = new ilib.PhoneLoc({mcc: "310"});
+	assertNotUndefined(loc);
+	assertEquals("US", loc.region);
 	
-	return UnitTest.passed;
 };
 
-PhoneLocaleTests.prototype.testGetByMCCDE = function() {
-	var loc = new enyo.g11n.PhoneLoc({mcc: "262"});
-	UnitTest.requireDefined(loc);
-	UnitTest.requireEqual("de", loc.region);
+function testGetByMCCDE() {
+	var loc = new ilib.PhoneLoc({mcc: "262"});
+	assertNotUndefined(loc);
+	assertEquals("DE", loc.region);
 	
-	return UnitTest.passed;
 };
 
-PhoneLocaleTests.prototype.testGetByMCCUnknownMCC = function() {
-	var loc = new enyo.g11n.PhoneLoc({mcc: "31"});
-	UnitTest.requireDefined(loc);
-	UnitTest.requireEqual("unknown", loc.region);
+function testGetByMCCUnknownMCC() {
+	var loc = new ilib.PhoneLoc({mcc: "31"});
+	assertNotUndefined(loc);
+	assertEquals("unknown", loc.region);
 	
-	return UnitTest.passed;
 };
 
-PhoneLocaleTests.prototype.testGetByCC1 = function() {
-	var loc = new enyo.g11n.PhoneLoc({countryCode: "1"});
-	UnitTest.requireDefined(loc);
-	UnitTest.requireEqual("us", loc.region);
+function testGetByCC1() {
+	var loc = new ilib.PhoneLoc({countryCode: "1"});
+	assertNotUndefined(loc);
+	assertEquals("US", loc.region);
 	
-	return UnitTest.passed;
 };
 
-PhoneLocaleTests.prototype.testGetByCC2 = function() {
-	var loc = new enyo.g11n.PhoneLoc({countryCode: "44"});
-	UnitTest.requireDefined(loc);
-	UnitTest.requireEqual("gb", loc.region);
+function testGetByCC2() {
+	var loc = new ilib.PhoneLoc({countryCode: "44"});
+	assertNotUndefined(loc);
+	assertEquals("GB", loc.region);
 	
-	return UnitTest.passed;
 };
 
-PhoneLocaleTests.prototype.testGetByCCUnknownCC = function() {
-	var loc = new enyo.g11n.PhoneLoc({countryCode: "0"});
-	UnitTest.requireDefined(loc);
-	UnitTest.requireEqual("unknown", loc.region);
+function testGetByCCUnknownCC() {
+	var loc = new ilib.PhoneLoc({countryCode: "0"});
+	assertNotUndefined(loc);
+	assertEquals("unknown", loc.region);
 	
-	return UnitTest.passed;
 };
 
-PhoneLocaleTests.prototype.testGetByLocaleUS = function() {
-	var loc = new enyo.g11n.PhoneLoc({locale: "en_us"});
-	UnitTest.requireDefined(loc);
-	UnitTest.requireEqual("us", loc.region);
+function testGetByLocaleUS() {
+	var loc = new ilib.PhoneLoc({locale: "en-US"});
+	assertNotUndefined(loc);
+	assertEquals("US", loc.region);
 	
-	return UnitTest.passed;
 };
 
-PhoneLocaleTests.prototype.testGetByLocaleDE = function() {
-	var loc = new enyo.g11n.PhoneLoc({locale: "de_de"});
-	UnitTest.requireDefined(loc);
-	UnitTest.requireEqual("de", loc.region);
+function testGetByLocaleDE() {
+	var loc = new ilib.PhoneLoc({locale: "de-DE"});
+	assertNotUndefined(loc);
+	assertEquals("DE", loc.region);
 	
-	return UnitTest.passed;
 };
 
-PhoneLocaleTests.prototype.testGetDefault = function() {
-	var loc = new enyo.g11n.PhoneLoc();
-	UnitTest.requireDefined(loc);
-	UnitTest.requireEqual("us", loc.region);
+function testGetDefault() {
+	var loc = new ilib.PhoneLoc();
+	assertNotUndefined(loc);
+	assertEquals("US", loc.region);
 	
-	return UnitTest.passed;
 };
 
-PhoneLocaleTests.prototype.testGetDefaultEmpty = function() {
-	var loc = new enyo.g11n.PhoneLoc({});
-	UnitTest.requireDefined(loc);
-	UnitTest.requireEqual("us", loc.region);
+function testGetDefaultEmpty() {
+	var loc = new ilib.PhoneLoc({});
+	assertNotUndefined(loc);
+	assertEquals("US", loc.region);
 	
-	return UnitTest.passed;
 };

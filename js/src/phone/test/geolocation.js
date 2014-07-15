@@ -1,6 +1,5 @@
-PhoneGeoTests.prototype.testNANP = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testNANP() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "650",
@@ -10,46 +9,50 @@ PhoneGeoTests.prototype.testNANP = function() {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "California",
 			ln: "Central California: San Mateo, Palo Alto, Redwood City, Menlo Park, Mountain View, southern San Francisco suburbs"
 		}
 	};
-	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	//[Note] phonegeo.js API change.add more assertEquals.	
+	/*var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertEquals("US", locator.getRegion());*/
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testNANPLocalNumber = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testNANPLocalNumber() {
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "6543210"
 	});
 	var expected = {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+
 };
 
-PhoneGeoTests.prototype.testNANPServiceNumber = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testNANPServiceNumber() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "888",
@@ -59,32 +62,34 @@ PhoneGeoTests.prototype.testNANPServiceNumber = function() {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "Toll-free",
 			ln: "Toll-free Telephone Service"
 		}
 	};
-	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testNANPEmergencyLikeServiceNumber = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testNANPEmergencyLikeServiceNumber() {
+	var parsed = new ilib.PhoneNumber({
 		serviceCode: "411"
 	});
 	var expected = {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "Service Number",
@@ -92,24 +97,26 @@ PhoneGeoTests.prototype.testNANPEmergencyLikeServiceNumber = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testNANPEmergency = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testNANPEmergency() {
+	var parsed = new ilib.PhoneNumber({
 		emergency: "911"
 	});
 	var expected = {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "Emergency Services Number",
@@ -117,17 +124,19 @@ PhoneGeoTests.prototype.testNANPEmergency = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
 	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testNANPNoLocale = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testNANPNoLocale() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "650",
@@ -137,7 +146,7 @@ PhoneGeoTests.prototype.testNANPNoLocale = function() {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "California",
@@ -145,16 +154,19 @@ PhoneGeoTests.prototype.testNANPNoLocale = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator();
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber();
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
-PhoneGeoTests.prototype.testNANPOtherLocale = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testNANPOtherLocale() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "650",
@@ -164,7 +176,7 @@ PhoneGeoTests.prototype.testNANPOtherLocale = function() {
 		country: {
 			sn: "Amérique du Nord",
 			ln: "Amérique du Nord et Îles Caraïbes",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "Californie",
@@ -172,17 +184,18 @@ PhoneGeoTests.prototype.testNANPOtherLocale = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'fr_fr'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'fr-FR'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
 };
 
-PhoneGeoTests.prototype.testNANPUnknownAreaCode = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testNANPUnknownAreaCode() {
+	var parsed = new ilib.PhoneNumber({
 		areaCode: "875",
 		subscriberNumber: "6543210"
 	});
@@ -190,21 +203,22 @@ PhoneGeoTests.prototype.testNANPUnknownAreaCode = function() {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
 };
 
-PhoneGeoTests.prototype.testDefaultCountry = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testDefaultCountry() {
+	var parsed = new ilib.PhoneNumber({
 		areaCode: "650",
 		subscriberNumber: "6543210"
 	});
@@ -212,7 +226,7 @@ PhoneGeoTests.prototype.testDefaultCountry = function() {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "California",
@@ -220,18 +234,19 @@ PhoneGeoTests.prototype.testDefaultCountry = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
 };
 
 //for bug NOV-118981
-PhoneGeoTests.prototype.testNANPInvalidNumber = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testNANPInvalidNumber() {
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "234"
 	});
@@ -239,7 +254,7 @@ PhoneGeoTests.prototype.testNANPInvalidNumber = function() {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "Ohio",
@@ -247,17 +262,19 @@ PhoneGeoTests.prototype.testNANPInvalidNumber = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testDefaultDE = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testDefaultDE() {
+	var parsed = new ilib.PhoneNumber({
 		areaCode: "6224",
 		subscriberNumber: "123456"
 	});
@@ -265,7 +282,7 @@ PhoneGeoTests.prototype.testDefaultDE = function() {
 		country: {
 			sn: "Deutschland",
 			ln: "Deutschland",
-			code: "de"
+			code: "DE"
 		},
 		area: {
 			sn: "Leimen",
@@ -273,17 +290,19 @@ PhoneGeoTests.prototype.testDefaultDE = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'de_de'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'de-DE'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testDEMobileNumber = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testDEMobileNumber() {
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		mobilePrefix: "17",
 		subscriberNumber: "12345678"
@@ -292,7 +311,7 @@ PhoneGeoTests.prototype.testDEMobileNumber = function() {
 		country: {
 			sn: "Deutschland",
 			ln: "Deutschland",
-			code: "de"
+			code: "DE"
 		},
 		area: {
 			sn: "Handynummer",
@@ -300,17 +319,19 @@ PhoneGeoTests.prototype.testDEMobileNumber = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'de_de'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'de-DE'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testDEServiceNumber = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testDEServiceNumber() {
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		serviceCode: "12",
 		subscriberNumber: "12345678"
@@ -319,7 +340,7 @@ PhoneGeoTests.prototype.testDEServiceNumber = function() {
 		country: {
 			sn: "Deutschland",
 			ln: "Deutschland",
-			code: "de"
+			code: "DE"
 		},
 		area: {
 			sn: "Dienstnummer",
@@ -327,24 +348,26 @@ PhoneGeoTests.prototype.testDEServiceNumber = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'de_de'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'de-DE'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testDEEmergency = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testDEEmergency() {
+	var parsed = new ilib.PhoneNumber({
 		emergency: "112"
 	});
 	var expected = {
 		country: {
 			sn: "Deutschland",
 			ln: "Deutschland",
-			code: "de"
+			code: "DE"
 		},
 		area: {
 			sn: "Notrufnummer",
@@ -352,47 +375,51 @@ PhoneGeoTests.prototype.testDEEmergency = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'de_de'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'de-DE'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testDELocal = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testDELocal() {
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "12345678"
-	}, {locale: 'de_de'});
+	}, {locale: 'de-DE'});
 	var expected = {
 		country: {
 			sn: "Deutschland",
 			ln: "Deutschland",
-			code: "de"
+			code: "DE"
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'de_de'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'de-DE'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testDefaultHK = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testDefaultHK() {
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "663",
 		subscriberNumber: "12345678"
-	}, {locale: 'en_hk'});
+	}, {locale: 'en-HK'});
 	var expected = {
 		country: {
 			sn: "中國",
 			ln: "中華人民共和國",
-			code: "cn"
+			code: "CN"
 		},
 		area: {
 			sn: "Jieyang",
@@ -401,25 +428,27 @@ PhoneGeoTests.prototype.testDefaultHK = function() {
 	};
 	
 	// give the prc mcc number so that this gives the right geo location
-	var locator = new enyo.g11n.GeoLocator({locale: 'zh_hk', mcc: "460"});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'zh-HK', mcc: "460"});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testHKMobileNumber = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testHKMobileNumber() {
+	var parsed = new ilib.PhoneNumber({
 		mobilePrefix: "150",
 		subscriberNumber: "05179573"
-	}, {locale: 'en_hk'});
+	}, {locale: 'en-HK'});
 	var expected = {
 		country: {
 			sn: "中國",
 			ln: "中華人民共和國",
-			code: "cn"
+			code: "CN"
 		},
 		area: {
 			sn: "Mobile Number",
@@ -428,26 +457,28 @@ PhoneGeoTests.prototype.testHKMobileNumber = function() {
 	};
 
 	// give the prc mcc number so that this gives the right geo location
-	var locator = new enyo.g11n.GeoLocator({locale: 'zh_hk', mcc: "460"});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'zh-HK', mcc: "460"});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testDefaultCN = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testDefaultCN() {
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "663",
 		subscriberNumber: "12345678"
-	}, {locale: 'zh_cn'});
+	}, {locale: 'zh-CN'});
 	var expected = {
 		country: {
 			sn: "中国",
 			ln: "中华人民共和国",
-			code: "cn"  
+			code: "CN"  
 		},
 		area: {
 			sn: "揭阳市",
@@ -455,25 +486,27 @@ PhoneGeoTests.prototype.testDefaultCN = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'zh_cn'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'zh-CN'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testCNMobileNumber = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testCNMobileNumber() {
+	var parsed = new ilib.PhoneNumber({
 		mobilePrefix: "150",
 		subscriberNumber: "05179573"
-	}, {locale: 'zh_cn'});
+	}, {locale: 'zh-CN'});
 	var expected = {
 		country: {
 			sn: "中国",
 			ln: "中华人民共和国",
-			code: "cn"
+			code: "CN"
 		},
 		area: {
 			sn: "手机号码",
@@ -481,27 +514,29 @@ PhoneGeoTests.prototype.testCNMobileNumber = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'zh_cn'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'zh-CN'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testUK = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testUK() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		areaCode: "161",
 		subscriberNumber: "1234567"
-	}, {locale: 'en_gb'});
+	}, {locale: 'en-GB'});
 	var expected = {
 		country: {
 			sn: "United Kingdom",
 			ln: "United Kingdom, Guernsey, Isle of Man, Jersey",
-			code: "gb"
+			code: "GB"
 		},
 		area: {
 			sn: "Manchester",
@@ -509,27 +544,29 @@ PhoneGeoTests.prototype.testUK = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_uk'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-UK'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testGB = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testGB() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		areaCode: "161",
 		subscriberNumber: "1234567"
-	}, {locale: 'en_gb'});
+	}, {locale: 'en-GB'});
 	var expected = {
 		country: {
 			sn: "United Kingdom",
 			ln: "United Kingdom, Guernsey, Isle of Man, Jersey",
-			code: "gb"
+			code: "GB"
 		},
 		area: {
 			sn: "Manchester",
@@ -537,27 +574,29 @@ PhoneGeoTests.prototype.testGB = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_gb'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-GB'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testUKMobile = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testUKMobile() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		mobilePrefix: "75",
 		subscriberNumber: "12345678"
-	}, {locale: 'en_gb'});
+	}, {locale: 'en-GB'});
 	var expected = {
 		country: {
 			sn: "United Kingdom",
 			ln: "United Kingdom, Guernsey, Isle of Man, Jersey",
-			code: "gb"
+			code: "GB"
 		},
 		area: {
 			sn: "Mobile Number",
@@ -565,27 +604,29 @@ PhoneGeoTests.prototype.testUKMobile = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_gb'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-GB'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testUKService = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testUKService() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		serviceCode: "303",
 		subscriberNumber: "1234567"
-	}, {locale: 'en_gb'});
+	}, {locale: 'en-GB'});
 	var expected = {
 		country: {
 			sn: "United Kingdom",
 			ln: "United Kingdom, Guernsey, Isle of Man, Jersey",
-			code: "gb"
+			code: "GB"
 		},
 		area: {
 			sn: "Service Number",
@@ -593,38 +634,40 @@ PhoneGeoTests.prototype.testUKService = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_gb'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-GB'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testUKLocal = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testUKLocal() {
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "1234567"
-	}, {locale: 'en_gb'});
+	}, {locale: 'en-GB'});
 	var expected = {
 		country: {
 			sn: "United Kingdom",
 			ln: "United Kingdom, Guernsey, Isle of Man, Jersey",
-			code: "gb"
+			code: "GB"
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_gb'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-GB'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+
 };
 
-PhoneGeoTests.prototype.testFR = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testFR() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		areaCode: "1",
@@ -634,7 +677,7 @@ PhoneGeoTests.prototype.testFR = function() {
 		country: {
 			sn: "France",
 			ln: "France",
-			code: "fr"
+			code: "FR"
 		},
 		area: {
 			sn: "Paris",
@@ -642,17 +685,19 @@ PhoneGeoTests.prototype.testFR = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'fr_fr'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'fr-FR'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testFRMobile = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testFRMobile() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		mobilePrefix: "6",
@@ -662,7 +707,7 @@ PhoneGeoTests.prototype.testFRMobile = function() {
 		country: {
 			sn: "France",
 			ln: "France",
-			code: "fr"
+			code: "FR"
 		},
 		area: {
 			sn: "Numéro de mobile",
@@ -670,17 +715,20 @@ PhoneGeoTests.prototype.testFRMobile = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'fr_fr'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'fr-FR'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testFRService = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testFRService() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		serviceCode: "690",
@@ -690,7 +738,7 @@ PhoneGeoTests.prototype.testFRService = function() {
 		country: {
 			sn: "France",
 			ln: "France",
-			code: "fr"
+			code: "FR"
 		},
 		area: {
 			sn: "Numéro de service",
@@ -698,17 +746,20 @@ PhoneGeoTests.prototype.testFRService = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'fr_fr'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'fr-FR'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
 };
 
-PhoneGeoTests.prototype.testFRDepartment = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testFRDepartment() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		serviceCode: "262",
@@ -718,7 +769,7 @@ PhoneGeoTests.prototype.testFRDepartment = function() {
 		country: {
 			sn: "France",
 			ln: "France",
-			code: "fr"
+			code: "FR"
 		},
 		area: {
 			sn: "Réunion",
@@ -726,17 +777,21 @@ PhoneGeoTests.prototype.testFRDepartment = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'fr_fr'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'fr-FR'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testFRFreephone = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testFRFreephone() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		serviceCode: "800",
@@ -746,7 +801,7 @@ PhoneGeoTests.prototype.testFRFreephone = function() {
 		country: {
 			sn: "France",
 			ln: "France",
-			code: "fr"
+			code: "FR"
 		},
 		area: {
 			sn: "Toll-free Number",
@@ -754,17 +809,21 @@ PhoneGeoTests.prototype.testFRFreephone = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'fr_fr'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'fr-FR'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testFRToll = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testFRToll() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		serviceCode: "810",
@@ -774,7 +833,7 @@ PhoneGeoTests.prototype.testFRToll = function() {
 		country: {
 			sn: "France",
 			ln: "France",
-			code: "fr"
+			code: "FR"
 		},
 		area: {
 			sn: "Appel payant",
@@ -782,17 +841,21 @@ PhoneGeoTests.prototype.testFRToll = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'fr_fr'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'fr-FR'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testDE = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testDE() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "49",
 		areaCode: "6224",
@@ -802,7 +865,7 @@ PhoneGeoTests.prototype.testDE = function() {
 		country: {
 			sn: "Deutschland",
 			ln: "Deutschland",
-			code: "de"
+			code: "DE"
 		},
 		area: {
 			sn: "Leimen",
@@ -810,17 +873,21 @@ PhoneGeoTests.prototype.testDE = function() {
 		}
 	};
 
-	var locator = new enyo.g11n.GeoLocator({locale: 'de_de'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'de-DE'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testIT = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testIT() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "39",
 		trunkAccess: "0",
@@ -831,7 +898,7 @@ PhoneGeoTests.prototype.testIT = function() {
 		country: {
 			sn: "Italia",
 			ln: "Italia, Città del Vaticano",
-			code: "it"
+			code: "IT"
 		},
 		area: {
 			sn: "Perugia",
@@ -839,18 +906,22 @@ PhoneGeoTests.prototype.testIT = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'it_it'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'it-IT'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
 // for bug NOV-115337
-PhoneGeoTests.prototype.testITIntl = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testITIntl() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "39",
 		trunkAccess: "0",
@@ -861,7 +932,7 @@ PhoneGeoTests.prototype.testITIntl = function() {
 		country: {
 			sn: "Italia",
 			ln: "Italia, Città del Vaticano",
-			code: "it"
+			code: "IT"
 		},
 		area: {
 			sn: "Monza",
@@ -869,16 +940,20 @@ PhoneGeoTests.prototype.testITIntl = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'it_it'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'it-IT'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
-PhoneGeoTests.prototype.testITIntlMobile = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testITIntlMobile() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "39",
 		mobilePrefix: "390",
@@ -888,7 +963,7 @@ PhoneGeoTests.prototype.testITIntlMobile = function() {
 		country: {
 			sn: "Italia",
 			ln: "Italia, Città del Vaticano",
-			code: "it"
+			code: "IT"
 		},
 		area: {
 			sn: "Numero cellulare",
@@ -896,17 +971,21 @@ PhoneGeoTests.prototype.testITIntlMobile = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'it_it'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'it-IT'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testES = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testES() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "34",
 		areaCode: "930",	
@@ -916,7 +995,7 @@ PhoneGeoTests.prototype.testES = function() {
 		country: {
 			sn: "España",
 			ln: "España",
-			code: "es"
+			code: "ES"
 		},
 		area: {
 			sn: "Barcelona",
@@ -924,17 +1003,20 @@ PhoneGeoTests.prototype.testES = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'es_es'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'es-ES'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testMX = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+function testMX() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "52",
 		areaCode: "755",
@@ -944,7 +1026,7 @@ PhoneGeoTests.prototype.testMX = function() {
 		country: {
 			sn: "México",
 			ln: "México",
-			code: "mx"
+			code: "MX"
 		},
 		area: {
 			sn: "Guerrero",
@@ -952,38 +1034,48 @@ PhoneGeoTests.prototype.testMX = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'es_mx'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-MX'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
+
 };
 
-PhoneGeoTests.prototype.testMXLocal = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testMXLocal() {
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "12345678"
 	});
 	var expected = {
 		country: {
 			sn: "México",
 			ln: "México",
-			code: "mx"
+			code: "MX"
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'es_mx'});
-	location = locator.locate(parsed);
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-MX'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
 };
 
-PhoneGeoTests.prototype.testAU = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testAU() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "61",
 		areaCode: "8",	
@@ -993,7 +1085,7 @@ PhoneGeoTests.prototype.testAU = function() {
 		country: {
 			sn: "Australia",
 			ln: "Australia, Christmas Island, Cocos Islands",
-			code: "au"
+			code: "AU"
 		},
 		area: {
 			sn: "Perth",
@@ -1001,17 +1093,22 @@ PhoneGeoTests.prototype.testAU = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_au'});
-	location = locator.locate(parsed);
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'es-AU'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
 };
 
-PhoneGeoTests.prototype.testAUMobile = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testAUMobile() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "61",
 		mobilePrefix: "4",	
@@ -1021,7 +1118,7 @@ PhoneGeoTests.prototype.testAUMobile = function() {
 		country: {
 			sn: "Australia",
 			ln: "Australia, Christmas Island, Cocos Islands",
-			code: "au"
+			code: "AU"
 		},
 		area: {
 			sn: "Mobile Number",
@@ -1029,17 +1126,21 @@ PhoneGeoTests.prototype.testAUMobile = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_au'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'es-AU'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testAUUnknownAreaWithinACity = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testAUUnknownAreaWithinACity() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "61",
 		areaCode: "2",	
@@ -1049,7 +1150,7 @@ PhoneGeoTests.prototype.testAUUnknownAreaWithinACity = function() {
 		country: {
 			sn: "Australia",
 			ln: "Australia, Christmas Island, Cocos Islands",
-			code: "au"
+			code: "AU"
 		},
 		area: {
 			sn: "Sydney",
@@ -1057,17 +1158,22 @@ PhoneGeoTests.prototype.testAUUnknownAreaWithinACity = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_au'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'es-AU'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
+
 };
 
-PhoneGeoTests.prototype.testAUUnknownAreaWithinCountry = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testAUUnknownAreaWithinCountry() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "61",
 		areaCode: "3",	
@@ -1077,7 +1183,7 @@ PhoneGeoTests.prototype.testAUUnknownAreaWithinCountry = function() {
 		country: {
 			sn: "Australia",
 			ln: "Australia, Christmas Island, Cocos Islands",
-			code: "au"
+			code: "AU"
 		},
 		area: {
 			sn: "Southeast",
@@ -1085,17 +1191,21 @@ PhoneGeoTests.prototype.testAUUnknownAreaWithinCountry = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_au'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'es-AU'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testNZ = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testNZ() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "64",
 		areaCode: "3",	
@@ -1105,7 +1215,7 @@ PhoneGeoTests.prototype.testNZ = function() {
 		country: {
 			sn: "New Zealand",
 			ln: "New Zealand",
-			code: "nz"
+			code: "NZ"
 		},
 		area: {
 			sn: "Christchurch",
@@ -1113,17 +1223,21 @@ PhoneGeoTests.prototype.testNZ = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_nz'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'es-NZ'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testNZWithDot = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testNZWithDot() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "64",
 		areaCode: "3",	
@@ -1133,7 +1247,7 @@ PhoneGeoTests.prototype.testNZWithDot = function() {
 		country: {
 			sn: "New Zealand",
 			ln: "New Zealand",
-			code: "nz"
+			code: "NZ"
 		},
 		area: {
 			sn: "Invercargill",
@@ -1141,17 +1255,21 @@ PhoneGeoTests.prototype.testNZWithDot = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_nz'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'es-NZ'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testNZMobile = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testNZMobile() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "64",
 		mobilePrefix: "21",	
@@ -1161,7 +1279,7 @@ PhoneGeoTests.prototype.testNZMobile = function() {
 		country: {
 			sn: "New Zealand",
 			ln: "New Zealand",
-			code: "nz"
+			code: "NZ"
 		},
 		area: {
 			sn: "Mobile Number",
@@ -1169,17 +1287,21 @@ PhoneGeoTests.prototype.testNZMobile = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_nz'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'es-NZ'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testNZUnknownAreaWithinACity = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testNZUnknownAreaWithinACity() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "64",
 		areaCode: "9",	
@@ -1189,7 +1311,7 @@ PhoneGeoTests.prototype.testNZUnknownAreaWithinACity = function() {
 		country: {
 			sn: "New Zealand",
 			ln: "New Zealand",
-			code: "nz"
+			code: "NZ"
 		},
 		area: {
 			sn: "Auckland",
@@ -1197,17 +1319,21 @@ PhoneGeoTests.prototype.testNZUnknownAreaWithinACity = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_nz'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'es-NZ'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testNZUnknownAreaWithinCountry = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testNZUnknownAreaWithinCountry() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "64",
 		areaCode: "3",	
@@ -1217,7 +1343,7 @@ PhoneGeoTests.prototype.testNZUnknownAreaWithinCountry = function() {
 		country: {
 			sn: "New Zealand",
 			ln: "New Zealand",
-			code: "nz"
+			code: "NZ"
 		},
 		area: {
 			sn: "South Island",
@@ -1225,17 +1351,21 @@ PhoneGeoTests.prototype.testNZUnknownAreaWithinCountry = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_nz'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'es-NZ'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testUnknown = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testUnknown() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "506",
 		areaCode: "20",
@@ -1245,21 +1375,25 @@ PhoneGeoTests.prototype.testUnknown = function() {
 		country: {
 			sn: "Costa Rica",
 			ln: "Costa Rica",
-			code: "cr"
+			code: "CR"
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testMobile = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testMobile() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "49",
 		mobilePrefix: "16",
@@ -1269,7 +1403,7 @@ PhoneGeoTests.prototype.testMobile = function() {
 		country: {
 			sn: "Germany",
 			ln: "Germany",
-			code: "de"
+			code: "DE"
 		},
 		area: {
 			sn: "Mobile Number",
@@ -1277,17 +1411,21 @@ PhoneGeoTests.prototype.testMobile = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testWithUSMCC = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testWithUSMCC() {
+	var parsed = new ilib.PhoneNumber({
 		areaCode: "650",
 		subscriberNumber: "1234567"
 	});
@@ -1295,7 +1433,7 @@ PhoneGeoTests.prototype.testWithUSMCC = function() {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "California",
@@ -1303,17 +1441,21 @@ PhoneGeoTests.prototype.testWithUSMCC = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us', mcc: '316'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US', mcc: '316'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testWithUSMCCNoLocale = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testWithUSMCCNoLocale() {
+	var parsed = new ilib.PhoneNumber({
 		areaCode: "650",
 		subscriberNumber: "1234567"
 	});
@@ -1321,7 +1463,7 @@ PhoneGeoTests.prototype.testWithUSMCCNoLocale = function() {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "California",
@@ -1329,17 +1471,21 @@ PhoneGeoTests.prototype.testWithUSMCCNoLocale = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({mcc: '316'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber({mcc: '316'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testDEMCCEnglishLocale = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testDEMCCEnglishLocale() {
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6224",
 		subscriberNumber: "123456"
@@ -1348,7 +1494,7 @@ PhoneGeoTests.prototype.testDEMCCEnglishLocale = function() {
 		country: {
 			sn: "Germany",
 			ln: "Germany",
-			code: "de"
+			code: "DE"
 		},
 		area: {
 			sn: "Leimen",
@@ -1356,17 +1502,21 @@ PhoneGeoTests.prototype.testDEMCCEnglishLocale = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us', mcc: '262'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US', mcc: '262'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testDEMCCGermanLocale = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testDEMCCGermanLocale() {
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6224",
 		subscriberNumber: "123456"
@@ -1375,7 +1525,7 @@ PhoneGeoTests.prototype.testDEMCCGermanLocale = function() {
 		country: {
 			sn: "Deutschland",
 			ln: "Deutschland",
-			code: "de"
+			code: "DE"
 		},
 		area: {
 			sn: "Leimen",
@@ -1383,17 +1533,21 @@ PhoneGeoTests.prototype.testDEMCCGermanLocale = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'de_de', mcc: '262'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'de-DE', mcc: '262'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testDEMCCFrenchLocaleUSCountryCode = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testDEMCCFrenchLocaleUSCountryCode() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "650",
@@ -1403,7 +1557,7 @@ PhoneGeoTests.prototype.testDEMCCFrenchLocaleUSCountryCode = function() {
 		country: {
 			sn: "Amérique du Nord",
 			ln: "Amérique du Nord et Îles Caraïbes",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "Californie",
@@ -1411,19 +1565,23 @@ PhoneGeoTests.prototype.testDEMCCFrenchLocaleUSCountryCode = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'fr_fr', mcc: '262'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'fr-FR', mcc: '262'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
 
 // for NOV-108200
-PhoneGeoTests.prototype.testBogusCountryCode = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testBogusCountryCode() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "P1",
 		areaCode: "650",
@@ -1433,7 +1591,7 @@ PhoneGeoTests.prototype.testBogusCountryCode = function() {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "California",
@@ -1441,16 +1599,20 @@ PhoneGeoTests.prototype.testBogusCountryCode = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
-PhoneGeoTests.prototype.testBogusAreaCode = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testBogusAreaCode() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "650P",
@@ -1460,7 +1622,7 @@ PhoneGeoTests.prototype.testBogusAreaCode = function() {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "California",
@@ -1468,18 +1630,14 @@ PhoneGeoTests.prototype.testBogusAreaCode = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
 };
 
 // for bug NOV-115625
-PhoneGeoTests.prototype.testNumberTooLongUS = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testNumberTooLongUS() {
+	var parsed = new ilib.PhoneNumber({
 		areaCode: "941",
 		subscriberNumber: "62719524"
 	});
@@ -1487,22 +1645,24 @@ PhoneGeoTests.prototype.testNumberTooLongUS = function() {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+
+
 };
 
 // no fixed length in Germany, so there should not be any numbers that are "too long"
-PhoneGeoTests.prototype.testNumberTooLongDE = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testNumberTooLongDE() {
+	var parsed = new ilib.PhoneNumber({
 		areaCode: "6224",
 		subscriberNumber: "12345678901234567890"
 	});
@@ -1510,7 +1670,7 @@ PhoneGeoTests.prototype.testNumberTooLongDE = function() {
 		country: {
 			sn: "Deutschland",
 			ln: "Deutschland",
-			code: "de"
+			code: "DE"
 		},
 		area: {
 			sn: "Leimen",
@@ -1518,17 +1678,21 @@ PhoneGeoTests.prototype.testNumberTooLongDE = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'de_de'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'de-DE'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testInvalidNumber = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testInvalidNumber() {
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "234"
 	});
@@ -1536,7 +1700,7 @@ PhoneGeoTests.prototype.testInvalidNumber = function() {
 		country: {
 			sn: "North America",
 			ln: "North America and the Caribbean Islands",
-			code: "us"
+			code: "US"
 		},
 		area: {
 			sn: "Ohio",
@@ -1544,226 +1708,228 @@ PhoneGeoTests.prototype.testInvalidNumber = function() {
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
+	assertEquals(expected.area.ln, locator.getAreaLongName);
+	assertEquals(expected.area.sn, locator.getAreaShortName);
+
+
 };
 
-PhoneGeoTests.prototype.testGetCountryCode = function() {
+
+function testGetCountryCode() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "49",
 		areaCode: "6224",
 		subscriberNumber: "12345678901234567890"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator();
-	country = locator.country(parsed);
+	var locator = new ilib.GeoPhoneNumber(parsed);
+	assertNotUndefined(locator);
+	country = locator.getRegion();
 	
-	UnitTest.requireEqual('de', country);
-	
-	return UnitTest.passed;
+	assertEquals('DE', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCode2 = function() {
+
+function testGetCountryCode2() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "61",
 		areaCode: "2",
 		subscriberNumber: "12345678"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator();
+	var locator = new ilib.GeoPhoneNumber(parsed);
 	country = locator.country(parsed);
+	assertNotUndefined(locator);
+	country = locator.getRegion();
 	
-	UnitTest.requireEqual('au', country);
-	
-	return UnitTest.passed;
+	assertEquals('AU', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeUndefined = function() {
+
+function testGetCountryCodeUndefined() {
+	//[Q]
 	var country;
-	
-	var locator = new enyo.g11n.GeoLocator();
+	var locator = new ilib.GeoPhoneNumber();
 	country = locator.country(undefined);
 	
-	UnitTest.require(undefined === country);
-	
-	return UnitTest.passed;
+	assertNotUndefined(undefined === country);
+
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeLocalNumber = function() {
+
+function testGetCountryCodeLocalNumber() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6224",
 		subscriberNumber: "12345678901234567890"
-	}, {locale: "de_de"});
+	}, {locale: "de-DE"});
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'de_de'});
-	country = locator.country(parsed);
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'de-DE'});
+	assertNotUndefined(locator);
+	country = locator.getRegion();
 	
-	UnitTest.requireEqual('de', country);
-	
-	return UnitTest.passed;
+	assertEquals('DE', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeLocalNumberNoLocale = function() {
+
+function testGetCountryCodeLocalNumberNoLocale() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		areaCode: "905",
 		subscriberNumber: "5551212"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	var locator = new enyo.g11n.GeoLocator();
-	country = locator.country(parsed);
-	
-	UnitTest.requireEqual('ca', country);
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: "en-US"});
+	assertNotUndefined(locator);
+	country = locator.getRegion();
+
+	assertEquals('CA', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeLocalNumberNoLocaleDefault = function() {
+
+function testGetCountryCodeLocalNumberNoLocaleDefault() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		areaCode: "650",
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator();
-	country = locator.country(parsed);
-	
-	UnitTest.requireEqual('us', country);
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed);
+	assertNotUndefined(locator);
+	country = locator.getRegion();
+	assertEquals('US', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeLocalNumberNoAreaCode = function() {
+
+function testGetCountryCodeLocalNumberNoAreaCode() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		mobilePrefix: "175",
 		subscriberNumber: "12345678"
-	}, {locale: "de_de"});
+	}, {locale: "de-DE"});
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'de_de'});
-	country = locator.country(parsed);
-	
-	UnitTest.requireEqual('de', country);
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'de-DE'});
+	assertNotUndefined(locator);
+	country = locator.getRegion();
+	assertEquals('DE', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeHaveCountryButNoAreaCode = function() {
+
+function testGetCountryCodeHaveCountryButNoAreaCode() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "49",
 		mobilePrefix: "175",
 		subscriberNumber: "12345678"
-	}, {locale: "de_de"});
+	}, {locale: "de-DE"});
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'de_de'});
-	country = locator.country(parsed);
-	
-	UnitTest.requireEqual('de', country);
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'de-DE'});
+	assertNotUndefined(locator);
+	country = locator.getRegion();
+	assertEquals('DE', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeHaveCountryButNoAreaCodeFR = function() {
+
+function testGetCountryCodeHaveCountryButNoAreaCodeFR() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		mobilePrefix: "6",
 		subscriberNumber: "12345678"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'fr_fr'});
-	country = locator.country(parsed);
-	
-	UnitTest.requireEqual('fr', country);
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'fr-FR'});
+	assertNotUndefined(locator);
+	country = locator.getRegion();
+	assertEquals('FR', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeUS = function() {
+
+function testGetCountryCodeUS() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "408",
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator();
-	country = locator.country(parsed);
+	var locator = new ilib.GeoPhoneNumber(parsed);
+	assertNotUndefined(locator);
+	country = locator.getRegion();
 	
-	UnitTest.requireEqual('us', country);
-	
-	return UnitTest.passed;
+	assertEquals('US', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeCA = function() {
+
+function testGetCountryCodeCA() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "705",
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator();
-	country = locator.country(parsed);
+	var locator = new ilib.GeoPhoneNumber(parsed);
+	assertNotUndefined(locator);
+	country = locator.getRegion();
 	
-	UnitTest.requireEqual('ca', country);
-	
-	return UnitTest.passed;
+	assertEquals('CA', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeCaribbean = function() {
+
+function testGetCountryCodeCaribbean() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "876",
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator();
-	country = locator.country(parsed);
+	var locator = new ilib.GeoPhoneNumber(parsed);
+	assertNotUndefined(locator);
+	country = locator.getRegion();
 	
-	UnitTest.requireEqual('jm', country);
-	
-	return UnitTest.passed;
+	assertEquals('JM', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeCaribbean2 = function() {
+
+function testGetCountryCodeCaribbean2() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "284",
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator();
-	country = locator.country(parsed);
-	
-	UnitTest.requireEqual('vg', country);
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed);
+	assertNotUndefined(locator);
+	country = locator.getRegion();
+
+	assertEquals('VG', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeItalySanMarino = function() {
+
+function testGetCountryCodeItalySanMarino() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "39",
 		trunkAccess: "0",
@@ -1771,17 +1937,16 @@ PhoneGeoTests.prototype.testGetCountryCodeItalySanMarino = function() {
 		subscriberNumber: "87654321"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator();
-	country = locator.country(parsed);
-	
-	UnitTest.requireEqual('sm', country);
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed);
+	assertNotUndefined(locator);
+	country = locator.getRegion();
+	assertEquals('SM', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeItalyRome = function() {
+
+function testGetCountryCodeItalyRome() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "39",
 		trunkAccess: "0",
@@ -1789,17 +1954,16 @@ PhoneGeoTests.prototype.testGetCountryCodeItalyRome = function() {
 		subscriberNumber: "87654321"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator();
-	country = locator.country(parsed);
-	
-	UnitTest.requireEqual('it', country);
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed);
+	assertNotUndefined(locator);
+	country = locator.getRegion();
+	assertEquals('IT', country);	
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeFranceParis = function() {
+
+function testGetCountryCodeFranceParis() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		trunkAccess: "0",
@@ -1807,17 +1971,16 @@ PhoneGeoTests.prototype.testGetCountryCodeFranceParis = function() {
 		subscriberNumber: "87654321"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator();
-	country = locator.country(parsed);
-	
-	UnitTest.requireEqual('fr', country);
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed);
+	assertNotUndefined(locator);
+	country = locator.getRegion();
+	assertEquals('FR', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeFranceReunion = function() {
+
+function testGetCountryCodeFranceReunion() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		trunkAccess: "0",
@@ -1825,17 +1988,16 @@ PhoneGeoTests.prototype.testGetCountryCodeFranceReunion = function() {
 		subscriberNumber: "654321"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator();
-	country = locator.country(parsed);
-	
-	UnitTest.requireEqual('re', country);
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed);
+	assertNotUndefined(locator);
+	country = locator.getRegion();
+	assertEquals('RE', country);
 };
 
-PhoneGeoTests.prototype.testGetCountryCodeFranceMartinique = function() {
+
+function testGetCountryCodeFranceMartinique() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		trunkAccess: "0",
@@ -1843,34 +2005,31 @@ PhoneGeoTests.prototype.testGetCountryCodeFranceMartinique = function() {
 		subscriberNumber: "654321"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator();
-	country = locator.country(parsed);
-	
-	UnitTest.requireEqual('mq', country);
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed);
+	assertNotUndefined(locator);
+	country = locator.getRegion();
+	assertEquals('MQ', country);
 };
 
 // for bug NOV-118981
-PhoneGeoTests.prototype.testInvalidNumber = function() {
+
+function testInvalidNumber() {
 	var country;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "234"
 	});
 	
-	var locator = new enyo.g11n.GeoLocator();
-	country = locator.country(parsed);
-	
-	UnitTest.requireEqual('us', country);
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed);
+	assertNotUndefined(locator);
+	country = locator.getRegion();
+	assertEquals('US', country);
 };
 
 
-PhoneGeoTests.prototype.testSG = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testSG() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "65",
 		subscriberNumber: "25432102"
@@ -1879,63 +2038,63 @@ PhoneGeoTests.prototype.testSG = function() {
 		country: {
 			sn: "Singapore",
 			ln: "Republic of Singapore",
-			code: "sg"
+			code: "SG"
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
-	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
+
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
 };
 
-PhoneGeoTests.prototype.testSGLocal = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testSGLocal() {
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "25432102"
 	});
 	var expected = {
 		country: {
 			sn: "Singapore",
 			ln: "Republic of Singapore",
-			code: "sg"
+			code: "SG"
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_sg'});
-	location = locator.locate(parsed);
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-SG'});
+	assertNotUndefined(locator);
 	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
 };
 
-PhoneGeoTests.prototype.testSGMobile = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testSGMobile() {
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "65432102"
 	});
 	var expected = {
 		country: {
 			sn: "Singapore",
 			ln: "Republic of Singapore",
-			code: "sg"
+			code: "SG"
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_sg'});
-	location = locator.locate(parsed);
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-SG'});
+	assertNotUndefined(locator);
 	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
 };
 
-PhoneGeoTests.prototype.testHK = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testHK() {
+	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "852",
 		subscriberNumber: "25432102"
@@ -1944,56 +2103,56 @@ PhoneGeoTests.prototype.testHK = function() {
 		country: {
 			sn: "Hong Kong",
 			ln: "Hong Kong",
-			code: "hk"
+			code: "HK"
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_us'});
-	location = locator.locate(parsed);
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US'});
+	assertNotUndefined(locator);
 	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
 };
 
-PhoneGeoTests.prototype.testHKLocal = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testHKLocal() {
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "25432102"
 	});
 	var expected = {
 		country: {
 			sn: "Hong Kong",
 			ln: "Hong Kong",
-			code: "hk"
+			code: "HK"
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_hk'});
-	location = locator.locate(parsed);
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-HK'});
+	assertNotUndefined(locator);
 	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
 };
 
-PhoneGeoTests.prototype.testHKMobile = function() {
-	var location;
-	var parsed = new enyo.g11n.PhoneNumber({
+
+function testHKMobile() {
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "65432102"
 	});
 	var expected = {
 		country: {
 			sn: "Hong Kong",
 			ln: "Hong Kong",
-			code: "hk"
+			code: "HK"
 		}
 	};
 	
-	var locator = new enyo.g11n.GeoLocator({locale: 'en_hk'});
-	location = locator.locate(parsed);
+	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-HK'});
+	assertNotUndefined(locator);
 	
-	UnitTest.require(objectEquals(expected, location));
-	
-	return UnitTest.passed;
+	assertEquals(expected.country.code, locator.getRegion());
+	assertEquals(expected.country.ln, locator.getRegionLongName);
+	assertEquals(expected.country.sn, locator.getRegionShortName);
 };

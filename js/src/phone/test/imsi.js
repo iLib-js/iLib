@@ -1,4 +1,4 @@
-ImsiTests.prototype.testRegularImsi3DigitMNC = function() {
+function testRegularImsi3DigitMNC() {
 	var imsi = "31003014084567890"
 	var expected = {
 		mcc: "310",
@@ -6,12 +6,10 @@ ImsiTests.prototype.testRegularImsi3DigitMNC = function() {
 		msin: "14084567890"
 	};
 	
-	UnitTest.require(objectEquals(expected, enyo.g11n.PhoneUtils.parseImsi(imsi)));
-	
-	return UnitTest.passed;
+	assertEquals(objectEquals(expected, ilib.PhoneNumber._parseImsi(imsi)));
 };
 
-ImsiTests.prototype.testRegularImsi2DigitMNC = function() {
+function testRegularImsi2DigitMNC() {
 	var imsi = "26207201234567"
 	var expected = {
 		mcc: "262",
@@ -19,12 +17,10 @@ ImsiTests.prototype.testRegularImsi2DigitMNC = function() {
 		msin: "201234567"
 	};
 	
-	UnitTest.require(objectEquals(expected, enyo.g11n.PhoneUtils.parseImsi(imsi)));
-	
-	return UnitTest.passed;
+	assertEquals(objectEquals(expected, ilib.PhoneNumber._parseImsi(imsi)));
 };
 
-ImsiTests.prototype.testSpecialImsi1 = function() {
+function testSpecialImsi1() {
 	var imsi = "31000201234567"
 	var expected = {
 		mcc: "310",
@@ -32,12 +28,10 @@ ImsiTests.prototype.testSpecialImsi1 = function() {
 		msin: "201234567"
 	};
 	
-	UnitTest.require(objectEquals(expected, enyo.g11n.PhoneUtils.parseImsi(imsi)));
-	
-	return UnitTest.passed;
+	assertEquals(objectEquals(expected, ilib.PhoneNumber._parseImsi(imsi)));	
 };
 
-ImsiTests.prototype.testSpecialImsi2 = function() {
+function testSpecialImsi2() {
 	var imsi = "310004201234567"
 	var expected = {
 		mcc: "310",
@@ -45,12 +39,10 @@ ImsiTests.prototype.testSpecialImsi2 = function() {
 		msin: "201234567"
 	};
 	
-	UnitTest.require(objectEquals(expected, enyo.g11n.PhoneUtils.parseImsi(imsi)));
-	
-	return UnitTest.passed;
+	assertEquals(objectEquals(expected, ilib.PhoneNumber._parseImsi(imsi)));
 };
 
-ImsiTests.prototype.testBrokenMCC = function() {
+function testBrokenMCC() {
 	var imsi = "32000414084567890"
 	var expected = {
 		mcc: "320",
@@ -59,12 +51,10 @@ ImsiTests.prototype.testBrokenMCC = function() {
 	};
 	
 	// should default to a 3 digit mnc
-	UnitTest.require(objectEquals(expected, enyo.g11n.PhoneUtils.parseImsi(imsi)));
-	
-	return UnitTest.passed;
+	assertEquals(objectEquals(expected, ilib.PhoneNumber._parseImsi(imsi)));
 };
 
-ImsiTests.prototype.testBrokenMNC = function() {
+function testBrokenMNC() {
 	var imsi = "31014114084567890"
 	var expected = {
 		mcc: "310",
@@ -73,22 +63,16 @@ ImsiTests.prototype.testBrokenMNC = function() {
 	};
 	
 	// should default to a 3 digit mnc
-	UnitTest.require(objectEquals(expected, enyo.g11n.PhoneUtils.parseImsi(imsi)));
-	
-	return UnitTest.passed;
+	assertEquals(objectEquals(expected, ilib.PhoneNumber._parseImsi(imsi)));
 };
 
-ImsiTests.prototype.testTooShort = function() {
+function testTooShort() {
 	var imsi = "31"
 	
-	UnitTest.require(enyo.g11n.PhoneUtils.parseImsi(imsi) === undefined);
-	
-	return UnitTest.passed;
+	assertEquals(ilib.PhoneNumber._parseImsi(imsi) === undefined);	
 };
 
-ImsiTests.prototype.testUndefined = function() {
+function testUndefined() {
 	// should default to a 3 digit mnc
-	UnitTest.require(enyo.g11n.PhoneUtils.parseImsi(undefined) === undefined);
-	
-	return UnitTest.passed;
+	assertEquals(ilib.PhoneNumber._parseImsi(undefined) === undefined);
 };

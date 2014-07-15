@@ -1,472 +1,472 @@
-PhoneParseTestsES.prototype.testParseESFull = function(){
-	var parsed = new enyo.g11n.PhoneNumber("925123456", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESFull(){
+	var parsed = new ilib.PhoneNumber("925123456", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		areaCode: "925",
 		subscriberNumber: "123456"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseESIgnoreFormatting = function(){
-	var parsed = new enyo.g11n.PhoneNumber("(925) 123 456", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESIgnoreFormatting(){
+	var parsed = new ilib.PhoneNumber("(925) 123 456", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		areaCode: "925",
 		subscriberNumber: "123456"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseESIgnoreCrap = function(){
-	var parsed = new enyo.g11n.PhoneNumber("9@251$23%45&6", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESIgnoreCrap(){
+	var parsed = new ilib.PhoneNumber("9@251$23%45&6", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		areaCode: "925",
 		subscriberNumber: "123456"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseESPlusIDDToUS = function(){
-	var parsed = new enyo.g11n.PhoneNumber("+12028675309", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESPlusIDDToUS(){
+	var parsed = new ilib.PhoneNumber("+12028675309", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "1",
 		areaCode: "202",
 		subscriberNumber: "8675309"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseESZerosIDDToUS = function(){
-	var parsed = new enyo.g11n.PhoneNumber("0012028675309", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESZerosIDDToUS(){
+	var parsed = new ilib.PhoneNumber("0012028675309", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		iddPrefix: "00",
 		countryCode: "1",
 		areaCode: "202",
 		subscriberNumber: "8675309"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseESPlusIDDToGB = function(){
-	var parsed = new enyo.g11n.PhoneNumber("+442012345678", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESPlusIDDToGB(){
+	var parsed = new ilib.PhoneNumber("+442012345678", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		areaCode: "20",
 		subscriberNumber: "12345678"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseESZerosIDDToGB = function(){
-	var parsed = new enyo.g11n.PhoneNumber("00442012345678", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESZerosIDDToGB(){
+	var parsed = new ilib.PhoneNumber("00442012345678", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		iddPrefix: "00",
 		countryCode: "44",
 		areaCode: "20",
 		subscriberNumber: "12345678"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseEmergencyNumber = function(){
-	var parsed = new enyo.g11n.PhoneNumber("112", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseEmergencyNumber(){
+	var parsed = new ilib.PhoneNumber("112", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			emergency: "112"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseEmergencyNumberPlus = function(){
-	var parsed = new enyo.g11n.PhoneNumber("112115", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseEmergencyNumberPlus(){
+	var parsed = new ilib.PhoneNumber("112115", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			emergency: "112",
 			subscriberNumber: "115"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseESMobileNumber = function(){
-	var parsed = new enyo.g11n.PhoneNumber("654123456", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESMobileNumber(){
+	var parsed = new ilib.PhoneNumber("654123456", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		mobilePrefix: "654",
 		subscriberNumber: "123456"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseESServiceNumber = function(){
-	var parsed = new enyo.g11n.PhoneNumber("800123456", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESServiceNumber(){
+	var parsed = new ilib.PhoneNumber("800123456", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		serviceCode: "800",
 		subscriberNumber: "123456"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseESDialAround = function(){
-	var parsed = new enyo.g11n.PhoneNumber("1032955123456", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESDialAround(){
+	var parsed = new ilib.PhoneNumber("1032955123456", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		cic: "1032",
 		areaCode: "955",
 		subscriberNumber: "123456"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseESPartial1 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("9", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESPartial1(){
+	var parsed = new ilib.PhoneNumber("9", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		subscriberNumber: "9"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseESPartial2 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("95", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESPartial2(){
+	var parsed = new ilib.PhoneNumber("95", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		subscriberNumber: "95"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseESPartial3 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("957", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESPartial3(){
+	var parsed = new ilib.PhoneNumber("957", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		areaCode: "957"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseESPartial4 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("9571", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESPartial4(){
+	var parsed = new ilib.PhoneNumber("9571", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		areaCode: "957",
 		subscriberNumber: "1"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseESPartial5 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("957 12", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESPartial5(){
+	var parsed = new ilib.PhoneNumber("957 12", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		areaCode: "957",
 		subscriberNumber: "12"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseESPartial6 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("957 123", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESPartial6(){
+	var parsed = new ilib.PhoneNumber("957 123", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		areaCode: "957",
 		subscriberNumber: "123"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseESPartial7 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("957 123 4", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESPartial7(){
+	var parsed = new ilib.PhoneNumber("957 123 4", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		areaCode: "957",
 		subscriberNumber: "1234"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseESPartial8 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("957 123 45", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESPartial8(){
+	var parsed = new ilib.PhoneNumber("957 123 45", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		areaCode: "957",
 		subscriberNumber: "12345"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseESPartial9 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("957 123 456", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseESPartial9(){
+	var parsed = new ilib.PhoneNumber("957 123 456", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			areaCode: "957",
 			subscriberNumber: "123456"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
-PhoneParseTestsES.prototype.testParseDialIDD00International1 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("0", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseDialIDD00International1(){
+	var parsed = new ilib.PhoneNumber("0", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			trunkAccess: "0"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseDialIDD00International2 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("00", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseDialIDD00International2(){
+	var parsed = new ilib.PhoneNumber("00", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			iddPrefix: "00"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseDialIDD00International3 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("001", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseDialIDD00International3(){
+	var parsed = new ilib.PhoneNumber("001", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			iddPrefix: "00",
 			countryCode: "1"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseDialIDD00International4 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("0016", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseDialIDD00International4(){
+	var parsed = new ilib.PhoneNumber("0016", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			iddPrefix: "00",
 			countryCode: "1",
 			subscriberNumber: "6"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseDialIDD00International5 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("00165", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseDialIDD00International5(){
+	var parsed = new ilib.PhoneNumber("00165", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			iddPrefix: "00",
 			countryCode: "1",
 			subscriberNumber: "65"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseDialIDD00International6 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("001650", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseDialIDD00International6(){
+	var parsed = new ilib.PhoneNumber("001650", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			iddPrefix: "00",
 			countryCode: "1",
 			areaCode: "650"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseDialIDD00International7 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("0016505", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseDialIDD00International7(){
+	var parsed = new ilib.PhoneNumber("0016505", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			iddPrefix: "00",
 			countryCode: "1",
 			areaCode: "650",
 			subscriberNumber: "5"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseDialIDD00International8 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("00165055", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseDialIDD00International8(){
+	var parsed = new ilib.PhoneNumber("00165055", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			iddPrefix: "00",
 			countryCode: "1",
 			areaCode: "650",
 			subscriberNumber: "55"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseDialIDD00International9 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("001650555", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseDialIDD00International9(){
+	var parsed = new ilib.PhoneNumber("001650555", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			iddPrefix: "00",
 			countryCode: "1",
 			areaCode: "650",
 			subscriberNumber: "555"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseDialIDD00International10 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("0016505551", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseDialIDD00International10(){
+	var parsed = new ilib.PhoneNumber("0016505551", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			iddPrefix: "00",
 			countryCode: "1",
 			areaCode: "650",
 			subscriberNumber: "5551"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseDialIDD00International11 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("00165055512", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseDialIDD00International11(){
+	var parsed = new ilib.PhoneNumber("00165055512", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			iddPrefix: "00",
 			countryCode: "1",
 			areaCode: "650",
 			subscriberNumber: "55512"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseDialIDD00International12 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("001650555123", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseDialIDD00International12(){
+	var parsed = new ilib.PhoneNumber("001650555123", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			iddPrefix: "00",
 			countryCode: "1",
 			areaCode: "650",
 			subscriberNumber: "555123"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
-PhoneParseTestsES.prototype.testParseDialIDD00International13 = function(){
-	var parsed = new enyo.g11n.PhoneNumber("0016505551234", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseDialIDD00International13(){
+	var parsed = new ilib.PhoneNumber("0016505551234", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			iddPrefix: "00",
 			countryCode: "1",
 			areaCode: "650",
 			subscriberNumber: "5551234"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
 
-PhoneParseTestsES.prototype.testParseFromInternational = function(){
-	var parsed = new enyo.g11n.PhoneNumber("+34912123456", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseFromInternational(){
+	var parsed = new ilib.PhoneNumber("+34912123456", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "34",
 			areaCode: "912",
 			subscriberNumber: "123456"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };
 
 //for CFISH-7040
-PhoneParseTestsES.prototype.testParseMobileNumber = function() {
-	var parsed = new enyo.g11n.PhoneNumber("665 545 880", {locale: "es_es"});
-	UnitTest.requireDefined(parsed);
+function testParseMobileNumber() {
+	var parsed = new ilib.PhoneNumber("665 545 880", {locale: "es-ES"});
+	assertNotUndefined(parsed);
 	
-	var expected = new enyo.g11n.PhoneNumber({
+	var expected = new ilib.PhoneNumber({
 		mobilePrefix: "665",
 		subscriberNumber: "545880"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.require(parsed.equals(expected));
-	return UnitTest.passed;
+	assertTrue(parsed.equals(expected));
+	
 };

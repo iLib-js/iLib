@@ -28,7 +28,8 @@ function suite() {
     var s = new cli.TestSuite();
     
     var suites = [
-        "phone.js",
+        "numplan.js"
+  		/*
   		"phone_AU.js",
 		"phone_BE.js",
 		"phone_CN.js",
@@ -67,9 +68,10 @@ function suite() {
 		"phonefmt_HK.js",
 		"imsi.js",
 		"phoneloc.js",
-		"numplan.js",
+		"phone.js",
 		"states.js",
 		"utils.js"
+		*/
     ];
     
     suites.forEach(function (path) {

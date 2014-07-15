@@ -1,194 +1,194 @@
-PhoneUtilsTests.prototype.testNormNANP1 = function() {
-	UnitTest.requireEqual("us", enyo.g11n.PhoneUtils.normPhoneReg("us"));
-	return UnitTest.passed;
+function testNormNANP1() {
+	assertEquals("US", ilib.PhoneUtils.normPhoneReg("US"));
+	
 };
 
-PhoneUtilsTests.prototype.testNormNANP2 = function() {
-	UnitTest.requireEqual("us", enyo.g11n.PhoneUtils.normPhoneReg("ca"));
-	return UnitTest.passed;
+function testNormNANP2() {
+	assertEquals("US", ilib.PhoneUtils.normPhoneReg("CA"));
+	
 };
 
-PhoneUtilsTests.prototype.testNormNANP3 = function() {
-	UnitTest.requireEqual("us", enyo.g11n.PhoneUtils.normPhoneReg("jm"));
-	return UnitTest.passed;
+function testNormNANP3() {
+	assertEquals("US", ilib.PhoneUtils.normPhoneReg("JM"));
+	
 };
 
-PhoneUtilsTests.prototype.testNormFrance1 = function() {
-	UnitTest.requireEqual("fr", enyo.g11n.PhoneUtils.normPhoneReg("fr"));
-	return UnitTest.passed;
+function testNormFrance1() {
+	assertEquals("FR", ilib.PhoneUtils.normPhoneReg("FR"));
+	
 };
 
-PhoneUtilsTests.prototype.testNormFrance2 = function() {
-	UnitTest.requireEqual("fr", enyo.g11n.PhoneUtils.normPhoneReg("mq"));
-	return UnitTest.passed;
+function testNormFrance2() {
+	assertEquals("FR", ilib.PhoneUtils.normPhoneReg("MQ"));
+	
 };
 
-PhoneUtilsTests.prototype.testNormItaly1 = function() {
-	UnitTest.requireEqual("it", enyo.g11n.PhoneUtils.normPhoneReg("it"));
-	return UnitTest.passed;
+function testNormItaly1() {
+	assertEquals("IT", ilib.PhoneUtils.normPhoneReg("IT"));
+	
 };
 
-PhoneUtilsTests.prototype.testNormItaly2 = function() {
-	UnitTest.requireEqual("it", enyo.g11n.PhoneUtils.normPhoneReg("va"));
-	return UnitTest.passed;
+function testNormItaly2() {
+	assertEquals("IT", ilib.PhoneUtils.normPhoneReg("va"));
+	
 };
 
-PhoneUtilsTests.prototype.testNormOther = function() {
-	UnitTest.requireEqual("de", enyo.g11n.PhoneUtils.normPhoneReg("de"));
-	return UnitTest.passed;
+function testNormOther() {
+	assertEquals("DE", ilib.PhoneUtils.normPhoneReg("DE"));
+	
 };
 
-PhoneUtilsTests.prototype.testNormUnknown = function() {
-	UnitTest.requireEqual("xx", enyo.g11n.PhoneUtils.normPhoneReg("xx"));
-	return UnitTest.passed;
+function testNormUnknown() {
+	assertEquals("xx", ilib.PhoneUtils.normPhoneReg("xx"));
+	
 };
 
-PhoneUtilsTests.prototype.testNormUndefined = function() {
-	UnitTest.require(enyo.g11n.PhoneUtils.normPhoneReg(undefined) === undefined);
-	return UnitTest.passed;
+function testNormUndefined() {
+	assertTrue(ilib.PhoneUtils.normPhoneReg(undefined) === undefined);
+	
 };
 
-PhoneUtilsTests.prototype.testMapMCCtoReg1 = function() {
-	UnitTest.requireEqual("us", enyo.g11n.PhoneUtils.mapMCCtoRegion("310"));
-	return UnitTest.passed;
+function testMapMCCtoReg1() {
+	assertEquals("US", ilib.PhoneUtils.mapMCCtoRegion("310"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapMCCtoReg2 = function() {
-	UnitTest.requireEqual("de", enyo.g11n.PhoneUtils.mapMCCtoRegion("262"));
-	return UnitTest.passed;
+function testMapMCCtoReg2() {
+	assertEquals("DE", ilib.PhoneUtils.mapMCCtoRegion("262"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapMCCtoRegUnknown = function() {
-	UnitTest.requireEqual("unknown", enyo.g11n.PhoneUtils.mapMCCtoRegion("0"));
-	return UnitTest.passed;
+function testMapMCCtoRegUnknown() {
+	assertEquals("unknown", ilib.PhoneUtils.mapMCCtoRegion("0"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapMCCtoRegUndefined = function() {
-	UnitTest.require(enyo.g11n.PhoneUtils.mapMCCtoRegion(undefined) === undefined);
-	return UnitTest.passed;
+function testMapMCCtoRegUndefined() {
+	assertTrue(ilib.PhoneUtils.mapMCCtoRegion(undefined) === undefined);
+	
 };
 
-PhoneUtilsTests.prototype.testMapMCCtoCC1 = function() {
-	UnitTest.requireEqual("49", enyo.g11n.PhoneUtils.mapMCCtoCC("262"));
-	return UnitTest.passed;
+function testMapMCCtoCC1() {
+	assertEquals("49", ilib.PhoneUtils.mapMCCtoCC("262"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapMCCtoCC2 = function() {
-	UnitTest.requireEqual("1", enyo.g11n.PhoneUtils.mapMCCtoCC("310"));
-	return UnitTest.passed;
+function testMapMCCtoCC2() {
+	assertEquals("1", ilib.PhoneUtils.mapMCCtoCC("310"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapMCCtoCCUnknown = function() {
-	UnitTest.require(enyo.g11n.PhoneUtils.mapMCCtoCC("0") === undefined);
-	return UnitTest.passed;
+function testMapMCCtoCCUnknown() {
+	assertTrue(ilib.PhoneUtils.mapMCCtoCC("0") === undefined);
+	
 };
 
-PhoneUtilsTests.prototype.testMapMCCtoCCUndefined = function() {
-	UnitTest.require(enyo.g11n.PhoneUtils.mapMCCtoCC(undefined) === undefined);
-	return UnitTest.passed;
+function testMapMCCtoCCUndefined() {
+	assertTrue(ilib.PhoneUtils.mapMCCtoCC(undefined) === undefined);
+	
 };
 
-PhoneUtilsTests.prototype.testMapCCtoReg1 = function() {
-	UnitTest.requireEqual("de", enyo.g11n.PhoneUtils.mapCCtoRegion("49"));
-	return UnitTest.passed;
+function testMapCCtoReg1() {
+	assertEquals("DE", ilib.PhoneUtils.mapCCtoRegion("49"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapCCtoReg2 = function() {
-	UnitTest.requireEqual("us", enyo.g11n.PhoneUtils.mapCCtoRegion("1"));
-	return UnitTest.passed;
+function testMapCCtoReg2() {
+	assertEquals("US", ilib.PhoneUtils.mapCCtoRegion("1"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapCCtoRegUnknown = function() {
-	UnitTest.requireEqual("unknown", enyo.g11n.PhoneUtils.mapCCtoRegion("0"));
-	return UnitTest.passed;
+function testMapCCtoRegUnknown() {
+	assertEquals("unknown", ilib.PhoneUtils.mapCCtoRegion("0"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapCCtoRegUndefined = function() {
-	UnitTest.require(enyo.g11n.PhoneUtils.mapCCtoRegion(undefined) === undefined);
-	return UnitTest.passed;
+function testMapCCtoRegUndefined() {
+	assertTrue(ilib.PhoneUtils.mapCCtoRegion(undefined) === undefined);
+	
 };
 
-PhoneUtilsTests.prototype.testMapAreatoRegNANP1 = function() {
-	UnitTest.requireEqual("us", enyo.g11n.PhoneUtils.mapAreaToRegion("1", "408"));
-	return UnitTest.passed;
+function testMapAreatoRegNANP1() {
+	assertEquals("US", ilib.PhoneUtils.mapAreaToRegion("1", "408"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapAreatoRegNANP2 = function() {
-	UnitTest.requireEqual("jm", enyo.g11n.PhoneUtils.mapAreaToRegion("1", "876"));
-	return UnitTest.passed;
+function testMapAreatoRegNANP2() {
+	assertEquals("JM", ilib.PhoneUtils.mapAreaToRegion("1", "876"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapAreatoRegNANP3 = function() {
-	UnitTest.requireEqual("ca", enyo.g11n.PhoneUtils.mapAreaToRegion("1", "416"));
-	return UnitTest.passed;
+function testMapAreatoRegNANP3() {
+	assertEquals("CA", ilib.PhoneUtils.mapAreaToRegion("1", "416"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapAreatoRegNANPUnknown = function() {
-	UnitTest.requireEqual("us", enyo.g11n.PhoneUtils.mapAreaToRegion("1", "999"));
-	return UnitTest.passed;
+function testMapAreatoRegNANPUnknown() {
+	assertEquals("US", ilib.PhoneUtils.mapAreaToRegion("1", "999"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapAreatoRegNANPUndefined = function() {
-	UnitTest.requireEqual("us", enyo.g11n.PhoneUtils.mapAreaToRegion("1", undefined));
-	return UnitTest.passed;
+function testMapAreatoRegNANPUndefined() {
+	assertEquals("US", ilib.PhoneUtils.mapAreaToRegion("1", undefined));
+	
 };
 
-PhoneUtilsTests.prototype.testMapAreatoRegItaly1 = function() {
-	UnitTest.requireEqual("it", enyo.g11n.PhoneUtils.mapAreaToRegion("39", "6"));
-	return UnitTest.passed;
+function testMapAreatoRegItaly1() {
+	assertEquals("IT", ilib.PhoneUtils.mapAreaToRegion("39", "6"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapAreatoRegItaly2 = function() {
-	UnitTest.requireEqual("sm", enyo.g11n.PhoneUtils.mapAreaToRegion("39", "549"));
-	return UnitTest.passed;
+function testMapAreatoRegItaly2() {
+	assertEquals("sm", ilib.PhoneUtils.mapAreaToRegion("39", "549"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapAreatoRegOther1 = function() {
-	UnitTest.requireEqual("de", enyo.g11n.PhoneUtils.mapAreaToRegion("49", "2553"));
-	return UnitTest.passed;
+function testMapAreatoRegOther1() {
+	assertEquals("DE", ilib.PhoneUtils.mapAreaToRegion("49", "2553"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapAreatoRegOther2 = function() {
-	UnitTest.requireEqual("nl", enyo.g11n.PhoneUtils.mapAreaToRegion("31", "20"));
-	return UnitTest.passed;
+function testMapAreatoRegOther2() {
+	assertEquals("NL", ilib.PhoneUtils.mapAreaToRegion("31", "20"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapAreatoRegUnknown = function() {
-	UnitTest.requireEqual("unknown", enyo.g11n.PhoneUtils.mapAreaToRegion("0", "20"));
-	return UnitTest.passed;
+function testMapAreatoRegUnknown() {
+	assertEquals("unknown", ilib.PhoneUtils.mapAreaToRegion("0", "20"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapAreatoRegUndefined = function() {
-	UnitTest.require(enyo.g11n.PhoneUtils.mapAreaToRegion(undefined, undefined) === undefined);
-	return UnitTest.passed;
+function testMapAreatoRegUndefined() {
+	assertTrue(ilib.PhoneUtils.mapAreaToRegion(undefined, undefined) === undefined);
+	
 };
 
-PhoneUtilsTests.prototype.testMapRegToCC1 = function() {
-	UnitTest.requireEqual("49", enyo.g11n.PhoneUtils.mapRegiontoCC("de"));
-	return UnitTest.passed;
+function testMapRegToCC1() {
+	assertEquals("49", ilib.PhoneUtils.mapRegiontoCC("DE"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapRegToCC2 = function() {
-	UnitTest.requireEqual("1", enyo.g11n.PhoneUtils.mapRegiontoCC("us"));
-	return UnitTest.passed;
+function testMapRegToCC2() {
+	assertEquals("1", ilib.PhoneUtils.mapRegiontoCC("US"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapRegToCC3 = function() {
-	UnitTest.requireEqual("1", enyo.g11n.PhoneUtils.mapRegiontoCC("ca"));
-	return UnitTest.passed;
+function testMapRegToCC3() {
+	assertEquals("1", ilib.PhoneUtils.mapRegiontoCC("CA"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapRegToCC4 = function() {
-	UnitTest.requireEqual("1", enyo.g11n.PhoneUtils.mapRegiontoCC("jm"));
-	return UnitTest.passed;
+function testMapRegToCC4() {
+	assertEquals("1", ilib.PhoneUtils.mapRegiontoCC("JM"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapRegToCCUnknown = function() {
-	UnitTest.requireEqual("0", enyo.g11n.PhoneUtils.mapRegiontoCC("unknown"));
-	return UnitTest.passed;
+function testMapRegToCCUnknown() {
+	assertEquals("0", ilib.PhoneUtils.mapRegiontoCC("unknown"));
+	
 };
 
-PhoneUtilsTests.prototype.testMapRegToCCUndefined = function() {
-	UnitTest.require(enyo.g11n.PhoneUtils.mapRegiontoCC(undefined) === undefined);
-	return UnitTest.passed;
+function testMapRegToCCUndefined() {
+	assertTrue(ilib.PhoneUtils.mapRegiontoCC(undefined) === undefined);
+	
 };

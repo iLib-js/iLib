@@ -1,1008 +1,1003 @@
-vPhoneNumberTests.prototype.testNumberMatchFRDepartments1 = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchFRDepartments1(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
+	}, {locale: "fr-FR"});
 	
-	UnitTest.requireEqual(100, left.compare(right));
-	
-	return UnitTest.passed;
+	assertEquals(100, left.compare(right));
+
 };
-PhoneNumberTests.prototype.testNumberMatchFRDepartments1Reverse = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchFRDepartments1Reverse(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
+	}, {locale: "fr-FR"});
 	
-	UnitTest.requireEqual(100, right.compare(left));
+	assertEquals(100, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneNumberTests.prototype.testNumberMatchFRDepartmentsWrongArea = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchFRDepartmentsWrongArea(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "591",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
+	}, {locale: "fr-FR"});
 	
-	UnitTest.requireEqual(0, left.compare(right));
+	assertEquals(0, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchFRDepartmentsWrongAreaReverse = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchFRDepartmentsWrongAreaReverse(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "591",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
+	}, {locale: "fr-FR"});
 	
-	UnitTest.requireEqual(0, right.compare(left));
+	assertEquals(0, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneNumberTests.prototype.testNumberMatchFRDepartmentsDifferentCountryCodes = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchFRDepartmentsDifferentCountryCodes(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
+	}, {locale: "fr-FR"});
 	
-	UnitTest.requireEqual(100, left.compare(right));
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchFRDifferentSN = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchFRDifferentSN(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123454"
-	}, {locale: "fr_fr"});
+	}, {locale: "fr-FR"});
 	
-	UnitTest.require(20, left.compare(right));
+	assertEquals(20, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSTrunk = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchUSTrunk(){
+	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(100, left.compare(right));
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSTrunkReverse = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchUSTrunkReverse(){
+	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(100, right.compare(left));
+	assertEquals(100, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSTrunkDefaultLocale = function(){
-	var left = new enyo.g11n.PhoneNumber({
-		trunkAccess: "1",
-		areaCode: "590",
-		subscriberNumber: "1234567"
-	});
-	var right = new enyo.g11n.PhoneNumber({
-		areaCode: "590",
-		subscriberNumber: "1234567"
-	});
-	
-	UnitTest.requireEqual(100, left.compare(right));
-	
-	return UnitTest.passed;
-};
-PhoneNumberTests.prototype.testNumberMatchUSTrunkDefaultLocaleReverse = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchUSTrunkDefaultLocale(){
+	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	});
-	var right = new enyo.g11n.PhoneNumber({
+	var right = new ilib.PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
 	});
 	
-	UnitTest.requireEqual(100, right.compare(left));
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSTrunkWrongLocale = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchUSTrunkDefaultLocaleReverse(){
+	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "fr_fr"});
-	var right = new enyo.g11n.PhoneNumber({
+	});
+	var right = new ilib.PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "fr_fr"});
+	});
 	
-	UnitTest.requireEqual(100, left.compare(right));
+	assertEquals(100, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSTrunkWrongLocaleReverse = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchUSTrunkWrongLocale(){
+	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "fr_fr"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "fr_fr"});
+	}, {locale: "fr-FR"});
 	
-	UnitTest.requireEqual(100, right.compare(left));
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
+};
+function testNumberMatchUSTrunkWrongLocaleReverse(){
+	var left = new ilib.PhoneNumber({
+		trunkAccess: "1",
+		areaCode: "590",
+		subscriberNumber: "1234567"
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
+		areaCode: "590",
+		subscriberNumber: "1234567"
+	}, {locale: "fr-FR"});
+	
+	assertEquals(100, right.compare(left));
+	
+	
 };
 
-PhoneNumberTests.prototype.testNumberMatchUSMissingArea = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchUSMissingArea(){
+	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(88, left.compare(right));
+	assertEquals(88, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSMissingAreaReverse = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchUSMissingAreaReverse(){
+	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(88, right.compare(left));
+	assertEquals(88, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSDifferentArea = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchUSDifferentArea(){
+	var left = new ilib.PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		areaCode: "407",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(0, left.compare(right));
+	assertEquals(0, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSDifferentAreaReverse = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchUSDifferentAreaReverse(){
+	var left = new ilib.PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		areaCode: "407",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(0, right.compare(left));
+	assertEquals(0, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSCompletelyDifferentCountryCodes = function(){
+function testNumberMatchUSCompletelyDifferentCountryCodes(){
 	// different area codes, where neither is the US
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "30",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "34",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(0, left.compare(right));
+	assertEquals(0, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSMissingCountryCodeThisCountry = function(){
+function testNumberMatchUSMissingCountryCodeThisCountry(){
 	// missing area code, where the one that is present is the same as the locale
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "es_es"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "es-ES"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "34",
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.requireEqual(84, left.compare(right));
+	assertEquals(84, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSMissingCountryCodeThisCountryReverse = function(){
+function testNumberMatchUSMissingCountryCodeThisCountryReverse(){
 	// missing area code, where the one that is present is the same as the locale
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "es_es"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "es-ES"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "34",
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "es_es"});
+	}, {locale: "es-ES"});
 	
-	UnitTest.requireEqual(84, right.compare(left));
+	assertEquals(84, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSMissingCountryCodeOtherCountry = function(){
+function testNumberMatchUSMissingCountryCodeOtherCountry(){
 	// missing area codes, where the one that is present is not the same as the current locale (US)
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "34",
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(68, left.compare(right));
+	assertEquals(68, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSMissingCountryCodeOtherCountryReverse = function(){
+function testNumberMatchUSMissingCountryCodeOtherCountryReverse(){
 	// missing area codes, where the one that is present is not the same as the current locale (US)
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "34",
 		areaCode: "590",
 		subscriberNumber: "1234567"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(68, right.compare(left));
+	assertEquals(68, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneNumberTests.prototype.testNumberMatchITSanMarino = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchITSanMarino(){
+	var left = new ilib.PhoneNumber({
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
-	}, {locale: "it_it"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "it-IT"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
-	}, {locale: "it_it"});
+	}, {locale: "it-IT"});
 	
-	UnitTest.requireEqual(100, left.compare(right));
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchITSanMarinoReverse = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchITSanMarinoReverse(){
+	var left = new ilib.PhoneNumber({
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
-	}, {locale: "it_it"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "it-IT"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
-	}, {locale: "it_it"});
+	}, {locale: "it-IT"});
 	
-	UnitTest.requireEqual(100, right.compare(left));
+	assertEquals(100, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSSanMarino = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchUSSanMarino(){
+	var left = new ilib.PhoneNumber({
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 
 	// only a 100% match if calling from inside of italy
-	UnitTest.requireEqual(68, left.compare(right));
+	assertEquals(68, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneNumberTests.prototype.testNumberMatchITSanMarinoWrongArea = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchITSanMarinoWrongArea(){
+	var left = new ilib.PhoneNumber({
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "374",
 		subscriberNumber: "123456"
-	}, {locale: "it_it"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "it-IT"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
-	}, {locale: "it_it"});
+	}, {locale: "it-IT"});
 	
-	UnitTest.requireEqual(0, left.compare(right));
+	assertEquals(0, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneNumberTests.prototype.testNumberMatchITSanMarinoDifferentCountryCodes = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchITSanMarinoDifferentCountryCodes(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "00",
 		countryCode: "39",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(100, left.compare(right));
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchITSanMarinoDifferentCountryCodesReverse = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchITSanMarinoDifferentCountryCodesReverse(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "00",
 		countryCode: "39",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(100, right.compare(left));
+	assertEquals(100, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "378",
 		trunkAccess: "0",
 		areaCode: "378",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "00",
 		countryCode: "39",
 		trunkAccess: "0",
 		areaCode: "374",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(0, left.compare(right));
+	assertEquals(0, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneNumberTests.prototype.testNumberMatchITVaticanCity = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchITVaticanCity(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "379",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
-	}, {locale: "it_it"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "it-IT"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
-	}, {locale: "it_it"});
+	}, {locale: "it-IT"});
 	
-	UnitTest.requireEqual(100, left.compare(right));
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchITVaticanCityReverse = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchITVaticanCityReverse(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "379",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
-	}, {locale: "it_it"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "it-IT"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
-	}, {locale: "it_it"});
+	}, {locale: "it-IT"});
 	
-	UnitTest.requireEqual(100, right.compare(left));
+	assertEquals(100, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneNumberTests.prototype.testNumberMatchITOther = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchITOther(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
-	}, {locale: "it_it"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "it-IT"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
-	}, {locale: "it_it"});
+	}, {locale: "it-IT"});
 	
-	UnitTest.requireEqual(84, left.compare(right));
+	assertEquals(84, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchITOtherReverse = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchITOtherReverse(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
-	}, {locale: "it_it"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "it-IT"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
-	}, {locale: "it_it"});
+	}, {locale: "it-IT"});
 	
-	UnitTest.requireEqual(84, right.compare(left));
+	assertEquals(84, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneNumberTests.prototype.testNumberMatchUSDifferentCountryCodesIT = function(){
+function testNumberMatchUSDifferentCountryCodesIT(){
 	// both ways are valid ways to reach the Vatican from abroad
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		countryCode: "379",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		countryCode: "39",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(100, left.compare(right));
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSDifferentCountryCodesITReverse = function(){
+function testNumberMatchUSDifferentCountryCodesITReverse(){
 	// both ways are valid ways to reach the Vatican from abroad
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		countryCode: "379",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		countryCode: "39",
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "69812345"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(100, right.compare(left));
+	assertEquals(100, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSDifferentCountryCodesFR = function(){
+function testNumberMatchUSDifferentCountryCodesFR(){
 	// both ways are valid ways to reach the departments from abroad
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(100, left.compare(right));
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSDifferentCountryCodesFRReverse = function(){
+function testNumberMatchUSDifferentCountryCodesFRReverse(){
 	// both ways are valid ways to reach the departments from abroad
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "33",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(100, right.compare(left));
+	assertEquals(100, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
 
 
-PhoneNumberTests.prototype.testNumberMatchDEMissingExtension = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchDEMissingExtension(){
+	var left = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "2203",
 		subscriberNumber: "123456"
-	}, {locale: "de_de"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "de-DE"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "2203",
 		subscriberNumber: "123456",
 		extension: "789"
-	}, {locale: "de_de"});
+	}, {locale: "de-DE"});
 	
-	UnitTest.requireEqual(0, left.compare(right));
+	assertEquals(0, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchDEMissingExtensionReverse = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testNumberMatchDEMissingExtensionReverse(){
+	var left = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "2203",
 		subscriberNumber: "123456"
-	}, {locale: "de_de"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "de-DE"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "2203",
 		subscriberNumber: "123456",
 		extension: "789"
-	}, {locale: "de_de"});
+	}, {locale: "de-DE"});
 	
-	UnitTest.requireEqual(0, right.compare(left));
+	assertEquals(0, right.compare(left));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchDEDifferentExtension = function(){
+function testNumberMatchDEDifferentExtension(){
 	var location;
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "2203",
 		subscriberNumber: "123456",
 		extension: "833"
-	}, {locale: "de_de"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "de-DE"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "2203",
 		subscriberNumber: "123456",
 		extension: "789"
-	}, {locale: "de_de"});
+	}, {locale: "de-DE"});
 	
-	UnitTest.requireEqual(0, left.compare(right));
+	assertEquals(0, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchUSEverythingDifferent = function(){
+function testNumberMatchUSEverythingDifferent(){
 	var location;
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		countryCode: "49",
 		areaCode: "2203",
 		subscriberNumber: "123456",
 		extension: "833"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "650",
 		subscriberNumber: "7654321"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(0, left.compare(right));
+	assertEquals(0, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchCAUseNanpRules = function(){
+function testNumberMatchCAUseNanpRules(){
 	var location;
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		areaCode: "416",
 		subscriberNumber: "1234567"
-	}, {locale: "en_ca"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-CA"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "416",
 		subscriberNumber: "1234567"
-	}, {locale: "en_ca"});
+	}, {locale: "en-CA"});
 	
-	UnitTest.requireEqual(100, left.compare(right));
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
 
 // for bug NOV-116615
-PhoneNumberTests.prototype.testNumberMatchMobileVsLDNumber = function(){
+function testNumberMatchMobileVsLDNumber(){
 	var location;
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "44",
 		mobilePrefix: "7734",
 		subscriberNumber: "345345"
-	}, {locale: "en_gb"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-gb"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "1483",
 		subscriberNumber: "345345"
-	}, {locale: "en_gb"});
+	}, {locale: "en-gb"});
 	
-	UnitTest.requireEqual(0, left.compare(right));
+	assertEquals(0, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
 
 //for bug NOV-118901
-PhoneNumberTests.prototype.testNumberMatchSG = function(){
+function testNumberMatchSG(){
 	var location;
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "65",
 		subscriberNumber: "93897077"
-	}, {locale: "en_sg"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-SG"});
+	var right = new ilib.PhoneNumber({
 		subscriberNumber: "93897077"
-	}, {locale: "en_sg"});
+	}, {locale: "en-SG"});
 	
-	UnitTest.requireEqual(84, left.compare(right));
+	assertEquals(84, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testNumberMatchSGWrongLocale = function(){
+function testNumberMatchSGWrongLocale(){
 	var location;
-	var left = new enyo.g11n.PhoneNumber({
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "65",
 		subscriberNumber: "93897077"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		subscriberNumber: "93897077"
-	}, {locale: "en_us"});
+	}, {locale: "en-US"});
 	
-	UnitTest.requireEqual(68, left.compare(right));
+	assertEquals(68, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneNumberTests.prototype.testStringsNumberMatchUSIgnoreSomeFields = function() {
-	var left = new enyo.g11n.PhoneNumber('1 (650) 456-7890'),
-		right = new enyo.g11n.PhoneNumber('650-456-7890');
-	UnitTest.requireEqual(100, left.compare(right));
+function testStringsNumberMatchUSIgnoreSomeFields() {
+	var left = new ilib.PhoneNumber('1 (650) 456-7890'),
+		right = new ilib.PhoneNumber('650-456-7890');
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testStringsNumberMatchITSanMarinoDifferentCountryCodes = function(){
-	var left = new enyo.g11n.PhoneNumber('+378 0549 123 456', {locale: "en_us"}),
-		right = new enyo.g11n.PhoneNumber('+39 0549 123 456', {locale: "en_us"});
-	UnitTest.requireEqual(100, left.compare(right));
+function testStringsNumberMatchITSanMarinoDifferentCountryCodes(){
+	var left = new ilib.PhoneNumber('+378 0549 123 456', {locale: "en-US"}),
+		right = new ilib.PhoneNumber('+39 0549 123 456', {locale: "en-US"});
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testStringsNumberMatchITSanMarinoMissingCountryCodes = function(){
-	var left = new enyo.g11n.PhoneNumber('+378 0549 123 456', {locale: "it_it"}),
-		right = new enyo.g11n.PhoneNumber('0549 123 456', {locale: "it_it"});
-	UnitTest.requireEqual(100, left.compare(right));
+function testStringsNumberMatchITSanMarinoMissingCountryCodes(){
+	var left = new ilib.PhoneNumber('+378 0549 123 456', {locale: "it-IT"}),
+		right = new ilib.PhoneNumber('0549 123 456', {locale: "it-IT"});
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testStringsNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes = function(){
-	var left = new enyo.g11n.PhoneNumber('+378 0548 123 456', {locale: "en_us"}),
-		right = new enyo.g11n.PhoneNumber('+39 0545 123 456', {locale: "en_us"});
-	UnitTest.requireEqual(0, left.compare(right));
+function testStringsNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes(){
+	var left = new ilib.PhoneNumber('+378 0548 123 456', {locale: "en-US"}),
+		right = new ilib.PhoneNumber('+39 0545 123 456', {locale: "en-US"});
+	assertEquals(0, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testStringsNumberMatchITOther = function(){
-	var left = new enyo.g11n.PhoneNumber('+39 06 69812345', {locale: "it_it"}),
-		right = new enyo.g11n.PhoneNumber('06-69812345', {locale: "it_it"});
-	UnitTest.requireEqual(84, left.compare(right));
+function testStringsNumberMatchITOther(){
+	var left = new ilib.PhoneNumber('+39 06 69812345', {locale: "it-IT"}),
+		right = new ilib.PhoneNumber('06-69812345', {locale: "it-IT"});
+	assertEquals(84, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testStringsNumberMatchFRDepartments1 = function(){
-	var left = new enyo.g11n.PhoneNumber('+590 590 123 456', {locale: "fr_fr"}),
-		right = new enyo.g11n.PhoneNumber('0590 123 456', {locale: "fr_fr"});
-	UnitTest.requireEqual(100, left.compare(right));
+function testStringsNumberMatchFRDepartments1(){
+	var left = new ilib.PhoneNumber('+590 590 123 456', {locale: "fr-FR"}),
+		right = new ilib.PhoneNumber('0590 123 456', {locale: "fr-FR"});
+	assertEquals(100, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testStringsNumberMatchDEMissingExtension = function(){
-	var left = new enyo.g11n.PhoneNumber('02203 123456', {locale: "de_de"}),
-		right = new enyo.g11n.PhoneNumber('02203 123456-789', {locale: "de_de"});
-	UnitTest.requireEqual(0, left.compare(right));
+function testStringsNumberMatchDEMissingExtension(){
+	var left = new ilib.PhoneNumber('02203 123456', {locale: "de-DE"}),
+		right = new ilib.PhoneNumber('02203 123456-789', {locale: "de-DE"});
+	assertEquals(0, left.compare(right));
 	
-	return UnitTest.passed;
+	
 };
-PhoneNumberTests.prototype.testStringsNumberMatchDEDifferentExtension = function(){
-	var left = new enyo.g11n.PhoneNumber('02203/123456-833', {locale: "de_de"}),
-		right = new enyo.g11n.PhoneNumber('02203 123456-789', {locale: "de_de"});
-	UnitTest.requireEqual(0, left.compare(right));
+function testStringsNumberMatchDEDifferentExtension(){
+	var left = new ilib.PhoneNumber('02203/123456-833', {locale: "de-DE"}),
+		right = new ilib.PhoneNumber('02203 123456-789', {locale: "de-DE"});
+	assertEquals(0, left.compare(right));
 	
-	return UnitTest.passed;
-};
-
-PhoneNumberTests.prototype.testStringsNumberMatchUSIgnoreSomeFieldsReverse = function(){
-	var left = new enyo.g11n.PhoneNumber('650-456-7890', {locale: "en_us"}),
-		right = new enyo.g11n.PhoneNumber('1 (650) 456-7890', {locale: "en_us"});
-	UnitTest.requireEqual(100, left.compare(right));
 	
-	return UnitTest.passed;
-};
-PhoneNumberTests.prototype.testStringsNumberMatchITSanMarinoDifferentCountryCodesReverse = function(){
-	var left = new enyo.g11n.PhoneNumber('+39 0549 123 456', {locale: "en_us"}),
-		right = new enyo.g11n.PhoneNumber('+378 0549 123 456', {locale: "en_us"});
-	UnitTest.requireEqual(100, left.compare(right));
-	
-	return UnitTest.passed;
-};
-PhoneNumberTests.prototype.testStringsNumberMatchITSanMarinoMissingCountryCodesReverse = function(){
-	var left = new enyo.g11n.PhoneNumber('0549 123 456', {locale: "it_it"}),
-		right = new enyo.g11n.PhoneNumber('+378 0549 123 456', {locale: "it_it"});
-	UnitTest.requireEqual(100, left.compare(right));
-	
-	return UnitTest.passed;
-};
-PhoneNumberTests.prototype.testStringsNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodesReverse = function(){
-	var left = new enyo.g11n.PhoneNumber('+39 0545 123 456', {locale: "en_us"}),
-		right = new enyo.g11n.PhoneNumber('+378 0548 123 456', {locale: "en_us"});
-	UnitTest.requireEqual(0, left.compare(right));
-	
-	return UnitTest.passed;
-};
-PhoneNumberTests.prototype.testStringsNumberMatchITOtherReverse = function(){
-	var left = new enyo.g11n.PhoneNumber('06-69812345', {locale: "it_it"}),
-		right = new enyo.g11n.PhoneNumber('+39 06 69812345', {locale: "it_it"});
-	UnitTest.requireEqual(84, left.compare(right));
-	
-	return UnitTest.passed;
-};
-PhoneNumberTests.prototype.testStringsNumberMatchFRDepartments1Reverse = function(){
-	var left = new enyo.g11n.PhoneNumber('0590 123 456', {locale: "fr_fr"}),
-		right = new enyo.g11n.PhoneNumber('+590 590 123 456', {locale: "fr_fr"});
-	UnitTest.requireEqual(100, left.compare(right));
-	
-	return UnitTest.passed;
-};
-PhoneNumberTests.prototype.testStringsNumberMatchDEMissingExtensionReverse = function(){
-	var left = new enyo.g11n.PhoneNumber('02203 123456-789', {locale: "de_de"}),
-		right = new enyo.g11n.PhoneNumber('02203 123456', {locale: "de_de"});
-	UnitTest.requireEqual(0, left.compare(right));
-	
-	return UnitTest.passed;
-};
-PhoneNumberTests.prototype.testStringsNumberMatchDEDifferentExtensionReverse = function(){
-	var left = new enyo.g11n.PhoneNumber('02203 123456-789', {locale: "de_de"}),
-		right = new enyo.g11n.PhoneNumber('02203/123456-833', {locale: "de_de"});
-	UnitTest.requireEqual(0, left.compare(right));
-	
-	return UnitTest.passed;
 };
 
-PhoneNumberTests.prototype.testEqualsNotEqual = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testStringsNumberMatchUSIgnoreSomeFieldsReverse(){
+	var left = new ilib.PhoneNumber('650-456-7890', {locale: "en-US"}),
+		right = new ilib.PhoneNumber('1 (650) 456-7890', {locale: "en-US"});
+	assertEquals(100, left.compare(right));
+	
+	
+};
+function testStringsNumberMatchITSanMarinoDifferentCountryCodesReverse(){
+	var left = new ilib.PhoneNumber('+39 0549 123 456', {locale: "en-US"}),
+		right = new ilib.PhoneNumber('+378 0549 123 456', {locale: "en-US"});
+	assertEquals(100, left.compare(right));
+	
+	
+};
+function testStringsNumberMatchITSanMarinoMissingCountryCodesReverse(){
+	var left = new ilib.PhoneNumber('0549 123 456', {locale: "it-IT"}),
+		right = new ilib.PhoneNumber('+378 0549 123 456', {locale: "it-IT"});
+	assertEquals(100, left.compare(right));
+	
+	
+};
+function testStringsNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodesReverse(){
+	var left = new ilib.PhoneNumber('+39 0545 123 456', {locale: "en-US"}),
+		right = new ilib.PhoneNumber('+378 0548 123 456', {locale: "en-US"});
+	assertEquals(0, left.compare(right));
+	
+	
+};
+function testStringsNumberMatchITOtherReverse(){
+	var left = new ilib.PhoneNumber('06-69812345', {locale: "it-IT"}),
+		right = new ilib.PhoneNumber('+39 06 69812345', {locale: "it-IT"});
+	assertEquals(84, left.compare(right));
+	
+	
+};
+function testStringsNumberMatchFRDepartments1Reverse(){
+	var left = new ilib.PhoneNumber('0590 123 456', {locale: "fr-FR"}),
+		right = new ilib.PhoneNumber('+590 590 123 456', {locale: "fr-FR"});
+	assertEquals(100, left.compare(right));
+	
+	
+};
+function testStringsNumberMatchDEMissingExtensionReverse(){
+	var left = new ilib.PhoneNumber('02203 123456-789', {locale: "de-DE"}),
+		right = new ilib.PhoneNumber('02203 123456', {locale: "de-DE"});
+	assertEquals(0, left.compare(right));
+	
+	
+};
+function testStringsNumberMatchDEDifferentExtensionReverse(){
+	var left = new ilib.PhoneNumber('02203 123456-789', {locale: "de-DE"}),
+		right = new ilib.PhoneNumber('02203/123456-833', {locale: "de-DE"});
+	assertEquals(0, left.compare(right));
+	
+};
+
+function testEqualsNotEqual(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
+	}, {locale: "fr-FR"});
 	
-	UnitTest.requireFalse(left.equals(right));
+	assertFalse(left.equals(right));
 	
-	return UnitTest.passed;
 };
 
-PhoneNumberTests.prototype.testEquals = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testEquals(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
+	}, {locale: "fr-FR"});
 	
-	UnitTest.require(left.equals(right));
+	assertTrue(left.equals(right));
 	
-	return UnitTest.passed;
 };
 
-PhoneNumberTests.prototype.testEqualsDifferentLocaleOkay = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testEqualsDifferentLocaleOkay(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
+	}, {locale: "fr-FR"});
 	
 	// same number because they have the country code
-	UnitTest.require(left.equals(right));
+	assertTrue(left.equals(right));
 	
-	return UnitTest.passed;
 };
 
-PhoneNumberTests.prototype.testEqualsDifferentLocaleNotOkay = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testEqualsDifferentLocaleNotOkay(){
+	var left = new ilib.PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "en_us"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "en-US"});
+	var right = new ilib.PhoneNumber({
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
+	}, {locale: "fr-FR"});
 	
 	// same local number, but different country
-	UnitTest.requireFalse(left.equals(right));
+	assertFalse(left.equals(right));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneNumberTests.prototype.testEqualsMissingLocaleLeft = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testEqualsMissingLocaleLeft(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	});
-	var right = new enyo.g11n.PhoneNumber({
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
+	}, {locale: "fr-FR"});
 	
-	UnitTest.require(left.equals(right));
+	assertTrue(left.equals(right));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneNumberTests.prototype.testEqualsMissingLocaleRight = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testEqualsMissingLocaleRight(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
-	}, {locale: "fr_fr"});
-	var right = new enyo.g11n.PhoneNumber({
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	});
 	
-	UnitTest.require(left.equals(right));
+	assertTrue(left.equals(right));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneNumberTests.prototype.testEqualsMissingLocaleBoth = function(){
-	var left = new enyo.g11n.PhoneNumber({
+function testEqualsMissingLocaleBoth(){
+	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	});
-	var right = new enyo.g11n.PhoneNumber({
+	var right = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
 		areaCode: "590",
 		subscriberNumber: "123456"
 	});
 	
-	UnitTest.require(left.equals(right));
+	assertTrue(left.equals(right));
 	
-	return UnitTest.passed;
+	
 };

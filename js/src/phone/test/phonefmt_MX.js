@@ -1,67 +1,67 @@
-PhoneFormatTestsMX.prototype.testFormatMXStyle0 = function(){
+function testFormatMXStyle0(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			areaCode: "33",
 			subscriberNumber: "12345678"
 	});
 	var expected = "33-1234-5678";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "default"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "default"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatMXStyle1 = function(){
+function testFormatMXStyle1(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			areaCode: "33",
 			subscriberNumber: "12345678"
 	});
 	var expected = "(33) 1234-5678";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatMXStyle2 = function(){
+function testFormatMXStyle2(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			areaCode: "33",
 			subscriberNumber: "12345678"
 	});
 	var expected = "33 12 34 56 78";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "espacios"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "espacios"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatMXStyle3 = function(){
+function testFormatMXStyle3(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			areaCode: "33",
 			subscriberNumber: "12345678"
 	});
 	var expected = "33/1234-5678";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "barras"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "barras"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
  
-PhoneFormatTestsMX.prototype.testFormatMXInternational = function(){
+function testFormatMXInternational(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "33",
 			areaCode: "1",
@@ -69,17 +69,17 @@ PhoneFormatTestsMX.prototype.testFormatMXInternational = function(){
 	});
 	var expected = "+33 1 12 34 56 78";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "default"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "default"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatMXInternationalAccessCode = function(){
+function testFormatMXInternationalAccessCode(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			iddPrefix: "00",
 			countryCode: "33",
 			areaCode: "1",
@@ -87,17 +87,17 @@ PhoneFormatTestsMX.prototype.testFormatMXInternationalAccessCode = function(){
 	});
 	var expected = "00 33 1 12 34 56 78";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "default"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "default"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatMXInternationalDialToCell = function(){
+function testFormatMXInternationalDialToCell(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			iddPrefix: "+",
 			countryCode: "52",
 			mobilePrefix: "044",
@@ -106,1308 +106,1308 @@ PhoneFormatTestsMX.prototype.testFormatMXInternationalDialToCell = function(){
 	});
 	var expected = "+52 1 55 1234 5678";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "default"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "default"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatMXService = function(){
+function testFormatMXService(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			serviceCode: "800",
 			subscriberNumber: "12345678"
 	});
 	var expected = "01-800-1234-5678";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "default"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "default"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatSMSPartial = function(){
+function testFormatSMSPartial(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "12345"
 	});
 	var expected = "123-45";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatSMSWhole = function(){
+function testFormatSMSWhole(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "12345"
 	});
 	var expected = "12345";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatNumberWithUSMCC = function(){
+function testFormatNumberWithUSMCC(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "9876543"
 	});
 	var expected = "(615) 987-6543";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "default", mcc: "316"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "default", mcc: "316"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatNumberWithUSMCCNoLocale = function(){
+function testFormatNumberWithUSMCCNoLocale(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "9876543"
 	});
 	var expected = "(615) 987-6543";
 	
-	var fmt = new enyo.g11n.PhoneFmt({style: "default", mcc: "316"});
+	var fmt = new ilib.PhoneFmt({style: "default", mcc: "316"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatLocalNumberWithMXMCC = function(){
+function testFormatLocalNumberWithMXMCC(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "9876543"
 	});
 	var expected = "987-6543";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "default", mcc: "316"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "default", mcc: "316"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatLocalNumberWithMXMCCNoLocale = function(){
+function testFormatLocalNumberWithMXMCCNoLocale(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "9876543"
 	});
 	var expected = "987-6543";
 	
-	var fmt = new enyo.g11n.PhoneFmt({style: "default", mcc: "316"});
+	var fmt = new ilib.PhoneFmt({style: "default", mcc: "316"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
 
-PhoneFormatTestsMX.prototype.testFormatNumberWithFRMCC = function(){
+function testFormatNumberWithFRMCC(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "15987654"
 	});
 	var expected = "06 15 98 76 54";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "default", mcc: "208"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "default", mcc: "208"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatNumberWithFRMCCNoLocale = function(){
+function testFormatNumberWithFRMCCNoLocale(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "6",
 		subscriberNumber: "15987654"
 	});
 	var expected = "06 15 98 76 54";
 	
-	var fmt = new enyo.g11n.PhoneFmt({style: "default", mcc: "208"});
+	var fmt = new ilib.PhoneFmt({style: "default", mcc: "208"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatLocalNumberWithFRMCC = function(){
+function testFormatLocalNumberWithFRMCC(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "15987654"
 	});
 	var expected = "15 98 76 54";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "default", mcc: "208"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "default", mcc: "208"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatLocalNumberWithFRMCCNoLocale = function(){
+function testFormatLocalNumberWithFRMCCNoLocale(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "15987654"
 	});
 	var expected = "15 98 76 54";
 	
-	var fmt = new enyo.g11n.PhoneFmt({style: "default", mcc: "208"});
+	var fmt = new ilib.PhoneFmt({style: "default", mcc: "208"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
 
-PhoneFormatTestsMX.prototype.testFormatNumberWithDEMCC = function(){
+function testFormatNumberWithDEMCC(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "212",
 		subscriberNumber: "98765432"
 	});
 	var expected = "0212 98 76 54 32";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "default", mcc: "262"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "default", mcc: "262"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatNumberWithDEMCCNoLocale = function(){
+function testFormatNumberWithDEMCCNoLocale(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
 		areaCode: "212",
 		subscriberNumber: "98765432"
 	});
 	var expected = "0212 98 76 54 32";
 	
-	var fmt = new enyo.g11n.PhoneFmt({style: "default", mcc: "262"});
+	var fmt = new ilib.PhoneFmt({style: "default", mcc: "262"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatLocalNumberWithFRMCC = function(){
+function testFormatLocalNumberWithFRMCC(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "98765432"
 	});
 	var expected = "98 76 54 32";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "default", mcc: "208"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "default", mcc: "208"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatLocalNumberWithFRMCCNoLocale = function(){
+function testFormatLocalNumberWithFRMCCNoLocale(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "98765432"
 	});
 	var expected = "98 76 54 32";
 	
-	var fmt = new enyo.g11n.PhoneFmt({style: "default", mcc: "208"});
+	var fmt = new ilib.PhoneFmt({style: "default", mcc: "208"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatNumberWithMXMCC = function(){
+function testFormatNumberWithMXMCC(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "9876543"
 	});
 	var expected = "615-987-6543";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "default", mcc: "334"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "default", mcc: "334"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatNumberWithMXMCCNoLocale = function(){
+function testFormatNumberWithMXMCCNoLocale(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "9876543"
 	});
 	var expected = "615-987-6543";
 	
-	var fmt = new enyo.g11n.PhoneFmt({style: "default", mcc: "334"});
+	var fmt = new ilib.PhoneFmt({style: "default", mcc: "334"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatLocalNumberWithMXMCC = function(){
+function testFormatLocalNumberWithMXMCC(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "9876543"
 	});
 	var expected = "987-6543";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "default", mcc: "334"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "default", mcc: "334"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatLocalNumberWithMXMCCNoLocale = function(){
+function testFormatLocalNumberWithMXMCCNoLocale(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "9876543"
 	});
 	var expected = "987-6543";
 	
-	var fmt = new enyo.g11n.PhoneFmt({style: "default", mcc: "334"});
+	var fmt = new ilib.PhoneFmt({style: "default", mcc: "334"});
 	formatted = fmt.format(parsed);
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
 
 
 
 
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0Partial1 = function(){
+function testFormatWithParamsStyle0Partial1(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "3"
 	});
 	var expected = "3";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0Partial2 = function(){
+function testFormatWithParamsStyle0Partial2(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "33"
 	});
 	var expected = "33";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0Partial3 = function(){
+function testFormatWithParamsStyle0Partial3(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "331"
 	});
 	var expected = "331";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0Partial4 = function(){
+function testFormatWithParamsStyle0Partial4(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "3312"
 	});
 	var expected = "331-2";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0Partial5 = function(){
+function testFormatWithParamsStyle0Partial5(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "33123"
 	});
 	var expected = "331-23";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0Partial6 = function(){
+function testFormatWithParamsStyle0Partial6(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "331234"
 	});
 	var expected = "331-234";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0Partial7 = function(){
+function testFormatWithParamsStyle0Partial7(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "3312345"
 	});
 	var expected = "331-2345";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0Partial8 = function(){
+function testFormatWithParamsStyle0Partial8(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "33123456"
 	});
 	var expected = "3312-3456";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0Partial9 = function(){
+function testFormatWithParamsStyle0Partial9(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			areaCode: "33",
 			subscriberNumber: "1234567"
 	});
 	var expected = "33-123-4567";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0Partial10 = function(){
+function testFormatWithParamsStyle0Partial10(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			areaCode: "33",
 			subscriberNumber: "12345678"
 	});
 	var expected = "33-1234-5678";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0Partial11 = function(){
+function testFormatWithParamsStyle0Partial11(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			areaCode: "33",
 			subscriberNumber: "123456789" // too long
 	});
 	var expected = "33123456789"; // use last resort rule
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialLocal1 = function(){
+function testFormatWithParamsStyle0PartialLocal1(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "4"
 	});
 	var expected = "4";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialLocal2 = function(){
+function testFormatWithParamsStyle0PartialLocal2(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "45"
 	});
 	var expected = "45";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialLocal3 = function(){
+function testFormatWithParamsStyle0PartialLocal3(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "456"
 	});
 	var expected = "456";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialLocal4 = function(){
+function testFormatWithParamsStyle0PartialLocal4(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "4563"
 	});
 	var expected = "456-3";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialLocal5 = function(){
+function testFormatWithParamsStyle0PartialLocal5(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "45634"
 	});
 	var expected = "456-34";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialLocal6 = function(){
+function testFormatWithParamsStyle0PartialLocal6(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "456345"
 	});
 	var expected = "456-345";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialLocal7 = function(){
+function testFormatWithParamsStyle0PartialLocal7(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "4563453"
 	});
 	var expected = "456-3453";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialLocal8 = function(){
+function testFormatWithParamsStyle0PartialLocal8(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "45634535"
 	});
 	var expected = "4563-4535";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialLocal8 = function(){
+function testFormatWithParamsStyle0PartialLocal8(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "456345356"  // too long
 	});
 	var expected = "456345356";  // use last resort rule
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialTrunk0 = function(){
+function testFormatWithParamsStyle0PartialTrunk0(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "0"
 	});
 	var expected = "0";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialTrunk1 = function(){
+function testFormatWithParamsStyle0PartialTrunk1(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01"
 	});
 	var expected = "01";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialTrunk1 = function(){
+function testFormatWithParamsStyle0PartialTrunk1(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "5"
 	});
 	var expected = "01-5-";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialTrunk2 = function(){
+function testFormatWithParamsStyle0PartialTrunk2(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55"
 	});
 	var expected = "01-55-";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialTrunk3 = function(){
+function testFormatWithParamsStyle0PartialTrunk3(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "1"
 	});
 	var expected = "01-55-1";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialTrunk4 = function(){
+function testFormatWithParamsStyle0PartialTrunk4(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "12"
 	});
 	var expected = "01-55-12";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialTrunk5 = function(){
+function testFormatWithParamsStyle0PartialTrunk5(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "123"
 	});
 	var expected = "01-55-123";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialTrunk6 = function(){
+function testFormatWithParamsStyle0PartialTrunk6(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "1234"
 	});
 	var expected = "01-55-123-4";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialTrunk7 = function(){
+function testFormatWithParamsStyle0PartialTrunk7(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "12345"
 	});
 	var expected = "01-55-123-45";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialTrunk8 = function(){
+function testFormatWithParamsStyle0PartialTrunk8(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "123456"
 	});
 	var expected = "01-55-123-456";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialTrunk9 = function(){
+function testFormatWithParamsStyle0PartialTrunk9(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "1234567"
 	});
 	var expected = "01-55-123-4567";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialTrunk10 = function(){
+function testFormatWithParamsStyle0PartialTrunk10(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "12345678"
 	});
 	var expected = "01-55-1234-5678";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle0PartialTrunk11 = function(){
+function testFormatWithParamsStyle0PartialTrunk11(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "123456789" // too long 
 	});
 	var expected = "0155123456789";	// use last resort rule
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1Partial1 = function(){
+function testFormatWithParamsStyle1Partial1(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "3"
 	});
 	var expected = "3";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1Partial2 = function(){
+function testFormatWithParamsStyle1Partial2(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "33"
 	});
 	var expected = "33";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1Partial3 = function(){
+function testFormatWithParamsStyle1Partial3(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "331"
 	});
 	var expected = "331";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1Partial4 = function(){
+function testFormatWithParamsStyle1Partial4(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "3312"
 	});
 	var expected = "331-2";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1Partial5 = function(){
+function testFormatWithParamsStyle1Partial5(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "33123"
 	});
 	var expected = "331-23";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1Partial6 = function(){
+function testFormatWithParamsStyle1Partial6(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "331234"
 	});
 	var expected = "331-234";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1Partial7 = function(){
+function testFormatWithParamsStyle1Partial7(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "3312345"
 	});
 	var expected = "331-2345";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1Partial8 = function(){
+function testFormatWithParamsStyle1Partial8(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "33123456"
 	});
 	var expected = "3312-3456";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1Partial9 = function(){
+function testFormatWithParamsStyle1Partial9(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			areaCode: "33",
 			subscriberNumber: "1234567"
 	});
 	var expected = "(33) 123-4567";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1Partial10 = function(){
+function testFormatWithParamsStyle1Partial10(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			areaCode: "33",
 			subscriberNumber: "12345678"
 	});
 	var expected = "(33) 1234-5678";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1Partial11 = function(){
+function testFormatWithParamsStyle1Partial11(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			areaCode: "33",
 			subscriberNumber: "123456789" // too long
 	});
 	var expected = "33123456789"; // use last resort rule
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialLocal1 = function(){
+function testFormatWithParamsStyle1PartialLocal1(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "4"
 	});
 	var expected = "4";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialLocal2 = function(){
+function testFormatWithParamsStyle1PartialLocal2(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "45"
 	});
 	var expected = "45";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialLocal3 = function(){
+function testFormatWithParamsStyle1PartialLocal3(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "456"
 	});
 	var expected = "456";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialLocal4 = function(){
+function testFormatWithParamsStyle1PartialLocal4(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "4563"
 	});
 	var expected = "456-3";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialLocal5 = function(){
+function testFormatWithParamsStyle1PartialLocal5(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "45634"
 	});
 	var expected = "456-34";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialLocal6 = function(){
+function testFormatWithParamsStyle1PartialLocal6(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "456345"
 	});
 	var expected = "456-345";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialLocal7 = function(){
+function testFormatWithParamsStyle1PartialLocal7(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "4563453"
 	});
 	var expected = "456-3453";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialLocal8 = function(){
+function testFormatWithParamsStyle1PartialLocal8(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "45634535"
 	});
 	var expected = "4563-4535";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialLocal8 = function(){
+function testFormatWithParamsStyle1PartialLocal8(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "456345356"  // too long
 	});
 	var expected = "456345356";  // use last resort rule
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialTrunk0 = function(){
+function testFormatWithParamsStyle1PartialTrunk0(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			subscriberNumber: "0"
 	});
 	var expected = "0";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialTrunk1 = function(){
+function testFormatWithParamsStyle1PartialTrunk1(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01"
 	});
 	var expected = "01";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialTrunk1 = function(){
+function testFormatWithParamsStyle1PartialTrunk1(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "5"
 	});
 	var expected = "01 (5) ";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialTrunk2 = function(){
+function testFormatWithParamsStyle1PartialTrunk2(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55"
 	});
 	var expected = "01 (55) ";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialTrunk3 = function(){
+function testFormatWithParamsStyle1PartialTrunk3(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "1"
 	});
 	var expected = "01 (55) 1";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialTrunk4 = function(){
+function testFormatWithParamsStyle1PartialTrunk4(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "12"
 	});
 	var expected = "01 (55) 12";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialTrunk5 = function(){
+function testFormatWithParamsStyle1PartialTrunk5(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "123"
 	});
 	var expected = "01 (55) 123";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialTrunk6 = function(){
+function testFormatWithParamsStyle1PartialTrunk6(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "1234"
 	});
 	var expected = "01 (55) 123-4";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialTrunk7 = function(){
+function testFormatWithParamsStyle1PartialTrunk7(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "12345"
 	});
 	var expected = "01 (55) 123-45";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialTrunk8 = function(){
+function testFormatWithParamsStyle1PartialTrunk8(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "123456"
 	});
 	var expected = "01 (55) 123-456";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialTrunk9 = function(){
+function testFormatWithParamsStyle1PartialTrunk9(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "1234567"
 	});
 	var expected = "01 (55) 123-4567";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialTrunk10 = function(){
+function testFormatWithParamsStyle1PartialTrunk10(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "12345678"
 	});
 	var expected = "01 (55) 1234-5678";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
-PhoneFormatTestsMX.prototype.testFormatWithParamsStyle1PartialTrunk11 = function(){
+function testFormatWithParamsStyle1PartialTrunk11(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "01",
 			areaCode: "55",
 			subscriberNumber: "123456789" // too long 
 	});
 	var expected = "0155123456789";	// use last resort rule
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx", style: "paréntesis"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX", style: "paréntesis"});
 	formatted = fmt.format(parsed, {partial: true});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };
 
 //for bug NOV-119557
-PhoneFormatTestsMX.prototype.testFormatTollFree = function(){
+function testFormatTollFree(){
 	var formatted;
-	var parsed = new enyo.g11n.PhoneNumber({
+	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "01",
 		serviceCode: "800",
 		subscriberNumber: "0220606" 
 	});
 	var expected = "01-800-022-0606";
 	
-	var fmt = new enyo.g11n.PhoneFmt({locale: "es_mx"});
+	var fmt = new ilib.PhoneFmt({locale: "es-MX"});
 	formatted = fmt.format(parsed, {partial: false});
 	
-	UnitTest.requireEqual(expected, formatted);
+	assertEquals(expected, formatted);
 	
-	return UnitTest.passed;
+	
 };

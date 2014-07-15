@@ -1,226 +1,208 @@
-PhoneFormatTests.prototype.testGetStyleRegionsRightNumber = function() { 
-	var regions = new enyo.g11n.FmtStyles.getRegions();
+function testGetStyleRegionsRightNumber() { 
+	var regions = new ilib.FmtStyles.getRegions();
 	
-	UnitTest.requireEqual(17, regions.length);
-	
-	return UnitTest.passed;
+	assertEquals(17, regions.length);
 };
 
-PhoneFormatTests.prototype.testGetStyleRegionsRightContent = function() { 
-	var regions = new enyo.g11n.FmtStyles.getRegions();
-	var i, hash = {};
-	
-	for (i = 0; i < regions.length; i++) {
-		hash[regions[i].countryCode] = regions[i].countryName;
-	}
-	
-	UnitTest.require(hash["us"]);
-	UnitTest.require(hash["it"]);
-	UnitTest.require(hash["fr"]);
-	UnitTest.require(hash["gb"]);
-	UnitTest.require(hash["ie"]);
-	UnitTest.require(hash["de"]);
-	UnitTest.require(hash["nl"]);
-	UnitTest.require(hash["be"]);
-	UnitTest.require(hash["lu"]);
-	UnitTest.require(hash["es"]);
-	UnitTest.require(hash["mx"]);
-	UnitTest.require(hash["cn"]);
-	UnitTest.require(hash["au"]);
-	UnitTest.require(hash["sg"]);
-	UnitTest.require(hash["nz"]);
-	UnitTest.require(hash["in"]);
-	UnitTest.require(hash["hk"]);
+function testGetStyleRegionsRightContent() { 
+	var regions = new ilib.FmtStyles.getRegions();
+	var expected = [
+		"US",
+		"IT",
+		"FR",
+		"GB",
+		"IE",
+		"DE",
+		"NL",
+		"BE",
+		"LU",
+		"ES",
+		"MX",
+		"CN",
+		"AU",
+		"SG",
+		"NZ",
+		"IN",
+		"HK"
+	];
+	assertArrayEquals(expected, regions);
 
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTests.prototype.testMakeStyle = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("en_us"));
+function testMakeStyle() {
+	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
 	
-	UnitTest.requireObject(style);
-	
-	return UnitTest.passed;
+	assertTrue(typeof(style) === 'object');
 };
 
-PhoneFormatTests.prototype.testMakeStyleRightLocale = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("en_us"));
+function testMakeStyleRightLocale() {
+	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
 	
-	UnitTest.requireEqual("us", style.locale.region);
+	assertEquals("US", style.locale.region);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTests.prototype.testMakeStyleUnknown = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("_unknown"));
+function testMakeStyleUnknown() {
+	var style = new ilib.FmtStyles(new ilib.Locale("_unknown"));
 	
-	UnitTest.requireObject(style);
-	
-	return UnitTest.passed;
+	assertTrue(typeof(style) === 'object');
 };
 
-PhoneFormatTests.prototype.testMakeStyleUnknownRightLocale = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("_unknown"));
+function testMakeStyleUnknownRightLocale() {
+	var style = new ilib.FmtStyles(new ilib.Locale("_unknown"));
 	
-	UnitTest.requireEqual("unknown", style.locale.region);
+	assertEquals("unknown", style.locale.region);
 	
-	return UnitTest.passed;
 };
 
-PhoneFormatTests.prototype.testMakeStyleNotDefined = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("_xx"));
+function testMakeStyleNotDefined() {
+	var style = new ilib.FmtStyles(new ilib.Locale("_xx"));
 	
-	UnitTest.requireObject(style);
-	
-	return UnitTest.passed;
+	assertTrue(typeof(style) === 'object');
 };
 
-PhoneFormatTests.prototype.testMakeStyleNotDefinedRightLocale = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("_xx"));
+function testMakeStyleNotDefinedRightLocale() {
+	var style = new ilib.FmtStyles(new ilib.Locale("_xx"));
 	
-	UnitTest.requireEqual("unknown", style.locale.region);
-	
-	return UnitTest.passed;
+	assertEquals("unknown", style.locale.region);
 };
 
-PhoneFormatTests.prototype.testMakeStyleDefaultLocale = function() {
-	var style = new enyo.g11n.FmtStyles();
+function testMakeStyleDefaultLocale() {
+	var style = new ilib.FmtStyles();
 	
-	UnitTest.requireObject(style);
+	assertTrue(typeof(style) === 'object');
 	// should get the phoneLocale and use that
-	UnitTest.requireEqual("us", style.locale.region);
+	assertEquals("US", style.locale.region);
 	
-	return UnitTest.passed;
 };
 
-PhoneFormatTests.prototype.testHasStyle = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("en_us"));
+function testHasStyle() {
+	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
 	
-	UnitTest.require(style.hasStyle("dots"));
+	assertTrue(style.hasStyle("dots"));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTests.prototype.testHasStyleFalse = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("en_us"));
+function testHasStyleFalse() {
+	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
 	
-	UnitTest.requireFalse(style.hasStyle("asdf"));
+	assertFalse(style.hasStyle("asdf"));
 	
-	return UnitTest.passed;
 };
 
-PhoneFormatTests.prototype.testHasStyleDE = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("de_de"));
+function testHasStyleDE() {
+	var style = new ilib.FmtStyles(new ilib.Locale("de-DE"));
 	
-	UnitTest.require(style.hasStyle("minimalistischen"));
+	assertTrue(style.hasStyle("minimalistischen"));
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTests.prototype.testGetStyle = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("en_us"));
+function testGetStyle() {
+	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
 	var templates = style.getStyle("dots");
 	
-	UnitTest.requireDefined(templates);
+	assertNotUndefined(templates);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTests.prototype.testGetStyleRightStyle = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("en_us"));
+function testGetStyleRightStyle() {
+	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
 	var templates = style.getStyle("dots");
 	
-	UnitTest.requireDefined(templates);
-	UnitTest.requireDefined(templates.whole);
-	UnitTest.requireDefined(templates.partial);
-	UnitTest.requireEqual("XXX ", templates.whole.vsc[2]);
-	UnitTest.requireEqual("XXX.", templates.whole.areaCode[2]);
-	UnitTest.requireEqual("XXXXXX", templates.whole.subscriberNumber[5]);
-	UnitTest.requireEqual("XXX.", templates.partial.areaCode[2]);
-	UnitTest.requireEqual("XXX.XXX", templates.partial.subscriberNumber[5]);
+	assertNotUndefined(templates);
+	assertNotUndefined(templates.whole);
+	assertNotUndefined(templates.partial);
+	assertEquals("XXX ", templates.whole.vsc[2]);
+	assertEquals("XXX.", templates.whole.areaCode[2]);
+	assertEquals("XXXXXX", templates.whole.subscriberNumber[5]);
+	assertEquals("XXX.", templates.partial.areaCode[2]);
+	assertEquals("XXX.XXX", templates.partial.subscriberNumber[5]);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTests.prototype.testGetStyleDefault = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("en_us"));
+function testGetStyleDefault() {
+	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
 	var templates = style.getStyle("asdf");
 	
-	UnitTest.requireDefined(templates);
-	
-	return UnitTest.passed;
+	assertNotUndefined(templates);
 };
 
-PhoneFormatTests.prototype.testGetStyleDefaultRightStyle = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("en_us"));
+function testGetStyleDefaultRightStyle() {
+	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
 	var templates = style.getStyle("asdf");
 	
-	UnitTest.requireDefined(templates);
-	UnitTest.requireDefined(templates.whole);
-	UnitTest.requireDefined(templates.partial);
+	assertNotUndefined(templates);
+	assertNotUndefined(templates.whole);
+	assertNotUndefined(templates.partial);
 	
-	UnitTest.requireEqual("1 (650) 555-1234", templates.example);
-	UnitTest.requireEqual("XXX ", templates.whole.vsc[2]);
-	UnitTest.requireEqual("(XXX) ", templates.whole.areaCode[2]);
-	UnitTest.requireEqual("XXXXXX", templates.whole.subscriberNumber[5]);
-	UnitTest.requireEqual("(XXX) ", templates.partial.areaCode[2]);
-	UnitTest.requireEqual("XXX-XXX", templates.partial.subscriberNumber[5]);
+	assertEquals("1 (650) 555-1234", templates.example);
+	assertEquals("XXX ", templates.whole.vsc[2]);
+	assertEquals("(XXX) ", templates.whole.areaCode[2]);
+	assertEquals("XXXXXX", templates.whole.subscriberNumber[5]);
+	assertEquals("(XXX) ", templates.partial.areaCode[2]);
+	assertEquals("XXX-XXX", templates.partial.subscriberNumber[5]);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTests.prototype.testGetExamplesUS = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("en_us"));
+function testGetExamplesUS() {
+	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
 	var examples = style.getExamples();
 	
-	UnitTest.requireDefined(examples);
-	UnitTest.requireEqual(3, examples.length);
+	assertNotUndefined(examples);
+	assertEquals(3, examples.length);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTests.prototype.testGetExamplesUSRight = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("en_us"));
+function testGetExamplesUSRight() {
+	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
 	var examples = style.getExamples();
 	
-	UnitTest.requireDefined(examples);
-	UnitTest.requireEqual("1 (650) 555-1234", examples[0].value);
-	UnitTest.requireEqual("1-650-555-1234", examples[1].value);
-	UnitTest.requireEqual("1.650.555.1234", examples[2].value);
+	assertNotUndefined(examples);
+	assertEquals("1 (650) 555-1234", examples[0].value);
+	assertEquals("1-650-555-1234", examples[1].value);
+	assertEquals("1.650.555.1234", examples[2].value);
 
-	UnitTest.requireEqual("default", examples[0].key);
-	UnitTest.requireEqual("dashes", examples[1].key);
-	UnitTest.requireEqual("dots", examples[2].key);
+	assertEquals("default", examples[0].key);
+	assertEquals("dashes", examples[1].key);
+	assertEquals("dots", examples[2].key);
 
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTests.prototype.testGetExamplesNL = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("nl_nl"));
+function testGetExamplesNL() {
+	var style = new ilib.FmtStyles(new ilib.Locale("nl-NL"));
 	var examples = style.getExamples();
 	
-	UnitTest.requireDefined(examples);
-	UnitTest.requireEqual(5, examples.length);
+	assertNotUndefined(examples);
+	assertEquals(5, examples.length);
 	
-	return UnitTest.passed;
+	
 };
 
-PhoneFormatTests.prototype.testGetExamplesNLRight = function() {
-	var style = new enyo.g11n.FmtStyles(new enyo.g11n.Locale("nl_nl"));
+function testGetExamplesNLRight() {
+	var style = new ilib.FmtStyles(new ilib.Locale("nl-NL"));
 	var examples = style.getExamples();
 	
-	UnitTest.requireDefined(examples);
-	UnitTest.requireEqual("(020) 123 4567", examples[0].value);
-	UnitTest.requireEqual("020 123 4567", examples[1].value);
-	UnitTest.requireEqual("020 1234567", examples[2].value);
-	UnitTest.requireEqual("020-123-45-67", examples[3].value);
-	UnitTest.requireEqual("020/123 45 67", examples[4].value);
+	assertNotUndefined(examples);
+	assertEquals("(020) 123 4567", examples[0].value);
+	assertEquals("020 123 4567", examples[1].value);
+	assertEquals("020 1234567", examples[2].value);
+	assertEquals("020-123-45-67", examples[3].value);
+	assertEquals("020/123 45 67", examples[4].value);
 	
-	UnitTest.requireEqual("default", examples[0].key);
-	UnitTest.requireEqual("spatie", examples[1].key);
-	UnitTest.requireEqual("gecomprimeerd", examples[2].key);
-	UnitTest.requireEqual("streepjes", examples[3].key);
-	UnitTest.requireEqual("japen", examples[4].key);
+	assertEquals("default", examples[0].key);
+	assertEquals("spatie", examples[1].key);
+	assertEquals("gecomprimeerd", examples[2].key);
+	assertEquals("streepjes", examples[3].key);
+	assertEquals("japen", examples[4].key);
 	
-	return UnitTest.passed;
+	
 };
