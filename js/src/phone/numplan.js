@@ -62,7 +62,56 @@ localeinfo.js
  * @param {Object} options options governing the way this plan is loaded
  */
 ilib.NumPlan = function (options) {
+	var sync = true,locale,
+		loadParams = undefined;
 	
+	this.locale = new ilib.Locale();
+
+	if (options) {
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		
+		if (typeof(options.sync) !== 'undefined') {
+			this.sync = (options.sync == true);
+		}
+		
+		if (options.loadParams) {
+			this.loadParams = options.loadParams;
+		}
+	}	
+
+	ilib.loadData({
+		name: "numplan.json",
+		object: ilib.NumPlan,
+		locale: this.locale,
+		sync: sync, 
+		loadParams: loadParams, 
+		callback: ilib.bind(this, function (npdata) {
+			if (!npdata) {
+				npdata = {
+					"region": "XX",
+					"skipTrunk": false,
+					"trunkCode": "0",
+					"iddCode": "00",
+					"dialingPlan": "closed",
+					"commonFormatChars": " ()-./",
+					"fieldLengths": {
+						"areaCode": 0,
+						"cic": 0,
+						"mobilePrefix": 0,
+						"serviceCode": 0
+					}
+				};
+			}
+
+			this.npdata = npdata;
+			this.phoneloc = new ilib.PhoneLoc(this.locale);
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		})
+	});
 };
 
 ilib.NumPlan.prototype = {
@@ -73,7 +122,7 @@ ilib.NumPlan.prototype = {
 	 * @return {string} the name of the plan
 	 */
 	getName: function() {
-		
+		return this.phoneloc.getRegion();
 	},
 
 	/**
@@ -82,7 +131,7 @@ ilib.NumPlan.prototype = {
 	 * undefined if there is no trunk code in this plan
 	 */
 	getTrunkCode: function() {
-		
+		return this.npdata.trunkCode;
 	},
 	
 	/**
@@ -90,7 +139,7 @@ ilib.NumPlan.prototype = {
 	 * @return {string} the IDD code of this plan
 	 */
 	getIDDCode: function() {
-		
+		return this.npdata.iddCode;	
 	},
 	
 	/**
@@ -106,8 +155,8 @@ ilib.NumPlan.prototype = {
 	 * 
 	 * @return {string} the plan style, "open" or "closed"
 	 */
-	getPlanStyle: function() {
-		
+	getPlanStyle: function() {	
+		return this.npdata.dialingPlan;
 	},
 	
 	/**
@@ -115,7 +164,7 @@ ilib.NumPlan.prototype = {
 	 * @return {boolean} true if the plan uses extended area codes
 	 */
 	usesExtendedAreaCodes: function () {
-		
+		return this.npdata.usesExtendedAreaCodes;
 	},
 	
 	/**
@@ -124,7 +173,7 @@ ilib.NumPlan.prototype = {
 	 * @return {string} the common format characters fused in this locale
 	 */
 	getCommonFormatChars: function() {
-		
+		return this.npdata.commonFormatChars;
 	},
 	
 	/**
@@ -138,6 +187,35 @@ ilib.NumPlan.prototype = {
 	 * field is not known.
 	 */
 	getFieldLength: function (field) {
-		// put code here
+		var length;
+		var dataField = this.npdata.fieldLengths;
+		
+		switch(field) {
+			case 'areaCode':
+				length = dataField.areaCode;
+				break;
+			case 'cic':
+				length = dataField.cic;
+				break;
+			case 'mobilePrefix':
+				length = dataField.mobilePrefix;
+				break;
+			case 'serviceCode':
+				length = dataField.serviceCode;
+				break;
+			case 'emergency':
+				length = dataField.emergency;
+				break;
+			case 'vsc':
+				length = dataField.vsc;
+				break;
+			case 'minLocalLength':
+				length = dataField.minLocalLength;
+				break;
+			default:
+				length = 0;
+				break;
+		}
+		return length;
 	}
 };

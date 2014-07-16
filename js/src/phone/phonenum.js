@@ -144,6 +144,18 @@ ilib.PhoneNumber = function(number, options) {
 	
 };
 
+/**
+ * Parse an IMSI number.
+ *
+ * @static
+ * @protected
+ * @param {string} imsi IMSI string to parse
+ * @return {Object} components of the IMSI number
+ */
+ilib.PhoneNumber._parseImsi = function(imsi) {
+
+};
+
 ilib.PhoneNumber.prototype = {
 	/**
 	 * This routine will compare the two phone numbers in an locale-sensitive
