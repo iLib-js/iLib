@@ -89,7 +89,7 @@ ilib.NumPlan = function (options) {
 		loadParams: loadParams, 
 		callback: ilib.bind(this, function (npdata) {
 			if (!npdata) {
-				npdata = {
+				npdata = ilib.data.numplan || {
 					"region": "XX",
 					"skipTrunk": false,
 					"trunkCode": "0",
@@ -106,7 +106,6 @@ ilib.NumPlan = function (options) {
 			}
 
 			this.npdata = npdata;
-			this.phoneloc = new ilib.PhoneLoc(this.locale);
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
@@ -122,7 +121,7 @@ ilib.NumPlan.prototype = {
 	 * @return {string} the name of the plan
 	 */
 	getName: function() {
-		return this.phoneloc.getRegion();
+		return this.npdata.region;
 	},
 
 	/**
@@ -187,35 +186,8 @@ ilib.NumPlan.prototype = {
 	 * field is not known.
 	 */
 	getFieldLength: function (field) {
-		var length;
 		var dataField = this.npdata.fieldLengths;
 		
-		switch(field) {
-			case 'areaCode':
-				length = dataField.areaCode;
-				break;
-			case 'cic':
-				length = dataField.cic;
-				break;
-			case 'mobilePrefix':
-				length = dataField.mobilePrefix;
-				break;
-			case 'serviceCode':
-				length = dataField.serviceCode;
-				break;
-			case 'emergency':
-				length = dataField.emergency;
-				break;
-			case 'vsc':
-				length = dataField.vsc;
-				break;
-			case 'minLocalLength':
-				length = dataField.minLocalLength;
-				break;
-			default:
-				length = 0;
-				break;
-		}
-		return length;
+		return dataField[field] || 0;
 	}
 };

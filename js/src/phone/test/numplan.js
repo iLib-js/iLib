@@ -30,16 +30,16 @@ function testGet2() {
 	assertEquals("DE", plan.getName());
 };
 
-/*function testGetUnknown() {
+function testGetUnknown() {
 	var plan = new ilib.NumPlan({locale: "unknown-unknown"});
 	assertNotUndefined(plan);
-	assertEquals("unknown", plan.getName());
-};*/
+	assertEquals("XX", plan.getName());
+};
 
 function testGetUnrecognized () {
 	var plan = new ilib.NumPlan({locale: "zu-ZZ"});
 	assertNotUndefined(plan);
-	assertEquals("ZZ", plan.getName());
+	assertEquals("XX", plan.getName());
 };
 
 function testGetDefault() {
@@ -64,22 +64,3 @@ function testRightContents() {
 	assertEquals("closed", plan.getPlanStyle());
 	assertEquals(" ()-.", plan.getCommonFormatChars());	
 };
-
-/*function testGetByMCC1() {
-	var plan = new ilib.NumPlan({mcc: "310"});
-	assertNotUndefined(plan);
-	assertEquals("US", plan.region);
-};
-
-function testGetByMCC2() {
-	var plan = new ilib.NumPlan({mcc: "262"});
-	assertNotUndefined(plan);
-	assertEquals("DE", plan.region);
-};
-
-function testGetByMCCOverrideLocale() {
-	var plan = new ilib.NumPlan({mcc: "262", locale: "en-US"});
-	assertNotUndefined(plan);
-	assertEquals("DE", plan.region);
-};
-*/

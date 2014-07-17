@@ -28,7 +28,8 @@ function suite() {
     var s = new cli.TestSuite();
     
     var suites = [
-        "numplan.js"
+        "numplan.js",
+        "phoneloc.js"
   		/*
   		"phone_AU.js",
 		"phone_BE.js",

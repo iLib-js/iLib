@@ -24,7 +24,7 @@ locale.js
 localeinfo.js
 */
 
-// !data mcc2reg
+// !data mcc2reg cc2reg
 
 /**
  *
@@ -34,32 +34,28 @@ localeinfo.js
  *
  */
 ilib.PhoneLoc = function(options) {
-	var locale, region;
-	
+	this.locale = new ilib.Locale();
+
 	if (options) {
 		if (options.mcc) {
-			this.locale = new ilib.Locale();
 			this.region = ilib.PhoneLoc._mapMCCtoRegion(options.mcc);
 		}
 		
-		if (options.region) {
-			this.region = options.region
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+			this.region = this.locale.region;			
 		}
+
 		if (options.countryCode) {
-			locale = new ilib.Locale();
-			region = new ilib.PhoneNumber._mapCCtoRegion(options.countryCode);
+			this.region = ilib.PhoneLoc._mapCCtoRegion(options.countryCode);
 		}
 	}
 	
 	if (!this.region) {
-		this.locale = new ilib.Locale();
 		this.region = this.locale.region
 	}
-	/*this.language = locale.language;
-	this.variant = locale.variant;*/
-	//console.log("this.region: ", this.region)
+
 	this.region = ilib.PhoneLoc._normPhoneReg(this.region);
-	//return this;
 };
 
 /**
@@ -97,7 +93,6 @@ ilib.PhoneLoc._mapMCCtoRegion = function(mcc) {
 	}
 	return ilib.data.mcc2reg && ilib.data.mcc2reg[mcc] || "unknown";
 };
-
 
 /**
  * Map a Country code to a region code.
@@ -184,7 +179,6 @@ ilib.PhoneLoc._normPhoneReg = function(region) {
 		default:
 			norm = region;
 			break;
-	}
-	
+	}	
 	return norm;
 }
