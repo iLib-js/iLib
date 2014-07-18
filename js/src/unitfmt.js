@@ -240,33 +240,10 @@ ilib.UnitFmt.prototype = {
 	 * constructed. If the types are not compatible, this formatter will
 	 * produce bogus results.
 	 * 
-	 * @param {Date|Number|String|ilib.Date|ilib.JulianDay|null|undefined} dateLike a date-like object to format
+	 * @param {string} unit units to format
+	 * @param {Object} options
 	 * @return {string} the formatted version of the given date instance
 	 */
 	format: function (unit, options) {
-		var thisZoneName = this.tz && this.tz.getId() || "local";
-
-		var date = ilib.Date._dateToIlib(dateLike, thisZoneName);
-		
-		if (!date.getCalendar || !(date instanceof ilib.Date)) {
-			throw "Wrong date type passed to ilib.UnitFmt.format()";
-		}
-		
-		var dateZoneName = date.timezone || "local";
-		
-		// convert to the time zone of this formatter before formatting
-		if (dateZoneName !== thisZoneName || date.getCalendar() !== this.calName) {
-			// console.log("Differing time zones date: " + dateZoneName + " and fmt: " + thisZoneName + ". Converting...");
-			// this will recalculate the date components based on the new time zone
-			// and/or convert a date in another calendar to the current calendar before formatting it
-			var newDate = ilib.Date.newInstance({
-				type: this.calName,
-				timezone: thisZoneName,
-				julianday: date.getJulianDay()
-			});
-			
-			date = newDate;
-		}
-		return this._formatTemplate(date, this.templateArr);
 	}	
 };

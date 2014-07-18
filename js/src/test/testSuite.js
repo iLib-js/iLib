@@ -199,6 +199,7 @@ function suite() {
 		"testjulianday.js",
 		"testlocaleinfo.js",
 		"testlocale.js",
+		"testmeasurement.js",
 	    "testname.js",
 	    "testnamefmt.js",
 	    "testname_ar.js",

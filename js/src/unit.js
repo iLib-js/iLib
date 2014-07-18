@@ -42,7 +42,8 @@ localeinfo.js
  * <li><i>unit</i> - units of this measurement. Use the 
  * static call {@link ilib.Measurement.getAvailableUnits}
  * to find out what units this version of ilib supports. If the given unit
- * is not a base unit, the amount will be converted to the number of base units.
+ * is not a base unit, the amount will be normalized to the number of base units
+ * and stored as that number of base units.
  * For example, if an instance is constructed with 1 kg, this will be converted
  * automatically into 1000 g, as grams are the base unit and kg is merely a 
  * commonly used scale of grams.
@@ -68,7 +69,18 @@ localeinfo.js
  * @param {Object} options options that control the construction of this instance
  */
 ilib.Measurement = function(options) {
+	if (!options || typeof(options.unit) === 'undefined') {
+		return undefined;
+	}
 	
+	this.amount = options.amount || 0;
+	
+	// map the requested units to the normalized form
+	
+	var measure = "length";
+	
+	
+	return new ilib.Measurement._constructors[measure](options);
 };
 
 /**
@@ -88,18 +100,59 @@ ilib.Measurement.getAvailableUnits = function () {
 	
 };
 
+ilib.Measurement.metricScales = {
+	"femto": {"symbol": "f", "scale": -15},
+	"pico": {"symbol": "p", "scale": -12},
+	"nano": {"symbol": "n", "scale": -9},
+	"micro": {"symbol": "µ", "scale": -6},
+	"milli": {"symbol": "m", "scale": -3},
+	"centi": {"symbol": "c", "scale": -2},
+	"deci": {"symbol": "d", "scale": -1},
+	"deca": {"symbol": "da", "scale": 1},
+	"hecto": {"symbol": "h", "scale": 2},
+	"kilo": {"symbol": "k", "scale": 3},
+	"mega": {"symbol": "M", "scale": 6},
+	"giga": {"symbol": "G", "scale": 9},
+	"peta": {"symbol": "P", "scale": 12},
+	"exa": {"symbol": "E", "scale": 18}
+};
+
 ilib.Measurement.prototype = {
+	_getBase: function() {
+		var u = this.aliases[this.unit];
+		if (u) {
+			// take care of aliases by remapping this if necessary
+			if (typeof(u) === "string") {
+				u = this.aliases[u] || u;
+			}
+
+			// if we have a scale, then rescale the units and amount
+			if (typeof(u) === "object") {
+				this.unit = this.aliases[u].base;
+				this.amount *= Math.pow(10, this.aliases[u].scale);
+			} else {
+				// otherwise, just rename the units to the normalized spelling
+				// this does this like convert "metre" to "meter"
+				this.unit = u;
+			}
+		}
+	},
+
 	/**
 	 * Return the units used in this measurement.
 	 * @return {string} name of the unit of measurement 
 	 */
-	getUnit: function() {},
+	getUnit: function() {
+		return this.unit;
+	},
 	
 	/**
 	 * Return the numeric amount of this measurement.
 	 * @return {number} the numeric amount of this measurement
 	 */
-	getAmount: function() {},
+	getAmount: function() {
+		return this.amount;
+	},
 	
 	/**
 	 * Return the type of this measurement. Examples are "mass",

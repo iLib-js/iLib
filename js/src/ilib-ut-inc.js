@@ -75,4 +75,7 @@ localematch.js
 normstring.js
 mapper.js
 maps/casemapper.js
+unit.js
+unitfmt.js
+units/length.js
 */
