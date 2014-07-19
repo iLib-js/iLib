@@ -2710,14 +2710,10 @@ function testDateFmtAltCalThaiInEnglish() {
     });
     assertNotNull(fmt);
     
-    console.log("fmt is " + JSON.stringify(fmt, undefined, 4));
     var date = new ilib.Date.ThaiSolarDate({
     	timezone: "America/Los_Angeles",
     	unixtime: 1404445524043
 	});
-    
-    console.log("date is " + JSON.stringify(date, undefined, 4));
-    console.log("formatted date is " + JSON.stringify(fmt.format(date), undefined, 4));
     
     assertEquals("July 3, 2557 8:45pm", fmt.format(date));
 };

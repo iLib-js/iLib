@@ -24,7 +24,7 @@ function testDateRngFmtTHRangeInDayShort() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -33,13 +33,13 @@ function testDateRngFmtTHRangeInDayShort() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 01/12/11", fmt.format(start, end));
+    assertEquals("13:45 - 14:30 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeInDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
@@ -48,7 +48,7 @@ function testDateRngFmtTHRangeInDayMedium() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -57,13 +57,13 @@ function testDateRngFmtTHRangeInDayMedium() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01/12/2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeInDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
@@ -72,7 +72,7 @@ function testDateRngFmtTHRangeInDayLong() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -81,13 +81,13 @@ function testDateRngFmtTHRangeInDayLong() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01 ธ.ค. 2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30 31 ธ.ค. 2011", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeInDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -96,7 +96,7 @@ function testDateRngFmtTHRangeInDayFull() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -105,13 +105,13 @@ function testDateRngFmtTHRangeInDayFull() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01 ธันวาคม 2011", fmt.format(start, end));
+    assertEquals("13:45 - 14:30 31 ธันวาคม 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtTHRangeNextDayShort() {
@@ -121,7 +121,7 @@ function testDateRngFmtTHRangeNextDayShort() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 30,
+		day: 30,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -130,13 +130,13 @@ function testDateRngFmtTHRangeNextDayShort() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 01/12/11", fmt.format(start, end));
+    assertEquals("13:45 30 - 14:30 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
@@ -145,7 +145,7 @@ function testDateRngFmtTHRangeNextDayMedium() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 30,
+		day: 30,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -154,13 +154,13 @@ function testDateRngFmtTHRangeNextDayMedium() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01/12/2011", fmt.format(start, end));
+    assertEquals("13:45 30 - 14:30 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
@@ -169,7 +169,7 @@ function testDateRngFmtTHRangeNextDayLong() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 30,
+		day: 30,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -178,13 +178,13 @@ function testDateRngFmtTHRangeNextDayLong() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01 ธ.ค. 2011", fmt.format(start, end));
+    assertEquals("13:45 30 - 14:30 31 ธ.ค. 2011", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -193,7 +193,7 @@ function testDateRngFmtTHRangeNextDayFull() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 30,
+		day: 30,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -202,13 +202,13 @@ function testDateRngFmtTHRangeNextDayFull() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01 ธันวาคม 2011", fmt.format(start, end));
+    assertEquals("13:45 30 - 14:30 31 ธันวาคม 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtTHRangeMultiDayShort() {
@@ -218,7 +218,7 @@ function testDateRngFmtTHRangeMultiDayShort() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -227,13 +227,13 @@ function testDateRngFmtTHRangeMultiDayShort() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30 01/12/11", fmt.format(start, end));
+    assertEquals("20 - 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeMultiDayMedium() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
@@ -242,7 +242,7 @@ function testDateRngFmtTHRangeMultiDayMedium() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -251,13 +251,13 @@ function testDateRngFmtTHRangeMultiDayMedium() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01/12/2011", fmt.format(start, end));
+    assertEquals("20 - 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeMultiDayLong() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
@@ -266,7 +266,7 @@ function testDateRngFmtTHRangeMultiDayLong() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -275,13 +275,13 @@ function testDateRngFmtTHRangeMultiDayLong() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01 ธ.ค. 2011", fmt.format(start, end));
+    assertEquals("20 - 31 ธ.ค. 2011", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeMultiDayFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -290,7 +290,7 @@ function testDateRngFmtTHRangeMultiDayFull() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -299,13 +299,13 @@ function testDateRngFmtTHRangeMultiDayFull() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("13:45 - 14:30, 01 ธันวาคม 2011", fmt.format(start, end));
+    assertEquals("20 - 31 ธันวาคม 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtTHRangeNextMonthShort() {
@@ -315,7 +315,7 @@ function testDateRngFmtTHRangeNextMonthShort() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -324,13 +324,13 @@ function testDateRngFmtTHRangeNextMonthShort() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01/11-01/12 11", fmt.format(start, end));
+    assertEquals("20/11/11 - 31/12/11", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextMonthMedium() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
@@ -339,7 +339,7 @@ function testDateRngFmtTHRangeNextMonthMedium() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -348,13 +348,13 @@ function testDateRngFmtTHRangeNextMonthMedium() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01/11 - 01/12 2011", fmt.format(start, end));
+    assertEquals("20/11/2011 - 31/12/2011", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextMonthLong() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
@@ -363,7 +363,7 @@ function testDateRngFmtTHRangeNextMonthLong() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -372,13 +372,13 @@ function testDateRngFmtTHRangeNextMonthLong() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01 พ.ย. - 01 ธ.ค. 2011", fmt.format(start, end));
+    assertEquals("20 พ.ย. - 31 ธ.ค. 2011", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextMonthFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -387,7 +387,7 @@ function testDateRngFmtTHRangeNextMonthFull() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -396,13 +396,13 @@ function testDateRngFmtTHRangeNextMonthFull() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 12,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01 พฤศจิกายน - 01 ธันวาคม 2011", fmt.format(start, end));
+    assertEquals("20 พฤศจิกายน - 31 ธันวาคม 2011", fmt.format(start, end));
 }
 
 function testDateRngFmtTHRangeNextYearShort() {
@@ -412,7 +412,7 @@ function testDateRngFmtTHRangeNextYearShort() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -421,13 +421,13 @@ function testDateRngFmtTHRangeNextYearShort() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2012,
 		month: 1,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01/11/11-01/1/12", fmt.format(start, end));
+    assertEquals("20/11/11 - 31/1/12", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
@@ -436,7 +436,7 @@ function testDateRngFmtTHRangeNextYearMedium() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -445,13 +445,13 @@ function testDateRngFmtTHRangeNextYearMedium() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2012,
 		month: 1,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01/11/2011 - 01/01/2012", fmt.format(start, end));
+    assertEquals("20/11/2011 - 31/1/2012", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
@@ -460,7 +460,7 @@ function testDateRngFmtTHRangeNextYearLong() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -469,13 +469,13 @@ function testDateRngFmtTHRangeNextYearLong() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2012,
 		month: 1,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01 พ.ย. 2011 - 01 ม.ค. 2012", fmt.format(start, end));
+    assertEquals("20 พ.ย. 2011 - 31 ม.ค. 2012", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeNextYearFull() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
@@ -484,7 +484,7 @@ function testDateRngFmtTHRangeNextYearFull() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -493,13 +493,13 @@ function testDateRngFmtTHRangeNextYearFull() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2012,
 		month: 1,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("01 พฤศจิกายน 2011 - 01 มกราคม 2012", fmt.format(start, end));
+    assertEquals("20 พฤศจิกายน 2011 - 31 มกราคม 2012", fmt.format(start, end));
 }
 
 function testDateRngFmtTHRangeMultiYearShort() {
@@ -509,7 +509,7 @@ function testDateRngFmtTHRangeMultiYearShort() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -518,13 +518,13 @@ function testDateRngFmtTHRangeMultiYearShort() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2014,
 		month: 1,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/11-1/14", fmt.format(start, end));
+    assertEquals("11/11 - 1/14", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeMultiYearMedium() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
@@ -533,7 +533,7 @@ function testDateRngFmtTHRangeMultiYearMedium() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -542,13 +542,13 @@ function testDateRngFmtTHRangeMultiYearMedium() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2014,
 		month: 1,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("11/2011 - 01/2014", fmt.format(start, end));
+    assertEquals("11/2011 - 1/2014", fmt.format(start, end));
 }
 function testDateRngFmtTHRangeMultiYearLong() {
     var fmt = new ilib.DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
@@ -557,7 +557,7 @@ function testDateRngFmtTHRangeMultiYearLong() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -566,7 +566,7 @@ function testDateRngFmtTHRangeMultiYearLong() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2014,
 		month: 1,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
@@ -581,7 +581,7 @@ function testDateRngFmtTHRangeMultiYearFull() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -590,7 +590,7 @@ function testDateRngFmtTHRangeMultiYearFull() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2014,
 		month: 1,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
@@ -605,7 +605,7 @@ function testDateRngFmtTHManyYearsFull() {
     var start = new ilib.Date.ThaiSolarDate({
 		year: 2011,
 		month: 11,
-		thy: 20,
+		day: 20,
 		hour: 13,
 		minute: 45,
 		second: 0,
@@ -614,7 +614,7 @@ function testDateRngFmtTHManyYearsFull() {
     var end = new ilib.Date.ThaiSolarDate({
 		year: 2064,
 		month: 1,
-		thy: 31,
+		day: 31,
 		hour: 14,
 		minute: 30,
 		second: 0,
