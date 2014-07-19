@@ -62,8 +62,8 @@ localeinfo.js
  * @param {Object} options options governing the way this plan is loaded
  */
 ilib.NumPlan = function (options) {
-	var sync = true,locale,
-		loadParams = undefined;
+	var sync = true,
+	    loadParams = undefined;
 	
 	this.locale = new ilib.Locale();
 
@@ -73,11 +73,11 @@ ilib.NumPlan = function (options) {
 		}
 		
 		if (typeof(options.sync) !== 'undefined') {
-			this.sync = (options.sync == true);
+			sync = (options.sync == true);
 		}
 		
 		if (options.loadParams) {
-			this.loadParams = options.loadParams;
+			loadParams = options.loadParams;
 		}
 	}	
 
