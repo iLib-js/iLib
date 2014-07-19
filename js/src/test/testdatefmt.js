@@ -2698,3 +2698,76 @@ function testDateFmtTransitionFromDSTRightAfter() {
     // 2 minutes later
     assertEquals("1:01am PST", fmt.format(date));
 };
+
+
+function testDateFmtAltCalThaiInEnglish() {
+    var fmt = new ilib.DateFmt({
+    	locale: "en-US",
+    	length: "full",
+    	type: "datetime",
+    	timezone: "America/Los_Angeles",
+    	calendar: "thaisolar"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.ThaiSolarDate({
+    	timezone: "America/Los_Angeles",
+    	unixtime: 1404445524043
+	});
+    
+    assertEquals("July 3, 2557 8:45pm", fmt.format(date));
+};
+
+function testDateFmtAltCalHebrewInEnglish() {
+    var fmt = new ilib.DateFmt({
+    	locale: "en-US",
+    	length: "full",
+    	type: "datetime",
+    	timezone: "America/Los_Angeles",
+    	calendar: "hebrew"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.HebrewDate({
+    	timezone: "America/Los_Angeles",
+    	unixtime: 1404445524043
+	});
+    
+    assertEquals("Tammuz 6, 5774 8:45pm", fmt.format(date));
+};
+
+function testDateFmtAltCalIslamicInEnglish() {
+    var fmt = new ilib.DateFmt({
+    	locale: "en-US",
+    	length: "full",
+    	type: "datetime",
+    	timezone: "America/Los_Angeles",
+    	calendar: "islamic"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.IslamicDate({
+    	timezone: "America/Los_Angeles",
+    	unixtime: 1404445524043
+	});
+    
+    assertEquals("Ramaḍān 5, 1435 8:45pm", fmt.format(date));
+};
+
+function testDateFmtAltCalPersianInEnglish() {
+    var fmt = new ilib.DateFmt({
+    	locale: "en-US",
+    	length: "full",
+    	type: "datetime",
+    	timezone: "America/Los_Angeles",
+    	calendar: "persian"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.PersDate({
+    	timezone: "America/Los_Angeles",
+    	unixtime: 1404445524043
+	});
+    
+    assertEquals("Tir 12, 1393 8:45pm", fmt.format(date));
+};

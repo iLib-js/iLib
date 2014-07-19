@@ -501,7 +501,9 @@ ilib.DateFmt.defaultFmt = ilib.data.dateformats || {
 	"islamic": "gregorian",
 	"hebrew": "gregorian",
 	"julian": "gregorian",
-	"buddhist": "gregorian"
+	"buddhist": "gregorian",
+	"persian": "gregorian",
+	"persian-algo": "gregorian"
 };
 
 /**

@@ -270,7 +270,7 @@ ilib.Date.JulDate = function(params) {
 	}
 };
 
-ilib.Date.JulDate.prototype = new ilib.Date();
+ilib.Date.JulDate.prototype = new ilib.Date({noinstance: true});
 ilib.Date.JulDate.prototype.parent = ilib.Date;
 ilib.Date.JulDate.prototype.constructor = ilib.Date.JulDate;
 
@@ -317,14 +317,6 @@ ilib.Date.JulDate.cumMonthLengthsLeap = [
 	335, /* Dec */
 	366
 ];
-
-/**
- * the difference between a zero Julian day and the first Julian date. 
- * @private
- * @const
- * @type number
- */
-ilib.Date.JulDate.epoch = 1721422.5;
 
 /**
  * Return a new RD for this date type using the given params.

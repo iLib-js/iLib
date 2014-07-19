@@ -38,11 +38,11 @@ function suite() {
 	    "testhebrew.js",
 	    "testhebrewdate.js",
 	    "testthaisolar.js",
-	    "testthaisolardate.js"
-	    // "testpersiandate.js",
-	    // "testpersian.js",
-	    // "testpersianastrodate.js",
-	    // "testpersianastro.js",
+	    "testthaisolardate.js",
+	    "testpersian.js",
+	    "testpersiandate.js",
+	    "testpersianastro.js",
+	    "testpersiandateastro.js"
     ];
     
     suites.forEach(function (path) {

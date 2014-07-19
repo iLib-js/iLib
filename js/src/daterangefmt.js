@@ -125,6 +125,10 @@ ilib.DateRngFmt = function(options) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
 		}
 		
+		if (options.calendar) {
+			this.calName = options.calendar;
+		}
+		
 		if (options.length) {
 			if (options.length === 'short' ||
 				options.length === 'medium' ||

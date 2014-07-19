@@ -260,7 +260,7 @@ ilib.Date.IslamicDate = function(params) {
 	}
 };
 
-ilib.Date.IslamicDate.prototype = new ilib.Date();
+ilib.Date.IslamicDate.prototype = new ilib.Date({noinstance: true});
 ilib.Date.IslamicDate.prototype.parent = ilib.Date;
 ilib.Date.IslamicDate.prototype.constructor = ilib.Date.IslamicDate;
 
@@ -294,15 +294,6 @@ ilib.Date.IslamicDate.cumMonthLengths = [
  * @type number
  */
 ilib.Date.IslamicDate.GregorianDiff = 227015;
-
-/**
- * The difference between a zero Julian day and the first Islamic date
- * of Friday, July 16, 622 CE Julian. 
- * @private
- * @const
- * @type number
- */
-ilib.Date.IslamicDate.epoch = 1948439.5;
 
 /**
  * Return a new RD for this date type using the given params.
