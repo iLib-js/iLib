@@ -78,6 +78,13 @@
 	"ordinalChoice": "1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th",
 	"a0": "AM",
 	"a1": "PM",
+	"azh0": "AM",
+	"azh1": "AM",
+	"azh2": "AM",
+	"azh3": "PM",
+	"azh4": "PM",
+	"azh5": "PM",
+	"azh6": "PM",
 	"G-1": "BCE",
 	"G1": "CE",
 	
