@@ -1196,7 +1196,7 @@ function testDateFmtFullTimeComponentsHMSAZ_zh_CN() {
     assertEquals("下午01:45:37CST", fmt.format(date));
 }
 
-function testDateFmtTimeFrameWeeHours_zh_Hans_CN() {
+function testDateFmtTimeFrameDefaultWeeHours_zh_Hans_CN() {
     var fmt = new ilib.DateFmt({
         locale: "zh-CN", 
         type: "time", 
@@ -1215,10 +1215,10 @@ function testDateFmtTimeFrameWeeHours_zh_Hans_CN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("凌晨01:45", fmt.format(date));
+    assertEquals("上午01:45", fmt.format(date));
 }
 
-function testDateFmtTimeFrameEarlyMorning_zh_Hans_CN() {
+function testDateFmtTimeFrameDefaultEarlyMorning_zh_Hans_CN() {
     var fmt = new ilib.DateFmt({
         locale: "zh-CN", 
         type: "time", 
@@ -1237,10 +1237,10 @@ function testDateFmtTimeFrameEarlyMorning_zh_Hans_CN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("早上08:30", fmt.format(date));
+    assertEquals("上午08:30", fmt.format(date));
 }
 
-function testDateFmtTimeFrameLateMorning_zh_Hans_CN() {
+function testDateFmtTimeFrameDefaultLateMorning_zh_Hans_CN() {
     var fmt = new ilib.DateFmt({
         locale: "zh-CN", 
         type: "time", 
@@ -1262,7 +1262,7 @@ function testDateFmtTimeFrameLateMorning_zh_Hans_CN() {
     assertEquals("上午11:30", fmt.format(date));
 }
 
-function testDateFmtTimeFrameNoonHour_zh_Hans_CN() {
+function testDateFmtTimeFrameDefaultNoonHour_zh_Hans_CN() {
     var fmt = new ilib.DateFmt({
         locale: "zh-CN", 
         type: "time", 
@@ -1281,10 +1281,10 @@ function testDateFmtTimeFrameNoonHour_zh_Hans_CN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("中午12:37", fmt.format(date));
+    assertEquals("下午12:37", fmt.format(date));
 }
 
-function testDateFmtTimeFrameAfterNoon_zh_Hans_CN() {
+function testDateFmtTimeFrameDefaultAfterNoon_zh_Hans_CN() {
     var fmt = new ilib.DateFmt({
         locale: "zh-CN", 
         type: "time", 
@@ -1306,7 +1306,7 @@ function testDateFmtTimeFrameAfterNoon_zh_Hans_CN() {
     assertEquals("下午03:37", fmt.format(date));
 }
 
-function testDateFmtTimeFrameEvening_zh_Hans_CN() {
+function testDateFmtTimeFrameDefaultEvening_zh_Hans_CN() {
     var fmt = new ilib.DateFmt({
         locale: "zh-CN", 
         type: "time", 
@@ -1325,15 +1325,176 @@ function testDateFmtTimeFrameEvening_zh_Hans_CN() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("傍晚07:47", fmt.format(date));
+    assertEquals("下午07:47", fmt.format(date));
 }
 
-function testDateFmtTimeFrameNight_zh_Hans_CN() {
+function testDateFmtTimeFrameDefaultNight_zh_Hans_CN() {
     var fmt = new ilib.DateFmt({
         locale: "zh-CN", 
         type: "time", 
         length: "full", 
         time: "hma"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "zh-CN",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 22,
+		minute: 53,
+		second: 37,
+		millisecond: 0
+	});
+    assertEquals("下午10:53", fmt.format(date));
+}
+
+function testDateFmtTimeFrameChineseWeeHours_zh_Hans_CN() {
+    var fmt = new ilib.DateFmt({
+        locale: "zh-CN", 
+        type: "time", 
+        length: "full", 
+        time: "hma",
+        meridiems: "chinese"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "zh-CN",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 1,
+		minute: 45,
+		second: 37,
+		millisecond: 0
+	});
+    assertEquals("凌晨01:45", fmt.format(date));
+}
+
+function testDateFmtTimeFrameChineseEarlyMorning_zh_Hans_CN() {
+    var fmt = new ilib.DateFmt({
+        locale: "zh-CN", 
+        type: "time", 
+        length: "full", 
+        time: "hma",
+        meridiems: "chinese"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "zh-CN",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 8,
+		minute: 30,
+		second: 37,
+		millisecond: 0
+	});
+    assertEquals("早上08:30", fmt.format(date));
+}
+
+function testDateFmtTimeFrameChineseLateMorning_zh_Hans_CN() {
+    var fmt = new ilib.DateFmt({
+        locale: "zh-CN", 
+        type: "time", 
+        length: "full", 
+        time: "hma",
+        meridiems: "chinese"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "zh-CN",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 11,
+		minute: 30,
+		second: 37,
+		millisecond: 0
+	});
+    assertEquals("上午11:30", fmt.format(date));
+}
+
+function testDateFmtTimeFrameChineseNoonHour_zh_Hans_CN() {
+    var fmt = new ilib.DateFmt({
+        locale: "zh-CN", 
+        type: "time", 
+        length: "full", 
+        time: "hma",
+        meridiems: "chinese"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "zh-CN",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 12,
+		minute: 37,
+		second: 37,
+		millisecond: 0
+	});
+    assertEquals("中午12:37", fmt.format(date));
+}
+
+function testDateFmtTimeFrameChineseAfterNoon_zh_Hans_CN() {
+    var fmt = new ilib.DateFmt({
+        locale: "zh-CN", 
+        type: "time", 
+        length: "full", 
+        time: "hma",
+        meridiems: "chinese"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "zh-CN",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 15,
+		minute: 37,
+		second: 37,
+		millisecond: 0
+	});
+    assertEquals("下午03:37", fmt.format(date));
+}
+
+function testDateFmtTimeFrameChineseEvening_zh_Hans_CN() {
+    var fmt = new ilib.DateFmt({
+        locale: "zh-CN", 
+        type: "time", 
+        length: "full", 
+        time: "hma",
+        meridiems: "chinese"
+    });
+    assertNotNull(fmt);
+    
+    var date = new ilib.Date.GregDate({
+		locale: "zh-CN",
+		year: 2011,
+		month: 9,
+		day: 29,
+		hour: 19,
+		minute: 47,
+		second: 37,
+		millisecond: 0
+	});
+    assertEquals("傍晚07:47", fmt.format(date));
+}
+
+function testDateFmtTimeFrameChineseNight_zh_Hans_CN() {
+    var fmt = new ilib.DateFmt({
+        locale: "zh-CN", 
+        type: "time", 
+        length: "full", 
+        time: "hma",
+        meridiems: "chinese"
     });
     assertNotNull(fmt);
     

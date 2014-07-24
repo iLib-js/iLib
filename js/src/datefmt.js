@@ -216,17 +216,22 @@ util/jsutils.js
  * <li><i>Z</i> - RFC 822 time zone
  * </ul>
  * 
- *<li><i>useNative</i> - the flag used to determaine whether to use the native script settings 
- * for formatting the numbers .
+ * <li><i>useNative</i> - the flag used to determine whether to use the native script settings 
+ * for formatting the numbers.
  *
- * <li>onLoad - a callback function to call when the date format object is fully 
+ * <li><i>meridiems</i> - string that specifies what style of meridiems to use with this 
+ * format. The choices are "default" and "chinese". The "default" style is the simple AM/PM,
+ * and the "chinese" style uses 7 different meridiems corresponding to the various parts of 
+ * the day. The default if not specified is "default", even for the Chinese locales. 
+ *
+ * <li><i>onLoad</i> - a callback function to call when the date format object is fully 
  * loaded. When the onLoad option is given, the DateFmt object will attempt to
  * load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two.
  * 
- * <li>sync - tell whether to load any missing locale data synchronously or 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while.
@@ -281,6 +286,8 @@ ilib.DateFmt = function(options) {
 	this.length = "s";
 	this.dateComponents = "dmy";
 	this.timeComponents = "ahm";
+	this.meridiems = "default";
+	
 	if (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
@@ -374,6 +381,11 @@ ilib.DateFmt = function(options) {
 		if (typeof(options.useNative) === 'boolean') {
 			this.useNative = options.useNative;
 		}
+		
+		if (typeof(options.meridiems) !== 'undefined' && options.meridiems === "chinese") {
+			this.meridiems = options.meridiems;
+		}
+		
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync === true);
 		}
@@ -1021,7 +1033,7 @@ ilib.DateFmt.prototype = {
 					break;
 					
 				case 'a':
-					if (this.locale.getLanguage() === 'zh') {
+					if (this.meridiems === "chinese") {
 						if (date.hour < 6) {
 							key = "azh0";	// before dawn
 						} else if (date.hour < 9) {
