@@ -1,22 +1,23 @@
-function testLoadUS() {
+/*function testLoadUS() {
 	var states = new ilib.StatesData({
 		path: "phone/base/test/states",
 		locale: new ilib.Locale("en-US")
 	});
 	assertNotUndefined(states);
 };
-
+*/
 function testLoadUSRightContent() {
-	var states = new ilib.StatesData({
+	/*var states = new ilib.StatesData({
 		root: ".",
 		path: "test/states",
 		locale: new ilib.Locale("en-US")
-	});
+	});*/
+	var states = new ilib.StatesData({locale: "en-US"});
 	assertNotUndefined(states);
-	
+
 	var content = states.get(0);
 	assertNotUndefined(content);
-	
+
 	assertEquals(10, content.length);
 	assertEquals(0, content[0]);
 	assertEquals(1, content[1]);
@@ -30,7 +31,7 @@ function testLoadUSRightContent() {
 	assertEquals(9, content[9]);
 	
 };
-
+/*
 function testLoadNotThere() {
 	var states = new ilib.StatesData({
 		path: "phone/base",
@@ -99,3 +100,4 @@ function testLoadDERightContent() {
 	assertEquals(19, content[9]);
 	
 };
+*/

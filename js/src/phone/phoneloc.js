@@ -121,6 +121,34 @@ ilib.PhoneLoc._mapCCtoRegion = function(cc) {
 	return ilib.data.cc2reg && ilib.data.cc2reg[cc] || "unknown";
 };
 
+/**
+ * Map a Region code to a dialing code.
+ *
+ * @static
+ * @protected
+ * @param {string} region Region string to parse
+ * @return {Object} components of the CC number
+ */
+ilib.PhoneLoc._mapRegiontoCC = function(region) {
+	if (!region) {
+		return undefined;
+	}
+
+	if (typeof(ilib.data.reg2cc) === 'undefined') {
+		ilib.loadData({
+			name: "reg2cc.json",
+			object: ilib.PhoneLoc, 
+			locale: "-", 
+			sync: true,
+			callback: ilib.bind(this, function (data) {
+				ilib.data.reg2cc = data;
+			})
+		});
+	}
+	return ilib.data.reg2cc && ilib.data.reg2cc[region] || "0";
+};
+
+
 /*
 * Return the region that controls the dialing plan in the given
 * region. (ie. the "normalized phone region".)

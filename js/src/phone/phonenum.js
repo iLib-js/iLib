@@ -141,7 +141,172 @@ phone/numplan.js
 
  */
 ilib.PhoneNumber = function(number, options) {
+	var locale,
+		plan,
+		stateData,
+		i, ch,
+		regionSettings,
+		state = 0, //begin state
+		newState,
+		stateTable,
+		dot,
+		handlerMethod,
+		result,
+		temp;
 
+
+	if (options) {
+		this.locale = new ilib.PhoneLoc(options);
+	} else {
+		this.locale = new ilib.Locale();
+	}
+
+	/*if (!number || (typeof number === "string" && number.length === 0)) {
+		return this;
+	} else if (typeof number === "object") {
+		ilib.PhoneNumber._deepCopy(number, this);
+		return this;
+	}*/
+
+	// use ^ to indicate the beginning of the number, because certain things only match at the beginning
+	number = "^" + number.replace(/\^/g, '');
+
+	//console.log("PhoneNumber: locale is: " + this.locale + " parsing number: " + number);
+
+	ilib.loadData({
+		name: "states.json",
+		object: ilib.PhoneNumber,
+		locale: this.locale,
+		//sync: true, 
+		callback: ilib.bind(this, function (data) {
+			if (!data) {
+				data =[[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]
+			}
+			stateData = data;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		})
+	});
+
+	plan = new ilib.NumPlan({locale: this.locale});
+
+	regionSettings = {
+		stateData : stateData,
+		plan: plan,
+		handler : ilib._handlerFactory(this.locale, plan)
+	};
+
+	number = ilib.PhoneNumber._stripFormatting(number);
+	dot = 14; //special transition which matches all characters. See AreaCodeTableMaker.java
+
+	i = 0;
+	while (i < number.length) {
+		ch = ilib.PhoneNumber._getCharacterCode(number.charAt(i));
+		if (ch >= 0) {
+			newState = stateData[state][ch];
+
+			if (newState === -1 && stateData[state][dot] !== -1 ) {
+				// check if this character can match the dot instead
+				newState = stateTable.get(state)[dot];
+				//console.log("char " + ch + " doesn't have a transition. Using dot to transition to state " + newState);
+			}
+
+			if (newState < 0) {
+				// this final state. First convert the state to a positive array index
+				// in order to look up the name of the handler function name in the array
+				newState = -newState -1;
+				handlerMethod = ilib.PhoneNumber._states[newState];
+
+				if (number.charAt(0) === '^') {
+					result = regionSettings.handler[handlerMethod](number.slice(1), i-1, this, regionSettings);
+				} else {
+					result = regionSettings.handler[handlerMethod](number, i, this, regionSettings);
+				}
+
+				// reparse whatever is left
+				number = result.number;
+				i= 0;
+				//console.log("reparsing with new number: " +  number);
+				state = 0;
+				// if the handler requested a special sub-table, use it for this round of parsing,
+				// otherwise, set it back to the regular table to continue parsing
+				if (result.push !== undefined) {
+					locale = result.push;
+
+					/*ilib.loadData({
+						name: "states.json",
+						object: ilib.PhoneNumber,
+						locale: locale111,
+						callback: ilib.bind(this, function (data) {
+						if (data) {
+							stateData = data;	
+						}
+						console.log("stateData: ", stateData)
+						if (options && typeof(options.onLoad) === 'function') {
+							options.onLoad(this);
+						}
+					}
+					test = new ilib.NumPlan({locale:locale111});
+
+					regionSettings = {
+						stateData: stateData,
+						plan: test,
+						handler: ilib._handlerFactory(this.locale, plan)
+					};*/
+	
+				} else if (result.skipTrunk !== undefined) {
+					ch = ilib.PhoneNumber._getCharacterCode(regionSettings.plan.trunkCode);
+					state = stateData[state][ch];
+				}
+
+			} else {
+				// console.info("recognized digit " + ch + " continuing...");
+				// recognized digit, so continue parsing
+				state = newState;
+				i++;
+			}
+		} else if (ch === -1) {
+			// non-transition character, continue parsing in the same state
+			i++;
+		} else {
+			// should not happen
+			// console.info("skipping character " + ch);
+			// not a digit, plus, pound, or star, so this is probably a formatting char. Skip it.
+			i++;
+		}
+
+		if (state > 0 && i > 0) {
+			// we reached the end of the phone number, but did not finish recognizing anything. 
+			// Default to last resort and put everything that is left into the subscriber number
+			//console.log("Reached end of number before parsing was complete. Using handler for method none.")
+			if (number.charAt(0) === '^') {
+				result = regionSettings.handler.none(number.slice(1), i-1, this, regionSettings);
+			} else {
+				result = regionSettings.handler.none(number, i, this, regionSettings);
+			}
+		}
+	}
+};
+
+
+/**
+ * 
+ */
+ilib.PhoneNumber._deepCopy = function(from, to) {
+	var prop;
+
+	for (prop in from) {
+		if (prop) {
+			if (typeof(from[prop]) === 'object') {
+				to[prop] ={};
+				ilib.PhoneNumber._deepCopy(from[prop], to[prop]);
+			} else {
+				to[prop] = from[prop];
+			}
+		}
+	}
+	return to;
 };
 
 /**
@@ -156,7 +321,81 @@ ilib.PhoneNumber._parseImsi = function(imsi) {
 
 };
 
+ilib.PhoneNumber._stripFormatting = function(str) {
+	var ret = "";
+	var i;
+
+	for (i = 0; i < str.length; i++) {
+		if (ilib.PhoneNumber._getCharacterCode(str.charAt(i)) >= -1) {
+			ret += str.charAt(i);
+		}
+	}
+	return ret;
+};
+
+ilib.PhoneNumber._getCharacterCode = function(ch) {
+	if (ch >= '0' && ch <= '9') {
+			return ch - '0';
+		}
+	switch (ch) {
+	case '+':
+		return 10;
+	case '*':
+		return 11;
+	case '#':
+		return 12;
+	case '^':
+		return 13;
+	case 'p':		// pause chars
+	case 'P':
+	case 't':
+	case 'T':
+	case 'w':
+	case 'W':
+		return -1;
+	case 'x':
+	case 'X':		// extension char
+		return -1;
+	}
+	return -2;
+};
+
+ilib.PhoneNumber._states = [
+	"none",
+	"unknown",
+	"plus",
+	"idd",
+	"cic",
+	"service",
+	"cell",
+	"area",
+	"vsc",
+	"country",
+	"personal",
+	"special",
+	"trunk",
+	"premium",
+	"emergency",
+	"service2",
+	"service3",
+	"service4",
+	"cic2",
+	"cic3",
+	"start",
+	"local"
+];
+
 ilib.PhoneNumber.prototype = {
+	/**
+	 * @protected
+	 */
+	_xor : function(left, right) {
+		if ((left === undefined && right === undefined ) || (left !== undefined && right !== undefined)) {
+			return false;
+		} else {
+			return true;
+		}
+	},
 	/**
 	 * This routine will compare the two phone numbers in an locale-sensitive
 	 * manner to see if they possibly reference the same phone number.<p>
@@ -218,6 +457,93 @@ ilib.PhoneNumber.prototype = {
 	 * less strong, down to 0 meaning not at all a match. 
 	 */
 	compare: function (other) {
+		var match = 100,
+			FRdepartments = {"590":1, "594":1, "596":1, "262":1},
+			ITcountries = {"378":1, "379":1},
+			thisPrefix,
+			otherPrefix,
+			currentCountryCode = ilib.PhoneLoc._mapRegiontoCC(this.locale.region);
+
+		// subscriber number must be present and must match
+		if (!this.subscriberNumber || !other.subscriberNumber || this.subscriberNumber !== other.subscriberNumber) {
+			return 0;
+		}
+
+		// extension must match if it is present
+		if (this._xor(this.extension, other.extension) || this.extension !== other.extension) {
+			return 0;
+		}
+
+		if (this._xor(this.countryCode, other.countryCode)) {
+			// if one doesn't have a country code, give it some demerit points, but if the
+			// one that has the country code has something other than the current country
+			// add even more. Ignore the special cases where you can dial the same number internationally or via 
+			// the local numbering system
+			switch (this.locale.region) {
+			case 'FR':
+				if (this.countryCode in FRdepartments || other.countryCode in FRdepartments) {
+					if (this.areaCode !== other.areaCode || this.mobilePrefix !== other.mobilePrefix) {
+						match -= 100;
+					}
+				} else {
+					match -= 16;
+				}
+				break;
+			case 'IT':
+				if (this.countryCode in ITcountries || other.countryCode in ITcountries) { 
+					if (this.areaCode !== other.areaCode) {
+						match -= 100;
+					}
+				} else {
+					match -= 16;
+				}
+				break;
+			default:
+				match -= 16;
+				if ((this.countryCode !== undefined && this.countryCode !== currentCountryCode) || 
+					(other.countryCode !== undefined && other.countryCode !== currentCountryCode)) {
+					match -= 16;
+				}
+			}
+		} else if (this.countryCode !== other.countryCode) {
+
+		}
+
+		if (this._xor(this.serviceCode, other.serviceCode)) {
+			match -= 20;
+		} else if (this.serviceCode !== other.serviceCode) {
+			match -= 100;
+		}
+
+		if (this._xor(this.mobilePrefix, other.mobilePrefix)) {
+			match -= 20;
+		} else if (this.mobilePrefix !== other.mobilePrefix) {
+			match -= 100;
+		}
+
+		if (this._xor(this.areaCode, other.areaCode)) {
+			// one has an area code, the other doesn't, so dock some points. It could be a match if the local
+			// number in the one number has the same implied area code as the explicit area code in the other number.
+			match -= 12;
+		} else if (this.areaCode !== other.areaCode) {
+			match -= 100;
+		}
+
+		thisPrefix = this._getPrefix();
+		otherPrefix = other._getPrefix();
+		
+		if (thisPrefix && otherPrefix && thisPrefix !== otherPrefix) {
+			match -= 100;
+		}
+		
+		// make sure we are between 0 and 100
+		if (match < 0) {
+			match = 0;	
+		} else if (match > 100) {
+			match = 100;
+		}
+
+		return match;
 	},
 	
 	/**

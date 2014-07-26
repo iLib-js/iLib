@@ -29,7 +29,8 @@ function suite() {
     
     var suites = [
         "numplan.js",
-        "phoneloc.js"
+        "phoneloc.js",
+        "phonenum.js"
   		/*
   		"phone_AU.js",
 		"phone_BE.js",

@@ -1,3 +1,12 @@
+function testStringsNumberMatchUSIgnoreSomeFields() {
+	var left = new ilib.PhoneNumber('1 (650) 456-7890');
+		right = new ilib.PhoneNumber('650-456-7890');
+	assertEquals(100, left.compare(right));	
+	//assertNotUndefined(left);
+};
+
+
+/*
 function testNumberMatchFRDepartments1(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -14,6 +23,25 @@ function testNumberMatchFRDepartments1(){
 	assertEquals(100, left.compare(right));
 
 };
+
+
+function testNumberMatchFRDepartments1(){
+	var left = new ilib.PhoneNumber({
+		iddPrefix: "+",
+		countryCode: "590",
+		areaCode: "590",
+		subscriberNumber: "123456"
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
+		trunkAccess: "0",
+		areaCode: "590",
+		subscriberNumber: "123456"
+	}, {locale: "fr-FR"});
+	
+	assertEquals(100, left.compare(right));
+
+};
+
 function testNumberMatchFRDepartments1Reverse(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -769,13 +797,14 @@ function testStringsNumberMatchUSIgnoreSomeFields() {
 	
 	
 };
+
+
 function testStringsNumberMatchITSanMarinoDifferentCountryCodes(){
 	var left = new ilib.PhoneNumber('+378 0549 123 456', {locale: "en-US"}),
 		right = new ilib.PhoneNumber('+39 0549 123 456', {locale: "en-US"});
 	assertEquals(100, left.compare(right));
-	
-	
-};
+};*/
+/*
 function testStringsNumberMatchITSanMarinoMissingCountryCodes(){
 	var left = new ilib.PhoneNumber('+378 0549 123 456', {locale: "it-IT"}),
 		right = new ilib.PhoneNumber('0549 123 456', {locale: "it-IT"});
@@ -1001,3 +1030,4 @@ function testEqualsMissingLocaleBoth(){
 	
 	
 };
+*/
