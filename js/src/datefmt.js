@@ -892,7 +892,7 @@ ilib.DateFmt.prototype = {
 	 * </ul>
 	 * @param  {Object=} options an object-literal that contains one key 
 	 *                   "length" with the standard length strings
-	 * @return {Array} an array of all of the months of the year for the current calendar
+	 * @return {Array} an array of all of the names of the days of the week
 	 */
 	getDaysOfWeek: function(options) {
 		var length = (options && options.length) || this.getLength(),
