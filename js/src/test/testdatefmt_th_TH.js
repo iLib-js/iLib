@@ -485,7 +485,7 @@ function testDateFmtShortDateComponentsN_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("S", fmt.format(date));
+    assertEquals("ก", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsD_th_TH() {
@@ -570,7 +570,7 @@ function testDateFmtShortDateComponentsWDM_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("พฤ 29/9", fmt.format(date));
+    assertEquals("พ 29/9", fmt.format(date));
 }
 
 function testDateFmtShortDateComponentsWDMY_th_TH() {
@@ -587,7 +587,7 @@ function testDateFmtShortDateComponentsWDMY_th_TH() {
 		second: 0,
 		millisecond: 0
 	});
-    assertEquals("พฤ 29/9/54", fmt.format(date));
+    assertEquals("พ 29/9/54", fmt.format(date));
 }
 
 

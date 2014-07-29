@@ -816,6 +816,16 @@ function testDateFmtGetMonthsOfYear2() {
     assertArrayEquals([undefined, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], arrMonths);
 }
 
+function testDateFmtGetMonthsOfYearThai() {
+	// uses ThaiSolar calendar
+    var fmt = new ilib.DateFmt({locale: "th-TH"});
+    assertNotNull(fmt);
+    
+    var arrMonths = fmt.getMonthsOfYear({length: "long"});
+    
+    assertArrayEquals([undefined, "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."], arrMonths);
+}
+
 function testDateFmtGetMonthsOfYearLeapYear() {
 	var d = ilib.Date.newInstance({type: "hebrew", locale: "en-US", year: 5774, month: 1, day: 1});
     var fmt = new ilib.DateFmt({date: "en-US", calendar: "hebrew"});
@@ -860,6 +870,25 @@ function testDateFmtGetDaysOfWeekOtherCalendar() {
 
     assertArrayEquals(["ris", "she", "shl", "rvi", "ḥam", "shi", "sha"], arrDays);
 }
+
+function testDateFmtGetDaysOfWeekThai() {
+    var fmt = new ilib.DateFmt({locale: "th-TH", calendar: "thaisolar"});
+    assertNotNull(fmt);
+    
+    var arrDays = fmt.getDaysOfWeek({length: 'long'});
+
+    assertArrayEquals(["อา.", "จ.", "อ.", "พ.", "พฤ.", "ศ.", "ส."], arrDays);
+}
+
+function testDateFmtGetDaysOfWeekThaiInEnglish() {
+    var fmt = new ilib.DateFmt({locale: "en-US", calendar: "thaisolar"});
+    assertNotNull(fmt);
+    
+    var arrDays = fmt.getDaysOfWeek({length: 'long'});
+	
+    assertArrayEquals(["ath", "cha", "ang", "phu", "phr", "suk", "sao"], arrDays);
+}
+
 
 function testDateFmtWeekYear1() {
     var fmt = new ilib.DateFmt({template: "w"});
@@ -2715,7 +2744,7 @@ function testDateFmtAltCalThaiInEnglish() {
     	unixtime: 1404445524043
 	});
     
-    assertEquals("July 3, 2557 8:45pm", fmt.format(date));
+    assertEquals("Karakadakhom 3, 2557 8:45pm", fmt.format(date));
 };
 
 function testDateFmtAltCalHebrewInEnglish() {
