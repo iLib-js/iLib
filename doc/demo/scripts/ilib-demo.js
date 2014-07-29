@@ -30,7 +30,7 @@ var ilib = ilib || {};
  */
 ilib.getVersion = function () {
     // increment this for each release
-    return "6.0"
+    return "7.0"
     ;
 };
 
@@ -1239,7 +1239,7 @@ ilib.Locale.prototype = {
  * @private
  */
 ilib.Locale.locales = [
-	"aa-DJ","af-NA","af-ZA","agq-CM","ak-GH","am-ET","ar-AE","ar-BH","ar-DJ","ar-DZ","ar-EG","ar-IQ","ar-JO","ar-KW","ar-LB","ar-LY","ar-MA","ar-MR","ar-OM","ar-QA","ar-SA","ar-SD","ar-SY","ar-TN","ar-YE","asa-TZ","as-IN","az-AZ","bas-CM","be-BY","bem-ZM","bg-BG","bh-IN","bm-ML","bn-IN","br-FR","bs-Cyrl-BA","bs-Latn-BA","bs-ME","ca-FR","cs-CZ","da-DK","de-AT","de-CH","de-DE","el-GR","en-AU","en-CA","en-Latn-CA","en-ET","en-GB","en-GH","en-GM","en-HK","en-IE","en-IN","en-KE","en-LK","en-LR","en-MW","en-MY","en-NG","en-NZ","en-PH","en-PK","en-PR","en-RW","en-SG","en-SL","en-TZ","en-UG","en-US","en-ZA","en-ZM","es-AR","es-CO","es-CR","es-DO","es-EC","es-ES","es-GQ","es-GT","es-HN","es-MX","es-SV","es-UY","es-VE","et-EE","fa-AF","fa-IR","ff-SN","fi-FI","fj-FJ","fr-AD","fr-BE","fr-BF","fr-BJ","fr-CA","fr-CD","fr-CF","fr-CG","fr-CH","fr-CI","fr-CM","fr-DJ","fr-DZ","fr-FR","fr-GA","fr-GN","fr-LB","fr-LU","fr-MG","fr-ML","fr-RW","fr-SN","fr-TG","fr-YT","ga-IE","gl-ES","ha-Latn-NG","he-IL","hi-IN","hr-HR","hr-ME","hu-HU","hy-AZ","id-ID","id-MY","it-CH","it-IT","it-SM","ja-JP","ka-IR","kk-Cyrl-KZ","kn-IN","ko-KR","ks-Arab-IN","ku-IR","lg-UG","ln-CF","lt-LT","lv-LV","mi-CK","mk-MK","ml-IN","mn-CN","mr-IN","ms-BN","ms-MY","nb-NO","ne-IN","nl-BE","nl-CW","nl-GF","nl-NL","nl-SR","no-BV","no-NO","no-SJ","om-ET","or-IN","os-RU","pa-Arab-PK","pl-PL","pt-AO","pt-BR","pt-CV","pt-GW","pt-MO","pt-MZ","pt-PT","pt-ST","pt-TL","ro-RO","ro-RS","ru-KG","ru-KZ","ru-RU","ru-TM","si-LK","sk-SK","sl-SI","so-ET","so-SO","sq-AL","sq-ME","sq-MK","sr-Cyrl-BA","sr-Latn-BA","sr-Latn-ME","sr-RS","sr-Latn-RS","ss-ZA","st-LS","sv-FI","sv-SE","sw-UG","ta-LK","ta-MY","ta-SG","te-IN","tr-TR","uk-UA","ur-IN","ur-PK","uz-AF","uz-Arab-AF","uz-Cyrl-UZ","uz-Latn-UZ","vai-Latn-LR","vi-VN","zh-CN","zh-Hans-CN","zh-Hant-MY","zh-HK","zh-Hans-HK","zh-MO","zh-Hant-MO","zh-SG","zh-Hans-SG","zh-TW","zh-Hant-TW","zh-Hant-US","zu-ZA","zxx-Cyrl-XX","zxx-Hans-XX","zxx-Hebr-XX","zxx-XX"
+	"aa-DJ","af-NA","af-ZA","agq-CM","ak-GH","am-ET","ar-AE","ar-BH","ar-DJ","ar-DZ","ar-EG","ar-IQ","ar-JO","ar-KW","ar-LB","ar-LY","ar-MA","ar-MR","ar-OM","ar-QA","ar-SA","ar-SD","ar-SY","ar-TN","ar-YE","asa-TZ","as-IN","az-AZ","bas-CM","be-BY","bem-ZM","bg-BG","bh-IN","bm-ML","bn-IN","br-FR","bs-Cyrl-BA","bs-Latn-BA","bs-ME","ca-FR","cs-CZ","da-DK","de-AT","de-CH","de-DE","el-GR","en-AU","en-CA","en-Latn-CA","en-ET","en-GB","en-GH","en-GM","en-HK","en-IE","en-IN","en-KE","en-LK","en-LR","en-MW","en-MY","en-NG","en-NZ","en-PH","en-PK","en-PR","en-RW","en-SG","en-SL","en-TZ","en-UG","en-US","en-ZA","en-ZM","es-AR","es-CO","es-CR","es-DO","es-EC","es-ES","es-GQ","es-GT","es-HN","es-MX","es-SV","es-UY","es-VE","et-EE","fa-AF","fa-IR","ff-SN","fi-FI","fj-FJ","fr-AD","fr-BE","fr-BF","fr-BJ","fr-CA","fr-CD","fr-CF","fr-CG","fr-CH","fr-CI","fr-CM","fr-DJ","fr-DZ","fr-FR","fr-GA","fr-GN","fr-LB","fr-LU","fr-MG","fr-ML","fr-RW","fr-SN","fr-TG","fr-YT","ga-IE","gl-ES","ha-Latn-NG","he-IL","hi-IN","hr-HR","hr-ME","hu-HU","hy-AZ","id-ID","id-MY","it-CH","it-IT","it-SM","ja-JP","ka-IR","kk-Cyrl-KZ","kn-IN","ko-KR","ks-Arab-IN","ku-IR","lg-UG","ln-CF","lt-LT","lv-LV","mi-CK","mk-MK","ml-IN","mn-CN","mr-IN","ms-BN","ms-MY","nb-NO","ne-IN","nl-BE","nl-CW","nl-GF","nl-NL","nl-SR","no-BV","no-NO","no-SJ","om-ET","or-IN","os-RU","pa-Arab-PK","pl-PL","pt-AO","pt-BR","pt-CV","pt-GW","pt-MO","pt-MZ","pt-PT","pt-ST","pt-TL","ro-RO","ro-RS","ru-KG","ru-KZ","ru-RU","ru-TM","si-LK","sk-SK","sl-SI","so-ET","so-SO","sq-AL","sq-ME","sq-MK","sr-Cyrl-BA","sr-Latn-BA","sr-Latn-ME","sr-RS","sr-Latn-RS","ss-ZA","st-LS","sv-FI","sv-SE","sw-UG","ta-LK","ta-MY","ta-SG","te-IN","th-TH","tr-TR","uk-UA","ur-IN","ur-PK","uz-AF","uz-Arab-AF","uz-Cyrl-UZ","uz-Latn-UZ","vai-Latn-LR","vi-VN","zh-CN","zh-Hans-CN","zh-Hant-MY","zh-HK","zh-Hans-HK","zh-MO","zh-Hant-MO","zh-SG","zh-Hans-SG","zh-TW","zh-Hant-TW","zh-Hant-US","zu-ZA","zxx-Cyrl-XX","zxx-Hans-XX","zxx-Hebr-XX","zxx-XX"
 ];
 
 /**
@@ -1380,8 +1380,8 @@ ilib.data.localeinfo_VE = {"currency":"VEF","firstDayOfWeek":0,"paperSizes":{"re
 ilib.data.localeinfo_et = {"delimiter":{"quotationStart":"„","quotationEnd":"“","alternateQuotationStart":"‚","alternateQuotationEnd":"‘"},"language.name":"Estonian","numfmt":{"groupChar":" ","exponential":"E","currencyFormats":{"common":"{n}{s}","commonNegative":"({n}{s})"}},"scripts":["Latn"],"locale":"et"};
 ilib.data.localeinfo_EE = {"currency":"EUR","firstDayOfWeek":1,"region.name":"Estonia","timezone":"Europe/Tallinn","locale":"EE"};
 ilib.data.localeinfo_fa = {"delimiter":{"quotationStart":"«","quotationEnd":"»","alternateQuotationStart":"‹","alternateQuotationEnd":"›"},"language.name":"Persian","numfmt":{"script":"Arab","decimalChar":"٫","groupChar":"٬","pctChar":"٪","exponential":"×۱۰^","currencyFormats":{"common":"‎{s}{n}","commonNegative":"‎({s}{n})"},"useNative":true,"digits":"۰۱۲۳۴۵۶۷۸۹"},"scripts":["Arab"],"locale":"fa"};
-ilib.data.localeinfo_AF = {"currency":"AFN","firstDayOfWeek":6,"region.name":"Afghanistan","timezone":"Asia/Kabul","locale":"AF"};
-ilib.data.localeinfo_IR = {"currency":"IRR","firstDayOfWeek":6,"region.name":"Iran","timezone":"Asia/Tehran","locale":"IR"};
+ilib.data.localeinfo_AF = {"calendar":"persian","currency":"AFN","firstDayOfWeek":6,"region.name":"Afghanistan","timezone":"Asia/Kabul","locale":"AF"};
+ilib.data.localeinfo_IR = {"calendar":"persian","currency":"IRR","firstDayOfWeek":6,"region.name":"Iran","timezone":"Asia/Tehran","locale":"IR"};
 ilib.data.localeinfo_ff = {"delimiter":{"quotationStart":"„","alternateQuotationStart":"‚"},"language.name":"Fulah","numfmt":{"groupChar":" ","exponential":"E","currencyFormats":{"common":"{n} {s}"}},"scripts":["Latn"],"locale":"ff"};
 ilib.data.localeinfo_SN = {"currency":"XOF","region.name":"Senegal","timezone":"Africa/Dakar","locale":"SN"};
 ilib.data.localeinfo_fi = {"delimiter":{"quotationStart":"”","alternateQuotationStart":"’"},"language.name":"Finnish","numfmt":{"groupChar":" ","exponential":"E","currencyFormats":{"common":"{n} {s}"},"pctFmt":"{n} %"},"scripts":["Latn"],"locale":"fi"};
@@ -1516,6 +1516,8 @@ ilib.data.localeinfo_SE = {"currency":"SEK","firstDayOfWeek":1,"paperSizes":{"re
 ilib.data.localeinfo_sw = {"clock":"12","language.name":"Swahili","numfmt":{"decimalChar":".","groupChar":",","exponential":"E","currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Latn"],"locale":"sw"};
 ilib.data.localeinfo_ta = {"clock":"12","language.name":"Tamil","native_numfmt":{"script":"Taml","decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{s} {n}","commonNegative":"-{s} {n}"},"useNative":true,"digits":"௦௧௨௩௪௫௬௭௮௯"},"numfmt":{"decimalChar":".","groupChar":",","secgroupSize":2,"useNative":false,"currencyFormats":{"common":"{s} {n}","commonNegative":"-{s} {n}"}},"scripts":["Taml"],"locale":"ta"};
 ilib.data.localeinfo_te = {"clock":"12","language.name":"Telugu","native_numfmt":{"script":"Telu","decimalChar":".","groupChar":",","secgroupSize":2,"currencyFormats":{"common":"{s} {n}","commonNegative":"-{s} {n}"},"useNative":true,"digits":"౦౧౨౩౪౫౬౭౮౯"},"numfmt":{"decimalChar":".","groupChar":",","secgroupSize":2,"useNative":false,"currencyFormats":{"common":"{s} {n}","commonNegative":"-{s} {n}"}},"scripts":["Telu"],"locale":"te"};
+ilib.data.localeinfo_th = {"language.name":"Thai","native_numfmt":{"script":"Thai","decimalChar":".","groupChar":",","pctChar":"%","exponential":"E","prigroupSize":3,"currencyFormats":{"common":"{s}{n}","commonNegative":"({s}{n})"},"pctFmt":"{n}%","roundingMode":"halfdown","useNative":true,"digits":"๐๑๒๓๔๕๖๗๘๙"},"numfmt":{"decimalChar":".","groupChar":",","exponential":"E","useNative":false,"currencyFormats":{"commonNegative":"({s}{n})"}},"scripts":["Thai"],"locale":"th"};
+ilib.data.localeinfo_TH = {"calendar":"thaisolar","currency":"THB","firstDayOfWeek":0,"region.name":"Thailand","timezone":"Asia/Bangkok","locale":"TH"};
 ilib.data.localeinfo_tr = {"language.name":"Turkish","numfmt":{"exponential":"E","currencyFormats":{"common":"{n} {s}","commonNegative":"({n} {s})"},"pctFmt":"%{n}"},"scripts":["Latn","Arab"],"locale":"tr"};
 ilib.data.localeinfo_TR = {"currency":"TRY","firstDayOfWeek":1,"region.name":"Turkey","timezone":"Europe/Istanbul","locale":"TR"};
 ilib.data.localeinfo_uk = {"delimiter":{"quotationStart":"«","quotationEnd":"»","alternateQuotationStart":"„","alternateQuotationEnd":"“"},"language.name":"Ukrainian","numfmt":{"groupChar":" ","exponential":"Е","currencyFormats":{"common":"{n} {s}"}},"scripts":["Cyrl"],"locale":"uk"};
@@ -2097,7 +2099,9 @@ ilib.LocaleInfo.prototype = {
  * @param {Object=} options The date components to initialize this date with
  */
 ilib.Date = function(options) {
-	return ilib.Date.newInstance(options);
+	if (!options || typeof(options.noinstance) === 'undefined') {
+		return ilib.Date.newInstance(options);
+	}
 };
 
 /**
@@ -2115,6 +2119,7 @@ ilib.Date = function(options) {
  * and "julian" calendars are all included by default, as they are the
  * standard calendars for much of the world. If not specified, the type
  * of the date returned is the one that is appropriate for the locale.
+ * This property may also be given as "calendar" instead of "type".
  * </ul>
  * 
  * The options object is also passed down to the date constructor, and 
@@ -2152,7 +2157,7 @@ ilib.Date = function(options) {
  */
 ilib.Date.newInstance = function(options) {
 	var locale = options && options.locale,
-		type = options && options.type,
+		type = options && (options.type || options.calendar),
 		cons;
 
 	if (!locale) {
@@ -2649,11 +2654,13 @@ ilib.mod = function (dividend, modulus) {
  * 
  * @param {*} object1 the object to merge into
  * @param {*} object2 the object to merge
+ * @param {boolean=} replace if true, replace the array elements in object1 with those in object2.
+ * If false, concatenate array elements in object1 with items in object2.
  * @param {string=} name1 name of the object being merged into
  * @param {string=} name2 name of the object being merged in
  * @return {Object} the merged object
  */
-ilib.merge = function (object1, object2, name1, name2) {
+ilib.merge = function (object1, object2, replace, name1, name2) {
 	var prop = undefined,
 		newObj = {};
 	for (prop in object1) {
@@ -2664,11 +2671,15 @@ ilib.merge = function (object1, object2, name1, name2) {
 	for (prop in object2) {
 		if (prop && typeof(object2[prop]) !== 'undefined') {
 			if (object1[prop] instanceof Array && object2[prop] instanceof Array) {
-				newObj[prop] = new Array();
-				newObj[prop] = newObj[prop].concat(object1[prop]);
-				newObj[prop] = newObj[prop].concat(object2[prop]);
+				if (typeof(replace) !== 'boolean' || !replace) {
+					newObj[prop] = new Array();
+					newObj[prop] = newObj[prop].concat(object1[prop]);
+					newObj[prop] = newObj[prop].concat(object2[prop]);
+				} else {
+					newObj[prop] = object2[prop];
+				}
 			} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
-				newObj[prop] = ilib.merge(object1[prop], object2[prop]);
+				newObj[prop] = ilib.merge(object1[prop], object2[prop], replace);
 			} else {
 				// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
 				if (name1 && name2 && newObj[prop] == object2[prop]) {
@@ -2701,9 +2712,11 @@ ilib.merge = function (object1, object2, name1, name2) {
  *  
  * @param {string} prefix prefix under ilib.data of the data to merge
  * @param {ilib.Locale} locale locale of the data being sought
+ * @param {boolean=} replaceArrays if true, replace the array elements in object1 with those in object2.
+ * If false, concatenate array elements in object1 with items in object2.
  * @return {Object?} the merged locale data
  */
-ilib.mergeLocData = function (prefix, locale) {
+ilib.mergeLocData = function (prefix, locale, replaceArrays) {
 	var data = undefined;
 	var loc = locale || new ilib.Locale();
 	var foundLocaleData = false;
@@ -2714,7 +2727,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		property = prefix + '_' + loc.getLanguage();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
+			data = ilib.merge(data, ilib.data[property], replaceArrays);
 		}
 	}
 	
@@ -2722,7 +2735,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		property = prefix + '_' + loc.getRegion();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
+			data = ilib.merge(data, ilib.data[property], replaceArrays);
 		}
 	}
 	
@@ -2733,7 +2746,7 @@ ilib.mergeLocData = function (prefix, locale) {
 			property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript();
 			if (ilib.data[property]) {
 				foundLocaleData = true;
-				data = ilib.merge(data, ilib.data[property]);
+				data = ilib.merge(data, ilib.data[property], replaceArrays);
 			}
 		}
 		
@@ -2741,7 +2754,7 @@ ilib.mergeLocData = function (prefix, locale) {
 			property = prefix + '_' + loc.getLanguage() + '_' + loc.getRegion();
 			if (ilib.data[property]) {
 				foundLocaleData = true;
-				data = ilib.merge(data, ilib.data[property]);
+				data = ilib.merge(data, ilib.data[property], replaceArrays);
 			}
 		}
 		
@@ -2751,7 +2764,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		property = prefix + '_' + loc.getLanguage() + '_' + loc.getVariant();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
+			data = ilib.merge(data, ilib.data[property], replaceArrays);
 		}
 	}
 
@@ -2759,7 +2772,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript() + '_' + loc.getRegion();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
+			data = ilib.merge(data, ilib.data[property], replaceArrays);
 		}
 	}
 
@@ -2767,7 +2780,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		property = prefix + '_' + loc.getLanguage() + '_' + loc.getRegion() + '_' + loc.getVariant();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
+			data = ilib.merge(data, ilib.data[property], replaceArrays);
 		}
 	}
 
@@ -2775,7 +2788,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript() + '_' + loc.getRegion() + '_' + loc.getVariant();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
+			data = ilib.merge(data, ilib.data[property], replaceArrays);
 		}
 	}
 
@@ -3041,6 +3054,9 @@ ilib._callLoadData = function (files, sync, params, callback) {
  * <li><i>locale</i> - ilib.Locale. The locale for which data is loaded. Default is the current locale.
  * <li><i>nonlocale</i> - boolean. If true, the data being loaded is not locale-specific.
  * <li><i>type</i> - String. Type of file to load. This can be "json" or "other" type. Default: "json" 
+ * <li><i>replace</i> - boolean. When merging json objects, this parameter controls whether to merge arrays
+ * or have arrays replace each other. If true, arrays in child objects replace the arrays in parent 
+ * objects. When false, the arrays in child objects are concatenated with the arrays in parent objects.  
  * <li><i>loadParams</i> - Object. An object with parameters to pass to the loader function
  * <li><i>sync</i> - boolean. Whether or not to load the data synchronously
  * <li><i>callback</i> - function(?)=. callback Call back function to call when the data is available.
@@ -3057,7 +3073,9 @@ ilib.loadData = function(params) {
 		type = undefined,
 		loadParams = {},
 		callback = undefined,
-		nonlocale = false;
+		nonlocale = false,
+		replace = false,
+		basename;
 	
 	if (!params || typeof(params.callback) !== 'function') {
 		return;
@@ -3084,6 +3102,9 @@ ilib.loadData = function(params) {
 	if (params.nonlocale) {
 		nonlocale = !!params.nonlocale;
 	}
+	if (typeof(params.replace) === 'boolean') {
+		replace = params.replace;
+	}
 	
 	callback = params.callback;
 	
@@ -3102,12 +3123,12 @@ ilib.loadData = function(params) {
 		
 		if (type === "json") {
 			// console.log("type is json");
-			var basename = name.substring(0, name.lastIndexOf("."));
+			basename = name.substring(0, name.lastIndexOf("."));
 			if (nonlocale) {
 				basename = name.replace(/\//g, '.').replace(/[\\\+\-]/g, "_");
 				data = ilib.data[basename];
 			} else {
-				data = ilib.mergeLocData(basename, locale);
+				data = ilib.mergeLocData(basename, locale, replace);
 			}
 			if (data) {
 				// console.log("found assembled data");
@@ -3132,7 +3153,7 @@ ilib.loadData = function(params) {
 					data = ilib.data[basename] || {};
 					for (var i = 0; i < arr.length; i++) {
 						if (typeof(arr[i]) !== 'undefined') {
-							data = ilib.merge(data, arr[i]);
+							data = ilib.merge(data, arr[i], replace);
 						}
 					}
 					
@@ -3272,7 +3293,11 @@ ilib.data.plurals_zu = {"one":{"is":["n",1]}};
  */
 ilib.String = function (string) {
 	if (typeof(string) === 'object') {
-		this.str = string.str;
+		if (string instanceof ilib.String) {
+			this.str = string.str;	
+		} else {
+			this.str = string.toString();
+		}
 	} else if (typeof(string) === 'string') {
 		this.str = new String(string);
 	} else {
@@ -5103,6 +5128,7 @@ julianday.js
  */
 ilib.Date.GregRataDie = function(params) {
 	this.cal = params && params.cal || new ilib.Cal.Gregorian();
+	/** @type {number|undefined} */
 	this.rd = undefined;
 	ilib.Date.RataDie.call(this, params);
 };
@@ -5462,6 +5488,7 @@ ilib.data.zoneinfo["Africa/Mogadishu"] = {"f":"EAT","o":"3:0","c":"SO","n":"E. A
 ilib.data.zoneinfo["Europe/Tirane"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"AL","n":"Central Europe {c} Time"};
 ilib.data.zoneinfo["Africa/Maseru"] = {"f":"SAST","o":"2:0","c":"LS","n":"South Africa {c} Time"};
 ilib.data.zoneinfo["Europe/Stockholm"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"SE","n":"W. Europe {c} Time"};
+ilib.data.zoneinfo["Asia/Bangkok"] = {"f":"ICT","o":"7:0","c":"TH","n":"SE Asia {c} Time"};
 ilib.data.zoneinfo["Europe/Istanbul"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"TR","n":"Turkey {c} Time"};
 ilib.data.zoneinfo["Europe/Kiev"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"UA","n":"FLE {c} Time"};
 ilib.data.zoneinfo["Europe/Uzhgorod"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"UA","n":"FLE {c} Time"};
@@ -5470,49 +5497,49 @@ ilib.data.zoneinfo["Asia/Samarkand"] = {"f":"UZT","o":"5:0","c":"UZ","n":"West A
 ilib.data.zoneinfo["Asia/Tashkent"] = {"f":"UZT","o":"5:0","c":"UZ","n":"West Asia {c} Time"};
 ilib.data.zoneinfo["Asia/Ho_Chi_Minh"] = {"f":"ICT","o":"7:0","c":"VN","n":"SE Asia {c} Time"};
 ilib.data.zoneinfo["Asia/Taipei"] = {"f":"CST","o":"8:0","c":"TW","n":"Taipei {c} Time"};
-ilib.data.zoneinfo["Iceland"] = {"f":"GMT","o":"0:0","c":"IS"};
-ilib.data.zoneinfo["MST7MDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Mountain {c} Time"};
-ilib.data.zoneinfo["EST"] = {"f":"EST","o":"-5:0"};
-ilib.data.zoneinfo["PST8PDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Pacific {c} Time"};
-ilib.data.zoneinfo["MST"] = {"f":"MST","o":"-7:0"};
-ilib.data.zoneinfo["zonetab"] = {"AD":["Europe/Andorra"],"AE":["Asia/Dubai"],"AF":["Asia/Kabul"],"AG":["America/Antigua"],"AI":["America/Anguilla"],"AL":["Europe/Tirane"],"AM":["Asia/Yerevan"],"AO":["Africa/Luanda"],"AQ":["Antarctica/McMurdo","Antarctica/Rothera","Antarctica/Palmer","Antarctica/Mawson","Antarctica/Davis","Antarctica/Casey","Antarctica/Vostok","Antarctica/DumontDUrville","Antarctica/Syowa","Antarctica/Troll"],"AR":["America/Argentina/Buenos_Aires","America/Argentina/Cordoba","America/Argentina/Salta","America/Argentina/Jujuy","America/Argentina/Tucuman","America/Argentina/Catamarca","America/Argentina/La_Rioja","America/Argentina/San_Juan","America/Argentina/Mendoza","America/Argentina/San_Luis","America/Argentina/Rio_Gallegos","America/Argentina/Ushuaia"],"AS":["Pacific/Pago_Pago"],"AT":["Europe/Vienna"],"AU":["Australia/Lord_Howe","Antarctica/Macquarie","Australia/Hobart","Australia/Currie","Australia/Melbourne","Australia/Sydney","Australia/Broken_Hill","Australia/Brisbane","Australia/Lindeman","Australia/Adelaide","Australia/Darwin","Australia/Perth","Australia/Eucla"],"AW":["America/Aruba"],"AX":["Europe/Mariehamn"],"AZ":["Asia/Baku"],"BA":["Europe/Sarajevo"],"BB":["America/Barbados"],"BD":["Asia/Dhaka"],"BE":["Europe/Brussels"],"BF":["Africa/Ouagadougou"],"BG":["Europe/Sofia"],"BH":["Asia/Bahrain"],"BI":["Africa/Bujumbura"],"BJ":["Africa/Porto-Novo"],"BL":["America/St_Barthelemy"],"BM":["Atlantic/Bermuda"],"BN":["Asia/Brunei"],"BO":["America/La_Paz"],"BQ":["America/Kralendijk"],"BR":["America/Noronha","America/Belem","America/Fortaleza","America/Recife","America/Araguaina","America/Maceio","America/Bahia","America/Sao_Paulo","America/Campo_Grande","America/Cuiaba","America/Santarem","America/Porto_Velho","America/Boa_Vista","America/Manaus","America/Eirunepe","America/Rio_Branco"],"BS":["America/Nassau"],"BT":["Asia/Thimphu"],"BW":["Africa/Gaborone"],"BY":["Europe/Minsk"],"BZ":["America/Belize"],"CA":["America/St_Johns","America/Halifax","America/Glace_Bay","America/Moncton","America/Goose_Bay","America/Blanc-Sablon","America/Toronto","America/Nipigon","America/Thunder_Bay","America/Iqaluit","America/Pangnirtung","America/Resolute","America/Atikokan","America/Rankin_Inlet","America/Winnipeg","America/Rainy_River","America/Regina","America/Swift_Current","America/Edmonton","America/Cambridge_Bay","America/Yellowknife","America/Inuvik","America/Creston","America/Dawson_Creek","America/Vancouver","America/Whitehorse","America/Dawson","America/Montreal"],"CC":["Indian/Cocos"],"CD":["Africa/Kinshasa","Africa/Lubumbashi"],"CF":["Africa/Bangui"],"CG":["Africa/Brazzaville"],"CH":["Europe/Zurich"],"CI":["Africa/Abidjan"],"CK":["Pacific/Rarotonga"],"CL":["America/Santiago","Pacific/Easter"],"CM":["Africa/Douala"],"CN":["Asia/Shanghai","Asia/Harbin","Asia/Chongqing","Asia/Urumqi","Asia/Kashgar"],"CO":["America/Bogota"],"CR":["America/Costa_Rica"],"CU":["America/Havana"],"CV":["Atlantic/Cape_Verde"],"CW":["America/Curacao"],"CX":["Indian/Christmas"],"CY":["Asia/Nicosia"],"CZ":["Europe/Prague"],"DE":["Europe/Berlin","Europe/Busingen"],"DJ":["Africa/Djibouti"],"DK":["Europe/Copenhagen"],"DM":["America/Dominica"],"DO":["America/Santo_Domingo"],"DZ":["Africa/Algiers"],"EC":["America/Guayaquil","Pacific/Galapagos"],"EE":["Europe/Tallinn"],"EG":["Africa/Cairo"],"EH":["Africa/El_Aaiun"],"ER":["Africa/Asmara"],"ES":["Europe/Madrid","Africa/Ceuta","Atlantic/Canary"],"ET":["Africa/Addis_Ababa"],"FI":["Europe/Helsinki"],"FJ":["Pacific/Fiji"],"FK":["Atlantic/Stanley"],"FM":["Pacific/Chuuk","Pacific/Pohnpei","Pacific/Kosrae"],"FO":["Atlantic/Faroe"],"FR":["Europe/Paris"],"GA":["Africa/Libreville"],"GB":["Europe/London"],"GD":["America/Grenada"],"GE":["Asia/Tbilisi"],"GF":["America/Cayenne"],"GG":["Europe/Guernsey"],"GH":["Africa/Accra"],"GI":["Europe/Gibraltar"],"GL":["America/Godthab","America/Danmarkshavn","America/Scoresbysund","America/Thule"],"GM":["Africa/Banjul"],"GN":["Africa/Conakry"],"GP":["America/Guadeloupe"],"GQ":["Africa/Malabo"],"GR":["Europe/Athens"],"GS":["Atlantic/South_Georgia"],"GT":["America/Guatemala"],"GU":["Pacific/Guam"],"GW":["Africa/Bissau"],"GY":["America/Guyana"],"HK":["Asia/Hong_Kong"],"HN":["America/Tegucigalpa"],"HR":["Europe/Zagreb"],"HT":["America/Port-au-Prince"],"HU":["Europe/Budapest"],"ID":["Asia/Jakarta","Asia/Pontianak","Asia/Makassar","Asia/Jayapura"],"IE":["Europe/Dublin"],"IL":["Asia/Jerusalem"],"IM":["Europe/Isle_of_Man"],"IN":["Asia/Kolkata"],"IO":["Indian/Chagos"],"IQ":["Asia/Baghdad"],"IR":["Asia/Tehran"],"IS":["Atlantic/Reykjavik"],"IT":["Europe/Rome"],"JE":["Europe/Jersey"],"JM":["America/Jamaica"],"JO":["Asia/Amman"],"JP":["Asia/Tokyo"],"KE":["Africa/Nairobi"],"KG":["Asia/Bishkek"],"KH":["Asia/Phnom_Penh"],"KI":["Pacific/Tarawa","Pacific/Enderbury","Pacific/Kiritimati"],"KM":["Indian/Comoro"],"KN":["America/St_Kitts"],"KP":["Asia/Pyongyang"],"KR":["Asia/Seoul"],"KW":["Asia/Kuwait"],"KY":["America/Cayman"],"KZ":["Asia/Almaty","Asia/Qyzylorda","Asia/Aqtobe","Asia/Aqtau","Asia/Oral"],"LA":["Asia/Vientiane"],"LB":["Asia/Beirut"],"LC":["America/St_Lucia"],"LI":["Europe/Vaduz"],"LK":["Asia/Colombo"],"LR":["Africa/Monrovia"],"LS":["Africa/Maseru"],"LT":["Europe/Vilnius"],"LU":["Europe/Luxembourg"],"LV":["Europe/Riga"],"LY":["Africa/Tripoli"],"MA":["Africa/Casablanca"],"MC":["Europe/Monaco"],"MD":["Europe/Chisinau"],"ME":["Europe/Podgorica"],"MF":["America/Marigot"],"MG":["Indian/Antananarivo"],"MH":["Pacific/Majuro","Pacific/Kwajalein"],"MK":["Europe/Skopje"],"ML":["Africa/Bamako"],"MM":["Asia/Rangoon"],"MN":["Asia/Ulaanbaatar","Asia/Hovd","Asia/Choibalsan"],"MO":["Asia/Macau"],"MP":["Pacific/Saipan"],"MQ":["America/Martinique"],"MR":["Africa/Nouakchott"],"MS":["America/Montserrat"],"MT":["Europe/Malta"],"MU":["Indian/Mauritius"],"MV":["Indian/Maldives"],"MW":["Africa/Blantyre"],"MX":["America/Mexico_City","America/Cancun","America/Merida","America/Monterrey","America/Matamoros","America/Mazatlan","America/Chihuahua","America/Ojinaga","America/Hermosillo","America/Tijuana","America/Santa_Isabel","America/Bahia_Banderas"],"MY":["Asia/Kuala_Lumpur","Asia/Kuching"],"MZ":["Africa/Maputo"],"NA":["Africa/Windhoek"],"NC":["Pacific/Noumea"],"NE":["Africa/Niamey"],"NF":["Pacific/Norfolk"],"NG":["Africa/Lagos"],"NI":["America/Managua"],"NL":["Europe/Amsterdam"],"NO":["Europe/Oslo"],"NP":["Asia/Kathmandu"],"NR":["Pacific/Nauru"],"NU":["Pacific/Niue"],"NZ":["Pacific/Auckland","Pacific/Chatham"],"OM":["Asia/Muscat"],"PA":["America/Panama"],"PE":["America/Lima"],"PF":["Pacific/Tahiti","Pacific/Marquesas","Pacific/Gambier"],"PG":["Pacific/Port_Moresby"],"PH":["Asia/Manila"],"PK":["Asia/Karachi"],"PL":["Europe/Warsaw"],"PM":["America/Miquelon"],"PN":["Pacific/Pitcairn"],"PR":["America/Puerto_Rico"],"PS":["Asia/Gaza","Asia/Hebron"],"PT":["Europe/Lisbon","Atlantic/Madeira","Atlantic/Azores"],"PW":["Pacific/Palau"],"PY":["America/Asuncion"],"QA":["Asia/Qatar"],"RE":["Indian/Reunion"],"RO":["Europe/Bucharest"],"RS":["Europe/Belgrade"],"RU":["Europe/Kaliningrad","Europe/Moscow","Europe/Volgograd","Europe/Samara","Europe/Simferopol","Asia/Yekaterinburg","Asia/Omsk","Asia/Novosibirsk","Asia/Novokuznetsk","Asia/Krasnoyarsk","Asia/Irkutsk","Asia/Yakutsk","Asia/Khandyga","Asia/Vladivostok","Asia/Sakhalin","Asia/Ust-Nera","Asia/Magadan","Asia/Kamchatka","Asia/Anadyr"],"RW":["Africa/Kigali"],"SA":["Asia/Riyadh"],"SB":["Pacific/Guadalcanal"],"SC":["Indian/Mahe"],"SD":["Africa/Khartoum"],"SE":["Europe/Stockholm"],"SG":["Asia/Singapore"],"SH":["Atlantic/St_Helena"],"SI":["Europe/Ljubljana"],"SJ":["Arctic/Longyearbyen"],"SK":["Europe/Bratislava"],"SL":["Africa/Freetown"],"SM":["Europe/San_Marino"],"SN":["Africa/Dakar"],"SO":["Africa/Mogadishu"],"SR":["America/Paramaribo"],"SS":["Africa/Juba"],"ST":["Africa/Sao_Tome"],"SV":["America/El_Salvador"],"SX":["America/Lower_Princes"],"SY":["Asia/Damascus"],"SZ":["Africa/Mbabane"],"TC":["America/Grand_Turk"],"TD":["Africa/Ndjamena"],"TF":["Indian/Kerguelen"],"TG":["Africa/Lome"],"TH":["Asia/Bangkok"],"TJ":["Asia/Dushanbe"],"TK":["Pacific/Fakaofo"],"TL":["Asia/Dili"],"TM":["Asia/Ashgabat"],"TN":["Africa/Tunis"],"TO":["Pacific/Tongatapu"],"TR":["Europe/Istanbul"],"TT":["America/Port_of_Spain"],"TV":["Pacific/Funafuti"],"TW":["Asia/Taipei"],"TZ":["Africa/Dar_es_Salaam"],"UA":["Europe/Kiev","Europe/Uzhgorod","Europe/Zaporozhye"],"UG":["Africa/Kampala"],"UM":["Pacific/Johnston","Pacific/Midway","Pacific/Wake"],"US":["America/New_York","America/Detroit","America/Kentucky/Louisville","America/Kentucky/Monticello","America/Indiana/Indianapolis","America/Indiana/Vincennes","America/Indiana/Winamac","America/Indiana/Marengo","America/Indiana/Petersburg","America/Indiana/Vevay","America/Chicago","America/Indiana/Tell_City","America/Indiana/Knox","America/Menominee","America/North_Dakota/Center","America/North_Dakota/New_Salem","America/North_Dakota/Beulah","America/Denver","America/Boise","America/Phoenix","America/Los_Angeles","America/Anchorage","America/Juneau","America/Sitka","America/Yakutat","America/Nome","America/Adak","America/Metlakatla","Pacific/Honolulu"],"UY":["America/Montevideo"],"UZ":["Asia/Samarkand","Asia/Tashkent"],"VA":["Europe/Vatican"],"VC":["America/St_Vincent"],"VE":["America/Caracas"],"VG":["America/Tortola"],"VI":["America/St_Thomas"],"VN":["Asia/Ho_Chi_Minh"],"VU":["Pacific/Efate"],"WF":["Pacific/Wallis"],"WS":["Pacific/Apia"],"YE":["Asia/Aden"],"YT":["Indian/Mayotte"],"ZA":["Africa/Johannesburg"],"ZM":["Africa/Lusaka"],"ZW":["Africa/Harare"]};
-ilib.data.zoneinfo["EST5EDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"};
-ilib.data.zoneinfo["CET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
-ilib.data.zoneinfo["CST6CDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Central {c} Time"};
-ilib.data.zoneinfo["WET"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"}};
-ilib.data.zoneinfo["Factory"] = {"f":"\"Local","o":"0:0"};
 ilib.data.zoneinfo["MET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"ME{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
 ilib.data.zoneinfo["EET"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"}};
 ilib.data.zoneinfo["HST"] = {"f":"HST","o":"-10:0"};
-ilib.data.zoneinfo["Etc/GMT+2"] = {"f":"GMT+2","o":"-2:0","n":"UTC-02"};
-ilib.data.zoneinfo["Etc/GMT"] = {"f":"GMT","o":"0:0","n":"UTC"};
+ilib.data.zoneinfo["MST7MDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Mountain {c} Time"};
+ilib.data.zoneinfo["zonetab"] = {"AD":["Europe/Andorra"],"AE":["Asia/Dubai"],"AF":["Asia/Kabul"],"AG":["America/Antigua"],"AI":["America/Anguilla"],"AL":["Europe/Tirane"],"AM":["Asia/Yerevan"],"AO":["Africa/Luanda"],"AQ":["Antarctica/McMurdo","Antarctica/Rothera","Antarctica/Palmer","Antarctica/Mawson","Antarctica/Davis","Antarctica/Casey","Antarctica/Vostok","Antarctica/DumontDUrville","Antarctica/Syowa","Antarctica/Troll"],"AR":["America/Argentina/Buenos_Aires","America/Argentina/Cordoba","America/Argentina/Salta","America/Argentina/Jujuy","America/Argentina/Tucuman","America/Argentina/Catamarca","America/Argentina/La_Rioja","America/Argentina/San_Juan","America/Argentina/Mendoza","America/Argentina/San_Luis","America/Argentina/Rio_Gallegos","America/Argentina/Ushuaia"],"AS":["Pacific/Pago_Pago"],"AT":["Europe/Vienna"],"AU":["Australia/Lord_Howe","Antarctica/Macquarie","Australia/Hobart","Australia/Currie","Australia/Melbourne","Australia/Sydney","Australia/Broken_Hill","Australia/Brisbane","Australia/Lindeman","Australia/Adelaide","Australia/Darwin","Australia/Perth","Australia/Eucla"],"AW":["America/Aruba"],"AX":["Europe/Mariehamn"],"AZ":["Asia/Baku"],"BA":["Europe/Sarajevo"],"BB":["America/Barbados"],"BD":["Asia/Dhaka"],"BE":["Europe/Brussels"],"BF":["Africa/Ouagadougou"],"BG":["Europe/Sofia"],"BH":["Asia/Bahrain"],"BI":["Africa/Bujumbura"],"BJ":["Africa/Porto-Novo"],"BL":["America/St_Barthelemy"],"BM":["Atlantic/Bermuda"],"BN":["Asia/Brunei"],"BO":["America/La_Paz"],"BQ":["America/Kralendijk"],"BR":["America/Noronha","America/Belem","America/Fortaleza","America/Recife","America/Araguaina","America/Maceio","America/Bahia","America/Sao_Paulo","America/Campo_Grande","America/Cuiaba","America/Santarem","America/Porto_Velho","America/Boa_Vista","America/Manaus","America/Eirunepe","America/Rio_Branco"],"BS":["America/Nassau"],"BT":["Asia/Thimphu"],"BW":["Africa/Gaborone"],"BY":["Europe/Minsk"],"BZ":["America/Belize"],"CA":["America/St_Johns","America/Halifax","America/Glace_Bay","America/Moncton","America/Goose_Bay","America/Blanc-Sablon","America/Toronto","America/Nipigon","America/Thunder_Bay","America/Iqaluit","America/Pangnirtung","America/Resolute","America/Atikokan","America/Rankin_Inlet","America/Winnipeg","America/Rainy_River","America/Regina","America/Swift_Current","America/Edmonton","America/Cambridge_Bay","America/Yellowknife","America/Inuvik","America/Creston","America/Dawson_Creek","America/Vancouver","America/Whitehorse","America/Dawson","America/Montreal"],"CC":["Indian/Cocos"],"CD":["Africa/Kinshasa","Africa/Lubumbashi"],"CF":["Africa/Bangui"],"CG":["Africa/Brazzaville"],"CH":["Europe/Zurich"],"CI":["Africa/Abidjan"],"CK":["Pacific/Rarotonga"],"CL":["America/Santiago","Pacific/Easter"],"CM":["Africa/Douala"],"CN":["Asia/Shanghai","Asia/Harbin","Asia/Chongqing","Asia/Urumqi","Asia/Kashgar"],"CO":["America/Bogota"],"CR":["America/Costa_Rica"],"CU":["America/Havana"],"CV":["Atlantic/Cape_Verde"],"CW":["America/Curacao"],"CX":["Indian/Christmas"],"CY":["Asia/Nicosia"],"CZ":["Europe/Prague"],"DE":["Europe/Berlin","Europe/Busingen"],"DJ":["Africa/Djibouti"],"DK":["Europe/Copenhagen"],"DM":["America/Dominica"],"DO":["America/Santo_Domingo"],"DZ":["Africa/Algiers"],"EC":["America/Guayaquil","Pacific/Galapagos"],"EE":["Europe/Tallinn"],"EG":["Africa/Cairo"],"EH":["Africa/El_Aaiun"],"ER":["Africa/Asmara"],"ES":["Europe/Madrid","Africa/Ceuta","Atlantic/Canary"],"ET":["Africa/Addis_Ababa"],"FI":["Europe/Helsinki"],"FJ":["Pacific/Fiji"],"FK":["Atlantic/Stanley"],"FM":["Pacific/Chuuk","Pacific/Pohnpei","Pacific/Kosrae"],"FO":["Atlantic/Faroe"],"FR":["Europe/Paris"],"GA":["Africa/Libreville"],"GB":["Europe/London"],"GD":["America/Grenada"],"GE":["Asia/Tbilisi"],"GF":["America/Cayenne"],"GG":["Europe/Guernsey"],"GH":["Africa/Accra"],"GI":["Europe/Gibraltar"],"GL":["America/Godthab","America/Danmarkshavn","America/Scoresbysund","America/Thule"],"GM":["Africa/Banjul"],"GN":["Africa/Conakry"],"GP":["America/Guadeloupe"],"GQ":["Africa/Malabo"],"GR":["Europe/Athens"],"GS":["Atlantic/South_Georgia"],"GT":["America/Guatemala"],"GU":["Pacific/Guam"],"GW":["Africa/Bissau"],"GY":["America/Guyana"],"HK":["Asia/Hong_Kong"],"HN":["America/Tegucigalpa"],"HR":["Europe/Zagreb"],"HT":["America/Port-au-Prince"],"HU":["Europe/Budapest"],"ID":["Asia/Jakarta","Asia/Pontianak","Asia/Makassar","Asia/Jayapura"],"IE":["Europe/Dublin"],"IL":["Asia/Jerusalem"],"IM":["Europe/Isle_of_Man"],"IN":["Asia/Kolkata"],"IO":["Indian/Chagos"],"IQ":["Asia/Baghdad"],"IR":["Asia/Tehran"],"IS":["Atlantic/Reykjavik"],"IT":["Europe/Rome"],"JE":["Europe/Jersey"],"JM":["America/Jamaica"],"JO":["Asia/Amman"],"JP":["Asia/Tokyo"],"KE":["Africa/Nairobi"],"KG":["Asia/Bishkek"],"KH":["Asia/Phnom_Penh"],"KI":["Pacific/Tarawa","Pacific/Enderbury","Pacific/Kiritimati"],"KM":["Indian/Comoro"],"KN":["America/St_Kitts"],"KP":["Asia/Pyongyang"],"KR":["Asia/Seoul"],"KW":["Asia/Kuwait"],"KY":["America/Cayman"],"KZ":["Asia/Almaty","Asia/Qyzylorda","Asia/Aqtobe","Asia/Aqtau","Asia/Oral"],"LA":["Asia/Vientiane"],"LB":["Asia/Beirut"],"LC":["America/St_Lucia"],"LI":["Europe/Vaduz"],"LK":["Asia/Colombo"],"LR":["Africa/Monrovia"],"LS":["Africa/Maseru"],"LT":["Europe/Vilnius"],"LU":["Europe/Luxembourg"],"LV":["Europe/Riga"],"LY":["Africa/Tripoli"],"MA":["Africa/Casablanca"],"MC":["Europe/Monaco"],"MD":["Europe/Chisinau"],"ME":["Europe/Podgorica"],"MF":["America/Marigot"],"MG":["Indian/Antananarivo"],"MH":["Pacific/Majuro","Pacific/Kwajalein"],"MK":["Europe/Skopje"],"ML":["Africa/Bamako"],"MM":["Asia/Rangoon"],"MN":["Asia/Ulaanbaatar","Asia/Hovd","Asia/Choibalsan"],"MO":["Asia/Macau"],"MP":["Pacific/Saipan"],"MQ":["America/Martinique"],"MR":["Africa/Nouakchott"],"MS":["America/Montserrat"],"MT":["Europe/Malta"],"MU":["Indian/Mauritius"],"MV":["Indian/Maldives"],"MW":["Africa/Blantyre"],"MX":["America/Mexico_City","America/Cancun","America/Merida","America/Monterrey","America/Matamoros","America/Mazatlan","America/Chihuahua","America/Ojinaga","America/Hermosillo","America/Tijuana","America/Santa_Isabel","America/Bahia_Banderas"],"MY":["Asia/Kuala_Lumpur","Asia/Kuching"],"MZ":["Africa/Maputo"],"NA":["Africa/Windhoek"],"NC":["Pacific/Noumea"],"NE":["Africa/Niamey"],"NF":["Pacific/Norfolk"],"NG":["Africa/Lagos"],"NI":["America/Managua"],"NL":["Europe/Amsterdam"],"NO":["Europe/Oslo"],"NP":["Asia/Kathmandu"],"NR":["Pacific/Nauru"],"NU":["Pacific/Niue"],"NZ":["Pacific/Auckland","Pacific/Chatham"],"OM":["Asia/Muscat"],"PA":["America/Panama"],"PE":["America/Lima"],"PF":["Pacific/Tahiti","Pacific/Marquesas","Pacific/Gambier"],"PG":["Pacific/Port_Moresby"],"PH":["Asia/Manila"],"PK":["Asia/Karachi"],"PL":["Europe/Warsaw"],"PM":["America/Miquelon"],"PN":["Pacific/Pitcairn"],"PR":["America/Puerto_Rico"],"PS":["Asia/Gaza","Asia/Hebron"],"PT":["Europe/Lisbon","Atlantic/Madeira","Atlantic/Azores"],"PW":["Pacific/Palau"],"PY":["America/Asuncion"],"QA":["Asia/Qatar"],"RE":["Indian/Reunion"],"RO":["Europe/Bucharest"],"RS":["Europe/Belgrade"],"RU":["Europe/Kaliningrad","Europe/Moscow","Europe/Volgograd","Europe/Samara","Europe/Simferopol","Asia/Yekaterinburg","Asia/Omsk","Asia/Novosibirsk","Asia/Novokuznetsk","Asia/Krasnoyarsk","Asia/Irkutsk","Asia/Yakutsk","Asia/Khandyga","Asia/Vladivostok","Asia/Sakhalin","Asia/Ust-Nera","Asia/Magadan","Asia/Kamchatka","Asia/Anadyr"],"RW":["Africa/Kigali"],"SA":["Asia/Riyadh"],"SB":["Pacific/Guadalcanal"],"SC":["Indian/Mahe"],"SD":["Africa/Khartoum"],"SE":["Europe/Stockholm"],"SG":["Asia/Singapore"],"SH":["Atlantic/St_Helena"],"SI":["Europe/Ljubljana"],"SJ":["Arctic/Longyearbyen"],"SK":["Europe/Bratislava"],"SL":["Africa/Freetown"],"SM":["Europe/San_Marino"],"SN":["Africa/Dakar"],"SO":["Africa/Mogadishu"],"SR":["America/Paramaribo"],"SS":["Africa/Juba"],"ST":["Africa/Sao_Tome"],"SV":["America/El_Salvador"],"SX":["America/Lower_Princes"],"SY":["Asia/Damascus"],"SZ":["Africa/Mbabane"],"TC":["America/Grand_Turk"],"TD":["Africa/Ndjamena"],"TF":["Indian/Kerguelen"],"TG":["Africa/Lome"],"TH":["Asia/Bangkok"],"TJ":["Asia/Dushanbe"],"TK":["Pacific/Fakaofo"],"TL":["Asia/Dili"],"TM":["Asia/Ashgabat"],"TN":["Africa/Tunis"],"TO":["Pacific/Tongatapu"],"TR":["Europe/Istanbul"],"TT":["America/Port_of_Spain"],"TV":["Pacific/Funafuti"],"TW":["Asia/Taipei"],"TZ":["Africa/Dar_es_Salaam"],"UA":["Europe/Kiev","Europe/Uzhgorod","Europe/Zaporozhye"],"UG":["Africa/Kampala"],"UM":["Pacific/Johnston","Pacific/Midway","Pacific/Wake"],"US":["America/New_York","America/Detroit","America/Kentucky/Louisville","America/Kentucky/Monticello","America/Indiana/Indianapolis","America/Indiana/Vincennes","America/Indiana/Winamac","America/Indiana/Marengo","America/Indiana/Petersburg","America/Indiana/Vevay","America/Chicago","America/Indiana/Tell_City","America/Indiana/Knox","America/Menominee","America/North_Dakota/Center","America/North_Dakota/New_Salem","America/North_Dakota/Beulah","America/Denver","America/Boise","America/Phoenix","America/Los_Angeles","America/Anchorage","America/Juneau","America/Sitka","America/Yakutat","America/Nome","America/Adak","America/Metlakatla","Pacific/Honolulu"],"UY":["America/Montevideo"],"UZ":["Asia/Samarkand","Asia/Tashkent"],"VA":["Europe/Vatican"],"VC":["America/St_Vincent"],"VE":["America/Caracas"],"VG":["America/Tortola"],"VI":["America/St_Thomas"],"VN":["Asia/Ho_Chi_Minh"],"VU":["Pacific/Efate"],"WF":["Pacific/Wallis"],"WS":["Pacific/Apia"],"YE":["Asia/Aden"],"YT":["Indian/Mayotte"],"ZA":["Africa/Johannesburg"],"ZM":["Africa/Lusaka"],"ZW":["Africa/Harare"]};
+ilib.data.zoneinfo["EST"] = {"f":"EST","o":"-5:0"};
+ilib.data.zoneinfo["Factory"] = {"f":"\"Local","o":"0:0"};
+ilib.data.zoneinfo["CST6CDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Central {c} Time"};
+ilib.data.zoneinfo["CET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
+ilib.data.zoneinfo["Iceland"] = {"f":"GMT","o":"0:0","c":"IS"};
+ilib.data.zoneinfo["MST"] = {"f":"MST","o":"-7:0"};
+ilib.data.zoneinfo["EST5EDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"};
+ilib.data.zoneinfo["WET"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"}};
+ilib.data.zoneinfo["PST8PDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Pacific {c} Time"};
 ilib.data.zoneinfo["Etc/GMT-7"] = {"f":"GMT-7","o":"7:0","n":"SE Asia {c} Time"};
-ilib.data.zoneinfo["Etc/UCT"] = {"f":"UCT","o":"0:0"};
-ilib.data.zoneinfo["Etc/GMT-3"] = {"f":"GMT-3","o":"3:0","n":"E. Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-13"] = {"f":"GMT-13","o":"13:0","n":"Tonga {c} Time"};
 ilib.data.zoneinfo["Etc/GMT+5"] = {"f":"GMT+5","o":"-5:0","n":"SA Pacific {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-2"] = {"f":"GMT-2","o":"2:0","n":"South Africa {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-1"] = {"f":"GMT-1","o":"1:0","n":"W. Central Africa {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+11"] = {"f":"GMT+11","o":"-11:0","n":"UTC-11"};
-ilib.data.zoneinfo["Etc/GMT-9"] = {"f":"GMT-9","o":"9:0","n":"Tokyo {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-11"] = {"f":"GMT-11","o":"11:0","n":"Central Pacific {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+6"] = {"f":"GMT+6","o":"-6:0","n":"Central America {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+12"] = {"f":"GMT+12","o":"-12:0","n":"Dateline {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-6"] = {"f":"GMT-6","o":"6:0","n":"Central Asia {c} Time"};
 ilib.data.zoneinfo["Etc/GMT+1"] = {"f":"GMT+1","o":"-1:0","n":"Cape Verde {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-8"] = {"f":"GMT-8","o":"8:0","n":"Singapore {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+9"] = {"f":"GMT+9","o":"-9:0"};
+ilib.data.zoneinfo["Etc/GMT+11"] = {"f":"GMT+11","o":"-11:0","n":"UTC-11"};
+ilib.data.zoneinfo["Etc/GMT-11"] = {"f":"GMT-11","o":"11:0","n":"Central Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-2"] = {"f":"GMT-2","o":"2:0","n":"South Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-9"] = {"f":"GMT-9","o":"9:0","n":"Tokyo {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-6"] = {"f":"GMT-6","o":"6:0","n":"Central Asia {c} Time"};
+ilib.data.zoneinfo["Etc/GMT"] = {"f":"GMT","o":"0:0","n":"UTC"};
+ilib.data.zoneinfo["Etc/GMT-12"] = {"f":"GMT-12","o":"12:0","n":"UTC+12"};
+ilib.data.zoneinfo["Etc/GMT+4"] = {"f":"GMT+4","o":"-4:0","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-4"] = {"f":"GMT-4","o":"4:0","n":"Arabian {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+12"] = {"f":"GMT+12","o":"-12:0","n":"Dateline {c} Time"};
+ilib.data.zoneinfo["Etc/UCT"] = {"f":"UCT","o":"0:0"};
+ilib.data.zoneinfo["Etc/GMT+6"] = {"f":"GMT+6","o":"-6:0","n":"Central America {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+8"] = {"f":"GMT+8","o":"-8:0"};
+ilib.data.zoneinfo["Etc/GMT-10"] = {"f":"GMT-10","o":"10:0","n":"West Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+3"] = {"f":"GMT+3","o":"-3:0","n":"SA Eastern {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+2"] = {"f":"GMT+2","o":"-2:0","n":"UTC-02"};
 ilib.data.zoneinfo["Etc/GMT-5"] = {"f":"GMT-5","o":"5:0","n":"West Asia {c} Time"};
 ilib.data.zoneinfo["Etc/UTC"] = {"f":"UTC","o":"0:0"};
+ilib.data.zoneinfo["Etc/GMT-3"] = {"f":"GMT-3","o":"3:0","n":"E. Africa {c} Time"};
 ilib.data.zoneinfo["Etc/GMT-14"] = {"f":"GMT-14","o":"14:0"};
-ilib.data.zoneinfo["Etc/GMT-4"] = {"f":"GMT-4","o":"4:0","n":"Arabian {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+9"] = {"f":"GMT+9","o":"-9:0"};
-ilib.data.zoneinfo["Etc/GMT-12"] = {"f":"GMT-12","o":"12:0","n":"UTC+12"};
-ilib.data.zoneinfo["Etc/GMT+3"] = {"f":"GMT+3","o":"-3:0","n":"SA Eastern {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-10"] = {"f":"GMT-10","o":"10:0","n":"West Pacific {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+8"] = {"f":"GMT+8","o":"-8:0"};
+ilib.data.zoneinfo["Etc/GMT-1"] = {"f":"GMT-1","o":"1:0","n":"W. Central Africa {c} Time"};
 ilib.data.zoneinfo["Etc/GMT+7"] = {"f":"GMT+7","o":"-7:0","n":"US Mountain {c} Time"};
 ilib.data.zoneinfo["Etc/GMT+10"] = {"f":"GMT+10","o":"-10:0","n":"Hawaiian {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+4"] = {"f":"GMT+4","o":"-4:0","n":"SA Western {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-13"] = {"f":"GMT-13","o":"13:0","n":"Tonga {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-8"] = {"f":"GMT-8","o":"8:0","n":"Singapore {c} Time"};
 /*
  * timezone.js - Definition of a time zone class
  * 
@@ -6300,7 +6327,7 @@ ilib.TimeZone.prototype.inDaylightTime = function (date, wallTime) {
 	}
 	
 	// this should be a Gregorian RD number now, in UTC
-	rd = date.getRataDie();
+	rd = date.rd.getRataDie();
 	
 	// these calculate the start/end in local wall time
 	var startrule = this._getDSTStartRule(date.year);
@@ -7076,7 +7103,33 @@ ilib.indexOf = function(array, obj) {
 	    return -1;
 	}
 };
-ilib.data.dateformats = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"EE d/M/yy","m":"EEE d/MM/yyyy","l":"EEE d MMM yyyy","f":"EEEE d MMMM yyyy"},"dmy":{"s":"d/M/yy","m":"d/MM/yyyy","l":"d MMM yyyy","f":"d MMMM yyyy"},"dmw":{"s":"EE d/M","m":"EE d/MM","l":"EEE d MMM","f":"EEEE d MMMM"},"dm":{"s":"d/M","m":"d/MM","l":"d MMM","f":"d MMMM"},"my":{"s":"M/yy","m":"MM/yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"dw":{"s":"EE d","m":"EE d","l":"EEE d","f":"EEEE d"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"},"w":{"s":"E","m":"EE","l":"EEE","f":"EEEE"}},"time":{"12":{"ahmsz":"h:mm:ssa z","ahms":"h:mm:ssa","hmsz":"h:mm:ss z","hms":"h:mm:ss","ahmz":"h:mma z","ahm":"h:mma","hmz":"h:mm z","ah":"ha","hm":"h:mm","ms":"mm:ss","h":"h","m":"mm","s":"ss"},"24":{"ahmsz":"H:mm:ss z","ahms":"H:mm:ss","hmsz":"H:mm:ss z","hms":"H:mm:ss","ahmz":"H:mm z","ahm":"H:mm","hmz":"H:mm z","ah":"H","hm":"H:mm","ms":"mm:ss","h":"H","m":"mm","s":"ss"}},"range":{"c00":{"s":"{st} - {et} {sd}/{sm}/{sy}","m":"{st} - {et}, {sd}/{sm}/{sy}","l":"{st} - {et}, {sd} {sm} {sy}","f":"{st} - {et}, {sd} {sm} {sy}"},"c01":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} - {ed}/{em} {et}, {sy}","l":"{sd} {st} - {ed} {et}, {sm} {sy}","f":"{sd} {st} - {ed} {et}, {sm} {sy}"},"c02":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} - {ed}/{em} {et}, {sy}","l":"{sd} {sm} {st} - {ed} {em} {et}, {sy}","f":"{sd} {sm} {st} - {ed} {em} {et}, {sy}"},"c03":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c10":{"s":"{sd}-{ed}/{sm}/{sy}","m":"{sd}-{ed}/{sm}/{sy}","l":"{sd}-{ed} {sm} {sy}","f":"{sd}-{ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm}-{ed}/{em} {sy}","m":"{sd}/{sm} - {ed}/{em} {sy}","l":"{sd} {sm} - {ed} {em} {sy}","f":"{sd} {sm} - {ed} {em} {sy}"},"c12":{"s":"{sd}/{sm}/{sy}-{ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy}-{em}/{ey}","m":"{sm}/{sy} - {em}/{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}},"islamic":"gregorian","hebrew":"gregorian","julian":"gregorian","thaisolar":"gregorian","persian":"gregorian","persian-astro":"gregorian"};
+
+/**
+ * @static
+ * Convert a string into the hexadecimal representation
+ * of the Unicode characters in that string.
+ * 
+ * @param {string} string The string to convert
+ * @param {number=} limit the number of digits to use to represent the character (1 to 8)
+ * @return {string} a hexadecimal representation of the
+ * Unicode characters in the input string
+ */
+ilib.toHexString = function(string, limit) {
+	var i, 
+		result = "", 
+		lim = (limit && limit < 9) ? limit : 4;
+	
+	if (!string) {
+		return "";
+	}
+	for (i = 0; i < string.length; i++) {
+		var ch = string.charCodeAt(i).toString(16);
+		result += "00000000".substring(0, lim-ch.length) + ch;
+	}
+	return result.toUpperCase();
+};
+
+ilib.data.dateformats = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"EE d/M/yy","m":"EEE d/MM/yyyy","l":"EEE d MMM yyyy","f":"EEEE d MMMM yyyy"},"dmy":{"s":"d/M/yy","m":"d/MM/yyyy","l":"d MMM yyyy","f":"d MMMM yyyy"},"dmw":{"s":"EE d/M","m":"EE d/MM","l":"EEE d MMM","f":"EEEE d MMMM"},"dm":{"s":"d/M","m":"d/MM","l":"d MMM","f":"d MMMM"},"my":{"s":"M/yy","m":"MM/yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"dw":{"s":"EE d","m":"EE d","l":"EEE d","f":"EEEE d"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"},"w":{"s":"E","m":"EE","l":"EEE","f":"EEEE"}},"time":{"12":{"ahmsz":"h:mm:ssa z","ahms":"h:mm:ssa","hmsz":"h:mm:ss z","hms":"h:mm:ss","ahmz":"h:mma z","ahm":"h:mma","hmz":"h:mm z","ah":"ha","hm":"h:mm","ms":"mm:ss","h":"h","m":"mm","s":"ss"},"24":{"ahmsz":"H:mm:ss z","ahms":"H:mm:ss","hmsz":"H:mm:ss z","hms":"H:mm:ss","ahmz":"H:mm z","ahm":"H:mm","hmz":"H:mm z","ah":"H","hm":"H:mm","ms":"mm:ss","h":"H","m":"mm","s":"ss"}},"range":{"c00":{"s":"{st} - {et} {sd}/{sm}/{sy}","m":"{st} - {et}, {sd}/{sm}/{sy}","l":"{st} - {et}, {sd} {sm} {sy}","f":"{st} - {et}, {sd} {sm} {sy}"},"c01":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} - {ed}/{em} {et}, {sy}","l":"{sd} {st} - {ed} {et}, {sm} {sy}","f":"{sd} {st} - {ed} {et}, {sm} {sy}"},"c02":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} - {ed}/{em} {et}, {sy}","l":"{sd} {sm} {st} - {ed} {em} {et}, {sy}","f":"{sd} {sm} {st} - {ed} {em} {et}, {sy}"},"c03":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c10":{"s":"{sd}-{ed}/{sm}/{sy}","m":"{sd}-{ed}/{sm}/{sy}","l":"{sd}-{ed} {sm} {sy}","f":"{sd}-{ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm}-{ed}/{em} {sy}","m":"{sd}/{sm} - {ed}/{em} {sy}","l":"{sd} {sm} - {ed} {em} {sy}","f":"{sd} {sm} - {ed} {em} {sy}"},"c12":{"s":"{sd}/{sm}/{sy}-{ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy}-{em}/{ey}","m":"{sm}/{sy} - {em}/{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}},"islamic":"gregorian","hebrew":"gregorian","julian":"gregorian","thaisolar":"gregorian","persian":"gregorian","persian-algo":"gregorian"};
 ilib.data.dateformats_aa = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sy} {sm} {sd}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_af = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"dd MMM","l":"MMM d","f":"MMMM d"},"dmy":{"s":"M/d/yy","m":"dd MMM yy","f":"dd MMMM yyyy"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sm}/{sd}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sm} {sd} – {et} {em} {ed} {ey}","f":"{st} {sm} {sd} – {et} {em} {ed} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}"},"c10":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}"},"c11":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} – {em} {ed} {ey}","f":"{sm} {sd} – {em} {ed} {ey}"},"c12":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_agq = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"d MMM"},"dmy":{"m":"d MMM, yy"},"my":{"m":"MMM, yy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E d/M/yy","m":"EE d/M/yy","f":"EEEE d MMM yyyy"},"dmw":{"s":"E d/M","m":"EE d/M","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm}, {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
@@ -7109,14 +7162,14 @@ ilib.data.dateformats_en_ZA = {"gregorian":{"order":"{date} {time}","date":{"dmw
 ilib.data.dateformats_es = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"EE dd/MM/yy","m":"EEE dd/MM/yyyy","l":"EEE dd 'de' MMM yyyy","f":"EEEE dd 'de' MMMM yyyy"},"dmy":{"s":"dd/MM/yy","m":"dd/MM/yyyy","l":"dd 'de' MMM yyyy","f":"dd 'de' MMMM yyyy"},"dmw":{"s":"EE dd/MM","m":"EE dd/MM","l":"EEE dd 'de' MMM","f":"EEEE dd 'de' MMMM"},"dm":{"s":"dd/MM","m":"dd/MM","l":"dd 'de' MMM","f":"dd 'de' MMMM"},"my":{"s":"MM/yy","m":"MM/yyyy","l":"MMM yy","f":"MMMM yyyy"},"dw":{"s":"EE dd","m":"EEE dd","l":"EEE dd","f":"EEEE dd"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yy","l":"yyyy","f":"yyyy G"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"hh:mm:ssa z","ahms":"hh:mm:ssa","hmsz":"hh:mm:ss z","hms":"hh:mm:ss","ahmz":"hh:mma z","ahm":"hh:mma","hmz":"hh:mm z","ah":"hha","hm":"hh:mm","h":"hh"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","h":"HH"}}}};
 ilib.data.dateformats_es_AR = {"gregorian":{"time":{"12":{"ahmsz":"hh'h'mm:ss a Z","ahms":"hh'h'mm:ss a","hmsz":"hh'h'mm:ss Z","ahmz":"hh'h'mm a Z","hms":"hh'h'mm:ss","ahm":"hh'h'mm a","hmz":"hh'h'mm Z","ah":"hh a","hm":"hh'h'mm"},"24":{"ahmsz":"HH'h'mm:ss Z","ahms":"HH'h'mm:ss","hmsz":"HH'h'mm:ss Z","ahmz":"HH'h'mm Z","hms":"HH'h'mm:ss","ahm":"HH'h'mm","hmz":"HH'h'mm Z","hm":"HH'h'mm"}}}};
 ilib.data.dateformats_et = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d.M","m":"dd.MM","l":"d. MMM","f":"d. MMMM"},"dmy":{"s":"d.M.yy","m":"dd.MM.yyyy","l":"d. MMM yyyy","f":"d. MMMM yyyy"},"my":{"s":"M.yy","m":"MM.yyyy"},"m":{"s":"MM","l":"MMMM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, d.M yy","m":"EE, d.M yy","l":"EEE, d. MMMM yyyy","f":"EEEE, d. MMMM yyyy"},"dmw":{"s":"E, d.M","m":"EE, d.M","l":"EEEE, d. MMM","f":"EEEE, d. MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm.ss a z","hmsz":"h:mm.ss z","ahms":"h:mm.ss a","hms":"h:mm.ss","ms":"mm.ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"H:mm.ss z","ahms":"H:mm.ss","hmsz":"H:mm.ss z","hms":"H:mm.ss","ms":"mm.ss"}},"range":{"c00":{"s":"{st} – {et} {sd}.{sm}.{sy}","m":"{st} – {et} {sd}.{sm}.{sy}","l":"{st} – {et} {sd}. {sm} {sy}","f":"{st} – {et} {sd}. {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd}. – {et} {ed}. {em} {ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","f":"{st} {sd}. – {et} {ed}. {em} {ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd}. {sm} – {et} {ed}. {em} {ey}","f":"{st} {sd}. {sm} – {et} {ed}. {em} {ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. – {ed}. {em} {ey}","f":"{sd}. – {ed}. {em} {ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm} – {ed}. {em} {ey}","f":"{sd}. {sm} – {ed}. {em} {ey}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm} {sy} – {ed}. {em} {ey}","f":"{sd}. {sm} {sy} – {ed}. {em} {ey}"},"c20":{"s":"{sm}.{sy} – {em}.{ey}","m":"{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
-ilib.data.dateformats_fa = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM"},"dmy":{"s":"yy/M/d","m":"d MMM yy"},"my":{"s":"yy/M","m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E yy/M/d","m":"EE yy/M/d","f":"EEEE d MMM yyyy"},"dmw":{"s":"E M/d","m":"EE M/d","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a (z)","hmsz":"h:mm:ss (z)","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a (z)","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm (z)","ah":"h a"},"24":{"ahmsz":"H:mm:ss (z)","hmsz":"H:mm:ss (z)","ahmz":"H:mm (z)","hmz":"H:mm (z)"}},"range":{"c00":{"s":"{st} ت {et} {sy}/{sm}/{sd}","m":"{st} ت {et} {sd} {sm} {sy}","l":"{st} ت {et} {sd} {sm} {sy}","f":"{st} ت {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","l":"{st} {sd} ت {et} {ed} {em} {ey}","m":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","f":"{st} {sd} ت {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","l":"{st} {sd} {sm} ت {et} {ed} {em} {ey}","f":"{st} {sd} {sm} ت {et} {ed} {em} {ey}","m":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}"},"c10":{"s":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","l":"{sd} ت {ed} {em} {ey}","f":"{sd} ت {ed} {em} {ey}","m":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}"},"c11":{"s":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","m":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","l":"{sd} {sm} ت {ed} {em} {ey}","f":"{sd} {sm} ت {ed} {em} {ey}"},"c12":{"s":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","m":"{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","l":"{sd} {sm} {sy} ت {ed} {em} {ey}","f":"{sd} {sm} {sy} ت {ed} {em} {ey}"},"c20":{"s":"{sy}/{sm} ت {ey}/{em}","m":"{sy}/{sm} ت {ey}/{em}","l":"{sm} {sy} ت {em} {ey}","f":"{sm} {sy} ت {em} {ey}"},"c30":"{sy} ت {ey}"}},"generated":true};
+ilib.data.dateformats_fa = {"gregorian":{"order":"{time} {date}","date":{"dmwy":{"s":"E yy/M/d","m":"EE yy/M/d","f":"EEEE d MMM yyyy"},"dmy":{"s":"‏yy/M/d","m":"‏yy/M/d","l":"‏d MMM yyyy","f":"‏d MMMM yyyy"},"dmw":{"s":"E M/d","m":"EE M/d","l":"EEEE d MMM","f":"EEEE d MMM"},"dm":{"s":"‏M/d","m":"‏M/d","l":"‏d MMM","f":"‏d MMMM"},"my":{"s":"‏yy/M","m":"‏yy/M"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"‏h:mm:ss a (z)","ahms":"‏h:mm:ss a","hmsz":"‏h:mm:ss (z)","hms":"‏h:mm:ss","ahmz":"‏h:mm a (z)","ahm":"‏h:mm a","hmz":"‏h:mm (z)","ah":"‏h a","hm":"‏h:mm","ms":"‏mm:ss"},"24":{"ahmsz":"‏H:mm:ss (z)","ahms":"‏H:mm:ss","hmsz":"‏H:mm:ss (z)","hms":"‏H:mm:ss","ahmz":"‏H:mm (z)","ahm":"‏H:mm","hmz":"‏H:mm (z)","ah":"‏H","hm":"‏H:mm","ms":"‏mm:ss"}},"range":{"c00":{"s":"{st} ت {et} {sy}/{sm}/{sd}","m":"{st} ت {et} {sy}/{sm}/{sd}","l":"{st} ت {et} {sd} {sm} {sy}","f":"{st} ت {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","m":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","l":"{st} {sd} ت {et} {ed} {em} {ey}","f":"{st} {sd} ت {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","m":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","l":"{st} {sd} {sm} ت {et} {ed} {em} {ey}","f":"{st} {sd} {sm} ت {et} {ed} {em} {ey}"},"c03":{"s":"‏{sy}/{sm}/{sd} {st} - {ey}/{em}/{ed} {et}","m":"‏{sy}/{sm}/{sd} {st} - {ey}/{em}/{ed} {et}","l":"‏{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"‏{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c10":{"s":"‏{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","m":"‏{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","l":"‏{sd} ت {ed} {em} {ey}","f":"‏{sd} ت {ed} {em} {ey}"},"c11":{"s":"‏{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","m":"‏{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","l":"‏{sd} {sm} ت {ed} {em} {ey}","f":"‏{sd} {sm} ت {ed} {em} {ey}"},"c12":{"s":"‏{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","m":"‏{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","l":"‏{sd} {sm} {sy} ت {ed} {em} {ey}","f":"‏{sd} {sm} {sy} ت {ed} {em} {ey}"},"c20":{"s":"‏{sy}/{sm} ت {ey}/{em}","m":"‏{sy}/{sm} ت {ey}/{em}","l":"{sm} {sy} ت {em} {ey}","f":"{sm} {sy} ت {em} {ey}"},"c30":"‏{sy} ت {ey}"}}};
 ilib.data.dateformats_ff = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd/MM"},"dmy":{"s":"yy-M-d","m":"d MMM, yy","l":"d MMM yy"},"my":{"m":"MM/yy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E d/M/yy","m":"EE d/M/yy","f":"EEEE d MMM yyyy"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sd} {sm}, {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_fi = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E d.M.yy","m":"EE d.M.yyyy","l":"EEE d. MMM yyyy","f":"EEEE d. MMMM yyyy"},"dmy":{"s":"d.M.yy","m":"d.M.yyyy","l":"d. MMM yyyy","f":"d. MMMM yyyy"},"dmw":{"s":"E d.M.","m":"EE d.M.","l":"EEE d. MMM","f":"EEEE d. MMMM"},"dm":{"s":"d.M","m":"d.M","l":"d. MMM","f":"d. MMMM"},"my":{"s":"M.yy","m":"M.yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"d":{"s":"d","m":"d","l":"d","f":"d"},"m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"N","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"h.mm.ss a z","ahms":"h.mm.ss a","hmsz":"h.mm.ss z","ahmz":"h.mm a z","hms":"h.mm.ss","ahm":"h.mm a","hmz":"h.mm z","ah":"h a","hm":"h.mm","ms":"mm.ss"},"24":{"ahmsz":"H.mm.ss z","ahms":"H.mm.ss","hmsz":"H.mm.ss z","ahmz":"H.mm z","hms":"H.mm.ss","ahm":"H.mm","hmz":"H.mm z","hm":"H.mm","ms":"mm.ss"}},"range":{"c00":{"s":"{sd}.{sm}.{sy} {st} – {et}","m":"{sd}.{sm}.{sy} {st} – {et}","l":"{sd}. {sm} {sy} {st} – {et}","f":"{sd}. {sm} {sy} {st} – {et} "},"c01":{"s":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","l":"{sd}. {st} – {ed}. {et} {sm} {sy}","f":"{sd}. {st} – {ed}. {et} {sm} {sy}"},"c02":{"s":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","l":"{sd}. {sm} {st} – {ed}. {em} {sy} {et}","f":"{sd}. {sm} {st} – {ed}. {em} {sy} {et}"},"c03":{"s":"{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","l":"{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}","f":"{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}"},"c10":{"s":"{sd}–{ed}.{sm}.{sy}","m":"{sd}–{ed}.{sm}.{sy}","l":"{sd}. – {ed}. {sm} {sy}","f":"{sd}. – {ed}. {sm} {sy}"},"c11":{"s":"{sd}.{sm} – {ed}.{em}.{sy}","m":"{sd}.{sm} – {ed}.{em}.{sy}","l":"{sd}. {sm} – {ed}. {em} {sy}","f":"{sd}. {sm} – {ed}. {em} {sy}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm} {sy} – {ed}. {em} {ey}","f":"{sd}. {sm} {sy} – {ed}. {em} {ey}"},"c20":{"s":"{sm}.{sy} – {em}.{ey}","m":"{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}}};
 ilib.data.dateformats_fr = {"gregorian":{"order":"{time} {date}","date":{"dmwy":{"s":"EE d/MM/yy","m":"EE d/MM/yyyy","l":"EEE d MMM yyyy","f":"EEEE d MMMM yyyy"},"dmy":{"s":"d/MM/yy","m":"d/MM/yyyy","l":"d MMM yyyy","f":"d MMMM yyyy"},"dmw":{"s":"EE d/MM","m":"EE d/MM","l":"EEE d MMM","f":"EEEE d MMMM"},"dm":{"s":"d/MM","m":"d/MM","l":"d MMM","f":"d MMMM"},"my":{"s":"MM/yy","m":"MM/yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"d":"dd","m":{"s":"MM","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"hh:mm:ss a z","ahms":"hh:mm:ss a","hmsz":"hh:mm:ss z","hms":"hh:mm:ss","ahmz":"hh:mm a z","ahm":"hh:mm a","hmz":"hh:mm z","ah":"hh a","hm":"hh:mm","h":"hh"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","h":"HH"}},"range":{"c00":{"s":"{st} - {et} {sd}/{sm}/{sy}","m":"{st} - {et} {sd}/{sm}/{sy}","l":"{st} - {et} {sd} {sm} {sy}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm} - {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm} - {et} {ed}/{em}/{sy}","l":"{st} {sd} {sm} - {et} {ed} {em} {sy}","f":"{st} {sd} {sm} - {et} {ed} {em} {sy}"},"c02":{"s":"{st} {sd}/{sm} - {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm} - {et} {ed}/{em}/{sy}","l":"{st} {sd} {sm} - {et} {ed} {em} {sy}","f":"{st} {sd} {sm} - {et} {ed} {em} {sy}"},"c03":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}","f":"{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}"},"c10":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd}-{ed} {sm} {sy}","f":"{sd}-{ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm} - {ed}/{em}/{ey}","m":"{sd}/{sm} - {ed}/{em}/{sy}","l":"{sd} {sm} - {ed} {em} {sy}","f":"{sd} {sm} - {ed} {em} {sy}"},"c12":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} - {em}/{ey}","m":"{sm}/{sy} - {em}/{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}}};
 ilib.data.dateformats_ga = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"d MMM","l":"MMM d"},"dmy":{"s":"yy-M-d","m":"d MMM yy","l":"yyyy MMM d"},"my":{"s":"yy-M","m":"MMM yy","l":"yyyy MMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_gl = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d-M","m":"dd/MM"},"dmy":{"m":"d MMM, yy","l":"d MMM, yyyy","f":"dd MMMM yyyy"},"my":{"s":"M-yy","m":"MM/yy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM, yyyy","f":"EEEE, d MMM, yyyy"},"dmw":{"s":"E, d-M","m":"EE, d-M","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm}, {sy}","l":"{st} – {et} {sd} {sm}, {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_ha = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"d MMM, yy","l":"yyyy MMM d","f":"d MMMM, yyyy"},"my":{"m":"MMM, yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sd} {sm}, {sy}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sd} {sm}, {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
-ilib.data.dateformats_he = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E, dd.MM.yy","m":"EE, dd.MM.yyyy","l":"EEE, d MMM yyyy","f":"EEEE, d בMMMM yyyy"},"dmw":{"s":"E, dd.MM","m":"EE, dd.MM","l":"EEE, d MMM","f":"EEEE, d בMMMM"},"dmy":{"s":"dd.MM.yy","m":"dd.MM.yyyy","l":"d MMM yyyy","f":"d בMMMM yyyy"},"dm":{"s":"dd.MM","m":"dd.MM","l":"d MMM","f":"d בMMMM"},"my":{"s":"MM.yy","m":"MM.yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"dw":{"s":"E, d","m":"EE, d","l":"EEE, d","f":"EEEE, d"},"m":{"s":"MM"},"d":"d"},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"‏h a"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","h":"HH"}},"range":{"c00":{"s":"{sd}.{sm}.{sy} {st} – {et}","m":"{sd}.{sm}.{sy} {st} – {et}","l":"{sd} {sm} {sy} {st} – {et}","f":"{sd} ב{sm} {sy} {st} – {et}"},"c01":{"s":"{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","l":"{sd} {st} – {ed} {et} {em} {ey}","f":"{sd} {st} – {ed} {et} ב{em} {ey}"},"c02":{"s":"{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","l":"{sd} {sm} {st} – {ed} {em} {ey} {et}","f":"{sd} ב{sm} {st} – {ed} ב{em} {ey} {et}"},"c10":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} ב{em} {ey}"},"c11":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} ב{sm} – {ed} ב{em} {ey}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} ב{sm} {sy} – {ed} ב{em} {ey}"},"c20":{"s":"{sm}.{sy} – {em}.{ey}","m":"{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}}};
+ilib.data.dateformats_he = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E, dd.MM.yy","m":"EE, dd.MM.yyyy","l":"EEE, d MMM yyyy","f":"EEEE, d בMMMM yyyy"},"dmw":{"s":"E, dd.MM","m":"EE, dd.MM","l":"EEE, d MMM","f":"EEEE, d בMMMM"},"dmy":{"s":"‏dd.MM.yy","m":"‏dd.MM.yyyy","l":"‏d MMM yyyy","f":"‏d בMMMM yyyy"},"dm":{"s":"‏dd.MM","m":"‏dd.MM","l":"‏d MMM","f":"‏d בMMMM"},"my":{"s":"‏MM.yy","m":"‏MM.yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"dw":{"s":"E, d","m":"EE, d","l":"EEE, d","f":"EEEE, d"},"m":{"s":"MM"},"d":"d"},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","h":"HH"}},"range":{"c00":{"s":"‏{sd}.{sm}.{sy} {st} – {et}","m":"‏{sd}.{sm}.{sy} {st} – {et}","l":"‏{sd} {sm} {sy} {st} – {et}","f":"‏{sd} ב{sm} {sy} {st} – {et}"},"c01":{"s":"‏{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","m":"‏{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","l":"‏{sd} {st} – {ed} {et} {em} {ey}","f":"‏{sd} {st} – {ed} {et} ב{em} {ey}"},"c02":{"s":"‏{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","m":"‏{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","l":"‏{sd} {sm} {st} – {ed} {em} {ey} {et}","f":"‏{sd} ב{sm} {st} – {ed} ב{em} {ey} {et}"},"c10":{"s":"‏{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"‏{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"‏{sd} – {ed} {em} {ey}","f":"‏{sd} – {ed} ב{em} {ey}"},"c11":{"s":"‏{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"‏{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"‏{sd} {sm} – {ed} {em} {ey}","f":"‏{sd} ב{sm} – {ed} ב{em} {ey}"},"c12":{"s":"‏{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"‏{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"‏{sd} {sm} {sy} – {ed} {em} {ey}","f":"‏{sd} ב{sm} {sy} – {ed} ב{em} {ey}"},"c20":{"s":"‏{sm}.{sy} – {em}.{ey}","m":"‏{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"‏{sy} – {ey}"}}};
 ilib.data.dateformats_hi = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"dd-MM-yy","l":"d MMM, yy","f":"dd MMMM yyyy"},"my":{"s":"M-yy","m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm: a z","ahm":"h:mm a","hm":"h:mm"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd}-{sm}-{sy}","l":"{st} – {et} {sd} {sm}, {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} {sm} – {et} {ed} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {sm} {ey}","f":"{sd} – {ed} {sm} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":false};
 ilib.data.dateformats_hr = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d. M.","m":"dd. MM.","l":"d. MMM","f":"d. MMMM"},"dmy":{"s":"d. M. yy.","m":"d. M. yy","l":"d. MMM yyyy.","f":"d. MMMM yyyy"},"my":{"s":"M. yy.","m":"MM. yyyy.","l":"MMM yyyy.","f":"MMMM yyyy."},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, d. M. yy.","m":"EE, d. M. yy.","l":"EEE, d. MMM yyyy.","f":"EEEE, d. MMM yyyy."},"dmw":{"s":"E, d. M.","m":"EE, d. M.","l":"EEEE, d. MMM","f":"EEEE, d. MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"hh:mm:ss a z","hmsz":"hh:mm:ss z","ahms":"hh:mm:ss a","hms":"hh:mm:ss","ms":"mm:s","ahmz":"hh:mm a z","ahm":"hh:mm a","hm":"hh:mm","hmz":"hh:mm z","ah":"hh a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} - {et} {sd}. {sm}. {sy}.","m":"{st} - {et} {sd}. {sm}. {sy}","l":"{st} - {et} {sd}. {sm} {sy}.","f":"{st} - {et} {sd}. {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","l":"{st} {sd}. - {et} {ed}. {em} {ey}.","m":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","f":"{st} {sd}. - {et} {ed}. {em} {ey}."},"c02":{"s":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}.","l":"{st} {sd}. {sm} - {et} {ed}. {em} {ey}.","f":"{st} {sd}. {sm} - {et} {ed}. {em} {ey}.","m":"{st} {sd}.{sm}.{sy}. - {et} {ed}.{em}.{ey}."},"c10":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. - {ed}. {em} {ey}.","f":"{sd}. - {ed}. {em} {ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}."},"c11":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. {sm} - {ed}. {em} {ey}.","f":"{sd}. {sm} - {ed}. {em} {ey}."},"c12":{"s":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","m":"{sd}.{sm}.{sy}. - {ed}.{em}.{ey}.","l":"{sd}. {sm} {sy}. - {ed}. {em} {ey}.","f":"{sd}. {sm} {sy}. - {ed}. {em} {ey}."},"c20":{"s":"{sm}.{sy}. - {em}.{ey}.","m":"{sm}.{sy}. - {em}.{ey}.","l":"{sm} {sy}. - {em} {ey}.","f":"{sm} {sy}. - {em} {ey}."}}},"generated":true};
 ilib.data.dateformats_hu = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M. d.","m":"MM.dd.","l":"MMM d.","f":"MMMM d."},"dmy":{"s":"yy.MM.dd.","m":"yyyy.MM.dd","l":"yyyy. MMM d.","f":"yyyy. MMMM d"},"my":{"s":"yy.M.","m":"yyyy.MM","l":"yyyy. MMM","f":"yyyy. MMMM"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"yy.MM.dd., E","m":"yyyy.MM.dd., EE","l":"yyyy. MMM d., EEE","f":"yyyy. MMM d., EEEE"},"dmw":{"s":"M. d., E","m":"M. d., EE","l":"MMM d., EEEE","f":"MMM d., EEEE"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"a h:mm:ss z","hmsz":"h:mm:ss z","ahms":"a h:mm:ss","hms":"h:mm:ss","ms":"mm:","ahmz":"a h:mm z","ahm":"a h:mm","hm":"h:mm","hmz":"h:mm z","ah":"a h"}},"range":{"c00":{"s":"{st} - {et} {sy}.{sm}.{sd}.","m":"{st} - {et} {sy}.{sm}.{sd}","l":"{st} - {et} {sy}. {sm} {sd}.","f":"{st} - {et} {sy}. {sm} {sd}"},"c01":{"s":"{st} {sy}.{sm}.{sd} - {et} {ed}.","l":"{st} {sy}. {sm} {sd} - {et} {ed}.","m":"{st} {sy}.{sm}.{sd} - {et} {ed}.","f":"{st} {sy}. {sm} {sd} - {et} {ed}."},"c02":{"s":"{st} {sy}.{sm}.{sd}. - {et} {em}.{ed}.","l":"{st} {sy}. {sm} {sd} - {et} {em} {ed}.","f":"{st} {sy}. {sm} {sd} - {et} {em} {ed}.","m":"{st} {sy}.{sm}.{sd}. - {et} {em}.{ed}."},"c10":{"s":"{sy}.{sm}.{sd} - {ed}.","l":"{sy}. {sm} {sd} - {ed}.","f":"{sy}. {sm} {sd} - {ed}.","m":"{sy}.{sm}.{sd} - {ed}."},"c11":{"s":"{sy}.{sm}.{sd}. - {em}.{ed}.","m":"{sy}.{sm}.{sd}. - {em}.{ed}.","l":"{sy}. {sm} {sd} - {em} {ed}.","f":"{sy}. {sm} {sd} - {em} {ed}."},"c12":{"s":"{sy}.{sm}.{sd}. - {ey}.{em}.{ed}.","m":"{sy}.{sm}.{sd}. - {ey}.{em}.{ed}.","l":"{sy}. {sm} {sd}. - {ey}. {em} {ed}.","f":"{sy}. {sm} {sd}. - {ey}. {em} {ed}."},"c20":{"s":"{sy}.{sm}. - {ey}.{em}.","m":"{sy}.{sm}. - {ey}.{em}.","l":"{sy}. {sm} - {ey}. {em}","f":"{sy}. {sm} - {ey}. {em}"}}},"generated":true};
@@ -7129,7 +7182,7 @@ ilib.data.dateformats_kk = {"gregorian":{"order":"{time} {date}","date":{"dm":{"
 ilib.data.dateformats_kn = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"d MMM yy","l":"d, MMM, yyyy"},"my":{"m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"hh:mm:ss a z","hmsz":"hh:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"hh:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"hh:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd}, {sm}, {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} {sm} – {et} {ed} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {ey}","f":"{sd} {sm} – {ed} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}}};
 ilib.data.dateformats_ko = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E, yy. MM. dd","m":"EE, yyyy. MM. dd","l":"EEE, yyyy년 MMM월 d일","f":"yyyy년 MMM월 d일 (EEEE)"},"dmy":{"s":"yy. MM. dd","m":"yyyy. MM. dd","l":"yyyy년 MMM월 d일","f":"yyyy년 MMM월 d일"},"dmw":{"s":"E, MM. dd","m":"EE, MM. dd","l":"EEE, MMM월 d일","f":"MMM월 d일 (EEEE)"},"dm":{"s":"MM. dd","m":"MM. dd","l":"MMM월 d일","f":"MMM월 d일"},"my":{"s":"yy. MM.","m":"yyyy. MM.","l":"yyyy년 MMM월","f":"yyyy년 MMM월"},"dw":{"s":"EE, dd","m":"EE, dd","l":"EEE, d일","f":"d일(EEEE)"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"a h:mm:ss z","ahms":"a h:mm:ss","ahmz":"a h:mm z","ahm":"a h:mm","ah":"a h"}},"range":{"c00":{"s":"{sy}. {sm}. {sd} {st}에서 {et}까지","m":"{sy}. {sm}. {sd} {st}에서 {et}까지","l":"{sy}년 {sm}월 {sd}일 {st}에서 {et}까지","f":"{sy}년 {sm}월 {sd}일 {st}에서 {et}까지"},"c01":{"s":"{sy}. {sm}. {sd} {st}에서 {ed} {et}까지","m":"{sy}. {sm}. {sd} {st}에서 {ed} {et}까지","l":"{sy}년 {sm}월 {sd}일 {st}에서 {ed}일 {et}까지","f":"{sy}년 {sm}월 {sd}일 {st}에서 {ed}일 {et}까지"},"c02":{"s":"{sy}. {sm}. {sd} {st}에서 {em}. {ed} {et}까지","m":"{sy}. {sm}. {sd} {st}에서 {em}. {ed} {et}까지","l":"{sy}년 {sm}월 {sd}일 {st}에서 {em}월 {ed}일 {et}까지","f":"{sy}년 {sm}월 {sd}일 {st}에서 {em}월 {ed}일 {et}까지"},"c03":{"s":"{sy}. {sm}. {sd} {st}에서 {ey}. {em}. {ed} {et}까지","m":"{sy}. {sm}. {sd} {st}에서 {ey}. {em}. {ed} {et}까지","l":"{sy}년 {sm}월 {sd}일 {st}에서 {ey}년 {em}월 {ed}일 {et}까지","f":"{sy}년 {sm}월 {sd}일 {st}에서 {ey}년 {em}월 {ed}일 {et}까지"},"c10":{"s":"{sy}. {sm}. {sd}에서 {ed}까지","m":"{sy}. {sm}. {sd}에서 {ed}까지","l":"{sy}년 {sm}월 {sd}일에서 {ed}일까지","f":"{sy}년 {sm}월 {sd}일에서 {ed}일까지"},"c11":{"s":"{sy}. {sm}. {sd}에서 {em}. {ed}까지","m":"{sy}. {sm}. {sd}에서 {em}. {ed}까지","l":"{sy}년 {sm}월 {sd}일에서 {em}월 {ed}일까지","f":"{sy}년 {sm}월 {sd}일에서 {em}월 {ed}일까지"},"c12":{"s":"{sy}. {sm}. {sd}에서 {ey}. {em}. {ed}까지","m":"{sy}. {sm}. {sd}에서 {ey}. {em}. {ed}까지","l":"{sy}년 {sm}월 {sd}일에서 {ey}년 {em}월 {ed}일까지","f":"{sy}년 {sm}월 {sd}일에서 {ey}년 {em}월 {ed}일까지"},"c20":{"s":"{sy}. {sm}.에서 {ey}. {em}.까지","m":"{sy}. {sm}.에서 {ey}. {em}.까지","l":"{sy}년 {sm}월에서 {ey}년 {em}월까지","f":"{sy}년 {sm}월에서 {ey}년 {em}월까지"},"c30":"{sy}년에서 {ey}년까지"}}};
 ilib.data.dateformats_ks = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"MMM d","l":"d-MMM","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"MMM d, yyyy","l":"yyyy MMM d","f":"dd MMMM yyyy"},"my":{"m":"MMM d, yyyy"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"EEE, M/d/yy","m":"EE, M/d/yyyy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sm} {sd}, {sy}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
-ilib.data.dateformats_ku = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"EE, dd/MM/yyyy","m":"EEE, dd/MM/yyyy","l":"EEE, dd/MMMM/yyyy","f":"EEEE, dd/MMMM/yyyy"},"dmy":{"s":"dd/MM/yyyy","m":"dd/MM/yyyy","l":"dd/MMMM/yyyy","f":"dd/MMMM/yyyy"},"dmw":{"s":"EE, dd/MM","m":"EEE, dd/MM","l":"EEE, dd/MMMM","f":"EEEE, dd/MMMM"},"dm":{"s":"dd/MM","m":"dd/MM","l":"dd/MMMM","f":"dd/MMMM"},"my":{"s":"MM/yyyy","m":"MM/yyyy","l":"MM/yyyy","f":"MM/yyyy"},"dw":{"s":"EE, dd","m":"EEE, dd","l":"EEE, dd","f":"EEEE, dd"},"d":"dd","m":{"s":"MM","m":"MM","l":"MMMM","f":"MMMM"},"y":{"s":"yyyy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"},"w":{"s":"EE","m":"EEE","l":"EEE","f":"EEEE"}},"time":{"12":{"ahmsz":"hh:mm:ss z","ahms":"hh:mm:ss","hmsz":"hh:mm:ss z","hms":"hh:mm:ss","ahmz":"hh:mm z","ahm":"hh:mm","hmz":"hh:mm z","ah":"hh","hm":"hh:mm","ms":"mm:ss","hh":"hh","m":"mm","s":"ss"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","ms":"mm:ss","hh":"HH","m":"mm","s":"ss"}},"range":{"c00":{"s":"{sd}/{sm}/{sy} {st} - {et}","m":"{sd}/{sm}/{sy} {st} - {et}","l":"{sd} {sm} {sy} {st} - {et}","f":"{sd} {sm} {sy} {st} - {et}"},"c01":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c02":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c03":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","f":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}"},"c10":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} -  {ed}/{em}/{ey}","l":"{sd} - {ed} {sm} {sy}","f":"{sd} - {ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c30":"{sy} - {ey}"}},"islamic":"gregorian","hebrew":"gregorian","julian":"gregorian","buddhist":"gregorian"};
+ilib.data.dateformats_ku = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"EE, dd/MM/yyyy","m":"EEE, dd/MM/yyyy","l":"EEE, dd/MMMM/yyyy","f":"EEEE, dd/MMMM/yyyy"},"dmy":{"s":"‏dd/MM/yyyy","m":"‏dd/MM/yyyy","l":"‏dd/MMMM/yyyy","f":"‏dd/MMMM/yyyy"},"dmw":{"s":"EE, dd/MM","m":"EEE, dd/MM","l":"EEE, dd/MMMM","f":"EEEE, dd/MMMM"},"dm":{"s":"‏dd/MM","m":"‏dd/MM","l":"‏dd/MMMM","f":"‏dd/MMMM"},"my":{"s":"‏MM/yyyy","m":"‏MM/yyyy","l":"‏MM/yyyy","f":"‏MM/yyyy"},"dw":{"s":"EE, dd","m":"EEE, dd","l":"EEE, dd","f":"EEEE, dd"},"d":"dd","m":{"s":"MM","m":"MM","l":"MMMM","f":"MMMM"},"y":{"s":"yyyy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"},"w":{"s":"EE","m":"EEE","l":"EEE","f":"EEEE"}},"time":{"12":{"ahmsz":"hh:mm:ss z","ahms":"hh:mm:ss","hmsz":"hh:mm:ss z","hms":"hh:mm:ss","ahmz":"hh:mm z","ahm":"hh:mm","hmz":"hh:mm z","ah":"hh","hm":"hh:mm","ms":"mm:ss","hh":"hh","m":"mm","s":"ss"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","ms":"mm:ss","hh":"HH","m":"mm","s":"ss"}},"range":{"c00":{"s":"‏{sd}/{sm}/{sy} {st} - {et}","m":"‏{sd}/{sm}/{sy} {st} - {et}","l":"‏{sd} {sm} {sy} {st} - {et}","f":"‏{sd} {sm} {sy} {st} - {et}"},"c01":{"s":"‏{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"‏{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"‏{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"‏{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c02":{"s":"‏{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"‏{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"‏{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"‏{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c03":{"s":"‏{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"‏{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"‏{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","f":"‏{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}"},"c10":{"s":"‏{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"‏{sd}/{sm}/{sy} -  {ed}/{em}/{ey}","l":"‏{sd} - {ed} {sm} {sy}","f":"‏{sd} - {ed} {sm} {sy}"},"c11":{"s":"‏{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"‏{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"‏{sd} {sm} {sy} - {ed} {em} {ey}","f":"‏{sd} {sm} {sy} - {ed} {em} {ey}"},"c12":{"s":"‏{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"‏{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"‏{sd} {sm} {sy} - {ed} {em} {ey}","f":"‏{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"‏{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"‏{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"‏{sd} {sm} {sy} - {ed} {em} {ey}","f":"‏{sd} {sm} {sy} - {ed} {em} {ey}"},"c30":"‏{sy} - {ey}"}}};
 ilib.data.dateformats_lg = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"d MMM yy","l":"yyyy MMM d"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_ln = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"d MMM"},"dmy":{"m":"d MMM yy"},"my":{"m":"MMM yy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E d/M/yy","m":"EE d/M/yy","f":"EEEE d MMM yyyy"},"dmw":{"s":"E d/M","m":"EE d/M","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_lt = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"MM-d","m":"MM.dd","l":"MMM d","f":"MMMM d 'd'."},"dmy":{"s":"yy-M-d","m":"yy-MM-d","l":"yyyy MMM d","f":"yyyy 'm'. MMMM d 'd'."},"my":{"s":"yy-MM","m":"yyyy.MM","l":"MMM, yyyy","f":"yyyy 'm'. MMMM"},"m":{"s":"MM","f":"MMM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, yy-MM-d","m":"EE, yy-MM-d","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"M-d, E","m":"M-d, EE","l":"MMM d, EEEE","f":"MMM d, EEEE"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"hh:mm:ss a z","ahms":"hh:mm:ss a","hms":"hh:mm:ss","ms":"mm:s","ahmz":"hh:mm: a z","ahm":"hh:mm a","hm":"hh:mm"},"24":{"ahmsz":"HH:mm:ss z","ahmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sy}-{sm}-{sd}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sy} m. {sm} {sd} d."},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ey}–{em}–{ed}","l":"{st} {sy} m. {sm} {sd} – {et} d.–{ed} d.","m":"{st} {sy}–{sm}–{sd} – {et} {ey}–{em}–{ed}","f":"{st} {sy} m. {sm} {sd} – {et} d.–{ed} d."},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {ey}–{em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ey}–{em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy} m. {sm} {sd} – d.–{ed} d.","f":"{sy} m. {sm} {sd} – d.–{ed} d.","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":false};
@@ -7167,9 +7220,10 @@ ilib.data.dateformats_sv = {"gregorian":{"order":"{date} {time}","date":{"dmwy":
 ilib.data.dateformats_sw = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d-M","m":"d MMM"},"dmy":{"m":"d MMM yy"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_ta = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"d MMM, yy","l":"d MMM, yyyy","f":"d MMMM, yyyy"},"my":{"m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM, yyyy","f":"EEEE, d MMM, yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm}, {sy}","l":"{st} – {et} {sd} {sm}, {sy}","f":"{st} – {et} {sd} {sm}, {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed} {em}, {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed} {em}, {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em}, {ey}","f":"{st} {sd} {sm} – {et} {ed} {em}, {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em}, {ey}","f":"{sd} – {ed} {em}, {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em}, {ey}","f":"{sd} {sm} – {ed} {em}, {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm}, {sy} – {ed} {em}, {ey}","f":"{sd} {sm}, {sy} – {ed} {em}, {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_te = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd-MM"},"dmy":{"m":"d MMM yy","l":"d, MMM yyyy"},"my":{"m":"MM-yyyy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d, MMM yyyy","f":"EEEE, d, MMM yyyy"},"dmw":{"s":"E, d/M","m":"EE, d/M","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd}, {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_th = {"thaisolar":{"order":"{time} {date}","date":{"dm":{"s":"d/M","m":"d/M","l":"d MMM","f":"d MMMM"},"dmy":{"s":"d/M/yy","m":"d/M/yyyy","l":"d MMM yyyy","f":"d MMMM yyyy"},"my":{"s":"M/yy","m":"M/yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"m":{"s":"M","m":"M","l":"MMM","f":"MMMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"y":{"s":"yy","l":"yyyy","m":"yyyy","f":"yyyy"},"dmwy":{"s":"E d/M/yy","m":"EE d/M/yyyy","l":"EEE d MMM yyyy","f":"EEEE d MMMM yyyy"},"dmw":{"s":"E d/M","m":"EE d/M","l":"EEE d MMM","f":"EEEE d MMMM"},"n":{"s":"N","m":"N","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"h:mm:ss a z","ahms":"h:mm:ss a","hmsz":"h:mm:ss z","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hmz":"h:mm z","ah":"h a","hm":"h:mm","ms":"mm:ss","h":"h","m":"mm","s":"ss"},"24":{"ahmsz":"H:mm:ss z","ahms":"H:mm:ss","hmsz":"H:mm:ss z","hms":"H:mm:ss","ahmz":"H:mm z","ahm":"H:mm","hmz":"H:mm z","ah":"H","hm":"H:mm","ms":"mm:ss","h":"H","m":"mm","s":"ss"}},"range":{"c00":{"s":"{st} - {et} {sd}/{sm}/{sy}","m":"{st} - {et} {sd}/{sm}/{sy}","l":"{st} - {et} {sd} {sm} {sy}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd} - {et} {ed}/{em}/{ey}","m":"{st} {sd} - {et} {ed}/{em}/{ey}","l":"{st} {sd} - {et} {ed} {em} {ey}","f":"{st} {sd} - {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} - {et} {ed} {em} {ey}","f":"{st} {sd} {sm} - {et} {ed} {em} {ey}"},"c10":{"s":"{sd} - {ed}/{em}/{ey}","m":"{sd} - {ed}/{em}/{ey}","l":"{sd} - {ed} {em} {ey}","f":"{sd} - {ed} {em} {ey}"},"c11":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} - {ed} {em} {ey}","f":"{sd} {sm} - {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} - {em}/{ey}","m":"{sm}/{sy} - {em}/{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}}};
 ilib.data.dateformats_tr = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"dd.MM.yyyy, E","m":"dd.MM.yyyy, EE","l":"dd MMM yyyy, EEE","f":"dd MMMM yyyy EEEE"},"dmy":{"s":"dd.MM.yyyy","m":"dd.MM.yyyy","l":"dd MMM yyyy","f":"dd MMMM yyyy"},"dmw":{"s":"dd.MM, E","m":"dd.MM, EE","l":"dd MMM, EEE","f":"dd MMMM, EEEE"},"dm":{"s":"dd.MM","m":"dd.MM","l":"dd MMM","f":"dd MMMM"},"my":{"s":"MM.yy","m":"MM.yyyy","l":"MMM yy","f":"MMMM yyyy"},"dw":{"s":"dd EE","m":"dd EE","l":"dd EEE","f":"dd EEEE"},"d":{"s":"dd","m":"dd","l":"dd","f":"dd"},"m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"hh:mm:ss a Z","ahms":"hh:mm:ss a","hmsz":"hh:mm:ss Z","ahmz":"hh:mm a Z","hms":"hh:mm:ss","ahm":"hh:mm a","hmz":"hh:mm Z","ah":"hh a","hm":"hh:mm","h":"hh"},"24":{"ahmsz":"HH:mm:ss Z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss Z","ahmz":"HH:mm Z","hms":"HH:mm:ss","ahm":"HH:mm","hmz":"HH:mm Z","ah":"HH","hm":"HH:mm","h":"HH"}},"range":{"c00":{"s":"{sd}.{sm}.{sy} {st} - {et}","m":"{sd}.{sm}.{sy} {st} - {et}","l":"{sd} {sm} {sy} {st} - {et}","f":"{sd} {sm} {sy} {st} - {et}"},"c01":{"s":"{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}","l":"{sd} {sm} {st} - {ed} {em} {et} {ey}","f":"{sd} {sm} {st} - {ed} {em} {et} {ey}"},"c02":{"s":"{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}","l":"{sd} {sm} {st} - {ed} {em} {et}, {sy} ","f":"{sd} {sm} {st} - {ed} {em} {et}, {sy}"},"c03":{"s":"{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st} - {ed}.{em}.{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c10":{"s":"{sd} - {ed}.{sm}.{sy}","m":"{sd} - {ed}.{sm}.{sy}","l":"{sd} - {ed} {sm} {sy}","f":"{sd} - {ed} {sm} {sy}"},"c11":{"s":"{sd}.{sm} - {ed}.{em} {ey}","m":"{sd}.{sm} - {ed}.{em} {ey}","l":"{sd} {sm} - {ed} {em} {sy}","f":"{sd} {sm} - {ed} {em} {sy}"},"c12":{"s":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} - {ed}.{em}.{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}.{sy} - {em}.{ey}","m":"{sm}.{sy} - {em}.{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}}};
 ilib.data.dateformats_uk = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"dd.MM","m":"dd.MM"},"dmy":{"s":"dd.MM.yy","m":"dd.MM.yy"},"my":{"s":"MM.yy","m":"MM.yy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E, dd.MM.yy","m":"EE, dd.MM.yyyy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, dd.MM","m":"EE, dd.MM","l":"EEEE, d MMM","f":"EEEE, d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sd}.{sm}.{sy}","m":"{st} – {et} {sd}.{sm}.{sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}.{sy} – {em}.{ey}","m":"{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
-ilib.data.dateformats_ur = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"d MMM"},"dmy":{"m":"d MMM، yy","l":"d MMM، yyyy","f":"d MMMM، yyyy"},"my":{"m":"MMM، yy","f":"MMMM، yyyy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E، d/M/yy","m":"EE، d/M/yy","l":"EEE، d MMM، yyyy","f":"EEEE، d MMM، yyyy"},"dmw":{"s":"E، d/M","m":"EE، d/M","l":"EEEE، d MMM","f":"EEEE، d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm}، {sy}","l":"{st} – {et} {sd} {sm}، {sy}","f":"{st} – {et} {sd} {sm}، {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} – {ed} {em} {ey}","f":"{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
+ilib.data.dateformats_ur = {"gregorian":{"order":"{time} {date}","date":{"dmwy":{"s":"E، d/M/yy","m":"EE، d/M/yy","l":"EEE، d MMM، yyyy","f":"EEEE، d MMM، yyyy"},"dmy":{"s":"‏d/M/yy","m":"‏d MMM، yy","l":"‏d MMM، yyyy","f":"‏d MMMM، yyyy"},"dmw":{"s":"E، d/M","m":"EE، d/M","l":"EEEE، d MMM","f":"EEEE، d MMM"},"dm":{"s":"‏d/M","m":"‏d MMM","l":"‏d MMM","f":"‏d MMMM"},"my":{"s":"‏M/yy","m":"MMM، yy","f":"MMMM، yyyy"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"‏h:mm:ss a z","ahms":"‏h:mm:ss a","hmsz":"‏h:mm:ss z","hms":"‏h:mm:ss","ahmz":"‏h:mm a z","ahm":"‏h:mm a","hmz":"‏h:mm z","ah":"‏h a","hm":"‏h:mm","ms":"‏mm:ss"},"24":{"ahmsz":"‏H:mm:ss z","ahms":"‏H:mm:ss","hmsz":"‏H:mm:ss z","hms":"‏H:mm:ss","ahmz":"‏H:mm z","ahm":"‏H:mm","hmz":"‏H:mm z","hm":"‏H:mm","ms":"‏mm:ss"}},"range":{"c00":{"s":"{st} – {et} {sd}/{sm}/{sy}","m":"{st} – {et} {sd} {sm}، {sy}","l":"{st} – {et} {sd} {sm}، {sy}","f":"{st} – {et} {sd} {sm}، {sy}"},"c01":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} – {et} {ed} {em} {ey}","f":"{st} {sd} {sm} – {et} {ed} {em} {ey}","m":"{st} {sd}/{sm}/{sy} – {et} {ed}/{em}/{ey}"},"c10":{"s":"‏{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"‏{sd} – {ed} {em} {ey}","f":"‏{sd} – {ed} {em} {ey}","m":"‏{sd}/{sm}/{sy} – {ed}/{em}/{ey}"},"c11":{"s":"‏{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"‏{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"‏{sd} {sm} – {ed} {em} {ey}","f":"‏{sd} {sm} – {ed} {em} {ey}"},"c12":{"s":"‏{sd}/{sm}/{sy} – {ed}/{em}/{ey}","m":"‏{sd}/{sm}/{sy} – {ed}/{em}/{ey}","l":"‏{sd} {sm} {sy} – {ed} {em} {ey}","f":"‏{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"‏{sm}/{sy} – {em}/{ey}","m":"‏{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"‏{sy} – {ey}"}}};
 ilib.data.dateformats_uz = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sy} {sm} {sd}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_vai = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"d MMM yy","l":"yyyy MMM d"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yyyy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_vai_Latn_LR = {"gregorian":{"date":{"dmy":{"s":"M/d/yy","l":"MMM d yyyy"},"dmwy":{"m":"EE, M/d/yy"}},"range":{"c00":{"s":"{st} – {et} {sm}/{sd}/{sy}","l":"{st} – {et} {sm} {sd} {sy}"}}},"generated":true};
@@ -7184,7 +7238,7 @@ ilib.data.dateformats_zh_Hant_TW = {"gregorian":{"date":{"dmwy":{"s":"yyyy-MM-dd
 ilib.data.dateformats_zh_Hant_US = {"gregorian":{"time":{"12":{"ahmsz":"h:mm:ssa z","ahms":"h:mm:ssa","hmsz":"h:mm:ss z","hms":"h:mm:ss","ahmz":"h:mma z","ahm":"h:mma","hmz":"h:mm z","ah":"ha","hm":"h:mm","h":"h"},"24":{"ahmsz":"H:mm:ss z","ahms":"H:mm:ss","hmsz":"H:mm:ss z","hms":"H:mm:ss","ahmz":"H:mm z","ahm":"H:mm","hmz":"H:mm z","hm":"H:mm","h":"H"}}}};
 ilib.data.dateformats_zu = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"d MMM","l":"MMM d"},"dmy":{"s":"M/d/yy","m":"d MMM yy","l":"MMM d, yyyy","f":"dd MMMM yyyy"},"my":{"m":"MMM yy"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, M/d/yy","m":"EE, M/d/yy","l":"EEE, MMM d, yyyy","f":"EEEE, MMM d, yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sm}/{sd}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sm} {sd}, {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sm} {sd} – {et} {ed} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","f":"{st} {sm} {sd} – {et} {ed} {ey}"},"c02":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sm} {sd} – {et} {em} {ed} {ey}","f":"{st} {sm} {sd} – {et} {em} {ed} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}"},"c10":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} – {ed} {ey}","f":"{sm} {sd} – {ed} {ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}"},"c11":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} – {em} {ed} {ey}","f":"{sm} {sd} – {em} {ed} {ey}"},"c12":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} {sy} – {em} {ed} {ey}","f":"{sm} {sd} {sy} – {em} {ed} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_zxx = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"EE d/MM/yy","m":"EEE d/MM/yyyy","l":"EEE d MMM, yyyy","f":"EEEE d MMMM, yyyy"},"dmy":{"s":"d/MM/yy","m":"d/MM/yyyy","l":"d MMM, yyyy","f":"d MMMM, yyyy"},"dmw":{"s":"EE d/M","m":"EE d/MM","l":"EEE d MMM","f":"EEEE d MMMM"},"dm":{"s":"d/M","m":"d/M","l":"d MMM","f":"d MMMM"},"my":{"s":"M/yy","m":"MM/yyyy","l":"MMM yy","f":"MMMM yyyy"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yy","l":"yyyy","f":"yyyy G"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}}},"julian":"gregorian"};
-ilib.data.sysres = {"MMMM1":"January","MMM1":"Jan","NN1":"Ja","N1":"J","MMMM2":"February","MMM2":"Feb","NN2":"Fe","N2":"F","MMMM3":"March","MMM3":"Mar","NN3":"Ma","N3":"M","MMMM4":"April","MMM4":"Apr","NN4":"Ap","N4":"A","MMMM5":"May","MMM5":"May","NN5":"Ma","N5":"M","MMMM6":"June","MMM6":"Jun","NN6":"Ju","N6":"J","MMMM7":"July","MMM7":"Jul","NN7":"Ju","N7":"J","MMMM8":"August","MMM8":"Aug","NN8":"Au","N8":"A","MMMM9":"September","MMM9":"Sep","NN9":"Se","N9":"S","MMMM10":"October","MMM10":"Oct","NN10":"Oc","N10":"O","MMMM11":"November","MMM11":"Nov","NN11":"No","N11":"N","MMMM12":"December","MMM12":"Dec","NN12":"De","N12":"D","EEEE0":"Sunday","EEE0":"Sun","EE0":"Su","E0":"S","EEEE1":"Monday","EEE1":"Mon","EE1":"Mo","E1":"M","EEEE2":"Tuesday","EEE2":"Tue","EE2":"Tu","E2":"T","EEEE3":"Wednesday","EEE3":"Wed","EE3":"We","E3":"W","EEEE4":"Thursday","EEE4":"Thu","EE4":"Th","E4":"T","EEEE5":"Friday","EEE5":"Fri","EE5":"Fr","E5":"F","EEEE6":"Saturday","EEE6":"Sat","EE6":"Sa","E6":"S","ordinalChoice":"1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th","a0":"AM","a1":"PM","G-1":"BCE","G1":"CE","separatorFull":", ","finalSeparatorFull":", and ","separatorShort":" ","separatorMedium":" ","separatorLong":", ","N1-hebrew":"N","N2-hebrew":"I","N3-hebrew":"S","N4-hebrew":"T","N5-hebrew":"A","N6-hebrew":"E","N7-hebrew":"T","N8-hebrew":"Ḥ","N9-hebrew":"K","N10-hebrew":"T","N11-hebrew":"S","N12-hebrew":"A","N13-hebrew":"A","NN1-hebrew":"Ni","NN2-hebrew":"Iy","NN3-hebrew":"Si","NN4-hebrew":"Ta","NN5-hebrew":"Av","NN6-hebrew":"El","NN7-hebrew":"Ti","NN8-hebrew":"Ḥe","NN9-hebrew":"Ki","NN10-hebrew":"Te","NN11-hebrew":"Sh","NN12-hebrew":"Ad","NN13-hebrew":"A2","MMM1-hebrew":"Nis","MMM2-hebrew":"Iyy","MMM3-hebrew":"Siv","MMM4-hebrew":"Tam","MMM5-hebrew":"Av","MMM6-hebrew":"Elu","MMM7-hebrew":"Tis","MMM8-hebrew":"Ḥes","MMM9-hebrew":"Kis","MMM10-hebrew":"Tev","MMM11-hebrew":"She","MMM12-hebrew":"Ada","MMM13-hebrew":"Ad2","MMMM1-hebrew":"Nisan","MMMM2-hebrew":"Iyyar","MMMM3-hebrew":"Sivan","MMMM4-hebrew":"Tammuz","MMMM5-hebrew":"Av","MMMM6-hebrew":"Elul","MMMM7-hebrew":"Tishri","MMMM8-hebrew":"Ḥeshvan","MMMM9-hebrew":"Kislev","MMMM10-hebrew":"Teveth","MMMM11-hebrew":"Shevat","MMMM12-hebrew":"Adar","MMMM13-hebrew":"Adar II","E0-hebrew":"R","E1-hebrew":"S","E2-hebrew":"S","E3-hebrew":"R","E4-hebrew":"Ḥ","E5-hebrew":"S","E6-hebrew":"S","EE0-hebrew":"ri","EE1-hebrew":"se","EE2-hebrew":"sl","EE3-hebrew":"rv","EE4-hebrew":"ḥa","EE5-hebrew":"si","EE6-hebrew":"sa","EEE0-hebrew":"ris","EEE1-hebrew":"she","EEE2-hebrew":"shl","EEE3-hebrew":"rvi","EEE4-hebrew":"ḥam","EEE5-hebrew":"shi","EEE6-hebrew":"sha","EEEE0-hebrew":"yom rishon","EEEE1-hebrew":"yom sheni","EEEE2-hebrew":"yom shlishi","EEEE3-hebrew":"yom r'vi‘i","EEEE4-hebrew":"yom ḥamishi","EEEE5-hebrew":"yom shishi","EEEE6-hebrew":"yom shabbat","N1-islamic":"M","N2-islamic":"Ṣ","N3-islamic":"R","N4-islamic":"R","N5-islamic":"J","N6-islamic":"J","N7-islamic":"R","N8-islamic":"Š","N9-islamic":"R","N10-islamic":"Š","N11-islamic":"Q","N12-islamic":"Ḥ","NN1-islamic":"Mu","NN2-islamic":"Ṣa","NN3-islamic":"Rb","NN4-islamic":"R2","NN5-islamic":"Ju","NN6-islamic":"J2","NN7-islamic":"Ra","NN8-islamic":"Šh","NN9-islamic":"Ra","NN10-islamic":"Ša","NN11-islamic":"Qa","NN12-islamic":"Ḥi","MMM1-islamic":"Muḥ","MMM2-islamic":"Ṣaf","MMM3-islamic":"Rab","MMM4-islamic":"Ra2","MMM5-islamic":"Jum","MMM6-islamic":"Ju2","MMM7-islamic":"Raj","MMM8-islamic":"Šha","MMM9-islamic":"Ram","MMM10-islamic":"Šaw","MMM11-islamic":"Qad","MMM12-islamic":"Ḥij","MMMM1-islamic":"Muḥarram","MMMM2-islamic":"Ṣafar","MMMM3-islamic":"Rabī‘ I","MMMM4-islamic":"Rabī‘ II","MMMM5-islamic":"Jumādā I","MMMM6-islamic":"Jumādā II","MMMM7-islamic":"Rajab","MMMM8-islamic":"Šha'bān","MMMM9-islamic":"Ramaḍān","MMMM10-islamic":"Šawwāl","MMMM11-islamic":"Ḏu al-Qa‘da","MMMM12-islamic":"Ḏu al-Ḥijja","E0-islamic":"A","E1-islamic":"I","E2-islamic":"T","E3-islamic":"A","E4-islamic":"K","E5-islamic":"J","E6-islamic":"S","EE0-islamic":"ah","EE1-islamic":"it","EE2-islamic":"th","EE3-islamic":"ar","EE4-islamic":"kh","EE5-islamic":"ju","EE6-islamic":"sa","EEE0-islamic":"aha","EEE1-islamic":"ith","EEE2-islamic":"tha","EEE3-islamic":"arb","EEE4-islamic":"kha","EEE5-islamic":"jum","EEE6-islamic":"sab","EEEE0-islamic":"yawn al-ahad","EEEE1-islamic":"yawn al-ithnaya","EEEE2-islamic":"yawn uth-thalathaa","EEEE3-islamic":"yawn al-arba‘a","EEEE4-islamic":"yawn al-khamis","EEEE5-islamic":"yawn al-jum‘a","EEEE6-islamic":"yawn as-sabt","N1-persian":"F","N2-persian":"O","N3-persian":"K","N4-persian":"T","N5-persian":"M","N6-persian":"S","N7-persian":"M","N8-persian":"A","N9-persian":"A","N10-persian":"D","N11-persian":"B","N12-persian":"E","NN1-persian":"Fa","NN2-persian":"Or","NN3-persian":"Kh","NN4-persian":"Ti","NN5-persian":"Mo","NN6-persian":"Sh","NN7-persian":"Me","NN8-persian":"Ab","NN9-persian":"Az","NN10-persian":"De","NN11-persian":"Ba","NN12-persian":"Es","MMM1-persian":"Far","MMM2-persian":"Ord","MMM3-persian":"Kho","MMM4-persian":"Tir","MMM5-persian":"Mor","MMM6-persian":"Sha","MMM7-persian":"Meh","MMM8-persian":"Aba","MMM9-persian":"Aza","MMM10-persian":"Dey","MMM11-persian":"Bah","MMM12-persian":"Esf","MMMM1-persian":"Farvardin","MMMM2-persian":"Ordibehesht","MMMM3-persian":"Khordad","MMMM4-persian":"Tir","MMMM5-persian":"Mordad","MMMM6-persian":"Shahrivar","MMMM7-persian":"Mehr","MMMM8-persian":"Aban","MMMM9-persian":"Azar","MMMM10-persian":"Dey","MMMM11-persian":"Bahman","MMMM12-persian":"Esfand","EE0-persian":"Ye","EE1-persian":"Do","EE2-persian":"Se","EE3-persian":"Ch","EE4-persian":"Pa","EE5-persian":"Jo","EE6-persian":"Sh","EEE0-persian":"Yek","EEE1-persian":"Dos","EEE2-persian":"Ses","EEE3-persian":"Cha","EEE4-persian":"Pan","EEE5-persian":"Jom","EEE6-persian":"Sha","EEEE0-persian":"Yekshanbeh","EEEE1-persian":"Doshanbeh","EEEE2-persian":"Seshhanbeh","EEEE3-persian":"Chaharshanbeh","EEEE4-persian":"Panjshanbeh","EEEE5-persian":"Jomeh","EEEE6-persian":"Shanbeh","N1-persian-astro":"F","N2-persian-astro":"O","N3-persian-astro":"K","N4-persian-astro":"T","N5-persian-astro":"M","N6-persian-astro":"S","N7-persian-astro":"M","N8-persian-astro":"A","N9-persian-astro":"A","N10-persian-astro":"D","N11-persian-astro":"B","N12-persian-astro":"E","NN1-persian-astro":"Fa","NN2-persian-astro":"Or","NN3-persian-astro":"Kh","NN4-persian-astro":"Ti","NN5-persian-astro":"Mo","NN6-persian-astro":"Sh","NN7-persian-astro":"Me","NN8-persian-astro":"Ab","NN9-persian-astro":"Az","NN10-persian-astro":"De","NN11-persian-astro":"Ba","NN12-persian-astro":"Es","MMM1-persian-astro":"Far","MMM2-persian-astro":"Ord","MMM3-persian-astro":"Kho","MMM4-persian-astro":"Tir","MMM5-persian-astro":"Mor","MMM6-persian-astro":"Sha","MMM7-persian-astro":"Meh","MMM8-persian-astro":"Aba","MMM9-persian-astro":"Aza","MMM10-persian-astro":"Dey","MMM11-persian-astro":"Bah","MMM12-persian-astro":"Esf","MMMM1-persian-astro":"Farvardin","MMMM2-persian-astro":"Ordibehesht","MMMM3-persian-astro":"Khordad","MMMM4-persian-astro":"Tir","MMMM5-persian-astro":"Mordad","MMMM6-persian-astro":"Shahrivar","MMMM7-persian-astro":"Mehr","MMMM8-persian-astro":"Aban","MMMM9-persian-astro":"Azar","MMMM10-persian-astro":"Dey","MMMM11-persian-astro":"Bahman","MMMM12-persian-astro":"Esfand","EE0-persian-astro":"Ye","EE1-persian-astro":"Do","EE2-persian-astro":"Se","EE3-persian-astro":"Ch","EE4-persian-astro":"Pa","EE5-persian-astro":"Jo","EE6-persian-astro":"Sh","EEE0-persian-astro":"Yek","EEE1-persian-astro":"Dos","EEE2-persian-astro":"Ses","EEE3-persian-astro":"Cha","EEE4-persian-astro":"Pan","EEE5-persian-astro":"Jom","EEE6-persian-astro":"Sha","EEEE0-persian-astro":"Yekshanbeh","EEEE1-persian-astro":"Doshanbeh","EEEE2-persian-astro":"Seshhanbeh","EEEE3-persian-astro":"Chaharshanbeh","EEEE4-persian-astro":"Panjshanbeh","EEEE5-persian-astro":"Jomeh","EEEE6-persian-astro":"Shanbeh"};
+ilib.data.sysres = {"MMMM1":"January","MMM1":"Jan","NN1":"Ja","N1":"J","MMMM2":"February","MMM2":"Feb","NN2":"Fe","N2":"F","MMMM3":"March","MMM3":"Mar","NN3":"Ma","N3":"M","MMMM4":"April","MMM4":"Apr","NN4":"Ap","N4":"A","MMMM5":"May","MMM5":"May","NN5":"Ma","N5":"M","MMMM6":"June","MMM6":"Jun","NN6":"Ju","N6":"J","MMMM7":"July","MMM7":"Jul","NN7":"Ju","N7":"J","MMMM8":"August","MMM8":"Aug","NN8":"Au","N8":"A","MMMM9":"September","MMM9":"Sep","NN9":"Se","N9":"S","MMMM10":"October","MMM10":"Oct","NN10":"Oc","N10":"O","MMMM11":"November","MMM11":"Nov","NN11":"No","N11":"N","MMMM12":"December","MMM12":"Dec","NN12":"De","N12":"D","EEEE0":"Sunday","EEE0":"Sun","EE0":"Su","E0":"S","EEEE1":"Monday","EEE1":"Mon","EE1":"Mo","E1":"M","EEEE2":"Tuesday","EEE2":"Tue","EE2":"Tu","E2":"T","EEEE3":"Wednesday","EEE3":"Wed","EE3":"We","E3":"W","EEEE4":"Thursday","EEE4":"Thu","EE4":"Th","E4":"T","EEEE5":"Friday","EEE5":"Fri","EE5":"Fr","E5":"F","EEEE6":"Saturday","EEE6":"Sat","EE6":"Sa","E6":"S","ordinalChoice":"1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th","a0":"AM","a1":"PM","azh0":"AM","azh1":"AM","azh2":"AM","azh3":"PM","azh4":"PM","azh5":"PM","azh6":"PM","G-1":"BCE","G1":"CE","separatorFull":", ","finalSeparatorFull":", and ","separatorShort":" ","separatorMedium":" ","separatorLong":", ","N1-hebrew":"N","N2-hebrew":"I","N3-hebrew":"S","N4-hebrew":"T","N5-hebrew":"A","N6-hebrew":"E","N7-hebrew":"T","N8-hebrew":"Ḥ","N9-hebrew":"K","N10-hebrew":"T","N11-hebrew":"S","N12-hebrew":"A","N13-hebrew":"A","NN1-hebrew":"Ni","NN2-hebrew":"Iy","NN3-hebrew":"Si","NN4-hebrew":"Ta","NN5-hebrew":"Av","NN6-hebrew":"El","NN7-hebrew":"Ti","NN8-hebrew":"Ḥe","NN9-hebrew":"Ki","NN10-hebrew":"Te","NN11-hebrew":"Sh","NN12-hebrew":"Ad","NN13-hebrew":"A2","MMM1-hebrew":"Nis","MMM2-hebrew":"Iyy","MMM3-hebrew":"Siv","MMM4-hebrew":"Tam","MMM5-hebrew":"Av","MMM6-hebrew":"Elu","MMM7-hebrew":"Tis","MMM8-hebrew":"Ḥes","MMM9-hebrew":"Kis","MMM10-hebrew":"Tev","MMM11-hebrew":"She","MMM12-hebrew":"Ada","MMM13-hebrew":"Ad2","MMMM1-hebrew":"Nisan","MMMM2-hebrew":"Iyyar","MMMM3-hebrew":"Sivan","MMMM4-hebrew":"Tammuz","MMMM5-hebrew":"Av","MMMM6-hebrew":"Elul","MMMM7-hebrew":"Tishri","MMMM8-hebrew":"Ḥeshvan","MMMM9-hebrew":"Kislev","MMMM10-hebrew":"Teveth","MMMM11-hebrew":"Shevat","MMMM12-hebrew":"Adar","MMMM13-hebrew":"Adar II","E0-hebrew":"R","E1-hebrew":"S","E2-hebrew":"S","E3-hebrew":"R","E4-hebrew":"Ḥ","E5-hebrew":"S","E6-hebrew":"S","EE0-hebrew":"ri","EE1-hebrew":"se","EE2-hebrew":"sl","EE3-hebrew":"rv","EE4-hebrew":"ḥa","EE5-hebrew":"si","EE6-hebrew":"sa","EEE0-hebrew":"ris","EEE1-hebrew":"she","EEE2-hebrew":"shl","EEE3-hebrew":"rvi","EEE4-hebrew":"ḥam","EEE5-hebrew":"shi","EEE6-hebrew":"sha","EEEE0-hebrew":"yom rishon","EEEE1-hebrew":"yom sheni","EEEE2-hebrew":"yom shlishi","EEEE3-hebrew":"yom r'vi‘i","EEEE4-hebrew":"yom ḥamishi","EEEE5-hebrew":"yom shishi","EEEE6-hebrew":"yom shabbat","N1-islamic":"M","N2-islamic":"Ṣ","N3-islamic":"R","N4-islamic":"R","N5-islamic":"J","N6-islamic":"J","N7-islamic":"R","N8-islamic":"Š","N9-islamic":"R","N10-islamic":"Š","N11-islamic":"Q","N12-islamic":"Ḥ","NN1-islamic":"Mu","NN2-islamic":"Ṣa","NN3-islamic":"Rb","NN4-islamic":"R2","NN5-islamic":"Ju","NN6-islamic":"J2","NN7-islamic":"Ra","NN8-islamic":"Šh","NN9-islamic":"Ra","NN10-islamic":"Ša","NN11-islamic":"Qa","NN12-islamic":"Ḥi","MMM1-islamic":"Muḥ","MMM2-islamic":"Ṣaf","MMM3-islamic":"Rab","MMM4-islamic":"Ra2","MMM5-islamic":"Jum","MMM6-islamic":"Ju2","MMM7-islamic":"Raj","MMM8-islamic":"Šha","MMM9-islamic":"Ram","MMM10-islamic":"Šaw","MMM11-islamic":"Qad","MMM12-islamic":"Ḥij","MMMM1-islamic":"Muḥarram","MMMM2-islamic":"Ṣafar","MMMM3-islamic":"Rabī‘ I","MMMM4-islamic":"Rabī‘ II","MMMM5-islamic":"Jumādā I","MMMM6-islamic":"Jumādā II","MMMM7-islamic":"Rajab","MMMM8-islamic":"Šha'bān","MMMM9-islamic":"Ramaḍān","MMMM10-islamic":"Šawwāl","MMMM11-islamic":"Ḏu al-Qa‘da","MMMM12-islamic":"Ḏu al-Ḥijja","E0-islamic":"A","E1-islamic":"I","E2-islamic":"T","E3-islamic":"A","E4-islamic":"K","E5-islamic":"J","E6-islamic":"S","EE0-islamic":"ah","EE1-islamic":"it","EE2-islamic":"th","EE3-islamic":"ar","EE4-islamic":"kh","EE5-islamic":"ju","EE6-islamic":"sa","EEE0-islamic":"aha","EEE1-islamic":"ith","EEE2-islamic":"tha","EEE3-islamic":"arb","EEE4-islamic":"kha","EEE5-islamic":"jum","EEE6-islamic":"sab","EEEE0-islamic":"yawn al-ahad","EEEE1-islamic":"yawn al-ithnaya","EEEE2-islamic":"yawn uth-thalathaa","EEEE3-islamic":"yawn al-arba‘a","EEEE4-islamic":"yawn al-khamis","EEEE5-islamic":"yawn al-jum‘a","EEEE6-islamic":"yawn as-sabt","N1-persian":"F","N2-persian":"O","N3-persian":"K","N4-persian":"T","N5-persian":"M","N6-persian":"S","N7-persian":"M","N8-persian":"A","N9-persian":"A","N10-persian":"D","N11-persian":"B","N12-persian":"E","NN1-persian":"Fa","NN2-persian":"Or","NN3-persian":"Kh","NN4-persian":"Ti","NN5-persian":"Mo","NN6-persian":"Sh","NN7-persian":"Me","NN8-persian":"Ab","NN9-persian":"Az","NN10-persian":"De","NN11-persian":"Ba","NN12-persian":"Es","MMM1-persian":"Far","MMM2-persian":"Ord","MMM3-persian":"Kho","MMM4-persian":"Tir","MMM5-persian":"Mor","MMM6-persian":"Sha","MMM7-persian":"Meh","MMM8-persian":"Aba","MMM9-persian":"Aza","MMM10-persian":"Dey","MMM11-persian":"Bah","MMM12-persian":"Esf","MMMM1-persian":"Farvardin","MMMM2-persian":"Ordibehesht","MMMM3-persian":"Khordad","MMMM4-persian":"Tir","MMMM5-persian":"Mordad","MMMM6-persian":"Shahrivar","MMMM7-persian":"Mehr","MMMM8-persian":"Aban","MMMM9-persian":"Azar","MMMM10-persian":"Dey","MMMM11-persian":"Bahman","MMMM12-persian":"Esfand","EE0-persian":"Ye","EE1-persian":"Do","EE2-persian":"Se","EE3-persian":"Ch","EE4-persian":"Pa","EE5-persian":"Jo","EE6-persian":"Sh","EEE0-persian":"Yek","EEE1-persian":"Dos","EEE2-persian":"Ses","EEE3-persian":"Cha","EEE4-persian":"Pan","EEE5-persian":"Jom","EEE6-persian":"Sha","EEEE0-persian":"Yekshanbeh","EEEE1-persian":"Doshanbeh","EEEE2-persian":"Seshhanbeh","EEEE3-persian":"Chaharshanbeh","EEEE4-persian":"Panjshanbeh","EEEE5-persian":"Jomeh","EEEE6-persian":"Shanbeh","N1-persian-algo":"F","N2-persian-algo":"O","N3-persian-algo":"K","N4-persian-algo":"T","N5-persian-algo":"M","N6-persian-algo":"S","N7-persian-algo":"M","N8-persian-algo":"A","N9-persian-algo":"A","N10-persian-algo":"D","N11-persian-algo":"B","N12-persian-algo":"E","NN1-persian-algo":"Fa","NN2-persian-algo":"Or","NN3-persian-algo":"Kh","NN4-persian-algo":"Ti","NN5-persian-algo":"Mo","NN6-persian-algo":"Sh","NN7-persian-algo":"Me","NN8-persian-algo":"Ab","NN9-persian-algo":"Az","NN10-persian-algo":"De","NN11-persian-algo":"Ba","NN12-persian-algo":"Es","MMM1-persian-algo":"Far","MMM2-persian-algo":"Ord","MMM3-persian-algo":"Kho","MMM4-persian-algo":"Tir","MMM5-persian-algo":"Mor","MMM6-persian-algo":"Sha","MMM7-persian-algo":"Meh","MMM8-persian-algo":"Aba","MMM9-persian-algo":"Aza","MMM10-persian-algo":"Dey","MMM11-persian-algo":"Bah","MMM12-persian-algo":"Esf","MMMM1-persian-algo":"Farvardin","MMMM2-persian-algo":"Ordibehesht","MMMM3-persian-algo":"Khordad","MMMM4-persian-algo":"Tir","MMMM5-persian-algo":"Mordad","MMMM6-persian-algo":"Shahrivar","MMMM7-persian-algo":"Mehr","MMMM8-persian-algo":"Aban","MMMM9-persian-algo":"Azar","MMMM10-persian-algo":"Dey","MMMM11-persian-algo":"Bahman","MMMM12-persian-algo":"Esfand","EE0-persian-algo":"Ye","EE1-persian-algo":"Do","EE2-persian-algo":"Se","EE3-persian-algo":"Ch","EE4-persian-algo":"Pa","EE5-persian-algo":"Jo","EE6-persian-algo":"Sh","EEE0-persian-algo":"Yek","EEE1-persian-algo":"Dos","EEE2-persian-algo":"Ses","EEE3-persian-algo":"Cha","EEE4-persian-algo":"Pan","EEE5-persian-algo":"Jom","EEE6-persian-algo":"Sha","EEEE0-persian-algo":"Yekshanbeh","EEEE1-persian-algo":"Doshanbeh","EEEE2-persian-algo":"Seshhanbeh","EEEE3-persian-algo":"Chaharshanbeh","EEEE4-persian-algo":"Panjshanbeh","EEEE5-persian-algo":"Jomeh","EEEE6-persian-algo":"Shanbeh","M1-thaisolar":"M","M2-thaisolar":"K","M3-thaisolar":"M","M4-thaisolar":"M","M5-thaisolar":"P","M6-thaisolar":"M","M7-thaisolar":"K","M8-thaisolar":"S","M9-thaisolar":"K","M10-thaisolar":"T","M11-thaisolar":"P","M12-thaisolar":"T","MM1-thaisolar":"MaK","MM2-thaisolar":"KP","MM3-thaisolar":"MiK","MM4-thaisolar":"MY","MM5-thaisolar":"PK","MM6-thaisolar":"MY","MM7-thaisolar":"KK","MM8-thaisolar":"SK","MM9-thaisolar":"KY","MM10-thaisolar":"TuK","MM11-thaisolar":"PY","MM12-thaisolar":"ThK","MMM1-thaisolar":"Ma.K.","MMM2-thaisolar":"Ku.P.","MMM3-thaisolar":"Mi.K.","MMM4-thaisolar":"Me.Y.","MMM5-thaisolar":"Ph.K.","MMM6-thaisolar":"Mi.Y.","MMM7-thaisolar":"Ka.K.","MMM8-thaisolar":"Si.K.","MMM9-thaisolar":"Ka.Y.","MMM10-thaisolar":"Tu.K.","MMM11-thaisolar":"Ph.Y.","MMM12-thaisolar":"Th.K.","MMMM1-thaisolar":"Makarakhom","MMMM2-thaisolar":"Kumphaphan","MMMM3-thaisolar":"Minakhom","MMMM4-thaisolar":"Mesayon","MMMM5-thaisolar":"Phruetsaphakhom","MMMM6-thaisolar":"Mithunayon","MMMM7-thaisolar":"Karakadakhom","MMMM8-thaisolar":"Singhakhom","MMMM9-thaisolar":"Kanyayon","MMMM10-thaisolar":"Tulakhom","MMMM11-thaisolar":"Phruetsachikayon","MMMM12-thaisolar":"Thanwakhom","E0-thaisolar":"A","E1-thaisolar":"C","E2-thaisolar":"A","E3-thaisolar":"P","E4-thaisolar":"P","E5-thaisolar":"S","E6-thaisolar":"S","EE0-thaisolar":"at","EE1-thaisolar":"ch","EE2-thaisolar":"an","EE3-thaisolar":"pu","EE4-thaisolar":"pr","EE5-thaisolar":"su","EE6-thaisolar":"sa","EEE0-thaisolar":"ath","EEE1-thaisolar":"cha","EEE2-thaisolar":"ang","EEE3-thaisolar":"phu","EEE4-thaisolar":"phr","EEE5-thaisolar":"suk","EEE6-thaisolar":"sao","EEEE0-thaisolar":"wan athit","EEEE1-thaisolar":"wan chan","EEEE2-thaisolar":"wan angkhan","EEEE3-thaisolar":"wan phut","EEEE4-thaisolar":"wan phruehatsabodi","EEEE5-thaisolar":"wan suk","EEEE6-thaisolar":"wan sao"};
 ilib.data.sysres_aa = {"generated":true,"NN1":"1","NN2":"2","NN3":"3","NN4":"4","NN5":"5","NN6":"6","NN7":"7","NN8":"8","NN9":"9","NN10":"10","NN11":"11","NN12":"12","MMM1":"1","MMM2":"2","MMM3":"3","MMM4":"4","MMM5":"5","MMM6":"6","MMM7":"7","MMM8":"8","MMM9":"9","MMM10":"10","MMM11":"11","MMM12":"12","MMMM1":"1","MMMM2":"2","MMMM3":"3","MMMM4":"4","MMMM5":"5","MMMM6":"6","MMMM7":"7","MMMM8":"8","MMMM9":"9","MMMM10":"10","MMMM11":"11","MMMM12":"12","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"1","EE1":"2","EE2":"3","EE3":"4","EE4":"5","EE5":"6","EE6":"7","EEE0":"1","EEE1":"2","EEE2":"3","EEE3":"4","EEE4":"5","EEE5":"6","EEE6":"7","EEEE0":"1","EEEE1":"2","EEEE2":"3","EEEE3":"4","EEEE4":"5","EEEE5":"6","EEEE6":"7","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_af = {"N1":"J","N2":"F","N3":"M","N4":"A","N5":"M","N6":"J","N7":"J","N8":"A","N9":"S","N10":"O","N11":"N","N12":"D","NN1":"Ja","NN2":"Fe","NN3":"Ma","NN4":"Ap","NN5":"Me","NN6":"Ju","NN7":"Ju","NN8":"Au","NN9":"Se","NN10":"Ok","NN11":"No","NN12":"De","MMM1":"Jan","MMM2":"Feb","MMM3":"Mar","MMM4":"Apr","MMM5":"Mei","MMM6":"Jun","MMM7":"Jul","MMM8":"Aug","MMM9":"Sep","MMM10":"Okt","MMM11":"Nov","MMM12":"Des","MMMM1":"Januarie","MMMM2":"Februarie","MMMM3":"Maart","MMMM4":"April","MMMM5":"Mei","MMMM6":"Junie","MMMM7":"Julie","MMMM8":"Augustus","MMMM9":"September","MMMM10":"Oktober","MMMM11":"November","MMMM12":"Desember","E0":"S","E1":"M","E2":"D","E3":"W","E4":"D","E5":"V","E6":"S","EE0":"So","EE1":"Ma","EE2":"Di","EE3":"Wo","EE4":"Do","EE5":"Vr","EE6":"Sa","EEE0":"So","EEE1":"Ma","EEE2":"Di","EEE3":"Wo","EEE4":"Do","EEE5":"Vr","EEE6":"Sa","EEEE0":"Sondag","EEEE1":"Maandag","EEEE2":"Dinsdag","EEEE3":"Woensdag","EEEE4":"Donderdag","EEEE5":"Vrydag","EEEE6":"Saterdag","a0":"vm.","a1":"nm.","G-1":"v.C.","G1":"n.C.","in {duration}":"in {duration}","{duration} ago":"{duration} gelede","1#1 year|#{num} years":"#{num} jaar","1#1 month|#{num} months":"1#{num} maand|#{num} maande","1#1 week|#{num} weeks":"1#{num} week|#{num} weke","1#1 day|#{num} days":"1#{num} dag|#{num} dae","1#1 hour|#{num} hours":"#{num} uur","1#1 minute|#{num} minutes":"1#{num} minuut|#{num} minute","1#1 second|#{num} seconds":"1#{num} sekonde|#{num} sekondes","1#1 yr|#{num} yrs":"#{num} jr","1#1 mon|#{num} mons":"1#{num} mnd|#{num} mnde","1#1 wk|#{num} wks":"1#{num} week|#{num} weke","durationLongDays":"1#{num} dag|#{num} dae","1#1 hr|#{num} hrs":"#{num} uur","1#1 min|#{num} min":"#{num} min","1#1 sec|#{num} sec":"#{num} sek","durationMediumYears":"#{num} jr","1#1 mo|#{num} mos":"#{num} ma","durationMediumWeeks":"#{num} we","1#1 dy|#{num} dys":"#{num} da","durationMediumHours":"#{num} uu","1#1 mi|#{num} min":"#{num} mi","1#1 se|#{num} sec":"#{num} se","#{num}y":"#{num}j","durationShortMonths":"#{num}m","#{num}w":"#{num}w","#{num}d":"#{num}d","#{num}h":"#{num}u","durationShortMinutes":"#{num}m","#{num}s":"#{num}s","separatorShort":" ","separatorMedium":" ","separatorLong":" ","separatorFull":", ","finalSeparatorFull":" en ","durationShortMillis":"#{num}ms","#{num} ms":"#{num} ms"};
 ilib.data.sysres_agq = {"generated":true,"NN1":"nù","NN2":"kɨ","NN3":"tɨ","NN4":"ta","NN5":"se","NN6":"nz","NN7":"du","NN8":"fɔ","NN9":"dz","NN10":"lɔ","NN11":"ka","NN12":"fw","MMM1":"nùm","MMM2":"kɨz","MMM3":"tɨd","MMM4":"taa","MMM5":"see","MMM6":"nzu","MMM7":"dum","MMM8":"fɔe","MMM9":"dzu","MMM10":"lɔm","MMM11":"kaa","MMM12":"fwo","MMMM1":"ndzɔ̀ŋɔ̀nùm","MMMM2":"ndzɔ̀ŋɔ̀kƗ̀zùʔ","MMMM3":"ndzɔ̀ŋɔ̀tƗ̀dʉ̀ghà","MMMM4":"ndzɔ̀ŋɔ̀tǎafʉ̄ghā","MMMM5":"ndzɔ̀ŋèsèe","MMMM6":"ndzɔ̀ŋɔ̀nzùghò","MMMM7":"ndzɔ̀ŋɔ̀dùmlo","MMMM8":"ndzɔ̀ŋɔ̀kwîfɔ̀e","MMMM9":"ndzɔ̀ŋɔ̀tƗ̀fʉ̀ghàdzughù","MMMM10":"ndzɔ̀ŋɔ̀ghǔuwelɔ̀m","MMMM11":"ndzɔ̀ŋɔ̀chwaʔàkaa wo","MMMM12":"ndzɔ̀ŋèfwòo","E0":"n","E1":"k","E2":"g","E3":"t","E4":"u","E5":"g","E6":"d","EE0":"nt","EE1":"kp","EE2":"gh","EE3":"tɔ","EE4":"um","EE5":"gh","EE6":"dz","EEE0":"nts","EEE1":"kpa","EEE2":"ghɔ","EEE3":"tɔm","EEE4":"ume","EEE5":"ghɨ","EEE6":"dzk","EEEE0":"tsuʔntsɨ","EEEE1":"tsuʔukpà","EEEE2":"tsuʔughɔe","EEEE3":"tsuʔutɔ̀mlò","EEEE4":"tsuʔumè","EEEE5":"tsuʔughɨ̂m","EEEE6":"tsuʔndzɨkɔʔɔ","a0":"a.g","a1":"a.k","G-1":"SK","G1":"BK","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
@@ -7222,8 +7276,8 @@ ilib.data.sysres_es = {"MMMM1":"enero","MMM1":"ene","NN1":"en","N1":"E","MMMM2":
 ilib.data.sysres_es_ES = {"E3":"X","in {duration}":"dentro de {duration}"};
 ilib.data.sysres_es_GQ = {"E3":"X","in {duration}":"dentro de {duration}"};
 ilib.data.sysres_et = {"generated":true,"NN1":"ja","NN2":"ve","NN3":"mä","NN4":"ap","NN5":"ma","NN6":"ju","NN7":"ju","NN8":"au","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"jaan","MMM2":"veebr","MMM3":"märts","MMM4":"apr","MMM5":"mai","MMM6":"juuni","MMM7":"juuli","MMM8":"aug","MMM9":"sept","MMM10":"okt","MMM11":"nov","MMM12":"dets","MMMM1":"jaanuar","MMMM2":"veebruar","MMMM3":"märts","MMMM4":"aprill","MMMM5":"mai","MMMM6":"juuni","MMMM7":"juuli","MMMM8":"august","MMMM9":"september","MMMM10":"oktoober","MMMM11":"november","MMMM12":"detsember","E0":"P","E1":"E","E3":"K","E4":"N","E5":"R","E6":"L","EE0":"P","EE1":"E","EE2":"T","EE3":"K","EE4":"N","EE5":"R","EE6":"L","EEE0":"P","EEE1":"E","EEE2":"T","EEE3":"K","EEE4":"N","EEE5":"R","EEE6":"L","EEEE0":"pühapäev","EEEE1":"esmaspäev","EEEE2":"teisipäev","EEEE3":"kolmapäev","EEEE4":"neljapäev","EEEE5":"reede","EEEE6":"laupäev","G-1":"e.m.a.","G1":"m.a.j.","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekund|#{num} sekundit","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} min","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minut|#{num} minutit","#{num}h":"#{num}t","durationMediumHours":"#{num} tu","1#1 hr|#{num} hrs":"#{num} tun","1#1 hour|#{num} hours":"#{num} tundi","#{num}d":"#{num}ö","1#1 dy|#{num} dys":"#{num} öö","durationLongDays":"#{num} ööp","1#1 day|#{num} days":"one#{num} ööpäev|#{num} ööpäeva","#{num}w":"#{num}n","durationMediumWeeks":"#{num} nä","1#1 wk|#{num} wks":"#{num} näd","1#1 week|#{num} weeks":"one#{num} nädal|#{num} nädalat","durationShortMonths":"#{num}k","1#1 mo|#{num} mos":"#{num} ku","1#1 mon|#{num} mons":"one#{num} kuu|#{num} kuud","1#1 month|#{num} months":"one#{num} kuu|#{num} kuud","#{num}y":"#{num}a","durationMediumYears":"#{num} aa","1#1 yr|#{num} yrs":"#{num} aas","1#1 year|#{num} years":"one#{num} aasta|#{num} aastat","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":" ja ","separatorLong":" "};
-ilib.data.sysres_fa = {"generated":true,"NN1":"ژا","NN2":"فو","NN3":"ما","NN4":"آو","NN5":"مه","NN6":"ژو","NN7":"ژو","NN8":"او","NN9":"سپ","NN10":"اک","NN11":"نو","NN12":"دس","MMM1":"ژانویهٔ","MMM2":"فوریهٔ","MMM3":"مارس","MMM4":"آوریل","MMM5":"مهٔ","MMM6":"ژوئن","MMM7":"ژوئیهٔ","MMM8":"اوت","MMM9":"سپتامبر","MMM10":"اکتبر","MMM11":"نوامبر","MMM12":"دسامبر","MMMM1":"ژانویهٔ","MMMM2":"فوریهٔ","MMMM3":"مارس","MMMM4":"آوریل","MMMM5":"مهٔ","MMMM6":"ژوئن","MMMM7":"ژوئیهٔ","MMMM8":"اوت","MMMM9":"سپتامبر","MMMM10":"اکتبر","MMMM11":"نوامبر","MMMM12":"دسامبر","E0":"ی","E1":"د","E2":"س","E3":"چ","E4":"پ","E5":"ج","E6":"ش","EE0":"۱ش","EE1":"۲ش","EE2":"۳ش","EE3":"۴ش","EE4":"۵ش","EE5":"ج","EE6":"ش","EEE0":"یکشنبه","EEE1":"دوشنبه","EEE2":"سه‌شنبه","EEE3":"چهارشنبه","EEE4":"پنجشنبه","EEE5":"جمعه","EEE6":"شنبه","EEEE0":"یکشنبه","EEEE1":"دوشنبه","EEEE2":"سه‌شنبه","EEEE3":"چهارشنبه","EEEE4":"پنجشنبه","EEEE5":"جمعه","EEEE6":"شنبه","a0":"قبل‌ازظهر","a1":"بعدازظهر","G-1":"ق.م.","G1":"م.","#{num}s":"#{num}ث","1#1 se|#{num} sec":"#{num} ثا","1#1 sec|#{num} sec":"#{num} ثان","1#1 second|#{num} seconds":"#{num} ثانیه","durationShortMinutes":"#{num}د","1#1 mi|#{num} min":"#{num} دق","1#1 min|#{num} min":"#{num} دقی","1#1 minute|#{num} minutes":"#{num} دقیقه","#{num}h":"#{num}س","durationMediumHours":"#{num} سا","1#1 hr|#{num} hrs":"#{num} ساعت","1#1 hour|#{num} hours":"#{num} ساعت","#{num}d":"#{num}ر","1#1 dy|#{num} dys":"#{num} روز","durationLongDays":"#{num} روز","1#1 day|#{num} days":"#{num} روز","#{num}w":"#{num}ه","durationMediumWeeks":"#{num} هف","1#1 wk|#{num} wks":"#{num} هفته","1#1 week|#{num} weeks":"#{num} هفته","durationShortMonths":"#{num}م","1#1 mo|#{num} mos":"#{num} ماه","1#1 mon|#{num} mons":"#{num} ماه","1#1 month|#{num} months":"#{num} ماه","#{num}y":"#{num}س","durationMediumYears":"#{num} سال","1#1 yr|#{num} yrs":"#{num} سال","1#1 year|#{num} years":"#{num} سال","{duration} ago":"{duration} پیش","in {duration}":"{duration} بعد","separatorFull":"،‏ ","finalSeparatorFull":"، و ","separatorLong":" "};
-ilib.data.sysres_fa_AF = {"generated":true,"NN1":"جن","NN5":"مـ","NN7":"جو","MMM1":"جنو","MMM5":"مـی","MMM7":"جول","MMM12":"دسم","MMMM1":"جنوری","MMMM2":"فبروری","MMMM3":"مارچ","MMMM4":"اپریل","MMMM5":"می","MMMM6":"جون","MMMM7":"جولای","MMMM8":"اگست","MMMM9":"سپتمبر","MMMM10":"اکتوبر","MMMM11":"نومبر","MMMM12":"دسمبر"};
+ilib.data.sysres_fa = {"NN1":"ژا","NN2":"فو","NN3":"ما","NN4":"آو","NN5":"مه","NN6":"ژو","NN7":"ژو","NN8":"او","NN9":"سپ","NN10":"اک","NN11":"نو","NN12":"دس","MMM1":"ژانویهٔ","MMM2":"فوریهٔ","MMM3":"مارس","MMM4":"آوریل","MMM5":"مهٔ","MMM6":"ژوئن","MMM7":"ژوئیهٔ","MMM8":"اوت","MMM9":"سپتامبر","MMM10":"اکتبر","MMM11":"نوامبر","MMM12":"دسامبر","MMMM1":"ژانویهٔ","MMMM2":"فوریهٔ","MMMM3":"مارس","MMMM4":"آوریل","MMMM5":"مهٔ","MMMM6":"ژوئن","MMMM7":"ژوئیهٔ","MMMM8":"اوت","MMMM9":"سپتامبر","MMMM10":"اکتبر","MMMM11":"نوامبر","MMMM12":"دسامبر","E0":"ی.","E1":"د.","E2":"س.","E3":"چ.","E4":"پ.","E5":"ج.","E6":"ش.","EE0":"۱ش.","EE1":"۲ش.","EE2":"۳ش.","EE3":"۴ش.","EE4":"۵ش.","EE5":"ج.","EE6":"ش.","EEE0":"یکشنبه","EEE1":"دوشنبه","EEE2":"سه‌شنبه","EEE3":"چهارشنبه","EEE4":"پنجشنبه","EEE5":"جمعه","EEE6":"شنبه","EEEE0":"یکشنبه","EEEE1":"دوشنبه","EEEE2":"سه‌شنبه","EEEE3":"چهارشنبه","EEEE4":"پنجشنبه","EEEE5":"جمعه","EEEE6":"شنبه","a0":"قبل‌ازظهر","a1":"بعدازظهر","G-1":"ق.م.","G1":"م.","#{num}s":"#{num}ث","1#1 se|#{num} sec":"#{num} ثا","1#1 sec|#{num} sec":"#{num} ثان","1#1 second|#{num} seconds":"#{num} ثانیه","durationShortMinutes":"#{num}د","1#1 mi|#{num} min":"#{num} دق","1#1 min|#{num} min":"#{num} دقی","1#1 minute|#{num} minutes":"#{num} دقیقه","#{num}h":"#{num}س","durationMediumHours":"#{num} سا","1#1 hr|#{num} hrs":"#{num} ساعت","1#1 hour|#{num} hours":"#{num} ساعت","#{num}d":"#{num}ر","1#1 dy|#{num} dys":"#{num} روز","durationLongDays":"#{num} روز","1#1 day|#{num} days":"#{num} روز","#{num}w":"#{num}ه","durationMediumWeeks":"#{num} هف","1#1 wk|#{num} wks":"#{num} هفته","1#1 week|#{num} weeks":"#{num} هفته","durationShortMonths":"#{num}م","1#1 mo|#{num} mos":"#{num} ماه","1#1 mon|#{num} mons":"#{num} ماه","1#1 month|#{num} months":"#{num} ماه","#{num}y":"#{num}س","durationMediumYears":"#{num} سال","1#1 yr|#{num} yrs":"#{num} سال","1#1 year|#{num} years":"#{num} سال","{duration} ago":"‏{duration} پیش","in {duration}":"‏{duration} بعد","separatorFull":"،‏ ","finalSeparatorFull":"، و ","separatorLong":" ","E0-persian":"ی.","E1-persian":"د.","E2-persian":"س.","E3-persian":"چ.","E4-persian":"پ.","E5-persian":"ج.","E6-persian":"ش.","EE0-persian":"یکشنبه","EE1-persian":"دوشنبه","EE2-persian":"سه‌شنبه","EE3-persian":"چهارشنبه","EE4-persian":"پنجشنبه","EE5-persian":"جمعه","EE6-persian":"شنبه","EEE0-persian":"یکشنبه","EEE1-persian":"دوشنبه","EEE2-persian":"سه‌شنبه","EEE3-persian":"چهارشنبه","EEE4-persian":"پنجشنبه","EEE5-persian":"جمعه","EEE6-persian":"شنبه","EEEE0-persian":"یکشنبه","EEEE1-persian":"دوشنبه","EEEE2-persian":"سه‌شنبه","EEEE3-persian":"چهارشنبه","EEEE4-persian":"پنجشنبه","EEEE5-persian":"جمعه","EEEE6-persian":"شنبه","N1-persian":"ف.","N2-persian":"ا.","N3-persian":"خ.","N4-persian":"ت.","N5-persian":"م.","N6-persian":"ش.","N7-persian":"م.","N8-persian":"آ.","N9-persian":"آ.","N10-persian":"د.","N11-persian":"ب.","N12-persian":"ا.","NN1-persian":"فروردین","NN2-persian":"اردیبهشت","NN3-persian":"خرداد","NN4-persian":"تیر","NN5-persian":"مرداد","NN6-persian":"شهریور","NN7-persian":"مهر","NN8-persian":"آبان","NN9-persian":"آذر","NN10-persian":"دی","NN11-persian":"بهمن","NN12-persian":"اسفند","MMM1-persian":"فروردین","MMM2-persian":"اردیبهشت","MMM3-persian":"خرداد","MMM4-persian":"تیر","MMM5-persian":"مرداد","MMM6-persian":"شهریور","MMM7-persian":"مهر","MMM8-persian":"آبان","MMM9-persian":"آذر","MMM10-persian":"دی","MMM11-persian":"بهمن","MMM12-persian":"اسفند","MMMM1-persian":"فروردین","MMMM2-persian":"اردیبهشت","MMMM3-persian":"خرداد","MMMM4-persian":"تیر","MMMM5-persian":"مرداد","MMMM6-persian":"شهریور","MMMM7-persian":"مهر","MMMM8-persian":"آبان","MMMM9-persian":"آذر","MMMM10-persian":"دی","MMMM11-persian":"بهمن","MMMM12-persian":"اسفند"};
+ilib.data.sysres_fa_AF = {"NN1":"جن","NN5":"مـ","NN7":"جو","MMM1":"جنو","MMM5":"مـی","MMM7":"جول","MMM12":"دسم","MMMM1":"جنوری","MMMM2":"فبروری","MMMM3":"مارچ","MMMM4":"اپریل","MMMM5":"می","MMMM6":"جون","MMMM7":"جولای","MMMM8":"اگست","MMMM9":"سپتمبر","MMMM10":"اکتوبر","MMMM11":"نومبر","MMMM12":"دسمبر","N1-persian":"ح","N2-persian":"ث","N3-persian":"ج","N4-persian":"س","N5-persian":"ا","N6-persian":"س","N7-persian":"م","N8-persian":"ع","N9-persian":"ق","N10-persian":"ج","N11-persian":"د","N12-persian":"ح","NN1-persian":"حمل","NN2-persian":"ثور","NN3-persian":"جوزا","NN4-persian":"سرطان","NN5-persian":"اسد","NN6-persian":"سنبله","NN7-persian":"میزان","NN8-persian":"عقرب","NN9-persian":"قوس","NN10-persian":"جدی","NN11-persian":"دلو","NN12-persian":"حوت","MMM1-persian":"حمل","MMM2-persian":"ثور","MMM3-persian":"جوزا","MMM4-persian":"سرطان","MMM5-persian":"اسد","MMM6-persian":"سنبله","MMM7-persian":"میزان","MMM8-persian":"عقرب","MMM9-persian":"قوس","MMM10-persian":"جدی","MMM11-persian":"دلو","MMM12-persian":"حوت","MMMM1-persian":"حمل","MMMM2-persian":"ثور","MMMM3-persian":"جوزا","MMMM4-persian":"سرطان","MMMM5-persian":"اسد","MMMM6-persian":"سنبله","MMMM7-persian":"میزان","MMMM8-persian":"عقرب","MMMM9-persian":"قوس","MMMM10-persian":"جدی","MMMM11-persian":"دلو","MMMM12-persian":"حوت"};
 ilib.data.sysres_ff = {"generated":true,"NN1":"si","NN2":"co","NN3":"mb","NN4":"se","NN5":"du","NN6":"ko","NN7":"mo","NN8":"ju","NN9":"sl","NN10":"ya","NN11":"jo","NN12":"bo","MMM1":"sii","MMM2":"col","MMM3":"mbo","MMM4":"see","MMM5":"duu","MMM6":"kor","MMM7":"mor","MMM8":"juk","MMM9":"slt","MMM10":"yar","MMM11":"jol","MMM12":"bow","MMMM1":"siilo","MMMM2":"colte","MMMM3":"mbooy","MMMM4":"seeɗto","MMMM5":"duujal","MMMM6":"korse","MMMM7":"morso","MMMM8":"juko","MMMM9":"siilto","MMMM10":"yarkomaa","MMMM11":"jolal","MMMM12":"bowte","E0":"d","E1":"a","E2":"m","E3":"n","E4":"n","E5":"m","E6":"h","EE0":"de","EE1":"aa","EE2":"ma","EE3":"nj","EE4":"na","EE5":"mw","EE6":"hb","EEE0":"dew","EEE1":"aaɓ","EEE2":"maw","EEE3":"nje","EEE4":"naa","EEE5":"mwd","EEE6":"hbi","EEEE0":"dewo","EEEE1":"aaɓnde","EEEE2":"mawbaare","EEEE3":"njeslaare","EEEE4":"naasaande","EEEE5":"mawnde","EEEE6":"hoore-biir","a0":"subaka","a1":"kikiiɗe","G-1":"H-I","G1":"C-I","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_fi = {"N1":"T","N2":"H","N3":"M","N4":"H","N5":"T","N6":"K","N7":"H","N8":"E","N9":"S","N10":"L","N11":"M","N12":"J","NN1":"ta","NN2":"he","NN3":"ma","NN4":"hu","NN5":"to","NN6":"ke","NN7":"he","NN8":"el","NN9":"sy","NN10":"lo","NN11":"ma","NN12":"jo","MMM1":"tam","MMM2":"hel","MMM3":"maa","MMM4":"huh","MMM5":"tou","MMM6":"kes","MMM7":"hei","MMM8":"elo","MMM9":"syy","MMM10":"lok","MMM11":"mar","MMM12":"jou","MMMM1":"tammikuuta","MMMM2":"helmikuuta","MMMM3":"maaliskuuta","MMMM4":"huhtikuuta","MMMM5":"toukokuuta","MMMM6":"kesäkuuta","MMMM7":"heinäkuuta","MMMM8":"elokuuta","MMMM9":"syyskuuta","MMMM10":"lokakuuta","MMMM11":"marraskuuta","MMMM12":"joulukuuta","E3":"K","E5":"P","E6":"L","EE0":"su","EE1":"ma","EE2":"ti","EE3":"ke","EE4":"to","EE5":"pe","EE6":"la","EEE0":"sun","EEE1":"maa","EEE2":"tii","EEE3":"kes","EEE4":"tor","EEE5":"per","EEE6":"lau","EEEE0":"sunnuntaina","EEEE1":"maanantaina","EEEE2":"tiistaina","EEEE3":"keskiviikkona","EEEE4":"torstaina","EEEE5":"perjantaina","EEEE6":"lauantaina","a0":"ap.","a1":"ip.","G-1":"eKr.","G1":"jKr.","in {duration}":"{duration} päästä","{duration} ago":"{duration} sitten","1#1 year|#{num} years":"1#{num} vuosi|#{num} vuotta","1#1 month|#{num} months":"1#{num} kuukausi|#{num} kuukautta","1#1 week|#{num} weeks":"1#{num} viikko|#{num} viikkoa","1#1 day|#{num} days":"1#{num} päivä|#{num} päivää","1#1 hour|#{num} hours":"1#{num} tunti|#{num} tuntia","1#1 minute|#{num} minutes":"1#{num} minuutti|#{num} minuuttia","1#1 second|#{num} seconds":"1#{num} sekunti|#{num} sekuntia","1#1 yr|#{num} yrs":"#{num} vuo","1#1 mon|#{num} mons":"#{num} kuu","1#1 wk|#{num} wks":"#{num} vii","durationLongDays":"#{num} päi","1#1 hr|#{num} hrs":"#{num} tun","1#1 min|#{num} min":"#{num} min","1#1 sec|#{num} sec":"#{num} sek","durationMediumYears":"#{num} vs","1#1 mo|#{num} mos":"#{num} kk","durationMediumWeeks":"#{num} vk","1#1 dy|#{num} dys":"#{num} pv","durationMediumHours":"#{num} tt","1#1 mi|#{num} min":"#{num} mn","1#1 se|#{num} sec":"#{num} sk","#{num}y":"#{num}v","durationShortMonths":"#{num}k","#{num}w":"#{num}vk","#{num}d":"#{num}p","#{num}h":"#{num}t","durationShortMinutes":"#{num}m","#{num}s":"#{num}s","separatorShort":" ","separatorMedium":" ","separatorLong":" ","separatorFull":", ","finalSeparatorFull":" ja "};
 ilib.data.sysres_fr = {"MMMM1":"janvier","MMM1":"janv","NN1":"ja","MMMM2":"février","MMM2":"févr","NN2":"fé","MMMM3":"mars","MMM3":"mars","NN3":"ma","MMMM4":"avril","MMM4":"avr","NN4":"av","MMMM5":"mai","MMM5":"mai","NN5":"ma","MMMM6":"juin","MMM6":"juin","NN6":"ju","MMMM7":"juillet","MMM7":"juil","NN7":"ju","MMMM8":"août","MMM8":"août","NN8":"ao","MMMM9":"septembre","MMM9":"sept","NN9":"se","MMMM10":"octobre","MMM10":"oct","NN10":"oc","MMMM11":"novembre","MMM11":"nov","NN11":"no","MMMM12":"décembre","MMM12":"déc","NN12":"dé","EEEE0":"dimanche","EEE0":"dim.","EE0":"di","E0":"D","EEEE1":"lundi","EEE1":"lun.","EE1":"lu","E1":"L","EEEE2":"mardi","EEE2":"mar.","EE2":"ma","E2":"M","EEEE3":"mercredi","EEE3":"mer.","EE3":"me","E3":"M","EEEE4":"jeudi","EEE4":"jeu.","EE4":"je","E4":"J","EEEE5":"vendredi","EEE5":"ven.","EE5":"ve","E5":"V","EEEE6":"samedi","EEE6":"sam.","EE6":"sa","ordinalChoice":"1#1er|#{num}e","a0":"matin","a1":"soir","G-1":"av. J.-C.","G1":"ap. J.-C.","durationShortMillis":"#{num}ms","#{num}s":"#{num}s","durationShortMinutes":"#{num}m","#{num}h":"#{num}h","#{num}d":"#{num}j","#{num}w":"#{num}sm","durationShortMonths":"#{num}mo","#{num}y":"#{num}a","#{num} ms":"#{num} Ms","1#1 se|#{num} sec":"1#{num} se|#{num} ses","1#1 mi|#{num} min":"1#{num} mn|#{num} mns","durationMediumHours":"1#{num} hr|#{num} hrs","1#1 dy|#{num} dys":"1#{num} jr|#{num} jrs","durationMediumWeeks":"1#{num} sm|#{num} sms","1#1 mo|#{num} mos":"1#{num} mo|#{num} mos","durationMediumYears":"1#{num} an|#{num} ans","1#1 sec|#{num} sec":"1#{num} sec|#{num} secs","1#1 min|#{num} min":"1#{num} min|#{num} mins","1#1 hr|#{num} hrs":"1#{num} hr|#{num} hrs","durationLongDays":"1#{num} jr|#{num} jrs","1#1 wk|#{num} wks":"1#{num} sem|#{num} sems","1#1 mon|#{num} mons":"1#{num} mois|#{num} mois","1#1 yr|#{num} yrs":"1#{num} an|#{num} ans","1#1 millisecond|#{num} milliseconds":"1#{num} milliseconde|#{num} millisecondes","1#1 second|#{num} seconds":"1#{num} seconde|#{num} secondes","1#1 minute|#{num} minutes":"1#{num} minute|#{num} minutes","1#1 hour|#{num} hours":"1#{num} heure|#{num} heures","1#1 day|#{num} days":"1#{num} jour|#{num} jours","1#1 week|#{num} weeks":"1#{num} semaine|#{num} semaines","1#1 month|#{num} months":"#{num} mois","1#1 year|#{num} years":"1#{num} an|#{num} ans","{duration} ago":"il y a {duration}","in {duration}":"dans {duration}","separatorShort":" ","separatorMedium":" ","separatorLong":" ","separatorFull":", ","finalSeparatorFull":" et "};
@@ -7243,7 +7297,7 @@ ilib.data.sysres_kk = {"generated":true,"NN1":"қа","NN2":"ақ","NN3":"на","
 ilib.data.sysres_kn = {"NN1":"ಜನ","NN2":"ಫೆ","NN3":"ಮಾ","NN4":"ಏಪ","NN5":"ಮೇ","NN6":"ಜೂ","NN7":"ಜು","NN8":"ಆಗ","NN9":"ಸೆ","NN10":"ಅಕ","NN11":"ನವ","NN12":"ಡಿ","MMM1":"ಜನವರಿ","MMM2":"ಫೆಬ್ರುವರಿ","MMM3":"ಮಾರ್ಚ್","MMM4":"ಏಪ್ರಿಲ್‌‌","MMM5":"ಮೇ","MMM6":"ಜೂನ್","MMM7":"ಜುಲೈ","MMM8":"ಆಗಸ್ಟ್","MMM9":"ಸೆಪ್ಟೆಂಬರ್‌","MMM10":"ಅಕ್ಟೋಬರ್","MMM11":"ನವೆಂಬರ್","MMM12":"ಡಿಸೆಂಬರ್","MMMM1":"ಜನವರಿ","MMMM2":"ಫೆಬ್ರುವರಿ","MMMM3":"ಮಾರ್ಚ್","MMMM4":"ಎಪ್ರಿಲ್","MMMM5":"ಮೆ","MMMM6":"ಜೂನ್","MMMM7":"ಜುಲೈ","MMMM8":"ಆಗಸ್ಟ್","MMMM9":"ಸಪ್ಟೆಂಬರ್","MMMM10":"ಅಕ್ಟೋಬರ್","MMMM11":"ನವೆಂಬರ್","MMMM12":"ಡಿಸೆಂಬರ್","E0":"ರ","E1":"ಸೋ","E2":"ಮಂ","E3":"ಬು","E4":"ಗು","E5":"ಶು","E6":"ಶ","EE0":"ಭಾ","EE1":"ಸೋ","EE2":"ಮಂ","EE3":"ಬು","EE4":"ಗು","EE5":"ಶು","EE6":"ಶನ","EEE0":"ರ.","EEE1":"ಸೋ.","EEE2":"ಮಂ.","EEE3":"ಬು.","EEE4":"ಗು.","EEE5":"ಶು.","EEE6":"ಶನಿ.","EEEE0":"ರವಿವಾರ","EEEE1":"ಸೋಮವಾರ","EEEE2":"ಮಂಗಳವಾರ","EEEE3":"ಬುಧವಾರ","EEEE4":"ಗುರುವಾರ","EEEE5":"ಶುಕ್ರವಾರ","EEEE6":"ಶನಿವಾರ","a0":"ಪೂರ್ವಾಹ್ನ","a1":"ಮಧ್ಯಾಹ್ನ","G-1":"ಕ್ರಿ.ಪೂ","G1":"ಜಾಹೀ","#{num}s":"#{num}ಸ","1#1 se|#{num} sec":"#{num} ಸೆ","1#1 sec|#{num} sec":"#{num} ಸೆಕ","1#1 second|#{num} seconds":"#{num} ಸೆಕೆಂಡುಗಳು","durationShortMinutes":"#{num}ನ","1#1 mi|#{num} min":"#{num} ನಿ","1#1 min|#{num} min":"#{num} ನಿಮ","1#1 minute|#{num} minutes":"#{num} ನಿಮಿಷಗಳು","#{num}h":"#{num}ಗ","durationMediumHours":"#{num} ಗಂ.","1#1 hr|#{num} hrs":"#{num} ಗಂಟ","1#1 hour|#{num} hours":"#{num} ಗಂಟೆಗಳು","#{num}d":"#{num}ದ","1#1 dy|#{num} dys":"#{num} ದಿನ","durationLongDays":"#{num} ದಿನ","1#1 day|#{num} days":"#{num} ದಿನಗಳು","#{num}w":"#{num}ವ","durationMediumWeeks":"#{num} ವಾ","1#1 wk|#{num} wks":"#{num} ವಾರ","1#1 week|#{num} weeks":"#{num} ವಾರಗಳು","durationShortMonths":"#{num}ತ","1#1 mo|#{num} mos":"#{num} ತಿ","1#1 mon|#{num} mons":"#{num} ತಿಂ","1#1 month|#{num} months":"#{num} ತಿಂಗಳುಗಳು","#{num}y":"#{num}ವ","durationMediumYears":"#{num} ವರ","1#1 yr|#{num} yrs":"#{num} ವರ್","1#1 year|#{num} years":"#{num} ವರ್ಷಗಳು","{duration} ago":"{duration} ಹಿಂದೆ","in {duration}":"{duration} ನಂತರ","finalSeparatorFull":", ಮತ್ತು ","separatorLong":" "};
 ilib.data.sysres_ko = {"MMMM1":"일","MMM1":"1","NN1":"1","N1":"1","MMMM2":"이","MMM2":"2","NN2":"2","N2":"2","MMMM3":"삼","MMM3":"3","NN3":"3","N3":"3","MMMM4":"사","MMM4":"4","NN4":"4","N4":"4","MMMM5":"오","MMM5":"5","NN5":"5","N5":"5","MMMM6":"유","MMM6":"6","NN6":"6","N6":"6","MMMM7":"칠","MMM7":"7","NN7":"7","N7":"7","MMMM8":"팔","MMM8":"8","NN8":"8","N8":"8","MMMM9":"구","MMM9":"9","NN9":"9","N9":"9","MMMM10":"시","MMM10":"10","NN10":"10","N10":"1O","MMMM11":"십일","MMM11":"11","NN11":"11","N11":"11","MMMM12":"십이","MMM12":"12","NN12":"12","N12":"12","EEEE0":"일요일","EEE0":"일요일","EE0":"일","E0":"일","EEEE1":"월요일","EEE1":"월요일","EE1":"월","E1":"월","EEEE2":"화요일","EEE2":"화요일","EE2":"화","E2":"화","EEEE3":"수요일","EEE3":"수요일","EE3":"수","E3":"수","EEEE4":"목요일","EEE4":"목요일","EE4":"목","E4":"목","EEEE5":"금요일","EEE5":"금요일","EE5":"금","E5":"금","EEEE6":"토요일","EEE6":"토요일","EE6":"토","E6":"토","ordinalChoice":"#{num}","a0":"오전","a1":"오후","G-1":"기원전","G1":"서기","durationShortMillis":"#{num}리초","#{num}s":"#{num}초","durationShortMinutes":"#{num}분","#{num}h":"#{num}시","#{num}d":"#{num}일","#{num}w":"#{num}주","durationShortMonths":"#{num}개","#{num}y":"#{num}년","#{num} ms":"#{num}리초","1#1 se|#{num} sec":"#{num}초","1#1 mi|#{num} min":"#{num}분","durationMediumHours":"#{num}시간","1#1 dy|#{num} dys":"#{num}일","durationMediumWeeks":"#{num}주","1#1 mo|#{num} mos":"#{num}개월","durationMediumYears":"#{num}년","1#1 sec|#{num} sec":"#{num}초","1#1 min|#{num} min":"#{num}분","1#1 hr|#{num} hrs":"#{num}시간","durationLongDays":"#{num}일","1#1 wk|#{num} wks":"#{num}주","1#1 mon|#{num} mons":"#{num}개월","1#1 yr|#{num} yrs":"#{num}년","1#1 millisecond|#{num} milliseconds":"#{num}밀리초","1#1 second|#{num} seconds":"#{num}초","1#1 minute|#{num} minutes":"#{num}분","1#1 hour|#{num} hours":"#{num}시간","1#1 day|#{num} days":"#{num}일","1#1 week|#{num} weeks":"#{num}주","1#1 month|#{num} months":"#{num}개월","1#1 year|#{num} years":"#{num}년","{duration} ago":"{duration}전","in {duration}":"{duration}에","separatorShort":" ","separatorMedium":" ","separatorLong":", ","separatorFull":", ","finalSeparatorFull":" 및 "};
 ilib.data.sysres_ks = {"generated":true,"NN1":"جن","NN2":"فر","NN3":"ما","NN4":"اپ","NN5":"می","NN6":"جو","NN7":"جو","NN8":"اگ","NN9":"ست","NN10":"اک","NN11":"نو","NN12":"دس","MMM1":"جنؤری","MMM2":"فرؤری","MMM3":"مارٕچ","MMM4":"اپریل","MMM5":"میٔ","MMM6":"جوٗن","MMM7":"جوٗلایی","MMM8":"اگست","MMM9":"ستمبر","MMM10":"اکتوٗبر","MMM11":"نومبر","MMM12":"دسمبر","MMMM1":"جنؤری","MMMM2":"فرؤری","MMMM3":"مارٕچ","MMMM4":"اپریل","MMMM5":"میٔ","MMMM6":"جوٗن","MMMM7":"جوٗلایی","MMMM8":"اگست","MMMM9":"ستمبر","MMMM10":"اکتوٗبر","MMMM11":"نومبر","MMMM12":"دسمبر","E0":"ا","E1":"ژ","E2":"ب","E3":"ب","E4":"ب","E5":"ج","E6":"ب","EE0":"آت","EE1":"ژٔ","EE2":"بو","EE3":"بو","EE4":"بر","EE5":"جُ","EE6":"بٹ","EEE0":"آتھوار","EEE1":"ژٔنٛدٕروار","EEE2":"بوٚموار","EEE3":"بودوار","EEE4":"برٛٮ۪سوار","EEE5":"جُمہ","EEE6":"بٹوار","EEEE0":"اَتھوار","EEEE1":"ژٔنٛدرٕروار","EEEE2":"بوٚموار","EEEE3":"بودوار","EEEE4":"برٛٮ۪سوار","EEEE5":"جُمہ","EEEE6":"بٹوار","G-1":"بی سی","G1":"اے ڈی","#{num}s":"#{num}س","1#1 sec|#{num} sec":"#{num} سیٚ","1#1 second|#{num} seconds":"#{num} سیٚکَنٛڈ","durationShortMinutes":"#{num}م","1#1 min|#{num} min":"#{num} مِن","1#1 minute|#{num} minutes":"#{num} مِنَٹ","#{num}h":"#{num}گ","1#1 hr|#{num} hrs":"one#{num} گَن|#{num} گٲن","1#1 hour|#{num} hours":"one#{num} گَنٹہٕ|#{num} گٲنٛٹہٕ","#{num}d":"#{num}د","durationLongDays":"#{num} دۄہ","1#1 day|#{num} days":"#{num} دۄہ","#{num}w":"#{num}ہ","1#1 wk|#{num} wks":"#{num} ہَف","1#1 week|#{num} weeks":"#{num} ہَفتہٕ","durationShortMonths":"#{num}ر","1#1 mon|#{num} mons":"#{num} ریٚ","1#1 month|#{num} months":"#{num} ریٚتھ","#{num}y":"#{num}ؤ","1#1 yr|#{num} yrs":"#{num} ؤری","1#1 year|#{num} years":"#{num} ؤری","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
-ilib.data.sysres_ku = {"N1":"ک","N2":"ش","N3":"ئ","N4":"ن","N5":"ئ","N6":"ح","N7":"ت","N8":"ئ","N9":"ئ","N10":"ت","N11":"ت","N12":"ک","NN1":"کا1","NN2":"شوب","NN3":"ئاز","NN4":"نیس","NN5":"ئای","NN6":"حوز","NN7":"تەم","NN8":"ئاب","NN9":"ئەی","NN10":"تش1","NN11":"تش2","NN12":"کا2","MMM1":"کا1","MMM2":"شوب","MMM3":"ئاز","MMM4":"نیس","MMM5":"ئای","MMM6":"حوز","MMM7":"تەم","MMM8":"ئاب","MMM9":"ئەی","MMM10":"تش1","MMM11":"تش2","MMM12":"کا2","MMMM1":"کانونی دووەم","MMMM2":"شوبات","MMMM3":"ئازار","MMMM4":"نیسان","MMMM5":"ئایار","MMMM6":"حوزەیران","MMMM7":"تەموز","MMMM8":"ئاب","MMMM9":"ئەیلول","MMMM10":"تشرینی یەکەم","MMMM11":"تشرینی دووەم","MMMM12":"کانونی یەکەم","EE0":"شە","EE1":"یەک","EE2":"دوو","EE3":"سێ","EE4":"چوا","EE5":"پێن","EE6":"هەی","EEE0":"شەممە","EEE1":"یەک","EEE2":"دوو","EEE3":"سێ","EEE4":"چوار","EEE5":"پێنج","EEE6":"هەینی","EEEE0":"شەممە","EEEE1":"یەک شەممە","EEEE2":"دوو شەممە","EEEE3":"سێ شەممە","EEEE4":"چوار شەممە","EEEE5":"پێنج شەممە","EEEE6":"هەینی","G-1":"پێش زایین","G1":"زاینی","a0":"پێشنیوەڕۆ","a1":"پاشنیوەڕۆ","#{num}s":"#{num}چ","1#1 se|#{num} sec":"#{num} چر","1#1 sec|#{num} sec":"#{num} چرک","1#1 second|#{num} seconds":"#{num} چرکە","durationShortMinutes":"#{num}خ","1#1 mi|#{num} min":"#{num} خو","1#1 min|#{num} min":"#{num} خول","1#1 minute|#{num} minutes":"#{num} خولەک","#{num}h":"#{num}ک","durationMediumHours":"one#{num} घं.|#{num} کات","1#1 hr|#{num} hrs":"one#{num} घंटा|#{num} کاتژ","1#1 hour|#{num} hours":"one#{num} घंटा|#{num} کاتژمێر","#{num}d":"#{num}ر","1#1 dy|#{num} dys":"#{num} رۆ","durationLongDays":"#{num} رۆژ","1#1 day|#{num} days":"#{num} رۆژ","#{num}w":"#{num}w","durationMediumWeeks":"#{num} we","1#1 wk|#{num} wks":"#{num} wee","1#1 week|#{num} weeks":"#{num} weeks","durationShortMonths":"#{num}م","1#1 mo|#{num} mos":"#{num} ما","1#1 mon|#{num} mons":"#{num} مانگ","1#1 month|#{num} months":"one#{num} महीना|#{num} مانگ","#{num}y":"#{num}س","durationMediumYears":"#{num} سا","1#1 yr|#{num} yrs":"#{num} ساڵ","1#1 year|#{num} years":"#{num} ساڵ","{duration} ago":"لەمەوبەر {duration}","in {duration}":"{duration} لە","finalSeparatorFull":",  ","separatorLong":" "};
+ilib.data.sysres_ku = {"N1":"ک","N2":"ش","N3":"ئ","N4":"ن","N5":"ئ","N6":"ح","N7":"ت","N8":"ئ","N9":"ئ","N10":"ت","N11":"ت","N12":"ک","NN1":"کا1","NN2":"شوب","NN3":"ئاز","NN4":"نیس","NN5":"ئای","NN6":"حوز","NN7":"تەم","NN8":"ئاب","NN9":"ئەی","NN10":"تش1","NN11":"تش2","NN12":"کا2","MMM1":"کا1","MMM2":"شوب","MMM3":"ئاز","MMM4":"نیس","MMM5":"ئای","MMM6":"حوز","MMM7":"تەم","MMM8":"ئاب","MMM9":"ئەی","MMM10":"تش1","MMM11":"تش2","MMM12":"کا2","MMMM1":"کانونی دووەم","MMMM2":"شوبات","MMMM3":"ئازار","MMMM4":"نیسان","MMMM5":"ئایار","MMMM6":"حوزەیران","MMMM7":"تەموز","MMMM8":"ئاب","MMMM9":"ئەیلول","MMMM10":"تشرینی یەکەم","MMMM11":"تشرینی دووەم","MMMM12":"کانونی یەکەم","EE0":"شە","EE1":"یەک","EE2":"دوو","EE3":"سێ","EE4":"چوا","EE5":"پێن","EE6":"هەی","EEE0":"شەممە","EEE1":"یەک","EEE2":"دوو","EEE3":"سێ","EEE4":"چوار","EEE5":"پێنج","EEE6":"هەینی","EEEE0":"شەممە","EEEE1":"یەک شەممە","EEEE2":"دوو شەممە","EEEE3":"سێ شەممە","EEEE4":"چوار شەممە","EEEE5":"پێنج شەممە","EEEE6":"هەینی","G-1":"پێش زایین","G1":"زاینی","a0":"پێشنیوەڕۆ","a1":"پاشنیوەڕۆ","#{num}s":"#{num}چ","1#1 se|#{num} sec":"#{num} چر","1#1 sec|#{num} sec":"#{num} چرک","1#1 second|#{num} seconds":"#{num} چرکە","durationShortMinutes":"#{num}خ","1#1 mi|#{num} min":"#{num} خو","1#1 min|#{num} min":"#{num} خول","1#1 minute|#{num} minutes":"#{num} خولەک","#{num}h":"#{num}ک","durationMediumHours":"one#{num} घं.|#{num} کات","1#1 hr|#{num} hrs":"one#{num} घंटा|#{num} کاتژ","1#1 hour|#{num} hours":"one#{num} घंटा|#{num} کاتژمێر","#{num}d":"#{num}ر","1#1 dy|#{num} dys":"#{num} رۆ","durationLongDays":"#{num} رۆژ","1#1 day|#{num} days":"#{num} رۆژ","#{num}w":"#{num}w","durationMediumWeeks":"#{num} we","1#1 wk|#{num} wks":"#{num} wee","1#1 week|#{num} weeks":"#{num} weeks","durationShortMonths":"#{num}م","1#1 mo|#{num} mos":"#{num} ما","1#1 mon|#{num} mons":"#{num} مانگ","1#1 month|#{num} months":"one#{num} महीना|#{num} مانگ","#{num}y":"#{num}س","durationMediumYears":"#{num} سا","1#1 yr|#{num} yrs":"#{num} ساڵ","1#1 year|#{num} years":"#{num} ساڵ","{duration} ago":"لەمەوبەر {duration}","in {duration}":"{duration} لە","finalSeparatorFull":",  ","separatorLong":" ","EE0-persian":"شە","EE1-persian":"یەک","EE2-persian":"دوو","EE3-persian":"سێ","EE4-persian":"چوا","EE5-persian":"پێن","EE6-persian":"هەی","EEE0-persian":"شەممە","EEE1-persian":"یەک","EEE2-persian":"دوو","EEE3-persian":"سێ","EEE4-persian":"چوار","EEE5-persian":"پێنج","EEE6-persian":"هەینی","EEEE0-persian":"شەممە","EEEE1-persian":"یەک شەممە","EEEE2-persian":"دوو شەممە","EEEE3-persian":"سێ شەممە","EEEE4-persian":"چوار شەممە","EEEE5-persian":"پێنج شەممە","EEEE6-persian":"هەینی","N1-persian":"خ","N2-persian":"گ","N3-persian":"ج","N4-persian":"پ","N5-persian":"گ","N6-persian":"خ","N7-persian":"ڕ","N8-persian":"گ","N9-persian":"س","N10-persian":"ب","N11-persian":"ڕ","N12-persian":"ڕ","NN1-persian":"خاکەلێوە","NN2-persian":"گوڵان","NN3-persian":"جۆزەردان","NN4-persian":"پووشپەڕ","NN5-persian":"گەلاوێژ","NN6-persian":"خەرمانان","NN7-persian":"ڕەزبەر","NN8-persian":"گەڵاڕێزان","NN9-persian":"سەرماوەز","NN10-persian":"بەفرانبار","NN11-persian":"ڕێبەندان","NN12-persian":"ڕەشەمە","MMM1-persian":"خاکەلێوە","MMM2-persian":"گوڵان","MMM3-persian":"جۆزەردان","MMM4-persian":"پووشپەڕ","MMM5-persian":"گەلاوێژ","MMM6-persian":"خەرمانان","MMM7-persian":"ڕەزبەر","MMM8-persian":"گەڵاڕێزان","MMM9-persian":"سەرماوەز","MMM10-persian":"بەفرانبار","MMM11-persian":"ڕێبەندان","MMM12-persian":"ڕەشەمە","MMMM1-persian":"خاکەلێوە","MMMM2-persian":"گوڵان","MMMM3-persian":"جۆزەردان","MMMM4-persian":"پووشپەڕ","MMMM5-persian":"گەلاوێژ","MMMM6-persian":"خەرمانان","MMMM7-persian":"ڕەزبەر","MMMM8-persian":"گەڵاڕێزان","MMMM9-persian":"سەرماوەز","MMMM10-persian":"بەفرانبار","MMMM11-persian":"ڕێبەندان","MMMM12-persian":"ڕەشەمە"};
 ilib.data.sysres_lg = {"generated":true,"NN8":"Ag","NN10":"Ok","MMM4":"Apu","MMM5":"Maa","MMM6":"Juu","MMM8":"Agu","MMM9":"Seb","MMM10":"Oki","MMM12":"Des","MMMM1":"Janwaliyo","MMMM2":"Febwaliyo","MMMM3":"Marisi","MMMM4":"Apuli","MMMM5":"Maayi","MMMM6":"Juuni","MMMM7":"Julaayi","MMMM8":"Agusito","MMMM9":"Sebuttemba","MMMM10":"Okitobba","MMMM11":"Novemba","MMMM12":"Desemba","E1":"B","E2":"L","E3":"L","E4":"L","E5":"L","E6":"L","EE0":"Sa","EE1":"Ba","EE2":"Lw","EE3":"Lw","EE4":"Lw","EE5":"Lw","EE6":"Lw","EEE0":"Sab","EEE1":"Bal","EEE2":"Lw2","EEE3":"Lw3","EEE4":"Lw4","EEE5":"Lw5","EEE6":"Lw6","EEEE0":"Sabbiiti","EEEE1":"Balaza","EEEE2":"Lwakubiri","EEEE3":"Lwakusatu","EEEE4":"Lwakuna","EEEE5":"Lwakutaano","EEEE6":"Lwamukaaga","G-1":"BC","G1":"AD","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_ln = {"generated":true,"NN1":"ya","NN2":"fb","NN3":"ms","NN4":"ap","NN5":"ma","NN6":"yu","NN7":"yu","NN8":"ag","NN9":"st","NN10":"ɔt","NN11":"nv","NN12":"ds","MMM1":"yan","MMM2":"fbl","MMM3":"msi","MMM4":"apl","MMM5":"mai","MMM6":"yun","MMM7":"yul","MMM8":"agt","MMM9":"stb","MMM10":"ɔtb","MMM11":"nvb","MMM12":"dsb","MMMM1":"sánzá ya yambo","MMMM2":"sánzá ya míbalé","MMMM3":"sánzá ya mísáto","MMMM4":"sánzá ya mínei","MMMM5":"sánzá ya mítáno","MMMM6":"sánzá ya motóbá","MMMM7":"sánzá ya nsambo","MMMM8":"sánzá ya mwambe","MMMM9":"sánzá ya libwa","MMMM10":"sánzá ya zómi","MMMM11":"sánzá ya zómi na mɔ̌kɔ́","MMMM12":"sánzá ya zómi na míbalé","E0":"e","E1":"y","E2":"m","E3":"m","E4":"m","E5":"m","E6":"p","EE0":"ey","EE1":"yb","EE2":"mb","EE3":"ms","EE4":"mi","EE5":"mt","EE6":"mp","EEE0":"eye","EEE1":"ybo","EEE2":"mbl","EEE3":"mst","EEE4":"min","EEE5":"mtn","EEE6":"mps","EEEE0":"eyenga","EEEE1":"mokɔlɔ mwa yambo","EEEE2":"mokɔlɔ mwa míbalé","EEEE3":"mokɔlɔ mwa mísáto","EEEE4":"mokɔlɔ ya mínéi","EEEE5":"mokɔlɔ ya mítáno","EEEE6":"mpɔ́sɔ","a0":"ntɔ́ngɔ́","a1":"mpókwa","G-1":"libóso ya","G1":"nsima ya Y","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_lt = {"generated":true,"NN1":"sa","NN2":"va","NN3":"ko","NN4":"ba","NN5":"ge","NN6":"bi","NN7":"li","NN8":"ru","NN9":"ru","NN10":"sp","NN11":"la","NN12":"gr","MMM1":"saus.","MMM2":"vas.","MMM3":"kov.","MMM4":"bal.","MMM5":"geg.","MMM6":"birž.","MMM7":"liep.","MMM8":"rugp.","MMM9":"rugs.","MMM10":"spal.","MMM11":"lapkr.","MMM12":"gruod.","MMMM1":"sausis","MMMM2":"vasaris","MMMM3":"kovas","MMMM4":"balandis","MMMM5":"gegužė","MMMM6":"birželis","MMMM7":"liepa","MMMM8":"rugpjūtis","MMMM9":"rugsėjis","MMMM10":"spalis","MMMM11":"lapkritis","MMMM12":"gruodis","E1":"P","E2":"A","E3":"T","E4":"K","E5":"P","E6":"Š","EE0":"sk","EE1":"pr","EE2":"an","EE3":"tr","EE4":"kt","EE5":"pn","EE6":"št","EEE0":"sk","EEE1":"pr","EEE2":"an","EEE3":"tr","EEE4":"kt","EEE5":"pn","EEE6":"št","EEEE0":"sekmadienis","EEEE1":"pirmadienis","EEEE2":"antradienis","EEEE3":"trečiadienis","EEEE4":"ketvirtadienis","EEEE5":"penktadienis","EEEE6":"šeštadienis","a0":"priešpiet","a1":"popiet","G-1":"pr. Kr.","G1":"po Kr.","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekundė|few#{num} sekundės|#{num} sekundžių","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} mi","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minutė|few#{num} minutės|#{num} minučių","#{num}h":"#{num}v","durationMediumHours":"#{num} va","1#1 hr|#{num} hrs":"#{num} val","1#1 hour|#{num} hours":"one#{num} valanda|few#{num} valandos|#{num} valandų","1#1 dy|#{num} dys":"#{num} d.","durationLongDays":"#{num} die","1#1 day|#{num} days":"one#{num} diena|few#{num} dienos|#{num} dienų","#{num}w":"#{num}s","durationMediumWeeks":"#{num} sa","1#1 wk|#{num} wks":"#{num} sav","1#1 week|#{num} weeks":"one#{num} savaitė|few#{num} savaitės|#{num} savaičių","durationShortMonths":"#{num}m","1#1 mo|#{num} mos":"#{num} mė","1#1 mon|#{num} mons":"#{num} mėn","1#1 month|#{num} months":"one#{num} mėnuo|few#{num} mėnesiai|#{num} mėnesių","#{num}y":"#{num}m","durationMediumYears":"#{num} m.","1#1 yr|#{num} yrs":"one#{num} met|few#{num} met|#{num} metų","1#1 year|#{num} years":"one#{num} metai|few#{num} metai|#{num} metų","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":" ir ","separatorLong":" "};
@@ -7284,9 +7338,10 @@ ilib.data.sysres_sv = {"NN1":"ja","NN2":"fe","NN3":"ma","NN4":"ap","NN5":"ma","N
 ilib.data.sysres_sw = {"generated":true,"NN5":"Me","NN8":"Ag","NN10":"Ok","MMM3":"Mac","MMM5":"Mei","MMM8":"Ago","MMM10":"Okt","MMM12":"Des","MMMM1":"Januari","MMMM2":"Februari","MMMM3":"Machi","MMMM4":"Aprili","MMMM5":"Mei","MMMM6":"Juni","MMMM7":"Julai","MMMM8":"Agosti","MMMM9":"Septemba","MMMM10":"Oktoba","MMMM11":"Novemba","MMMM12":"Desemba","E0":"2","E1":"3","E2":"4","E3":"5","E4":"A","E5":"I","E6":"1","EE0":"Ju","EE1":"Ju","EE2":"Ju","EE3":"Ju","EE4":"Al","EE5":"Ij","EE6":"Ju","EEE0":"J2","EEE1":"J3","EEE2":"J4","EEE3":"J5","EEE4":"Alh","EEE5":"Ij","EEE6":"J1","EEEE0":"Jumapili","EEEE1":"Jumatatu","EEEE2":"Jumanne","EEEE3":"Jumatano","EEEE4":"Alhamisi","EEEE5":"Ijumaa","EEEE6":"Jumamosi","a0":"asubuhi","a1":"alasiri","G-1":"KK","G1":"BK","#{num}s":"#s{num}","1#1 se|#{num} sec":"#sekunde {num}","1#1 sec|#{num} sec":"#sekunde {num}","1#1 second|#{num} seconds":"#sekunde {num}","durationShortMinutes":"#d{num}","1#1 mi|#{num} min":"#dakika {num}","1#1 min|#{num} min":"#dakika {num}","1#1 minute|#{num} minutes":"#dakika {num}","#{num}h":"#s{num}","durationMediumHours":"one#saa {num}|#masaa {num}","1#1 hr|#{num} hrs":"one#saa {num}|#masaa {num}","1#1 hour|#{num} hours":"one#saa {num}|#masaa {num}","#{num}d":"#s{num}","1#1 dy|#{num} dys":"#siku {num}","durationLongDays":"#siku {num}","1#1 day|#{num} days":"#siku {num}","#{num}w":"#w{num}","durationMediumWeeks":"#wiki {num}","1#1 wk|#{num} wks":"#wiki {num}","1#1 week|#{num} weeks":"#wiki {num}","durationShortMonths":"#m{num}","1#1 mo|#{num} mos":"one#mwezi {num}|#miezi {num}","1#1 mon|#{num} mons":"one#mwezi {num}|#miezi {num}","1#1 month|#{num} months":"one#mwezi {num}|#miezi {num}","#{num}y":"#m{num}","durationMediumYears":"one#mwaka {num}|#miaka {num}","1#1 yr|#{num} yrs":"one#mwaka {num}|#miaka {num}","1#1 year|#{num} years":"one#mwaka {num}|#miaka {num}","{duration} ago":"-{duration}","in {duration}":"baada ya {duration}","finalSeparatorFull":", na ","separatorLong":" "};
 ilib.data.sysres_ta = {"NN1":"ஜன","NN2":"பி","NN3":"மா","NN4":"ஏப","NN5":"மே","NN6":"ஜூ","NN7":"ஜூ","NN8":"ஆக","NN9":"செ","NN10":"அக","NN11":"நவ","NN12":"டி","MMM1":"ஜன","MMM2":"பிப்","MMM3":"மார்","MMM4":"ஏப்","MMM5":"மே","MMM6":"ஜூன்","MMM7":"ஜூலை","MMM8":"ஆக","MMM9":"செப்","MMM10":"அக்","MMM11":"நவ","MMM12":"டிச","MMMM1":"ஜனவரி","MMMM2":"பிப்ரவரி","MMMM3":"மார்ச்","MMMM4":"ஏப்ரல்","MMMM5":"மே","MMMM6":"ஜூன்","MMMM7":"ஜூலை","MMMM8":"ஆகஸ்ட்","MMMM9":"செப்டம்பர்","MMMM10":"அக்டோபர்","MMMM11":"நவம்பர்","MMMM12":"டிசம்பர்","E0":"ஞா","E1":"தி","E2":"செ","E3":"பு","E4":"வி","E5":"வெ","E6":"ச","EE0":"ஞா","EE1":"தி","EE2":"செ","EE3":"பு","EE4":"வி","EE5":"வெ","EE6":"ச","EEE0":"ஞா","EEE1":"தி","EEE2":"செ","EEE3":"பு","EEE4":"வி","EEE5":"வெ","EEE6":"ச","EEEE0":"ஞாயிறு","EEEE1":"திங்கள்","EEEE2":"செவ்வாய்","EEEE3":"புதன்","EEEE4":"வியாழன்","EEEE5":"வெள்ளி","EEEE6":"சனி","G-1":"கி.மு.","G1":"கி.பி.","#{num}s":"#{num}வ","1#1 se|#{num} sec":"#{num} வி","1#1 sec|#{num} sec":"#{num} வின","1#1 second|#{num} seconds":"one#{num} வினாடி|#{num} வினாடிகள்","durationShortMinutes":"#{num}ந","1#1 mi|#{num} min":"#{num} நி","1#1 min|#{num} min":"#{num} நிம","1#1 minute|#{num} minutes":"one#{num} நிமிடம்|#{num} நிமிடங்கள்","#{num}h":"#{num}ம","durationMediumHours":"#{num} மண","1#1 hr|#{num} hrs":"#{num} மணி","1#1 hour|#{num} hours":"#{num} மணிநேரம்","#{num}d":"#{num}ந","1#1 dy|#{num} dys":"#{num} நா","durationLongDays":"one#{num} நாள்|#{num} நாட","1#1 day|#{num} days":"one#{num} நாள்|#{num} நாட்கள்","#{num}w":"#{num}வ","durationMediumWeeks":"#{num} வா","1#1 wk|#{num} wks":"#{num} வார","1#1 week|#{num} weeks":"one#{num} வாரம்|#{num} வாரங்கள்","durationShortMonths":"#{num}ம","1#1 mo|#{num} mos":"#{num} மா","1#1 mon|#{num} mons":"#{num} மாத","1#1 month|#{num} months":"one#{num} மாதம்|#{num} மாதங்கள்","#{num}y":"#{num}வ","durationMediumYears":"#{num} வர","1#1 yr|#{num} yrs":"#{num} வரு","1#1 year|#{num} years":"one#{num} வருடம்|#{num} வருடங்கள்","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":" மற்றும் ","separatorLong":" "};
 ilib.data.sysres_te = {"NN1":"జన","NN2":"ఫి","NN3":"మా","NN4":"ఏప","NN5":"మే","NN6":"జూ","NN7":"జూ","NN8":"ఆగ","NN9":"సె","NN10":"అక","NN11":"నవ","NN12":"డి","MMM1":"జన","MMM2":"ఫిబ్ర","MMM3":"మార్చి","MMM4":"ఏప్రి","MMM5":"మే","MMM6":"జూన్","MMM7":"జూలై","MMM8":"ఆగస్టు","MMM9":"సెప్టెంబర్","MMM10":"అక్టోబర్","MMM11":"నవంబర్","MMM12":"డిసెంబర్","MMMM1":"జనవరి","MMMM2":"ఫిబ్రవరి","MMMM3":"మార్చి","MMMM4":"ఎప్రిల్","MMMM5":"మే","MMMM6":"జూన్","MMMM7":"జూలై","MMMM8":"ఆగస్టు","MMMM9":"సెప్టెంబర్","MMMM10":"అక్టోబర్","MMMM11":"నవంబర్","MMMM12":"డిసెంబర్","E0":"ఆ","E1":"సో","E2":"మ","E3":"బు","E4":"గు","E5":"శు","E6":"శ","EE0":"ఆద","EE1":"సో","EE2":"మం","EE3":"బు","EE4":"గు","EE5":"శు","EE6":"శన","EEE0":"ఆది","EEE1":"సోమ","EEE2":"మంగళ","EEE3":"బుధ","EEE4":"గురు","EEE5":"శుక్ర","EEE6":"శని","EEEE0":"ఆదివారం","EEEE1":"సోమవారం","EEEE2":"మంగళవారం","EEEE3":"బుధవారం","EEEE4":"గురువారం","EEEE5":"శుక్రవారం","EEEE6":"శనివారం","a0":"ఉదయం","a1":"మధ్యాహ్నం","G-1":"క్రీపూ","G1":"క్రీశ","#{num}s":"#{num}స","1#1 se|#{num} sec":"#{num} సె","1#1 sec|#{num} sec":"#{num} సెక","1#1 second|#{num} seconds":"one#{num} సెకను|#{num} సెకన్లు","durationShortMinutes":"#{num}న","1#1 mi|#{num} min":"#{num} ని","1#1 min|#{num} min":"#{num} నిమ","1#1 minute|#{num} minutes":"one#{num} నిమిషం|#{num} నిమిషాలు","#{num}h":"#{num}గ","durationMediumHours":"one#{num} గంట|#{num} గం","1#1 hr|#{num} hrs":"#{num} గంట","1#1 hour|#{num} hours":"one#{num} గంట|#{num} గంటలు","#{num}d":"#{num}ర","1#1 dy|#{num} dys":"one#{num} రో|#{num} రోజు","durationLongDays":"one#{num} రోజు|#{num} రోజులు","1#1 day|#{num} days":"one#{num} రోజు|#{num} రోజులు","#{num}w":"#{num}వ","durationMediumWeeks":"#{num} వా","1#1 wk|#{num} wks":"one#{num} వారం|#{num} వారాలు","1#1 week|#{num} weeks":"one#{num} వారం|#{num} వారాలు","durationShortMonths":"#{num}న","1#1 mo|#{num} mos":"one#{num} నెల|#{num} నె","1#1 mon|#{num} mons":"#{num} నెల","1#1 month|#{num} months":"one#{num} నెల|#{num} నెలలు","#{num}y":"#{num}స","durationMediumYears":"#{num} సం","1#1 yr|#{num} yrs":"#{num} సంవ","1#1 year|#{num} years":"one#{num} సంవత్సరం|#{num} సంవత్సరాలు","{duration} ago":"{duration} క్రితం","in {duration}":"{duration} తర్వాత","finalSeparatorFull":" మరియు ","separatorLong":" "};
+ilib.data.sysres_th = {"N1":"ม","N2":"ก","N3":"มี","N4":"เม","N5":"พ","N6":"มิ","N7":"ก","N8":"ส","N9":"ก","N10":"ต","N11":"พ","N12":"ธ","NN1":"ม.","NN2":"ก.","NN3":"มี","NN4":"เม","NN5":"พ.","NN6":"มิ","NN7":"ก.","NN8":"ส.","NN9":"ก.","NN10":"ต.","NN11":"พ.","NN12":"ธ.","MMM1":"ม.ค.","MMM2":"ก.พ.","MMM3":"มี.ค.","MMM4":"เม.ย.","MMM5":"พ.ค.","MMM6":"มิ.ย.","MMM7":"ก.ค.","MMM8":"ส.ค.","MMM9":"ก.ย.","MMM10":"ต.ค.","MMM11":"พ.ย.","MMM12":"ธ.ค.","MMMM1":"มกราคม","MMMM2":"กุมภาพันธ์","MMMM3":"มีนาคม","MMMM4":"เมษายน","MMMM5":"พฤษภาคม","MMMM6":"มิถุนายน","MMMM7":"กรกฎาคม","MMMM8":"สิงหาคม","MMMM9":"กันยายน","MMMM10":"ตุลาคม","MMMM11":"พฤศจิกายน","MMMM12":"ธันวาคม","E0":"อ","E1":"จ","E2":"อ","E3":"พ","E4":"พ","E5":"ศ","E6":"ส","EE0":"อา","EE1":"จ.","EE2":"อ.","EE3":"พ.","EE4":"พฤ","EE5":"ศ.","EE6":"ส.","EEE0":"อา.","EEE1":"จ.","EEE2":"อ.","EEE3":"พ.","EEE4":"พฤ.","EEE5":"ศ.","EEE6":"ส.","EEEE0":"วันอาทิตย์","EEEE1":"วันจันทร์","EEEE2":"วันอังคาร","EEEE3":"วันพุธ","EEEE4":"วันพฤหัสบดี","EEEE5":"วันศุกร์","EEEE6":"วันเสาร์","N1-thaisolar":"ม","N2-thaisolar":"ก","N3-thaisolar":"มี","N4-thaisolar":"เม","N5-thaisolar":"พ","N6-thaisolar":"มิ","N7-thaisolar":"ก","N8-thaisolar":"ส","N9-thaisolar":"ก","N10-thaisolar":"ต","N11-thaisolar":"พ","N12-thaisolar":"ธ","NN1-thaisolar":"ม.","NN2-thaisolar":"ก.","NN3-thaisolar":"มี","NN4-thaisolar":"เม","NN5-thaisolar":"พ.","NN6-thaisolar":"มิ","NN7-thaisolar":"ก.","NN8-thaisolar":"ส.","NN9-thaisolar":"ก.","NN10-thaisolar":"ต.","NN11-thaisolar":"พ.","NN12-thaisolar":"ธ.","MMM1-thaisolar":"ม.ค.","MMM2-thaisolar":"ก.พ.","MMM3-thaisolar":"มี.ค.","MMM4-thaisolar":"เม.ย.","MMM5-thaisolar":"พ.ค.","MMM6-thaisolar":"มิ.ย.","MMM7-thaisolar":"ก.ค.","MMM8-thaisolar":"ส.ค.","MMM9-thaisolar":"ก.ย.","MMM10-thaisolar":"ต.ค.","MMM11-thaisolar":"พ.ย.","MMM12-thaisolar":"ธ.ค.","MMMM1-thaisolar":"มกราคม","MMMM2-thaisolar":"กุมภาพันธ์","MMMM3-thaisolar":"มีนาคม","MMMM4-thaisolar":"เมษายน","MMMM5-thaisolar":"พฤษภาคม","MMMM6-thaisolar":"มิถุนายน","MMMM7-thaisolar":"กรกฎาคม","MMMM8-thaisolar":"สิงหาคม","MMMM9-thaisolar":"กันยายน","MMMM10-thaisolar":"ตุลาคม","MMMM11-thaisolar":"พฤศจิกายน","MMMM12-thaisolar":"ธันวาคม","E0-thaisolar":"อ","E1-thaisolar":"จ","E2-thaisolar":"อ","E3-thaisolar":"พ","E4-thaisolar":"พ","E5-thaisolar":"ศ","E6-thaisolar":"ส","EE0-thaisolar":"อา","EE1-thaisolar":"จ.","EE2-thaisolar":"อ.","EE3-thaisolar":"พ.","EE4-thaisolar":"พฤ","EE5-thaisolar":"ศ.","EE6-thaisolar":"ส.","EEE0-thaisolar":"อา.","EEE1-thaisolar":"จ.","EEE2-thaisolar":"อ.","EEE3-thaisolar":"พ.","EEE4-thaisolar":"พฤ.","EEE5-thaisolar":"ศ.","EEE6-thaisolar":"ส.","EEEE0-thaisolar":"วันอาทิตย์","EEEE1-thaisolar":"วันจันทร์","EEEE2-thaisolar":"วันอังคาร","EEEE3-thaisolar":"วันพุธ","EEEE4-thaisolar":"วันพฤหัสบดี","EEEE5-thaisolar":"วันศุกร์","EEEE6-thaisolar":"วันเสาร์","a0":"ก่อนเที่ยง","a1":"หลังเที่ยง","G-1":"ปีก่อน ค.ศ.","G1":"ค.ศ.","#{num}s":"#{num}ว","1#1 se|#{num} sec":"#{num} วิ","1#1 sec|#{num} sec":"#{num} วิน","1#1 second|#{num} seconds":"#{num} วินาที","durationShortMinutes":"#{num}น","1#1 mi|#{num} min":"#{num} นา","1#1 min|#{num} min":"#{num} นาที","1#1 minute|#{num} minutes":"#{num} นาที","#{num}h":"#{num}ช","durationMediumHours":"#{num} ชั","1#1 hr|#{num} hrs":"#{num} ชั่","1#1 hour|#{num} hours":"#{num} ชั่วโมง","#{num}d":"#{num}ว","1#1 dy|#{num} dys":"#{num} วัน","durationLongDays":"#{num} วัน","1#1 day|#{num} days":"#{num} วัน","#{num}w":"#{num}ส","durationMediumWeeks":"#{num} สั","1#1 wk|#{num} wks":"#{num} สัป","1#1 week|#{num} weeks":"#{num} สัปดาห์","durationShortMonths":"#{num}เ","1#1 mo|#{num} mos":"#{num} เด","1#1 mon|#{num} mons":"#{num} เดื","1#1 month|#{num} months":"#{num} เดือน","#{num}y":"#{num}ป","durationMediumYears":"#{num} ปี","1#1 yr|#{num} yrs":"#{num} ปี","1#1 year|#{num} years":"#{num} ปี","{duration} ago":"{duration} ที่ผ่านมา","in {duration}":"ในอีก {duration}","separatorFull":" ","finalSeparatorFull":" และ","separatorLong":" "};
 ilib.data.sysres_tr = {"N1":"O","N2":"Ş","N4":"N","N6":"H","N7":"T","N9":"E","N10":"E","N11":"K","N12":"A","NN1":"oc","NN2":"şu","NN3":"ma","NN4":"ni","NN5":"ma","NN6":"ha","NN7":"te","NN8":"ağ","NN9":"ey","NN10":"ek","NN11":"ka","NN12":"ar","MMM1":"oca","MMM2":"şub","MMM3":"mar","MMM4":"nis","MMM5":"may","MMM6":"haz","MMM7":"tem","MMM8":"ağu","MMM9":"eyl","MMM10":"eki","MMM11":"kas","MMM12":"ara","MMMM1":"ocak","MMMM2":"şubat","MMMM3":"mart","MMMM4":"nisan","MMMM5":"mayıs","MMMM6":"haziran","MMMM7":"temmuz","MMMM8":"ağustos","MMMM9":"eylül","MMMM10":"ekim","MMMM11":"kasım","MMMM12":"aralık","E0":"P","E1":"P","E2":"S","E3":"Ç","E4":"P","E5":"C","E6":"C","EE0":"Pa","EE1":"Pt","EE2":"Sa","EE3":"Ça","EE4":"Pe","EE5":"Cu","EE6":"Ct","EEE0":"Paz","EEE1":"Pzt","EEE2":"Sal","EEE3":"Çar","EEE4":"Per","EEE5":"Cum","EEE6":"Cmt","EEEE0":"Pazar","EEEE1":"Pazartesi","EEEE2":"Salı","EEEE3":"Çarşamba","EEEE4":"Perşembe","EEEE5":"Cuma","EEEE6":"Cumartesi","a0":"ÖÖ","a1":"ÖS","G-1":"MÖ","G1":"MS","in {duration}":"{duration} sonra","{duration} ago":"{duration} önce","1#1 year|#{num} years":"#{num} yıl","1#1 month|#{num} months":"#{num} ay","1#1 week|#{num} weeks":"#{num} hafta","1#1 day|#{num} days":"#{num} gün","1#1 hour|#{num} hours":"#{num} saat","1#1 minute|#{num} minutes":"#{num} dakika","1#1 second|#{num} seconds":"#{num} saniye","1#1 yr|#{num} yrs":"#{num} yıl","1#1 mon|#{num} mons":"#{num} ay","1#1 wk|#{num} wks":"#{num} haf","durationLongDays":"#{num} gün","1#1 hr|#{num} hrs":"#{num} saat","1#1 min|#{num} min":"#{num} dak","1#1 sec|#{num} sec":"#{num} san","durationMediumYears":"#{num} yıl","1#1 mo|#{num} mos":"#{num} ay","durationMediumWeeks":"#{num} hf","1#1 dy|#{num} dys":"#{num} gün","durationMediumHours":"#{num} sa","1#1 mi|#{num} min":"#{num} dk","1#1 se|#{num} sec":"#{num} sn","#{num}y":"#{num}y","durationShortMonths":"#{num}a","#{num}w":"#{num}h","#{num}d":"#{num}g","#{num}h":"#{num}s","durationShortMinutes":"#{num}d","#{num}s":"#{num}s","separatorShort":" ","separatorMedium":" ","separatorLong":" ","separatorFull":", ","finalSeparatorFull":" ve ","#{num} ms":"#{num} ms","1#1 millisecond|#{num} milliseconds":"#{num} milisaniye"};
 ilib.data.sysres_uk = {"generated":true,"NN1":"сі","NN2":"лю","NN3":"бе","NN4":"кв","NN5":"тр","NN6":"че","NN7":"ли","NN8":"се","NN9":"ве","NN10":"жо","NN11":"ли","NN12":"гр","MMM1":"січ.","MMM2":"лют.","MMM3":"бер.","MMM4":"квіт.","MMM5":"трав.","MMM6":"черв.","MMM7":"лип.","MMM8":"серп.","MMM9":"вер.","MMM10":"жовт.","MMM11":"лист.","MMM12":"груд.","MMMM1":"січня","MMMM2":"лютого","MMMM3":"березня","MMMM4":"квітня","MMMM5":"травня","MMMM6":"червня","MMMM7":"липня","MMMM8":"серпня","MMMM9":"вересня","MMMM10":"жовтня","MMMM11":"листопада","MMMM12":"грудня","E0":"Н","E1":"П","E2":"В","E3":"С","E4":"Ч","E5":"П","E6":"С","EE0":"Нд","EE1":"Пн","EE2":"Вт","EE3":"Ср","EE4":"Чт","EE5":"Пт","EE6":"Сб","EEE0":"Нд","EEE1":"Пн","EEE2":"Вт","EEE3":"Ср","EEE4":"Чт","EEE5":"Пт","EEE6":"Сб","EEEE0":"Неділя","EEEE1":"Понеділок","EEEE2":"Вівторок","EEEE3":"Середа","EEEE4":"Четвер","EEEE5":"Пʼятниця","EEEE6":"Субота","a0":"дп","a1":"пп","G-1":"до н.е.","G1":"н.е.","#{num}s":"#{num}с","1#1 se|#{num} sec":"#{num} се","1#1 sec|#{num} sec":"#{num} сек","1#1 second|#{num} seconds":"one#{num} секунда|many#{num} секунд|#{num} секунди","durationShortMinutes":"#{num}х","1#1 mi|#{num} min":"#{num} хв.","1#1 min|#{num} min":"#{num} хви","1#1 minute|#{num} minutes":"one#{num} хвилина|many#{num} хвилин|#{num} хвилини","#{num}h":"#{num}г","durationMediumHours":"#{num} го","1#1 hr|#{num} hrs":"#{num} год","1#1 hour|#{num} hours":"one#{num} година|many#{num} годин|#{num} години","#{num}d":"#{num}д","1#1 dy|#{num} dys":"one#{num} де|few#{num} дні|many#{num} дн|#{num} дня","durationLongDays":"one#{num} день|few#{num} дні|many#{num} днів|#{num} дня","1#1 day|#{num} days":"one#{num} день|few#{num} дні|many#{num} днів|#{num} дня","#{num}w":"#{num}т","durationMediumWeeks":"#{num} ти","1#1 wk|#{num} wks":"#{num} тиж","1#1 week|#{num} weeks":"one#{num} тиждень|few#{num} тижні|many#{num} тижнів|#{num} тижня","durationShortMonths":"#{num}м","1#1 mo|#{num} mos":"#{num} мі","1#1 mon|#{num} mons":"#{num} міс","1#1 month|#{num} months":"one#{num} місяць|few#{num} місяці|many#{num} місяців|#{num} місяця","#{num}y":"#{num}р","durationMediumYears":"#{num} р.","1#1 yr|#{num} yrs":"one#{num} рік|few#{num} роки|many#{num} рок|#{num} року","1#1 year|#{num} years":"one#{num} рік|few#{num} роки|many#{num} років|#{num} року","{duration} ago":"{duration} тому","in {duration}":"через {duration}","finalSeparatorFull":" та ","separatorLong":" "};
-ilib.data.sysres_ur = {"NN1":"جن","NN2":"فر","NN3":"ما","NN4":"اپ","NN5":"مئ","NN6":"جو","NN7":"جو","NN8":"اگ","NN9":"ست","NN10":"اک","NN11":"نو","NN12":"دس","MMM1":"جنوری","MMM2":"فروری","MMM3":"مارچ","MMM4":"اپریل","MMM5":"مئ","MMM6":"جون","MMM7":"جولائ","MMM8":"اگست","MMM9":"ستمبر","MMM10":"اکتوبر","MMM11":"نومبر","MMM12":"دسمبر","MMMM1":"جنوری","MMMM2":"فروری","MMMM3":"مارچ","MMMM4":"اپریل","MMMM5":"مئ","MMMM6":"جون","MMMM7":"جولائ","MMMM8":"اگست","MMMM9":"ستمبر","MMMM10":"اکتوبر","MMMM11":"نومبر","MMMM12":"دسمبر","E0":"ات","E1":"سو","E2":"من","E3":"بد","E4":"جم","E5":"جم","E6":"ہف","EE0":"ات","EE1":"سو","EE2":"من","EE3":"بد","EE4":"جم","EE5":"جم","EE6":"ہف","EEE0":"اتوار","EEE1":"پیر","EEE2":"منگل","EEE3":"بده","EEE4":"جمعرات","EEE5":"جمعہ","EEE6":"ہفتہ","EEEE0":"اتوار","EEEE1":"پیر","EEEE2":"منگل","EEEE3":"بده","EEEE4":"جمعرات","EEEE5":"جمعہ","EEEE6":"ہفتہ","a0":"دن","a1":"رات","G-1":"ق م","G1":"عیسوی سن","#{num}s":"#{num}س","1#1 se|#{num} sec":"#{num} سی","1#1 sec|#{num} sec":"#{num} سیک","1#1 second|#{num} seconds":"#{num} سیکنڈ","durationShortMinutes":"#{num}م","1#1 mi|#{num} min":"#{num} منٹ","1#1 min|#{num} min":"#{num} منٹ","1#1 minute|#{num} minutes":"#{num} منٹ","#{num}h":"#{num}گ","durationMediumHours":"#{num} گھ","1#1 hr|#{num} hrs":"#{num} گھن","1#1 hour|#{num} hours":"one#{num} گھنٹہ|#{num} گھنٹے","#{num}d":"#{num}د","1#1 dy|#{num} dys":"#{num} دن","durationLongDays":"#{num} دن","1#1 day|#{num} days":"#{num} دن","#{num}w":"#{num}ہ","durationMediumWeeks":"#{num} ہف","1#1 wk|#{num} wks":"one#{num} ہفتہ|#{num} ہفتے","1#1 week|#{num} weeks":"one#{num} ہفتہ|#{num} ہفتے","durationShortMonths":"#{num}م","1#1 mo|#{num} mos":"#{num} مہ","1#1 mon|#{num} mons":"#{num} مہی","1#1 month|#{num} months":"one#{num} مہینہ|#{num} مہینے","#{num}y":"#{num}س","durationMediumYears":"#{num} سال","1#1 yr|#{num} yrs":"#{num} سال","1#1 year|#{num} years":"#{num} سال","{duration} ago":"{duration} پہلے","in {duration}":"{duration} میں","separatorFull":"، ","finalSeparatorFull":"، اور ","separatorLong":" "};
+ilib.data.sysres_ur = {"NN1":"جن","NN2":"فر","NN3":"ما","NN4":"اپ","NN5":"مئ","NN6":"جو","NN7":"جو","NN8":"اگ","NN9":"ست","NN10":"اک","NN11":"نو","NN12":"دس","MMM1":"جنوری","MMM2":"فروری","MMM3":"مارچ","MMM4":"اپریل","MMM5":"مئ","MMM6":"جون","MMM7":"جولائ","MMM8":"اگست","MMM9":"ستمبر","MMM10":"اکتوبر","MMM11":"نومبر","MMM12":"دسمبر","MMMM1":"جنوری","MMMM2":"فروری","MMMM3":"مارچ","MMMM4":"اپریل","MMMM5":"مئ","MMMM6":"جون","MMMM7":"جولائ","MMMM8":"اگست","MMMM9":"ستمبر","MMMM10":"اکتوبر","MMMM11":"نومبر","MMMM12":"دسمبر","E0":"ات","E1":"سو","E2":"من","E3":"بد","E4":"جم","E5":"جم","E6":"ہف","EE0":"ات","EE1":"سو","EE2":"من","EE3":"بد","EE4":"جم","EE5":"جم","EE6":"ہف","EEE0":"اتوار","EEE1":"پیر","EEE2":"منگل","EEE3":"بده","EEE4":"جمعرات","EEE5":"جمعہ","EEE6":"ہفتہ","EEEE0":"اتوار","EEEE1":"پیر","EEEE2":"منگل","EEEE3":"بده","EEEE4":"جمعرات","EEEE5":"جمعہ","EEEE6":"ہفتہ","a0":"دن","a1":"رات","G-1":"ق م","G1":"عیسوی سن","#{num}s":"#{num}س","1#1 se|#{num} sec":"#{num} سی","1#1 sec|#{num} sec":"#{num} سیک","1#1 second|#{num} seconds":"#{num} سیکنڈ","durationShortMinutes":"#{num}م","1#1 mi|#{num} min":"#{num} منٹ","1#1 min|#{num} min":"#{num} منٹ","1#1 minute|#{num} minutes":"#{num} منٹ","#{num}h":"#{num}گ","durationMediumHours":"#{num} گھ","1#1 hr|#{num} hrs":"#{num} گھن","1#1 hour|#{num} hours":"one#{num} گھنٹہ|#{num} گھنٹے","#{num}d":"#{num}د","1#1 dy|#{num} dys":"#{num} دن","durationLongDays":"#{num} دن","1#1 day|#{num} days":"#{num} دن","#{num}w":"#{num}ہ","durationMediumWeeks":"#{num} ہف","1#1 wk|#{num} wks":"one#{num} ہفتہ|#{num} ہفتے","1#1 week|#{num} weeks":"one#{num} ہفتہ|#{num} ہفتے","durationShortMonths":"#{num}م","1#1 mo|#{num} mos":"#{num} مہ","1#1 mon|#{num} mons":"#{num} مہی","1#1 month|#{num} months":"one#{num} مہینہ|#{num} مہینے","#{num}y":"#{num}س","durationMediumYears":"#{num} سال","1#1 yr|#{num} yrs":"#{num} سال","1#1 year|#{num} years":"#{num} سال","{duration} ago":"‏{duration} پہلے","in {duration}":"‏{duration} میں","separatorFull":"، ","finalSeparatorFull":"، اور ","separatorLong":" "};
 ilib.data.sysres_uz = {"generated":true,"NN1":"Ян","NN2":"Фе","NN3":"Ма","NN4":"Ап","NN5":"Ма","NN6":"Ию","NN7":"Ию","NN8":"Ав","NN9":"Се","NN10":"Ок","NN11":"Но","NN12":"Де","MMM1":"Янв","MMM2":"Фев","MMM3":"Мар","MMM4":"Апр","MMM5":"Май","MMM6":"Июн","MMM7":"Июл","MMM8":"Авг","MMM9":"Сен","MMM10":"Окт","MMM11":"Ноя","MMM12":"Дек","MMMM1":"Январ","MMMM2":"Феврал","MMMM3":"Март","MMMM4":"Апрел","MMMM5":"Май","MMMM6":"Июн","MMMM7":"Июл","MMMM8":"Август","MMMM9":"Сентябр","MMMM10":"Октябр","MMMM11":"Ноябр","MMMM12":"Декабр","E0":"Я","E1":"Д","E2":"С","E3":"Ч","E4":"П","E5":"Ж","E6":"Ш","EE0":"Як","EE1":"Ду","EE2":"Се","EE3":"Чо","EE4":"Па","EE5":"Жу","EE6":"Ша","EEE0":"Якш","EEE1":"Душ","EEE2":"Сеш","EEE3":"Чор","EEE4":"Пай","EEE5":"Жум","EEE6":"Шан","EEEE0":"якшанба","EEEE1":"душанба","EEEE2":"сешанба","EEEE3":"чоршанба","EEEE4":"пайшанба","EEEE5":"жума","EEEE6":"шанба","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_uz_Arab_AF = {"generated":true,"NN1":"1","NN2":"2","NN3":"3","NN4":"4","NN5":"5","NN6":"6","NN7":"7","NN8":"8","NN9":"9","NN10":"10","NN11":"11","NN12":"12","MMM1":"1","MMM2":"2","MMM3":"3","MMM4":"4","MMM5":"5","MMM6":"6","MMM7":"7","MMM8":"8","MMM9":"9","MMM10":"10","MMM11":"11","MMM12":"12","MMMM1":"1","MMMM2":"2","MMMM3":"3","MMMM4":"4","MMMM5":"5","MMMM6":"6","MMMM7":"7","MMMM8":"8","MMMM9":"9","MMMM10":"10","MMMM11":"11","MMMM12":"12","E0":"1","E1":"2","E2":"3","E3":"4","E4":"5","E5":"6","E6":"7","EE0":"1","EE1":"2","EE2":"3","EE3":"4","EE4":"5","EE5":"6","EE6":"7","EEE0":"1","EEE1":"2","EEE2":"3","EEE3":"4","EEE4":"5","EEE5":"6","EEE6":"7","EEEE0":"1","EEEE1":"2","EEEE2":"3","EEEE3":"4","EEEE4":"5","EEEE5":"6","EEEE6":"7"};
 ilib.data.sysres_uz_Latn_UZ = {"generated":true,"NN1":"Ya","NN2":"Fe","NN3":"Ma","NN4":"Ap","NN5":"Ma","NN6":"Iy","NN7":"Iy","NN8":"Av","NN9":"Se","NN10":"Ok","NN11":"No","NN12":"De","MMM1":"Yanv","MMM2":"Fev","MMM3":"Mar","MMM4":"Apr","MMM5":"May","MMM6":"Iyun","MMM7":"Iyul","MMM8":"Avg","MMM9":"Sen","MMM10":"Okt","MMM11":"Noya","MMM12":"Dek","MMMM1":"Yanvar","MMMM2":"Fevral","MMMM3":"Mart","MMMM4":"Aprel","MMMM5":"May","MMMM6":"Iyun","MMMM7":"Iyul","MMMM8":"Avgust","MMMM9":"Sentyabr","MMMM10":"Oktyabr","MMMM11":"Noyabr","MMMM12":"Dekabr","E0":"Y","E1":"D","E2":"S","E3":"C","E4":"P","E5":"C","E6":"S","EE0":"Ya","EE1":"Du","EE2":"Se","EE3":"Ch","EE4":"Pa","EE5":"Cu","EE6":"Sh","EEE0":"Yaksh","EEE1":"Dush","EEE2":"Sesh","EEE3":"Chor","EEE4":"Pay","EEE5":"Cum","EEE6":"Shan","EEEE0":"yakshanba","EEEE1":"dushanba","EEEE2":"seshanba","EEEE3":"chorshanba","EEEE4":"payshanba","EEEE5":"cuma","EEEE6":"shanba"};
@@ -7517,17 +7572,22 @@ util/jsutils.js
  * <li><i>Z</i> - RFC 822 time zone
  * </ul>
  * 
- *<li><i>useNative</i> - the flag used to determaine whether to use the native script settings 
- * for formatting the numbers .
+ * <li><i>useNative</i> - the flag used to determine whether to use the native script settings 
+ * for formatting the numbers.
  *
- * <li>onLoad - a callback function to call when the date format object is fully 
+ * <li><i>meridiems</i> - string that specifies what style of meridiems to use with this 
+ * format. The choices are "default" and "chinese". The "default" style is the simple AM/PM,
+ * and the "chinese" style uses 7 different meridiems corresponding to the various parts of 
+ * the day. The default if not specified is "default", even for the Chinese locales. 
+ *
+ * <li><i>onLoad</i> - a callback function to call when the date format object is fully 
  * loaded. When the onLoad option is given, the DateFmt object will attempt to
  * load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two.
  * 
- * <li>sync - tell whether to load any missing locale data synchronously or 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while.
@@ -7582,6 +7642,8 @@ ilib.DateFmt = function(options) {
 	this.length = "s";
 	this.dateComponents = "dmy";
 	this.timeComponents = "ahm";
+	this.meridiems = "default";
+	
 	if (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
@@ -7675,6 +7737,11 @@ ilib.DateFmt = function(options) {
 		if (typeof(options.useNative) === 'boolean') {
 			this.useNative = options.useNative;
 		}
+		
+		if (typeof(options.meridiems) !== 'undefined' && options.meridiems === "chinese") {
+			this.meridiems = options.meridiems;
+		}
+		
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync === true);
 		}
@@ -7688,6 +7755,7 @@ ilib.DateFmt = function(options) {
 
 	new ilib.LocaleInfo(this.locale, {
 		sync: sync,
+		loadParams: loadParams, 
 		onLoad: ilib.bind(this, function (li) {
 			this.locinfo = li;
 			
@@ -7716,6 +7784,7 @@ ilib.DateFmt = function(options) {
 				locale: this.locale,
 				name: "sysres",
 				sync: sync,
+				loadParams: loadParams, 
 				onLoad: ilib.bind(this, function (rb) {
 					this.sysres = rb;
 					
@@ -7800,7 +7869,9 @@ ilib.DateFmt.defaultFmt = ilib.data.dateformats || {
 	"islamic": "gregorian",
 	"hebrew": "gregorian",
 	"julian": "gregorian",
-	"buddhist": "gregorian"
+	"buddhist": "gregorian",
+	"persian": "gregorian",
+	"persian-algo": "gregorian"
 };
 
 /**
@@ -8177,7 +8248,7 @@ ilib.DateFmt.prototype = {
 	 * </ul>
 	 * @param  {Object=} options an object-literal that contains one key 
 	 *                   "length" with the standard length strings
-	 * @return {Array} an array of all of the months of the year for the current calendar
+	 * @return {Array} an array of all of the names of the days of the week
 	 */
 	getDaysOfWeek: function(options) {
 		var length = (options && options.length) || this.getLength(),
@@ -8322,7 +8393,7 @@ ilib.DateFmt.prototype = {
 					break;
 					
 				case 'a':
-					if (this.locale.getLanguage() === 'zh') {
+					if (this.meridiems === "chinese") {
 						if (date.hour < 6) {
 							key = "azh0";	// before dawn
 						} else if (date.hour < 9) {
@@ -8733,6 +8804,10 @@ ilib.DateRngFmt = function(options) {
 	if (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		
+		if (options.calendar) {
+			this.calName = options.calendar;
 		}
 		
 		if (options.length) {
@@ -9539,7 +9614,7 @@ ilib.Date.HebrewDate = function(params) {
 	}
 };
 
-ilib.Date.HebrewDate.prototype = new ilib.Date();
+ilib.Date.HebrewDate.prototype = new ilib.Date({noinstance: true});
 ilib.Date.HebrewDate.prototype.parent = ilib.Date;
 ilib.Date.HebrewDate.prototype.constructor = ilib.Date.HebrewDate;
 
@@ -10384,7 +10459,7 @@ ilib.Date.IslamicDate = function(params) {
 	}
 };
 
-ilib.Date.IslamicDate.prototype = new ilib.Date();
+ilib.Date.IslamicDate.prototype = new ilib.Date({noinstance: true});
 ilib.Date.IslamicDate.prototype.parent = ilib.Date;
 ilib.Date.IslamicDate.prototype.constructor = ilib.Date.IslamicDate;
 
@@ -10418,15 +10493,6 @@ ilib.Date.IslamicDate.cumMonthLengths = [
  * @type number
  */
 ilib.Date.IslamicDate.GregorianDiff = 227015;
-
-/**
- * The difference between a zero Julian day and the first Islamic date
- * of Friday, July 16, 622 CE Julian. 
- * @private
- * @const
- * @type number
- */
-ilib.Date.IslamicDate.epoch = 1948439.5;
 
 /**
  * Return a new RD for this date type using the given params.
@@ -10947,7 +11013,7 @@ ilib.Date.JulDate = function(params) {
 	}
 };
 
-ilib.Date.JulDate.prototype = new ilib.Date();
+ilib.Date.JulDate.prototype = new ilib.Date({noinstance: true});
 ilib.Date.JulDate.prototype.parent = ilib.Date;
 ilib.Date.JulDate.prototype.constructor = ilib.Date.JulDate;
 
@@ -10994,14 +11060,6 @@ ilib.Date.JulDate.cumMonthLengthsLeap = [
 	335, /* Dec */
 	366
 ];
-
-/**
- * the difference between a zero Julian day and the first Julian date. 
- * @private
- * @const
- * @type number
- */
-ilib.Date.JulDate.epoch = 1721422.5;
 
 /**
  * Return a new RD for this date type using the given params.
@@ -11277,7 +11335,7 @@ ilib.Date.GregDate = function(params) {
 	}
 };
 
-ilib.Date.GregDate.prototype = new ilib.Date();
+ilib.Date.GregDate.prototype = new ilib.Date({noinstance: true});
 ilib.Date.GregDate.prototype.parent = ilib.Date;
 ilib.Date.GregDate.prototype.constructor = ilib.Date.GregDate;
 
@@ -11326,6 +11384,7 @@ ilib.Date.GregDate.prototype._calcYear = function(rd) {
  */
 ilib.Date.GregDate.prototype._calcDateComponents = function () {
 	if (this.timezone === "local" && this.rd.getRataDie() >= 719163 && this.rd.getRataDie() <= 744018.134803241) {
+		// console.log("using js Date to calculate offset");
 		// use the intrinsic JS Date object to do the tz conversion for us, which 
 		// guarantees that it follows the system tz database settings 
 		var d = new Date(this.rd.getTime());
@@ -11375,7 +11434,10 @@ ilib.Date.GregDate.prototype._calcDateComponents = function () {
 		
 		this.offset = -d.getTimezoneOffset() / 1440;
 	} else {
+		// console.log("using ilib to calculate offset. tz is " + this.timezone);
+		// console.log("GregDate._calcDateComponents: date is " + JSON.stringify(this) + " parent is " + JSON.stringify(this.parent) + " and parent.parent is " + JSON.stringify(this.parent.parent));
 		if (typeof(this.offset) === "undefined") {
+			// console.log("calculating offset");
 			this.year = this._calcYear(this.rd.getRataDie());
 			
 			// now offset the RD by the time zone, then recalculate in case we were 
@@ -11384,7 +11446,11 @@ ilib.Date.GregDate.prototype._calcDateComponents = function () {
 				this.tz = new ilib.TimeZone({id: this.timezone});
 			}
 			this.offset = this.tz.getOffsetMillis(this) / 86400000;
+		// } else {
+			// console.log("offset is already defined somehow. type is " + typeof(this.offset));
+			// console.trace("Stack is this one");
 		}
+		// console.log("offset is " + this.offset);
 		var rd = this.rd.getRataDie();
 		if (this.offset !== 0) {
 			rd += this.offset;
@@ -11644,11 +11710,15 @@ ilib.Date.ThaiSolarDate = function(params) {
 			p.rd -= 198327;
 		}
 	}
-	this.rd = undefined; // clear this out so that the GregDate constructor can set it
+	this.rd = undefined; // clear these out so that the GregDate constructor can set it
+	this.offset = undefined;
+	//console.log("ThaiSolarDate.constructor: date is " + JSON.stringify(this) + " parent is " + JSON.stringify(this.parent) + " and parent.parent is " + JSON.stringify(this.parent.parent));
 	ilib.Date.GregDate.call(this, p);
 	this.cal = new ilib.Cal.ThaiSolar();
 	// make sure the year is set correctly
-	this._calcDateComponents();
+	if (params && typeof(params.year) !== 'undefined') {
+		this.year = parseInt(params.year, 10);
+	}
 };
 
 ilib.Date.ThaiSolarDate.prototype = new ilib.Date.GregDate();
@@ -11671,6 +11741,7 @@ ilib.Date.ThaiSolarDate.epoch = 1523097.5;
 ilib.Date.ThaiSolarDate.prototype._calcDateComponents = function () {
 	// there is 198327 days difference between the Thai solar and 
 	// Gregorian epochs which is equivalent to 543 years
+	// console.log("ThaiSolarDate._calcDateComponents: date is " + JSON.stringify(this) + " parent is " + JSON.stringify(this.parent) + " and parent.parent is " + JSON.stringify(this.parent.parent));
 	this.parent._calcDateComponents.call(this);
 	this.year += 543;
 };
@@ -11760,6 +11831,1834 @@ ilib.Date.ThaiSolarDate.prototype.getCalendar = function() {
 ilib.Date._constructors["thaisolar"] = ilib.Date.ThaiSolarDate;
 
 
+/*
+ * persian.js - Represent a Persian algorithmic calendar object.
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+/* !depends calendar.js locale.js date.js julianday.js util/utils.js */
+
+/**
+ * @class
+ * Construct a new Persian algorithmic calendar object. This class encodes information about
+ * a Persian algorithmic calendar.<p>
+ * 
+ * Depends directive: !depends persian.js
+ * 
+ * @constructor
+ * @implements ilib.Cal
+ */
+ilib.Cal.PersianAlgo = function() {
+	this.type = "persian-algo";
+};
+
+/**
+ * @private
+ * @const
+ * @type Array.<number> 
+ * the lengths of each month 
+ */
+ilib.Cal.PersianAlgo.monthLengths = [
+	31,  // Farvardin
+	31,  // Ordibehesht
+	31,  // Khordad
+	31,  // Tir
+	31,  // Mordad
+	31,  // Shahrivar
+	30,  // Mehr
+	30,  // Aban
+	30,  // Azar
+	30,  // Dey
+	30,  // Bahman
+	29   // Esfand
+];
+
+/**
+ * Return the number of months in the given year. The number of months in a year varies
+ * for some luni-solar calendars because in some years, an extra month is needed to extend the 
+ * days in a year to an entire solar year. The month is represented as a 1-based number
+ * where 1=first month, 2=second month, etc.
+ * 
+ * @param {number} year a year for which the number of months is sought
+ * @return {number} The number of months in the given year
+ */
+ilib.Cal.PersianAlgo.prototype.getNumMonths = function(year) {
+	return 12;
+};
+
+/**
+ * Return the number of days in a particular month in a particular year. This function
+ * can return a different number for a month depending on the year because of things
+ * like leap years.
+ * 
+ * @param {number} month the month for which the length is sought
+ * @param {number} year the year within which that month can be found
+ * @return {number} the number of days within the given month in the given year
+ */
+ilib.Cal.PersianAlgo.prototype.getMonLength = function(month, year) {
+	if (month !== 12 || !this.isLeapYear(year)) {
+		return ilib.Cal.PersianAlgo.monthLengths[month-1];
+	} else {
+		// Month 12, Esfand, has 30 days instead of 29 in leap years
+		return 30;
+	}
+};
+
+/**
+ * Return the equivalent year in the 2820 year cycle that begins on 
+ * Far 1, 474. This particular cycle obeys the cycle-of-years formula 
+ * whereas the others do not specifically. This cycle can be used as
+ * a proxy for other years outside of the cycle by shifting them into 
+ * the cycle.   
+ * @param {number} year year to find the equivalent cycle year for
+ * @returns {number} the equivalent cycle year
+ */
+ilib.Cal.PersianAlgo.prototype.equivalentCycleYear = function(year) {
+	var y = year - (year >= 0 ? 474 : 473);
+	return ilib.mod(y, 2820) + 474;
+};
+
+/**
+ * Return true if the given year is a leap year in the Persian calendar.
+ * The year parameter may be given as a number, or as a PersAlgoDate object.
+ * @param {number} year the year for which the leap year information is being sought
+ * @return {boolean} true if the given year is a leap year
+ */
+ilib.Cal.PersianAlgo.prototype.isLeapYear = function(year) {
+	return (ilib.mod((this.equivalentCycleYear(year) + 38) * 682, 2816) < 682);
+};
+
+/**
+ * Return the type of this calendar.
+ * 
+ * @return {string} the name of the type of this calendar 
+ */
+ilib.Cal.PersianAlgo.prototype.getType = function() {
+	return this.type;
+};
+
+/**
+ * Return a date instance for this calendar type using the given
+ * options.
+ * @param {Object} options options controlling the construction of 
+ * the date instance
+ * @return {ilib.Date} a date appropriate for this calendar type
+ */
+ilib.Cal.PersianAlgo.prototype.newDateInstance = function (options) {
+	return new ilib.Date.PersAlgoDate(options);
+};
+
+/* register this calendar for the factory method */
+ilib.Cal._constructors["persian-algo"] = ilib.Cal.PersianAlgo;
+
+/*
+ * persiandate.js - Represent a date in the Persian algorithmic calendar
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* !depends 
+date.js 
+calendar/persian.js 
+util/utils.js
+util/search.js 
+localeinfo.js 
+julianday.js 
+*/
+
+/**
+ * Construct a new Persian RD date number object. The constructor parameters can 
+ * contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>unixtime<i> - sets the time of this instance according to the given 
+ * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970, Gregorian
+ * 
+ * <li><i>julianday</i> - sets the time of this instance according to the given
+ * Julian Day instance or the Julian Day given as a float
+ * 
+ * <li><i>year</i> - any integer, including 0
+ * 
+ * <li><i>month</i> - 1 to 12, where 1 means Farvardin, 2 means Ordibehesht, etc.
+ * 
+ * <li><i>day</i> - 1 to 31
+ * 
+ * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
+ * is always done with an unambiguous 24 hour representation
+ * 
+ * <li><i>minute</i> - 0 to 59
+ * 
+ * <li><i>second</i> - 0 to 59
+ * 
+ * <li><i>millisecond</i> - 0 to 999
+ * 
+ * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
+ * </ul>
+ *
+ * If the constructor is called with another Persian date instance instead of
+ * a parameter block, the other instance acts as a parameter block and its
+ * settings are copied into the current instance.<p>
+ * 
+ * If the constructor is called with no arguments at all or if none of the 
+ * properties listed above are present, then the RD is calculate based on 
+ * the current date at the time of instantiation. <p>
+ * 
+ * If any of the properties from <i>year</i> through <i>millisecond</i> are not
+ * specified in the params, it is assumed that they have the smallest possible
+ * value in the range for the property (zero or one).<p>
+ * 
+ * Depends directive: !depends persiandate.js
+ * 
+ * @private
+ * @class
+ * @constructor
+ * @extends ilib.Date.RataDie
+ * @param {Object=} params parameters that govern the settings and behaviour of this Persian RD date
+ */
+ilib.Date.PersAlgoRataDie = function(params) {
+	this.cal = params && params.cal || new ilib.Cal.PersianAlgo();
+	this.rd = undefined;
+	ilib.Date.RataDie.call(this, params);
+};
+
+ilib.Date.PersAlgoRataDie.prototype = new ilib.Date.RataDie();
+ilib.Date.PersAlgoRataDie.prototype.parent = ilib.Date.RataDie;
+ilib.Date.PersAlgoRataDie.prototype.constructor = ilib.Date.PersAlgoRataDie;
+
+/**
+ * The difference between a zero Julian day and the first Persian date
+ * @private
+ * @const
+ * @type number
+ */
+ilib.Date.PersAlgoRataDie.prototype.epoch = 1948319.5;
+
+/**
+ * Calculate the Rata Die (fixed day) number of the given date from the
+ * date components.
+ *
+ * @protected
+ * @param {Object} date the date components to calculate the RD from
+ */
+ilib.Date.PersAlgoRataDie.prototype._setDateComponents = function(date) {
+	var year = this.cal.equivalentCycleYear(date.year);
+	var y = date.year - (date.year >= 0 ? 474 : 473);
+	var rdOfYears = 1029983 * Math.floor(y/2820) + 365 * (year - 1) + Math.floor((682 * year - 110) / 2816);
+	var dayInYear = (date.month > 1 ? ilib.Date.PersAlgoDate.cumMonthLengths[date.month-1] : 0) + date.day;
+	var rdtime = (date.hour * 3600000 +
+		date.minute * 60000 +
+		date.second * 1000 +
+		date.millisecond) /
+		86400000;
+	
+	/*
+	// console.log("getRataDie: converting " +  JSON.stringify(this));
+	console.log("getRataDie: year is " +  year);
+	console.log("getRataDie: rd of years is " +  rdOfYears);
+	console.log("getRataDie: day in year is " +  dayInYear);
+	console.log("getRataDie: rdtime is " +  rdtime);
+	console.log("getRataDie: rd is " +  (rdOfYears + dayInYear + rdtime));
+	*/
+	
+	this.rd = rdOfYears + dayInYear + rdtime;
+};
+
+/**
+ * Return the rd number of the particular day of the week on or before the 
+ * given rd. eg. The Sunday on or before the given rd.
+ * @private
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the current date
+ * @return {number} the rd of the day of the week
+ */
+ilib.Date.PersAlgoRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
+	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 3, 7);
+};
+
+
+/**
+ * @class
+ * 
+ * Construct a new Persian date object. The constructor parameters can 
+ * contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>unixtime<i> - sets the time of this instance according to the given 
+ * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970, Gregorian
+ * 
+ * <li><i>julianday</i> - sets the time of this instance according to the given
+ * Julian Day instance or the Julian Day given as a float
+ * 
+ * <li><i>year</i> - any integer, including 0
+ * 
+ * <li><i>month</i> - 1 to 12, where 1 means Farvardin, 2 means Ordibehesht, etc.
+ * 
+ * <li><i>day</i> - 1 to 31
+ * 
+ * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
+ * is always done with an unambiguous 24 hour representation
+ * 
+ * <li><i>minute</i> - 0 to 59
+ * 
+ * <li><i>second</i> - 0 to 59
+ * 
+ * <li><i>millisecond</i> - 0 to 999
+ * 
+ * <li><i>timezone</i> - the ilib.TimeZone instance or time zone name as a string 
+ * of this persian date. The date/time is kept in the local time. The time zone
+ * is used later if this date is formatted according to a different time zone and
+ * the difference has to be calculated, or when the date format has a time zone
+ * component in it.
+ * 
+ * <li><i>locale</i> - locale for this persian date. If the time zone is not 
+ * given, it can be inferred from this locale. For locales that span multiple
+ * time zones, the one with the largest population is chosen as the one that 
+ * represents the locale.
+ * 
+ * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
+ * </ul>
+ *
+ * If the constructor is called with another Persian date instance instead of
+ * a parameter block, the other instance acts as a parameter block and its
+ * settings are copied into the current instance.<p>
+ * 
+ * If the constructor is called with no arguments at all or if none of the 
+ * properties listed above 
+ * from <i>unixtime</i> through <i>millisecond</i> are present, then the date 
+ * components are 
+ * filled in with the current date at the time of instantiation. Note that if
+ * you do not give the time zone when defaulting to the current time and the 
+ * time zone for all of ilib was not set with <i>ilib.setTimeZone()</i>, then the
+ * time zone will default to UTC ("Universal Time, Coordinated" or "Greenwich 
+ * Mean Time").<p>
+ * 
+ * If any of the properties from <i>year</i> through <i>millisecond</i> are not
+ * specified in the params, it is assumed that they have the smallest possible
+ * value in the range for the property (zero or one).<p>
+ * 
+ * Depends directive: !depends persiandate.js
+ * 
+ * @constructor
+ * @extends ilib.Date
+ * @param {Object=} params parameters that govern the settings and behaviour of this Persian date
+ */
+ilib.Date.PersAlgoDate = function(params) {
+	this.cal = new ilib.Cal.PersianAlgo();
+	this.timezone = "local";
+	
+	if (params) {
+		if (params.locale) {
+			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
+			var li = new ilib.LocaleInfo(this.locale);
+			this.timezone = li.getTimeZone(); 
+		}
+		if (params.timezone) {
+			this.timezone = params.timezone;
+		}
+		
+		if (params.year || params.month || params.day || params.hour ||
+				params.minute || params.second || params.millisecond ) {
+			/**
+			 * Year in the Persian calendar.
+			 * @type number
+			 */
+			this.year = parseInt(params.year, 10) || 0;
+
+			/**
+			 * The month number, ranging from 1 to 12
+			 * @type number
+			 */
+			this.month = parseInt(params.month, 10) || 1;
+
+			/**
+			 * The day of the month. This ranges from 1 to 31.
+			 * @type number
+			 */
+			this.day = parseInt(params.day, 10) || 1;
+			
+			/**
+			 * The hour of the day. This can be a number from 0 to 23, as times are
+			 * stored unambiguously in the 24-hour clock.
+			 * @type number
+			 */
+			this.hour = parseInt(params.hour, 10) || 0;
+
+			/**
+			 * The minute of the hours. Ranges from 0 to 59.
+			 * @type number
+			 */
+			this.minute = parseInt(params.minute, 10) || 0;
+
+			/**
+			 * The second of the minute. Ranges from 0 to 59.
+			 * @type number
+			 */
+			this.second = parseInt(params.second, 10) || 0;
+
+			/**
+			 * The millisecond of the second. Ranges from 0 to 999.
+			 * @type number
+			 */
+			this.millisecond = parseInt(params.millisecond, 10) || 0;
+			
+			/**
+			 * The day of the year. Ranges from 1 to 366.
+			 * @type number
+			 */
+			this.dayOfYear = parseInt(params.dayOfYear, 10);
+
+			if (typeof(params.dst) === 'boolean') {
+				this.dst = params.dst;
+			}
+			
+			this.rd = this.newRd(this);
+			
+			// add the time zone offset to the rd to convert to UTC
+			if (!this.tz) {
+				this.tz = new ilib.TimeZone({id: this.timezone});
+			}
+			// getOffsetMillis requires that this.year, this.rd, and this.dst 
+			// are set in order to figure out which time zone rules apply and 
+			// what the offset is at that point in the year
+			this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
+			if (this.offset !== 0) {
+				this.rd = this.newRd({
+					rd: this.rd.getRataDie() - this.offset
+				});
+			}
+		}
+	}
+
+	if (!this.rd) {
+		this.rd = this.newRd(params);
+		this._calcDateComponents();
+	}
+};
+
+ilib.Date.PersAlgoDate.prototype = new ilib.Date({noinstance: true});
+ilib.Date.PersAlgoDate.prototype.parent = ilib.Date;
+ilib.Date.PersAlgoDate.prototype.constructor = ilib.Date.PersAlgoDate;
+
+/**
+ * @private
+ * @const
+ * @type Array.<number>
+ * the cumulative lengths of each month, for a non-leap year 
+ */
+ilib.Date.PersAlgoDate.cumMonthLengths = [
+    0,    // Farvardin
+	31,   // Ordibehesht
+	62,   // Khordad
+	93,   // Tir
+	124,  // Mordad
+	155,  // Shahrivar
+	186,  // Mehr
+	216,  // Aban
+	246,  // Azar
+	276,  // Dey
+	306,  // Bahman
+	336,  // Esfand
+	365
+];
+
+/**
+ * Return a new RD for this date type using the given params.
+ * @protected
+ * @param {Object=} params the parameters used to create this rata die instance
+ * @returns {ilib.Date.RataDie} the new RD instance for the given params
+ */
+ilib.Date.PersAlgoDate.prototype.newRd = function (params) {
+	return new ilib.Date.PersAlgoRataDie(params);
+};
+
+/**
+ * Return the year for the given RD
+ * @protected
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the year for the RD
+ */
+ilib.Date.PersAlgoDate.prototype._calcYear = function(rd) {
+	var shiftedRd = rd - 173126;
+	var numberOfCycles = Math.floor(shiftedRd / 1029983);
+	var shiftedDayInCycle = ilib.mod(shiftedRd, 1029983);
+	var yearInCycle = (shiftedDayInCycle === 1029982) ? 2820 : Math.floor((2816 * shiftedDayInCycle + 1031337) / 1028522);
+	var year = 474 + 2820 * numberOfCycles + yearInCycle;
+	return (year > 0) ? year : year - 1;
+};
+
+/**
+ * @private
+ * Calculate date components for the given RD date.
+ */
+ilib.Date.PersAlgoDate.prototype._calcDateComponents = function () {
+	var remainder,
+		rd = this.rd.getRataDie();
+	
+	this.year = this._calcYear(rd);
+	
+	if (typeof(this.offset) === "undefined") {
+		// now offset the RD by the time zone, then recalculate in case we were 
+		// near the year boundary
+		if (!this.tz) {
+			this.tz = new ilib.TimeZone({id: this.timezone});
+		}
+		this.offset = this.tz.getOffsetMillis(this) / 86400000;
+	}
+	
+	if (this.offset !== 0) {
+		rd += this.offset;
+		this.year = this._calcYear(rd);
+	}
+	
+	//console.log("PersAlgoDate.calcComponent: calculating for rd " + rd);
+	//console.log("PersAlgoDate.calcComponent: year is " + ret.year);
+	var yearStart = this.newRd({
+		year: this.year,
+		month: 1,
+		day: 1,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+	remainder = rd - yearStart.getRataDie() + 1;
+	
+	this.dayOfYear = remainder;
+	
+	//console.log("PersAlgoDate.calcComponent: remainder is " + remainder);
+	
+	this.month = ilib.bsearch(remainder, ilib.Date.PersAlgoDate.cumMonthLengths);
+	remainder -= ilib.Date.PersAlgoDate.cumMonthLengths[this.month-1];
+	
+	//console.log("PersAlgoDate.calcComponent: month is " + this.month + " and remainder is " + remainder);
+	
+	this.day = Math.floor(remainder);
+	remainder -= this.day;
+	
+	//console.log("PersAlgoDate.calcComponent: day is " + this.day + " and remainder is " + remainder);
+	
+	// now convert to milliseconds for the rest of the calculation
+	remainder = Math.round(remainder * 86400000);
+	
+	this.hour = Math.floor(remainder/3600000);
+	remainder -= this.hour * 3600000;
+	
+	this.minute = Math.floor(remainder/60000);
+	remainder -= this.minute * 60000;
+	
+	this.second = Math.floor(remainder/1000);
+	remainder -= this.second * 1000;
+	
+	this.millisecond = remainder;
+};
+
+/**
+ * Return the day of the week of this date. The day of the week is encoded
+ * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
+ * 
+ * @return {number} the day of the week
+ */
+ilib.Date.PersAlgoDate.prototype.getDayOfWeek = function() {
+	var rd = Math.floor(this.getRataDie());
+	return ilib.mod(rd-3, 7);
+};
+
+/**
+ * Return the ordinal day of the year. Days are counted from 1 and proceed linearly up to 
+ * 365, regardless of months or weeks, etc. That is, Farvardin 1st is day 1, and 
+ * December 31st is 365 in regular years, or 366 in leap years.
+ * @return {number} the ordinal day of the year
+ */
+ilib.Date.PersAlgoDate.prototype.getDayOfYear = function() {
+	return ilib.Date.PersAlgoDate.cumMonthLengths[this.month-1] + this.day;
+};
+
+/**
+ * Return the era for this date as a number. The value for the era for Persian 
+ * calendars is -1 for "before the persian era" (BP) and 1 for "the persian era" (anno 
+ * persico or AP). 
+ * BP dates are any date before Farvardin 1, 1 AP. In the proleptic Persian calendar, 
+ * there is a year 0, so any years that are negative or zero are BP.
+ * @return {number} 1 if this date is in the common era, -1 if it is before the 
+ * common era 
+ */
+ilib.Date.PersAlgoDate.prototype.getEra = function() {
+	return (this.year < 1) ? -1 : 1;
+};
+
+/**
+ * Return the name of the calendar that governs this date.
+ * 
+ * @return {string} a string giving the name of the calendar
+ */
+ilib.Date.PersAlgoDate.prototype.getCalendar = function() {
+	return "persian-algo";
+};
+
+// register with the factory method
+ilib.Date._constructors["persian-algo"] = ilib.Date.PersAlgoDate;
+/*
+ * astro.js - Static functions to support astronomical calculations
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* !depends
+ilibglobal.js
+date.js 
+*/
+
+/*
+ * These routines were derived from a public domain set of JavaScript 
+ * functions for positional astronomy by John Walker of Fourmilab, 
+ * September 1999.
+ */
+
+/**
+ * Convert degrees to radians.
+ * 
+ * @static
+ * @param {number} d angle in degrees
+ * @return {number} angle in radians 
+ */
+ilib.Date._dtr = function(d) {
+	return (d * Math.PI) / 180.0;
+};
+
+/**
+ * Convert radians to degrees.
+ * 
+ * @static
+ * @param {number} r angle in radians
+ * @return {number} angle in degrees 
+ */
+ilib.Date._rtd = function(r) {
+	return (r * 180.0) / Math.PI;
+};
+
+/**
+ * Return the cosine of an angle given in degrees.
+ * @param {number} d angle in degrees
+ * @return {number} cosine of the angle.
+ */  
+ilib.Date._dcos = function(d) {
+	return Math.cos(ilib.Date._dtr(d));
+};
+
+/**
+ * Return the sine of an angle given in degrees.
+ * @param {number} d angle in degrees
+ * @return {number} cosine of the angle.
+ */  
+ilib.Date._dsin = function(d) {
+	return Math.sin(ilib.Date._dtr(d));
+};
+
+/**
+ * Range reduce angle in degrees.
+ * 
+ * @static
+ * @param {number} a angle to reduce
+ * @return {number} the reduced angle  
+ */
+ilib.Date._fixangle = function(a) {
+	return a - 360.0 * (Math.floor(a / 360.0));
+};
+
+/**
+ * Range reduce angle in radians.
+ * 
+ * @static
+ * @param {number} a angle to reduce
+ * @return {number} the reduced angle  
+ */
+ilib.Date._fixangr = function(a) {
+	return a - (2 * Math.PI) * (Math.floor(a / (2 * Math.PI)));
+};
+
+//  Periodic terms to obtain true time
+ilib.Date._EquinoxpTerms = [ 
+	485, 324.96, 1934.136, 203, 337.23, 32964.467,
+	199, 342.08, 20.186, 182, 27.85, 445267.112, 156, 73.14, 45036.886,
+	136, 171.52, 22518.443, 77, 222.54, 65928.934, 74, 296.72, 3034.906,
+	70, 243.58, 9037.513, 58, 119.81, 33718.147, 52, 297.17, 150.678, 50,
+	21.02, 2281.226, 45, 247.54, 29929.562, 44, 325.15, 31555.956, 29,
+	60.93, 4443.417, 18, 155.12, 67555.328, 17, 288.79, 4562.452, 16,
+	198.04, 62894.029, 14, 199.76, 31436.921, 12, 95.39, 14577.848, 12,
+	287.11, 31931.756, 12, 320.81, 34777.259, 9, 227.73, 1222.114, 8,
+	15.45, 16859.074
+];
+
+ilib.Date._JDE0tab1000 = [ 
+	[ 1721139.29189, 365242.13740, 0.06134, 0.00111, -0.00071 ],
+	[ 1721233.25401, 365241.72562, -0.05323, 0.00907, 0.00025 ],
+	[ 1721325.70455, 365242.49558, -0.11677, -0.00297, 0.00074 ],
+	[ 1721414.39987, 365242.88257, -0.00769, -0.00933, -0.00006 ] 
+];
+
+ilib.Date._JDE0tab2000 = [ 
+	[ 2451623.80984, 365242.37404, 0.05169, -0.00411, -0.00057 ],
+	[ 2451716.56767, 365241.62603, 0.00325, 0.00888, -0.00030 ],
+	[ 2451810.21715, 365242.01767, -0.11575, 0.00337, 0.00078 ],
+	[ 2451900.05952, 365242.74049, -0.06223, -0.00823, 0.00032 ] 
+];
+
+/**
+ * Determine the Julian Ephemeris Day of an equinox or solstice.  The "which" 
+ * argument selects the item to be computed:
+ * 
+ * <ul>
+ * <li>0   March equinox
+ * <li>1   June solstice
+ * <li>2   September equinox
+ * <li>3   December solstice
+ * </ul>
+ * 
+ * @static
+ * @param {number} year Gregorian year to calculate for
+ * @param {number} which Which equinox or solstice to calculate
+ */
+ilib.Date._equinox = function(year, which) {
+	var deltaL, i, j, JDE0, JDE, JDE0tab, S, T, W, Y;
+
+	/*  Initialize terms for mean equinox and solstices.  We
+	    have two sets: one for years prior to 1000 and a second
+	    for subsequent years.  */
+
+	if (year < 1000) {
+		JDE0tab = ilib.Date._JDE0tab1000;
+		Y = year / 1000;
+	} else {
+		JDE0tab = ilib.Date._JDE0tab2000;
+		Y = (year - 2000) / 1000;
+	}
+
+	JDE0 = JDE0tab[which][0] + (JDE0tab[which][1] * Y)
+			+ (JDE0tab[which][2] * Y * Y) + (JDE0tab[which][3] * Y * Y * Y)
+			+ (JDE0tab[which][4] * Y * Y * Y * Y);
+
+	//document.debug.log.value += "JDE0 = " + JDE0 + "\n";
+
+	T = (JDE0 - 2451545.0) / 36525;
+	//document.debug.log.value += "T = " + T + "\n";
+	W = (35999.373 * T) - 2.47;
+	//document.debug.log.value += "W = " + W + "\n";
+	deltaL = 1 + (0.0334 * ilib.Date._dcos(W)) + (0.0007 * ilib.Date._dcos(2 * W));
+	//document.debug.log.value += "deltaL = " + deltaL + "\n";
+
+	//  Sum the periodic terms for time T
+
+	S = 0;
+	j = 0;
+	for (i = 0; i < 24; i++) {
+		S += ilib.Date._EquinoxpTerms[j]
+				* ilib.Date._dcos(ilib.Date._EquinoxpTerms[j + 1] + (ilib.Date._EquinoxpTerms[j + 2] * T));
+		j += 3;
+	}
+
+	//document.debug.log.value += "S = " + S + "\n";
+	//document.debug.log.value += "Corr = " + ((S * 0.00001) / deltaL) + "\n";
+
+	JDE = JDE0 + ((S * 0.00001) / deltaL);
+
+	return JDE;
+};
+
+/*  Table of observed Delta T values at the beginning of
+even numbered years from 1620 through 2002.  */
+
+ilib.Date._deltaTtab = [ 
+    121, 112, 103, 95, 88, 82, 77, 72, 68, 63, 60, 56,
+	53, 51, 48, 46, 44, 42, 40, 38, 35, 33, 31, 29, 26, 24, 22, 20, 18, 16,
+	14, 12, 11, 10, 9, 8, 7, 7, 7, 7, 7, 7, 8, 8, 9, 9, 9, 9, 9, 10, 10,
+	10, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 12, 12, 12, 12, 13, 13, 13,
+	14, 14, 14, 14, 15, 15, 15, 15, 15, 16, 16, 16, 16, 16, 16, 16, 16, 15,
+	15, 14, 13, 13.1, 12.5, 12.2, 12, 12, 12, 12, 12, 12, 11.9, 11.6, 11,
+	10.2, 9.2, 8.2, 7.1, 6.2, 5.6, 5.4, 5.3, 5.4, 5.6, 5.9, 6.2, 6.5, 6.8,
+	7.1, 7.3, 7.5, 7.6, 7.7, 7.3, 6.2, 5.2, 2.7, 1.4, -1.2, -2.8, -3.8,
+	-4.8, -5.5, -5.3, -5.6, -5.7, -5.9, -6, -6.3, -6.5, -6.2, -4.7, -2.8,
+	-0.1, 2.6, 5.3, 7.7, 10.4, 13.3, 16, 18.2, 20.2, 21.1, 22.4, 23.5,
+	23.8, 24.3, 24, 23.9, 23.9, 23.7, 24, 24.3, 25.3, 26.2, 27.3, 28.2,
+	29.1, 30, 30.7, 31.4, 32.2, 33.1, 34, 35, 36.5, 38.3, 40.2, 42.2, 44.5,
+	46.5, 48.5, 50.5, 52.2, 53.8, 54.9, 55.8, 56.9, 58.3, 60, 61.6, 63, 65,
+	66.6 
+];
+
+/**  
+ * Determine the difference, in seconds, between dynamical time and universal time.
+ * 
+ * @static
+ * @param {number} year to calculate the difference for
+ * @return {number} difference in seconds between dynamical time and universal time  
+ */
+ilib.Date._deltat = function (year) {
+	var dt, f, i, t;
+
+	if ((year >= 1620) && (year <= 2000)) {
+		i = Math.floor((year - 1620) / 2);
+		f = ((year - 1620) / 2) - i; /* Fractional part of year */
+		dt = ilib.Date._deltaTtab[i] + ((ilib.Date._deltaTtab[i + 1] - ilib.Date._deltaTtab[i]) * f);
+	} else {
+		t = (year - 2000) / 100;
+		if (year < 948) {
+			dt = 2177 + (497 * t) + (44.1 * t * t);
+		} else {
+			dt = 102 + (102 * t) + (25.3 * t * t);
+			if ((year > 2000) && (year < 2100)) {
+				dt += 0.37 * (year - 2100);
+			}
+		}
+	}
+	return dt;
+};
+
+ilib.Date._oterms = [
+	-4680.93, -1.55, 1999.25, -51.38, -249.67, 
+	-39.05, 7.12, 27.87, 5.79, 2.45 
+];
+
+/**
+ * Calculate the obliquity of the ecliptic for a given
+ * Julian date.  This uses Laskar's tenth-degree
+ * polynomial fit (J. Laskar, Astronomy and
+ * Astrophysics, Vol. 157, page 68 [1986]) which is
+ * accurate to within 0.01 arc second between AD 1000
+ * and AD 3000, and within a few seconds of arc for
+ * +/-10000 years around AD 2000.  If we're outside the
+ * range in which this fit is valid (deep time) we
+ * simply return the J2000 value of the obliquity, which
+ * happens to be almost precisely the mean.
+ * 
+ * @static
+ * @param {number} jd Julian Day to calculate the obliquity for
+ * @return {number} the obliquity
+ */
+ilib.Date._obliqeq = function (jd) {
+	var eps, u, v, i;
+
+ 	v = u = (jd - 2451545.0) / 3652500.0;
+
+ 	eps = 23 + (26 / 60.0) + (21.448 / 3600.0);
+
+ 	if (Math.abs(u) < 1.0) {
+ 		for (i = 0; i < 10; i++) {
+ 			eps += (ilib.Date._oterms[i] / 3600.0) * v;
+ 			v *= u;
+ 		}
+ 	}
+ 	return eps;
+};
+
+/**
+ * Return the position of the sun.  We return
+ * intermediate values because they are useful in a
+ * variety of other contexts.
+ * @param {number} jd find the position of sun on this Julian Day
+ * @return {Object} the position of the sun and many intermediate
+ * values   
+ */
+ilib.Date._sunpos = function(jd) {
+	var ret = {}, 
+		T, T2, Omega, epsilon, epsilon0;
+
+	T = (jd - 2451545.0) / 36525.0;
+	//document.debug.log.value += "Sunpos.  T = " + T + "\n";
+	T2 = T * T;
+	ret.meanLongitude = 280.46646 + (36000.76983 * T) + (0.0003032 * T2);
+	//document.debug.log.value += "ret.meanLongitude = " + ret.meanLongitude + "\n";
+	ret.meanLongitude = ilib.Date._fixangle(ret.meanLongitude);
+	//document.debug.log.value += "ret.meanLongitude = " + ret.meanLongitude + "\n";
+	ret.meanAnomaly = 357.52911 + (35999.05029 * T) + (-0.0001537 * T2);
+	//document.debug.log.value += "ret.meanAnomaly = " + ret.meanAnomaly + "\n";
+	ret.meanAnomaly = ilib.Date._fixangle(ret.meanAnomaly);
+	//document.debug.log.value += "ret.meanAnomaly = " + ret.meanAnomaly + "\n";
+	ret.eccentricity = 0.016708634 + (-0.000042037 * T) + (-0.0000001267 * T2);
+	//document.debug.log.value += "e = " + e + "\n";
+	ret.equationOfCenter = ((1.914602 + (-0.004817 * T) + (-0.000014 * T2)) * ilib.Date._dsin(ret.meanAnomaly))
+			+ ((0.019993 - (0.000101 * T)) * ilib.Date._dsin(2 * ret.meanAnomaly))
+			+ (0.000289 * ilib.Date._dsin(3 * ret.meanAnomaly));
+	//document.debug.log.value += "ret.equationOfCenter = " + ret.equationOfCenter + "\n";
+	ret.sunLongitude = ret.meanLongitude + ret.equationOfCenter;
+	//document.debug.log.value += "ret.sunLongitude = " + ret.sunLongitude + "\n";
+	ret.sunAnomaly = ret.meanAnomaly + ret.equationOfCenter;
+	//document.debug.log.value += "ret.sunAnomaly = " + ret.sunAnomaly + "\n";
+	ret.sunRadius = (1.000001018 * (1 - (ret.eccentricity * ret.eccentricity))) / (1 + (ret.eccentricity * ilib.Date._dcos(ret.sunAnomaly)));
+	//document.debug.log.value += "ret.sunRadius = " + ret.sunRadius + "\n";
+	Omega = 125.04 - (1934.136 * T);
+	//document.debug.log.value += "Omega = " + Omega + "\n";
+	ret.apparentLong = ret.sunLongitude + (-0.00569) + (-0.00478 * ilib.Date._dsin(Omega));
+	//document.debug.log.value += "ret.apparentLong = " + ret.apparentLong + "\n";
+	epsilon0 = ilib.Date._obliqeq(jd);
+	//document.debug.log.value += "epsilon0 = " + epsilon0 + "\n";
+	epsilon = epsilon0 + (0.00256 * ilib.Date._dcos(Omega));
+	//document.debug.log.value += "epsilon = " + epsilon + "\n";
+	ret.rightAscension = ilib.Date._rtd(Math.atan2(ilib.Date._dcos(epsilon0) * ilib.Date._dsin(ret.sunLongitude), ilib.Date._dcos(ret.sunLongitude)));
+	//document.debug.log.value += "ret.rightAscension = " + ret.rightAscension + "\n";
+	ret.rightAscension = ilib.Date._fixangle(ret.rightAscension);
+	////document.debug.log.value += "ret.rightAscension = " + ret.rightAscension + "\n";
+	ret.decliation = ilib.Date._rtd(Math.asin(ilib.Date._dsin(epsilon0) * ilib.Date._dsin(ret.sunLongitude)));
+	////document.debug.log.value += "ret.decliation = " + ret.decliation + "\n";
+	ret.apparentRightAscension = ilib.Date._rtd(Math.atan2(ilib.Date._dcos(epsilon) * ilib.Date._dsin(ret.apparentLong), ilib.Date._dcos(ret.apparentLong)));
+	//document.debug.log.value += "ret.apparentRightAscension = " + ret.apparentRightAscension + "\n";
+	ret.apparentRightAscension = ilib.Date._fixangle(ret.apparentRightAscension);
+	//document.debug.log.value += "ret.apparentRightAscension = " + ret.apparentRightAscension + "\n";
+	ret.apparentDecliation = ilib.Date._rtd(Math.asin(ilib.Date._dsin(epsilon) * ilib.Date._dsin(ret.apparentLong)));
+	//document.debug.log.value += "ret.apparentDecliation = " + ret.apparentDecliation + "\n";
+
+	// Angular quantities are expressed in decimal degrees
+	return ret;
+	
+	/*
+	return {
+		meanLongitude: L0, //  [0] Geometric mean longitude of the Sun
+		meanAnomaly: M, //  [1] Mean anomaly of the Sun
+		eccentricity: e, //  [2] Eccentricity of the Earth's orbit
+		equationOfCenter: C, //  [3] Sun's equation of the Centre
+		sunLongitude: sunLong, //  [4] Sun's true longitude
+		sunAnomaly: sunAnomaly, //  [5] Sun's true anomaly
+		sunRadius: sunR, //  [6] Sun's radius vector in AU
+		apparentLong: Lambda, //  [7] Sun's apparent longitude at true equinox of the date
+		rightAscension: Alpha, //  [8] Sun's true right ascension
+		declination: Delta, //  [9] Sun's true declination
+		apparentRightAscension: AlphaApp, // [10] Sun's apparent right ascension
+		apparentDecliation: DeltaApp // [11] Sun's apparent declination
+	};
+	*/
+};
+
+ilib.Date._nutArgMult = [ 
+    0, 0, 0, 0, 1, -2, 0, 0, 2, 2, 0, 0, 0, 2, 2, 0, 0,
+	0, 0, 2, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, -2, 1, 0, 2, 2, 0, 0, 0, 2, 1,
+	0, 0, 1, 2, 2, -2, -1, 0, 2, 2, -2, 0, 1, 0, 0, -2, 0, 0, 2, 1, 0, 0,
+	-1, 2, 2, 2, 0, 0, 0, 0, 0, 0, 1, 0, 1, 2, 0, -1, 2, 2, 0, 0, -1, 0, 1,
+	0, 0, 1, 2, 1, -2, 0, 2, 0, 0, 0, 0, -2, 2, 1, 2, 0, 0, 2, 2, 0, 0, 2,
+	2, 2, 0, 0, 2, 0, 0, -2, 0, 1, 2, 2, 0, 0, 0, 2, 0, -2, 0, 0, 2, 0, 0,
+	0, -1, 2, 1, 0, 2, 0, 0, 0, 2, 0, -1, 0, 1, -2, 2, 0, 2, 2, 0, 1, 0, 0,
+	1, -2, 0, 1, 0, 1, 0, -1, 0, 0, 1, 0, 0, 2, -2, 0, 2, 0, -1, 2, 1, 2,
+	0, 1, 2, 2, 0, 1, 0, 2, 2, -2, 1, 1, 0, 0, 0, -1, 0, 2, 2, 2, 0, 0, 2,
+	1, 2, 0, 1, 0, 0, -2, 0, 2, 2, 2, -2, 0, 1, 2, 1, 2, 0, -2, 0, 1, 2, 0,
+	0, 0, 1, 0, -1, 1, 0, 0, -2, -1, 0, 2, 1, -2, 0, 0, 0, 1, 0, 0, 2, 2,
+	1, -2, 0, 2, 0, 1, -2, 1, 0, 2, 1, 0, 0, 1, -2, 0, -1, 0, 1, 0, 0, -2,
+	1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 2, 0, -1, -1, 1, 0, 0, 0, 1, 1, 0,
+	0, 0, -1, 1, 2, 2, 2, -1, -1, 2, 2, 0, 0, -2, 2, 2, 0, 0, 3, 2, 2, 2,
+	-1, 0, 2, 2 
+];
+
+ilib.Date._nutArgCoeff = [ 
+	-171996, -1742, 92095, 89, /*  0,  0,  0,  0,  1 */
+	-13187, -16, 5736, -31, /* -2,  0,  0,  2,  2 */
+	-2274, -2, 977, -5, /*  0,  0,  0,  2,  2 */
+	2062, 2, -895, 5, /*  0,  0,  0,  0,  2 */
+	1426, -34, 54, -1, /*  0,  1,  0,  0,  0 */
+	712, 1, -7, 0, /*  0,  0,  1,  0,  0 */
+	-517, 12, 224, -6, /* -2,  1,  0,  2,  2 */
+	-386, -4, 200, 0, /*  0,  0,  0,  2,  1 */
+	-301, 0, 129, -1, /*  0,  0,  1,  2,  2 */
+	217, -5, -95, 3, /* -2, -1,  0,  2,  2 */
+	-158, 0, 0, 0, /* -2,  0,  1,  0,  0 */
+	129, 1, -70, 0, /* -2,  0,  0,  2,  1 */
+	123, 0, -53, 0, /*  0,  0, -1,  2,  2 */
+	63, 0, 0, 0, /*  2,  0,  0,  0,  0 */
+	63, 1, -33, 0, /*  0,  0,  1,  0,  1 */
+	-59, 0, 26, 0, /*  2,  0, -1,  2,  2 */
+	-58, -1, 32, 0, /*  0,  0, -1,  0,  1 */
+	-51, 0, 27, 0, /*  0,  0,  1,  2,  1 */
+	48, 0, 0, 0, /* -2,  0,  2,  0,  0 */
+	46, 0, -24, 0, /*  0,  0, -2,  2,  1 */
+	-38, 0, 16, 0, /*  2,  0,  0,  2,  2 */
+	-31, 0, 13, 0, /*  0,  0,  2,  2,  2 */
+	29, 0, 0, 0, /*  0,  0,  2,  0,  0 */
+	29, 0, -12, 0, /* -2,  0,  1,  2,  2 */
+	26, 0, 0, 0, /*  0,  0,  0,  2,  0 */
+	-22, 0, 0, 0, /* -2,  0,  0,  2,  0 */
+	21, 0, -10, 0, /*  0,  0, -1,  2,  1 */
+	17, -1, 0, 0, /*  0,  2,  0,  0,  0 */
+	16, 0, -8, 0, /*  2,  0, -1,  0,  1 */
+	-16, 1, 7, 0, /* -2,  2,  0,  2,  2 */
+	-15, 0, 9, 0, /*  0,  1,  0,  0,  1 */
+	-13, 0, 7, 0, /* -2,  0,  1,  0,  1 */
+	-12, 0, 6, 0, /*  0, -1,  0,  0,  1 */
+	11, 0, 0, 0, /*  0,  0,  2, -2,  0 */
+	-10, 0, 5, 0, /*  2,  0, -1,  2,  1 */
+	-8, 0, 3, 0, /*  2,  0,  1,  2,  2 */
+	7, 0, -3, 0, /*  0,  1,  0,  2,  2 */
+	-7, 0, 0, 0, /* -2,  1,  1,  0,  0 */
+	-7, 0, 3, 0, /*  0, -1,  0,  2,  2 */
+	-7, 0, 3, 0, /*  2,  0,  0,  2,  1 */
+	6, 0, 0, 0, /*  2,  0,  1,  0,  0 */
+	6, 0, -3, 0, /* -2,  0,  2,  2,  2 */
+	6, 0, -3, 0, /* -2,  0,  1,  2,  1 */
+	-6, 0, 3, 0, /*  2,  0, -2,  0,  1 */
+	-6, 0, 3, 0, /*  2,  0,  0,  0,  1 */
+	5, 0, 0, 0, /*  0, -1,  1,  0,  0 */
+	-5, 0, 3, 0, /* -2, -1,  0,  2,  1 */
+	-5, 0, 3, 0, /* -2,  0,  0,  0,  1 */
+	-5, 0, 3, 0, /*  0,  0,  2,  2,  1 */
+	4, 0, 0, 0, /* -2,  0,  2,  0,  1 */
+	4, 0, 0, 0, /* -2,  1,  0,  2,  1 */
+	4, 0, 0, 0, /*  0,  0,  1, -2,  0 */
+	-4, 0, 0, 0, /* -1,  0,  1,  0,  0 */
+	-4, 0, 0, 0, /* -2,  1,  0,  0,  0 */
+	-4, 0, 0, 0, /*  1,  0,  0,  0,  0 */
+	3, 0, 0, 0, /*  0,  0,  1,  2,  0 */
+	-3, 0, 0, 0, /* -1, -1,  1,  0,  0 */
+	-3, 0, 0, 0, /*  0,  1,  1,  0,  0 */
+	-3, 0, 0, 0, /*  0, -1,  1,  2,  2 */
+	-3, 0, 0, 0, /*  2, -1, -1,  2,  2 */
+	-3, 0, 0, 0, /*  0,  0, -2,  2,  2 */
+	-3, 0, 0, 0, /*  0,  0,  3,  2,  2 */
+	-3, 0, 0, 0 /*  2, -1,  0,  2,  2 */
+];
+
+/**
+ * Calculate the nutation in longitude, deltaPsi, and obliquity, 
+ * deltaEpsilon for a given Julian date jd. Results are returned as an object
+ * giving deltaPsi and deltaEpsilon in degrees.
+ * 
+ * @static
+ * @param {number} jd calculate the nutation of this Julian Day
+ * @return {Object} the deltaPsi and deltaEpsilon of the nutation
+ */
+ilib.Date._nutation = function(jd) {
+	var i, j, 
+		t = (jd - 2451545.0) / 36525.0, 
+		t2, t3, to10, 
+		ta = [], 
+		dp = 0, 
+		de = 0, 
+		ang,
+		ret = {};
+
+	t3 = t * (t2 = t * t);
+
+	/*
+	 * Calculate angles. The correspondence between the elements of our array
+	 * and the terms cited in Meeus are:
+	 * 
+	 * ta[0] = D ta[0] = M ta[2] = M' ta[3] = F ta[4] = \Omega
+	 * 
+	 */
+
+	ta[0] = ilib.Date._dtr(297.850363 + 445267.11148 * t - 0.0019142 * t2 + t3 / 189474.0);
+	ta[1] = ilib.Date._dtr(357.52772 + 35999.05034 * t - 0.0001603 * t2 - t3 / 300000.0);
+	ta[2] = ilib.Date._dtr(134.96298 + 477198.867398 * t + 0.0086972 * t2 + t3 / 56250.0);
+	ta[3] = ilib.Date._dtr(93.27191 + 483202.017538 * t - 0.0036825 * t2 + t3 / 327270);
+	ta[4] = ilib.Date._dtr(125.04452 - 1934.136261 * t + 0.0020708 * t2 + t3 / 450000.0);
+
+	/*
+	 * Range reduce the angles in case the sine and cosine functions don't do it
+	 * as accurately or quickly.
+	 */
+
+	for (i = 0; i < 5; i++) {
+		ta[i] = ilib.Date._fixangr(ta[i]);
+	}
+
+	to10 = t / 10.0;
+	for (i = 0; i < 63; i++) {
+		ang = 0;
+		for (j = 0; j < 5; j++) {
+			if (ilib.Date._nutArgMult[(i * 5) + j] != 0) {
+				ang += ilib.Date._nutArgMult[(i * 5) + j] * ta[j];
+			}
+		}
+		dp += (ilib.Date._nutArgCoeff[(i * 4) + 0] + ilib.Date._nutArgCoeff[(i * 4) + 1] * to10) * Math.sin(ang);
+		de += (ilib.Date._nutArgCoeff[(i * 4) + 2] + ilib.Date._nutArgCoeff[(i * 4) + 3] * to10) * Math.cos(ang);
+	}
+
+	/*
+	 * Return the result, converting from ten thousandths of arc seconds to
+	 * radians in the process.
+	 */
+
+	ret.deltaPsi = dp / (3600.0 * 10000.0);
+	ret.deltaEpsilon = de / (3600.0 * 10000.0);
+
+	return ret;
+};
+
+/**
+ * Returns the equation of time as a fraction of a day.
+ * 
+ * @static
+ * @param {number} jd the Julian Day of the day to calculate for
+ * @return {number} the equation of time for the given day  
+ */
+ilib.Date._equationOfTime = function(jd) {
+	var alpha, deltaPsi, E, epsilon, L0, tau, pos;
+
+	// 2451545.0 is the Julian day of J2000 epoch
+	// 365250.0 is the number of days in a Julian millenium
+	tau = (jd - 2451545.0) / 365250.0;
+	//document.debug.log.value += "equationOfTime.  tau = " + tau + "\n";
+	L0 = 280.4664567 + (360007.6982779 * tau) + (0.03032028 * tau * tau)
+			+ ((tau * tau * tau) / 49931)
+			+ (-((tau * tau * tau * tau) / 15300))
+			+ (-((tau * tau * tau * tau * tau) / 2000000));
+	//document.debug.log.value += "L0 = " + L0 + "\n";
+	L0 = ilib.Date._fixangle(L0);
+	//document.debug.log.value += "L0 = " + L0 + "\n";
+	pos = ilib.Date._sunpos(jd);
+	alpha = pos.apparentRightAscension;
+	//document.debug.log.value += "alpha = " + alpha + "\n";
+	var nut = ilib.Date._nutation(jd);
+	deltaPsi = nut.deltaPsi;
+	//document.debug.log.value += "deltaPsi = " + deltaPsi + "\n";
+	epsilon = ilib.Date._obliqeq(jd) + nut.deltaEpsilon;
+	//document.debug.log.value += "epsilon = " + epsilon + "\n";
+	E = L0 + (-0.0057183) + (-alpha) + (deltaPsi * ilib.Date._dcos(epsilon));
+	//document.debug.log.value += "E = " + E + "\n";
+	E = E - 20.0 * (Math.floor(E / 20.0));
+	//document.debug.log.value += "Efixed = " + E + "\n";
+	E = E / (24 * 60);
+	//document.debug.log.value += "Eday = " + E + "\n";
+
+	return E;
+};
+
+/*
+ * persratadie.js - Represent a rata die date in the Persian calendar
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* !depends 
+date.js
+util/utils.js
+calendar/ratadie.js
+calendar/astro.js
+calendar/gregoriandate.js
+*/
+
+/**
+ * Construct a new Persian RD date number object. The constructor parameters can 
+ * contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>unixtime<i> - sets the time of this instance according to the given 
+ * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970, Gregorian
+ * 
+ * <li><i>julianday</i> - sets the time of this instance according to the given
+ * Julian Day instance or the Julian Day given as a float
+ * 
+ * <li><i>year</i> - any integer, including 0
+ * 
+ * <li><i>month</i> - 1 to 12, where 1 means Farvardin, 2 means Ordibehesht, etc.
+ * 
+ * <li><i>day</i> - 1 to 31
+ * 
+ * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
+ * is always done with an unambiguous 24 hour representation
+ * 
+ * <li><i>minute</i> - 0 to 59
+ * 
+ * <li><i>second</i> - 0 to 59
+ * 
+ * <li><i>millisecond</i> - 0 to 999
+ * 
+ * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
+ * </ul>
+ *
+ * If the constructor is called with another Persian date instance instead of
+ * a parameter block, the other instance acts as a parameter block and its
+ * settings are copied into the current instance.<p>
+ * 
+ * If the constructor is called with no arguments at all or if none of the 
+ * properties listed above are present, then the RD is calculate based on 
+ * the current date at the time of instantiation. <p>
+ * 
+ * If any of the properties from <i>year</i> through <i>millisecond</i> are not
+ * specified in the params, it is assumed that they have the smallest possible
+ * value in the range for the property (zero or one).<p>
+ * 
+ * Depends directive: !depends persiandate.js
+ * 
+ * @private
+ * @class
+ * @constructor
+ * @extends ilib.Date.RataDie
+ * @param {Object=} params parameters that govern the settings and behaviour of this Persian RD date
+ */
+ilib.Date.PersAstroRataDie = function(params) {
+	this.rd = undefined;
+	ilib.Date.RataDie.call(this, params);
+};
+
+ilib.Date.PersAstroRataDie.prototype = new ilib.Date.RataDie();
+ilib.Date.PersAstroRataDie.prototype.parent = ilib.Date.RataDie;
+ilib.Date.PersAstroRataDie.prototype.constructor = ilib.Date.PersAstroRataDie;
+
+/**
+ * The difference between a zero Julian day and the first Persian date
+ * @private
+ * @const
+ * @type number
+ */
+ilib.Date.PersAstroRataDie.prototype.epoch = 1948319.5;
+
+/**
+ * @protected 
+ */
+ilib.Date.PersAstroRataDie.prototype._tehranEquinox = function(year) {
+    var equJED, equJD, equAPP, equTehran, dtTehran;
+
+    //  March equinox in dynamical time
+    equJED = ilib.Date._equinox(year, 0);
+
+    //  Correct for delta T to obtain Universal time
+    equJD = equJED - (ilib.Date._deltat(year) / (24 * 60 * 60));
+
+    //  Apply the equation of time to yield the apparent time at Greenwich
+    equAPP = equJD + ilib.Date._equationOfTime(equJED);
+
+    /*  
+     * Finally, we must correct for the constant difference between
+     * the Greenwich meridian and the time zone standard for Iran 
+     * Standard time, 52 degrees 30 minutes to the East.
+     */
+
+    dtTehran = 52.5 / 360;
+    equTehran = equAPP + dtTehran;
+
+    return equTehran;
+};
+
+/**
+ * Calculate the year based on the given Julian day.
+ * @protected
+ * @param {number} jd the Julian day to get the year for
+ * @return {{year:number,equinox:number}} the year and the last equinox
+ */
+ilib.Date.PersAstroRataDie.prototype._getYear = function(jd) {
+	var gd = new ilib.Date.GregDate({julianday: jd});
+    var guess = gd.getYears() - 2,
+    	nexteq,
+    	ret = {};
+
+    //ret.equinox = Math.floor(this._tehranEquinox(guess));
+    ret.equinox = this._tehranEquinox(guess);
+	while (ret.equinox > jd) {
+	    guess--;
+	    // ret.equinox = Math.floor(this._tehranEquinox(guess));
+	    ret.equinox = this._tehranEquinox(guess);
+	}
+	nexteq = ret.equinox - 1;
+	// if the equinox falls after noon, then the day after that is the start of the 
+	// next year, so truncate the JD to get the noon of the day before the day with 
+	//the equinox on it, then add 0.5 to get the midnight of that day 
+	while (!(Math.floor(ret.equinox) + 0.5 <= jd && jd < Math.floor(nexteq) + 0.5)) {
+	    ret.equinox = nexteq;
+	    guess++;
+	    // nexteq = Math.floor(this._tehranEquinox(guess));
+	    nexteq = this._tehranEquinox(guess);
+	}
+	
+	// Mean solar tropical year is 365.24219878 days
+	ret.year = Math.round((ret.equinox - this.epoch - 1) / 365.24219878) + 1;
+	
+	return ret;
+};
+
+/**
+ * Calculate the Rata Die (fixed day) number of the given date from the
+ * date components.
+ *
+ * @protected
+ * @param {Object} date the date components to calculate the RD from
+ */
+ilib.Date.PersAstroRataDie.prototype._setDateComponents = function(date) {
+    var adr, guess, jd;
+
+    // Mean solar tropical year is 365.24219878 days 
+    guess = this.epoch + 1 + 365.24219878 * (date.year - 2);
+    adr = {year: date.year - 1, equinox: 0};
+
+    while (adr.year < date.year) {
+        adr = this._getYear(guess);
+        guess = adr.equinox + (365.24219878 + 2);
+    }
+
+    jd = Math.floor(adr.equinox) +
+            ((date.month <= 7) ?
+                ((date.month - 1) * 31) :
+                (((date.month - 1) * 30) + 6)
+            ) +
+    	    (date.day - 1 + 0.5); // add 0.5 so that we convert JDs, which start at noon to RDs which start at midnight
+    
+	jd += (date.hour * 3600000 +
+			date.minute * 60000 +
+			date.second * 1000 +
+			date.millisecond) /
+			86400000;
+
+    this.rd = jd - this.epoch;
+};
+
+/**
+ * Return the rd number of the particular day of the week on or before the 
+ * given rd. eg. The Sunday on or before the given rd.
+ * @private
+ * @param {number} rd the rata die date of the reference date
+ * @param {number} dayOfWeek the day of the week that is being sought relative 
+ * to the current date
+ * @return {number} the rd of the day of the week
+ */
+ilib.Date.PersAstroRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
+	return rd - ilib.mod(Math.floor(rd) - dayOfWeek - 3, 7);
+};
+
+/*
+ * persianastro.js - Represent a Persian astronomical (Hijjri) calendar object.
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+/* !depends 
+calendar/astro.js 
+calendar.js 
+locale.js 
+date.js 
+julianday.js 
+util/utils.js
+calendar/persratadie.js 
+*/
+
+/**
+ * @class
+ * Construct a new Persian astronomical (Hijjri) calendar object. This class encodes 
+ * information about a Persian calendar. This class differs from the 
+ * Persian calendar in that the leap years are calculated based on the
+ * astronomical observations of the sun in Teheran, instead of calculating
+ * the leap years based on a regular cyclical rhythm algorithm.<p>
+ * 
+ * Depends directive: !depends persianastro.js
+ * 
+ * @constructor
+ * @implements ilib.Cal
+ */
+ilib.Cal.Persian = function() {
+	this.type = "persian";
+};
+
+/**
+ * @private
+ * @const
+ * @type Array.<number> 
+ * the lengths of each month 
+ */
+ilib.Cal.Persian.monthLengths = [
+	31,  // Farvardin
+	31,  // Ordibehesht
+	31,  // Khordad
+	31,  // Tir
+	31,  // Mordad
+	31,  // Shahrivar
+	30,  // Mehr
+	30,  // Aban
+	30,  // Azar
+	30,  // Dey
+	30,  // Bahman
+	29   // Esfand
+];
+
+/**
+ * Return the number of months in the given year. The number of months in a year varies
+ * for some luni-solar calendars because in some years, an extra month is needed to extend the 
+ * days in a year to an entire solar year. The month is represented as a 1-based number
+ * where 1=first month, 2=second month, etc.
+ * 
+ * @param {number} year a year for which the number of months is sought
+ * @return {number} The number of months in the given year
+ */
+ilib.Cal.Persian.prototype.getNumMonths = function(year) {
+	return 12;
+};
+
+/**
+ * Return the number of days in a particular month in a particular year. This function
+ * can return a different number for a month depending on the year because of things
+ * like leap years.
+ * 
+ * @param {number} month the month for which the length is sought
+ * @param {number} year the year within which that month can be found
+ * @return {number} the number of days within the given month in the given year
+ */
+ilib.Cal.Persian.prototype.getMonLength = function(month, year) {
+	if (month !== 12 || !this.isLeapYear(year)) {
+		return ilib.Cal.Persian.monthLengths[month-1];
+	} else {
+		// Month 12, Esfand, has 30 days instead of 29 in leap years
+		return 30;
+	}
+};
+
+/**
+ * Return true if the given year is a leap year in the Persian astronomical calendar.
+ * @param {number} year the year for which the leap year information is being sought
+ * @return {boolean} true if the given year is a leap year
+ */
+ilib.Cal.Persian.prototype.isLeapYear = function(year) {
+	var rdNextYear = new ilib.Date.PersAstroRataDie({
+		cal: this,
+		year: year + 1,
+		month: 1,
+		day: 1,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+	var rdThisYear = new ilib.Date.PersAstroRataDie({
+		cal: this,
+		year: year,
+		month: 1,
+		day: 1,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	}); 
+    return (rdNextYear.getRataDie() - rdThisYear.getRataDie()) > 365;
+};
+
+/**
+ * Return the type of this calendar.
+ * 
+ * @return {string} the name of the type of this calendar 
+ */
+ilib.Cal.Persian.prototype.getType = function() {
+	return this.type;
+};
+
+/**
+ * Return a date instance for this calendar type using the given
+ * options.
+ * @param {Object} options options controlling the construction of 
+ * the date instance
+ * @return {ilib.Date} a date appropriate for this calendar type
+ */
+ilib.Cal.Persian.prototype.newDateInstance = function (options) {
+	return new ilib.Date.PersDate(options);
+};
+
+/* register this calendar for the factory method */
+ilib.Cal._constructors["persian"] = ilib.Cal.Persian;
+
+/*
+ * persianastrodate.js - Represent a date in the Persian astronomical (Hijjri) calendar
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* !depends 
+date.js
+calendar/persratadie.js
+calendar/persianastro.js 
+util/utils.js
+util/search.js 
+localeinfo.js 
+julianday.js 
+*/
+
+/**
+ * @class
+ * 
+ * Construct a new Persian astronomical date object. The constructor parameters can 
+ * contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>unixtime<i> - sets the time of this instance according to the given 
+ * unix time. Unix time is the number of milliseconds since midnight on Jan 1, 1970, Gregorian
+ * 
+ * <li><i>julianday</i> - sets the time of this instance according to the given
+ * Julian Day instance or the Julian Day given as a float
+ * 
+ * <li><i>year</i> - any integer, including 0
+ * 
+ * <li><i>month</i> - 1 to 12, where 1 means Farvardin, 2 means Ordibehesht, etc.
+ * 
+ * <li><i>day</i> - 1 to 31
+ * 
+ * <li><i>hour</i> - 0 to 23. A formatter is used to display 12 hour clocks, but this representation 
+ * is always done with an unambiguous 24 hour representation
+ * 
+ * <li><i>minute</i> - 0 to 59
+ * 
+ * <li><i>second</i> - 0 to 59
+ * 
+ * <li><i>millisecond</i> - 0 to 999
+ * 
+ * <li><i>timezone</i> - the ilib.TimeZone instance or time zone name as a string 
+ * of this persian date. The date/time is kept in the local time. The time zone
+ * is used later if this date is formatted according to a different time zone and
+ * the difference has to be calculated, or when the date format has a time zone
+ * component in it.
+ * 
+ * <li><i>locale</i> - locale for this persian date. If the time zone is not 
+ * given, it can be inferred from this locale. For locales that span multiple
+ * time zones, the one with the largest population is chosen as the one that 
+ * represents the locale.
+ * 
+ * <li><i>date</i> - use the given intrinsic Javascript date to initialize this one.
+ * </ul>
+ *
+ * If the constructor is called with another Persian date instance instead of
+ * a parameter block, the other instance acts as a parameter block and its
+ * settings are copied into the current instance.<p>
+ * 
+ * If the constructor is called with no arguments at all or if none of the 
+ * properties listed above 
+ * from <i>unixtime</i> through <i>millisecond</i> are present, then the date 
+ * components are 
+ * filled in with the current date at the time of instantiation. Note that if
+ * you do not give the time zone when defaulting to the current time and the 
+ * time zone for all of ilib was not set with <i>ilib.setTimeZone()</i>, then the
+ * time zone will default to UTC ("Universal Time, Coordinated" or "Greenwich 
+ * Mean Time").<p>
+ * 
+ * If any of the properties from <i>year</i> through <i>millisecond</i> are not
+ * specified in the params, it is assumed that they have the smallest possible
+ * value in the range for the property (zero or one).<p>
+ * 
+ * Depends directive: !depends persiandate.js
+ * 
+ * @constructor
+ * @extends ilib.Date
+ * @param {Object=} params parameters that govern the settings and behaviour of this Persian date
+ */
+ilib.Date.PersDate = function(params) {
+	this.cal = new ilib.Cal.Persian();
+	this.timezone = "local";
+	
+	if (params) {
+		if (params.locale) {
+			this.locale = (typeof(params.locale) === 'string') ? new ilib.Locale(params.locale) : params.locale;
+			var li = new ilib.LocaleInfo(this.locale);
+			this.timezone = li.getTimeZone(); 
+		}
+		if (params.timezone) {
+			this.timezone = params.timezone;
+		}
+		
+		if (params.year || params.month || params.day || params.hour ||
+				params.minute || params.second || params.millisecond ) {
+			/**
+			 * Year in the Persian calendar.
+			 * @type number
+			 */
+			this.year = parseInt(params.year, 10) || 0;
+
+			/**
+			 * The month number, ranging from 1 to 12
+			 * @type number
+			 */
+			this.month = parseInt(params.month, 10) || 1;
+
+			/**
+			 * The day of the month. This ranges from 1 to 31.
+			 * @type number
+			 */
+			this.day = parseInt(params.day, 10) || 1;
+			
+			/**
+			 * The hour of the day. This can be a number from 0 to 23, as times are
+			 * stored unambiguously in the 24-hour clock.
+			 * @type number
+			 */
+			this.hour = parseInt(params.hour, 10) || 0;
+
+			/**
+			 * The minute of the hours. Ranges from 0 to 59.
+			 * @type number
+			 */
+			this.minute = parseInt(params.minute, 10) || 0;
+
+			/**
+			 * The second of the minute. Ranges from 0 to 59.
+			 * @type number
+			 */
+			this.second = parseInt(params.second, 10) || 0;
+
+			/**
+			 * The millisecond of the second. Ranges from 0 to 999.
+			 * @type number
+			 */
+			this.millisecond = parseInt(params.millisecond, 10) || 0;
+			
+			/**
+			 * The day of the year. Ranges from 1 to 366.
+			 * @type number
+			 */
+			this.dayOfYear = parseInt(params.dayOfYear, 10);
+
+			if (typeof(params.dst) === 'boolean') {
+				this.dst = params.dst;
+			}
+			
+			this.rd = this.newRd(this);
+			
+			// add the time zone offset to the rd to convert to UTC
+			if (!this.tz) {
+				this.tz = new ilib.TimeZone({id: this.timezone});
+			}
+			// getOffsetMillis requires that this.year, this.rd, and this.dst 
+			// are set in order to figure out which time zone rules apply and 
+			// what the offset is at that point in the year
+			this.offset = this.tz._getOffsetMillisWallTime(this) / 86400000;
+			if (this.offset !== 0) {
+				this.rd = this.newRd({
+					rd: this.rd.getRataDie() - this.offset
+				});
+			}
+		}
+	}
+
+	if (!this.rd) {
+		this.rd = this.newRd(params);
+		this._calcDateComponents();
+	}
+};
+
+ilib.Date.PersDate.prototype = new ilib.Date({noinstance: true});
+ilib.Date.PersDate.prototype.parent = ilib.Date;
+ilib.Date.PersDate.prototype.constructor = ilib.Date.PersDate;
+
+/**
+ * @private
+ * @const
+ * @type Array.<number>
+ * the cumulative lengths of each month, for a non-leap year 
+ */
+ilib.Date.PersDate.cumMonthLengths = [
+    0,    // Farvardin
+	31,   // Ordibehesht
+	62,   // Khordad
+	93,   // Tir
+	124,  // Mordad
+	155,  // Shahrivar
+	186,  // Mehr
+	216,  // Aban
+	246,  // Azar
+	276,  // Dey
+	306,  // Bahman
+	336,  // Esfand
+	366
+];
+
+/**
+ * Return a new RD for this date type using the given params.
+ * @protected
+ * @param {Object=} params the parameters used to create this rata die instance
+ * @returns {ilib.Date.RataDie} the new RD instance for the given params
+ */
+ilib.Date.PersDate.prototype.newRd = function (params) {
+	return new ilib.Date.PersAstroRataDie(params);
+};
+
+/**
+ * Return the year for the given RD
+ * @protected
+ * @param {number} rd RD to calculate from 
+ * @returns {number} the year for the RD
+ */
+ilib.Date.PersDate.prototype._calcYear = function(rd) {
+	var julianday = rd + this.rd.epoch;
+	return this.rd._getYear(julianday).year;
+};
+
+/**
+ * @private
+ * Calculate date components for the given RD date.
+ */
+ilib.Date.PersDate.prototype._calcDateComponents = function () {
+	var remainder,
+		rd = this.rd.getRataDie();
+	
+	this.year = this._calcYear(rd);
+	
+	if (typeof(this.offset) === "undefined") {
+		// now offset the RD by the time zone, then recalculate in case we were 
+		// near the year boundary
+		if (!this.tz) {
+			this.tz = new ilib.TimeZone({id: this.timezone});
+		}
+		this.offset = this.tz.getOffsetMillis(this) / 86400000;
+	}
+	
+	if (this.offset !== 0) {
+		rd += this.offset;
+		this.year = this._calcYear(rd);
+	}
+	
+	//console.log("PersDate.calcComponent: calculating for rd " + rd);
+	//console.log("PersDate.calcComponent: year is " + ret.year);
+	var yearStart = this.newRd({
+		year: this.year,
+		month: 1,
+		day: 1,
+		hour: 0,
+		minute: 0,
+		second: 0,
+		millisecond: 0
+	});
+	remainder = rd - yearStart.getRataDie() + 1;
+	
+	this.dayOfYear = remainder;
+	
+	//console.log("PersDate.calcComponent: remainder is " + remainder);
+	
+	this.month = ilib.bsearch(Math.floor(remainder), ilib.Date.PersDate.cumMonthLengths);
+	remainder -= ilib.Date.PersDate.cumMonthLengths[this.month-1];
+	
+	//console.log("PersDate.calcComponent: month is " + this.month + " and remainder is " + remainder);
+	
+	this.day = Math.floor(remainder);
+	remainder -= this.day;
+	
+	//console.log("PersDate.calcComponent: day is " + this.day + " and remainder is " + remainder);
+	
+	// now convert to milliseconds for the rest of the calculation
+	remainder = Math.round(remainder * 86400000);
+	
+	this.hour = Math.floor(remainder/3600000);
+	remainder -= this.hour * 3600000;
+	
+	this.minute = Math.floor(remainder/60000);
+	remainder -= this.minute * 60000;
+	
+	this.second = Math.floor(remainder/1000);
+	remainder -= this.second * 1000;
+	
+	this.millisecond = remainder;
+};
+
+/**
+ * Return the day of the week of this date. The day of the week is encoded
+ * as number from 0 to 6, with 0=Sunday, 1=Monday, etc., until 6=Saturday.
+ * 
+ * @return {number} the day of the week
+ */
+ilib.Date.PersDate.prototype.getDayOfWeek = function() {
+	var rd = Math.floor(this.getRataDie());
+	return ilib.mod(rd-3, 7);
+};
+
+/**
+ * Return the ordinal day of the year. Days are counted from 1 and proceed linearly up to 
+ * 365, regardless of months or weeks, etc. That is, Farvardin 1st is day 1, and 
+ * December 31st is 365 in regular years, or 366 in leap years.
+ * @return {number} the ordinal day of the year
+ */
+ilib.Date.PersDate.prototype.getDayOfYear = function() {
+	return ilib.Date.PersDate.cumMonthLengths[this.month-1] + this.day;
+};
+
+/**
+ * Return the era for this date as a number. The value for the era for Persian 
+ * calendars is -1 for "before the persian era" (BP) and 1 for "the persian era" (anno 
+ * persico or AP). 
+ * BP dates are any date before Farvardin 1, 1 AP. In the proleptic Persian calendar, 
+ * there is a year 0, so any years that are negative or zero are BP.
+ * @return {number} 1 if this date is in the common era, -1 if it is before the 
+ * common era 
+ */
+ilib.Date.PersDate.prototype.getEra = function() {
+	return (this.year < 1) ? -1 : 1;
+};
+
+/**
+ * Return the name of the calendar that governs this date.
+ * 
+ * @return {string} a string giving the name of the calendar
+ */
+ilib.Date.PersDate.prototype.getCalendar = function() {
+	return "persian";
+};
+
+// register with the factory method
+ilib.Date._constructors["persian"] = ilib.Date.PersDate;
 ilib.data.ctype = {"ideograph":[[4352,4607],[12353,12447],[12449,12543],[12549,12589],[12593,12686],[12704,12727],[12784,12799],[13312,19893],[19968,40907],[40960,42124],[43360,43388],[44032,55203],[55216,55291],[63744,64217],[65382,65437],[65440,65500]],"ideoother":[[12294,12294],[12348,12348],[12352,12352],[12448,12448],[12544,12548],[12590,12591],[12592,12592],[12687,12687],[12800,13055],[13056,13183],[13184,13311],[40908,40959],[42125,42191],[43389,43391],[55292,55295],[64218,64255]],"ascii":[[32,127]],"digit":[[48,57]],"xdigit":[[48,57],[65,70],[97,102]],"blank":[[9,9],[32,32]],"space":[[9,13],[133],[8232,8233]],"latin":[[0,591],[7680,7935],[11360,11391],[42784,43007]],"ipa":[[592,687],[7424,7551],[7552,7615]],"operators":[[8704,8959],[10752,11007]],"greek":[[880,1023],[7936,8191]],"cyrillic":[[1024,1327],[11744,11775],[42560,42655]],"arabic":[[1536,1791],[1872,1919],[64336,65023],[65136,65279]],"devanagari":[[2304,2431],[43232,43263]],"myanmar":[[4096,4255],[43616,43647]],"hangul":[[4352,4607],[44032,55215],[43360,43391],[55216,55295],[12592,12687]],"ethiopic":[[4608,5023],[11648,11743],[43776,43823]],"canadian":[[5120,5759],[6320,6399]],"combining":[[768,879],[7616,7679],[8400,8447]],"arrows":[[8592,8703],[11008,11263],[10224,10239],[10496,10623]],"cjk":[[19968,40959],[13312,19903],[131072,173791],[173824,177983],[177984,178207],[12272,12287]],"cjkcompatibility":[[13056,13311],[63744,64255],[65072,65103],[194560,195103]],"mathematical":[[119808,120831],[10176,10223],[10624,10751]],"privateuse":[[57344,63743],[983040,1048575],[1048576,1114111]],"variations":[[65024,65039],[917760,917999]],"bamum":[[42656,42751],[92160,92735]],"georgian":[[4256,4351],[11520,11567]],"punctuation":[[8192,8303],[11776,11903]],"katakana":[[12448,12543],[12784,12799],[110592,110847]],"bopomofo":[[12544,12591],[12704,12735]],"enclosedalpha":[[9312,9471],[127232,127487]],"cjkradicals":[[11904,12031],[12032,12255]],"yi":[[40960,42127],[42128,42191]],"linearb":[[65536,65663],[65664,65791]],"enclosedcjk":[[12800,13055],[127488,127743]],"spacing":[[688,767]],"armenian":[[1328,1423]],"hebrew":[[1424,1535]],"syriac":[[1792,1871]],"thaana":[[1920,1983]],"nko":[[1984,2047]],"samaritan":[[2048,2111]],"mandaic":[[2112,2143]],"bengali":[[2432,2559]],"gurmukhi":[[2560,2687]],"gujarati":[[2688,2815]],"oriya":[[2816,2943]],"tamil":[[2944,3071]],"telugu":[[3072,3199]],"kannada":[[3200,3327]],"malayalam":[[3328,3455]],"sinhala":[[3456,3583]],"thai":[[3584,3711]],"lao":[[3712,3839]],"tibetan":[[3840,4095]],"cherokee":[[5024,5119]],"ogham":[[5760,5791]],"runic":[[5792,5887]],"tagalog":[[5888,5919]],"hanunoo":[[5920,5951]],"buhid":[[5952,5983]],"tagbanwa":[[5984,6015]],"khmer":[[6016,6143]],"mongolian":[[6144,6319]],"limbu":[[6400,6479]],"taile":[[6480,6527]],"newtailue":[[6528,6623]],"khmersymbols":[[6624,6655]],"buginese":[[6656,6687]],"taitham":[[6688,6831]],"balinese":[[6912,7039]],"sundanese":[[7040,7103]],"batak":[[7104,7167]],"lepcha":[[7168,7247]],"olchiki":[[7248,7295]],"vedic":[[7376,7423]],"supersub":[[8304,8351]],"currency":[[8352,8399]],"letterlike":[[8448,8527]],"numbers":[[8528,8591]],"misc":[[8960,9215]],"controlpictures":[[9216,9279]],"ocr":[[9280,9311]],"box":[[9472,9599]],"block":[[9600,9631]],"geometric":[[9632,9727]],"miscsymbols":[[9728,9983],[127744,128511]],"dingbats":[[9984,10175]],"braille":[[10240,10495]],"glagolitic":[[11264,11359]],"coptic":[[11392,11519]],"tifinagh":[[11568,11647]],"cjkpunct":[[12288,12351]],"hiragana":[[12352,12447]],"kanbun":[[12688,12703]],"yijing":[[19904,19967]],"cjkstrokes":[[12736,12783]],"lisu":[[42192,42239]],"vai":[[42240,42559]],"modifiertone":[[42752,42783]],"sylotinagri":[[43008,43055]],"indicnumber":[[43056,43071]],"phagspa":[[43072,43135]],"saurashtra":[[43136,43231]],"kayahli":[[43264,43311]],"rejang":[[43312,43359]],"javanese":[[43392,43487]],"cham":[[43520,43615]],"taiviet":[[43648,43743]],"meeteimayek":[[43968,44031]],"presentation":[[64256,64335]],"vertical":[[65040,65055]],"halfmarks":[[65056,65071]],"small":[[65104,65135]],"width":[[65280,65519]],"specials":[[65520,65535]],"aegean":[[65792,65855]],"ancient":[[65936,65999]],"phaistosdisc":[[66000,66047]],"lycian":[[66176,66207]],"carian":[[66208,66271]],"olditalic":[[66304,66351]],"gothic":[[66352,66383]],"ugaritic":[[66432,66463]],"oldpersian":[[66464,66527]],"deseret":[[66560,66639]],"shavian":[[66640,66687]],"osmanya":[[66688,66735]],"cypriot":[[67584,67647]],"aramaic":[[67648,67679]],"phoenician":[[67840,67871]],"lydian":[[67872,67903]],"kharoshthi":[[68096,68191]],"oldsoutharabian":[[68192,68223]],"avestan":[[68352,68415]],"parthian":[[68416,68447]],"pahlavi":[[68448,68479]],"oldturkic":[[68608,68687]],"ruminumerals":[[69216,69247]],"brahmi":[[69632,69759]],"kaithi":[[69760,69839]],"cuneiform":[[73728,74751]],"cuneiformnumbers":[[74752,74879]],"hieroglyphs":[[77824,78895]],"byzantine musical":[[118784,119039]],"musicalsymbols":[[119040,119295]],"taixuanjing":[[119552,119647]],"rodnumerals":[[119648,119679]],"mahjong":[[126976,127023]],"domino":[[127024,127135]],"playingcards":[[127136,127231]],"emoticons":[[128512,128591]],"mapsymbols":[[128640,128767]],"alchemic":[[128768,128895]],"tags":[[917504,917631]],"greeknumbers":[[65856,65935]],"greekmusic":[[119296,119375]]};
 /*
  * ctype.js - Character type definitions
@@ -12244,7 +14143,7 @@ ctype.isspace.js
  * @class
  * @constructor
  * @param {string|number|Number|ilib.Number|undefined} str a string to parse as a number, or a number value
- * @param {Object} options Options controlling how the instance should be created 
+ * @param {Object=} options Options controlling how the instance should be created 
  */
 ilib.Number = function (str, options) {
 	var i, stripped = "", 
@@ -14520,6 +16419,7 @@ ilib.data.name_sr = {"format":"{prefix} {givenName} {middleName} {familyName} {s
 ilib.data.name_sv = {"format":"{prefix} {givenName} {middleName} {familyName} {suffix}","sortByHeadWord":false,"nameStyle":"western","conjunctions":{"and1":"och","and2":"och","or1":"eller","or2":"eller"},"prefixes":["herr","fru","fröken","president","vice president","premiärminister","borgmästare","guvernör","ordförande","ordförande","minister","rabbin","kock","tränare","kung","drottning","prince","princess","allmän","amiral","commissioner","superintendent","sheriff","inspektör","detektiv","officer","dame","far","mor","bror","syster","reverend","faster","farbror","farmor","mormor","morfar","morfar","kusin"],"suffixes":["pension"]};
 ilib.data.name_ta = {"format":"{prefix} {givenName} {middleName} {familyName} {suffix}","sortByHeadWord":false,"conjunctions":{"and1":"மற்றும்","and2":"மற்றும்","or1":"அல்லது","or2":"அல்லது"},"prefixes":["வைத்தியர்","திரு","திருமதி","எம்எஸ்","திரு (வாளர்) என பொருள்பட கூடியது","மேடம்","மிஸ்"],"suffixes":["இளையோர்","மூத்த","நான்","எஸ்க்"]};
 ilib.data.name_te = {"format":"{prefix} {givenName} {middleName} {familyName} {suffix}","conjunctions":{"and1":"మరియు","and2":"మరియు","or1":"లేదా","or2":"లేదా"},"prefixes":["డాక్టర్","మిస్టర్","మేడమ్","మిస్","మిస్"],"suffixes":["జూనియర్","సీనియర్"]};
+ilib.data.name_th = {"format":"{prefix} {givenName} {middleName} {familyName} {suffix}","sortByHeadWord":false,"nameStyle":"western","conjunctions":{"and1":"ve","and2":"ve","or1":"veya","or2":"veya"},"prefixes":["นาย","นางสาว","นาง","ประธาน","รองประธาน","นายกฯ","นายกเทศมนตรี","ผู้ว่าราชการ","ประธาน","นายิกา","รัฐมนตรี","อาจารย์ในศาสนายิว","บาทหลวง","พ่อครัว","โค้ช","ศาสตราจารย์","ศาสตราจารย์","พระมหากษัตริย์","พระราชินี","เจ้าชาย","เจ้าหญิง","ทั่วไป","พลเรือเอก","กรรมาธิการ","ผู้กำกับการ","เจ้าพนักงานมณฑล","นายตรวจ","นักสืบ","เจ้าหน้าที่","คุณชาย","สุภาพสตรี","เจ้า","แม่บ้าน","พ่อ","แม่","พี่ชาย","น้องสาว","น่านับถือ","ป้า","ลุง","ยาย","ยาย","คุณปู่","คุณปู่","พ่อเฒ่า","ลูกพี่ลูกน้อง"],"suffixes":["อนุ","จูเนียร์","ระดับอาวุโส","ปริญญาเอก","çürümek","เกษียณอายุราชการ"]};
 ilib.data.name_tr = {"format":"{prefix} {givenName} {middleName} {familyName} {suffix}","sortByHeadWord":false,"nameStyle":"western","conjunctions":{"and1":"ve","and2":"ve","or1":"veya","or2":"veya"},"prefixes":["bay","bayan","başkan","başkan Yardımcısı","başbakan","belediye başkanı","vali","başkan","kadın başkan","bakan","haham","papaz","şef","koç","profesör","kral","kraliçe","prens","prenses","genel","amiral","komiser","başkomiser","şerif","müfettiş","dedektif","subay","bayım","bayan","kadın","baba","anne","kardeş","muhterem","teyze","amca","büyükanne","dede","nine","kuzen","ve","veya"],"suffixes":["genç","kıdemli","doktoralı","çürümek","emekli"]};
 ilib.data.name_uk = {"format":"{prefix} {givenName} {middleName} {familyName} {suffix}","sortByHeadWord":false,"nameStyle":"western","conjunctions":{"and1":"і","and2":"і","or1":"або","or2":"або"},"prefixes":["г-н","господин","г-жа","госпожа","президент","віце-президент","прем'єр-міністр","мер","губернатор","голова","головуючий","міністр","рабин","мулах","пастор","шеф-кухар","тренер","професор","король","королева","принц","принцеса","загальний","адмірал","комісар","начальник","шериф","інспектор","детектив","офіцер","сер","леді","пан","дама","батько","мати","брат","сестра","преподобний","тітка","дядько","бабуся","дідусь","дід","Гранма","дідусь","двоюрідний брат"],"suffixes":["молодший","старший","mеріленд","відставку"]};
 ilib.data.name_ur = {"format":"{prefix} {givenName} {middleName} {familyName} {suffix}","conjunctions":{"and1":"اور","and2":"اور","or1":"یا","or2":"یا"},"prefixes":["ڈاکٹر","ڈاکٹر","مسٹر","مسز","ایم ایس","مسٹر","میڈم","یاد آتی ہے"],"suffixes":["جونیئر","سینئر","میں","بمقابلہ","پی ایچ ڈی","ایم ڈی"]};
@@ -15978,6 +17878,7 @@ ilib.data.ctrynames_sv_FI = {"Bonaire, S:t Eustatius och Saba":"BQ","S:t Martin 
 ilib.data.ctrynames_sw = {"Asia":"142","Asia ya Kati":"143","Asia ya Magharibi":"145","Ulaya":"150","Ulaya ya Mashariki":"151","Ulaya ya Kaskazini":"154","Ulaya ya Magharibi":"155","Amerika ya Kilatini":"419","Dunia":"001","Afrika":"002","Amerika Kaskazini":"003","Amerika Kusini":"005","Oceania":"009","Afrika ya Magharibi":"011","Amerika ya Kati":"013","Afrika ya Mashariki":"014","Afrika ya Kaskazini":"015","Afrika ya Kati":"017","Afrika ya Kusini":"018","Amerika":"019","Amerika ya Kaskazini":"021","Karibi":"029","Asia Mashariki":"030","Asia ya Kusini":"034","Asia ya Kusini Mashariki":"035","Ulaya ya Kusini":"039","Australasia":"053","Melanesia":"054","Eneo la Mikronesia":"057","Polynesia":"061","Kisiwa cha Ascension":"AC","Andora":"AD","Falme za Kiarabu":"AE","Afuganistani":"AF","Antigua na Barbuda":"AG","Anguilla":"AI","Albania":"AL","Armenia":"AM","Antili za Uholanzi":"AN","Angola":"AO","Antaktika":"AQ","Ajentina":"AR","Samoa ya Marekani":"AS","Austria":"AT","Australia":"AU","Aruba":"AW","Visiwa vya Alandi":"AX","Azabajani":"AZ","Bosnia na Hezegovina":"BA","Babadosi":"BB","Bangladeshi":"BD","Ubelgiji":"BE","Bukinafaso":"BF","Bulgaria":"BG","Bahareni":"BH","Burundi":"BI","Benini":"BJ","Santabathelemi":"BL","Bermuda":"BM","Brunei":"BN","Bolivia":"BO","Uholanzi ya Karibiani":"BQ","Brazili":"BR","Bahama":"BS","Butani":"BT","Kisiwa cha Bouvet":"BV","Botswana":"BW","Belarusi":"BY","Belize":"BZ","Kanada":"CA","Visiwa vya Cocos [Keeling]":"CC","Jamhuri ya Kidemokrasia ya Kongo":"CD","Jamhuri ya Afrika ya Kati":"CF","Kongo":"CG","Uswisi":"CH","Kodivaa":"CI","Visiwa vya Cook":"CK","Chile":"CL","Kameruni":"CM","China":"CN","Kolombia":"CO","Kisiwa cha Clipperton":"CP","Kostarika":"CR","Kuba":"CU","Kepuvede":"CV","Kurakao":"CW","Kisiwa cha Krismasi":"CX","Kuprosi":"CY","Jamhuri ya Cheki":"CZ","Ujerumani":"DE","Diego Garcia":"DG","Jibuti":"DJ","Denmaki":"DK","Dominika":"DM","Jamhuri ya Dominika":"DO","Aljeria":"DZ","Ceuta na Melilla":"EA","Ekwado":"EC","Estonia":"EE","Misri":"EG","Sahara Magharibi":"EH","Eritrea":"ER","Hispania":"ES","Uhabeshi":"ET","Umoja wa Ulaya":"EU","Ufini":"FI","Fiji":"FJ","Visiwa vya Falkland":"FK","Mikronesia":"FM","Visiwa vya Faroe":"FO","Ufaransa":"FR","Gaboni":"GA","Uingereza":"GB","Grenada":"GD","Jojia":"GE","Gwiyana ya Ufaransa":"GF","Guernsey":"GG","Ghana":"GH","Jibralta":"GI","Grinlandi":"GL","Gambia":"GM","Gine":"GN","Gwadelupe":"GP","Ginekweta":"GQ","Ugiriki":"GR","Jojia Kusini na Visiwa vya Sandwich Kusini":"GS","Gwatemala":"GT","Gwam":"GU","Ginebisau":"GW","Guyana":"GY","Hong Kong SAR China":"HK","Kisiwa cha Heard na Visiwa vya McDonald":"HM","Hondurasi":"HN","Korasia":"HR","Haiti":"HT","Hungaria":"HU","Visiwa vya Kanari":"IC","Indonesia":"ID","Ayalandi":"IE","Israeli":"IL","Isle of Man":"IM","India":"IN","Eneo la Uingereza katika Bahari Hindi":"IO","Iraki":"IQ","Uajemi":"IR","Aislandi":"IS","Italia":"IT","Jersey":"JE","Jamaika":"JM","Yordani":"JO","Japani":"JP","Kenya":"KE","Kirigizistani":"KG","Kambodia":"KH","Kiribati":"KI","Komoro":"KM","Santakitzi na Nevis":"KN","Korea Kaskazini":"KP","Korea Kusini":"KR","Kuwaiti":"KW","Visiwa vya Kayman":"KY","Kazakistani":"KZ","Laosi":"LA","Lebanoni":"LB","Santalusia":"LC","Lishenteni":"LI","Sirilanka":"LK","Liberia":"LR","Lesoto":"LS","Litwania":"LT","Lasembagi":"LU","Lativia":"LV","Libya":"LY","Moroko":"MA","Monako":"MC","Moldova":"MD","Montenegro":"ME","Saint Martin":"MF","Bukini":"MG","Visiwa vya Marshal":"MH","Masedonia":"MK","Mali":"ML","Myama":"MM","Mongolia":"MN","Macau SAR China":"MO","Visiwa vya Mariana vya Kaskazini":"MP","Martiniki":"MQ","Moritania":"MR","Montserrati":"MS","Malta":"MT","Morisi":"MU","Modivu":"MV","Malawi":"MW","Meksiko":"MX","Malesia":"MY","Msumbiji":"MZ","Namibia":"NA","Nyukaledonia":"NC","Nijeri":"NE","Kisiwa cha Norfok":"NF","Nijeria":"NG","Nikaragwa":"NI","Uholanzi":"NL","Norwe":"NO","Nepali":"NP","Nauru":"NR","Niue":"NU","Nyuzilandi":"NZ","Omani":"OM","Panama":"PA","Peru":"PE","Polinesia ya Ufaransa":"PF","Papua":"PG","Filipino":"PH","Pakistani":"PK","Polandi":"PL","Santapieri na Mikeloni":"PM","Pitkairni":"PN","Pwetoriko":"PR","Ukingo wa Magharibi na Ukanda wa Gaza wa Palestina":"PS","Ureno":"PT","Palau":"PW","Paragwai":"PY","Katari":"QA","Oceania ya Nje":"QO","Riyunioni":"RE","Romania":"RO","Serbia":"RS","Urusi":"RU","Rwanda":"RW","Saudi":"SA","Visiwa vya Solomon":"SB","Shelisheli":"SC","Sudani":"SD","Uswidi":"SE","Singapoo":"SG","Santahelena":"SH","Slovenia":"SI","Svalbard na Jan Mayen":"SJ","Slovakia":"SK","Siera Leoni":"SL","Samarino":"SM","Senegali":"SN","Somalia":"SO","Surinamu":"SR","Sudani Kusini":"SS","Sao Tome na Principe":"ST","Elsavado":"SV","Santamatini":"SX","Siria":"SY","Uswazi":"SZ","Tristan da Cunha":"TA","Visiwa vya Turki na Kaiko":"TC","Chadi":"TD","Maeneo ya Kusini ya Ufaransa":"TF","Togo":"TG","Tailandi":"TH","Tajikistani":"TJ","Tokelau":"TK","Timori ya Mashariki":"TL","Turukimenistani":"TM","Tunisia":"TN","Tonga":"TO","Uturuki":"TR","Trinidad na Tobago":"TT","Tuvalu":"TV","Taiwani":"TW","Tanzania":"TZ","Ukraini":"UA","Uganda":"UG","Visiwa Vidogo vya Nje vya Marekani":"UM","Marekani":"US","Urugwai":"UY","Uzibekistani":"UZ","Vatikani":"VA","Santavisenti na Grenadini":"VC","Venezuela":"VE","Visiwa vya Virgin vya Uingereza":"VG","Visiwa vya Virgin vya Marekani":"VI","Vietinamu":"VN","Vanuatu":"VU","Walis na Futuna":"WF","Samoa":"WS","Yemeni":"YE","Mayotte":"YT","Afrika Kusini":"ZA","Zambia":"ZM","Zimbabwe":"ZW","Eneo lisilojulikana":"ZZ"};
 ilib.data.ctrynames_ta = {"ஆசியா":"142","மத்திய ஆசியா":"143","மேற்கு ஆசியா":"145","ஈரோப்":"150","கிழக்கு ஐரோப்பா":"151","வடக்கு ஐரோப்பா":"154","மேற்கு ஐரோப்பா":"155","லத்தீன் அமெரிக்கா":"419","உலகம்":"001","ஆப்ரிக்கா":"002","வடக்கு அமெரிக்கா கண்டம்":"003","தெற்கு அமெரிக்கா":"005","ஓஷெனியா":"009","மேற்கு ஆப்ரிக்கா":"011","மத்திய அமெரிக்கா":"013","கிழக்கு ஆப்ரிக்கா":"014","வடக்கு ஆப்ரிக்கா":"015","மத்திய ஆப்ரிக்கா":"017","தென்னாப்ரிக்கா":"018","அமெர்க்காஸ்":"019","வடக்கு அமெரிக்கா":"021","கரீபியன்":"029","கிழக்கு ஆசியா":"030","தெற்கு ஆசியா":"034","தென்-கிழக்கு ஆசியா":"035","தெற்கு ஐரோப்பா":"039","ஆஸ்திரேலியா மற்றும் நியூசிலாந்து":"053","மெலனேஷியா":"054","மைக்ரோ நேஷியா பிரதேசம்":"057","பாலினேஷியா":"061","அஷன்ஷியன் தீவு":"AC","அன்டோரா":"AD","ஐக்கிய அரபு கூட்டாட்சி":"AE","ஆப்கானிஸ்தான்":"AF","ஆண்டிகுவா மற்றும் பார்புடா":"AG","அங்குய்லா":"AI","அல்பேனியா":"AL","ஆர்மேனியா":"AM","நெதர்லாந்து ஆண்டில்லெஸ்":"AN","அங்கோலா":"AO","அண்டார்டிகா":"AQ","அர்ஜென்டினா":"AR","அமெரிக்க சமோவா":"AS","ஆஸ்திரியா":"AT","ஆஸ்திரேலியா":"AU","அரூபா":"AW","ஆலந்து தீவுகள்":"AX","அசர்பைஜான்":"AZ","போஸ்னியா மற்றும் ஹெர்ஸிகோவினா":"BA","பார்படோஸ்":"BB","பங்களாதேஷ்":"BD","பெல்ஜியம்":"BE","புர்கினா ஃபாஸோ":"BF","பல்கேரியா":"BG","பஹ்ரைன்":"BH","புருண்டி":"BI","பெனின்":"BJ","செயின்ட் பார்தேலெமி":"BL","பெர்முடா":"BM","புரூனேய்":"BN","பொலிவியா":"BO","கரீபியன் நெதர்லாந்து":"BQ","பிரேஸில்":"BR","பஹாமாஸ்":"BS","பூடான்":"BT","பொவேட் தீவுகள்":"BV","போட்ஸ்வானா":"BW","பெலாரூஸ்":"BY","பெலிஸ்":"BZ","கனடா":"CA","காகோஸ் தீவுகள்":"CC","காங்கோ - கின்ஷாசா":"CD","மத்திய ஆப்ரிக்கக் குடியரசு":"CF","காங்கோ - ப்ராஸாவில்லே":"CG","ஸ்விட்சர்லாந்து":"CH","ஐவரி கோஸ்ட்":"CI","குக் தீவுகள்":"CK","சிலி":"CL","கேமரூன்":"CM","சீனா":"CN","கொலம்பியா":"CO","கிலிப்பர்டன் தீவு":"CP","கோஸ்டாரிகா":"CR","கியூபா":"CU","கேப் வெர்டே":"CV","குராகவ்":"CW","கிறிஸ்துமஸ் தீவு":"CX","சைப்ரஸ்":"CY","செக் குடியரசு":"CZ","ஜெர்மன்":"DE","டியகோ கார்ஷியா":"DG","ஜிபௌட்டி":"DJ","டென்மார்க்":"DK","டொமினிகா":"DM","டொமினிகன் குடியரசு":"DO","அல்ஜீரியா":"DZ","சியூடா மற்றும் மெலில்லா":"EA","ஈக்வடார்":"EC","எஸ்டோனியா":"EE","எகிப்து":"EG","மேற்கு சஹாரா":"EH","எரிட்ரியா":"ER","ஸ்பெயின்":"ES","எதியோப்பியா":"ET","ஐரோப்பியன் யூனியன்":"EU","பின்லாந்து":"FI","ஃபிஜி":"FJ","ஃபாக்லாந்து தீவுகள்":"FK","மைக்ரோனேஷியா":"FM","ஃபெரௌ தீவுகள்":"FO","பிரான்ஸ்":"FR","கேபான்":"GA","பிரிடிஷ் கூட்டரசு":"GB","கிரனெடா":"GD","ஜார்ஜியா":"GE","ஃப்ரென்ச் கயானா":"GF","கெர்ன்சி":"GG","கானா":"GH","ஜிப்ரால்டர்":"GI","கிரீன்லாந்து":"GL","காம்பியா":"GM","கினியா":"GN","க்வாதேலோப்":"GP","ஈக்குவாடோரியல் கினி":"GQ","கிரீஸ்":"GR","தென் ஜியார்ஜியா மற்றும் தென் சான்ட்விச் தீவுகள்":"GS","குவாத்தாமாலா":"GT","குவாம்":"GU","கினி-பிஸ்ஸாவ்":"GW","கயானா":"GY","ஹாங்காங் சார் சீனா":"HK","ஹேர்ட் மற்றும் மெக்டொனால்டு":"HM","ஹாண்டுராஸ்":"HN","குரோசியா":"HR","ஹெய்தி":"HT","ஹங்கேரி":"HU","கேனரி தீவுகள்":"IC","இந்தோனேஷியா":"ID","அயர்லாந்து":"IE","இஸ்ரேல்":"IL","ஐல் ஆஃப் மேன்":"IM","இந்தியா":"IN","பிரிட்டிஷ் இந்தியப் பெருங்கடல் பகுதி":"IO","இராக்":"IQ","ஈரான்":"IR","ஐஸ்லாந்து":"IS","இத்தாலி":"IT","ஜெர்சி":"JE","ஜமைகா":"JM","ஜொர்டான்":"JO","ஜப்பான்":"JP","கென்யா":"KE","கிர்கிஸ்தான்":"KG","கம்போடியா":"KH","கிரிபடி":"KI","கோமரோஸ்":"KM","செயின்ட் கிட்ஸ் மற்றும் நெவிஸ்":"KN","வட கொரியா":"KP","தென் கொரியா":"KR","குவைத்து":"KW","கேமென் தீவுகள்":"KY","கஸகஸ்தான்":"KZ","லாவோஸ்":"LA","லெபனான்":"LB","செயின்ட் லூசியா":"LC","லிச்செண்ஸ்டெய்ன்":"LI","இலங்கை":"LK","லைபீரியா":"LR","லெசோதோ":"LS","லிதுவேனியா":"LT","லக்ஸ்சம்பர்க்":"LU","லாட்வியா":"LV","லிபியா":"LY","மொராக்கோ":"MA","மொனாக்கோ":"MC","மால்டோவா":"MD","மான்டேனெக்ரோ":"ME","செயின் மார்டீன்":"MF","மடகாஸ்கர்":"MG","மார்ஷல் தீவுகள்":"MH","மாசிடோனியா":"MK","மாலீ":"ML","மியான்மார் [பர்மா]":"MM","மங்கோலியா":"MN","மகாவோ சார் சீனா":"MO","வடக்கு மரியானா தீவுகள்":"MP","மார்டினிக்":"MQ","மௌரிடானியா":"MR","மௌன்ட்செராட்":"MS","மால்டா":"MT","மொரிசியஸ்":"MU","மாலத்தீவு":"MV","மாலவி":"MW","மெக்சிகோ":"MX","மலேஷியா":"MY","மொசாம்பிக்":"MZ","நமீபியா":"NA","நியூ கேலிடோனியா":"NC","நைஜர்":"NE","நார்ஃபாக் தீவுகள்":"NF","நைஜீரியா":"NG","நிகாரகுவா":"NI","நெதர்லாந்து":"NL","நார்வே":"NO","நேபாளம்":"NP","நௌரு":"NR","நியூ":"NU","நியூசிலாந்து":"NZ","ஓமன்":"OM","பனாமா":"PA","பெரு":"PE","ஃப்ரென்ச் பாலினேஷியா":"PF","பாப்புவா நியூ கினி":"PG","பிலிப்பைன்ஸ்":"PH","பாகிஸ்தான்":"PK","போலந்து":"PL","செயின்ட் பியர் மற்றும் மிக்வேலான்":"PM","பிட்கெய்ர்ன்":"PN","பியூர்டோ ரிகோ":"PR","பாலஸ்தீனியன் மாஹாணங்கள்":"PS","போர்ச்சுக்கல்":"PT","பாலோ":"PW","பாரகுவே":"PY","கதார்":"QA","ஔட்லையிங் ஓசானியா":"QO","ரீயூனியன்":"RE","ருமேனியா":"RO","செர்பியா":"RS","ரஷ்யா":"RU","ருவான்டா":"RW","சவூதி அரேபியா":"SA","சாலமன் தீவுகள்":"SB","ஸேசேல்ஸ்":"SC","சூடான்":"SD","ஸ்வீடன்":"SE","சிங்கப்பூர்":"SG","செயின்ட் ஹெலெனா":"SH","ஸ்லோவேனியா":"SI","ஸ்வல்பார்டு மற்றும் ஜான் மேயன்":"SJ","ஸ்லோவாகியா":"SK","சியர்ரா லியோன்":"SL","சான் மெரினோ":"SM","செனெகல்":"SN","சொமாலியா":"SO","சூரினாம்":"SR","தெற்கு சூடான்":"SS","சாவ் தோம் மற்றும் ப்ரின்சிபி":"ST","எல் சால்வடார்":"SV","செயின்ட் மார்ட்டீன்":"SX","சிரியா":"SY","ஸ்வாஸிலாண்ட்":"SZ","டிரிஸ்டன் டா குன்ஹா":"TA","டர்க்ஸ் மற்றும் கைகோஸ் தீவுகள்":"TC","சாட்":"TD","ஃப்ரென்ச் தெற்கு மாஹாணங்கள்":"TF","டோகோ":"TG","தாய்லாந்து":"TH","தாஜிகிஸ்தான்":"TJ","டோகேலோ":"TK","கிழக்கு தைமூர்":"TL","துர்க்மெனிஸ்தான்":"TM","டுனிசியா":"TN","டோங்கா":"TO","துருக்கி":"TR","ட்ரினிடாட் மற்றும் டுபாகோ":"TT","துவாலூ":"TV","தைவான்":"TW","டான்சானியா":"TZ","உக்ரைன்":"UA","உகாண்டா":"UG","ஐக்கிய அமெரிக்காவை சுற்றியுள்ள தீவுகள்":"UM","ஐக்கிய அமெரிக்க குடியரசு":"US","உருகுவே":"UY","உஸ்பெகிஸ்தான்":"UZ","வாடிகன் நகரம்":"VA","செயின் வின்சன்ட் மற்றும் கிரெனடைன்ஸ்":"VC","வெனஜுவேலா":"VE","பிரிட்டீஷ் கன்னித் தீவுகள்":"VG","யூ.எஸ் கன்னித் தீவுகள்":"VI","வியட்நாம்":"VN","வனுவாட்டு":"VU","வாலிஸ் மற்றும் ஃபுடுனா தீவுகள்":"WF","சமோவா":"WS","ஏமன்":"YE","மயோத்":"YT","தென் ஆப்பிரிக்கா":"ZA","சாம்பியா":"ZM","ஜிம்பாப்வே":"ZW","அறியப்படாத பிரதேசம்":"ZZ"};
 ilib.data.ctrynames_te = {"ఆశియా":"142","మధ్యమ ఆశియా":"143","పడమటి ఆశియా":"145","ఐరోపా":"150","తూర్పు ఐరోపా":"151","ఉత్తర ఐరోపా":"154","పడమటి ఐరోపా":"155","లాటిన్ అమెరికా మరియు కేరబ్బియన్":"419","ప్రపంచం":"001","ఆఫ్రికా":"002","ఉత్తర అమెరికా ఖండము":"003","దక్షిణ అమెరికా":"005","ఒషేనియ":"009","పడమటి ఆఫ్రికా":"011","మధ్యమ అమెరికా":"013","తూర్పు ఆఫ్రికా":"014","ఉత్తర ఆఫ్రికా":"015","మధ్యమ ఆఫ్రికా":"017","దక్షిణ ఆఫ్రికా":"018","అమెరికాలు":"019","ఉత్తర అమెరికా":"021","కరిబ్బియన్":"029","తూర్పు ఆశియా":"030","దక్షిణ ఆశియా":"034","నైరుతి ఆశియా":"035","దక్షిణ ఐరోపా":"039","ఆస్ట్రేలేసియా":"053","మెలనేశియ":"054","మైక్రోనేశియ ప్రాంతం":"057","పాలినేషియా":"061","ఎసెషన్ దీవి":"AC","అన్డోరా":"AD","యునైటెడ్ ఆరబ్ ఎమిరేట్స్":"AE","ఆఫ్ఘానిస్తాన్":"AF","ఆంటిగ్వా మరియు బార్బుడా":"AG","ఆంగవిల్లా":"AI","అల్బేనియా":"AL","ఆర్మేనియా":"AM","నేదేర్లేండ్స్ అంటిల్లిస్":"AN","అంగోలా":"AO","అంటార్కటికా":"AQ","ఆర్జెంటినా":"AR","అమెరికన్ సమోవా":"AS","ఆస్ట్రియా":"AT","ఆస్ట్రేలియా":"AU","అరుబా":"AW","ఆలేండ్ దీవులు":"AX","అజర్బైజాన్":"AZ","బాస్నియా మరియు హీర్జిగోవినా":"BA","బార్బడోస్":"BB","బాంగ్లాదేష్":"BD","బెల్జియం":"BE","బుర్కినా ఫాసో":"BF","బల్గేరియా":"BG","బహరేన్":"BH","బురుండి":"BI","బెనిన్":"BJ","సెంట్ బర్తేలెమీ":"BL","బర్మయుడా":"BM","బ్రునై":"BN","బొలీవియా":"BO","కరీబియన్ నెదర్లాండ్స్":"BQ","బ్రజిల్":"BR","బహామాస్":"BS","భూటాన్":"BT","బొవెట్ దీవి":"BV","బోట్స్వానా":"BW","బెలారస్":"BY","బెలీజ్":"BZ","కెనడా":"CA","కోకోస్ దీవులు":"CC","కాంగో- కిన్షాసా":"CD","మధ్యమ ఆఫ్రికా రిపబ్లిక్":"CF","కాంగో- బ్రాజావిల్లి":"CG","స్విట్జర్లేండ్":"CH","ఐవరీ కోస్ట్":"CI","కుక్ దీవులు":"CK","చిలి":"CL","కెమరూన్":"CM","చైనా":"CN","కొలంబియా":"CO","క్లిప్పర్టన్ దీవి":"CP","కోస్టారికా":"CR","క్యూబా":"CU","కేప్ వెర్డే":"CV","కురాకవో":"CW","క్రిస్మస్ దీవి":"CX","సైప్రస్":"CY","చెక్ గణరాజ్యం":"CZ","ఙర్మని":"DE","డియాగో గార్సియా":"DG","జిబౌటి":"DJ","డెన్మార్క్":"DK","డోమెనిక":"DM","డొమినికన్ గణ రాజ్యం":"DO","అల్జీరియా":"DZ","స్యూటా మరియు మెలిల్లా":"EA","ఈక్వడోర్":"EC","ఎస్టోనియా":"EE","ఈజిప్ట్":"EG","పడమటి సహారా":"EH","ఎరిట్రియా":"ER","స్పేన్":"ES","ఇథియోపియా":"ET","యురోపియన్ యునియన్":"EU","ఫిన్లాండ్":"FI","ఫిజి":"FJ","ఫాక్ లేండ్ దీవులు":"FK","మైక్రోనేశియ":"FM","ఫారో దీవులు":"FO","ఫ్రాన్స్‌":"FR","గేబన్":"GA","బ్రిటన్":"GB","గ్రెనెడా":"GD","జార్జియా":"GE","ఫ్రెంచ్ గియానా":"GF","గ్వేర్నసే":"GG","ఘానా":"GH","జిబ్రాల్టార్":"GI","గ్రీన్లేండ్":"GL","గాంబియా":"GM","గినియా":"GN","గ్వాడేలోప్":"GP","ఎక్వేటోరియాల్ గినియా":"GQ","గ్రీస్":"GR","దక్షిణ జార్జియా మరియు దక్షిణ సాండ్విచ్ దీవులు":"GS","గ్వాటిమాల":"GT","గ్వామ్":"GU","గినియా-బిస్సావ్":"GW","గయానా":"GY","చైనా యొక్క హాంగ్కాంగ్":"HK","హెర్డ్ దీవి మరియు మాక్ డోనాల్డ్ దీవులు":"HM","హోండోరాస్":"HN","క్రోయేషియా":"HR","హైటి":"HT","హన్గేరి":"HU","కేనరీ దీవులు":"IC","ఇండోనేషియా":"ID","ఐర్ లాండ్":"IE","ఇస్రాయేల్":"IL","ఐల్ ఆఫ్ మాన్":"IM","భారత దేశం":"IN","బ్రిటిష్ భారతీయ ఓషన్ ప్రాంతం":"IO","ఇరాక్":"IQ","ఇరాన్":"IR","ఐస్లాండ్":"IS","ఇటలి":"IT","జర్సి":"JE","జమైకా":"JM","జార్డాన్":"JO","జపాన్":"JP","కెన్యా":"KE","కిర్జిస్తాన్":"KG","కంబోడియా":"KH","కిరిబాటి":"KI","కొమొరోస్":"KM","సెంట్ కిట్ట్స్ మరియు నెవిస్":"KN","ఉత్తర కొరియా":"KP","దక్షిణ కొరియా":"KR","కువైట్":"KW","కేమాన్ దీవులు":"KY","కజాఖస్తాన్":"KZ","లావోస్":"LA","లెబనాన్":"LB","సెంట్ లూసియా":"LC","లిక్టెస్టేన్":"LI","శ్రీలంక":"LK","లైబీరియా":"LR","లెసోతో":"LS","లిథుయేనియా":"LT","లక్సంబర్గ్":"LU","లాట్వియ":"LV","లిబియా":"LY","మొరాక్కో":"MA","మొనాకో":"MC","మోల్ డోవ":"MD","మోంటేనేగ్రో":"ME","సెంట్ మార్టిన్":"MF","మాడ్గాస్కార్":"MG","మార్షల్ దీవులు":"MH","మేసెడోనియా":"MK","మాలి":"ML","మ్యాన్మార్":"MM","మంగోలియా":"MN","మాకావ్ సార్ చైనా":"MO","ఉత్తర మరియానా దీవులు":"MP","మార్టినిక్":"MQ","మౌరిటేనియా":"MR","మోంట్సేర్రాట్":"MS","మాల్టా":"MT","మారిషస్":"MU","మాల్దీవులు":"MV","మాలావి":"MW","మెక్సికో":"MX","మలేషియా":"MY","మొజాంబిక్":"MZ","నమీబియా":"NA","క్రొత్త కాలెడోనియా":"NC","నైజర్":"NE","నార్ఫాక్ దీవి":"NF","నైజీరియా":"NG","నికరాగువా":"NI","నేదర్లాండ్స్":"NL","నారవే":"NO","నేపాల్":"NP","నౌరు":"NR","నియు":"NU","న్యుజిలేండ్":"NZ","ఒమాన్":"OM","పనామా":"PA","పెరూ":"PE","ఫ్రెంచ్ పోలినిషియా":"PF","పాపువా న్యు గినియా":"PG","ఫిలి పైన్స్":"PH","పాకిస్తాన్":"PK","పోలాండ్":"PL","సెంట్ పియెర్ మరియు మికెలాన్":"PM","పిట్కెర్న్":"PN","పోటోరికో":"PR","పాలిస్తినియాన్ ప్రాంతం":"PS","పోర్చుగల్":"PT","పలావు":"PW","పెరగువే":"PY","కతర్":"QA","ఒషేనియా బయటున్నవి":"QO","రియూనియన్":"RE","రోమానియా":"RO","సెర్బియా":"RS","రష్య":"RU","ర్వాండా":"RW","సౌదీ అరేబియా":"SA","సోలోమన్ దీవులు":"SB","సీషెల్స్":"SC","సుడాన్":"SD","స్వీడన్":"SE","సింగపూర్":"SG","సెంట్ హెలినా":"SH","స్లోవేనియా":"SI","స్వాల్బార్డ్ మరియు యాన్ మాయేన్":"SJ","స్లోవేకియా":"SK","సియెర్రా లియాన్":"SL","సాన్ మారినో":"SM","సెనెగల్":"SN","సోమాలియా":"SO","సురినామ్":"SR","దక్షిణ సూడాన్":"SS","సావోటోమ్ మరియు ప్రిన్సిపే":"ST","ఎల్ సాల్వడోర్":"SV","సింట్ మార్టెన్":"SX","సిరియా":"SY","స్వాజీలేండ్":"SZ","ట్రిస్టన్ డ కన్హా":"TA","తుర్క్ మరియు కాలికోస్ దీవులు":"TC","చాద్":"TD","ఫ్రెంచ్ దక్షిణ ప్రాంతాలు":"TF","టోగో":"TG","థాయ్ లాండ్":"TH","టాజీకిస్తాన్":"TJ","టోకేలావ్":"TK","టిమోర్-లెస్టె":"TL","తుర్కమెస్తాన్":"TM","ట్యునీషియా":"TN","టోంగా":"TO","టర్కీ":"TR","ట్రినిడేడ్ మరియు టొబాగో":"TT","టువాలు":"TV","టైవాన్":"TW","టాంజానియా":"TZ","యుక్రెన్":"UA","యుగాండా":"UG","సంయుక్త రాజ్య అమెరికా యునైటెడ్ స్టేట్స్ మైనర్ బయట ఉన్న దీవులు":"UM","సంయుక్త రాజ్య అమెరికా":"US","ఉరుగువే":"UY","ఉజ్బెకిస్తాన్":"UZ","వేటికెన్":"VA","సెంట్ విన్సెంట్ మరియు గ్రెనడీన్స్":"VC","వెనుజువేలా":"VE","బ్రిటిష్ వర్జిన్ దీవులు":"VG","యు.ఎస్. వర్జిన్ దీవులు":"VI","వియట్నాం":"VN","వనౌటు":"VU","వాలిస్ మరియు ఫ్యుత్యునా":"WF","సమోవా":"WS","యెమెన్":"YE","మాయొట్టి":"YT","దక్షిణ ఆఫ్రికా రాజ్యం":"ZA","జాంబియా":"ZM","జింబాబ్వే":"ZW","తెలియని లేదా చెల్లని ప్రాంతం":"ZZ"};
+ilib.data.ctrynames_th = {"เอเชีย":"142","เอเชียกลาง":"143","เอเชียตะวันตก":"145","ยุโรป":"150","ยุโรปตะวันออก":"151","ยุโรปเหนือ":"154","ยุโรปตะวันตก":"155","ละตินอเมริกา":"419","โลก":"001","แอฟริกา":"002","อเมริกาเหนือ":"003","อเมริกาใต้":"005","โอเชียเนีย":"009","แอฟริกาตะวันตก":"011","อเมริกากลาง":"013","แอฟริกาตะวันออก":"014","แอฟริกาเหนือ":"015","แอฟริกากลาง":"017","แอฟริกาใต้ [018]":"018","อเมริกา":"019","อเมริกาตอนเหนือ":"021","แคริบเบียน":"029","เอเชียตะวันออก":"030","เอเชียใต้":"034","เอเชียตะวันออกเฉียงใต้":"035","ยุโรปใต้":"039","ออสตราเลเซีย":"053","เมลานีเซีย":"054","เขตไมโครนีเซีย":"057","โปลินีเซีย":"061","เกาะแอสเซนชัน":"AC","อันดอร์รา":"AD","สหรัฐอาหรับเอมิเรตส์":"AE","อัฟกานิสถาน":"AF","แอนติกาและบาร์บูดา":"AG","แองกวิลลา":"AI","แอลเบเนีย":"AL","อาร์เมเนีย":"AM","เนเธอร์แลนด์แอนทิลลิส":"AN","แองโกลา":"AO","แอนตาร์กติกา":"AQ","อาร์เจนตินา":"AR","อเมริกันซามัว":"AS","ออสเตรีย":"AT","ออสเตรเลีย":"AU","อารูบา":"AW","หมู่เกาะโอลันด์":"AX","อาเซอร์ไบจาน":"AZ","บอสเนียและเฮอร์เซโกวีนา":"BA","บาร์เบโดส":"BB","บังกลาเทศ":"BD","เบลเยียม":"BE","บูร์กินาฟาโซ":"BF","บัลแกเรีย":"BG","บาห์เรน":"BH","บุรุนดี":"BI","เบนิน":"BJ","เซนต์บาร์เธเลมี":"BL","เบอร์มิวดา":"BM","บรูไน":"BN","โบลิเวีย":"BO","เนเธอร์แลนด์แคริบเบียน":"BQ","บราซิล":"BR","บาฮามาส":"BS","ภูฏาน":"BT","เกาะบูเวต":"BV","บอตสวานา":"BW","เบลารุส":"BY","เบลีซ":"BZ","แคนาดา":"CA","หมู่เกาะโคโคส":"CC","คองโก-กินชาซา":"CD","สาธารณรัฐแอฟริกากลาง":"CF","คองโก-บราซซาวิล":"CG","สวิตเซอร์แลนด์":"CH","ไอวอรี่โคสต์":"CI","หมู่เกาะคุก":"CK","ชิลี":"CL","แคเมอรูน":"CM","จีน":"CN","โคลอมเบีย":"CO","เกาะคลิปเปอร์ตัน":"CP","คอสตาริกา":"CR","คิวบา":"CU","เคปเวิร์ด":"CV","คูราเซา":"CW","เกาะคริสต์มาส":"CX","ไซปรัส":"CY","สาธารณรัฐเช็ก":"CZ","เยอรมนี":"DE","ดิเอโกการ์เซีย":"DG","จิบูตี":"DJ","เดนมาร์ก":"DK","โดมินิกา":"DM","สาธารณรัฐโดมินิกัน":"DO","แอลจีเรีย":"DZ","ซีโอตาและเมลิลลา":"EA","เอกวาดอร์":"EC","เอสโตเนีย":"EE","อียิปต์":"EG","ซาฮาราตะวันตก":"EH","เอริเทรีย":"ER","สเปน":"ES","เอธิโอเปีย":"ET","สหภาพยุโรป":"EU","ฟินแลนด์":"FI","ฟิจิ":"FJ","หมู่เกาะฟอล์กแลนด์":"FK","ไมโครนีเซีย":"FM","หมู่เกาะแฟโร":"FO","ฝรั่งเศส":"FR","กาบอง":"GA","สหราชอาณาจักร":"GB","เกรเนดา":"GD","จอร์เจีย":"GE","เฟรนช์เกียนา":"GF","เกิร์นซีย์":"GG","กานา":"GH","ยิบรอลตาร์":"GI","กรีนแลนด์":"GL","แกมเบีย":"GM","กินี":"GN","กวาเดอลูป":"GP","อิเควทอเรียลกินี":"GQ","กรีซ":"GR","เกาะเซาท์จอร์เจียและหมู่เกาะเซาท์แซนด์วิช":"GS","กัวเตมาลา":"GT","กวม":"GU","กินี-บิสเซา":"GW","กายอานา":"GY","ฮ่องกง เขตปกครองพิเศษประเทศจีน":"HK","เกาะเฮิร์ดและหมู่เกาะแมกดอนัลด์":"HM","ฮอนดูรัส":"HN","โครเอเชีย":"HR","เฮติ":"HT","ฮังการี":"HU","หมู่เกาะคานารี":"IC","อินโดนีเซีย":"ID","ไอร์แลนด์":"IE","อิสราเอล":"IL","เกาะแมน":"IM","อินเดีย":"IN","บริติชอินเดียนโอเชียนเทร์ริทอรี":"IO","อิรัก":"IQ","อิหร่าน":"IR","ไอซ์แลนด์":"IS","อิตาลี":"IT","เจอร์ซีย์":"JE","จาเมกา":"JM","จอร์แดน":"JO","ญี่ปุ่น":"JP","เคนยา":"KE","คีร์กีซสถาน":"KG","กัมพูชา":"KH","คิริบาส":"KI","คอโมโรส":"KM","เซนต์คิตส์และเนวิส":"KN","เกาหลีเหนือ":"KP","เกาหลีใต้":"KR","คูเวต":"KW","หมู่เกาะเคย์แมน":"KY","คาซัคสถาน":"KZ","ลาว":"LA","เลบานอน":"LB","เซนต์ลูเซีย":"LC","ลิกเตนสไตน์":"LI","ศรีลังกา":"LK","ไลบีเรีย":"LR","เลโซโท":"LS","ลิทัวเนีย":"LT","ลักเซมเบิร์ก":"LU","ลัตเวีย":"LV","ลิเบีย":"LY","โมร็อกโก":"MA","โมนาโก":"MC","มอลโดวา":"MD","มอนเตเนโกร":"ME","เซนต์มาติน":"MF","มาดากัสการ์":"MG","หมู่เกาะมาร์แชลล์":"MH","มาซิโดเนีย":"MK","มาลี":"ML","เมียนม่าร์ [พม่า]":"MM","มองโกเลีย":"MN","มาเก๊า เขตปกครองพิเศษประเทศจีน":"MO","หมู่เกาะนอร์เทิร์นมาเรียนา":"MP","มาร์ตินีก":"MQ","มอริเตเนีย":"MR","มอนต์เซอร์รัต":"MS","มอลตา":"MT","มอริเชียส":"MU","มัลดีฟส์":"MV","มาลาวี":"MW","เม็กซิโก":"MX","มาเลเซีย":"MY","โมซัมบิก":"MZ","นามิเบีย":"NA","นิวแคลิโดเนีย":"NC","ไนเจอร์":"NE","เกาะนอร์ฟอล์ก":"NF","ไนจีเรีย":"NG","นิการากัว":"NI","เนเธอร์แลนด์":"NL","นอร์เวย์":"NO","เนปาล":"NP","นาอูรู":"NR","นีอูเอ":"NU","นิวซีแลนด์":"NZ","โอมาน":"OM","ปานามา":"PA","เปรู":"PE","เฟรนช์โปลินีเซีย":"PF","ปาปัวนิวกินี":"PG","ฟิลิปปินส์":"PH","ปากีสถาน":"PK","โปแลนด์":"PL","แซงปีแยร์และมีเกอลง":"PM","หมู่เกาะพิตแคร์น":"PN","เปอร์โตริโก":"PR","ปาเลสไตน์":"PS","โปรตุเกส":"PT","ปาเลา":"PW","ปารากวัย":"PY","กาตาร์":"QA","เอาต์ไลอิงโอเชียเนีย":"QO","เรอูนียง":"RE","โรมาเนีย":"RO","เซอร์เบีย":"RS","รัสเซีย":"RU","รวันดา":"RW","ซาอุดีอาระเบีย":"SA","หมู่เกาะโซโลมอน":"SB","เซเชลส์":"SC","ซูดาน":"SD","สวีเดน":"SE","สิงคโปร์":"SG","เซนต์เฮเลนา":"SH","สโลวีเนีย":"SI","สฟาลบาร์และยานไมเอน":"SJ","สโลวะเกีย":"SK","เซียร์ราลีโอน":"SL","ซานมารีโน":"SM","เซเนกัล":"SN","โซมาเลีย":"SO","ซูรินาเม":"SR","ซูดานใต้":"SS","เซาตูเมและปรินซิปี":"ST","เอลซัลวาดอร์":"SV","เซนต์มาร์ติน":"SX","ซีเรีย":"SY","สวาซิแลนด์":"SZ","ทริสตัน เดอ คูนา":"TA","หมู่เกาะเติกส์และหมู่เกาะเคคอส":"TC","ชาด":"TD","เฟรนช์เซาเทิร์นเทร์ริทอรีส์":"TF","โตโก":"TG","ไทย":"TH","ทาจิกิสถาน":"TJ","โตเกเลา":"TK","ติมอร์-เลสเต":"TL","เติร์กเมนิสถาน":"TM","ตูนิเซีย":"TN","ตองกา":"TO","ตุรกี":"TR","ตรินิแดดและโตเบโก":"TT","ตูวาลู":"TV","ไต้หวัน":"TW","แทนซาเนีย":"TZ","ยูเครน":"UA","ยูกันดา":"UG","หมู่เกาะรอบนอกของสหรัฐอเมริกา":"UM","สหรัฐอเมริกา":"US","อุรุกวัย":"UY","อุซเบกิสถาน":"UZ","นครรัฐวาติกัน":"VA","เซนต์วินเซนต์และเกรนาดีนส์":"VC","เวเนซุเอลา":"VE","หมู่เกาะบริติชเวอร์จิน":"VG","หมู่เกาะยูเอสเวอร์จิน":"VI","เวียดนาม":"VN","วานูอาตู":"VU","วาลลิสและฟุตูนา":"WF","ซามัว":"WS","เยเมน":"YE","มายอต":"YT","แอฟริกาใต้":"ZA","แซมเบีย":"ZM","ซิมบับเว":"ZW","ไม่ทราบภูมิภาค":"ZZ"};
 ilib.data.ctrynames_tr = {"Asya":"142","Orta Asya":"143","Batı Asya":"145","Avrupa":"150","Doğu Avrupa":"151","Kuzey Avrupa":"154","Batı Avrupa":"155","Latin Amerika":"419","Dünya":"001","Afrika":"002","Kuzey Amerika":"003","Güney Amerika":"005","Okyanusya":"009","Batı Afrika":"011","Orta Amerika":"013","Doğu Afrika":"014","Kuzey Afrika":"015","Orta Afrika":"017","Afrika'nın Güneyi":"018","Amerika":"019","Amerika'nın Kuzeyi":"021","Karayipler":"029","Doğu Asya":"030","Güney Asya":"034","Güneydoğu Asya":"035","Güney Avrupa":"039","Avustralasya":"053","Melanezya":"054","Mikronezya":"057","Polinezya":"061","Ascension Adası":"AC","Andorra":"AD","Birleşik Arap Emirlikleri":"AE","Afganistan":"AF","Antigua ve Barbuda":"AG","Anguilla":"AI","Arnavutluk":"AL","Ermenistan":"AM","Hollanda Antilleri":"AN","Angola":"AO","Antarktika":"AQ","Arjantin":"AR","Amerikan Samoası":"AS","Avusturya":"AT","Avustralya":"AU","Aruba":"AW","Åland Adaları":"AX","Azerbaycan":"AZ","Bosna Hersek":"BA","Barbados":"BB","Bangladeş":"BD","Belçika":"BE","Burkina Faso":"BF","Bulgaristan":"BG","Bahreyn":"BH","Burundi":"BI","Benin":"BJ","Saint Barthelemy":"BL","Bermuda":"BM","Brunei":"BN","Bolivya":"BO","Karayip Hollanda":"BQ","Brezilya":"BR","Bahamalar":"BS","Butan":"BT","Bouvet Adası":"BV","Botsvana":"BW","Beyaz Rusya":"BY","Belize":"BZ","Kanada":"CA","Cocos [Keeling] Adaları":"CC","Kongo - Kinşasa":"CD","Orta Afrika Cumhuriyeti":"CF","Kongo - Brazavil":"CG","İsviçre":"CH","Fildişi Sahili":"CI","Cook Adaları":"CK","Şili":"CL","Kamerun":"CM","Çin":"CN","Kolombiya":"CO","Clipperton Adası":"CP","Kosta Rika":"CR","Küba":"CU","Cape Verde":"CV","Curaçao":"CW","Christmas Adası":"CX","Güney Kıbrıs Rum Kesimi":"CY","Çek Cumhuriyeti":"CZ","Almanya":"DE","Diego Garcia":"DG","Cibuti":"DJ","Danimarka":"DK","Dominika":"DM","Dominik Cumhuriyeti":"DO","Cezayir":"DZ","Ceuta ve Melilla":"EA","Ekvador":"EC","Estonya":"EE","Mısır":"EG","Batı Sahara":"EH","Eritre":"ER","İspanya":"ES","Etiyopya":"ET","Avrupa Birliği":"EU","Finlandiya":"FI","Fiji":"FJ","Falkland Adaları":"FK","Mikronezya Federal Eyaletleri":"FM","Faroe Adaları":"FO","Fransa":"FR","Gabon":"GA","Birleşik Krallık":"GB","Grenada":"GD","Gürcistan":"GE","Fransız Guyanası":"GF","Guernsey":"GG","Gana":"GH","Cebelitarık":"GI","Grönland":"GL","Gambiya":"GM","Gine":"GN","Guadalupe":"GP","Ekvator Ginesi":"GQ","Yunanistan":"GR","Güney Georgia ve Güney Sandwich Adaları":"GS","Guatemala":"GT","Guam":"GU","Gine-Bissau":"GW","Guyana":"GY","Çin Hong Kong ÖYB":"HK","Heard Adası ve McDonald Adaları":"HM","Honduras":"HN","Hırvatistan":"HR","Haiti":"HT","Macaristan":"HU","Kanarya Adaları":"IC","Endonezya":"ID","İrlanda":"IE","İsrail":"IL","Man Adası":"IM","Hindistan":"IN","İngiliz Hint Okyanusu Bölgesi":"IO","Irak":"IQ","İran":"IR","İzlanda":"IS","İtalya":"IT","Jersey":"JE","Jamaika":"JM","Ürdün":"JO","Japonya":"JP","Kenya":"KE","Kırgızistan":"KG","Kamboçya":"KH","Kiribati":"KI","Komorlar":"KM","Saint Kitts ve Nevis":"KN","Kuzey Kore":"KP","Güney Kore":"KR","Kuveyt":"KW","Cayman Adaları":"KY","Kazakistan":"KZ","Laos":"LA","Lübnan":"LB","Saint Lucia":"LC","Liechtenstein":"LI","Sri Lanka":"LK","Liberya":"LR","Lesoto":"LS","Litvanya":"LT","Lüksemburg":"LU","Letonya":"LV","Libya":"LY","Fas":"MA","Monako":"MC","Moldova":"MD","Karadağ":"ME","Saint Martin":"MF","Madagaskar":"MG","Marshall Adaları":"MH","Makedonya":"MK","Mali":"ML","Myanmar [Burma]":"MM","Moğolistan":"MN","Çin Makao ÖYB":"MO","Kuzey Mariana Adaları":"MP","Martinik":"MQ","Moritanya":"MR","Montserrat":"MS","Malta":"MT","Mauritius":"MU","Maldivler":"MV","Malavi":"MW","Meksika":"MX","Malezya":"MY","Mozambik":"MZ","Namibya":"NA","Yeni Kaledonya":"NC","Nijer":"NE","Norfolk Adası":"NF","Nijerya":"NG","Nikaragua":"NI","Hollanda":"NL","Norveç":"NO","Nepal":"NP","Nauru":"NR","Niue":"NU","Yeni Zelanda":"NZ","Umman":"OM","Panama":"PA","Peru":"PE","Fransız Polinezyası":"PF","Papua Yeni Gine":"PG","Filipinler":"PH","Pakistan":"PK","Polonya":"PL","Saint Pierre ve Miquelon":"PM","Pitcairn Adaları":"PN","Porto Riko":"PR","Filistin Bölgeleri":"PS","Portekiz":"PT","Palau":"PW","Paraguay":"PY","Katar":"QA","Uzak Okyanusya":"QO","Réunion":"RE","Romanya":"RO","Sırbistan":"RS","Rusya":"RU","Ruanda":"RW","Suudi Arabistan":"SA","Solomon Adaları":"SB","Seyşeller":"SC","Sudan":"SD","İsveç":"SE","Singapur":"SG","Saint Helena":"SH","Slovenya":"SI","Svalbard ve Jan Mayen Adaları":"SJ","Slovakya":"SK","Sierra Leone":"SL","San Marino":"SM","Senegal":"SN","Somali":"SO","Surinam":"SR","Güney Sudan":"SS","São Tomé ve Príncipe":"ST","El Salvador":"SV","Sint Maarten":"SX","Suriye":"SY","Svaziland":"SZ","Tristan da Cunha":"TA","Turks ve Caicos Adaları":"TC","Çad":"TD","Fransız Güney Bölgeleri":"TF","Togo":"TG","Tayland":"TH","Tacikistan":"TJ","Tokelau":"TK","Timor-Leste":"TL","Türkmenistan":"TM","Tunus":"TN","Tonga":"TO","Türkiye":"TR","Trinidad ve Tobago":"TT","Tuvalu":"TV","Tayvan":"TW","Tanzanya":"TZ","Ukrayna":"UA","Uganda":"UG","ABD Dış Adaları":"UM","ABD":"US","Uruguay":"UY","Özbekistan":"UZ","Vatikan":"VA","Saint Vincent ve Grenadinler":"VC","Venezuela":"VE","Britanya Virjin Adaları":"VG","ABD Virjin Adaları":"VI","Vietnam":"VN","Vanuatu":"VU","Wallis ve Futuna Adaları":"WF","Samoa":"WS","Yemen":"YE","Mayotte":"YT","Güney Afrika":"ZA","Zambiya":"ZM","Zimbabve":"ZW","Bilinmeyen Bölge":"ZZ"};
 ilib.data.ctrynames_uk = {"Азія":"142","Центральна Азія":"143","Західна Азія":"145","Європа":"150","Східна Європа":"151","Північна Європа":"154","Західна Європа":"155","Латинська Америка":"419","Світ":"001","Африка":"002","Північноамериканський континент":"003","Південна Америка":"005","Океанія":"009","Західна Африка":"011","Центральна Америка":"013","Східна Африка":"014","Північна Африка":"015","Центральна Африка":"017","Південна Африка":"018","Америки":"019","Північна Америка":"021","Карибський басейн":"029","Східна Азія":"030","Південна Азія":"034","Південно-Східна Азія":"035","Південна Європа":"039","Австралія та Нова Зеландія":"053","Меланезія":"054","Мікронезійський регіон":"057","Полінезія":"061","Острів Вознесіння":"AC","Андорра":"AD","Обʼєднані Арабські Емірати":"AE","Афганістан":"AF","Антигуа і Барбуда":"AG","Ангілья":"AI","Албанія":"AL","Вірменія":"AM","Нідерландські Антильські Острови":"AN","Ангола":"AO","Антарктида":"AQ","Аргентина":"AR","Американське Самоа":"AS","Австрія":"AT","Австралія":"AU","Аруба":"AW","Аландські острови":"AX","Азербайджан":"AZ","Боснія і Герцоговина":"BA","Барбадос":"BB","Бангладеш":"BD","Бельгія":"BE","Буркіна-Фасо":"BF","Болгарія":"BG","Бахрейн":"BH","Бурунді":"BI","Бенін":"BJ","Острів Святого Бартоломея":"BL","Бермуди":"BM","Бруней":"BN","Болівія":"BO","Бразилія":"BR","Багами":"BS","Бутан":"BT","Острів Буве":"BV","Ботсвана":"BW","Білорусь":"BY","Беліз":"BZ","Канада":"CA","Кокосові острови":"CC","Конґо - Кіншаса":"CD","Центральноафриканська Республіка":"CF","Конґо - Браззавіль":"CG","Швейцарія":"CH","Кот д’Івуар":"CI","Острови Кука":"CK","Чилі":"CL","Камерун":"CM","Китай":"CN","Колумбія":"CO","Острів Кліппертон":"CP","Коста-Рика":"CR","Куба":"CU","Кабо-Верде":"CV","Кюрасао":"CW","Острів Різдва":"CX","Кіпр":"CY","Чеська республіка":"CZ","Німеччина":"DE","Дієґо-Ґарсія":"DG","Джібуті":"DJ","Данія":"DK","Домінік":"DM","Домініканська Республіка":"DO","Алжир":"DZ","Сеута і Мелілья":"EA","Еквадор":"EC","Естонія":"EE","Єгипет":"EG","Західна Сахара":"EH","Еритрея":"ER","Іспанія":"ES","Ефіопія":"ET","Європейський Союз":"EU","Фінляндія":"FI","Фіджі":"FJ","Фолклендські острови":"FK","Мікронезія":"FM","Фарерські острови":"FO","Франція":"FR","Габон":"GA","Велика Британія":"GB","Гренада":"GD","Грузія":"GE","Французька Гвіана":"GF","Гернсі":"GG","Гана":"GH","Гібралтар":"GI","Гренландія":"GL","Гамбія":"GM","Гвінея":"GN","Гваделупа":"GP","Екваторіальна Гвінея":"GQ","Греція":"GR","Південна Джорджія та Південні Сандвічеві Острови":"GS","Гватемала":"GT","Гуам":"GU","Гвінея-Біссау":"GW","Гайана":"GY","Гонконґ О.А.Р. Китаю":"HK","Острови Херд і Мак-Дональд":"HM","Гондурас":"HN","Хорватія":"HR","Гаїті":"HT","Угорщина":"HU","Канарські острови":"IC","Індонезія":"ID","Ірландія":"IE","Ізраїль":"IL","Острів Мен":"IM","Індія":"IN","Британські території Індійського океану":"IO","Ірак":"IQ","Іран":"IR","Ісландія":"IS","Італія":"IT","Джерсі":"JE","Ямайка":"JM","Йорданія":"JO","Японія":"JP","Кенія":"KE","Киргизстан":"KG","Камбоджа":"KH","Кірибаті":"KI","Коморські Острови":"KM","Сент-Кітс і Невіс":"KN","Північна Корея":"KP","Південна Корея":"KR","Кувейт":"KW","Кайманові острови":"KY","Казахстан":"KZ","Лаос":"LA","Ліван":"LB","Сент-Люсія":"LC","Ліхтенштейн":"LI","Шрі-Ланка":"LK","Ліберія":"LR","Лесото":"LS","Литва":"LT","Люксембург":"LU","Латвія":"LV","Лівія":"LY","Марокко":"MA","Монако":"MC","Молдова":"MD","Чорногорія":"ME","Острів Святого Мартіна":"MF","Мадагаскар":"MG","Маршаллові Острови":"MH","Македонія":"MK","Малі":"ML","Мʼянма [Бірма]":"MM","Монголія":"MN","Макао О.А.Р. Китаю":"MO","Північні Маріанські Острови":"MP","Мартиніка":"MQ","Мавританія":"MR","Монсеррат":"MS","Мальта":"MT","Маврикій":"MU","Мальдіви":"MV","Малаві":"MW","Мексика":"MX","Малайзія":"MY","Мозамбік":"MZ","Намібія":"NA","Нова Каледонія":"NC","Нігер":"NE","Острів Норфолк":"NF","Нігерія":"NG","Нікарагуа":"NI","Нідерланди":"NL","Норвегія":"NO","Непал":"NP","Науру":"NR","Нія":"NU","Нова Зеландія":"NZ","Оман":"OM","Панама":"PA","Перу":"PE","Французька Полінезія":"PF","Папуа Нова Гвінея":"PG","Філіппіни":"PH","Пакистан":"PK","Польща":"PL","Сен-Пʼєр і Мікелон":"PM","Острови Піткерн":"PN","Пуерто-Ріко":"PR","Палестина":"PS","Португалія":"PT","Палау":"PW","Парагвай":"PY","Катар":"QA","Інша Океанія":"QO","Реюньйон":"RE","Румунія":"RO","Сербія":"RS","Росія":"RU","Руанда":"RW","Саудівська Аравія":"SA","Соломонові Острови":"SB","Сейшели":"SC","Судан":"SD","Швеція":"SE","Сінгапур":"SG","Острів Святої Єлени":"SH","Словенія":"SI","Острови Свальбард та Ян-Маєн":"SJ","Словакія":"SK","Сьєрра-Леоне":"SL","Сан-Марино":"SM","Сенегал":"SN","Сомалі":"SO","Суринам":"SR","Південний Судан":"SS","Сан-Томе і Прінсіпі":"ST","Сальвадор":"SV","Сінт-Мартен":"SX","Сирія":"SY","Свазіленд":"SZ","Трістан-да-Кунья":"TA","Теркс і Кайкос":"TC","Чад":"TD","Французькі Південні Території":"TF","Того":"TG","Таїланд":"TH","Таджикистан":"TJ","Токелау":"TK","Тімор-Лешті":"TL","Туркменистан":"TM","Туніс":"TN","Тонга":"TO","Туреччина":"TR","Тринідад і Тобаго":"TT","Тувалу":"TV","Тайвань":"TW","Танзанія":"TZ","Україна":"UA","Уганда":"UG","Віддалені Острови США":"UM","США":"US","Уругвай":"UY","Узбекистан":"UZ","Ватикан":"VA","Сент-Вінсент і Гренадини":"VC","Венесуела":"VE","Віргінські острови Британії":"VG","Віргінські острови США":"VI","Вʼєтнам":"VN","Вануату":"VU","Уолліс і Футуна":"WF","Самоа":"WS","Ємен":"YE","Майот":"YT","ПАР":"ZA","Замбія":"ZM","Зімбабве":"ZW","Невідомий регіон":"ZZ"};
 ilib.data.ctrynames_ur = {"ایشیا":"142","وسطی ایشیا":"143","مغربی ایشیا":"145","یوروپ":"150","مشرقی یورپ":"151","شمالی یورپ":"154","مغربی یورپ":"155","لاطینی امریکہ":"419","دنیا":"001","افریقہ":"002","شمالی امریکہ":"003","جنوبی امریکہ":"005","اوشیانیا":"009","مغربی افریقہ":"011","وسطی امریکہ":"013","مشرقی افریقہ":"014","شمالی افریقہ":"015","وسطی افریقہ":"017","جنوبی افریقہ کے علاقہ":"018","امیریکاز":"019","شمالی امریکہ کا علاقہ":"021","کریبیائی":"029","مشرقی ایشیا":"030","جنوبی ایشیا":"034","جنوب مشرقی ایشیا":"035","جنوبی یورپ":"039","آسٹریلیشیا":"053","مالینیشیا":"054","مائکرونیشیائی علاقہ":"057","پولینیشیا":"061","اسکینسیئن آئلینڈ":"AC","انڈورا":"AD","متحدہ عرب امارات":"AE","افغانستان":"AF","انٹیگوا اور باربودا":"AG","انگوئیلا":"AI","البانیہ":"AL","آرمینیا":"AM","نیدرلینڈز انٹیلیز":"AN","انگولا":"AO","انٹارکٹیکا":"AQ","ارجنٹینا":"AR","امریکی ساموآ":"AS","آسٹریا":"AT","آسٹریلیا":"AU","اروبا":"AW","آلینڈ آئلینڈز":"AX","آذربائجان":"AZ","بوسنیا اور ہرزیگووینا":"BA","باربادوس":"BB","بنگلہ دیش":"BD","بیلجیم":"BE","برکینا فاسو":"BF","بلغاریہ":"BG","بحرین":"BH","برونڈی":"BI","بینن":"BJ","سینٹ برتھلیمی":"BL","برمودا":"BM","برونئی":"BN","بولیویا":"BO","کریبیائی نیدرلینڈز":"BQ","برازیلی":"BR","بہاماس":"BS","بھوٹان":"BT","بؤویٹ آئلینڈ":"BV","بوتسوانا":"BW","بیلاروس":"BY","بیلائز":"BZ","کینیڈا":"CA","کوکوس [کیلنگ] جزائر":"CC","کانگو - کنشاسا":"CD","وسط افریقی جمہوریہ":"CF","کانگو - برازاویلے":"CG","سوئٹزر لینڈ":"CH","کوٹ ڈی آئیوری":"CI","کک آئلینڈز":"CK","چلی":"CL","کیمرون":"CM","چین":"CN","کولمبیا":"CO","کلپّرٹن آئلینڈ":"CP","کوسٹا ریکا":"CR","کیوبا":"CU","کیپ ورڈی":"CV","کیوراکاؤ":"CW","کرسمس آئلینڈ":"CX","قبرص":"CY","چیک جمہوریہ":"CZ","جرمنی":"DE","ڈائجو گارسیا":"DG","جبوتی":"DJ","ڈنمارک":"DK","ڈومنیکا":"DM","ڈومنیکن جمہوریہ":"DO","الجیریا":"DZ","سیئوٹا اور میلیلا":"EA","ایکواڈور":"EC","اسٹونیا":"EE","مصر":"EG","مغربی صحارا":"EH","اریٹیریا":"ER","ہسپانیہ":"ES","ایتھوپیا":"ET","یوروپی یونین":"EU","فن لینڈ":"FI","فجی":"FJ","فاکلینڈ آئلینڈز":"FK","مائکرونیشیا":"FM","فروئی آئلینڈز":"FO","فرانس":"FR","گیبون":"GA","سلطنت متحدہ":"GB","غرناطہ":"GD","جارجیا":"GE","فرینچ گیانا":"GF","گوئرنسی":"GG","گھانا":"GH","جبل الطارق":"GI","گرین لینڈ":"GL","گامبیا":"GM","گنی":"GN","گواڈیلوپ":"GP","استوائی گیانا":"GQ","یونان":"GR","جنوبی جارجیا اور جنوبی سینڈوچ جزائر":"GS","گواٹے مالا":"GT","گوآم":"GU","گنی بساؤ":"GW","گیانا":"GY","ہانگ کانگ SAR چین":"HK","ہیئرڈ آئلینڈ اور میکڈونالڈ آئلینڈز":"HM","ہونڈاروس":"HN","کروشیا":"HR","ہیتی":"HT","ہنگری":"HU","کینری آئلینڈز":"IC","انڈونیشیا":"ID","آئرلینڈ":"IE","اسرائیل":"IL","آئل آف مین":"IM","بھارت":"IN","برطانوی ہندوستانی سمندری خطہ":"IO","عراق":"IQ","ایران":"IR","آئس لینڈ":"IS","اٹلی":"IT","جرسی":"JE","جمائیکا":"JM","اردن":"JO","جاپان":"JP","کینیا":"KE","کرغزستان":"KG","کمبوڈیا":"KH","کریباتی":"KI","کوموروس":"KM","سینٹ کٹس اور نیویس":"KN","شمالی کوریا":"KP","جنوبی کوریا":"KR","کویت":"KW","کیمین آئلینڈز":"KY","قزاخستان":"KZ","لاؤس":"LA","لبنان":"LB","سینٹ لوسیا":"LC","لیشٹنسٹائن":"LI","سری لنکا":"LK","لائبیریا":"LR","لیسوتھو":"LS","لتھوانیا":"LT","لگژمبرگ":"LU","لٹویا":"LV","لیبیا":"LY","مراقش":"MA","موناکو":"MC","مالدووا":"MD","مونٹے نیگرو":"ME","سینٹ مارٹن":"MF","مڈغاسکر":"MG","مارشل آئلینڈز":"MH","مقدونیہ":"MK","مالی":"ML","میانمار [برما]":"MM","منگولیا":"MN","مکاؤ SAR چین":"MO","شمالی ماریانا آئلینڈز":"MP","مارٹینک":"MQ","موریطانیہ":"MR","مونٹسیراٹ":"MS","مالٹا":"MT","ماریشس":"MU","مالدیو":"MV","ملاوی":"MW","میکسیکو":"MX","ملیشیا":"MY","موزمبیق":"MZ","نامیبیا":"NA","نیو کلیڈونیا":"NC","نائجر":"NE","نار فاک آئلینڈ":"NF","نائجیریا":"NG","نکاراگووا":"NI","نیدر لینڈز":"NL","ناروے":"NO","نیپال":"NP","نؤرو":"NR","نیئو":"NU","نیوزی ینڈ":"NZ","عمان":"OM","پنامہ":"PA","پیرو":"PE","فرانسیسی پولینیشیا":"PF","پاپوآ نیو گنی":"PG","فلپائنی":"PH","پاکستان":"PK","پولینڈ":"PL","سینٹ پیئر اور میکلیئون":"PM","پٹکائرن جزائر":"PN","پیورٹو ریکو":"PR","فلسطینی خطے":"PS","پرتگال":"PT","پلاؤ":"PW","پیراگوئے":"PY","قطر":"QA","بیرونی اوشیانیا":"QO","ری یونین":"RE","رومانیا":"RO","سربیا":"RS","روسی":"RU","روانڈا":"RW","سعودی عرب":"SA","سولومن آئلینڈز":"SB","سشلیز":"SC","سوڈان":"SD","سویڈن":"SE","سنگاپور":"SG","سینٹ ہیلینا":"SH","سلووینیا":"SI","سوالبرڈ اور جان ماین":"SJ","سلوواکیہ":"SK","سیئر لیون":"SL","سان مارینو":"SM","سینیگل":"SN","صومالیہ":"SO","سورینام":"SR","جنوبی سوڈان":"SS","ساؤ ٹوم اور پرنسپے":"ST","ال سلواڈور":"SV","سنٹ مارٹن":"SX","شام":"SY","سوازی لینڈ":"SZ","ٹرسٹن ڈا کیونہا":"TA","ترکس اور کیکاؤس جزائر":"TC","چاڈ":"TD","فرانسیسی جنوبی خطے":"TF","ٹوگو":"TG","تھائی لینڈ":"TH","تاجکستان":"TJ","ٹوکیلاؤ":"TK","تیمور لیسٹ":"TL","ترکمانستان":"TM","تیونیسیا":"TN","ٹونگا":"TO","ترکی":"TR","ترینیداد اور ٹوباگو":"TT","ٹووالو":"TV","تائیوان":"TW","تنزانیہ":"TZ","یوکرین":"UA","یوگانڈا":"UG","امریکہ سے باہر کے چھوٹے جزائز":"UM","ریاستہائے متحدہ":"US","یوروگوئے":"UY","ازبکستان":"UZ","واٹیکن سٹی":"VA","سینٹ ونسنٹ اور گرینیڈائنز":"VC","وینزوئیلا":"VE","برٹش ورجن آئلینڈز":"VG","امریکی ورجن آئلینڈز":"VI","ویتنام":"VN","وینوآٹو":"VU","ویلیز اور فیوٹیونا":"WF","ساموآ":"WS","یمن":"YE","مایوٹ":"YT","جنوبی افریقہ":"ZA","زامبیا":"ZM","زمبابوے":"ZW","نامعلوم علاقہ":"ZZ"};
@@ -16781,6 +18682,651 @@ ilib.AddressFmt.prototype.format = function (address) {
 };
 
 /*
+ * normstring.js - ilib normalized string subclass definition
+ * 
+ * Copyright © 2013-2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends strings.js
+
+/**
+ * Create a new normalized string instance. This string inherits from 
+ * the ilib.String class, and adds the normalize method. It can be
+ * used anywhere that a normal Javascript string is used. <p>
+ * 
+ * Depends directive: !depends normstring.js
+ * 
+ * @class
+ * @constructor
+ * @param {string|ilib.String=} str initialize this instance with this string 
+ */
+ilib.NormString = function (str) {
+	ilib.NormString.baseConstructor.call(this, str);
+	
+};
+ilib.NormString.prototype = new ilib.String();
+ilib.NormString.prototype.constructor = ilib.NormString;
+ilib.NormString.baseConstructor = ilib.String;
+ilib.NormString.prototype.parent = ilib.String.prototype;
+
+/**
+ * Initialize the normalized string routines statically. This
+ * is intended to be called in a dynamic-load version of ilib
+ * to load the data need to normalize strings before any instances
+ * of ilib.NormString are created.<p>
+ * 
+ * The options parameter may contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>form</i> - {string} the normalization form to load
+ * <li><i>script</i> - {string} load the normalization for this script. If the 
+ * script is given as "all" then the normalization data for all scripts
+ * is loaded at the same time
+ * <li><i>sync</i> - {boolean} whether to load the files synchronously or not
+ * <li><i>loadParams</i> - {Object} parameters to the loader function
+ * <li><i>onLoad</i> - {function()} a function to call when the 
+ * files are done being loaded
+ * </ul>
+ * 
+ * @param {Object} options an object containing properties that govern 
+ * how to initialize the data
+ */
+ilib.NormString.init = function(options) {
+	if (!ilib._load || (typeof(ilib._load) !== 'function' && !(ilib._load instanceof ilib.Loader))) {
+		// can't do anything
+		return;
+	}
+	var form = "nfkc";
+	var script = "all";
+	var sync = true;
+	var onLoad = undefined;
+	var loadParams = undefined;
+	if (options) {
+		form = options.form || "nfkc";
+		script = options.script || "all";
+		sync = typeof(options.sync) !== 'undefined' ? options.sync : true;
+		onLoad = typeof(options.onLoad) === 'function' ? options.onLoad : undefined;
+		if (options.loadParams) {
+			loadParams = options.loadParams;
+		}
+	}
+	var formDependencies = {
+		"nfd": ["nfd"],
+		"nfc": ["nfc", "nfd"],
+		"nfkd": ["nfkd", "nfd"],
+		"nfkc": ["nfkd", "nfd", "nfc"]
+	};
+	var files = ["norm.ccc.json"];
+	var forms = formDependencies[form];
+	for (var f in forms) {
+		files.push(forms[f] + "/" + script + ".json");
+	}
+	
+	ilib._callLoadData(files, sync, loadParams, function(arr) {
+		ilib.data.norm.ccc = arr[0];
+		for (var i = 1; i < arr.length; i++) {
+			if (typeof(arr[i]) !== 'undefined') {
+				ilib.data.norm[forms[i-1]] = arr[i];
+			}
+		}
+		
+		if (onLoad) {
+			onLoad(arr);
+		}
+	});
+};
+
+/**
+ * Return true if the given character is a leading Jamo (Choseong) character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a leading Jamo character, 
+ * false otherwise
+ */
+ilib.NormString._isJamoL = function (n) {
+	return (n >= 0x1100 && n <= 0x1112);
+};
+
+/**
+ * Return true if the given character is a vowel Jamo (Jungseong) character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a vowel Jamo character, 
+ * false otherwise
+ */
+ilib.NormString._isJamoV = function (n) {
+	return (n >= 0x1161 && n <= 0x1175);
+};
+
+/**
+ * Return true if the given character is a trailing Jamo (Jongseong) character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a trailing Jamo character, 
+ * false otherwise
+ */
+ilib.NormString._isJamoT = function (n) {
+	return (n >= 0x11A8 && n <= 0x11C2);
+};
+
+/**
+ * Return true if the given character is a precomposed Hangul character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a precomposed Hangul character, 
+ * false otherwise
+ */
+ilib.NormString._isHangul = function (n) {
+	return (n >= 0xAC00 && n <= 0xD7A3);
+};
+
+/**
+ * Algorithmically decompose a precomposed Korean syllabic Hangul 
+ * character into its individual combining Jamo characters. The given 
+ * character must be in the range of Hangul characters U+AC00 to U+D7A3.
+ * 
+ * @private
+ * @static
+ * @param {number} cp code point of a Korean Hangul character to decompose
+ * @return {string} the decomposed string of Jamo characters
+ */
+ilib.NormString._decomposeHangul = function (cp) {
+	var sindex = cp - 0xAC00;
+	var result = String.fromCharCode(0x1100 + sindex / 588) + 
+			String.fromCharCode(0x1161 + (sindex % 588) / 28);
+	var t = sindex % 28;
+	if (t !== 0) {
+		result += String.fromCharCode(0x11A7 + t);
+	}
+	return result;
+};
+
+/**
+ * Algorithmically compose an L and a V combining Jamo characters into
+ * a precomposed Korean syllabic Hangul character. Both should already
+ * be in the proper ranges for L and V characters. 
+ * 
+ * @private
+ * @static
+ * @param {number} lead the code point of the lead Jamo character to compose
+ * @param {number} trail the code point of the trailing Jamo character to compose
+ * @return {string} the composed Hangul character
+ */
+ilib.NormString._composeJamoLV = function (lead, trail) {
+	var lindex = lead - 0x1100;
+	var vindex = trail - 0x1161;
+	return ilib.String.fromCodePoint(0xAC00 + (lindex * 21 + vindex) * 28);
+};
+
+/**
+ * Algorithmically compose a Hangul LV and a combining Jamo T character 
+ * into a precomposed Korean syllabic Hangul character. 
+ * 
+ * @private
+ * @static
+ * @param {number} lead the code point of the lead Hangul character to compose
+ * @param {number} trail the code point of the trailing Jamo T character to compose
+ * @return {string} the composed Hangul character
+ */
+ilib.NormString._composeJamoLVT = function (lead, trail) {
+	return ilib.String.fromCodePoint(lead + (trail - 0x11A7));
+};
+
+/**
+ * Expand one character according to the given canonical and 
+ * compatibility mappings.
+ *
+ * @private
+ * @static
+ * @param {string} ch character to map
+ * @param {Object} canon the canonical mappings to apply
+ * @param {Object=} compat the compatibility mappings to apply, or undefined
+ * if only the canonical mappings are needed
+ * @return {string} the mapped character
+ */
+ilib.NormString._expand = function (ch, canon, compat) {
+	var i, 
+		expansion = "",
+		n = ch.charCodeAt(0);
+	if (ilib.NormString._isHangul(n)) {
+		expansion = ilib.NormString._decomposeHangul(n);
+	} else {
+		var result = canon[ch];
+		if (!result && compat) {
+			result = compat[ch];
+		}
+		if (result && result !== ch) {
+			for (i = 0; i < result.length; i++) {
+				expansion += ilib.NormString._expand(result[i], canon, compat);
+			}
+		} else {
+			expansion = ch;
+		}
+	}
+	return expansion;
+};
+
+/**
+ * Compose one character out of a leading character and a 
+ * trailing character. If the characters are Korean Jamo, they
+ * will be composed algorithmically. If they are any other
+ * characters, they will be looked up in the nfc tables.
+ * 
+ * @private
+ * @static
+ * @param {string} lead leading character to compose
+ * @param {string} trail the trailing character to compose
+ * @return {string} the fully composed character, or undefined if
+ * there is no composition for those two characters
+ */
+ilib.NormString._compose = function (lead, trail) {
+	var first = lead.charCodeAt(0);
+	var last = trail.charCodeAt(0);
+	if (ilib.NormString._isHangul(first) && ilib.NormString._isJamoT(last)) {
+		return ilib.NormString._composeJamoLVT(first, last);
+	} else if (ilib.NormString._isJamoL(first) && ilib.NormString._isJamoV(last)) {
+		return ilib.NormString._composeJamoLV(first, last);
+	}
+
+	var c = lead + trail;
+	return (ilib.data.norm.nfc && ilib.data.norm.nfc[c]);
+};
+
+
+/**
+ * Perform the Unicode Normalization Algorithm upon the string and return 
+ * the resulting new string. The current string is not modified.
+ * 
+ * <h2>Forms</h2>
+ * 
+ * The forms of possible normalizations are defined by the <a 
+ * href="http://www.unicode.org/reports/tr15/">Unicode Standard
+ * Annex (UAX) 15</a>. The form parameter is a string that may have one 
+ * of the following values:
+ * 
+ * <ul>
+ * <li>nfd - Canonical decomposition. This decomposes characters into
+ * their exactly equivalent forms. For example, "&uuml;" would decompose
+ * into a "u" followed by the combining diaeresis character. 
+ * <li>nfc - Canonical decomposition followed by canonical composition.
+ * This decomposes and then recomposes character into their shortest
+ * exactly equivalent forms by recomposing as many combining characters
+ * as possible. For example, "&uuml;" followed by a combining 
+ * macron character would decompose into a "u" followed by the combining 
+ * macron characters the combining diaeresis character, and then be recomposed into
+ * the u with macron and diaeresis "&#x1E7B;" character. The reason that
+ * the "nfc" form decomposes and then recomposes is that combining characters
+ * have a specific order under the Unicode Normalization Algorithm, and
+ * partly composed characters such as the "&uuml;" followed by combining
+ * marks may change the order of the combining marks when decomposed and
+ * recomposed.
+ * <li>nfkd - Compatibility decomposition. This decomposes characters
+ * into compatible forms that may not be exactly equivalent semantically,
+ * as well as performing canonical decomposition as well.
+ * For example, the "&oelig;" ligature character decomposes to the two
+ * characters "oe" because they are compatible even though they are not 
+ * exactly the same semantically. 
+ * <li>nfkc - Compatibility decomposition followed by canonical composition.
+ * This decomposes characters into compatible forms, then recomposes
+ * characters using the canonical composition. That is, it breaks down
+ * characters into the compatible forms, and then recombines all combining
+ * marks it can with their base characters. For example, the character
+ * "&#x01FD;" would be normalized to "a&eacute;" by first decomposing
+ * the character into "a" followed by "e" followed by the combining acute accent
+ * combining mark, and then recomposed to an "a" followed by the "e"
+ * with acute accent.
+ * </ul>
+ * 
+ * <h2>Operation</h2>
+ * 
+ * Two strings a and b can be said to be canonically equivalent if 
+ * normalize(a) = normalize(b)
+ * under the nfc normalization form. Two strings can be said to be compatible if
+ * normalize(a) = normalize(b) under the nfkc normalization form.<p>
+ * 
+ * The canonical normalization is often used to see if strings are 
+ * equivalent to each other, and thus is useful when implementing parsing 
+ * algorithms or exact matching algorithms. It can also be used to ensure
+ * that any string output produces a predictable sequence of characters.<p>
+ * 
+ * Compatibility normalization 
+ * does not always preserve the semantic meaning of all the characters, 
+ * although this is sometimes the behaviour that you are after. It is useful, 
+ * for example, when doing searches of user-input against text in documents 
+ * where the matches are supposed to "fuzzy". In this case, both the query
+ * string and the document string would be mapped to their compatibility 
+ * normalized forms, and then compared.<p>
+ * 
+ * Compatibility normalization also does not guarantee round-trip conversion
+ * to and from legacy character sets as the normalization is "lossy". It is 
+ * akin to doing a lower- or upper-case conversion on text -- after casing,
+ * you cannot tell what case each character is in the original string. It is 
+ * good for matching and searching, but it rarely good for output because some 
+ * distinctions or meanings in the original text have been lost.<p>
+ * 
+ * Note that W3C normalization for HTML also escapes and unescapes
+ * HTML character entities such as "&amp;uuml;" for u with diaeresis. This
+ * method does not do such escaping or unescaping. If normalization is required
+ * for HTML strings with entities, unescaping should be performed on the string 
+ * prior to calling this method.<p>
+ * 
+ * <h2>Data</h2>
+ * 
+ * Normalization requires a fair amount of mapping data, much of which you may 
+ * not need for the characters expected in your texts. It is possible to assemble
+ * a copy of ilib that saves space by only including normalization data for 
+ * those scripts that you expect to encounter in your data.<p>
+ * 
+ * The normalization data is organized by normalization form and within there
+ * by script. To include the normalization data for a particular script with
+ * a particular normalization form, use the directive:
+ * 
+ * <pre><code>
+ * !depends &lt;form&gt;/&lt;script&gt;.js
+ * </code></pre>
+ * 
+ * Where &lt;form&gt is the normalization form ("nfd", "nfc", "nfkd", or "nfkc"), and
+ * &lt;script&gt; is the ISO 15924 code for the script you would like to
+ * support. Example: to load in the NFC data for Cyrillic, you would use:
+ * 
+ * <pre><code>
+ * !depends nfc/Cyrl.js
+ * </code></pre>
+ * 
+ * Note that because certain normalization forms include others in their algorithm, 
+ * their data also depends on the data for the other forms. For example, if you 
+ * include the "nfc" data for a script, you will automatically get the "nfd" data 
+ * for that same script as well because the NFC algorithm does NFD normalization 
+ * first. Here are the dependencies:<p>
+ * 
+ * <ul>
+ * <li>NFD -> no dependencies
+ * <li>NFC -> NFD
+ * <li>NFKD -> NFD
+ * <li>NFKC -> NFKD, NFD, NFC
+ * </ul>
+ * 
+ * A special value for the script dependency is "all" which will cause the data for 
+ * all scripts
+ * to be loaded for that normalization form. This would be useful if you know that
+ * you are going to normalize a lot of multilingual text or cannot predict which scripts
+ * will appear in the input. Because the NFKC form depends on all others, you can 
+ * get all of the data for all forms automatically by depending on "nfkc/all.js".
+ * Note that the normalization data for practically all script automatically depend
+ * on data for the Common script (code "Zyyy") which contains all of the characters
+ * that are commonly used in many different scripts. Examples of characters in the
+ * Common script are the ASCII punctuation characters, or the ASCII Arabic 
+ * numerals "0" through "9".<p>
+ * 
+ * By default, none of the data for normalization is automatically 
+ * included in the preassembled iliball.js file. 
+ * If you would like to normalize strings, you must assemble
+ * your own copy of ilib and explicitly include the normalization data
+ * for those scripts as per the instructions above. This normalization method will 
+ * produce output, even without the normalization data. However, the output will be 
+ * simply the same thing as its input for all scripts 
+ * except Korean Hangul and Jamo, which are decomposed and recomposed 
+ * algorithmically and therefore do not rely on data.<p>
+ * 
+ * If characters are encountered for which there are no normalization data, they
+ * will be passed through to the output string unmodified.
+ * 
+ * @param {string} form The normalization form requested
+ * @return {ilib.String} a new instance of an ilib.String that has been normalized
+ * according to the requested form. The current instance is not modified.
+ */
+ilib.NormString.prototype.normalize = function (form) {
+	var i;
+	
+	if (typeof(form) !== 'string' || this.str.length === 0) {
+		return new ilib.String(this.str);
+	}
+	
+	var nfc = false,
+		nfkd = false;
+	
+	switch (form) {
+	default:
+		break;
+		
+	case "nfc":
+		nfc = true;
+		break;
+		
+	case "nfkd":
+		nfkd = true;
+		break;
+		
+	case "nfkc":
+		nfkd = true;
+		nfc = true;
+		break;
+	}
+
+	// decompose
+	var decomp = "";
+	
+	if (nfkd) {
+		var ch, it = this.parent.charIterator.call(this);
+		while (it.hasNext()) {
+			ch = it.next();
+			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd, ilib.data.norm.nfkd);
+		}
+	} else {
+		var ch, it = this.parent.charIterator.call(this);
+		while (it.hasNext()) {
+			ch = it.next();
+			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd);
+		}
+	}
+
+	// now put the combining marks in a fixed order by 
+	// sorting on the combining class
+	function compareByCCC(left, right) {
+		return ilib.data.norm.ccc[left] - ilib.data.norm.ccc[right]; 
+	}
+	
+	function ccc(c) {
+		return ilib.data.norm.ccc[c] || 0;
+	}
+		
+	var dstr = new ilib.String(decomp);
+	var it = dstr.charIterator();
+	var cpArray = [];
+
+	// easier to deal with as an array of chars
+	while (it.hasNext()) {
+		cpArray.push(it.next());
+	}
+	
+	i = 0;
+	while (i < cpArray.length) {
+		if (typeof(ilib.data.norm.ccc[cpArray[i]]) !== 'undefined' && ccc(cpArray[i]) !== 0) {
+			// found a non-starter... rearrange all the non-starters until the next starter
+			var end = i+1;
+			while (end < cpArray.length &&
+					typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
+					ccc(cpArray[end]) !== 0) {
+				end++;
+			}
+			
+			// simple sort of the non-starter chars
+			if (end - i > 1) {
+				cpArray = cpArray.slice(0,i).concat(cpArray.slice(i, end).sort(compareByCCC), cpArray.slice(end));
+			}
+		}
+		i++;
+	}
+	
+	if (nfc) {
+		i = 0;
+		while (i < cpArray.length) {
+			if (typeof(ilib.data.norm.ccc[cpArray[i]]) === 'undefined' || ilib.data.norm.ccc[cpArray[i]] === 0) {
+				// found a starter... find all the non-starters until the next starter. Must include
+				// the next starter because under some odd circumstances, two starters sometimes recompose 
+				// together to form another character
+				var end = i+1;
+				var notdone = true;
+				while (end < cpArray.length && notdone) {
+					if (typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
+						ilib.data.norm.ccc[cpArray[end]] !== 0) {
+						if (ccc(cpArray[end-1]) < ccc(cpArray[end])) { 
+							// not blocked 
+							var testChar = ilib.NormString._compose(cpArray[i], cpArray[end]);
+							if (typeof(testChar) !== 'undefined') {
+								cpArray[i] = testChar;
+								
+								// delete the combining char
+								cpArray.splice(end,1);	
+								
+								// restart the iteration, just in case there is more to recompose with the new char
+								end = i;
+							}
+						}
+						end++;
+					} else {
+						// found the next starter. See if this can be composed with the previous starter
+						var testChar = ilib.NormString._compose(cpArray[i], cpArray[end]);
+						if (ccc(cpArray[end-1]) === 0 && typeof(testChar) !== 'undefined') { 
+							// not blocked and there is a mapping 
+							cpArray[i] = testChar;
+							
+							// delete the combining char
+							cpArray.splice(end,1);
+							
+							// restart the iteration, just in case there is more to recompose with the new char
+							end = i+1;
+						} else {
+							// finished iterating 
+							notdone = false;
+						}
+					}
+				}
+			}
+			i++;
+		}
+	}
+	
+	return new ilib.String(cpArray.length > 0 ? cpArray.join("") : "");
+};
+	
+/**
+ * @override
+ * Return an iterator that will step through all of the characters
+ * in the string one at a time, taking care to step through decomposed 
+ * characters and through surrogate pairs in UTF-16 encoding 
+ * properly. <p>
+ * 
+ * The NormString class will return decomposed Unicode characters
+ * as a single unit that a user might see on the screen. If the 
+ * next character in the iteration is a base character and it is 
+ * followed by combining characters, the base and all its following 
+ * combining characters are returned as a single unit.<p>
+ * 
+ * The standard Javascript String's charAt() method only
+ * returns information about a particular 16-bit character in the 
+ * UTF-16 encoding scheme.
+ * If the index is pointing to a low- or high-surrogate character,
+ * it will return that surrogate character rather 
+ * than the surrogate pair which represents a character 
+ * in the supplementary planes.<p>
+ * 
+ * The iterator instance returned has two methods, hasNext() which
+ * returns true if the iterator has more characters to iterate through,
+ * and next() which returns the next character.<p>
+ * 
+ * @return {Object} an iterator 
+ * that iterates through all the characters in the string
+ */
+ilib.NormString.prototype.charIterator = function() {
+	var it = this.parent.charIterator.call(this);
+	
+	/**
+	 * @constructor
+	 */
+	function _chiterator (istring) {
+		/**
+		 * @private
+		 */
+		var ccc = function(c) {
+			return ilib.data.norm.ccc[c] || 0;
+		};
+
+		this.index = 0;
+		this.hasNext = function () {
+			return !!this.nextChar || it.hasNext();
+		};
+		this.next = function () {
+			var ch = this.nextChar || it.next(),
+				prevCcc = ccc(ch),
+				nextCcc,
+				composed = ch;
+			
+			this.nextChar = undefined;
+			
+			if (ilib.data.norm.ccc && 
+					(typeof(ilib.data.norm.ccc[ch]) === 'undefined' || ccc(ch) === 0)) {
+				// found a starter... find all the non-starters until the next starter. Must include
+				// the next starter because under some odd circumstances, two starters sometimes recompose 
+				// together to form another character
+				var notdone = true;
+				while (it.hasNext() && notdone) {
+					this.nextChar = it.next();
+					nextCcc = ccc(this.nextChar);
+					if (typeof(ilib.data.norm.ccc[this.nextChar]) !== 'undefined' && nextCcc !== 0) {
+						ch += this.nextChar;
+						this.nextChar = undefined;
+					} else {
+						// found the next starter. See if this can be composed with the previous starter
+						var testChar = ilib.NormString._compose(composed, this.nextChar);
+						if (prevCcc === 0 && typeof(testChar) !== 'undefined') { 
+							// not blocked and there is a mapping 
+							composed = testChar;
+							ch += this.nextChar;
+							this.nextChar = undefined;
+						} else {
+							// finished iterating, leave this.nextChar for the next next() call 
+							notdone = false;
+						}
+					}
+					prevCcc = nextCcc;
+				}
+			}
+			return ch;
+		};
+	};
+	return new _chiterator(this);
+};
+
+
+ilib.data.collation = {"standard":{"scripts":["Latn"],"bits":[5,3,1,1],"map":{"A":[0],"B":[1],"C":[2],"D":[3],"E":[4],"F":[5],"G":[6],"H":[7],"I":[8],"J":[9],"K":[10],"L":[11],"M":[12],"N":[13],"O":[14],"P":[15],"Q":[16],"R":[17],"S":[18],"T":[19],"U":[20],"V":[21],"W":[22],"X":[23],"Y":[24],"Z":[25],"a":[0,0,1],"b":[1,0,1],"c":[2,0,1],"d":[3,0,1],"e":[4,0,1],"f":[5,0,1],"g":[6,0,1],"h":[7,0,1],"i":[8,0,1],"j":[9,0,1],"k":[10,0,1],"l":[11,0,1],"m":[12,0,1],"n":[13,0,1],"o":[14,0,1],"p":[15,0,1],"q":[16,0,1],"r":[17,0,1],"s":[18,0,1],"t":[19,0,1],"u":[20,0,1],"v":[21,0,1],"w":[22,0,1],"x":[23,0,1],"y":[24,0,1],"z":[25,0,1],"à":[0,1,1],"á":[0,2,1],"â":[0,3,1],"ã":[0,4,1],"ä":[0,5,1],"å":[0,6,1],"æ":[[0,7,1],[4,0,1]],"ç":[2,1,1],"è":[4,1,1],"é":[4,2,1],"ê":[4,3,1],"ë":[4,4,1],"ð":[3,1,1],"þ":[3,2,1],"ì":[8,1,1],"í":[8,2,1],"î":[8,3,1],"ï":[8,4,1],"ñ":[13,1,1],"ò":[14,1,1],"ó":[14,2,1],"ô":[14,3,1],"õ":[14,4,1],"ö":[14,5,1],"ø":[14,6,1],"ù":[20,1,1],"ú":[20,2,1],"û":[20,3,1],"ü":[20,4,1],"ý":[24,1,1],"ÿ":[24,2,1],"À":[0,1,0],"Á":[0,2,0],"Â":[0,3,0],"Ã":[0,4,0],"Ä":[0,5,0],"Å":[0,6,0],"Æ":[[0,7,0],[4]],"Ç":[2,1,0],"Ð":[3,1,0],"Þ":[3,2,0],"È":[4,1,0],"É":[4,2,0],"Ê":[4,3,0],"Ë":[4,4,0],"Ì":[8,1,0],"Í":[8,2,0],"Î":[8,3,0],"Ï":[8,4,0],"Ñ":[13,1,0],"Ò":[14,1,0],"Ó":[14,2,0],"Ô":[14,3,0],"Õ":[14,4,0],"Ö":[14,5,0],"Ø":[14,6,0],"Ù":[20,1,0],"Ú":[20,2,0],"Û":[20,3,0],"Ü":[20,4,0],"Ý":[24,1,0],"ß":[[18,1,1],[25,0,1]],"à":[0,1,1,1],"á":[0,2,1,1],"â":[0,3,1,1],"ã":[0,4,1,1],"ä":[0,5,1,1],"å":[0,6,1,1],"ç":[2,1,1,1],"è":[4,1,1,1],"é":[4,2,1,1],"ê":[4,3,1,1],"ë":[4,4,1,1],"ì":[8,1,1,1],"í":[8,2,1,1],"î":[8,3,1,1],"ï":[8,4,1,1],"ñ":[13,1,1,1],"ò":[14,1,1,1],"ó":[14,2,1,1],"ô":[14,3,1,1],"õ":[14,4,1,1],"ö":[14,5,1,1],"ù":[20,1,1,1],"ú":[20,2,1,1],"û":[20,3,1,1],"ü":[20,4,1,1],"ý":[24,1,1,1],"ÿ":[24,2,1,1],"À":[0,1,0,1],"Á":[0,2,0,1],"Â":[0,3,0,1],"Ã":[0,4,0,1],"Ä":[0,5,0,1],"Å":[0,6,0,1],"Ç":[2,1,0,1],"È":[4,1,0,1],"É":[4,2,0,1],"Ê":[4,3,0,1],"Ë":[4,4,0,1],"Ì":[8,1,0,1],"Í":[8,2,0,1],"Î":[8,3,0,1],"Ï":[8,4,0,1],"Ñ":[13,1,0,1],"Ò":[14,1,0,1],"Ó":[14,2,0,1],"Ô":[14,3,0,1],"Õ":[14,4,0,1],"Ö":[14,5,0,1],"Ù":[20,1,0,1],"Ú":[20,2,0,1],"Û":[20,3,0,1],"Ü":[20,4,0,1],"Ý":[24,1,0,1]}}};
+ilib.data.collation_de = {"phonebook":{"scripts":["Latn"],"bits":[5,3,1,1],"map":{"A":[0],"B":[1],"C":[2],"D":[3],"E":[4],"F":[5],"G":[6],"H":[7],"I":[8],"J":[9],"K":[10],"L":[11],"M":[12],"N":[13],"O":[14],"P":[15],"Q":[16],"R":[17],"S":[18],"T":[19],"U":[20],"V":[21],"W":[22],"X":[23],"Y":[24],"Z":[25],"a":[0,0,1],"b":[1,0,1],"c":[2,0,1],"d":[3,0,1],"e":[4,0,1],"f":[5,0,1],"g":[6,0,1],"h":[7,0,1],"i":[8,0,1],"j":[9,0,1],"k":[10,0,1],"l":[11,0,1],"m":[12,0,1],"n":[13,0,1],"o":[14,0,1],"p":[15,0,1],"q":[16,0,1],"r":[17,0,1],"s":[18,0,1],"t":[19,0,1],"u":[20,0,1],"v":[21,0,1],"w":[22,0,1],"x":[23,0,1],"y":[24,0,1],"z":[25,0,1],"à":[0,1,1],"á":[0,2,1],"â":[0,3,1],"ã":[0,4,1],"ä":[[0,0,1],[4,0,1]],"å":[0,6,1],"æ":[[0,7,1],[4,0,1]],"ç":[2,1,1],"è":[4,1,1],"é":[4,2,1],"ê":[4,3,1],"ë":[4,4,1],"ð":[3,1,1],"þ":[3,2,1],"ì":[8,1,1],"í":[8,2,1],"î":[8,3,1],"ï":[8,4,1],"ñ":[13,1,1],"ò":[14,1,1],"ó":[14,2,1],"ô":[14,3,1],"õ":[14,4,1],"ö":[[14,0,1],[4,0,1]],"ø":[14,6,1],"ù":[20,1,1],"ú":[20,2,1],"û":[20,3,1],"ü":[[20,0,1],[4,0,1]],"ý":[24,1,1],"ÿ":[24,2,1],"À":[0,1,0],"Á":[0,2,0],"Â":[0,3,0],"Ã":[0,4,0],"Ä":[[0],[4]],"Å":[0,6,0],"Æ":[[0,7,0],[4]],"Ç":[2,1,0],"Ð":[3,1,0],"Þ":[3,2,0],"È":[4,1,0],"É":[4,2,0],"Ê":[4,3,0],"Ë":[4,4,0],"Ì":[8,1,0],"Í":[8,2,0],"Î":[8,3,0],"Ï":[8,4,0],"Ñ":[13,1,0],"Ò":[14,1,0],"Ó":[14,2,0],"Ô":[14,3,0],"Õ":[14,4,0],"Ö":[[14],[4]],"Ø":[14,6,0],"Ù":[20,1,0],"Ú":[20,2,0],"Û":[20,3,0],"Ü":[[20],[4]],"Ý":[24,1,0],"ß":[[18,1,1],[25,0,1]],"à":[0,1,1,1],"á":[0,2,1,1],"â":[0,3,1,1],"ã":[0,4,1,1],"ä":[[0,0,1],[4,0,1]],"å":[0,6,1,1],"ç":[2,1,1,1],"è":[4,1,1,1],"é":[4,2,1,1],"ê":[4,3,1,1],"ë":[4,4,1,1],"ì":[8,1,1,1],"í":[8,2,1,1],"î":[8,3,1,1],"ï":[8,4,1,1],"ñ":[13,1,1,1],"ò":[14,1,1,1],"ó":[14,2,1,1],"ô":[14,3,1,1],"õ":[14,4,1,1],"ö":[[14,0,1],[4,0,1]],"ù":[20,1,1,1],"ú":[20,2,1,1],"û":[20,3,1,1],"ü":[[20,0,1],[4,0,1]],"ý":[24,1,1,1],"ÿ":[24,2,1,1],"À":[0,1,0,1],"Á":[0,2,0,1],"Â":[0,3,0,1],"Ã":[0,4,0,1],"Ä":[[0],[4]],"Å":[0,6,0,1],"Ç":[2,1,0,1],"È":[4,1,0,1],"É":[4,2,0,1],"Ê":[4,3,0,1],"Ë":[4,4,0,1],"Ì":[8,1,0,1],"Í":[8,2,0,1],"Î":[8,3,0,1],"Ï":[8,4,0,1],"Ñ":[13,1,0,1],"Ò":[14,1,0,1],"Ó":[14,2,0,1],"Ô":[14,3,0,1],"Õ":[14,4,0,1],"Ö":[[14],[4]],"Ù":[20,1,0,1],"Ú":[20,2,0,1],"Û":[20,3,0,1],"Ü":[[20],[4]],"Ý":[24,1,0,1]}}};
+ilib.data.collation_es = {"traditional":{"scripts":["Latn"],"bits":[5,3,1,1],"map":{"A":[0],"B":[1],"C":[2],"Ch":[3,0,0,1],"CH":[3],"D":[4],"E":[5],"F":[6],"G":[7],"H":[8],"I":[9],"J":[10],"K":[11],"L":[12],"Ll":[13,0,0,1],"LL":[13],"M":[14],"N":[15],"Ñ":[16],"O":[17],"P":[18],"Q":[19],"R":[20],"S":[21],"T":[22],"U":[23],"V":[24],"W":[25],"X":[26],"Y":[27],"Z":[28],"a":[0,0,1],"b":[1,0,1],"c":[2,0,1],"ch":[3,0,1],"d":[4,0,1],"e":[5,0,1],"f":[6,0,1],"g":[7,0,1],"h":[8,0,1],"i":[9,0,1],"j":[10,0,1],"k":[11,0,1],"l":[12,0,1],"ll":[13,0,1],"m":[14,0,1],"n":[15,0,1],"ñ":[16,0,1],"o":[17,0,1],"p":[18,0,1],"q":[19,0,1],"r":[20,0,1],"s":[21,0,1],"t":[22,0,1],"u":[23,0,1],"v":[24,0,1],"w":[25,0,1],"x":[26,0,1],"y":[27,0,1],"z":[28,0,1],"à":[0,1,1],"á":[0,2,1],"â":[0,3,1],"ã":[0,4,1],"ä":[0,5,1],"å":[0,6,1],"æ":[[0,7,1],[5,0,1]],"ç":[2,1,1],"è":[5,1,1],"é":[5,2,1],"ê":[5,3,1],"ë":[5,4,1],"ð":[4,1,1],"þ":[4,2,1],"ì":[9,1,1],"í":[9,2,1],"î":[9,3,1],"ï":[9,4,1],"ò":[17,1,1],"ó":[17,2,1],"ô":[17,3,1],"õ":[17,4,1],"ö":[17,5,1],"ø":[17,6,1],"ù":[23,1,1],"ú":[23,2,1],"û":[23,3,1],"ü":[23,4,1],"ý":[27,1,1],"ÿ":[27,2,1],"À":[0,1,0],"Á":[0,2,0],"Â":[0,3,0],"Ã":[0,4,0],"Ä":[0,5,0],"Å":[0,6,0],"Æ":[[0,7,0],[5]],"Ç":[2,1,0],"Ð":[4,1,0],"Þ":[4,2,0],"È":[5,1,0],"É":[5,2,0],"Ê":[5,3,0],"Ë":[5,4,0],"Ì":[9,1,0],"Í":[9,2,0],"Î":[9,3,0],"Ï":[9,4,0],"Ò":[17,1,0],"Ó":[17,2,0],"Ô":[17,3,0],"Õ":[17,4,0],"Ö":[17,5,0],"Ø":[17,6,0],"Ù":[23,1,0],"Ú":[23,2,0],"Û":[23,3,0],"Ü":[23,4,0],"Ý":[27,1,0],"ß":[[21,1,1],[28,0,1]],"à":[0,1,1,1],"á":[0,2,1,1],"â":[0,3,1,1],"ã":[0,4,1,1],"ä":[0,5,1,1],"å":[0,6,1,1],"ç":[2,1,1,1],"è":[5,1,1,1],"é":[5,2,1,1],"ê":[5,3,1,1],"ë":[5,4,1,1],"ì":[9,1,1,1],"í":[9,2,1,1],"î":[9,3,1,1],"ï":[9,4,1,1],"ñ":[16,1,1,1],"ò":[17,1,1,1],"ó":[17,2,1,1],"ô":[17,3,1,1],"õ":[17,4,1,1],"ö":[17,5,1,1],"ù":[23,1,1,1],"ú":[23,2,1,1],"û":[23,3,1,1],"ü":[23,4,1,1],"ý":[27,1,1,1],"ÿ":[27,2,1,1],"À":[0,1,0,1],"Á":[0,2,0,1],"Â":[0,3,0,1],"Ã":[0,4,0,1],"Ä":[0,5,0,1],"Å":[0,6,0,1],"Ç":[2,1,0,1],"È":[5,1,0,1],"É":[5,2,0,1],"Ê":[5,3,0,1],"Ë":[5,4,0,1],"Ì":[9,1,0,1],"Í":[9,2,0,1],"Î":[9,3,0,1],"Ï":[9,4,0,1],"Ñ":[16,1,0,1],"Ò":[17,1,0,1],"Ó":[17,2,0,1],"Ô":[17,3,0,1],"Õ":[17,4,0,1],"Ö":[17,5,0,1],"Ù":[23,1,0,1],"Ú":[23,2,0,1],"Û":[23,3,0,1],"Ü":[23,4,0,1],"Ý":[27,1,0,1]}}};
+ilib.data.collation_et = {"standard":{"scripts":["Latn"],"bits":[5,3,1,1],"map":{"A":[0],"B":[1],"C":[2],"D":[3],"E":[4],"F":[5],"G":[6],"H":[7],"I":[8],"J":[9],"K":[10],"L":[11],"M":[12],"N":[13],"O":[14],"P":[15],"Q":[16],"R":[17],"S":[18],"Š":[19],"Z":[20],"Ž":[21],"T":[22],"U":[23],"V":[24],"W":[25],"Õ":[26],"Ä":[27],"Ö":[28],"Ü":[29],"X":[30],"Y":[31],"a":[0,0,1],"b":[1,0,1],"c":[2,0,1],"d":[3,0,1],"e":[4,0,1],"f":[5,0,1],"g":[6,0,1],"h":[7,0,1],"i":[8,0,1],"j":[9,0,1],"k":[10,0,1],"l":[11,0,1],"m":[12,0,1],"n":[13,0,1],"o":[14,0,1],"p":[15,0,1],"q":[16,0,1],"r":[17,0,1],"s":[18,0,1],"š":[19,0,1],"z":[20,0,1],"ž":[21,0,1],"t":[22,0,1],"u":[23,0,1],"v":[24,0,1],"w":[25,0,1],"õ":[26,0,1],"ä":[27,0,1],"ö":[28,0,1],"ü":[29,0,1],"x":[30,0,1],"y":[31,0,1],"à":[0,1,1],"á":[0,2,1],"â":[0,3,1],"ã":[0,4,1],"å":[0,5,1],"æ":[[0,7,1],[4,0,1]],"ç":[2,1,1],"è":[4,1,1],"é":[4,2,1],"ê":[4,3,1],"ë":[4,4,1],"ð":[3,1,1],"þ":[3,2,1],"ì":[8,1,1],"í":[8,2,1],"î":[8,3,1],"ï":[8,4,1],"ñ":[13,1,1],"ò":[14,1,1],"ó":[14,2,1],"ô":[14,3,1],"ø":[14,4,1],"ù":[23,1,1],"ú":[23,1,1],"û":[23,3,1],"ý":[31,1,1],"ÿ":[31,2,1],"À":[0,1,0],"Á":[0,2,0],"Â":[0,3,0],"Ã":[0,4,0],"Å":[0,5,0],"Æ":[[0,7,0],[4]],"Ç":[2,1,0],"Ð":[3,1,0],"Þ":[3,2,0],"È":[4,1,0],"É":[4,2,0],"Ê":[4,3,0],"Ë":[4,4,0],"Ì":[8,1,0],"Í":[8,2,0],"Î":[8,3,0],"Ï":[8,4,0],"Ñ":[13,1,0],"Ò":[14,1,0],"Ó":[14,2,0],"Ô":[14,3,0],"Ø":[14,4,0],"Ù":[23,1,0],"Ú":[23,2,0],"Û":[23,3,0],"Ý":[31,1,0],"ß":[[18,1,1],[25,0,1]],"à":[0,1,1,1],"á":[0,2,1,1],"â":[0,3,1,1],"ã":[0,4,1,1],"å":[0,5,1,1],"ç":[2,1,1,1],"è":[4,1,1,1],"é":[4,2,1,1],"ê":[4,3,1,1],"ë":[4,4,1,1],"ì":[8,1,1,1],"í":[8,2,1,1],"î":[8,3,1,1],"ï":[8,4,1,1],"ñ":[13,1,1,1],"ò":[14,1,1,1],"ó":[14,2,1,1],"ô":[14,3,1,1],"ù":[20,1,1,1],"ú":[20,2,1,1],"û":[20,3,1,1],"ý":[24,1,1,1],"ÿ":[24,2,1,1],"À":[0,1,0,1],"Á":[0,2,0,1],"Â":[0,3,0,1],"Ã":[0,4,0,1],"Å":[0,5,0,1],"Ç":[2,1,0,1],"È":[4,1,0,1],"É":[4,2,0,1],"Ê":[4,3,0,1],"Ë":[4,4,0,1],"Ì":[8,1,0,1],"Í":[8,2,0,1],"Î":[8,3,0,1],"Ï":[8,4,0,1],"Ñ":[13,1,0,1],"Ò":[14,1,0,1],"Ó":[14,2,0,1],"Ô":[14,3,0,1],"Ù":[23,1,0,1],"Ú":[23,2,0,1],"Û":[23,3,0,1],"Ý":[31,1,0,1],"Š":[19,0,0,1],"Ž":[21,0,0,1],"Õ":[26,0,0,1],"Ä":[27,0,0,1],"Ö":[28,0,0,1],"Ü":[29,0,0,1],"š":[19,0,1,1],"ž":[21,0,1,1],"õ":[26,0,1,1],"ä":[27,0,1,1],"ö":[28,0,1,1],"ü":[29,0,1,1]}}};
+ilib.data.collation_lt = {"standard":{"scripts":["Latn"],"bits":[6,3,1,1],"map":{"A":[0],"Ą":[1],"B":[2],"C":[3],"Č":[4],"D":[5],"E":[6],"Ę":[7],"Ė":[8],"F":[9],"G":[10],"H":[11],"I":[12],"Į":[13],"Y":[14],"J":[15],"K":[16],"L":[17],"M":[18],"N":[19],"O":[20],"P":[21],"R":[22],"S":[23],"Š":[24],"T":[25],"U":[26],"Ų":[27],"Ū":[28],"V":[29],"Z":[30],"Ž":[31],"Q":[32],"W":[33],"X":[34],"a":[0,0,1],"ą":[1,0,1],"b":[2,0,1],"c":[3,0,1],"č":[4,0,1],"d":[5,0,1],"e":[6,0,1],"ę":[7,0,1],"ė":[8,0,1],"f":[9,0,1],"g":[10,0,1],"h":[11,0,1],"i":[12,0,1],"į":[13,0,1],"y":[14,0,1],"j":[15,0,1],"k":[16,0,1],"l":[17,0,1],"m":[18,0,1],"n":[19,0,1],"o":[20,0,1],"p":[21,0,1],"r":[22,0,1],"s":[23,0,1],"š":[24,0,1],"t":[25,0,1],"u":[26,0,1],"ų":[27,0,1],"ū":[28,0,1],"v":[29,0,1],"z":[30,0,1],"ž":[31,0,1],"q":[32,0,1],"w":[33,0,1],"x":[34,0,1],"à":[0,1,1],"á":[0,2,1],"â":[0,3,1],"ã":[0,4,1],"ä":[0,5,1],"å":[0,6,1],"æ":[[0,7,1],[6,0,1]],"ç":[6,1,1],"è":[6,1,1],"é":[6,2,1],"ê":[6,3,1],"ë":[6,4,1],"ð":[5,1,1],"þ":[5,2,1],"ì":[12,1,1],"í":[12,2,1],"î":[12,3,1],"ï":[12,4,1],"ñ":[19,1,1],"ò":[20,1,1],"ó":[20,2,1],"ô":[20,3,1],"õ":[20,4,1],"ö":[20,5,1],"ø":[20,6,1],"ù":[26,1,1],"ú":[26,2,1],"û":[26,3,1],"ü":[26,4,1],"ý":[14,1,1],"ÿ":[14,2,1],"À":[0,1,0],"Á":[0,2,0],"Â":[0,3,0],"Ã":[0,4,0],"Ä":[0,5,0],"Å":[0,6,0],"Æ":[[0,7,0],[6]],"Ç":[6,1,0],"Ð":[5,1,0],"Þ":[5,2,0],"È":[6,1,0],"É":[6,2,0],"Ê":[6,3,0],"Ë":[6,4,0],"Ì":[12,1,0],"Í":[12,2,0],"Î":[12,3,0],"Ï":[12,4,0],"Ñ":[19,1,0],"Ò":[20,1,0],"Ó":[20,2,0],"Ô":[20,3,0],"Õ":[20,4,0],"Ö":[20,5,0],"Ø":[20,6,0],"Ù":[26,1,0],"Ú":[26,2,0],"Û":[26,3,0],"Ü":[26,4,0],"Ý":[14,1,0],"ß":[[23,1,1],[30,0,1]],"Ą":[1,0,0,1],"Č":[4,0,0,1],"Ę":[7,0,0,1],"Ė":[8,0,0,1],"Į":[13,0,0,1],"Š":[24,0,0,1],"Ų":[27,0,0,1],"Ū":[28,0,0,1],"Ž":[31,0,0,1],"ą":[1,0,1,1],"č":[4,0,1,1],"ę":[7,0,1,1],"ė":[8,0,1,1],"į":[13,0,1,1],"š":[24,0,1,1],"ų":[27,0,1,1],"ū":[28,0,1,1],"ž":[31,0,1,1],"à":[0,1,1,1],"á":[0,2,1,1],"â":[0,3,1,1],"ã":[0,4,1,1],"ä":[0,5,1,1],"å":[0,6,1,1],"ç":[6,1,1,1],"è":[6,1,1,1],"é":[6,2,1,1],"ê":[6,3,1,1],"ë":[6,4,1,1],"ì":[12,1,1,1],"í":[12,2,1,1],"î":[12,3,1,1],"ï":[12,4,1,1],"ñ":[19,1,1,1],"ò":[20,1,1,1],"ó":[20,2,1,1],"ô":[20,3,1,1],"õ":[20,4,1,1],"ö":[20,5,1,1],"ù":[26,1,1,1],"ú":[26,2,1,1],"û":[26,3,1,1],"ü":[26,4,1,1],"ý":[14,1,1,1],"ÿ":[14,2,1,1],"À":[0,1,0,1],"Á":[0,2,0,1],"Â":[0,3,0,1],"Ã":[0,4,0,1],"Ä":[0,5,0,1],"Å":[0,6,0,1],"Ç":[6,1,0,1],"È":[6,1,0,1],"Ê":[6,3,0,1],"Ë":[6,4,0,1],"Ì":[12,1,0,1],"Í":[12,2,0,1],"Î":[12,3,0,1],"Ï":[12,4,0,1],"Ñ":[19,1,0,1],"Ò":[20,1,0,1],"Ó":[20,2,0,1],"Ô":[20,3,0,1],"Õ":[20,4,0,1],"Ö":[20,5,0,1],"Ù":[26,1,0,1],"Ú":[26,2,0,1],"Û":[26,3,0,1],"Ü":[26,4,0,1],"Ý":[14,1,0,1]}}};
+ilib.data.collation_lv = {"standard":{"scripts":["Latn"],"bits":[6,3,1,1],"map":{"A":[0],"Ā":[1],"B":[2],"C":[3],"Č":[4],"D":[5],"E":[6],"Ē":[7],"F":[8],"G":[9],"Ģ":[10],"H":[11],"I":[12],"Y":[12,1],"Ī":[13],"J":[14],"K":[15],"Ķ":[16],"L":[17],"Ļ":[18],"M":[19],"N":[20],"Ņ":[21],"O":[22],"Ō":[22,1],"P":[23],"Q":[24],"R":[25],"Ŗ":[26],"S":[27],"Š":[28],"T":[29],"U":[30],"Ū":[31],"V":[32],"Z":[33],"Ž":[34],"W":[35],"X":[36],"a":[0,0,1],"ā":[1,0,1],"b":[2,0,1],"c":[3,0,1],"č":[4,0,1],"d":[5,0,1],"e":[6,0,1],"ē":[7,0,1],"f":[8,0,1],"g":[9,0,1],"ģ":[10,0,1],"h":[11,0,1],"i":[12,0,1],"y":[12,1,1],"ī":[13,0,1],"j":[14,0,1],"k":[15,0,1],"ķ":[16,0,1],"l":[17,0,1],"ļ":[18,0,1],"m":[19,0,1],"n":[20,0,1],"ņ":[21,0,1],"o":[22,0,1],"p":[23,0,1],"q":[24,0,1],"r":[25,0,1],"ŗ":[26,0,1],"s":[27,0,1],"š":[28,0,1],"t":[29,0,1],"u":[30,0,1],"ū":[31,0,1],"v":[32,0,1],"z":[33,0,1],"ž":[34,0,1],"w":[35,0,1],"x":[36,0,1],"à":[0,1,1],"á":[0,2,1],"â":[0,3,1],"ã":[0,4,1],"ä":[0,5,1],"å":[0,6,1],"æ":[[0,0,1],[6,0,1]],"ç":[3,1,1],"è":[6,1,1],"é":[6,2,1],"ê":[6,3,1],"ë":[6,4,1],"ð":[5,1,1],"þ":[5,2,1],"ì":[12,1,1],"í":[12,2,1],"î":[12,3,1],"ï":[12,4,1],"ñ":[20,1,1],"ò":[22,1,1],"ó":[22,2,1],"ô":[22,3,1],"õ":[22,4,1],"ö":[22,5,1],"ø":[22,6,1],"ù":[30,1,1],"ú":[30,2,1],"û":[30,3,1],"ü":[30,4,1],"ý":[12,2,1],"ÿ":[12,3,1],"À":[0,1,0],"Á":[0,2,0],"Â":[0,3,0],"Ã":[0,4,0],"Ä":[0,5,0],"Å":[0,6,0],"Æ":[[0],[6]],"Ç":[3,1,0],"Ð":[5,1,0],"Þ":[5,2,0],"È":[6,1,0],"É":[6,2,0],"Ê":[6,3,0],"Ë":[6,4,0],"Ì":[12,1,0],"Í":[12,2,0],"Î":[12,3,0],"Ï":[12,4,0],"Ñ":[20,1,0],"Ò":[22,1,0],"Ó":[22,2,0],"Ô":[22,3,0],"Ö":[22,5,0],"Ø":[22,6,0],"Ù":[30,1,0],"Ú":[30,2,0],"Û":[30,3,0],"Ü":[30,4,0],"Ý":[12,2,0],"ß":[[27,1,1],[33,0,1]],"Ā":[1,0,0,1],"Č":[4,0,0,1],"Ē":[7,0,0,1],"Ģ":[10,0,0,1],"Ī":[13,0,0,1],"Ķ":[16,0,0,1],"Ļ":[18,0,0,1],"Ņ":[21,0,0,1],"Ō":[22,1,0,1],"Ŗ":[26,0,0,1],"Š":[28,0,0,1],"Ū":[31,0,0,1],"Ž":[34,0,0,1],"ā":[1,0,1,1],"č":[4,0,1,1],"ē":[7,0,1,1],"ģ":[10,0,1,1],"ī":[13,0,1,1],"ķ":[16,0,1,1],"ļ":[18,0,1,1],"ņ":[21,0,1,1],"ŗ":[26,0,1,1],"š":[28,0,1,1],"ū":[31,0,1,1],"ž":[34,0,1,1],"à":[0,1,1,1],"á":[0,2,1,1],"â":[0,3,1,1],"ã":[0,4,1,1],"ä":[0,5,1,1],"å":[0,6,1,1],"ç":[3,1,1,1],"è":[6,1,1,1],"é":[6,2,1,1],"ê":[6,3,1,1],"ë":[6,4,1,1],"ì":[12,1,1,1],"í":[12,2,1,1],"î":[12,3,1,1],"ï":[12,4,1,1],"ñ":[20,1,1,1],"ò":[22,1,1,1],"ó":[22,2,1,1],"ô":[22,3,1,1],"õ":[22,4,1,1],"ö":[22,5,1,1],"ù":[30,1,1,1],"ú":[30,2,1,1],"û":[30,3,1,1],"ü":[30,4,1,1],"ý":[12,2,1,1],"ÿ":[12,3,1,1],"À":[0,1,0,1],"Á":[0,2,0,1],"Â":[0,3,0,1],"Ã":[0,4,0,1],"Ä":[0,5,0,1],"Å":[0,6,0,1],"Ç":[3,1,0,1],"È":[6,1,0,1],"É":[6,2,0,1],"Ê":[6,3,0,1],"Ë":[6,4,0,1],"Ì":[12,1,0,1],"Í":[12,2,0,1],"Î":[12,3,0,1],"Ï":[12,4,0,1],"Ñ":[20,1,0,1],"Ò":[22,1,0,1],"Ó":[22,2,0,1],"Ô":[22,3,0,1],"Õ":[22,4,0,1],"Ö":[22,5,0,1],"Ù":[30,1,0,1],"Ú":[30,2,0,1],"Û":[30,3,0,1],"Ü":[30,4,0,1],"Ý":[12,2,0,1]}}};
+/*
  * collate.js - Collation routines
  * 
  * Copyright © 2013-2014, JEDLSoft
@@ -16799,9 +19345,156 @@ ilib.AddressFmt.prototype.format = function (address) {
  * limitations under the License.
  */
 
-// !depends locale.js ilibglobal.js
+// !depends locale.js ilibglobal.js numprs.js ctype.ispunct.js normstring.js
 
 // !data collation
+
+/**
+ * Represents a buffered source of code points. The input string is first
+ * normalized so that combining characters come out in a standardized order.
+ * If the "ignorePunctuation" flag is turned on, then punctuation 
+ * characters are skipped.
+ * 
+ * @class
+ * @constructor
+ * @param {ilib.NormString|string} str a string to get code points from
+ * @param {boolean} ignorePunctuation whether or not to ignore punctuation
+ * characters
+ */
+ilib.CodePointSource = function(str, ignorePunctuation) {
+	this.chars = [];
+	// first convert the string to a normalized sequence of characters
+	var s = (typeof(str) === "string") ? new ilib.NormString(str) : str;
+	this.it = s.charIterator();
+	this.ignorePunctuation = typeof(ignorePunctuation) === "boolean" && ignorePunctuation;
+};
+
+/**
+ * Return the first num code points in the source without advancing the
+ * source pointer. If there are not enough code points left in the
+ * string to satisfy the request, this method will return undefined. 
+ * 
+ * @param {number} num the number of characters to peek ahead
+ * @return {string|undefined} a string formed out of up to num code points from
+ * the start of the string, or undefined if there are not enough character left
+ * in the source to complete the request
+ */
+ilib.CodePointSource.prototype.peek = function(num) {
+	if (num < 1) {
+		return undefined;
+	}
+	if (this.chars.length < num && this.it.hasNext()) {
+		for (var i = 0; this.chars.length < 4 && this.it.hasNext(); i++) {
+			var c = this.it.next();
+			if (c && !this.ignorePunctuation || !ilib.CType.isPunct(c)) {
+				this.chars.push(c);
+			}
+		}
+	}
+	if (this.chars.length < num) {
+		return undefined;
+	}
+	return this.chars.slice(0, num).join("");
+};
+/**
+ * Advance the source pointer by the given number of code points.
+ * @param {number} num number of code points to advance
+ */
+ilib.CodePointSource.prototype.consume = function(num) {
+	if (num > 0) {
+		this.peek(num); // for the iterator to go forward if needed
+		if (num < this.chars.length) {
+			this.chars = this.chars.slice(num);
+		} else {
+			this.chars = [];
+		}
+	}
+};
+
+
+/**
+ * An iterator through a sequence of collation elements. This
+ * iterator takes a source of code points, converts them into
+ * collation elements, and allows the caller to get single
+ * elements at a time.
+ * 
+ * @class
+ * @constructor
+ * @param {ilib.CodePointSource} source source of code points to 
+ * convert to collation elements
+ * @param {Object} map mapping from sequences of code points to
+ * collation elements
+ * @param {number} keysize size in bits of the collation elements
+ */
+ilib.ElementIterator = function (source, map, keysize) {
+	this.elements = [];
+	this.source = source;
+	this.map = map;
+	this.keysize = keysize;
+};
+
+/**
+ * @private
+ */
+ilib.ElementIterator.prototype._fillBuffer = function () {
+	var str = undefined;
+	
+	// peek ahead by up to 4 characters, which may combine
+	// into 1 or more collation elements
+	for (var i = 4; i > 0; i--) {
+		str = this.source.peek(i);
+		if (str && this.map[str]) {
+			this.elements = this.elements.concat(this.map[str]);
+			this.source.consume(i);
+			return;
+		}
+	}
+	
+	if (str) {
+		// no mappings for the first code point, so just use its
+		// Unicode code point as a proxy for its sort order. Shift
+		// it by the key size so that everything unknown sorts
+		// after things that have mappings
+		this.elements.push(str.charCodeAt(0) << this.keysize);
+		this.source.consume(1);
+	} else {
+		// end of the string
+		return undefined;
+	}
+};
+
+/**
+ * Return true if there are more collation elements left to
+ * iterate through.
+ * @returns {boolean} true if there are more elements left to
+ * iterate through, and false otherwise
+ */
+ilib.ElementIterator.prototype.hasNext = function () {
+	if (this.elements.length < 1) {
+		this._fillBuffer();
+	}
+	return !!this.elements.length;
+};
+
+/**
+ * Return the next collation element. If more than one collation 
+ * element is generated from a sequence of code points 
+ * (ie. an "expansion"), then this class will buffer the
+ * other elements and return them on subsequent calls to 
+ * this method.
+ * 
+ * @returns {number|undefined} the next collation element or
+ * undefined for no more collation elements
+ */
+ilib.ElementIterator.prototype.next = function () {
+	if (this.elements.length < 1) {
+		this._fillBuffer();
+	}
+	var ret = this.elements[0];
+	this.elements = this.elements.slice(1);
+	return ret;
+};
+
 
 /**
  * A class that implements a locale-sensitive comparator function 
@@ -16832,10 +19525,10 @@ ilib.AddressFmt.prototype.format = function (address) {
  *   <li>base or primary - Only the primary distinctions between characters are significant.
  *   Another way of saying that is that the collator will be case-, accent-, and 
  *   variation-insensitive, and only distinguish between the base characters
- *   <li>accent or secondary - Both the primary and secondary distinctions between characters
+ *   <li>case or secondary - Both the primary and secondary distinctions between characters
  *   are significant. That is, the collator will be accent- and variation-insensitive
  *   and will distinguish between base characters and character case.
- *   <li>case or tertiary - The primary, secondary, and tertiary distinctions between
+ *   <li>accent or tertiary - The primary, secondary, and tertiary distinctions between
  *   characters are all significant. That is, the collator will be 
  *   variation-insensitive, but accent-, case-, and base-character-sensitive. 
  *   <li>variant or quaternary - All distinctions between characters are significant. That is,
@@ -16864,9 +19557,20 @@ ilib.AddressFmt.prototype.format = function (address) {
  * on what kind of strings are being collated or what the preference of the user 
  * is. For example, in German, there is a phonebook order and a dictionary ordering
  * that sort the same array of strings slightly differently.
- * The static method ilib.Collator.getStyles will return a list of styles that ilib
+ * The static method {@link ilib.Collator#getAvailableStyles} will return a list of styles that ilib
  * currently knows about for any given locale. If the value of the style option is 
  * not recognized for a locale, it will be ignored. Default style is "standard".<p>
+ * 
+ * <li><i>usage</i> - Whether this collator will be used for searching or sorting.
+ * Valid values are simply the strings "sort" or "search". When used for sorting,
+ * it is good idea if a collator produces a stable sort. That is, the order of the 
+ * sorted array of strings should not depend on the order of the strings in the
+ * input array. As such, when a collator is supposed to act case insensitively, 
+ * it nonetheless still distinguishes between case after all other criteria
+ * are satisfied so that strings that are distinguished only by case do not sort
+ * randomly. For searching, we would like to match two strings that different only 
+ * by case, so the collator must return equals in that situation instead of 
+ * further distinguishing by case. Default is "sort".
  * 
  * <li><i>numeric</i> - Treat the left and right strings as if they started with
  * numbers and sort them numerically rather than lexically.
@@ -16891,6 +19595,12 @@ ilib.AddressFmt.prototype.format = function (address) {
  * interpretted or modified in any way. They are simply passed along. The object 
  * may contain any property/value pairs as long as the calling code is in
  * agreement with the loader callback function as to what those parameters mean.
+ * 
+ * <li><i>useNative</i> - when this option is true, use the native Intl object
+ * provided by the Javascript engine, if it exists, to implement this class. If
+ * it doesn't exist, or if this parameter is false, then this class uses a pure 
+ * Javascript implementation, which is slower and uses a lot more memory, but 
+ * works everywhere that ilib works. Default is "true".
  * </ul>
  * 
  * <h2>Operation</h2>
@@ -17031,13 +19741,19 @@ ilib.AddressFmt.prototype.format = function (address) {
  */
 ilib.Collator = function(options) {
 	var sync = true,
-		loadParams = undefined;
+		loadParams = undefined,
+		useNative = true;
 
 	// defaults
 	/** @type ilib.Locale */
 	this.locale = new ilib.Locale(ilib.getLocale());
 	this.caseFirst = "upper";
-	this.sensitivity = "case";
+	this.sensitivity = "variant";
+	this.level = 4;
+	this.usage = "sort";
+	this.reverse = false;
+	this.numeric = false;
+	this.style = "standard";
 	
 	if (options) {
 		if (options.locale) {
@@ -17048,18 +19764,22 @@ ilib.Collator = function(options) {
 				case 'primary':
 				case 'base':
 					this.sensitivity = "base";
+					this.level = 1;
 					break;
 				case 'secondary':
-				case 'accent':
-					this.sensitivity = "accent";
-					break;
-				case 'tertiary':
 				case 'case':
 					this.sensitivity = "case";
+					this.level = 2;
+					break;
+				case 'tertiary':
+				case 'accent':
+					this.sensitivity = "accent";
+					this.level = 3;
 					break;
 				case 'quaternary':
 				case 'variant':
 					this.sensitivity = "variant";
+					this.level = 4;
 					break;
 			}
 		}
@@ -17077,9 +19797,33 @@ ilib.Collator = function(options) {
 		}
 		
 		loadParams = options.loadParams;
+		if (typeof(options.useNative) !== 'undefined') {
+			useNative = options.useNative;
+		}
+		
+		if (options.usage === "sort" || options.usage === "search") {
+			this.usage = options.usage;
+		}
+		
+		if (typeof(options.reverse) === 'boolean') {
+			this.reverse = options.reverse;
+		}
+
+		if (typeof(options.numeric) === 'boolean') {
+			this.numeric = options.numeric;
+		}
+		
+		if (typeof(options.style) === 'string') {
+			this.style = options.style;
+		}
 	}
 
-	if (typeof(Intl) !== 'undefined' && Intl) {
+	if (this.usage === "sort") {
+		// produces a stable sort
+		this.level = 4;
+	}
+
+	if (useNative && typeof(Intl) !== 'undefined' && Intl) {
 		// this engine is modern and supports the new Intl object!
 		//console.log("implemented natively");
 		/** @type {{compare:function(string,string)}} */
@@ -17098,34 +19842,141 @@ ilib.Collator = function(options) {
 		ilib.loadData({
 			object: ilib.Collator, 
 			locale: this.locale, 
-			name: "collrules.json", 
-			sync: sync, 
+			name: "collation.json",
+			replace: true,
+			sync: sync,
 			loadParams: loadParams, 
 			callback: ilib.bind(this, function (collation) {
-				/*
-				// TODO: fill in the collator constructor function
 				if (!collation) {
-					collation = ilib.data.ducet;
+					collation = ilib.data.collation;
 					var spec = this.locale.getSpec().replace(/-/g, '_');
 					ilib.Collator.cache[spec] = collation;
 				}
-				console.log("this is " + JSON.stringify(this));
 				this._init(collation);
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}
-				*/
+				new ilib.LocaleInfo(this.locale, {
+					sync: sync,
+					loadParams: loadParams,
+					onLoad: ilib.bind(this, function(li) {
+						this.li = li;
+						if (this.ignorePunctuation) {
+			    			ilib.CType.isPunct._init(sync, loadParams, ilib.bind(this, function() {
+								if (options && typeof(options.onLoad) === 'function') {
+									options.onLoad(this);
+								}
+			    			}));
+		    			} else {
+							if (options && typeof(options.onLoad) === 'function') {
+								options.onLoad(this);
+							}
+		    			}
+		    		})
+				});
 			})
 		});
 	}
 };
 
 ilib.Collator.prototype = {
+	/**
+	 * @private
+	 * Bit pack an array of values into a single number
+	 * @param {Array.<number>} arr array of values to bit pack
+	 */
+	_pack: function (arr) {
+		var value = 0;
+		for (var i = 0; i < this.level; i++) {
+			if (i > 0) {
+				value <<= this.collation.bits[i];	
+			}
+			if (i === 2 && this.caseFirst === "lower") {
+				// sort the lower case first instead of upper
+				value = value | (1 - (typeof(arr[i]) !== "undefined" ? arr[i] : 0));
+			} else {
+				value = value | arr[i];
+			}
+		}
+		return value;
+	},
+	
+	/**
+	 * @private
+	 * Return the rule packed into an array of collation elements.
+	 * @param {Array.<number|null|Array.<number>>} rule
+	 * @returns
+	 */
+	_packRule: function(rule) {
+		if (rule[0] instanceof Array) {
+			var ret = [];
+			for (var i = 0; i < rule.length; i++) {
+				ret.push(this._pack(rule[i]));
+			}
+			return ret;
+		} else {
+			return [ this._pack(rule) ];
+		}
+	},
+    	
+	/**
+     * @private
+     */
+    _init: function(rules) {
+    	/** @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number>>}} */
+    	this.collation = rules[this.style];
+    	this.map = {};
+    	this.keysize = 0;
+    	for (var i = 0; i < this.level; i++) {
+    		this.keysize += this.collation.bits[i];
+    	}
+    	var remainder = ilib.mod(this.keysize, 4);
+    	this.keysize += (remainder > 0) ? (4 - remainder) : 0; // round to the nearest 4 to find how many bits to use in hex
+    	
+    	for (var r in this.collation.map) {
+    		if (r) {
+    			this.map[r] = this._packRule(this.collation.map[r]);
+    		}
+    	}
+    },
+    
     /**
      * @private
      */
-    init: function(rules) {
-    	
+    _basicCompare: function(left, right) {
+		if (this.numeric) {
+			var lvalue = new ilib.Number(left, {locale: this.locale});
+			var rvalue = new ilib.Number(right, {locale: this.locale});
+			if (isNaN(lvalue.valueOf())) {
+				if (isNaN(rvalue.valueOf())) {
+					return 0;
+				}
+				return 1;
+			} else if (isNaN(rvalue.valueOf())) {
+				return -1;
+			}
+			return lvalue.valueOf() - rvalue.valueOf();
+		} else {
+			var l = (left instanceof ilib.NormString) ? left : new ilib.NormString(left),
+				r = (right instanceof ilib.NormString) ? right : new ilib.NormString(right),
+				lelements,
+				relements;
+				
+			// if the reverse sort is on, switch the char sources so that the result comes out swapped
+			lelements = new ilib.ElementIterator(new ilib.CodePointSource(l, this.ignorePunctuation), this.map, this.keysize);
+			relements = new ilib.ElementIterator(new ilib.CodePointSource(r, this.ignorePunctuation), this.map, this.keysize);
+			
+			while (lelements.hasNext() && relements.hasNext()) {
+				var diff = lelements.next() - relements.next();
+				if (diff) {
+					return diff;
+				}
+			}
+			if (!lelements.hasNext() && !relements.hasNext()) {
+				return 0;
+			} else if (lelements.hasNext()) {
+				return 1;
+			} else {
+				return -1;
+			}
+		}
     },
     
 	/**
@@ -17142,14 +19993,14 @@ ilib.Collator.prototype = {
 	 * right are equivalent according to this collator
 	 */
 	compare: function (left, right) {
-		// TODO: fill in the full comparison algorithm here
 		// last resort: use the "C" locale
 		if (this.collator) {
 			// implemented by the core engine
 			return this.collator.compare(left, right);
 		}
-		
-		return (left < right) ? -1 : ((left > right) ? 1 : 0);
+
+		var ret = this._basicCompare(left, right);
+		return this.reverse ? -ret : ret;
 	},
 	
 	/**
@@ -17206,8 +20057,38 @@ ilib.Collator.prototype = {
 	 * @return {string} a sort key string for the given string
 	 */
 	sortKey: function (str) {
-		// TODO: fill in the full sort key algorithm here
-		return str;
+		if (!str) {
+			return "";
+		}
+		
+		if (this.collator) {
+			// native, no sort keys available
+			return str;
+		}
+		
+		function pad(str, limit) {
+			return "0000000000000000".substring(0, limit - str.length) + str;
+		}
+		
+		if (this.numeric) {
+			var v = new ilib.Number(str, {locale: this.locale});
+			var s = isNaN(v.valueOf()) ? "" : v.valueOf().toString(16);
+			return pad(s, 16);	
+		} else {
+			var n = (typeof(str) === "string") ? new ilib.NormString(str) : str,
+				ret = "",
+				lelements = new ilib.ElementIterator(new ilib.CodePointSource(n, this.ignorePunctuation), this.map, this.keysize),
+				element;
+			
+			while (lelements.hasNext()) {
+				element = lelements.next();
+				if (this.reverse) {
+					element = (1 << this.keysize) - element;
+				}
+				ret += pad(element.toString(16), this.keysize/4);	
+			}
+		}
+		return ret;
 	}
 };
 
@@ -17482,558 +20363,6 @@ ilib.LocaleMatcher.prototype = {
 
 
 /*
- * normstring.js - ilib normalized string subclass definition
- * 
- * Copyright © 2013-2014, JEDLSoft
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// !depends strings.js
-
-/**
- * Create a new normalized string instance. This string inherits from 
- * the ilib.String class, and adds the normalize method. It can be
- * used anywhere that a normal Javascript string is used. <p>
- * 
- * Depends directive: !depends normstring.js
- * 
- * @class
- * @constructor
- * @param {string|ilib.String=} str initialize this instance with this string 
- */
-ilib.NormString = function (str) {
-	ilib.NormString.baseConstructor.call(this, str);
-	
-};
-ilib.NormString.prototype = new ilib.String();
-ilib.NormString.prototype.constructor = ilib.NormString;
-ilib.NormString.baseConstructor = ilib.String;
-ilib.NormString.superClass = ilib.String.prototype;
-
-
-/**
- * Initialize the normalized string routines statically. This
- * is intended to be called in a dynamic-load version of ilib
- * to load the data need to normalize strings before any instances
- * of ilib.NormString are created.<p>
- * 
- * The options parameter may contain any of the following properties:
- * 
- * <ul>
- * <li><i>form</i> - {string} the normalization form to load
- * <li><i>script</i> - {string} load the normalization for this script. If the 
- * script is given as "all" then the normalization data for all scripts
- * is loaded at the same time
- * <li><i>sync</i> - {boolean} whether to load the files synchronously or not
- * <li><i>loadParams</i> - {Object} parameters to the loader function
- * <li><i>onLoad</i> - {function()} a function to call when the 
- * files are done being loaded
- * </ul>
- * 
- * @param {Object} options an object containing properties that govern 
- * how to initialize the data
- */
-ilib.NormString.init = function(options) {
-	if (!ilib._load || typeof(ilib._load) !== 'function') {
-		// can't do anything
-		return;
-	}
-	var form = "nfkc";
-	var script = "all";
-	var sync = true;
-	var onLoad = undefined;
-	var loadParams = undefined;
-	if (options) {
-		form = options.form || "nfkc";
-		script = options.script || "all";
-		sync = typeof(options.sync) !== 'undefined' ? options.sync : true;
-		onLoad = typeof(options.onLoad) === 'function' ? options.onLoad : undefined;
-		if (options.loadParams) {
-			loadParams = options.loadParams;
-		}
-	}
-	var formDependencies = {
-		"nfd": ["nfd"],
-		"nfc": ["nfc", "nfd"],
-		"nfkd": ["nfkd", "nfd"],
-		"nfkc": ["nfkd", "nfd", "nfc"]
-	};
-	var files = ["norm.ccc.json"];
-	var forms = formDependencies[form];
-	for (var f in forms) {
-		files.push(forms[f] + "/" + script + ".json");
-	}
-	
-	ilib._load(files, sync, loadParams, function(arr) {
-		ilib.data.norm.ccc = arr[0];
-		for (var i = 1; i < arr.length; i++) {
-			if (typeof(arr[i]) !== 'undefined') {
-				ilib.data.norm[forms[i-1]] = arr[i];
-			}
-		}
-		
-		if (onLoad) {
-			onLoad(arr);
-		}
-	});
-};
-
-/**
- * Return true if the given character is a leading Jamo (Choseong) character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a leading Jamo character, 
- * false otherwise
- */
-ilib.NormString._isJamoL = function (n) {
-	return (n >= 0x1100 && n <= 0x1112);
-};
-
-/**
- * Return true if the given character is a vowel Jamo (Jungseong) character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a vowel Jamo character, 
- * false otherwise
- */
-ilib.NormString._isJamoV = function (n) {
-	return (n >= 0x1161 && n <= 0x1175);
-};
-
-/**
- * Return true if the given character is a trailing Jamo (Jongseong) character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a trailing Jamo character, 
- * false otherwise
- */
-ilib.NormString._isJamoT = function (n) {
-	return (n >= 0x11A8 && n <= 0x11C2);
-};
-
-/**
- * Return true if the given character is a precomposed Hangul character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a precomposed Hangul character, 
- * false otherwise
- */
-ilib.NormString._isHangul = function (n) {
-	return (n >= 0xAC00 && n <= 0xD7A3);
-};
-
-/**
- * Algorithmically decompose a precomposed Korean syllabic Hangul 
- * character into its individual combining Jamo characters. The given 
- * character must be in the range of Hangul characters U+AC00 to U+D7A3.
- * 
- * @private
- * @static
- * @param {number} cp code point of a Korean Hangul character to decompose
- * @return {string} the decomposed string of Jamo characters
- */
-ilib.NormString._decomposeHangul = function (cp) {
-	var sindex = cp - 0xAC00;
-	var result = String.fromCharCode(0x1100 + sindex / 588) + 
-			String.fromCharCode(0x1161 + (sindex % 588) / 28);
-	var t = sindex % 28;
-	if (t !== 0) {
-		result += String.fromCharCode(0x11A7 + t);
-	}
-	return result;
-};
-
-/**
- * Algorithmically compose an L and a V combining Jamo characters into
- * a precomposed Korean syllabic Hangul character. Both should already
- * be in the proper ranges for L and V characters. 
- * 
- * @private
- * @static
- * @param {number} lead the code point of the lead Jamo character to compose
- * @param {number} trail the code point of the trailing Jamo character to compose
- * @return {string} the composed Hangul character
- */
-ilib.NormString._composeJamoLV = function (lead, trail) {
-	var lindex = lead - 0x1100;
-	var vindex = trail - 0x1161;
-	return ilib.String.fromCodePoint(0xAC00 + (lindex * 21 + vindex) * 28);
-};
-
-/**
- * Algorithmically compose a Hangul LV and a combining Jamo T character 
- * into a precomposed Korean syllabic Hangul character. 
- * 
- * @private
- * @static
- * @param {number} lead the code point of the lead Hangul character to compose
- * @param {number} trail the code point of the trailing Jamo T character to compose
- * @return {string} the composed Hangul character
- */
-ilib.NormString._composeJamoLVT = function (lead, trail) {
-	return ilib.String.fromCodePoint(lead + (trail - 0x11A7));
-};
-
-/**
- * Expand one character according to the given canonical and 
- * compatibility mappings.
- *
- * @private
- * @static
- * @param {string} ch character to map
- * @param {Object} canon the canonical mappings to apply
- * @param {Object=} compat the compatibility mappings to apply, or undefined
- * if only the canonical mappings are needed
- * @return {string} the mapped character
- */
-ilib.NormString._expand = function (ch, canon, compat) {
-	var i, 
-		expansion = "",
-		n = ch.charCodeAt(0);
-	if (ilib.NormString._isHangul(n)) {
-		expansion = ilib.NormString._decomposeHangul(n);
-	} else {
-		var result = canon[ch];
-		if (!result && compat) {
-			result = compat[ch];
-		}
-		if (result && result !== ch) {
-			for (i = 0; i < result.length; i++) {
-				expansion += ilib.NormString._expand(result[i], canon, compat);
-			}
-		} else {
-			expansion = ch;
-		}
-	}
-	return expansion;
-};
-
-/**
- * Compose one character out of a leading character and a 
- * trailing character. If the characters are Korean Jamo, they
- * will be composed algorithmically. If they are any other
- * characters, they will be looked up in the nfc tables.
- * 
- * @private
- * @static
- * @param {string} lead leading character to compose
- * @param {string} trail the trailing character to compose
- * @return {string} the fully composed character, or undefined if
- * there is no composition for those two characters
- */
-ilib.NormString._compose = function (lead, trail) {
-	var first = lead.charCodeAt(0);
-	var last = trail.charCodeAt(0);
-	if (ilib.NormString._isHangul(first) && ilib.NormString._isJamoT(last)) {
-		return ilib.NormString._composeJamoLVT(first, last);
-	} else if (ilib.NormString._isJamoL(first) && ilib.NormString._isJamoV(last)) {
-		return ilib.NormString._composeJamoLV(first, last);
-	}
-
-	var c = lead + trail;
-	return (ilib.data.norm.nfc && ilib.data.norm.nfc[c]);
-};
-
-	
-/**
- * Perform the Unicode Normalization Algorithm upon the string and return 
- * the resulting new string. The current string is not modified.
- * 
- * <h2>Forms</h2>
- * 
- * The forms of possible normalizations are defined by the <a 
- * href="http://www.unicode.org/reports/tr15/">Unicode Standard
- * Annex (UAX) 15</a>. The form parameter is a string that may have one 
- * of the following values:
- * 
- * <ul>
- * <li>nfd - Canonical decomposition. This decomposes characters into
- * their exactly equivalent forms. For example, "&uuml;" would decompose
- * into a "u" followed by the combining diaeresis character. 
- * <li>nfc - Canonical decomposition followed by canonical composition.
- * This decomposes and then recomposes character into their shortest
- * exactly equivalent forms by recomposing as many combining characters
- * as possible. For example, "&uuml;" followed by a combining 
- * macron character would decompose into a "u" followed by the combining 
- * macron characters the combining diaeresis character, and then be recomposed into
- * the u with macron and diaeresis "&#x1E7B;" character. The reason that
- * the "nfc" form decomposes and then recomposes is that combining characters
- * have a specific order under the Unicode Normalization Algorithm, and
- * partly composed characters such as the "&uuml;" followed by combining
- * marks may change the order of the combining marks when decomposed and
- * recomposed.
- * <li>nfkd - Compatibility decomposition. This decomposes characters
- * into compatible forms that may not be exactly equivalent semantically,
- * as well as performing canonical decomposition as well.
- * For example, the "&oelig;" ligature character decomposes to the two
- * characters "oe" because they are compatible even though they are not 
- * exactly the same semantically. 
- * <li>nfkc - Compatibility decomposition followed by canonical composition.
- * This decomposes characters into compatible forms, then recomposes
- * characters using the canonical composition. That is, it breaks down
- * characters into the compatible forms, and then recombines all combining
- * marks it can with their base characters. For example, the character
- * "&#x01FD;" would be normalized to "a&eacute;" by first decomposing
- * the character into "a" followed by "e" followed by the combining acute accent
- * combining mark, and then recomposed to an "a" followed by the "e"
- * with acute accent.
- * </ul>
- * 
- * <h2>Operation</h2>
- * 
- * Two strings a and b can be said to be canonically equivalent if 
- * normalize(a) = normalize(b)
- * under the nfc normalization form. Two strings can be said to be compatible if
- * normalize(a) = normalize(b) under the nfkc normalization form.<p>
- * 
- * The canonical normalization is often used to see if strings are 
- * equivalent to each other, and thus is useful when implementing parsing 
- * algorithms or exact matching algorithms. It can also be used to ensure
- * that any string output produces a predictable sequence of characters.<p>
- * 
- * Compatibility normalization 
- * does not always preserve the semantic meaning of all the characters, 
- * although this is sometimes the behaviour that you are after. It is useful, 
- * for example, when doing searches of user-input against text in documents 
- * where the matches are supposed to "fuzzy". In this case, both the query
- * string and the document string would be mapped to their compatibility 
- * normalized forms, and then compared.<p>
- * 
- * Compatibility normalization also does not guarantee round-trip conversion
- * to and from legacy character sets as the normalization is "lossy". It is 
- * akin to doing a lower- or upper-case conversion on text -- after casing,
- * you cannot tell what case each character is in the original string. It is 
- * good for matching and searching, but it rarely good for output because some 
- * distinctions or meanings in the original text have been lost.<p>
- * 
- * Note that W3C normalization for HTML also escapes and unescapes
- * HTML character entities such as "&amp;uuml;" for u with diaeresis. This
- * method does not do such escaping or unescaping. If normalization is required
- * for HTML strings with entities, unescaping should be performed on the string 
- * prior to calling this method.<p>
- * 
- * <h2>Data</h2>
- * 
- * Normalization requires a fair amount of mapping data, much of which you may 
- * not need for the characters expected in your texts. It is possible to assemble
- * a copy of ilib that saves space by only including normalization data for 
- * those scripts that you expect to encounter in your data.<p>
- * 
- * The normalization data is organized by normalization form and within there
- * by script. To include the normalization data for a particular script with
- * a particular normalization form, use the directive:
- * 
- * <pre><code>
- * !depends &lt;form&gt;/&lt;script&gt;.js
- * </code></pre>
- * 
- * Where &lt;form&gt is the normalization form ("nfd", "nfc", "nfkd", or "nfkc"), and
- * &lt;script&gt; is the ISO 15924 code for the script you would like to
- * support. Example: to load in the NFC data for Cyrillic, you would use:
- * 
- * <pre><code>
- * !depends nfc/Cyrl.js
- * </code></pre>
- * 
- * Note that because certain normalization forms include others in their algorithm, 
- * their data also depends on the data for the other forms. For example, if you 
- * include the "nfc" data for a script, you will automatically get the "nfd" data 
- * for that same script as well because the NFC algorithm does NFD normalization 
- * first. Here are the dependencies:<p>
- * 
- * <ul>
- * <li>NFD -> no dependencies
- * <li>NFC -> NFD
- * <li>NFKD -> NFD
- * <li>NFKC -> NFKD, NFD, NFC
- * </ul>
- * 
- * A special value for the script dependency is "all" which will cause the data for 
- * all scripts
- * to be loaded for that normalization form. This would be useful if you know that
- * you are going to normalize a lot of multilingual text or cannot predict which scripts
- * will appear in the input. Because the NFKC form depends on all others, you can 
- * get all of the data for all forms automatically by depending on "nfkc/all.js".
- * Note that the normalization data for practically all script automatically depend
- * on data for the Common script (code "Zyyy") which contains all of the characters
- * that are commonly used in many different scripts. Examples of characters in the
- * Common script are the ASCII punctuation characters, or the ASCII Arabic 
- * numerals "0" through "9".<p>
- * 
- * By default, none of the data for normalization is automatically 
- * included in the preassembled iliball.js file. 
- * If you would like to normalize strings, you must assemble
- * your own copy of ilib and explicitly include the normalization data
- * for those scripts as per the instructions above. This normalization method will 
- * produce output, even without the normalization data. However, the output will be 
- * simply the same thing as its input for all scripts 
- * except Korean Hangul and Jamo, which are decomposed and recomposed 
- * algorithmically and therefore do not rely on data.<p>
- * 
- * If characters are encountered for which there are no normalization data, they
- * will be passed through to the output string unmodified.
- * 
- * @param {string} form The normalization form requested
- * @return {ilib.String} a new instance of an ilib.String that has been normalized
- * according to the requested form. The current instance is not modified.
- */
-ilib.NormString.prototype.normalize = function (form) {
-	var i;
-	
-	if (typeof(form) !== 'string' || this.str.length === 0) {
-		return new ilib.String(this.str);
-	}
-	
-	var nfc = false,
-		nfkd = false;
-	
-	switch (form) {
-	default:
-		break;
-		
-	case "nfc":
-		nfc = true;
-		break;
-		
-	case "nfkd":
-		nfkd = true;
-		break;
-		
-	case "nfkc":
-		nfkd = true;
-		nfc = true;
-		break;
-	}
-
-	// decompose
-	var decomp = "";
-	
-	if (nfkd) {
-		var ch, it = this.charIterator();
-		while (it.hasNext()) {
-			ch = it.next();
-			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd, ilib.data.norm.nfkd);
-		}
-	} else {
-		var ch, it = this.charIterator();
-		while (it.hasNext()) {
-			ch = it.next();
-			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd);
-		}
-	}
-
-	// now put the combining marks in a fixed order by 
-	// sorting on the combining class
-	function compareByCCC(left, right) {
-		return ilib.data.norm.ccc[left] - ilib.data.norm.ccc[right]; 
-	}
-	
-	function ccc(c) {
-		return ilib.data.norm.ccc[c] || 0;
-	}
-		
-	var dstr = new ilib.String(decomp);
-	var it = dstr.charIterator();
-	var cpArray = [];
-
-	// easier to deal with as an array of chars
-	while (it.hasNext()) {
-		cpArray.push(it.next());
-	}
-	
-	i = 0;
-	while (i < cpArray.length) {
-		if (typeof(ilib.data.norm.ccc[cpArray[i]]) !== 'undefined' && ilib.data.norm.ccc[cpArray[i]] !== 0) {
-			// found a non-starter... rearrange all the non-starters until the next starter
-			var end = i+1;
-			while (end < cpArray.length &&
-					typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
-					ilib.data.norm.ccc[cpArray[end]] !== 0) {
-				end++;
-			}
-			
-			// simple sort of the non-starter chars
-			if (end - i > 1) {
-				cpArray = cpArray.slice(0,i).concat(cpArray.slice(i, end).sort(compareByCCC), cpArray.slice(end));
-			}
-		}
-		i++;
-	}
-	
-	if (nfc) {
-		i = 0;
-		while (i < cpArray.length) {
-			if (typeof(ilib.data.norm.ccc[cpArray[i]]) === 'undefined' || ilib.data.norm.ccc[cpArray[i]] === 0) {
-				// found a starter... find all the non-starters until the next starter. Must include
-				// the next starter because under some odd circumstances, two starters sometimes recompose 
-				// together to form another character
-				var end = i+1;
-				var notdone = true;
-				while (end < cpArray.length && notdone) {
-					if (typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
-						ilib.data.norm.ccc[cpArray[end]] !== 0) {
-						if (ccc(cpArray[end-1]) < ccc(cpArray[end])) { 
-							// not blocked 
-							var testChar = ilib.NormString._compose(cpArray[i], cpArray[end]);
-							if (typeof(testChar) !== 'undefined') {
-								cpArray[i] = testChar;
-								
-								// delete the combining char
-								cpArray.splice(end,1);	
-								
-								// restart the iteration, just in case there is more to recompose with the new char
-								end = i;
-							}
-						}
-						end++;
-					} else {
-						// found the next starter. See if this can be composed with the previous starter
-						var testChar = ilib.NormString._compose(cpArray[i], cpArray[end]);
-						if (ccc(cpArray[end-1]) === 0 && typeof(testChar) !== 'undefined') { 
-							// not blocked and there is a mapping 
-							cpArray[i] = testChar;
-							
-							// delete the combining char
-							cpArray.splice(end,1);
-							
-							// restart the iteration, just in case there is more to recompose with the new char
-							end = i+1;
-						} else {
-							// finished iterating 
-							notdone = false;
-						}
-					}
-				}
-			}
-			i++;
-		}
-	}
-	
-	return new ilib.String(cpArray.length > 0 ? cpArray.join("") : "");
-};
-	
-
-/*
  * casemapper.js - define upper- and lower-case mapper
  * 
  * Copyright © 2014, JEDLSoft
@@ -18260,6 +20589,10 @@ calendar/gregorian.js
 calendar/gregoriandate.js
 calendar/thaisolar.js
 calendar/thaisolardate.js
+calendar/persian.js
+calendar/persiandate.js
+calendar/persianastro.js
+calendar/persianastrodate.js
 numprs.js
 numfmt.js
 julianday.js
