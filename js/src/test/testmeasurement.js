@@ -76,8 +76,8 @@ function testMeasurementMetricScaleMicro() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E-6, m.getAmount());
+    assertEquals("micrometer", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleMilli() {
@@ -88,8 +88,8 @@ function testMeasurementMetricScaleMilli() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(0.02, m.getAmount());
+    assertEquals("millimeter", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleCenti() {
@@ -100,8 +100,8 @@ function testMeasurementMetricScaleCenti() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(0.2, m.getAmount());
+    assertEquals("centimeter", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleDeca() {
@@ -112,8 +112,8 @@ function testMeasurementMetricScaleDeca() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(20, m.getAmount());
+    assertEquals("decameter", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleHecto() {
@@ -124,8 +124,8 @@ function testMeasurementMetricScaleHecto() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(200, m.getAmount());
+    assertEquals("hectometer", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleKilo() {
@@ -136,8 +136,8 @@ function testMeasurementMetricScaleKilo() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(2000, m.getAmount());
+    assertEquals("kilometer", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleMega() {
@@ -148,8 +148,8 @@ function testMeasurementMetricScaleMega() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E6, m.getAmount());
+    assertEquals("megameter", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleGiga() {
@@ -160,8 +160,8 @@ function testMeasurementMetricScaleGiga() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E9, m.getAmount());
+    assertEquals("gigameter", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleSymbolMicro() {
@@ -172,8 +172,8 @@ function testMeasurementMetricScaleSymbolMicro() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E-6, m.getAmount());
+    assertEquals("micrometer", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleSymbolMilli() {
@@ -184,8 +184,8 @@ function testMeasurementMetricScaleSymbolMilli() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(0.02, m.getAmount());
+    assertEquals("millimeter", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleSymbolCenti() {
@@ -196,8 +196,8 @@ function testMeasurementMetricScaleSymbolCenti() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(0.2, m.getAmount());
+    assertEquals("centimeter", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleSymbolNone() {
@@ -220,8 +220,8 @@ function testMeasurementMetricScaleSymbolDeca() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(20, m.getAmount());
+    assertEquals("decameter", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleSymbolHecto() {
@@ -232,8 +232,8 @@ function testMeasurementMetricScaleSymbolHecto() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(200, m.getAmount());
+    assertEquals("hectometer", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleSymbolKilo() {
@@ -244,8 +244,8 @@ function testMeasurementMetricScaleSymbolKilo() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(2000, m.getAmount());
+    assertEquals("kilometer", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleSymbolMega() {
@@ -256,8 +256,8 @@ function testMeasurementMetricScaleSymbolMega() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E6, m.getAmount());
+    assertEquals("megameter", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleSymbolGiga() {
@@ -268,8 +268,8 @@ function testMeasurementMetricScaleSymbolGiga() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E9, m.getAmount());
+    assertEquals("gigameter", m.getUnit());
+    assertEquals(2, m.getAmount());
 }
 
 function testMeasurementMetricScaleOriginalUnit() {
@@ -303,7 +303,7 @@ function testMeasurementAliases1OriginalUnit() {
     
     assertNotNull(m);
 
-    assertEquals("meter", m.getOriginalUnit());
+    assertEquals("meters", m.getOriginalUnit());
 }
 
 function testMeasurementAliasesMetric() {
@@ -324,6 +324,7 @@ function testMeasurementAliasesMetric() {
 	    assertNotNull(m);
 	
 	    assertEquals("meter", m.getUnit());
+	    assertEquals(expected[i], m.getOriginalUnit());
 	}
 }
 
@@ -360,8 +361,8 @@ function testMeasurementConvert() {
     assertNotNull(m1);
     assertNotNull(m2);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(3218.69, m.getAmount());
+    assertEquals("meter", m2.getUnit());
+    assertEquals(3218.69, m2.getAmount());
 }
 
 function testMeasurementConvertToMetricScale() {
@@ -377,8 +378,8 @@ function testMeasurementConvertToMetricScale() {
     assertNotNull(m1);
     assertNotNull(m2);
 
-    assertEquals("kilometer", m.getUnit());
-    assertEquals(3.21869, m.getAmount());
+    assertEquals("kilometer", m2.getUnit());
+    assertEquals(3.21869, m2.getAmount());
 }
 
 function testMeasurementConvertToMetricScaleWithAlias() {
@@ -394,8 +395,8 @@ function testMeasurementConvertToMetricScaleWithAlias() {
     assertNotNull(m1);
     assertNotNull(m2);
 
-    assertEquals("kilometer", m.getUnit());
-    assertEquals(3.21869, m.getAmount());
+    assertEquals("kilometer", m2.getUnit());
+    assertEquals(3.21869, m2.getAmount());
 }
 
 function testMeasurementConvertFromMetric() {
@@ -411,8 +412,8 @@ function testMeasurementConvertFromMetric() {
     assertNotNull(m1);
     assertNotNull(m2);
 
-    assertEquals("mile", m.getUnit());
-    assertEquals(1.242742, m.getAmount());
+    assertEquals("mile", m2.getUnit());
+    assertEquals(1.242742, m2.getAmount());
 }
 
 function testMeasurementConvertFromMetricWithScale() {
@@ -428,8 +429,8 @@ function testMeasurementConvertFromMetricWithScale() {
     assertNotNull(m1);
     assertNotNull(m2);
 
-    assertEquals("mile", m.getUnit());
-    assertEquals(1.242742, m.getAmount());
+    assertEquals("mile", m2.getUnit());
+    assertEquals(1.242742, m2.getAmount());
 }
 
 function testMeasurementConvertFromMetricWithScaleAndAlias() {
@@ -445,8 +446,8 @@ function testMeasurementConvertFromMetricWithScaleAndAlias() {
     assertNotNull(m1);
     assertNotNull(m2);
 
-    assertEquals("mile", m.getUnit());
-    assertEquals(1.242742, m.getAmount());
+    assertEquals("mile", m2.getUnit());
+    assertEquals(1.242742, m2.getAmount());
 }
 
 function testMeasurementCannotConvertBetweenMeasureTypes() {
