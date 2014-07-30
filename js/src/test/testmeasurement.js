@@ -68,42 +68,6 @@ function testMeasurementUnknownUnitUnknownMeasureType() {
     assertEquals("unknown", m.getMeasure());
 }
 
-function testMeasurementMetricScaleFemto() {
-    var m = new ilib.Measurement({
-    	unit: "femtometer",
-    	amount: 2
-    });
-    
-    assertNotNull(m);
-
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E-15, m.getAmount());
-}
-
-function testMeasurementMetricScalePico() {
-    var m = new ilib.Measurement({
-    	unit: "picometer",
-    	amount: 2
-    });
-    
-    assertNotNull(m);
-
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E-12, m.getAmount());
-}
-
-function testMeasurementMetricScaleNano() {
-    var m = new ilib.Measurement({
-    	unit: "nanometer",
-    	amount: 2
-    });
-    
-    assertNotNull(m);
-
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E-9, m.getAmount());
-}
-
 function testMeasurementMetricScaleMicro() {
     var m = new ilib.Measurement({
     	unit: "micrometer",
@@ -198,66 +162,6 @@ function testMeasurementMetricScaleGiga() {
 
     assertEquals("meter", m.getUnit());
     assertEquals(2E9, m.getAmount());
-}
-
-function testMeasurementMetricScalePeta() {
-    var m = new ilib.Measurement({
-    	unit: "petameter",
-    	amount: 2
-    });
-    
-    assertNotNull(m);
-
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E12, m.getAmount());
-}
-
-function testMeasurementMetricScaleExa() {
-    var m = new ilib.Measurement({
-    	unit: "exameter",
-    	amount: 2
-    });
-    
-    assertNotNull(m);
-
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E15, m.getAmount());
-}
-
-function testMeasurementMetricScaleSymbolFemto() {
-    var m = new ilib.Measurement({
-    	unit: "fm",
-    	amount: 2
-    });
-    
-    assertNotNull(m);
-
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E-15, m.getAmount());
-}
-
-function testMeasurementMetricScaleSymbolPico() {
-    var m = new ilib.Measurement({
-    	unit: "pm",
-    	amount: 2
-    });
-    
-    assertNotNull(m);
-
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E-12, m.getAmount());
-}
-
-function testMeasurementMetricScaleSymbolNano() {
-    var m = new ilib.Measurement({
-    	unit: "nm",
-    	amount: 2
-    });
-    
-    assertNotNull(m);
-
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E-9, m.getAmount());
 }
 
 function testMeasurementMetricScaleSymbolMicro() {
@@ -368,30 +272,6 @@ function testMeasurementMetricScaleSymbolGiga() {
     assertEquals(2E9, m.getAmount());
 }
 
-function testMeasurementMetricScaleSymbolPeta() {
-    var m = new ilib.Measurement({
-    	unit: "Pm",
-    	amount: 2
-    });
-    
-    assertNotNull(m);
-
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E12, m.getAmount());
-}
-
-function testMeasurementMetricScaleSymbolExa() {
-    var m = new ilib.Measurement({
-    	unit: "Em",
-    	amount: 2
-    });
-    
-    assertNotNull(m);
-
-    assertEquals("meter", m.getUnit());
-    assertEquals(2E15, m.getAmount());
-}
-
 function testMeasurementMetricScaleOriginalUnit() {
     var m = new ilib.Measurement({
     	unit: "kilometer",
@@ -497,8 +377,8 @@ function testMeasurementConvertToMetricScale() {
     assertNotNull(m1);
     assertNotNull(m2);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(3218.69, m.getAmount());
+    assertEquals("kilometer", m.getUnit());
+    assertEquals(3.21869, m.getAmount());
 }
 
 function testMeasurementConvertToMetricScaleWithAlias() {
@@ -514,8 +394,8 @@ function testMeasurementConvertToMetricScaleWithAlias() {
     assertNotNull(m1);
     assertNotNull(m2);
 
-    assertEquals("meter", m.getUnit());
-    assertEquals(3218.69, m.getAmount());
+    assertEquals("kilometer", m.getUnit());
+    assertEquals(3.21869, m.getAmount());
 }
 
 function testMeasurementConvertFromMetric() {
@@ -581,7 +461,7 @@ function testMeasurementCannotConvertBetweenMeasureTypes() {
 	    });
 	    fail();
 	} catch (e) {
-		assertEquals("Cannot convert between length and temperature measures", e);
+		assertEquals("Cannot convert unit celcius to a length", e);
 	}
 }
 

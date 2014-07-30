@@ -77,8 +77,7 @@ ilib.Measurement = function(options) {
 	
 	// map the requested units to the normalized form
 	
-	var measure = "length";
-	
+	var measure = "length"; // temporary
 	
 	return new ilib.Measurement._constructors[measure](options);
 };
@@ -119,31 +118,24 @@ ilib.Measurement.metricScales = {
 
 ilib.Measurement.prototype = {
 	_getBase: function() {
-		var u = this.aliases[this.unit];
-		if (u) {
-			// take care of aliases by remapping this if necessary
-			if (typeof(u) === "string") {
-				u = this.aliases[u] || u;
-			}
-
-			// if we have a scale, then rescale the units and amount
-			if (typeof(u) === "object") {
-				this.unit = this.aliases[u].base;
-				this.amount *= Math.pow(10, this.aliases[u].scale);
-			} else {
-				// otherwise, just rename the units to the normalized spelling
-				// this does this like convert "metre" to "meter"
-				this.unit = u;
-			}
-		}
+		this.unit = this.aliases[this.unit];
 	},
 
 	/**
-	 * Return the units used in this measurement.
+	 * Return the normalized units used in this measurement.
 	 * @return {string} name of the unit of measurement 
 	 */
 	getUnit: function() {
 		return this.unit;
+	},
+	
+	/**
+	 * Return the units originally used to construct this measurement
+	 * before it was normalized.
+	 * @return {string} name of the unit of measurement 
+	 */
+	getOriginalUnit: function() {
+		return this.originalUnit;
 	},
 	
 	/**
@@ -164,6 +156,7 @@ ilib.Measurement.prototype = {
 	 * static call {@link ilib.Measurement.getAvailableUnits}
 	 * to find out what units this version of ilib supports.
 	 * 
+	 * @abstract
 	 * @return {string} the name of the type of this measurement
 	 */
 	getMeasure: function() {}
