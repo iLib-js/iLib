@@ -1,29 +1,25 @@
+function testNumberMatchFRDepartments1(){
+	var left = new ilib.PhoneNumber({
+		iddPrefix: "+",
+		countryCode: "590",
+		areaCode: "590",
+		subscriberNumber: "123456"
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
+		trunkAccess: "0",
+		areaCode: "590",
+		subscriberNumber: "123456"
+	}, {locale: "fr-FR"});
+	
+	assertEquals(100, left.compare(right));
+};
+
 function testStringsNumberMatchUSIgnoreSomeFields() {
 	var left = new ilib.PhoneNumber('1 (650) 456-7890');
 		right = new ilib.PhoneNumber('650-456-7890');
-	assertEquals(100, left.compare(right));	
-	//assertNotUndefined(left);
-};
-
-
-/*
-function testNumberMatchFRDepartments1(){
-	var left = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "590",
-		areaCode: "590",
-		subscriberNumber: "123456"
-	}, {locale: "fr-FR"});
-	var right = new ilib.PhoneNumber({
-		trunkAccess: "0",
-		areaCode: "590",
-		subscriberNumber: "123456"
-	}, {locale: "fr-FR"});
-	
+	assertNotUndefined(left);
 	assertEquals(100, left.compare(right));
-
 };
-
 
 function testNumberMatchFRDepartments1(){
 	var left = new ilib.PhoneNumber({
@@ -39,7 +35,22 @@ function testNumberMatchFRDepartments1(){
 	}, {locale: "fr-FR"});
 	
 	assertEquals(100, left.compare(right));
+};
 
+function testNumberMatchFRDepartments1(){
+	var left = new ilib.PhoneNumber({
+		iddPrefix: "+",
+		countryCode: "590",
+		areaCode: "590",
+		subscriberNumber: "123456"
+	}, {locale: "fr-FR"});
+	var right = new ilib.PhoneNumber({
+		trunkAccess: "0",
+		areaCode: "590",
+		subscriberNumber: "123456"
+	}, {locale: "fr-FR"});
+	
+	assertEquals(100, left.compare(right));
 };
 
 function testNumberMatchFRDepartments1Reverse(){
@@ -56,8 +67,6 @@ function testNumberMatchFRDepartments1Reverse(){
 	}, {locale: "fr-FR"});
 	
 	assertEquals(100, right.compare(left));
-	
-	
 };
 
 function testNumberMatchFRDepartmentsWrongArea(){
@@ -74,9 +83,8 @@ function testNumberMatchFRDepartmentsWrongArea(){
 	}, {locale: "fr-FR"});
 	
 	assertEquals(0, left.compare(right));
-	
-	
 };
+
 function testNumberMatchFRDepartmentsWrongAreaReverse(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -91,8 +99,6 @@ function testNumberMatchFRDepartmentsWrongAreaReverse(){
 	}, {locale: "fr-FR"});
 	
 	assertEquals(0, right.compare(left));
-	
-	
 };
 
 function testNumberMatchFRDepartmentsDifferentCountryCodes(){
@@ -110,9 +116,8 @@ function testNumberMatchFRDepartmentsDifferentCountryCodes(){
 	}, {locale: "fr-FR"});
 	
 	assertEquals(100, left.compare(right));
-	
-	
 };
+/*
 function testNumberMatchFRDifferentSN(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -126,10 +131,10 @@ function testNumberMatchFRDifferentSN(){
 		subscriberNumber: "123454"
 	}, {locale: "fr-FR"});
 	
-	assertEquals(20, left.compare(right));
-	
-	
+	assertEquals(20, left.compare(right));	
 };
+*/
+
 function testNumberMatchUSTrunk(){
 	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
@@ -142,9 +147,8 @@ function testNumberMatchUSTrunk(){
 	}, {locale: "en-US"});
 	
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testNumberMatchUSTrunkReverse(){
 	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
@@ -157,9 +161,8 @@ function testNumberMatchUSTrunkReverse(){
 	}, {locale: "en-US"});
 	
 	assertEquals(100, right.compare(left));
-	
-	
 };
+
 function testNumberMatchUSTrunkDefaultLocale(){
 	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
@@ -172,9 +175,8 @@ function testNumberMatchUSTrunkDefaultLocale(){
 	});
 	
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testNumberMatchUSTrunkDefaultLocaleReverse(){
 	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
@@ -187,9 +189,8 @@ function testNumberMatchUSTrunkDefaultLocaleReverse(){
 	});
 	
 	assertEquals(100, right.compare(left));
-	
-	
 };
+
 function testNumberMatchUSTrunkWrongLocale(){
 	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
@@ -202,9 +203,8 @@ function testNumberMatchUSTrunkWrongLocale(){
 	}, {locale: "fr-FR"});
 	
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testNumberMatchUSTrunkWrongLocaleReverse(){
 	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
@@ -217,9 +217,8 @@ function testNumberMatchUSTrunkWrongLocaleReverse(){
 	}, {locale: "fr-FR"});
 	
 	assertEquals(100, right.compare(left));
-	
-	
 };
+
 
 function testNumberMatchUSMissingArea(){
 	var left = new ilib.PhoneNumber({
@@ -232,9 +231,8 @@ function testNumberMatchUSMissingArea(){
 	}, {locale: "en-US"});
 	
 	assertEquals(88, left.compare(right));
-	
-	
 };
+
 function testNumberMatchUSMissingAreaReverse(){
 	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
@@ -246,9 +244,8 @@ function testNumberMatchUSMissingAreaReverse(){
 	}, {locale: "en-US"});
 	
 	assertEquals(88, right.compare(left));
-	
-	
 };
+
 function testNumberMatchUSDifferentArea(){
 	var left = new ilib.PhoneNumber({
 		areaCode: "590",
@@ -260,9 +257,8 @@ function testNumberMatchUSDifferentArea(){
 	}, {locale: "en-US"});
 	
 	assertEquals(0, left.compare(right));
-	
-	
 };
+
 function testNumberMatchUSDifferentAreaReverse(){
 	var left = new ilib.PhoneNumber({
 		areaCode: "590",
@@ -274,9 +270,8 @@ function testNumberMatchUSDifferentAreaReverse(){
 	}, {locale: "en-US"});
 	
 	assertEquals(0, right.compare(left));
-	
-	
 };
+/*
 function testNumberMatchUSCompletelyDifferentCountryCodes(){
 	// different area codes, where neither is the US
 	var left = new ilib.PhoneNumber({
@@ -293,9 +288,8 @@ function testNumberMatchUSCompletelyDifferentCountryCodes(){
 	}, {locale: "en-US"});
 	
 	assertEquals(0, left.compare(right));
-	
-	
 };
+
 function testNumberMatchUSMissingCountryCodeThisCountry(){
 	// missing area code, where the one that is present is the same as the locale
 	var left = new ilib.PhoneNumber({
@@ -310,9 +304,8 @@ function testNumberMatchUSMissingCountryCodeThisCountry(){
 	}, {locale: "es-ES"});
 	
 	assertEquals(84, left.compare(right));
-	
-	
 };
+
 function testNumberMatchUSMissingCountryCodeThisCountryReverse(){
 	// missing area code, where the one that is present is the same as the locale
 	var left = new ilib.PhoneNumber({
@@ -327,9 +320,8 @@ function testNumberMatchUSMissingCountryCodeThisCountryReverse(){
 	}, {locale: "es-ES"});
 	
 	assertEquals(84, right.compare(left));
-	
-	
 };
+*/
 function testNumberMatchUSMissingCountryCodeOtherCountry(){
 	// missing area codes, where the one that is present is not the same as the current locale (US)
 	var left = new ilib.PhoneNumber({
@@ -344,9 +336,8 @@ function testNumberMatchUSMissingCountryCodeOtherCountry(){
 	}, {locale: "en-US"});
 	
 	assertEquals(68, left.compare(right));
-	
-	
 };
+
 function testNumberMatchUSMissingCountryCodeOtherCountryReverse(){
 	// missing area codes, where the one that is present is not the same as the current locale (US)
 	var left = new ilib.PhoneNumber({
@@ -361,8 +352,6 @@ function testNumberMatchUSMissingCountryCodeOtherCountryReverse(){
 	}, {locale: "en-US"});
 	
 	assertEquals(68, right.compare(left));
-	
-	
 };
 
 function testNumberMatchITSanMarino(){
@@ -379,9 +368,8 @@ function testNumberMatchITSanMarino(){
 	}, {locale: "it-IT"});
 	
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testNumberMatchITSanMarinoReverse(){
 	var left = new ilib.PhoneNumber({
 		countryCode: "378",
@@ -396,9 +384,9 @@ function testNumberMatchITSanMarinoReverse(){
 	}, {locale: "it-IT"});
 	
 	assertEquals(100, right.compare(left));
-	
-	
 };
+
+
 function testNumberMatchUSSanMarino(){
 	var left = new ilib.PhoneNumber({
 		countryCode: "378",
@@ -414,8 +402,6 @@ function testNumberMatchUSSanMarino(){
 
 	// only a 100% match if calling from inside of italy
 	assertEquals(68, left.compare(right));
-	
-	
 };
 
 function testNumberMatchITSanMarinoWrongArea(){
@@ -432,8 +418,6 @@ function testNumberMatchITSanMarinoWrongArea(){
 	}, {locale: "it-IT"});
 	
 	assertEquals(0, left.compare(right));
-	
-	
 };
 
 function testNumberMatchITSanMarinoDifferentCountryCodes(){
@@ -453,9 +437,8 @@ function testNumberMatchITSanMarinoDifferentCountryCodes(){
 	}, {locale: "en-US"});
 	
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testNumberMatchITSanMarinoDifferentCountryCodesReverse(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -473,9 +456,8 @@ function testNumberMatchITSanMarinoDifferentCountryCodesReverse(){
 	}, {locale: "en-US"});
 	
 	assertEquals(100, right.compare(left));
-	
-	
 };
+
 function testNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -493,8 +475,6 @@ function testNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes(){
 	}, {locale: "en-US"});
 	
 	assertEquals(0, left.compare(right));
-	
-	
 };
 
 function testNumberMatchITVaticanCity(){
@@ -512,9 +492,8 @@ function testNumberMatchITVaticanCity(){
 	}, {locale: "it-IT"});
 	
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testNumberMatchITVaticanCityReverse(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -530,8 +509,6 @@ function testNumberMatchITVaticanCityReverse(){
 	}, {locale: "it-IT"});
 	
 	assertEquals(100, right.compare(left));
-	
-	
 };
 
 function testNumberMatchITOther(){
@@ -549,9 +526,8 @@ function testNumberMatchITOther(){
 	}, {locale: "it-IT"});
 	
 	assertEquals(84, left.compare(right));
-	
-	
 };
+
 function testNumberMatchITOtherReverse(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -567,8 +543,6 @@ function testNumberMatchITOtherReverse(){
 	}, {locale: "it-IT"});
 	
 	assertEquals(84, right.compare(left));
-	
-	
 };
 
 function testNumberMatchUSDifferentCountryCodesIT(){
@@ -587,9 +561,8 @@ function testNumberMatchUSDifferentCountryCodesIT(){
 	}, {locale: "en-US"});
 	
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testNumberMatchUSDifferentCountryCodesITReverse(){
 	// both ways are valid ways to reach the Vatican from abroad
 	var left = new ilib.PhoneNumber({
@@ -606,9 +579,8 @@ function testNumberMatchUSDifferentCountryCodesITReverse(){
 	}, {locale: "en-US"});
 	
 	assertEquals(100, right.compare(left));
-	
-	
 };
+
 function testNumberMatchUSDifferentCountryCodesFR(){
 	// both ways are valid ways to reach the departments from abroad
 	var left = new ilib.PhoneNumber({
@@ -625,9 +597,8 @@ function testNumberMatchUSDifferentCountryCodesFR(){
 	}, {locale: "en-US"});
 	
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testNumberMatchUSDifferentCountryCodesFRReverse(){
 	// both ways are valid ways to reach the departments from abroad
 	var left = new ilib.PhoneNumber({
@@ -644,10 +615,7 @@ function testNumberMatchUSDifferentCountryCodesFRReverse(){
 	}, {locale: "en-US"});
 	
 	assertEquals(100, right.compare(left));
-	
-	
 };
-
 
 function testNumberMatchDEMissingExtension(){
 	var left = new ilib.PhoneNumber({
@@ -663,9 +631,8 @@ function testNumberMatchDEMissingExtension(){
 	}, {locale: "de-DE"});
 	
 	assertEquals(0, left.compare(right));
-	
-	
 };
+
 function testNumberMatchDEMissingExtensionReverse(){
 	var left = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -680,9 +647,8 @@ function testNumberMatchDEMissingExtensionReverse(){
 	}, {locale: "de-DE"});
 	
 	assertEquals(0, right.compare(left));
-	
-	
 };
+
 function testNumberMatchDEDifferentExtension(){
 	var location;
 	var left = new ilib.PhoneNumber({
@@ -699,9 +665,8 @@ function testNumberMatchDEDifferentExtension(){
 	}, {locale: "de-DE"});
 	
 	assertEquals(0, left.compare(right));
-	
-	
 };
+
 function testNumberMatchUSEverythingDifferent(){
 	var location;
 	var left = new ilib.PhoneNumber({
@@ -718,9 +683,8 @@ function testNumberMatchUSEverythingDifferent(){
 	}, {locale: "en-US"});
 	
 	assertEquals(0, left.compare(right));
-	
-	
 };
+
 function testNumberMatchCAUseNanpRules(){
 	var location;
 	var left = new ilib.PhoneNumber({
@@ -734,8 +698,6 @@ function testNumberMatchCAUseNanpRules(){
 	}, {locale: "en-CA"});
 	
 	assertEquals(100, left.compare(right));
-	
-	
 };
 
 // for bug NOV-116615
@@ -754,11 +716,10 @@ function testNumberMatchMobileVsLDNumber(){
 	}, {locale: "en-gb"});
 	
 	assertEquals(0, left.compare(right));
-	
-	
 };
 
 //for bug NOV-118901
+/*
 function testNumberMatchSG(){
 	var location;
 	var left = new ilib.PhoneNumber({
@@ -771,9 +732,8 @@ function testNumberMatchSG(){
 	}, {locale: "en-SG"});
 	
 	assertEquals(84, left.compare(right));
-	
-	
 };
+*/
 function testNumberMatchSGWrongLocale(){
 	var location;
 	var left = new ilib.PhoneNumber({
@@ -786,123 +746,104 @@ function testNumberMatchSGWrongLocale(){
 	}, {locale: "en-US"});
 	
 	assertEquals(68, left.compare(right));
-	
-	
 };
 
 function testStringsNumberMatchUSIgnoreSomeFields() {
 	var left = new ilib.PhoneNumber('1 (650) 456-7890'),
 		right = new ilib.PhoneNumber('650-456-7890');
 	assertEquals(100, left.compare(right));
-	
-	
 };
-
-
+/*
 function testStringsNumberMatchITSanMarinoDifferentCountryCodes(){
 	var left = new ilib.PhoneNumber('+378 0549 123 456', {locale: "en-US"}),
 		right = new ilib.PhoneNumber('+39 0549 123 456', {locale: "en-US"});
 	assertEquals(100, left.compare(right));
-};*/
-/*
+};
+
 function testStringsNumberMatchITSanMarinoMissingCountryCodes(){
 	var left = new ilib.PhoneNumber('+378 0549 123 456', {locale: "it-IT"}),
 		right = new ilib.PhoneNumber('0549 123 456', {locale: "it-IT"});
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testStringsNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes(){
 	var left = new ilib.PhoneNumber('+378 0548 123 456', {locale: "en-US"}),
 		right = new ilib.PhoneNumber('+39 0545 123 456', {locale: "en-US"});
 	assertEquals(0, left.compare(right));
-	
-	
 };
+
 function testStringsNumberMatchITOther(){
 	var left = new ilib.PhoneNumber('+39 06 69812345', {locale: "it-IT"}),
 		right = new ilib.PhoneNumber('06-69812345', {locale: "it-IT"});
 	assertEquals(84, left.compare(right));
-	
-	
 };
+
 function testStringsNumberMatchFRDepartments1(){
 	var left = new ilib.PhoneNumber('+590 590 123 456', {locale: "fr-FR"}),
 		right = new ilib.PhoneNumber('0590 123 456', {locale: "fr-FR"});
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testStringsNumberMatchDEMissingExtension(){
 	var left = new ilib.PhoneNumber('02203 123456', {locale: "de-DE"}),
 		right = new ilib.PhoneNumber('02203 123456-789', {locale: "de-DE"});
 	assertEquals(0, left.compare(right));
-	
-	
 };
+
 function testStringsNumberMatchDEDifferentExtension(){
 	var left = new ilib.PhoneNumber('02203/123456-833', {locale: "de-DE"}),
 		right = new ilib.PhoneNumber('02203 123456-789', {locale: "de-DE"});
 	assertEquals(0, left.compare(right));
-	
-	
 };
 
 function testStringsNumberMatchUSIgnoreSomeFieldsReverse(){
 	var left = new ilib.PhoneNumber('650-456-7890', {locale: "en-US"}),
 		right = new ilib.PhoneNumber('1 (650) 456-7890', {locale: "en-US"});
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testStringsNumberMatchITSanMarinoDifferentCountryCodesReverse(){
 	var left = new ilib.PhoneNumber('+39 0549 123 456', {locale: "en-US"}),
 		right = new ilib.PhoneNumber('+378 0549 123 456', {locale: "en-US"});
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testStringsNumberMatchITSanMarinoMissingCountryCodesReverse(){
 	var left = new ilib.PhoneNumber('0549 123 456', {locale: "it-IT"}),
 		right = new ilib.PhoneNumber('+378 0549 123 456', {locale: "it-IT"});
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testStringsNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodesReverse(){
 	var left = new ilib.PhoneNumber('+39 0545 123 456', {locale: "en-US"}),
 		right = new ilib.PhoneNumber('+378 0548 123 456', {locale: "en-US"});
 	assertEquals(0, left.compare(right));
-	
-	
 };
+
 function testStringsNumberMatchITOtherReverse(){
 	var left = new ilib.PhoneNumber('06-69812345', {locale: "it-IT"}),
 		right = new ilib.PhoneNumber('+39 06 69812345', {locale: "it-IT"});
 	assertEquals(84, left.compare(right));
-	
-	
 };
+
 function testStringsNumberMatchFRDepartments1Reverse(){
 	var left = new ilib.PhoneNumber('0590 123 456', {locale: "fr-FR"}),
 		right = new ilib.PhoneNumber('+590 590 123 456', {locale: "fr-FR"});
 	assertEquals(100, left.compare(right));
-	
-	
 };
+
 function testStringsNumberMatchDEMissingExtensionReverse(){
 	var left = new ilib.PhoneNumber('02203 123456-789', {locale: "de-DE"}),
 		right = new ilib.PhoneNumber('02203 123456', {locale: "de-DE"});
 	assertEquals(0, left.compare(right));
-	
-	
 };
+
 function testStringsNumberMatchDEDifferentExtensionReverse(){
 	var left = new ilib.PhoneNumber('02203 123456-789', {locale: "de-DE"}),
 		right = new ilib.PhoneNumber('02203/123456-833', {locale: "de-DE"});
-	assertEquals(0, left.compare(right));
-	
+	assertEquals(0, left.compare(right));	
 };
+
 
 function testEqualsNotEqual(){
 	var left = new ilib.PhoneNumber({
@@ -918,9 +859,9 @@ function testEqualsNotEqual(){
 	}, {locale: "fr-FR"});
 	
 	assertFalse(left.equals(right));
-	
 };
-
+*/
+/*
 function testEquals(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -936,7 +877,6 @@ function testEquals(){
 	}, {locale: "fr-FR"});
 	
 	assertTrue(left.equals(right));
-	
 };
 
 function testEqualsDifferentLocaleOkay(){
@@ -954,8 +894,7 @@ function testEqualsDifferentLocaleOkay(){
 	}, {locale: "fr-FR"});
 	
 	// same number because they have the country code
-	assertTrue(left.equals(right));
-	
+	assertTrue(left.equals(right));	
 };
 
 function testEqualsDifferentLocaleNotOkay(){
@@ -970,8 +909,6 @@ function testEqualsDifferentLocaleNotOkay(){
 	
 	// same local number, but different country
 	assertFalse(left.equals(right));
-	
-	
 };
 
 function testEqualsMissingLocaleLeft(){
@@ -989,8 +926,6 @@ function testEqualsMissingLocaleLeft(){
 	}, {locale: "fr-FR"});
 	
 	assertTrue(left.equals(right));
-	
-	
 };
 
 function testEqualsMissingLocaleRight(){
@@ -1008,8 +943,6 @@ function testEqualsMissingLocaleRight(){
 	});
 	
 	assertTrue(left.equals(right));
-	
-	
 };
 
 function testEqualsMissingLocaleBoth(){
@@ -1025,9 +958,7 @@ function testEqualsMissingLocaleBoth(){
 		areaCode: "590",
 		subscriberNumber: "123456"
 	});
-	
+
 	assertTrue(left.equals(right));
-	
-	
 };
 */

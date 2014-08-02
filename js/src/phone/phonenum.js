@@ -25,7 +25,7 @@ localeinfo.js
 phone/numplan.js
 */
 
-// !data phone
+// !data phone states
 
 /**
  * Create a new phone number instance that parses the phone number parameter for its 
@@ -144,16 +144,7 @@ ilib.PhoneNumber = function(number, options) {
 	var locale,
 		plan,
 		stateData,
-		i, ch,
-		regionSettings,
-		state = 0, //begin state
-		newState,
-		stateTable,
-		dot,
-		handlerMethod,
-		result,
-		temp;
-
+		regionSettings;
 
 	if (options) {
 		this.locale = new ilib.PhoneLoc(options);
@@ -161,134 +152,56 @@ ilib.PhoneNumber = function(number, options) {
 		this.locale = new ilib.Locale();
 	}
 
-	/*if (!number || (typeof number === "string" && number.length === 0)) {
+	if (!number || (typeof number === "string" && number.length === 0)) {
 		return this;
 	} else if (typeof number === "object") {
 		ilib.PhoneNumber._deepCopy(number, this);
 		return this;
-	}*/
+	}
 
 	// use ^ to indicate the beginning of the number, because certain things only match at the beginning
 	number = "^" + number.replace(/\^/g, '');
 
 	//console.log("PhoneNumber: locale is: " + this.locale + " parsing number: " + number);
 
+	/*ilib.loadData({
+		name: "idd.json",
+		object: ilib.PhoneNumber,
+		locale: "-",
+		//sync: true, 
+		callback: ilib.bind(this, function (data) {
+			ilib.data.idd = data;
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		})
+	});*/
+
 	ilib.loadData({
 		name: "states.json",
 		object: ilib.PhoneNumber,
 		locale: this.locale,
-		//sync: true, 
-		callback: ilib.bind(this, function (data) {
-			if (!data) {
-				data =[[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]
+		sync: true,
+		callback: ilib.bind(this, function (stdata) {
+			if (!stdata) {
+				stdata = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
 			}
-			stateData = data;
+			stateData = stdata;
+			plan = new ilib.NumPlan({locale: this.locale});
+
+			regionSettings = {
+				stateData : stateData,
+				plan: plan,
+				handler : ilib._handlerFactory(this.locale, plan)
+			};
+
+			this._parseNumber(number, regionSettings);
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}
 		})
 	});
-
-	plan = new ilib.NumPlan({locale: this.locale});
-
-	regionSettings = {
-		stateData : stateData,
-		plan: plan,
-		handler : ilib._handlerFactory(this.locale, plan)
-	};
-
-	number = ilib.PhoneNumber._stripFormatting(number);
-	dot = 14; //special transition which matches all characters. See AreaCodeTableMaker.java
-
-	i = 0;
-	while (i < number.length) {
-		ch = ilib.PhoneNumber._getCharacterCode(number.charAt(i));
-		if (ch >= 0) {
-			newState = stateData[state][ch];
-
-			if (newState === -1 && stateData[state][dot] !== -1 ) {
-				// check if this character can match the dot instead
-				newState = stateTable.get(state)[dot];
-				//console.log("char " + ch + " doesn't have a transition. Using dot to transition to state " + newState);
-			}
-
-			if (newState < 0) {
-				// this final state. First convert the state to a positive array index
-				// in order to look up the name of the handler function name in the array
-				newState = -newState -1;
-				handlerMethod = ilib.PhoneNumber._states[newState];
-
-				if (number.charAt(0) === '^') {
-					result = regionSettings.handler[handlerMethod](number.slice(1), i-1, this, regionSettings);
-				} else {
-					result = regionSettings.handler[handlerMethod](number, i, this, regionSettings);
-				}
-
-				// reparse whatever is left
-				number = result.number;
-				i= 0;
-				//console.log("reparsing with new number: " +  number);
-				state = 0;
-				// if the handler requested a special sub-table, use it for this round of parsing,
-				// otherwise, set it back to the regular table to continue parsing
-				if (result.push !== undefined) {
-					locale = result.push;
-
-					/*ilib.loadData({
-						name: "states.json",
-						object: ilib.PhoneNumber,
-						locale: locale111,
-						callback: ilib.bind(this, function (data) {
-						if (data) {
-							stateData = data;	
-						}
-						console.log("stateData: ", stateData)
-						if (options && typeof(options.onLoad) === 'function') {
-							options.onLoad(this);
-						}
-					}
-					test = new ilib.NumPlan({locale:locale111});
-
-					regionSettings = {
-						stateData: stateData,
-						plan: test,
-						handler: ilib._handlerFactory(this.locale, plan)
-					};*/
-	
-				} else if (result.skipTrunk !== undefined) {
-					ch = ilib.PhoneNumber._getCharacterCode(regionSettings.plan.trunkCode);
-					state = stateData[state][ch];
-				}
-
-			} else {
-				// console.info("recognized digit " + ch + " continuing...");
-				// recognized digit, so continue parsing
-				state = newState;
-				i++;
-			}
-		} else if (ch === -1) {
-			// non-transition character, continue parsing in the same state
-			i++;
-		} else {
-			// should not happen
-			// console.info("skipping character " + ch);
-			// not a digit, plus, pound, or star, so this is probably a formatting char. Skip it.
-			i++;
-		}
-
-		if (state > 0 && i > 0) {
-			// we reached the end of the phone number, but did not finish recognizing anything. 
-			// Default to last resort and put everything that is left into the subscriber number
-			//console.log("Reached end of number before parsing was complete. Using handler for method none.")
-			if (number.charAt(0) === '^') {
-				result = regionSettings.handler.none(number.slice(1), i-1, this, regionSettings);
-			} else {
-				result = regionSettings.handler.none(number, i, this, regionSettings);
-			}
-		}
-	}
 };
-
 
 /**
  * 
@@ -389,6 +302,115 @@ ilib.PhoneNumber.prototype = {
 	/**
 	 * @protected
 	 */
+	_parseNumber: function(number, regionData) {
+		var locale,
+			plan,
+			stateData,
+			i, ch,
+			regionSettings,
+			state = 0, //begin state
+			newState,
+			stateTable,
+			dot,
+			handlerMethod,
+			result,
+			temp,
+			numplan;
+
+		number = ilib.PhoneNumber._stripFormatting(number);
+		regionSettings = regionData;
+		stateData = regionSettings.stateData;
+		dot = 14; //[Q] special transition which matches all characters. See AreaCodeTableMaker.java
+
+		i = 0;
+		while (i < number.length) {
+			ch = ilib.PhoneNumber._getCharacterCode(number.charAt(i));
+			if (ch >= 0) {
+				newState = stateData.states[state][ch];
+	
+				if (newState === -1 && stateData.states[state][dot] !== -1 ) {
+					// check if this character can match the dot instead
+					newState = stateData.states[state][dot];
+					//console.log("char " + ch + " doesn't have a transition. Using dot to transition to state " + newState);
+				}
+	
+				if (newState < 0) {
+					// this final state. First convert the state to a positive array index
+					// in order to look up the name of the handler function name in the array
+					newState = -newState -1;
+					handlerMethod = ilib.PhoneNumber._states[newState];
+	
+					if (number.charAt(0) === '^') {
+						result = regionSettings.handler[handlerMethod](number.slice(1), i-1, this, regionSettings);
+					} else {
+						result = regionSettings.handler[handlerMethod](number, i, this, regionSettings);
+					}
+	
+					// reparse whatever is left
+					number = result.number;
+					i= 0;
+					//console.log("reparsing with new number: " +  number);
+					state = 0;
+					// if the handler requested a special sub-table, use it for this round of parsing,
+					// otherwise, set it back to the regular table to continue parsing
+					if (result.states !== undefined) {
+						locale = result.locale; // push;
+						ilib.loadData({
+							name: result.states,
+							object: ilib.PhoneNumber,
+							locale: locale,
+							callback: ilib.bind(this, function (data) {
+								stateData = data;
+								// recursively call the parser with the new states data
+								numplan = new ilib.NumPlan({locale:locale});
+								regionSettings = {
+									stateData: stateData,
+									plan: numplan,
+									handler: ilib._handlerFactory(this.locale, plan)
+								};
+								//this._parseNumber(regionSettings);
+								/*if (options && typeof(options.onLoad) === 'function') {
+									options.onLoad(this);
+								}*/
+							})
+						})
+					} else if (result.skipTrunk !== undefined) {
+						ch = ilib.PhoneNumber._getCharacterCode(regionSettings.plan.getTrunkCode());
+						state = stateData[state][ch];
+					}
+				} else {
+					// console.info("recognized digit " + ch + " continuing...");
+					// recognized digit, so continue parsing
+					state = newState;
+					i++;
+				}
+			} else if (ch === -1) {
+				// non-transition character, continue parsing in the same state
+				i++;
+			} else {
+				// should not happen
+				// console.info("skipping character " + ch);
+				// not a digit, plus, pound, or star, so this is probably a formatting char. Skip it.
+				i++;
+			}
+			}
+			if (state > 0 && i > 0) {
+				// we reached the end of the phone number, but did not finish recognizing anything. 
+				// Default to last resort and put everything that is left into the subscriber number
+				//console.log("Reached end of number before parsing was complete. Using handler for method none.")
+				if (number.charAt(0) === '^') {
+					result = regionSettings.handler.none(number.slice(1), i-1, this, regionSettings);
+				} else {
+					result = regionSettings.handler.none(number, i, this, regionSettings);
+				}
+		}
+	},
+	/**
+	 * @protected
+	 */
+	_getPrefix: function() {
+		return this.areaCode || this.serviceCode || this.mobilePrefix || "";
+	},
 	_xor : function(left, right) {
 		if ((left === undefined && right === undefined ) || (left !== undefined && right !== undefined)) {
 			return false;
@@ -558,6 +580,45 @@ ilib.PhoneNumber.prototype = {
 	 * @return {boolean} true if the numbers are the same, false otherwise
 	 */
 	equals: function equals(other) {
+		var p;
+		
+		if (other.locale && this.locale && !this.locale.equals(other.locale) && (!this.countryCode || !other.countryCode)) {
+			return false;
+		}
+		
+		for (p in other) {
+			if (p !== undefined && this[p] !== undefined && typeof(this[p]) !== 'object') {
+				if (other[p] === undefined) {
+					console.error("PhoneNumber.equals: other is missing property " + p + " which has the value " + this[p] + " in this");
+					console.error("this is : " + JSON.stringify(this));
+					console.error("other is: " + JSON.stringify(other));
+					return false;
+				}
+				if (this[p] !== other[p]) {
+					console.error("PhoneNumber.equals: difference in property " + p);
+					console.error("this is : " + JSON.stringify(this));
+					console.error("other is: " + JSON.stringify(other));
+					return false;
+				}
+			}
+		}
+		for (p in other) {
+			if (p !== undefined && other[p] !== undefined && typeof(other[p]) !== 'object') {
+				if (this[p] === undefined) {
+					console.error("PhoneNumber.equals: this is missing property " + p + " which has the value " + other[p] + " in the other");
+					console.error("this is : " + JSON.stringify(this));
+					console.error("other is: " + JSON.stringify(other));
+					return false;
+				}
+				if (this[p] !== other[p]) {
+					console.error("PhoneNumber.equals: difference in property " + p);
+					console.error("this is : " + JSON.stringify(this));
+					console.error("other is: " + JSON.stringify(other));
+					return false;
+				}
+			}
+		}
+		return true;
 	},
 	
 	/**

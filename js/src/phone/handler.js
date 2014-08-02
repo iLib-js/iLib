@@ -30,10 +30,9 @@ ilib.StateHandler.prototype = {
 			fields.subscriberNumber = number;
 		}
 		
-		if (regionSettings.plan.fieldLengths && 
-				regionSettings.plan.fieldLengths.maxLocalLength &&
+		if (regionSettings.plan.getFieldLength('maxLocalLength') &&
 				fields.subscriberNumber &&
-				fields.subscriberNumber.length > regionSettings.plan.fieldLengths.maxLocalLength) {
+				fields.subscriberNumber.length > regionSettings.plan.getFieldLength('maxLocalLength')) {
 			fields.invalid = true;
 		}
 	},
@@ -46,8 +45,8 @@ ilib.StateHandler.prototype = {
 		if ( length !== undefined && length > 0 ) {
 			// fixed length
 			end = length;
-			if ( regionSettings.plan.trunkCode === "0" && number.charAt(0) === "0" ) {
-				end += regionSettings.plan.trunkCode.length;  // also extract the trunk access code
+			if ( regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0" ) {
+				end += regionSettings.plan.getTrunkCode().length;  // also extract the trunk access code
 			}
 		} else {
 			// variable length
@@ -62,7 +61,7 @@ ilib.StateHandler.prototype = {
 		} else {
 			// substring() extracts the part of the string up to but not including the end character,
 			// so add one to compensate
-			if ( !noExtractTrunk && regionSettings.plan.trunkCode === "0" && number.charAt(0) === "0" ) {
+			if ( !noExtractTrunk && regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0" ) {
 				fields.trunkAccess = number.charAt(0);
 				fields[fieldName] = number.substring(1, end);
 			} else {
@@ -87,8 +86,8 @@ ilib.StateHandler.prototype = {
 		if ( length !== undefined && length > 0 ) {
 			// fixed length
 			end = length;
-			if ( regionSettings.plan.trunkCode === "0" && number.charAt(0) === "0" ) {
-				end += regionSettings.plan.trunkCode.length;  // also extract the trunk access code
+			if ( regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0" ) {
+				end += regionSettings.plan.getTrunkCode().length;  // also extract the trunk access code
 			}
 		} else {
 			// variable length
@@ -104,7 +103,7 @@ ilib.StateHandler.prototype = {
 		} else {
 			// substring() extracts the part of the string up to but not including the end character,
 			// so add one to compensate
-			if ( regionSettings.plan.trunkCode === "0" && number.charAt(0) === "0" ) {
+			if ( regionSettings.plan.getTrunkCode() === "0" && number.charAt(0) === "0" ) {
 				fields.trunkAccess = number.charAt(0);
 				fields[fieldName] = number.substring(1, end);
 				ret.skipTrunk = true;
@@ -126,7 +125,7 @@ ilib.StateHandler.prototype = {
 			this.processSubscriberNumber(number, fields, regionSettings);
 			number = "";
 		} else {
-			trunkLength = regionSettings.plan.trunkCode.length;
+			trunkLength = regionSettings.plan.getTrunkCode().length;
 			fields.trunkAccess = number.substring(0, trunkLength);
 			number = (number.length > trunkLength) ? number.substring(trunkLength) : "";
 		}
@@ -152,7 +151,7 @@ ilib.StateHandler.prototype = {
 	
 			ret = {
 				number: number.substring(1),
-				push: new ilib.Locale('_idd')    // shared subtable that parses the country code
+				states: 'idd'    // shared subtable that parses the country code
 			};
 		}		
 		return ret;
@@ -172,7 +171,7 @@ ilib.StateHandler.prototype = {
 	
 			ret = {
 				number: number.substring(currentChar+1),
-				push: new ilib.Locale('_idd')    // shared subtable that parses the country code
+				states: new ilib.Locale('_idd')    // shared subtable that parses the country code
 			};
 		}
 		
@@ -192,18 +191,18 @@ ilib.StateHandler.prototype = {
 		
 		ret = {
 			number: number.substring(currentChar+1),
-			push: locale
+			states: locale
 		};
 		
 		return ret;
 	},
 
 	cic: function(number, currentChar, fields, regionSettings) {
-		return this.processField('cic', regionSettings.plan.fieldLengths.cic, number, currentChar, fields, regionSettings);
+		return this.processField('cic', regionSettings.plan.getFieldLength('cic'), number, currentChar, fields, regionSettings);
 	},
 
 	service: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.fieldLengths.serviceCode, number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('serviceCode'), number, currentChar, fields, regionSettings);
 	},
 
 	area: function(number, currentChar, fields, regionSettings) {
@@ -212,22 +211,22 @@ ilib.StateHandler.prototype = {
 		last = number.search(/[xwtp]/i);	// last digit of the local number
 		localLength = (last > -1) ? last : number.length;
 
-		if ( regionSettings.plan.fieldLengths.areaCode > 0 ) {
+		if ( regionSettings.plan.getFieldLength('areaCode') > 0 ) {
 			// fixed length
-			end = regionSettings.plan.fieldLengths.areaCode;
-			if ( regionSettings.plan.trunkCode === number.charAt(0) ) {
-				end += regionSettings.plan.trunkCode.length;  // also extract the trunk access code
-				localLength -= regionSettings.plan.trunkCode.length;
+			end = regionSettings.plan.getFieldLength('areaCode');
+			if ( regionSettings.plan.getTrunkCode() === number.charAt(0) ) {
+				end += regionSettings.plan.getTrunkCode().length;  // also extract the trunk access code
+				localLength -= regionSettings.plan.getTrunkCode().length;
 			}
 		} else {
 			// variable length
 			// the setting is the negative of the length to add, so subtract to make it positive
-			end = currentChar + 1 - regionSettings.plan.fieldLengths.areaCode;
+			end = currentChar + 1 - regionSettings.plan.getFieldLength('areaCode');
 		}
 		
 		// substring() extracts the part of the string up to but not including the end character,
 		// so add one to compensate
-		if ( regionSettings.plan.trunkCode === number.charAt(0) ) {
+		if ( regionSettings.plan.getTrunkCode() === number.charAt(0) ) {
 			fields.trunkAccess = number.charAt(0);
 			if ( number.length > 1 ) {
 				fields.areaCode = number.substring(1, end);
@@ -235,10 +234,10 @@ ilib.StateHandler.prototype = {
 			if ( number.length > end ) {
 				this.processSubscriberNumber(number.substring(end), fields, regionSettings);
 			}
-		} else if ( regionSettings.plan.fieldLengths.maxLocalLength !== undefined ) {
+		} else if ( regionSettings.plan.getFieldLength('maxLocalLength') !== undefined ) {
 			if ( fields.trunkAccess !== undefined || fields.mobilePrefix !== undefined ||
 					fields.countryCode !== undefined ||
-					localLength > regionSettings.plan.fieldLengths.maxLocalLength ) {
+					localLength > regionSettings.plan.getFieldLength('maxLocalLength') ) {
 				// too long for a local number by itself, or a different final state already parsed out the trunk
 				// or mobile prefix, then consider the rest of this number to be an area code + part of the subscriber number
 				fields.areaCode = number.substring(0, end);
@@ -277,7 +276,7 @@ ilib.StateHandler.prototype = {
 		
 		// this is a last resort function that is called when nothing is recognized.
 		// When this happens, just put the whole stripped number into the subscriber number
-		if ( regionSettings.plan && number.charAt(0) === regionSettings.plan.trunkCode ) {
+		if ( regionSettings.plan && number.charAt(0) === regionSettings.plan.getTrunkCode()) {
 			fields.trunkAccess = number.charAt(0);
 			number = number.substring(1);
 			//currentChar--;
@@ -293,7 +292,7 @@ ilib.StateHandler.prototype = {
 		}
 		
 		ret = {
-			number: ""        // indicate that there is nothing left to parse
+			number:""
 		};
 		
 		return ret;
@@ -303,7 +302,7 @@ ilib.StateHandler.prototype = {
 		var ret, length, end;
 
 		if ( fields.vsc === undefined ) {
-			length = regionSettings.plan.fieldLengths.vsc || 0;
+			length = regionSettings.plan.getFieldLength('vsc') || 0;
 			if ( length !== undefined && length > 0 ) {
 				// fixed length
 				end = length;
@@ -332,43 +331,43 @@ ilib.StateHandler.prototype = {
 	},
 	
 	cell: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('mobilePrefix', regionSettings.plan.fieldLengths.mobilePrefix, number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('mobilePrefix', regionSettings.plan.getFieldLength('mobilePrefix'), number, currentChar, fields, regionSettings);
 	},
 	
 	personal: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.fieldLengths.personal, number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('personal'), number, currentChar, fields, regionSettings);
 	},
 	
 	emergency: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('emergency', regionSettings.plan.fieldLengths.emergency, number, currentChar, fields, regionSettings, true);
+		return this.processFieldWithSubscriberNumber('emergency', regionSettings.plan.getFieldLength('emergency'), number, currentChar, fields, regionSettings, true);
 	},
 	
 	premium: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.fieldLengths.premium, number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('premium'), number, currentChar, fields, regionSettings);
 	},
 	
 	special: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.fieldLengths.special, number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('special'), number, currentChar, fields, regionSettings);
 	},
 	
 	service2: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.fieldLengths.service2, number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('service2'), number, currentChar, fields, regionSettings);
 	},
 	
 	service3: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.fieldLengths.service3, number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('service3'), number, currentChar, fields, regionSettings);
 	},
 	
 	service4: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.fieldLengths.service4, number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('service4'), number, currentChar, fields, regionSettings);
 	},
 	
 	cic2: function(number, currentChar, fields, regionSettings) {
-		return this.processField('cic', regionSettings.plan.fieldLengths.cic2, number, currentChar, fields, regionSettings);
+		return this.processField('cic', regionSettings.plan.getFieldLength('cic2'), number, currentChar, fields, regionSettings);
 	},
 	
 	cic3: function(number, currentChar, fields, regionSettings) {
-		return this.processField('cic', regionSettings.plan.fieldLengths.cic3, number, currentChar, fields, regionSettings);
+		return this.processField('cic', regionSettings.plan.getFieldLength('cic3'), number, currentChar, fields, regionSettings);
 	},
 	
 	start: function(number, currentChar, fields, regionSettings) {
