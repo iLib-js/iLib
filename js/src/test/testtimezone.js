@@ -597,6 +597,42 @@ function testTZInDaylightTimeFalse() {
 	});
     assertFalse(tz.inDaylightTime(gd));
 }
+
+function testTZInDaylightTimeLocalTrue() {
+	var summer = new Date(2014, 6, 1);
+	var winter = new Date(2014, 0, 1);
+	// only perform this test if we are in a zone where there is DST
+	if (summer.getTimezoneOffset() !== winter.getTimezoneOffset()) {
+	    var tz = new ilib.TimeZone({id: "local"});
+	    assertNotNull(tz);
+	    
+	    var gd = new ilib.Date.GregDate({
+	    	timezone: "local",
+			year: 2011,
+			month: 7,
+			day: 1
+		});
+	    assertTrue(tz.inDaylightTime(gd));
+	}
+}
+function testTZInDaylightTimeLocalFalse() {
+	var summer = new Date(2014, 6, 1);
+	var winter = new Date(2014, 0, 1);
+	// only perform this test if we are in a zone where there is DST
+	if (summer.getTimezoneOffset() !== winter.getTimezoneOffset()) {
+	    var tz = new ilib.TimeZone({id: "local"});
+	    assertNotNull(tz);
+	    
+	    var gd = new ilib.Date.GregDate({
+	    	timezone: "local",
+			year: 2011,
+			month: 12,
+			day: 1
+		});
+	    assertFalse(tz.inDaylightTime(gd));
+	}
+}
+
 function testTZInDaylightTimeNonDSTZone() {
     var tz = new ilib.TimeZone({id: "America/Phoenix"});
     assertNotNull(tz);
