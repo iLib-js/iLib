@@ -2082,3 +2082,55 @@ function testGregDateGetTimeWithDefaultTime() {
     
     assertRoughlyEquals(d.getTime(), gd.getTime(), 100);
 }
+
+function testGregDateRoundTripConstruction() {
+    var gd = new ilib.Date.GregDate({
+    	year: 2014,
+    	month: 11,
+    	day: 3,
+    	timezone: "local"
+    });
+    assertNotNull(gd);
+    console.log("gd is " + JSON.stringify(gd, undefined, 4));
+    
+    var u = gd.getTime();
+    console.log("unixtime is " + u);
+    var gd2 = new ilib.Date.GregDate({
+    	unixtime: u,
+    	timezone: "local"
+    });
+    console.log("gd2 is " + JSON.stringify(gd2, undefined, 4));
+    assertEquals(gd.getTimeZone(), gd2.getTimeZone());
+    assertEquals(gd.getYears(), gd2.getYears());
+    assertEquals(gd.getMonths(), gd2.getMonths());
+    assertEquals(gd.getDays(), gd2.getDays());
+    assertEquals(gd.getHours(), gd2.getHours());
+    assertEquals(gd.getMinutes(), gd2.getMinutes());
+    assertEquals(gd.getSeconds(), gd2.getSeconds());
+}
+
+function testGregDateRoundTripConstruction2() {
+    var gd = new ilib.Date.GregDate({
+    	year: 2014,
+    	month: 11,
+    	day: 3,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(gd);
+    console.log("gd is " + JSON.stringify(gd, undefined, 4));
+    
+    var u = gd.getTime();
+    console.log("unixtime is " + u);
+    var gd2 = new ilib.Date.GregDate({
+    	unixtime: u,
+    	timezone: "America/Los_Angeles"
+    });
+    console.log("gd2 is " + JSON.stringify(gd2, undefined, 4));
+    assertEquals(gd.getTimeZone(), gd2.getTimeZone());
+    assertEquals(gd.getYears(), gd2.getYears());
+    assertEquals(gd.getMonths(), gd2.getMonths());
+    assertEquals(gd.getDays(), gd2.getDays());
+    assertEquals(gd.getHours(), gd2.getHours());
+    assertEquals(gd.getMinutes(), gd2.getMinutes());
+    assertEquals(gd.getSeconds(), gd2.getSeconds());
+}
