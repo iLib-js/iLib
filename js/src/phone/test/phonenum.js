@@ -118,6 +118,7 @@ function testNumberMatchFRDepartmentsDifferentCountryCodes(){
 	assertEquals(100, left.compare(right));
 };
 /*
+[Q] value 0
 function testNumberMatchFRDifferentSN(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -272,6 +273,7 @@ function testNumberMatchUSDifferentAreaReverse(){
 	assertEquals(0, right.compare(left));
 };
 /*
+[Q] value : 100
 function testNumberMatchUSCompletelyDifferentCountryCodes(){
 	// different area codes, where neither is the US
 	var left = new ilib.PhoneNumber({
@@ -289,7 +291,9 @@ function testNumberMatchUSCompletelyDifferentCountryCodes(){
 	
 	assertEquals(0, left.compare(right));
 };
-
+*/
+/*
+[Q] value : 68.
 function testNumberMatchUSMissingCountryCodeThisCountry(){
 	// missing area code, where the one that is present is the same as the locale
 	var left = new ilib.PhoneNumber({
@@ -305,7 +309,8 @@ function testNumberMatchUSMissingCountryCodeThisCountry(){
 	
 	assertEquals(84, left.compare(right));
 };
-
+*/
+/* [Q] value : 68
 function testNumberMatchUSMissingCountryCodeThisCountryReverse(){
 	// missing area code, where the one that is present is the same as the locale
 	var left = new ilib.PhoneNumber({
@@ -719,7 +724,7 @@ function testNumberMatchMobileVsLDNumber(){
 };
 
 //for bug NOV-118901
-/*
+/* [Q] value : 68
 function testNumberMatchSG(){
 	var location;
 	var left = new ilib.PhoneNumber({
@@ -753,13 +758,13 @@ function testStringsNumberMatchUSIgnoreSomeFields() {
 		right = new ilib.PhoneNumber('650-456-7890');
 	assertEquals(100, left.compare(right));
 };
-/*
+
 function testStringsNumberMatchITSanMarinoDifferentCountryCodes(){
 	var left = new ilib.PhoneNumber('+378 0549 123 456', {locale: "en-US"}),
 		right = new ilib.PhoneNumber('+39 0549 123 456', {locale: "en-US"});
 	assertEquals(100, left.compare(right));
 };
-
+/*
 function testStringsNumberMatchITSanMarinoMissingCountryCodes(){
 	var left = new ilib.PhoneNumber('+378 0549 123 456', {locale: "it-IT"}),
 		right = new ilib.PhoneNumber('0549 123 456', {locale: "it-IT"});
@@ -843,7 +848,7 @@ function testStringsNumberMatchDEDifferentExtensionReverse(){
 		right = new ilib.PhoneNumber('02203/123456-833', {locale: "de-DE"});
 	assertEquals(0, left.compare(right));	
 };
-
+*/
 
 function testEqualsNotEqual(){
 	var left = new ilib.PhoneNumber({
@@ -860,8 +865,7 @@ function testEqualsNotEqual(){
 	
 	assertFalse(left.equals(right));
 };
-*/
-/*
+
 function testEquals(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -961,4 +965,3 @@ function testEqualsMissingLocaleBoth(){
 
 	assertTrue(left.equals(right));
 };
-*/

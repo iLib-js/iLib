@@ -24,7 +24,7 @@ locale.js
 localeinfo.js
 */
 
-// !data mcc2reg cc2reg
+// !data mcc2reg cc2reg reg2cc
 
 /**
  *
@@ -84,7 +84,8 @@ ilib.PhoneLoc._mapMCCtoRegion = function(mcc) {
 		ilib.loadData({
 			name: "mcc2reg.json",
 			object: ilib.PhoneLoc, 
-			locale: "-", 
+			//locale: "-",
+			nonlocale: true,
 			sync: true,
 			callback: ilib.bind(this, function (data) {
 				ilib.data.mcc2reg = data;
@@ -111,7 +112,8 @@ ilib.PhoneLoc._mapCCtoRegion = function(cc) {
 		ilib.loadData({
 			name: "cc2reg.json",
 			object: ilib.PhoneLoc, 
-			locale: "-", 
+			//locale: "-", 
+			nonlocale: true,
 			sync: true,
 			callback: ilib.bind(this, function (data) {
 				ilib.data.cc2reg = data;
@@ -138,7 +140,8 @@ ilib.PhoneLoc._mapRegiontoCC = function(region) {
 		ilib.loadData({
 			name: "reg2cc.json",
 			object: ilib.PhoneLoc, 
-			locale: "-", 
+			//locale: "-",
+			nonlocale: true,
 			sync: true,
 			callback: ilib.bind(this, function (data) {
 				ilib.data.reg2cc = data;

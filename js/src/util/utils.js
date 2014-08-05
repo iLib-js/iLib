@@ -148,20 +148,26 @@ ilib.merge = function (object1, object2, name1, name2) {
  *  
  * @param {string} prefix prefix under ilib.data of the data to merge
  * @param {ilib.Locale} locale locale of the data being sought
+ * @param {boolean} returnOne if true, only return the most locale-specific data. If false,
+ * merge all the relevant locale data together.
  * @return {Object?} the merged locale data
  */
-ilib.mergeLocData = function (prefix, locale) {
+ilib.mergeLocData = function (prefix, locale, returnOne) {
 	var data = undefined;
 	var loc = locale || new ilib.Locale();
 	var foundLocaleData = false;
 	var property = prefix;
+	var mostSpecific;
+
 	data = ilib.data[prefix] || {};
+	mostSpecific = data;
 	
 	if (loc.getLanguage()) {
 		property = prefix + '_' + loc.getLanguage();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
 			data = ilib.merge(data, ilib.data[property]);
+			mostSpecific = ilib.data[property];
 		}
 	}
 	
@@ -170,6 +176,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		if (ilib.data[property]) {
 			foundLocaleData = true;
 			data = ilib.merge(data, ilib.data[property]);
+			mostSpecific = ilib.data[property];
 		}
 	}
 	
@@ -181,6 +188,7 @@ ilib.mergeLocData = function (prefix, locale) {
 			if (ilib.data[property]) {
 				foundLocaleData = true;
 				data = ilib.merge(data, ilib.data[property]);
+				mostSpecific = ilib.data[property];
 			}
 		}
 		
@@ -189,6 +197,7 @@ ilib.mergeLocData = function (prefix, locale) {
 			if (ilib.data[property]) {
 				foundLocaleData = true;
 				data = ilib.merge(data, ilib.data[property]);
+				mostSpecific = ilib.data[property];
 			}
 		}
 		
@@ -199,6 +208,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		if (ilib.data[property]) {
 			foundLocaleData = true;
 			data = ilib.merge(data, ilib.data[property]);
+			mostSpecific = ilib.data[property];
 		}
 	}
 
@@ -207,6 +217,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		if (ilib.data[property]) {
 			foundLocaleData = true;
 			data = ilib.merge(data, ilib.data[property]);
+			mostSpecific = ilib.data[property];
 		}
 	}
 
@@ -215,6 +226,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		if (ilib.data[property]) {
 			foundLocaleData = true;
 			data = ilib.merge(data, ilib.data[property]);
+			mostSpecific = ilib.data[property];
 		}
 	}
 
@@ -223,10 +235,11 @@ ilib.mergeLocData = function (prefix, locale) {
 		if (ilib.data[property]) {
 			foundLocaleData = true;
 			data = ilib.merge(data, ilib.data[property]);
+			mostSpecific = ilib.data[property];
 		}
 	}
 
-	return foundLocaleData ? data : undefined;
+	return foundLocaleData ? (returnOne ? mostSpecific : data) : undefined;
 };
 
 /**
@@ -545,16 +558,16 @@ ilib.loadData = function(params) {
 
 	var spec = ((!nonlocale && locale.getSpec().replace(/-/g, '_')) || "root") + "," + name + "," + String(ilib.hashCode(loadParams));
 	if (!object || typeof(object.cache[spec]) === 'undefined') {
-		var data;
+		var data, returnOne = (loadParams && loadParams.returnOne);
 		
 		if (type === "json") {
 			// console.log("type is json");
 			var basename = name.substring(0, name.lastIndexOf("."));
 			if (nonlocale) {
-				basename = name.replace(/\//g, '.').replace(/[\\\+\-]/g, "_");
+				basename = basename.replace(/\//g, '.').replace(/[\\\+\-]/g, "_");
 				data = ilib.data[basename];
 			} else {
-				data = ilib.mergeLocData(basename, locale);
+				data = ilib.mergeLocData(basename, locale, returnOne);
 			}
 			if (data) {
 				// console.log("found assembled data");

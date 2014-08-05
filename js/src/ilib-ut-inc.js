@@ -75,4 +75,8 @@ localematch.js
 normstring.js
 mapper.js
 maps/casemapper.js
+phone/phoneloc.js
+phone/numplan.js
+phone/phonenum.js
+phone/handler.js
 */

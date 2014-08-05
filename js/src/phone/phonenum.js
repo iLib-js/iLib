@@ -23,9 +23,10 @@ ilibglobal.js
 locale.js 
 localeinfo.js
 phone/numplan.js
+phone/phoneloc.js
 */
 
-// !data phone states
+// !data states idd
 
 /**
  * Create a new phone number instance that parses the phone number parameter for its 
@@ -142,12 +143,14 @@ phone/numplan.js
  */
 ilib.PhoneNumber = function(number, options) {
 	var locale,
+		phoneLocData,
 		plan,
 		stateData,
 		regionSettings;
 
 	if (options) {
-		this.locale = new ilib.PhoneLoc(options);
+		phoneLocData = new ilib.PhoneLoc(options);
+		this.locale = phoneLocData.locale;
 	} else {
 		this.locale = new ilib.Locale();
 	}
@@ -164,24 +167,14 @@ ilib.PhoneNumber = function(number, options) {
 
 	//console.log("PhoneNumber: locale is: " + this.locale + " parsing number: " + number);
 
-	/*ilib.loadData({
-		name: "idd.json",
-		object: ilib.PhoneNumber,
-		locale: "-",
-		//sync: true, 
-		callback: ilib.bind(this, function (data) {
-			ilib.data.idd = data;
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		})
-	});*/
-
 	ilib.loadData({
 		name: "states.json",
 		object: ilib.PhoneNumber,
 		locale: this.locale,
 		sync: true,
+		loadParams: {
+			returnOne: true
+		},
 		callback: ilib.bind(this, function (stdata) {
 			if (!stdata) {
 				stdata = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
@@ -354,21 +347,21 @@ ilib.PhoneNumber.prototype = {
 					// if the handler requested a special sub-table, use it for this round of parsing,
 					// otherwise, set it back to the regular table to continue parsing
 					if (result.states !== undefined) {
-						locale = result.locale; // push;
+						//locale = result.locale; // push;
 						ilib.loadData({
-							name: result.states,
+							name: result.states + ".json",
 							object: ilib.PhoneNumber,
-							locale: locale,
+							nonlocale: true,
 							callback: ilib.bind(this, function (data) {
 								stateData = data;
 								// recursively call the parser with the new states data
-								numplan = new ilib.NumPlan({locale:locale});
+								numplan = new ilib.NumPlan({locale:"-"});
 								regionSettings = {
 									stateData: stateData,
 									plan: numplan,
 									handler: ilib._handlerFactory(this.locale, plan)
 								};
-								//this._parseNumber(regionSettings);
+								this._parseNumber(number, regionSettings);
 								/*if (options && typeof(options.onLoad) === 'function') {
 									options.onLoad(this);
 								}*/
@@ -411,6 +404,10 @@ ilib.PhoneNumber.prototype = {
 	_getPrefix: function() {
 		return this.areaCode || this.serviceCode || this.mobilePrefix || "";
 	},
+	/*
+	 * @private
+	 * Exclusive or -- return true, if one is defined and the other isn't
+	 */
 	_xor : function(left, right) {
 		if ((left === undefined && right === undefined ) || (left !== undefined && right !== undefined)) {
 			return false;
@@ -501,7 +498,7 @@ ilib.PhoneNumber.prototype = {
 			// one that has the country code has something other than the current country
 			// add even more. Ignore the special cases where you can dial the same number internationally or via 
 			// the local numbering system
-			switch (this.locale.region) {
+			switch (this.locale.getRegion()) {
 			case 'FR':
 				if (this.countryCode in FRdepartments || other.countryCode in FRdepartments) {
 					if (this.areaCode !== other.areaCode || this.mobilePrefix !== other.mobilePrefix) {
@@ -582,7 +579,7 @@ ilib.PhoneNumber.prototype = {
 	equals: function equals(other) {
 		var p;
 		
-		if (other.locale && this.locale && !this.locale.equals(other.locale) && (!this.countryCode || !other.countryCode)) {
+		if (other.locale.locale && this.locale.locale && !this.locale.locale.equals(other.locale) && (!this.countryCode || !other.countryCode)) {
 			return false;
 		}
 		
