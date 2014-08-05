@@ -1211,15 +1211,15 @@ function testIslamicDateRoundTripConstruction() {
     	timezone: "local"
     });
     assertNotNull(id);
-    console.log("id is " + JSON.stringify(id, undefined, 4));
+    // console.log("id is " + JSON.stringify(id, undefined, 4));
     
     var u = id.getTime();
-    console.log("unixtime is " + u);
+    // console.log("unixtime is " + u);
     var id2 = new ilib.Date.IslamicDate({
     	unixtime: u,
     	timezone: "local"
     });
-    console.log("id2 is " + JSON.stringify(id2, undefined, 4));
+    // console.log("id2 is " + JSON.stringify(id2, undefined, 4));
     assertEquals(id.getTimeZone(), id2.getTimeZone());
     assertEquals(id.getYears(), id2.getYears());
     assertEquals(id.getMonths(), id2.getMonths());
@@ -1237,15 +1237,15 @@ function testIslamicDateRoundTripConstruction2() {
     	timezone: "America/Los_Angeles"
     });
     assertNotNull(id);
-    console.log("id is " + JSON.stringify(id, undefined, 4));
+    // console.log("id is " + JSON.stringify(id, undefined, 4));
     
     var u = id.getTime();
-    console.log("unixtime is " + u);
+    // console.log("unixtime is " + u);
     var id2 = new ilib.Date.IslamicDate({
     	unixtime: u,
     	timezone: "America/Los_Angeles"
     });
-    console.log("id2 is " + JSON.stringify(id2, undefined, 4));
+    // console.log("id2 is " + JSON.stringify(id2, undefined, 4));
     assertEquals(id.getTimeZone(), id2.getTimeZone());
     assertEquals(id.getYears(), id2.getYears());
     assertEquals(id.getMonths(), id2.getMonths());

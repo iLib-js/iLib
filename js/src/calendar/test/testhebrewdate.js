@@ -1277,3 +1277,55 @@ function testHebrewDateInitWithRDRightTimeZone() {
     
     assertEquals("local", gd.getTimeZone());
 }
+
+function testHebrewDateRoundTripConstruction() {
+    var hd = new ilib.Date.HebrewDate({
+    	year: 5775,
+    	month: 8,
+    	day: 10,
+    	timezone: "local"
+    });
+    assertNotNull(hd);
+    // console.log("hd is " + JSON.stringify(hd, undefined, 4));
+    
+    var u = hd.getTime();
+    // console.log("unixtime is " + u);
+    var hd2 = new ilib.Date.HebrewDate({
+    	unixtime: u,
+    	timezone: "local"
+    });
+    // console.log("hd2 is " + JSON.stringify(hd2, undefined, 4));
+    assertEquals(hd.getTimeZone(), hd2.getTimeZone());
+    assertEquals(hd.getYears(), hd2.getYears());
+    assertEquals(hd.getMonths(), hd2.getMonths());
+    assertEquals(hd.getDays(), hd2.getDays());
+    assertEquals(hd.getHours(), hd2.getHours());
+    assertEquals(hd.getMinutes(), hd2.getMinutes());
+    assertEquals(hd.getSeconds(), hd2.getSeconds());
+}
+
+function testHebrewDateRoundTripConstruction2() {
+    var hd = new ilib.Date.HebrewDate({
+    	year: 5775,
+    	month: 8,
+    	day: 10,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(hd);
+    // console.log("hd is " + JSON.stringify(hd, undefined, 4));
+    
+    var u = hd.getTime();
+    // console.log("unixtime is " + u);
+    var hd2 = new ilib.Date.HebrewDate({
+    	unixtime: u,
+    	timezone: "America/Los_Angeles"
+    });
+    // console.log("hd2 is " + JSON.stringify(hd2, undefined, 4));
+    assertEquals(hd.getTimeZone(), hd2.getTimeZone());
+    assertEquals(hd.getYears(), hd2.getYears());
+    assertEquals(hd.getMonths(), hd2.getMonths());
+    assertEquals(hd.getDays(), hd2.getDays());
+    assertEquals(hd.getHours(), hd2.getHours());
+    assertEquals(hd.getMinutes(), hd2.getMinutes());
+    assertEquals(hd.getSeconds(), hd2.getSeconds());
+}

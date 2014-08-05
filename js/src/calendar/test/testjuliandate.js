@@ -823,3 +823,55 @@ function testJulDateInitWithRDRightTimeZone() {
     
     assertEquals("local", gd.getTimeZone());
 }
+
+function testJulianDateRoundTripConstruction() {
+    var jd = new ilib.Date.JulDate({
+    	year: 2014,
+    	month: 10,
+    	day: 20,
+    	timezone: "local"
+    });
+    assertNotNull(jd);
+    // console.log("jd is " + JSON.stringify(jd, undefined, 4));
+    
+    var u = jd.getTime();
+    // console.log("unixtime is " + u);
+    var jd2 = new ilib.Date.JulDate({
+    	unixtime: u,
+    	timezone: "local"
+    });
+    // console.log("jd2 is " + JSON.stringify(jd2, undefined, 4));
+    assertEquals(jd.getTimeZone(), jd2.getTimeZone());
+    assertEquals(jd.getYears(), jd2.getYears());
+    assertEquals(jd.getMonths(), jd2.getMonths());
+    assertEquals(jd.getDays(), jd2.getDays());
+    assertEquals(jd.getHours(), jd2.getHours());
+    assertEquals(jd.getMinutes(), jd2.getMinutes());
+    assertEquals(jd.getSeconds(), jd2.getSeconds());
+}
+
+function testJulianDateRoundTripConstruction2() {
+    var jd = new ilib.Date.JulDate({
+    	year: 2014,
+    	month: 10,
+    	day: 20,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(jd);
+    // console.log("jd is " + JSON.stringify(jd, undefined, 4));
+    
+    var u = jd.getTime();
+    // console.log("unixtime is " + u);
+    var jd2 = new ilib.Date.JulDate({
+    	unixtime: u,
+    	timezone: "America/Los_Angeles"
+    });
+    // console.log("jd2 is " + JSON.stringify(jd2, undefined, 4));
+    assertEquals(jd.getTimeZone(), jd2.getTimeZone());
+    assertEquals(jd.getYears(), jd2.getYears());
+    assertEquals(jd.getMonths(), jd2.getMonths());
+    assertEquals(jd.getDays(), jd2.getDays());
+    assertEquals(jd.getHours(), jd2.getHours());
+    assertEquals(jd.getMinutes(), jd2.getMinutes());
+    assertEquals(jd.getSeconds(), jd2.getSeconds());
+}

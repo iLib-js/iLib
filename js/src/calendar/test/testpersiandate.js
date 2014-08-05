@@ -1669,3 +1669,55 @@ function testPersAlgoDateInitWithRDRightTimeZone() {
     
     assertEquals("local", pd.getTimeZone());
 }
+
+function testPersDateAlgoRoundTripConstruction() {
+    var pd = new ilib.Date.PersAlgoDate({
+    	year: 1393,
+    	month: 8,
+    	day: 12,
+    	timezone: "local"
+    });
+    assertNotNull(pd);
+    // console.log("pd is " + JSON.stringify(pd, undefined, 4));
+    
+    var u = pd.getTime();
+    // console.log("unixtime is " + u);
+    var pd2 = new ilib.Date.PersAlgoDate({
+    	unixtime: u,
+    	timezone: "local"
+    });
+    // console.log("pd2 is " + JSON.stringify(pd2, undefined, 4));
+    assertEquals(pd.getTimeZone(), pd2.getTimeZone());
+    assertEquals(pd.getYears(), pd2.getYears());
+    assertEquals(pd.getMonths(), pd2.getMonths());
+    assertEquals(pd.getDays(), pd2.getDays());
+    assertEquals(pd.getHours(), pd2.getHours());
+    assertEquals(pd.getMinutes(), pd2.getMinutes());
+    assertEquals(pd.getSeconds(), pd2.getSeconds());
+}
+
+function testPersDateAlgoRoundTripConstruction2() {
+    var pd = new ilib.Date.PersAlgoDate({
+    	year: 1393,
+    	month: 8,
+    	day: 12,
+    	timezone: "America/Los_Angeles"
+    });
+    assertNotNull(pd);
+    // console.log("pd is " + JSON.stringify(pd, undefined, 4));
+    
+    var u = pd.getTime();
+    // console.log("unixtime is " + u);
+    var pd2 = new ilib.Date.PersAlgoDate({
+    	unixtime: u,
+    	timezone: "America/Los_Angeles"
+    });
+    // console.log("pd2 is " + JSON.stringify(pd2, undefined, 4));
+    assertEquals(pd.getTimeZone(), pd2.getTimeZone());
+    assertEquals(pd.getYears(), pd2.getYears());
+    assertEquals(pd.getMonths(), pd2.getMonths());
+    assertEquals(pd.getDays(), pd2.getDays());
+    assertEquals(pd.getHours(), pd2.getHours());
+    assertEquals(pd.getMinutes(), pd2.getMinutes());
+    assertEquals(pd.getSeconds(), pd2.getSeconds());
+}

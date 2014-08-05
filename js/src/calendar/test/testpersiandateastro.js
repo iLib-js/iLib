@@ -1698,15 +1698,15 @@ function testPersDateAstroRoundTripConstruction() {
     	timezone: "local"
     });
     assertNotNull(pd);
-    console.log("pd is " + JSON.stringify(pd, undefined, 4));
+    // console.log("pd is " + JSON.stringify(pd, undefined, 4));
     
     var u = pd.getTime();
-    console.log("unixtime is " + u);
+    // console.log("unixtime is " + u);
     var pd2 = new ilib.Date.PersDate({
     	unixtime: u,
     	timezone: "local"
     });
-    console.log("pd2 is " + JSON.stringify(pd2, undefined, 4));
+    // console.log("pd2 is " + JSON.stringify(pd2, undefined, 4));
     assertEquals(pd.getTimeZone(), pd2.getTimeZone());
     assertEquals(pd.getYears(), pd2.getYears());
     assertEquals(pd.getMonths(), pd2.getMonths());
@@ -1724,15 +1724,15 @@ function testPersDateAstroRoundTripConstruction2() {
     	timezone: "America/Los_Angeles"
     });
     assertNotNull(pd);
-    console.log("pd is " + JSON.stringify(pd, undefined, 4));
+    // console.log("pd is " + JSON.stringify(pd, undefined, 4));
     
     var u = pd.getTime();
-    console.log("unixtime is " + u);
+    // console.log("unixtime is " + u);
     var pd2 = new ilib.Date.PersDate({
     	unixtime: u,
     	timezone: "America/Los_Angeles"
     });
-    console.log("pd2 is " + JSON.stringify(pd2, undefined, 4));
+    // console.log("pd2 is " + JSON.stringify(pd2, undefined, 4));
     assertEquals(pd.getTimeZone(), pd2.getTimeZone());
     assertEquals(pd.getYears(), pd2.getYears());
     assertEquals(pd.getMonths(), pd2.getMonths());

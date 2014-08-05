@@ -112,7 +112,7 @@ ilib.Date.PersAlgoRataDie.prototype._setDateComponents = function(date) {
 		86400000;
 	
 	/*
-	console.log("getRataDie: converting " +  JSON.stringify(this));
+	// console.log("getRataDie: converting " +  JSON.stringify(this));
 	console.log("getRataDie: year is " +  year);
 	console.log("getRataDie: rd of years is " +  rdOfYears);
 	console.log("getRataDie: day in year is " +  dayInYear);
