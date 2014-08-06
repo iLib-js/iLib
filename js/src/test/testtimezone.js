@@ -1260,6 +1260,15 @@ function testTZGetRawOffsetMillisNonDSTZone() {
     assertEquals(-25200000, tz.getRawOffsetMillis());
 }
 
+function testTZGetRawOffsetMillisLocal() {
+	// this should work in any time zone that this test is run in
+    var tz = new ilib.TimeZone({id: "local"});
+    assertNotNull(tz);
+    
+    var expected = new Date(2014,0,1).getTimezoneOffset() * 60 * -1000;
+    
+    assertEquals(expected, tz.getRawOffsetMillis());
+}
 
 function testTZGetTimeZoneForLocale() {
     var tz = new ilib.TimeZone({locale: "nl-NL"});

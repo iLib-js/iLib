@@ -146,9 +146,10 @@ ilib.TimeZone = function(options) {
 				// take the negative to get the correct offset
 				this.offsetJan1 = -jan1.getTimezoneOffset();
 				this.offsetJun1 = -jun1.getTimezoneOffset();
-				// the offset of the standard time for the time zone is always the one that is largest of 
-				// the two, no matter whether you are in the northern or southern hemisphere
-				this.offset = Math.max(this.offsetJan1, this.offsetJun1);
+				// the offset of the standard time for the time zone is always the one that is closest 
+				// to negative infinity of the two, no matter whether you are in the northern or southern 
+				// hemisphere, east or west
+				this.offset = Math.min(this.offsetJan1, this.offsetJun1);
 			}
 			this.id = id;
 		} else if (options.offset) {
