@@ -1,9 +1,36 @@
 /*
- * @name handler.js
- * @fileOverview class to handle phone number parse states
+ * handler.js - Handle phone number parse states
  * 
- * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS 
+
+
+
+
+
+
+ OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
+
+/*
+!depends 
+ilibglobal.js 
+locale.js 
+localeinfo.js
+phone/numplan.js
+*/
 
 /*globals console ilib PhoneLoc */
 
@@ -171,7 +198,7 @@ ilib.StateHandler.prototype = {
 	
 			ret = {
 				number: number.substring(currentChar+1),
-				push: new ilib.Locale('_idd')    // shared subtable that parses the country code
+				states: new ilib.Locale('_idd')    // shared subtable that parses the country code
 			};
 		}
 		
@@ -185,13 +212,13 @@ ilib.StateHandler.prototype = {
 		// parse the rest of the number with the regular table for this locale
 		fields.countryCode = number.substring(0, currentChar+1);
 		cc = fields.countryCode.replace(/[wWpPtT\+#\*]/g, ''); // fix for NOV-108200
-		locale = new ilib.PhoneLoc({countryCode: cc});
+		locale = new ilib.Locale.PhoneLoc({countryCode: cc});
 		
 		// console.log("Found country code " + fields.countryCode + ". Switching to country " + locale.region + " to parse the rest of the number");
 		
 		ret = {
 			number: number.substring(currentChar+1),
-			push: locale
+			states: locale
 		};
 		
 		return ret;
@@ -433,10 +460,11 @@ ilib.USStateHandler.prototype.vsc = function (number, currentChar, fields, regio
 };
 
 ilib._handlerFactory = function (locale, plan) {
-	if (typeof(plan.contextFree) === 'boolean' && plan.contextFree === false) {
+	//[Q] plan.contextFree.
+	/*if (plan.contextFree && typeof(plan.contextFree) === 'boolean' && plan.contextFree === false) {
 		return new ilib.CSStateHandler();
-	}
-	var region = (locale && locale.region) || "ZZ";
+	}*/
+	var region = (locale && locale.getRegion()) || "ZZ";
 	switch (region) {
 	case 'US':
 		return new ilib.USStateHandler();

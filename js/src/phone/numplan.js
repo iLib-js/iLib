@@ -165,7 +165,7 @@ ilib.NumPlan.prototype = {
 	usesExtendedAreaCodes: function () {
 		return this.npdata.usesExtendedAreaCodes;
 	},
-	
+
 	/**
 	 * Return a string containing all of the common format characters
 	 * used to format numbers.

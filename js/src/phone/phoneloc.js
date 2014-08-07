@@ -33,12 +33,11 @@ localeinfo.js
  * @class
  *
  */
-ilib.PhoneLoc = function(options) {
-	this.locale = new ilib.Locale();
-
+ilib.Locale.PhoneLoc = function(options) {
+	
 	if (options) {
 		if (options.mcc) {
-			this.region = ilib.PhoneLoc._mapMCCtoRegion(options.mcc);
+			this.region = this._mapMCCtoRegion(options.mcc);
 		}
 		
 		if (options.locale) {
@@ -47,24 +46,42 @@ ilib.PhoneLoc = function(options) {
 		}
 
 		if (options.countryCode) {
-			this.region = ilib.PhoneLoc._mapCCtoRegion(options.countryCode);
+			this.region = this._mapCCtoRegion(options.countryCode);
 		}
 	}
 	
 	if (!this.region) {
+		this.locale = new ilib.Locale();
 		this.region = this.locale.region
 	}
+	//this.language = this.locale.language;
+	//this.variant = this.locale.varient;
+	this.region = this._normPhoneReg(this.region);
+	this.spec = this.language + "-" + this.region;
 
-	this.region = ilib.PhoneLoc._normPhoneReg(this.region);
+	return this;
 };
+
+ilib.Locale.PhoneLoc.prototype = new ilib.Locale();
+ilib.Locale.PhoneLoc.prototype.parent = ilib.Locale();
+ilib.Locale.PhoneLoc.prototype.constructor = ilib.Locale.PhoneLoc;
 
 /**
  * Return the ISO country code for the region of this phone locale.
  *
  * @return {string} The ISO code for the region of this phone locale.
  */
-ilib.PhoneLoc.prototype.getRegion = function() {
+ilib.Locale.PhoneLoc.prototype.getRegion = function() {
 	return this.region;
+};
+
+/**
+ * Return the whole locale specifier as a string.
+ *
+  * @return {string} the locale specifier
+ */
+ilib.Locale.PhoneLoc.prototype.getSpec = function() {
+	return this.spec;
 };
 
 /**
@@ -75,7 +92,8 @@ ilib.PhoneLoc.prototype.getRegion = function() {
  * @param {string} mcc MCC string to parse
  * @return {Object} components of the MCC number
  */
-ilib.PhoneLoc._mapMCCtoRegion = function(mcc) {
+
+ilib.Locale.PhoneLoc.prototype._mapMCCtoRegion = function(mcc) {
 	if (!mcc) {
 		return undefined;
 	}
@@ -83,7 +101,7 @@ ilib.PhoneLoc._mapMCCtoRegion = function(mcc) {
 	if (typeof(ilib.data.mcc2reg) === 'undefined') {
 		ilib.loadData({
 			name: "mcc2reg.json",
-			object: ilib.PhoneLoc, 
+			object: ilib.Locale.PhoneLoc, 
 			nonlocale: true,
 			sync: true,
 			callback: ilib.bind(this, function (data) {
@@ -102,7 +120,7 @@ ilib.PhoneLoc._mapMCCtoRegion = function(mcc) {
  * @param {string} cc CC string to parse
  * @return {Object} components of the CC number
  */
-ilib.PhoneLoc._mapCCtoRegion = function(cc) {
+ilib.Locale.PhoneLoc.prototype._mapCCtoRegion = function(cc) {
 	if (!cc) {
 		return undefined;
 	}
@@ -110,7 +128,7 @@ ilib.PhoneLoc._mapCCtoRegion = function(cc) {
 	if (typeof(ilib.data.cc2reg) === 'undefined') {
 		ilib.loadData({
 			name: "cc2reg.json",
-			object: ilib.PhoneLoc, 
+			object: ilib.Locale.PhoneLoc, 
 			nonlocale: true,
 			sync: true,
 			callback: ilib.bind(this, function (data) {
@@ -129,7 +147,7 @@ ilib.PhoneLoc._mapCCtoRegion = function(cc) {
  * @param {string} region Region string to parse
  * @return {Object} components of the CC number
  */
-ilib.PhoneLoc._mapRegiontoCC = function(region) {
+ilib.Locale.PhoneLoc.prototype._mapRegiontoCC = function(region) {
 	if (!region) {
 		return undefined;
 	}
@@ -137,7 +155,7 @@ ilib.PhoneLoc._mapRegiontoCC = function(region) {
 	if (typeof(ilib.data.reg2cc) === 'undefined') {
 		ilib.loadData({
 			name: "reg2cc.json",
-			object: ilib.PhoneLoc, 
+			object: ilib.Locale.PhoneLoc, 
 			nonlocale: true,
 			sync: true,
 			callback: ilib.bind(this, function (data) {
@@ -153,7 +171,7 @@ ilib.PhoneLoc._mapRegiontoCC = function(region) {
 * Return the region that controls the dialing plan in the given
 * region. (ie. the "normalized phone region".)
 */
-ilib.PhoneLoc._normPhoneReg = function(region) {
+ilib.Locale.PhoneLoc.prototype._normPhoneReg = function(region) {
 	var norm;
 	
 	// Map all NANP regions to the right region, so that they get parsed using the 

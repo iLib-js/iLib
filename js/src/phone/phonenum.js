@@ -149,7 +149,7 @@ ilib.PhoneNumber = function(number, options) {
 		regionSettings;
 
 	if (options) {
-		phoneLocData = new ilib.PhoneLoc(options);
+		phoneLocData = new ilib.Locale.PhoneLoc(options);
 		this.locale = phoneLocData.locale;
 	} else {
 		this.locale = new ilib.Locale();
@@ -187,6 +187,7 @@ ilib.PhoneNumber = function(number, options) {
 				plan: plan,
 				handler : ilib._handlerFactory(this.locale, plan)
 			};
+			number = ilib.PhoneNumber._stripFormatting(number);
 
 			this._parseNumber(number, regionSettings);
 			if (options && typeof(options.onLoad) === 'function') {
@@ -303,14 +304,11 @@ ilib.PhoneNumber.prototype = {
 			regionSettings,
 			state = 0, //begin state
 			newState,
-			stateTable,
 			dot,
 			handlerMethod,
 			result,
-			temp,
 			numplan;
 
-		number = ilib.PhoneNumber._stripFormatting(number);
 		regionSettings = regionData;
 		stateData = regionSettings.stateData;
 		dot = 14; //[Q] special transition which matches all characters. See AreaCodeTableMaker.java
@@ -347,8 +345,8 @@ ilib.PhoneNumber.prototype = {
 					// if the handler requested a special sub-table, use it for this round of parsing,
 					// otherwise, set it back to the regular table to continue parsing
 					if (result.states !== undefined) {
-						//locale = result.locale; // push;
-						ilib.loadData({
+						if (typeof result.states === "string") {
+							ilib.loadData({
 							name: result.states + ".json",
 							object: ilib.PhoneNumber,
 							nonlocale: true,
@@ -356,17 +354,38 @@ ilib.PhoneNumber.prototype = {
 								stateData = data;
 								// recursively call the parser with the new states data
 								numplan = new ilib.NumPlan({locale:"-"});
-								regionSettings = {
-									stateData: stateData,
-									plan: numplan,
-									handler: ilib._handlerFactory(this.locale, plan)
-								};
-								this._parseNumber(number, regionSettings);
+								
 								/*if (options && typeof(options.onLoad) === 'function') {
 									options.onLoad(this);
 								}*/
+								})
 							})
-						})
+						} else {
+							ilib.loadData({
+							name: "states.json",
+							object: ilib.PhoneNumber,
+							locale: result.states,
+							loadParams: {
+								returnOne: true
+							},
+							callback: ilib.bind(this, function (data) {
+								stateData = data;
+								// recursively call the parser with the new states data
+								numplan = new ilib.NumPlan({locale:result.states});
+
+								/*if (options && typeof(options.onLoad) === 'function') {
+									options.onLoad(this);
+								}*/
+								})
+							})
+						}
+
+						regionSettings = {
+							stateData: stateData,
+							plan: numplan,
+							handler: ilib._handlerFactory(this.locale, numplan)
+						};
+						//this._parseNumber(number, regionSettings);
 					} else if (result.skipTrunk !== undefined) {
 						ch = ilib.PhoneNumber._getCharacterCode(regionSettings.plan.getTrunkCode());
 						state = stateData[state][ch];
@@ -386,16 +405,16 @@ ilib.PhoneNumber.prototype = {
 				// not a digit, plus, pound, or star, so this is probably a formatting char. Skip it.
 				i++;
 			}
+		}
+		if (state > 0 && i > 0) {
+			// we reached the end of the phone number, but did not finish recognizing anything. 
+			// Default to last resort and put everything that is left into the subscriber number
+			//console.log("Reached end of number before parsing was complete. Using handler for method none.")
+			if (number.charAt(0) === '^') {
+				result = regionSettings.handler.none(number.slice(1), i-1, this, regionSettings);
+			} else {
+				result = regionSettings.handler.none(number, i, this, regionSettings);
 			}
-			if (state > 0 && i > 0) {
-				// we reached the end of the phone number, but did not finish recognizing anything. 
-				// Default to last resort and put everything that is left into the subscriber number
-				//console.log("Reached end of number before parsing was complete. Using handler for method none.")
-				if (number.charAt(0) === '^') {
-					result = regionSettings.handler.none(number.slice(1), i-1, this, regionSettings);
-				} else {
-					result = regionSettings.handler.none(number, i, this, regionSettings);
-				}
 		}
 	},
 	/**
@@ -481,8 +500,8 @@ ilib.PhoneNumber.prototype = {
 			ITcountries = {"378":1, "379":1},
 			thisPrefix,
 			otherPrefix,
-			currentCountryCode = ilib.PhoneLoc._mapRegiontoCC(this.locale.region);
-
+			currentCountryCode = ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(this.locale.region);
+																
 		// subscriber number must be present and must match
 		if (!this.subscriberNumber || !other.subscriberNumber || this.subscriberNumber !== other.subscriberNumber) {
 			return 0;
@@ -525,7 +544,29 @@ ilib.PhoneNumber.prototype = {
 				}
 			}
 		} else if (this.countryCode !== other.countryCode) {
-
+			// ignore the special cases where you can dial the same number internationally or via 
+			// the local numbering system
+			if (other.countryCode === '33' || this.countryCode === '33') {
+				// france
+				if (this.countryCode in FRdepartments || other.countryCode in FRdepartments) {
+					if (this.areaCode !== other.areaCode || this.mobilePrefix !== other.mobilePrefix) {
+						match -= 100;
+					}
+				} else {
+					match -= 100;
+				}
+			} else if (this.countryCode === '39' || other.countryCode === '39') {
+				// italy
+				if (this.countryCode in ITcountries || other.countryCode in ITcountries) { 
+					if (this.areaCode !== other.areaCode) {
+						match -= 100;
+					}
+				} else {
+					match -= 100;
+				}
+			} else {
+				match -= 100;
+			}
 		}
 
 		if (this._xor(this.serviceCode, other.serviceCode)) {
@@ -579,7 +620,7 @@ ilib.PhoneNumber.prototype = {
 	equals: function equals(other) {
 		var p;
 		
-		if (other.locale.locale && this.locale.locale && !this.locale.locale.equals(other.locale) && (!this.countryCode || !other.countryCode)) {
+		if (other.locale && this.locale && !this.locale.equals(other.locale) && (!this.countryCode || !other.countryCode)) {
 			return false;
 		}
 		

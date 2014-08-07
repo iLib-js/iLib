@@ -117,8 +117,7 @@ function testNumberMatchFRDepartmentsDifferentCountryCodes(){
 	
 	assertEquals(100, left.compare(right));
 };
-/*
-[Q] value 0
+
 function testNumberMatchFRDifferentSN(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -134,7 +133,6 @@ function testNumberMatchFRDifferentSN(){
 	
 	assertEquals(20, left.compare(right));	
 };
-*/
 
 function testNumberMatchUSTrunk(){
 	var left = new ilib.PhoneNumber({
@@ -220,7 +218,6 @@ function testNumberMatchUSTrunkWrongLocaleReverse(){
 	assertEquals(100, right.compare(left));
 };
 
-
 function testNumberMatchUSMissingArea(){
 	var left = new ilib.PhoneNumber({
 		trunkAccess: "1",
@@ -272,8 +269,7 @@ function testNumberMatchUSDifferentAreaReverse(){
 	
 	assertEquals(0, right.compare(left));
 };
-/*
-[Q] value : 100
+
 function testNumberMatchUSCompletelyDifferentCountryCodes(){
 	// different area codes, where neither is the US
 	var left = new ilib.PhoneNumber({
@@ -291,9 +287,7 @@ function testNumberMatchUSCompletelyDifferentCountryCodes(){
 	
 	assertEquals(0, left.compare(right));
 };
-*/
-/*
-[Q] value : 68.
+
 function testNumberMatchUSMissingCountryCodeThisCountry(){
 	// missing area code, where the one that is present is the same as the locale
 	var left = new ilib.PhoneNumber({
@@ -309,8 +303,7 @@ function testNumberMatchUSMissingCountryCodeThisCountry(){
 	
 	assertEquals(84, left.compare(right));
 };
-*/
-/* [Q] value : 68
+
 function testNumberMatchUSMissingCountryCodeThisCountryReverse(){
 	// missing area code, where the one that is present is the same as the locale
 	var left = new ilib.PhoneNumber({
@@ -326,7 +319,7 @@ function testNumberMatchUSMissingCountryCodeThisCountryReverse(){
 	
 	assertEquals(84, right.compare(left));
 };
-*/
+
 function testNumberMatchUSMissingCountryCodeOtherCountry(){
 	// missing area codes, where the one that is present is not the same as the current locale (US)
 	var left = new ilib.PhoneNumber({
@@ -724,7 +717,7 @@ function testNumberMatchMobileVsLDNumber(){
 };
 
 //for bug NOV-118901
-/* [Q] value : 68
+
 function testNumberMatchSG(){
 	var location;
 	var left = new ilib.PhoneNumber({
@@ -738,7 +731,7 @@ function testNumberMatchSG(){
 	
 	assertEquals(84, left.compare(right));
 };
-*/
+
 function testNumberMatchSGWrongLocale(){
 	var location;
 	var left = new ilib.PhoneNumber({
@@ -764,7 +757,7 @@ function testStringsNumberMatchITSanMarinoDifferentCountryCodes(){
 		right = new ilib.PhoneNumber('+39 0549 123 456', {locale: "en-US"});
 	assertEquals(100, left.compare(right));
 };
-/*
+
 function testStringsNumberMatchITSanMarinoMissingCountryCodes(){
 	var left = new ilib.PhoneNumber('+378 0549 123 456', {locale: "it-IT"}),
 		right = new ilib.PhoneNumber('0549 123 456', {locale: "it-IT"});
@@ -848,7 +841,7 @@ function testStringsNumberMatchDEDifferentExtensionReverse(){
 		right = new ilib.PhoneNumber('02203/123456-833', {locale: "de-DE"});
 	assertEquals(0, left.compare(right));	
 };
-*/
+
 
 function testEqualsNotEqual(){
 	var left = new ilib.PhoneNumber({
