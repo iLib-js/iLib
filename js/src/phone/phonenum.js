@@ -150,7 +150,7 @@ ilib.PhoneNumber = function(number, options) {
 
 	if (options) {
 		phoneLocData = new ilib.Locale.PhoneLoc(options);
-		this.locale = phoneLocData.locale;
+		this.locale = phoneLocData;
 	} else {
 		this.locale = new ilib.Locale();
 	}
@@ -369,6 +369,9 @@ ilib.PhoneNumber.prototype = {
 								returnOne: true
 							},
 							callback: ilib.bind(this, function (data) {
+								if (!data) {
+									data = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
+								}
 								stateData = data;
 								// recursively call the parser with the new states data
 								numplan = new ilib.NumPlan({locale:result.states});
@@ -385,7 +388,6 @@ ilib.PhoneNumber.prototype = {
 							plan: numplan,
 							handler: ilib._handlerFactory(this.locale, numplan)
 						};
-						//this._parseNumber(number, regionSettings);
 					} else if (result.skipTrunk !== undefined) {
 						ch = ilib.PhoneNumber._getCharacterCode(regionSettings.plan.getTrunkCode());
 						state = stateData[state][ch];
@@ -627,15 +629,15 @@ ilib.PhoneNumber.prototype = {
 		for (p in other) {
 			if (p !== undefined && this[p] !== undefined && typeof(this[p]) !== 'object') {
 				if (other[p] === undefined) {
-					console.error("PhoneNumber.equals: other is missing property " + p + " which has the value " + this[p] + " in this");
+					/*console.error("PhoneNumber.equals: other is missing property " + p + " which has the value " + this[p] + " in this");
 					console.error("this is : " + JSON.stringify(this));
-					console.error("other is: " + JSON.stringify(other));
+					console.error("other is: " + JSON.stringify(other));*/
 					return false;
 				}
 				if (this[p] !== other[p]) {
-					console.error("PhoneNumber.equals: difference in property " + p);
+					/*console.error("PhoneNumber.equals: difference in property " + p);
 					console.error("this is : " + JSON.stringify(this));
-					console.error("other is: " + JSON.stringify(other));
+					console.error("other is: " + JSON.stringify(other));*/
 					return false;
 				}
 			}
@@ -643,15 +645,15 @@ ilib.PhoneNumber.prototype = {
 		for (p in other) {
 			if (p !== undefined && other[p] !== undefined && typeof(other[p]) !== 'object') {
 				if (this[p] === undefined) {
-					console.error("PhoneNumber.equals: this is missing property " + p + " which has the value " + other[p] + " in the other");
+					/*console.error("PhoneNumber.equals: this is missing property " + p + " which has the value " + other[p] + " in the other");
 					console.error("this is : " + JSON.stringify(this));
-					console.error("other is: " + JSON.stringify(other));
+					console.error("other is: " + JSON.stringify(other));*/
 					return false;
 				}
 				if (this[p] !== other[p]) {
-					console.error("PhoneNumber.equals: difference in property " + p);
+					/*console.error("PhoneNumber.equals: difference in property " + p);
 					console.error("this is : " + JSON.stringify(this));
-					console.error("other is: " + JSON.stringify(other));
+					console.error("other is: " + JSON.stringify(other));*/
 					return false;
 				}
 			}

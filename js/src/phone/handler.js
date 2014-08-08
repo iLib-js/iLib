@@ -11,14 +11,7 @@
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS 
-
-
-
-
-
-
- OF ANY KIND, either express or implied.
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  *
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -35,7 +28,6 @@ phone/numplan.js
 /*globals console ilib PhoneLoc */
 
 //* @protected
-
 ilib.StateHandler = function _StateHandler () {
 	return this;
 };
@@ -198,7 +190,7 @@ ilib.StateHandler.prototype = {
 	
 			ret = {
 				number: number.substring(currentChar+1),
-				states: new ilib.Locale('_idd')    // shared subtable that parses the country code
+				states: 'idd'    // shared subtable that parses the country code
 			};
 		}
 		
@@ -460,10 +452,9 @@ ilib.USStateHandler.prototype.vsc = function (number, currentChar, fields, regio
 };
 
 ilib._handlerFactory = function (locale, plan) {
-	//[Q] plan.contextFree.
-	/*if (plan.contextFree && typeof(plan.contextFree) === 'boolean' && plan.contextFree === false) {
+	if (plan.getContextFree() !== undefined && typeof(plan.getContextFree()) === 'boolean' && plan.getContextFree() === false) {
 		return new ilib.CSStateHandler();
-	}*/
+	}
 	var region = (locale && locale.getRegion()) || "ZZ";
 	switch (region) {
 	case 'US':

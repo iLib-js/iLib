@@ -89,7 +89,7 @@ ilib.NumPlan = function (options) {
 		loadParams: loadParams, 
 		callback: ilib.bind(this, function (npdata) {
 			if (!npdata) {
-				npdata = ilib.data.numplan || {
+				npdata = {
 					"region": "XX",
 					"skipTrunk": false,
 					"trunkCode": "0",
@@ -164,6 +164,15 @@ ilib.NumPlan.prototype = {
 	 */
 	usesExtendedAreaCodes: function () {
 		return this.npdata.usesExtendedAreaCodes;
+	},
+
+	/** [Need Comment]
+	 * Return a contextFree
+	 * 
+	 * @return {boolean}
+	 */
+	getContextFree: function() {
+		return this.npdata.contextFree;
 	},
 
 	/**

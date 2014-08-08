@@ -48,6 +48,19 @@ function testGetDefault() {
 	assertEquals("US", plan.getName());
 };
 
+
+function testGetContextFreeContent() {
+	var plan = new ilib.NumPlan({locale: "en-GB"});
+	assertNotUndefined(plan);
+	assertEquals(false, plan.getContextFree());
+};
+
+function testGetContextFreeContent() {
+	var plan = new ilib.NumPlan({locale: "en-US"});
+	assertNotUndefined(plan);
+	assertEquals(undefined, plan.getContextFree());
+};
+
 function testRightContents() {
 	var plan = new ilib.NumPlan({locale: "en-US"});
 	assertNotUndefined(plan);

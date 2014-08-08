@@ -34,36 +34,38 @@ localeinfo.js
  *
  */
 ilib.Locale.PhoneLoc = function(options) {
-	
+	var region;
+	this.locale = new ilib.Locale();
+
 	if (options) {
-		if (options.mcc) {
-			this.region = this._mapMCCtoRegion(options.mcc);
-		}
-		
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-			this.region = this.locale.region;			
+			region = this.locale.region;			
 		}
 
+		if (options.mcc) {
+			region = this._mapMCCtoRegion(options.mcc);
+		}
+		
 		if (options.countryCode) {
-			this.region = this._mapCCtoRegion(options.countryCode);
+			region = this._mapCCtoRegion(options.countryCode);
 		}
 	}
 	
-	if (!this.region) {
+	if (!region) {
 		this.locale = new ilib.Locale();
-		this.region = this.locale.region
+		region = this.locale.region
 	}
-	//this.language = this.locale.language;
-	//this.variant = this.locale.varient;
-	this.region = this._normPhoneReg(this.region);
+	this.language = this.locale.language;
+	this.variant = this.locale.varient;
+	this.region = this._normPhoneReg(region);
 	this.spec = this.language + "-" + this.region;
 
 	return this;
 };
 
 ilib.Locale.PhoneLoc.prototype = new ilib.Locale();
-ilib.Locale.PhoneLoc.prototype.parent = ilib.Locale();
+ilib.Locale.PhoneLoc.prototype.parent = ilib.Locale;
 ilib.Locale.PhoneLoc.prototype.constructor = ilib.Locale.PhoneLoc;
 
 /**
@@ -95,7 +97,7 @@ ilib.Locale.PhoneLoc.prototype.getSpec = function() {
 
 ilib.Locale.PhoneLoc.prototype._mapMCCtoRegion = function(mcc) {
 	if (!mcc) {
-		return undefined;
+		return null;
 	}
 
 	if (typeof(ilib.data.mcc2reg) === 'undefined') {
@@ -122,7 +124,7 @@ ilib.Locale.PhoneLoc.prototype._mapMCCtoRegion = function(mcc) {
  */
 ilib.Locale.PhoneLoc.prototype._mapCCtoRegion = function(cc) {
 	if (!cc) {
-		return undefined;
+		return null;
 	}
 
 	if (typeof(ilib.data.cc2reg) === 'undefined') {
@@ -149,7 +151,7 @@ ilib.Locale.PhoneLoc.prototype._mapCCtoRegion = function(cc) {
  */
 ilib.Locale.PhoneLoc.prototype._mapRegiontoCC = function(region) {
 	if (!region) {
-		return undefined;
+		return null;
 	}
 
 	if (typeof(ilib.data.reg2cc) === 'undefined') {
