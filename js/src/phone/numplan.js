@@ -165,7 +165,6 @@ ilib.NumPlan.prototype = {
 	usesExtendedAreaCodes: function () {
 		return this.npdata.usesExtendedAreaCodes;
 	},
-
 	/** [Need Comment]
 	 * Return a contextFree
 	 * 
@@ -173,6 +172,14 @@ ilib.NumPlan.prototype = {
 	 */
 	getContextFree: function() {
 		return this.npdata.contextFree;
+	},
+	/** [Need Comment]
+	 * Return a findExtensions
+	 * 
+	 * @return {boolean}
+	 */
+	getFindExtensions: function() {
+		return this.npdata.findExtensions;
 	},
 
 	/**

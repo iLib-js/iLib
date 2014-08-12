@@ -25,14 +25,23 @@ localeinfo.js
 phone/numplan.js
 */
 
-/*globals console ilib PhoneLoc */
-
-//* @protected
+/**
+ * [Need Comments] globals console ilib PhoneLoc 
+ *
+ * @class
+ * @constructor
+ */
 ilib.StateHandler = function _StateHandler () {
 	return this;
 };
 
 ilib.StateHandler.prototype = {
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	processSubscriberNumber: function(number, fields, regionSettings) {
 		var last;
 		
@@ -55,7 +64,16 @@ ilib.StateHandler.prototype = {
 			fields.invalid = true;
 		}
 	},
-	
+	/**
+	 * @private
+	 * @param {string} fieldName 
+	 * @param {number} length length of phone number
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 * @param {boolean} noExtractTrunk 
+	 */
 	processFieldWithSubscriberNumber: function(fieldName, length, number, currentChar, fields, regionSettings, noExtractTrunk) {
 		var ret, end, last;
 		
@@ -98,7 +116,15 @@ ilib.StateHandler.prototype = {
 
 		return ret;
 	},
-
+	/**
+	 * @private
+	 * @param {string} fieldName 
+	 * @param {number} length length of phone number
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	processField: function(fieldName, length, number, currentChar, fields, regionSettings) {
 		var ret = {}, end;
 		
@@ -135,7 +161,13 @@ ilib.StateHandler.prototype = {
 		
 		return ret;
 	},
-
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	trunk: function(number, currentChar, fields, regionSettings) {
 		var ret, trunkLength;
 		
@@ -155,7 +187,13 @@ ilib.StateHandler.prototype = {
 		
 		return ret;
 	},
-
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	plus: function(number, currentChar, fields, regionSettings) {
 		var ret = {};
 		
@@ -175,7 +213,13 @@ ilib.StateHandler.prototype = {
 		}		
 		return ret;
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	idd: function(number, currentChar, fields, regionSettings) {
 		var ret = {};
 		
@@ -196,7 +240,13 @@ ilib.StateHandler.prototype = {
 		
 		return ret;
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */	
 	country: function(number, currentChar, fields, regionSettings) {
 		var ret, cc, locale;
 		
@@ -215,15 +265,33 @@ ilib.StateHandler.prototype = {
 		
 		return ret;
 	},
-
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	cic: function(number, currentChar, fields, regionSettings) {
 		return this.processField('cic', regionSettings.plan.getFieldLength('cic'), number, currentChar, fields, regionSettings);
 	},
-
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	service: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('serviceCode'), number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('serviceCode'), number, currentChar, fields, regionSettings, false);
 	},
-
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	area: function(number, currentChar, fields, regionSettings) {
 		var ret, last, end, localLength;
 		
@@ -275,7 +343,7 @@ ilib.StateHandler.prototype = {
 		}
 		
 		// extensions are separated from the number by a dash in Germany
-		if (regionSettings.plan.findExtensions !== undefined && fields.subscriberNumber !== undefined) {
+		if (regionSettings.plan.getFindExtensions() !== undefined && fields.subscriberNumber !== undefined) {
 			var dash = fields.subscriberNumber.indexOf("-");
 			if (dash > -1) {
 				fields.subscriberNumber = fields.subscriberNumber.substring(0, dash);
@@ -289,7 +357,13 @@ ilib.StateHandler.prototype = {
 
 		return ret;
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	none: function(number, currentChar, fields, regionSettings) {
 		var ret;
 		
@@ -316,7 +390,13 @@ ilib.StateHandler.prototype = {
 		
 		return ret;
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	vsc: function(number, currentChar, fields, regionSettings) {
 		var ret, length, end;
 
@@ -348,54 +428,126 @@ ilib.StateHandler.prototype = {
 
 		return ret;
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	cell: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('mobilePrefix', regionSettings.plan.getFieldLength('mobilePrefix'), number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('mobilePrefix', regionSettings.plan.getFieldLength('mobilePrefix'), number, currentChar, fields, regionSettings, false);
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	personal: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('personal'), number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('personal'), number, currentChar, fields, regionSettings, false);
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	emergency: function(number, currentChar, fields, regionSettings) {
 		return this.processFieldWithSubscriberNumber('emergency', regionSettings.plan.getFieldLength('emergency'), number, currentChar, fields, regionSettings, true);
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	premium: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('premium'), number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('premium'), number, currentChar, fields, regionSettings, false);
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	special: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('special'), number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('special'), number, currentChar, fields, regionSettings, false);
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	service2: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('service2'), number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('service2'), number, currentChar, fields, regionSettings, false);
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	service3: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('service3'), number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('service3'), number, currentChar, fields, regionSettings, false);
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	service4: function(number, currentChar, fields, regionSettings) {
-		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('service4'), number, currentChar, fields, regionSettings);
+		return this.processFieldWithSubscriberNumber('serviceCode', regionSettings.plan.getFieldLength('service4'), number, currentChar, fields, regionSettings, false);
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	cic2: function(number, currentChar, fields, regionSettings) {
 		return this.processField('cic', regionSettings.plan.getFieldLength('cic2'), number, currentChar, fields, regionSettings);
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	cic3: function(number, currentChar, fields, regionSettings) {
 		return this.processField('cic', regionSettings.plan.getFieldLength('cic3'), number, currentChar, fields, regionSettings);
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	start: function(number, currentChar, fields, regionSettings) {
 		// don't do anything except transition to the next state
 		return {
 			number: number
 		};
 	},
-	
+	/**
+	 * @private
+	 * @param {string} number phone number
+	 * @param {number} currentChar currentChar to be parsed
+	 * @param {Object} fields the fields that have been extracted so far
+	 * @param {Object} regionSettings settings used to parse the rest of the number
+	 */
 	local: function(number, currentChar, fields, regionSettings) {
 		// in open dialling plans, we can tell that this number is a local subscriber number because it
 		// starts with a digit that indicates as such
@@ -436,6 +588,7 @@ ilib.CSStateHandler.prototype.special = function (number, currentChar, fields, r
 ilib.USStateHandler = function () {
 	return this;
 };
+
 ilib.USStateHandler.prototype = new ilib.StateHandler();
 ilib.USStateHandler.prototype.vsc = function (number, currentChar, fields, regionSettings) {
 	var ret, length, end;

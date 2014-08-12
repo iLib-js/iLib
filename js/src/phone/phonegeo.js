@@ -23,8 +23,11 @@ ilibglobal.js
 locale.js 
 localeinfo.js
 phone/numplan.js
+phone/phoneloc.js
 phone/phonenum.js
 */
+
+// !data area
 
 /**
  * Create a geographically located phone number. Because this class inherits from the
@@ -88,7 +91,6 @@ phone/phonenum.js
 
  */
 ilib.GeoPhoneNumber = function(number, params) {
-	
 };
 
 ilib.GeoPhoneNumber.prototype = new ilib.PhoneNumber();

@@ -17,7 +17,6 @@
  * limitations under the License.
  */
 
-
 function testGet1() {
 	var plan = new ilib.NumPlan({locale: "en-US"});
 	assertNotUndefined(plan);
