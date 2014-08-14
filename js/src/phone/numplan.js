@@ -63,7 +63,7 @@ localeinfo.js
  */
 ilib.NumPlan = function (options) {
 	var sync = true,
-	    loadParams = undefined;
+	    loadParams = {};
 	
 	this.locale = new ilib.Locale();
 
@@ -181,7 +181,22 @@ ilib.NumPlan.prototype = {
 	getFindExtensions: function() {
 		return this.npdata.findExtensions;
 	},
-
+	/** [Need Comment]
+	 * Return a skipTrunk
+	 * 
+	 * @return {boolean}
+	 */
+	getSkipTrunk: function() {
+		return this.npdata.skipTrunk;
+	},
+	/** [Need Comment]
+	 * Return a skipTrunk
+	 * 
+	 * @return {boolean}
+	 */
+	getTrunkRequired: function() {
+		return this.npdata.trunkRequired;
+	},
 	/**
 	 * Return a string containing all of the common format characters
 	 * used to format numbers.
@@ -204,6 +219,6 @@ ilib.NumPlan.prototype = {
 	getFieldLength: function (field) {
 		var dataField = this.npdata.fieldLengths;
 		
-		return dataField[field] || 0;
+		return dataField[field];
 	}
 };

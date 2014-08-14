@@ -319,6 +319,20 @@ ilib.PhoneNumber._states = [
 	"local"
 ];
 
+ilib.PhoneNumber._fieldOrder = [
+	"vsc",
+	"iddPrefix",
+	"countryCode",
+	"trunkAccess",
+	"cic",
+	"emergency",
+	"mobilePrefix",
+	"serviceCode",
+	"areaCode",
+	"subscriberNumber",
+	"extension"
+];
+
 ilib.PhoneNumber.prototype = {
 	/**
 	 * @protected
@@ -461,6 +475,9 @@ ilib.PhoneNumber.prototype = {
 	_getPrefix: function() {
 		return this.areaCode || this.serviceCode || this.mobilePrefix || "";
 	},
+	_hasPrefix: function() {
+		return (this._getPrefix() !== "");
+	},
 	/*
 	 * @private
 	 * Exclusive or -- return true, if one is defined and the other isn't
@@ -472,6 +489,27 @@ ilib.PhoneNumber.prototype = {
 			return true;
 		}
 	},
+	/* return a version of the phone number that contains only the dialable digits in the correct order */
+	_join: function () {
+		var field, fieldName, formatted = "";
+		
+		try {
+			for (field in ilib.PhoneNumber._fieldOrder) {
+				if (typeof field === 'string' && typeof ilib.PhoneNumber._fieldOrder[field] === 'string') {
+					fieldName = ilib.PhoneNumber._fieldOrder[field];
+					// console.info("normalize: formatting field " + fieldName);
+					if (this[fieldName] !== undefined) {
+						formatted += this[fieldName];
+					}
+				}
+			}
+		} catch ( e ) {
+			//console.warn("caught exception in _join: " + e);
+			throw e;
+		}
+		return formatted;
+	},
+
 	/**
 	 * This routine will compare the two phone numbers in an locale-sensitive
 	 * manner to see if they possibly reference the same phone number.<p>
@@ -841,5 +879,192 @@ ilib.PhoneNumber.prototype = {
 	 * could not be normalized
 	 */
 	normalize: function(options) {
+		var currentPlan,
+			destinationPlan,
+			formatted = "", 
+			fieldName,
+			field,
+			norm,
+			temp,
+			tempRegion,
+			tempPhoncloc,
+			homeLocale,
+			currentLocale,
+			destinationLocale;
+
+		// clone this number, so we don't mess with it
+
+		norm = new ilib.PhoneNumber(this);
+
+		// homeLocale is for debugging/unit testing
+		homeLocale = (options && options.homeLocale) ? new ilib.Locale.PhoneLoc({locale: options.homeLocale}) : new ilib.Locale();
+
+		currentLocale = options ? new ilib.Locale.PhoneLoc(options): homeLocale;
+		destinationLocale = (norm.countryCode && new ilib.Locale.PhoneLoc({countryCode: norm.countryCode})) || 
+							new ilib.Locale.PhoneLoc({locale:norm.locale}) || currentLocale;
+
+		currentPlan = new ilib.NumPlan({locale: currentLocale});
+		destinationPlan = new ilib.NumPlan({locale: destinationLocale});
+		
+		if (options &&
+				options.assistedDialing &&
+				/*typeof(destinationPlan.getFieldLength("maxLocalLength")) !== 0 &&*/
+				!norm.trunkAccess && 
+				!norm.iddPrefix &&
+				norm.subscriberNumber && 
+				norm.subscriberNumber.length > destinationPlan.getFieldLength("maxLocalLength")) {
+			
+			temp = new ilib.PhoneNumber("+" + this._join(), {locale: this.locale});
+		    tempPhoncloc = new ilib.Locale.PhoneLoc({locale: this.locale});
+			tempRegion = (temp.countryCode && tempPhoncloc._mapCCtoRegion(temp.countryCode));
+
+			if (tempRegion && tempRegion !== "unknown" && tempRegion !== "SG") {
+				// only use it if it is a recognized country code. Singapore (sg) is a special case.
+				norm = temp;
+				destinationLocale = (norm.countryCode && new ilib.Locale.PhoneLoc({countryCode: norm.countryCode})) || norm.locale || currentLocale;
+				destinationPlan = new ilib.NumPlan({locale: destinationLocale});
+			}
+		} else if (options && options.assistedDialing && norm.invalid && currentLocale.region !== norm.locale.region) {
+			// if this number is not valid for the locale it was parsed with, try again with the current locale
+			// console.log("norm is invalid. Attempting to reparse with the current locale");
+			temp = new ilib.PhoneNumber(this._join(), {locale: currentLocale});
+			if (temp && !temp.invalid) {
+				norm = temp;
+			}
+		}
+
+		if (!norm.invalid && options && options.assistedDialing) {
+			// don't normalize things that don't have subscriber numbers. Also, don't normalize
+			// manually dialed local numbers. Do normalize local numbers in contact entries.
+			if (norm.subscriberNumber && 
+					(!options.manualDialing ||
+					 norm.iddPrefix ||
+					 norm.countryCode ||
+					 norm.trunkAccess)) {
+				// console.log("normalize: assisted dialling normalization of " + JSON.stringify(norm));
+				if (currentLocale.getRegion() !== destinationLocale.getRegion()) {
+					// we are currently calling internationally
+					if (!norm._hasPrefix() && 
+							options.defaultAreaCode && 
+							destinationLocale.getRegion() === homeLocale.getRegion() &&
+							(!destinationPlan.getFieldLength("minLocalLength") || 
+								norm.subscriberNumber.length >= destinationPlan.getFieldLength("minLocalLength"))) {
+						// area code is required when dialling from international, but only add it if we are dialing
+						// to our home area. Otherwise, the default area code is not valid!
+						norm.areaCode = options.defaultAreaCode;
+						if (!destinationPlan.getSkipTrunk() && destinationPlan.getTrunkCode()) {
+							// some phone systems require the trunk access code, even when dialling from international
+							norm.trunkAccess = destinationPlan.getTrunkCode();
+						}
+					}
+					
+					if (norm.trunkAccess && destinationPlan.getSkipTrunk()) {
+						// on some phone systems, the trunk access code is dropped when dialling from international
+						delete norm.trunkAccess;
+					}
+					
+					// make sure to get the country code for the destination region, not the current region!
+					if (options.sms) {
+						if (homeLocale.getRegion() === "US" && currentLocale.getRegion() !== "US") {
+							if (destinationLocale.getRegion() !== "US") {
+								norm.iddPrefix = "011"; // non-standard code to make it go through the US first
+								norm.countryCode = norm.countryCode || ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(destinationLocale.getRegion());
+							} else if (options.networkType === "cdma") {
+								delete norm.iddPrefix;
+								delete norm.countryCode;
+								if (norm.areaCode) {
+									norm.trunkAccess = "1";
+								}
+							} else if (norm.areaCode) {
+								norm.iddPrefix = "+";
+								norm.countryCode = "1";
+								delete norm.trunkAccess;
+							}
+						} else {
+							norm.iddPrefix = (options.networkType === "cdma") ? currentPlan.getIDDCode() : "+";
+							norm.countryCode = norm.countryCode || ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(destinationLocale.region);
+						}
+					} else if (norm._hasPrefix() && !norm.countryCode) {
+						norm.countryCode = ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(destinationLocale.region);
+					}
+
+					if (norm.countryCode && !options.sms) {
+						// for CDMA, make sure to get the international dialling access code for the current region, not the destination region
+						// all umts carriers support plus dialing
+						norm.iddPrefix = (options.networkType === "cdma") ? currentPlan.getIDDCode() : "+";
+					}
+				} else {
+					// console.log("normalize: dialing within the country");
+					if (options.defaultAreaCode) {
+						if (destinationPlan.getPlanStyle() === "open") {
+							if (!norm.trunkAccess && norm._hasPrefix() && destinationPlan.getTrunkCode()) {
+								// call is not local to this area code, so you have to dial the trunk code and the area code
+								norm.trunkAccess = destinationPlan.getTrunkCode();
+							}
+						} else {
+							// In closed plans, you always have to dial the area code, even if the call is local.
+							if (!norm._hasPrefix()) {
+								if (destinationLocale.getRegion() === homeLocale.getRegion()) {
+									norm.areaCode = options.defaultAreaCode;
+									if (destinationPlan.getTrunkRequired() && destinationPlan.getTrunkCode()) {
+										norm.trunkAccess = norm.trunkAccess || destinationPlan.getTrunkCode();
+									}
+								}
+							} else {
+								if (destinationPlan.getTrunkRequired() && destinationPlan.getTrunkCode()) {
+									norm.trunkAccess = norm.trunkAccess || destinationPlan.getTrunkCode();
+								}
+							}
+						}
+					}
+					
+					if (options.sms &&
+							homeLocale.getRegion() === "US" && 
+							currentLocale.getRegion() !== "US") {
+						norm.iddPrefix = "011"; // make it go through the US first
+						if (destinationPlan.getSkipTrunk() && norm.trunkAccess) {
+							delete norm.trunkAccess;
+						}
+					} else if (norm.iddPrefix || norm.countryCode) {
+						// we are in our destination country, so strip the international dialling prefixes
+						delete norm.iddPrefix;
+						delete norm.countryCode;
+						
+						if ((destinationPlan.getPlanStyle() === "open" || destinationPlan.getTrunkRequired()) && destinationPlan.getTrunkCode()) {
+							norm.trunkAccess = destinationPlan.getTrunkCode();
+						}
+					}
+				}
+			}
+		} else if (!norm.invalid) {
+			// console.log("normalize: non-assisted normalization");
+			if (!norm._hasPrefix() && options && options.defaultAreaCode && destinationLocale.getRegion() === homeLocale.region) {
+				norm.areaCode = options.defaultAreaCode;
+			}
+			
+			if (!norm.countryCode && norm._hasPrefix()) {
+				norm.countryCode = ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(destinationLocale.getRegion());
+			}
+
+			if (norm.countryCode) {
+				if (options && options.networkType && options.networkType === "cdma") {
+					norm.iddPrefix = currentPlan.getIDDCode(); 
+				} else {
+					// all umts carriers support plus dialing
+					norm.iddPrefix = "+";
+				}
+		
+				if (destinationPlan.getSkipTrunk() && norm.trunkAccess) {
+					delete norm.trunkAccess;
+				} else if (!destinationPlan.getSkipTrunk() && !norm.trunkAccess && destinationPlan.getTrunkCode()) {
+					norm.trunkAccess = destinationPlan.getTrunkCode();
+				}
+			}
+		}
+		
+		// console.info("normalize: after normalization, the normalized phone number is: " + JSON.stringify(norm));
+		formatted = norm._join();
+
+		return formatted;
 	}
 };

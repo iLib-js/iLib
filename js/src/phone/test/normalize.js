@@ -1,3 +1,22 @@
+/*
+ * normalize.js - test phonenumber normalize function()
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 function testIDDPrefix() {
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "011",
@@ -8,7 +27,6 @@ function testIDDPrefix() {
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'en-US'})); // 'en-US'
-	
 };
 
 function testIDDPrefixAlreadyPlus() {
@@ -21,7 +39,6 @@ function testIDDPrefixAlreadyPlus() {
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'en-US'})); // 'en-US'
-	
 };
 
 function testWithNoLocale() {
@@ -34,7 +51,6 @@ function testWithNoLocale() {
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({}));
-	
 };
 
 function testNoHints() {
@@ -47,7 +63,6 @@ function testNoHints() {
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize()); // 'en-US'
-	
 };
 
 function testWithNoHintsNoLocale() {
@@ -60,7 +75,6 @@ function testWithNoHintsNoLocale() {
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize());
-	
 };
 
 function testLDNumberUsingUSMCC() {
@@ -74,7 +88,6 @@ function testLDNumberUsingUSMCC() {
 	var expected = "+16507654321";
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'en-US'
-	
 };
 
 function testLDNumberUsingUSMCCOtherLocale() {
@@ -88,7 +101,6 @@ function testLDNumberUsingUSMCCOtherLocale() {
 	var expected = "+16507654321";
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'
-	
 };
 
 function testLDNumberUsingDEMCC() {
@@ -102,7 +114,6 @@ function testLDNumberUsingDEMCC() {
 	var expected = "+492302654321";
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'
-	
 };
 
 function testServiceNumberUsingDEMCC() {
@@ -117,7 +128,6 @@ function testServiceNumberUsingDEMCC() {
 	var expected = "+491917654321";
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'
-	
 };
 
 function testServiceNumberDontAddAreaCode() {
@@ -132,7 +142,6 @@ function testServiceNumberDontAddAreaCode() {
 	var expected = "+491917654321";
 
 	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'
-	
 };
 
 function testMobileNumberUsingDEMCC() {
@@ -147,7 +156,6 @@ function testMobileNumberUsingDEMCC() {
 	var expected = "+491687654321";
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'
-	
 };
 
 function testMobileNumberDontAddAreaCode() {
@@ -162,7 +170,6 @@ function testMobileNumberDontAddAreaCode() {
 	var expected = "+491687654321";
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'
-	
 };
 
 function testLDNumberUsingDEMCCOtherLocale() {
@@ -176,7 +183,6 @@ function testLDNumberUsingDEMCCOtherLocale() {
 	var expected = "+492302654321";
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'fr-FR'
-	
 };
 
 function testLDNumberUsingUSLocale() {
@@ -187,7 +193,6 @@ function testLDNumberUsingUSLocale() {
 	var expected = "+16507654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'en-US'
-	
 };
 
 function testLDNumberUsingUSSpanishLocale() {
@@ -198,7 +203,6 @@ function testLDNumberUsingUSSpanishLocale() {
 	var expected = "+16507654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'es-us'
-	
 };
 
 function testLDNumberUsingDELocale() {
@@ -209,7 +213,6 @@ function testLDNumberUsingDELocale() {
 	var expected = "+493087654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'de-DE'
-	
 };
 
 function testAreaCodeFromHint() {
@@ -222,7 +225,6 @@ function testAreaCodeFromHint() {
 	var expected = "+16507654321";
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'en-US'
-	
 };
 
 function testAreaCodeIgnoreHint() {
@@ -236,7 +238,6 @@ function testAreaCodeIgnoreHint() {
 	var expected = "+14087654321";
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'en-US'
-	
 };
 
 function testNoAreaCodeAndNoCountry() {
@@ -246,7 +247,6 @@ function testNoAreaCodeAndNoCountry() {
 	var expected = "7654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'en-US'
-	
 };
 
 function testDontAddCountry() {
@@ -259,7 +259,6 @@ function testDontAddCountry() {
 	var expected = "7654321";	// can't add country because we don't know the area code
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'
-	
 };
 
 function testIgnoreTrunkAccessUS() {
@@ -271,7 +270,6 @@ function testIgnoreTrunkAccessUS() {
 	var expected = "+14087654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'en-US'
-	
 };
 
 function testIgnoreTrunkAccessDE() {
@@ -283,7 +281,6 @@ function testIgnoreTrunkAccessDE() {
 	var expected = "+493087654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'de-DE'
-	
 };
 
 function testDontIgnoreTrunkAccessIT() {
@@ -296,8 +293,7 @@ function testDontIgnoreTrunkAccessIT() {
 	}, {locale: 'it-IT'});
 	var expected = "+390687654321";
 	
-	assertEquals(expected, parsed.normalize()); // 'it-IT'
-	
+	assertEquals(expected, parsed.normalize()); // 'it-IT'	
 };
 
 function testDontIgnoreTrunkAccessNoCountryIT() {
@@ -309,7 +305,6 @@ function testDontIgnoreTrunkAccessNoCountryIT() {
 	var expected = "+390687654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'it-IT'
-	
 };
 
 function testDontIgnoreTrunkAccessUseMCCIT() {
@@ -324,7 +319,6 @@ function testDontIgnoreTrunkAccessUseMCCIT() {
 	var expected = "+390687654321";
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'en-US'
-	
 };
 
 function testAddTrunkAccessNoCountryIT() {
@@ -335,7 +329,6 @@ function testAddTrunkAccessNoCountryIT() {
 	var expected = "+390687654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'it-IT'
-	
 };
 
 function testCountryHintUS() {
@@ -349,7 +342,6 @@ function testCountryHintUS() {
 	var expected = "+14087654321";
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'en-US'
-	
 };
 
 function testCountryHintUSOverrideLocale() {
@@ -362,8 +354,7 @@ function testCountryHintUSOverrideLocale() {
 	};
 	var expected = "+14087654321";
 	
-	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'
-	
+	assertEquals(expected, parsed.normalize(hints)); // 'de-DE'	
 };
 
 function testCountryHintFR() {
@@ -377,15 +368,13 @@ function testCountryHintFR() {
 	var expected = "+33212345678";
 	
 	assertEquals(expected, parsed.normalize(hints)); // 'en-US'
-	
 };
 
 function testStringIDDPrefix() {
 	var phone = new ilib.PhoneNumber("011-31-456-3453434", {locale: "en-US"});
 	var expected = "+314563453434";
 	
-	assertEquals(expected, phone.normalize());
-	
+	assertEquals(expected, phone.normalize());	
 };
 
 function testStringLDNumberUsingUSMCC() {
@@ -395,8 +384,7 @@ function testStringLDNumberUsingUSMCC() {
 	};
 	var expected = "+16507654321";
 	
-	assertEquals(expected, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expected, phone.normalize(hints)); // 'en-US'	
 };
 
 function testStringLDNumberUsingUSMCCOtherLocale() {
@@ -407,7 +395,6 @@ function testStringLDNumberUsingUSMCCOtherLocale() {
 	var expected = "+16507654321";
 	
 	assertEquals(expected, phone.normalize(hints)); // 'de-DE'
-	
 };
 
 function testStringLDNumberUsingDEMCC() {
@@ -418,7 +405,6 @@ function testStringLDNumberUsingDEMCC() {
 	var expected = "+492302654321";
 	
 	assertEquals(expected, phone.normalize(hints)); // 'de-DE'
-	
 };
 
 function testStringServiceNumberUsingDEMCC() {
@@ -428,8 +414,7 @@ function testStringServiceNumberUsingDEMCC() {
 	};
 	var expected = "+491917654321";
 	
-	assertEquals(expected, phone.normalize(hints)); // 'de-DE'
-	
+	assertEquals(expected, phone.normalize(hints)); // 'de-DE'	
 };
 
 function testStringServiceNumberDontAddAreaCode() {
@@ -439,8 +424,7 @@ function testStringServiceNumberDontAddAreaCode() {
 	};
 	var expected = "+491917654321";
 	
-	assertEquals(expected, phone.normalize(hints)); // 'de-DE'
-	
+	assertEquals(expected, phone.normalize(hints)); // 'de-DE'	
 };
 
 function testStringMobileNumberUsingDEMCC() {
@@ -450,8 +434,7 @@ function testStringMobileNumberUsingDEMCC() {
 	};
 	var expected = "+491687654321";
 	
-	assertEquals(expected, phone.normalize(hints)); // 'de-DE'
-	
+	assertEquals(expected, phone.normalize(hints)); // 'de-DE'	
 };
 
 function testStringMobileNumberDontAddAreaCode() {
@@ -461,8 +444,7 @@ function testStringMobileNumberDontAddAreaCode() {
 	};
 	var expected = "+491687654321";
 	
-	assertEquals(expected, phone.normalize(hints)); // 'de-DE'
-	
+	assertEquals(expected, phone.normalize(hints)); // 'de-DE'	
 };
 
 function testStringLDStringNumberUsingUSMCCOtherLocale() {
@@ -472,8 +454,7 @@ function testStringLDStringNumberUsingUSMCCOtherLocale() {
 	};
 	var expected = "+16507654321";
 	
-	assertEquals(expected, phone.normalize(hints)); // 'de-DE'
-	
+	assertEquals(expected, phone.normalize(hints)); // 'de-DE'	
 };
 
 // for CFISH-7296
@@ -485,8 +466,7 @@ function testNormalizeForSkype() {
 	};
 	var expected = "+14087654321";
 	
-	assertEquals(expected, phone.normalize(hints));
-	
+	assertEquals(expected, phone.normalize(hints));	
 };
 
 function testAssistedDialingLocalToLocalUMTS() {
@@ -501,8 +481,7 @@ function testAssistedDialingLocalToLocalUMTS() {
 	};
 	var expectedString = "6507654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 function testAssistedDialingLocalToLocalUMTSAddTrunkClosed() {
@@ -519,8 +498,7 @@ function testAssistedDialingLocalToLocalUMTSAddTrunkClosed() {
 		assistedDialing: true
 	};
 	var expectedString = "0187654321";
-	assertEquals(expectedString, phone.normalize(hints)); // 'fr-FR'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'fr-FR'	
 };
 
 function testAssistedDialingLocalToLocalUMTSAddTrunkOpenNoAreaCodes() {
@@ -536,8 +514,7 @@ function testAssistedDialingLocalToLocalUMTSAddTrunkOpenNoAreaCodes() {
 	};
 	var expectedString = "7654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'de-lu'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'de-lu'	
 };
 
 function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
@@ -555,8 +532,7 @@ function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
 	};
 	var expectedString = "0207654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'nl-NL'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'nl-NL'	
 };
 
 function testAssistedDialingLocalToLocalUMTSNoTrunkOpen() {
@@ -574,9 +550,7 @@ function testAssistedDialingLocalToLocalUMTSNoTrunkOpen() {
 	};
 	var expectedString = "0207654321";
 
-
-	assertEquals(expectedString, phone.normalize(hints)); // 'nl-NL'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'nl-NL'	
 };
 
 function testAssistedDialingLocalToLocalCDMA() {
@@ -592,7 +566,6 @@ function testAssistedDialingLocalToLocalCDMA() {
 	var expectedString = "6507654321";
 
 	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
 };
 
 function testAssistedDialingLocalToLocalCDMAAddTrunkClosed() {
@@ -611,7 +584,6 @@ function testAssistedDialingLocalToLocalCDMAAddTrunkClosed() {
 	var expectedString = "0187654321";
 
 	assertEquals(expectedString, phone.normalize(hints)); // 'fr-FR'
-	
 };
 
 function testAssistedDialingLocalToLocalCDMAAddTrunkOpen() {
@@ -629,8 +601,7 @@ function testAssistedDialingLocalToLocalCDMAAddTrunkOpen() {
 	};
 	var expectedString = "0207654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'nl-NL'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'nl-NL'	
 };
 
 function testAssistedDialingLocalToLocalCDMANoTrunkOpen() {
@@ -648,8 +619,7 @@ function testAssistedDialingLocalToLocalCDMANoTrunkOpen() {
 	};
 	var expectedString = "0207654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'nl-NL'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'nl-NL'	
 };
 
 function testAssistedDialingIntlToLocalUMTS() {
@@ -664,8 +634,7 @@ function testAssistedDialingIntlToLocalUMTS() {
 	};
 	var expectedString = "+16507654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 function testAssistedDialingIntlToLDUMTS() {
@@ -681,8 +650,7 @@ function testAssistedDialingIntlToLDUMTS() {
 	};
 	var expectedString = "+14167654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 function testAssistedDialingIntlToLDUMTSRemoveTrunk() {
@@ -699,8 +667,7 @@ function testAssistedDialingIntlToLDUMTSRemoveTrunk() {
 	};
 	var expectedString = "+14167654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 function testAssistedDialingIntlToLDUMTSKeepTrunk() {
@@ -717,8 +684,7 @@ function testAssistedDialingIntlToLDUMTSKeepTrunk() {
 	};
 	var expectedString = "+3901087654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'it-IT'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'it-IT'	
 };
 
 function testAssistedDialingIntlToLocalCDMA() {
@@ -733,8 +699,7 @@ function testAssistedDialingIntlToLocalCDMA() {
 	};
 	var expectedString = "001116507654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 function testAssistedDialingIntlToLDCDMA() {
@@ -750,8 +715,7 @@ function testAssistedDialingIntlToLDCDMA() {
 	};
 	var expectedString = "0014167654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 function testAssistedDialingIntlToLDCDMARemoveTrunk() {
@@ -768,8 +732,7 @@ function testAssistedDialingIntlToLDCDMARemoveTrunk() {
 	};
 	var expectedString = "0014167654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 function testAssistedDialingIntlToLDCDMAKeepTrunk() {
@@ -786,8 +749,7 @@ function testAssistedDialingIntlToLDCDMAKeepTrunk() {
 	};
 	var expectedString = "003901087654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'it-IT'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'it-IT'	
 };
 
 function testAssistedDialingLocalToLocalUMTSOpenNoDefAreaCode() {
@@ -804,8 +766,7 @@ function testAssistedDialingLocalToLocalUMTSOpenNoDefAreaCode() {
 	};
 	var expectedString = "0207654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'nl-NL'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'nl-NL'	
 };
 
 function testAssistedDialingLocalToLocalCDMAOpenNoDefAreaCode() {
@@ -823,7 +784,6 @@ function testAssistedDialingLocalToLocalCDMAOpenNoDefAreaCode() {
 	var expectedString = "0207654321";
 
 	assertEquals(expectedString, phone.normalize(hints)); // 'nl-NL'
-	
 };
 
 function testAssistedDialingIntlToLDDefaultToUMTS() {
@@ -838,8 +798,7 @@ function testAssistedDialingIntlToLDDefaultToUMTS() {
 	};
 	var expectedString = "+14167654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 function testAssistedDialingDefaultIntlToLocalUMTS() {
@@ -854,8 +813,7 @@ function testAssistedDialingDefaultIntlToLocalUMTS() {
 	};
 	var expectedString = "+16507654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 function testAssistedDialingNonDefaultIntlToLocalUMTS() {
@@ -870,8 +828,7 @@ function testAssistedDialingNonDefaultIntlToLocalUMTS() {
 	};
 	var expectedString = "+16507654321";
 	
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 function testAssistedDialingDefaultIntlToLocalCDMA() {
@@ -886,8 +843,7 @@ function testAssistedDialingDefaultIntlToLocalCDMA() {
 	};
 	var expectedString = "0016507654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 function testAssistedDialingNonDefaultIntlToLocalCDMA() {
@@ -903,9 +859,7 @@ function testAssistedDialingNonDefaultIntlToLocalCDMA() {
 	var expectedString = "01016507654321";
 
 	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
 };
-
 
 function testAssistedDialingThreeLocalesCDMA() {
 	var phone = new ilib.PhoneNumber({
@@ -921,8 +875,7 @@ function testAssistedDialingThreeLocalesCDMA() {
 	};
 	var expectedString = "00974957654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 function testAssistedDialingThreeLocalesUMTS() {
@@ -939,8 +892,7 @@ function testAssistedDialingThreeLocalesUMTS() {
 	};
 	var expectedString = "+74957654321";
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 // for CFISH-5258
@@ -956,9 +908,9 @@ function testAssistedDialNormalizeBogusNumberNonVerizon(){
 	};
 	var expectedString = "449876543211"; // don't assume it is international and add the bogus plus
 
-	assertEquals(expectedString, left.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, left.normalize(hints)); // 'en-US'	
 };
+
 function testAssistedDialNormalizeBogusNumberForVerizonUMTS(){
 	var left = new ilib.PhoneNumber("449876543211"); // number is too long, so try with a + prefix
 	
@@ -971,9 +923,8 @@ function testAssistedDialNormalizeBogusNumberForVerizonUMTS(){
 	var expectedString = "+449876543211"; // assumed to be an international call
 
 	assertEquals(expectedString, left.normalize(hints)); // 'en-US'
-
-	
 };
+
 function testAssistedDialNormalizeBogusNumberForVerizonCDMA(){
 	var left = new ilib.PhoneNumber("449876543211"); // number is too long, so try with a + prefix
 	
@@ -986,9 +937,8 @@ function testAssistedDialNormalizeBogusNumberForVerizonCDMA(){
 	var expectedString = "011449876543211"; // the plus gets converted to 011 for cdma
 
 	assertEquals(expectedString, left.normalize(hints)); // 'en-US'
-
-	
 };
+
 function testAssistedDialNormalizeBogusNumberForVerizonAlreadyPlus(){
 	var left = new ilib.PhoneNumber("+449876543211");
 	
@@ -1001,9 +951,8 @@ function testAssistedDialNormalizeBogusNumberForVerizonAlreadyPlus(){
 	var expectedString = "011449876543211"; // plus gets converted to 011 for cdma
 
 	assertEquals(expectedString, left.normalize(hints)); // 'en-US'
-
-	
 };
+
 function testAssistedDialNormalizeBogusNumberForVerizonAlreadyIDD(){
 	var left = new ilib.PhoneNumber("011449876543211");
 	
@@ -1016,9 +965,8 @@ function testAssistedDialNormalizeBogusNumberForVerizonAlreadyIDD(){
 	var expectedString = "011449876543211";
 
 	assertEquals(expectedString, left.normalize(hints)); // 'en-US'
-
-	
 };
+
 function testAssistedDialNormalizeBogusNumberForVerizonWithTrunk(){
 	var left = new ilib.PhoneNumber("1449876543233");
 	
@@ -1031,9 +979,8 @@ function testAssistedDialNormalizeBogusNumberForVerizonWithTrunk(){
 	var expectedString = "1449876543233"; // don't touch things that already have a trunk prefix
 
 	assertEquals(expectedString, left.normalize(hints)); // 'en-US'
-
-	
 };
+
 function testAssistedDialNormalizeBogusNumberForVerizonInvalidCountryCode(){
 	var left = new ilib.PhoneNumber("4259876543233");
 	
@@ -1046,8 +993,6 @@ function testAssistedDialNormalizeBogusNumberForVerizonInvalidCountryCode(){
 	var expectedString = "4259876543233"; // don't touch things with an invalid country code. ie. the reparse with a + didn't work.
 
 	assertEquals(expectedString, left.normalize(hints)); // 'en-US'
-
-	
 };
 
 //for CFISH-5447
@@ -1062,8 +1007,8 @@ function testDontRemoveDefaultAreaCodeAtHome() {
 	var expectedString = "4082345678"; // should not strip default area code
 
 	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
 };
+
 function testDoAddDefaultAreaCodeAtHome() {
 	var phone = new ilib.PhoneNumber("234-5678", {locale: 'en-US'});
 	var hints = {
@@ -1074,8 +1019,7 @@ function testDoAddDefaultAreaCodeAtHome() {
 	};
 	var expectedString = "4082345678"; // should add default area code
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 // for CFISH-5217
@@ -1090,8 +1034,8 @@ function testDefaultAreaCodeOnlyAtHome() {
 	var expectedString = "011449876543211"; // should not add default area code, which is for the US, not the UK
 
 	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
 };
+
 function testDefaultAreaCodeAtHome() {
 	var phone = new ilib.PhoneNumber("6543211", {locale: 'en-US'}); // number is in the same area code as the device is
 	var hints = {
@@ -1102,9 +1046,9 @@ function testDefaultAreaCodeAtHome() {
 	};
 	var expectedString = "0016506543211"; // should not add default area code, which is for the US, not the UK
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
+
 function testDefaultAreaCodeAtHomeNoDefault() {
 	var phone = new ilib.PhoneNumber("4086543211", {locale: 'en-US'}); // number is in the same area code as the device is
 	var hints = {
@@ -1115,8 +1059,7 @@ function testDefaultAreaCodeAtHomeNoDefault() {
 	};
 	var expectedString = "0014086543211"; // should not add default area code, which is for the US, not the UK
 
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 // for CFISH-5307
@@ -1131,8 +1074,8 @@ function testSMSToUSNumbersCDMA() {
 	};
 	var expectedString = "16504567890"; // should not add IDD for CDMA and not the default area code
 	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
 };
+
 function testSMSToUSNumbersUMTS() {
 	var phone = new ilib.PhoneNumber("650 456 7890", {locale: 'en-US'});
 	var hints = {
@@ -1143,9 +1086,9 @@ function testSMSToUSNumbersUMTS() {
 		sms: true
 	};
 	var expectedString = "+16504567890"; // should add IDD for UMTS and not the default area code
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
+
 function testSMSToUSNumbersNoAreaCodeCDMA() {
 	var phone = new ilib.PhoneNumber("456 7890", {locale: 'en-US'});
 	var hints = {
@@ -1156,9 +1099,9 @@ function testSMSToUSNumbersNoAreaCodeCDMA() {
 		sms: true
 	};
 	var expectedString = "14084567890"; // should not add IDD, but do add the default area code
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
+
 function testSMSToUSNumbersNoAreaCodeUMTS() {
 	var phone = new ilib.PhoneNumber("456 7890", {locale: 'en-US'});
 	var hints = {
@@ -1169,9 +1112,9 @@ function testSMSToUSNumbersNoAreaCodeUMTS() {
 		sms: true
 	};
 	var expectedString = "+14084567890"; // should not add IDD, but do add the default area code
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
+
 //for CFISH-5308
 function testSMSToNonUSNumbersFromAbroadCDMA() {
 	var phone = new ilib.PhoneNumber("+44 20 4567890", {locale: 'en-US'});
@@ -1183,9 +1126,9 @@ function testSMSToNonUSNumbersFromAbroadCDMA() {
 		sms: true
 	};
 	var expectedString = "01144204567890"; // should add special IDD and no area code
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
+
 function testSMSToNonUSNumbersFromAbroadUMTS() {
 	var phone = new ilib.PhoneNumber("+44 20 4567890", {locale: 'en-US'});
 	var hints = {
@@ -1196,9 +1139,9 @@ function testSMSToNonUSNumbersFromAbroadUMTS() {
 		sms: true
 	};
 	var expectedString = "01144204567890"; // should add special IDD and no area code
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
+
 function testSMSToNonUSNumbersFromUSCDMA() {
 	var phone = new ilib.PhoneNumber("+44 20 4567890", {locale: 'en-US'});
 	var hints = {
@@ -1209,9 +1152,9 @@ function testSMSToNonUSNumbersFromUSCDMA() {
 		sms: true
 	};
 	var expectedString = "01144204567890"; // should add special IDD and no area code
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
+
 function testSMSToNonUSNumbersFromUSUMTS() {
 	var phone = new ilib.PhoneNumber("+44 20 4567890", {locale: 'en-US'});
 	var hints = {
@@ -1222,8 +1165,7 @@ function testSMSToNonUSNumbersFromUSUMTS() {
 		sms: true
 	};
 	var expectedString = "+44204567890"; // should add special IDD and no area code
-	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'
-	
+	assertEquals(expectedString, phone.normalize(hints)); // 'en-US'	
 };
 
 // for CFISH-5729
@@ -1240,7 +1182,6 @@ function testAssistedDialingEmergencyNumberDontNormalize() {
 	var expected = "911";
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
 
 // for CFISH-5753
@@ -1259,7 +1200,6 @@ function testAssistedDialingServiceNumberDontAddAreaCodeCDMA() {
 	var expected = "0018007654321";
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
 
 function testAssistedDialingServiceNumberDontAddAreaCodeUMTS() {
@@ -1277,7 +1217,6 @@ function testAssistedDialingServiceNumberDontAddAreaCodeUMTS() {
 	var expected = "+18007654321";
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
 
 // for CFISH-6022
@@ -1291,8 +1230,7 @@ function testAssistedDialingVerizonVSC() {
 	};
 	var expected = "*228";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
 
 // for CFISH-5261
@@ -1308,8 +1246,8 @@ function testAssistedDialingNonManual() {
 	var expected = "+14089876543";
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
+
 function testAssistedDialingNonManualNoOption() {
 	var parsed = new ilib.PhoneNumber("987-6543", {locale: 'en-US'});
 	var hints = {
@@ -1320,9 +1258,9 @@ function testAssistedDialingNonManualNoOption() {
 	};
 	var expected = "+14089876543";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingNonManualCDMA() {
 	var parsed = new ilib.PhoneNumber("987-6543", {locale: 'en-US'});
 	var hints = {
@@ -1334,9 +1272,9 @@ function testAssistedDialingNonManualCDMA() {
 	};
 	var expected = "0014089876543";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingManual() {
 	var parsed = new ilib.PhoneNumber("987-6543", {locale: 'en-US'});
 	var hints = {
@@ -1348,9 +1286,9 @@ function testAssistedDialingManual() {
 	};
 	var expected = "9876543";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingManualWithTrunk() {
 	var parsed = new ilib.PhoneNumber("1-408-987-6543", {locale: 'en-US'});
 	var hints = {
@@ -1362,9 +1300,9 @@ function testAssistedDialingManualWithTrunk() {
 	};
 	var expected = "+14089876543";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingManualWithIDD() {
 	var parsed = new ilib.PhoneNumber("011-1-408-987-6543", {locale: 'en-US'});
 	var hints = {
@@ -1376,9 +1314,9 @@ function testAssistedDialingManualWithIDD() {
 	};
 	var expected = "+14089876543";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingManualWithTrunkFR() {
 	var parsed = new ilib.PhoneNumber("01 12 34 56 78", {locale: 'fr-FR'});
 	var hints = {
@@ -1390,9 +1328,9 @@ function testAssistedDialingManualWithTrunkFR() {
 	};
 	var expected = "+33112345678";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingManualWithIDDFR() {
 	var parsed = new ilib.PhoneNumber("+33 1 12 34 56 78", {locale: 'fr-FR'});
 	var hints = {
@@ -1404,9 +1342,9 @@ function testAssistedDialingManualWithIDDFR() {
 	};
 	var expected = "0112345678";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingManualLocalIN() {
 	var parsed = new ilib.PhoneNumber("40861 76683", {locale: 'en-US'});
 	var hints = {
@@ -1418,9 +1356,9 @@ function testAssistedDialingManualLocalIN() {
 	};
 	var expected = "4086176683";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingNonManualIN() {
 	var parsed = new ilib.PhoneNumber("4086176683", {locale: 'en-US'});
 	var hints = {
@@ -1432,8 +1370,7 @@ function testAssistedDialingNonManualIN() {
 	};
 	var expected = "+14086176683";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
 
 // for CFISH-8481
@@ -1449,8 +1386,8 @@ function testAssistedDialingLocalMobileIN() {
 	var expected = "09911234567";
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
+
 function testAssistedDialingLocalLandLineIN() {
 	var parsed = new ilib.PhoneNumber("011 91 11 12345678", {locale: 'en-US'});
 	var hints = {
@@ -1462,8 +1399,7 @@ function testAssistedDialingLocalLandLineIN() {
 	};
 	var expected = "01112345678";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
 
 //for CFISH-6043
@@ -1477,8 +1413,8 @@ function testNormalizeES() {
 	var expected = "+34987654321";  // should not add trunk code
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
+
 function testAssistedDialingESSMS() {
 	var parsed = new ilib.PhoneNumber("987654321", {locale: "es-ES"});
 	var hints = {
@@ -1491,9 +1427,9 @@ function testAssistedDialingESSMS() {
 	};
 	var expected = "+34987654321";  // should not add trunk code
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingES() {
 	var parsed = new ilib.PhoneNumber("987654321", {locale: "es-ES"});
 	var hints = {
@@ -1505,10 +1441,8 @@ function testAssistedDialingES() {
 	};
 	var expected = "+34987654321";  // should not add trunk code
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
-
 
 function testAssistedDialingFR() {
 	var parsed = new ilib.PhoneNumber("12345678", {locale: 'fr-FR'});
@@ -1521,8 +1455,7 @@ function testAssistedDialingFR() {
 	};
 	var expected = "+33112345678";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
 
 // for CFISH-6444
@@ -1537,8 +1470,8 @@ function testAssistedDialingCN1() {
 	var expected = "01030123456";
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
+
 function testAssistedDialingCN2() {
 	var parsed = new ilib.PhoneNumber("011 44 9876543211");
 	var hints = {
@@ -1549,8 +1482,7 @@ function testAssistedDialingCN2() {
 	};
 	var expected = "00449876543211";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
 
 // for DFISH-6274
@@ -1565,8 +1497,8 @@ function testAssistedDialingBogusInputs1() {
 	var expected = "+14086176683"; // should default to UMTS
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
+
 function testAssistedDialingBogusInputs2() {
 	var parsed = new ilib.PhoneNumber("617 6683");
 	var hints = {
@@ -1577,9 +1509,9 @@ function testAssistedDialingBogusInputs2() {
 	};
 	var expected = "6176683"; // should return as much as it can
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingBogusInputs3() {
 	var parsed = new ilib.PhoneNumber("617 6683");
 	var hints = {
@@ -1590,9 +1522,9 @@ function testAssistedDialingBogusInputs3() {
 	};
 	var expected = "+14086176683"; // should default to international call
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingBogusInputs4() {
 	var parsed = new ilib.PhoneNumber({locale: {language: "en", region: "us", locale: "en-US"}}); // empty!
 	var hints = {
@@ -1603,9 +1535,9 @@ function testAssistedDialingBogusInputs4() {
 	};
 	var expected = ""; // should return something instead of giving an exception
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingBogusInputs5() {
 	var parsed = new ilib.PhoneNumber("4157773456");
 	var hints = {
@@ -1615,9 +1547,9 @@ function testAssistedDialingBogusInputs5() {
 	};
 	var expected = "4157773456"; // should return something instead of giving an exception
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingBogusInputs6() {
 	var parsed = new ilib.PhoneNumber("617 6683");
 	var hints = {
@@ -1628,8 +1560,7 @@ function testAssistedDialingBogusInputs6() {
 	};
 	var expected = "4086176683"; // should default to domestic call
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
 
 // for CFISH-6873
@@ -1646,7 +1577,6 @@ function testAssistedDialingSMSSameCountryHomeIsUS() {
 	var expected = "011861098765432"; // should go through US first
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
 
 // for CFISH-6444
@@ -1663,7 +1593,6 @@ function testAssistedDialingForeignIDD() {
 	var expected = "01144209876543"; // normalize the foreign IDD to the proper US one
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
 
 // for CFISH-6845
@@ -1680,7 +1609,6 @@ function testAssistedDialingSameCountryHomeIsUS() {
 	var expected = "01098765432"; // should be a domestic call
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
 
 //for CFISH-6869
@@ -1697,8 +1625,8 @@ function testAssistedDialingSMSToUSFromIntlCDMA1() {
 	var expected = "19087654321";
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
+
 function testAssistedDialingSMSToUSFromIntlCDMA2() {
 	var parsed = new ilib.PhoneNumber("+19087654321");
 	var hints = {
@@ -1711,9 +1639,9 @@ function testAssistedDialingSMSToUSFromIntlCDMA2() {
 	};
 	var expected = "19087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlCDMA2Manual() {
 	var parsed = new ilib.PhoneNumber("+19087654321");
 	var hints = {
@@ -1726,9 +1654,9 @@ function testAssistedDialingSMSToUSFromIntlCDMA2Manual() {
 	};
 	var expected = "19087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlCDMA3() {
 	var parsed = new ilib.PhoneNumber("19087654321");
 	var hints = {
@@ -1741,9 +1669,9 @@ function testAssistedDialingSMSToUSFromIntlCDMA3() {
 	};
 	var expected = "19087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlCDMA3Manual() {
 	var parsed = new ilib.PhoneNumber("19087654321");
 	var hints = {
@@ -1756,9 +1684,9 @@ function testAssistedDialingSMSToUSFromIntlCDMA3Manual() {
 	};
 	var expected = "19087654321"; // don't touch manually dialed stuff
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlCDMA4() {
 	var parsed = new ilib.PhoneNumber("9087654321");
 	var hints = {
@@ -1771,9 +1699,9 @@ function testAssistedDialingSMSToUSFromIntlCDMA4() {
 	};
 	var expected = "19087654321";  // fix up things in your contact list
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlCDMA4Manual() {
 	var parsed = new ilib.PhoneNumber("9087654321");
 	var hints = {
@@ -1786,9 +1714,9 @@ function testAssistedDialingSMSToUSFromIntlCDMA4Manual() {
 	};
 	var expected = "9087654321"; // don't touch manually dialed stuff
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlCDMA5() {
 	var parsed = new ilib.PhoneNumber("65876"); // short code
 	var hints = {
@@ -1801,9 +1729,9 @@ function testAssistedDialingSMSToUSFromIntlCDMA5() {
 	};
 	var expected = "65876"; // special case -- don't do anything to short codes
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlCDMA6() {
 	var parsed = new ilib.PhoneNumber("7654321");
 	var hints = {
@@ -1816,9 +1744,9 @@ function testAssistedDialingSMSToUSFromIntlCDMA6() {
 	};
 	var expected = "19087654321";  // fix up things in your contact list
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlCDMA6Manual() {
 	var parsed = new ilib.PhoneNumber("7654321");
 	var hints = {
@@ -1831,9 +1759,9 @@ function testAssistedDialingSMSToUSFromIntlCDMA6Manual() {
 	};
 	var expected = "7654321";  // don't fix up manually dialed things
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlCDMA1() {
 	var parsed = new ilib.PhoneNumber("+9087654321");
 	var hints = {
@@ -1846,9 +1774,9 @@ function testAssistedDialingSMSToIntlFromIntlCDMA1() {
 	};
 	var expected = "0119087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlCDMA1Manual() {
 	var parsed = new ilib.PhoneNumber("+9087654321");
 	var hints = {
@@ -1861,9 +1789,9 @@ function testAssistedDialingSMSToIntlFromIntlCDMA1Manual() {
 	};
 	var expected = "0119087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlCDMA2() {
 	var parsed = new ilib.PhoneNumber("009087654321");
 	var hints = {
@@ -1876,9 +1804,9 @@ function testAssistedDialingSMSToIntlFromIntlCDMA2() {
 	};
 	var expected = "0119087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlCDMA2Manual() {
 	var parsed = new ilib.PhoneNumber("009087654321");
 	var hints = {
@@ -1891,9 +1819,9 @@ function testAssistedDialingSMSToIntlFromIntlCDMA2Manual() {
 	};
 	var expected = "0119087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlCDMA3() {
 	var parsed = new ilib.PhoneNumber("908765432101"); // +90 is Turkey
 	var hints = {
@@ -1906,9 +1834,9 @@ function testAssistedDialingSMSToIntlFromIntlCDMA3() {
 	};
 	var expected = "011908765432101";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlCDMA3Manual() {
 	var parsed = new ilib.PhoneNumber("908765432101"); // +90 is Turkey
 	var hints = {
@@ -1921,9 +1849,9 @@ function testAssistedDialingSMSToIntlFromIntlCDMA3Manual() {
 	};
 	var expected = "011908765432101";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlCDMA4() {
 	var parsed = new ilib.PhoneNumber("658765432101"); // +65 is Singapore -- special case
 	var hints = {
@@ -1936,9 +1864,9 @@ function testAssistedDialingSMSToIntlFromIntlCDMA4() {
 	};
 	var expected = "658765432101"; // special case -- don't add the special IDD
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlCDMA5() {
 	var parsed = new ilib.PhoneNumber("0119087654321");
 	var hints = {
@@ -1951,9 +1879,9 @@ function testAssistedDialingSMSToIntlFromIntlCDMA5() {
 	};
 	var expected = "0119087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlCDMA5Manual() {
 	var parsed = new ilib.PhoneNumber("0119087654321");
 	var hints = {
@@ -1966,10 +1894,8 @@ function testAssistedDialingSMSToIntlFromIntlCDMA5Manual() {
 	};
 	var expected = "0119087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
-
 
 function testAssistedDialingSMSToUSFromIntlUMTS1() {
 	var parsed = new ilib.PhoneNumber("0019087654321");
@@ -1983,9 +1909,9 @@ function testAssistedDialingSMSToUSFromIntlUMTS1() {
 	};
 	var expected = "+19087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlUMTS2() {
 	var parsed = new ilib.PhoneNumber("+19087654321");
 	var hints = {
@@ -1998,9 +1924,9 @@ function testAssistedDialingSMSToUSFromIntlUMTS2() {
 	};
 	var expected = "+19087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlUMTS2Manual() {
 	var parsed = new ilib.PhoneNumber("+19087654321");
 	var hints = {
@@ -2013,9 +1939,9 @@ function testAssistedDialingSMSToUSFromIntlUMTS2Manual() {
 	};
 	var expected = "+19087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlUMTS3() {
 	var parsed = new ilib.PhoneNumber("19087654321");
 	var hints = {
@@ -2028,9 +1954,9 @@ function testAssistedDialingSMSToUSFromIntlUMTS3() {
 	};
 	var expected = "+19087654321";  // fix up things in your contact list
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlUMTS3Manual() {
 	var parsed = new ilib.PhoneNumber("19087654321");
 	var hints = {
@@ -2043,9 +1969,9 @@ function testAssistedDialingSMSToUSFromIntlUMTS3Manual() {
 	};
 	var expected = "+19087654321"; // does touch the manually dialed stuff when there is a trunk prefix
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlUMTS4() {
 	var parsed = new ilib.PhoneNumber("9087654321");
 	var hints = {
@@ -2058,9 +1984,9 @@ function testAssistedDialingSMSToUSFromIntlUMTS4() {
 	};
 	var expected = "+19087654321";  // fix up things in your contact list
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlUMTS4Manual() {
 	var parsed = new ilib.PhoneNumber("9087654321");
 	var hints = {
@@ -2073,9 +1999,9 @@ function testAssistedDialingSMSToUSFromIntlUMTS4Manual() {
 	};
 	var expected = "9087654321"; // don't touch manually dialed stuff
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlUMTS5() {
 	var parsed = new ilib.PhoneNumber("65876"); // short code
 	var hints = {
@@ -2088,9 +2014,9 @@ function testAssistedDialingSMSToUSFromIntlUMTS5() {
 	};
 	var expected = "65876"; // special case -- don't do anything to short codes
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlUMTS6() {
 	var parsed = new ilib.PhoneNumber("7654321");
 	var hints = {
@@ -2103,9 +2029,9 @@ function testAssistedDialingSMSToUSFromIntlUMTS6() {
 	};
 	var expected = "+19087654321";  // fix up things in your contact list
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToUSFromIntlUMTS6Manual() {
 	var parsed = new ilib.PhoneNumber("7654321");
 	var hints = {
@@ -2118,9 +2044,9 @@ function testAssistedDialingSMSToUSFromIntlUMTS6Manual() {
 	};
 	var expected = "7654321";  // don't fix up manually dialed things
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlUMTS1() {
 	var parsed = new ilib.PhoneNumber("+9087654321");
 	var hints = {
@@ -2133,9 +2059,9 @@ function testAssistedDialingSMSToIntlFromIntlUMTS1() {
 	};
 	var expected = "0119087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlUMTS1Manual() {
 	var parsed = new ilib.PhoneNumber("+9087654321");
 	var hints = {
@@ -2148,9 +2074,9 @@ function testAssistedDialingSMSToIntlFromIntlUMTS1Manual() {
 	};
 	var expected = "0119087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlUMTS2() {
 	var parsed = new ilib.PhoneNumber("009087654321");
 	var hints = {
@@ -2163,9 +2089,9 @@ function testAssistedDialingSMSToIntlFromIntlUMTS2() {
 	};
 	var expected = "0119087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlUMTS2Manual() {
 	var parsed = new ilib.PhoneNumber("009087654321");
 	var hints = {
@@ -2178,9 +2104,9 @@ function testAssistedDialingSMSToIntlFromIntlUMTS2Manual() {
 	};
 	var expected = "0119087654321";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlUMTS3() {
 	var parsed = new ilib.PhoneNumber("908765432101"); // +90 is Turkey
 	var hints = {
@@ -2193,9 +2119,9 @@ function testAssistedDialingSMSToIntlFromIntlUMTS3() {
 	};
 	var expected = "011908765432101";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlUMTS3Manual() {
 	var parsed = new ilib.PhoneNumber("908765432101"); // +90 is Turkey
 	var hints = {
@@ -2208,9 +2134,9 @@ function testAssistedDialingSMSToIntlFromIntlUMTS3Manual() {
 	};
 	var expected = "011908765432101";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
+
 function testAssistedDialingSMSToIntlFromIntlUMTS4() {
 	var parsed = new ilib.PhoneNumber("658765432101"); // +65 is Singapore -- special case
 	var hints = {
@@ -2223,8 +2149,7 @@ function testAssistedDialingSMSToIntlFromIntlUMTS4() {
 	};
 	var expected = "658765432101"; // special case -- don't add the special IDD
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
 
 // for CFISH-3992
@@ -2240,7 +2165,6 @@ function testAssistedDialingSMSToIntlFromIntlCDMAChina() {
 	var expected = "0118613917331446";
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
 
 //for CFISH-7040
@@ -2256,8 +2180,8 @@ function testNormalizeESRegular1() {
 	var expected = "+34665545880";
 
 	assertEquals(expected, parsed.normalize(hints));
-	
 };
+
 function testNormalizeESRegular2() {
 	var parsed = new ilib.PhoneNumber("+34 665 545 880", {locale: "en-ES"});
 	var hints = {
@@ -2269,10 +2193,8 @@ function testNormalizeESRegular2() {
 	};
 	var expected = "+34665545880";
 
-	assertEquals(expected, parsed.normalize(hints));
-	
+	assertEquals(expected, parsed.normalize(hints));	
 };
-
 
 // for CFISH-10884
 function testAssistedDialingIntlToLLDUMTSForES() {
@@ -2290,6 +2212,5 @@ function testAssistedDialingIntlToLLDUMTSForES() {
 	};
 	var expectedString = "659702066";
 
-	assertEquals(expectedString, phone.normalize(hints)); // "es-ES"
-	
+	assertEquals(expectedString, phone.normalize(hints)); // "es-ES"	
 };

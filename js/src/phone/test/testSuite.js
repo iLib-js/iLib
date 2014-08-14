@@ -33,7 +33,8 @@ function suite() {
     var suites = [
         "numplan.js",
         "phoneloc.js",
-        "phonenum.js"
+        "phonenum.js",
+        "normalize.js"
         /*"phonenum_US.js"
   		
   		"phone_AU.js",
