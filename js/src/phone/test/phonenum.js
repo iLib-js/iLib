@@ -403,7 +403,6 @@ function testNumberMatchITSanMarinoReverse(){
 	assertEquals(100, right.compare(left));
 };
 
-
 function testNumberMatchUSSanMarino(){
 	var left = new ilib.PhoneNumber({
 		countryCode: "378",

@@ -371,7 +371,7 @@ ilib.PhoneNumber.prototype = {
 					// in order to look up the name of the handler function name in the array
 					newState = -newState -1;
 					handlerMethod = ilib.PhoneNumber._states[newState];
-	
+
 					if (number.charAt(0) === '^') {
 						result = regionSettings.handler[handlerMethod](number.slice(1), i-1, this, regionSettings);
 					} else {
@@ -893,7 +893,6 @@ ilib.PhoneNumber.prototype = {
 			destinationLocale;
 
 		// clone this number, so we don't mess with it
-
 		norm = new ilib.PhoneNumber(this);
 
 		// homeLocale is for debugging/unit testing
@@ -908,7 +907,6 @@ ilib.PhoneNumber.prototype = {
 		
 		if (options &&
 				options.assistedDialing &&
-				/*typeof(destinationPlan.getFieldLength("maxLocalLength")) !== 0 &&*/
 				!norm.trunkAccess && 
 				!norm.iddPrefix &&
 				norm.subscriberNumber && 

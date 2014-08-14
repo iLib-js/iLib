@@ -373,7 +373,7 @@ function testCountryHintFR() {
 function testStringIDDPrefix() {
 	var phone = new ilib.PhoneNumber("011-31-456-3453434", {locale: "en-US"});
 	var expected = "+314563453434";
-	
+
 	assertEquals(expected, phone.normalize());	
 };
 

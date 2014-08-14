@@ -199,8 +199,7 @@ ilib.mergeLocData = function (prefix, locale, returnOne) {
 				data = ilib.merge(data, ilib.data[property]);
 				mostSpecific = ilib.data[property];
 			}
-		}
-		
+		}		
 	}
 	
 	if (loc.getRegion() && loc.getVariant()) {
@@ -238,7 +237,7 @@ ilib.mergeLocData = function (prefix, locale, returnOne) {
 			mostSpecific = ilib.data[property];
 		}
 	}
-
+	
 	return foundLocaleData ? (returnOne ? mostSpecific : data) : undefined;
 };
 
@@ -592,7 +591,7 @@ ilib.loadData = function(params) {
 					data = ilib.data[basename] || {};
 					for (var i = 0; i < arr.length; i++) {
 						if (typeof(arr[i]) !== 'undefined') {
-							data = ilib.merge(data, arr[i]);
+							data = loadParams.returnOne ? arr[i] : ilib.merge(data, arr[i]);
 						}
 					}
 					
