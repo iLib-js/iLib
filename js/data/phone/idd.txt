@@ -1,7 +1,7 @@
 1	country	North America	North America and the Caribbean Islands
 20	country	Egypt	Egypt
 210	country	Unknown Country	Unknown Country
-211	country	Unknown Country	Unknown Country
+211	country	South Sudan	South Sudan
 212	country	Morocco	Morocco, Western Sahara
 213	country	Algeria	Algeria
 214	country	Unknown Country	Unknown Country
