@@ -24,6 +24,7 @@ locale.js
 localeinfo.js
 phone/numplan.js
 phone/phoneloc.js
+phone/handler.js
 */
 
 // !data states idd
