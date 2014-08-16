@@ -160,8 +160,13 @@ ilib.mergeLocData = function (prefix, locale, returnOne) {
 	var mostSpecific;
 
 	data = ilib.data[prefix] || {};
+
 	mostSpecific = data;
-	
+
+	if (ilib.data[prefix]) {
+		foundLocaleData = true;
+	}
+
 	if (loc.getLanguage()) {
 		property = prefix + '_' + loc.getLanguage();
 		if (ilib.data[property]) {

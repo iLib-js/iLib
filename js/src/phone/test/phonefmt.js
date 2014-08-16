@@ -26,52 +26,40 @@ function testGetStyleRegionsRightContent() {
 		"HK"
 	];
 	assertArrayEquals(expected, regions);
-
-	
 };
 
 function testMakeStyle() {
-	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
-	
+	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));	
 	assertTrue(typeof(style) === 'object');
 };
 
 function testMakeStyleRightLocale() {
-	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
-	
+	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));	
 	assertEquals("US", style.locale.region);
-	
-	
 };
 
 function testMakeStyleUnknown() {
-	var style = new ilib.FmtStyles(new ilib.Locale("_unknown"));
-	
+	var style = new ilib.FmtStyles(new ilib.Locale("_unknown"));	
 	assertTrue(typeof(style) === 'object');
 };
 
 function testMakeStyleUnknownRightLocale() {
 	var style = new ilib.FmtStyles(new ilib.Locale("_unknown"));
-	
 	assertEquals("unknown", style.locale.region);
-	
 };
 
 function testMakeStyleNotDefined() {
 	var style = new ilib.FmtStyles(new ilib.Locale("_xx"));
-	
 	assertTrue(typeof(style) === 'object');
 };
 
 function testMakeStyleNotDefinedRightLocale() {
-	var style = new ilib.FmtStyles(new ilib.Locale("_xx"));
-	
+	var style = new ilib.FmtStyles(new ilib.Locale("_xx"));	
 	assertEquals("unknown", style.locale.region);
 };
 
 function testMakeStyleDefaultLocale() {
 	var style = new ilib.FmtStyles();
-	
 	assertTrue(typeof(style) === 'object');
 	// should get the phoneLocale and use that
 	assertEquals("US", style.locale.region);
@@ -80,25 +68,17 @@ function testMakeStyleDefaultLocale() {
 
 function testHasStyle() {
 	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
-	
 	assertTrue(style.hasStyle("dots"));
-	
-	
 };
 
 function testHasStyleFalse() {
 	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
-	
 	assertFalse(style.hasStyle("asdf"));
-	
 };
 
 function testHasStyleDE() {
 	var style = new ilib.FmtStyles(new ilib.Locale("de-DE"));
-	
 	assertTrue(style.hasStyle("minimalistischen"));
-	
-	
 };
 
 function testGetStyle() {
@@ -106,8 +86,6 @@ function testGetStyle() {
 	var templates = style.getStyle("dots");
 	
 	assertNotUndefined(templates);
-	
-	
 };
 
 function testGetStyleRightStyle() {
@@ -122,14 +100,11 @@ function testGetStyleRightStyle() {
 	assertEquals("XXXXXX", templates.whole.subscriberNumber[5]);
 	assertEquals("XXX.", templates.partial.areaCode[2]);
 	assertEquals("XXX.XXX", templates.partial.subscriberNumber[5]);
-	
-	
 };
 
 function testGetStyleDefault() {
 	var style = new ilib.FmtStyles(new ilib.Locale("en-US"));
 	var templates = style.getStyle("asdf");
-	
 	assertNotUndefined(templates);
 };
 
@@ -147,8 +122,6 @@ function testGetStyleDefaultRightStyle() {
 	assertEquals("XXXXXX", templates.whole.subscriberNumber[5]);
 	assertEquals("(XXX) ", templates.partial.areaCode[2]);
 	assertEquals("XXX-XXX", templates.partial.subscriberNumber[5]);
-	
-	
 };
 
 function testGetExamplesUS() {
@@ -156,9 +129,7 @@ function testGetExamplesUS() {
 	var examples = style.getExamples();
 	
 	assertNotUndefined(examples);
-	assertEquals(3, examples.length);
-	
-	
+	assertEquals(3, examples.length);	
 };
 
 function testGetExamplesUSRight() {
@@ -173,8 +144,6 @@ function testGetExamplesUSRight() {
 	assertEquals("default", examples[0].key);
 	assertEquals("dashes", examples[1].key);
 	assertEquals("dots", examples[2].key);
-
-	
 };
 
 function testGetExamplesNL() {
@@ -183,8 +152,6 @@ function testGetExamplesNL() {
 	
 	assertNotUndefined(examples);
 	assertEquals(5, examples.length);
-	
-	
 };
 
 function testGetExamplesNLRight() {
@@ -203,6 +170,4 @@ function testGetExamplesNLRight() {
 	assertEquals("gecomprimeerd", examples[2].key);
 	assertEquals("streepjes", examples[3].key);
 	assertEquals("japen", examples[4].key);
-	
-	
 };
