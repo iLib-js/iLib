@@ -287,21 +287,16 @@ ilib.PhoneFmt.prototype = {
 									}),
 									callback: ilib.bind(this, function (fmtdata) {
 										this.fmtdata = fmtdata;
-										
-										/*if (params && typeof(params.onLoad) === 'function') {
-											params.onLoad(this);
-										}*/
 										styleTemplates = this.getStyle((number.mobilePrefix !== undefined) ? "internationalmobile" : "international");
+										// console.info("format: switching to region " + locale.region + " and style " + style + " to format the rest of the number ");
+										if (params && typeof(params.onLoad) === 'function') {
+											params.onLoad(this);
+										}
 									})
 								});
-
-								//styles = new ilib.PhoneFmt({locale:locale});
-								//styleTemplates = styles.getStyle((number.mobilePrefix !== undefined) ? "internationalmobile" : "international");
-			
-								// console.info("format: switching to region " + locale.region + " and style " + style + " to format the rest of the number ");
 							}
 						} else {
-							console.warn("PhoneFmt.format: cannot find format template for field " + fieldName + ", region " + locale.region + ", style " + style);
+							//console.warn("PhoneFmt.format: cannot find format template for field " + fieldName + ", region " + locale.region + ", style " + style);
 							// use default of "minimal formatting" so we don't miss parts because of bugs in the format templates
 							formatted += number[fieldName];
 						}
@@ -335,6 +330,17 @@ ilib.PhoneFmt.prototype = {
 	 * @return {Array.<string>} an array of names of styles that are supported by this formatter
 	 */
 	getAvailableStyles: function () {
+		var ret = [],
+			style;
+
+		if (this.fmtdata) {
+			for (style in this.fmtdata) {
+				if (this.fmtdata[style].example) {
+					ret.push(style);
+				}
+			}
+		}
+		return ret;
 	},
 	
 	/**
@@ -347,6 +353,6 @@ ilib.PhoneFmt.prototype = {
 	 * example 
 	 */
 	getStyleExample: function (style) {
-		
+		return this.fmtdata[style].example || undefined;
 	}
 };

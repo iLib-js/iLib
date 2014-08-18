@@ -2283,3 +2283,24 @@ function testVSCCDMALong(){
 	
 	assertEquals(expected, formatted);
 };
+
+function testGetAvailableStyles() {
+	var fmtStyle = new ilib.PhoneFmt({locale: "en-US"});
+	var styles = fmtStyle.getAvailableStyles();
+	assertNotUndefined(styles);
+
+	assertEquals("default", styles[0]);
+	assertEquals("dashes", styles[1]);
+	assertEquals("dots", styles[2]);
+};
+
+function testGetStyleExample() {
+	var fmtStyle = new ilib.PhoneFmt({locale: "en-US"});
+	var exampleDefault = fmtStyle.getStyleExample("default");
+	var exampleDashes = fmtStyle.getStyleExample("dashes");
+	var exampleDots = fmtStyle.getStyleExample("dots");
+	
+	assertEquals("1 (650) 555-1234", exampleDefault);
+	assertEquals("1-650-555-1234", exampleDashes);
+	assertEquals("1.650.555.1234", exampleDots);
+};
