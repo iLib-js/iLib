@@ -1991,7 +1991,7 @@ function testDurFmtFAFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱س ۱م ۱ه ۱ر ۱:۰۱:۰۱", duration.toString());
+    assertEquals("۱س ۱م ۱ه ۱ر ‏۱:۰۱:۰۱", duration.toString());
 };
 
 function testDurFmtFAFormatMedium() {
@@ -2010,7 +2010,7 @@ function testDurFmtFAFormatMedium() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال ۱ ماه ۱ هف ۱ روز ۱ سا ۱ دق ۱ ثا", duration.toString());
+    assertEquals("۱ سال ۱ ماه ۱ هفته ۱ روز ۱ ساعت ۱ دقیقه ۱ ثانیه", duration.toString());
 };
 
 function testDurFmtFAFormatLong() {
@@ -2029,7 +2029,7 @@ function testDurFmtFAFormatLong() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱ سال ۱ ماه ۱ هفته ۱ روز ۱ ساعت ۱ دقی ۱ ثان", duration.toString());
+    assertEquals("۱ سال ۱ ماه ۱ هفته ۱ روز ۱ ساعت ۱ دقیقه ۱ ثانیه", duration.toString());
 };
 
 function testDurFmtFAFormatFull() {
@@ -4657,7 +4657,7 @@ function testDurFmtURFormatShortClock() {
     	minute: 1,
     	second: 1
     });
-    assertEquals("۱س ۱م ۱ہ ۱د ۱:۰۱:۰۱", duration.toString());
+    assertEquals("۱س ۱م ۱ہ ۱د ‏۱:۰۱:۰۱", duration.toString());
 };
 
 function testDurFmtURFormatMedium() {
@@ -4789,7 +4789,7 @@ function testDurFmtURFormatShortClockAsync() {
     	    	minute: 1,
     	    	second: 1
     	    });
-    	    assertEquals("۱س ۱م ۱ہ ۱د ۱:۰۱:۰۱", duration.toString());
+    	    assertEquals("۱س ۱م ۱ہ ۱د ‏۱:۰۱:۰۱", duration.toString());
     	    callbackCalled = true;
     	}
     });
