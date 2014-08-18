@@ -6,7 +6,7 @@ rm localize.js
 touch localize.js
 
 # add IT, TW, and CH when they are ready
-for locale in AU BE CN DE ES FR GB HK IE IN LU MX NL NZ SG US XX
+for locale in AU BE CN DE ES FR GB HK IE IN LU MX NL NZ SG US XX KR
 do
 echo Generating $locale ...
 mkdir -p $DEST/und/$locale

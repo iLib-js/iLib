@@ -9,7 +9,7 @@
 ^00794	idd	Operator Service
 ^008	idd	Onse Telecom international call
 
-^0	trunk
+^0.	trunk
 
 ^*	vsc
 ^#	vsc
