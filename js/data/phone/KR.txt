@@ -25,24 +25,24 @@
 ^8	local
 ^9	local
 
-2	area	Seoul and parts of Gyeonggi-do (Gwacheon, Gwangmyeong and some neighborhoods of Goyang and Hanam)
-31	area	Gyeonggi-do
-32	area	Incheon and parts of Gyeonggi-do (Bucheon and some insular communities of Ansan)
-33	area	Gangwon-do
-41	area	Chungcheongnam-do
-42	area	Daejeon and a part of Chungcheongnam-do (Gyeryong)
-43	area	Chungcheongbuk-do
-44	area	Sejong City
-49	area	Kaesong Industrial Region
-51	area	Busan
-52	area	Ulsan
-53	area	Daegu and a part of Gyeongsangbuk-do (Gyeongsan)
-54	area	Gyeongsangbuk-do
-55	area	Gyeongsangnam-do and a few neighborhoods of Ulsan
-61	area	Jeollanam-do
-62	area	Gwangju
-63	area	Jeollabuk-do
-64	area	Jeju-do
+2	area	Seoul	Seoul and parts of Gyeonggi-do (Gwacheon, Gwangmyeong and some neighborhoods of Goyang and Hanam)
+31	area	Gyeonggi-do	Gyeonggi-do
+32	area	Incheon	Incheon and parts of Gyeonggi-do (Bucheon and some insular communities of Ansan)
+33	area	Gangwon-do	Gangwon-do
+41	area	Chungcheongnam-do	Chungcheongnam-do
+42	area	Daejeon	Daejeon and a part of Chungcheongnam-do (Gyeryong)
+43	area	Chungcheongbuk-do	Chungcheongbuk-do
+44	area	Sejong City	Sejong City
+49	area	Kaesong	Kaesong Industrial Region
+51	area	Busan	Busan
+52	area	Ulsan	Ulsan
+53	area	Daegu	Daegu and a part of Gyeongsangbuk-do (Gyeongsan)
+54	area	Gyeongsangbuk-do	Gyeongsangbuk-do
+55	area	Gyeongsangnam-do	Gyeongsangnam-do and a few neighborhoods of Ulsan
+61	area	Jeollanam-do	Jeollanam-do
+62	area	Gwangju	Gwangju
+63	area	Jeollabuk-do	Jeollabuk-do
+64	area	Jeju-do	Jeju-do
 
 30	service	Unified Messaging Service
 50	service	Universal Access

@@ -1,1 +1,18 @@
-{"2":{"sn":"Central East","ln":"Central Eastern Australia  (NSW, ACT)"},"3":{"sn":"Southeast","ln":"Southeastern Australia (VIC, TAS)"},"7":{"sn":"Northeast","ln":"Northeastern Australia (QLD)"},"8":{"sn":"Central/West","ln":"Central and Western Australia (SA, NT, WA)"}}
+{
+    "2": {
+        "ln": "Central Eastern Australia  (NSW, ACT)",
+        "sn": "Central East"
+    },
+    "3": {
+        "ln": "Southeastern Australia (VIC, TAS)",
+        "sn": "Southeast"
+    },
+    "7": {
+        "ln": "Northeastern Australia (QLD)",
+        "sn": "Northeast"
+    },
+    "8": {
+        "ln": "Central and Western Australia (SA, NT, WA)",
+        "sn": "Central/West"
+    }
+}

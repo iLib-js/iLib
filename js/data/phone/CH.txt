@@ -38,7 +38,7 @@
 844	service	shared-cost numbers
 848	service	shared-cost numbers
 860	service	voice mail access code
-868 service	test numbers
+868	service	test numbers
 869	service	VPN access code
 98	service	Inter-network routing numbers
 99	service	Internal network numbers

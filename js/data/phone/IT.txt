@@ -6,12 +6,10 @@
 0124	area	Rivarolo Canavese	Rivarolo Canavese
 0125	area	Ivrea	Ivrea
 0131	area	Alessandria	Alessandria
-0131	area	Alessandría	Alessandría
 0141	area	Asti	Asti
 0142	area	Casale Monferrato	Casale Monferrato
 0143	area	Novi Ligure	Novi Ligure
-0144	area	Acqui Terme 	Acqui Terme 
-0144	area	Acqui Termi	Acqui Termi
+0144	area	Acqui Terme	Acqui Terme
 015	area	Biella	Biella
 0161	area	Vercelli	Vercelli
 0163	area	Borgosesia	Borgosesia
@@ -25,9 +23,7 @@
 0182	area	Albenga	Albenga
 0183	area	Imperia	Imperia
 0184	area	San Remo	San Remo
-0184	area	S. Remo	San Remo
-0185	area	Portofino	Portofino
-0185	area	Rapallo	Rapallo
+0185	area	Rapallo	Rapallo & Portofino
 0187	area	La Spezia	La Spezia
 019	area	Savona	Savona
 02	area	Milan	Milan, Rho, Saronno
@@ -38,7 +34,6 @@
 0323	area	Baveno	Baveno
 0324	area	Domodossola	Domodossola
 0331	area	Busto Arsizio	Busto Arsizio
-0331	area	Gallarate 	Gallarate 
 0332	area	Varese	Varese
 0341	area	Lecco	Lecco
 0342	area	Sondrio	Sondrio
@@ -109,7 +104,6 @@
 0525	area	Fornovo Di Taro	Fornovo Di Taro
 0532	area	Ferrara	Ferrara
 0533	area	Comacchio	Comacchio
-0533	area	Migliarino	Migliarino
 0534	area	Porretta Terme	Porretta Terme
 0535	area	Mirandola	Mirandola
 0536	area	Pavullo Nel Frignano	Pavullo Nel Frignano, Sassuolo

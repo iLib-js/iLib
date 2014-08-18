@@ -1,1 +1,58 @@
-{"1":{"sn":"Paris","ln":"Paris (Ile-de-France area)"},"2.":{"sn":"Northwest France","ln":"Northwest France"},"26.":{"sn":"Northwest France","ln":"Northwest France"},"262":{"sn":"Réunion","ln":"Islands of Réunion and Mayotte"},"3":{"sn":"Northeast France","ln":"Northeast France"},"4":{"sn":"Southeast France","ln":"Southeast France"},"50.":{"sn":"Southwest France","ln":"Southwest France"},"508":{"sn":"Saint Pierre and Miquelon","ln":"Saint Pierre and Miquelon Islands"},"5.":{"sn":"Southwest France","ln":"Southwest France"},"59.":{"sn":"Southwest France","ln":"Southwest France"},"590":{"sn":"Guadaloupe","ln":"Guadaloupe Island"},"594":{"sn":"French Guiana","ln":"French Guiana"},"596":{"sn":"Martinique","ln":"Martinique Island"},"8..":{"sn":"Service Number","ln":"Service Number"},"80.":{"sn":"Service Number","ln":"Service Number"},"800":{"sn":"Toll-free Number","ln":"Toll-free Services (Numéros Vert)"},"801":{"sn":"Toll call","ln":"Toll calls at local rates (Numéros Azur)"},"802":{"sn":"Toll call","ln":"Toll calls (Numéros Indigo)"},"803":{"sn":"Toll call","ln":"Toll calls (Numéros Indigo)"},"805":{"sn":"Toll-free Number","ln":"Toll-free Services (Numéros Vert)"},"809":{"sn":"Toll-free Number","ln":"Toll-free Services (Numéros Vert)"},"81.":{"sn":"Toll call","ln":"Toll calls at local rates (Numéros Azur)"},"819":{"sn":"Toll-free Number","ln":"Toll-free Services (Numéros Vert)"},"82.":{"sn":"Toll call","ln":"Toll calls (Numéros Indigo)"},"89.":{"sn":"Audiotel Number","ln":"Audiotel internet online services"},"9":{"sn":"Voice over IP","ln":"Voice over IP services"}}
+{
+    "1": {
+        "ln": "Paris (Ile-de-France area)",
+        "sn": "Paris"
+    },
+    "2.": {
+        "ln": "Northwest France",
+        "sn": "Northwest France"
+    },
+    "26.": {
+        "ln": "Northwest France",
+        "sn": "Northwest France"
+    },
+    "262": {
+        "ln": "Islands of Réunion and Mayotte",
+        "sn": "Réunion"
+    },
+    "3": {
+        "ln": "Northeast France",
+        "sn": "Northeast France"
+    },
+    "4": {
+        "ln": "Southeast France",
+        "sn": "Southeast France"
+    },
+    "5.": {
+        "ln": "Southwest France",
+        "sn": "Southwest France"
+    },
+    "50.": {
+        "ln": "Southwest France",
+        "sn": "Southwest France"
+    },
+    "508": {
+        "ln": "Saint Pierre and Miquelon Islands",
+        "sn": "Saint Pierre and Miquelon"
+    },
+    "59.": {
+        "ln": "Southwest France",
+        "sn": "Southwest France"
+    },
+    "590": {
+        "ln": "Guadaloupe Island",
+        "sn": "Guadaloupe"
+    },
+    "594": {
+        "ln": "French Guiana",
+        "sn": "French Guiana"
+    },
+    "596": {
+        "ln": "Martinique Island",
+        "sn": "Martinique"
+    },
+    "9": {
+        "ln": "Voice over IP services",
+        "sn": "Voice over IP"
+    }
+}

@@ -306,21 +306,26 @@ public class AreaCodeTableMaker {
 	{
 		FixedArray transitions;
 		String stateName;
+		JSONObject wrapper = new JSONObject();
 		JSONArray stateTable = new JSONArray();
 		JSONArray array;
-		
-		for ( int i = 0; i < stateMap.size(); i++ ) {
-			stateName = stateMap.get(i);
-			transitions = getTransitions(stateName);
-			array = new JSONArray();
-			for ( int j = 0; j < transitions.size(); j++ ) {
-				array.put(transitions.get(j));
-			}
-			stateTable.put(array);
-		}
-		
-		out.print(stateTable.toString());
-		out.print("\n");
+		try {
+    		for ( int i = 0; i < stateMap.size(); i++ ) {
+    			stateName = stateMap.get(i);
+    			transitions = getTransitions(stateName);
+    			array = new JSONArray();
+    			for ( int j = 0; j < transitions.size(); j++ ) {
+    				array.put(transitions.get(j));
+    			}
+    			stateTable.put(array);
+    		}
+		    wrapper.put("states", stateTable);
+	    
+		    out.print(wrapper.toString(4));
+	        out.print("\n");
+		} catch ( JSONException e ) {
+            e.printStackTrace();
+        }
 	}
 	
 	protected static void usage()
@@ -389,7 +394,8 @@ public class AreaCodeTableMaker {
 			
 			writeOutput(fos, tableName);
 			
-			if ( areaCodeTable.length() == 0 ) {
+			if ( areaCodeTable.length() > 0 ) {
+			    System.out.println("areaCodeTable.length() is " + areaCodeTable.length());
 				// now write out the area code name table
 				if ( arg < args.length ) {
 					fos = new PrintStream(tableName + ".area.json");
@@ -397,7 +403,7 @@ public class AreaCodeTableMaker {
 					fos = System.out;
 				}
 				
-				String json = areaCodeTable.toString() + "\n";
+				String json = areaCodeTable.toString(4) + "\n";
 				byte[] b = json.getBytes("utf-8");
 				fos.write(b);
 				fos.close();
@@ -406,7 +412,7 @@ public class AreaCodeTableMaker {
 					fos = new PrintStream(tableName + ".strings.js");
 					
 					for ( int i = 0; i < stringsToLocalize.size(); i++ ) {
-						line = "$L(\"" + stringsToLocalize.get(i) + "\");\n"; 
+						line = "rb.getString(\"" + stringsToLocalize.get(i) + "\");\n"; 
 						b = line.getBytes("utf-8");
 						fos.write(b);
 					}
