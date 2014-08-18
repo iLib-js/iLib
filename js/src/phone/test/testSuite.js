@@ -72,11 +72,8 @@ function suite() {
 		"phonefmt_US.js",
 		"phonefmt_US.js"
 		/*"phonefmt.js",
-		"normalize.js",
 		"phonefmt.js",
 		"imsi.js",
-		"phoneloc.js",
-		"phone.js",
 		"states.js",
 		"utils.js"
 		*/
