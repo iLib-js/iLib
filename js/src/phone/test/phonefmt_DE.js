@@ -135,7 +135,7 @@ function testFormatDEInternationalAccessCode(){
 	
 };
 
-function testFormatIEMobile(){
+function testFormatDEMobile(){
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -221,7 +221,7 @@ function testFormatDEDialAroundLong(){
 	
 	
 };
-function testFormatpremium(){
+function testFormatDEpremium(){
 	var formatted;
 	var parsed = new ilib.PhoneNumber({
 			trunkAccess: "0",
