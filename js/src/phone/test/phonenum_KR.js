@@ -351,7 +351,7 @@ function testParseWithUSMCC(){
 	var expected = new ilib.PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "3222313"
-	}, {locale: "en-US"});
+	}, {locale: "ko-US"});
 	
 	assertTrue(parsed.equals(expected));
 };
@@ -362,7 +362,7 @@ function testParseWithFRMCC(){
 	
 	var expected = new ilib.PhoneNumber({
 		subscriberNumber: "6153222313"
-	}, {locale: "en-FR"});
+	}, {locale: "ko-FR"});
 	
 	assertTrue(parsed.equals(expected));
 };
@@ -374,7 +374,7 @@ function testParseWithMXMCC(){
 	var expected = new ilib.PhoneNumber({
 		areaCode: "615",
 		subscriberNumber: "3222313"
-	}, {locale: "en-MX"});
+	}, {locale: "ko-MX"});
 	
 	assertTrue(parsed.equals(expected));
 };
@@ -385,7 +385,7 @@ function testParseWithDEMCC(){
 	
 	var expected = new ilib.PhoneNumber({
 		subscriberNumber: "6153222313"
-	}, {locale: "en-DE"});
+	}, {locale: "ko-DE"});
 	
 	assertTrue(parsed.equals(expected));
 };
