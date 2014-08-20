@@ -77,4 +77,5 @@ localematch.js
 normstring.js
 mapper.js
 maps/casemapper.js
+glyphstring.js
 */

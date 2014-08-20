@@ -833,6 +833,65 @@ ilib.String.prototype = {
 	},
 	
 	/**
+	 * Call the callback with each character in the string one at 
+	 * a time, taking care to step through the surrogate pairs in 
+	 * the UTF-16 encoding properly.<p>
+	 * 
+	 * The standard Javascript String's charAt() method only
+	 * returns a particular 16-bit character in the 
+	 * UTF-16 encoding scheme.
+	 * If the index to charAt() is pointing to a low- or 
+	 * high-surrogate character,
+	 * it will return the surrogate character rather 
+	 * than the the character 
+	 * in the supplementary planes that the two surrogates together 
+	 * encode. This function will call the callback with the full
+	 * character, making sure to join two  
+	 * surrogates into one character in the supplementary planes
+	 * where necessary.<p>
+	 * 
+	 * @param {Function(string)} a callback function to call with each
+	 * full character in the current string
+	 */
+	forEach: function(callback) {
+		if (typeof(callback) === 'function') {
+			var it = this.charIterator();
+			while (it.hasNext()) {
+				callback(it.next());
+			}
+		}
+	},
+
+	/**
+	 * Call the callback with each numeric code point in the string one at 
+	 * a time, taking care to step through the surrogate pairs in 
+	 * the UTF-16 encoding properly.<p>
+	 * 
+	 * The standard Javascript String's charCodeAt() method only
+	 * returns information about a particular 16-bit character in the 
+	 * UTF-16 encoding scheme.
+	 * If the index to charCodeAt() is pointing to a low- or 
+	 * high-surrogate character,
+	 * it will return the code point of the surrogate character rather 
+	 * than the code point of the character 
+	 * in the supplementary planes that the two surrogates together 
+	 * encode. This function will call the callback with the full
+	 * code point of each character, making sure to join two  
+	 * surrogates into one code point in the supplementary planes.<p>
+	 * 
+	 * @param {Function(string)} a callback function to call with each
+	 * code point in the current string
+	 */
+	forEachCodePoint: function(callback) {
+		if (typeof(callback) === 'function') {
+			var it = this.iterator();
+			while (it.hasNext()) {
+				callback(it.next());
+			}
+		}
+	},
+
+	/**
 	 * Return an iterator that will step through all of the characters
 	 * in the string one at a time and return their code points, taking 
 	 * care to step through the surrogate pairs in UTF-16 encoding 

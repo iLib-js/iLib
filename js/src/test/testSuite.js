@@ -196,6 +196,7 @@ function suite() {
 		"testdurfmt.js",
 		"testdurfmt_ar_SA.js",
 		"testglobal.js",
+		"testglyphstr.js",
 		"testjulianday.js",
 		"testlocaleinfo.js",
 		"testlocale.js",
