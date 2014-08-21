@@ -82,18 +82,18 @@ ilib.NormString.init = function(options) {
 	}
 	var formDependencies = {
 		"nfd": ["nfd"],
-		"nfc": ["nfc", "nfd"],
+		"nfc": ["nfd"],
 		"nfkd": ["nfkd", "nfd"],
-		"nfkc": ["nfkd", "nfd", "nfc"]
+		"nfkc": ["nfkd", "nfd"]
 	};
-	var files = ["norm.ccc.json"];
+	var files = ["norm.json"];
 	var forms = formDependencies[form];
 	for (var f in forms) {
 		files.push(forms[f] + "/" + script + ".json");
 	}
 	
 	ilib._callLoadData(files, sync, loadParams, function(arr) {
-		ilib.data.norm.ccc = arr[0];
+		ilib.data.norm = arr[0];
 		for (var i = 1; i < arr.length; i++) {
 			if (typeof(arr[i]) !== 'undefined') {
 				ilib.data.norm[forms[i-1]] = arr[i];

@@ -110,12 +110,12 @@ ilib.GlyphString = function (str, options) {
 		ilib.loadData({
 			object: ilib.GlyphString, 
 			locale: "-", 
-			name: "norm.ccc.json",
+			name: "norm.json",
 			nonlocale: true,
 			sync: sync, 
 			loadParams: loadParams, 
-			callback: ilib.bind(this, function (ccc) {
-				ilib.data.norm.ccc = ccc;
+			callback: ilib.bind(this, function (norm) {
+				ilib.data.norm = norm;
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
 				}
@@ -131,6 +131,115 @@ ilib.GlyphString.prototype.parent = ilib.String.prototype;
 
 ilib.GlyphString.prototype.iterator = function () {
 
+};
+
+/**
+ * Return true if the given character is a leading Jamo (Choseong) character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a leading Jamo character, 
+ * false otherwise
+ */
+ilib.GlyphString._isJamoL = function (n) {
+	return (n >= 0x1100 && n <= 0x1112);
+};
+
+/**
+ * Return true if the given character is a vowel Jamo (Jungseong) character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a vowel Jamo character, 
+ * false otherwise
+ */
+ilib.GlyphString._isJamoV = function (n) {
+	return (n >= 0x1161 && n <= 0x1175);
+};
+
+/**
+ * Return true if the given character is a trailing Jamo (Jongseong) character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a trailing Jamo character, 
+ * false otherwise
+ */
+ilib.GlyphString._isJamoT = function (n) {
+	return (n >= 0x11A8 && n <= 0x11C2);
+};
+
+/**
+ * Return true if the given character is a precomposed Hangul character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a precomposed Hangul character, 
+ * false otherwise
+ */
+ilib.GlyphString._isHangul = function (n) {
+	return (n >= 0xAC00 && n <= 0xD7A3);
+};
+
+/**
+ * Algorithmically compose an L and a V combining Jamo characters into
+ * a precomposed Korean syllabic Hangul character. Both should already
+ * be in the proper ranges for L and V characters. 
+ * 
+ * @private
+ * @static
+ * @param {number} lead the code point of the lead Jamo character to compose
+ * @param {number} trail the code point of the trailing Jamo character to compose
+ * @return {string} the composed Hangul character
+ */
+ilib.GlyphString._composeJamoLV = function (lead, trail) {
+	var lindex = lead - 0x1100;
+	var vindex = trail - 0x1161;
+	return ilib.String.fromCodePoint(0xAC00 + (lindex * 21 + vindex) * 28);
+};
+
+/**
+ * Algorithmically compose a Hangul LV and a combining Jamo T character 
+ * into a precomposed Korean syllabic Hangul character. 
+ * 
+ * @private
+ * @static
+ * @param {number} lead the code point of the lead Hangul character to compose
+ * @param {number} trail the code point of the trailing Jamo T character to compose
+ * @return {string} the composed Hangul character
+ */
+ilib.GlyphString._composeJamoLVT = function (lead, trail) {
+	return ilib.String.fromCodePoint(lead + (trail - 0x11A7));
+};
+
+/**
+ * Compose one character out of a leading character and a 
+ * trailing character. If the characters are Korean Jamo, they
+ * will be composed algorithmically. If they are any other
+ * characters, they will be looked up in the nfc tables.
+ * 
+ * @private
+ * @static
+ * @param {string} lead leading character to compose
+ * @param {string} trail the trailing character to compose
+ * @return {string} the fully composed character, or undefined if
+ * there is no composition for those two characters
+ */
+ilib.GlyphString._compose = function (lead, trail) {
+	var first = lead.charCodeAt(0);
+	var last = trail.charCodeAt(0);
+	if (ilib.GlyphString._isHangul(first) && ilib.GlyphString._isJamoT(last)) {
+		return ilib.GlyphString._composeJamoLVT(first, last);
+	} else if (ilib.GlyphString._isJamoL(first) && ilib.GlyphString._isJamoV(last)) {
+		return ilib.GlyphString._composeJamoLV(first, last);
+	}
+
+	var c = lead + trail;
+	return (ilib.data.norm.nfc && ilib.data.norm.nfc[c]);
 };
 
 /**
@@ -189,8 +298,8 @@ ilib.GlyphString.prototype.charIterator = function() {
 				var notdone = true;
 				while (it.hasNext() && notdone) {
 					this.nextChar = it.next();
-					nextCcc = this.ccc[this.nextChar];
-					if (typeof(ilib.data.norm.ccc[this.nextChar]) !== 'undefined' && nextCcc !== 0) {
+					nextCcc = ilib.data.norm.ccc[this.nextChar];
+					if (typeof(nextCcc) !== 'undefined' && nextCcc !== 0) {
 						ch += this.nextChar;
 						this.nextChar = undefined;
 					} else {
