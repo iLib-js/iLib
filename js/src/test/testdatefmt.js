@@ -2132,7 +2132,7 @@ function testDateFmtConvertToOtherTimeZone() {
 		locale: "en-US"
 	});
     
-    assertEquals("21/9/11 6:45AM EST", fmt.format(date));
+    assertEquals("21/9/11 6:45AM AEST", fmt.format(date));
 };
 
 function testDateFmtForTZWithNonWholeOffset1() {
