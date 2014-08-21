@@ -33,6 +33,7 @@ ilibglobal.js
 ilib.Measurement.Length = function (options) {
 	this.unit = "meter";
 	this.amount = 0;
+	this.aliases = ilib.Measurement.Length.aliases; // share this table in all instances
 	
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
@@ -42,7 +43,7 @@ ilib.Measurement.Length = function (options) {
 		
 		if (typeof(options.amount) === 'object') {
 			if (options.amount.getMeasure() === "length") {
-				this.amount = ilib.Measurement.Length.convert(options.amount.getUnit(), this.unit, options.amount.getAmount());
+				this.amount = ilib.Measurement.Length.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
 			} else {
 				throw "Cannot convert units " + options.unit + " to a length";
 			}
@@ -80,13 +81,30 @@ ilib.Measurement.Length.prototype.parent = ilib.Measurement;
 ilib.Measurement.Length.prototype.constructor = ilib.Measurement.Length;
 
 /**
+ * @override
  * @inheritDoc
  */
 ilib.Measurement.Length.prototype.getMeasure = function() {
 	return "length";
 };
-	
-ilib.Measurement.Length.prototype.aliases = {
+
+/**
+ * Convert the current length to another measure.
+ * 
+ * @override
+ * @inheritDoc
+ */
+ilib.Measurement.Length.prototype.convert = function(to) {
+	if (!to || typeof(ilib.Measurement.Length.ratios[this.normalizeUnits(to)]) === 'undefined') {
+		return undefined;
+	}
+	return new ilib.Measurement({
+		unit: to,
+		amount: this
+	});
+};
+
+ilib.Measurement.Length.aliases = {
 	"miles": "mile",
 	"nauticalmiles": "nauticalmile",
 	"nautical mile": "nauticalmile",
@@ -150,13 +168,18 @@ ilib.Measurement.Length.convert = function(to, from, length) {
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
 		return undefined;
 	}
-	
-	return length * fromRow[toRow.index];
+	//console.log("fromRow is " + fromRow + " toRow is " + toRow);
+	//console.log("fromRow[toRow[0]] is " + fromRow[toRow[0]]);
+	return length * fromRow[toRow[0]];
 };
-	
-ilib.Measurement.Length.prototype.getMeasures = function () {
+
+/**
+ * @private
+ * @static
+ */
+ilib.Measurement.Length.getMeasures = function () {
 	var ret = [];
-	for (var m in ilib.Measurement.Length.prototype.aliases) {
+	for (var m in ilib.Measurement.Length.ratios) {
 		ret.push(m);
 	}
 	return ret;

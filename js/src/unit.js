@@ -49,7 +49,8 @@ localeinfo.js
  * commonly used scale of grams.
  * </ul>
  * 
- * Here is an example of converting a length into new units:
+ * Here are some examples of converting a length into new units. The first method
+ * is via the constructor by passing the old measurement in as the amount property.
  * 
  * <code>
  * var measurement1 = new ilib.Measurement({
@@ -63,6 +64,19 @@ localeinfo.js
  * </code>
  * 
  * The value in measurement2 will end up being about 3.125 miles.
+ * 
+ * The second method will be using the convert method.
+ * 
+ * <code>
+ * var measurement1 = new ilib.Measurement({
+ *   amount: 5,
+ *   units: "kilometers"
+ * });
+ * var measurement2 = measurement1.convert("miles");
+ * });
+ * </code>
+ *
+ * The value in measurement2 will again end up being about 3.125 miles.
  * 
  * @constructor
  * @class
@@ -96,7 +110,12 @@ ilib.Measurement._constructors = {};
  * @return {Array.<string>} an array of strings containing names of units available
  */
 ilib.Measurement.getAvailableUnits = function () {
-	
+	var units = [];
+	for (var c in ilib.Measurement._constructors) {
+		var measure = ilib.Measurement._constructors[c];
+		units.concat(measure.getMeasures());
+	}
+	return units;
 };
 
 ilib.Measurement.metricScales = {
@@ -117,8 +136,23 @@ ilib.Measurement.metricScales = {
 };
 
 ilib.Measurement.prototype = {
-	_getBase: function() {
-		this.unit = this.aliases[this.unit];
+	/**
+	 * Return the normalized name of the given units. If the units are
+	 * not recognized, this method returns its parameter unmodified.<p>
+	 * 
+	 * Examples:
+	 * 
+	 * <ui>
+	 * <li>"metres" gets normalized to "meter"<br>
+	 * <li>"ml" gets normalized to "milliliter"<br>
+	 * <li>"foobar" gets normalized to "foobar" (no change because it is not recognized)
+	 * </ul>
+	 *  
+	 * @param {string} name name of the units to normalize. 
+	 * @returns {string} normalized name of the units
+	 */
+	normalizeUnits: function(name) {
+		return this.aliases[name] || name;
 	},
 
 	/**
@@ -159,5 +193,18 @@ ilib.Measurement.prototype = {
 	 * @abstract
 	 * @return {string} the name of the type of this measurement
 	 */
-	getMeasure: function() {}
+	getMeasure: function() {},
+	
+	/**
+	 * Return a new measurement instance that is converted to a new
+	 * measurement unit. Measurements can only be converted
+	 * to measurements of the same type.<p>
+	 * 
+	 * @abstract
+	 * @param {string} to The name of the units to convert to
+	 * @return {ilib.Measurement|undefined} the converted measurement
+	 * or undefined if the requested units are for a different
+	 * measurement type
+	 */
+	convert: function(to) {}
 };

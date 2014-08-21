@@ -41,3 +41,56 @@ function testLengthConvertMetersToMiles() {
 	
 	assertEquals(3.106856, m2.getAmount());
 }
+
+function testStaticConvert1() {
+	var m = ilib.Measurement.Length.convert("feet", "meter", 2.0);
+	
+	assertEquals(6.56168, m);
+}
+
+function testStaticConvertWithString() {
+	var m = ilib.Measurement.Length.convert("feet", "meter", "2");
+	
+	assertEquals(6.56168, m);
+}
+
+function testStaticConvert2() {
+	var m = ilib.Measurement.Length.convert("meter", "millimeter", 200000);
+	
+	assertEquals(200, m);
+}
+
+function testStaticConvert3() {
+	var m = ilib.Measurement.Length.convert("mile", "yard", 7495);
+	
+	assertEquals(4.25852409, m);
+}
+
+function testStaticConvert4() {
+	var m = ilib.Measurement.Length.convert("millimeter", "meter", 2.0);
+	
+	assertEquals(2000, m);
+}
+
+function testGetMeasures() {
+	var measures = ilib.Measurement.Length.getMeasures();
+	var expected = [
+    	"micrometer",
+    	"millimeter",
+    	"centimeter",
+    	"decimeter",
+    	"meter",
+    	"decameter",
+    	"hectometer",
+    	"kilometer",
+    	"megameter",
+    	"gigameter",
+    	"nauticalmile",
+    	"mile",
+    	"yard",
+    	"foot",
+    	"inch"
+	];
+	
+	assertArrayEqualsIgnoringOrder(expected, measures);
+}
