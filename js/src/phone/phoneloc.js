@@ -24,7 +24,7 @@ locale.js
 localeinfo.js
 */
 
-// !data mcc2reg cc2reg reg2cc
+// !data mcc2reg cc2reg reg2cc area2reg
 
 /**
  *
@@ -168,6 +168,37 @@ ilib.Locale.PhoneLoc.prototype._mapRegiontoCC = function(region) {
 	return ilib.data.reg2cc && ilib.data.reg2cc[region] || "0";
 };
 
+/**
+ * Map a Country code to a region code.
+ *
+ * @static
+ * @protected
+ * @param {string} cc CC string to parse
+ * @return {Object} components of the CC number
+ */
+ilib.Locale.PhoneLoc.prototype._mapAreatoRegion = function(cc, area) {
+	if (!cc) {
+		return null;
+	}
+
+	if (typeof(ilib.data.area2reg) === 'undefined') {
+		ilib.loadData({
+			name: "area2reg.json",
+			object: ilib.Locale.PhoneLoc, 
+			nonlocale: true,
+			sync: true,
+			callback: ilib.bind(this, function (data) {
+				ilib.data.area2reg = data;
+			})
+		});
+	}
+
+	if (cc in ilib.data.area2reg) {
+		return ilib.data.area2reg[cc][area] || ilib.data.area2reg[cc]["default"];
+	} else {
+		return ilib.data.cc2reg[cc];
+	}
+};
 
 /*
 * Return the region that controls the dialing plan in the given

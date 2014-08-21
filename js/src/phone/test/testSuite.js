@@ -34,6 +34,7 @@ function suite() {
         "numplan.js",
         "phoneloc.js",
         "phonenum.js",
+        "phonegeo.js",
         "normalize.js",
   		"phonenum_AU.js",
 		"phonenum_BE.js",
@@ -69,7 +70,6 @@ function suite() {
 		"phonefmt_NL.js",
 		"phonefmt_NZ.js",
 		"phonefmt_SG.js",
-		"phonefmt_US.js",
 		"phonefmt_US.js"
 		/*"phonefmt.js",
 		"phonefmt.js",

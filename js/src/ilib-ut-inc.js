@@ -80,4 +80,5 @@ phone/phoneloc.js
 phone/handler.js
 phone/phonenum.js
 phone/phonefmt.js
+phone/phonegeo.js
 */

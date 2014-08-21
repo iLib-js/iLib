@@ -197,6 +197,14 @@ ilib.NumPlan.prototype = {
 	getTrunkRequired: function() {
 		return this.npdata.trunkRequired;
 	},
+	/** [Need Comment]
+	 * Return a extendedAreaCodes
+	 * 
+	 * @return {boolean}
+	 */
+	getExtendedAreaCode: function() {
+		return this.npdata.extendedAreaCodes;
+	},
 	/**
 	 * Return a string containing all of the common format characters
 	 * used to format numbers.
