@@ -850,7 +850,7 @@ ilib.String.prototype = {
 	 * surrogates into one character in the supplementary planes
 	 * where necessary.<p>
 	 * 
-	 * @param {Function(string)} a callback function to call with each
+	 * @param {Function(String)} callback a callback function to call with each
 	 * full character in the current string
 	 */
 	forEach: function(callback) {
@@ -879,7 +879,7 @@ ilib.String.prototype = {
 	 * code point of each character, making sure to join two  
 	 * surrogates into one code point in the supplementary planes.<p>
 	 * 
-	 * @param {Function(string)} a callback function to call with each
+	 * @param {Function(String)} callback a callback function to call with each
 	 * code point in the current string
 	 */
 	forEachCodePoint: function(callback) {

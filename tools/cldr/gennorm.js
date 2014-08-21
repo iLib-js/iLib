@@ -261,25 +261,23 @@ function genCode(script, form) {
 	}
 	switch (form) {
 		case 'nfd':
-			str += "// !data norm.ccc nfd/" + script + "\n" +
+			str += "// !data norm nfd/" + script + "\n" +
 				"ilib.data.norm.nfd = ilib.merge(ilib.data.norm.nfd || {}, ilib.data.nfd_" + script + ");\n" +
 				"ilib.data.nfd_" + script + " = undefined;";
 			break;
 		case 'nfc':
 			str += "// !depends nfd/" + script + ".js\n" +
-				"// !data norm.ccc nfc/" + script + "\n" +
-				"ilib.data.norm.nfc = ilib.merge(ilib.data.norm.nfc || {}, ilib.data.nfc_" + script + ");\n" +
-				"ilib.data.nfc_" + script + " = undefined;";
+				"// !data norm\n";
 			break;
 		case 'nfkd':
 			str += "// !depends nfd/" + script + ".js\n" +
-				"// !data norm.ccc nfkd/" + script + "\n" +
+				"// !data norm nfkd/" + script + "\n" +
 				"ilib.data.norm.nfkd = ilib.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_" + script + ");\n" +
 				"ilib.data.nfkd_" + script + " = undefined;";
 			break;
 		case 'nfkc':
-			str += "// !depends nfd/" + script + ".js nfc/" + script + ".js nfkd/" + script + ".js\n" +
-				   "// !data norm.ccc\n";
+			str += "// !depends nfd/" + script + ".js nfkd/" + script + ".js\n" +
+				   "// !data norm\n";
 			break;
 	}
 	
@@ -340,7 +338,7 @@ function mkdirs(path) {
 }
 
 mkdirs(toDir + "/nfd");
-mkdirs(toDir + "/nfc");
+//mkdirs(toDir + "/nfc");
 mkdirs(toDir + "/nfkd");
 
 mkdirs(codeDir + "/nfd");
@@ -375,11 +373,13 @@ for (script in nfdByScript) {
 	}
 }
 
+/*
 fs.writeFile(toDir + "/nfc/all.json", JSON.stringify(canonicalComp, true, 4), function (err) {
 	if (err) {
 		throw err;
 	}
 });
+*/
 fs.writeFile(codeDir + "/nfc/all.js", genCode("all", "nfc"), function (err) {
 	if (err) {
 		throw err;
@@ -388,12 +388,13 @@ fs.writeFile(codeDir + "/nfc/all.js", genCode("all", "nfc"), function (err) {
 
 for (script in nfcByScript) {
 	if (script && nfcByScript[script]) {
+		/*
 		fs.writeFile(toDir + "/nfc/" + script + ".json", JSON.stringify(nfcByScript[script], true, 4), function (err) {
 			if (err) {
 				throw err;
 			}
 		});
-		
+		*/
 		fs.writeFile(codeDir + "/nfc/" + script + ".js", genCode(script, "nfc"), function (err) {
 			if (err) {
 				throw err;

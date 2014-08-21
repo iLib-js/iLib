@@ -91,9 +91,10 @@
  * @class
  * @constructor
  * @param {string|ilib.String=} str initialize this instance with this string 
+ * @param {Object=} options options governing the way this instance works
  */
 ilib.GlyphString = function (str, options) {
-	ilib.GlyphString.baseConstructor.call(this, str);
+	ilib.String.call(this, str);
 	
 	var sync = true;
 	var loadParams = {};
@@ -125,13 +126,12 @@ ilib.GlyphString = function (str, options) {
 };
 
 ilib.GlyphString.prototype = new ilib.String();
+ilib.GlyphString.parent = ilib.String;
 ilib.GlyphString.prototype.constructor = ilib.GlyphString;
-ilib.GlyphString.baseConstructor = ilib.String;
-ilib.GlyphString.prototype.parent = ilib.String.prototype;
 
-ilib.GlyphString.prototype.iterator = function () {
+//ilib.GlyphString.prototype.iterator = function () {
 
-};
+//};
 
 /**
  * Return true if the given character is a leading Jamo (Choseong) character.
@@ -272,7 +272,7 @@ ilib.GlyphString._compose = function (lead, trail) {
  * that iterates through all the characters in the string
  */
 ilib.GlyphString.prototype.charIterator = function() {
-	var it = this.parent.charIterator.call(this);
+	var it = ilib.String.prototype.charIterator.call(this);
 	
 	/**
 	 * @constructor
