@@ -541,7 +541,7 @@ function testCNMobileNumber() {
 	assertEquals(expected.area.sn, geoInfo.area.sn);
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
-
+*/
 //[Q] en-UK???
 function testUK() {
 	var parsed = new ilib.PhoneNumber({
@@ -562,7 +562,7 @@ function testUK() {
 		}
 	};
 
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-UK'});
+	var locator = new ilib.GeoPhoneNumber({locale: 'en-GB'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -572,7 +572,7 @@ function testUK() {
 	assertEquals(expected.area.sn, geoInfo.area.sn);
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
-*/
+
 
 function testGB() {
 	var parsed = new ilib.PhoneNumber({
@@ -1070,7 +1070,7 @@ function testMXLocal() {
 	assertEquals(expected.country.sn, geoInfo.country.sn);
 	assertEquals(expected.country.ln, geoInfo.country.ln);
 };
-
+*/
 function testAU() {
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -1340,7 +1340,7 @@ function testNZUnknownAreaWithinCountry() {
 	assertEquals(expected.area.sn, geoInfo.area.sn);
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
-*/
+
 function testUnknown() {
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -1559,7 +1559,6 @@ function testBogusCountryCode() {
 			ln: "Central California: San Mateo, Palo Alto, Redwood City, Menlo Park, Mountain View, southern San Francisco suburbs"
 		}
 	};
-	
 
 	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);

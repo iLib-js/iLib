@@ -27,7 +27,7 @@ phone/phoneloc.js
 phone/phonenum.js
 */
 
-// !data iddarea area
+// !data iddarea area extarea extstates
 
 /**
  * Create a geographically located phone number. Because this class inherits from the
@@ -109,6 +109,7 @@ ilib.GeoPhoneNumber = function(params) {
 		}
 	}
 	this.plan = new ilib.NumPlan({locale: this.locale});
+	this.transLocale = (params && params.locale) || this.locale;
 
 	ilib.loadData({
 		name: "iddarea.json",
@@ -118,6 +119,9 @@ ilib.GeoPhoneNumber = function(params) {
 		loadParams: loadParams,
 		callback: ilib.bind(this, function (data) {
 			this.regiondata = data;
+			if (params && typeof(params.onLoad) === 'function') {
+				params.onLoad(this);
+			}
 		})
 	});
 };
@@ -127,6 +131,74 @@ ilib.GeoPhoneNumber.prototype.parent = ilib.PhoneNumber;
 ilib.GeoPhoneNumber.prototype.constructor = ilib.GeoPhoneNumber;
 
 ilib.GeoPhoneNumber.prototype = {
+	/**
+	 * @private
+	 * 
+	 * Used for locales where the area code is very general, and you need to add in
+	 * the initial digits of the subscriber number in order to get the area
+	 * 
+	 * @param {object} number
+	 * @param {object} stateTable
+	 */
+	_parseAreaAndSubscriber: function (number, stateTable) {
+		var ch,
+			i,
+			handlerMethod,
+			state = 0,
+			newState,
+			prefix = "",
+			dot = 14;	// special transition which matches all characters. See AreaCodeTableMaker.java
+
+		i = 0;
+		if (!number || !stateTable) {
+			// can't parse anything
+			return undefined;
+		}
+
+		//console.log("GeoLocator._parseAreaAndSubscriber: parsing number " + number);
+
+		while (i < number.length) {
+			ch = ilib.PhoneNumber._getCharacterCode(number.charAt(i));
+			//console.info("parsing char " + number.charAt(i) + " code: " + ch);
+			if (ch >= 0) {
+				newState = stateTable.states[state][ch];
+
+				if (newState === -1 && stateTable.states[state][dot] !== -1) {
+					// check if this character can match the dot instead
+					newState = stateTable.states[state][dot];
+					//console.log("char " + ch + " doesn't have a transition. Using dot to transition to state " + newState);
+					prefix += '.';
+				} else {
+					prefix += ch;
+				}
+				
+				if (newState < 0) {
+					// reached a final state. First convert the state to a positive array index
+					// in order to look up the name of the handler function name in the array
+					state = newState;
+					newState = -newState - 1;
+					handlerMethod = ilib.PhoneNumber._states[newState];
+					//console.info("reached final state " + newState + " handler method is " + handlerMethod + " and i is " + i);
+
+					return (handlerMethod === "area") ? prefix : undefined;
+				} else {
+					//console.info("recognized digit " + ch + " continuing...");
+					// recognized digit, so continue parsing
+					state = newState;
+					i++;
+				}
+			} else if (ch === -1) {
+				// non-transition character, continue parsing in the same state
+				i++;
+			} else {
+				// should not happen
+				// console.info("skipping character " + ch);
+				// not a digit, plus, pound, or star, so this is probably a formatting char. Skip it.
+				i++;
+			}
+		}
+		return undefined;
+	},
 	_matchPrefix: function(prefix, table)  {
 		var i, matchedDot, matchesWithDots = [], entry;
 
@@ -165,11 +237,9 @@ ilib.GeoPhoneNumber.prototype = {
 		
 		return undefined;
 	},
-	_getAreaInfo: function(number, data) {
+	_getAreaInfo: function(number, data, locale) {
 		var ret = {}, 
-			region, 
 			countryCode, 
-			rb, 
 			areaInfo, 
 			temp, 
 			areaCode, 
@@ -177,17 +247,63 @@ ilib.GeoPhoneNumber.prototype = {
 			plan,
 			tempNumber, 
 			prefix, 
-			statesTable,
-			locale,
-			geoValue;
+			locale;
 
 		prefix = number.areaCode || number.serviceCode;
 		plan = this.plan;
+		locale = locale;
 		geoTable = data;
 
 		if (prefix !== undefined) {
 			if (plan.getExtendedAreaCode()) {
+				// for countries where the area code is very general and large, and you need a few initial
+				// digits of the subscriber number in order find the actual area
+				tempNumber = prefix + number.subscriberNumber;
+				tempNumber = tempNumber.replace(/[wWpPtT\+#\*]/g, '');	// fix for NOV-108200
+				plan = new ilib.NumPlan({locale:locale});
+		
+				ilib.loadData({
+					name: "extarea.json",
+					object: ilib.Locale.PhoneLoc, 
+					locale: locale,
+					sync: true,
+					callback: ilib.bind(this, function (data) {
+						this.extarea = data;
+						ilib.loadData({
+							name: "extstates.json",
+							object: ilib.Locale.PhoneLoc, 
+							locale: locale,
+							sync: true,
+							callback: ilib.bind(this, function (data) {
+								this.extstates = data;
+								geoTable = this.extarea;
+								if (this.extarea && this.extstates) {
+									prefix = this._parseAreaAndSubscriber(tempNumber, this.extstates);
+								}
+							})
+						});
+					})
+				});
 
+				if (!prefix) {
+					// not a recognized prefix, so now try the general table
+					geoTable = this.areadata;
+					prefix = number.areaCode || number.serviceCode;					
+				}
+
+				if ((!plan.fieldLengths || 
+				  plan.getFieldLength('maxLocalLength') === undefined ||
+				  !number.subscriberNumber ||
+				 	number.subscriberNumber.length <= plan.fieldLengths('maxLocalLength'))) {
+				  	areaInfo = this._matchPrefix(prefix, geoTable);
+					if (areaInfo && areaInfo.sn && areaInfo.ln) {
+						//console.log("Found areaInfo " + JSON.stringify(areaInfo));
+						ret.area = {
+							sn: areaInfo.sn,
+							ln: areaInfo.ln
+						};
+					}
+				}		
 			} else if (!plan || 
 					plan.getFieldLength('maxLocalLength') === undefined || 
 					!number.subscriberNumber ||
@@ -307,11 +423,9 @@ ilib.GeoPhoneNumber.prototype = {
 			countryCode, 
 			temp, 
 			areaCode, 
-			geoTable, 
 			plan,
 			tempNumber, 
 			prefix, 
-			statesTable,
 			locale,
 			areaData,
 			areaResult;
@@ -323,7 +437,7 @@ ilib.GeoPhoneNumber.prototype = {
 		areaData = this.regiondata;
 		// console.log("GeoLocator.locate: looking for geo for number " + JSON.stringify(number));
 		region = this.locale.getRegion();
-		if (number.countryCode !== undefined) {
+		if (number.countryCode !== undefined && areaData) {
 			countryCode = number.countryCode.replace(/[wWpPtT\+#\*]/g, '');
 			temp = areaData[countryCode];
 			locale = new ilib.Locale.PhoneLoc({countryCode: countryCode});
@@ -352,12 +466,8 @@ ilib.GeoPhoneNumber.prototype = {
 			},
 			callback: ilib.bind(this, function (areadata) {
 				this.areadata = areadata;
-				areaResult = this._getAreaInfo(number, this.areadata);
+				areaResult = this._getAreaInfo(number, this.areadata, locale);
 				ret = ilib.merge(ret, areaResult)
-				
-				/*if (params && typeof(params.onLoad) === 'function') {
-					params.onLoad(this);
-				}*/
 			})
 		});
 
@@ -374,7 +484,6 @@ ilib.GeoPhoneNumber.prototype = {
 				}
 			}
 		}
-		
 		return ret;
 	},
 	/**
@@ -400,8 +509,7 @@ ilib.GeoPhoneNumber.prototype = {
 		region = (number.countryCode && phoneloc._mapCCtoRegion(number.countryCode)) ||
 			(number.locale && number.locale.region) || 
 			phoneloc.locale.getRegion() ||
-			this.locale.getRegion() /*|| 
-			enyo.g11n.phoneLocale().region*/;
+			this.locale.getRegion();
 
 		countryCode = number.countryCode || phoneloc._mapRegiontoCC(region);
 		
