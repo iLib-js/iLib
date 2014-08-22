@@ -148,7 +148,7 @@ ilib.GeoPhoneNumber.prototype = {
 	 * Used for locales where the area code is very general, and you need to add in
 	 * the initial digits of the subscriber number in order to get the area
 	 * 
-	 * @param {object} number
+	 * @param {string} number
 	 * @param {object} stateTable
 	 */
 	_parseAreaAndSubscriber: function (number, stateTable) {
@@ -248,19 +248,17 @@ ilib.GeoPhoneNumber.prototype = {
 		
 		return undefined;
 	},
-	_getAreaInfo: function(number, data, locale) {
+	_getAreaInfo: function(number, data, locale, plan) {
 		var ret = {}, 
 			countryCode, 
 			areaInfo, 
 			temp, 
 			areaCode, 
 			geoTable, 
-			plan,
 			tempNumber, 
 			prefix;
 
 		prefix = number.areaCode || number.serviceCode;
-		plan = this.plan;
 		geoTable = data;
 
 		if (prefix !== undefined) {
@@ -269,7 +267,6 @@ ilib.GeoPhoneNumber.prototype = {
 				// digits of the subscriber number in order find the actual area
 				tempNumber = prefix + number.subscriberNumber;
 				tempNumber = tempNumber.replace(/[wWpPtT\+#\*]/g, '');	// fix for NOV-108200
-				plan = new ilib.NumPlan({locale:locale});
 		
 				ilib.loadData({
 					name: "extarea.json",
@@ -475,7 +472,7 @@ ilib.GeoPhoneNumber.prototype = {
 			},
 			callback: ilib.bind(this, function (areadata) {
 				this.areadata = areadata;
-				areaResult = this._getAreaInfo(number, this.areadata, locale);
+				areaResult = this._getAreaInfo(number, this.areadata, locale, this.plan);
 				ret = ilib.merge(ret, areaResult);
 			})
 		});
@@ -512,7 +509,7 @@ ilib.GeoPhoneNumber.prototype = {
 		var phoneloc = new ilib.Locale.PhoneLoc();
 
 		if (!number || !(number instanceof ilib.PhoneNumber)) {
-			return undefined;
+			return "";
 		}
 
 		region = (number.countryCode && phoneloc._mapCCtoRegion(number.countryCode)) ||
