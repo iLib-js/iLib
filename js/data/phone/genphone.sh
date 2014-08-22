@@ -55,4 +55,7 @@ do
    mv $base/strings.json $base/phoneres.json
 done
 
+mv es/ES/phoneres.json es
+mv zh/Hant/HK/phoneres.json zh/Hant
+
 echo Done. Resources are in ./resources 
