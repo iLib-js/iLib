@@ -185,3 +185,87 @@ function testForEachAgrave() {
     	assertEquals(expected[i++], ch);
     });
 }
+
+function testGlyphStrTruncateSimple() {
+	var s = new ilib.GlyphString("abcdefghijklmnop");
+    
+    assertEquals("abcdef", s.truncate(6));
+}
+
+function testGlyphStrTruncateWithCombiningAccentsmidGlyphs() {
+	var s = new ilib.GlyphString("aẬbẬcẬdẬe"); // the accented A is a decomposed char with 2 accents
+    
+    assertEquals("aẬ", s.truncate(2));
+}
+
+function testGlyphStrTruncateWithCombiningAccentsWholeGlyphs() {
+	var s = new ilib.GlyphString("aẬbẬcẬdẬe"); // the accented A is a decomposed char with 2 accents
+    
+    assertEquals("aẬbẬ", s.truncate(4));
+}
+
+function testGlyphStrTruncateThai() {
+	var s = new ilib.GlyphString("สวัสดีคุณเป็นอย่างไรบ้าง");
+    
+    assertEquals("สวัสดี", s.truncate(4));
+}
+
+function testGlyphStrTruncateDevanagari1() {
+	var s = new ilib.GlyphString("हैलो, आप कैसे हैं?");
+    
+    assertEquals("हैलो", s.truncate(2));
+}
+
+function testGlyphStrTruncateDevanagari2() {
+	var s = new ilib.GlyphString("हैलो, आप कैसे हैं?");
+    
+    assertEquals("हैलो, आप कै", s.truncate(8));
+}
+
+function testGlyphStrTruncateJapanese() {
+	var s = new ilib.GlyphString("ェドイン");
+    
+    assertEquals("ェド", s.truncate(2));
+}
+
+function testGlyphStrEllipsizeSimple() {
+	var s = new ilib.GlyphString("abcdefghijklmnop");
+    
+    assertEquals("abcde…", s.ellipsize(6));
+}
+
+function testGlyphStrEllipsizeWithCombiningAccentsmidGlyphs() {
+	var s = new ilib.GlyphString("aẬbẬcẬdẬe"); // the accented A is a decomposed char with 2 accents
+    
+    assertEquals("aẬ…", s.ellipsize(3));
+}
+
+function testGlyphStrEllipsizeWithCombiningAccentsWholeGlyphs() {
+	var s = new ilib.GlyphString("aẬbẬcẬdẬe"); // the accented A is a decomposed char with 2 accents
+    
+    assertEquals("aẬb…", s.ellipsize(4));
+}
+
+function testGlyphStrEllipsizeThai() {
+	var s = new ilib.GlyphString("สวัสดีคุณเป็นอย่างไรบ้าง");
+    
+    assertEquals("สวัสดี…", s.ellipsize(5));
+}
+
+function testGlyphStrEllipsizeDevanagari1() {
+	var s = new ilib.GlyphString("हैलो, आप कैसे हैं?");
+    
+    assertEquals("हैलो…", s.ellipsize(3));
+}
+
+function testGlyphStrEllipsizeDevanagari2() {
+	var s = new ilib.GlyphString("हैलो, आप कैसे हैं?");
+    
+    assertEquals("हैलो, आप …", s.ellipsize(8));
+}
+
+function testGlyphStrEllipsizeJapanese() {
+	var s = new ilib.GlyphString("ェドイン");
+    
+    assertEquals("ェド…", s.ellipsize(3));
+}

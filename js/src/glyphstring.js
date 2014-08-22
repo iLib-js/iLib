@@ -324,3 +324,33 @@ ilib.GlyphString.prototype.charIterator = function() {
 	return new _chiterator(this);
 };
 
+/**
+ * Truncate the current string at the given number of whole glyphs and return
+ * the resulting string.
+ * 
+ * @param {number} length the number of whole glyphs to keep in the string
+ * @return {string} a string truncated to the requested number of glyphs
+ */
+ilib.GlyphString.prototype.truncate = function(length) {
+	var it = this.charIterator();
+	var tr = "";
+	for (var i = 0; i < length && it.hasNext(); i++) {
+		tr += it.next();
+	}
+	return tr;
+};
+
+/**
+ * Truncate the current string at the given number of glyphs and add an ellipsis
+ * to indicate that is more to the string. The ellipsis forms the last character
+ * in the string, so the string is actually truncated at length-1 glyphs.
+ * 
+ * @param {number} length the number of whole glyphs to keep in the string 
+ * including the ellipsis
+ * @return {string} a string truncated to the requested number of glyphs
+ * with an ellipsis
+ */
+ilib.GlyphString.prototype.ellipsize = function(length) {
+	return this.truncate(length > 0 ? length-1 : 0) + "…";
+};
+
