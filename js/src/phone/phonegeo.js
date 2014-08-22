@@ -28,6 +28,7 @@ phone/phonenum.js
 */
 
 // !data iddarea area extarea extstates
+// !resbundle phoneres
 
 /**
  * Create a geographically located phone number. Because this class inherits from the
@@ -111,12 +112,12 @@ ilib.GeoPhoneNumber = function(params) {
 	this.plan = new ilib.NumPlan({locale: this.locale});
 	this.transLocale = (params && params.locale) || this.locale;
 
-	new ResBundle({
+	new ilib.ResBundle({
 		locale: this.locale,
 		name: "phoneres",
 		sync: sync,
 		loadParams: loadParams,
-		callback: ilib.bind(this, function (rb) {
+		onLoad: ilib.bind(this, function (rb) {
 			this.rb = rb;
 			
 			ilib.loadData({
@@ -307,8 +308,8 @@ ilib.GeoPhoneNumber.prototype = {
 					if (areaInfo && areaInfo.sn && areaInfo.ln) {
 						//console.log("Found areaInfo " + JSON.stringify(areaInfo));
 						ret.area = {
-							sn: this.rb.getString(areaInfo.sn),
-							ln: this.rb.getString(areaInfo.ln)
+							sn: this.rb.getString(areaInfo.sn).toString(),
+							ln: this.rb.getString(areaInfo.ln).toString()
 						};
 					}
 				}		
@@ -322,13 +323,13 @@ ilib.GeoPhoneNumber.prototype = {
 
 					if (areaInfo && areaInfo.sn && areaInfo.ln) {
 						ret.area = {
-							sn: this.rb.getString(areaInfo.sn),
-							ln: this.rb.getString(areaInfo.ln)
+							sn: this.rb.getString(areaInfo.sn).toString(),
+							ln: this.rb.getString(areaInfo.ln).toString()
 						};
 					} else if (number.serviceCode) {
 						ret.area = {
-							sn: this.rb.getString("Service Number"),
-							ln: this.rb.getString("Service Number")
+							sn: this.rb.getString("Service Number").toString(),
+							ln: this.rb.getString("Service Number").toString()
 						};
 					}
 				} else {
@@ -337,8 +338,8 @@ ilib.GeoPhoneNumber.prototype = {
 						temp = this.regiondata[countryCode];
 						if (temp && temp.sn) {
 							ret.country = {
-								sn: this.rb.getString(temp.sn),
-								ln: this.rb.getString(temp.ln),
+								sn: this.rb.getString(temp.sn).toString(),
+								ln: this.rb.getString(temp.ln).toString(),
 								code: this.locale.getRegion()
 							};
 						}
@@ -350,8 +351,8 @@ ilib.GeoPhoneNumber.prototype = {
 					temp = this.regiondata[countryCode];
 					if (temp && temp.sn) {
 						ret.country = {
-							sn: this.rb.getString(temp.sn),
-							ln: this.rb.getString(temp.ln),
+							sn: this.rb.getString(temp.sn).toString(),
+							ln: this.rb.getString(temp.ln).toString(),
 							code: this.locale.getRegion()
 						};
 					}
@@ -360,13 +361,13 @@ ilib.GeoPhoneNumber.prototype = {
 
 		} else if (number.mobilePrefix) {
 			ret.area = {
-				sn: this.rb.getString("Mobile Number"),
-				ln: this.rb.getString("Mobile Number")
+				sn: this.rb.getString("Mobile Number").toString(),
+				ln: this.rb.getString("Mobile Number").toString()
 			};
 		} else if (number.emergency) {
 			ret.area = {
-				sn: this.rb.getString("Emergency Services Number"),
-				ln: this.rb.getString("Emergency Services Number")
+				sn: this.rb.getString("Emergency Services Number").toString(),
+				ln: this.rb.getString("Emergency Services Number").toString()
 			};
 		}
 
@@ -453,8 +454,8 @@ ilib.GeoPhoneNumber.prototype = {
 				this.plan = new ilib.NumPlan({locale:locale});
 			}
 			ret.country = {
-				sn: this.rb.getString(temp.sn),
-				ln: this.rb.getString(temp.ln),
+				sn: this.rb.getString(temp.sn).toString(),
+				ln: this.rb.getString(temp.ln).toString(),
 				code: locale.getRegion()
 			};
 		}
@@ -485,8 +486,8 @@ ilib.GeoPhoneNumber.prototype = {
 				temp = this.regiondata[countryCode];
 				if (temp && temp.sn) {
 					ret.country = {
-						sn: this.rb.getString(temp.sn),
-						ln: this.rb.getString(temp.ln),
+						sn: this.rb.getString(temp.sn).toString(),
+						ln: this.rb.getString(temp.ln).toString(),
 						code: this.locale.getRegion()
 					};
 				}
