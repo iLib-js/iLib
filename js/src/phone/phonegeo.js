@@ -27,8 +27,7 @@ phone/phoneloc.js
 phone/phonenum.js
 */
 
-// !data iddarea area extarea extstates
-// !resbundle phoneres
+// !data iddarea area extarea extstates phoneres
 
 /**
  * Create a geographically located phone number. Because this class inherits from the
