@@ -21,11 +21,12 @@ echo "" >> localize.js
 rm ${locale}.strings.js 
 done
 
-for file in idd mnc
-do
-echo Generating $file ...
-../../../bin/tablemaker ${file}.txt $DEST/${file}.json
-done
+echo Generating the idd info
+../../../bin/tablemaker -t idd.txt $DEST/idd.json
+
+echo Generating the mnc info
+../../../bin/tablemaker mnc.txt $DEST/mnc.json
+rm mnc.strings.js
 
 for locale in AU FR NZ
 do
@@ -40,3 +41,18 @@ cat ${locale}.geo.strings.js >> localize.js
 echo "" >> localize.js
 rm ${locale}.geo.strings.js
 done
+
+echo Running novaloc. This may take a few seconds...
+novaloc ilib-phoneres .
+
+echo Cleaning up resources...
+cd resources
+rm -rf eu ps zu ilibmanifest.json
+
+for file in $(find . -name strings.json)
+do
+   base=$(dirname $file)
+   mv $base/strings.json $base/phoneres.json
+done
+
+echo Done. Resources are in ./resources 

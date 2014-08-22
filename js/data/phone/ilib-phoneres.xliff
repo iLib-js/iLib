@@ -77866,6 +77866,30 @@
             <source>Jeju-do</source>
             <target>제주도</target>
          </trans-unit>
+         <trans-unit id="ilib-phoneres_196">
+            <source>Japan</source>
+            <target>일본</target>
+         </trans-unit>
+         <trans-unit id="ilib-phoneres_197">
+            <source>South Korea</source>
+            <target>남한</target>
+         </trans-unit>
+         <trans-unit id="ilib-phoneres_199">
+            <source>North Korea</source>
+            <target>북한</target>
+         </trans-unit>
+         <trans-unit id="ilib-phoneres_200">
+            <source>Hong Kong</source>
+            <target>홍콩</target>
+         </trans-unit>
+         <trans-unit id="ilib-phoneres_204">
+            <source>China</source>
+            <target>중국</target>
+         </trans-unit>
+         <trans-unit id="ilib-phoneres_205">
+            <source>People's Republic of China</source>
+            <target>중화인민공화국</target>
+         </trans-unit>
       </body>
    </file>
    <file datatype="javascript" original="ilib-phoneres" source-language="en-KR" target-language="nl-NL">
