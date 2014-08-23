@@ -97,9 +97,10 @@ ilib.GeoPhoneNumber = function(params) {
 	this.locale = new ilib.Locale();
 
 	if (params) {
-		if (params.locale) {
+		if (params.locale || params.mcc) {
 			this.locale = new ilib.Locale.PhoneLoc(params);
 		} 
+
 		if (typeof(params.sync) !== 'undefined') {
 			sync = (params.sync == true);
 		}
@@ -127,6 +128,20 @@ ilib.GeoPhoneNumber = function(params) {
 				loadParams: loadParams,
 				callback: ilib.bind(this, function (data) {
 					this.regiondata = data;
+					ilib.loadData({
+						name: "area.json",
+						object: ilib.GeoPhoneNumber,
+						locale: this.locale,
+						sync: sync,
+						loadParams: {
+							returnOne: true
+						},
+						callback: ilib.bind(this, function (areadata) {
+							this.areadata = areadata;
+						})
+					});
+
+
 					if (params && typeof(params.onLoad) === 'function') {
 						params.onLoad(this);
 					}
@@ -148,7 +163,7 @@ ilib.GeoPhoneNumber.prototype = {
 	 * the initial digits of the subscriber number in order to get the area
 	 * 
 	 * @param {string} number
-	 * @param {object} stateTable
+	 * @param {Object} stateTable
 	 */
 	_parseAreaAndSubscriber: function (number, stateTable) {
 		var ch,
@@ -447,7 +462,7 @@ ilib.GeoPhoneNumber.prototype = {
 			temp = areaData[countryCode];
 			locale = new ilib.Locale.PhoneLoc({countryCode: countryCode});
 			if (locale.getRegion() !== this.locale.getRegion()) {
-				this.plan = new ilib.NumPlan({locale:locale});
+				plan = new ilib.NumPlan({locale:locale});
 			}
 			ret.country = {
 				sn: this.rb.getString(temp.sn).toString(),
@@ -470,8 +485,10 @@ ilib.GeoPhoneNumber.prototype = {
 				returnOne: true
 			},
 			callback: ilib.bind(this, function (areadata) {
-				this.areadata = areadata;
-				areaResult = this._getAreaInfo(number, this.areadata, locale, this.plan);
+				if (areadata) {
+					this.areadata = areadata;	
+				}
+				areaResult = this._getAreaInfo(number, this.areadata, locale, plan);
 				ret = ilib.merge(ret, areaResult);
 			})
 		});

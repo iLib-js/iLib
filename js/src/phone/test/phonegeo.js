@@ -179,7 +179,7 @@ function testNANPNoLocale() {
 	assertEquals(expected.area.sn, geoInfo.area.sn);
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
-/*
+
 function testNANPOtherLocale() {
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -208,7 +208,7 @@ function testNANPOtherLocale() {
 	assertEquals(expected.country.ln, geoInfo.country.ln);
 	assertEquals(expected.area.sn, geoInfo.area.sn);
 	assertEquals(expected.area.ln, geoInfo.area.ln);
-};*/
+};
 
 function testNANPUnknownAreaCode() {
 	var parsed = new ilib.PhoneNumber({
@@ -289,7 +289,7 @@ function testNANPInvalidNumber() {
 	assertEquals(expected.area.sn, geoInfo.area.sn);
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
-/*
+
 function testDefaultDE() {
 	var parsed = new ilib.PhoneNumber({
 		areaCode: "6224",
@@ -318,6 +318,7 @@ function testDefaultDE() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
+// Mobile Number : No translation
 function testDEMobileNumber() {
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -376,6 +377,7 @@ function testDEServiceNumber() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
+//No Translation: Emergency Service Number 
 function testDEEmergency() {
 	var parsed = new ilib.PhoneNumber({
 		emergency: "112"
@@ -403,6 +405,7 @@ function testDEEmergency() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
+
 function testDELocal() {
 	var parsed = new ilib.PhoneNumber({
 		subscriberNumber: "12345678"
@@ -422,8 +425,6 @@ function testDELocal() {
 	assertEquals(expected.country.code, geoInfo.country.code);
 	assertEquals(expected.country.sn, geoInfo.country.sn);
 	assertEquals(expected.country.ln, geoInfo.country.ln);
-	assertEquals(expected.area.sn, geoInfo.area.sn);
-	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
 function testDefaultHK() {
@@ -434,13 +435,13 @@ function testDefaultHK() {
 	}, {locale: 'en-HK'});
 	var expected = {
 		country: {
-			sn: "中國",
-			ln: "中華人民共和國",
+			sn: "中国",
+			ln: "中华人民共和国",
 			code: "CN"
 		},
 		area: {
-			sn: "Jieyang",
-			ln: "Jieyang 揭阳市"
+			sn: "揭阳市",
+			ln: "揭阳市"
 		}
 	};
 	
@@ -463,13 +464,13 @@ function testHKMobileNumber() {
 	}, {locale: 'en-HK'});
 	var expected = {
 		country: {
-			sn: "中國",
-			ln: "中華人民共和國",
+			sn: "中国",
+			ln: "中华人民共和国",
 			code: "CN"
 		},
 		area: {
-			sn: "Mobile Number",
-			ln: "Mobile Number"
+			sn: "手机号码",
+			ln: "手机号码"
 		}
 	};
 
@@ -514,6 +515,7 @@ function testDefaultCN() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
+//No translation : Mobile Number
 function testCNMobileNumber() {
 	var parsed = new ilib.PhoneNumber({
 		mobilePrefix: "150",
@@ -541,8 +543,7 @@ function testCNMobileNumber() {
 	assertEquals(expected.area.sn, geoInfo.area.sn);
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
-*/
-//[Q] en-UK???
+
 function testUK() {
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -572,7 +573,6 @@ function testUK() {
 	assertEquals(expected.area.sn, geoInfo.area.sn);
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
-
 
 function testGB() {
 	var parsed = new ilib.PhoneNumber({
@@ -685,7 +685,7 @@ function testUKLocal() {
 	assertEquals(expected.country.ln, geoInfo.country.ln);
 };
 
-/*
+
 function testFR() {
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -820,8 +820,8 @@ function testFRFreephone() {
 			code: "FR"
 		},
 		area: {
-			sn: "Toll-free Number",
-			ln: "Toll-free Services (Numéros Vert)"
+			sn: "Numéro de service",
+			ln: "Numéro de service"
 		}
 	};
 	
@@ -850,8 +850,8 @@ function testFRToll() {
 			code: "FR"
 		},
 		area: {
-			sn: "Appel payant",
-			ln: "Toll calls at local rates (Numéros Azur)"
+			sn: "Numéro de service",
+			ln: "Numéro de service"
 		}
 	};
 	
@@ -1005,7 +1005,7 @@ function testES() {
 		},
 		area: {
 			sn: "Barcelona",
-			ln: "Barcelona, Granollers, Mataro, Sabadell-Terrassa, Barcelona"
+			ln: "Barcelona, Granollers, Mataro, Sabadell-Terrassa"
 		}
 	};
 	
@@ -1029,8 +1029,8 @@ function testMX() {
 	});
 	var expected = {
 		country: {
-			sn: "México",
-			ln: "México",
+			sn: "Mexico",
+			ln: "Mexico",
 			code: "MX"
 		},
 		area: {
@@ -1056,8 +1056,8 @@ function testMXLocal() {
 	});
 	var expected = {
 		country: {
-			sn: "México",
-			ln: "México",
+			sn: "Mexico",
+			ln: "Mexico",
 			code: "MX"
 		}
 	};
@@ -1070,7 +1070,7 @@ function testMXLocal() {
 	assertEquals(expected.country.sn, geoInfo.country.sn);
 	assertEquals(expected.country.ln, geoInfo.country.ln);
 };
-*/
+
 function testAU() {
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -1081,7 +1081,7 @@ function testAU() {
 	var expected = {
 		country: {
 			sn: "Australia",
-			ln: "Australia, Christmas Island, Cocos Islands",
+			ln: "Australia, Isla Christmas, Islas Cocos",
 			code: "AU"
 		},
 		area: {
@@ -1111,12 +1111,12 @@ function testAUMobile() {
 	var expected = {
 		country: {
 			sn: "Australia",
-			ln: "Australia, Christmas Island, Cocos Islands",
+			ln: "Australia, Isla Christmas, Islas Cocos",
 			code: "AU"
 		},
 		area: {
-			sn: "Mobile Number",
-			ln: "Mobile Number"
+			sn: "Número de móvil",
+			ln: "Número de móvil"
 		}
 	};
 	
@@ -1141,7 +1141,7 @@ function testAUUnknownAreaWithinACity() {
 	var expected = {
 		country: {
 			sn: "Australia",
-			ln: "Australia, Christmas Island, Cocos Islands",
+			ln: "Australia, Isla Christmas, Islas Cocos",
 			code: "AU"
 		},
 		area: {
@@ -1171,7 +1171,7 @@ function testAUUnknownAreaWithinCountry() {
 	var expected = {
 		country: {
 			sn: "Australia",
-			ln: "Australia, Christmas Island, Cocos Islands",
+			ln: "Australia, Isla Christmas, Islas Cocos",
 			code: "AU"
 		},
 		area: {
@@ -1200,8 +1200,8 @@ function testNZ() {
 	});
 	var expected = {
 		country: {
-			sn: "New Zealand",
-			ln: "New Zealand",
+			sn: "Nueva Zelanda",
+			ln: "Nueva Zelanda",
 			code: "NZ"
 		},
 		area: {
@@ -1230,8 +1230,8 @@ function testNZWithDot() {
 	});
 	var expected = {
 		country: {
-			sn: "New Zealand",
-			ln: "New Zealand",
+			sn: "Nueva Zelanda",
+			ln: "Nueva Zelanda",
 			code: "NZ"
 		},
 		area: {
@@ -1260,13 +1260,13 @@ function testNZMobile() {
 	});
 	var expected = {
 		country: {
-			sn: "New Zealand",
-			ln: "New Zealand",
+			sn: "Nueva Zelanda",
+			ln: "Nueva Zelanda",
 			code: "NZ"
 		},
 		area: {
-			sn: "Mobile Number",
-			ln: "Mobile Number"
+			sn: "Número de móvil",
+			ln: "Número de móvil"
 		}
 	};
 	
@@ -1290,8 +1290,8 @@ function testNZUnknownAreaWithinACity() {
 	});
 	var expected = {
 		country: {
-			sn: "New Zealand",
-			ln: "New Zealand",
+			sn: "Nueva Zelanda",
+			ln: "Nueva Zelanda",
 			code: "NZ"
 		},
 		area: {
@@ -1320,8 +1320,8 @@ function testNZUnknownAreaWithinCountry() {
 	});
 	var expected = {
 		country: {
-			sn: "New Zealand",
-			ln: "New Zealand",
+			sn: "Nueva Zelanda",
+			ln: "Nueva Zelanda",
 			code: "NZ"
 		},
 		area: {
@@ -1480,7 +1480,6 @@ function testDEMCCEnglishLocale() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-/*
 function testDEMCCGermanLocale() {
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -1510,6 +1509,7 @@ function testDEMCCGermanLocale() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
+//No translation.
 function testDEMCCFrenchLocaleUSCountryCode() {
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -1539,7 +1539,6 @@ function testDEMCCFrenchLocaleUSCountryCode() {
 	assertEquals(expected.area.sn, geoInfo.area.sn);
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
-*/
 
 function testBogusCountryCode() {
 	var parsed = new ilib.PhoneNumber({
@@ -1625,7 +1624,6 @@ function testNumberTooLongUS() {
 };
 
 // no fixed length in Germany, so there should not be any numbers that are "too long"
-/*
 function testNumberTooLongDE() {
 	var parsed = new ilib.PhoneNumber({
 		areaCode: "6224",
@@ -1653,7 +1651,6 @@ function testNumberTooLongDE() {
 	assertEquals(expected.area.sn, geoInfo.area.sn);
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
-*/
 
 function testInvalidNumber() {
 	var parsed = new ilib.PhoneNumber({
@@ -1683,7 +1680,6 @@ function testInvalidNumber() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);	
 };
 
-
 function testGetCountryCode() {
 	var country;
 	var parsed = new ilib.PhoneNumber({
@@ -1699,7 +1695,6 @@ function testGetCountryCode() {
 	assertNotUndefined(locator);
 	assertEquals('DE', country);
 };
-
 
 function testGetCountryCode2() {
 	var country;
@@ -1785,7 +1780,6 @@ function testGetCountryCodeLocalNumberNoAreaCode() {
 	assertNotUndefined(locator);
 	assertEquals('DE', country);	
 };
-
 
 function testGetCountryCodeHaveCountryButNoAreaCode() {
 	var country;
@@ -1969,7 +1963,6 @@ function testGetCountryCodeFranceMartinique() {
 };
 
 // for bug NOV-118981
-
 function testInvalidNumber() {
 	var country;
 	var parsed = new ilib.PhoneNumber({
@@ -2027,7 +2020,6 @@ function testSGLocal() {
 	assertEquals(expected.country.ln, geoInfo.country.ln);
 	assertEquals(expected.country.sn, geoInfo.country.sn);
 };
-
 
 function testSGMobile() {
 	var parsed = new ilib.PhoneNumber({
