@@ -318,7 +318,6 @@ function testDefaultDE() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-// Mobile Number : No translation
 function testDEMobileNumber() {
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "0",
@@ -377,7 +376,6 @@ function testDEServiceNumber() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-//No Translation: Emergency Service Number 
 function testDEEmergency() {
 	var parsed = new ilib.PhoneNumber({
 		emergency: "112"
@@ -515,7 +513,6 @@ function testDefaultCN() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-//No translation : Mobile Number
 function testCNMobileNumber() {
 	var parsed = new ilib.PhoneNumber({
 		mobilePrefix: "150",
@@ -928,7 +925,6 @@ function testIT() {
 };
 
 // for bug NOV-115337
-
 function testITIntl() {
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -1509,7 +1505,6 @@ function testDEMCCGermanLocale() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-//No translation.
 function testDEMCCFrenchLocaleUSCountryCode() {
 	var parsed = new ilib.PhoneNumber({
 		iddPrefix: "+",
@@ -1713,14 +1708,12 @@ function testGetCountryCode2() {
 };
 
 function testGetCountryCodeUndefined() {
-	//[Q]
 	var locator = new ilib.GeoPhoneNumber();
 	var geoInfo = locator.country(undefined);
 	
 	assertNotUndefined(locator);
 	assertNotUndefined(undefined === geoInfo);
 };
-
 
 function testGetCountryCodeLocalNumber() {
 	var country;
