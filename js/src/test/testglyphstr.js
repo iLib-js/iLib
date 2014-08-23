@@ -205,21 +205,32 @@ function testGlyphStrTruncateWithCombiningAccentsWholeGlyphs() {
 }
 
 function testGlyphStrTruncateThai() {
-	var s = new ilib.GlyphString("สวัสดีคุณเป็นอย่างไรบ้าง");
+	var s = new ilib.GlyphString("สวัุสดีคุณเป็นอย่างไรบ้าง");
     
-    assertEquals("สวัสดี", s.truncate(4));
+	// this tests non-spacing marks that are also non-combining
+	
+    assertEquals("สวัุสดี", s.truncate(4));
 }
 
 function testGlyphStrTruncateDevanagari1() {
 	var s = new ilib.GlyphString("हैलो, आप कैसे हैं?");
     
-    assertEquals("हैलो", s.truncate(2));
+	// if the 2nd base character has combining spacing accents on it,
+	// then it will not fit in the two spaces available, so the base
+	// and all its combining spacing accents have to be removed.
+    assertEquals("है", s.truncate(2));
 }
 
 function testGlyphStrTruncateDevanagari2() {
 	var s = new ilib.GlyphString("हैलो, आप कैसे हैं?");
     
-    assertEquals("हैलो, आप कै", s.truncate(8));
+    assertEquals("हैलो,", s.truncate(3));
+}
+
+function testGlyphStrTruncateTamil() {
+	var s = new ilib.GlyphString("சொலிறுவெ");
+    
+    assertEquals("சொலி", s.truncate(3));
 }
 
 function testGlyphStrTruncateJapanese() {
@@ -247,15 +258,15 @@ function testGlyphStrEllipsizeWithCombiningAccentsWholeGlyphs() {
 }
 
 function testGlyphStrEllipsizeThai() {
-	var s = new ilib.GlyphString("สวัสดีคุณเป็นอย่างไรบ้าง");
+	var s = new ilib.GlyphString("สวัุสดีคุณเป็นอย่างไรบ้าง");
     
-    assertEquals("สวัสดี…", s.ellipsize(5));
+    assertEquals("สวัุสดี…", s.ellipsize(5));
 }
 
 function testGlyphStrEllipsizeDevanagari1() {
 	var s = new ilib.GlyphString("हैलो, आप कैसे हैं?");
     
-    assertEquals("हैलो…", s.ellipsize(3));
+    assertEquals("है…", s.ellipsize(3));
 }
 
 function testGlyphStrEllipsizeDevanagari2() {

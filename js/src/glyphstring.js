@@ -18,7 +18,8 @@
  * limitations under the License.
  */
 
-// !depends strings.js
+// !depends strings.js ctype.js
+// !data norm ctype_m
 
 /**
  * Create a new glyph string instance. This string inherits from 
@@ -107,22 +108,28 @@ ilib.GlyphString = function (str, options) {
 		}
 	}
 	
-	if (typeof(ilib.data.norm.ccc) === 'undefined') {
-		ilib.loadData({
-			object: ilib.GlyphString, 
-			locale: "-", 
-			name: "norm.json",
-			nonlocale: true,
-			sync: sync, 
-			loadParams: loadParams, 
-			callback: ilib.bind(this, function (norm) {
-				ilib.data.norm = norm;
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}
-			})
-		});
-	}
+	ilib.CType._load("ctype_m", sync, loadParams, function() {
+		if (typeof(ilib.data.norm.ccc) === 'undefined') {
+			ilib.loadData({
+				object: ilib.GlyphString, 
+				locale: "-", 
+				name: "norm.json",
+				nonlocale: true,
+				sync: sync, 
+				loadParams: loadParams, 
+				callback: ilib.bind(this, function (norm) {
+					ilib.data.norm = norm;
+					if (options && typeof(options.onLoad) === 'function') {
+						options.onLoad(this);
+					}
+				})
+			});
+		} else {
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		}
+	});
 };
 
 ilib.GlyphString.prototype = new ilib.String();
@@ -279,6 +286,7 @@ ilib.GlyphString.prototype.charIterator = function() {
 	 */
 	function _chiterator (istring) {
 		this.index = 0;
+		this.spacingCombining = false;
 		this.hasNext = function () {
 			return !!this.nextChar || it.hasNext();
 		};
@@ -289,6 +297,7 @@ ilib.GlyphString.prototype.charIterator = function() {
 				composed = ch;
 			
 			this.nextChar = undefined;
+			this.spacingCombining = false;
 			
 			if (ilib.data.norm.ccc && 
 					(typeof(ilib.data.norm.ccc[ch]) === 'undefined' || ilib.data.norm.ccc[ch] === 0)) {
@@ -299,7 +308,16 @@ ilib.GlyphString.prototype.charIterator = function() {
 				while (it.hasNext() && notdone) {
 					this.nextChar = it.next();
 					nextCcc = ilib.data.norm.ccc[this.nextChar];
-					if (typeof(nextCcc) !== 'undefined' && nextCcc !== 0) {
+					// Mn characters are Marks that are non-spacing. These do not take more room than an accent, so they should be 
+					// considered part of the on-screen glyph, even if they are non-combining. Mc are marks that are spacing
+					// and combining, which means they are part of the glyph, but they cause the glyph to use up more space than
+					// just the base character alone.
+					var isMn = ilib.CType._inRange(this.nextChar, "Mn", ilib.data.ctype_m);
+					var isMc = ilib.CType._inRange(this.nextChar, "Mc", ilib.data.ctype_m);
+					if (isMn || isMc || (typeof(nextCcc) !== 'undefined' && nextCcc !== 0)) {
+						if (isMc) {
+							this.spacingCombining = true;
+						}
 						ch += this.nextChar;
 						this.nextChar = undefined;
 					} else {
@@ -320,6 +338,12 @@ ilib.GlyphString.prototype.charIterator = function() {
 			}
 			return ch;
 		};
+		// Returns true if the last character returned by the "next" method included
+		// spacing combining characters. If it does, then the character was wider than
+		// just the base character alone, and the truncation code will not add it.
+		this.wasSpacingCombining = function() {
+			return this.spacingCombining;
+		};
 	};
 	return new _chiterator(this);
 };
@@ -334,8 +358,24 @@ ilib.GlyphString.prototype.charIterator = function() {
 ilib.GlyphString.prototype.truncate = function(length) {
 	var it = this.charIterator();
 	var tr = "";
-	for (var i = 0; i < length && it.hasNext(); i++) {
+	for (var i = 0; i < length-1 && it.hasNext(); i++) {
 		tr += it.next();
+	}
+	
+	/*
+	 * handle the last character separately. If it contains spacing combining
+	 * accents, then we must assume that it uses up more horizontal space on
+	 * the screen than just the base character by itself, and therefore this
+	 * method will not truncate enough characters to fit in the given length.
+	 * In this case, we have to chop off not only the combining characters, 
+	 * but also the base character as well because the base without the
+	 * combining accents is considered a different character.
+	 */
+	if (i < length && it.hasNext()) {
+		var c = it.next();
+		if (!it.wasSpacingCombining()) {
+			tr += c;
+		}
 	}
 	return tr;
 };

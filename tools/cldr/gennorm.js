@@ -288,6 +288,7 @@ var script;
 var nfdByScript = {};
 var nfcByScript = {};
 var nfkdByScript = {};
+var norm = {};
 
 // the Unicode data has only the binary decompositions. That is, the first of 
 // two chars of a decomposition may be itself decomposable. So, apply the 
@@ -380,6 +381,8 @@ fs.writeFile(toDir + "/nfc/all.json", JSON.stringify(canonicalComp, true, 4), fu
 	}
 });
 */
+norm.nfc = canonicalComp;
+
 fs.writeFile(codeDir + "/nfc/all.js", genCode("all", "nfc"), function (err) {
 	if (err) {
 		throw err;
@@ -446,7 +449,8 @@ for (script in nfkdByScript) {
 	}
 }
 
-fs.writeFile(toDir + "/norm.ccc.json", JSON.stringify(combiningMappings, true, 4), function (err) {
+norm.ccc = combiningMappings;
+fs.writeFile(toDir + "/norm.json", JSON.stringify(norm, true, 4), function (err) {
 	if (err) {
 		throw err;
 	}
