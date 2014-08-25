@@ -239,6 +239,132 @@ function testGlyphStrTruncateJapanese() {
     assertEquals("ェド", s.truncate(2));
 }
 
+function testGlyphStrTruncateKannadaNonSpacing() {
+	var s = new ilib.GlyphString("ಭೆನಿಬೇನಿೇ");
+    
+    assertEquals("ಭೆನಿ", s.truncate(2));
+}
+
+function testGlyphStrTruncateKannadaSkipSpacing3() {
+	var s = new ilib.GlyphString("ಭೆನಿಬೇನಿೇ");
+    
+    assertEquals("ಭೆನಿ", s.truncate(3));
+}
+
+function testGlyphStrTruncateKannadaSkipSpacing4() {
+	var s = new ilib.GlyphString("ಭೆನಿಬೇನಿೇ");
+    
+    assertEquals("ಭೆನಿಬೇ", s.truncate(4));
+}
+
+function testGlyphStrTruncateMalayalamNonSpacing() {
+	var s = new ilib.GlyphString("ടൢഡൣഖൊഭൈ");
+    
+    assertEquals("ടൢഡൣ", s.truncate(2));
+}
+
+function testGlyphStrTruncateMalayalamSkipSpacing3() {
+	var s = new ilib.GlyphString("ടൢഡൣഖൊഭൈ");
+    
+    assertEquals("ടൢഡൣ", s.truncate(3));
+}
+
+function testGlyphStrTruncateMalayalamSkipSpacing4() {
+	var s = new ilib.GlyphString("ടൢഡൣഖൊഭൈ");
+    
+    assertEquals("ടൢഡൣഖൊ", s.truncate(4));
+}
+
+function testGlyphStrTruncateSinhalaNonSpacing() {
+	var s = new ilib.GlyphString("ච්ගුටෘඋෙ");
+    
+    assertEquals("ච්ගු", s.truncate(2));
+}
+
+function testGlyphStrTruncateSinhalaSkipSpacing3() {
+	var s = new ilib.GlyphString("ච්ගුටෘඋෙ");
+    
+    assertEquals("ච්ගු", s.truncate(3));
+}
+
+function testGlyphStrTruncateSinhalaSkipSpacing4() {
+	var s = new ilib.GlyphString("ච්ගුටෘඋෙ");
+    
+    assertEquals("ච්ගුටෘ", s.truncate(4));
+}
+
+function testGlyphStrTruncateTeluguNonSpacing() {
+	var s = new ilib.GlyphString("ఠౕఌేకౄదూ");
+    
+    assertEquals("ఠౕఌే", s.truncate(2));
+}
+
+function testGlyphStrTruncateTeluguSkipSpacing3() {
+	var s = new ilib.GlyphString("ఠౕఌేకౄదూ");
+    
+    assertEquals("ఠౕఌే", s.truncate(3));
+}
+
+function testGlyphStrTruncateTeluguSkipSpacing4() {
+	var s = new ilib.GlyphString("ఠౕఌేకౄదూ");
+    
+    assertEquals("ఠౕఌేకౄ", s.truncate(4));
+}
+
+function testGlyphStrTruncateBengaliNonSpacing() {
+	var s = new ilib.GlyphString("ঢূতুমৈবো");
+    
+    assertEquals("ঢূতু", s.truncate(2));
+}
+
+function testGlyphStrTruncateBengaliSkipSpacing3() {
+	var s = new ilib.GlyphString("ঢূতুমৈবো");
+    
+    assertEquals("ঢূতু", s.truncate(3));
+}
+
+function testGlyphStrTruncateBengaliSkipSpacing4() {
+	var s = new ilib.GlyphString("ঢূতুমৈবো");
+    
+    assertEquals("ঢূতুমৈ", s.truncate(4));
+}
+
+function testGlyphStrTruncateGujaratiNonSpacing() {
+	var s = new ilib.GlyphString("ઑૄખેઊોઌૉ");
+    
+    assertEquals("ઑૄખે", s.truncate(2));
+}
+
+function testGlyphStrTruncateGujaratiSkipSpacing3() {
+	var s = new ilib.GlyphString("ઑૄખેઊોઌૉ");
+    
+    assertEquals("ઑૄખે", s.truncate(3));
+}
+
+function testGlyphStrTruncateGujaratiSkipSpacing4() {
+	var s = new ilib.GlyphString("ઑૄખેઊોઌૉ");
+    
+    assertEquals("ઑૄખેઊો", s.truncate(4));
+}
+
+function testGlyphStrTruncateGurmukhiNonSpacing() {
+	var s = new ilib.GlyphString("ਕੇਙੋਡਿਜੀ");
+    
+    assertEquals("ਕੇਙੋ", s.truncate(2));
+}
+
+function testGlyphStrTruncateGurmukhiSkipSpacing3() {
+	var s = new ilib.GlyphString("ਕੇਙੋਡਿਜੀ");
+    
+    assertEquals("ਕੇਙੋ", s.truncate(3));
+}
+
+function testGlyphStrTruncateGurmukhiSkipSpacing4() {
+	var s = new ilib.GlyphString("ਕੇਙੋਡਿਜੀ");
+    
+    assertEquals("ਕੇਙੋਡਿ", s.truncate(4));
+}
+
 function testGlyphStrEllipsizeSimple() {
 	var s = new ilib.GlyphString("abcdefghijklmnop");
     
@@ -279,4 +405,130 @@ function testGlyphStrEllipsizeJapanese() {
 	var s = new ilib.GlyphString("ェドイン");
     
     assertEquals("ェド…", s.ellipsize(3));
+}
+
+function testGlyphStrEllipsizeKannadaNonSpacing() {
+	var s = new ilib.GlyphString("ಭೆನಿಬೇನಿೇ");
+    
+    assertEquals("ಭೆನಿ…", s.ellipsize(4));
+}
+
+function testGlyphStrEllipsizeKannadaSkipSpacing5() {
+	var s = new ilib.GlyphString("ಭೆನಿಬೇನಿೇ");
+    
+    assertEquals("ಭೆನಿ…", s.ellipsize(5));
+}
+
+function testGlyphStrEllipsizeKannadaSkipSpacing5() {
+	var s = new ilib.GlyphString("ಭೆನಿಬೇನಿೇ");
+    
+    assertEquals("ಭೆನಿಬೇ…", s.ellipsize(5));
+}
+
+function testGlyphStrEllipsizeMalayalamNonSpacing() {
+	var s = new ilib.GlyphString("ടൢഡൣഖൊഭൈ");
+    
+    assertEquals("ടൢഡൣ…", s.ellipsize(3));
+}
+
+function testGlyphStrEllipsizeMalayalamSkipSpacing4() {
+	var s = new ilib.GlyphString("ടൢഡൣഖൊഭൈ");
+    
+    assertEquals("ടൢഡൣ…", s.ellipsize(4));
+}
+
+function testGlyphStrEllipsizeMalayalamSkipSpacing5() {
+	var s = new ilib.GlyphString("ടൢഡൣഖൊഭൈ");
+    
+    assertEquals("ടൢഡൣഖൊ…", s.ellipsize(5));
+}
+
+function testGlyphStrEllipsizeSinhalaNonSpacing() {
+	var s = new ilib.GlyphString("ච්ගුටෘඋෙ");
+    
+    assertEquals("ච්ගු…", s.ellipsize(3));
+}
+
+function testGlyphStrEllipsizeSinhalaSkipSpacing4() {
+	var s = new ilib.GlyphString("ච්ගුටෘඋෙ");
+    
+    assertEquals("ච්ගු…", s.ellipsize(4));
+}
+
+function testGlyphStrEllipsizeSinhalaSkipSpacing5() {
+	var s = new ilib.GlyphString("ච්ගුටෘඋෙ");
+    
+    assertEquals("ච්ගුටෘ…", s.ellipsize(5));
+}
+
+function testGlyphStrEllipsizeTeluguNonSpacing() {
+	var s = new ilib.GlyphString("ఠౕఌేకౄదూ");
+    
+    assertEquals("ఠౕఌే…", s.ellipsize(3));
+}
+
+function testGlyphStrEllipsizeTeluguSkipSpacing4() {
+	var s = new ilib.GlyphString("ఠౕఌేకౄదూ");
+    
+    assertEquals("ఠౕఌే…", s.ellipsize(4));
+}
+
+function testGlyphStrEllipsizeTeluguSkipSpacing5() {
+	var s = new ilib.GlyphString("ఠౕఌేకౄదూ");
+    
+    assertEquals("ఠౕఌేకౄ…", s.ellipsize(5));
+}
+
+function testGlyphStrEllipsizeBengaliNonSpacing() {
+	var s = new ilib.GlyphString("ঢূতুমৈবো");
+    
+    assertEquals("ঢূতু…", s.ellipsize(3));
+}
+
+function testGlyphStrEllipsizeBengaliSkipSpacing4() {
+	var s = new ilib.GlyphString("ঢূতুমৈবো");
+    
+    assertEquals("ঢূতু…", s.ellipsize(4));
+}
+
+function testGlyphStrEllipsizeBengaliSkipSpacing5() {
+	var s = new ilib.GlyphString("ঢূতুমৈবো");
+    
+    assertEquals("ঢূতুমৈ…", s.ellipsize(5));
+}
+
+function testGlyphStrEllipsizeGujaratiNonSpacing() {
+	var s = new ilib.GlyphString("ઑૄખેઊોઌૉ");
+    
+    assertEquals("ઑૄખે…", s.ellipsize(3));
+}
+
+function testGlyphStrEllipsizeGujaratiSkipSpacing4() {
+	var s = new ilib.GlyphString("ઑૄખેઊોઌૉ");
+    
+    assertEquals("ઑૄખે…", s.ellipsize(4));
+}
+
+function testGlyphStrEllipsizeGujaratiSkipSpacing5() {
+	var s = new ilib.GlyphString("ઑૄખેઊોઌૉ");
+    
+    assertEquals("ઑૄખેઊો…", s.ellipsize(5));
+}
+
+function testGlyphStrEllipsizeGurmukhiNonSpacing() {
+	var s = new ilib.GlyphString("ਕੇਙੋਡਿਜੀ");
+    
+    assertEquals("ਕੇਙੋ…", s.ellipsize(3));
+}
+
+function testGlyphStrEllipsizeGurmukhiSkipSpacing4() {
+	var s = new ilib.GlyphString("ਕੇਙੋਡਿਜੀ");
+    
+    assertEquals("ਕੇਙੋ…", s.ellipsize(4));
+}
+
+function testGlyphStrEllipsizeGurmukhiSkipSpacing5() {
+	var s = new ilib.GlyphString("ਕੇਙੋਡਿਜੀ");
+    
+    assertEquals("ਕੇਙੋਡਿ…", s.ellipsize(5));
 }
