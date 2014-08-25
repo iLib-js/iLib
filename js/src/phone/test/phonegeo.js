@@ -1,5 +1,5 @@
 /*
- * phonegeo.js - Test the GeoPhoneNumber Object.
+ * phonegeo.js - Test the GeoLocator Object.
  * 
  * Copyright © 2014, JEDLSoft
  *
@@ -36,7 +36,7 @@ function testNANP() {
 		}
 	};
 
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -59,7 +59,7 @@ function testNANPLocalNumber() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertEquals(expected.country.code, geoInfo.country.code);
@@ -86,7 +86,7 @@ function testNANPServiceNumber() {
 		}
 	};
 
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -113,7 +113,7 @@ function testNANPEmergencyLikeServiceNumber() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -139,7 +139,7 @@ function testNANPEmergency() {
 			ln: "Emergency Services Number"
 		}
 	};
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -169,7 +169,7 @@ function testNANPNoLocale() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -199,7 +199,7 @@ function testNANPOtherLocale() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'fr-FR'});
+	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 	
@@ -223,7 +223,7 @@ function testNANPUnknownAreaCode() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -249,7 +249,7 @@ function testDefaultCountry() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -279,7 +279,7 @@ function testNANPInvalidNumber() {
 		}
 	};
 
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -307,7 +307,7 @@ function testDefaultDE() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'de-DE'});
+	var locator = new ilib.GeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -336,7 +336,7 @@ function testDEMobileNumber() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'de-DE'});
+	var locator = new ilib.GeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -365,7 +365,7 @@ function testDEServiceNumber() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'de-DE'});
+	var locator = new ilib.GeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -392,7 +392,7 @@ function testDEEmergency() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'de-DE'});
+	var locator = new ilib.GeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -416,7 +416,7 @@ function testDELocal() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'de-DE'});
+	var locator = new ilib.GeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -444,7 +444,7 @@ function testDefaultHK() {
 	};
 	
 	// give the prc mcc number so that this gives the right geo location
-	var locator = new ilib.GeoPhoneNumber({locale: 'zh-HK', mcc: "460"});
+	var locator = new ilib.GeoLocator({locale: 'zh-HK', mcc: "460"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -473,7 +473,7 @@ function testHKMobileNumber() {
 	};
 
 	// give the prc mcc number so that this gives the right geo location
-	var locator = new ilib.GeoPhoneNumber({locale: 'zh-HK', mcc: "460"});
+	var locator = new ilib.GeoLocator({locale: 'zh-HK', mcc: "460"});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -502,7 +502,7 @@ function testDefaultCN() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'zh-CN'});
+	var locator = new ilib.GeoLocator({locale: 'zh-CN'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -530,7 +530,7 @@ function testCNMobileNumber() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'zh-CN'});
+	var locator = new ilib.GeoLocator({locale: 'zh-CN'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -560,7 +560,7 @@ function testUK() {
 		}
 	};
 
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-GB'});
+	var locator = new ilib.GeoLocator({locale: 'en-GB'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -590,7 +590,7 @@ function testGB() {
 		}
 	};
 
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-GB'});
+	var locator = new ilib.GeoLocator({locale: 'en-GB'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -620,7 +620,7 @@ function testUKMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-GB'});
+	var locator = new ilib.GeoLocator({locale: 'en-GB'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -650,7 +650,7 @@ function testUKService() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-GB'});
+	var locator = new ilib.GeoLocator({locale: 'en-GB'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -673,7 +673,7 @@ function testUKLocal() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-GB'});
+	var locator = new ilib.GeoLocator({locale: 'en-GB'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -702,7 +702,7 @@ function testFR() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'fr-FR'});
+	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -732,7 +732,7 @@ function testFRMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'fr-FR'});
+	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -762,7 +762,7 @@ function testFRService() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'fr-FR'});
+	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -792,7 +792,7 @@ function testFRDepartment() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'fr-FR'});
+	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -822,7 +822,7 @@ function testFRFreephone() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'fr-FR'});
+	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -852,7 +852,7 @@ function testFRToll() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'fr-FR'});
+	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -882,7 +882,7 @@ function testDE() {
 		}
 	};
 
-	var locator = new ilib.GeoPhoneNumber({locale: 'de-DE'});
+	var locator = new ilib.GeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -913,7 +913,7 @@ function testIT() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'it-IT'});
+	var locator = new ilib.GeoLocator({locale: 'it-IT'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -945,7 +945,7 @@ function testITIntl() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'it-IT'});
+	var locator = new ilib.GeoLocator({locale: 'it-IT'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -975,7 +975,7 @@ function testITIntlMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'it-IT'});
+	var locator = new ilib.GeoLocator({locale: 'it-IT'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1005,7 +1005,7 @@ function testES() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'es-ES'});
+	var locator = new ilib.GeoLocator({locale: 'es-ES'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1035,7 +1035,7 @@ function testMX() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-MX'});
+	var locator = new ilib.GeoLocator({locale: 'en-MX'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1058,7 +1058,7 @@ function testMXLocal() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-MX'});
+	var locator = new ilib.GeoLocator({locale: 'en-MX'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1086,7 +1086,7 @@ function testAU() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'es-AU'});
+	var locator = new ilib.GeoLocator({locale: 'es-AU'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1116,7 +1116,7 @@ function testAUMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'es-AU'});
+	var locator = new ilib.GeoLocator({locale: 'es-AU'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1146,7 +1146,7 @@ function testAUUnknownAreaWithinACity() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'es-AU'});
+	var locator = new ilib.GeoLocator({locale: 'es-AU'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1176,7 +1176,7 @@ function testAUUnknownAreaWithinCountry() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'es-AU'});
+	var locator = new ilib.GeoLocator({locale: 'es-AU'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1206,7 +1206,7 @@ function testNZ() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'es-NZ'});
+	var locator = new ilib.GeoLocator({locale: 'es-NZ'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1236,7 +1236,7 @@ function testNZWithDot() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'es-NZ'});
+	var locator = new ilib.GeoLocator({locale: 'es-NZ'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1266,7 +1266,7 @@ function testNZMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'es-NZ'});
+	var locator = new ilib.GeoLocator({locale: 'es-NZ'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1296,7 +1296,7 @@ function testNZUnknownAreaWithinACity() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'es-NZ'});
+	var locator = new ilib.GeoLocator({locale: 'es-NZ'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1326,7 +1326,7 @@ function testNZUnknownAreaWithinCountry() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'es-NZ'});
+	var locator = new ilib.GeoLocator({locale: 'es-NZ'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -1352,7 +1352,7 @@ function testUnknown() {
 		}
 	};
 
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1380,7 +1380,7 @@ function testMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1408,7 +1408,7 @@ function testWithUSMCC() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber(parsed, {locale: 'en-US', mcc: '316'});
+	var locator = new ilib.GeoLocator(parsed, {locale: 'en-US', mcc: '316'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1436,7 +1436,7 @@ function testWithUSMCCNoLocale() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({mcc: '316'});
+	var locator = new ilib.GeoLocator({mcc: '316'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1465,7 +1465,7 @@ function testDEMCCEnglishLocale() {
 		}
 	};
 
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US', mcc: '262'});
+	var locator = new ilib.GeoLocator({locale: 'en-US', mcc: '262'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1494,7 +1494,7 @@ function testDEMCCGermanLocale() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'de-DE', mcc: '262'});
+	var locator = new ilib.GeoLocator({locale: 'de-DE', mcc: '262'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1524,7 +1524,7 @@ function testDEMCCFrenchLocaleUSCountryCode() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'fr-FR', mcc: '262'});
+	var locator = new ilib.GeoLocator({locale: 'fr-FR', mcc: '262'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1554,7 +1554,7 @@ function testBogusCountryCode() {
 		}
 	};
 
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1584,7 +1584,7 @@ function testBogusAreaCode() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1609,7 +1609,7 @@ function testNumberTooLongUS() {
 		}
 	};
 
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1636,7 +1636,7 @@ function testNumberTooLongDE() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'de-DE'});
+	var locator = new ilib.GeoLocator({locale: 'de-DE'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1664,7 +1664,7 @@ function testInvalidNumber() {
 		}
 	};
 
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	assertNotUndefined(locator);
 
@@ -1684,7 +1684,7 @@ function testGetCountryCode() {
 		subscriberNumber: "12345678901234567890"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1700,7 +1700,7 @@ function testGetCountryCode2() {
 		subscriberNumber: "12345678"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1708,7 +1708,7 @@ function testGetCountryCode2() {
 };
 
 function testGetCountryCodeUndefined() {
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	var geoInfo = locator.country(undefined);
 	
 	assertNotUndefined(locator);
@@ -1724,7 +1724,7 @@ function testGetCountryCodeLocalNumber() {
 	}, {locale: "de-DE"});
 	
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'de-DE'});
+	var locator = new ilib.GeoLocator({locale: 'de-DE'});
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1738,7 +1738,7 @@ function testGetCountryCodeLocalNumberNoLocale() {
 		subscriberNumber: "5551212"
 	}, {locale: "en-US"});
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1752,7 +1752,7 @@ function testGetCountryCodeLocalNumberNoLocaleDefault() {
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);
 	
 	assertNotUndefined(locator);
@@ -1767,7 +1767,7 @@ function testGetCountryCodeLocalNumberNoAreaCode() {
 		subscriberNumber: "12345678"
 	}, {locale: "de-DE"});
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'de-DE'});
+	var locator = new ilib.GeoLocator({locale: 'de-DE'});
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1783,7 +1783,7 @@ function testGetCountryCodeHaveCountryButNoAreaCode() {
 		subscriberNumber: "12345678"
 	}, {locale: "de-DE"});
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'de-DE'});
+	var locator = new ilib.GeoLocator({locale: 'de-DE'});
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1799,7 +1799,7 @@ function testGetCountryCodeHaveCountryButNoAreaCodeFR() {
 		subscriberNumber: "12345678"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'fr-FR'});
+	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1815,7 +1815,7 @@ function testGetCountryCodeUS() {
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1831,7 +1831,7 @@ function testGetCountryCodeCA() {
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);	
 	
 	assertNotUndefined(locator);
@@ -1847,7 +1847,7 @@ function testGetCountryCodeCaribbean() {
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber(parsed);
+	var locator = new ilib.GeoLocator(parsed);
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);	
@@ -1863,7 +1863,7 @@ function testGetCountryCodeCaribbean2() {
 		subscriberNumber: "5551212"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1880,7 +1880,7 @@ function testGetCountryCodeItalySanMarino() {
 		subscriberNumber: "87654321"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1897,7 +1897,7 @@ function testGetCountryCodeItalyRome() {
 		subscriberNumber: "87654321"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);
 	
 	assertNotUndefined(locator);
@@ -1914,7 +1914,7 @@ function testGetCountryCodeFranceParis() {
 		subscriberNumber: "87654321"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1931,7 +1931,7 @@ function testGetCountryCodeFranceReunion() {
 		subscriberNumber: "654321"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);
 	
 	assertNotUndefined(locator);
@@ -1948,7 +1948,7 @@ function testGetCountryCodeFranceMartinique() {
 		subscriberNumber: "654321"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1963,7 +1963,7 @@ function testInvalidNumber() {
 		areaCode: "234"
 	});
 	
-	var locator = new ilib.GeoPhoneNumber();
+	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);
 
 	assertNotUndefined(locator);
@@ -1984,7 +1984,7 @@ function testSG() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 	
 	assertNotUndefined(locator);
@@ -2005,7 +2005,7 @@ function testSGLocal() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-SG'});
+	var locator = new ilib.GeoLocator({locale: 'en-SG'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -2026,7 +2026,7 @@ function testSGMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-SG'});
+	var locator = new ilib.GeoLocator({locale: 'en-SG'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -2049,7 +2049,7 @@ function testHK() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-US'});
+	var locator = new ilib.GeoLocator({locale: 'en-US'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -2070,7 +2070,7 @@ function testHKLocal() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-HK'});
+	var locator = new ilib.GeoLocator({locale: 'en-HK'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -2091,7 +2091,7 @@ function testHKMobile() {
 		}
 	};
 	
-	var locator = new ilib.GeoPhoneNumber({locale: 'en-HK'});
+	var locator = new ilib.GeoLocator({locale: 'en-HK'});
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);

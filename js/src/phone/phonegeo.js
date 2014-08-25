@@ -30,10 +30,7 @@ phone/phonenum.js
 // !data iddarea area extarea extstates phoneres
 
 /**
- * Create a geographically located phone number. Because this class inherits from the
- * phone number class, you can use it as a regular phone number that happens to have
- * extra geolocation information associated with it. The parent class parses the
- * number and the current class adds the location information.<p>
+ * Create an instance that can geographically locate a phone number.<p>
  * 
  * The location of the number is calculated according to the following rules:
  * 
@@ -67,50 +64,63 @@ phone/phonenum.js
  * information about the country where the phone number is located is not available,
  * then the area information will be missing and only the country will be available.<p>
  * 
- * See the description of {@link ilib.PhoneNumber} for details on what properties
- * this parameter may contain. This class adds one more property to the possible
- * parameters:
+ * The options parameter can contain any one of the following properties:
  * 
  * <ul>
- * <li><i>displayLocale</i> The locale parameter is used to parse the phone number,
- * but the displayLocale is used to load translations of the names of regions and
- * areas if available. For example, if the locale property is "de-DE" (German for Germany)
- * and the displayLocale property is given as "en-US" (English for USA), then this class
- * would correctly parse a phone number in Munich and return the area code name as "Munich"
- * instead of the name in German "München". The default display locale is the current 
- * ilib locale. If translations are not available, the region and area names are given 
- * in English, which should always be available.
+ * <li><i>locale</i> The locale parameter is used to load translations of the names of regions and
+ * areas if available. For example, if the locale property is given as "en-US" (English for USA), 
+ * but the phone number being geolocated is in Germany, then this class would return the the names
+ * of the country (Germany) and region inside of Germany in English instead of German. That is, a 
+ * phone number in Munich and return the country "Germany" and the area code "Munich"
+ * instead of "Deutschland" and "München". The default display locale is the current ilib locale. 
+ * If translations are not available, the region and area names are given in English, which should 
+ * always be available.
+ * <li><i>mcc</i> The mcc of the current mobile carrier, if known.
+ * 
+ * <li><i>onLoad</i> - a callback function to call when the data for the
+ * locale is fully loaded. When the onLoad option is given, this object 
+ * will attempt to load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ * 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while. 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
  * </ul>
  * 
  * @class
  * @constructor
- * @param {string|ilib.PhoneNumber} number if this parameter is given as a string, it
- * should be a number to parse. If it is given as a phone number object, then this
- * instance will be initialized from the given phone number
- * @param {Object} params parameters controlling the parsing of the phone number.
-
+ * @param {Object} options parameters controlling the geolocation of the phone number.
  */
-ilib.GeoPhoneNumber = function(params) {
+ilib.GeoLocator = function(options) {
 	var sync = true,
 		loadParams = {};
 
 	this.locale = new ilib.Locale();
 
-	if (params) {
-		if (params.locale || params.mcc) {
-			this.locale = new ilib.Locale.PhoneLoc(params);
+	if (options) {
+		if (options.locale || options.mcc) {
+			this.locale = new ilib.Locale.PhoneLoc(options);
 		} 
 
-		if (typeof(params.sync) !== 'undefined') {
-			sync = (params.sync == true);
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
 		}
 		
-		if (params.loadParams) {
-			loadParams = params.loadParams;
+		if (options.loadParams) {
+			loadParams = options.loadParams;
 		}
 	}
 	this.plan = new ilib.NumPlan({locale: this.locale});
-	this.transLocale = (params && params.locale) || this.locale;
+	this.transLocale = (options && options.locale) || this.locale;
 
 	new ilib.ResBundle({
 		locale: this.locale,
@@ -122,7 +132,7 @@ ilib.GeoPhoneNumber = function(params) {
 			
 			ilib.loadData({
 				name: "iddarea.json",
-				object: ilib.GeoPhoneNumber,
+				object: ilib.GeoLocator,
 				nonlocale: true,
 				sync: sync,
 				loadParams: loadParams,
@@ -130,7 +140,7 @@ ilib.GeoPhoneNumber = function(params) {
 					this.regiondata = data;
 					ilib.loadData({
 						name: "area.json",
-						object: ilib.GeoPhoneNumber,
+						object: ilib.GeoLocator,
 						locale: this.locale,
 						sync: sync,
 						loadParams: {
@@ -138,24 +148,19 @@ ilib.GeoPhoneNumber = function(params) {
 						},
 						callback: ilib.bind(this, function (areadata) {
 							this.areadata = areadata;
+
+							if (options && typeof(options.onLoad) === 'function') {
+								options.onLoad(this);
+							}
 						})
 					});
-
-
-					if (params && typeof(params.onLoad) === 'function') {
-						params.onLoad(this);
-					}
 				})
 			});
 		})
 	});
 };
 
-ilib.GeoPhoneNumber.prototype = new ilib.PhoneNumber();
-ilib.GeoPhoneNumber.prototype.parent = ilib.PhoneNumber;
-ilib.GeoPhoneNumber.prototype.constructor = ilib.GeoPhoneNumber;
-
-ilib.GeoPhoneNumber.prototype = {
+ilib.GeoLocator.prototype = {
 	/**
 	 * @private
 	 * 
@@ -434,8 +439,10 @@ ilib.GeoPhoneNumber.prototype = {
 	 * information about the country where the phone number is located is not available,
 	 * then the area information will be missing and only the country will be returned.
 	 * 
-	 * @param {Object} number An ilib.PhoneNumber instance containing a phone number to locate
-	 * @return {Object} 
+	 * @param {ilib.PhoneNumber} number phone number to locate
+	 * @return {{area:{sn:string,ln:string},country:{sn:string,ln:string}}} an object 
+	 * that describes the country and the area in that country corresponding to this
+	 * phone number 
 	 */
 	locate: function(number) {
 		var ret = {}, 
@@ -478,7 +485,7 @@ ilib.GeoPhoneNumber.prototype = {
 		
 		ilib.loadData({
 			name: "area.json",
-			object: ilib.GeoPhoneNumber,
+			object: ilib.GeoLocator,
 			locale: locale,
 			sync: true,
 			loadParams: {
