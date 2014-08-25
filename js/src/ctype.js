@@ -41,7 +41,7 @@ ilib.CType = {
 	 * <li>Lt - Titlecase_Letter
 	 * <li>Lm - Modifier_Letter
 	 * <li>Lo - Other_Letter
-	 * <li>mn - Nonspacing_Mark
+	 * <li>Mn - Nonspacing_Mark
 	 * <li>Me - Enclosing_Mark
 	 * <li>Mc - Spacing_Mark
 	 * <li>Nd - Decimal_Number

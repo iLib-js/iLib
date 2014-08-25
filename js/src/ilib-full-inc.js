@@ -76,4 +76,5 @@ nfkc/all.js
 localematch.js
 normstring.js
 maps/casemapper.js
+glyphstring.js
 */
