@@ -19,7 +19,7 @@
 
 /*
 !depends 
-ilibglobal.js 
+ilibglobal.js
 locale.js 
 localeinfo.js
 phone/numplan.js
@@ -148,6 +148,7 @@ phone/handler.js
  * <li>Australia
  * <li>New Zealand
  * <li>Singapore
+ * <li>Korea
  * </ul>
  * 
  * @class
@@ -189,7 +190,7 @@ ilib.PhoneNumber = function(number, options) {
 	if (!number || (typeof number === "string" && number.length === 0)) {
 		return this;
 	} else if (typeof number === "object") {
-		ilib.PhoneNumber._deepCopy(number, this);
+		ilib.deepCopy(number, this);
 		return this;
 	}
 
@@ -223,25 +224,6 @@ ilib.PhoneNumber = function(number, options) {
 			this._parseNumber(number, regionSettings);
 		})
 	});
-};
-
-/**
- * 
- */
-ilib.PhoneNumber._deepCopy = function(from, to) {
-	var prop;
-
-	for (prop in from) {
-		if (prop) {
-			if (typeof(from[prop]) === 'object') {
-				to[prop] ={};
-				ilib.PhoneNumber._deepCopy(from[prop], to[prop]);
-			} else {
-				to[prop] = from[prop];
-			}
-		}
-	}
-	return to;
 };
 
 /**

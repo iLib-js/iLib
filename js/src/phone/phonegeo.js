@@ -120,7 +120,6 @@ ilib.GeoLocator = function(options) {
 		}
 	}
 	this.plan = new ilib.NumPlan({locale: this.locale});
-	this.transLocale = (options && options.locale) || this.locale;
 
 	new ilib.ResBundle({
 		locale: this.locale,
@@ -502,6 +501,7 @@ ilib.GeoLocator.prototype = {
 
 		if (ret.country === undefined) {
 			countryCode = ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(region);
+			
 			if (countryCode !== "0" && this.regiondata) {
 				temp = this.regiondata[countryCode];
 				if (temp && temp.sn) {
@@ -524,12 +524,12 @@ ilib.GeoLocator.prototype = {
 	 * any country information, this routine will return the region for the current
 	 * formatter instance.
 	 *
-	 * @param {Object} number An ilib.PhoneNumber instance
+	 * @param {ilib.PhoneNumber} number An ilib.PhoneNumber instance
 	 * @return {string}
 	 */
 	country: function(number) {
 		var countryCode, region;
-		var phoneloc = new ilib.Locale.PhoneLoc();
+		var phoneloc = new ilib.Locale.PhoneLoc({});
 
 		if (!number || !(number instanceof ilib.PhoneNumber)) {
 			return "";

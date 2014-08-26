@@ -69,24 +69,6 @@ ilib.Locale.PhoneLoc.prototype.parent = ilib.Locale;
 ilib.Locale.PhoneLoc.prototype.constructor = ilib.Locale.PhoneLoc;
 
 /**
- * Return the ISO country code for the region of this phone locale.
- *
- * @return {string} The ISO code for the region of this phone locale.
- */
-ilib.Locale.PhoneLoc.prototype.getRegion = function() {
-	return this.region;
-};
-
-/**
- * Return the whole locale specifier as a string.
- *
-  * @return {string} the locale specifier
- */
-ilib.Locale.PhoneLoc.prototype.getSpec = function() {
-	return this.spec;
-};
-
-/**
  * Map a mobile carrier code to a region code.
  *
  * @static
@@ -111,7 +93,7 @@ ilib.Locale.PhoneLoc.prototype._mapMCCtoRegion = function(mcc) {
 			})
 		});
 	}
-	return ilib.data.mcc2reg && ilib.data.mcc2reg[mcc] || "unknown";
+	return ilib.data.mcc2reg && ilib.data.mcc2reg[mcc] || "XX";
 };
 
 /**
@@ -138,7 +120,7 @@ ilib.Locale.PhoneLoc.prototype._mapCCtoRegion = function(cc) {
 			})
 		});
 	}
-	return ilib.data.cc2reg && ilib.data.cc2reg[cc] || "unknown";
+	return ilib.data.cc2reg && ilib.data.cc2reg[cc] || "XX";
 };
 
 /**

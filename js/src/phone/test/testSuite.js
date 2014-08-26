@@ -71,11 +71,8 @@ function suite() {
 		"phonefmt_NZ.js",
 		"phonefmt_SG.js",
 		"phonefmt_US.js"
-		/*"phonefmt.js",
-		"phonefmt.js",
-		"imsi.js",
-		"states.js",
-		"utils.js"
+		/*
+		"imsi.js"		
 		*/
     ];
     

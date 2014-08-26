@@ -32,7 +32,7 @@ function testGetByMCCDE() {
 function testGetByMCCUnknownMCC() {
 	var loc = new ilib.Locale.PhoneLoc({mcc: "31"});
 	assertNotUndefined(loc);
-	assertEquals("unknown", loc.getRegion());
+	assertEquals("XX", loc.getRegion());
 };
 
 function testGetByCC1() {
@@ -50,7 +50,7 @@ function testGetByCC1() {
 function testGetByCCUnknownCC() {
 	var loc = new ilib.Locale.PhoneLoc({countryCode: "0"});
 	assertNotUndefined(loc);
-	assertEquals("unknown", loc.getRegion());
+	assertEquals("XX", loc.getRegion());
 };
 
 function testGetByLocaleUS() {

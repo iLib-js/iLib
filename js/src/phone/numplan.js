@@ -157,14 +157,6 @@ ilib.NumPlan.prototype = {
 	getPlanStyle: function() {	
 		return this.npdata.dialingPlan;
 	},
-	
-	/**
-	 * Return true if this plan uses extended area codes.
-	 * @return {boolean} true if the plan uses extended area codes
-	 */
-	usesExtendedAreaCodes: function () {
-		return this.npdata.usesExtendedAreaCodes;
-	},
 	/** [Need Comment]
 	 * Return a contextFree
 	 * 
@@ -197,10 +189,9 @@ ilib.NumPlan.prototype = {
 	getTrunkRequired: function() {
 		return this.npdata.trunkRequired;
 	},
-	/** [Need Comment]
-	 * Return a extendedAreaCodes
-	 * 
-	 * @return {boolean}
+	/**
+	 * Return true if this plan uses extended area codes.
+	 * @return {boolean} true if the plan uses extended area codes
 	 */
 	getExtendedAreaCode: function() {
 		return this.npdata.extendedAreaCodes;

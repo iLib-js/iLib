@@ -31,7 +31,7 @@ phone/phonenum.js
 /**
  * Create a new phone number formatter object that formats numbers according to the parameters.<p>
  * 
- * The params object can contain zero or more of the following parameters:
+ * The options object can contain zero or more of the following parameters:
  *
  * <ul>
  * <li><i>locale</i> locale to use to format this number, or undefined to use the default locale
@@ -68,34 +68,34 @@ phone/phonenum.js
  *
  * @class
  * @constructor
- * @param {Object} params properties that control how this formatter behaves
+ * @param {Object} options properties that control how this formatter behaves
  */
-ilib.PhoneFmt = function(params) {
+ilib.PhoneFmt = function(options) {
 	this.sync = true;
 	this.styleName = 'default',
 	this.loadParams = {};
 
 	this.locale = new ilib.Locale();
 
-	if (params) {
-		if (params.locale) {
-			this.locale = new ilib.Locale.PhoneLoc(params);
+	if (options) {
+		if (options.locale) {
+			this.locale = new ilib.Locale.PhoneLoc(options);
 		} 
 
-		if (params.mcc) {
-			this.locale = new ilib.Locale.PhoneLoc(params);	
+		if (options.mcc) {
+			this.locale = new ilib.Locale.PhoneLoc(options);	
 		}
 
-		if (typeof(params.sync) !== 'undefined') {
-			this.sync = (params.sync == true);
+		if (typeof(options.sync) !== 'undefined') {
+			this.sync = (options.sync == true);
 		}
 
-		if (params.loadParams) {
-			this.loadParams = params.loadParams;
+		if (options.loadParams) {
+			this.loadParams = options.loadParams;
 		}
 
-		if (params.style) {
-			this.style = params.style;
+		if (options.style) {
+			this.style = options.style;
 		}
 	}
 
@@ -111,8 +111,8 @@ ilib.PhoneFmt = function(params) {
 		}),
 		callback: ilib.bind(this, function (fmtdata) {
 			this.fmtdata = fmtdata;
-			if (params && typeof(params.onLoad) === 'function') {
-				params.onLoad(this);
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
 			}
 		})
 	});
@@ -123,7 +123,7 @@ ilib.PhoneFmt.prototype = {
 	 * 
 	 * @protected
 	 * @param {string} part
-	 * @param {object} formats
+	 * @param {Object} formats
 	 * @param {boolean} mustUseAll
 	 */
 	_substituteDigits: function(part, formats, mustUseAll) {
@@ -185,7 +185,7 @@ ilib.PhoneFmt.prototype = {
 	 * Format the parts of a phone number appropriately according to the settings in 
 	 * this formatter instance.
 	 *  
-	 * The params can contain zero or more of these properties:
+	 * The options can contain zero or more of these properties:
 	 * 
 	 * <ul>
 	 * <li><i>partial</i> boolean which tells whether or not this phone number 
@@ -217,10 +217,10 @@ ilib.PhoneFmt.prototype = {
 	 * 
 	 * @param {string|ilib.PhoneNumber} number object containing the phone number to format, or a 
 	 * string containing a phone number to parse and then reformat
-	 * @param {Object} params Parameters which control how to format the number
+	 * @param {Object} options Parameters which control how to format the number
 	 * @return {string} Returns the formatted phone number as a string.
 	 */
-	format: function format(number, params) {
+	format: function format(number, options) {
 		var temp, 
 			templates, 
 			fieldName, 
@@ -248,7 +248,7 @@ ilib.PhoneFmt.prototype = {
 				style = "service";
 			}
 
-			isWhole = (!params || !params.partial);
+			isWhole = (!options || !options.partial);
 			styleTemplates = this.getStyle(style);
 			locale = this.locale;
 
@@ -289,8 +289,8 @@ ilib.PhoneFmt.prototype = {
 										this.fmtdata = fmtdata;
 										styleTemplates = this.getStyle((number.mobilePrefix !== undefined) ? "internationalmobile" : "international");
 										// console.info("format: switching to region " + locale.region + " and style " + style + " to format the rest of the number ");
-										if (params && typeof(params.onLoad) === 'function') {
-											params.onLoad(this);
+										if (options && typeof(options.onLoad) === 'function') {
+											options.onLoad(this);
 										}
 									})
 								});
