@@ -181,7 +181,8 @@
         "America/Dawson_Creek",
         "America/Vancouver",
         "America/Whitehorse",
-        "America/Dawson"
+        "America/Dawson",
+        "America/Montreal"
     ],
     "CC": [
         "Indian/Cocos"
@@ -214,7 +215,10 @@
     ],
     "CN": [
         "Asia/Shanghai",
-        "Asia/Urumqi"
+        "Asia/Harbin",
+        "Asia/Chongqing",
+        "Asia/Urumqi",
+        "Asia/Kashgar"
     ],
     "CO": [
         "America/Bogota"
