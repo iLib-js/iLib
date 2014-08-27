@@ -91,7 +91,7 @@ ilib.Measurement = function(options) {
 	
 	// map the requested units to the normalized form
 	
-	var measure = "length"; // temporary
+	var measure = "speed"; // temporary
 	
 	return new ilib.Measurement._constructors[measure](options);
 };

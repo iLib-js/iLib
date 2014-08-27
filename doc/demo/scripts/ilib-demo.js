@@ -2649,11 +2649,13 @@ ilib.mod = function (dividend, modulus) {
  * 
  * @param {*} object1 the object to merge into
  * @param {*} object2 the object to merge
+ * @param {boolean=} replace if true, replace the array elements in object1 with those in object2.
+ * If false, concatenate array elements in object1 with items in object2.
  * @param {string=} name1 name of the object being merged into
  * @param {string=} name2 name of the object being merged in
  * @return {Object} the merged object
  */
-ilib.merge = function (object1, object2, name1, name2) {
+ilib.merge = function (object1, object2, replace, name1, name2) {
 	var prop = undefined,
 		newObj = {};
 	for (prop in object1) {
@@ -2664,11 +2666,15 @@ ilib.merge = function (object1, object2, name1, name2) {
 	for (prop in object2) {
 		if (prop && typeof(object2[prop]) !== 'undefined') {
 			if (object1[prop] instanceof Array && object2[prop] instanceof Array) {
-				newObj[prop] = new Array();
-				newObj[prop] = newObj[prop].concat(object1[prop]);
-				newObj[prop] = newObj[prop].concat(object2[prop]);
+				if (typeof(replace) !== 'boolean' || !replace) {
+					newObj[prop] = new Array();
+					newObj[prop] = newObj[prop].concat(object1[prop]);
+					newObj[prop] = newObj[prop].concat(object2[prop]);
+				} else {
+					newObj[prop] = object2[prop];
+				}
 			} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
-				newObj[prop] = ilib.merge(object1[prop], object2[prop]);
+				newObj[prop] = ilib.merge(object1[prop], object2[prop], replace);
 			} else {
 				// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
 				if (name1 && name2 && newObj[prop] == object2[prop]) {
@@ -2701,9 +2707,11 @@ ilib.merge = function (object1, object2, name1, name2) {
  *  
  * @param {string} prefix prefix under ilib.data of the data to merge
  * @param {ilib.Locale} locale locale of the data being sought
+ * @param {boolean=} replaceArrays if true, replace the array elements in object1 with those in object2.
+ * If false, concatenate array elements in object1 with items in object2.
  * @return {Object?} the merged locale data
  */
-ilib.mergeLocData = function (prefix, locale) {
+ilib.mergeLocData = function (prefix, locale, replaceArrays) {
 	var data = undefined;
 	var loc = locale || new ilib.Locale();
 	var foundLocaleData = false;
@@ -2714,7 +2722,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		property = prefix + '_' + loc.getLanguage();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
+			data = ilib.merge(data, ilib.data[property], replaceArrays);
 		}
 	}
 	
@@ -2722,7 +2730,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		property = prefix + '_' + loc.getRegion();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
+			data = ilib.merge(data, ilib.data[property], replaceArrays);
 		}
 	}
 	
@@ -2733,7 +2741,7 @@ ilib.mergeLocData = function (prefix, locale) {
 			property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript();
 			if (ilib.data[property]) {
 				foundLocaleData = true;
-				data = ilib.merge(data, ilib.data[property]);
+				data = ilib.merge(data, ilib.data[property], replaceArrays);
 			}
 		}
 		
@@ -2741,7 +2749,7 @@ ilib.mergeLocData = function (prefix, locale) {
 			property = prefix + '_' + loc.getLanguage() + '_' + loc.getRegion();
 			if (ilib.data[property]) {
 				foundLocaleData = true;
-				data = ilib.merge(data, ilib.data[property]);
+				data = ilib.merge(data, ilib.data[property], replaceArrays);
 			}
 		}
 		
@@ -2751,7 +2759,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		property = prefix + '_' + loc.getLanguage() + '_' + loc.getVariant();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
+			data = ilib.merge(data, ilib.data[property], replaceArrays);
 		}
 	}
 
@@ -2759,7 +2767,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript() + '_' + loc.getRegion();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
+			data = ilib.merge(data, ilib.data[property], replaceArrays);
 		}
 	}
 
@@ -2767,7 +2775,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		property = prefix + '_' + loc.getLanguage() + '_' + loc.getRegion() + '_' + loc.getVariant();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
+			data = ilib.merge(data, ilib.data[property], replaceArrays);
 		}
 	}
 
@@ -2775,7 +2783,7 @@ ilib.mergeLocData = function (prefix, locale) {
 		property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript() + '_' + loc.getRegion() + '_' + loc.getVariant();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
-			data = ilib.merge(data, ilib.data[property]);
+			data = ilib.merge(data, ilib.data[property], replaceArrays);
 		}
 	}
 
@@ -3041,6 +3049,9 @@ ilib._callLoadData = function (files, sync, params, callback) {
  * <li><i>locale</i> - ilib.Locale. The locale for which data is loaded. Default is the current locale.
  * <li><i>nonlocale</i> - boolean. If true, the data being loaded is not locale-specific.
  * <li><i>type</i> - String. Type of file to load. This can be "json" or "other" type. Default: "json" 
+ * <li><i>replace</i> - boolean. When merging json objects, this parameter controls whether to merge arrays
+ * or have arrays replace each other. If true, arrays in child objects replace the arrays in parent 
+ * objects. When false, the arrays in child objects are concatenated with the arrays in parent objects.  
  * <li><i>loadParams</i> - Object. An object with parameters to pass to the loader function
  * <li><i>sync</i> - boolean. Whether or not to load the data synchronously
  * <li><i>callback</i> - function(?)=. callback Call back function to call when the data is available.
@@ -3057,7 +3068,9 @@ ilib.loadData = function(params) {
 		type = undefined,
 		loadParams = {},
 		callback = undefined,
-		nonlocale = false;
+		nonlocale = false,
+		replace = false,
+		basename;
 	
 	if (!params || typeof(params.callback) !== 'function') {
 		return;
@@ -3084,6 +3097,9 @@ ilib.loadData = function(params) {
 	if (params.nonlocale) {
 		nonlocale = !!params.nonlocale;
 	}
+	if (typeof(params.replace) === 'boolean') {
+		replace = params.replace;
+	}
 	
 	callback = params.callback;
 	
@@ -3102,12 +3118,12 @@ ilib.loadData = function(params) {
 		
 		if (type === "json") {
 			// console.log("type is json");
-			var basename = name.substring(0, name.lastIndexOf("."));
+			basename = name.substring(0, name.lastIndexOf("."));
 			if (nonlocale) {
 				basename = name.replace(/\//g, '.').replace(/[\\\+\-]/g, "_");
 				data = ilib.data[basename];
 			} else {
-				data = ilib.mergeLocData(basename, locale);
+				data = ilib.mergeLocData(basename, locale, replace);
 			}
 			if (data) {
 				// console.log("found assembled data");
@@ -3132,7 +3148,7 @@ ilib.loadData = function(params) {
 					data = ilib.data[basename] || {};
 					for (var i = 0; i < arr.length; i++) {
 						if (typeof(arr[i]) !== 'undefined') {
-							data = ilib.merge(data, arr[i]);
+							data = ilib.merge(data, arr[i], replace);
 						}
 					}
 					
@@ -3272,7 +3288,11 @@ ilib.data.plurals_zu = {"one":{"is":["n",1]}};
  */
 ilib.String = function (string) {
 	if (typeof(string) === 'object') {
-		this.str = string.str;
+		if (string instanceof ilib.String) {
+			this.str = string.str;	
+		} else {
+			this.str = string.toString();
+		}
 	} else if (typeof(string) === 'string') {
 		this.str = new String(string);
 	} else {
@@ -5470,49 +5490,49 @@ ilib.data.zoneinfo["Asia/Samarkand"] = {"f":"UZT","o":"5:0","c":"UZ","n":"West A
 ilib.data.zoneinfo["Asia/Tashkent"] = {"f":"UZT","o":"5:0","c":"UZ","n":"West Asia {c} Time"};
 ilib.data.zoneinfo["Asia/Ho_Chi_Minh"] = {"f":"ICT","o":"7:0","c":"VN","n":"SE Asia {c} Time"};
 ilib.data.zoneinfo["Asia/Taipei"] = {"f":"CST","o":"8:0","c":"TW","n":"Taipei {c} Time"};
-ilib.data.zoneinfo["Iceland"] = {"f":"GMT","o":"0:0","c":"IS"};
-ilib.data.zoneinfo["MST7MDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Mountain {c} Time"};
-ilib.data.zoneinfo["EST"] = {"f":"EST","o":"-5:0"};
-ilib.data.zoneinfo["PST8PDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Pacific {c} Time"};
-ilib.data.zoneinfo["MST"] = {"f":"MST","o":"-7:0"};
 ilib.data.zoneinfo["zonetab"] = {"AD":["Europe/Andorra"],"AE":["Asia/Dubai"],"AF":["Asia/Kabul"],"AG":["America/Antigua"],"AI":["America/Anguilla"],"AL":["Europe/Tirane"],"AM":["Asia/Yerevan"],"AO":["Africa/Luanda"],"AQ":["Antarctica/McMurdo","Antarctica/Rothera","Antarctica/Palmer","Antarctica/Mawson","Antarctica/Davis","Antarctica/Casey","Antarctica/Vostok","Antarctica/DumontDUrville","Antarctica/Syowa","Antarctica/Troll"],"AR":["America/Argentina/Buenos_Aires","America/Argentina/Cordoba","America/Argentina/Salta","America/Argentina/Jujuy","America/Argentina/Tucuman","America/Argentina/Catamarca","America/Argentina/La_Rioja","America/Argentina/San_Juan","America/Argentina/Mendoza","America/Argentina/San_Luis","America/Argentina/Rio_Gallegos","America/Argentina/Ushuaia"],"AS":["Pacific/Pago_Pago"],"AT":["Europe/Vienna"],"AU":["Australia/Lord_Howe","Antarctica/Macquarie","Australia/Hobart","Australia/Currie","Australia/Melbourne","Australia/Sydney","Australia/Broken_Hill","Australia/Brisbane","Australia/Lindeman","Australia/Adelaide","Australia/Darwin","Australia/Perth","Australia/Eucla"],"AW":["America/Aruba"],"AX":["Europe/Mariehamn"],"AZ":["Asia/Baku"],"BA":["Europe/Sarajevo"],"BB":["America/Barbados"],"BD":["Asia/Dhaka"],"BE":["Europe/Brussels"],"BF":["Africa/Ouagadougou"],"BG":["Europe/Sofia"],"BH":["Asia/Bahrain"],"BI":["Africa/Bujumbura"],"BJ":["Africa/Porto-Novo"],"BL":["America/St_Barthelemy"],"BM":["Atlantic/Bermuda"],"BN":["Asia/Brunei"],"BO":["America/La_Paz"],"BQ":["America/Kralendijk"],"BR":["America/Noronha","America/Belem","America/Fortaleza","America/Recife","America/Araguaina","America/Maceio","America/Bahia","America/Sao_Paulo","America/Campo_Grande","America/Cuiaba","America/Santarem","America/Porto_Velho","America/Boa_Vista","America/Manaus","America/Eirunepe","America/Rio_Branco"],"BS":["America/Nassau"],"BT":["Asia/Thimphu"],"BW":["Africa/Gaborone"],"BY":["Europe/Minsk"],"BZ":["America/Belize"],"CA":["America/St_Johns","America/Halifax","America/Glace_Bay","America/Moncton","America/Goose_Bay","America/Blanc-Sablon","America/Toronto","America/Nipigon","America/Thunder_Bay","America/Iqaluit","America/Pangnirtung","America/Resolute","America/Atikokan","America/Rankin_Inlet","America/Winnipeg","America/Rainy_River","America/Regina","America/Swift_Current","America/Edmonton","America/Cambridge_Bay","America/Yellowknife","America/Inuvik","America/Creston","America/Dawson_Creek","America/Vancouver","America/Whitehorse","America/Dawson","America/Montreal"],"CC":["Indian/Cocos"],"CD":["Africa/Kinshasa","Africa/Lubumbashi"],"CF":["Africa/Bangui"],"CG":["Africa/Brazzaville"],"CH":["Europe/Zurich"],"CI":["Africa/Abidjan"],"CK":["Pacific/Rarotonga"],"CL":["America/Santiago","Pacific/Easter"],"CM":["Africa/Douala"],"CN":["Asia/Shanghai","Asia/Harbin","Asia/Chongqing","Asia/Urumqi","Asia/Kashgar"],"CO":["America/Bogota"],"CR":["America/Costa_Rica"],"CU":["America/Havana"],"CV":["Atlantic/Cape_Verde"],"CW":["America/Curacao"],"CX":["Indian/Christmas"],"CY":["Asia/Nicosia"],"CZ":["Europe/Prague"],"DE":["Europe/Berlin","Europe/Busingen"],"DJ":["Africa/Djibouti"],"DK":["Europe/Copenhagen"],"DM":["America/Dominica"],"DO":["America/Santo_Domingo"],"DZ":["Africa/Algiers"],"EC":["America/Guayaquil","Pacific/Galapagos"],"EE":["Europe/Tallinn"],"EG":["Africa/Cairo"],"EH":["Africa/El_Aaiun"],"ER":["Africa/Asmara"],"ES":["Europe/Madrid","Africa/Ceuta","Atlantic/Canary"],"ET":["Africa/Addis_Ababa"],"FI":["Europe/Helsinki"],"FJ":["Pacific/Fiji"],"FK":["Atlantic/Stanley"],"FM":["Pacific/Chuuk","Pacific/Pohnpei","Pacific/Kosrae"],"FO":["Atlantic/Faroe"],"FR":["Europe/Paris"],"GA":["Africa/Libreville"],"GB":["Europe/London"],"GD":["America/Grenada"],"GE":["Asia/Tbilisi"],"GF":["America/Cayenne"],"GG":["Europe/Guernsey"],"GH":["Africa/Accra"],"GI":["Europe/Gibraltar"],"GL":["America/Godthab","America/Danmarkshavn","America/Scoresbysund","America/Thule"],"GM":["Africa/Banjul"],"GN":["Africa/Conakry"],"GP":["America/Guadeloupe"],"GQ":["Africa/Malabo"],"GR":["Europe/Athens"],"GS":["Atlantic/South_Georgia"],"GT":["America/Guatemala"],"GU":["Pacific/Guam"],"GW":["Africa/Bissau"],"GY":["America/Guyana"],"HK":["Asia/Hong_Kong"],"HN":["America/Tegucigalpa"],"HR":["Europe/Zagreb"],"HT":["America/Port-au-Prince"],"HU":["Europe/Budapest"],"ID":["Asia/Jakarta","Asia/Pontianak","Asia/Makassar","Asia/Jayapura"],"IE":["Europe/Dublin"],"IL":["Asia/Jerusalem"],"IM":["Europe/Isle_of_Man"],"IN":["Asia/Kolkata"],"IO":["Indian/Chagos"],"IQ":["Asia/Baghdad"],"IR":["Asia/Tehran"],"IS":["Atlantic/Reykjavik"],"IT":["Europe/Rome"],"JE":["Europe/Jersey"],"JM":["America/Jamaica"],"JO":["Asia/Amman"],"JP":["Asia/Tokyo"],"KE":["Africa/Nairobi"],"KG":["Asia/Bishkek"],"KH":["Asia/Phnom_Penh"],"KI":["Pacific/Tarawa","Pacific/Enderbury","Pacific/Kiritimati"],"KM":["Indian/Comoro"],"KN":["America/St_Kitts"],"KP":["Asia/Pyongyang"],"KR":["Asia/Seoul"],"KW":["Asia/Kuwait"],"KY":["America/Cayman"],"KZ":["Asia/Almaty","Asia/Qyzylorda","Asia/Aqtobe","Asia/Aqtau","Asia/Oral"],"LA":["Asia/Vientiane"],"LB":["Asia/Beirut"],"LC":["America/St_Lucia"],"LI":["Europe/Vaduz"],"LK":["Asia/Colombo"],"LR":["Africa/Monrovia"],"LS":["Africa/Maseru"],"LT":["Europe/Vilnius"],"LU":["Europe/Luxembourg"],"LV":["Europe/Riga"],"LY":["Africa/Tripoli"],"MA":["Africa/Casablanca"],"MC":["Europe/Monaco"],"MD":["Europe/Chisinau"],"ME":["Europe/Podgorica"],"MF":["America/Marigot"],"MG":["Indian/Antananarivo"],"MH":["Pacific/Majuro","Pacific/Kwajalein"],"MK":["Europe/Skopje"],"ML":["Africa/Bamako"],"MM":["Asia/Rangoon"],"MN":["Asia/Ulaanbaatar","Asia/Hovd","Asia/Choibalsan"],"MO":["Asia/Macau"],"MP":["Pacific/Saipan"],"MQ":["America/Martinique"],"MR":["Africa/Nouakchott"],"MS":["America/Montserrat"],"MT":["Europe/Malta"],"MU":["Indian/Mauritius"],"MV":["Indian/Maldives"],"MW":["Africa/Blantyre"],"MX":["America/Mexico_City","America/Cancun","America/Merida","America/Monterrey","America/Matamoros","America/Mazatlan","America/Chihuahua","America/Ojinaga","America/Hermosillo","America/Tijuana","America/Santa_Isabel","America/Bahia_Banderas"],"MY":["Asia/Kuala_Lumpur","Asia/Kuching"],"MZ":["Africa/Maputo"],"NA":["Africa/Windhoek"],"NC":["Pacific/Noumea"],"NE":["Africa/Niamey"],"NF":["Pacific/Norfolk"],"NG":["Africa/Lagos"],"NI":["America/Managua"],"NL":["Europe/Amsterdam"],"NO":["Europe/Oslo"],"NP":["Asia/Kathmandu"],"NR":["Pacific/Nauru"],"NU":["Pacific/Niue"],"NZ":["Pacific/Auckland","Pacific/Chatham"],"OM":["Asia/Muscat"],"PA":["America/Panama"],"PE":["America/Lima"],"PF":["Pacific/Tahiti","Pacific/Marquesas","Pacific/Gambier"],"PG":["Pacific/Port_Moresby"],"PH":["Asia/Manila"],"PK":["Asia/Karachi"],"PL":["Europe/Warsaw"],"PM":["America/Miquelon"],"PN":["Pacific/Pitcairn"],"PR":["America/Puerto_Rico"],"PS":["Asia/Gaza","Asia/Hebron"],"PT":["Europe/Lisbon","Atlantic/Madeira","Atlantic/Azores"],"PW":["Pacific/Palau"],"PY":["America/Asuncion"],"QA":["Asia/Qatar"],"RE":["Indian/Reunion"],"RO":["Europe/Bucharest"],"RS":["Europe/Belgrade"],"RU":["Europe/Kaliningrad","Europe/Moscow","Europe/Volgograd","Europe/Samara","Europe/Simferopol","Asia/Yekaterinburg","Asia/Omsk","Asia/Novosibirsk","Asia/Novokuznetsk","Asia/Krasnoyarsk","Asia/Irkutsk","Asia/Yakutsk","Asia/Khandyga","Asia/Vladivostok","Asia/Sakhalin","Asia/Ust-Nera","Asia/Magadan","Asia/Kamchatka","Asia/Anadyr"],"RW":["Africa/Kigali"],"SA":["Asia/Riyadh"],"SB":["Pacific/Guadalcanal"],"SC":["Indian/Mahe"],"SD":["Africa/Khartoum"],"SE":["Europe/Stockholm"],"SG":["Asia/Singapore"],"SH":["Atlantic/St_Helena"],"SI":["Europe/Ljubljana"],"SJ":["Arctic/Longyearbyen"],"SK":["Europe/Bratislava"],"SL":["Africa/Freetown"],"SM":["Europe/San_Marino"],"SN":["Africa/Dakar"],"SO":["Africa/Mogadishu"],"SR":["America/Paramaribo"],"SS":["Africa/Juba"],"ST":["Africa/Sao_Tome"],"SV":["America/El_Salvador"],"SX":["America/Lower_Princes"],"SY":["Asia/Damascus"],"SZ":["Africa/Mbabane"],"TC":["America/Grand_Turk"],"TD":["Africa/Ndjamena"],"TF":["Indian/Kerguelen"],"TG":["Africa/Lome"],"TH":["Asia/Bangkok"],"TJ":["Asia/Dushanbe"],"TK":["Pacific/Fakaofo"],"TL":["Asia/Dili"],"TM":["Asia/Ashgabat"],"TN":["Africa/Tunis"],"TO":["Pacific/Tongatapu"],"TR":["Europe/Istanbul"],"TT":["America/Port_of_Spain"],"TV":["Pacific/Funafuti"],"TW":["Asia/Taipei"],"TZ":["Africa/Dar_es_Salaam"],"UA":["Europe/Kiev","Europe/Uzhgorod","Europe/Zaporozhye"],"UG":["Africa/Kampala"],"UM":["Pacific/Johnston","Pacific/Midway","Pacific/Wake"],"US":["America/New_York","America/Detroit","America/Kentucky/Louisville","America/Kentucky/Monticello","America/Indiana/Indianapolis","America/Indiana/Vincennes","America/Indiana/Winamac","America/Indiana/Marengo","America/Indiana/Petersburg","America/Indiana/Vevay","America/Chicago","America/Indiana/Tell_City","America/Indiana/Knox","America/Menominee","America/North_Dakota/Center","America/North_Dakota/New_Salem","America/North_Dakota/Beulah","America/Denver","America/Boise","America/Phoenix","America/Los_Angeles","America/Anchorage","America/Juneau","America/Sitka","America/Yakutat","America/Nome","America/Adak","America/Metlakatla","Pacific/Honolulu"],"UY":["America/Montevideo"],"UZ":["Asia/Samarkand","Asia/Tashkent"],"VA":["Europe/Vatican"],"VC":["America/St_Vincent"],"VE":["America/Caracas"],"VG":["America/Tortola"],"VI":["America/St_Thomas"],"VN":["Asia/Ho_Chi_Minh"],"VU":["Pacific/Efate"],"WF":["Pacific/Wallis"],"WS":["Pacific/Apia"],"YE":["Asia/Aden"],"YT":["Indian/Mayotte"],"ZA":["Africa/Johannesburg"],"ZM":["Africa/Lusaka"],"ZW":["Africa/Harare"]};
-ilib.data.zoneinfo["EST5EDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"};
-ilib.data.zoneinfo["CET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
 ilib.data.zoneinfo["CST6CDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Central {c} Time"};
-ilib.data.zoneinfo["WET"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"}};
-ilib.data.zoneinfo["Factory"] = {"f":"\"Local","o":"0:0"};
-ilib.data.zoneinfo["MET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"ME{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
-ilib.data.zoneinfo["EET"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"}};
 ilib.data.zoneinfo["HST"] = {"f":"HST","o":"-10:0"};
-ilib.data.zoneinfo["Etc/GMT+2"] = {"f":"GMT+2","o":"-2:0","n":"UTC-02"};
-ilib.data.zoneinfo["Etc/GMT"] = {"f":"GMT","o":"0:0","n":"UTC"};
-ilib.data.zoneinfo["Etc/GMT-7"] = {"f":"GMT-7","o":"7:0","n":"SE Asia {c} Time"};
-ilib.data.zoneinfo["Etc/UCT"] = {"f":"UCT","o":"0:0"};
+ilib.data.zoneinfo["CET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
+ilib.data.zoneinfo["MET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"ME{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
+ilib.data.zoneinfo["Iceland"] = {"f":"GMT","o":"0:0","c":"IS"};
+ilib.data.zoneinfo["PST8PDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Pacific {c} Time"};
+ilib.data.zoneinfo["WET"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"}};
+ilib.data.zoneinfo["EST"] = {"f":"EST","o":"-5:0"};
+ilib.data.zoneinfo["Factory"] = {"f":"\"Local","o":"0:0"};
+ilib.data.zoneinfo["MST7MDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Mountain {c} Time"};
+ilib.data.zoneinfo["EET"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"}};
+ilib.data.zoneinfo["MST"] = {"f":"MST","o":"-7:0"};
+ilib.data.zoneinfo["EST5EDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"};
 ilib.data.zoneinfo["Etc/GMT-3"] = {"f":"GMT-3","o":"3:0","n":"E. Africa {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+5"] = {"f":"GMT+5","o":"-5:0","n":"SA Pacific {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-2"] = {"f":"GMT-2","o":"2:0","n":"South Africa {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-1"] = {"f":"GMT-1","o":"1:0","n":"W. Central Africa {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+11"] = {"f":"GMT+11","o":"-11:0","n":"UTC-11"};
-ilib.data.zoneinfo["Etc/GMT-9"] = {"f":"GMT-9","o":"9:0","n":"Tokyo {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-11"] = {"f":"GMT-11","o":"11:0","n":"Central Pacific {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+6"] = {"f":"GMT+6","o":"-6:0","n":"Central America {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+4"] = {"f":"GMT+4","o":"-4:0","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-10"] = {"f":"GMT-10","o":"10:0","n":"West Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-4"] = {"f":"GMT-4","o":"4:0","n":"Arabian {c} Time"};
 ilib.data.zoneinfo["Etc/GMT+12"] = {"f":"GMT+12","o":"-12:0","n":"Dateline {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-6"] = {"f":"GMT-6","o":"6:0","n":"Central Asia {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-14"] = {"f":"GMT-14","o":"14:0"};
+ilib.data.zoneinfo["Etc/GMT+8"] = {"f":"GMT+8","o":"-8:0"};
+ilib.data.zoneinfo["Etc/GMT+11"] = {"f":"GMT+11","o":"-11:0","n":"UTC-11"};
+ilib.data.zoneinfo["Etc/GMT-11"] = {"f":"GMT-11","o":"11:0","n":"Central Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+7"] = {"f":"GMT+7","o":"-7:0","n":"US Mountain {c} Time"};
+ilib.data.zoneinfo["Etc/GMT"] = {"f":"GMT","o":"0:0","n":"UTC"};
+ilib.data.zoneinfo["Etc/GMT-12"] = {"f":"GMT-12","o":"12:0","n":"UTC+12"};
+ilib.data.zoneinfo["Etc/UCT"] = {"f":"UCT","o":"0:0"};
+ilib.data.zoneinfo["Etc/GMT+10"] = {"f":"GMT+10","o":"-10:0","n":"Hawaiian {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+9"] = {"f":"GMT+9","o":"-9:0"};
+ilib.data.zoneinfo["Etc/GMT-7"] = {"f":"GMT-7","o":"7:0","n":"SE Asia {c} Time"};
 ilib.data.zoneinfo["Etc/GMT+1"] = {"f":"GMT+1","o":"-1:0","n":"Cape Verde {c} Time"};
 ilib.data.zoneinfo["Etc/GMT-5"] = {"f":"GMT-5","o":"5:0","n":"West Asia {c} Time"};
-ilib.data.zoneinfo["Etc/UTC"] = {"f":"UTC","o":"0:0"};
-ilib.data.zoneinfo["Etc/GMT-14"] = {"f":"GMT-14","o":"14:0"};
-ilib.data.zoneinfo["Etc/GMT-4"] = {"f":"GMT-4","o":"4:0","n":"Arabian {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+9"] = {"f":"GMT+9","o":"-9:0"};
-ilib.data.zoneinfo["Etc/GMT-12"] = {"f":"GMT-12","o":"12:0","n":"UTC+12"};
-ilib.data.zoneinfo["Etc/GMT+3"] = {"f":"GMT+3","o":"-3:0","n":"SA Eastern {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-10"] = {"f":"GMT-10","o":"10:0","n":"West Pacific {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+8"] = {"f":"GMT+8","o":"-8:0"};
-ilib.data.zoneinfo["Etc/GMT+7"] = {"f":"GMT+7","o":"-7:0","n":"US Mountain {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+10"] = {"f":"GMT+10","o":"-10:0","n":"Hawaiian {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+4"] = {"f":"GMT+4","o":"-4:0","n":"SA Western {c} Time"};
 ilib.data.zoneinfo["Etc/GMT-13"] = {"f":"GMT-13","o":"13:0","n":"Tonga {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-6"] = {"f":"GMT-6","o":"6:0","n":"Central Asia {c} Time"};
 ilib.data.zoneinfo["Etc/GMT-8"] = {"f":"GMT-8","o":"8:0","n":"Singapore {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-2"] = {"f":"GMT-2","o":"2:0","n":"South Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-9"] = {"f":"GMT-9","o":"9:0","n":"Tokyo {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+6"] = {"f":"GMT+6","o":"-6:0","n":"Central America {c} Time"};
+ilib.data.zoneinfo["Etc/UTC"] = {"f":"UTC","o":"0:0"};
+ilib.data.zoneinfo["Etc/GMT+2"] = {"f":"GMT+2","o":"-2:0","n":"UTC-02"};
+ilib.data.zoneinfo["Etc/GMT-1"] = {"f":"GMT-1","o":"1:0","n":"W. Central Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+5"] = {"f":"GMT+5","o":"-5:0","n":"SA Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+3"] = {"f":"GMT+3","o":"-3:0","n":"SA Eastern {c} Time"};
 /*
  * timezone.js - Definition of a time zone class
  * 
@@ -7076,6 +7096,32 @@ ilib.indexOf = function(array, obj) {
 	    return -1;
 	}
 };
+
+/**
+ * @static
+ * Convert a string into the hexadecimal representation
+ * of the Unicode characters in that string.
+ * 
+ * @param {string} string The string to convert
+ * @param {number=} limit the number of digits to use to represent the character (1 to 8)
+ * @return {string} a hexadecimal representation of the
+ * Unicode characters in the input string
+ */
+ilib.toHexString = function(string, limit) {
+	var i, 
+		result = "", 
+		lim = (limit && limit < 9) ? limit : 4;
+	
+	if (!string) {
+		return "";
+	}
+	for (i = 0; i < string.length; i++) {
+		var ch = string.charCodeAt(i).toString(16);
+		result += "00000000".substring(0, lim-ch.length) + ch;
+	}
+	return result.toUpperCase();
+};
+
 ilib.data.dateformats = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"EE d/M/yy","m":"EEE d/MM/yyyy","l":"EEE d MMM yyyy","f":"EEEE d MMMM yyyy"},"dmy":{"s":"d/M/yy","m":"d/MM/yyyy","l":"d MMM yyyy","f":"d MMMM yyyy"},"dmw":{"s":"EE d/M","m":"EE d/MM","l":"EEE d MMM","f":"EEEE d MMMM"},"dm":{"s":"d/M","m":"d/MM","l":"d MMM","f":"d MMMM"},"my":{"s":"M/yy","m":"MM/yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"dw":{"s":"EE d","m":"EE d","l":"EEE d","f":"EEEE d"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"},"w":{"s":"E","m":"EE","l":"EEE","f":"EEEE"}},"time":{"12":{"ahmsz":"h:mm:ssa z","ahms":"h:mm:ssa","hmsz":"h:mm:ss z","hms":"h:mm:ss","ahmz":"h:mma z","ahm":"h:mma","hmz":"h:mm z","ah":"ha","hm":"h:mm","ms":"mm:ss","h":"h","m":"mm","s":"ss"},"24":{"ahmsz":"H:mm:ss z","ahms":"H:mm:ss","hmsz":"H:mm:ss z","hms":"H:mm:ss","ahmz":"H:mm z","ahm":"H:mm","hmz":"H:mm z","ah":"H","hm":"H:mm","ms":"mm:ss","h":"H","m":"mm","s":"ss"}},"range":{"c00":{"s":"{st} - {et} {sd}/{sm}/{sy}","m":"{st} - {et}, {sd}/{sm}/{sy}","l":"{st} - {et}, {sd} {sm} {sy}","f":"{st} - {et}, {sd} {sm} {sy}"},"c01":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} - {ed}/{em} {et}, {sy}","l":"{sd} {st} - {ed} {et}, {sm} {sy}","f":"{sd} {st} - {ed} {et}, {sm} {sy}"},"c02":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm} {st} - {ed}/{em} {et}, {sy}","l":"{sd} {sm} {st} - {ed} {em} {et}, {sy}","f":"{sd} {sm} {st} - {ed} {em} {et}, {sy}"},"c03":{"s":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","m":"{sd}/{sm}/{sy} {st} - {ed}/{em}/{ey} {et}","l":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c10":{"s":"{sd}-{ed}/{sm}/{sy}","m":"{sd}-{ed}/{sm}/{sy}","l":"{sd}-{ed} {sm} {sy}","f":"{sd}-{ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm}-{ed}/{em} {sy}","m":"{sd}/{sm} - {ed}/{em} {sy}","l":"{sd} {sm} - {ed} {em} {sy}","f":"{sd} {sm} - {ed} {em} {sy}"},"c12":{"s":"{sd}/{sm}/{sy}-{ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy}-{em}/{ey}","m":"{sm}/{sy} - {em}/{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}},"islamic":"gregorian","hebrew":"gregorian","julian":"gregorian","thaisolar":"gregorian","persian":"gregorian","persian-astro":"gregorian"};
 ilib.data.dateformats_aa = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M-d","m":"MMM d","l":"MMM d","f":"MMMM d"},"dmy":{"s":"yy-M-d","m":"yy MMM d","l":"yyyy MMM d","f":"yyyy MMMM dd"},"my":{"s":"yy-M","m":"yy MMM","l":"yyyy MMM","f":"yyyy MMMM"},"m":{"f":"MMM"},"d":{"s":"d","f":"d","l":"d","m":"d"},"dmwy":{"s":"E, yy-M-d","m":"EE, yy-M-d","l":"EEE, yyyy MMM d","f":"EEEE, yyyy MMM d"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE MMM d","f":"EEEE MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sy} {sm} {sd}","l":"{st} – {et} {sy} {sm} {sd}","f":"{st} – {et} {sy} {sm} {sd}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_af = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"M/d","m":"dd MMM","l":"MMM d","f":"MMMM d"},"dmy":{"s":"M/d/yy","m":"dd MMM yy","f":"dd MMMM yyyy"},"my":{"m":"MMM yy"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, d/M/yy","m":"EE, d/M/yy","l":"EEE, d MMM yyyy","f":"EEEE, d MMM yyyy"},"dmw":{"s":"E, M/d","m":"EE, M/d","l":"EEEE, MMM d","f":"EEEE, MMM d"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"}},"range":{"c00":{"s":"{st} – {et} {sm}/{sd}/{sy}","m":"{st} – {et} {sd} {sm} {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sd} – {et} {ed} {em} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","f":"{st} {sd} – {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}","l":"{st} {sm} {sd} – {et} {em} {ed} {ey}","f":"{st} {sm} {sd} – {et} {em} {ed} {ey}","m":"{st} {sm}/{sd}/{sy} – {et} {em}/{ed}/{ey}"},"c10":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sd} – {ed} {em} {ey}","f":"{sd} – {ed} {em} {ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}"},"c11":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sm} {sd} – {em} {ed} {ey}","f":"{sm} {sd} – {em} {ed} {ey}"},"c12":{"s":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","m":"{sm}/{sd}/{sy} – {em}/{ed}/{ey}","l":"{sd} {sm} {sy} – {ed} {em} {ey}","f":"{sd} {sm} {sy} – {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} – {em}/{ey}","m":"{sm}/{sy} – {em}/{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
@@ -12338,7 +12384,7 @@ ctype.isspace.js
  * @class
  * @constructor
  * @param {string|number|Number|ilib.Number|undefined} str a string to parse as a number, or a number value
- * @param {Object} options Options controlling how the instance should be created 
+ * @param {Object=} options Options controlling how the instance should be created 
  */
 ilib.Number = function (str, options) {
 	var i, stripped = "", 
@@ -16875,6 +16921,651 @@ ilib.AddressFmt.prototype.format = function (address) {
 };
 
 /*
+ * normstring.js - ilib normalized string subclass definition
+ * 
+ * Copyright © 2013-2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends strings.js
+
+/**
+ * Create a new normalized string instance. This string inherits from 
+ * the ilib.String class, and adds the normalize method. It can be
+ * used anywhere that a normal Javascript string is used. <p>
+ * 
+ * Depends directive: !depends normstring.js
+ * 
+ * @class
+ * @constructor
+ * @param {string|ilib.String=} str initialize this instance with this string 
+ */
+ilib.NormString = function (str) {
+	ilib.NormString.baseConstructor.call(this, str);
+	
+};
+ilib.NormString.prototype = new ilib.String();
+ilib.NormString.prototype.constructor = ilib.NormString;
+ilib.NormString.baseConstructor = ilib.String;
+ilib.NormString.prototype.parent = ilib.String.prototype;
+
+/**
+ * Initialize the normalized string routines statically. This
+ * is intended to be called in a dynamic-load version of ilib
+ * to load the data need to normalize strings before any instances
+ * of ilib.NormString are created.<p>
+ * 
+ * The options parameter may contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>form</i> - {string} the normalization form to load
+ * <li><i>script</i> - {string} load the normalization for this script. If the 
+ * script is given as "all" then the normalization data for all scripts
+ * is loaded at the same time
+ * <li><i>sync</i> - {boolean} whether to load the files synchronously or not
+ * <li><i>loadParams</i> - {Object} parameters to the loader function
+ * <li><i>onLoad</i> - {function()} a function to call when the 
+ * files are done being loaded
+ * </ul>
+ * 
+ * @param {Object} options an object containing properties that govern 
+ * how to initialize the data
+ */
+ilib.NormString.init = function(options) {
+	if (!ilib._load || (typeof(ilib._load) !== 'function' && !(ilib._load instanceof ilib.Loader))) {
+		// can't do anything
+		return;
+	}
+	var form = "nfkc";
+	var script = "all";
+	var sync = true;
+	var onLoad = undefined;
+	var loadParams = undefined;
+	if (options) {
+		form = options.form || "nfkc";
+		script = options.script || "all";
+		sync = typeof(options.sync) !== 'undefined' ? options.sync : true;
+		onLoad = typeof(options.onLoad) === 'function' ? options.onLoad : undefined;
+		if (options.loadParams) {
+			loadParams = options.loadParams;
+		}
+	}
+	var formDependencies = {
+		"nfd": ["nfd"],
+		"nfc": ["nfc", "nfd"],
+		"nfkd": ["nfkd", "nfd"],
+		"nfkc": ["nfkd", "nfd", "nfc"]
+	};
+	var files = ["norm.ccc.json"];
+	var forms = formDependencies[form];
+	for (var f in forms) {
+		files.push(forms[f] + "/" + script + ".json");
+	}
+	
+	ilib._callLoadData(files, sync, loadParams, function(arr) {
+		ilib.data.norm.ccc = arr[0];
+		for (var i = 1; i < arr.length; i++) {
+			if (typeof(arr[i]) !== 'undefined') {
+				ilib.data.norm[forms[i-1]] = arr[i];
+			}
+		}
+		
+		if (onLoad) {
+			onLoad(arr);
+		}
+	});
+};
+
+/**
+ * Return true if the given character is a leading Jamo (Choseong) character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a leading Jamo character, 
+ * false otherwise
+ */
+ilib.NormString._isJamoL = function (n) {
+	return (n >= 0x1100 && n <= 0x1112);
+};
+
+/**
+ * Return true if the given character is a vowel Jamo (Jungseong) character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a vowel Jamo character, 
+ * false otherwise
+ */
+ilib.NormString._isJamoV = function (n) {
+	return (n >= 0x1161 && n <= 0x1175);
+};
+
+/**
+ * Return true if the given character is a trailing Jamo (Jongseong) character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a trailing Jamo character, 
+ * false otherwise
+ */
+ilib.NormString._isJamoT = function (n) {
+	return (n >= 0x11A8 && n <= 0x11C2);
+};
+
+/**
+ * Return true if the given character is a precomposed Hangul character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a precomposed Hangul character, 
+ * false otherwise
+ */
+ilib.NormString._isHangul = function (n) {
+	return (n >= 0xAC00 && n <= 0xD7A3);
+};
+
+/**
+ * Algorithmically decompose a precomposed Korean syllabic Hangul 
+ * character into its individual combining Jamo characters. The given 
+ * character must be in the range of Hangul characters U+AC00 to U+D7A3.
+ * 
+ * @private
+ * @static
+ * @param {number} cp code point of a Korean Hangul character to decompose
+ * @return {string} the decomposed string of Jamo characters
+ */
+ilib.NormString._decomposeHangul = function (cp) {
+	var sindex = cp - 0xAC00;
+	var result = String.fromCharCode(0x1100 + sindex / 588) + 
+			String.fromCharCode(0x1161 + (sindex % 588) / 28);
+	var t = sindex % 28;
+	if (t !== 0) {
+		result += String.fromCharCode(0x11A7 + t);
+	}
+	return result;
+};
+
+/**
+ * Algorithmically compose an L and a V combining Jamo characters into
+ * a precomposed Korean syllabic Hangul character. Both should already
+ * be in the proper ranges for L and V characters. 
+ * 
+ * @private
+ * @static
+ * @param {number} lead the code point of the lead Jamo character to compose
+ * @param {number} trail the code point of the trailing Jamo character to compose
+ * @return {string} the composed Hangul character
+ */
+ilib.NormString._composeJamoLV = function (lead, trail) {
+	var lindex = lead - 0x1100;
+	var vindex = trail - 0x1161;
+	return ilib.String.fromCodePoint(0xAC00 + (lindex * 21 + vindex) * 28);
+};
+
+/**
+ * Algorithmically compose a Hangul LV and a combining Jamo T character 
+ * into a precomposed Korean syllabic Hangul character. 
+ * 
+ * @private
+ * @static
+ * @param {number} lead the code point of the lead Hangul character to compose
+ * @param {number} trail the code point of the trailing Jamo T character to compose
+ * @return {string} the composed Hangul character
+ */
+ilib.NormString._composeJamoLVT = function (lead, trail) {
+	return ilib.String.fromCodePoint(lead + (trail - 0x11A7));
+};
+
+/**
+ * Expand one character according to the given canonical and 
+ * compatibility mappings.
+ *
+ * @private
+ * @static
+ * @param {string} ch character to map
+ * @param {Object} canon the canonical mappings to apply
+ * @param {Object=} compat the compatibility mappings to apply, or undefined
+ * if only the canonical mappings are needed
+ * @return {string} the mapped character
+ */
+ilib.NormString._expand = function (ch, canon, compat) {
+	var i, 
+		expansion = "",
+		n = ch.charCodeAt(0);
+	if (ilib.NormString._isHangul(n)) {
+		expansion = ilib.NormString._decomposeHangul(n);
+	} else {
+		var result = canon[ch];
+		if (!result && compat) {
+			result = compat[ch];
+		}
+		if (result && result !== ch) {
+			for (i = 0; i < result.length; i++) {
+				expansion += ilib.NormString._expand(result[i], canon, compat);
+			}
+		} else {
+			expansion = ch;
+		}
+	}
+	return expansion;
+};
+
+/**
+ * Compose one character out of a leading character and a 
+ * trailing character. If the characters are Korean Jamo, they
+ * will be composed algorithmically. If they are any other
+ * characters, they will be looked up in the nfc tables.
+ * 
+ * @private
+ * @static
+ * @param {string} lead leading character to compose
+ * @param {string} trail the trailing character to compose
+ * @return {string} the fully composed character, or undefined if
+ * there is no composition for those two characters
+ */
+ilib.NormString._compose = function (lead, trail) {
+	var first = lead.charCodeAt(0);
+	var last = trail.charCodeAt(0);
+	if (ilib.NormString._isHangul(first) && ilib.NormString._isJamoT(last)) {
+		return ilib.NormString._composeJamoLVT(first, last);
+	} else if (ilib.NormString._isJamoL(first) && ilib.NormString._isJamoV(last)) {
+		return ilib.NormString._composeJamoLV(first, last);
+	}
+
+	var c = lead + trail;
+	return (ilib.data.norm.nfc && ilib.data.norm.nfc[c]);
+};
+
+
+/**
+ * Perform the Unicode Normalization Algorithm upon the string and return 
+ * the resulting new string. The current string is not modified.
+ * 
+ * <h2>Forms</h2>
+ * 
+ * The forms of possible normalizations are defined by the <a 
+ * href="http://www.unicode.org/reports/tr15/">Unicode Standard
+ * Annex (UAX) 15</a>. The form parameter is a string that may have one 
+ * of the following values:
+ * 
+ * <ul>
+ * <li>nfd - Canonical decomposition. This decomposes characters into
+ * their exactly equivalent forms. For example, "&uuml;" would decompose
+ * into a "u" followed by the combining diaeresis character. 
+ * <li>nfc - Canonical decomposition followed by canonical composition.
+ * This decomposes and then recomposes character into their shortest
+ * exactly equivalent forms by recomposing as many combining characters
+ * as possible. For example, "&uuml;" followed by a combining 
+ * macron character would decompose into a "u" followed by the combining 
+ * macron characters the combining diaeresis character, and then be recomposed into
+ * the u with macron and diaeresis "&#x1E7B;" character. The reason that
+ * the "nfc" form decomposes and then recomposes is that combining characters
+ * have a specific order under the Unicode Normalization Algorithm, and
+ * partly composed characters such as the "&uuml;" followed by combining
+ * marks may change the order of the combining marks when decomposed and
+ * recomposed.
+ * <li>nfkd - Compatibility decomposition. This decomposes characters
+ * into compatible forms that may not be exactly equivalent semantically,
+ * as well as performing canonical decomposition as well.
+ * For example, the "&oelig;" ligature character decomposes to the two
+ * characters "oe" because they are compatible even though they are not 
+ * exactly the same semantically. 
+ * <li>nfkc - Compatibility decomposition followed by canonical composition.
+ * This decomposes characters into compatible forms, then recomposes
+ * characters using the canonical composition. That is, it breaks down
+ * characters into the compatible forms, and then recombines all combining
+ * marks it can with their base characters. For example, the character
+ * "&#x01FD;" would be normalized to "a&eacute;" by first decomposing
+ * the character into "a" followed by "e" followed by the combining acute accent
+ * combining mark, and then recomposed to an "a" followed by the "e"
+ * with acute accent.
+ * </ul>
+ * 
+ * <h2>Operation</h2>
+ * 
+ * Two strings a and b can be said to be canonically equivalent if 
+ * normalize(a) = normalize(b)
+ * under the nfc normalization form. Two strings can be said to be compatible if
+ * normalize(a) = normalize(b) under the nfkc normalization form.<p>
+ * 
+ * The canonical normalization is often used to see if strings are 
+ * equivalent to each other, and thus is useful when implementing parsing 
+ * algorithms or exact matching algorithms. It can also be used to ensure
+ * that any string output produces a predictable sequence of characters.<p>
+ * 
+ * Compatibility normalization 
+ * does not always preserve the semantic meaning of all the characters, 
+ * although this is sometimes the behaviour that you are after. It is useful, 
+ * for example, when doing searches of user-input against text in documents 
+ * where the matches are supposed to "fuzzy". In this case, both the query
+ * string and the document string would be mapped to their compatibility 
+ * normalized forms, and then compared.<p>
+ * 
+ * Compatibility normalization also does not guarantee round-trip conversion
+ * to and from legacy character sets as the normalization is "lossy". It is 
+ * akin to doing a lower- or upper-case conversion on text -- after casing,
+ * you cannot tell what case each character is in the original string. It is 
+ * good for matching and searching, but it rarely good for output because some 
+ * distinctions or meanings in the original text have been lost.<p>
+ * 
+ * Note that W3C normalization for HTML also escapes and unescapes
+ * HTML character entities such as "&amp;uuml;" for u with diaeresis. This
+ * method does not do such escaping or unescaping. If normalization is required
+ * for HTML strings with entities, unescaping should be performed on the string 
+ * prior to calling this method.<p>
+ * 
+ * <h2>Data</h2>
+ * 
+ * Normalization requires a fair amount of mapping data, much of which you may 
+ * not need for the characters expected in your texts. It is possible to assemble
+ * a copy of ilib that saves space by only including normalization data for 
+ * those scripts that you expect to encounter in your data.<p>
+ * 
+ * The normalization data is organized by normalization form and within there
+ * by script. To include the normalization data for a particular script with
+ * a particular normalization form, use the directive:
+ * 
+ * <pre><code>
+ * !depends &lt;form&gt;/&lt;script&gt;.js
+ * </code></pre>
+ * 
+ * Where &lt;form&gt is the normalization form ("nfd", "nfc", "nfkd", or "nfkc"), and
+ * &lt;script&gt; is the ISO 15924 code for the script you would like to
+ * support. Example: to load in the NFC data for Cyrillic, you would use:
+ * 
+ * <pre><code>
+ * !depends nfc/Cyrl.js
+ * </code></pre>
+ * 
+ * Note that because certain normalization forms include others in their algorithm, 
+ * their data also depends on the data for the other forms. For example, if you 
+ * include the "nfc" data for a script, you will automatically get the "nfd" data 
+ * for that same script as well because the NFC algorithm does NFD normalization 
+ * first. Here are the dependencies:<p>
+ * 
+ * <ul>
+ * <li>NFD -> no dependencies
+ * <li>NFC -> NFD
+ * <li>NFKD -> NFD
+ * <li>NFKC -> NFKD, NFD, NFC
+ * </ul>
+ * 
+ * A special value for the script dependency is "all" which will cause the data for 
+ * all scripts
+ * to be loaded for that normalization form. This would be useful if you know that
+ * you are going to normalize a lot of multilingual text or cannot predict which scripts
+ * will appear in the input. Because the NFKC form depends on all others, you can 
+ * get all of the data for all forms automatically by depending on "nfkc/all.js".
+ * Note that the normalization data for practically all script automatically depend
+ * on data for the Common script (code "Zyyy") which contains all of the characters
+ * that are commonly used in many different scripts. Examples of characters in the
+ * Common script are the ASCII punctuation characters, or the ASCII Arabic 
+ * numerals "0" through "9".<p>
+ * 
+ * By default, none of the data for normalization is automatically 
+ * included in the preassembled iliball.js file. 
+ * If you would like to normalize strings, you must assemble
+ * your own copy of ilib and explicitly include the normalization data
+ * for those scripts as per the instructions above. This normalization method will 
+ * produce output, even without the normalization data. However, the output will be 
+ * simply the same thing as its input for all scripts 
+ * except Korean Hangul and Jamo, which are decomposed and recomposed 
+ * algorithmically and therefore do not rely on data.<p>
+ * 
+ * If characters are encountered for which there are no normalization data, they
+ * will be passed through to the output string unmodified.
+ * 
+ * @param {string} form The normalization form requested
+ * @return {ilib.String} a new instance of an ilib.String that has been normalized
+ * according to the requested form. The current instance is not modified.
+ */
+ilib.NormString.prototype.normalize = function (form) {
+	var i;
+	
+	if (typeof(form) !== 'string' || this.str.length === 0) {
+		return new ilib.String(this.str);
+	}
+	
+	var nfc = false,
+		nfkd = false;
+	
+	switch (form) {
+	default:
+		break;
+		
+	case "nfc":
+		nfc = true;
+		break;
+		
+	case "nfkd":
+		nfkd = true;
+		break;
+		
+	case "nfkc":
+		nfkd = true;
+		nfc = true;
+		break;
+	}
+
+	// decompose
+	var decomp = "";
+	
+	if (nfkd) {
+		var ch, it = this.parent.charIterator.call(this);
+		while (it.hasNext()) {
+			ch = it.next();
+			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd, ilib.data.norm.nfkd);
+		}
+	} else {
+		var ch, it = this.parent.charIterator.call(this);
+		while (it.hasNext()) {
+			ch = it.next();
+			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd);
+		}
+	}
+
+	// now put the combining marks in a fixed order by 
+	// sorting on the combining class
+	function compareByCCC(left, right) {
+		return ilib.data.norm.ccc[left] - ilib.data.norm.ccc[right]; 
+	}
+	
+	function ccc(c) {
+		return ilib.data.norm.ccc[c] || 0;
+	}
+		
+	var dstr = new ilib.String(decomp);
+	var it = dstr.charIterator();
+	var cpArray = [];
+
+	// easier to deal with as an array of chars
+	while (it.hasNext()) {
+		cpArray.push(it.next());
+	}
+	
+	i = 0;
+	while (i < cpArray.length) {
+		if (typeof(ilib.data.norm.ccc[cpArray[i]]) !== 'undefined' && ccc(cpArray[i]) !== 0) {
+			// found a non-starter... rearrange all the non-starters until the next starter
+			var end = i+1;
+			while (end < cpArray.length &&
+					typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
+					ccc(cpArray[end]) !== 0) {
+				end++;
+			}
+			
+			// simple sort of the non-starter chars
+			if (end - i > 1) {
+				cpArray = cpArray.slice(0,i).concat(cpArray.slice(i, end).sort(compareByCCC), cpArray.slice(end));
+			}
+		}
+		i++;
+	}
+	
+	if (nfc) {
+		i = 0;
+		while (i < cpArray.length) {
+			if (typeof(ilib.data.norm.ccc[cpArray[i]]) === 'undefined' || ilib.data.norm.ccc[cpArray[i]] === 0) {
+				// found a starter... find all the non-starters until the next starter. Must include
+				// the next starter because under some odd circumstances, two starters sometimes recompose 
+				// together to form another character
+				var end = i+1;
+				var notdone = true;
+				while (end < cpArray.length && notdone) {
+					if (typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
+						ilib.data.norm.ccc[cpArray[end]] !== 0) {
+						if (ccc(cpArray[end-1]) < ccc(cpArray[end])) { 
+							// not blocked 
+							var testChar = ilib.NormString._compose(cpArray[i], cpArray[end]);
+							if (typeof(testChar) !== 'undefined') {
+								cpArray[i] = testChar;
+								
+								// delete the combining char
+								cpArray.splice(end,1);	
+								
+								// restart the iteration, just in case there is more to recompose with the new char
+								end = i;
+							}
+						}
+						end++;
+					} else {
+						// found the next starter. See if this can be composed with the previous starter
+						var testChar = ilib.NormString._compose(cpArray[i], cpArray[end]);
+						if (ccc(cpArray[end-1]) === 0 && typeof(testChar) !== 'undefined') { 
+							// not blocked and there is a mapping 
+							cpArray[i] = testChar;
+							
+							// delete the combining char
+							cpArray.splice(end,1);
+							
+							// restart the iteration, just in case there is more to recompose with the new char
+							end = i+1;
+						} else {
+							// finished iterating 
+							notdone = false;
+						}
+					}
+				}
+			}
+			i++;
+		}
+	}
+	
+	return new ilib.String(cpArray.length > 0 ? cpArray.join("") : "");
+};
+	
+/**
+ * @override
+ * Return an iterator that will step through all of the characters
+ * in the string one at a time, taking care to step through decomposed 
+ * characters and through surrogate pairs in UTF-16 encoding 
+ * properly. <p>
+ * 
+ * The NormString class will return decomposed Unicode characters
+ * as a single unit that a user might see on the screen. If the 
+ * next character in the iteration is a base character and it is 
+ * followed by combining characters, the base and all its following 
+ * combining characters are returned as a single unit.<p>
+ * 
+ * The standard Javascript String's charAt() method only
+ * returns information about a particular 16-bit character in the 
+ * UTF-16 encoding scheme.
+ * If the index is pointing to a low- or high-surrogate character,
+ * it will return that surrogate character rather 
+ * than the surrogate pair which represents a character 
+ * in the supplementary planes.<p>
+ * 
+ * The iterator instance returned has two methods, hasNext() which
+ * returns true if the iterator has more characters to iterate through,
+ * and next() which returns the next character.<p>
+ * 
+ * @return {Object} an iterator 
+ * that iterates through all the characters in the string
+ */
+ilib.NormString.prototype.charIterator = function() {
+	var it = this.parent.charIterator.call(this);
+	
+	/**
+	 * @constructor
+	 */
+	function _chiterator (istring) {
+		/**
+		 * @private
+		 */
+		var ccc = function(c) {
+			return ilib.data.norm.ccc[c] || 0;
+		};
+
+		this.index = 0;
+		this.hasNext = function () {
+			return !!this.nextChar || it.hasNext();
+		};
+		this.next = function () {
+			var ch = this.nextChar || it.next(),
+				prevCcc = ccc(ch),
+				nextCcc,
+				composed = ch;
+			
+			this.nextChar = undefined;
+			
+			if (ilib.data.norm.ccc && 
+					(typeof(ilib.data.norm.ccc[ch]) === 'undefined' || ccc(ch) === 0)) {
+				// found a starter... find all the non-starters until the next starter. Must include
+				// the next starter because under some odd circumstances, two starters sometimes recompose 
+				// together to form another character
+				var notdone = true;
+				while (it.hasNext() && notdone) {
+					this.nextChar = it.next();
+					nextCcc = ccc(this.nextChar);
+					if (typeof(ilib.data.norm.ccc[this.nextChar]) !== 'undefined' && nextCcc !== 0) {
+						ch += this.nextChar;
+						this.nextChar = undefined;
+					} else {
+						// found the next starter. See if this can be composed with the previous starter
+						var testChar = ilib.NormString._compose(composed, this.nextChar);
+						if (prevCcc === 0 && typeof(testChar) !== 'undefined') { 
+							// not blocked and there is a mapping 
+							composed = testChar;
+							ch += this.nextChar;
+							this.nextChar = undefined;
+						} else {
+							// finished iterating, leave this.nextChar for the next next() call 
+							notdone = false;
+						}
+					}
+					prevCcc = nextCcc;
+				}
+			}
+			return ch;
+		};
+	};
+	return new _chiterator(this);
+};
+
+
+ilib.data.collation = {"standard":{"scripts":["Latn"],"bits":[5,3,1,1],"map":{"A":[0],"B":[1],"C":[2],"D":[3],"E":[4],"F":[5],"G":[6],"H":[7],"I":[8],"J":[9],"K":[10],"L":[11],"M":[12],"N":[13],"O":[14],"P":[15],"Q":[16],"R":[17],"S":[18],"T":[19],"U":[20],"V":[21],"W":[22],"X":[23],"Y":[24],"Z":[25],"a":[0,0,1],"b":[1,0,1],"c":[2,0,1],"d":[3,0,1],"e":[4,0,1],"f":[5,0,1],"g":[6,0,1],"h":[7,0,1],"i":[8,0,1],"j":[9,0,1],"k":[10,0,1],"l":[11,0,1],"m":[12,0,1],"n":[13,0,1],"o":[14,0,1],"p":[15,0,1],"q":[16,0,1],"r":[17,0,1],"s":[18,0,1],"t":[19,0,1],"u":[20,0,1],"v":[21,0,1],"w":[22,0,1],"x":[23,0,1],"y":[24,0,1],"z":[25,0,1],"à":[0,1,1],"á":[0,2,1],"â":[0,3,1],"ã":[0,4,1],"ä":[0,5,1],"å":[0,6,1],"æ":[[0,7,1],[4,0,1]],"ç":[2,1,1],"è":[4,1,1],"é":[4,2,1],"ê":[4,3,1],"ë":[4,4,1],"ð":[3,1,1],"þ":[3,2,1],"ì":[8,1,1],"í":[8,2,1],"î":[8,3,1],"ï":[8,4,1],"ñ":[13,1,1],"ò":[14,1,1],"ó":[14,2,1],"ô":[14,3,1],"õ":[14,4,1],"ö":[14,5,1],"ø":[14,6,1],"ù":[20,1,1],"ú":[20,2,1],"û":[20,3,1],"ü":[20,4,1],"ý":[24,1,1],"ÿ":[24,2,1],"À":[0,1,0],"Á":[0,2,0],"Â":[0,3,0],"Ã":[0,4,0],"Ä":[0,5,0],"Å":[0,6,0],"Æ":[[0,7,0],[4]],"Ç":[2,1,0],"Ð":[3,1,0],"Þ":[3,2,0],"È":[4,1,0],"É":[4,2,0],"Ê":[4,3,0],"Ë":[4,4,0],"Ì":[8,1,0],"Í":[8,2,0],"Î":[8,3,0],"Ï":[8,4,0],"Ñ":[13,1,0],"Ò":[14,1,0],"Ó":[14,2,0],"Ô":[14,3,0],"Õ":[14,4,0],"Ö":[14,5,0],"Ø":[14,6,0],"Ù":[20,1,0],"Ú":[20,2,0],"Û":[20,3,0],"Ü":[20,4,0],"Ý":[24,1,0],"ß":[[18,1,1],[25,0,1]],"à":[0,1,1,1],"á":[0,2,1,1],"â":[0,3,1,1],"ã":[0,4,1,1],"ä":[0,5,1,1],"å":[0,6,1,1],"ç":[2,1,1,1],"è":[4,1,1,1],"é":[4,2,1,1],"ê":[4,3,1,1],"ë":[4,4,1,1],"ì":[8,1,1,1],"í":[8,2,1,1],"î":[8,3,1,1],"ï":[8,4,1,1],"ñ":[13,1,1,1],"ò":[14,1,1,1],"ó":[14,2,1,1],"ô":[14,3,1,1],"õ":[14,4,1,1],"ö":[14,5,1,1],"ù":[20,1,1,1],"ú":[20,2,1,1],"û":[20,3,1,1],"ü":[20,4,1,1],"ý":[24,1,1,1],"ÿ":[24,2,1,1],"À":[0,1,0,1],"Á":[0,2,0,1],"Â":[0,3,0,1],"Ã":[0,4,0,1],"Ä":[0,5,0,1],"Å":[0,6,0,1],"Ç":[2,1,0,1],"È":[4,1,0,1],"É":[4,2,0,1],"Ê":[4,3,0,1],"Ë":[4,4,0,1],"Ì":[8,1,0,1],"Í":[8,2,0,1],"Î":[8,3,0,1],"Ï":[8,4,0,1],"Ñ":[13,1,0,1],"Ò":[14,1,0,1],"Ó":[14,2,0,1],"Ô":[14,3,0,1],"Õ":[14,4,0,1],"Ö":[14,5,0,1],"Ù":[20,1,0,1],"Ú":[20,2,0,1],"Û":[20,3,0,1],"Ü":[20,4,0,1],"Ý":[24,1,0,1]}}};
+ilib.data.collation_de = {"phonebook":{"scripts":["Latn"],"bits":[5,3,1,1],"map":{"A":[0],"B":[1],"C":[2],"D":[3],"E":[4],"F":[5],"G":[6],"H":[7],"I":[8],"J":[9],"K":[10],"L":[11],"M":[12],"N":[13],"O":[14],"P":[15],"Q":[16],"R":[17],"S":[18],"T":[19],"U":[20],"V":[21],"W":[22],"X":[23],"Y":[24],"Z":[25],"a":[0,0,1],"b":[1,0,1],"c":[2,0,1],"d":[3,0,1],"e":[4,0,1],"f":[5,0,1],"g":[6,0,1],"h":[7,0,1],"i":[8,0,1],"j":[9,0,1],"k":[10,0,1],"l":[11,0,1],"m":[12,0,1],"n":[13,0,1],"o":[14,0,1],"p":[15,0,1],"q":[16,0,1],"r":[17,0,1],"s":[18,0,1],"t":[19,0,1],"u":[20,0,1],"v":[21,0,1],"w":[22,0,1],"x":[23,0,1],"y":[24,0,1],"z":[25,0,1],"à":[0,1,1],"á":[0,2,1],"â":[0,3,1],"ã":[0,4,1],"ä":[[0,0,1],[4,0,1]],"å":[0,6,1],"æ":[[0,7,1],[4,0,1]],"ç":[2,1,1],"è":[4,1,1],"é":[4,2,1],"ê":[4,3,1],"ë":[4,4,1],"ð":[3,1,1],"þ":[3,2,1],"ì":[8,1,1],"í":[8,2,1],"î":[8,3,1],"ï":[8,4,1],"ñ":[13,1,1],"ò":[14,1,1],"ó":[14,2,1],"ô":[14,3,1],"õ":[14,4,1],"ö":[[14,0,1],[4,0,1]],"ø":[14,6,1],"ù":[20,1,1],"ú":[20,2,1],"û":[20,3,1],"ü":[[20,0,1],[4,0,1]],"ý":[24,1,1],"ÿ":[24,2,1],"À":[0,1,0],"Á":[0,2,0],"Â":[0,3,0],"Ã":[0,4,0],"Ä":[[0],[4]],"Å":[0,6,0],"Æ":[[0,7,0],[4]],"Ç":[2,1,0],"Ð":[3,1,0],"Þ":[3,2,0],"È":[4,1,0],"É":[4,2,0],"Ê":[4,3,0],"Ë":[4,4,0],"Ì":[8,1,0],"Í":[8,2,0],"Î":[8,3,0],"Ï":[8,4,0],"Ñ":[13,1,0],"Ò":[14,1,0],"Ó":[14,2,0],"Ô":[14,3,0],"Õ":[14,4,0],"Ö":[[14],[4]],"Ø":[14,6,0],"Ù":[20,1,0],"Ú":[20,2,0],"Û":[20,3,0],"Ü":[[20],[4]],"Ý":[24,1,0],"ß":[[18,1,1],[25,0,1]],"à":[0,1,1,1],"á":[0,2,1,1],"â":[0,3,1,1],"ã":[0,4,1,1],"ä":[[0,0,1],[4,0,1]],"å":[0,6,1,1],"ç":[2,1,1,1],"è":[4,1,1,1],"é":[4,2,1,1],"ê":[4,3,1,1],"ë":[4,4,1,1],"ì":[8,1,1,1],"í":[8,2,1,1],"î":[8,3,1,1],"ï":[8,4,1,1],"ñ":[13,1,1,1],"ò":[14,1,1,1],"ó":[14,2,1,1],"ô":[14,3,1,1],"õ":[14,4,1,1],"ö":[[14,0,1],[4,0,1]],"ù":[20,1,1,1],"ú":[20,2,1,1],"û":[20,3,1,1],"ü":[[20,0,1],[4,0,1]],"ý":[24,1,1,1],"ÿ":[24,2,1,1],"À":[0,1,0,1],"Á":[0,2,0,1],"Â":[0,3,0,1],"Ã":[0,4,0,1],"Ä":[[0],[4]],"Å":[0,6,0,1],"Ç":[2,1,0,1],"È":[4,1,0,1],"É":[4,2,0,1],"Ê":[4,3,0,1],"Ë":[4,4,0,1],"Ì":[8,1,0,1],"Í":[8,2,0,1],"Î":[8,3,0,1],"Ï":[8,4,0,1],"Ñ":[13,1,0,1],"Ò":[14,1,0,1],"Ó":[14,2,0,1],"Ô":[14,3,0,1],"Õ":[14,4,0,1],"Ö":[[14],[4]],"Ù":[20,1,0,1],"Ú":[20,2,0,1],"Û":[20,3,0,1],"Ü":[[20],[4]],"Ý":[24,1,0,1]}}};
+ilib.data.collation_es = {"traditional":{"scripts":["Latn"],"bits":[5,3,1,1],"map":{"A":[0],"B":[1],"C":[2],"Ch":[3,0,0,1],"CH":[3],"D":[4],"E":[5],"F":[6],"G":[7],"H":[8],"I":[9],"J":[10],"K":[11],"L":[12],"Ll":[13,0,0,1],"LL":[13],"M":[14],"N":[15],"Ñ":[16],"O":[17],"P":[18],"Q":[19],"R":[20],"S":[21],"T":[22],"U":[23],"V":[24],"W":[25],"X":[26],"Y":[27],"Z":[28],"a":[0,0,1],"b":[1,0,1],"c":[2,0,1],"ch":[3,0,1],"d":[4,0,1],"e":[5,0,1],"f":[6,0,1],"g":[7,0,1],"h":[8,0,1],"i":[9,0,1],"j":[10,0,1],"k":[11,0,1],"l":[12,0,1],"ll":[13,0,1],"m":[14,0,1],"n":[15,0,1],"ñ":[16,0,1],"o":[17,0,1],"p":[18,0,1],"q":[19,0,1],"r":[20,0,1],"s":[21,0,1],"t":[22,0,1],"u":[23,0,1],"v":[24,0,1],"w":[25,0,1],"x":[26,0,1],"y":[27,0,1],"z":[28,0,1],"à":[0,1,1],"á":[0,2,1],"â":[0,3,1],"ã":[0,4,1],"ä":[0,5,1],"å":[0,6,1],"æ":[[0,7,1],[5,0,1]],"ç":[2,1,1],"è":[5,1,1],"é":[5,2,1],"ê":[5,3,1],"ë":[5,4,1],"ð":[4,1,1],"þ":[4,2,1],"ì":[9,1,1],"í":[9,2,1],"î":[9,3,1],"ï":[9,4,1],"ò":[17,1,1],"ó":[17,2,1],"ô":[17,3,1],"õ":[17,4,1],"ö":[17,5,1],"ø":[17,6,1],"ù":[23,1,1],"ú":[23,2,1],"û":[23,3,1],"ü":[23,4,1],"ý":[27,1,1],"ÿ":[27,2,1],"À":[0,1,0],"Á":[0,2,0],"Â":[0,3,0],"Ã":[0,4,0],"Ä":[0,5,0],"Å":[0,6,0],"Æ":[[0,7,0],[5]],"Ç":[2,1,0],"Ð":[4,1,0],"Þ":[4,2,0],"È":[5,1,0],"É":[5,2,0],"Ê":[5,3,0],"Ë":[5,4,0],"Ì":[9,1,0],"Í":[9,2,0],"Î":[9,3,0],"Ï":[9,4,0],"Ò":[17,1,0],"Ó":[17,2,0],"Ô":[17,3,0],"Õ":[17,4,0],"Ö":[17,5,0],"Ø":[17,6,0],"Ù":[23,1,0],"Ú":[23,2,0],"Û":[23,3,0],"Ü":[23,4,0],"Ý":[27,1,0],"ß":[[21,1,1],[28,0,1]],"à":[0,1,1,1],"á":[0,2,1,1],"â":[0,3,1,1],"ã":[0,4,1,1],"ä":[0,5,1,1],"å":[0,6,1,1],"ç":[2,1,1,1],"è":[5,1,1,1],"é":[5,2,1,1],"ê":[5,3,1,1],"ë":[5,4,1,1],"ì":[9,1,1,1],"í":[9,2,1,1],"î":[9,3,1,1],"ï":[9,4,1,1],"ñ":[16,1,1,1],"ò":[17,1,1,1],"ó":[17,2,1,1],"ô":[17,3,1,1],"õ":[17,4,1,1],"ö":[17,5,1,1],"ù":[23,1,1,1],"ú":[23,2,1,1],"û":[23,3,1,1],"ü":[23,4,1,1],"ý":[27,1,1,1],"ÿ":[27,2,1,1],"À":[0,1,0,1],"Á":[0,2,0,1],"Â":[0,3,0,1],"Ã":[0,4,0,1],"Ä":[0,5,0,1],"Å":[0,6,0,1],"Ç":[2,1,0,1],"È":[5,1,0,1],"É":[5,2,0,1],"Ê":[5,3,0,1],"Ë":[5,4,0,1],"Ì":[9,1,0,1],"Í":[9,2,0,1],"Î":[9,3,0,1],"Ï":[9,4,0,1],"Ñ":[16,1,0,1],"Ò":[17,1,0,1],"Ó":[17,2,0,1],"Ô":[17,3,0,1],"Õ":[17,4,0,1],"Ö":[17,5,0,1],"Ù":[23,1,0,1],"Ú":[23,2,0,1],"Û":[23,3,0,1],"Ü":[23,4,0,1],"Ý":[27,1,0,1]}}};
+ilib.data.collation_et = {"standard":{"scripts":["Latn"],"bits":[5,3,1,1],"map":{"A":[0],"B":[1],"C":[2],"D":[3],"E":[4],"F":[5],"G":[6],"H":[7],"I":[8],"J":[9],"K":[10],"L":[11],"M":[12],"N":[13],"O":[14],"P":[15],"Q":[16],"R":[17],"S":[18],"Š":[19],"Z":[20],"Ž":[21],"T":[22],"U":[23],"V":[24],"W":[25],"Õ":[26],"Ä":[27],"Ö":[28],"Ü":[29],"X":[30],"Y":[31],"a":[0,0,1],"b":[1,0,1],"c":[2,0,1],"d":[3,0,1],"e":[4,0,1],"f":[5,0,1],"g":[6,0,1],"h":[7,0,1],"i":[8,0,1],"j":[9,0,1],"k":[10,0,1],"l":[11,0,1],"m":[12,0,1],"n":[13,0,1],"o":[14,0,1],"p":[15,0,1],"q":[16,0,1],"r":[17,0,1],"s":[18,0,1],"š":[19,0,1],"z":[20,0,1],"ž":[21,0,1],"t":[22,0,1],"u":[23,0,1],"v":[24,0,1],"w":[25,0,1],"õ":[26,0,1],"ä":[27,0,1],"ö":[28,0,1],"ü":[29,0,1],"x":[30,0,1],"y":[31,0,1],"à":[0,1,1],"á":[0,2,1],"â":[0,3,1],"ã":[0,4,1],"å":[0,5,1],"æ":[[0,7,1],[4,0,1]],"ç":[2,1,1],"è":[4,1,1],"é":[4,2,1],"ê":[4,3,1],"ë":[4,4,1],"ð":[3,1,1],"þ":[3,2,1],"ì":[8,1,1],"í":[8,2,1],"î":[8,3,1],"ï":[8,4,1],"ñ":[13,1,1],"ò":[14,1,1],"ó":[14,2,1],"ô":[14,3,1],"ø":[14,4,1],"ù":[23,1,1],"ú":[23,1,1],"û":[23,3,1],"ý":[31,1,1],"ÿ":[31,2,1],"À":[0,1,0],"Á":[0,2,0],"Â":[0,3,0],"Ã":[0,4,0],"Å":[0,5,0],"Æ":[[0,7,0],[4]],"Ç":[2,1,0],"Ð":[3,1,0],"Þ":[3,2,0],"È":[4,1,0],"É":[4,2,0],"Ê":[4,3,0],"Ë":[4,4,0],"Ì":[8,1,0],"Í":[8,2,0],"Î":[8,3,0],"Ï":[8,4,0],"Ñ":[13,1,0],"Ò":[14,1,0],"Ó":[14,2,0],"Ô":[14,3,0],"Ø":[14,4,0],"Ù":[23,1,0],"Ú":[23,2,0],"Û":[23,3,0],"Ý":[31,1,0],"ß":[[18,1,1],[25,0,1]],"à":[0,1,1,1],"á":[0,2,1,1],"â":[0,3,1,1],"ã":[0,4,1,1],"å":[0,5,1,1],"ç":[2,1,1,1],"è":[4,1,1,1],"é":[4,2,1,1],"ê":[4,3,1,1],"ë":[4,4,1,1],"ì":[8,1,1,1],"í":[8,2,1,1],"î":[8,3,1,1],"ï":[8,4,1,1],"ñ":[13,1,1,1],"ò":[14,1,1,1],"ó":[14,2,1,1],"ô":[14,3,1,1],"ù":[20,1,1,1],"ú":[20,2,1,1],"û":[20,3,1,1],"ý":[24,1,1,1],"ÿ":[24,2,1,1],"À":[0,1,0,1],"Á":[0,2,0,1],"Â":[0,3,0,1],"Ã":[0,4,0,1],"Å":[0,5,0,1],"Ç":[2,1,0,1],"È":[4,1,0,1],"É":[4,2,0,1],"Ê":[4,3,0,1],"Ë":[4,4,0,1],"Ì":[8,1,0,1],"Í":[8,2,0,1],"Î":[8,3,0,1],"Ï":[8,4,0,1],"Ñ":[13,1,0,1],"Ò":[14,1,0,1],"Ó":[14,2,0,1],"Ô":[14,3,0,1],"Ù":[23,1,0,1],"Ú":[23,2,0,1],"Û":[23,3,0,1],"Ý":[31,1,0,1],"Š":[19,0,0,1],"Ž":[21,0,0,1],"Õ":[26,0,0,1],"Ä":[27,0,0,1],"Ö":[28,0,0,1],"Ü":[29,0,0,1],"š":[19,0,1,1],"ž":[21,0,1,1],"õ":[26,0,1,1],"ä":[27,0,1,1],"ö":[28,0,1,1],"ü":[29,0,1,1]}}};
+ilib.data.collation_lt = {"standard":{"scripts":["Latn"],"bits":[6,3,1,1],"map":{"A":[0],"Ą":[1],"B":[2],"C":[3],"Č":[4],"D":[5],"E":[6],"Ę":[7],"Ė":[8],"F":[9],"G":[10],"H":[11],"I":[12],"Į":[13],"Y":[14],"J":[15],"K":[16],"L":[17],"M":[18],"N":[19],"O":[20],"P":[21],"R":[22],"S":[23],"Š":[24],"T":[25],"U":[26],"Ų":[27],"Ū":[28],"V":[29],"Z":[30],"Ž":[31],"Q":[32],"W":[33],"X":[34],"a":[0,0,1],"ą":[1,0,1],"b":[2,0,1],"c":[3,0,1],"č":[4,0,1],"d":[5,0,1],"e":[6,0,1],"ę":[7,0,1],"ė":[8,0,1],"f":[9,0,1],"g":[10,0,1],"h":[11,0,1],"i":[12,0,1],"į":[13,0,1],"y":[14,0,1],"j":[15,0,1],"k":[16,0,1],"l":[17,0,1],"m":[18,0,1],"n":[19,0,1],"o":[20,0,1],"p":[21,0,1],"r":[22,0,1],"s":[23,0,1],"š":[24,0,1],"t":[25,0,1],"u":[26,0,1],"ų":[27,0,1],"ū":[28,0,1],"v":[29,0,1],"z":[30,0,1],"ž":[31,0,1],"q":[32,0,1],"w":[33,0,1],"x":[34,0,1],"à":[0,1,1],"á":[0,2,1],"â":[0,3,1],"ã":[0,4,1],"ä":[0,5,1],"å":[0,6,1],"æ":[[0,7,1],[6,0,1]],"ç":[6,1,1],"è":[6,1,1],"é":[6,2,1],"ê":[6,3,1],"ë":[6,4,1],"ð":[5,1,1],"þ":[5,2,1],"ì":[12,1,1],"í":[12,2,1],"î":[12,3,1],"ï":[12,4,1],"ñ":[19,1,1],"ò":[20,1,1],"ó":[20,2,1],"ô":[20,3,1],"õ":[20,4,1],"ö":[20,5,1],"ø":[20,6,1],"ù":[26,1,1],"ú":[26,2,1],"û":[26,3,1],"ü":[26,4,1],"ý":[14,1,1],"ÿ":[14,2,1],"À":[0,1,0],"Á":[0,2,0],"Â":[0,3,0],"Ã":[0,4,0],"Ä":[0,5,0],"Å":[0,6,0],"Æ":[[0,7,0],[6]],"Ç":[6,1,0],"Ð":[5,1,0],"Þ":[5,2,0],"È":[6,1,0],"É":[6,2,0],"Ê":[6,3,0],"Ë":[6,4,0],"Ì":[12,1,0],"Í":[12,2,0],"Î":[12,3,0],"Ï":[12,4,0],"Ñ":[19,1,0],"Ò":[20,1,0],"Ó":[20,2,0],"Ô":[20,3,0],"Õ":[20,4,0],"Ö":[20,5,0],"Ø":[20,6,0],"Ù":[26,1,0],"Ú":[26,2,0],"Û":[26,3,0],"Ü":[26,4,0],"Ý":[14,1,0],"ß":[[23,1,1],[30,0,1]],"Ą":[1,0,0,1],"Č":[4,0,0,1],"Ę":[7,0,0,1],"Ė":[8,0,0,1],"Į":[13,0,0,1],"Š":[24,0,0,1],"Ų":[27,0,0,1],"Ū":[28,0,0,1],"Ž":[31,0,0,1],"ą":[1,0,1,1],"č":[4,0,1,1],"ę":[7,0,1,1],"ė":[8,0,1,1],"į":[13,0,1,1],"š":[24,0,1,1],"ų":[27,0,1,1],"ū":[28,0,1,1],"ž":[31,0,1,1],"à":[0,1,1,1],"á":[0,2,1,1],"â":[0,3,1,1],"ã":[0,4,1,1],"ä":[0,5,1,1],"å":[0,6,1,1],"ç":[6,1,1,1],"è":[6,1,1,1],"é":[6,2,1,1],"ê":[6,3,1,1],"ë":[6,4,1,1],"ì":[12,1,1,1],"í":[12,2,1,1],"î":[12,3,1,1],"ï":[12,4,1,1],"ñ":[19,1,1,1],"ò":[20,1,1,1],"ó":[20,2,1,1],"ô":[20,3,1,1],"õ":[20,4,1,1],"ö":[20,5,1,1],"ù":[26,1,1,1],"ú":[26,2,1,1],"û":[26,3,1,1],"ü":[26,4,1,1],"ý":[14,1,1,1],"ÿ":[14,2,1,1],"À":[0,1,0,1],"Á":[0,2,0,1],"Â":[0,3,0,1],"Ã":[0,4,0,1],"Ä":[0,5,0,1],"Å":[0,6,0,1],"Ç":[6,1,0,1],"È":[6,1,0,1],"Ê":[6,3,0,1],"Ë":[6,4,0,1],"Ì":[12,1,0,1],"Í":[12,2,0,1],"Î":[12,3,0,1],"Ï":[12,4,0,1],"Ñ":[19,1,0,1],"Ò":[20,1,0,1],"Ó":[20,2,0,1],"Ô":[20,3,0,1],"Õ":[20,4,0,1],"Ö":[20,5,0,1],"Ù":[26,1,0,1],"Ú":[26,2,0,1],"Û":[26,3,0,1],"Ü":[26,4,0,1],"Ý":[14,1,0,1]}}};
+ilib.data.collation_lv = {"standard":{"scripts":["Latn"],"bits":[6,3,1,1],"map":{"A":[0],"Ā":[1],"B":[2],"C":[3],"Č":[4],"D":[5],"E":[6],"Ē":[7],"F":[8],"G":[9],"Ģ":[10],"H":[11],"I":[12],"Y":[12,1],"Ī":[13],"J":[14],"K":[15],"Ķ":[16],"L":[17],"Ļ":[18],"M":[19],"N":[20],"Ņ":[21],"O":[22],"Ō":[22,1],"P":[23],"Q":[24],"R":[25],"Ŗ":[26],"S":[27],"Š":[28],"T":[29],"U":[30],"Ū":[31],"V":[32],"Z":[33],"Ž":[34],"W":[35],"X":[36],"a":[0,0,1],"ā":[1,0,1],"b":[2,0,1],"c":[3,0,1],"č":[4,0,1],"d":[5,0,1],"e":[6,0,1],"ē":[7,0,1],"f":[8,0,1],"g":[9,0,1],"ģ":[10,0,1],"h":[11,0,1],"i":[12,0,1],"y":[12,1,1],"ī":[13,0,1],"j":[14,0,1],"k":[15,0,1],"ķ":[16,0,1],"l":[17,0,1],"ļ":[18,0,1],"m":[19,0,1],"n":[20,0,1],"ņ":[21,0,1],"o":[22,0,1],"p":[23,0,1],"q":[24,0,1],"r":[25,0,1],"ŗ":[26,0,1],"s":[27,0,1],"š":[28,0,1],"t":[29,0,1],"u":[30,0,1],"ū":[31,0,1],"v":[32,0,1],"z":[33,0,1],"ž":[34,0,1],"w":[35,0,1],"x":[36,0,1],"à":[0,1,1],"á":[0,2,1],"â":[0,3,1],"ã":[0,4,1],"ä":[0,5,1],"å":[0,6,1],"æ":[[0,0,1],[6,0,1]],"ç":[3,1,1],"è":[6,1,1],"é":[6,2,1],"ê":[6,3,1],"ë":[6,4,1],"ð":[5,1,1],"þ":[5,2,1],"ì":[12,1,1],"í":[12,2,1],"î":[12,3,1],"ï":[12,4,1],"ñ":[20,1,1],"ò":[22,1,1],"ó":[22,2,1],"ô":[22,3,1],"õ":[22,4,1],"ö":[22,5,1],"ø":[22,6,1],"ù":[30,1,1],"ú":[30,2,1],"û":[30,3,1],"ü":[30,4,1],"ý":[12,2,1],"ÿ":[12,3,1],"À":[0,1,0],"Á":[0,2,0],"Â":[0,3,0],"Ã":[0,4,0],"Ä":[0,5,0],"Å":[0,6,0],"Æ":[[0],[6]],"Ç":[3,1,0],"Ð":[5,1,0],"Þ":[5,2,0],"È":[6,1,0],"É":[6,2,0],"Ê":[6,3,0],"Ë":[6,4,0],"Ì":[12,1,0],"Í":[12,2,0],"Î":[12,3,0],"Ï":[12,4,0],"Ñ":[20,1,0],"Ò":[22,1,0],"Ó":[22,2,0],"Ô":[22,3,0],"Ö":[22,5,0],"Ø":[22,6,0],"Ù":[30,1,0],"Ú":[30,2,0],"Û":[30,3,0],"Ü":[30,4,0],"Ý":[12,2,0],"ß":[[27,1,1],[33,0,1]],"Ā":[1,0,0,1],"Č":[4,0,0,1],"Ē":[7,0,0,1],"Ģ":[10,0,0,1],"Ī":[13,0,0,1],"Ķ":[16,0,0,1],"Ļ":[18,0,0,1],"Ņ":[21,0,0,1],"Ō":[22,1,0,1],"Ŗ":[26,0,0,1],"Š":[28,0,0,1],"Ū":[31,0,0,1],"Ž":[34,0,0,1],"ā":[1,0,1,1],"č":[4,0,1,1],"ē":[7,0,1,1],"ģ":[10,0,1,1],"ī":[13,0,1,1],"ķ":[16,0,1,1],"ļ":[18,0,1,1],"ņ":[21,0,1,1],"ŗ":[26,0,1,1],"š":[28,0,1,1],"ū":[31,0,1,1],"ž":[34,0,1,1],"à":[0,1,1,1],"á":[0,2,1,1],"â":[0,3,1,1],"ã":[0,4,1,1],"ä":[0,5,1,1],"å":[0,6,1,1],"ç":[3,1,1,1],"è":[6,1,1,1],"é":[6,2,1,1],"ê":[6,3,1,1],"ë":[6,4,1,1],"ì":[12,1,1,1],"í":[12,2,1,1],"î":[12,3,1,1],"ï":[12,4,1,1],"ñ":[20,1,1,1],"ò":[22,1,1,1],"ó":[22,2,1,1],"ô":[22,3,1,1],"õ":[22,4,1,1],"ö":[22,5,1,1],"ù":[30,1,1,1],"ú":[30,2,1,1],"û":[30,3,1,1],"ü":[30,4,1,1],"ý":[12,2,1,1],"ÿ":[12,3,1,1],"À":[0,1,0,1],"Á":[0,2,0,1],"Â":[0,3,0,1],"Ã":[0,4,0,1],"Ä":[0,5,0,1],"Å":[0,6,0,1],"Ç":[3,1,0,1],"È":[6,1,0,1],"É":[6,2,0,1],"Ê":[6,3,0,1],"Ë":[6,4,0,1],"Ì":[12,1,0,1],"Í":[12,2,0,1],"Î":[12,3,0,1],"Ï":[12,4,0,1],"Ñ":[20,1,0,1],"Ò":[22,1,0,1],"Ó":[22,2,0,1],"Ô":[22,3,0,1],"Õ":[22,4,0,1],"Ö":[22,5,0,1],"Ù":[30,1,0,1],"Ú":[30,2,0,1],"Û":[30,3,0,1],"Ü":[30,4,0,1],"Ý":[12,2,0,1]}}};
+/*
  * collate.js - Collation routines
  * 
  * Copyright © 2013-2014, JEDLSoft
@@ -16893,9 +17584,156 @@ ilib.AddressFmt.prototype.format = function (address) {
  * limitations under the License.
  */
 
-// !depends locale.js ilibglobal.js
+// !depends locale.js ilibglobal.js numprs.js ctype.ispunct.js normstring.js
 
 // !data collation
+
+/**
+ * Represents a buffered source of code points. The input string is first
+ * normalized so that combining characters come out in a standardized order.
+ * If the "ignorePunctuation" flag is turned on, then punctuation 
+ * characters are skipped.
+ * 
+ * @class
+ * @constructor
+ * @param {ilib.NormString|string} str a string to get code points from
+ * @param {boolean} ignorePunctuation whether or not to ignore punctuation
+ * characters
+ */
+ilib.CodePointSource = function(str, ignorePunctuation) {
+	this.chars = [];
+	// first convert the string to a normalized sequence of characters
+	var s = (typeof(str) === "string") ? new ilib.NormString(str) : str;
+	this.it = s.charIterator();
+	this.ignorePunctuation = typeof(ignorePunctuation) === "boolean" && ignorePunctuation;
+};
+
+/**
+ * Return the first num code points in the source without advancing the
+ * source pointer. If there are not enough code points left in the
+ * string to satisfy the request, this method will return undefined. 
+ * 
+ * @param {number} num the number of characters to peek ahead
+ * @return {string|undefined} a string formed out of up to num code points from
+ * the start of the string, or undefined if there are not enough character left
+ * in the source to complete the request
+ */
+ilib.CodePointSource.prototype.peek = function(num) {
+	if (num < 1) {
+		return undefined;
+	}
+	if (this.chars.length < num && this.it.hasNext()) {
+		for (var i = 0; this.chars.length < 4 && this.it.hasNext(); i++) {
+			var c = this.it.next();
+			if (c && !this.ignorePunctuation || !ilib.CType.isPunct(c)) {
+				this.chars.push(c);
+			}
+		}
+	}
+	if (this.chars.length < num) {
+		return undefined;
+	}
+	return this.chars.slice(0, num).join("");
+};
+/**
+ * Advance the source pointer by the given number of code points.
+ * @param {number} num number of code points to advance
+ */
+ilib.CodePointSource.prototype.consume = function(num) {
+	if (num > 0) {
+		this.peek(num); // for the iterator to go forward if needed
+		if (num < this.chars.length) {
+			this.chars = this.chars.slice(num);
+		} else {
+			this.chars = [];
+		}
+	}
+};
+
+
+/**
+ * An iterator through a sequence of collation elements. This
+ * iterator takes a source of code points, converts them into
+ * collation elements, and allows the caller to get single
+ * elements at a time.
+ * 
+ * @class
+ * @constructor
+ * @param {ilib.CodePointSource} source source of code points to 
+ * convert to collation elements
+ * @param {Object} map mapping from sequences of code points to
+ * collation elements
+ * @param {number} keysize size in bits of the collation elements
+ */
+ilib.ElementIterator = function (source, map, keysize) {
+	this.elements = [];
+	this.source = source;
+	this.map = map;
+	this.keysize = keysize;
+};
+
+/**
+ * @private
+ */
+ilib.ElementIterator.prototype._fillBuffer = function () {
+	var str = undefined;
+	
+	// peek ahead by up to 4 characters, which may combine
+	// into 1 or more collation elements
+	for (var i = 4; i > 0; i--) {
+		str = this.source.peek(i);
+		if (str && this.map[str]) {
+			this.elements = this.elements.concat(this.map[str]);
+			this.source.consume(i);
+			return;
+		}
+	}
+	
+	if (str) {
+		// no mappings for the first code point, so just use its
+		// Unicode code point as a proxy for its sort order. Shift
+		// it by the key size so that everything unknown sorts
+		// after things that have mappings
+		this.elements.push(str.charCodeAt(0) << this.keysize);
+		this.source.consume(1);
+	} else {
+		// end of the string
+		return undefined;
+	}
+};
+
+/**
+ * Return true if there are more collation elements left to
+ * iterate through.
+ * @returns {boolean} true if there are more elements left to
+ * iterate through, and false otherwise
+ */
+ilib.ElementIterator.prototype.hasNext = function () {
+	if (this.elements.length < 1) {
+		this._fillBuffer();
+	}
+	return !!this.elements.length;
+};
+
+/**
+ * Return the next collation element. If more than one collation 
+ * element is generated from a sequence of code points 
+ * (ie. an "expansion"), then this class will buffer the
+ * other elements and return them on subsequent calls to 
+ * this method.
+ * 
+ * @returns {number|undefined} the next collation element or
+ * undefined for no more collation elements
+ */
+ilib.ElementIterator.prototype.next = function () {
+	if (this.elements.length < 1) {
+		this._fillBuffer();
+	}
+	var ret = this.elements[0];
+	this.elements = this.elements.slice(1);
+	return ret;
+};
+
 
 /**
  * A class that implements a locale-sensitive comparator function 
@@ -16926,10 +17764,10 @@ ilib.AddressFmt.prototype.format = function (address) {
  *   <li>base or primary - Only the primary distinctions between characters are significant.
  *   Another way of saying that is that the collator will be case-, accent-, and 
  *   variation-insensitive, and only distinguish between the base characters
- *   <li>accent or secondary - Both the primary and secondary distinctions between characters
+ *   <li>case or secondary - Both the primary and secondary distinctions between characters
  *   are significant. That is, the collator will be accent- and variation-insensitive
  *   and will distinguish between base characters and character case.
- *   <li>case or tertiary - The primary, secondary, and tertiary distinctions between
+ *   <li>accent or tertiary - The primary, secondary, and tertiary distinctions between
  *   characters are all significant. That is, the collator will be 
  *   variation-insensitive, but accent-, case-, and base-character-sensitive. 
  *   <li>variant or quaternary - All distinctions between characters are significant. That is,
@@ -16958,9 +17796,20 @@ ilib.AddressFmt.prototype.format = function (address) {
  * on what kind of strings are being collated or what the preference of the user 
  * is. For example, in German, there is a phonebook order and a dictionary ordering
  * that sort the same array of strings slightly differently.
- * The static method ilib.Collator.getStyles will return a list of styles that ilib
+ * The static method {@link ilib.Collator#getAvailableStyles} will return a list of styles that ilib
  * currently knows about for any given locale. If the value of the style option is 
  * not recognized for a locale, it will be ignored. Default style is "standard".<p>
+ * 
+ * <li><i>usage</i> - Whether this collator will be used for searching or sorting.
+ * Valid values are simply the strings "sort" or "search". When used for sorting,
+ * it is good idea if a collator produces a stable sort. That is, the order of the 
+ * sorted array of strings should not depend on the order of the strings in the
+ * input array. As such, when a collator is supposed to act case insensitively, 
+ * it nonetheless still distinguishes between case after all other criteria
+ * are satisfied so that strings that are distinguished only by case do not sort
+ * randomly. For searching, we would like to match two strings that different only 
+ * by case, so the collator must return equals in that situation instead of 
+ * further distinguishing by case. Default is "sort".
  * 
  * <li><i>numeric</i> - Treat the left and right strings as if they started with
  * numbers and sort them numerically rather than lexically.
@@ -16985,6 +17834,12 @@ ilib.AddressFmt.prototype.format = function (address) {
  * interpretted or modified in any way. They are simply passed along. The object 
  * may contain any property/value pairs as long as the calling code is in
  * agreement with the loader callback function as to what those parameters mean.
+ * 
+ * <li><i>useNative</i> - when this option is true, use the native Intl object
+ * provided by the Javascript engine, if it exists, to implement this class. If
+ * it doesn't exist, or if this parameter is false, then this class uses a pure 
+ * Javascript implementation, which is slower and uses a lot more memory, but 
+ * works everywhere that ilib works. Default is "true".
  * </ul>
  * 
  * <h2>Operation</h2>
@@ -17125,13 +17980,19 @@ ilib.AddressFmt.prototype.format = function (address) {
  */
 ilib.Collator = function(options) {
 	var sync = true,
-		loadParams = undefined;
+		loadParams = undefined,
+		useNative = true;
 
 	// defaults
 	/** @type ilib.Locale */
 	this.locale = new ilib.Locale(ilib.getLocale());
 	this.caseFirst = "upper";
-	this.sensitivity = "case";
+	this.sensitivity = "variant";
+	this.level = 4;
+	this.usage = "sort";
+	this.reverse = false;
+	this.numeric = false;
+	this.style = "standard";
 	
 	if (options) {
 		if (options.locale) {
@@ -17142,18 +18003,22 @@ ilib.Collator = function(options) {
 				case 'primary':
 				case 'base':
 					this.sensitivity = "base";
+					this.level = 1;
 					break;
 				case 'secondary':
-				case 'accent':
-					this.sensitivity = "accent";
-					break;
-				case 'tertiary':
 				case 'case':
 					this.sensitivity = "case";
+					this.level = 2;
+					break;
+				case 'tertiary':
+				case 'accent':
+					this.sensitivity = "accent";
+					this.level = 3;
 					break;
 				case 'quaternary':
 				case 'variant':
 					this.sensitivity = "variant";
+					this.level = 4;
 					break;
 			}
 		}
@@ -17171,9 +18036,33 @@ ilib.Collator = function(options) {
 		}
 		
 		loadParams = options.loadParams;
+		if (typeof(options.useNative) !== 'undefined') {
+			useNative = options.useNative;
+		}
+		
+		if (options.usage === "sort" || options.usage === "search") {
+			this.usage = options.usage;
+		}
+		
+		if (typeof(options.reverse) === 'boolean') {
+			this.reverse = options.reverse;
+		}
+
+		if (typeof(options.numeric) === 'boolean') {
+			this.numeric = options.numeric;
+		}
+		
+		if (typeof(options.style) === 'string') {
+			this.style = options.style;
+		}
 	}
 
-	if (typeof(Intl) !== 'undefined' && Intl) {
+	if (this.usage === "sort") {
+		// produces a stable sort
+		this.level = 4;
+	}
+
+	if (useNative && typeof(Intl) !== 'undefined' && Intl) {
 		// this engine is modern and supports the new Intl object!
 		//console.log("implemented natively");
 		/** @type {{compare:function(string,string)}} */
@@ -17192,34 +18081,141 @@ ilib.Collator = function(options) {
 		ilib.loadData({
 			object: ilib.Collator, 
 			locale: this.locale, 
-			name: "collrules.json", 
-			sync: sync, 
+			name: "collation.json",
+			replace: true,
+			sync: sync,
 			loadParams: loadParams, 
 			callback: ilib.bind(this, function (collation) {
-				/*
-				// TODO: fill in the collator constructor function
 				if (!collation) {
-					collation = ilib.data.ducet;
+					collation = ilib.data.collation;
 					var spec = this.locale.getSpec().replace(/-/g, '_');
 					ilib.Collator.cache[spec] = collation;
 				}
-				console.log("this is " + JSON.stringify(this));
 				this._init(collation);
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(this);
-				}
-				*/
+				new ilib.LocaleInfo(this.locale, {
+					sync: sync,
+					loadParams: loadParams,
+					onLoad: ilib.bind(this, function(li) {
+						this.li = li;
+						if (this.ignorePunctuation) {
+			    			ilib.CType.isPunct._init(sync, loadParams, ilib.bind(this, function() {
+								if (options && typeof(options.onLoad) === 'function') {
+									options.onLoad(this);
+								}
+			    			}));
+		    			} else {
+							if (options && typeof(options.onLoad) === 'function') {
+								options.onLoad(this);
+							}
+		    			}
+		    		})
+				});
 			})
 		});
 	}
 };
 
 ilib.Collator.prototype = {
+	/**
+	 * @private
+	 * Bit pack an array of values into a single number
+	 * @param {Array.<number>} arr array of values to bit pack
+	 */
+	_pack: function (arr) {
+		var value = 0;
+		for (var i = 0; i < this.level; i++) {
+			if (i > 0) {
+				value <<= this.collation.bits[i];	
+			}
+			if (i === 2 && this.caseFirst === "lower") {
+				// sort the lower case first instead of upper
+				value = value | (1 - (typeof(arr[i]) !== "undefined" ? arr[i] : 0));
+			} else {
+				value = value | arr[i];
+			}
+		}
+		return value;
+	},
+	
+	/**
+	 * @private
+	 * Return the rule packed into an array of collation elements.
+	 * @param {Array.<number|null|Array.<number>>} rule
+	 * @returns
+	 */
+	_packRule: function(rule) {
+		if (rule[0] instanceof Array) {
+			var ret = [];
+			for (var i = 0; i < rule.length; i++) {
+				ret.push(this._pack(rule[i]));
+			}
+			return ret;
+		} else {
+			return [ this._pack(rule) ];
+		}
+	},
+    	
+	/**
+     * @private
+     */
+    _init: function(rules) {
+    	/** @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number>>}} */
+    	this.collation = rules[this.style];
+    	this.map = {};
+    	this.keysize = 0;
+    	for (var i = 0; i < this.level; i++) {
+    		this.keysize += this.collation.bits[i];
+    	}
+    	var remainder = ilib.mod(this.keysize, 4);
+    	this.keysize += (remainder > 0) ? (4 - remainder) : 0; // round to the nearest 4 to find how many bits to use in hex
+    	
+    	for (var r in this.collation.map) {
+    		if (r) {
+    			this.map[r] = this._packRule(this.collation.map[r]);
+    		}
+    	}
+    },
+    
     /**
      * @private
      */
-    init: function(rules) {
-    	
+    _basicCompare: function(left, right) {
+		if (this.numeric) {
+			var lvalue = new ilib.Number(left, {locale: this.locale});
+			var rvalue = new ilib.Number(right, {locale: this.locale});
+			if (isNaN(lvalue.valueOf())) {
+				if (isNaN(rvalue.valueOf())) {
+					return 0;
+				}
+				return 1;
+			} else if (isNaN(rvalue.valueOf())) {
+				return -1;
+			}
+			return lvalue.valueOf() - rvalue.valueOf();
+		} else {
+			var l = (left instanceof ilib.NormString) ? left : new ilib.NormString(left),
+				r = (right instanceof ilib.NormString) ? right : new ilib.NormString(right),
+				lelements,
+				relements;
+				
+			// if the reverse sort is on, switch the char sources so that the result comes out swapped
+			lelements = new ilib.ElementIterator(new ilib.CodePointSource(l, this.ignorePunctuation), this.map, this.keysize);
+			relements = new ilib.ElementIterator(new ilib.CodePointSource(r, this.ignorePunctuation), this.map, this.keysize);
+			
+			while (lelements.hasNext() && relements.hasNext()) {
+				var diff = lelements.next() - relements.next();
+				if (diff) {
+					return diff;
+				}
+			}
+			if (!lelements.hasNext() && !relements.hasNext()) {
+				return 0;
+			} else if (lelements.hasNext()) {
+				return 1;
+			} else {
+				return -1;
+			}
+		}
     },
     
 	/**
@@ -17236,14 +18232,14 @@ ilib.Collator.prototype = {
 	 * right are equivalent according to this collator
 	 */
 	compare: function (left, right) {
-		// TODO: fill in the full comparison algorithm here
 		// last resort: use the "C" locale
 		if (this.collator) {
 			// implemented by the core engine
 			return this.collator.compare(left, right);
 		}
-		
-		return (left < right) ? -1 : ((left > right) ? 1 : 0);
+
+		var ret = this._basicCompare(left, right);
+		return this.reverse ? -ret : ret;
 	},
 	
 	/**
@@ -17300,8 +18296,38 @@ ilib.Collator.prototype = {
 	 * @return {string} a sort key string for the given string
 	 */
 	sortKey: function (str) {
-		// TODO: fill in the full sort key algorithm here
-		return str;
+		if (!str) {
+			return "";
+		}
+		
+		if (this.collator) {
+			// native, no sort keys available
+			return str;
+		}
+		
+		function pad(str, limit) {
+			return "0000000000000000".substring(0, limit - str.length) + str;
+		}
+		
+		if (this.numeric) {
+			var v = new ilib.Number(str, {locale: this.locale});
+			var s = isNaN(v.valueOf()) ? "" : v.valueOf().toString(16);
+			return pad(s, 16);	
+		} else {
+			var n = (typeof(str) === "string") ? new ilib.NormString(str) : str,
+				ret = "",
+				lelements = new ilib.ElementIterator(new ilib.CodePointSource(n, this.ignorePunctuation), this.map, this.keysize),
+				element;
+			
+			while (lelements.hasNext()) {
+				element = lelements.next();
+				if (this.reverse) {
+					element = (1 << this.keysize) - element;
+				}
+				ret += pad(element.toString(16), this.keysize/4);	
+			}
+		}
+		return ret;
 	}
 };
 
@@ -17576,558 +18602,6 @@ ilib.LocaleMatcher.prototype = {
 
 
 /*
- * normstring.js - ilib normalized string subclass definition
- * 
- * Copyright © 2013-2014, JEDLSoft
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-// !depends strings.js
-
-/**
- * Create a new normalized string instance. This string inherits from 
- * the ilib.String class, and adds the normalize method. It can be
- * used anywhere that a normal Javascript string is used. <p>
- * 
- * Depends directive: !depends normstring.js
- * 
- * @class
- * @constructor
- * @param {string|ilib.String=} str initialize this instance with this string 
- */
-ilib.NormString = function (str) {
-	ilib.NormString.baseConstructor.call(this, str);
-	
-};
-ilib.NormString.prototype = new ilib.String();
-ilib.NormString.prototype.constructor = ilib.NormString;
-ilib.NormString.baseConstructor = ilib.String;
-ilib.NormString.superClass = ilib.String.prototype;
-
-
-/**
- * Initialize the normalized string routines statically. This
- * is intended to be called in a dynamic-load version of ilib
- * to load the data need to normalize strings before any instances
- * of ilib.NormString are created.<p>
- * 
- * The options parameter may contain any of the following properties:
- * 
- * <ul>
- * <li><i>form</i> - {string} the normalization form to load
- * <li><i>script</i> - {string} load the normalization for this script. If the 
- * script is given as "all" then the normalization data for all scripts
- * is loaded at the same time
- * <li><i>sync</i> - {boolean} whether to load the files synchronously or not
- * <li><i>loadParams</i> - {Object} parameters to the loader function
- * <li><i>onLoad</i> - {function()} a function to call when the 
- * files are done being loaded
- * </ul>
- * 
- * @param {Object} options an object containing properties that govern 
- * how to initialize the data
- */
-ilib.NormString.init = function(options) {
-	if (!ilib._load || typeof(ilib._load) !== 'function') {
-		// can't do anything
-		return;
-	}
-	var form = "nfkc";
-	var script = "all";
-	var sync = true;
-	var onLoad = undefined;
-	var loadParams = undefined;
-	if (options) {
-		form = options.form || "nfkc";
-		script = options.script || "all";
-		sync = typeof(options.sync) !== 'undefined' ? options.sync : true;
-		onLoad = typeof(options.onLoad) === 'function' ? options.onLoad : undefined;
-		if (options.loadParams) {
-			loadParams = options.loadParams;
-		}
-	}
-	var formDependencies = {
-		"nfd": ["nfd"],
-		"nfc": ["nfc", "nfd"],
-		"nfkd": ["nfkd", "nfd"],
-		"nfkc": ["nfkd", "nfd", "nfc"]
-	};
-	var files = ["norm.ccc.json"];
-	var forms = formDependencies[form];
-	for (var f in forms) {
-		files.push(forms[f] + "/" + script + ".json");
-	}
-	
-	ilib._load(files, sync, loadParams, function(arr) {
-		ilib.data.norm.ccc = arr[0];
-		for (var i = 1; i < arr.length; i++) {
-			if (typeof(arr[i]) !== 'undefined') {
-				ilib.data.norm[forms[i-1]] = arr[i];
-			}
-		}
-		
-		if (onLoad) {
-			onLoad(arr);
-		}
-	});
-};
-
-/**
- * Return true if the given character is a leading Jamo (Choseong) character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a leading Jamo character, 
- * false otherwise
- */
-ilib.NormString._isJamoL = function (n) {
-	return (n >= 0x1100 && n <= 0x1112);
-};
-
-/**
- * Return true if the given character is a vowel Jamo (Jungseong) character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a vowel Jamo character, 
- * false otherwise
- */
-ilib.NormString._isJamoV = function (n) {
-	return (n >= 0x1161 && n <= 0x1175);
-};
-
-/**
- * Return true if the given character is a trailing Jamo (Jongseong) character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a trailing Jamo character, 
- * false otherwise
- */
-ilib.NormString._isJamoT = function (n) {
-	return (n >= 0x11A8 && n <= 0x11C2);
-};
-
-/**
- * Return true if the given character is a precomposed Hangul character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a precomposed Hangul character, 
- * false otherwise
- */
-ilib.NormString._isHangul = function (n) {
-	return (n >= 0xAC00 && n <= 0xD7A3);
-};
-
-/**
- * Algorithmically decompose a precomposed Korean syllabic Hangul 
- * character into its individual combining Jamo characters. The given 
- * character must be in the range of Hangul characters U+AC00 to U+D7A3.
- * 
- * @private
- * @static
- * @param {number} cp code point of a Korean Hangul character to decompose
- * @return {string} the decomposed string of Jamo characters
- */
-ilib.NormString._decomposeHangul = function (cp) {
-	var sindex = cp - 0xAC00;
-	var result = String.fromCharCode(0x1100 + sindex / 588) + 
-			String.fromCharCode(0x1161 + (sindex % 588) / 28);
-	var t = sindex % 28;
-	if (t !== 0) {
-		result += String.fromCharCode(0x11A7 + t);
-	}
-	return result;
-};
-
-/**
- * Algorithmically compose an L and a V combining Jamo characters into
- * a precomposed Korean syllabic Hangul character. Both should already
- * be in the proper ranges for L and V characters. 
- * 
- * @private
- * @static
- * @param {number} lead the code point of the lead Jamo character to compose
- * @param {number} trail the code point of the trailing Jamo character to compose
- * @return {string} the composed Hangul character
- */
-ilib.NormString._composeJamoLV = function (lead, trail) {
-	var lindex = lead - 0x1100;
-	var vindex = trail - 0x1161;
-	return ilib.String.fromCodePoint(0xAC00 + (lindex * 21 + vindex) * 28);
-};
-
-/**
- * Algorithmically compose a Hangul LV and a combining Jamo T character 
- * into a precomposed Korean syllabic Hangul character. 
- * 
- * @private
- * @static
- * @param {number} lead the code point of the lead Hangul character to compose
- * @param {number} trail the code point of the trailing Jamo T character to compose
- * @return {string} the composed Hangul character
- */
-ilib.NormString._composeJamoLVT = function (lead, trail) {
-	return ilib.String.fromCodePoint(lead + (trail - 0x11A7));
-};
-
-/**
- * Expand one character according to the given canonical and 
- * compatibility mappings.
- *
- * @private
- * @static
- * @param {string} ch character to map
- * @param {Object} canon the canonical mappings to apply
- * @param {Object=} compat the compatibility mappings to apply, or undefined
- * if only the canonical mappings are needed
- * @return {string} the mapped character
- */
-ilib.NormString._expand = function (ch, canon, compat) {
-	var i, 
-		expansion = "",
-		n = ch.charCodeAt(0);
-	if (ilib.NormString._isHangul(n)) {
-		expansion = ilib.NormString._decomposeHangul(n);
-	} else {
-		var result = canon[ch];
-		if (!result && compat) {
-			result = compat[ch];
-		}
-		if (result && result !== ch) {
-			for (i = 0; i < result.length; i++) {
-				expansion += ilib.NormString._expand(result[i], canon, compat);
-			}
-		} else {
-			expansion = ch;
-		}
-	}
-	return expansion;
-};
-
-/**
- * Compose one character out of a leading character and a 
- * trailing character. If the characters are Korean Jamo, they
- * will be composed algorithmically. If they are any other
- * characters, they will be looked up in the nfc tables.
- * 
- * @private
- * @static
- * @param {string} lead leading character to compose
- * @param {string} trail the trailing character to compose
- * @return {string} the fully composed character, or undefined if
- * there is no composition for those two characters
- */
-ilib.NormString._compose = function (lead, trail) {
-	var first = lead.charCodeAt(0);
-	var last = trail.charCodeAt(0);
-	if (ilib.NormString._isHangul(first) && ilib.NormString._isJamoT(last)) {
-		return ilib.NormString._composeJamoLVT(first, last);
-	} else if (ilib.NormString._isJamoL(first) && ilib.NormString._isJamoV(last)) {
-		return ilib.NormString._composeJamoLV(first, last);
-	}
-
-	var c = lead + trail;
-	return (ilib.data.norm.nfc && ilib.data.norm.nfc[c]);
-};
-
-	
-/**
- * Perform the Unicode Normalization Algorithm upon the string and return 
- * the resulting new string. The current string is not modified.
- * 
- * <h2>Forms</h2>
- * 
- * The forms of possible normalizations are defined by the <a 
- * href="http://www.unicode.org/reports/tr15/">Unicode Standard
- * Annex (UAX) 15</a>. The form parameter is a string that may have one 
- * of the following values:
- * 
- * <ul>
- * <li>nfd - Canonical decomposition. This decomposes characters into
- * their exactly equivalent forms. For example, "&uuml;" would decompose
- * into a "u" followed by the combining diaeresis character. 
- * <li>nfc - Canonical decomposition followed by canonical composition.
- * This decomposes and then recomposes character into their shortest
- * exactly equivalent forms by recomposing as many combining characters
- * as possible. For example, "&uuml;" followed by a combining 
- * macron character would decompose into a "u" followed by the combining 
- * macron characters the combining diaeresis character, and then be recomposed into
- * the u with macron and diaeresis "&#x1E7B;" character. The reason that
- * the "nfc" form decomposes and then recomposes is that combining characters
- * have a specific order under the Unicode Normalization Algorithm, and
- * partly composed characters such as the "&uuml;" followed by combining
- * marks may change the order of the combining marks when decomposed and
- * recomposed.
- * <li>nfkd - Compatibility decomposition. This decomposes characters
- * into compatible forms that may not be exactly equivalent semantically,
- * as well as performing canonical decomposition as well.
- * For example, the "&oelig;" ligature character decomposes to the two
- * characters "oe" because they are compatible even though they are not 
- * exactly the same semantically. 
- * <li>nfkc - Compatibility decomposition followed by canonical composition.
- * This decomposes characters into compatible forms, then recomposes
- * characters using the canonical composition. That is, it breaks down
- * characters into the compatible forms, and then recombines all combining
- * marks it can with their base characters. For example, the character
- * "&#x01FD;" would be normalized to "a&eacute;" by first decomposing
- * the character into "a" followed by "e" followed by the combining acute accent
- * combining mark, and then recomposed to an "a" followed by the "e"
- * with acute accent.
- * </ul>
- * 
- * <h2>Operation</h2>
- * 
- * Two strings a and b can be said to be canonically equivalent if 
- * normalize(a) = normalize(b)
- * under the nfc normalization form. Two strings can be said to be compatible if
- * normalize(a) = normalize(b) under the nfkc normalization form.<p>
- * 
- * The canonical normalization is often used to see if strings are 
- * equivalent to each other, and thus is useful when implementing parsing 
- * algorithms or exact matching algorithms. It can also be used to ensure
- * that any string output produces a predictable sequence of characters.<p>
- * 
- * Compatibility normalization 
- * does not always preserve the semantic meaning of all the characters, 
- * although this is sometimes the behaviour that you are after. It is useful, 
- * for example, when doing searches of user-input against text in documents 
- * where the matches are supposed to "fuzzy". In this case, both the query
- * string and the document string would be mapped to their compatibility 
- * normalized forms, and then compared.<p>
- * 
- * Compatibility normalization also does not guarantee round-trip conversion
- * to and from legacy character sets as the normalization is "lossy". It is 
- * akin to doing a lower- or upper-case conversion on text -- after casing,
- * you cannot tell what case each character is in the original string. It is 
- * good for matching and searching, but it rarely good for output because some 
- * distinctions or meanings in the original text have been lost.<p>
- * 
- * Note that W3C normalization for HTML also escapes and unescapes
- * HTML character entities such as "&amp;uuml;" for u with diaeresis. This
- * method does not do such escaping or unescaping. If normalization is required
- * for HTML strings with entities, unescaping should be performed on the string 
- * prior to calling this method.<p>
- * 
- * <h2>Data</h2>
- * 
- * Normalization requires a fair amount of mapping data, much of which you may 
- * not need for the characters expected in your texts. It is possible to assemble
- * a copy of ilib that saves space by only including normalization data for 
- * those scripts that you expect to encounter in your data.<p>
- * 
- * The normalization data is organized by normalization form and within there
- * by script. To include the normalization data for a particular script with
- * a particular normalization form, use the directive:
- * 
- * <pre><code>
- * !depends &lt;form&gt;/&lt;script&gt;.js
- * </code></pre>
- * 
- * Where &lt;form&gt is the normalization form ("nfd", "nfc", "nfkd", or "nfkc"), and
- * &lt;script&gt; is the ISO 15924 code for the script you would like to
- * support. Example: to load in the NFC data for Cyrillic, you would use:
- * 
- * <pre><code>
- * !depends nfc/Cyrl.js
- * </code></pre>
- * 
- * Note that because certain normalization forms include others in their algorithm, 
- * their data also depends on the data for the other forms. For example, if you 
- * include the "nfc" data for a script, you will automatically get the "nfd" data 
- * for that same script as well because the NFC algorithm does NFD normalization 
- * first. Here are the dependencies:<p>
- * 
- * <ul>
- * <li>NFD -> no dependencies
- * <li>NFC -> NFD
- * <li>NFKD -> NFD
- * <li>NFKC -> NFKD, NFD, NFC
- * </ul>
- * 
- * A special value for the script dependency is "all" which will cause the data for 
- * all scripts
- * to be loaded for that normalization form. This would be useful if you know that
- * you are going to normalize a lot of multilingual text or cannot predict which scripts
- * will appear in the input. Because the NFKC form depends on all others, you can 
- * get all of the data for all forms automatically by depending on "nfkc/all.js".
- * Note that the normalization data for practically all script automatically depend
- * on data for the Common script (code "Zyyy") which contains all of the characters
- * that are commonly used in many different scripts. Examples of characters in the
- * Common script are the ASCII punctuation characters, or the ASCII Arabic 
- * numerals "0" through "9".<p>
- * 
- * By default, none of the data for normalization is automatically 
- * included in the preassembled iliball.js file. 
- * If you would like to normalize strings, you must assemble
- * your own copy of ilib and explicitly include the normalization data
- * for those scripts as per the instructions above. This normalization method will 
- * produce output, even without the normalization data. However, the output will be 
- * simply the same thing as its input for all scripts 
- * except Korean Hangul and Jamo, which are decomposed and recomposed 
- * algorithmically and therefore do not rely on data.<p>
- * 
- * If characters are encountered for which there are no normalization data, they
- * will be passed through to the output string unmodified.
- * 
- * @param {string} form The normalization form requested
- * @return {ilib.String} a new instance of an ilib.String that has been normalized
- * according to the requested form. The current instance is not modified.
- */
-ilib.NormString.prototype.normalize = function (form) {
-	var i;
-	
-	if (typeof(form) !== 'string' || this.str.length === 0) {
-		return new ilib.String(this.str);
-	}
-	
-	var nfc = false,
-		nfkd = false;
-	
-	switch (form) {
-	default:
-		break;
-		
-	case "nfc":
-		nfc = true;
-		break;
-		
-	case "nfkd":
-		nfkd = true;
-		break;
-		
-	case "nfkc":
-		nfkd = true;
-		nfc = true;
-		break;
-	}
-
-	// decompose
-	var decomp = "";
-	
-	if (nfkd) {
-		var ch, it = this.charIterator();
-		while (it.hasNext()) {
-			ch = it.next();
-			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd, ilib.data.norm.nfkd);
-		}
-	} else {
-		var ch, it = this.charIterator();
-		while (it.hasNext()) {
-			ch = it.next();
-			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd);
-		}
-	}
-
-	// now put the combining marks in a fixed order by 
-	// sorting on the combining class
-	function compareByCCC(left, right) {
-		return ilib.data.norm.ccc[left] - ilib.data.norm.ccc[right]; 
-	}
-	
-	function ccc(c) {
-		return ilib.data.norm.ccc[c] || 0;
-	}
-		
-	var dstr = new ilib.String(decomp);
-	var it = dstr.charIterator();
-	var cpArray = [];
-
-	// easier to deal with as an array of chars
-	while (it.hasNext()) {
-		cpArray.push(it.next());
-	}
-	
-	i = 0;
-	while (i < cpArray.length) {
-		if (typeof(ilib.data.norm.ccc[cpArray[i]]) !== 'undefined' && ilib.data.norm.ccc[cpArray[i]] !== 0) {
-			// found a non-starter... rearrange all the non-starters until the next starter
-			var end = i+1;
-			while (end < cpArray.length &&
-					typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
-					ilib.data.norm.ccc[cpArray[end]] !== 0) {
-				end++;
-			}
-			
-			// simple sort of the non-starter chars
-			if (end - i > 1) {
-				cpArray = cpArray.slice(0,i).concat(cpArray.slice(i, end).sort(compareByCCC), cpArray.slice(end));
-			}
-		}
-		i++;
-	}
-	
-	if (nfc) {
-		i = 0;
-		while (i < cpArray.length) {
-			if (typeof(ilib.data.norm.ccc[cpArray[i]]) === 'undefined' || ilib.data.norm.ccc[cpArray[i]] === 0) {
-				// found a starter... find all the non-starters until the next starter. Must include
-				// the next starter because under some odd circumstances, two starters sometimes recompose 
-				// together to form another character
-				var end = i+1;
-				var notdone = true;
-				while (end < cpArray.length && notdone) {
-					if (typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
-						ilib.data.norm.ccc[cpArray[end]] !== 0) {
-						if (ccc(cpArray[end-1]) < ccc(cpArray[end])) { 
-							// not blocked 
-							var testChar = ilib.NormString._compose(cpArray[i], cpArray[end]);
-							if (typeof(testChar) !== 'undefined') {
-								cpArray[i] = testChar;
-								
-								// delete the combining char
-								cpArray.splice(end,1);	
-								
-								// restart the iteration, just in case there is more to recompose with the new char
-								end = i;
-							}
-						}
-						end++;
-					} else {
-						// found the next starter. See if this can be composed with the previous starter
-						var testChar = ilib.NormString._compose(cpArray[i], cpArray[end]);
-						if (ccc(cpArray[end-1]) === 0 && typeof(testChar) !== 'undefined') { 
-							// not blocked and there is a mapping 
-							cpArray[i] = testChar;
-							
-							// delete the combining char
-							cpArray.splice(end,1);
-							
-							// restart the iteration, just in case there is more to recompose with the new char
-							end = i+1;
-						} else {
-							// finished iterating 
-							notdone = false;
-						}
-					}
-				}
-			}
-			i++;
-		}
-	}
-	
-	return new ilib.String(cpArray.length > 0 ? cpArray.join("") : "");
-};
-	
-
-/*
  * casemapper.js - define upper- and lower-case mapper
  * 
  * Copyright © 2014, JEDLSoft
@@ -18318,6 +18792,822 @@ ilib.CaseMapper.prototype = {
 		return this.mapper(string);
 	}
 };
+/*
+ * unit.js - Unit class
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+!depends 
+ilibglobal.js 
+locale.js 
+localeinfo.js
+*/
+
+
+/**
+ * Create a measurement instance. The measurement is immutable once
+ * it is created, but can be converted to other measurements later.<p>
+ * 
+ * The options may contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>amount</i> - either a numeric amount for this measurement given
+ * as a number of the specified units, or another ilib.Measurement instance 
+ * to convert to the requested units. If converting to new units, the type
+ * of measure between the other instance's units and the current units
+ * must be the same. That is, you can only convert one unit of mass to
+ * another. You cannot convert a unit of mass into a unit of length. 
+ * 
+ * <li><i>unit</i> - units of this measurement. Use the 
+ * static call {@link ilib.Measurement.getAvailableUnits}
+ * to find out what units this version of ilib supports. If the given unit
+ * is not a base unit, the amount will be normalized to the number of base units
+ * and stored as that number of base units.
+ * For example, if an instance is constructed with 1 kg, this will be converted
+ * automatically into 1000 g, as grams are the base unit and kg is merely a 
+ * commonly used scale of grams.
+ * </ul>
+ * 
+ * Here are some examples of converting a length into new units. The first method
+ * is via the constructor by passing the old measurement in as the amount property.
+ * 
+ * <code>
+ * var measurement1 = new ilib.Measurement({
+ *   amount: 5,
+ *   units: "kilometers"
+ * });
+ * var measurement2 = new ilib.Measurement({
+ *   amount: measurement1,
+ *   units: "miles"
+ * });
+ * </code>
+ * 
+ * The value in measurement2 will end up being about 3.125 miles.
+ * 
+ * The second method will be using the convert method.
+ * 
+ * <code>
+ * var measurement1 = new ilib.Measurement({
+ *   amount: 5,
+ *   units: "kilometers"
+ * });
+ * var measurement2 = measurement1.convert("miles");
+ * });
+ * </code>
+ *
+ * The value in measurement2 will again end up being about 3.125 miles.
+ * 
+ * @constructor
+ * @class
+ * @param {Object} options options that control the construction of this instance
+ */
+ilib.Measurement = function(options) {
+	if (!options || typeof(options.unit) === 'undefined') {
+		return undefined;
+	}
+	
+	this.amount = options.amount || 0;
+	
+	// map the requested units to the normalized form
+	
+	var measure = "speed"; // temporary
+	
+	return new ilib.Measurement._constructors[measure](options);
+};
+
+/**
+ * @private
+ */
+ilib.Measurement._constructors = {};
+
+/**
+ * Return a list of all possible units that this version of ilib supports.
+ * Typically, the units are given as their full names in English. Unit names
+ * are case-insensitive.
+ * 
+ * @static
+ * @return {Array.<string>} an array of strings containing names of units available
+ */
+ilib.Measurement.getAvailableUnits = function () {
+	var units = [];
+	for (var c in ilib.Measurement._constructors) {
+		var measure = ilib.Measurement._constructors[c];
+		units.concat(measure.getMeasures());
+	}
+	return units;
+};
+
+ilib.Measurement.metricScales = {
+	"femto": {"symbol": "f", "scale": -15},
+	"pico": {"symbol": "p", "scale": -12},
+	"nano": {"symbol": "n", "scale": -9},
+	"micro": {"symbol": "µ", "scale": -6},
+	"milli": {"symbol": "m", "scale": -3},
+	"centi": {"symbol": "c", "scale": -2},
+	"deci": {"symbol": "d", "scale": -1},
+	"deca": {"symbol": "da", "scale": 1},
+	"hecto": {"symbol": "h", "scale": 2},
+	"kilo": {"symbol": "k", "scale": 3},
+	"mega": {"symbol": "M", "scale": 6},
+	"giga": {"symbol": "G", "scale": 9},
+	"peta": {"symbol": "P", "scale": 12},
+	"exa": {"symbol": "E", "scale": 18}
+};
+
+ilib.Measurement.prototype = {
+	/**
+	 * Return the normalized name of the given units. If the units are
+	 * not recognized, this method returns its parameter unmodified.<p>
+	 * 
+	 * Examples:
+	 * 
+	 * <ui>
+	 * <li>"metres" gets normalized to "meter"<br>
+	 * <li>"ml" gets normalized to "milliliter"<br>
+	 * <li>"foobar" gets normalized to "foobar" (no change because it is not recognized)
+	 * </ul>
+	 *  
+	 * @param {string} name name of the units to normalize. 
+	 * @returns {string} normalized name of the units
+	 */
+	normalizeUnits: function(name) {
+		return this.aliases[name] || name;
+	},
+
+	/**
+	 * Return the normalized units used in this measurement.
+	 * @return {string} name of the unit of measurement 
+	 */
+	getUnit: function() {
+		return this.unit;
+	},
+	
+	/**
+	 * Return the units originally used to construct this measurement
+	 * before it was normalized.
+	 * @return {string} name of the unit of measurement 
+	 */
+	getOriginalUnit: function() {
+		return this.originalUnit;
+	},
+	
+	/**
+	 * Return the numeric amount of this measurement.
+	 * @return {number} the numeric amount of this measurement
+	 */
+	getAmount: function() {
+		return this.amount;
+	},
+	
+	/**
+	 * Return the type of this measurement. Examples are "mass",
+	 * "length", "speed", etc. Measurements can only be converted
+	 * to measurements of the same type.<p>
+	 * 
+	 * The type of the units is determined automatically from the 
+	 * units. For example, the unit "grams" is type "mass". Use the 
+	 * static call {@link ilib.Measurement.getAvailableUnits}
+	 * to find out what units this version of ilib supports.
+	 * 
+	 * @abstract
+	 * @return {string} the name of the type of this measurement
+	 */
+	getMeasure: function() {},
+	
+	/**
+	 * Return a new measurement instance that is converted to a new
+	 * measurement unit. Measurements can only be converted
+	 * to measurements of the same type.<p>
+	 * 
+	 * @abstract
+	 * @param {string} to The name of the units to convert to
+	 * @return {ilib.Measurement|undefined} the converted measurement
+	 * or undefined if the requested units are for a different
+	 * measurement type
+	 */
+	convert: function(to) {}
+};
+/*
+ * unitfmt.js - Unit formatter class
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+!depends 
+ilibglobal.js 
+locale.js 
+resources.js 
+localeinfo.js
+*/
+
+// !data unitformats sysres
+
+/**
+ * Create a new unit formatter instance. The unit formatter is immutable once
+ * it is created, but can format as many different strings with different values
+ * as needed with the same options. Create different unit formatter instances 
+ * for different purposes and then keep them cached for use later if you have 
+ * more than one unit string to format.<p>
+ * 
+ * The options may contain any of the following properties:
+ * 
+ * <ul>
+ * <li><i>locale</i> - locale to use when formatting the units. The locale also
+ * controls the translation of the names of the units. If the locale is
+ * not specified, then the default locale of the app or web page will be used.
+ * 
+ * <li><i>type</i> - Specify the type of units to format. Valid values are:
+ * <ul>
+ * <li><i>length</i>
+ * <li><i>area</i>
+ * <li><i>volume</i>
+ * <li><i>time</i>
+ * <li><i>speed</i>
+ * <li><i>temperature</i>
+ * <li><i>pressure</i>
+ * <li><i>flow</i>
+ * <li><i>electricity</i>
+ * <li><i>energy</i>
+ * <li><i>amounts of computer memory or storage</i>
+ * </ul>
+ * 
+ * <li><i>useNative</i> - when true, use native digits to format the amount. If this
+ * property is not specified, this formatter will default to the preference for the
+ * current locale.
+ * 
+ * <li><i>onLoad</i> - a callback function to call when the date format object is fully 
+ * loaded. When the onLoad option is given, the UnitFmt object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ * 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while.
+ *  
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
+ * </ul>
+ * 
+ * Here is an example of how you might use the unit formatter to format a string with
+ * the correct units.<p>
+ * 
+ * Depends directive: !depends unitfmt.js
+ * 
+ * @class
+ * @constructor
+ * @param {Object} options options governing the way this date formatter instance works
+ */
+ilib.UnitFmt = function(options) {
+	var sync = true, 
+		loadParams = undefined;
+	
+	this.locale = new ilib.Locale();
+	
+	if (options) {
+		if (options.locale) {
+			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+		}
+		
+		if (options.type) {
+			if (options.type === 'date' || 
+			    options.type === 'time' || 
+			    options.type === 'datetime') {
+				this.type = options.type;
+			}
+		}
+				
+		if (typeof(options.useNative) === 'boolean') {
+			this.useNative = options.useNative;
+		}
+		
+		if (typeof(options.sync) === 'boolean') {
+			sync = options.sync;
+		}
+		
+		loadParams = options.loadParams;
+	}
+
+	if (!ilib.UnitFmt.cache) {
+		ilib.UnitFmt.cache = {};
+	}
+
+	new ilib.LocaleInfo(this.locale, {
+		sync: sync,
+		loadParams: loadParams,
+		onLoad: ilib.bind(this, function (li) {
+			this.locinfo = li;
+			
+			// load the strings used to translate the components
+			new ilib.ResBundle({
+				locale: this.locale,
+				name: "sysres",
+				sync: sync,
+				loadParams: loadParams, 
+				onLoad: ilib.bind(this, function (rb) {
+					this.sysres = rb;
+					
+					if (!this.template) {
+						ilib.loadData({
+							object: ilib.UnitFmt, 
+							locale: this.locale, 
+							name: "unitformats.json", 
+							sync: sync, 
+							loadParams: loadParams, 
+							callback: ilib.bind(this, function (formats) {
+								if (!formats) {
+									formats = ilib.UnitFmt.defaultFmt;
+									var spec = this.locale.getSpec().replace(/-/g, '_');
+									ilib.UnitFmt.cache[spec] = formats;
+								}
+								this._initTemplate(formats);
+								if (options && typeof(options.onLoad) === 'function') {
+									options.onLoad(this);
+								}
+							})
+						});
+					} else {
+						if (options && typeof(options.onLoad) === 'function') {
+							options.onLoad(this);
+						}
+					}
+				})
+			});	
+		})
+	});
+};
+
+ilib.UnitFmt.defaultFmt = ilib.data.unitformats || {
+};
+
+ilib.UnitFmt.prototype = {
+	/**
+	 * @protected
+	 */
+	_initTemplate: function (formats) {
+		var digits;
+		// set up the mapping to native or alternate digits if necessary
+		if (typeof(this.useNative) === "boolean") {
+			if (this.useNative) {
+				digits = this.locinfo.getNativeDigits();
+				if (digits) {
+					this.digits = digits;
+				}
+			}
+		} else if (this.locinfo.getDigitsStyle() === "native") {
+			digits = this.locinfo.getNativeDigits();
+			if (digits) {
+				this.useNative = true;
+				this.digits = digits;
+			}
+		}
+	},
+    
+	/**
+	 * Return the locale used with this formatter instance.
+	 * @return {ilib.Locale} the ilib.Locale instance for this formatter
+	 */
+	getLocale: function() {
+		return this.locale;
+	},
+	
+	/**
+	 * Return the template string that is used to format date/times for this
+	 * formatter instance. This will work, even when the template property is not explicitly 
+	 * given in the options to the constructor. Without the template option, the constructor 
+	 * will build the appropriate template according to the options and use that template
+	 * in the format method. 
+	 * 
+	 * @return {string} the format template for this formatter
+	 */
+	getTemplate: function() {
+		return this.template;
+	},
+	
+	/**
+	 * Return the type of this formatter. The type is a string that has one of the following
+	 * values: "time", "date", "datetime".
+	 * @return {string} the type of the formatter
+	 */
+	getType: function() {
+		return this.type;
+	},
+	
+	/**
+	 * Convert this formatter to a string representation by returning the
+	 * format template. This method delegates to getTemplate.
+	 * 
+	 * @return {string} the format template
+	 */
+	toString: function() {
+		return this.getTemplate();
+	},
+	
+	/**
+	 * Format a particular date instance according to the settings of this
+	 * formatter object. The type of the date instance being formatted must 
+	 * correspond exactly to the calendar type with which this formatter was 
+	 * constructed. If the types are not compatible, this formatter will
+	 * produce bogus results.
+	 * 
+	 * @param {string} unit units to format
+	 * @param {Object} options
+	 * @return {string} the formatted version of the given date instance
+	 */
+	format: function (unit, options) {
+	}	
+};
+
+/*
+ * Length.js - Unit conversions for Lengths/lengths
+ * 
+ * Copyright © 2012-2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+!depends 
+ilibglobal.js 
+*/
+
+/**
+ * Create a new length measurement.
+ * 
+ * @class
+ * @constructor
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * the construction of this instance
+ */
+ilib.Measurement.Length = function (options) {
+	this.unit = "meter";
+	this.amount = 0;
+	this.aliases = ilib.Measurement.Length.aliases; // share this table in all instances
+	
+	if (options) {
+		if (typeof(options.unit) !== 'undefined') {
+			this.originalUnit = options.unit;
+			this.unit = this.aliases[options.unit] || options.unit;
+		}
+		
+		if (typeof(options.amount) === 'object') {
+			if (options.amount.getMeasure() === "length") {
+				this.amount = ilib.Measurement.Length.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
+			} else {
+				throw "Cannot convert units " + options.unit + " to a length";
+			}
+		} else if (typeof(options.amount) !== 'undefined') {
+			this.amount = parseFloat(options.amount);
+		}
+	}
+	
+	if (typeof(ilib.Measurement.Length.ratios[this.unit]) === 'undefined') {
+		throw "Unknown unit: " + options.unit;
+	}
+};
+
+ilib.Measurement.Length.ratios = {
+	/*                index, µm          mm          cm           dm          m            dam           hm             km             Mm             Gm              n.m.         mile         yard         foot         inch */ 
+	"micrometer":   [ 1,     1,          1e-3,       1e-4,        1e-5,       1e-6,        1e-7,         1e-8,          1e-9,          1e-12,         1e-15,          5.39957e-10, 6.21373e-10, 1.09361e-6,  3.28084e-6,  3.93701e-5 ],
+	"millimeter":   [ 2,     1000,       1,          0.1,         0.01,       0.001,       1e-4,         1e-5,          1e-6,          1e-9,          1e-12,          5.39957e-7,  6.21373e-7,  1.09361e-3,  0.00328084,  0.0393701  ],
+	"centimeter":   [ 3,     1e4,        10,         1,           0.1,        0.01,        0.001,        1e-4,          1e-5,          1e-8,          1e-9,           5.39957e-6,  6.21373e-6,  0.0109361,   0.0328084,   0.393701   ],
+	"decimeter":    [ 4,     1e5,        100,        10,          1,          0.1,         0.01,         0.001,         1e-4,          1e-7,          1e-8,           5.39957e-5,  6.21373e-5,  0.109361,    0.328084,    3.93701    ],
+	"meter":        [ 5,     1e6,        1000,       100,         10,         1,           0.1,          0.01,          0.001,         1e-6,          1e-7,           5.39957e-4,  6.213712e-4 ,  1.09361,     3.28084,     39.3701    ],
+	"decameter":    [ 6,     1e7,        1e4,        1000,        100,        10,          1,            0.1,           0.01,          1e-5,          1e-6,           5.39957e-3,  6.21373e-3,  10.9361,     32.8084,     393.701    ],
+	"hectometer":   [ 7,     1e8,        1e5,        1e4,         1000,       100,         10,           1,             0.1,           1e-4,          1e-5,           0.0539957,   0.0621373,   109.361,     328.084,     3937.01    ],
+	"kilometer":    [ 8,     1e9,        1e6,        1e5,         1e4,        1000,        100,          10,            1,             0.001,         1e-4,           0.539957,    0.621373,    1093.61,     3280.84,     39370.1    ],
+	"megameter":    [ 9,     1e12,       1e9,        1e6,         1e5,        1e4,         1000,         100,           10,            1,             0.001,          539.957,     621.373,     1.09361e6,   3.28084e6,   3.93701e7  ],
+	"gigameter":    [ 10,    1e15,       1e12,       1e9,         1e8,        1e7,         1e6,          1e5,           1e4,           1000,          1,              539957.0,    621373.0,    1.09361e9,   3.28084e9,   3.93701e10 ],
+	"nauticalmile": [ 11,    1.852e9,    1.852e6,    1.852e5,     1.852e4,    1852,        185.2,        18.52,         1.852,         1.852e-3,      1.852e-6,       1,           0.868976,    2025.37,     6076.12,     72913.4    ],
+	"mile":         [ 12,    1.60934e9,  1.60934e6,  1.60934e5,   1.60934e4,  1609.34,     160.934,      16.0934,       1.60934,       1.60934e-3,    1.60934e-6,     1.15078,     1,           1760,        5280,        63360      ],
+	"yard":         [ 13,    914402.758, 914.402758, 91.4402758,  9.14402758, 0.914402758, 0.0914402758, 9.14402758e-3, 9.14402758e-4, 9.14402758e-7, 9.14402758e-10, 4.93737e-4,  5.68182e-4,  1,           3,           36         ],
+	"foot":         [ 14,    304799.99,  304.79999,  30.479999,   3.0479999,  0.30479999,  0.030479999,  3.0479999e-3,  3.0479999e-4,  3.0479999e-7,  3.0479999e-10,  1.64579e-4,  1.89394e-4,  0.33333333,  1,           12         ],
+	"inch":         [ 15,    25399.986,  25.399986,  2.5399986,   0.25399986, 0.025399986, 2.5399986e-3, 2.5399986e-4,  2.5399986e-5,  2.5399986e-8,  2.5399986e-11,  1.3715e-5,   1.5783e-5,   0.027777778, 0.083333333, 1          ]
+};
+
+ilib.Measurement.Length.prototype = new ilib.Measurement({});
+ilib.Measurement.Length.prototype.parent = ilib.Measurement;
+ilib.Measurement.Length.prototype.constructor = ilib.Measurement.Length;
+
+/**
+ * @override
+ * @inheritDoc
+ */
+ilib.Measurement.Length.prototype.getMeasure = function() {
+	return "length";
+};
+
+/**
+ * Convert the current length to another measure.
+ * 
+ * @override
+ * @inheritDoc
+ */
+ilib.Measurement.Length.prototype.convert = function(to) {
+	if (!to || typeof(ilib.Measurement.Length.ratios[this.normalizeUnits(to)]) === 'undefined') {
+		return undefined;
+	}
+	return new ilib.Measurement({
+		unit: to,
+		amount: this
+	});
+};
+
+ilib.Measurement.Length.aliases = {
+	"miles": "mile",
+	"nauticalmiles": "nauticalmile",
+	"nautical mile": "nauticalmile",
+	"nautical miles": "nauticalmile",
+	"yards": "yard",
+	"feet": "foot",
+	"inches": "inch",
+	"meters": "meter",
+	"metre": "meter",
+	"metres": "meter",
+	"m": "meter",
+	"micrometers": "micrometer",
+	"micrometres": "micrometer",
+	"micrometre": "micrometer",
+	"µm": "micrometer",
+	"millimeters": "millimeter",
+	"millimetres": "millimeter",
+	"millimetre": "millimeter",
+	"mm": "millimeter",
+	"centimeters": "centimeter",
+	"centimetres": "centimeter",
+	"centimetre": "centimeter",
+	"cm": "centimeter",
+	"decimeters": "decimeter",
+	"decimetres": "decimeter",
+	"decimetre": "decimeter",
+	"dm": "decimeter",
+	"decameters": "decameter",
+	"decametres": "decameter",
+	"decametre": "decameter",
+	"dam": "decameter",
+	"hectometers": "hectometer",
+	"hectometres": "hectometer",
+	"hectometre": "hectometer",
+	"hm": "hectometer",
+	"kilometers": "kilometer",
+	"kilometres": "kilometer",
+	"kilometre": "kilometer",
+	"km": "kilometer",
+	"megameters": "megameter",
+	"megametres": "megameter",
+	"megametre": "megameter",
+	"Mm": "megameter",
+	"gigameters": "gigameter",
+	"gigametres": "gigameter",
+	"gigametre": "gigameter",
+	"Gm": "gigameter"
+};
+
+/**
+ * Convert a length to another measure.
+ * @static
+ * @param to {string} unit to convert to
+ * @param from {string} unit to convert from
+ * @param length {number} amount to be convert
+ * @returns {number} the converted amount
+ */
+ilib.Measurement.Length.convert = function(to, from, length) {
+        from = this.aliases[from] || from;
+        to = this.aliases[to] || to;
+	var fromRow = ilib.Measurement.Length.ratios[from];
+	var toRow = ilib.Measurement.Length.ratios[to];
+	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
+		return undefined;
+	}
+	//console.log("fromRow is " + fromRow + " toRow is " + toRow);
+	//console.log("fromRow[toRow[0]] is " + fromRow[toRow[0]]);
+	return length * fromRow[toRow[0]];
+};
+
+/**
+ * @private
+ * @static
+ */
+ilib.Measurement.Length.getMeasures = function () {
+	var ret = [];
+	for (var m in ilib.Measurement.Length.ratios) {
+		ret.push(m);
+	}
+	return ret;
+};
+
+//register with the factory method
+ilib.Measurement._constructors["length"] = ilib.Measurement.Length;
+/*
+ * Speed.js - Unit conversions for Speeds/speeds
+ * 
+ * Copyright © 2012-2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+!depends 
+ilibglobal.js 
+*/
+
+/**
+ * Create a new speed measurement.
+ * 
+ * @class
+ * @constructor
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * the construction of this instance
+ */
+ilib.Measurement.Speed = function (options) {
+	this.unit = "meters/sec";
+	this.amount = 0;
+	this.aliases = ilib.Measurement.Speed.aliases; // share this table in all instances
+	
+	if (options) {
+		if (typeof(options.unit) !== 'undefined') {
+			this.originalUnit = options.unit;
+			this.unit = this.aliases[options.unit] || options.unit;
+		}
+		
+		if (typeof(options.amount) === 'object') {
+			if (options.amount.getMeasure() === "speed") {
+				this.amount = ilib.Measurement.Speed.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
+			} else {
+				throw "Cannot convert units " + options.unit + " to a speed";
+			}
+		} else if (typeof(options.amount) !== 'undefined') {
+			this.amount = parseFloat(options.amount);
+		}
+	}
+	
+	if (typeof(ilib.Measurement.Speed.ratios[this.unit]) === 'undefined') {
+		throw "Unknown unit: " + options.unit;
+	}
+};
+
+ilib.Measurement.Speed.ratios = {
+	/*                index, f/s          m/s        k/h          miles/h     knot  */           
+	"feet/sec":     [ 1,     1,          0.3048,     1.09728,     0.681818,   0.592484 ],  
+	"meters/sec":   [ 2,     3.28084,    1,          3.6,         2.236936,   1.94384  ],  
+	"km/hour":      [ 3,     0.911344,   0.277778,   1,           0.621371,   0.539957 ],
+	"miles/hour":   [ 4,     1.46667,    0.44704,    1.60934,     1,          0.868976 ],
+	"knot":         [ 5,     1.68781,    0.514444,   1.852,       1.15078,    1        ]
+};
+
+ilib.Measurement.Speed.prototype = new ilib.Measurement({});
+ilib.Measurement.Speed.prototype.parent = ilib.Measurement;
+ilib.Measurement.Speed.prototype.constructor = ilib.Measurement.Speed;
+
+/**
+ * @override
+ * @inheritDoc
+ */
+ilib.Measurement.Speed.prototype.getMeasure = function() {
+	return "speed";
+};
+
+/**
+ * Convert the current speed to another measure.
+ * 
+ * @override
+ * @inheritDoc
+ */
+ilib.Measurement.Speed.prototype.convert = function(to) {
+	if (!to || typeof(ilib.Measurement.Speed.ratios[this.normalizeUnits(to)]) === 'undefined') {
+		return undefined;
+	}
+	return new ilib.Measurement({
+		unit: to,
+		amount: this
+	});
+};
+
+ilib.Measurement.Speed.aliases = {
+        "foot/sec":"feet/sec",
+        "foot/s":"feet/sec",
+        "feet/s":"feet/sec",
+        "f/s":"feet/sec",
+        "meter/sec":"meters/sec",
+        "meter/s":"meters/sec",
+        "meters/s":"meters/sec",
+        "metre/sec":"meters/sec",
+        "metre/s":"meters/sec",
+        "metres/s":"meters/sec",
+        "mt/sec":"meters/sec",
+        "m/sec":"meters/sec",
+        "mt/s":"meters/sec",
+        "m/s":"meters/sec",
+        "kilometer/hour":"km/hour",
+        "kilometers/hour":"km/hour",
+        "km/h":"km/hour",
+        "kilometer/h":"km/hour",
+        "kilometers/h":"km/hour",
+        "km/hr":"km/hour",
+        "kilometer/hr":"km/hour",
+        "kilometers/hr":"km/hour",
+	"mile/hour": "miles/hour",
+        "mile/hr": "miles/hour",
+        "mile/h": "miles/hour",
+        "miles/h": "miles/hour",
+        "miles/hr": "miles/hour",
+        "kn":"knot",
+        "kt":"knot"        
+};
+
+/**
+ * Convert a speed to another measure.
+ * @static
+ * @param to {string} unit to convert to
+ * @param from {string} unit to convert from
+ * @param speed {number} amount to be convert
+ * @returns {number} the converted amount
+ */
+ilib.Measurement.Speed.convert = function(to, from, speed) {
+        from = this.aliases[from] || from;
+        to = this.aliases[to] || to;
+	var fromRow = ilib.Measurement.Speed.ratios[from];
+	var toRow = ilib.Measurement.Speed.ratios[to];
+	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
+		return undefined;
+	}
+	//console.log("fromRow is " + fromRow + " toRow is " + toRow);
+	//console.log("fromRow[toRow[0]] is " + fromRow[toRow[0]]);
+	var result = speed * fromRow[toRow[0]];
+        result = + result.toFixed(5);
+        return result;
+};
+
+/**
+ * @private
+ * @static
+ */
+ilib.Measurement.Speed.getMeasures = function () {
+	var ret = [];
+	for (var m in ilib.Measurement.Speed.ratios) {
+		ret.push(m);
+	}
+	return ret;
+};
+
+//register with the factory method
+ilib.Measurement._constructors["speed"] = ilib.Measurement.Speed;
 /**
  * @license
  * Copyright © 2012-2013, JEDLSoft
@@ -18392,4 +19682,9 @@ nfkc/all.js
 localematch.js
 normstring.js
 maps/casemapper.js
+unit.js
+unitfmt.js
+units/length.js
+units/speed.js
 */
+

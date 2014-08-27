@@ -63,7 +63,7 @@ ilib.Measurement.Length.ratios = {
 	"millimeter":   [ 2,     1000,       1,          0.1,         0.01,       0.001,       1e-4,         1e-5,          1e-6,          1e-9,          1e-12,          5.39957e-7,  6.21373e-7,  1.09361e-3,  0.00328084,  0.0393701  ],
 	"centimeter":   [ 3,     1e4,        10,         1,           0.1,        0.01,        0.001,        1e-4,          1e-5,          1e-8,          1e-9,           5.39957e-6,  6.21373e-6,  0.0109361,   0.0328084,   0.393701   ],
 	"decimeter":    [ 4,     1e5,        100,        10,          1,          0.1,         0.01,         0.001,         1e-4,          1e-7,          1e-8,           5.39957e-5,  6.21373e-5,  0.109361,    0.328084,    3.93701    ],
-	"meter":        [ 5,     1e6,        1000,       100,         10,         1,           0.1,          0.01,          0.001,         1e-6,          1e-7,           5.39957e-4,  6.21373e-4,  1.09361,     3.28084,     39.3701    ],
+	"meter":        [ 5,     1e6,        1000,       100,         10,         1,           0.1,          0.01,          0.001,         1e-6,          1e-7,           5.39957e-4,  6.213712e-4 ,  1.09361,     3.28084,     39.3701    ],
 	"decameter":    [ 6,     1e7,        1e4,        1000,        100,        10,          1,            0.1,           0.01,          1e-5,          1e-6,           5.39957e-3,  6.21373e-3,  10.9361,     32.8084,     393.701    ],
 	"hectometer":   [ 7,     1e8,        1e5,        1e4,         1000,       100,         10,           1,             0.1,           1e-4,          1e-5,           0.0539957,   0.0621373,   109.361,     328.084,     3937.01    ],
 	"kilometer":    [ 8,     1e9,        1e6,        1e5,         1e4,        1000,        100,          10,            1,             0.001,         1e-4,           0.539957,    0.621373,    1093.61,     3280.84,     39370.1    ],
@@ -163,6 +163,8 @@ ilib.Measurement.Length.aliases = {
  * @returns {number} the converted amount
  */
 ilib.Measurement.Length.convert = function(to, from, length) {
+        from = this.aliases[from] || from;
+        to = this.aliases[to] || to;
 	var fromRow = ilib.Measurement.Length.ratios[from];
 	var toRow = ilib.Measurement.Length.ratios[to];
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {

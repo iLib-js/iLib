@@ -28,7 +28,8 @@ function suite() {
     var s = new cli.TestSuite();
     
     var suites = [
-        "testlengths.js"
+        "testlengths.js",
+	"testspeeds.js"
         //, "testtemp.js"
     ];
     
