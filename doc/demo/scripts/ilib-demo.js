@@ -4090,6 +4090,65 @@ ilib.String.prototype = {
 	},
 	
 	/**
+	 * Call the callback with each character in the string one at 
+	 * a time, taking care to step through the surrogate pairs in 
+	 * the UTF-16 encoding properly.<p>
+	 * 
+	 * The standard Javascript String's charAt() method only
+	 * returns a particular 16-bit character in the 
+	 * UTF-16 encoding scheme.
+	 * If the index to charAt() is pointing to a low- or 
+	 * high-surrogate character,
+	 * it will return the surrogate character rather 
+	 * than the the character 
+	 * in the supplementary planes that the two surrogates together 
+	 * encode. This function will call the callback with the full
+	 * character, making sure to join two  
+	 * surrogates into one character in the supplementary planes
+	 * where necessary.<p>
+	 * 
+	 * @param {Function(String)} callback a callback function to call with each
+	 * full character in the current string
+	 */
+	forEach: function(callback) {
+		if (typeof(callback) === 'function') {
+			var it = this.charIterator();
+			while (it.hasNext()) {
+				callback(it.next());
+			}
+		}
+	},
+
+	/**
+	 * Call the callback with each numeric code point in the string one at 
+	 * a time, taking care to step through the surrogate pairs in 
+	 * the UTF-16 encoding properly.<p>
+	 * 
+	 * The standard Javascript String's charCodeAt() method only
+	 * returns information about a particular 16-bit character in the 
+	 * UTF-16 encoding scheme.
+	 * If the index to charCodeAt() is pointing to a low- or 
+	 * high-surrogate character,
+	 * it will return the code point of the surrogate character rather 
+	 * than the code point of the character 
+	 * in the supplementary planes that the two surrogates together 
+	 * encode. This function will call the callback with the full
+	 * code point of each character, making sure to join two  
+	 * surrogates into one code point in the supplementary planes.<p>
+	 * 
+	 * @param {Function(String)} callback a callback function to call with each
+	 * code point in the current string
+	 */
+	forEachCodePoint: function(callback) {
+		if (typeof(callback) === 'function') {
+			var it = this.iterator();
+			while (it.hasNext()) {
+				callback(it.next());
+			}
+		}
+	},
+
+	/**
 	 * Return an iterator that will step through all of the characters
 	 * in the string one at a time and return their code points, taking 
 	 * care to step through the surrogate pairs in UTF-16 encoding 
@@ -5246,13 +5305,13 @@ ilib.data.zoneinfo["Africa/Addis_Ababa"] = {"f":"EAT","o":"3:0","c":"ET","n":"E.
 ilib.data.zoneinfo["Asia/Dubai"] = {"f":"GST","o":"4:0","c":"AE","n":"Arabian {c} Time"};
 ilib.data.zoneinfo["Asia/Bahrain"] = {"f":"AST","o":"3:0","c":"BH","n":"Arab {c} Time"};
 ilib.data.zoneinfo["Africa/Algiers"] = {"f":"CET","o":"1:0","c":"DZ","n":"W. Central Africa {c} Time"};
-ilib.data.zoneinfo["Africa/Cairo"] = {"f":"EEST","o":"2:0","c":"EG","n":"Egypt {c} Time"};
+ilib.data.zoneinfo["Africa/Cairo"] = {"e":{"m":9,"r":"l5","t":"0:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":8,"r":"1","t":"0:0","v":"1:0"},"c":"EG","n":"Egypt {c} Time"};
 ilib.data.zoneinfo["Asia/Baghdad"] = {"f":"AST","o":"3:0","c":"IQ","n":"Arabic {c} Time"};
 ilib.data.zoneinfo["Asia/Amman"] = {"e":{"m":10,"r":"l5","t":"1:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l5","t":"0:0","v":"1:0"},"c":"JO","n":"Jordan {c} Time"};
 ilib.data.zoneinfo["Asia/Kuwait"] = {"f":"AST","o":"3:0","c":"KW","n":"Arab {c} Time"};
 ilib.data.zoneinfo["Asia/Beirut"] = {"e":{"m":10,"r":"l0","t":"0:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"0:0","v":"1:0"},"c":"LB","n":"Middle East {c} Time"};
 ilib.data.zoneinfo["Africa/Tripoli"] = {"f":"EET","o":"2:0","c":"LY","n":"Libya {c} Time"};
-ilib.data.zoneinfo["Africa/Casablanca"] = {"e":{"m":6,"r":"29","t":"3:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":7,"r":"29","t":"2:0","v":"1:0"},"c":"MA","n":"Morocco {c} Time"};
+ilib.data.zoneinfo["Africa/Casablanca"] = {"e":{"m":6,"r":"28","t":"3:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":8,"r":"2","t":"2:0","v":"1:0"},"c":"MA","n":"Morocco {c} Time"};
 ilib.data.zoneinfo["Africa/Nouakchott"] = {"f":"GMT","o":"0:0","c":"MR","n":"Greenwich {c} Time"};
 ilib.data.zoneinfo["Asia/Muscat"] = {"f":"GST","o":"4:0","c":"OM","n":"Arabian {c} Time"};
 ilib.data.zoneinfo["Asia/Qatar"] = {"f":"AST","o":"3:0","c":"QA","n":"Arab {c} Time"};
@@ -5277,19 +5336,19 @@ ilib.data.zoneinfo["Europe/Vienna"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c
 ilib.data.zoneinfo["Europe/Zurich"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"CH","n":"W. Europe {c} Time"};
 ilib.data.zoneinfo["Europe/Berlin"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"DE","n":"W. Europe {c} Time"};
 ilib.data.zoneinfo["Europe/Athens"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"},"c":"GR","n":"GTB {c} Time"};
-ilib.data.zoneinfo["Australia/Lord_Howe"] = {"e":{"m":4,"r":"0>1","t":"2:0"},"f":"LHST","o":"10:30","s":{"m":10,"r":"0>1","t":"2:0","v":"0:30"},"c":"AU"};
+ilib.data.zoneinfo["Australia/Lord_Howe"] = {"e":{"c":"S","m":4,"r":"0>1","t":"2:0"},"f":"LH{c}T","o":"10:30","s":{"c":"D","m":10,"r":"0>1","t":"2:0","v":"0:30"},"c":"AU"};
 ilib.data.zoneinfo["Antarctica/Macquarie"] = {"f":"MIST","o":"11:0","c":"AU","n":"Central Pacific {c} Time"};
-ilib.data.zoneinfo["Australia/Hobart"] = {"e":{"m":4,"r":"0>1","t":"3:0"},"f":"EST","o":"10:0","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"Tasmania {c} Time"};
-ilib.data.zoneinfo["Australia/Currie"] = {"e":{"m":4,"r":"0>1","t":"3:0"},"f":"EST","o":"10:0","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"Tasmania {c} Time"};
-ilib.data.zoneinfo["Australia/Melbourne"] = {"e":{"m":4,"r":"0>1","t":"3:0"},"f":"EST","o":"10:0","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"AUS Eastern {c} Time"};
-ilib.data.zoneinfo["Australia/Sydney"] = {"e":{"m":4,"r":"0>1","t":"3:0"},"f":"EST","o":"10:0","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"AUS Eastern {c} Time"};
-ilib.data.zoneinfo["Australia/Broken_Hill"] = {"e":{"m":4,"r":"0>1","t":"3:0"},"f":"CST","o":"9:30","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"Cen. Australia {c} Time"};
-ilib.data.zoneinfo["Australia/Brisbane"] = {"f":"EST","o":"10:0","c":"AU","n":"E. Australia {c} Time"};
-ilib.data.zoneinfo["Australia/Lindeman"] = {"f":"EST","o":"10:0","c":"AU","n":"E. Australia {c} Time"};
-ilib.data.zoneinfo["Australia/Adelaide"] = {"e":{"m":4,"r":"0>1","t":"3:0"},"f":"CST","o":"9:30","s":{"m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"Cen. Australia {c} Time"};
-ilib.data.zoneinfo["Australia/Darwin"] = {"f":"CST","o":"9:30","c":"AU","n":"AUS Central {c} Time"};
-ilib.data.zoneinfo["Australia/Perth"] = {"f":"WST","o":"8:0","c":"AU","n":"W. Australia {c} Time"};
-ilib.data.zoneinfo["Australia/Eucla"] = {"f":"CWST","o":"8:45","c":"AU"};
+ilib.data.zoneinfo["Australia/Hobart"] = {"e":{"c":"S","m":4,"r":"0>1","t":"3:0"},"f":"AE{c}T","o":"10:0","s":{"c":"D","m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"Tasmania {c} Time"};
+ilib.data.zoneinfo["Australia/Currie"] = {"e":{"c":"S","m":4,"r":"0>1","t":"3:0"},"f":"AE{c}T","o":"10:0","s":{"c":"D","m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"Tasmania {c} Time"};
+ilib.data.zoneinfo["Australia/Melbourne"] = {"e":{"c":"S","m":4,"r":"0>1","t":"3:0"},"f":"AE{c}T","o":"10:0","s":{"c":"D","m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"AUS Eastern {c} Time"};
+ilib.data.zoneinfo["Australia/Sydney"] = {"e":{"c":"S","m":4,"r":"0>1","t":"3:0"},"f":"AE{c}T","o":"10:0","s":{"c":"D","m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"AUS Eastern {c} Time"};
+ilib.data.zoneinfo["Australia/Broken_Hill"] = {"e":{"c":"S","m":4,"r":"0>1","t":"3:0"},"f":"AC{c}T","o":"9:30","s":{"c":"D","m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"Cen. Australia {c} Time"};
+ilib.data.zoneinfo["Australia/Brisbane"] = {"f":"AEST","o":"10:0","c":"AU","n":"E. Australia {c} Time"};
+ilib.data.zoneinfo["Australia/Lindeman"] = {"f":"AEST","o":"10:0","c":"AU","n":"E. Australia {c} Time"};
+ilib.data.zoneinfo["Australia/Adelaide"] = {"e":{"c":"S","m":4,"r":"0>1","t":"3:0"},"f":"AC{c}T","o":"9:30","s":{"c":"D","m":10,"r":"0>1","t":"2:0","v":"1:0"},"c":"AU","n":"Cen. Australia {c} Time"};
+ilib.data.zoneinfo["Australia/Darwin"] = {"f":"ACST","o":"9:30","c":"AU","n":"AUS Central {c} Time"};
+ilib.data.zoneinfo["Australia/Perth"] = {"f":"AWST","o":"8:0","c":"AU","n":"W. Australia {c} Time"};
+ilib.data.zoneinfo["Australia/Eucla"] = {"f":"ACWST","o":"8:45","c":"AU"};
 ilib.data.zoneinfo["America/St_Johns"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"N{c}T","o":"-3:30","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Newfoundland {c} Time"};
 ilib.data.zoneinfo["America/Halifax"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"A{c}T","o":"-4:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Atlantic {c} Time"};
 ilib.data.zoneinfo["America/Glace_Bay"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"A{c}T","o":"-4:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"CA","n":"Atlantic {c} Time"};
@@ -5336,7 +5395,7 @@ ilib.data.zoneinfo["Asia/Karachi"] = {"f":"PKST","o":"5:0","c":"PK","n":"Pakista
 ilib.data.zoneinfo["America/Puerto_Rico"] = {"f":"AST","o":"-4:0","c":"PR","n":"SA Western {c} Time"};
 ilib.data.zoneinfo["Africa/Kigali"] = {"f":"CAT","o":"2:0","c":"RW","n":"South Africa {c} Time"};
 ilib.data.zoneinfo["Asia/Singapore"] = {"f":"SGT","o":"8:0","c":"SG","n":"Singapore {c} Time"};
-ilib.data.zoneinfo["Africa/Freetown"] = {"f":"S","o":"0:0","c":"SL","n":"Greenwich {c} Time"};
+ilib.data.zoneinfo["Africa/Freetown"] = {"f":"GMT","o":"0:0","c":"SL","n":"Greenwich {c} Time"};
 ilib.data.zoneinfo["Africa/Kampala"] = {"f":"EAT","o":"3:0","c":"UG","n":"E. Africa {c} Time"};
 ilib.data.zoneinfo["America/New_York"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Eastern {c} Time"};
 ilib.data.zoneinfo["America/Detroit"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Eastern {c} Time"};
@@ -5346,13 +5405,13 @@ ilib.data.zoneinfo["America/Denver"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"}
 ilib.data.zoneinfo["America/Boise"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Mountain {c} Time"};
 ilib.data.zoneinfo["America/Phoenix"] = {"f":"MST","o":"-7:0","c":"US","n":"US Mountain {c} Time"};
 ilib.data.zoneinfo["America/Los_Angeles"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Pacific {c} Time"};
+ilib.data.zoneinfo["America/Metlakatla"] = {"f":"PST","o":"-8:0","c":"US"};
 ilib.data.zoneinfo["America/Anchorage"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"};
 ilib.data.zoneinfo["America/Juneau"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"};
 ilib.data.zoneinfo["America/Sitka"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"};
 ilib.data.zoneinfo["America/Yakutat"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"};
 ilib.data.zoneinfo["America/Nome"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"AK{c}T","o":"-9:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US","n":"Alaskan {c} Time"};
 ilib.data.zoneinfo["America/Adak"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"HA{c}T","o":"-10:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"c":"US"};
-ilib.data.zoneinfo["America/Metlakatla"] = {"f":"MeST","o":"-8:0","c":"US"};
 ilib.data.zoneinfo["Pacific/Honolulu"] = {"f":"HST","o":"-10:0","c":"US","n":"Hawaiian {c} Time"};
 ilib.data.zoneinfo["America/Bogota"] = {"f":"COST","o":"-5:0","c":"CO","n":"SA Pacific {c} Time"};
 ilib.data.zoneinfo["America/Costa_Rica"] = {"f":"CST","o":"-6:0","c":"CR","n":"Central America {c} Time"};
@@ -5424,7 +5483,7 @@ ilib.data.zoneinfo["Europe/Skopje"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c
 ilib.data.zoneinfo["Asia/Shanghai"] = {"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"};
 ilib.data.zoneinfo["Asia/Harbin"] = {"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"};
 ilib.data.zoneinfo["Asia/Chongqing"] = {"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"};
-ilib.data.zoneinfo["Asia/Urumqi"] = {"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"};
+ilib.data.zoneinfo["Asia/Urumqi"] = {"f":"XJT","o":"6:0","c":"CN","n":"China {c} Time"};
 ilib.data.zoneinfo["Asia/Kashgar"] = {"f":"CST","o":"8:0","c":"CN","n":"China {c} Time"};
 ilib.data.zoneinfo["Asia/Brunei"] = {"f":"BNT","o":"8:0","c":"BN","n":"Singapore {c} Time"};
 ilib.data.zoneinfo["Europe/Oslo"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"NO","n":"W. Europe {c} Time"};
@@ -5433,23 +5492,23 @@ ilib.data.zoneinfo["America/Cayenne"] = {"f":"GFT","o":"-3:0","c":"GF","n":"SA E
 ilib.data.zoneinfo["Europe/Amsterdam"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"NL","n":"W. Europe {c} Time"};
 ilib.data.zoneinfo["America/Paramaribo"] = {"f":"SRT","o":"-3:0","c":"SR","n":"SA Eastern {c} Time"};
 ilib.data.zoneinfo["Arctic/Longyearbyen"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"SJ","n":"W. Europe {c} Time"};
-ilib.data.zoneinfo["Europe/Kaliningrad"] = {"f":"FET","o":"3:0","c":"RU","n":"Kaliningrad {c} Time"};
-ilib.data.zoneinfo["Europe/Moscow"] = {"f":"MSK","o":"4:0","c":"RU","n":"Russian {c} Time"};
-ilib.data.zoneinfo["Europe/Volgograd"] = {"f":"VOLT","o":"4:0","c":"RU","n":"Russian {c} Time"};
+ilib.data.zoneinfo["Europe/Kaliningrad"] = {"f":"EET","o":"2:0","c":"RU","n":"Kaliningrad {c} Time"};
+ilib.data.zoneinfo["Europe/Moscow"] = {"f":"MSK","o":"3:0","c":"RU","n":"Russian {c} Time"};
+ilib.data.zoneinfo["Europe/Simferopol"] = {"f":"MSK","o":"3:0","c":"RU","n":"FLE {c} Time"};
+ilib.data.zoneinfo["Europe/Volgograd"] = {"f":"MSK","o":"3:0","c":"RU","n":"Russian {c} Time"};
 ilib.data.zoneinfo["Europe/Samara"] = {"f":"SAMT","o":"4:0","c":"RU","n":"Russian {c} Time"};
-ilib.data.zoneinfo["Europe/Simferopol"] = {"f":"MSK","o":"4:0","c":"RU","n":"FLE {c} Time"};
-ilib.data.zoneinfo["Asia/Yekaterinburg"] = {"f":"YEKT","o":"6:0","c":"RU","n":"Ekaterinburg {c} Time"};
-ilib.data.zoneinfo["Asia/Omsk"] = {"f":"OMST","o":"7:0","c":"RU","n":"N. Central Asia {c} Time"};
-ilib.data.zoneinfo["Asia/Novosibirsk"] = {"f":"NOVT","o":"7:0","c":"RU","n":"N. Central Asia {c} Time"};
-ilib.data.zoneinfo["Asia/Novokuznetsk"] = {"f":"NOVT","o":"7:0","c":"RU","n":"N. Central Asia {c} Time"};
-ilib.data.zoneinfo["Asia/Krasnoyarsk"] = {"f":"KRAT","o":"8:0","c":"RU","n":"North Asia {c} Time"};
-ilib.data.zoneinfo["Asia/Irkutsk"] = {"f":"IRKT","o":"9:0","c":"RU","n":"North Asia East {c} Time"};
-ilib.data.zoneinfo["Asia/Yakutsk"] = {"f":"YAKT","o":"10:0","c":"RU","n":"Yakutsk {c} Time"};
-ilib.data.zoneinfo["Asia/Khandyga"] = {"f":"YAKT","o":"10:0","c":"RU","n":"Yakutsk {c} Time"};
-ilib.data.zoneinfo["Asia/Vladivostok"] = {"f":"VLAT","o":"11:0","c":"RU","n":"Vladivostok {c} Time"};
-ilib.data.zoneinfo["Asia/Sakhalin"] = {"f":"SAKT","o":"11:0","c":"RU","n":"Vladivostok {c} Time"};
-ilib.data.zoneinfo["Asia/Ust-Nera"] = {"f":"VLAT","o":"11:0","c":"RU","n":"Vladivostok {c} Time"};
-ilib.data.zoneinfo["Asia/Magadan"] = {"f":"MAGT","o":"12:0","c":"RU","n":"Magadan {c} Time"};
+ilib.data.zoneinfo["Asia/Yekaterinburg"] = {"f":"YEKT","o":"5:0","c":"RU","n":"Ekaterinburg {c} Time"};
+ilib.data.zoneinfo["Asia/Omsk"] = {"f":"OMST","o":"6:0","c":"RU","n":"N. Central Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Novosibirsk"] = {"f":"NOVT","o":"6:0","c":"RU","n":"N. Central Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Novokuznetsk"] = {"f":"KRAT","o":"7:0","c":"RU","n":"N. Central Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Krasnoyarsk"] = {"f":"KRAT","o":"7:0","c":"RU","n":"North Asia {c} Time"};
+ilib.data.zoneinfo["Asia/Irkutsk"] = {"f":"IRKT","o":"8:0","c":"RU","n":"North Asia East {c} Time"};
+ilib.data.zoneinfo["Asia/Yakutsk"] = {"f":"YAKT","o":"9:0","c":"RU","n":"Yakutsk {c} Time"};
+ilib.data.zoneinfo["Asia/Khandyga"] = {"f":"YAKT","o":"9:0","c":"RU","n":"Yakutsk {c} Time"};
+ilib.data.zoneinfo["Asia/Vladivostok"] = {"f":"VLAT","o":"10:0","c":"RU","n":"Vladivostok {c} Time"};
+ilib.data.zoneinfo["Asia/Sakhalin"] = {"f":"SAKT","o":"10:0","c":"RU","n":"Vladivostok {c} Time"};
+ilib.data.zoneinfo["Asia/Ust-Nera"] = {"f":"VLAT","o":"10:0","c":"RU","n":"Vladivostok {c} Time"};
+ilib.data.zoneinfo["Asia/Magadan"] = {"f":"MAGT","o":"10:0","c":"RU","n":"Magadan {c} Time"};
 ilib.data.zoneinfo["Asia/Kamchatka"] = {"f":"PETT","o":"12:0","c":"RU","n":"Magadan {c} Time"};
 ilib.data.zoneinfo["Asia/Anadyr"] = {"f":"ANAT","o":"12:0","c":"RU","n":"Magadan {c} Time"};
 ilib.data.zoneinfo["Europe/Warsaw"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"},"c":"PL","n":"Central European {c} Time"};
@@ -5498,49 +5557,49 @@ ilib.data.zoneinfo["Asia/Samarkand"] = {"f":"UZT","o":"5:0","c":"UZ","n":"West A
 ilib.data.zoneinfo["Asia/Tashkent"] = {"f":"UZT","o":"5:0","c":"UZ","n":"West Asia {c} Time"};
 ilib.data.zoneinfo["Asia/Ho_Chi_Minh"] = {"f":"ICT","o":"7:0","c":"VN","n":"SE Asia {c} Time"};
 ilib.data.zoneinfo["Asia/Taipei"] = {"f":"CST","o":"8:0","c":"TW","n":"Taipei {c} Time"};
-ilib.data.zoneinfo["Iceland"] = {"f":"GMT","o":"0:0","c":"IS"};
-ilib.data.zoneinfo["MST7MDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Mountain {c} Time"};
-ilib.data.zoneinfo["EST"] = {"f":"EST","o":"-5:0"};
-ilib.data.zoneinfo["PST8PDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Pacific {c} Time"};
-ilib.data.zoneinfo["MST"] = {"f":"MST","o":"-7:0"};
-ilib.data.zoneinfo["zonetab"] = {"AD":["Europe/Andorra"],"AE":["Asia/Dubai"],"AF":["Asia/Kabul"],"AG":["America/Antigua"],"AI":["America/Anguilla"],"AL":["Europe/Tirane"],"AM":["Asia/Yerevan"],"AO":["Africa/Luanda"],"AQ":["Antarctica/McMurdo","Antarctica/Rothera","Antarctica/Palmer","Antarctica/Mawson","Antarctica/Davis","Antarctica/Casey","Antarctica/Vostok","Antarctica/DumontDUrville","Antarctica/Syowa","Antarctica/Troll"],"AR":["America/Argentina/Buenos_Aires","America/Argentina/Cordoba","America/Argentina/Salta","America/Argentina/Jujuy","America/Argentina/Tucuman","America/Argentina/Catamarca","America/Argentina/La_Rioja","America/Argentina/San_Juan","America/Argentina/Mendoza","America/Argentina/San_Luis","America/Argentina/Rio_Gallegos","America/Argentina/Ushuaia"],"AS":["Pacific/Pago_Pago"],"AT":["Europe/Vienna"],"AU":["Australia/Lord_Howe","Antarctica/Macquarie","Australia/Hobart","Australia/Currie","Australia/Melbourne","Australia/Sydney","Australia/Broken_Hill","Australia/Brisbane","Australia/Lindeman","Australia/Adelaide","Australia/Darwin","Australia/Perth","Australia/Eucla"],"AW":["America/Aruba"],"AX":["Europe/Mariehamn"],"AZ":["Asia/Baku"],"BA":["Europe/Sarajevo"],"BB":["America/Barbados"],"BD":["Asia/Dhaka"],"BE":["Europe/Brussels"],"BF":["Africa/Ouagadougou"],"BG":["Europe/Sofia"],"BH":["Asia/Bahrain"],"BI":["Africa/Bujumbura"],"BJ":["Africa/Porto-Novo"],"BL":["America/St_Barthelemy"],"BM":["Atlantic/Bermuda"],"BN":["Asia/Brunei"],"BO":["America/La_Paz"],"BQ":["America/Kralendijk"],"BR":["America/Noronha","America/Belem","America/Fortaleza","America/Recife","America/Araguaina","America/Maceio","America/Bahia","America/Sao_Paulo","America/Campo_Grande","America/Cuiaba","America/Santarem","America/Porto_Velho","America/Boa_Vista","America/Manaus","America/Eirunepe","America/Rio_Branco"],"BS":["America/Nassau"],"BT":["Asia/Thimphu"],"BW":["Africa/Gaborone"],"BY":["Europe/Minsk"],"BZ":["America/Belize"],"CA":["America/St_Johns","America/Halifax","America/Glace_Bay","America/Moncton","America/Goose_Bay","America/Blanc-Sablon","America/Toronto","America/Nipigon","America/Thunder_Bay","America/Iqaluit","America/Pangnirtung","America/Resolute","America/Atikokan","America/Rankin_Inlet","America/Winnipeg","America/Rainy_River","America/Regina","America/Swift_Current","America/Edmonton","America/Cambridge_Bay","America/Yellowknife","America/Inuvik","America/Creston","America/Dawson_Creek","America/Vancouver","America/Whitehorse","America/Dawson","America/Montreal"],"CC":["Indian/Cocos"],"CD":["Africa/Kinshasa","Africa/Lubumbashi"],"CF":["Africa/Bangui"],"CG":["Africa/Brazzaville"],"CH":["Europe/Zurich"],"CI":["Africa/Abidjan"],"CK":["Pacific/Rarotonga"],"CL":["America/Santiago","Pacific/Easter"],"CM":["Africa/Douala"],"CN":["Asia/Shanghai","Asia/Harbin","Asia/Chongqing","Asia/Urumqi","Asia/Kashgar"],"CO":["America/Bogota"],"CR":["America/Costa_Rica"],"CU":["America/Havana"],"CV":["Atlantic/Cape_Verde"],"CW":["America/Curacao"],"CX":["Indian/Christmas"],"CY":["Asia/Nicosia"],"CZ":["Europe/Prague"],"DE":["Europe/Berlin","Europe/Busingen"],"DJ":["Africa/Djibouti"],"DK":["Europe/Copenhagen"],"DM":["America/Dominica"],"DO":["America/Santo_Domingo"],"DZ":["Africa/Algiers"],"EC":["America/Guayaquil","Pacific/Galapagos"],"EE":["Europe/Tallinn"],"EG":["Africa/Cairo"],"EH":["Africa/El_Aaiun"],"ER":["Africa/Asmara"],"ES":["Europe/Madrid","Africa/Ceuta","Atlantic/Canary"],"ET":["Africa/Addis_Ababa"],"FI":["Europe/Helsinki"],"FJ":["Pacific/Fiji"],"FK":["Atlantic/Stanley"],"FM":["Pacific/Chuuk","Pacific/Pohnpei","Pacific/Kosrae"],"FO":["Atlantic/Faroe"],"FR":["Europe/Paris"],"GA":["Africa/Libreville"],"GB":["Europe/London"],"GD":["America/Grenada"],"GE":["Asia/Tbilisi"],"GF":["America/Cayenne"],"GG":["Europe/Guernsey"],"GH":["Africa/Accra"],"GI":["Europe/Gibraltar"],"GL":["America/Godthab","America/Danmarkshavn","America/Scoresbysund","America/Thule"],"GM":["Africa/Banjul"],"GN":["Africa/Conakry"],"GP":["America/Guadeloupe"],"GQ":["Africa/Malabo"],"GR":["Europe/Athens"],"GS":["Atlantic/South_Georgia"],"GT":["America/Guatemala"],"GU":["Pacific/Guam"],"GW":["Africa/Bissau"],"GY":["America/Guyana"],"HK":["Asia/Hong_Kong"],"HN":["America/Tegucigalpa"],"HR":["Europe/Zagreb"],"HT":["America/Port-au-Prince"],"HU":["Europe/Budapest"],"ID":["Asia/Jakarta","Asia/Pontianak","Asia/Makassar","Asia/Jayapura"],"IE":["Europe/Dublin"],"IL":["Asia/Jerusalem"],"IM":["Europe/Isle_of_Man"],"IN":["Asia/Kolkata"],"IO":["Indian/Chagos"],"IQ":["Asia/Baghdad"],"IR":["Asia/Tehran"],"IS":["Atlantic/Reykjavik"],"IT":["Europe/Rome"],"JE":["Europe/Jersey"],"JM":["America/Jamaica"],"JO":["Asia/Amman"],"JP":["Asia/Tokyo"],"KE":["Africa/Nairobi"],"KG":["Asia/Bishkek"],"KH":["Asia/Phnom_Penh"],"KI":["Pacific/Tarawa","Pacific/Enderbury","Pacific/Kiritimati"],"KM":["Indian/Comoro"],"KN":["America/St_Kitts"],"KP":["Asia/Pyongyang"],"KR":["Asia/Seoul"],"KW":["Asia/Kuwait"],"KY":["America/Cayman"],"KZ":["Asia/Almaty","Asia/Qyzylorda","Asia/Aqtobe","Asia/Aqtau","Asia/Oral"],"LA":["Asia/Vientiane"],"LB":["Asia/Beirut"],"LC":["America/St_Lucia"],"LI":["Europe/Vaduz"],"LK":["Asia/Colombo"],"LR":["Africa/Monrovia"],"LS":["Africa/Maseru"],"LT":["Europe/Vilnius"],"LU":["Europe/Luxembourg"],"LV":["Europe/Riga"],"LY":["Africa/Tripoli"],"MA":["Africa/Casablanca"],"MC":["Europe/Monaco"],"MD":["Europe/Chisinau"],"ME":["Europe/Podgorica"],"MF":["America/Marigot"],"MG":["Indian/Antananarivo"],"MH":["Pacific/Majuro","Pacific/Kwajalein"],"MK":["Europe/Skopje"],"ML":["Africa/Bamako"],"MM":["Asia/Rangoon"],"MN":["Asia/Ulaanbaatar","Asia/Hovd","Asia/Choibalsan"],"MO":["Asia/Macau"],"MP":["Pacific/Saipan"],"MQ":["America/Martinique"],"MR":["Africa/Nouakchott"],"MS":["America/Montserrat"],"MT":["Europe/Malta"],"MU":["Indian/Mauritius"],"MV":["Indian/Maldives"],"MW":["Africa/Blantyre"],"MX":["America/Mexico_City","America/Cancun","America/Merida","America/Monterrey","America/Matamoros","America/Mazatlan","America/Chihuahua","America/Ojinaga","America/Hermosillo","America/Tijuana","America/Santa_Isabel","America/Bahia_Banderas"],"MY":["Asia/Kuala_Lumpur","Asia/Kuching"],"MZ":["Africa/Maputo"],"NA":["Africa/Windhoek"],"NC":["Pacific/Noumea"],"NE":["Africa/Niamey"],"NF":["Pacific/Norfolk"],"NG":["Africa/Lagos"],"NI":["America/Managua"],"NL":["Europe/Amsterdam"],"NO":["Europe/Oslo"],"NP":["Asia/Kathmandu"],"NR":["Pacific/Nauru"],"NU":["Pacific/Niue"],"NZ":["Pacific/Auckland","Pacific/Chatham"],"OM":["Asia/Muscat"],"PA":["America/Panama"],"PE":["America/Lima"],"PF":["Pacific/Tahiti","Pacific/Marquesas","Pacific/Gambier"],"PG":["Pacific/Port_Moresby"],"PH":["Asia/Manila"],"PK":["Asia/Karachi"],"PL":["Europe/Warsaw"],"PM":["America/Miquelon"],"PN":["Pacific/Pitcairn"],"PR":["America/Puerto_Rico"],"PS":["Asia/Gaza","Asia/Hebron"],"PT":["Europe/Lisbon","Atlantic/Madeira","Atlantic/Azores"],"PW":["Pacific/Palau"],"PY":["America/Asuncion"],"QA":["Asia/Qatar"],"RE":["Indian/Reunion"],"RO":["Europe/Bucharest"],"RS":["Europe/Belgrade"],"RU":["Europe/Kaliningrad","Europe/Moscow","Europe/Volgograd","Europe/Samara","Europe/Simferopol","Asia/Yekaterinburg","Asia/Omsk","Asia/Novosibirsk","Asia/Novokuznetsk","Asia/Krasnoyarsk","Asia/Irkutsk","Asia/Yakutsk","Asia/Khandyga","Asia/Vladivostok","Asia/Sakhalin","Asia/Ust-Nera","Asia/Magadan","Asia/Kamchatka","Asia/Anadyr"],"RW":["Africa/Kigali"],"SA":["Asia/Riyadh"],"SB":["Pacific/Guadalcanal"],"SC":["Indian/Mahe"],"SD":["Africa/Khartoum"],"SE":["Europe/Stockholm"],"SG":["Asia/Singapore"],"SH":["Atlantic/St_Helena"],"SI":["Europe/Ljubljana"],"SJ":["Arctic/Longyearbyen"],"SK":["Europe/Bratislava"],"SL":["Africa/Freetown"],"SM":["Europe/San_Marino"],"SN":["Africa/Dakar"],"SO":["Africa/Mogadishu"],"SR":["America/Paramaribo"],"SS":["Africa/Juba"],"ST":["Africa/Sao_Tome"],"SV":["America/El_Salvador"],"SX":["America/Lower_Princes"],"SY":["Asia/Damascus"],"SZ":["Africa/Mbabane"],"TC":["America/Grand_Turk"],"TD":["Africa/Ndjamena"],"TF":["Indian/Kerguelen"],"TG":["Africa/Lome"],"TH":["Asia/Bangkok"],"TJ":["Asia/Dushanbe"],"TK":["Pacific/Fakaofo"],"TL":["Asia/Dili"],"TM":["Asia/Ashgabat"],"TN":["Africa/Tunis"],"TO":["Pacific/Tongatapu"],"TR":["Europe/Istanbul"],"TT":["America/Port_of_Spain"],"TV":["Pacific/Funafuti"],"TW":["Asia/Taipei"],"TZ":["Africa/Dar_es_Salaam"],"UA":["Europe/Kiev","Europe/Uzhgorod","Europe/Zaporozhye"],"UG":["Africa/Kampala"],"UM":["Pacific/Johnston","Pacific/Midway","Pacific/Wake"],"US":["America/New_York","America/Detroit","America/Kentucky/Louisville","America/Kentucky/Monticello","America/Indiana/Indianapolis","America/Indiana/Vincennes","America/Indiana/Winamac","America/Indiana/Marengo","America/Indiana/Petersburg","America/Indiana/Vevay","America/Chicago","America/Indiana/Tell_City","America/Indiana/Knox","America/Menominee","America/North_Dakota/Center","America/North_Dakota/New_Salem","America/North_Dakota/Beulah","America/Denver","America/Boise","America/Phoenix","America/Los_Angeles","America/Anchorage","America/Juneau","America/Sitka","America/Yakutat","America/Nome","America/Adak","America/Metlakatla","Pacific/Honolulu"],"UY":["America/Montevideo"],"UZ":["Asia/Samarkand","Asia/Tashkent"],"VA":["Europe/Vatican"],"VC":["America/St_Vincent"],"VE":["America/Caracas"],"VG":["America/Tortola"],"VI":["America/St_Thomas"],"VN":["Asia/Ho_Chi_Minh"],"VU":["Pacific/Efate"],"WF":["Pacific/Wallis"],"WS":["Pacific/Apia"],"YE":["Asia/Aden"],"YT":["Indian/Mayotte"],"ZA":["Africa/Johannesburg"],"ZM":["Africa/Lusaka"],"ZW":["Africa/Harare"]};
-ilib.data.zoneinfo["EST5EDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"};
-ilib.data.zoneinfo["CET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
-ilib.data.zoneinfo["CST6CDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Central {c} Time"};
-ilib.data.zoneinfo["WET"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"}};
-ilib.data.zoneinfo["Factory"] = {"f":"\"Local","o":"0:0"};
 ilib.data.zoneinfo["MET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"ME{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
 ilib.data.zoneinfo["EET"] = {"e":{"m":10,"r":"l0","t":"4:0"},"f":"EE{c}T","o":"2:0","s":{"c":"S","m":3,"r":"l0","t":"3:0","v":"1:0"}};
 ilib.data.zoneinfo["HST"] = {"f":"HST","o":"-10:0"};
-ilib.data.zoneinfo["Etc/GMT+2"] = {"f":"GMT+2","o":"-2:0","n":"UTC-02"};
-ilib.data.zoneinfo["Etc/GMT"] = {"f":"GMT","o":"0:0","n":"UTC"};
+ilib.data.zoneinfo["MST7MDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"M{c}T","o":"-7:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Mountain {c} Time"};
+ilib.data.zoneinfo["zonetab"] = {"AD":["Europe/Andorra"],"AE":["Asia/Dubai"],"AF":["Asia/Kabul"],"AG":["America/Antigua"],"AI":["America/Anguilla"],"AL":["Europe/Tirane"],"AM":["Asia/Yerevan"],"AO":["Africa/Luanda"],"AQ":["Antarctica/McMurdo","Antarctica/Rothera","Antarctica/Palmer","Antarctica/Mawson","Antarctica/Davis","Antarctica/Casey","Antarctica/Vostok","Antarctica/DumontDUrville","Antarctica/Syowa","Antarctica/Troll"],"AR":["America/Argentina/Buenos_Aires","America/Argentina/Cordoba","America/Argentina/Salta","America/Argentina/Jujuy","America/Argentina/Tucuman","America/Argentina/Catamarca","America/Argentina/La_Rioja","America/Argentina/San_Juan","America/Argentina/Mendoza","America/Argentina/San_Luis","America/Argentina/Rio_Gallegos","America/Argentina/Ushuaia"],"AS":["Pacific/Pago_Pago"],"AT":["Europe/Vienna"],"AU":["Australia/Lord_Howe","Antarctica/Macquarie","Australia/Hobart","Australia/Currie","Australia/Melbourne","Australia/Sydney","Australia/Broken_Hill","Australia/Brisbane","Australia/Lindeman","Australia/Adelaide","Australia/Darwin","Australia/Perth","Australia/Eucla"],"AW":["America/Aruba"],"AX":["Europe/Mariehamn"],"AZ":["Asia/Baku"],"BA":["Europe/Sarajevo"],"BB":["America/Barbados"],"BD":["Asia/Dhaka"],"BE":["Europe/Brussels"],"BF":["Africa/Ouagadougou"],"BG":["Europe/Sofia"],"BH":["Asia/Bahrain"],"BI":["Africa/Bujumbura"],"BJ":["Africa/Porto-Novo"],"BL":["America/St_Barthelemy"],"BM":["Atlantic/Bermuda"],"BN":["Asia/Brunei"],"BO":["America/La_Paz"],"BQ":["America/Kralendijk"],"BR":["America/Noronha","America/Belem","America/Fortaleza","America/Recife","America/Araguaina","America/Maceio","America/Bahia","America/Sao_Paulo","America/Campo_Grande","America/Cuiaba","America/Santarem","America/Porto_Velho","America/Boa_Vista","America/Manaus","America/Eirunepe","America/Rio_Branco"],"BS":["America/Nassau"],"BT":["Asia/Thimphu"],"BW":["Africa/Gaborone"],"BY":["Europe/Minsk"],"BZ":["America/Belize"],"CA":["America/St_Johns","America/Halifax","America/Glace_Bay","America/Moncton","America/Goose_Bay","America/Blanc-Sablon","America/Toronto","America/Nipigon","America/Thunder_Bay","America/Iqaluit","America/Pangnirtung","America/Resolute","America/Atikokan","America/Rankin_Inlet","America/Winnipeg","America/Rainy_River","America/Regina","America/Swift_Current","America/Edmonton","America/Cambridge_Bay","America/Yellowknife","America/Inuvik","America/Creston","America/Dawson_Creek","America/Vancouver","America/Whitehorse","America/Dawson","America/Montreal"],"CC":["Indian/Cocos"],"CD":["Africa/Kinshasa","Africa/Lubumbashi"],"CF":["Africa/Bangui"],"CG":["Africa/Brazzaville"],"CH":["Europe/Zurich"],"CI":["Africa/Abidjan"],"CK":["Pacific/Rarotonga"],"CL":["America/Santiago","Pacific/Easter"],"CM":["Africa/Douala"],"CN":["Asia/Shanghai","Asia/Harbin","Asia/Chongqing","Asia/Urumqi","Asia/Kashgar"],"CO":["America/Bogota"],"CR":["America/Costa_Rica"],"CU":["America/Havana"],"CV":["Atlantic/Cape_Verde"],"CW":["America/Curacao"],"CX":["Indian/Christmas"],"CY":["Asia/Nicosia"],"CZ":["Europe/Prague"],"DE":["Europe/Berlin","Europe/Busingen"],"DJ":["Africa/Djibouti"],"DK":["Europe/Copenhagen"],"DM":["America/Dominica"],"DO":["America/Santo_Domingo"],"DZ":["Africa/Algiers"],"EC":["America/Guayaquil","Pacific/Galapagos"],"EE":["Europe/Tallinn"],"EG":["Africa/Cairo"],"EH":["Africa/El_Aaiun"],"ER":["Africa/Asmara"],"ES":["Europe/Madrid","Africa/Ceuta","Atlantic/Canary"],"ET":["Africa/Addis_Ababa"],"FI":["Europe/Helsinki"],"FJ":["Pacific/Fiji"],"FK":["Atlantic/Stanley"],"FM":["Pacific/Chuuk","Pacific/Pohnpei","Pacific/Kosrae"],"FO":["Atlantic/Faroe"],"FR":["Europe/Paris"],"GA":["Africa/Libreville"],"GB":["Europe/London"],"GD":["America/Grenada"],"GE":["Asia/Tbilisi"],"GF":["America/Cayenne"],"GG":["Europe/Guernsey"],"GH":["Africa/Accra"],"GI":["Europe/Gibraltar"],"GL":["America/Godthab","America/Danmarkshavn","America/Scoresbysund","America/Thule"],"GM":["Africa/Banjul"],"GN":["Africa/Conakry"],"GP":["America/Guadeloupe"],"GQ":["Africa/Malabo"],"GR":["Europe/Athens"],"GS":["Atlantic/South_Georgia"],"GT":["America/Guatemala"],"GU":["Pacific/Guam"],"GW":["Africa/Bissau"],"GY":["America/Guyana"],"HK":["Asia/Hong_Kong"],"HN":["America/Tegucigalpa"],"HR":["Europe/Zagreb"],"HT":["America/Port-au-Prince"],"HU":["Europe/Budapest"],"ID":["Asia/Jakarta","Asia/Pontianak","Asia/Makassar","Asia/Jayapura"],"IE":["Europe/Dublin"],"IL":["Asia/Jerusalem"],"IM":["Europe/Isle_of_Man"],"IN":["Asia/Kolkata"],"IO":["Indian/Chagos"],"IQ":["Asia/Baghdad"],"IR":["Asia/Tehran"],"IS":["Atlantic/Reykjavik"],"IT":["Europe/Rome"],"JE":["Europe/Jersey"],"JM":["America/Jamaica"],"JO":["Asia/Amman"],"JP":["Asia/Tokyo"],"KE":["Africa/Nairobi"],"KG":["Asia/Bishkek"],"KH":["Asia/Phnom_Penh"],"KI":["Pacific/Tarawa","Pacific/Enderbury","Pacific/Kiritimati"],"KM":["Indian/Comoro"],"KN":["America/St_Kitts"],"KP":["Asia/Pyongyang"],"KR":["Asia/Seoul"],"KW":["Asia/Kuwait"],"KY":["America/Cayman"],"KZ":["Asia/Almaty","Asia/Qyzylorda","Asia/Aqtobe","Asia/Aqtau","Asia/Oral"],"LA":["Asia/Vientiane"],"LB":["Asia/Beirut"],"LC":["America/St_Lucia"],"LI":["Europe/Vaduz"],"LK":["Asia/Colombo"],"LR":["Africa/Monrovia"],"LS":["Africa/Maseru"],"LT":["Europe/Vilnius"],"LU":["Europe/Luxembourg"],"LV":["Europe/Riga"],"LY":["Africa/Tripoli"],"MA":["Africa/Casablanca"],"MC":["Europe/Monaco"],"MD":["Europe/Chisinau"],"ME":["Europe/Podgorica"],"MF":["America/Marigot"],"MG":["Indian/Antananarivo"],"MH":["Pacific/Majuro","Pacific/Kwajalein"],"MK":["Europe/Skopje"],"ML":["Africa/Bamako"],"MM":["Asia/Rangoon"],"MN":["Asia/Ulaanbaatar","Asia/Hovd","Asia/Choibalsan"],"MO":["Asia/Macau"],"MP":["Pacific/Saipan"],"MQ":["America/Martinique"],"MR":["Africa/Nouakchott"],"MS":["America/Montserrat"],"MT":["Europe/Malta"],"MU":["Indian/Mauritius"],"MV":["Indian/Maldives"],"MW":["Africa/Blantyre"],"MX":["America/Mexico_City","America/Cancun","America/Merida","America/Monterrey","America/Matamoros","America/Mazatlan","America/Chihuahua","America/Ojinaga","America/Hermosillo","America/Tijuana","America/Santa_Isabel","America/Bahia_Banderas"],"MY":["Asia/Kuala_Lumpur","Asia/Kuching"],"MZ":["Africa/Maputo"],"NA":["Africa/Windhoek"],"NC":["Pacific/Noumea"],"NE":["Africa/Niamey"],"NF":["Pacific/Norfolk"],"NG":["Africa/Lagos"],"NI":["America/Managua"],"NL":["Europe/Amsterdam"],"NO":["Europe/Oslo"],"NP":["Asia/Kathmandu"],"NR":["Pacific/Nauru"],"NU":["Pacific/Niue"],"NZ":["Pacific/Auckland","Pacific/Chatham"],"OM":["Asia/Muscat"],"PA":["America/Panama"],"PE":["America/Lima"],"PF":["Pacific/Tahiti","Pacific/Marquesas","Pacific/Gambier"],"PG":["Pacific/Port_Moresby"],"PH":["Asia/Manila"],"PK":["Asia/Karachi"],"PL":["Europe/Warsaw"],"PM":["America/Miquelon"],"PN":["Pacific/Pitcairn"],"PR":["America/Puerto_Rico"],"PS":["Asia/Gaza","Asia/Hebron"],"PT":["Europe/Lisbon","Atlantic/Madeira","Atlantic/Azores"],"PW":["Pacific/Palau"],"PY":["America/Asuncion"],"QA":["Asia/Qatar"],"RE":["Indian/Reunion"],"RO":["Europe/Bucharest"],"RS":["Europe/Belgrade"],"RU":["Europe/Kaliningrad","Europe/Moscow","Europe/Simferopol","Europe/Volgograd","Europe/Samara","Asia/Yekaterinburg","Asia/Omsk","Asia/Novosibirsk","Asia/Novokuznetsk","Asia/Krasnoyarsk","Asia/Irkutsk","Asia/Chita","Asia/Yakutsk","Asia/Khandyga","Asia/Vladivostok","Asia/Sakhalin","Asia/Ust-Nera","Asia/Magadan","Asia/Srednekolymsk","Asia/Kamchatka","Asia/Anadyr"],"RW":["Africa/Kigali"],"SA":["Asia/Riyadh"],"SB":["Pacific/Guadalcanal"],"SC":["Indian/Mahe"],"SD":["Africa/Khartoum"],"SE":["Europe/Stockholm"],"SG":["Asia/Singapore"],"SH":["Atlantic/St_Helena"],"SI":["Europe/Ljubljana"],"SJ":["Arctic/Longyearbyen"],"SK":["Europe/Bratislava"],"SL":["Africa/Freetown"],"SM":["Europe/San_Marino"],"SN":["Africa/Dakar"],"SO":["Africa/Mogadishu"],"SR":["America/Paramaribo"],"SS":["Africa/Juba"],"ST":["Africa/Sao_Tome"],"SV":["America/El_Salvador"],"SX":["America/Lower_Princes"],"SY":["Asia/Damascus"],"SZ":["Africa/Mbabane"],"TC":["America/Grand_Turk"],"TD":["Africa/Ndjamena"],"TF":["Indian/Kerguelen"],"TG":["Africa/Lome"],"TH":["Asia/Bangkok"],"TJ":["Asia/Dushanbe"],"TK":["Pacific/Fakaofo"],"TL":["Asia/Dili"],"TM":["Asia/Ashgabat"],"TN":["Africa/Tunis"],"TO":["Pacific/Tongatapu"],"TR":["Europe/Istanbul"],"TT":["America/Port_of_Spain"],"TV":["Pacific/Funafuti"],"TW":["Asia/Taipei"],"TZ":["Africa/Dar_es_Salaam"],"UA":["Europe/Kiev","Europe/Uzhgorod","Europe/Zaporozhye"],"UG":["Africa/Kampala"],"UM":["Pacific/Johnston","Pacific/Midway","Pacific/Wake"],"US":["America/New_York","America/Detroit","America/Kentucky/Louisville","America/Kentucky/Monticello","America/Indiana/Indianapolis","America/Indiana/Vincennes","America/Indiana/Winamac","America/Indiana/Marengo","America/Indiana/Petersburg","America/Indiana/Vevay","America/Chicago","America/Indiana/Tell_City","America/Indiana/Knox","America/Menominee","America/North_Dakota/Center","America/North_Dakota/New_Salem","America/North_Dakota/Beulah","America/Denver","America/Boise","America/Phoenix","America/Los_Angeles","America/Metlakatla","America/Anchorage","America/Juneau","America/Sitka","America/Yakutat","America/Nome","America/Adak","Pacific/Honolulu"],"UY":["America/Montevideo"],"UZ":["Asia/Samarkand","Asia/Tashkent"],"VA":["Europe/Vatican"],"VC":["America/St_Vincent"],"VE":["America/Caracas"],"VG":["America/Tortola"],"VI":["America/St_Thomas"],"VN":["Asia/Ho_Chi_Minh"],"VU":["Pacific/Efate"],"WF":["Pacific/Wallis"],"WS":["Pacific/Apia"],"YE":["Asia/Aden"],"YT":["Indian/Mayotte"],"ZA":["Africa/Johannesburg"],"ZM":["Africa/Lusaka"],"ZW":["Africa/Harare"]};
+ilib.data.zoneinfo["EST"] = {"f":"EST","o":"-5:0"};
+ilib.data.zoneinfo["Factory"] = {"f":"\"Local","o":"0:0"};
+ilib.data.zoneinfo["CST6CDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"C{c}T","o":"-6:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Central {c} Time"};
+ilib.data.zoneinfo["CET"] = {"e":{"m":10,"r":"l0","t":"3:0"},"f":"CE{c}T","o":"1:0","s":{"c":"S","m":3,"r":"l0","t":"2:0","v":"1:0"}};
+ilib.data.zoneinfo["Iceland"] = {"f":"GMT","o":"0:0","c":"IS"};
+ilib.data.zoneinfo["MST"] = {"f":"MST","o":"-7:0"};
+ilib.data.zoneinfo["EST5EDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"E{c}T","o":"-5:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Eastern {c} Time"};
+ilib.data.zoneinfo["WET"] = {"e":{"m":10,"r":"l0","t":"2:0"},"f":"WE{c}T","o":"0:0","s":{"c":"S","m":3,"r":"l0","t":"1:0","v":"1:0"}};
+ilib.data.zoneinfo["PST8PDT"] = {"e":{"c":"S","m":11,"r":"0>1","t":"2:0"},"f":"P{c}T","o":"-8:0","s":{"c":"D","m":3,"r":"0>8","t":"2:0","v":"1:0"},"n":"Pacific {c} Time"};
 ilib.data.zoneinfo["Etc/GMT-7"] = {"f":"GMT-7","o":"7:0","n":"SE Asia {c} Time"};
-ilib.data.zoneinfo["Etc/UCT"] = {"f":"UCT","o":"0:0"};
-ilib.data.zoneinfo["Etc/GMT-3"] = {"f":"GMT-3","o":"3:0","n":"E. Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-13"] = {"f":"GMT-13","o":"13:0","n":"Tonga {c} Time"};
 ilib.data.zoneinfo["Etc/GMT+5"] = {"f":"GMT+5","o":"-5:0","n":"SA Pacific {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-2"] = {"f":"GMT-2","o":"2:0","n":"South Africa {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-1"] = {"f":"GMT-1","o":"1:0","n":"W. Central Africa {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+11"] = {"f":"GMT+11","o":"-11:0","n":"UTC-11"};
-ilib.data.zoneinfo["Etc/GMT-9"] = {"f":"GMT-9","o":"9:0","n":"Tokyo {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-11"] = {"f":"GMT-11","o":"11:0","n":"Central Pacific {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+6"] = {"f":"GMT+6","o":"-6:0","n":"Central America {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+12"] = {"f":"GMT+12","o":"-12:0","n":"Dateline {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-6"] = {"f":"GMT-6","o":"6:0","n":"Central Asia {c} Time"};
 ilib.data.zoneinfo["Etc/GMT+1"] = {"f":"GMT+1","o":"-1:0","n":"Cape Verde {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-8"] = {"f":"GMT-8","o":"8:0","n":"Singapore {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+9"] = {"f":"GMT+9","o":"-9:0"};
+ilib.data.zoneinfo["Etc/GMT+11"] = {"f":"GMT+11","o":"-11:0","n":"UTC-11"};
+ilib.data.zoneinfo["Etc/GMT-11"] = {"f":"GMT-11","o":"11:0","n":"Central Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-2"] = {"f":"GMT-2","o":"2:0","n":"South Africa {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-9"] = {"f":"GMT-9","o":"9:0","n":"Tokyo {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-6"] = {"f":"GMT-6","o":"6:0","n":"Central Asia {c} Time"};
+ilib.data.zoneinfo["Etc/GMT"] = {"f":"GMT","o":"0:0","n":"UTC"};
+ilib.data.zoneinfo["Etc/GMT-12"] = {"f":"GMT-12","o":"12:0","n":"UTC+12"};
+ilib.data.zoneinfo["Etc/GMT+4"] = {"f":"GMT+4","o":"-4:0","n":"SA Western {c} Time"};
+ilib.data.zoneinfo["Etc/GMT-4"] = {"f":"GMT-4","o":"4:0","n":"Arabian {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+12"] = {"f":"GMT+12","o":"-12:0","n":"Dateline {c} Time"};
+ilib.data.zoneinfo["Etc/UCT"] = {"f":"UCT","o":"0:0"};
+ilib.data.zoneinfo["Etc/GMT+6"] = {"f":"GMT+6","o":"-6:0","n":"Central America {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+8"] = {"f":"GMT+8","o":"-8:0"};
+ilib.data.zoneinfo["Etc/GMT-10"] = {"f":"GMT-10","o":"10:0","n":"West Pacific {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+3"] = {"f":"GMT+3","o":"-3:0","n":"SA Eastern {c} Time"};
+ilib.data.zoneinfo["Etc/GMT+2"] = {"f":"GMT+2","o":"-2:0","n":"UTC-02"};
 ilib.data.zoneinfo["Etc/GMT-5"] = {"f":"GMT-5","o":"5:0","n":"West Asia {c} Time"};
 ilib.data.zoneinfo["Etc/UTC"] = {"f":"UTC","o":"0:0"};
+ilib.data.zoneinfo["Etc/GMT-3"] = {"f":"GMT-3","o":"3:0","n":"E. Africa {c} Time"};
 ilib.data.zoneinfo["Etc/GMT-14"] = {"f":"GMT-14","o":"14:0"};
-ilib.data.zoneinfo["Etc/GMT-4"] = {"f":"GMT-4","o":"4:0","n":"Arabian {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+9"] = {"f":"GMT+9","o":"-9:0"};
-ilib.data.zoneinfo["Etc/GMT-12"] = {"f":"GMT-12","o":"12:0","n":"UTC+12"};
-ilib.data.zoneinfo["Etc/GMT+3"] = {"f":"GMT+3","o":"-3:0","n":"SA Eastern {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-10"] = {"f":"GMT-10","o":"10:0","n":"West Pacific {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+8"] = {"f":"GMT+8","o":"-8:0"};
+ilib.data.zoneinfo["Etc/GMT-1"] = {"f":"GMT-1","o":"1:0","n":"W. Central Africa {c} Time"};
 ilib.data.zoneinfo["Etc/GMT+7"] = {"f":"GMT+7","o":"-7:0","n":"US Mountain {c} Time"};
 ilib.data.zoneinfo["Etc/GMT+10"] = {"f":"GMT+10","o":"-10:0","n":"Hawaiian {c} Time"};
-ilib.data.zoneinfo["Etc/GMT+4"] = {"f":"GMT+4","o":"-4:0","n":"SA Western {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-13"] = {"f":"GMT-13","o":"13:0","n":"Tonga {c} Time"};
-ilib.data.zoneinfo["Etc/GMT-8"] = {"f":"GMT-8","o":"8:0","n":"Singapore {c} Time"};
 /*
  * timezone.js - Definition of a time zone class
  * 
@@ -7164,7 +7223,7 @@ ilib.data.dateformats_en_ZA = {"gregorian":{"order":"{date} {time}","date":{"dmw
 ilib.data.dateformats_es = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"EE dd/MM/yy","m":"EEE dd/MM/yyyy","l":"EEE dd 'de' MMM yyyy","f":"EEEE dd 'de' MMMM yyyy"},"dmy":{"s":"dd/MM/yy","m":"dd/MM/yyyy","l":"dd 'de' MMM yyyy","f":"dd 'de' MMMM yyyy"},"dmw":{"s":"EE dd/MM","m":"EE dd/MM","l":"EEE dd 'de' MMM","f":"EEEE dd 'de' MMMM"},"dm":{"s":"dd/MM","m":"dd/MM","l":"dd 'de' MMM","f":"dd 'de' MMMM"},"my":{"s":"MM/yy","m":"MM/yyyy","l":"MMM yy","f":"MMMM yyyy"},"dw":{"s":"EE dd","m":"EEE dd","l":"EEE dd","f":"EEEE dd"},"d":"dd","m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yy","l":"yyyy","f":"yyyy G"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"hh:mm:ssa z","ahms":"hh:mm:ssa","hmsz":"hh:mm:ss z","hms":"hh:mm:ss","ahmz":"hh:mma z","ahm":"hh:mma","hmz":"hh:mm z","ah":"hha","hm":"hh:mm","h":"hh"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","h":"HH"}}}};
 ilib.data.dateformats_es_AR = {"gregorian":{"time":{"12":{"ahmsz":"hh'h'mm:ss a Z","ahms":"hh'h'mm:ss a","hmsz":"hh'h'mm:ss Z","ahmz":"hh'h'mm a Z","hms":"hh'h'mm:ss","ahm":"hh'h'mm a","hmz":"hh'h'mm Z","ah":"hh a","hm":"hh'h'mm"},"24":{"ahmsz":"HH'h'mm:ss Z","ahms":"HH'h'mm:ss","hmsz":"HH'h'mm:ss Z","ahmz":"HH'h'mm Z","hms":"HH'h'mm:ss","ahm":"HH'h'mm","hmz":"HH'h'mm Z","hm":"HH'h'mm"}}}};
 ilib.data.dateformats_et = {"gregorian":{"order":"{time} {date}","date":{"dm":{"s":"d.M","m":"dd.MM","l":"d. MMM","f":"d. MMMM"},"dmy":{"s":"d.M.yy","m":"dd.MM.yyyy","l":"d. MMM yyyy","f":"d. MMMM yyyy"},"my":{"s":"M.yy","m":"MM.yyyy"},"m":{"s":"MM","l":"MMMM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"dmwy":{"s":"E, d.M yy","m":"EE, d.M yy","l":"EEE, d. MMMM yyyy","f":"EEEE, d. MMMM yyyy"},"dmw":{"s":"E, d.M","m":"EE, d.M","l":"EEEE, d. MMM","f":"EEEE, d. MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm.ss a z","hmsz":"h:mm.ss z","ahms":"h:mm.ss a","hms":"h:mm.ss","ms":"mm.ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"H:mm.ss z","ahms":"H:mm.ss","hmsz":"H:mm.ss z","hms":"H:mm.ss","ms":"mm.ss"}},"range":{"c00":{"s":"{st} – {et} {sd}.{sm}.{sy}","m":"{st} – {et} {sd}.{sm}.{sy}","l":"{st} – {et} {sd}. {sm} {sy}","f":"{st} – {et} {sd}. {sm} {sy}"},"c01":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd}. – {et} {ed}. {em} {ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","f":"{st} {sd}. – {et} {ed}. {em} {ey}"},"c02":{"s":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}","l":"{st} {sd}. {sm} – {et} {ed}. {em} {ey}","f":"{st} {sd}. {sm} – {et} {ed}. {em} {ey}","m":"{st} {sd}.{sm}.{sy} – {et} {ed}.{em}.{ey}"},"c10":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. – {ed}. {em} {ey}","f":"{sd}. – {ed}. {em} {ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}"},"c11":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm} – {ed}. {em} {ey}","f":"{sd}. {sm} – {ed}. {em} {ey}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm} {sy} – {ed}. {em} {ey}","f":"{sd}. {sm} {sy} – {ed}. {em} {ey}"},"c20":{"s":"{sm}.{sy} – {em}.{ey}","m":"{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}},"generated":true};
-ilib.data.dateformats_fa = {"gregorian":{"order":"{time} {date}","date":{"dmwy":{"s":"E yy/M/d","m":"EE yy/M/d","f":"EEEE d MMM yyyy"},"dmy":{"s":"‏yy/M/d","m":"‏yy/M/d","l":"‏d MMM yyyy","f":"‏d MMMM yyyy"},"dmw":{"s":"E M/d","m":"EE M/d","l":"EEEE d MMM","f":"EEEE d MMM"},"dm":{"s":"‏M/d","m":"‏M/d","l":"‏d MMM","f":"‏d MMMM"},"my":{"s":"‏yy/M","m":"‏yy/M"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"‏h:mm:ss a (z)","ahms":"‏h:mm:ss a","hmsz":"‏h:mm:ss (z)","hms":"‏h:mm:ss","ahmz":"‏h:mm a (z)","ahm":"‏h:mm a","hmz":"‏h:mm (z)","ah":"‏h a","hm":"‏h:mm","ms":"‏mm:ss"},"24":{"ahmsz":"‏H:mm:ss (z)","ahms":"‏H:mm:ss","hmsz":"‏H:mm:ss (z)","hms":"‏H:mm:ss","ahmz":"‏H:mm (z)","ahm":"‏H:mm","hmz":"‏H:mm (z)","ah":"‏H","hm":"‏H:mm","ms":"‏mm:ss"}},"range":{"c00":{"s":"{st} ت {et} {sy}/{sm}/{sd}","m":"{st} ت {et} {sy}/{sm}/{sd}","l":"{st} ت {et} {sd} {sm} {sy}","f":"{st} ت {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","m":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","l":"{st} {sd} ت {et} {ed} {em} {ey}","f":"{st} {sd} ت {et} {ed} {em} {ey}"},"c02":{"s":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","m":"{st} {sy}/{sm}/{sd} ت {et} {ey}/{em}/{ed}","l":"{st} {sd} {sm} ت {et} {ed} {em} {ey}","f":"{st} {sd} {sm} ت {et} {ed} {em} {ey}"},"c03":{"s":"‏{sy}/{sm}/{sd} {st} - {ey}/{em}/{ed} {et}","m":"‏{sy}/{sm}/{sd} {st} - {ey}/{em}/{ed} {et}","l":"‏{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}","f":"‏{sd} {sm} {sy} {st} - {ed} {em} {ey} {et}"},"c10":{"s":"‏{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","m":"‏{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","l":"‏{sd} ت {ed} {em} {ey}","f":"‏{sd} ت {ed} {em} {ey}"},"c11":{"s":"‏{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","m":"‏{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","l":"‏{sd} {sm} ت {ed} {em} {ey}","f":"‏{sd} {sm} ت {ed} {em} {ey}"},"c12":{"s":"‏{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","m":"‏{sy}/{sm}/{sd} ت {ey}/{em}/{ed}","l":"‏{sd} {sm} {sy} ت {ed} {em} {ey}","f":"‏{sd} {sm} {sy} ت {ed} {em} {ey}"},"c20":{"s":"‏{sy}/{sm} ت {ey}/{em}","m":"‏{sy}/{sm} ت {ey}/{em}","l":"{sm} {sy} ت {em} {ey}","f":"{sm} {sy} ت {em} {ey}"},"c30":"‏{sy} ت {ey}"}}};
+ilib.data.dateformats_fa = {"gregorian":{"order":"{time} {date}","date":{"dmwy":{"s":"E yy/M/d","m":"EE yy/M/d","f":"EEEE d MMM yyyy"},"dmy":{"s":"‏yy/M/d","m":"‏yy/M/d","l":"‏d MMM yyyy","f":"‏d MMMM yyyy"},"dmw":{"s":"E M/d","m":"EE M/d","l":"EEEE d MMM","f":"EEEE d MMM"},"dm":{"s":"‏M/d","m":"‏M/d","l":"‏d MMM","f":"‏d MMMM"},"my":{"s":"‏yy/M","m":"‏yy/M"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"‏h:mm:ss a (z)","ahms":"‏h:mm:ss a","hmsz":"‏h:mm:ss (z)","hms":"‏h:mm:ss","ahmz":"‏h:mm a (z)","ahm":"‏h:mm a","hmz":"‏h:mm (z)","ah":"‏h a","hm":"‏h:mm","ms":"‏mm:ss"},"24":{"ahmsz":"‏H:mm:ss (z)","ahms":"‏H:mm:ss","hmsz":"‏H:mm:ss (z)","hms":"‏H:mm:ss","ahmz":"‏H:mm (z)","ahm":"‏H:mm","hmz":"‏H:mm (z)","ah":"‏H","hm":"‏H:mm","ms":"‏mm:ss"}},"range":{"c00":{"s":"{et} - {st} {sy}/{sm}/{sd}","m":"{et} - {st} {sy}/{sm}/{sd}","l":"{et} - {st} {sd} {sm} {sy}","f":"{et} - {st} {sd} {sm} {sy}"},"c01":{"s":"{et} {ey}/{em}/{ed} - {st} {sy}/{sm}/{sd}","m":"{et} {ey}/{em}/{ed} - {st} {sy}/{sm}/{sd}","l":"{st} {sd} تا {et} {ed} {em} {ey}","f":"{st} {sd} تا {et} {ed} {em} {ey}"},"c02":{"s":"{et} {ey}/{em}/{ed} - {st} {sy}/{sm}/{sd}","m":"{et} {ey}/{em}/{ed} - {st} {sy}/{sm}/{sd}","l":"{st} {sd} {sm} تا {et} {ed} {em} {ey}","f":"{st} {sd} {sm} تا {et} {ed} {em} {ey}"},"c03":{"s":"{et} {ey}/{em}/{ed} - {st} {sy}/{sm}/{sd}","m":"{et} {ey}/{em}/{ed} - {st} {sy}/{sm}/{sd}","l":"‏{sd} {sm} {sy} {st} تا {ed} {em} {ey} {et}","f":"‏{sd} {sm} {sy} {st} تا {ed} {em} {ey} {et}"},"c10":{"s":"‏{ey}/{em}/{ed} - {sy}/{sm}/{sd}","m":"‏{ey}/{em}/{ed} - {sy}/{sm}/{sd}","l":"‏{sd} تا {ed} {em} {ey}","f":"‏{sd} تا {ed} {em} {ey}"},"c11":{"s":"‏{ey}/{em}/{ed} - {sy}/{sm}/{sd}","m":"‏{ey}/{em}/{ed} - {sy}/{sm}/{sd}","l":"‏{sd} {sm} تا {ed} {em} {ey}","f":"‏{sd} {sm} تا {ed} {em} {ey}"},"c12":{"s":"‏{ey}/{em}/{ed} - {sy}/{sm}/{sd}","m":"‏{ey}/{em}/{ed} - {sy}/{sm}/{sd}","l":"‏{sd} {sm} {sy} تا {ed} {em} {ey}","f":"‏{sd} {sm} {sy} تا {ed} {em} {ey}"},"c20":{"s":"‏{ey}/{em} - {sy}/{sm}","m":"‏{ey}/{em} - {sy}/{sm}","l":"{sm} {sy} تا {em} {ey}","f":"{sm} {sy} تا {em} {ey}"},"c30":"‏{ey} - {sy}"}}};
 ilib.data.dateformats_ff = {"gregorian":{"order":"{time} {date}","date":{"dm":{"m":"dd/MM"},"dmy":{"s":"yy-M-d","m":"d MMM, yy","l":"d MMM yy"},"my":{"m":"MM/yy"},"m":{"s":"MM"},"d":{"s":"d","f":"dd","l":"dd","m":"dd"},"y":{"m":"yy"},"dmwy":{"s":"E d/M/yy","m":"EE d/M/yy","f":"EEEE d MMM yyyy"},"dmw":{"s":"E, M-d","m":"EE, M-d","l":"EEEE d MMM","f":"EEEE d MMM"},"n":{"m":"N"}},"time":{"12":{"ahmsz":"h:mm:ss a z","hmsz":"h:mm:ss z","ahms":"h:mm:ss a","hms":"h:mm:ss","ahmz":"h:mm a z","ahm":"h:mm a","hm":"h:mm","hmz":"h:mm z","ah":"h a"},"24":{"ahmsz":"HH:mm:ss z","hmsz":"HH:mm:ss z","ahmz":"HH:mm z","hmz":"HH:mm z"}},"range":{"c00":{"s":"{st} – {et} {sy}-{sm}-{sd}","m":"{st} – {et} {sd} {sm}, {sy}","l":"{st} – {et} {sd} {sm} {sy}","f":"{st} – {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sy}–{sm}–{sd} – {et} {ed}","l":"{st} {sy}–{sm}–{sd} – {et} {ed}","m":"{st} {sy}–{sm}–{sd} – {et} {ed}","f":"{st} {sy}–{sm}–{sd} – {et} {ed}"},"c02":{"s":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","l":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","f":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}","m":"{st} {sy}–{sm}–{sd} – {et} {em}–{ed}"},"c10":{"s":"{sy}–{sm}–{sd} – {ed}","l":"{sy}–{sm}–{sd} – {ed}","f":"{sy}–{sm}–{sd} – {ed}","m":"{sy}–{sm}–{sd} – {ed}"},"c11":{"s":"{sy}–{sm}–{sd} – {em}–{ed}","m":"{sy}–{sm}–{sd} – {em}–{ed}","l":"{sy}–{sm}–{sd} – {em}–{ed}","f":"{sy}–{sm}–{sd} – {em}–{ed}"},"c12":{"s":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","m":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","l":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}","f":"{sy}–{sm}–{sd} – {ey}–{em}–{ed}"},"c20":{"s":"{sy}–{sm} – {ey}–{em}","m":"{sy}–{sm} – {ey}–{em}","l":"{sy}–{sm} – {ey}–{em}","f":"{sy}–{sm} – {ey}–{em}"},"c30":"{sy} – {ey}"}},"generated":true};
 ilib.data.dateformats_fi = {"gregorian":{"order":"{date} {time}","date":{"dmwy":{"s":"E d.M.yy","m":"EE d.M.yyyy","l":"EEE d. MMM yyyy","f":"EEEE d. MMMM yyyy"},"dmy":{"s":"d.M.yy","m":"d.M.yyyy","l":"d. MMM yyyy","f":"d. MMMM yyyy"},"dmw":{"s":"E d.M.","m":"EE d.M.","l":"EEE d. MMM","f":"EEEE d. MMMM"},"dm":{"s":"d.M","m":"d.M","l":"d. MMM","f":"d. MMMM"},"my":{"s":"M.yy","m":"M.yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"d":{"s":"d","m":"d","l":"d","f":"d"},"m":{"s":"M","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"N","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"h.mm.ss a z","ahms":"h.mm.ss a","hmsz":"h.mm.ss z","ahmz":"h.mm a z","hms":"h.mm.ss","ahm":"h.mm a","hmz":"h.mm z","ah":"h a","hm":"h.mm","ms":"mm.ss"},"24":{"ahmsz":"H.mm.ss z","ahms":"H.mm.ss","hmsz":"H.mm.ss z","ahmz":"H.mm z","hms":"H.mm.ss","ahm":"H.mm","hmz":"H.mm z","hm":"H.mm","ms":"mm.ss"}},"range":{"c00":{"s":"{sd}.{sm}.{sy} {st} – {et}","m":"{sd}.{sm}.{sy} {st} – {et}","l":"{sd}. {sm} {sy} {st} – {et}","f":"{sd}. {sm} {sy} {st} – {et} "},"c01":{"s":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","l":"{sd}. {st} – {ed}. {et} {sm} {sy}","f":"{sd}. {st} – {ed}. {et} {sm} {sy}"},"c02":{"s":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm} {st} – {ed}.{em}.{ey} {et}","l":"{sd}. {sm} {st} – {ed}. {em} {sy} {et}","f":"{sd}. {sm} {st} – {ed}. {em} {sy} {et}"},"c03":{"s":"{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","m":"{sd}.{sm}.{sy} {st} – {ed}.{em}.{ey} {et}","l":"{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}","f":"{sd}. {sm} {sy} {st} – {ed}. {em} {ey} {et}"},"c10":{"s":"{sd}–{ed}.{sm}.{sy}","m":"{sd}–{ed}.{sm}.{sy}","l":"{sd}. – {ed}. {sm} {sy}","f":"{sd}. – {ed}. {sm} {sy}"},"c11":{"s":"{sd}.{sm} – {ed}.{em}.{sy}","m":"{sd}.{sm} – {ed}.{em}.{sy}","l":"{sd}. {sm} – {ed}. {em} {sy}","f":"{sd}. {sm} – {ed}. {em} {sy}"},"c12":{"s":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","m":"{sd}.{sm}.{sy} – {ed}.{em}.{ey}","l":"{sd}. {sm} {sy} – {ed}. {em} {ey}","f":"{sd}. {sm} {sy} – {ed}. {em} {ey}"},"c20":{"s":"{sm}.{sy} – {em}.{ey}","m":"{sm}.{sy} – {em}.{ey}","l":"{sm} {sy} – {em} {ey}","f":"{sm} {sy} – {em} {ey}"},"c30":"{sy} – {ey}"}}};
 ilib.data.dateformats_fr = {"gregorian":{"order":"{time} {date}","date":{"dmwy":{"s":"EE d/MM/yy","m":"EE d/MM/yyyy","l":"EEE d MMM yyyy","f":"EEEE d MMMM yyyy"},"dmy":{"s":"d/MM/yy","m":"d/MM/yyyy","l":"d MMM yyyy","f":"d MMMM yyyy"},"dmw":{"s":"EE d/MM","m":"EE d/MM","l":"EEE d MMM","f":"EEEE d MMMM"},"dm":{"s":"d/MM","m":"d/MM","l":"d MMM","f":"d MMMM"},"my":{"s":"MM/yy","m":"MM/yyyy","l":"MMM yyyy","f":"MMMM yyyy"},"d":"dd","m":{"s":"MM","m":"MM","l":"MMM","f":"MMMM"},"y":{"s":"yy","m":"yyyy","l":"yyyy","f":"yyyy"},"n":{"s":"N","m":"NN","l":"MMM","f":"MMMM"}},"time":{"12":{"ahmsz":"hh:mm:ss a z","ahms":"hh:mm:ss a","hmsz":"hh:mm:ss z","hms":"hh:mm:ss","ahmz":"hh:mm a z","ahm":"hh:mm a","hmz":"hh:mm z","ah":"hh a","hm":"hh:mm","h":"hh"},"24":{"ahmsz":"HH:mm:ss z","ahms":"HH:mm:ss","hmsz":"HH:mm:ss z","hms":"HH:mm:ss","ahmz":"HH:mm z","ahm":"HH:mm","hmz":"HH:mm z","ah":"HH","hm":"HH:mm","h":"HH"}},"range":{"c00":{"s":"{st} - {et} {sd}/{sm}/{sy}","m":"{st} - {et} {sd}/{sm}/{sy}","l":"{st} - {et} {sd} {sm} {sy}","f":"{st} - {et} {sd} {sm} {sy}"},"c01":{"s":"{st} {sd}/{sm} - {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm} - {et} {ed}/{em}/{sy}","l":"{st} {sd} {sm} - {et} {ed} {em} {sy}","f":"{st} {sd} {sm} - {et} {ed} {em} {sy}"},"c02":{"s":"{st} {sd}/{sm} - {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm} - {et} {ed}/{em}/{sy}","l":"{st} {sd} {sm} - {et} {ed} {em} {sy}","f":"{st} {sd} {sm} - {et} {ed} {em} {sy}"},"c03":{"s":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","m":"{st} {sd}/{sm}/{sy} - {et} {ed}/{em}/{ey}","l":"{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}","f":"{st} {sd} {sm} {sy} - {et} {ed} {em} {ey}"},"c10":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd}-{ed} {sm} {sy}","f":"{sd}-{ed} {sm} {sy}"},"c11":{"s":"{sd}/{sm} - {ed}/{em}/{ey}","m":"{sd}/{sm} - {ed}/{em}/{sy}","l":"{sd} {sm} - {ed} {em} {sy}","f":"{sd} {sm} - {ed} {em} {sy}"},"c12":{"s":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","m":"{sd}/{sm}/{sy} - {ed}/{em}/{ey}","l":"{sd} {sm} {sy} - {ed} {em} {ey}","f":"{sd} {sm} {sy} - {ed} {em} {ey}"},"c20":{"s":"{sm}/{sy} - {em}/{ey}","m":"{sm}/{sy} - {em}/{ey}","l":"{sm} {sy} - {em} {ey}","f":"{sm} {sy} - {em} {ey}"},"c30":"{sy} - {ey}"}}};
@@ -7278,7 +7337,7 @@ ilib.data.sysres_es = {"MMMM1":"enero","MMM1":"ene","NN1":"en","N1":"E","MMMM2":
 ilib.data.sysres_es_ES = {"E3":"X","in {duration}":"dentro de {duration}"};
 ilib.data.sysres_es_GQ = {"E3":"X","in {duration}":"dentro de {duration}"};
 ilib.data.sysres_et = {"generated":true,"NN1":"ja","NN2":"ve","NN3":"mä","NN4":"ap","NN5":"ma","NN6":"ju","NN7":"ju","NN8":"au","NN9":"se","NN10":"ok","NN11":"no","NN12":"de","MMM1":"jaan","MMM2":"veebr","MMM3":"märts","MMM4":"apr","MMM5":"mai","MMM6":"juuni","MMM7":"juuli","MMM8":"aug","MMM9":"sept","MMM10":"okt","MMM11":"nov","MMM12":"dets","MMMM1":"jaanuar","MMMM2":"veebruar","MMMM3":"märts","MMMM4":"aprill","MMMM5":"mai","MMMM6":"juuni","MMMM7":"juuli","MMMM8":"august","MMMM9":"september","MMMM10":"oktoober","MMMM11":"november","MMMM12":"detsember","E0":"P","E1":"E","E3":"K","E4":"N","E5":"R","E6":"L","EE0":"P","EE1":"E","EE2":"T","EE3":"K","EE4":"N","EE5":"R","EE6":"L","EEE0":"P","EEE1":"E","EEE2":"T","EEE3":"K","EEE4":"N","EEE5":"R","EEE6":"L","EEEE0":"pühapäev","EEEE1":"esmaspäev","EEEE2":"teisipäev","EEEE3":"kolmapäev","EEEE4":"neljapäev","EEEE5":"reede","EEEE6":"laupäev","G-1":"e.m.a.","G1":"m.a.j.","1#1 se|#{num} sec":"#{num} se","1#1 sec|#{num} sec":"#{num} sek","1#1 second|#{num} seconds":"one#{num} sekund|#{num} sekundit","durationShortMinutes":"#{num}m","1#1 mi|#{num} min":"#{num} min","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"one#{num} minut|#{num} minutit","#{num}h":"#{num}t","durationMediumHours":"#{num} tu","1#1 hr|#{num} hrs":"#{num} tun","1#1 hour|#{num} hours":"#{num} tundi","#{num}d":"#{num}ö","1#1 dy|#{num} dys":"#{num} öö","durationLongDays":"#{num} ööp","1#1 day|#{num} days":"one#{num} ööpäev|#{num} ööpäeva","#{num}w":"#{num}n","durationMediumWeeks":"#{num} nä","1#1 wk|#{num} wks":"#{num} näd","1#1 week|#{num} weeks":"one#{num} nädal|#{num} nädalat","durationShortMonths":"#{num}k","1#1 mo|#{num} mos":"#{num} ku","1#1 mon|#{num} mons":"one#{num} kuu|#{num} kuud","1#1 month|#{num} months":"one#{num} kuu|#{num} kuud","#{num}y":"#{num}a","durationMediumYears":"#{num} aa","1#1 yr|#{num} yrs":"#{num} aas","1#1 year|#{num} years":"one#{num} aasta|#{num} aastat","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":" ja ","separatorLong":" "};
-ilib.data.sysres_fa = {"NN1":"ژا","NN2":"فو","NN3":"ما","NN4":"آو","NN5":"مه","NN6":"ژو","NN7":"ژو","NN8":"او","NN9":"سپ","NN10":"اک","NN11":"نو","NN12":"دس","MMM1":"ژانویهٔ","MMM2":"فوریهٔ","MMM3":"مارس","MMM4":"آوریل","MMM5":"مهٔ","MMM6":"ژوئن","MMM7":"ژوئیهٔ","MMM8":"اوت","MMM9":"سپتامبر","MMM10":"اکتبر","MMM11":"نوامبر","MMM12":"دسامبر","MMMM1":"ژانویهٔ","MMMM2":"فوریهٔ","MMMM3":"مارس","MMMM4":"آوریل","MMMM5":"مهٔ","MMMM6":"ژوئن","MMMM7":"ژوئیهٔ","MMMM8":"اوت","MMMM9":"سپتامبر","MMMM10":"اکتبر","MMMM11":"نوامبر","MMMM12":"دسامبر","E0":"ی.","E1":"د.","E2":"س.","E3":"چ.","E4":"پ.","E5":"ج.","E6":"ش.","EE0":"۱ش.","EE1":"۲ش.","EE2":"۳ش.","EE3":"۴ش.","EE4":"۵ش.","EE5":"ج.","EE6":"ش.","EEE0":"یکشنبه","EEE1":"دوشنبه","EEE2":"سه‌شنبه","EEE3":"چهارشنبه","EEE4":"پنجشنبه","EEE5":"جمعه","EEE6":"شنبه","EEEE0":"یکشنبه","EEEE1":"دوشنبه","EEEE2":"سه‌شنبه","EEEE3":"چهارشنبه","EEEE4":"پنجشنبه","EEEE5":"جمعه","EEEE6":"شنبه","a0":"قبل‌ازظهر","a1":"بعدازظهر","G-1":"ق.م.","G1":"م.","#{num}s":"#{num}ث","1#1 se|#{num} sec":"#{num} ثا","1#1 sec|#{num} sec":"#{num} ثان","1#1 second|#{num} seconds":"#{num} ثانیه","durationShortMinutes":"#{num}د","1#1 mi|#{num} min":"#{num} دق","1#1 min|#{num} min":"#{num} دقی","1#1 minute|#{num} minutes":"#{num} دقیقه","#{num}h":"#{num}س","durationMediumHours":"#{num} سا","1#1 hr|#{num} hrs":"#{num} ساعت","1#1 hour|#{num} hours":"#{num} ساعت","#{num}d":"#{num}ر","1#1 dy|#{num} dys":"#{num} روز","durationLongDays":"#{num} روز","1#1 day|#{num} days":"#{num} روز","#{num}w":"#{num}ه","durationMediumWeeks":"#{num} هف","1#1 wk|#{num} wks":"#{num} هفته","1#1 week|#{num} weeks":"#{num} هفته","durationShortMonths":"#{num}م","1#1 mo|#{num} mos":"#{num} ماه","1#1 mon|#{num} mons":"#{num} ماه","1#1 month|#{num} months":"#{num} ماه","#{num}y":"#{num}س","durationMediumYears":"#{num} سال","1#1 yr|#{num} yrs":"#{num} سال","1#1 year|#{num} years":"#{num} سال","{duration} ago":"‏{duration} پیش","in {duration}":"‏{duration} بعد","separatorFull":"،‏ ","finalSeparatorFull":"، و ","separatorLong":" ","E0-persian":"ی.","E1-persian":"د.","E2-persian":"س.","E3-persian":"چ.","E4-persian":"پ.","E5-persian":"ج.","E6-persian":"ش.","EE0-persian":"یکشنبه","EE1-persian":"دوشنبه","EE2-persian":"سه‌شنبه","EE3-persian":"چهارشنبه","EE4-persian":"پنجشنبه","EE5-persian":"جمعه","EE6-persian":"شنبه","EEE0-persian":"یکشنبه","EEE1-persian":"دوشنبه","EEE2-persian":"سه‌شنبه","EEE3-persian":"چهارشنبه","EEE4-persian":"پنجشنبه","EEE5-persian":"جمعه","EEE6-persian":"شنبه","EEEE0-persian":"یکشنبه","EEEE1-persian":"دوشنبه","EEEE2-persian":"سه‌شنبه","EEEE3-persian":"چهارشنبه","EEEE4-persian":"پنجشنبه","EEEE5-persian":"جمعه","EEEE6-persian":"شنبه","N1-persian":"ف.","N2-persian":"ا.","N3-persian":"خ.","N4-persian":"ت.","N5-persian":"م.","N6-persian":"ش.","N7-persian":"م.","N8-persian":"آ.","N9-persian":"آ.","N10-persian":"د.","N11-persian":"ب.","N12-persian":"ا.","NN1-persian":"فروردین","NN2-persian":"اردیبهشت","NN3-persian":"خرداد","NN4-persian":"تیر","NN5-persian":"مرداد","NN6-persian":"شهریور","NN7-persian":"مهر","NN8-persian":"آبان","NN9-persian":"آذر","NN10-persian":"دی","NN11-persian":"بهمن","NN12-persian":"اسفند","MMM1-persian":"فروردین","MMM2-persian":"اردیبهشت","MMM3-persian":"خرداد","MMM4-persian":"تیر","MMM5-persian":"مرداد","MMM6-persian":"شهریور","MMM7-persian":"مهر","MMM8-persian":"آبان","MMM9-persian":"آذر","MMM10-persian":"دی","MMM11-persian":"بهمن","MMM12-persian":"اسفند","MMMM1-persian":"فروردین","MMMM2-persian":"اردیبهشت","MMMM3-persian":"خرداد","MMMM4-persian":"تیر","MMMM5-persian":"مرداد","MMMM6-persian":"شهریور","MMMM7-persian":"مهر","MMMM8-persian":"آبان","MMMM9-persian":"آذر","MMMM10-persian":"دی","MMMM11-persian":"بهمن","MMMM12-persian":"اسفند"};
+ilib.data.sysres_fa = {"NN1":"ژا","NN2":"فو","NN3":"ما","NN4":"آو","NN5":"مه","NN6":"ژو","NN7":"ژو","NN8":"او","NN9":"سپ","NN10":"اک","NN11":"نو","NN12":"دس","MMM1":"ژانویهٔ","MMM2":"فوریهٔ","MMM3":"مارس","MMM4":"آوریل","MMM5":"مهٔ","MMM6":"ژوئن","MMM7":"ژوئیهٔ","MMM8":"اوت","MMM9":"سپتامبر","MMM10":"اکتبر","MMM11":"نوامبر","MMM12":"دسامبر","MMMM1":"ژانویهٔ","MMMM2":"فوریهٔ","MMMM3":"مارس","MMMM4":"آوریل","MMMM5":"مهٔ","MMMM6":"ژوئن","MMMM7":"ژوئیهٔ","MMMM8":"اوت","MMMM9":"سپتامبر","MMMM10":"اکتبر","MMMM11":"نوامبر","MMMM12":"دسامبر","E0":"ی.","E1":"د.","E2":"س.","E3":"چ.","E4":"پ.","E5":"ج.","E6":"ش.","EE0":"۱ش.","EE1":"۲ش.","EE2":"۳ش.","EE3":"۴ش.","EE4":"۵ش.","EE5":"ج.","EE6":"ش.","EEE0":"یکشنبه","EEE1":"دوشنبه","EEE2":"سه‌شنبه","EEE3":"چهارشنبه","EEE4":"پنجشنبه","EEE5":"جمعه","EEE6":"شنبه","EEEE0":"یکشنبه","EEEE1":"دوشنبه","EEEE2":"سه‌شنبه","EEEE3":"چهارشنبه","EEEE4":"پنجشنبه","EEEE5":"جمعه","EEEE6":"شنبه","a0":"قبل‌ازظهر","a1":"بعدازظهر","G-1":"ق.م.","G1":"م.","#{num}s":"#{num}ث","1#1 se|#{num} sec":"#{num} ثانیه","1#1 sec|#{num} sec":"#{num} ثانیه","1#1 second|#{num} seconds":"#{num} ثانیه","durationShortMinutes":"#{num}د","1#1 mi|#{num} min":"#{num} دقیقه","1#1 min|#{num} min":"#{num} دقیقه","1#1 minute|#{num} minutes":"#{num} دقیقه","#{num}h":"#{num}س","durationMediumHours":"#{num} ساعت","1#1 hr|#{num} hrs":"#{num} ساعت","1#1 hour|#{num} hours":"#{num} ساعت","#{num}d":"#{num}ر","1#1 dy|#{num} dys":"#{num} روز","durationLongDays":"#{num} روز","1#1 day|#{num} days":"#{num} روز","#{num}w":"#{num}ه","durationMediumWeeks":"#{num} هفته","1#1 wk|#{num} wks":"#{num} هفته","1#1 week|#{num} weeks":"#{num} هفته","durationShortMonths":"#{num}م","1#1 mo|#{num} mos":"#{num} ماه","1#1 mon|#{num} mons":"#{num} ماه","1#1 month|#{num} months":"#{num} ماه","#{num}y":"#{num}س","durationMediumYears":"#{num} سال","1#1 yr|#{num} yrs":"#{num} سال","1#1 year|#{num} years":"#{num} سال","{duration} ago":"‏{duration} پیش","in {duration}":"‏{duration} بعد","separatorFull":"،‏ ","finalSeparatorFull":"، و ","separatorLong":" ","E0-persian":"ی.","E1-persian":"د.","E2-persian":"س.","E3-persian":"چ.","E4-persian":"پ.","E5-persian":"ج.","E6-persian":"ش.","EE0-persian":"یکشنبه","EE1-persian":"دوشنبه","EE2-persian":"سه‌شنبه","EE3-persian":"چهارشنبه","EE4-persian":"پنجشنبه","EE5-persian":"جمعه","EE6-persian":"شنبه","EEE0-persian":"یکشنبه","EEE1-persian":"دوشنبه","EEE2-persian":"سه‌شنبه","EEE3-persian":"چهارشنبه","EEE4-persian":"پنجشنبه","EEE5-persian":"جمعه","EEE6-persian":"شنبه","EEEE0-persian":"یکشنبه","EEEE1-persian":"دوشنبه","EEEE2-persian":"سه‌شنبه","EEEE3-persian":"چهارشنبه","EEEE4-persian":"پنجشنبه","EEEE5-persian":"جمعه","EEEE6-persian":"شنبه","N1-persian":"ف.","N2-persian":"ا.","N3-persian":"خ.","N4-persian":"ت.","N5-persian":"م.","N6-persian":"ش.","N7-persian":"م.","N8-persian":"آ.","N9-persian":"آ.","N10-persian":"د.","N11-persian":"ب.","N12-persian":"ا.","NN1-persian":"فروردین","NN2-persian":"اردیبهشت","NN3-persian":"خرداد","NN4-persian":"تیر","NN5-persian":"مرداد","NN6-persian":"شهریور","NN7-persian":"مهر","NN8-persian":"آبان","NN9-persian":"آذر","NN10-persian":"دی","NN11-persian":"بهمن","NN12-persian":"اسفند","MMM1-persian":"فروردین","MMM2-persian":"اردیبهشت","MMM3-persian":"خرداد","MMM4-persian":"تیر","MMM5-persian":"مرداد","MMM6-persian":"شهریور","MMM7-persian":"مهر","MMM8-persian":"آبان","MMM9-persian":"آذر","MMM10-persian":"دی","MMM11-persian":"بهمن","MMM12-persian":"اسفند","MMMM1-persian":"فروردین","MMMM2-persian":"اردیبهشت","MMMM3-persian":"خرداد","MMMM4-persian":"تیر","MMMM5-persian":"مرداد","MMMM6-persian":"شهریور","MMMM7-persian":"مهر","MMMM8-persian":"آبان","MMMM9-persian":"آذر","MMMM10-persian":"دی","MMMM11-persian":"بهمن","MMMM12-persian":"اسفند"};
 ilib.data.sysres_fa_AF = {"NN1":"جن","NN5":"مـ","NN7":"جو","MMM1":"جنو","MMM5":"مـی","MMM7":"جول","MMM12":"دسم","MMMM1":"جنوری","MMMM2":"فبروری","MMMM3":"مارچ","MMMM4":"اپریل","MMMM5":"می","MMMM6":"جون","MMMM7":"جولای","MMMM8":"اگست","MMMM9":"سپتمبر","MMMM10":"اکتوبر","MMMM11":"نومبر","MMMM12":"دسمبر","N1-persian":"ح","N2-persian":"ث","N3-persian":"ج","N4-persian":"س","N5-persian":"ا","N6-persian":"س","N7-persian":"م","N8-persian":"ع","N9-persian":"ق","N10-persian":"ج","N11-persian":"د","N12-persian":"ح","NN1-persian":"حمل","NN2-persian":"ثور","NN3-persian":"جوزا","NN4-persian":"سرطان","NN5-persian":"اسد","NN6-persian":"سنبله","NN7-persian":"میزان","NN8-persian":"عقرب","NN9-persian":"قوس","NN10-persian":"جدی","NN11-persian":"دلو","NN12-persian":"حوت","MMM1-persian":"حمل","MMM2-persian":"ثور","MMM3-persian":"جوزا","MMM4-persian":"سرطان","MMM5-persian":"اسد","MMM6-persian":"سنبله","MMM7-persian":"میزان","MMM8-persian":"عقرب","MMM9-persian":"قوس","MMM10-persian":"جدی","MMM11-persian":"دلو","MMM12-persian":"حوت","MMMM1-persian":"حمل","MMMM2-persian":"ثور","MMMM3-persian":"جوزا","MMMM4-persian":"سرطان","MMMM5-persian":"اسد","MMMM6-persian":"سنبله","MMMM7-persian":"میزان","MMMM8-persian":"عقرب","MMMM9-persian":"قوس","MMMM10-persian":"جدی","MMMM11-persian":"دلو","MMMM12-persian":"حوت"};
 ilib.data.sysres_ff = {"generated":true,"NN1":"si","NN2":"co","NN3":"mb","NN4":"se","NN5":"du","NN6":"ko","NN7":"mo","NN8":"ju","NN9":"sl","NN10":"ya","NN11":"jo","NN12":"bo","MMM1":"sii","MMM2":"col","MMM3":"mbo","MMM4":"see","MMM5":"duu","MMM6":"kor","MMM7":"mor","MMM8":"juk","MMM9":"slt","MMM10":"yar","MMM11":"jol","MMM12":"bow","MMMM1":"siilo","MMMM2":"colte","MMMM3":"mbooy","MMMM4":"seeɗto","MMMM5":"duujal","MMMM6":"korse","MMMM7":"morso","MMMM8":"juko","MMMM9":"siilto","MMMM10":"yarkomaa","MMMM11":"jolal","MMMM12":"bowte","E0":"d","E1":"a","E2":"m","E3":"n","E4":"n","E5":"m","E6":"h","EE0":"de","EE1":"aa","EE2":"ma","EE3":"nj","EE4":"na","EE5":"mw","EE6":"hb","EEE0":"dew","EEE1":"aaɓ","EEE2":"maw","EEE3":"nje","EEE4":"naa","EEE5":"mwd","EEE6":"hbi","EEEE0":"dewo","EEEE1":"aaɓnde","EEEE2":"mawbaare","EEEE3":"njeslaare","EEEE4":"naasaande","EEEE5":"mawnde","EEEE6":"hoore-biir","a0":"subaka","a1":"kikiiɗe","G-1":"H-I","G1":"C-I","1#1 sec|#{num} sec":"#{num} s","1#1 second|#{num} seconds":"#{num} s","durationShortMinutes":"#{num}m","1#1 min|#{num} min":"#{num} min","1#1 minute|#{num} minutes":"#{num} min","1#1 hr|#{num} hrs":"#{num} h","1#1 hour|#{num} hours":"#{num} h","durationLongDays":"#{num} d","1#1 day|#{num} days":"#{num} d","1#1 wk|#{num} wks":"#{num} w","1#1 week|#{num} weeks":"#{num} w","durationShortMonths":"#{num}m","1#1 mon|#{num} mons":"#{num} m","1#1 month|#{num} months":"#{num} m","1#1 yr|#{num} yrs":"#{num} y","1#1 year|#{num} years":"#{num} y","{duration} ago":"-{duration}","in {duration}":"+{duration}","finalSeparatorFull":", ","separatorLong":" "};
 ilib.data.sysres_fi = {"N1":"T","N2":"H","N3":"M","N4":"H","N5":"T","N6":"K","N7":"H","N8":"E","N9":"S","N10":"L","N11":"M","N12":"J","NN1":"ta","NN2":"he","NN3":"ma","NN4":"hu","NN5":"to","NN6":"ke","NN7":"he","NN8":"el","NN9":"sy","NN10":"lo","NN11":"ma","NN12":"jo","MMM1":"tam","MMM2":"hel","MMM3":"maa","MMM4":"huh","MMM5":"tou","MMM6":"kes","MMM7":"hei","MMM8":"elo","MMM9":"syy","MMM10":"lok","MMM11":"mar","MMM12":"jou","MMMM1":"tammikuuta","MMMM2":"helmikuuta","MMMM3":"maaliskuuta","MMMM4":"huhtikuuta","MMMM5":"toukokuuta","MMMM6":"kesäkuuta","MMMM7":"heinäkuuta","MMMM8":"elokuuta","MMMM9":"syyskuuta","MMMM10":"lokakuuta","MMMM11":"marraskuuta","MMMM12":"joulukuuta","E3":"K","E5":"P","E6":"L","EE0":"su","EE1":"ma","EE2":"ti","EE3":"ke","EE4":"to","EE5":"pe","EE6":"la","EEE0":"sun","EEE1":"maa","EEE2":"tii","EEE3":"kes","EEE4":"tor","EEE5":"per","EEE6":"lau","EEEE0":"sunnuntaina","EEEE1":"maanantaina","EEEE2":"tiistaina","EEEE3":"keskiviikkona","EEEE4":"torstaina","EEEE5":"perjantaina","EEEE6":"lauantaina","a0":"ap.","a1":"ip.","G-1":"eKr.","G1":"jKr.","in {duration}":"{duration} päästä","{duration} ago":"{duration} sitten","1#1 year|#{num} years":"1#{num} vuosi|#{num} vuotta","1#1 month|#{num} months":"1#{num} kuukausi|#{num} kuukautta","1#1 week|#{num} weeks":"1#{num} viikko|#{num} viikkoa","1#1 day|#{num} days":"1#{num} päivä|#{num} päivää","1#1 hour|#{num} hours":"1#{num} tunti|#{num} tuntia","1#1 minute|#{num} minutes":"1#{num} minuutti|#{num} minuuttia","1#1 second|#{num} seconds":"1#{num} sekunti|#{num} sekuntia","1#1 yr|#{num} yrs":"#{num} vuo","1#1 mon|#{num} mons":"#{num} kuu","1#1 wk|#{num} wks":"#{num} vii","durationLongDays":"#{num} päi","1#1 hr|#{num} hrs":"#{num} tun","1#1 min|#{num} min":"#{num} min","1#1 sec|#{num} sec":"#{num} sek","durationMediumYears":"#{num} vs","1#1 mo|#{num} mos":"#{num} kk","durationMediumWeeks":"#{num} vk","1#1 dy|#{num} dys":"#{num} pv","durationMediumHours":"#{num} tt","1#1 mi|#{num} min":"#{num} mn","1#1 se|#{num} sec":"#{num} sk","#{num}y":"#{num}v","durationShortMonths":"#{num}k","#{num}w":"#{num}vk","#{num}d":"#{num}p","#{num}h":"#{num}t","durationShortMinutes":"#{num}m","#{num}s":"#{num}s","separatorShort":" ","separatorMedium":" ","separatorLong":" ","separatorFull":", ","finalSeparatorFull":" ja "};
@@ -13705,7 +13764,7 @@ ilib.CType = {
 	 * <li>Lt - Titlecase_Letter
 	 * <li>Lm - Modifier_Letter
 	 * <li>Lo - Other_Letter
-	 * <li>mn - Nonspacing_Mark
+	 * <li>Mn - Nonspacing_Mark
 	 * <li>Me - Enclosing_Mark
 	 * <li>Mc - Spacing_Mark
 	 * <li>Nd - Decimal_Number
@@ -16398,7 +16457,7 @@ ilib.data.name_it = {"conjunctions":{"and1":"e","and2":"ed","or1":"o","or2":"o"}
 ilib.data.name_ja = {"format":"{prefix}{familyName}{middleName}{givenName}{suffix}","nameStyle":"asian","conjunctions":{"and1":"与","and2":"与","or1":"それとも","or2":"それとも"},"suffixes":["さん","総裁","副大統領","総理","市長","知事","主席","主席","ラビ","牧師","シェフ","指導者","教授","王","女王","皇太子","プリンセス","提督","管理者","保安官","監察","役員","卿","女性","領主","デイム","父親","母親","弟","シスター","牧師","叔母","叔父","おばあちゃん","おばあさん","おじいちゃん","おじいさん","いとこ","年下","上級","いち","に","さん","よん","ご","ろく","なな","はち","きゅう","じゅう"],"knownFamilyNames":{"佐藤":"Satō","鈴木":"Suzuki","高橋":"Takahashi","田中":"Tanaka","渡辺":"Watanabe","伊藤":"Itō","中村":"Nakamura","小林":"Kobayashi","山本":"Yamamoto","加藤":"Katō","吉田":"Yoshida","山田":"Yamada","佐々木":"Sasaki","山口":"Yamaguchi","松本":"Matsumoto","井上":"Inoue","木村":"Kimura","清水":"Shimizu","林":"Hayashi","斉藤":"Saitō","斎藤":"Saitō","山崎":"Yamazaki Yamasaki","中島":"Nakajima Nakashima","森":"Mori","阿部":"Abe","池田":"Ikeda","橋本":"Hashimoto","石川":"Ishikawa","山下":"Yamashita","小川":"Ogawa","石井":"Ishii","長谷川":"Hasegawa","後藤":"Gotō","岡田":"Okada","近藤":"Kondō","前田":"Maeda","藤田":"Fujita","遠藤":"Endō","青木":"Aoki","坂本":"Sakamoto","村上":"Murakami","太田":"Ōta","金子":"Kaneko","藤井":"Fujii","福田":"Fukuda","西村":"Nishimura","三浦":"Miura","竹内":"Takeuchi","中川":"Nakagawa","岡本":"Okamoto","松田":"Matsuda","原田":"Harada","中野":"Nakano","小野":"Ono","田村":"Tamura","藤原":"Fujiwara Fujihara","中山":"Nakayama","石田":"Ishida","小島":"Kojima","和田":"Wada","森田":"Morita","内田":"Uchida","柴田":"Shibata","酒井":"Sakai","原":"Hara","高木":"Takagi Takaki","横山":"Yokoyama","安藤":"Andō","宮崎":"Miyazaki Miyasaki","上田":"Ueda Ueta","島田":"Shimada","工藤":"Kudō","大野":"Ōno","宮本":"Miyamoto","杉山":"Sugiyama","今井":"Imai","丸山":"Maruyama","増田":"Masuda","高田":"Takada Takata","村田":"Murata","平野":"Hirano","大塚":"Ōtsuka","菅原":"Sugawara Sugahara","武田":"Takeda Taketa","新井":"Arai","小山":"Koyama Oyama","野口":"Noguchi","桜井":"Sakurai","千葉":"Chiba","岩崎":"Iwasaki","佐野":"Sano","谷口":"Taniguchi","上野":"Ueno","松井":"Matsui","河野":"Kōno Kawano","市川":"Ichikawa","渡部":"Watanabe Watabe","野村":"Nomura","菊地":"Kikuchi","木下":"Kinoshita"}};
 ilib.data.name_kk = {"format":"{prefix} {givenName} {middleName} {familyName} {suffix}","sortByHeadWord":false,"conjunctions":{"and1":"және","and2":"және","or1":"немесе","or2":"немесе"},"prefixes":["доктор","кіші","үлкен","ғылым докторы","медицина ғылымдарының докторы","стоматология ғылымдарының докторы"],"suffixes":["мырза","ханым","ханым","мырза","ханым","ханым","ханым","2-ші","3-ші","4-ші","5-ші","6-шы","7-ші","8-ші","9-шы","10-шы","мырза"]};
 ilib.data.name_kn = {"format":"{prefix} {givenName} {middleName} {familyName} {suffix}","conjunctions":{"and1":"ಮತ್ತು","and2":"ಮತ್ತು","or1":"ಅಥವಾ","or2":"ಅಥವಾ"},"prefixes":["ವೈದ್ಯರು","ಡಾ","ಶ್ರೀ","ಶ್ರೀಮತಿ","ಮಿಸ್ಟರ್","ಮೇಡಮ್","ಕನ್ಯೆ"],"suffixes":["ಕಿರಿಯ","ಹಿರಿಯ"]};
-ilib.data.name_ko = {"order":"fmg","useSpaces":false,"format":"{prefix}{familyName}{middleName}{givenName}{suffix}","nameStyle":"asian","sortByHeadWord":false,"conjunctions":{"and1":"그리고","and2":"그리고","or1":"또는","or2":"또는"},"prefixes":["미스터","부인","대통령","부사장","총리","시장","지사","회장","대표","장관","랍 비","mulah","목사 님","요리사","코치","교수","교수","킹","여왕","프린스","공주","일반","제 독","감독 관","교육 감","보안관","관리자] ","형사","장교","선생님","레이디","주 님","머리 핀","아버지","어머니","동생","여동생","목사","이 모","삼촌","할머니","할머니 ","할아버지","할아버지","사촌"],"suffixes":["주니어","수석","하나","둘","셋","넷","다섯","여섯","일곱","여덟","아홉","열","박사 학위","은퇴"],"knownFamilyNames":{"김":"Kim","이":"Lee","박":"Park","최":"Choi","정":"Jeong","강":"Kang","조":"Cho","윤":"Yoon","장":"Jang","임":"Lim","한":"Han","오":"O","신":"Shin","서":"Seo,Suh,Seoh","권":"Kwon","황":"Hwang","안":"Ahn","송":"Song","유":"Yoo","홍":"Hong","전":"Jeon","고":"Ko","문":"Mun","손":"Son","양":"Yang"}};
+ilib.data.name_ko = {"useSpaces":false,"format":"{prefix}{familyName}{middleName}{givenName}{suffix}","nameStyle":"asian","sortByHeadWord":false,"noCompoundFamilyNames":true,"conjunctions":{"and1":"그리고","and2":"그리고","or1":"또는","or2":"또는"},"prefixes":["선배","후배","귀하","각하","전하","폐하","성하","나리","나으리","선생님","미스터","부인","대통령","부사장","총리","시장","지사","회장","대표","장관","랍 비","목사 님","요리사","코치","교수","교수","킹","여왕","프린스","공주","일반","제 독","감독 관","교육 감","보안관","관리자] ","형사","장교","선생님","레이디","주 님","머리 핀","아버지","어머니","동생","여동생","목사","이 모","삼촌","할머니","할머니 ","할아버지","할아버지","사촌"],"suffixes":["씨","군","양","님","주니어","수석","하나","둘","셋","넷","다섯","여섯","일곱","여덟","아홉","열","박사 학위","은퇴"],"knownFamilyNames":{"즙":"Chŭp","증":"Chŭng","망절":"Mangjŏl","소봉":"Sobong","누":"Nu","루":"Ru","교":"Kyo","군":"Kun","저":"Chŏ","강전":"Kangjŏn","삼":"Sam","어금":"Ŏgŭm","장곡":"Changgok","담":"Tam","묘":"Myo","준":"Chun","난":"Nan","란":"Ran","십":"Sip","개":"Kae","비":"Pi","뇌":"Noe","뢰":"Roe","학":"Hak","후":"Hu","돈":"Ton","애":"Ae","엽":"Yŏp","포":"P'o","곡":"Kok","탄":"T'an","환":"Hwan","운":"Un","만":"Man","자":"Cha","묵":"Muk","야":"Ya","요":"Yo","미":"Mi","수":"Su","동방":"Tubongbanua","매":"Mae","근":"Kŭn","궉":"Kwŏk","필":"P'il","영":"Yŏng","판":"P'an","해":"Hae","낭":"Nang","랑":"Rang","초":"Ch'o","내":"Nae","섭":"Sŏp","흥":"Hŭng","점":"Chŏm","궁":"Kung","풍":"P'ung","대":"Tae","평":"P'yŏng","아":"A","빙":"Ping","독고":"Tokko","화":"Hwa","종":"Chong","옹":"Ong","당":"Tang","창":"Ch'ang","순":"Sun","단":"Tan","견":"Kyŏn","서문":"Sŏmun","상":"Sang","간":"Kan","팽":"P'aeng","좌":"Chwa","갈":"Kal","승":"Sŭng","범":"Pŏm","선우":"Sŏnu","시":"Si","사공":"Sagong","제갈":"Chegal","온":"On","빈":"Pin","동":"Tong","음":"Ŭm","두":"Tu","감":"Kam","호":"Ho","계":"Kye","피":"P'i","형":"Hyŏng","태":"T'ae","목":"Mok","복":"Pok","가":"Ka","황보":"Hwangbo","부":"Pu","사":"Sa","봉":"Pong","예":"Ye","용":"Yong","룡":"Ryong","편":"P'yŏn","은":"Ŭn","경":"Kyŏng","어":"Ŏ","남궁":"Namgung","국":"Kuk","탁":"T'ak","모":"Mo","맹":"Maeng","인":"In","육":"Yuk","륙":"Ryuk","옥":"Ok","왕":"Wang","금":"Kŭm","반":"Pan","기":"Ki","명":"Myŏng","표":"P'yo","제":"Che","위":"Wi","길":"Kil","연":"Yŏn","련":"Ryŏn","마":"Ma","선":"Sŏn","설":"Sŏl","소":"So","석":"Sŏk","도":"To","추":"Ch'u","염":"Yŏm","렴":"Ryŏm","여":"Yŏ","려":"Ryŏ","함":"Ham","현":"Hyŏn","공":"Kong","임":"Im","천":"Ch'ŏn","채":"Ch'ae","방":"Pang","원":"Wŏn","변":"Pyŏn","엄":"Ŏm","지":"Chi","민":"Min","진":"Chin","나":"Na","라":"Ra","우":"U","차":"Ch'a","성":"Sŏng","곽":"Kwak","구":"Ku","하":"Ha","주":"Chu","심":"Sim","남":"Nam","노":"No","로":"Ro","허":"Hŏ","백":"Paek","배":"Pae","손":"Son","문":"Mun","고":"Ko","유":"Yu","류":"Ryu","양":"Yang","량":"Ryang","홍":"Hong","림":"Rim","안":"An","송":"Song","황":"Hwang","권":"Kwŏn","전":"Chŏn","서":"Sŏ","오":"O","한":"Han","신":"Sin","장":"Chang","윤":"Yun","강":"Kang","조":"Cho","최":"Ch'oe","정":"Chŏng","박":"Pak","이":"Yi","리":"Ri","김":"Kim"}};
 ilib.data.name_ku = {"format":"{prefix} {givenName} {middleName} {familyName} {suffix}","conjunctions":{"and1":"و","and2":"و","or1":"یان","or2":"یان"},"prefixes":["دکتۆر","د.","بەڕێز","خاتوو","خانم","بەڕێز","خاتوو","خانم","خانم"],"suffixes":["کوڕ","کوڕ","باوک","باوک","دووەم","سێهەم","چوارەم","پێنجەم","شەشەم","حەوتەم","هەشتەم","نۆیەم","دەیەم","بەڕێز","دکتۆرا","ماستەر","پزیشکی ددان","پزیشکی نەشتەرگەری ددان"]};
 ilib.data.name_lt = {"format":"{prefix} {givenName} {middleName} {familyName} {suffix}","sortByHeadWord":false,"nameStyle":"western","conjunctions":{"and1":"ir","and2":"ir","or1":"arba","or2":"arba"},"prefixes":["ponas","ponia","ponia","prezidentas","viceprezidentas","ministras pirmininkas","meras","viršininkas","pirmininkas","pirmininkė","ministras","rabinas","pastorius","virėjas","treneris","profesorius","doc","karalius","karalienė","princas","princesė","bendras","admirolas","komisaras","komendantas","šerifas","inspektorius","detektyvas","pareigūnas","ponas","ponia","valdovas","dama","tėvas","motina","brolis","sesuo","šventasis","teta","dėdė","senelė","senelė","senelis","senelis","pusbrolis","ir","arba"],"suffixes":["jaunesnysis","vyresnysis","daktaro","pamerkti","pensininkas"]};
 ilib.data.name_lv = {"format":"{prefix} {givenName} {middleName} {familyName} {suffix}","sortByHeadWord":false,"nameStyle":"western","conjunctions":{"and1":"un","and2":"un","or1":"vai","or2":"vai"},"prefixes":["kungs","kundze","priekšsēdētājs","viceprezidents","premjerministrs","mērs","gubernators","priekšsēdētājs","priekšsēdētāja","ministrs","rabīns","mācītājs","šefpavārs","treneris","profesors","karalis","karaliene","princis","princese","vispārējs","admirālis","pilnvarotais","vadītājs","šerifs","inspektors","detektīvs","virsnieks","kungs","dāma","kungs","dāma","tēvs","māte","brālis","māsa","godājams","tante","tēvocis","vecmāmiņa","vecmāmiņa","vectēvs","brālēns","un","vai"],"suffixes":["jaunākais","vecākais","pūt","pensijā"]};
@@ -16924,7 +16983,7 @@ ilib.Name.prototype = {
     /**
      * @protected
      */
-    _findPrefix: function (parts, names, isAsian) {
+    _findPrefix: function (parts, names, isAsian, noCompoundPrefix) {
         var i, prefix, prefixLower, prefixArray, aux = [];
 
         if (parts.length > 0 && names) {
@@ -16936,6 +16995,10 @@ ilib.Name.prototype = {
 
                 if (prefixLower in names) {
                     aux = aux.concat(isAsian ? prefix : prefixArray);
+                    if (noCompoundPrefix) {
+                    	// don't need to parse further. Just return it as is.
+                    	return aux;
+                    }
                     parts = parts.slice(i);
                     i = parts.length + 1;
                 }
@@ -17113,7 +17176,7 @@ ilib.Name.prototype = {
      * @protected
      */
     _parseAsianName: function (parts) {
-        var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true);
+        var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true, this.info.noCompoundFamilyNames);
 
         if (familyNameArray && familyNameArray.length > 0) {
             this.familyName = familyNameArray.join('');
@@ -17383,7 +17446,7 @@ ilib.Name.prototype = {
                 }
             } else if (this.info.knownFamilyNames && this.familyName) {
                 parts = this.familyName.split('');
-                var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true);
+                var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true, this.info.noCompoundFamilyNames);
                 name = "";
                 for (i = 0; i < familyNameArray.length; i++) {
                     name += (this.info.knownFamilyNames[familyNameArray[i]] || "");
@@ -18683,6 +18746,405 @@ ilib.AddressFmt.prototype.format = function (address) {
 	return ret.replace(/\n+/g, '\n').trim();
 };
 
+ilib.data.norm = {"ccc":{"̀":230,"́":230,"̂":230,"̃":230,"̄":230,"̅":230,"̆":230,"̇":230,"̈":230,"̉":230,"̊":230,"̋":230,"̌":230,"̍":230,"̎":230,"̏":230,"̐":230,"̑":230,"̒":230,"̓":230,"̔":230,"̕":232,"̖":220,"̗":220,"̘":220,"̙":220,"̚":232,"̛":216,"̜":220,"̝":220,"̞":220,"̟":220,"̠":220,"̡":202,"̢":202,"̣":220,"̤":220,"̥":220,"̦":220,"̧":202,"̨":202,"̩":220,"̪":220,"̫":220,"̬":220,"̭":220,"̮":220,"̯":220,"̰":220,"̱":220,"̲":220,"̳":220,"̴":1,"̵":1,"̶":1,"̷":1,"̸":1,"̹":220,"̺":220,"̻":220,"̼":220,"̽":230,"̾":230,"̿":230,"̀":230,"́":230,"͂":230,"̓":230,"̈́":230,"ͅ":240,"͆":230,"͇":220,"͈":220,"͉":220,"͊":230,"͋":230,"͌":230,"͍":220,"͎":220,"͐":230,"͑":230,"͒":230,"͓":220,"͔":220,"͕":220,"͖":220,"͗":230,"͘":232,"͙":220,"͚":220,"͛":230,"͜":233,"͝":234,"͞":234,"͟":233,"͠":234,"͡":234,"͢":233,"ͣ":230,"ͤ":230,"ͥ":230,"ͦ":230,"ͧ":230,"ͨ":230,"ͩ":230,"ͪ":230,"ͫ":230,"ͬ":230,"ͭ":230,"ͮ":230,"ͯ":230,"҃":230,"҄":230,"҅":230,"҆":230,"҇":230,"֑":220,"֒":230,"֓":230,"֔":230,"֕":230,"֖":220,"֗":230,"֘":230,"֙":230,"֚":222,"֛":220,"֜":230,"֝":230,"֞":230,"֟":230,"֠":230,"֡":230,"֢":220,"֣":220,"֤":220,"֥":220,"֦":220,"֧":220,"֨":230,"֩":230,"֪":220,"֫":230,"֬":230,"֭":222,"֮":228,"֯":230,"ְ":10,"ֱ":11,"ֲ":12,"ֳ":13,"ִ":14,"ֵ":15,"ֶ":16,"ַ":17,"ָ":18,"ֹ":19,"ֺ":19,"ֻ":20,"ּ":21,"ֽ":22,"ֿ":23,"ׁ":24,"ׂ":25,"ׄ":230,"ׅ":220,"ׇ":18,"ؐ":230,"ؑ":230,"ؒ":230,"ؓ":230,"ؔ":230,"ؕ":230,"ؖ":230,"ؗ":230,"ؘ":30,"ؙ":31,"ؚ":32,"ً":27,"ٌ":28,"ٍ":29,"َ":30,"ُ":31,"ِ":32,"ّ":33,"ْ":34,"ٓ":230,"ٔ":230,"ٕ":220,"ٖ":220,"ٗ":230,"٘":230,"ٙ":230,"ٚ":230,"ٛ":230,"ٜ":220,"ٝ":230,"ٞ":230,"ٟ":220,"ٰ":35,"ۖ":230,"ۗ":230,"ۘ":230,"ۙ":230,"ۚ":230,"ۛ":230,"ۜ":230,"۟":230,"۠":230,"ۡ":230,"ۢ":230,"ۣ":220,"ۤ":230,"ۧ":230,"ۨ":230,"۪":220,"۫":230,"۬":230,"ۭ":220,"ܑ":36,"ܰ":230,"ܱ":220,"ܲ":230,"ܳ":230,"ܴ":220,"ܵ":230,"ܶ":230,"ܷ":220,"ܸ":220,"ܹ":220,"ܺ":230,"ܻ":220,"ܼ":220,"ܽ":230,"ܾ":220,"ܿ":230,"݀":230,"݁":230,"݂":220,"݃":230,"݄":220,"݅":230,"݆":220,"݇":230,"݈":220,"݉":230,"݊":230,"߫":230,"߬":230,"߭":230,"߮":230,"߯":230,"߰":230,"߱":230,"߲":220,"߳":230,"ࠖ":230,"ࠗ":230,"࠘":230,"࠙":230,"ࠛ":230,"ࠜ":230,"ࠝ":230,"ࠞ":230,"ࠟ":230,"ࠠ":230,"ࠡ":230,"ࠢ":230,"ࠣ":230,"ࠥ":230,"ࠦ":230,"ࠧ":230,"ࠩ":230,"ࠪ":230,"ࠫ":230,"ࠬ":230,"࠭":230,"࡙":220,"࡚":220,"࡛":220,"ࣤ":230,"ࣥ":230,"ࣦ":220,"ࣧ":230,"ࣨ":230,"ࣩ":220,"࣪":230,"࣫":230,"࣬":230,"࣭":220,"࣮":220,"࣯":220,"ࣰ":27,"ࣱ":28,"ࣲ":29,"ࣳ":230,"ࣴ":230,"ࣵ":230,"ࣶ":220,"ࣷ":230,"ࣸ":230,"ࣹ":220,"ࣺ":220,"ࣻ":230,"ࣼ":230,"ࣽ":230,"ࣾ":230,"़":7,"्":9,"॑":230,"॒":220,"॓":230,"॔":230,"়":7,"্":9,"਼":7,"੍":9,"઼":7,"્":9,"଼":7,"୍":9,"்":9,"్":9,"ౕ":84,"ౖ":91,"಼":7,"್":9,"്":9,"්":9,"ุ":103,"ู":103,"ฺ":9,"่":107,"้":107,"๊":107,"๋":107,"ຸ":118,"ູ":118,"່":122,"້":122,"໊":122,"໋":122,"༘":220,"༙":220,"༵":220,"༷":220,"༹":216,"ཱ":129,"ི":130,"ུ":132,"ེ":130,"ཻ":130,"ོ":130,"ཽ":130,"ྀ":130,"ྂ":230,"ྃ":230,"྄":9,"྆":230,"྇":230,"࿆":220,"့":7,"္":9,"်":9,"ႍ":220,"፝":230,"፞":230,"፟":230,"᜔":9,"᜴":9,"្":9,"៝":230,"ᢩ":228,"᤹":222,"᤺":230,"᤻":220,"ᨗ":230,"ᨘ":220,"᩠":9,"᩵":230,"᩶":230,"᩷":230,"᩸":230,"᩹":230,"᩺":230,"᩻":230,"᩼":230,"᩿":220,"᬴":7,"᭄":9,"᭫":230,"᭬":220,"᭭":230,"᭮":230,"᭯":230,"᭰":230,"᭱":230,"᭲":230,"᭳":230,"᮪":9,"᮫":9,"᯦":7,"᯲":9,"᯳":9,"᰷":7,"᳐":230,"᳑":230,"᳒":230,"᳔":1,"᳕":220,"᳖":220,"᳗":220,"᳘":220,"᳙":220,"᳚":230,"᳛":230,"᳜":220,"᳝":220,"᳞":220,"᳟":220,"᳠":230,"᳢":1,"᳣":1,"᳤":1,"᳥":1,"᳦":1,"᳧":1,"᳨":1,"᳭":220,"᳴":230,"᷀":230,"᷁":230,"᷂":220,"᷃":230,"᷄":230,"᷅":230,"᷆":230,"᷇":230,"᷈":230,"᷉":230,"᷊":220,"᷋":230,"᷌":230,"᷍":234,"᷎":214,"᷏":220,"᷐":202,"᷑":230,"᷒":230,"ᷓ":230,"ᷔ":230,"ᷕ":230,"ᷖ":230,"ᷗ":230,"ᷘ":230,"ᷙ":230,"ᷚ":230,"ᷛ":230,"ᷜ":230,"ᷝ":230,"ᷞ":230,"ᷟ":230,"ᷠ":230,"ᷡ":230,"ᷢ":230,"ᷣ":230,"ᷤ":230,"ᷥ":230,"ᷦ":230,"᷼":233,"᷽":220,"᷾":230,"᷿":220,"⃐":230,"⃑":230,"⃒":1,"⃓":1,"⃔":230,"⃕":230,"⃖":230,"⃗":230,"⃘":1,"⃙":1,"⃚":1,"⃛":230,"⃜":230,"⃡":230,"⃥":1,"⃦":1,"⃧":230,"⃨":220,"⃩":230,"⃪":1,"⃫":1,"⃬":220,"⃭":220,"⃮":220,"⃯":220,"⃰":230,"⳯":230,"⳰":230,"⳱":230,"⵿":9,"ⷠ":230,"ⷡ":230,"ⷢ":230,"ⷣ":230,"ⷤ":230,"ⷥ":230,"ⷦ":230,"ⷧ":230,"ⷨ":230,"ⷩ":230,"ⷪ":230,"ⷫ":230,"ⷬ":230,"ⷭ":230,"ⷮ":230,"ⷯ":230,"ⷰ":230,"ⷱ":230,"ⷲ":230,"ⷳ":230,"ⷴ":230,"ⷵ":230,"ⷶ":230,"ⷷ":230,"ⷸ":230,"ⷹ":230,"ⷺ":230,"ⷻ":230,"ⷼ":230,"ⷽ":230,"ⷾ":230,"ⷿ":230,"〪":218,"〫":228,"〬":232,"〭":222,"〮":224,"〯":224,"゙":8,"゚":8,"꙯":230,"ꙴ":230,"ꙵ":230,"ꙶ":230,"ꙷ":230,"ꙸ":230,"ꙹ":230,"ꙺ":230,"ꙻ":230,"꙼":230,"꙽":230,"ꚟ":230,"꛰":230,"꛱":230,"꠆":9,"꣄":9,"꣠":230,"꣡":230,"꣢":230,"꣣":230,"꣤":230,"꣥":230,"꣦":230,"꣧":230,"꣨":230,"꣩":230,"꣪":230,"꣫":230,"꣬":230,"꣭":230,"꣮":230,"꣯":230,"꣰":230,"꣱":230,"꤫":220,"꤬":220,"꤭":220,"꥓":9,"꦳":7,"꧀":9,"ꪰ":230,"ꪲ":230,"ꪳ":230,"ꪴ":220,"ꪷ":230,"ꪸ":230,"ꪾ":230,"꪿":230,"꫁":230,"꫶":9,"꯭":9,"ﬞ":26,"︠":230,"︡":230,"︢":230,"︣":230,"︤":230,"︥":230,"︦":230,"𐇽":220,"𐨍":220,"𐨏":230,"𐨸":230,"𐨹":1,"𐨺":220,"𐨿":9,"𑁆":9,"𑂹":9,"𑂺":7,"𑄀":230,"𑄁":230,"𑄂":230,"𑄳":9,"𑄴":9,"𑇀":9,"𑚶":9,"𑚷":7,"𝅥":216,"𝅦":216,"𝅧":1,"𝅨":1,"𝅩":1,"𝅭":226,"𝅮":216,"𝅯":216,"𝅰":216,"𝅱":216,"𝅲":216,"𝅻":220,"𝅼":220,"𝅽":220,"𝅾":220,"𝅿":220,"𝆀":220,"𝆁":220,"𝆂":220,"𝆅":230,"𝆆":230,"𝆇":230,"𝆈":230,"𝆉":230,"𝆊":220,"𝆋":220,"𝆪":230,"𝆫":230,"𝆬":230,"𝆭":230,"𝉂":230,"𝉃":230,"𝉄":230},"nfc":{"À":"À","Á":"Á","Â":"Â","Ã":"Ã","Ä":"Ä","Å":"Å","Ç":"Ç","È":"È","É":"É","Ê":"Ê","Ë":"Ë","Ì":"Ì","Í":"Í","Î":"Î","Ï":"Ï","Ñ":"Ñ","Ò":"Ò","Ó":"Ó","Ô":"Ô","Õ":"Õ","Ö":"Ö","Ù":"Ù","Ú":"Ú","Û":"Û","Ü":"Ü","Ý":"Ý","à":"à","á":"á","â":"â","ã":"ã","ä":"ä","å":"å","ç":"ç","è":"è","é":"é","ê":"ê","ë":"ë","ì":"ì","í":"í","î":"î","ï":"ï","ñ":"ñ","ò":"ò","ó":"ó","ô":"ô","õ":"õ","ö":"ö","ù":"ù","ú":"ú","û":"û","ü":"ü","ý":"ý","ÿ":"ÿ","Ā":"Ā","ā":"ā","Ă":"Ă","ă":"ă","Ą":"Ą","ą":"ą","Ć":"Ć","ć":"ć","Ĉ":"Ĉ","ĉ":"ĉ","Ċ":"Ċ","ċ":"ċ","Č":"Č","č":"č","Ď":"Ď","ď":"ď","Ē":"Ē","ē":"ē","Ĕ":"Ĕ","ĕ":"ĕ","Ė":"Ė","ė":"ė","Ę":"Ę","ę":"ę","Ě":"Ě","ě":"ě","Ĝ":"Ĝ","ĝ":"ĝ","Ğ":"Ğ","ğ":"ğ","Ġ":"Ġ","ġ":"ġ","Ģ":"Ģ","ģ":"ģ","Ĥ":"Ĥ","ĥ":"ĥ","Ĩ":"Ĩ","ĩ":"ĩ","Ī":"Ī","ī":"ī","Ĭ":"Ĭ","ĭ":"ĭ","Į":"Į","į":"į","İ":"İ","Ĵ":"Ĵ","ĵ":"ĵ","Ķ":"Ķ","ķ":"ķ","Ĺ":"Ĺ","ĺ":"ĺ","Ļ":"Ļ","ļ":"ļ","Ľ":"Ľ","ľ":"ľ","Ń":"Ń","ń":"ń","Ņ":"Ņ","ņ":"ņ","Ň":"Ň","ň":"ň","Ō":"Ō","ō":"ō","Ŏ":"Ŏ","ŏ":"ŏ","Ő":"Ő","ő":"ő","Ŕ":"Ŕ","ŕ":"ŕ","Ŗ":"Ŗ","ŗ":"ŗ","Ř":"Ř","ř":"ř","Ś":"Ś","ś":"ś","Ŝ":"Ŝ","ŝ":"ŝ","Ş":"Ş","ş":"ş","Š":"Š","š":"š","Ţ":"Ţ","ţ":"ţ","Ť":"Ť","ť":"ť","Ũ":"Ũ","ũ":"ũ","Ū":"Ū","ū":"ū","Ŭ":"Ŭ","ŭ":"ŭ","Ů":"Ů","ů":"ů","Ű":"Ű","ű":"ű","Ų":"Ų","ų":"ų","Ŵ":"Ŵ","ŵ":"ŵ","Ŷ":"Ŷ","ŷ":"ŷ","Ÿ":"Ÿ","Ź":"Ź","ź":"ź","Ż":"Ż","ż":"ż","Ž":"Ž","ž":"ž","Ơ":"Ơ","ơ":"ơ","Ư":"Ư","ư":"ư","Ǎ":"Ǎ","ǎ":"ǎ","Ǐ":"Ǐ","ǐ":"ǐ","Ǒ":"Ǒ","ǒ":"ǒ","Ǔ":"Ǔ","ǔ":"ǔ","Ǖ":"Ǖ","ǖ":"ǖ","Ǘ":"Ǘ","ǘ":"ǘ","Ǚ":"Ǚ","ǚ":"ǚ","Ǜ":"Ǜ","ǜ":"ǜ","Ǟ":"Ǟ","ǟ":"ǟ","Ǡ":"Ǡ","ǡ":"ǡ","Ǣ":"Ǣ","ǣ":"ǣ","Ǧ":"Ǧ","ǧ":"ǧ","Ǩ":"Ǩ","ǩ":"ǩ","Ǫ":"Ǫ","ǫ":"ǫ","Ǭ":"Ǭ","ǭ":"ǭ","Ǯ":"Ǯ","ǯ":"ǯ","ǰ":"ǰ","Ǵ":"Ǵ","ǵ":"ǵ","Ǹ":"Ǹ","ǹ":"ǹ","Ǻ":"Ǻ","ǻ":"ǻ","Ǽ":"Ǽ","ǽ":"ǽ","Ǿ":"Ǿ","ǿ":"ǿ","Ȁ":"Ȁ","ȁ":"ȁ","Ȃ":"Ȃ","ȃ":"ȃ","Ȅ":"Ȅ","ȅ":"ȅ","Ȇ":"Ȇ","ȇ":"ȇ","Ȉ":"Ȉ","ȉ":"ȉ","Ȋ":"Ȋ","ȋ":"ȋ","Ȍ":"Ȍ","ȍ":"ȍ","Ȏ":"Ȏ","ȏ":"ȏ","Ȑ":"Ȑ","ȑ":"ȑ","Ȓ":"Ȓ","ȓ":"ȓ","Ȕ":"Ȕ","ȕ":"ȕ","Ȗ":"Ȗ","ȗ":"ȗ","Ș":"Ș","ș":"ș","Ț":"Ț","ț":"ț","Ȟ":"Ȟ","ȟ":"ȟ","Ȧ":"Ȧ","ȧ":"ȧ","Ȩ":"Ȩ","ȩ":"ȩ","Ȫ":"Ȫ","ȫ":"ȫ","Ȭ":"Ȭ","ȭ":"ȭ","Ȯ":"Ȯ","ȯ":"ȯ","Ȱ":"Ȱ","ȱ":"ȱ","Ȳ":"Ȳ","ȳ":"ȳ","΅":"΅","Ά":"Ά","Έ":"Έ","Ή":"Ή","Ί":"Ί","Ό":"Ό","Ύ":"Ύ","Ώ":"Ώ","ΐ":"ΐ","Ϊ":"Ϊ","Ϋ":"Ϋ","ά":"ά","έ":"έ","ή":"ή","ί":"ί","ΰ":"ΰ","ϊ":"ϊ","ϋ":"ϋ","ό":"ό","ύ":"ύ","ώ":"ώ","ϓ":"ϓ","ϔ":"ϔ","Ѐ":"Ѐ","Ё":"Ё","Ѓ":"Ѓ","Ї":"Ї","Ќ":"Ќ","Ѝ":"Ѝ","Ў":"Ў","Й":"Й","й":"й","ѐ":"ѐ","ё":"ё","ѓ":"ѓ","ї":"ї","ќ":"ќ","ѝ":"ѝ","ў":"ў","Ѷ":"Ѷ","ѷ":"ѷ","Ӂ":"Ӂ","ӂ":"ӂ","Ӑ":"Ӑ","ӑ":"ӑ","Ӓ":"Ӓ","ӓ":"ӓ","Ӗ":"Ӗ","ӗ":"ӗ","Ӛ":"Ӛ","ӛ":"ӛ","Ӝ":"Ӝ","ӝ":"ӝ","Ӟ":"Ӟ","ӟ":"ӟ","Ӣ":"Ӣ","ӣ":"ӣ","Ӥ":"Ӥ","ӥ":"ӥ","Ӧ":"Ӧ","ӧ":"ӧ","Ӫ":"Ӫ","ӫ":"ӫ","Ӭ":"Ӭ","ӭ":"ӭ","Ӯ":"Ӯ","ӯ":"ӯ","Ӱ":"Ӱ","ӱ":"ӱ","Ӳ":"Ӳ","ӳ":"ӳ","Ӵ":"Ӵ","ӵ":"ӵ","Ӹ":"Ӹ","ӹ":"ӹ","آ":"آ","أ":"أ","ؤ":"ؤ","إ":"إ","ئ":"ئ","ۀ":"ۀ","ۂ":"ۂ","ۓ":"ۓ","ऩ":"ऩ","ऱ":"ऱ","ऴ":"ऴ","ো":"ো","ৌ":"ৌ","ୈ":"ୈ","ୋ":"ୋ","ୌ":"ୌ","ஔ":"ஔ","ொ":"ொ","ோ":"ோ","ௌ":"ௌ","ై":"ై","ೀ":"ೀ","ೇ":"ೇ","ೈ":"ೈ","ೊ":"ೊ","ೋ":"ೋ","ൊ":"ൊ","ോ":"ോ","ൌ":"ൌ","ේ":"ේ","ො":"ො","ෝ":"ෝ","ෞ":"ෞ","ဦ":"ဦ","ᬆ":"ᬆ","ᬈ":"ᬈ","ᬊ":"ᬊ","ᬌ":"ᬌ","ᬎ":"ᬎ","ᬒ":"ᬒ","ᬻ":"ᬻ","ᬽ":"ᬽ","ᭀ":"ᭀ","ᭁ":"ᭁ","ᭃ":"ᭃ","Ḁ":"Ḁ","ḁ":"ḁ","Ḃ":"Ḃ","ḃ":"ḃ","Ḅ":"Ḅ","ḅ":"ḅ","Ḇ":"Ḇ","ḇ":"ḇ","Ḉ":"Ḉ","ḉ":"ḉ","Ḋ":"Ḋ","ḋ":"ḋ","Ḍ":"Ḍ","ḍ":"ḍ","Ḏ":"Ḏ","ḏ":"ḏ","Ḑ":"Ḑ","ḑ":"ḑ","Ḓ":"Ḓ","ḓ":"ḓ","Ḕ":"Ḕ","ḕ":"ḕ","Ḗ":"Ḗ","ḗ":"ḗ","Ḙ":"Ḙ","ḙ":"ḙ","Ḛ":"Ḛ","ḛ":"ḛ","Ḝ":"Ḝ","ḝ":"ḝ","Ḟ":"Ḟ","ḟ":"ḟ","Ḡ":"Ḡ","ḡ":"ḡ","Ḣ":"Ḣ","ḣ":"ḣ","Ḥ":"Ḥ","ḥ":"ḥ","Ḧ":"Ḧ","ḧ":"ḧ","Ḩ":"Ḩ","ḩ":"ḩ","Ḫ":"Ḫ","ḫ":"ḫ","Ḭ":"Ḭ","ḭ":"ḭ","Ḯ":"Ḯ","ḯ":"ḯ","Ḱ":"Ḱ","ḱ":"ḱ","Ḳ":"Ḳ","ḳ":"ḳ","Ḵ":"Ḵ","ḵ":"ḵ","Ḷ":"Ḷ","ḷ":"ḷ","Ḹ":"Ḹ","ḹ":"ḹ","Ḻ":"Ḻ","ḻ":"ḻ","Ḽ":"Ḽ","ḽ":"ḽ","Ḿ":"Ḿ","ḿ":"ḿ","Ṁ":"Ṁ","ṁ":"ṁ","Ṃ":"Ṃ","ṃ":"ṃ","Ṅ":"Ṅ","ṅ":"ṅ","Ṇ":"Ṇ","ṇ":"ṇ","Ṉ":"Ṉ","ṉ":"ṉ","Ṋ":"Ṋ","ṋ":"ṋ","Ṍ":"Ṍ","ṍ":"ṍ","Ṏ":"Ṏ","ṏ":"ṏ","Ṑ":"Ṑ","ṑ":"ṑ","Ṓ":"Ṓ","ṓ":"ṓ","Ṕ":"Ṕ","ṕ":"ṕ","Ṗ":"Ṗ","ṗ":"ṗ","Ṙ":"Ṙ","ṙ":"ṙ","Ṛ":"Ṛ","ṛ":"ṛ","Ṝ":"Ṝ","ṝ":"ṝ","Ṟ":"Ṟ","ṟ":"ṟ","Ṡ":"Ṡ","ṡ":"ṡ","Ṣ":"Ṣ","ṣ":"ṣ","Ṥ":"Ṥ","ṥ":"ṥ","Ṧ":"Ṧ","ṧ":"ṧ","Ṩ":"Ṩ","ṩ":"ṩ","Ṫ":"Ṫ","ṫ":"ṫ","Ṭ":"Ṭ","ṭ":"ṭ","Ṯ":"Ṯ","ṯ":"ṯ","Ṱ":"Ṱ","ṱ":"ṱ","Ṳ":"Ṳ","ṳ":"ṳ","Ṵ":"Ṵ","ṵ":"ṵ","Ṷ":"Ṷ","ṷ":"ṷ","Ṹ":"Ṹ","ṹ":"ṹ","Ṻ":"Ṻ","ṻ":"ṻ","Ṽ":"Ṽ","ṽ":"ṽ","Ṿ":"Ṿ","ṿ":"ṿ","Ẁ":"Ẁ","ẁ":"ẁ","Ẃ":"Ẃ","ẃ":"ẃ","Ẅ":"Ẅ","ẅ":"ẅ","Ẇ":"Ẇ","ẇ":"ẇ","Ẉ":"Ẉ","ẉ":"ẉ","Ẋ":"Ẋ","ẋ":"ẋ","Ẍ":"Ẍ","ẍ":"ẍ","Ẏ":"Ẏ","ẏ":"ẏ","Ẑ":"Ẑ","ẑ":"ẑ","Ẓ":"Ẓ","ẓ":"ẓ","Ẕ":"Ẕ","ẕ":"ẕ","ẖ":"ẖ","ẗ":"ẗ","ẘ":"ẘ","ẙ":"ẙ","ẛ":"ẛ","Ạ":"Ạ","ạ":"ạ","Ả":"Ả","ả":"ả","Ấ":"Ấ","ấ":"ấ","Ầ":"Ầ","ầ":"ầ","Ẩ":"Ẩ","ẩ":"ẩ","Ẫ":"Ẫ","ẫ":"ẫ","Ậ":"Ậ","ậ":"ậ","Ắ":"Ắ","ắ":"ắ","Ằ":"Ằ","ằ":"ằ","Ẳ":"Ẳ","ẳ":"ẳ","Ẵ":"Ẵ","ẵ":"ẵ","Ặ":"Ặ","ặ":"ặ","Ẹ":"Ẹ","ẹ":"ẹ","Ẻ":"Ẻ","ẻ":"ẻ","Ẽ":"Ẽ","ẽ":"ẽ","Ế":"Ế","ế":"ế","Ề":"Ề","ề":"ề","Ể":"Ể","ể":"ể","Ễ":"Ễ","ễ":"ễ","Ệ":"Ệ","ệ":"ệ","Ỉ":"Ỉ","ỉ":"ỉ","Ị":"Ị","ị":"ị","Ọ":"Ọ","ọ":"ọ","Ỏ":"Ỏ","ỏ":"ỏ","Ố":"Ố","ố":"ố","Ồ":"Ồ","ồ":"ồ","Ổ":"Ổ","ổ":"ổ","Ỗ":"Ỗ","ỗ":"ỗ","Ộ":"Ộ","ộ":"ộ","Ớ":"Ớ","ớ":"ớ","Ờ":"Ờ","ờ":"ờ","Ở":"Ở","ở":"ở","Ỡ":"Ỡ","ỡ":"ỡ","Ợ":"Ợ","ợ":"ợ","Ụ":"Ụ","ụ":"ụ","Ủ":"Ủ","ủ":"ủ","Ứ":"Ứ","ứ":"ứ","Ừ":"Ừ","ừ":"ừ","Ử":"Ử","ử":"ử","Ữ":"Ữ","ữ":"ữ","Ự":"Ự","ự":"ự","Ỳ":"Ỳ","ỳ":"ỳ","Ỵ":"Ỵ","ỵ":"ỵ","Ỷ":"Ỷ","ỷ":"ỷ","Ỹ":"Ỹ","ỹ":"ỹ","ἀ":"ἀ","ἁ":"ἁ","ἂ":"ἂ","ἃ":"ἃ","ἄ":"ἄ","ἅ":"ἅ","ἆ":"ἆ","ἇ":"ἇ","Ἀ":"Ἀ","Ἁ":"Ἁ","Ἂ":"Ἂ","Ἃ":"Ἃ","Ἄ":"Ἄ","Ἅ":"Ἅ","Ἆ":"Ἆ","Ἇ":"Ἇ","ἐ":"ἐ","ἑ":"ἑ","ἒ":"ἒ","ἓ":"ἓ","ἔ":"ἔ","ἕ":"ἕ","Ἐ":"Ἐ","Ἑ":"Ἑ","Ἒ":"Ἒ","Ἓ":"Ἓ","Ἔ":"Ἔ","Ἕ":"Ἕ","ἠ":"ἠ","ἡ":"ἡ","ἢ":"ἢ","ἣ":"ἣ","ἤ":"ἤ","ἥ":"ἥ","ἦ":"ἦ","ἧ":"ἧ","Ἠ":"Ἠ","Ἡ":"Ἡ","Ἢ":"Ἢ","Ἣ":"Ἣ","Ἤ":"Ἤ","Ἥ":"Ἥ","Ἦ":"Ἦ","Ἧ":"Ἧ","ἰ":"ἰ","ἱ":"ἱ","ἲ":"ἲ","ἳ":"ἳ","ἴ":"ἴ","ἵ":"ἵ","ἶ":"ἶ","ἷ":"ἷ","Ἰ":"Ἰ","Ἱ":"Ἱ","Ἲ":"Ἲ","Ἳ":"Ἳ","Ἴ":"Ἴ","Ἵ":"Ἵ","Ἶ":"Ἶ","Ἷ":"Ἷ","ὀ":"ὀ","ὁ":"ὁ","ὂ":"ὂ","ὃ":"ὃ","ὄ":"ὄ","ὅ":"ὅ","Ὀ":"Ὀ","Ὁ":"Ὁ","Ὂ":"Ὂ","Ὃ":"Ὃ","Ὄ":"Ὄ","Ὅ":"Ὅ","ὐ":"ὐ","ὑ":"ὑ","ὒ":"ὒ","ὓ":"ὓ","ὔ":"ὔ","ὕ":"ὕ","ὖ":"ὖ","ὗ":"ὗ","Ὑ":"Ὑ","Ὓ":"Ὓ","Ὕ":"Ὕ","Ὗ":"Ὗ","ὠ":"ὠ","ὡ":"ὡ","ὢ":"ὢ","ὣ":"ὣ","ὤ":"ὤ","ὥ":"ὥ","ὦ":"ὦ","ὧ":"ὧ","Ὠ":"Ὠ","Ὡ":"Ὡ","Ὢ":"Ὢ","Ὣ":"Ὣ","Ὤ":"Ὤ","Ὥ":"Ὥ","Ὦ":"Ὦ","Ὧ":"Ὧ","ὰ":"ὰ","ὲ":"ὲ","ὴ":"ὴ","ὶ":"ὶ","ὸ":"ὸ","ὺ":"ὺ","ὼ":"ὼ","ᾀ":"ᾀ","ᾁ":"ᾁ","ᾂ":"ᾂ","ᾃ":"ᾃ","ᾄ":"ᾄ","ᾅ":"ᾅ","ᾆ":"ᾆ","ᾇ":"ᾇ","ᾈ":"ᾈ","ᾉ":"ᾉ","ᾊ":"ᾊ","ᾋ":"ᾋ","ᾌ":"ᾌ","ᾍ":"ᾍ","ᾎ":"ᾎ","ᾏ":"ᾏ","ᾐ":"ᾐ","ᾑ":"ᾑ","ᾒ":"ᾒ","ᾓ":"ᾓ","ᾔ":"ᾔ","ᾕ":"ᾕ","ᾖ":"ᾖ","ᾗ":"ᾗ","ᾘ":"ᾘ","ᾙ":"ᾙ","ᾚ":"ᾚ","ᾛ":"ᾛ","ᾜ":"ᾜ","ᾝ":"ᾝ","ᾞ":"ᾞ","ᾟ":"ᾟ","ᾠ":"ᾠ","ᾡ":"ᾡ","ᾢ":"ᾢ","ᾣ":"ᾣ","ᾤ":"ᾤ","ᾥ":"ᾥ","ᾦ":"ᾦ","ᾧ":"ᾧ","ᾨ":"ᾨ","ᾩ":"ᾩ","ᾪ":"ᾪ","ᾫ":"ᾫ","ᾬ":"ᾬ","ᾭ":"ᾭ","ᾮ":"ᾮ","ᾯ":"ᾯ","ᾰ":"ᾰ","ᾱ":"ᾱ","ᾲ":"ᾲ","ᾳ":"ᾳ","ᾴ":"ᾴ","ᾶ":"ᾶ","ᾷ":"ᾷ","Ᾰ":"Ᾰ","Ᾱ":"Ᾱ","Ὰ":"Ὰ","ᾼ":"ᾼ","῁":"῁","ῂ":"ῂ","ῃ":"ῃ","ῄ":"ῄ","ῆ":"ῆ","ῇ":"ῇ","Ὲ":"Ὲ","Ὴ":"Ὴ","ῌ":"ῌ","῍":"῍","῎":"῎","῏":"῏","ῐ":"ῐ","ῑ":"ῑ","ῒ":"ῒ","ῖ":"ῖ","ῗ":"ῗ","Ῐ":"Ῐ","Ῑ":"Ῑ","Ὶ":"Ὶ","῝":"῝","῞":"῞","῟":"῟","ῠ":"ῠ","ῡ":"ῡ","ῢ":"ῢ","ῤ":"ῤ","ῥ":"ῥ","ῦ":"ῦ","ῧ":"ῧ","Ῠ":"Ῠ","Ῡ":"Ῡ","Ὺ":"Ὺ","Ῥ":"Ῥ","῭":"῭","ῲ":"ῲ","ῳ":"ῳ","ῴ":"ῴ","ῶ":"ῶ","ῷ":"ῷ","Ὸ":"Ὸ","Ὼ":"Ὼ","ῼ":"ῼ","↚":"↚","↛":"↛","↮":"↮","⇍":"⇍","⇎":"⇎","⇏":"⇏","∄":"∄","∉":"∉","∌":"∌","∤":"∤","∦":"∦","≁":"≁","≄":"≄","≇":"≇","≉":"≉","≠":"≠","≢":"≢","≭":"≭","≮":"≮","≯":"≯","≰":"≰","≱":"≱","≴":"≴","≵":"≵","≸":"≸","≹":"≹","⊀":"⊀","⊁":"⊁","⊄":"⊄","⊅":"⊅","⊈":"⊈","⊉":"⊉","⊬":"⊬","⊭":"⊭","⊮":"⊮","⊯":"⊯","⋠":"⋠","⋡":"⋡","⋢":"⋢","⋣":"⋣","⋪":"⋪","⋫":"⋫","⋬":"⋬","⋭":"⋭","が":"が","ぎ":"ぎ","ぐ":"ぐ","げ":"げ","ご":"ご","ざ":"ざ","じ":"じ","ず":"ず","ぜ":"ぜ","ぞ":"ぞ","だ":"だ","ぢ":"ぢ","づ":"づ","で":"で","ど":"ど","ば":"ば","ぱ":"ぱ","び":"び","ぴ":"ぴ","ぶ":"ぶ","ぷ":"ぷ","べ":"べ","ぺ":"ぺ","ぼ":"ぼ","ぽ":"ぽ","ゔ":"ゔ","ゞ":"ゞ","ガ":"ガ","ギ":"ギ","グ":"グ","ゲ":"ゲ","ゴ":"ゴ","ザ":"ザ","ジ":"ジ","ズ":"ズ","ゼ":"ゼ","ゾ":"ゾ","ダ":"ダ","ヂ":"ヂ","ヅ":"ヅ","デ":"デ","ド":"ド","バ":"バ","パ":"パ","ビ":"ビ","ピ":"ピ","ブ":"ブ","プ":"プ","ベ":"ベ","ペ":"ペ","ボ":"ボ","ポ":"ポ","ヴ":"ヴ","ヷ":"ヷ","ヸ":"ヸ","ヹ":"ヹ","ヺ":"ヺ","ヾ":"ヾ","𑂚":"𑂚","𑂜":"𑂜","𑂫":"𑂫","𑄮":"𑄮","𑄯":"𑄯"}};
+ilib.data.ctype_m = {"Mn":[[768,879],[1155,1159],[1425,1469],[1471],[1473,1474],[1476,1477],[1479],[1552,1562],[1611,1631],[1648],[1750,1756],[1759,1764],[1767,1768],[1770,1773],[1809],[1840,1866],[1958,1968],[2027,2035],[2070,2073],[2075,2083],[2085,2087],[2089,2093],[2137,2139],[2276,2302],[2304,2306],[2362],[2364],[2369,2376],[2381],[2385,2391],[2402,2403],[2433],[2492],[2497,2500],[2509],[2530,2531],[2561,2562],[2620],[2625,2626],[2631,2632],[2635,2637],[2641],[2672,2673],[2677],[2689,2690],[2748],[2753,2757],[2759,2760],[2765],[2786,2787],[2817],[2876],[2879],[2881,2884],[2893],[2902],[2914,2915],[2946],[3008],[3021],[3134,3136],[3142,3144],[3146,3149],[3157,3158],[3170,3171],[3260],[3263],[3270],[3276,3277],[3298,3299],[3393,3396],[3405],[3426,3427],[3530],[3538,3540],[3542],[3633],[3636,3642],[3655,3662],[3761],[3764,3769],[3771,3772],[3784,3789],[3864,3865],[3893],[3895],[3897],[3953,3966],[3968,3972],[3974,3975],[3981,3991],[3993,4028],[4038],[4141,4144],[4146,4151],[4153,4154],[4157,4158],[4184,4185],[4190,4192],[4209,4212],[4226],[4229,4230],[4237],[4253],[4957,4959],[5906,5908],[5938,5940],[5970,5971],[6002,6003],[6068,6069],[6071,6077],[6086],[6089,6099],[6109],[6155,6157],[6313],[6432,6434],[6439,6440],[6450],[6457,6459],[6679,6680],[6742],[6744,6750],[6752],[6754],[6757,6764],[6771,6780],[6783],[6912,6915],[6964],[6966,6970],[6972],[6978],[7019,7027],[7040,7041],[7074,7077],[7080,7081],[7083],[7142],[7144,7145],[7149],[7151,7153],[7212,7219],[7222,7223],[7376,7378],[7380,7392],[7394,7400],[7405],[7412],[7616,7654],[7676,7679],[8400,8412],[8417],[8421,8432],[11503,11505],[11647],[11744,11775],[12330,12333],[12441,12442],[42607],[42612,42621],[42655],[42736,42737],[43010],[43014],[43019],[43045,43046],[43204],[43232,43249],[43302,43309],[43335,43345],[43392,43394],[43443],[43446,43449],[43452],[43561,43566],[43569,43570],[43573,43574],[43587],[43596],[43696],[43698,43700],[43703,43704],[43710,43711],[43713],[43756,43757],[43766],[44005],[44008],[44013],[64286],[65024,65039],[65056,65062],[66045],[68097,68099],[68101,68102],[68108,68111],[68152,68154],[68159],[69633],[69688,69702],[69760,69761],[69811,69814],[69817,69818],[69888,69890],[69927,69931],[69933,69940],[70016,70017],[70070,70078],[71339],[71341],[71344,71349],[71351],[94095,94098],[119143,119145],[119163,119170],[119173,119179],[119210,119213],[119362,119364],[917760,917999]],"Me":[[1160,1161],[8413,8416],[8418,8420],[42608,42610]],"Mc":[[2307],[2363],[2366,2368],[2377,2380],[2382,2383],[2434,2435],[2494,2496],[2503,2504],[2507,2508],[2519],[2563],[2622,2624],[2691],[2750,2752],[2761],[2763,2764],[2818,2819],[2878],[2880],[2887,2888],[2891,2892],[2903],[3006,3007],[3009,3010],[3014,3016],[3018,3020],[3031],[3073,3075],[3137,3140],[3202,3203],[3262],[3264,3268],[3271,3272],[3274,3275],[3285,3286],[3330,3331],[3390,3392],[3398,3400],[3402,3404],[3415],[3458,3459],[3535,3537],[3544,3551],[3570,3571],[3902,3903],[3967],[4139,4140],[4145],[4152],[4155,4156],[4182,4183],[4194,4196],[4199,4205],[4227,4228],[4231,4236],[4239],[4250,4252],[6070],[6078,6085],[6087,6088],[6435,6438],[6441,6443],[6448,6449],[6451,6456],[6576,6592],[6600,6601],[6681,6683],[6741],[6743],[6753],[6755,6756],[6765,6770],[6916],[6965],[6971],[6973,6977],[6979,6980],[7042],[7073],[7078,7079],[7082],[7084,7085],[7143],[7146,7148],[7150],[7154,7155],[7204,7211],[7220,7221],[7393],[7410,7411],[12334,12335],[43043,43044],[43047],[43136,43137],[43188,43203],[43346,43347],[43395],[43444,43445],[43450,43451],[43453,43456],[43567,43568],[43571,43572],[43597],[43643],[43755],[43758,43759],[43765],[44003,44004],[44006,44007],[44009,44010],[44012],[69632],[69634],[69762],[69808,69810],[69815,69816],[69932],[70018],[70067,70069],[70079,70080],[71340],[71342,71343],[71350],[94033,94078],[119141,119142],[119149,119154]]};
+/*
+ * glyphstring.js - ilib string subclass that allows you to access 
+ * whole glyphs at a time
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// !depends strings.js ctype.js
+// !data norm ctype_m
+
+/**
+ * Create a new glyph string instance. This string inherits from 
+ * the ilib.String class, and adds methods that allow you to access
+ * whole glyphs at a time. <p>
+ * 
+ * In Unicode, various accented characters can be created by using
+ * a base character and one or more combining characters following
+ * it. These appear on the screen to the user as a single glyph.
+ * For example, the Latin character "a" (U+0061) followed by the
+ * combining diaresis character "¨" (U+0308) combine together to
+ * form the "a with diaresis" glyph "ä", which looks like a single
+ * character on the screen.<p>
+ * 
+ * The big problem with combining characters for web developers is
+ * that many CSS engines do not ellipsize text between glyphs. They
+ * only deal with single Unicode characters. So if a particular space 
+ * only allows for 4 characters, the CSS engine will truncate a
+ * string at 4 Unicode characters and then add the ellipsis (...)
+ * character. What if the fourth Unicode character is the "a" and
+ * the fifth one is the diaresis? Then a string like "xxxäxxx" that
+ * is ellipsized at 4 characters will appear as "xxxa..." on the 
+ * screen instead of "xxxä...".<p>
+ * 
+ * In the Latin script as it is commonly used, it is not so common
+ * to form accented characters using combining accents, so the above
+ * example is mostly for illustrative purposes. It is not unheard of
+ * however. The situation is much, much worse in scripts such as Thai and 
+ * Devanagari that normally make very heavy use of combining characters.
+ * These scripts do so because Unicode does not include pre-composed 
+ * versions of the accented characters like it does for Latin, so 
+ * combining accents are the only way to create these accented and 
+ * combined versions of the characters.<p>
+ * 
+ * The solution to thise problem is not to use the the CSS property 
+ * "text-overflow: ellipsis" in your web site, ever. Instead, use
+ * a glyph string to truncate text between glyphs instead of between
+ * characters.<p>
+ * 
+ * Glyph strings are also useful for truncation, hyphenation, and 
+ * line wrapping, as all of these should be done between glyphs instead
+ * of between characters.<p>
+ * 
+ * The options parameter is optional, and may contain any combination
+ * of the following properties:<p>
+ * 
+ * <ul>
+ * <li><i>onLoad</i> - a callback function to call when the locale data are
+ * fully loaded. When the onLoad option is given, this object will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When the constructor is done (even if the data is already preassembled), the 
+ * onLoad function is called with the current instance as a parameter, so this
+ * callback can be used with preassembled or dynamic loading or a mix of the two.
+ * 
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
+ * asynchronously. If this option is given as "false", then the "onLoad"
+ * callback must be given, as the instance returned from this constructor will
+ * not be usable for a while.
+ *  
+ * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object 
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
+ * </ul>
+ * 
+ * 
+ * Depends directive: !depends glyphstring.js
+ * 
+ * @class
+ * @constructor
+ * @param {string|ilib.String=} str initialize this instance with this string 
+ * @param {Object=} options options governing the way this instance works
+ */
+ilib.GlyphString = function (str, options) {
+	ilib.String.call(this, str);
+	
+	var sync = true;
+	var loadParams = {};
+	if (options) {
+		if (typeof(options.sync) === 'boolean') {
+			sync = options.sync;
+		}
+		if (options.loadParams) {
+			loadParams = options.loadParams;
+		}
+	}
+	
+	ilib.CType._load("ctype_m", sync, loadParams, function() {
+		if (typeof(ilib.data.norm.ccc) === 'undefined') {
+			ilib.loadData({
+				object: ilib.GlyphString, 
+				locale: "-", 
+				name: "norm.json",
+				nonlocale: true,
+				sync: sync, 
+				loadParams: loadParams, 
+				callback: ilib.bind(this, function (norm) {
+					ilib.data.norm = norm;
+					if (options && typeof(options.onLoad) === 'function') {
+						options.onLoad(this);
+					}
+				})
+			});
+		} else {
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		}
+	});
+};
+
+ilib.GlyphString.prototype = new ilib.String();
+ilib.GlyphString.parent = ilib.String;
+ilib.GlyphString.prototype.constructor = ilib.GlyphString;
+
+//ilib.GlyphString.prototype.iterator = function () {
+
+//};
+
+/**
+ * Return true if the given character is a leading Jamo (Choseong) character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a leading Jamo character, 
+ * false otherwise
+ */
+ilib.GlyphString._isJamoL = function (n) {
+	return (n >= 0x1100 && n <= 0x1112);
+};
+
+/**
+ * Return true if the given character is a vowel Jamo (Jungseong) character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a vowel Jamo character, 
+ * false otherwise
+ */
+ilib.GlyphString._isJamoV = function (n) {
+	return (n >= 0x1161 && n <= 0x1175);
+};
+
+/**
+ * Return true if the given character is a trailing Jamo (Jongseong) character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a trailing Jamo character, 
+ * false otherwise
+ */
+ilib.GlyphString._isJamoT = function (n) {
+	return (n >= 0x11A8 && n <= 0x11C2);
+};
+
+/**
+ * Return true if the given character is a precomposed Hangul character.
+ * 
+ * @private
+ * @static
+ * @param {number} n code point to check
+ * @return {boolean} true if the character is a precomposed Hangul character, 
+ * false otherwise
+ */
+ilib.GlyphString._isHangul = function (n) {
+	return (n >= 0xAC00 && n <= 0xD7A3);
+};
+
+/**
+ * Algorithmically compose an L and a V combining Jamo characters into
+ * a precomposed Korean syllabic Hangul character. Both should already
+ * be in the proper ranges for L and V characters. 
+ * 
+ * @private
+ * @static
+ * @param {number} lead the code point of the lead Jamo character to compose
+ * @param {number} trail the code point of the trailing Jamo character to compose
+ * @return {string} the composed Hangul character
+ */
+ilib.GlyphString._composeJamoLV = function (lead, trail) {
+	var lindex = lead - 0x1100;
+	var vindex = trail - 0x1161;
+	return ilib.String.fromCodePoint(0xAC00 + (lindex * 21 + vindex) * 28);
+};
+
+/**
+ * Algorithmically compose a Hangul LV and a combining Jamo T character 
+ * into a precomposed Korean syllabic Hangul character. 
+ * 
+ * @private
+ * @static
+ * @param {number} lead the code point of the lead Hangul character to compose
+ * @param {number} trail the code point of the trailing Jamo T character to compose
+ * @return {string} the composed Hangul character
+ */
+ilib.GlyphString._composeJamoLVT = function (lead, trail) {
+	return ilib.String.fromCodePoint(lead + (trail - 0x11A7));
+};
+
+/**
+ * Compose one character out of a leading character and a 
+ * trailing character. If the characters are Korean Jamo, they
+ * will be composed algorithmically. If they are any other
+ * characters, they will be looked up in the nfc tables.
+ * 
+ * @private
+ * @static
+ * @param {string} lead leading character to compose
+ * @param {string} trail the trailing character to compose
+ * @return {string} the fully composed character, or undefined if
+ * there is no composition for those two characters
+ */
+ilib.GlyphString._compose = function (lead, trail) {
+	var first = lead.charCodeAt(0);
+	var last = trail.charCodeAt(0);
+	if (ilib.GlyphString._isHangul(first) && ilib.GlyphString._isJamoT(last)) {
+		return ilib.GlyphString._composeJamoLVT(first, last);
+	} else if (ilib.GlyphString._isJamoL(first) && ilib.GlyphString._isJamoV(last)) {
+		return ilib.GlyphString._composeJamoLV(first, last);
+	}
+
+	var c = lead + trail;
+	return (ilib.data.norm.nfc && ilib.data.norm.nfc[c]);
+};
+
+/**
+ * Return an iterator that will step through all of the characters
+ * in the string one at a time, taking care to step through decomposed 
+ * characters and through surrogate pairs in the UTF-16 encoding 
+ * as single characters. <p>
+ * 
+ * The GlyphString class will return decomposed Unicode characters
+ * as a single unit that a user might see on the screen as a single
+ * glyph. If the 
+ * next character in the iteration is a base character and it is 
+ * followed by combining characters, the base and all its following 
+ * combining characters are returned as a single unit.<p>
+ * 
+ * The standard Javascript String's charAt() method only
+ * returns information about a particular 16-bit character in the 
+ * UTF-16 encoding scheme.
+ * If the index is pointing to a low- or high-surrogate character,
+ * it will return that surrogate character rather 
+ * than the surrogate pair which represents a character 
+ * in the supplementary planes.<p>
+ * 
+ * The iterator instance returned has two methods, hasNext() which
+ * returns true if the iterator has more characters to iterate through,
+ * and next() which returns the next character.<p>
+ * 
+ * @override
+ * @return {Object} an iterator 
+ * that iterates through all the characters in the string
+ */
+ilib.GlyphString.prototype.charIterator = function() {
+	var it = ilib.String.prototype.charIterator.call(this);
+	
+	/**
+	 * @constructor
+	 */
+	function _chiterator (istring) {
+		this.index = 0;
+		this.spacingCombining = false;
+		this.hasNext = function () {
+			return !!this.nextChar || it.hasNext();
+		};
+		this.next = function () {
+			var ch = this.nextChar || it.next(),
+				prevCcc = ilib.data.norm.ccc[ch],
+				nextCcc,
+				composed = ch;
+			
+			this.nextChar = undefined;
+			this.spacingCombining = false;
+			
+			if (ilib.data.norm.ccc && 
+					(typeof(ilib.data.norm.ccc[ch]) === 'undefined' || ilib.data.norm.ccc[ch] === 0)) {
+				// found a starter... find all the non-starters until the next starter. Must include
+				// the next starter because under some odd circumstances, two starters sometimes recompose 
+				// together to form another character
+				var notdone = true;
+				while (it.hasNext() && notdone) {
+					this.nextChar = it.next();
+					nextCcc = ilib.data.norm.ccc[this.nextChar];
+					// Mn characters are Marks that are non-spacing. These do not take more room than an accent, so they should be 
+					// considered part of the on-screen glyph, even if they are non-combining. Mc are marks that are spacing
+					// and combining, which means they are part of the glyph, but they cause the glyph to use up more space than
+					// just the base character alone.
+					var isMn = ilib.CType._inRange(this.nextChar, "Mn", ilib.data.ctype_m);
+					var isMc = ilib.CType._inRange(this.nextChar, "Mc", ilib.data.ctype_m);
+					if (isMn || isMc || (typeof(nextCcc) !== 'undefined' && nextCcc !== 0)) {
+						if (isMc) {
+							this.spacingCombining = true;
+						}
+						ch += this.nextChar;
+						this.nextChar = undefined;
+					} else {
+						// found the next starter. See if this can be composed with the previous starter
+						var testChar = ilib.GlyphString._compose(composed, this.nextChar);
+						if (prevCcc === 0 && typeof(testChar) !== 'undefined') { 
+							// not blocked and there is a mapping 
+							composed = testChar;
+							ch += this.nextChar;
+							this.nextChar = undefined;
+						} else {
+							// finished iterating, leave this.nextChar for the next next() call 
+							notdone = false;
+						}
+					}
+					prevCcc = nextCcc;
+				}
+			}
+			return ch;
+		};
+		// Returns true if the last character returned by the "next" method included
+		// spacing combining characters. If it does, then the character was wider than
+		// just the base character alone, and the truncation code will not add it.
+		this.wasSpacingCombining = function() {
+			return this.spacingCombining;
+		};
+	};
+	return new _chiterator(this);
+};
+
+/**
+ * Truncate the current string at the given number of whole glyphs and return
+ * the resulting string.
+ * 
+ * @param {number} length the number of whole glyphs to keep in the string
+ * @return {string} a string truncated to the requested number of glyphs
+ */
+ilib.GlyphString.prototype.truncate = function(length) {
+	var it = this.charIterator();
+	var tr = "";
+	for (var i = 0; i < length-1 && it.hasNext(); i++) {
+		tr += it.next();
+	}
+	
+	/*
+	 * handle the last character separately. If it contains spacing combining
+	 * accents, then we must assume that it uses up more horizontal space on
+	 * the screen than just the base character by itself, and therefore this
+	 * method will not truncate enough characters to fit in the given length.
+	 * In this case, we have to chop off not only the combining characters, 
+	 * but also the base character as well because the base without the
+	 * combining accents is considered a different character.
+	 */
+	if (i < length && it.hasNext()) {
+		var c = it.next();
+		if (!it.wasSpacingCombining()) {
+			tr += c;
+		}
+	}
+	return tr;
+};
+
+/**
+ * Truncate the current string at the given number of glyphs and add an ellipsis
+ * to indicate that is more to the string. The ellipsis forms the last character
+ * in the string, so the string is actually truncated at length-1 glyphs.
+ * 
+ * @param {number} length the number of whole glyphs to keep in the string 
+ * including the ellipsis
+ * @return {string} a string truncated to the requested number of glyphs
+ * with an ellipsis
+ */
+ilib.GlyphString.prototype.ellipsize = function(length) {
+	return this.truncate(length > 0 ? length-1 : 0) + "…";
+};
+
+
 /*
  * normstring.js - ilib normalized string subclass definition
  * 
@@ -18702,11 +19164,11 @@ ilib.AddressFmt.prototype.format = function (address) {
  * limitations under the License.
  */
 
-// !depends strings.js
+// !depends strings.js glyphstring.js
 
 /**
  * Create a new normalized string instance. This string inherits from 
- * the ilib.String class, and adds the normalize method. It can be
+ * the ilib.GlyphString class, and adds the normalize method. It can be
  * used anywhere that a normal Javascript string is used. <p>
  * 
  * Depends directive: !depends normstring.js
@@ -18716,13 +19178,12 @@ ilib.AddressFmt.prototype.format = function (address) {
  * @param {string|ilib.String=} str initialize this instance with this string 
  */
 ilib.NormString = function (str) {
-	ilib.NormString.baseConstructor.call(this, str);
-	
+	ilib.GlyphString.call(this, str);
 };
-ilib.NormString.prototype = new ilib.String();
+
+ilib.NormString.prototype = new ilib.GlyphString();
+ilib.NormString.parent = ilib.GlyphString;
 ilib.NormString.prototype.constructor = ilib.NormString;
-ilib.NormString.baseConstructor = ilib.String;
-ilib.NormString.prototype.parent = ilib.String.prototype;
 
 /**
  * Initialize the normalized string routines statically. This
@@ -18767,18 +19228,18 @@ ilib.NormString.init = function(options) {
 	}
 	var formDependencies = {
 		"nfd": ["nfd"],
-		"nfc": ["nfc", "nfd"],
+		"nfc": ["nfd"],
 		"nfkd": ["nfkd", "nfd"],
-		"nfkc": ["nfkd", "nfd", "nfc"]
+		"nfkc": ["nfkd", "nfd"]
 	};
-	var files = ["norm.ccc.json"];
+	var files = ["norm.json"];
 	var forms = formDependencies[form];
 	for (var f in forms) {
 		files.push(forms[f] + "/" + script + ".json");
 	}
 	
 	ilib._callLoadData(files, sync, loadParams, function(arr) {
-		ilib.data.norm.ccc = arr[0];
+		ilib.data.norm = arr[0];
 		for (var i = 1; i < arr.length; i++) {
 			if (typeof(arr[i]) !== 'undefined') {
 				ilib.data.norm[forms[i-1]] = arr[i];
@@ -18789,58 +19250,6 @@ ilib.NormString.init = function(options) {
 			onLoad(arr);
 		}
 	});
-};
-
-/**
- * Return true if the given character is a leading Jamo (Choseong) character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a leading Jamo character, 
- * false otherwise
- */
-ilib.NormString._isJamoL = function (n) {
-	return (n >= 0x1100 && n <= 0x1112);
-};
-
-/**
- * Return true if the given character is a vowel Jamo (Jungseong) character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a vowel Jamo character, 
- * false otherwise
- */
-ilib.NormString._isJamoV = function (n) {
-	return (n >= 0x1161 && n <= 0x1175);
-};
-
-/**
- * Return true if the given character is a trailing Jamo (Jongseong) character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a trailing Jamo character, 
- * false otherwise
- */
-ilib.NormString._isJamoT = function (n) {
-	return (n >= 0x11A8 && n <= 0x11C2);
-};
-
-/**
- * Return true if the given character is a precomposed Hangul character.
- * 
- * @private
- * @static
- * @param {number} n code point to check
- * @return {boolean} true if the character is a precomposed Hangul character, 
- * false otherwise
- */
-ilib.NormString._isHangul = function (n) {
-	return (n >= 0xAC00 && n <= 0xD7A3);
 };
 
 /**
@@ -18865,37 +19274,6 @@ ilib.NormString._decomposeHangul = function (cp) {
 };
 
 /**
- * Algorithmically compose an L and a V combining Jamo characters into
- * a precomposed Korean syllabic Hangul character. Both should already
- * be in the proper ranges for L and V characters. 
- * 
- * @private
- * @static
- * @param {number} lead the code point of the lead Jamo character to compose
- * @param {number} trail the code point of the trailing Jamo character to compose
- * @return {string} the composed Hangul character
- */
-ilib.NormString._composeJamoLV = function (lead, trail) {
-	var lindex = lead - 0x1100;
-	var vindex = trail - 0x1161;
-	return ilib.String.fromCodePoint(0xAC00 + (lindex * 21 + vindex) * 28);
-};
-
-/**
- * Algorithmically compose a Hangul LV and a combining Jamo T character 
- * into a precomposed Korean syllabic Hangul character. 
- * 
- * @private
- * @static
- * @param {number} lead the code point of the lead Hangul character to compose
- * @param {number} trail the code point of the trailing Jamo T character to compose
- * @return {string} the composed Hangul character
- */
-ilib.NormString._composeJamoLVT = function (lead, trail) {
-	return ilib.String.fromCodePoint(lead + (trail - 0x11A7));
-};
-
-/**
  * Expand one character according to the given canonical and 
  * compatibility mappings.
  *
@@ -18911,7 +19289,7 @@ ilib.NormString._expand = function (ch, canon, compat) {
 	var i, 
 		expansion = "",
 		n = ch.charCodeAt(0);
-	if (ilib.NormString._isHangul(n)) {
+	if (ilib.GlyphString._isHangul(n)) {
 		expansion = ilib.NormString._decomposeHangul(n);
 	} else {
 		var result = canon[ch];
@@ -18928,33 +19306,6 @@ ilib.NormString._expand = function (ch, canon, compat) {
 	}
 	return expansion;
 };
-
-/**
- * Compose one character out of a leading character and a 
- * trailing character. If the characters are Korean Jamo, they
- * will be composed algorithmically. If they are any other
- * characters, they will be looked up in the nfc tables.
- * 
- * @private
- * @static
- * @param {string} lead leading character to compose
- * @param {string} trail the trailing character to compose
- * @return {string} the fully composed character, or undefined if
- * there is no composition for those two characters
- */
-ilib.NormString._compose = function (lead, trail) {
-	var first = lead.charCodeAt(0);
-	var last = trail.charCodeAt(0);
-	if (ilib.NormString._isHangul(first) && ilib.NormString._isJamoT(last)) {
-		return ilib.NormString._composeJamoLVT(first, last);
-	} else if (ilib.NormString._isJamoL(first) && ilib.NormString._isJamoV(last)) {
-		return ilib.NormString._composeJamoLV(first, last);
-	}
-
-	var c = lead + trail;
-	return (ilib.data.norm.nfc && ilib.data.norm.nfc[c]);
-};
-
 
 /**
  * Perform the Unicode Normalization Algorithm upon the string and return 
@@ -19130,13 +19481,13 @@ ilib.NormString.prototype.normalize = function (form) {
 	var decomp = "";
 	
 	if (nfkd) {
-		var ch, it = this.parent.charIterator.call(this);
+		var ch, it = ilib.String.prototype.charIterator.call(this);
 		while (it.hasNext()) {
 			ch = it.next();
 			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd, ilib.data.norm.nfkd);
 		}
 	} else {
-		var ch, it = this.parent.charIterator.call(this);
+		var ch, it = ilib.String.prototype.charIterator.call(this);
 		while (it.hasNext()) {
 			ch = it.next();
 			decomp += ilib.NormString._expand(ch, ilib.data.norm.nfd);
@@ -19195,7 +19546,7 @@ ilib.NormString.prototype.normalize = function (form) {
 						ilib.data.norm.ccc[cpArray[end]] !== 0) {
 						if (ccc(cpArray[end-1]) < ccc(cpArray[end])) { 
 							// not blocked 
-							var testChar = ilib.NormString._compose(cpArray[i], cpArray[end]);
+							var testChar = ilib.GlyphString._compose(cpArray[i], cpArray[end]);
 							if (typeof(testChar) !== 'undefined') {
 								cpArray[i] = testChar;
 								
@@ -19209,7 +19560,7 @@ ilib.NormString.prototype.normalize = function (form) {
 						end++;
 					} else {
 						// found the next starter. See if this can be composed with the previous starter
-						var testChar = ilib.NormString._compose(cpArray[i], cpArray[end]);
+						var testChar = ilib.GlyphString._compose(cpArray[i], cpArray[end]);
 						if (ccc(cpArray[end-1]) === 0 && typeof(testChar) !== 'undefined') { 
 							// not blocked and there is a mapping 
 							cpArray[i] = testChar;
@@ -19262,7 +19613,7 @@ ilib.NormString.prototype.normalize = function (form) {
  * that iterates through all the characters in the string
  */
 ilib.NormString.prototype.charIterator = function() {
-	var it = this.parent.charIterator.call(this);
+	var it = ilib.String.prototype.charIterator.call(this);
 	
 	/**
 	 * @constructor
@@ -19301,7 +19652,7 @@ ilib.NormString.prototype.charIterator = function() {
 						this.nextChar = undefined;
 					} else {
 						// found the next starter. See if this can be composed with the previous starter
-						var testChar = ilib.NormString._compose(composed, this.nextChar);
+						var testChar = ilib.GlyphString._compose(composed, this.nextChar);
 						if (prevCcc === 0 && typeof(testChar) !== 'undefined') { 
 							// not blocked and there is a mapping 
 							composed = testChar;
@@ -20126,7 +20477,6 @@ ilib.Collator.getAvailableScripts = function () {
 	return [ "Latn" ];
 };
 
-ilib.data.norm.ccc = {"̀":230,"́":230,"̂":230,"̃":230,"̄":230,"̅":230,"̆":230,"̇":230,"̈":230,"̉":230,"̊":230,"̋":230,"̌":230,"̍":230,"̎":230,"̏":230,"̐":230,"̑":230,"̒":230,"̓":230,"̔":230,"̕":232,"̖":220,"̗":220,"̘":220,"̙":220,"̚":232,"̛":216,"̜":220,"̝":220,"̞":220,"̟":220,"̠":220,"̡":202,"̢":202,"̣":220,"̤":220,"̥":220,"̦":220,"̧":202,"̨":202,"̩":220,"̪":220,"̫":220,"̬":220,"̭":220,"̮":220,"̯":220,"̰":220,"̱":220,"̲":220,"̳":220,"̴":1,"̵":1,"̶":1,"̷":1,"̸":1,"̹":220,"̺":220,"̻":220,"̼":220,"̽":230,"̾":230,"̿":230,"̀":230,"́":230,"͂":230,"̓":230,"̈́":230,"ͅ":240,"͆":230,"͇":220,"͈":220,"͉":220,"͊":230,"͋":230,"͌":230,"͍":220,"͎":220,"͐":230,"͑":230,"͒":230,"͓":220,"͔":220,"͕":220,"͖":220,"͗":230,"͘":232,"͙":220,"͚":220,"͛":230,"͜":233,"͝":234,"͞":234,"͟":233,"͠":234,"͡":234,"͢":233,"ͣ":230,"ͤ":230,"ͥ":230,"ͦ":230,"ͧ":230,"ͨ":230,"ͩ":230,"ͪ":230,"ͫ":230,"ͬ":230,"ͭ":230,"ͮ":230,"ͯ":230,"҃":230,"҄":230,"҅":230,"҆":230,"҇":230,"֑":220,"֒":230,"֓":230,"֔":230,"֕":230,"֖":220,"֗":230,"֘":230,"֙":230,"֚":222,"֛":220,"֜":230,"֝":230,"֞":230,"֟":230,"֠":230,"֡":230,"֢":220,"֣":220,"֤":220,"֥":220,"֦":220,"֧":220,"֨":230,"֩":230,"֪":220,"֫":230,"֬":230,"֭":222,"֮":228,"֯":230,"ְ":10,"ֱ":11,"ֲ":12,"ֳ":13,"ִ":14,"ֵ":15,"ֶ":16,"ַ":17,"ָ":18,"ֹ":19,"ֺ":19,"ֻ":20,"ּ":21,"ֽ":22,"ֿ":23,"ׁ":24,"ׂ":25,"ׄ":230,"ׅ":220,"ׇ":18,"ؐ":230,"ؑ":230,"ؒ":230,"ؓ":230,"ؔ":230,"ؕ":230,"ؖ":230,"ؗ":230,"ؘ":30,"ؙ":31,"ؚ":32,"ً":27,"ٌ":28,"ٍ":29,"َ":30,"ُ":31,"ِ":32,"ّ":33,"ْ":34,"ٓ":230,"ٔ":230,"ٕ":220,"ٖ":220,"ٗ":230,"٘":230,"ٙ":230,"ٚ":230,"ٛ":230,"ٜ":220,"ٝ":230,"ٞ":230,"ٟ":220,"ٰ":35,"ۖ":230,"ۗ":230,"ۘ":230,"ۙ":230,"ۚ":230,"ۛ":230,"ۜ":230,"۟":230,"۠":230,"ۡ":230,"ۢ":230,"ۣ":220,"ۤ":230,"ۧ":230,"ۨ":230,"۪":220,"۫":230,"۬":230,"ۭ":220,"ܑ":36,"ܰ":230,"ܱ":220,"ܲ":230,"ܳ":230,"ܴ":220,"ܵ":230,"ܶ":230,"ܷ":220,"ܸ":220,"ܹ":220,"ܺ":230,"ܻ":220,"ܼ":220,"ܽ":230,"ܾ":220,"ܿ":230,"݀":230,"݁":230,"݂":220,"݃":230,"݄":220,"݅":230,"݆":220,"݇":230,"݈":220,"݉":230,"݊":230,"߫":230,"߬":230,"߭":230,"߮":230,"߯":230,"߰":230,"߱":230,"߲":220,"߳":230,"ࠖ":230,"ࠗ":230,"࠘":230,"࠙":230,"ࠛ":230,"ࠜ":230,"ࠝ":230,"ࠞ":230,"ࠟ":230,"ࠠ":230,"ࠡ":230,"ࠢ":230,"ࠣ":230,"ࠥ":230,"ࠦ":230,"ࠧ":230,"ࠩ":230,"ࠪ":230,"ࠫ":230,"ࠬ":230,"࠭":230,"࡙":220,"࡚":220,"࡛":220,"ࣤ":230,"ࣥ":230,"ࣦ":220,"ࣧ":230,"ࣨ":230,"ࣩ":220,"࣪":230,"࣫":230,"࣬":230,"࣭":220,"࣮":220,"࣯":220,"ࣰ":27,"ࣱ":28,"ࣲ":29,"ࣳ":230,"ࣴ":230,"ࣵ":230,"ࣶ":220,"ࣷ":230,"ࣸ":230,"ࣹ":220,"ࣺ":220,"ࣻ":230,"ࣼ":230,"ࣽ":230,"ࣾ":230,"़":7,"्":9,"॑":230,"॒":220,"॓":230,"॔":230,"়":7,"্":9,"਼":7,"੍":9,"઼":7,"્":9,"଼":7,"୍":9,"்":9,"్":9,"ౕ":84,"ౖ":91,"಼":7,"್":9,"്":9,"්":9,"ุ":103,"ู":103,"ฺ":9,"่":107,"้":107,"๊":107,"๋":107,"ຸ":118,"ູ":118,"່":122,"້":122,"໊":122,"໋":122,"༘":220,"༙":220,"༵":220,"༷":220,"༹":216,"ཱ":129,"ི":130,"ུ":132,"ེ":130,"ཻ":130,"ོ":130,"ཽ":130,"ྀ":130,"ྂ":230,"ྃ":230,"྄":9,"྆":230,"྇":230,"࿆":220,"့":7,"္":9,"်":9,"ႍ":220,"፝":230,"፞":230,"፟":230,"᜔":9,"᜴":9,"្":9,"៝":230,"ᢩ":228,"᤹":222,"᤺":230,"᤻":220,"ᨗ":230,"ᨘ":220,"᩠":9,"᩵":230,"᩶":230,"᩷":230,"᩸":230,"᩹":230,"᩺":230,"᩻":230,"᩼":230,"᩿":220,"᬴":7,"᭄":9,"᭫":230,"᭬":220,"᭭":230,"᭮":230,"᭯":230,"᭰":230,"᭱":230,"᭲":230,"᭳":230,"᮪":9,"᮫":9,"᯦":7,"᯲":9,"᯳":9,"᰷":7,"᳐":230,"᳑":230,"᳒":230,"᳔":1,"᳕":220,"᳖":220,"᳗":220,"᳘":220,"᳙":220,"᳚":230,"᳛":230,"᳜":220,"᳝":220,"᳞":220,"᳟":220,"᳠":230,"᳢":1,"᳣":1,"᳤":1,"᳥":1,"᳦":1,"᳧":1,"᳨":1,"᳭":220,"᳴":230,"᷀":230,"᷁":230,"᷂":220,"᷃":230,"᷄":230,"᷅":230,"᷆":230,"᷇":230,"᷈":230,"᷉":230,"᷊":220,"᷋":230,"᷌":230,"᷍":234,"᷎":214,"᷏":220,"᷐":202,"᷑":230,"᷒":230,"ᷓ":230,"ᷔ":230,"ᷕ":230,"ᷖ":230,"ᷗ":230,"ᷘ":230,"ᷙ":230,"ᷚ":230,"ᷛ":230,"ᷜ":230,"ᷝ":230,"ᷞ":230,"ᷟ":230,"ᷠ":230,"ᷡ":230,"ᷢ":230,"ᷣ":230,"ᷤ":230,"ᷥ":230,"ᷦ":230,"᷼":233,"᷽":220,"᷾":230,"᷿":220,"⃐":230,"⃑":230,"⃒":1,"⃓":1,"⃔":230,"⃕":230,"⃖":230,"⃗":230,"⃘":1,"⃙":1,"⃚":1,"⃛":230,"⃜":230,"⃡":230,"⃥":1,"⃦":1,"⃧":230,"⃨":220,"⃩":230,"⃪":1,"⃫":1,"⃬":220,"⃭":220,"⃮":220,"⃯":220,"⃰":230,"⳯":230,"⳰":230,"⳱":230,"⵿":9,"ⷠ":230,"ⷡ":230,"ⷢ":230,"ⷣ":230,"ⷤ":230,"ⷥ":230,"ⷦ":230,"ⷧ":230,"ⷨ":230,"ⷩ":230,"ⷪ":230,"ⷫ":230,"ⷬ":230,"ⷭ":230,"ⷮ":230,"ⷯ":230,"ⷰ":230,"ⷱ":230,"ⷲ":230,"ⷳ":230,"ⷴ":230,"ⷵ":230,"ⷶ":230,"ⷷ":230,"ⷸ":230,"ⷹ":230,"ⷺ":230,"ⷻ":230,"ⷼ":230,"ⷽ":230,"ⷾ":230,"ⷿ":230,"〪":218,"〫":228,"〬":232,"〭":222,"〮":224,"〯":224,"゙":8,"゚":8,"꙯":230,"ꙴ":230,"ꙵ":230,"ꙶ":230,"ꙷ":230,"ꙸ":230,"ꙹ":230,"ꙺ":230,"ꙻ":230,"꙼":230,"꙽":230,"ꚟ":230,"꛰":230,"꛱":230,"꠆":9,"꣄":9,"꣠":230,"꣡":230,"꣢":230,"꣣":230,"꣤":230,"꣥":230,"꣦":230,"꣧":230,"꣨":230,"꣩":230,"꣪":230,"꣫":230,"꣬":230,"꣭":230,"꣮":230,"꣯":230,"꣰":230,"꣱":230,"꤫":220,"꤬":220,"꤭":220,"꥓":9,"꦳":7,"꧀":9,"ꪰ":230,"ꪲ":230,"ꪳ":230,"ꪴ":220,"ꪷ":230,"ꪸ":230,"ꪾ":230,"꪿":230,"꫁":230,"꫶":9,"꯭":9,"ﬞ":26,"︠":230,"︡":230,"︢":230,"︣":230,"︤":230,"︥":230,"︦":230,"𐇽":220,"𐨍":220,"𐨏":230,"𐨸":230,"𐨹":1,"𐨺":220,"𐨿":9,"𑁆":9,"𑂹":9,"𑂺":7,"𑄀":230,"𑄁":230,"𑄂":230,"𑄳":9,"𑄴":9,"𑇀":9,"𑚶":9,"𑚷":7,"𝅥":216,"𝅦":216,"𝅧":1,"𝅨":1,"𝅩":1,"𝅭":226,"𝅮":216,"𝅯":216,"𝅰":216,"𝅱":216,"𝅲":216,"𝅻":220,"𝅼":220,"𝅽":220,"𝅾":220,"𝅿":220,"𝆀":220,"𝆁":220,"𝆂":220,"𝆅":230,"𝆆":230,"𝆇":230,"𝆈":230,"𝆉":230,"𝆊":220,"𝆋":220,"𝆪":230,"𝆫":230,"𝆬":230,"𝆭":230,"𝉂":230,"𝉃":230,"𝉄":230};
 ilib.data.nfd_all = {"À":"À","Á":"Á","Â":"Â","Ã":"Ã","Ä":"Ä","Å":"Å","Ç":"Ç","È":"È","É":"É","Ê":"Ê","Ë":"Ë","Ì":"Ì","Í":"Í","Î":"Î","Ï":"Ï","Ñ":"Ñ","Ò":"Ò","Ó":"Ó","Ô":"Ô","Õ":"Õ","Ö":"Ö","Ù":"Ù","Ú":"Ú","Û":"Û","Ü":"Ü","Ý":"Ý","à":"à","á":"á","â":"â","ã":"ã","ä":"ä","å":"å","ç":"ç","è":"è","é":"é","ê":"ê","ë":"ë","ì":"ì","í":"í","î":"î","ï":"ï","ñ":"ñ","ò":"ò","ó":"ó","ô":"ô","õ":"õ","ö":"ö","ù":"ù","ú":"ú","û":"û","ü":"ü","ý":"ý","ÿ":"ÿ","Ā":"Ā","ā":"ā","Ă":"Ă","ă":"ă","Ą":"Ą","ą":"ą","Ć":"Ć","ć":"ć","Ĉ":"Ĉ","ĉ":"ĉ","Ċ":"Ċ","ċ":"ċ","Č":"Č","č":"č","Ď":"Ď","ď":"ď","Ē":"Ē","ē":"ē","Ĕ":"Ĕ","ĕ":"ĕ","Ė":"Ė","ė":"ė","Ę":"Ę","ę":"ę","Ě":"Ě","ě":"ě","Ĝ":"Ĝ","ĝ":"ĝ","Ğ":"Ğ","ğ":"ğ","Ġ":"Ġ","ġ":"ġ","Ģ":"Ģ","ģ":"ģ","Ĥ":"Ĥ","ĥ":"ĥ","Ĩ":"Ĩ","ĩ":"ĩ","Ī":"Ī","ī":"ī","Ĭ":"Ĭ","ĭ":"ĭ","Į":"Į","į":"į","İ":"İ","Ĵ":"Ĵ","ĵ":"ĵ","Ķ":"Ķ","ķ":"ķ","Ĺ":"Ĺ","ĺ":"ĺ","Ļ":"Ļ","ļ":"ļ","Ľ":"Ľ","ľ":"ľ","Ń":"Ń","ń":"ń","Ņ":"Ņ","ņ":"ņ","Ň":"Ň","ň":"ň","Ō":"Ō","ō":"ō","Ŏ":"Ŏ","ŏ":"ŏ","Ő":"Ő","ő":"ő","Ŕ":"Ŕ","ŕ":"ŕ","Ŗ":"Ŗ","ŗ":"ŗ","Ř":"Ř","ř":"ř","Ś":"Ś","ś":"ś","Ŝ":"Ŝ","ŝ":"ŝ","Ş":"Ş","ş":"ş","Š":"Š","š":"š","Ţ":"Ţ","ţ":"ţ","Ť":"Ť","ť":"ť","Ũ":"Ũ","ũ":"ũ","Ū":"Ū","ū":"ū","Ŭ":"Ŭ","ŭ":"ŭ","Ů":"Ů","ů":"ů","Ű":"Ű","ű":"ű","Ų":"Ų","ų":"ų","Ŵ":"Ŵ","ŵ":"ŵ","Ŷ":"Ŷ","ŷ":"ŷ","Ÿ":"Ÿ","Ź":"Ź","ź":"ź","Ż":"Ż","ż":"ż","Ž":"Ž","ž":"ž","Ơ":"Ơ","ơ":"ơ","Ư":"Ư","ư":"ư","Ǎ":"Ǎ","ǎ":"ǎ","Ǐ":"Ǐ","ǐ":"ǐ","Ǒ":"Ǒ","ǒ":"ǒ","Ǔ":"Ǔ","ǔ":"ǔ","Ǖ":"Ǖ","ǖ":"ǖ","Ǘ":"Ǘ","ǘ":"ǘ","Ǚ":"Ǚ","ǚ":"ǚ","Ǜ":"Ǜ","ǜ":"ǜ","Ǟ":"Ǟ","ǟ":"ǟ","Ǡ":"Ǡ","ǡ":"ǡ","Ǣ":"Ǣ","ǣ":"ǣ","Ǧ":"Ǧ","ǧ":"ǧ","Ǩ":"Ǩ","ǩ":"ǩ","Ǫ":"Ǫ","ǫ":"ǫ","Ǭ":"Ǭ","ǭ":"ǭ","Ǯ":"Ǯ","ǯ":"ǯ","ǰ":"ǰ","Ǵ":"Ǵ","ǵ":"ǵ","Ǹ":"Ǹ","ǹ":"ǹ","Ǻ":"Ǻ","ǻ":"ǻ","Ǽ":"Ǽ","ǽ":"ǽ","Ǿ":"Ǿ","ǿ":"ǿ","Ȁ":"Ȁ","ȁ":"ȁ","Ȃ":"Ȃ","ȃ":"ȃ","Ȅ":"Ȅ","ȅ":"ȅ","Ȇ":"Ȇ","ȇ":"ȇ","Ȉ":"Ȉ","ȉ":"ȉ","Ȋ":"Ȋ","ȋ":"ȋ","Ȍ":"Ȍ","ȍ":"ȍ","Ȏ":"Ȏ","ȏ":"ȏ","Ȑ":"Ȑ","ȑ":"ȑ","Ȓ":"Ȓ","ȓ":"ȓ","Ȕ":"Ȕ","ȕ":"ȕ","Ȗ":"Ȗ","ȗ":"ȗ","Ș":"Ș","ș":"ș","Ț":"Ț","ț":"ț","Ȟ":"Ȟ","ȟ":"ȟ","Ȧ":"Ȧ","ȧ":"ȧ","Ȩ":"Ȩ","ȩ":"ȩ","Ȫ":"Ȫ","ȫ":"ȫ","Ȭ":"Ȭ","ȭ":"ȭ","Ȯ":"Ȯ","ȯ":"ȯ","Ȱ":"Ȱ","ȱ":"ȱ","Ȳ":"Ȳ","ȳ":"ȳ","̀":"̀","́":"́","̓":"̓","̈́":"̈́","ʹ":"ʹ",";":";","΅":"΅","Ά":"Ά","·":"·","Έ":"Έ","Ή":"Ή","Ί":"Ί","Ό":"Ό","Ύ":"Ύ","Ώ":"Ώ","ΐ":"ΐ","Ϊ":"Ϊ","Ϋ":"Ϋ","ά":"ά","έ":"έ","ή":"ή","ί":"ί","ΰ":"ΰ","ϊ":"ϊ","ϋ":"ϋ","ό":"ό","ύ":"ύ","ώ":"ώ","ϓ":"ϓ","ϔ":"ϔ","Ѐ":"Ѐ","Ё":"Ё","Ѓ":"Ѓ","Ї":"Ї","Ќ":"Ќ","Ѝ":"Ѝ","Ў":"Ў","Й":"Й","й":"й","ѐ":"ѐ","ё":"ё","ѓ":"ѓ","ї":"ї","ќ":"ќ","ѝ":"ѝ","ў":"ў","Ѷ":"Ѷ","ѷ":"ѷ","Ӂ":"Ӂ","ӂ":"ӂ","Ӑ":"Ӑ","ӑ":"ӑ","Ӓ":"Ӓ","ӓ":"ӓ","Ӗ":"Ӗ","ӗ":"ӗ","Ӛ":"Ӛ","ӛ":"ӛ","Ӝ":"Ӝ","ӝ":"ӝ","Ӟ":"Ӟ","ӟ":"ӟ","Ӣ":"Ӣ","ӣ":"ӣ","Ӥ":"Ӥ","ӥ":"ӥ","Ӧ":"Ӧ","ӧ":"ӧ","Ӫ":"Ӫ","ӫ":"ӫ","Ӭ":"Ӭ","ӭ":"ӭ","Ӯ":"Ӯ","ӯ":"ӯ","Ӱ":"Ӱ","ӱ":"ӱ","Ӳ":"Ӳ","ӳ":"ӳ","Ӵ":"Ӵ","ӵ":"ӵ","Ӹ":"Ӹ","ӹ":"ӹ","آ":"آ","أ":"أ","ؤ":"ؤ","إ":"إ","ئ":"ئ","ۀ":"ۀ","ۂ":"ۂ","ۓ":"ۓ","ऩ":"ऩ","ऱ":"ऱ","ऴ":"ऴ","क़":"क़","ख़":"ख़","ग़":"ग़","ज़":"ज़","ड़":"ड़","ढ़":"ढ़","फ़":"फ़","य़":"य़","ো":"ো","ৌ":"ৌ","ড়":"ড়","ঢ়":"ঢ়","য়":"য়","ਲ਼":"ਲ਼","ਸ਼":"ਸ਼","ਖ਼":"ਖ਼","ਗ਼":"ਗ਼","ਜ਼":"ਜ਼","ਫ਼":"ਫ਼","ୈ":"ୈ","ୋ":"ୋ","ୌ":"ୌ","ଡ଼":"ଡ଼","ଢ଼":"ଢ଼","ஔ":"ஔ","ொ":"ொ","ோ":"ோ","ௌ":"ௌ","ై":"ై","ೀ":"ೀ","ೇ":"ೇ","ೈ":"ೈ","ೊ":"ೊ","ೋ":"ೋ","ൊ":"ൊ","ോ":"ോ","ൌ":"ൌ","ේ":"ේ","ො":"ො","ෝ":"ෝ","ෞ":"ෞ","གྷ":"གྷ","ཌྷ":"ཌྷ","དྷ":"དྷ","བྷ":"བྷ","ཛྷ":"ཛྷ","ཀྵ":"ཀྵ","ཱི":"ཱི","ཱུ":"ཱུ","ྲྀ":"ྲྀ","ླྀ":"ླྀ","ཱྀ":"ཱྀ","ྒྷ":"ྒྷ","ྜྷ":"ྜྷ","ྡྷ":"ྡྷ","ྦྷ":"ྦྷ","ྫྷ":"ྫྷ","ྐྵ":"ྐྵ","ဦ":"ဦ","ᬆ":"ᬆ","ᬈ":"ᬈ","ᬊ":"ᬊ","ᬌ":"ᬌ","ᬎ":"ᬎ","ᬒ":"ᬒ","ᬻ":"ᬻ","ᬽ":"ᬽ","ᭀ":"ᭀ","ᭁ":"ᭁ","ᭃ":"ᭃ","Ḁ":"Ḁ","ḁ":"ḁ","Ḃ":"Ḃ","ḃ":"ḃ","Ḅ":"Ḅ","ḅ":"ḅ","Ḇ":"Ḇ","ḇ":"ḇ","Ḉ":"Ḉ","ḉ":"ḉ","Ḋ":"Ḋ","ḋ":"ḋ","Ḍ":"Ḍ","ḍ":"ḍ","Ḏ":"Ḏ","ḏ":"ḏ","Ḑ":"Ḑ","ḑ":"ḑ","Ḓ":"Ḓ","ḓ":"ḓ","Ḕ":"Ḕ","ḕ":"ḕ","Ḗ":"Ḗ","ḗ":"ḗ","Ḙ":"Ḙ","ḙ":"ḙ","Ḛ":"Ḛ","ḛ":"ḛ","Ḝ":"Ḝ","ḝ":"ḝ","Ḟ":"Ḟ","ḟ":"ḟ","Ḡ":"Ḡ","ḡ":"ḡ","Ḣ":"Ḣ","ḣ":"ḣ","Ḥ":"Ḥ","ḥ":"ḥ","Ḧ":"Ḧ","ḧ":"ḧ","Ḩ":"Ḩ","ḩ":"ḩ","Ḫ":"Ḫ","ḫ":"ḫ","Ḭ":"Ḭ","ḭ":"ḭ","Ḯ":"Ḯ","ḯ":"ḯ","Ḱ":"Ḱ","ḱ":"ḱ","Ḳ":"Ḳ","ḳ":"ḳ","Ḵ":"Ḵ","ḵ":"ḵ","Ḷ":"Ḷ","ḷ":"ḷ","Ḹ":"Ḹ","ḹ":"ḹ","Ḻ":"Ḻ","ḻ":"ḻ","Ḽ":"Ḽ","ḽ":"ḽ","Ḿ":"Ḿ","ḿ":"ḿ","Ṁ":"Ṁ","ṁ":"ṁ","Ṃ":"Ṃ","ṃ":"ṃ","Ṅ":"Ṅ","ṅ":"ṅ","Ṇ":"Ṇ","ṇ":"ṇ","Ṉ":"Ṉ","ṉ":"ṉ","Ṋ":"Ṋ","ṋ":"ṋ","Ṍ":"Ṍ","ṍ":"ṍ","Ṏ":"Ṏ","ṏ":"ṏ","Ṑ":"Ṑ","ṑ":"ṑ","Ṓ":"Ṓ","ṓ":"ṓ","Ṕ":"Ṕ","ṕ":"ṕ","Ṗ":"Ṗ","ṗ":"ṗ","Ṙ":"Ṙ","ṙ":"ṙ","Ṛ":"Ṛ","ṛ":"ṛ","Ṝ":"Ṝ","ṝ":"ṝ","Ṟ":"Ṟ","ṟ":"ṟ","Ṡ":"Ṡ","ṡ":"ṡ","Ṣ":"Ṣ","ṣ":"ṣ","Ṥ":"Ṥ","ṥ":"ṥ","Ṧ":"Ṧ","ṧ":"ṧ","Ṩ":"Ṩ","ṩ":"ṩ","Ṫ":"Ṫ","ṫ":"ṫ","Ṭ":"Ṭ","ṭ":"ṭ","Ṯ":"Ṯ","ṯ":"ṯ","Ṱ":"Ṱ","ṱ":"ṱ","Ṳ":"Ṳ","ṳ":"ṳ","Ṵ":"Ṵ","ṵ":"ṵ","Ṷ":"Ṷ","ṷ":"ṷ","Ṹ":"Ṹ","ṹ":"ṹ","Ṻ":"Ṻ","ṻ":"ṻ","Ṽ":"Ṽ","ṽ":"ṽ","Ṿ":"Ṿ","ṿ":"ṿ","Ẁ":"Ẁ","ẁ":"ẁ","Ẃ":"Ẃ","ẃ":"ẃ","Ẅ":"Ẅ","ẅ":"ẅ","Ẇ":"Ẇ","ẇ":"ẇ","Ẉ":"Ẉ","ẉ":"ẉ","Ẋ":"Ẋ","ẋ":"ẋ","Ẍ":"Ẍ","ẍ":"ẍ","Ẏ":"Ẏ","ẏ":"ẏ","Ẑ":"Ẑ","ẑ":"ẑ","Ẓ":"Ẓ","ẓ":"ẓ","Ẕ":"Ẕ","ẕ":"ẕ","ẖ":"ẖ","ẗ":"ẗ","ẘ":"ẘ","ẙ":"ẙ","ẛ":"ẛ","Ạ":"Ạ","ạ":"ạ","Ả":"Ả","ả":"ả","Ấ":"Ấ","ấ":"ấ","Ầ":"Ầ","ầ":"ầ","Ẩ":"Ẩ","ẩ":"ẩ","Ẫ":"Ẫ","ẫ":"ẫ","Ậ":"Ậ","ậ":"ậ","Ắ":"Ắ","ắ":"ắ","Ằ":"Ằ","ằ":"ằ","Ẳ":"Ẳ","ẳ":"ẳ","Ẵ":"Ẵ","ẵ":"ẵ","Ặ":"Ặ","ặ":"ặ","Ẹ":"Ẹ","ẹ":"ẹ","Ẻ":"Ẻ","ẻ":"ẻ","Ẽ":"Ẽ","ẽ":"ẽ","Ế":"Ế","ế":"ế","Ề":"Ề","ề":"ề","Ể":"Ể","ể":"ể","Ễ":"Ễ","ễ":"ễ","Ệ":"Ệ","ệ":"ệ","Ỉ":"Ỉ","ỉ":"ỉ","Ị":"Ị","ị":"ị","Ọ":"Ọ","ọ":"ọ","Ỏ":"Ỏ","ỏ":"ỏ","Ố":"Ố","ố":"ố","Ồ":"Ồ","ồ":"ồ","Ổ":"Ổ","ổ":"ổ","Ỗ":"Ỗ","ỗ":"ỗ","Ộ":"Ộ","ộ":"ộ","Ớ":"Ớ","ớ":"ớ","Ờ":"Ờ","ờ":"ờ","Ở":"Ở","ở":"ở","Ỡ":"Ỡ","ỡ":"ỡ","Ợ":"Ợ","ợ":"ợ","Ụ":"Ụ","ụ":"ụ","Ủ":"Ủ","ủ":"ủ","Ứ":"Ứ","ứ":"ứ","Ừ":"Ừ","ừ":"ừ","Ử":"Ử","ử":"ử","Ữ":"Ữ","ữ":"ữ","Ự":"Ự","ự":"ự","Ỳ":"Ỳ","ỳ":"ỳ","Ỵ":"Ỵ","ỵ":"ỵ","Ỷ":"Ỷ","ỷ":"ỷ","Ỹ":"Ỹ","ỹ":"ỹ","ἀ":"ἀ","ἁ":"ἁ","ἂ":"ἂ","ἃ":"ἃ","ἄ":"ἄ","ἅ":"ἅ","ἆ":"ἆ","ἇ":"ἇ","Ἀ":"Ἀ","Ἁ":"Ἁ","Ἂ":"Ἂ","Ἃ":"Ἃ","Ἄ":"Ἄ","Ἅ":"Ἅ","Ἆ":"Ἆ","Ἇ":"Ἇ","ἐ":"ἐ","ἑ":"ἑ","ἒ":"ἒ","ἓ":"ἓ","ἔ":"ἔ","ἕ":"ἕ","Ἐ":"Ἐ","Ἑ":"Ἑ","Ἒ":"Ἒ","Ἓ":"Ἓ","Ἔ":"Ἔ","Ἕ":"Ἕ","ἠ":"ἠ","ἡ":"ἡ","ἢ":"ἢ","ἣ":"ἣ","ἤ":"ἤ","ἥ":"ἥ","ἦ":"ἦ","ἧ":"ἧ","Ἠ":"Ἠ","Ἡ":"Ἡ","Ἢ":"Ἢ","Ἣ":"Ἣ","Ἤ":"Ἤ","Ἥ":"Ἥ","Ἦ":"Ἦ","Ἧ":"Ἧ","ἰ":"ἰ","ἱ":"ἱ","ἲ":"ἲ","ἳ":"ἳ","ἴ":"ἴ","ἵ":"ἵ","ἶ":"ἶ","ἷ":"ἷ","Ἰ":"Ἰ","Ἱ":"Ἱ","Ἲ":"Ἲ","Ἳ":"Ἳ","Ἴ":"Ἴ","Ἵ":"Ἵ","Ἶ":"Ἶ","Ἷ":"Ἷ","ὀ":"ὀ","ὁ":"ὁ","ὂ":"ὂ","ὃ":"ὃ","ὄ":"ὄ","ὅ":"ὅ","Ὀ":"Ὀ","Ὁ":"Ὁ","Ὂ":"Ὂ","Ὃ":"Ὃ","Ὄ":"Ὄ","Ὅ":"Ὅ","ὐ":"ὐ","ὑ":"ὑ","ὒ":"ὒ","ὓ":"ὓ","ὔ":"ὔ","ὕ":"ὕ","ὖ":"ὖ","ὗ":"ὗ","Ὑ":"Ὑ","Ὓ":"Ὓ","Ὕ":"Ὕ","Ὗ":"Ὗ","ὠ":"ὠ","ὡ":"ὡ","ὢ":"ὢ","ὣ":"ὣ","ὤ":"ὤ","ὥ":"ὥ","ὦ":"ὦ","ὧ":"ὧ","Ὠ":"Ὠ","Ὡ":"Ὡ","Ὢ":"Ὢ","Ὣ":"Ὣ","Ὤ":"Ὤ","Ὥ":"Ὥ","Ὦ":"Ὦ","Ὧ":"Ὧ","ὰ":"ὰ","ά":"ά","ὲ":"ὲ","έ":"έ","ὴ":"ὴ","ή":"ή","ὶ":"ὶ","ί":"ί","ὸ":"ὸ","ό":"ό","ὺ":"ὺ","ύ":"ύ","ὼ":"ὼ","ώ":"ώ","ᾀ":"ᾀ","ᾁ":"ᾁ","ᾂ":"ᾂ","ᾃ":"ᾃ","ᾄ":"ᾄ","ᾅ":"ᾅ","ᾆ":"ᾆ","ᾇ":"ᾇ","ᾈ":"ᾈ","ᾉ":"ᾉ","ᾊ":"ᾊ","ᾋ":"ᾋ","ᾌ":"ᾌ","ᾍ":"ᾍ","ᾎ":"ᾎ","ᾏ":"ᾏ","ᾐ":"ᾐ","ᾑ":"ᾑ","ᾒ":"ᾒ","ᾓ":"ᾓ","ᾔ":"ᾔ","ᾕ":"ᾕ","ᾖ":"ᾖ","ᾗ":"ᾗ","ᾘ":"ᾘ","ᾙ":"ᾙ","ᾚ":"ᾚ","ᾛ":"ᾛ","ᾜ":"ᾜ","ᾝ":"ᾝ","ᾞ":"ᾞ","ᾟ":"ᾟ","ᾠ":"ᾠ","ᾡ":"ᾡ","ᾢ":"ᾢ","ᾣ":"ᾣ","ᾤ":"ᾤ","ᾥ":"ᾥ","ᾦ":"ᾦ","ᾧ":"ᾧ","ᾨ":"ᾨ","ᾩ":"ᾩ","ᾪ":"ᾪ","ᾫ":"ᾫ","ᾬ":"ᾬ","ᾭ":"ᾭ","ᾮ":"ᾮ","ᾯ":"ᾯ","ᾰ":"ᾰ","ᾱ":"ᾱ","ᾲ":"ᾲ","ᾳ":"ᾳ","ᾴ":"ᾴ","ᾶ":"ᾶ","ᾷ":"ᾷ","Ᾰ":"Ᾰ","Ᾱ":"Ᾱ","Ὰ":"Ὰ","Ά":"Ά","ᾼ":"ᾼ","ι":"ι","῁":"῁","ῂ":"ῂ","ῃ":"ῃ","ῄ":"ῄ","ῆ":"ῆ","ῇ":"ῇ","Ὲ":"Ὲ","Έ":"Έ","Ὴ":"Ὴ","Ή":"Ή","ῌ":"ῌ","῍":"῍","῎":"῎","῏":"῏","ῐ":"ῐ","ῑ":"ῑ","ῒ":"ῒ","ΐ":"ΐ","ῖ":"ῖ","ῗ":"ῗ","Ῐ":"Ῐ","Ῑ":"Ῑ","Ὶ":"Ὶ","Ί":"Ί","῝":"῝","῞":"῞","῟":"῟","ῠ":"ῠ","ῡ":"ῡ","ῢ":"ῢ","ΰ":"ΰ","ῤ":"ῤ","ῥ":"ῥ","ῦ":"ῦ","ῧ":"ῧ","Ῠ":"Ῠ","Ῡ":"Ῡ","Ὺ":"Ὺ","Ύ":"Ύ","Ῥ":"Ῥ","῭":"῭","΅":"΅","`":"`","ῲ":"ῲ","ῳ":"ῳ","ῴ":"ῴ","ῶ":"ῶ","ῷ":"ῷ","Ὸ":"Ὸ","Ό":"Ό","Ὼ":"Ὼ","Ώ":"Ώ","ῼ":"ῼ","´":"´"," ":" "," ":" ","Ω":"Ω","K":"K","Å":"Å","↚":"↚","↛":"↛","↮":"↮","⇍":"⇍","⇎":"⇎","⇏":"⇏","∄":"∄","∉":"∉","∌":"∌","∤":"∤","∦":"∦","≁":"≁","≄":"≄","≇":"≇","≉":"≉","≠":"≠","≢":"≢","≭":"≭","≮":"≮","≯":"≯","≰":"≰","≱":"≱","≴":"≴","≵":"≵","≸":"≸","≹":"≹","⊀":"⊀","⊁":"⊁","⊄":"⊄","⊅":"⊅","⊈":"⊈","⊉":"⊉","⊬":"⊬","⊭":"⊭","⊮":"⊮","⊯":"⊯","⋠":"⋠","⋡":"⋡","⋢":"⋢","⋣":"⋣","⋪":"⋪","⋫":"⋫","⋬":"⋬","⋭":"⋭","〈":"〈","〉":"〉","⫝̸":"⫝̸","が":"が","ぎ":"ぎ","ぐ":"ぐ","げ":"げ","ご":"ご","ざ":"ざ","じ":"じ","ず":"ず","ぜ":"ぜ","ぞ":"ぞ","だ":"だ","ぢ":"ぢ","づ":"づ","で":"で","ど":"ど","ば":"ば","ぱ":"ぱ","び":"び","ぴ":"ぴ","ぶ":"ぶ","ぷ":"ぷ","べ":"べ","ぺ":"ぺ","ぼ":"ぼ","ぽ":"ぽ","ゔ":"ゔ","ゞ":"ゞ","ガ":"ガ","ギ":"ギ","グ":"グ","ゲ":"ゲ","ゴ":"ゴ","ザ":"ザ","ジ":"ジ","ズ":"ズ","ゼ":"ゼ","ゾ":"ゾ","ダ":"ダ","ヂ":"ヂ","ヅ":"ヅ","デ":"デ","ド":"ド","バ":"バ","パ":"パ","ビ":"ビ","ピ":"ピ","ブ":"ブ","プ":"プ","ベ":"ベ","ペ":"ペ","ボ":"ボ","ポ":"ポ","ヴ":"ヴ","ヷ":"ヷ","ヸ":"ヸ","ヹ":"ヹ","ヺ":"ヺ","ヾ":"ヾ","豈":"豈","更":"更","車":"車","賈":"賈","滑":"滑","串":"串","句":"句","龜":"龜","龜":"龜","契":"契","金":"金","喇":"喇","奈":"奈","懶":"懶","癩":"癩","羅":"羅","蘿":"蘿","螺":"螺","裸":"裸","邏":"邏","樂":"樂","洛":"洛","烙":"烙","珞":"珞","落":"落","酪":"酪","駱":"駱","亂":"亂","卵":"卵","欄":"欄","爛":"爛","蘭":"蘭","鸞":"鸞","嵐":"嵐","濫":"濫","藍":"藍","襤":"襤","拉":"拉","臘":"臘","蠟":"蠟","廊":"廊","朗":"朗","浪":"浪","狼":"狼","郎":"郎","來":"來","冷":"冷","勞":"勞","擄":"擄","櫓":"櫓","爐":"爐","盧":"盧","老":"老","蘆":"蘆","虜":"虜","路":"路","露":"露","魯":"魯","鷺":"鷺","碌":"碌","祿":"祿","綠":"綠","菉":"菉","錄":"錄","鹿":"鹿","論":"論","壟":"壟","弄":"弄","籠":"籠","聾":"聾","牢":"牢","磊":"磊","賂":"賂","雷":"雷","壘":"壘","屢":"屢","樓":"樓","淚":"淚","漏":"漏","累":"累","縷":"縷","陋":"陋","勒":"勒","肋":"肋","凜":"凜","凌":"凌","稜":"稜","綾":"綾","菱":"菱","陵":"陵","讀":"讀","拏":"拏","樂":"樂","諾":"諾","丹":"丹","寧":"寧","怒":"怒","率":"率","異":"異","北":"北","磻":"磻","便":"便","復":"復","不":"不","泌":"泌","數":"數","索":"索","參":"參","塞":"塞","省":"省","葉":"葉","說":"說","殺":"殺","辰":"辰","沈":"沈","拾":"拾","若":"若","掠":"掠","略":"略","亮":"亮","兩":"兩","凉":"凉","梁":"梁","糧":"糧","良":"良","諒":"諒","量":"量","勵":"勵","呂":"呂","女":"女","廬":"廬","旅":"旅","濾":"濾","礪":"礪","閭":"閭","驪":"驪","麗":"麗","黎":"黎","力":"力","曆":"曆","歷":"歷","轢":"轢","年":"年","憐":"憐","戀":"戀","撚":"撚","漣":"漣","煉":"煉","璉":"璉","秊":"秊","練":"練","聯":"聯","輦":"輦","蓮":"蓮","連":"連","鍊":"鍊","列":"列","劣":"劣","咽":"咽","烈":"烈","裂":"裂","說":"說","廉":"廉","念":"念","捻":"捻","殮":"殮","簾":"簾","獵":"獵","令":"令","囹":"囹","寧":"寧","嶺":"嶺","怜":"怜","玲":"玲","瑩":"瑩","羚":"羚","聆":"聆","鈴":"鈴","零":"零","靈":"靈","領":"領","例":"例","禮":"禮","醴":"醴","隸":"隸","惡":"惡","了":"了","僚":"僚","寮":"寮","尿":"尿","料":"料","樂":"樂","燎":"燎","療":"療","蓼":"蓼","遼":"遼","龍":"龍","暈":"暈","阮":"阮","劉":"劉","杻":"杻","柳":"柳","流":"流","溜":"溜","琉":"琉","留":"留","硫":"硫","紐":"紐","類":"類","六":"六","戮":"戮","陸":"陸","倫":"倫","崙":"崙","淪":"淪","輪":"輪","律":"律","慄":"慄","栗":"栗","率":"率","隆":"隆","利":"利","吏":"吏","履":"履","易":"易","李":"李","梨":"梨","泥":"泥","理":"理","痢":"痢","罹":"罹","裏":"裏","裡":"裡","里":"里","離":"離","匿":"匿","溺":"溺","吝":"吝","燐":"燐","璘":"璘","藺":"藺","隣":"隣","鱗":"鱗","麟":"麟","林":"林","淋":"淋","臨":"臨","立":"立","笠":"笠","粒":"粒","狀":"狀","炙":"炙","識":"識","什":"什","茶":"茶","刺":"刺","切":"切","度":"度","拓":"拓","糖":"糖","宅":"宅","洞":"洞","暴":"暴","輻":"輻","行":"行","降":"降","見":"見","廓":"廓","兀":"兀","嗀":"嗀","塚":"塚","晴":"晴","凞":"凞","猪":"猪","益":"益","礼":"礼","神":"神","祥":"祥","福":"福","靖":"靖","精":"精","羽":"羽","蘒":"蘒","諸":"諸","逸":"逸","都":"都","飯":"飯","飼":"飼","館":"館","鶴":"鶴","郞":"郞","隷":"隷","侮":"侮","僧":"僧","免":"免","勉":"勉","勤":"勤","卑":"卑","喝":"喝","嘆":"嘆","器":"器","塀":"塀","墨":"墨","層":"層","屮":"屮","悔":"悔","慨":"慨","憎":"憎","懲":"懲","敏":"敏","既":"既","暑":"暑","梅":"梅","海":"海","渚":"渚","漢":"漢","煮":"煮","爫":"爫","琢":"琢","碑":"碑","社":"社","祉":"祉","祈":"祈","祐":"祐","祖":"祖","祝":"祝","禍":"禍","禎":"禎","穀":"穀","突":"突","節":"節","練":"練","縉":"縉","繁":"繁","署":"署","者":"者","臭":"臭","艹":"艹","艹":"艹","著":"著","褐":"褐","視":"視","謁":"謁","謹":"謹","賓":"賓","贈":"贈","辶":"辶","逸":"逸","難":"難","響":"響","頻":"頻","恵":"恵","𤋮":"𤋮","舘":"舘","並":"並","况":"况","全":"全","侀":"侀","充":"充","冀":"冀","勇":"勇","勺":"勺","喝":"喝","啕":"啕","喙":"喙","嗢":"嗢","塚":"塚","墳":"墳","奄":"奄","奔":"奔","婢":"婢","嬨":"嬨","廒":"廒","廙":"廙","彩":"彩","徭":"徭","惘":"惘","慎":"慎","愈":"愈","憎":"憎","慠":"慠","懲":"懲","戴":"戴","揄":"揄","搜":"搜","摒":"摒","敖":"敖","晴":"晴","朗":"朗","望":"望","杖":"杖","歹":"歹","殺":"殺","流":"流","滛":"滛","滋":"滋","漢":"漢","瀞":"瀞","煮":"煮","瞧":"瞧","爵":"爵","犯":"犯","猪":"猪","瑱":"瑱","甆":"甆","画":"画","瘝":"瘝","瘟":"瘟","益":"益","盛":"盛","直":"直","睊":"睊","着":"着","磌":"磌","窱":"窱","節":"節","类":"类","絛":"絛","練":"練","缾":"缾","者":"者","荒":"荒","華":"華","蝹":"蝹","襁":"襁","覆":"覆","視":"視","調":"調","諸":"諸","請":"請","謁":"謁","諾":"諾","諭":"諭","謹":"謹","變":"變","贈":"贈","輸":"輸","遲":"遲","醙":"醙","鉶":"鉶","陼":"陼","難":"難","靖":"靖","韛":"韛","響":"響","頋":"頋","頻":"頻","鬒":"鬒","龜":"龜","𢡊":"𢡊","𢡄":"𢡄","𣏕":"𣏕","㮝":"㮝","䀘":"䀘","䀹":"䀹","𥉉":"𥉉","𥳐":"𥳐","𧻓":"𧻓","齃":"齃","龎":"龎","יִ":"יִ","ײַ":"ײַ","שׁ":"שׁ","שׂ":"שׂ","שּׁ":"שּׁ","שּׂ":"שּׂ","אַ":"אַ","אָ":"אָ","אּ":"אּ","בּ":"בּ","גּ":"גּ","דּ":"דּ","הּ":"הּ","וּ":"וּ","זּ":"זּ","טּ":"טּ","יּ":"יּ","ךּ":"ךּ","כּ":"כּ","לּ":"לּ","מּ":"מּ","נּ":"נּ","סּ":"סּ","ףּ":"ףּ","פּ":"פּ","צּ":"צּ","קּ":"קּ","רּ":"רּ","שּ":"שּ","תּ":"תּ","וֹ":"וֹ","בֿ":"בֿ","כֿ":"כֿ","פֿ":"פֿ","𑂚":"𑂚","𑂜":"𑂜","𑂫":"𑂫","𑄮":"𑄮","𑄯":"𑄯","𝅗𝅥":"𝅗𝅥","𝅘𝅥":"𝅘𝅥","𝅘𝅥𝅮":"𝅘𝅥𝅮","𝅘𝅥𝅯":"𝅘𝅥𝅯","𝅘𝅥𝅰":"𝅘𝅥𝅰","𝅘𝅥𝅱":"𝅘𝅥𝅱","𝅘𝅥𝅲":"𝅘𝅥𝅲","𝆹𝅥":"𝆹𝅥","𝆺𝅥":"𝆺𝅥","𝆹𝅥𝅮":"𝆹𝅥𝅮","𝆺𝅥𝅮":"𝆺𝅥𝅮","𝆹𝅥𝅯":"𝆹𝅥𝅯","𝆺𝅥𝅯":"𝆺𝅥𝅯","丽":"丽","丸":"丸","乁":"乁","𠄢":"𠄢","你":"你","侮":"侮","侻":"侻","倂":"倂","偺":"偺","備":"備","僧":"僧","像":"像","㒞":"㒞","𠘺":"𠘺","免":"免","兔":"兔","兤":"兤","具":"具","𠔜":"𠔜","㒹":"㒹","內":"內","再":"再","𠕋":"𠕋","冗":"冗","冤":"冤","仌":"仌","冬":"冬","况":"况","𩇟":"𩇟","凵":"凵","刃":"刃","㓟":"㓟","刻":"刻","剆":"剆","割":"割","剷":"剷","㔕":"㔕","勇":"勇","勉":"勉","勤":"勤","勺":"勺","包":"包","匆":"匆","北":"北","卉":"卉","卑":"卑","博":"博","即":"即","卽":"卽","卿":"卿","卿":"卿","卿":"卿","𠨬":"𠨬","灰":"灰","及":"及","叟":"叟","𠭣":"𠭣","叫":"叫","叱":"叱","吆":"吆","咞":"咞","吸":"吸","呈":"呈","周":"周","咢":"咢","哶":"哶","唐":"唐","啓":"啓","啣":"啣","善":"善","善":"善","喙":"喙","喫":"喫","喳":"喳","嗂":"嗂","圖":"圖","嘆":"嘆","圗":"圗","噑":"噑","噴":"噴","切":"切","壮":"壮","城":"城","埴":"埴","堍":"堍","型":"型","堲":"堲","報":"報","墬":"墬","𡓤":"𡓤","売":"売","壷":"壷","夆":"夆","多":"多","夢":"夢","奢":"奢","𡚨":"𡚨","𡛪":"𡛪","姬":"姬","娛":"娛","娧":"娧","姘":"姘","婦":"婦","㛮":"㛮","㛼":"㛼","嬈":"嬈","嬾":"嬾","嬾":"嬾","𡧈":"𡧈","寃":"寃","寘":"寘","寧":"寧","寳":"寳","𡬘":"𡬘","寿":"寿","将":"将","当":"当","尢":"尢","㞁":"㞁","屠":"屠","屮":"屮","峀":"峀","岍":"岍","𡷤":"𡷤","嵃":"嵃","𡷦":"𡷦","嵮":"嵮","嵫":"嵫","嵼":"嵼","巡":"巡","巢":"巢","㠯":"㠯","巽":"巽","帨":"帨","帽":"帽","幩":"幩","㡢":"㡢","𢆃":"𢆃","㡼":"㡼","庰":"庰","庳":"庳","庶":"庶","廊":"廊","𪎒":"𪎒","廾":"廾","𢌱":"𢌱","𢌱":"𢌱","舁":"舁","弢":"弢","弢":"弢","㣇":"㣇","𣊸":"𣊸","𦇚":"𦇚","形":"形","彫":"彫","㣣":"㣣","徚":"徚","忍":"忍","志":"志","忹":"忹","悁":"悁","㤺":"㤺","㤜":"㤜","悔":"悔","𢛔":"𢛔","惇":"惇","慈":"慈","慌":"慌","慎":"慎","慌":"慌","慺":"慺","憎":"憎","憲":"憲","憤":"憤","憯":"憯","懞":"懞","懲":"懲","懶":"懶","成":"成","戛":"戛","扝":"扝","抱":"抱","拔":"拔","捐":"捐","𢬌":"𢬌","挽":"挽","拼":"拼","捨":"捨","掃":"掃","揤":"揤","𢯱":"𢯱","搢":"搢","揅":"揅","掩":"掩","㨮":"㨮","摩":"摩","摾":"摾","撝":"撝","摷":"摷","㩬":"㩬","敏":"敏","敬":"敬","𣀊":"𣀊","旣":"旣","書":"書","晉":"晉","㬙":"㬙","暑":"暑","㬈":"㬈","㫤":"㫤","冒":"冒","冕":"冕","最":"最","暜":"暜","肭":"肭","䏙":"䏙","朗":"朗","望":"望","朡":"朡","杞":"杞","杓":"杓","𣏃":"𣏃","㭉":"㭉","柺":"柺","枅":"枅","桒":"桒","梅":"梅","𣑭":"𣑭","梎":"梎","栟":"栟","椔":"椔","㮝":"㮝","楂":"楂","榣":"榣","槪":"槪","檨":"檨","𣚣":"𣚣","櫛":"櫛","㰘":"㰘","次":"次","𣢧":"𣢧","歔":"歔","㱎":"㱎","歲":"歲","殟":"殟","殺":"殺","殻":"殻","𣪍":"𣪍","𡴋":"𡴋","𣫺":"𣫺","汎":"汎","𣲼":"𣲼","沿":"沿","泍":"泍","汧":"汧","洖":"洖","派":"派","海":"海","流":"流","浩":"浩","浸":"浸","涅":"涅","𣴞":"𣴞","洴":"洴","港":"港","湮":"湮","㴳":"㴳","滋":"滋","滇":"滇","𣻑":"𣻑","淹":"淹","潮":"潮","𣽞":"𣽞","𣾎":"𣾎","濆":"濆","瀹":"瀹","瀞":"瀞","瀛":"瀛","㶖":"㶖","灊":"灊","災":"災","灷":"灷","炭":"炭","𠔥":"𠔥","煅":"煅","𤉣":"𤉣","熜":"熜","𤎫":"𤎫","爨":"爨","爵":"爵","牐":"牐","𤘈":"𤘈","犀":"犀","犕":"犕","𤜵":"𤜵","𤠔":"𤠔","獺":"獺","王":"王","㺬":"㺬","玥":"玥","㺸":"㺸","㺸":"㺸","瑇":"瑇","瑜":"瑜","瑱":"瑱","璅":"璅","瓊":"瓊","㼛":"㼛","甤":"甤","𤰶":"𤰶","甾":"甾","𤲒":"𤲒","異":"異","𢆟":"𢆟","瘐":"瘐","𤾡":"𤾡","𤾸":"𤾸","𥁄":"𥁄","㿼":"㿼","䀈":"䀈","直":"直","𥃳":"𥃳","𥃲":"𥃲","𥄙":"𥄙","𥄳":"𥄳","眞":"眞","真":"真","真":"真","睊":"睊","䀹":"䀹","瞋":"瞋","䁆":"䁆","䂖":"䂖","𥐝":"𥐝","硎":"硎","碌":"碌","磌":"磌","䃣":"䃣","𥘦":"𥘦","祖":"祖","𥚚":"𥚚","𥛅":"𥛅","福":"福","秫":"秫","䄯":"䄯","穀":"穀","穊":"穊","穏":"穏","𥥼":"𥥼","𥪧":"𥪧","𥪧":"𥪧","竮":"竮","䈂":"䈂","𥮫":"𥮫","篆":"篆","築":"築","䈧":"䈧","𥲀":"𥲀","糒":"糒","䊠":"䊠","糨":"糨","糣":"糣","紀":"紀","𥾆":"𥾆","絣":"絣","䌁":"䌁","緇":"緇","縂":"縂","繅":"繅","䌴":"䌴","𦈨":"𦈨","𦉇":"𦉇","䍙":"䍙","𦋙":"𦋙","罺":"罺","𦌾":"𦌾","羕":"羕","翺":"翺","者":"者","𦓚":"𦓚","𦔣":"𦔣","聠":"聠","𦖨":"𦖨","聰":"聰","𣍟":"𣍟","䏕":"䏕","育":"育","脃":"脃","䐋":"䐋","脾":"脾","媵":"媵","𦞧":"𦞧","𦞵":"𦞵","𣎓":"𣎓","𣎜":"𣎜","舁":"舁","舄":"舄","辞":"辞","䑫":"䑫","芑":"芑","芋":"芋","芝":"芝","劳":"劳","花":"花","芳":"芳","芽":"芽","苦":"苦","𦬼":"𦬼","若":"若","茝":"茝","荣":"荣","莭":"莭","茣":"茣","莽":"莽","菧":"菧","著":"著","荓":"荓","菊":"菊","菌":"菌","菜":"菜","𦰶":"𦰶","𦵫":"𦵫","𦳕":"𦳕","䔫":"䔫","蓱":"蓱","蓳":"蓳","蔖":"蔖","𧏊":"𧏊","蕤":"蕤","𦼬":"𦼬","䕝":"䕝","䕡":"䕡","𦾱":"𦾱","𧃒":"𧃒","䕫":"䕫","虐":"虐","虜":"虜","虧":"虧","虩":"虩","蚩":"蚩","蚈":"蚈","蜎":"蜎","蛢":"蛢","蝹":"蝹","蜨":"蜨","蝫":"蝫","螆":"螆","䗗":"䗗","蟡":"蟡","蠁":"蠁","䗹":"䗹","衠":"衠","衣":"衣","𧙧":"𧙧","裗":"裗","裞":"裞","䘵":"䘵","裺":"裺","㒻":"㒻","𧢮":"𧢮","𧥦":"𧥦","䚾":"䚾","䛇":"䛇","誠":"誠","諭":"諭","變":"變","豕":"豕","𧲨":"𧲨","貫":"貫","賁":"賁","贛":"贛","起":"起","𧼯":"𧼯","𠠄":"𠠄","跋":"跋","趼":"趼","跰":"跰","𠣞":"𠣞","軔":"軔","輸":"輸","𨗒":"𨗒","𨗭":"𨗭","邔":"邔","郱":"郱","鄑":"鄑","𨜮":"𨜮","鄛":"鄛","鈸":"鈸","鋗":"鋗","鋘":"鋘","鉼":"鉼","鏹":"鏹","鐕":"鐕","𨯺":"𨯺","開":"開","䦕":"䦕","閷":"閷","𨵷":"𨵷","䧦":"䧦","雃":"雃","嶲":"嶲","霣":"霣","𩅅":"𩅅","𩈚":"𩈚","䩮":"䩮","䩶":"䩶","韠":"韠","𩐊":"𩐊","䪲":"䪲","𩒖":"𩒖","頋":"頋","頋":"頋","頩":"頩","𩖶":"𩖶","飢":"飢","䬳":"䬳","餩":"餩","馧":"馧","駂":"駂","駾":"駾","䯎":"䯎","𩬰":"𩬰","鬒":"鬒","鱀":"鱀","鳽":"鳽","䳎":"䳎","䳭":"䳭","鵧":"鵧","𪃎":"𪃎","䳸":"䳸","𪄅":"𪄅","𪈎":"𪈎","𪊑":"𪊑","麻":"麻","䵖":"䵖","黹":"黹","黾":"黾","鼅":"鼅","鼏":"鼏","鼖":"鼖","鼻":"鼻","𪘀":"𪘀"};
 /*
  * all.js - include file for normalization data for a particular script
@@ -20148,10 +20498,9 @@ ilib.data.nfd_all = {"À":"À","Á":"Á","Â":"Â","Ã":"Ã","Ä":"Ä","Å"
  */
 /* WARNING: THIS IS A FILE GENERATED BY gennorm.js. DO NOT EDIT BY HAND. */
 // !depends util/utils.js 
-// !data norm.ccc nfd/all
+// !data norm nfd/all
 ilib.data.norm.nfd = ilib.merge(ilib.data.norm.nfd || {}, ilib.data.nfd_all);
 ilib.data.nfd_all = undefined;
-ilib.data.nfc_all = {"À":"À","Á":"Á","Â":"Â","Ã":"Ã","Ä":"Ä","Å":"Å","Ç":"Ç","È":"È","É":"É","Ê":"Ê","Ë":"Ë","Ì":"Ì","Í":"Í","Î":"Î","Ï":"Ï","Ñ":"Ñ","Ò":"Ò","Ó":"Ó","Ô":"Ô","Õ":"Õ","Ö":"Ö","Ù":"Ù","Ú":"Ú","Û":"Û","Ü":"Ü","Ý":"Ý","à":"à","á":"á","â":"â","ã":"ã","ä":"ä","å":"å","ç":"ç","è":"è","é":"é","ê":"ê","ë":"ë","ì":"ì","í":"í","î":"î","ï":"ï","ñ":"ñ","ò":"ò","ó":"ó","ô":"ô","õ":"õ","ö":"ö","ù":"ù","ú":"ú","û":"û","ü":"ü","ý":"ý","ÿ":"ÿ","Ā":"Ā","ā":"ā","Ă":"Ă","ă":"ă","Ą":"Ą","ą":"ą","Ć":"Ć","ć":"ć","Ĉ":"Ĉ","ĉ":"ĉ","Ċ":"Ċ","ċ":"ċ","Č":"Č","č":"č","Ď":"Ď","ď":"ď","Ē":"Ē","ē":"ē","Ĕ":"Ĕ","ĕ":"ĕ","Ė":"Ė","ė":"ė","Ę":"Ę","ę":"ę","Ě":"Ě","ě":"ě","Ĝ":"Ĝ","ĝ":"ĝ","Ğ":"Ğ","ğ":"ğ","Ġ":"Ġ","ġ":"ġ","Ģ":"Ģ","ģ":"ģ","Ĥ":"Ĥ","ĥ":"ĥ","Ĩ":"Ĩ","ĩ":"ĩ","Ī":"Ī","ī":"ī","Ĭ":"Ĭ","ĭ":"ĭ","Į":"Į","į":"į","İ":"İ","Ĵ":"Ĵ","ĵ":"ĵ","Ķ":"Ķ","ķ":"ķ","Ĺ":"Ĺ","ĺ":"ĺ","Ļ":"Ļ","ļ":"ļ","Ľ":"Ľ","ľ":"ľ","Ń":"Ń","ń":"ń","Ņ":"Ņ","ņ":"ņ","Ň":"Ň","ň":"ň","Ō":"Ō","ō":"ō","Ŏ":"Ŏ","ŏ":"ŏ","Ő":"Ő","ő":"ő","Ŕ":"Ŕ","ŕ":"ŕ","Ŗ":"Ŗ","ŗ":"ŗ","Ř":"Ř","ř":"ř","Ś":"Ś","ś":"ś","Ŝ":"Ŝ","ŝ":"ŝ","Ş":"Ş","ş":"ş","Š":"Š","š":"š","Ţ":"Ţ","ţ":"ţ","Ť":"Ť","ť":"ť","Ũ":"Ũ","ũ":"ũ","Ū":"Ū","ū":"ū","Ŭ":"Ŭ","ŭ":"ŭ","Ů":"Ů","ů":"ů","Ű":"Ű","ű":"ű","Ų":"Ų","ų":"ų","Ŵ":"Ŵ","ŵ":"ŵ","Ŷ":"Ŷ","ŷ":"ŷ","Ÿ":"Ÿ","Ź":"Ź","ź":"ź","Ż":"Ż","ż":"ż","Ž":"Ž","ž":"ž","Ơ":"Ơ","ơ":"ơ","Ư":"Ư","ư":"ư","Ǎ":"Ǎ","ǎ":"ǎ","Ǐ":"Ǐ","ǐ":"ǐ","Ǒ":"Ǒ","ǒ":"ǒ","Ǔ":"Ǔ","ǔ":"ǔ","Ǖ":"Ǖ","ǖ":"ǖ","Ǘ":"Ǘ","ǘ":"ǘ","Ǚ":"Ǚ","ǚ":"ǚ","Ǜ":"Ǜ","ǜ":"ǜ","Ǟ":"Ǟ","ǟ":"ǟ","Ǡ":"Ǡ","ǡ":"ǡ","Ǣ":"Ǣ","ǣ":"ǣ","Ǧ":"Ǧ","ǧ":"ǧ","Ǩ":"Ǩ","ǩ":"ǩ","Ǫ":"Ǫ","ǫ":"ǫ","Ǭ":"Ǭ","ǭ":"ǭ","Ǯ":"Ǯ","ǯ":"ǯ","ǰ":"ǰ","Ǵ":"Ǵ","ǵ":"ǵ","Ǹ":"Ǹ","ǹ":"ǹ","Ǻ":"Ǻ","ǻ":"ǻ","Ǽ":"Ǽ","ǽ":"ǽ","Ǿ":"Ǿ","ǿ":"ǿ","Ȁ":"Ȁ","ȁ":"ȁ","Ȃ":"Ȃ","ȃ":"ȃ","Ȅ":"Ȅ","ȅ":"ȅ","Ȇ":"Ȇ","ȇ":"ȇ","Ȉ":"Ȉ","ȉ":"ȉ","Ȋ":"Ȋ","ȋ":"ȋ","Ȍ":"Ȍ","ȍ":"ȍ","Ȏ":"Ȏ","ȏ":"ȏ","Ȑ":"Ȑ","ȑ":"ȑ","Ȓ":"Ȓ","ȓ":"ȓ","Ȕ":"Ȕ","ȕ":"ȕ","Ȗ":"Ȗ","ȗ":"ȗ","Ș":"Ș","ș":"ș","Ț":"Ț","ț":"ț","Ȟ":"Ȟ","ȟ":"ȟ","Ȧ":"Ȧ","ȧ":"ȧ","Ȩ":"Ȩ","ȩ":"ȩ","Ȫ":"Ȫ","ȫ":"ȫ","Ȭ":"Ȭ","ȭ":"ȭ","Ȯ":"Ȯ","ȯ":"ȯ","Ȱ":"Ȱ","ȱ":"ȱ","Ȳ":"Ȳ","ȳ":"ȳ","΅":"΅","Ά":"Ά","Έ":"Έ","Ή":"Ή","Ί":"Ί","Ό":"Ό","Ύ":"Ύ","Ώ":"Ώ","ΐ":"ΐ","Ϊ":"Ϊ","Ϋ":"Ϋ","ά":"ά","έ":"έ","ή":"ή","ί":"ί","ΰ":"ΰ","ϊ":"ϊ","ϋ":"ϋ","ό":"ό","ύ":"ύ","ώ":"ώ","ϓ":"ϓ","ϔ":"ϔ","Ѐ":"Ѐ","Ё":"Ё","Ѓ":"Ѓ","Ї":"Ї","Ќ":"Ќ","Ѝ":"Ѝ","Ў":"Ў","Й":"Й","й":"й","ѐ":"ѐ","ё":"ё","ѓ":"ѓ","ї":"ї","ќ":"ќ","ѝ":"ѝ","ў":"ў","Ѷ":"Ѷ","ѷ":"ѷ","Ӂ":"Ӂ","ӂ":"ӂ","Ӑ":"Ӑ","ӑ":"ӑ","Ӓ":"Ӓ","ӓ":"ӓ","Ӗ":"Ӗ","ӗ":"ӗ","Ӛ":"Ӛ","ӛ":"ӛ","Ӝ":"Ӝ","ӝ":"ӝ","Ӟ":"Ӟ","ӟ":"ӟ","Ӣ":"Ӣ","ӣ":"ӣ","Ӥ":"Ӥ","ӥ":"ӥ","Ӧ":"Ӧ","ӧ":"ӧ","Ӫ":"Ӫ","ӫ":"ӫ","Ӭ":"Ӭ","ӭ":"ӭ","Ӯ":"Ӯ","ӯ":"ӯ","Ӱ":"Ӱ","ӱ":"ӱ","Ӳ":"Ӳ","ӳ":"ӳ","Ӵ":"Ӵ","ӵ":"ӵ","Ӹ":"Ӹ","ӹ":"ӹ","آ":"آ","أ":"أ","ؤ":"ؤ","إ":"إ","ئ":"ئ","ۀ":"ۀ","ۂ":"ۂ","ۓ":"ۓ","ऩ":"ऩ","ऱ":"ऱ","ऴ":"ऴ","ো":"ো","ৌ":"ৌ","ୈ":"ୈ","ୋ":"ୋ","ୌ":"ୌ","ஔ":"ஔ","ொ":"ொ","ோ":"ோ","ௌ":"ௌ","ై":"ై","ೀ":"ೀ","ೇ":"ೇ","ೈ":"ೈ","ೊ":"ೊ","ೋ":"ೋ","ൊ":"ൊ","ോ":"ോ","ൌ":"ൌ","ේ":"ේ","ො":"ො","ෝ":"ෝ","ෞ":"ෞ","ဦ":"ဦ","ᬆ":"ᬆ","ᬈ":"ᬈ","ᬊ":"ᬊ","ᬌ":"ᬌ","ᬎ":"ᬎ","ᬒ":"ᬒ","ᬻ":"ᬻ","ᬽ":"ᬽ","ᭀ":"ᭀ","ᭁ":"ᭁ","ᭃ":"ᭃ","Ḁ":"Ḁ","ḁ":"ḁ","Ḃ":"Ḃ","ḃ":"ḃ","Ḅ":"Ḅ","ḅ":"ḅ","Ḇ":"Ḇ","ḇ":"ḇ","Ḉ":"Ḉ","ḉ":"ḉ","Ḋ":"Ḋ","ḋ":"ḋ","Ḍ":"Ḍ","ḍ":"ḍ","Ḏ":"Ḏ","ḏ":"ḏ","Ḑ":"Ḑ","ḑ":"ḑ","Ḓ":"Ḓ","ḓ":"ḓ","Ḕ":"Ḕ","ḕ":"ḕ","Ḗ":"Ḗ","ḗ":"ḗ","Ḙ":"Ḙ","ḙ":"ḙ","Ḛ":"Ḛ","ḛ":"ḛ","Ḝ":"Ḝ","ḝ":"ḝ","Ḟ":"Ḟ","ḟ":"ḟ","Ḡ":"Ḡ","ḡ":"ḡ","Ḣ":"Ḣ","ḣ":"ḣ","Ḥ":"Ḥ","ḥ":"ḥ","Ḧ":"Ḧ","ḧ":"ḧ","Ḩ":"Ḩ","ḩ":"ḩ","Ḫ":"Ḫ","ḫ":"ḫ","Ḭ":"Ḭ","ḭ":"ḭ","Ḯ":"Ḯ","ḯ":"ḯ","Ḱ":"Ḱ","ḱ":"ḱ","Ḳ":"Ḳ","ḳ":"ḳ","Ḵ":"Ḵ","ḵ":"ḵ","Ḷ":"Ḷ","ḷ":"ḷ","Ḹ":"Ḹ","ḹ":"ḹ","Ḻ":"Ḻ","ḻ":"ḻ","Ḽ":"Ḽ","ḽ":"ḽ","Ḿ":"Ḿ","ḿ":"ḿ","Ṁ":"Ṁ","ṁ":"ṁ","Ṃ":"Ṃ","ṃ":"ṃ","Ṅ":"Ṅ","ṅ":"ṅ","Ṇ":"Ṇ","ṇ":"ṇ","Ṉ":"Ṉ","ṉ":"ṉ","Ṋ":"Ṋ","ṋ":"ṋ","Ṍ":"Ṍ","ṍ":"ṍ","Ṏ":"Ṏ","ṏ":"ṏ","Ṑ":"Ṑ","ṑ":"ṑ","Ṓ":"Ṓ","ṓ":"ṓ","Ṕ":"Ṕ","ṕ":"ṕ","Ṗ":"Ṗ","ṗ":"ṗ","Ṙ":"Ṙ","ṙ":"ṙ","Ṛ":"Ṛ","ṛ":"ṛ","Ṝ":"Ṝ","ṝ":"ṝ","Ṟ":"Ṟ","ṟ":"ṟ","Ṡ":"Ṡ","ṡ":"ṡ","Ṣ":"Ṣ","ṣ":"ṣ","Ṥ":"Ṥ","ṥ":"ṥ","Ṧ":"Ṧ","ṧ":"ṧ","Ṩ":"Ṩ","ṩ":"ṩ","Ṫ":"Ṫ","ṫ":"ṫ","Ṭ":"Ṭ","ṭ":"ṭ","Ṯ":"Ṯ","ṯ":"ṯ","Ṱ":"Ṱ","ṱ":"ṱ","Ṳ":"Ṳ","ṳ":"ṳ","Ṵ":"Ṵ","ṵ":"ṵ","Ṷ":"Ṷ","ṷ":"ṷ","Ṹ":"Ṹ","ṹ":"ṹ","Ṻ":"Ṻ","ṻ":"ṻ","Ṽ":"Ṽ","ṽ":"ṽ","Ṿ":"Ṿ","ṿ":"ṿ","Ẁ":"Ẁ","ẁ":"ẁ","Ẃ":"Ẃ","ẃ":"ẃ","Ẅ":"Ẅ","ẅ":"ẅ","Ẇ":"Ẇ","ẇ":"ẇ","Ẉ":"Ẉ","ẉ":"ẉ","Ẋ":"Ẋ","ẋ":"ẋ","Ẍ":"Ẍ","ẍ":"ẍ","Ẏ":"Ẏ","ẏ":"ẏ","Ẑ":"Ẑ","ẑ":"ẑ","Ẓ":"Ẓ","ẓ":"ẓ","Ẕ":"Ẕ","ẕ":"ẕ","ẖ":"ẖ","ẗ":"ẗ","ẘ":"ẘ","ẙ":"ẙ","ẛ":"ẛ","Ạ":"Ạ","ạ":"ạ","Ả":"Ả","ả":"ả","Ấ":"Ấ","ấ":"ấ","Ầ":"Ầ","ầ":"ầ","Ẩ":"Ẩ","ẩ":"ẩ","Ẫ":"Ẫ","ẫ":"ẫ","Ậ":"Ậ","ậ":"ậ","Ắ":"Ắ","ắ":"ắ","Ằ":"Ằ","ằ":"ằ","Ẳ":"Ẳ","ẳ":"ẳ","Ẵ":"Ẵ","ẵ":"ẵ","Ặ":"Ặ","ặ":"ặ","Ẹ":"Ẹ","ẹ":"ẹ","Ẻ":"Ẻ","ẻ":"ẻ","Ẽ":"Ẽ","ẽ":"ẽ","Ế":"Ế","ế":"ế","Ề":"Ề","ề":"ề","Ể":"Ể","ể":"ể","Ễ":"Ễ","ễ":"ễ","Ệ":"Ệ","ệ":"ệ","Ỉ":"Ỉ","ỉ":"ỉ","Ị":"Ị","ị":"ị","Ọ":"Ọ","ọ":"ọ","Ỏ":"Ỏ","ỏ":"ỏ","Ố":"Ố","ố":"ố","Ồ":"Ồ","ồ":"ồ","Ổ":"Ổ","ổ":"ổ","Ỗ":"Ỗ","ỗ":"ỗ","Ộ":"Ộ","ộ":"ộ","Ớ":"Ớ","ớ":"ớ","Ờ":"Ờ","ờ":"ờ","Ở":"Ở","ở":"ở","Ỡ":"Ỡ","ỡ":"ỡ","Ợ":"Ợ","ợ":"ợ","Ụ":"Ụ","ụ":"ụ","Ủ":"Ủ","ủ":"ủ","Ứ":"Ứ","ứ":"ứ","Ừ":"Ừ","ừ":"ừ","Ử":"Ử","ử":"ử","Ữ":"Ữ","ữ":"ữ","Ự":"Ự","ự":"ự","Ỳ":"Ỳ","ỳ":"ỳ","Ỵ":"Ỵ","ỵ":"ỵ","Ỷ":"Ỷ","ỷ":"ỷ","Ỹ":"Ỹ","ỹ":"ỹ","ἀ":"ἀ","ἁ":"ἁ","ἂ":"ἂ","ἃ":"ἃ","ἄ":"ἄ","ἅ":"ἅ","ἆ":"ἆ","ἇ":"ἇ","Ἀ":"Ἀ","Ἁ":"Ἁ","Ἂ":"Ἂ","Ἃ":"Ἃ","Ἄ":"Ἄ","Ἅ":"Ἅ","Ἆ":"Ἆ","Ἇ":"Ἇ","ἐ":"ἐ","ἑ":"ἑ","ἒ":"ἒ","ἓ":"ἓ","ἔ":"ἔ","ἕ":"ἕ","Ἐ":"Ἐ","Ἑ":"Ἑ","Ἒ":"Ἒ","Ἓ":"Ἓ","Ἔ":"Ἔ","Ἕ":"Ἕ","ἠ":"ἠ","ἡ":"ἡ","ἢ":"ἢ","ἣ":"ἣ","ἤ":"ἤ","ἥ":"ἥ","ἦ":"ἦ","ἧ":"ἧ","Ἠ":"Ἠ","Ἡ":"Ἡ","Ἢ":"Ἢ","Ἣ":"Ἣ","Ἤ":"Ἤ","Ἥ":"Ἥ","Ἦ":"Ἦ","Ἧ":"Ἧ","ἰ":"ἰ","ἱ":"ἱ","ἲ":"ἲ","ἳ":"ἳ","ἴ":"ἴ","ἵ":"ἵ","ἶ":"ἶ","ἷ":"ἷ","Ἰ":"Ἰ","Ἱ":"Ἱ","Ἲ":"Ἲ","Ἳ":"Ἳ","Ἴ":"Ἴ","Ἵ":"Ἵ","Ἶ":"Ἶ","Ἷ":"Ἷ","ὀ":"ὀ","ὁ":"ὁ","ὂ":"ὂ","ὃ":"ὃ","ὄ":"ὄ","ὅ":"ὅ","Ὀ":"Ὀ","Ὁ":"Ὁ","Ὂ":"Ὂ","Ὃ":"Ὃ","Ὄ":"Ὄ","Ὅ":"Ὅ","ὐ":"ὐ","ὑ":"ὑ","ὒ":"ὒ","ὓ":"ὓ","ὔ":"ὔ","ὕ":"ὕ","ὖ":"ὖ","ὗ":"ὗ","Ὑ":"Ὑ","Ὓ":"Ὓ","Ὕ":"Ὕ","Ὗ":"Ὗ","ὠ":"ὠ","ὡ":"ὡ","ὢ":"ὢ","ὣ":"ὣ","ὤ":"ὤ","ὥ":"ὥ","ὦ":"ὦ","ὧ":"ὧ","Ὠ":"Ὠ","Ὡ":"Ὡ","Ὢ":"Ὢ","Ὣ":"Ὣ","Ὤ":"Ὤ","Ὥ":"Ὥ","Ὦ":"Ὦ","Ὧ":"Ὧ","ὰ":"ὰ","ὲ":"ὲ","ὴ":"ὴ","ὶ":"ὶ","ὸ":"ὸ","ὺ":"ὺ","ὼ":"ὼ","ᾀ":"ᾀ","ᾁ":"ᾁ","ᾂ":"ᾂ","ᾃ":"ᾃ","ᾄ":"ᾄ","ᾅ":"ᾅ","ᾆ":"ᾆ","ᾇ":"ᾇ","ᾈ":"ᾈ","ᾉ":"ᾉ","ᾊ":"ᾊ","ᾋ":"ᾋ","ᾌ":"ᾌ","ᾍ":"ᾍ","ᾎ":"ᾎ","ᾏ":"ᾏ","ᾐ":"ᾐ","ᾑ":"ᾑ","ᾒ":"ᾒ","ᾓ":"ᾓ","ᾔ":"ᾔ","ᾕ":"ᾕ","ᾖ":"ᾖ","ᾗ":"ᾗ","ᾘ":"ᾘ","ᾙ":"ᾙ","ᾚ":"ᾚ","ᾛ":"ᾛ","ᾜ":"ᾜ","ᾝ":"ᾝ","ᾞ":"ᾞ","ᾟ":"ᾟ","ᾠ":"ᾠ","ᾡ":"ᾡ","ᾢ":"ᾢ","ᾣ":"ᾣ","ᾤ":"ᾤ","ᾥ":"ᾥ","ᾦ":"ᾦ","ᾧ":"ᾧ","ᾨ":"ᾨ","ᾩ":"ᾩ","ᾪ":"ᾪ","ᾫ":"ᾫ","ᾬ":"ᾬ","ᾭ":"ᾭ","ᾮ":"ᾮ","ᾯ":"ᾯ","ᾰ":"ᾰ","ᾱ":"ᾱ","ᾲ":"ᾲ","ᾳ":"ᾳ","ᾴ":"ᾴ","ᾶ":"ᾶ","ᾷ":"ᾷ","Ᾰ":"Ᾰ","Ᾱ":"Ᾱ","Ὰ":"Ὰ","ᾼ":"ᾼ","῁":"῁","ῂ":"ῂ","ῃ":"ῃ","ῄ":"ῄ","ῆ":"ῆ","ῇ":"ῇ","Ὲ":"Ὲ","Ὴ":"Ὴ","ῌ":"ῌ","῍":"῍","῎":"῎","῏":"῏","ῐ":"ῐ","ῑ":"ῑ","ῒ":"ῒ","ῖ":"ῖ","ῗ":"ῗ","Ῐ":"Ῐ","Ῑ":"Ῑ","Ὶ":"Ὶ","῝":"῝","῞":"῞","῟":"῟","ῠ":"ῠ","ῡ":"ῡ","ῢ":"ῢ","ῤ":"ῤ","ῥ":"ῥ","ῦ":"ῦ","ῧ":"ῧ","Ῠ":"Ῠ","Ῡ":"Ῡ","Ὺ":"Ὺ","Ῥ":"Ῥ","῭":"῭","ῲ":"ῲ","ῳ":"ῳ","ῴ":"ῴ","ῶ":"ῶ","ῷ":"ῷ","Ὸ":"Ὸ","Ὼ":"Ὼ","ῼ":"ῼ","↚":"↚","↛":"↛","↮":"↮","⇍":"⇍","⇎":"⇎","⇏":"⇏","∄":"∄","∉":"∉","∌":"∌","∤":"∤","∦":"∦","≁":"≁","≄":"≄","≇":"≇","≉":"≉","≠":"≠","≢":"≢","≭":"≭","≮":"≮","≯":"≯","≰":"≰","≱":"≱","≴":"≴","≵":"≵","≸":"≸","≹":"≹","⊀":"⊀","⊁":"⊁","⊄":"⊄","⊅":"⊅","⊈":"⊈","⊉":"⊉","⊬":"⊬","⊭":"⊭","⊮":"⊮","⊯":"⊯","⋠":"⋠","⋡":"⋡","⋢":"⋢","⋣":"⋣","⋪":"⋪","⋫":"⋫","⋬":"⋬","⋭":"⋭","が":"が","ぎ":"ぎ","ぐ":"ぐ","げ":"げ","ご":"ご","ざ":"ざ","じ":"じ","ず":"ず","ぜ":"ぜ","ぞ":"ぞ","だ":"だ","ぢ":"ぢ","づ":"づ","で":"で","ど":"ど","ば":"ば","ぱ":"ぱ","び":"び","ぴ":"ぴ","ぶ":"ぶ","ぷ":"ぷ","べ":"べ","ぺ":"ぺ","ぼ":"ぼ","ぽ":"ぽ","ゔ":"ゔ","ゞ":"ゞ","ガ":"ガ","ギ":"ギ","グ":"グ","ゲ":"ゲ","ゴ":"ゴ","ザ":"ザ","ジ":"ジ","ズ":"ズ","ゼ":"ゼ","ゾ":"ゾ","ダ":"ダ","ヂ":"ヂ","ヅ":"ヅ","デ":"デ","ド":"ド","バ":"バ","パ":"パ","ビ":"ビ","ピ":"ピ","ブ":"ブ","プ":"プ","ベ":"ベ","ペ":"ペ","ボ":"ボ","ポ":"ポ","ヴ":"ヴ","ヷ":"ヷ","ヸ":"ヸ","ヹ":"ヹ","ヺ":"ヺ","ヾ":"ヾ","𑂚":"𑂚","𑂜":"𑂜","𑂫":"𑂫","𑄮":"𑄮","𑄯":"𑄯"};
 /*
  * all.js - include file for normalization data for a particular script
  * 
@@ -20173,9 +20522,8 @@ ilib.data.nfc_all = {"À":"À","Á":"Á","Â":"Â","Ã":"Ã","Ä":"Ä","Å
 /* WARNING: THIS IS A FILE GENERATED BY gennorm.js. DO NOT EDIT BY HAND. */
 // !depends util/utils.js 
 // !depends nfd/all.js
-// !data norm.ccc nfc/all
-ilib.data.norm.nfc = ilib.merge(ilib.data.norm.nfc || {}, ilib.data.nfc_all);
-ilib.data.nfc_all = undefined;
+// !data norm
+
 ilib.data.nfkd_all = {" ":" ","¨":" ̈","ª":"a","¯":" ̄","²":"2","³":"3","´":" ́","µ":"μ","¸":" ̧","¹":"1","º":"o","¼":"1⁄4","½":"1⁄2","¾":"3⁄4","Ĳ":"IJ","ĳ":"ij","Ŀ":"L·","ŀ":"l·","ŉ":"ʼn","ſ":"s","Ǆ":"DŽ","ǅ":"Dž","ǆ":"dž","Ǉ":"LJ","ǈ":"Lj","ǉ":"lj","Ǌ":"NJ","ǋ":"Nj","ǌ":"nj","Ǳ":"DZ","ǲ":"Dz","ǳ":"dz","ʰ":"h","ʱ":"ɦ","ʲ":"j","ʳ":"r","ʴ":"ɹ","ʵ":"ɻ","ʶ":"ʁ","ʷ":"w","ʸ":"y","˘":" ̆","˙":" ̇","˚":" ̊","˛":" ̨","˜":" ̃","˝":" ̋","ˠ":"ɣ","ˡ":"l","ˢ":"s","ˣ":"x","ˤ":"ʕ","ͺ":" ͅ","΄":" ́","ϐ":"β","ϑ":"θ","ϒ":"Υ","ϕ":"φ","ϖ":"π","ϰ":"κ","ϱ":"ρ","ϲ":"ς","ϴ":"Θ","ϵ":"ε","Ϲ":"Σ","և":"եւ","ٵ":"اٴ","ٶ":"وٴ","ٷ":"ۇٴ","ٸ":"يٴ","ำ":"ํา","ຳ":"ໍາ","ໜ":"ຫນ","ໝ":"ຫມ","༌":"་","ཷ":"ྲཱྀ","ཹ":"ླཱྀ","ჼ":"ნ","ᴬ":"A","ᴭ":"Æ","ᴮ":"B","ᴰ":"D","ᴱ":"E","ᴲ":"Ǝ","ᴳ":"G","ᴴ":"H","ᴵ":"I","ᴶ":"J","ᴷ":"K","ᴸ":"L","ᴹ":"M","ᴺ":"N","ᴼ":"O","ᴽ":"Ȣ","ᴾ":"P","ᴿ":"R","ᵀ":"T","ᵁ":"U","ᵂ":"W","ᵃ":"a","ᵄ":"ɐ","ᵅ":"ɑ","ᵆ":"ᴂ","ᵇ":"b","ᵈ":"d","ᵉ":"e","ᵊ":"ə","ᵋ":"ɛ","ᵌ":"ɜ","ᵍ":"g","ᵏ":"k","ᵐ":"m","ᵑ":"ŋ","ᵒ":"o","ᵓ":"ɔ","ᵔ":"ᴖ","ᵕ":"ᴗ","ᵖ":"p","ᵗ":"t","ᵘ":"u","ᵙ":"ᴝ","ᵚ":"ɯ","ᵛ":"v","ᵜ":"ᴥ","ᵝ":"β","ᵞ":"γ","ᵟ":"δ","ᵠ":"φ","ᵡ":"χ","ᵢ":"i","ᵣ":"r","ᵤ":"u","ᵥ":"v","ᵦ":"β","ᵧ":"γ","ᵨ":"ρ","ᵩ":"φ","ᵪ":"χ","ᵸ":"н","ᶛ":"ɒ","ᶜ":"c","ᶝ":"ɕ","ᶞ":"ð","ᶟ":"ɜ","ᶠ":"f","ᶡ":"ɟ","ᶢ":"ɡ","ᶣ":"ɥ","ᶤ":"ɨ","ᶥ":"ɩ","ᶦ":"ɪ","ᶧ":"ᵻ","ᶨ":"ʝ","ᶩ":"ɭ","ᶪ":"ᶅ","ᶫ":"ʟ","ᶬ":"ɱ","ᶭ":"ɰ","ᶮ":"ɲ","ᶯ":"ɳ","ᶰ":"ɴ","ᶱ":"ɵ","ᶲ":"ɸ","ᶳ":"ʂ","ᶴ":"ʃ","ᶵ":"ƫ","ᶶ":"ʉ","ᶷ":"ʊ","ᶸ":"ᴜ","ᶹ":"ʋ","ᶺ":"ʌ","ᶻ":"z","ᶼ":"ʐ","ᶽ":"ʑ","ᶾ":"ʒ","ᶿ":"θ","ẚ":"aʾ","᾽":" ̓","᾿":" ̓","῀":" ͂","῾":" ̔"," ":" "," ":" "," ":" "," ":" "," ":" "," ":" "," ":" "," ":" "," ":" ","‑":"‐","‗":" ̳","․":".","‥":"..","…":"..."," ":" ","″":"′′","‴":"′′′","‶":"‵‵","‷":"‵‵‵","‼":"!!","‾":" ̅","⁇":"??","⁈":"?!","⁉":"!?","⁗":"′′′′"," ":" ","⁰":"0","ⁱ":"i","⁴":"4","⁵":"5","⁶":"6","⁷":"7","⁸":"8","⁹":"9","⁺":"+","⁻":"−","⁼":"=","⁽":"(","⁾":")","ⁿ":"n","₀":"0","₁":"1","₂":"2","₃":"3","₄":"4","₅":"5","₆":"6","₇":"7","₈":"8","₉":"9","₊":"+","₋":"−","₌":"=","₍":"(","₎":")","ₐ":"a","ₑ":"e","ₒ":"o","ₓ":"x","ₔ":"ə","ₕ":"h","ₖ":"k","ₗ":"l","ₘ":"m","ₙ":"n","ₚ":"p","ₛ":"s","ₜ":"t","₨":"Rs","℀":"a/c","℁":"a/s","ℂ":"C","℃":"°C","℅":"c/o","℆":"c/u","ℇ":"Ɛ","℉":"°F","ℊ":"g","ℋ":"H","ℌ":"H","ℍ":"H","ℎ":"h","ℏ":"ħ","ℐ":"I","ℑ":"I","ℒ":"L","ℓ":"l","ℕ":"N","№":"No","ℙ":"P","ℚ":"Q","ℛ":"R","ℜ":"R","ℝ":"R","℠":"SM","℡":"TEL","™":"TM","ℤ":"Z","ℨ":"Z","ℬ":"B","ℭ":"C","ℯ":"e","ℰ":"E","ℱ":"F","ℳ":"M","ℴ":"o","ℵ":"א","ℶ":"ב","ℷ":"ג","ℸ":"ד","ℹ":"i","℻":"FAX","ℼ":"π","ℽ":"γ","ℾ":"Γ","ℿ":"Π","⅀":"∑","ⅅ":"D","ⅆ":"d","ⅇ":"e","ⅈ":"i","ⅉ":"j","⅐":"1⁄7","⅑":"1⁄9","⅒":"1⁄10","⅓":"1⁄3","⅔":"2⁄3","⅕":"1⁄5","⅖":"2⁄5","⅗":"3⁄5","⅘":"4⁄5","⅙":"1⁄6","⅚":"5⁄6","⅛":"1⁄8","⅜":"3⁄8","⅝":"5⁄8","⅞":"7⁄8","⅟":"1⁄","Ⅰ":"I","Ⅱ":"II","Ⅲ":"III","Ⅳ":"IV","Ⅴ":"V","Ⅵ":"VI","Ⅶ":"VII","Ⅷ":"VIII","Ⅸ":"IX","Ⅹ":"X","Ⅺ":"XI","Ⅻ":"XII","Ⅼ":"L","Ⅽ":"C","Ⅾ":"D","Ⅿ":"M","ⅰ":"i","ⅱ":"ii","ⅲ":"iii","ⅳ":"iv","ⅴ":"v","ⅵ":"vi","ⅶ":"vii","ⅷ":"viii","ⅸ":"ix","ⅹ":"x","ⅺ":"xi","ⅻ":"xii","ⅼ":"l","ⅽ":"c","ⅾ":"d","ⅿ":"m","↉":"0⁄3","∬":"∫∫","∭":"∫∫∫","∯":"∮∮","∰":"∮∮∮","①":"1","②":"2","③":"3","④":"4","⑤":"5","⑥":"6","⑦":"7","⑧":"8","⑨":"9","⑩":"10","⑪":"11","⑫":"12","⑬":"13","⑭":"14","⑮":"15","⑯":"16","⑰":"17","⑱":"18","⑲":"19","⑳":"20","⑴":"(1)","⑵":"(2)","⑶":"(3)","⑷":"(4)","⑸":"(5)","⑹":"(6)","⑺":"(7)","⑻":"(8)","⑼":"(9)","⑽":"(10)","⑾":"(11)","⑿":"(12)","⒀":"(13)","⒁":"(14)","⒂":"(15)","⒃":"(16)","⒄":"(17)","⒅":"(18)","⒆":"(19)","⒇":"(20)","⒈":"1.","⒉":"2.","⒊":"3.","⒋":"4.","⒌":"5.","⒍":"6.","⒎":"7.","⒏":"8.","⒐":"9.","⒑":"10.","⒒":"11.","⒓":"12.","⒔":"13.","⒕":"14.","⒖":"15.","⒗":"16.","⒘":"17.","⒙":"18.","⒚":"19.","⒛":"20.","⒜":"(a)","⒝":"(b)","⒞":"(c)","⒟":"(d)","⒠":"(e)","⒡":"(f)","⒢":"(g)","⒣":"(h)","⒤":"(i)","⒥":"(j)","⒦":"(k)","⒧":"(l)","⒨":"(m)","⒩":"(n)","⒪":"(o)","⒫":"(p)","⒬":"(q)","⒭":"(r)","⒮":"(s)","⒯":"(t)","⒰":"(u)","⒱":"(v)","⒲":"(w)","⒳":"(x)","⒴":"(y)","⒵":"(z)","Ⓐ":"A","Ⓑ":"B","Ⓒ":"C","Ⓓ":"D","Ⓔ":"E","Ⓕ":"F","Ⓖ":"G","Ⓗ":"H","Ⓘ":"I","Ⓙ":"J","Ⓚ":"K","Ⓛ":"L","Ⓜ":"M","Ⓝ":"N","Ⓞ":"O","Ⓟ":"P","Ⓠ":"Q","Ⓡ":"R","Ⓢ":"S","Ⓣ":"T","Ⓤ":"U","Ⓥ":"V","Ⓦ":"W","Ⓧ":"X","Ⓨ":"Y","Ⓩ":"Z","ⓐ":"a","ⓑ":"b","ⓒ":"c","ⓓ":"d","ⓔ":"e","ⓕ":"f","ⓖ":"g","ⓗ":"h","ⓘ":"i","ⓙ":"j","ⓚ":"k","ⓛ":"l","ⓜ":"m","ⓝ":"n","ⓞ":"o","ⓟ":"p","ⓠ":"q","ⓡ":"r","ⓢ":"s","ⓣ":"t","ⓤ":"u","ⓥ":"v","ⓦ":"w","ⓧ":"x","ⓨ":"y","ⓩ":"z","⓪":"0","⨌":"∫∫∫∫","⩴":"::=","⩵":"==","⩶":"===","ⱼ":"j","ⱽ":"V","ⵯ":"ⵡ","⺟":"母","⻳":"龟","⼀":"一","⼁":"丨","⼂":"丶","⼃":"丿","⼄":"乙","⼅":"亅","⼆":"二","⼇":"亠","⼈":"人","⼉":"儿","⼊":"入","⼋":"八","⼌":"冂","⼍":"冖","⼎":"冫","⼏":"几","⼐":"凵","⼑":"刀","⼒":"力","⼓":"勹","⼔":"匕","⼕":"匚","⼖":"匸","⼗":"十","⼘":"卜","⼙":"卩","⼚":"厂","⼛":"厶","⼜":"又","⼝":"口","⼞":"囗","⼟":"土","⼠":"士","⼡":"夂","⼢":"夊","⼣":"夕","⼤":"大","⼥":"女","⼦":"子","⼧":"宀","⼨":"寸","⼩":"小","⼪":"尢","⼫":"尸","⼬":"屮","⼭":"山","⼮":"巛","⼯":"工","⼰":"己","⼱":"巾","⼲":"干","⼳":"幺","⼴":"广","⼵":"廴","⼶":"廾","⼷":"弋","⼸":"弓","⼹":"彐","⼺":"彡","⼻":"彳","⼼":"心","⼽":"戈","⼾":"戶","⼿":"手","⽀":"支","⽁":"攴","⽂":"文","⽃":"斗","⽄":"斤","⽅":"方","⽆":"无","⽇":"日","⽈":"曰","⽉":"月","⽊":"木","⽋":"欠","⽌":"止","⽍":"歹","⽎":"殳","⽏":"毋","⽐":"比","⽑":"毛","⽒":"氏","⽓":"气","⽔":"水","⽕":"火","⽖":"爪","⽗":"父","⽘":"爻","⽙":"爿","⽚":"片","⽛":"牙","⽜":"牛","⽝":"犬","⽞":"玄","⽟":"玉","⽠":"瓜","⽡":"瓦","⽢":"甘","⽣":"生","⽤":"用","⽥":"田","⽦":"疋","⽧":"疒","⽨":"癶","⽩":"白","⽪":"皮","⽫":"皿","⽬":"目","⽭":"矛","⽮":"矢","⽯":"石","⽰":"示","⽱":"禸","⽲":"禾","⽳":"穴","⽴":"立","⽵":"竹","⽶":"米","⽷":"糸","⽸":"缶","⽹":"网","⽺":"羊","⽻":"羽","⽼":"老","⽽":"而","⽾":"耒","⽿":"耳","⾀":"聿","⾁":"肉","⾂":"臣","⾃":"自","⾄":"至","⾅":"臼","⾆":"舌","⾇":"舛","⾈":"舟","⾉":"艮","⾊":"色","⾋":"艸","⾌":"虍","⾍":"虫","⾎":"血","⾏":"行","⾐":"衣","⾑":"襾","⾒":"見","⾓":"角","⾔":"言","⾕":"谷","⾖":"豆","⾗":"豕","⾘":"豸","⾙":"貝","⾚":"赤","⾛":"走","⾜":"足","⾝":"身","⾞":"車","⾟":"辛","⾠":"辰","⾡":"辵","⾢":"邑","⾣":"酉","⾤":"釆","⾥":"里","⾦":"金","⾧":"長","⾨":"門","⾩":"阜","⾪":"隶","⾫":"隹","⾬":"雨","⾭":"靑","⾮":"非","⾯":"面","⾰":"革","⾱":"韋","⾲":"韭","⾳":"音","⾴":"頁","⾵":"風","⾶":"飛","⾷":"食","⾸":"首","⾹":"香","⾺":"馬","⾻":"骨","⾼":"高","⾽":"髟","⾾":"鬥","⾿":"鬯","⿀":"鬲","⿁":"鬼","⿂":"魚","⿃":"鳥","⿄":"鹵","⿅":"鹿","⿆":"麥","⿇":"麻","⿈":"黃","⿉":"黍","⿊":"黑","⿋":"黹","⿌":"黽","⿍":"鼎","⿎":"鼓","⿏":"鼠","⿐":"鼻","⿑":"齊","⿒":"齒","⿓":"龍","⿔":"龜","⿕":"龠","　":" ","〶":"〒","〸":"十","〹":"卄","〺":"卅","゛":" ゙","゜":" ゚","ゟ":"より","ヿ":"コト","ㄱ":"ᄀ","ㄲ":"ᄁ","ㄳ":"ᆪ","ㄴ":"ᄂ","ㄵ":"ᆬ","ㄶ":"ᆭ","ㄷ":"ᄃ","ㄸ":"ᄄ","ㄹ":"ᄅ","ㄺ":"ᆰ","ㄻ":"ᆱ","ㄼ":"ᆲ","ㄽ":"ᆳ","ㄾ":"ᆴ","ㄿ":"ᆵ","ㅀ":"ᄚ","ㅁ":"ᄆ","ㅂ":"ᄇ","ㅃ":"ᄈ","ㅄ":"ᄡ","ㅅ":"ᄉ","ㅆ":"ᄊ","ㅇ":"ᄋ","ㅈ":"ᄌ","ㅉ":"ᄍ","ㅊ":"ᄎ","ㅋ":"ᄏ","ㅌ":"ᄐ","ㅍ":"ᄑ","ㅎ":"ᄒ","ㅏ":"ᅡ","ㅐ":"ᅢ","ㅑ":"ᅣ","ㅒ":"ᅤ","ㅓ":"ᅥ","ㅔ":"ᅦ","ㅕ":"ᅧ","ㅖ":"ᅨ","ㅗ":"ᅩ","ㅘ":"ᅪ","ㅙ":"ᅫ","ㅚ":"ᅬ","ㅛ":"ᅭ","ㅜ":"ᅮ","ㅝ":"ᅯ","ㅞ":"ᅰ","ㅟ":"ᅱ","ㅠ":"ᅲ","ㅡ":"ᅳ","ㅢ":"ᅴ","ㅣ":"ᅵ","ㅤ":"ᅠ","ㅥ":"ᄔ","ㅦ":"ᄕ","ㅧ":"ᇇ","ㅨ":"ᇈ","ㅩ":"ᇌ","ㅪ":"ᇎ","ㅫ":"ᇓ","ㅬ":"ᇗ","ㅭ":"ᇙ","ㅮ":"ᄜ","ㅯ":"ᇝ","ㅰ":"ᇟ","ㅱ":"ᄝ","ㅲ":"ᄞ","ㅳ":"ᄠ","ㅴ":"ᄢ","ㅵ":"ᄣ","ㅶ":"ᄧ","ㅷ":"ᄩ","ㅸ":"ᄫ","ㅹ":"ᄬ","ㅺ":"ᄭ","ㅻ":"ᄮ","ㅼ":"ᄯ","ㅽ":"ᄲ","ㅾ":"ᄶ","ㅿ":"ᅀ","ㆀ":"ᅇ","ㆁ":"ᅌ","ㆂ":"ᇱ","ㆃ":"ᇲ","ㆄ":"ᅗ","ㆅ":"ᅘ","ㆆ":"ᅙ","ㆇ":"ᆄ","ㆈ":"ᆅ","ㆉ":"ᆈ","ㆊ":"ᆑ","ㆋ":"ᆒ","ㆌ":"ᆔ","ㆍ":"ᆞ","ㆎ":"ᆡ","㆒":"一","㆓":"二","㆔":"三","㆕":"四","㆖":"上","㆗":"中","㆘":"下","㆙":"甲","㆚":"乙","㆛":"丙","㆜":"丁","㆝":"天","㆞":"地","㆟":"人","㈀":"(ᄀ)","㈁":"(ᄂ)","㈂":"(ᄃ)","㈃":"(ᄅ)","㈄":"(ᄆ)","㈅":"(ᄇ)","㈆":"(ᄉ)","㈇":"(ᄋ)","㈈":"(ᄌ)","㈉":"(ᄎ)","㈊":"(ᄏ)","㈋":"(ᄐ)","㈌":"(ᄑ)","㈍":"(ᄒ)","㈎":"(가)","㈏":"(나)","㈐":"(다)","㈑":"(라)","㈒":"(마)","㈓":"(바)","㈔":"(사)","㈕":"(아)","㈖":"(자)","㈗":"(차)","㈘":"(카)","㈙":"(타)","㈚":"(파)","㈛":"(하)","㈜":"(주)","㈝":"(오전)","㈞":"(오후)","㈠":"(一)","㈡":"(二)","㈢":"(三)","㈣":"(四)","㈤":"(五)","㈥":"(六)","㈦":"(七)","㈧":"(八)","㈨":"(九)","㈩":"(十)","㈪":"(月)","㈫":"(火)","㈬":"(水)","㈭":"(木)","㈮":"(金)","㈯":"(土)","㈰":"(日)","㈱":"(株)","㈲":"(有)","㈳":"(社)","㈴":"(名)","㈵":"(特)","㈶":"(財)","㈷":"(祝)","㈸":"(労)","㈹":"(代)","㈺":"(呼)","㈻":"(学)","㈼":"(監)","㈽":"(企)","㈾":"(資)","㈿":"(協)","㉀":"(祭)","㉁":"(休)","㉂":"(自)","㉃":"(至)","㉄":"問","㉅":"幼","㉆":"文","㉇":"箏","㉐":"PTE","㉑":"21","㉒":"22","㉓":"23","㉔":"24","㉕":"25","㉖":"26","㉗":"27","㉘":"28","㉙":"29","㉚":"30","㉛":"31","㉜":"32","㉝":"33","㉞":"34","㉟":"35","㉠":"ᄀ","㉡":"ᄂ","㉢":"ᄃ","㉣":"ᄅ","㉤":"ᄆ","㉥":"ᄇ","㉦":"ᄉ","㉧":"ᄋ","㉨":"ᄌ","㉩":"ᄎ","㉪":"ᄏ","㉫":"ᄐ","㉬":"ᄑ","㉭":"ᄒ","㉮":"가","㉯":"나","㉰":"다","㉱":"라","㉲":"마","㉳":"바","㉴":"사","㉵":"아","㉶":"자","㉷":"차","㉸":"카","㉹":"타","㉺":"파","㉻":"하","㉼":"참고","㉽":"주의","㉾":"우","㊀":"一","㊁":"二","㊂":"三","㊃":"四","㊄":"五","㊅":"六","㊆":"七","㊇":"八","㊈":"九","㊉":"十","㊊":"月","㊋":"火","㊌":"水","㊍":"木","㊎":"金","㊏":"土","㊐":"日","㊑":"株","㊒":"有","㊓":"社","㊔":"名","㊕":"特","㊖":"財","㊗":"祝","㊘":"労","㊙":"秘","㊚":"男","㊛":"女","㊜":"適","㊝":"優","㊞":"印","㊟":"注","㊠":"項","㊡":"休","㊢":"写","㊣":"正","㊤":"上","㊥":"中","㊦":"下","㊧":"左","㊨":"右","㊩":"医","㊪":"宗","㊫":"学","㊬":"監","㊭":"企","㊮":"資","㊯":"協","㊰":"夜","㊱":"36","㊲":"37","㊳":"38","㊴":"39","㊵":"40","㊶":"41","㊷":"42","㊸":"43","㊹":"44","㊺":"45","㊻":"46","㊼":"47","㊽":"48","㊾":"49","㊿":"50","㋀":"1月","㋁":"2月","㋂":"3月","㋃":"4月","㋄":"5月","㋅":"6月","㋆":"7月","㋇":"8月","㋈":"9月","㋉":"10月","㋊":"11月","㋋":"12月","㋌":"Hg","㋍":"erg","㋎":"eV","㋏":"LTD","㋐":"ア","㋑":"イ","㋒":"ウ","㋓":"エ","㋔":"オ","㋕":"カ","㋖":"キ","㋗":"ク","㋘":"ケ","㋙":"コ","㋚":"サ","㋛":"シ","㋜":"ス","㋝":"セ","㋞":"ソ","㋟":"タ","㋠":"チ","㋡":"ツ","㋢":"テ","㋣":"ト","㋤":"ナ","㋥":"ニ","㋦":"ヌ","㋧":"ネ","㋨":"ノ","㋩":"ハ","㋪":"ヒ","㋫":"フ","㋬":"ヘ","㋭":"ホ","㋮":"マ","㋯":"ミ","㋰":"ム","㋱":"メ","㋲":"モ","㋳":"ヤ","㋴":"ユ","㋵":"ヨ","㋶":"ラ","㋷":"リ","㋸":"ル","㋹":"レ","㋺":"ロ","㋻":"ワ","㋼":"ヰ","㋽":"ヱ","㋾":"ヲ","㌀":"アパート","㌁":"アルファ","㌂":"アンペア","㌃":"アール","㌄":"イニング","㌅":"インチ","㌆":"ウォン","㌇":"エスクード","㌈":"エーカー","㌉":"オンス","㌊":"オーム","㌋":"カイリ","㌌":"カラット","㌍":"カロリー","㌎":"ガロン","㌏":"ガンマ","㌐":"ギガ","㌑":"ギニー","㌒":"キュリー","㌓":"ギルダー","㌔":"キロ","㌕":"キログラム","㌖":"キロメートル","㌗":"キロワット","㌘":"グラム","㌙":"グラムトン","㌚":"クルゼイロ","㌛":"クローネ","㌜":"ケース","㌝":"コルナ","㌞":"コーポ","㌟":"サイクル","㌠":"サンチーム","㌡":"シリング","㌢":"センチ","㌣":"セント","㌤":"ダース","㌥":"デシ","㌦":"ドル","㌧":"トン","㌨":"ナノ","㌩":"ノット","㌪":"ハイツ","㌫":"パーセント","㌬":"パーツ","㌭":"バーレル","㌮":"ピアストル","㌯":"ピクル","㌰":"ピコ","㌱":"ビル","㌲":"ファラッド","㌳":"フィート","㌴":"ブッシェル","㌵":"フラン","㌶":"ヘクタール","㌷":"ペソ","㌸":"ペニヒ","㌹":"ヘルツ","㌺":"ペンス","㌻":"ページ","㌼":"ベータ","㌽":"ポイント","㌾":"ボルト","㌿":"ホン","㍀":"ポンド","㍁":"ホール","㍂":"ホーン","㍃":"マイクロ","㍄":"マイル","㍅":"マッハ","㍆":"マルク","㍇":"マンション","㍈":"ミクロン","㍉":"ミリ","㍊":"ミリバール","㍋":"メガ","㍌":"メガトン","㍍":"メートル","㍎":"ヤード","㍏":"ヤール","㍐":"ユアン","㍑":"リットル","㍒":"リラ","㍓":"ルピー","㍔":"ルーブル","㍕":"レム","㍖":"レントゲン","㍗":"ワット","㍘":"0点","㍙":"1点","㍚":"2点","㍛":"3点","㍜":"4点","㍝":"5点","㍞":"6点","㍟":"7点","㍠":"8点","㍡":"9点","㍢":"10点","㍣":"11点","㍤":"12点","㍥":"13点","㍦":"14点","㍧":"15点","㍨":"16点","㍩":"17点","㍪":"18点","㍫":"19点","㍬":"20点","㍭":"21点","㍮":"22点","㍯":"23点","㍰":"24点","㍱":"hPa","㍲":"da","㍳":"AU","㍴":"bar","㍵":"oV","㍶":"pc","㍷":"dm","㍸":"dm2","㍹":"dm3","㍺":"IU","㍻":"平成","㍼":"昭和","㍽":"大正","㍾":"明治","㍿":"株式会社","㎀":"pA","㎁":"nA","㎂":"μA","㎃":"mA","㎄":"kA","㎅":"KB","㎆":"MB","㎇":"GB","㎈":"cal","㎉":"kcal","㎊":"pF","㎋":"nF","㎌":"μF","㎍":"μg","㎎":"mg","㎏":"kg","㎐":"Hz","㎑":"kHz","㎒":"MHz","㎓":"GHz","㎔":"THz","㎕":"μl","㎖":"ml","㎗":"dl","㎘":"kl","㎙":"fm","㎚":"nm","㎛":"μm","㎜":"mm","㎝":"cm","㎞":"km","㎟":"mm2","㎠":"cm2","㎡":"m2","㎢":"km2","㎣":"mm3","㎤":"cm3","㎥":"m3","㎦":"km3","㎧":"m∕s","㎨":"m∕s2","㎩":"Pa","㎪":"kPa","㎫":"MPa","㎬":"GPa","㎭":"rad","㎮":"rad∕s","㎯":"rad∕s2","㎰":"ps","㎱":"ns","㎲":"μs","㎳":"ms","㎴":"pV","㎵":"nV","㎶":"μV","㎷":"mV","㎸":"kV","㎹":"MV","㎺":"pW","㎻":"nW","㎼":"μW","㎽":"mW","㎾":"kW","㎿":"MW","㏀":"kΩ","㏁":"MΩ","㏂":"a.m.","㏃":"Bq","㏄":"cc","㏅":"cd","㏆":"C∕kg","㏇":"Co.","㏈":"dB","㏉":"Gy","㏊":"ha","㏋":"HP","㏌":"in","㏍":"KK","㏎":"KM","㏏":"kt","㏐":"lm","㏑":"ln","㏒":"log","㏓":"lx","㏔":"mb","㏕":"mil","㏖":"mol","㏗":"PH","㏘":"p.m.","㏙":"PPM","㏚":"PR","㏛":"sr","㏜":"Sv","㏝":"Wb","㏞":"V∕m","㏟":"A∕m","㏠":"1日","㏡":"2日","㏢":"3日","㏣":"4日","㏤":"5日","㏥":"6日","㏦":"7日","㏧":"8日","㏨":"9日","㏩":"10日","㏪":"11日","㏫":"12日","㏬":"13日","㏭":"14日","㏮":"15日","㏯":"16日","㏰":"17日","㏱":"18日","㏲":"19日","㏳":"20日","㏴":"21日","㏵":"22日","㏶":"23日","㏷":"24日","㏸":"25日","㏹":"26日","㏺":"27日","㏻":"28日","㏼":"29日","㏽":"30日","㏾":"31日","㏿":"gal","ꝰ":"ꝯ","ꟸ":"Ħ","ꟹ":"œ","ﬀ":"ff","ﬁ":"fi","ﬂ":"fl","ﬃ":"ffi","ﬄ":"ffl","ﬅ":"st","ﬆ":"st","ﬓ":"մն","ﬔ":"մե","ﬕ":"մի","ﬖ":"վն","ﬗ":"մխ","ﬠ":"ע","ﬡ":"א","ﬢ":"ד","ﬣ":"ה","ﬤ":"כ","ﬥ":"ל","ﬦ":"ם","ﬧ":"ר","ﬨ":"ת","﬩":"+","ﭏ":"אל","ﭐ":"ٱ","ﭑ":"ٱ","ﭒ":"ٻ","ﭓ":"ٻ","ﭔ":"ٻ","ﭕ":"ٻ","ﭖ":"پ","ﭗ":"پ","ﭘ":"پ","ﭙ":"پ","ﭚ":"ڀ","ﭛ":"ڀ","ﭜ":"ڀ","ﭝ":"ڀ","ﭞ":"ٺ","ﭟ":"ٺ","ﭠ":"ٺ","ﭡ":"ٺ","ﭢ":"ٿ","ﭣ":"ٿ","ﭤ":"ٿ","ﭥ":"ٿ","ﭦ":"ٹ","ﭧ":"ٹ","ﭨ":"ٹ","ﭩ":"ٹ","ﭪ":"ڤ","ﭫ":"ڤ","ﭬ":"ڤ","ﭭ":"ڤ","ﭮ":"ڦ","ﭯ":"ڦ","ﭰ":"ڦ","ﭱ":"ڦ","ﭲ":"ڄ","ﭳ":"ڄ","ﭴ":"ڄ","ﭵ":"ڄ","ﭶ":"ڃ","ﭷ":"ڃ","ﭸ":"ڃ","ﭹ":"ڃ","ﭺ":"چ","ﭻ":"چ","ﭼ":"چ","ﭽ":"چ","ﭾ":"ڇ","ﭿ":"ڇ","ﮀ":"ڇ","ﮁ":"ڇ","ﮂ":"ڍ","ﮃ":"ڍ","ﮄ":"ڌ","ﮅ":"ڌ","ﮆ":"ڎ","ﮇ":"ڎ","ﮈ":"ڈ","ﮉ":"ڈ","ﮊ":"ژ","ﮋ":"ژ","ﮌ":"ڑ","ﮍ":"ڑ","ﮎ":"ک","ﮏ":"ک","ﮐ":"ک","ﮑ":"ک","ﮒ":"گ","ﮓ":"گ","ﮔ":"گ","ﮕ":"گ","ﮖ":"ڳ","ﮗ":"ڳ","ﮘ":"ڳ","ﮙ":"ڳ","ﮚ":"ڱ","ﮛ":"ڱ","ﮜ":"ڱ","ﮝ":"ڱ","ﮞ":"ں","ﮟ":"ں","ﮠ":"ڻ","ﮡ":"ڻ","ﮢ":"ڻ","ﮣ":"ڻ","ﮤ":"ۀ","ﮥ":"ۀ","ﮦ":"ہ","ﮧ":"ہ","ﮨ":"ہ","ﮩ":"ہ","ﮪ":"ھ","ﮫ":"ھ","ﮬ":"ھ","ﮭ":"ھ","ﮮ":"ے","ﮯ":"ے","ﮰ":"ۓ","ﮱ":"ۓ","ﯓ":"ڭ","ﯔ":"ڭ","ﯕ":"ڭ","ﯖ":"ڭ","ﯗ":"ۇ","ﯘ":"ۇ","ﯙ":"ۆ","ﯚ":"ۆ","ﯛ":"ۈ","ﯜ":"ۈ","ﯝ":"ۇٴ","ﯞ":"ۋ","ﯟ":"ۋ","ﯠ":"ۅ","ﯡ":"ۅ","ﯢ":"ۉ","ﯣ":"ۉ","ﯤ":"ې","ﯥ":"ې","ﯦ":"ې","ﯧ":"ې","ﯨ":"ى","ﯩ":"ى","ﯪ":"ئا","ﯫ":"ئا","ﯬ":"ئە","ﯭ":"ئە","ﯮ":"ئو","ﯯ":"ئو","ﯰ":"ئۇ","ﯱ":"ئۇ","ﯲ":"ئۆ","ﯳ":"ئۆ","ﯴ":"ئۈ","ﯵ":"ئۈ","ﯶ":"ئې","ﯷ":"ئې","ﯸ":"ئې","ﯹ":"ئى","ﯺ":"ئى","ﯻ":"ئى","ﯼ":"ی","ﯽ":"ی","ﯾ":"ی","ﯿ":"ی","ﰀ":"ئج","ﰁ":"ئح","ﰂ":"ئم","ﰃ":"ئى","ﰄ":"ئي","ﰅ":"بج","ﰆ":"بح","ﰇ":"بخ","ﰈ":"بم","ﰉ":"بى","ﰊ":"بي","ﰋ":"تج","ﰌ":"تح","ﰍ":"تخ","ﰎ":"تم","ﰏ":"تى","ﰐ":"تي","ﰑ":"ثج","ﰒ":"ثم","ﰓ":"ثى","ﰔ":"ثي","ﰕ":"جح","ﰖ":"جم","ﰗ":"حج","ﰘ":"حم","ﰙ":"خج","ﰚ":"خح","ﰛ":"خم","ﰜ":"سج","ﰝ":"سح","ﰞ":"سخ","ﰟ":"سم","ﰠ":"صح","ﰡ":"صم","ﰢ":"ضج","ﰣ":"ضح","ﰤ":"ضخ","ﰥ":"ضم","ﰦ":"طح","ﰧ":"طم","ﰨ":"ظم","ﰩ":"عج","ﰪ":"عم","ﰫ":"غج","ﰬ":"غم","ﰭ":"فج","ﰮ":"فح","ﰯ":"فخ","ﰰ":"فم","ﰱ":"فى","ﰲ":"في","ﰳ":"قح","ﰴ":"قم","ﰵ":"قى","ﰶ":"قي","ﰷ":"كا","ﰸ":"كج","ﰹ":"كح","ﰺ":"كخ","ﰻ":"كل","ﰼ":"كم","ﰽ":"كى","ﰾ":"كي","ﰿ":"لج","ﱀ":"لح","ﱁ":"لخ","ﱂ":"لم","ﱃ":"لى","ﱄ":"لي","ﱅ":"مج","ﱆ":"مح","ﱇ":"مخ","ﱈ":"مم","ﱉ":"مى","ﱊ":"مي","ﱋ":"نج","ﱌ":"نح","ﱍ":"نخ","ﱎ":"نم","ﱏ":"نى","ﱐ":"ني","ﱑ":"هج","ﱒ":"هم","ﱓ":"هى","ﱔ":"هي","ﱕ":"يج","ﱖ":"يح","ﱗ":"يخ","ﱘ":"يم","ﱙ":"يى","ﱚ":"يي","ﱛ":"ذٰ","ﱜ":"رٰ","ﱝ":"ىٰ","ﱞ":" ٌّ","ﱟ":" ٍّ","ﱠ":" َّ","ﱡ":" ُّ","ﱢ":" ِّ","ﱣ":" ّٰ","ﱤ":"ئر","ﱥ":"ئز","ﱦ":"ئم","ﱧ":"ئن","ﱨ":"ئى","ﱩ":"ئي","ﱪ":"بر","ﱫ":"بز","ﱬ":"بم","ﱭ":"بن","ﱮ":"بى","ﱯ":"بي","ﱰ":"تر","ﱱ":"تز","ﱲ":"تم","ﱳ":"تن","ﱴ":"تى","ﱵ":"تي","ﱶ":"ثر","ﱷ":"ثز","ﱸ":"ثم","ﱹ":"ثن","ﱺ":"ثى","ﱻ":"ثي","ﱼ":"فى","ﱽ":"في","ﱾ":"قى","ﱿ":"قي","ﲀ":"كا","ﲁ":"كل","ﲂ":"كم","ﲃ":"كى","ﲄ":"كي","ﲅ":"لم","ﲆ":"لى","ﲇ":"لي","ﲈ":"ما","ﲉ":"مم","ﲊ":"نر","ﲋ":"نز","ﲌ":"نم","ﲍ":"نن","ﲎ":"نى","ﲏ":"ني","ﲐ":"ىٰ","ﲑ":"ير","ﲒ":"يز","ﲓ":"يم","ﲔ":"ين","ﲕ":"يى","ﲖ":"يي","ﲗ":"ئج","ﲘ":"ئح","ﲙ":"ئخ","ﲚ":"ئم","ﲛ":"ئه","ﲜ":"بج","ﲝ":"بح","ﲞ":"بخ","ﲟ":"بم","ﲠ":"به","ﲡ":"تج","ﲢ":"تح","ﲣ":"تخ","ﲤ":"تم","ﲥ":"ته","ﲦ":"ثم","ﲧ":"جح","ﲨ":"جم","ﲩ":"حج","ﲪ":"حم","ﲫ":"خج","ﲬ":"خم","ﲭ":"سج","ﲮ":"سح","ﲯ":"سخ","ﲰ":"سم","ﲱ":"صح","ﲲ":"صخ","ﲳ":"صم","ﲴ":"ضج","ﲵ":"ضح","ﲶ":"ضخ","ﲷ":"ضم","ﲸ":"طح","ﲹ":"ظم","ﲺ":"عج","ﲻ":"عم","ﲼ":"غج","ﲽ":"غم","ﲾ":"فج","ﲿ":"فح","ﳀ":"فخ","ﳁ":"فم","ﳂ":"قح","ﳃ":"قم","ﳄ":"كج","ﳅ":"كح","ﳆ":"كخ","ﳇ":"كل","ﳈ":"كم","ﳉ":"لج","ﳊ":"لح","ﳋ":"لخ","ﳌ":"لم","ﳍ":"له","ﳎ":"مج","ﳏ":"مح","ﳐ":"مخ","ﳑ":"مم","ﳒ":"نج","ﳓ":"نح","ﳔ":"نخ","ﳕ":"نم","ﳖ":"نه","ﳗ":"هج","ﳘ":"هم","ﳙ":"هٰ","ﳚ":"يج","ﳛ":"يح","ﳜ":"يخ","ﳝ":"يم","ﳞ":"يه","ﳟ":"ئم","ﳠ":"ئه","ﳡ":"بم","ﳢ":"به","ﳣ":"تم","ﳤ":"ته","ﳥ":"ثم","ﳦ":"ثه","ﳧ":"سم","ﳨ":"سه","ﳩ":"شم","ﳪ":"شه","ﳫ":"كل","ﳬ":"كم","ﳭ":"لم","ﳮ":"نم","ﳯ":"نه","ﳰ":"يم","ﳱ":"يه","ﳲ":"ـَّ","ﳳ":"ـُّ","ﳴ":"ـِّ","ﳵ":"طى","ﳶ":"طي","ﳷ":"عى","ﳸ":"عي","ﳹ":"غى","ﳺ":"غي","ﳻ":"سى","ﳼ":"سي","ﳽ":"شى","ﳾ":"شي","ﳿ":"حى","ﴀ":"حي","ﴁ":"جى","ﴂ":"جي","ﴃ":"خى","ﴄ":"خي","ﴅ":"صى","ﴆ":"صي","ﴇ":"ضى","ﴈ":"ضي","ﴉ":"شج","ﴊ":"شح","ﴋ":"شخ","ﴌ":"شم","ﴍ":"شر","ﴎ":"سر","ﴏ":"صر","ﴐ":"ضر","ﴑ":"طى","ﴒ":"طي","ﴓ":"عى","ﴔ":"عي","ﴕ":"غى","ﴖ":"غي","ﴗ":"سى","ﴘ":"سي","ﴙ":"شى","ﴚ":"شي","ﴛ":"حى","ﴜ":"حي","ﴝ":"جى","ﴞ":"جي","ﴟ":"خى","ﴠ":"خي","ﴡ":"صى","ﴢ":"صي","ﴣ":"ضى","ﴤ":"ضي","ﴥ":"شج","ﴦ":"شح","ﴧ":"شخ","ﴨ":"شم","ﴩ":"شر","ﴪ":"سر","ﴫ":"صر","ﴬ":"ضر","ﴭ":"شج","ﴮ":"شح","ﴯ":"شخ","ﴰ":"شم","ﴱ":"سه","ﴲ":"شه","ﴳ":"طم","ﴴ":"سج","ﴵ":"سح","ﴶ":"سخ","ﴷ":"شج","ﴸ":"شح","ﴹ":"شخ","ﴺ":"طم","ﴻ":"ظم","ﴼ":"اً","ﴽ":"اً","ﵐ":"تجم","ﵑ":"تحج","ﵒ":"تحج","ﵓ":"تحم","ﵔ":"تخم","ﵕ":"تمج","ﵖ":"تمح","ﵗ":"تمخ","ﵘ":"جمح","ﵙ":"جمح","ﵚ":"حمي","ﵛ":"حمى","ﵜ":"سحج","ﵝ":"سجح","ﵞ":"سجى","ﵟ":"سمح","ﵠ":"سمح","ﵡ":"سمج","ﵢ":"سمم","ﵣ":"سمم","ﵤ":"صحح","ﵥ":"صحح","ﵦ":"صمم","ﵧ":"شحم","ﵨ":"شحم","ﵩ":"شجي","ﵪ":"شمخ","ﵫ":"شمخ","ﵬ":"شمم","ﵭ":"شمم","ﵮ":"ضحى","ﵯ":"ضخم","ﵰ":"ضخم","ﵱ":"طمح","ﵲ":"طمح","ﵳ":"طمم","ﵴ":"طمي","ﵵ":"عجم","ﵶ":"عمم","ﵷ":"عمم","ﵸ":"عمى","ﵹ":"غمم","ﵺ":"غمي","ﵻ":"غمى","ﵼ":"فخم","ﵽ":"فخم","ﵾ":"قمح","ﵿ":"قمم","ﶀ":"لحم","ﶁ":"لحي","ﶂ":"لحى","ﶃ":"لجج","ﶄ":"لجج","ﶅ":"لخم","ﶆ":"لخم","ﶇ":"لمح","ﶈ":"لمح","ﶉ":"محج","ﶊ":"محم","ﶋ":"محي","ﶌ":"مجح","ﶍ":"مجم","ﶎ":"مخج","ﶏ":"مخم","ﶒ":"مجخ","ﶓ":"همج","ﶔ":"همم","ﶕ":"نحم","ﶖ":"نحى","ﶗ":"نجم","ﶘ":"نجم","ﶙ":"نجى","ﶚ":"نمي","ﶛ":"نمى","ﶜ":"يمم","ﶝ":"يمم","ﶞ":"بخي","ﶟ":"تجي","ﶠ":"تجى","ﶡ":"تخي","ﶢ":"تخى","ﶣ":"تمي","ﶤ":"تمى","ﶥ":"جمي","ﶦ":"جحى","ﶧ":"جمى","ﶨ":"سخى","ﶩ":"صحي","ﶪ":"شحي","ﶫ":"ضحي","ﶬ":"لجي","ﶭ":"لمي","ﶮ":"يحي","ﶯ":"يجي","ﶰ":"يمي","ﶱ":"ممي","ﶲ":"قمي","ﶳ":"نحي","ﶴ":"قمح","ﶵ":"لحم","ﶶ":"عمي","ﶷ":"كمي","ﶸ":"نجح","ﶹ":"مخي","ﶺ":"لجم","ﶻ":"كمم","ﶼ":"لجم","ﶽ":"نجح","ﶾ":"جحي","ﶿ":"حجي","ﷀ":"مجي","ﷁ":"فمي","ﷂ":"بحي","ﷃ":"كمم","ﷄ":"عجم","ﷅ":"صمم","ﷆ":"سخي","ﷇ":"نجي","ﷰ":"صلے","ﷱ":"قلے","ﷲ":"الله","ﷳ":"اكبر","ﷴ":"محمد","ﷵ":"صلعم","ﷶ":"رسول","ﷷ":"عليه","ﷸ":"وسلم","ﷹ":"صلى","ﷺ":"صلى الله عليه وسلم","ﷻ":"جل جلاله","﷼":"ریال","︐":",","︑":"、","︒":"。","︓":":","︔":";","︕":"!","︖":"?","︗":"〖","︘":"〗","︙":"...","︰":"..","︱":"—","︲":"–","︳":"_","︴":"_","︵":"(","︶":")","︷":"{","︸":"}","︹":"〔","︺":"〕","︻":"【","︼":"】","︽":"《","︾":"》","︿":"〈","﹀":"〉","﹁":"「","﹂":"」","﹃":"『","﹄":"』","﹇":"[","﹈":"]","﹉":" ̅","﹊":" ̅","﹋":" ̅","﹌":" ̅","﹍":"_","﹎":"_","﹏":"_","﹐":",","﹑":"、","﹒":".","﹔":";","﹕":":","﹖":"?","﹗":"!","﹘":"—","﹙":"(","﹚":")","﹛":"{","﹜":"}","﹝":"〔","﹞":"〕","﹟":"#","﹠":"&","﹡":"*","﹢":"+","﹣":"-","﹤":"<","﹥":">","﹦":"=","﹨":"\\","﹩":"$","﹪":"%","﹫":"@","ﹰ":" ً","ﹱ":"ـً","ﹲ":" ٌ","ﹴ":" ٍ","ﹶ":" َ","ﹷ":"ـَ","ﹸ":" ُ","ﹹ":"ـُ","ﹺ":" ِ","ﹻ":"ـِ","ﹼ":" ّ","ﹽ":"ـّ","ﹾ":" ْ","ﹿ":"ـْ","ﺀ":"ء","ﺁ":"آ","ﺂ":"آ","ﺃ":"أ","ﺄ":"أ","ﺅ":"ؤ","ﺆ":"ؤ","ﺇ":"إ","ﺈ":"إ","ﺉ":"ئ","ﺊ":"ئ","ﺋ":"ئ","ﺌ":"ئ","ﺍ":"ا","ﺎ":"ا","ﺏ":"ب","ﺐ":"ب","ﺑ":"ب","ﺒ":"ب","ﺓ":"ة","ﺔ":"ة","ﺕ":"ت","ﺖ":"ت","ﺗ":"ت","ﺘ":"ت","ﺙ":"ث","ﺚ":"ث","ﺛ":"ث","ﺜ":"ث","ﺝ":"ج","ﺞ":"ج","ﺟ":"ج","ﺠ":"ج","ﺡ":"ح","ﺢ":"ح","ﺣ":"ح","ﺤ":"ح","ﺥ":"خ","ﺦ":"خ","ﺧ":"خ","ﺨ":"خ","ﺩ":"د","ﺪ":"د","ﺫ":"ذ","ﺬ":"ذ","ﺭ":"ر","ﺮ":"ر","ﺯ":"ز","ﺰ":"ز","ﺱ":"س","ﺲ":"س","ﺳ":"س","ﺴ":"س","ﺵ":"ش","ﺶ":"ش","ﺷ":"ش","ﺸ":"ش","ﺹ":"ص","ﺺ":"ص","ﺻ":"ص","ﺼ":"ص","ﺽ":"ض","ﺾ":"ض","ﺿ":"ض","ﻀ":"ض","ﻁ":"ط","ﻂ":"ط","ﻃ":"ط","ﻄ":"ط","ﻅ":"ظ","ﻆ":"ظ","ﻇ":"ظ","ﻈ":"ظ","ﻉ":"ع","ﻊ":"ع","ﻋ":"ع","ﻌ":"ع","ﻍ":"غ","ﻎ":"غ","ﻏ":"غ","ﻐ":"غ","ﻑ":"ف","ﻒ":"ف","ﻓ":"ف","ﻔ":"ف","ﻕ":"ق","ﻖ":"ق","ﻗ":"ق","ﻘ":"ق","ﻙ":"ك","ﻚ":"ك","ﻛ":"ك","ﻜ":"ك","ﻝ":"ل","ﻞ":"ل","ﻟ":"ل","ﻠ":"ل","ﻡ":"م","ﻢ":"م","ﻣ":"م","ﻤ":"م","ﻥ":"ن","ﻦ":"ن","ﻧ":"ن","ﻨ":"ن","ﻩ":"ه","ﻪ":"ه","ﻫ":"ه","ﻬ":"ه","ﻭ":"و","ﻮ":"و","ﻯ":"ى","ﻰ":"ى","ﻱ":"ي","ﻲ":"ي","ﻳ":"ي","ﻴ":"ي","ﻵ":"لآ","ﻶ":"لآ","ﻷ":"لأ","ﻸ":"لأ","ﻹ":"لإ","ﻺ":"لإ","ﻻ":"لا","ﻼ":"لا","！":"!","＂":"\"","＃":"#","＄":"$","％":"%","＆":"&","＇":"'","（":"(","）":")","＊":"*","＋":"+","，":",","－":"-","．":".","／":"/","０":"0","１":"1","２":"2","３":"3","４":"4","５":"5","６":"6","７":"7","８":"8","９":"9","：":":","；":";","＜":"<","＝":"=","＞":">","？":"?","＠":"@","Ａ":"A","Ｂ":"B","Ｃ":"C","Ｄ":"D","Ｅ":"E","Ｆ":"F","Ｇ":"G","Ｈ":"H","Ｉ":"I","Ｊ":"J","Ｋ":"K","Ｌ":"L","Ｍ":"M","Ｎ":"N","Ｏ":"O","Ｐ":"P","Ｑ":"Q","Ｒ":"R","Ｓ":"S","Ｔ":"T","Ｕ":"U","Ｖ":"V","Ｗ":"W","Ｘ":"X","Ｙ":"Y","Ｚ":"Z","［":"[","＼":"\\","］":"]","＾":"^","＿":"_","｀":"`","ａ":"a","ｂ":"b","ｃ":"c","ｄ":"d","ｅ":"e","ｆ":"f","ｇ":"g","ｈ":"h","ｉ":"i","ｊ":"j","ｋ":"k","ｌ":"l","ｍ":"m","ｎ":"n","ｏ":"o","ｐ":"p","ｑ":"q","ｒ":"r","ｓ":"s","ｔ":"t","ｕ":"u","ｖ":"v","ｗ":"w","ｘ":"x","ｙ":"y","ｚ":"z","｛":"{","｜":"|","｝":"}","～":"~","｟":"⦅","｠":"⦆","｡":"。","｢":"「","｣":"」","､":"、","･":"・","ｦ":"ヲ","ｧ":"ァ","ｨ":"ィ","ｩ":"ゥ","ｪ":"ェ","ｫ":"ォ","ｬ":"ャ","ｭ":"ュ","ｮ":"ョ","ｯ":"ッ","ｰ":"ー","ｱ":"ア","ｲ":"イ","ｳ":"ウ","ｴ":"エ","ｵ":"オ","ｶ":"カ","ｷ":"キ","ｸ":"ク","ｹ":"ケ","ｺ":"コ","ｻ":"サ","ｼ":"シ","ｽ":"ス","ｾ":"セ","ｿ":"ソ","ﾀ":"タ","ﾁ":"チ","ﾂ":"ツ","ﾃ":"テ","ﾄ":"ト","ﾅ":"ナ","ﾆ":"ニ","ﾇ":"ヌ","ﾈ":"ネ","ﾉ":"ノ","ﾊ":"ハ","ﾋ":"ヒ","ﾌ":"フ","ﾍ":"ヘ","ﾎ":"ホ","ﾏ":"マ","ﾐ":"ミ","ﾑ":"ム","ﾒ":"メ","ﾓ":"モ","ﾔ":"ヤ","ﾕ":"ユ","ﾖ":"ヨ","ﾗ":"ラ","ﾘ":"リ","ﾙ":"ル","ﾚ":"レ","ﾛ":"ロ","ﾜ":"ワ","ﾝ":"ン","ﾞ":"゙","ﾟ":"゚","ﾠ":"ᅠ","ﾡ":"ᄀ","ﾢ":"ᄁ","ﾣ":"ᆪ","ﾤ":"ᄂ","ﾥ":"ᆬ","ﾦ":"ᆭ","ﾧ":"ᄃ","ﾨ":"ᄄ","ﾩ":"ᄅ","ﾪ":"ᆰ","ﾫ":"ᆱ","ﾬ":"ᆲ","ﾭ":"ᆳ","ﾮ":"ᆴ","ﾯ":"ᆵ","ﾰ":"ᄚ","ﾱ":"ᄆ","ﾲ":"ᄇ","ﾳ":"ᄈ","ﾴ":"ᄡ","ﾵ":"ᄉ","ﾶ":"ᄊ","ﾷ":"ᄋ","ﾸ":"ᄌ","ﾹ":"ᄍ","ﾺ":"ᄎ","ﾻ":"ᄏ","ﾼ":"ᄐ","ﾽ":"ᄑ","ﾾ":"ᄒ","ￂ":"ᅡ","ￃ":"ᅢ","ￄ":"ᅣ","ￅ":"ᅤ","ￆ":"ᅥ","ￇ":"ᅦ","ￊ":"ᅧ","ￋ":"ᅨ","ￌ":"ᅩ","ￍ":"ᅪ","ￎ":"ᅫ","ￏ":"ᅬ","ￒ":"ᅭ","ￓ":"ᅮ","ￔ":"ᅯ","ￕ":"ᅰ","ￖ":"ᅱ","ￗ":"ᅲ","ￚ":"ᅳ","ￛ":"ᅴ","ￜ":"ᅵ","￠":"¢","￡":"£","￢":"¬","￣":" ̄","￤":"¦","￥":"¥","￦":"₩","￨":"│","￩":"←","￪":"↑","￫":"→","￬":"↓","￭":"■","￮":"○","𝐀":"A","𝐁":"B","𝐂":"C","𝐃":"D","𝐄":"E","𝐅":"F","𝐆":"G","𝐇":"H","𝐈":"I","𝐉":"J","𝐊":"K","𝐋":"L","𝐌":"M","𝐍":"N","𝐎":"O","𝐏":"P","𝐐":"Q","𝐑":"R","𝐒":"S","𝐓":"T","𝐔":"U","𝐕":"V","𝐖":"W","𝐗":"X","𝐘":"Y","𝐙":"Z","𝐚":"a","𝐛":"b","𝐜":"c","𝐝":"d","𝐞":"e","𝐟":"f","𝐠":"g","𝐡":"h","𝐢":"i","𝐣":"j","𝐤":"k","𝐥":"l","𝐦":"m","𝐧":"n","𝐨":"o","𝐩":"p","𝐪":"q","𝐫":"r","𝐬":"s","𝐭":"t","𝐮":"u","𝐯":"v","𝐰":"w","𝐱":"x","𝐲":"y","𝐳":"z","𝐴":"A","𝐵":"B","𝐶":"C","𝐷":"D","𝐸":"E","𝐹":"F","𝐺":"G","𝐻":"H","𝐼":"I","𝐽":"J","𝐾":"K","𝐿":"L","𝑀":"M","𝑁":"N","𝑂":"O","𝑃":"P","𝑄":"Q","𝑅":"R","𝑆":"S","𝑇":"T","𝑈":"U","𝑉":"V","𝑊":"W","𝑋":"X","𝑌":"Y","𝑍":"Z","𝑎":"a","𝑏":"b","𝑐":"c","𝑑":"d","𝑒":"e","𝑓":"f","𝑔":"g","𝑖":"i","𝑗":"j","𝑘":"k","𝑙":"l","𝑚":"m","𝑛":"n","𝑜":"o","𝑝":"p","𝑞":"q","𝑟":"r","𝑠":"s","𝑡":"t","𝑢":"u","𝑣":"v","𝑤":"w","𝑥":"x","𝑦":"y","𝑧":"z","𝑨":"A","𝑩":"B","𝑪":"C","𝑫":"D","𝑬":"E","𝑭":"F","𝑮":"G","𝑯":"H","𝑰":"I","𝑱":"J","𝑲":"K","𝑳":"L","𝑴":"M","𝑵":"N","𝑶":"O","𝑷":"P","𝑸":"Q","𝑹":"R","𝑺":"S","𝑻":"T","𝑼":"U","𝑽":"V","𝑾":"W","𝑿":"X","𝒀":"Y","𝒁":"Z","𝒂":"a","𝒃":"b","𝒄":"c","𝒅":"d","𝒆":"e","𝒇":"f","𝒈":"g","𝒉":"h","𝒊":"i","𝒋":"j","𝒌":"k","𝒍":"l","𝒎":"m","𝒏":"n","𝒐":"o","𝒑":"p","𝒒":"q","𝒓":"r","𝒔":"s","𝒕":"t","𝒖":"u","𝒗":"v","𝒘":"w","𝒙":"x","𝒚":"y","𝒛":"z","𝒜":"A","𝒞":"C","𝒟":"D","𝒢":"G","𝒥":"J","𝒦":"K","𝒩":"N","𝒪":"O","𝒫":"P","𝒬":"Q","𝒮":"S","𝒯":"T","𝒰":"U","𝒱":"V","𝒲":"W","𝒳":"X","𝒴":"Y","𝒵":"Z","𝒶":"a","𝒷":"b","𝒸":"c","𝒹":"d","𝒻":"f","𝒽":"h","𝒾":"i","𝒿":"j","𝓀":"k","𝓁":"l","𝓂":"m","𝓃":"n","𝓅":"p","𝓆":"q","𝓇":"r","𝓈":"s","𝓉":"t","𝓊":"u","𝓋":"v","𝓌":"w","𝓍":"x","𝓎":"y","𝓏":"z","𝓐":"A","𝓑":"B","𝓒":"C","𝓓":"D","𝓔":"E","𝓕":"F","𝓖":"G","𝓗":"H","𝓘":"I","𝓙":"J","𝓚":"K","𝓛":"L","𝓜":"M","𝓝":"N","𝓞":"O","𝓟":"P","𝓠":"Q","𝓡":"R","𝓢":"S","𝓣":"T","𝓤":"U","𝓥":"V","𝓦":"W","𝓧":"X","𝓨":"Y","𝓩":"Z","𝓪":"a","𝓫":"b","𝓬":"c","𝓭":"d","𝓮":"e","𝓯":"f","𝓰":"g","𝓱":"h","𝓲":"i","𝓳":"j","𝓴":"k","𝓵":"l","𝓶":"m","𝓷":"n","𝓸":"o","𝓹":"p","𝓺":"q","𝓻":"r","𝓼":"s","𝓽":"t","𝓾":"u","𝓿":"v","𝔀":"w","𝔁":"x","𝔂":"y","𝔃":"z","𝔄":"A","𝔅":"B","𝔇":"D","𝔈":"E","𝔉":"F","𝔊":"G","𝔍":"J","𝔎":"K","𝔏":"L","𝔐":"M","𝔑":"N","𝔒":"O","𝔓":"P","𝔔":"Q","𝔖":"S","𝔗":"T","𝔘":"U","𝔙":"V","𝔚":"W","𝔛":"X","𝔜":"Y","𝔞":"a","𝔟":"b","𝔠":"c","𝔡":"d","𝔢":"e","𝔣":"f","𝔤":"g","𝔥":"h","𝔦":"i","𝔧":"j","𝔨":"k","𝔩":"l","𝔪":"m","𝔫":"n","𝔬":"o","𝔭":"p","𝔮":"q","𝔯":"r","𝔰":"s","𝔱":"t","𝔲":"u","𝔳":"v","𝔴":"w","𝔵":"x","𝔶":"y","𝔷":"z","𝔸":"A","𝔹":"B","𝔻":"D","𝔼":"E","𝔽":"F","𝔾":"G","𝕀":"I","𝕁":"J","𝕂":"K","𝕃":"L","𝕄":"M","𝕆":"O","𝕊":"S","𝕋":"T","𝕌":"U","𝕍":"V","𝕎":"W","𝕏":"X","𝕐":"Y","𝕒":"a","𝕓":"b","𝕔":"c","𝕕":"d","𝕖":"e","𝕗":"f","𝕘":"g","𝕙":"h","𝕚":"i","𝕛":"j","𝕜":"k","𝕝":"l","𝕞":"m","𝕟":"n","𝕠":"o","𝕡":"p","𝕢":"q","𝕣":"r","𝕤":"s","𝕥":"t","𝕦":"u","𝕧":"v","𝕨":"w","𝕩":"x","𝕪":"y","𝕫":"z","𝕬":"A","𝕭":"B","𝕮":"C","𝕯":"D","𝕰":"E","𝕱":"F","𝕲":"G","𝕳":"H","𝕴":"I","𝕵":"J","𝕶":"K","𝕷":"L","𝕸":"M","𝕹":"N","𝕺":"O","𝕻":"P","𝕼":"Q","𝕽":"R","𝕾":"S","𝕿":"T","𝖀":"U","𝖁":"V","𝖂":"W","𝖃":"X","𝖄":"Y","𝖅":"Z","𝖆":"a","𝖇":"b","𝖈":"c","𝖉":"d","𝖊":"e","𝖋":"f","𝖌":"g","𝖍":"h","𝖎":"i","𝖏":"j","𝖐":"k","𝖑":"l","𝖒":"m","𝖓":"n","𝖔":"o","𝖕":"p","𝖖":"q","𝖗":"r","𝖘":"s","𝖙":"t","𝖚":"u","𝖛":"v","𝖜":"w","𝖝":"x","𝖞":"y","𝖟":"z","𝖠":"A","𝖡":"B","𝖢":"C","𝖣":"D","𝖤":"E","𝖥":"F","𝖦":"G","𝖧":"H","𝖨":"I","𝖩":"J","𝖪":"K","𝖫":"L","𝖬":"M","𝖭":"N","𝖮":"O","𝖯":"P","𝖰":"Q","𝖱":"R","𝖲":"S","𝖳":"T","𝖴":"U","𝖵":"V","𝖶":"W","𝖷":"X","𝖸":"Y","𝖹":"Z","𝖺":"a","𝖻":"b","𝖼":"c","𝖽":"d","𝖾":"e","𝖿":"f","𝗀":"g","𝗁":"h","𝗂":"i","𝗃":"j","𝗄":"k","𝗅":"l","𝗆":"m","𝗇":"n","𝗈":"o","𝗉":"p","𝗊":"q","𝗋":"r","𝗌":"s","𝗍":"t","𝗎":"u","𝗏":"v","𝗐":"w","𝗑":"x","𝗒":"y","𝗓":"z","𝗔":"A","𝗕":"B","𝗖":"C","𝗗":"D","𝗘":"E","𝗙":"F","𝗚":"G","𝗛":"H","𝗜":"I","𝗝":"J","𝗞":"K","𝗟":"L","𝗠":"M","𝗡":"N","𝗢":"O","𝗣":"P","𝗤":"Q","𝗥":"R","𝗦":"S","𝗧":"T","𝗨":"U","𝗩":"V","𝗪":"W","𝗫":"X","𝗬":"Y","𝗭":"Z","𝗮":"a","𝗯":"b","𝗰":"c","𝗱":"d","𝗲":"e","𝗳":"f","𝗴":"g","𝗵":"h","𝗶":"i","𝗷":"j","𝗸":"k","𝗹":"l","𝗺":"m","𝗻":"n","𝗼":"o","𝗽":"p","𝗾":"q","𝗿":"r","𝘀":"s","𝘁":"t","𝘂":"u","𝘃":"v","𝘄":"w","𝘅":"x","𝘆":"y","𝘇":"z","𝘈":"A","𝘉":"B","𝘊":"C","𝘋":"D","𝘌":"E","𝘍":"F","𝘎":"G","𝘏":"H","𝘐":"I","𝘑":"J","𝘒":"K","𝘓":"L","𝘔":"M","𝘕":"N","𝘖":"O","𝘗":"P","𝘘":"Q","𝘙":"R","𝘚":"S","𝘛":"T","𝘜":"U","𝘝":"V","𝘞":"W","𝘟":"X","𝘠":"Y","𝘡":"Z","𝘢":"a","𝘣":"b","𝘤":"c","𝘥":"d","𝘦":"e","𝘧":"f","𝘨":"g","𝘩":"h","𝘪":"i","𝘫":"j","𝘬":"k","𝘭":"l","𝘮":"m","𝘯":"n","𝘰":"o","𝘱":"p","𝘲":"q","𝘳":"r","𝘴":"s","𝘵":"t","𝘶":"u","𝘷":"v","𝘸":"w","𝘹":"x","𝘺":"y","𝘻":"z","𝘼":"A","𝘽":"B","𝘾":"C","𝘿":"D","𝙀":"E","𝙁":"F","𝙂":"G","𝙃":"H","𝙄":"I","𝙅":"J","𝙆":"K","𝙇":"L","𝙈":"M","𝙉":"N","𝙊":"O","𝙋":"P","𝙌":"Q","𝙍":"R","𝙎":"S","𝙏":"T","𝙐":"U","𝙑":"V","𝙒":"W","𝙓":"X","𝙔":"Y","𝙕":"Z","𝙖":"a","𝙗":"b","𝙘":"c","𝙙":"d","𝙚":"e","𝙛":"f","𝙜":"g","𝙝":"h","𝙞":"i","𝙟":"j","𝙠":"k","𝙡":"l","𝙢":"m","𝙣":"n","𝙤":"o","𝙥":"p","𝙦":"q","𝙧":"r","𝙨":"s","𝙩":"t","𝙪":"u","𝙫":"v","𝙬":"w","𝙭":"x","𝙮":"y","𝙯":"z","𝙰":"A","𝙱":"B","𝙲":"C","𝙳":"D","𝙴":"E","𝙵":"F","𝙶":"G","𝙷":"H","𝙸":"I","𝙹":"J","𝙺":"K","𝙻":"L","𝙼":"M","𝙽":"N","𝙾":"O","𝙿":"P","𝚀":"Q","𝚁":"R","𝚂":"S","𝚃":"T","𝚄":"U","𝚅":"V","𝚆":"W","𝚇":"X","𝚈":"Y","𝚉":"Z","𝚊":"a","𝚋":"b","𝚌":"c","𝚍":"d","𝚎":"e","𝚏":"f","𝚐":"g","𝚑":"h","𝚒":"i","𝚓":"j","𝚔":"k","𝚕":"l","𝚖":"m","𝚗":"n","𝚘":"o","𝚙":"p","𝚚":"q","𝚛":"r","𝚜":"s","𝚝":"t","𝚞":"u","𝚟":"v","𝚠":"w","𝚡":"x","𝚢":"y","𝚣":"z","𝚤":"ı","𝚥":"ȷ","𝚨":"Α","𝚩":"Β","𝚪":"Γ","𝚫":"Δ","𝚬":"Ε","𝚭":"Ζ","𝚮":"Η","𝚯":"Θ","𝚰":"Ι","𝚱":"Κ","𝚲":"Λ","𝚳":"Μ","𝚴":"Ν","𝚵":"Ξ","𝚶":"Ο","𝚷":"Π","𝚸":"Ρ","𝚹":"Θ","𝚺":"Σ","𝚻":"Τ","𝚼":"Υ","𝚽":"Φ","𝚾":"Χ","𝚿":"Ψ","𝛀":"Ω","𝛁":"∇","𝛂":"α","𝛃":"β","𝛄":"γ","𝛅":"δ","𝛆":"ε","𝛇":"ζ","𝛈":"η","𝛉":"θ","𝛊":"ι","𝛋":"κ","𝛌":"λ","𝛍":"μ","𝛎":"ν","𝛏":"ξ","𝛐":"ο","𝛑":"π","𝛒":"ρ","𝛓":"ς","𝛔":"σ","𝛕":"τ","𝛖":"υ","𝛗":"φ","𝛘":"χ","𝛙":"ψ","𝛚":"ω","𝛛":"∂","𝛜":"ε","𝛝":"θ","𝛞":"κ","𝛟":"φ","𝛠":"ρ","𝛡":"π","𝛢":"Α","𝛣":"Β","𝛤":"Γ","𝛥":"Δ","𝛦":"Ε","𝛧":"Ζ","𝛨":"Η","𝛩":"Θ","𝛪":"Ι","𝛫":"Κ","𝛬":"Λ","𝛭":"Μ","𝛮":"Ν","𝛯":"Ξ","𝛰":"Ο","𝛱":"Π","𝛲":"Ρ","𝛳":"Θ","𝛴":"Σ","𝛵":"Τ","𝛶":"Υ","𝛷":"Φ","𝛸":"Χ","𝛹":"Ψ","𝛺":"Ω","𝛻":"∇","𝛼":"α","𝛽":"β","𝛾":"γ","𝛿":"δ","𝜀":"ε","𝜁":"ζ","𝜂":"η","𝜃":"θ","𝜄":"ι","𝜅":"κ","𝜆":"λ","𝜇":"μ","𝜈":"ν","𝜉":"ξ","𝜊":"ο","𝜋":"π","𝜌":"ρ","𝜍":"ς","𝜎":"σ","𝜏":"τ","𝜐":"υ","𝜑":"φ","𝜒":"χ","𝜓":"ψ","𝜔":"ω","𝜕":"∂","𝜖":"ε","𝜗":"θ","𝜘":"κ","𝜙":"φ","𝜚":"ρ","𝜛":"π","𝜜":"Α","𝜝":"Β","𝜞":"Γ","𝜟":"Δ","𝜠":"Ε","𝜡":"Ζ","𝜢":"Η","𝜣":"Θ","𝜤":"Ι","𝜥":"Κ","𝜦":"Λ","𝜧":"Μ","𝜨":"Ν","𝜩":"Ξ","𝜪":"Ο","𝜫":"Π","𝜬":"Ρ","𝜭":"Θ","𝜮":"Σ","𝜯":"Τ","𝜰":"Υ","𝜱":"Φ","𝜲":"Χ","𝜳":"Ψ","𝜴":"Ω","𝜵":"∇","𝜶":"α","𝜷":"β","𝜸":"γ","𝜹":"δ","𝜺":"ε","𝜻":"ζ","𝜼":"η","𝜽":"θ","𝜾":"ι","𝜿":"κ","𝝀":"λ","𝝁":"μ","𝝂":"ν","𝝃":"ξ","𝝄":"ο","𝝅":"π","𝝆":"ρ","𝝇":"ς","𝝈":"σ","𝝉":"τ","𝝊":"υ","𝝋":"φ","𝝌":"χ","𝝍":"ψ","𝝎":"ω","𝝏":"∂","𝝐":"ε","𝝑":"θ","𝝒":"κ","𝝓":"φ","𝝔":"ρ","𝝕":"π","𝝖":"Α","𝝗":"Β","𝝘":"Γ","𝝙":"Δ","𝝚":"Ε","𝝛":"Ζ","𝝜":"Η","𝝝":"Θ","𝝞":"Ι","𝝟":"Κ","𝝠":"Λ","𝝡":"Μ","𝝢":"Ν","𝝣":"Ξ","𝝤":"Ο","𝝥":"Π","𝝦":"Ρ","𝝧":"Θ","𝝨":"Σ","𝝩":"Τ","𝝪":"Υ","𝝫":"Φ","𝝬":"Χ","𝝭":"Ψ","𝝮":"Ω","𝝯":"∇","𝝰":"α","𝝱":"β","𝝲":"γ","𝝳":"δ","𝝴":"ε","𝝵":"ζ","𝝶":"η","𝝷":"θ","𝝸":"ι","𝝹":"κ","𝝺":"λ","𝝻":"μ","𝝼":"ν","𝝽":"ξ","𝝾":"ο","𝝿":"π","𝞀":"ρ","𝞁":"ς","𝞂":"σ","𝞃":"τ","𝞄":"υ","𝞅":"φ","𝞆":"χ","𝞇":"ψ","𝞈":"ω","𝞉":"∂","𝞊":"ε","𝞋":"θ","𝞌":"κ","𝞍":"φ","𝞎":"ρ","𝞏":"π","𝞐":"Α","𝞑":"Β","𝞒":"Γ","𝞓":"Δ","𝞔":"Ε","𝞕":"Ζ","𝞖":"Η","𝞗":"Θ","𝞘":"Ι","𝞙":"Κ","𝞚":"Λ","𝞛":"Μ","𝞜":"Ν","𝞝":"Ξ","𝞞":"Ο","𝞟":"Π","𝞠":"Ρ","𝞡":"Θ","𝞢":"Σ","𝞣":"Τ","𝞤":"Υ","𝞥":"Φ","𝞦":"Χ","𝞧":"Ψ","𝞨":"Ω","𝞩":"∇","𝞪":"α","𝞫":"β","𝞬":"γ","𝞭":"δ","𝞮":"ε","𝞯":"ζ","𝞰":"η","𝞱":"θ","𝞲":"ι","𝞳":"κ","𝞴":"λ","𝞵":"μ","𝞶":"ν","𝞷":"ξ","𝞸":"ο","𝞹":"π","𝞺":"ρ","𝞻":"ς","𝞼":"σ","𝞽":"τ","𝞾":"υ","𝞿":"φ","𝟀":"χ","𝟁":"ψ","𝟂":"ω","𝟃":"∂","𝟄":"ε","𝟅":"θ","𝟆":"κ","𝟇":"φ","𝟈":"ρ","𝟉":"π","𝟊":"Ϝ","𝟋":"ϝ","𝟎":"0","𝟏":"1","𝟐":"2","𝟑":"3","𝟒":"4","𝟓":"5","𝟔":"6","𝟕":"7","𝟖":"8","𝟗":"9","𝟘":"0","𝟙":"1","𝟚":"2","𝟛":"3","𝟜":"4","𝟝":"5","𝟞":"6","𝟟":"7","𝟠":"8","𝟡":"9","𝟢":"0","𝟣":"1","𝟤":"2","𝟥":"3","𝟦":"4","𝟧":"5","𝟨":"6","𝟩":"7","𝟪":"8","𝟫":"9","𝟬":"0","𝟭":"1","𝟮":"2","𝟯":"3","𝟰":"4","𝟱":"5","𝟲":"6","𝟳":"7","𝟴":"8","𝟵":"9","𝟶":"0","𝟷":"1","𝟸":"2","𝟹":"3","𝟺":"4","𝟻":"5","𝟼":"6","𝟽":"7","𝟾":"8","𝟿":"9","𞸀":"ا","𞸁":"ب","𞸂":"ج","𞸃":"د","𞸅":"و","𞸆":"ز","𞸇":"ح","𞸈":"ط","𞸉":"ي","𞸊":"ك","𞸋":"ل","𞸌":"م","𞸍":"ن","𞸎":"س","𞸏":"ع","𞸐":"ف","𞸑":"ص","𞸒":"ق","𞸓":"ر","𞸔":"ش","𞸕":"ت","𞸖":"ث","𞸗":"خ","𞸘":"ذ","𞸙":"ض","𞸚":"ظ","𞸛":"غ","𞸜":"ٮ","𞸝":"ں","𞸞":"ڡ","𞸟":"ٯ","𞸡":"ب","𞸢":"ج","𞸤":"ه","𞸧":"ح","𞸩":"ي","𞸪":"ك","𞸫":"ل","𞸬":"م","𞸭":"ن","𞸮":"س","𞸯":"ع","𞸰":"ف","𞸱":"ص","𞸲":"ق","𞸴":"ش","𞸵":"ت","𞸶":"ث","𞸷":"خ","𞸹":"ض","𞸻":"غ","𞹂":"ج","𞹇":"ح","𞹉":"ي","𞹋":"ل","𞹍":"ن","𞹎":"س","𞹏":"ع","𞹑":"ص","𞹒":"ق","𞹔":"ش","𞹗":"خ","𞹙":"ض","𞹛":"غ","𞹝":"ں","𞹟":"ٯ","𞹡":"ب","𞹢":"ج","𞹤":"ه","𞹧":"ح","𞹨":"ط","𞹩":"ي","𞹪":"ك","𞹬":"م","𞹭":"ن","𞹮":"س","𞹯":"ع","𞹰":"ف","𞹱":"ص","𞹲":"ق","𞹴":"ش","𞹵":"ت","𞹶":"ث","𞹷":"خ","𞹹":"ض","𞹺":"ظ","𞹻":"غ","𞹼":"ٮ","𞹾":"ڡ","𞺀":"ا","𞺁":"ب","𞺂":"ج","𞺃":"د","𞺄":"ه","𞺅":"و","𞺆":"ز","𞺇":"ح","𞺈":"ط","𞺉":"ي","𞺋":"ل","𞺌":"م","𞺍":"ن","𞺎":"س","𞺏":"ع","𞺐":"ف","𞺑":"ص","𞺒":"ق","𞺓":"ر","𞺔":"ش","𞺕":"ت","𞺖":"ث","𞺗":"خ","𞺘":"ذ","𞺙":"ض","𞺚":"ظ","𞺛":"غ","𞺡":"ب","𞺢":"ج","𞺣":"د","𞺥":"و","𞺦":"ز","𞺧":"ح","𞺨":"ط","𞺩":"ي","𞺫":"ل","𞺬":"م","𞺭":"ن","𞺮":"س","𞺯":"ع","𞺰":"ف","𞺱":"ص","𞺲":"ق","𞺳":"ر","𞺴":"ش","𞺵":"ت","𞺶":"ث","𞺷":"خ","𞺸":"ذ","𞺹":"ض","𞺺":"ظ","𞺻":"غ","🄀":"0.","🄁":"0,","🄂":"1,","🄃":"2,","🄄":"3,","🄅":"4,","🄆":"5,","🄇":"6,","🄈":"7,","🄉":"8,","🄊":"9,","🄐":"(A)","🄑":"(B)","🄒":"(C)","🄓":"(D)","🄔":"(E)","🄕":"(F)","🄖":"(G)","🄗":"(H)","🄘":"(I)","🄙":"(J)","🄚":"(K)","🄛":"(L)","🄜":"(M)","🄝":"(N)","🄞":"(O)","🄟":"(P)","🄠":"(Q)","🄡":"(R)","🄢":"(S)","🄣":"(T)","🄤":"(U)","🄥":"(V)","🄦":"(W)","🄧":"(X)","🄨":"(Y)","🄩":"(Z)","🄪":"〔S〕","🄫":"C","🄬":"R","🄭":"CD","🄮":"WZ","🄰":"A","🄱":"B","🄲":"C","🄳":"D","🄴":"E","🄵":"F","🄶":"G","🄷":"H","🄸":"I","🄹":"J","🄺":"K","🄻":"L","🄼":"M","🄽":"N","🄾":"O","🄿":"P","🅀":"Q","🅁":"R","🅂":"S","🅃":"T","🅄":"U","🅅":"V","🅆":"W","🅇":"X","🅈":"Y","🅉":"Z","🅊":"HV","🅋":"MV","🅌":"SD","🅍":"SS","🅎":"PPV","🅏":"WC","🅪":"MC","🅫":"MD","🆐":"DJ","🈀":"ほか","🈁":"ココ","🈂":"サ","🈐":"手","🈑":"字","🈒":"双","🈓":"デ","🈔":"二","🈕":"多","🈖":"解","🈗":"天","🈘":"交","🈙":"映","🈚":"無","🈛":"料","🈜":"前","🈝":"後","🈞":"再","🈟":"新","🈠":"初","🈡":"終","🈢":"生","🈣":"販","🈤":"声","🈥":"吹","🈦":"演","🈧":"投","🈨":"捕","🈩":"一","🈪":"三","🈫":"遊","🈬":"左","🈭":"中","🈮":"右","🈯":"指","🈰":"走","🈱":"打","🈲":"禁","🈳":"空","🈴":"合","🈵":"満","🈶":"有","🈷":"月","🈸":"申","🈹":"割","🈺":"営","🉀":"〔本〕","🉁":"〔三〕","🉂":"〔二〕","🉃":"〔安〕","🉄":"〔点〕","🉅":"〔打〕","🉆":"〔盗〕","🉇":"〔勝〕","🉈":"〔敗〕","🉐":"得","🉑":"可"};
 /*
  * all.js - include file for normalization data for a particular script
@@ -20198,7 +20546,7 @@ ilib.data.nfkd_all = {" ":" ","¨":" ̈","ª":"a","¯":" ̄","²":"2","³":"3",
 /* WARNING: THIS IS A FILE GENERATED BY gennorm.js. DO NOT EDIT BY HAND. */
 // !depends util/utils.js 
 // !depends nfd/all.js
-// !data norm.ccc nfkd/all
+// !data norm nfkd/all
 ilib.data.norm.nfkd = ilib.merge(ilib.data.norm.nfkd || {}, ilib.data.nfkd_all);
 ilib.data.nfkd_all = undefined;
 /*
@@ -20222,7 +20570,7 @@ ilib.data.nfkd_all = undefined;
 /* WARNING: THIS IS A FILE GENERATED BY gennorm.js. DO NOT EDIT BY HAND. */
 // !depends util/utils.js 
 // !depends nfd/all.js nfc/all.js nfkd/all.js
-// !data norm.ccc
+// !data norm
 
 ilib.data.likelylocales = {"aa":"aa-Latn-ET","ab":"ab-Cyrl-GE","ady":"ady-Cyrl-RU","af":"af-Latn-ZA","agq":"agq-Latn-CM","ak":"ak-Latn-GH","am":"am-Ethi-ET","ar":"ar-Arab-EG","as":"as-Beng-IN","asa":"asa-Latn-TZ","ast":"ast-Latn-ES","av":"av-Cyrl-RU","ay":"ay-Latn-BO","az":"az-Latn-AZ","az-Arab":"az-Arab-IR","az-IR":"az-Arab-IR","ba":"ba-Cyrl-RU","bas":"bas-Latn-CM","be":"be-Cyrl-BY","bem":"bem-Latn-ZM","bez":"bez-Latn-TZ","bg":"bg-Cyrl-BG","bi":"bi-Latn-VU","bm":"bm-Latn-ML","bn":"bn-Beng-BD","bo":"bo-Tibt-CN","br":"br-Latn-FR","brx":"brx-Deva-IN","bs":"bs-Latn-BA","byn":"byn-Ethi-ER","ca":"ca-Latn-ES","cch":"cch-Latn-NG","ce":"ce-Cyrl-RU","ceb":"ceb-Latn-PH","cgg":"cgg-Latn-UG","ch":"ch-Latn-GU","chk":"chk-Latn-FM","chr":"chr-Cher-US","ckb":"ckb-Arab-IQ","cs":"cs-Latn-CZ","csb":"csb-Latn-PL","cy":"cy-Latn-GB","da":"da-Latn-DK","dav":"dav-Latn-KE","de":"de-Latn-DE","dje":"dje-Latn-NE","dua":"dua-Latn-CM","dv":"dv-Thaa-MV","dyo":"dyo-Latn-SN","dz":"dz-Tibt-BT","ebu":"ebu-Latn-KE","ee":"ee-Latn-GH","efi":"efi-Latn-NG","el":"el-Grek-GR","en":"en-Latn-US","eo":"eo-Latn-001","es":"es-Latn-ES","et":"et-Latn-EE","eu":"eu-Latn-ES","ewo":"ewo-Latn-CM","fa":"fa-Arab-IR","ff":"ff-Latn-SN","fi":"fi-Latn-FI","fil":"fil-Latn-PH","fj":"fj-Latn-FJ","fo":"fo-Latn-FO","fr":"fr-Latn-FR","fur":"fur-Latn-IT","fy":"fy-Latn-NL","ga":"ga-Latn-IE","gaa":"gaa-Latn-GH","gag":"gag-Latn-MD","gd":"gd-Latn-GB","gil":"gil-Latn-KI","gl":"gl-Latn-ES","gn":"gn-Latn-PY","gsw":"gsw-Latn-CH","gu":"gu-Gujr-IN","guz":"guz-Latn-KE","gv":"gv-Latn-GB","gv-Latn":"gv-Latn-IM","ha":"ha-Latn-NG","haw":"haw-Latn-US","he":"he-Hebr-IL","hi":"hi-Deva-IN","hil":"hil-Latn-PH","ho":"ho-Latn-PG","hr":"hr-Latn-HR","ht":"ht-Latn-HT","hu":"hu-Latn-HU","hy":"hy-Armn-AM","ia":"ia-Latn-001","id":"id-Latn-ID","ig":"ig-Latn-NG","ii":"ii-Yiii-CN","ilo":"ilo-Latn-PH","inh":"inh-Cyrl-RU","is":"is-Latn-IS","it":"it-Latn-IT","ja":"ja-Jpan-JP","jgo":"jgo-Latn-CM","jmc":"jmc-Latn-TZ","jv":"jv-Latn-ID","ka":"ka-Geor-GE","kab":"kab-Latn-DZ","kaj":"kaj-Latn-NG","kam":"kam-Latn-KE","kbd":"kbd-Cyrl-RU","kcg":"kcg-Latn-NG","kde":"kde-Latn-TZ","kea":"kea-Latn-CV","kg":"kg-Latn-CD","kha":"kha-Latn-IN","khq":"khq-Latn-ML","ki":"ki-Latn-KE","kj":"kj-Latn-NA","kk":"kk-Cyrl-KZ","kkj":"kkj-Latn-CM","kl":"kl-Latn-GL","kln":"kln-Latn-KE","km":"km-Khmr-KH","kn":"kn-Knda-IN","ko":"ko-Kore-KR","koi":"koi-Cyrl-RU","kok":"kok-Deva-IN","kos":"kos-Latn-FM","kpe":"kpe-Latn-LR","kpv":"kpv-Cyrl-RU","krc":"krc-Cyrl-RU","ks":"ks-Arab-IN","ksb":"ksb-Latn-TZ","ksf":"ksf-Latn-CM","ksh":"ksh-Latn-DE","ku":"ku-Latn-TR","ku-Arab":"ku-Arab-IQ","ku-IQ":"ku-Arab-IQ","kum":"kum-Cyrl-RU","kv":"kv-Cyrl-RU","kw":"kw-Latn-GB","ky":"ky-Cyrl-KG","la":"la-Latn-VA","lag":"lag-Latn-TZ","lah":"lah-Arab-PK","lb":"lb-Latn-LU","lbe":"lbe-Cyrl-RU","lez":"lez-Cyrl-RU","lg":"lg-Latn-UG","ln":"ln-Latn-CD","lo":"lo-Laoo-LA","lt":"lt-Latn-LT","lu":"lu-Latn-CD","lua":"lua-Latn-CD","luo":"luo-Latn-KE","luy":"luy-Latn-KE","lv":"lv-Latn-LV","mai":"mai-Deva-IN","mas":"mas-Latn-KE","mdf":"mdf-Cyrl-RU","mdh":"mdh-Latn-PH","mer":"mer-Latn-KE","mfe":"mfe-Latn-MU","mg":"mg-Latn-MG","mgh":"mgh-Latn-MZ","mgo":"mgo-Latn-CM","mh":"mh-Latn-MH","mi":"mi-Latn-NZ","mk":"mk-Cyrl-MK","ml":"ml-Mlym-IN","mn":"mn-Cyrl-MN","mn-CN":"mn-Mong-CN","mn-Mong":"mn-Mong-CN","mr":"mr-Deva-IN","ms":"ms-Latn-MY","mt":"mt-Latn-MT","mua":"mua-Latn-CM","my":"my-Mymr-MM","myv":"myv-Cyrl-RU","na":"na-Latn-NR","naq":"naq-Latn-NA","nb":"nb-Latn-NO","nd":"nd-Latn-ZW","nds":"nds-Latn-DE","ne":"ne-Deva-NP","niu":"niu-Latn-NU","nl":"nl-Latn-NL","nmg":"nmg-Latn-CM","nn":"nn-Latn-NO","nnh":"nnh-Latn-CM","nr":"nr-Latn-ZA","nso":"nso-Latn-ZA","nus":"nus-Latn-SD","ny":"ny-Latn-MW","nyn":"nyn-Latn-UG","oc":"oc-Latn-FR","om":"om-Latn-ET","or":"or-Orya-IN","os":"os-Cyrl-GE","pa":"pa-Guru-IN","pa-Arab":"pa-Arab-PK","pa-PK":"pa-Arab-PK","pag":"pag-Latn-PH","pap":"pap-Latn-AN","pau":"pau-Latn-PW","pl":"pl-Latn-PL","pon":"pon-Latn-FM","ps":"ps-Arab-AF","pt":"pt-Latn-BR","qu":"qu-Latn-PE","rm":"rm-Latn-CH","rn":"rn-Latn-BI","ro":"ro-Latn-RO","rof":"rof-Latn-TZ","ru":"ru-Cyrl-RU","rw":"rw-Latn-RW","rwk":"rwk-Latn-TZ","sa":"sa-Deva-IN","sah":"sah-Cyrl-RU","saq":"saq-Latn-KE","sat":"sat-Latn-IN","sbp":"sbp-Latn-TZ","sd":"sd-Arab-IN","se":"se-Latn-NO","seh":"seh-Latn-MZ","ses":"ses-Latn-ML","sg":"sg-Latn-CF","shi":"shi-Tfng-MA","shi-MA":"shi-Latn-MA","si":"si-Sinh-LK","sid":"sid-Latn-ET","sk":"sk-Latn-SK","sl":"sl-Latn-SI","sm":"sm-Latn-WS","sn":"sn-Latn-ZW","so":"so-Latn-SO","sq":"sq-Latn-AL","sr":"sr-Cyrl-RS","sr-ME":"sr-Latn-ME","ss":"ss-Latn-ZA","ssy":"ssy-Latn-ER","st":"st-Latn-ZA","su":"su-Latn-ID","sv":"sv-Latn-SE","sw":"sw-Latn-TZ","swc":"swc-Latn-CD","ta":"ta-Taml-IN","te":"te-Telu-IN","teo":"teo-Latn-UG","tet":"tet-Latn-TL","tg":"tg-Cyrl-TJ","th":"th-Thai-TH","ti":"ti-Ethi-ET","tig":"tig-Ethi-ER","tk":"tk-Latn-TM","tkl":"tkl-Latn-TK","tl":"tl-Latn-PH","tn":"tn-Latn-ZA","to":"to-Latn-TO","tpi":"tpi-Latn-PG","tr":"tr-Latn-TR","trv":"trv-Latn-TW","ts":"ts-Latn-ZA","tsg":"tsg-Latn-PH","tt":"tt-Cyrl-RU","tvl":"tvl-Latn-TV","twq":"twq-Latn-NE","ty":"ty-Latn-PF","tyv":"tyv-Cyrl-RU","tzm":"tzm-Latn-MA","udm":"udm-Cyrl-RU","ug":"ug-Arab-CN","uk":"uk-Cyrl-UA","uli":"uli-Latn-FM","und":"en-Latn-US","AD":"ca-Latn-AD","AE":"ar-Arab-AE","AF":"fa-Arab-AF","AL":"sq-Latn-AL","AM":"hy-Armn-AM","AN":"pap-Latn-AN","AO":"pt-Latn-AO","AR":"es-Latn-AR","Arab":"ar-Arab-EG","Arab-CN":"ug-Arab-CN","Arab-IN":"ur-Arab-IN","Arab-NG":"ha-Arab-NG","Arab-PK":"ur-Arab-PK","Armi":"arc-Armi-IR","Armn":"hy-Armn-AM","AS":"sm-Latn-AS","AT":"de-Latn-AT","Avst":"ae-Avst-IR","AW":"nl-Latn-AW","AX":"sv-Latn-AX","AZ":"az-Latn-AZ","BA":"bs-Latn-BA","Bali":"ban-Bali-ID","Bamu":"bax-Bamu-CM","Batk":"bbc-Batk-ID","BD":"bn-Beng-BD","BE":"nl-Latn-BE","Beng":"bn-Beng-BD","BF":"fr-Latn-BF","BG":"bg-Cyrl-BG","BH":"ar-Arab-BH","BI":"rn-Latn-BI","BJ":"fr-Latn-BJ","BL":"fr-Latn-BL","BN":"ms-Latn-BN","BO":"es-Latn-BO","Bopo":"zh-Bopo-TW","BR":"pt-Latn-BR","Brah":"pra-Brah-IN","Brai":"und-Brai-FR","BT":"dz-Tibt-BT","Bugi":"bug-Bugi-ID","Buhd":"bku-Buhd-PH","BY":"be-Cyrl-BY","Cakm":"ccp-Cakm-BD","Cans":"cr-Cans-CA","Cari":"xcr-Cari-TR","CD":"sw-Latn-CD","CF":"fr-Latn-CF","CG":"fr-Latn-CG","CH":"de-Latn-CH","Cham":"cjm-Cham-VN","Cher":"chr-Cher-US","CI":"fr-Latn-CI","CL":"es-Latn-CL","CM":"fr-Latn-CM","CN":"zh-Hans-CN","CO":"es-Latn-CO","Copt":"cop-Copt-EG","CP":"fr-Latn-CP","Cprt":"grc-Cprt-CY","CR":"es-Latn-CR","CU":"es-Latn-CU","CV":"pt-Latn-CV","CY":"el-Grek-CY","Cyrl":"ru-Cyrl-RU","Cyrl-BA":"sr-Cyrl-BA","Cyrl-GE":"ab-Cyrl-GE","CZ":"cs-Latn-CZ","DE":"de-Latn-DE","Deva":"hi-Deva-IN","DJ":"aa-Latn-DJ","DK":"da-Latn-DK","DO":"es-Latn-DO","DZ":"ar-Arab-DZ","EA":"es-Latn-EA","EC":"es-Latn-EC","EE":"et-Latn-EE","EG":"ar-Arab-EG","Egyp":"egy-Egyp-EG","EH":"ar-Arab-EH","ER":"ti-Ethi-ER","ES":"es-Latn-ES","Ethi":"am-Ethi-ET","FI":"fi-Latn-FI","FM":"chk-Latn-FM","FO":"fo-Latn-FO","FR":"fr-Latn-FR","GA":"fr-Latn-GA","GE":"ka-Geor-GE","Geor":"ka-Geor-GE","GF":"fr-Latn-GF","GH":"ak-Latn-GH","GL":"kl-Latn-GL","Glag":"cu-Glag-BG","GN":"fr-Latn-GN","Goth":"got-Goth-UA","GP":"fr-Latn-GP","GQ":"es-Latn-GQ","GR":"el-Grek-GR","Grek":"el-Grek-GR","GT":"es-Latn-GT","Gujr":"gu-Gujr-IN","Guru":"pa-Guru-IN","GW":"pt-Latn-GW","Hang":"ko-Hang-KR","Hani":"zh-Hans-CN","Hano":"hnn-Hano-PH","Hans":"zh-Hans-CN","Hant":"zh-Hant-TW","Hebr":"he-Hebr-IL","Hira":"ja-Hira-JP","HK":"zh-Hant-HK","HN":"es-Latn-HN","HR":"hr-Latn-HR","HT":"ht-Latn-HT","HU":"hu-Latn-HU","IC":"es-Latn-IC","ID":"id-Latn-ID","IL":"he-Hebr-IL","IN":"hi-Deva-IN","IQ":"ar-Arab-IQ","IR":"fa-Arab-IR","IS":"is-Latn-IS","IT":"it-Latn-IT","Ital":"ett-Ital-IT","Java":"jv-Java-ID","JO":"ar-Arab-JO","JP":"ja-Jpan-JP","Jpan":"ja-Jpan-JP","Kali":"eky-Kali-MM","Kana":"ja-Kana-JP","KG":"ky-Cyrl-KG","KH":"km-Khmr-KH","Khar":"pra-Khar-PK","Khmr":"km-Khmr-KH","KM":"ar-Arab-KM","Knda":"kn-Knda-IN","Kore":"ko-Kore-KR","KP":"ko-Kore-KP","KR":"ko-Kore-KR","Kthi":"bh-Kthi-IN","KW":"ar-Arab-KW","KZ":"ru-Cyrl-KZ","LA":"lo-Laoo-LA","Lana":"nod-Lana-TH","Laoo":"lo-Laoo-LA","Latn-CN":"za-Latn-CN","Latn-CY":"tr-Latn-CY","Latn-DZ":"fr-Latn-DZ","Latn-ER":"aa-Latn-ER","Latn-KM":"fr-Latn-KM","Latn-MA":"fr-Latn-MA","Latn-MK":"sq-Latn-MK","Latn-MR":"fr-Latn-MR","Latn-SY":"fr-Latn-SY","Latn-TN":"fr-Latn-TN","LB":"ar-Arab-LB","Lepc":"lep-Lepc-IN","LI":"de-Latn-LI","Limb":"lif-Limb-IN","Linb":"grc-Linb-GR","Lisu":"lis-Lisu-CN","LK":"si-Sinh-LK","LS":"st-Latn-LS","LT":"lt-Latn-LT","LU":"fr-Latn-LU","LV":"lv-Latn-LV","LY":"ar-Arab-LY","Lyci":"xlc-Lyci-TR","Lydi":"xld-Lydi-TR","MA":"ar-Arab-MA","Mand":"myz-Mand-IR","MC":"fr-Latn-MC","MD":"ro-Latn-MD","ME":"sr-Latn-ME","Merc":"xmr-Merc-SD","Mero":"xmr-Mero-SD","MF":"fr-Latn-MF","MG":"mg-Latn-MG","MK":"mk-Cyrl-MK","ML":"bm-Latn-ML","Mlym":"ml-Mlym-IN","MM":"my-Mymr-MM","MN":"mn-Cyrl-MN","MO":"zh-Hant-MO","Mong":"mn-Mong-CN","MQ":"fr-Latn-MQ","MR":"ar-Arab-MR","MT":"mt-Latn-MT","Mtei":"mni-Mtei-IN","MU":"mfe-Latn-MU","MV":"dv-Thaa-MV","MX":"es-Latn-MX","MY":"ms-Latn-MY","Mymr":"my-Mymr-MM","MZ":"pt-Latn-MZ","NA":"kj-Latn-NA","NC":"fr-Latn-NC","NE":"ha-Latn-NE","NI":"es-Latn-NI","Nkoo":"man-Nkoo-GN","NL":"nl-Latn-NL","NO":"nb-Latn-NO","NP":"ne-Deva-NP","Ogam":"sga-Ogam-IE","Olck":"sat-Olck-IN","OM":"ar-Arab-OM","Orkh":"otk-Orkh-MN","Orya":"or-Orya-IN","Osma":"so-Osma-SO","PA":"es-Latn-PA","PE":"es-Latn-PE","PF":"fr-Latn-PF","PG":"tpi-Latn-PG","PH":"fil-Latn-PH","Phag":"lzh-Phag-CN","Phli":"pal-Phli-IR","Phnx":"phn-Phnx-LB","PK":"ur-Arab-PK","PL":"pl-Latn-PL","Plrd":"hmd-Plrd-CN","PM":"fr-Latn-PM","PR":"es-Latn-PR","Prti":"xpr-Prti-IR","PS":"ar-Arab-PS","PT":"pt-Latn-PT","PW":"pau-Latn-PW","PY":"gn-Latn-PY","QA":"ar-Arab-QA","RE":"fr-Latn-RE","Rjng":"rej-Rjng-ID","RO":"ro-Latn-RO","RS":"sr-Cyrl-RS","RU":"ru-Cyrl-RU","Runr":"non-Runr-SE","RW":"rw-Latn-RW","SA":"ar-Arab-SA","Samr":"smp-Samr-IL","Sarb":"xsa-Sarb-YE","Saur":"saz-Saur-IN","SC":"fr-Latn-SC","SD":"ar-Arab-SD","SE":"sv-Latn-SE","Shaw":"en-Shaw-GB","Shrd":"sa-Shrd-IN","SI":"sl-Latn-SI","Sinh":"si-Sinh-LK","SJ":"nb-Latn-SJ","SK":"sk-Latn-SK","SM":"it-Latn-SM","SN":"fr-Latn-SN","SO":"so-Latn-SO","Sora":"srb-Sora-IN","SR":"nl-Latn-SR","ST":"pt-Latn-ST","Sund":"su-Sund-ID","SV":"es-Latn-SV","SY":"ar-Arab-SY","Sylo":"syl-Sylo-BD","Syrc":"syr-Syrc-SY","Tagb":"tbw-Tagb-PH","Takr":"doi-Takr-IN","Tale":"tdd-Tale-CN","Talu":"khb-Talu-CN","Taml":"ta-Taml-IN","Tavt":"blt-Tavt-VN","TD":"fr-Latn-TD","Telu":"te-Telu-IN","Tfng":"shi-Tfng-TN","TG":"fr-Latn-TG","Tglg":"fil-Tglg-PH","TH":"th-Thai-TH","Thaa":"dv-Thaa-MV","Thai":"th-Thai-TH","Tibt":"bo-Tibt-CN","TJ":"tg-Cyrl-TJ","TK":"tkl-Latn-TK","TL":"pt-Latn-TL","TM":"tk-Latn-TM","TN":"ar-Arab-TN","TO":"to-Latn-TO","TR":"tr-Latn-TR","TV":"tvl-Latn-TV","TW":"zh-Hant-TW","TZ":"sw-Latn-TZ","UA":"uk-Cyrl-UA","UG":"sw-Latn-UG","Ugar":"uga-Ugar-SY","UY":"es-Latn-UY","UZ":"uz-Cyrl-UZ","VA":"la-Latn-VA","Vaii":"vai-Vaii-LR","VE":"es-Latn-VE","VN":"vi-Latn-VN","VU":"bi-Latn-VU","WF":"fr-Latn-WF","WS":"sm-Latn-WS","Xpeo":"peo-Xpeo-IR","Xsux":"akk-Xsux-IQ","YE":"ar-Arab-YE","Yiii":"ii-Yiii-CN","YT":"fr-Latn-YT","ur":"ur-Arab-PK","uz":"uz-Cyrl-UZ","uz-AF":"uz-Arab-AF","uz-Arab":"uz-Arab-AF","vai":"vai-Vaii-LR","ve":"ve-Latn-ZA","vi":"vi-Latn-VN","vo":"vo-Latn-001","vun":"vun-Latn-TZ","wae":"wae-Latn-CH","wal":"wal-Ethi-ET","war":"war-Latn-PH","wo":"wo-Latn-SN","xh":"xh-Latn-ZA","xog":"xog-Latn-UG","yap":"yap-Latn-FM","yav":"yav-Latn-CM","yi":"yi-Hebr-IL","yo":"yo-Latn-NG","za":"za-Latn-CN","zh":"zh-Hans-CN","zh-Hani":"zh-Hans-CN","zh-Hant":"zh-Hant-TW","zh-HK":"zh-Hant-HK","zh-MO":"zh-Hant-MO","zh-TW":"zh-Hant-TW","zu":"zu-Latn-ZA"};
 /*
@@ -20633,4 +20981,5 @@ nfkc/all.js
 localematch.js
 normstring.js
 maps/casemapper.js
+glyphstring.js
 */
