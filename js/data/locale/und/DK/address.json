@@ -1,67 +1,27 @@
 {
     "formats": {
-        "default": "{streetAddress}\n{postalCode} {locality}\n{country}",
-        "nocountry": "{streetAddress}\n{postalCode} {locality}"
+        "default": "{streetAddress}\n{postalCode} {locality} {postOffice}\n{country}",
+        "nocountry": "{streetAddress}\n{postalCode} {locality} {postOffice}"
     },
     "startAt": "end",
     "fields": [
         {
+            "name": "postOffice",
+            "line": "startAtLast",
+            "pattern": "((DK-)?[0-9]+\\s+)?[A-Za-zÆÅØÒÓÔæåøéòóô\\-\\s]+\\s+([A-Z]\\.?)$",
+            "matchGroup": 3
+        },
+        {
             "name": "locality",
             "line": "startAtLast",
-            "pattern": [
-                "Copenhagena",
-                "Aarhus",
-                "Odense",
-                "Aalborgb",
-                "Frederiksberga",
-                "Esbjerg",
-                "Gentoftea",
-                "Gladsaxea",
-                "Randers",
-                "Kolding",
-                "Horsens",
-                "Lyngby-Taarbæka",
-                "Vejle",
-                "Hvidovrea",
-                "Roskilde",
-                "Helsingør",
-                "Herning",
-                "Silkeborg",
-                "Næstved",
-                "Greve Stranda",
-                "Tårnbya",
-                "Fredericia",
-                "Ballerupa",
-                "Rødovrea",
-                "Viborg",
-                "Køge",
-                "Holstebro",
-                "Brøndbya",
-                "Taastrupa",
-                "Slagelse",
-                "Hillerød",
-                "Albertslunda",
-                "Sønderborg",
-                "Svendborg",
-                "Herleva",
-                "Holbæk",
-                "Hjørring",
-                "Hørsholm3",
-                "Frederikshavn",
-                "Glostrupa",
-                "Haderslev",
-                "Nørresundbyb",
-                "Ringsted",
-                "Ølstykke-Stenløse2",
-                "Skive",
-		"SKANDERBORG",
-		"København"
-            ]
+            "pattern": "((DK-)?[0-9]+\\s+)?([A-Za-zÆÅØÒÓÔæåøéòóô\\-\\s]+)$",
+            "matchGroup": 3
         },
         {
             "name": "postalCode",
             "line": "last",
-            "pattern": "(DK-)?[0-9]{4}"
+            "pattern": "(DK-)?[0-9]{4,5}",
+            "matchGroup": 0
         }
     ]
 }

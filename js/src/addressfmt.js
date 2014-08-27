@@ -182,7 +182,8 @@ ilib.AddressFmt.prototype.format = function (address) {
 		region: address.region || "",
 		locality: address.locality || "",
 		streetAddress: address.streetAddress || "",
-		postalCode: address.postalCode || ""
+		postalCode: address.postalCode || "",
+		postOffice: address.postOffice || ""
 	};
 	template = new ilib.String(format);
 	ret = template.format(params);

@@ -1,51 +1,20 @@
 {
     "formats": {
-        "default": "{streetAddress}\n{region}\n{postalCode}\n{country}",
-        "nocountry": "{streetAddress}\n{locality}-{region}\n{postalCode}"
+        "default": "{streetAddress}\n{postalCode} {locality}\n{country}",
+        "nocountry": "{streetAddress}\n{postalCode} {locality}"
     },
     "startAt": "end",
     "fields": [
+		{
+			"name": "locality",
+			"line": "startAtLast",
+			"pattern": "[A-Za-zÁČĎÉĚÍŇÓŘŠŤÚŮÝŽáčďéěíňóřšťúůýž\\.']+(\\s[A-Za-zÁČĎÉĚÍŇÓŘŠŤÚŮÝŽáčďéěíňóřšťúůýž\\.']+)*(\\s+[0-9]+)?$"
+		},
         {
             "name": "postalCode",
             "line": "startAtLast",
-            "pattern": "^[0-9]{5}-[0-9]{3}$"
-        },
-        {
-            "name": "region",
-            "line": "last",
-            "pattern": [
-"Prague",
-"Brno",
-"Ostrava",
-"Plzeň",
-"Liberec",
-"Olomouc",
-"Ústí nad Labem",
-"České Budějovice",
-"Hradec Králové",
-"Pardubice",
-"Havířov",
-"Zlín",
-"Kladno",
-"Most",
-"Karviná",
-"Opava",
-"Frýdek-Místek",
-"Jihlava",
-"Karlovy Vary",
-"Teplice",
-"Děčín",
-"Chomutov",
-"Jablonec nad Nisou",
-"Prostějov",
-"Mladá Boleslav"
-            ]
-        },
-        {
-            "name": "locality",
-            "line": "last",
-            "pattern": "([A-za-zÃÉZÁÇÊJXÍÓKÚWYÕÀÂÔãézáçêjxíókúwyõàâô0-9\\s.'\"]+) ?- ?",
-            "matchGroup": 0
+            "pattern": "[0-9]{3}\\s[0-9]{2}"
         }
     ]
 }
+

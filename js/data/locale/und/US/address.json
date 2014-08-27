@@ -265,7 +265,7 @@
 		{
 			"name": "locality",
 			"line": "last",
-			"pattern": "[A-z\\.\\-']+$",
+			"pattern": "([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-\\']+\\s*){1,2}$",
 			"matchGroup": 0
 		}
 	]

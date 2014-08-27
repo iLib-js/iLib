@@ -3,21 +3,18 @@
 		"default": "{streetAddress}\n{postalCode} {locality}\n{country}",
 		"nocountry": "{streetAddress}\n{postalCode} {locality}"
 	},
-	
 	"startAt": "end",
 	"fields": [
-		{
+   		{
 			"name": "locality",
 			"line": "startAtLast",
-			"pattern": "[ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyz]+",
-			"matchGroup": 0
+			"pattern": "([0-9]{4}\\s+)?([ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZabcçdefgğhıijklmnoöprsştuüvyzԱ-֏\\s]+)$",
+			"matchGroup": 2
 		},
-		
 		{
 			"name": "postalCode",
-			"line": "last",
-			"pattern": "[0-9]{4}",
-			"matchGroup": 0
+			"line": "startAtLast",
+			"pattern": "[0-9]{4}"
 		}
 	]
 }

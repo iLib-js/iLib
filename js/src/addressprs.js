@@ -150,6 +150,13 @@ ilib.Address = function (freeformAddress, options) {
 		 */
 		this.postalCode = freeformAddress.postalCode;
 		/**
+		 * Optional city-specific code for a particular post office, used to expidite
+		 * delivery.
+		 * @expose
+		 * @type {string|undefined} 
+		 */
+		this.postOffice = freeformAddress.postOffice;
+		/**
 		 * The country of the address.
 		 * @expose
 		 * @type {string|undefined}
@@ -324,12 +331,14 @@ ilib.Address.prototype = {
 		// decide if we are parsing an asian or latin script address
 		if (this.info && this.info.multiformat) {
 			for (var j = 0; j < this.lines.length; j++) {
-				var line = this.lines[j];
+				var line = new ilib.String(this.lines[j]);
+				var it = line.charIterator();
 				// TODO: use a char iterator here
-				for (i = 0; i < line.length; i++) {
-					if (ilib.CType.isIdeo(line.charAt(i))) {
+				while (it.hasNext()) {
+					var c = it.next();
+					if (ilib.CType.isIdeo(c) || ilib.CType.withinRange(c, "Hangul")) {
 						asianChars++;
-					} else if (ilib.CType.isAscii(line.charAt(i)) && !ilib.CType.isDigit(line.charAt(i))) {
+					} else if (ilib.CType.isAscii(c) && !ilib.CType.isDigit(c)) {
 						latinChars++;
 					}
 				}
