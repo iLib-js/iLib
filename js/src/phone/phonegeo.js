@@ -363,7 +363,8 @@ ilib.GeoLocator.prototype = {
 						};
 					}
 				} else {
-					countryCode = ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(this.locale.getRegion());
+					phoneLoc = new ilib.Locale.PhoneLoc(options);
+					countryCode = phoneLoc._mapRegiontoCC(this.locale.getRegion());
 					if (countryCode !== "0" && this.regiondata) {
 						temp = this.regiondata[countryCode];
 						if (temp && temp.sn) {
@@ -376,7 +377,8 @@ ilib.GeoLocator.prototype = {
 					}
 				}
 			} else {
-				countryCode = ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(this.locale.getRegion());
+				phoneLoc = new ilib.Locale.PhoneLoc(options);
+				countryCode = phoneLoc._mapRegiontoCC(this.locale.getRegion());
 				if (countryCode !== "0" && this.regiondata) {
 					temp = this.regiondata[countryCode];
 					if (temp && temp.sn) {
@@ -532,7 +534,8 @@ ilib.GeoLocator.prototype = {
 		});
 
 		if (ret.country === undefined) {
-			countryCode = ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(region);
+			phoneLoc = new ilib.Locale.PhoneLoc(loadDataOptions);
+			countryCode = phoneLoc._mapRegiontoCC(region);
 			
 			if (countryCode !== "0" && this.regiondata) {
 				temp = this.regiondata[countryCode];

@@ -42,7 +42,6 @@ ilib.Locale.PhoneLoc = function(options) {
 
 	this.locale = new ilib.Locale();
 
-
 	if (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
@@ -81,7 +80,7 @@ ilib.Locale.PhoneLoc = function(options) {
 				locale: this.locale,
 				sync: sync, 
 				loadParams: loadParams, 
-				callback: ilib.bind(this, function(data) {
+				callback: ilib.bind(this, function (data) {
 					ilib.data.cc2reg = data;
 
 					ilib.loadData({
@@ -90,34 +89,43 @@ ilib.Locale.PhoneLoc = function(options) {
 						locale: this.locale,
 						sync: sync, 
 						loadParams: loadParams, 
-						callback: ilib.bind(this, function(data) {
+						callback: ilib.bind(this, function (data) {
 							ilib.data.reg2cc = data;
 
-							if (mcc) {
-								region = ilib.data.mcc2reg[mcc]	|| "XX"			
-							}
+							ilib.loadData({
+								name: "area2reg.json",
+								object: ilib.Locale.PhoneLoc,
+								locale: this.locale, 
+								sync: sync,
+								
+								callback: ilib.bind(this, function (data) {
+									ilib.data.area2reg = data;
 
-							if (cc) {
-								region = ilib.data.cc2reg[cc] || "XX"
-							}
+									if (mcc) {
+										region = ilib.data.mcc2reg[mcc]	|| "XX"			
+									}
 
-							if (!region) {
-								this.locale = new ilib.Locale();
-								region = this.locale.region
-							}
+									if (cc) {
+										region = ilib.data.cc2reg[cc] || "XX"
+									}
 
-							this.language = this.locale.language;
-							this.variant = this.locale.varient;
-							this.region = this._normPhoneReg(region);
-							this.spec = this.language + "-" + this.region;
+									if (!region) {
+										this.locale = new ilib.Locale();
+										region = this.locale.region
+									}
 
-							if (options && typeof(options.onLoad) === 'function') {
-								options.onLoad(this);
-							}
-					
+									this.language = this.locale.language;
+									this.variant = this.locale.varient;
+									this.region = this._normPhoneReg(region);
+									this.spec = this.language + "-" + this.region;
+
+									if (options && typeof(options.onLoad) === 'function') {
+										options.onLoad(this);
+									}									
+								})
+							});					
 						})
 					});
-
 				})
 			});
 		})
