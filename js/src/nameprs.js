@@ -491,7 +491,7 @@ ilib.Name.prototype = {
     /**
      * @protected
      */
-    _findPrefix: function (parts, names, isAsian) {
+    _findPrefix: function (parts, names, isAsian, noCompoundPrefix) {
         var i, prefix, prefixLower, prefixArray, aux = [];
 
         if (parts.length > 0 && names) {
@@ -503,6 +503,10 @@ ilib.Name.prototype = {
 
                 if (prefixLower in names) {
                     aux = aux.concat(isAsian ? prefix : prefixArray);
+                    if (noCompoundPrefix) {
+                    	// don't need to parse further. Just return it as is.
+                    	return aux;
+                    }
                     parts = parts.slice(i);
                     i = parts.length + 1;
                 }
@@ -680,7 +684,7 @@ ilib.Name.prototype = {
      * @protected
      */
     _parseAsianName: function (parts) {
-        var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true);
+        var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true, this.info.noCompoundFamilyNames);
 
         if (familyNameArray && familyNameArray.length > 0) {
             this.familyName = familyNameArray.join('');
@@ -950,7 +954,7 @@ ilib.Name.prototype = {
                 }
             } else if (this.info.knownFamilyNames && this.familyName) {
                 parts = this.familyName.split('');
-                var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true);
+                var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true, this.info.noCompoundFamilyNames);
                 name = "";
                 for (i = 0; i < familyNameArray.length; i++) {
                     name += (this.info.knownFamilyNames[familyNameArray[i]] || "");

@@ -18,66 +18,63 @@
  */
 
 function testParseSimpleName_ko_KR() {
-	var parsed = new ilib.Name("김경", {locale: 'ko-KR'},{order:"fg"});
+	var parsed = new ilib.Name("정훈교", {locale: 'ko-KR', order:"fmg"});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "경",
-		familyName: "김"
+		givenName: "훈교",
+		familyName: "정"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseTripleName_ko_KR() {
-	var parsed = new ilib.Name("김동경", {locale: 'ko-KR'});
+function testParseSimpleNameBogusOrder_ko_KR() {
+	var parsed = new ilib.Name("정훈교", {locale: 'ko-KR', order:"xcfa"});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		givenName: "동경",
-		familyName: "김"
+		givenName: "훈교",
+		familyName: "정"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseHypenatedName_ko_KR() {
-	var parsed = new ilib.Name("김동경", {locale: 'ko-KR'});
-	//console.log(parsed);
+function testParseWithHonorific_ko_KR() {
+	var parsed = new ilib.Name("정훈교씨", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
-	//console.log(parsed);
+	
 	var expected = {
-		givenName: "동경",
-		
-		familyName: "김"
+		givenName: "훈교",
+		familyName: "정",
+		suffix: "씨"
 	};
 	
 	assertObjectContains(expected, parsed);
 };
 
-function testParseQuadrupleName_ko_KR() {
-	var parsed = new ilib.Name("김동경", {locale: 'ko-KR'});
-	assertNotUndefined(parsed);
-	
-	var expected = {
-		givenName: "동경",
-		
-		familyName: "김"
-	};
-	
-	assertObjectContains(expected, parsed);
-};
-
-
-function testParseQuadrupleName_ko_KR1() {
-	var parsed = new ilib.Name("시장김동경", {locale: 'ko-KR'});
+function testParseNameWithPrefix_ko_KR1() {
+	var parsed = new ilib.Name("시장김근면", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
 		prefix: "시장",
-		givenName: "동경",
-		
+		givenName: "근면",
 		familyName: "김"
+	};
+	
+	assertObjectContains(expected, parsed);
+};
+
+function testParseLatinName_ko_KR() {
+	// written with western style when in Latin
+	var parsed = new ilib.Name("Byeongsub Kim", {locale: 'ko-KR'});
+	assertNotUndefined(parsed);
+	
+	var expected = {
+		givenName: "Byeongsub",
+		familyName: "Kim"
 	};
 	
 	assertObjectContains(expected, parsed);
@@ -150,19 +147,6 @@ function testLastNames_ko_KR() {
 	assertObjectContains(expected, parsed);
 };
 
-function testCompoundNames_ko_KR() {
-	var parsed = new ilib.Name("장관 김", {locale: 'ko-KR'});
-	assertNotUndefined(parsed);
-	
-	var expected = {
-		prefix: "장관",
-		familyName: " 김"
-	};
-	
-	assertObjectContains(expected, parsed);
-};
-
-
 
 /*
  * Format tests
@@ -172,7 +156,6 @@ function testFormatSimpleNameShort_ko_KR() {
 	var name = new ilib.Name({
 		prefix: "박사.",
 		givenName: "동경",
-		
 		familyName: "김",
 		suffix: ", 박사"
 	});
@@ -189,7 +172,6 @@ function testFormatSimpleNameMedium_ko_KR() {
 	var name = new ilib.Name({
 		prefix: "박사.",
 		givenName: "동경",
-		
 		familyName: "김",
 		suffix: ", 박사"
 	});
@@ -206,7 +188,6 @@ function testFormatSimpleNameLong_ko_KR() {
 	var name = new ilib.Name({
 		prefix: "박사.",
 		givenName: "동경",
-		
 		familyName: "김",
 		suffix: ", 박사"
 	});
@@ -226,7 +207,6 @@ function testFormatSimpleNameFull_ko_KR() {
 	var name = new ilib.Name({
 		prefix: "박사.",
 		givenName: "동경",
-		
 		familyName: "김",
 		suffix: ", 박사"
 	});
@@ -246,7 +226,6 @@ function testFormatComplexNameShort_ko_KR() {
 	var name = new ilib.Name({
 		prefix: "여왕",
 		givenName: "경",
-		
 		familyName: "정강이",
 		suffix: "III"
 	});
@@ -263,7 +242,6 @@ function testFormatComplexNameMedium_ko_KR() {
 	var name = new ilib.Name({
 		prefix: "여왕",
 		givenName: "동경",
-		
 		familyName: "정강이",
 		suffix: "III"
 	});
@@ -280,7 +258,6 @@ function testFormatComplexNameLong_ko_KR() {
 	var name = new ilib.Name({
 		prefix: "여왕",
 		givenName: "동경",
-		
 		familyName: "정강이",
 		suffix: "III"
 	});
@@ -297,7 +274,6 @@ function testFormatComplexNameFull_ko_KR() {
 	var name = new ilib.Name({
 		prefix: "여왕",
 		givenName: "동경",
-		
 		familyName: "정강이",
 		suffix: "III"
 	});
@@ -314,7 +290,6 @@ function testFormatCommasInSuffix_ko_KR() {
 	var name = new ilib.Name({
 		prefix: "여왕",
 		givenName: "동경",
-		
 		familyName: "정강이",
 		suffix: ", III, 박사"
 	});
