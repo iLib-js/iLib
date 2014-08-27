@@ -453,7 +453,9 @@ ilib.PhoneNumber.prototype = {
 			dot,
 			handlerMethod,
 			result,
-			numplan;
+			numplan,
+			loadName,
+			loadLocale;
 
 		regionSettings = regionData;
 		stateData = regionSettings.stateData;
@@ -490,53 +492,40 @@ ilib.PhoneNumber.prototype = {
 					state = 0;
 					// if the handler requested a special sub-table, use it for this round of parsing,
 					// otherwise, set it back to the regular table to continue parsing
-					if (result.states !== undefined) {
-						if (typeof result.states === "string") {
-							ilib.loadData({
-								name: result.states + ".json",
-								object: ilib.PhoneNumber,
-								sync: this.sync,
-								loadParams: this.loadParams,
-								nonlocale: true,
-								callback: ilib.bind(this, function (data) {
-									stateData = data;
-									// recursively call the parser with the new states data
-									numplan = new ilib.NumPlan(ilib.merge({locale:"-"}, options));
-									regionSettings = {
-										stateData: stateData,
-										plan: numplan,
-										handler: ilib._handlerFactory(this.locale, numplan)
-									};
 
-									this._parseNumber(number, regionSettings, options);
-								})
-							})
+					if (result.locale !== undefined) {
+						if (typeof result.locale === "string") {
+							loadName = result.locale + ".json";
+							loadLocale = "-";
 						} else {
-							ilib.loadData({
-								name: "states.json",
-								object: ilib.PhoneNumber,
-								locale: result.states,
-								sync: this.sync,
-								loadParams: ilib.merge(this.loadParams, {
-									returnOne: true
-								}),
-								callback: ilib.bind(this, function (data) {
-									if (!data) {
-										data = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
-									}
-									stateData = data;
-									// recursively call the parser with the new states data
-									numplan = new ilib.NumPlan({locale:result.states});
-									
-									regionSettings = {
-										stateData: stateData,
-										plan: numplan,
-										handler: ilib._handlerFactory(this.locale, numplan)
-									};
-									this._parseNumber(number, regionSettings, options);
-								})
-							})
+							loadName = "states.json";
+							loadLocale = result.locale;
 						}
+
+						ilib.loadData({
+							name: loadName,
+							object: ilib.PhoneNumber,
+							locale: loadLocale,
+							sync: this.sync,
+							loadParams: ilib.merge(this.loadParams, {
+								returnOne: true
+							}),
+							callback: ilib.bind(this, function (data) {
+								if (!data) {
+									data = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
+								}
+								stateData = data;
+								// recursively call the parser with the new states data
+								numplan = new ilib.NumPlan({locale:result.locale});
+								
+								regionSettings = {
+									stateData: stateData,
+									plan: numplan,
+									handler: ilib._handlerFactory(this.locale, numplan)
+								};
+								this._parseNumber(number, regionSettings, options);
+							})
+						})
 						return;
 					} else if (result.skipTrunk !== undefined) {
 						ch = ilib.PhoneNumber._getCharacterCode(regionSettings.plan.getTrunkCode());

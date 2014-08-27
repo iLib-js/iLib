@@ -206,7 +206,7 @@ ilib.StateHandler.prototype = {
 	
 			ret = {
 				number: number.substring(1),
-				states: 'idd'    // shared subtable that parses the country code
+				locale: 'idd'    // shared subtable that parses the country code
 			};
 		}		
 		return ret;
@@ -232,7 +232,7 @@ ilib.StateHandler.prototype = {
 	
 			ret = {
 				number: number.substring(currentChar+1),
-				states: 'idd'    // shared subtable that parses the country code
+				locale: 'idd'    // shared subtable that parses the country code
 			};
 		}
 		
@@ -257,7 +257,7 @@ ilib.StateHandler.prototype = {
 		
 		ret = {
 			number: number.substring(currentChar+1),
-			states: locale
+			locale: locale
 		};
 		
 		return ret;
