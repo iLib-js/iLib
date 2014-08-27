@@ -55,11 +55,11 @@ function testParseWithHonorific_ko_KR() {
 };
 
 function testParseNameWithPrefix_ko_KR1() {
-	var parsed = new ilib.Name("시장김근면", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("미스터김근면", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "시장",
+		prefix: "미스터",
 		givenName: "근면",
 		familyName: "김"
 	};
@@ -81,11 +81,11 @@ function testParseLatinName_ko_KR() {
 };
 
 function testParseTitle_ko_KR() {
-	var parsed = new ilib.Name("장관김동경", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("미스터김동경", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "장관",
+		prefix: "미스터",
 		givenName: "동경",
 		familyName: "김"
 	};
@@ -94,11 +94,11 @@ function testParseTitle_ko_KR() {
 };
 
 function testParseHonorific_ko_KR() {
-	var parsed = new ilib.Name("여왕김동경", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("미스터김동경", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "여왕",
+		prefix: "미스터",
 		givenName: "동경",
 		familyName: "김"
 	};
@@ -136,11 +136,11 @@ function testParseSuffixWithComma_ko_KR() {
 
 
 function testLastNames_ko_KR() {
-	var parsed = new ilib.Name("여왕강", {locale: 'ko-KR'});
+	var parsed = new ilib.Name("미스터강", {locale: 'ko-KR'});
 	assertNotUndefined(parsed);
 	
 	var expected = {
-		prefix: "여왕",
+		prefix: "미스터",
 		familyName: "강"
 	};
 	
@@ -154,7 +154,7 @@ function testLastNames_ko_KR() {
 
 function testFormatSimpleNameShort_ko_KR() {
 	var name = new ilib.Name({
-		prefix: "박사.",
+		prefix: "미스터",
 		givenName: "동경",
 		familyName: "김",
 		suffix: ", 박사"
@@ -170,7 +170,7 @@ function testFormatSimpleNameShort_ko_KR() {
 
 function testFormatSimpleNameMedium_ko_KR() {
 	var name = new ilib.Name({
-		prefix: "박사.",
+		prefix: "미스터",
 		givenName: "동경",
 		familyName: "김",
 		suffix: ", 박사"
@@ -186,7 +186,7 @@ function testFormatSimpleNameMedium_ko_KR() {
 
 function testFormatSimpleNameLong_ko_KR() {
 	var name = new ilib.Name({
-		prefix: "박사.",
+		prefix: "미스터",
 		givenName: "동경",
 		familyName: "김",
 		suffix: ", 박사"
@@ -198,14 +198,14 @@ function testFormatSimpleNameLong_ko_KR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "박사.김동경";
+	var expected = "미스터김동경";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatSimpleNameFull_ko_KR() {
 	var name = new ilib.Name({
-		prefix: "박사.",
+		prefix: "미스터",
 		givenName: "동경",
 		familyName: "김",
 		suffix: ", 박사"
@@ -217,92 +217,90 @@ function testFormatSimpleNameFull_ko_KR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "박사.김동경, 박사";
+	var expected = "미스터김동경, 박사";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameShort_ko_KR() {
 	var name = new ilib.Name({
-		prefix: "여왕",
+		prefix: "미스터",
 		givenName: "경",
-		familyName: "정강이",
-		suffix: "III"
+		familyName: "남궁",
+		suffix: "씨"
 	});
 	var fmt = new ilib.NameFmt({style: "short", locale: 'ko-KR'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "정강이경";
+	var expected = "남궁경";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameMedium_ko_KR() {
 	var name = new ilib.Name({
-		prefix: "여왕",
+		prefix: "미스터",
 		givenName: "동경",
-		familyName: "정강이",
-		suffix: "III"
+		familyName: "남궁",
+		suffix: "씨"
 	});
 	var fmt = new ilib.NameFmt({style: "medium", locale: 'ko-KR'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "정강이동경";
+	var expected = "남궁동경";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameLong_ko_KR() {
 	var name = new ilib.Name({
-		prefix: "여왕",
+		prefix: "미스터",
 		givenName: "동경",
-		familyName: "정강이",
-		suffix: "III"
+		familyName: "남궁",
+		suffix: "씨"
 	});
 	var fmt = new ilib.NameFmt({style: "long", locale: 'ko-KR'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "여왕정강이동경";
+	var expected = "미스터남궁동경";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatComplexNameFull_ko_KR() {
 	var name = new ilib.Name({
-		prefix: "여왕",
+		prefix: "미스터",
 		givenName: "동경",
-		familyName: "정강이",
-		suffix: "III"
+		familyName: "남궁",
+		suffix: "씨"
 	});
 	var fmt = new ilib.NameFmt({style: "full", locale: 'ko-KR'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "여왕정강이동경III";
+	var expected = "미스터남궁동경씨";
 	
 	assertEquals(expected, formatted);
 };
 
 function testFormatCommasInSuffix_ko_KR() {
 	var name = new ilib.Name({
-		prefix: "여왕",
+		prefix: "미스터",
 		givenName: "동경",
-		familyName: "정강이",
-		suffix: ", III, 박사"
+		familyName: "남궁",
+		suffix: "씨"
 	});
 	var fmt = new ilib.NameFmt({style: "full", locale: 'ko-KR'});
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "여왕정강이동경, III, 박사";
+	var expected = "미스터남궁동경씨";
 	
 	assertEquals(expected, formatted);
 };
-
-
 
 function testFormatWithNulls_ko_KR() {
 	var name = new ilib.Name({
