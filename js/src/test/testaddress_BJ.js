@@ -17,8 +17,6 @@
  * limitations under the License.
  */
 
-
-
 function testParseAddressBJNormal() {
 	var parsedAddress = new ilib.Address("03 BP 1000, COTONOU, BENIN", {locale: 'fr-BJ'});
 	
@@ -80,10 +78,10 @@ function testParseAddressBJSuperfluousWhitespace() {
 };
 
 function testParseAddressBJNoDelimiters() {
-	var parsedAddress = new ilib.Address("03 BP 1000, COTONOU, BENIN", {locale: 'fr-BJ'});
+	var parsedAddress = new ilib.Address("03 BP 1000 COTONOU BENIN", {locale: 'fr-BJ'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Armen Simonyan P. 15 Sh. 1", parsedAddress.streetAddress);
+	assertEquals("BP 1000", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("COTONOU",parsedAddress.locality);
 	assertEquals("03",parsedAddress.postalCode);

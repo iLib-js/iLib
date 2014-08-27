@@ -30,6 +30,18 @@ function testParseAddressCHNormal() {
 	assertEquals("CH", parsedAddress.countryCode);
 };
 
+function testParseAddressCHNormalWithAccents() {
+	var parsedAddress = new ilib.Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zürich\nSWITZERLAND", {locale: 'de-CH'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("Herr Hans Katze Tastentanzenstrasse 5/16", parsedAddress.streetAddress);
+	assertEquals("Zürich", parsedAddress.locality);
+	assertUndefined(parsedAddress.region);
+	assertEquals("1234", parsedAddress.postalCode);
+	assertEquals("SWITZERLAND", parsedAddress.country);
+	assertEquals("CH", parsedAddress.countryCode);
+};
+
 function testParseAddressCHNormalforItaly() {
 	var parsedAddress = new ilib.Address("Mr. Hans gatto Tastentanz Via 5/16\n1234 Zurich\nSVIZZERA", {locale: 'it-CH'});
 	
@@ -48,7 +60,7 @@ function testParseAddressCHNormalforFrance() {
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("M. Hans chat Tastentanz rue 5/16", parsedAddress.streetAddress);
-	assertEquals("Zurich, parsedAddress.locality");
+	assertEquals("Zurich", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("1234", parsedAddress.postalCode);
 	assertEquals("SUISSE", parsedAddress.country);

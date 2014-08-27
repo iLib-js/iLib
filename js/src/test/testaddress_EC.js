@@ -83,7 +83,7 @@ function testParseAddressECNoDelimiters() {
 	var parsedAddress = new ilib.Address("Señor Ing. Gonzalo Vargas San Martín Empresa Nacional de Correos Succursal No 21– Quito  P0133V QUITO Ecuador", {locale: 'es-EC'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Señor Ing. Gonzalo Vargas San Martín, Empresa Nacional de Correos, Succursal No 21– Quito", parsedAddress.streetAddress);
+	assertEquals("Señor Ing. Gonzalo Vargas San Martín Empresa Nacional de Correos Succursal No 21– Quito", parsedAddress.streetAddress);
 	assertUndefined(parsedAddress.region);
 	assertEquals("QUITO", parsedAddress.locality);
 	assertEquals("P0133V", parsedAddress.postalCode);

@@ -1,5 +1,5 @@
 /*
- * testaddress_PR.js - test the address parsing and formatting routines for Mexico
+ * testaddress_PR.js - test the address parsing and formatting routines for Puerto Rico
  * 
  * Copyright © 2013, JEDLSoft
  *
@@ -18,61 +18,85 @@
  */
 
 function testParseAddressPRNormal() {
-var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150\nCALLE A SAN JUAN PR 00926-3232\nPuerto Rico", {locale: 'en-PR'});
+	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150\nCALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico", {locale: 'en-PR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150", parsedAddress.streetAddress);
-	assertEquals("CALLE A", parsedAddress.locality);
-	assertEquals("SAN JUAN", parsedAddress.region);
-	assertEquals("PR 00926-3232", parsedAddress.postalCode);
+	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A", parsedAddress.streetAddress);
+	assertEquals("SAN JUAN", parsedAddress.locality);
+	assertEquals("PR", parsedAddress.region);
+	assertEquals("00926-3232", parsedAddress.postalCode);
+	assertEquals("Puerto Rico", parsedAddress.country);
+	assertEquals("PR", parsedAddress.countryCode);
+};
+
+function testParseAddressPRNormalLanguageIndepedent() {
+	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150\nCALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico", {locale: 'es-PR'});
+		
+	assertNotUndefined(parsedAddress);
+	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A", parsedAddress.streetAddress);
+	assertEquals("SAN JUAN", parsedAddress.locality);
+	assertEquals("PR", parsedAddress.region);
+	assertEquals("00926-3232", parsedAddress.postalCode);
 	assertEquals("Puerto Rico", parsedAddress.country);
 	assertEquals("PR", parsedAddress.countryCode);
 };
 
 function testParseAddressPRNoZip() {
-	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150\nCALLE A SAN JUAN\nPuerto Rico", {locale: 'en-PR'});
+	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR\nPuerto Rico", {locale: 'en-PR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150", parsedAddress.streetAddress);
-	assertEquals("CALLE A", parsedAddress.locality);
-	assertEquals("SAN JUAN", parsedAddress.region);
+	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A", parsedAddress.streetAddress);
+	assertEquals("SAN JUAN", parsedAddress.locality);
+	assertEquals("PR", parsedAddress.region);
 	assertUndefined(parsedAddress.postalCode);
 	assertEquals("Puerto Rico", parsedAddress.country);
 	assertEquals("PR", parsedAddress.countryCode);
 };
 
-function testParseAddressPRNoCountry() {
-	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150\nCALLE A SAN JUAN PR 00926-3232", {locale: 'en-PR'});
+function testParseAddressPRShortZip() {
+	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926\nPuerto Rico", {locale: 'en-PR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150", parsedAddress.streetAddress);
-	assertEquals("CALLE A", parsedAddress.locality);
-	assertEquals("SAN JUAN", parsedAddress.region);
-	assertEquals("PR 00926-3232", parsedAddress.postalCode);
+	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A", parsedAddress.streetAddress);
+	assertEquals("SAN JUAN", parsedAddress.locality);
+	assertEquals("PR", parsedAddress.region);
+	assertEquals("00926", parsedAddress.postalCode);
+	assertEquals("Puerto Rico", parsedAddress.country);
+	assertEquals("PR", parsedAddress.countryCode);
+};
+
+function testParseAddressPRNoCountry() {
+	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926-3232", {locale: 'en-PR'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A", parsedAddress.streetAddress);
+	assertEquals("SAN JUAN", parsedAddress.locality);
+	assertEquals("PR", parsedAddress.region);
+	assertEquals("00926-3232", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	assertEquals("PR", parsedAddress.countryCode);
 };
 
 function testParseAddressPRManyLines() {
-	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ\nURB LAS GLADIOLAS\n150\nCALLE A\nSAN JUAN\nPR 00926-3232\nPuerto Rico", {locale: 'en-PR'});
+	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ\nURB LAS GLADIOLAS\n150\nCALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico", {locale: 'en-PR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("MRS MARÍA SUÁREZ, URB LAS GLADIOLAS, 150", parsedAddress.streetAddress);
-	assertEquals("CALLE A", parsedAddress.locality);
-	assertEquals("SAN JUAN", parsedAddress.region);
-	assertEquals("PR 00926-3232", parsedAddress.postalCode);
+	assertEquals("MRS MARÍA SUÁREZ, URB LAS GLADIOLAS, 150, CALLE A", parsedAddress.streetAddress);
+	assertEquals("SAN JUAN", parsedAddress.locality);
+	assertEquals("PR", parsedAddress.region);
+	assertEquals("00926-3232", parsedAddress.postalCode);
 	assertEquals("Puerto Rico", parsedAddress.country);
 	assertEquals("PR", parsedAddress.countryCode);
 };
 
 function testParseAddressPROneLine() {
-	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ , URB LAS GLADIOLAS , 150 , CALLE A , SAN JUAN , PR 00926-3232 , Puerto Rico", {locale: 'en-PR'});
+	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150 CALLE A, SAN JUAN, PR 00926-3232, Puerto Rico", {locale: 'en-PR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("MRS MARÍA SUÁREZ, URB LAS GLADIOLAS, 150", parsedAddress.streetAddress);
-	assertEquals("CALLE A", parsedAddress.locality);
-	assertEquals("SAN JUAN", parsedAddress.region);
-	assertEquals("PR 00926-3232", parsedAddress.postalCode);
+	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150 CALLE A", parsedAddress.streetAddress);
+	assertEquals("SAN JUAN", parsedAddress.locality);
+	assertEquals("PR", parsedAddress.region);
+	assertEquals("00926-3232", parsedAddress.postalCode);
 	assertEquals("Puerto Rico", parsedAddress.country);
 	assertEquals("PR", parsedAddress.countryCode);
 };
@@ -82,55 +106,69 @@ function testParseAddressPRNoDelimiters() {
 	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150 CALLE A SAN JUAN PR 00926-3232 Puerto Rico", {locale: 'en-PR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150", parsedAddress.streetAddress);
-	assertEquals("CALLE A", parsedAddress.locality);
-	assertEquals("SAN JUAN", parsedAddress.region);
-	assertEquals("PR 00926-3232", parsedAddress.postalCode);
+	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150 CALLE A", parsedAddress.streetAddress);
+	assertEquals("SAN JUAN", parsedAddress.locality);
+	assertEquals("PR", parsedAddress.region);
+	assertEquals("00926-3232", parsedAddress.postalCode);
 	assertEquals("Puerto Rico", parsedAddress.country);
 	assertEquals("PR", parsedAddress.countryCode);
 };
 
 
 function testParseAddressPRFromUS() {
-	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150\nCALLE A SAN JUAN PR 00926-3232\nPuerto Rico", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926-3232", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150", parsedAddress.streetAddress);
-	assertEquals("CALLE A", parsedAddress.locality);
-	assertEquals("SAN JUAN", parsedAddress.region);
-	assertEquals("PR 00926-3232", parsedAddress.postalCode);
+	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A", parsedAddress.streetAddress);
+	assertEquals("SAN JUAN", parsedAddress.locality);
+	assertEquals("PR", parsedAddress.region);
+	assertEquals("00926-3232", parsedAddress.postalCode);
+	assertUndefined(parsedAddress.country);
+	assertEquals("US", parsedAddress.countryCode);
+};
+
+function testParseAddressPRFromUSWithCountry() {
+	var parsedAddress = new ilib.Address("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico", {locale: 'en-US'});
+	
+	// the country name is in English because this address is for a contact in a US database
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A", parsedAddress.streetAddress);
+	assertEquals("SAN JUAN", parsedAddress.locality);
+	assertEquals("PR", parsedAddress.region);
+	assertEquals("00926-3232", parsedAddress.postalCode);
 	assertEquals("Puerto Rico", parsedAddress.country);
 	assertEquals("PR", parsedAddress.countryCode);
 };
 
 function testFormatAddressPR() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150",
-		locality: "CALLE A",
-		region: "SAN JUAN",
-		postalCode: "PR 00926-3232",
+		streetAddress: "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A",
+		locality: "SAN JUAN",
+		region: "PR",
+		postalCode: "00926-3232",
 		country: "Puerto Rico",
 		countryCode: "PR"
 	}, {locale: 'en-PR'});
 	
-	var expected = "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150\nCALLE A SAN JUAN PR 00926-3232\nPuerto Rico";
+	var expected = "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico";
 	var formatter = new ilib.AddressFmt({locale: 'en-PR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
 function testFormatAddressPRFromUS() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150",
-		locality: "CALLE A",
-		region: "SAN JUAN",
-		postalCode: "PR 00926-3232",
+		streetAddress: "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A",
+		locality: "SAN JUAN",
+		region: "PR",
+		postalCode: "00926-3232",
 		country: "Puerto Rico",
 		countryCode: "PR"
 	}, {locale: 'en-US'});
 	
-	var expected = "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150\nPR 00926-3232 CALLE A SAN JUAN\nPuerto Rico";
+	var expected = "MRS MARÍA SUÁREZ URB LAS GLADIOLAS 150, CALLE A\nSAN JUAN, PR 00926-3232\nPuerto Rico";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

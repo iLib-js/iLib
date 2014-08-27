@@ -281,7 +281,13 @@ function testParseAddressUnknownLocaleAR() {
 };
 
 function testFormatAddressUnknownLocaleAR() {
-	var parsedAddress = new ilib.Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-AR'});
+	var parsedAddress = new ilib.Address({
+		streetAddress: "123 mcdonald ave, apt 234", 
+		locality: "sunnyvale",
+		region: "CA",
+		postalCode: "34567", 
+		locale: 'en-AR'
+	});
 	
 	var expected = "123 mcdonald ave, apt 234, sunnyvale\nCA 34567";
 	var formatter = new ilib.AddressFmt({locale: 'en-AR', style: 'nocountry'});
