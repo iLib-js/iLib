@@ -99,7 +99,7 @@ ilib.PhoneFmt = function(options) {
 		}
 	}
 
-	this.plan = new ilib.NumPlan({locale: this.locale});
+	this.plan = new ilib.NumPlan(options);
 
 	ilib.loadData({
 		name: "phonefmt.json",

@@ -27,7 +27,7 @@ phone/phoneloc.js
 phone/handler.js
 */
 
-// !data states idd
+// !data states idd mnc
 
 /**
  * Create a new phone number instance that parses the phone number parameter for its 
@@ -161,6 +161,7 @@ phone/handler.js
 ilib.PhoneNumber = function(number, options) {
 	var locale,
 		phoneLocData,
+		options,
 		plan,
 		stateData,
 		regionSettings;
@@ -203,7 +204,7 @@ ilib.PhoneNumber = function(number, options) {
 		name: "states.json",
 		object: ilib.PhoneNumber,
 		locale: this.locale,
-		sync: true,
+		sync: this.sync,
 		loadParams: ilib.merge(this.loadParams, {
 			returnOne: true
 		}),
@@ -211,8 +212,9 @@ ilib.PhoneNumber = function(number, options) {
 			if (!stdata) {
 				stdata = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
 			}
+
 			stateData = stdata;
-			plan = new ilib.NumPlan({locale: this.locale});
+			plan = new ilib.NumPlan({locale: this.locale}, options);
 
 			regionSettings = {
 				stateData : stateData,
@@ -221,7 +223,7 @@ ilib.PhoneNumber = function(number, options) {
 			};
 			number = ilib.PhoneNumber._stripFormatting(number);
 
-			this._parseNumber(number, regionSettings);
+			this._parseNumber(number, regionSettings, options);
 		})
 	});
 };
@@ -234,9 +236,129 @@ ilib.PhoneNumber = function(number, options) {
  * @param {string} imsi IMSI string to parse
  * @return {Object} components of the IMSI number
  */
-ilib.PhoneNumber._parseImsi = function(imsi) {
+ilib.PhoneNumber.parseImsi = function(imsi, options) {
+	var sync = true,
+		loadParams = {},
+		ch, 
+		i,
+		stateTable, 
+		end, 
+		handlerMethod,
+		state = 0,
+		newState,
+		fields = {};
+	
+	if (!imsi) {
+		return undefined
+	}
 
+	if (options) {
+		if (typeof(options.sync) !== 'undefined') {
+			sync = (options.sync == true);
+		}
+		
+		if (options.loadParams) {
+			loadParams = options.loadParams;
+		}
+	}	
+
+	ilib.loadData({
+		name: "mnc.json", 
+		object: ilib.PhoneNumber, 
+		nonlocale: true, 
+		sync: sync, 
+		loadParams: this.loadParams, 
+		callback: ilib.bind(this, function(data) {
+			this.mncdata = data;
+			fields = this._parseImsi(this.mncdata, imsi);
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		})
+	});
+	return fields;
 };
+
+
+ilib.PhoneNumber._parseImsi = function(data, imsi) {
+	var ch, 
+		i,
+		stateTable, 
+		end, 
+		handlerMethod,
+		state = 0,
+		newState,
+		fields = {};
+	
+	stateTable = data;
+	if (!stateTable) {
+		// can't parse anything
+		return undefined;
+	}
+	i = 0;
+	while ( i < imsi.length ) {
+		ch = ilib.PhoneNumber._getCharacterCode(imsi.charAt(i));
+		// console.info("parsing char " + imsi.charAt(i) + " code: " + ch);
+		if (ch >= 0) {
+			newState = stateTable.states[state][ch];
+			
+			if (newState < 0) {
+				// reached a final state. First convert the state to a positive array index
+				// in order to look up the name of the handler function name in the array
+				state = newState;
+				newState = -newState - 1;
+				handlerMethod = ilib.PhoneNumber._states[newState];
+				// console.info("reached final state " + newState + " handler method is " + handlerMethod + " and i is " + i);
+
+				// deal with syntactic ambiguity by using the "special" end state instead of "area"
+				if ( handlerMethod === "area" ) {
+					end = i+1;
+				} else if ( handlerMethod === "special" ) {
+					end = i;
+				} else {
+					// unrecognized imsi, so just assume the mnc is 3 digits
+					end = 6;
+				}
+				
+				fields.mcc = imsi.substring(0,3);
+				fields.mnc = imsi.substring(3,end);
+				fields.msin = imsi.substring(end);
+
+				break;
+			} else {
+				// console.info("recognized digit " + optionalch + " continuing...");
+				// recognized digit, so continue parsing
+				state = newState;
+				i++;
+			}
+		} else if ( ch === -1 ) {
+			// non-transition character, continue parsing in the same state
+			i++;
+		} else {
+			// should not happen
+			// console.info("skipping character " + ch);
+			// not a digit, plus, pound, or star, so this is probably a formatting char. Skip it.
+			i++;
+		}
+	}
+		
+	if ( state > 0 ) {
+		if ( i >= imsi.length && i >= 6 ) {
+			// we reached the end of the imsi, but did not finish recognizing anything. 
+			// Default to last resort and assume 3 digit mnc
+			fields.mcc = imsi.substring(0,3);
+			fields.mnc = imsi.substring(3,6);
+			fields.msin = imsi.substring(6);
+		} else {
+			// unknown or not enough characters for a real imsi 
+			fields = undefined;
+		}
+	}
+		
+	// console.info("Globalization.Phone.parseImsi: final result is: " + JSON.stringify(fields));
+	return fields;
+};
+
 
 ilib.PhoneNumber._stripFormatting = function(str) {
 	var ret = "";
@@ -320,7 +442,7 @@ ilib.PhoneNumber.prototype = {
 	/**
 	 * @protected
 	 */
-	_parseNumber: function(number, regionData) {
+	_parseNumber: function(number, regionData, options) {
 		var locale,
 			plan,
 			stateData,
@@ -335,7 +457,7 @@ ilib.PhoneNumber.prototype = {
 
 		regionSettings = regionData;
 		stateData = regionSettings.stateData;
-		dot = 14; //[Q] special transition which matches all characters. See AreaCodeTableMaker.java
+		dot = 14; // special transition which matches all characters. See AreaCodeTableMaker.java
 
 		i = 0;
 		while (i < number.length) {
@@ -379,14 +501,14 @@ ilib.PhoneNumber.prototype = {
 								callback: ilib.bind(this, function (data) {
 									stateData = data;
 									// recursively call the parser with the new states data
-									numplan = new ilib.NumPlan({locale:"-"});
+									numplan = new ilib.NumPlan(ilib.merge({locale:"-"}, options));
 									regionSettings = {
 										stateData: stateData,
 										plan: numplan,
 										handler: ilib._handlerFactory(this.locale, numplan)
 									};
 
-									this._parseNumber(number, regionSettings);
+									this._parseNumber(number, regionSettings, options);
 								})
 							})
 						} else {
@@ -411,7 +533,7 @@ ilib.PhoneNumber.prototype = {
 										plan: numplan,
 										handler: ilib._handlerFactory(this.locale, numplan)
 									};
-									this._parseNumber(number, regionSettings);
+									this._parseNumber(number, regionSettings, options);
 								})
 							})
 						}
@@ -559,10 +681,13 @@ ilib.PhoneNumber.prototype = {
 			ITcountries = {"378":1, "379":1},
 			thisPrefix,
 			otherPrefix,
-			currentCountryCode = 0;
+			currentCountryCode = 0,
+			phoneLoc;
+
+		phoneLoc = new ilib.Locale.PhoneLoc();
 
 		if (typeof this.locale.region === "string") {
-			currentCountryCode = ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(this.locale.region);
+			currentCountryCode = phoneLoc._mapRegiontoCC(this.locale.region);
 		}
 		
 		// subscriber number must be present and must match
@@ -873,20 +998,34 @@ ilib.PhoneNumber.prototype = {
 			tempPhoncloc,
 			homeLocale,
 			currentLocale,
-			destinationLocale;
+			destinationLocale,
+			phoneLoc,
+			sync = true,
+			loadParams = {},
+			loadDataOptions;
 
+		if (options) {
+			if (typeof(options.sync) !== 'undefined') {
+				sync = (options.sync == true);
+			}
+			
+			if (options.loadParams) {
+				loadParams = options.loadParams;
+			}
+		}
+		
 		// clone this number, so we don't mess with it
-		norm = new ilib.PhoneNumber(this);
-
+		norm = new ilib.PhoneNumber(this, loadDataOptions);
+		phoneLoc = new ilib.Locale.PhoneLoc(loadDataOptions);
 		// homeLocale is for debugging/unit testing
-		homeLocale = (options && options.homeLocale) ? new ilib.Locale.PhoneLoc({locale: options.homeLocale}) : new ilib.Locale();
+		homeLocale = (options && options.homeLocale) ? new ilib.Locale.PhoneLoc(ilib.merge({locale: options.homeLocale},loadDataOptions)) : new ilib.Locale();
 
 		currentLocale = options ? new ilib.Locale.PhoneLoc(options): homeLocale;
-		destinationLocale = (norm.countryCode && new ilib.Locale.PhoneLoc({countryCode: norm.countryCode})) || 
-							new ilib.Locale.PhoneLoc({locale:norm.locale}) || currentLocale;
+		destinationLocale = (norm.countryCode && new ilib.Locale.PhoneLoc(ilib.merge({countryCode: norm.countryCode}, loadDataOptions)) || 
+							new ilib.Locale.PhoneLoc(ilib.merge({locale:norm.locale}, loadDataOptions))) || currentLocale;
 
-		currentPlan = new ilib.NumPlan({locale: currentLocale});
-		destinationPlan = new ilib.NumPlan({locale: destinationLocale});
+		currentPlan = new ilib.NumPlan(ilib.merge({locale: currentLocale}, loadDataOptions));
+		destinationPlan = new ilib.NumPlan(ilib.merge({locale: destinationLocale}, loadDataOptions));
 		
 		if (options &&
 				options.assistedDialing &&
@@ -902,19 +1041,20 @@ ilib.PhoneNumber.prototype = {
 			if (tempRegion && tempRegion !== "unknown" && tempRegion !== "SG") {
 				// only use it if it is a recognized country code. Singapore (sg) is a special case.
 				norm = temp;
-				destinationLocale = (norm.countryCode && new ilib.Locale.PhoneLoc({countryCode: norm.countryCode})) || norm.locale || currentLocale;
-				destinationPlan = new ilib.NumPlan({locale: destinationLocale});
+				destinationLocale = (norm.countryCode && new ilib.Locale.PhoneLoc(ilib.merge({countryCode: norm.countryCode}, loadDataOptions))) || norm.locale || currentLocale;
+				destinationPlan = new ilib.NumPlan(ilib.merge({locale: destinationLocale}, loadDataOptions));
 			}
 		} else if (options && options.assistedDialing && norm.invalid && currentLocale.region !== norm.locale.region) {
 			// if this number is not valid for the locale it was parsed with, try again with the current locale
 			// console.log("norm is invalid. Attempting to reparse with the current locale");
-			temp = new ilib.PhoneNumber(this._join(), {locale: currentLocale});
+			temp = new ilib.PhoneNumber(this._join(), ilib.merge({locale: currentLocale}, loadDataOptions));
 			if (temp && !temp.invalid) {
 				norm = temp;
 			}
 		}
 
 		if (!norm.invalid && options && options.assistedDialing) {
+			
 			// don't normalize things that don't have subscriber numbers. Also, don't normalize
 			// manually dialed local numbers. Do normalize local numbers in contact entries.
 			if (norm.subscriberNumber && 
@@ -949,7 +1089,7 @@ ilib.PhoneNumber.prototype = {
 						if (homeLocale.getRegion() === "US" && currentLocale.getRegion() !== "US") {
 							if (destinationLocale.getRegion() !== "US") {
 								norm.iddPrefix = "011"; // non-standard code to make it go through the US first
-								norm.countryCode = norm.countryCode || ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(destinationLocale.getRegion());
+								norm.countryCode = norm.countryCode || phoneLoc._mapRegiontoCC(destinationLocale.getRegion());
 							} else if (options.networkType === "cdma") {
 								delete norm.iddPrefix;
 								delete norm.countryCode;
@@ -963,10 +1103,10 @@ ilib.PhoneNumber.prototype = {
 							}
 						} else {
 							norm.iddPrefix = (options.networkType === "cdma") ? currentPlan.getIDDCode() : "+";
-							norm.countryCode = norm.countryCode || ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(destinationLocale.region);
+							norm.countryCode = norm.countryCode || phoneLoc._mapRegiontoCC(destinationLocale.region);
 						}
 					} else if (norm._hasPrefix() && !norm.countryCode) {
-						norm.countryCode = ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(destinationLocale.region);
+						norm.countryCode = phoneLoc._mapRegiontoCC(destinationLocale.region);
 					}
 
 					if (norm.countryCode && !options.sms) {
@@ -1024,7 +1164,7 @@ ilib.PhoneNumber.prototype = {
 			}
 			
 			if (!norm.countryCode && norm._hasPrefix()) {
-				norm.countryCode = ilib.Locale.PhoneLoc.prototype._mapRegiontoCC(destinationLocale.getRegion());
+				norm.countryCode = phoneLoc._mapRegiontoCC(destinationLocale.getRegion());
 			}
 
 			if (norm.countryCode) {

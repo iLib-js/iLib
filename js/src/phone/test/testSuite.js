@@ -36,6 +36,7 @@ function suite() {
         "phonenum.js",
         "phonegeo.js",
         "normalize.js",
+        "imsi.js",		
   		"phonenum_AU.js",
 		"phonenum_BE.js",
 		"phonenum_CN.js",
@@ -71,9 +72,6 @@ function suite() {
 		"phonefmt_NZ.js",
 		"phonefmt_SG.js",
 		"phonefmt_US.js"
-		/*
-		"imsi.js"		
-		*/
     ];
     
     suites.forEach(function (path) {

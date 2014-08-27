@@ -119,7 +119,7 @@ ilib.GeoLocator = function(options) {
 			loadParams = options.loadParams;
 		}
 	}
-	this.plan = new ilib.NumPlan({locale: this.locale});
+	this.plan = new ilib.NumPlan(options);
 
 	new ilib.ResBundle({
 		locale: this.locale,
@@ -266,18 +266,33 @@ ilib.GeoLocator.prototype = {
 		
 		return undefined;
 	},
-	_getAreaInfo: function(number, data, locale, plan) {
-		var ret = {}, 
+	_getAreaInfo: function(number, data, locale, plan, options) {
+		var sync = true,
+			loadParams = {},
+			ret = {}, 
 			countryCode, 
 			areaInfo, 
 			temp, 
 			areaCode, 
 			geoTable, 
 			tempNumber, 
-			prefix;
+			prefix,
+			phoneLoc;
+
+		if (options) {
+			if (typeof(options.sync) !== 'undefined') {
+				sync = (options.sync == true);
+			}
+			
+			if (options.loadParams) {
+				loadParams = options.loadParams;
+			}
+		}
+		
 
 		prefix = number.areaCode || number.serviceCode;
 		geoTable = data;
+		phoneLoc = new ilib.Locale.PhoneLoc(options);
 
 		if (prefix !== undefined) {
 			if (plan.getExtendedAreaCode()) {
@@ -290,14 +305,14 @@ ilib.GeoLocator.prototype = {
 					name: "extarea.json",
 					object: ilib.Locale.PhoneLoc, 
 					locale: locale,
-					sync: true,
+					sync: sync,
 					callback: ilib.bind(this, function (data) {
 						this.extarea = data;
 						ilib.loadData({
 							name: "extstates.json",
 							object: ilib.Locale.PhoneLoc, 
 							locale: locale,
-							sync: true,
+							sync: sync,
 							callback: ilib.bind(this, function (data) {
 								this.extstates = data;
 								geoTable = this.extarea;
@@ -439,12 +454,15 @@ ilib.GeoLocator.prototype = {
 	 * then the area information will be missing and only the country will be returned.
 	 * 
 	 * @param {ilib.PhoneNumber} number phone number to locate
+	 * @param {Object} options options governing the way this ares is loaded
 	 * @return {{area:{sn:string,ln:string},country:{sn:string,ln:string}}} an object 
 	 * that describes the country and the area in that country corresponding to this
 	 * phone number 
 	 */
-	locate: function(number) {
-		var ret = {}, 
+	locate: function(number, options) {
+		var sync = true,
+			loadParams = {},
+			ret = {}, 
 			region, 
 			countryCode, 
 			temp, 
@@ -454,10 +472,24 @@ ilib.GeoLocator.prototype = {
 			prefix, 
 			locale,
 			areaData,
-			areaResult;
+			areaResult,
+			phoneLoc,
+			loadDataOptions;
 
 		if (number === undefined || typeof(number) !== 'object' || !(number instanceof ilib.PhoneNumber)) {
 			return ret;
+		}
+
+		if (options) {
+			if (typeof(options.sync) !== 'undefined') {
+				sync = (options.sync == true);
+				loadDataOptions = sync;
+			}
+		
+			if (options.loadParams) {
+				loadParams = options.loadParams;
+				loadDataOptions = ilib.merge(loadParams, sync);
+			}
 		}
 
 		areaData = this.regiondata;
@@ -466,14 +498,14 @@ ilib.GeoLocator.prototype = {
 		if (number.countryCode !== undefined && areaData) {
 			countryCode = number.countryCode.replace(/[wWpPtT\+#\*]/g, '');
 			temp = areaData[countryCode];
-			locale = new ilib.Locale.PhoneLoc({countryCode: countryCode});
-			if (locale.getRegion() !== this.locale.getRegion()) {
-				plan = new ilib.NumPlan({locale:locale});
+			phoneLoc = new ilib.Locale.PhoneLoc(ilib.merge({countryCode: countryCode}, loadDataOptions));
+			if (phoneLoc.getRegion() !== this.locale.getRegion()) {
+				plan = new ilib.NumPlan(ilib.merge({locale:phoneLoc}, loadDataOptions));
 			}
 			ret.country = {
 				sn: this.rb.getString(temp.sn).toString(),
 				ln: this.rb.getString(temp.ln).toString(),
-				code: locale.getRegion()
+				code: phoneLoc.getRegion()
 			};
 		}
 		
@@ -494,7 +526,7 @@ ilib.GeoLocator.prototype = {
 				if (areadata) {
 					this.areadata = areadata;	
 				}
-				areaResult = this._getAreaInfo(number, this.areadata, locale, plan);
+				areaResult = this._getAreaInfo(number, this.areadata, locale, plan, loadDataOptions);
 				ret = ilib.merge(ret, areaResult);
 			})
 		});
@@ -527,26 +559,41 @@ ilib.GeoLocator.prototype = {
 	 * @param {ilib.PhoneNumber} number An ilib.PhoneNumber instance
 	 * @return {string}
 	 */
-	country: function(number) {
-		var countryCode, region;
-		var phoneloc = new ilib.Locale.PhoneLoc({});
+	country: function(number, options) {
+		var sync = true,
+			loadParams = {},
+			countryCode,
+			region,
+			phoneLoc;
+
+		if (options) {
+			if (typeof(options.sync) !== 'undefined') {
+				sync = (options.sync == true);
+			}
+			
+			if (options.loadParams) {
+				loadParams = options.loadParams;
+			}
+		}
+
+		phoneLoc = new ilib.Locale.PhoneLoc(options);
 
 		if (!number || !(number instanceof ilib.PhoneNumber)) {
 			return "";
 		}
 
-		region = (number.countryCode && phoneloc._mapCCtoRegion(number.countryCode)) ||
+		region = (number.countryCode && phoneLoc._mapCCtoRegion(number.countryCode)) ||
 			(number.locale && number.locale.region) || 
-			phoneloc.locale.getRegion() ||
+			phoneLoc.locale.getRegion() ||
 			this.locale.getRegion();
 
-		countryCode = number.countryCode || phoneloc._mapRegiontoCC(region);
+		countryCode = number.countryCode || phoneLoc._mapRegiontoCC(region);
 		
 		if (number.areaCode) {
-			region = phoneloc._mapAreatoRegion(countryCode, number.areaCode);
+			region = phoneLoc._mapAreatoRegion(countryCode, number.areaCode);
 		} else if (countryCode === "33" && number.serviceCode) {
 			// french departments are in the service code, not the area code
-			region = phoneloc._mapAreatoRegion(countryCode, number.serviceCode);
+			region = phoneLoc._mapAreatoRegion(countryCode, number.serviceCode);
 		}		
 		return region;
 	}

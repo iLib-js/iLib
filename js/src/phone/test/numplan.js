@@ -47,7 +47,6 @@ function testGetDefault() {
 	assertEquals("US", plan.getName());
 };
 
-
 function testGetContextFreeContent() {
 	var plan = new ilib.NumPlan({locale: "en-GB"});
 	assertNotUndefined(plan);
@@ -75,4 +74,33 @@ function testRightContents() {
 	assertEquals(0, plan.getFieldLength('vsc'));
 	assertEquals("closed", plan.getPlanStyle());
 	assertEquals(" ()-.", plan.getCommonFormatChars());	
+};
+
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.numplan); // for the generic, shared stuff
+	data.push(ilib.data.numplan_US);
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
+function testNumPlanLoadLocaleDataSynch() {
+	if (typeof(ilib._load) !== 'undefined') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	var plan = new ilib.NumPlan({locale: "en-US"});
+    assertNotNull(plan);
+    
+    assertEquals("US", plan.getName());
+    
+    ilib.setLoaderCallback(undefined);
 };

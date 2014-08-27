@@ -1,3 +1,22 @@
+/*
+ * imsi.js - Test the parseImsi() function.
+ * 
+ * Copyright © 2014, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 function testRegularImsi3DigitMNC() {
 	var imsi = "31003014084567890"
 	var expected = {
@@ -5,8 +24,8 @@ function testRegularImsi3DigitMNC() {
 		mnc: "030",
 		msin: "14084567890"
 	};
-	
-	assertEquals(objectEquals(expected, ilib.PhoneNumber._parseImsi(imsi)));
+
+	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
 };
 
 function testRegularImsi2DigitMNC() {
@@ -16,8 +35,8 @@ function testRegularImsi2DigitMNC() {
 		mnc: "07",
 		msin: "201234567"
 	};
-	
-	assertEquals(objectEquals(expected, ilib.PhoneNumber._parseImsi(imsi)));
+
+	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
 };
 
 function testSpecialImsi1() {
@@ -28,7 +47,7 @@ function testSpecialImsi1() {
 		msin: "201234567"
 	};
 	
-	assertEquals(objectEquals(expected, ilib.PhoneNumber._parseImsi(imsi)));	
+	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
 };
 
 function testSpecialImsi2() {
@@ -39,7 +58,7 @@ function testSpecialImsi2() {
 		msin: "201234567"
 	};
 	
-	assertEquals(objectEquals(expected, ilib.PhoneNumber._parseImsi(imsi)));
+	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
 };
 
 function testBrokenMCC() {
@@ -51,7 +70,7 @@ function testBrokenMCC() {
 	};
 	
 	// should default to a 3 digit mnc
-	assertEquals(objectEquals(expected, ilib.PhoneNumber._parseImsi(imsi)));
+	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
 };
 
 function testBrokenMNC() {
@@ -63,16 +82,49 @@ function testBrokenMNC() {
 	};
 	
 	// should default to a 3 digit mnc
-	assertEquals(objectEquals(expected, ilib.PhoneNumber._parseImsi(imsi)));
+	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
 };
 
 function testTooShort() {
 	var imsi = "31"
-	
-	assertEquals(ilib.PhoneNumber._parseImsi(imsi) === undefined);	
+	assertObjectEquals(undefined, ilib.PhoneNumber.parseImsi(imsi));
 };
 
 function testUndefined() {
 	// should default to a 3 digit mnc
-	assertEquals(ilib.PhoneNumber._parseImsi(undefined) === undefined);
+	assertObjectEquals(undefined, ilib.PhoneNumber.parseImsi(undefined));
+};
+
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.mnc); // for the generic, shared stuff
+	
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
+function testIMSILoadLocaleDataSynch() {
+	if (typeof(ilib._load) !== 'undefined') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+	
+	ilib.setLoaderCallback(mockLoader);
+
+	var field = [];
+	var imsi = "31003014084567890";
+  	var expected = {
+		mcc: "310",
+		mnc: "030",
+		msin: "14084567890"
+	};
+	
+	fields = ilib.PhoneNumber.parseImsi(imsi)
+	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
+    ilib.setLoaderCallback(undefined);
 };
