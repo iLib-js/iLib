@@ -198,7 +198,7 @@ function testParseAddressKRNoDelimitersNative() {
 };
 
 function testParseAddressKRLatinFromUS() {
-	var parsedAddress = new ilib.Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul 151-742\nRepublic of Korea", {locale: 'en-US'});
+	var parsedAddress = new ilib.Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu\nSeoul 151-742\nRepublic of Korea", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Seoul National University, 1 Gwanak-ro, Gwanak-gu", parsedAddress.streetAddress);
@@ -215,10 +215,27 @@ function testFormatAddressKRLatin() {
 		locality: "Seoul",
 		postalCode: "151-742",
 		country: "SOUTH KOREA",
-		countryCode: "KR"
+		countryCode: "KR",
+		format: "latin"
 	}, {locale: 'ko-KR'});
 	
 	var expected = "Seoul National University, 1 Gwanak-ro, Gwanak-gu\nSeoul 151-742\nSOUTH KOREA";
+	var formatter = new ilib.AddressFmt({locale: 'ko-KR'});
+	assertEquals(expected, formatter.format(parsedAddress));
+};
+
+function testFormatAddressKRLatinWithRegion() {
+	var parsedAddress = new ilib.Address({
+		streetAddress: "Chuncheon National University of Education, 339 Seoksa-dong",
+		locality: "Chuncheon-si",
+		region: "Gangwon-do",
+		postalCode: "200-703",
+		country: "South Korea",
+		countryCode: "KR",
+		format: "latin"
+	}, {locale: 'ko-KR'});
+	
+	var expected = "Chuncheon National University of Education, 339 Seoksa-dong\nChuncheon-si Gangwon-do 200-703\nSouth Korea";
 	var formatter = new ilib.AddressFmt({locale: 'ko-KR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
@@ -229,7 +246,8 @@ function testFormatAddressKRLatinFromUS() {
 		locality: "Seoul",
 		postalCode: "151-742",
 		country: "SOUTH KOREA",
-		countryCode: "KR"
+		countryCode: "KR",
+		format: "latin"
 	}, {locale: 'en-US'});
 	
 	var expected = "Seoul National University, 1 Gwanak-ro, Gwanak-gu\nSeoul 151-742\nSOUTH KOREA";
@@ -243,7 +261,8 @@ function testFormatAddressKRNative() {
 		locality: "서울시",
 		postalCode: "151-742",
 		country: "대한민국",
-		countryCode: "KR"
+		countryCode: "KR",
+		format: "asian"
 	}, {locale: 'ko-KR'});
 	
 	var expected = "대한민국\n151-742 서울시 관악구 관악로 1 서울대학교";
@@ -258,7 +277,8 @@ function testFormatAddressKRNativeWithRegion() {
 		region: "강원도",
 		postalCode: "(200-703)",
 		country: "대한민국",
-		countryCode: "KR"
+		countryCode: "KR",
+		format: "asian"
 	}, {locale: 'ko-KR'});
 	
 	var expected = "대한민국\n(200-703) 강원도 춘천시 공지로 126(석사동)";
@@ -266,16 +286,3 @@ function testFormatAddressKRNativeWithRegion() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressKRNativeFromUS() {
-	var parsedAddress = new ilib.Address({
-		streetAddress: "관악구 관악로 1 서울대학교",
-		locality: "서울시",
-		postalCode: "151-742",
-		country: "대한민국",
-		countryCode: "KR"
-	}, {locale: 'en-US'});
-	
-	var expected = "151-742 서울시 관악구 관악로 1 서울대학교\nSOUTH KOREA";
-	var formatter = new ilib.AddressFmt({locale: 'en-US'});
-	assertEquals(expected, formatter.format(parsedAddress));
-};

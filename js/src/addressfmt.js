@@ -173,7 +173,12 @@ ilib.AddressFmt.prototype.format = function (address) {
 		return other.format(address);
 	}
 	
-	format = address.format ? this.style[address.format] : this.style;
+	if (typeof(this.style) === 'object') {
+		format = this.style[address.format || "latin"];
+	} else {
+		format = this.style;
+	}
+	
 	// console.log("Using format: " + format);
 	// make sure we have a blank string for any missing parts so that
 	// those template parts get blanked out

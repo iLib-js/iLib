@@ -5,13 +5,13 @@
 		"asian": " "
 	},
 	"formats": {
-		"defaults": {
-			"latin": "{streetAddress}\n{locality} {postalCode}\n{region}\n{country}",
-			"asian": "{country}\n{region} {postalCode} {locality} {streetAddress}"
+		"default": {
+			"latin": "{streetAddress}\n{locality} {region} {postalCode}\n{country}",
+			"asian": "{country}\n{postalCode} {region} {locality} {streetAddress}"
 		},
 		"nocountry": {
-			"asian": "{region} {postalCode} {locality} {streetAddress}",
-			"latin": "{streetAddress}\n{locality} {postalCode}\n{region}"
+			"asian": "{postalCode} {region} {locality} {streetAddress}",
+			"latin": "{streetAddress}\n{locality} {region} {postalCode}"
 		}
 	},
 	"startAt": {
@@ -102,30 +102,21 @@
 			}
 		],
 		"asian": [
-		    {
-		    	"name": "region",
-		    	"line": "first",
-		    	"pattern": [
-			    		"충청북도",
-			    		"충청남도",
-			    		"강원도",
-			    		"경기도",
-			    		"경상북도",
-			    		"경상남도",
-			    		"제주도",
-			    		"전라북도",
-			    		"전라남도"
-			    ]
-		    },
 			{
 				"name": "postalCode",
 				"line": "startAtFirst",
 				"pattern": "\\(?[0-9]{3}-[0-9]{3}\\)?"
 			},
+		    {
+		    	"name": "region",
+		    	"line": "first",
+		    	"pattern": "[\\u1100-\\u11FF\\uAC00-\\uD7AF\\.\\-']+도"
+		    		
+		    },
 			{
 				"name": "locality",
 				"line": "startAtFirst",
-				"pattern": "^[\\u1100-\\u11FF\\uAC00-\\uD7AF\\.\\-']+"
+				"pattern": "[\\u1100-\\u11FF\\uAC00-\\uD7AF\\.\\-']+"
 			}
 		]
 	}
