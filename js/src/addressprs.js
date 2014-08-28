@@ -414,7 +414,8 @@ ilib.Address.prototype = {
 		this.removeEmptyLines(this.lines);
 		if (this.lines.length > 0) {
 			//console.log("this.lines is " + JSON.stringify(this.lines) + " and splicing to get streetAddress");
-			var joinString = (this.format && this.format === "asian") ? "" : ", ";
+			// Korea uses spaces between words, despite being an "asian" locale
+			var joinString = (this.info.joinString && this.info.joinString[this.format]) || ((this.format && this.format === "asian") ? "" : ", ");
 			this.streetAddress = this.lines.join(joinString).trim();
 		}
 		
@@ -453,6 +454,7 @@ ilib.Address.prototype = {
 			pat;
 		//console.log("endsWith: checking " + query + " against " + subject);
 		for (i = 0; i < query.length; i++) {
+			// TODO: use case mapper instead of toLowerCase()
 			if (subject.charAt(start+i).toLowerCase() !== query.charAt(i).toLowerCase()) {
 				return -1;
 			}
@@ -472,6 +474,7 @@ ilib.Address.prototype = {
 		var i;
 		// //console.log("startsWith: checking " + query + " against " + subject);
 		for (i = 0; i < query.length; i++) {
+			// TODO: use case mapper instead of toLowerCase()
 			if (subject.charAt(i).toLowerCase() !== query.charAt(i).toLowerCase()) {
 				return -1;
 			}

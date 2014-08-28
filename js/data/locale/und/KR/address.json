@@ -1,5 +1,9 @@
 {
 	"multiformat": true,
+	"joinString": {
+		"latin": ", ",
+		"asian": " "
+	},
 	"formats": {
 		"defaults": {
 			"latin": "{streetAddress}\n{locality} {postalCode}\n{region}\n{country}",
@@ -88,7 +92,7 @@
 			{
 				"name": "postalCode",
 				"line": "startAtLast",
-				"pattern": "[0-9]{3}-[0-9]{3}$"
+				"pattern": "\\(?[0-9]{3}-[0-9]{3}\\)?$"
 			},
 			{
 				"name": "locality",
@@ -110,22 +114,13 @@
 			    		"경상남도",
 			    		"제주도",
 			    		"전라북도",
-			    		"전라남도",
-			    		"충청북",
-			    		"충청남",
-			    		"강원",
-			    		"경기",
-			    		"경상북",
-			    		"경상남",
-			    		"제주",
-			    		"전라북",
-			    		"전라남"
+			    		"전라남도"
 			    ]
 		    },
 			{
 				"name": "postalCode",
 				"line": "startAtFirst",
-				"pattern": "[0-9]{3}-[0-9]{3}"
+				"pattern": "\\(?[0-9]{3}-[0-9]{3}\\)?"
 			},
 			{
 				"name": "locality",

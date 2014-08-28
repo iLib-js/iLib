@@ -41,6 +41,18 @@ function testParseAddressKRNormalNative() {
 	assertEquals("KR", parsedAddress.countryCode);
 };
 
+function testParseAddressKRWithBrackets() {
+	var parsedAddress = new ilib.Address("(609-735) 부산광역시 금정구 부산대학로63번길 2 (장전동)", {locale: 'ko-KR'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("금정구 부산대학로63번길 2 (장전동)", parsedAddress.streetAddress);
+	assertEquals("부산광역시", parsedAddress.locality);
+	assertUndefined(parsedAddress.region);
+	assertEquals("(609-735)", parsedAddress.postalCode);
+	assertUndefined(parsedAddress.country);
+	assertEquals("KR", parsedAddress.countryCode);
+};
+
 function testParseAddressKRWithRegion() {
 	var parsedAddress = new ilib.Address("Chuncheon National University of Education.\nGongji Ro 126, Chuncheon 200-703, Gangwon-Do, Republic of Korea", {locale: 'ko-KR'});
 	
@@ -54,17 +66,16 @@ function testParseAddressKRWithRegion() {
 };
 
 function testParseAddressKRWithRegionNative() {
-	var parsedAddress = new ilib.Address("Chuncheon National University of Education.\nGongji Ro 126, Chuncheon 200-703, Gangwon-Do, Republic of Korea", {locale: 'ko-KR'});
+	var parsedAddress = new ilib.Address("(200-703) 강원도 춘천시 공지로 126(석사동)", {locale: 'ko-KR'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Chuncheon National University of Education., Gongji Ro 126", parsedAddress.streetAddress);
-	assertEquals("Chuncheon", parsedAddress.locality);
-	assertEquals("Gangwon-Do", parsedAddress.region);
-	assertEquals("200-703", parsedAddress.postalCode);
-	assertEquals("Republic of Korea", parsedAddress.country);
+	assertEquals("(200-703)", parsedAddress.postalCode);
+	assertEquals("강원도", parsedAddress.region);
+	assertEquals("춘천시", parsedAddress.locality);
+	assertEquals("공지로 126(석사동)", parsedAddress.streetAddress);
+	assertUndefined(parsedAddress.country);
 	assertEquals("KR", parsedAddress.countryCode);
 };
-
 
 function testParseAddressKRNoZip() {
 	var parsedAddress = new ilib.Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul\nSOUTH KOREA", {locale: 'ko-KR'});
@@ -236,6 +247,21 @@ function testFormatAddressKRNative() {
 	}, {locale: 'ko-KR'});
 	
 	var expected = "대한민국\n151-742 서울시 관악구 관악로 1 서울대학교";
+	var formatter = new ilib.AddressFmt({locale: 'ko-KR'});
+	assertEquals(expected, formatter.format(parsedAddress));
+};
+
+function testFormatAddressKRNativeWithRegion() {
+	var parsedAddress = new ilib.Address({
+		streetAddress: "공지로 126(석사동)",
+		locality: "춘천시",
+		region: "강원도",
+		postalCode: "(200-703)",
+		country: "대한민국",
+		countryCode: "KR"
+	}, {locale: 'ko-KR'});
+	
+	var expected = "대한민국\n(200-703) 강원도 춘천시 공지로 126(석사동)";
 	var formatter = new ilib.AddressFmt({locale: 'ko-KR'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

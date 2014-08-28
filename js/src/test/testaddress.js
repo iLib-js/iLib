@@ -138,8 +138,8 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("US", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("950 W Maude Ave. Sunnyvale CA 94085 USA", {locale: 'en-US'});
+function testParseAddressFewDelimiters() {
+	var parsedAddress = new ilib.Address("950 W Maude Ave., Sunnyvale CA 94085 USA", {locale: 'en-US'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("950 W Maude Ave.", parsedAddress.streetAddress);
@@ -268,8 +268,8 @@ function testParseAddressUnknownLocale() {
 };
 
 //for DFISH-23879
-function testParseAddressUnknownLocaleAR() {
-	var parsedAddress = new ilib.Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-AR'});
+function testParseAddressUnknownLocaleQQ() {
+	var parsedAddress = new ilib.Address("123 mcdonald ave, apt 234, sunnyvale, CA 34567", {locale: 'en-QQ'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("123 mcdonald ave, apt 234, sunnyvale", parsedAddress.streetAddress);
@@ -277,20 +277,20 @@ function testParseAddressUnknownLocaleAR() {
 	assertEquals("CA", parsedAddress.locality);
 	assertEquals("34567", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
-	assertEquals("AR", parsedAddress.countryCode);
+	assertEquals("QQ", parsedAddress.countryCode);
 };
 
-function testFormatAddressUnknownLocaleAR() {
+function testFormatAddressUnknownLocaleQQ() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "123 mcdonald ave, apt 234", 
-		locality: "sunnyvale",
+		locality: "Sunnyvale",
 		region: "CA",
-		postalCode: "34567", 
-		locale: 'en-AR'
+		postalCode: "94086", 
+		locale: 'en-QQ'
 	});
 	
-	var expected = "123 mcdonald ave, apt 234, sunnyvale\nCA 34567";
-	var formatter = new ilib.AddressFmt({locale: 'en-AR', style: 'nocountry'});
+	var expected = "123 mcdonald ave, apt 234\nSunnyvale CA 94086";
+	var formatter = new ilib.AddressFmt({locale: 'en-QQ', style: 'nocountry'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 

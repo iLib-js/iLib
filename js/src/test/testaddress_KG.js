@@ -92,7 +92,7 @@ function testParseAddressKGNoDelimiters() {
 	var parsedAddress = new ilib.Address("720001 БИШКЕК Проспект Чуй 193 кв. 28 Колупаева Анара Киргизия", {locale: 'ru-KG'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Marvan Sangakkara 25/1 Cyril Jansz Mawatha", parsedAddress.streetAddress);
+	assertEquals("Проспект Чуй 193 кв. 28", parsedAddress.streetAddress);
 	assertEquals("БИШКЕК", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
 	assertEquals("720001", parsedAddress.postalCode);
@@ -102,8 +102,6 @@ function testParseAddressKGNoDelimiters() {
 
 function testParseAddressKGFromUS() {
 	var parsedAddress = new ilib.Address("720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nKyrgyzstan", {locale: 'en-US'});
-	
-	
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Проспект Чуй, 193, кв. 28 Колупаева Анара", parsedAddress.streetAddress);
