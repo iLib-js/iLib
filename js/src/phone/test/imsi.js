@@ -92,7 +92,7 @@ function testTooShort() {
 
 function testUndefined() {
 	// should default to a 3 digit mnc
-	assertObjectEquals(undefined, ilib.PhoneNumber.parseImsi(undefined));
+	assertObjectEquals(null, ilib.PhoneNumber.parseImsi(undefined));
 };
 
 function mockLoader(paths, sync, params, callback) {

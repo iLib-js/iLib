@@ -159,7 +159,7 @@ ilib.NumPlan.prototype = {
 	},
 	/** [Need Comment]
 	 * Return a contextFree
-	 * 
+	 *
 	 * @return {boolean}
 	 */
 	getContextFree: function() {

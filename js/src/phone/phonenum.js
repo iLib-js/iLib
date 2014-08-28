@@ -161,7 +161,6 @@ phone/handler.js
 ilib.PhoneNumber = function(number, options) {
 	var locale,
 		phoneLocData,
-		options,
 		plan,
 		stateData,
 		regionSettings,
@@ -252,7 +251,7 @@ ilib.PhoneNumber.parseImsi = function(imsi, options) {
 		fields = {};
 	
 	if (!imsi) {
-		return undefined
+		return null;
 	}
 
 	if (options) {
@@ -270,7 +269,7 @@ ilib.PhoneNumber.parseImsi = function(imsi, options) {
 		object: ilib.PhoneNumber, 
 		nonlocale: true, 
 		sync: sync, 
-		loadParams: this.loadParams, 
+		loadParams: loadParams, 
 		callback: ilib.bind(this, function(data) {
 			this.mncdata = data;
 			fields = this._parseImsi(this.mncdata, imsi);
