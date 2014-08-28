@@ -172,7 +172,12 @@ ilib.AddressFmt.prototype.format = function (address) {
 		return other.format(address);
 	}
 	
-	format = address.format ? this.style[address.format] : this.style;
+	if (typeof(this.style) === 'object') {
+		format = this.style[address.format || "latin"];
+	} else {
+		format = this.style;
+	}
+	
 	// console.log("Using format: " + format);
 	// make sure we have a blank string for any missing parts so that
 	// those template parts get blanked out
@@ -181,10 +186,13 @@ ilib.AddressFmt.prototype.format = function (address) {
 		region: address.region || "",
 		locality: address.locality || "",
 		streetAddress: address.streetAddress || "",
-		postalCode: address.postalCode || ""
+		postalCode: address.postalCode || "",
+		postOffice: address.postOffice || ""
 	};
 	template = new ilib.String(format);
 	ret = template.format(params);
 	ret = ret.replace(/[ \t]+/g, ' ');
+	ret = ret.replace("\n ", "\n");
+	ret = ret.replace(" \n", "\n");
 	return ret.replace(/\n+/g, '\n').trim();
 };

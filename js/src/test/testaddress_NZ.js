@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressNZNormal() {
 	var parsedAddress = new ilib.Address("PO Box 10362\nWellington 6143\nNew Zealand", {locale: 'en-NZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("NZ", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressNZNoZip() {
 	var parsedAddress = new ilib.Address("23 Kate Sheppard Place,\nThorndon\nWellington\nNew Zealand", {locale: 'en-NZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressNZNoCountry() {
 	var parsedAddress = new ilib.Address("45a Clevedon-Takanini Rd\nArdmore\nAuckland 2582", {locale: 'en-NZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("NZ", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressNZManyLines() {
 	var parsedAddress = new ilib.Address("Level 6\nTower Centre\n45 Queen Street\nAuckland\n1010\nNew Zealand\n\n\n", {locale: 'en-NZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("NZ", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressNZOneLine() {
 	var parsedAddress = new ilib.Address("70 Falsgrave St, Waltham, Christchurch 8011, New Zealand", {locale: 'en-NZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("NZ", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressNZSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\t29b Bolt Rd\n\n\r\r\t\n   Tahuna\n\t\r\rNelson\r5678\r\r\n\r\n\tNew\tZealand\n\n\n", {locale: 'en-NZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("NZ", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressNZNoDelimiters() {
 	var parsedAddress = new ilib.Address("70 Falsgrave St Waltham Christchurch 8011 New Zealand", {locale: 'en-NZ'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("NZ", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressNZFromUS() {
 	var parsedAddress = new ilib.Address("70 Falsgrave St\nWaltham\nChristchurch 8011\nNew Zealand", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -115,7 +115,7 @@ function testParseAddressFromUS() {
 	assertEquals("NZ", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressNZ() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "70 Falsgrave St, Waltham",
 		locality: "Christchurch",
@@ -129,7 +129,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressNZFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "70 Falsgrave St, Waltham",
 		locality: "Christchurch",

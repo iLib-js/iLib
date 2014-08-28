@@ -19,128 +19,131 @@
 
 // TODO: get some Luxembourg addresses
 
-function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Achterberglaan 23, 2345 GD Uithoorn, Nederland", {locale: 'fr-LU'});
+function testParseAddressLUNormal() {
+	var parsedAddress = new ilib.Address("M. Andrée TROMMER BP 501\nL-1050 Luxembourg\nLUXEMBOURG", {locale: 'fr-LU'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Achterberglaan 23", parsedAddress.streetAddress);
-	assertEquals("Uithoorn", parsedAddress.locality);
+	assertEquals("M. Andrée TROMMER BP 501", parsedAddress.streetAddress);
+	assertEquals("Luxembourg", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("2345 GD", parsedAddress.postalCode);
-	assertEquals("Nederland", parsedAddress.country);
+	assertEquals("L-1050", parsedAddress.postalCode);
+	assertEquals("LUXEMBOURG", parsedAddress.country);
 	assertEquals("LU", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("Achterberglaan 23, Uithoorn, Nederland", {locale: 'fr-LU'});
+
+function testParseAddressLUotherNormal() {
+	var parsedAddress = new ilib.Address("M. Jacques Muller 71, route de Longwy\nL-4750 PETANGE\nLUXEMBOURG", {locale: 'fr-LU'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Achterberglaan 23", parsedAddress.streetAddress);
-	assertEquals("Uithoorn", parsedAddress.locality);
+	assertEquals("M. Jacques Muller 71, route de Longwy", parsedAddress.streetAddress);
+	assertEquals("PETANGE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("Nederland", parsedAddress.country);
+	assertEquals("L-4750", parsedAddress.postalCode);
+	assertEquals("LUXEMBOURG", parsedAddress.country);
+	assertEquals("LU", parsedAddress.countryCode);
+};
+
+
+function testParseAddressLUNoZip() {
+	var parsedAddress = new ilib.Address("M. Andrée TROMMER BP 5019\nLuxembourg\nLUXEMBOURG", {locale: 'fr-LU'});
+	
+	assertNotUndefined(parsedAddress);
+	assertEquals("M. Andrée TROMMER BP 5019", parsedAddress.streetAddress);
+	assertEquals("Luxembourg", parsedAddress.locality);
+	assertUndefined(parsedAddress.region);
+	assertEquals("LUXEMBOURG", parsedAddress.country);
 	assertEquals("LU", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("Claude Debussylaan 34\nVinoly Mahler 4\nToren B\n15th Floor\n1082 MD\nAmsterdam\nNederland", {locale: 'fr-LU'});
+function testParseAddressLUManyLines() {
+	var parsedAddress = new ilib.Address("M. Jacques Muller 71\nroute\nde\nLongwy\nL-4750\nPETANGE\nLUXEMBOURG\n\n\n", {locale: 'fr-LU'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Claude Debussylaan 34, Vinoly Mahler 4, Toren B, 15th Floor", parsedAddress.streetAddress);
-	assertEquals("Amsterdam", parsedAddress.locality);
+	assertEquals("M. Jacques Muller 71, route, de, Longwy", parsedAddress.streetAddress);
+	assertEquals("PETANGE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("1082 MD", parsedAddress.postalCode);
-	assertEquals("Nederland", parsedAddress.country);
+	assertEquals("L-4750", parsedAddress.postalCode);
+	assertEquals("LUXEMBOURG", parsedAddress.country);
 	assertEquals("LU", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("Startbaan 16, 1187 XR Amstelveen, Nederland", {locale: 'fr-LU'});
+function testParseAddressLUOneLine() {
+	var parsedAddress = new ilib.Address("M. Jacques Muller 71, route, de, Longwy, L-4750, PETANGE, LUXEMBOURG", {locale: 'fr-LU'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Startbaan 16", parsedAddress.streetAddress);
-	assertEquals("Amstelveen", parsedAddress.locality);
+	assertEquals("M. Jacques Muller 71, route, de, Longwy", parsedAddress.streetAddress);
+	assertEquals("PETANGE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("1187 XR", parsedAddress.postalCode);
-	assertEquals("Nederland", parsedAddress.country);
+	assertEquals("L-4750", parsedAddress.postalCode);
+	assertEquals("LUXEMBOURG", parsedAddress.country);
 	assertEquals("LU", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("Startbaan 16,   \n\t\n 1187 XR \t\t Amstelveen,\n\n\n Nederland  \n  \t\t\t", {locale: 'fr-LU'});
+function testParseAddressLUSuperfluousWhitespace() {
+	var parsedAddress = new ilib.Address("M. Jacques Muller 71\n\troute\n\tde\tLongwy\t\nL-4750\n\tPETANGE\n\tLUXEMBOURG\n\t", {locale: 'fr-LU'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Startbaan 16", parsedAddress.streetAddress);
-	assertEquals("Amstelveen", parsedAddress.locality);
+	assertEquals("M. Jacques Muller 71, route, de Longwy", parsedAddress.streetAddress);
+	assertEquals("PETANGE", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("1187 XR", parsedAddress.postalCode);
-	assertEquals("Nederland", parsedAddress.country);
+	assertEquals("L-4750", parsedAddress.postalCode);
+	assertEquals("LUXEMBOURG", parsedAddress.country);
 	assertEquals("LU", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("Startbaan 16 1187 XR Amstelveen Nederland", {locale: 'fr-LU'});
+function testParseAddressLUNoDelimiters() {
+	var parsedAddress = new ilib.Address("M. Andrée TROMMER BP 5019 L-1050 Luxembourg LUXEMBOURG", {locale: 'fr-LU'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Startbaan 16", parsedAddress.streetAddress);
-	assertEquals("Amstelveen", parsedAddress.locality);
+	assertEquals("M. Andrée TROMMER BP 5019", parsedAddress.streetAddress);
+	assertEquals("Luxembourg", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("1187 XR", parsedAddress.postalCode);
-	assertEquals("Nederland", parsedAddress.country);
+	assertEquals("L-1050", parsedAddress.postalCode);
+	assertEquals("LUXEMBOURG", parsedAddress.country);
 	assertEquals("LU", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
-	var parsedAddress = new ilib.Address("Óók 16, 1187 XR s'Hertogen-bósch, Nederland", {locale: 'fr-LU'});
-	
-	assertNotUndefined(parsedAddress);
-	assertEquals("Óók 16", parsedAddress.streetAddress);
-	assertEquals("s'Hertogen-bósch", parsedAddress.locality);
-	assertUndefined(parsedAddress.region);
-	assertEquals("1187 XR", parsedAddress.postalCode);
-	assertEquals("Nederland", parsedAddress.country);
-	assertEquals("NL", parsedAddress.countryCode);
-};
 
-function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Achterberglaan 23, 2345 GD Uithoorn, The Netherlands", {locale: 'en-US'});
+function testParseAddressLUFromUS() {
+	var parsedAddress = new ilib.Address("M. Andrée TROMMER BP 501\nL-1050 Luxembourg\nLUXEMBOURG", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Achterberglaan 23", parsedAddress.streetAddress);
-	assertEquals("Uithoorn", parsedAddress.locality);
+	assertEquals("M. Andrée TROMMER BP 501", parsedAddress.streetAddress);
+	assertEquals("Luxembourg", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("2345 GD", parsedAddress.postalCode);
-	assertEquals("The Netherlands", parsedAddress.country);
-	assertEquals("NL", parsedAddress.countryCode);
+	assertEquals("L-1050", parsedAddress.postalCode);
+	assertEquals("LUXEMBOURG", parsedAddress.country);
+	assertEquals("LU", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressLU() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Achterberglaan 23",
-		locality: "Uithoorn",
-		postalCode: "2345 GD",
-		country: "Nederland",
-		countryCode: "NL"
+		streetAddress: "M. Andrée TROMMER BP 5019",
+		locality: "Luxembourg",
+		postalCode: "L-1050",
+		country: "LUXEMBOURG",
+		countryCode: "LU"
 	}, {locale: 'fr-LU'});
 	
-	var expected = "Achterberglaan 23\n2345 GD Uithoorn\nNederland";
+	var expected = "M. Andrée TROMMER BP 5019\nL-1050 Luxembourg\nLUXEMBOURG";
 	var formatter = new ilib.AddressFmt({locale: 'fr-LU'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressLUFromUS() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Achterberglaan 23",
-		locality: "Uithoorn",
-		postalCode: "2345 GD",
-		country: "Netherlands",
-		countryCode: "NL"
+		streetAddress: "M. Andrée TROMMER BP 5019",
+		locality: "Luxembourg",
+		postalCode: "L-1050",
+		country: "LUXEMBOURG",
+		countryCode: "LU"
 	}, {locale: 'en-US'});
 	
-	var expected = "Achterberglaan 23\n2345 GD Uithoorn\nNetherlands";
+	var expected = "M. Andrée TROMMER BP 5019\nL-1050 Luxembourg\nLUXEMBOURG";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

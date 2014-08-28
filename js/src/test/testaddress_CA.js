@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressSimpleCA() {
+function testParseAddressCASimpleCA() {
 	var parsedAddress = new ilib.Address("5150 Spectrum Way\nMississauga, ON\nL4W 5G1\nCanada", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -30,7 +30,7 @@ function testParseAddressSimpleCA() {
 };
 
 // to verify NOV-111026
-function testParseAddressWithAccents() {
+function testParseAddressCAWithAccents() {
 	var parsedAddress = new ilib.Address("1253 McGill College\nSuite 250\nMontréal, QC, H2B 2Y5", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -42,7 +42,7 @@ function testParseAddressWithAccents() {
 	assertEquals("CA", parsedAddress.countryCode);
 };
 
-function testParseAddressSpelledOutProvince() {
+function testParseAddressCASpelledOutProvince() {
 	var parsedAddress = new ilib.Address("340 Hagey Blvd\n2nd Floor\nWaterloo, Ontario, N2L 6R6", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -54,7 +54,7 @@ function testParseAddressSpelledOutProvince() {
 	assertEquals("CA", parsedAddress.countryCode);
 };
 
-function testParseAddressSpelledOutProvinceWithSpaces() {
+function testParseAddressCASpelledOutProvinceWithSpaces() {
 	var parsedAddress = new ilib.Address("20 Main St.\nMyTown, Prince Edward Island A1B 2C3\nCanada", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -66,7 +66,7 @@ function testParseAddressSpelledOutProvinceWithSpaces() {
 	assertEquals("CA", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressCANoZip() {
 	var parsedAddress = new ilib.Address("20 Main St.\nMyTown, AB\nCanada", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -78,7 +78,7 @@ function testParseAddressNoZip() {
 	assertEquals("CA", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressCAManyLines() {
 	var parsedAddress = new ilib.Address("950 W 21st Ave\nApt 45\nCambridge\nON\nA4C 5N4", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -90,7 +90,7 @@ function testParseAddressManyLines() {
 	assertEquals("CA", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressCAOneLine() {
 	var parsedAddress = new ilib.Address("5150 Spectrum Way, Mississauga, ON, L4W 5G1, Canada", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -102,7 +102,7 @@ function testParseAddressOneLine() {
 	assertEquals("CA", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressCASuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("5150 Spectrum Way\n  \t \t Mississauga, \n   \t ON, \n, \n\n L4W 5G1   \n  Canada\n\n   \n\n", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -114,7 +114,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("CA", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressCANoDelimiters() {
 	var parsedAddress = new ilib.Address("5150 Spectrum Way Mississauga ON L4W 5G1 Canada", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -126,7 +126,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("CA", parsedAddress.countryCode);
 };
 
-function testParseAddressPOBox() {
+function testParseAddressCAPOBox() {
 	var parsedAddress = new ilib.Address("P.O. Box 350\nToronto ON Y5T 5T5", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -138,7 +138,7 @@ function testParseAddressPOBox() {
 	assertEquals("CA", parsedAddress.countryCode);
 };
 
-function testParseAddressFrench() {
+function testParseAddressCAFrench() {
 	var parsedAddress = new ilib.Address("20 Montée Lavalle\nÉparnay, Nouveau-Brunswick Y7Y 7Y7", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -150,7 +150,7 @@ function testParseAddressFrench() {
 	assertEquals("CA", parsedAddress.countryCode);
 };
 
-function testParseAddressForeign() {
+function testParseAddressCAForeign() {
 	var parsedAddress = new ilib.Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {locale: 'en-CA'});
 	
 	assertNotUndefined(parsedAddress);
@@ -162,7 +162,7 @@ function testParseAddressForeign() {
 	assertEquals("NL", parsedAddress.countryCode);
 };
 	
-function testFormatAddress() {
+function testFormatAddressCA() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "5150 Spectrum Way",
 		locality: "Mississauga",
@@ -177,7 +177,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressDomestic() {
+function testFormatAddressCADomestic() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "5150 Spectrum Way",
 		locality: "Mississauga",

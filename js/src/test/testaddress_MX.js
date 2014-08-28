@@ -1,5 +1,5 @@
 /*
- * testaddress.js - test the address parsing and formatting routines
+ * testaddress_MX.js - test the address parsing and formatting routines for Mexico
  * 
  * Copyright © 2013, JEDLSoft
  *
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressMXNormal() {
 	var parsedAddress = new ilib.Address("Paseo de la Reforma #115, Piso 22\nCol. Lomas de Chapultepec\n11000 México D.F.\nMéxico", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("MX", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressMXNoZip() {
 	var parsedAddress = new ilib.Address("20 de Noviembre 855 Sur\nObispado\nMonterrey, NL\nMéxico", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertEquals("MX", parsedAddress.countryCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressMXNoCountry() {
 	var parsedAddress = new ilib.Address("AV RIO MIXCOAC N° 125 , INSURGENTES MIXCOAC , C.P 03920 , BENITO JUAREZ , DF", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("MX", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressMXManyLines() {
 	var parsedAddress = new ilib.Address("Colegio Niños de México\nQueretaro 151\nRoma\nC.P 06700\nCuauhtemoc\nDF\nMéxico", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("MX", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressMXOneLine() {
 	var parsedAddress = new ilib.Address("Vicente Guerrero S/N , Centro , C.P 23450 , Cabo San Lucas , BCS , México", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("MX", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressMXSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tVicente     Guerrero \tS/N\n\t\tCentro\t\n C.P\t\r 23450\n\t\t\r Cabo   \t\r San Lucas\n\n\n\tBCS\r\t\nMéxico\n\n\n", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("MX", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressMXNoDelimiters() {
 	var parsedAddress = new ilib.Address("Vicente Guerrero S/N Centro C.P 23450 Cabo San Lucas BCS México", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("MX", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressMXSpecialChars() {
 	var parsedAddress = new ilib.Address("Calle Yucatán No. 45\nC.P 97751 Chichén Itzá, Yucatán\nMéxico", {locale: 'es-MX'});
 	
 	assertNotUndefined(parsedAddress);
@@ -113,7 +113,7 @@ function testParseAddressSpecialChars() {
 	assertEquals("MX", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressMXFromUS() {
 	var parsedAddress = new ilib.Address("Vicente Guerrero S/N , Centro\nC.P 23450 Cabo San Lucas, BCS\nMexico", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -127,7 +127,7 @@ function testParseAddressFromUS() {
 	assertEquals("MX", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressMX() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Vicente Guerrero S/N, Centro",
 		locality: "Cabo San Lucas",
@@ -142,7 +142,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressMXFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Vicente Guerrero S/N, Centro",
 		locality: "Cabo San Lucas",

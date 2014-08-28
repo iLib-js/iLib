@@ -19,140 +19,140 @@
 
 // TODO: put in Austrian addresses here
 
-function testParseAddressNormal() {
-	var parsedAddress = new ilib.Address("Herrenberger Straße 140, 71034 Böblingen, Deutschland", {locale: 'de-AT'});
+function testParseATAddressNormal() {
+	var parsedAddress = new ilib.Address("R. Fellner, Pazmaniteng 24-9, A-1020 Wien, Österreich", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Herrenberger Straße 140", parsedAddress.streetAddress);
-	assertEquals("Böblingen", parsedAddress.locality);
+	assertEquals("R. Fellner, Pazmaniteng 24-9", parsedAddress.streetAddress);
+	assertEquals("Wien", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("71034", parsedAddress.postalCode);
-	assertEquals("Deutschland", parsedAddress.country);
-	assertEquals("DE", parsedAddress.countryCode);
+	assertEquals("A-1020", parsedAddress.postalCode);
+	assertEquals("Österreich", parsedAddress.country);
+	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
-	var parsedAddress = new ilib.Address("Berliner Straße 111, Ratingen, Deutschland", {locale: 'de-AT'});
+function testParseATAddressNoZip() {
+	var parsedAddress = new ilib.Address("R. Fellner, Pazmaniteng 24-9, Wien, Österreich", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Berliner Straße 111", parsedAddress.streetAddress);
-	assertEquals("Ratingen", parsedAddress.locality);
+	assertEquals("R. Fellner, Pazmaniteng 24-9", parsedAddress.streetAddress);
+	assertEquals("Wien", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("Deutschland", parsedAddress.country);
-	assertEquals("DE", parsedAddress.countryCode);
+	assertEquals("Österreich", parsedAddress.country);
+	assertEquals("AT", parsedAddress.countryCode);
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
-	var parsedAddress = new ilib.Address("Herrenberger Straße 140, 71034 Böblingen", {locale: 'de-AT'});
+function testParseATAddressNoCountry() {
+	var parsedAddress = new ilib.Address("R. Fellner, Pazmaniteng 24-9, A-1020 Wien", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Herrenberger Straße 140", parsedAddress.streetAddress);
-	assertEquals("Böblingen", parsedAddress.locality);
+	assertEquals("R. Fellner, Pazmaniteng 24-9", parsedAddress.streetAddress);
+	assertEquals("Wien", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("71034", parsedAddress.postalCode);
+	assertEquals("A-1020", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
-	assertEquals("DE", parsedAddress.countryCode);
+	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
-	var parsedAddress = new ilib.Address("Altrottstraße 31\nPartner Port SAP\n69190\nWalldorf/Baden\nDeutschland\n\n\n", {locale: 'de-AT'});
+function testParseATAddressManyLines() {
+	var parsedAddress = new ilib.Address("Wolfgang Schüssel\nLiebiggasse 5\n1010 Wien\nÖsterreich\n\n\n", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Altrottstraße 31, Partner Port SAP", parsedAddress.streetAddress);
-	assertEquals("Walldorf/Baden", parsedAddress.locality);
+	assertEquals("Wolfgang Schüssel, Liebiggasse 5", parsedAddress.streetAddress);
+	assertEquals("Wien", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("69190", parsedAddress.postalCode);
-	assertEquals("Deutschland", parsedAddress.country);
-	assertEquals("DE", parsedAddress.countryCode);
+	assertEquals("1010", parsedAddress.postalCode);
+	assertEquals("Österreich", parsedAddress.country);
+	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
-	var parsedAddress = new ilib.Address("ABC-Strasse 19, 20354 Hamburg, Deutschland", {locale: 'de-AT'});
+function testParseATAddressOneLine() {
+	var parsedAddress = new ilib.Address("R. Fellner, Pazmaniteng 24-9, A-1020 Wien, Österreich", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ABC-Strasse 19", parsedAddress.streetAddress);
-	assertEquals("Hamburg", parsedAddress.locality);
+	assertEquals("R. Fellner, Pazmaniteng 24-9", parsedAddress.streetAddress);
+	assertEquals("Wien", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("20354", parsedAddress.postalCode);
-	assertEquals("Deutschland", parsedAddress.country);
-	assertEquals("DE", parsedAddress.countryCode);
+	assertEquals("A-1020", parsedAddress.postalCode);
+	assertEquals("Österreich", parsedAddress.country);
+	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
-	var parsedAddress = new ilib.Address("\t\t\tAltrottstraße 31\n\n\nPartner Port SAP\n   \t\n69190\n   \r\t\n Walldorf/Baden\n   \t \t \t Deutschland\n\n\n", {locale: 'de-AT'});
+function testParseATAddressSuperfluousWhitespace() {
+	var parsedAddress = new ilib.Address("  \t  \r  Wolfgang Schüssel,\n\t    Liebiggasse 5,\n\n\n\n\t 1010 Wien\r\t  ,\n\t Österreich       ", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Altrottstraße 31, Partner Port SAP", parsedAddress.streetAddress);
-	assertEquals("Walldorf/Baden", parsedAddress.locality);
+	assertEquals("Wolfgang Schüssel, Liebiggasse 5", parsedAddress.streetAddress);
+	assertEquals("Wien", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("69190", parsedAddress.postalCode);
-	assertEquals("Deutschland", parsedAddress.country);
-	assertEquals("DE", parsedAddress.countryCode);
+	assertEquals("1010", parsedAddress.postalCode);
+	assertEquals("Österreich", parsedAddress.country);
+	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
-	var parsedAddress = new ilib.Address("ABC-Strasse 19 20354 Hamburg Deutschland", {locale: 'de-AT'});
+function testParseATAddressNoDelimiters() {
+	var parsedAddress = new ilib.Address("Wolfgang Schüssel Liebiggasse 5 1010 Wien Österreich", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("ABC-Strasse 19", parsedAddress.streetAddress);
-	assertEquals("Hamburg", parsedAddress.locality);
+	assertEquals("Wolfgang Schüssel Liebiggasse 5", parsedAddress.streetAddress);
+	assertEquals("Wien", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("20354", parsedAddress.postalCode);
-	assertEquals("Deutschland", parsedAddress.country);
-	assertEquals("DE", parsedAddress.countryCode);
+	assertEquals("1010", parsedAddress.postalCode);
+	assertEquals("Österreich", parsedAddress.country);
+	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
-	var parsedAddress = new ilib.Address("Geschäftsstelle Lützowplatz 15\n(Eingang Einemstraße 24)\n10785 Würtzheim", {locale: 'de-AT'});
+function testParseATAddressSpecialChars() {
+	var parsedAddress = new ilib.Address("Wolfgang Schüssel, Liebiggasse 5, 1010 Wien, Österreich", {locale: 'de-AT'});
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Geschäftsstelle Lützowplatz 15, (Eingang Einemstraße 24)", parsedAddress.streetAddress);
-	assertEquals("Würtzheim", parsedAddress.locality);
+	assertEquals("Wolfgang Schüssel, Liebiggasse 5", parsedAddress.streetAddress);
+	assertEquals("Wien", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("10785", parsedAddress.postalCode);
-	assertUndefined(parsedAddress.country);
-	assertEquals("DE", parsedAddress.countryCode);
+	assertEquals("1010", parsedAddress.postalCode);
+	assertEquals("Österreich", parsedAddress.country);
+	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
-	var parsedAddress = new ilib.Address("Dienerstrasse 12\n80331 Munich\nGermany", {locale: 'en-US'});
+function testParseATAddressFromUS() {
+	var parsedAddress = new ilib.Address("Wolfgang Schüssel, Liebiggasse 5, 1010 Wien, Austria", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
 	
 	assertNotUndefined(parsedAddress);
-	assertEquals("Dienerstrasse 12", parsedAddress.streetAddress);
-	assertEquals("Munich", parsedAddress.locality);
+	assertEquals("Wolfgang Schüssel, Liebiggasse 5", parsedAddress.streetAddress);
+	assertEquals("Wien", parsedAddress.locality);
 	assertUndefined(parsedAddress.region);
-	assertEquals("80331", parsedAddress.postalCode);
-	assertEquals("Germany", parsedAddress.country);
-	assertEquals("DE", parsedAddress.countryCode);
+	assertEquals("1010", parsedAddress.postalCode);
+	assertEquals("Austria", parsedAddress.country);
+	assertEquals("AT", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressAT() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Dienerstrasse 12",
-		locality: "München",
-		postalCode: "80331",
-		country: "Deutschland",
+		streetAddress: "Wolfgang Schüssel, Liebiggasse 5",
+		locality: "Wien",
+		postalCode: "1010",
+		country: "Österreich",
 		countryCode: "AT"
 	}, {locale: 'de-AT'});
 	
-	var expected = "Dienerstrasse 12\n80331 München\nDeutschland";
+	var expected = "Wolfgang Schüssel, Liebiggasse 5\n1010 Wien\nÖsterreich";
 	var formatter = new ilib.AddressFmt({locale: 'de-AT'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressATFromUS() {
 	var parsedAddress = new ilib.Address({
-		streetAddress: "Dienerstrasse 12",
-		locality: "Munich",
-		postalCode: "80331",
-		country: "Germany",
+		streetAddress: "Wolfgang Schüssel, Liebiggasse 5",
+		locality: "Vienna",
+		postalCode: "1010",
+		country: "Austria",
 		countryCode: "AT"
 	}, {locale: 'en-US'});
 	
-	var expected = "Dienerstrasse 12\n80331 Munich\nGermany";
+	var expected = "Wolfgang Schüssel, Liebiggasse 5\n1010 Vienna\nAustria";
 	var formatter = new ilib.AddressFmt({locale: 'en-US'});
 	assertEquals(expected, formatter.format(parsedAddress));
 };

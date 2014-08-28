@@ -149,6 +149,13 @@ ilib.Address = function (freeformAddress, options) {
 		 */
 		this.postalCode = freeformAddress.postalCode;
 		/**
+		 * Optional city-specific code for a particular post office, used to expidite
+		 * delivery.
+		 * @expose
+		 * @type {string|undefined} 
+		 */
+		this.postOffice = freeformAddress.postOffice;
+		/**
 		 * The country of the address.
 		 * @expose
 		 * @type {string|undefined}
@@ -370,12 +377,14 @@ ilib.Address.prototype = {
 		// decide if we are parsing an asian or latin script address
 		if (this.info && this.info.multiformat) {
 			for (var j = 0; j < this.lines.length; j++) {
-				var line = this.lines[j];
+				var line = new ilib.String(this.lines[j]);
+				var it = line.charIterator();
 				// TODO: use a char iterator here
-				for (i = 0; i < line.length; i++) {
-					if (ilib.CType.isIdeo(line.charAt(i))) {
+				while (it.hasNext()) {
+					var c = it.next();
+					if (ilib.CType.isIdeo(c) || ilib.CType.withinRange(c, "Hangul")) {
 						asianChars++;
-					} else if (ilib.CType.isAscii(line.charAt(i)) && !ilib.CType.isDigit(line.charAt(i))) {
+					} else if (ilib.CType.isAscii(c) && !ilib.CType.isDigit(c)) {
 						latinChars++;
 					}
 				}
@@ -384,7 +393,7 @@ ilib.Address.prototype = {
 			this.format = (asianChars >= latinChars) ? "asian" : "latin";
 			startAt = this.info.startAt[this.format];
 			infoFields = this.info.fields[this.format];
-			// console.log("multiformat locale: format is now " + this.format);
+			// //console.log("multiformat locale: format is now " + this.format);
 		} else {
 			startAt = (this.info && this.info.startAt) || "end";
 			infoFields = this.info.fields;
@@ -435,15 +444,15 @@ ilib.Address.prototype = {
 					break;
 				}
 				if (match) {
-					// console.log("found match for " + field.name + ": " + JSON.stringify(match));
-					// console.log("remaining line is " + match.line);
+					// //console.log("found match for " + field.name + ": " + JSON.stringify(match));
+					// //console.log("remaining line is " + match.line);
 					this.lines[fieldNumber] = match.line;
 					this[field.name] = match.match;
 				}
 			} else {
 				// if nothing is given, default to taking the whole field
 				this[field.name] = this.lines.splice(fieldNumber,1)[0].trim();
-				//console.log("typeof(this[fieldName]) is " + typeof(this[fieldName]) + " and value is " + JSON.stringify(this[fieldName]));
+				//console.log("typeof(this[field.name]) is " + typeof(this[field.name]) + " and value is " + JSON.stringify(this[field.name]));
 			}
 		}
 			
@@ -451,7 +460,8 @@ ilib.Address.prototype = {
 		this.removeEmptyLines(this.lines);
 		if (this.lines.length > 0) {
 			//console.log("this.lines is " + JSON.stringify(this.lines) + " and splicing to get streetAddress");
-			var joinString = (this.format && this.format === "asian") ? "" : ", ";
+			// Korea uses spaces between words, despite being an "asian" locale
+			var joinString = (this.info.joinString && this.info.joinString[this.format]) || ((this.format && this.format === "asian") ? "" : ", ");
 			this.streetAddress = this.lines.join(joinString).trim();
 		}
 		
@@ -490,6 +500,7 @@ ilib.Address.prototype = {
 			pat;
 		//console.log("endsWith: checking " + query + " against " + subject);
 		for (i = 0; i < query.length; i++) {
+			// TODO: use case mapper instead of toLowerCase()
 			if (subject.charAt(start+i).toLowerCase() !== query.charAt(i).toLowerCase()) {
 				return -1;
 			}
@@ -507,8 +518,9 @@ ilib.Address.prototype = {
 	
 	startsWith: function (subject, query) {
 		var i;
-		// console.log("startsWith: checking " + query + " against " + subject);
+		// //console.log("startsWith: checking " + query + " against " + subject);
 		for (i = 0; i < query.length; i++) {
+			// TODO: use case mapper instead of toLowerCase()
 			if (subject.charAt(i).toLowerCase() !== query.charAt(i).toLowerCase()) {
 				return -1;
 			}
@@ -556,8 +568,10 @@ ilib.Address.prototype = {
 			matchGroup = matchGroup || 0;
 			if (match[matchGroup] !== undefined) {
 				ret.match = match[matchGroup].trim();
+				ret.match = ret.match.replace(/^\-|\-+$/, '');
+				ret.match = ret.match.replace(/\s+$/, '');
 				last = (startAt === 'end') ? line.lastIndexOf(match[matchGroup]) : line.indexOf(match[matchGroup]); 
-				// console.log("last is " + last);
+				//console.log("last is " + last);
 				ret.line = line.slice(0,last);
 				if (address.format !== "asian") {
 					ret.line += " ";

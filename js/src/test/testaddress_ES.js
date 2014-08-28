@@ -17,19 +17,19 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressESNormal() {
 	var parsedAddress = new ilib.Address("Avda.General Avilés, 35-37, Bajo\n46015 - Valencia\nEspaña", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Avda.General Avilés, 35-37, Bajo", parsedAddress.streetAddress);
 	assertEquals("Valencia", parsedAddress.region);
 	assertUndefined(parsedAddress.locality);
-	assertEquals("46015 -", parsedAddress.postalCode);
+	assertEquals("46015", parsedAddress.postalCode);
 	assertEquals("España", parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressESNoZip() {
 	var parsedAddress = new ilib.Address("Torre Picasso\nPlaza Pablo Ruiz Picasso 1\nMadrid\nEspaña", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,19 +41,19 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressESNoCountry() {
 	var parsedAddress = new ilib.Address("Isabel de Santo Domingo, 6\n50014 - Zaragoza", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Isabel de Santo Domingo, 6", parsedAddress.streetAddress);
 	assertEquals("Zaragoza", parsedAddress.region);
 	assertUndefined(parsedAddress.locality);
-	assertEquals("50014 -", parsedAddress.postalCode);
+	assertEquals("50014", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressESManyLines() {
 	var parsedAddress = new ilib.Address("Cami de Can Graells\nno. 1-21\n08174\nSant Cugat del Valles\nBarcelona\nEspaña", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,55 +65,55 @@ function testParseAddressManyLines() {
 	assertEquals("ES", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressESOneLine() {
 	var parsedAddress = new ilib.Address("Calle José Echegaray, 8, Parque Empresarial Madrid-Las Rozas, 28232 - Las Rozas. Madrid, España", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Calle José Echegaray, 8, Parque Empresarial Madrid-Las Rozas", parsedAddress.streetAddress);
 	assertEquals("Las Rozas.", parsedAddress.locality);
 	assertEquals("Madrid", parsedAddress.region);
-	assertEquals("28232 -", parsedAddress.postalCode);
+	assertEquals("28232", parsedAddress.postalCode);
 	assertEquals("España", parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressESSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tAvda.General\t\t\r Avilés,\r 35-37,\r Bajo\n\t\t\t\r\r46015\r -\r\r \nValencia,\n,\t\tEspaña\n\n\n", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Avda.General Avilés, 35-37, Bajo", parsedAddress.streetAddress);
 	assertEquals("Valencia", parsedAddress.region);
 	assertUndefined(parsedAddress.locality);
-	assertEquals("46015 -", parsedAddress.postalCode);
+	assertEquals("46015", parsedAddress.postalCode);
 	assertEquals("España", parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressESNoDelimiters() {
 	var parsedAddress = new ilib.Address("Calle José Echegaray, 8 Parque Empresarial Madrid-Las Rozas 28232 - Las Rozas Madrid España", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Calle José Echegaray, 8 Parque Empresarial Madrid-Las Rozas", parsedAddress.streetAddress);
 	assertEquals("Las Rozas", parsedAddress.locality);
 	assertEquals("Madrid", parsedAddress.region);
-	assertEquals("28232 -", parsedAddress.postalCode);
+	assertEquals("28232", parsedAddress.postalCode);
 	assertEquals("España", parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
 
-function testParseAddressSpecialChars() {
+function testParseAddressESSpecialChars() {
 	var parsedAddress = new ilib.Address("Avda.General Avilés, 35-37, Bajo\n46015 - Sedaví, València", {locale: 'es-ES'});
 	
 	assertNotUndefined(parsedAddress);
 	assertEquals("Avda.General Avilés, 35-37, Bajo", parsedAddress.streetAddress);
 	assertEquals("Sedaví", parsedAddress.locality);
 	assertEquals("València", parsedAddress.region);
-	assertEquals("46015 -", parsedAddress.postalCode);
+	assertEquals("46015", parsedAddress.postalCode);
 	assertUndefined(parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
 
-function testParseAddressFromUS() {
+function testParseAddressESFromUS() {
 	var parsedAddress = new ilib.Address("Avda.General Avilés, 35-37, Bajo\n46015 - Sedaví, València, Spain", {locale: 'en-US'});
 	
 	// the country name is in English because this address is for a contact in a US database
@@ -122,17 +122,17 @@ function testParseAddressFromUS() {
 	assertEquals("Avda.General Avilés, 35-37, Bajo", parsedAddress.streetAddress);
 	assertEquals("Sedaví", parsedAddress.locality);
 	assertEquals("València", parsedAddress.region);
-	assertEquals("46015 -", parsedAddress.postalCode);
+	assertEquals("46015", parsedAddress.postalCode);
 	assertEquals("Spain", parsedAddress.country);
 	assertEquals("ES", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressES() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Avda.General Avilés, 35-37, Bajo",
 		locality: "Sedaví",
 		region: "València",
-		postalCode: "46015 -",
+		postalCode: "46015",
 		country: "España",
 		countryCode: "ES"
 	}, {locale: 'es-ES'});
@@ -142,12 +142,12 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromUS() {
+function testFormatAddressESFromUS() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Avda.General Avilés, 35-37, Bajo",
 		locality: "Sedaví",
 		region: "València",
-		postalCode: "46015 -",
+		postalCode: "46015",
 		country: "Spain",
 		countryCode: "ES"
 	}, {locale: 'en-US'});

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-function testParseAddressNormal() {
+function testParseAddressGBNormal() {
 	var parsedAddress = new ilib.Address("Belgrave House\n76 Buckingham Palace Road\nLondon SW1W 9TQ\nUnited Kingdom", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
@@ -29,7 +29,7 @@ function testParseAddressNormal() {
 	assertEquals("GB", parsedAddress.countryCode);
 };
 
-function testParseAddressNoZip() {
+function testParseAddressGBNoZip() {
 	var parsedAddress = new ilib.Address("Peter House\nOxford Street\nManchester", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
@@ -41,7 +41,7 @@ function testParseAddressNoZip() {
 	assertUndefined(parsedAddress.postalCode);
 };
 
-function testParseAddressNoCountry() {
+function testParseAddressGBNoCountry() {
 	var parsedAddress = new ilib.Address("88 Wood Street\nLondon\nEC2V 7QT", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
@@ -53,7 +53,7 @@ function testParseAddressNoCountry() {
 	assertEquals("GB", parsedAddress.countryCode);
 };
 
-function testParseAddressManyLines() {
+function testParseAddressGBManyLines() {
 	var parsedAddress = new ilib.Address("2 Kelvin Close\nBirchwood Science Park North\nNorth Risley\nWarrington\nCheshire\nWA3 7PB\nUK", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
@@ -65,7 +65,7 @@ function testParseAddressManyLines() {
 	assertEquals("GB", parsedAddress.countryCode);
 };
 
-function testParseAddressOneLine() {
+function testParseAddressGBOneLine() {
 	var parsedAddress = new ilib.Address("Amen Corner, Cain Road, Bracknell, Berkshire, RG12 1HN, England", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
@@ -77,7 +77,7 @@ function testParseAddressOneLine() {
 	assertEquals("GB", parsedAddress.countryCode);
 };
 
-function testParseAddressSuperfluousWhitespace() {
+function testParseAddressGBSuperfluousWhitespace() {
 	var parsedAddress = new ilib.Address("\t\t\tAmen Corner\n\t\t\tCain Road, \t\t\t\r\r Bracknell, \n \r \tBerkshire, \n\t\nRG12 1HN\t\n\t England\n\n\n", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
@@ -89,7 +89,7 @@ function testParseAddressSuperfluousWhitespace() {
 	assertEquals("GB", parsedAddress.countryCode);
 };
 
-function testParseAddressNoDelimiters() {
+function testParseAddressGBNoDelimiters() {
 	var parsedAddress = new ilib.Address("Amen Corner Cain Road Bracknell Berkshire RG12 1HN England", {locale: 'en-GB'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +101,7 @@ function testParseAddressNoDelimiters() {
 	assertEquals("GB", parsedAddress.countryCode);
 };
 
-function testParseAddressFromDE() {
+function testParseAddressGBFromDE() {
 	var parsedAddress = new ilib.Address("Belgrave House\n76 Buckingham Palace Road\nLondon SW1W 9TQ\nGroßbritannien", {locale: 'de-DE'});
 	
 	// the country name is in German because this address is for a contact in a German database
@@ -115,7 +115,7 @@ function testParseAddressFromDE() {
 	assertEquals("GB", parsedAddress.countryCode);
 };
 
-function testFormatAddress() {
+function testFormatAddressGB() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Belgrave House, 76 Buckingham Palace Road",
 		locality: "London",
@@ -129,7 +129,7 @@ function testFormatAddress() {
 	assertEquals(expected, formatter.format(parsedAddress));
 };
 
-function testFormatAddressFromDE() {
+function testFormatAddressGBFromDE() {
 	var parsedAddress = new ilib.Address({
 		streetAddress: "Belgrave House, 76 Buckingham Palace Road",
 		locality: "London",
