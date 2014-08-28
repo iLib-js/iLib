@@ -193,6 +193,26 @@ ilib.PhoneFmt.prototype = {
 	 * represents a whole number. 
 	 * <li><i>style</i> style to use to format the number, if different from the 
 	 * default style or the style specified in the constructor
+	 * <li><i>locale</i> The locale with which to parse the number. This gives a clue as to which
+     * numbering plan to use.
+     * <li><i>mcc</i> The mobile carrier code (MCC) associated with the carrier that the phone is 
+     * currently connected to, if known. This also can give a clue as to which numbering plan to
+     * use
+     * <li>onLoad - a callback function to call when the date format object is fully 
+     * loaded. When the onLoad option is given, the DateFmt object will attempt to
+     * load any missing locale data using the ilib loader callback.
+     * When the constructor is done (even if the data is already preassembled), the 
+     * onLoad function is called with the current instance as a parameter, so this
+     * callback can be used with preassembled or dynamic loading or a mix of the two.
+     * <li>sync - tell whether to load any missing locale data synchronously or 
+     * asynchronously. If this option is given as "false", then the "onLoad"
+     * callback must be given, as the instance returned from this constructor will
+     * not be usable for a while.
+     * <li><i>loadParams</i> - an object containing parameters to pass to the 
+     * loader callback function when locale data is missing. The parameters are not
+     * interpretted or modified in any way. They are simply passed along. The object 
+     * may contain any property/value pairs as long as the calling code is in
+     * agreement with the loader callback function as to what those parameters mean.
 	 * </ul>
 	 *      
 	 * The partial parameter specifies whether or not the phone number contains
@@ -221,7 +241,9 @@ ilib.PhoneFmt.prototype = {
 	 * @return {string} Returns the formatted phone number as a string.
 	 */
 	format: function format(number, options) {
-		var temp, 
+		var sync = true,
+			loadParams = {},
+			temp, 
 			templates, 
 			fieldName, 
 			countryCode, 
@@ -231,7 +253,20 @@ ilib.PhoneFmt.prototype = {
 			formatted = "",
 			styles,
 			locale,
-			styleTemplates;
+			styleTemplates,
+			loadDataOptions;
+
+		if (options) {
+			if (typeof(options.sync) !== 'undefined') {
+				sync = (options.sync == true);
+				loadDataOptions = options.sync;
+			}
+		
+			if (options.loadParams) {
+				loadParams = options.loadParams;
+				loadDataOptions = ilib.merge(loadParams, loadDataOptions);
+			}
+		}
 
 		try {
 			style = this.style; // default style for this formatter
@@ -275,14 +310,14 @@ ilib.PhoneFmt.prototype = {
 							if ( fieldName === "countryCode" ) {
 								// switch to the new country to format the rest of the number
 								countryCode = number.countryCode.replace(/[wWpPtT\+#\*]/g, '');	// fix for NOV-108200
-								this.locale = new ilib.Locale.PhoneLoc({countryCode: countryCode});
+								this.locale = new ilib.Locale.PhoneLoc(ilib.merge({countryCode: countryCode}, loadDataOptions));
 
 								ilib.loadData({
 									name: "phonefmt.json",
 									object: ilib.PhoneFmt,
 									locale: this.locale,
-									sync: true,
-									loadParams: ilib.merge(this.loadParams, {
+									sync: sync,
+									loadParams: ilib.merge(loadParams, {
 										returnOne: true
 									}),
 									callback: ilib.bind(this, function (fmtdata) {

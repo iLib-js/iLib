@@ -109,7 +109,7 @@ ilib.GeoLocator = function(options) {
 	if (options) {
 		if (options.locale || options.mcc) {
 			this.locale = new ilib.Locale.PhoneLoc(options);
-		} 
+		}
 
 		if (typeof(options.sync) !== 'undefined') {
 			sync = (options.sync == true);
@@ -454,6 +454,38 @@ ilib.GeoLocator.prototype = {
 	 * If the number passed in is invalid, an empty object is returned. If the location
 	 * information about the country where the phone number is located is not available,
 	 * then the area information will be missing and only the country will be returned.
+     *
+	 * The options parameter can contain any one of the following properties:
+ 	 * 
+ 	 * <ul>
+ 	 * <li><i>locale</i> The locale parameter is used to load translations of the names of regions and
+ 	 * areas if available. For example, if the locale property is given as "en-US" (English for USA), 
+ 	 * but the phone number being geolocated is in Germany, then this class would return the the names
+ 	 * of the country (Germany) and region inside of Germany in English instead of German. That is, a 
+ 	 * phone number in Munich and return the country "Germany" and the area code "Munich"
+ 	 * instead of "Deutschland" and "München". The default display locale is the current ilib locale. 
+ 	 * If translations are not available, the region and area names are given in English, which should 
+ 	 * always be available.
+ 	 * <li><i>mcc</i> The mcc of the current mobile carrier, if known.
+ 	 * 
+ 	 * <li><i>onLoad</i> - a callback function to call when the data for the
+ 	 * locale is fully loaded. When the onLoad option is given, this object 
+ 	 * will attempt to load any missing locale data using the ilib loader callback.
+ 	 * When the constructor is done (even if the data is already preassembled), the 
+ 	 * onLoad function is called with the current instance as a parameter, so this
+ 	 * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ 	 * 
+ 	 * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
+ 	 * asynchronously. If this option is given as "false", then the "onLoad"
+ 	 * callback must be given, as the instance returned from this constructor will
+ 	 * not be usable for a while. 
+ 	 *
+ 	 * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ 	 * loader callback function when locale data is missing. The parameters are not
+ 	 * interpretted or modified in any way. They are simply passed along. The object 
+ 	 * may contain any property/value pairs as long as the calling code is in
+ 	 * agreement with the loader callback function as to what those parameters mean.
+ 	 * </ul>
 	 * 
 	 * @param {ilib.PhoneNumber} number phone number to locate
 	 * @param {Object} options options governing the way this ares is loaded
@@ -485,12 +517,12 @@ ilib.GeoLocator.prototype = {
 		if (options) {
 			if (typeof(options.sync) !== 'undefined') {
 				sync = (options.sync == true);
-				loadDataOptions = sync;
+				loadDataOptions = options.sync;
 			}
 		
 			if (options.loadParams) {
 				loadParams = options.loadParams;
-				loadDataOptions = ilib.merge(loadParams, sync);
+				loadDataOptions = ilib.merge(loadParams, loadDataOptions);
 			}
 		}
 
@@ -558,6 +590,38 @@ ilib.GeoLocator.prototype = {
 	 * If the phone number is a local phone number and does not contain
 	 * any country information, this routine will return the region for the current
 	 * formatter instance.
+     *
+	 * The options parameter can contain any one of the following properties:
+ 	 * 
+ 	 * <ul>
+ 	 * <li><i>locale</i> The locale parameter is used to load translations of the names of regions and
+ 	 * areas if available. For example, if the locale property is given as "en-US" (English for USA), 
+ 	 * but the phone number being geolocated is in Germany, then this class would return the the names
+ 	 * of the country (Germany) and region inside of Germany in English instead of German. That is, a 
+ 	 * phone number in Munich and return the country "Germany" and the area code "Munich"
+ 	 * instead of "Deutschland" and "München". The default display locale is the current ilib locale. 
+ 	 * If translations are not available, the region and area names are given in English, which should 
+ 	 * always be available.
+ 	 * <li><i>mcc</i> The mcc of the current mobile carrier, if known.
+ 	 * 
+ 	 * <li><i>onLoad</i> - a callback function to call when the data for the
+ 	 * locale is fully loaded. When the onLoad option is given, this object 
+ 	 * will attempt to load any missing locale data using the ilib loader callback.
+ 	 * When the constructor is done (even if the data is already preassembled), the 
+ 	 * onLoad function is called with the current instance as a parameter, so this
+ 	 * callback can be used with preassembled or dynamic loading or a mix of the two. 
+ 	 * 
+ 	 * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
+ 	 * asynchronously. If this option is given as "false", then the "onLoad"
+ 	 * callback must be given, as the instance returned from this constructor will
+ 	 * not be usable for a while. 
+ 	 *
+ 	 * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ 	 * loader callback function when locale data is missing. The parameters are not
+ 	 * interpretted or modified in any way. They are simply passed along. The object 
+ 	 * may contain any property/value pairs as long as the calling code is in
+ 	 * agreement with the loader callback function as to what those parameters mean.
+ 	 * </ul>
 	 *
 	 * @param {ilib.PhoneNumber} number An ilib.PhoneNumber instance
 	 * @return {string}

@@ -95,12 +95,17 @@ function testNumPlanLoadLocaleDataSynch() {
 		return;
 	}
 	
+	ilib.NumPlan.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
-	var plan = new ilib.NumPlan({locale: "en-US"});
-    assertNotNull(plan);
-    
-    assertEquals("US", plan.getName());
-    
+	new ilib.NumPlan({
+		locale: "en-US",
+		sync: false,
+		onLoad: function (plan) {
+    		assertNotNull(plan);
+    		assertEquals("US", plan.getName());    			
+    	}
+	});
+
     ilib.setLoaderCallback(undefined);
 };

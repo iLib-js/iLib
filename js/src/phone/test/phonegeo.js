@@ -2099,3 +2099,56 @@ function testHKMobile() {
 	assertEquals(expected.country.ln, geoInfo.country.ln);
 	assertEquals(expected.country.sn, geoInfo.country.sn);
 };
+
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.area_US); // for the generic, shared stuff
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
+function testPhoneGeoLoadLocaleDataSynch() {
+	if (typeof(ilib._load) !== 'undefined') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+
+	var parsed = new ilib.PhoneNumber({
+		iddPrefix: "+",
+		countryCode: "1",
+		areaCode: "650",
+		subscriberNumber: "6543210"
+	});
+
+	var expected = {
+		country: {
+			sn: "North America",
+			ln: "North America and the Caribbean Islands",
+			code: "US"
+		},
+		area: {
+			sn: "California",
+			ln: "Central California: San Mateo, Palo Alto, Redwood City, Menlo Park, Mountain View, southern San Francisco suburbs"
+		}
+	};
+
+	ilib.GeoLocator.cache = {};
+	ilib.setLoaderCallback(mockLoader);
+
+	var locator = new ilib.GeoLocator({locale: 'en-US',
+		sync: false,
+		onLoad: function (loc) {
+    		assertNotNull(loc);
+    	}
+	});
+
+    assertNotNull(locator);
+	var geoInfo = locator.locate(parsed);
+    assertObjectEquals(expected, geoInfo);
+    ilib.setLoaderCallback(undefined);
+};

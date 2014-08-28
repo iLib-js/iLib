@@ -76,3 +76,38 @@ function testGetDefaultEmpty() {
 	assertNotUndefined(loc);
 	assertEquals("US", loc.region);
 };
+
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.cc2reg); // for the generic, shared stuff
+	data.push(ilib.data.reg2cc);
+	data.push(ilib.data.mcc2reg);
+	data.push(ilib.data.area2reg);
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
+function testPhoneLocLoadLocaleDataSynch() {
+	if (typeof(ilib._load) !== 'undefined') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+	
+	ilib.Locale.PhoneLoc.cache = {};
+	ilib.setLoaderCallback(mockLoader);
+
+	new ilib.Locale.PhoneLoc({
+		countryCode: "44",
+		sync: false,
+		onLoad: function (loc) {
+    		assertNotNull(loc);
+    		assertEquals("GB", loc.getRegion());    			
+    	}
+	});
+    ilib.setLoaderCallback(undefined);
+};

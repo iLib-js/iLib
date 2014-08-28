@@ -114,10 +114,12 @@ function testIMSILoadLocaleDataSynch() {
 		return;
 	}
 	
+	ilib.PhoneNumber.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
 	var field = [];
 	var imsi = "31003014084567890";
+	var options = {sync: false}
   	var expected = {
 		mcc: "310",
 		mnc: "030",
@@ -125,6 +127,6 @@ function testIMSILoadLocaleDataSynch() {
 	};
 	
 	fields = ilib.PhoneNumber.parseImsi(imsi)
-	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi));
+	assertObjectEquals(expected, ilib.PhoneNumber.parseImsi(imsi, options));
     ilib.setLoaderCallback(undefined);
 };

@@ -976,3 +976,44 @@ function testEqualsMissingLocaleBoth(){
 
 	assertTrue(left.equals(right));
 };
+
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.states); // for the generic, shared stuff
+	data.push(ilib.data.states_US);
+	data.push(ilib.data.states_FR);
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
+function testPhoneNumLoadLocaleDataSynch() {
+	if (typeof(ilib._load) !== 'undefined') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+	
+	ilib.PhoneNumber.cache = {};
+	ilib.setLoaderCallback(mockLoader);
+
+	var left = new ilib.PhoneNumber({
+		iddPrefix: "+",
+		countryCode: "590",
+		areaCode: "590",
+		subscriberNumber: "123456"
+	}, {locale: "fr-FR",
+		sync: false});
+	var right = new ilib.PhoneNumber({
+		trunkAccess: "0",
+		areaCode: "590",
+		subscriberNumber: "123456"
+	}, {locale: "fr-FR", 
+		sync: false});
+	
+	assertEquals(100, left.compare(right));
+    ilib.setLoaderCallback(undefined);
+};

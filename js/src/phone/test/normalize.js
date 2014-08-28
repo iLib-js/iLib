@@ -1528,7 +1528,7 @@ function testAssistedDialingBogusInputs3() {
 //[Should be fixed]
 /*
 function testAssistedDialingBogusInputs4() {
-	var parsed = new ilib.PhoneNumber({locale: {language: "en", region: "US", locale: "en-US"}}); // empty!
+	var parsed = new ilib.PhoneNumber("", {locale: {language: "en", region: "US", locale: "en-US"}}); // empty!
 	var hints = {
 		assistedDialing: true,
 		networkType: "umts",

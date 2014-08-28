@@ -164,7 +164,8 @@ ilib.PhoneNumber = function(number, options) {
 		options,
 		plan,
 		stateData,
-		regionSettings;
+		regionSettings,
+		loadDataOptions;
 
 	this.sync = true;
 	this.loadParams = {};
@@ -175,10 +176,12 @@ ilib.PhoneNumber = function(number, options) {
 
 		if (typeof(options.sync) === 'boolean') {
 			this.sync = options.sync;
+			loadDataOptions = options.sync;
 		}
 
 		if (options.loadParams) {
 			this.loadParams = options.loadParams;
+			loadDataOptions = ilib.merge(this.loadParams, loadDataOptions);
 		}
 
 		if (typeof(options.onLoad) === 'function') {
@@ -214,7 +217,7 @@ ilib.PhoneNumber = function(number, options) {
 			}
 
 			stateData = stdata;
-			plan = new ilib.NumPlan({locale: this.locale}, options);
+			plan = new ilib.NumPlan(ilib.merge({locale: this.locale}, loadDataOptions));
 
 			regionSettings = {
 				stateData : stateData,
@@ -358,7 +361,6 @@ ilib.PhoneNumber._parseImsi = function(data, imsi) {
 	// console.info("Globalization.Phone.parseImsi: final result is: " + JSON.stringify(fields));
 	return fields;
 };
-
 
 ilib.PhoneNumber._stripFormatting = function(str) {
 	var ret = "";
@@ -996,10 +998,12 @@ ilib.PhoneNumber.prototype = {
 		if (options) {
 			if (typeof(options.sync) !== 'undefined') {
 				sync = (options.sync == true);
+				loadDataOptions = options.sync;
 			}
 			
 			if (options.loadParams) {
 				loadParams = options.loadParams;
+				loadDataOptions = ilib.merge(loadParams, loadDataOptions);
 			}
 		}
 		
@@ -1024,7 +1028,7 @@ ilib.PhoneNumber.prototype = {
 				norm.subscriberNumber.length > destinationPlan.getFieldLength("maxLocalLength")) {
 			
 			temp = new ilib.PhoneNumber("+" + this._join(), {locale: this.locale});
-		    tempPhoncloc = new ilib.Locale.PhoneLoc({locale: this.locale});
+		    tempPhoncloc = new ilib.Locale.PhoneLoc(ilib.merge({locale: this.locale}, loadDataOptions));
 			tempRegion = (temp.countryCode && tempPhoncloc._mapCCtoRegion(temp.countryCode));
 
 			if (tempRegion && tempRegion !== "unknown" && tempRegion !== "SG") {

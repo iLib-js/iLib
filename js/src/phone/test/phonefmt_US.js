@@ -2304,3 +2304,36 @@ function testGetStyleExample() {
 	assertEquals("1-650-555-1234", exampleDashes);
 	assertEquals("1.650.555.1234", exampleDots);
 };
+
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.phonefmt);
+	data.push(ilib.data.phonefmt_US);
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
+function testPhoneFmtUSLoadLocaleDataSynch() {
+	if (typeof(ilib._load) !== 'undefined') {
+		// don't need to test loading on the dynamic load version because we are testing
+		// it via all the other tests already.
+		return;
+	}
+	
+	ilib.PhoneFmt.cache = {};
+	ilib.setLoaderCallback(mockLoader);
+
+	var phonefmt = new ilib.PhoneFmt({
+		locale: "en-US",
+		sync: false,
+		onLoad: function (fmt) {
+    		assertNotNull(fmt);
+    	}
+	});
+
+	assertEquals("1 (650) 555-1234", phonefmt.getStyleExample("default"));
+};
