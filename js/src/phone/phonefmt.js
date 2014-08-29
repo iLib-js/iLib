@@ -79,11 +79,21 @@ ilib.PhoneFmt = function(options) {
 
 	if (options) {
 		if (options.locale) {
-			this.locale = new ilib.Locale.PhoneLoc(options);
-		} 
+			new ilib.Locale.PhoneLoc({
+				locale: options.locale,
+				onLoad: ilib.bind(this, function (data) {
+					this.locale = data;
+				})
+			});
+		}
 
-		if (options.mcc) {
-			this.locale = new ilib.Locale.PhoneLoc(options);	
+		if (options.mcc) {			
+			new ilib.Locale.PhoneLoc({
+				mcc: options.mcc,
+				onLoad: ilib.bind(this, function (data) {
+					this.locale = data;
+				})
+			});
 		}
 
 		if (typeof(options.sync) !== 'undefined') {
@@ -99,7 +109,14 @@ ilib.PhoneFmt = function(options) {
 		}
 	}
 
-	this.plan = new ilib.NumPlan(options);
+	new ilib.NumPlan({
+		locale: this.locale,
+		sync: this.sync,
+		loadParms: this.loadParams,
+		onLoad: ilib.bind(this, function (plan) {
+			this.plan = plan;
+		})
+	});
 
 	ilib.loadData({
 		name: "phonefmt.json",
@@ -253,18 +270,15 @@ ilib.PhoneFmt.prototype = {
 			formatted = "",
 			styles,
 			locale,
-			styleTemplates,
-			loadDataOptions;
+			styleTemplates;
 
 		if (options) {
 			if (typeof(options.sync) !== 'undefined') {
-				sync = (options.sync == true);
-				loadDataOptions = options.sync;
+				sync = (options.sync == true);				
 			}
 		
 			if (options.loadParams) {
 				loadParams = options.loadParams;
-				loadDataOptions = ilib.merge(loadParams, loadDataOptions);
 			}
 		}
 
@@ -310,7 +324,16 @@ ilib.PhoneFmt.prototype = {
 							if ( fieldName === "countryCode" ) {
 								// switch to the new country to format the rest of the number
 								countryCode = number.countryCode.replace(/[wWpPtT\+#\*]/g, '');	// fix for NOV-108200
-								this.locale = new ilib.Locale.PhoneLoc(ilib.merge({countryCode: countryCode}, loadDataOptions));
+
+								new ilib.Locale.PhoneLoc({
+									locale: this.locale,
+									sync: sync,
+									loadParms: loadParams,
+									countryCode: countryCode,
+									onLoad: ilib.bind(this, function (data) {
+										this.locale = data;
+									})
+								});
 
 								ilib.loadData({
 									name: "phonefmt.json",

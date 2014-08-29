@@ -527,7 +527,14 @@ ilib.GeoLocator.prototype = {
 			temp = this.regiondata[countryCode];
 			phoneLoc = new ilib.Locale.PhoneLoc(ilib.merge({countryCode: countryCode}, loadDataOptions));
 			if (phoneLoc.getRegion() !== this.locale.getRegion()) {
-				plan = new ilib.NumPlan(ilib.merge({locale:phoneLoc}, loadDataOptions));
+				new ilib.NumPlan({
+					locale: phoneLoc,
+					sync: sync,
+					loadParms: loadParams,
+					onLoad: ilib.bind(this, function (data) {
+						plan = data;
+					})
+				});
 			}
 			ret.country = {
 				sn: this.rb.getString(temp.sn).toString(),

@@ -252,7 +252,12 @@ ilib.StateHandler.prototype = {
 		// parse the rest of the number with the regular table for this locale
 		fields.countryCode = number.substring(0, currentChar+1);
 		cc = fields.countryCode.replace(/[wWpPtT\+#\*]/g, ''); // fix for NOV-108200
-		locale = new ilib.Locale.PhoneLoc({countryCode: cc});
+		new ilib.Locale.PhoneLoc({
+			countryCode: cc,
+			onLoad: ilib.bind(this, function (data) {
+				locale = data;
+			})
+		});
 		// console.log("Found country code " + fields.countryCode + ". Switching to country " + locale.region + " to parse the rest of the number");
 		
 		ret = {

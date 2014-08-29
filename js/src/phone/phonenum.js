@@ -163,8 +163,7 @@ ilib.PhoneNumber = function(number, options) {
 		phoneLocData,
 		plan,
 		stateData,
-		regionSettings,
-		loadDataOptions;
+		regionSettings;
 
 	this.sync = true;
 	this.loadParams = {};
@@ -175,19 +174,17 @@ ilib.PhoneNumber = function(number, options) {
 
 		if (typeof(options.sync) === 'boolean') {
 			this.sync = options.sync;
-			loadDataOptions = options.sync;
 		}
 
 		if (options.loadParams) {
 			this.loadParams = options.loadParams;
-			loadDataOptions = ilib.merge(this.loadParams, loadDataOptions);
 		}
 
 		if (typeof(options.onLoad) === 'function') {
 			this.onLoad = options.onLoad;
 		}
 	} else {
-		this.locale = new ilib.Locale.PhoneLoc(options);
+		this.locale = new ilib.Locale();
 	}
 
 	if (!number || (typeof number === "string" && number.length === 0)) {
@@ -216,16 +213,23 @@ ilib.PhoneNumber = function(number, options) {
 			}
 
 			stateData = stdata;
-			this.plan = new ilib.NumPlan(ilib.merge({locale: this.locale}, loadDataOptions));
+			new ilib.NumPlan({
+				locale: this.locale,
+				sync: this.sync,
+				loadParms: this.loadParams,
+				onLoad: ilib.bind(this, function (plan) {
+					this.plan = plan;
 
-			regionSettings = {
-				stateData : stateData,
-				plan: this.plan,
-				handler : ilib._handlerFactory(this.locale, this.plan)
-			};
-			number = ilib.PhoneNumber._stripFormatting(number);
+					regionSettings = {
+						stateData : stateData,
+						plan: plan,
+						handler : ilib._handlerFactory(this.locale, plan)
+					};
+					number = ilib.PhoneNumber._stripFormatting(number);
 
-			this._parseNumber(number, regionSettings, options);
+					this._parseNumber(number, regionSettings, options);
+				})
+			});
 		})
 	});
 };
@@ -517,14 +521,21 @@ ilib.PhoneNumber.prototype = {
 								}
 								stateData = data;
 								// recursively call the parser with the new states data
-								numplan = new ilib.NumPlan({locale:result.locale});
-								
-								regionSettings = {
-									stateData: stateData,
-									plan: numplan,
-									handler: ilib._handlerFactory(this.locale, numplan)
-								};
-								this._parseNumber(number, regionSettings, options);
+								new ilib.NumPlan({
+									locale: result.locale,
+									sync: this.sync,
+									loadParms: this.loadParams,
+									onLoad: ilib.bind(this, function (plan) {
+										this.plan = plan;
+
+										regionSettings = {
+											stateData : stateData,
+											plan: plan,
+											handler : ilib._handlerFactory(this.locale, plan)
+										};
+										this._parseNumber(number, regionSettings, options);
+									})
+								});
 							})
 						})
 						return;
@@ -674,7 +685,11 @@ ilib.PhoneNumber.prototype = {
 			currentCountryCode = 0,
 			phoneLoc;
 
-		phoneLoc = new ilib.Locale.PhoneLoc();
+		new ilib.Locale.PhoneLoc({
+			onLoad: ilib.bind(this, function (data) {
+				phoneLoc = data;
+			})
+		});
 
 		if (typeof this.locale.region === "string") {
 			currentCountryCode = phoneLoc._mapRegiontoCC(this.locale.region);
@@ -991,33 +1006,85 @@ ilib.PhoneNumber.prototype = {
 			destinationLocale,
 			phoneLoc,
 			sync = true,
-			loadParams = {},
-			loadDataOptions;
+			loadParams = {};
+			
 
 		if (options) {
+			if (options.locale) {
+				this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
+			}
+
 			if (typeof(options.sync) !== 'undefined') {
 				sync = (options.sync == true);
-				loadDataOptions = options.sync;
 			}
 			
 			if (options.loadParams) {
 				loadParams = options.loadParams;
-				loadDataOptions = ilib.merge(loadParams, loadDataOptions);
 			}
 		}
 		
 		// clone this number, so we don't mess with it
-		norm = new ilib.PhoneNumber(this, loadDataOptions);
-		phoneLoc = new ilib.Locale.PhoneLoc(loadDataOptions);
+		norm = new ilib.PhoneNumber(this);
+
+		new ilib.Locale.PhoneLoc({
+			locale: this.locale,
+			sync: sync,
+			loadParms: loadParams,
+			onLoad: ilib.bind(this, function (data) {
+				phoneLoc = data;
+			})
+		});
+
 		// homeLocale is for debugging/unit testing
-		homeLocale = (options && options.homeLocale) ? new ilib.Locale.PhoneLoc(ilib.merge({locale: options.homeLocale},loadDataOptions)) : new ilib.Locale();
+		homeLocale = (options && options.homeLocale) ? 
+					new ilib.Locale.PhoneLoc({
+						locale: options.homeLocale,
+						sync: sync,
+						loadParms: loadParams,
+						onLoad: ilib.bind(this, function (data) {
+							homeLocale = data;
+						})
+					}) : 
+					new ilib.Locale();
 
 		currentLocale = options ? new ilib.Locale.PhoneLoc(options): homeLocale;
-		destinationLocale = (norm.countryCode && new ilib.Locale.PhoneLoc(ilib.merge({countryCode: norm.countryCode}, loadDataOptions)) || 
-							new ilib.Locale.PhoneLoc(ilib.merge({locale:norm.locale}, loadDataOptions))) || currentLocale;
+		destinationLocale = (norm.countryCode) && 
+				new ilib.Locale.PhoneLoc({
+					locale: this.locale,
+					sync: sync,
+					loadParms: loadParams,
+					countryCode: norm.countryCode,
+					onLoad: ilib.bind(this, function (data) {
+						destinationLocale = data;
+					})
+				}) || 
+					new ilib.Locale.PhoneLoc({
+						locale: norm.locale,
+						sync: sync,
+						loadParms: loadParams,
+						onLoad: ilib.bind(this, function (data) {
+							destinationLocale = data;
+						})
+					}) || currentLocale;
+					
 
-		currentPlan = new ilib.NumPlan(ilib.merge({locale: currentLocale}, loadDataOptions));
-		destinationPlan = new ilib.NumPlan(ilib.merge({locale: destinationLocale}, loadDataOptions));
+		new ilib.NumPlan({
+			locale: currentLocale,
+			sync: sync,
+			loadParms: loadParams,
+			onLoad: ilib.bind(this, function (plan) {
+				currentPlan = plan;
+			})
+		});
+
+		new ilib.NumPlan({
+			locale: destinationLocale,
+			sync: sync,
+			loadParms: loadParams,
+			onLoad: ilib.bind(this, function (plan) {
+				destinationPlan = plan;
+			})
+		});
 		
 		if (options &&
 				options.assistedDialing &&
@@ -1025,21 +1092,65 @@ ilib.PhoneNumber.prototype = {
 				!norm.iddPrefix &&
 				norm.subscriberNumber && 
 				norm.subscriberNumber.length > destinationPlan.getFieldLength("maxLocalLength")) {
-			
-			temp = new ilib.PhoneNumber("+" + this._join(), {locale: this.locale});
-		    tempPhoncloc = new ilib.Locale.PhoneLoc(ilib.merge({locale: this.locale}, loadDataOptions));
+
+			new ilib.PhoneNumber("+" + this._join(), 
+				{
+					locale: this.locale,
+					sync: sync,
+					loadParms: loadParams,
+					onLoad: ilib.bind(this, function (data) {
+						temp = data;
+					})
+				});
+
+		    new ilib.Locale.PhoneLoc({
+				locale: this.locale,
+				sync: sync,
+				loadParms: loadParams,
+				onLoad: ilib.bind(this, function (data) {
+					tempPhoncloc = data;
+				})
+			});
+
 			tempRegion = (temp.countryCode && tempPhoncloc._mapCCtoRegion(temp.countryCode));
 
 			if (tempRegion && tempRegion !== "unknown" && tempRegion !== "SG") {
 				// only use it if it is a recognized country code. Singapore (sg) is a special case.
 				norm = temp;
-				destinationLocale = (norm.countryCode && new ilib.Locale.PhoneLoc(ilib.merge({countryCode: norm.countryCode}, loadDataOptions))) || norm.locale || currentLocale;
-				destinationPlan = new ilib.NumPlan(ilib.merge({locale: destinationLocale}, loadDataOptions));
+				destinationLocale = (norm.countryCode) && 
+					new ilib.Locale.PhoneLoc({
+						locale: this.locale,
+						sync: sync,
+						loadParms: loadParams,
+						countryCode: norm.countryCode,
+						onLoad: ilib.bind(this, function (data) {
+							destinationLocale = data;
+					})
+				}) || norm.locale || currentLocale;
+				
+				new ilib.NumPlan({
+					locale: destinationLocale,
+					sync: sync,
+					loadParms: loadParams,
+					onLoad: ilib.bind(this, function (plan) {
+						destinationPlan = plan;
+					})
+				});
 			}
 		} else if (options && options.assistedDialing && norm.invalid && currentLocale.region !== norm.locale.region) {
 			// if this number is not valid for the locale it was parsed with, try again with the current locale
 			// console.log("norm is invalid. Attempting to reparse with the current locale");
-			temp = new ilib.PhoneNumber(this._join(), ilib.merge({locale: currentLocale}, loadDataOptions));
+
+			new ilib.PhoneNumber(this._join(), 
+				{
+					locale: currentLocale,
+					sync: sync,
+					loadParms: loadParams,
+					onLoad: ilib.bind(this, function (data) {
+						temp = data;
+					})
+				});
+
 			if (temp && !temp.invalid) {
 				norm = temp;
 			}
