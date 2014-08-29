@@ -111,46 +111,54 @@ ilib.GeoLocator = function(options) {
 			this.locale = new ilib.Locale.PhoneLoc(options);
 		}
 
-		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+		if (typeof(options.sync) === 'boolean') {
+			sync = options.sync;
 		}
 		
 		if (options.loadParams) {
 			loadParams = options.loadParams;
 		}
 	}
-	this.plan = new ilib.NumPlan(options);
-
-	new ilib.ResBundle({
+	
+	new ilib.NumPlan({
 		locale: this.locale,
-		name: "phoneres",
 		sync: sync,
 		loadParams: loadParams,
-		onLoad: ilib.bind(this, function (rb) {
-			this.rb = rb;
+		onLoad: ilib.bind(this, function (plan) {
+			this.plan = plan;
 			
-			ilib.loadData({
-				name: "iddarea.json",
-				object: ilib.GeoLocator,
-				nonlocale: true,
+			new ilib.ResBundle({
+				locale: this.locale,
+				name: "phoneres",
 				sync: sync,
 				loadParams: loadParams,
-				callback: ilib.bind(this, function (data) {
-					this.regiondata = data;
+				onLoad: ilib.bind(this, function (rb) {
+					this.rb = rb;
+					
 					ilib.loadData({
-						name: "area.json",
+						name: "iddarea.json",
 						object: ilib.GeoLocator,
-						locale: this.locale,
+						nonlocale: true,
 						sync: sync,
-						loadParams: {
-							returnOne: true
-						},
-						callback: ilib.bind(this, function (areadata) {
-							this.areadata = areadata;
+						loadParams: loadParams,
+						callback: ilib.bind(this, function (data) {
+							this.regiondata = data;
+							ilib.loadData({
+								name: "area.json",
+								object: ilib.GeoLocator,
+								locale: this.locale,
+								sync: sync,
+								loadParams: {
+									returnOne: true
+								},
+								callback: ilib.bind(this, function (areadata) {
+									this.areadata = areadata;
 
-							if (options && typeof(options.onLoad) === 'function') {
-								options.onLoad(this);
-							}
+									if (options && typeof(options.onLoad) === 'function') {
+										options.onLoad(this);
+									}
+								})
+							});
 						})
 					});
 				})
@@ -229,12 +237,12 @@ ilib.GeoLocator.prototype = {
 		return undefined;
 	},
 	_matchPrefix: function(prefix, table)  {
-		var i, matchedDot, matchesWithDots = [], entry;
+		var i, matchedDot, matchesWithDots = [];
 
 		if (table[prefix]) {
 			return table[prefix];
 		}
-		for (entry in table) {
+		for (var entry in table) {
 			if (entry && typeof(entry) === 'string') {
 				i = 0;
 				matchedDot = false;
@@ -268,7 +276,6 @@ ilib.GeoLocator.prototype = {
 	},
 	_getAreaInfo: function(number, data, locale, plan, options) {
 		var sync = true,
-			loadParams = {},
 			ret = {}, 
 			countryCode, 
 			areaInfo, 
@@ -276,24 +283,15 @@ ilib.GeoLocator.prototype = {
 			areaCode, 
 			geoTable, 
 			tempNumber, 
-			prefix,
-			phoneLoc;
+			prefix;
 
-		if (options) {
-			if (typeof(options.sync) !== 'undefined') {
-				sync = (options.sync == true);
-			}
-			
-			if (options.loadParams) {
-				loadParams = options.loadParams;
-			}
+		if (options && typeof(options.sync) === 'boolean') {
+			sync = options.sync;
 		}
-		
 
 		prefix = number.areaCode || number.serviceCode;
 		geoTable = data;
-		phoneLoc = new ilib.Locale.PhoneLoc(options);
-
+		
 		if (prefix !== undefined) {
 			if (plan.getExtendedAreaCode()) {
 				// for countries where the area code is very general and large, and you need a few initial
@@ -306,6 +304,7 @@ ilib.GeoLocator.prototype = {
 					object: ilib.Locale.PhoneLoc, 
 					locale: locale,
 					sync: sync,
+					loadParams: options.loadParams,
 					callback: ilib.bind(this, function (data) {
 						this.extarea = data;
 						ilib.loadData({
@@ -313,36 +312,38 @@ ilib.GeoLocator.prototype = {
 							object: ilib.Locale.PhoneLoc, 
 							locale: locale,
 							sync: sync,
+							loadParams: options.loadParams,
 							callback: ilib.bind(this, function (data) {
 								this.extstates = data;
 								geoTable = this.extarea;
 								if (this.extarea && this.extstates) {
 									prefix = this._parseAreaAndSubscriber(tempNumber, this.extstates);
 								}
+								
+								if (!prefix) {
+									// not a recognized prefix, so now try the general table
+									geoTable = this.areadata;
+									prefix = number.areaCode || number.serviceCode;					
+								}
+
+								if ((!plan.fieldLengths || 
+								  plan.getFieldLength('maxLocalLength') === undefined ||
+								  !number.subscriberNumber ||
+								 	number.subscriberNumber.length <= plan.fieldLengths('maxLocalLength'))) {
+								  	areaInfo = this._matchPrefix(prefix, geoTable);
+									if (areaInfo && areaInfo.sn && areaInfo.ln) {
+										//console.log("Found areaInfo " + JSON.stringify(areaInfo));
+										ret.area = {
+											sn: this.rb.getString(areaInfo.sn).toString(),
+											ln: this.rb.getString(areaInfo.ln).toString()
+										};
+									}
+								}		
 							})
 						});
 					})
 				});
 
-				if (!prefix) {
-					// not a recognized prefix, so now try the general table
-					geoTable = this.areadata;
-					prefix = number.areaCode || number.serviceCode;					
-				}
-
-				if ((!plan.fieldLengths || 
-				  plan.getFieldLength('maxLocalLength') === undefined ||
-				  !number.subscriberNumber ||
-				 	number.subscriberNumber.length <= plan.fieldLengths('maxLocalLength'))) {
-				  	areaInfo = this._matchPrefix(prefix, geoTable);
-					if (areaInfo && areaInfo.sn && areaInfo.ln) {
-						//console.log("Found areaInfo " + JSON.stringify(areaInfo));
-						ret.area = {
-							sn: this.rb.getString(areaInfo.sn).toString(),
-							ln: this.rb.getString(areaInfo.ln).toString()
-						};
-					}
-				}		
 			} else if (!plan || 
 					plan.getFieldLength('maxLocalLength') === undefined || 
 					!number.subscriberNumber ||
@@ -363,8 +364,7 @@ ilib.GeoLocator.prototype = {
 						};
 					}
 				} else {
-					phoneLoc = new ilib.Locale.PhoneLoc(options);
-					countryCode = phoneLoc._mapRegiontoCC(this.locale.getRegion());
+					countryCode = number.locale._mapRegiontoCC(this.locale.getRegion());
 					if (countryCode !== "0" && this.regiondata) {
 						temp = this.regiondata[countryCode];
 						if (temp && temp.sn) {
@@ -377,8 +377,7 @@ ilib.GeoLocator.prototype = {
 					}
 				}
 			} else {
-				phoneLoc = new ilib.Locale.PhoneLoc(options);
-				countryCode = phoneLoc._mapRegiontoCC(this.locale.getRegion());
+				countryCode = number.locale._mapRegiontoCC(this.locale.getRegion());
 				if (countryCode !== "0" && this.regiondata) {
 					temp = this.regiondata[countryCode];
 					if (temp && temp.sn) {
@@ -494,21 +493,16 @@ ilib.GeoLocator.prototype = {
 	 * phone number 
 	 */
 	locate: function(number, options) {
-		var sync = true,
-			loadParams = {},
+		var loadParams = {},
 			ret = {}, 
 			region, 
 			countryCode, 
 			temp, 
-			areaCode, 
 			plan,
-			tempNumber, 
-			prefix, 
-			locale,
-			areaData,
 			areaResult,
-			phoneLoc,
-			loadDataOptions;
+			phoneLoc = this.locale,
+			sync,
+			loadDataOptions = {};
 
 		if (number === undefined || typeof(number) !== 'object' || !(number instanceof ilib.PhoneNumber)) {
 			return ret;
@@ -526,12 +520,11 @@ ilib.GeoLocator.prototype = {
 			}
 		}
 
-		areaData = this.regiondata;
 		// console.log("GeoLocator.locate: looking for geo for number " + JSON.stringify(number));
 		region = this.locale.getRegion();
-		if (number.countryCode !== undefined && areaData) {
+		if (number.countryCode !== undefined && this.regiondata) {
 			countryCode = number.countryCode.replace(/[wWpPtT\+#\*]/g, '');
-			temp = areaData[countryCode];
+			temp = this.regiondata[countryCode];
 			phoneLoc = new ilib.Locale.PhoneLoc(ilib.merge({countryCode: countryCode}, loadDataOptions));
 			if (phoneLoc.getRegion() !== this.locale.getRegion()) {
 				plan = new ilib.NumPlan(ilib.merge({locale:phoneLoc}, loadDataOptions));
@@ -545,14 +538,13 @@ ilib.GeoLocator.prototype = {
 		
 		if (!plan) {
 			plan = this.plan;
-			locale = this.locale;
 		}
 		
 		ilib.loadData({
 			name: "area.json",
 			object: ilib.GeoLocator,
-			locale: locale,
-			sync: true,
+			locale: phoneLoc,
+			sync: sync,
 			loadParams: {
 				returnOne: true
 			},
@@ -560,94 +552,49 @@ ilib.GeoLocator.prototype = {
 				if (areadata) {
 					this.areadata = areadata;	
 				}
-				areaResult = this._getAreaInfo(number, this.areadata, locale, plan, loadDataOptions);
+				areaResult = this._getAreaInfo(number, this.areadata, this.locale, plan, loadDataOptions);
 				ret = ilib.merge(ret, areaResult);
+
+				if (ret.country === undefined) {
+					countryCode = number.locale._mapRegiontoCC(region);
+					
+					if (countryCode !== "0" && this.regiondata) {
+						temp = this.regiondata[countryCode];
+						if (temp && temp.sn) {
+							ret.country = {
+								sn: this.rb.getString(temp.sn).toString(),
+								ln: this.rb.getString(temp.ln).toString(),
+								code: this.locale.getRegion()
+							};
+						}
+					}
+				}
 			})
 		});
 
-		if (ret.country === undefined) {
-			phoneLoc = new ilib.Locale.PhoneLoc(loadDataOptions);
-			countryCode = phoneLoc._mapRegiontoCC(region);
-			
-			if (countryCode !== "0" && this.regiondata) {
-				temp = this.regiondata[countryCode];
-				if (temp && temp.sn) {
-					ret.country = {
-						sn: this.rb.getString(temp.sn).toString(),
-						ln: this.rb.getString(temp.ln).toString(),
-						code: this.locale.getRegion()
-					};
-				}
-			}
-		}
 		return ret;
 	},
 	/**
 	 * Returns a string that describes the ISO-3166-2 country code of the given phone
-	 * number. 
-	 *
+	 * number.<p> 
 	 * 
 	 * If the phone number is a local phone number and does not contain
 	 * any country information, this routine will return the region for the current
 	 * formatter instance.
      *
-	 * The options parameter can contain any one of the following properties:
- 	 * 
- 	 * <ul>
- 	 * <li><i>locale</i> The locale parameter is used to load translations of the names of regions and
- 	 * areas if available. For example, if the locale property is given as "en-US" (English for USA), 
- 	 * but the phone number being geolocated is in Germany, then this class would return the the names
- 	 * of the country (Germany) and region inside of Germany in English instead of German. That is, a 
- 	 * phone number in Munich and return the country "Germany" and the area code "Munich"
- 	 * instead of "Deutschland" and "München". The default display locale is the current ilib locale. 
- 	 * If translations are not available, the region and area names are given in English, which should 
- 	 * always be available.
- 	 * <li><i>mcc</i> The mcc of the current mobile carrier, if known.
- 	 * 
- 	 * <li><i>onLoad</i> - a callback function to call when the data for the
- 	 * locale is fully loaded. When the onLoad option is given, this object 
- 	 * will attempt to load any missing locale data using the ilib loader callback.
- 	 * When the constructor is done (even if the data is already preassembled), the 
- 	 * onLoad function is called with the current instance as a parameter, so this
- 	 * callback can be used with preassembled or dynamic loading or a mix of the two. 
- 	 * 
- 	 * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
- 	 * asynchronously. If this option is given as "false", then the "onLoad"
- 	 * callback must be given, as the instance returned from this constructor will
- 	 * not be usable for a while. 
- 	 *
- 	 * <li><i>loadParams</i> - an object containing parameters to pass to the 
- 	 * loader callback function when locale data is missing. The parameters are not
- 	 * interpretted or modified in any way. They are simply passed along. The object 
- 	 * may contain any property/value pairs as long as the calling code is in
- 	 * agreement with the loader callback function as to what those parameters mean.
- 	 * </ul>
-	 *
 	 * @param {ilib.PhoneNumber} number An ilib.PhoneNumber instance
 	 * @return {string}
 	 */
-	country: function(number, options) {
-		var sync = true,
-			loadParams = {},
-			countryCode,
+	country: function(number) {
+		var countryCode,
 			region,
 			phoneLoc;
-
-		if (options) {
-			if (typeof(options.sync) !== 'undefined') {
-				sync = (options.sync == true);
-			}
-			
-			if (options.loadParams) {
-				loadParams = options.loadParams;
-			}
-		}
-
-		phoneLoc = new ilib.Locale.PhoneLoc(options);
 
 		if (!number || !(number instanceof ilib.PhoneNumber)) {
 			return "";
 		}
+
+		phoneLoc = number.locale;
 
 		region = (number.countryCode && phoneLoc._mapCCtoRegion(number.countryCode)) ||
 			(number.locale && number.locale.region) || 

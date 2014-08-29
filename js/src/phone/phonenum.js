@@ -187,7 +187,7 @@ ilib.PhoneNumber = function(number, options) {
 			this.onLoad = options.onLoad;
 		}
 	} else {
-		this.locale = new ilib.Locale();
+		this.locale = new ilib.Locale.PhoneLoc(options);
 	}
 
 	if (!number || (typeof number === "string" && number.length === 0)) {
@@ -216,12 +216,12 @@ ilib.PhoneNumber = function(number, options) {
 			}
 
 			stateData = stdata;
-			plan = new ilib.NumPlan(ilib.merge({locale: this.locale}, loadDataOptions));
+			this.plan = new ilib.NumPlan(ilib.merge({locale: this.locale}, loadDataOptions));
 
 			regionSettings = {
 				stateData : stateData,
-				plan: plan,
-				handler : ilib._handlerFactory(this.locale, plan)
+				plan: this.plan,
+				handler : ilib._handlerFactory(this.locale, this.plan)
 			};
 			number = ilib.PhoneNumber._stripFormatting(number);
 
