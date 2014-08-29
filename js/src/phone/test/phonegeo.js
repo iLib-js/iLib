@@ -1647,7 +1647,7 @@ function testNumberTooLongDE() {
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
 
-function testInvalidNumber() {
+function testInvalidNumberPartial() {
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "234"

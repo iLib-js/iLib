@@ -24,7 +24,7 @@ locale.js
 localeinfo.js
 */
 
-// !data mcc2reg cc2reg reg2cc area2reg
+// !data phoneloc
 
 /**
  *
@@ -48,11 +48,11 @@ ilib.Locale.PhoneLoc = function(options) {
 			region = this.locale.region;			
 		}
 
-		if (options.mcc) {
+		if (typeof(options.mcc) !== 'undefined') {
 			mcc = options.mcc;
 		}
 		
-		if (options.countryCode) {
+		if (typeof(options.countryCode) !== 'undefined') {
 			cc = options.countryCode;
 		}
 
@@ -66,68 +66,35 @@ ilib.Locale.PhoneLoc = function(options) {
 	}
 
 	ilib.loadData({
-		name: "mcc2reg.json",
+		name: "phoneloc.json",
 		object: ilib.Locale.PhoneLoc,
 		locale: this.locale,
 		sync: sync, 
 		loadParams: loadParams, 
 		callback: ilib.bind(this, function (data) {
-			ilib.data.mcc2reg = data;
+			this.mappings = data;
+			
+			if (mcc) {
+				region = this.mappings.mcc2reg[mcc]	|| "XX";	
+			}
 
-			ilib.loadData({
-				name: "cc2reg.json",
-				object: ilib.Locale.PhoneLoc,
-				locale: this.locale,
-				sync: sync, 
-				loadParams: loadParams, 
-				callback: ilib.bind(this, function (data) {
-					ilib.data.cc2reg = data;
+			if (cc) {
+				region = this.mappings.cc2reg[cc] || "XX";
+			}
 
-					ilib.loadData({
-						name: "reg2cc.json",
-						object: ilib.Locale.PhoneLoc,
-						locale: this.locale,
-						sync: sync, 
-						loadParams: loadParams, 
-						callback: ilib.bind(this, function (data) {
-							ilib.data.reg2cc = data;
+			if (!region) {
+				this.locale = new ilib.Locale();
+				region = this.locale.region
+			}
 
-							ilib.loadData({
-								name: "area2reg.json",
-								object: ilib.Locale.PhoneLoc,
-								locale: this.locale, 
-								sync: sync,
-								
-								callback: ilib.bind(this, function (data) {
-									ilib.data.area2reg = data;
+			this.language = this.locale.language;
+			this.variant = this.locale.varient;
+			this.region = this._normPhoneReg(region);
+			this.spec = this.language + "-" + this.region;
 
-									if (mcc) {
-										region = ilib.data.mcc2reg[mcc]	|| "XX"			
-									}
-
-									if (cc) {
-										region = ilib.data.cc2reg[cc] || "XX"
-									}
-
-									if (!region) {
-										this.locale = new ilib.Locale();
-										region = this.locale.region
-									}
-
-									this.language = this.locale.language;
-									this.variant = this.locale.varient;
-									this.region = this._normPhoneReg(region);
-									this.spec = this.language + "-" + this.region;
-
-									if (options && typeof(options.onLoad) === 'function') {
-										options.onLoad(this);
-									}									
-								})
-							});					
-						})
-					});
-				})
-			});
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}									
 		})
 	});
 };
@@ -149,7 +116,7 @@ ilib.Locale.PhoneLoc.prototype._mapMCCtoRegion = function(mcc) {
 	if (!mcc) {
 		return null;
 	}
-	return ilib.data.mcc2reg && ilib.data.mcc2reg[mcc] || "XX";
+	return this.mappings.mcc2reg && this.mappings.mcc2reg[mcc] || "XX";
 };
 
 /**
@@ -164,7 +131,7 @@ ilib.Locale.PhoneLoc.prototype._mapCCtoRegion = function(cc) {
 	if (!cc) {
 		return null;
 	}
-	return ilib.data.cc2reg && ilib.data.cc2reg[cc] || "XX";
+	return this.mappings.cc2reg && this.mappings.cc2reg[cc] || "XX";
 };
 
 /**
@@ -179,7 +146,7 @@ ilib.Locale.PhoneLoc.prototype._mapRegiontoCC = function(region) {
 	if (!region) {
 		return null;
 	}
-	return ilib.data.reg2cc && ilib.data.reg2cc[region] || "0";
+	return this.mappings.reg2cc && this.mappings.reg2cc[region] || "0";
 };
 
 /**
@@ -194,10 +161,10 @@ ilib.Locale.PhoneLoc.prototype._mapAreatoRegion = function(cc, area) {
 	if (!cc) {
 		return null;
 	}
-	if (cc in ilib.data.area2reg) {
-		return ilib.data.area2reg[cc][area] || ilib.data.area2reg[cc]["default"];
+	if (cc in this.mappings.area2reg) {
+		return this.mappings.area2reg[cc][area] || this.mappings.area2reg[cc]["default"];
 	} else {
-		return ilib.data.cc2reg[cc];
+		return this.mappings.cc2reg[cc];
 	}
 };
 
@@ -261,4 +228,4 @@ ilib.Locale.PhoneLoc.prototype._normPhoneReg = function(region) {
 			break;
 	}	
 	return norm;
-}
+};
