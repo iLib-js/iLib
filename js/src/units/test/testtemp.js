@@ -18,8 +18,8 @@
  */
 
 function testTemperatureConstructor() {
-	var m = new ilib.Measurement.Length({
-		unit: "celcius",
+    var m = new ilib.Measurement.Temperature({
+		unit: "celsius",
 		amount: 2
 	});
 	
@@ -27,11 +27,11 @@ function testTemperatureConstructor() {
 }
 
 function testTemperatureConvertCelciusToFahrenheit1() {
-	var m1 = new ilib.Measurement.Length({
-		unit: "celcius",
+    var m1 = new ilib.Measurement.Temperature({
+		unit: "celsius",
 		amount: 0
 	});
-	var m2 = new ilib.Measurement.Length({
+    var m2 = new ilib.Measurement.Temperature({
 		unit: "fahrenheit",
 		amount: m1
 	});
@@ -43,11 +43,11 @@ function testTemperatureConvertCelciusToFahrenheit1() {
 }
 
 function testTemperatureConvertCelciusToFahrenheit2() {
-	var m1 = new ilib.Measurement.Length({
-		unit: "celcius",
+    var m1 = new ilib.Measurement.Temperature({
+		unit: "celsius",
 		amount: 100
 	});
-	var m2 = new ilib.Measurement.Length({
+    var m2 = new ilib.Measurement.Temperature({
 		unit: "fahrenheit",
 		amount: m1
 	});
@@ -59,11 +59,11 @@ function testTemperatureConvertCelciusToFahrenheit2() {
 }
 
 function testTemperatureConvertCelciusToFahrenheit3() {
-	var m1 = new ilib.Measurement.Length({
-		unit: "celcius",
+    var m1 = new ilib.Measurement.Temperature({
+		unit: "celsius",
 		amount: 30
 	});
-	var m2 = new ilib.Measurement.Length({
+    var m2 = new ilib.Measurement.Temperature({
 		unit: "fahrenheit",
 		amount: m1
 	});
@@ -75,12 +75,12 @@ function testTemperatureConvertCelciusToFahrenheit3() {
 }
 
 function testTemperatureConvertFahrenheitToCelcius1() {
-	var m1 = new ilib.Measurement.Length({
+    var m1 = new ilib.Measurement.Temperature({
 		unit: "fahrenheit",
 		amount: 50
 	});
-	var m2 = new ilib.Measurement.Length({
-		unit: "celcius",
+    var m2 = new ilib.Measurement.Temperature({
+		unit: "celsius",
 		amount: m1
 	});
 	
@@ -91,27 +91,27 @@ function testTemperatureConvertFahrenheitToCelcius1() {
 }
 
 function testTemperatureConvertFahrenheitToCelcius2() {
-	var m1 = new ilib.Measurement.Length({
+    var m1 = new ilib.Measurement.Temperature({
 		unit: "fahrenheit",
 		amount: 100
 	});
-	var m2 = new ilib.Measurement.Length({
-		unit: "celcius",
+    var m2 = new ilib.Measurement.Temperature({
+		unit: "celsius",
 		amount: m1
 	});
 	
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(37.77777777777778, m2.getAmount());
+	assertEquals(37.78, m2.getAmount());
 }
 
 function testTemperatureConvertCelciusToKelvin1() {
-	var m1 = new ilib.Measurement.Length({
-		unit: "celcius",
+    var m1 = new ilib.Measurement.Temperature({
+		unit: "celsius",
 		amount: 0
 	});
-	var m2 = new ilib.Measurement.Length({
+    var m2 = new ilib.Measurement.Temperature({
 		unit: "kelvin",
 		amount: m1
 	});
@@ -123,11 +123,11 @@ function testTemperatureConvertCelciusToKelvin1() {
 }
 
 function testTemperatureConvertCelciusToKelvin2() {
-	var m1 = new ilib.Measurement.Length({
-		unit: "celcius",
+    var m1 = new ilib.Measurement.Temperature({
+		unit: "celsius",
 		amount: 100
 	});
-	var m2 = new ilib.Measurement.Length({
+    var m2 = new ilib.Measurement.Temperature({
 		unit: "kelvin",
 		amount: m1
 	});
@@ -139,12 +139,12 @@ function testTemperatureConvertCelciusToKelvin2() {
 }
 
 function testTemperatureConvertKelvinToCelcius1() {
-	var m1 = new ilib.Measurement.Length({
+    var m1 = new ilib.Measurement.Temperature({
 		unit: "kelvin",
 		amount: 0
 	});
-	var m2 = new ilib.Measurement.Length({
-		unit: "celcius",
+    var m2 = new ilib.Measurement.Temperature({
+		unit: "celsius",
 		amount: m1
 	});
 	
@@ -155,12 +155,12 @@ function testTemperatureConvertKelvinToCelcius1() {
 }
 
 function testTemperatureConvertKelvinToCelcius2() {
-	var m1 = new ilib.Measurement.Length({
+    var m1 = new ilib.Measurement.Temperature({
 		unit: "kelvin",
 		amount: 285.3
 	});
-	var m2 = new ilib.Measurement.Length({
-		unit: "celcius",
+    var m2 = new ilib.Measurement.Temperature({
+		unit: "celsius",
 		amount: m1
 	});
 	
@@ -171,11 +171,11 @@ function testTemperatureConvertKelvinToCelcius2() {
 }
 
 function testTemperatureConvertFahrenheitToKelvin1() {
-	var m1 = new ilib.Measurement.Length({
+    var m1 = new ilib.Measurement.Temperature({
 		unit: "fahrenheit",
 		amount: 0
 	});
-	var m2 = new ilib.Measurement.Length({
+    var m2 = new ilib.Measurement.Temperature({
 		unit: "kelvin",
 		amount: m1
 	});
@@ -183,15 +183,15 @@ function testTemperatureConvertFahrenheitToKelvin1() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(255.3722222222222, m2.getAmount());
+	assertEquals(255.37, m2.getAmount());
 }
 
 function testTemperatureConvertFahrenheitToKelvin2() {
-	var m1 = new ilib.Measurement.Length({
+    var m1 = new ilib.Measurement.Temperature({
 		unit: "fahrenheit",
 		amount: 100
 	});
-	var m2 = new ilib.Measurement.Length({
+    var m2 = new ilib.Measurement.Temperature({
 		unit: "kelvin",
 		amount: m1
 	});
@@ -199,15 +199,15 @@ function testTemperatureConvertFahrenheitToKelvin2() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(310.92777777777775, m2.getAmount());
+	assertEquals(310.93, m2.getAmount());
 }
 
 function testTemperatureConvertKelvinToFahrenheit1() {
-	var m1 = new ilib.Measurement.Length({
+    var m1 = new ilib.Measurement.Temperature({
 		unit: "kelvin",
 		amount: 0
 	});
-	var m2 = new ilib.Measurement.Length({
+    var m2 = new ilib.Measurement.Temperature({
 		unit: "fahrenheit",
 		amount: m1
 	});
@@ -215,15 +215,15 @@ function testTemperatureConvertKelvinToFahrenheit1() {
 	assertNotNull(m1);
 	assertNotNull(m2);
 	
-	assertEquals(-459.66999999999996, m2.getAmount());
+	assertEquals(-459.67, m2.getAmount());
 }
 
 function testTemperatureConvertKelvinToFahrenheit2() {
-	var m1 = new ilib.Measurement.Length({
+    var m1 = new ilib.Measurement.Temperature({
 		unit: "kelvin",
 		amount: 285.3
 	});
-	var m2 = new ilib.Measurement.Length({
+    var m2 = new ilib.Measurement.Temperature({
 		unit: "fahrenheit",
 		amount: m1
 	});
@@ -235,111 +235,121 @@ function testTemperatureConvertKelvinToFahrenheit2() {
 }
 
 function testTemperatureAliasCelcius1() {
-	var m = new ilib.Measurement.Length({
-		unit: "Celcius",
+    var m = new ilib.Measurement.Temperature({
+		unit: "Celsius",
 		amount: 0
 	});
 	
 	assertNotNull(m);
 	
-	assertEquals("celcius", m.getAmount());
+	assertEquals("celsius", m.getUnit());
 }
 
 function testTemperatureAliasCelcius2() {
-	var m = new ilib.Measurement.Length({
+    var m = new ilib.Measurement.Temperature({
 		unit: "°C",
 		amount: 0
 	});
 	
 	assertNotNull(m);
 	
-	assertEquals("celcius", m.getAmount());
+	assertEquals("celsius", m.getUnit());
 }
 
 function testTemperatureAliasCelcius3() {
-	var m = new ilib.Measurement.Length({
+    var m = new ilib.Measurement.Temperature({
 		unit: "℃",
 		amount: 0
 	});
 	
 	assertNotNull(m);
 	
-	assertEquals("celcius", m.getAmount());
+	assertEquals("celsius", m.getUnit());
 }
 
 function testTemperatureAliasCelcius4() {
-	var m = new ilib.Measurement.Length({
+    var m = new ilib.Measurement.Temperature({
 		unit: "C",
 		amount: 0
 	});
 	
 	assertNotNull(m);
 	
-	assertEquals("celcius", m.getAmount());
+	assertEquals("celsius", m.getUnit());
 }
 
 function testTemperatureAliasFahrenheit1() {
-	var m = new ilib.Measurement.Length({
+    var m = new ilib.Measurement.Temperature({
 		unit: "Fahrenheit",
 		amount: 0
 	});
 	
 	assertNotNull(m);
 	
-	assertEquals("fahrenheit", m.getAmount());
+	assertEquals("fahrenheit", m.getUnit());
 }
 
 function testTemperatureAliasFahrenheit2() {
-	var m = new ilib.Measurement.Length({
+    var m = new ilib.Measurement.Temperature({
 		unit: "°F",
 		amount: 0
 	});
 	
 	assertNotNull(m);
 	
-	assertEquals("fahrenheit", m.getAmount());
+	assertEquals("fahrenheit", m.getUnit());
 }
 
 function testTemperatureAliasFahrenheit3() {
-	var m = new ilib.Measurement.Length({
+    var m = new ilib.Measurement.Temperature({
 		unit: "℉",
 		amount: 0
 	});
 	
 	assertNotNull(m);
 	
-	assertEquals("fahrenheit", m.getAmount());
+	assertEquals("fahrenheit", m.getUnit());
 }
 
 function testTemperatureAliasFahrenheit4() {
-	var m = new ilib.Measurement.Length({
+    var m = new ilib.Measurement.Temperature({
 		unit: "F",
 		amount: 0
 	});
 	
 	assertNotNull(m);
 	
-	assertEquals("fahrenheit", m.getAmount());
+	assertEquals("fahrenheit", m.getUnit());
 }
 
 function testTemperatureAliasKelvin1() {
-	var m = new ilib.Measurement.Length({
+    var m = new ilib.Measurement.Temperature({
 		unit: "Kelvin",
 		amount: 0
 	});
 	
 	assertNotNull(m);
 	
-	assertEquals("kelvin", m.getAmount());
+	assertEquals("kelvin", m.getUnit());
 }
 
 function testTemperatureAliasKelvin1() {
-	var m = new ilib.Measurement.Length({
+    var m = new ilib.Measurement.Temperature({
 		unit: "K",
 		amount: 0
 	});
 	
 	assertNotNull(m);
 	
-	assertEquals("kelvin", m.getAmount());
+	assertEquals("kelvin", m.getUnit());
+}
+
+function testGetMeasures() {
+	var measures = ilib.Measurement.Temperature.getMeasures();
+	var expected = [
+    	"celsius",
+    	"fahrenheit",
+    	"kelvin"
+        ];
+		assertArrayEqualsIgnoringOrder(expected, measures);
 }
