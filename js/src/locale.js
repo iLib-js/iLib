@@ -134,28 +134,7 @@ ilib.Locale = function(language, region, variant, script) {
 			this.script = undefined;
 		}
 	}
-	this.spec = this.language || "";
-	
-	if (this.script) {
-		if (this.spec.length > 0) {
-			this.spec += "-";
-		}
-		this.spec += this.script;
-	}
-	
-	if (this.region) {
-		if (this.spec.length > 0) {
-			this.spec += "-";
-		}
-		this.spec += this.region;
-	}
-	
-	if (this.variant) {
-		if (this.spec.length > 0) {
-			this.spec += "-";
-		}
-		this.spec += this.variant;
-	}
+	this._genSpec();
 };
 
 // from http://en.wikipedia.org/wiki/ISO_3166-1
@@ -738,6 +717,34 @@ ilib.Locale.languageAlpha1ToAlpha3 = function(alpha1) {
 };
 
 ilib.Locale.prototype = {
+	/**
+	 * @private
+	 */
+	_genSpec: function () {
+		this.spec = this.language || "";
+		
+		if (this.script) {
+			if (this.spec.length > 0) {
+				this.spec += "-";
+			}
+			this.spec += this.script;
+		}
+		
+		if (this.region) {
+			if (this.spec.length > 0) {
+				this.spec += "-";
+			}
+			this.spec += this.region;
+		}
+		
+		if (this.variant) {
+			if (this.spec.length > 0) {
+				this.spec += "-";
+			}
+			this.spec += this.variant;
+		}
+	},
+
 	/**
 	 * Return the ISO 639 language code for this locale. 
 	 * @return {string|undefined} the language code for this locale 

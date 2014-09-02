@@ -38,16 +38,16 @@ ilib.Locale.PhoneLoc = function(options) {
 		mcc,
 		cc,
 		sync = true,
-		loadParams = {};
+		loadParams = {},
+		locale;
+	
+	locale = (options && options.locale) || ilib.getLocale();
 
-	this.locale = new ilib.Locale();
-
+	this.parent.call(this, locale);
+	
+	region = this.region;
+	
 	if (options) {
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-			region = this.locale.region;			
-		}
-
 		if (typeof(options.mcc) !== 'undefined') {
 			mcc = options.mcc;
 		}
@@ -68,29 +68,26 @@ ilib.Locale.PhoneLoc = function(options) {
 	ilib.loadData({
 		name: "phoneloc.json",
 		object: ilib.Locale.PhoneLoc,
-		locale: this.locale,
+		nonlocale: true,
 		sync: sync, 
 		loadParams: loadParams, 
 		callback: ilib.bind(this, function (data) {
 			this.mappings = data;
 			
-			if (mcc) {
-				region = this.mappings.mcc2reg[mcc]	|| "XX";	
+			if (typeof(mcc) !== 'undefined') {
+				region = this.mappings.mcc2reg[mcc];	
 			}
 
-			if (cc) {
-				region = this.mappings.cc2reg[cc] || "XX";
+			if (typeof(cc) !== 'undefined') {
+				region = this.mappings.cc2reg[cc];
 			}
 
 			if (!region) {
-				this.locale = new ilib.Locale();
-				region = this.locale.region
+				region = "XX";
 			}
 
-			this.language = this.locale.language;
-			this.variant = this.locale.varient;
 			this.region = this._normPhoneReg(region);
-			this.spec = this.language + "-" + this.region;
+			this._genSpec();
 
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);

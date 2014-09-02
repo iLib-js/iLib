@@ -148,9 +148,9 @@ ilib.GeoLocator = function(options) {
 								object: ilib.GeoLocator,
 								locale: this.locale,
 								sync: sync,
-								loadParams: {
+								loadParams: ilib.merge(loadParams, {
 									returnOne: true
-								},
+								}),
 								callback: ilib.bind(this, function (areadata) {
 									this.areadata = areadata;
 
@@ -301,18 +301,18 @@ ilib.GeoLocator.prototype = {
 		
 				ilib.loadData({
 					name: "extarea.json",
-					object: ilib.Locale.PhoneLoc, 
+					object: ilib.GeoLocator, 
 					locale: locale,
 					sync: sync,
-					loadParams: options.loadParams,
+					loadParams: ilib.merge((options && options.loadParams) || {}, {returnOne: true}),
 					callback: ilib.bind(this, function (data) {
 						this.extarea = data;
 						ilib.loadData({
 							name: "extstates.json",
-							object: ilib.Locale.PhoneLoc, 
+							object: ilib.GeoLocator, 
 							locale: locale,
 							sync: sync,
-							loadParams: options.loadParams,
+							loadParams: ilib.merge((options && options.loadParams) || {}, {returnOne: true}),
 							callback: ilib.bind(this, function (data) {
 								this.extstates = data;
 								geoTable = this.extarea;
@@ -501,8 +501,7 @@ ilib.GeoLocator.prototype = {
 			plan,
 			areaResult,
 			phoneLoc = this.locale,
-			sync,
-			loadDataOptions = {};
+			sync = true;
 
 		if (number === undefined || typeof(number) !== 'object' || !(number instanceof ilib.PhoneNumber)) {
 			return ret;
@@ -511,12 +510,10 @@ ilib.GeoLocator.prototype = {
 		if (options) {
 			if (typeof(options.sync) !== 'undefined') {
 				sync = (options.sync == true);
-				loadDataOptions = options.sync;
 			}
 		
 			if (options.loadParams) {
 				loadParams = options.loadParams;
-				loadDataOptions = ilib.merge(loadParams, loadDataOptions);
 			}
 		}
 
@@ -543,14 +540,14 @@ ilib.GeoLocator.prototype = {
 			object: ilib.GeoLocator,
 			locale: phoneLoc,
 			sync: sync,
-			loadParams: {
+			loadParams: ilib.merge(loadParams, {
 				returnOne: true
-			},
+			}),
 			callback: ilib.bind(this, function (areadata) {
 				if (areadata) {
 					this.areadata = areadata;	
 				}
-				areaResult = this._getAreaInfo(number, this.areadata, this.locale, plan, loadDataOptions);
+				areaResult = this._getAreaInfo(number, this.areadata, phoneLoc, plan, options);
 				ret = ilib.merge(ret, areaResult);
 
 				if (ret.country === undefined) {
@@ -569,7 +566,7 @@ ilib.GeoLocator.prototype = {
 				}
 			})
 		});
-
+		
 		return ret;
 	},
 	/**

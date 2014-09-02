@@ -698,9 +698,8 @@ function testFR() {
 	};
 	
 	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
-	//console.log("testFR: locator is " + JSON.stringify(locator, undefined, 4));
 	var geoInfo = locator.locate(parsed);
-
+	
 	assertNotUndefined(locator);
 	assertEquals(expected.country.code, geoInfo.country.code);
 	assertEquals(expected.country.sn, geoInfo.country.sn);
