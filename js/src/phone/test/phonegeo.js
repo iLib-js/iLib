@@ -684,12 +684,7 @@ function testUKLocal() {
 
 
 function testFR() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "33",
-		areaCode: "1",
-		subscriberNumber: "12345678"
-	});
+	var parsed = new ilib.PhoneNumber("+33 1 12 34 56 78");
 	var expected = {
 		country: {
 			sn: "France",
@@ -703,6 +698,7 @@ function testFR() {
 	};
 	
 	var locator = new ilib.GeoLocator({locale: 'fr-FR'});
+	//console.log("testFR: locator is " + JSON.stringify(locator, undefined, 4));
 	var geoInfo = locator.locate(parsed);
 
 	assertNotUndefined(locator);
@@ -714,12 +710,7 @@ function testFR() {
 };
 
 function testFRMobile() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "33",
-		mobilePrefix: "6",
-		subscriberNumber: "23456789"
-	});
+	var parsed = new ilib.PhoneNumber("+33 6 23 45 67 89");
 	var expected = {
 		country: {
 			sn: "France",
@@ -744,12 +735,7 @@ function testFRMobile() {
 };
 
 function testFRService() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "33",
-		serviceCode: "690",
-		subscriberNumber: "123456"
-	});
+	var parsed = new ilib.PhoneNumber("+33 6 90 12 34 56");
 	var expected = {
 		country: {
 			sn: "France",
@@ -774,12 +760,7 @@ function testFRService() {
 };
 
 function testFRDepartment() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "33",
-		serviceCode: "262",
-		subscriberNumber: "123456"
-	});
+	var parsed = new ilib.PhoneNumber("+33 2 62 12 34 56");
 	var expected = {
 		country: {
 			sn: "France",
@@ -804,12 +785,7 @@ function testFRDepartment() {
 };
 
 function testFRFreephone() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "33",
-		serviceCode: "800",
-		subscriberNumber: "123456"
-	});
+	var parsed = new ilib.PhoneNumber("+33 800 12 34 56");
 	var expected = {
 		country: {
 			sn: "France",
@@ -834,12 +810,7 @@ function testFRFreephone() {
 };
 
 function testFRToll() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "33",
-		serviceCode: "810",
-		subscriberNumber: "123456"
-	});
+	var parsed = new ilib.PhoneNumber("+33 810 12 34 56");
 	var expected = {
 		country: {
 			sn: "France",
@@ -864,12 +835,7 @@ function testFRToll() {
 };
 
 function testDE() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "49",
-		areaCode: "6224",
-		subscriberNumber: "123456"
-	});
+	var parsed = new ilib.PhoneNumber("+49 6224 12 34 56");
 	var expected = {
 		country: {
 			sn: "Deutschland",
@@ -894,13 +860,7 @@ function testDE() {
 };
 
 function testIT() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "39",
-		trunkAccess: "0",
-		areaCode: "75",
-		subscriberNumber: "12345678"
-	});
+	var parsed = new ilib.PhoneNumber("+39 075 12345678");
 	var expected = {
 		country: {
 			sn: "Italia",
@@ -926,13 +886,7 @@ function testIT() {
 
 // for bug NOV-115337
 function testITIntl() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "39",
-		trunkAccess: "0",
-		areaCode: "39",
-		subscriberNumber: "12345678"
-	});
+	var parsed = new ilib.PhoneNumber("+39 039 12345678");
 	var expected = {
 		country: {
 			sn: "Italia",
@@ -957,12 +911,7 @@ function testITIntl() {
 };
 
 function testITIntlMobile() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "39",
-		mobilePrefix: "390",
-		subscriberNumber: "12345678"
-	});
+	var parsed = new ilib.PhoneNumber("+39 390 12345678");
 	var expected = {
 		country: {
 			sn: "Italia",
@@ -987,12 +936,7 @@ function testITIntlMobile() {
 };
 
 function testES() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "34",
-		areaCode: "930",	
-		subscriberNumber: "123456"
-	});
+	var parsed = new ilib.PhoneNumber("+34 930 123 456");
 	var expected = {
 		country: {
 			sn: "España",
@@ -1017,12 +961,7 @@ function testES() {
 };
 
 function testMX() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "52",
-		areaCode: "755",
-		subscriberNumber: "1234567"
-	});
+	var parsed = new ilib.PhoneNumber("+52 755 123 4567");
 	var expected = {
 		country: {
 			sn: "Mexico",
@@ -1047,9 +986,7 @@ function testMX() {
 };
 
 function testMXLocal() {
-	var parsed = new ilib.PhoneNumber({
-		subscriberNumber: "12345678"
-	});
+	var parsed = new ilib.PhoneNumber("1234 5678");
 	var expected = {
 		country: {
 			sn: "Mexico",
@@ -1068,12 +1005,7 @@ function testMXLocal() {
 };
 
 function testAU() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "61",
-		areaCode: "8",	
-		subscriberNumber: "92012345"
-	});
+	var parsed = new ilib.PhoneNumber("+61 8 9201 2345");
 	var expected = {
 		country: {
 			sn: "Australia",
@@ -1098,12 +1030,7 @@ function testAU() {
 };
 
 function testAUMobile() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "61",
-		mobilePrefix: "4",	
-		subscriberNumber: "2012345"
-	});
+	var parsed = new ilib.PhoneNumber("+61 4201 2345");
 	var expected = {
 		country: {
 			sn: "Australia",
@@ -1128,12 +1055,7 @@ function testAUMobile() {
 };
 
 function testAUUnknownAreaWithinACity() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "61",
-		areaCode: "2",	
-		subscriberNumber: "91202343"
-	});
+	var parsed = new ilib.PhoneNumber("+61 2 9120 2343");
 	var expected = {
 		country: {
 			sn: "Australia",
@@ -1158,12 +1080,7 @@ function testAUUnknownAreaWithinACity() {
 };
 
 function testAUUnknownAreaWithinCountry() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "61",
-		areaCode: "3",	
-		subscriberNumber: "12345678"
-	});
+	var parsed = new ilib.PhoneNumber("+61 3 1234 5678");
 	var expected = {
 		country: {
 			sn: "Australia",
@@ -1188,12 +1105,7 @@ function testAUUnknownAreaWithinCountry() {
 };
 
 function testNZ() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "64",
-		areaCode: "3",	
-		subscriberNumber: "96012345"
-	});
+	var parsed = new ilib.PhoneNumber("+64 3 9601 2345");
 	var expected = {
 		country: {
 			sn: "Nueva Zelanda",
@@ -1218,12 +1130,7 @@ function testNZ() {
 };
 
 function testNZWithDot() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "64",
-		areaCode: "3",	
-		subscriberNumber: "23312345"
-	});
+	var parsed = new ilib.PhoneNumber("+64 3 2331 2345");
 	var expected = {
 		country: {
 			sn: "Nueva Zelanda",
@@ -1248,12 +1155,7 @@ function testNZWithDot() {
 };
 
 function testNZMobile() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "64",
-		mobilePrefix: "21",	
-		subscriberNumber: "2012345"
-	});
+	var parsed = new ilib.PhoneNumber("+64 21 201 2345");
 	var expected = {
 		country: {
 			sn: "Nueva Zelanda",
@@ -1278,12 +1180,7 @@ function testNZMobile() {
 };
 
 function testNZUnknownAreaWithinACity() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "64",
-		areaCode: "9",	
-		subscriberNumber: "46202343"
-	});
+	var parsed = new ilib.PhoneNumber("+64 9 4620 2343");
 	var expected = {
 		country: {
 			sn: "Nueva Zelanda",
@@ -1308,12 +1205,7 @@ function testNZUnknownAreaWithinACity() {
 };
 
 function testNZUnknownAreaWithinCountry() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "64",
-		areaCode: "3",	
-		subscriberNumber: "812345678"
-	});
+	var parsed = new ilib.PhoneNumber("+64 3 812 345 678");
 	var expected = {
 		country: {
 			sn: "Nueva Zelanda",
@@ -1338,12 +1230,7 @@ function testNZUnknownAreaWithinCountry() {
 };
 
 function testUnknown() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "506",
-		areaCode: "20",
-		subscriberNumber: "123456"
-	});
+	var parsed = new ilib.PhoneNumber("+506 20 123 456");
 	var expected = {
 		country: {
 			sn: "Costa Rica",
@@ -1361,13 +1248,8 @@ function testUnknown() {
 	assertEquals(expected.country.ln, geoInfo.country.ln);
 };
 
-function testMobile() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "49",
-		mobilePrefix: "16",
-		subscriberNumber: "12345678"
-	});
+function testDEMobileIntl() {
+	var parsed = new ilib.PhoneNumber("+49 16 1234 5678");
 	var expected = {
 		country: {
 			sn: "Germany",
@@ -1392,10 +1274,7 @@ function testMobile() {
 };
 
 function testWithUSMCC() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "650",
-		subscriberNumber: "1234567"
-	});
+	var parsed = new ilib.PhoneNumber("650-123-4567");
 	var expected = {
 		country: {
 			sn: "North America",
@@ -1420,10 +1299,7 @@ function testWithUSMCC() {
 };
 
 function testWithUSMCCNoLocale() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "650",
-		subscriberNumber: "1234567"
-	});
+	var parsed = new ilib.PhoneNumber("650-123-4567");
 	var expected = {
 		country: {
 			sn: "North America",
@@ -1448,11 +1324,7 @@ function testWithUSMCCNoLocale() {
 };
 
 function testDEMCCEnglishLocale() {
-	var parsed = new ilib.PhoneNumber({
-		trunkAccess: "0",
-		areaCode: "6224",
-		subscriberNumber: "123456"
-	});
+	var parsed = new ilib.PhoneNumber("06224 123 456", {locale: "de-DE"});
 	var expected = {
 		country: {
 			sn: "Germany",
@@ -1477,11 +1349,7 @@ function testDEMCCEnglishLocale() {
 };
 
 function testDEMCCGermanLocale() {
-	var parsed = new ilib.PhoneNumber({
-		trunkAccess: "0",
-		areaCode: "6224",
-		subscriberNumber: "123456"
-	});
+	var parsed = new ilib.PhoneNumber("06224 123 456", {locale: "de-DE"});
 	var expected = {
 		country: {
 			sn: "Deutschland",
@@ -1506,12 +1374,7 @@ function testDEMCCGermanLocale() {
 };
 
 function testDEMCCFrenchLocaleUSCountryCode() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "1",
-		areaCode: "650",
-		subscriberNumber: "5551212"
-	});
+	var parsed = new ilib.PhoneNumber("+1 650 555 1212");
 	var expected = {
 		country: {
 			sn: "Amérique du Nord",
@@ -1541,7 +1404,7 @@ function testBogusCountryCode() {
 		countryCode: "P1",
 		areaCode: "650",
 		subscriberNumber: "5551212"
-	});
+	}, {locale: "en-US"});
 	var expected = {
 		country: {
 			sn: "North America",
@@ -1571,7 +1434,7 @@ function testBogusAreaCode() {
 		countryCode: "1",
 		areaCode: "650P",
 		subscriberNumber: "5551212"
-	});
+	}, {locale: "en-US"});
 	var expected = {
 		country: {
 			sn: "North America",
@@ -1600,7 +1463,7 @@ function testNumberTooLongUS() {
 	var parsed = new ilib.PhoneNumber({
 		areaCode: "941",
 		subscriberNumber: "62719524"
-	});
+	}, {locale: "en-US"});
 	var expected = {
 		country: {
 			sn: "North America",
@@ -1623,7 +1486,7 @@ function testNumberTooLongDE() {
 	var parsed = new ilib.PhoneNumber({
 		areaCode: "6224",
 		subscriberNumber: "12345678901234567890"
-	});
+	}, {locale: "de-DE"});
 	var expected = {
 		country: {
 			sn: "Deutschland",
@@ -1651,7 +1514,7 @@ function testInvalidNumberPartial() {
 	var parsed = new ilib.PhoneNumber({
 		trunkAccess: "1",
 		areaCode: "234"
-	});
+	}, {locale: "en-US"});
 	var expected = {
 		country: {
 			sn: "North America",
@@ -1677,12 +1540,7 @@ function testInvalidNumberPartial() {
 
 function testGetCountryCode() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "49",
-		areaCode: "6224",
-		subscriberNumber: "12345678901234567890"
-	});
+	var parsed = new ilib.PhoneNumber("+49 6224 12345678901234567890");
 	
 	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);
@@ -1693,12 +1551,7 @@ function testGetCountryCode() {
 
 function testGetCountryCode2() {
 	var country;
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "61",
-		areaCode: "2",
-		subscriberNumber: "12345678"
-	});
+	var parsed = new ilib.PhoneNumber("+61 2 1234 5678");
 	
 	var locator = new ilib.GeoLocator();
 	country = locator.country(parsed);
@@ -1722,7 +1575,6 @@ function testGetCountryCodeLocalNumber() {
 		areaCode: "6224",
 		subscriberNumber: "12345678901234567890"
 	}, {locale: "de-DE"});
-	
 	
 	var locator = new ilib.GeoLocator({locale: 'de-DE'});
 	country = locator.country(parsed);
@@ -1971,11 +1823,7 @@ function testInvalidNumber() {
 };
 
 function testSG() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "65",
-		subscriberNumber: "25432102"
-	});
+	var parsed = new ilib.PhoneNumber("+65 2543 2102");
 	var expected = {
 		country: {
 			sn: "Singapore",
@@ -1994,9 +1842,7 @@ function testSG() {
 };
 
 function testSGLocal() {
-	var parsed = new ilib.PhoneNumber({
-		subscriberNumber: "25432102"
-	});
+	var parsed = new ilib.PhoneNumber("25432102", {locale: "en-SG"});
 	var expected = {
 		country: {
 			sn: "Singapore",
@@ -2015,9 +1861,7 @@ function testSGLocal() {
 };
 
 function testSGMobile() {
-	var parsed = new ilib.PhoneNumber({
-		subscriberNumber: "65432102"
-	});
+	var parsed = new ilib.PhoneNumber("65432102", {locale: "en-SG"});
 	var expected = {
 		country: {
 			sn: "Singapore",
@@ -2036,11 +1880,7 @@ function testSGMobile() {
 };
 
 function testHK() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "852",
-		subscriberNumber: "25432102"
-	});
+	var parsed = new ilib.PhoneNumber("+852 2543 2102");
 	var expected = {
 		country: {
 			sn: "Hong Kong",
@@ -2059,9 +1899,7 @@ function testHK() {
 };
 
 function testHKLocal() {
-	var parsed = new ilib.PhoneNumber({
-		subscriberNumber: "25432102"
-	});
+	var parsed = new ilib.PhoneNumber("2543 2102", {locale: "en-HK"});
 	var expected = {
 		country: {
 			sn: "Hong Kong",
@@ -2080,9 +1918,7 @@ function testHKLocal() {
 };
 
 function testHKMobile() {
-	var parsed = new ilib.PhoneNumber({
-		subscriberNumber: "65432102"
-	});
+	var parsed = new ilib.PhoneNumber("6543 2102", {locale: "en-HK"});
 	var expected = {
 		country: {
 			sn: "Hong Kong",
@@ -2118,12 +1954,7 @@ function testPhoneGeoLoadLocaleDataSynch() {
 		return;
 	}
 
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "1",
-		areaCode: "650",
-		subscriberNumber: "6543210"
-	});
+	var parsed = new ilib.PhoneNumber("+1 650 654 3210");
 
 	var expected = {
 		country: {

@@ -40,7 +40,7 @@ function testStringsNumberMatchUSIgnoreSomeFields() {
 	assertEquals(100, left.compare(right));
 };
 
-function testNumberMatchFRDepartments1(){
+function testNumberMatchFRDepartments2(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
@@ -56,7 +56,7 @@ function testNumberMatchFRDepartments1(){
 	assertEquals(100, left.compare(right));
 };
 
-function testNumberMatchFRDepartments1(){
+function testNumberMatchFRDepartments3(){
 	var left = new ilib.PhoneNumber({
 		iddPrefix: "+",
 		countryCode: "590",
@@ -762,12 +762,6 @@ function testNumberMatchSGWrongLocale(){
 	}, {locale: "en-US"});
 	
 	assertEquals(68, left.compare(right));
-};
-
-function testStringsNumberMatchUSIgnoreSomeFields() {
-	var left = new ilib.PhoneNumber('1 (650) 456-7890'),
-		right = new ilib.PhoneNumber('650-456-7890');
-	assertEquals(100, left.compare(right));
 };
 
 function testStringsNumberMatchITSanMarinoDifferentCountryCodes(){

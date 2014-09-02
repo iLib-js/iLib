@@ -525,17 +525,8 @@ ilib.GeoLocator.prototype = {
 		if (number.countryCode !== undefined && this.regiondata) {
 			countryCode = number.countryCode.replace(/[wWpPtT\+#\*]/g, '');
 			temp = this.regiondata[countryCode];
-			phoneLoc = new ilib.Locale.PhoneLoc(ilib.merge({countryCode: countryCode}, loadDataOptions));
-			if (phoneLoc.getRegion() !== this.locale.getRegion()) {
-				new ilib.NumPlan({
-					locale: phoneLoc,
-					sync: sync,
-					loadParms: loadParams,
-					onLoad: ilib.bind(this, function (data) {
-						plan = data;
-					})
-				});
-			}
+			phoneLoc = number.destinationLocale;
+			plan = number.destinationPlan;
 			ret.country = {
 				sn: this.rb.getString(temp.sn).toString(),
 				ln: this.rb.getString(temp.ln).toString(),

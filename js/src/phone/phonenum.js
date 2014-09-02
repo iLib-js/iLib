@@ -159,19 +159,17 @@ phone/handler.js
 
  */
 ilib.PhoneNumber = function(number, options) {
-	var locale,
-		phoneLocData,
-		plan,
-		stateData,
+	var stateData,
 		regionSettings;
 
 	this.sync = true;
 	this.loadParams = {};
+	
+	if (!number || (typeof number === "string" && number.length === 0)) {
+		return this;
+	}
 
 	if (options) {
-		phoneLocData = new ilib.Locale.PhoneLoc(options);
-		this.locale = phoneLocData;
-
 		if (typeof(options.sync) === 'boolean') {
 			this.sync = options.sync;
 		}
@@ -183,51 +181,55 @@ ilib.PhoneNumber = function(number, options) {
 		if (typeof(options.onLoad) === 'function') {
 			this.onLoad = options.onLoad;
 		}
-	} else {
-		this.locale = new ilib.Locale();
 	}
 
-	if (!number || (typeof number === "string" && number.length === 0)) {
-		return this;
-	} else if (typeof number === "object") {
-		ilib.deepCopy(number, this);
-		return this;
-	}
-
-	// use ^ to indicate the beginning of the number, because certain things only match at the beginning
-	number = "^" + number.replace(/\^/g, '');
-
-	//console.log("PhoneNumber: locale is: " + this.locale + " parsing number: " + number);
-
-	ilib.loadData({
-		name: "states.json",
-		object: ilib.PhoneNumber,
-		locale: this.locale,
+	new ilib.Locale.PhoneLoc({
+		locale: options && options.locale,
+		mcc: options && options.mcc,
 		sync: this.sync,
-		loadParams: ilib.merge(this.loadParams, {
-			returnOne: true
-		}),
-		callback: ilib.bind(this, function (stdata) {
-			if (!stdata) {
-				stdata = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
+		loadParams: this.loadParams,
+		onLoad: ilib.bind(this, function(loc) {
+			this.locale = this.destinationLocale = loc;
+			
+			if (typeof number === "object") {
+				ilib.deepCopy(number, this);
+				return this;
 			}
-
-			stateData = stdata;
-			new ilib.NumPlan({
+			
+			ilib.loadData({
+				name: "states.json",
+				object: ilib.PhoneNumber,
 				locale: this.locale,
 				sync: this.sync,
-				loadParms: this.loadParams,
-				onLoad: ilib.bind(this, function (plan) {
-					this.plan = plan;
+				loadParams: ilib.merge(this.loadParams, {
+					returnOne: true
+				}),
+				callback: ilib.bind(this, function (stdata) {
+					if (!stdata) {
+						stdata = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
+					}
 
-					regionSettings = {
-						stateData : stateData,
-						plan: plan,
-						handler : ilib._handlerFactory(this.locale, plan)
-					};
-					number = ilib.PhoneNumber._stripFormatting(number);
+					stateData = stdata;
+					new ilib.NumPlan({
+						locale: this.locale,
+						sync: this.sync,
+						loadParms: this.loadParams,
+						onLoad: ilib.bind(this, function (plan) {
+							this.plan = this.destinationPlan = plan;
 
-					this._parseNumber(number, regionSettings, options);
+							regionSettings = {
+								stateData: stateData,
+								plan: plan,
+								handler: ilib._handlerFactory(this.locale, plan)
+							};
+							
+							// use ^ to indicate the beginning of the number, because certain things only match at the beginning
+							number = "^" + number.replace(/\^/g, '');
+							number = ilib.PhoneNumber._stripFormatting(number);
+
+							this._parseNumber(number, regionSettings, options);
+						})
+					});
 				})
 			});
 		})
@@ -520,24 +522,47 @@ ilib.PhoneNumber.prototype = {
 									data = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
 								}
 								stateData = data;
-								// recursively call the parser with the new states data
-								new ilib.NumPlan({
+								
+								new ilib.Locale.PhoneLoc({
 									locale: result.locale,
 									sync: this.sync,
 									loadParms: this.loadParams,
-									onLoad: ilib.bind(this, function (plan) {
-										this.plan = plan;
+									onLoad: ilib.bind(this, function (loc) {
+										/*
+										 * this.locale is the locale where this number is being parsed,
+										 * and is used to parse the IDD prefix, if any, and this.destinationLocale is 
+										 * the locale of the rest of this number after the IDD prefix.
+										 */
+										this.destinationLocale = loc;
+										new ilib.NumPlan({
+											locale: result.locale,
+											sync: this.sync,
+											loadParms: this.loadParams,
+											onLoad: ilib.bind(this, function (plan) {
+												/*
+												 * this.plan is the plan where this number is being parsed,
+												 * and is used to parse the IDD prefix, if any, and this.destinationPlan is 
+												 * the plan of the rest of this number after the IDD prefix in the 
+												 * destination locale.
+												 */
+												this.destinationPlan = plan;
 
-										regionSettings = {
-											stateData : stateData,
-											plan: plan,
-											handler : ilib._handlerFactory(this.locale, plan)
-										};
-										this._parseNumber(number, regionSettings, options);
+												regionSettings = {
+													stateData : stateData,
+													plan: plan,
+													handler : ilib._handlerFactory(this.destinationLocale, plan)
+												};
+												
+												// recursively call the parser with the new states data
+												// to finish the parsing
+												this._parseNumber(number, regionSettings, options);
+											})
+										});
 									})
 								});
 							})
 						})
+						// don't process any further -- let the work be done in the onLoad callbacks
 						return;
 					} else if (result.skipTrunk !== undefined) {
 						ch = ilib.PhoneNumber._getCharacterCode(regionSettings.plan.getTrunkCode());
@@ -685,11 +710,7 @@ ilib.PhoneNumber.prototype = {
 			currentCountryCode = 0,
 			phoneLoc;
 
-		new ilib.Locale.PhoneLoc({
-			onLoad: ilib.bind(this, function (data) {
-				phoneLoc = data;
-			})
-		});
+		phoneLoc = this.locale;
 
 		if (typeof this.locale.region === "string") {
 			currentCountryCode = phoneLoc._mapRegiontoCC(this.locale.region);
@@ -1010,10 +1031,6 @@ ilib.PhoneNumber.prototype = {
 			
 
 		if (options) {
-			if (options.locale) {
-				this.locale = (typeof(options.locale) === 'string') ? new ilib.Locale(options.locale) : options.locale;
-			}
-
 			if (typeof(options.sync) !== 'undefined') {
 				sync = (options.sync == true);
 			}
@@ -1023,17 +1040,11 @@ ilib.PhoneNumber.prototype = {
 			}
 		}
 		
-		// clone this number, so we don't mess with it
+		// Clone this number, so we don't mess with the original.
+		// No need to do this asynchronously because it's a copy constructor
 		norm = new ilib.PhoneNumber(this);
 
-		new ilib.Locale.PhoneLoc({
-			locale: this.locale,
-			sync: sync,
-			loadParms: loadParams,
-			onLoad: ilib.bind(this, function (data) {
-				phoneLoc = data;
-			})
-		});
+		phoneLoc = this.locale;
 
 		// homeLocale is for debugging/unit testing
 		homeLocale = (options && options.homeLocale) ? 
