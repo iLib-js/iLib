@@ -30,7 +30,7 @@ var ilib = ilib || {};
  */
 ilib.getVersion = function () {
     // increment this for each release
-    return "7.0"
+    return "8.0"
     ;
 };
 

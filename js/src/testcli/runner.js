@@ -113,7 +113,7 @@ TestSuite.prototype = {
 				if (typeof(this.tearDown) === 'function') {
 					tearDown(); 
 				}
-				// util.print("PASS: " + t);
+				// util.print("PASS: " + t + "\n");
 				results.pass++;		
 			} catch ( e ) {
 				var msg = "FAIL: " + path + ":" + t + "()\n\t";
