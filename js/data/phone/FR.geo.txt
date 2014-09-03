@@ -1,0 +1,11 @@
+800	area	Toll-free Number	Toll-free Services (Numéros Vert)
+801	area	Toll call	Toll calls at local rates (Numéros Azur)
+802	area	Toll call	Toll calls (Numéros Indigo)
+803	area	Toll call	Toll calls (Numéros Indigo)
+805	area	Toll-free Number	Toll-free Services (Numéros Vert)
+809	area	Toll-free Number	Toll-free Services (Numéros Vert)
+80.	area	Service Number	Service number
+81.	area	Toll call	Toll calls (Numéros Azur)
+819	area	Toll-free Number	Toll-free Services (Numéros Vert)
+82.	area	Toll call	Toll calls (Numéros Indigo)
+89.	service	Audiotel Number	Audiotel internet online services

@@ -1,0 +1,1350 @@
+{
+    "10": {
+        "ln": "Beijing 北京市",
+        "sn": "Beijing"
+    },
+    "20": {
+        "ln": "Guangzhou 广州市",
+        "sn": "Guangzhou"
+    },
+    "21": {
+        "ln": "Shanghai 上海市",
+        "sn": "Shanghai"
+    },
+    "22": {
+        "ln": "Tianjin 天津市",
+        "sn": "Tianjin"
+    },
+    "23": {
+        "ln": "Chongqing 重庆市",
+        "sn": "Chongqing"
+    },
+    "24": {
+        "ln": "Shenyang 沈阳市",
+        "sn": "Shenyang"
+    },
+    "25": {
+        "ln": "Nanjing 南京市",
+        "sn": "Nanjing"
+    },
+    "27": {
+        "ln": "Wuhan 武汉市",
+        "sn": "Wuhan"
+    },
+    "28": {
+        "ln": "Chengdu 成都市",
+        "sn": "Chengdu"
+    },
+    "29": {
+        "ln": "XiAn 西安市, Xianyang 咸阳市",
+        "sn": "XiAn"
+    },
+    "310": {
+        "ln": "Handan 邯郸市",
+        "sn": "Handan"
+    },
+    "311": {
+        "ln": "Shijiazhuang 石家庄市",
+        "sn": "Shijiazhuang"
+    },
+    "312": {
+        "ln": "Baoding 保定市",
+        "sn": "Baoding"
+    },
+    "313": {
+        "ln": "Zhangjiakou 张家口市",
+        "sn": "Zhangjiakou"
+    },
+    "314": {
+        "ln": "Chengde 承德市",
+        "sn": "Chengde"
+    },
+    "315": {
+        "ln": "Tangshan 唐山市",
+        "sn": "Tangshan"
+    },
+    "316": {
+        "ln": "Langfang 廊坊市",
+        "sn": "Langfang"
+    },
+    "317": {
+        "ln": "Cangzhou 沧州市",
+        "sn": "Cangzhou"
+    },
+    "318": {
+        "ln": "Hengshui 衡水市",
+        "sn": "Hengshui"
+    },
+    "319": {
+        "ln": "Xingtai 邢台市",
+        "sn": "Xingtai"
+    },
+    "335": {
+        "ln": "Qinhuangdao 秦皇岛市",
+        "sn": "Qinhuangdao"
+    },
+    "349": {
+        "ln": "Shuozhou 朔州市",
+        "sn": "Shuozhou"
+    },
+    "350": {
+        "ln": "Xinzhou 忻州市 (忻州地区)",
+        "sn": "Xinzhou"
+    },
+    "351": {
+        "ln": "Taiyuan 太原市",
+        "sn": "Taiyuan"
+    },
+    "352": {
+        "ln": "Datong 大同市",
+        "sn": "Datong"
+    },
+    "353": {
+        "ln": "Yangquan 阳泉市",
+        "sn": "Yangquan"
+    },
+    "354": {
+        "ln": "Yuci 榆次市 (晋中地区)",
+        "sn": "Yuci"
+    },
+    "355": {
+        "ln": "Changzhi 长治市",
+        "sn": "Changzhi"
+    },
+    "356": {
+        "ln": "Jincheng 晋城市",
+        "sn": "Jincheng"
+    },
+    "357": {
+        "ln": "Linfen 临汾市 (临汾地区)",
+        "sn": "Linfen"
+    },
+    "358": {
+        "ln": "Lishi 离石市 (吕梁地区)",
+        "sn": "Lishi"
+    },
+    "359": {
+        "ln": "Yuncheng 运城市 (运城地区)",
+        "sn": "Yuncheng"
+    },
+    "370": {
+        "ln": "Shangqiu 商丘市",
+        "sn": "Shangqiu"
+    },
+    "371": {
+        "ln": "Zhengzhou 郑州市",
+        "sn": "Zhengzhou"
+    },
+    "372": {
+        "ln": "Anyang 安阳市",
+        "sn": "Anyang"
+    },
+    "373": {
+        "ln": "Xinxiang 新乡市",
+        "sn": "Xinxiang"
+    },
+    "374": {
+        "ln": "Xuchang 许昌市",
+        "sn": "Xuchang"
+    },
+    "375": {
+        "ln": "Pingdingshan 平顶山市",
+        "sn": "Pingdingshan"
+    },
+    "376": {
+        "ln": "Xinyang 信阳市、潢川县",
+        "sn": "Xinyang"
+    },
+    "377": {
+        "ln": "Nanyang 南阳市",
+        "sn": "Nanyang"
+    },
+    "378": {
+        "ln": "Kaifeng 开封市",
+        "sn": "Kaifeng"
+    },
+    "379": {
+        "ln": "Luoyang 洛阳市",
+        "sn": "Luoyang"
+    },
+    "391": {
+        "ln": "Jiaozuo 焦作市",
+        "sn": "Jiaozuo"
+    },
+    "392": {
+        "ln": "Hebi 鹤壁市",
+        "sn": "Hebi"
+    },
+    "393": {
+        "ln": "Puyang 濮阳市",
+        "sn": "Puyang"
+    },
+    "394": {
+        "ln": "Zhoukou 周口市",
+        "sn": "Zhoukou"
+    },
+    "395": {
+        "ln": "Luohe 漯河市",
+        "sn": "Luohe"
+    },
+    "396": {
+        "ln": "Zhumadian 驻马店市",
+        "sn": "Zhumadian"
+    },
+    "398": {
+        "ln": "Sanmenxia 三门峡市",
+        "sn": "Sanmenxia"
+    },
+    "410": {
+        "ln": "Tieling 铁岭市",
+        "sn": "Tieling"
+    },
+    "411": {
+        "ln": "Dalian 大连市",
+        "sn": "Dalian"
+    },
+    "412": {
+        "ln": "Anshan 鞍山市",
+        "sn": "Anshan"
+    },
+    "413": {
+        "ln": "Fushun 抚顺市",
+        "sn": "Fushun"
+    },
+    "414": {
+        "ln": "Benxi 本溪市",
+        "sn": "Benxi"
+    },
+    "415": {
+        "ln": "Dandong 丹东市",
+        "sn": "Dandong"
+    },
+    "416": {
+        "ln": "Jinzhou 锦州市",
+        "sn": "Jinzhou"
+    },
+    "417": {
+        "ln": "Yingkou 营口市",
+        "sn": "Yingkou"
+    },
+    "418": {
+        "ln": "Fuxin 阜新市",
+        "sn": "Fuxin"
+    },
+    "419": {
+        "ln": "Liaoyang 辽阳市",
+        "sn": "Liaoyang"
+    },
+    "421": {
+        "ln": "Chaoyang 朝阳市",
+        "sn": "Chaoyang"
+    },
+    "427": {
+        "ln": "Panjin 盘锦市",
+        "sn": "Panjin"
+    },
+    "429": {
+        "ln": "Huludao 葫芦岛市",
+        "sn": "Huludao"
+    },
+    "431": {
+        "ln": "Changchun 长春市",
+        "sn": "Changchun"
+    },
+    "432": {
+        "ln": "Jilin 吉林市",
+        "sn": "Jilin"
+    },
+    "433": {
+        "ln": "Hunchun 珲春市, Yanji 延吉市(延边 朝鲜族自治州)",
+        "sn": "Hunchun"
+    },
+    "434": {
+        "ln": "Siping 四平市",
+        "sn": "Siping"
+    },
+    "435": {
+        "ln": "Tonghua 通化市, Meihekou 梅河口市",
+        "sn": "Tonghua"
+    },
+    "436": {
+        "ln": "Baicheng 白城市",
+        "sn": "Baicheng"
+    },
+    "437": {
+        "ln": "Liaoyuan 辽源市",
+        "sn": "Liaoyuan"
+    },
+    "438": {
+        "ln": "Songyuan 松原市",
+        "sn": "Songyuan"
+    },
+    "439": {
+        "ln": "Baishan 白山市",
+        "sn": "Baishan"
+    },
+    "451": {
+        "ln": "Harbin 哈尔滨市",
+        "sn": "Harbin"
+    },
+    "452": {
+        "ln": "Qiqihar 齐齐哈尔市",
+        "sn": "Qiqihar"
+    },
+    "453": {
+        "ln": "Mudanjiang 牡丹江市",
+        "sn": "Mudanjiang"
+    },
+    "454": {
+        "ln": "Jiamusi 佳木斯市",
+        "sn": "Jiamusi"
+    },
+    "455": {
+        "ln": "Suihua 绥化市",
+        "sn": "Suihua"
+    },
+    "456": {
+        "ln": "Heihe 黑河市",
+        "sn": "Heihe"
+    },
+    "457": {
+        "ln": "Jiagedaqi 加格达奇 (大兴安岭地区)",
+        "sn": "Jiagedaqi"
+    },
+    "458": {
+        "ln": "Yichun 伊春市",
+        "sn": "Yichun"
+    },
+    "459": {
+        "ln": "Daqing 大庆市",
+        "sn": "Daqing"
+    },
+    "464": {
+        "ln": "Qitaihe 七台河市",
+        "sn": "Qitaihe"
+    },
+    "467": {
+        "ln": "Jixi 鸡西市",
+        "sn": "Jixi"
+    },
+    "468": {
+        "ln": "Hegang 鹤岗市",
+        "sn": "Hegang"
+    },
+    "469": {
+        "ln": "Shuangyashan 双鸭山市",
+        "sn": "Shuangyashan"
+    },
+    "470": {
+        "ln": "Hailaer 海拉尔市 (呼伦贝尔盟)",
+        "sn": "Hailaer"
+    },
+    "471": {
+        "ln": "Huhehaote 呼和浩特市",
+        "sn": "Huhehaote"
+    },
+    "472": {
+        "ln": "Baotou 包头市",
+        "sn": "Baotou"
+    },
+    "473": {
+        "ln": "Wuhai 乌海市",
+        "sn": "Wuhai"
+    },
+    "474": {
+        "ln": "Jining 集宁市 (乌兰察布盟)",
+        "sn": "Jining"
+    },
+    "476": {
+        "ln": "Chifeng 赤峰市",
+        "sn": "Chifeng"
+    },
+    "477": {
+        "ln": "Dongsheng 东胜市 (伊克昭盟)",
+        "sn": "Dongsheng"
+    },
+    "478": {
+        "ln": "Linhe 临河市 (巴彦淖尔盟)",
+        "sn": "Linhe"
+    },
+    "479": {
+        "ln": "Xilinhaote 锡林浩特市 (锡林郭勒盟)",
+        "sn": "Xilinhaote"
+    },
+    "482": {
+        "ln": "Wulanhaote 乌兰浩特市 (兴安盟)",
+        "sn": "Wulanhaote"
+    },
+    "483": {
+        "ln": "Alashanzuoqi 阿拉善左旗 (阿拉善盟)",
+        "sn": "Alashanzuoqi"
+    },
+    "510": {
+        "ln": "Wuxi 无锡市",
+        "sn": "Wuxi"
+    },
+    "511": {
+        "ln": "Zhenjiang 镇江市",
+        "sn": "Zhenjiang"
+    },
+    "512": {
+        "ln": "Suzhou 苏州市",
+        "sn": "Suzhou"
+    },
+    "513": {
+        "ln": "Nantong 南通市",
+        "sn": "Nantong"
+    },
+    "514": {
+        "ln": "Yangzhou 扬州市",
+        "sn": "Yangzhou"
+    },
+    "515": {
+        "ln": "Yancheng 盐城市",
+        "sn": "Yancheng"
+    },
+    "516": {
+        "ln": "Xuzhou 徐州市",
+        "sn": "Xuzhou"
+    },
+    "517": {
+        "ln": "Huaian 淮阴市",
+        "sn": "Huaian"
+    },
+    "518": {
+        "ln": "Lianyungang 连云港市",
+        "sn": "Lianyungang"
+    },
+    "519": {
+        "ln": "Changzhou 常州市",
+        "sn": "Changzhou"
+    },
+    "523": {
+        "ln": "Taizhou 泰州市",
+        "sn": "Taizhou"
+    },
+    "527": {
+        "ln": "Suqian 宿迁市",
+        "sn": "Suqian"
+    },
+    "530": {
+        "ln": "Heze 荷泽市 (荷泽地区)",
+        "sn": "Heze"
+    },
+    "531": {
+        "ln": "Jinan 济南市",
+        "sn": "Jinan"
+    },
+    "532": {
+        "ln": "Qingdao 青岛市",
+        "sn": "Qingdao"
+    },
+    "533": {
+        "ln": "Zibo 淄博市",
+        "sn": "Zibo"
+    },
+    "534": {
+        "ln": "Dezhou 德州市 (德州地区)",
+        "sn": "Dezhou"
+    },
+    "535": {
+        "ln": "Yantai 烟台市",
+        "sn": "Yantai"
+    },
+    "536": {
+        "ln": "Weifang 潍坊市",
+        "sn": "Weifang"
+    },
+    "537": {
+        "ln": "Jining 济宁市",
+        "sn": "Jining"
+    },
+    "538": {
+        "ln": "TaiAn 泰安市",
+        "sn": "TaiAn"
+    },
+    "539": {
+        "ln": "Linyi 临沂市 (临沂地区)",
+        "sn": "Linyi"
+    },
+    "543": {
+        "ln": "Binzhou 滨州市 (滨州地区)",
+        "sn": "Binzhou"
+    },
+    "546": {
+        "ln": "Dongying 东营市",
+        "sn": "Dongying"
+    },
+    "550": {
+        "ln": "Chuzhou 滁州市",
+        "sn": "Chuzhou"
+    },
+    "551": {
+        "ln": "Hefei 合肥市",
+        "sn": "Hefei"
+    },
+    "552": {
+        "ln": "Bengbu 蚌埠市",
+        "sn": "Bengbu"
+    },
+    "553": {
+        "ln": "Wuhu 芜湖市",
+        "sn": "Wuhu"
+    },
+    "554": {
+        "ln": "Huainan 淮南市",
+        "sn": "Huainan"
+    },
+    "555": {
+        "ln": "MaAnshan 马鞍山市",
+        "sn": "MaAnshan"
+    },
+    "556": {
+        "ln": "Anqing 安庆市",
+        "sn": "Anqing"
+    },
+    "557": {
+        "ln": "Suzhou 宿州市",
+        "sn": "Suzhou"
+    },
+    "558": {
+        "ln": "Fuyang 阜阳市",
+        "sn": "Fuyang"
+    },
+    "559": {
+        "ln": "Huangshan 黄山市",
+        "sn": "Huangshan"
+    },
+    "561": {
+        "ln": "Huaibei 淮北市",
+        "sn": "Huaibei"
+    },
+    "562": {
+        "ln": "Tongling 铜陵市",
+        "sn": "Tongling"
+    },
+    "563": {
+        "ln": "Xuancheng 宣城市",
+        "sn": "Xuancheng"
+    },
+    "564": {
+        "ln": "LiuAn 六安市",
+        "sn": "LiuAn"
+    },
+    "565": {
+        "ln": "Chaohu 巢湖市",
+        "sn": "Chaohu"
+    },
+    "566": {
+        "ln": "Chizhou 池州市",
+        "sn": "Chizhou"
+    },
+    "570": {
+        "ln": "Quzhou 衢州市",
+        "sn": "Quzhou"
+    },
+    "571": {
+        "ln": "Hangzhou 杭州市",
+        "sn": "Hangzhou"
+    },
+    "572": {
+        "ln": "Huzhou 湖州市",
+        "sn": "Huzhou"
+    },
+    "573": {
+        "ln": "Jiaxing 嘉兴市",
+        "sn": "Jiaxing"
+    },
+    "574": {
+        "ln": "Ningbo 宁波市",
+        "sn": "Ningbo"
+    },
+    "575": {
+        "ln": "Shaoxing 绍兴市",
+        "sn": "Shaoxing"
+    },
+    "576": {
+        "ln": "Taizhou 台州市",
+        "sn": "Taizhou"
+    },
+    "577": {
+        "ln": "Wenzhou 温州市",
+        "sn": "Wenzhou"
+    },
+    "578": {
+        "ln": "Lishui 丽水市",
+        "sn": "Lishui"
+    },
+    "579": {
+        "ln": "Jinhua 金华市",
+        "sn": "Jinhua"
+    },
+    "580": {
+        "ln": "Zhoushan 舟山市",
+        "sn": "Zhoushan"
+    },
+    "591": {
+        "ln": "Fuzhou 福州市",
+        "sn": "Fuzhou"
+    },
+    "592": {
+        "ln": "Xiamen 厦门市",
+        "sn": "Xiamen"
+    },
+    "593": {
+        "ln": "Ningde 宁德市",
+        "sn": "Ningde"
+    },
+    "594": {
+        "ln": "Putian 莆田市",
+        "sn": "Putian"
+    },
+    "595": {
+        "ln": "Quanzhou 泉州市",
+        "sn": "Quanzhou"
+    },
+    "596": {
+        "ln": "Zhangzhou 漳州市",
+        "sn": "Zhangzhou"
+    },
+    "597": {
+        "ln": "Longyan 龙岩市",
+        "sn": "Longyan"
+    },
+    "598": {
+        "ln": "Sanming 三明市",
+        "sn": "Sanming"
+    },
+    "599": {
+        "ln": "Nanping 南平市",
+        "sn": "Nanping"
+    },
+    "631": {
+        "ln": "Weihai 威海市",
+        "sn": "Weihai"
+    },
+    "632": {
+        "ln": "Zaozhuang 枣庄市",
+        "sn": "Zaozhuang"
+    },
+    "633": {
+        "ln": "Rizhao 日照市",
+        "sn": "Rizhao"
+    },
+    "634": {
+        "ln": "Laiwu 莱芜市",
+        "sn": "Laiwu"
+    },
+    "635": {
+        "ln": "Liaocheng 聊城市 (聊城地区)",
+        "sn": "Liaocheng"
+    },
+    "660": {
+        "ln": "Shanwei 汕尾市",
+        "sn": "Shanwei"
+    },
+    "662": {
+        "ln": "Yangjiang 阳江市",
+        "sn": "Yangjiang"
+    },
+    "663": {
+        "ln": "Jieyang 揭阳市",
+        "sn": "Jieyang"
+    },
+    "668": {
+        "ln": "Maoming 茂名市",
+        "sn": "Maoming"
+    },
+    "691": {
+        "ln": "Jinghong 景洪市 (西双版纳 傣族自治州 )",
+        "sn": "Jinghong"
+    },
+    "692": {
+        "ln": "Luxi 潞西市 (德宏傣族 景颇族自治州)",
+        "sn": "Luxi"
+    },
+    "701": {
+        "ln": "Yingtan 鹰潭市",
+        "sn": "Yingtan"
+    },
+    "710": {
+        "ln": "Xiangfan 襄樊市",
+        "sn": "Xiangfan"
+    },
+    "711": {
+        "ln": "Ezhou 鄂州市",
+        "sn": "Ezhou"
+    },
+    "712": {
+        "ln": "Xiaogan 孝感市",
+        "sn": "Xiaogan"
+    },
+    "713": {
+        "ln": "Huanggang 黄冈市",
+        "sn": "Huanggang"
+    },
+    "714": {
+        "ln": "Huangshi 黄石市",
+        "sn": "Huangshi"
+    },
+    "715": {
+        "ln": "Xianning 咸宁市",
+        "sn": "Xianning"
+    },
+    "716": {
+        "ln": "Jingzhou 荆州市",
+        "sn": "Jingzhou"
+    },
+    "717": {
+        "ln": "Yichang 宜昌市",
+        "sn": "Yichang"
+    },
+    "718": {
+        "ln": "Enshi 恩施市 (恩施土家族 苗族自治州)",
+        "sn": "Enshi"
+    },
+    "719": {
+        "ln": "Shiyan 十堰市",
+        "sn": "Shiyan"
+    },
+    "722": {
+        "ln": "Suizhou 随州市",
+        "sn": "Suizhou"
+    },
+    "724": {
+        "ln": "Jingmen 荆门市",
+        "sn": "Jingmen"
+    },
+    "728": {
+        "ln": "Xiantao 仙桃市",
+        "sn": "Xiantao"
+    },
+    "730": {
+        "ln": "Yueyang 岳阳市",
+        "sn": "Yueyang"
+    },
+    "731": {
+        "ln": "Changsha 长沙市, Xiangtan 湘潭市, Zhuzhou 株州市",
+        "sn": "Changsha"
+    },
+    "734": {
+        "ln": "Hengyang 衡阳市",
+        "sn": "Hengyang"
+    },
+    "735": {
+        "ln": "Chenzhou 郴州市",
+        "sn": "Chenzhou"
+    },
+    "736": {
+        "ln": "Changde 常德市",
+        "sn": "Changde"
+    },
+    "737": {
+        "ln": "Yiyang 益阳市",
+        "sn": "Yiyang"
+    },
+    "738": {
+        "ln": "Loudi 娄底市",
+        "sn": "Loudi"
+    },
+    "739": {
+        "ln": "Shaoyang 邵阳市",
+        "sn": "Shaoyang"
+    },
+    "743": {
+        "ln": "Jishou 吉首市 (湘西土家族 苗族自治州)",
+        "sn": "Jishou"
+    },
+    "744": {
+        "ln": "Zhangjiajie 张家界市",
+        "sn": "Zhangjiajie"
+    },
+    "745": {
+        "ln": "Huaihua 怀化市",
+        "sn": "Huaihua"
+    },
+    "746": {
+        "ln": "Yongzhou 永州市",
+        "sn": "Yongzhou"
+    },
+    "750": {
+        "ln": "Jiangmen 江门市",
+        "sn": "Jiangmen"
+    },
+    "751": {
+        "ln": "Shaoguan 韶关市",
+        "sn": "Shaoguan"
+    },
+    "752": {
+        "ln": "Huizhou 惠州市",
+        "sn": "Huizhou"
+    },
+    "753": {
+        "ln": "Meizhou 梅州市",
+        "sn": "Meizhou"
+    },
+    "754": {
+        "ln": "Chaoyang 潮阳市, Shantou 汕头市",
+        "sn": "Shantou"
+    },
+    "755": {
+        "ln": "Shenzhen 深圳市",
+        "sn": "Shenzhen"
+    },
+    "756": {
+        "ln": "Zhuhai 珠海市",
+        "sn": "Zhuhai"
+    },
+    "757": {
+        "ln": "Foshan 佛山市, Shunde 顺德市",
+        "sn": "Foshan"
+    },
+    "758": {
+        "ln": "Zhaoqing 肇庆市",
+        "sn": "Zhaoqing"
+    },
+    "759": {
+        "ln": "Zhanjiang 湛江市",
+        "sn": "Zhanjiang"
+    },
+    "760": {
+        "ln": "Zhongshan 中山市",
+        "sn": "Zhongshan"
+    },
+    "762": {
+        "ln": "Heyuan 河源市",
+        "sn": "Heyuan"
+    },
+    "763": {
+        "ln": "Qingyuan 清远市",
+        "sn": "Qingyuan"
+    },
+    "766": {
+        "ln": "Yunfu 云浮市",
+        "sn": "Yunfu"
+    },
+    "768": {
+        "ln": "Chaozhou 潮州市",
+        "sn": "Chaozhou"
+    },
+    "769": {
+        "ln": "Dongguan 东莞市",
+        "sn": "Dongguan"
+    },
+    "770": {
+        "ln": "Fangchenggang 防城港市",
+        "sn": "Fangchenggang"
+    },
+    "771": {
+        "ln": "Nanning 南宁市",
+        "sn": "Nanning"
+    },
+    "772": {
+        "ln": "Liuzhou 柳州市",
+        "sn": "Liuzhou"
+    },
+    "773": {
+        "ln": "Guilin 桂林市",
+        "sn": "Guilin"
+    },
+    "774": {
+        "ln": "Wuzhou 梧州市",
+        "sn": "Wuzhou"
+    },
+    "775": {
+        "ln": "Yulin 玉林市",
+        "sn": "Yulin"
+    },
+    "776": {
+        "ln": "Baise 百色市 (百色地区)",
+        "sn": "Baise"
+    },
+    "777": {
+        "ln": "Qinzhou 钦州市",
+        "sn": "Qinzhou"
+    },
+    "778": {
+        "ln": "Hechi 河池市 (河池地区)",
+        "sn": "Hechi"
+    },
+    "779": {
+        "ln": "Beihai 北海市",
+        "sn": "Beihai"
+    },
+    "790": {
+        "ln": "Xinyu 新余市",
+        "sn": "Xinyu"
+    },
+    "791": {
+        "ln": "Nanchang 南昌市",
+        "sn": "Nanchang"
+    },
+    "792": {
+        "ln": "Jiujiang 九江市",
+        "sn": "Jiujiang"
+    },
+    "793": {
+        "ln": "Shangrao 上饶市",
+        "sn": "Shangrao"
+    },
+    "794": {
+        "ln": "Fuzhou 抚州市",
+        "sn": "Fuzhou"
+    },
+    "795": {
+        "ln": "Yichun 宜春市",
+        "sn": "Yichun"
+    },
+    "796": {
+        "ln": "JiAn 吉安市",
+        "sn": "JiAn"
+    },
+    "797": {
+        "ln": "Ganzhou 赣州市",
+        "sn": "Ganzhou"
+    },
+    "798": {
+        "ln": "Jingdezhen 景德镇市",
+        "sn": "Jingdezhen"
+    },
+    "799": {
+        "ln": "Pingxiang 萍乡市",
+        "sn": "Pingxiang"
+    },
+    "8029": {
+        "ln": "Zhongba 仲巴县",
+        "sn": "Zhongba"
+    },
+    "8060": {
+        "ln": "Pulan 普兰县",
+        "sn": "Pulan"
+    },
+    "8063": {
+        "ln": "Jiali 嘉黎县",
+        "sn": "Jiali"
+    },
+    "8065": {
+        "ln": "Nierong 聂荣县",
+        "sn": "Nierong"
+    },
+    "8067": {
+        "ln": "Bange 班戈县",
+        "sn": "Bange"
+    },
+    "8068": {
+        "ln": "Shenzha 申扎县",
+        "sn": "Shenzha"
+    },
+    "8070": {
+        "ln": "Shuanghu 双湖",
+        "sn": "Shuanghu"
+    },
+    "8071": {
+        "ln": "Zhada 扎达县",
+        "sn": "Zhada"
+    },
+    "8078": {
+        "ln": "Suoxian 索县",
+        "sn": "Suoxian"
+    },
+    "8081": {
+        "ln": "Nima 尼玛县",
+        "sn": "Nima"
+    },
+    "812": {
+        "ln": "Panzhihua 攀枝花市",
+        "sn": "Panzhihua"
+    },
+    "813": {
+        "ln": "Zigong 自贡市",
+        "sn": "Zigong"
+    },
+    "816": {
+        "ln": "Mianyang 绵阳市",
+        "sn": "Mianyang"
+    },
+    "817": {
+        "ln": "Nanchong 南充市",
+        "sn": "Nanchong"
+    },
+    "818": {
+        "ln": "Dazhou 达州市",
+        "sn": "Dazhou"
+    },
+    "825": {
+        "ln": "Suining 遂宁市",
+        "sn": "Suining"
+    },
+    "826": {
+        "ln": "GuangAn 广安市",
+        "sn": "GuangAn"
+    },
+    "827": {
+        "ln": "Bazhong 巴中市",
+        "sn": "Bazhong"
+    },
+    "830": {
+        "ln": "Luzhou 泸州市",
+        "sn": "Luzhou"
+    },
+    "831": {
+        "ln": "Yibin 宜宾市",
+        "sn": "Yibin"
+    },
+    "832": {
+        "ln": "Neijiang 内江市, Ziyang 资阳市",
+        "sn": "Neijiang"
+    },
+    "833": {
+        "ln": "Leshan 乐山市",
+        "sn": "Leshan"
+    },
+    "834": {
+        "ln": "Xichang 西昌市(凉山 彝族自治州)",
+        "sn": "Xichang"
+    },
+    "835": {
+        "ln": "YaAn 雅安市",
+        "sn": "YaAn"
+    },
+    "836": {
+        "ln": "Kangding 康定县(甘孜 藏族自治州)",
+        "sn": "Kangding"
+    },
+    "837": {
+        "ln": "MaErkang 马尔康县 (阿坝藏族 羌族自治州)",
+        "sn": "MaErkang"
+    },
+    "838": {
+        "ln": "Deyang 德阳市",
+        "sn": "Deyang"
+    },
+    "839": {
+        "ln": "Guangyuan 广元市",
+        "sn": "Guangyuan"
+    },
+    "851": {
+        "ln": "Guiyang 贵阳市",
+        "sn": "Guiyang"
+    },
+    "852": {
+        "ln": "Zunyi 遵义市",
+        "sn": "Zunyi"
+    },
+    "853": {
+        "ln": "Anshun 安顺市 (安顺地区)",
+        "sn": "Anshun"
+    },
+    "854": {
+        "ln": "Duyun 都匀市 (黔南布依族 苗族自治州)",
+        "sn": "Duyun"
+    },
+    "855": {
+        "ln": "Kaili 凯里市 (黔东南苗族 侗族自治州   )",
+        "sn": "Kaili"
+    },
+    "856": {
+        "ln": "Tongren 铜仁市 (铜仁地区)",
+        "sn": "Tongren"
+    },
+    "857": {
+        "ln": "Bijie 毕节市 (毕节地区)",
+        "sn": "Bijie"
+    },
+    "858": {
+        "ln": "Liupanshui 六盘水市",
+        "sn": "Liupanshui"
+    },
+    "859": {
+        "ln": "Xingyi 兴义市 (黔西南布依族 苗族自治州)",
+        "sn": "Xingyi"
+    },
+    "870": {
+        "ln": "Zhaotong 昭通市 (昭通地区)",
+        "sn": "Zhaotong"
+    },
+    "871": {
+        "ln": "Kunming 昆明市",
+        "sn": "Kunming"
+    },
+    "872": {
+        "ln": "Dali 大理市(大理 白族自治州)",
+        "sn": "Dali"
+    },
+    "873": {
+        "ln": "Gejiu 个旧市 (红河哈尼族 彝族自治州)",
+        "sn": "Gejiu"
+    },
+    "874": {
+        "ln": "Qujing 曲靖市",
+        "sn": "Qujing"
+    },
+    "875": {
+        "ln": "Baoshan 保山市",
+        "sn": "Baoshan"
+    },
+    "876": {
+        "ln": "Wenshan 文山县 (文山壮族 苗族自治州)",
+        "sn": "Wenshan"
+    },
+    "877": {
+        "ln": "Yuxi 玉溪市",
+        "sn": "Yuxi"
+    },
+    "878": {
+        "ln": "Chuxiong 楚雄市(楚雄 彝族自治州 )",
+        "sn": "Chuxiong"
+    },
+    "879": {
+        "ln": "Simao 思茅市 (思茅地区)",
+        "sn": "Simao"
+    },
+    "883": {
+        "ln": "Lincang 临沧县 (临沧地区)",
+        "sn": "Lincang"
+    },
+    "886": {
+        "ln": "Liuku 六库市(怒江 傈傈族自治州)",
+        "sn": "Liuku"
+    },
+    "887": {
+        "ln": "Zhongdian 中甸县(迪庆 藏族自治州)",
+        "sn": "Zhongdian"
+    },
+    "888": {
+        "ln": "Lijiang 丽江纳西族 自治县 (丽江地区)",
+        "sn": "Lijiang"
+    },
+    "891": {
+        "ln": "Lhasa 拉萨市",
+        "sn": "Lhasa"
+    },
+    "892": {
+        "ln": "Rikaze 日喀则市 (日喀则地区)",
+        "sn": "Rikaze"
+    },
+    "893": {
+        "ln": "Naidong 乃东县 (山南地区)",
+        "sn": "Naidong"
+    },
+    "894": {
+        "ln": "Linzhi 林芝县 (林芝地区)",
+        "sn": "Linzhi"
+    },
+    "895": {
+        "ln": "Changdu 昌都县 (昌都地区)",
+        "sn": "Changdu"
+    },
+    "896": {
+        "ln": "Naqu 那曲县 (那曲地区)",
+        "sn": "Naqu"
+    },
+    "897": {
+        "ln": "GeEr 噶尔县 (阿里地区)",
+        "sn": "GeEr"
+    },
+    "898": {
+        "ln": "Haikou 海口市",
+        "sn": "Haikou"
+    },
+    "901": {
+        "ln": "Tacheng 塔城市",
+        "sn": "Tacheng"
+    },
+    "902": {
+        "ln": "Hami 哈密市 (哈密地区)",
+        "sn": "Hami"
+    },
+    "903": {
+        "ln": "Hetian 和田市 (和田地区)",
+        "sn": "Hetian"
+    },
+    "906": {
+        "ln": "Aletai 阿勒泰市",
+        "sn": "Aletai"
+    },
+    "908": {
+        "ln": "Atushi 阿图什市 (克孜勒苏柯尔 克孜自治州)",
+        "sn": "Atushi"
+    },
+    "909": {
+        "ln": "Bole 博乐市 (博尔塔拉 蒙古自治州)",
+        "sn": "Bole"
+    },
+    "911": {
+        "ln": "YanAn 延安市",
+        "sn": "YanAn"
+    },
+    "912": {
+        "ln": "Yulin 榆林市",
+        "sn": "Yulin"
+    },
+    "913": {
+        "ln": "Weinan 渭南市",
+        "sn": "Weinan"
+    },
+    "914": {
+        "ln": "Shangzhou 商州市 (商南地区)",
+        "sn": "Shangzhou"
+    },
+    "915": {
+        "ln": "Ankang 安康市 (安康地区)",
+        "sn": "Ankang"
+    },
+    "916": {
+        "ln": "Hanzhong 汉中市",
+        "sn": "Hanzhong"
+    },
+    "917": {
+        "ln": "Baoji 宝鸡市",
+        "sn": "Baoji"
+    },
+    "919": {
+        "ln": "Tongchuan 铜川市",
+        "sn": "Tongchuan"
+    },
+    "930": {
+        "ln": "Linxia 临夏市(临夏 回族自治州)",
+        "sn": "Linxia"
+    },
+    "931": {
+        "ln": "Lanzhou 兰州市",
+        "sn": "Lanzhou"
+    },
+    "932": {
+        "ln": "Dingxi 定西县 (定西地区)",
+        "sn": "Dingxi"
+    },
+    "933": {
+        "ln": "Pingliang 平凉市 (平凉地区)",
+        "sn": "Pingliang"
+    },
+    "934": {
+        "ln": "Xifeng 西峰市 (庆阳地区)",
+        "sn": "Xifeng"
+    },
+    "935": {
+        "ln": "Jinchang 金昌市",
+        "sn": "Jinchang"
+    },
+    "936": {
+        "ln": "Zhangye 张掖市 (张掖地区)",
+        "sn": "Zhangye"
+    },
+    "937": {
+        "ln": "Jiuquan 酒泉市 (酒泉地区)",
+        "sn": "Jiuquan"
+    },
+    "938": {
+        "ln": "Tianshui 天水市",
+        "sn": "Tianshui"
+    },
+    "939": {
+        "ln": "Wudu 武都县 (陇南地区)",
+        "sn": "Wudu"
+    },
+    "941": {
+        "ln": "Hezuo 合作市(甘南 藏族自治州)",
+        "sn": "Hezuo"
+    },
+    "943": {
+        "ln": "Baiyin 白银市",
+        "sn": "Baiyin"
+    },
+    "951": {
+        "ln": "Yinchuan 银川市",
+        "sn": "Yinchuan"
+    },
+    "952": {
+        "ln": "Shizuishan 石嘴山市",
+        "sn": "Shizuishan"
+    },
+    "953": {
+        "ln": "Wuzhong 吴忠市",
+        "sn": "Wuzhong"
+    },
+    "954": {
+        "ln": "Guyuan 固原县 (固原地区)",
+        "sn": "Guyuan"
+    },
+    "955": {
+        "ln": "Zhongwei 中卫市、中宁县、海原县 (中卫地区)",
+        "sn": "Zhongwei"
+    },
+    "970": {
+        "ln": "Haiyan 海晏县(海北 藏族自治州)",
+        "sn": "Haiyan"
+    },
+    "971": {
+        "ln": "Xining 西宁市",
+        "sn": "Xining"
+    },
+    "972": {
+        "ln": "PingAn 平安县 (海东地区)",
+        "sn": "PingAn"
+    },
+    "973": {
+        "ln": "Tongren 同仁县(黄南 藏族自治州)",
+        "sn": "Tongren"
+    },
+    "974": {
+        "ln": "Gonghe 共和县(海南 藏族自治州)",
+        "sn": "Gonghe"
+    },
+    "975": {
+        "ln": "Maqin 玛沁县(果洛 藏族自治州)",
+        "sn": "Maqin"
+    },
+    "976": {
+        "ln": "Yushu 玉树县(玉树 藏族自治州)",
+        "sn": "Yushu"
+    },
+    "977": {
+        "ln": "Delingha 德令哈市 (海西蒙古族 藏族自治州)",
+        "sn": "Delingha"
+    },
+    "979": {
+        "ln": "GeErmu 格尔木市",
+        "sn": "GeErmu"
+    },
+    "990": {
+        "ln": "Kalamayi 克拉玛依市",
+        "sn": "Kalamayi"
+    },
+    "991": {
+        "ln": "Urumchi 乌鲁木齐",
+        "sn": "Urumchi"
+    },
+    "992": {
+        "ln": "Kuitun 奎屯市",
+        "sn": "Kuitun"
+    },
+    "993": {
+        "ln": "Shihezi 石河子市",
+        "sn": "Shihezi"
+    },
+    "994": {
+        "ln": "Changji 昌吉市(昌吉 回族自治州)",
+        "sn": "Changji"
+    },
+    "995": {
+        "ln": "Tulufan 吐鲁番市 (吐鲁番地区)",
+        "sn": "Tulufan"
+    },
+    "996": {
+        "ln": "KuErle 库尔勒市 (巴音郭楞 蒙古自治州)",
+        "sn": "KuErle"
+    },
+    "997": {
+        "ln": "Akesu 阿克苏市 (阿克苏地区)",
+        "sn": "Akesu"
+    },
+    "998": {
+        "ln": "Kashi 喀什市 (喀什地区)",
+        "sn": "Kashi"
+    },
+    "999": {
+        "ln": "Yining 伊宁市(伊犁 哈萨克自治州)",
+        "sn": "Yining"
+    }
+}

@@ -1,0 +1,385 @@
+// now specific areas
+233	area	Central Coast	Gosford, Central Coast
+238	area	Bowral	Bowral, Crookwell, Goulburn, Marulan
+240	area	Lower Hunter	Newcastle, Lower Hunter
+241	area	Lower Hunter	Newcastle, Lower Hunter
+242	area	Wollongong	Wollongong
+243	area	Central Coast	Gosford, Central Coast
+244	area	Nowra	Moruya, Nowra
+245	area	Windsor	Windsor, Richmond
+246	area	Campbelltown	Campbelltown
+247	area	Blue Mountains	Penrith, Blue Mountains
+248	area	Bowral	Bowral, Crookwell, Goulburn, Marulan
+249	area	Lower Hunter	Newcastle, Lower Hunter
+250	area	Albury	Albury, Corryong, Wodonga
+251	area	Canberra	Canberra, Queanbeyan, Yass
+252	area	Canberra	Canberra, Queanbeyan, Yass
+253	area	Bathurst	Bathurst, Orange
+25551	area	Fictitious use	Fictitious use
+2555.	area	Kempsey	Kempsey, Taree, Lord Howe Island, Muswellbrook
+255.	area	Kempsey	Kempsey, Taree, Lord Howe Island, Muswellbrook
+256	area	Grafton	Coffs Harbour, Grafton, Lismore
+257	area	Armidale	Armidale, Tamworth, Northern Tablelands
+258	area	Far West	Bourke, Dubbo, Far West
+259	area	Griffith	Griffith, Wagga Wagga, Riverina
+260	area	Albury	Albury, Corryong, Wodonga
+261	area	Canberra	Canberra, Queanbeyan, Yass
+262	area	Canberra	Canberra, Queanbeyan, Yass
+263	area	Bathurst	Bathurst, Orange
+264	area	Cooma	Bega, Cooma
+265	area	Kempsey	Kempsey, Taree, Lord Howe Island, Muswellbrook
+266	area	Grafton	Coffs Harbour, Grafton, Lismore
+267	area	Armidale	Armidale, Glen Innes, Gunnedah, Inverell, Moree, Narrabri, Tamworth
+268	area	Far West	Bourke, Dubbo, Far West
+269	area	Griffith	Griffith, Wagga Wagga, Riverina
+27010	area	Fictitious use	Fictitious use
+2701.	area	Sydney	Sydney
+270.	area	Sydney	Sydney
+273	area	Sydney South/Southeast	Sydney South/Southeast
+274	area	Avalon Beach	Avalon Beach, Dural, Sydney
+275	area	Sutherland Shire	Sutherland Shire
+277	area	Liverpool	Liverpool
+278	area	Blacktown	Blacktown
+280	area	Sydney	Sydney City Centre
+281	area	Liverpool	Liverpool
+282	area	Sydney	Sydney City Centre
+283	area	Sydney South/Southeast	Sydney South/Southeast
+284	area	Avalon Beach	Avalon Beach
+285	area	Sutherland Shire	Sutherland Shire
+286	area	Blacktown	Blacktown
+287	area	Liverpool	Liverpool
+288	area	Blacktown	Blacktown
+289	area	Avalon Beach	Avalon Beach, Dural, Sydney
+290	area	Sydney	Sydney City Centre
+2913	area	Sydney South/Southeast	Sydney South/Southeast
+2914	area	Sydney North	Sydney North
+2915	area	Sydney Southwest	Sydney Southwest
+2918	area	Sydney Northwest	Sydney Northwest
+291.	area	Sydney	Sydney
+292	area	Sydney	Sydney City Centre
+293	area	Sydney South/Southeast	Sydney South/Southeast
+294	area	Avalon Beach	Avalon Beach, Dural, Sydney North
+295	area	Sutherland Shire	Sutherland Shire
+2960	area	Liverpool	Liverpool
+2961	area	Liverpool	Liverpool
+2962	area	Blacktown	Blacktown
+2965	area	Dural	Dural
+296.	area	Sydney	Sydney City Centre
+297	area	Liverpool	Liverpool, Sydney West
+298	area	Blacktown	Blacktown, Sydney Northwest
+299	area	Avalon Beach	Avalon Beach, Dural, Sydney North
+340	area	Mildura	Mildura, Balranald
+341	area	Bairnsdale	Bairnsdale
+342	area	Colac	Colac, Geelong
+343	area	Ballarat	Ballarat
+344	area	Bendigo	Bendigo
+345	area	Warrnambool	Warrnambool
+347	area	Wangaratta	Wangaratta
+348	area	Deniliquin	Deniliquin, Numurkah, Shepparton
+349	area	Mornington	Mornington
+350	area	Mildura	Mildura, Balranald
+351	area	Bairnsdale	Bairnsdale
+352	area	Colac, Geelong	Colac, Geelong
+353	area	Ballarat	Ballarat
+354	area	Bendigo	Bendigo
+355	area	Warrnambool	Warrnambool
+356	area	Foster	Foster, Warragul, Drouin
+357	area	Wangaratta	Wangaratta
+358	area	Deniliquin	Deniliquin, Shepparton
+359	area	Mornington	Mornington, Pakenham, Rosebud
+361	area	Hobart	Hobart
+362	area	Hobart	Hobart
+363	area	Launceston	Launceston
+364	area	Devonport	Devonport, Burnie, Queenstown
+365	area	Devonport	Devonport, Burnie, Queenstown
+367	area	Launceston	Launceston
+37010	area	Fictitious use	Fictitious use
+3701.	area	Melbourne	Melbourne
+370.	area	Melbourne	Melbourne
+371	area	Kalkallo	Kalkallo, Whittlesea, Melbourne
+372	area	Croydon	Croydon, Melbourne
+373	area	Melbourne West	Melbourne West, Melbourne
+375	area	Melbourne Southeast	Melbourne Southeast, Melbourne
+377	area	Sunbury	Werribee, Sunbury, Melbourne
+378	area	Melbourne East	Melbourne East
+379	area	Dandenong	Dandenong, Melbourne
+380	area	Sunbury	Werribee, Sunbury, Melbourne
+381	area	Kalkallo	Kalkallo, Whittlesea, Melbourne
+382	area	Croydon	Croydon, Melbourne
+383	area	Melbourne West	Melbourne West
+384	area	Melbourne Northeast	Melbourne Northeast
+385	area	Melbourne Southeast	Melbourne Southeast
+386	area	Melbourne City & South	Melbourne City & South
+387	area	Melbourne East	Croydon, Dandenong, Kalkallo, Sunbury, Werribee, Whittlesea, Melbourne East
+389	area	Dandenong	Dandenong, Melbourne
+390	area	Melbourne	Melbourne City & South
+391	area	Melbourne City & South	Melbourne City & South
+392	area	Melbourne	Melbourne
+393	area	Melbourne West	Melbourne West
+394	area	Melbourne Northeast	Melbourne Northeast
+395	area	Melbourne Southeast	Melbourne Southeast
+396	area	Melbourne City & South	Melbourne City & South
+397	area	Melbourne East	Croydon, Dandenong, Kalkallo, Sunbury, Werribee, Whittlesea, Melbourne East
+398	area	Melbourne East	Melbourne East
+399	area	Melbourne	Melbourne
+704	area	Brisbane Southeast	Brisbane Southeast
+721	area	Brisbane	Brisbane
+722	area	Brisbane	Brisbane City Centre
+724	area	Brisbane Southeast	Brisbane Southeast
+728	area	Brisbane	Beenleigh, Brisbane Southeast, Cleveland, Ipswich, Redcliffe, Samford, Brisbane City Centre
+72.	area	Brisbane	Brisbane, Bribie Island
+730	area	Brisbane	Beenleigh, Brisbane Southeast, Cleveland, Ipswich, Redcliffe, Samford, Brisbane City Centre
+731	area	Brisbane	Brisbane
+7320	area	Brisbane	Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane
+7321	area	Brisbane	Brisbane
+7322	area	Brisbane	Brisbane City Centre
+7323	area	Brisbane	Brisbane City Centre
+7324	area	Brisbane Southeast	Brisbane Southeast
+7325	area	Brisbane North/Northwest	Brisbane North/Northwest
+7326	area	Brisbane North/Northwest	Brisbane North/Northwest
+7327	area	Brisbane West/Southwest	Brisbane West/Southwest
+7328	area	Brisbane	Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane
+7329	area	Brisbane East	Brisbane East
+7330	area	Brisbane	Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane
+7331	area	Brisbane	Brisbane
+7332	area	Brisbane	Brisbane City Centre
+7333	area	Brisbane	Brisbane City Centre
+7334	area	Brisbane Southeast	Brisbane Southeast
+7335	area	Brisbane North/Northwest	Brisbane North/Northwest
+7336	area	Brisbane Northeast	Brisbane Northeast
+7337	area	Brisbane West/Southwest	Brisbane West/Southwest
+7338	area	Brisbane	Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane
+7339	area	Brisbane East	Brisbane East
+734	area	Brisbane	Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane Southeast
+735	area	Brisbane North/Northwest	Brisbane North/Northwest
+736	area	Brisbane Northeast	Brisbane Northeast
+737	area	Brisbane West/Southwest	Brisbane West/Southwest
+7380	area	Brisbane	Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane
+7381	area	Brisbane	Brisbane
+7382	area	Brisbane	Brisbane City Centre
+7383	area	Brisbane	Brisbane City Centre
+7384	area	Brisbane Southeast	Brisbane Southeast
+7385	area	Brisbane North/Northwest	Brisbane North/Northwest
+7386	area	Brisbane Northeast	Brisbane Northeast
+7387	area	Brisbane West/Southwest	Brisbane West/Southwest
+7388	area	Brisbane	Beenleigh, Cleveland, Ipswich, Redcliffe, Samford, Brisbane
+7389	area	Brisbane East	Brisbane East
+739	area	Brisbane East	Brisbane East
+73.	area	Brisbane	Brisbane, Bribie Island
+740	area	Far North Queensland	Cairns, Far North Queensland
+741	area	Bundaberg	Bundaberg, Kingaroy
+742	area	Cairns	Cairns
+743	area	Bundaberg	Bundaberg, Kingaroy
+744	area	Townsville	Townsville
+745	area	Toowoomba	Toowoomba, Roma, Southwest Australia
+746	area	Toowoomba	Toowoomba, Roma, Southwest Australia
+747	area	Townsville	Townsville
+748	area	Rockhampton	Rockhampton, Mackay
+749	area	Rockhampton	Rockhampton, Mackay
+752	area	Sunshine Coast	Sunshine Coast, Esk, Nambour, Gatton, Caboolture
+753	area	Sunshine Coast	Sunshine Coast, Esk, Nambour, Gatton, Caboolture
+754	area	Sunshine Coast	Sunshine Coast, Esk, Nambour, Gatton, Caboolture
+75551	area	Fictitious use	Fictitious use
+7555.	area	Gold Coast	Gold Coast, Beaudesert
+755.	area	Gold Coast	Gold Coast, Beaudesert
+756	area	Gold Coast	Gold Coast, Beaudesert
+757	area	Gold Coast	Gold Coast, Beaudesert
+77010	area	Fictitious use	Fictitious use
+7701.	area	North-east	North-eastern Australia (QLD)
+770.	area	North-east	North-eastern Australia (QLD)
+776	area	Inglewood	Inglewood, Toowoomba
+851	area	Port Hedland	Port Hedland
+8520	area	Perth	Wanneroo, Perth North/Northwest
+8521	area	Perth	Perth City & Southwest
+8522	area	Perth	Perth City & Southwest
+8523	area	Perth	Perth City & Southwest
+8527	area	Perth Northeast	Perth Northeast
+8529	area	Perth	Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth
+8530	area	Perth	Wanneroo, Perth North/Northwest
+8531	area	Perth City & Southwest	Perth City & Southwest
+8532	area	Perth City & Southwest	Perth City & Southwest
+8533	area	Perth City & Southwest	Perth City & Southwest
+8537	area	Perth Northeast	Perth Northeast
+8539	area	Perth	Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth
+8540	area	Perth	Wanneroo, Perth North/Northwest
+8541	area	Perth City & Southwest	Perth City & Southwest
+8542	area	Perth City & Southwest	Perth City & Southwest
+8543	area	Perth City & Southwest	Perth City & Southwest
+8547	area	Perth Northeast	Perth Northeast
+8549	area	Perth	Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth
+855.	area	Perth	Perth
+8555.	area	Perth	Perth
+85551	area	Fictitious use	Fictitious use
+860	area	Perth	Bruce Rock, Great Victoria, Kalgoorlie, Merredin, Perth
+861.	area	Perth	Perth
+8611	area	Perth	Perth City & Southwest
+8612	area	Perth	Perth City & Southwest
+8613	area	Perth	Perth City & Southwest
+8619	area	Perth	Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth
+8620	area	Perth	Wanneroo, Perth North/Northwest
+8621	area	Perth	Perth City & Southwest
+8622	area	Perth	Perth City & Southwest
+8623	area	Perth	Perth City & Southwest
+8624	area	Perth North	Perth North/Northwest
+8625	area	Perth East	Perth East/Southeast
+8626	area	Perth	Perth
+8627	area	Perth Northeast	Perth Northeast
+8628	area	Perth West	Perth West
+8629	area	Perth	Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth
+8630	area	Perth	Wanneroo, Perth North/Northwest
+8631	area	Perth City & Southwest	Perth City & Southwest
+8632	area	Perth City & Southwest	Perth City & Southwest
+8633	area	Perth City & Southwest	Perth City & Southwest
+8634	area	Perth North/Northwest	Perth North/Northwest
+8635	area	Perth East/Southeast	Perth East/Southeast
+8636	area	Perth	Perth
+8637	area	Perth Northeast	Perth Northeast
+8638	area	Perth West	Perth West
+8639	area	Perth	Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth
+8640	area	Perth	Wanneroo, Perth North/Northwest
+8641	area	Perth City & Southwest	Perth City & Southwest
+8642	area	Perth City & Southwest	Perth City & Southwest
+8643	area	Perth City & Southwest	Perth City & Southwest
+8644	area	Perth North/Northwest	Perth North/Northwest
+8645	area	Perth East/Southeast	Perth East/Southeast
+8646	area	Perth	Perth
+8647	area	Perth Northeast	Perth Northeast
+8648	area	Perth West	Perth West
+8649	area	Perth	Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth
+865.	area	Perth	Perth
+8659	area	Perth	Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth
+867	area	Bridgetown	Bridgetown, Bunbury
+868	area	Albany	Albany
+87010	area	Fictitious use	Fictitious use
+8701.	area	Adelaide	Adelaide
+870.	area	Adelaide	Adelaide
+8710	area	Adelaide	Adelaide City Centre
+8711	area	Adelaide	Adelaide City Centre
+8712	area	Adelaide	Adelaide
+8713	area	Adelaide East	Adelaide East
+8714	area	Adelaide Northwest	Adelaide Northwest
+8715	area	Adelaide West	Adelaide West
+8716	area	Adelaide Northeast	Adelaide Northeast
+8717	area	Adelaide South	Adelaide South
+8718	area	Adelaide	McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide
+8719	area	Adelaide South	Adelaide South
+8720	area	Adelaide	Adelaide City Centre
+8721	area	Adelaide	Adelaide City Centre
+8722	area	Adelaide	Adelaide
+8723	area	Adelaide East	Adelaide East
+8724	area	Adelaide Northwest	Adelaide Northwest
+8725	area	Adelaide West	Adelaide West
+8726	area	Adelaide Northeast	Adelaide Northeast
+8727	area	Adelaide South	Adelaide South
+8728	area	Adelaide	McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide
+8729	area	Adelaide South	Adelaide South
+8730	area	Adelaide	Adelaide City Centre
+8731	area	Adelaide	Adelaide City Centre
+8732	area	Adelaide	Adelaide
+8733	area	Adelaide East	Adelaide East
+8734	area	Adelaide Northwest	Adelaide Northwest
+8735	area	Adelaide West	Adelaide West
+8736	area	Adelaide Northeast	Adelaide Northeast
+8737	area	Adelaide South	Adelaide South
+8738	area	Adelaide	McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide
+8739	area	Adelaide South	Adelaide South
+8740	area	Adelaide	Adelaide City Centre
+8741	area	Adelaide	Adelaide City Centre
+8742	area	Adelaide	Adelaide
+8743	area	Adelaide East	Adelaide East
+8744	area	Adelaide Northwest	Adelaide Northwest
+8745	area	Adelaide West	Adelaide West
+8746	area	Adelaide Northeast	Adelaide Northeast
+8747	area	Adelaide South	Adelaide South
+8748	area	Adelaide	McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide
+8749	area	Adelaide South	Adelaide South
+875	area	Riverland	Riverland, Murraylands
+876	area	Ceduna	Ceduna
+877	area	Southeast	Southeast Australia
+878	area	Mid North	Mid North Australia
+879	area	Northern Territory	Northern Territory (Alice Springs, Darwin)
+880	area	Broken Hill	Broken Hill
+8810	area	Adelaide	Adelaide City Centre
+8811	area	Adelaide	Adelaide City Centre
+8812	area	Adelaide	Adelaide
+8813	area	Adelaide East	Adelaide East
+8814	area	Adelaide Northwest	Adelaide Northwest
+8815	area	Adelaide West	Adelaide West
+8816	area	Adelaide Northeast	Adelaide Northeast
+8817	area	Adelaide South	Adelaide South
+8818	area	Adelaide	McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide
+8819	area	Adelaide South	Adelaide South
+8820	area	Adelaide	Adelaide City Centre
+8821	area	Adelaide	Adelaide City Centre
+8822	area	Adelaide	Adelaide
+8823	area	Adelaide East	Adelaide East
+8824	area	Adelaide Northwest	Adelaide Northwest
+8825	area	Adelaide West	Adelaide West
+8826	area	Adelaide Northeast	Adelaide Northeast
+8827	area	Adelaide South	Adelaide South
+8828	area	Adelaide	McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide
+8829	area	Adelaide South	Adelaide South
+8830	area	Adelaide	Adelaide City Centre
+8831	area	Adelaide	Adelaide City Centre
+8832	area	Adelaide	Adelaide
+8833	area	Adelaide East	Adelaide East
+8834	area	Adelaide Northwest	Adelaide Northwest
+8835	area	Adelaide West	Adelaide West
+8836	area	Adelaide Northeast	Adelaide Northeast
+8837	area	Adelaide South	Adelaide South
+8838	area	Adelaide	McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide
+8839	area	Adelaide Northeast	Adelaide Northeast
+8840	area	Adelaide	Adelaide City Centre
+8841	area	Adelaide	Adelaide City Centre
+8842	area	Adelaide	Adelaide
+8843	area	Adelaide East	Adelaide East
+8844	area	Adelaide Northwest	Adelaide Northwest
+8845	area	Adelaide West	Adelaide West
+8846	area	Adelaide Northeast	Adelaide Northeast
+8847	area	Adelaide South	Adelaide South
+8848	area	Adelaide	McLaren Vale, Mt. Barker, Salisbury, Woodside, Adelaide
+8849	area	Adelaide South	Adelaide South
+885	area	Riverland	Riverland, Murraylands
+886	area	Ceduna	Ceduna
+887	area	Southeast	Southeast
+888	area	Mid North	Mid North
+889	area	Northern Territory	Northern Territory (Alice Springs, Darwin)
+890	area	Kalgoorlie	Kalgoorlie
+89162	area	Christmas Island	Christmas Island
+89164	area	Cocos/Keeling Islands	Cocos/Keeling Islands
+891.	area	Derby	Derby (including Cocos & Christmas Islands)
+8920	area	Perth	Wanneroo, Perth North/Northwest
+8921	area	Perth City & Southwest	Perth City & Southwest
+8922	area	Perth City & Southwest	Perth City & Southwest
+8923	area	Perth City & Southwest	Perth City & Southwest
+8924	area	Perth North/Northwest	Perth North/Northwest
+8925	area	Perth East/Southeast	Perth East/Southeast
+8926	area	Perth	Perth
+8927	area	Perth Northeast	Perth Northeast
+8928	area	Perth West	Perth West
+8929	area	Perth	Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth
+8930	area	Perth	Wanneroo, Perth North/Northwest
+8931	area	Perth City & Southwest	Perth City & Southwest
+8932	area	Perth City & Southwest	Perth City & Southwest
+8933	area	Perth City & Southwest	Perth City & Southwest
+8934	area	Perth North/Northwest	Perth North/Northwest
+8935	area	Perth East/Southeast	Perth East/Southeast
+8936	area	Perth	Perth
+8937	area	Perth Northeast	Perth Northeast
+8938	area	Perth West	Perth West
+8939	area	Perth	Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth
+8940	area	Perth	Wanneroo, Perth North/Northwest
+8941	area	Perth City & Southwest	Perth City & Southwest
+8942	area	Perth City & Southwest	Perth City & Southwest
+8943	area	Perth City & Southwest	Perth City & Southwest
+8944	area	Perth North/Northwest	Perth North/Northwest
+8945	area	Perth East/Southeast	Perth East/Southeast
+8946	area	Perth	Perth
+8947	area	Perth Northeast	Perth Northeast
+8948	area	Perth West	Perth West
+8949	area	Perth	Armadale, Herne Hill, Kalamunda, Rottnest Island, Spearwood, Perth
+895	area	Bullsbrook East	Bullsbrook East
+896	area	Moora	Moora
+897	area	Bridgetown	Bridgetown
+898	area	Albany	Albany
+899	area	Geraldton	Geraldton

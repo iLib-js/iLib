@@ -78,4 +78,7 @@ normstring.js
 mapper.js
 maps/casemapper.js
 glyphstring.js
+phone/phonenum.js
+phone/phonefmt.js
+phone/phonegeo.js
 */

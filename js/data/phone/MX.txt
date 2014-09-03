@@ -1,0 +1,424 @@
+^+	plus
+^00	idd
+^09	idd
+^01	trunk
+^.	start
+
+^044	cell
+^045	cell
+^02	service
+^030	service
+^031	service
+^040	service
+^050	service
+^060	service
+^066	service
+^070	service
+^071	service
+^080	service
+800	service
+^1	cell
+
+222	area	Puebla	Amozoc, Puebla, San Andres Calpan, San Miguel Canoa, Puebla
+223	area	Puebla	Magdalena Tetela, San Pablo Zitlaltepec, Tepatlaxco de Hidalgo, Tepeaca, Puebla
+224	area	Puebla	Atoyatempan, San Juan Ixcaquixtla, Tecali de Herrera, Tochtepec, Puebla
+225	area	Veracruz	Tlapacoyan, Veracruz
+226	area	Veracruz	Altotonga, Jalacingo, Veracruz
+227	area	Puebla	Huejotzingo, San Buenaventura Nealtican, Puebla
+228	area	Veracruz	Jalapa, Tuzamapan, Veracruz
+229	area	Veracruz	Veracruz, Veracruz
+231	area	Puebla	Teteles, Teziutlan, Puebla
+232	area	Veracruz	La Vigueta, Martinez de la Torre, Veracruz
+233	area	Puebla	Cuetzalan, Tlatlauquitepec, Zacapoaxtla, Zaragoza, Puebla
+235	area	Veracruz	Misantla, Nautla, San Rafael, Vega de Alatorre, Veracruz
+236	area	Oaxaca	Ajalpan, Calipan, Cuicatlan, Huautla de Jimenez, Teotitlan del Camino, Oaxaca
+237	area	Puebla	San Gabriel Chilac, San Simon Yehualtepec, Tlacotepec, Puebla
+238	area	Puebla	Santiago Miahuatlan, Tehuacan, Puebla
+241	area	Tlaxcala	Apizaco, Hueyotlipan, San Martin Xaltocan, San Salvador Tzonpantepec, Tlaxco, Tlaxcala
+243	area	Puebla	Atencingo, Izucar de Matamoros, San Felipe Ayutla, Puebla
+244	area	Puebla	Atlixco, La Venta Cacaloxuchil, Tochimilco, Puebla
+245	area	Puebla	Ciudad Serdan, Esperanza, Tlachichuca, Puebla
+246	area	Tlaxcala	Santa Ana Nopalucan, Santa Maria Nativitas, Tlaxcala, Zacatelco, Tlaxcala
+247	area	Tlaxcala	Huamantla, San Cosme Xalostoc, Tlaxcala
+248	area	Puebla	San Felipe Ixtacuixtla, San Felipe Teotlalcingo, San Lorenzo Chiautzingo, San Lucas el Grande, San Martin Texmelucan, San Mateo Tepetitla, San Salvador el Verde, Santa Rita Tlahuapan, Puebla
+249	area	Puebla	Acatzingo, Cañada Morelos, Los Reyes de Juarez, Palmar de Bravo, Palmarito Tochapan, San Hipolito Zoltepec, San Pablo de Las Tunas, San Salvador el Seco, Tecamachalco, Puebla
+271	area	Veracruz	Amatlan, Cordoba, Potrero, Veracruz
+272	area	Veracruz	Maltrata, Orizaba, Veracruz
+273	area	Veracruz	Chocaman, Coscomatepec, Huatusco, Ixhuatlan del Cafe, Paso del Macho, Villa Tejeda (Camaron), Veracruz
+274	area	Oaxaca	Acatlan de Perez Figueroa, Temascal, Tierra Blanca, Vicente Camalote, Oaxaca
+275	area	Puebla	Chiautla de Tapia, Chinantla-Piaxtla, Huehuetlan el Chico, Tecomatlan, Tehuitzingo, Tulcingo del Valle, Puebla
+276	area	Puebla	Libres, Oriental, San Lorenzo Cuapiaxtla, Villa Rafael Lara Grajales, Puebla
+278	area	Veracruz	Omealca, San Juan de la Punta, Tezonapa, Yanga, Zongolica, Veracruz
+279	area	Veracruz	Actopan, Alto Lucero, Cosautlan de Carvajal, Estanzuela, Juchique de Ferrer, Naolinco de Victoria, Rinconada, Teocelo, Villa Emiliano Zapata, Veracruz
+281	area	Oaxaca	Loma Bonita, Oaxaca
+282	area	Veracruz	Alchichica, Guadalupe Victoria, Perote, Profesor Rafael Ramirez, Veracruz
+283	area	Veracruz	Isla, Playa Vicente, Rodriguez Clara, San Juan Bautista Valle Nacional, Villa Azueta, Veracruz
+284	area	Veracruz	Angel Rosario Cabada, Lerdo de Tejada, Veracruz
+285	area	Veracruz	Ignacio de la Llave, Jamapa, Manlio Fabio Altamirano, Medellin de Bravo, Paso de Ovejas, Piedras Negras, Soledad de Doblado, Veracruz
+287	area	Oaxaca	Otatitlan, Papaloapan, San Felipe Jalapa de Diaz, San Lucas Ojitlan, Tuxtepec, Oaxaca
+288	area	Veracruz	Chacaltianguis, Cosamaloapan, Tlacojalpan, Tlacotalpan, Tres Valles, Veracruz
+294	area	Veracruz	Catemaco, Juan Diaz Covarrubias, San Andres Tuxtla, Santiago Tuxtla, Veracruz
+296	area	Veracruz	Campamento Farallon, La Antigua, Villa Cardel, Zempoala, Veracruz
+297	area	Veracruz	Alvarado, Veracruz
+311	area	Nayarit	Bellavista, Francisco I. Madero, Tepic, Nayarit
+312	area	Colima	Colima, Los Tepames, Colima
+313	area	Colima	Armeria, Cerro de Ortega, Coahuayana de Hidalgo, Coquimatlan, Cuyutlan, Madrid, Tecoman, Colima
+314	area	Colima	Manzanillo, Peña Colorada, Colima
+315	area	Jalisco	Careyes, Cihuatlan, La Manzanilla, San Patricio Melaque, Jalisco
+316	area	Jalisco	Ayutla, Cuautla, San Clemente, Union de Tula, Jalisco
+317	area	Jalisco	Autlan, El Chante, Jalisco
+318	area	Jalisco	Cofradia de Suchitlan, Cuauhtemoc, La Higuera, Pihuamo, Queseria, Tonila, Jalisco
+319	area	Nayarit	Chilapa, Palma Grande, Rosa Morada, Ruiz, Tuxpan, Nayarit
+321	area	Jalisco	El Grullo, El Limon, Jalisco
+322	area	Jalisco	Campamento Sarh, Ixtapa, Jose Maria Morelos, Nuevo Vallarta, Puerto Vallarta, Tomatlan, Jalisco
+323	area	Nayarit	Estacion Yago, Guadalupe Victoria, La Presa, La Trozada (Villa Juarez), Pozo de Ibarra, San Blas, Santiago Ixcuintla, Sentispac, Villa Hidalgo, Nayarit
+324	area	Nayarit	Ahuacatlan, Amatlan de Cañas, Ixtlan del Rio, Jala, Nayarit
+325	area	Nayarit	Acaponeta, Nayarit
+326	area	Jalisco	Andres Figueroa, Atemajac de Brizuela, Zacoalco, Jalisco
+327	area	Nayarit	Compostela, Jalcocotan, Las Varas, Mecatan, Rincon de Guayabitos, San Pedro Lagunillas, Santa Maria del Oro, Zacoalpan, Nayarit
+328	area	Michoacán	Churintzio, Ecuandureo, Ixtlan de Los Hervores, La Luz, Vista Hermosa, Michoacán
+329	area	Nayarit	Bucerias, San Jose del Valle, San Juan de Abajo, Valle de Banderas, Nayarit
+33	area	Jalisco	Guadalajara, Jalisco
+341	area	Jalisco	Ciudad Guzman, Jalisco
+342	area	Jalisco	Gomez Farias, Sayula, Jalisco
+343	area	Jalisco	Ejutla, Tapalpa, Toliman, Tonaya, Venustiano Carranza, Jalisco
+344	area	Jalisco	Mexticacan, Yahualica, Jalisco
+345	area	Jalisco	Ayotlan, Betania, Degollado, La Concepcion, Jalisco
+346	area	Jalisco	Nochistlan, Teocaltiche, Jalisco
+347	area	Jalisco	San Julian, San Miguel el Alto, Valle de Guadalupe, Jalisco
+348	area	Jalisco	Arandas, Jesus Maria, Josefino de Allende, San Ignacio Cerro Gordo, Santa Maria del Valle, Santiaguito de Velazquez, Jalisco
+349	area	Jalisco	Atengo, Juchitlan, Quila, Tecolotlan, Tenamaxtlan, Jalisco
+351	area	Michoacán	Ario de Rayon, Zamora, Michoacán
+352	area	Michoacán	La Piedad, Michoacán
+353	area	Michoacán	La Palma, Pajacuaran, Sahuayo, Venustiano Carranza, Michoacán
+354	area	Michoacán	Los Reyes, Periban de Ramos, Tinguindin, Tocumbo, Michoacán
+355	area	Michoacán	Chilchota, San Antonio Ocampo, Tangancicuaro, Michoacán
+356	area	Michoacán	Tanhuato, Yurecuaro, Michoacán
+357	area	Jalisco	Casimiro Castillo, La Huerta, Lo Arado, Los Tecomates, Tequesquitlan, Villa Purificacion, Jalisco
+358	area	Jalisco	Tamazula, Zapoltitic, Jalisco
+371	area	Jalisco	Atenquique, Tecalitlan, Tuxpan, Jalisco
+372	area	Jalisco	Amacueca, Cofradia, Concepcion de Buenos Aires, La Manzanilla de la Paz, Teocuitatlan de Corona, Jalisco
+373	area	Jalisco	Cuquio, Ixtlahuacan del Rio, Zapotlanejo, Jalisco
+374	area	Jalisco	Amatitan, El Arenal, Tequila, Jalisco
+375	area	Jalisco	Ameca, Jalisco
+376	area	Jalisco	Atequiza, Chapala, Ixtlahuacan de Los Membrillos, Mezcala, San Juan Tecomatlan, San Luis Soyotlan, Tizapan el Alto, Jalisco
+377	area	Jalisco	Cocula, Estipac, Jalisco
+378	area	Jalisco	Acatic, Capilla de Guadalupe, Capilla de Milpillas, Pegueros, Tepatitlan, Jalisco
+379	area	Michoacán	Numaran, Penjamillo, San Miguel Cuyutlan, Santa Cruz de Las Flores, Tlajomulco, Zinaparo, Michoacán
+381	area	Michoacán	Cojumatlan, San Jose de Gracia, Michoacán
+382	area	Jalisco	Mazamitla, Quitupan, Valle de Juarez, Jalisco
+383	area	Michoacán	Chavinda, Santiago Tangamandapio, Villamar, Michoacán
+384	area	Jalisco	Tala, Teuchitlan, Jalisco
+385	area	Jalisco	Chiquilistlan, San Martin Hidalgo, Tamazulita, Jalisco
+386	area	Jalisco	Ahualulco, Antonio Escobedo, Etzatlan, Hostotipaquillo, Magdalena, San Marcos, Jalisco
+387	area	Jalisco	Acatlan de Juarez, Jocotepec, San Juan Cosala, Villa Corona, Zapotitlan, Jalisco
+388	area	Jalisco	Mascota, Mixtlan, Talpa de Allende, Jalisco
+389	area	Nayarit	Quimichis, San Felipe Aztatan, Tecuala, Nayarit
+391	area	Jalisco	Atotonilco el Alto, Las Margaritas, Poncitlan, San Antonio Fernandez, San Jose de Gracia, Tototlan, Jalisco
+392	area	Jalisco	Jamay, Ocotlan, Jalisco
+393	area	Jalisco	La Barca, San Jose Casas Caidas, San Ramon, Jalisco
+394	area	Michoacán	Cotija de la Paz, Michoacán
+395	area	Jalisco	San Diego de Alejandria, San Juan de Los Lagos, Tlacuitapan, Union de San Antonio, Jalisco
+411	area	Guanajuato	Cañada de Caracheo, Cortazar, Jaral del Progreso, San Pablo Casacuaran, Yuriria, Guanajuato
+412	area	Guanajuato	Comonfort, Empalme Escobedo, Juventino Rosas, Sarabia, Villagran, Guanajuato
+413	area	Guanajuato	Apaseo el Alto, Apaseo el Grande, Guanajuato
+414	area	Quintana Roo	Tequisquiapan, Quintana Roo
+415	area	Guanajuato	San Miguel Allende, Guanajuato
+417	area	Guanajuato	Acambaro, Iramuco, Nuevo Chupicuaro, Paracuaro, Guanajuato
+418	area	Guanajuato	Dolores Hidalgo, San Diego de la Union, Guanajuato
+419	area	Guanajuato	Colon, Doctor Mora, San Jose Iturbide, Guanajuato
+421	area	Guanajuato	Coroneo, Jerecuaro, Tarandacuao, Guanajuato
+422	area	Michoacán	Ario de Rosales, Gabriel Zamora, Taretan, Michoacán
+423	area	Michoacán	Cheran, Paracho, Tingambato, Ziracuaretiro, Michoacán
+424	area	Michoacán	Coalcoman, El Ahuaje, Tepalcatepec, Michoacán
+425	area	Michoacán	Antunez, La Huacana, Nueva Italia, Tancitaro, Michoacán
+426	area	Michoacán	Aguililla, Buenavista, Felipe Carrillo Puerto, Michoacán
+427	area	Quintana Roo	Polotitlan, San Juan del Rio, Quintana Roo
+428	area	Guanajuato	Ocampo, San Felipe, Guanajuato
+429	area	Guanajuato	Abasolo, Cueramaro, Huanimaro, Pueblo Nuevo, Guanajuato
+431	area	Jalisco	Jalostotitlan, Villa Obregon, Jalisco
+432	area	Guanajuato	Ciudad Manuel Doblado, Romita, Guanajuato
+433	area	Zacatecas	Gonzalez Ortega, Miguel Auza, Sombrerete, Zacatecas
+434	area	Michoacán	Acuitzio del Canje, Erongaricuaro, Patzcuaro, Villa Escalante (S.c.del Cobre), Michoacán
+435	area	Michoacán	Huetamo, San Lucas, Michoacán
+436	area	Michoacán	Zacapu, Michoacán
+437	area	Jalisco	Chimaltitan, Momax, Tepechitlan, Tlaltenango, Totatiche, Villa Guerrero, Jalisco
+438	area	Michoacán	Cerano, Pastor Ortiz, Puruandiro, Villa Morelos, Michoacán
+441	area	Quintana Roo	Cadereyta, Ezequiel Montes, Jalpan de Serra, Pinal de Amoles, Quintana Roo
+442	area	Quintana Roo	Bernardo Quintana, Juriquilla, La Cruz, Queretaro, Santa Rosa de Jauregui, Tlacote el Bajo, Quintana Roo
+443	area	Michoacán	Morelia, Tarimbaro, Michoacán
+444	area	San Luis Potosí	San Luis Potosi, San Luis Potosí
+445	area	Guanajuato	Moroleon, Guanajuato
+447	area	Michoacán	Contepec, Maravatio, Michoacán
+448	area	Quintana Roo	Amealco, Huimilpan, Pedro Escobedo, Quintana Roo
+449	area	Aguascalientes	Aguascalientes, Jesus Maria, Aguascalientes
+451	area	Michoacán	Charo, Indaparapeo, Querendaro, Valle de Juarez, Zinapecuaro, Michoacán
+452	area	Michoacán	Nuevo San Juan Parangaricutiro, Uruapan, Michoacán
+453	area	Michoacán	Apatzingan, Michoacán
+454	area	Michoacán	Angamacutiro, Coeneo de la Libertad, Copandaro, Huaniqueo de Morales, Panindicuaro, Quiroga, Villa Jimenez, Michoacán
+455	area	Michoacán	Alvaro Obregon, Cuitzeo del Porvenir, Huandacareo, Santa Ana Maya, Michoacán
+456	area	Guanajuato	Valle de Santiago, Guanajuato
+457	area	Zacatecas	Chalchiuites, Huejucar, Huejuquilla el Alto, Mezquitic, Monte Escobedo, Valparaiso, Zacatecas
+458	area	Zacatecas	Ciudad Cuauhtemoc, Felipe Pescador, Luis Moya, Ojo Caliente, Villa de Cos, Zacatecas
+459	area	Michoacán	Caracuaro, Pedernales, Puruaran, Tacambaro, Tiquicheo, Michoacán
+461	area	Guanajuato	Celaya, Rincon de Tamayo, San Juan de la Vega, Guanajuato
+462	area	Guanajuato	Irapuato, Guanajuato
+463	area	Zacatecas	Jalpa, Tabasco, Zacatecas
+464	area	Guanajuato	Salamanca, Guanajuato
+465	area	Aguascalientes	Pabellon de Arteaga, Rincon de Romos, San Francisco de Los Romos, Aguascalientes
+466	area	Guanajuato	El Sabino, Salvatierra, San Nicolas de Los Agustinos, San Pedro de Los Naranjos, Santiago Maravatio, Tarimoro, Guanajuato
+467	area	Zacatecas	Juchipila, Moyahua, Teul de Gonzalez Ortega, Zacatecas
+468	area	Guanajuato	San Luis de la Paz, Guanajuato
+469	area	Guanajuato	Buenavista de Cortez, Penjamo, Guanajuato
+471	area	Michoacán	Purepero, Tlazazalca, Michoacán
+472	area	Guanajuato	Silao, Guanajuato
+473	area	Guanajuato	Guanajuato, Guanajuato
+474	area	Jalisco	Lagos de Moreno, Paso de Cuarenta, Jalisco
+475	area	Jalisco	Bajio de San Jose, Encarnacion de Diaz, Jalisco
+476	area	Guanajuato	San Francisco del Rincon, Guanajuato
+477	area	Guanajuato	Leon, Guanajuato
+478	area	Zacatecas	Calera Victor Rosales, Zacatecas
+481	area	San Luis Potosí	Ciudad Valles, San Luis Potosí
+482	area	San Luis Potosí	Aquismon, Ciudad del Maiz, El Naranjo, Tamasopo, Tambaca, Tancanhuitz, San Luis Potosí
+483	area	San Luis Potosí	Matlapa, San Felipe Orizatlan, Tamazunchale, San Luis Potosí
+485	area	San Luis Potosí	San Ciro de Acosta, Santa Maria del Rio, Tierra Nueva, Villa de Arriaga, Villa de Reyes, San Luis Potosí
+486	area	San Luis Potosí	Cerritos, Charcas, Venado, Villa de Arista, Villa Juarez, San Luis Potosí
+487	area	San Luis Potosí	Cardenas, Rayon, Rio Verde, San Luis Potosí
+488	area	San Luis Potosí	Cedral, Doctor Arroyo, Matehuala, San Luis Potosí
+489	area	San Luis Potosí	Axtla de Terrazas, El Higo, San Vicente Tancuayalab, Tamuin, Tanquian de Escobedo, Xilitla, San Luis Potosí
+492	area	Zacatecas	Morelos, Tacoaleche, Trancoso, Zacatecas, Zacatecas
+493	area	Zacatecas	Fresnillo, Zacatecas
+494	area	Zacatecas	Jerez de Garcia Salinas, Zacatecas
+495	area	Jalisco	Calvillo, Villa Hidalgo, Jalisco
+496	area	Zacatecas	Loreto, Ojuelos, Pinos, Salinas de Hidalgo, Villa Gonzalez Ortega, Villa Hidalgo, Zacatecas
+498	area	Zacatecas	Juan Aldama, Nieves, Rio Grande, Sain el Alto, Zacatecas
+499	area	Zacatecas	Colotlan, Villanueva, Zacatecas
+55	area	Mexico City	Mexico City, Federal District
+586	area	México	Tlalmanalco, México
+587	area	México	Amecameca, México
+588	area	México	Dongu, Santa Maria Magdalena Cahuacan, Transfiguracion, Villa del Carbon, México
+589	area	México	Juchitepec, Ozumba, México
+591	area	México	San Bartolo Cuautlalpan, Santa Maria Cuevas, Tequixquiac, Zumpango, México
+592	area	México	Jaltepec, Nopaltepec, Otumba, México
+593	area	México	Coyotepec, Huehuetoca, Teoloyucan, México
+594	area	México	San Juan Teotihuacan, Tepexpan, Tezoyuca, Xometla, México
+595	area	México	Cuautlalpan, La Purificacion, San Vicente Chicoloapan, Tepetlaoxtoc, Texcoco, México
+596	area	México	Los Reyes Acozac, San Luis Tecuautitlan, Temascalapa, México
+599	area	México	Apaxco, San Francisco Zacacalco, Santa Maria Ajoloapan, Tlapanaloya, México
+612	area	Baja California Sur	La Paz, Todos Santos, Baja California Sur
+613	area	Baja California Sur	Ciudad Constitucion, Loreto, Puerto Adolfo Lopez Mateos, Puerto San Carlos, Villa Insurgentes, Baja California Sur
+614	area	Chihuahua	Chihuahua, General Trias, Villa Aldama, Chihuahua
+615	area	Baja California Sur	Bahia de Tortugas, Guerrero Negro, Mulege, San Ignacio, Santa Rosalia, Baja California Sur
+616	area	Baja California	Col. Vicente Guerrero, Isla de Cedros, San Quintin, Baja California
+618	area	Durango	Colonia Hidalgo, Durango, Durango
+621	area	Chihuahua	Julimes, Las Varas, Naica, Saucillo, Chihuahua
+622	area	Sonora	Guaymas, San Carlos (Nuevo Guaymas), Sonora
+623	area	Sonora	Aconchi, Banamichi, Baviacora, Carbo, Huepac, Ures, Sonora
+624	area	Baja California Sur	Buenavista, Cabo del Sol, Cabo San Lucas, San Jose del Cabo, Baja California Sur
+625	area	Chihuahua	Ciudad Cuauhtemoc, Colonia Alvaro Obregon, Colonia Anahuac, Chihuahua
+626	area	Chihuahua	Ojinaga, Chihuahua
+627	area	Chihuahua	Parral, Chihuahua
+628	area	Chihuahua	Pueblito Allende, San Francisco del Oro, Santa Barbara, Valle de Allende, Villa Matamoros, Chihuahua
+629	area	Chihuahua	Ceballos, Ciudad Jimenez, Villa Lopez, Chihuahua
+631	area	Sonora	Nogales, Sonora
+632	area	Sonora	Imuris, Magdalena, Sonora
+633	area	Sonora	Agua Prieta, Esqueda, Fronteras, Naco, Sonora
+634	area	Sonora	Arizpe, Cumpas, Huachinera, Huasabas, Moctezuma, Nacozari, Sahuaripa, Tepache, Villa Hidalgo, Sonora
+635	area	Chihuahua	Ciudad Guerrero, Creel, La Junta, San Juanito, Chihuahua
+636	area	Chihuahua	Buenaventura, Colonia Juarez, Colonia Lebaron, Ejido Benito Juarez, Ignacio Zaragoza, Janos, La Ascencion, Nuevo Casas Grandes, Ricardo Flores Magon, Chihuahua
+637	area	Sonora	Altar, Caborca, Sonora
+638	area	Sonora	Puerto Peñasco, Sonora
+639	area	Chihuahua	Ciudad delicias, Lazaro Cardenas, Rosales, Chihuahua
+641	area	Sonora	Benjamin Hill, Santa Ana, Sonora
+642	area	Sonora	Navojoa, Pueblo Mayo, Sonora
+643	area	Sonora	Altos de Jecopaco, Buaysiacobe, Colonia Irrigacion (Villa Juarez), Ejido 31 de Octubre, Ejido Francisco Javier Mina, Potam, Pueblo Yaqui, Quetchehueca, San Ignacio Rio Muerto, San Jose de Bacum, Vicam, Sonora
+644	area	Sonora	Bacum, Ciudad Obregon, Ejido Cuauhtemoc, Marte R. Gomez (El Tobarito), Sonora
+645	area	Sonora	Cananea, Sonora
+646	area	Baja California	Ejido Esteban Cantu, Ensenada, La Mision, Maneadero, Baja California
+647	area	Sonora	Alamos, Bacame Nuevo, Bacobampo, Etchojoa, Huatabampo, Yavaros, Sonora
+648	area	Chihuahua	Boquilla, Ciudad Camargo, Chihuahua
+649	area	Durango	Guachochi, Guadalupe Y Calvo, Las Nieves, San Pablo Balleza, Santa Maria del Oro, Valle de Zaragoza, Villa Ocampo, Durango
+651	area	Sonora	Sonoita, Sonora
+652	area	Chihuahua	Ciudad Madera, Ejido el Largo, Gomez Farias, Nicolas Bravo, Chihuahua
+653	area	Sonora	Luis B. Sanchez, San Luis Rio Colorado, Sonora
+656	area	Chihuahua	Ciudad Juarez, Doctor Porfirio Parra, El Porvenir, General Rodrigo M. de Quevedo, Guadalupe Distrito de Bravos, Praxedis Guerrero, Villa Ahumada, Chihuahua
+658	area	Baja California	Benito Juarez, Ciudad Morelos, Guadalupe Victoria, Hermosillo, Queretaro, Saltillo, Baja California
+659	area	Chihuahua	Bachiniva, El Molino, Matachic, Oscar Soto Maynes, Temosachic, Chihuahua
+661	area	Baja California	Primo Tapia, Rosarito, Baja California
+662	area	Sonora	Bahia Kino, Distrito Miguel Aleman, Hermosillo, San Pedro el Saucito, Sonora
+665	area	Baja California	Tecate, Baja California
+666	area	Baja California	Tijuana, Baja California
+667	area	Sinaloa	Costa Rica, Culiacan, Culiacancito, El Dorado, El Salado (Culiacan), Pueblos Unidos, Quila, Villa Adolfo Lopez Mateos, Sinaloa
+668	area	Sinaloa	Ahome, Alfonso G. Calderon, Campo Numero 35 (Cerillos), Chihuahuita, Emiliano Zapata (Bagojo) I, General Chavez Talamantes, Higuera de Zaragoza, Los Mochis, Poblado No 5, San Miguel Zapotitlan, Topolobampo, Villa Gustavo Diaz Ordaz, Sinaloa
+669	area	Sinaloa	El Roble, Mazatlan, Villa Union, Sinaloa
+671	area	Coahuila	Cuencame de Ceniceros, Nazas, Paso Nacional, San Juan de Guadalupe, San Luis del Cordero, Viesca, Coahuila
+672	area	Sinaloa	Navolato, Villa Angel Flores, Villa Juarez, Sinaloa
+673	area	Sinaloa	Guamuchil, Mocorito, Villa Benito Juarez, Sinaloa
+674	area	Durango	Guanacevi, Santiago Papasquiaro, Tepehuanes, Durango
+675	area	Durango	El Salto, La Ciudad, Nombre de Dios, Suchil, Vicente Guerrero, Villa Union, Durango
+676	area	Durango	Guadalupe Victoria, Ignacio Allende, Peñon Blanco, Durango
+677	area	Durango	Canatlan, Francisco I. Madero, Nuevo Ideal, Rodeo, San Juan del Rio, Durango
+686	area	Baja California	La Rumorosa, Mexicali, Michoacan de Ocampo, Nuevo Leon, San Felipe, Sinaloa, Baja California
+687	area	Sinaloa	Adolfo Ruiz Cortinez, Bachoco Pueblo, Cerro Cabezon, Corerepe, Cubilete, El Burrion, El Huitussi, El Mezquite, Estacion Bamoa, Estacion Naranjo, Gabriel Leyva, Genaro Estrada, Guasave, Juan Jose Rios, La Trinidad, Leon Fonseca (Verdura), Nio, Sinaloa de Leyva, Tamazula, Sinaloa
+694	area	Sinaloa	Agua Caliente de Garate, Agua Verde, Concordia, El Apoderado, Rosario, Sinaloa
+695	area	Sinaloa	Escuinapa, Ojo de Agua Palmilla, Teacapan, Sinaloa
+696	area	Sinaloa	Cosala, Coyotitan, Dimas, La Cruz, San Ignacio, Sinaloa
+697	area	Sinaloa	Angostura, Badiraguato, Caimanero, Colonia Agricola Independencia, Colonia Agricola Mexico, La Reforma, Pericos, Sinaloa
+698	area	Sinaloa	Charay, Choix, El Fuerte, El Jahuara, Mochicahui (Constancia), San Blas, Sinaloa
+711	area	Michoacán	El Oro, Tlalpujahua, Michoacán
+712	area	México	Atlacomulco, Ixtlahuaca, Jiquipilco, Jocotitlan, San Felipe del Progreso, San Pedro de Los Baños, Santiago Yeche, México
+713	area	México	Santiago Tianguistenco, México
+714	area	México	Chalma, Malinalco, Tenancingo, Villa Guerrero, México
+715	area	Michoacán	Angangueo, Jungapeo, Ocampo, Zitacuaro, Michoacán
+716	area	México	Almoloya de Alquisiras, Amatepec, Sultepec, Temascaltepec, Texcaltitlan, México
+717	area	México	Atlatlahuaca, San Antonio la Isla, Tenango del Valle, México
+718	area	México	Acambay, Aculco, San Francisco Tepeolulco, Temascalcingo, México
+719	area	México	San Francisco Xonacatlan, Temoaya, México
+721	area	México	Ixtapan de la Sal, México
+722	area	México	Calimaya de Diaz, Mexicaltzingo, San Pablo Autopan, Santa Maria Nativitas, Toluca, México
+723	area	México	Coatepec Harinas, México
+724	area	México	Luvianos, Tejupilco de Hidalgo, México
+725	area	México	Almoloya de Juarez, Santa Maria del Monte, México
+726	area	México	Amanalco de Becerra, Colorines, Valle de Bravo, Villa Victoria, México
+727	area	Guerrero	Atenango del Rio, Buenavista de Cuellar, Huitzuco, San Vicente Palapa, Tepecoacuilco de Trujano, Guerrero
+728	area	México	Lerma, Santa Maria Atarasquillo, México
+729	area	México	Huixquilucan, Magdalena Chichicaspa, Salazar, San Francisco Chimalpa, México
+731	area	Morelos	Amayuca, Tetela del Volcan, Yecapixtla, Zacualpan de Amilpas, Morelos
+732	area	Guerrero	Ajuchitlan de Progreso, Arcelia, Cutzamala de Pinzon, Tlapehuala, Guerrero
+733	area	Guerrero	Iguala, Guerrero
+734	area	Morelos	Jojutla, Tequesquitengo, Zacatepec, Morelos
+735	area	Morelos	Cuautla, Jonacatepec, Morelos
+736	area	Guerrero	Apaxtla de Castrejon, Cocula, Teloloapan, Tlacotepec, Guerrero
+737	area	Morelos	Miacatlan, Ticuman, Tlaltizapan, Xoxocotla, Morelos
+738	area	Hidalgo	Mixquiahuala, Tepatepec, Hidalgo
+739	area	Morelos	Huitzilac, Tepoztlan, Morelos
+741	area	Guerrero	Copala, Cuajinicuilapa, Marquelia, Ometepec, San Luis Acatlan, Guerrero
+742	area	Guerrero	Atoyac de Alvarez, Papanoa, San Luis de la Loma, Tecpan de Galeana, Guerrero
+743	area	Hidalgo	San Agustin Tlaxiaca, Villa Tezontepec, Zapotlan de Juarez, Zempoala, Hidalgo
+744	area	Guerrero	Acapulco, Xaltianguis, Guerrero
+745	area	Guerrero	Ayutla de Los Libres, Cruz Grande, El Ocotito, San Marcos, Tierra Colorada, Guerrero
+746	area	Puebla	Castillo de Teayo, Chicontepec, Estacion San Diego, Metlaltoyuca, Tihuatlan, Venustiano Carranza, Puebla
+747	area	Guerrero	Chihualco, Chilpancingo, Mazatlan, Zumpango del Rio, Guerrero
+748	area	Tlaxcala	Apam, Emiliano Zapata, Nanacamilpa, Tlaxcala
+749	area	Tlaxcala	Calpulalpan, Tlaxcala
+751	area	Morelos	Amacuzac, Coatlan del Rio, Puente de Ixtla, Tehuixtla, Tilzapotla, Morelos
+752	area	Morelos	Atlatlahucan, Oacalco, Oaxtepec, Tlayacapan, Yautepec, Morelos
+753	area	Michoacán	Arteaga, Ciudad Lazaro Cardenas, La Mira, Las Guacamayas, Playa Azul, Michoacán
+754	area	Guerrero	Atliaca, Mochitlan, Tixtla, Guerrero
+755	area	Guerrero	Ixtapa, Zihuatanejo, Guerrero
+756	area	Guerrero	Chilapa, Olinala, Guerrero
+757	area	Guerrero	Huamuxtitlan, Tlapa de Comonfort, Guerrero
+758	area	Guerrero	Petatlan, San Jeronimito, Guerrero
+759	area	Hidalgo	Ixmiquilpan, Tasquillo, Zimapan, Hidalgo
+761	area	Hidalgo	Huichapan, Jilotepec, Tecozautla, Hidalgo
+762	area	Guerrero	Taxco, Guerrero
+763	area	Hidalgo	Tezontepec de Aldama, Tlahuelilpan, Hidalgo
+764	area	Puebla	Necaxa, Villa Avila Camacho, Xicotepec de Juarez, Puebla
+765	area	Veracruz	Alamo Temapache, Alazan Potrero del Llano, Veracruz
+766	area	Veracruz	Gutierrez Zamora, Tecolutla, Veracruz
+767	area	Guerrero	Ciudad Altamirano, Paso de Arena, Zirandaro, Guerrero
+768	area	Veracruz	Naranjos, Tamalin, Tamiahua, Veracruz
+769	area	Morelos	Axochiapan, Tenextepango, Tepalcingo, Morelos
+771	area	Hidalgo	Pachuca, Real del Monte, Hidalgo
+772	area	Hidalgo	Actopan, Hidalgo
+773	area	Hidalgo	Cruz Azul (San Miguel Vindho), Parque Ind. Tepeji del Rio, Tepeji del Rio, Tula, Hidalgo
+774	area	Hidalgo	Atotonilco el Grande, Calnali, Huayacocotla, Molango, Tianguistengo, Tlanchinol, Zacualtipan, Hidalgo
+775	area	Hidalgo	Tulancingo, Hidalgo
+776	area	Puebla	Acaxochitlan, Ahuazotepec, Huauchinango, Puebla
+777	area	Morelos	Cuernavaca, Santa Fe, Vigilante (Emiliano Zapata), Xochitepec, Morelos
+778	area	Hidalgo	Ajacuba, Atotonilco de Tula, Tlaxcoapan, Hidalgo
+779	area	Hidalgo	Tizayuca, Hidalgo
+781	area	Guerrero	Coyuca de Benitez, San Jeronimo de Juarez, Guerrero
+782	area	Veracruz	Poza Rica, Veracruz
+783	area	Veracruz	Tuxpan, Veracruz
+784	area	Veracruz	Agua Dulce Papantla, Cazones de Herrera, Coyutla, Entabladero, Papantla, Veracruz
+785	area	Veracruz	Cerro Azul, Citlaltepec, Tepetzintla, Veracruz
+786	area	Michoacán	Ciudad Hidalgo, Tuxpan, Michoacán
+789	area	Veracruz	Huejutla de Reyes, Platon Sanchez, Tantoyuca, Tempoal, Veracruz
+791	area	Hidalgo	Ciudad Sahagun, Hidalgo
+797	area	Puebla	Chignahuapan, Tetela de Ocampo, Zacatlan, Puebla
+81	area	Nuevo León	Monterrey, Nuevo León
+821	area	Nuevo León	Hualahuises, Linares, Nuevo León
+823	area	Nuevo León	China, General Bravo, Los Herreras, Los Ramones, Nuevo León
+824	area	Nuevo León	Sabinas Hidalgo, Nuevo León
+825	area	Nuevo León	Cienega de Flores, Doctor Gonzalez, General Zuazua, Marin, Pesqueria, Nuevo León
+826	area	Nuevo León	Allende, Galeana, General Teran, Montemorelos, Nuevo León
+827	area	Nuevo León	Santiago (El Cercado), Nuevo León
+828	area	Nuevo León	Cadereyta, Nuevo León
+829	area	Nuevo León	Bustamante, Hidalgo, Mina, Villa Aldama, Nuevo León
+831	area	Tamaulipas	Ciudad Mante, Los Aztecas, Tamaulipas
+832	area	Tamaulipas	Antiguo Morelos, Jaumave, Llera de Canales, Ocampo, Tula, Xicotencatl, Tamaulipas
+833	area	Tamaulipas	Tampico, Tamaulipas
+834	area	Tamaulipas	Ciudad Victoria, Tamaulipas
+835	area	Tamaulipas	Abasolo, El Barretal, Estacion Santa Engracia, Hidalgo, Nuevo Padilla, Santander de Jimenez, Soto la Marina, Villagran, Tamaulipas
+836	area	Tamaulipas	Estacion Cuauhtemoc, Gonzalez, Manuel, Villa Aldama, Tamaulipas
+841	area	Tamaulipas	Francisco Gonzalez Villarreal, San Fernando, Tamaulipas
+842	area	Coahuila	Concepcion del Oro, General Cepeda, Parras de la Fuente, Coahuila
+844	area	Coahuila	Saltillo, Coahuila
+845	area	San Luis Potosí	Ebano, Ponciano Arriaga, San Luis Potosí
+846	area	Veracruz	Ozuluama, Panuco, Tamos Perseverancia, Villa Cacalilao, Veracruz
+861	area	Coahuila	Nueva Rosita, Sabinas, Coahuila
+862	area	Coahuila	Allende, Morelos, Nava, Villa Union, Zaragoza, Coahuila
+864	area	Coahuila	Las Esperanzas, Minas de Barroteran, Muzquiz, Palau, Coahuila
+866	area	Coahuila	Castaños, Monclova, Coahuila
+867	area	Tamaulipas	Colombia, Nuevo Laredo, Tamaulipas
+868	area	Tamaulipas	Anahuac, Control, Empalme, Matamoros, Tamaulipas
+869	area	Coahuila	Cuatro Cienegas, San Buenaventura, Coahuila
+871	area	Durango	El Coyote, La Goma, La Partida, Matamoros, Torreon, Villa Juarez, Durango
+872	area	Durango	Bermejillo, Concordia, Francisco I. Madero, Laguna del Rey, Mapimi, San Pedro de Las Colonias, Tlahualilo de Zaragoza, Durango
+873	area	Nuevo León	Candela, Ciudad Anahuac, Lampazos, Nuevo León
+877	area	Coahuila	Ciudad Acuña, Coahuila
+878	area	Coahuila	Piedras Negras, Coahuila
+891	area	Tamaulipas	Ciudad Camargo, Ciudad Gustavo Diaz Ordaz, Los Comales, Valadeces, Tamaulipas
+892	area	Nuevo León	Agualeguas, Cerralvo, General Treviño, Los Aldamas, Melchor Ocampo, Villa de Paras, Nuevo León
+894	area	Tamaulipas	Santa Apolonia, Valle Hermoso, Tamaulipas
+897	area	Tamaulipas	Ciudad Mier, Ciudad Miguel Aleman, Nueva Ciudad Guerrero, Tamaulipas
+899	area	Tamaulipas	Nuevo Progreso, Reynosa, Rio Bravo, Tamaulipas
+913	area	Tabasco	Frontera, Jonuta, Palizada, Vicente Guerrero, Tabasco
+914	area	Tabasco	Cunduacan, Jalpa de Mendez, Nacajuca, Once de Febrero, Tabasco
+916	area	Chiapas	Catazaja, Palenque, Salto del Agua, Chiapas
+917	area	Chiapas	Estacion Chontalpa, Huimanguillo, Reforma, Chiapas
+918	area	Chiapas	Acacoyagua, Acapetahua, Escuintla, Mapastepec, Pijijiapan, Pueblo Nuevo Comaltitlan, Chiapas
+919	area	Chiapas	Altamirano, Bochil, Chilon, Ococingo, Oxchuc, Pantelho, Petalcingo, Pueblo Nuevo Solistahuacan, Simojovel, Tapilula, Yajalon, Chiapas
+921	area	Veracruz	Coatzacoalcos, Ixhuatlan del Sureste, Veracruz
+922	area	Veracruz	Chinameca, Cosoleacaque, El Naranjito, Jaltipan, Minatitlan, Veracruz
+923	area	Tabasco	Agua Dulce, Campo Cuichapa, La Venta, Las Choapas, Pueblo Sanchez Magallanes, Tabasco
+924	area	Veracruz	Acayucan, Jesus Carranza, Juanita, San Juan Evengelista, Sayula de Aleman, Texistepec, Veracruz
+932	area	Tabasco	Jalapa, Juarez, Pichucalco, Tacotalpa, Teapa, Tabasco
+933	area	Tabasco	Comalcalco, Paraiso, Tecolutilla, Tabasco
+934	area	Tabasco	Balancan, El Triunfo, Emiliano Zapata, Tenosique, Tabasco
+936	area	Tabasco	Ciudad Pemex, Macuspana, Villa Benito Juarez, Tabasco
+937	area	Tabasco	Cardenas, Tabasco
+938	area	Campeche	Ciudad del Carmen, Campeche
+951	area	Oaxaca	Ejutla, Etla, Ixtlan de Juarez, Miahuatlan, Mitla, Nochistlan, Oaxaca, Ocotlan de Morelos, San Agustin Etla, San Dionisio Ocotepec, San Jeronimo Tlacochahuaya, San Pablo Huitzo, Santa Cruz Papalutla, Santa Maria Ayoquesco de Aldama, Soledad Etla, Tamazulapan, Teotitlan del Valle, Tlacolula, Zaachila, Zimatlan de Alvarez, Oaxaca
+953	area	Oaxaca	Acatlan de Osorio, Huajuapan de Leon, Putla de Guerrero, Santiago Juxtlahuaca, Santo Domingo Tonala, Silacayoapan, Tlaxiaco, Oaxaca
+954	area	Oaxaca	Pinotepa de Don Luis I, Pinotepa Nacional, Puerto Escondido, Rio Grande, San Juan Cacahuatepec, San Pedro Tututepec, Santa Catarina Juquila, Santiago Jamiltepec, Oaxaca
+958	area	Oaxaca	Bahia de Huatulco, Bahia de Tangolunda, San Pedro Pochutla, Santa Maria Huatulco, Oaxaca
+961	area	Chiapas	Berriozabal, San Fernando, Suchiapa, Tuxtla Gutierrez, Veinte de Noviembre, Villa de Acala, Chiapas
+962	area	Chiapas	Cacahoatan, Ciudad Hidalgo, Motozintla, Puerto Madero, Tapachula, Tuxtla Chico, Union Juarez, Chiapas
+963	area	Chiapas	Chicomuselo, Comitan, Frontera Comalapa, La Trinitaria, Las Margaritas, Chiapas
+964	area	Chiapas	Huehuetan, Huixtla, Mazatan, Chiapas
+965	area	Chiapas	Cristobal Obregon, El Parral, Jesus Maria Garza, Revolucion Mexicana, San Pedro Buenavista, Villa Corzo, Villa Flores, Chiapas
+966	area	Chiapas	Arriaga, Tonala, Chiapas
+967	area	Chiapas	San Cristobal de Las Casas, Chiapas
+968	area	Chiapas	Cintalapa, Copainala, Jiquipilas, Ocozocuautla, Raudales de Malpaso, Tecpatan, Chiapas
+969	area	Yucatán	Flamboyanes, Yucalpeten, Yucatán
+971	area	Oaxaca	Espinal, Ixtepec, Juchitan, Salina Cruz, Tehuantepec, Union Hidalgo, Oaxaca
+972	area	Oaxaca	Barrio de la Soledad, Lagunas, Matias Romero, Oaxaca
+981	area	Campeche	Campeche, Campeche
+982	area	Campeche	Candelaria, Champoton, Escarcega, Sabancuy, Seyba Playa, Campeche
+983	area	Quintana Roo	Bacalar, Chetumal, Felipe Carrillo Puerto, Quintana Roo
+984	area	Quintana Roo	Chemuyil, Holbox, Kantunilkin, Playa del Carmen, Puerto Aventuras, Tulum, Xcaret, Quintana Roo
+985	area	Yucatán	Chemax, Piste, Valladolid, Yucatán
+986	area	Yucatán	Colonia Yucatan, Espita, Panaba, Tizimin, Yucatán
+987	area	Quintana Roo	Cozumel, Quintana Roo
+988	area	Yucatán	Acanceh, Celestun, Chochola, Hoctun, Hunucma, Izamal, Seye, Sotuta, Tecoh, Uman, Yucatán
+991	area	Yucatán	Baca, Buctzotz, Cacalchen, Cansahcab, Dzidzantum, Dzilam Gonzalez, Motul, Telchac Puerto, Temax, Tixcocob, Yucatán
+992	area	Chiapas	Jaltenango de la Paz, Nueva Concordia, Soyatitan, Teopisca, Venustiano Carranza, Villa Las Rosas, Chiapas
+993	area	Tabasco	Macultepec, Playas del Rosario, Tamulte de la Sabana, Villahermosa, Tabasco
+994	area	Chiapas	Chahuites, Paredon, San Francisco Ixhuatan, San Pedro Tapanatepec, Santiago Niltepec, Santo Domingo Ingenio, Santo Domingo Zanatepec, Tres Picos, Chiapas
+995	area	Oaxaca	Magdalena Tequisistlan, Santa Maria Jalapa del Marquez, Oaxaca
+996	area	Campeche	Becal, Calkini, Dzitbalche, Hecelchacan, Hopelchen, Pomuch, Tenabo, Campeche
+997	area	Yucatán	Akil, Dziuche, Halacho, Jose Maria Morelos, Maxcanu, Muna, Oxkutzcab, Peto, Tekax, Tekit, Ticul, Tzucacab, Yucatán
+998	area	Quintana Roo	Cancun, Isla Mujeres, Puerto Morelos, Quintana Roo
+999	area	Yucatán	Conkal, Merida, Yucatán

@@ -1,0 +1,55 @@
+^+	plus
+^00	idd
+
+^04	service3
+
+^15	cic
+
+^112	emergency
+^113	emergency
+
+^118	service2
+^12	service2
+^13	service3
+
+^2.	local
+^3	local
+^4	local
+^5	local
+^7.	local
+
+^6021	cell
+^621	cell
+^628	cell
+^661	cell
+^668	cell
+^691	cell
+^698	cell
+
+^20	service	voip
+^7	personal
+^81	service
+^83	service
+^84	service
+^85	service
+^86	service
+^87	service
+^88	service
+^89	service
+^800	service2
+^801	service3	shared cost services
+^900	premium
+^901	premium
+^905	premium
+^908	service
+^909	service
+^92	service
+^93	service
+^94	service
+^95	service
+^97	service
+^99	service
+
+
+
+

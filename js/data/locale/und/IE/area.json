@@ -1,0 +1,214 @@
+{
+    "1": {
+        "ln": "Dublin",
+        "sn": "Dublin"
+    },
+    "21": {
+        "ln": "Cork, Coachford, and Kinsale",
+        "sn": "Cork"
+    },
+    "22": {
+        "ln": "Mallow",
+        "sn": "Mallow"
+    },
+    "23": {
+        "ln": "Bandon",
+        "sn": "Bandon"
+    },
+    "24": {
+        "ln": "Youghal",
+        "sn": "Youghal"
+    },
+    "25": {
+        "ln": "Fermoy",
+        "sn": "Fermoy"
+    },
+    "26": {
+        "ln": "Macroom",
+        "sn": "Macroom"
+    },
+    "27": {
+        "ln": "Bantry",
+        "sn": "Bantry"
+    },
+    "28": {
+        "ln": "Skibbereen",
+        "sn": "Skibbereen"
+    },
+    "29": {
+        "ln": "Kanturk",
+        "sn": "Kanturk"
+    },
+    "402": {
+        "ln": "Arklow",
+        "sn": "Arklow"
+    },
+    "404": {
+        "ln": "Wicklow",
+        "sn": "Wicklow"
+    },
+    "41": {
+        "ln": "Drogheda, Ardee",
+        "sn": "Drogheda"
+    },
+    "42": {
+        "ln": "Dundalk, Carrickmacross, Castleblaney",
+        "sn": "Dundalk"
+    },
+    "43": {
+        "ln": "Longford, Granard",
+        "sn": "Longford"
+    },
+    "44": {
+        "ln": "Mullingar, Castlepollard, Tyrrellspass",
+        "sn": "Mullingar"
+    },
+    "45": {
+        "ln": "Naas, Kildare, The Curragh",
+        "sn": "Naas"
+    },
+    "46": {
+        "ln": "Navan, Kells, Trim, Enfield, Edenderry",
+        "sn": "Navan"
+    },
+    "47": {
+        "ln": "Monaghan, Clones",
+        "sn": "Monaghan"
+    },
+    "48": {
+        "ln": "Northern Ireland",
+        "sn": "Northern Ireland"
+    },
+    "49": {
+        "ln": "Cavan, Cootehill, Oldcastle, Belturbet",
+        "sn": "Cavan"
+    },
+    "502": {
+        "ln": "Portlaoise, Abbeyleix",
+        "sn": "Portlaoise"
+    },
+    "504": {
+        "ln": "Thurles",
+        "sn": "Thurles"
+    },
+    "505": {
+        "ln": "Roscrea",
+        "sn": "Roscrea"
+    },
+    "506": {
+        "ln": "Tullamore",
+        "sn": "Tullamore"
+    },
+    "509": {
+        "ln": "Bin",
+        "sn": "Bin"
+    },
+    "51": {
+        "ln": "Waterford, Carrick-on-Suir, New Ross, Kilmacthomas",
+        "sn": "Waterford"
+    },
+    "52": {
+        "ln": "Clonmel, Cahir, Killenaule",
+        "sn": "Clonmel"
+    },
+    "53": {
+        "ln": "Wexford, Enniscorthy, Ferns, Gorey",
+        "sn": "Wexford"
+    },
+    "56": {
+        "ln": "Kilkenny, Castlecomer, Freshford",
+        "sn": "Kilkenny"
+    },
+    "57": {
+        "ln": "Portlaoise, Abbeyleix, Tullamore, Birr",
+        "sn": "Portlaoise"
+    },
+    "58": {
+        "ln": "Dungarvan",
+        "sn": "Dungarvan"
+    },
+    "59": {
+        "ln": "Carlow, Muine Bheag, Athy, Baltinglass",
+        "sn": "Carlow"
+    },
+    "61": {
+        "ln": "Limerick, Scariff",
+        "sn": "Limerick"
+    },
+    "62": {
+        "ln": "Tipperary, Cashel",
+        "sn": "Tipperary"
+    },
+    "63": {
+        "ln": "Charleville",
+        "sn": "Charleville"
+    },
+    "64": {
+        "ln": "Killarney, Rathmore",
+        "sn": "Killarney"
+    },
+    "65": {
+        "ln": "Ennis, Ennistymon, Kilrush",
+        "sn": "Ennis"
+    },
+    "66": {
+        "ln": "Tralee, Dingle, Killorglin, Cahirciveen",
+        "sn": "Tralee"
+    },
+    "67": {
+        "ln": "Nenagh",
+        "sn": "Nenagh"
+    },
+    "68": {
+        "ln": "Listowel",
+        "sn": "Listowel"
+    },
+    "69": {
+        "ln": "Newcastle West",
+        "sn": "Newcastle West"
+    },
+    "71": {
+        "ln": "Sligo, Manorhamilton, Carrick-on-Shannon",
+        "sn": "Sligo"
+    },
+    "74": {
+        "ln": "Donegal, Letterkenny, Dungloe, Buncrana",
+        "sn": "Donegal"
+    },
+    "90": {
+        "ln": "Athlone, Roscommon, Ballinasloe, Portumna",
+        "sn": "Athlone"
+    },
+    "91": {
+        "ln": "Galway, Loughrea, Gort",
+        "sn": "Galway"
+    },
+    "93": {
+        "ln": "Tuam",
+        "sn": "Tuam"
+    },
+    "94": {
+        "ln": "Ballinrobe, Castlebar, Claremorris, Castlerea",
+        "sn": "Ballinrobe"
+    },
+    "95": {
+        "ln": "Clifden",
+        "sn": "Clifden"
+    },
+    "96": {
+        "ln": "Ballina",
+        "sn": "Ballina"
+    },
+    "97": {
+        "ln": "Belmullet",
+        "sn": "Belmullet"
+    },
+    "98": {
+        "ln": "Westport",
+        "sn": "Westport"
+    },
+    "99": {
+        "ln": "Kilronan",
+        "sn": "Kilronan"
+    }
+}

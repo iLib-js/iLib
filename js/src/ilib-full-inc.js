@@ -77,4 +77,7 @@ localematch.js
 normstring.js
 maps/casemapper.js
 glyphstring.js
+phone/phonefmt.js
+phone/phonegeo.js
+phone/phonenum.js
 */

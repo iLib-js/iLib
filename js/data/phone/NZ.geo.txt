@@ -1,0 +1,210 @@
+3206	area	Edendale	Edendale
+320.	area	Gore	Gore
+321	area	Invercargill	Invercargill
+322.	area	Invercargill	Invercargill
+3225	area	Otautau	Otautau
+3226	area	Otautau	Otautau
+323.	area	Invercargill	Invercargill
+3234	area	Riverton	Riverton
+323620	area	Winton	Winton
+324621	area	Tokanui	Tokanui
+32362.	area	Invercargill	Invercargill
+3236.	area	Invercargill	Invercargill
+3248	area	Lumsden	Lumsden
+3249	area	Te Anau	Te Anau
+330.	area	Ashburton	Ashburton
+3304	area	Akaroa	Akaroa
+3305	area	Waitangi	Waitangi
+331.	area	Rangiora	Rangiora
+3314	area	Amberley	Amberley
+3315	area	Culverden	Culverden
+3317	area	Darfield	Darfield
+3318	area	Darfield	Darfield
+3319	area	Cheviot	Cheviot
+33.	area	Christchurch	Christchurch
+341.	area	Balclutha	Balclutha
+3417	area	Milton	Milton
+3430	area	Mount Cook	Mount Cook
+3435	area	Twizel	Twizel
+3436	area	Kurow	Kurow
+343.	area	Oamaru	Oamaru
+3438	area	Kurow	Kurow
+344.	area	Alexandra	Alexandra
+3441	area	Queenstown	Queenstown
+3442	area	Queenstown	Queenstown
+3443	area	Wanaka	Wanaka
+3444	area	Ranfurly	Ranfurly
+3445	area	Cromwell	Cromwell
+3446	area	Roxburgh	Roxburgh
+345	area	Dunedin	Dunedin
+346.	area	Dunedin	Dunedin
+3465	area	Palmerston	Palmerston
+347	area	Dunedin	Dunedin
+348.	area	Dunedin	Dunedin
+3485	area	Lawrence	Lawrence
+3520	area	Blenheim	Blenheim
+3521	area	Nelson	Nelson
+3522	area	Nelson	Nelson
+3523	area	Murchison	Murchison
+3524	area	Takaka	Takaka
+3525	area	Takaka	Takaka
+3526	area	Motueka	Motueka
+3527	area	Motueka	Motueka
+3528	area	Motueka	Motueka
+3529	area	Nelson	Nelson
+353	area	Nelson	Nelson
+354	area	Nelson	Nelson
+357.	area	Blenheim	Blenheim
+3571	area	Nelson	Nelson
+3576	area	Nelson	Nelson
+361	area	Timaru	Timaru
+368.	area	Timaru	Timaru
+3680	area	Fairlie	Fairlie
+3685	area	Fairlie	Fairlie
+3689	area	Waimate	Waimate
+369	area	Geraldine	Geraldine
+373	area	Greymouth	Greymouth
+3750	area	Haast	Haast
+3751	area	Fox Glacier	Fox Glacier
+3752	area	Franz Josef	Franz Josef
+375.	area	Hokitika	Hokitika
+376	area	Greymouth	Greymouth
+378	area	Westport	Westport
+394	area	Invercargill	Invercargill
+395.	area	Dunedin	Dunedin
+3956	area	Timaru	Timaru
+396	area	Christchurch	Christchurch
+397	area	Christchurch	Christchurch
+398.	area	Christchurch	Christchurch
+3984	area	Blenheim	Blenheim
+3989	area	Nelson	Nelson
+4201	area	Paraparaumu	Paraparaumu
+420.	area	Wellington	Wellington
+423	area	Wellington	Wellington
+429	area	Paraparaumu	Paraparaumu
+43	area	Wellington	Wellington
+44	area	Wellington	Wellington
+45	area	Wellington	Wellington
+46	area	Wellington	Wellington
+48	area	Wellington	Wellington
+490	area	Paraparaumu	Paraparaumu
+49.	area	Wellington	Wellington
+62	area	Hawera	Hawera
+630	area	Featherston	Featherston
+6321	area	Marton	Marton
+6322	area	Marton	Marton
+6323	area	Palmerston North	Palmerston North
+6324	area	Palmerston North	Palmerston North
+6325	area	Palmerston North	Palmerston North
+6326	area	Palmerston North	Palmerston North
+6327	area	Marton	Marton
+6328	area	Palmerston North	Palmerston North
+6329	area	Palmerston North	Palmerston North
+634	area	Wanganui	Wanganui
+635	area	Palmerston North	Palmerston North
+6362	area	Palmerston North	Palmerston North
+636.	area	Levin	Levin
+637.	area	Masterton	Masterton
+6374	area	Dannevirke	Dannevirke
+6375	area	Pahiatua	Pahiatua
+6376	area	Pahiatua	Pahiatua
+638.	area	Taihape	Taihape
+6385	area	Ohakune	Ohakune
+6387	area	Waiouru	Waiouru
+6750	area	Mokau	Mokau
+675.	area	New Plymouth	New Plymouth
+6761	area	Opunake	Opunake
+676.	area	Stratford	Stratford
+6763	area	Opunake	Opunake
+6769	area	New Plymouth	New Plymouth
+683	area	Napier	Napier
+684	area	Napier	Napier
+685	area	Waipukurau	Waipukurau
+686.	area	Gisborne	Gisborne
+6864	area	Ruatoria	Ruatoria
+687	area	Napier	Napier
+6946	area	Masterton	Masterton
+6949	area	Levin	Levin
+695	area	Palmerston North	Palmerston North
+6965	area	Wanganui	Wanganui
+6968	area	New Plymouth	New Plymouth
+6970	area	New Plymouth	New Plymouth
+6974	area	Napier	Napier
+6980	area	Napier	Napier
+6986	area	Gisborne	Gisborne
+730	area	Whakatane	Whakatane
+7312	area	Whakatane	Whakatane
+7315	area	Opotiki	Opotiki
+732.	area	Whakatane	Whakatane
+7325	area	Opotiki	Opotiki
+73.	area	Rotorua	Rotorua
+737	area	Taupo	Taupo
+738	area	Taupo	Taupo
+75	area	Tauranga	Tauranga
+782.	area	Hamilton	Hamilton
+7826	area	Huntly	Huntly
+7828	area	Huntly	Huntly
+783	area	Hamilton	Hamilton
+784	area	Hamilton	Hamilton
+785	area	Hamilton	Hamilton
+7862	area	Paeroa	Paeroa
+7863	area	Waihi	Waihi
+786.	area	Thames	Thames
+7865	area	Whangamata	Whangamata
+787.	area	Te Awamutu	Te Awamutu
+7873	area	Otorohanga	Otorohanga
+787	area	Te Kuiti	Te Kuiti
+7880	area	Matamata	Matamata
+7881	area	Matamata	Matamata
+7882	area	Putaruru	Putaruru
+7883	area	Putaruru	Putaruru
+7884	area	Morrinsville	Morrinsville
+7885	area	Putaruru	Putaruru
+7886	area	Putaruru	Putaruru
+7887	area	Morrinsville	Morrinsville
+7888	area	Matamata	Matamata
+7889	area	Morrinsville	Morrinsville
+789	area	Taumarunui	Taumarunui
+790	area	Taupo	Taupo
+791	area	Rotorua	Rotorua
+792.	area	Rotorua	Rotorua
+7922	area	Whakatane	Whakatane
+7928	area	Tauranga	Tauranga
+793	area	Tauranga	Tauranga
+795	area	Hamilton	Hamilton
+797	area	Hamilton	Hamilton
+923	area	Pukekohe	Pukekohe
+92.	area	Auckland	Auckland
+93	area	Auckland	Auckland
+9401	area	Kaikohe	Kaikohe
+9402	area	Kawakawa	Kawakawa
+9403	area	Kawakawa	Kawakawa
+9404	area	Kawakawa	Kawakawa
+9405	area	Kaikohe	Kaikohe
+9406	area	Kaitaia	Kaitaia
+9407	area	Kaikohe	Kaikohe
+9408	area	Kaitaia	Kaitaia
+9409	area	Kaitaia	Kaitaia
+941	area	Auckland	Auckland
+9420	area	Helensville	Helensville
+9422	area	Warkworth	Warkworth
+9423	area	Warkworth	Warkworth
+9424	area	Hibiscus Coast	Hibiscus Coast
+9425	area	Warkworth	Warkworth
+9426	area	Hibiscus Coast	Hibiscus Coast
+9427	area	Hibiscus Coast	Hibiscus Coast
+9428	area	Hibiscus Coast	Hibiscus Coast
+9429	area	Great Barrier Island	Great Barrier Island
+943.	area	Whangarei	Whangarei
+9431	area	Maungaturoto	Maungaturoto
+9439	area	Dargaville	Dargaville
+944	area	Auckland	Auckland
+945	area	Whangarei	Whangarei
+947	area	Auckland	Auckland
+948	area	Auckland	Auckland
+95	area	Auckland	Auckland
+96	area	Auckland	Auckland
+98	area	Auckland	Auckland
+99.	area	Auckland	Auckland
+998.	area	Auckland	Auckland
+9983	area	Whangarei	Whangarei

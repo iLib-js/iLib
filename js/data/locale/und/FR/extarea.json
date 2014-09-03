@@ -1,0 +1,42 @@
+{
+    "80.": {
+        "ln": "Service number",
+        "sn": "Service Number"
+    },
+    "800": {
+        "ln": "Toll-free Services (Numéros Vert)",
+        "sn": "Toll-free Number"
+    },
+    "801": {
+        "ln": "Toll calls at local rates (Numéros Azur)",
+        "sn": "Toll call"
+    },
+    "802": {
+        "ln": "Toll calls (Numéros Indigo)",
+        "sn": "Toll call"
+    },
+    "803": {
+        "ln": "Toll calls (Numéros Indigo)",
+        "sn": "Toll call"
+    },
+    "805": {
+        "ln": "Toll-free Services (Numéros Vert)",
+        "sn": "Toll-free Number"
+    },
+    "809": {
+        "ln": "Toll-free Services (Numéros Vert)",
+        "sn": "Toll-free Number"
+    },
+    "81.": {
+        "ln": "Toll calls (Numéros Azur)",
+        "sn": "Toll call"
+    },
+    "819": {
+        "ln": "Toll-free Services (Numéros Vert)",
+        "sn": "Toll-free Number"
+    },
+    "82.": {
+        "ln": "Toll calls (Numéros Indigo)",
+        "sn": "Toll call"
+    }
+}

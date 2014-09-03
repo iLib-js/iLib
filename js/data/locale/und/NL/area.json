@@ -1,0 +1,566 @@
+{
+    "10": {
+        "ln": "Rotterdam",
+        "sn": "Rotterdam"
+    },
+    "111": {
+        "ln": "Zierikzee",
+        "sn": "Zierikzee"
+    },
+    "113": {
+        "ln": "Goes",
+        "sn": "Goes"
+    },
+    "114": {
+        "ln": "Hulst",
+        "sn": "Hulst"
+    },
+    "115": {
+        "ln": "Terneuzen",
+        "sn": "Terneuzen"
+    },
+    "117": {
+        "ln": "Oostburg",
+        "sn": "Oostburg"
+    },
+    "118": {
+        "ln": "Middelburg",
+        "sn": "Middelburg"
+    },
+    "13": {
+        "ln": "Tilburg",
+        "sn": "Tilburg"
+    },
+    "15": {
+        "ln": "Delft",
+        "sn": "Delft"
+    },
+    "161": {
+        "ln": "Rijen",
+        "sn": "Rijen"
+    },
+    "162": {
+        "ln": "Oosterhout",
+        "sn": "Oosterhout"
+    },
+    "164": {
+        "ln": "Bergen op Zoom",
+        "sn": "Bergen op Zoom"
+    },
+    "165": {
+        "ln": "Roosendaal",
+        "sn": "Roosendaal"
+    },
+    "166": {
+        "ln": "Tholen",
+        "sn": "Tholen"
+    },
+    "167": {
+        "ln": "Steenbergen",
+        "sn": "Steenbergen"
+    },
+    "168": {
+        "ln": "Zevenbergen",
+        "sn": "Zevenbergen"
+    },
+    "172": {
+        "ln": "Alphen a/d Rijn",
+        "sn": "Alphen a/d Rijn"
+    },
+    "174": {
+        "ln": "Naaldwijk",
+        "sn": "Naaldwijk"
+    },
+    "180": {
+        "ln": "IJsselsteden",
+        "sn": "IJsselsteden"
+    },
+    "181": {
+        "ln": "Spijkenisse",
+        "sn": "Spijkenisse"
+    },
+    "182": {
+        "ln": "Gouda",
+        "sn": "Gouda"
+    },
+    "183": {
+        "ln": "Gorinchem",
+        "sn": "Gorinchem"
+    },
+    "184": {
+        "ln": "Sliedrecht",
+        "sn": "Sliedrecht"
+    },
+    "186": {
+        "ln": "Oud-Beijerland",
+        "sn": "Oud-Beijerland"
+    },
+    "187": {
+        "ln": "Middelharnis",
+        "sn": "Middelharnis"
+    },
+    "20": {
+        "ln": "Amsterdam",
+        "sn": "Amsterdam"
+    },
+    "222": {
+        "ln": "Den Burg",
+        "sn": "Den Burg"
+    },
+    "223": {
+        "ln": "Den Helder",
+        "sn": "Den Helder"
+    },
+    "224": {
+        "ln": "Schagen",
+        "sn": "Schagen"
+    },
+    "226": {
+        "ln": "Noord Scharwoude",
+        "sn": "Noord Scharwoude"
+    },
+    "227": {
+        "ln": "Middenmeer",
+        "sn": "Middenmeer"
+    },
+    "228": {
+        "ln": "Enkhuizen",
+        "sn": "Enkhuizen"
+    },
+    "229": {
+        "ln": "Hoorn",
+        "sn": "Hoorn"
+    },
+    "23": {
+        "ln": "Haarlem",
+        "sn": "Haarlem"
+    },
+    "24": {
+        "ln": "Nijmegen",
+        "sn": "Nijmegen"
+    },
+    "251": {
+        "ln": "Beverwijk",
+        "sn": "Beverwijk"
+    },
+    "252": {
+        "ln": "Hillegom",
+        "sn": "Hillegom"
+    },
+    "255": {
+        "ln": "IJmuiden",
+        "sn": "IJmuiden"
+    },
+    "26": {
+        "ln": "Arnhem",
+        "sn": "Arnhem"
+    },
+    "294": {
+        "ln": "Weesp",
+        "sn": "Weesp"
+    },
+    "297": {
+        "ln": "Uithoorn",
+        "sn": "Uithoorn"
+    },
+    "299": {
+        "ln": "Purmerend",
+        "sn": "Purmerend"
+    },
+    "30": {
+        "ln": "Utrecht",
+        "sn": "Utrecht"
+    },
+    "313": {
+        "ln": "Dieren",
+        "sn": "Dieren"
+    },
+    "314": {
+        "ln": "Doetinchem",
+        "sn": "Doetinchem"
+    },
+    "315": {
+        "ln": "Terborg",
+        "sn": "Terborg"
+    },
+    "316": {
+        "ln": "Zevenaar",
+        "sn": "Zevenaar"
+    },
+    "317": {
+        "ln": "Wageningen",
+        "sn": "Wageningen"
+    },
+    "318": {
+        "ln": "Ede",
+        "sn": "Ede"
+    },
+    "320": {
+        "ln": "Lelystad",
+        "sn": "Lelystad"
+    },
+    "321": {
+        "ln": "Dronten",
+        "sn": "Dronten"
+    },
+    "33": {
+        "ln": "Amersfoort",
+        "sn": "Amersfoort"
+    },
+    "341": {
+        "ln": "Harderwijk",
+        "sn": "Harderwijk"
+    },
+    "342": {
+        "ln": "Barneveld",
+        "sn": "Barneveld"
+    },
+    "343": {
+        "ln": "Doorn",
+        "sn": "Doorn"
+    },
+    "344": {
+        "ln": "Tiel",
+        "sn": "Tiel"
+    },
+    "345": {
+        "ln": "Culemborg",
+        "sn": "Culemborg"
+    },
+    "346": {
+        "ln": "Maarssen",
+        "sn": "Maarssen"
+    },
+    "347": {
+        "ln": "Vianen",
+        "sn": "Vianen"
+    },
+    "348": {
+        "ln": "Woerden",
+        "sn": "Woerden"
+    },
+    "35": {
+        "ln": "Hilversum",
+        "sn": "Hilversum"
+    },
+    "36": {
+        "ln": "Almere",
+        "sn": "Almere"
+    },
+    "38": {
+        "ln": "Zwolle",
+        "sn": "Zwolle"
+    },
+    "40": {
+        "ln": "Eindhoven",
+        "sn": "Eindhoven"
+    },
+    "411": {
+        "ln": "Boxtel",
+        "sn": "Boxtel"
+    },
+    "412": {
+        "ln": "Oss",
+        "sn": "Oss"
+    },
+    "413": {
+        "ln": "Veghel",
+        "sn": "Veghel"
+    },
+    "416": {
+        "ln": "Waalwijk",
+        "sn": "Waalwijk"
+    },
+    "418": {
+        "ln": "Zaltbommel",
+        "sn": "Zaltbommel"
+    },
+    "43": {
+        "ln": "Maastricht",
+        "sn": "Maastricht"
+    },
+    "45": {
+        "ln": "Heerlen",
+        "sn": "Heerlen"
+    },
+    "46": {
+        "ln": "Sittard",
+        "sn": "Sittard"
+    },
+    "475": {
+        "ln": "Roermond",
+        "sn": "Roermond"
+    },
+    "478": {
+        "ln": "Venray",
+        "sn": "Venray"
+    },
+    "481": {
+        "ln": "Bemmel",
+        "sn": "Bemmel"
+    },
+    "485": {
+        "ln": "Cuyk",
+        "sn": "Cuyk"
+    },
+    "486": {
+        "ln": "Grave",
+        "sn": "Grave"
+    },
+    "487": {
+        "ln": "Druten",
+        "sn": "Druten"
+    },
+    "488": {
+        "ln": "Zetten",
+        "sn": "Zetten"
+    },
+    "492": {
+        "ln": "Helmond",
+        "sn": "Helmond"
+    },
+    "493": {
+        "ln": "Deurne",
+        "sn": "Deurne"
+    },
+    "495": {
+        "ln": "Weert",
+        "sn": "Weert"
+    },
+    "497": {
+        "ln": "Eersel",
+        "sn": "Eersel"
+    },
+    "499": {
+        "ln": "Best",
+        "sn": "Best"
+    },
+    "50": {
+        "ln": "Groningen",
+        "sn": "Groningen"
+    },
+    "511": {
+        "ln": "Veenwouden",
+        "sn": "Veenwouden"
+    },
+    "512": {
+        "ln": "Drachten",
+        "sn": "Drachten"
+    },
+    "513": {
+        "ln": "Heerenveen",
+        "sn": "Heerenveen"
+    },
+    "514": {
+        "ln": "Balk",
+        "sn": "Balk"
+    },
+    "515": {
+        "ln": "Sneek",
+        "sn": "Sneek"
+    },
+    "516": {
+        "ln": "Oosterwolde",
+        "sn": "Oosterwolde"
+    },
+    "517": {
+        "ln": "Franeker",
+        "sn": "Franeker"
+    },
+    "518": {
+        "ln": "St. Annaparochie",
+        "sn": "St. Annaparochie"
+    },
+    "519": {
+        "ln": "Dokkum",
+        "sn": "Dokkum"
+    },
+    "521": {
+        "ln": "Steenwijk",
+        "sn": "Steenwijk"
+    },
+    "522": {
+        "ln": "Meppel",
+        "sn": "Meppel"
+    },
+    "523": {
+        "ln": "Dedemsvaart",
+        "sn": "Dedemsvaart"
+    },
+    "524": {
+        "ln": "Coevorden",
+        "sn": "Coevorden"
+    },
+    "525": {
+        "ln": "Elburg",
+        "sn": "Elburg"
+    },
+    "527": {
+        "ln": "Emmeloord",
+        "sn": "Emmeloord"
+    },
+    "528": {
+        "ln": "Hoogeveen",
+        "sn": "Hoogeveen"
+    },
+    "529": {
+        "ln": "Ommen",
+        "sn": "Ommen"
+    },
+    "53": {
+        "ln": "Enschede",
+        "sn": "Enschede"
+    },
+    "541": {
+        "ln": "Oldenzaal",
+        "sn": "Oldenzaal"
+    },
+    "543": {
+        "ln": "Winterswijk",
+        "sn": "Winterswijk"
+    },
+    "544": {
+        "ln": "Groenlo",
+        "sn": "Groenlo"
+    },
+    "545": {
+        "ln": "Neede",
+        "sn": "Neede"
+    },
+    "546": {
+        "ln": "Almelo",
+        "sn": "Almelo"
+    },
+    "547": {
+        "ln": "Goor",
+        "sn": "Goor"
+    },
+    "548": {
+        "ln": "Rijssen",
+        "sn": "Rijssen"
+    },
+    "55": {
+        "ln": "Apeldoorn",
+        "sn": "Apeldoorn"
+    },
+    "561": {
+        "ln": "Wolvega",
+        "sn": "Wolvega"
+    },
+    "562": {
+        "ln": "West Terschelling",
+        "sn": "West Terschelling"
+    },
+    "566": {
+        "ln": "Irnsum",
+        "sn": "Irnsum"
+    },
+    "570": {
+        "ln": "Deventer",
+        "sn": "Deventer"
+    },
+    "571": {
+        "ln": "Twello",
+        "sn": "Twello"
+    },
+    "572": {
+        "ln": "Raalte",
+        "sn": "Raalte"
+    },
+    "573": {
+        "ln": "Lochem",
+        "sn": "Lochem"
+    },
+    "575": {
+        "ln": "Zutphen",
+        "sn": "Zutphen"
+    },
+    "577": {
+        "ln": "Uddel",
+        "sn": "Uddel"
+    },
+    "578": {
+        "ln": "Epe",
+        "sn": "Epe"
+    },
+    "58": {
+        "ln": "Leeuwarden",
+        "sn": "Leeuwarden"
+    },
+    "591": {
+        "ln": "Emmen",
+        "sn": "Emmen"
+    },
+    "592": {
+        "ln": "Assen",
+        "sn": "Assen"
+    },
+    "593": {
+        "ln": "Beilen",
+        "sn": "Beilen"
+    },
+    "594": {
+        "ln": "Zuidhorn",
+        "sn": "Zuidhorn"
+    },
+    "595": {
+        "ln": "Warffum",
+        "sn": "Warffum"
+    },
+    "596": {
+        "ln": "Appingedam",
+        "sn": "Appingedam"
+    },
+    "597": {
+        "ln": "Winschoten",
+        "sn": "Winschoten"
+    },
+    "598": {
+        "ln": "Hoogezand",
+        "sn": "Hoogezand"
+    },
+    "599": {
+        "ln": "Stadskanaal",
+        "sn": "Stadskanaal"
+    },
+    "70": {
+        "ln": "'s-Gravenhage",
+        "sn": "'s-Gravenhage"
+    },
+    "71": {
+        "ln": "Leiden",
+        "sn": "Leiden"
+    },
+    "72": {
+        "ln": "Alkmaar",
+        "sn": "Alkmaar"
+    },
+    "73": {
+        "ln": "'s-Hertogenbosch",
+        "sn": "'s-Hertogenbosch"
+    },
+    "74": {
+        "ln": "Hengelo",
+        "sn": "Hengelo"
+    },
+    "75": {
+        "ln": "Zaandam",
+        "sn": "Zaandam"
+    },
+    "76": {
+        "ln": "Breda",
+        "sn": "Breda"
+    },
+    "77": {
+        "ln": "Venlo",
+        "sn": "Venlo"
+    },
+    "78": {
+        "ln": "Dordrecht",
+        "sn": "Dordrecht"
+    },
+    "79": {
+        "ln": "Zoetermeer",
+        "sn": "Zoetermeer"
+    }
+}

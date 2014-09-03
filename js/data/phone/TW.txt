@@ -1,0 +1,24 @@
+// Country Code: 886
+^+	plus
+^002	idd
+^005	idd
+^006	idd
+^007	idd
+^009	idd
+^019	idd
+^0.	trunk
+
+9	cell
+
+162	service	Ring test
+
+119	emergency	Emergency Service
+110	emergency	Police Service
+
+2	area	Taipei	Taipei County 
+3	area	Taoyuan	Taoyuan, Ilan, Hsinchu, Miaoli, Hualian Counties
+4	area	Taichung	Taichung, Changhua, Nantou Counties 
+5	area	Yunlin	Yunlin County, Huwei
+6	area	Tainan	Tainan County 
+7	area	Kaohsiung	 Kaohsiung County 
+8	area	Pingtung	Pingtung and Taitung Counties

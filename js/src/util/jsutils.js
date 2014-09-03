@@ -41,6 +41,25 @@ ilib.shallowCopy = function (source, target) {
 	}
 };
 
+/** [Need Comment]
+ * 
+ */
+ilib.deepCopy = function(from, to) {
+	var prop;
+
+	for (prop in from) {
+		if (prop) {
+			if (typeof(from[prop]) === 'object') {
+				to[prop] ={};
+				ilib.deepCopy(from[prop], to[prop]);
+			} else {
+				to[prop] = from[prop];
+			}
+		}
+	}
+	return to;
+};
+
 /**
  * Map a string to the given set of alternate characters. If the target set
  * does not contain a particular character in the input string, then that

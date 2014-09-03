@@ -1,0 +1,358 @@
+{
+    "822": {
+        "ln": "Granadilla de Abona, Guimar, Icod de los Vinos, Isla de la Palma, La Orotava, San Sebastian de la Gomera, Santa Cruz de Tenerife, Valverde",
+        "sn": "Santa Cruz de Tenerife"
+    },
+    "824": {
+        "ln": "Alburquerque, Alconchel, Almendralejo, Azuaga, Badajoz, Cabeza del Buey, Castuera, Don Benito, Fregenal de la Sierra, Fuente de Cantos, Guareña, Jerez de los Caballeros, Llerena, Merida, Villafranca de los Barros, Zafra",
+        "sn": "Badajoz"
+    },
+    "828": {
+        "ln": "Arrecife, Galdar, Isla de Fuerteventura, Las Palmas, Vecindario",
+        "sn": "Las Palmas"
+    },
+    "843": {
+        "ln": "Azpeitia, Beasain, Bergara, deba, Donostia-San Sebastian, Eibar, Guipuzcoa",
+        "sn": "Guipuzcoa"
+    },
+    "848": {
+        "ln": "Alsasua, Los Arcos, Burguete, Elizondo, Estella, Ezcaroz, Irurzun, Leiza, Pamplona, San Adrian, Sanguesa, Tafalla, Tudela, Vera de Bidasoa, Navarra",
+        "sn": "Navarra"
+    },
+    "856": {
+        "ln": "Algeciras, Arcos de la Frontera, Barbate de Franco, Cadiz, Ceuta, Gibraltar, Jerez de la Frontera, Medina-Sidonia, Olvera, Sanlucar de Barrameda, Cádiz",
+        "sn": "Cádiz"
+    },
+    "858": {
+        "ln": "Alhama de Granada, Baza, Cadiar, Cullar, Granada, Guadix, Iznalloz, Lanjaron, Loja, Motril",
+        "sn": "Granada"
+    },
+    "868": {
+        "ln": "Alhama de Murcia, Archena, Caravaca, Cartagena, Cieza, Jumilla, Lorca, Murcia",
+        "sn": "Murcia"
+    },
+    "871": {
+        "ln": "Campos, Eivissa, Inca, Manacor, Mao, Palma, Pollença, Sineu, Soller, Baleares",
+        "sn": "Baleares"
+    },
+    "872": {
+        "ln": "Blanes, Camprodon, Figueres, Girona, Llança, Olot, Palafrugell, Puigcerda, Ripoll, Roses, Sant Feliu de Guixols, Santa Coloma de Farners, Torroella de Montgri, Gerona",
+        "sn": "Gerona"
+    },
+    "873": {
+        "ln": "Artesa de Segre, Balaguer, Bellver de Cerdanya, Cervera, Lleida, Mollerussa, El Pont de Suert, Ponts, La Seu D'Urgell, Solsona, Sort, Tarrega, Tremp, Vielha, Lerida",
+        "sn": "Lerida"
+    },
+    "876": {
+        "ln": "Alagon, Alhama de Aragon, La Almunia de Doña Godina, Belchite, Calatayud, Cariñena, Caspe, Daroca, Ejea de los Caballeros, Escatron, Fuentes de Ebro, Illueca, Mallen, Muel, Tarazona, Zaragoza, Zuera",
+        "sn": "Zaragoza"
+    },
+    "877": {
+        "ln": "Amposta, Falset, Gandesa, Montblanc, Mora D'Ebre, Reus, Santa Coloma de Queralt, Tarragona, Tortosa, El Vendrell",
+        "sn": "Tarragona"
+    },
+    "881": {
+        "ln": "Betanzos, Carballo, A Coruña, Ferrol, Noia, Ordenes, Ortigueira, Santiago",
+        "sn": "Coruña"
+    },
+    "886": {
+        "ln": "A Estrada, Lalin, Ponte-Caldelas, Ponteareas, Pontevedra, Tui, Vigo, Vilagarcia de Arousa",
+        "sn": "Pontevedra"
+    },
+    "910": {
+        "ln": "Alcala de Henares, Arganda, Collado Villalba, Madrid",
+        "sn": "Madrid"
+    },
+    "911": {
+        "ln": "Alcala de Henares, Aranjuez, Arganda, Buitrago del Lozoya, Collado Villalba, El Escorial, Madrid, El Molar, Navalcarnero, San Martin de Valdeiglesias",
+        "sn": "Madrid"
+    },
+    "912": {
+        "ln": "Alcala de Henares, Aranjuez, Arganda, Buitrago del Lozoya, Collado Villalba, El Escorial, Madrid, El Molar, Navalcarnero, San Martin de Valdeiglesias",
+        "sn": "Madrid"
+    },
+    "913": {
+        "ln": "Madrid",
+        "sn": "Madrid"
+    },
+    "914": {
+        "ln": "Alcala de Henares, Aranjuez, Arganda, Buitrago del Lozoya, Collado Villalba, El Escorial, Madrid, El Molar, Navalcarnero, San Martin de Valdeiglesias",
+        "sn": "Madrid"
+    },
+    "915": {
+        "ln": "Madrid",
+        "sn": "Madrid"
+    },
+    "916": {
+        "ln": "Madrid, El Molar",
+        "sn": "Madrid"
+    },
+    "917": {
+        "ln": "Aranjuez, Arganda, El Escorial, Madrid, El Molar, Navalcarnero, San Martin de Valdeiglesias",
+        "sn": "Madrid"
+    },
+    "918": {
+        "ln": "Alcala de Henares, Aranjuez, Arganda, Buitrago del Lozoya, Collado Villalba, El Escorial, Madrid, El Molar, Navalcarnero, San Martin de Valdeiglesias",
+        "sn": "Madrid"
+    },
+    "920": {
+        "ln": "Arenas de San Pedro, Arevalo, Avila, El Barco de Avila, Navalmoral, Piedrahita, San Pedro del Arroyo, Ávila",
+        "sn": "Ávila"
+    },
+    "921": {
+        "ln": "Cantalejo, Carbonero El Mayor, Cuellar, Nava de la Asuncion, Riaza, San Rafael, Segovia, Turegano, Osuna, Seville",
+        "sn": "Seville"
+    },
+    "922": {
+        "ln": "Granadilla de Abona, Guimar, Icod de los Vinos, Isla de la Palma, La Orotava, San Sebastian de la Gomera, Santa Cruz de Tenerife, Valverde",
+        "sn": "Santa Cruz de Tenerife"
+    },
+    "923": {
+        "ln": "Bejar, Cantalapiedra, Ciudad Rodrigo, La Fuente de San Esteban, Guijuelo, Ledesma, Peñaranda de Bracamonte, Salamanca, Las Veguillas, Vitigudino",
+        "sn": "Salamanca"
+    },
+    "924": {
+        "ln": "Alburquerque, Alconchel, Almendralejo, Azuaga, Badajoz, Cabeza del Buey, Castuera, Don Benito, Fregenal de la Sierra, Fuente de Cantos, Guareña, Jerez de los Caballeros, Llerena, Merida, Villafranca de los Barros, Zafra",
+        "sn": "Badajoz"
+    },
+    "925": {
+        "ln": "Galvez, Illescas, Madridejos, Mora, Ocaña, Oropesa, La Pueblanueva, Quintanar de la Orden, Talavera de la Reina, Toledo, Torrijos",
+        "sn": "Toledo"
+    },
+    "926": {
+        "ln": "Alcazar de San Juan, Almaden, Ciudad Real, Daimiel, Malagon, Manzanares, Piedrabuena, Puertollano, Tomelloso, Valdepeñas, Villanueva de los Infantes",
+        "sn": "Ciudad Real"
+    },
+    "927": {
+        "ln": "Alcantara, Caceres, Cañaveral, Coria, Jaraiz de la Vera, Logrosan, Montanchez, Montehermoso, Navalmoral de la Mata, Plasencia, Trujillo, Valencia de Alcantara, Zorita",
+        "sn": "Caceres"
+    },
+    "928": {
+        "ln": "Arrecife, Galdar, Isla de Fuerteventura, Las Palmas, Vecindario",
+        "sn": "Las Palmas"
+    },
+    "930": {
+        "ln": "Barcelona, Granollers, Mataro, Sabadell-Terrassa",
+        "sn": "Barcelona"
+    },
+    "931": {
+        "ln": "Barcelona, Berga, Caldes de Montbui, Calella, Cardona, Granollers, Igualada, Manlleu, Manresa, Martorell, Mataro, Sabadell-Terrassa, Sallent, Sant Celoni, Vic, Vilafranca del Penedes, Vilanova i la Geltru",
+        "sn": "Barcelona"
+    },
+    "932": {
+        "ln": "Barcelona, Berga, Granollers, Igualada, Manresa, Martorell, Mataro, Sabadell-Terrassa, Sant Celoni, Vilafranca del Penedes, Vilanova i la Geltru",
+        "sn": "Barcelona"
+    },
+    "933": {
+        "ln": "Barcelona, Caldes de Montbui, Granollers, Igualada, Manresa, Martorell, Mataro, Sabadell-Terrassa, Vic, Vilafranca del Penedes, Vilanova i la Geltru",
+        "sn": "Barcelona"
+    },
+    "934": {
+        "ln": "Barcelona",
+        "sn": "Barcelona"
+    },
+    "935": {
+        "ln": "Barcelona, Berga, Caldes de Montbui, Calella, Cardona, Granollers, Igualada, Manlleu, Manresa, Martorell, Mataro, Sabadell-Terrassa, Sallent, Sant Celoni, Vic, Vilafranca del Penedes, Vilanova i la Geltru",
+        "sn": "Barcelona"
+    },
+    "936": {
+        "ln": "Barcelona, Berga, Caldes de Montbui, Calella, Cardona, Granollers, Igualada, Manlleu, Manresa, Martorell, Mataro, Sabadell-Terrassa, Sallent, Sant Celoni, Vic, Vilafranca del Penedes, Vilanova i la Geltru",
+        "sn": "Barcelona"
+    },
+    "937": {
+        "ln": "Barcelona, Berga, Caldes de Montbui, Calella, Cardona, Granollers, Igualada, Manlleu, Manresa, Martorell, Mataro, Sabadell-Terrassa, Sallent, Sant Celoni, Vic, Vilafranca del Penedes, Vilanova i la Geltru",
+        "sn": "Barcelona"
+    },
+    "938": {
+        "ln": "Barcelona, Berga, Caldes de Montbui, Calella, Cardona, Granollers, Igualada, Manlleu, Manresa, Martorell, Mataro, Sabadell-Terrassa, Sallent, Sant Celoni, Vic, Vilafranca del Penedes, Vilanova i la Geltru",
+        "sn": "Barcelona"
+    },
+    "941": {
+        "ln": "Alfaro, Arnedo, Calahorra, Haro, Logroño, Najera, Santo Domingo de la Calzada, Torrecilla en Cameros, La Rioja",
+        "sn": "La Rioja"
+    },
+    "942": {
+        "ln": "Cabezon de la Sal, Castro-Urdiales, Laredo, Potes, Reinosa, San Vicente de la Barquera, Santander, Torrelavega, Villacarriedo, Cantabria",
+        "sn": "Cantabria"
+    },
+    "943": {
+        "ln": "Don Benito, Azpeitia, Beasain, Bergara, deba, Donostia-San Sebastian, Eibar, Guipuzcoa",
+        "sn": "Guipuzcoa"
+    },
+    "944": {
+        "ln": "Balmaseda, Bermeo, Bilbao, Durango, Gernika, Ondarroa, Vizcaya",
+        "sn": "Vizcaya"
+    },
+    "945": {
+        "ln": "Amurrio, Vitoria-Gasteiz, Alava",
+        "sn": "Alava"
+    },
+    "946": {
+        "ln": "Balmaseda, Bermeo, Bilbao, Durango, Gernika, Ondarroa, Vizcaya",
+        "sn": "Vizcaya"
+    },
+    "947": {
+        "ln": "Aranda de Duero, Belorado, Briviesca, Burgos, Lerma, Medina de Pomar, Miranda de Ebro, Oña, Pampliega, Salas de los Infantes, Sasamon, Sedano, Villadiego, Villarcayo",
+        "sn": "Burgos"
+    },
+    "948": {
+        "ln": "Alsasua, Los Arcos, Burguete, Elizondo, Estella, Ezcaroz, Irurzun, Leiza, Pamplona, San Adrian, Sanguesa, Tafalla, Tudela, Vera de Bidasoa, Navarra",
+        "sn": "Navarra"
+    },
+    "949": {
+        "ln": "Brihuega, Cifuentes, Guadalajara, Humanes, Jadraque, Molina, Pastrana, Sacedon, Siguenza",
+        "sn": "Guadalajara"
+    },
+    "950": {
+        "ln": "Abla, Adra, Albox, Almeria, Canjayar, Nijar, Tijola, Velez Rubio, Vera, Almería",
+        "sn": "Almería"
+    },
+    "951": {
+        "ln": "Antequera, Coin, Cortes de la Frontera, Malaga, Marbella, Melilla, Ronda, Velez-Malaga",
+        "sn": "Malaga"
+    },
+    "952": {
+        "ln": "Antequera, Coin, Cortes de la Frontera, Malaga, Marbella, Melilla, Ronda, Velez-Malaga",
+        "sn": "Malaga"
+    },
+    "953": {
+        "ln": "Alcala la Real, Andujar, Castellar de Santisteban, Cazorla, Jaen, Linares, Orcera, Ubeda, Villanueva del Arzobispo",
+        "sn": "Jaen"
+    },
+    "954": {
+        "ln": "El Arahal, Cantillana, Carmona, Constantina, Ecija, Lora del Rio, Moron de la Frontera, Osuna, Pilas, Seville, Utrera",
+        "sn": "Seville"
+    },
+    "955": {
+        "ln": "Granada, El Arahal, Cantillana, Carmona, Constantina, Ecija, Lora del Rio, Moron de la Frontera, Osuna, Pilas, Seville, Utrera",
+        "sn": "Seville"
+    },
+    "956": {
+        "ln": "Algeciras, Arcos de la Frontera, Barbate de Franco, Cadiz, Ceuta, Jerez de la Frontera, Medina-Sidonia, Olvera, Sanlucar de Barrameda, Cádiz",
+        "sn": "Cádiz"
+    },
+    "957": {
+        "ln": "La Carlota, Castro del Rio, Cordoba, Hinojosa del Duque, Lucena, Montilla, Montoro, Peñarroya-Pueblonuevo, Posadas, Pozoblanco, Priego de Cordoba, Puente Genil, Villaviciosa de Cordoba",
+        "sn": "Cordoba"
+    },
+    "958": {
+        "ln": "Alhama de Granada, Baza, Cadiar, Cullar",
+        "sn": "Granada"
+    },
+    "959": {
+        "ln": "Aracena, Ayamonte, Cortegana, Huelva, Lepe, Nerva, La Palma del Condado, Santa Olalla del Cala, Valverde del Camino, Cartagena, Murcia",
+        "sn": "Murcia"
+    },
+    "960": {
+        "ln": "Alzira, Ayora, Betera, Buñol, Carlet, Chelva, Gandia, Llíria, Ontinyent, Requena, Sagunt, Sueca, Utiel, Valencia, Xativa",
+        "sn": "Valencia"
+    },
+    "961": {
+        "ln": "Alzira, Ayora, Betera, Buñol, Carlet, Chelva, Gandia, Llíria, Ontinyent, Requena, Sagunt, Sueca, Utiel, Valencia, Xativa",
+        "sn": "Valencia"
+    },
+    "962": {
+        "ln": "Alzira, Ayora, Betera, Buñol, Carlet, Chelva, Gandia, Llíria, Ontinyent, Requena, Sagunt, Sueca, Utiel, Valencia, Xativa",
+        "sn": "Valencia"
+    },
+    "963": {
+        "ln": "Alzira, Ayora, Betera, Buñol, Chelva, Gandia, Llíria, Ontinyent, Requena, Sagunt, Sueca, Utiel, Valencia, Xativa",
+        "sn": "Valencia"
+    },
+    "964": {
+        "ln": "Alcala de Chivert, Benasal, Morella, Segorbe, Vinaros, Castellón de la Plana",
+        "sn": "Castellón de la Plana"
+    },
+    "965": {
+        "ln": "Alcoy-Plaza, Alicante-Avenida, Almoradi, Benidorm, Benissa, denia, Elche-Vinalopo, Jijona, Orihuela, Pego, Petrer, Villena, Alicante",
+        "sn": "Alicante"
+    },
+    "966": {
+        "ln": "Alcoy-Plaza, Alicante-Avenida, Almoradi, Benidorm, Benissa, denia, Elche-Vinalopo, Jijona, Orihuela, Pego, Petrer, Villena, Alicante",
+        "sn": "Alicante"
+    },
+    "967": {
+        "ln": "Albacete, Alcaraz, Almansa, Balazote, Bogarra, El Bonillo, Casas-Ibañez, Elche de la Sierra, Hellin, Petrola, La Roda, Tarazona de la Mancha, Valdeganga, Villarrobledo, Yeste",
+        "sn": "Albacete"
+    },
+    "968": {
+        "ln": "Alhama de Murcia, Archena, Caravaca, Cartagena, Cieza, Jumilla, Lorca, Murcia",
+        "sn": "Murcia"
+    },
+    "969": {
+        "ln": "La Almarcha, Carboneras de Guadazaon, Cuenca, Huete, Landete, Motilla del Palancar, Priego, San Clemente, Tarancon, Valverde de Jucar",
+        "sn": "Cuenca"
+    },
+    "971": {
+        "ln": "Campos, Eivissa, Inca, Manacor, Mao, Palma, Pollença, Sineu, Soller, Baleares",
+        "sn": "Baleares"
+    },
+    "972": {
+        "ln": "Blanes, Camprodon, Figueres, Girona, Llança, Olot, Palafrugell, Puigcerda, Ripoll, Roses, Sant Feliu de Guixols, Santa Coloma de Farners, Torroella de Montgri, Gerona",
+        "sn": "Gerona"
+    },
+    "973": {
+        "ln": "Artesa de Segre, Balaguer, Bellver de Cerdanya, Cervera, Lleida, Mollerussa, El Pont de Suert, Ponts, La Seu D'Urgell, Solsona, Sort, Tarrega, Tremp, Vielha, Lerida",
+        "sn": "Lerida"
+    },
+    "974": {
+        "ln": "Ainsa, Ayerbe, Barbastro, Campo, Fraga, Graus, Grañen, Huesca, Jaca, Monzon, Sabiñanigo, Sariñena, Tamarite de Litera",
+        "sn": "Huesca"
+    },
+    "975": {
+        "ln": "Almazan, Arcos de Jalon, El Burgo de Osma, Covaleda, Gomara, San Esteban de Gormaz, Soria",
+        "sn": "Soria"
+    },
+    "976": {
+        "ln": "Alagon, Alhama de Aragon, La Almunia de Doña Godina, Belchite, Calatayud, Cariñena, Caspe, Daroca, Ejea de los Caballeros, Escatron, Fuentes de Ebro, Illueca, Mallen, Muel, Tarazona, Zaragoza, Zuera",
+        "sn": "Zaragoza"
+    },
+    "977": {
+        "ln": "Amposta, Falset, Gandesa, Montblanc, Mora D'Ebre, Reus, Santa Coloma de Queralt, Tarragona, Tortosa, El Vendrell",
+        "sn": "Tarragona"
+    },
+    "978": {
+        "ln": "Albarracin, Alcañiz, Alcorisa, Alfambra, Calamocha, Hijar, Mora de Rubielos, Muniesa, Santa Eulalia, Sarrion, Teruel, Utrillas, Valderrobres",
+        "sn": "Teruel"
+    },
+    "979": {
+        "ln": "Aguilar de Campoo, Baltanas, Carrion de los Condes, Cervera de Pisuerga, Fromista, Guardo, Herrera de Pisuerga, Palencia, Paredes de Nava, Saldaña",
+        "sn": "Palencia"
+    },
+    "980": {
+        "ln": "Alcañices, Benavente, Bermillo de Sayago, Fuentesauco, Puebla de Sanabria, Tabara, Toro, Villalpando, Zamora",
+        "sn": "Zamora"
+    },
+    "981": {
+        "ln": "Betanzos, Carballo, Coruña, Ferrol, Noia, Ordenes, Ortigueira, Santiago",
+        "sn": "Coruña"
+    },
+    "982": {
+        "ln": "Becerrea, Chantada, Guitiriz, Lugo, Meira, Monforte de Lemos, Ribadeo, Sarria, Villalba, Viveiro",
+        "sn": "Lugo"
+    },
+    "983": {
+        "ln": "Medina de Rioseco, Medina del Campo, Olmedo, Peñafiel, Quintanilla de Onesimo, Tordesillas, Valladolid, Villalon de Campos",
+        "sn": "Valladolid"
+    },
+    "984": {
+        "ln": "Aviles, Cangas de Narcea, Cangas de Onis, Gijon, Infiesto, Llanes, Luarca, Moreda, Oviedo, Pola de Laviana, Ribadesella, Tineo, Asturias",
+        "sn": "Asturias"
+    },
+    "985": {
+        "ln": "Aviles, Cangas de Narcea, Cangas de Onis, Gijon, Infiesto, Llanes, Luarca, Moreda, Oviedo, Pola de Laviana, Ribadesella, Tineo, Asturias",
+        "sn": "Asturias"
+    },
+    "986": {
+        "ln": "A Estrada, Lalin, Ponte-Caldelas, Ponteareas, Pontevedra, Tui, Vigo, Vilagarcia de Arousa",
+        "sn": "Pontevedra"
+    },
+    "987": {
+        "ln": "Astorga, La Bañeza, Bembibre, Cistierna, Leon, Ponferrada, Quintana de Rueda, Riaño, La Robla, Sahagun, Valencia de Don Juan, Veguellina de Orbigo, Villablino, Villafranca del Bierzo, León",
+        "sn": "León"
+    },
+    "988": {
+        "ln": "Allariz, Ourense, Ribadavia, La Rua, Verin, Orense",
+        "sn": "Orense"
+    }
+}
