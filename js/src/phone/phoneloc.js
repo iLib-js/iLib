@@ -31,7 +31,7 @@ localeinfo.js
  * @param {Object} options Options that govern how this phone locale works
  * @constructor
  * @class
- *
+ * @extends ilib.Locale
  */
 ilib.Locale.PhoneLoc = function(options) {
 	var region,

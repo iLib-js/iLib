@@ -206,7 +206,7 @@ ilib.StateHandler.prototype = {
 	
 			ret = {
 				number: number.substring(1),
-				locale: 'idd'    // shared subtable that parses the country code
+				table: 'idd'    // shared subtable that parses the country code
 			};
 		}		
 		return ret;
@@ -232,7 +232,7 @@ ilib.StateHandler.prototype = {
 	
 			ret = {
 				number: number.substring(currentChar+1),
-				locale: 'idd'    // shared subtable that parses the country code
+				table: 'idd'    // shared subtable that parses the country code
 			};
 		}
 		
@@ -252,17 +252,11 @@ ilib.StateHandler.prototype = {
 		// parse the rest of the number with the regular table for this locale
 		fields.countryCode = number.substring(0, currentChar+1);
 		cc = fields.countryCode.replace(/[wWpPtT\+#\*]/g, ''); // fix for NOV-108200
-		new ilib.Locale.PhoneLoc({
-			countryCode: cc,
-			onLoad: ilib.bind(this, function (data) {
-				locale = data;
-			})
-		});
 		// console.log("Found country code " + fields.countryCode + ". Switching to country " + locale.region + " to parse the rest of the number");
 		
 		ret = {
 			number: number.substring(currentChar+1),
-			locale: locale
+			countryCode: cc
 		};
 		
 		return ret;

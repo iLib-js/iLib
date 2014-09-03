@@ -38,9 +38,8 @@ phone/phonenum.js
  * <li><i>style</i> the name of style to use to format numbers, or undefined to use the default style
  * <li><i>mcc</i> the MCC of the country to use if the number is a local number and the country code is not known
  *
- * <li><i>onLoad</i> - a callback function to call when the address info for the*
- * locale is fully loaded and the address has been parsed. When the onLoad 
- * option is given, the address formatter object 
+ * <li><i>onLoad</i> - a callback function to call when the locale data is fully loaded and the address has been 
+ * parsed. When the onLoad option is given, the address formatter object 
  * will attempt to load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
@@ -59,12 +58,16 @@ phone/phonenum.js
  * </ul>
  *
  * Some regions have more than one style of formatting, and the style parameter
- * selects which style the user prefers. The style names can be found by calling <p>
+ * selects which style the user prefers. An array of style names that this locale
+ * supports can be found by calling {@link ilib.PhoneFmt.getAvailableStyles}. 
+ * Example phone numbers can be retrieved for each style by calling 
+ * {@link ilib.PhoneFmt.getStyleExample}.
+ * <p>
  *
  * If the MCC is given, numbers will be formatted in the manner of the country
  * specified by the MCC. If it is not given, but the locale is, the manner of
  * the country in the locale will be used. If neither the locale or MCC are not given,
- * then the country of the current locale is used. 
+ * then the country of the current ilib locale is used. 
  *
  * @class
  * @constructor
@@ -75,25 +78,11 @@ ilib.PhoneFmt = function(options) {
 	this.styleName = 'default',
 	this.loadParams = {};
 
-	this.locale = new ilib.Locale();
+	var locale = new ilib.Locale();
 
 	if (options) {
 		if (options.locale) {
-			new ilib.Locale.PhoneLoc({
-				locale: options.locale,
-				onLoad: ilib.bind(this, function (data) {
-					this.locale = data;
-				})
-			});
-		}
-
-		if (options.mcc) {			
-			new ilib.Locale.PhoneLoc({
-				mcc: options.mcc,
-				onLoad: ilib.bind(this, function (data) {
-					this.locale = data;
-				})
-			});
+			locale = options.locale;
 		}
 
 		if (typeof(options.sync) !== 'undefined') {
@@ -109,28 +98,40 @@ ilib.PhoneFmt = function(options) {
 		}
 	}
 
-	new ilib.NumPlan({
-		locale: this.locale,
-		sync: this.sync,
-		loadParms: this.loadParams,
-		onLoad: ilib.bind(this, function (plan) {
-			this.plan = plan;
-		})
-	});
+	new ilib.Locale.PhoneLoc({
+		locale: locale,
+		mcc: options && options.mcc,
+		countryCode: options && options.countryCode,
+		onLoad: ilib.bind(this, function (data) {
+			/** @type {ilib.Locale.PhoneLoc} */
+			this.locale = data;
 
-	ilib.loadData({
-		name: "phonefmt.json",
-		object: ilib.PhoneFmt,
-		locale: this.locale, 
-		sync: this.sync,
-		loadParams: ilib.merge(this.loadParams, {
-			returnOne: true
-		}),
-		callback: ilib.bind(this, function (fmtdata) {
-			this.fmtdata = fmtdata;
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
+			new ilib.NumPlan({
+				locale: this.locale,
+				sync: this.sync,
+				loadParms: this.loadParams,
+				onLoad: ilib.bind(this, function (plan) {
+					/** @type {ilib.NumPlan} */
+					this.plan = plan;
+
+					ilib.loadData({
+						name: "phonefmt.json",
+						object: ilib.PhoneFmt,
+						locale: this.locale, 
+						sync: this.sync,
+						loadParams: ilib.merge(this.loadParams, {
+							returnOne: true
+						}),
+						callback: ilib.bind(this, function (fmtdata) {
+							this.fmtdata = fmtdata;
+							
+							if (options && typeof(options.onLoad) === 'function') {
+								options.onLoad(this);
+							}
+						})
+					});
+				})
+			});
 		})
 	});
 };
@@ -185,19 +186,134 @@ ilib.PhoneFmt.prototype = {
 	},
 	
 	/**
-	Returns the style with the given name, or the default style if there
-	is no style with that name.
-	*/
-	getStyle: function getStyle(name) {
-		return this.fmtdata[name] || this.fmtdata["default"];
+	 * Returns the style with the given name, or the default style if there
+	 * is no style with that name.
+	 * @protected
+	 */
+	_getStyle: function (name, fmtdata) {
+		return fmtdata[name] || fmtdata["default"];
 	},
 
 	/**
-	Returns true if this locale contains the named style, and false otherwise.
-	*/
-	hasStyle: function hasStyle(name) {
-		return this.fmtdata[name] !== undefined;
+	 * Do the actual work of formatting the phone number starting at the given
+	 * field in the regular field order.
+	 * 
+	 * @param {ilib.PhoneNumber} number
+	 * @param {Object} options
+	 * @param {number} startField
+	 */
+	_doFormat: function(number, options, startField, locale, fmtdata, callback) {
+		var sync = true,
+			loadParams = {},
+			temp, 
+			templates, 
+			fieldName, 
+			countryCode, 
+			isWhole, 
+			field,
+			style,
+			formatted = "",
+			styles,
+			styleTemplates;
+	
+		if (options) {
+			if (typeof(options.sync) !== 'undefined') {
+				sync = (options.sync == true);				
+			}
+		
+			if (options.loadParams) {
+				loadParams = options.loadParams;
+			}
+		}
+	
+		style = this.style; // default style for this formatter
+
+		// figure out what style to use for this type of number
+		if (number.countryCode) {
+			// dialing from outside the country
+			// check to see if it to a mobile number because they are often formatted differently
+			style = (number.mobilePrefix) ? "internationalmobile" : "international";
+		} else if (number.mobilePrefix !== undefined) {
+			style = "mobile";
+		} else if (number.serviceCode !== undefined && typeof(fmtdata["service"]) !== 'undefined') {
+			// if there is a special format for service numbers, then use it
+			style = "service";
+		}
+
+		isWhole = (!options || !options.partial);
+		styleTemplates = this._getStyle(style, fmtdata);
+		
+		// console.log("Style ends up being " + style + " and using subtype " + (isWhole ? "whole" : "partial"));
+		styleTemplates = (isWhole ? styleTemplates.whole : styleTemplates.partial) || styleTemplates;
+
+		for (var i = startField; i < ilib.PhoneNumber._fieldOrder.length; i++) {
+			fieldName = ilib.PhoneNumber._fieldOrder[i];
+			// console.info("format: formatting field " + fieldName + " value: " + number[fieldName]);
+			if (number[fieldName] !== undefined) {
+				if (styleTemplates[fieldName] !== undefined) {
+					templates = styleTemplates[fieldName];
+					if (fieldName === "trunkAccess") {
+						if (number.areaCode === undefined && number.serviceCode === undefined && number.mobilePrefix === undefined) {
+							templates = "X";
+						}
+					}
+					// console.info("format: formatting field " + fieldName + " with templates " + JSON.stringify(templates));
+					temp = this._substituteDigits(number[fieldName], templates, (fieldName === "subscriberNumber"));
+					// console.info("format: formatted is: " + temp);
+					formatted += temp;
+	
+					if (fieldName === "countryCode") {
+						// switch to the new country to format the rest of the number
+						countryCode = number.countryCode.replace(/[wWpPtT\+#\*]/g, '');	// fix for NOV-108200
+
+						new ilib.Locale.PhoneLoc({
+							locale: this.locale,
+							sync: sync,							
+							loadParms: loadParams,
+							countryCode: countryCode,
+							onLoad: ilib.bind(this, function (/** @type {ilib.Locale.PhoneLoc} */ locale) {
+								ilib.loadData({
+									name: "phonefmt.json",
+									object: ilib.PhoneFmt,
+									locale: locale,
+									sync: sync,
+									loadParams: ilib.merge(loadParams, {
+										returnOne: true
+									}),
+									callback: ilib.bind(this, function (fmtdata) {
+										// console.info("format: switching to region " + locale.region + " and style " + style + " to format the rest of the number ");
+										
+										var subfmt = "";
+
+										this._doFormat(number, options, i+1, locale, fmtdata, function (subformat) {
+											subfmt = subformat;
+											if (typeof(callback) === 'function') {
+												callback(formatted + subformat);
+											}
+										});
+										
+										formatted += subfmt;
+									})
+								});
+							})
+						});
+						return formatted;
+					}
+				} else {
+					//console.warn("PhoneFmt.format: cannot find format template for field " + fieldName + ", region " + locale.region + ", style " + style);
+					// use default of "minimal formatting" so we don't miss parts because of bugs in the format templates
+					formatted += number[fieldName];
+				}
+			}
+		}
+		
+		if (typeof(callback) === 'function') {
+			callback(formatted);
+		}
+
+		return formatted;
 	},
+	
 	/**
 	 * Format the parts of a phone number appropriately according to the settings in 
 	 * this formatter instance.
@@ -215,13 +331,13 @@ ilib.PhoneFmt.prototype = {
      * <li><i>mcc</i> The mobile carrier code (MCC) associated with the carrier that the phone is 
      * currently connected to, if known. This also can give a clue as to which numbering plan to
      * use
-     * <li>onLoad - a callback function to call when the date format object is fully 
+     * <li><i>onLoad</i> - a callback function to call when the date format object is fully 
      * loaded. When the onLoad option is given, the DateFmt object will attempt to
      * load any missing locale data using the ilib loader callback.
      * When the constructor is done (even if the data is already preassembled), the 
      * onLoad function is called with the current instance as a parameter, so this
      * callback can be used with preassembled or dynamic loading or a mix of the two.
-     * <li>sync - tell whether to load any missing locale data synchronously or 
+     * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
      * asynchronously. If this option is given as "false", then the "onLoad"
      * callback must be given, as the instance returned from this constructor will
      * not be usable for a while.
@@ -257,7 +373,7 @@ ilib.PhoneFmt.prototype = {
 	 * @param {Object} options Parameters which control how to format the number
 	 * @return {string} Returns the formatted phone number as a string.
 	 */
-	format: function format(number, options) {
+	format: function (number, options) {
 		var sync = true,
 			loadParams = {},
 			temp, 
@@ -270,7 +386,8 @@ ilib.PhoneFmt.prototype = {
 			formatted = "",
 			styles,
 			locale,
-			styleTemplates;
+			styleTemplates,
+			callback;
 
 		if (options) {
 			if (typeof(options.sync) !== 'undefined') {
@@ -280,87 +397,18 @@ ilib.PhoneFmt.prototype = {
 			if (options.loadParams) {
 				loadParams = options.loadParams;
 			}
+			
+			callback = options.onLoad;
 		}
 
 		try {
-			style = this.style; // default style for this formatter
-
-			// figure out what style to use for this type of number
-			if (number.countryCode) {
-				// dialing from outside the country
-				// check to see if it to a mobile number because they are often formatted differently
-				style = (number.mobilePrefix) ? "internationalmobile" : "international";
-			} else if (number.mobilePrefix !== undefined) {
-				style = "mobile";
-			} else if (number.serviceCode !== undefined && this.hasStyle("service")) {
-				// if there is a special format for service numbers, then use it
-				style = "service";
-			}
-
-			isWhole = (!options || !options.partial);
-			styleTemplates = this.getStyle(style);
-			locale = this.locale;
-
-			// console.log("Style ends up being " + style + " and using subtype " + (isWhole ? "whole" : "partial"));
-			styleTemplates = (isWhole ? styleTemplates.whole : styleTemplates.partial) || styleTemplates;
-
-			for (field in ilib.PhoneNumber._fieldOrder) {
-				if (typeof field === 'string' && typeof ilib.PhoneNumber._fieldOrder[field] === 'string') {
-					fieldName = ilib.PhoneNumber._fieldOrder[field];
-					// console.info("format: formatting field " + fieldName + " value: " + number[fieldName]);
-					if (number[fieldName] !== undefined) {
-						if (styleTemplates[fieldName] !== undefined) {
-							templates = styleTemplates[fieldName];
-							if (fieldName === "trunkAccess") {
-								if (number.areaCode === undefined && number.serviceCode === undefined && number.mobilePrefix === undefined) {
-									templates = "X";
-								}
-							}
-							// console.info("format: formatting field " + fieldName + " with templates " + JSON.stringify(templates));
-							temp = this._substituteDigits(number[fieldName], templates, (fieldName === "subscriberNumber"));
-							// console.info("format: formatted is: " + temp);
-							formatted += temp;
-			
-							if ( fieldName === "countryCode" ) {
-								// switch to the new country to format the rest of the number
-								countryCode = number.countryCode.replace(/[wWpPtT\+#\*]/g, '');	// fix for NOV-108200
-
-								new ilib.Locale.PhoneLoc({
-									locale: this.locale,
-									sync: sync,
-									loadParms: loadParams,
-									countryCode: countryCode,
-									onLoad: ilib.bind(this, function (data) {
-										this.locale = data;
-									})
-								});
-
-								ilib.loadData({
-									name: "phonefmt.json",
-									object: ilib.PhoneFmt,
-									locale: this.locale,
-									sync: sync,
-									loadParams: ilib.merge(loadParams, {
-										returnOne: true
-									}),
-									callback: ilib.bind(this, function (fmtdata) {
-										this.fmtdata = fmtdata;
-										styleTemplates = this.getStyle((number.mobilePrefix !== undefined) ? "internationalmobile" : "international");
-										// console.info("format: switching to region " + locale.region + " and style " + style + " to format the rest of the number ");
-										if (options && typeof(options.onLoad) === 'function') {
-											options.onLoad(this);
-										}
-									})
-								});
-							}
-						} else {
-							//console.warn("PhoneFmt.format: cannot find format template for field " + fieldName + ", region " + locale.region + ", style " + style);
-							// use default of "minimal formatting" so we don't miss parts because of bugs in the format templates
-							formatted += number[fieldName];
-						}
-					}
+			this._doFormat(number, options, 0, this.locale, this.fmtdata, function (fmt) {
+				formatted = fmt;
+				
+				if (typeof(callback) === 'function') {
+					callback(fmt);
 				}
-			}
+			});
 		} catch (e) {
 			if (typeof(e) === 'string') { 
 				// console.warn("caught exception: " + e + ". Using last resort rule.");
@@ -377,6 +425,10 @@ ilib.PhoneFmt.prototype = {
 				}
 			} else {
 				throw e;
+			}
+			
+			if (typeof(callback) === 'function') {
+				callback(formatted);
 			}
 		}
 		return formatted;

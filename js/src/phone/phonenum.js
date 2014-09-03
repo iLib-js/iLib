@@ -41,8 +41,8 @@ phone/handler.js
  * <li><i>mcc</i> The mobile carrier code (MCC) associated with the carrier that the phone is 
  * currently connected to, if known. This also can give a clue as to which numbering plan to
  * use
- * <li>onLoad - a callback function to call when the date format object is fully 
- * loaded. When the onLoad option is given, the DateFmt object will attempt to
+ * <li>onLoad - a callback function to call when this instance is fully 
+ * loaded. When the onLoad option is given, this class will attempt to
  * load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the 
  * onLoad function is called with the current instance as a parameter, so this
@@ -154,8 +154,8 @@ phone/handler.js
  * @class
  * @constructor
  * @param {string|ilib.PhoneNumber} number A free-form phone number to be parsed, or another phone
- * number instance
- * @param {Object} options options that guide the parser in parsing the number 
+ * number instance to copy
+ * @param {Object=} options options that guide the parser in parsing the number 
 
  */
 ilib.PhoneNumber = function(number, options) {
@@ -215,6 +215,7 @@ ilib.PhoneNumber = function(number, options) {
 						sync: this.sync,
 						loadParms: this.loadParams,
 						onLoad: ilib.bind(this, function (plan) {
+							/** @type {ilib.NumPlan} */
 							this.plan = this.destinationPlan = plan;
 
 							regionSettings = {
@@ -237,12 +238,39 @@ ilib.PhoneNumber = function(number, options) {
 };
 
 /**
- * Parse an IMSI number.
+ * Parse an International Mobile Subscriber Identity (IMSI) number into its 3 constituent parts:
+ * 
+ * <ol>
+ * <li>mcc - Mobile Country Code, which identifies the country where the phone is currently receiving 
+ * service.
+ * <li>mnc - Mobile Network Code, which identifies the carrier which is currently providing service to the phone 
+ * <li>msin - Mobile Subscription Identifier Number. This is a unique number identifying the mobile phone on 
+ * the network, which usually maps to an account/subscriber in the carrier's database.
+ * </ol>
+ * 
+ * Because this function may need to load data to identify the above parts, you can pass an options
+ * object that controls how the data is loaded. The options may contain any of the following properties:
+ *
+ * <ul>
+ * <li>onLoad - a callback function to call when the parsing is done. When the onLoad option is given, 
+ * this method will attempt to load the locale data using the ilib loader callback. When it is done
+ * (even if the data is already preassembled), the onLoad function is called with the parsing results
+ * as a parameter, so this callback can be used with preassembled or dynamic, synchronous or 
+ * asynchronous loading or a mix of the above.
+ * <li>sync - tell whether to load any missing locale data synchronously or asynchronously. If this 
+ * option is given as "false", then the "onLoad" callback must be given, as the results returned from 
+ * this constructor will not be usable for a while.
+ * <li><i>loadParams</i> - an object containing parameters to pass to the loader callback function 
+ * when locale data is missing. The parameters are not interpretted or modified in any way. They are 
+ * simply passed along. The object may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
+ * </ul>
  *
  * @static
- * @protected
- * @param {string} imsi IMSI string to parse
- * @return {Object} components of the IMSI number
+ * @param {string} imsi IMSI number to parse
+ * @param {Object} options options controlling the loading of the locale data
+ * @return {{mcc:string,mnc:string,msin:string}} components of the IMSI number, when the locale data
+ * is loaded synchronously, or undefined if asynchronous
  */
 ilib.PhoneNumber.parseImsi = function(imsi, options) {
 	var sync = true,
@@ -250,7 +278,7 @@ ilib.PhoneNumber.parseImsi = function(imsi, options) {
 		fields = {};
 	
 	if (!imsi) {
-		return null;
+		return undefined;
 	}
 
 	if (options) {
@@ -272,8 +300,9 @@ ilib.PhoneNumber.parseImsi = function(imsi, options) {
 		callback: ilib.bind(this, function(data) {
 			this.mncdata = data;
 			fields = this._parseImsi(this.mncdata, imsi);
+			
 			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
+				options.onLoad(fields);
 			}
 		})
 	});
@@ -281,6 +310,10 @@ ilib.PhoneNumber.parseImsi = function(imsi, options) {
 };
 
 
+/**
+ * @static
+ * @protected
+ */
 ilib.PhoneNumber._parseImsi = function(data, imsi) {
 	var ch, 
 		i,
@@ -360,6 +393,10 @@ ilib.PhoneNumber._parseImsi = function(data, imsi) {
 	return fields;
 };
 
+/**
+ * @static
+ * @private
+ */
 ilib.PhoneNumber._stripFormatting = function(str) {
 	var ret = "";
 	var i;
@@ -372,6 +409,10 @@ ilib.PhoneNumber._stripFormatting = function(str) {
 	return ret;
 };
 
+/**
+ * @static
+ * @protected
+ */
 ilib.PhoneNumber._getCharacterCode = function(ch) {
 	if (ch >= '0' && ch <= '9') {
 			return ch - '0';
@@ -399,6 +440,9 @@ ilib.PhoneNumber._getCharacterCode = function(ch) {
 	return -2;
 };
 
+/**
+ * @private
+ */
 ilib.PhoneNumber._states = [
 	"none",
 	"unknown",
@@ -424,6 +468,9 @@ ilib.PhoneNumber._states = [
 	"local"
 ];
 
+/**
+ * @private
+ */
 ilib.PhoneNumber._fieldOrder = [
 	"vsc",
 	"iddPrefix",
@@ -441,6 +488,75 @@ ilib.PhoneNumber._fieldOrder = [
 ilib.PhoneNumber.prototype = {
 	/**
 	 * @protected
+	 * @param {string} number
+	 * @param {Object} regionData
+	 * @param {Object} options
+	 * @param {string} countryCode
+	 */
+	_parseOtherCountry: function(number, regionData, options, countryCode) {
+		new ilib.Locale.PhoneLoc({
+			locale: this.locale,
+			countryCode: countryCode,
+			sync: this.sync,
+			loadParms: this.loadParams,
+			onLoad: ilib.bind(this, function (loc) {
+				/*
+				 * this.locale is the locale where this number is being parsed,
+				 * and is used to parse the IDD prefix, if any, and this.destinationLocale is 
+				 * the locale of the rest of this number after the IDD prefix.
+				 */
+				/** @type {ilib.Locale.PhoneLoc} */
+				this.destinationLocale = loc;
+
+				ilib.loadData({
+					name: "states.json",
+					object: ilib.PhoneNumber,
+					locale: this.destinationLocale,
+					sync: this.sync,
+					loadParams: ilib.merge(this.loadParams, {
+						returnOne: true
+					}),
+					callback: ilib.bind(this, function (stateData) {
+						if (!stateData) {
+							stateData = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
+						}
+						
+						new ilib.NumPlan({
+							locale: this.destinationLocale,
+							sync: this.sync,
+							loadParms: this.loadParams,
+							onLoad: ilib.bind(this, function (plan) {
+								/*
+								 * this.plan is the plan where this number is being parsed,
+								 * and is used to parse the IDD prefix, if any, and this.destinationPlan is 
+								 * the plan of the rest of this number after the IDD prefix in the 
+								 * destination locale.
+								 */
+								/** @type {ilib.NumPlan} */
+								this.destinationPlan = plan;
+
+								var regionSettings = {
+									stateData: stateData,
+									plan: plan,
+									handler: ilib._handlerFactory(this.destinationLocale, plan)
+								};
+								
+								// recursively call the parser with the new states data
+								// to finish the parsing
+								this._parseNumber(number, regionSettings, options);
+							})
+						});
+					})
+				});
+			})
+		});
+	},
+	
+	/**
+	 * @protected
+	 * @param {string} number
+	 * @param {Object} regionData
+	 * @param {Object} options
 	 */
 	_parseNumber: function(number, regionData, options) {
 		var stateData,
@@ -490,66 +606,31 @@ ilib.PhoneNumber.prototype = {
 					// if the handler requested a special sub-table, use it for this round of parsing,
 					// otherwise, set it back to the regular table to continue parsing
 
-					if (result.locale !== undefined) {
-						if (typeof result.locale === "string") {
-							loadName = result.locale + ".json";
-							loadLocale = "-";
-						} else {
-							loadName = "states.json";
-							loadLocale = result.locale;
-						}
-
+					if (result.countryCode !== undefined) {
+						this._parseOtherCountry(number, regionData, options, result.countryCode);
+						// don't process any further -- let the work be done in the onLoad callbacks
+						return;
+					} else if (result.table !== undefined) {
 						ilib.loadData({
-							name: loadName,
+							name: result.table + ".json",
 							object: ilib.PhoneNumber,
-							locale: loadLocale,
+							nonlocale: true,
 							sync: this.sync,
-							loadParams: ilib.merge(this.loadParams, {
-								returnOne: true
-							}),
+							loadParams: this.loadParams,
 							callback: ilib.bind(this, function (data) {
 								if (!data) {
 									data = {"states" : [[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,1,-1],[2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-3,-1,-1,-1,-1],[-4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]]};
 								}
-								stateData = data;
-								
-								new ilib.Locale.PhoneLoc({
-									locale: result.locale,
-									sync: this.sync,
-									loadParms: this.loadParams,
-									onLoad: ilib.bind(this, function (loc) {
-										/*
-										 * this.locale is the locale where this number is being parsed,
-										 * and is used to parse the IDD prefix, if any, and this.destinationLocale is 
-										 * the locale of the rest of this number after the IDD prefix.
-										 */
-										this.destinationLocale = loc;
-										new ilib.NumPlan({
-											locale: result.locale,
-											sync: this.sync,
-											loadParms: this.loadParams,
-											onLoad: ilib.bind(this, function (plan) {
-												/*
-												 * this.plan is the plan where this number is being parsed,
-												 * and is used to parse the IDD prefix, if any, and this.destinationPlan is 
-												 * the plan of the rest of this number after the IDD prefix in the 
-												 * destination locale.
-												 */
-												this.destinationPlan = plan;
 
-												regionSettings = {
-													stateData : stateData,
-													plan: plan,
-													handler : ilib._handlerFactory(this.destinationLocale, plan)
-												};
-												
-												// recursively call the parser with the new states data
-												// to finish the parsing
-												this._parseNumber(number, regionSettings, options);
-											})
-										});
-									})
-								});
+								regionSettings = {
+									stateData : data,
+									plan: regionSettings.plan,
+									handler: regionSettings.handler
+								};
+								
+								// recursively call the parser with the new states data
+								// to finish the parsing
+								this._parseNumber(number, regionSettings, options);
 							})
 						});
 						// don't process any further -- let the work be done in the onLoad callbacks
@@ -596,12 +677,17 @@ ilib.PhoneNumber.prototype = {
 	_getPrefix: function() {
 		return this.areaCode || this.serviceCode || this.mobilePrefix || "";
 	},
+	
+	/**
+	 * @protected
+	 */
 	_hasPrefix: function() {
 		return (this._getPrefix() !== "");
 	},
-	/*
-	 * @private
+	
+	/**
 	 * Exclusive or -- return true, if one is defined and the other isn't
+	 * @protected
 	 */
 	_xor : function(left, right) {
 		if ((left === undefined && right === undefined ) || (left !== undefined && right !== undefined)) {
@@ -610,7 +696,11 @@ ilib.PhoneNumber.prototype = {
 			return true;
 		}
 	},
-	/* return a version of the phone number that contains only the dialable digits in the correct order */
+	
+	/**
+	 * return a version of the phone number that contains only the dialable digits in the correct order 
+	 * @protected
+	 */
 	_join: function () {
 		var fieldName, formatted = "";
 		
@@ -686,7 +776,7 @@ ilib.PhoneNumber.prototype = {
 	 * <li>extension - A difference causes a minor non-match
 	 * </ul>
 	 *  
-	 * @param {string|ilib.PhoneNumber} second phone number to compare this one to
+	 * @param {string|ilib.PhoneNumber} other other phone number to compare this one to
 	 * @return {number} non-negative integer describing the percentage quality of the 
 	 * match. 100 means a very strong match (100%), and lower numbers are less and 
 	 * less strong, down to 0 meaning not at all a match. 
@@ -697,13 +787,10 @@ ilib.PhoneNumber.prototype = {
 			ITcountries = {"378":1, "379":1},
 			thisPrefix,
 			otherPrefix,
-			currentCountryCode = 0,
-			phoneLoc;
-
-		phoneLoc = this.locale;
+			currentCountryCode = 0;
 
 		if (typeof this.locale.region === "string") {
-			currentCountryCode = phoneLoc._mapRegiontoCC(this.locale.region);
+			currentCountryCode = this.locale._mapRegiontoCC(this.locale.region);
 		}
 		
 		// subscriber number must be present and must match
@@ -861,86 +948,14 @@ ilib.PhoneNumber.prototype = {
 		return true;
 	},
 	
-	_doNormalize: function(options, norm, homeLocale, currentLocale, currentPlan, destinationLocale, destinationPlan, sync, loadParams) {
-		var formatted = "", 
-			temp,
-			tempRegion,
-			tempPhoncloc;
+
+	/**
+	 * @private
+	 */
+	_doNormalize: function(options, norm, homeLocale, currentLocale, currentPlan, destinationLocale, destinationPlan, sync, loadParams, callback) {
+		var formatted = "";
 		
-		if (options &&
-				options.assistedDialing &&
-				!norm.trunkAccess && 
-				!norm.iddPrefix &&
-				norm.subscriberNumber && 
-				norm.subscriberNumber.length > destinationPlan.getFieldLength("maxLocalLength")) {
-
-			// numbers that are too long are sometimes international direct dialed numbers that
-			// are missing the IDD prefix. So, reparse using the plus to see if that works.
-			new ilib.PhoneNumber("+" + this._join(), 
-				{
-					locale: this.locale,
-					sync: sync,
-					loadParms: loadParams,
-					onLoad: ilib.bind(this, function (data) {
-						temp = data;
-					})
-				});
-
-		    new ilib.Locale.PhoneLoc({
-				locale: this.locale,
-				sync: sync,
-				loadParms: loadParams,
-				onLoad: ilib.bind(this, function (data) {
-					tempPhoncloc = data;
-				})
-			});
-
-			tempRegion = (temp.countryCode && tempPhoncloc._mapCCtoRegion(temp.countryCode));
-
-			if (tempRegion && tempRegion !== "unknown" && tempRegion !== "SG") {
-				// only use it if it is a recognized country code. Singapore (SG) is a special case.
-				norm = temp;
-				destinationLocale = (norm.countryCode) && 
-					new ilib.Locale.PhoneLoc({
-						locale: this.locale,
-						sync: sync,
-						loadParms: loadParams,
-						countryCode: norm.countryCode,
-						onLoad: ilib.bind(this, function (data) {
-							destinationLocale = data;
-					})
-				}) || norm.locale || currentLocale;
-				
-				new ilib.NumPlan({
-					locale: destinationLocale,
-					sync: sync,
-					loadParms: loadParams,
-					onLoad: ilib.bind(this, function (plan) {
-						destinationPlan = plan;
-					})
-				});
-			}
-		} else if (options && options.assistedDialing && norm.invalid && currentLocale.region !== norm.locale.region) {
-			// if this number is not valid for the locale it was parsed with, try again with the current locale
-			// console.log("norm is invalid. Attempting to reparse with the current locale");
-
-			new ilib.PhoneNumber(this._join(), 
-				{
-					locale: currentLocale,
-					sync: sync,
-					loadParms: loadParams,
-					onLoad: ilib.bind(this, function (data) {
-						temp = data;
-					})
-				});
-
-			if (temp && !temp.invalid) {
-				norm = temp;
-			}
-		}
-
 		if (!norm.invalid && options && options.assistedDialing) {
-			
 			// don't normalize things that don't have subscriber numbers. Also, don't normalize
 			// manually dialed local numbers. Do normalize local numbers in contact entries.
 			if (norm.subscriberNumber && 
@@ -1073,6 +1088,69 @@ ilib.PhoneNumber.prototype = {
 		formatted = norm._join();
 
 		return formatted;
+	},
+	
+	/**
+	 * @private
+	 */
+	_doReparse: function(options, norm, homeLocale, currentLocale, currentPlan, destinationLocale, destinationPlan, sync, loadParams, callback) {
+		var formatted, 
+			tempRegion;
+		
+		if (options &&
+				options.assistedDialing &&
+				!norm.trunkAccess && 
+				!norm.iddPrefix &&
+				norm.subscriberNumber && 
+				norm.subscriberNumber.length > destinationPlan.getFieldLength("maxLocalLength")) {
+
+			// numbers that are too long are sometimes international direct dialed numbers that
+			// are missing the IDD prefix. So, try reparsing it using a plus in front to see if that works.
+			new ilib.PhoneNumber("+" + this._join(), {
+				locale: this.locale,
+				sync: sync,
+				loadParms: loadParams,
+				onLoad: ilib.bind(this, function (data) {
+					tempRegion = (data.countryCode && data.locale._mapCCtoRegion(data.countryCode));
+
+					if (tempRegion && tempRegion !== "unknown" && tempRegion !== "SG") {
+						// only use it if it is a recognized country code. Singapore (SG) is a special case.
+						norm = data;
+						destinationLocale = data.destinationLocale;
+						destinationPlan = data.destinationPlan;
+					}
+					
+					formatted = this._doNormalize(options, norm, homeLocale, currentLocale, currentPlan, destinationLocale, destinationPlan, sync, loadParams);
+					if (typeof(callback) === 'function') {
+						callback(formatted);
+					}
+				})
+			});
+		} else if (options && options.assistedDialing && norm.invalid && currentLocale.region !== norm.locale.region) {
+			// if this number is not valid for the locale it was parsed with, try again with the current locale
+			// console.log("norm is invalid. Attempting to reparse with the current locale");
+
+			new ilib.PhoneNumber(this._join(), {
+				locale: currentLocale,
+				sync: sync,
+				loadParms: loadParams,
+				onLoad: ilib.bind(this, function (data) {
+					if (data && !data.invalid) {
+						norm = data;
+					}
+					
+					formatted = this._doNormalize(options, norm, homeLocale, currentLocale, currentPlan, destinationLocale, destinationPlan, sync, loadParams);
+					if (typeof(callback) === 'function') {
+						callback(formatted);
+					}
+				})
+			});
+		} else {
+			formatted = this._doNormalize(options, norm, homeLocale, currentLocale, currentPlan, destinationLocale, destinationPlan, sync, loadParams);
+			if (typeof(callback) === 'function') {
+				callback(formatted);
+			}
+		}
 	},
 	
 	/**
@@ -1231,10 +1309,11 @@ ilib.PhoneNumber.prototype = {
 		}
 		
 		// Clone this number, so we don't mess with the original.
-		// No need to do this asynchronously because it's a copy constructor
+		// No need to do this asynchronously because it's a copy constructor which doesn't 
+		// load any extra files.
 		norm = new ilib.PhoneNumber(this);
 
-		var normalized = "";
+		var normalized;
 		
 		if (options && (typeof(options.mcc) !== 'undefined' || typeof(options.country) !== 'undefined')) {
 			new ilib.Locale.PhoneLoc({
@@ -1249,23 +1328,28 @@ ilib.PhoneNumber.prototype = {
 						sync: sync,
 						loadParms: loadParams,
 						onLoad: ilib.bind(this, function (plan) {
-							normalized = this._doNormalize(options, norm, this.locale, loc, plan, this.destinationLocale, this.destinationPlan, sync, loadParams);
-							
-							if (options && typeof(options.onLoad) === 'function') {
-								options.onLoad(normalized);
-							}
+							this._doReparse(options, norm, this.locale, loc, plan, this.destinationLocale, this.destinationPlan, sync, loadParams, function (fmt) {
+								normalized = fmt;
+								
+								if (options && typeof(options.onLoad) === 'function') {
+									options.onLoad(fmt);
+								}
+							});
 						})
 					});
 				})
 			});
 		} else {
-			normalized = this._doNormalize(options, norm, this.locale, this.locale, this.plan, this.destinationLocale, this.destinationPlan, sync, loadParams);
-			
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(normalized);
-			} 
+			this._doReparse(options, norm, this.locale, this.locale, this.plan, this.destinationLocale, this.destinationPlan, sync, loadParams, function (fmt) {
+				normalized = fmt;
+				
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(fmt);
+				}
+			});
 		}
-		
+
+		// return the value for the synchronous case
 		return normalized;
 	}
 };

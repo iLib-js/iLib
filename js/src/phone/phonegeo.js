@@ -102,13 +102,12 @@ phone/phonenum.js
  */
 ilib.GeoLocator = function(options) {
 	var sync = true,
-		loadParams = {};
-
-	this.locale = new ilib.Locale();
+		loadParams = {},
+		locale = ilib.getLocale();
 
 	if (options) {
-		if (options.locale || options.mcc) {
-			this.locale = new ilib.Locale.PhoneLoc(options);
+		if (options.locale) {
+			locale = options.locale;
 		}
 
 		if (typeof(options.sync) === 'boolean') {
@@ -120,43 +119,53 @@ ilib.GeoLocator = function(options) {
 		}
 	}
 	
-	new ilib.NumPlan({
-		locale: this.locale,
+	new ilib.Locale.PhoneLoc({
+		locale: locale,
+		mcc: options && options.mcc,
+		countryCode: options && options.countryCode,
 		sync: sync,
 		loadParams: loadParams,
-		onLoad: ilib.bind(this, function (plan) {
-			this.plan = plan;
-			
-			new ilib.ResBundle({
+		onLoad: ilib.bind(this, function (loc) {
+			this.locale = loc;
+			new ilib.NumPlan({
 				locale: this.locale,
-				name: "phoneres",
 				sync: sync,
 				loadParams: loadParams,
-				onLoad: ilib.bind(this, function (rb) {
-					this.rb = rb;
+				onLoad: ilib.bind(this, function (plan) {
+					this.plan = plan;
 					
-					ilib.loadData({
-						name: "iddarea.json",
-						object: ilib.GeoLocator,
-						nonlocale: true,
+					new ilib.ResBundle({
+						locale: this.locale,
+						name: "phoneres",
 						sync: sync,
 						loadParams: loadParams,
-						callback: ilib.bind(this, function (data) {
-							this.regiondata = data;
+						onLoad: ilib.bind(this, function (rb) {
+							this.rb = rb;
+							
 							ilib.loadData({
-								name: "area.json",
+								name: "iddarea.json",
 								object: ilib.GeoLocator,
-								locale: this.locale,
+								nonlocale: true,
 								sync: sync,
-								loadParams: ilib.merge(loadParams, {
-									returnOne: true
-								}),
-								callback: ilib.bind(this, function (areadata) {
-									this.areadata = areadata;
-
-									if (options && typeof(options.onLoad) === 'function') {
-										options.onLoad(this);
-									}
+								loadParams: loadParams,
+								callback: ilib.bind(this, function (data) {
+									this.regiondata = data;
+									ilib.loadData({
+										name: "area.json",
+										object: ilib.GeoLocator,
+										locale: this.locale,
+										sync: sync,
+										loadParams: ilib.merge(loadParams, {
+											returnOne: true
+										}),
+										callback: ilib.bind(this, function (areadata) {
+											this.areadata = areadata;
+		
+											if (options && typeof(options.onLoad) === 'function') {
+												options.onLoad(this);
+											}
+										})
+									});
 								})
 							});
 						})
@@ -488,9 +497,10 @@ ilib.GeoLocator.prototype = {
 	 * 
 	 * @param {ilib.PhoneNumber} number phone number to locate
 	 * @param {Object} options options governing the way this ares is loaded
-	 * @return {{area:{sn:string,ln:string},country:{sn:string,ln:string}}} an object 
+	 * @return {Object} an object  
 	 * that describes the country and the area in that country corresponding to this
-	 * phone number 
+	 * phone number. Each of the country and area contain a short name (sn) and long
+	 * name (ln) that describes the location.
 	 */
 	locate: function(number, options) {
 		var loadParams = {},
@@ -569,6 +579,7 @@ ilib.GeoLocator.prototype = {
 		
 		return ret;
 	},
+	
 	/**
 	 * Returns a string that describes the ISO-3166-2 country code of the given phone
 	 * number.<p> 
