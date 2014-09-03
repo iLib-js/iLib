@@ -18,70 +18,42 @@
  */
 
 function testIDDPrefix() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "011",
-		countryCode: "31",
-		areaCode: "456",
-		subscriberNumber: "3453434"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("011 31 456 3453434", {locale: 'en-US'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'en-US'})); // 'en-US'
 };
 
 function testIDDPrefixAlreadyPlus() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "31",
-		areaCode: "456",
-		subscriberNumber: "3453434"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("+31 456 3453434", {locale: 'en-US'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({locale: 'en-US'})); // 'en-US'
 };
 
 function testWithNoLocale() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "011",
-		countryCode: "31",
-		areaCode: "456",
-		subscriberNumber: "3453434"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("01131 456 3453434", {locale: 'en-US'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize({}));
 };
 
 function testNoHints() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "011",
-		countryCode: "31",
-		areaCode: "456",
-		subscriberNumber: "3453434"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("01131 456 3453434", {locale: 'en-US'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize()); // 'en-US'
 };
 
 function testWithNoHintsNoLocale() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "011",
-		countryCode: "31",
-		areaCode: "456",
-		subscriberNumber: "3453434"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("01131 456 3453434", {locale: 'en-US'});
 	var expected = "+314563453434";
 	
 	assertEquals(expected, parsed.normalize());
 };
 
 function testLDNumberUsingUSMCC() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "650",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("650 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "316"
 	};
@@ -91,10 +63,7 @@ function testLDNumberUsingUSMCC() {
 };
 
 function testLDNumberUsingUSMCCOtherLocale() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "650",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("650 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "316"
 	};
@@ -104,10 +73,7 @@ function testLDNumberUsingUSMCCOtherLocale() {
 };
 
 function testLDNumberUsingDEMCC() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "2302",
-		subscriberNumber: "654321"
-	}, {locale: 'de-DE'});
+	var parsed = new ilib.PhoneNumber("02302 654321", {locale: 'de-DE'});
 	var hints = {
 		mcc: "262"
 	};
@@ -117,11 +83,7 @@ function testLDNumberUsingDEMCC() {
 };
 
 function testServiceNumberUsingDEMCC() {
-	var parsed = new ilib.PhoneNumber({
-		trunkAccess: "0",
-		serviceCode: "191",
-		subscriberNumber: "7654321"
-	}, {locale: 'de-DE'});
+	var parsed = new ilib.PhoneNumber("0191 7654321", {locale: 'de-DE'});
 	var hints = {
 		mcc: "262"
 	};
@@ -131,11 +93,7 @@ function testServiceNumberUsingDEMCC() {
 };
 
 function testServiceNumberDontAddAreaCode() {
-	var parsed = new ilib.PhoneNumber({
-		trunkAccess: "0",
-		serviceCode: "191",
-		subscriberNumber: "7654321"
-	}, {locale: 'de-DE'});
+	var parsed = new ilib.PhoneNumber("0191 7654321", {locale: 'de-DE'});
 	var hints = {
 		defaultAreaCode: "30"
 	};
@@ -145,11 +103,7 @@ function testServiceNumberDontAddAreaCode() {
 };
 
 function testMobileNumberUsingDEMCC() {
-	var parsed = new ilib.PhoneNumber({
-		trunkAccess: "0",
-		mobilePrefix: "16",
-		subscriberNumber: "87654321"
-	}, {locale: 'de-DE'});
+	var parsed = new ilib.PhoneNumber("016 87654321", {locale: 'de-DE'});
 	var hints = {
 		mcc: "262"
 	};
@@ -159,11 +113,7 @@ function testMobileNumberUsingDEMCC() {
 };
 
 function testMobileNumberDontAddAreaCode() {
-	var parsed = new ilib.PhoneNumber({
-		trunkAccess: "0",
-		mobilePrefix: "16",
-		subscriberNumber: "87654321"
-	}, {locale: 'de-DE'});
+	var parsed = new ilib.PhoneNumber("016 87654321", {locale: 'de-DE'});
 	var hints = {
 		defaultAreaCode: "30"
 	};
@@ -173,10 +123,7 @@ function testMobileNumberDontAddAreaCode() {
 };
 
 function testLDNumberUsingDEMCCOtherLocale() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "2302",
-		subscriberNumber: "654321"
-	}, {locale: 'de-DE'});
+	var parsed = new ilib.PhoneNumber("02302 654321", {locale: 'de-DE'});
 	var hints = {
 		mcc: "262"
 	};
@@ -186,39 +133,28 @@ function testLDNumberUsingDEMCCOtherLocale() {
 };
 
 function testLDNumberUsingUSLocale() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "650",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("650 7654321", {locale: 'en-US'});
 	var expected = "+16507654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'en-US'
 };
 
 function testLDNumberUsingUSSpanishLocale() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "650",
-		subscriberNumber: "7654321"
-	}, {locale: 'es-US'});
+	var parsed = new ilib.PhoneNumber("650 7654321", {locale: 'es-US'});
 	var expected = "+16507654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'es-us'
 };
 
 function testLDNumberUsingDELocale() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "30",
-		subscriberNumber: "87654321"
-	}, {locale: 'de-DE'});
+	var parsed = new ilib.PhoneNumber("030 87654321", {locale: 'de-DE'});
 	var expected = "+493087654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'de-DE'
 };
 
 function testAreaCodeFromHint() {
-	var parsed = new ilib.PhoneNumber({
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("7654321", {locale: 'en-US'});
 	var hints = {
 		defaultAreaCode: "650"
 	};
@@ -228,10 +164,7 @@ function testAreaCodeFromHint() {
 };
 
 function testAreaCodeIgnoreHint() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "408",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("408 7654321", {locale: 'en-US'});
 	var hints = {
 		defaultAreaCode: "650"
 	};
@@ -241,18 +174,14 @@ function testAreaCodeIgnoreHint() {
 };
 
 function testNoAreaCodeAndNoCountry() {
-	var parsed = new ilib.PhoneNumber({
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("7654321", {locale: 'en-US'});
 	var expected = "7654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'en-US'
 };
 
 function testDontAddCountry() {
-	var parsed = new ilib.PhoneNumber({
-		subscriberNumber: "7654321"
-	}, {locale: 'de-DE'});
+	var parsed = new ilib.PhoneNumber("7654321", {locale: 'de-DE'});
 	var hints = {
 		mcc: "262"	// de
 	};
@@ -262,57 +191,35 @@ function testDontAddCountry() {
 };
 
 function testIgnoreTrunkAccessUS() {
-	var parsed = new ilib.PhoneNumber({
-		trunkAccess: "1",
-		areaCode: "408",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("1 408 7654321", {locale: 'en-US'});
 	var expected = "+14087654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'en-US'
 };
 
 function testIgnoreTrunkAccessDE() {
-	var parsed = new ilib.PhoneNumber({
-		trunkAccess: "0",
-		areaCode: "30",
-		subscriberNumber: "87654321"
-	}, {locale: 'de-DE'});
+	var parsed = new ilib.PhoneNumber("030 87654321", {locale: 'de-DE'});
 	var expected = "+493087654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'de-DE'
 };
 
 function testDontIgnoreTrunkAccessIT() {
-	var parsed = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "39",
-		trunkAccess: "0",
-		areaCode: "6",	// rome
-		subscriberNumber: "87654321"
-	}, {locale: 'it-IT'});
+	var parsed = new ilib.PhoneNumber("+39 06 87654321", {locale: 'it-IT'}); // rome
 	var expected = "+390687654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'it-IT'	
 };
 
 function testDontIgnoreTrunkAccessNoCountryIT() {
-	var parsed = new ilib.PhoneNumber({
-		trunkAccess: "0",
-		areaCode: "6", // rome
-		subscriberNumber: "87654321"
-	}, {locale: 'it-IT'});
+	var parsed = new ilib.PhoneNumber("06 87654321", {locale: 'it-IT'}); // rome
 	var expected = "+390687654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'it-IT'
 };
 
 function testDontIgnoreTrunkAccessUseMCCIT() {
-	var parsed = new ilib.PhoneNumber({
-		trunkAccess: "0",
-		areaCode: "6", // rome
-		subscriberNumber: "87654321"
-	}, {locale: 'it-IT'});
+	var parsed = new ilib.PhoneNumber("06 87654321", {locale: 'it-IT'}); // rome
 	var hints = {
 		mcc: "222"
 	};
@@ -322,22 +229,16 @@ function testDontIgnoreTrunkAccessUseMCCIT() {
 };
 
 function testAddTrunkAccessNoCountryIT() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "6", // rome
-		subscriberNumber: "87654321"
-	}, {locale: 'it-IT'});
+	var parsed = new ilib.PhoneNumber("06 87654321", {locale: 'it-IT'}); // rome
 	var expected = "+390687654321";
 	
 	assertEquals(expected, parsed.normalize()); // 'it-IT'
 };
 
 function testCountryHintUS() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "408",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("408 7654321", {locale: 'en-US'});
 	var hints = {
-		country: "us"
+		country: "US"
 	};
 	var expected = "+14087654321";
 	
@@ -345,12 +246,9 @@ function testCountryHintUS() {
 };
 
 function testCountryHintUSOverrideLocale() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "408",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("408 7654321", {locale: 'en-US'});
 	var hints = {
-		country: "us"
+		country: "US"
 	};
 	var expected = "+14087654321";
 	
@@ -358,12 +256,9 @@ function testCountryHintUSOverrideLocale() {
 };
 
 function testCountryHintFR() {
-	var parsed = new ilib.PhoneNumber({
-		areaCode: "2",
-		subscriberNumber: "12345678"
-	}, {locale: 'fr-FR'});
+	var parsed = new ilib.PhoneNumber("02 12345678", {locale: 'fr-FR'});
 	var hints = {
-		country: "fr"
+		country: "FR"
 	};
 	var expected = "+33212345678";
 	
@@ -470,9 +365,7 @@ function testNormalizeForSkype() {
 };
 
 function testAssistedDialingLocalToLocalUMTS() {
-	var phone = new ilib.PhoneNumber({
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "316",
 		networkType: "umts",
@@ -485,12 +378,7 @@ function testAssistedDialingLocalToLocalUMTS() {
 };
 
 function testAssistedDialingLocalToLocalUMTSAddTrunkClosed() {
-	var phone = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "33",
-		areaCode: "1",
-		subscriberNumber: "87654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("+33 1 87654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "umts",
@@ -502,11 +390,7 @@ function testAssistedDialingLocalToLocalUMTSAddTrunkClosed() {
 };
 
 function testAssistedDialingLocalToLocalUMTSAddTrunkOpenNoAreaCodes() {
-	var phone = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "352",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("+352 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "270", // from Luxembourg, where there are no area codes
 		networkType: "umts",
@@ -518,12 +402,7 @@ function testAssistedDialingLocalToLocalUMTSAddTrunkOpenNoAreaCodes() {
 };
 
 function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
-	var phone = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "31",
-		areaCode: "20",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("+31 20 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "204", // from Netherlands
 		networkType: "umts",
@@ -536,12 +415,7 @@ function testAssistedDialingLocalToLocalUMTSAddTrunkOpen() {
 };
 
 function testAssistedDialingLocalToLocalUMTSNoTrunkOpen() {
-	var phone = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "31",
-		areaCode: "20",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("+31 20 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "204", // from Netherlands
 		networkType: "umts",
@@ -554,9 +428,7 @@ function testAssistedDialingLocalToLocalUMTSNoTrunkOpen() {
 };
 
 function testAssistedDialingLocalToLocalCDMA() {
-	var phone = new ilib.PhoneNumber({
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "310", // US
 		networkType: "cdma",
@@ -569,12 +441,7 @@ function testAssistedDialingLocalToLocalCDMA() {
 };
 
 function testAssistedDialingLocalToLocalCDMAAddTrunkClosed() {
-	var phone = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "33",
-		areaCode: "1",
-		subscriberNumber: "87654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("+33 1 87654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "cdma",
@@ -587,12 +454,7 @@ function testAssistedDialingLocalToLocalCDMAAddTrunkClosed() {
 };
 
 function testAssistedDialingLocalToLocalCDMAAddTrunkOpen() {
-	var phone = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "31",
-		areaCode: "20",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("+31 20 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "204", // from Netherlands
 		networkType: "cdma",
@@ -605,12 +467,7 @@ function testAssistedDialingLocalToLocalCDMAAddTrunkOpen() {
 };
 
 function testAssistedDialingLocalToLocalCDMANoTrunkOpen() {
-	var phone = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "31",
-		areaCode: "20",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("+31 20 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "204", // from Netherlands
 		networkType: "cdma",
@@ -623,9 +480,7 @@ function testAssistedDialingLocalToLocalCDMANoTrunkOpen() {
 };
 
 function testAssistedDialingIntlToLocalUMTS() {
-	var phone = new ilib.PhoneNumber({
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "umts",
@@ -638,10 +493,7 @@ function testAssistedDialingIntlToLocalUMTS() {
 };
 
 function testAssistedDialingIntlToLDUMTS() {
-	var phone = new ilib.PhoneNumber({
-		areaCode: "416",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("416 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "umts",
@@ -654,11 +506,7 @@ function testAssistedDialingIntlToLDUMTS() {
 };
 
 function testAssistedDialingIntlToLDUMTSRemoveTrunk() {
-	var phone = new ilib.PhoneNumber({
-		trunkAccess: "1",
-		areaCode: "416",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("1416 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "umts",
@@ -671,11 +519,7 @@ function testAssistedDialingIntlToLDUMTSRemoveTrunk() {
 };
 
 function testAssistedDialingIntlToLDUMTSKeepTrunk() {
-	var phone = new ilib.PhoneNumber({
-		trunkAccess: "0",
-		areaCode: "10",
-		subscriberNumber: "87654321"
-	}, {locale: 'it-IT'});
+	var phone = new ilib.PhoneNumber("010 87654321", {locale: 'it-IT'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "umts",
@@ -688,9 +532,7 @@ function testAssistedDialingIntlToLDUMTSKeepTrunk() {
 };
 
 function testAssistedDialingIntlToLocalCDMA() {
-	var phone = new ilib.PhoneNumber({
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "505", // From Australia
 		networkType: "cdma",
@@ -703,10 +545,7 @@ function testAssistedDialingIntlToLocalCDMA() {
 };
 
 function testAssistedDialingIntlToLDCDMA() {
-	var phone = new ilib.PhoneNumber({
-		areaCode: "416",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("416 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "cdma",
@@ -719,11 +558,7 @@ function testAssistedDialingIntlToLDCDMA() {
 };
 
 function testAssistedDialingIntlToLDCDMARemoveTrunk() {
-	var phone = new ilib.PhoneNumber({
-		trunkAccess: "1",
-		areaCode: "416",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("1416 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "cdma",
@@ -736,11 +571,7 @@ function testAssistedDialingIntlToLDCDMARemoveTrunk() {
 };
 
 function testAssistedDialingIntlToLDCDMAKeepTrunk() {
-	var phone = new ilib.PhoneNumber({
-		trunkAccess: "0",
-		areaCode: "10",
-		subscriberNumber: "87654321"
-	}, {locale: 'it-IT'});
+	var phone = new ilib.PhoneNumber("010 87654321", {locale: 'it-IT'});
 	var hints = {
 		mcc: "208", // from France
 		networkType: "cdma",
@@ -753,12 +584,7 @@ function testAssistedDialingIntlToLDCDMAKeepTrunk() {
 };
 
 function testAssistedDialingLocalToLocalUMTSOpenNoDefAreaCode() {
-	var phone = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "31",
-		areaCode: "20",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("+31 20 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "204", // from Netherlands
 		networkType: "umts",
@@ -770,12 +596,7 @@ function testAssistedDialingLocalToLocalUMTSOpenNoDefAreaCode() {
 };
 
 function testAssistedDialingLocalToLocalCDMAOpenNoDefAreaCode() {
-	var phone = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "31",
-		areaCode: "20",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("+31 20 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "204", // from Netherlands
 		networkType: "cdma",
@@ -787,10 +608,7 @@ function testAssistedDialingLocalToLocalCDMAOpenNoDefAreaCode() {
 };
 
 function testAssistedDialingIntlToLDDefaultToUMTS() {
-	var phone = new ilib.PhoneNumber({
-		areaCode: "416",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("416 7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "208", // from France
 		defaultAreaCode: "650",
@@ -802,9 +620,7 @@ function testAssistedDialingIntlToLDDefaultToUMTS() {
 };
 
 function testAssistedDialingDefaultIntlToLocalUMTS() {
-	var phone = new ilib.PhoneNumber({
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "730", // from Chile
 		networkType: "umts",
@@ -817,9 +633,7 @@ function testAssistedDialingDefaultIntlToLocalUMTS() {
 };
 
 function testAssistedDialingNonDefaultIntlToLocalUMTS() {
-	var phone = new ilib.PhoneNumber({
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "440",	// from Japan
 		networkType: "umts",
@@ -832,9 +646,7 @@ function testAssistedDialingNonDefaultIntlToLocalUMTS() {
 };
 
 function testAssistedDialingDefaultIntlToLocalCDMA() {
-	var phone = new ilib.PhoneNumber({
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "415", // from Lebanon
 		networkType: "cdma",
@@ -847,9 +659,7 @@ function testAssistedDialingDefaultIntlToLocalCDMA() {
 };
 
 function testAssistedDialingNonDefaultIntlToLocalCDMA() {
-	var phone = new ilib.PhoneNumber({
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var phone = new ilib.PhoneNumber("7654321", {locale: 'en-US'});
 	var hints = {
 		mcc: "440", // from Japan
 		networkType: "cdma",
@@ -865,7 +675,10 @@ function testAssistedDialingThreeLocalesCDMA() {
 	var phone = new ilib.PhoneNumber({
 		trunkAccess: "8",
 		areaCode: "495",	// moscow
-		subscriberNumber: "7654321"
+		subscriberNumber: "7654321",
+		plan: new ilib.NumPlan({locale: "ru-RU"}),
+		destinationPlan: new ilib.NumPlan({locale: "ru-RU"}),
+		destinationLocale: new ilib.Locale.PhoneLoc({locale: "ru-RU"})
 	}, {locale: "ru-RU"});
 	var hints = {
 		mcc: "732", // from Columbia
@@ -882,7 +695,10 @@ function testAssistedDialingThreeLocalesUMTS() {
 	var phone = new ilib.PhoneNumber({
 		trunkAccess: "8",
 		areaCode: "495",	// moscow
-		subscriberNumber: "7654321"
+		subscriberNumber: "7654321",
+		plan: new ilib.NumPlan({locale: "ru-RU"}),
+		destinationPlan: new ilib.NumPlan({locale: "ru-RU"}),
+		destinationLocale: new ilib.Locale.PhoneLoc({locale: "ru-RU"})
 	}, {locale: "ru-RU"});
 	var hints = {
 		mcc: "732", // from Columbia
@@ -1186,11 +1002,7 @@ function testAssistedDialingEmergencyNumberDontNormalize() {
 
 // for CFISH-5753
 function testAssistedDialingServiceNumberDontAddAreaCodeCDMA() {
-	var parsed = new ilib.PhoneNumber({
-		trunkAccess: "1",
-		serviceCode: "800",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("1 800 7654321", {locale: 'en-US'});
 	var hints = {
 		assistedDialing: true,
 		networkType: "cdma",
@@ -1203,11 +1015,7 @@ function testAssistedDialingServiceNumberDontAddAreaCodeCDMA() {
 };
 
 function testAssistedDialingServiceNumberDontAddAreaCodeUMTS() {
-	var parsed = new ilib.PhoneNumber({
-		trunkAccess: "1",
-		serviceCode: "800",
-		subscriberNumber: "7654321"
-	}, {locale: 'en-US'});
+	var parsed = new ilib.PhoneNumber("1 800 7654321", {locale: 'en-US'});
 	var hints = {
 		assistedDialing: true,
 		networkType: "umts",
@@ -2198,12 +2006,7 @@ function testNormalizeESRegular2() {
 
 // for CFISH-10884
 function testAssistedDialingIntlToLLDUMTSForES() {
-	var phone = new ilib.PhoneNumber({
-		iddPrefix: "+",
-		countryCode: "34", // calling to Spain
-		areaCode: "659",
-		subscriberNumber: "702066"
-	}, {locale: "es-ES"});
+	var phone = new ilib.PhoneNumber("+34 659 702 066", {locale: "es-ES"}); // calling from Spain to Spain
 	var hints = {
 		mcc: "214", // already in Spain
 		networkType: "umts",
