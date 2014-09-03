@@ -182,6 +182,17 @@ ilib.Name = function (name, options) {
 								var spec = this.locale.getSpec().replace(/-/g, "_");
 								ilib.Name.cache[spec] = info;
 							}
+							/** 
+							 * @type {{
+							 *   nameStyle:string,
+							 *   order:string,
+							 *   prefixes:Array.<string>,
+							 *   suffixes:Array.<string>,
+							 *   auxillaries:Array.<string>,
+							 *   knownFamilyNames:Array.<string>,
+							 *   noCompoundFamilyNames:boolean,
+							 *   sortByHeadWord:boolean
+							 * }} */
 							this.info = info;
 							this._init(name);
 							if (options && typeof(options.onLoad) === 'function') {
@@ -490,6 +501,10 @@ ilib.Name.prototype = {
 
     /**
      * @protected
+     * @param {Array} parts
+     * @param {Array} names
+     * @param {boolean} isAsian
+     * @param {boolean=} noCompoundPrefix
      */
     _findPrefix: function (parts, names, isAsian, noCompoundPrefix) {
         var i, prefix, prefixLower, prefixArray, aux = [];
@@ -763,6 +778,9 @@ ilib.Name.prototype = {
         }
     },
 
+    /**
+     * @protected
+     */
     _parseIndonesianName: function (parts) {
         var conjunctionIndex;
 
@@ -812,6 +830,9 @@ ilib.Name.prototype = {
         }
     },
     
+    /**
+     * @protected
+     */
     _parseGenericWesternName: function (parts) {
         /* Western names are parsed as follows, and rules are applied in this 
          * order:

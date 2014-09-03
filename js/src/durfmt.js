@@ -281,7 +281,7 @@ ilib.DurFmt.prototype._mapDigits = function(str) {
 /**
  * @private
  * @param {ilib.LocaleInfo} locinfo
- * @param {Function|undefined} onLoad
+ * @param {function(ilib.DurFmt)|undefined} onLoad
  */
 ilib.DurFmt.prototype._init = function(locinfo, onLoad) {
 	var digits;

@@ -552,19 +552,24 @@ ilib.Collator.prototype = {
 	/**
 	 * @private
 	 * Bit pack an array of values into a single number
-	 * @param {Array.<number>} arr array of values to bit pack
+	 * @param {number|null|Array.<number>} arr array of values to bit pack
 	 */
 	_pack: function (arr) {
 		var value = 0;
-		for (var i = 0; i < this.level; i++) {
-			if (i > 0) {
-				value <<= this.collation.bits[i];	
+		if (arr) {
+			if (typeof(arr) === 'number') {
+				arr = [ arr ];
 			}
-			if (i === 2 && this.caseFirst === "lower") {
-				// sort the lower case first instead of upper
-				value = value | (1 - (typeof(arr[i]) !== "undefined" ? arr[i] : 0));
-			} else {
-				value = value | arr[i];
+			for (var i = 0; i < this.level; i++) {
+				if (i > 0) {
+					value <<= this.collation.bits[i];	
+				}
+				if (i === 2 && this.caseFirst === "lower") {
+					// sort the lower case first instead of upper
+					value = value | (1 - (typeof(arr[i]) !== "undefined" ? arr[i] : 0));
+				} else {
+					value = value | arr[i];
+				}
 			}
 		}
 		return value;
@@ -574,7 +579,7 @@ ilib.Collator.prototype = {
 	 * @private
 	 * Return the rule packed into an array of collation elements.
 	 * @param {Array.<number|null|Array.<number>>} rule
-	 * @returns
+	 * @return {Array.<number>} a bit-packed array of numbers
 	 */
 	_packRule: function(rule) {
 		if (rule[0] instanceof Array) {
@@ -592,7 +597,7 @@ ilib.Collator.prototype = {
      * @private
      */
     _init: function(rules) {
-    	/** @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number>>}} */
+    	/** @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number|null|Array.<number>>>}} */
     	this.collation = rules[this.style];
     	this.map = {};
     	this.keysize = 0;
