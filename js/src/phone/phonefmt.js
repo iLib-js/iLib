@@ -198,7 +198,7 @@ ilib.PhoneFmt.prototype = {
 	 * Do the actual work of formatting the phone number starting at the given
 	 * field in the regular field order.
 	 * 
-	 * @param {ilib.PhoneNumber} number
+	 * @param {!ilib.PhoneNumber} number
 	 * @param {Object} options
 	 * @param {number} startField
 	 */
@@ -368,8 +368,7 @@ ilib.PhoneFmt.prototype = {
 	 * places, such as the call log in the phone app, should pass in partial: false, or 
 	 * leave the partial flag out of the parameters entirely. 
 	 * 
-	 * @param {string|ilib.PhoneNumber} number object containing the phone number to format, or a 
-	 * string containing a phone number to parse and then reformat
+	 * @param {!ilib.PhoneNumber} number object containing the phone number to format
 	 * @param {Object} options Parameters which control how to format the number
 	 * @return {string} Returns the formatted phone number as a string.
 	 */

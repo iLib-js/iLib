@@ -153,10 +153,9 @@ phone/handler.js
  * 
  * @class
  * @constructor
- * @param {string|ilib.PhoneNumber} number A free-form phone number to be parsed, or another phone
+ * @param {!string|ilib.PhoneNumber} number A free-form phone number to be parsed, or another phone
  * number instance to copy
- * @param {Object=} options options that guide the parser in parsing the number 
-
+ * @param {Object=} options options that guide the parser in parsing the number
  */
 ilib.PhoneNumber = function(number, options) {
 	var stateData,
@@ -179,8 +178,64 @@ ilib.PhoneNumber = function(number, options) {
 		}
 
 		if (typeof(options.onLoad) === 'function') {
+			/** @type {function(ilib.PhoneNumber)} */
 			this.onLoad = options.onLoad;
 		}
+	}
+
+	if (typeof number === "object") {
+		/** @type {string|undefined} */
+		this.vsc = number.vsc;
+
+		/** @type {string} */
+		this.iddPrefix = number.iddPrefix;
+		
+		/** @type {string|undefined} */
+		this.countryCode = number.countryCode;
+		
+		/** @type {string|undefined} */
+		this.trunkAccess = number.trunkAccess;
+		
+		/** @type {string|undefined} */
+		this.cic = number.cic;
+		
+		/** @type {string|undefined} */
+		this.emergency = number.emergency;
+		
+		/** @type {string|undefined} */
+		this.mobilePrefix = number.mobilePrefix;
+		
+		/** @type {string|undefined} */
+		this.serviceCode = number.serviceCode;
+		
+		/** @type {string|undefined} */
+		this.areaCode = number.areaCode;
+		
+		/** @type {string|undefined} */
+		this.subscriberNumber = number.subscriberNumber;
+		
+		/** @type {string|undefined} */
+		this.extension = number.extension;
+		
+		/** @type {boolean} */
+		this.invalid = number.invalid;
+		
+		/** @type {ilib.NumPlan} */
+		this.destinationPlan = number.destinationPlan;
+		
+		/** @type {ilib.Locale.PhoneLoc} */
+		this.destinationLocale = number.destinationLocale;
+
+		/** @type {ilib.NumPlan} */
+		this.plan = number.plan;
+		
+		/** @type {ilib.Locale.PhoneLoc} */
+		this.locale = number.locale;
+
+		if (options && typeof(options.onLoad) === 'function') {
+			options.onLoad(this);
+		}
+		return;
 	}
 
 	new ilib.Locale.PhoneLoc({
@@ -189,13 +244,8 @@ ilib.PhoneNumber = function(number, options) {
 		sync: this.sync,
 		loadParams: this.loadParams,
 		onLoad: ilib.bind(this, function(loc) {
+			/** @type {ilib.Locale.PhoneLoc} */
 			this.locale = this.destinationLocale = loc;
-			
-			if (typeof number === "object") {
-				ilib.deepCopy(number, this);
-				return;
-			}
-			
 			ilib.loadData({
 				name: "states.json",
 				object: ilib.PhoneNumber,
@@ -269,7 +319,7 @@ ilib.PhoneNumber = function(number, options) {
  * @static
  * @param {string} imsi IMSI number to parse
  * @param {Object} options options controlling the loading of the locale data
- * @return {{mcc:string,mnc:string,msin:string}} components of the IMSI number, when the locale data
+ * @return {{mcc:string,mnc:string,msin:string}|undefined} components of the IMSI number, when the locale data
  * is loaded synchronously, or undefined if asynchronous
  */
 ilib.PhoneNumber.parseImsi = function(imsi, options) {
@@ -291,21 +341,29 @@ ilib.PhoneNumber.parseImsi = function(imsi, options) {
 		}
 	}	
 
-	ilib.loadData({
-		name: "mnc.json", 
-		object: ilib.PhoneNumber, 
-		nonlocale: true, 
-		sync: sync, 
-		loadParams: loadParams, 
-		callback: ilib.bind(this, function(data) {
-			this.mncdata = data;
-			fields = this._parseImsi(this.mncdata, imsi);
-			
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(fields);
-			}
-		})
-	});
+	if (ilib.data.mnc) {
+		fields = ilib.PhoneNumber._parseImsi(ilib.data.mnc, imsi);
+		
+		if (options && typeof(options.onLoad) === 'function') {
+			options.onLoad(fields);
+		}
+	} else {
+		ilib.loadData({
+			name: "mnc.json", 
+			object: ilib.PhoneNumber, 
+			nonlocale: true, 
+			sync: sync, 
+			loadParams: loadParams, 
+			callback: ilib.bind(this, function(data) {
+				ilib.data.mnc = data;
+				fields = ilib.PhoneNumber._parseImsi(data, imsi);
+				
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(fields);
+				}
+			})
+		});
+	}
 	return fields;
 };
 
@@ -951,8 +1009,25 @@ ilib.PhoneNumber.prototype = {
 
 	/**
 	 * @private
+	 * @param {{
+	 *   mcc:string,
+	 *   defaultAreaCode:string,
+	 *   country:string,
+	 *   networkType:string,
+	 *   assistedDialing:boolean,
+	 *   sms:boolean,
+	 *   manualDialing:boolean
+	 * }} options an object containing options to help in normalizing. 
+	 * @param {ilib.PhoneNumber} norm
+	 * @param {ilib.Locale.PhoneLoc} homeLocale
+	 * @param {ilib.Locale.PhoneLoc} currentLocale
+	 * @param {ilib.NumPlan} currentPlan
+	 * @param {ilib.Locale.PhoneLoc} destinationLocale
+	 * @param {ilib.NumPlan} destinationPlan
+	 * @param {boolean} sync
+	 * @param {Object|undefined} loadParams
 	 */
-	_doNormalize: function(options, norm, homeLocale, currentLocale, currentPlan, destinationLocale, destinationPlan, sync, loadParams, callback) {
+	_doNormalize: function(options, norm, homeLocale, currentLocale, currentPlan, destinationLocale, destinationPlan, sync, loadParams) {
 		var formatted = "";
 		
 		if (!norm.invalid && options && options.assistedDialing) {
@@ -1092,6 +1167,24 @@ ilib.PhoneNumber.prototype = {
 	
 	/**
 	 * @private
+	 * @param {{
+	 *   mcc:string,
+	 *   defaultAreaCode:string,
+	 *   country:string,
+	 *   networkType:string,
+	 *   assistedDialing:boolean,
+	 *   sms:boolean,
+	 *   manualDialing:boolean
+	 * }} options an object containing options to help in normalizing. 
+	 * @param {ilib.PhoneNumber} norm
+	 * @param {ilib.Locale.PhoneLoc} homeLocale
+	 * @param {ilib.Locale.PhoneLoc} currentLocale
+	 * @param {ilib.NumPlan} currentPlan
+	 * @param {ilib.Locale.PhoneLoc} destinationLocale
+	 * @param {ilib.NumPlan} destinationPlan
+	 * @param {boolean} sync
+	 * @param {Object|undefined} loadParams
+	 * @param {function(string)} callback
 	 */
 	_doReparse: function(options, norm, homeLocale, currentLocale, currentPlan, destinationLocale, destinationPlan, sync, loadParams, callback) {
 		var formatted, 
@@ -1288,7 +1381,15 @@ ilib.PhoneNumber.prototype = {
 	 * returned from thhomeLocaleis method is simply an uninterrupted and unformatted string 
 	 * of dialable digits.
 	 * 
-	 * @param {Object} options an object containing options to help in normalizing. 
+	 * @param {{
+	 *   mcc:string,
+	 *   defaultAreaCode:string,
+	 *   country:string,
+	 *   networkType:string,
+	 *   assistedDialing:boolean,
+	 *   sms:boolean,
+	 *   manualDialing:boolean
+	 * }} options an object containing options to help in normalizing. 
 	 * @return {string|undefined} the normalized string, or undefined if the number
 	 * could not be normalized
 	 */

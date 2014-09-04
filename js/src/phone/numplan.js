@@ -27,6 +27,7 @@ localeinfo.js
 // !data numplan
 
 /**
+ * @class
  * Create a numbering plan information instance for a particular country's plan.<p>
  * 
  * The options may contain any of the following properties:
@@ -57,8 +58,8 @@ localeinfo.js
  * 
  * Depends directive: !depends phone/numplan.js
  * 
- * @class
  * @constructor
+ * @package
  * @param {Object} options options governing the way this plan is loaded
  */
 ilib.NumPlan = function (options) {
@@ -105,6 +106,21 @@ ilib.NumPlan = function (options) {
 				};
 			}
 
+			/** 
+			 * @type {{
+			 *   region:string,
+			 *   skipTrunk:boolean,
+			 *   trunkCode:string,
+			 *   iddCode:string,
+			 *   dialingPlan:string,
+			 *   commonFormatChars:string,
+			 *   fieldLengths:Object.<string,number>,
+			 *   contextFree:boolean,
+			 *   findExtensions:boolean,
+			 *   trunkRequired:boolean,
+			 *   extendedAreaCodes:boolean
+			 * }}
+			 */
 			this.npdata = npdata;
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);

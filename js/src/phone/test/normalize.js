@@ -677,6 +677,7 @@ function testAssistedDialingThreeLocalesCDMA() {
 		areaCode: "495",	// moscow
 		subscriberNumber: "7654321",
 		plan: new ilib.NumPlan({locale: "ru-RU"}),
+		locale: new ilib.Locale.PhoneLoc({locale: "ru-RU"}),
 		destinationPlan: new ilib.NumPlan({locale: "ru-RU"}),
 		destinationLocale: new ilib.Locale.PhoneLoc({locale: "ru-RU"})
 	}, {locale: "ru-RU"});
@@ -697,6 +698,7 @@ function testAssistedDialingThreeLocalesUMTS() {
 		areaCode: "495",	// moscow
 		subscriberNumber: "7654321",
 		plan: new ilib.NumPlan({locale: "ru-RU"}),
+		locale: new ilib.Locale.PhoneLoc({locale: "ru-RU"}),
 		destinationPlan: new ilib.NumPlan({locale: "ru-RU"}),
 		destinationLocale: new ilib.Locale.PhoneLoc({locale: "ru-RU"})
 	}, {locale: "ru-RU"});
@@ -1661,7 +1663,7 @@ function testAssistedDialingSMSToIntlFromIntlCDMA3Manual() {
 };
 
 function testAssistedDialingSMSToIntlFromIntlCDMA4() {
-	var parsed = new ilib.PhoneNumber("658765432101"); // +65 is Singapore -- special case
+	var parsed = new ilib.PhoneNumber("658765432101", {locale: "en-US"}); // +65 is Singapore -- special case
 	var hints = {
 		assistedDialing: true,
 		manualDialing: false,
@@ -1946,7 +1948,7 @@ function testAssistedDialingSMSToIntlFromIntlUMTS3Manual() {
 };
 
 function testAssistedDialingSMSToIntlFromIntlUMTS4() {
-	var parsed = new ilib.PhoneNumber("658765432101"); // +65 is Singapore -- special case
+	var parsed = new ilib.PhoneNumber("658765432101", {locale: "en-US"}); // +65 is Singapore -- special case
 	var hints = {
 		assistedDialing: true,
 		manualDialing: false,

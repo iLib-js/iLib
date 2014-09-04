@@ -24,9 +24,10 @@ phone/phoneloc.js
 */
 
 /**
+ * @class
  * [Need Comments] globals console ilib PhoneLoc 
  *
- * @class
+ * @private
  * @constructor
  */
 ilib.StateHandler = function _StateHandler () {
@@ -555,6 +556,11 @@ ilib.StateHandler.prototype = {
 };
 
 // context-sensitive handler
+/**
+ * @class
+ * @private
+ * @constructor
+ */
 ilib.CSStateHandler = function () {
 	return this;
 };
@@ -581,6 +587,11 @@ ilib.CSStateHandler.prototype.special = function (number, currentChar, fields, r
 	return ret;
 };
 
+/**
+ * @class
+ * @private
+ * @constructor
+ */
 ilib.USStateHandler = function () {
 	return this;
 };
@@ -600,6 +611,10 @@ ilib.USStateHandler.prototype.vsc = function (number, currentChar, fields, regio
 	return ret;
 };
 
+/**
+ * @protected
+ * @static
+ */
 ilib._handlerFactory = function (locale, plan) {
 	if (plan.getContextFree() !== undefined && typeof(plan.getContextFree()) === 'boolean' && plan.getContextFree() === false) {
 		return new ilib.CSStateHandler();

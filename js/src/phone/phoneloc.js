@@ -72,6 +72,7 @@ ilib.Locale.PhoneLoc = function(options) {
 		sync: sync, 
 		loadParams: loadParams, 
 		callback: ilib.bind(this, function (data) {
+			/** @type {{mcc2reg:Object.<string,string>,cc2reg:Object.<string,string>,reg2cc:Object.<string,string>,area2reg:Object.<string,string>}} */
 			this.mappings = data;
 			
 			if (typeof(mcc) !== 'undefined') {
@@ -104,59 +105,60 @@ ilib.Locale.PhoneLoc.prototype.constructor = ilib.Locale.PhoneLoc;
  * Map a mobile carrier code to a region code.
  *
  * @static
- * @protected
- * @param {string} mcc MCC string to parse
- * @return {Object} components of the MCC number
+ * @package
+ * @param {string|undefined} mcc the MCC to map
+ * @return {string|undefined} the region code
  */
 
 ilib.Locale.PhoneLoc.prototype._mapMCCtoRegion = function(mcc) {
 	if (!mcc) {
-		return null;
+		return undefined;
 	}
 	return this.mappings.mcc2reg && this.mappings.mcc2reg[mcc] || "XX";
 };
 
 /**
- * Map a Country code to a region code.
+ * Map a country code to a region code.
  *
  * @static
- * @protected
- * @param {string} cc CC string to parse
- * @return {Object} components of the CC number
+ * @package
+ * @param {string|undefined} cc the country code to map
+ * @return {string|undefined} the region code
  */
 ilib.Locale.PhoneLoc.prototype._mapCCtoRegion = function(cc) {
 	if (!cc) {
-		return null;
+		return undefined;
 	}
 	return this.mappings.cc2reg && this.mappings.cc2reg[cc] || "XX";
 };
 
 /**
- * Map a Region code to a dialing code.
+ * Map a region code to a country code.
  *
  * @static
- * @protected
- * @param {string} region Region string to parse
- * @return {Object} components of the CC number
+ * @package
+ * @param {string|undefined} region the region code to map
+ * @return {string|undefined} the country code
  */
 ilib.Locale.PhoneLoc.prototype._mapRegiontoCC = function(region) {
 	if (!region) {
-		return null;
+		return undefined;
 	}
 	return this.mappings.reg2cc && this.mappings.reg2cc[region] || "0";
 };
 
 /**
- * Map a Country code to a region code.
+ * Map a country code to a region code.
  *
  * @static
- * @protected
- * @param {string} cc CC string to parse
- * @return {Object} components of the CC number
+ * @package
+ * @param {string|undefined} cc the country code to map
+ * @param {string|undefined} area the area code within the country code's numbering plan
+ * @return {string|undefined} the region code
  */
 ilib.Locale.PhoneLoc.prototype._mapAreatoRegion = function(cc, area) {
 	if (!cc) {
-		return null;
+		return undefined;
 	}
 	if (cc in this.mappings.area2reg) {
 		return this.mappings.area2reg[cc][area] || this.mappings.area2reg[cc]["default"];
@@ -165,10 +167,15 @@ ilib.Locale.PhoneLoc.prototype._mapAreatoRegion = function(cc, area) {
 	}
 };
 
-/*
-* Return the region that controls the dialing plan in the given
-* region. (ie. the "normalized phone region".)
-*/
+/**
+ * Return the region that controls the dialing plan in the given
+ * region. (ie. the "normalized phone region".)
+ * 
+ * @static
+ * @package
+ * @param {string} region the region code to normalize
+ * @return {string} the normalized region code
+ */
 ilib.Locale.PhoneLoc.prototype._normPhoneReg = function(region) {
 	var norm;
 	
