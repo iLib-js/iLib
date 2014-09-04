@@ -109,6 +109,7 @@ ilib.Measurement.Speed.aliases = {
     "m/sec":"meters/sec",
     "mt/s":"meters/sec",
     "m/s":"meters/sec",
+    "mps":"meters/sec",
     "kilometer/hour":"km/hour",
     "kilometers/hour":"km/hour",
     "kmh":"km/hour",
