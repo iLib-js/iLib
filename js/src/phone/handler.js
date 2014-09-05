@@ -74,7 +74,7 @@ ilib.StateHandler.prototype = {
 	 * @param {boolean} noExtractTrunk 
 	 */
 	processFieldWithSubscriberNumber: function(fieldName, length, number, currentChar, fields, regionSettings, noExtractTrunk) {
-		var ret, end;
+		var ret, end, last;
 		
 		last = number.search(/[xwtp]/i);	// last digit of the local number
 		
